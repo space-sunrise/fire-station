@@ -242,6 +242,8 @@
   components:
   - type: Carriable # Sunrise-edit
   - type: CanEscapeInventory # Sunrise-edit
+  - type: Blinkable # Sunrise-SCP edit.
+  - type: EyeClosing # Sunrise-SCP edit.
   - type: Barotrauma
     damage:
       types:

@@ -99,3 +99,10 @@
   id: Cataracts
   kind: source
   path: "/Textures/Shaders/cataracts.swsl"
+
+# Sunrise-SCP edit.
+- type: shader
+  id: BlinkingEffect
+  kind: source
+  path: "/Textures/Shaders/blinking_effect.swsl"
+# Sunrise-SCP edit.
