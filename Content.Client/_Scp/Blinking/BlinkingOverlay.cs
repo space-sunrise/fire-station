@@ -1,5 +1,4 @@
 ﻿using Content.Shared._Scp.Blinking;
-using Content.Shared.Eye.Blinding.Components;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
@@ -34,15 +33,6 @@ public sealed class BlinkingOverlay : Overlay
         var playerEntity = _playerManager.LocalEntity;
         if (playerEntity == null || !_entityManager.TryGetComponent<BlinkableComponent>(playerEntity, out var blinkable))
             return;
-
-        if (_entityManager.TryGetComponent<EyeClosingComponent>(playerEntity, out var eyeClosing))
-        {
-            if (eyeClosing.EyesClosed)
-            {
-                BlinkProgress = 1f;
-                return;
-            }
-        }
 
         var curTime = _timing.CurTime;
         if (curTime < blinkable.BlinkEndTime)
