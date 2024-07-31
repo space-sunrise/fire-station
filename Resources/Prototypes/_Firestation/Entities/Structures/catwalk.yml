@@ -1,0 +1,35 @@
+- type: entity
+  id: FRCatwalkSteel
+  parent: Catwalk
+  name: catwalk
+  description: A catwalk for easier EVA maneuvering and cable placement.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Firestation/Structures/catwalk-steel.rsi
+    drawdepth: FloorTiles
+
+- type: entity
+  id: FRCatwalkWhite
+  parent: Catwalk
+  name: catwalk
+  description: A catwalk for easier EVA maneuvering and cable placement.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Firestation/Structures/catwalk-white.rsi
+    drawdepth: FloorTiles
+
+- type: entity
+  id: FRCatwalkDark
+  parent: Catwalk
+  name: catwalk
+  description: A catwalk for easier EVA maneuvering and cable placement.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Firestation/Structures/catwalk-dark.rsi
+    drawdepth: FloorTiles

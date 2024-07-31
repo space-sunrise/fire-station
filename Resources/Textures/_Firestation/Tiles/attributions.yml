@@ -1,0 +1,14 @@
+- files: ["blue", "green", "dark", "white", "steel", "steel_mini"]
+  license: "CLA"
+  copyright: "Sprited by discord: odlieerr"
+  source: "https://github.com/space-sunrise/fire-station"
+
+- files: ["steel_mono", "white_mono", "dark_mono"]
+  license: "CLA"
+  copyright: "Sprited by discord: odlieerr"
+  source: "https://github.com/space-sunrise/fire-station"
+
+- files: [""checker_dark", "checker_steel"]
+  license: "CLA"
+  copyright: "Sprited by discord: odlieerr"
+  source: "https://github.com/space-sunrise/fire-station"
