@@ -1,0 +1,6 @@
+﻿# SCP
+- type: entity
+  id: Scp
+  parent: BaseGameRule
+  components:
+  - type: ScpRule

@@ -1,0 +1,8 @@
+﻿- type: gamePreset
+  id: Scp
+  name: scp-game-preset-title
+  description: scp-game-preset-description
+  hide: false
+  showInVote: false
+  rules:
+  - Scp
