@@ -2,6 +2,7 @@
 using Content.Shared.Alert;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs.Systems;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Blinking;
@@ -12,9 +13,10 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly EyeClosingSystem _closingSystem = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     public static TimeSpan BlinkingInterval = TimeSpan.FromSeconds(20);
-    public static TimeSpan BlinkingDuration = TimeSpan.FromSeconds(1.5);
+    public static TimeSpan BlinkingDuration = TimeSpan.FromSeconds(0.3);  // 1.5 секунды моргание - отвлекает
 
     public override void Initialize()
     {
@@ -92,7 +94,14 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     public override void ResetBlink(EntityUid uid, BlinkableComponent component)
     {
         base.ResetBlink(uid, component);
-        component.NextBlink = _gameTiming.CurTime + BlinkingInterval;
+        if (component.NextBlink == TimeSpan.Zero)  // Иначе вся станция будет моргать одновременно
+        {
+            component.NextBlink = _gameTiming.CurTime + _random.NextFloat() * BlinkingInterval;
+        }
+        else
+        {
+            component.NextBlink = _gameTiming.CurTime + BlinkingInterval;
+        }
         Dirty(uid, component);
     }
 }
