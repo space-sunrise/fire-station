@@ -1,0 +1,32 @@
+﻿- type: entity
+  id: AcceleratingCatwalk
+  name: accelerating catwalk
+  description: High-tech catwalk that speeds up everyone who moves on it
+  parent: Catwalk
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Construction
+    node: AcceleratingCatwalk
+  - type: Physics
+    canCollide: true
+  - type: Sprite
+    sprite: _Scp/Structures/accelerating_catwalk.rsi
+    drawdepth: FloorTiles
+  - type: SpeedModifierContacts
+    walkSpeedModifier: 1.3
+    sprintSpeedModifier: 1.3
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        density: 7
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49"
+        layer:
+        - LowImpassable
+  - type: RCDDeconstructable
+    cost: 2
+    delay: 2
+    fx: EffectRCDDeconstruct2

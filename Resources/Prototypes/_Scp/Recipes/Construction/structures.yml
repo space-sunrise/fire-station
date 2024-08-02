@@ -1,0 +1,17 @@
+﻿- type: construction
+  name: acceleration catwalk
+  id: AcceleratingCatwalk
+  graph: Catwalk
+  startNode: start
+  targetNode: AcceleratingCatwalk
+  category: construction-category-structures
+  description: High-tech catwalk that speeds up everyone who moves on it
+  conditions:
+  - !type:TileNotBlocked
+    failIfSpace: false
+  icon:
+    sprite: _Scp/Structures/accelerating_catwalk.rsi
+    state: catwalk_preview
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false

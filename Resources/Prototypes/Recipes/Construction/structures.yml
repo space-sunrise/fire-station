@@ -883,10 +883,10 @@
   conditions:
     - !type:TileNotBlocked
       failIfSpace: false
-    - !type:TileType
-      targets:
-        - Lattice
-        - Plating
+#    - !type:TileType
+#      targets:
+#      - Lattice
+#      - Plating
   icon:
     sprite: Structures/catwalk.rsi
     state: catwalk_preview
