@@ -15,11 +15,8 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     [Dependency] private readonly EyeClosingSystem _closingSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    private static readonly TimeSpan BlinkingInterval = TimeSpan.FromSeconds(20);
-    private static readonly TimeSpan BlinkingDuration = TimeSpan.FromSeconds(0.3);  // 1.5 секунды моргание - отвлекает
-
-    private TimeSpan _nextTick = TimeSpan.Zero;
-    private readonly TimeSpan _refreshCooldown = TimeSpan.FromSeconds(5);
+    public static TimeSpan BlinkingInterval = TimeSpan.FromSeconds(20);
+    public static TimeSpan BlinkingDuration = TimeSpan.FromSeconds(0.3);  // 1.5 секунды моргание - отвлекает
 
     public override void Initialize()
     {
@@ -50,11 +47,6 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     {
         base.Update(frameTime);
 
-        if (_nextTick > _gameTiming.CurTime)
-            return;
-
-        _nextTick += _refreshCooldown;
-
         var query = EntityQueryEnumerator<BlinkableComponent>();
         while (query.MoveNext(out var uid, out var blinkableComponent))
         {
@@ -62,10 +54,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
                 continue;
 
             if (_closingSystem.AreEyesClosed(uid))
-            {
-                blinkableComponent.NextBlink = _gameTiming.CurTime + BlinkingInterval;
                 continue;
-            }
 
             var currentTime = _gameTiming.CurTime;
 
