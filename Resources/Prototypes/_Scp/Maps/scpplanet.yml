@@ -1,0 +1,18 @@
+﻿- type: gameMap
+  id: ScpPlanet
+  mapName: 'ScpPlanet'
+  mapPath: /Maps/_Fire/scpmap.yml
+  maxRandomOffset: 0
+  randomRotation: false
+  minPlayers: 0
+  stations:
+    ScpPlanet:
+      stationProto: StandardNanotrasenStation
+      components:
+      - type: StationBiome
+        biome: Lava
+      - type: StationNameSetup
+        mapNameTemplate: 'SCP'
+      - type: StationJobs
+        availableJobs:
+          Captain: [ -1, -1 ]  # потому что я ручками поставил только капитана
