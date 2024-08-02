@@ -12,7 +12,10 @@
       - type: StationBiome
         biome: Lava
       - type: StationNameSetup
-        mapNameTemplate: 'SCP'
+        mapNameTemplate: 'Зона-{0}'
+        nameGenerator:
+          !type:ScpSiteNameGenerator
+          prefixCreator: '15'
       - type: StationJobs
         availableJobs:
           Captain: [ -1, -1 ]  # потому что я ручками поставил только капитана
