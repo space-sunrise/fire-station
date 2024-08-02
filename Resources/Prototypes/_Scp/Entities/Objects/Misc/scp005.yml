@@ -1,0 +1,20 @@
+﻿- type: entity
+  id: Scp005
+  name: Отмычка
+  description: Витиеватый ключ, по характеристикам не отличающийся от серийно выпускаемых ключей 1920-х годов.
+  suffix: SCP-005
+  parent: BaseItem
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scps/scp005.rsi
+    state: item
+  - type: Item
+    size: Normal
+  - type: Access
+    groups:
+    - AllAccess  # Потому что эта группа содержит все доступы
+    tags:
+    - CentralCommand
+  - type: Tag
+    tags:
+    - DoorBumpOpener
