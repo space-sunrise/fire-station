@@ -7,7 +7,7 @@
   minPlayers: 0
   stations:
     ScpPlanet:
-      stationProto: StandardNanotrasenStation
+      stationProto: StandardScpStation
       components:
       - type: StationBiome
         biome: Lava

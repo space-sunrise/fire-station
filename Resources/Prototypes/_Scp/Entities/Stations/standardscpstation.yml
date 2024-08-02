@@ -1,0 +1,20 @@
+﻿- type: entity
+  id: StandardScpStation
+  parent:
+  - BaseStation
+  - BaseStationNews  # Новости
+  - BaseStationJobsSpawning
+  - BaseStationRecords
+  - BaseStationGateway  # гейт
+  - BaseStationArrivals  # стандартное прибытие.. А нужно ли оно?
+  - BaseStationEvacuation  # базовый эвак.. а нужен ли он?
+  - BaseStationAlertLevels  # Красный итд коды, мб надо переделать
+  - BaseStationSiliconLawCrewsimov  # TODO: кастомные законы
+  - BaseStationNanotrasen  # Дает фракцию
+  - BaseStationGoal  # TODO: make this
+  - BaseStationAntagsTargets  # Для предателей
+  - BaseStationCryoTeleport  # Телепорт в крио. Я в нем уверен на 99%
+  - BaseStationCentComm  # У нас будет ЦК
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Transform
