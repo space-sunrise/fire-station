@@ -1,5 +1,5 @@
 - type: tile
-  id: FRFloorSteel
+  id: FSFloorSteel
   name: tiles-steel-floor
   sprite: /Textures/_Firestation/Tiles/steel.png
   variants: 10
@@ -19,11 +19,11 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
+  itemDrop: FSFloorTileItemSteel
   heatCapacity: 10000
 
 - type: tile
-  id: FRFloorDark
+  id: FSFloorDark
   name: tiles-dark-floor
   sprite: /Textures/_Firestation/Tiles/dark.png
   variants: 10
@@ -43,11 +43,11 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
+  itemDrop: FSFloorTileItemDark
   heatCapacity: 10000
 
 - type: tile
-  id: FRFloorWhite
+  id: FSFloorWhite
   name: tiles-white-floor
   sprite: /Textures/_Firestation/Tiles/white.png
   variants: 10
@@ -67,11 +67,11 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
+  itemDrop: FSFloorTileItemWhite
   heatCapacity: 10000
 
 - type: tile
-  id: FRFloorBlue
+  id: FSFloorBlue
   name: tiles-blue-floor
   sprite: /Textures/_Firestation/Tiles/blue.png
   variants: 10
@@ -91,11 +91,11 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
+  itemDrop: FSFloorTileItemBlue
   heatCapacity: 10000
 
 - type: tile
-  id: FRFloorGreen
+  id: FSFloorGreen
   name: tiles-green-floor
   sprite: /Textures/_Firestation/Tiles/green.png
   variants: 10
@@ -115,39 +115,194 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
+  itemDrop: FSFloorTileItemGreen
   heatCapacity: 10000
 
 - type: tile
-  id: FRFloorSteelMini
+  id: FSFloorSteelMini
   name: tiles-steel-mini-floor
   sprite: /Textures/_Firestation/Tiles/steel_mini.png
   variants: 24
   placementVariants:
   - 1.0
   - 1.0
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
   - 0.05
   - 0.05
   - 0.05
   - 0.05
   - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
-  - 0.05
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
-  - 1.0
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FloorTileItemSteel
+  itemDrop: FSFloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorFarkMini
+  name: tiles-dark-mini-floor
+  sprite: /Textures/_Firestation/Tiles/dark_mini.png
+  variants: 24
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FSFloorTileItemDark
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorWhiteMini
+  name: tiles-white-mini-floor
+  sprite: /Textures/_Firestation/Tiles/white_mini.png
+  variants: 24
+  placementVariants:
+  - 2.0
+  - 2.0
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FSFloorTileItemWhite
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorSteelMono
+  name: tiles-steel-mono-floor
+  sprite: /Textures/_Firestation/Tiles/steel_mono.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FSFloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorWhiteMono
+  name: tiles-white-mono-floor
+  sprite: /Textures/_Firestation/Tiles/white_mono.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FSFloorTileItemWhite
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorDarkMono
+  name: tiles-dark-mono-floor
+  sprite: /Textures/_Firestation/Tiles/dark_mono.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FSFloorTileItemDark
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorСheckerSteel
+  name: tiles-checker_steel-floor
+  sprite: /Textures/_Firestation/Tiles/checker_steel.png
+  variants: 10
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FSFloorTileItemСheckerSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorСheckerDark
+  name: tiles-checker_dark-floor
+  sprite: /Textures/_Firestation/Tiles/checker_dark.png
+  variants: 10
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FSFloorTileItemСheckerDark
   heatCapacity: 10000

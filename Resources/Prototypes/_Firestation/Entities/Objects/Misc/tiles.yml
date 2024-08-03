@@ -1,0 +1,97 @@
+- type: entity
+  name: steel tile
+  parent: FloorTileItemBase
+  id: FSFloorTileItemSteel
+  components:
+  - type: Sprite
+    sprite: _Firestation/Objects/Tiles/tile.rsi
+    state: steel
+  - type: Item
+    size: Normal
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FSFloorSteel
+  - type: Stack
+    stackType: FloorTileSteel
+  - type: Construction
+    graph: TileSteel
+    node: steeltile
+
+- type: entity
+  name: white tile
+  parent: FSFloorTileItemSteel
+  id: FSFloorTileItemWhite
+  components:
+  - type: Sprite
+    sprite: _Firestation/Objects/Tiles/tile.rsi
+    state: white
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FSFloorWhite
+
+- type: entity
+  name: white tile
+  parent: FSFloorTileItemSteel
+  id: FSFloorTileItemDark
+  components:
+  - type: Sprite
+    sprite: _Firestation/Objects/Tiles/tile.rsi
+    state: dark
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FSFloorDark
+
+- type: entity
+  name: green tile
+  parent: FSFloorTileItemSteel
+  id: FSFloorTileItemGreen
+  components:
+  - type: Sprite
+    sprite: _Firestation/Objects/Tiles/tile.rsi
+    state: green
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FSFloorGreen
+
+- type: entity
+  name: blue tile
+  parent: FSFloorTileItemSteel
+  id: FSFloorTileItemBlue
+  components:
+  - type: Sprite
+    sprite: _Firestation/Objects/Tiles/tile.rsi
+    state: blue
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FSFloorBlue
+
+- type: entity
+  name: checker steel tile
+  parent: FSFloorTileItemСheckerSteel
+  id: FSFloorTileItemСheckerSteel
+  components:
+  - type: Sprite
+    sprite: _Firestation/Objects/Tiles/tile.rsi
+    state: checker-light
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FSFloorСheckerSteel
+
+- type: entity
+  name: checker dark tile
+  parent: FSFloorTileItemСheckerSteel
+  id: FSFloorTileItemСheckerDark
+  components:
+  - type: Sprite
+    sprite: _Firestation/Objects/Tiles/tile.rsi
+    state: checker-dark
+  - type: FloorTile
+    outputs:
+      - Plating
+      - FSFloorСheckerDark

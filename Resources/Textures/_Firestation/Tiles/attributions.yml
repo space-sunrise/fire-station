@@ -1,4 +1,9 @@
-- files: ["blue", "green", "dark", "white", "steel", "steel_mini"]
+- files: ["blue", "green", "dark", "white", "steel"]
+  license: "CLA"
+  copyright: "Sprited by discord: odlieerr"
+  source: "https://github.com/space-sunrise/fire-station"
+
+- files: ["steel_mini", "dark_mini", "white_mini"]
   license: "CLA"
   copyright: "Sprited by discord: odlieerr"
   source: "https://github.com/space-sunrise/fire-station"
