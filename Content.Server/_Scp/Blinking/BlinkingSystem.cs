@@ -92,7 +92,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     private bool IsScp173Nearby(EntityUid uid)
     {
         var entities = GetScp173().ToList();
-        return entities.Count != 0 && entities.Any(scp => _examine.InRangeUnOccluded(uid, scp, 12f));
+        return entities.Count != 0 && entities.Any(scp => _examine.InRangeUnOccluded(uid, scp, 12f, ignoreInsideBlocker:false));
     }
 
     private void UpdateAlert(EntityUid uid, BlinkableComponent component)

@@ -45,7 +45,7 @@ public sealed class Scp173System : EntitySystem
             .ToList();
 
         return eyes.Count != 0 &&
-               eyes.Where(eye => !_examine.InRangeUnOccluded(eye, scp173, 12f))
+               eyes.Where(eye => _examine.InRangeUnOccluded(eye, scp173, 12f, ignoreInsideBlocker:false))
                    .Any(eye => !IsEyeBlinded(eye));
     }
 
