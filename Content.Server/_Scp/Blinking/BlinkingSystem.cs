@@ -121,6 +121,14 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         UpdateAlert(uid, component);
     }
 
+    public override bool CanCloseEyes(EntityUid uid)
+    {
+        if (!TryComp<BlinkableComponent>(uid, out var blinkableComponent))
+            return false;
+
+        return !IsBlind(uid, blinkableComponent);
+    }
+
     public override void ForceBlind(EntityUid uid, BlinkableComponent component, TimeSpan duration)
     {
         base.ForceBlind(uid, component, duration);

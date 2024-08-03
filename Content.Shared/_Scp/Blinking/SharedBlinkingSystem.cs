@@ -15,4 +15,6 @@ public abstract class SharedBlinkingSystem : EntitySystem
     public virtual void ForceBlind(EntityUid uid, BlinkableComponent component, TimeSpan duration) {}
 
     public virtual void ResetBlink(EntityUid uid, BlinkableComponent component) {}
+
+    public abstract bool CanCloseEyes(EntityUid uid);
 }
