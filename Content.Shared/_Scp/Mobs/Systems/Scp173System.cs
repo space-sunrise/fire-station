@@ -4,15 +4,14 @@ using Content.Shared._Scp.Mobs.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
-using Robust.Shared.Network;
 
 namespace Content.Shared._Scp.Mobs.Systems;
 
 public sealed class Scp173System : EntitySystem
 {
-    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
     [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
@@ -23,8 +22,15 @@ public sealed class Scp173System : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<Scp173Component, ChangeDirectionAttemptEvent>(OnDirectionAttempt);
         SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnInput);
         SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
+    }
+
+    private void OnDirectionAttempt(Entity<Scp173Component> ent, ref ChangeDirectionAttemptEvent args)
+    {
+        if (Is173Watched(ent))
+            args.Cancel();
     }
 
     private void OnInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
