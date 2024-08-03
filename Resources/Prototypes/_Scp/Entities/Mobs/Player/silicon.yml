@@ -1,0 +1,119 @@
+﻿- type: entity
+  id: DroidSecurityCombatBattery
+  parent: DroidChassisSecurityCombat
+  suffix: Battery, Tools
+  components:
+  - type: ContainerFill
+    containers:
+      borg_brain:
+      - Boris
+      borg_module:
+      - BorgModuleStandart
+      - BorgModuleCombat
+      - BorgModuleStun
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+  - type: RandomMetadata
+    nameSegments: [names_borg]
+
+
+- type: entity
+  id: DroidChassisSecurityCombat
+  parent: BaseBorgChassisNT
+  name: боевой дрон
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Silicon/chassis.rsi
+    layers:
+    - state: droid-combat
+    - state: nomind-eyes-droid-combat
+      map: [ "enum.BorgVisualLayers.Light" ]
+      shader: unshaded
+      visible: false
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepCyborgSpider
+      params:
+        volume: -15
+  - type: FlashImmunity
+  - type: ShowJobIcons
+  - type: ShowMindShieldIcons
+  - type: ShowCriminalRecordIcons
+  - type: BorgTransponder
+    sprite:
+      sprite: _Scp/Mobs/Silicon/chassis.rsi
+      state: droid-combat
+    name: боевой дрон
+  - type: BorgChassis
+    maxModules: 4
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleSecurity
+      - BorgModuleSyndicate  # Почему бы и нет
+      - BorgModuleSyndicateAssault  # Почему бы и нет
+    hasMindState: eyes-droid-combat
+    noMindState: nomind-eyes-droid-combat
+  - type: Construction
+    node: securitycombat
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Security
+    - Binary
+    - Common
+    - Science
+  - type: ActiveRadio
+    channels:
+    - Security
+    - Binary
+    - Common
+    - Science
+  - type: AccessReader
+    access: [["Security"], ["Command"]]
+  - type: SiliconLawProvider
+    laws: SecurityStatic
+  - type: TTS
+    voice: Sentrybot
+  - type: PointLight
+    color: "#ff0000"
+    radius: 6
+    energy: 3
+  - type: Access
+    enabled: false
+    tags:
+    - EmergencyShuttleRepealAll
+    - Command
+    - Lawyer
+    - Engineering
+    - Medical
+    - Salvage
+    - Cargo
+    - Research
+    - Service
+    - Maintenance
+    - Brig
+    - Security
+    - External
+    - Janitor
+    - Theatre
+    - Bar
+    - Chemistry
+    - Kitchen
+    - Chapel
+    - Hydroponics
+    - Atmospherics
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3.5
+    baseSprintSpeed : 4.5
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - CanPilot
+    - FootstepSound
+    - EmagImmune
+  - type: InnateItem
+    instantActions:
+    - PortableSurveillanceCameraMonitor
