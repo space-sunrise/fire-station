@@ -19,7 +19,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     private static readonly TimeSpan BlinkingDuration = TimeSpan.FromSeconds(0.3);  // 1.5 секунды моргание - отвлекает
 
     private TimeSpan _nextTick = TimeSpan.Zero;
-    private readonly TimeSpan _refreshCooldown = TimeSpan.FromSeconds(5);
+    private readonly TimeSpan _refreshCooldown = TimeSpan.FromSeconds(1);
 
     public override void Initialize()
     {
