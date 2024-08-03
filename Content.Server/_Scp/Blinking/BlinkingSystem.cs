@@ -114,9 +114,21 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     public override void ResetBlink(EntityUid uid, BlinkableComponent component)
     {
         base.ResetBlink(uid, component);
+
         component.NextBlink = _gameTiming.CurTime + BlinkingInterval;
         Dirty(uid, component);
 
+        UpdateAlert(uid, component);
+    }
+
+    public override void ForceBlind(EntityUid uid, BlinkableComponent component, TimeSpan duration)
+    {
+        base.ForceBlind(uid, component, duration);
+        var currentTime = _gameTiming.CurTime;
+        component.BlinkEndTime = currentTime + duration;
+        // Set next blink slightly after forced blindness ends
+        component.NextBlink = component.BlinkEndTime + TimeSpan.FromSeconds(1);
+        Dirty(uid, component);
         UpdateAlert(uid, component);
     }
 

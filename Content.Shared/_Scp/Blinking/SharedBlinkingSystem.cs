@@ -12,5 +12,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
         return currentTime < component.BlinkEndTime;
     }
 
+    public virtual void ForceBlind(EntityUid uid, BlinkableComponent component, TimeSpan duration) {}
+
     public virtual void ResetBlink(EntityUid uid, BlinkableComponent component) {}
 }
