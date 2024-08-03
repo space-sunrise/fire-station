@@ -5,7 +5,6 @@
   - MobDamageable
   - MobAtmosExposed
   id: BaseSimpleMob
-  suffix: AI
   abstract: true
   components:
   - type: Reactive

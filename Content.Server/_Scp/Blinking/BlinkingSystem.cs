@@ -1,5 +1,8 @@
-﻿using Content.Shared._Scp.Blinking;
+﻿using System.Linq;
+using Content.Shared._Scp.Blinking;
+using Content.Shared._Scp.Mobs.Components;
 using Content.Shared.Alert;
+using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Timing;
@@ -12,9 +15,10 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly EyeClosingSystem _closingSystem = default!;
+    [Dependency] private readonly ExamineSystemShared _examine = default!;
 
-    public static TimeSpan BlinkingInterval = TimeSpan.FromSeconds(20);
-    public static TimeSpan BlinkingDuration = TimeSpan.FromSeconds(1.5);
+    public static TimeSpan BlinkingInterval = TimeSpan.FromSeconds(15);
+    public static TimeSpan BlinkingDuration = TimeSpan.FromSeconds(2);
 
     public override void Initialize()
     {
@@ -48,11 +52,23 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         var query = EntityQueryEnumerator<BlinkableComponent>();
         while (query.MoveNext(out var uid, out var blinkableComponent))
         {
-            if (_mobState.IsIncapacitated(uid))
+            if (!IsScp173Nearby(uid))
+            {
+                ResetBlink(uid, blinkableComponent);
                 continue;
+            }
+
+            if (_mobState.IsIncapacitated(uid))
+            {
+                ResetBlink(uid, blinkableComponent);
+                continue;
+            }
 
             if (_closingSystem.AreEyesClosed(uid))
+            {
+                ResetBlink(uid, blinkableComponent);
                 continue;
+            }
 
             var currentTime = _gameTiming.CurTime;
 
@@ -71,6 +87,12 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         component.BlinkEndTime = _gameTiming.CurTime + BlinkingDuration;
 
         Dirty(uid, component);
+    }
+
+    private bool IsScp173Nearby(EntityUid uid)
+    {
+        var entities = GetScp173().ToList();
+        return entities.Count != 0 && entities.Any(scp => _examine.InRangeUnOccluded(uid, scp, 12f));
     }
 
     private void UpdateAlert(EntityUid uid, BlinkableComponent component)
@@ -94,5 +116,16 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         base.ResetBlink(uid, component);
         component.NextBlink = _gameTiming.CurTime + BlinkingInterval;
         Dirty(uid, component);
+
+        UpdateAlert(uid, component);
+    }
+
+    public IEnumerable<Entity<Scp173Component>> GetScp173()
+    {
+        var query = EntityManager.AllEntityQueryEnumerator<Scp173Component>();
+        while (query.MoveNext(out var uid, out var component))
+        {
+            yield return (uid, component);
+        }
     }
 }
