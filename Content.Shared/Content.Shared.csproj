@@ -27,9 +27,6 @@
   <ItemGroup>
     <Folder Include="Power\Components\" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="_Sunrise\Smile\SmileSlimeComponent.cs" />
-  </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
   <Import Project="..\RobustToolbox\MSBuild\Robust.CompNetworkGenerator.targets" />
 </Project>

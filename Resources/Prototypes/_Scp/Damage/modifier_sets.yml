@@ -1,0 +1,11 @@
+﻿- type: damageModifierSet
+  id: SCP-999
+  coefficients:
+    Blunt: 2.05  # для тестов
+    Slash: 0.05
+    Piercing: 0.05
+    Cold: 0.0
+    Poison: 0.0
+    Cellular: 0.0
+    Radiation: 0.0
+    Caustic: 0.0

@@ -1,0 +1,4 @@
+﻿- type: typingIndicator
+  id: SCP-999
+  typingState: scp999-0
+  offset: 0, 0.125

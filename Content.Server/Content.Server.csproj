@@ -30,8 +30,5 @@
   <ItemGroup>
     <Folder Include="Objectives\Interfaces\" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="_Sunrise\Smile\SmileSlimeSystem.cs" />
-  </ItemGroup>
   <Import Project="..\RobustToolbox\MSBuild\Robust.Properties.targets" />
 </Project>
