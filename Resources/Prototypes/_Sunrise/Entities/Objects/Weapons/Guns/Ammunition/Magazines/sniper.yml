@@ -10,10 +10,10 @@
   - type: BallisticAmmoProvider
     mayTransfer: true
     capacity: 20
-    proto: CartridgeMagnum  # 762x54
+    proto: Cartridge762x54
     whitelist:
       tags:
-        - CartridgeMagnum  # 762x54
+        - Cartridge762x54
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
@@ -47,10 +47,10 @@
   - type: BallisticAmmoProvider
     mayTransfer: true
     capacity: 20
-    proto: CartridgeMagnum  # 062
+    proto: Cartridge062
     whitelist:
       tags:
-        - CartridgeMagnum  # 062
+        - Cartridge062
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
@@ -83,10 +83,10 @@
   - type: BallisticAmmoProvider
     mayTransfer: true
     capacity: 10
-    proto: CartridgeAntiMateriel  # AntiMateriel
+    proto: Cartridge062
     whitelist:
       tags:
-        - CartridgeAntiMateriel  # AntiMateriel
+        - Cartridge062
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container

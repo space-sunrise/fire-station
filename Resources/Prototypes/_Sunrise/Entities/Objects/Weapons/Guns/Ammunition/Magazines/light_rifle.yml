@@ -24,8 +24,8 @@
     mayTransfer: true
     whitelist:
       tags:
-        - CartridgeLightRifle  # 762x39
-    proto: CartridgeLightRifle  # 762x39
+        - Cartridge762x39
+    proto: Cartridge762x39
     capacity: 30
   - type: Item
     size: Small
@@ -55,10 +55,10 @@
     - MagazineP90
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgeLightRifle  # 57x28
+    proto: Cartridge57x28
     whitelist:
       tags:
-      - CartridgeLightRifle  # 57x28
+      - Cartridge57x28
     capacity: 50
   - type: Item
     size: Small
@@ -88,10 +88,10 @@
     - MagazineMP38
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgeLightRifle  # 57x28
+    proto: Cartridge57x28
     whitelist:
       tags:
-      - CartridgeLightRifle  # 57x28
+      - Cartridge57x28
     capacity: 45
   - type: Item
     size: Small
@@ -121,10 +121,10 @@
     - MagazineMP7
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgeLightRifle  # 57x28
+    proto: Cartridge57x28
     whitelist:
       tags:
-      - CartridgeLightRifle  # 57x28
+      - Cartridge57x28
     capacity: 45
   - type: Item
     size: Small
@@ -154,10 +154,10 @@
     - MagazineMP5
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgeLightRifle  # 57x28
+    proto: Cartridge57x28
     whitelist:
       tags:
-      - CartridgeLightRifle  # 57x28
+      - Cartridge57x28
     capacity: 45
   - type: Item
     size: Small
@@ -187,10 +187,10 @@
     - MagazineScorpion
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgeLightRifle  # 57x28
+    proto: Cartridge57x28
     whitelist:
       tags:
-      - CartridgeLightRifle  # 57x28
+      - Cartridge57x28
     capacity: 45
   - type: Item
     size: Small
@@ -220,10 +220,10 @@
     - MagazineNewVector
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgeLightRifle  # 57x28
+    proto: Cartridge57x28
     whitelist:
       tags:
-      - CartridgeLightRifle  # 57x28
+      - Cartridge57x28
     capacity: 45
   - type: Item
     size: Small
@@ -252,7 +252,7 @@
     tags:
     - MagazineRPD
   - type: BallisticAmmoProvider
-    proto: CartridgeLightRifle  # 762x39
+    proto: Cartridge762x39
     capacity: 80
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/pk_box.rsi
@@ -272,10 +272,10 @@
     - MagazineMachineGunMG42
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgeLightRifle  # 762x39
+    proto: Cartridge762x39
     whitelist:
       tags:
-      - CartridgeLightRifle  # 762x39
+      - Cartridge762x39
     capacity: 250
   - type: Item
     size: Small
@@ -305,10 +305,10 @@
     - MagazineLightMachineGunMG60
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgeLightRifle  # 762x39
+    proto: Cartridge762x39
     whitelist:
       tags:
-      - CartridgeLightRifle  # 762x39
+      - Cartridge762x39
     capacity: 250
   - type: Item
     size: Small
@@ -337,11 +337,11 @@
       tags:
         - MagazineVP70
     - type: BallisticAmmoProvider
-      proto: CartridgePistol  # 57x28
+      proto: Cartridge57x28
       mayTransfer: true
       whitelist:
         tags:
-          - CartridgePistol  # 57x28
+          - Cartridge57x28
       capacity: 16
     - type: Item
       size: Small
@@ -371,10 +371,10 @@
     - MagazineGlock22
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgePistol  # 57x28
+    proto: Cartridge57x28
     whitelist:
       tags:
-      - CartridgePistol  # 57x28
+      - Cartridge57x28
     capacity: 15
   - type: Item
     size: Small
@@ -404,10 +404,10 @@
     - MagazineHIBrowning
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgePistol  # 57x28
+    proto: Cartridge57x28
     whitelist:
       tags:
-      - CartridgePistol  # 57x28
+      - Cartridge57x28
     capacity: 15
   - type: Item
     size: Small
@@ -437,10 +437,10 @@
     - MagazineACP14
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgePistol  # 57x28
+    proto: Cartridge57x28
     whitelist:
       tags:
-      - CartridgePistol  # 57x28
+      - Cartridge57x28
     capacity: 15
   - type: Item
     size: Small
@@ -470,10 +470,10 @@
     - MagazinePPSH41
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgeLightRifle  # 57x28
+    proto: Cartridge57x28
     whitelist:
       tags:
-      - CartridgeLightRifle  # 57x28
+      - Cartridge57x28
     capacity: 71
   - type: Item
     size: Small
@@ -505,8 +505,8 @@
     mayTransfer: true
     whitelist:
       tags:
-      - CartridgeLightRifle  # 762x39
-    proto: CartridgeLightRifle  # 762x39
+      - Cartridge762x39
+    proto: Cartridge762x39
     capacity: 30
   - type: Item
     size: Small

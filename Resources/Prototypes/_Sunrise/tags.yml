@@ -17,6 +17,23 @@
   id: DockGamma
 
 # Catridges:
+- type: Tag
+  id: Cartridge762x54
+
+- type: Tag
+  id: Cartridge062
+
+- type: Tag
+  id: Cartridge762x39
+
+- type: Tag
+  id: Cartridge556
+
+- type: Tag
+  id: Cartridge57x28
+
+- type: Tag
+  id: Cartridge050
 
 - type: Tag
   id: CartridgeRifleMachine

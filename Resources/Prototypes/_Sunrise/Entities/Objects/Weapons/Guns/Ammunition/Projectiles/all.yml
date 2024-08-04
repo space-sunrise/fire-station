@@ -1,0 +1,19 @@
+- type: entity
+  noSpawn: true
+  parent: BaseBullet
+  id: BulletRifle762
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 30
+
+- type: entity
+  id: BulletRifle62Heavy
+  parent: BaseBullet
+  noSpawn: true
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 35

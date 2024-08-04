@@ -38,10 +38,10 @@
     size: Small
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgePistol  # 556
+    proto: Cartridge556
     whitelist:
       tags:
-        - CartridgePistol  # 556
+        - Cartridge556
     capacity: 25
   - type: ContainerContainer
     containers:
@@ -71,10 +71,10 @@
     size: Small
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgePistol  # 556
+    proto: Cartridge556
     whitelist:
       tags:
-        - CartridgePistol  # 556
+        - Cartridge556
     capacity: 25
   - type: ContainerContainer
     containers:
@@ -104,10 +104,10 @@
     size: Small
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgePistol  # 556
+    proto: Cartridge556
     whitelist:
       tags:
-        - CartridgePistol  # 556
+        - Cartridge556
     capacity: 25
   - type: ContainerContainer
     containers:
@@ -137,10 +137,10 @@
     size: Small
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgePistol  # 556
+    proto: Cartridge556
     whitelist:
       tags:
-      - CartridgePistol  # 556
+      - Cartridge556
     capacity: 25
   - type: ContainerContainer
     containers:
@@ -170,10 +170,10 @@
     size: Small
   - type: BallisticAmmoProvider
     mayTransfer: true
-    proto: CartridgePistol  # 556
+    proto: Cartridge556
     whitelist:
       tags:
-      - CartridgePistol  # 556
+      - Cartridge556
     capacity: 25
   - type: ContainerContainer
     containers:

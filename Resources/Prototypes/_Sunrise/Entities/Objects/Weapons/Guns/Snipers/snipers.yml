@@ -46,11 +46,11 @@
             - MagazineDragunov
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeMagnum  # 762x54
+        startingItem: Cartridge762x54
         priority: 1
         whitelist:
           tags:
-            - CartridgeMagnum  # 762x54
+            - Cartridge762x54
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot

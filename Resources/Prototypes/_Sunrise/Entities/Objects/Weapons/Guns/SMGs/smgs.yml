@@ -86,11 +86,11 @@
           - MagazineP90
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeLightRifle  # 57x28
+        startingItem: Cartridge57x28
         priority: 1
         whitelist:
           tags:
-          - CartridgeLightRifle  # 57x28
+          - Cartridge57x28
   - type: MagazineVisuals
     magState: mag
     steps: 6
@@ -193,11 +193,11 @@
           - MagazineMP7
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeLightRifle  # 57x28
+        startingItem: Cartridge57x28
         priority: 1
         whitelist:
           tags:
-          - CartridgeLightRifle  # 57x28
+          - Cartridge57x28
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -247,11 +247,11 @@
           - MagazineMP5
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeLightRifle  # 57x28
+        startingItem: Cartridge57x28
         priority: 1
         whitelist:
           tags:
-          - CartridgeLightRifle  # 57x28
+          - Cartridge57x28
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -403,11 +403,11 @@
           - MagazinePPSH41
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeLightRifle  # 57x28
+        startingItem: Cartridge57x28
         priority: 1
         whitelist:
           tags:
-          - CartridgeLightRifle  # 57x28
+          - Cartridge57x28
   - type: MagazineVisuals
     magState: mag
     steps: 1

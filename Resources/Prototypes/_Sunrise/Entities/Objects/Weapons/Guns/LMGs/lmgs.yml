@@ -38,11 +38,11 @@
           - MagazineLightMachineGunMG60
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeLightRifle  # 762x39
+        startingItem: Cartridge762x39
         priority: 1
         whitelist:
           tags:
-          - CartridgeLightRifle  # 762x39
+          - Cartridge762x39
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -98,11 +98,11 @@
           - MagazineRPD
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeLightRifle  # 762x39
+        startingItem: Cartridge762x39
         priority: 1
         whitelist:
           tags:
-          - CartridgeLightRifle  # 762x39
+          - Cartridge762x39
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -159,11 +159,11 @@
           - MagazineMachineGunMG42
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeLightRifle  # 762x39
+        startingItem: Cartridge762x39
         priority: 1
         whitelist:
           tags:
-          - CartridgeLightRifle  # 762x39
+          - Cartridge762x39
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot

@@ -16,11 +16,11 @@
             - MagazinePistol
       gun_chamber:
         name: Chamber
-        startingItem: CartridgePistolRubber
+        startingItem: Cartridge57x28Rubber
         priority: 1
         whitelist:
           tags:
-            - CartridgePistol
+            - Cartridge57x28
 
 - type: entity
   name: N1984
@@ -76,15 +76,14 @@
         priority: 2
         whitelist:
           tags:
-          - MagazinePistol
           - MagazineVP70
       gun_chamber:
         name: Chamber
-        startingItem: CartridgePistol
+        startingItem: Cartridge57x28
         priority: 1
         whitelist:
           tags:
-          - CartridgePistol
+          - Cartridge57x28
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -123,15 +122,14 @@
         priority: 2
         whitelist:
           tags:
-          - MagazinePistol
           - MagazineGlock22
       gun_chamber:
         name: Chamber
-        startingItem: CartridgePistol
+        startingItem: Cartridge57x28
         priority: 1
         whitelist:
           tags:
-          - CartridgePistol
+          - Cartridge57x28
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -161,15 +159,14 @@
         priority: 2
         whitelist:
           tags:
-          - MagazinePistol
           - MagazineGlock22
       gun_chamber:
         name: Chamber
-        startingItem: CartridgePistol
+        startingItem: Cartridge57x28
         priority: 1
         whitelist:
           tags:
-          - CartridgePistol
+          - Cartridge57x28
 
 
 - type: entity
@@ -201,15 +198,14 @@
         priority: 2
         whitelist:
           tags:
-          - MagazinePistol
           - MagazineHIBrowning
       gun_chamber:
         name: Chamber
-        startingItem: CartridgePistol
+        startingItem: Cartridge57x28
         priority: 1
         whitelist:
           tags:
-          - CartridgePistol
+          - Cartridge57x28
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -247,15 +243,14 @@
         priority: 2
         whitelist:
           tags:
-          - MagazinePistol
           - MagazineACP14
       gun_chamber:
         name: Chamber
-        startingItem: CartridgePistol
+        startingItem: Cartridge57x28
         priority: 1
         whitelist:
           tags:
-          - CartridgePistol
+          - Cartridge57x28
   - type: MagazineVisuals
     magState: mag
     steps: 1
@@ -311,15 +306,14 @@
         priority: 2
         whitelist:
           tags:
-          - MagazineMagnum
           - MagazineDeagle
       gun_chamber:
         name: Chamber
-        startingItem: CartridgeMagnum
+        startingItem: Cartridge050
         priority: 1
         whitelist:
           tags:
-          - CartridgeMagnum
+          - Cartridge050
   - type: MagazineVisuals
     magState: mag
     steps: 1
