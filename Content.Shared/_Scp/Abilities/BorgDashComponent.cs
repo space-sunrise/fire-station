@@ -15,7 +15,7 @@ namespace Content.Shared._Scp.Abilities;
 public sealed partial class BorgDashComponent : Component
 {
     [ViewVariables(VVAccess.ReadWrite),
-     DataField("cuffActionId", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+     DataField("dashActionId", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
     public string DashActionId = "BorgDash";
 
     [DataField]
@@ -61,7 +61,6 @@ public sealed partial class BorgDashDoAfterEvent : DoAfterEvent
 [Serializable, NetSerializable]
 public enum BorgDashVisuals : byte
 {
-    Shielding,
     NotDashing,
     Dashing
 }

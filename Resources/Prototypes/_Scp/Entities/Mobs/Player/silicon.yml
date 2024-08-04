@@ -33,6 +33,9 @@
     - state: droid-combat-roll
       map: [ "enum.BorgDashVisuals.Dashing"]
       visible: false
+    - state: droid-combat-shield
+      map: [ "enum.BorgResistVisuals.Shielding"]
+      visible: false
     - state: nomind-eyes-droid-combat
       map: [ "enum.BorgVisualLayers.Light" ]
       shader: unshaded
@@ -44,6 +47,27 @@
         volume: -15
   - type: FlashImmunity
   - type: BorgDash
+  - type: BorgResist
+  - type: Reflect
+    reflectProb: 0  # да
+    reflects:
+    - Energy
+  - type: ItemToggle
+    onUse: false
+    predictable: false
+    soundActivate:
+      path: /Audio/Items/rped.ogg
+      params:
+        volume: 100
+    soundDeactivate:
+      path: /Audio/Items/rped.ogg
+      params:
+        volume: 100
+  - type: ItemToggleActiveSound
+    activeSound:
+      path: /Audio/Weapons/ebladehum.ogg
+      params:
+        volume: 100
   - type: ShowJobIcons
   - type: ShowMindShieldIcons
   - type: ShowCriminalRecordIcons

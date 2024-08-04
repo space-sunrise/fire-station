@@ -1,5 +1,7 @@
 ﻿- type: entity
   id: BorgDash
+  name: Колесо смерти
+  description: Запускает борга в выбранном направлении, нанося урон органике на пути.
   categories: [ HideSpawnMenu ]
   components:
   - type: WorldTargetAction
@@ -12,3 +14,18 @@
     checkCanAccess: false
     raiseOnUser: true
     event: !type:BorgDashActionEvent
+
+- type: entity
+  id: BorgResist
+  name: Включить энергетический барьер
+  description: Включает энергетический барьер вокруг борга.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    event: !type:BorgResistanceActionEvent
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 0.5
+    icon:
+      sprite : Objects/Power/powersink.rsi
+      state: powersink
