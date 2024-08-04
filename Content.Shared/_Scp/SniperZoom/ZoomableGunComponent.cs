@@ -1,7 +1,7 @@
-﻿﻿using System.Numerics;
+﻿using System.Numerics;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Sunrise.SniperZoom;
+namespace Content.Shared._Scp.SniperZoom;
 
 /// <summary>
 /// Добавляйте этот компонент снайперкам.

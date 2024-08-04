@@ -1,17 +1,14 @@
 ﻿using Content.Server.Movement.Systems;
 using Content.Server.Popups;
-using Content.Shared._Sunrise.SniperZoom;
+using Content.Shared._Scp.SniperZoom;
 using Content.Shared.Actions;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Wieldable;
 
-namespace Content.Server._Sunrise.SniperZoom;
+namespace Content.Server._Scp.SniperZoom;
 
-/// <summary>
-/// This handles...
-/// </summary>
 public sealed class ZoomableGunSystem : EntitySystem
 {
     [Dependency] private readonly ContentEyeSystem _eye = default!;
@@ -74,7 +71,10 @@ public sealed class ZoomableGunSystem : EntitySystem
 
         if (comp.BaseWalkSpeed == null || comp.BaseSprintSpeed == null || comp.BaseAcceleration == null)
             return;
-        _movementSpeedModifier.ChangeBaseSpeed(uid, comp.BaseWalkSpeed.Value, comp.BaseSprintSpeed.Value, comp.BaseAcceleration.Value);
+        _movementSpeedModifier.ChangeBaseSpeed(uid,
+            comp.BaseWalkSpeed.Value,
+            comp.BaseSprintSpeed.Value,
+            comp.BaseAcceleration.Value);
         comp.BaseWalkSpeed = null;
         comp.BaseSprintSpeed = null;
         comp.BaseAcceleration = null;
@@ -92,14 +92,21 @@ public sealed class ZoomableGunSystem : EntitySystem
         ev.AddAction(ref comp.TakeAimActionEntity, comp.TakeAimAction);
     }
 
-    private void OnTakeAimActionEvent(Entity<ZoomableGunComponent> entityZoomableGunComponent, ref TakeAimActionEvent args)
+    private void OnTakeAimActionEvent(Entity<ZoomableGunComponent> entityZoomableGunComponent,
+        ref TakeAimActionEvent args)
+
     {
         if (args.Handled)
             return;
 
         if (!entityZoomableGunComponent.Comp.Wielded)
         {
-            _popup.PopupCoordinates(Loc.GetString("wieldable-component-requires", ("item", MetaData(entityZoomableGunComponent.Owner).EntityName)), Transform(args.Performer).Coordinates, args.Performer, PopupType.Medium);
+            _popup.PopupCoordinates(
+                Loc.GetString("wieldable-component-requires",
+                    ("item", MetaData(entityZoomableGunComponent.Owner).EntityName)),
+                Transform(args.Performer).Coordinates,
+                args.Performer,
+                PopupType.Medium);
             return;
         }
 

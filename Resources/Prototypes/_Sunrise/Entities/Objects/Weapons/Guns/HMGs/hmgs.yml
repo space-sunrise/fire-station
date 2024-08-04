@@ -2,13 +2,13 @@
 - type: entity
   name: MG-100 Vindicator Minigun
   parent: BaseItem
-  id: SUNRISECM14WeaponMinigunMG100
+  id: WeaponMinigunMG100
   components:
   - type: Sprite
-    sprite: _SUNRISE_CM14/Entities/Objects/Weapons/Guns/HMGs/minigun/big.rsi
+    sprite: _Sunrise/Entities/Objects/Weapons/Guns/HMGs/minigun/big.rsi
     state: icon
   - type: Item
-    sprite: _SUNRISE_CM14/Entities/Objects/Weapons/Guns/HMGs/minigun/tiny.rsi
+    sprite: _Sunrise/Entities/Objects/Weapons/Guns/HMGs/minigun/tiny.rsi
     size: Ginormous
   - type: Gun
     minAngle: -25
@@ -18,12 +18,12 @@
     availableModes:
     - FullAuto
     soundGunshot:
-      path: /Audio/_SUNRISE_CM14/Guns/HMGs/minigun_shot.ogg
+      path: /Audio/_Sunrise/Weapons/Guns/HMGs/minigun_shot.ogg
   - type: ClothingSlotAmmoProvider
     targetSlot: BACK
     providerWhitelist:
       tags:
-      - SUNRISECM14PowerpackMinigunMG100
+      - PowerpackMinigunMG100
   - type: Appearance
   - type: Wieldable
   - type: UseDelay
@@ -31,26 +31,26 @@
   - type: GunRequiresWield
 
 - type: entity
-  id: SUNRISECM14PowerpackMinigunMG100
-  parent: SUNRISECM14BasePowerpackMG100
+  id: PowerpackMinigunMG100
+  parent: BasePowerpackMG100
   components:
   - type: BallisticAmmoProvider
     mayTransfer: True
     proto: CartridgeLightRifle  # 762x39
 
 - type: entity
-  id: SUNRISECM14BasePowerpackMG100
+  id: BasePowerpackMG100
   parent: BaseItem
   abstract: true
   components:
   - type: Tag
     tags:
-    - SUNRISECM14PowerpackMinigunMG100
+    - PowerpackMinigunMG100
   - type: Item
     size: Normal
   - type: Clothing
     slots: BACK
-    sprite: _SUNRISE_CM14/Entities/Objects/Weapons/Guns/Powerpacks/Powerpacks/backpack.rsi
+    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Powerpacks/Powerpacks/backpack.rsi
   - type: BallisticAmmoProvider
     mayTransfer: true
     whitelist:
@@ -64,7 +64,7 @@
     containers:
       ballistic-ammo: !type:Container
   - type: Sprite
-    sprite: _SUNRISE_CM14/Entities/Objects/Weapons/Guns/Powerpacks/Powerpacks/backpack.rsi
+    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Powerpacks/Powerpacks/backpack.rsi
     layers:
     - state: mag-0
       map: ["enum.GunVisualLayers.Base"]
