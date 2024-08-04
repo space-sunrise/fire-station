@@ -1,0 +1,7 @@
+﻿- type: entity
+  id: BaseStationMogGroups
+  abstract: true
+  components:
+  - type: StationMogGroups
+    allowedGroups:
+    - SpetznazDog

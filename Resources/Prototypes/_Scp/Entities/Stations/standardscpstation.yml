@@ -15,6 +15,8 @@
   - BaseStationAntagsTargets  # Для предателей
   - BaseStationCryoTeleport  # Телепорт в крио. Я в нем уверен на 99%
   - BaseStationCentComm  # У нас будет ЦК
+  - BaseStationTransitHub
+  - BaseStationMogGroups  # Спавн космодесанта
   categories: [ HideSpawnMenu ]
   components:
   - type: Transform

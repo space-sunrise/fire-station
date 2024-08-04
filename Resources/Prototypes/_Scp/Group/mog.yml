@@ -1,0 +1,10 @@
+﻿- type: groupSpawn
+  id: SpetznazDog
+  name: Дикие псы (ДЕБАГ)
+  minDistance: 400
+  maxDistance: 1000
+  group:
+  - entity: MobCorgiIan
+    amount: 2
+  - entity: MobCorgiIanOld
+    amount: 1
