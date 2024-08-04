@@ -29,6 +29,10 @@
     sprite: _Scp/Mobs/Silicon/chassis.rsi
     layers:
     - state: droid-combat
+      map: [ "enum.BorgDashVisuals.NotDashing"]
+    - state: droid-combat-roll
+      map: [ "enum.BorgDashVisuals.Dashing"]
+      visible: false
     - state: nomind-eyes-droid-combat
       map: [ "enum.BorgVisualLayers.Light" ]
       shader: unshaded
@@ -39,6 +43,7 @@
       params:
         volume: -15
   - type: FlashImmunity
+  - type: BorgDash
   - type: ShowJobIcons
   - type: ShowMindShieldIcons
   - type: ShowCriminalRecordIcons

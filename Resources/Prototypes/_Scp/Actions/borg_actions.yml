@@ -1,0 +1,14 @@
+﻿- type: entity
+  id: BorgDash
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: WorldTargetAction
+    useDelay: 5
+    range: 16
+    icon:
+      sprite : Objects/Fun/whoopie.rsi
+      state: icon
+    itemIconStyle: BigAction
+    checkCanAccess: false
+    raiseOnUser: true
+    event: !type:BorgDashActionEvent
