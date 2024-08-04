@@ -1,5 +1,6 @@
 ﻿using Content.Shared.Actions;
 using Content.Shared.Damage;
+using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
@@ -27,6 +28,12 @@ public sealed partial class BorgResistComponent : Component
 
     [DataField]
     public bool Enabled;
+
+    [DataField]
+    public SoundSpecifier SoundActivate;
+
+    [DataField]
+    public SoundSpecifier SoundDeactivate;
 }
 
 public sealed partial class BorgResistanceActionEvent : InstantActionEvent;

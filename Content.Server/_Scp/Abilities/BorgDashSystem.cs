@@ -11,9 +11,11 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Silicons.Borgs.Components;
 using Content.Shared.Throwing;
+using Content.Shared.Zombies;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
@@ -48,6 +50,7 @@ public sealed class BorgDashSystem : SharedBorgDashSystem
         SubscribeLocalEvent<BorgDashComponent, ThrowDoHitEvent>(OnThrowHit);
         SubscribeLocalEvent<BorgDashComponent, LandEvent>(OnLanded);
         SubscribeLocalEvent<BorgDashComponent, StartCollideEvent>(OnStartCollide);
+        SubscribeLocalEvent<BorgDashComponent, EntParentChangedMessage>(OnChangedParent);
     }
 
     private void OnInit(EntityUid uid, BorgDashComponent component, ComponentInit args)
@@ -69,9 +72,22 @@ public sealed class BorgDashSystem : SharedBorgDashSystem
         RaiseNetworkEvent(ev);
     }
 
+    private void OnChangedParent(EntityUid uid, BorgDashComponent component, EntParentChangedMessage args)
+    {
+        if (!HasComp<MapComponent>(args.OldParent))
+            return;
+        if (!component.IsDashing)
+            return;
+        component.IsDashing = false;
+        var ev = new BorgLandedEvent(GetNetEntity(uid));
+        RaiseNetworkEvent(ev);
+    }
+
     private void OnStartCollide(EntityUid uid, BorgDashComponent component, StartCollideEvent args)
     {
-        if (args.OtherBody.CollisionLayer == 223)
+        if ((args.OtherBody.BodyType == BodyType.Static || args.OtherBody.BodyType == BodyType.Dynamic) &&
+            args.OtherBody.CollisionLayer != 20 &&
+            args.OtherBody.CanCollide)
         {
             if (!component.IsDashing)
                 return;
@@ -104,9 +120,12 @@ public sealed class BorgDashSystem : SharedBorgDashSystem
 
         _throwing.TryThrow(args.Target, direction, 10f, args.Target, 15f);
 
-        _damageable.TryChangeDamage(args.Target, component.Damage);
+        if (!HasComp<ZombieComponent>(uid))
+            _damageable.TryChangeDamage(args.Target, component.Damage);
+        else
+            _damageable.TryChangeDamage(args.Target, component.ZombieDamage);
 
-        _audio.PlayPvs("/Audio/Items/trayhit2.ogg", uid, new AudioParams() { Volume = -15f });
+        _audio.PlayPvs(component.ThrowHitSound, uid);
     }
 
     private void OnDash(EntityUid uid, BorgDashComponent component, BorgDashActionEvent args)
@@ -123,7 +142,7 @@ public sealed class BorgDashSystem : SharedBorgDashSystem
 
         if (!_powerCell.TryUseCharge(uid, component.DashChargeDrop))
         {
-            _popup.PopupEntity("droid-dash-no-charge", uid, uid, PopupType.LargeCaution);
+            _popup.PopupEntity(Loc.GetString("droid-no-charge", ("name", MetaData(args.Action).EntityName)), uid, uid, PopupType.LargeCaution);
             return;
         }
 
@@ -136,10 +155,10 @@ public sealed class BorgDashSystem : SharedBorgDashSystem
             direction = direction.Normalized() * component.MaxDash;
         }
 
-        _throwing.TryThrow(uid, direction, component.DashSpeed, uid, 10f);
+        _throwing.TryThrow(uid, direction, component.DashSpeed, uid, component.DashSpeed);
         component.IsDashing = true;
 
-        _audio.PlayPvs("/Audio/Weapons/chainsaw.ogg", uid, new AudioParams() { Volume = 15f });
+        _audio.PlayPvs(component.DashSound, uid);
 
         var ev = new BorgThrownEvent(GetNetEntity(uid));
         RaiseNetworkEvent(ev);

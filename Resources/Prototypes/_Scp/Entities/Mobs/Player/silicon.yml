@@ -10,7 +10,6 @@
       borg_module:
       - BorgModuleStandart
       - BorgModuleCombat
-      - BorgModuleStun
   - type: ItemSlots
     slots:
       cell_slot:
@@ -47,14 +46,15 @@
         volume: -15
   - type: FlashImmunity
   - type: BorgDash
+    dashSound:
+      path: "/Audio/Items/trayhit2.ogg"
+      params:
+        volume: 100
+    throwHitSound:
+      path: "/Audio/Weapons/chainsaw.ogg"
+      params:
+        volume: 100
   - type: BorgResist
-  - type: Reflect
-    reflectProb: 0  # да
-    reflects:
-    - Energy
-  - type: ItemToggle
-    onUse: false
-    predictable: false
     soundActivate:
       path: /Audio/Items/rped.ogg
       params:
@@ -63,6 +63,10 @@
       path: /Audio/Items/rped.ogg
       params:
         volume: 100
+  - type: Reflect
+    reflectProb: 0  # да
+    reflects:
+    - Energy
   - type: ItemToggleActiveSound
     activeSound:
       path: /Audio/Weapons/ebladehum.ogg

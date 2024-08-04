@@ -8,6 +8,8 @@ using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Reflect;
+using Microsoft.CodeAnalysis;
+using Robust.Server.Audio;
 using Robust.Shared.Audio.Systems;
 using Timer = Robust.Shared.Timing.Timer;
 
@@ -18,7 +20,7 @@ public sealed class BorgResistSystem : EntitySystem
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly ItemToggleSystem _toggle = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
 
     public override void Initialize()
@@ -59,7 +61,7 @@ public sealed class BorgResistSystem : EntitySystem
         {
             if (!_powerCell.HasCharge(uid, component.DrainCharge))
             {
-                _popup.PopupEntity("droid-resist-no-charge", uid, uid, PopupType.LargeCaution);
+                _popup.PopupEntity(Loc.GetString("droid-no-charge", ("name", MetaData(args.Action).EntityName)), uid, uid, PopupType.LargeCaution);
                 return;
             }
             EnableShield(uid, component, modifierComponent, reflectComponent);
@@ -84,10 +86,7 @@ public sealed class BorgResistSystem : EntitySystem
 
         component.Enabled = true;
 
-        if (!TryComp(uid, out ItemToggleComponent? itemToggleComponent))
-            return;
-
-        _toggle.TryActivate((uid, itemToggleComponent), uid);
+        _audio.PlayPvs(component.SoundActivate, uid, component.SoundActivate.Params);
     }
 
     private void DisableShield(EntityUid uid,
@@ -108,10 +107,7 @@ public sealed class BorgResistSystem : EntitySystem
 
         component.Enabled = false;
 
-        if (!TryComp(uid, out ItemToggleComponent? itemToggleComponent))
-            return;
-
-        _toggle.TryDeactivate((uid, itemToggleComponent), uid);
+        _audio.PlayPvs(component.SoundDeactivate, uid, component.SoundDeactivate.Params);
     }
 
     private void DrainCharge(EntityUid uid, BorgResistComponent component, TimeSpan delay, float charge)

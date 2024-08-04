@@ -6,10 +6,8 @@
   components:
   - type: WorldTargetAction
     useDelay: 5
-    range: 16
-    icon:
-      sprite : Objects/Fun/whoopie.rsi
-      state: icon
+    range: 500
+    icon: /Textures/_Scp/Actions/borg-dash.png
     itemIconStyle: BigAction
     checkCanAccess: false
     raiseOnUser: true
@@ -26,6 +24,4 @@
     raiseOnUser: true
     itemIconStyle: BigAction
     useDelay: 0.5
-    icon:
-      sprite : Objects/Power/powersink.rsi
-      state: powersink
+    icon: /Textures/_Scp/Actions/borg-resist.png
