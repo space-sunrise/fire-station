@@ -7,16 +7,19 @@
   - MobBloodstream
   - SimpleSpaceMobBase
   components:
+  - type: Scp999
+    wallAction: Scp999Wallify
+    restAction: Scp999Rest
+    states:
+      Default: SCP-999
+      Wall: SCP-999-wall
+      Rest: SCP-999_rest
   - type: Sprite
     drawdepth: Mobs
     sprite: _Scp/Mobs/scp-999.rsi
     layers:
     - state: SCP-999
-      map: [ "enum.DamageStateVisualLayers.Base" ]
-    - state: SCP-999-wall
-      visible: false
-    - state: SCP-999_rest
-      visible: false
+      map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default" ]
   - type: DamageStateVisuals
     states:
       Alive:

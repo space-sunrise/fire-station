@@ -1,0 +1,25 @@
+﻿- type: entity
+  id: Scp999Wallify
+  name: Превратиться в стену
+  description: Вы меняете свою форму, превращаясь в нечто, похожее на стенку.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    event: !type:Scp999WallifyActionEvent
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 3
+    icon: /Textures/_Scp/Actions/wallify.png
+
+- type: entity
+  id: Scp999Rest
+  name: Прилечь отдохнуть
+  description: Вы засыпаете.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    event: !type:Scp999RestActionEvent
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 3
+    icon: /Textures/_Scp/Actions/rest.png
