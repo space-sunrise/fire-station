@@ -11,6 +11,7 @@
       components:
       - type: StationBiome
         biome: Lava
+        mapLightColor: '#442222FF'
       - type: StationNameSetup
         mapNameTemplate: 'Зона-{0}'
         nameGenerator:
