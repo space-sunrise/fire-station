@@ -158,6 +158,11 @@ namespace Content.Client.Entry
 
             _overlayManager.AddOverlay(new SingularityOverlay());
             _overlayManager.AddOverlay(new RadiationPulseOverlay());
+
+            // SUNRISE-SCP EDIT
+            _overlayManager.AddOverlay(new GrainOverlay());
+            // SUNRISE-SCP EDIT
+
             _chatManager.Initialize();
             _clientPreferencesManager.Initialize();
             _euiManager.Initialize();
