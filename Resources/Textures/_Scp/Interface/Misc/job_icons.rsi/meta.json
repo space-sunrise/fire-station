@@ -1,0 +1,44 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "made by discord: pacable",
+    "size": {
+        "x": 8,
+        "y": 8
+    },
+    "states": [
+        {
+            "name": "ContainmentSpecialist"
+        },
+        {
+            "name": "BiologicalDefenseSpecialist"
+        },
+        {
+            "name": "ContainmentPsycologist"
+        },
+        {
+            "name": "SeniorContainmentGuard"
+        },
+        {
+            "name": "ContainmentGuard"
+        },
+        {
+            "name": "ClassD"
+        },
+        {
+            "name": "Governor"
+        },
+        {
+            "name": "PerimeterSecurityOfficer"
+        },
+        {
+            "name": "FieldScientist"
+        },
+        {
+            "name": "SiteManager"
+        },
+        {
+            "name": "HeadOfContainment"
+        }
+    ]
+}
