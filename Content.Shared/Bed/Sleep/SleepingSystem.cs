@@ -78,6 +78,12 @@ public sealed partial class SleepingSystem : EntitySystem
 
     private void OnWakeAction(Entity<MobStateComponent> ent, ref WakeActionEvent args)
     {
+        Log.Debug($"onwake: {args.Handled}, {ent.Owner}");
+        // Sunrise-Scp start
+        if (args.Handled)
+            return;
+        // Sunrise-Scp end
+
         if (TryWakeWithCooldown(ent.Owner))
             args.Handled = true;
     }

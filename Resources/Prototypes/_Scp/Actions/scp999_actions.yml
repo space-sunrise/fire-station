@@ -23,3 +23,5 @@
     itemIconStyle: BigAction
     useDelay: 3
     icon: /Textures/_Scp/Actions/rest.png
+    checkCanInteract: false
+    checkConsciousness: false

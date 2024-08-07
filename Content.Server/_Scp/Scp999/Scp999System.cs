@@ -3,8 +3,10 @@ using Content.Server.PowerCell;
 using Content.Server.Stunnable;
 using Content.Shared._Scp.Scp999;
 using Content.Shared.Actions;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage;
 using Content.Shared.Interaction.Components;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Throwing;
@@ -13,7 +15,7 @@ using Robust.Shared.Audio.Systems;
 
 namespace Content.Server._Scp.Scp999;
 
-public sealed class Scp999System : EntitySystem
+public sealed class Scp999System : SharedScp999System
 {
     [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
@@ -25,16 +27,20 @@ public sealed class Scp999System : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly SleepingSystem _sleeping = default!;
 
     private ISawmill _sawmill = default!;
 
     public override void Initialize()
     {
+        base.Initialize();
+
         _sawmill = Logger.GetSawmill("scp.999");
         SubscribeLocalEvent<Scp999Component, ComponentInit>(OnComponentInit);
         SubscribeLocalEvent<Scp999Component, ComponentShutdown>(OnComponentShutdown);
         SubscribeLocalEvent<Scp999Component, Scp999WallifyActionEvent>(OnWallifyActionEvent);
         SubscribeLocalEvent<Scp999Component, Scp999RestActionEvent>(OnRestActionEvent);
+        SubscribeLocalEvent<Scp999Component, MobStateChangedEvent>(OnMobStateChanged);
     }
 
     private void OnComponentInit(EntityUid uid, Scp999Component component, ComponentInit args)
@@ -49,7 +55,15 @@ public sealed class Scp999System : EntitySystem
         _actions.RemoveAction(component.RestActionEntity);
     }
 
-    private void OnWallifyActionEvent(EntityUid uid, Scp999Component component, Scp999WallifyActionEvent args)
+    private void OnMobStateChanged(EntityUid uid, Scp999Component component, MobStateChangedEvent args)
+    {
+        if (args.NewMobState != MobState.Dead)
+            return;
+
+        component.CurrentState = Scp999States.Default;
+    }
+
+    private void OnWallifyActionEvent(EntityUid uid, Scp999Component component, ref Scp999WallifyActionEvent args)
     {
         if (args.Handled)
             return;
@@ -80,7 +94,7 @@ public sealed class Scp999System : EntitySystem
         args.Handled = true;
     }
 
-    private void OnRestActionEvent(EntityUid uid, Scp999Component component, Scp999RestActionEvent args)
+    private void OnRestActionEvent(EntityUid uid, Scp999Component component, ref Scp999RestActionEvent args)
     {
         _sawmill.Debug($"onrestaction {component.CurrentState}");
 
@@ -95,6 +109,7 @@ public sealed class Scp999System : EntitySystem
             ev = new Scp999RestEvent(GetNetEntity(uid), component.States[Scp999States.Rest]);
             component.CurrentState = Scp999States.Rest;
             EnsureComp<BlockMovementComponent>(uid);
+            // EnsureComp<SleepingComponent>(uid);
         }
         else if (component.CurrentState == Scp999States.Rest)
         {
@@ -104,6 +119,8 @@ public sealed class Scp999System : EntitySystem
             component.CurrentState = Scp999States.Default;
             if (HasComp<BlockMovementComponent>(uid))
                 RemComp<BlockMovementComponent>(uid);
+            // if (HasComp<SleepingComponent>(uid))
+            //     RemComp<SleepingComponent>(uid);
         }
         else
         {
