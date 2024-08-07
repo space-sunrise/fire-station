@@ -1,0 +1,15 @@
+﻿- type: entity
+  id: BoxFolderClipboardWhite
+  parent: BoxFolderClipboard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/clipboard_white.rsi
+    layers:
+    - state: clipboard
+    - state: clipboard_paper
+      map: ["clipboard_paper"]
+      visible: false
+    - state: clipboard_pen
+      map: ["clipboard_pen"]
+      visible: false
+    - state: clipboard_over

@@ -1,0 +1,17 @@
+- type: job
+  id: ContainmentGuard
+  name: job-name-containment-guard
+  description: job-description-containment-guard
+  playTimeTracker: JobContainmentGuard
+  startingGear: ContainmentGuardGear
+  icon: "JobIconContainmentGuard"
+  supervisors: job-supervisors-head-of-containment
+  access:
+  - Maintenance
+
+- type: startingGear
+  id: ContainmentGuardGear
+  equipment:
+    id: PassengerPDA
+    ears: ClothingHeadsetGrey
+  

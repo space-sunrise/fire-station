@@ -1,0 +1,24 @@
+- type: department
+  id: Containment
+  description: department-containment-description
+  color: "#999999"
+  weight: 30
+  roles:
+    - HeadOfContainment  # Глава Отдела Сдерживания
+    - ContainmentSpecialist
+    - BiologicalDefenseSpecialist
+    - ContainmentPsycologist
+    - SeniorContainmentGuard
+    - ContainmentGuard
+    - ClassD
+
+- type: department
+  id: Outer
+  description: department-Security-description
+  color: "#DE3A3A"
+  weight: 20
+  roles:
+  - Governor  # комендант
+  - PerimeterSecurityOfficer  # Офицер Охраны Периметра
+  - FieldScientist # полевой учёный
+  primary: false

@@ -1,0 +1,17 @@
+- type: job
+  id: ContainmentPsycologist
+  name: job-name-containment-psycologist
+  description: job-description-containment-psycologist
+  playTimeTracker: JobContainmentPsycologist
+  startingGear: ContainmentPsycologistGear
+  icon: "JobIconContainmentPsycologist"
+  supervisors: job-supervisors-head-of-containment
+  access:
+  - Maintenance
+
+- type: startingGear
+  id: ContainmentPsycologistGear
+  equipment:
+    id: PassengerPDA
+    ears: ClothingHeadsetGrey
+  

@@ -1,0 +1,17 @@
+- type: job
+  id: SiteManager
+  name: job-name-site-manager
+  description: job-description-site-manager
+  playTimeTracker: JobSiteManager
+  startingGear: SiteManagerGear
+  icon: "JobIconSiteManager"
+  supervisors: job-supervisors-head-of-containment
+  access:
+  - Maintenance
+
+- type: startingGear
+  id: SiteManagerGear
+  equipment:
+    id: PassengerPDA
+    ears: ClothingHeadsetGrey
+  

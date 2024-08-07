@@ -1,0 +1,17 @@
+﻿- type: tile
+  id: FloorPink
+  name: tiles-pink-floor
+  sprite: /Textures/_Scp/Tiles/pink.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: FloorTileItemDark
+  heatCapacity: 10000

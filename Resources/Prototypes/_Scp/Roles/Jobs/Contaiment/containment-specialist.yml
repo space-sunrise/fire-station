@@ -1,0 +1,17 @@
+- type: job
+  id: ContainmentSpecialist
+  name: job-name-containment-specialist
+  description: job-description-containment-specialist
+  playTimeTracker: JobContainmentSpecialist
+  startingGear: ContainmentSpecialistGear
+  icon: "JobIconContainmentSpecialist"
+  supervisors: job-supervisors-head-of-containment
+  access:
+  - Maintenance
+
+- type: startingGear
+  id: ContainmentSpecialistGear
+  equipment:
+    id: PassengerPDA
+    ears: ClothingHeadsetGrey
+  

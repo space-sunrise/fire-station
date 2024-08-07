@@ -1,0 +1,16 @@
+- type: job
+  id: ClassD
+  name: job-name-classd
+  description: job-description-classd
+  playTimeTracker: JobClassD
+  startingGear: ClassDGear
+  icon: "JobIconClassD"
+  supervisors: job-supervisors-head-of-containment
+  access:
+  - Maintenance
+
+- type: startingGear
+  id: ClassDGear
+  equipment:
+    id: PassengerPDA
+    ears: ClothingHeadsetGrey
