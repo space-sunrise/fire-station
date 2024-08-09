@@ -1,0 +1,69 @@
+﻿- type: entity
+  id: Scp247
+  suffix: SCP-247
+  parent:
+  - SimpleMobBase
+  - MobCombat
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/scp-247.rsi
+    drawdepth: Mobs
+    layers:
+    - state: scp-247
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 80
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: scp-247
+      Dead:
+        Base: dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      300: Dead
+  - type: MeleeWeapon
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Piercing: 25
+  - type: InteractionPopup
+    successChance: 0.2
+    interactSuccessString: scp247-pet-success
+    interactFailureString: scp247-pet-failure
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Animals/cat_hiss.ogg
+  - type: NoSlip
+  - type: NpcFactionMember
+    factions:
+    - Xeno
+  - type: InputMover
+  - type: MobMover
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: GhostRole
+    makeSentient: true
+    name: scp247-ghost-role-name
+    description: scp247-ghost-role-desc
+    rules: scp247-ghost-role-rules
+    raffle:
+      settings: short
+  - type: GhostTakeoverAvailable
+  - type: ReplacementAccent
+    accent: cat
