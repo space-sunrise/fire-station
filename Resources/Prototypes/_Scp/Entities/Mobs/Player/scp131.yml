@@ -1,0 +1,73 @@
+﻿- type: entity
+  id: Scp131A
+  name: SCP-131A
+  description: Смотрит..
+  suffix: SCP-131
+  parent:
+  - SimpleSpaceMobBase
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/SCP-131.rsi
+    drawdepth: Mobs
+    state: SCP-131A
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 80
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 99999
+      behaviors:
+      - !type:GibBehavior { }
+      - !type:PlaySoundBehavior
+        sound: !type:SoundPathSpecifier
+          path: /Audio/_Scp/demon-dying.ogg
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 99999
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: true
+        spawn:
+          Ash:
+            min: 10
+            max: 15
+      - !type:BurnBodyBehavior { }
+      - !type:PlaySoundBehavior
+        sound: !type:SoundPathSpecifier
+          path: /Audio/_Scp/demon-dying.ogg
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 15
+    baseSprintSpeed: 4
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Scale
+  - type: MultiHandedItem
+  - type: Item
+    size: Huge
+  - type: ReplacementAccent
+    accent: mouse
+
+- type: entity
+  id: Scp131B
+  name: SCP-131B
+  description: Смотрит..
+  suffix: SCP-131
+  parent: Scp131A
+  components:
+  - type: Sprite
+    state: SCP-131B

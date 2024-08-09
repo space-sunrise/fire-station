@@ -51,6 +51,9 @@
         damage: 99999
       behaviors:
       - !type:GibBehavior { }
+      - !type:PlaySoundBehavior
+        sound: !type:SoundPathSpecifier
+          path: /Audio/_Scp/demon-dying.ogg
     - trigger:
         !type:DamageTypeTrigger
         damageType: Heat
@@ -64,8 +67,8 @@
             max: 15
       - !type:BurnBodyBehavior { }
       - !type:PlaySoundBehavior
-        sound:
-          collection: MeatLaserImpact
+        sound: !type:SoundPathSpecifier
+          path: /Audio/_Scp/demon-dying.ogg
   - type: Tag
     tags:
     - FootstepSound
