@@ -6,7 +6,6 @@
   order:
     - category: Health
     - category: Stamina
-    - alertType: Blinking # Sunrise-SCP edit.
     - alertType: ChangelingChemicals
     - alertType: SuitPower
     - category: Internals
@@ -478,23 +477,3 @@
     state: critical
   name: Debug6
   description: Debug
-
-#Sunrise-SCP edit.
-- type: alert
-  id: Blinking
-  icons:
-  - sprite: /Textures/_Scp/blink.rsi
-    state: blink0
-  - sprite: /Textures/_Scp/blink.rsi
-    state: blink1
-  - sprite: /Textures/_Scp/blink.rsi
-    state: blink2
-  - sprite: /Textures/_Scp/blink.rsi
-    state: blink3
-  - sprite: /Textures/_Scp/blink.rsi
-    state: blink4
-  name: "Индикатор моргания"
-  description: "Показывает статус моргания"
-  minSeverity: 0
-  maxSeverity: 4
-#Sunrise-SCP edit.

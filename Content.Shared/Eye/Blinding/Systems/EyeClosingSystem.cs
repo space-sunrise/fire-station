@@ -1,15 +1,21 @@
-using Content.Shared._Scp.Blinking;
 using Content.Shared.Actions;
 using Content.Shared.Eye.Blinding.Components;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Network;
+using Robust.Shared.Player;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.Eye.Blinding.Systems;
 
 public sealed class EyeClosingSystem : EntitySystem
 {
+    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly BlindableSystem _blindableSystem = default!;
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
 
     public override void Initialize()
     {
@@ -46,6 +52,7 @@ public sealed class EyeClosingSystem : EntitySystem
 
     private void OnHandleState(Entity<EyeClosingComponent> eyelids, ref AfterAutoHandleStateEvent args)
     {
+        DoAudioFeedback((eyelids.Owner, eyelids.Comp), eyelids.Comp.EyesClosed);
     }
 
     private void OnTrySee(Entity<EyeClosingComponent> eyelids, ref CanSeeAttemptEvent args)
@@ -85,12 +92,24 @@ public sealed class EyeClosingSystem : EntitySystem
 
         _blindableSystem.UpdateIsBlind(eyelids.Owner);
 
-        // Sunrise-SCP edit start.
-        if (value && TryComp<BlinkableComponent>(eyelids, out var blinkableComponent))
-        {
-            _blinking.ResetBlink(eyelids, blinkableComponent);
-        }
-        // Sunrise-SCP edit end.
+        DoAudioFeedback(eyelids, eyelids.Comp.EyesClosed);
+    }
+
+    public void DoAudioFeedback(Entity<EyeClosingComponent?> eyelids, bool eyelidTarget)
+    {
+        if (!Resolve(eyelids, ref eyelids.Comp))
+            return;
+
+        if (!_net.IsClient || !_timing.IsFirstTimePredicted)
+            return;
+
+        if (eyelids.Comp.PreviousEyelidPosition == eyelidTarget)
+            return;
+
+        eyelids.Comp.PreviousEyelidPosition = eyelidTarget;
+
+        if (_playerManager.TryGetSessionByEntity(eyelids, out var session))
+            _audio.PlayGlobal(eyelidTarget ? eyelids.Comp.EyeCloseSound : eyelids.Comp.EyeOpenSound, session);
     }
 
     public void UpdateEyesClosable(Entity<BlindableComponent?> blindable)

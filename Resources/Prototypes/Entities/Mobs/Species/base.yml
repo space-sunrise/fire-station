@@ -240,10 +240,6 @@
   - type: Carriable
   - type: CanEscapeInventory
   # Sunrise-End
-  # Sunrise-Scp-Start
-  - type: Blinkable
-  - type: EyeClosing
-  # Sunrise-Scp-End
   - type: Barotrauma
     damage:
       types:
