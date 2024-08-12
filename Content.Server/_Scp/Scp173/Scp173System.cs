@@ -5,14 +5,23 @@ using Content.Server.Light.Components;
 using Content.Server.Storage.Components;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared._Scp.Scp173;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage;
+using Content.Shared.Doors.Components;
+using Content.Shared.Doors.Systems;
+using Content.Shared.FixedPoint;
+using Content.Shared.Fluids;
+using Content.Shared.Fluids.Components;
+using Content.Shared.Interaction;
 using Content.Shared.Item;
+using Content.Shared.Lock;
 using Content.Shared.Maps;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 
@@ -29,13 +38,18 @@ public sealed class Scp173System : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
-
+    [Dependency] private readonly SharedPuddleSystem _puddle = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
+    [Dependency] private readonly LockSystem _lock = default!;
+    [Dependency] private readonly SharedDoorSystem _door = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<Scp173Component, Scp173DamageStructureAction>(OnStructureDamage);
+        SubscribeLocalEvent<Scp173Component, Scp173ClogAction>(OnClog);
     }
 
     private void OnStructureDamage(Entity<Scp173Component> uid, ref Scp173DamageStructureAction args)
@@ -76,7 +90,7 @@ public sealed class Scp173System : EntitySystem
                 if (_tag.HasTag(ent, "Window") || _tag.HasTag(ent, "Wall"))
                 {
                     var dspec = new DamageSpecifier();
-                    dspec.DamageDict.Add("Structural", 20);
+                    dspec.DamageDict.Add("Structural", 60);
                     _damageable.TryChangeDamage(ent, dspec, true);
                 }
             }
@@ -96,6 +110,48 @@ public sealed class Scp173System : EntitySystem
         }
 
         // TODO: Sound.
+
+        args.Handled = true;
+    }
+
+    private void OnClog(Entity<Scp173Component> ent, ref Scp173ClogAction args)
+    {
+        if (args.Handled)
+            return;
+
+        var coords = Transform(ent).Coordinates;
+
+        var tempSol = new Solution();
+        tempSol.AddReagent("Blood", 25);
+        _puddle.TrySpillAt(coords, tempSol, out _);
+
+        FixedPoint2 total = 0;
+        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, 5).ToList();
+        foreach (var puddle in puddles)
+        {
+            if (!puddle.Comp.Solution.HasValue)
+                continue;
+
+            var allReagents = puddle.Comp.Solution.Value.Comp.Solution.GetReagentPrototypes(_prototypeManager);
+            total = allReagents.Where(reagent => reagent.Key.ID == "Blood").Aggregate(total, (current, reagent) => current + reagent.Value);
+        }
+
+        if (total >= 200)
+        {
+            var transform = Transform(args.Performer);
+
+            foreach (var target in _lookup.GetEntitiesInRange(_transformSystem.GetMapCoordinates(args.Performer, transform), 5, flags: LookupFlags.Dynamic | LookupFlags.Static))
+            {
+                if (TryComp<DoorBoltComponent>(target, out var doorBoltComp) && doorBoltComp.BoltsDown)
+                    _door.SetBoltsDown((target, doorBoltComp), false, predicted: true);
+
+                if (TryComp<DoorComponent>(target, out var doorComp) && doorComp.State is not DoorState.Open)
+                    _door.StartOpening(target);
+
+                if (TryComp<LockComponent>(target, out var lockComp) && lockComp.Locked)
+                    _lock.Unlock(target, args.Performer, lockComp);
+            }
+        }
 
         args.Handled = true;
     }

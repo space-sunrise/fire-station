@@ -63,7 +63,6 @@ public sealed class Scp173System : EntitySystem
         SubscribeLocalEvent<Scp173Component, MeleeHitEvent>(OnMeleeHit);
 
         SubscribeLocalEvent<Scp173Component, Scp173BlindAction>(OnBlind);
-        SubscribeLocalEvent<Scp173Component, Scp173ClogAction>(OnClog);
         SubscribeLocalEvent<Scp173Component, Scp173FastMovementAction>(OnFastMovement);
 
         #endregion
@@ -128,13 +127,6 @@ public sealed class Scp173System : EntitySystem
         // TODO: Add sound.
 
         args.Handled = true;
-    }
-
-    private void OnClog(Entity<Scp173Component> ent, ref Scp173ClogAction args)
-    {
-        if (args.Handled)
-            return;
-
     }
 
     private void OnFastMovement(Entity<Scp173Component> ent, ref Scp173FastMovementAction args)
