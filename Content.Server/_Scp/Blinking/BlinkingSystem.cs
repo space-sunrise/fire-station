@@ -16,7 +16,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private static readonly TimeSpan BlinkingInterval = TimeSpan.FromSeconds(20);
-    private static readonly TimeSpan BlinkingDuration = TimeSpan.FromSeconds(1);  // 1.5 секунды моргание - отвлекает
+    private static readonly TimeSpan BlinkingDuration = TimeSpan.FromSeconds(0.3);  // 1.5 секунды моргание - отвлекает
 
     private TimeSpan _nextTick = TimeSpan.Zero;
     private readonly TimeSpan _refreshCooldown = TimeSpan.FromSeconds(1);
