@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Content.Shared._Scp.Blinking;
-using Content.Shared._Scp.Mobs.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -15,7 +14,7 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Scp.Mobs.Systems;
+namespace Content.Shared._Scp.Scp173;
 
 public sealed class Scp173System : EntitySystem
 {

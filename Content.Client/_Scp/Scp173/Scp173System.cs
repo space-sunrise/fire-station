@@ -1,6 +1,6 @@
 ﻿using Content.Client.Actions;
 using Content.Client.UserInterface.Systems.Actions;
-using Content.Shared._Scp.Mobs.Components;
+using Content.Shared._Scp.Scp173;
 using Content.Shared.Examine;
 using Robust.Client.Graphics;
 using Robust.Client.Player;

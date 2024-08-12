@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Content.Shared._Scp.Blinking;
-using Content.Shared._Scp.Mobs.Components;
+using Content.Shared._Scp.Scp173;
 using Content.Shared.Alert;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
