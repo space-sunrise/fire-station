@@ -64,7 +64,6 @@ public sealed class Scp173System : EntitySystem
 
         SubscribeLocalEvent<Scp173Component, Scp173BlindAction>(OnBlind);
         SubscribeLocalEvent<Scp173Component, Scp173ClogAction>(OnClog);
-        SubscribeLocalEvent<Scp173Component, Scp173DamageStructureAction>(OnStructureDamage);
         SubscribeLocalEvent<Scp173Component, Scp173FastMovementAction>(OnFastMovement);
 
         #endregion
@@ -126,17 +125,12 @@ public sealed class Scp173System : EntitySystem
             _blinking.ForceBlind(eye.Owner, eye.Comp, TimeSpan.FromSeconds(6));
         }
 
+        // TODO: Add sound.
+
         args.Handled = true;
     }
 
     private void OnClog(Entity<Scp173Component> ent, ref Scp173ClogAction args)
-    {
-        if (args.Handled)
-            return;
-
-    }
-
-    private void OnStructureDamage(Entity<Scp173Component> ent, ref Scp173DamageStructureAction args)
     {
         if (args.Handled)
             return;
