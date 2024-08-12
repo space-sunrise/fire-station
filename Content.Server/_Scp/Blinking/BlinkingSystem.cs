@@ -5,6 +5,7 @@ using Content.Shared.Alert;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs.Systems;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Blinking;
@@ -16,9 +17,12 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly EyeClosingSystem _closingSystem = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
-    public static TimeSpan BlinkingInterval = TimeSpan.FromSeconds(15);
-    public static TimeSpan BlinkingDuration = TimeSpan.FromSeconds(2);
+    public static TimeSpan BlinkingInterval = TimeSpan.FromSeconds(20);
+    public static TimeSpan BlinkingDuration = TimeSpan.FromSeconds(1);
+
+    private static readonly TimeSpan BlinkingIntervalVariance = TimeSpan.FromSeconds(5);
 
     public override void Initialize()
     {
@@ -83,8 +87,9 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
     private void Blink(EntityUid uid, BlinkableComponent component)
     {
-        component.NextBlink = _gameTiming.CurTime + BlinkingInterval;
         component.BlinkEndTime = _gameTiming.CurTime + BlinkingDuration;
+        var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
+        component.NextBlink = _gameTiming.CurTime + BlinkingInterval + TimeSpan.FromSeconds(variance);
 
         Dirty(uid, component);
     }
@@ -115,7 +120,8 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     {
         base.ResetBlink(uid, component);
 
-        component.NextBlink = _gameTiming.CurTime + BlinkingInterval;
+        var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
+        component.NextBlink = _gameTiming.CurTime + BlinkingInterval + TimeSpan.FromSeconds(variance);
         Dirty(uid, component);
 
         UpdateAlert(uid, component);
