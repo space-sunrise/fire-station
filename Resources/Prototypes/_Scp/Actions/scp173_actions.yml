@@ -50,3 +50,4 @@
     itemIconStyle: BigAction
     event: !type:Scp173FastMovementAction
     checkCanAccess: false
+    range: 300

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Numerics;
 using Content.Shared._Scp.Blinking;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
@@ -12,9 +13,13 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
+using Content.Shared.Physics;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Network;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp173;
 
@@ -29,6 +34,9 @@ public sealed class Scp173System : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
 
     public override void Initialize()
     {
@@ -87,11 +95,17 @@ public sealed class Scp173System : EntitySystem
 
     private void OnInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         _blocker.UpdateCanMove(ent);
     }
 
     private void OnMoveAttempt(EntityUid ent, Scp173Component component, UpdateCanMoveEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         if (Is173Watched(ent))
             args.Cancel();
     }
@@ -134,6 +148,30 @@ public sealed class Scp173System : EntitySystem
         if (args.Handled)
             return;
 
+        var targetCords = args.Target.ToMap(EntityManager);
+        var playerPos = _transform.GetWorldPosition(args.Performer);
+
+        if (!_examine.InRangeUnOccluded(
+                targetCords,
+                _transform.GetMapCoordinates(args.Performer),
+                ExamineSystemShared.MaxRaycastRange,
+                null))
+            return;
+
+        var direction = targetCords.Position - playerPos;
+        var normalizedDirection = Vector2.Normalize(direction);
+        var ray = new CollisionRay(playerPos, normalizedDirection, collisionMask: (int)CollisionGroup.MobLayer);
+        var rayCastResults = _physics.IntersectRay(targetCords.MapId, ray, direction.Length(), args.Performer, false);
+
+        foreach (var eResult in rayCastResults)
+        {
+            var entity = eResult.HitEntity;
+            BreakNeck(entity);
+        }
+
+        _transform.SetCoordinates(args.Performer, args.Target);
+
+        args.Handled = true;
     }
 
     #endregion

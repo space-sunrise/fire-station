@@ -1,7 +1,10 @@
 ﻿using System.Numerics;
 using Content.Client.Actions;
 using Content.Client.UserInterface.Systems.Actions;
+using Content.Shared._Scp.Scp173;
+using Content.Shared.Actions;
 using Content.Shared.Examine;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Robust.Client.Graphics;
@@ -53,17 +56,17 @@ public sealed class Scp173Overlay : Overlay
         if (playerEntity == null)
             return;
 
-        // if (_controller.SelectingTargetFor is not { } actionId)
-        //     return;
-        //
-        // if (!_actionsSystem.TryGetActionData(actionId, out var baseAction) ||
-        //     baseAction is not WorldTargetActionComponent action)
-        //     return;
-        //
-        // if (!action.Enabled
-        //     || action is { Charges: 0, RenewCharges: false }
-        //     || action.Cooldown.HasValue && action.Cooldown.Value.End > _timing.CurTime)
-        //     return;
+        if (_controller.SelectingTargetFor is not { } actionId)
+            return;
+
+        if (!_actionsSystem.TryGetActionData(actionId, out var baseAction) ||
+            baseAction is not WorldTargetActionComponent action)
+            return;
+
+        if (!action.Enabled
+            || action is { Charges: 0, RenewCharges: false }
+            || action.Cooldown.HasValue && action.Cooldown.Value.End > _timing.CurTime)
+            return;
 
         var mousePos = _eyeManager.PixelToMap(_inputManager.MouseScreenPosition);
         if (mousePos.MapId == MapId.Nullspace)
@@ -89,7 +92,10 @@ public sealed class Scp173Overlay : Overlay
         foreach (var result in rayCastResults)
         {
             var ent = result.HitEntity;
-            if (!_entity.HasComponent<MobStateComponent>(ent))
+            if (!_entity.TryGetComponent<MobStateComponent>(ent, out var mobStateComponent))
+                continue;
+
+            if (mobStateComponent.CurrentState == MobState.Dead || mobStateComponent.CurrentState == MobState.Critical)
                 continue;
 
             args.WorldHandle.DrawCircle(result.HitPos, 0.15f, Color.MediumVioletRed);
