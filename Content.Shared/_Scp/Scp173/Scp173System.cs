@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Content.Shared._Scp.Blinking;
 using Content.Shared.ActionBlocker;
+using Content.Shared.Actions;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Examine;
@@ -12,6 +13,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Weapons.Melee.Events;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp173;
@@ -25,14 +27,21 @@ public sealed class Scp173System : EntitySystem
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
+        if (_net.IsServer)
+        {
+            SubscribeLocalEvent<Scp173Component, ComponentInit>(OnInit);
+        }
+
         #region Blocker
 
-        SubscribeLocalEvent<Scp173Component, BeforeDamageChangedEvent>((_, _, args) => args.Cancelled = true);
+        SubscribeLocalEvent((Entity<Scp173Component> _, ref BeforeDamageChangedEvent args) => args.Cancelled = true);
         SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, _, args) =>
         {
             if (Is173Watched(uid))
@@ -53,8 +62,21 @@ public sealed class Scp173System : EntitySystem
 
         SubscribeLocalEvent<Scp173Component, MeleeHitEvent>(OnMeleeHit);
 
+        SubscribeLocalEvent<Scp173Component, Scp173BlindAction>(OnBlind);
+        SubscribeLocalEvent<Scp173Component, Scp173ClogAction>(OnClog);
+        SubscribeLocalEvent<Scp173Component, Scp173DamageStructureAction>(OnStructureDamage);
+        SubscribeLocalEvent<Scp173Component, Scp173FastMovementAction>(OnFastMovement);
+
         #endregion
 
+    }
+
+    private void OnInit(Entity<Scp173Component> ent, ref ComponentInit args)
+    {
+        _actionsSystem.AddAction(ent, "Scp173Blind");
+        _actionsSystem.AddAction(ent, "Scp173Clog");
+        _actionsSystem.AddAction(ent, "Scp173DamageStructure");
+        _actionsSystem.AddAction(ent, "Scp173FastMovement");
     }
 
     #region Movement
@@ -89,6 +111,43 @@ public sealed class Scp173System : EntitySystem
         {
            BreakNeck(entity);
         }
+    }
+
+    private void OnBlind(Entity<Scp173Component> ent, ref Scp173BlindAction args)
+    {
+        if (args.Handled)
+            return;
+
+        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(ent).Coordinates, ExamineSystemShared.MaxRaycastRange)
+            .ToList();
+
+        foreach (var eye in eyes)
+        {
+            _blinking.ForceBlind(eye.Owner, eye.Comp, TimeSpan.FromSeconds(6));
+        }
+
+        args.Handled = true;
+    }
+
+    private void OnClog(Entity<Scp173Component> ent, ref Scp173ClogAction args)
+    {
+        if (args.Handled)
+            return;
+
+    }
+
+    private void OnStructureDamage(Entity<Scp173Component> ent, ref Scp173DamageStructureAction args)
+    {
+        if (args.Handled)
+            return;
+
+    }
+
+    private void OnFastMovement(Entity<Scp173Component> ent, ref Scp173FastMovementAction args)
+    {
+        if (args.Handled)
+            return;
+
     }
 
     #endregion

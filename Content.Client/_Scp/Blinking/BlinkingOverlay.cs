@@ -35,10 +35,9 @@ public sealed class BlinkingOverlay : Overlay
             return;
 
         var curTime = _timing.CurTime;
-        if (curTime < blinkable.BlinkEndTime)
-            BlinkProgress = (float)((curTime - blinkable.NextBlink).TotalSeconds / (blinkable.BlinkEndTime - blinkable.NextBlink).TotalSeconds);
-        else
-            BlinkProgress = 0.0f;
+        BlinkProgress = curTime < blinkable.BlinkEndTime
+            ? 1.0f
+            : 0.0f;
     }
 
     protected override void Draw(in OverlayDrawArgs args)
