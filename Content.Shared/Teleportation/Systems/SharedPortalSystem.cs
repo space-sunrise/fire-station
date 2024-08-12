@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Shared._Scp.Mobs.Components;
 using Content.Shared.Ghost;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
@@ -87,6 +88,11 @@ public abstract class SharedPortalSystem : EntitySystem
             return;
 
         var subject = args.OtherEntity;
+
+        // Sunrise-SCP EDIT
+        if (HasComp<ScpRestrictionComponent>(subject))
+            return;
+        // Sunrise-SCP EDIT
 
         // best not.
         if (Transform(subject).Anchored)

@@ -326,7 +326,7 @@
     icon: Interface/Actions/eyeopen.png
     iconOn: Interface/Actions/eyeclose.png
     event: !type:ToggleEyesActionEvent
-    useDelay: 1 # so u cant give yourself and observers eyestrain by rapidly spamming the action
+    useDelay: 2 # Sunrise-SCP edit.
     checkCanInteract: false
     checkConsciousness: false
 
