@@ -1,0 +1,120 @@
+﻿- type: entity
+  id: Scp457
+  parent:
+  - SimpleSpaceMobBase
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/scp-457.rsi
+    layers:
+    - state: fireguy
+      shader: unshaded
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: fireguy
+      Dead:
+        Base: fireguy_dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 80
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Tag
+    tags:
+      - CannotSuicide
+      - FootstepSound
+      - DoorBumpOpener
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 3
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepBlood
+      params:
+        volume: 6
+  - type: Perishable
+  - type: Damageable
+    damageModifierSet: HellSpawn
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      400: Dead
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+    reactions:
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
+      effects:
+        - !type:HealthChange
+          scaleByQuantity: true
+          damage:
+            types:
+              Cold: 2
+        - !type:AdjustReagent
+          reagent: Fresium
+          amount: 0.02
+        - !type:PopupMessage
+          type: Local
+          messages: [ "scp-457-extinguished" ]
+          probability: 0.25
+  - type: Body
+    prototype: Human
+    requiredLegs: 2
+  - type: MeleeWeapon
+    altDisarm: false
+    soundHit:
+      path: /Audio/Magic/fireball.ogg
+    angle: 0
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Heat: 14
+  - type: Puller
+    needsHands: false
+  - type: Speech
+    speechSounds: Lizard
+  - type: TTS
+    veice: Neco
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    damageCap: 0
+    damage:
+      types:
+        Cold: -0.1
+        Heat: -5
+  - type: Flammable
+    canExtinguish: true
+    alwaysCombustible: true
+    firestacksOnIgnite: 10
+    firestackFade: 0.5
+    damage:
+      types:
+        Cold: 0
+        Heat: 0
+    flammableCollisionShape:
+      !type:PhysShapeCircle
+      radius: 2
+  - type: Firestarter
+  - type: PointLight
+    radius: 2
+    energy: 4.5
+    color: "#ff8484"
+    castShadows: false
+  - type: ThermalRegulator
+    radiatedHeat: 100000
+    sweatHeatRegulation: 100000
+    shiveringHeatRegulation: 100000
+    normalBodyTemperature: 1000
+    implicitHeatRegulation: 200000
+    metabolismHeat: 80000
