@@ -114,7 +114,7 @@
   - type: ThermalRegulator
     radiatedHeat: 100000
     sweatHeatRegulation: 100000
-    shiveringHeatRegulation: 100000
+    shiveringHeatRegulation: 0
     normalBodyTemperature: 1000
     implicitHeatRegulation: 200000
     metabolismHeat: 80000
