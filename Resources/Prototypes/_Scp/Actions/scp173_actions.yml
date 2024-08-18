@@ -1,6 +1,6 @@
 ﻿- type: entity
   id: Scp173Blind
-  name: Scp173Blind
+  name: Ослепить
   description: "Ослепление всех в радиусе своей видимости на 6 секунд."
   categories: [ HideSpawnMenu ]
   components:
@@ -8,25 +8,25 @@
     event: !type:Scp173BlindAction
     raiseOnUser: true
     itemIconStyle: BigAction
-    useDelay: 5 # TODO: Change as needed.
-    icon: /Textures/_Scp/Actions/wallify.png # TODO: Icon.
+    useDelay: 120 # TODO: Change as needed.
+    icon: /Textures/_Scp/Actions/173_blind.png
 
 - type: entity
   id: Scp173Clog
-  name: Scp173Clog
-  description: "Засорить тайл."
+  name: Засорить тайл
+  description: "Чем больше - тем лучше."
   categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     event: !type:Scp173ClogAction
     raiseOnUser: true
     itemIconStyle: BigAction
-    useDelay: 5 # TODO: Change as needed.
-    icon: /Textures/_Scp/Actions/wallify.png # TODO: Icon.
+    useDelay: 60 # TODO: Change as needed.
+    icon: /Textures/_Scp/Actions/173_clog.png
 
 - type: entity
   id: Scp173DamageStructure
-  name: Scp173DamageStructure
+  name: Осквернить
   description: "Нанесение небольшого урона по всем строениям рядом."
   categories: [ HideSpawnMenu ]
   components:
@@ -34,20 +34,19 @@
     event: !type:Scp173DamageStructureAction
     raiseOnUser: true
     itemIconStyle: BigAction
-    useDelay: 5 # TODO: Change as needed.
-    icon: /Textures/_Scp/Actions/wallify.png # TODO: Icon.
+    useDelay: 90 # TODO: Change as needed.
+    icon: /Textures/_Scp/Actions/173_damage_structure.png
 
 - type: entity
   id: Scp173FastMovement
-  name: Scp173FastMovement
+  name: Скачок
   description: "Быстрое передвижение в небольшом радиусе. Задетые людишки умирают."
   categories: [ HideSpawnMenu ]
   components:
   - type: WorldTargetAction
-    icon:
-      sprite: Objects/Magic/magicactions.rsi # TODO: Icon.
-      state: blink
+    icon: /Textures/_Scp/Actions/173_fast_movement.png
     itemIconStyle: BigAction
     event: !type:Scp173FastMovementAction
     checkCanAccess: false
-    range: 300
+    useDelay: 180 # TODO: Change as needed.
+    range: 5
