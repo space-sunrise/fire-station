@@ -1,0 +1,27 @@
+﻿using Content.Shared.StatusIcon;
+using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
+
+namespace Content.Shared._Scp.Scp096;
+
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+public sealed partial class Scp096TargetComponent : Component
+{
+    //Multiple SCP096 Handler
+    [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
+    public HashSet<EntityUid> TargetedBy { get; set; } = new();
+
+    public int TimesHitted = 0;
+
+    public float _timeSinceLastHit = 0f;
+
+    [DataField]
+    public ProtoId<StatusIconPrototype> KillIconPrototype = "Scp096TargetIcon";
+}
+
+[RegisterComponent, NetworkedComponent]
+public sealed partial class Scp096StunnedComponent : Component
+{
+
+}
