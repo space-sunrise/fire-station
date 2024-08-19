@@ -1,0 +1,110 @@
+﻿- type: entity
+  id: Scp096
+  name: SCP-096
+  description: Скромник
+  suffix: SCP-096
+  parent:
+  - MobBloodstream
+  - SimpleSpaceMobBase
+  - StripableInventoryBase
+  components:
+  - type: Scp096
+  - type: CombatMode
+  - type: Pacified
+  - type: Blindable
+  - type: Inventory
+    templateId: scp096
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/scp-999.rsi
+    layers:
+    - state: SCP-999
+      map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default" ]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: SCP-999
+      Critical:
+        Base: SCP-999_dead
+  - type: AmbientSound
+    enabled: true
+    volume: -2
+    range: 15
+    sound:
+      path: /Audio/_Scp/Scp096/scp-096-crying.ogg
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        density: 80
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2000: Critical
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 1.5
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/Effects/Footsteps/slime1.ogg
+      params:
+        volume: 3
+  - type: Damageable
+    damageModifierSet: SCP-999 #TODO: REDOч
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+  - type: Bloodstream
+    bloodReagent: Blood
+    bloodlossDamage:
+      types:
+        Bloodloss:
+          0.5
+    bloodlossHealDamage:
+      types:
+        Bloodloss:
+          -0.25
+  - type: MeleeWeapon
+    bluntStaminaDamageFactor: 1.0
+    altDisarm: false
+    soundHit:
+      path: /Audio/Weapons/punch3.ogg
+    angle: 0
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Blunt: 35
+        Bloodloss: 5
+  - type: Puller
+    needsHands: false
+  - type: Speech
+  - type: Grammar # TODO: REDO
+    attributes:
+      proper: true
+      gender: female
+  - type: TTS # TODO: REDO
+    voice: Neco
+  - type: TypingIndicator # TODO: REDO
+    proto: SCP-999
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -0.5
+        Burn: -0.5
+      types:
+        Bloodloss: -1.0
