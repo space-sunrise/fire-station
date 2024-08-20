@@ -73,7 +73,7 @@
 
 - type: entity
   parent: BoxFolderScpBase
-  id: BoxFolderBlue
+  id: BoxFolderBlueScp
   name: синяя папка
   description: Обычная синяя папка.
   components:

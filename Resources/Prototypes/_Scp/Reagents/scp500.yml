@@ -1,0 +1,16 @@
+﻿- type: reagent
+  id: Scp500Reagent
+  name: reagent-name-scp500
+  desc: reagent-desc-scp500
+  physicalDesc: reagent-physicaldesc-scp500
+  flavor: medicine
+  color: "#86caf7"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:Rejuvenate
+      - !type:PopupMessage
+        visualType: LargeCaution
+        messages: ["reagent-effect-scp500"]
+        probability: 1
+        type: Local

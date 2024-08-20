@@ -1,0 +1,28 @@
+﻿- type: entity
+  parent: Pill
+  id: PillScp500
+  suffix: SCP-500
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scps/scp500.rsi
+    state: pill_scp
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 2
+        reagents:
+        - ReagentId: Scp500Reagent
+          Quantity: 1
+
+- type: entity
+  parent: PillCanister
+  id: PillCanisterScp500
+  suffix: SCP-500
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scps/scp500.rsi
+    state: pill_canister_scp
+  - type: StorageFill
+    contents:
+    - id: PillScp500
+      amount: 10  # Соре, баланс. 47 имбовых таблеток - имба

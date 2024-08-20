@@ -1,0 +1,17 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Made by discord: @prazat911",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "pill_canister_scp"
+        },
+        {
+            "name": "pill_scp"
+        }
+    ]
+}
