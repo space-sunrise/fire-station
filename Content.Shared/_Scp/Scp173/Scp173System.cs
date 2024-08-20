@@ -159,6 +159,14 @@ public sealed class Scp173System : EntitySystem
             return;
 
         var direction = targetCords.Position - playerPos;
+
+        var distance = direction.Length();
+        if (distance > ent.Comp.MaxRange)
+        {
+            direction = Vector2.Normalize(direction) * ent.Comp.MaxRange;
+            targetCords = _transform.GetMapCoordinates(args.Performer).Offset(direction);
+        }
+
         var normalizedDirection = Vector2.Normalize(direction);
         var ray = new CollisionRay(playerPos, normalizedDirection, collisionMask: (int)CollisionGroup.MobLayer);
         var rayCastResults = _physics.IntersectRay(targetCords.MapId, ray, direction.Length(), args.Performer, false);
@@ -169,7 +177,7 @@ public sealed class Scp173System : EntitySystem
             BreakNeck(entity);
         }
 
-        _transform.SetCoordinates(args.Performer, args.Target);
+        _transform.SetCoordinates(args.Performer, _transform.ToCoordinates(targetCords));
 
         args.Handled = true;
     }
