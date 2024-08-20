@@ -423,7 +423,6 @@
     tags:
       - MagazineCaselessRifle
   - type: BallisticAmmoProvider
-    proto: CartridgeCaselessRifle
     mayTransfer: true
     whitelist:
       tags:
