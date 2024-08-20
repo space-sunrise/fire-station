@@ -25,7 +25,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp096;
 
-public sealed partial class Scp096System : EntitySystem
+public sealed partial class Scp096System : SharedScp096System
 {
     [Dependency] private readonly SharedBlinkingSystem _blinkingSystem = default!;
     [Dependency] private readonly OccluderSystem _occluderSystem = default!;
@@ -44,20 +44,27 @@ public sealed partial class Scp096System : EntitySystem
 
 
     private ISawmill _sawmill = Logger.GetSawmill("scp096");
-    private static string StatusEffectKey = "ForcedSleep";
+    private static string SleepStatusEffectKey = "ForcedSleep";
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<Scp096Component, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<Scp096Component, StartCollideEvent>(OnCollide);
         SubscribeLocalEvent<Scp096Component, MobStateChangedEvent>(OnSpcStateChanged);
-        SubscribeLocalEvent<Scp096Component, AttackAttemptEvent>(OnAttackAttempt);
-        SubscribeLocalEvent<Scp096Component, PullAttemptEvent>(OnPullAttempt);
+        SubscribeLocalEvent<Scp096Component, StatusEffectEndedEvent>(OnStatusEffectEnded);
 
-        SubscribeLocalEvent<Scp096Component, AttemptPacifiedAttackEvent>(OnPacifiedAttackAttempt);
         InitTargets();
+    }
+
+    private void OnStatusEffectEnded(Entity<Scp096Component> ent, ref StatusEffectEndedEvent args)
+    {
+        if (args.Key != SleepStatusEffectKey)
+        {
+            return;
+        }
+
+        ent.Comp.Pacified = false;
     }
 
     public override void Update(float frameTime)
@@ -91,34 +98,6 @@ public sealed partial class Scp096System : EntitySystem
             }
 
             FindTargets(new Entity<Scp096Component>(entUid, scpComponent));
-        }
-    }
-
-    private void OnPullAttempt(Entity<Scp096Component> ent, ref PullAttemptEvent args)
-    {
-        if (!ent.Comp.Pacified)
-        {
-            args.Cancelled = true;
-        }
-    }
-
-    private void OnPacifiedAttackAttempt(Entity<Scp096Component> ent, ref AttemptPacifiedAttackEvent args)
-    {
-        args.Reason = Loc.GetString("scp096-non-argo-attack-attempt");
-        args.Cancelled = true;
-    }
-
-    private void OnAttackAttempt(Entity<Scp096Component> ent, ref AttackAttemptEvent args)
-    {
-        if (!args.Target.HasValue)
-        {
-            args.Cancel();
-            return;
-        }
-
-        if (!TryComp<Scp096TargetComponent>(args.Target.Value, out var targetComponent) || !targetComponent.TargetedBy.Contains(ent.Owner))
-        {
-            args.Cancel();
         }
     }
 
@@ -193,22 +172,9 @@ public sealed partial class Scp096System : EntitySystem
         return true;
     }
 
-    private void OnCollide(Entity<Scp096Component> ent, ref StartCollideEvent args)
+    protected override void HandleDoorCollision(Entity<Scp096Component> scpEntity, Entity<DoorComponent> doorEntity)
     {
-        if(TryComp<DoorComponent>(args.OtherEntity, out var doorComponent))
-        {
-            HandleDoorCollision(ent, new Entity<DoorComponent>(args.OtherEntity, doorComponent));
-        }
-    }
-
-    private void HandleDoorCollision(Entity<Scp096Component> scpEntity, Entity<DoorComponent> doorEntity)
-    {
-        if (!scpEntity.Comp.InRageMode)
-        {
-            return;
-        }
-
-        _doorSystem.StartOpening(doorEntity);
+        base.HandleDoorCollision(scpEntity, doorEntity);
 
         if (TryComp<DoorBoltComponent>(doorEntity, out var doorBoltComponent))
         {
@@ -320,7 +286,7 @@ public sealed partial class Scp096System : EntitySystem
         scpEntity.Comp.RageAcc = 0f;
 
         _ambientSoundSystem.SetSound(scpEntity, scpEntity.Comp.CrySound);
-        _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(scpEntity, StatusEffectKey, TimeSpan.FromSeconds(30.0f), false);
+        _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(scpEntity, SleepStatusEffectKey, TimeSpan.FromSeconds(30.0f), false);
 
         RefreshSpeedModifiers(scpEntity);
     }
