@@ -15,6 +15,8 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Physics;
 using Content.Shared.Weapons.Melee.Events;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
@@ -37,6 +39,7 @@ public sealed class Scp173System : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -230,7 +233,7 @@ public sealed class Scp173System : EntitySystem
         var damageSpec = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Blunt"), 100);
         _damageableSystem.TryChangeDamage(ent, damageSpec, true);
 
-        // TODO: Add sound.
+        _audio.PlayPvs(new SoundCollectionSpecifier("Scp173NeckSnap"), ent);
 
         _mobState.ChangeMobState(ent, MobState.Dead);
     }

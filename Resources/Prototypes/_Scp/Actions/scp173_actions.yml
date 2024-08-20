@@ -48,5 +48,5 @@
     itemIconStyle: BigAction
     event: !type:Scp173FastMovementAction
     checkCanAccess: false
-    useDelay: 0
+    useDelay: 90
     range: 300  # Обрезание вектора через механ
