@@ -1,0 +1,9 @@
+﻿- type: entity
+  parent: BaseBallBat
+  id: Scp2398
+  suffix: SCP-2398
+  name: бейсбольная бита
+  description: С виду обычная бейсбольная бита с маркировкой "К.О." на ручке.
+  components:
+  - type: Scp2398
+    triggerThrowSpeed: 20
