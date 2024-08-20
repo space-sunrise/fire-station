@@ -13,3 +13,87 @@
       map: ["clipboard_pen"]
       visible: false
     - state: clipboard_over
+
+- type: entity
+  id: BoxFolderScpBase
+  parent: BoxBase
+  abstract: true
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/box_folder.rsi
+  - type: Item
+    sprite: _Scp/Objects/Misc/box_folder.rsi
+    size: Small
+    shape: null
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,4,3
+    whitelist:
+      tags:
+      - Document
+  - type: ItemMapper
+    mapLayers:
+      folder-overlay-paper:
+        whitelist:
+          tags:
+          - Document
+  - type: Appearance
+  - type: Tag
+    tags:
+    - Folder
+
+- type: entity
+  parent: BoxFolderScpBase
+  id: BoxFolderSafe
+  name: папка "Безопасный"
+  description: Папка, содержащая информацию о безопасном объекте.
+  components:
+  - type: Sprite
+    state: folder-safe
+
+- type: entity
+  parent: BoxFolderScpBase
+  id: BoxFolderEuclid
+  name: папка "Евклид"
+  description: Папка, содержащая информацию об объекте класса Евклид.
+  components:
+  - type: Sprite
+    state: folder-euclid
+
+- type: entity
+  parent: BoxFolderScpBase
+  id: BoxFolderKeter
+  name: папка "Кетер"
+  description: Папка, содержащая информацию об объекте класса Кетер.
+  components:
+  - type: Sprite
+    state: folder-keter
+
+- type: entity
+  parent: BoxFolderScpBase
+  id: BoxFolderBlue
+  name: синяя папка
+  description: Обычная синяя папка.
+  components:
+  - type: Sprite
+    state: folder-blue
+
+- type: entity
+  parent: BoxFolderScpBase
+  id: BoxFolderScp
+  name: папка SCP
+  description: Папка с эмблемой фонда СЦП.
+  components:
+  - type: Sprite
+    state: folder-scp
+
+- type: entity
+  parent: BoxFolderScpBase
+  id: BoxFolderWhiteBlack
+  name: чёрно-белая папка
+  description: Стильная папка с черной обводкой.
+  components:
+  - type: Sprite
+    state: folder-black-white

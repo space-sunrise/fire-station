@@ -1,0 +1,32 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "made by Noname",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "folder-safe"
+        },
+        {
+            "name": "folder-euclid"
+        },
+        {
+            "name": "folder-keter"
+        },
+        {
+            "name": "folder-blue"
+        },
+        {
+            "name": "folder-scp"
+        },
+        {
+            "name": "folder-black-white"
+        },
+        {
+            "name": "folder-overlay-paper"
+        }
+    ]
+}
