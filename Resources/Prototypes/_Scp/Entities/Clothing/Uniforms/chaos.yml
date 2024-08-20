@@ -1,0 +1,23 @@
+﻿- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformSeniorOfficerScp1
+  suffix: SCP, вариация 1
+  name: униформа повстанцев хаоса
+  description: Сделана из мешковины и пахнет темным подвалом.
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/chaos.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/chaos.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformSeniorOfficerScp2
+  suffix: SCP, вариация 2
+  name: униформа повстанцев хаоса
+  description: Сделана из мешковины и пахнет темным подвалом.
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/chaos1.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/chaos1.rsi
