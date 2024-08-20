@@ -5,15 +5,26 @@
   suffix: SCP-096
   parent:
   - MobBloodstream
-  - SimpleSpaceMobBase
   - StripableInventoryBase
+  - BaseMob
   components:
   - type: Scp096
   - type: CombatMode
-  - type: Pacified
   - type: Blindable
   - type: Inventory
     templateId: scp096
+  - type: Pullable
+  - type: StatusEffects
+    allowed:
+    - SlowedDown
+    - Stutter
+    - Electrocution
+    - ForcedSleep
+    - TemporaryBlindness
+    - Pacified
+    - Flashed
+    - RadiationProtection
+    - Drowsiness
   - type: Sprite
     drawdepth: Mobs
     sprite: _Scp/Mobs/scp-999.rsi
@@ -43,6 +54,7 @@
         - MobMask
         layer:
         - MobLayer
+  - type: MobState
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -108,3 +120,13 @@
         Burn: -0.5
       types:
         Bloodloss: -1.0
+  - type: Body
+    prototype: Animal
+  - type: Climbing
+  - type: NameIdentifier
+    group: GenericNumber
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      500: 0.9
+      1000: 0.8
+      1500: 0.7
