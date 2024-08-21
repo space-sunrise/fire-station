@@ -6,6 +6,7 @@ using Content.Shared.StatusIcon.Components;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Scp096;
 
@@ -16,6 +17,8 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
+
 
     public override void Initialize()
     {
@@ -37,7 +40,7 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
         }
 
         var scpEntity = new Entity<Scp096Component>(player.Value, scp096Component);
-        var scpOverlay = new Scp096Overlay(_entityLookup, scpEntity, _eyeManager);
+        var scpOverlay = new Scp096Overlay(scpEntity, _entityLookup, _eyeManager, _gameTiming);
 
         _overlayManager.AddOverlay(scpOverlay);
     }

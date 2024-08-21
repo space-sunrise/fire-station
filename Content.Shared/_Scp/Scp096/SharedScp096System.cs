@@ -4,6 +4,7 @@ using Content.Shared.Doors.Systems;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Pulling.Events;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp096;
 
@@ -11,6 +12,8 @@ namespace Content.Shared._Scp.Scp096;
 public abstract class SharedScp096System : EntitySystem
 {
     [Dependency] private readonly SharedDoorSystem _doorSystem = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
+
 
     public override void Initialize()
     {
@@ -28,6 +31,38 @@ public abstract class SharedScp096System : EntitySystem
         {
             HandleDoorCollision(ent, new Entity<DoorComponent>(args.OtherEntity, doorComponent));
         }
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<Scp096Component>();
+
+        while (query.MoveNext(out var scpUid, out var scp096Component))
+        {
+            var scpEntity = new Entity<Scp096Component>(scpUid, scp096Component);
+            UpdateScp096(scpEntity);
+        }
+    }
+
+    protected virtual void UpdateScp096(Entity<Scp096Component> scpEntity)
+    {
+        if (scpEntity.Comp.Pacified || !scpEntity.Comp.InRageMode || !scpEntity.Comp.RageStartTime.HasValue)
+            return;
+
+        var currentTime = _gameTiming.CurTime;
+        var elapsedTime = currentTime - scpEntity.Comp.RageStartTime.Value;
+
+        if (elapsedTime.TotalSeconds > scpEntity.Comp.RageDuration)
+        {
+            OnRageTimeExceeded(scpEntity);
+        }
+    }
+
+    protected virtual void OnRageTimeExceeded(Entity<Scp096Component> scpEntity)
+    {
+
     }
 
     protected virtual void HandleDoorCollision(Entity<Scp096Component> scpEntity, Entity<DoorComponent> doorEntity)

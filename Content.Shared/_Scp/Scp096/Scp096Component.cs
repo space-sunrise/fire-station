@@ -23,11 +23,11 @@ public sealed partial class Scp096Component : Component
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float ArgoAngle = 25;
 
-    [ViewVariables(VVAccess.ReadWrite)]
-    public float RageAcc = 0f;
+    [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan? RageStartTime { get; set; }
 
     [DataField, AutoNetworkedField , ViewVariables(VVAccess.ReadWrite)]
-    public float RageTime { get; set; }= 2000f;
+    public float RageDuration { get; set; }= 2000f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float PacifiedTime = 20f;

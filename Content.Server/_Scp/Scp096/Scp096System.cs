@@ -22,14 +22,13 @@ using Content.Shared.Wires;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Scp096;
 
 public sealed partial class Scp096System : SharedScp096System
 {
     [Dependency] private readonly SharedBlinkingSystem _blinkingSystem = default!;
-    [Dependency] private readonly OccluderSystem _occluderSystem = default!;
-    [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
     [Dependency] private readonly InteractionSystem _interactionSystem = default!;
     [Dependency] private readonly SharedDoorSystem _doorSystem = default!;
     [Dependency] private readonly WiresSystem _wiresSystem = default!;
@@ -39,8 +38,8 @@ public sealed partial class Scp096System : SharedScp096System
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifierSystem = default!;
     [Dependency] private readonly AmbientSoundSystem _ambientSoundSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-    [Dependency] private readonly BlindableSystem _blindableSystem = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
 
 
     private ISawmill _sawmill = Logger.GetSawmill("scp096");
@@ -67,38 +66,26 @@ public sealed partial class Scp096System : SharedScp096System
         ent.Comp.Pacified = false;
     }
 
-    public override void Update(float frameTime)
+    protected override void UpdateScp096(Entity<Scp096Component> scpEntity)
     {
-        base.Update(frameTime);
-        UpdateTargets(frameTime);
+        base.UpdateScp096(scpEntity);
 
-        var query = EntityQueryEnumerator<Scp096Component>();
-
-        while (query.MoveNext(out var entUid, out var scpComponent))
+        if (scpEntity.Comp.Pacified)
         {
-            if (scpComponent.Pacified)
-            {
-                continue;
-            }
-
-            if (scpComponent.InRageMode)
-            {
-                scpComponent.RageAcc += frameTime;
-
-                if (scpComponent.RageAcc > scpComponent.RageTime)
-                {
-                    RemoveAllTargets(new Entity<Scp096Component>(entUid, scpComponent));
-                    continue;
-                }
-            }
-
-            if (!CanBeAggro(new Entity<Scp096Component>(entUid, scpComponent)))
-            {
-                continue;
-            }
-
-            FindTargets(new Entity<Scp096Component>(entUid, scpComponent));
+            return;
         }
+
+        if (!CanBeAggro(scpEntity))
+        {
+            return;
+        }
+
+        FindTargets(scpEntity);
+    }
+
+    protected override void OnRageTimeExceeded(Entity<Scp096Component> scpEntity)
+    {
+        RemoveAllTargets(scpEntity);
     }
 
     private void AddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid)
@@ -283,7 +270,7 @@ public sealed partial class Scp096System : SharedScp096System
 
         scpEntity.Comp.InRageMode = false;
         scpEntity.Comp.Pacified = true;
-        scpEntity.Comp.RageAcc = 0f;
+        scpEntity.Comp.RageStartTime = null;
 
         _ambientSoundSystem.SetSound(scpEntity, scpEntity.Comp.CrySound);
         _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(scpEntity, SleepStatusEffectKey, TimeSpan.FromSeconds(30.0f), false);
@@ -297,6 +284,7 @@ public sealed partial class Scp096System : SharedScp096System
 
         scpEntity.Comp.InRageMode = true;
         scpEntity.Comp.Pacified = false;
+        scpEntity.Comp.RageStartTime = _gameTiming.CurTime;
 
         _ambientSoundSystem.SetSound(scpEntity, scpEntity.Comp.RageSound);
 
