@@ -269,7 +269,7 @@ public sealed partial class Scp096System : SharedScp096System
         scpEntity.Comp.RageStartTime = null;
 
         _ambientSoundSystem.SetSound(scpEntity, scpEntity.Comp.CrySound);
-        _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(scpEntity, SleepStatusEffectKey, TimeSpan.FromSeconds(30.0f), false);
+        _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(scpEntity, SleepStatusEffectKey, TimeSpan.FromSeconds(scpEntity.Comp.PacifiedTime), false);
 
         RefreshSpeedModifiers(scpEntity);
     }

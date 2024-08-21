@@ -30,7 +30,7 @@ public sealed partial class Scp096Component : Component
     public float RageDuration { get; set; }= 2000f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float PacifiedTime = 20f;
+    public float PacifiedTime = 60f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float WireCutChance = 0.4f;
