@@ -2,8 +2,6 @@
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage;
 using Content.Shared.Mobs;
-using Content.Shared.StatusEffect;
-using Content.Shared.Weapons.Melee.Events;
 
 namespace Content.Server._Scp.Scp096;
 
@@ -19,7 +17,7 @@ public sealed partial class Scp096System
 
     private void OnHit(Entity<Scp096TargetComponent> ent, ref DamageChangedEvent args)
     {
-        if (!TryComp<Scp096Component>(args.Origin, out var scpComponent))
+        if (!TryComp<Scp096Component>(args.Origin, out _))
         {
             return;
         }
@@ -44,7 +42,7 @@ public sealed partial class Scp096System
         while (query.MoveNext(out var targetUid, out var targetComponent))
         {
             targetComponent.HitTimeAcc += frameTime;
-            _sawmill.Log(LogLevel.Error, targetComponent.HitTimeAcc.ToString());
+
             if (targetComponent.HitTimeAcc > targetComponent.HitWindow)
             {
                 targetComponent.HitTimeAcc = 0f;

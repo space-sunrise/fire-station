@@ -1,7 +1,6 @@
 ﻿using Content.Shared.StatusIcon;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._Scp.Scp096;
 
@@ -25,10 +24,4 @@ public sealed partial class Scp096TargetComponent : Component
 
     [DataField]
     public ProtoId<StatusIconPrototype> KillIconPrototype = "Scp096TargetIcon";
-}
-
-[RegisterComponent, NetworkedComponent]
-public sealed partial class Scp096StunnedComponent : Component
-{
-
 }

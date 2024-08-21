@@ -1,5 +1,4 @@
-﻿using Content.Shared._Scp.Scp096;
-using Robust.Client.UserInterface.Controls;
+﻿using Robust.Client.UserInterface.Controls;
 
 namespace Content.Client._Scp.Scp096.Ui;
 

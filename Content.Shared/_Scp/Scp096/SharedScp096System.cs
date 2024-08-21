@@ -25,7 +25,7 @@ public abstract class SharedScp096System : EntitySystem
         SubscribeLocalEvent<Scp096Component, StartCollideEvent>(OnCollide);
     }
 
-    protected virtual void OnCollide(Entity<Scp096Component> ent, ref StartCollideEvent args)
+    protected void OnCollide(Entity<Scp096Component> ent, ref StartCollideEvent args)
     {
         if(TryComp<DoorComponent>(args.OtherEntity, out var doorComponent))
         {
