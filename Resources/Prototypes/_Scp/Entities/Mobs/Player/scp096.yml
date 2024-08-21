@@ -58,7 +58,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      2000: Critical
+      2500: Critical
   - type: Tag
     tags:
     - FootstepSound
