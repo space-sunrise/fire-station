@@ -130,3 +130,6 @@
       500: 0.9
       1000: 0.8
       1500: 0.7
+  - type: Tag
+    tags:
+    - IgnorePortals
