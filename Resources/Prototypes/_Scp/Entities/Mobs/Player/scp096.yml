@@ -101,14 +101,14 @@
   - type: Puller
     needsHands: false
   - type: Speech
-  - type: Grammar # TODO: REDO
+  - type: Grammar
     attributes:
       proper: true
-      gender: female
-  - type: TTS # TODO: REDO
+      gender: male
+  - type: TTS # TODO: IDC
     voice: Neco
-  - type: TypingIndicator # TODO: REDO
-    proto: SCP-999
+  - type: TypingIndicator
+    proto: alien
   - type: PassiveDamage
     allowedStates:
     - Alive
