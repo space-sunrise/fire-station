@@ -97,9 +97,9 @@
   - type: Scp096
   - type: SlowOnDamage
     speedModifierThresholds:
-      500: 0.9
-      1000: 0.8
-      1500: 0.7
+      1000: 0.9
+      1500: 0.8
+      2000: 0.7
   - type: Speech
   - type: Sprite
     drawdepth: Mobs
