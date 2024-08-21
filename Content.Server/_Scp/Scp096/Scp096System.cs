@@ -242,7 +242,7 @@ public sealed partial class Scp096System : SharedScp096System
             return float.MaxValue;
         }
 
-        var toEntity = (scp.Comp.Coordinates - target.Comp.Coordinates).Position.Normalized();
+        var toEntity = (scp.Comp.Coordinates.Position - target.Comp.Coordinates.Position).Normalized();
 
         var dotProduct = Vector2.Dot(target.Comp.LocalRotation.ToWorldVec(), toEntity);
         var angle = MathF.Acos(dotProduct) * (180f / MathF.PI);
