@@ -72,7 +72,7 @@
       params:
         volume: 3
   - type: Damageable
-    damageModifierSet: SCP-999 #TODO: REDOч
+    damageModifierSet: SCP-096
   - type: UserInterface
     interfaces:
       enum.StrippingUiKey.Key:
