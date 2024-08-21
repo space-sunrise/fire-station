@@ -42,7 +42,7 @@ public sealed partial class Scp096System
 
     private void OnTargetStateChanged(Entity<Scp096TargetComponent> ent, ref MobStateChangedEvent args)
     {
-        if (!_mobStateSystem.IsIncapacitated(ent.Owner))
+        if (args.NewMobState == MobState.Alive)
         {
             return;
         }

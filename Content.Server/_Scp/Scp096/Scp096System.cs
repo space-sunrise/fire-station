@@ -11,16 +11,12 @@ using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Eye.Blinding.Components;
-using Content.Shared.Eye.Blinding.Systems;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.StatusEffect;
 using Content.Shared.Wires;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Physics.Events;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -124,8 +120,8 @@ public sealed partial class Scp096System : SharedScp096System
             Pacify(scpEntity);
         }
 
-        Dirty(scpEntity);
         Dirty(targetEntity);
+        Dirty(scpEntity);
     }
 
     private void RemoveAllTargets(Entity<Scp096Component> scpEntity)
@@ -140,7 +136,7 @@ public sealed partial class Scp096System : SharedScp096System
 
     private void OnSpcStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
     {
-        if (!_mobStateSystem.IsIncapacitated(ent))
+        if (args.NewMobState == MobState.Alive)
         {
             return;
         }
