@@ -12,9 +12,16 @@ public sealed partial class Scp096TargetComponent : Component
     [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public HashSet<EntityUid> TargetedBy { get; set; } = new();
 
+    [ViewVariables(VVAccess.ReadWrite)]
     public int TimesHitted = 0;
 
-    public float _timeSinceLastHit = 0f;
+    public float HitTimeAcc = 0f;
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float HitWindow = 4f;
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float SleepTime = 30f;
 
     [DataField]
     public ProtoId<StatusIconPrototype> KillIconPrototype = "Scp096TargetIcon";

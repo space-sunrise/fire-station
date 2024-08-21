@@ -1,5 +1,8 @@
 ﻿using Content.Shared._Scp.Scp096;
+using Content.Shared.Bed.Sleep;
+using Content.Shared.Damage;
 using Content.Shared.Mobs;
+using Content.Shared.StatusEffect;
 using Content.Shared.Weapons.Melee.Events;
 
 namespace Content.Server._Scp.Scp096;
@@ -11,6 +14,27 @@ public sealed partial class Scp096System
     {
         SubscribeLocalEvent<Scp096TargetComponent, MobStateChangedEvent>(OnTargetStateChanged);
         SubscribeLocalEvent<Scp096TargetComponent, ComponentShutdown>(OnTargetShutdown);
+        SubscribeLocalEvent<Scp096TargetComponent, DamageChangedEvent>(OnHit);
+    }
+
+    private void OnHit(Entity<Scp096TargetComponent> ent, ref DamageChangedEvent args)
+    {
+        if (!TryComp<Scp096Component>(args.Origin, out var scpComponent))
+        {
+            return;
+        }
+
+        ent.Comp.TimesHitted++;
+
+        if (ent.Comp.TimesHitted >= 2)
+        {
+            _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(ent.Owner,
+                SleepStatusEffectKey,
+                TimeSpan.FromSeconds(ent.Comp.SleepTime),
+                false);
+
+            RemComp<Scp096TargetComponent>(ent);
+        }
     }
 
     private void UpdateTargets(float frameTime)
@@ -19,14 +43,13 @@ public sealed partial class Scp096System
 
         while (query.MoveNext(out var targetUid, out var targetComponent))
         {
-            targetComponent._timeSinceLastHit += frameTime;
-
-            if (targetComponent._timeSinceLastHit < 4f || TryComp<Scp096StunnedComponent>(targetUid, out var _))
+            targetComponent.HitTimeAcc += frameTime;
+            _sawmill.Log(LogLevel.Error, targetComponent.HitTimeAcc.ToString());
+            if (targetComponent.HitTimeAcc > targetComponent.HitWindow)
             {
-                continue;
+                targetComponent.HitTimeAcc = 0f;
+                targetComponent.TimesHitted = 0;
             }
-
-            targetComponent._timeSinceLastHit = 0f;
         }
     }
 

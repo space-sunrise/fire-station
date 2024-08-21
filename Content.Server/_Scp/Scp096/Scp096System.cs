@@ -65,7 +65,6 @@ public sealed partial class Scp096System : SharedScp096System
     protected override void UpdateScp096(Entity<Scp096Component> scpEntity)
     {
         base.UpdateScp096(scpEntity);
-
         if (scpEntity.Comp.Pacified)
         {
             return;
@@ -77,6 +76,12 @@ public sealed partial class Scp096System : SharedScp096System
         }
 
         FindTargets(scpEntity);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+        UpdateTargets(frameTime);
     }
 
     protected override void OnRageTimeExceeded(Entity<Scp096Component> scpEntity)
