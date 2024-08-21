@@ -16,6 +16,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.StatusEffect;
 using Content.Shared.Wires;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -36,6 +37,8 @@ public sealed partial class Scp096System : SharedScp096System
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly TransformSystem _transformSystem = default!;
+
 
 
     private ISawmill _sawmill = Logger.GetSawmill("scp096");
@@ -242,7 +245,10 @@ public sealed partial class Scp096System : SharedScp096System
             return float.MaxValue;
         }
 
-        var toEntity = (scp.Comp.Coordinates.Position - target.Comp.Coordinates.Position).Normalized();
+        var scpWorldPosition = _transformSystem.GetMapCoordinates(scp.Owner);
+        var targetWorldPosition = _transformSystem.GetMapCoordinates(target.Owner);
+
+        var toEntity = (scpWorldPosition.Position - targetWorldPosition.Position).Normalized();
 
         var dotProduct = Vector2.Dot(target.Comp.LocalRotation.ToWorldVec(), toEntity);
         var angle = MathF.Acos(dotProduct) * (180f / MathF.PI);
