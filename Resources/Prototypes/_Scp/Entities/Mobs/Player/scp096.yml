@@ -8,128 +8,126 @@
   - StripableInventoryBase
   - BaseMob
   components:
-  - type: Scp096
-  - type: CombatMode
-  - type: Blindable
-  - type: Inventory
-    templateId: scp096
-  - type: Pullable
-  - type: StatusEffects
-    allowed:
-    - SlowedDown
-    - Stutter
-    - Electrocution
-    - ForcedSleep
-    - TemporaryBlindness
-    - Pacified
-    - Flashed
-    - RadiationProtection
-    - Drowsiness
-  - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Mobs/scp-999.rsi
-    layers:
-    - state: SCP-999
-      map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default" ]
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: SCP-999
-      Critical:
-        Base: SCP-999_dead
-  - type: AmbientSound
-    enabled: true
-    volume: -2
-    range: 15
-    sound:
-      path: /Audio/_Scp/Scp096/scp-096-crying.ogg
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.25
-        density: 80
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
-  - type: MobState
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      2500: Critical
-  - type: Tag
-    tags:
-    - FootstepSound
-    - DoorBumpOpener
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 1.5
-    baseSprintSpeed: 1.5
-  - type: FootstepModifier
-    footstepSoundCollection:
-      path: /Audio/Effects/Footsteps/slime1.ogg
-      params:
-        volume: 3
-  - type: Damageable
-    damageModifierSet: SCP-096
-  - type: UserInterface
-    interfaces:
-      enum.StrippingUiKey.Key:
-        type: StrippableBoundUserInterface
-  - type: Bloodstream
-    bloodReagent: Blood
-    bloodlossDamage:
-      types:
-        Bloodloss:
-          0.5
-    bloodlossHealDamage:
-      types:
-        Bloodloss:
-          -0.25
-  - type: MeleeWeapon
-    bluntStaminaDamageFactor: 1.0
-    altDisarm: false
-    soundHit:
-      path: /Audio/Weapons/punch3.ogg
-    angle: 0
-    animation: WeaponArcPunch
-    damage:
-      types:
-        Blunt: 35
-        Bloodloss: 5
-  - type: Puller
-    needsHands: false
-  - type: Speech
-  - type: Grammar
-    attributes:
-      proper: true
-      gender: male
-  - type: TTS # TODO: IDC
-    voice: Neco
-  - type: TypingIndicator
-    proto: alien
-  - type: PassiveDamage
-    allowedStates:
-    - Alive
-    - Critical
-    damageCap: 0
-    damage:
-      groups:
-        Brute: -0.5
-        Burn: -0.5
-      types:
-        Bloodloss: -1.0
-  - type: Body
-    prototype: Animal
-  - type: Climbing
-  - type: NameIdentifier
-    group: GenericNumber
-  - type: SlowOnDamage
-    speedModifierThresholds:
-      500: 0.9
-      1000: 0.8
-      1500: 0.7
-  - type: Tag
-    tags:
-    - IgnorePortals
+- type: AmbientSound
+  enabled: true
+  volume: -2
+  range: 15
+  sound:
+    path: /Audio/_Scp/Scp096/scp-096-crying.ogg
+- type: Blindable
+- type: Bloodstream
+  bloodReagent: Blood
+  bloodlossDamage:
+    types:
+      Bloodloss:
+        0.5
+  bloodlossHealDamage:
+    types:
+      Bloodloss:
+        -0.25
+- type: Body
+  prototype: Animal
+- type: Climbing
+- type: CombatMode
+- type: Damageable
+  damageModifierSet: SCP-096
+- type: DamageStateVisuals
+  states:
+    Alive:
+      Base: SCP-999
+    Critical:
+      Base: SCP-999_dead
+- type: Fixtures
+  fixtures:
+    fix1:
+      shape:
+        !type:PhysShapeCircle
+        radius: 0.25
+      density: 80
+      mask:
+      - MobMask
+      layer:
+      - MobLayer
+- type: FootstepModifier
+  footstepSoundCollection:
+    path: /Audio/Effects/Footsteps/slime1.ogg
+    params:
+      volume: 3
+- type: Grammar
+  attributes:
+    proper: true
+    gender: male
+- type: Inventory
+  templateId: scp096
+- type: MeleeWeapon
+  bluntStaminaDamageFactor: 1.0
+  altDisarm: false
+  soundHit:
+    path: /Audio/Weapons/punch3.ogg
+  angle: 0
+  animation: WeaponArcPunch
+  damage:
+    types:
+      Blunt: 35
+      Bloodloss: 5
+- type: MobState
+- type: MobThresholds
+  thresholds:
+    0: Alive
+    2500: Critical
+- type: MovementSpeedModifier
+  baseWalkSpeed: 1.5
+  baseSprintSpeed: 1.5
+- type: NameIdentifier
+  group: GenericNumber
+- type: PassiveDamage
+  allowedStates:
+  - Alive
+  - Critical
+  damageCap: 0
+  damage:
+    groups:
+      Brute: -0.5
+      Burn: -0.5
+    types:
+      Bloodloss: -1.0
+- type: Pullable
+- type: Puller
+  needsHands: false
+- type: Scp096
+- type: SlowOnDamage
+  speedModifierThresholds:
+    500: 0.9
+    1000: 0.8
+    1500: 0.7
+- type: Speech
+- type: Sprite
+  drawdepth: Mobs
+  sprite: _Scp/Mobs/scp-999.rsi
+  layers:
+  - state: SCP-999
+    map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default" ]
+- type: StatusEffects
+  allowed:
+  - SlowedDown
+  - Stutter
+  - Electrocution
+  - ForcedSleep
+  - TemporaryBlindness
+  - Pacified
+  - Flashed
+  - RadiationProtection
+  - Drowsiness
+- type: Tag
+  tags:
+  - FootstepSound
+  - DoorBumpOpener
+  - IgnorePortals
+- type: TTS
+  voice: Neco
+- type: TypingIndicator
+  proto: alien
+- type: UserInterface
+  interfaces:
+    enum.StrippingUiKey.Key:
+      type: StrippableBoundUserInterface
