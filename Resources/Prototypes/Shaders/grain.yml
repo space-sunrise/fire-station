@@ -1,0 +1,4 @@
+﻿- type: shader
+  id: Grain
+  kind: source
+  path: "/Textures/Shaders/grain.swsl"
