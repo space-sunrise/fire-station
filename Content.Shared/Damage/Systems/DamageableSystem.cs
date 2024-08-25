@@ -138,7 +138,7 @@ namespace Content.Shared.Damage
         ///     null if the user had no applicable components that can take damage.
         /// </returns>
         public DamageSpecifier? TryChangeDamage(EntityUid? uid, DamageSpecifier damage, bool ignoreResistances = false,
-            bool interruptsDoAfters = true, DamageableComponent? damageable = null, EntityUid? origin = null)
+            bool interruptsDoAfters = true, DamageableComponent? damageable = null, EntityUid? origin = null, bool applyRandomDamage = true)
         {
             if (!uid.HasValue || !_damageableQuery.Resolve(uid.Value, ref damageable, false))
             {
@@ -157,18 +157,21 @@ namespace Content.Shared.Damage
             if (before.Cancelled)
                 return null;
 
-            // Sunrise-Start
-            damage = DamageSpecifier.ApplyModifier(damage, DamageModifier, HealModifier);
+            // Sunrise-Start - Please no random damage for scp attacks
+            if (applyRandomDamage)
+            {
+                damage = DamageSpecifier.ApplyModifier(damage, DamageModifier, HealModifier);
 
-            var varianceMultiplier = 1f + Variance - _random.NextFloat(0, Variance * 2f);
-            damage *= varianceMultiplier;
+                var varianceMultiplier = 1f + Variance - _random.NextFloat(0, Variance * 2f);
+                damage *= varianceMultiplier;
+            }
             // Sunrise-End
 
             // Apply resistances
             if (!ignoreResistances)
             {
                 if (damageable.DamageModifierSetId != null &&
-                    _prototypeManager.TryIndex<DamageModifierSetPrototype>(damageable.DamageModifierSetId, out var modifierSet))
+                    _prototypeManager.TryIndex(damageable.DamageModifierSetId, out var modifierSet))
                 {
                     // TODO DAMAGE PERFORMANCE
                     // use a local private field instead of creating a new dictionary here..

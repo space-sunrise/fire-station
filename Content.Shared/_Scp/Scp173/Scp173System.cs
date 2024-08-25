@@ -9,15 +9,12 @@ using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction.Events;
-using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Physics;
 using Content.Shared.Weapons.Melee.Events;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
@@ -35,7 +32,6 @@ public sealed class Scp173System : EntitySystem
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
@@ -45,17 +41,14 @@ public sealed class Scp173System : EntitySystem
     {
         base.Initialize();
 
-        if (_net.IsServer)
-        {
-            SubscribeLocalEvent<Scp173Component, ComponentInit>(OnInit);
-        }
+        SubscribeLocalEvent<Scp173Component, ComponentInit>(OnInit);
 
         #region Blocker
 
         SubscribeLocalEvent((Entity<Scp173Component> _, ref BeforeDamageChangedEvent args) => args.Cancelled = true);
-        SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, _, args) =>
+        SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, component, args) =>
         {
-            if (Is173Watched(uid))
+            if (Is173Watched((uid, component)))
                 args.Cancel();
         });
 
@@ -86,6 +79,11 @@ public sealed class Scp173System : EntitySystem
         _actionsSystem.AddAction(ent, "Scp173Clog");
         _actionsSystem.AddAction(ent, "Scp173DamageStructure");
         _actionsSystem.AddAction(ent, "Scp173FastMovement");
+
+        // Fallback
+        ent.Comp.NeckSnapDamage ??= new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Blunt"), 200);
+
+        Dirty(ent);
     }
 
     #region Movement
@@ -109,7 +107,7 @@ public sealed class Scp173System : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        if (Is173Watched(ent))
+        if (Is173Watched((ent, component)))
             args.Cancel();
     }
 
@@ -124,7 +122,7 @@ public sealed class Scp173System : EntitySystem
 
         foreach (var entity in args.HitEntities)
         {
-           BreakNeck(entity);
+           BreakNeck(entity, ent.Comp);
         }
     }
 
@@ -134,7 +132,7 @@ public sealed class Scp173System : EntitySystem
             return;
 
         var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(ent).Coordinates, ExamineSystemShared.MaxRaycastRange)
-            .ToList();
+            .ToHashSet();
 
         foreach (var eye in eyes)
         {
@@ -164,9 +162,9 @@ public sealed class Scp173System : EntitySystem
         var direction = targetCords.Position - playerPos;
 
         var distance = direction.Length();
-        if (distance > ent.Comp.MaxRange)
+        if (distance > ent.Comp.MaxJumpRange)
         {
-            direction = Vector2.Normalize(direction) * ent.Comp.MaxRange;
+            direction = Vector2.Normalize(direction) * ent.Comp.MaxJumpRange;
             targetCords = _transform.GetMapCoordinates(args.Performer).Offset(direction);
         }
 
@@ -177,7 +175,7 @@ public sealed class Scp173System : EntitySystem
         foreach (var eResult in rayCastResults)
         {
             var entity = eResult.HitEntity;
-            BreakNeck(entity);
+            BreakNeck(entity, ent.Comp);
         }
 
         _transform.SetCoordinates(args.Performer, _transform.ToCoordinates(targetCords));
@@ -185,17 +183,42 @@ public sealed class Scp173System : EntitySystem
         args.Handled = true;
     }
 
+    private void BreakNeck(EntityUid target, Scp173Component scp)
+    {
+        // Not a mob...
+        if (!HasComp<MobStateComponent>(target))
+            return;
+
+        // Not a human, right? Can`t broke his neck...
+        if (!HasComp<HumanoidAppearanceComponent>(target))
+            return;
+
+        // Already dead.
+        if (_mobState.IsDead(target))
+            return;
+
+        // No damage??
+        if (scp.NeckSnapDamage == null)
+            return;
+
+        _damageableSystem.TryChangeDamage(target, scp.NeckSnapDamage, true, applyRandomDamage: false);
+
+        // TODO: Fix missing deathgasp emote on high damage per once
+
+        _audio.PlayPvs(scp.NeckSnapSound, target);
+    }
+
     #endregion
 
     #region Helpers
 
-    private bool Is173Watched(EntityUid scp173)
+    private bool Is173Watched(Entity<Scp173Component> scp173)
     {
         var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, ExamineSystemShared.MaxRaycastRange)
-            .ToList();
+            .ToHashSet();
 
         return eyes.Count != 0 &&
-               eyes.Where(eye => _examine.InRangeUnOccluded(eye, scp173, 12f, ignoreInsideBlocker:false))
+               eyes.Where(eye => _examine.InRangeUnOccluded(eye, scp173, scp173.Comp.WatchRange, ignoreInsideBlocker:false))
                    .Any(eye => !IsEyeBlinded(eye));
     }
 
@@ -214,28 +237,6 @@ public sealed class Scp173System : EntitySystem
             return true;
 
         return false;
-    }
-
-    private void BreakNeck(EntityUid ent)
-    {
-        // Not a mob...
-        if (!HasComp<MobStateComponent>(ent))
-            return;
-
-        // Not a human, right? Can`t broke his neck...
-        if (!HasComp<HumanoidAppearanceComponent>(ent))
-            return;
-
-        // Already dead.
-        if (_mobState.IsDead(ent))
-            return;
-
-        var damageSpec = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Blunt"), 100);
-        _damageableSystem.TryChangeDamage(ent, damageSpec, true);
-
-        _audio.PlayPvs(new SoundCollectionSpecifier("Scp173NeckSnap"), ent);
-
-        _mobState.ChangeMobState(ent, MobState.Dead);
     }
 
     #endregion

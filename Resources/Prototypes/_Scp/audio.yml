@@ -1,13 +1,1 @@
-﻿- type: soundCollection
-  id: Scp173NeckSnap
-  files:
-  - /Audio/_Scp/Scp173/scp173necksnap1.ogg
-  - /Audio/_Scp/Scp173/scp173necksnap2.ogg
-  - /Audio/_Scp/Scp173/scp173necksnap3.ogg
-
-- type: soundCollection
-  id: Scp173Running
-  files:
-  - /Audio/_Scp/Scp173/scp173running1.ogg
-  - /Audio/_Scp/Scp173/scp173running2.ogg
-  - /Audio/_Scp/Scp173/scp173running3.ogg
+﻿

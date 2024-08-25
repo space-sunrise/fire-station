@@ -1,7 +1,6 @@
 ﻿using System.Numerics;
 using Content.Client.Actions;
 using Content.Client.UserInterface.Systems.Actions;
-using Content.Shared._Scp.Scp173;
 using Content.Shared.Actions;
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
@@ -10,7 +9,6 @@ using Content.Shared.Physics;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
-using Robust.Client.ResourceManagement;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
@@ -26,7 +24,6 @@ public sealed class Scp173Overlay : Overlay
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IInputManager _inputManager = default!;
     [Dependency] private readonly IEyeManager _eyeManager = default!;
-    [Dependency] private readonly IResourceCache _resource = default!;
 
     private readonly SharedTransformSystem _transform;
     private readonly ActionUIController _controller;

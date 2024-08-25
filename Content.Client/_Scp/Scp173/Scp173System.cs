@@ -26,7 +26,7 @@ public sealed class Scp173System : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<Scp173Component, ComponentInit>(OnInit);
+        SubscribeLocalEvent<Scp173Component, MapInitEvent>(OnInit);
         SubscribeLocalEvent<Scp173Component, ComponentShutdown>(OnShutdown);
 
         SubscribeLocalEvent<Scp173Component, LocalPlayerAttachedEvent>(OnPlayerAttached);
@@ -35,7 +35,7 @@ public sealed class Scp173System : EntitySystem
         _overlay = new(_transform, _ui.GetUIController<ActionUIController>(), _actionsSystem, _physics, _examine);
     }
 
-    private void OnInit(EntityUid uid, Scp173Component component, ComponentInit args)
+    private void OnInit(EntityUid uid, Scp173Component component, MapInitEvent args)
     {
         if (_player.LocalSession?.AttachedEntity == uid)
             _overlayMan.AddOverlay(_overlay);

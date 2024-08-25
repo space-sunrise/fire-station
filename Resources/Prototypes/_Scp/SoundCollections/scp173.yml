@@ -1,0 +1,13 @@
+﻿- type: soundCollection
+  id: FootstepSCP173
+  files:
+  - /Audio/_Scp/Scp173/running1.ogg
+  - /Audio/_Scp/Scp173/running2.ogg
+  - /Audio/_Scp/Scp173/running3.ogg
+
+- type: soundCollection
+  id: Scp173NeckSnap
+  files:
+  - /Audio/_Scp/Scp173/necksnap1.ogg
+  - /Audio/_Scp/Scp173/necksnap2.ogg
+  - /Audio/_Scp/Scp173/necksnap3.ogg
