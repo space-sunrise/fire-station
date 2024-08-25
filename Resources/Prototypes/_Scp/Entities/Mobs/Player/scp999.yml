@@ -189,3 +189,7 @@
     reflects:
     - Energy
     - NonEnergy
+  - type: GiveActions
+    actions:
+    - Scp999Wallify
+    - Scp999Rest

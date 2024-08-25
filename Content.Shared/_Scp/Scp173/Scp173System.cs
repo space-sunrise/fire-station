@@ -34,7 +34,6 @@ public sealed class Scp173System : EntitySystem
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -82,10 +81,7 @@ public sealed class Scp173System : EntitySystem
 
     private void OnInit(Entity<Scp173Component> ent, ref ComponentInit args)
     {
-        _actionsSystem.AddAction(ent, "Scp173Blind");
-        _actionsSystem.AddAction(ent, "Scp173Clog");
-        _actionsSystem.AddAction(ent, "Scp173DamageStructure");
-        _actionsSystem.AddAction(ent, "Scp173FastMovement");
+
     }
 
     #region Movement
