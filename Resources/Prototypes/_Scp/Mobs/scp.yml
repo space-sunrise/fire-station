@@ -11,18 +11,6 @@
   parent: BaseSCP
   id: Scp173
   components:
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.4" # don't want this colliding with walls or they won't close
-        density: 185
-        restitution: 0.0
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
   - type: Prying
     pryPowered: true
     force: true

@@ -131,8 +131,7 @@ public sealed class Scp173System : EntitySystem
         if (args.Handled)
             return;
 
-        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(ent).Coordinates, ExamineSystemShared.MaxRaycastRange)
-            .ToHashSet();
+        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(ent).Coordinates, ExamineSystemShared.MaxRaycastRange);
 
         foreach (var eye in eyes)
         {
@@ -214,11 +213,10 @@ public sealed class Scp173System : EntitySystem
 
     private bool Is173Watched(Entity<Scp173Component> scp173)
     {
-        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, ExamineSystemShared.MaxRaycastRange)
-            .ToHashSet();
+        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, ExamineSystemShared.MaxRaycastRange);
 
         return eyes.Count != 0 &&
-               eyes.Where(eye => _examine.InRangeUnOccluded(eye, scp173, scp173.Comp.WatchRange, ignoreInsideBlocker:false))
+               eyes.Where(eye => _examine.InRangeUnOccluded(eye, scp173, scp173.Comp.WatchRange, ignoreInsideBlocker: false))
                    .Any(eye => !IsEyeBlinded(eye));
     }
 
