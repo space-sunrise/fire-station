@@ -2,7 +2,6 @@
 using System.Numerics;
 using Content.Shared._Scp.Blinking;
 using Content.Shared.ActionBlocker;
-using Content.Shared.Actions;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Examine;
