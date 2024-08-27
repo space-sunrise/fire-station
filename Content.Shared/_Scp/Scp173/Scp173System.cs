@@ -75,11 +75,6 @@ public sealed class Scp173System : EntitySystem
 
     private void OnInit(Entity<Scp173Component> ent, ref ComponentInit args)
     {
-        _actionsSystem.AddAction(ent, "Scp173Blind");
-        _actionsSystem.AddAction(ent, "Scp173Clog");
-        _actionsSystem.AddAction(ent, "Scp173DamageStructure");
-        _actionsSystem.AddAction(ent, "Scp173FastMovement");
-
         // Fallback
         ent.Comp.NeckSnapDamage ??= new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Blunt"), 200);
 

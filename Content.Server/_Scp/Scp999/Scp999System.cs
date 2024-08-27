@@ -1,33 +1,13 @@
-﻿using Content.Server.Popups;
-using Content.Server.PowerCell;
-using Content.Server.Stunnable;
-using Content.Shared._Scp.Scp999;
-using Content.Shared.Actions;
-using Content.Shared.Bed.Sleep;
-using Content.Shared.Damage;
+﻿using Content.Shared._Scp.Scp999;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
-using Content.Shared.Mobs.Systems;
-using Content.Shared.Movement.Systems;
-using Content.Shared.Throwing;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio.Systems;
 
 namespace Content.Server._Scp.Scp999;
 
 public sealed class Scp999System : SharedScp999System
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly StunSystem _stun = default!;
-    [Dependency] private readonly PowerCellSystem _powerCell = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly SleepingSystem _sleeping = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -36,23 +16,9 @@ public sealed class Scp999System : SharedScp999System
         base.Initialize();
 
         _sawmill = Logger.GetSawmill("scp.999");
-        SubscribeLocalEvent<Scp999Component, ComponentInit>(OnComponentInit);
-        SubscribeLocalEvent<Scp999Component, ComponentShutdown>(OnComponentShutdown);
         SubscribeLocalEvent<Scp999Component, Scp999WallifyActionEvent>(OnWallifyActionEvent);
         SubscribeLocalEvent<Scp999Component, Scp999RestActionEvent>(OnRestActionEvent);
         SubscribeLocalEvent<Scp999Component, MobStateChangedEvent>(OnMobStateChanged);
-    }
-
-    private void OnComponentInit(EntityUid uid, Scp999Component component, ComponentInit args)
-    {
-        component.WallActionEntity ??= _actions.AddAction(uid, component.WallAction);
-        component.RestActionEntity ??= _actions.AddAction(uid, component.RestAction);
-    }
-
-    private void OnComponentShutdown(EntityUid uid, Scp999Component component, ComponentShutdown args)
-    {
-        _actions.RemoveAction(component.WallActionEntity);
-        _actions.RemoveAction(component.RestActionEntity);
     }
 
     private void OnMobStateChanged(EntityUid uid, Scp999Component component, MobStateChangedEvent args)
