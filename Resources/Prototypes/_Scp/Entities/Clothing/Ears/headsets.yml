@@ -1,0 +1,28 @@
+﻿# Для упрощения наследования и на случай добавления каких-нибудь механик гарнитуре СЦП
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetScp
+  suffix: SCP
+  abstract: true
+
+- type: entity
+  parent: [ ClothingHeadsetGrey, ClothingHeadsetScp ]
+  id: ClothingHeadsetContainment
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyContainment
+
+- type: entity
+  parent: [ ClothingHeadsetGrey, ClothingHeadsetScp ]
+  id: ClothingHeadsetExterior
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyExterior
+
+- type: entity
+  parent: [ ClothingHeadsetGrey, ClothingHeadsetScp ]
+  id: ClothingHeadsetClassD

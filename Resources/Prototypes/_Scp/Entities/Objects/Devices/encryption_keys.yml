@@ -1,0 +1,38 @@
+﻿- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyScp
+  abstract: true
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Devices/encryption_keys.rsi
+  - type: Item
+    sprite: _Scp/Objects/Devices/encryption_keys.rsi
+
+- type: entity
+  parent: EncryptionKeyScp
+  id: EncryptionKeyContainment
+  name: ключ шифрования сдерживания
+  components:
+  - type: EncryptionKey
+    channels:
+    - Containment
+    defaultChannel: Containment
+  - type: Sprite
+    layers:
+    - state: crypt_containment
+    - state: spec_label
+
+- type: entity
+  parent: EncryptionKeyScp
+  id: EncryptionKeyExterior
+  name: ключ шифрования охраны периметра
+  components:
+  - type: EncryptionKey
+    channels:
+    - Exterior
+    defaultChannel: Exterior
+  - type: Sprite
+    layers:
+    - state: crypt_containment
+    - state: exterior_label

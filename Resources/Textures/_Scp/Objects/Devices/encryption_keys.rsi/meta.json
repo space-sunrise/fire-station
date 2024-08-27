@@ -1,0 +1,20 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "By: ",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "crypt_containment"
+        },
+        {
+            "name": "spec_label"
+        },
+        {
+            "name": "exterior_label"
+        }
+    ]
+}

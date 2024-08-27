@@ -1,5 +1,5 @@
 ﻿- type: entity
-  parent: ClothingUniformBase
+  parent: UnsensoredClothingUniformBase
   id: ClothingUniformClassD
   name: униформа класса Д
   description: От него пахнет дерьмом.. Причем чужим..

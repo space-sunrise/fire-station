@@ -1,0 +1,13 @@
+﻿- type: radioChannel
+  id: Containment
+  name: chat-radio-containment
+  keycode: 'й'
+  frequencey: 1360
+  color: "#bfbfbf"
+
+- type: radioChannel
+  id: Exterior
+  name: chat-radio-exterior
+  keycode: 'у'
+  frequencey: 1361
+  color: "#48c36f"

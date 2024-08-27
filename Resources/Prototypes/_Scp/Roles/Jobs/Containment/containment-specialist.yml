@@ -12,6 +12,10 @@
 - type: startingGear
   id: ContainmentSpecialistGear
   equipment:
-    id: PassengerPDA
-    ears: ClothingHeadsetGrey
-  
+    ears: ClothingHeadsetContainment
+    jumpsuit: ClothingUniformPathologist
+    gloves: ClothingHandsGlovesPathologist
+    shoes: ClothingShoesPathologist
+    neck: KeyCardLevel3
+    pocket1: BoxFolderClipboardWhite
+    pocket2: Pen

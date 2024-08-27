@@ -12,5 +12,7 @@
 - type: startingGear
   id: ClassDGear
   equipment:
-    id: PassengerPDA
-    ears: ClothingHeadsetGrey
+    ears: ClothingHeadsetClassD
+    jumpsuit: ClothingUniformClassD
+    shoes: ClothingShoesClassD
+    neck: KeyCardLevel5

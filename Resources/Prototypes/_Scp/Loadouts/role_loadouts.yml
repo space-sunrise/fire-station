@@ -1,0 +1,23 @@
+﻿- type: roleLoadout
+  id: JobClassD
+  groups:
+  - GroupTankHarness
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+
+- type: roleLoadout
+  id: JobContainmentSpecialist
+  groups:
+  - GroupTankHarness
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
