@@ -1,0 +1,11 @@
+﻿- type: entity
+  parent: ClothingNeckBase
+  id: ManagerTie
+  name: галстук менеджера
+  description: Зеленый галстук, который умеют завязывать только единицы
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Neck/manager_neck.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Neck/manager_neck.rsi

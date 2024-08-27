@@ -1,0 +1,11 @@
+﻿- type: entity
+  parent: [ ClothingShoesBase, ClothingShoesBaseButcherable ]
+  id: ClothingShoesManager
+  name: ботинки менеджера
+  description: Простые коричневые ботинки, сшитые из натуральной кожи и проданные в гипермаркете по скидке
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Shoes/manager_boots.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Shoes/manager_boots.rsi

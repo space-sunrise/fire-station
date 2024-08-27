@@ -15,7 +15,6 @@
   - type: Item
     sprite: _Sunrise/Objects/Weapons/Guns/Snipers/dragunov/tiny.rsi
   - type: GunWieldBonus
-    fireRate: 1
     minAngle: -23
     maxAngle: -44
   - type: Gun
@@ -81,7 +80,6 @@
   - type: Item
     sprite: _Sunrise/Objects/Weapons/Guns/Snipers/br-64/tiny.rsi
   - type: GunWieldBonus
-    fireRate: 1
     minAngle: -23
     maxAngle: -43
   - type: Gun
