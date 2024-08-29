@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "SUNRISE",
+  "size": {
+    "x": 32,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "scp-173",
+      "directions": 4
+    }
+  ]
+}

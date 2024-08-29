@@ -17,7 +17,6 @@
   weight: -10
   roles:
   # - Bartender
-  # - Borg
   - Botanist
   # - Boxer
   # - Chaplain
@@ -120,15 +119,35 @@
   - FieldScientist # полевой учёный
   - Roboticist  # Параучёный
 
-# - type: department
-#   id: Specific
-#   description: department-Specific-description
-#   color: "#9FED58"
-#   weight: 5  # Sunrise-weights
-#   roles:
-#   - Boxer
-#   - Reporter
-#   - Zookeeper
-#   - Psychologist
-#   - Barber  # Sunrise-Roles
-#   primary: false
+#- type: department
+#  id: Silicon
+#  sort: 0
+#  name: department-Silicon
+#  description: department-Silicon-description
+#  color: "#D381C9"
+#  roles:
+#  - StationAi
+#  - Borg
+#  - MedicalBorg
+#  - EngineerBorg
+#  - MinerBorg
+#  - JanitorBorg
+#  - ServiceBorg
+#  - SecurityBorg
+#  - ClownBorg
+#  - PeaceBorg
+#  primary: false
+
+#- type: department
+#  id: Specific
+#  name: department-Specific
+#  description: department-Specific-description
+#  color: "#9FED58"
+#  weight: 5  # Sunrise-weights
+#  roles:
+#  - Boxer
+#  - Reporter
+#  - Zookeeper
+#  - Psychologist
+#  - Barber  # Sunrise-Roles
+#  primary: false

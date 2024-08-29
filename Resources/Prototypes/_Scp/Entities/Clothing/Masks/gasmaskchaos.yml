@@ -1,0 +1,18 @@
+﻿- type: entity
+  parent: ClothingMaskGas
+  id: ClothingMaskGasChaos
+  suffix: SCP
+  name: газовая маска повстанцев хаоса
+  description: Газовая маска, которую носят известные всем похитители аномалий
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Mask/gaschaos.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Mask/gaschaos.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9

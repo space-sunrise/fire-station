@@ -312,7 +312,7 @@
     soundGunshot:
       path: /Audio/_Sunrise/Weapons/Guns/Laser/EG_Pistol.ogg
   - type: Sprite
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_P.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_P.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -334,7 +334,7 @@
   id: WeaponEarthGovLaserRifle
   components:
   - type: Sprite
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_R/big.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_R/big.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -342,9 +342,9 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Clothing
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_R/tiny.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_R/tiny.rsi
   - type: Item
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_R/tiny.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_R/tiny.rsi
   - type: GunWieldBonus
     minAngle: -23
     maxAngle: -44
@@ -370,7 +370,7 @@
     fireCost: 50
   - type: Wieldable
   - type: UseDelay
-    delay: 1.5
+    delay: 0.5
 
 - type: entity
   name: EarthGov laser carbine
@@ -378,7 +378,7 @@
   id: WeaponEarthGovLaserCarbine
   components:
   - type: Sprite
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_C/big.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_C/big.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -386,9 +386,9 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Clothing
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_C/tiny.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_C/tiny.rsi
   - type: Item
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_C/tiny.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_C/tiny.rsi
     size: Large
   - type: GunWieldBonus
     minAngle: -23
@@ -425,7 +425,7 @@
   id: WeaponEarthGovLaserMG
   components:
   - type: Sprite
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_MG/big.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_MG/big.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -433,9 +433,9 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Clothing
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_MG/tiny.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_MG/tiny.rsi
   - type: Item
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_MG/tiny.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_MG/tiny.rsi
     size: Huge
   - type: GunWieldBonus
     minAngle: -12
@@ -466,7 +466,7 @@
     fireCost: 50
   - type: Wieldable
   - type: UseDelay
-    delay: 2.5
+    delay: 0.5
 
 - type: entity
   name: EarthGov Experemental X-Ray
@@ -476,7 +476,7 @@
   description: Earth Government Experemental x-ray weapon, it looks like it emits radiation.
   components:
   - type: Sprite
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EGE_XR/big.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EGE_XR/big.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -484,9 +484,9 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Clothing
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EGE_XR/tiny.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EGE_XR/tiny.rsi
   - type: Item
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EGE_XR/tiny.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EGE_XR/tiny.rsi
   - type: GunWieldBonus
     minAngle: -23
     maxAngle: -44
@@ -512,7 +512,7 @@
     fireCost: 100
   - type: Wieldable
   - type: UseDelay
-    delay: 2.5
+    delay: 0.5
 
 - type: entity
   name: EarthGov heavy laser rifle
@@ -520,7 +520,7 @@
   id: WeaponEarthGovLaserSniper
   components:
   - type: Sprite
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_Sniper/big.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_Sniper/big.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -528,9 +528,9 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Clothing
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_Sniper/tiny.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_Sniper/tiny.rsi
   - type: Item
-    sprite: _Sunrise/Entities/Objects/Weapons/Guns/Battery/EG_Sniper/tiny.rsi
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_Sniper/tiny.rsi
   - type: GunRequiresWield
   - type: GunWieldBonus
     minAngle: -93
@@ -557,5 +557,128 @@
     fireCost: 100
   - type: Wieldable
   - type: UseDelay
-    delay: 2.5
+    delay: 0.5
   - type: ZoomableGun
+
+- type: entity
+  name: S-13 «Чёрная мамба»
+  parent: BaseWeaponBattery
+  id: WeaponSyndieLaserGun
+  description: Модернизированный «Лектер», переделаный под плазменый энергомодуль.
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/syndielasergun.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Item
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/syndielasergun.rsi
+    size: Huge
+  - type: Clothing
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/syndielasergun.rsi
+  - type: Gun
+    minAngle: 20
+    maxAngle: 30
+    angleIncrease: 4
+    angleDecay: 16
+    fireRate: 1.1
+    selectedMode: SemiAuto
+    soundGunshot:
+      collection: red_mamba
+      params:
+        volume: 5
+    availableModes:
+    - SemiAuto
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletSyndiPlasma3
+    fireCost: 100
+  - type: Wieldable
+  - type: GunWieldBonus
+    minAngle: -18
+    maxAngle: -29
+  - type: Battery
+    maxCharge: 3000
+    startingCharge: 3000
+    
+- type: entity
+  name: SAM-300
+  parent: BaseWeaponBattery
+  id: WeaponSyndieLaserPistol
+  description: Лазерный пистолет Синдиката, разработанный на базе пистолета капитана НТ.
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/syndielaserpistol.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Item
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/syndielaserpistol.rsi
+    size: Small
+  - type: Clothing
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/syndielaserpistol.rsi
+  - type: Gun
+    minAngle: 5
+    maxAngle: 9
+    angleIncrease: 2
+    angleDecay: 6
+    fireRate: 4
+    selectedMode: SemiAuto
+    soundGunshot:
+      collection: plasma_pistol
+    availableModes:
+      - SemiAuto
+      - FullAuto
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletSyndiPlasma
+    fireCost: 50
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 10
+
+- type: entity
+  name: UVL-21 «Виверна»
+  parent: BaseWeaponBattery
+  id: WeaponLaserMinigun
+  description: Тяжелое оружие массового поражения разработанное на основе минигана.
+  components:
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Back
+  - type: Sprite
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/laserminigun.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-4
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Item
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/laserminigun.rsi
+    size: Huge
+  - type: Gun
+    minAngle: 8
+    maxAngle: 15
+    angleIncrease: 4
+    angleDecay: 16
+    fireRate: 4.75
+    selectedMode: FullAuto
+    soundGunshot:
+      collection: syndi_plasma
+      params:
+        volume: -1
+    availableModes:
+    - FullAuto
+  - type: ProjectileBatteryAmmoProvider
+    proto: BulletSyndiPlasma2
+    fireCost: 25
+  - type: MultiHandedItem
+  - type: Battery
+    maxCharge: 7500
+    startingCharge: 7500

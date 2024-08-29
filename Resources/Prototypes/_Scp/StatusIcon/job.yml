@@ -1,74 +1,74 @@
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconContainmentSpecialist
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: ContainmentSpecialist
 
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconBiologicalDefenseSpecialist
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: BiologicalDefenseSpecialist
 
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconContainmentPsycologist
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: ContainmentPsycologist
 
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconSeniorContainmentGuard
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: SeniorContainmentGuard
 
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconContainmentGuard
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: ContainmentGuard
 
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconClassD
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: ClassD
 
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconGovernor
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: Governor
 
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconPerimeterSecurityOfficer
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: PerimeterSecurityOfficer
 
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconFieldScientist
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: FieldScientist
 
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconSiteManager
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: SiteManager
 
-- type: statusIcon
+- type: jobIcon
   parent: JobIcon
   id: JobIconHeadOfContainment
   icon:

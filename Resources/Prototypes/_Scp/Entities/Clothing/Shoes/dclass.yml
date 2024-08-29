@@ -1,0 +1,11 @@
+﻿- type: entity
+  parent: [ ClothingShoesBase, ClothingShoesBaseButcherable ]
+  id: ClothingShoesClassD
+  name: боты
+  description: Боты, не самого лучшего качества
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Shoes/shoesClassD.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Shoes/shoesClassD.rsi

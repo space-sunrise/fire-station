@@ -1,5 +1,8 @@
-﻿using Content.Shared._Scp.Blinking;
+﻿using System.Linq;
+using Content.Shared._Scp.Blinking;
+using Content.Shared._Scp.Scp173;
 using Content.Shared.Alert;
+using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Random;
@@ -13,13 +16,13 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly EyeClosingSystem _closingSystem = default!;
+    [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    private static readonly TimeSpan BlinkingInterval = TimeSpan.FromSeconds(20);
-    private static readonly TimeSpan BlinkingDuration = TimeSpan.FromSeconds(1);  // 1.5 секунды моргание - отвлекает
+    public static TimeSpan BlinkingInterval = TimeSpan.FromSeconds(20);
+    public static TimeSpan BlinkingDuration = TimeSpan.FromSeconds(1);
 
-    private TimeSpan _nextTick = TimeSpan.Zero;
-    private readonly TimeSpan _refreshCooldown = TimeSpan.FromSeconds(1);
+    private static readonly TimeSpan BlinkingIntervalVariance = TimeSpan.FromSeconds(5);
 
     public override void Initialize()
     {
@@ -50,20 +53,24 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     {
         base.Update(frameTime);
 
-        if (_nextTick > _gameTiming.CurTime)
-            return;
-
-        _nextTick += _refreshCooldown;
-
         var query = EntityQueryEnumerator<BlinkableComponent>();
         while (query.MoveNext(out var uid, out var blinkableComponent))
         {
-            if (_mobState.IsIncapacitated(uid))
+            if (!IsScp173Nearby(uid))
+            {
+                ResetBlink(uid, blinkableComponent);
                 continue;
+            }
+
+            if (_mobState.IsIncapacitated(uid))
+            {
+                ResetBlink(uid, blinkableComponent);
+                continue;
+            }
 
             if (_closingSystem.AreEyesClosed(uid))
             {
-                blinkableComponent.NextBlink = _gameTiming.CurTime + BlinkingInterval;
+                ResetBlink(uid, blinkableComponent);
                 continue;
             }
 
@@ -80,10 +87,17 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
     private void Blink(EntityUid uid, BlinkableComponent component)
     {
-        component.NextBlink = _gameTiming.CurTime + BlinkingInterval;
         component.BlinkEndTime = _gameTiming.CurTime + BlinkingDuration;
+        var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
+        component.NextBlink = _gameTiming.CurTime + BlinkingInterval + TimeSpan.FromSeconds(variance);
 
         Dirty(uid, component);
+    }
+
+    private bool IsScp173Nearby(EntityUid uid)
+    {
+        var entities = GetScp173().ToList();
+        return entities.Count != 0 && entities.Any(scp => _examine.InRangeUnOccluded(uid, scp, 12f, ignoreInsideBlocker:false));
     }
 
     private void UpdateAlert(EntityUid uid, BlinkableComponent component)
@@ -105,14 +119,39 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     public override void ResetBlink(EntityUid uid, BlinkableComponent component)
     {
         base.ResetBlink(uid, component);
-        if (component.NextBlink == TimeSpan.Zero)  // Иначе вся станция будет моргать одновременно
-        {
-            component.NextBlink = _gameTiming.CurTime + _random.NextFloat() * BlinkingInterval;
-        }
-        else
-        {
-            component.NextBlink = _gameTiming.CurTime + BlinkingInterval;
-        }
+
+        var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
+        component.NextBlink = _gameTiming.CurTime + BlinkingInterval + TimeSpan.FromSeconds(variance);
         Dirty(uid, component);
+
+        UpdateAlert(uid, component);
+    }
+
+    public override bool CanCloseEyes(EntityUid uid)
+    {
+        if (!TryComp<BlinkableComponent>(uid, out var blinkableComponent))
+            return false;
+
+        return !IsBlind(uid, blinkableComponent);
+    }
+
+    public override void ForceBlind(EntityUid uid, BlinkableComponent component, TimeSpan duration)
+    {
+        base.ForceBlind(uid, component, duration);
+        var currentTime = _gameTiming.CurTime;
+        component.BlinkEndTime = currentTime + duration;
+        // Set next blink slightly after forced blindness ends
+        component.NextBlink = component.BlinkEndTime + TimeSpan.FromSeconds(1);
+        Dirty(uid, component);
+        UpdateAlert(uid, component);
+    }
+
+    public IEnumerable<Entity<Scp173Component>> GetScp173()
+    {
+        var query = EntityManager.AllEntityQueryEnumerator<Scp173Component>();
+        while (query.MoveNext(out var uid, out var component))
+        {
+            yield return (uid, component);
+        }
     }
 }

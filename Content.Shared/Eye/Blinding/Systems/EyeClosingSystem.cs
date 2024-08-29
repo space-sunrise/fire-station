@@ -77,6 +77,11 @@ public sealed class EyeClosingSystem : EntitySystem
         if (eyelids.Comp.EyesClosed == value)
             return;
 
+        // Sunrise-SCP edit start.
+        if (!_blinking.CanCloseEyes(eyelids))
+            return;
+        // Sunrise-SCP edit end.
+
         eyelids.Comp.EyesClosed = value;
         Dirty(eyelids);
 

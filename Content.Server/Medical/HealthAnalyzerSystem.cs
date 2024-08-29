@@ -83,25 +83,28 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     {
         if (args.Target == null ||
             !args.CanReach ||
-            !TryComp<DamageableComponent>(args.Target, out var damageableComponent) ||
+            !TryComp<DamageableComponent>(args.Target, out var damageableComponent) || // Sunrise-Edit
             !HasComp<MobStateComponent>(args.Target) ||
             !_cell.HasDrawCharge(uid, user: args.User))
             return;
 
+        // Sunrise-Start
         if (uid.Comp.DamageContainers is not null &&
             damageableComponent.DamageContainerID is not null &&
             !uid.Comp.DamageContainers.Contains(damageableComponent.DamageContainerID))
-        {
             return;
-        }
+        // Sunrise-End
 
         _audio.PlayPvs(uid.Comp.ScanningBeginSound, uid);
 
-        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, uid.Comp.ScanDelay, new HealthAnalyzerDoAfterEvent(), uid, target: args.Target, used: uid)
+        var doAfterCancelled = !_doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, uid.Comp.ScanDelay, new HealthAnalyzerDoAfterEvent(), uid, target: args.Target, used: uid)
         {
             NeedHand = args.NeedHand, // Sunrise-Edit
-            BreakOnMove = true
+            BreakOnMove = true,
         });
+
+        if (args.Target == args.User || doAfterCancelled || uid.Comp.Silent)
+            return;
 
         var msg = Loc.GetString("health-analyzer-popup-scan-target", ("user", Identity.Entity(args.User, EntityManager)));
         _popupSystem.PopupEntity(msg, args.Target.Value, args.Target.Value, PopupType.Medium);

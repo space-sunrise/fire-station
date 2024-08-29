@@ -8,8 +8,6 @@
   - SimpleSpaceMobBase
   components:
   - type: Scp999
-    wallAction: Scp999Wallify
-    restAction: Scp999Rest
     states:
       Default: SCP-999
       Wall: SCP-999-wall
@@ -39,6 +37,15 @@
         - MobMask
         layer:
         - MobLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - None
+        layer:
+        - None
+        density: 1000
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -136,7 +143,7 @@
   - type: Puller
     needsHands: false
   - type: SmileSlime
-    action: SmileAffection
+    action: Scp999Affection
     soundSpecifier: /Audio/Animals/cat_meow.ogg
     actionTime: 5
     affectionPopupText: "smile-affection-popup"
@@ -189,3 +196,7 @@
     reflects:
     - Energy
     - NonEnergy
+  - type: GiveActions
+    actions:
+    - Scp999Wallify
+    - Scp999Rest

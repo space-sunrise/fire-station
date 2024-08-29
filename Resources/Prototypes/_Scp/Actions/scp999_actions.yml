@@ -9,7 +9,7 @@
     raiseOnUser: true
     itemIconStyle: BigAction
     useDelay: 3
-    icon: /Textures/_Scp/Actions/wallify.png
+    icon: /Textures/_Scp/Actions/scp999actioniconwallify.png
 
 - type: entity
   id: Scp999Rest
@@ -22,6 +22,25 @@
     raiseOnUser: true
     itemIconStyle: BigAction
     useDelay: 3
-    icon: /Textures/_Scp/Actions/rest.png
+    icon: /Textures/_Scp/Actions/scp999actioniconrest.png
     checkCanInteract: false
     checkConsciousness: false
+
+- type: entity
+  id: Scp999Affection
+  name: Обнимашки
+  description: Затянуть цель в объятия, восстановив ей небольшое количество здоровья.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTargetAction
+    range: 3
+    targetingIndicator: true
+    useDelay: 30
+    icon: _Scp/Actions/scp999actionlove.png
+    whitelist:
+      components:
+      - Body
+    canTargetSelf: false
+    interactOnMiss: false
+    ignoreContainer: true
+    event: !type:SmileLoveActionEvent

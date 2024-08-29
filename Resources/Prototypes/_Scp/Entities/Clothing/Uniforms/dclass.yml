@@ -1,0 +1,11 @@
+﻿- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformClassD
+  name: униформа класса Д
+  description: От него пахнет дерьмом.. Причем чужим..
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/uniformClassD.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/uniformClassD.rsi

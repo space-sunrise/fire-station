@@ -3,6 +3,7 @@
   parent:
   - BaseMob
   - MobDamageable
+  - MobPolymorphable
   - MobCombat
   - StripableInventoryBase
   id: BaseMobSpecies
@@ -240,10 +241,10 @@
   - type: Carriable
   - type: CanEscapeInventory
   # Sunrise-End
-  # Sunrise-Scp-Start
-  - type: Blinkable
-  - type: EyeClosing
-  # Sunrise-Scp-End
+  # Sunrise-SCP Start
+  - type: Blinkable # Sunrise-SCP edit.
+  - type: EyeClosing # Sunrise-SCP edit.
+  # Sunrise-SCP End
   - type: Barotrauma
     damage:
       types:

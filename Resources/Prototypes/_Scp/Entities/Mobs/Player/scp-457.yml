@@ -84,7 +84,7 @@
   - type: Speech
     speechSounds: Lizard
   - type: TTS
-    veice: Neco
+    voice: Neco
   - type: PassiveDamage
     allowedStates:
     - Alive

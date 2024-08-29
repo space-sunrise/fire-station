@@ -41,6 +41,9 @@
       "name": "folder-sec-doc"
     },
     {
+        "name": "folder-stamp-inverse"
+    },
+    {
       "name": "label_cart"
     },
     {
@@ -233,6 +236,9 @@
     },
     {
       "name": "paper_stamp-ntrep"
+    },
+    {
+      "name": "paper_stamp-greytide"
     }
   ]
 }

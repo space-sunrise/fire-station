@@ -16,9 +16,9 @@
   description: Толстый шлем пилота, обеспечивающий хорошую защиту головы.
   components:
   - type: Sprite
-    sprite: _Sunrise/Entities/Clothing/Head/Hats/pilothelmet.rsi
+    sprite: _Sunrise/Clothing/Head/Hats/pilothelmet.rsi
   - type: Clothing
-    sprite: _Sunrise/Entities/Clothing/Head/Hats/pilothelmet.rsi
+    sprite: _Sunrise/Clothing/Head/Hats/pilothelmet.rsi
   - type: Armor
     modifiers:
       coefficients:
@@ -26,3 +26,14 @@
         Slash: 0.85
         Piercing: 0.85
         Heat: 0.85
+
+- type: entity
+  parent: ClothingHeadHelmetSwat
+  id: ClothingHeadHelmetPubg
+  name: Алтын
+  description: Укрепленный шлем, использующийся для подавления и разжигания бунтов
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Clothing/Head/Helmets/tfhelm.rsi
+  - type: Clothing
+    sprite: _Sunrise/Clothing/Head/Helmets/tfhelm.rsi

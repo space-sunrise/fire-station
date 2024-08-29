@@ -49,4 +49,9 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
             _overlayMan.RemoveOverlay(_overlay);
         }
     }
+
+    public override bool CanCloseEyes(EntityUid uid)
+    {
+        return false;
+    }
 }

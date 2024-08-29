@@ -5,6 +5,7 @@ using Content.Server._Sunrise.Station;
 using Content.Server.Administration.Managers;
 using Content.Server.GameTicking.Events;
 using Content.Server.Ghost;
+using Content.Server.Shuttles.Components;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Spawners.Components;
 using Content.Server.Speech.Components;
@@ -95,8 +96,7 @@ namespace Content.Server.GameTicking
             var spawnableStations = GetSpawnableStations();
             var assignedJobs = _stationJobs.AssignJobs(profiles, spawnableStations);
 
-            // Sunrise-Edit: Так как у нас неограничены не только пассажиры а и другие роли это не работает корректно, отправляя игроков играть за охранников КТ.
-            //_stationJobs.AssignOverflowJobs(ref assignedJobs, playerNetIds, profiles, spawnableStations);
+            _stationJobs.AssignOverflowJobs(ref assignedJobs, playerNetIds, profiles, spawnableStations);
 
             // Calculate extended access for stations.
             var stationJobCounts = spawnableStations.ToDictionary(e => e, _ => 0);
@@ -303,28 +303,13 @@ namespace Content.Server.GameTicking
                     Loc.GetString("job-greet-station-name", ("stationName", metaData.EntityName)));
             }
 
-            // Arrivals is unable to do this during spawning as no actor is attached yet.
-            // We also want this message last.
-            if (!silent && lateJoin && _arrivals.Enabled)
-            {
-                var arrival = _arrivals.NextShuttleArrival();
-                if (arrival == null)
-                {
-                    _chatManager.DispatchServerMessage(player, Loc.GetString("latejoin-arrivals-direction"));
-                }
-                else
-                {
-                    _chatManager.DispatchServerMessage(player,
-                        Loc.GetString("latejoin-arrivals-direction-time", ("time", $"{arrival:mm\\:ss}")));
-                }
-            }
-
             // We raise this event directed to the mob, but also broadcast it so game rules can do something now.
             PlayersJoinedRoundNormally++;
             var aev = new PlayerSpawnCompleteEvent(mob,
                 player,
                 jobId,
                 lateJoin,
+                silent,
                 PlayersJoinedRoundNormally,
                 station,
                 character,
@@ -344,7 +329,7 @@ namespace Content.Server.GameTicking
         }
 
         /// <summary>
-        /// Makes a player join into the game and spawn on a staiton.
+        /// Makes a player join into the game and spawn on a station.
         /// </summary>
         /// <param name="player">The player joining</param>
         /// <param name="station">The station they're spawning on</param>
@@ -524,6 +509,7 @@ namespace Content.Server.GameTicking
         public ICommonSession Player { get; }
         public string? JobId { get; }
         public bool LateJoin { get; }
+        public bool Silent { get; }
         public EntityUid Station { get; }
         public HumanoidCharacterProfile Profile { get; }
         public bool CanBeAntag { get; } // Sunrise-Sponsor
@@ -535,6 +521,7 @@ namespace Content.Server.GameTicking
             ICommonSession player,
             string? jobId,
             bool lateJoin,
+            bool silent,
             int joinOrder,
             EntityUid station,
             HumanoidCharacterProfile profile,
@@ -544,6 +531,7 @@ namespace Content.Server.GameTicking
             Player = player;
             JobId = jobId;
             LateJoin = lateJoin;
+            Silent = silent;
             Station = station;
             Profile = profile;
             JoinOrder = joinOrder;

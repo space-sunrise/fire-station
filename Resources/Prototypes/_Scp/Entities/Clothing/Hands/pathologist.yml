@@ -1,0 +1,11 @@
+﻿- type: entity
+  parent: ClothingHandsGlovesColorBlack
+  id: ClothingHandsGlovesPathologist
+  name: перчатки патологиста
+  description: Пахнут альпийской свежестью
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Hands/glovesPathologist.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Hands/glovesPathologist.rsi

@@ -1,0 +1,11 @@
+﻿- type: entity
+  parent: ClothingHeadHelmetSwat
+  id: ClothingHeadHelmetSwatScp
+  name: шлем
+  description: Очень робастный шлем.
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/swat.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/swat.rsi

@@ -6,8 +6,8 @@
   order:
     - category: Health
     - category: Stamina
-    - alertType: Blinking # Sunrise-SCP edit.
     - alertType: ChangelingChemicals
+    - alertType: Blinking # Sunrise-SCP edit.
     - alertType: SuitPower
     - category: Internals
     - alertType: Fire
@@ -29,7 +29,7 @@
 
 - type: entity
   id: AlertSpriteView
-  categories: [ HideSpawnMenu  ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     layers:

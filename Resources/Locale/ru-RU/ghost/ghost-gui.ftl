@@ -1,6 +1,8 @@
 ghost-gui-return-to-body-button = Вернуться в тело
 ghost-gui-ghost-warp-button = Телепорт призрака
 ghost-gui-ghost-roles-button = Роли призраков ({ $count })
+ghost-gui-toggle-ghost-visibility-popup-on = Видимость привидений включена.
+ghost-gui-toggle-ghost-visibility-popup-off = Видимость привидений отключена.
 ghost-gui-toggle-ghost-visibility-popup = Видимость других призраков изменена.
 ghost-gui-toggle-lighting-manager-popup = Рендеринг света переключён.
 ghost-gui-toggle-fov-popup = Поле зрения переключено.
@@ -30,6 +32,5 @@ ghost-roles-window-no-roles-available-label = В настоящее время �
 ghost-roles-window-rules-footer = Кнопка станет доступна через { $time } секунд (эта задержка нужна, чтобы убедиться, что вы прочитали правила).
 ghost-return-to-body-title = Вернуться в тело
 ghost-return-to-body-text = Вас воскрешают! Вернуться в своё тело?
-
 # Sunrise-edit
 ghost-gui-change-server = Другие сервера

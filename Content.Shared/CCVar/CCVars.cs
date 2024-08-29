@@ -110,32 +110,6 @@ namespace Content.Shared.CCVar
         public static readonly CVarDef<bool>
             EventsEnabled = CVarDef.Create("events.enabled", true, CVar.ARCHIVE | CVar.SERVERONLY);
 
-        /// <summary>
-        ///     Average time (in minutes) for when the ramping event scheduler should stop increasing the chaos modifier.
-        ///     Close to how long you expect a round to last, so you'll probably have to tweak this on downstreams.
-        /// </summary>
-        public static readonly CVarDef<float>
-            EventsRampingAverageEndTime = CVarDef.Create("events.ramping_average_end_time", 40f, CVar.ARCHIVE | CVar.SERVERONLY);
-
-        /// <summary>
-        ///     Average ending chaos modifier for the ramping event scheduler.
-        ///     Max chaos chosen for a round will deviate from this
-        /// </summary>
-        public static readonly CVarDef<float>
-            EventsRampingAverageChaos = CVarDef.Create("events.ramping_average_chaos", 6f, CVar.ARCHIVE | CVar.SERVERONLY);
-
-        /// <summary>
-        ///     Minimum time between meteor swarms in minutes.
-        /// </summary>
-        public static readonly CVarDef<float>
-            MeteorSwarmMinTime = CVarDef.Create("events.meteor_swarm_min_time", 5.0f, CVar.ARCHIVE | CVar.SERVERONLY);  // Sunrise-Scp edit
-
-        /// <summary>
-        ///     Maximum time between meteor swarms in minutes.
-        /// </summary>
-        public static readonly CVarDef<float>
-            MeteorSwarmMaxTime = CVarDef.Create("events.meteor_swarm_max_time", 30.0f, CVar.ARCHIVE | CVar.SERVERONLY);  // Sunrise-Scp edit
-
         /*
          * Game
          */
@@ -217,7 +191,7 @@ namespace Content.Shared.CCVar
         ///     Prototype to use for map pool.
         /// </summary>
         public static readonly CVarDef<string>
-            GameMapPool = CVarDef.Create("game.map_pool", "DefaultMapPool", CVar.SERVERONLY);
+            GameMapPool = CVarDef.Create("game.map_pool", "SunriseMapPool", CVar.SERVERONLY); // Sunrise-Edit
 
         /// <summary>
         /// The depth of the queue used to calculate which map is next in rotation.
@@ -424,13 +398,13 @@ namespace Content.Shared.CCVar
         /// The prototype to use for secret weights.
         /// </summary>
         public static readonly CVarDef<string> SecretWeightPrototype =
-            CVarDef.Create("game.secret_weight_prototype", "Secret", CVar.SERVERONLY);
+            CVarDef.Create("game.secret_weight_prototype", "SunriseSecret", CVar.SERVERONLY); // Sunrise-Edit
 
         /// <summary>
         /// The id of the sound collection to randomly choose a sound from and play when the round ends.
         /// </summary>
         public static readonly CVarDef<string> RoundEndSoundCollection =
-            CVarDef.Create("game.round_end_sound_collection", "RoundEnd", CVar.SERVERONLY);
+            CVarDef.Create("game.round_end_sound_collection", "SunriseRoundEnd", CVar.SERVERONLY); // Sunrise-Edit
 
         /// <summary>
         /// Whether or not to add every player as a global override to PVS at round end.
@@ -449,6 +423,12 @@ namespace Content.Shared.CCVar
         /// </remarks>
         public static readonly CVarDef<bool> GameTabletopPlace =
             CVarDef.Create("game.tabletop_place", false, CVar.SERVERONLY);
+
+        /// <summary>
+        /// If true, contraband severity can be viewed in the examine menu
+        /// </summary>
+        public static readonly CVarDef<bool> ContrabandExamine =
+            CVarDef.Create("game.contraband_examine", true, CVar.SERVER | CVar.REPLICATED);
 
         /*
          * Discord
@@ -733,8 +713,6 @@ namespace Content.Shared.CCVar
             CVarDef.Create("npc.max_updates", 512);
 
         public static readonly CVarDef<bool> NPCEnabled = CVarDef.Create("npc.enabled", true);
-
-        public static readonly CVarDef<bool> DisableWithoutPlayers = CVarDef.Create("npc.disable_without_players", true);
 
         /// <summary>
         /// Should NPCs pathfind when steering. For debug purposes.
@@ -1348,24 +1326,12 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<bool> WhitelistEnabled =
             CVarDef.Create("whitelist.enabled", false, CVar.SERVERONLY);
-
         /// <summary>
-        ///     The loc string to display as a disconnect reason when someone is not whitelisted.
+        ///     Specifies the whitelist prototypes to be used by the server. This should be a comma-separated list of prototypes.
+        ///     If a whitelists conditions to be active fail (for example player count), the next whitelist will be used instead. If no whitelist is valid, the player will be allowed to connect.
         /// </summary>
-        public static readonly CVarDef<string> WhitelistReason =
-            CVarDef.Create("whitelist.reason", "whitelist-not-whitelisted", CVar.SERVERONLY);
-
-        /// <summary>
-        ///     If the playercount is below this number, the whitelist will not apply.
-        /// </summary>
-        public static readonly CVarDef<int> WhitelistMinPlayers =
-            CVarDef.Create("whitelist.min_players", 0, CVar.SERVERONLY);
-
-        /// <summary>
-        ///     If the playercount is above this number, the whitelist will not apply.
-        /// </summary>
-        public static readonly CVarDef<int> WhitelistMaxPlayers =
-            CVarDef.Create("whitelist.max_players", int.MaxValue, CVar.SERVERONLY);
+        public static readonly CVarDef<string> WhitelistPrototypeList =
+            CVarDef.Create("whitelist.prototype_list", "basicWhitelist", CVar.SERVERONLY);
 
         /*
          * VOTE
@@ -2029,6 +1995,12 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<float> GhostRoleTime =
             CVarDef.Create("ghost.role_time", 3f, CVar.REPLICATED | CVar.SERVER);
+
+        /// <summary>
+        /// If ghost role lotteries should be made near-instanteous.
+        /// </summary>
+        public static readonly CVarDef<bool> GhostQuickLottery =
+            CVarDef.Create("ghost.quick_lottery", false, CVar.SERVERONLY);
 
         /// <summary>
         /// Whether or not to kill the player's mob on ghosting, when it is in a critical health state.

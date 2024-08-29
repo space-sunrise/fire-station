@@ -1,0 +1,98 @@
+﻿- type: accessLevel
+  id: Level0
+  name: keycard-access-level-0
+
+- type: accessLevel
+  id: Level1
+  name: keycard-access-level-1
+
+- type: accessLevel
+  id: Level2
+  name: keycard-access-level-2
+
+- type: accessLevel
+  id: Level3
+  name: keycard-access-level-3
+
+- type: accessLevel
+  id: Level4
+  name: keycard-access-level-4
+
+- type: accessLevel
+  id: Level5
+  name: keycard-access-level-5
+
+- type: accessLevel
+  id: LevelScpSec
+  name: keycard-access-level-ScpSec
+
+- type: accessLevel
+  id: LevelMtfLeader
+  name: keycard-access-level-MtfLeader
+
+- type: accessGroup
+  id: Level0
+  tags:
+  - Level0
+  - Level1
+  - Level2
+  - Level3
+  - Level4
+  - Level5
+  - LevelScpSec
+  - LevelMtfLeader
+
+- type: accessGroup
+  id: Level1
+  tags:
+  - Level1
+  - Level2
+  - Level3
+  - Level4
+  - Level5
+  - LevelScpSec
+  - LevelMtfLeader
+
+- type: accessGroup
+  id: Level2
+  tags:
+  - Level2
+  - Level3
+  - Level4
+  - Level5
+
+- type: accessGroup
+  id: LevelScpSec
+  tags:
+  - Level2
+  - Level3
+  - Level4
+  - Level5
+  - LevelScpSec
+
+- type: accessGroup
+  id: Level3
+  tags:
+  - Level3
+  - Level4
+  - Level5
+  - LevelMtfLeader
+
+- type: accessGroup
+  id: Level4
+  tags:
+  - Level4
+  - Level5
+  - LevelMtfLeader
+
+- type: accessGroup
+  id: LevelMtfLeader
+  tags:
+  - Level4
+  - Level5
+  - LevelMtfLeader
+
+- type: accessGroup
+  id: Level5
+  tags:
+  - Level5

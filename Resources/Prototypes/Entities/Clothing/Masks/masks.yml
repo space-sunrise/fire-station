@@ -4,6 +4,8 @@
   name: gas mask
   description: A face-covering mask that can be connected to an air supply.
   components:
+  - type: DiseaseImmuneClothing
+    prob: 0.35
   - type: Sprite
     sprite: Clothing/Mask/gas.rsi
   - type: Clothing
@@ -21,7 +23,7 @@
     hideOnToggle: true
 
 - type: entity
-  parent: ClothingMaskGas
+  parent: [ClothingMaskGas, BaseRestrictedContraband]
   id: ClothingMaskGasSecurity
   name: security gas mask
   description: A standard issue Security gas mask.
@@ -41,7 +43,7 @@
         Heat: 0.95
 
 - type: entity
-  parent: ClothingMaskGas
+  parent: [ClothingMaskGas, BaseSyndicateContraband]
   id: ClothingMaskGasSyndicate
   name: syndicate gas mask
   description: A close-fitting tactical mask that can be connected to an air supply.
@@ -77,7 +79,7 @@
         Heat: 0.80
 
 - type: entity
-  parent: ClothingMaskGasAtmos
+  parent: [ClothingMaskGasAtmos, BaseCommandContraband]
   id: ClothingMaskGasCaptain
   name: captain's gas mask
   description: Nanotrasen cut corners and repainted a spare atmospheric gas mask, but don't tell anyone.
@@ -92,7 +94,7 @@
 - type: entity
   parent: ClothingMaskGasAtmos
   id: ClothingMaskGasCentcom
-  name: CentCom gas mask
+  name: CentComm gas mask
   description: Oooh, gold and green. Fancy! This should help as you sit in your office.
   components:
   - type: Sprite
@@ -104,7 +106,7 @@
   - type: FilterMask
 
 - type: entity
-  parent: ClothingMaskGas
+  parent: [ClothingMaskGas, BaseCargoContraband]
   id: ClothingMaskGasExplorer
   name: explorer gas mask
   description: A military-grade gas mask that can be connected to an air supply.
@@ -184,7 +186,7 @@
       Steel: 50
       Plastic: 100
   - type: StaticPrice
-    price: 12.5 # increases in price after decomposed into raw materials
+    price: 30 # increases in price after decomposed into raw materials
 
 - type: entity
   parent: ClothingMaskBase
@@ -295,6 +297,8 @@
   components:
   - type: Sprite
     sprite: Clothing/Mask/sterile.rsi
+  - type: DiseaseImmuneClothing
+    prob: 0.4
   - type: Clothing
     sprite: Clothing/Mask/sterile.rsi
   - type: IngestionBlocker
@@ -318,6 +322,8 @@
     sprite: Clothing/Mask/muzzle.rsi
   - type: Clothing
     sprite: Clothing/Mask/muzzle.rsi
+    equipDelay: 3
+    unequipDelay: 3
   - type: IngestionBlocker
   - type: AddAccentClothing
     accent: ReplacementAccent

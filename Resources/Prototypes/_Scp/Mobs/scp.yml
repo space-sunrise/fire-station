@@ -1,0 +1,41 @@
+﻿- type: entity
+  abstract: true
+  parent:
+  - BaseSimpleMob
+  - MobCombat
+  - MobBloodstream
+  - MobFlammable
+  id: BaseSCP
+
+- type: entity
+  parent: BaseSCP
+  id: Scp173
+  components:
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 1.5
+    useSound:
+      path: /Audio/Items/crowbar.ogg
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/scp-173.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: scp-173
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - FootstepSound
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5
+    baseSprintSpeed: 15
+  - type: Scp173
+  - type: ScpRestriction
+  - type: GiveActions
+    actions:
+    - Scp173Blind
+    - Scp173Clog
+    - Scp173DamageStructure
+    - Scp173FastMovement

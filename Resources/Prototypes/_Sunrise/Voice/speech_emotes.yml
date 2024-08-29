@@ -189,3 +189,40 @@
   - хряк.
   - хряк
   - хряк!
+
+- type: emote
+  id: Vomit
+  name: Тошнота
+  category: Vocal
+  chatMessages: [тошнитыы]
+
+- type: emote
+  id: Headache
+  name: Головная боль
+  category: Vocal
+  chatMessages: [голова болитыы]
+
+- type: emote
+  id: Insult
+  name: Инсульт
+  category: Vocal
+  chatMessages: [инсультыы]
+
+- type: emote
+  id: Otryjka
+  name: Отрыжка
+  category: Vocal
+  chatMessages: ["рыгает"]
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatTriggers:
+  - рыгает.
+  - рыг.
+  - рыгает!
+  - рыг!
+  - рыгает
+  - рыг
