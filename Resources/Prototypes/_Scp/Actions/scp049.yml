@@ -43,7 +43,8 @@
     canTargetSelf: false
     interactOnMiss: false
     whitelist:
-      components: MobState
+      components:
+      - MobState
 
 - type: entity
   id: ActionScp049SelfHeal

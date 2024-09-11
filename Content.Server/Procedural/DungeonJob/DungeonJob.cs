@@ -289,6 +289,9 @@ public sealed partial class DungeonJob : Job<List<Dungeon>>
             case WormCorridorDunGen worm:
                 await PostGen(worm, data, dungeons[^1], reservedTiles, random);
                 break;
+            case LimitedEntityDunGen entityDunGen:
+                await PostGen(entityDunGen, dungeons[^1], random);
+                break;
             default:
                 throw new NotImplementedException();
         }

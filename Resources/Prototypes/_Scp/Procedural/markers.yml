@@ -1,0 +1,53 @@
+﻿- type: Tag
+  id: UpStairs106
+
+- type: entity
+  id: Scp106Backrooms
+  parent: MarkerBase
+  components:
+  - type: Scp106BackRoomMark
+
+- type: entity
+  id: 106BaseStairs
+  parent: BaseStructure
+  name: stairs
+  abstract: true
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Sprite
+    sprite: Structures/stairs.rsi
+    state: stairs_steel
+    drawdepth: FloorObjects
+    offset: 0,0.25
+  - type: Physics
+    bodyType: Static
+  - type: Staircase
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        shape:
+          !type:PhysShapeCircle
+          radius: 5
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+
+- type: entity
+  id: StairsUp106
+  parent: 106BaseStairs
+  suffix: Up
+  components:
+  - type: Tag
+    tags:
+    - UpStairs106
+
+- type: entity
+  id: StairsDown106
+  parent: 106BaseStairs
+  suffix: Down

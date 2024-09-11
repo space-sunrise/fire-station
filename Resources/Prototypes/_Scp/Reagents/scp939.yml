@@ -1,0 +1,39 @@
+﻿- type: reagent
+  id: АМН-С227
+  name: reagent-name-scp500
+  desc: reagent-desc-scp500
+  physicalDesc: reagent-physicaldesc-scp500
+  flavor: funny
+  color: "#57E6E633"
+  metabolisms:
+    Poison:
+      effects:
+      - !type:Emote
+        emote: Yawn
+        showInChat: true
+        probability: 0.1
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.65
+        sprintSpeedModifier: 0.65
+      - !type:DrowsinessStatusEffect
+        minAccidentTime: 30
+        maxAccidentTime: 30
+        minSleepTime: 30
+        maxSleepTime: 30
+        refresh: false
+
+
+- type: entity
+  parent: BaseFoam
+  id: АМН-С227Smoke
+  name: smoke
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: Effects/chemsmoke.rsi
+    state: chemsmoke
+  - type: TimedDespawn
+    lifetime: 10
+  - type: Tag
+    tags:
+    - HideContextMenu

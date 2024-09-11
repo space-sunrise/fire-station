@@ -144,11 +144,11 @@
   - type: Item
     sprite: _Sunrise/Objects/Weapons/Guns/Snipers/bauer127/tiny.rsi
   - type: GunWieldBonus
-    fireRate: 1
+    # fireRate: 1  # Sunrise-fire edit
     minAngle: -23
     maxAngle: -43
   - type: Gun
-    # fireRate: 1.25  # Sunrise-fire edit
+    fireRate: 1.5  # Sunrise-fire edit
     minAngle: 24
     maxAngle: 45
     soundGunshot:

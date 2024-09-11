@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "size":
+  {
+    "x": 48,
+    "y": 48
+  },
+  "license": "Нельзя использовать без раз. Макса Габа(автора)",
+  "copyright": "ripmax",
+  "states":
+  [
+    {
+      "name": "alive",
+      "directions": 4
+    },
+
+    {
+      "name": "dead",
+      "directions": 1
+    },
+
+    {
+      "name": "asleep",
+      "directions": 1
+    }
+  ]
+}

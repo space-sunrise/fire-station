@@ -1,0 +1,23 @@
+﻿- type: entity
+  id: Scp106BackroomsAction
+  name: Телепорт в бекрумсы.
+  description: "Телепортирует вас в бекрумсы. Нужно стоять на месте!"
+  components:
+  - type: InstantAction
+    event: !type:Scp106BackroomsAction
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 360
+    # TODO: ICON
+
+- type: entity
+  id: Scp106RandomTeleportAction
+  name: Телепорт на станцию.
+  description: "Телепортирует вас на станцию. Нужно стоять на месте!"
+  components:
+  - type: InstantAction
+    event: !type:Scp106RandomTeleportAction
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 360
+    # TODO: ICON

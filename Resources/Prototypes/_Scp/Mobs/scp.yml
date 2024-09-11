@@ -41,3 +41,48 @@
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepSCP173
+
+- type: entity
+  parent: BaseSCP
+  id: Scp106
+  components:
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 1.5
+    useSound:
+      path: /Audio/Items/crowbar.ogg
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/scp-106.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: 106
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
+  - type: GiveActions
+    actions:
+    - Scp106BackroomsAction
+    - Scp106RandomTeleportAction
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2
+  - type: Scp106
+  - type: ScpRestriction
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      5000: Dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
