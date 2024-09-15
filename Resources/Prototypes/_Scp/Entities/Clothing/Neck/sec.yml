@@ -3,6 +3,7 @@
   id: ClothingNeckMantleSecurity
   name: security guard's mantle
   description: Extraordinary decorative drape over the shoulders.
+  suffix: SCP14
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Neck/security_mantle.rsi

@@ -12,8 +12,9 @@
   equipment:
     mask: ClothingMaskSecurityBandBlack
     shoes: ClothingShoesBootsSecurityGuard # ClothingShoesBootsWinterSecurityGuard
-    gloves: ClothingHandsGlovesSecurity # ClothingHandsGlovesWinterSecurity
+    gloves: ClothingHandsGlovesSecurity # id:
     outerClothing: ClothingOuterArmorSecurity # ClothingOuterArmorSecurity2
     head: ClothingHeadHelmetSecurity # ClothingHeadHatSecBlack ClothingHeadClosedHelmetSecurity ClothingHeadSecurityBeret
     jumpsuit: ClothingUniformSecurity # ClothingUniformSecurity2 ClothingUniformSecurity3
     neck: ClothingNeckMantleSecurity
+    eyes: ClothingEyesGlassesSecurityGuard
