@@ -2,6 +2,8 @@
 using Content.Server.Cuffs;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
+using Content.Server.Mind;
+using Content.Server.Spawners.Components;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mobs;
@@ -10,6 +12,8 @@ using Content.Shared.NPC.Components;
 using Content.Shared.NPC.Systems;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
+using Robust.Shared.Random;
+using Robust.Shared.Utility;
 
 namespace Content.Server._Scp.GameRules.ScpSl;
 
@@ -47,6 +51,10 @@ public sealed class ScpSlGameRuleSystem : GameRuleSystem<ScpSlGameRuleComponent>
 {
     [Dependency] private readonly NpcFactionSystem _npcFactionSystem = default!;
     [Dependency] private readonly CuffableSystem _cuffableSystem = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly MindSystem _mindSystem = default!;
+
+
 
     protected override string SawmillName => "ScpSl";
 
@@ -55,6 +63,38 @@ public sealed class ScpSlGameRuleSystem : GameRuleSystem<ScpSlGameRuleComponent>
         base.Initialize();
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<ScpSlEscapeZoneComponent, StartCollideEvent>(OnEscapeZoneCollide);
+        SubscribeLocalEvent<RulePlayerSpawningEvent>(OnPlayerSpawning);
+    }
+
+    private void OnPlayerSpawning(RulePlayerSpawningEvent ev)
+    {
+        var pool = ev.PlayerPool.ShallowClone();
+
+        SpawnScp(pool);
+
+        Spawn(pool, ScpSlSpawnType.Scientist);
+        Spawn(pool, ScpSlSpawnType.Security);
+        Spawn(pool, ScpSlSpawnType.ClassD);
+    }
+
+    private List<Entity<TransformComponent, ScpSlSpawnComponent>> GetSpawnPoints(ScpSlSpawnType spawnType)
+    {
+        var spawnPointsQuery = EntityQueryEnumerator<ScpSlSpawnComponent, TransformComponent>();
+
+        List<Entity<TransformComponent, ScpSlSpawnComponent>> spawnPoints = [];
+
+        while (spawnPointsQuery.MoveNext(out var entityUid, out var spawnPointsComponent, out var transformComponent))
+        {
+            if (spawnPointsComponent.SpawnType != spawnType)
+            {
+                continue;
+            }
+
+            var entity = new Entity<TransformComponent, ScpSlSpawnComponent>(entityUid, transformComponent, spawnPointsComponent);
+            spawnPoints.Add(entity);
+        }
+
+        return spawnPoints;
     }
 
     private void OnEscapeZoneCollide(Entity<ScpSlEscapeZoneComponent> ent, ref StartCollideEvent args)
@@ -108,6 +148,35 @@ public sealed class ScpSlGameRuleSystem : GameRuleSystem<ScpSlGameRuleComponent>
     protected override void Started(EntityUid uid, ScpSlGameRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
         base.Started(uid, component, gameRule, args);
+        args.
+    }
+
+    private void Spawn(List<ICommonSession> pool, ScpSlSpawnType spawnType)
+    {
+        var spawnPoints = GetSpawnPoints(spawnType);
+
+        if (spawnPoints.Count == 0)
+        {
+            Log.Error($"No spawnpoints provided for {spawnType}");
+            return;
+        }
+    }
+
+    private void SpawnScp(List<ICommonSession> pool)
+    {
+        var spawnPoints = GetSpawnPoints(ScpSlSpawnType.Scp);
+        _random.Shuffle(spawnPoints);
+
+        var totalScps = _random.Next(2, spawnPoints.Count);
+
+        for (var i = 0; i < totalScps; i++)
+        {
+            var (spawnPoint, xform, spawnComponent) = spawnPoints[i];
+            var player = _random.PickAndTake(pool);
+
+            var scp = Spawn(spawnComponent.ScpProto!, xform.Coordinates);
+            _mindSystem.ControlMob(player.UserId, scp);
+        }
     }
 
     protected override void Added(EntityUid uid, ScpSlGameRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
