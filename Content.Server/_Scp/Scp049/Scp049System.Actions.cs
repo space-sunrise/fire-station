@@ -8,6 +8,7 @@ using Content.Server.NPC.HTN;
 using Content.Server.Zombies;
 using Content.Shared._Scp.Scp049;
 using Content.Shared.DoAfter;
+using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -28,6 +29,8 @@ public sealed partial class Scp049System
     [Dependency] private readonly MindSystem _mindSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly HandsSystem _handsSystem = default!;
+    [Dependency] private readonly TagSystem _tagSystem = default!;
+
 
     private void InitializeActions()
     {
@@ -72,6 +75,13 @@ public sealed partial class Scp049System
         if (!hasTool)
         {
             var message = Loc.GetString("scp049-missing-surgery-tool", ("instrument", Loc.GetEntityData(scpEntity.Comp.NextTool).Name));
+            _popupSystem.PopupEntity(message, scpEntity, scpEntity, PopupType.MediumCaution);
+            return;
+        }
+
+        if (!_tagSystem.HasTag(args.Target, "Humanoid"))
+        {
+            var message = Loc.GetString("scp049-cant-resurrect-non-humanoid");
             _popupSystem.PopupEntity(message, scpEntity, scpEntity, PopupType.MediumCaution);
             return;
         }
