@@ -105,7 +105,7 @@
     drawdepth: Mobs
     sprite: _Scp/Mobs/scp-096.rsi
     layers:
-    - state: SCP-096
+    - state: SCP-096-2
       map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default" ]
   - type: StatusEffects
     allowed:
