@@ -103,9 +103,9 @@
   - type: Speech
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Scp/Mobs/scp-999.rsi
+    sprite: _Scp/Mobs/scp-096.rsi
     layers:
-    - state: SCP-999
+    - state: SCP-096
       map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default" ]
   - type: StatusEffects
     allowed:
