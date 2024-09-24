@@ -2,7 +2,10 @@
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Pulling.Events;
+using Robust.Shared.Network;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Timing;
 
@@ -13,6 +16,10 @@ public abstract class SharedScp096System : EntitySystem
 {
     [Dependency] private readonly SharedDoorSystem _doorSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
+    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
+    [Dependency] private readonly INetManager _netManager = default!;
+
 
 
     public override void Initialize()
@@ -43,6 +50,7 @@ public abstract class SharedScp096System : EntitySystem
         {
             var scpEntity = new Entity<Scp096Component>(scpUid, scp096Component);
             UpdateScp096(scpEntity);
+            UpdateVisualState(scpEntity);
         }
     }
 
@@ -60,10 +68,7 @@ public abstract class SharedScp096System : EntitySystem
         }
     }
 
-    protected virtual void OnRageTimeExceeded(Entity<Scp096Component> scpEntity)
-    {
-
-    }
+    protected virtual void OnRageTimeExceeded(Entity<Scp096Component> scpEntity) { }
 
     protected virtual void HandleDoorCollision(Entity<Scp096Component> scpEntity, Entity<DoorComponent> doorEntity)
     {
@@ -101,6 +106,33 @@ public abstract class SharedScp096System : EntitySystem
         {
             args.Cancelled = true;
         }
+    }
+
+    private void UpdateVisualState(Entity<Scp096Component> scpEntity)
+    {
+        if (!_gameTiming.IsFirstTimePredicted)
+        {
+            return;
+        }
+
+        Scp096VisualsState state;
+        var physicsComponent = Comp<PhysicsComponent>(scpEntity);
+        var moving = physicsComponent.LinearVelocity.Length() > 0;
+
+        if (_mobStateSystem.IsCritical(scpEntity) || scpEntity.Comp.Pacified)
+        {
+            state = Scp096VisualsState.Dead;
+        }
+        else if (scpEntity.Comp.InRageMode)
+        {
+            state = moving ? Scp096VisualsState.Running : Scp096VisualsState.IdleAgro;
+        }
+        else
+        {
+            state = moving ? Scp096VisualsState.Walking : Scp096VisualsState.Idle;
+        }
+
+        _appearanceSystem.SetData(scpEntity, Scp096Visuals.Visuals, state);
     }
 
 }
