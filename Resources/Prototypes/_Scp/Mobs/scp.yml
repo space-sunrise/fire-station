@@ -2,13 +2,19 @@
   abstract: true
   parent:
   - BaseSimpleMob
-  - MobCombat
   - MobBloodstream
   - MobFlammable
   id: BaseSCP
 
 - type: entity
-  parent: BaseSCP
+  abstract: true
+  parent:
+  - BaseSCP
+  - MobCombat
+  id: BaseSCPCombat
+
+- type: entity
+  parent: BaseSCPCombat
   id: Scp173
   name: SCP-173
   description: scp173-desc
@@ -46,7 +52,7 @@
       collection: FootstepSCP173
 
 - type: entity
-  parent: BaseSCP
+  parent: BaseSCPCombat
   id: Scp106
   name: SCP-106
   components:

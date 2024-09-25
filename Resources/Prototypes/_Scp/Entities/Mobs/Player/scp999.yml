@@ -3,9 +3,7 @@
   name: SCP-999
   description: Желешка
   suffix: SCP-999
-  parent:
-  - MobBloodstream
-  - SimpleSpaceMobBase
+  parent: BaseSCP
   components:
   - type: Scp999
     states:
@@ -124,17 +122,6 @@
   - type: Body
     prototype: Slimes
     requiredLegs: 1
-  - type: MeleeWeapon
-    altDisarm: false
-    soundHit:
-      path: /Audio/Weapons/punch3.ogg
-    angle: 0
-    animation: WeaponArcPunch
-    damage:
-      types:
-        Blunt: 4
-        Structural: 4
-        Caustic: 8
   - type: InteractionPopup
     interactDelay: 0.5
     interactSuccessSpawn: EffectHearts
