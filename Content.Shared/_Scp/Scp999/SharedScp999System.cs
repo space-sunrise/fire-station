@@ -30,7 +30,12 @@ public abstract class SharedScp999System : EntitySystem
 
     private void OnExamined(EntityUid uid, Scp999Component component, ref ExaminedEvent args)
     {
-        if (args.IsInDetailsRange)
-            args.PushMarkup(Loc.GetString("sleep-examined", ("target", Identity.Entity(uid, EntityManager))));
+        if (!args.IsInDetailsRange)
+            return;
+
+        if (component.CurrentState != Scp999States.Rest)
+            return;
+
+        args.PushMarkup(Loc.GetString("sleep-examined", ("target", Identity.Entity(uid, EntityManager))));
     }
 }

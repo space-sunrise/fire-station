@@ -1,7 +1,6 @@
 ﻿using Content.Shared._Scp.Scp999;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
-using Content.Shared.Movement.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
@@ -34,6 +33,7 @@ public sealed class Scp999System : SharedScp999System
             return;
 
         component.CurrentState = Scp999States.Default;
+        Dirty(uid, component);
     }
 
     private void OnWallifyActionEvent(EntityUid uid, Scp999Component component, ref Scp999WallifyActionEvent args)
@@ -63,15 +63,14 @@ public sealed class Scp999System : SharedScp999System
                 ev = new Scp999WallifyEvent(GetNetEntity(uid), component.States[Scp999States.Wall]);
 
                 component.CurrentState = Scp999States.Wall;
+                Dirty(uid, component);
+
                 _transform.AnchorEntity(uid, Transform(uid));
 
                 // shitcode
                 _physics.TrySetBodyType(uid, BodyType.Dynamic, fixturesComponent, physicsComponent, xform);
                 _physics.SetCollisionLayer(uid, "fix2", fix2, 221);
                 _physics.SetCollisionMask(uid, "fix2", fix2, 158);
-
-                EnsureComp<NoRotateOnInteractComponent>(uid);
-                EnsureComp<NoRotateOnMoveComponent>(uid);
 
                 break;
 
@@ -80,15 +79,14 @@ public sealed class Scp999System : SharedScp999System
                 ev = new Scp999WallifyEvent(GetNetEntity(uid), component.States[Scp999States.Default]);
 
                 component.CurrentState = Scp999States.Default;
+                Dirty(uid, component);
+
                 _transform.Unanchor(uid, Transform(uid));
 
                 // shitcode
                 _physics.TrySetBodyType(uid, BodyType.KinematicController, fixturesComponent, physicsComponent, xform);
                 _physics.SetCollisionLayer(uid, "fix2", fix2, 0);
                 _physics.SetCollisionMask(uid, "fix2", fix2, 0);
-
-                RemComp<NoRotateOnMoveComponent>(uid);
-                RemComp<NoRotateOnInteractComponent>(uid);
 
                 break;
 
@@ -116,6 +114,8 @@ public sealed class Scp999System : SharedScp999System
                 ev = new Scp999RestEvent(GetNetEntity(uid), component.States[Scp999States.Rest]);
 
                 component.CurrentState = Scp999States.Rest;
+                Dirty(uid, component);
+
                 EnsureComp<BlockMovementComponent>(uid);
 
                 break;
@@ -125,6 +125,8 @@ public sealed class Scp999System : SharedScp999System
                 ev = new Scp999RestEvent(GetNetEntity(uid), component.States[Scp999States.Default]);
 
                 component.CurrentState = Scp999States.Default;
+                Dirty(uid, component);
+
                 RemComp<BlockMovementComponent>(uid);
 
                 break;
