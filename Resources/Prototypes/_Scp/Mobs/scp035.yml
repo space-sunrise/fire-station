@@ -1,0 +1,276 @@
+﻿- type: entity
+  parent: ClothingMaskBase
+  id: ClothingMaskScp035
+  components:
+  - type: Sprite
+    sprite: _Scp/scp-035.rsi
+    layers:
+    - state: icon
+      map: [ "mask" ]
+  - type: Clothing
+    sprite: _Scp/scp-035.rsi
+  - type: SelfEquipOnly
+  - type: IngestionBlocker
+  - type: FlashImmunity
+  - type: EyeProtection
+  - type: Scp035Mask
+
+- type: entity
+  name: rat servant
+  id: MobServant035
+  parent: [ SimpleMobBase, MobCombat ]
+  description: He's da mini rat. He don't make da roolz.
+  categories: [ HideSpawnMenu ] #Must be configured to a King or the AI breaks.
+  components:
+  - type: CombatMode
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 3.5
+    baseSprintSpeed : 3.5
+  - type: InputMover
+  - type: MobMover
+  - type: HTN
+    rootTask:
+      task: Scp035ServantCompound
+    blackboard:
+      IdleRange: !type:Single
+        3.5
+      FollowCloseRange: !type:Single
+        2.0
+      FollowRange: !type:Single
+        3.0
+  - type: Reactive
+    groups:
+      Flammable: [Touch]
+      Extinguish: [Touch]
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: Mobs/Animals/rat.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base", "movement"]
+      state: rat
+    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded"]
+      state: eyes
+      shader: unshaded
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: rat-moving
+    noMovementLayers:
+      movement:
+        state: rat
+  - type: Physics
+    bodyType: KinematicController
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 30 #Bulky by mouse standards...
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MobState
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      15: Critical
+      30: Dead
+  - type: Stamina
+    critThreshold: 60
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+    angle: 0
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Slash: 5
+        Piercing: 3
+  - type: Body
+    prototype: Rat
+    requiredLegs: 1 # TODO: More than 1 leg
+  - type: Hunger # probably should be prototyped
+    thresholds:
+      Overfed: 200
+      Okay: 150
+      Peckish: 100
+      Starving: 50
+      Dead: 0
+    baseDecayRate: 0.01666666666
+  - type: Thirst
+    thresholds:
+      OverHydrated: 600
+      Okay: 450
+      Thirsty: 300
+      Parched: 150
+      Dead: 0
+    baseDecayRate: 0.1
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: rat
+        BaseUnshaded: eyes
+      Critical:
+        Base: dead
+      Dead:
+        Base: splat
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatRat
+      amount: 1
+  - type: Vocal
+    sounds:
+      Male: Mouse
+      Female: Mouse
+      Unsexed: Mouse
+    wilhelmProbability: 0.001
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
+  - type: NoSlip
+  - type: MobPrice
+    price: 500 # rat wealth
+  - type: MobsterAccent
+    isBoss: false
+  - type: Speech
+    speechVerb: SmallMob
+  - type: GuideHelp
+    guides:
+    - MinorAntagonists
+  - type: FireVisuals
+    sprite: Mobs/Effects/onfire.rsi
+    normalState: Mouse_burning
+
+- type: htnCompound
+  id: Scp035ServantCompound
+  branches:
+  - preconditions:
+    - !type:HasOrdersPrecondition
+      orders: enum.MaskOrderType.Stay
+    tasks:
+    - !type:HTNCompoundTask
+      task: IdleCompound
+  - preconditions:
+    - !type:HasOrdersPrecondition
+      orders: enum.MaskOrderType.Follow
+    tasks:
+    - !type:HTNCompoundTask
+      task: FollowCompound
+  - preconditions:
+    - !type:HasOrdersPrecondition
+      orders: enum.MaskOrderType.Kill
+    tasks:
+    - !type:HTNCompoundTask
+      task: RatServantTargetAttackCompound
+  - preconditions:
+    - !type:HasOrdersPrecondition
+      orders: enum.MaskOrderType.Loose
+    tasks:
+    - !type:HTNCompoundTask
+      task: SimpleHostileCompound
+
+- type: entity
+  id: ActionScp035RaiseArmy
+  name: Raise Army
+  description: Spend some hunger to summon an allied rat to help defend you.
+  components:
+  - type: InstantAction
+    useDelay: 4
+    icon:
+      sprite: Interface/Actions/actions_rat_king.rsi
+      state: ratKingArmy
+    event: !type:MaskRaiseArmyActionEvent
+
+- type: entity
+  id: ActionScp035OrderStay
+  name: Stay
+  description: Command your army to stand in place.
+  components:
+  - type: InstantAction
+    useDelay: 1
+    icon:
+      sprite: Interface/Actions/actions_rat_king.rsi
+      state: stayOff
+    iconOn:
+      sprite: Interface/Actions/actions_rat_king.rsi
+      state: stay
+    event:
+      !type:MaskOrderActionEvent
+      type: Stay
+    priority: 5
+
+- type: entity
+  id: ActionScp035OrderFollow
+  name: Follow
+  description: Command your army to follow you around.
+  components:
+  - type: InstantAction
+    useDelay: 1
+    icon:
+      sprite: Interface/Actions/actions_rat_king.rsi
+      state: followOff
+    iconOn:
+      sprite: Interface/Actions/actions_rat_king.rsi
+      state: follow
+    event:
+      !type:MaskOrderActionEvent
+      type: Follow
+    priority: 6
+
+- type: entity
+  id: ActionScp035OrderKill
+  name: Kill 'Em
+  description: Command your army to attack whoever you point at.
+  components:
+  - type: InstantAction
+    useDelay: 1
+    icon:
+      sprite: Interface/Actions/actions_rat_king.rsi
+      state: attackOff
+    iconOn:
+      sprite: Interface/Actions/actions_rat_king.rsi
+      state: attack
+    event:
+      !type:MaskOrderActionEvent
+      type: Kill
+    priority: 7
+
+- type: entity
+  id: ActionScp035OrderLoose
+  name: Loose
+  description: Command your army to act at their own will.
+  components:
+  - type: InstantAction
+    useDelay: 1
+    icon:
+      sprite: Interface/Actions/actions_rat_king.rsi
+      state: looseOff
+    iconOn:
+      sprite: Interface/Actions/actions_rat_king.rsi
+      state: loose
+    event:
+      !type:MaskOrderActionEvent
+      type: Loose
+    priority: 8
+
+- type: entity
+  id: ActionScp035Stun
+  name: Гипноз.
+  components:
+  - type: EntityTargetAction
+    useDelay: 180
+    icon:
+      sprite: Interface/Actions/actions_rat_king.rsi
+      state: ratKingArmy
+    priority: 9
+    event: !type:MaskStunActionEvent
+    canTargetSelf: false
+    interactOnMiss: false
+    whitelist:
+      components: MobState

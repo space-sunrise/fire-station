@@ -4,10 +4,10 @@
   description: department-Cargo-description
   color: "#A46106"
   roles:
-  - CargoTechnician  # Оператор Грузов
-  - Quartermaster  # Координатор Логистики
-  - SalvageSpecialist  # Оператор Материалов
-  # - MinerBorg # Sunrise-Edit
+  - CargoTechnician
+  - Quartermaster
+  - SalvageSpecialist
+  - MinerBorg # Sunrise-Edit
 
 - type: department
   id: Civilian
@@ -16,27 +16,46 @@
   color: "#9FED58"
   weight: -10
   roles:
-  # - Bartender
+  - Bartender
   - Botanist
-  # - Boxer
-  # - Chaplain
+  - Boxer
+  - Chaplain
   - Chef
-  # - Clown
+  - Clown
   - HeadOfPersonnel
   - Janitor
   - Lawyer
-  # - Librarian
-  # - Mime
-  # - Musician
+  - Librarian
+  - Mime
+  - Musician
   - Passenger
   - Reporter
-  - Visitor
-  # - Zookeeper
-  # - ServiceWorker
-  # - JanitorBorg # Sunrise-Edit
-  # - ServiceBorg # Sunrise-Edit
-  # - ClownBorg # Sunrise-Edit
-  # - Barber # Sunrise-Roles
+  # - Visitor
+  - Zookeeper
+  - ServiceWorker
+  - JanitorBorg # Sunrise-Edit
+  - ServiceBorg # Sunrise-Edit
+  - ClownBorg # Sunrise-Edit
+  - Barber # Sunrise-Roles
+
+- type: department
+  id: CentralCommand
+  name: department-CentralCommand
+  description: department-CentralCommand-description
+  color: "#0c344d"
+  roles:
+  - CentCommOperator # Sunrise-Edit
+  - CentCommOfficial # Sunrise-Edit
+  - CBURN
+  - ERTLeader
+  - ERTChaplain
+  - ERTJanitor
+  - ERTMedical
+  - ERTSecurity
+  - ERTEngineer
+  - DeathSquad
+  editorHidden: true
+  weight: 120
 
 - type: department
   id: Command
@@ -44,17 +63,25 @@
   description: department-Command-description
   color: "#052EED" # Sunrise-Edit
   roles:
-  - Captain  # Глава Комплекса
-  - ChiefEngineer  # Глава Инженерного Отдела
-  - ChiefMedicalOfficer  # Начальник Медицинского Отдела
-  - HeadOfPersonnel  # Видоизменяется на золотистые тона
+  - Captain
+  - ChiefEngineer
+  - ChiefMedicalOfficer
+  - HeadOfPersonnel
   - HeadOfSecurity
   - ResearchDirector
-  - Quartermaster  # Координатор Логистики
-  - HeadOfContainment  # Глава Отдела Сдерживания
-  - SiteManager  # Менеджер Комплекса
-  - Governor  # комендант
-#  - NanoTrasenRepresentative  #Sunrise-Edit
+  - Quartermaster
+  - CBURN
+  - ERTLeader
+  - ERTChaplain
+  - ERTJanitor
+  - ERTMedical
+  - ERTSecurity
+  - ERTEngineer
+  - DeathSquad
+  - CentCommOfficial
+  - NanoTrasenRepresentative  #Sunrise-Edit
+  - Adjutant  #Sunrise-edit
+  - NanoTrasenRepresentative  #Sunrise-Edit
   primary: false
   weight: 100
 
@@ -67,10 +94,10 @@
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
-  - SeniorEngineer  # старший технический специалист
-  - StationEngineer  # технический специалист
+  - SeniorEngineer  # Sunrise-Senior
+  - StationEngineer
   - TechnicalAssistant
-  # - EngineerBorg # Sunrise-Edit
+  - EngineerBorg # Sunrise-Edit
 
 - type: department
   id: Medical
@@ -85,7 +112,7 @@
   - MedicalIntern
   - Psychologist
   - Paramedic
-  # - MedicalBorg # Sunrise-Edit
+  - MedicalBorg # Sunrise-Edit
 
 - type: department
   id: Security
@@ -95,16 +122,15 @@
   weight: 20
   roles:
   - HeadOfSecurity
-  - PerimeterSecurityOfficer  # Офицер Охраны Периметра
-  - SeniorOfficer  # сержант службы безопасности
+  - SeniorOfficer  # Sunrise-Senior
   - SecurityCadet
   - SecurityOfficer
-  - Detective  # агент внутренней безопасности
+  - Detective
   - Warden
-  - Brigmedic  # медик службы безопасности
+  - Brigmedic  # Sunrise-Brigmedic
   # - SecurityPilot # Sunrise-SecurityPilot
-  # - SecurityBorg # Sunrise-Edit
-  # - SecurityCombatBorg # Sunrise-Edit
+  - SecurityBorg # Sunrise-Edit
+  - SecurityCombatBorg # Sunrise-Edit
 
 - type: department
   id: Science
@@ -113,41 +139,40 @@
   color: "#D381C9"
   roles:
   - ResearchDirector
-  - SeniorResearcher  # Параучёный
+  - SeniorResearcher  # Sunrise-Senior
   - Scientist
   - ResearchAssistant
-  - FieldScientist # полевой учёный
-  - Roboticist  # Параучёный
+  - Roboticist  # Sunrise-Edit
 
-#- type: department
-#  id: Silicon
-#  sort: 0
-#  name: department-Silicon
-#  description: department-Silicon-description
-#  color: "#D381C9"
-#  roles:
-#  - StationAi
-#  - Borg
-#  - MedicalBorg # Sunrise-Edit
-#  - EngineerBorg # Sunrise-Edit
-#  - MinerBorg # Sunrise-Edit
-#  - JanitorBorg # Sunrise-Edit
-#  - ServiceBorg # Sunrise-Edit
-#  - SecurityBorg # Sunrise-Edit
-#  - ClownBorg # Sunrise-Edit
-#  - PeaceBorg # Sunrise-Edit
-#  primary: false
+- type: department
+  id: Silicon
+  sort: 0
+  name: department-Silicon
+  description: department-Silicon-description
+  color: "#D381C9"
+  roles:
+  - StationAi
+  - Borg
+  - MedicalBorg # Sunrise-Edit
+  - EngineerBorg # Sunrise-Edit
+  - MinerBorg # Sunrise-Edit
+  - JanitorBorg # Sunrise-Edit
+  - ServiceBorg # Sunrise-Edit
+  - SecurityBorg # Sunrise-Edit
+  - ClownBorg # Sunrise-Edit
+  - PeaceBorg # Sunrise-Edit
+  primary: false
 
-#- type: department
-#  id: Specific
-#  name: department-Specific
-#  description: department-Specific-description
-#  color: "#9FED58"
-#  weight: 5  # Sunrise-weights
-#  roles:
-#  - Boxer
-#  - Reporter
-#  - Zookeeper
-#  - Psychologist
-#  - Barber  # Sunrise-Roles
-#  primary: false
+- type: department
+  id: Specific
+  name: department-Specific
+  description: department-Specific-description
+  color: "#9FED58"
+  weight: 5  # Sunrise-weights
+  roles:
+  - Boxer
+  - Reporter
+  - Zookeeper
+  - Psychologist
+  - Barber  # Sunrise-Roles
+  primary: false

@@ -1,0 +1,60 @@
+﻿- type: entity
+  id: Scp939
+  name: SCP-939
+  parent:
+  - BaseMob
+  - MobDamageable
+  - MobCombat
+  - MobBloodstream
+  - MobAtmosStandard
+  - MobFlammable
+  components:
+  - type: Scp939
+  - type: MeleeWeapon
+    soundHit:
+      collection: Punch
+    angle: 30
+    animation: WeaponArcFist
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 10
+        Slash: 10
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      4000: Critical
+      4500: Dead
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/scp-939.rsi
+    layers:
+    - map: [ "enum.Scp939Layers.Base" ]
+      state: alive
+  - type: Buckle
+  - type: ZombieImmune
+  - type: SSDIndicator
+  - type: Stripping
+  - type: VoiceMask
+  - type: DogVision
+  - type: UserInterface
+    interfaces:
+      enum.VoiceMaskUIKey.Key:
+        type: Scp939Bui
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 4
+  - type: Puller
+    needsHands: false
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      2000: 0.9
+      3000: 0.8
+      3500: 0.7
+  - type: Speech
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+    # - IgnorePortals # TODO: Remove comment after SCP-096 merge in master

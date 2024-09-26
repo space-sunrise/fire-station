@@ -1,26 +1,8 @@
 - type: department
-  id: Containment
-  name: department-Containment
-  description: department-containment-description
-  color: "#999999"
-  weight: 30
+  id: LowAccessPersonnel
+  name: department-low-access-personnel
+  description: department-low-access-personnel
+  color: "#FF5297"
+  weight: 80
   roles:
-    - HeadOfContainment  # Глава Отдела Сдерживания
-    - ContainmentSpecialist
-    - BiologicalDefenseSpecialist
-    - ContainmentPsycologist
-    - SeniorContainmentGuard
-    - ContainmentGuard
-    - ClassD
-
-- type: department
-  id: Outer
-  name: department-Outer
-  description: department-Outer-description
-  color: "#DE3A3A"
-  weight: 20
-  roles:
-  - Governor  # комендант
-  - PerimeterSecurityOfficer  # Офицер Охраны Периметра
-  - FieldScientist # полевой учёный
-  primary: false
+  - ClassD

@@ -1,6 +1,8 @@
 - type: soundCollection
   id: LobbyMusic
   files:
-    - /Audio/Lobby/absconditus.ogg
-    - /Audio/Lobby/space_asshole.ogg
-    - /Audio/Lobby/endless_space.ogg
+#    - /Audio/Lobby/absconditus.ogg
+#    - /Audio/Lobby/space_asshole.ogg
+#    - /Audio/Lobby/endless_space.ogg
+     - /Audio/_Scp/Themes/The_Final_Flash_of_Existence_Version_1.ogg
+     - /Audio/_Scp/Themes/Melancholy.ogg

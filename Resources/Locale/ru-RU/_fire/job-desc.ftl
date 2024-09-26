@@ -25,3 +25,5 @@ department-Outer = Охрана Периметра
 department-Outer-description = Защищайте периметр от угроз
 department-Containment = Агенство Сдерживания
 department-containment-description = Ни в коем случае не нарушайте процедуры содержания аномалий!
+department-LowAccessPersonnel = Персонал низкого доступа
+department-low-access-personnel = Ниже некуда.

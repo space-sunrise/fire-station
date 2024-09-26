@@ -16,14 +16,13 @@
             prefixCreator: 'B'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_Sunrise/Shuttles/emergency_fland.yml
-        - type: StationCargoShuttle
-          path: /Maps/Shuttles/cargo_fland.yml
         - type: StationJobs
           availableJobs:
             #service
             Captain: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ]
-            #NanoTrasenRepresentative: [ 1, 1 ]
+            NanoTrasenRepresentative: [ 1, 1 ]
+            Adjutant: [ 1, 1 ]
             Bartender: [ 2, 2 ]
             Botanist: [ 4, 4 ]
             Chef: [ 2, 2 ]

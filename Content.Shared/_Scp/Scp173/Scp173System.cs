@@ -141,7 +141,7 @@ public sealed class Scp173System : EntitySystem
         if (args.Handled)
             return;
 
-        var targetCords = args.Target.ToMap(EntityManager);
+        var targetCords = args.Target.ToMap(EntityManager, _transform);
         var playerPos = _transform.GetWorldPosition(args.Performer);
 
         if (!_examine.InRangeUnOccluded(

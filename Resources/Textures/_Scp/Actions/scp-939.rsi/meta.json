@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "size":
+  {
+    "x": 32,
+    "y": 32
+  },
+  "license": "Нельзя использовать без раз. Макса Габа(автора)",
+  "copyright": "ripmax",
+  "states":
+  [
+    {
+      "name": "mimic",
+      "directions": 1
+    },
+
+    {
+      "name": "sleep",
+      "directions": 1
+    },
+
+    {
+      "name": "smaug",
+      "directions": 1
+    }
+  ]
+}

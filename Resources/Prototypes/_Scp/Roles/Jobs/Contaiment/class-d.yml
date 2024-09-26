@@ -13,4 +13,6 @@
   id: ClassDGear
   equipment:
     id: PassengerPDA
+    jumpsuit: ClothingUniformClassD
     ears: ClothingHeadsetGrey
+    shoes: ClothingShoesClassD
