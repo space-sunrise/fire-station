@@ -1,0 +1,288 @@
+﻿- components:
+  - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderGasmask.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderGasmask.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxCommanderGasmask
+  name: nine tailed fox commander gasmask
+  parent: ClothingMaskGasERT
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderHelmet.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderHelmet.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxCommanderHelmet
+  name: nine tailed fox commander helmet
+  parent: ClothingHeadHelmetBasic
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderSuit.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderSuit.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxCommanderSuit
+  name: nine tailed fox commander suit
+  parent: ClothingUniformBase
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderVest.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderVest.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxCommanderVest
+  name: nine tailed fox commander vest
+  parent: ClothingOuterVestWeb
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderWebbing.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderWebbing.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxCommanderWebbing
+  name: nine tailed fox commander webbing
+  parent: ClothingBeltSecurityWebbing
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicBackpack.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicBackpack.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxMedicBackpack
+  name: nine tailed fox medic backpack
+  parent: ClothingBackpack
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicGasmask.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicGasmask.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxMedicGasmask
+  name: nine tailed fox medic gasmask
+  parent: ClothingMaskGasERT
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicGlassesHud.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicGlassesHud.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxMedicGlassesHud
+  name: nine tailed fox medic glasses hud
+  parent: ClothingEyesHudMedical
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicHelmet.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicHelmet.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxMedicHelmet
+  name: nine tailed fox medic helmet
+  parent: ClothingHeadHelmetBasic
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicSuit.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicSuit.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxMedicSuit
+  name: nine tailed fox medic suit
+  parent: ClothingUniformBase
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicVest.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicVest.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxMedicVest
+  name: nine tailed fox medic vest
+  parent: ClothingOuterVestWeb
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicWebbing.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicWebbing.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxMedicWebbing
+  name: nine tailed fox medic webbing
+  parent: ClothingBeltSecurityWebbing
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxGasmask.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxGasmask.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxGasmask
+  name: nine tailed fox gasmask
+  parent: ClothingMaskGasERT
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxHelmet.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxHelmet.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxHelmet
+  name: nine tailed fox helmet
+  parent: ClothingHeadHelmetBasic
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxSuit.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxSuit.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxSuit
+  name: nine tailed fox suit
+  parent: ClothingUniformBase
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxVest.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxVest.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxVest
+  name: nine tailed fox vest
+  parent: ClothingOuterVestWeb
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxWebbing.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxWebbing.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxWebbing
+  name: nine tailed fox webbing
+  parent: ClothingBeltSecurityWebbing
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistArmor.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistArmor.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxSpecialistArmor
+  name: nine tailed fox specialist armor
+  parent:
+  - ClothingOuterHardsuitBase
+  - BaseRestrictedContraband
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistBackpack.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistBackpack.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxSpecialistBackpack
+  name: nine tailed fox specialist backpack
+  parent: ClothingBackpack
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistBalisticGlasses
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistBalisticGlasses
+    type: Clothing
+  description: description
+  id: NineTailedFoxSpecialistBalisticGlasses
+  name: nine tailed fox specialist balistic glasses
+  parent: ClothingEyesGlassesSecurity
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistGasmask.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistGasmask.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxSpecialistGasmask
+  name: nine tailed fox specialist gasmask
+  parent: ClothingMaskGasERT
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistGloves.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistGloves.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxSpecialistGloves
+  name: nine tailed fox specialist gloves
+  parent: ClothingHandsGlovesCombat
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistHelmet.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistHelmet.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxSpecialistHelmet
+  name: nine tailed fox specialist helmet
+  parent: ClothingHeadHelmetBasic
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistShield.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistShield.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxSpecialistShield
+  name: nine tailed fox specialist shield
+  parent: BaseShield
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistSuit.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistSuit.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxSpecialistSuit
+  name: nine tailed fox specialist suit
+  parent: ClothingUniformBase
+  suffix: SCP
+  type: entity
+- components:
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistWebbing.rsi
+    type: Sprite
+  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistWebbing.rsi
+    type: Clothing
+  description: description
+  id: NineTailedFoxSpecialistWebbing
+  name: nine tailed fox specialist webbing
+  parent: ClothingBeltSecurityWebbing
+  suffix: SCP
+  type: entity
