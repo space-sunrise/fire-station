@@ -194,7 +194,7 @@
   id: NineTailedFoxSpecialistArmor
   name: nine tailed fox specialist armor
   parent:
-  - ClothingOuterHardsuitBase
+  - ClothingOuterBase
   - BaseRestrictedContraband
   suffix: SCP
   type: entity
@@ -253,17 +253,17 @@
   parent: ClothingHeadHelmetBasic
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistShield.rsi
     type: Sprite
-  - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistShield.rsi
-    type: Clothing
   description: description
   id: NineTailedFoxSpecialistShield
   name: nine tailed fox specialist shield
   parent: BaseShield
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistSuit.rsi
     type: Sprite
