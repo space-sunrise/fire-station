@@ -62,6 +62,7 @@
         Piercing: 0.95
         Heat: 0.95
   - type: FilterMask  # Sunrise-Scp
+  - type: NVG #Sunrise - night vision
 
 - type: entity
   parent: ClothingMaskGas
@@ -103,7 +104,7 @@
     sprite: Clothing/Mask/gascentcom.rsi
   - type: BreathMask
   - type: IngestionBlocker
-  - type: FilterMask
+  - type: FilterMask  # Sunrise-SCP
 
 - type: entity
   parent: [ClothingMaskGas, BaseCargoContraband]
@@ -122,7 +123,7 @@
         Slash: 0.90
         Piercing: 0.95
         Heat: 0.95
-  - type: FilterMask  # Sunrise-Scp
+  - type: FilterMask  # Sunrise-SCP
 
 - type: entity
   parent: ClothingMaskPullableBase
@@ -236,7 +237,7 @@
     node: mask
 
 - type: entity
-  parent: ClothingMaskClown
+  parent: [ClothingMaskClown, BaseRestrictedContraband]
   id: ClothingMaskClownSecurity
   name: security clown wig and mask
   description: A debatably oxymoronic but protective mask and wig.
@@ -378,7 +379,6 @@
   - type: Tag
     tags:
     - WhitelistChameleon
-  - type: FilterMask  # Sunrise-Scp
   - type: HideLayerClothing
     slots:
     - Hair
@@ -391,6 +391,7 @@
         Slash: 0.90
         Piercing: 0.95
         Heat: 0.95
+  - type: FilterMask  # Sunrise-SCP
 
 - type: entity
   parent: [ ClothingMaskGas, BaseRestrictedContraband ]
@@ -455,7 +456,8 @@
         Slash: 0.80
         Piercing: 0.90
         Heat: 0.90
-  - type: FilterMask
+  - type: FilterMask  # Sunrise-SCP
+  - type: NVG #Sunrise - night vision
 
 - type: entity
   parent: ClothingMaskBase

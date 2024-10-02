@@ -1,4 +1,4 @@
-﻿- type: statusIcon
+﻿- type: factionIcon
   id: Scp096TargetIcon
   priority: 1
   locationPreference: Right
