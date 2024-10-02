@@ -1,0 +1,17 @@
+﻿- type: entity
+  parent: [ ClothingMaskGas, BaseRestrictedContraband ]
+  id: ClothingMaskGasChaosIns
+  name: chaos gas mask
+  description: Very reliable military gas mask.
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Masks/gaschaosins.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Masks/gaschaosins.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.90
+        Slash: 0.90
+        Piercing: 0.95
+        Heat: 0.95
