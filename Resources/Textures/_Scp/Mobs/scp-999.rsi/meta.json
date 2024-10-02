@@ -8,7 +8,7 @@
   },
   "states": [
     {
-      "name": "SCP-999",
+      "name": "default",
       "directions": 4,
       "delays": [
         [
@@ -38,7 +38,7 @@
       ]
     },
     {
-      "name": "SCP-999_dead",
+      "name": "dead",
       "delays": [
         [
           0.2,
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "name": "SCP-999_rest",
+      "name": "rest",
       "delays": [
         [
           0.2,
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "name": "SCP-999-wall",
+      "name": "wall",
       "directions": 4,
       "delays": [
         [

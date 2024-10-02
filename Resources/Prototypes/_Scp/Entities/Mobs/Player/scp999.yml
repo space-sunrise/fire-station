@@ -7,21 +7,21 @@
   components:
   - type: Scp999
     states:
-      Default: SCP-999
-      Wall: SCP-999-wall
-      Rest: SCP-999_rest
+      Default: default
+      Wall: wall
+      Rest: rest
   - type: Sprite
     drawdepth: Mobs
     sprite: _Scp/Mobs/scp-999.rsi
     layers:
-    - state: SCP-999
+    - state: default
       map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default" ]
   - type: DamageStateVisuals
     states:
       Alive:
-        Base: SCP-999
+        Base: default
       Dead:
-        Base: SCP-999_dead
+        Base: dead
   - type: Fixtures
     fixtures:
       fix1:
