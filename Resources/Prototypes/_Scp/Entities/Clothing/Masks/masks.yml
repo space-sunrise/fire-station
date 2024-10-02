@@ -5,9 +5,9 @@
   description: Very reliable military gas mask.
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Masks/gaschaosins.rsi
+    sprite: _Scp/Clothing/Mask/gaschaos.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/Masks/gaschaosins.rsi
+    sprite: _Scp/Clothing/Mask/gaschaos.rsi
   - type: Armor
     modifiers:
       coefficients:
