@@ -202,7 +202,7 @@ public sealed class Scp914System : SharedScp914System
 
         foreach (var option in upgradeOptions)
         {
-            cumulativeProbability += option.Chanse;
+            cumulativeProbability += option.Chance;
 
             if (randomValue > cumulativeProbability)
             {
@@ -216,6 +216,8 @@ public sealed class Scp914System : SharedScp914System
 
                 break;
             }
+
+            Del(upgradableEntity);
 
             entity = Spawn(option.Item);
             break;

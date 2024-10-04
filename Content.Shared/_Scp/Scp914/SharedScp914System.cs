@@ -11,8 +11,6 @@ public abstract class SharedScp914System : EntitySystem
         SubscribeLocalEvent<Scp914ContainerComponent, StorageOpenAttemptEvent>(OnOpenAttempt);
         SubscribeLocalEvent<Scp914ContainerComponent, StorageCloseAttemptEvent>(OnCloseAttempt);
         SubscribeLocalEvent<Scp914ContainerComponent, StorageInteractAttemptEvent>(OnInteractAttempt);
-
-
     }
 
     private void OnCloseAttempt(Entity<Scp914ContainerComponent> ent, ref StorageCloseAttemptEvent args)
