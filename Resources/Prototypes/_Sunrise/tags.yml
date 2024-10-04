@@ -30,6 +30,13 @@
   id: Cartridge762x39
 
 - type: Tag
+  id: AssaultOpsUplink
+
+- type: Tag
+  id: SyndieAgentUplink
+
+# Catridges:
+- type: Tag
   id: Cartridge556
 
 - type: Tag
