@@ -79,7 +79,7 @@ public enum Scp914ContainerType : byte
 public sealed partial class UpgradeOption
 {
     [DataField(required: true)]
-    public EntProtoId Item { get; private set; }
+    public EntProtoId? Item { get; private set; }
 
     [DataField(required: true)]
      public float Chanse { get; private set; }

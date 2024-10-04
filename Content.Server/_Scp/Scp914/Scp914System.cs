@@ -192,11 +192,8 @@ public sealed class Scp914System : SharedScp914System
     {
         var options = upgradableEntity.Comp.UpgradeOptions;
 
-        Del(upgradableEntity);
-
         if (!options.TryGetValue(machineMode, out var upgradeOptions))
         {
-            entity = null;
             return;
         }
 
@@ -212,7 +209,16 @@ public sealed class Scp914System : SharedScp914System
                 continue;
             }
 
+            if (!option.Item.HasValue)
+            {
+                Del(upgradableEntity);
+                entity = null;
+
+                break;
+            }
+
             entity = Spawn(option.Item);
+            break;
         }
     }
 
