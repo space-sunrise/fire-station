@@ -16,6 +16,15 @@
     layers:
     - state: default
       map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default" ]
+    - state: movement
+      map: [ "movement", "enum.Scp999States.Default"]
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: movement
+    noMovementLayers:
+      movement:
+        state: default
   - type: DamageStateVisuals
     states:
       Alive:
