@@ -2,93 +2,104 @@
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Weapons.Melee.Events;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp106.Systems;
 
 public abstract class SharedScp106System : EntitySystem
 {
-    // TODO: SOUNDING, EFFECTS.
+	// TODO: SOUNDING, EFFECTS.
 
-    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+	[Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+	[Dependency] private readonly IGameTiming _gameTiming = default!;
+	[Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
+	public override void Initialize()
+	{
+		base.Initialize();
 
-        SubscribeLocalEvent<Scp106Component, MeleeHitEvent>(OnMeleeHit);
+		SubscribeLocalEvent<Scp106Component, MeleeHitEvent>(OnMeleeHit);
 
-        SubscribeLocalEvent<Scp106Component, Scp106BackroomsAction>(OnBackroomsAction);
-        SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportAction>(OnRandomTeleportAction);
+		SubscribeLocalEvent<Scp106Component, Scp106BackroomsAction>(OnBackroomsAction);
+		SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportAction>(OnRandomTeleportAction);
 
-        SubscribeLocalEvent<Scp106Component, Scp106BackroomsActionEvent>(OnBackroomsDoAfter);
-        SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportActionEvent>(OnTeleportDoAfter);
-    }
+		SubscribeLocalEvent<Scp106Component, Scp106BackroomsActionEvent>(OnBackroomsDoAfter);
+		SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportActionEvent>(OnTeleportDoAfter);
+	}
 
-    private void OnBackroomsAction(Entity<Scp106Component> ent, ref Scp106BackroomsAction args)
-    {
-        if (args.Handled)
-            return;
+	private void OnBackroomsAction(Entity<Scp106Component> ent, ref Scp106BackroomsAction args)
+	{
+		if (args.Handled)
+			return;
 
-        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(5), new Scp106BackroomsActionEvent(), args.Performer, args.Performer)
-        {
-            NeedHand = false,
-            BreakOnMove = true,
-            BreakOnHandChange = false,
-            BreakOnDamage = false
-        };
+		var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(5), new Scp106BackroomsActionEvent(), args.Performer, args.Performer)
+		{
+			NeedHand = false,
+			BreakOnMove = true,
+			BreakOnHandChange = false,
+			BreakOnDamage = false
+		};
 
-        if (_doAfter.TryStartDoAfter(doAfterEventArgs))
-            args.Handled = true;
-    }
+		if (_doAfter.TryStartDoAfter(doAfterEventArgs))
+			args.Handled = true;
 
-    private void OnRandomTeleportAction(Entity<Scp106Component> ent, ref Scp106RandomTeleportAction args)
-    {
-        if (args.Handled)
-            return;
+		_appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
+	}
 
-        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(5), new Scp106RandomTeleportActionEvent(), args.Performer, args.Performer)
-        {
-            NeedHand = false,
-            BreakOnMove = true,
-            BreakOnHandChange = false,
-            BreakOnDamage = false
-        };
+	private void OnRandomTeleportAction(Entity<Scp106Component> ent, ref Scp106RandomTeleportAction args)
+	{
+		if (args.Handled)
+			return;
 
-        if (_doAfter.TryStartDoAfter(doAfterEventArgs))
-            args.Handled = true;
-    }
+		var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(5), new Scp106RandomTeleportActionEvent(), args.Performer, args.Performer)
+		{
+			NeedHand = false,
+			BreakOnMove = true,
+			BreakOnHandChange = false,
+			BreakOnDamage = false
+		};
 
-    private void OnBackroomsDoAfter(Entity<Scp106Component> ent, ref Scp106BackroomsActionEvent args)
-    {
-        if (args.Cancelled)
-            return;
+		if (_doAfter.TryStartDoAfter(doAfterEventArgs))
+			args.Handled = true;
 
-        SendToBackrooms(args.User);
-    }
+		_appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Exiting);
+	}
 
-    private void OnTeleportDoAfter(Entity<Scp106Component> ent, ref Scp106RandomTeleportActionEvent args)
-    {
-        if (args.Cancelled)
-            return;
+	private void OnBackroomsDoAfter(Entity<Scp106Component> ent, ref Scp106BackroomsActionEvent args)
+	{
+		if (args.Cancelled)
+			return;
 
-        SendToStation(ent);
-    }
+		SendToBackrooms(args.User);
 
-    private void OnMeleeHit(Entity<Scp106Component> ent, ref MeleeHitEvent args)
-    {
-        if (!args.IsHit || !args.HitEntities.Any())
-            return;
+		_appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Default);
+	}
 
-        foreach (var entity in args.HitEntities)
-        {
-            if (entity == ent.Owner)
-                return;
+	private void OnTeleportDoAfter(Entity<Scp106Component> ent, ref Scp106RandomTeleportActionEvent args)
+	{
+		if (args.Cancelled)
+			return;
 
-            SendToBackrooms(entity);
-        }
-    }
+		SendToStation(ent);
 
-    public virtual async void SendToBackrooms(EntityUid target) {}
+		_appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Default);
+	}
 
-    public virtual void SendToStation(EntityUid target) {}
+	private void OnMeleeHit(Entity<Scp106Component> ent, ref MeleeHitEvent args)
+	{
+		if (!args.IsHit || !args.HitEntities.Any())
+			return;
+
+		foreach (var entity in args.HitEntities)
+		{
+			if (entity == ent.Owner)
+				return;
+
+			SendToBackrooms(entity);
+		}
+	}
+
+	public virtual async void SendToBackrooms(EntityUid target) {}
+
+	public virtual void SendToStation(EntityUid target) {}
 }

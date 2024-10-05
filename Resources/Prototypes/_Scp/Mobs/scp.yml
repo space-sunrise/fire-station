@@ -90,3 +90,11 @@
         - SmallMobMask
         layer:
         - SmallMobLayer
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+    enum.Scp106Visuals.Visuals:
+      base:
+        Default: { state: 106 }
+        Entering: { state: lusha_from_ded }
+        Exiting: { state: ded_from_lusha }
