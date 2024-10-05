@@ -60,7 +60,7 @@
     drawdepth: Mobs
     sprite: _Scp/scp-106.rsi
     layers:
-    - map: [ "enum.DamageStateVisualLayers.Base" ]
+    - map: [ "base" ]
       state: 106
   - type: Tag
     tags:
@@ -93,8 +93,8 @@
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-    enum.Scp106Visuals.Visuals:
-      base:
-        Default: { state: 106 }
-        Entering: { state: lusha_from_ded }
-        Exiting: { state: ded_from_lusha }
+      enum.Scp106Visuals.Visuals:
+        base:
+          Default: { state: 106 }
+          Entering: { state: lusha_from_ded }
+          Exiting: { state: ded_from_lusha }
