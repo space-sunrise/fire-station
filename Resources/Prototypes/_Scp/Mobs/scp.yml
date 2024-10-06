@@ -2,13 +2,19 @@
   abstract: true
   parent:
   - BaseSimpleMob
-  - MobCombat
   - MobBloodstream
   - MobFlammable
   id: BaseSCP
 
 - type: entity
-  parent: BaseSCP
+  abstract: true
+  parent:
+  - BaseSCP
+  - MobCombat
+  id: BaseSCPCombat
+
+- type: entity
+  parent: BaseSCPCombat
   id: Scp173
   name: SCP-173
   description: scp173-desc
@@ -46,7 +52,7 @@
       collection: FootstepSCP173
 
 - type: entity
-  parent: BaseSCP
+  parent: BaseSCPCombat
   id: Scp106
   name: SCP-106
   components:
@@ -60,7 +66,7 @@
     drawdepth: Mobs
     sprite: _Scp/scp-106.rsi
     layers:
-    - map: [ "enum.DamageStateVisualLayers.Base" ]
+    - map: [ "base" ]
       state: 106
   - type: Tag
     tags:
@@ -90,3 +96,11 @@
         - SmallMobMask
         layer:
         - SmallMobLayer
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.Scp106Visuals.Visuals:
+        base:
+          Default: { state: 106 }
+          Entering: { state: lusha_from_ded }
+          Exiting: { state: ded_from_lusha }

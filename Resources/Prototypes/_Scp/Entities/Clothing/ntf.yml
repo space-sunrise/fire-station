@@ -256,7 +256,10 @@
 
 - components:
   - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistShield.rsi
+    state: icon
     type: Sprite
+  - type: Item
+    heldPrefix: riot
   description: description
   id: NineTailedFoxSpecialistShield
   name: nine tailed fox specialist shield

@@ -3,13 +3,17 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client._Scp.Scp999;
 
-public sealed class Scp999System : EntitySystem
+public sealed class Scp999System : SharedScp999System
 {
     public override void Initialize()
     {
+        base.Initialize();
+
         SubscribeNetworkEvent<Scp999WallifyEvent>(OnWallify);
         SubscribeNetworkEvent<Scp999RestEvent>(OnRest);
     }
+
+    // TODO: отключение базовых лейеров, так как они их видно при смене спрайта.
 
     private void OnWallify(Scp999WallifyEvent args)
     {

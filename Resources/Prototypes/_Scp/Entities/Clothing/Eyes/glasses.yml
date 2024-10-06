@@ -1,0 +1,11 @@
+- type: entity
+  parent: ClothingEyesGlassesSecurity
+  id: ClothingEyesGlassesSecurityGuard
+  name: security glasses
+  description: Upgraded sunglasses that provide flash immunity and a security HUD.
+  suffix: SCP14
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Eyes/secglasses.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Eyes/secglasses.rsi

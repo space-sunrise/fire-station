@@ -1,0 +1,47 @@
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHeadHelmetSecurity
+  name: helmet
+  description: Standard black security gear. Protects the head from impacts.
+  suffix: SCP14
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/security.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/security.rsi
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHeadClosedHelmetSecurity
+  name: closed black security helmet
+  description: Standard black security gear. Protects the head from impacts.
+  suffix: SCP14
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/security_2.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/security_2.rsi
+
+- type: entity
+  parent: ClothingHeadHeadHatBaseFlippable
+  id: ClothingHeadHatSecBlack
+  name: black sec cap
+  description: Suck it.
+  suffix: SCP14
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/security_cap.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/security_cap.rsi
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadSecurityBeret
+  name: security black beret
+  description: You're gay.
+  suffix: SCP14
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/security_beret.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/security_beret.rsi

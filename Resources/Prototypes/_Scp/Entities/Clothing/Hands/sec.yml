@@ -1,0 +1,27 @@
+- type: entity
+  parent: [ClothingHandsGlovesColorBlack, BaseSecurityEngineeringContraband]
+  id: ClothingHandsGlovesSecurity
+  name: security gloves
+  description: Gays gloves.
+  suffix: SCP14
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Hands/black.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Hands/black.rsi
+  - type: Fiber
+    fiberMaterial: fibers-insulative
+
+- type: entity
+  parent: [ClothingHandsGlovesColorBlack, BaseSecurityEngineeringContraband]
+  id: ClothingHandsGlovesWinterSecurity
+  name: winter security gloves
+  description: Gays gloves.
+  suffix: SCP14
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Hands/winter_black.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Hands/winter_black.rsi
+  - type: Fiber
+    fiberMaterial: fibers-insulative
