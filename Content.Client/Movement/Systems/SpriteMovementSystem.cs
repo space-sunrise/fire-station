@@ -1,3 +1,4 @@
+using Content.Shared.Interaction.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
@@ -26,6 +27,14 @@ public sealed class SpriteMovementSystem : EntitySystem
     {
         if (!_timing.IsFirstTimePredicted)
             return;
+
+        // Fire added start
+        if (HasComp<NoRotateOnMoveComponent>(uid))
+            return;
+
+        if (HasComp<BlockMovementComponent>(uid))
+            return;
+        // Fire added end
 
         var oldMoving = (SharedMoverController.GetNormalizedMovement(args.OldMovement) & MoveButtons.AnyDirection) != MoveButtons.None;
         var moving = (SharedMoverController.GetNormalizedMovement(args.Entity.Comp.HeldMoveButtons) & MoveButtons.AnyDirection) != MoveButtons.None;

@@ -35,6 +35,7 @@ public sealed class BorgDashSystem : SharedBorgDashSystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -112,7 +113,7 @@ public sealed class BorgDashSystem : SharedBorgDashSystem
 
         var xform = Transform(uid);
         var targetXform = Transform(args.Target);
-        var mapCoords = targetXform.Coordinates.ToMap(EntityManager);
+        var mapCoords = targetXform.Coordinates.ToMap(EntityManager, _transform);
         var direction = mapCoords.Position - xform.MapPosition.Position;
 
         direction.Normalize();
@@ -147,7 +148,7 @@ public sealed class BorgDashSystem : SharedBorgDashSystem
         }
 
         var xform = Transform(uid);
-        var mapCoords = args.Target.ToMap(EntityManager);
+        var mapCoords = args.Target.ToMap(EntityManager, _transform);
         var direction = mapCoords.Position - xform.MapPosition.Position;
 
         if (direction.Length() > component.MaxDash)

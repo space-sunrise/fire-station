@@ -59,7 +59,7 @@ public sealed class MogSpawnSystem : EntitySystem
         _sawmill.Debug($"spawngroup: {station}");
 
         var xform = Transform(station);
-        var mapCoords = xform.Coordinates.ToMap(EntityManager);
+        var mapCoords = xform.Coordinates.ToMap(EntityManager, _transform);
 
         var targetCoords = mapCoords.Offset(SelectCoordinates(targetGroup));
 

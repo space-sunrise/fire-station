@@ -1,5 +1,7 @@
-﻿using Robust.Shared.Audio;
+﻿using Content.Shared.Tag;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Teleportation.Components;
 
@@ -53,4 +55,11 @@ public sealed partial class PortalComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
     public bool RandomTeleport = true;
+
+
+    /// <summary>
+    /// The tag used to identify entities that should be ignored by the portal.
+    /// Entities with this tag will not be teleported when they interact with the portal.
+    /// </summary>
+    public ProtoId<TagPrototype> IgnorePortalTag = "IgnorePortals"; //FireStation Edit
 }

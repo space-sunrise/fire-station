@@ -39,6 +39,25 @@
   - Barber # Sunrise-Roles
 
 - type: department
+  id: CentralCommand
+  name: department-CentralCommand
+  description: department-CentralCommand-description
+  color: "#0c344d"
+  roles:
+  - CentCommOperator # Sunrise-Edit
+  - CentCommOfficial # Sunrise-Edit
+  - CBURN
+  - ERTLeader
+  - ERTChaplain
+  - ERTJanitor
+  - ERTMedical
+  - ERTSecurity
+  - ERTEngineer
+  - DeathSquad
+  editorHidden: true
+  weight: 120
+
+- type: department
   id: Command
   name: department-Command
   description: department-Command-description
@@ -51,7 +70,17 @@
   - HeadOfSecurity
   - ResearchDirector
   - Quartermaster
-#  - NanoTrasenRepresentative  #Sunrise-Edit
+  - CBURN
+  - ERTLeader
+  - ERTChaplain
+  - ERTJanitor
+  - ERTMedical
+  - ERTSecurity
+  - ERTEngineer
+  - DeathSquad
+  - CentCommOfficial
+  - NanoTrasenRepresentative  #Sunrise-Edit
+  - Adjutant  #Sunrise-edit
   primary: false
   weight: 100
 
@@ -64,7 +93,7 @@
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
-  - SeniorEngineer
+  - SeniorEngineer  # Sunrise-Senior
   - StationEngineer
   - TechnicalAssistant
   - EngineerBorg # Sunrise-Edit
@@ -92,13 +121,13 @@
   weight: 20
   roles:
   - HeadOfSecurity
-  - SeniorOfficer
+  - SeniorOfficer  # Sunrise-Senior
   - SecurityCadet
   - SecurityOfficer
   - Detective
   - Warden
-  - Brigmedic
-  # - SecurityPilot # Sunrise-SecurityPilot
+  - Brigmedic  # Sunrise-Brigmedic
+  - SecurityPilot # Sunrise-SecurityPilot
   - SecurityBorg # Sunrise-Edit
   - SecurityCombatBorg # Sunrise-Edit
 
@@ -109,10 +138,10 @@
   color: "#D381C9"
   roles:
   - ResearchDirector
-  - SeniorResearcher
+  - SeniorResearcher  # Sunrise-Senior
   - Scientist
   - ResearchAssistant
-  - Roboticist
+  - Roboticist  # Sunrise-Edit
 
 - type: department
   id: Silicon
