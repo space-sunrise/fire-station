@@ -1,6 +1,7 @@
 ﻿using Content.Shared._Scp.Scp999;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
+using Content.Shared.Movement.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
@@ -72,6 +73,9 @@ public sealed class Scp999System : SharedScp999System
                 _physics.SetCollisionLayer(uid, "fix2", fix2, 221);
                 _physics.SetCollisionMask(uid, "fix2", fix2, 158);
 
+                EnsureComp<NoRotateOnInteractComponent>(uid);
+                EnsureComp<NoRotateOnMoveComponent>(uid);
+
                 break;
 
             // remove buffs
@@ -87,6 +91,9 @@ public sealed class Scp999System : SharedScp999System
                 _physics.TrySetBodyType(uid, BodyType.KinematicController, fixturesComponent, physicsComponent, xform);
                 _physics.SetCollisionLayer(uid, "fix2", fix2, 0);
                 _physics.SetCollisionMask(uid, "fix2", fix2, 0);
+
+                RemComp<NoRotateOnMoveComponent>(uid);
+                RemComp<NoRotateOnInteractComponent>(uid);
 
                 break;
 
@@ -117,6 +124,8 @@ public sealed class Scp999System : SharedScp999System
                 Dirty(uid, component);
 
                 EnsureComp<BlockMovementComponent>(uid);
+                EnsureComp<NoRotateOnInteractComponent>(uid);
+                EnsureComp<NoRotateOnMoveComponent>(uid);
 
                 break;
 
@@ -127,6 +136,8 @@ public sealed class Scp999System : SharedScp999System
                 component.CurrentState = Scp999States.Default;
                 Dirty(uid, component);
 
+                RemComp<NoRotateOnMoveComponent>(uid);
+                RemComp<NoRotateOnInteractComponent>(uid);
                 RemComp<BlockMovementComponent>(uid);
 
                 break;

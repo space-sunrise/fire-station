@@ -15,9 +15,7 @@
     sprite: _Scp/Mobs/scp-999.rsi
     layers:
     - state: default
-      map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default" ]
-    - state: movement
-      map: [ "movement", "enum.Scp999States.Default"]
+      map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default", "movement"]
   - type: SpriteMovement
     movementLayers:
       movement:
