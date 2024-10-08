@@ -35,10 +35,9 @@ public sealed partial class ScpSlGameRuleSystem : GameRuleSystem<ScpSlGameRuleCo
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly GhostSystem _ghostSystem = default!;
 
-
     protected override string SawmillName => "ScpSl";
 
-    private TimeSpan NextRoundEndCheckTime;
+    private TimeSpan _nextRoundEndCheckTime;
 
     public override void Initialize()
     {
@@ -115,9 +114,9 @@ public sealed partial class ScpSlGameRuleSystem : GameRuleSystem<ScpSlGameRuleCo
         var ruleEntity = new Entity<ScpSlGameRuleComponent>(uid, component);
         SpawnUpdate(ruleEntity);
 
-        if (NextRoundEndCheckTime <  _gameTiming.CurTime)
+        if (_nextRoundEndCheckTime <  _gameTiming.CurTime)
         {
-            NextRoundEndCheckTime = _gameTiming.CurTime + TimeSpan.FromSeconds(5);
+            _nextRoundEndCheckTime = _gameTiming.CurTime + TimeSpan.FromSeconds(5);
 
             TryEndRound();
         }
@@ -128,7 +127,7 @@ public sealed partial class ScpSlGameRuleSystem : GameRuleSystem<ScpSlGameRuleCo
         base.Started(uid, component, gameRule, args);
 
         component.NextWaveSpawnTime = _gameTiming.CurTime + component.WaveSpawnCooldown;
-        NextRoundEndCheckTime = _gameTiming.CurTime + TimeSpan.FromMinutes(1);
+        _nextRoundEndCheckTime = _gameTiming.CurTime + TimeSpan.FromMinutes(1);
     }
 
     protected override void AppendRoundEndText(EntityUid uid,

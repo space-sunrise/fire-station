@@ -1,7 +1,5 @@
-﻿
-using Content.Shared._Scp.GameRule.Sl;
+﻿using Content.Shared._Scp.GameRule.Sl;
 using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
 
 namespace Content.Server._Scp.GameRules.ScpSl;
 

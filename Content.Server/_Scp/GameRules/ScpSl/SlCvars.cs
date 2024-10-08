@@ -5,7 +5,6 @@ namespace Content.Server._Scp.GameRules.ScpSl;
 [CVarDefs]
 public sealed class SlCvars
 {
-
     public static readonly CVarDef<int> MaxMogSpawnCount =
         CVarDef.Create("sl.max_mog_spawn_count", 20, CVar.SERVERONLY | CVar.ARCHIVE);
 

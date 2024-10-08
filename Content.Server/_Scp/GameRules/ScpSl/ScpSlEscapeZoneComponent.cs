@@ -1,14 +1,10 @@
 ﻿using Content.Shared._Scp.GameRule.Sl;
-using Content.Shared.NPC.Prototypes;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.GameRules.ScpSl;
 
 [RegisterComponent]
-public sealed partial class ScpSlEscapeZoneComponent : Component
-{
-
-}
+public sealed partial class ScpSlEscapeZoneComponent : Component;
 
 [RegisterComponent]
 public sealed partial class SlHumanoidSpawnPointComponent : Component
