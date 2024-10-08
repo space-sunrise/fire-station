@@ -78,8 +78,8 @@
   - type: Scp914Container
     containerType: Output
   - type: EntityStorageVisuals
-    stateBaseClosed: left-door
-    stateDoorOpen: left-door
+    stateBaseClosed: right-door
+    stateDoorOpen: right-door
     stateDoorClosed: door
   - type: Sprite
     noRot: true

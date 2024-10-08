@@ -243,6 +243,7 @@ namespace Content.Server.Voting.Managers
 
         private void SendSingleUpdate(VoteReg v, ICommonSession player)
         {
+            return;
             var msg = new MsgVoteData();
 
             msg.VoteId = v.Id;

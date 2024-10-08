@@ -1,192 +1,134 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
 using Content.Server.Cuffs;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
+using Content.Server.Ghost;
+using Content.Server.Humanoid.Systems;
 using Content.Server.Mind;
-using Content.Server.Spawners.Components;
-using Content.Shared.Cuffs.Components;
+using Content.Server.Nuke;
+using Content.Shared._Scp.GameRule.Sl;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
-using Content.Shared.NPC.Components;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
-using Robust.Shared.Physics.Events;
-using Robust.Shared.Player;
+using Robust.Server.Player;
+using Robust.Shared.Configuration;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Server._Scp.GameRules.ScpSl;
 
-/*
- * Конец раунда начнется только если будут сделаны следующие условия -
-Победа Мобильно-Оперативной Группы
-
--Все SCP-Объекты нейтрализованы
--Сбежало 1-2 ученых
--Сбежало 0 Д-Класса
-
-Победа Класса-Д
-
--Сбежало 1-2 и т.д Д-Класса
--Сбежало 0 Ученых
--1 Объект СЦП Нейтрализован
--Охрана комплекса и МОГ уничтожены
-
-Победа SCP-Объектов
-
--Сбежало 0 Ученых
--Сбежало 0 Д-Класса
--Охрана комплекса и МОГ уничтожены
--Остались только SCP и Хаос (или Только SCP)
--Нейтрализовано 0 SCP
-
-Ничья
-
--Сбежал 1 Д-Класс
--Сбежал 1 Ученый
--Убито 1-2 SCP-Объектов
- */
-
-public sealed class ScpSlGameRuleSystem : GameRuleSystem<ScpSlGameRuleComponent>
+public sealed partial class ScpSlGameRuleSystem : GameRuleSystem<ScpSlGameRuleComponent>
 {
     [Dependency] private readonly NpcFactionSystem _npcFactionSystem = default!;
     [Dependency] private readonly CuffableSystem _cuffableSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly MindSystem _mindSystem = default!;
-
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly RandomHumanoidSystem _randomHumanoidSystem = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly GhostSystem _ghostSystem = default!;
 
 
     protected override string SawmillName => "ScpSl";
 
+    private TimeSpan NextRoundEndCheckTime;
+
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
-        SubscribeLocalEvent<ScpSlEscapeZoneComponent, StartCollideEvent>(OnEscapeZoneCollide);
-        SubscribeLocalEvent<RulePlayerSpawningEvent>(OnPlayerSpawning);
+
+        UpdatesAfter.Add(typeof(LoadMapRuleSystem));
+
+        InitializeEscape();
+        InitializeSpawn();
+        InitializeSubs();
+        InitializeTracker();
+
+        SubscribeLocalEvent<NukeExplodedEvent>(OnNukeExploded);
     }
 
-    private void OnPlayerSpawning(RulePlayerSpawningEvent ev)
+    private void OnNukeExploded(NukeExplodedEvent ev)
     {
-        var pool = ev.PlayerPool.ShallowClone();
-
-        SpawnScp(pool);
-
-        Spawn(pool, ScpSlSpawnType.Scientist);
-        Spawn(pool, ScpSlSpawnType.Security);
-        Spawn(pool, ScpSlSpawnType.ClassD);
-    }
-
-    private List<Entity<TransformComponent, ScpSlSpawnComponent>> GetSpawnPoints(ScpSlSpawnType spawnType)
-    {
-        var spawnPointsQuery = EntityQueryEnumerator<ScpSlSpawnComponent, TransformComponent>();
-
-        List<Entity<TransformComponent, ScpSlSpawnComponent>> spawnPoints = [];
-
-        while (spawnPointsQuery.MoveNext(out var entityUid, out var spawnPointsComponent, out var transformComponent))
+        if (!TryGetActiveRule(out var gameRule)
+            || !ev.OwningStation.HasValue)
         {
-            if (spawnPointsComponent.SpawnType != spawnType)
-            {
+            return;
+        }
+
+        var stationUid = ev.OwningStation.Value;
+        var zones = gameRule.Value.Comp1.Zones.Values;
+
+        if (zones.FirstOrNull(x => x.Owner == stationUid) == null)
+        {
+            return;
+        }
+
+        foreach (var zone in zones)
+        {
+            DustifyAllMobsOnGrid(zone);
+        }
+    }
+
+    private List<Entity<MobStateComponent>> GetAllMobstatesOnGrid(Entity<MapGridComponent> gridEntity)
+    {
+        var query = EntityQueryEnumerator<TransformComponent, MobStateComponent>();
+        var mobs = new List<Entity<MobStateComponent>>();
+
+        while (query.MoveNext(out var uid, out var xform, out var mobStateComponent))
+        {
+            if (xform.GridUid != gridEntity)
                 continue;
-            }
 
-            var entity = new Entity<TransformComponent, ScpSlSpawnComponent>(entityUid, transformComponent, spawnPointsComponent);
-            spawnPoints.Add(entity);
+            var mobEntity = new Entity<MobStateComponent>(uid, mobStateComponent);
+            mobs.Add(mobEntity);
         }
 
-        return spawnPoints;
+        return mobs;
     }
 
-    private void OnEscapeZoneCollide(Entity<ScpSlEscapeZoneComponent> ent, ref StartCollideEvent args)
+    private void DustifyAllMobsOnGrid(Entity<MapGridComponent> gridEntity)
     {
-        var ruleQuery = this.QueryActiveRules();
+        var mobs = GetAllMobstatesOnGrid(gridEntity);
 
-        var collidedEntity = args.OtherEntity;
-
-        if (_npcFactionSystem.IsMember(collidedEntity, "ClassDFaction"))
+        foreach (var mob in mobs)
         {
-            if (TryComp<CuffableComponent>(collidedEntity, out var cuffed)
-                && cuffed.CuffedHandCount > 0
-                && _npcFactionSystem.GetNearbyHostiles(collidedEntity, 5f).Any())
-            {
-                //Become MOG
-                Escaped(EscapedType.Scientist);
-                return;
-            }
+            var mobXform = Transform(mob);
+            _mobStateSystem.ChangeMobState(mob, MobState.Dead);
 
-            //Become Chaos
-            Escaped(EscapedType.DClass);
-            return;
-        }
+            Spawn("Ash", mobXform.Coordinates);
 
-        if (_npcFactionSystem.IsMember(collidedEntity, "ScientistsFaction"))
-        {
-
-            if (TryComp<CuffableComponent>(collidedEntity, out var cuffed)
-                && cuffed.CuffedHandCount > 0
-                && _npcFactionSystem.GetNearbyHostiles(collidedEntity, 5f).Any())
-            {
-                //Become Chaos
-                Escaped(EscapedType.DClass);
-                return;
-            }
-
-            //Become MOG
-            Escaped(EscapedType.Scientist);
-            return;
+            Del(mob);
         }
     }
 
-    private void OnMobStateChanged(MobStateChangedEvent ev)
+    protected override void ActiveTick(EntityUid uid, ScpSlGameRuleComponent component, GameRuleComponent gameRule, float frameTime)
     {
-        if (ev.NewMobState != MobState.Dead)
+        base.ActiveTick(uid, component, gameRule, frameTime);
+
+        var ruleEntity = new Entity<ScpSlGameRuleComponent>(uid, component);
+        SpawnUpdate(ruleEntity);
+
+        if (NextRoundEndCheckTime <  _gameTiming.CurTime)
         {
-            ShouldRoundEnd();
+            NextRoundEndCheckTime = _gameTiming.CurTime + TimeSpan.FromSeconds(5);
+
+            TryEndRound();
         }
     }
 
     protected override void Started(EntityUid uid, ScpSlGameRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
         base.Started(uid, component, gameRule, args);
-        args.
-    }
 
-    private void Spawn(List<ICommonSession> pool, ScpSlSpawnType spawnType)
-    {
-        var spawnPoints = GetSpawnPoints(spawnType);
-
-        if (spawnPoints.Count == 0)
-        {
-            Log.Error($"No spawnpoints provided for {spawnType}");
-            return;
-        }
-    }
-
-    private void SpawnScp(List<ICommonSession> pool)
-    {
-        var spawnPoints = GetSpawnPoints(ScpSlSpawnType.Scp);
-        _random.Shuffle(spawnPoints);
-
-        var totalScps = _random.Next(2, spawnPoints.Count);
-
-        for (var i = 0; i < totalScps; i++)
-        {
-            var (spawnPoint, xform, spawnComponent) = spawnPoints[i];
-            var player = _random.PickAndTake(pool);
-
-            var scp = Spawn(spawnComponent.ScpProto!, xform.Coordinates);
-            _mindSystem.ControlMob(player.UserId, scp);
-        }
-    }
-
-    protected override void Added(EntityUid uid, ScpSlGameRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
-    {
-        base.Added(uid, component, gameRule, args);
-    }
-
-    protected override void Ended(EntityUid uid, ScpSlGameRuleComponent component, GameRuleComponent gameRule, GameRuleEndedEvent args)
-    {
-        base.Ended(uid, component, gameRule, args);
+        component.NextWaveSpawnTime = _gameTiming.CurTime + component.WaveSpawnCooldown;
+        NextRoundEndCheckTime = _gameTiming.CurTime + TimeSpan.FromMinutes(1);
     }
 
     protected override void AppendRoundEndText(EntityUid uid,
@@ -197,43 +139,125 @@ public sealed class ScpSlGameRuleSystem : GameRuleSystem<ScpSlGameRuleComponent>
         base.AppendRoundEndText(uid, component, gameRule, ref args);
     }
 
-    private bool ShouldRoundEnd()
+    private void TryEndRound()
     {
-        var scpsQuery = EntityQueryEnumerator<ScpMarkerComponent, MobStateComponent, TransformComponent>();
-        var humansQuery = EntityQueryEnumerator<NpcFactionMemberComponent, MobStateComponent, ActorComponent>();
-
-        while (scpsQuery.MoveNext(out var scpUid, out var _, out var mobStateComponent, out var xformComponent))
+        if (!TryGetActiveRule(out var rule))
         {
-
+            return;
         }
 
-        while (humansQuery.MoveNext(out var humanUid, out var npcFactionComponent, out var mobStateComponent, out var actorComponent))
+        var slGameRuleComponent = rule.Value.Comp1;
+
+        var dAlive = GetAliveHumanoidsCount(ScpSlHumanoidType.ClassD);
+        var mogAlive = GetAliveHumanoidsCount(ScpSlHumanoidType.Mog) + GetAliveHumanoidsCount(ScpSlHumanoidType.Scientist);
+        var chaosAlive = GetAliveHumanoidsCount(ScpSlHumanoidType.Chaos);
+        var scpAlive = GetAliveScpCount();
+
+
+        var shouldRoundEnd = false;
+
+        if (mogAlive > 0 && dAlive == 0 && scpAlive == 0)
         {
+            shouldRoundEnd = true;
 
-        }
-
-        return false;
-    }
-
-    private void Escaped(EscapedType escapedType)
-    {
-        var rules = QueryActiveRules();
-
-        while (rules.MoveNext(out var ruleUid, out var scpRuleComponent, out var ruleComponent))
-        {
-            if (escapedType == EscapedType.Scientist)
+            if (slGameRuleComponent.EscapedScientists > slGameRuleComponent.EscapedDClass)
             {
-                scpRuleComponent.EscapedScientists++;
-                return;
+                slGameRuleComponent.WinType = SlWinType.FondWin;
             }
+            else
+            {
+                slGameRuleComponent.WinType = SlWinType.Tie;
+            }
+        }
 
-            scpRuleComponent.EscapedDClass++;
+        if (scpAlive > 0 && dAlive == 0 && mogAlive == 0)
+        {
+            shouldRoundEnd = true;
+
+            if (scpAlive > slGameRuleComponent.EscapedDClass + slGameRuleComponent.EscapedScientists)
+            {
+                slGameRuleComponent.WinType = SlWinType.ScpWin;
+            }
+            else if (slGameRuleComponent.EscapedDClass > slGameRuleComponent.EscapedScientists + scpAlive)
+            {
+                slGameRuleComponent.WinType = SlWinType.ChaosWin;
+            }
+            else
+            {
+                slGameRuleComponent.WinType = SlWinType.Tie;
+            }
+        }
+
+        if ((dAlive > 0 || chaosAlive > 0) && scpAlive == 0 && mogAlive == 0)
+        {
+            shouldRoundEnd = true;
+
+            if (slGameRuleComponent.EscapedScientists < slGameRuleComponent.EscapedDClass)
+            {
+                slGameRuleComponent.WinType = SlWinType.ChaosWin;
+            }
+            else
+            {
+                slGameRuleComponent.WinType = SlWinType.Tie;
+            }
+        }
+
+        if(dAlive == 0 && mogAlive == 0 && scpAlive == 0)
+        {
+            shouldRoundEnd = true;
+            slGameRuleComponent.WinType = SlWinType.Tie;
+        }
+
+        if (shouldRoundEnd)
+        {
+            _gameTicker.EndRound();
         }
     }
 
-    private enum EscapedType
+    private bool TryGetActiveRule([NotNullWhen(true)] out Entity<ScpSlGameRuleComponent, GameRuleComponent>? gameRule)
     {
-        Scientist,
-        DClass
+        gameRule = null;
+
+        var query = QueryActiveRules();
+
+        while (query.MoveNext(out var _, out var scpRuleComponent, out var ruleComponent))
+        {
+            gameRule = new Entity<ScpSlGameRuleComponent, GameRuleComponent>(scpRuleComponent.Owner, scpRuleComponent, ruleComponent);
+        }
+
+        return gameRule.HasValue;
+    }
+
+    private int GetAliveHumanoidsCount(ScpSlHumanoidType humanoidType)
+    {
+        var query = EntityQueryEnumerator<ScpSlHumanoidMarkerComponent, MobStateComponent>();
+
+        var alive = 0;
+        while (query.MoveNext(out var _, out var markerComponent, out var mobStateComponent))
+        {
+            if (mobStateComponent.CurrentState is MobState.Alive or MobState.Critical
+                && markerComponent.HumanoidType == humanoidType)
+            {
+                alive++;
+            }
+        }
+
+        return alive;
+    }
+
+    private int GetAliveScpCount()
+    {
+        var query = EntityQueryEnumerator<ScpSlScpMarkerComponent, MobStateComponent>();
+        var alive = 0;
+
+        while (query.MoveNext(out var _, out var marker, out var _))
+        {
+            if (!marker.Contained)
+            {
+                alive++;
+            }
+        }
+
+        return alive;
     }
 }
