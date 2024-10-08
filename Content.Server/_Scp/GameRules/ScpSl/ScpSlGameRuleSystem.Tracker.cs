@@ -24,9 +24,10 @@ public partial class ScpSlGameRuleSystem
         if (args.NewMobState != MobState.Alive)
         {
             ent.Comp.Contained = true;
-            TryEndRound();
 
             _ghostSystem.SpawnGhost(ent.Owner, canReturn: false);
+
+            TryEndRound();
         }
     }
 
@@ -38,7 +39,7 @@ public partial class ScpSlGameRuleSystem
 
     private void OnHumanoidMobStateChanged(Entity<ScpSlHumanoidMarkerComponent> ent, ref MobStateChangedEvent args)
     {
-        if (args.NewMobState != MobState.Alive)
+        if (args.NewMobState == MobState.Dead)
         {
             TryEndRound();
         }

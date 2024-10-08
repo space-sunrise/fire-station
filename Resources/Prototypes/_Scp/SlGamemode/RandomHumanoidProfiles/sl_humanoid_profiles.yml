@@ -39,7 +39,7 @@
   randomizeName: true
   components:
   - type: Loadout
-    prototypes: [ SlChaosGear ]
+    prototypes: [ SlMogCaptainGear ]
   - type: ScpSlHumanoidMarker
     humanoidType: Mog
 

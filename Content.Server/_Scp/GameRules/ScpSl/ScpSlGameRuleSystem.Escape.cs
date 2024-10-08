@@ -13,7 +13,7 @@ public sealed partial class ScpSlGameRuleSystem
 
     private void OnEscapeZoneCollide(Entity<ScpSlEscapeZoneComponent> ent, ref StartCollideEvent args)
     {
-        if(!TryGetActiveRule(out var rule))
+        if (!TryGetActiveRule(out var rule))
         {
             return;
         }
@@ -40,7 +40,7 @@ public sealed partial class ScpSlGameRuleSystem
                 rule.Value.Comp1.EscapedDClass++;
             }
         }
-        else if(humanoidToSpawn == ScpSlHumanoidType.Scientist)
+        else if (humanoidToSpawn == ScpSlHumanoidType.Scientist)
         {
             rule.Value.Comp1.EscapedScientists++;
             humanoidToSpawn = ScpSlHumanoidType.Mog;

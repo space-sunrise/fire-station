@@ -25,6 +25,7 @@
   id: ScpSl
   alias:
   - ScpSl
+  - scpsl
   name: scpsl-title
   description: scpsl-description
   showInVote: false

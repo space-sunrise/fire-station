@@ -15,6 +15,7 @@ using Content.Shared.NPC.Systems;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -38,6 +39,7 @@ public sealed partial class ScpSlGameRuleSystem : GameRuleSystem<ScpSlGameRuleCo
     protected override string SawmillName => "ScpSl";
 
     private TimeSpan _nextRoundEndCheckTime;
+    private EntProtoId _ashPrototype = "Ash";
 
     public override void Initialize()
     {
@@ -101,7 +103,7 @@ public sealed partial class ScpSlGameRuleSystem : GameRuleSystem<ScpSlGameRuleCo
             var mobXform = Transform(mob);
             _mobStateSystem.ChangeMobState(mob, MobState.Dead);
 
-            Spawn("Ash", mobXform.Coordinates);
+            Spawn(_ashPrototype, mobXform.Coordinates);
 
             Del(mob);
         }
@@ -201,7 +203,7 @@ public sealed partial class ScpSlGameRuleSystem : GameRuleSystem<ScpSlGameRuleCo
             }
         }
 
-        if(dAlive == 0 && mogAlive == 0 && scpAlive == 0)
+        if (dAlive == 0 && mogAlive == 0 && scpAlive == 0)
         {
             shouldRoundEnd = true;
             slGameRuleComponent.WinType = SlWinType.Tie;
