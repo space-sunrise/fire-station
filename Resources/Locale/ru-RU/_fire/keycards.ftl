@@ -1,0 +1,10 @@
+ent-JanitorAC = карта уборщика
+ent-ScientistAC = карта ученого
+ent-ResearchSupervisorAC = карта научного руководителя
+ent-GuardAC = карта охраны комплекса
+ent-OperativeAC = карта оперативника МОГ
+ent-CaptainAC = карта капитана МОГ
+ent-ZoneManagerAC = карта менеджера зоны
+ent-FacilityManagerAC = карта менеджера объекта
+ent-ChaosInsurgencyAD = девайс хаоса
+ent-05AC = карта О5
