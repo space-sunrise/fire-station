@@ -1,0 +1,46 @@
+﻿# Tier 1
+
+- type: technology
+  id: SCPEx1
+  name: research-technology-salvage-weapons
+  icon:
+    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+    state: icon
+  discipline: SCP
+  tier: 1
+  cost: 5000
+  recipeUnlocks:
+  - WeaponProtoKineticAccelerator
+  - ShuttleGunKineticCircuitboard
+  - MechEquipmentKineticAccelerator
+
+# Tier 2
+
+- type: technology
+  id: SCPEx2
+  name: research-technology-concentrated-laser-weaponry
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
+    state: icon
+  discipline: SCP
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - WeaponLaserCannon
+  - WeaponMechCombatSolarisLaser
+
+# Tier 3
+
+- type: technology
+  id: SCPEx3
+  name: research-technology-portable-microfusion-weaponry
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/advancedlasergun.rsi
+    state: icon
+  discipline: SCP
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - WeaponAdvancedLaser
+  - PortableRecharger
+  - WeaponMechCombatImmolationGun
