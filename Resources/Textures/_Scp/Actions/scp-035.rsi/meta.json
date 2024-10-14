@@ -1,0 +1,26 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "SUNRISE",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "attack"
+        },
+        {
+            "name": "follow"
+        },
+        {
+            "name": "loose"
+        },
+        {
+            "name": "raise"
+        },
+        {
+            "name": "stay"
+        }
+    ]
+}
