@@ -245,7 +245,7 @@
     useDelay: 180
     icon:
       sprite: _Scp/Actions/scp-035.rsi
-      state: raise
+      state: hypnosis
     priority: 9
     event: !type:MaskStunActionEvent
     canTargetSelf: false
