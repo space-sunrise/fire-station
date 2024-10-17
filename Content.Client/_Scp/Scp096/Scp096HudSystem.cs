@@ -1,8 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Client._Scp.Scp096.Ui;
 using Content.Client.Overlays;
 using Content.Shared._Scp.Scp096;
 using Content.Shared.Inventory.Events;
+using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
@@ -19,82 +21,53 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
 
-    private Scp096UiWidget? _widget;
+    private Scp096UiWidget? Widget => _uiManager.ActiveScreen?.GetWidget<Scp096UiWidget>();
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<Scp096TargetComponent, GetStatusIconsEvent>(OnGetStatusIcon);
-
-        _uiManager.OnScreenChanged += (screens) =>
-        {
-            RemoveWidget();
-        };
-    }
-
-    protected override void UpdateInternal(RefreshEquipmentHudEvent<Scp096Component> args)
-    {
-        base.UpdateInternal(args);
-
-        var player = _playerManager.LocalSession?.AttachedEntity;
-
-        if (!HasComp<Scp096Component>(player))
-        {
-            return;
-        }
-
-        EnsureWidgetExist();
-    }
-
-    private void EnsureWidgetExist()
-    {
-        if (_uiManager.ActiveScreen == null)
-        {
-            return;
-        }
-
-        var layoutContainer = _uiManager.ActiveScreen.FindControl<LayoutContainer>("ViewportContainer");
-
-        _widget = new Scp096UiWidget();
-        LayoutContainer.SetAnchorAndMarginPreset(_widget, LayoutContainer.LayoutPreset.CenterTop, margin: 50);
-
-        layoutContainer.AddChild(_widget);
     }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        if (!IsActive)
+        if (Widget == null)
         {
             return;
         }
 
-        if (_widget == null)
+        if (!IsActive)
         {
-            EnsureWidgetExist();
+            Widget.Visible = false;
             return;
         }
+
 
         if (!TryGetPlayerEntity(out var scpEntity) || !scpEntity.Value.Comp.RageStartTime.HasValue)
         {
-            _widget.Visible = false;
+            Widget.Visible = false;
             return;
         }
 
-        _widget.Visible = true;
+        Widget.Visible = true;
 
         var elapsedTime = _gameTiming.CurTime - scpEntity.Value.Comp.RageStartTime;
         var remainingTime = scpEntity.Value.Comp.RageDuration - elapsedTime.Value.TotalSeconds;
 
-        _widget.SetData(remainingTime, scpEntity.Value.Comp.Targets.Count);
+        Widget.SetData(remainingTime, scpEntity.Value.Comp.Targets.Count);
     }
 
     protected override void DeactivateInternal()
     {
         base.DeactivateInternal();
-        RemoveWidget();
+
+        if (Widget != null)
+        {
+            Widget.Visible = false;
+        }
     }
 
     private void OnGetStatusIcon(Entity<Scp096TargetComponent> ent, ref GetStatusIconsEvent args)
@@ -106,11 +79,11 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
             return;
         }
 
-        if (ent.Comp.TargetedBy.Contains(playerEntity.Value)
-            && _prototypeManager.TryIndex(ent.Comp.KillIconPrototype, out var killIconPrototype))
-        {
-            args.StatusIcons.Add(killIconPrototype);
-        }
+        if (!ent.Comp.TargetedBy.Contains(playerEntity.Value))
+            return;
+
+        var icon = _prototypeManager.Index<FactionIconPrototype>(ent.Comp.KillIconPrototype);
+        args.StatusIcons.Add(icon);
     }
 
     private bool Validate([NotNullWhen(true)] EntityUid? player)
@@ -136,11 +109,4 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
         return true;
     }
 
-    private void RemoveWidget()
-    {
-        if (_widget == null) return;
-
-        _widget.Parent?.RemoveChild(_widget);
-        _widget = null;
-    }
 }
