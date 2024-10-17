@@ -1,9 +1,11 @@
-﻿namespace Content.Shared._Scp.Scp999;
+﻿using Robust.Shared.GameStates;
 
-[RegisterComponent]
+namespace Content.Shared._Scp.Scp999;
+
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp999Component : Component
 {
-    [DataField]
+    [DataField, AutoNetworkedField]
     public Scp999States CurrentState = Scp999States.Default;
 
     [DataField]

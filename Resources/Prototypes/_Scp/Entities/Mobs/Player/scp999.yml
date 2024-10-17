@@ -3,27 +3,32 @@
   name: SCP-999
   description: Желешка
   suffix: SCP-999
-  parent:
-  - MobBloodstream
-  - SimpleSpaceMobBase
+  parent: BaseSCP
   components:
   - type: Scp999
     states:
-      Default: SCP-999
-      Wall: SCP-999-wall
-      Rest: SCP-999_rest
+      Default: default
+      Wall: wall
+      Rest: rest
   - type: Sprite
     drawdepth: Mobs
     sprite: _Scp/Mobs/scp-999.rsi
     layers:
-    - state: SCP-999
-      map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default" ]
+    - state: default
+      map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default", "movement"]
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: movement
+    noMovementLayers:
+      movement:
+        state: default
   - type: DamageStateVisuals
     states:
       Alive:
-        Base: SCP-999
+        Base: default
       Dead:
-        Base: SCP-999_dead
+        Base: dead
   - type: Fixtures
     fixtures:
       fix1:
@@ -124,17 +129,6 @@
   - type: Body
     prototype: Slimes
     requiredLegs: 1
-  - type: MeleeWeapon
-    altDisarm: false
-    soundHit:
-      path: /Audio/Weapons/punch3.ogg
-    angle: 0
-    animation: WeaponArcPunch
-    damage:
-      types:
-        Blunt: 4
-        Structural: 4
-        Caustic: 8
   - type: InteractionPopup
     interactDelay: 0.5
     interactSuccessSpawn: EffectHearts

@@ -20,7 +20,6 @@
         maxAccidentTime: 30
         minSleepTime: 30
         maxSleepTime: 30
-        refresh: false
 
 
 - type: entity

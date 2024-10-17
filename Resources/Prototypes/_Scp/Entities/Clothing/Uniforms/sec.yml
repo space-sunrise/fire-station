@@ -1,0 +1,35 @@
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformSecurity
+  name: security jumpsuit
+  description: Fuck you.
+  suffix: SCP14
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/security_1.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/security_1.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformSecurity2
+  name: security jumpsuit
+  description: Fuck you.
+  suffix: SCP14
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/security_2.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/security_2.rsi
+
+- type: entity
+  parent: ClothingUniformBase
+  id: ClothingUniformSecurity3
+  name: security jumpsuit
+  description: Fuck you.
+  suffix: SCP14
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/security_3.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/security_3.rsi

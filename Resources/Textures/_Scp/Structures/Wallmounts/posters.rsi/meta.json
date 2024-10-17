@@ -1,0 +1,73 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "SUNRISE",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "scp"
+        },
+        {
+            "name": "chaos"
+        },
+        {
+            "name": "goc"
+        },
+        {
+            "name": "changes"
+        },
+        {
+            "name": "breath"
+        },
+        {
+            "name": "nt"
+        },
+        {
+            "name": "scp173"
+        },
+        {
+            "name": "scp217"
+        },
+        {
+            "name": "tattered"
+        },
+        {
+            "name": "poster_being_set",
+            "delays": [
+                [
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1,
+                    1
+                ]
+            ]
+        }
+    ]
+}

@@ -53,6 +53,9 @@ public abstract class SharedScp035System : EntitySystem
         SubscribeLocalEvent<Scp035ServantComponent, ComponentShutdown>(OnServantShutdown);
     }
 
+    // TODO: Рефактор с целью анхардкода всяких значений в прототипы, перевод строк на EntProtoId, а переводов на локаль
+    // TODO: А еще чето с акшенами придумать, не очень смотрятся эти AddAction x6
+
     private void OnMaskEquipped(Entity<Scp035MaskComponent> ent, ref ClothingGotEquippedEvent args)
     {
         EnsureComp<UnremoveableComponent>(ent);
@@ -74,8 +77,8 @@ public abstract class SharedScp035System : EntitySystem
         _factionSystem.ClearFactions(args.Wearer);
         _factionSystem.AddFaction(args.Wearer, "SimpleHostile");
 
-        _mobThreshold.SetMobStateThreshold(args.Wearer, FixedPoint2.New(1000), MobState.Critical);
-        _mobThreshold.SetMobStateThreshold(args.Wearer, FixedPoint2.New(1000), MobState.Dead);
+        _mobThreshold.SetMobStateThreshold(args.Wearer, FixedPoint2.New(800), MobState.Critical);
+        _mobThreshold.SetMobStateThreshold(args.Wearer, FixedPoint2.New(800), MobState.Dead);
         RemComp<SlowOnDamageComponent>(args.Wearer);
 
         _stun.TryParalyze(args.Wearer, TimeSpan.FromSeconds(5), true);

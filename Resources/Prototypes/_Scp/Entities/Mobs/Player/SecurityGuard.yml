@@ -1,0 +1,20 @@
+- type: entity
+  parent: MobHuman
+  id: StandardSCPSecurityGuard
+  name: Security Guard
+  suffix: SCP14
+  components:
+  - type: Loadout
+    prototypes: [StandardSCPSecurityGuard]
+
+- type: startingGear
+  id: StandardSCPSecurityGuard
+  equipment:
+    mask: ClothingMaskSecurityBandBlack
+    shoes: ClothingShoesBootsSecurityGuard # ClothingShoesBootsWinterSecurityGuard
+    gloves: ClothingHandsGlovesSecurity # id:
+    outerClothing: ClothingOuterArmorSecurity # ClothingOuterArmorSecurity2
+    head: ClothingHeadHelmetSecurity # ClothingHeadHatSecBlack ClothingHeadClosedHelmetSecurity ClothingHeadSecurityBeret
+    jumpsuit: ClothingUniformSecurity # ClothingUniformSecurity2 ClothingUniformSecurity3
+    neck: ClothingNeckMantleSecurity
+    eyes: ClothingEyesGlassesSecurityGuard

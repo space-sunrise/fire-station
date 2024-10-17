@@ -1,0 +1,20 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "SUNRISE",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "wall"
+        },
+        {
+            "name": "sleep"
+        },
+        {
+            "name": "love"
+        }
+    ]
+}

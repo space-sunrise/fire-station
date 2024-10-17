@@ -22,6 +22,12 @@
   description: He's da mini rat. He don't make da roolz.
   categories: [ HideSpawnMenu ] #Must be configured to a King or the AI breaks.
   components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _Scp/Mobs/scp-035-servant.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: default
   - type: CombatMode
   - type: MovementSpeedModifier
     baseWalkSpeed : 3.5
@@ -45,22 +51,6 @@
   - type: NpcFactionMember
     factions:
     - SimpleHostile
-  - type: Sprite
-    drawdepth: SmallMobs
-    sprite: Mobs/Animals/rat.rsi
-    layers:
-    - map: ["enum.DamageStateVisualLayers.Base", "movement"]
-      state: rat
-    - map: [ "enum.DamageStateVisualLayers.BaseUnshaded"]
-      state: eyes
-      shader: unshaded
-  - type: SpriteMovement
-    movementLayers:
-      movement:
-        state: rat-moving
-    noMovementLayers:
-      movement:
-        state: rat
   - type: Physics
     bodyType: KinematicController
   - type: Fixtures
@@ -183,8 +173,8 @@
   - type: InstantAction
     useDelay: 4
     icon:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: ratKingArmy
+      sprite: _Scp/Actions/scp-035.rsi
+      state: raise
     event: !type:MaskRaiseArmyActionEvent
 
 - type: entity
@@ -195,10 +185,7 @@
   - type: InstantAction
     useDelay: 1
     icon:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: stayOff
-    iconOn:
-      sprite: Interface/Actions/actions_rat_king.rsi
+      sprite: _Scp/Actions/scp-035.rsi
       state: stay
     event:
       !type:MaskOrderActionEvent
@@ -213,10 +200,7 @@
   - type: InstantAction
     useDelay: 1
     icon:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: followOff
-    iconOn:
-      sprite: Interface/Actions/actions_rat_king.rsi
+      sprite: _Scp/Actions/scp-035.rsi
       state: follow
     event:
       !type:MaskOrderActionEvent
@@ -231,10 +215,7 @@
   - type: InstantAction
     useDelay: 1
     icon:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: attackOff
-    iconOn:
-      sprite: Interface/Actions/actions_rat_king.rsi
+      sprite: _Scp/Actions/scp-035.rsi
       state: attack
     event:
       !type:MaskOrderActionEvent
@@ -249,10 +230,7 @@
   - type: InstantAction
     useDelay: 1
     icon:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: looseOff
-    iconOn:
-      sprite: Interface/Actions/actions_rat_king.rsi
+      sprite: _Scp/Actions/scp-035.rsi
       state: loose
     event:
       !type:MaskOrderActionEvent
@@ -261,16 +239,17 @@
 
 - type: entity
   id: ActionScp035Stun
-  name: Гипноз.
+  name: Гипноз
   components:
   - type: EntityTargetAction
     useDelay: 180
     icon:
-      sprite: Interface/Actions/actions_rat_king.rsi
-      state: ratKingArmy
+      sprite: _Scp/Actions/scp-035.rsi
+      state: hypnosis
     priority: 9
     event: !type:MaskStunActionEvent
     canTargetSelf: false
     interactOnMiss: false
     whitelist:
-      components: MobState
+      components:
+      - MobState
