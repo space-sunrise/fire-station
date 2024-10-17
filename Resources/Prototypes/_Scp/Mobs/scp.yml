@@ -5,6 +5,9 @@
   - MobBloodstream
   - MobFlammable
   id: BaseSCP
+  components:
+  - type: ScpRestriction
+  - type: Artifact
 
 - type: entity
   abstract: true
@@ -40,7 +43,6 @@
     baseWalkSpeed: 5
     baseSprintSpeed: 15
   - type: Scp173
-  - type: ScpRestriction
   - type: GiveActions
     actions:
     - Scp173Blind
