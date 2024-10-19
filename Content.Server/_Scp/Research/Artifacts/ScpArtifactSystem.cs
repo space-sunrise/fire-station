@@ -1,10 +1,5 @@
-﻿using System.Linq;
-using Content.Server.Xenoarchaeology.XenoArtifacts;
+﻿using Content.Server.Xenoarchaeology.XenoArtifacts;
 using Content.Shared._Scp.Mobs.Components;
-using Content.Shared.Whitelist;
-using Content.Shared.Xenoarchaeology.XenoArtifacts;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Research.Artifacts;
 
