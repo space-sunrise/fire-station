@@ -39,7 +39,7 @@
     delay: 1
     cooldown: 2
     cooldownMessage: scp-research-time-left
-    event: !type:Scp173PickaxeInteractDoAfterEvent
+    event: !type:ScpSpawnInteractDoAfterEvent
       toSpawn: Crowbar # TODO: Сделать прототип шарда и поставить сюда
     sound: /Audio/Effects/break_stone.ogg
     whitelist:

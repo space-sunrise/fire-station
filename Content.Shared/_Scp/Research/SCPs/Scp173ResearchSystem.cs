@@ -23,7 +23,7 @@ public sealed partial class Scp173ResearchSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ScpRestrictionComponent, InteractUsingEvent>(OnInteract);
-        SubscribeLocalEvent<ScpRestrictionComponent, BaseScpSpawnInteractDoAfterEvent>(OnInteractSuccessful);
+        SubscribeLocalEvent<ScpRestrictionComponent, ScpSpawnInteractDoAfterEvent>(OnInteractSuccessful);
     }
 
     private void OnInteract(Entity<ScpRestrictionComponent> scp, ref InteractUsingEvent args)
@@ -54,7 +54,10 @@ public sealed partial class Scp173ResearchSystem : EntitySystem
             return;
         }
 
-        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, researchTool.Delay, researchTool.Event, scp, target: scp, used: item)
+        var ev = researchTool.Event;
+        ev.Tool = (item, researchTool);
+
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.User, researchTool.Delay, ev, scp, target: scp, used: item)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
@@ -64,7 +67,7 @@ public sealed partial class Scp173ResearchSystem : EntitySystem
         _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
     }
 
-    private void OnInteractSuccessful<T>(Entity<ScpRestrictionComponent> scp, ref T args) where T : BaseScpSpawnInteractDoAfterEvent
+    private void OnInteractSuccessful(Entity<ScpRestrictionComponent> scp, ref ScpSpawnInteractDoAfterEvent args)
     {
         if (!_timing.IsFirstTimePredicted)
             return;

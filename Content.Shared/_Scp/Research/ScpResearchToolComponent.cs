@@ -1,5 +1,4 @@
-﻿using Content.Shared.DoAfter;
-using Content.Shared.Whitelist;
+﻿using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
@@ -18,7 +17,7 @@ public sealed partial class ScpResearchToolComponent : Component
     public string? CooldownMessage;
 
     [DataField(required: true), NonSerialized]
-    public BaseScpSpawnInteractDoAfterEvent Event = default!;
+    public ScpSpawnInteractDoAfterEvent Event = default!;
 
     [DataField, ViewVariables]
     public SoundSpecifier? Sound;

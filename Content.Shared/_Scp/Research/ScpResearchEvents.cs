@@ -21,30 +21,18 @@ public abstract partial class BaseScpInteractDoAfterEvent : SimpleDoAfterEvent
 }
 
 [Serializable, NetSerializable, DataDefinition]
-public abstract partial class BaseScpSpawnInteractDoAfterEvent : BaseScpInteractDoAfterEvent
+public sealed partial class ScpSpawnInteractDoAfterEvent : BaseScpInteractDoAfterEvent
 {
     [DataField]
     public EntProtoId ToSpawn;
 
-    public BaseScpSpawnInteractDoAfterEvent() {}
+    public ScpSpawnInteractDoAfterEvent() {}
 
-    public BaseScpSpawnInteractDoAfterEvent(EntProtoId toSpawn)
+    public ScpSpawnInteractDoAfterEvent(EntProtoId toSpawn)
     {
         ToSpawn = toSpawn;
     }
 }
-
-#endregion
-
-
-#region Additional events
-
-[Serializable, NetSerializable, DataDefinition]
-public sealed partial class Scp173PickaxeInteractDoAfterEvent : BaseScpSpawnInteractDoAfterEvent {}
-
-
-[Serializable, NetSerializable, DataDefinition]
-public sealed partial class Scp173CrowbarInteractDoAfterEvent : BaseScpSpawnInteractDoAfterEvent {}
 
 #endregion
 
