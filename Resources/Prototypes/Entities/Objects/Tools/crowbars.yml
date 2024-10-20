@@ -41,6 +41,16 @@
     size: Normal
     shape:
     - 0,0,0,1
+  - type: ScpResearchTool
+    delay: 1
+    cooldown: 2
+    cooldownMessage: scp-research-time-left
+    event: !type:BaseScpSpawnInteractDoAfterEvent
+      toSpawn: Crowbar # TODO: Сделать прототип шарда и поставить сюда
+    sound: /Audio/Effects/break_stone.ogg
+    whitelist:
+      components:
+      - Scp173
 
 # Standard (grey) Crowbar
 - type: entity

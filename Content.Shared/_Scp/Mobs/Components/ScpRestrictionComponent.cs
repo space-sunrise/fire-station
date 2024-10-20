@@ -3,4 +3,8 @@
 namespace Content.Shared._Scp.Mobs.Components;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class ScpRestrictionComponent : Component;
+public sealed partial class ScpRestrictionComponent : Component
+{
+    [ViewVariables]
+    public TimeSpan? TimeLastUsed;
+}
