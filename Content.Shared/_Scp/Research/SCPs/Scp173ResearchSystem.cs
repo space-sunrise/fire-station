@@ -2,7 +2,6 @@
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
-using Content.Shared.Tag;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
@@ -34,10 +33,10 @@ public sealed partial class Scp173ResearchSystem : EntitySystem
 
         var item = args.Used;
 
-        if (!TryComp<ScpResearchToolComponent>(scp, out var researchTool))
+        if (!TryComp<ScpResearchToolComponent>(item, out var researchTool))
             return;
 
-        if (_whitelist.IsWhitelistPass(researchTool.Whitelist, scp))
+        if (!_whitelist.IsWhitelistPass(researchTool.Whitelist, scp))
             return;
 
         var timeLeft = _timing.CurTime - scp.Comp.TimeLastUsed;
@@ -65,7 +64,7 @@ public sealed partial class Scp173ResearchSystem : EntitySystem
         _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
     }
 
-    private void OnInteractSuccessful(Entity<ScpRestrictionComponent> scp, ref BaseScpSpawnInteractDoAfterEvent args)
+    private void OnInteractSuccessful<T>(Entity<ScpRestrictionComponent> scp, ref T args) where T : BaseScpSpawnInteractDoAfterEvent
     {
         if (!_timing.IsFirstTimePredicted)
             return;

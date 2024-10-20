@@ -6,7 +6,7 @@ using Robust.Shared.GameStates;
 namespace Content.Shared._Scp.Research;
 
 [RegisterComponent, NetworkedComponent]
-public sealed class ScpResearchToolComponent : Component
+public sealed partial class ScpResearchToolComponent : Component
 {
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float Delay = 1f;

@@ -35,6 +35,16 @@
     sprite: Objects/Weapons/Melee/pickaxe.rsi
     storedRotation: -45
   - type: UseDelay
+  - type: ScpResearchTool
+    delay: 1
+    cooldown: 2
+    cooldownMessage: scp-research-time-left
+    event: !type:Scp173PickaxeInteractDoAfterEvent
+      toSpawn: Crowbar # TODO: Сделать прототип шарда и поставить сюда
+    sound: /Audio/Effects/break_stone.ogg
+    whitelist:
+      components:
+      - Scp173
 
 - type: entity
   name: mining drill

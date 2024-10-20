@@ -7,8 +7,9 @@ namespace Content.Shared._Scp.Research;
 #region Base
 
 [Serializable, NetSerializable]
-public abstract class BaseScpInteractDoAfterEvent : SimpleDoAfterEvent
+public abstract partial class BaseScpInteractDoAfterEvent : SimpleDoAfterEvent
 {
+    [NonSerialized]
     public Entity<ScpResearchToolComponent> Tool;
 
     public BaseScpInteractDoAfterEvent() {}
