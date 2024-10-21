@@ -38,8 +38,10 @@ public sealed partial class WieldableComponent : Component
 
     public string? OldInhandPrefix = null;
 
+    // Fire added start - форс двуручности
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public bool ForceTwoHanded;
+    // Fire added end
 }
 
 [Serializable, NetSerializable]
