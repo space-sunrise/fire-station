@@ -55,7 +55,20 @@ public sealed class WieldableSystem : EntitySystem
         SubscribeLocalEvent<GunWieldBonusComponent, ExaminedEvent>(OnExamine);
 
         SubscribeLocalEvent<IncreaseDamageOnWieldComponent, GetMeleeDamageEvent>(OnGetMeleeDamage);
+
+        // Fire added - форс двуручности
+        SubscribeLocalEvent<WieldableComponent, GotEquippedHandEvent>(OnHandEquipped);
     }
+
+    // Fire added start - форс двуручности
+    private void OnHandEquipped(EntityUid uid, WieldableComponent component, GotEquippedHandEvent args)
+    {
+        if (!component.ForceTwoHanded)
+            return;
+
+        TryWield(args.Equipped, component, args.User);
+    }
+    // Fire added end
 
     private void OnMeleeAttempt(EntityUid uid, MeleeRequiresWieldComponent component, ref AttemptMeleeEvent args)
     {
@@ -125,7 +138,7 @@ public sealed class WieldableSystem : EntitySystem
 
     private void OnExamine(EntityUid uid, GunWieldBonusComponent component, ref ExaminedEvent args)
     {
-        if (HasComp<GunRequiresWieldComponent>(uid)) 
+        if (HasComp<GunRequiresWieldComponent>(uid))
             return;
 
         if (component.WieldBonusExamineMessage != null)
@@ -159,6 +172,11 @@ public sealed class WieldableSystem : EntitySystem
     {
         if (args.Handled)
             return;
+
+        // Fire added start - форс двуручности
+        if (component.ForceTwoHanded)
+            return;
+        // Fire added end
 
         if (!component.Wielded)
             args.Handled = TryWield(uid, component, args.User);
@@ -318,6 +336,11 @@ public sealed class WieldableSystem : EntitySystem
 
     private void OnVirtualItemDeleted(EntityUid uid, WieldableComponent component, VirtualItemDeletedEvent args)
     {
+        // Fire added start - форс двуручности
+        if (component.ForceTwoHanded)
+            _handsSystem.TryDrop(args.User, uid);
+        // Fire added end
+
         if (args.BlockingEntity == uid && component.Wielded)
             TryUnwield(args.BlockingEntity, component, args.User);
     }
