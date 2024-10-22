@@ -18,3 +18,43 @@
   - type: AddComponentsPickup
     components:
     - type: AnomalyAccent
+
+- type: entity
+  parent: BaseItem
+  id: ScpBackroomsRock
+  name: strange rock
+  suffix: Backrooms
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/bucket.rsi
+    layers:
+    - state: icon
+  - type: Item
+    size: Large
+  - type: PointLight
+    radius: 1.1
+    energy: 15
+    color: "#e9d7d7"
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Bloodloss
+        damage: 60
+      behaviors:
+      - !type:TriggerBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Damageable
+  - type: PacifismDangerousAttack
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 120
+  - type: Barotrauma
+    damage:
+      types:
+        Bloodloss: 1
+  - type: ChangeLightOnDamage
+    targetLightColor: "#df2020"
+    maxDamage: 60
