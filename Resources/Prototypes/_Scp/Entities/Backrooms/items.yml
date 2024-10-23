@@ -73,6 +73,7 @@
   parent: MaterialBase
   id: ScpBackroomsDiamond
   name: strange diamond
+  suffix: Backrooms
   components:
   - type: Sprite
     state: diamond
