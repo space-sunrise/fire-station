@@ -58,3 +58,13 @@
   - type: ChangeLightOnDamage
     targetLightColor: "#df2020"
     maxDamage: 60
+
+- type: entity
+  parent: ClothingHeadHatCowboyWhite
+  id: ScpBackroomsCowboyHat
+  name: strange cowboy hat
+  suffix: Backrooms
+  components:
+  - type: AddAccentClothing
+    accent: DogAccent
+  - type: AddDrunkClothing

@@ -1,7 +1,7 @@
 ﻿using Content.Server.Speech;
 using Robust.Shared.Random;
 
-namespace Content.Server._Scp.Backrooms;
+namespace Content.Server._Scp.Backrooms.AnomalyAccent;
 
 public sealed class AnomalyAccentSystem : EntitySystem
 {
