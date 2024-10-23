@@ -68,3 +68,25 @@
   - type: AddAccentClothing
     accent: DogAccent
   - type: AddDrunkClothing
+
+- type: entity
+  parent: MaterialBase
+  id: ScpBackroomsDiamond
+  name: strange diamond
+  components:
+  - type: Sprite
+    state: diamond
+    scale: 2,2
+    layers:
+    - state: diamond
+      map: ["base"]
+  - type: Item
+    size: Ginormous
+  - type: Wieldable
+    forceTwoHanded: true
+  - type: ClothingSpeedModifier
+    walkModifier: 0.5
+    sprintModifier: 0.5
+  - type: HeldSpeedModifier
+  - type: StaticPrice
+    price: 4000000 # нереально дорогой
