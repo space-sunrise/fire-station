@@ -12,6 +12,7 @@ using Content.Shared.Anomaly.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.Random;
 using Content.Shared.Random.Helpers;
+using Content.Shared.Research;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
@@ -137,10 +138,10 @@ public sealed partial class AnomalySystem : SharedAnomalySystem
     /// <param name="anomaly"></param>
     /// <param name="component"></param>
     /// <returns>The amount of points</returns>
-    public int GetAnomalyPointValue(EntityUid anomaly, AnomalyComponent? component = null)
+    public Dictionary<ProtoId<ResearchPointPrototype>, int> GetAnomalyPointValue(EntityUid anomaly, AnomalyComponent? component = null)
     {
         if (!Resolve(anomaly, ref component, false))
-            return 0;
+            return [];
 
         var multiplier = 1f;
         if (component.Stability > component.GrowthThreshold)
@@ -158,7 +159,16 @@ public sealed partial class AnomalySystem : SharedAnomalySystem
 
         var severityValue = 1 / (1 + MathF.Pow(MathF.E, -7 * (component.Severity - 0.5f)));
 
-        return (int) ((component.MaxPointsPerSecond - component.MinPointsPerSecond) * severityValue * multiplier) + component.MinPointsPerSecond;
+        var pointsPerSecond = new Dictionary<ProtoId<ResearchPointPrototype>, int>();
+
+        foreach (var (pointType,  maxPoints) in component.MaxPointsPerSecond)
+        {
+            var minPoints = component.MinPointsPerSecond.GetValueOrDefault(pointType);
+
+            pointsPerSecond[pointType] = (int)((maxPoints - minPoints) * severityValue * multiplier) + minPoints;
+        }
+
+        return pointsPerSecond;
     }
 
     /// <summary>

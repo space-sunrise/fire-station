@@ -1,4 +1,6 @@
-﻿using Robust.Shared.Serialization;
+﻿using Content.Shared.Research;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 using Robust.Shared.Utility;
 
 namespace Content.Shared.Xenoarchaeology.Equipment;
@@ -48,7 +50,7 @@ public sealed class AnalysisConsoleUpdateState(
     TimeSpan? startTime,
     TimeSpan? accumulatedRunTime,
     TimeSpan? totalTime,
-    int pointAmount,
+    Dictionary<ProtoId<ResearchPointPrototype>,int> pointAmount,
     bool isTraversalDown
 )
     : BoundUserInterfaceState
@@ -64,6 +66,6 @@ public sealed class AnalysisConsoleUpdateState(
     public TimeSpan? StartTime = startTime;
     public TimeSpan? AccumulatedRunTime = accumulatedRunTime;
     public TimeSpan? TotalTime = totalTime;
-    public int PointAmount = pointAmount;
+    public Dictionary<ProtoId<ResearchPointPrototype>,int> PointAmount = pointAmount;
     public bool IsTraversalDown = isTraversalDown;
 }

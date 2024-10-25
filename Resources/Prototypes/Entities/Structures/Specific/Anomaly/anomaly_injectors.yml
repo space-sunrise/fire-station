@@ -44,7 +44,8 @@
     injectionComponents:
       - type: Anomaly
         deleteEntity: false
-        maxPointsPerSecond: 100
+        maxPointsPerSecond:
+          Default: 100
         corePrototype: AnomalyCorePyroclastic
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionPyroclastic
@@ -73,7 +74,8 @@
     injectionComponents:
       - type: Anomaly
         deleteEntity: false
-        maxPointsPerSecond: 100
+        maxPointsPerSecond:
+          Default: 100
         corePrototype: AnomalyCoreElectricity
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionElectric
@@ -102,7 +104,8 @@
     injectionComponents:
       - type: Anomaly
         deleteEntity: false
-        maxPointsPerSecond: 100
+        maxPointsPerSecond:
+          Default: 100
         corePrototype: AnomalyCoreShadow
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionShadow
@@ -131,7 +134,8 @@
     injectionComponents:
       - type: Anomaly
         deleteEntity: false
-        maxPointsPerSecond: 100
+        maxPointsPerSecond:
+          Default: 100
         corePrototype: AnomalyCoreIce
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionIce
@@ -160,7 +164,8 @@
     injectionComponents:
       - type: Anomaly
         deleteEntity: false
-        maxPointsPerSecond: 100
+        maxPointsPerSecond:
+          Default: 100
         corePrototype: AnomalyCoreFlora
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionFlora
@@ -189,7 +194,8 @@
     injectionComponents:
       - type: Anomaly
         deleteEntity: false
-        maxPointsPerSecond: 100
+        maxPointsPerSecond:
+          Default: 100
         corePrototype: AnomalyCoreBluespace
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionBluespace
@@ -218,7 +224,8 @@
     injectionComponents:
       - type: Anomaly
         deleteEntity: false
-        maxPointsPerSecond: 100
+        maxPointsPerSecond:
+          Default: 100
         corePrototype: AnomalyCoreFlesh
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionFlesh
@@ -247,7 +254,8 @@
     injectionComponents:
       - type: Anomaly
         deleteEntity: false
-        maxPointsPerSecond: 100
+        maxPointsPerSecond:
+          Default: 100
         corePrototype: AnomalyCoreGravity
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionGravity
@@ -276,7 +284,8 @@
     injectionComponents:
       - type: Anomaly
         deleteEntity: false
-        maxPointsPerSecond: 100
+        maxPointsPerSecond:
+          Default: 100
         corePrototype: AnomalyCoreTech
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionTech
@@ -306,7 +315,8 @@
     injectionComponents:
       - type: Anomaly
         deleteEntity: false
-        maxPointsPerSecond: 100
+        maxPointsPerSecond:
+          Default: 100
         corePrototype: AnomalyCoreRock
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionRock

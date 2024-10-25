@@ -5,6 +5,7 @@ using Content.Shared.Research;
 using Content.Shared.Research.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Research.TechnologyDisk.Systems;
@@ -50,10 +51,10 @@ public sealed class DiskConsoleSystem : EntitySystem
         if (!_research.TryGetClientServer(uid, out var server, out var serverComp))
             return;
 
-        if (serverComp.Points < component.PricePerDisk)
+        if (!HasAnoughtPoints(serverComp.Points, component.PricePerDisk))
             return;
 
-        _research.ModifyServerPoints(server.Value, -component.PricePerDisk, serverComp);
+        _research.ModifyServerPoints(server.Value, component.PricePerDisk, true, serverComp);
         _audio.PlayPvs(component.PrintSound, uid);
 
         var printing = EnsureComp<DiskConsolePrintingComponent>(uid);
@@ -81,14 +82,14 @@ public sealed class DiskConsoleSystem : EntitySystem
         if (!Resolve(uid, ref component, false))
             return;
 
-        var totalPoints = 0;
+        var totalPoints = new Dictionary<ProtoId<ResearchPointPrototype>, int>();
         if (_research.TryGetClientServer(uid, out _, out var server))
         {
             totalPoints = server.Points;
         }
 
         var canPrint = !(TryComp<DiskConsolePrintingComponent>(uid, out var printing) && printing.FinishTime >= _timing.CurTime) &&
-                       totalPoints >= component.PricePerDisk;
+                       HasAnoughtPoints(totalPoints, component.PricePerDisk);
 
         var state = new DiskConsoleBoundUserInterfaceState(totalPoints, component.PricePerDisk, canPrint);
         _ui.SetUiState(uid, DiskConsoleUiKey.Key, state);
@@ -97,5 +98,19 @@ public sealed class DiskConsoleSystem : EntitySystem
     private void OnShutdown(EntityUid uid, DiskConsolePrintingComponent component, ComponentShutdown args)
     {
         UpdateUserInterface(uid);
+    }
+
+    private bool HasAnoughtPoints(Dictionary<ProtoId<ResearchPointPrototype>, int> totalPoints, Dictionary<ProtoId<ResearchPointPrototype>, int> price)
+    {
+        foreach (var (pointType, value) in price)
+        {
+            if (!totalPoints.TryGetValue(pointType, out var points)
+                || points < value)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

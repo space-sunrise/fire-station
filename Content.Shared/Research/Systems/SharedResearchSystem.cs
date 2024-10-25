@@ -164,7 +164,18 @@ public abstract class SharedResearchSystem : EntitySystem
 
         if (includeCost)
         {
-            description.AddMarkupOrThrow(Loc.GetString("research-console-cost", ("amount", technology.Cost)));
+            var costString = string.Empty;
+
+            foreach (var (pointType, value) in technology.Cost)
+            {
+                var pointPrototype = PrototypeManager.Index<ResearchPointPrototype>(pointType);
+                costString += $"{Loc.GetString(pointPrototype.Name)}: {value}  ";
+            }
+
+            var costLoc = Loc.GetString("research-console-cost",
+                ("amount", costString));
+
+            description.AddMarkupOrThrow(costLoc);
             description.PushNewline();
         }
 

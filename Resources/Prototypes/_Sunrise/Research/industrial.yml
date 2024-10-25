@@ -8,10 +8,11 @@
     state: icon
   discipline: Industrial
   tier: 1
-  cost: 2500
+  cost:
+    Default: 2500
   recipeUnlocks:
   - HandCraftedNVD
-  
+
 # Tier 2
 
 - type: technology
@@ -22,6 +23,7 @@
     state: icon
   discipline: Industrial
   tier: 2
-  cost: 5000
+  cost:
+    Default: 5000
   recipeUnlocks:
   - BasicNVD

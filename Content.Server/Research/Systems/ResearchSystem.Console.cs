@@ -52,7 +52,7 @@ public sealed partial class ResearchSystem
             );
             _radio.SendRadioMessage(uid, message, component.AnnouncementChannel, uid, escapeMarkup: false);
         }
-       
+
         SyncClientWithServer(uid);
         UpdateConsoleInterface(uid, component);
     }
@@ -71,12 +71,12 @@ public sealed partial class ResearchSystem
 
         if (TryGetClientServer(uid, out _, out var serverComponent, clientComponent))
         {
-            var points = clientComponent.ConnectedToServer ? serverComponent.Points : 0;
+            var points = clientComponent.ConnectedToServer ? serverComponent.Points : new();
             state = new ResearchConsoleBoundInterfaceState(points);
         }
         else
         {
-            state = new ResearchConsoleBoundInterfaceState(default);
+            state = new ResearchConsoleBoundInterfaceState(new());
         }
 
         _uiSystem.SetUiState(uid, ResearchConsoleUiKey.Key, state);

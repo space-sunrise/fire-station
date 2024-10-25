@@ -1,0 +1,7 @@
+﻿- type: researchPoint
+  id: Default
+  name: research-point-default
+
+- type: researchPoint
+  id: Scp
+  name: research-point-scp

@@ -7,7 +7,7 @@ research-console-available-text = Доступные технологии
 research-console-unlocked-text = Исследованные технологии
 research-console-tier-discipline-info = Уровень { $tier }, [color={ $color }]{ $discipline }[/color]
 research-console-tier-info-small = : Уровень { $tier }
-research-console-cost = Стоимость: [color=orchid]{ $amount }[/color]
+research-console-cost = Стоимость: { $amount }
 research-console-unlocks-list-start = Открывает:
 research-console-unlocks-list-entry = - [color=yellow]{ $name }[/color]
 research-console-unlocks-list-entry-generic = - [color=green]{ $text }[/color]

@@ -19,7 +19,8 @@
   description: A disk for the R&D server containing 5000 points.
   components:
   - type: ResearchDisk
-    points: 5000
+    points:
+      Default: 5000
 
 - type: entity
   parent: ResearchDisk
@@ -28,7 +29,8 @@
   description: A disk for the R&D server containing 10000 points.
   components:
   - type: ResearchDisk
-    points: 10000
+    points:
+      Default: 10000
 
 - type: entity
   parent: ResearchDisk

@@ -8,7 +8,8 @@
     state: icon
   discipline: Arsenal
   tier: 1
-  cost: 7500
+  cost:
+    Default: 7500
   recipeUnlocks:
   - WeaponEnergyGun
   - WeaponEnergyGunMini
@@ -21,7 +22,8 @@
     state: icon
   discipline: Arsenal
   tier: 2
-  cost: 7500
+  cost:
+    Default: 7500
   recipeUnlocks:
   - WeaponEnergyGunPistol
 
@@ -33,6 +35,7 @@
     state: icon
   discipline: Arsenal
   tier: 2
-  cost: 12500
+  cost:
+    Default: 12500
   recipeUnlocks:
   - WeaponGunLaserCarbineAutomatic

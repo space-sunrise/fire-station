@@ -12,6 +12,7 @@ using Content.Shared.Paper;
 using Content.Shared.Placeable;
 using Content.Shared.Popups;
 using Content.Shared.Power;
+using Content.Shared.Research;
 using Content.Shared.Research.Components;
 using Content.Shared.Xenoarchaeology.Equipment;
 using Content.Shared.Xenoarchaeology.XenoArtifacts;
@@ -194,7 +195,7 @@ public sealed class ArtifactAnalyzerSystem : EntitySystem
         TimeSpan? totalTime = null;
         var canScan = false;
         var canPrint = false;
-        var points = 0;
+        Dictionary<ProtoId<ResearchPointPrototype>,int> points = [];
 
         if (TryComp<ArtifactAnalyzerComponent>(component.AnalyzerEntity, out var analyzer))
         {
@@ -340,8 +341,20 @@ public sealed class ArtifactAnalyzerSystem : EntitySystem
         msg.AddMarkupOrThrow(Loc.GetString("analysis-console-info-edges", ("edges", n.Edges.Count)));
         msg.PushNewline();
 
+
+
         if (component.LastAnalyzerPointValue != null)
-            msg.AddMarkupOrThrow(Loc.GetString("analysis-console-info-value", ("value", component.LastAnalyzerPointValue)));
+        {
+            var prettyString = string.Empty;
+
+            foreach (var (pointType, value) in component.LastAnalyzerPointValue)
+            {
+                var prototype = _prototype.Index<ResearchPointPrototype>(pointType);
+                prettyString += $"{Loc.GetString(prototype.Name)}: {value}  ";
+            }
+
+            msg.AddMarkupOrThrow(Loc.GetString("analysis-console-info-value", ("value", prettyString)));
+        }
 
         return msg;
     }
@@ -364,14 +377,18 @@ public sealed class ArtifactAnalyzerSystem : EntitySystem
         if (artifact == null)
             return;
 
-        var pointValue = _artifact.GetResearchPointValue(artifact.Value);
+        var pointsValue = _artifact.GetResearchPointValue(artifact.Value);
 
         // no new nodes triggered so nothing to add
-        if (pointValue == 0)
+        if (pointsValue.Count == 0)
             return;
 
-        _research.ModifyServerPoints(server.Value, pointValue, serverComponent);
-        _artifact.AdjustConsumedPoints(artifact.Value, pointValue);
+        foreach (var (pointType, pointValue) in pointsValue)
+        {
+            _research.ModifyServerPoints(server.Value, pointType, pointValue, serverComponent);
+            _artifact.AdjustConsumedPoints(artifact.Value, pointValue);
+        }
+
 
         _audio.PlayPvs(component.ExtractSound, component.AnalyzerEntity.Value, AudioParams.Default.WithVolume(2f));
 
