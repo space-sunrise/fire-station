@@ -191,3 +191,59 @@
   - type: EmitEmoteOnHit
     emote: Crying
 
+- type: entity
+  parent: BaseItem
+  id: ScpBackroomsDollar
+  name: strange dollar
+  suffix: Backrooms
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/bureaucracy.rsi
+    layers:
+    - state: paper
+    - state: paper_words
+      map: ["enum.PaperVisualLayers.Writing"]
+      visible: false
+    - state: paper_stamp-generic
+      map: ["enum.PaperVisualLayers.Stamp"]
+      visible: false
+  - type: Item
+    size: Tiny
+  - type: Appearance
+  - type: PaperVisuals
+  - type: Flammable
+    fireSpread: true
+    alwaysCombustible: true
+    damage:
+      types:
+        Heat: 1
+  - type: FireVisuals
+    sprite: Effects/fire.rsi
+    normalState: fire
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Speech
+  - type: Vocal # ╰(▔∀▔)╯
+    sounds:
+      Male: MaleVulpkanin
+      Female: FemaleVulpkanin
+      Unsexed: MaleVulpkanin
+  - type: Emoting
+  - type: EmitEmotesPeriodically
+    emotes:
+    - Scream
+    cooldownVariations: 10
+    mode: Random
