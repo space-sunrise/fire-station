@@ -155,3 +155,39 @@
     - paper
   # paper prototype copy paste
   - type: ChokeOnRead
+
+- type: entity
+  parent: BaseItem
+  id: ScpBackroomsSwatter
+  name: strange fly swatter
+  suffix: Backrooms
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/bikehorn.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Effects/snap.ogg
+      params:
+        variation: 0.125
+  - type: UseDelay
+    delay: 0.5
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Effects/snap.ogg
+      params:
+        variation: 0.125
+  - type: MeleeWeapon
+    wideAnimationRotation: 135
+    soundHit:
+      path: /Audio/Effects/snap.ogg
+      params:
+        variation: 0.125
+    damage:
+      types:
+        Blunt: 0
+  - type: EmitEmoteOnHit
+    emote: Crying
+
