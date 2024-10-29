@@ -284,3 +284,29 @@
   - type: Tag
     tags:
     - DoorBumpOpener
+
+- type: entity # TODO: Свой текст
+  parent: BookBase
+  id: ScpBackroomsBook
+  name: strange book
+  suffix: Backrooms
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/books.rsi
+    layers:
+    - state: paper
+    - state: cover_base
+      color: "#255c8a"
+    - state: decor_bottom
+      color: "#2d2e12"
+    - state: icon_glow
+      color: "#f7bb2f"
+    - state: icon_cabbage
+    - state: detail_bookmark
+      color: "#f7bb2f"
+    - state: detail_rivets
+      color: "#f7bb2f"
+  - type: Paper
+    content: book-text-sun
+  - type: ChangeMobStateOnRead
+    state: Dead
