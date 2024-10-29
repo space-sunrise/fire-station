@@ -247,3 +247,16 @@
     - Scream
     cooldownVariations: 10
     mode: Random
+
+- type: entity # TODO: Сделать парента этой штуки бьющимся
+  parent: DrinkHotCoffee
+  id: ScpBackroomsCoffee
+  name: strange cup
+  suffix: Backrooms
+  components:
+  - type: SolutionRegeneration
+    solution: drink
+    generated:
+      reagents:
+      - ReagentId: Coffee
+        Quantity: 4
