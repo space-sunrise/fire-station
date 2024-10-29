@@ -260,3 +260,27 @@
       reagents:
       - ReagentId: Coffee
         Quantity: 4
+
+- type: entity # TODO: Возможность открывать двери без питания
+  parent: BaseItem
+  id: ScpBackroomsKey
+  name: strange key
+  suffix: Backrooms
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - state: idintern-tech
+  - type: Item
+    size: Small
+  - type: Access
+    groups:
+    - AllAccess
+    tags:
+    - CentralCommand
+    - NuclearOperative
+    - SyndicateAgent
+  - type: Tag
+    tags:
+    - DoorBumpOpener
