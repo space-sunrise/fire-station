@@ -1,6 +1,4 @@
-﻿using Robust.Shared.Serialization;
-
-namespace Content.Server._Scp.Backrooms.NPCAutoOrder;
+﻿namespace Content.Server._Scp.Backrooms.NPCAutoOrder;
 
 [RegisterComponent]
 public sealed partial class NpcAutoOrderComponent : Component

@@ -7,3 +7,18 @@
     tasks:
     - !type:HTNCompoundTask
       task: FollowCompound
+
+- type: entity
+  id: BulletBanana
+  parent: FoodBanana
+  components:
+  - type: Tag
+    tags:
+    - BulletBanana
+    - Trash
+  - type: Ammo
+  - type: ThrowingAngle
+    angle: 180
+
+- type: Tag
+  id: BulletBanana

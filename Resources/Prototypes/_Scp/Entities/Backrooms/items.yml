@@ -339,3 +339,146 @@
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_door.ogg
   - type: UseDelay
     delay: 1.5
+
+- type: entity
+  parent: BaseItem
+  id: ScpBackroomsRedCrystal
+  name: strange crystal
+  suffix: Backrooms
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Syndicate/telecrystal.rsi
+    state: telecrystal
+  - type: Item
+    size: Tiny
+
+- type: entity # TODO: Спрайты
+  parent: BaseItem
+  id: ScpBackroomsGoldPendant
+  name: strange pendant
+  suffix: Backrooms
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/bikehorn.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: Clothing
+    quickEquip: true
+    slots:
+    - neck
+
+- type: entity
+  parent: BaseItem
+  id: ScpBackroomsScull
+  name: strange scull
+  suffix: Backrooms
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Terminator/parts.rsi
+    state: skull_icon
+  - type: Item
+    size: Normal
+
+- type: entity
+  parent: ClothingHeadHatFancyCrown
+  id: ScpBackroomsCrown
+  name: strange crown
+  suffix: Backrooms
+
+- type: entity # TODO: Спрайты
+  parent: ClothingHandsBase
+  id: ScpBackroomsRing
+  name: strange ring
+  suffix: Backrooms
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/bikehorn.rsi
+    state: icon
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ScpBackroomsSpeedBoots
+  name: strange boots
+  suffix: Backrooms
+  components:
+  - type: Sprite
+    sprite: Clothing/Shoes/Boots/speedboots.rsi
+    layers:
+    - state: icon-on
+      map: [ "enum.ToggleVisuals.Layer" ]
+  - type: Clothing
+    sprite: Clothing/Shoes/Boots/speedboots.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 3
+    sprintModifier: 3
+
+- type: entity
+  parent: BaseItem
+  id: ScpBackroomsBlueCore
+  name: strange core
+  suffix: Backrooms
+  components:
+  - type: Sprite
+    sprite: Structures/Specific/Anomalies/Cores/rock_core.rsi
+    layers:
+    - state: core
+    - state: pulse
+  - type: Item
+    size: Normal
+  - type: Physics
+    bodyStatus: InAir
+  - type: PointLight
+    radius: 1.5
+    energy: 3.5
+    color: "#5ca8cb"
+    castShadows: false
+
+- type: entity
+  parent: BaseItem
+  id: ScpBackroomsRedCore
+  name: strange core
+  suffix: Backrooms
+  components:
+  - type: Sprite
+    sprite: Structures/Specific/Anomalies/Cores/pyro_core.rsi
+    layers:
+    - state: core
+    - state: pulse
+  - type: Item
+    size: Normal
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:TriggerBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: ExplodeOnTrigger
+  - type: TriggerOnPickup
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 200
+  - type: Damageable
+  - type: Physics
+    bodyStatus: InAir
+  - type: PointLight
+    radius: 1.5
+    energy: 1.5
+    color: "#E25822"
+    castShadows: false
+
+- type: entity
+  parent: WeaponRifleFoam
+  id: ScpBackroomsRifle
+  name: strange rifle
+  suffix: Backrooms
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - BulletBanana
+    capacity: 8
+    proto: BulletBanana
