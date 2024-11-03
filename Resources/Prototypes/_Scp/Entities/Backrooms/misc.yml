@@ -1,0 +1,9 @@
+- type: htnCompound
+  id: ScpBackroomSlimeCompound
+  branches:
+  - preconditions:
+    - !type:HasOrdersPrecondition
+      orders: enum.NpcAutoOrder.Follow
+    tasks:
+    - !type:HTNCompoundTask
+      task: FollowCompound
