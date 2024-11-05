@@ -19,7 +19,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    public static TimeSpan BlinkingInterval = TimeSpan.FromSeconds(20);
+    public static TimeSpan BlinkingInterval = TimeSpan.FromSeconds(10);
     public static TimeSpan BlinkingDuration = TimeSpan.FromSeconds(1);
 
     private static readonly TimeSpan BlinkingIntervalVariance = TimeSpan.FromSeconds(5);
