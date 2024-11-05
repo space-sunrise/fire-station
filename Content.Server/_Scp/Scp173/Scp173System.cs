@@ -23,7 +23,9 @@ using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
+using Robust.Server.Audio;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
@@ -52,6 +54,7 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly ExamineSystem _examineSystem = default!;
     [Dependency] private readonly PhysicsSystem _physicsSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
+    [Dependency] private readonly AudioSystem _audioSystem = default!;
 
 
 
@@ -188,6 +191,8 @@ public sealed class Scp173System : SharedScp173System
             return;
 
         _transformSystem.SetCoordinates(args.Performer, finalPosition.Value.SnapToGrid());
+
+        _audioSystem.PlayPvs(ent.Comp.TeleportationSound, ent, AudioParams.Default);
         args.Handled = true;
     }
 
