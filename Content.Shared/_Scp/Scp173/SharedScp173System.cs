@@ -40,7 +40,7 @@ public abstract class SharedScp173System : EntitySystem
         SubscribeLocalEvent((Entity<Scp173Component> _, ref BeforeDamageChangedEvent args) => args.Cancelled = true);
         SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, component, args) =>
         {
-            if (Is173Watched((uid, component)))
+            if (Is173Watched((uid, component), out _))
                 args.Cancel();
         });
 
@@ -76,7 +76,7 @@ public abstract class SharedScp173System : EntitySystem
 
     private void OnDirectionAttempt(Entity<Scp173Component> ent, ref ChangeDirectionAttemptEvent args)
     {
-        if (Is173Watched(ent))
+        if (Is173Watched(ent, out _))
             args.Cancel();
     }
 
@@ -93,7 +93,7 @@ public abstract class SharedScp173System : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        if (Is173Watched((ent, component)))
+        if (Is173Watched((ent, component), out _))
             args.Cancel();
     }
 
@@ -158,13 +158,15 @@ public abstract class SharedScp173System : EntitySystem
 
     #region Helpers
 
-    private bool Is173Watched(Entity<Scp173Component> scp173)
+    protected bool Is173Watched(Entity<Scp173Component> scp173, out int watchersCount)
     {
         var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, ExamineSystemShared.MaxRaycastRange);
 
-        return eyes.Count != 0 &&
-               eyes.Where(eye => _examine.InRangeUnOccluded(eye, scp173, scp173.Comp.WatchRange, ignoreInsideBlocker: false))
-                   .Any(eye => !IsEyeBlinded(eye));
+        watchersCount = eyes
+            .Where(eye => _examine.InRangeUnOccluded(eye, scp173, scp173.Comp.WatchRange, ignoreInsideBlocker: false))
+            .Count(eye => !IsEyeBlinded(eye));
+
+        return watchersCount != 0;
     }
 
     private bool IsEyeBlinded(Entity<BlinkableComponent> eye)

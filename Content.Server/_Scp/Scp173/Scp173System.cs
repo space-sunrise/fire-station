@@ -15,12 +15,12 @@ using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Fluids.Components;
-using Content.Shared.Interaction;
 using Content.Shared.Item;
 using Content.Shared.Lock;
 using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
+using Content.Shared.Popups;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Robust.Server.GameObjects;
@@ -34,7 +34,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server._Scp.Scp173;
 
-public class Scp173System : SharedScp173System
+public sealed class Scp173System : SharedScp173System
 {
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
@@ -51,6 +51,7 @@ public class Scp173System : SharedScp173System
     [Dependency] private readonly SharedDoorSystem _door = default!;
     [Dependency] private readonly ExamineSystem _examineSystem = default!;
     [Dependency] private readonly PhysicsSystem _physicsSystem = default!;
+    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
 
 
 
@@ -167,10 +168,16 @@ public class Scp173System : SharedScp173System
         args.Handled = true;
     }
 
-        private void OnFastMovement(Entity<Scp173Component> ent, ref Scp173FastMovementAction args)
+    private void OnFastMovement(Entity<Scp173Component> ent, ref Scp173FastMovementAction args)
     {
         if (args.Handled)
             return;
+
+        if (Is173Watched(ent, out var watchersCount) && watchersCount > 3)
+        {
+            _popupSystem.PopupClient("Слишком много людей", ent, PopupType.LargeCaution);
+            return;
+        }
 
         var (isValidTarget, targetCoords) = ValidateAndCalculateTarget(args, ent.Comp);
         if (!isValidTarget)
