@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Numerics;
 using Content.Shared._Scp.Blinking;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
@@ -11,17 +10,14 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
-using Content.Shared.Physics;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp173;
 
-public sealed class Scp173System : EntitySystem
+public abstract class SharedScp173System : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
@@ -31,8 +27,6 @@ public sealed class Scp173System : EntitySystem
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
@@ -65,7 +59,6 @@ public sealed class Scp173System : EntitySystem
         SubscribeLocalEvent<Scp173Component, MeleeHitEvent>(OnMeleeHit);
 
         SubscribeLocalEvent<Scp173Component, Scp173BlindAction>(OnBlind);
-        SubscribeLocalEvent<Scp173Component, Scp173FastMovementAction>(OnFastMovement);
 
         #endregion
 
@@ -136,46 +129,7 @@ public sealed class Scp173System : EntitySystem
         args.Handled = true;
     }
 
-    private void OnFastMovement(Entity<Scp173Component> ent, ref Scp173FastMovementAction args)
-    {
-        if (args.Handled)
-            return;
-
-        var targetCords = args.Target.ToMap(EntityManager, _transform);
-        var playerPos = _transform.GetWorldPosition(args.Performer);
-
-        if (!_examine.InRangeUnOccluded(
-                targetCords,
-                _transform.GetMapCoordinates(args.Performer),
-                ExamineSystemShared.MaxRaycastRange,
-                null))
-            return;
-
-        var direction = targetCords.Position - playerPos;
-
-        var distance = direction.Length();
-        if (distance > ent.Comp.MaxJumpRange)
-        {
-            direction = Vector2.Normalize(direction) * ent.Comp.MaxJumpRange;
-            targetCords = _transform.GetMapCoordinates(args.Performer).Offset(direction);
-        }
-
-        var normalizedDirection = Vector2.Normalize(direction);
-        var ray = new CollisionRay(playerPos, normalizedDirection, collisionMask: (int)CollisionGroup.MobLayer);
-        var rayCastResults = _physics.IntersectRay(targetCords.MapId, ray, direction.Length(), args.Performer, false);
-
-        foreach (var eResult in rayCastResults)
-        {
-            var entity = eResult.HitEntity;
-            BreakNeck(entity, ent.Comp);
-        }
-
-        _transform.SetCoordinates(args.Performer, _transform.ToCoordinates(targetCords));
-
-        args.Handled = true;
-    }
-
-    private void BreakNeck(EntityUid target, Scp173Component scp)
+    protected void BreakNeck(EntityUid target, Scp173Component scp)
     {
         // Not a mob...
         if (!HasComp<MobStateComponent>(target))
