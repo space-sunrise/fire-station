@@ -46,7 +46,7 @@
 
 - type: entity
   parent: PosterScpBase
-  id: PosterBreath
+  id: PosterChanges
   name: Перемен
   description: Содержание этого плаката вам что-то напоминает.. Что?..
   components:
