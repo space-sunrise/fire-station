@@ -72,8 +72,6 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.5
     baseSprintSpeed: 1.5
-  - type: NameIdentifier
-    group: GenericNumber
   - type: PassiveDamage
     allowedStates:
     - Alive
@@ -112,7 +110,6 @@
           Dead: { state: dead}
           Walking: { state: walking}
           Running: {state: running}
-
   - type: StatusEffects
     allowed:
     - SlowedDown
