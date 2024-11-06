@@ -1,0 +1,11 @@
+﻿# Прототипы разных исследоватьских материалов, получаемых с СЦП
+
+- type: entity # TODO: Спрайты
+  id: Scp173Shard
+  parent: BaseItem
+  name: stone shard
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/crowbar.rsi
+    state: icon
+  - type: Artifact

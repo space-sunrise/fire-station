@@ -2,10 +2,10 @@
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Scp.Research;
+namespace Content.Shared._Scp.Research.Interact;
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class ScpResearchToolComponent : Component
+public sealed partial class ScpInteractToolComponent : Component
 {
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float Delay = 1f;

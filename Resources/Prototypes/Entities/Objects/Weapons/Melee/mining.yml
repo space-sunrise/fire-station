@@ -35,12 +35,12 @@
     sprite: Objects/Weapons/Melee/pickaxe.rsi
     storedRotation: -45
   - type: UseDelay
-  - type: ScpResearchTool
-    delay: 1
-    cooldown: 2
-    cooldownMessage: scp-research-time-left
+  - type: ScpInteractTool
+    delay: 30
+    cooldown: 1200 # 10 минут
+    cooldownMessage: scp-interact-time-left
     event: !type:ScpSpawnInteractDoAfterEvent
-      toSpawn: Crowbar # TODO: Сделать прототип шарда и поставить сюда
+      toSpawn: Scp173Shard
     sound: /Audio/Effects/break_stone.ogg
     whitelist:
       components:
