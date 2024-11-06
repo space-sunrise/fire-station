@@ -119,12 +119,12 @@
 
 - type: entity
   parent: PosterScpContainmentRoomBase
-  id: PosterSCP126
-  name: SCP-126
-  description: Информационный плакат SCP-126
+  id: PosterSCP106
+  name: SCP-106
+  description: Информационный плакат SCP-106
   components:
   - type: Sprite
-    state: scp126
+    state: scp106
 
 - type: entity
   parent: PosterScpContainmentRoomBase
