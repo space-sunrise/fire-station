@@ -89,6 +89,24 @@
   - type: Sprite
     state: scp217
 
+- type: entity
+  parent: PosterScpBase
+  id: PosterSaulAgency
+  name: реклама адвокатского агенства
+  description: Плакат, размещающий рекламное изображения адвокатского агентства Сола
+  components:
+  - type: Sprite
+    state: saul
+
+- type: entity
+  parent: PosterScpBase
+  id: PosterAlertness
+  name: будь бдителен
+  description: Плакат, предостерегающий об необходимости бдительности среди персонала станции.
+  components:
+  - type: Sprite
+    state: scp217
+
 # Плакаты камер содержания сцп
 
 - type: entity
@@ -152,6 +170,43 @@
   components:
   - type: Sprite
     state: scp999
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP939
+  name: SCP-939
+  description: Информационный плакат SCP-939
+  components:
+  - type: Sprite
+    state: scp939
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP612
+  name: SCP-612
+  description: Информационный плакат SCP-612
+  components:
+  - type: Sprite
+    state: scp612
+
+# Длинные плакаты
+
+- type: entity
+  parent: PosterBase
+  id: PosterWideBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/wide-posters.rsi
+
+- type: entity
+  parent: PosterSchemaBase
+  id: PosterScp173Wide
+  name: гляделки
+  description: Информационный плакат, информирующий о необходимости соблюдения зрительного контакта с SCP-173 в шуточной форме
+  components:
+  - type: Sprite
+    state: 173
 
 # Плакаты со схемами
 
