@@ -200,7 +200,7 @@
     sprite: _Scp/Structures/Wallmounts/wide-posters.rsi
 
 - type: entity
-  parent: PosterSchemaBase
+  parent: PosterWideBase
   id: PosterScp173Wide
   name: гляделки
   description: Информационный плакат, информирующий о необходимости соблюдения зрительного контакта с SCP-173 в шуточной форме
