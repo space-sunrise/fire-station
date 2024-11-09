@@ -9,3 +9,13 @@
     sprite: Objects/Tools/crowbar.rsi
     state: icon
   - type: Artifact
+
+- type: entity # TODO: Спрайты
+  id: Scp173PaintChips
+  parent: BaseItem
+  name: paint chips
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/crowbar.rsi
+    state: icon
+  - type: Artifact

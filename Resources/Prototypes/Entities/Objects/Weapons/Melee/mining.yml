@@ -35,6 +35,7 @@
     sprite: Objects/Weapons/Melee/pickaxe.rsi
     storedRotation: -45
   - type: UseDelay
+  # Fire edit start - исследования сцп
   - type: ScpInteractTool
     delay: 30
     cooldown: 1200 # 10 минут
@@ -45,6 +46,7 @@
     whitelist:
       components:
       - Scp173
+  # Fire edit end
 
 - type: entity
   name: mining drill

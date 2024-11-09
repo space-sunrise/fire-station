@@ -5,6 +5,7 @@ using Content.Shared.Popups;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Research.Interact;
@@ -29,6 +30,7 @@ public sealed partial class ScpInteractSystem : EntitySystem
     [Dependency] private readonly EntityWhitelistSystem _whitelist= default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
@@ -95,11 +97,19 @@ public sealed partial class ScpInteractSystem : EntitySystem
         if (!TryComp<ScpInteractToolComponent>(tool, out var researchTool))
             return;
 
-        if (researchTool.Sound != null)
-            _audio.PlayEntity(researchTool.Sound, scp, scp);
-
         if (_net.IsServer)
-            Spawn(args.ToSpawn, Transform(scp).Coordinates);
+        {
+            // Случайное количество спавна. Берем +1, так как максимальная граница не включена
+            var count = _random.Next(args.MinSpawn, args.MaxSpawn + 1);
+
+            for (var i = 0; i < count; i++)
+            {
+                if (researchTool.Sound != null)
+                    _audio.PlayPvs(researchTool.Sound, scp);
+
+                Spawn(args.ToSpawn, Transform(scp).Coordinates);
+            }
+        }
 
         // Задаем последнее время использования для кулдауна
         scp.Comp.TimeLastInteracted = _timing.CurTime;

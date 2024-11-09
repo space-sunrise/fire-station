@@ -35,11 +35,25 @@ public sealed partial class ScpSpawnInteractDoAfterEvent : BaseScpInteractDoAfte
     [DataField]
     public EntProtoId ToSpawn;
 
+    /// <summary>
+    /// Максимальное количество материала, который будет заспавнен
+    /// </summary>
+    [DataField]
+    public int MinSpawn = 1;
+
+    /// <summary>
+    /// Минимальное количество материала, который будет заспавнен
+    /// </summary>
+    [DataField]
+    public int MaxSpawn = 1;
+
     public ScpSpawnInteractDoAfterEvent() {}
 
-    public ScpSpawnInteractDoAfterEvent(EntProtoId toSpawn)
+    public ScpSpawnInteractDoAfterEvent(EntProtoId toSpawn, int minSpawn, int maxSpawn)
     {
         ToSpawn = toSpawn;
+        MinSpawn = minSpawn;
+        MaxSpawn = maxSpawn;
     }
 }
 
