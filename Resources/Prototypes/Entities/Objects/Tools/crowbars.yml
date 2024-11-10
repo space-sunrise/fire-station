@@ -49,7 +49,7 @@
     event: !type:ScpSpawnInteractDoAfterEvent
       toSpawn: Scp173PaintChips
       maxSpawn: 2
-    sound: /Audio/Effects/break_stone.ogg
+    sound: /Audio/Effects/break_stone.ogg # TODO: Звук
     whitelist:
       components:
       - Scp173

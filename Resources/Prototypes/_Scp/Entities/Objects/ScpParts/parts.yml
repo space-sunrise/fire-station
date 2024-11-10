@@ -1,5 +1,7 @@
 ﻿# Прототипы разных исследоватьских материалов, получаемых с СЦП
 
+# SCP-173
+
 - type: entity # TODO: Спрайты
   id: Scp173Shard
   parent: BaseItem
@@ -14,6 +16,18 @@
   id: Scp173PaintChips
   parent: BaseItem
   name: paint chips
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/crowbar.rsi
+    state: icon
+  - type: Artifact
+
+# SCP-999
+
+- type: entity # TODO: Спрайты
+  id: Scp999Jelly
+  parent: BaseItem
+  name: slimy jelly
   components:
   - type: Sprite
     sprite: Objects/Tools/crowbar.rsi
