@@ -33,3 +33,25 @@
     sprite: Objects/Tools/crowbar.rsi
     state: icon
   - type: Artifact
+
+# Scp096
+
+- type: entity # TODO: Спрайты
+  id: Scp096PhotoUndeveloped
+  parent: BaseItem
+  name: undeveloped photo
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/crowbar.rsi
+    state: icon
+  # TODO: Компонент проявления
+
+- type: entity # TODO: Спрайты
+  id: Scp096Photo
+  parent: BaseItem
+  name: strange photo
+  components:
+  - type: Sprite
+    sprite: Objects/Tools/crowbar.rsi
+    state: icon
+  # TODO: Компонент, который агрит 096 на игрока при поднятии фотки
