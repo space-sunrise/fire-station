@@ -13,8 +13,6 @@ public sealed class Scp999System : SharedScp999System
         SubscribeNetworkEvent<Scp999RestEvent>(OnRest);
     }
 
-    // TODO: отключение базовых лейеров, так как они их видно при смене спрайта.
-
     private void OnWallify(Scp999WallifyEvent args)
     {
         var uid = GetEntity(args.NetEntity);

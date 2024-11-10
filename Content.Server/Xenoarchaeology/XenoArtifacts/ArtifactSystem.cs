@@ -7,6 +7,7 @@ using Content.Server.Xenoarchaeology.Equipment.Components;
 using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
 using Content.Server.Xenoarchaeology.XenoArtifacts.Triggers.Components;
 using Content.Shared.CCVar;
+using Content.Shared.Research;
 using Content.Shared.Xenoarchaeology.XenoArtifacts;
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
@@ -50,7 +51,14 @@ public sealed partial class ArtifactSystem : EntitySystem
     /// </remarks>
     private void GetPrice(EntityUid uid, ArtifactComponent component, ref PriceCalculationEvent args)
     {
-        args.Price += (GetResearchPointValue(uid, component) + component.ConsumedPoints) * component.PriceMultiplier;
+        double price = 0;
+
+        foreach (var (_, value) in GetResearchPointValue(uid, component))
+        {
+            price += value;
+        }
+
+        args.Price += (price + component.ConsumedPoints) * component.PriceMultiplier;
     }
 
     /// <summary>
@@ -66,15 +74,29 @@ public sealed partial class ArtifactSystem : EntitySystem
     /// Medium should get you partway through a tree.
     /// Complex should get you through a full tree and then some.
     /// </remarks>
-    public int GetResearchPointValue(EntityUid uid, ArtifactComponent? component = null, bool getMaxPrice = false)
+    public Dictionary<ProtoId<ResearchPointPrototype>, int> GetResearchPointValue(EntityUid uid, ArtifactComponent? component = null, bool getMaxPrice = false)
     {
         if (!Resolve(uid, ref component))
-            return 0;
+            return [];
 
-        var sumValue = component.NodeTree.Sum(n => GetNodePointValue(n, component, getMaxPrice));
+        var researchValue = new Dictionary<ProtoId<ResearchPointPrototype>, int>();
         var fullyExploredBonus = component.NodeTree.All(x => x.Triggered) || getMaxPrice ? 1.25f : 1;
 
-        return (int) (sumValue * fullyExploredBonus) - component.ConsumedPoints;
+        foreach (var node in component.NodeTree)
+        {
+            foreach (var (key, value) in GetNodePointValue(node, component, getMaxPrice))
+            {
+                researchValue.TryGetValue(key, out var existing);
+                researchValue[key] = existing + value;
+            }
+        }
+
+        foreach (var (key, value) in researchValue)
+        {
+            researchValue[key] = (int)(value * fullyExploredBonus) - component.ConsumedPoints;
+        }
+
+        return researchValue;
     }
 
     /// <summary>
@@ -103,13 +125,13 @@ public sealed partial class ArtifactSystem : EntitySystem
     /// <summary>
     /// Gets the point value for an individual node
     /// </summary>
-    private float GetNodePointValue(ArtifactNode node, ArtifactComponent component, bool getMaxPrice = false)
+    private Dictionary<ProtoId<ResearchPointPrototype>, int> GetNodePointValue(ArtifactNode node, ArtifactComponent component, bool getMaxPrice = false)
     {
         var valueDeduction = 1f;
         if (!getMaxPrice)
         {
             if (!node.Discovered)
-                return 0;
+                return [];
 
             valueDeduction = !node.Triggered ? 0.25f : 1;
         }
@@ -118,7 +140,15 @@ public sealed partial class ArtifactSystem : EntitySystem
         var effectProto = _prototype.Index<ArtifactEffectPrototype>(node.Effect);
 
         var nodeDanger = (node.Depth + effectProto.TargetDepth + triggerProto.TargetDepth) / 3;
-        return component.PointsPerNode * MathF.Pow(component.PointDangerMultiplier, nodeDanger) * valueDeduction;
+
+        var nodeValue = new Dictionary<ProtoId<ResearchPointPrototype>, int>();
+
+        foreach (var (key, value) in component.PointsPerNode)
+        {
+            nodeValue[key] = (int)(value * MathF.Pow(component.PointDangerMultiplier, nodeDanger) * valueDeduction);
+        }
+
+        return nodeValue;
     }
 
     /// <summary>

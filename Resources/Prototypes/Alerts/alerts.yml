@@ -5,6 +5,7 @@
   id: BaseAlertOrder
   order:
     - category: Health
+    - category: Mood #Sunrise Edit
     - category: Stamina
     - alertType: ChangelingChemicals
     - alertType: Blinking # Sunrise-SCP edit.

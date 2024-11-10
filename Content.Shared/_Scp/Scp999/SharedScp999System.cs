@@ -16,26 +16,26 @@ public abstract class SharedScp999System : EntitySystem
         SubscribeLocalEvent<Scp999Component, ExaminedEvent>(OnExamined);
     }
 
-    private static void OnCanSee(EntityUid uid, Scp999Component component, ref CanSeeAttemptEvent args)
+    private static void OnCanSee(Entity<Scp999Component> entity, ref CanSeeAttemptEvent args)
     {
-        if (component.CurrentState == Scp999States.Rest)
+        if (entity.Comp.CurrentState == Scp999States.Rest)
             args.Cancel();
     }
 
-    private static void OnSpeakAttempt(EntityUid uid, Scp999Component component, ref SpeakAttemptEvent args)
+    private static void OnSpeakAttempt(Entity<Scp999Component> entity, ref SpeakAttemptEvent args)
     {
-        if (component.CurrentState == Scp999States.Rest)
+        if (entity.Comp.CurrentState == Scp999States.Rest)
             args.Cancel();
     }
 
-    private void OnExamined(EntityUid uid, Scp999Component component, ref ExaminedEvent args)
+    private void OnExamined(Entity<Scp999Component> entity, ref ExaminedEvent args)
     {
         if (!args.IsInDetailsRange)
             return;
 
-        if (component.CurrentState != Scp999States.Rest)
+        if (entity.Comp.CurrentState != Scp999States.Rest)
             return;
 
-        args.PushMarkup(Loc.GetString("sleep-examined", ("target", Identity.Entity(uid, EntityManager))));
+        args.PushMarkup(Loc.GetString("sleep-examined", ("target", Identity.Entity(entity, EntityManager))));
     }
 }

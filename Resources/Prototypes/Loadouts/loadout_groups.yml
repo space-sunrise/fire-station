@@ -5,7 +5,8 @@
   minLimit: 0
   maxLimit: 3
   loadouts:
-  - CorporateLaw # Sunrise-edit
+  - FlowerWreath
+  - Hairflower
   - PlushieLizard
   - PlushieSpaceLizard
   - Lighter
@@ -24,6 +25,7 @@
   - ClothingNeckEarthPin  # Sunrise
   - ClothingNeckUSSPPin  # Sunrise
   - ClothingNeckReedIndustriesPin  # Sunrise
+  - CorporateLaw # Sunrise-edit
   - ClothingNeckLGBTPin
   - ClothingNeckAromanticPin
   - ClothingNeckAsexualPin
@@ -36,6 +38,23 @@
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
+  - TowelColorBlack
+  - TowelColorDarkBlue
+  - TowelColorDarkGreen
+  - TowelColorGold
+  - TowelColorGray
+  - TowelColorGreen
+  - TowelColorLightBlue
+  - TowelColorLightBrown
+  - TowelColorMaroon
+  - TowelColorMime
+  - TowelColorOrange
+  - TowelColorPurple
+  - TowelColorRed
+  - TowelColorSilver
+  - TowelColorLightBlue
+  - TowelColorWhite
+  - TowelColorYellow
 
 - type: loadoutGroup
   id: Glasses

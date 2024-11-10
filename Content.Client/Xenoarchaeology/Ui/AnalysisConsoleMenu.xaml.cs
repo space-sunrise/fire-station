@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Xenoarchaeology.Equipment;
@@ -103,7 +104,7 @@ public sealed partial class AnalysisConsoleMenu : FancyWindow
                 ExtractButton.ToolTip = null;
             }
         }
-        else if (state.PointAmount <= 0)
+        else if (state.PointAmount.All(x=> x.Value <= 0))
         {
             ExtractButton.Disabled = true;
             ExtractButton.ToolTip = Loc.GetString("analysis-console-no-points-to-extract");

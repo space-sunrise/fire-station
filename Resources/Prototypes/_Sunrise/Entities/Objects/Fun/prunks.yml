@@ -122,6 +122,7 @@
     solutionName: hypospray
     transferAmount: 10
     onlyAffectsMobs: false
+    injectOnly: true
   - type: UseDelay
     delay: 0.5
   # - type: HiddenDescription
@@ -246,7 +247,7 @@
     - state: overlay
       color: "#cec8ac"
     - state: icon-default
-    
+
 - type: entity
   name: anomaly
   description: An incomprehensible joke in space. Should you really be standing this close to it?
@@ -254,8 +255,10 @@
   parent: BaseStructureDynamic
   components:
   - type: Anomaly
-    maxPointsPerSecond: 0
-    minPointsPerSecond: 0
+    maxPointsPerSecond:
+      default: 0
+    minPointsPerSecond:
+      default: 0
     pulseSound:
       collection: RadiationPulse
       params:

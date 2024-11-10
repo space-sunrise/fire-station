@@ -8,7 +8,8 @@
     state: icon
   discipline: Arsenal
   tier: 1
-  cost: 5000
+  cost:
+    Default: 5000
   recipeUnlocks:
   - WeaponProtoKineticAccelerator
   - ShuttleGunKineticCircuitboard
@@ -23,7 +24,8 @@
     state: incendiarydisplay
   discipline: Arsenal
   tier: 1
-  cost: 10000
+  cost:
+    Default: 10000
   recipeUnlocks:
   - BoxShotgunIncendiary
   - MagazineRifleIncendiary
@@ -44,7 +46,8 @@
     state: icon
   discipline: Arsenal
   tier: 1
-  cost: 7500
+  cost:
+    Default: 7500
   recipeUnlocks:
   - WeaponLaserCarbine
   - WeaponMechCombatFiredartLaser
@@ -57,7 +60,8 @@
     state: beanbag
   discipline: Arsenal
   tier: 1
-  cost: 5000
+  cost:
+    Default: 5000
   recipeUnlocks:
   - MagazineShotgunBeanbag
   - BoxShellTranquilizer
@@ -83,7 +87,8 @@
     state: uranium
   discipline: Arsenal
   tier: 1
-  cost: 7500
+  cost:
+    Default: 7500
   recipeUnlocks:
   - MagazineRifleUranium
   - MagazinePistolUranium
@@ -103,7 +108,8 @@
     state: icon
   discipline: Arsenal
   tier: 1
-  cost: 8000
+  cost:
+    Default: 8000
   recipeUnlocks:
   - Truncheon
   - TelescopicShield
@@ -118,7 +124,8 @@
     state: payload-explosive-armed
   discipline: Arsenal
   tier: 1
-  cost: 10000
+  cost:
+    Default: 10000
   recipeUnlocks:
   - SignallerAdvanced
   - SignalTrigger
@@ -136,7 +143,8 @@
     state: icon
   discipline: Arsenal
   tier: 1
-  cost: 5000
+  cost:
+    Default: 5000
   recipeUnlocks:
   - ClothingBackpackElectropack
 
@@ -150,7 +158,8 @@
     state: icon
   discipline: Arsenal
   tier: 2
-  cost: 10000
+  cost:
+    Default: 10000
   recipeUnlocks:
   - WeaponLaserCannon
   - WeaponMechCombatSolarisLaser
@@ -163,22 +172,24 @@
     state: icon
   discipline: Arsenal
   tier: 2
-  cost: 10000
+  cost:
+    Default: 10000
   recipeUnlocks:
   - WeaponXrayCannon
 
 - type: technology
   id: EnergyBarriers
   name: research-technology-energy_barriers
-  icon: 
+  icon:
     sprite: Objects/Tools/EnergyDome/reinhardt.rsi
     state: icon
   discipline: Arsenal
   tier: 2
-  cost: 6000
+  cost:
+    Default: 6000
   recipeUnlocks:
   - EnergyDomeDirectionalTurtle
-  
+
 - type: technology
   id: BasicShuttleArmament
   name: research-technology-basic-shuttle-armament
@@ -187,7 +198,8 @@
     state: full
   discipline: Arsenal
   tier: 2
-  cost: 10500
+  cost:
+    Default: 10500
   recipeUnlocks:
   - PowerCageRechargerCircuitboard
   - PowerCageSmall
@@ -205,11 +217,12 @@
   id: Gygax
   name: research-technology-gygax
   icon:
-    sprite: Objects/Specific/Mech/mecha.rsi
+    sprite: Objects/Specific/Mech/gygax.rsi
     state: gygax
   discipline: Arsenal
   tier: 2
-  cost: 12000
+  cost:
+    Default: 12000
   recipeUnlocks:
   - GygaxHarness
   - GygaxArmor
@@ -235,7 +248,8 @@
     state: icon
   discipline: Arsenal
   tier: 3
-  cost: 15000
+  cost:
+    Default: 15000
   recipeUnlocks:
   - WeaponAdvancedLaser
   - PortableRecharger
@@ -249,7 +263,8 @@
     state: mecha_missilerack
   discipline: Arsenal
   tier: 3
-  cost: 15000
+  cost:
+    Default: 15000
   recipeUnlocks:
   - WeaponMechCombatMissileRack8
   technologyPrerequisites:
@@ -263,7 +278,8 @@
     state: icon
   discipline: Arsenal
   tier: 3
-  cost: 15000
+  cost:
+    Default: 15000
   recipeUnlocks:
   - WeaponLaserSvalinn
 
@@ -275,7 +291,8 @@
     state: icon
   discipline: Arsenal
   tier: 3
-  cost: 15000
+  cost:
+    Default: 15000
   recipeUnlocks:
   - GrenadeEMP
   - PowerCageHigh
@@ -287,11 +304,12 @@
   id: Durand
   name: research-technology-durand
   icon:
-    sprite: Objects/Specific/Mech/mecha.rsi
+    sprite: Objects/Specific/Mech/durand.rsi
     state: durand
   discipline: Arsenal
   tier: 3
-  cost: 16000
+  cost:
+    Default: 16000
   recipeUnlocks:
   - DurandHarness
   - DurandArmor

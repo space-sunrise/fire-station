@@ -31,18 +31,16 @@ public sealed partial class Scp096System : SharedScp096System
     [Dependency] private readonly WiresSystem _wiresSystem = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookupSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifierSystem = default!;
     [Dependency] private readonly AmbientSoundSystem _ambientSoundSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly TransformSystem _transformSystem = default!;
-
-
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     private ISawmill _sawmill = Logger.GetSawmill("scp096");
-    private static string SleepStatusEffectKey = "ForcedSleep";
+    private const string SleepStatusEffectKey = "ForcedSleep";
 
     public override void Initialize()
     {
@@ -51,32 +49,28 @@ public sealed partial class Scp096System : SharedScp096System
         SubscribeLocalEvent<Scp096Component, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<Scp096Component, MobStateChangedEvent>(OnSpcStateChanged);
         SubscribeLocalEvent<Scp096Component, StatusEffectEndedEvent>(OnStatusEffectEnded);
-
         InitTargets();
     }
 
     private void OnStatusEffectEnded(Entity<Scp096Component> ent, ref StatusEffectEndedEvent args)
     {
         if (args.Key != SleepStatusEffectKey)
-        {
             return;
-        }
 
         ent.Comp.Pacified = false;
+
+        Dirty(ent);
     }
 
     protected override void UpdateScp096(Entity<Scp096Component> scpEntity)
     {
         base.UpdateScp096(scpEntity);
+
         if (scpEntity.Comp.Pacified)
-        {
             return;
-        }
 
         if (!CanBeAggro(scpEntity))
-        {
             return;
-        }
 
         FindTargets(scpEntity);
     }
@@ -84,6 +78,7 @@ public sealed partial class Scp096System : SharedScp096System
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
         UpdateTargets(frameTime);
     }
 
@@ -100,9 +95,7 @@ public sealed partial class Scp096System : SharedScp096System
         scpTarget.TargetedBy.Add(scpEntity);
 
         if (!scpEntity.Comp.InRageMode)
-        {
             MakeAngry(scpEntity);
-        }
 
         Dirty(targetUid, scpTarget);
         Dirty(scpEntity);
@@ -111,9 +104,7 @@ public sealed partial class Scp096System : SharedScp096System
     private void RemoveTarget(Entity<Scp096Component> scpEntity, Entity<Scp096TargetComponent?> targetEntity, bool removeComponent = true)
     {
         if (!Resolve(targetEntity, ref targetEntity.Comp))
-        {
             return;
-        }
 
         scpEntity.Comp.Targets.Remove(targetEntity);
         targetEntity.Comp.TargetedBy.Remove(scpEntity);
@@ -145,20 +136,15 @@ public sealed partial class Scp096System : SharedScp096System
     private void OnSpcStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
     {
         if (args.NewMobState == MobState.Alive)
-        {
             return;
-        }
 
         RemoveAllTargets(ent);
     }
 
     private bool CanBeAggro(Entity<Scp096Component> entity)
     {
-        if (_mobStateSystem.IsIncapacitated(entity)
-            || Comp<BlindableComponent>(entity).IsBlind)
-        {
+        if (_mobStateSystem.IsIncapacitated(entity) || Comp<BlindableComponent>(entity).IsBlind)
             return false;
-        }
 
         return true;
     }
@@ -203,9 +189,7 @@ public sealed partial class Scp096System : SharedScp096System
         foreach (var targetUid in query)
         {
             if (!IsValidTarget(scpEntity, targetUid))
-            {
                 continue;
-            }
 
             AddTarget(scpEntity, targetUid);
         }
@@ -239,7 +223,7 @@ public sealed partial class Scp096System : SharedScp096System
 
     private float FindAngleBetween(Entity<TransformComponent?> scp, Entity<TransformComponent?> target)
     {
-        if(!Resolve<TransformComponent>(scp, ref scp.Comp)
+        if (!Resolve<TransformComponent>(scp, ref scp.Comp)
            ||!Resolve<TransformComponent>(target, ref target.Comp))
         {
             return float.MaxValue;

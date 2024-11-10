@@ -9,7 +9,9 @@
     raiseOnUser: true
     itemIconStyle: BigAction
     useDelay: 3
-    icon: /Textures/_Scp/Actions/scp999actioniconwallify.png
+    icon:
+      sprite: _Scp/Actions/scp-999.rsi
+      state: wall
 
 - type: entity
   id: Scp999Rest
@@ -22,7 +24,9 @@
     raiseOnUser: true
     itemIconStyle: BigAction
     useDelay: 3
-    icon: /Textures/_Scp/Actions/scp999actioniconrest.png
+    icon:
+      sprite: _Scp/Actions/scp-999.rsi
+      state: sleep
     checkCanInteract: false
     checkConsciousness: false
 
@@ -36,7 +40,9 @@
     range: 3
     targetingIndicator: true
     useDelay: 30
-    icon: _Scp/Actions/scp999actionlove.png
+    icon:
+      sprite: _Scp/Actions/scp-999.rsi
+      state: love
     whitelist:
       components:
       - Body

@@ -1,3 +1,4 @@
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Research.Components
@@ -28,8 +29,9 @@ namespace Content.Shared.Research.Components
     [Serializable, NetSerializable]
     public sealed class ResearchConsoleBoundInterfaceState : BoundUserInterfaceState
     {
-        public int Points;
-        public ResearchConsoleBoundInterfaceState(int points)
+        public Dictionary<ProtoId<ResearchPointPrototype>, int> Points;
+
+        public ResearchConsoleBoundInterfaceState(Dictionary<ProtoId<ResearchPointPrototype>, int> points)
         {
             Points = points;
         }

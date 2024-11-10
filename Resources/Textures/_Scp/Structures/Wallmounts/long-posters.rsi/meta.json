@@ -1,0 +1,20 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "SUNRISE",
+    "size": {
+        "x": 64,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "ak"
+        },
+        {
+            "name": "mk56"
+        },
+        {
+            "name": "engineering"
+        }
+    ]
+}

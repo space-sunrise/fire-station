@@ -23,5 +23,5 @@ public sealed partial class Scp096TargetComponent : Component
     public float SleepTime = 30f;
 
     [DataField]
-    public ProtoId<StatusIconPrototype> KillIconPrototype = "Scp096TargetIcon";
+    public ProtoId<FactionIconPrototype> KillIconPrototype = "Scp096TargetIcon";
 }

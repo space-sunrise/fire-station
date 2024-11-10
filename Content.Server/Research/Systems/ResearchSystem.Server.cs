@@ -1,6 +1,8 @@
 using System.Linq;
 using Content.Server.Power.EntitySystems;
+using Content.Shared.Research;
 using Content.Shared.Research.Components;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.Research.Systems;
 
@@ -18,6 +20,14 @@ public sealed partial class ResearchSystem
         var unusedId = EntityQuery<ResearchServerComponent>(true)
             .Max(s => s.Id) + 1;
         component.Id = unusedId;
+
+        var pointsPrototypes = PrototypeManager.EnumeratePrototypes<ResearchPointPrototype>();
+
+        foreach (var points in pointsPrototypes)
+        {
+            component.Points.Add(points, 0);
+        }
+
         Dirty(uid, component);
     }
 
@@ -49,7 +59,16 @@ public sealed partial class ResearchSystem
 
         if (!CanRun(uid))
             return;
-        ModifyServerPoints(uid, GetPointsPerSecond(uid, component) * time, component);
+
+        var pointsPerSeconds = GetPointsPerSecond(uid, component);
+
+        foreach (var (pointType, value) in pointsPerSeconds)
+        {
+            pointsPerSeconds[pointType] += value * time;
+        }
+
+
+        ModifyServerPoints(uid, pointsPerSeconds, false, component);
     }
 
     /// <summary>
@@ -61,7 +80,7 @@ public sealed partial class ResearchSystem
     /// <param name="serverComponent"></param>
     /// <param name="dirtyServer">Whether or not to dirty the server component after registration</param>
     public void RegisterClient(EntityUid client, EntityUid server, ResearchClientComponent? clientComponent = null,
-        ResearchServerComponent? serverComponent = null,  bool dirtyServer = true)
+        ResearchServerComponent? serverComponent = null, bool dirtyServer = true)
     {
         if (!Resolve(client, ref clientComponent) || !Resolve(server, ref serverComponent))
             return;
@@ -130,9 +149,9 @@ public sealed partial class ResearchSystem
     /// <param name="uid"></param>
     /// <param name="component"></param>
     /// <returns></returns>
-    public int GetPointsPerSecond(EntityUid uid, ResearchServerComponent? component = null)
+    public Dictionary<ProtoId<ResearchPointPrototype>, int> GetPointsPerSecond(EntityUid uid, ResearchServerComponent? component = null)
     {
-        var points = 0;
+        var points = new Dictionary<ProtoId<ResearchPointPrototype>, int>();
 
         if (!Resolve(uid, ref component))
             return points;
@@ -141,10 +160,12 @@ public sealed partial class ResearchSystem
             return points;
 
         var ev = new ResearchServerGetPointsPerSecondEvent(uid, points);
+
         foreach (var client in component.Clients)
         {
             RaiseLocalEvent(client, ref ev);
         }
+
         return ev.Points;
     }
 
@@ -154,19 +175,36 @@ public sealed partial class ResearchSystem
     /// <param name="uid">The server</param>
     /// <param name="points">The amount of points being added</param>
     /// <param name="component"></param>
-    public void ModifyServerPoints(EntityUid uid, int points, ResearchServerComponent? component = null)
+    public void ModifyServerPoints(EntityUid uid, ProtoId<ResearchPointPrototype> pointType, int points, ResearchServerComponent? component = null)
     {
         if (points == 0)
             return;
 
         if (!Resolve(uid, ref component))
             return;
-        component.Points += points;
+
+        component.Points.TryGetValue(pointType, out var totalPoints);
+        component.Points[pointType] = totalPoints + points;
+
         var ev = new ResearchServerPointsChangedEvent(uid, component.Points, points);
+
         foreach (var client in component.Clients)
         {
             RaiseLocalEvent(client, ref ev);
         }
         Dirty(uid, component);
+    }
+
+    public void ModifyServerPoints(EntityUid uid, Dictionary<ProtoId<ResearchPointPrototype>, int> points, bool reverse = false, ResearchServerComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return;
+
+        var multipliyer = reverse ? -1 : 1;
+
+        foreach (var (pointType, value) in points)
+        {
+            ModifyServerPoints(uid, pointType, value * multipliyer, component);
+        }
     }
 }
