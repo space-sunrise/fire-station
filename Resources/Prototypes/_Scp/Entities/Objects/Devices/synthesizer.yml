@@ -1,0 +1,50 @@
+﻿- type: entity
+  id: ReagentSynthesizer
+  parent: [ BaseMachinePowered, SmallConstructibleMachine ]
+  name: reagent synthesizer
+  suffix: SCP
+  components:
+  - type: Sprite
+    sprite: Structures/Machines/juicer.rsi
+    drawdepth: SmallObjects
+    snapCardinals: true
+    offset: "0.0,0.4"
+    layers:
+    - map: [ "grinder" ]
+      state: "juicer0"
+  - type: ReagentSynthesizer
+    reagents:
+    - ReagentId: Water
+    - ReagentId: Blood
+    - ReagentId: Oil
+    - ReagentId: Slime
+    - ReagentId: VentCrud
+    # TODO: Пробокорбанат
+  - type: ApcPowerReceiver
+    powerLoad: 300
+  - type: ItemSlots
+    slots:
+      beakerSlot:
+        whitelist:
+          components:
+          - FitsInDispenser
+  - type: Machine
+    board: ReagentGrinderMachineCircuitboard
+  - type: ContainerContainer
+    containers:
+      beakerSlot: !type:ContainerSlot
+      machine_board: !type:Container
+      machine_parts: !type:Container
+  - type: Transform
+    anchored: true
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.17,0,0.20,0.4"
+        mask:
+        - TabletopMachineMask
+        layer:
+        - TabletopMachineLayer
