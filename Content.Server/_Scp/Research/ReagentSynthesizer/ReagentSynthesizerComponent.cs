@@ -10,7 +10,7 @@ public sealed partial class ReagentSynthesizerComponent : Component
     public HashSet<ReagentId> Reagents = new();
 
     [DataField]
-    public TimeSpan WorkTime = TimeSpan.FromSeconds(3);
+    public TimeSpan WorkTime = TimeSpan.FromSeconds(60);
 
     #region Sounds
 
