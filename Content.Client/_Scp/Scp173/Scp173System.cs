@@ -10,7 +10,7 @@ using Robust.Shared.Player;
 
 namespace Content.Client._Scp.Scp173;
 
-public sealed class Scp173System : EntitySystem
+public sealed class Scp173System : SharedScp173System
 {
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;

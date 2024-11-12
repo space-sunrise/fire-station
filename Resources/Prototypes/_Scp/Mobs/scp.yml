@@ -43,6 +43,7 @@
     baseWalkSpeed: 5
     baseSprintSpeed: 15
   - type: Scp173
+  - type: ShowBlinkable
   - type: GiveActions
     actions:
     - Scp173Blind
