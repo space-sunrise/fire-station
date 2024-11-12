@@ -30,4 +30,7 @@ public sealed partial class ActiveReagentSynthesizerComponent : Component
 {
     [ViewVariables]
     public TimeSpan EndTime;
+
+    [ViewVariables]
+    public TimeSpan TimeWithoutEnergy;
 }

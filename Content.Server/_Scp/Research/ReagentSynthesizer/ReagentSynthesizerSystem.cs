@@ -12,7 +12,10 @@ using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Content.Server.Jittering;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.FixedPoint;
 using Content.Shared.Jittering;
+using Content.Shared.Power;
+using Robust.Shared.Audio.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -30,6 +33,8 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
+    private readonly FixedPoint2 _requiredVolume = 30f;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -41,6 +46,8 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
         SubscribeLocalEvent<ReagentSynthesizerComponent, EntInsertedIntoContainerMessage>(OnContainerModified);
         SubscribeLocalEvent<ReagentSynthesizerComponent, EntRemovedFromContainerMessage>(OnContainerModified);
         SubscribeLocalEvent<ReagentSynthesizerComponent, ContainerIsRemovingAttemptEvent>(OnEntRemoveAttempt);
+
+        SubscribeLocalEvent<ReagentSynthesizerComponent, PowerChangedEvent>(OnPowerChanged);
     }
 
     public override void Update(float frameTime)
@@ -50,6 +57,9 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
         var query = EntityQueryEnumerator<ActiveReagentSynthesizerComponent, ReagentSynthesizerComponent>();
         while (query.MoveNext(out var uid, out var active, out var synthesizer))
         {
+            if (!this.IsPowered(uid, EntityManager))
+                continue;
+
             if (active.EndTime > _timing.CurTime)
                 continue;
 
@@ -125,17 +135,19 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
 
         synthesizer.Comp.AudioStream = _audioSystem.PlayPvs(synthesizer.Comp.ActiveSound,
             synthesizer,
-            AudioParams.Default.WithPitchScale(0.5f))?.Entity;
+            AudioParams.Default.WithPitchScale(0.3f).WithLoop(true))?.Entity;
     }
 
     private void SynthesizeSolution(ReagentSynthesizerComponent synthesizer, Entity<SolutionComponent> solution)
     {
         var reagent = _random.Pick(synthesizer.Reagents);
+        var cachedVolume = solution.Comp.Solution.Volume;
 
-        var volume = solution.Comp.Solution.Volume;
+        _solutionContainersSystem.RemoveEachReagent(solution, cachedVolume);
 
-        _solutionContainersSystem.RemoveEachReagent(solution, volume);
-        _solutionContainersSystem.TryAddReagent(solution, reagent, volume, out _);
+        var newVolume = _random.Next(1, cachedVolume.Int() + 1);
+
+        _solutionContainersSystem.TryAddReagent(solution, reagent, newVolume, out _);
     }
 
     #region Jitter
@@ -154,17 +166,15 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
 
     #region Helpers
 
-    private void ClickSound(Entity<ReagentSynthesizerComponent> reagentGrinder)
-    {
-        _audioSystem.PlayPvs(reagentGrinder.Comp.ClickSound, reagentGrinder.Owner, AudioParams.Default.WithVolume(-2f));
-    }
-
     private bool IsSynthesisable(EntityUid containerUid,
         [NotNullWhen(true)] out Entity<SolutionComponent>? outSolutionEntity)
     {
         outSolutionEntity = null;
 
         if (!_solutionContainersSystem.TryGetFitsInDispenser(containerUid, out var solutionEntity, out var solution))
+            return false;
+
+        if (solutionEntity.Value.Comp.Solution.Volume < _requiredVolume)
             return false;
 
         outSolutionEntity = solutionEntity;
@@ -182,5 +192,32 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
     }
 
     #endregion
+
+    private void OnPowerChanged(Entity<ReagentSynthesizerComponent> synthesizer, ref PowerChangedEvent args)
+    {
+        if (!TryComp<ActiveReagentSynthesizerComponent>(synthesizer, out var activeSynthesizer))
+            return;
+
+        if (synthesizer.Comp.AudioStream == null)
+            return;
+
+        if (this.IsPowered(synthesizer, EntityManager))
+        {
+            _audioSystem.SetState(synthesizer.Comp.AudioStream, AudioState.Playing);
+            _jitter.AddJitter(synthesizer, -10, 100);
+
+            // Компенсация времени проведенного без энергии
+            activeSynthesizer.EndTime += _timing.CurTime - activeSynthesizer.TimeWithoutEnergy;
+        }
+        else
+        {
+            // TODO: Пофиксить пропажу залупинга аудио после паузы и возобновления
+            _audioSystem.SetState(synthesizer.Comp.AudioStream, AudioState.Paused);
+            RemComp<JitteringComponent>(synthesizer);
+
+            // Записываем время начала отключения света
+            activeSynthesizer.TimeWithoutEnergy = _timing.CurTime;
+        }
+    }
 
 }
