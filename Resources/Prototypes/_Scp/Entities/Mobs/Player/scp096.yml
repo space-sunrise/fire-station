@@ -65,9 +65,6 @@
     thresholds:
       0: Alive
       2500: Critical
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 1.5
-    baseSprintSpeed: 1.5
   - type: PassiveDamage
     allowedStates:
     - Alive

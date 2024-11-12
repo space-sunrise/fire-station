@@ -8,7 +8,8 @@
     state: icon
   discipline: SCP
   tier: 1
-  cost: 5000
+  cost:
+    Scp: 5000
   recipeUnlocks:
   - WeaponProtoKineticAccelerator
   - ShuttleGunKineticCircuitboard
@@ -24,7 +25,8 @@
     state: icon
   discipline: SCP
   tier: 2
-  cost: 10000
+  cost:
+    Scp: 10000
   recipeUnlocks:
   - WeaponLaserCannon
   - WeaponMechCombatSolarisLaser
@@ -39,7 +41,8 @@
     state: icon
   discipline: SCP
   tier: 3
-  cost: 15000
+  cost:
+    Scp: 15000
   recipeUnlocks:
   - WeaponAdvancedLaser
   - PortableRecharger
