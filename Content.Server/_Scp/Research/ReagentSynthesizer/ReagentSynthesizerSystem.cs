@@ -12,6 +12,7 @@ using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Content.Server.Jittering;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
 using Content.Shared.Jittering;
 using Content.Shared.Power;
@@ -143,11 +144,45 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
         var reagent = _random.Pick(synthesizer.Reagents);
         var cachedVolume = solution.Comp.Solution.Volume;
 
+        // TODO: Удаление только синтезируемых реагентов, а не всех.
         _solutionContainersSystem.RemoveEachReagent(solution, cachedVolume);
 
         var newVolume = _random.Next(1, cachedVolume.Int() + 1);
 
         _solutionContainersSystem.TryAddReagent(solution, reagent, newVolume, out _);
+
+        DoExtraEffects(reagent, synthesizer.Effects, solution);
+    }
+
+    private void DoExtraEffects(ReagentId reagent, Dictionary<ReagentId, List<EntityEffect>> allEffects, Entity<SolutionComponent> solutionEntity)
+    {
+        if (allEffects.Count == 0)
+            return;
+
+        var effects = allEffects[reagent];
+
+        if (effects.Count == 0)
+            return;
+
+        if (_prototype.TryIndex<ReagentPrototype>(reagent.Prototype, out var reagentPrototype))
+            return;
+
+        var args = new EntityEffectReagentArgs(solutionEntity,
+            EntityManager,
+            null,
+            solutionEntity.Comp.Solution,
+            solutionEntity.Comp.Solution.Volume,
+            reagentPrototype,
+            null,
+            1f);
+
+        foreach (var effect in effects)
+        {
+            if (!effect.ShouldApply(args))
+                continue;
+
+            effect.Effect(args);
+        }
     }
 
     #region Jitter

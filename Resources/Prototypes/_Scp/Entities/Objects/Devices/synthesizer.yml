@@ -19,7 +19,7 @@
     - ReagentId: Oil
     - ReagentId: Slime
     - ReagentId: VentCrud
-    # TODO: Пробокорбанат
+    - ReagentId: Corbocarbonate
   - type: ApcPowerReceiver
     powerLoad: 300
   - type: ItemSlots

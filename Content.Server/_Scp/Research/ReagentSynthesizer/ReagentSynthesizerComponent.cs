@@ -1,5 +1,7 @@
 ﻿using Content.Shared.Chemistry.Reagent;
+using Content.Shared.EntityEffects;
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Research.ReagentSynthesizer;
 
@@ -12,10 +14,33 @@ public sealed partial class ReagentSynthesizerComponent : Component
     [DataField]
     public TimeSpan WorkTime = TimeSpan.FromSeconds(60);
 
-    #region Sounds
-
+    /// <summary>
+    /// Эффекты, которые будут происходить при синтезе реагента-ключа
+    ///
+    /// TODO: Разобраться как записать реагент айди в прототип
+    /// </summary>
+    /// <exception cref="ArgumentException">Ошибка, возникающая, когда в словаре есть эффект для реагента, который не находится в Reagents</exception>
     [DataField]
-    public SoundSpecifier ClickSound = new SoundPathSpecifier("/Audio/Machines/machine_switch.ogg");
+    public Dictionary<ReagentId, List<EntityEffect>> Effects
+    {
+        get => _effects;
+        set
+        {
+            // Проверяем, что реагент есть в реагентах.
+            // Не может быть эффекта для реагента, который не синтезируется
+            foreach (var reagentId in value.Keys)
+            {
+                if (!Reagents.Contains(reagentId))
+                {
+                    throw new ArgumentException($"ReagentId '{reagentId}' отсутствует в списке Reagents.");
+                }
+            }
+            _effects = value;
+        }
+    }
+    private Dictionary<ReagentId, List<EntityEffect>> _effects = new();
+
+    #region Sounds
 
     [DataField]
     public SoundSpecifier ActiveSound = new SoundPathSpecifier("/Audio/Machines/blender.ogg");
