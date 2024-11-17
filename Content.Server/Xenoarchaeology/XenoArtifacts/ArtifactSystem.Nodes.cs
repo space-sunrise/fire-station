@@ -39,8 +39,21 @@ public sealed partial class ArtifactSystem
             var node = uninitializedNodes[0];
             uninitializedNodes.Remove(node);
 
-            node.Trigger = GetRandomTrigger(artifact, ref node);
-            node.Effect = GetRandomEffect(artifact, ref node);
+            // Fire edit start - некоторые сцп могут не иметь триггеров или эффектов, но быть артефактами
+            var trigger = GetRandomTrigger(artifact, ref node);
+
+            if (trigger == null)
+                continue;
+
+            node.Trigger = trigger;
+
+            var effect = GetRandomEffect(artifact, ref node);
+
+            if (effect == null)
+                continue;
+
+            node.Effect = effect;
+            // Fire edit end
 
             var maxChildren = _random.Next(1, MaxEdgesPerNode - 1);
 
@@ -79,7 +92,7 @@ public sealed partial class ArtifactSystem
     //yeah these two functions are near duplicates but i don't
     //want to implement an interface or abstract parent
 
-    private string GetRandomTrigger(EntityUid artifact, ref ArtifactNode node)
+    private string? GetRandomTrigger(EntityUid artifact, ref ArtifactNode node)
     {
         var allTriggers = _prototype.EnumeratePrototypes<ArtifactTriggerPrototype>()
             .Where(x => _whitelistSystem.IsWhitelistPassOrNull(x.Whitelist, artifact) &&
@@ -87,6 +100,11 @@ public sealed partial class ArtifactSystem
         var validDepth = allTriggers.Select(x => x.TargetDepth).Distinct().ToList();
 
         var weights = GetDepthWeights(validDepth, node.Depth);
+
+        // Fire added
+        if (weights.Count == 0)
+            return null;
+
         var selectedRandomTargetDepth = GetRandomTargetDepth(weights);
         var targetTriggers = allTriggers
             .Where(x => x.TargetDepth == selectedRandomTargetDepth).ToList();
@@ -94,7 +112,7 @@ public sealed partial class ArtifactSystem
         return _random.Pick(targetTriggers).ID;
     }
 
-    private string GetRandomEffect(EntityUid artifact, ref ArtifactNode node)
+    private string? GetRandomEffect(EntityUid artifact, ref ArtifactNode node)
     {
         var allEffects = _prototype.EnumeratePrototypes<ArtifactEffectPrototype>()
             .Where(x => _whitelistSystem.IsWhitelistPassOrNull(x.Whitelist, artifact) &&
@@ -102,6 +120,11 @@ public sealed partial class ArtifactSystem
         var validDepth = allEffects.Select(x => x.TargetDepth).Distinct().ToList();
 
         var weights = GetDepthWeights(validDepth, node.Depth);
+
+        // Fire added
+        if (weights.Count == 0)
+            return null;
+
         var selectedRandomTargetDepth = GetRandomTargetDepth(weights);
         var targetEffects = allEffects
             .Where(x => x.TargetDepth == selectedRandomTargetDepth).ToList();

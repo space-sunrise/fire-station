@@ -8,6 +8,7 @@
   components:
   - type: Scp
   - type: ScpRestriction
+  - type: Artifact
 
 - type: entity
   abstract: true

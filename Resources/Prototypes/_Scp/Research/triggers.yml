@@ -1,0 +1,9 @@
+﻿- type: artifactTrigger
+  id: ScpTriggerInteractionHealthAnalyzer
+  targetDepth: 0
+  triggerHint: artifact-trigger-hint-physical
+  whitelist:
+    components:
+    - Scp173
+  components:
+  - type: ArtifactHealthAnalyzerInteractionTrigger

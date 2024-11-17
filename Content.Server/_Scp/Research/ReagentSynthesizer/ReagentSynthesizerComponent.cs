@@ -1,7 +1,6 @@
 ﻿using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityEffects;
 using Robust.Shared.Audio;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Research.ReagentSynthesizer;
 

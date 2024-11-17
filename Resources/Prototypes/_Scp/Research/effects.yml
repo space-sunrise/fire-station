@@ -1,0 +1,20 @@
+﻿- type: artifactEffect
+  id: ScpEffectKnock
+  targetDepth: 0
+  effectHint: artifact-effect-hint-electrical-interference
+  whitelist:
+    components:
+    - Scp173
+  components:
+  - type: KnockArtifact
+
+- type: artifactEffect
+  id: ScpEffectPointLight
+  targetDepth: 0
+  whitelist:
+    components:
+    - Scp173
+  components:
+  - type: TriggerArtifact
+  - type: FlashOnTrigger
+    range: 8

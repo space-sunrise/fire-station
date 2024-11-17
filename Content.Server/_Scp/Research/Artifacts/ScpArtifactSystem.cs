@@ -11,12 +11,12 @@ public sealed class ScpArtifactSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ScpRestrictionComponent, MapInitEvent>(AnomalizeScps);
+        SubscribeLocalEvent<ScpComponent, MapInitEvent>(AnomalizeScps);
     }
 
     #region Core
 
-    private void AnomalizeScps(Entity<ScpRestrictionComponent> scp, ref MapInitEvent args)
+    private void AnomalizeScps(Entity<ScpComponent> scp, ref MapInitEvent args)
     {
         if (!TryComp<ArtifactComponent>(scp, out var artifactComponent))
             return;
