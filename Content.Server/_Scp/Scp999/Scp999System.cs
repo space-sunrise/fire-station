@@ -3,10 +3,15 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Nutrition;
+using Content.Shared.Tag;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp999;
 
@@ -15,6 +20,9 @@ public sealed class Scp999System : SharedScp999System
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
     [Dependency] private readonly FixtureSystem _fixture = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     private const string WallFixtureId = "fix2";
 
@@ -25,7 +33,11 @@ public sealed class Scp999System : SharedScp999System
         SubscribeLocalEvent<Scp999Component, Scp999WallifyActionEvent>(OnWallifyActionEvent);
         SubscribeLocalEvent<Scp999Component, Scp999RestActionEvent>(OnRestActionEvent);
         SubscribeLocalEvent<Scp999Component, MobStateChangedEvent>(OnMobStateChanged);
+
+        SubscribeLocalEvent<Scp999Component, EntityFedEvent>(OnFeed);
     }
+
+    #region Abilities
 
     private void OnMobStateChanged(Entity<Scp999Component> entity, ref MobStateChangedEvent args)
     {
@@ -156,4 +168,24 @@ public sealed class Scp999System : SharedScp999System
 
         args.Handled = true;
     }
+
+    #endregion
+
+    #region Feeding
+
+    private void OnFeed(Entity<Scp999Component> scp, ref EntityFedEvent args)
+    {
+        if (!_tag.HasTag(args.Food, scp.Comp.CandyTag))
+            return;
+
+        if (!_random.Prob(scp.Comp.CreateJellyChance))
+            return;
+
+        Spawn(scp.Comp.Scp999Jelly, Transform(scp).Coordinates);
+
+        if (scp.Comp.CreateJellySound != null)
+            _audio.PlayPvs(scp.Comp.CreateJellySound, scp);
+    }
+
+    #endregion
 }

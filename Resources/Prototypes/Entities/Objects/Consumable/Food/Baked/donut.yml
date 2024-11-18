@@ -157,6 +157,9 @@
   components:
   - type: Sprite
     state: beige
+  - type: Tag # Fire
+    tags:
+    - Sweetness
 # Tastes like donut, buttery sweetness.
 
 - type: entity
@@ -230,6 +233,9 @@
   components:
   - type: Sprite
     state: laugh
+  - type: Tag # Fire
+    tags:
+    - Sweetness
 # Tastes like donut, fizzy tutti frutti.
 
 # Jelly Donuts
@@ -253,6 +259,9 @@
           Quantity: 3
         - ReagentId: Vitamin
           Quantity: 1
+  - type: Tag # Fire
+    tags:
+    - Sweetness
 
 - type: entity
   name: pink jelly-donut
@@ -332,6 +341,9 @@
           Quantity: 3
         - ReagentId: Vitamin
           Quantity: 1
+  - type: Tag # Fire
+    tags:
+    - Sweetness
 # Tastes like jelly-donut, buttery sweetness.
 
 - type: entity
@@ -353,6 +365,9 @@
           Quantity: 1
         - ReagentId: Vitamin
           Quantity: 1
+  - type: Tag # Fire
+    tags:
+    - Sweetness
 # Tastes like jelly-donut, bitterness.
 
 - type: entity
