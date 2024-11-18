@@ -1,0 +1,37 @@
+﻿- type: reagent
+  id: JellyBunReagent
+  name: reagent-name-jelly-bun
+  parent: BaseJuice
+  desc: reagent-desc-jelly-bun
+  physicalDesc: reagent-physical-desc-crisp
+  flavor: jelly
+  color: "#d38323"
+  metabolisms:
+    Food:
+      effects:
+      - !type:HealthChange # TODO: Моментальный эффект
+        damage:
+          groups:
+            Burn: -5
+            Brute: -5
+            Airloss: -5
+            Toxin: -5
+
+- type: reagent
+  id: JellyPizzaReagent
+  name: reagent-name-jelly-pizza
+  parent: BaseJuice
+  desc: reagent-desc-jelly-pizza
+  physicalDesc: reagent-physical-desc-crisp
+  flavor: jelly
+  color: "#d38323"
+  metabolisms:
+    Food:
+      effects:
+      - !type:HealthChange
+        damage:
+          groups:
+            Burn: -10
+            Brute: -10
+            Airloss: -10
+            Toxin: -10

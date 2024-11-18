@@ -21,8 +21,12 @@
       food:
         maxVol: 26
         reagents:
-        - ReagentId: Nutriment
+        - ReagentId: Ash
           Quantity: 20
+  - type: SwapReagentOnSpawn
+    replace:
+      Ash: JuiceCarrot
+    chance: 0.4
 
 - type: entity
   name: jelly bun
@@ -36,8 +40,10 @@
       food:
         maxVol: 10
         reagents:
-        - ReagentId: Nutriment # TODO: Кастомный реагент
-          Quantity: 6.66
+        - ReagentId: JellyBunReagent
+          Quantity: 4
+        - ReagentId: Nutriment
+          Quantity: 4
   - type: FlavorProfile
     flavors:
     - scp999jelly
@@ -50,10 +56,12 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 10
+        maxVol: 12
         reagents:
-        - ReagentId: Nutriment # TODO: Кастомный реагент
-          Quantity: 6.66
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: JellyPizzaReagent
+          Quantity: 5
   - type: SliceableFood
     slice: FoodPizzaJellySlice
   - type: FlavorProfile
