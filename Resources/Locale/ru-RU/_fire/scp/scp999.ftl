@@ -10,7 +10,7 @@ ent-FoodJellyScp999 = оранжевое желе
 ent-FoodBakedBunJelly = желейная булочка
     .desc = Сочная булочка, а внутри... сочное желе!
 
-ent-FoodPizzaMargherita = желейная пицца
+ent-FoodPizzaJelly = желейная пицца
     .desc = Свежая пицца, покрытая оранжевым желе
-ent-FoodPizzaMargheritaSlice = кусочек желейной пиццы
+ent-FoodPizzaJellySlice = кусочек желейной пиццы
     .desc = Маленькая часть большого удовольствия
