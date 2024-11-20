@@ -10,6 +10,7 @@
   tier: 1
   cost:
     Default: 2500
+    Scp: 1250
   recipeUnlocks:
   - HandCraftedNVD
 
@@ -23,6 +24,7 @@
   tier: 1
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - CargoSuit
   - BluespaceBox
@@ -39,6 +41,7 @@
   tier: 2
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - BasicNVD
 

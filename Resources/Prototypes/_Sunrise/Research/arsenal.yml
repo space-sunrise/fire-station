@@ -10,6 +10,7 @@
   tier: 1
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - WeaponEnergyGun
   - WeaponEnergyGunMini
@@ -24,6 +25,7 @@
   tier: 2
   cost:
     Default: 12500
+    Scp: 6250
   recipeUnlocks:
   - BaseMagazinePistolCaselessRifleExtended
   - MagazinePPSH41Extended
@@ -50,6 +52,7 @@
   tier: 2
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - WeaponEnergyGunPistol
 
@@ -63,6 +66,7 @@
   tier: 2
   cost:
     Default: 12500
+    Scp: 6250
   recipeUnlocks:
   - ClothingShoesBootsMagCombat
 
@@ -76,5 +80,6 @@
   tier: 2
   cost:
     Default: 12500
+    Scp: 6250
   recipeUnlocks:
   - WeaponGunLaserCarbineAutomatic
