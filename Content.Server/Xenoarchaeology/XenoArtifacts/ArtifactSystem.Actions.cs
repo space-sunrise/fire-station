@@ -27,6 +27,12 @@ public partial class ArtifactSystem
     private void OnMapInit(EntityUid uid, ArtifactComponent component, MapInitEvent args)
     {
         RandomizeArtifact(uid, component);
+
+        // Fire added start - никаких сцп с акшенами активации артефакта
+        if (!component.AddActivateAction)
+            return;
+        // Fire added end
+
         _actions.AddAction(uid, ref component.ActivateActionEntity, ArtifactActivateActionId);
     }
 

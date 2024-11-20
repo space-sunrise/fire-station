@@ -98,6 +98,10 @@ public sealed partial class ArtifactComponent : Component
     };
 
     [DataField("activateActionEntity")] public EntityUid? ActivateActionEntity;
+
+    // Fire added start - никаких акшенов активации артефакта для сцп
+    [DataField] public bool AddActivateAction = true;
+    // Fire added end
 }
 
 /// <summary>
