@@ -11,11 +11,14 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Content.Server.Jittering;
+using Content.Shared._Scp.Research.Misc;
+using Content.Shared._Sunrise.CollectiveMind;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
 using Content.Shared.Jittering;
 using Content.Shared.Power;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -30,6 +33,7 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly JitteringSystem _jitter = default!;
+    [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -40,8 +44,9 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ActiveReagentSynthesizerComponent, ComponentStartup>(OnActiveGrinderStart);
-        SubscribeLocalEvent<ActiveReagentSynthesizerComponent, ComponentRemove>(OnActiveGrinderRemove);
+        SubscribeLocalEvent<ActiveReagentSynthesizerComponent, ComponentStartup>((uid, _, _) => AddVisuals(uid));
+        SubscribeLocalEvent<ActiveReagentSynthesizerComponent, ComponentRemove>((uid, _, _) => RemoveVisuals(uid));
+
         SubscribeLocalEvent<ReagentSynthesizerComponent, InteractUsingEvent>(OnInteractUsing);
 
         SubscribeLocalEvent<ReagentSynthesizerComponent, EntInsertedIntoContainerMessage>(OnContainerModified);
@@ -185,16 +190,18 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
         }
     }
 
-    #region Jitter
+    #region Visuals
 
-    private void OnActiveGrinderStart(Entity<ActiveReagentSynthesizerComponent> ent, ref ComponentStartup args)
+    private void AddVisuals(EntityUid uid)
     {
-        _jitter.AddJitter(ent, -10, 100);
+        _appearance.SetData(uid, ReagentSynthesizerVisualLayers.Working, true);
+        _jitter.AddJitter(uid, -10, 100);
     }
 
-    private void OnActiveGrinderRemove(Entity<ActiveReagentSynthesizerComponent> ent, ref ComponentRemove args)
+    private void RemoveVisuals(EntityUid uid)
     {
-        RemComp<JitteringComponent>(ent);
+        _appearance.SetData(uid, ReagentSynthesizerVisualLayers.Working, false);
+        RemComp<JitteringComponent>(uid);
     }
 
     #endregion
@@ -239,7 +246,7 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
         if (this.IsPowered(synthesizer, EntityManager))
         {
             _audioSystem.SetState(synthesizer.Comp.AudioStream, AudioState.Playing);
-            _jitter.AddJitter(synthesizer, -10, 100);
+            AddVisuals(synthesizer);
 
             // Компенсация времени проведенного без энергии
             activeSynthesizer.EndTime += _timing.CurTime - activeSynthesizer.TimeWithoutEnergy;
@@ -248,7 +255,7 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
         {
             // TODO: Пофиксить пропажу залупинга аудио после паузы и возобновления
             _audioSystem.SetState(synthesizer.Comp.AudioStream, AudioState.Paused);
-            RemComp<JitteringComponent>(synthesizer);
+            RemoveVisuals(synthesizer);
 
             // Записываем время начала отключения света
             activeSynthesizer.TimeWithoutEnergy = _timing.CurTime;

@@ -5,13 +5,13 @@
   suffix: SCP
   components:
   - type: Sprite
-    sprite: Structures/Machines/juicer.rsi
+    sprite: _Scp/Structures/Machines/synthesizer.rsi
     drawdepth: SmallObjects
     snapCardinals: true
     offset: "0.0,0.4"
     layers:
-    - map: [ "grinder" ]
-      state: "juicer0"
+    - state: icon
+      map: [ "enum.ReagentSynthesizerVisualLayers.Working" ]
   - type: ReagentSynthesizer
     reagents:
     - ReagentId: Water
@@ -48,3 +48,11 @@
         - TabletopMachineMask
         layer:
         - TabletopMachineLayer
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ReagentSynthesizerVisualLayers.Working:
+        base:
+          True: { state: working }
+          False: { state: icon }
+
