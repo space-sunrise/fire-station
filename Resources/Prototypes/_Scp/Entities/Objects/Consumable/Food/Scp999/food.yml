@@ -29,12 +29,13 @@
     chance: 0.4
 
 - type: entity
-  name: jelly bun
-  parent: FoodBakedBase
   id: FoodBakedBunJelly
+  parent: FoodBakedBase
+  name: jelly bun
   components:
   - type: Sprite
-    state: bun-hotcross
+    sprite: _Scp/Objects/Consumable/Food/Baked/misc.rsi
+    state: jelly
   - type: SolutionContainerManager
     solutions:
       food:

@@ -15,3 +15,11 @@
   solids:
     FoodPizzaMargherita: 1
     FoodJellyScp999: 1
+
+- type: microwaveMealRecipe
+  id: RecipeScp173Ball
+  name: paint ball recipe
+  result: Scp173PaintBall
+  time: 5
+  solids:
+    Scp173PaintChips: 1

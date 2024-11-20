@@ -1,18 +1,18 @@
-﻿- type: entity # TODO: Спрайты
+﻿- type: entity
   id: CameraInstant
   parent: BaseItem
   name: instant camera
   components:
   - type: Sprite
-    sprite: Objects/Tools/crowbar.rsi
+    sprite: _Scp/Objects/Research/camera.rsi
     state: icon
   - type: ScpInteractTool
     delay: 2
     cooldown: 600 # 5 минут
     cooldownMessage: scp-interact-time-left
     event: !type:ScpSpawnInteractDoAfterEvent
-      toSpawn: Scp096PhotoUndeveloped
-    sound: /Audio/Effects/break_stone.ogg # TODO: Звук
+      toSpawn: Scp096Photo
+    sound: /Audio/Machines/machine_switch.ogg
     whitelist:
       components:
       - Scp096

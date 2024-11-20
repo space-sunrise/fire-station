@@ -1,57 +1,101 @@
 ﻿# Прототипы разных исследоватьских материалов, получаемых с СЦП
 
-# SCP-173
-
-- type: entity # TODO: Спрайты
-  id: Scp173Shard
+- type: entity
+  id: BaseScpMaterial
   parent: BaseItem
-  name: stone shard
+  abstract: true
   components:
   - type: Sprite
-    sprite: Objects/Tools/crowbar.rsi
-    state: icon
-  - type: Artifact
+    sprite: _Scp/Objects/Research/research_material.rsi
 
-- type: entity # TODO: Спрайты
-  id: Scp173PaintChips
-  parent: BaseItem
-  name: paint chips
+- type: entity
+  id: BaseScpResearchMaterial
+  parent: BaseScpMaterial
+  abstract: true
   components:
-  - type: Sprite
-    sprite: Objects/Tools/crowbar.rsi
-    state: icon
   - type: Artifact
+    pointsPerNode:
+      Scp: 800
 
 # SCP-999
 
-- type: entity # TODO: Спрайты
+- type: entity
   id: Scp999Jelly
-  parent: BaseItem
+  parent: BaseScpResearchMaterial
   name: slimy jelly
   components:
   - type: Sprite
-    sprite: Objects/Tools/crowbar.rsi
-    state: icon
-  - type: Artifact
+    state: scp999-jelly
+
+# SCP-173
+
+- type: entity
+  id: Scp173Shard
+  parent: BaseScpResearchMaterial
+  name: stone shard
+  components:
+  - type: Sprite
+    state: scp173-shard
+    color: "#a9783c"
+
+- type: entity
+  id: Scp173PaintChips
+  parent: BaseScpMaterial
+  name: paint chips
+  components:
+  - type: Sprite
+    state: scp173-chips
+    color: "#e2b85f"
+
+- type: entity
+  id: Scp173PaintBall
+  parent: BaseScpResearchMaterial
+  name: paint ball
+  components:
+  - type: Sprite
+    state: scp173-ball
+    color: "#e2b85f"
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Effects/Footsteps/bounce.ogg
+  - type: TileFrictionModifier
+    modifier: 0.5
+  - type: SwapEntityOnSpawn
+    replace:
+    - Ash
+    chance: 0.4
 
 # Scp096
 
-- type: entity # TODO: Спрайты
-  id: Scp096PhotoUndeveloped
-  parent: BaseItem
-  name: undeveloped photo
-  components:
-  - type: Sprite
-    sprite: Objects/Tools/crowbar.rsi
-    state: icon
-  # TODO: Компонент проявления
-
-- type: entity # TODO: Спрайты
+- type: entity
   id: Scp096Photo
-  parent: BaseItem
+  parent: BaseScpMaterial
   name: strange photo
   components:
   - type: Sprite
-    sprite: Objects/Tools/crowbar.rsi
-    state: icon
-  # TODO: Компонент, который агрит 096 на игрока при поднятии фотки
+    layers:
+    - state: scp096-photo-undeveloped
+      map: [ "enum.Scp096PhotoVisualLayers.Base" ]
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Bloodloss
+        damage: 3
+      behaviors:
+      - !type:TriggerBehavior
+  - type: Damageable
+  - type: Barotrauma
+    damage:
+      types:
+        Bloodloss: 1
+  - type: AddComponentsOnTrigger
+    components:
+    - type: Scp096Photo
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.Scp096PhotoVisualLayers.Base:
+        base:
+          True: { state: scp096-photo }
+          False: { state: scp096-photo-undeveloped }
