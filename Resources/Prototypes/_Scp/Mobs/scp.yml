@@ -13,18 +13,19 @@
     pointsPerNode:
       Scp: 2500
   - type: ResearchClient
+  - type: ZombieImmune
 
 - type: entity
   abstract: true
   parent:
   - BaseSCP
   - MobCombat
-  id: BaseSCPCombat
+  id: BaseScpCombat
   components:
   - type: Artifact
 
 - type: entity
-  parent: BaseSCPCombat
+  parent: BaseScpCombat
   id: Scp173
   name: SCP-173
   suffix: SCP-173
@@ -61,7 +62,7 @@
       collection: FootstepSCP173
 
 - type: entity
-  parent: BaseSCPCombat
+  parent: BaseScpCombat
   id: Scp106
   name: SCP-106
   components:

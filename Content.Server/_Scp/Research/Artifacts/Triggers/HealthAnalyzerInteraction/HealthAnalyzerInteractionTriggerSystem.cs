@@ -1,7 +1,7 @@
 ﻿using Content.Server.Xenoarchaeology.XenoArtifacts;
 using Content.Shared._Scp.Research.Artifacts;
 
-namespace Content.Server._Scp.Research.Artifacts.Triggers;
+namespace Content.Server._Scp.Research.Artifacts.Triggers.HealthAnalyzerInteraction;
 
 public sealed class HealthAnalyzerInteractionTriggerSystem : EntitySystem
 {

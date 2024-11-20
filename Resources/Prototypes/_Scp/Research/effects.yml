@@ -18,3 +18,13 @@
   - type: TriggerArtifact
   - type: FlashOnTrigger
     range: 8
+
+- type: artifactEffect
+  id: ScpEffectSmoke939
+  targetDepth: 2
+  effectHint: artifact-effect-hint-environment
+  whitelist:
+    components:
+    - Scp939
+  components:
+  - type: SmokeArtifact
