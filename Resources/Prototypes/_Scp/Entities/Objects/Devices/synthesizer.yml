@@ -14,12 +14,16 @@
       map: [ "enum.ReagentSynthesizerVisualLayers.Working" ]
   - type: ReagentSynthesizer
     reagents:
-    - ReagentId: Water
-    - ReagentId: Blood
-    - ReagentId: Oil
-    - ReagentId: Slime
-    - ReagentId: VentCrud
-    - ReagentId: Corbocarbonate
+    - Water
+    - Blood
+    - Oil
+    - Slime
+    - VentCrud
+    - Corbocarbonate
+    effects:
+      Corbocarbonate:
+      - !type:CreateGas
+        gas: WaterVapor
   - type: ApcPowerReceiver
     powerLoad: 300
   - type: ItemSlots

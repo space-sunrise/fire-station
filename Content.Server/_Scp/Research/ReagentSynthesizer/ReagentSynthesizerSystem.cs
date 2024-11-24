@@ -159,17 +159,18 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
         DoExtraEffects(reagent, synthesizer.Effects, solution);
     }
 
-    private void DoExtraEffects(ReagentId reagent, Dictionary<ReagentId, List<EntityEffect>> allEffects, Entity<SolutionComponent> solutionEntity)
+    private void DoExtraEffects(string reagent, Dictionary<string, List<EntityEffect>> allEffects, Entity<SolutionComponent> solutionEntity)
     {
         if (allEffects.Count == 0)
             return;
 
-        var effects = allEffects[reagent];
+        if (!allEffects.TryGetValue(reagent, out var effects))
+            return;
 
         if (effects.Count == 0)
             return;
 
-        if (_prototype.TryIndex<ReagentPrototype>(reagent.Prototype, out var reagentPrototype))
+        if (!_prototype.TryIndex<ReagentPrototype>(reagent, out var reagentPrototype))
             return;
 
         var args = new EntityEffectReagentArgs(solutionEntity,
