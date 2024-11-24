@@ -23,7 +23,8 @@
     effects:
       Corbocarbonate:
       - !type:CreateGas
-        gas: WaterVapor
+        gas: NitrousOxide
+        multiplier: 10
   - type: ApcPowerReceiver
     powerLoad: 300
   - type: ItemSlots
