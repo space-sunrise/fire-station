@@ -9,9 +9,9 @@
     ScpPlanet:
       stationProto: StandardScpStation
       components:
-      - type: StationBiome
-        biome: Lava
-        mapLightColor: '#442222FF'
+#      - type: StationBiome
+#        biome: Lava
+#        mapLightColor: '#442222FF'
       - type: StationNameSetup
         mapNameTemplate: 'Зона-{0}'
         nameGenerator:
