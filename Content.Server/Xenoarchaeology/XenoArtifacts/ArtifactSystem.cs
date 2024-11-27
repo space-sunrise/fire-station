@@ -159,7 +159,7 @@ public sealed partial class ArtifactSystem : EntitySystem
     {
         var nodeAmount = _random.Next(component.NodesMin, component.NodesMax);
 
-        GenerateArtifactNodeTree(uid, component.NodeTree, nodeAmount);
+        GenerateArtifactNodeTree((uid, component), component.NodeTree, nodeAmount);
 
         if (component.NodeTree.Count == 0)
             return;
