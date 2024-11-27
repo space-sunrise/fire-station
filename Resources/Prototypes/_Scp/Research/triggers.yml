@@ -27,6 +27,7 @@
   whitelist:
     components:
     - Scp
+    - Damageable
   components:
   - type: ArtifactDamageTrigger
     damageTypes:
@@ -42,6 +43,7 @@
   whitelist:
     components:
     - Scp
+    - Damageable
   components:
   - type: ArtifactHeatTrigger
 

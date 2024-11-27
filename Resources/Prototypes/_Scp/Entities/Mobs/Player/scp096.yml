@@ -4,7 +4,8 @@
   description: Скромник
   suffix: SCP-096
   parent:
-  - BaseScpCombat
+  - BaseScp
+  - MobCombat
   - StripableInventoryBase
   components:
   - type: Sprite

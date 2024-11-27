@@ -2,7 +2,8 @@
   id: Scp939
   name: SCP-939
   parent:
-  - BaseScpCombat
+  - BaseScp
+  - MobCombat
   - MobAtmosStandard
   components:
   - type: Sprite

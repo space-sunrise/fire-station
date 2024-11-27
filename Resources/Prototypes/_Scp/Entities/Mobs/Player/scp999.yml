@@ -3,7 +3,7 @@
   name: SCP-999
   description: Желешка
   suffix: SCP-999
-  parent: BaseSCP
+  parent: BaseScp
   components:
   - type: Scp999
     states:

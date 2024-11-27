@@ -1,31 +1,65 @@
-﻿- type: entity
+﻿# Пресеты для артефактов-сцп.
+# Для разных сцп нужны разные пресеты
+
+- type: entity
   abstract: true
-  parent:
-  - BaseSimpleMob
-  - MobBloodstream
-  - MobFlammable
-  id: BaseSCP
+  id: ScpArtifactMinor
   components:
-  - type: Scp
-  - type: ScpRestriction
+  - type: Artifact
+    addActivateAction: false
+    pointsPerNode:
+      Scp: 500
+  - type: ResearchClient
+
+- type: entity
+  abstract: true
+  id: ScpArtifactMiddle
+  components:
+  - type: Artifact
+    addActivateAction: false
+    pointsPerNode:
+      Scp: 1250
+  - type: ResearchClient
+
+- type: entity
+  abstract: true
+  id: ScpArtifactMajor
+  components:
   - type: Artifact
     addActivateAction: false
     pointsPerNode:
       Scp: 2500
   - type: ResearchClient
-  - type: ZombieImmune
+
+# Приколы-помогаторы с базовыми компонентами
 
 - type: entity
   abstract: true
   parent:
-  - BaseSCP
-  - MobCombat
-  id: BaseScpCombat
+  - BaseItem
+  - ScpArtifactMinor
+  id: BaseItemSCP
   components:
-  - type: Artifact
+  - type: Scp
+
+- type: entity # Онли для мобов
+  abstract: true
+  parent:
+  - BaseSimpleMob
+  - MobBloodstream
+  - MobFlammable
+  - ScpArtifactMajor
+  id: BaseScp
+  components:
+  - type: Scp
+  - type: ScpRestriction
+  - type: ZombieImmune # ебало игроков представили?
+
+# Сцп
+# TODO: Переместить в отдельный файл
 
 - type: entity
-  parent: BaseScpCombat
+  parent: [BaseScp, MobCombat]
   id: Scp173
   name: SCP-173
   suffix: SCP-173
@@ -62,7 +96,7 @@
       collection: FootstepSCP173
 
 - type: entity
-  parent: BaseScpCombat
+  parent: [BaseScp, MobCombat]
   id: Scp106
   name: SCP-106
   components:
