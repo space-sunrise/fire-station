@@ -1,4 +1,148 @@
-﻿- type: artifactEffect
+﻿# Base scp effects
+
+- type: artifactEffect
+  id: ScpEffectLightFlicker
+  targetDepth: 0
+  effectHint: artifact-effect-hint-electrical-interference
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: LightFlickerArtifact
+
+- type: artifactEffect
+  id: ScpEffectThrow
+  targetDepth: 0
+  effectHint: artifact-effect-hint-environment
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ThrowArtifact
+
+- type: artifactEffect
+  id: ScpEffectMagnet
+  targetDepth: 1
+  effectHint: artifact-effect-hint-magnet
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: GravityWell
+    maxRange: 10
+    baseRadialAcceleration: 2
+    baseTangentialAcceleration: 6
+
+- type: artifactEffect
+  id: ScpEffectShatterStructures
+  targetDepth: 1
+  effectHint: artifact-effect-hint-environment
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: DamageNearbyArtifact
+    damageChance: 0.75
+    whitelist:
+      components:
+      - Door
+      tags:
+      - Window
+      - Wall
+    damage:
+      types:
+        Structural: 400
+
+- type: artifactEffect
+  id: ScpEffectAntiMagnet
+  targetDepth: 1
+  effectHint: artifact-effect-hint-magnet
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: GravityWell
+    maxRange: 10
+    baseRadialAcceleration: -2
+    baseTangentialAcceleration: -6
+
+- type: artifactEffect
+  id: ScpEffectShuffle
+  targetDepth: 1
+  effectHint: artifact-effect-hint-displacement
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ShuffleArtifact
+    radius: 15
+  - type: TelepathicArtifact
+    range: 15
+    messages:
+    - shuffle-artifact-popup
+
+- type: artifactEffect
+  id: ScpEffectAnomaly
+  targetDepth: 4
+  effectHint: artifact-effect-hint-creation
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: SpawnArtifact
+    maxSpawns: 1
+    spawns:
+    - id: RandomAnomalySpawner
+
+# Scp 939
+
+- type: artifactEffect
+  id: ScpEffectSmoke939
+  targetDepth: 2
+  effectHint: artifact-effect-hint-environment
+  whitelist:
+    components:
+    - Scp939
+  components:
+  - type: ScpSmokeArtifact
+
+# Scp 106
+
+- type: artifactEffect
+  id: ScpEffectEmp106
+  targetDepth: 0
+  effectHint: artifact-effect-hint-electrical-interference
+  whitelist:
+    components:
+    - Scp106
+  components:
+  - type: EmpArtifact
+    range: 12
+
+# Scp 999
+
+- type: artifactEffect
+  id: ScpEffectHeal999
+  targetDepth: 3
+  effectHint: artifact-effect-hint-environment
+  whitelist:
+    components:
+    - Scp999
+  components:
+  - type: DamageNearbyArtifact
+    damageChance: 1
+    radius: 8
+    whitelist:
+      components:
+      - MobState
+    damage:
+      groups:
+        Brute: -50
+        Burn: -50
+
+# Scp 173
+
+- type: artifactEffect
   id: ScpEffectKnock
   targetDepth: 0
   effectHint: artifact-effect-hint-electrical-interference
@@ -19,12 +163,17 @@
   - type: FlashOnTrigger
     range: 8
 
+# Scp 457
+
 - type: artifactEffect
-  id: ScpEffectSmoke939
-  targetDepth: 2
-  effectHint: artifact-effect-hint-environment
-  whitelist:
+  id: ScpEffectIgnite
+  targetDepth: 0
+  effectHint: artifact-effect-hint-release
+  blacklist:
     components:
-    - Scp939
+    - Scp # TODO: кастомный компонент для 457
   components:
-  - type: SmokeArtifact
+  - type: IgniteArtifact
+    range: 7
+    minFireStack: 3
+    maxFireStack: 6
