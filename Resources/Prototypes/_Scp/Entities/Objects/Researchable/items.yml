@@ -1,0 +1,149 @@
+﻿- type: entity
+  parent: BaseItem
+  id: EyeDrops
+  suffix: SCP-173 Item
+  components:
+  - type: Sprite
+    sprite: _Scp/scp-035.rsi
+    layers:
+    - state: icon
+      map: [ "mask" ]
+
+- type: entity
+  parent: ClothingMaskBase
+  id: ReinforcedMaskScp096
+  suffix: SCP-096 Item
+  components:
+  - type: Sprite
+    sprite: _Scp/scp-035.rsi
+    layers:
+    - state: icon
+      map: [ "mask" ]
+
+- type: entity
+  parent: BaseItem
+  id: AntidoteScp049
+  suffix: SCP-049 Item
+  components:
+  - type: Sprite
+    sprite: _Scp/scp-035.rsi
+    layers:
+    - state: icon
+      map: [ "mask" ]
+
+- type: entity
+  parent: GrenadeFlashBang
+  id: VacuumDisorientationGrenade
+  suffix: SCP-939 Item
+  components:
+  - type: Sprite
+    sprite: _Scp/scp-035.rsi
+    layers:
+    - state: icon
+      map: [ "mask" ]
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadAwareness
+  suffix: SCP-035 Item
+  components:
+  - type: Sprite
+    sprite: _Scp/scp-035.rsi
+    layers:
+    - state: icon
+      map: [ "mask" ]
+
+# Пушки
+
+- type: entity
+  name: Experimental X-Ray
+  parent: BaseWeaponBattery
+  id: WeaponGodlikeXRay
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EGE_XR/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-5
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EGE_XR/tiny.rsi
+  - type: Item
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EGE_XR/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -93
+    maxAngle: -94
+  - type: Gun
+    minAngle: 94
+    maxAngle: 95
+    fireRate: 0.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Sunrise/Weapons/Guns/Laser/EG_XR.ogg
+      params:
+        pitch: 0.5
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: true
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: HitscanBatteryAmmoProvider
+    proto: UltraXrayLaser
+    fireCost: 750
+  - type: Wieldable
+  - type: UseDelay
+    delay: 0.5
+  - type: Telescope
+
+- type: entity
+  name: anomalous resonance laser rifle
+  parent: BaseWeaponBattery
+  id: WeaponARLSniper
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_Sniper/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-2
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_Sniper/tiny.rsi
+  - type: Item
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_Sniper/tiny.rsi
+  - type: GunRequiresWield
+  - type: GunWieldBonus
+    minAngle: -93
+    maxAngle: -94
+  - type: Gun
+    minAngle: 94
+    maxAngle: 95
+    fireRate: 1.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Sunrise/Weapons/Guns/Laser/EG_Sniper.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 3
+    zeroVisible: true
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: HitscanBatteryAmmoProvider
+    proto: UltraRedHeavyLaser
+    fireCost: 300
+  - type: Wieldable
+  - type: UseDelay
+    delay: 0.5
+  - type: Telescope

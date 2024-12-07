@@ -1,7 +1,9 @@
-﻿# Tier 1
+﻿# TODO: После добавления реконтейма сделать предметы для реконтейма исследуемыми
+
+# Tier 1
 
 - type: technology
-  id: SCPEx1
+  id: AntiAnomalousSecurityFramework
   name: research-technology-salvage-weapons
   icon:
     sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
@@ -11,39 +13,54 @@
   cost:
     Scp: 5000
   recipeUnlocks:
-  - WeaponProtoKineticAccelerator
-  - ShuttleGunKineticCircuitboard
-  - MechEquipmentKineticAccelerator
+  - EyeDrops
+  - ClothingHeadAwareness
+  - AntidoteScp049
 
 # Tier 2
 
 - type: technology
-  id: SCPEx2
-  name: research-technology-concentrated-laser-weaponry
+  id: AdvancedAntiAnomalousSecurityFramework
+  name: research-technology-advanced-anti-anomalous-security-framework
   icon:
     sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
     state: icon
   discipline: SCP
   tier: 2
   cost:
-    Scp: 10000
+    Scp: 7500
   recipeUnlocks:
-  - WeaponLaserCannon
-  - WeaponMechCombatSolarisLaser
+  - ReinforcedMaskScp096
+  - VacuumDisorientationGrenade
 
 # Tier 3
 
 - type: technology
-  id: SCPEx3
-  name: research-technology-portable-microfusion-weaponry
+  id: AnomalousResonanceLaser
+  name: research-technology-anomalous-resonance-laser
   icon:
-    sprite: Objects/Weapons/Guns/Battery/advancedlasergun.rsi
-    state: icon
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_MG/big.rsi
+    state: base
   discipline: SCP
   tier: 3
   cost:
-    Scp: 15000
+    Scp: 20000
   recipeUnlocks:
-  - WeaponAdvancedLaser
-  - PortableRecharger
-  - WeaponMechCombatImmolationGun
+  - WeaponEarthGovLaserPistol
+  - WeaponEarthGovLaserRifle
+  - WeaponEarthGovLaserCarbine
+  - WeaponEarthGovLaserMG
+  - WeaponARLSniper
+
+- type: technology
+  id: AnomalousOpticalDestructor
+  name: research-technology-anomalous-optical-destructor
+  icon:
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EGE_XR/big.rsi
+    state: base
+  discipline: SCP
+  tier: 3
+  cost:
+    Scp: 35000
+  recipeUnlocks:
+  - WeaponGodlikeXRay

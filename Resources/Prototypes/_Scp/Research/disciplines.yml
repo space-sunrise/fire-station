@@ -1,10 +1,10 @@
 ﻿- type: techDiscipline
   id: SCP
   name: research-discipline-scp
-  color: "#8a1ae2"
+  color: "#695376" # Мб выбрать цвет получше
   icon:
     sprite: Interface/Misc/research_disciplines.rsi
-    state: arsenal
+    state: arsenal # TODO: Перекрасить иконку под цвет
   tierPrerequisites:
     1: 0
     2: 0.75

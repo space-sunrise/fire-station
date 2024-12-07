@@ -67,7 +67,7 @@ public sealed partial class ArtifactSystem
             // Fire edit end
 
             var maxChildren = _random.Next(1, MaxEdgesPerNode - 1);
-            uninitializedNodes.Remove(node); // Fire edit - сюда
+            uninitializedNodes.Remove(node); // Fire edit
 
             for (var i = 0; i < maxChildren; i++)
             {
@@ -128,24 +128,13 @@ public sealed partial class ArtifactSystem
         return allEffects;
     }
 
+    /// <summary>
+    /// Метод, задающий артефакту его возможные уникальные эффекты
+    /// </summary>
+    /// <param name="artifact"></param>
     private void SetPossibleEffects(Entity<ArtifactComponent> artifact)
     {
         artifact.Comp.PossibleEffects = GetAllPossibleEffects(artifact);
-    }
-
-    /// <summary>
-    /// Возвращает количество всех доступных уникальных триггеров для этого артефакта
-    /// </summary>
-    /// <param name="artifact">Артефакт, для которог производится подсчет</param>
-    /// <returns>Количество доступных триггеров</returns>
-    private int GetAllPossibleTriggersCount(EntityUid artifact)
-    {
-        var allTriggers = _prototype.EnumeratePrototypes<ArtifactTriggerPrototype>()
-            .Where(x => _whitelistSystem.IsWhitelistPassOrNull(x.Whitelist, artifact) &&
-                        _whitelistSystem.IsBlacklistFailOrNull(x.Blacklist, artifact))
-            .ToList();
-
-        return allTriggers.Count;
     }
 
     // Fire added end
