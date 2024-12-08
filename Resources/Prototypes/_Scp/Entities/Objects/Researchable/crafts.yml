@@ -24,9 +24,9 @@
 # Мирные штуки
 
 - type: latheRecipe
-  id: EyeDrops
+  id: EyeDroplets
   parent: BaseASFRecipe
-  result: EyeDrops
+  result: EyeDroplets
 
 - type: latheRecipe
   id: ReinforcedMaskScp096

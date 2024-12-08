@@ -1,20 +1,27 @@
-﻿- type: entity
+﻿# Средства защиты от сцп
+
+- type: entity # TODO: Превратить в контейнер с химикатом
   parent: BaseItem
-  id: EyeDrops
+  id: EyeDroplets
   suffix: SCP-173 Item
   components:
-  - type: Sprite
+  - type: Sprite # TODO: Спрайт
     sprite: _Scp/scp-035.rsi
     layers:
     - state: icon
       map: [ "mask" ]
+  - type: ReducedBlinking
+    bonusTime: 120
+    # TODO: Добавить звук использования
+  - type: UseDelay
+    delay: 3
 
 - type: entity
   parent: ClothingMaskBase
   id: ReinforcedMaskScp096
   suffix: SCP-096 Item
   components:
-  - type: Sprite
+  - type: Sprite # TODO: Спрайт
     sprite: _Scp/scp-035.rsi
     layers:
     - state: icon
@@ -25,7 +32,7 @@
   id: AntidoteScp049
   suffix: SCP-049 Item
   components:
-  - type: Sprite
+  - type: Sprite # TODO: Спрайт
     sprite: _Scp/scp-035.rsi
     layers:
     - state: icon
@@ -36,7 +43,7 @@
   id: VacuumDisorientationGrenade
   suffix: SCP-939 Item
   components:
-  - type: Sprite
+  - type: Sprite # TODO: Спрайт
     sprite: _Scp/scp-035.rsi
     layers:
     - state: icon
@@ -47,7 +54,7 @@
   id: ClothingHeadAwareness
   suffix: SCP-035 Item
   components:
-  - type: Sprite
+  - type: Sprite # TODO: Спрайт
     sprite: _Scp/scp-035.rsi
     layers:
     - state: icon

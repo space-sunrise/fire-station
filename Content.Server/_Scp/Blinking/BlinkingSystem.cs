@@ -58,7 +58,6 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         {
             if (!IsScp173Nearby(uid))
             {
-                ResetBlink(uid, blinkableComponent);
                 continue;
             }
 
@@ -89,7 +88,21 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     {
         component.BlinkEndTime = _gameTiming.CurTime + BlinkingDuration;
         var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
-        component.NextBlink = _gameTiming.CurTime + BlinkingInterval + TimeSpan.FromSeconds(variance);
+
+        SetNextBlink(uid, component, BlinkingInterval, variance);
+    }
+
+    /// <summary>
+    /// Задает время следующего моргания персонажа
+    /// </summary>
+    /// <remarks>Выделил в отдельный метод, чтобы манипулировать этим извне системы</remarks>
+    /// <param name="uid">Моргающий</param>
+    /// <param name="component">Компонент моргания</param>
+    /// <param name="interval">Через сколько будет следующее моргание</param>
+    /// <param name="variance">Плюс минус время следующего моргания, чтобы вся станция не моргала в один такт</param>
+    public void SetNextBlink(EntityUid uid, BlinkableComponent component, TimeSpan interval, double variance = 0)
+    {
+        component.NextBlink = _gameTiming.CurTime + interval + TimeSpan.FromSeconds(variance);
 
         Dirty(uid, component);
     }
@@ -121,8 +134,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         base.ResetBlink(uid, component);
 
         var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
-        component.NextBlink = _gameTiming.CurTime + BlinkingInterval + TimeSpan.FromSeconds(variance);
-        Dirty(uid, component);
+        SetNextBlink(uid, component, BlinkingInterval, variance);
 
         UpdateAlert(uid, component);
     }
@@ -140,9 +152,10 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         base.ForceBlind(uid, component, duration);
         var currentTime = _gameTiming.CurTime;
         component.BlinkEndTime = currentTime + duration;
+
         // Set next blink slightly after forced blindness ends
-        component.NextBlink = component.BlinkEndTime + TimeSpan.FromSeconds(1);
-        Dirty(uid, component);
+        SetNextBlink(uid, component, component.BlinkEndTime + TimeSpan.FromSeconds(1));
+
         UpdateAlert(uid, component);
     }
 
