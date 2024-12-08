@@ -107,7 +107,7 @@
   - type: Wieldable
   - type: UseDelay
     delay: 0.5
-  - type: Telescope
+#  - type: Telescope насрали
 
 - type: entity
   name: anomalous resonance laser rifle
@@ -153,4 +153,4 @@
   - type: Wieldable
   - type: UseDelay
     delay: 0.5
-  - type: Telescope
+#  - type: Telescope насрали
