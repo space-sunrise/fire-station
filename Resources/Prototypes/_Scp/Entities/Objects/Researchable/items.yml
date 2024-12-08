@@ -26,6 +26,11 @@
     layers:
     - state: icon
       map: [ "mask" ]
+  - type: Clothing
+    equipDelay: 3
+    unequipDelay: 3
+  - type: Blindfold
+  - type: FlashImmunity
 
 - type: entity
   parent: BaseItem
