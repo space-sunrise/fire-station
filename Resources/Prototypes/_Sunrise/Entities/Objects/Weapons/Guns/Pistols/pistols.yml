@@ -148,23 +148,11 @@
   id: WeaponPistolG22NonLethal
   suffix: NonLethal
   components:
-  - type: Sprite
-    sprite: _Sunrise/Objects/Weapons/Guns/Pistols/glock22/big.rsi
-  - type: Item
-    sprite: _Sunrise/Objects/Weapons/Guns/Pistols/glock22/tiny.rsi
-  - type: Gun
-    selectedMode: SemiAuto
-    availableModes:
-    - SemiAuto
-    - Burst
-    - FullAuto
-    soundGunshot:
-      collection: glock22
   - type: ItemSlots
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: MagazineGlock22
+        startingItem: MagazineGlock22Rubber
         insertSound: /Audio/_Sunrise/Weapons/Guns/Pistols/glock22/glock22_reload.ogg
         ejectSound: /Audio/_Sunrise/Weapons/Guns/Pistols/glock22/glock22_unload.ogg
         priority: 2
@@ -177,7 +165,7 @@
         priority: 1
         whitelist:
           tags:
-          - Cartridge57x28
+          - CartridgePistol
 
 
 - type: entity

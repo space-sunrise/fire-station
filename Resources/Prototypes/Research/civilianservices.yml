@@ -74,8 +74,6 @@
   recipeUnlocks:
     - ComputerTelevisionCircuitboard
     - SynthesizerInstrument
-    - BorgModuleMusique
-    - BorgModuleClowning
     - DawInstrumentMachineCircuitboard
     - MassMediaCircuitboard
     - JukeboxCircuitBoard
@@ -92,7 +90,6 @@
     Default: 5000
     Scp: 2500
   recipeUnlocks:
-  - BorgModuleLightReplacer
   - BorgModuleAdvancedCleaning
 
 - type: technology
@@ -246,19 +243,17 @@
 
 # Tier 3
 
-- type: technology
-  id: QuantumFiberWeaving
-  name: research-technology-quantum-fiber-weaving
-  icon:
-    sprite: Clothing/Shoes/Boots/speedboots.rsi
-    state: icon
-  discipline: CivilianServices
-  tier: 3
-  cost:
-    Default: 10000
-    Scp: 5000
-  recipeUnlocks:
-  - ClothingShoesBootsSpeed
+#- type: technology
+#  id: QuantumFiberWeaving
+#  name: research-technology-quantum-fiber-weaving
+#  icon:
+#    sprite: Clothing/Shoes/Boots/speedboots.rsi
+#    state: icon
+#  discipline: CivilianServices
+#  tier: 3
+#  cost: 10000
+#  recipeUnlocks:
+#  - ClothingShoesBootsSpeed
 
 - type: technology
   id: BluespaceChemistry

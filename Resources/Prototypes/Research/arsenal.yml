@@ -217,8 +217,8 @@
   - PowerCageSmall
   - PowerCageMedium
   - MagazineGrenadeEmpty
-  - GrenadeFlash
-  - GrenadeBlast
+  - ShellFlashArtillery
+  - ShellBlastArtillery
   - ShuttleGunSvalinnMachineGunCircuitboard
   - ShuttleGunPerforatorCircuitboard
   - ShuttleGunFriendshipCircuitboard
@@ -311,7 +311,7 @@
     Default: 15000
     Scp: 7500
   recipeUnlocks:
-  - GrenadeEMP
+  - ShellEMPArtillery
   - PowerCageHigh
   - ShuttleGunDusterCircuitboard
   technologyPrerequisites:

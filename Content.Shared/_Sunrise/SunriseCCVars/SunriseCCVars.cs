@@ -177,12 +177,6 @@ public sealed class SunriseCCVars
     public static readonly CVarDef<string> InfoLinksDonate =
         CVarDef.Create("infolinks.donate", "", CVar.SERVER | CVar.REPLICATED);
 
-    /// <summary>
-    /// Link to Telegram channel to show in the launcher.
-    /// </summary>
-    public static readonly CVarDef<string> InfoLinksTelegram =
-        CVarDef.Create("infolinks.telegram", "", CVar.SERVER | CVar.REPLICATED);
-
     /**
      * Lobby
      */
@@ -280,14 +274,14 @@ public sealed class SunriseCCVars
     public static readonly CVarDef<bool> RunMapVoteAfterRestart = CVarDef.Create("vote.run_map_vote_after_restart", false);
 
     public static readonly CVarDef<bool> RunPresetVoteAfterRestart = CVarDef.Create("vote.run_preset_vote_after_restart", false);
-    
-    public static readonly CVarDef<int> VotingsDelay = CVarDef.Create("vote.votings_delay", 90);
-    
+
+    public static readonly CVarDef<int> VotingsDelay = CVarDef.Create("vote.votings_delay", 60);
+
     public static readonly CVarDef<int> MapVotingCount = CVarDef.Create("vote.map_voting_count", 3);
-    
+
     public static readonly CVarDef<int> RoundVotingCount = CVarDef.Create("vote.round_voting_count", 3);
-    
-    public static readonly CVarDef<string> RoundVotingChancesPrototype = CVarDef.Create("vote.round_voting_chances_prototype", "");
+
+    public static readonly CVarDef<string> RoundVotingChancesPrototype = CVarDef.Create("vote.round_voting_chances_prototype", "SunriseVoteSecret");
 
     /*
      * Preset
@@ -304,4 +298,20 @@ public sealed class SunriseCCVars
 
     public static readonly CVarDef<string> BanDiscordLink =
         CVarDef.Create("cl.discord_link", "", CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
+
+    public static readonly CVarDef<string> BanTelegramLink =
+        CVarDef.Create("cl.telegram_link", "", CVar.SERVER | CVar.REPLICATED | CVar.ARCHIVE);
+
+    /*
+     * Mood
+     */
+
+    public static readonly CVarDef<bool> MoodEnabled =
+        CVarDef.Create("mood.enabled", true, CVar.SERVER);
+
+    public static readonly CVarDef<bool> MoodIncreasesSpeed =
+        CVarDef.Create("mood.increases_speed", true, CVar.SERVER);
+
+    public static readonly CVarDef<bool> MoodDecreasesSpeed =
+        CVarDef.Create("mood.decreases_speed", true, CVar.SERVER);
 }

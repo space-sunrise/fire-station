@@ -18,6 +18,7 @@
     - Arsenal
     - Experimental
     - CivilianServices
+    - Biochemical
     - SCP # Fire
   - type: ApcPowerReceiver
     powerLoad: 200

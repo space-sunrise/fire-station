@@ -12,7 +12,9 @@
       - id: Cautery
       - id: Retractor
       - id: Scalpel
-
+      - id: BoneGel
+      - id: BoneSetter
+      
 - type: entity
   parent: ClothingBackpackDuffelSyndicateMedicalBundle
   id: ClothingBackpackDuffelSyndicateFilledMedical
@@ -21,14 +23,16 @@
   components:
   - type: StorageFill
     contents:
-      - id: Hemostat
+      - id: HemostatAdvanced
       - id: SawAdvanced
       - id: Drill
       - id: Cautery
-      - id: Retractor
+      - id: RetractorAdvanced
       - id: ScalpelAdvanced
       - id: ClothingHandsGlovesNitrile
       - id: EmergencyRollerBedSpawnFolded
+      - id: BoneGel
+      - id: BoneSetterAdvanced
 
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
@@ -161,7 +165,7 @@
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicatePyjamaBundle
   name: syndicate pyjama duffel bag
-  description: Contains 3 pairs of syndicate pyjamas and 3 plushies for the ultimate sleepover.
+  description: Contains 3 pairs of syndicate pyjamas and 4 plushies for the ultimate sleepover.
   components:
   - type: Storage
     grid:

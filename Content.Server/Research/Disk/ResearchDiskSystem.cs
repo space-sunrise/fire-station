@@ -36,6 +36,7 @@ namespace Content.Server.Research.Disk
             }
 
             EntityManager.QueueDeleteEntity(uid);
+            args.Handled = true;
         }
 
         private void OnMapInit(EntityUid uid, ResearchDiskComponent component, MapInitEvent args)
