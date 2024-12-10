@@ -33,3 +33,13 @@
 - type: latheCategory
   id: Scp
   name: lathe-category-scp
+
+- type: entity
+  id: Scp096TearMask
+  components:
+  - type: InstantAction
+    icon:
+      sprite: Interface/Actions/actions_borg.rsi
+      state: state-laws
+    event: !type:Scp096TearMaskEvent
+    useDelay: 0.5

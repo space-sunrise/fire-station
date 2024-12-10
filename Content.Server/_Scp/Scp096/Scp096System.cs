@@ -7,6 +7,7 @@ using Content.Server.Power;
 using Content.Server.Wires;
 using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Scp096;
+using Content.Shared._Scp.Scp096.Mask;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Doors.Components;
@@ -38,6 +39,7 @@ public sealed partial class Scp096System : SharedScp096System
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly TransformSystem _transformSystem = default!;
+    [Dependency] private readonly Scp096MaskSystem _scp096Mask = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
@@ -171,6 +173,10 @@ public sealed partial class Scp096System : SharedScp096System
     private bool CanBeAggro(Entity<Scp096Component> entity)
     {
         if (_mobStateSystem.IsIncapacitated(entity) || Comp<BlindableComponent>(entity).IsBlind)
+            return false;
+
+        // В маске мы мирные
+        if (_scp096Mask.TryGetScp096Mask(entity, out _))
             return false;
 
         return true;

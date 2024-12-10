@@ -17,7 +17,7 @@
     delay: 3
 
 - type: entity
-  parent: ClothingMaskBase
+  parent: ClothingHeadBase
   id: ReinforcedMaskScp096
   suffix: SCP-096 Item
   components:
@@ -29,8 +29,10 @@
   - type: Clothing
     equipDelay: 3
     unequipDelay: 3
-  - type: Blindfold
-  - type: FlashImmunity
+  - type: Scp096Mask
+  - type: ClothingAddActions
+    actions:
+    - Scp096TearMask
 
 - type: entity
   parent: BaseItem
