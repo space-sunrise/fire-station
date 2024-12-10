@@ -64,6 +64,9 @@
     layers:
     - state: icon
       map: [ "mask" ]
+  - type: ClothingAddComponents
+    components:
+    - type: Scp035MindProtection
 
 # Пушки
 
