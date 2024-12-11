@@ -1,5 +1,7 @@
 ﻿# Средства защиты от сцп
 
+# Scp-173
+
 - type: entity # TODO: Превратить в контейнер с химикатом
   parent: BaseItem
   id: EyeDroplets
@@ -15,6 +17,8 @@
     # TODO: Добавить звук использования
   - type: UseDelay
     delay: 3
+
+# Scp-096
 
 - type: entity
   parent: ClothingHeadBase
@@ -34,16 +38,28 @@
     actions:
     - Scp096TearMask
 
+# Scp-049
+
 - type: entity
-  parent: BaseItem
-  id: AntidoteScp049
-  suffix: SCP-049 Item
+  id: Scp049ProtectionImplanter
+  suffix: SCP-049 Protection
+  parent: BaseImplantOnlyImplanter
   components:
-  - type: Sprite # TODO: Спрайт
-    sprite: _Scp/scp-035.rsi
-    layers:
-    - state: icon
-      map: [ "mask" ]
+  - type: Implanter
+    implant: Scp049ProtectionImplant
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: Scp049ProtectionImplant
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SubdermalImplant
+    whitelist:
+      components:
+      - MobState
+  - type: Scp049ProtectionImplant
+
+# Scp-939
 
 - type: entity
   parent: GrenadeFlashBang
@@ -55,6 +71,8 @@
     layers:
     - state: icon
       map: [ "mask" ]
+
+# Scp-035
 
 - type: entity
   parent: ClothingHeadBase

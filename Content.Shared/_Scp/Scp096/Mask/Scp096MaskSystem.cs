@@ -40,6 +40,7 @@ public sealed class Scp096MaskSystem : EntitySystem
         // Маска должна надеваться только на сцп 096
         if (!HasComp<Scp096Component>(target))
         {
+            // TODO: Перевод нормальный
             _popup.PopupEntity("Маска слишком велика для ", args.EquipTarget, args.Equipee);
 
             args.Cancel();
