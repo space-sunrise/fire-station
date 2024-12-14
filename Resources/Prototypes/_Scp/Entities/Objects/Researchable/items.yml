@@ -7,11 +7,12 @@
   id: EyeDroplets
   suffix: SCP-173 Item
   components:
-  - type: Sprite # TODO: Спрайт
-    sprite: _Scp/scp-035.rsi
-    layers:
-    - state: icon
-      map: [ "mask" ]
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/patronbottle.rsi # TODO: Нормальный спрайт, а не алкашка
+    state: icon_empty
+    scale: 0.4,0.6
+  - type: Item
+    size: Tiny
   - type: ReducedBlinking
     bonusTime: 120
     # TODO: Добавить звук использования
@@ -25,11 +26,14 @@
   id: ReinforcedMaskScp096
   suffix: SCP-096 Item
   components:
-  - type: Sprite # TODO: Спрайт
+  - type: Sprite
     sprite: _Scp/Clothing/Masks/scp096.rsi
     layers:
     - state: icon
       map: [ "mask" ]
+  - type: Item
+    size: Normal
+    storedRotation: -90
   - type: Clothing
     equipDelay: 3
     unequipDelay: 3
@@ -71,6 +75,9 @@
     layers:
     - state: icon
       map: [ "mask" ]
+  - type: Item
+    size: Normal
+    storedRotation: -90
   - type: ClothingAddComponents
     components:
     - type: Scp035MindProtection
@@ -95,6 +102,7 @@
     sprite: _Sunrise/Objects/Weapons/Guns/Battery/EGE_XR/tiny.rsi
   - type: Item
     sprite: _Sunrise/Objects/Weapons/Guns/Battery/EGE_XR/tiny.rsi
+    size: Ginormous
   - type: GunWieldBonus
     minAngle: -93
     maxAngle: -94
@@ -142,6 +150,8 @@
     sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_Sniper/tiny.rsi
   - type: Item
     sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_Sniper/tiny.rsi
+    shape:
+    - 0,0,4,1
   - type: GunRequiresWield
   - type: GunWieldBonus
     minAngle: -93
