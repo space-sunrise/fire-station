@@ -59,19 +59,6 @@
       - MobState
   - type: Scp049ProtectionImplant
 
-# Scp-939
-
-- type: entity
-  parent: GrenadeFlashBang
-  id: VacuumDisorientationGrenade
-  suffix: SCP-939 Item
-  components:
-  - type: Sprite # TODO: Спрайт
-    sprite: _Scp/scp-035.rsi
-    layers:
-    - state: icon
-      map: [ "mask" ]
-
 # Scp-035
 
 - type: entity

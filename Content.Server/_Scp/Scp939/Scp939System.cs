@@ -6,7 +6,6 @@ using Content.Shared.Damage;
 using Content.Shared.StatusEffect;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
-using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Scp939;
 
@@ -58,7 +57,25 @@ public sealed partial class Scp939System : EntitySystem
 
         while (query.MoveNext(out var uid, out var scp939Component, out _))
         {
+            // Лечилка
             _damageableSystem.TryChangeDamage(uid, scp939Component.HibernationHealingRate * frameTime);
+
+            // Смотрелка
+            if (!scp939Component.PoorEyesight)
+                continue;
+
+            if (scp939Component.PoorEyesightTimeStart == null)
+                continue;
+
+            var timeDifference = _timing.CurTime - scp939Component.PoorEyesightTimeStart.Value;
+
+            if (timeDifference > TimeSpan.FromSeconds(scp939Component.PoorEyesightTime))
+            {
+                scp939Component.PoorEyesight = false;
+                scp939Component.PoorEyesightTimeStart = null;
+
+                Dirty(uid, scp939Component);
+            }
         }
     }
 

@@ -5,7 +5,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp939;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp939Component : Component
 {
     [DataField, ViewVariables(VVAccess.ReadWrite)]
@@ -34,13 +34,27 @@ public sealed partial class Scp939Component : Component
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public DamageSpecifier HibernationHealingRate = new()
     {
-        DamageDict = new ()
+        DamageDict = new()
         {
             { "Blunt", -9.0f },
-            { "Slash", -9.0f},
+            { "Slash", -9.0f },
             { "Piercing", -9.0f },
             { "Heat", -9.0f },
             { "Shock", -9.0f },
         }
     };
+
+    #region Vision
+
+    [DataField, AutoNetworkedField]
+    public bool PoorEyesight;
+
+    [DataField, AutoNetworkedField]
+    public float PoorEyesightTime = 10f; // Секунды
+
+    [AutoNetworkedField]
+    public TimeSpan? PoorEyesightTimeStart; // Когда начали плохо видеть
+
+    #endregion
+
 }

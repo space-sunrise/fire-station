@@ -150,6 +150,8 @@ namespace Content.Server.Flash
                 if (used != null)
                     RaiseLocalEvent(used.Value, ref ev);
             }
+
+            RaiseLocalEvent(target, new EntityFlashedEvent (target, user, used));
         }
 
         public override void FlashArea(Entity<FlashComponent?> source, EntityUid? user, float range, float duration, float slowTo = 0.8f, bool displayPopup = false, float probability = 1f, SoundSpecifier? sound = null)
@@ -245,4 +247,21 @@ namespace Content.Server.Flash
             Used = used;
         }
     }
+
+    // Fire edit start - почему нет ивента после успешного флеша, вы че бля
+
+    public readonly struct EntityFlashedEvent
+    {
+        public readonly EntityUid Target;
+        public readonly EntityUid? User;
+        public readonly EntityUid? Used;
+
+        public EntityFlashedEvent(EntityUid target, EntityUid? user, EntityUid? used)
+        {
+            Target = target;
+            User = user;
+            Used = used;
+        }
+    }
+    // Fire edit end
 }

@@ -28,10 +28,13 @@ public sealed class DogVisionOverlay : Overlay
     {
         if (ScreenTexture == null)
             return;
+
         if (_playerManager.LocalPlayer?.ControlledEntity is not { Valid: true } player)
             return;
+
         if (!_entityManager.HasComponent<DogVisionComponent>(player))
             return;
+
         _dogVisionShader?.SetParameter("SCREEN_TEXTURE", ScreenTexture);
         var worldHandle = args.WorldHandle;
         var viewport = args.WorldBounds;
