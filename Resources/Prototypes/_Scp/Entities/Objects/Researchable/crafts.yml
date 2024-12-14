@@ -34,14 +34,9 @@
   result: ReinforcedMaskScp096
 
 - type: latheRecipe
-  id: AntidoteScp049
+  id: Scp049ProtectionImplanter
   parent: BaseASFRecipe
-  result: AntidoteScp049
-
-- type: latheRecipe
-  id: VacuumDisorientationGrenade
-  parent: BaseASFRecipe
-  result: VacuumDisorientationGrenade
+  result: Scp049ProtectionImplanter
 
 - type: latheRecipe
   id: ClothingHeadAwareness

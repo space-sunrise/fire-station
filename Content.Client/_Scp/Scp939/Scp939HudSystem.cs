@@ -166,6 +166,7 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         return Math.Clamp(1f - (acc / ent.Comp.HideTime), 0f, 1f);
     }
 
+    // TODO: Переделать под статус эффект и добавить его в панель статус эффектов, а то непонятно игруну
     /// <summary>
     /// Если вдруг собачка плохо видит
     /// </summary>
