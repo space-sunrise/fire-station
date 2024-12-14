@@ -26,7 +26,7 @@
   suffix: SCP-096 Item
   components:
   - type: Sprite # TODO: Спрайт
-    sprite: _Scp/scp-035.rsi
+    sprite: _Scp/Clothing/Masks/scp096.rsi
     layers:
     - state: icon
       map: [ "mask" ]
@@ -66,8 +66,8 @@
   id: ClothingHeadAwareness
   suffix: SCP-035 Item
   components:
-  - type: Sprite # TODO: Спрайт
-    sprite: _Scp/scp-035.rsi
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/techno.rsi
     layers:
     - state: icon
       map: [ "mask" ]

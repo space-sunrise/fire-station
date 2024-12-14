@@ -6,7 +6,7 @@
   id: AntiAnomalousSecurityFramework
   name: research-technology-anti-anomalous-security-framework
   icon:
-    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi # TODO: Спрайт
+    sprite: _Scp/Clothing/Head/Helmets/techno.rsi
     state: icon
   discipline: SCP
   tier: 1
@@ -23,7 +23,7 @@
   id: ReactiveAnomalySuppressionComplex
   name: research-technology-reactive-anomaly-suppression-complex
   icon:
-    sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi # TODO: Спрайт
+    sprite: _Scp/Clothing/Masks/scp096.rsi
     state: icon
   discipline: SCP
   tier: 2
