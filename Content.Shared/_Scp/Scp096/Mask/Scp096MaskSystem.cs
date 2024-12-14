@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Popups;
@@ -40,8 +41,8 @@ public sealed class Scp096MaskSystem : EntitySystem
         // Маска должна надеваться только на сцп 096
         if (!HasComp<Scp096Component>(target))
         {
-            // TODO: Перевод нормальный
-            _popup.PopupEntity("Маска слишком велика для ", args.EquipTarget, args.Equipee);
+            var message = Loc.GetString("scp096-mask-cannot-equip", ("name", Identity.Name(args.EquipTarget, EntityManager)));
+            _popup.PopupCursor(message, args.Equipee);
 
             args.Cancel();
         }
@@ -52,6 +53,19 @@ public sealed class Scp096MaskSystem : EntitySystem
         {
             _audio.PlayPvs(equipSound, target);
         }
+    }
+
+    private void OnTear(Entity<Scp096Component> scp, ref Scp096TearMaskEvent args)
+    {
+        if (!TryGetScp096Mask(scp, out var scp096Mask))
+            return;
+
+        var doAfterArgs = new DoAfterArgs(EntityManager, scp, scp096Mask.Value.Comp.TearTime, new Scp096TearMaskDoAfterEvent(), scp, scp, scp096Mask)
+        {
+            BreakOnDamage = true,
+        };
+
+        _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
     private void OnTearSuccess(Entity<Scp096Component> scp, ref Scp096TearMaskDoAfterEvent args)
@@ -66,20 +80,10 @@ public sealed class Scp096MaskSystem : EntitySystem
             _audio.PlayPvs(tearSound,scp);
         }
 
+        var message = Loc.GetString("scp096-destroyed-mask", ("mask", MetaData(scp096Mask.Value).EntityName));
+        _popup.PopupEntity(message, scp, PopupType.LargeCaution);
+
         QueueDel(scp096Mask);
-    }
-
-    private void OnTear(Entity<Scp096Component> scp, ref Scp096TearMaskEvent args)
-    {
-        if (!TryGetScp096Mask(scp, out var scp096Mask))
-            return;
-
-        var doAfterArgs = new DoAfterArgs(EntityManager, scp, scp096Mask.Value.Comp.TearTime, new Scp096TearMaskDoAfterEvent(), scp, scp, scp096Mask)
-        {
-            BreakOnDamage = true,
-        };
-
-        _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
     /// <summary>

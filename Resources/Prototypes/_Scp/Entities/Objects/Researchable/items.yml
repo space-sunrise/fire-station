@@ -77,6 +77,7 @@
 
 # Пушки
 
+# TODO: Чатгпт дал идею срать радиацией стреляющему при стрельбе. Мб стоит сделать
 - type: entity
   name: Experimental X-Ray
   parent: BaseWeaponBattery

@@ -4,9 +4,9 @@
 
 - type: technology
   id: AntiAnomalousSecurityFramework
-  name: research-technology-salvage-weapons
+  name: research-technology-anti-anomalous-security-framework
   icon:
-    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi
+    sprite: Objects/Weapons/Guns/Basic/kinetic_accelerator.rsi # TODO: Спрайт
     state: icon
   discipline: SCP
   tier: 1
@@ -20,10 +20,10 @@
 # Tier 2
 
 - type: technology
-  id: AdvancedAntiAnomalousSecurityFramework
-  name: research-technology-advanced-anti-anomalous-security-framework
+  id: ReactiveAnomalySuppressionComplex
+  name: research-technology-reactive-anomaly-suppression-complex
   icon:
-    sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
+    sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi # TODO: Спрайт
     state: icon
   discipline: SCP
   tier: 2

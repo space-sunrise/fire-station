@@ -32,9 +32,12 @@ public sealed partial class Scp049System : SharedScp049System
 
         scpEntity.Comp.NextTool = _random.Pick(scpEntity.Comp.SurgeryTools);
 
-        // TODO: Норм строки
         if (!TryMakeMinion(mobStateEntity, scpEntity))
-            _popupSystem.PopupEntity("Тело не подлежит лечению", mobStateEntity, scpEntity);
+        {
+            var message = Loc.GetString("scp049-cannot-zombify-entity", ("target", mobStateEntity));
+            _popupSystem.PopupEntity(message, mobStateEntity, scpEntity);
+        }
+
     }
 
 

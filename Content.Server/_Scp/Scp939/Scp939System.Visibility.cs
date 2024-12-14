@@ -1,7 +1,9 @@
 ﻿using Content.Server.Chat.Systems;
 using Content.Server.Flash;
+using Content.Server.Popups;
 using Content.Shared._Scp.Scp939;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Popups;
 using Content.Shared.Throwing;
 using Robust.Shared.Timing;
 
@@ -9,6 +11,7 @@ namespace Content.Server._Scp.Scp939;
 
 public sealed partial class Scp939System
 {
+    [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private void InitializeVisibility()
@@ -27,6 +30,9 @@ public sealed partial class Scp939System
     {
         ent.Comp.PoorEyesight = true;
         ent.Comp.PoorEyesightTimeStart = _timing.CurTime;
+
+        var message = Loc.GetString("scp939-flashed", ("time", ent.Comp.PoorEyesightTime));
+        _popup.PopupEntity(message, ent, ent, PopupType.MediumCaution);
 
         Dirty(ent);
     }
