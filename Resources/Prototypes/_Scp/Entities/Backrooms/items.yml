@@ -14,7 +14,7 @@
   - type: SpecialRespawn
     prototype: ScpBackroomsPainting
   - type: Wieldable
-    forceTwoHanded: true
+  - type: MultiHandedItem
   - type: AddComponentsPickup
     components:
     - type: AnomalyAccent
@@ -84,7 +84,7 @@
   - type: Item
     size: Ginormous
   - type: Wieldable
-    forceTwoHanded: true
+  - type: MultiHandedItem
   - type: ClothingSpeedModifier
     walkModifier: 0.5
     sprintModifier: 0.5
