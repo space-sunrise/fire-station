@@ -70,7 +70,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     // public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
     // public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
     // Sunrise-TTS-End
-    public const string DefaultAnnouncementSound = "/Audio/Announcements/announce.ogg"; // Sunrise-edit
+    public const string DefaultAnnouncementSound = "/Audio/_Sunrise/Announcements/announce_dig.ogg"; // Sunrise-edit
 
     private bool _loocEnabled = true;
     private bool _deadLoocEnabled;
@@ -861,9 +861,13 @@ public sealed partial class ChatSystem : SharedChatSystem
     // ReSharper disable once InconsistentNaming
     private string SanitizeInGameICMessage(EntityUid source, string message, out string? emoteStr, bool capitalize = true, bool punctuate = false, bool capitalizeTheWordI = true)
     {
-        var newMessage = message.Trim();
+        var newMessage = SanitizeMessageReplaceWords(message.Trim());
         newMessage = ReplaceWords(newMessage); // Sunrise-Edit
-        newMessage = SanitizeMessageReplaceWords(newMessage);
+
+        GetRadioKeycodePrefix(source, newMessage, out newMessage, out var prefix);
+
+        // Sanitize it first as it might change the word order
+        _sanitizer.TrySanitizeEmoteShorthands(newMessage, source, out newMessage, out emoteStr);
 
         if (capitalize)
             newMessage = SanitizeMessageCapital(newMessage);
@@ -872,9 +876,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         if (punctuate)
             newMessage = SanitizeMessagePeriod(newMessage);
 
-        _sanitizer.TrySanitizeOutSmilies(newMessage, source, out newMessage, out emoteStr);
-
-        return newMessage;
+        return prefix + newMessage;
     }
 
     private string SanitizeInGameOOCMessage(string message)

@@ -125,7 +125,7 @@
   - type: ExaminableSolution
     solution: hypospray
   - type: Hypospray
-    onlyAffectsMobs: false
+    onlyAffectsMobs: true
     injectOnly: true
 
 - type: entity
@@ -233,6 +233,8 @@
       Quantity: 2
     - ReagentId: DexalinPlus
       Quantity: 2
+  - type: Hypospray
+    pierceArmor: true
 
 - type: entity
   parent: Holoprojector
@@ -258,51 +260,6 @@
         locked: true
 
 - type: entity
-  name: machine gun borg
-  id: LightMachineGunBorg
-  parent: BaseItem
-  categories: [ HideSpawnMenu ]
-  description:
-  components:
-  - type: Sprite
-    sprite: Objects/Weapons/Guns/LMGs/l6.rsi
-    layers:
-    - state: icon
-      map: ["enum.GunVisualLayers.Base"]
-  - type: Item
-    sprite: Objects/Weapons/Guns/LMGs/l6.rsi
-  - type: Gun
-    minAngle: 4
-    maxAngle: 20
-    angleIncrease: 4
-    angleDecay: 16
-    fireRate: 8
-    selectedMode: FullAuto
-    availableModes:
-    - FullAuto
-    soundGunshot:
-      collection: m249
-      params:
-        volume: 10
-    soundEmpty:
-      path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
-  - type: MagazineVisuals
-    magState: mag
-    steps: 4
-    zeroVisible: true
-  - type: Appearance
-  - type: BallisticAmmoProvider
-    proto: CartridgeLightRifle
-    capacity: 200
-  - type: ContainerContainer
-    containers:
-      ballistic-ammo: !type:Container
-        ents: []
-  - type: UseDelay
-    delay: 1
-
-
-- type: entity
   name: robot china lake
   parent: WeaponLauncherChinaLake
   id: WeaponLauncherChinaLakeBorg
@@ -316,19 +273,17 @@
     - FullAuto
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/grenade_launcher.ogg
-  - type: BallisticAmmoProvider
-    whitelist:
-      tags:
-      - Grenade
-    capacity: 10
-    proto: GrenadeFrag
-    soundInsert:
-      path: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
-  - type: MagazineVisuals
-    magState: mag
-    steps: 1
-    zeroVisible: true
   - type: Appearance
+  - type: ProjectileBatteryAmmoProvider
+    proto: GrenadeFrag
+    fireCost: 1000
+  - type: Battery
+    maxCharge: 10000
+    startingCharge: 10000
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 25
+  - type: AmmoCounter
 
 - type: entity
   id: FireExtinguisherBorg
@@ -474,7 +429,7 @@
         maxVol: 500
 
 - type: entity
-  name: станер пулемет киборга
+  name: cyborg disabler machine gun
   parent: WeaponDisablerSMG
   id: WeaponDisablerSMGBorg
   components:
@@ -483,7 +438,7 @@
     autoRechargeRate: 30
 
 - type: entity
-  name: Импульстное оружие Киборга
+  name: cyborg's pulse weapon
   parent: BaseWeaponBattery
   id: WeaponPulseCarbineBorg
   components:
@@ -531,10 +486,10 @@
     state: impact_blue
 
 - type: entity
-  name: DL6902 киборга
+  name: cyborg's DL6902
   id: DL6902Borg
   parent: BaseItem
-  description: Тяжёлый пулемёт Cybersun киборга с расширенным магазином.
+  description: Cybersun cyborg heavy machine gun with extended magazine.
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Weapons/Guns/LMGs/DL6902.rsi
@@ -556,24 +511,22 @@
         volume: 10
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
-  - type: MagazineVisuals
-    magState: mag
-    steps: 4
-    zeroVisible: true
-  - type: Appearance
-  - type: BallisticAmmoProvider
+  - type: HitscanBatteryAmmoProvider
     proto: CartridgeLightRifle
-    capacity: 500
-  - type: ContainerContainer
-    containers:
-      ballistic-ammo: !type:Container
-        ents: [ ]
+    fireCost: 50
+  - type: Battery
+    maxCharge: 10000
+    startingCharge: 10000
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 25
+  - type: AmmoCounter
 
 - type: entity
-  name: IAR-52 киборга
+  name: cyborg's IAR-52
   parent: BaseItem
   id: WeaponIAR52Borg
-  description: Высокоскорострельный ПП, оборудован универсальным разъёмом для других типов пистолетных магазинов.
+  description: High-speed SMG, equipped with a universal connector for other types of pistol magazines.
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Weapons/Guns/SMGs/IAR-52.rsi
@@ -597,21 +550,19 @@
     - FullAuto
     soundEmpty:
       path: /Audio/Weapons/Guns/Empty/lmg_empty.ogg
-  - type: BallisticAmmoProvider
+  - type: HitscanBatteryAmmoProvider
     proto: CartridgeCaselessRifle
-    capacity: 100
-  - type: ContainerContainer
-    containers:
-      ballistic-ammo: !type:Container
-        ents: [ ]
-  - type: MagazineVisuals
-    magState: mag
-    steps: 1
-    zeroVisible: true
-  - type: Appearance
+    fireCost: 50
+  - type: Battery
+    maxCharge: 5000
+    startingCharge: 5000
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 25
+  - type: AmmoCounter
 
 - type: entity
-  name: Гипоспрей киборга диверсанта
+  name: the cyborg saboteur's hypospray
   parent: BaseItem
   id: HyposprayBorgSyndie
   categories: [ HideSpawnMenu ]
@@ -635,9 +586,10 @@
     solution: hypospray
   - type: Hypospray
     onlyAffectsMobs: false
+    pierceArmor: true
 
 - type: entity
-  name: Глушитель связи диверсанта
+  name: the saboteur's communications jammer
   parent: BaseItem
   id: RadioJammerBorg
   components:

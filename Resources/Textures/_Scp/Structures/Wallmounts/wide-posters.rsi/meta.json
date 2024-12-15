@@ -1,0 +1,14 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "SUNRISE",
+    "size": {
+        "x": 48,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "173"
+        }
+    ]
+}

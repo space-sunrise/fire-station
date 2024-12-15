@@ -1,4 +1,5 @@
-﻿using Robust.Shared.Audio;
+﻿using Content.Shared.Research;
+using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
@@ -11,7 +12,10 @@ public sealed partial class DiskConsoleComponent : Component
     /// How much it costs to print a disk
     /// </summary>
     [DataField("pricePerDisk"), ViewVariables(VVAccess.ReadWrite)]
-    public int PricePerDisk = 1000;
+    public Dictionary<ProtoId<ResearchPointPrototype>, int> PricePerDisk = new()
+    {
+        {"Default", 1000}
+    };
 
     /// <summary>
     /// The prototype of what's being printed

@@ -1,0 +1,19 @@
+- type: voteRandom
+  id: SunriseVoteSecret
+  chances:
+    Traitor: 0.5
+    Extra: 0.3
+    Nukeops: 0.2
+    Survival: 0.15
+    Greenshift: 0.1
+    Zombie: 0.05
+
+- type: voteRandom
+  id: LustVoteSecret
+  chances:
+    Extra: 0.45
+    Traitor: 0.4
+    Greenshift: 0.3
+    Survival: 0.1
+    Nukeops: 0.1
+    Zombie: 0.05

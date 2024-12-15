@@ -154,7 +154,7 @@ public abstract class SharedActionsSystem : EntitySystem
     public bool TryGetActionData(
         [NotNullWhen(true)] EntityUid? uid,
         [NotNullWhen(true)] out BaseActionComponent? result,
-        bool logError = true)
+        bool logError = false) // Sunrise-Edit
     {
         result = null;
         if (uid == null || TerminatingOrDeleted(uid.Value))
@@ -820,6 +820,9 @@ public abstract class SharedActionsSystem : EntitySystem
 
         if (action.AttachedEntity != null)
             RemoveAction(action.AttachedEntity.Value, actionId, action: action);
+
+        if (action.StartDelay && action.UseDelay != null)
+            SetCooldown(actionId, action.UseDelay.Value);
 
         DebugTools.AssertOwner(performer, comp);
         comp ??= EnsureComp<ActionsComponent>(performer);

@@ -8,13 +8,12 @@
     state: handdrill
   discipline: Industrial
   tier: 1
-  cost: 7500
+  cost:
+    Default: 7500
   recipeUnlocks:
   - MiningDrill
   - MechEquipmentDrill
   - MineralScannerEmpty
-  - BorgModuleMining
-  - BorgModuleGrapplingGun
   - OreProcessorIndustrialMachineCircuitboard
   - ClothingMaskWeldingGas
 
@@ -26,7 +25,8 @@
     state: icon
   discipline: Industrial
   tier: 1
-  cost: 5000
+  cost:
+    Default: 5000
   recipeUnlocks:
   - RadarConsoleCircuitboard
   - HandHeldMassScanner
@@ -40,7 +40,8 @@
     state: empty
   discipline: Industrial
   tier: 1
-  cost: 7500
+  cost:
+    Default: 7500
   recipeUnlocks:
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
@@ -53,7 +54,8 @@
     state: base
   discipline: Industrial
   tier: 1
-  cost: 10000
+  cost:
+    Default: 10000
   recipeUnlocks:
   - FlatpackerMachineCircuitboard
 
@@ -65,7 +67,8 @@
     state: building
   discipline: Industrial
   tier: 1
-  cost: 10000
+  cost:
+    Default: 10000
   recipeUnlocks:
   - AutolatheHyperConvectionMachineCircuitboard
   - ProtolatheHyperConvectionMachineCircuitboard
@@ -80,7 +83,8 @@
     state: portgen0
   discipline: Industrial
   tier: 1
-  cost: 7500
+  cost:
+    Default: 7500
   recipeUnlocks:
   - PortableGeneratorPacmanMachineCircuitboard
   - PortableGeneratorSuperPacmanMachineCircuitboard
@@ -98,7 +102,8 @@
     state: freezerOff
   discipline: Industrial
   tier: 1
-  cost: 7500
+  cost:
+    Default: 7500
   recipeUnlocks:
   - ThermomachineFreezerMachineCircuitBoard
   - GasRecyclerMachineCircuitboard
@@ -107,11 +112,12 @@
   id: RipleyAPLU
   name: research-technology-ripley-aplu
   icon:
-    sprite: Objects/Specific/Mech/mecha.rsi
+    sprite: Objects/Specific/Mech/ripley.rsi
     state: ripley
   discipline: Industrial
   tier: 1
-  cost: 7500
+  cost:
+    Default: 7500
   recipeUnlocks:
   - RipleyHarness
   - RipleyLArm
@@ -132,7 +138,8 @@
     state: base
   discipline: Industrial
   tier: 2
-  cost: 10000
+  cost:
+    Default: 10000
   recipeUnlocks:
   - ShuttleConsoleCircuitboard
   - ThrusterMachineCircuitboard
@@ -147,7 +154,8 @@
     state: icon
   discipline: Industrial
   tier: 2
-  cost: 7500
+  cost:
+    Default: 7500
   recipeUnlocks:
   - HellfireFreezerMachineCircuitBoard
   - PortableScrubberMachineCircuitBoard
@@ -163,13 +171,13 @@
     state: icon
   discipline: Industrial
   tier: 2
-  cost: 10000
+  cost:
+    Default: 10000
   recipeUnlocks:
     - WelderExperimental
     - PowerDrill
     - JawsOfLife
     - BorgModuleAdvancedTool
-    - BorgModuleRCD
 
 - type: technology
   id: MassExcavation
@@ -179,7 +187,8 @@
     state: handdrill
   discipline: Industrial
   tier: 2
-  cost: 12500
+  cost:
+    Default: 12500
   recipeUnlocks:
     - OreBagOfHolding
     - MiningDrillDiamond
@@ -190,11 +199,12 @@
   id: Ripley2
   name: research-technology-ripley-mkii
   icon:
-    sprite: Objects/Specific/Mech/mecha.rsi
+    sprite: Objects/Specific/Mech/ripley.rsi
     state: ripleymkii
   discipline: Industrial
   tier: 2
-  cost: 8000
+  cost:
+    Default: 8000
   recipeUnlocks:
   - RipleyMKIIHarness
   - RipleyUpgradeKit
@@ -205,11 +215,12 @@
   id: Clarke
   name: research-technology-clarke
   icon:
-    sprite: Objects/Specific/Mech/mecha.rsi
+    sprite: Objects/Specific/Mech/clarke.rsi
     state: clarke
   discipline: Industrial
   tier: 2
-  cost: 10000
+  cost:
+    Default: 10000
   recipeUnlocks:
   - ClarkeHarness
   - ClarkeHead
@@ -231,7 +242,8 @@
     state: holding
   discipline: Industrial
   tier: 3
-  cost: 15000
+  cost:
+    Default: 15000
   recipeUnlocks:
   - ClothingBackpackHolding
   - ClothingBackpackSatchelHolding
@@ -245,7 +257,8 @@
     state: microreactor
   discipline: Industrial
   tier: 3
-  cost: 10000
+  cost:
+    Default: 10000
   recipeUnlocks:
   - PowerCellMicroreactor
   technologyPrerequisites:

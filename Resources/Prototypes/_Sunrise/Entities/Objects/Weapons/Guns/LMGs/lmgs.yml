@@ -70,7 +70,7 @@
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
-    - state: mag-0
+    - state: mag-3
       map: ["enum.GunVisualLayers.Mag"]
   - type: Clothing
     sprite: _Sunrise/Objects/Weapons/Guns/LMGs/rpd/tiny.rsi
@@ -89,13 +89,14 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: MagazineRPD
+        startingItem: MagazineLightRifleBox
         insertSound: /Audio/_Sunrise/Weapons/Guns/LMGs/reload.ogg
         ejectSound: /Audio/_Sunrise/Weapons/Guns/LMGs/unload.ogg
         priority: 2
         whitelist:
           tags:
           - MagazineRPD
+          - MagazineLightRifleBox
       gun_chamber:
         name: Chamber
         startingItem: Cartridge762x39
@@ -109,7 +110,7 @@
       gun_chamber: !type:ContainerSlot
   - type: MagazineVisuals
     magState: mag
-    steps: 2
+    steps: 4
     zeroVisible: true
   - type: Appearance
   - type: Wieldable
@@ -157,6 +158,7 @@
         whitelist:
           tags:
           - MagazineMachineGunMG42
+          - MagazineLightRifleBox
       gun_chamber:
         name: Chamber
         startingItem: Cartridge762x39
@@ -180,12 +182,12 @@
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/_Sunrise/Weapons/Guns/LMGs/cocked.ogg
-      
+
 - type: entity
-  name: Пулемёт DL6902
+  name: DL6902 machine gun
   id: WeaponDL6902
   parent: BaseWeaponLightMachineGun
-  description: Тяжёлый пулемёт Cybersun.
+  description: Cybersun heavy machine gun.
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Weapons/Guns/LMGs/DL6902.rsi
@@ -195,12 +197,12 @@
     - state: mag-3
       map: ["enum.GunVisualLayers.Mag"]
   - type: GunWieldBonus
-    minAngle: -15
-    maxAngle: -15
+    minAngle: -30
+    maxAngle: -45
   - type: Gun
-    minAngle: 30
-    maxAngle: 50
-    fireRate: 6
+    minAngle: 40
+    maxAngle: 60
+    fireRate: 8.5
     selectedMode: FullAuto
     availableModes:
       - FullAuto
@@ -226,6 +228,7 @@
         whitelist:
           tags:
             - MagazineDl6902
+            - MagazineLightRifleBox
       gun_chamber:
         name: Chamber
         startingItem: CartridgeLightRifle

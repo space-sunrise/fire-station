@@ -41,6 +41,7 @@
     baseSprintSpeed: 15
   - type: Scp173
   - type: ScpRestriction
+  - type: ShowBlinkable
   - type: GiveActions
     actions:
     - Scp173Blind

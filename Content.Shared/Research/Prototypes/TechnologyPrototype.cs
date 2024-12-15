@@ -49,8 +49,12 @@ public sealed partial class TechnologyPrototype : IPrototype
     /// <summary>
     /// How much research is needed to unlock.
     /// </summary>
+
     [DataField]
-    public int Cost = 10000;
+    public Dictionary<ProtoId<ResearchPointPrototype>, int> Cost = new()
+    {
+        {"Default", 10000}
+    };
 
     /// <summary>
     /// A list of <see cref="TechnologyPrototype"/>s that need to be unlocked in order to unlock this technology.

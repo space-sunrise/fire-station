@@ -21,8 +21,6 @@ ui-options-general-cursor = Курсор
 ui-options-general-speech = Речь
 ui-options-general-storage = Инвентарь
 ui-options-general-accessibility = Доступность
-ui-options-general-lobby = Лобби
-ui-options-general-figth = Бой
 
 ## Audio menu
 
@@ -47,9 +45,6 @@ ui-options-interface-label = Интерфейс
 
 ## Graphics menu
 
-ui-options-lobby-opacity = Прозрачность лобби
-ui-options-lobby-background = Фон лобби
-ui-options-damage-overlay = Оверлей урона
 ui-options-show-held-item = Показать удерживаемый элемент рядом с курсором
 ui-options-show-combat-mode-indicators = Показать индикатор боевого режима рядом с курсором
 ui-options-opaque-storage-window = Непрозрачность окна хранилища

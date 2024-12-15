@@ -232,6 +232,19 @@ public sealed partial class SickIconPrototype : StatusIconPrototype, IInheriting
     [AbstractDataField]
     public bool Abstract { get; }
 }
+
+[Prototype]
+public sealed partial class BlinkIconPrototype : StatusIconPrototype, IInheritingPrototype
+{
+    /// <inheritdoc />
+    [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<SsdIconPrototype>))]
+    public string[]? Parents { get; }
+
+    /// <inheritdoc />
+    [NeverPushInheritance]
+    [AbstractDataField]
+    public bool Abstract { get; }
+}
 // Sunrise-End
 
 [Serializable, NetSerializable]

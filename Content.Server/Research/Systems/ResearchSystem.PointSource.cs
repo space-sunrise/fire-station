@@ -13,8 +13,16 @@ public sealed partial class ResearchSystem
 
     private void OnGetPointsPerSecond(Entity<ResearchPointSourceComponent> source, ref ResearchServerGetPointsPerSecondEvent args)
     {
-        if (CanProduce(source))
-            args.Points += source.Comp.PointsPerSecond;
+        if (!CanProduce(source))
+        {
+            return;
+        }
+
+        foreach (var (pointPrototype, value) in source.Comp.PointsPerSecond)
+        {
+            args.Points.TryGetValue(pointPrototype, out var totalValue);
+            args.Points[pointPrototype] = totalValue + value;
+        }
     }
 
     public bool CanProduce(Entity<ResearchPointSourceComponent> source)

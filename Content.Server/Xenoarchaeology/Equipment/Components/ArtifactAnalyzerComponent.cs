@@ -1,6 +1,8 @@
 using Content.Server.Xenoarchaeology.XenoArtifacts;
 using Content.Shared.Construction.Prototypes;
+using Content.Shared.Research;
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
@@ -40,6 +42,6 @@ public sealed partial class ArtifactAnalyzerComponent : Component
     public ArtifactNode? LastAnalyzedNode;
 
     [ViewVariables(VVAccess.ReadWrite)]
-    public int? LastAnalyzerPointValue;
+    public Dictionary<ProtoId<ResearchPointPrototype>, int>? LastAnalyzerPointValue;
     #endregion
 }

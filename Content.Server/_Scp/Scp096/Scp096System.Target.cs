@@ -7,7 +7,6 @@ namespace Content.Server._Scp.Scp096;
 
 public sealed partial class Scp096System
 {
-
     private void InitTargets()
     {
         SubscribeLocalEvent<Scp096TargetComponent, MobStateChangedEvent>(OnTargetStateChanged);
@@ -18,28 +17,26 @@ public sealed partial class Scp096System
     private void OnHit(Entity<Scp096TargetComponent> ent, ref DamageChangedEvent args)
     {
         if (!TryComp<Scp096Component>(args.Origin, out _))
-        {
             return;
-        }
 
         ent.Comp.TimesHitted++;
 
-        if (ent.Comp.TimesHitted >= 2)
-        {
-            _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(ent.Owner,
-                SleepStatusEffectKey,
-                TimeSpan.FromSeconds(ent.Comp.SleepTime),
-                false);
+        if (ent.Comp.TimesHitted < 2)
+            return;
 
-            RemComp<Scp096TargetComponent>(ent);
-        }
+        _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(ent.Owner,
+            SleepStatusEffectKey,
+            TimeSpan.FromSeconds(ent.Comp.SleepTime),
+            false);
+
+        RemComp<Scp096TargetComponent>(ent);
     }
 
     private void UpdateTargets(float frameTime)
     {
         var query = EntityQueryEnumerator<Scp096TargetComponent>();
 
-        while (query.MoveNext(out var targetUid, out var targetComponent))
+        while (query.MoveNext(out var _, out var targetComponent))
         {
             targetComponent.HitTimeAcc += frameTime;
 
@@ -64,9 +61,7 @@ public sealed partial class Scp096System
     private void OnTargetStateChanged(Entity<Scp096TargetComponent> ent, ref MobStateChangedEvent args)
     {
         if (args.NewMobState == MobState.Alive)
-        {
             return;
-        }
 
         RemComp<Scp096TargetComponent>(ent.Owner);
     }

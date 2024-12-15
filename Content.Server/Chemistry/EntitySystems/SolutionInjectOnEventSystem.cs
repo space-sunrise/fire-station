@@ -1,12 +1,15 @@
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chemistry.Components;
+using Content.Server.Weapons.Ranged.Components;
 using Content.Shared.Chemistry.EntitySystems;
+using Content.Shared.Chemistry.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
 using Content.Shared.Projectiles;
 using Content.Shared.Tag;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Weapons.Ranged.Events;
 using Robust.Shared.Collections;
 
 namespace Content.Server.Chemistry.EntitySystems;
@@ -29,9 +32,16 @@ public sealed class SolutionInjectOnCollideSystem : EntitySystem
         SubscribeLocalEvent<SolutionInjectOnProjectileHitComponent, ProjectileHitEvent>(HandleProjectileHit);
         SubscribeLocalEvent<SolutionInjectOnEmbedComponent, EmbedEvent>(HandleEmbed);
         SubscribeLocalEvent<MeleeChemicalInjectorComponent, MeleeHitEvent>(HandleMeleeHit);
+        SubscribeLocalEvent<SolutionInjectWhileEmbeddedComponent, InjectOverTimeEvent>(OnInjectOverTime);
+        SubscribeLocalEvent<SolutionInjectOnProjectileHitComponent, HitscanAmmoShotEvent>(HandleHitscanHit);
     }
 
     private void HandleProjectileHit(Entity<SolutionInjectOnProjectileHitComponent> entity, ref ProjectileHitEvent args)
+    {
+        DoInjection((entity.Owner, entity.Comp), args.Target, args.Shooter);
+    }
+
+    private void HandleHitscanHit(Entity<SolutionInjectOnProjectileHitComponent> entity, ref HitscanAmmoShotEvent args)
     {
         DoInjection((entity.Owner, entity.Comp), args.Target, args.Shooter);
     }
@@ -47,6 +57,11 @@ public sealed class SolutionInjectOnCollideSystem : EntitySystem
         // hit something and aren't just examining the weapon.
         if (args.IsHit)
             TryInjectTargets((entity.Owner, entity.Comp), args.HitEntities, args.User);
+    }
+
+    private void OnInjectOverTime(Entity<SolutionInjectWhileEmbeddedComponent> entity, ref InjectOverTimeEvent args)
+    {
+        DoInjection((entity.Owner, entity.Comp), args.EmbeddedIntoUid);
     }
 
     private void DoInjection(Entity<BaseSolutionInjectOnEventComponent> injectorEntity, EntityUid target, EntityUid? source = null)

@@ -1,0 +1,111 @@
+﻿- type: entity
+  name: SCP-173 spawner
+  id: SpawnScp173
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/scp-173.rsi
+      state: scp-173
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp173
+
+- type: entity
+  name: SCP-096 spawner
+  id: SpawnScp096
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/scp-096.rsi
+      state: idle
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp096
+
+- type: entity
+  name: SCP-939 spawner
+  id: SpawnScp939
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/scp-939.rsi
+      state: alive
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp939
+
+- type: entity
+  name: SCP-049 spawner
+  id: SpawnScp049
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/scp-049.rsi
+      state: SCP-049
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp049
+
+- type: entity
+  name: SCP-106 spawner
+  id: SpawnScp106
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/scp-106.rsi
+      state: 106
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp106
+
+- type: entity
+  name: SCP-999 spawner
+  id: SpawnScp999
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/scp-999.rsi
+      state: default
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp999
+
+- type: entity
+  name: SCP-131A spawner
+  id: SpawnScp131A
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/SCP-131.rsi
+      state: SCP-131A
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp131A
+
+- type: entity
+  name: SCP-131-B spawner
+  id: SpawnScp131B
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/SCP-131.rsi
+      state: SCP-131B
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp131B

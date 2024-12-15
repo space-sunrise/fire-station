@@ -88,7 +88,15 @@ public sealed partial class AnomalySystem
         if (!this.IsPowered(uid, EntityManager) || component.Anomaly is not {} anomaly)
             return;
 
-        args.Points += (int) (GetAnomalyPointValue(anomaly) * component.PointMultiplier);
+        var points = GetAnomalyPointValue(anomaly);
+
+        foreach (var (pointPrototype, value) in points)
+        {
+            var newValue = (int)(value * component.PointMultiplier);
+
+            args.Points.TryGetValue(pointPrototype, out var totalValue);
+            args.Points[pointPrototype] = totalValue + newValue;
+        }
     }
 
     private void OnVesselAnomalyShutdown(ref AnomalyShutdownEvent args)

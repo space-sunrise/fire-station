@@ -1,5 +1,7 @@
+using Content.Shared.Research;
 using Content.Shared.Xenoarchaeology.XenoArtifacts;
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
@@ -64,7 +66,10 @@ public sealed partial class ArtifactComponent : Component
     /// The base amount of research points for each artifact node.
     /// </summary>
     [DataField("pointsPerNode"), ViewVariables(VVAccess.ReadWrite)]
-    public int PointsPerNode = 6500;
+    public Dictionary<ProtoId<ResearchPointPrototype>, int> PointsPerNode = new()
+    {
+        { "Default", 6500 },
+    };
 
     /// <summary>
     /// Research points which have been "consumed" from the theoretical max value of the artifact.

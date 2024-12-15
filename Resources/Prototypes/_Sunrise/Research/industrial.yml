@@ -8,10 +8,25 @@
     state: icon
   discipline: Industrial
   tier: 1
-  cost: 2500
+  cost:
+    Default: 2500
   recipeUnlocks:
   - HandCraftedNVD
-  
+
+- type: technology
+  id: CargoBluespaceEquipment
+  name: research-technology-cargo-bluespace-equipment
+  icon:
+    sprite: _Sunrise/Clothing/OuterClothing/Suits/cargo-suit.rsi
+    state: icon
+  discipline: Industrial
+  tier: 1
+  cost:
+    Default: 5000
+  recipeUnlocks:
+  - CargoSuit
+  - BluespaceBox
+
 # Tier 2
 
 - type: technology
@@ -22,6 +37,8 @@
     state: icon
   discipline: Industrial
   tier: 2
-  cost: 5000
+  cost:
+    Default: 5000
   recipeUnlocks:
   - BasicNVD
+

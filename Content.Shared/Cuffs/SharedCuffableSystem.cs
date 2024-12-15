@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Sunrise.Mood;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Components;
 using Content.Shared.Administration.Logs;
@@ -180,9 +181,15 @@ namespace Content.Shared.Cuffs
             _actionBlocker.UpdateCanMove(uid);
 
             if (component.CanStillInteract)
+            {
                 _alerts.ClearAlert(uid, component.CuffedAlert);
+                RaiseLocalEvent(uid, new MoodRemoveEffectEvent("Handcuffed"));
+            }
             else
+            {
                 _alerts.ShowAlert(uid, component.CuffedAlert);
+                RaiseLocalEvent(uid, new MoodEffectEvent("Handcuffed"));
+            }
 
             var ev = new CuffedStateChangeEvent();
             RaiseLocalEvent(uid, ref ev);
@@ -459,6 +466,12 @@ namespace Content.Shared.Cuffs
                 return false;
 
             if (!_interaction.InRangeUnobstructed(handcuff, target))
+                return false;
+
+            // if the amount of hands the target has is equal to or less than the amount of hands that are cuffed
+            // don't apply the new set of cuffs
+            // (how would you even end up with more cuffed hands than actual hands? either way accounting for it)
+            if (TryComp<HandsComponent>(target, out var hands) && hands.Count <= component.CuffedHandCount)
                 return false;
 
             // Success!

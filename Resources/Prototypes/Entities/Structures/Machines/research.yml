@@ -18,6 +18,7 @@
     - Arsenal
     - Experimental
     - CivilianServices
+    - Biochemical
   - type: ApcPowerReceiver
     powerLoad: 200
   - type: ExtensionCableReceiver
@@ -73,7 +74,8 @@
       map: ["enum.PowerDeviceVisualLayers.Powered"]
   - type: ResearchClient
   - type: ResearchPointSource
-    pointspersecond: 25
+    pointspersecond:
+      Default: 25
     active: true
   - type: PointLight
     radius: 1.5
