@@ -1,8 +1,8 @@
 ﻿- type: entity
   parent: BaseItem
-  id: ScpBackroomsPainting
+  id: ScpAnomalyPainting
   name: strange painting
-  suffix: Backrooms
+  suffix: SCP Item
   description: It's a boring old painting.
   components:
   - type: Sprite
@@ -21,9 +21,9 @@
 
 - type: entity
   parent: BaseItem
-  id: ScpBackroomsRock
+  id: ScpAnomalyRock
   name: strange rock
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Objects/Tools/bucket.rsi
@@ -61,9 +61,9 @@
 
 - type: entity
   parent: ClothingHeadHatCowboyWhite
-  id: ScpBackroomsCowboyHat
+  id: ScpAnomalyCowboyHat
   name: strange cowboy hat
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: AddAccentClothing
     accent: DogAccent
@@ -71,9 +71,9 @@
 
 - type: entity
   parent: MaterialBase
-  id: ScpBackroomsDiamond
+  id: ScpAnomalyDiamond
   name: strange diamond
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     state: diamond
@@ -94,9 +94,9 @@
 
 - type: entity
   parent: BaseItem
-  id: ScpBackroomsInvitation
+  id: ScpAnomalyInvitation
   name: strange wedding invitation
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   # paper prototype copy-paste
   - type: Sprite
@@ -158,9 +158,9 @@
 
 - type: entity
   parent: BaseItem
-  id: ScpBackroomsSwatter
+  id: ScpAnomalySwatter
   name: strange fly swatter
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Objects/Fun/bikehorn.rsi
@@ -193,9 +193,9 @@
 
 - type: entity
   parent: BaseItem
-  id: ScpBackroomsDollar
+  id: ScpAnomalyDollar
   name: strange dollar
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Objects/Misc/bureaucracy.rsi
@@ -250,9 +250,9 @@
 
 - type: entity # TODO: Сделать парента этой штуки бьющимся
   parent: DrinkHotCoffee
-  id: ScpBackroomsCoffee
+  id: ScpAnomalyCoffee
   name: strange cup
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: SolutionRegeneration
     solution: drink
@@ -263,9 +263,9 @@
 
 - type: entity # TODO: Возможность открывать двери без питания
   parent: BaseItem
-  id: ScpBackroomsKey
+  id: ScpAnomalyKey
   name: strange key
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Objects/Misc/id_cards.rsi
@@ -287,9 +287,9 @@
 
 - type: entity # TODO: Свой текст
   parent: BookBase
-  id: ScpBackroomsBook
+  id: ScpAnomalyBook
   name: strange book
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Objects/Misc/books.rsi
@@ -313,9 +313,9 @@
 
 - type: entity
   parent: BaseItem
-  id: ScpBackroomsSpawnWand
+  id: ScpAnomalySpawnWand
   name: strange wand
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Objects/Fun/bikehorn.rsi
@@ -344,7 +344,7 @@
   parent: BaseItem
   id: ScpBackroomsRedCrystal
   name: strange crystal
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Objects/Specific/Syndicate/telecrystal.rsi
@@ -356,7 +356,7 @@
   parent: BaseItem
   id: ScpBackroomsGoldPendant
   name: strange pendant
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Objects/Fun/bikehorn.rsi
@@ -372,7 +372,7 @@
   parent: BaseItem
   id: ScpBackroomsScull
   name: strange scull
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Mobs/Species/Terminator/parts.rsi
@@ -384,13 +384,13 @@
   parent: ClothingHeadHatFancyCrown
   id: ScpBackroomsCrown
   name: strange crown
-  suffix: Backrooms
+  suffix: SCP Item
 
 - type: entity # TODO: Спрайты
   parent: ClothingHandsBase
   id: ScpBackroomsRing
   name: strange ring
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Objects/Fun/bikehorn.rsi
@@ -400,7 +400,7 @@
   parent: ClothingShoesBase
   id: ScpBackroomsSpeedBoots
   name: strange boots
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Clothing/Shoes/Boots/speedboots.rsi
@@ -417,7 +417,7 @@
   parent: BaseItem
   id: ScpBackroomsBlueCore
   name: strange core
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/rock_core.rsi
@@ -436,9 +436,9 @@
 
 - type: entity
   parent: BaseItem
-  id: ScpBackroomsRedCore
+  id: ScpAnomalyRedCore
   name: strange core
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: Sprite
     sprite: Structures/Specific/Anomalies/Cores/pyro_core.rsi
@@ -472,9 +472,9 @@
 
 - type: entity
   parent: WeaponRifleFoam
-  id: ScpBackroomsRifle
+  id: ScpAnomalyRifle
   name: strange rifle
-  suffix: Backrooms
+  suffix: SCP Item
   components:
   - type: BallisticAmmoProvider
     whitelist:
