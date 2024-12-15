@@ -1,9 +1,11 @@
 ﻿using Content.Server.Administration.Logs;
 using Content.Server.Popups;
+using Content.Shared._Scp.Backrooms.SpawnOnUse;
 using Content.Shared.Database;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Timing;
 using Robust.Server.Audio;
+using Robust.Server.GameObjects;
 
 namespace Content.Server._Scp.Backrooms.SpawnOnUse;
 
@@ -12,6 +14,7 @@ public sealed class SpawnOnUseSystem : EntitySystem
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly IAdminLogManager _adminLogger = default!;
 
     public override void Initialize()
@@ -46,6 +49,9 @@ public sealed class SpawnOnUseSystem : EntitySystem
 
         if (item.Comp.SoundSuccessFul != null)
             _audio.PlayPvs(item.Comp.SoundSuccessFul, item);
+
+        if (item.Comp.Charges == 0)
+            _appearance.SetData(item, SpawnOnUseVisuals.Charged, false);
 
         _useDelay.TryResetDelay(item);
     }

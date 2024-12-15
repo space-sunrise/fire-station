@@ -21,6 +21,4 @@ public sealed partial class SpawnOnUseComponent : Component
     public string? PopupNoCharges;
 
     #endregion
-
-
 }

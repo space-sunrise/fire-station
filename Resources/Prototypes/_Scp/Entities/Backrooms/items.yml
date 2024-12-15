@@ -6,9 +6,8 @@
   description: It's a boring old painting.
   components:
   - type: Sprite
-    sprite: Objects/Tools/bucket.rsi
-    layers:
-    - state: icon
+    sprite: _Scp/Objects/Items/painting.rsi
+    state: icon
   - type: Item
     size: Ginormous
   - type: SpecialRespawn
@@ -26,11 +25,10 @@
   suffix: SCP Item
   components:
   - type: Sprite
-    sprite: Objects/Tools/bucket.rsi
-    layers:
-    - state: icon
+    sprite: _Scp/Objects/Items/rock.rsi
+    state: icon
   - type: Item
-    size: Large
+    size: Normal
   - type: PointLight
     radius: 1.1
     energy: 15
@@ -100,15 +98,8 @@
   components:
   # paper prototype copy-paste
   - type: Sprite
-    sprite: Objects/Misc/bureaucracy.rsi
-    layers:
-    - state: paper
-    - state: paper_words
-      map: [ "enum.PaperVisualLayers.Writing" ]
-      visible: false
-    - state: paper_stamp-generic
-      map: [ "enum.PaperVisualLayers.Stamp" ]
-      visible: false
+    sprite: _Scp/Objects/Items/invitation.rsi
+    state: icon
   - type: Paper
   - type: PaperLabelType
   - type: ActivatableUI
@@ -125,7 +116,6 @@
     - Document
     - Paper
   - type: Appearance
-  - type: PaperVisuals
   - type: Flammable
     fireSpread: true
     alwaysCombustible: true
@@ -163,10 +153,13 @@
   suffix: SCP Item
   components:
   - type: Sprite
-    sprite: Objects/Fun/bikehorn.rsi
+    sprite: _Scp/Objects/Items/flyswatter.rsi
     state: icon
   - type: Item
-    size: Tiny
+    size: Small
+    storedRotation: 45
+    shape:
+    - 0,0,2,0
   - type: EmitSoundOnUse
     sound:
       path: /Audio/Effects/snap.ogg
@@ -198,17 +191,11 @@
   suffix: SCP Item
   components:
   - type: Sprite
-    sprite: Objects/Misc/bureaucracy.rsi
-    layers:
-    - state: paper
-    - state: paper_words
-      map: ["enum.PaperVisualLayers.Writing"]
-      visible: false
-    - state: paper_stamp-generic
-      map: ["enum.PaperVisualLayers.Stamp"]
-      visible: false
+    sprite: _Scp/Objects/Items/dollar.rsi
+    state: icon
   - type: Item
-    size: Tiny
+    size: Small
+    storedRotation: -90
   - type: Appearance
   - type: PaperVisuals
   - type: Flammable
@@ -268,12 +255,13 @@
   suffix: SCP Item
   components:
   - type: Sprite
-    sprite: Objects/Misc/id_cards.rsi
-    layers:
-    - state: default
-    - state: idintern-tech
+    sprite: _Scp/Objects/Items/key.rsi
+    state: icon
   - type: Item
     size: Small
+    storedRotation: 45
+    shape:
+    - 0,0,2,0
   - type: Access
     groups:
     - AllAccess
@@ -286,28 +274,37 @@
     - DoorBumpOpener
 
 - type: entity # TODO: Свой текст
-  parent: BookBase
+  parent: BaseItem
   id: ScpAnomalyBook
   name: strange book
   suffix: SCP Item
   components:
   - type: Sprite
-    sprite: Objects/Misc/books.rsi
-    layers:
-    - state: paper
-    - state: cover_base
-      color: "#255c8a"
-    - state: decor_bottom
-      color: "#2d2e12"
-    - state: icon_glow
-      color: "#f7bb2f"
-    - state: icon_cabbage
-    - state: detail_bookmark
-      color: "#f7bb2f"
-    - state: detail_rivets
-      color: "#f7bb2f"
+    sprite: _Scp/Objects/Items/book.rsi
+    state: icon
   - type: Paper
     content: book-text-sun
+    contentSize: 15000
+  - type: ActivatableUI
+    key: enum.PaperUiKey.Key
+    requiresComplex: false
+  - type: UserInterface
+    interfaces:
+      enum.PaperUiKey.Key:
+        type: PaperBoundUserInterface
+  - type: MeleeWeapon
+    soundHit:
+      collection: Punch
+    damage:
+      types:
+        Blunt: 1
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 1
+  - type: Tag
+    tags:
+    - Book
   - type: ChangeMobStateOnRead
     state: Dead
 
@@ -318,12 +315,16 @@
   suffix: SCP Item
   components:
   - type: Sprite
-    sprite: Objects/Fun/bikehorn.rsi
-    state: icon
+    sprite: _Scp/Objects/Items/wand.rsi
+    layers:
+    - state: icon
+    - state: slimy
+      map: [ "slimy" ]
   - type: Item
-    size: Normal
+    size: Small
+    storedRotation: 45
     shape:
-    - 0,0,0,1
+    - 0,0,2,0
   - type: MeleeWeapon
     wideAnimationRotation: -135
     damage:
@@ -334,11 +335,20 @@
   - type: SpawnOnUse
     entities:
     - ScpBackroomsSlime
-    popupNoCharges: Посох слабо мерцает, источая иссекающие остатки энергии
+    popupNoCharges: Посох слабо мерцает, источая иссекающие остатки энергии # TODO: Засунуть в лок
     soundSuccessful:
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_door.ogg
   - type: UseDelay
     delay: 1.5
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.SpawnOnUseVisuals.Charged:
+        slimy:
+          True: { visible: true }
+          False: { visible: false }
+
+# Пустышки, возможно временно
 
 - type: entity
   parent: BaseItem
@@ -403,12 +413,10 @@
   suffix: SCP Item
   components:
   - type: Sprite
-    sprite: Clothing/Shoes/Boots/speedboots.rsi
-    layers:
-    - state: icon-on
-      map: [ "enum.ToggleVisuals.Layer" ]
+    sprite: _Scp/Clothing/Shoes/Boots/speedboots.rsi
+    state: icon
   - type: Clothing
-    sprite: Clothing/Shoes/Boots/speedboots.rsi
+    sprite: _Scp/Clothing/Shoes/Boots/speedboots.rsi
   - type: ClothingSpeedModifier
     walkModifier: 3
     sprintModifier: 3
@@ -433,6 +441,8 @@
     energy: 3.5
     color: "#5ca8cb"
     castShadows: false
+
+# Снова предметы с приколами
 
 - type: entity
   parent: BaseItem
