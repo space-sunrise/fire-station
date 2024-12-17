@@ -1,6 +1,6 @@
 ﻿using Content.Shared.Inventory.Events;
 
-namespace Content.Shared._Scp.Other.ClothingAddComponents;
+namespace Content.Server._Scp.Misc.ClothingAddComponents;
 
 // TODO: Добавить проверку на наличие аналогичных компонентов у ентити
 // Не используйте пожалуйста это для чего-то сложнее, кроме выдачи одного единственного компонента, который нигде по-другому не выдается
@@ -24,7 +24,6 @@ public sealed class ClothingAddComponentsSystem : EntitySystem
     private void OnEquip(Entity<ClothingAddComponentsComponent> entity, ref GotEquippedEvent args)
     {
         var target = args.Equipee;
-
         EntityManager.AddComponents(target, entity.Comp.Components);
     }
 
@@ -36,7 +35,6 @@ public sealed class ClothingAddComponentsSystem : EntitySystem
     private void OnUnequip(Entity<ClothingAddComponentsComponent> entity, ref GotUnequippedEvent args)
     {
         var target = args.Equipee;
-
         EntityManager.RemoveComponents(target, entity.Comp.Components);
     }
 }
