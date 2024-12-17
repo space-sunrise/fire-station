@@ -8,6 +8,7 @@ using Content.Server.Wires;
 using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Scp096;
 using Content.Shared._Scp.Scp096.Mask;
+using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Doors.Components;
@@ -18,7 +19,6 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.StatusEffect;
 using Content.Shared.Wires;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Random;
@@ -109,6 +109,9 @@ public sealed partial class Scp096System : SharedScp096System
             return false;
 
         if (!CanBeAggro(scpEntity))
+            return false;
+
+        if (HasComp<Scp096ProtectionComponent>(targetUid))
             return false;
 
         AddTarget(scpEntity, targetUid);

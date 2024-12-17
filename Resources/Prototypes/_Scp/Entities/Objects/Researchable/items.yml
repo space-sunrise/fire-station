@@ -42,6 +42,19 @@
     actions:
     - Scp096TearMask
 
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHelmetAiPowered
+  suffix: SCP-096 Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/aipowered.rsi
+  - type: Item
+    size: Normal
+  - type: ClothingAddComponents
+    components:
+    - type: Scp096Protection
+
 # Scp-049
 
 - type: entity
