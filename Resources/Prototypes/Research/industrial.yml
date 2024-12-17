@@ -45,6 +45,7 @@
   recipeUnlocks:
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
+  - PowerCageMedium
 
 - type: technology
   id: MechanicalCompression
@@ -204,7 +205,7 @@
   discipline: Industrial
   tier: 2
   cost:
-    Default: 8000
+    Default: 5000
   recipeUnlocks:
   - RipleyMKIIHarness
   - RipleyUpgradeKit
@@ -220,7 +221,7 @@
   discipline: Industrial
   tier: 2
   cost:
-    Default: 10000
+    Default: 9000
   recipeUnlocks:
   - ClarkeHarness
   - ClarkeHead

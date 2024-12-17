@@ -147,7 +147,7 @@ public abstract class SharedScp173System : EntitySystem
         if (scp.NeckSnapDamage == null)
             return;
 
-        _damageableSystem.TryChangeDamage(target, scp.NeckSnapDamage, true, applyRandomDamage: false);
+        _damageableSystem.TryChangeDamage(target, scp.NeckSnapDamage, true, useVariance:false);
 
         // TODO: Fix missing deathgasp emote on high damage per once
 

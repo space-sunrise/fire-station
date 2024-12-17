@@ -51,6 +51,8 @@
   recipeUnlocks:
   - WeaponLaserCarbine
   - WeaponMechCombatFiredartLaser
+  - WeaponEnergyGun   # Sunrise-edit
+  - WeaponEnergyGunMini # Sunrise-edit
 
 - type: technology
   id: NonlethalAmmunition
@@ -115,6 +117,7 @@
   - TelescopicShield
   - HoloprojectorSecurity
   - WeaponDisablerSMG
+  - ClothingHeadHelmetPubgMore  # Sunrise-edit
 
 - type: technology
   id: ExplosiveTechnology
@@ -165,6 +168,19 @@
   - WeaponMechCombatSolarisLaser
 
 - type: technology
+  id: ExperimentalBatteryAmmo
+  name: research-technology-experimental-battery-ammo
+  icon:
+    sprite: Objects/Weapons/Guns/Battery/svalinn.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 2
+  cost:
+    Default: 8000
+  recipeUnlocks:
+  - WeaponLaserSvalinn
+
+- type: technology
   id: WaveParticleHarnessing
   name: research-technology-wave-particle-harnessing
   icon:
@@ -202,8 +218,8 @@
     Default: 10500
   recipeUnlocks:
   - PowerCageRechargerCircuitboard
-  - PowerCageSmall
-  - PowerCageMedium
+  #PowerCageSmall
+  #PowerCageMedium
   - MagazineGrenadeEmpty
   - ShellFlashArtillery
   - ShellBlastArtillery
@@ -213,7 +229,7 @@
   technologyPrerequisites:
   - SalvageWeapons
 
-- type: technology
+- type: technology #Sunrise
   id: Gygax
   name: research-technology-gygax
   icon:
@@ -269,19 +285,8 @@
   - WeaponMechCombatMissileRack8
   technologyPrerequisites:
   - ExplosiveTechnology
+  # id: ExperimentalBatteryAmmo technology
 
-- type: technology
-  id: ExperimentalBatteryAmmo
-  name: research-technology-experimental-battery-ammo
-  icon:
-    sprite: Objects/Weapons/Guns/Battery/svalinn.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 3
-  cost:
-    Default: 15000
-  recipeUnlocks:
-  - WeaponLaserSvalinn
 
 - type: technology
   id: AdvancedShuttleWeapon
@@ -323,5 +328,6 @@
   - DurandTargetingElectronics
   - WeaponMechCombatShotgun
   - WeaponMechCombatShotgunIncendiary
+  - PowerCageCombat
   technologyPrerequisites:
   - Gygax

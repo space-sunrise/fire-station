@@ -160,6 +160,7 @@
   - PhazonTargetingElectronics
   technologyPrerequisites:
   - Ripley2
+  - Gygax
 
 - type: technology
   id: GravityManipulation

@@ -95,9 +95,10 @@
         Piercing: 0.9
         Heat: 0.4 # this technically means it protects against fires pretty well? -heat is just for lasers and stuff, not atmos temperature
   - type: Reflect
-    reflectProb: 1
+    reflectProb: 0.8
     reflects:
       - Energy
+    slot: outerClothing # Sunrise-Edit
 
 - type: entity
   parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSyndicateContraband ]
@@ -296,9 +297,9 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.5
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.4
         Heat: 0.9
         Radiation: 0.8
   - type: ClothingSpeedModifier
