@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Content.Shared._Scp.Scp106.Components;
+using Content.Shared._Scp.Scp106.Protection;
 using Content.Shared.DoAfter;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Melee.Events;
@@ -95,6 +96,9 @@ public abstract class SharedScp106System : EntitySystem
         {
             if (entity == ent.Owner)
                 return;
+
+            if (HasComp<Scp106ProtectionComponent>(entity))
+                continue;
 
             SendToBackrooms(entity);
         }

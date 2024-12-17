@@ -76,6 +76,25 @@
       - MobState
   - type: Scp049ProtectionImplant
 
+# Scp-106
+
+# TODO: Возможно стоит телепортировать его в радиусе от удара куда-то или отбрасывать, чтобы эффектнее смотрелось
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterAntiTeleportation
+  suffix: SCP-106 Item
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
+  - type: Item
+    size: Normal
+    storedRotation: -90
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
+
 # Scp-035
 
 - type: entity
