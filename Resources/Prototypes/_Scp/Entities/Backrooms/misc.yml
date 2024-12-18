@@ -22,3 +22,31 @@
 
 - type: Tag
   id: BulletBanana
+
+# добавил в него предметы с хоть какой-то логикой. Пустышки остались просто оставаться
+- type: entity
+  name: random anomaly item spawner
+  id: LootSpawnerRandomAnomalyItem
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Scp/Objects/Items/invitation.rsi
+      state: icon
+  - type: RandomSpawner
+    prototypes:
+    - ScpAnomalyPainting
+    - ScpAnomalyRock
+    - ScpAnomalyCowboyHat
+    - ScpAnomalyDiamond
+    - ScpAnomalyInvitation
+    - ScpAnomalySwatter
+    - ScpAnomalyDollar
+    - ScpAnomalyCoffee
+    - ScpAnomalyKey
+    - ScpAnomalyBook
+    - ScpAnomalySpawnWand
+    - ScpBackroomsSpeedBoots
+    - ScpAnomalyRedCore
+    - ScpAnomalyRifle
