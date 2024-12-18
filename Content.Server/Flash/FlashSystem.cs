@@ -151,6 +151,7 @@ namespace Content.Server.Flash
                     RaiseLocalEvent(used.Value, ref ev);
             }
 
+            // Fire added
             RaiseLocalEvent(target, new EntityFlashedEvent (target, user, used));
         }
 
