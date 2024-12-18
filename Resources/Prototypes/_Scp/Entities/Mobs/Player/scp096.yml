@@ -88,6 +88,8 @@
   - type: Puller
     needsHands: false
   - type: Scp096
+    pullComponents:
+    - type: Pullable
   - type: SlowOnDamage
     speedModifierThresholds:
       1000: 0.9

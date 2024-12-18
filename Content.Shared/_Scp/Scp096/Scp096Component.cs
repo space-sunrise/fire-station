@@ -1,5 +1,6 @@
 ﻿using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp096;
 
@@ -47,4 +48,7 @@ public sealed partial class Scp096Component : Component
     public SoundSpecifier CrySound { get; } = new SoundPathSpecifier("/Audio/_Scp/Scp096/scp-096-crying.ogg");
 
     public SoundSpecifier RageSound { get; } = new SoundPathSpecifier("/Audio/_Scp/Scp096/scp-096-scream.ogg");
+
+    [DataField(required: true)]
+    public ComponentRegistry PullComponents = new();
 }
