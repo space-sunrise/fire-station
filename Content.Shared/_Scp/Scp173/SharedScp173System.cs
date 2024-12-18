@@ -25,9 +25,9 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -49,8 +49,8 @@ public abstract class SharedScp173System : EntitySystem
         #region Movement
 
         SubscribeLocalEvent<Scp173Component, ChangeDirectionAttemptEvent>(OnDirectionAttempt);
-        SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnInput);
         SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
+        SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnInput);
 
         #endregion
 
@@ -80,21 +80,15 @@ public abstract class SharedScp173System : EntitySystem
             args.Cancel();
     }
 
-    private void OnInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
+    private void OnMoveAttempt(Entity<Scp173Component> ent, ref UpdateCanMoveEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        _blocker.UpdateCanMove(ent);
+        if (Is173Watched(ent, out _))
+            args.Cancel();
     }
 
-    private void OnMoveAttempt(EntityUid ent, Scp173Component component, UpdateCanMoveEvent args)
+    private void OnInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        if (Is173Watched((ent, component), out _))
-            args.Cancel();
+        _blocker.UpdateCanMove(ent);
     }
 
     #endregion

@@ -7,6 +7,7 @@ using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Inventory;
 using Content.Shared.Rejuvenate;
 using JetBrains.Annotations;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared.Eye.Blinding.Systems;
 
@@ -117,6 +118,7 @@ public record struct EyeDamageChangedEvent(int Damage);
 /// <summary>
 ///     Raised directed at an entity to see whether the entity is currently blind or not.
 /// </summary>
+[Serializable, NetSerializable]
 public sealed class CanSeeAttemptEvent : CancellableEntityEventArgs, IInventoryRelayEvent
 {
     public bool Blind => Cancelled;
