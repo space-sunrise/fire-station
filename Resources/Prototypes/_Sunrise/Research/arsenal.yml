@@ -42,19 +42,6 @@
   - MagazineBR64Extended
   - MagazineDragunovExtended
 
-- type: technology
-  id: EnergyGunsAdvanced
-  name: research-technology-energy-gun-advance #
-  icon:
-    sprite: _Sunrise/Objects/Weapons/Guns/Battery/energygun_pistol.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 2
-  cost:
-    Default: 7500
-    Scp: 3750
-  recipeUnlocks:
-  - WeaponEnergyGunPistol
 
 - type: technology
   id: CombatEquipment
@@ -83,3 +70,4 @@
     Scp: 6250
   recipeUnlocks:
   - WeaponGunLaserCarbineAutomatic
+  - WeaponEnergyGunPistol

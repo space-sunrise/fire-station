@@ -16,10 +16,10 @@
     sprite: _Sunrise/Objects/Weapons/Guns/LMGs/mg60/tiny.rsi
   - type: GunWieldBonus
     minAngle: -20
-    maxAngle: -80
+    maxAngle: -70
   - type: Gun
     minAngle: 30
-    maxAngle: 100
+    maxAngle: 90
     fireRate: 9
     soundGunshot:
       path: /Audio/_Sunrise/Weapons/Guns/LMGs/shot.ogg
@@ -36,6 +36,8 @@
         whitelist:
           tags:
           - MagazineLightMachineGunMG60
+          - MagazineRPD
+          - MagazineLightRifleBox
       gun_chamber:
         name: Chamber
         startingItem: Cartridge762x39
@@ -138,11 +140,11 @@
     sprite: _Sunrise/Objects/Weapons/Guns/LMGs/mg42/tiny.rsi
   - type: GunWieldBonus
     minAngle: -20
-    maxAngle: -80
+    maxAngle: -70
   - type: Gun
     minAngle: 30
-    maxAngle: 100
-    fireRate: 8
+    maxAngle: 90
+    fireRate: 8.5
     soundGunshot:
       path: /Audio/_Sunrise/Weapons/Guns/LMGs/shot.ogg
       params:
@@ -158,7 +160,6 @@
         whitelist:
           tags:
           - MagazineMachineGunMG42
-          - MagazineLightRifleBox
       gun_chamber:
         name: Chamber
         startingItem: Cartridge762x39

@@ -138,7 +138,7 @@ namespace Content.Shared.Damage
         ///     null if the user had no applicable components that can take damage.
         /// </returns>
         public DamageSpecifier? TryChangeDamage(EntityUid? uid, DamageSpecifier damage, bool ignoreResistances = false,
-            bool interruptsDoAfters = true, DamageableComponent? damageable = null, EntityUid? origin = null, bool applyRandomDamage = true)
+            bool interruptsDoAfters = true, DamageableComponent? damageable = null, EntityUid? origin = null, bool useVariance = true, bool useModifier = true)
         {
             if (!uid.HasValue || !_damageableQuery.Resolve(uid.Value, ref damageable, false))
             {
@@ -157,11 +157,12 @@ namespace Content.Shared.Damage
             if (before.Cancelled)
                 return null;
 
-            // Sunrise-Start - Please no random damage for scp attacks
-            if (applyRandomDamage)
-            {
+            // Sunrise-Start
+            if (useModifier)
                 damage = DamageSpecifier.ApplyModifier(damage, DamageModifier, HealModifier);
 
+            if (useVariance)
+            {
                 var varianceMultiplier = 1f + Variance - _random.NextFloat(0, Variance * 2f);
                 damage *= varianceMultiplier;
             }

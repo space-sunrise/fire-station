@@ -39,7 +39,7 @@
 #      - GrenadeTeargas
 
 - type: entity
-  id: CrateSecurityRiot
+  id: CrateSecurityRiot1
   parent: CrateSecgear
   name: swat crate
   description: Contains two sets of riot armor, helmets, shields, and enforcers loaded with beanbags. Extra ammo is included. Requires Armory access to open.

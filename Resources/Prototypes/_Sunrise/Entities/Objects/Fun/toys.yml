@@ -688,12 +688,6 @@
   - type: Sprite
     state: plushie-peacemaker
     sprite: _Sunrise/Objects/Fun/toys.rsi
-  - type: EmitSoundOnUse
-    sound:
-      path: /Audio/_Sunrise/vizhu_pidorasa.ogg
-  - type: EmitSoundOnTrigger
-    sound:
-      path: /Audio/_Sunrise/vizhu_pidorasa.ogg
   - type: UseDelay
     delay: 20.0
 
@@ -797,16 +791,6 @@
   components:
   - type: Sprite
     state: kaioshi_barmen
-    sprite: _Sunrise/Objects/Fun/toys.rsi
-
-- type: entity
-  parent: BasePlushie
-  id: PlushieLuna
-  name: Plushie Luna
-  description: Nya!! Mya!! are the first words of this lovely lady.
-  components:
-  - type: Sprite
-    state: luna
     sprite: _Sunrise/Objects/Fun/toys.rsi
 
 - type: entity
