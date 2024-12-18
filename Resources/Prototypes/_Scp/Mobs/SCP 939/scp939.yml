@@ -10,6 +10,8 @@
   - MobFlammable
   components:
   - type: Scp939
+  - type: CanBePulledSleeping
+    exclusive: true
   - type: MeleeWeapon
     soundHit:
       collection: Punch
