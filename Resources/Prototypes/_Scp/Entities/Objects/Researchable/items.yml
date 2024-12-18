@@ -104,10 +104,7 @@
   suffix: SCP-939 Item
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Head/Helmets/techno.rsi
-    layers:
-    - state: icon
-      map: [ "mask" ]
+    sprite: _Scp/Clothing/Shoes/Boots/silentboots.rsi
   - type: Item
     size: Normal
     storedRotation: -90
