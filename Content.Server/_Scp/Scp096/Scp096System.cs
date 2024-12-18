@@ -135,27 +135,10 @@ public sealed partial class Scp096System : SharedScp096System
 
     private void OnSpcStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
     {
-        HandlePull(ent, ref args);
         if (args.NewMobState == MobState.Alive)
             return;
 
         RemoveAllTargets(ent);
-    }
-
-    private void HandlePull(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
-    {
-        switch (args.NewMobState)
-        {
-            case MobState.Alive:
-                EntityManager.RemoveComponents(ent.Owner, ent.Comp.PullComponents);
-                break;
-            case MobState.Critical:
-                EntityManager.AddComponents(ent.Owner, ent.Comp.PullComponents, false);
-                break;
-            case MobState.Dead:
-                EntityManager.AddComponents(ent.Owner, ent.Comp.PullComponents, false);
-                break;
-        }
     }
 
     private bool CanBeAggro(Entity<Scp096Component> entity)
