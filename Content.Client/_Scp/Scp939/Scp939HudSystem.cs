@@ -9,6 +9,7 @@ using Content.Shared.Movement.Components;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Client.Player;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -20,6 +21,7 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     private ShaderInstance _shaderInstance = default!;
 
@@ -64,6 +66,12 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
 
     private void OnGetStatusIcons(Entity<Scp939VisibilityComponent> ent, ref GetStatusIconsEvent args)
     {
+        // Олежа чурка
+        var playerEntity = _playerManager.LocalSession?.AttachedEntity;
+
+        if (!HasComp<Scp939Component>(playerEntity))
+            return;
+
         var visibility = GetVisibility(ent);
 
         if (visibility <= 0.5f)
