@@ -8,13 +8,10 @@ namespace Content.Shared._Scp.Scp096;
 public sealed partial class Scp096Component : Component
 {
     [AutoNetworkedField]
-    public bool InRageMode { get; set; } = false;
-
-    [AutoNetworkedField]
-    public bool Pacified { get; set; } = false;
+    public bool InRageMode;
 
     [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
-    public HashSet<EntityUid> Targets { get; set; } = new();
+    public HashSet<EntityUid> Targets = new();
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float AgroDistance = 10f;
@@ -23,16 +20,18 @@ public sealed partial class Scp096Component : Component
     public float ArgoAngle = 25;
 
     [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
-    public TimeSpan? RageStartTime { get; set; }
+    public TimeSpan? RageStartTime;
 
     [DataField, AutoNetworkedField , ViewVariables(VVAccess.ReadWrite)]
-    public float RageDuration { get; set; }= 2000f;
+    public float RageDuration = 2000f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float PacifiedTime = 60f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float WireCutChance = 0.4f;
+
+    #region Sounds
 
     [DataField]
     public SoundSpecifier DoorSmashSoundCollection = new SoundCollectionSpecifier("MetalSlam")
@@ -47,4 +46,18 @@ public sealed partial class Scp096Component : Component
     public SoundSpecifier CrySound { get; } = new SoundPathSpecifier("/Audio/_Scp/Scp096/scp-096-crying.ogg");
 
     public SoundSpecifier RageSound { get; } = new SoundPathSpecifier("/Audio/_Scp/Scp096/scp-096-scream.ogg");
+
+    #endregion
+
+    #region Speed
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float BaseSpeed = 1.5f;
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float RageSpeed = 8f;
+
+    #endregion
+
+
 }

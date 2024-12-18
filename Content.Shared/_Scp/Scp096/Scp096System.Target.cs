@@ -1,13 +1,12 @@
-﻿using Content.Shared._Scp.Scp096;
-using Content.Shared.Bed.Sleep;
+﻿using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage;
 using Content.Shared.Mobs;
 
-namespace Content.Server._Scp.Scp096;
+namespace Content.Shared._Scp.Scp096;
 
-public sealed partial class Scp096System
+public abstract partial class SharedScp096System
 {
-    private void InitTargets()
+    protected void InitTargets()
     {
         SubscribeLocalEvent<Scp096TargetComponent, MobStateChangedEvent>(OnTargetStateChanged);
         SubscribeLocalEvent<Scp096TargetComponent, ComponentShutdown>(OnTargetShutdown);
@@ -16,7 +15,7 @@ public sealed partial class Scp096System
 
     private void OnHit(Entity<Scp096TargetComponent> ent, ref DamageChangedEvent args)
     {
-        if (!TryComp<Scp096Component>(args.Origin, out _))
+        if (!HasComp<Scp096Component>(args.Origin))
             return;
 
         ent.Comp.TimesHitted++;
@@ -27,7 +26,7 @@ public sealed partial class Scp096System
         _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(ent.Owner,
             SleepStatusEffectKey,
             TimeSpan.FromSeconds(ent.Comp.SleepTime),
-            false);
+            true);
 
         RemComp<Scp096TargetComponent>(ent);
     }
@@ -36,7 +35,7 @@ public sealed partial class Scp096System
     {
         var query = EntityQueryEnumerator<Scp096TargetComponent>();
 
-        while (query.MoveNext(out var _, out var targetComponent))
+        while (query.MoveNext(out _, out var targetComponent))
         {
             targetComponent.HitTimeAcc += frameTime;
 
