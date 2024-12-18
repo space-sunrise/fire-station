@@ -1,4 +1,5 @@
-﻿using Content.Shared.Bed.Sleep;
+﻿using Content.Server._Scp.Scp939;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Movement.Pulling.Components;
 
 namespace Content.Server._Scp.Pull;
@@ -28,7 +29,8 @@ public sealed class CanBePulledSleepingSystem : EntitySystem
                 AddComp<PullableComponent>(uid);
                 break;
             case false:
-                RemComp<PullableComponent>(uid);
+                if (!HasComp<Scp939MuzzledComponent>(uid)) // костыль чтоб нельзя было нуллифицировать эффект маски при сне
+                    RemComp<PullableComponent>(uid);
                 break;
         }
     }

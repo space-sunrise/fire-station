@@ -1,0 +1,15 @@
+﻿- type: entity
+  parent: ClothingMaskMuzzle
+  id: Scp939Muzzler
+  suffix: SCP-939
+  components:
+  - type: ItemToggle
+    onUse: false
+    onActivate: false
+  - type: ClothingToggleOnEquip
+  - type: ComponentToggler
+    parent: true
+    components:
+    - type: Pacified
+    - type: Pullable
+    - type: Scp939Muzzled
