@@ -104,7 +104,20 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      5000: Dead
+      10000: Critical
+      15000: Dead
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -1.0
+        Burn: -1.0
+        Toxin: -1.0
+      types:
+        Bloodloss: -1.0
   - type: Fixtures
     fixtures:
       fix1:
