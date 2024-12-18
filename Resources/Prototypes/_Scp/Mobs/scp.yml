@@ -39,6 +39,24 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
     baseSprintSpeed: 15
+  - type: MobState
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      6000: Critical
+      10000: Dead
+  - type: PassiveDamage
+    allowedStates:
+    - Alive
+    - Critical
+    damageCap: 0
+    damage:
+      groups:
+        Brute: -1.0
+        Burn: -1.0
+        Toxin: -1.0
+      types:
+        Bloodloss: -1.0
   - type: Scp173
   - type: CanBePulledDead
   - type: ScpRestriction
