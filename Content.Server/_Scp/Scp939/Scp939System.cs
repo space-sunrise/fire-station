@@ -53,14 +53,22 @@ public sealed partial class Scp939System : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<Scp939Component, SleepingComponent>();
+        // Все 939, что спят
+        var querySleeping = EntityQueryEnumerator<Scp939Component, SleepingComponent>();
 
-        while (query.MoveNext(out var uid, out var scp939Component, out _))
+        // Обработка лечения 939 во сне
+        while (querySleeping.MoveNext(out var uid, out var scp939Component, out _))
         {
-            // Лечилка
             _damageableSystem.TryChangeDamage(uid, scp939Component.HibernationHealingRate * frameTime);
+        }
 
-            // Смотрелка
+        // Просто все 939
+        var querySimple = EntityQueryEnumerator<Scp939Component>();
+
+        // Обработка плохого зрения 939
+        while (querySimple.MoveNext(out var uid, out var scp939Component))
+        {
+
             if (!scp939Component.PoorEyesight)
                 continue;
 

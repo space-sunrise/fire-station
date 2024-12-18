@@ -1,13 +1,14 @@
-﻿using Content.Client.Overlays;
+﻿using System.Diagnostics.CodeAnalysis;
+using Content.Client.Overlays;
 using Content.Client.SSDIndicator;
 using Content.Client.Stealth;
 using Content.Shared._Scp.Scp939;
+using Content.Shared._Scp.Scp939.Protection;
 using Content.Shared.Examine;
 using Content.Shared.Movement.Components;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
-using Robust.Client.Player;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -17,13 +18,12 @@ namespace Content.Client._Scp.Scp939;
 
 public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private ShaderInstance _shaderInstance = default!;
 
-    // TODO: Выделить это в отдельный компонент, не связанный с 939
+    // TODO: Выделить значения плохого зрения в отдельный компонент, не связанный с 939
     private Scp939Component? _scp939Component;
 
     private List<ShaderInstance> _shaderInstances = new();
@@ -86,9 +86,17 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
 
     private void OnMove(Entity<Scp939VisibilityComponent> ent, ref MoveEvent args)
     {
-        if (!ModifyAcc(ref ent.Comp))
+        // В зависимости от наличие защит или проблем со зрением у 939 изменяется то, насколько хорошо мы видим жертву
+        if (ModifyAcc(ent.Comp, out var modifier)) // Если зрение затруднено
         {
-            // Если со зрением все ок
+            ent.Comp.VisibilityAcc *= modifier;
+        }
+        else if (HasComp<Scp939ProtectionComponent>(ent)) // Если имеется защита(тихое хождение)
+        {
+            return;
+        }
+        else // Если со зрением все ок
+        {
             ent.Comp.VisibilityAcc = 0;
         }
 
@@ -135,8 +143,6 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
 
             shaderId++;
 
-            ModifyAcc(ref visibilityComponent);
-
             visibilityComponent.VisibilityAcc += frameTime;
         }
     }
@@ -170,17 +176,18 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
     /// <summary>
     /// Если вдруг собачка плохо видит
     /// </summary>
-    private bool ModifyAcc(ref Scp939VisibilityComponent visibilityComponent )
+    private bool ModifyAcc(Scp939VisibilityComponent visibilityComponent, [NotNullWhen(true)] out int modifier)
     {
+        // 1 = отсутствие модификатора
+        modifier = 1;
+
         if (_scp939Component == null)
             return false;
 
         if (!_scp939Component.PoorEyesight)
             return false;
 
-        var modifier = _random.Next(visibilityComponent.MinValue, visibilityComponent.MaxValue);
-
-        visibilityComponent.VisibilityAcc *= modifier;
+        modifier = _random.Next(visibilityComponent.MinValue, visibilityComponent.MaxValue);
 
         return true;
     }

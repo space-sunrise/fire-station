@@ -95,6 +95,25 @@
     components:
     - type: Scp106Protection
 
+# Scp-939
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesSilent
+  suffix: SCP-939 Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/techno.rsi
+    layers:
+    - state: icon
+      map: [ "mask" ]
+  - type: Item
+    size: Normal
+    storedRotation: -90
+  - type: ClothingAddComponents
+    components:
+    - type: Scp939Protection
+
 # Scp-035
 
 - type: entity
