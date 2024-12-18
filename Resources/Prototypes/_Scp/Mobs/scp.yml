@@ -40,6 +40,7 @@
     baseWalkSpeed: 5
     baseSprintSpeed: 15
   - type: Scp173
+  - type: CanBePulledDead
   - type: ScpRestriction
   - type: ShowBlinkable
   - type: GiveActions
