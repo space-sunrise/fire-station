@@ -1,0 +1,37 @@
+﻿- type: entity
+  id: Scp106CatwalkBase
+  name: accelerating catwalk
+  description: High-tech catwalk that speeds up everyone who moves on it
+  parent: Catwalk
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Physics
+    canCollide: true
+  - type: Sprite
+    sprite: _Scp/Structures/accelerating_catwalk.rsi
+    drawdepth: FloorTiles
+  - type: Fixtures
+    fixtures:
+      fix1:
+        hard: false
+        density: 7
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,-0.49,0.49,0.49"
+        layer:
+        - LowImpassable
+
+- type: entity
+  parent: Scp106CatwalkBase
+  id: Scp106CatwalkTarget
+  suffix: Цель
+  components:
+  - type: Scp106CatwalkTarget
+
+- type: entity
+  parent: Scp106CatwalkBase
+  id: Scp106CatwalkCatcher
+  suffix: Ловитель
+  components:
+  - type: Scp106CatwalkCatcher
