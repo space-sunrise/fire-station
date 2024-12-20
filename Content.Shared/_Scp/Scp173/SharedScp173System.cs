@@ -168,7 +168,7 @@ public abstract class SharedScp173System : EntitySystem
         if (_mobState.IsIncapacitated(eye))
             return true;
 
-        if (_blinking.IsBlind(eye.Owner, eye.Comp))
+        if (_blinking.IsBlind(eye.Owner, eye.Comp, true))
             return true;
 
         var canSeeAttempt = new CanSeeAttemptEvent();

@@ -4,6 +4,7 @@ using Content.Shared.Alert;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs.Systems;
+using Robust.Shared.Network;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -16,15 +17,24 @@ public abstract class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly EyeClosingSystem _closingSystem = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
-    private static TimeSpan _blinkingInterval = TimeSpan.FromSeconds(4);
-    private static TimeSpan _blinkingDuration = TimeSpan.FromSeconds(4);
+    private readonly TimeSpan _blinkingInterval = TimeSpan.FromSeconds(10);
+    private readonly TimeSpan _blinkingDuration = TimeSpan.FromSeconds(2);
 
     private static readonly TimeSpan BlinkingIntervalVariance = TimeSpan.FromSeconds(5);
 
-    public bool IsBlind(EntityUid uid, BlinkableComponent component)
+    public bool IsBlind(EntityUid uid, BlinkableComponent component, bool useTimeCompensation = false)
     {
+        if (_net.IsClient && useTimeCompensation)
+        {
+            if (_gameTiming.CurTime < component.BlinkEndTime)
+                return _gameTiming.CurTime < component.BlinkEndTime + TimeSpan.FromTicks(10);
+            else
+                return _gameTiming.CurTime + TimeSpan.FromTicks(10) < component.BlinkEndTime;
+        }
+
         return _gameTiming.CurTime < component.BlinkEndTime;
     }
 
@@ -40,6 +50,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
                 continue;
             }
 
+            // TODO: перенести на ивенты и вынести отсюда, этож каждый тик мертвые ресетят себя
             if (_mobState.IsIncapacitated(uid))
             {
                 ResetBlink(uid, blinkableComponent);
