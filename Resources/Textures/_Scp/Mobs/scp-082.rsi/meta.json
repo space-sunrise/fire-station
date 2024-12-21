@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "license": null,
+  "copyright": null,
+  "size": {
+    "x": 64,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "082_fullbody",
+      "directions": 4
+    },
+    {
+      "name": "082_headless",
+      "directions": 4
+    },
+    {
+      "name": "static",
+      "directions": 4
+    },
+    {
+      "name": "hungry",
+      "directions": 4,
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "082-dead"
+    },
+    {
+      "name": "082-asleep"
+    },
+    {
+      "name": "mayor",
+      "directions": 4
+    },
+    {
+      "name": "mayor-dead"
+    },
+    {
+      "name": "mayor-asleep"
+    },
+    {
+      "name": "armstrong",
+      "directions": 4
+    },
+    {
+      "name": "armstrong-dead"
+    },
+    {
+      "name": "armstrong-asleep"
+    },
+    {
+      "name": "clown",
+      "directions": 4
+    },
+    {
+      "name": "clown-dead"
+    },
+    {
+      "name": "clown-asleep"
+    },
+    {
+      "name": "d_class",
+      "directions": 4
+    },
+    {
+      "name": "d_class-dead"
+    },
+    {
+      "name": "d_class-asleep"
+    },
+    {
+      "name": "mime",
+      "directions": 4
+    },
+    {
+      "name": "mime-dead"
+    },
+    {
+      "name": "mime-asleep"
+    },
+    {
+      "name": "french_revolution",
+      "directions": 4
+    },
+    {
+      "name": "french_revolution-dead"
+    },
+    {
+      "name": "french_revolution-asleep"
+    },
+    {
+      "name": "tuxedo",
+      "directions": 4
+    },
+    {
+      "name": "tuxedo-dead"
+    },
+    {
+      "name": "tuxedo-asleep"
+    },
+    {
+      "name": "goro",
+      "directions": 4
+    },
+    {
+      "name": "goro-dead"
+    },
+    {
+      "name": "goro-asleep"
+    },
+    {
+      "name": "monroe",
+      "directions": 4
+    },
+    {
+      "name": "monroe-dead"
+    },
+    {
+      "name": "monroe-asleep"
+    }
+  ]
+}
