@@ -1,7 +1,10 @@
 ﻿using Content.Client.Actions;
 using Content.Client.UserInterface.Systems.Actions;
 using Content.Shared._Scp.Scp173;
+using Content.Shared.ActionBlocker;
 using Content.Shared.Examine;
+using Content.Shared.Interaction.Events;
+using Content.Shared.Movement.Events;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
@@ -10,15 +13,18 @@ using Robust.Shared.Player;
 
 namespace Content.Client._Scp.Scp173;
 
+// TODO: Здесь находится нереальный костыль, который является нереальной уязвимостью
+
 public sealed class Scp173System : SharedScp173System
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly ActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly IUserInterfaceManager _ui = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private readonly IUserInterfaceManager _ui = default!;
 
     private Scp173Overlay _overlay = default!;
 
@@ -31,6 +37,15 @@ public sealed class Scp173System : SharedScp173System
 
         SubscribeLocalEvent<Scp173Component, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<Scp173Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
+
+        // TODO: Придумать исправить миспредикт способ лучше
+        #region Movement
+
+        SubscribeLocalEvent<Scp173Component, ChangeDirectionAttemptEvent>(OnDirectionAttempt);
+        SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
+        SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnInput);
+
+        #endregion
 
         _overlay = new(_transform, _ui.GetUIController<ActionUIController>(), _actionsSystem, _physics, _examine);
     }
@@ -58,4 +73,26 @@ public sealed class Scp173System : SharedScp173System
     {
         _overlayMan.RemoveOverlay(_overlay);
     }
+
+    // TODO: Придумать исправить миспредикт способ лучше
+    #region Movement
+
+    private void OnDirectionAttempt(Entity<Scp173Component> ent, ref ChangeDirectionAttemptEvent args)
+    {
+        if (Is173Watched(ent, out _))
+            args.Cancel();
+    }
+
+    private void OnMoveAttempt(Entity<Scp173Component> ent, ref UpdateCanMoveEvent args)
+    {
+        if (Is173Watched(ent, out _))
+            args.Cancel();
+    }
+
+    private void OnInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
+    {
+        _blocker.UpdateCanMove(ent);
+    }
+
+    #endregion
 }

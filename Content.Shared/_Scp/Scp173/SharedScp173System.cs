@@ -13,7 +13,6 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp173;
 
@@ -22,12 +21,10 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
     [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
-    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -43,14 +40,6 @@ public abstract class SharedScp173System : EntitySystem
             if (Is173Watched((uid, component), out _))
                 args.Cancel();
         });
-
-        #endregion
-
-        #region Movement
-
-        SubscribeLocalEvent<Scp173Component, ChangeDirectionAttemptEvent>(OnDirectionAttempt);
-        SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
-        SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnInput);
 
         #endregion
 
@@ -72,27 +61,6 @@ public abstract class SharedScp173System : EntitySystem
         Dirty(ent);
     }
 
-    #region Movement
-
-    private void OnDirectionAttempt(Entity<Scp173Component> ent, ref ChangeDirectionAttemptEvent args)
-    {
-        if (Is173Watched(ent, out _))
-            args.Cancel();
-    }
-
-    private void OnMoveAttempt(Entity<Scp173Component> ent, ref UpdateCanMoveEvent args)
-    {
-        if (Is173Watched(ent, out _))
-            args.Cancel();
-    }
-
-    private void OnInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
-    {
-        _blocker.UpdateCanMove(ent);
-    }
-
-    #endregion
-
     #region Abillities
 
     private void OnMeleeHit(Entity<Scp173Component> ent, ref MeleeHitEvent args)
@@ -102,7 +70,7 @@ public abstract class SharedScp173System : EntitySystem
 
         foreach (var entity in args.HitEntities)
         {
-           BreakNeck(entity, ent.Comp);
+            BreakNeck(entity, ent.Comp);
         }
     }
 
@@ -168,7 +136,7 @@ public abstract class SharedScp173System : EntitySystem
         if (_mobState.IsIncapacitated(eye))
             return true;
 
-        if (_blinking.IsBlind(eye.Owner, eye.Comp, true))
+        if (_blinking.IsBlind(eye.Owner, eye.Comp))
             return true;
 
         var canSeeAttempt = new CanSeeAttemptEvent();
