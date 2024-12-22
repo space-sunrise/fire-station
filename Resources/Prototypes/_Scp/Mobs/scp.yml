@@ -99,7 +99,6 @@
         Toxin: -1.0
       types:
         Bloodloss: -1.0
-  - type: Scp173
   - type: CanBePulledDead
   - type: ActionGrant
     actions:
