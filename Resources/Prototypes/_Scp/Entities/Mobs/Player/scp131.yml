@@ -5,6 +5,7 @@
   suffix: SCP-131
   parent:
   - SimpleSpaceMobBase
+  - BaseScp
   components:
   - type: Sprite
     sprite: _Scp/Mobs/SCP-131.rsi

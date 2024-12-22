@@ -105,6 +105,18 @@
       path: /Audio/_Sunrise/Medical/Surgery/scalpel1.ogg
     endSound:
       path: /Audio/_Sunrise/Medical/Surgery/scalpel2.ogg
+  # Fire edit start - исследования сцп
+  - type: ScpInteractTool
+    delay: 30
+    cooldown: 600 # 5 минут
+    cooldownMessage: scp-interact-time-left
+    event: !type:ScpSpawnInteractDoAfterEvent
+      toSpawn: Scp999Jelly
+    sound: /Audio/Effects/break_stone.ogg # TODO: Звук
+    whitelist:
+      components:
+      - Scp999
+  # Fire edit end
 
 - type: entity
   name: shiv
@@ -174,7 +186,7 @@
   - type: Item
     sprite: Objects/Specific/Medical/Surgery/scissors.rsi
     storedRotation: 90
-  
+
 - type: entity
   name: retractor
   id: Retractor
@@ -265,7 +277,7 @@
     state: advanced-setter
   - type: Item
     heldPrefix: setter
-    storedRotation: 45  
+    storedRotation: 45
   - type: SurgeryTool
     speed: 0.6
     startSound:
@@ -324,7 +336,7 @@
     startSound:
       path: /Audio/_Sunrise/Medical/Surgery/saw.ogg
   - type: BoneSaw
-  
+
 - type: entity
   name: circular saw
   id: SawElectric

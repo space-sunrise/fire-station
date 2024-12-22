@@ -41,6 +41,19 @@
     size: Normal
     shape:
     - 0,0,0,1
+  # Fire edit start - исследования сцп
+  - type: ScpInteractTool
+    delay: 30
+    cooldown: 600 # 5 минут
+    cooldownMessage: scp-interact-time-left
+    event: !type:ScpSpawnInteractDoAfterEvent
+      toSpawn: Scp173PaintChips
+      maxSpawn: 2
+    sound: /Audio/Effects/break_stone.ogg # TODO: Звук
+    whitelist:
+      components:
+      - Scp173
+  # Fire edit end
 
 # Standard (grey) Crowbar
 - type: entity

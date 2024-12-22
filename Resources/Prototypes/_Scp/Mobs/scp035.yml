@@ -1,6 +1,7 @@
 ﻿- type: entity
-  parent: ClothingMaskBase
+  parent: [ClothingMaskBase, BaseItemSCP]
   id: ClothingMaskScp035
+  suffix: SCP
   components:
   - type: Sprite
     sprite: _Scp/scp-035.rsi

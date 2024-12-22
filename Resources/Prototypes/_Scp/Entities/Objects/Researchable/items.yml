@@ -1,0 +1,231 @@
+﻿# Средства защиты от сцп
+
+# Scp-173
+
+- type: entity # TODO: Превратить в контейнер с химикатом
+  parent: BaseItem
+  id: EyeDroplets
+  suffix: SCP-173 Item
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Drinks/patronbottle.rsi # TODO: Нормальный спрайт, а не алкашка
+    state: icon_empty
+    scale: 0.4,0.6
+  - type: Item
+    size: Tiny
+  - type: ReducedBlinking
+    bonusTime: 120
+    # TODO: Добавить звук использования
+  - type: UseDelay
+    delay: 3
+
+# Scp-096
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ReinforcedMaskScp096
+  suffix: SCP-096 Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Masks/scp096.rsi
+    layers:
+    - state: icon
+      map: [ "mask" ]
+  - type: Item
+    size: Normal
+    storedRotation: -90
+  - type: Clothing
+    equipDelay: 3
+    unequipDelay: 3
+  - type: Scp096Mask
+  - type: ClothingAddActions
+    actions:
+    - Scp096TearMask
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHelmetAiPowered
+  suffix: SCP-096 Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/aipowered.rsi
+  - type: Item
+    size: Normal
+  - type: ClothingAddComponents
+    components:
+    - type: Scp096Protection
+
+# Scp-049
+
+- type: entity
+  id: Scp049ProtectionImplanter
+  suffix: SCP-049 Protection
+  parent: BaseImplantOnlyImplanter
+  components:
+  - type: Implanter
+    implant: Scp049ProtectionImplant
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: Scp049ProtectionImplant
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SubdermalImplant
+    whitelist:
+      components:
+      - MobState
+  - type: Scp049ProtectionImplant
+
+# Scp-106
+
+# TODO: Возможно стоит телепортировать его в радиусе от удара куда-то или отбрасывать, чтобы эффектнее смотрелось
+# TODO: чатгпт снова дал идею - использовать заряд и встроенную батарею для работы, визуализировать поле какое-то еще
+- type: entity
+  parent: ClothingOuterBase
+  id: ClothingOuterAntiTeleportation
+  suffix: SCP-106 Item
+  components:
+  - type: Sprite
+    sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
+  - type: Clothing
+    sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
+  - type: Item
+    size: Normal
+    storedRotation: -90
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
+
+# Scp-939
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ClothingShoesSilent
+  suffix: SCP-939 Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Shoes/Boots/silentboots.rsi
+  - type: Item
+    size: Normal
+    storedRotation: -90
+  - type: ClothingAddComponents
+    components:
+    - type: Scp939Protection
+
+# Scp-035
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadAwareness
+  suffix: SCP-035 Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/techno.rsi
+    layers:
+    - state: icon
+      map: [ "mask" ]
+  - type: Item
+    size: Normal
+    storedRotation: -90
+  - type: ClothingAddComponents
+    components:
+    - type: Scp035MindProtection
+
+# Пушки
+
+# TODO: Чатгпт дал идею срать радиацией стреляющему при стрельбе. Мб стоит сделать
+- type: entity
+  name: Experimental X-Ray
+  parent: BaseWeaponBattery
+  id: WeaponGodlikeXRay
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EGE_XR/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-5
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EGE_XR/tiny.rsi
+  - type: Item
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EGE_XR/tiny.rsi
+    size: Ginormous
+  - type: GunWieldBonus
+    minAngle: -93
+    maxAngle: -94
+  - type: Gun
+    minAngle: 94
+    maxAngle: 95
+    fireRate: 0.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Sunrise/Weapons/Guns/Laser/EG_XR.ogg
+      params:
+        pitch: 0.5
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: true
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: HitscanBatteryAmmoProvider
+    proto: UltraXrayLaser
+    fireCost: 750
+  - type: Wieldable
+  - type: UseDelay
+    delay: 0.5
+#  - type: Telescope насрали
+
+- type: entity
+  name: anomalous resonance laser rifle
+  parent: BaseWeaponBattery
+  id: WeaponARLSniper
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_Sniper/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-2
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_Sniper/tiny.rsi
+  - type: Item
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/EG_Sniper/tiny.rsi
+    shape:
+    - 0,0,4,1
+  - type: GunRequiresWield
+  - type: GunWieldBonus
+    minAngle: -93
+    maxAngle: -94
+  - type: Gun
+    minAngle: 94
+    maxAngle: 95
+    fireRate: 1.5
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Sunrise/Weapons/Guns/Laser/EG_Sniper.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 3
+    zeroVisible: true
+  - type: Battery
+    maxCharge: 1500
+    startingCharge: 1500
+  - type: HitscanBatteryAmmoProvider
+    proto: UltraRedHeavyLaser
+    fireCost: 300
+  - type: Wieldable
+  - type: UseDelay
+    delay: 0.5
+#  - type: Telescope насрали

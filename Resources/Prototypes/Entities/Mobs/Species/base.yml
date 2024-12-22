@@ -250,10 +250,10 @@
   - type: CanEscapeInventory
   - type: Mood
   # Sunrise-End
-  # Sunrise-SCP Start
-  - type: Blinkable # Sunrise-SCP edit.
-  - type: EyeClosing # Sunrise-SCP edit.
-  # Sunrise-SCP End
+  # Fire start
+  - type: Blinkable
+  - type: EyeClosing
+  # Fire end
   - type: Barotrauma
     damage:
       types:

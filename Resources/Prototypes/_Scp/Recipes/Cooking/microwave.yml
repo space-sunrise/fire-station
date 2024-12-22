@@ -1,0 +1,25 @@
+﻿- type: microwaveMealRecipe
+  id: RecipeBunJelly
+  name: jelly bun recipe
+  result: FoodBakedBunJelly
+  time: 5
+  solids:
+    FoodBreadBun: 1
+    FoodJellyScp999: 1
+
+- type: microwaveMealRecipe
+  id: RecipePizzaJelly
+  name: jelly pizza recipe
+  result: FoodPizzaJelly
+  time: 5
+  solids:
+    FoodPizzaMargherita: 1
+    FoodJellyScp999: 1
+
+- type: microwaveMealRecipe
+  id: RecipeScp173Ball
+  name: paint ball recipe
+  result: Scp173PaintBall
+  time: 5
+  solids:
+    Scp173PaintChips: 1

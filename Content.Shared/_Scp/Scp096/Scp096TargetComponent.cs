@@ -7,9 +7,9 @@ namespace Content.Shared._Scp.Scp096;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp096TargetComponent : Component
 {
-    //Multiple SCP096 Handler
+    // Multiple SCP096 Handler
     [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
-    public HashSet<EntityUid> TargetedBy { get; set; } = new();
+    public HashSet<EntityUid> TargetedBy = new();
 
     [ViewVariables(VVAccess.ReadWrite)]
     public int TimesHitted = 0;

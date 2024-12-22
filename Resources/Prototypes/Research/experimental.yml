@@ -10,6 +10,7 @@
   tier: 1
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - ProximitySensor
   - ExosuitFabricatorMachineCircuitboard
@@ -24,6 +25,7 @@
   tier: 1
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - AnomalyScanner
   - AnomalyLocator
@@ -42,6 +44,7 @@
   tier: 1
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - NodeScanner
   - BorgModuleArtifact
@@ -58,6 +61,7 @@
   tier: 1
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - TechDiskComputerCircuitboard
 
@@ -71,6 +75,7 @@
   tier: 1
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - ClothingShoesBootsMagSci
   - ClothingShoesBootsMoon
@@ -85,6 +90,7 @@
   tier: 1
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - WeaponGauntletGorilla
 
@@ -100,6 +106,7 @@
   tier: 2
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - ArtifactCrusherMachineCircuitboard
 
@@ -113,6 +120,7 @@
   tier: 2
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - WeaponPistolCHIMP
   - AnomalySynchronizerCircuitboard
@@ -130,6 +138,7 @@
   tier: 2
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - WeaponParticleDecelerator
   - HoloprojectorField
@@ -146,6 +155,7 @@
   tier: 3
   cost:
     Default: 20000
+    Scp: 10000
   recipeUnlocks:
   - MechPhasicScanningModule
   - PhazonHarness
@@ -172,6 +182,7 @@
   tier: 3
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
     - WeaponForceGun
     - WeaponTetherGun
@@ -186,5 +197,6 @@
   tier: 3
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - DeviceQuantumSpinInverter

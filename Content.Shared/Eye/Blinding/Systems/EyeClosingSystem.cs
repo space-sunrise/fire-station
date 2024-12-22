@@ -77,10 +77,10 @@ public sealed class EyeClosingSystem : EntitySystem
         if (eyelids.Comp.EyesClosed == value)
             return;
 
-        // Sunrise-SCP edit start.
+        // Fire edit start.
         if (!_blinking.CanCloseEyes(eyelids))
             return;
-        // Sunrise-SCP edit end.
+        // Fire edit end.
 
         eyelids.Comp.EyesClosed = value;
         Dirty(eyelids);
@@ -90,12 +90,12 @@ public sealed class EyeClosingSystem : EntitySystem
 
         _blindableSystem.UpdateIsBlind(eyelids.Owner);
 
-        // Sunrise-SCP edit start.
-        if (value && TryComp<BlinkableComponent>(eyelids, out var blinkableComponent))
+        // Fire edit start.
+        if (value)
         {
-            _blinking.ResetBlink(eyelids, blinkableComponent);
+            _blinking.ResetBlink(eyelids);
         }
-        // Sunrise-SCP edit end.
+        // Fire edit end.
     }
 
     public void UpdateEyesClosable(Entity<BlindableComponent?> blindable)

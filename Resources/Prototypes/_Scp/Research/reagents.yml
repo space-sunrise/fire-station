@@ -1,0 +1,11 @@
+﻿- type: reagent
+  parent: Blood
+  id: Corbocarbonate
+  name: reagent-name-corbocarbonate
+  group: Biological
+  desc: reagent-desc-corbocarbonate
+  color: "#b623d3"
+  flavor: anomaly
+  recognizable: true
+  physicalDesc: reagent-physical-desc-slimy
+  slippery: false

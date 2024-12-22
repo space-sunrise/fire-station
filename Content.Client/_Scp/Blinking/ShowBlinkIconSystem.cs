@@ -30,7 +30,7 @@ public sealed class ShowBlinkIconSystem : EquipmentHudSystem<ShowBlinkableCompon
         }
 
 
-        var iconPrototype = _prototypeManager.Index<BlinkIconPrototype>(ent.Comp.ClosedEyeIcon);
+        var iconPrototype = _prototypeManager.Index(ent.Comp.ClosedEyeIcon);
         args.StatusIcons.Add(iconPrototype);
     }
 }

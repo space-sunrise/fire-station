@@ -1,0 +1,494 @@
+﻿- type: entity
+  parent: BaseItem
+  id: ScpAnomalyPainting
+  name: strange painting
+  suffix: SCP Item
+  description: It's a boring old painting.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Items/painting.rsi
+    state: icon
+  - type: Item
+    size: Ginormous
+  - type: SpecialRespawn
+    prototype: ScpBackroomsPainting
+  - type: Wieldable
+  - type: MultiHandedItem
+  - type: AddComponentsPickup
+    components:
+    - type: AnomalyAccent
+
+- type: entity
+  parent: BaseItem
+  id: ScpAnomalyRock
+  name: strange rock
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Items/rock.rsi
+    state: icon
+  - type: Item
+    size: Normal
+  - type: PointLight
+    radius: 1.1
+    energy: 15
+    color: "#e9d7d7"
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Bloodloss
+        damage: 60
+      behaviors:
+      - !type:TriggerBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Damageable
+  - type: PacifismDangerousAttack
+  - type: ExplodeOnTrigger
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 120
+  - type: Barotrauma
+    damage:
+      types:
+        Bloodloss: 1
+  - type: ChangeLightOnDamage
+    targetLightColor: "#df2020"
+    maxDamage: 60
+
+- type: entity
+  parent: ClothingHeadHatCowboyWhite
+  id: ScpAnomalyCowboyHat
+  name: strange cowboy hat
+  suffix: SCP Item
+  components:
+  - type: AddAccentClothing
+    accent: DogAccent
+  - type: AddDrunkClothing
+
+- type: entity
+  parent: MaterialBase
+  id: ScpAnomalyDiamond
+  name: strange diamond
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    state: diamond
+    scale: 2,2
+    layers:
+    - state: diamond
+      map: ["base"]
+  - type: Item
+    size: Ginormous
+  - type: Wieldable
+  - type: MultiHandedItem
+  - type: ClothingSpeedModifier
+    walkModifier: 0.5
+    sprintModifier: 0.5
+  - type: HeldSpeedModifier
+  - type: StaticPrice
+    price: 4000000 # нереально дорогой
+
+- type: entity
+  parent: BaseItem
+  id: ScpAnomalyInvitation
+  name: strange wedding invitation
+  suffix: SCP Item
+  components:
+  # paper prototype copy-paste
+  - type: Sprite
+    sprite: _Scp/Objects/Items/invitation.rsi
+    state: icon
+  - type: Paper
+  - type: PaperLabelType
+  - type: ActivatableUI
+    key: enum.PaperUiKey.Key
+    requiresComplex: false
+  - type: UserInterface
+    interfaces:
+      enum.PaperUiKey.Key:
+        type: PaperBoundUserInterface
+  - type: Item
+    size: Tiny
+  - type: Tag
+    tags:
+    - Document
+    - Paper
+  - type: Appearance
+  - type: Flammable
+    fireSpread: true
+    alwaysCombustible: true
+    damage:
+      types:
+        Heat: 1
+  - type: FireVisuals
+    sprite: Effects/fire.rsi
+    normalState: fire
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 40
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: FlavorProfile
+    flavors:
+    - paper
+  # paper prototype copy paste
+  - type: ChokeOnRead
+
+- type: entity
+  parent: BaseItem
+  id: ScpAnomalySwatter
+  name: strange fly swatter
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Items/flyswatter.rsi
+    state: icon
+  - type: Item
+    size: Small
+    storedRotation: 45
+    shape:
+    - 0,0,2,0
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Effects/snap.ogg
+      params:
+        variation: 0.125
+  - type: UseDelay
+    delay: 0.5
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Effects/snap.ogg
+      params:
+        variation: 0.125
+  - type: MeleeWeapon
+    wideAnimationRotation: 135
+    soundHit:
+      path: /Audio/Effects/snap.ogg
+      params:
+        variation: 0.125
+    damage:
+      types:
+        Blunt: 0
+  - type: EmitEmoteOnHit
+    emote: Crying
+
+- type: entity
+  parent: BaseItem
+  id: ScpAnomalyDollar
+  name: strange dollar
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Items/dollar.rsi
+    state: icon
+  - type: Item
+    size: Small
+    storedRotation: -90
+  - type: Appearance
+  - type: PaperVisuals
+  - type: Flammable
+    fireSpread: true
+    alwaysCombustible: true
+    damage:
+      types:
+        Heat: 1
+  - type: FireVisuals
+    sprite: Effects/fire.rsi
+    normalState: fire
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Speech
+  - type: Vocal # ╰(▔∀▔)╯
+    sounds:
+      Male: MaleVulpkanin
+      Female: FemaleVulpkanin
+      Unsexed: MaleVulpkanin
+  - type: Emoting
+  - type: EmitEmotesPeriodically
+    emotes:
+    - Scream
+    cooldownVariations: 10
+    mode: Random
+
+- type: entity # TODO: Сделать парента этой штуки бьющимся
+  parent: DrinkHotCoffee
+  id: ScpAnomalyCoffee
+  name: strange cup
+  suffix: SCP Item
+  components:
+  - type: SolutionRegeneration
+    solution: drink
+    generated:
+      reagents:
+      - ReagentId: Coffee
+        Quantity: 4
+
+- type: entity # TODO: Возможность открывать двери без питания
+  parent: BaseItem
+  id: ScpAnomalyKey
+  name: strange key
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Items/key.rsi
+    state: icon
+  - type: Item
+    size: Small
+    storedRotation: 45
+    shape:
+    - 0,0,2,0
+  - type: Access
+    groups:
+    - AllAccess
+    tags:
+    - CentralCommand
+    - NuclearOperative
+    - SyndicateAgent
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+
+- type: entity # TODO: Свой текст
+  parent: BaseItem
+  id: ScpAnomalyBook
+  name: strange book
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Items/book.rsi
+    state: icon
+  - type: Paper
+    content: book-text-sun
+    contentSize: 15000
+  - type: ActivatableUI
+    key: enum.PaperUiKey.Key
+    requiresComplex: false
+  - type: UserInterface
+    interfaces:
+      enum.PaperUiKey.Key:
+        type: PaperBoundUserInterface
+  - type: MeleeWeapon
+    soundHit:
+      collection: Punch
+    damage:
+      types:
+        Blunt: 1
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 1
+  - type: Tag
+    tags:
+    - Book
+  - type: ChangeMobStateOnRead
+    state: Dead
+
+- type: entity
+  parent: BaseItem
+  id: ScpAnomalySpawnWand
+  name: strange wand
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Items/wand.rsi
+    layers:
+    - state: icon
+    - state: slimy
+      map: [ "slimy" ]
+  - type: Item
+    size: Small
+    storedRotation: 45
+    shape:
+    - 0,0,2,0
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 8
+    soundHit:
+      collection: MetalThud
+  - type: SpawnOnUse
+    entities:
+    - ScpBackroomsSlime
+    popupNoCharges: Посох слабо мерцает, источая иссекающие остатки энергии # TODO: Засунуть в лок
+    soundSuccessful:
+      path: /Audio/Weapons/Guns/Gunshots/Magic/staff_door.ogg
+  - type: UseDelay
+    delay: 1.5
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.SpawnOnUseVisuals.Charged:
+        slimy:
+          True: { visible: true }
+          False: { visible: false }
+
+# Пустышки, возможно временно
+
+- type: entity
+  parent: BaseItem
+  id: ScpBackroomsRedCrystal
+  name: strange crystal
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Syndicate/telecrystal.rsi
+    state: telecrystal
+  - type: Item
+    size: Tiny
+
+- type: entity # TODO: Спрайты
+  parent: BaseItem
+  id: ScpBackroomsGoldPendant
+  name: strange pendant
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/bikehorn.rsi
+    state: icon
+  - type: Item
+    size: Small
+  - type: Clothing
+    quickEquip: true
+    slots:
+    - neck
+
+- type: entity
+  parent: BaseItem
+  id: ScpBackroomsScull
+  name: strange scull
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Terminator/parts.rsi
+    state: skull_icon
+  - type: Item
+    size: Normal
+
+- type: entity
+  parent: ClothingHeadHatFancyCrown
+  id: ScpBackroomsCrown
+  name: strange crown
+  suffix: SCP Item
+
+- type: entity # TODO: Спрайты
+  parent: ClothingHandsBase
+  id: ScpBackroomsRing
+  name: strange ring
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: Objects/Fun/bikehorn.rsi
+    state: icon
+
+- type: entity
+  parent: ClothingShoesBase
+  id: ScpBackroomsSpeedBoots
+  name: strange boots
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Shoes/Boots/speedboots.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Scp/Clothing/Shoes/Boots/speedboots.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 3
+    sprintModifier: 3
+
+- type: entity
+  parent: BaseItem
+  id: ScpBackroomsBlueCore
+  name: strange core
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: Structures/Specific/Anomalies/Cores/rock_core.rsi
+    layers:
+    - state: core
+    - state: pulse
+  - type: Item
+    size: Normal
+  - type: Physics
+    bodyStatus: InAir
+  - type: PointLight
+    radius: 1.5
+    energy: 3.5
+    color: "#5ca8cb"
+    castShadows: false
+
+# Снова предметы с приколами
+
+- type: entity
+  parent: BaseItem
+  id: ScpAnomalyRedCore
+  name: strange core
+  suffix: SCP Item
+  components:
+  - type: Sprite
+    sprite: Structures/Specific/Anomalies/Cores/pyro_core.rsi
+    layers:
+    - state: core
+    - state: pulse
+  - type: Item
+    size: Normal
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:TriggerBehavior
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: ExplodeOnTrigger
+  - type: TriggerOnPickup
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 200
+  - type: Damageable
+  - type: Physics
+    bodyStatus: InAir
+  - type: PointLight
+    radius: 1.5
+    energy: 1.5
+    color: "#E25822"
+    castShadows: false
+
+- type: entity
+  parent: WeaponRifleFoam
+  id: ScpAnomalyRifle
+  name: strange rifle
+  suffix: SCP Item
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+      - BulletBanana
+    capacity: 8
+    proto: BulletBanana

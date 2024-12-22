@@ -2,13 +2,17 @@
   id: Scp939
   name: SCP-939
   parent:
-  - BaseMob
-  - MobDamageable
+  - BaseScp
   - MobCombat
-  - MobBloodstream
   - MobAtmosStandard
-  - MobFlammable
   components:
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/scp-939.rsi
+    layers:
+    - map: [ "enum.Scp939Layers.Base" ]
+      state: alive
   - type: Scp939
   - type: CanBePulledSleeping
     exclusive: true
@@ -39,15 +43,7 @@
         Toxin: -1.0
       types:
         Bloodloss: -1.0
-  - type: Sprite
-    noRot: true
-    drawdepth: Mobs
-    sprite: _Scp/Mobs/scp-939.rsi
-    layers:
-    - map: [ "enum.Scp939Layers.Base" ]
-      state: alive
   - type: Buckle
-  - type: ZombieImmune
   - type: SSDIndicator
   - type: Stripping
   - type: VoiceMask
@@ -66,9 +62,6 @@
       2000: 0.9
       3000: 0.8
       3500: 0.7
-  - type: Speech
   - type: Tag
     tags:
-    - FootstepSound
-    - DoorBumpOpener
-    # - IgnorePortals # TODO: Remove comment after SCP-096 merge in master
+    - IgnorePortals

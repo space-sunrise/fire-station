@@ -1,26 +1,32 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
 using Content.Client.Overlays;
 using Content.Client.SSDIndicator;
 using Content.Client.Stealth;
 using Content.Shared._Scp.Scp939;
+using Content.Shared._Scp.Scp939.Protection;
 using Content.Shared.Examine;
 using Content.Shared.Movement.Components;
 using Content.Shared.StatusIcon.Components;
-using Content.Shared.Verbs;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Client.Player;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
+using Robust.Shared.Random;
 
 namespace Content.Client._Scp.Scp939;
 
 public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     private ShaderInstance _shaderInstance = default!;
+
+    // TODO: Выделить значения плохого зрения в отдельный компонент, не связанный с 939
+    private Scp939Component? _scp939Component;
 
     private List<ShaderInstance> _shaderInstances = new();
 
@@ -32,6 +38,8 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         SubscribeLocalEvent<Scp939VisibilityComponent, BeforePostShaderRenderEvent>(BeforeRender);
         SubscribeLocalEvent<Scp939VisibilityComponent, GetStatusIconsEvent>(OnGetStatusIcons, after: new []{typeof(SSDIndicatorSystem)});
         SubscribeLocalEvent<Scp939VisibilityComponent, ExamineAttemptEvent>(OnExamine);
+
+        SubscribeLocalEvent<Scp939Component, PlayerAttachedEvent>(OnPlayerAttached);
 
         _shaderInstance = _prototypeManager.Index<ShaderPrototype>("Hide").Instance().Duplicate();
 
@@ -46,9 +54,7 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
     private void OnExamine(Entity<Scp939VisibilityComponent> ent, ref ExamineAttemptEvent args)
     {
         if (!IsActive)
-        {
             return;
-        }
 
         var visibility = GetVisibility(ent);
 
@@ -60,6 +66,12 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
 
     private void OnGetStatusIcons(Entity<Scp939VisibilityComponent> ent, ref GetStatusIconsEvent args)
     {
+        // Олежа чурка
+        var playerEntity = _playerManager.LocalSession?.AttachedEntity;
+
+        if (!HasComp<Scp939Component>(playerEntity))
+            return;
+
         var visibility = GetVisibility(ent);
 
         if (visibility <= 0.5f)
@@ -74,7 +86,7 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
 
         var query = EntityQueryEnumerator<Scp939VisibilityComponent, SpriteComponent>();
 
-        while (query.MoveNext(out var entityUid, out var visibilityComponent, out var spriteComponent))
+        while (query.MoveNext(out _, out _, out var spriteComponent))
         {
             spriteComponent.PostShader = null;
         }
@@ -82,7 +94,19 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
 
     private void OnMove(Entity<Scp939VisibilityComponent> ent, ref MoveEvent args)
     {
-        ent.Comp.VisibilityAcc = 0f;
+        // В зависимости от наличие защит или проблем со зрением у 939 изменяется то, насколько хорошо мы видим жертву
+        if (ModifyAcc(ent.Comp, out var modifier)) // Если зрение затруднено
+        {
+            ent.Comp.VisibilityAcc *= modifier;
+        }
+        else if (HasComp<Scp939ProtectionComponent>(ent)) // Если имеется защита(тихое хождение)
+        {
+            return;
+        }
+        else // Если со зрением все ок
+        {
+            ent.Comp.VisibilityAcc = 0;
+        }
 
         if (!TryComp<MovementSpeedModifierComponent>(ent, out var speedModifierComponent)
             || !TryComp<PhysicsComponent>(ent, out var physicsComponent))
@@ -92,10 +116,15 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
 
         var currentVelocity = physicsComponent.LinearVelocity.Length();
 
-        if(speedModifierComponent.BaseWalkSpeed > currentVelocity)
+        if (speedModifierComponent.BaseWalkSpeed > currentVelocity)
         {
             ent.Comp.VisibilityAcc = ent.Comp.HideTime / 2f;
         }
+    }
+
+    private void OnPlayerAttached(Entity<Scp939Component> ent, ref PlayerAttachedEvent args)
+    {
+        _scp939Component = ent.Comp;
     }
 
     public override void Update(float frameTime)
@@ -103,15 +132,13 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         base.Update(frameTime);
 
         if (!IsActive)
-        {
             return;
-        }
 
         var query = EntityQueryEnumerator<SpriteComponent, Scp939VisibilityComponent>();
 
         var shaderId = 0;
 
-        while (query.MoveNext(out var entityUid, out var spriteComponent, out var visibilityComponent))
+        while (query.MoveNext(out _, out var spriteComponent, out var visibilityComponent))
         {
             if (_shaderInstances.Count <= shaderId)
             {
@@ -148,10 +175,28 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         var acc = ent.Comp.VisibilityAcc;
 
         if (acc > ent.Comp.HideTime)
-        {
             return 0;
-        }
 
         return Math.Clamp(1f - (acc / ent.Comp.HideTime), 0f, 1f);
+    }
+
+    // TODO: Переделать под статус эффект и добавить его в панель статус эффектов, а то непонятно игруну
+    /// <summary>
+    /// Если вдруг собачка плохо видит
+    /// </summary>
+    private bool ModifyAcc(Scp939VisibilityComponent visibilityComponent, [NotNullWhen(true)] out int modifier)
+    {
+        // 1 = отсутствие модификатора
+        modifier = 1;
+
+        if (_scp939Component == null)
+            return false;
+
+        if (!_scp939Component.PoorEyesight)
+            return false;
+
+        modifier = _random.Next(visibilityComponent.MinValue, visibilityComponent.MaxValue);
+
+        return true;
     }
 }

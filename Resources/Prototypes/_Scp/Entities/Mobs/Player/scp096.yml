@@ -4,31 +4,47 @@
   description: Скромник
   suffix: SCP-096
   parent:
-  - MobBloodstream
+  - BaseScp
+  - MobCombat
   - StripableInventoryBase
-  - BaseMob
   components:
+  - type: Sprite
+    sprite: _Scp/Mobs/scp-096.rsi
+    layers:
+    - state: walking
+      map: [ "base" ]
+  - type: Scp096
+  - type: MeleeWeapon
+    bluntStaminaDamageFactor: 1.0
+    altDisarm: false
+    soundHit:
+      path: /Audio/Weapons/punch3.ogg
+    angle: 0
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Blunt: 35
+        Bloodloss: 5
+  - type: Body
+    prototype: Human
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 1.5
+  - type: Inventory
+    templateId: scp096
   - type: AmbientSound
     enabled: true
     volume: -2
     range: 15
     sound:
       path: /Audio/_Scp/Scp096/scp-096-crying.ogg
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/Effects/Footsteps/slime1.ogg
+      params:
+        volume: 3
   - type: Blindable
-  - type: Bloodstream
-    bloodReagent: Blood
-    bloodlossDamage:
-      types:
-        Bloodloss:
-          0.5
-    bloodlossHealDamage:
-      types:
-        Bloodloss:
-          -0.25
-  - type: Body
-    prototype: Animal
   - type: Climbing
-  - type: CombatMode
   - type: Damageable
     damageModifierSet: SCP-096
   - type: Fixtures
@@ -42,37 +58,15 @@
         - MobMask
         layer:
         - MobLayer
-  - type: FootstepModifier
-    footstepSoundCollection:
-      path: /Audio/Effects/Footsteps/slime1.ogg
-      params:
-        volume: 3
   - type: Grammar
     attributes:
       proper: true
       gender: male
-  - type: Inventory
-    templateId: scp096
-  - type: MeleeWeapon
-    bluntStaminaDamageFactor: 1.0
-    altDisarm: false
-    soundHit:
-      path: /Audio/Weapons/punch3.ogg
-    angle: 0
-    animation: WeaponArcPunch
-    damage:
-      types:
-        Blunt: 35
-        Bloodloss: 5
-  - type: MobState
   - type: MobThresholds
     thresholds:
       0: Alive
       4000: Critical
       10000: Dead
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 1.5
-    baseSprintSpeed: 1.5
   - type: PassiveDamage
     allowedStates:
     - Alive
@@ -85,10 +79,6 @@
         Toxin: -1.0
       types:
         Bloodloss: -1.0
-  - type: Pullable
-  - type: Puller
-    needsHands: false
-  - type: Scp096
   - type: CanBePulledDead
   - type: SlowOnDamage
     speedModifierThresholds:
@@ -96,12 +86,6 @@
       1500: 0.8
       2000: 0.7
   - type: Speech
-  - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Mobs/scp-096.rsi
-    layers:
-    - state: walking
-      map: [ "base" ]
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -133,7 +117,4 @@
     voice: Neco
   - type: TypingIndicator
     proto: alien
-  - type: UserInterface
-    interfaces:
-      enum.StrippingUiKey.Key:
-        type: StrippableBoundUserInterface
+  - type: Pacified

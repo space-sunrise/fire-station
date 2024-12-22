@@ -1,6 +1,5 @@
 ﻿using Content.Server.Actions;
 using Content.Shared._Scp.Scp049;
-using Content.Shared._Scp.Scp999;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs.Components;
@@ -33,7 +32,12 @@ public sealed partial class Scp049System : SharedScp049System
 
         scpEntity.Comp.NextTool = _random.Pick(scpEntity.Comp.SurgeryTools);
 
-        MakeMinion(mobStateEntity, scpEntity);
+        if (!TryMakeMinion(mobStateEntity, scpEntity))
+        {
+            var message = Loc.GetString("scp049-cannot-zombify-entity", ("target", mobStateEntity));
+            _popupSystem.PopupEntity(message, mobStateEntity, scpEntity);
+        }
+
     }
 
 

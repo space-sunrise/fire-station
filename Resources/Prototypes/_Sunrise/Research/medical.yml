@@ -10,6 +10,7 @@
   tier: 1
   cost:
     Default: 4000
+    Scp: 2000
   recipeUnlocks:
     - BoneSetter
     - BoneGel
@@ -29,6 +30,7 @@
   tier: 1
   cost:
     Default: 4000
+    Scp: 2000
   recipeUnlocks:
     - LeftArmCyber
     - RightArmCyber
@@ -49,6 +51,7 @@
   tier: 2
   cost:
     Default: 7000
+    Scp: 3500
   recipeUnlocks:
     - Drill
     - SawAdvanced

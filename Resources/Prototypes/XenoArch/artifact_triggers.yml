@@ -1,13 +1,21 @@
+# Fire edit - все стандартные триггеры должны иметь блеклист на сцп
+
 - type: artifactTrigger
   id: TriggerInteraction
   targetDepth: 0
   triggerHint: artifact-trigger-hint-physical
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactInteractionTrigger
 
 - type: artifactTrigger
   id: TriggerTimer
   targetDepth: 0
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactTimerTrigger
 
@@ -15,6 +23,9 @@
   id: TriggerExamine
   targetDepth: 0
   triggerHint: artifact-trigger-hint-examine
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactExamineTrigger
 
@@ -25,6 +36,7 @@
   blacklist:
     components:
     - Item
+    - Scp
   components:
   - type: ArtifactAnchorTrigger
 
@@ -35,6 +47,7 @@
   blacklist:
     components:
     - Item
+    - Scp
   components:
   - type: ArtifactElectricityTrigger
   - type: PowerConsumer
@@ -57,6 +70,9 @@
   id: TriggerMusic
   targetDepth: 1
   triggerHint: artifact-trigger-hint-music
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactMusicTrigger
 
@@ -64,6 +80,9 @@
   id: TriggerBruteDamage
   targetDepth: 1
   triggerHint: artifact-trigger-hint-physical
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactDamageTrigger
     damageTypes:
@@ -79,6 +98,9 @@
   whitelist:
     components:
     - Item
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactLandTrigger
 
@@ -86,6 +108,9 @@
   id: TriggerHeat
   targetDepth: 1
   triggerHint: artifact-trigger-hint-heat
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactHeatTrigger
 
@@ -93,6 +118,9 @@
   id: TriggerWater
   targetDepth: 1
   triggerHint: artifact-trigger-hint-water
+  blacklist:
+    components:
+    - Scp
   components:
   - type: Reactive
     groups:
@@ -107,6 +135,9 @@
   id: TriggerBlood
   targetDepth: 1
   triggerHint: artifact-trigger-hint-blood
+  blacklist:
+    components:
+    - Scp
   components:
   - type: Reactive
     groups:
@@ -121,6 +152,9 @@
   id: TriggerMedical
   targetDepth: 2
   triggerHint: artifact-trigger-hint-medical
+  blacklist:
+    components:
+    - Scp
   components:
   - type: Reactive
     groups:
@@ -135,6 +169,9 @@
   id: TriggerGas
   targetDepth: 2
   triggerHint: artifact-trigger-hint-regular-gases
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactGasTrigger
     possibleGas:
@@ -146,6 +183,9 @@
   id: TriggerDeath
   targetDepth: 2
   triggerHint: artifact-trigger-hint-death
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactDeathTrigger
 
@@ -153,6 +193,9 @@
   id: TriggerMagnet
   targetDepth: 2
   triggerHint: artifact-trigger-hint-magnet
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactMagnetTrigger
 
@@ -160,6 +203,9 @@
   id: TriggerLowPressure
   targetDepth: 2
   triggerHint: artifact-trigger-hint-pressure
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactPressureTrigger
     minPressureThreshold: 50
@@ -168,6 +214,9 @@
   id: TriggerHighDamage
   targetDepth: 3
   triggerHint: artifact-trigger-hint-physical
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactDamageTrigger
     damageThreshold: 500 #make it go boom or w/e
@@ -176,6 +225,9 @@
   id: TriggerRadiation
   targetDepth: 3
   triggerHint: artifact-trigger-hint-radiation
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactMicrowaveTrigger
   - type: ArtifactDamageTrigger
@@ -188,6 +240,9 @@
   id: TriggerHighPressure
   targetDepth: 3
   triggerHint: artifact-trigger-hint-pressure
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactPressureTrigger
     maxPressureThreshold: 385
@@ -196,6 +251,9 @@
   id: TriggerPlasma
   targetDepth: 3
   triggerHint: artifact-trigger-hint-plasma
+  blacklist:
+    components:
+    - Scp
   components:
   - type: ArtifactGasTrigger
     possibleGas:

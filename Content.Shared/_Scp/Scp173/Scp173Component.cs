@@ -13,12 +13,13 @@ public sealed partial class Scp173Component : Component
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float MaxJumpRange = 8f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public SoundSpecifier NeckSnapSound = new SoundCollectionSpecifier("Scp173NeckSnap");
 
     [DataField]
     public SoundSpecifier TeleportationSound = new SoundCollectionSpecifier("FootstepSCP173");
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField, ViewVariables]
     public DamageSpecifier? NeckSnapDamage;
+
 }

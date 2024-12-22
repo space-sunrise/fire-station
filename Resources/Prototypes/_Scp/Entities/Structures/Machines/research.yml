@@ -1,0 +1,7 @@
+﻿- type: entity
+  id: SCPResearchServer
+  parent: ResearchAndDevelopmentServer
+  components:
+  - type: TechnologyDatabase
+    supportedDisciplines:
+    - SCP

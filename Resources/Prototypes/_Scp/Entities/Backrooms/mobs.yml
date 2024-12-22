@@ -1,0 +1,17 @@
+- type: entity
+  name: green slime
+  parent: MobAdultSlimesGreen
+  id: ScpBackroomsSlime
+  suffix: Backrooms
+  components:
+  - type: NpcAutoOrder
+  - type: HTN
+    rootTask:
+      task: ScpBackroomSlimeCompound
+    blackboard:
+      IdleRange: !type:Single
+        2.0
+      FollowCloseRange: !type:Single
+        1.0
+      FollowRange: !type:Single
+        1.5

@@ -7,6 +7,7 @@ using Content.Server.Mind;
 using Content.Server.NPC.HTN;
 using Content.Server.Zombies;
 using Content.Shared._Scp.Scp049;
+using Content.Shared._Scp.Scp049.Scp049Protection;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs;
@@ -136,6 +137,16 @@ public sealed partial class Scp049System
         _popupSystem.PopupEntity(localeMessage, ent, PopupType.MediumCaution);
 
         args.Handled = true;
+    }
+
+    private bool TryMakeMinion(Entity<MobStateComponent> minionEntity, Entity<Scp049Component> scpEntity)
+    {
+        if (HasComp<Scp049ProtectionComponent>(minionEntity))
+            return false;
+
+        MakeMinion(minionEntity, scpEntity);
+
+        return true;
     }
 
     private void MakeMinion(Entity<MobStateComponent> minionEntity, Entity<Scp049Component> scpEntity)

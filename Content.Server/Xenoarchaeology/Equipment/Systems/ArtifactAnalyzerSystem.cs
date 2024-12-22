@@ -5,6 +5,7 @@ using Content.Shared.UserInterface;
 using Content.Server.Xenoarchaeology.Equipment.Components;
 using Content.Server.Xenoarchaeology.XenoArtifacts;
 using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
+using Content.Shared._Scp.Mobs.Components;
 using Content.Shared.Audio;
 using Content.Shared.DeviceLinking;
 using Content.Shared.DeviceLinking.Events;
@@ -43,6 +44,7 @@ public sealed class ArtifactAnalyzerSystem : EntitySystem
     [Dependency] private readonly ResearchSystem _research = default!;
     [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly TraversalDistorterSystem _traversalDistorter = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!; // Fire
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -117,6 +119,17 @@ public sealed class ArtifactAnalyzerSystem : EntitySystem
     {
         if (uid == null || !Resolve(uid.Value, ref placer))
             return null;
+
+        // Fire edit start - возможность взять сцп в радиусе от платформы
+        var lookup = _lookup.GetEntitiesInRange(uid.Value, 10f, LookupFlags.Uncontained | LookupFlags.Approximate);
+
+        foreach (var entUid in lookup)
+        {
+            // Если нашли хоть одного сцп рядом - возвращаем его как исследуемый артефакт
+            if (HasComp<ScpComponent>(entUid))
+                return entUid;
+        }
+        // Fire edit end
 
         return placer.PlacedEntities.FirstOrNull();
     }
@@ -199,11 +212,19 @@ public sealed class ArtifactAnalyzerSystem : EntitySystem
 
         if (TryComp<ArtifactAnalyzerComponent>(component.AnalyzerEntity, out var analyzer))
         {
-            artifact = analyzer.LastAnalyzedArtifact;
+            // Fire edit - добавил проверку на существование, чтобы не срало ошибкой отсутствия метадаты
+            // Она срется, потому что мы получаем артефакт с радиуса, а не с платформы, которая сама справляется с понимаем когда кто есть
+            artifact = Exists(analyzer.LastAnalyzedArtifact) ? analyzer.LastAnalyzedArtifact : null;
             msg = GetArtifactScanMessage(analyzer);
             totalTime = analyzer.AnalysisDuration;
+
+            // Fire edit start - возможность взять сцп в радиусе от платформы
             if (TryComp<ItemPlacerComponent>(component.AnalyzerEntity, out var placer))
-                canScan = placer.PlacedEntities.Any();
+            {
+                canScan = GetArtifactForAnalysis(component.AnalyzerEntity, placer) != null;
+            }
+            // Fire edit end
+
             canPrint = analyzer.ReadyToPrint;
 
             // the artifact that's actually on the scanner right now.

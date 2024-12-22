@@ -1,44 +1,86 @@
-﻿- type: entity
+﻿# Пресеты для артефактов-сцп.
+# Для разных сцп нужны разные пресеты
+
+- type: entity
+  abstract: true
+  id: ScpArtifactMinor
+  components:
+  - type: Artifact
+    addActivateAction: false
+    pointsPerNode:
+      Scp: 500
+  - type: ResearchClient
+
+- type: entity
+  abstract: true
+  id: ScpArtifactMiddle
+  components:
+  - type: Artifact
+    addActivateAction: false
+    pointsPerNode:
+      Scp: 1250
+  - type: ResearchClient
+
+- type: entity
+  abstract: true
+  id: ScpArtifactMajor
+  components:
+  - type: Artifact
+    addActivateAction: false
+    pointsPerNode:
+      Scp: 2500
+  - type: ResearchClient
+
+# Приколы-помогаторы с базовыми компонентами
+
+- type: entity
+  abstract: true
+  parent:
+  - BaseItem
+  - ScpArtifactMinor
+  id: BaseItemSCP
+  components:
+  - type: Scp
+
+- type: entity # Онли для мобов
   abstract: true
   parent:
   - BaseSimpleMob
   - MobBloodstream
   - MobFlammable
-  id: BaseSCP
+  - ScpArtifactMajor
+  id: BaseScp
+  components:
+  - type: Scp
+  - type: ScpRestriction
+  - type: ZombieImmune # ебало игроков представили?
+
+# Сцп
+# TODO: Переместить в отдельный файл
 
 - type: entity
-  abstract: true
-  parent:
-  - BaseSCP
-  - MobCombat
-  id: BaseSCPCombat
-
-- type: entity
-  parent: BaseSCPCombat
+  parent: [BaseScp, MobCombat]
   id: Scp173
   name: SCP-173
-  description: scp173-desc
   suffix: SCP-173
   components:
-  - type: Prying
-    pryPowered: true
-    force: true
-    speedModifier: 1.5
-    useSound:
-      path: /Audio/Items/crowbar.ogg
   - type: Sprite
     drawdepth: Mobs
     sprite: _Scp/scp-173.rsi
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: scp-173
-  - type: Tag
-    tags:
-    - CannotSuicide
-    - FootstepSound
+  - type: Scp173
+  - type: ShowBlinkable
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
     baseSprintSpeed: 15
+  - type: Prying
+    pryPowered: true
+    force: true
+    speedModifier: 1.5
+    useSound:
+      path: /Audio/Items/crowbar.ogg
   - type: MobState
   - type: MobThresholds
     thresholds:
@@ -59,20 +101,22 @@
         Bloodloss: -1.0
   - type: Scp173
   - type: CanBePulledDead
-  - type: ScpRestriction
-  - type: ShowBlinkable
-  - type: GiveActions
+  - type: ActionGrant
     actions:
     - Scp173Blind
     - Scp173Clog
     - Scp173DamageStructure
     - Scp173FastMovement
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepSCP173
 
 - type: entity
-  parent: BaseSCPCombat
+  parent: [BaseScp, MobCombat]
   id: Scp106
   name: SCP-106
   components:

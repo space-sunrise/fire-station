@@ -1,3 +1,4 @@
+using Content.Server._Scp.Backrooms.ChokeOnRead;
 using Content.Server.Body.Systems;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Damage;
@@ -6,7 +7,8 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Server.Body.Components
 {
-    [RegisterComponent, Access(typeof(RespiratorSystem))]
+    // Fire edit - добавил typeof(ChokeOnReadSystem)
+    [RegisterComponent, Access(typeof(RespiratorSystem), typeof(ChokeOnReadSystem))]
     public sealed partial class RespiratorComponent : Component
     {
         /// <summary>

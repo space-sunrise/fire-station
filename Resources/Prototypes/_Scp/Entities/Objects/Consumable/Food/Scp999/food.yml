@@ -1,0 +1,92 @@
+﻿# Ентити
+
+- type: entity
+  parent: FoodBase
+  id: FoodJellyScp999
+  suffix: SCP-Food
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/Baked/bread.rsi
+    layers:
+    - state: banana
+  - type: FlavorProfile
+    flavors:
+    - scp999jelly
+  - type: Food
+  - type: Tag
+    tags:
+    - Scp999jelly
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 26
+        reagents:
+        - ReagentId: Ash
+          Quantity: 20
+  - type: SwapReagentOnSpawn
+    replace:
+      Ash: JuiceCarrot
+    chance: 0.4
+
+- type: entity
+  id: FoodBakedBunJelly
+  parent: FoodBakedBase
+  name: jelly bun
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Consumable/Food/Baked/misc.rsi
+    state: jelly
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: JellyBunReagent
+          Quantity: 4
+        - ReagentId: Nutriment
+          Quantity: 4
+  - type: FlavorProfile
+    flavors:
+    - scp999jelly
+
+- type: entity
+  name: jelly pizza
+  parent: FoodPizzaMargherita
+  id: FoodPizzaJelly
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 12
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: JellyPizzaReagent
+          Quantity: 5
+  - type: SliceableFood
+    slice: FoodPizzaJellySlice
+  - type: FlavorProfile
+    flavors:
+    - scp999jelly
+
+- type: entity
+  name: jelly pizza slice
+  parent: FoodPizzaMargheritaSlice
+  id: FoodPizzaJellySlice
+  components:
+  - type: FlavorProfile
+    flavors:
+    - scp999jelly
+
+# Остальное
+
+- type: flavor
+  id: scp999jelly
+  flavorType: Complex
+  description: flavor-complex-scp999jelly
+
+- type: Tag
+  id: Scp999jelly
+
+- type: Tag
+  id: Sweetness

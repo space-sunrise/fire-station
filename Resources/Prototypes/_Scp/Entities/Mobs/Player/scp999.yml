@@ -3,13 +3,15 @@
   name: SCP-999
   description: Желешка
   suffix: SCP-999
-  parent: BaseSCP
+  parent: BaseScp
   components:
   - type: Scp999
     states:
       Default: default
       Wall: wall
       Rest: rest
+    createJellySound:
+      collection: desecration
   - type: Sprite
     drawdepth: Mobs
     sprite: _Scp/Mobs/scp-999.rsi
@@ -190,7 +192,8 @@
     reflects:
     - Energy
     - NonEnergy
-  - type: GiveActions
+  - type: ActionGrant
     actions:
     - Scp999Wallify
     - Scp999Rest
+  - type: Hunger

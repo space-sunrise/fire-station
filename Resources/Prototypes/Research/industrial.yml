@@ -10,6 +10,7 @@
   tier: 1
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - MiningDrill
   - MechEquipmentDrill
@@ -27,6 +28,7 @@
   tier: 1
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - RadarConsoleCircuitboard
   - HandHeldMassScanner
@@ -42,6 +44,7 @@
   tier: 1
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
@@ -57,6 +60,7 @@
   tier: 1
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - FlatpackerMachineCircuitboard
 
@@ -70,6 +74,7 @@
   tier: 1
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - AutolatheHyperConvectionMachineCircuitboard
   - ProtolatheHyperConvectionMachineCircuitboard
@@ -86,6 +91,7 @@
   tier: 1
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - PortableGeneratorPacmanMachineCircuitboard
   - PortableGeneratorSuperPacmanMachineCircuitboard
@@ -105,6 +111,7 @@
   tier: 1
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - ThermomachineFreezerMachineCircuitBoard
   - GasRecyclerMachineCircuitboard
@@ -119,6 +126,7 @@
   tier: 1
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - RipleyHarness
   - RipleyLArm
@@ -141,6 +149,7 @@
   tier: 2
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - ShuttleConsoleCircuitboard
   - ThrusterMachineCircuitboard
@@ -157,6 +166,7 @@
   tier: 2
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - HellfireFreezerMachineCircuitBoard
   - PortableScrubberMachineCircuitBoard
@@ -174,6 +184,7 @@
   tier: 2
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
     - WelderExperimental
     - PowerDrill
@@ -190,6 +201,7 @@
   tier: 2
   cost:
     Default: 12500
+    Scp: 6250
   recipeUnlocks:
     - OreBagOfHolding
     - MiningDrillDiamond
@@ -206,6 +218,7 @@
   tier: 2
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - RipleyMKIIHarness
   - RipleyUpgradeKit
@@ -222,6 +235,7 @@
   tier: 2
   cost:
     Default: 9000
+    Scp: 4500
   recipeUnlocks:
   - ClarkeHarness
   - ClarkeHead
@@ -245,6 +259,7 @@
   tier: 3
   cost:
     Default: 15000
+    Scp: 7500
   recipeUnlocks:
   - ClothingBackpackHolding
   - ClothingBackpackSatchelHolding
@@ -260,6 +275,7 @@
   tier: 3
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - PowerCellMicroreactor
   technologyPrerequisites:

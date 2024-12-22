@@ -3,6 +3,7 @@ using Content.Server.Medical.Components;
 using Content.Server.PowerCell;
 using Content.Server.Temperature.Components;
 using Content.Server.Traits.Assorted;
+using Content.Shared._Scp.Research.Artifacts;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
@@ -119,6 +120,11 @@ public sealed class HealthAnalyzerSystem : EntitySystem
 
         OpenUserInterface(args.User, uid);
         BeginAnalyzingEntity(uid, args.Target.Value);
+
+        // Fire edit start - для артефактов сцп
+        RaiseLocalEvent(args.Target.Value, new EntityAnalyzedEvent ());
+        // Fire edit end
+
         args.Handled = true;
     }
 

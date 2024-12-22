@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "license": null,
+  "copyright": null,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon",
+      "delays": [
+        [
+          0.15,
+          0.15,
+          0.15,
+          0.15
+        ]
+      ]
+    },
+    {
+      "name": "working",
+      "delays": [
+        [
+          0.14,
+          0.14
+        ]
+      ]
+    }
+  ]
+}

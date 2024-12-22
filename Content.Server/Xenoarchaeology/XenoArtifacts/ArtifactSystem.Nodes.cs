@@ -21,13 +21,21 @@ public sealed partial class ArtifactSystem
     /// <param name="artifact"></param>
     /// <param name="allNodes"></param>
     /// <param name="nodesToCreate">The amount of nodes it has.</param>
-    private void GenerateArtifactNodeTree(EntityUid artifact, List<ArtifactNode> allNodes, int nodesToCreate)
+    private void GenerateArtifactNodeTree(Entity<ArtifactComponent> artifact, List<ArtifactNode> allNodes, int nodesToCreate)
     {
         if (nodesToCreate < 1)
         {
             Log.Error($"nodesToCreate {nodesToCreate} is less than 1. Aborting artifact tree generation.");
             return;
         }
+
+        // Fire added start
+        // Проверка, которая не даст войти в бесконечный цикл, когда доступных эффектов или триггеров нет, а создать их нужно
+        nodesToCreate = Math.Clamp(nodesToCreate, 0, GetAllPossibleEffects(artifact).Count);
+
+        // Задаем количество доступных уникальных эффектов
+        SetPossibleEffects(artifact);
+        // Fire added end
 
         _usedNodeIds.Clear();
 
@@ -37,12 +45,29 @@ public sealed partial class ArtifactSystem
         while (uninitializedNodes.Count > 0)
         {
             var node = uninitializedNodes[0];
-            uninitializedNodes.Remove(node);
+            // Fire edit start
 
-            node.Trigger = GetRandomTrigger(artifact, ref node);
-            node.Effect = GetRandomEffect(artifact, ref node);
+            // Вычищение нода из списка переместил после проверок, чтобы не терять ноды
+
+            var trigger = GetRandomTrigger(artifact, ref node);
+
+            // Нет триггеров - не суждено стать артефактом
+            if (trigger == null)
+                return;
+
+            node.Trigger = trigger;
+
+            // На триггеры похуй, главное эффекты
+            var effect= GetRandomEffect(artifact, ref node);
+
+            if (IsEffectListed(allNodes, effect))
+                continue;
+
+            node.Effect = effect;
+            // Fire edit end
 
             var maxChildren = _random.Next(1, MaxEdgesPerNode - 1);
+            uninitializedNodes.Remove(node); // Fire edit
 
             for (var i = 0; i < maxChildren; i++)
             {
@@ -63,6 +88,57 @@ public sealed partial class ArtifactSystem
         }
     }
 
+    // Fire added start - пожалуйста, хватит добавлять 999 одинаковых эффектов в артефакт
+
+    /// <summary>
+    /// Проверяет, имеется ли данный эффект в данных нодах.
+    /// Возвращает true, если эффект уже представлен.
+    /// <remarks>
+    /// Позволяет реализовать уникальность всех эффектов для артефакта
+    /// Теперь ноды не будут забиваться тонной мусорных эффектов с маленьким весом
+    /// </remarks>
+    /// </summary>
+    /// <param name="allNodes">Список нодов, по которым будет производиться проверка</param>
+    /// <param name="effect">Эффект, по которому производится поиск</param>
+    /// <returns></returns>
+    private bool IsEffectListed(List<ArtifactNode> allNodes, string effect)
+    {
+        foreach (var node in allNodes)
+        {
+            if (node.Effect == effect)
+                return true;
+        }
+
+        return false;
+    }
+
+
+    /// <summary>
+    /// Возвращает количество всех доступных уникальных эффектов для этого артефакта
+    /// </summary>
+    /// <param name="artifact">Артефакт, для которог производится подсчет</param>
+    /// <returns>Список доступных эффектов для выбранного артефакта</returns>
+    private HashSet<ArtifactEffectPrototype> GetAllPossibleEffects(EntityUid artifact)
+    {
+        var allEffects = _prototype.EnumeratePrototypes<ArtifactEffectPrototype>()
+            .Where(x => _whitelistSystem.IsWhitelistPassOrNull(x.Whitelist, artifact) &&
+                        _whitelistSystem.IsBlacklistFailOrNull(x.Blacklist, artifact))
+            .ToHashSet();
+
+        return allEffects;
+    }
+
+    /// <summary>
+    /// Метод, задающий артефакту его возможные уникальные эффекты
+    /// </summary>
+    /// <param name="artifact"></param>
+    private void SetPossibleEffects(Entity<ArtifactComponent> artifact)
+    {
+        artifact.Comp.PossibleEffects = GetAllPossibleEffects(artifact);
+    }
+
+    // Fire added end
+
     private int GetValidNodeId()
     {
         var id = _random.Next(100, 1000);
@@ -79,14 +155,19 @@ public sealed partial class ArtifactSystem
     //yeah these two functions are near duplicates but i don't
     //want to implement an interface or abstract parent
 
-    private string GetRandomTrigger(EntityUid artifact, ref ArtifactNode node)
+    private string? GetRandomTrigger(EntityUid artifact, ref ArtifactNode node)
     {
         var allTriggers = _prototype.EnumeratePrototypes<ArtifactTriggerPrototype>()
             .Where(x => _whitelistSystem.IsWhitelistPassOrNull(x.Whitelist, artifact) &&
             _whitelistSystem.IsBlacklistFailOrNull(x.Blacklist, artifact)).ToList();
+
+        if (allTriggers.Count == 0)
+            return null;
+
         var validDepth = allTriggers.Select(x => x.TargetDepth).Distinct().ToList();
 
         var weights = GetDepthWeights(validDepth, node.Depth);
+
         var selectedRandomTargetDepth = GetRandomTargetDepth(weights);
         var targetTriggers = allTriggers
             .Where(x => x.TargetDepth == selectedRandomTargetDepth).ToList();
@@ -94,19 +175,31 @@ public sealed partial class ArtifactSystem
         return _random.Pick(targetTriggers).ID;
     }
 
-    private string GetRandomEffect(EntityUid artifact, ref ArtifactNode node)
+    // Fire edit
+    /// <summary>
+    /// Получаем случайный уникальный эффект для артефакта
+    /// Все доступные эффекты хранятся в компоненте артефакта
+    /// Как только эффект был выбран, он выбывает из списка доступных эффектов для следующего тейка
+    /// </summary>
+    /// <param name="artifact">Ентити артефакта</param>
+    /// <param name="node">Нода</param>
+    /// <returns>Айди случайного уникального эффекта</returns>
+    private string GetRandomEffect(Entity<ArtifactComponent> artifact, ref ArtifactNode node)
     {
-        var allEffects = _prototype.EnumeratePrototypes<ArtifactEffectPrototype>()
-            .Where(x => _whitelistSystem.IsWhitelistPassOrNull(x.Whitelist, artifact) &&
-            _whitelistSystem.IsBlacklistFailOrNull(x.Blacklist, artifact)).ToList();
+        var allEffects = artifact.Comp.PossibleEffects;
         var validDepth = allEffects.Select(x => x.TargetDepth).Distinct().ToList();
 
         var weights = GetDepthWeights(validDepth, node.Depth);
+
         var selectedRandomTargetDepth = GetRandomTargetDepth(weights);
         var targetEffects = allEffects
-            .Where(x => x.TargetDepth == selectedRandomTargetDepth).ToList();
+            .Where(x => x.TargetDepth == selectedRandomTargetDepth)
+            .ToList();
 
-        return _random.Pick(targetEffects).ID;
+        var selectedEffect = _random.Pick(targetEffects);
+        artifact.Comp.PossibleEffects.Remove(selectedEffect);
+
+        return selectedEffect.ID;
     }
 
     /// <remarks>

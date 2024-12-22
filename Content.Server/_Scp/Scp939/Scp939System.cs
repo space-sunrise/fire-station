@@ -6,7 +6,6 @@ using Content.Shared.Damage;
 using Content.Shared.StatusEffect;
 using Robust.Server.GameObjects;
 using Robust.Shared.Player;
-using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Scp939;
 
@@ -54,11 +53,37 @@ public sealed partial class Scp939System : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<Scp939Component, SleepingComponent>();
+        // Все 939, что спят
+        var querySleeping = EntityQueryEnumerator<Scp939Component, SleepingComponent>();
 
-        while (query.MoveNext(out var uid, out var scp939Component, out _))
+        // Обработка лечения 939 во сне
+        while (querySleeping.MoveNext(out var uid, out var scp939Component, out _))
         {
             _damageableSystem.TryChangeDamage(uid, scp939Component.HibernationHealingRate * frameTime);
+        }
+
+        // Просто все 939
+        var querySimple = EntityQueryEnumerator<Scp939Component>();
+
+        // Обработка плохого зрения 939
+        while (querySimple.MoveNext(out var uid, out var scp939Component))
+        {
+
+            if (!scp939Component.PoorEyesight)
+                continue;
+
+            if (scp939Component.PoorEyesightTimeStart == null)
+                continue;
+
+            var timeDifference = _timing.CurTime - scp939Component.PoorEyesightTimeStart.Value;
+
+            if (timeDifference > TimeSpan.FromSeconds(scp939Component.PoorEyesightTime))
+            {
+                scp939Component.PoorEyesight = false;
+                scp939Component.PoorEyesightTimeStart = null;
+
+                Dirty(uid, scp939Component);
+            }
         }
     }
 

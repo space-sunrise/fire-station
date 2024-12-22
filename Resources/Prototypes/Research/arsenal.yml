@@ -10,6 +10,7 @@
   tier: 1
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - WeaponProtoKineticAccelerator
   - ShuttleGunKineticCircuitboard
@@ -26,6 +27,7 @@
   tier: 1
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - BoxShotgunIncendiary
   - MagazineRifleIncendiary
@@ -48,6 +50,7 @@
   tier: 1
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - WeaponLaserCarbine
   - WeaponMechCombatFiredartLaser
@@ -64,6 +67,7 @@
   tier: 1
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - MagazineShotgunBeanbag
   - BoxShellTranquilizer
@@ -91,6 +95,7 @@
   tier: 1
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - MagazineRifleUranium
   - MagazinePistolUranium
@@ -112,6 +117,7 @@
   tier: 1
   cost:
     Default: 8000
+    Scp: 4000
   recipeUnlocks:
   - Truncheon
   - TelescopicShield
@@ -129,6 +135,7 @@
   tier: 1
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - SignallerAdvanced
   - SignalTrigger
@@ -148,6 +155,7 @@
   tier: 1
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - ClothingBackpackElectropack
 
@@ -163,6 +171,7 @@
   tier: 2
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - WeaponLaserCannon
   - WeaponMechCombatSolarisLaser
@@ -190,6 +199,7 @@
   tier: 2
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - WeaponXrayCannon
 
@@ -203,6 +213,7 @@
   tier: 2
   cost:
     Default: 6000
+    Scp: 3000
   recipeUnlocks:
   - EnergyDomeDirectionalTurtle
 
@@ -216,6 +227,7 @@
   tier: 2
   cost:
     Default: 10500
+    Scp: 5250
   recipeUnlocks:
   - PowerCageRechargerCircuitboard
   #PowerCageSmall
@@ -239,6 +251,7 @@
   tier: 2
   cost:
     Default: 12000
+    Scp: 6000
   recipeUnlocks:
   - GygaxHarness
   - GygaxArmor
@@ -266,6 +279,7 @@
   tier: 3
   cost:
     Default: 15000
+    Scp: 7500
   recipeUnlocks:
   - WeaponAdvancedLaser
   - PortableRecharger
@@ -281,6 +295,7 @@
   tier: 3
   cost:
     Default: 15000
+    Scp: 7500
   recipeUnlocks:
   - WeaponMechCombatMissileRack8
   technologyPrerequisites:
@@ -298,6 +313,7 @@
   tier: 3
   cost:
     Default: 15000
+    Scp: 7500
   recipeUnlocks:
   - ShellEMPArtillery
   - PowerCageHigh
@@ -315,6 +331,7 @@
   tier: 3
   cost:
     Default: 16000
+    Scp: 8000
   recipeUnlocks:
   - DurandHarness
   - DurandArmor

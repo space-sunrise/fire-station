@@ -945,6 +945,14 @@
       - MagazineBR64Extended
       - MagazineDragunovExtended
     # Sunrise-End
+    # Fire start
+      - WeaponEarthGovLaserPistol
+      - WeaponEarthGovLaserRifle
+      - WeaponEarthGovLaserCarbine
+      - WeaponEarthGovLaserMG
+      - WeaponARLSniper
+      - WeaponGodlikeXRay
+    # Fire end
   - type: MaterialStorage
     whitelist:
       tags:

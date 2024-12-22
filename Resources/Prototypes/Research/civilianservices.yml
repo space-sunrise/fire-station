@@ -10,6 +10,7 @@
   tier: 1
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - BorgModuleGardening
   - BorgModuleHarvesting
@@ -27,6 +28,7 @@
   tier: 1
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - HamtrHarness
   - HamtrLArm
@@ -48,6 +50,7 @@
   tier: 1
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - SurveillanceCameraRouterCircuitboard
   - SurveillanceCameraWirelessRouterCircuitboard
@@ -67,6 +70,7 @@
   tier: 1
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
     - ComputerTelevisionCircuitboard
     - SynthesizerInstrument
@@ -84,6 +88,7 @@
   tier: 1
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - BorgModuleAdvancedCleaning
 
@@ -97,6 +102,7 @@
   tier: 1
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - FatExtractorMachineCircuitboard
   - BiofabricatorMachineCircuitboard
@@ -114,6 +120,7 @@
   tier: 2
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - FauxTileAstroGrass
   - FauxTileMowedAstroGrass
@@ -131,6 +138,7 @@
   tier: 2
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - StasisBedMachineCircuitboard
   - CryoPodMachineCircuitboard
@@ -147,6 +155,7 @@
   tier: 2
   cost:
     Default: 5000
+    Scp: 2500
   recipeUnlocks:
   - BorgModuleAdvancedTreatment
   - BorgModuleDefibrillator
@@ -161,6 +170,7 @@
   tier: 2
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - AdvMopItem
   - MegaSprayBottle
@@ -175,6 +185,7 @@
   tier: 2
   cost:
     Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - HonkerHarness
   - HonkerLArm
@@ -196,6 +207,7 @@
   tier: 2
   cost:
     Default: 6000
+    Scp: 3000
   recipeUnlocks:
   - MechEquipmentHonkerBananaMortar
   - MechEquipmentHonkerMousetrapMortar
@@ -210,6 +222,7 @@
   tier: 2
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - WeaponSprayNozzle
   - ClothingBackpackWaterTank
@@ -224,6 +237,7 @@
   tier: 2
   cost:
     Default: 15000
+    Scp: 7500
   recipeUnlocks:
   - CargoTelepadMachineCircuitboard
 
@@ -251,6 +265,7 @@
   tier: 3
   cost:
     Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - BluespaceBeaker
   - SyringeBluespace
