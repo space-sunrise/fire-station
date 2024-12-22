@@ -31,7 +31,7 @@
 
 - type: entity
   parent: Scp106CatwalkBase
-  id: Scp106CatwalkCatcher
-  suffix: Ловитель
+  id: Scp106CatwalkContainer
+  suffix: Сдерживатель
   components:
-  - type: Scp106CatwalkCatcher
+  - type: Scp106CatwalkContainer
