@@ -1,10 +1,13 @@
 ﻿using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Pulling.Components;
 
 namespace Content.Server._Scp.Pull;
 
 public sealed class CanBePulledDeadSystem : EntitySystem
 {
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+
     /// <inheritdoc/>
     public override void Initialize()
     {
@@ -13,18 +16,13 @@ public sealed class CanBePulledDeadSystem : EntitySystem
 
     private void OnMobStateChanged(Entity<CanBePulledDeadComponent> ent, ref MobStateChangedEvent args)
     {
-        switch (args.NewMobState)
+        if (_mobState.IsIncapacitated(ent))
         {
-            case MobState.Alive:
-                if (HasComp<PullableComponent>(ent))
-                    RemComp<PullableComponent>(ent.Owner);
-                break;
-            case MobState.Critical:
-                EnsureComp<PullableComponent>(ent);
-                break;
-            case MobState.Dead:
-                EnsureComp<PullableComponent>(ent);
-                break;
+            EnsureComp<PullableComponent>(ent);
+        }
+        else if (_mobState.IsAlive(ent))
+        {
+            RemComp<PullableComponent>(ent.Owner);
         }
     }
 }

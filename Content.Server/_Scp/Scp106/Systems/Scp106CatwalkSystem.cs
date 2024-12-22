@@ -1,12 +1,11 @@
-﻿using Content.Server._Scp.Scp106.Components;
+﻿using System.Linq;
+using Content.Server._Scp.Scp106.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.Humanoid;
-using Content.Shared.Random;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics.Events;
-using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp106.Systems;
 
@@ -16,7 +15,6 @@ public sealed class Scp106CatwalkSystem : EntitySystem
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly IRobustRandom _randomSystem = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -29,9 +27,12 @@ public sealed class Scp106CatwalkSystem : EntitySystem
 
     private void OnTargetStood(Entity<Scp106CatwalkTargetComponent> ent, ref StartCollideEvent args)
     {
-        if (!TryComp<HumanoidAppearanceComponent>(args.OtherEntity, out var humanoidAppearanceComponent) ||
-            ent.Comp.StandingEnt != null)
+        if (!HasComp<HumanoidAppearanceComponent>(args.OtherEntity))
             return;
+
+        if (ent.Comp.StandingEnt != null)
+            return;
+
         ent.Comp.StandingEnt = args.OtherEntity;
 
         ContainScp106(args.OtherEntity);
@@ -43,24 +44,16 @@ public sealed class Scp106CatwalkSystem : EntitySystem
 
         while (scp106Query.MoveNext(out var scp106Uid, out var scp106Component))
         {
-            if (scp106Component.IsContained == false)
-            {
-                var container6Query = AllEntityQuery<Scp106CatwalkContainerComponent>();
+            if (!scp106Component.IsContained)
+                continue;
 
-                List<EntityUid> containerList = new List<EntityUid>();
+            var containerUidPicked = EntityQuery<Scp106CatwalkContainerComponent>().First().Owner;
 
-                while (container6Query.MoveNext(out var containerUid, out var containerComponent))
-                {
-                    containerList.Add(containerUid);
-                }
+            _body.GibBody(uid);
+            _transform.SetCoordinates(scp106Uid, Transform(containerUidPicked).Coordinates);
+            _chat.DispatchStationAnnouncement(containerUidPicked, Loc.GetString("scp106-return-to-containment"));
 
-                var containerUidPicked = _randomSystem.Pick(containerList);
-
-                _body.GibBody(uid);
-                _transform.SetCoordinates(scp106Uid, Transform(containerUidPicked).Coordinates);
-                _chat.DispatchStationAnnouncement(containerUidPicked, Loc.GetString("scp106-return-to-containment"));
-                break;
-            }
+            break;
         }
     }
 
@@ -68,8 +61,11 @@ public sealed class Scp106CatwalkSystem : EntitySystem
     {
         if (ent.Comp.StandingEnt == null)
             return;
-        if (args.OtherEntity == ent.Comp.StandingEnt)
-            ent.Comp.StandingEnt = null;
+
+        if (args.OtherEntity != ent.Comp.StandingEnt)
+            return;
+
+        ent.Comp.StandingEnt = null;
 
         // Выбираем следующую цель
         var lookup = _lookup.GetEntitiesIntersecting(ent.Owner);
@@ -77,6 +73,7 @@ public sealed class Scp106CatwalkSystem : EntitySystem
         {
             if (!HasComp<HumanoidAppearanceComponent>(standingUid))
                 continue;
+
             ent.Comp.StandingEnt = standingUid;
             break;
         }
@@ -84,8 +81,10 @@ public sealed class Scp106CatwalkSystem : EntitySystem
 
     private void OnContainerStood(Entity<Scp106CatwalkContainerComponent> ent, ref StartCollideEvent args)
     {
-        if (!TryComp<Scp106Component>(args.OtherEntity, out var scp106Component) ||
-            ent.Comp.StandingEnt != null)
+        if (!TryComp<Scp106Component>(args.OtherEntity, out var scp106Component))
+            return;
+
+        if (ent.Comp.StandingEnt != null)
             return;
 
         scp106Component.IsContained = true;
@@ -98,7 +97,10 @@ public sealed class Scp106CatwalkSystem : EntitySystem
     {
         if (ent.Comp.StandingEnt == null)
             return;
-        if (args.OtherEntity == ent.Comp.StandingEnt)
-            ent.Comp.StandingEnt = null;
+
+        if (args.OtherEntity != ent.Comp.StandingEnt)
+            return;
+
+        ent.Comp.StandingEnt = null;
     }
 }

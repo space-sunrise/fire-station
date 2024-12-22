@@ -13,25 +13,21 @@ public sealed class CanBePulledSleepingSystem : EntitySystem
         SubscribeLocalEvent<CanBePulledSleepingComponent, SleepStateChangedEvent>(OnSleepStateChangedEvent);
     }
 
-    private void OnComponentInit(EntityUid uid, CanBePulledSleepingComponent component, ComponentInit args)
+    private void OnComponentInit(Entity<CanBePulledSleepingComponent> ent, ref ComponentInit args)
     {
-        if (component.Exclusive && HasComp<PullableComponent>(uid))
-            RemComp<PullableComponent>(uid);
+        if (ent.Comp.Exclusive)
+            RemComp<PullableComponent>(ent);
     }
 
-    private void OnSleepStateChangedEvent(EntityUid uid,
-        CanBePulledSleepingComponent component,
-        ref SleepStateChangedEvent args)
+    private void OnSleepStateChangedEvent(Entity<CanBePulledSleepingComponent> ent, ref SleepStateChangedEvent args)
     {
-        switch (args.FellAsleep)
+        if (args.FellAsleep)
         {
-            case true:
-                AddComp<PullableComponent>(uid);
-                break;
-            case false:
-                if (!HasComp<Scp939MuzzledComponent>(uid)) // костыль чтоб нельзя было нуллифицировать эффект маски при сне
-                    RemComp<PullableComponent>(uid);
-                break;
+            AddComp<PullableComponent>(ent);
+        }
+        else if (!HasComp<Scp939MuzzledComponent>(ent)) // костыль чтоб нельзя было нуллифицировать эффект маски при сне
+        {
+            RemComp<PullableComponent>(ent);
         }
     }
 }
