@@ -31,11 +31,6 @@ public sealed class Scp106CatwalkSystem : EntitySystem
         if (!HasComp<HumanoidAppearanceComponent>(args.OtherEntity))
             return;
 
-        if (ent.Comp.StandingEnt != null)
-            return;
-
-        ent.Comp.StandingEnt = args.OtherEntity;
-
         ContainScp106(args.OtherEntity);
     }
 
@@ -45,7 +40,7 @@ public sealed class Scp106CatwalkSystem : EntitySystem
 
         while (scp106Query.MoveNext(out var scp106Uid, out var scp106Component))
         {
-            if (!scp106Component.IsContained)
+            if (scp106Component.IsContained)
                 continue;
 
             var containerUidPicked = EntityQuery<Scp106CatwalkContainerComponent>().First().Owner;
@@ -58,50 +53,21 @@ public sealed class Scp106CatwalkSystem : EntitySystem
         }
     }
 
-    private void OnTargetUnstood(Entity<Scp106CatwalkTargetComponent> ent, ref EndCollideEvent args)
-    {
-        if (ent.Comp.StandingEnt == null)
-            return;
-
-        if (args.OtherEntity != ent.Comp.StandingEnt)
-            return;
-
-        ent.Comp.StandingEnt = null;
-
-        // Выбираем следующую цель
-        var lookup = _lookup.GetEntitiesIntersecting(ent.Owner);
-        foreach (var standingUid in lookup)
-        {
-            if (!HasComp<HumanoidAppearanceComponent>(standingUid))
-                continue;
-
-            ent.Comp.StandingEnt = standingUid;
-            break;
-        }
-    }
+    private void OnTargetUnstood(Entity<Scp106CatwalkTargetComponent> ent, ref EndCollideEvent args) { }
 
     private void OnContainerStood(Entity<Scp106CatwalkContainerComponent> ent, ref StartCollideEvent args)
     {
         if (!TryComp<Scp106Component>(args.OtherEntity, out var scp106Component))
             return;
 
-        if (ent.Comp.StandingEnt != null)
-            return;
-
         scp106Component.IsContained = true;
-
-        ent.Comp.StandingEnt = args.OtherEntity;
-
     }
 
     private void OnContainerUnstood(Entity<Scp106CatwalkContainerComponent> ent, ref EndCollideEvent args)
     {
-        if (ent.Comp.StandingEnt == null)
+        if (!TryComp<Scp106Component>(args.OtherEntity, out var scp106Component))
             return;
 
-        if (args.OtherEntity != ent.Comp.StandingEnt)
-            return;
-
-        ent.Comp.StandingEnt = null;
+        scp106Component.IsContained = false;
     }
 }

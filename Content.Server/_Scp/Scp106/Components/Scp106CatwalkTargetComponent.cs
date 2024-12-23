@@ -4,8 +4,4 @@
 /// То куда тепать
 /// </summary>
 [RegisterComponent]
-public sealed partial class Scp106CatwalkTargetComponent : Component
-{
-    [DataField]
-    public EntityUid? StandingEnt;
-}
+public sealed partial class Scp106CatwalkTargetComponent : Component { }
