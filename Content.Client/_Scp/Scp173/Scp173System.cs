@@ -1,7 +1,6 @@
 ﻿using Content.Client.Actions;
 using Content.Client.UserInterface.Systems.Actions;
 using Content.Shared._Scp.Scp173;
-using Content.Shared.ActionBlocker;
 using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Events;
@@ -21,7 +20,6 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly ActionsSystem _actionsSystem = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
-    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly IUserInterfaceManager _ui = default!;
@@ -43,7 +41,6 @@ public sealed class Scp173System : SharedScp173System
 
         SubscribeLocalEvent<Scp173Component, ChangeDirectionAttemptEvent>(OnDirectionAttempt);
         SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
-        SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnInput);
 
         #endregion
 
@@ -79,19 +76,25 @@ public sealed class Scp173System : SharedScp173System
 
     private void OnDirectionAttempt(Entity<Scp173Component> ent, ref ChangeDirectionAttemptEvent args)
     {
-        if (Is173Watched(ent, out _))
-            args.Cancel();
+        // Разрешено, когда на нас не смотрят
+        var allowed = !Is173Watched(ent, out _);
+        ClientChangeMovement(allowed, args);
     }
 
     private void OnMoveAttempt(Entity<Scp173Component> ent, ref UpdateCanMoveEvent args)
     {
-        if (Is173Watched(ent, out _))
-            args.Cancel();
+        // Разрешено, когда на нас не смотрят
+        var allowed = !Is173Watched(ent, out _);
+        ClientChangeMovement(allowed, args);
     }
 
-    private void OnInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
+    private void ClientChangeMovement(bool allowed, CancellableEntityEventArgs args)
     {
-        _blocker.UpdateCanMove(ent);
+        // Если движение не разрешено отменяем ивент связанный с движением
+        if (!allowed)
+            args.Cancel();
+
+        RaiseNetworkEvent(new ClientMovementChangedEvent(allowed));
     }
 
     #endregion

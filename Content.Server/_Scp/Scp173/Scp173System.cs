@@ -15,10 +15,12 @@ using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Fluids.Components;
+using Content.Shared.Interaction.Events;
 using Content.Shared.Item;
 using Content.Shared.Lock;
 using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Movement.Events;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
@@ -56,7 +58,7 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly AudioSystem _audioSystem = default!;
 
-
+    private bool _isMovementAllowed;
 
     public override void Initialize()
     {
@@ -65,7 +67,27 @@ public sealed class Scp173System : SharedScp173System
         SubscribeLocalEvent<Scp173Component, Scp173DamageStructureAction>(OnStructureDamage);
         SubscribeLocalEvent<Scp173Component, Scp173ClogAction>(OnClog);
         SubscribeLocalEvent<Scp173Component, Scp173FastMovementAction>(OnFastMovement);
+
+        SubscribeLocalEvent<Scp173Component, ChangeDirectionAttemptEvent>(OnDirectionAttempt);
+        SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
+        SubscribeNetworkEvent<ClientMovementChangedEvent>(args => _isMovementAllowed = args.IsAllowed);
     }
+
+    #region Movement
+
+    private void OnDirectionAttempt(Entity<Scp173Component> ent, ref ChangeDirectionAttemptEvent args)
+    {
+        if (!_isMovementAllowed)
+            args.Cancel();
+    }
+
+    private void OnMoveAttempt(Entity<Scp173Component> ent, ref UpdateCanMoveEvent args)
+    {
+        if (!_isMovementAllowed)
+            args.Cancel();
+    }
+
+    #endregion
 
     private void OnStructureDamage(Entity<Scp173Component> uid, ref Scp173DamageStructureAction args)
     {

@@ -13,6 +13,7 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Scp.Scp173;
 
@@ -24,6 +25,7 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     public override void Initialize()
@@ -51,6 +53,13 @@ public abstract class SharedScp173System : EntitySystem
 
         #endregion
 
+        SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnInput);
+
+    }
+
+    private void OnInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
+    {
+        _blocker.UpdateCanMove(ent);
     }
 
     private void OnInit(Entity<Scp173Component> ent, ref ComponentInit args)
@@ -149,4 +158,15 @@ public abstract class SharedScp173System : EntitySystem
     }
 
     #endregion
+}
+
+[Serializable, NetSerializable]
+public sealed class ClientMovementChangedEvent : CancellableEntityEventArgs
+{
+    public readonly bool IsAllowed;
+
+    public ClientMovementChangedEvent(bool isAllowed)
+    {
+        IsAllowed = isAllowed;
+    }
 }
