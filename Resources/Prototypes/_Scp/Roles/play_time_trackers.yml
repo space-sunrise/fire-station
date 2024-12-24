@@ -1,2 +1,23 @@
 - type: playTimeTracker
   id: JobClassD
+
+- type: playTimeTracker
+  id: JobScp173
+
+- type: playTimeTracker
+  id: JobScp939
+
+- type: playTimeTracker
+  id: JobScp049
+
+- type: playTimeTracker
+  id: JobScp082
+
+- type: playTimeTracker
+  id: JobScp106
+
+- type: playTimeTracker
+  id: JobScp096
+
+- type: playTimeTracker
+  id: JobScp999

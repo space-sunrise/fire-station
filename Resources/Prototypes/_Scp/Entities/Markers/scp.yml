@@ -109,3 +109,15 @@
   - type: ConditionalSpawner
     prototypes:
     - Scp131B
+
+- type: entity
+  name: SCP-082 spawner
+  id: SpawnScp082
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp082

@@ -1,0 +1,97 @@
+- type: job
+  id: SCP049
+  name: job-name-scp049
+  description: job-description-scp049
+  playTimeTracker: JobScp049
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 720000 # 200h # Sunrise-RoleTime
+  weight: 25
+  icon: "JobIconCaptain"
+  joinNotifyCrew: false
+  canBeAntag: false
+  jobEntity: Scp049
+
+- type: job
+  id: SCP939
+  name: job-name-scp939
+  description: job-description-scp939
+  playTimeTracker: JobScp939
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 720000 # 200h # Sunrise-RoleTime
+  weight: 25
+  icon: "JobIconCaptain"
+  joinNotifyCrew: false
+  canBeAntag: false
+  jobEntity: Scp939
+
+- type: job
+  id: SCP173
+  name: job-name-scp173
+  description: job-description-scp173
+  playTimeTracker: JobScp173
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 720000 # 200h # Sunrise-RoleTime
+  weight: 25
+  icon: "JobIconCaptain"
+  joinNotifyCrew: false
+  canBeAntag: false
+  jobEntity: Scp173
+
+- type: job
+  id: SCP999
+  name: job-name-scp999
+  description: job-description-scp999
+  playTimeTracker: JobScp999
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 720000 # 200h # Sunrise-RoleTime
+  weight: 25
+  icon: "JobIconCaptain"
+  joinNotifyCrew: false
+  canBeAntag: false
+  jobEntity: Scp999
+
+- type: job
+  id: SCP096
+  name: job-name-scp096
+  description: job-description-scp096
+  playTimeTracker: JobScp096
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 720000 # 200h # Sunrise-RoleTime
+  weight: 25
+  icon: "JobIconCaptain"
+  joinNotifyCrew: false
+  canBeAntag: false
+  jobEntity: Scp096
+
+- type: job
+  id: SCP106
+  name: job-name-scp106
+  description: job-description-scp106
+  playTimeTracker: JobScp106
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 720000 # 200h # Sunrise-RoleTime
+  weight: 25
+  icon: "JobIconCaptain"
+  joinNotifyCrew: false
+  canBeAntag: false
+  jobEntity: Scp106
+
+- type: job
+  id: SCP082
+  name: job-name-scp082
+  description: job-description-scp082
+  playTimeTracker: JobScp082
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 720000 # 200h # Sunrise-RoleTime
+  weight: 25
+  icon: "JobIconCaptain"
+  joinNotifyCrew: false
+  canBeAntag: false
+  jobEntity: Scp096
