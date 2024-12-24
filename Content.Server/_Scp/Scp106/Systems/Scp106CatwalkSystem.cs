@@ -2,10 +2,14 @@
 using Content.Server._Scp.Scp106.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
+using Content.Server.GameTicking;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.Humanoid;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Player;
 
 namespace Content.Server._Scp.Scp106.Systems;
 
@@ -15,6 +19,7 @@ public sealed class Scp106CatwalkSystem : EntitySystem
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -43,12 +48,13 @@ public sealed class Scp106CatwalkSystem : EntitySystem
             if (scp106Component.IsContained)
                 continue;
 
-            var containerUidPicked = EntityQuery<Scp106CatwalkContainerComponent>().First().Owner;
 
+            var containerUidPicked = EntityQuery<Scp106CatwalkContainerComponent>().First().Owner;
+            scp106Component.IsContained = true;
             _body.GibBody(uid);
             _transform.SetCoordinates(scp106Uid, Transform(containerUidPicked).Coordinates);
             _chat.DispatchStationAnnouncement(containerUidPicked, Loc.GetString("scp106-return-to-containment"));
-
+            // _audio.PlayGlobal("/Audio/_Scp/scp106_contained_sound.ogg", Filter.Broadcast(), false); не знаю почему не работает
             break;
         }
     }
@@ -68,6 +74,13 @@ public sealed class Scp106CatwalkSystem : EntitySystem
         if (!TryComp<Scp106Component>(args.OtherEntity, out var scp106Component))
             return;
 
-        scp106Component.IsContained = false;
+        // Проверка, стоит ли SCP-106 всё ещё на другом контейнере
+        var isStillOnContainer = _lookup.GetEntitiesInRange(Transform(args.OtherEntity).Coordinates, 0.1f)
+            .Any(e => HasComp<Scp106CatwalkContainerComponent>(e));
+
+        if (!isStillOnContainer) // Если он не на другом контейнере, сбрасываем состояние
+        {
+            scp106Component.IsContained = false;
+        }
     }
 }
