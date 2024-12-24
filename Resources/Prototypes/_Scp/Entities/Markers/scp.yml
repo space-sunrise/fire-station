@@ -1,4 +1,6 @@
-﻿- type: entity
+﻿# Основные сцп имеющие работку
+
+- type: entity
   name: SCP-173 spawner
   id: SpawnScp173
   parent: MarkerBase
@@ -8,9 +10,8 @@
     - state: green
     - sprite: _Scp/scp-173.rsi
       state: scp-173
-  - type: ConditionalSpawner
-    prototypes:
-    - Scp173
+  - type: SpawnPoint
+    job_id: Scp173
 
 - type: entity
   name: SCP-096 spawner
@@ -22,9 +23,8 @@
     - state: green
     - sprite: _Scp/Mobs/scp-096.rsi
       state: idle
-  - type: ConditionalSpawner
-    prototypes:
-    - Scp096
+  - type: SpawnPoint
+    job_id: Scp096
 
 - type: entity
   name: SCP-939 spawner
@@ -36,9 +36,8 @@
     - state: green
     - sprite: _Scp/Mobs/scp-939.rsi
       state: alive
-  - type: ConditionalSpawner
-    prototypes:
-    - Scp939
+  - type: SpawnPoint
+    job_id: Scp939
 
 - type: entity
   name: SCP-049 spawner
@@ -50,9 +49,8 @@
     - state: green
     - sprite: _Scp/Mobs/scp-049.rsi
       state: SCP-049
-  - type: ConditionalSpawner
-    prototypes:
-    - Scp049
+  - type: SpawnPoint
+    job_id: Scp049
 
 - type: entity
   name: SCP-106 spawner
@@ -64,9 +62,8 @@
     - state: green
     - sprite: _Scp/scp-106.rsi
       state: 106
-  - type: ConditionalSpawner
-    prototypes:
-    - Scp106
+  - type: SpawnPoint
+    job_id: Scp106
 
 - type: entity
   name: SCP-999 spawner
@@ -78,9 +75,21 @@
     - state: green
     - sprite: _Scp/Mobs/scp-999.rsi
       state: default
-  - type: ConditionalSpawner
-    prototypes:
-    - Scp999
+  - type: SpawnPoint
+    job_id: Scp999
+
+- type: entity
+  name: SCP-082 spawner
+  id: SpawnScp082
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: SpawnPoint
+    job_id: Scp082
+
+# Второстепенные сцп
 
 - type: entity
   name: SCP-131A spawner
@@ -109,15 +118,3 @@
   - type: ConditionalSpawner
     prototypes:
     - Scp131B
-
-- type: entity
-  name: SCP-082 spawner
-  id: SpawnScp082
-  parent: MarkerBase
-  components:
-  - type: Sprite
-    layers:
-    - state: green
-  - type: ConditionalSpawner
-    prototypes:
-    - Scp082

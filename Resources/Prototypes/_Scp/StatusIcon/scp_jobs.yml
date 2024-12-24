@@ -1,0 +1,55 @@
+﻿- type: jobIcon
+  parent: JobIcon
+  id: JobIconScp049
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp_job_icons.rsi
+    state: 049
+  jobName: job-name-scp049
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconScp939
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp_job_icons.rsi
+    state: 939
+  jobName: job-name-scp939
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconScp173
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp_job_icons.rsi
+    state: 173
+  jobName: job-name-scp173
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconScp999
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp_job_icons.rsi
+    state: 999
+  jobName: job-name-scp999
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconScp096
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp_job_icons.rsi
+    state: 096
+  jobName: job-name-scp096
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconScp106
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp_job_icons.rsi
+    state: 106
+  jobName: job-name-scp106
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconScp082
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp_job_icons.rsi
+    state: 082
+  jobName: job-name-scp082

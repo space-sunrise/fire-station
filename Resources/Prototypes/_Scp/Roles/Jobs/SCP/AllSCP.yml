@@ -1,97 +1,97 @@
 - type: job
-  id: SCP049
+  id: Scp049
   name: job-name-scp049
   description: job-description-scp049
   playTimeTracker: JobScp049
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 720000 # 200h # Sunrise-RoleTime
+    time: 720000 # 200h
   weight: 25
-  icon: "JobIconCaptain"
+  icon: JobIconScp049
   joinNotifyCrew: false
   canBeAntag: false
   jobEntity: Scp049
 
 - type: job
-  id: SCP939
+  id: Scp939
   name: job-name-scp939
   description: job-description-scp939
   playTimeTracker: JobScp939
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 720000 # 200h # Sunrise-RoleTime
+    time: 720000 # 200h
   weight: 25
-  icon: "JobIconCaptain"
+  icon: JobIconScp939
   joinNotifyCrew: false
   canBeAntag: false
   jobEntity: Scp939
 
 - type: job
-  id: SCP173
+  id: Scp173
   name: job-name-scp173
   description: job-description-scp173
   playTimeTracker: JobScp173
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 720000 # 200h # Sunrise-RoleTime
+    time: 720000 # 200h
   weight: 25
-  icon: "JobIconCaptain"
+  icon: JobIconScp173
   joinNotifyCrew: false
   canBeAntag: false
   jobEntity: Scp173
 
 - type: job
-  id: SCP999
+  id: Scp999
   name: job-name-scp999
   description: job-description-scp999
   playTimeTracker: JobScp999
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 720000 # 200h # Sunrise-RoleTime
+    time: 720000 # 200h
   weight: 25
-  icon: "JobIconCaptain"
+  icon: JobIconScp999
   joinNotifyCrew: false
   canBeAntag: false
   jobEntity: Scp999
 
 - type: job
-  id: SCP096
+  id: Scp096
   name: job-name-scp096
   description: job-description-scp096
   playTimeTracker: JobScp096
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 720000 # 200h # Sunrise-RoleTime
+    time: 720000 # 200h
   weight: 25
-  icon: "JobIconCaptain"
+  icon: JobIconScp096
   joinNotifyCrew: false
   canBeAntag: false
   jobEntity: Scp096
 
 - type: job
-  id: SCP106
+  id: Scp106
   name: job-name-scp106
   description: job-description-scp106
   playTimeTracker: JobScp106
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 720000 # 200h # Sunrise-RoleTime
+    time: 720000 # 200h
   weight: 25
-  icon: "JobIconCaptain"
+  icon: JobIconScp106
   joinNotifyCrew: false
   canBeAntag: false
   jobEntity: Scp106
 
 - type: job
-  id: SCP082
+  id: Scp082
   name: job-name-scp082
   description: job-description-scp082
   playTimeTracker: JobScp082
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 720000 # 200h # Sunrise-RoleTime
+    time: 720000 # 200h
   weight: 25
-  icon: "JobIconCaptain"
+  icon: JobIconScp082
   joinNotifyCrew: false
   canBeAntag: false
-  jobEntity: Scp096
+  jobEntity: Scp096 # TODO: Поменять после добавления каннибала

@@ -1,0 +1,32 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "FireStation",
+    "size": {
+        "x": 8,
+        "y": 8
+    },
+    "states": [
+        {
+            "name": "049"
+        },
+        {
+            "name": "082"
+        },
+        {
+            "name": "096"
+        },
+        {
+            "name": "106"
+        },
+        {
+            "name": "173"
+        },
+        {
+            "name": "939"
+        },
+        {
+            "name": "999"
+        }
+    ]
+}
