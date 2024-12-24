@@ -2,7 +2,7 @@ guide-entry-disease = Разумная болезнь
 
 ## SUNRISE rules
 
-guide-entry-sr-rules = Правила сервера: SUNRISE
+guide-entry-sr-rules = Правила сервера: FireStation
 guide-entry-sr-rule-0 = Правило 0
 guide-entry-sr-rule-1 = Правило 1
 guide-entry-sr-rule-2 = Правило 2
