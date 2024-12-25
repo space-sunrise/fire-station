@@ -30,8 +30,12 @@ public abstract class SharedScp106System : EntitySystem
 
 	private void OnBackroomsAction(Entity<Scp106Component> ent, ref Scp106BackroomsAction args)
 	{
-		if (args.Handled)
-			return;
+        if (ent.Comp.IsContained == true)
+        {
+            _popup.PopupEntity("Ваши способности подавлены", ent.Owner, ent.Owner, PopupType.SmallCaution);
+            return;
+        }
+
         if (HasComp<Scp106BackRoomMapComponent>(Transform(ent).MapUid))
         {
             _popup.PopupEntity("Вы уже в своем измерении", ent.Owner, ent.Owner, PopupType.SmallCaution);
@@ -47,14 +51,18 @@ public abstract class SharedScp106System : EntitySystem
         };
 
         _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
-		if (_doAfter.TryStartDoAfter(doAfterEventArgs))
-			args.Handled = true;
+
+        if (!_doAfter.TryStartDoAfter(doAfterEventArgs))
+            return;
 	}
 
     private void OnRandomTeleportAction(Entity<Scp106Component> ent, ref Scp106RandomTeleportAction args)
     {
-        if (args.Handled)
+        if (ent.Comp.IsContained == true)
+        {
+            _popup.PopupEntity("Ваши способности подавлены", ent.Owner, ent.Owner, PopupType.SmallCaution);
             return;
+        }
 
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(5), new Scp106RandomTeleportActionEvent(), args.Performer, args.Performer)
         {
@@ -65,9 +73,9 @@ public abstract class SharedScp106System : EntitySystem
         };
 
         _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
-		if (_doAfter.TryStartDoAfter(doAfterEventArgs))
-			args.Handled = true;
-	}
+        if (!_doAfter.TryStartDoAfter(doAfterEventArgs))
+            return;
+    }
 
 	private void OnBackroomsDoAfter(Entity<Scp106Component> ent, ref Scp106BackroomsActionEvent args)
 	{
@@ -107,4 +115,6 @@ public abstract class SharedScp106System : EntitySystem
     public virtual async void SendToBackrooms(EntityUid target) {}
 
     public virtual void SendToStation(EntityUid target) {}
+
+    public virtual void SendToHuman(EntityUid target) {}
 }

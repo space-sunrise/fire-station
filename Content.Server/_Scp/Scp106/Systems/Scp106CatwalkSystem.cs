@@ -4,10 +4,12 @@ using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Shared._Scp.Scp106.Components;
+using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Humanoid;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
 
@@ -20,6 +22,7 @@ public sealed class Scp106CatwalkSystem : EntitySystem
     [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly PhysicsSystem _physics = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -66,7 +69,14 @@ public sealed class Scp106CatwalkSystem : EntitySystem
         if (!TryComp<Scp106Component>(args.OtherEntity, out var scp106Component))
             return;
 
+        if (!TryComp<FixturesComponent>(args.OtherEntity, out var fixturesComponent))
+            return;
+
+        fixturesComponent.Fixtures
+
+        // _physics.SetCollisionLayer(args.OtherEntity, (int) CollisionGroup.SmallMobLayer);
         scp106Component.IsContained = true;
+        EnsureComp<PacifiedComponent>(args.OtherEntity);
     }
 
     private void OnContainerUnstood(Entity<Scp106CatwalkContainerComponent> ent, ref EndCollideEvent args)
@@ -81,6 +91,7 @@ public sealed class Scp106CatwalkSystem : EntitySystem
         if (!isStillOnContainer) // Если он не на другом контейнере, сбрасываем состояние
         {
             scp106Component.IsContained = false;
+            RemComp<PacifiedComponent>(args.OtherEntity);
         }
     }
 }

@@ -6,6 +6,7 @@ using Content.Server.Station.Components;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Systems;
 using Content.Shared.Actions;
+using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Random.Helpers;
 using Robust.Server.GameObjects;
