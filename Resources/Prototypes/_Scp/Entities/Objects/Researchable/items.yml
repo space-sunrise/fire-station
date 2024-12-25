@@ -23,6 +23,25 @@
 
 - type: entity
   parent: ClothingHeadBase
+  id: ClothingHeadBagScp096
+  suffix: SCP-096 Item
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Scp096/scp096_bag-icons.rsi
+    state: icon
+  - type: Item
+    size: Normal
+    storedRotation: -90
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/Scp096/scp096_bag-equipped.rsi
+  - type: Scp096Mask
+    tearTime: 1 # мешок снимается легко
+  - type: ClothingAddActions
+    actions:
+    - Scp096TearMask
+
+- type: entity
+  parent: ClothingHeadBase
   id: ReinforcedMaskScp096
   suffix: SCP-096 Item
   components:

@@ -39,7 +39,7 @@
   components:
   - type: InstantAction
     icon:
-      sprite: Interface/Actions/actions_borg.rsi
-      state: state-laws
+      sprite: _Scp/Clothing/Head/Scp096/scp096_bag-icons.rsi
+      state: icon
     event: !type:Scp096TearMaskEvent
     useDelay: 0.5

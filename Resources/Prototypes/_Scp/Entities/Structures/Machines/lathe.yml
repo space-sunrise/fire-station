@@ -25,6 +25,7 @@
     runningState: icon
     dynamicRecipes:
     - EyeDroplets
+    - ClothingHeadBagScp096
     - ReinforcedMaskScp096
     - Scp049ProtectionImplanter
     - ClothingHeadAwareness
