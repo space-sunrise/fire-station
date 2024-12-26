@@ -1,7 +1,5 @@
 ﻿- type: entity
   id: Scp999
-  name: SCP-999
-  description: Желешка
   suffix: SCP-999
   parent: BaseScp
   components:

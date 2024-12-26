@@ -1,5 +1,6 @@
 ﻿- type: entity
   id: Scp457
+  suffix: SCP-457
   parent:
   - SimpleSpaceMobBase
   components:

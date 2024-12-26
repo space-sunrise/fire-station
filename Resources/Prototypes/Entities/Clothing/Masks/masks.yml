@@ -458,7 +458,7 @@
   - type: NightVisionDevice #Sunrise - night vision
     displayColor: "#44b855"
     displayShader: NVDDisplay
-  - type: FilterMask  # Sunrise-SCP
+  - type: FilterMask  # Fire
 
 - type: entity
   parent: ClothingMaskBase

@@ -1,3 +1,4 @@
+using Content.Shared.Interaction.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 
@@ -16,6 +17,14 @@ public abstract class SharedSpriteMovementSystem : EntitySystem
     {
         if (ent.Comp.IsMoving == args.IsMoving)
             return;
+
+        // Fire added start
+        if (HasComp<NoRotateOnMoveComponent>(ent))
+            return;
+
+        if (HasComp<BlockMovementComponent>(ent))
+            return;
+        // Fire added end
 
         ent.Comp.IsMoving = args.IsMoving;
         Dirty(ent);

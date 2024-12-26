@@ -1,7 +1,7 @@
 - type: entity
   id: Scp082
   name: SCP-082
-  description: Каннибал Фернанд
+  suffix: SCP-082
   parent:
   - BaseMob
   - MobDamageable

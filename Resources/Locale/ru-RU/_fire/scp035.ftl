@@ -1,7 +1,4 @@
-﻿ent-ClothingMaskScp035 = SCP-035
-    .desc = Комедийная маска времён примерно 15 века.
-
-ent-ActionScp035OrderStay = Приказ остановиться
+﻿ent-ActionScp035OrderStay = Приказ остановиться
     .desc = Маска отдает приказ манекену стоять
 
 ent-ActionScp035OrderFollow = Приказ следовать

@@ -1,7 +1,5 @@
 ﻿- type: entity
   id: Scp096
-  name: SCP-096
-  description: Скромник
   suffix: SCP-096
   parent:
   - BaseScp
@@ -111,10 +109,7 @@
   - type: Tag
     tags:
     - FootstepSound
-    - DoorBumpOpener
     - IgnorePortals
-  - type: TTS
-    voice: Neco
   - type: TypingIndicator
     proto: alien
   - type: Pacified

@@ -1,7 +1,7 @@
 ﻿- type: entity
   parent: [ClothingMaskBase, BaseItemSCP]
   id: ClothingMaskScp035
-  suffix: SCP
+  suffix: SCP-035
   components:
   - type: Sprite
     sprite: _Scp/scp-035.rsi
@@ -17,10 +17,9 @@
   - type: Scp035Mask
 
 - type: entity
-  name: rat servant
   id: MobServant035
   parent: [ SimpleMobBase, MobCombat ]
-  description: He's da mini rat. He don't make da roolz.
+  suffix: SCP-035 servant
   categories: [ HideSpawnMenu ] #Must be configured to a King or the AI breaks.
   components:
   - type: Sprite

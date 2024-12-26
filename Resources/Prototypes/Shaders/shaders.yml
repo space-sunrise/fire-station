@@ -110,7 +110,7 @@
   kind: source
   path: "/Textures/Shaders/hologram.swsl"
 
-# Sunrise-SCP edit.
+# Fire added start
 - type: shader
   id: BlinkingEffect
   kind: source
@@ -121,4 +121,4 @@
   kind: source
   path: "/Textures/Shaders/hide.swsl"
 
-# Sunrise-SCP edit.
+# Fire added end

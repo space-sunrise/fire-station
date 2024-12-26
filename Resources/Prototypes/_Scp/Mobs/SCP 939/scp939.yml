@@ -1,6 +1,6 @@
 ﻿- type: entity
   id: Scp939
-  name: SCP-939
+  suffix: SCP-939
   parent:
   - BaseScp
   - MobCombat
