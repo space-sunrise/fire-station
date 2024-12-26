@@ -384,7 +384,7 @@ namespace Content.Client.Lobby
             Lobby!.LobbyArt.Texture = _resourceCache.GetResource<TextureResource>(lobbyArtPrototype.Background);
         }
 
-        private void SetLobbyParallax(string? lobbyParallax)
+        private void SetLobbyParallax(string lobbyParallax)
         {
             if (!_prototypeManager.TryIndex<LobbyParallaxPrototype>(lobbyParallax, out var lobbyParallaxPrototype))
                 return;
