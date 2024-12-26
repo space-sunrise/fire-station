@@ -42,6 +42,11 @@
   result: EyeDroplets
 
 - type: latheRecipe
+  id: ClothingHeadBagScp096
+  parent: BaseASFRecipe
+  result: ClothingHeadBagScp096
+
+- type: latheRecipe
   id: ReinforcedMaskScp096
   parent: BaseASFRecipe
   result: ReinforcedMaskScp096

@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "FireStation",
+  "size": {
+    "x": 16,
+    "y": 16
+  },
+  "states": [
+    {
+      "name": "icon"
+    }
+  ]
+}

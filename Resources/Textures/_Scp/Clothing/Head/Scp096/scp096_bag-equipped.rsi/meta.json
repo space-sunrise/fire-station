@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "FireStation",
+  "size": {
+    "x": 48,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "equipped-HELMET",
+      "directions": 4
+    }
+  ]
+}

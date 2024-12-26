@@ -6,6 +6,7 @@ using Content.Shared.Inventory;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Popups;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
@@ -17,6 +18,7 @@ public sealed class Scp096MaskSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private const string HeadSlot = "head";
@@ -33,18 +35,26 @@ public sealed class Scp096MaskSystem : EntitySystem
 
     private void OnEquip(Entity<Scp096MaskComponent> ent, ref BeingEquippedAttemptEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
         var target = args.EquipTarget;
 
         // Маска должна надеваться только на сцп 096
-        if (!HasComp<Scp096Component>(target))
+        if (!TryComp<Scp096Component>(target, out var scp096Component))
         {
-            var message = Loc.GetString("scp096-mask-cannot-equip", ("name", Identity.Name(args.EquipTarget, EntityManager)));
-            _popup.PopupCursor(message, args.Equipee);
+            if (_net.IsClient) // Да пососи уже, почему так
+            {
+                var message = Loc.GetString("scp096-mask-cannot-equip", ("name", Identity.Name(args.EquipTarget, EntityManager)));
+                _popup.PopupCursor(message, args.Equipee);
+            }
 
             args.Cancel();
+            return;
+        }
+
+        // Нельзя надеть маску, пока 096 в агре
+        if (scp096Component.InRageMode)
+        {
+            args.Cancel();
+            return;
         }
 
         // Проигрывание звука надевания
@@ -53,16 +63,35 @@ public sealed class Scp096MaskSystem : EntitySystem
         {
             _audio.PlayPvs(equipSound, target);
         }
+
+        ent.Comp.SafeTimeEnd = _timing.CurTime + TimeSpan.FromSeconds(ent.Comp.SafeTime);
+        Dirty(ent);
     }
 
     private void OnTear(Entity<Scp096Component> scp, ref Scp096TearMaskEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         if (!TryGetScp096Mask(scp, out var scp096Mask))
             return;
+
+        // Нельзя снять маску, пока действует сейвтайм
+        if (scp096Mask.Value.Comp.SafeTimeEnd != null && _timing.CurTime < scp096Mask.Value.Comp.SafeTimeEnd)
+        {
+            if (_net.IsClient) // Когда уже сделают нормальную работу попапов в шареде
+            {
+                var message = Loc.GetString("scp096-mask-cannot-tear-safetime", ("time", scp096Mask.Value.Comp.SafeTimeEnd - _timing.CurTime));
+                _popup.PopupEntity(message, scp, scp);
+            }
+
+            return;
+        }
 
         var doAfterArgs = new DoAfterArgs(EntityManager, scp, scp096Mask.Value.Comp.TearTime, new Scp096TearMaskDoAfterEvent(), scp, scp, scp096Mask)
         {
             BreakOnDamage = true,
+            BreakOnMove = true,
         };
 
         _doAfter.TryStartDoAfter(doAfterArgs);

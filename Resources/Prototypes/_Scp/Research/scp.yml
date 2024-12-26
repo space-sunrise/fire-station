@@ -16,7 +16,7 @@
   - EyeDroplets
   - ClothingHeadAwareness
   - Scp049ProtectionImplanter
-  - ReinforcedMaskScp096
+  - ClothingHeadBagScp096
 
 # Tier 2
 
@@ -31,6 +31,7 @@
   cost:
     Scp: 7500
   recipeUnlocks:
+  - ReinforcedMaskScp096
   - ClothingHeadHelmetAiPowered
   - ClothingOuterAntiTeleportation
   - ClothingShoesSilent
