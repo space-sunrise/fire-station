@@ -185,7 +185,7 @@ public sealed class SunriseCCVars
      */
 
     public static readonly CVarDef<string> LobbyBackgroundType =
-        CVarDef.Create("lobby.background", "Random", CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("lobby.background", "Art", CVar.CLIENTONLY | CVar.ARCHIVE);
 
     public static readonly CVarDef<string> LobbyArt =
         CVarDef.Create("lobby.art", "Random", CVar.CLIENTONLY | CVar.ARCHIVE);
