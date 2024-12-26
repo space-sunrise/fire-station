@@ -24,9 +24,15 @@ public sealed partial class Scp096System : SharedScp096System
         InitTargets();
     }
 
+    // TODO: Переделать это под отдельный компонент, который будет выдаваться и убираться
     protected override void HandleDoorCollision(Entity<Scp096Component> scpEntity, Entity<DoorComponent> doorEntity)
     {
         base.HandleDoorCollision(scpEntity, doorEntity);
+
+        if (!scpEntity.Comp.InRageMode)
+            return;
+
+        _doorSystem.StartOpening(doorEntity);
 
         if (TryComp<DoorBoltComponent>(doorEntity, out var doorBoltComponent))
         {

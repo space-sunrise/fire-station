@@ -111,10 +111,7 @@
   - type: Tag
     tags:
     - FootstepSound
-    - DoorBumpOpener
     - IgnorePortals
-  - type: TTS
-    voice: Neco
   - type: TypingIndicator
     proto: alien
   - type: Pacified

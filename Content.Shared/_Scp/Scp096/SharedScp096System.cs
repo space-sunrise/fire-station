@@ -370,13 +370,7 @@ public abstract partial class SharedScp096System : EntitySystem
         HandleDoorCollision(ent, new Entity<DoorComponent>(args.OtherEntity, doorComponent));
     }
 
-    protected virtual void HandleDoorCollision(Entity<Scp096Component> scpEntity, Entity<DoorComponent> doorEntity)
-    {
-        if (!scpEntity.Comp.InRageMode)
-            return;
-
-        _doorSystem.StartOpening(doorEntity);
-    }
+    protected virtual void HandleDoorCollision(Entity<Scp096Component> scpEntity, Entity<DoorComponent> doorEntity) {}
 
     #endregion
 
