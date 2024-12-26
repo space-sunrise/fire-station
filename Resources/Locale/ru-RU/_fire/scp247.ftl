@@ -1,7 +1,4 @@
-﻿ent-Scp247 = милый котенок
-    .desc = Ну и милота.. Почему бы не погладить? :3
-
-scp247-pet-success = { $target } мило мурлычит
+﻿scp247-pet-success = { $target } мило мурлычит
 scp247-pet-failure = Внезапно, { $target } кусает вас за руку
 
 scp247-ghost-role-name = SCP-247

@@ -1,8 +1,6 @@
 ﻿- type: entity
   id: Scp131A
-  name: SCP-131A
-  description: Смотрит..
-  suffix: SCP-131
+  suffix: SCP-131A
   parent:
   - SimpleSpaceMobBase
   - BaseScp
@@ -65,9 +63,7 @@
 
 - type: entity
   id: Scp131B
-  name: SCP-131B
-  description: Смотрит..
-  suffix: SCP-131
+  suffix: SCP-131B
   parent: Scp131A
   components:
   - type: Sprite

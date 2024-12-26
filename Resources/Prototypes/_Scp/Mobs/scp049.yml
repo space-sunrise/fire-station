@@ -1,7 +1,6 @@
 ﻿- type: entity
   id: Scp049
-  name: SCP-049
-  description: Чумной доктор
+  suffix: SCP-049
   parent:
   - BaseMob
   - MobDamageable
