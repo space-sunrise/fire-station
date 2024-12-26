@@ -48,6 +48,7 @@
   recipeUnlocks:
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
+  - SMESAdvancedMachineCircuitboard
   - PowerCageMedium
 
 - type: technology

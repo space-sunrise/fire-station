@@ -105,6 +105,11 @@
   kind: source
   path: "/Textures/Shaders/cataracts.swsl"
 
+- type: shader
+  id: Hologram
+  kind: source
+  path: "/Textures/Shaders/hologram.swsl"
+
 # Sunrise-SCP edit.
 - type: shader
   id: BlinkingEffect
