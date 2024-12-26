@@ -386,14 +386,6 @@ namespace Content.Client.Lobby
 
         private void SetLobbyParallax(string? lobbyParallax)
         {
-            // Fire added start - а у нас таких нет, пока
-            if (lobbyParallax == null)
-            {
-                SetLobbyBackgroundType("Art");
-                return;
-            }
-            // Fire added end
-
             if (!_prototypeManager.TryIndex<LobbyParallaxPrototype>(lobbyParallax, out var lobbyParallaxPrototype))
                 return;
 
