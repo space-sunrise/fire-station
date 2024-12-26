@@ -200,7 +200,7 @@ public sealed class SunriseCCVars
         CVarDef.Create("lobby.lobby_opacity", 0.90f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     public static readonly CVarDef<string> ServerName =
-        CVarDef.Create("lobby.server_name", "Sunrise Station", CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("lobby.server_name", "Fire Station 2.0", CVar.SERVER | CVar.REPLICATED);
 
     /*
      * Planet Prison
