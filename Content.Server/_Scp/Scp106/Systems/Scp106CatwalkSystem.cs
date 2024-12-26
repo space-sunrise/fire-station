@@ -2,16 +2,14 @@
 using Content.Server._Scp.Scp106.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
-using Content.Server.GameTicking;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Humanoid;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
-using Robust.Shared.Player;
+using Robust.Shared.Physics.Systems;
 
 namespace Content.Server._Scp.Scp106.Systems;
 
@@ -23,6 +21,7 @@ public sealed class Scp106CatwalkSystem : EntitySystem
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
+    [Dependency] private readonly FixtureSystem _fixture = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -69,14 +68,17 @@ public sealed class Scp106CatwalkSystem : EntitySystem
         if (!TryComp<Scp106Component>(args.OtherEntity, out var scp106Component))
             return;
 
+        scp106Component.IsContained = true;
+        EnsureComp<PacifiedComponent>(args.OtherEntity);
+
         if (!TryComp<FixturesComponent>(args.OtherEntity, out var fixturesComponent))
             return;
 
-        fixturesComponent.Fixtures
+        foreach (var (id, fixture) in fixturesComponent.Fixtures)
+        {
+            _physics.SetCollisionMask(args.OtherEntity, id, fixture, 30);
 
-        // _physics.SetCollisionLayer(args.OtherEntity, (int) CollisionGroup.SmallMobLayer);
-        scp106Component.IsContained = true;
-        EnsureComp<PacifiedComponent>(args.OtherEntity);
+        }
     }
 
     private void OnContainerUnstood(Entity<Scp106CatwalkContainerComponent> ent, ref EndCollideEvent args)
@@ -92,6 +94,17 @@ public sealed class Scp106CatwalkSystem : EntitySystem
         {
             scp106Component.IsContained = false;
             RemComp<PacifiedComponent>(args.OtherEntity);
+
+
+            if (!TryComp<FixturesComponent>(args.OtherEntity, out var fixturesComponent))
+                return;
+
+            foreach (var (id, fixture) in fixturesComponent.Fixtures)
+            {
+                _physics.SetCollisionMask(args.OtherEntity, id, fixture, 18);
+
+            }
         }
+
     }
 }
