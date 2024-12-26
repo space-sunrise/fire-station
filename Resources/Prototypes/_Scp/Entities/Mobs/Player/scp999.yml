@@ -174,9 +174,6 @@
     voice: Neco
   - type: TypingIndicator
     proto: SCP-999
-  - type: MultiHandedItem
-  - type: Item
-    size: Huge
   - type: PassiveDamage
     allowedStates:
     - Alive
