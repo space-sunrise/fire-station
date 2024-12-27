@@ -46,7 +46,6 @@
   abstract: true
   parent:
   - BaseSimpleMob
-  - MobBloodstream
   - MobFlammable
   - ScpArtifactMajor
   id: BaseScp

@@ -5,6 +5,7 @@
   - BaseScp
   - MobCombat
   - MobAtmosStandard
+  - MobBloodstream
   - InventoryBase
   components:
   - type: Sprite

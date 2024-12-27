@@ -4,6 +4,7 @@
   parent:
   - BaseScp
   - MobCombat
+  - MobBloodstream
   - StripableInventoryBase
   components:
   - type: Sprite
