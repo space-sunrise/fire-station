@@ -144,7 +144,6 @@
     baseWalkSpeed: 2
     baseSprintSpeed: 2
   - type: Scp106
-  - type: ScpRestriction
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -183,3 +182,6 @@
           Exiting: { state: ded_from_lusha }
   - type: TTS
     voice: HearthstoneSotis
+  - type: ScpRestriction
+    blockBePulled: false
+    blockPull: false

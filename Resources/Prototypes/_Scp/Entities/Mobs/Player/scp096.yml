@@ -12,6 +12,10 @@
     - state: walking
       map: [ "base" ]
   - type: Scp096
+  - type: ScpRestriction
+    blockBePulled: false
+    blockPull: false
+  - type: Pullable
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
     altDisarm: false
@@ -77,7 +81,6 @@
         Toxin: -1.0
       types:
         Bloodloss: -1.0
-  - type: CanBePulledDead
   - type: SlowOnDamage
     speedModifierThresholds:
       1000: 0.9

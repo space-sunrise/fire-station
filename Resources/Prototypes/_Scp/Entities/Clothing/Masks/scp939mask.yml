@@ -6,10 +6,4 @@
   - type: ItemToggle
     onUse: false
     onActivate: false
-  - type: ClothingToggleOnEquip
-  - type: ComponentToggler
-    parent: true
-    components:
-    - type: Pacified
-    - type: Pullable
-    - type: Scp939Muzzled
+  - type: Scp939Mask

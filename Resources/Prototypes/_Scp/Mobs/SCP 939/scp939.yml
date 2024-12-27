@@ -15,8 +15,6 @@
     - map: [ "enum.Scp939Layers.Base" ]
       state: alive
   - type: Scp939
-  - type: CanBePulledSleeping
-    exclusive: true
   - type: MeleeWeapon
     soundHit:
       collection: AlienClaw
@@ -61,6 +59,7 @@
     baseSprintSpeed: 4
   - type: Puller
     needsHands: false
+  - type: Pullable
   - type: SlowOnDamage
     speedModifierThresholds:
       2000: 0.9
@@ -73,3 +72,6 @@
   - type: Inventory
     templateId: scp939
   - type: Strippable
+  - type: ScpRestriction
+    blockBePulled: false
+    blockPull: false

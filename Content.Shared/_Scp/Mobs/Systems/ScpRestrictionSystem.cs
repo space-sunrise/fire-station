@@ -20,11 +20,23 @@ public sealed class ScpRestrictionSystem : EntitySystem
         SubscribeLocalEvent<ScpRestrictionComponent, DisarmAttemptEvent>((_, _, args) => args.Cancel());
         SubscribeLocalEvent<ScpRestrictionComponent, ElectrocutionAttemptEvent>((_, _, args) => args.Cancel());
         SubscribeLocalEvent<ScpRestrictionComponent, TryingToSleepEvent>((_, _, args) => args.Cancelled = true);
-        SubscribeLocalEvent<ScpRestrictionComponent, PullAttemptEvent>((_, _, args) => args.Cancelled = true);
-        SubscribeLocalEvent<ScpRestrictionComponent, BeingPulledAttemptEvent>((_, _, args) => args.Cancel());
+        SubscribeLocalEvent<ScpRestrictionComponent, PullAttemptEvent>(OnPullAttempt);
+        SubscribeLocalEvent<ScpRestrictionComponent, BeingPulledAttemptEvent>(OnBeingPulled);
         SubscribeLocalEvent<ScpRestrictionComponent, SlipAttemptEvent>((_, _, args) => args.NoSlip = true);
         SubscribeLocalEvent<ScpRestrictionComponent, BuckleAttemptEvent>((_, _, args) => args.Cancelled = true);
         SubscribeLocalEvent<ScpRestrictionComponent, CanDragEvent>((_, _, args) => args.Handled = false);
         SubscribeLocalEvent<ScpRestrictionComponent, BeforeStaminaDamageEvent>((_, _, args) => args.Cancelled = true);
+    }
+
+    private void OnPullAttempt(EntityUid uid, ScpRestrictionComponent component, PullAttemptEvent args)
+    {
+        if (component.BlockPull)
+            args.Cancelled = true;
+    }
+
+    private void OnBeingPulled(EntityUid uid, ScpRestrictionComponent component, BeingPulledAttemptEvent args)
+    {
+        if (component.BlockBePulled)
+            args.Cancel();
     }
 }
