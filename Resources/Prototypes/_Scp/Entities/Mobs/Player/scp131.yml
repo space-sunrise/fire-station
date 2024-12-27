@@ -61,8 +61,8 @@
     size: Huge
   - type: ReplacementAccent
     accent: mouse
-  - type: Blinkable # лорно
-  - type: EyeClosing
+#  - type: Blinkable мейби в другой жизни, когда будет не криво работать и балансно
+#  - type: EyeClosing
 
 - type: entity
   id: Scp131B
