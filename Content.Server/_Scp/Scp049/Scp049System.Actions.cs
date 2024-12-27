@@ -183,14 +183,11 @@ public sealed partial class Scp049System
             _mindSystem.TryGetSession(mindComponent, out _))
             return;
 
-        var ghostRoleComponent = new GhostRoleComponent
-        {
-            RoleName = Loc.GetString("scp049-ghost-role-name"),
-            RoleDescription = Loc.GetString("scp049-ghost-role-description"),
-            RoleRules = Loc.GetString("scp049-ghost-role-rules"),
-        };
+        var ghostRoleComponent = EnsureComp<GhostRoleComponent>(minionUid);
+        ghostRoleComponent.RoleName = Loc.GetString("scp049-ghost-role-name");
+        ghostRoleComponent.RoleDescription = Loc.GetString("scp049-ghost-role-description");
+        ghostRoleComponent.RoleRules = Loc.GetString("scp049-ghost-role-rules");
 
-        AddComp(minionUid, ghostRoleComponent);
         EnsureComp<GhostTakeoverAvailableComponent>(minionUid);
     }
 }
