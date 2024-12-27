@@ -22,7 +22,6 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly StairsSystem _stairs = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly MapSystem _map = default!;
 
@@ -44,6 +43,10 @@ public sealed class Scp106System : SharedScp106System
     {
         // You already here.
         if (HasComp<Scp106BackRoomMapComponent>(Transform(target).MapUid))
+            return;
+
+        // Телепортировать только людей
+        if (!HasComp<HumanoidAppearanceComponent>(target))
             return;
 
         if (!HasComp<MobStateComponent>(target))
