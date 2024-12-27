@@ -58,4 +58,6 @@ public sealed class Scp173System : SharedScp173System
     {
         _overlayMan.RemoveOverlay(_overlay);
     }
+
+    protected override void BreakNeck(EntityUid target, Scp173Component scp) {}
 }

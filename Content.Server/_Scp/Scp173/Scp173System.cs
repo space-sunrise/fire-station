@@ -15,10 +15,12 @@ using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Fluids.Components;
+using Content.Shared.Humanoid;
 using Content.Shared.Item;
 using Content.Shared.Lock;
 using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
@@ -26,6 +28,7 @@ using Content.Shared.Throwing;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
@@ -43,20 +46,21 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly GhostSystem _ghost = default!;
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedPuddleSystem _puddle = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly SharedDoorSystem _door = default!;
     [Dependency] private readonly ExamineSystem _examineSystem = default!;
     [Dependency] private readonly PhysicsSystem _physicsSystem = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly AudioSystem _audioSystem = default!;
-
-
+    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     public override void Initialize()
     {
@@ -65,6 +69,31 @@ public sealed class Scp173System : SharedScp173System
         SubscribeLocalEvent<Scp173Component, Scp173DamageStructureAction>(OnStructureDamage);
         SubscribeLocalEvent<Scp173Component, Scp173ClogAction>(OnClog);
         SubscribeLocalEvent<Scp173Component, Scp173FastMovementAction>(OnFastMovement);
+    }
+
+    protected override void BreakNeck(EntityUid target, Scp173Component scp)
+    {
+        // Not a mob...
+        if (!HasComp<MobStateComponent>(target))
+            return;
+
+        // Not a human, right? Can`t broke his neck...
+        if (!HasComp<HumanoidAppearanceComponent>(target))
+            return;
+
+        // Already dead.
+        if (_mobState.IsDead(target))
+            return;
+
+        // No damage??
+        if (scp.NeckSnapDamage == null)
+            return;
+
+        _damageableSystem.TryChangeDamage(target, scp.NeckSnapDamage, true, useVariance:false);
+
+        // TODO: Fix missing deathgasp emote on high damage per once
+
+        _audio.PlayPvs(scp.NeckSnapSound, target);
     }
 
     private void OnStructureDamage(Entity<Scp173Component> uid, ref Scp173DamageStructureAction args)

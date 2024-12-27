@@ -5,15 +5,11 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
-using Content.Shared.Humanoid;
 using Content.Shared.Interaction.Events;
-using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
-using Content.Shared.Weapons.Melee.Events;
-using Robust.Shared.Audio.Systems;
+using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp173;
 
@@ -24,10 +20,7 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
-    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -56,12 +49,11 @@ public abstract class SharedScp173System : EntitySystem
 
         #region Abillities
 
-        SubscribeLocalEvent<Scp173Component, MeleeHitEvent>(OnMeleeHit);
+        SubscribeLocalEvent<Scp173Component, StartCollideEvent>(OnCollide);
 
         SubscribeLocalEvent<Scp173Component, Scp173BlindAction>(OnBlind);
 
         #endregion
-
     }
 
     private void OnInit(Entity<Scp173Component> ent, ref ComponentInit args)
@@ -95,15 +87,14 @@ public abstract class SharedScp173System : EntitySystem
 
     #region Abillities
 
-    private void OnMeleeHit(Entity<Scp173Component> ent, ref MeleeHitEvent args)
+    private void OnCollide(Entity<Scp173Component> ent, ref StartCollideEvent args)
     {
-        if (!args.IsHit || !args.HitEntities.Any())
+        var target = args.OtherEntity;
+
+        if (!_blinking.IsBlind(target, useTimeCompensation: true))
             return;
 
-        foreach (var entity in args.HitEntities)
-        {
-           BreakNeck(entity, ent.Comp);
-        }
+        BreakNeck(target, ent.Comp);
     }
 
     private void OnBlind(Entity<Scp173Component> ent, ref Scp173BlindAction args)
@@ -123,30 +114,7 @@ public abstract class SharedScp173System : EntitySystem
         args.Handled = true;
     }
 
-    protected void BreakNeck(EntityUid target, Scp173Component scp)
-    {
-        // Not a mob...
-        if (!HasComp<MobStateComponent>(target))
-            return;
-
-        // Not a human, right? Can`t broke his neck...
-        if (!HasComp<HumanoidAppearanceComponent>(target))
-            return;
-
-        // Already dead.
-        if (_mobState.IsDead(target))
-            return;
-
-        // No damage??
-        if (scp.NeckSnapDamage == null)
-            return;
-
-        _damageableSystem.TryChangeDamage(target, scp.NeckSnapDamage, true, useVariance:false);
-
-        // TODO: Fix missing deathgasp emote on high damage per once
-
-        _audio.PlayPvs(scp.NeckSnapSound, target);
-    }
+    protected abstract void BreakNeck(EntityUid target, Scp173Component scp);
 
     #endregion
 
