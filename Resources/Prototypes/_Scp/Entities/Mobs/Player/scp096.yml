@@ -25,6 +25,7 @@
         Bloodloss: 5
   - type: Body
     prototype: Human
+  - type: Muted
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.5
     baseSprintSpeed: 1.5

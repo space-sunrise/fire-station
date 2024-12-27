@@ -29,6 +29,7 @@
         Base: default
       Dead:
         Base: dead
+  - type: Muted
   - type: Fixtures
     fixtures:
       fix1:

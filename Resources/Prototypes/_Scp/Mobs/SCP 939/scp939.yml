@@ -17,6 +17,7 @@
   - type: Scp939
   - type: CanBePulledSleeping
     exclusive: true
+  - type: Muted
   - type: MeleeWeapon
     soundHit:
       collection: AlienClaw

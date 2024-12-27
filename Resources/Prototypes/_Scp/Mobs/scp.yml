@@ -100,6 +100,7 @@
       types:
         Bloodloss: -0.25
   - type: CanBePulledDead
+  - type: Muted
   - type: ActionGrant
     actions:
     - Scp173Blind
@@ -132,6 +133,7 @@
     layers:
     - map: [ "base" ]
       state: 106
+  - type: Muted
   - type: Tag
     tags:
     - CannotSuicide
