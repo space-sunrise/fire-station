@@ -61,6 +61,8 @@
     size: Huge
   - type: ReplacementAccent
     accent: mouse
+  - type: Blinkable # лорно
+  - type: EyeClosing
 
 - type: entity
   id: Scp131B
