@@ -74,7 +74,7 @@
   - type: ShowBlinkable
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
-    baseSprintSpeed: 15
+    baseSprintSpeed: 12
   - type: MobState
   - type: MobThresholds
     thresholds:

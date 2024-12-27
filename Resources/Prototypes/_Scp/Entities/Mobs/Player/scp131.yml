@@ -51,7 +51,7 @@
     - DoorBumpOpener
   - type: Muted
   - type: MovementSpeedModifier
-    baseWalkSpeed: 15
+    baseWalkSpeed: 7
     baseSprintSpeed: 4
   - type: Damageable
     damageContainer: Biological
