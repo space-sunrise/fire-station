@@ -19,6 +19,7 @@ using Content.Shared.Item;
 using Content.Shared.Lock;
 using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Movement.Components;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Tag;
@@ -62,9 +63,23 @@ public sealed class Scp173System : SharedScp173System
     {
         base.Initialize();
 
+        SubscribeLocalEvent<Scp173Component, ComponentInit>(OnInit);
+
         SubscribeLocalEvent<Scp173Component, Scp173DamageStructureAction>(OnStructureDamage);
         SubscribeLocalEvent<Scp173Component, Scp173ClogAction>(OnClog);
         SubscribeLocalEvent<Scp173Component, Scp173FastMovementAction>(OnFastMovement);
+    }
+
+    // Временный костыль, так как визденс ломал это в прототипах
+    // TODO: Убрать после фикса
+    private void OnInit(Entity<Scp173Component> ent, ref ComponentInit args)
+    {
+        if (!TryComp<MovementSpeedModifierComponent>(ent, out var movementSpeedModifierComponent))
+            return;
+
+        movementSpeedModifierComponent.BaseSprintSpeed = 15f;
+        movementSpeedModifierComponent.BaseWalkSpeed = 5f;
+        Dirty(ent.Owner, movementSpeedModifierComponent);
     }
 
     private void OnStructureDamage(Entity<Scp173Component> uid, ref Scp173DamageStructureAction args)
