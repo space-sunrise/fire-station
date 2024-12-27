@@ -142,12 +142,11 @@ public abstract class SharedBlinkingSystem : EntitySystem
 
     public void ForceBlind(EntityUid uid, BlinkableComponent component, TimeSpan duration)
     {
-        var currentTime = _gameTiming.CurTime;
-        component.BlinkEndTime = currentTime + duration;
+        component.BlinkEndTime = _gameTiming.CurTime + duration;
         Dirty(uid, component);
 
         // Set next blink slightly after forced blindness ends
-        SetNextBlink(uid, component, component.BlinkEndTime + TimeSpan.FromSeconds(1));
+        SetNextBlink(uid, component, duration + TimeSpan.FromSeconds(1));
 
         UpdateAlert(uid, component);
     }
