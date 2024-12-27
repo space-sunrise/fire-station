@@ -19,7 +19,7 @@
         - type: StationJobs
           availableJobs:
             #scp staff
-            ClassD: [ -1, -1 ]
+            ClassD: [ 20, 20 ]
             #scp
             Scp049: [ 1, 1 ]
             Scp096: [ 1, 1 ]
