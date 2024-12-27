@@ -6,6 +6,7 @@ using Content.Server.IdentityManagement;
 using Content.Server.Mind;
 using Content.Server.NPC.HTN;
 using Content.Server.Zombies;
+using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Scp049;
 using Content.Shared._Scp.Scp049.Scp049Protection;
 using Content.Shared.DoAfter;
@@ -142,6 +143,12 @@ public sealed partial class Scp049System
     private bool TryMakeMinion(Entity<MobStateComponent> minionEntity, Entity<Scp049Component> scpEntity)
     {
         if (HasComp<Scp049ProtectionComponent>(minionEntity))
+            return false;
+
+        if (!HasComp<MobStateComponent>(minionEntity))
+            return false;
+
+        if (HasComp<ScpComponent>(minionEntity))
             return false;
 
         MakeMinion(minionEntity, scpEntity);
