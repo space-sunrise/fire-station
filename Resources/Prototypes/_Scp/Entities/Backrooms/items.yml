@@ -10,8 +10,9 @@
     state: icon
   - type: Item
     size: Ginormous
-  - type: SpecialRespawn
-    prototype: ScpBackroomsPainting
+# FIRE_STATION-TODO: ГОВНО ФИКСИТЕ ЗАЕБАЛИ
+#  - type: SpecialRespawn
+#    prototype: ScpBackroomsPainting
   - type: Wieldable
   - type: MultiHandedItem
   - type: AddComponentsPickup
@@ -336,7 +337,7 @@
     entities:
     - ScpBackroomsSlime
     popupNoCharges: Посох слабо мерцает, источая иссекающие остатки энергии # TODO: Засунуть в лок
-    soundSuccessful:
+    soundSuccessFul:
       path: /Audio/Weapons/Guns/Gunshots/Magic/staff_door.ogg
   - type: UseDelay
     delay: 1.5

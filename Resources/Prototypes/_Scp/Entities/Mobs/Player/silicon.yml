@@ -107,7 +107,7 @@
   - type: AccessReader
     access: [["Security"], ["Command"]]
   - type: SiliconLawProvider
-    laws: SecurityStatic
+    laws: RobocopLawset
   - type: TTS
     voice: Sentrybot
   - type: PointLight

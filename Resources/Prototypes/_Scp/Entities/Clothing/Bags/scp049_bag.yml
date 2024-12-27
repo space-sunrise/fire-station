@@ -2,7 +2,7 @@
   parent: ClothingBackpackSatchel
   id: ClothingBackpackScp049
   name: Бездонная сумка
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Item
     sprite: null

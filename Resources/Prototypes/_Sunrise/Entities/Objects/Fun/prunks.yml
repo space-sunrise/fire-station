@@ -176,9 +176,9 @@
   components:
   - type: Anomaly
     maxPointsPerSecond:
-      default: 0
+      Default: 0
     minPointsPerSecond:
-      default: 0
+      Default: 0
     pulseSound:
       collection: RadiationPulse
       params:

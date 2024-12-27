@@ -1,5 +1,5 @@
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: BaseBullet
   id: BulletRifle762
   components:
@@ -11,7 +11,7 @@
 - type: entity
   id: BulletRifle62Heavy
   parent: BaseBullet
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   components:
   - type: Projectile
     damage:
