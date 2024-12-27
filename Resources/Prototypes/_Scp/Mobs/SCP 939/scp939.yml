@@ -76,3 +76,6 @@
   - type: ScpRestriction
     blockBePulled: false
     blockPull: false
+  - type: FootprintEmitter
+    leftBareFootState: "footprint-left-bare-lizard"
+    rightBareFootState: "footprint-right-bare-lizard"

@@ -72,29 +72,44 @@ public sealed partial class FootprintEmitterComponent : Component
     [ViewVariables(VVAccess.ReadOnly), DataField]
     public ResPath SpritePath = new("/Textures/_Sunrise/Effects/footprints.rsi");
 
+    // Fire edit start - красивые следы для 173го требуют жертв
+
     /// <summary>
     /// State ID for left bare footprint
     /// </summary>
     [ViewVariables(VVAccess.ReadOnly), DataField]
-    public string LeftBareFootState = "footprint-left-bare-human";
+    public string[] LeftBareFootState =
+    {
+        "footprint-left-bare-human",
+    };
 
     /// <summary>
     /// State ID for right bare footprint
     /// </summary>
     [ViewVariables(VVAccess.ReadOnly), DataField]
-    public string RightBareFootState = "footprint-right-bare-human";
+    public string[] RightBareFootState =
+    {
+        "footprint-right-bare-human",
+    };
 
     /// <summary>
     /// State ID for shoe footprint
     /// </summary>
     [ViewVariables(VVAccess.ReadOnly), DataField]
-    public string ShoeFootState = "footprint-shoes";
+    public string[] ShoeFootState =
+    {
+        "footprint-shoes",
+    };
 
     /// <summary>
     /// State ID for pressure suit footprint
     /// </summary>
     [ViewVariables(VVAccess.ReadOnly), DataField]
-    public string PressureSuitFootState = "footprint-suit";
+    public string[] PressureSuitFootState =
+    {
+        "footprint-suit",
+    };
+    // Fire edit end
 
     /// <summary>
     /// Array of state IDs for dragging animations
