@@ -113,21 +113,26 @@ public sealed partial class Scp049System
 
     private void OnKillLeavingBeing(Entity<Scp049Component> ent, ref Scp049KillLivingBeingAction args)
     {
-        if (_mobStateSystem.IsDead(args.Target))
+        var target = args.Target;
+
+        if (HasComp<ScpComponent>(target))
+            return;
+
+        if (_mobStateSystem.IsDead(target))
         {
-            _popupSystem.PopupEntity(Loc.GetString("scp049-kill-action-already-dead"), args.Target, ent, PopupType.MediumCaution);
+            _popupSystem.PopupEntity(Loc.GetString("scp049-kill-action-already-dead"), target, ent, PopupType.MediumCaution);
             return;
         }
 
-        if (!_mobStateSystem.HasState(args.Target, MobState.Dead))
+        if (!_mobStateSystem.HasState(target, MobState.Dead))
         {
-            _popupSystem.PopupEntity(Loc.GetString("scp049-kill-action-cant-kill"), args.Target, ent, PopupType.MediumCaution);
+            _popupSystem.PopupEntity(Loc.GetString("scp049-kill-action-cant-kill"), target, ent, PopupType.MediumCaution);
             return;
         }
 
-        _mobStateSystem.ChangeMobState(args.Target, MobState.Dead);
+        _mobStateSystem.ChangeMobState(target, MobState.Dead);
 
-        var targetName = Identity.Name(args.Target, EntityManager);
+        var targetName = Identity.Name(target, EntityManager);
         var performerName = Identity.Name(ent, EntityManager);
 
 
@@ -143,9 +148,6 @@ public sealed partial class Scp049System
     private bool TryMakeMinion(Entity<MobStateComponent> minionEntity, Entity<Scp049Component> scpEntity)
     {
         if (HasComp<Scp049ProtectionComponent>(minionEntity))
-            return false;
-
-        if (!HasComp<MobStateComponent>(minionEntity))
             return false;
 
         if (HasComp<ScpComponent>(minionEntity))

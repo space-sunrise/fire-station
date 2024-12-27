@@ -13,6 +13,10 @@
     whitelist:
       components:
       - MobState
+#    blacklist: не работает бля
+#      components:
+#      - Scp
+#      - Scp049Protection
 
 - type: entity
   id: ActionScp049KillResurrected
@@ -45,6 +49,9 @@
     whitelist:
       components:
       - MobState
+#    blacklist: почему не работает суки
+#      components:
+#      - Scp
 
 - type: entity
   id: ActionScp049SelfHeal
