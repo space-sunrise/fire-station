@@ -110,6 +110,7 @@
     tags:
     - FootstepSound
     - IgnorePortals
+    - DoorBumpOpener
   - type: TypingIndicator
     proto: alien
   - type: Pacified

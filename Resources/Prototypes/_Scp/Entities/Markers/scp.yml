@@ -3,7 +3,7 @@
 - type: entity
   name: SCP-173 spawner
   id: SpawnScp173
-  parent: MarkerBase
+  parent: SpawnPointJobBase
   components:
   - type: Sprite
     layers:
@@ -16,7 +16,7 @@
 - type: entity
   name: SCP-096 spawner
   id: SpawnScp096
-  parent: MarkerBase
+  parent: SpawnPointJobBase
   components:
   - type: Sprite
     layers:
@@ -29,7 +29,7 @@
 - type: entity
   name: SCP-939 spawner
   id: SpawnScp939
-  parent: MarkerBase
+  parent: SpawnPointJobBase
   components:
   - type: Sprite
     layers:
@@ -42,7 +42,7 @@
 - type: entity
   name: SCP-049 spawner
   id: SpawnScp049
-  parent: MarkerBase
+  parent: SpawnPointJobBase
   components:
   - type: Sprite
     layers:
@@ -55,7 +55,7 @@
 - type: entity
   name: SCP-106 spawner
   id: SpawnScp106
-  parent: MarkerBase
+  parent: SpawnPointJobBase
   components:
   - type: Sprite
     layers:
@@ -68,7 +68,7 @@
 - type: entity
   name: SCP-999 spawner
   id: SpawnScp999
-  parent: MarkerBase
+  parent: SpawnPointJobBase
   components:
   - type: Sprite
     layers:
@@ -81,7 +81,7 @@
 - type: entity
   name: SCP-082 spawner
   id: SpawnScp082
-  parent: MarkerBase
+  parent: SpawnPointJobBase
   components:
   - type: Sprite
     layers:

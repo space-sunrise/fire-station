@@ -14,6 +14,7 @@
   - InventoryBase
   components:
   - type: Hands
+    showInHands: false
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -23,7 +24,7 @@
     prototype: Human
     requiredLegs: 2
   - type: Inventory
-#    templateId: scp049
+    templateId: scp082
   - type: Sprite
     noRot: true
     drawdepth: Mobs
@@ -66,3 +67,5 @@
         Blunt: 40
     attackRate: 1.25
     range: 2
+  - type: TTS
+    voice: Dota2Pudge

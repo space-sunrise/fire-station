@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Scp.Misc;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
 using Content.Shared.Audio;
@@ -30,7 +31,9 @@ public sealed class ContentAudioSystem : SharedContentAudioSystem
         _lobbyMusicCollection = _prototypeManager.Index<SoundCollectionPrototype>(LobbyMusicCollection);
         _lobbyPlaylist = ShuffleLobbyPlaylist();
 
-        SubscribeLocalEvent<RoundEndMessageEvent>(OnRoundEnd);
+        // Fire edit - чтобы музыка рандомилась поменял ивент на тот, который 100% вызывается
+        SubscribeLocalEvent<RealRoundEndedMessage>(OnRoundEnd);
+
         SubscribeLocalEvent<PlayerJoinedLobbyEvent>(OnPlayerJoinedLobby);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundCleanup);
         SubscribeLocalEvent<RoundStartingEvent>(OnRoundStart);
@@ -64,7 +67,8 @@ public sealed class ContentAudioSystem : SharedContentAudioSystem
         }
     }
 
-    private void OnRoundEnd(RoundEndMessageEvent ev)
+    // Fire edit - чтобы музыка рандомилась поменял ивент на тот, который 100% вызывается
+    private void OnRoundEnd(RealRoundEndedMessage ev)
     {
         // The lobby song is set here instead of in RestartRound,
         // because ShowRoundEndScoreboard triggers the start of the music playing

@@ -5,6 +5,7 @@
   - BaseScp
   - MobCombat
   - MobAtmosStandard
+  - InventoryBase
   components:
   - type: Sprite
     noRot: true
@@ -18,14 +19,16 @@
     exclusive: true
   - type: MeleeWeapon
     soundHit:
-      collection: Punch
+      collection: AlienClaw
     angle: 30
-    animation: WeaponArcFist
+    animation: WeaponArcClaw
     attackRate: 1
     damage:
       types:
-        Blunt: 10
-        Slash: 10
+        Blunt: 20
+        Slash: 20
+        Structural: 50
+    range: 2
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -38,13 +41,12 @@
     damageCap: 0
     damage:
       groups:
-        Brute: -1.0
-        Burn: -1.0
-        Toxin: -1.0
+        Brute: -0.25
+        Burn: -0.25
+        Toxin: -0.25
       types:
-        Bloodloss: -1.0
+        Bloodloss: -0.25
   - type: Buckle
-  - type: SSDIndicator
   - type: Stripping
   - type: VoiceMask
   - type: DogVision
@@ -52,6 +54,8 @@
     interfaces:
       enum.VoiceMaskUIKey.Key:
         type: Scp939Bui
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.5
     baseSprintSpeed: 4
@@ -65,3 +69,7 @@
   - type: Tag
     tags:
     - IgnorePortals
+    - DoorBumpOpener
+  - type: Inventory
+    templateId: scp939
+  - type: Strippable

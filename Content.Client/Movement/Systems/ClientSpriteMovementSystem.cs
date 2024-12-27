@@ -1,3 +1,4 @@
+using Content.Shared.Interaction.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Systems;
 using Robust.Client.GameObjects;
@@ -27,6 +28,15 @@ public sealed class ClientSpriteMovementSystem : SharedSpriteMovementSystem
     {
         if (!_spriteQuery.TryGetComponent(ent, out var sprite))
             return;
+
+        // Fire added start
+        if (HasComp<NoRotateOnMoveComponent>(ent))
+            return;
+
+        if (HasComp<BlockMovementComponent>(ent))
+            return;
+        // Fire added end
+
 
         if (ent.Comp.IsMoving)
         {

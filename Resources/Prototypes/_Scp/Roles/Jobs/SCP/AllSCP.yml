@@ -11,6 +11,7 @@
   joinNotifyCrew: false
   canBeAntag: false
   jobEntity: Scp049
+  alwaysUseSpawner: true
   applyTraits: false
 
 - type: job
@@ -26,6 +27,7 @@
   joinNotifyCrew: false
   canBeAntag: false
   jobEntity: Scp939
+  alwaysUseSpawner: true
   applyTraits: false
 
 - type: job
@@ -41,6 +43,7 @@
   joinNotifyCrew: false
   canBeAntag: false
   jobEntity: Scp173
+  alwaysUseSpawner: true
   applyTraits: false
 
 - type: job
@@ -56,6 +59,7 @@
   joinNotifyCrew: false
   canBeAntag: false
   jobEntity: Scp999
+  alwaysUseSpawner: true
   applyTraits: false
 
 - type: job
@@ -71,6 +75,7 @@
   joinNotifyCrew: false
   canBeAntag: false
   jobEntity: Scp096
+  alwaysUseSpawner: true
   applyTraits: false
 
 - type: job
@@ -86,6 +91,7 @@
   joinNotifyCrew: false
   canBeAntag: false
   jobEntity: Scp106
+  alwaysUseSpawner: true
   applyTraits: false
 
 - type: job
@@ -100,5 +106,6 @@
   icon: JobIconScp082
   joinNotifyCrew: false
   canBeAntag: false
-  jobEntity: Scp096 # TODO: Поменять после добавления каннибала
+  jobEntity: Scp082 # TODO: Поменять после добавления каннибала
+  alwaysUseSpawner: true
   applyTraits: false

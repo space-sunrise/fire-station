@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Scp.Misc;
 using Content.Server.Announcements;
 using Content.Server.Discord;
 using Content.Server.GameTicking.Events;
@@ -337,6 +338,9 @@ namespace Content.Server.GameTicking
             DebugTools.Assert(RunLevel == GameRunLevel.InRound);
             _sawmill.Info("Ending round!");
 
+            // Fire added - потому что пидорасы. Музыка не рандомится без показа титров
+            RaiseLocalEvent(new RealRoundEndedMessage());
+
             RunLevel = GameRunLevel.PostRound;
 
             try
@@ -527,6 +531,10 @@ namespace Content.Server.GameTicking
             RandomizeLobbyBackgroundParallax();
             RandomizeLobbyBackgroundAnimation();
             RandomizeLobbyBackgroundArt();
+
+            // Fire added - чтобы музыка рандомилась
+            RaiseLocalEvent(new RealRoundEndedMessage());
+
             _statsBoardSystem.CleanEntries();
             // Sunrise-End
             ResettingCleanup();

@@ -23,7 +23,7 @@ public sealed partial class Scp096Component : Component
     public TimeSpan? RageStartTime;
 
     [DataField, AutoNetworkedField , ViewVariables(VVAccess.ReadWrite)]
-    public float RageDuration = 2000f;
+    public float RageDuration = 180f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public float PacifiedTime = 60f;

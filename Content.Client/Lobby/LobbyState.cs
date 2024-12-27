@@ -213,7 +213,6 @@ namespace Content.Client.Lobby
         {
             // Sunrise-Start
             UpdateLobbyType();
-            UpdateLobbyParallax();
             UpdateLobbyAnimation();
             UpdateLobbyArt();
             // Sunrise-End
@@ -308,9 +307,9 @@ namespace Content.Client.Lobby
             switch (lobbyBackgroundTypeString)
             {
                 case LobbyBackgroundType.Parallax:
-                    Lobby!.LobbyAnimation.Visible = false;
+                    Lobby!.LobbyAnimation.Visible = true;
                     Lobby!.LobbyArt.Visible = false;
-                    Lobby!.ShowParallax = true;
+                    Lobby!.ShowParallax = false;
                     break;
                 case LobbyBackgroundType.Art:
                     Lobby!.LobbyAnimation.Visible = false;

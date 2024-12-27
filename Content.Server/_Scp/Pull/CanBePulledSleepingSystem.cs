@@ -21,7 +21,7 @@ public sealed class CanBePulledSleepingSystem : EntitySystem
 
     private void OnSleepStateChangedEvent(Entity<CanBePulledSleepingComponent> ent, ref SleepStateChangedEvent args)
     {
-        if (args.FellAsleep)
+        if (args.FellAsleep && !TryComp<PullableComponent>(ent.Owner, out var pullableComponent))
         {
             AddComp<PullableComponent>(ent);
         }

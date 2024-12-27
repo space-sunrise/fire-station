@@ -94,11 +94,11 @@
     damageCap: 0
     damage:
       groups:
-        Brute: -1.0
-        Burn: -1.0
-        Toxin: -1.0
+        Brute: -0.25
+        Burn: -0.25
+        Toxin: -0.25
       types:
-        Bloodloss: -1.0
+        Bloodloss: -0.25
   - type: CanBePulledDead
   - type: ActionGrant
     actions:
@@ -110,6 +110,7 @@
     tags:
     - CannotSuicide
     - FootstepSound
+    - DoorBumpOpener
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepSCP173

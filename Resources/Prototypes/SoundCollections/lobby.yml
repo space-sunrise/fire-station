@@ -1,14 +1,13 @@
 - type: soundCollection
   id: LobbyMusic
   files:
-#    - /Audio/Lobby/absconditus.ogg
-#    - /Audio/Lobby/space_asshole.ogg
-#    - /Audio/Lobby/endless_space.ogg
-     - /Audio/_Scp/Themes/The_Final_Flash_of_Existence_Version_1.ogg
      - /Audio/_Scp/Themes/Melancholy.ogg
-     - /Audio/_Sunrise/Lobby/Chikoi_The_Maid_-_Scarlet⧸a#.ogg
-     - /Audio/_Sunrise/Lobby/Komak The Maid x Takai The Maid - They Know You're A Liar.ogg
-     - /Audio/_Sunrise/Lobby/Chikoi The Maid - Xample.ogg
-     - /Audio/_Sunrise/Lobby/Chikoi The Maid - Winterholic.ogg
-     - /Audio/_Sunrise/Lobby/Chikoi The Maid - parametric.ogg
-     - /Audio/_Sunrise/Lobby/Chikoi The Maid - Beholder.ogg
+     - /Audio/_Scp/Lobby/EtRatioPrincipalis.ogg
+     - /Audio/_Scp/Lobby/Furnace.ogg
+     - /Audio/_Scp/Lobby/Lichen.ogg
+     - /Audio/_Scp/Lobby/NihilEsSimplex.ogg
+     - /Audio/_Scp/Lobby/Observer.ogg
+     - /Audio/_Scp/Lobby/PortamAdInferno.ogg
+     - /Audio/_Scp/Lobby/Vantage.ogg
+     - /Audio/_Scp/Lobby/Vapour.ogg
+     - /Audio/_Scp/Lobby/VocesIgnotas.ogg

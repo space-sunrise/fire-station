@@ -1,0 +1,30 @@
+﻿- type: lobbyAnimation
+  id: Scp049
+  rawPath: _Scp/Lobby/Animations/049
+  scale: 13, 13
+
+- type: lobbyAnimation
+  id: Scp096
+  rawPath: _Scp/Lobby/Animations/096
+  scale: 13, 13
+
+- type: lobbyAnimation
+  id: Scp173
+  rawPath: _Scp/Lobby/Animations/173
+  scale: 13, 13
+
+# Вводит клиент в стан хз почему
+#- type: lobbyAnimation
+#  id: Camera
+#  rawPath: _Scp/Lobby/Animations/camera
+#  scale: 13, 13
+
+- type: lobbyAnimation
+  id: Foundation
+  rawPath: _Scp/Lobby/Animations/foundation
+  scale: 13, 13
+
+- type: lobbyAnimation
+  id: Mtf
+  rawPath: _Scp/Lobby/Animations/mtf
+  scale: 13, 13

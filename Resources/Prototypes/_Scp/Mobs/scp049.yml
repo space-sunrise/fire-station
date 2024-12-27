@@ -58,3 +58,5 @@
     tags:
     - FootstepSound
     - DoorBumpOpener
+  - type: TTS
+    voice: SCP049

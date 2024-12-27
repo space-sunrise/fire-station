@@ -1,0 +1,9 @@
+- type: inventoryTemplate
+  id: scp939
+  slots:
+  - name: mask
+    slotTexture: mask
+    slotFlags: MASK
+    uiWindowPos: 0,2 # Sunrise-edit
+    strippingWindowPos: 0,1 # Sunrise-edt
+    displayName: Mask
