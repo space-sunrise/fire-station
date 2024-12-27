@@ -13,10 +13,11 @@
   rawPath: _Scp/Lobby/Animations/173
   scale: 13, 13
 
-- type: lobbyAnimation
-  id: Camera
-  rawPath: _Scp/Lobby/Animations/camera
-  scale: 13, 13
+# Вводит клиент в стан хз почему
+#- type: lobbyAnimation
+#  id: Camera
+#  rawPath: _Scp/Lobby/Animations/camera
+#  scale: 13, 13
 
 - type: lobbyAnimation
   id: Foundation
