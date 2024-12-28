@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Numerics;
 using Content.Shared._Scp.Blinking;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
@@ -8,6 +9,7 @@ using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
+using Robust.Shared.Network;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
 
@@ -20,7 +22,9 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     public override void Initialize()
     {
@@ -126,14 +130,18 @@ public abstract class SharedScp173System : EntitySystem
 
         watchersCount = eyes
             .Where(eye => _examine.InRangeUnOccluded(eye, scp173, scp173.Comp.WatchRange, ignoreInsideBlocker: false))
-            .Count(eye => !IsEyeBlinded(eye));
+            .Count(eye => !IsEyeBlinded(eye, scp173));
 
         return watchersCount != 0;
     }
 
-    private bool IsEyeBlinded(Entity<BlinkableComponent> eye)
+    private bool IsEyeBlinded(Entity<BlinkableComponent> eye, EntityUid scpUid)
     {
         if (_mobState.IsIncapacitated(eye))
+            return true;
+
+        // Проверка на то, что игрок смотрит на сцп лицом.
+        if (IsWithinViewAngle(scpUid, eye, 120f))
             return true;
 
         if (_blinking.IsBlind(eye.Owner, eye.Comp, true))
@@ -146,6 +154,42 @@ public abstract class SharedScp173System : EntitySystem
             return true;
 
         return false;
+    }
+
+    private bool IsWithinViewAngle(EntityUid scpEntity, EntityUid targetEntity, float maxAngle)
+    {
+        var angle = FindAngleBetween(scpEntity, targetEntity);
+
+        Logger.Debug($"Angle: {angle}, Result: {angle >= maxAngle}, Client: {_net.IsClient}");
+        // Проверка: угол должен быть больше или равен maxAngle, чтобы SCP был вне поля зрения
+        return angle >= maxAngle;
+    }
+
+    private float FindAngleBetween(Entity<TransformComponent?> scp, Entity<TransformComponent?> target)
+    {
+        if (!Resolve<TransformComponent>(scp, ref scp.Comp))
+            return float.MaxValue;
+
+        if (!Resolve<TransformComponent>(target, ref target.Comp))
+            return float.MaxValue;
+
+        var scpWorldPosition = _transformSystem.GetMapCoordinates(scp.Owner);
+        var targetWorldPosition = _transformSystem.GetMapCoordinates(target.Owner);
+
+        var toScp = (scpWorldPosition.Position - targetWorldPosition.Position).Normalized();
+        var targetForward = target.Comp.LocalRotation.ToWorldVec();
+
+        // Скалярное произведение
+        var dotProduct = Vector2.Dot(targetForward, toScp);
+
+        // Убедимся, что dotProduct в диапазоне [-1, 1]
+        dotProduct = Math.Clamp(dotProduct, -1f, 1f);
+
+        // Угол
+        var angle = MathF.Acos(dotProduct) * (180f / MathF.PI);
+        Logger.Debug($"Angle: {angle}, DotProduct: {dotProduct}");
+
+        return angle;
     }
 
     #endregion

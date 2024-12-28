@@ -24,7 +24,6 @@ namespace Content.Shared._Scp.Scp096;
 
 public abstract partial class SharedScp096System : EntitySystem
 {
-    [Dependency] private readonly SharedDoorSystem _doorSystem = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly SharedBlinkingSystem _blinkingSystem = default!;
     [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
