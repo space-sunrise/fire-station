@@ -9,7 +9,6 @@ using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
-using Robust.Shared.Network;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
 
@@ -24,7 +23,6 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly INetManager _net = default!;
 
     public override void Initialize()
     {
@@ -160,7 +158,6 @@ public abstract class SharedScp173System : EntitySystem
     {
         var angle = FindAngleBetween(scpEntity, targetEntity);
 
-        Logger.Debug($"Angle: {angle}, Result: {angle >= maxAngle}, Client: {_net.IsClient}");
         // Проверка: угол должен быть больше или равен maxAngle, чтобы SCP был вне поля зрения
         return angle >= maxAngle;
     }
