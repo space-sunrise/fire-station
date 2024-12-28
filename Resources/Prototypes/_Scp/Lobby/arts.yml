@@ -2,9 +2,9 @@
   id: BlackRoom
   background: /Textures/_Scp/Lobby/Arts/black_room.png
 
-- type: lobbyBackground
-  id: PinkRoom
-  background: /Textures/_Scp/Lobby/Arts/pink_room.png
+#- type: lobbyBackground
+#  id: PinkRoom
+#  background: /Textures/_Scp/Lobby/Arts/pink_room.png
 
 - type: lobbyBackground
   id: WhiteRoom
@@ -14,13 +14,13 @@
   id: Mtf
   background: /Textures/_Scp/Lobby/Arts/mtf.png
 
-- type: lobbyBackground
-  id: Dclass
-  background: /Textures/_Scp/Lobby/Arts/dclass.png
+#- type: lobbyBackground
+#  id: Dclass
+#  background: /Textures/_Scp/Lobby/Arts/dclass.png
 
-- type: lobbyBackground
-  id: ScpWarhammer
-  background: /Textures/_Scp/Lobby/Arts/scp_warhammer.png
+#- type: lobbyBackground
+#  id: ScpWarhammer
+#  background: /Textures/_Scp/Lobby/Arts/scp_warhammer.png
 
 - type: lobbyBackground
   id: Scp096
@@ -30,6 +30,6 @@
   id: Scp173Winter
   background: /Textures/_Scp/Lobby/Arts/scp173_winter.png
 
-- type: lobbyBackground
-  id: Planet
-  background: /Textures/_Scp/Lobby/Arts/planet.png
+#- type: lobbyBackground
+#  id: Planet
+#  background: /Textures/_Scp/Lobby/Arts/planet.png
