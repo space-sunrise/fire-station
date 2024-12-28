@@ -145,6 +145,9 @@ public abstract class SharedBlinkingSystem : EntitySystem
 
     public void ForceBlind(EntityUid uid, BlinkableComponent component, TimeSpan duration)
     {
+        if (_mobState.IsIncapacitated(uid))
+            return;
+
         component.BlinkEndTime = _gameTiming.CurTime + duration;
         Dirty(uid, component);
 
