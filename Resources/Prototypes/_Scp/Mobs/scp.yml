@@ -93,6 +93,13 @@
         Toxin: -0.25
       types:
         Bloodloss: -0.25
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: MetalThud
+    damage:
+      groups:
+        Brute: 10
   - type: CanBePulledDead
   - type: Muted
   - type: ActionGrant
