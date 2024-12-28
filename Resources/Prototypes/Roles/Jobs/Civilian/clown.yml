@@ -9,6 +9,7 @@
   startingGear: ClownGear
   icon: "JobIconClown"
   supervisors: job-supervisors-hop
+  setPreference: false # Fire added
   access:
   - Theatre
   - Maintenance

@@ -6,6 +6,7 @@
   startingGear: LibrarianGear
   icon: "JobIconLibrarian"
   supervisors: job-supervisors-hop
+  setPreference: false # Fire added
   access:
   - Service
   - Maintenance

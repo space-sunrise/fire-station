@@ -8,6 +8,7 @@
   startingGear: BarberGear
   icon: "JobIconBarber"
   supervisors: job-supervisors-hop
+  setPreference: false # Fire added
   access:
   - Barber
   - Service

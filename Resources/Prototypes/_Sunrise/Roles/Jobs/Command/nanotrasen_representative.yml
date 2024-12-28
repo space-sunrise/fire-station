@@ -15,6 +15,7 @@
   joinNotifyCrew: true
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  setPreference: false # Fire added
   access:
     - Cryogenics
     - Lawyer

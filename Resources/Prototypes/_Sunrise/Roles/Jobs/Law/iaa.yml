@@ -15,6 +15,7 @@
   supervisors: job-supervisors-magistrate
   canBeAntag: false
   displayWeight: 40
+  setPreference: false # Fire added
   access:
   - Command
   - Service
