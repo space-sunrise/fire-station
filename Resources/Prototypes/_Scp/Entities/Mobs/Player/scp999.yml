@@ -40,9 +40,9 @@
 #          position: "0, -0.2"
         density: 80
         mask:
-        - MobMask
+        - SmallMobMask
         layer:
-        - MobLayer
+        - SmallMobLayer
       fix2:
         shape:
           !type:PhysShapeAabb
@@ -85,7 +85,6 @@
   - type: Tag
     tags:
     - FootstepSound
-    - DoorBumpOpener
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 4

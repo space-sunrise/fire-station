@@ -17,9 +17,9 @@
           radius: 0.3
         density: 80
         mask:
-        - MobMask
+        - SmallMobMask
         layer:
-        - MobLayer
+        - SmallMobLayer
   - type: Destructible
     thresholds:
     - trigger:
@@ -46,9 +46,6 @@
       - !type:PlaySoundBehavior
         sound: !type:SoundPathSpecifier
           path: /Audio/_Scp/demon-dying.ogg
-  - type: Tag
-    tags:
-    - DoorBumpOpener
   - type: Muted
   - type: MovementSpeedModifier
     baseWalkSpeed: 7
