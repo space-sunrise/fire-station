@@ -262,8 +262,12 @@ public abstract partial class SharedScp096System : EntitySystem
             return false;
 
         // Если таргет не смотрит на 096 под определенным углом и требуемый угол не игнорируется
-        if (!IsWithinViewAngle(scpEntity.Owner, targetUid, scpEntity.Comp.ArgoAngle) && !ignoreAngle)
+        // Два раза ебашу IsWithinViewAngle, чтобы проверить, что 096 смотрит в лицо игроку, но и игрок в лицо 096
+        if ((!IsWithinViewAngle(scpEntity.Owner, targetUid, scpEntity.Comp.ArgoAngle) || !IsWithinViewAngle(targetUid, scpEntity.Owner, scpEntity.Comp.ArgoAngle))
+            && !ignoreAngle)
+        {
             return false;
+        }
 
         // Тогда все заебись и таргет подходит
         return true;
@@ -311,8 +315,8 @@ public abstract partial class SharedScp096System : EntitySystem
         if (!Resolve<TransformComponent>(target, ref target.Comp))
             return float.MaxValue;
 
-        var scpWorldPosition = _transformSystem.GetMapCoordinates(scp.Owner);
-        var targetWorldPosition = _transformSystem.GetMapCoordinates(target.Owner);
+        var scpWorldPosition = _transformSystem.GetMoverCoordinates(scp.Owner);
+        var targetWorldPosition = _transformSystem.GetMoverCoordinates(target.Owner);
 
         var toEntity = (scpWorldPosition.Position - targetWorldPosition.Position).Normalized();
 
