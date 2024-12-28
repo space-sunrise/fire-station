@@ -1,7 +1,7 @@
 - type: species
   id: Swine
   name: species-name-swine
-  roundStart: true
+  roundStart: false # Fire edit
   prototype: MobSwine
   sprites: MobSwineSprites
   markingLimits: MobSwineMarkingLimits
