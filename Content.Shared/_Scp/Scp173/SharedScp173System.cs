@@ -173,21 +173,21 @@ public abstract class SharedScp173System : EntitySystem
         if (!Resolve<TransformComponent>(target, ref target.Comp))
             return float.MaxValue;
 
-        var scpWorldPosition = _transformSystem.GetMapCoordinates(scp.Owner);
-        var targetWorldPosition = _transformSystem.GetMapCoordinates(target.Owner);
+        var scpWorldPosition = _transformSystem.GetMoverCoordinates(scp.Owner);
+        var targetWorldPosition = _transformSystem.GetMoverCoordinates(target.Owner);
 
-        var toScp = (scpWorldPosition.Position - targetWorldPosition.Position).Normalized();
-        var targetForward = target.Comp.LocalRotation.ToWorldVec();
+        var toScp = (scpWorldPosition.Position - targetWorldPosition.Position).Normalized(); // Вектор от target к SCP
+        var targetForward = target.Comp.LocalRotation.ToWorldVec(); // Направление взгляда target
 
-        // Скалярное произведение
+        // Проверка, смотрит ли цель на SCP или спиной к нему
         var dotProduct = Vector2.Dot(targetForward, toScp);
 
-        // Убедимся, что dotProduct в диапазоне [-1, 1]
-        dotProduct = Math.Clamp(dotProduct, -1f, 1f);
+        // Если цель смотрит спиной (угол > 90 градусов), возвращаем MaxValue
+        if (dotProduct < 0)
+            return float.MaxValue;
 
-        // Угол
+        // Иначе вычисляем угол
         var angle = MathF.Acos(dotProduct) * (180f / MathF.PI);
-        Logger.Debug($"Angle: {angle}, DotProduct: {dotProduct}");
 
         return angle;
     }
