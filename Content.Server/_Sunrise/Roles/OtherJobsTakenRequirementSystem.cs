@@ -1,35 +1,36 @@
-﻿using Content.Server.GameTicking;
-using Content.Server.Station.Systems;
+﻿using Content.Server.Station.Systems;
 using Content.Shared.GameTicking;
-using Content.Shared.Roles;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Server._Sunrise.Roles;
 
-/// <summary>
-/// This handles...
-/// </summary>
-public sealed class OtherJobsTakenRequirementSystem : EntitySystem
+public sealed class RelativeJobsCountSystem : EntitySystem
 {
     [Dependency] private readonly StationJobsSystem _jobsSystem = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {
-        SubscribeLocalEvent<PlayerBeforeSpawnEvent>(OnPlayerJoinedStation);
+        SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerJoinedStation);
     }
 
-    private void OnPlayerJoinedStation(PlayerBeforeSpawnEvent args)
+    private void OnPlayerJoinedStation(PlayerSpawnCompleteEvent args)
     {
-        if (!TryComp<OtherJobsTakenRequirementComponent>(args.Station, out var jobsTakenRequirementComponent))
+        if (!TryComp<RelativeJobsCountComponent>(args.Station, out var relativeJobsComponent))
             return;
 
-        if (args.JobId == null)
-            return;
+        var ni = 1;
 
-        if (jobsTakenRequirementComponent.TargetJob != args.JobId)
-            return;
+        foreach (var (targetJob, relativeJobDict) in relativeJobsComponent.Jobs)
+        {
+            foreach (var (relativeJob, modifier) in relativeJobDict)
+            {
+                if (_jobsSystem.GetJobs(args.Station).TryGetValue(relativeJob, out var jobCount))
+                    continue;
 
-        _jobsSystem.TryAdjustJobSlot(args.Station, jobsTakenRequirementComponent.AdjustJob, jobsTakenRequirementComponent.Modifier, true);
+                if (jobCount == null)
+                    continue;
+
+                _jobsSystem.TryAdjustJobSlot(args.Station, targetJob, jobCount.Value * modifier, true);
+            }
+        }
     }
 }

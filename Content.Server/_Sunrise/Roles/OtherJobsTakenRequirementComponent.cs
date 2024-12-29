@@ -5,18 +5,10 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototy
 
 namespace Content.Server._Sunrise.Roles;
 
-/// <summary>
-/// This is used for...
-/// </summary>
+
 [RegisterComponent]
-public sealed partial class OtherJobsTakenRequirementComponent : Component
+public sealed partial class RelativeJobsCountComponent : Component
 {
-    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<JobPrototype>))]
-    public string TargetJob;
-
-    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<JobPrototype>))]
-    public string AdjustJob;
-
-    [DataField]
-    public int Modifier = 1;
+    [DataField(required: true)]
+    public Dictionary<ProtoId<JobPrototype>, Dictionary<ProtoId<JobPrototype>, int>> Jobs = new ();
 }

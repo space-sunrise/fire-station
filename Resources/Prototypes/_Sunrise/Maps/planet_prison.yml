@@ -24,7 +24,6 @@
             PrisonEngineer: [ 2, 2 ]
             PrisonGuard: [ 20, -1 ]
             PlanetPrisoner: [ 0, 0 ]
-        - type: OtherJobsTakenRequirement
-          targetJob: PrisonGuard
-          adjustJob: PlanetPrisoner
-          modifier: 1
+        - type: RelativeJobsCount
+          PlanetPrisoner:
+            PrisonGuard: 1
