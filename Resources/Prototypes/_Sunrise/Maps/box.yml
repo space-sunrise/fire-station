@@ -83,15 +83,6 @@
             StationAi: [ 1, 1 ]
             Borg: [ 22, 22 ]
             SecurityCombatBorg: [ 2, 2 ]
-        - type: RelativeJobsCount
-          CargoTechnician:
-            HeadOfSecurity: 3
-            Warden: 3
-            SeniorOfficer: 3
-            Detective: 3
-            Brigmedic: 3
-            SecurityOfficer: 3
-            SecurityCadet: 3
         - type: StationGoal
           goals:
           - Shuttle

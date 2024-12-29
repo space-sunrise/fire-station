@@ -17,19 +17,14 @@ public sealed class RelativeJobsCountSystem : EntitySystem
         if (!TryComp<RelativeJobsCountComponent>(args.Station, out var relativeJobsComponent))
             return;
 
-        var ni = 1;
-
         foreach (var (targetJob, relativeJobDict) in relativeJobsComponent.Jobs)
         {
             foreach (var (relativeJob, modifier) in relativeJobDict)
             {
-                if (_jobsSystem.GetJobs(args.Station).TryGetValue(relativeJob, out var jobCount))
+                if (args.JobId != relativeJob.ToString())
                     continue;
 
-                if (jobCount == null)
-                    continue;
-
-                _jobsSystem.TryAdjustJobSlot(args.Station, targetJob, jobCount.Value * modifier, true);
+                _jobsSystem.TryAdjustJobSlot(args.Station, targetJob, modifier, true);
             }
         }
     }

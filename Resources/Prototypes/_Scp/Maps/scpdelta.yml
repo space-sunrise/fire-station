@@ -79,14 +79,15 @@
             Borg: [ 22, 22 ]
             SecurityCombatBorg: [ 2, 4 ]
         - type: RelativeJobsCount
-          ClassD:
-            HeadOfSecurity: 3
-            Warden: 3
-            SeniorOfficer: 3
-            Detective: 3
-            Brigmedic: 3
-            SecurityOfficer: 3
-            SecurityCadet: 3
+          jobs:
+            ClassD:
+              HeadOfSecurity: 3
+              Warden: 3
+              SeniorOfficer: 3
+              Detective: 3
+              Brigmedic: 3
+              SecurityOfficer: 3
+              SecurityCadet: 3
         - type: StationGoal
           goals:
           - Shuttle
