@@ -1,0 +1,62 @@
+﻿- type: entity
+  id: Scp049
+  suffix: SCP-049
+  parent:
+  - BaseMob
+  - MobDamageable
+  - MobCombat
+  - StripableInventoryBase
+  - MobBloodstream
+  - MobRespirator
+  - MobAtmosStandard
+  - MobFlammable
+  - InventoryBase
+  components:
+  - type: Pacified
+  - type: Scp049
+  - type: Hands
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2000: Critical
+      2500: Dead
+  - type: Body
+    prototype: Human
+    requiredLegs: 2
+  - type: Inventory
+    templateId: scp049
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/scp-049.rsi
+    state: SCP-049
+  - type: ComplexInteraction
+  - type: Buckle
+  - type: ZombieImmune
+  - type: SSDIndicator
+  - type: Stripping
+  - type: ScpShow049Hud
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 3.5
+  - type: Pullable
+  - type: Puller
+    needsHands: true
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      1000: 0.9
+      1500: 0.8
+      2000: 0.7
+  - type: Speech
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+  - type: TTS
+    voice: SCP049

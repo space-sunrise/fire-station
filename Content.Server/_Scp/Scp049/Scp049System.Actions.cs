@@ -37,6 +37,22 @@ public sealed partial class Scp049System
         SubscribeLocalEvent<Scp049Component, Scp049KillResurrectedAction>(OnKillResurrected);
         SubscribeLocalEvent<Scp049Component, Scp049ResurrectAction>(OnResurrect);
         SubscribeLocalEvent<Scp049Component, Scp049SelfHealAction>(OnSelfHeal);
+        SubscribeLocalEvent<Scp049Component, Scp049HealMinionAction>(OnHealMinion);
+    }
+
+    private void OnHealMinion(Entity<Scp049Component> ent, ref Scp049HealMinionAction args)
+    {
+        if (!TryComp<Scp049MinionComponent>(args.Target, out var minionComponent))
+            return;
+
+        _rejuvenateSystem.PerformRejuvenate(args.Target);
+
+        var targetName = Identity.Name(args.Target, EntityManager);
+
+        var localeMessage = Loc.GetString("scp049-heal-minion", ("target", targetName));
+        _popupSystem.PopupEntity(localeMessage, args.Performer, PopupType.Medium);
+
+        args.Handled = true;
     }
 
     private void OnSelfHeal(Entity<Scp049Component> ent, ref Scp049SelfHealAction args)

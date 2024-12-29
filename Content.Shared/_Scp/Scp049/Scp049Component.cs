@@ -14,7 +14,11 @@ public sealed partial class Scp049Component : Component
     [DataField("actions")]
     public List<ProtoId<EntityPrototype>> Scp049Actions = new()
     {
-        "ActionScp049Resurrect", "ActionScp049KillResurrected", "ActionScp049KillLeavingBeing", "ActionScp049SelfHeal",
+        "ActionScp049Resurrect",
+        "ActionScp049KillResurrected",
+        "ActionScp049KillLeavingBeing",
+        "ActionScp049SelfHeal",
+        "ActionScp049HealMinion",
     };
 
     [DataField]

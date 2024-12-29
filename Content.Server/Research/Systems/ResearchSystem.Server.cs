@@ -11,8 +11,20 @@ public sealed partial class ResearchSystem
     private void InitializeServer()
     {
         SubscribeLocalEvent<ResearchServerComponent, ComponentStartup>(OnServerStartup);
+        SubscribeLocalEvent<ResearchServerComponent, MapInitEvent>(OnServerMapInit);
         SubscribeLocalEvent<ResearchServerComponent, ComponentShutdown>(OnServerShutdown);
         SubscribeLocalEvent<ResearchServerComponent, TechnologyDatabaseModifiedEvent>(OnServerDatabaseModified);
+    }
+
+    private void OnServerMapInit(EntityUid uid, ResearchServerComponent component, MapInitEvent args)
+    {
+        var pointsPrototypes = PrototypeManager.EnumeratePrototypes<ResearchPointPrototype>();
+
+        foreach (var points in pointsPrototypes)
+        {
+            component.Points.TryAdd(points, 0);
+        }
+        Dirty(uid, component);
     }
 
     private void OnServerStartup(EntityUid uid, ResearchServerComponent component, ComponentStartup args)
@@ -20,13 +32,6 @@ public sealed partial class ResearchSystem
         var unusedId = EntityQuery<ResearchServerComponent>(true)
             .Max(s => s.Id) + 1;
         component.Id = unusedId;
-
-        var pointsPrototypes = PrototypeManager.EnumeratePrototypes<ResearchPointPrototype>();
-
-        foreach (var points in pointsPrototypes)
-        {
-            component.Points.Add(points, 0);
-        }
 
         Dirty(uid, component);
     }

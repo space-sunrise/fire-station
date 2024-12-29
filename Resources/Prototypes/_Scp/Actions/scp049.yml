@@ -63,3 +63,14 @@
     itemIconStyle: NoItem
     priority: 12
     event: !type:Scp049SelfHealAction
+
+- type: entity
+  id: ActionScp049HealMinion
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: EntityTargetAction
+    useDelay: 300
+    icon: { sprite: _Scp/Actions/scp049-actions.rsi, state: heal }
+    itemIconStyle: NoItem
+    priority: 12
+    event: !type:Scp049HealMinionAction

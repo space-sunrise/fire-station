@@ -9,6 +9,8 @@ public sealed partial class Scp049KillResurrectedAction : EntityTargetActionEven
 public sealed partial class Scp049KillLivingBeingAction : EntityTargetActionEvent {}
 public sealed partial class Scp049SelfHealAction : InstantActionEvent {}
 
+public sealed partial class Scp049HealMinionAction : EntityTargetActionEvent {}
+
 [Serializable, NetSerializable]
 public sealed partial class ScpResurrectionDoAfterEvent : DoAfterEvent
 {
