@@ -25,5 +25,6 @@
             PrisonGuard: [ 20, -1 ]
             PlanetPrisoner: [ 0, 0 ]
         - type: RelativeJobsCount
-          PlanetPrisoner:
-            PrisonGuard: 1
+          jobs:
+            PlanetPrisoner:
+              PrisonGuard: 1
