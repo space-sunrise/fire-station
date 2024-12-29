@@ -19,7 +19,7 @@
         - type: StationJobs
           availableJobs:
             #scp staff
-            ClassD: [ 10, 15 ]
+            ClassD: [ 3, 3 ]
             #scp
             Scp049: [ 1, 1 ]
             Scp096: [ 1, 1 ]
@@ -71,7 +71,6 @@
             Quartermaster: [ 1, 1 ]
             CargoTechnician: [ 3, 3 ]
             #civilian
-            Passenger: [ -1, -1 ]
             Musician: [ 1, 1 ]
             # silicon
             StationAi: [ 1, 1 ]
@@ -83,10 +82,8 @@
               HeadOfSecurity: 3
               Warden: 3
               SeniorOfficer: 3
-              Detective: 3
-              Brigmedic: 3
-              SecurityOfficer: 3
-              SecurityCadet: 3
+              SecurityOfficer: 2
+              SecurityCadet: 1
         - type: StationGoal
           goals:
           - Shuttle
