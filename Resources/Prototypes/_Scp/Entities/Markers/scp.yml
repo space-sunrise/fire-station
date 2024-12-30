@@ -12,6 +12,19 @@
       state: scp-173
   - type: SpawnPoint
     job_id: Scp173
+  - type: Scp173BlockStructureDamage
+
+- type: entity # Для особых случаев
+  name: SCP-173 structure damage blocker
+  id: Scp173StructureDamageBlocker
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/scp-173.rsi
+      state: scp-173
+  - type: Scp173BlockStructureDamage
 
 - type: entity
   name: SCP-096 spawner

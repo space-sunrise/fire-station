@@ -1,7 +1,7 @@
 ﻿- type: entity
   id: Scp173Blind
   name: Ослепить
-  description: "Ослепление всех в радиусе своей видимости на 6 секунд."
+  description: Ослепление всех в радиусе своей видимости на 6 секунд.
   categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
@@ -14,20 +14,20 @@
 - type: entity
   id: Scp173Clog
   name: Засорить тайл
-  description: "Чем больше - тем лучше."
+  description: Чем больше - тем лучше.
   categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
     event: !type:Scp173ClogAction
     raiseOnUser: true
     itemIconStyle: BigAction
-    useDelay: 30
+    useDelay: 60
     icon: /Textures/_Scp/Actions/173_clog.png
 
 - type: entity
   id: Scp173DamageStructure
   name: Осквернить
-  description: "Нанесение небольшого урона по всем строениям рядом."
+  description: Нанесение небольшого урона по всем строениям рядом.
   categories: [ HideSpawnMenu ]
   components:
   - type: InstantAction
@@ -40,7 +40,7 @@
 - type: entity
   id: Scp173FastMovement
   name: Скачок
-  description: "Быстрое передвижение в небольшом радиусе. Задетые людишки умирают."
+  description: Быстрое передвижение в небольшом радиусе. Задетые людишки умирают.
   categories: [ HideSpawnMenu ]
   components:
   - type: WorldTargetAction

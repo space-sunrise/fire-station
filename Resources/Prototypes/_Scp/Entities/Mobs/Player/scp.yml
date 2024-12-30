@@ -104,7 +104,7 @@
   - type: Muted
   - type: ActionGrant
     actions:
-    - Scp173Blind
+#    - Scp173Blind В целях баланса
     - Scp173Clog
     - Scp173DamageStructure
     - Scp173FastMovement

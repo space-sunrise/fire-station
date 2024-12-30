@@ -14,6 +14,9 @@ public sealed partial class BlinkableComponent : Component
     [ViewVariables, AutoNetworkedField]
     public TimeSpan BlinkEndTime;
 
+    [ViewVariables, AutoNetworkedField]
+    public float AdditionalBlinkingTime;
+
     [DataField]
     public ProtoId<BlinkIconPrototype> ClosedEyeIcon = "ClosedEyeIcon";
 

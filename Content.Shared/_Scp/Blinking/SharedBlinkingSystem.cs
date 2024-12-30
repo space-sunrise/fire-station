@@ -13,9 +13,9 @@ namespace Content.Shared._Scp.Blinking;
 public abstract class SharedBlinkingSystem : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly EyeClosingSystem _closingSystem = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
@@ -50,13 +50,14 @@ public abstract class SharedBlinkingSystem : EntitySystem
         {
             if (!IsScp173Nearby(uid))
             {
+                ResetBlink(uid, blinkableComponent, false);
                 continue;
             }
 
             // TODO: перенести на ивенты и вынести отсюда, этож каждый тик мертвые ресетят себя
             if (_mobState.IsIncapacitated(uid))
             {
-                ResetBlink(uid, blinkableComponent);
+                ResetBlink(uid, blinkableComponent, false);
                 continue;
             }
 
@@ -97,7 +98,8 @@ public abstract class SharedBlinkingSystem : EntitySystem
     /// <param name="variance">Плюс минус время следующего моргания, чтобы вся станция не моргала в один такт</param>
     public void SetNextBlink(EntityUid uid, BlinkableComponent component, TimeSpan interval, double variance = 0)
     {
-        component.NextBlink = _gameTiming.CurTime + interval + TimeSpan.FromSeconds(variance);
+        component.NextBlink = _gameTiming.CurTime + interval + TimeSpan.FromSeconds(variance) + TimeSpan.FromSeconds(component.AdditionalBlinkingTime);
+        component.AdditionalBlinkingTime = 0f;
 
         Dirty(uid, component);
     }
@@ -108,7 +110,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
         return entities.Count != 0 && entities.Any(scp => _examine.InRangeUnOccluded(uid, scp, 12f, ignoreInsideBlocker:false));
     }
 
-    private void UpdateAlert(EntityUid uid, BlinkableComponent component)
+    protected virtual void UpdateAlert(EntityUid uid, BlinkableComponent component)
     {
         var currentTime = _gameTiming.CurTime;
 
@@ -124,12 +126,13 @@ public abstract class SharedBlinkingSystem : EntitySystem
         _alertsSystem.ShowAlert(uid, component.BlinkingAlert, severity);
     }
 
-    public void ResetBlink(EntityUid uid, BlinkableComponent? component = null)
+    public void ResetBlink(EntityUid uid, BlinkableComponent? component = null, bool useVariance = true)
     {
         if (!Resolve(uid, ref component, false))
             return;
 
-        var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
+        // Если useVariance == false, то variance = 0
+        var variance = useVariance ? _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds : 0;
         SetNextBlink(uid, component, _blinkingInterval, variance);
 
         UpdateAlert(uid, component);

@@ -9,6 +9,7 @@ using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
 
@@ -93,7 +94,11 @@ public abstract class SharedScp173System : EntitySystem
     {
         var target = args.OtherEntity;
 
-        if (!_blinking.IsBlind(target, useTimeCompensation: true))
+        if (!TryComp<PhysicsComponent>(ent, out var physicsComponent))
+            return;
+
+        // Мы должны двигаться, чтобы сломать шею
+        if (physicsComponent.LinearVelocity.IsLengthZero())
             return;
 
         BreakNeck(target, ent.Comp);

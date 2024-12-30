@@ -52,7 +52,8 @@ public sealed class ReducedBlinkingSystem : EntitySystem
         if (!TryComp<BlinkableComponent>(target, out var blinkableComponent))
             return;
 
-        _blinking.SetNextBlink(target, blinkableComponent, TimeSpan.FromSeconds(entity.Comp.BonusTime));
+        blinkableComponent.AdditionalBlinkingTime = entity.Comp.BonusTime;
+        _blinking.ResetBlink(entity, blinkableComponent);
         _useDelay.TryResetDelay(entity);
 
         if (entity.Comp.UseSound != null)
