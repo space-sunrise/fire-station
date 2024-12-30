@@ -55,6 +55,9 @@
         layer:
         - MachineLayer
   - type: EntityStorage
+    blacklist:
+      components:
+      - Scp
   - type: ContainerContainer
     containers:
       entity_storage: !type:Container

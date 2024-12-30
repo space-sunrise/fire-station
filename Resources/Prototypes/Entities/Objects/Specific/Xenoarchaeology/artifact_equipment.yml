@@ -47,6 +47,9 @@
       whitelist:
         components:
         - Artifact
+      blacklist:
+        components:
+        - Scp
     - type: Weldable
     - type: SuppressArtifactContainer
     - type: RadiationBlockingContainer
