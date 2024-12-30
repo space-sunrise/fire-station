@@ -241,7 +241,7 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         DoOpenStorage(uid, component);
     }
 
-    private void DoOpenStorage(EntityUid uid, SharedEntityStorageComponent component)
+    protected void DoOpenStorage(EntityUid uid, SharedEntityStorageComponent component)
     {
         component.Open = true;
         Dirty(uid, component);
