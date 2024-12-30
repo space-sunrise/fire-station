@@ -24,6 +24,12 @@ public sealed class RelativeJobsCountSystem : EntitySystem
                 if (args.JobId != relativeJob.ToString())
                     continue;
 
+                if (!_jobsSystem.TryGetJobSlot(args.Station, targetJob, out var jobCount))
+                    continue;
+
+                if (jobCount >= relativeJobsComponent.MaxCount)
+                    continue;
+
                 _jobsSystem.TryAdjustJobSlot(args.Station, targetJob, modifier, true);
             }
         }

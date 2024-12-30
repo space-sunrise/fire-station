@@ -78,11 +78,12 @@
         - type: RelativeJobsCount
           jobs:
             ClassD:
-              HeadOfSecurity: 3
-              Warden: 3
-              SeniorOfficer: 3
+              HeadOfSecurity: 2
+              Warden: 2
+              SeniorOfficer: 2
               SecurityOfficer: 2
               SecurityCadet: 1
+          maxCount: 18
         - type: StationGoal
           goals:
           - Shuttle
