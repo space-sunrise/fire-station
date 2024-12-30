@@ -4,10 +4,8 @@
   description: job-description-classd
   playTimeTracker: JobClassD
   startingGear: ClassDGear
-  icon: "JobIconClassD"
-  supervisors: job-supervisors-head-of-containment
-  access:
-  - Maintenance
+  icon: JobIconClassD
+  supervisors: job-supervisors-security-and-research
   alwaysUseSpawner: true
 
 - type: startingGear
@@ -15,5 +13,4 @@
   equipment:
     id: PassengerPDA
     jumpsuit: ClothingUniformClassD
-    ears: ClothingHeadsetGrey
     shoes: ClothingShoesClassD
