@@ -14,6 +14,7 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Verbs;
+using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
@@ -27,6 +28,7 @@ public sealed class EntityStorageSystem : SharedEntityStorageSystem
     [Dependency] private readonly AtmosphereSystem _atmos = default!;
     [Dependency] private readonly IMapManager _map = default!;
     [Dependency] private readonly MapSystem _mapSystem = default!;
+    [Dependency] private readonly AudioSystem _audio = default!; // Fire
 
     public override void Initialize()
     {
@@ -56,7 +58,24 @@ public sealed class EntityStorageSystem : SharedEntityStorageSystem
         SubscribeLocalEvent<InsideEntityStorageComponent, AtmosExposedGetAirEvent>(OnInsideExposed);
 
         SubscribeLocalEvent<InsideEntityStorageComponent, EntGotRemovedFromContainerMessage>(OnRemoved);
+
+        SubscribeLocalEvent<EntityStorageComponent, OpenStorageDoAfterEvent>(OnDoAfterSuccess); // Fire
     }
+
+    // Fire added start - Открытие дверей с дуафтером
+    private void OnDoAfterSuccess(Entity<EntityStorageComponent> ent, ref OpenStorageDoAfterEvent args)
+    {
+        if (args.Cancelled || args.Handled)
+            return;
+
+        DoOpenStorage(ent.Owner, ent.Comp);
+
+        // TODO: Убейте меня за эту реализацию, но получше
+        _audio.PlayPvs(ent.Comp.OpenSound, ent);
+
+        args.Handled = true;
+    }
+    // Fire added end
 
     private void OnMapInit(EntityUid uid, EntityStorageComponent component, MapInitEvent args)
     {

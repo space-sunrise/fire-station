@@ -119,6 +119,14 @@ public abstract partial class SharedEntityStorageComponent : Component
     [DataField]
     public EntityWhitelist? Whitelist;
 
+    // Fire added start - а где блеклист
+    [DataField]
+    public EntityWhitelist? Blacklist;
+
+    [DataField]
+    public float DoAfterDelay;
+    // Fire edit end
+
     /// <summary>
     /// The contents of the storage
     /// </summary>

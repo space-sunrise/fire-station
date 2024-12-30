@@ -17,6 +17,7 @@ using Content.Shared.Verbs;
 using Content.Shared.Wall;
 using Content.Shared.Whitelist;
 using Content.Shared.ActionBlocker;
+using Content.Shared.DoAfter;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
@@ -24,6 +25,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Network;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -46,6 +48,7 @@ public abstract class SharedEntityStorageSystem : EntitySystem
     [Dependency] private   readonly WeldableSystem _weldable = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelistSystem = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!; // Fire
 
     public const string ContainerName = "entity_storage";
 
@@ -204,7 +207,10 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         }
     }
 
-    public void OpenStorage(EntityUid uid, SharedEntityStorageComponent? component = null)
+    // Fire edit start
+    // Я добавил возможность сделать открытие шкафов с дуафтером, пришлось чут чут переписать этот метод и добавить еще один
+    // А еще я добавил EntityUid? user = null, чтобы дуафтер мог запускаться на открывающем двери игроке
+    public void OpenStorage(EntityUid uid, SharedEntityStorageComponent? component = null, EntityUid? user = null)
     {
         if (!ResolveStorage(uid, ref component))
             return;
@@ -214,16 +220,43 @@ public abstract class SharedEntityStorageSystem : EntitySystem
 
         var beforeev = new StorageBeforeOpenEvent();
         RaiseLocalEvent(uid, ref beforeev);
+
+        // Тут начинается переписывание
+        if (component.DoAfterDelay != 0 && user.HasValue)
+        {
+            var doAfterEventArgs = new DoAfterArgs(EntityManager, user.Value, component.DoAfterDelay, new OpenStorageDoAfterEvent(), uid, target: uid)
+            {
+                BreakOnMove = true,
+                BreakOnDamage = true,
+                NeedHand = true,
+            };
+
+            _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
+
+            // Выходим из метода, так как логика открытия должна произойти после успешного дуафтера, а не сразу
+            return;
+        }
+
+        // Остальные нормальные случаи, когда мы не используем дуафтер
+        DoOpenStorage(uid, component);
+    }
+
+    private void DoOpenStorage(EntityUid uid, SharedEntityStorageComponent component)
+    {
         component.Open = true;
         Dirty(uid, component);
+
         EmptyContents(uid, component);
         ModifyComponents(uid, component);
+
         if (_net.IsClient && _timing.IsFirstTimePredicted)
             _audio.PlayPvs(component.OpenSound, uid);
+
         ReleaseGas(uid, component);
         var afterev = new StorageAfterOpenEvent();
         RaiseLocalEvent(uid, ref afterev);
     }
+    // Fire edit end
 
     public void CloseStorage(EntityUid uid, SharedEntityStorageComponent? component = null)
     {
@@ -329,7 +362,7 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         if (!CanOpen(user, target, silent))
             return false;
 
-        OpenStorage(target);
+        OpenStorage(target, user: user);
         return true;
     }
 
@@ -442,7 +475,12 @@ public abstract class SharedEntityStorageSystem : EntitySystem
 
         var targetIsMob = HasComp<BodyComponent>(toInsert);
         var storageIsItem = HasComp<ItemComponent>(container);
-        var allowedToEat = component.Whitelist == null ? HasComp<ItemComponent>(toInsert) : _whitelistSystem.IsValid(component.Whitelist, toInsert);
+
+        // Fire edit start - а где блеклист бля
+        var allowedToEat = component.Whitelist == null
+            ? HasComp<ItemComponent>(toInsert)
+            : _whitelistSystem.IsWhitelistPass(component.Whitelist, toInsert) && !_whitelistSystem.IsWhitelistPass(component.Blacklist, toInsert);
+        // Fire edit end
 
         // BEFORE REPLACING THIS WITH, I.E. A PROPERTY:
         // Make absolutely 100% sure you have worked out how to stop people ending up in backpacks.
@@ -451,7 +489,7 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         // For the record, what you need to do is empty the backpack onto a PlacableSurface (table, rack)
         if (targetIsMob)
         {
-            if (!storageIsItem)
+            if (!storageIsItem && allowedToEat) // Fire edit
                 allowedToEat = true;
             else
             {
@@ -509,3 +547,8 @@ public abstract class SharedEntityStorageSystem : EntitySystem
 
     }
 }
+
+// Fire added start - дуафтер на открытие сторейджей
+[Serializable, NetSerializable]
+public sealed partial class OpenStorageDoAfterEvent : SimpleDoAfterEvent;
+// Fire added end
