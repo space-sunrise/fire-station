@@ -55,7 +55,10 @@
         layer:
         - MachineLayer
   - type: EntityStorage
-    blacklist:
+    whitelist:
+      components:
+      - MobState
+    blacklist: # Fire
       components:
       - Scp
   - type: ContainerContainer
