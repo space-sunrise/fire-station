@@ -1,0 +1,39 @@
+﻿- type: stationGoal
+  id: Scp1
+  text: station-goal-scp-1
+  lockBoxPrototypeId: LockboxCaptain
+
+- type: stationGoal
+  id: Scp2
+  text: station-goal-scp-2
+  lockBoxPrototypeId: LockboxCaptain
+
+- type: stationGoal
+  id: Scp3
+  text: station-goal-scp-3
+  lockBoxPrototypeId: LockboxCaptain
+
+- type: stationGoal
+  id: Scp4
+  text: station-goal-scp-4
+  lockBoxPrototypeId: LockboxCaptain
+
+- type: stationGoal
+  id: Scp5
+  text: station-goal-scp-5
+  lockBoxPrototypeId: LockboxCaptain
+
+- type: stationGoal
+  id: Scp6
+  text: station-goal-scp-6
+  lockBoxPrototypeId: LockboxCaptain
+
+- type: stationGoal
+  id: Scp7
+  text: station-goal-scp-7
+  lockBoxPrototypeId: LockboxCaptain
+
+- type: stationGoal
+  id: Scp8
+  text: station-goal-scp-8
+  lockBoxPrototypeId: LockboxCaptain
