@@ -17,7 +17,7 @@
   alias:
   - extra
   name: extra-title
-  showInVote: true
+  showInVote: false # Fire
   hide: false
   description: extra-description
   rules:

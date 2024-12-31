@@ -1,8 +1,11 @@
 ﻿- type: gamePreset
   id: Scp
-  name: scp-game-preset-title
-  description: scp-game-preset-description
+  alias:
+  - scp
+  name: scp-title
+  showInVote: true
   hide: false
-  showInVote: false
+  description: scp-description
   rules:
-  - Scp
+  - BasicStationEventScheduler
+  - BasicRoundstartVariation
