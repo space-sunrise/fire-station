@@ -276,6 +276,11 @@ public sealed partial class ChatSystem
         {"гепе","ХоП"},
         {"гв","СМО"},
         {"геве","СМО"},
+        // Fire edit start
+        {"нус","нарушение условий содержания"},
+        {"н.у.с","нарушение условий содержания"},
+        {"н.у.с.","нарушение условий содержания"},
+        // Fire edit end
     };
 
     public string ReplaceWords(string message)

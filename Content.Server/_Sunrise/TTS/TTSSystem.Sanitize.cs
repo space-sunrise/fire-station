@@ -19,8 +19,10 @@ public sealed partial class TTSSystem
         text = Regex.Replace(text, @"[^a-zA-Zа-яА-ЯёЁ0-9,\-+?!. ]", "");
         text = Regex.Replace(text, @"[a-zA-Z]", ReplaceLat2Cyr, RegexOptions.Multiline | RegexOptions.IgnoreCase);
         text = Regex.Replace(text, @"(?<![a-zA-Zа-яёА-ЯЁ])[a-zA-Zа-яёА-ЯЁ]+?(?![a-zA-Zа-яёА-ЯЁ])", ReplaceMatchedWord, RegexOptions.Multiline | RegexOptions.IgnoreCase);
-        text = Regex.Replace(text, @"(?<=[1-90])(\.|,)(?=[1-90])", " целых ");
-        text = Regex.Replace(text, @"\d+", ReplaceWord2Num);
+        // Fire edit start - чтобы ттс произносил имена сцп полностью, и было 049, вместо 49. Мне чатгпт сделал это
+        text = Regex.Replace(text, @"(?<=[0-9])(\.|,)(?=[0-9])", " целых ");
+        text = Regex.Replace(text, @"\b\d+\b", ReplaceWord2Num); // Учитываем числа с ведущими нулями
+        // Fire edit end
         text = text.Trim();
         return text;
     }
@@ -137,6 +139,13 @@ public sealed partial class TTSSystem
             {"с4", "Си 4"}, // cyrillic
             {"c4", "Си 4"}, // latinic
             {"бсс", "Бэ Эс Эс"},
+            // Fire edit start
+            {"сцп", "Эс Си Пи"},
+            {"дешка", "дэшка"},
+            {"дшник", "дэшник"},
+            {"д", "дэ"}, // Типо ДЭ КЛАСС
+            {"нус", "Эн Оу Эс"},
+            // Fire edit end
         };
 
     private static readonly IReadOnlyDictionary<string, string> ReverseTranslit =
