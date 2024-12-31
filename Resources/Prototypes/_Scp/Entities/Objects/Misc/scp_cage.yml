@@ -6,8 +6,8 @@
 
 - type: entity
   parent: BaseStructureDynamic
-  id: CrateScpCageFolded
-  categories: [ HideSpawnMenu ]
+  id: BaseCrateScpCage
+  abstract: true
   components:
   - type: Sprite
     sprite: _Scp/Objects/Misc/scp_cage.rsi
@@ -46,7 +46,18 @@
     - entity_storage
 
 - type: entity
-  parent: CrateScpCageFolded
+  parent: BaseCrateScpCage
+  id: CrateScpCageFolded
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    scale: 0.5,0.65
+  - type: Item
+    size: Ginormous
+  - type: MultiHandedItem
+
+- type: entity
+  parent: BaseCrateScpCage
   id: CrateScpCage
   abstract: true
   name: Scp cage
