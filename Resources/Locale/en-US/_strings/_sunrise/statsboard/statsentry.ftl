@@ -17,11 +17,11 @@ statsentry-cuff-time = Был в наручниках [color=yellow]{ $name }[/c
 statsentry-space-time = Был в космосе [color=yellow]{ $name }[/color]\n
 statsentry-sleep-time = Проспал [color=yellow]{ $name }[/color]\n
 statsentry-int-cc = Трогал карту капитана: { $name }
-statsentry-species-entry-name = На станции были представители таких рас:
+statsentry-species-entry-name = В комплексе были представители таких рас:
 statsentry-species-entry = [bold][color=white]{ $name }[/color][/bold] в количестве [color=white]{ $count }[/color].
 statsentry-mst-pop-species = Самой распространённой расой стал [color=white]{ $name }[/color].
 statsentry-bank-balance = Под конец смены баланс карго составил [color=white]{ $balance }[/color] кредитов.
-statsentry-firth-murder = Первая жертва станции - [color=white]{ $name }[/color]{ $username }.
+statsentry-firth-murder = Первая жертва комплекса - [color=white]{ $name }[/color]{ $username }.
 statsentry-firth-murder-time = Время смерти - [color=yellow]{ $time }[/color].
 statsentry-firth-murder-killer = Убийца - [color=white]{ $name }[/color]{ $username }.
 statsentry-firth-murder-killer-none = Смерть наступила при неизвестных обстоятельствах.
@@ -38,7 +38,7 @@ statsentry-hamster-killer = Убийцей гамлета был [color=white]{ 
 statsentry-total-cuffed-count = Игроки были закованы [color=white]{ $count }[/color] раз.
 statsentry-player-with-longest-cuffed-time = Больше всего времени в наручниках провёл [color=white]{ $name }[/color]{ $username } - [color=yellow]{ $time }[/color].
 statsentry-total-sleep-time = Общее время сна игроков составило [color=yellow]{ $time }[/color].
-statsentry-player-with-longest-sleep-time = Главной соней станции оказался [color=white]{ $name }[/color]{ $username }.
+statsentry-player-with-longest-sleep-time = Главной соней комплекса оказался [color=white]{ $name }[/color]{ $username }.
 statsentry-player-with-longest-sleep-time-time = Он спал на протяжении [color=yellow]{ $time }[/color].
 statsentry-player-with-longest-space-time = Больше всего времени в космосе провёл [color=white]{ $name }[/color]{ $username } - [color=yellow]{ $time }[/color].
 statsentry-clown-cuffed = Клоун [color=white]{ $name }[/color]{ $username } был закован всего спустя [color=yellow]{ $time }[/color].
