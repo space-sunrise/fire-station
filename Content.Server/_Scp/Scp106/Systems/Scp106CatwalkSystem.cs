@@ -69,7 +69,6 @@ public sealed class Scp106CatwalkSystem : EntitySystem
             return;
 
         scp106Component.IsContained = true;
-        EnsureComp<PacifiedComponent>(args.OtherEntity);
 
         if (!TryComp<FixturesComponent>(args.OtherEntity, out var fixturesComponent))
             return;
@@ -77,7 +76,6 @@ public sealed class Scp106CatwalkSystem : EntitySystem
         foreach (var (id, fixture) in fixturesComponent.Fixtures)
         {
             _physics.SetCollisionMask(args.OtherEntity, id, fixture, 30);
-
         }
     }
 
@@ -93,8 +91,6 @@ public sealed class Scp106CatwalkSystem : EntitySystem
         if (!isStillOnContainer) // Если он не на другом контейнере, сбрасываем состояние
         {
             scp106Component.IsContained = false;
-            RemComp<PacifiedComponent>(args.OtherEntity);
-
 
             if (!TryComp<FixturesComponent>(args.OtherEntity, out var fixturesComponent))
                 return;
@@ -102,9 +98,7 @@ public sealed class Scp106CatwalkSystem : EntitySystem
             foreach (var (id, fixture) in fixturesComponent.Fixtures)
             {
                 _physics.SetCollisionMask(args.OtherEntity, id, fixture, 18);
-
             }
         }
-
     }
 }
