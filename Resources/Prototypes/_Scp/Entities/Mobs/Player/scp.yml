@@ -154,6 +154,7 @@
     baseWalkSpeed: 2
     baseSprintSpeed: 2
   - type: Scp106
+  - type: Muted
   - type: MobThresholds
     thresholds:
       0: Alive
