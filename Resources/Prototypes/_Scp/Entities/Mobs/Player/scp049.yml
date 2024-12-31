@@ -2,14 +2,11 @@
   id: Scp049
   suffix: SCP-049
   parent:
-  - BaseMob
-  - MobDamageable
+  - BaseScp
   - MobCombat
   - StripableInventoryBase
   - MobBloodstream
   - MobRespirator
-  - MobAtmosStandard
-  - MobFlammable
   - InventoryBase
   components:
   - type: Pacified
@@ -32,7 +29,6 @@
     state: SCP-049
   - type: ComplexInteraction
   - type: Buckle
-  - type: ZombieImmune
   - type: SSDIndicator
   - type: Stripping
   - type: ScpShow049Hud

@@ -1,10 +1,12 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Numerics;
 using Content.Server.Examine;
 using Content.Server.Ghost;
 using Content.Server.Light.Components;
 using Content.Server.Storage.Components;
 using Content.Server.Storage.EntitySystems;
+using Content.Shared._Scp.Containment.Cage;
 using Content.Shared._Scp.Scp173;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Coordinates.Helpers;
@@ -23,6 +25,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
+using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Robust.Server.Audio;
@@ -101,6 +104,14 @@ public sealed class Scp173System : SharedScp173System
         if (args.Handled)
             return;
 
+        if (IsInScpCage(uid, out var storage))
+        {
+            var message = Loc.GetString("scp-cage-suppress-ability", ("container", Name(storage.Value)));
+            _popupSystem.PopupEntity(message, uid, uid, PopupType.LargeCaution);
+
+            return;
+        }
+
         var defileRadius = 4f;
         var defileTilePryAmount = 10;
 
@@ -148,8 +159,8 @@ public sealed class Scp173System : SharedScp173System
             }
 
             // randomly opens some lockers and such.
-            if (entityStorage.TryGetComponent(ent, out var entstorecomp))
-                _entityStorage.OpenStorage(ent, entstorecomp);
+            if (!HasComp<ScpCageComponent>(ent) && entityStorage.TryGetComponent(ent, out var entstorecomp))
+                _entityStorage.OpenStorage(ent, entstorecomp); // TODO: Пофиксить, что оно открывает ЗАЛОЧЕННЫЕ шкафы и они остаются залоченными, но открытыми
 
             // chucks items
             if (items.HasComponent(ent) &&
@@ -172,6 +183,14 @@ public sealed class Scp173System : SharedScp173System
     {
         if (args.Handled)
             return;
+
+        if (IsInScpCage(ent, out var storage))
+        {
+            var message = Loc.GetString("scp-cage-suppress-ability", ("container", Name(storage.Value)));
+            _popupSystem.PopupEntity(message, ent, ent, PopupType.LargeCaution);
+
+            return;
+        }
 
         var coords = Transform(ent).Coordinates;
 
@@ -214,6 +233,14 @@ public sealed class Scp173System : SharedScp173System
     {
         if (args.Handled)
             return;
+
+        if (IsInScpCage(ent, out var storage))
+        {
+            var message = Loc.GetString("scp-cage-suppress-ability", ("container", Name(storage.Value)));
+            _popupSystem.PopupEntity(message, ent, ent, PopupType.LargeCaution);
+
+            return;
+        }
 
         if (Is173Watched(ent, out var watchersCount) && watchersCount > ent.Comp.MaxWatchers)
         {
@@ -393,6 +420,20 @@ public sealed class Scp173System : SharedScp173System
         var layer = (CollisionGroup)collidedEntityPhysics.CollisionLayer;
 
         return layer.HasFlag(CollisionGroup.WallLayer) || layer.HasFlag(CollisionGroup.TableLayer);
+    }
+
+    private bool IsInScpCage(EntityUid uid, [NotNullWhen(true)] out EntityUid? storage)
+    {
+        storage = null;
+
+        if (TryComp<InsideEntityStorageComponent>(uid, out var insideEntityStorageComponent) &&
+            HasComp<ScpCageComponent>(insideEntityStorageComponent.Storage))
+        {
+            storage = insideEntityStorageComponent.Storage;
+            return true;
+        }
+
+        return false;
     }
 
 }

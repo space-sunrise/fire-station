@@ -1,0 +1,127 @@
+﻿# TODO: Возможность раскладывать и складывать контейнер - Done, ждем спрайты
+# TODO: Возможность 173ему выбраться из клетки, если она долго стоит на месте - Done, но без стояния на месте
+# TODO: Возможность для всех сцп выбираться из контейнеров, кроме особенных - Done
+# TODO: Более тяжелые звуки открытия и закрытия - Done
+# TODO: Возможно дуафтер на открытие - Done
+
+- type: entity
+  parent: BaseStructureDynamic
+  id: CrateScpCageFolded
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/scp_cage.rsi
+    layers:
+    - state: base
+    - state: closed
+      map: [ "enum.StorageVisualLayers.Door" ]
+  - type: Icon
+    sprite: _Scp/Objects/Misc/scp_cage.rsi
+    state: closed
+  # Копипаста с CrateGeneric
+  - type: Transform
+    noRot: true
+  - type: InteractionOutline
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.4,0.4,0.29"
+        density: 50
+        mask:
+        - CrateMask #this is so they can go under plastic flaps
+        layer:
+        - MachineLayer
+  # Копипаста кончилась
+  - type: Deployable
+    requiredTools:
+    - Screwing
+    deployed: true
+  - type: Construction
+    graph: Girder
+    node: wall
+    containers:
+    - entity_storage
+
+- type: entity
+  parent: CrateScpCageFolded
+  id: CrateScpCage
+  abstract: true
+  name: Scp cage
+  components:
+  - type: ResistLocker
+    resistTime: 300 # 5 минут
+  - type: EntityStorage
+    openSound:
+      path: /Audio/_Scp/Effects/door_open.ogg
+    closeSound:
+      path: /Audio/_Scp/Effects/door_close.ogg
+      params:
+        volume: -4
+    air:
+      volume: 800
+    whitelist:
+      components:
+      - Scp
+  - type: Lock
+  - type: AccessReader
+    access: [["Security"]]
+  - type: SuppressArtifactContainer
+  - type: RadiationBlockingContainer
+    resistance: 5
+  - type: ScpCage
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger: !type:DamageTrigger
+        damage: 2000
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-1,0.5,1"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: ItemSlots
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateDoorOpen: open
+    stateDoorClosed: closed
+  - type: PlaceableSurface
+    isPlaceable: false
+
+- type: entity
+  parent: CrateScpCage
+  id: CrateScpCageScp173
+  name: Scp173 cage
+  components:
+  - type: EntityStorage
+    doAfterDelay: 3
+    air:
+      volume: 800
+    whitelist:
+      components:
+      - Scp173
+  - type: Deployable
+    requiredTools:
+    - Screwing
+    deployed: false
+    deployStates:
+      false: CrateScpCageFolded
+      true: CrateScpCageScp173

@@ -1,0 +1,19 @@
+{
+    "version": 1,
+    "copyright": "Author: Любознательный",
+    "size": {
+        "x": 32,
+        "y": 64
+    },
+    "states": [
+        {
+            "name": "base"
+        },
+        {
+            "name": "open"
+        },
+        {
+            "name": "closed"
+        }
+    ]
+}
