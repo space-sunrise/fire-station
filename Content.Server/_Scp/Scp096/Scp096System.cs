@@ -44,7 +44,7 @@ public sealed partial class Scp096System : SharedScp096System
         var target = args.Target.Value;
 
         // randomly opens some lockers and such.
-        if (TryComp<EntityStorageComponent>(target, out var entityStorageComponent) && entityStorageComponent.Open)
+        if (TryComp<EntityStorageComponent>(target, out var entityStorageComponent) && !entityStorageComponent.Open)
         {
             _lock.TryUnlock(target, ent);
             _entityStorage.OpenStorage(target, entityStorageComponent);

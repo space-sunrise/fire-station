@@ -20,7 +20,7 @@ public abstract partial class SharedScp096System
 
         ent.Comp.TimesHitted++;
 
-        if (ent.Comp.TimesHitted < 2)
+        if (ent.Comp.TimesHitted < 4)
             return;
 
         _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(ent.Owner,
@@ -59,7 +59,7 @@ public abstract partial class SharedScp096System
 
     private void OnTargetStateChanged(Entity<Scp096TargetComponent> ent, ref MobStateChangedEvent args)
     {
-        if (args.NewMobState == MobState.Alive)
+        if (!_mobStateSystem.IsDead(args.Target))
             return;
 
         RemComp<Scp096TargetComponent>(ent.Owner);

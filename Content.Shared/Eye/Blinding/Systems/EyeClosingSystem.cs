@@ -4,6 +4,7 @@ using Content.Shared.Eye.Blinding.Components;
 
 namespace Content.Shared.Eye.Blinding.Systems;
 
+// TODO: Почемы ты параша не являешься кор системой для моргания
 public sealed class EyeClosingSystem : EntitySystem
 {
     [Dependency] private readonly BlindableSystem _blindableSystem = default!;
