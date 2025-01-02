@@ -25,7 +25,7 @@ public sealed partial class Scp096System : SharedScp096System
     [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    private SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
+    private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
 
     public override void Initialize()
     {

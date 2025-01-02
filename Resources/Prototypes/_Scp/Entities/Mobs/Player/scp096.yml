@@ -26,8 +26,8 @@
     animation: WeaponArcPunch
     damage:
       types:
-        Blunt: 35
-        Bloodloss: 5
+        Blunt: 60
+        Bloodloss: 10
   - type: Body
     prototype: Human
   - type: Muted
@@ -78,11 +78,11 @@
     damageCap: 0
     damage:
       groups:
-        Brute: -1.0
-        Burn: -1.0
-        Toxin: -1.0
+        Brute: -10.0
+        Burn: -10.0
+        Toxin: -10.0
       types:
-        Bloodloss: -1.0
+        Bloodloss: -10.0
   - type: SlowOnDamage
     speedModifierThresholds:
       1000: 0.9
