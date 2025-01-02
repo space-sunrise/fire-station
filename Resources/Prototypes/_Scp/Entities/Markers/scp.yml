@@ -132,6 +132,34 @@
     prototypes:
     - Scp131B
 
+- type: entity
+  name: SCP-457 spawner
+  id: SpawnScp457
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/scp-457.rsi
+      state: fireguy
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp457
+
+- type: entity
+  name: SCP-247 spawner
+  id: SpawnScp247
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/scp-247.rsi
+      state: scp-247
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp247
+
 # class D
 
 - type: entity
