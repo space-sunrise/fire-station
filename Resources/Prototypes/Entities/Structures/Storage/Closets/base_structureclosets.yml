@@ -58,6 +58,7 @@
     whitelist:
       components:
       - MobState
+      - Item
     blacklist: # Fire
       components:
       - Scp
