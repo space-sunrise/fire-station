@@ -131,7 +131,7 @@ public abstract partial class SharedScp096System : EntitySystem
             args.Cancelled = true;
     }
 
-    private void OnAttackAttempt(Entity<Scp096Component> ent, ref AttackAttemptEvent args)
+    protected virtual void OnAttackAttempt(Entity<Scp096Component> ent, ref AttackAttemptEvent args)
     {
         if (!args.Target.HasValue)
             return;
