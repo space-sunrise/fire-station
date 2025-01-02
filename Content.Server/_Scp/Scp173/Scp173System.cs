@@ -150,13 +150,11 @@ public sealed class Scp173System : SharedScp173System
 
         foreach (var ent in lookup)
         {
-            // break windows/walls
-            if (_tag.HasTag(ent, "Window") || _tag.HasTag(ent, "Wall"))
-            {
-                var dspec = new DamageSpecifier();
-                dspec.DamageDict.Add("Structural", 60);
-                _damageable.TryChangeDamage(ent, dspec);
-            }
+            // break random stuff
+            var dspec = new DamageSpecifier();
+            var damageValue = _random.Next(40, 80);
+            dspec.DamageDict.Add("Structural", damageValue);
+            _damageable.TryChangeDamage(ent, dspec);
 
             // randomly opens some lockers and such.
             if (!HasComp<ScpCageComponent>(ent) && entityStorage.TryGetComponent(ent, out var entstorecomp))
