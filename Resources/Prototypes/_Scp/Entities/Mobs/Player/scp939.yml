@@ -48,7 +48,6 @@
   - type: Buckle
   - type: Stripping
   - type: VoiceMask
-  - type: DogVision
   - type: UserInterface
     interfaces:
       enum.VoiceMaskUIKey.Key:
