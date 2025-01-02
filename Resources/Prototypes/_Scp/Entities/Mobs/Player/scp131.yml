@@ -58,6 +58,12 @@
     size: Huge
   - type: ReplacementAccent
     accent: mouse
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-scp131-name
+    description: ghost-role-information-scp131-description
+    raffle:
+      settings: short
 #  - type: Blinkable мейби в другой жизни, когда будет не криво работать и балансно
 #  - type: EyeClosing
 
