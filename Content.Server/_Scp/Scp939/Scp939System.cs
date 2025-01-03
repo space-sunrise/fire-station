@@ -24,9 +24,10 @@ public sealed partial class Scp939System : EntitySystem
         InitializeActions();
 
         SubscribeLocalEvent<Scp939Component, ComponentInit>(OnInit);
-        SubscribeLocalEvent<Scp939Component, SleepStateChangedEvent>(OnSleepChanged);
 
+        SubscribeLocalEvent<Scp939Component, SleepStateChangedEvent>(OnSleepChanged);
         SubscribeLocalEvent<Scp939Component, MobStateChangedEvent>(OnMobStateChanged);
+
 
         InitializeVisibility();
     }

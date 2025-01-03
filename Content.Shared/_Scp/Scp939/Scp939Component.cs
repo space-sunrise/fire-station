@@ -57,4 +57,13 @@ public sealed partial class Scp939Component : Component
 
     #endregion
 
+    [DataField]
+    public int MaxRememberedMessages = 20;
+
+    /// <summary>
+    /// Запомненые объектом слова. Ключ - сказанная фраза, значение - пара, в которой ключ имя сказавшего и значение прототип его ттса
+    /// </summary>
+    [ViewVariables]
+    public Dictionary<string, KeyValuePair<string, string?>> RememberedMessages = new();
+
 }

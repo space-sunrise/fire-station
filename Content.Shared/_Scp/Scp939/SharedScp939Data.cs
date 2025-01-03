@@ -5,6 +5,7 @@ namespace Content.Shared._Scp.Scp939;
 
 public sealed partial class Scp939GasAction : InstantActionEvent;
 public sealed partial class Scp939SleepAction : InstantActionEvent;
+public sealed partial class Scp939MimicActionEvent : InstantActionEvent;
 
 [Serializable, NetSerializable]
 public enum Scp939Layers : byte

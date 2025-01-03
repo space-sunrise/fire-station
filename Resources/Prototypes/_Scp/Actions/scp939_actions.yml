@@ -4,9 +4,9 @@
   description: Allows SCP-939 to mimic voices to lure prey.
   components:
   - type: InstantAction
-    useDelay: 300
+    useDelay: 5
     icon: { sprite: _Scp/Actions/scp-939.rsi, state: mimic }
-    event: !type:VoiceMaskSetNameEvent
+    event: !type:Scp939MimicActionEvent
 
 - type: entity
   id: Scp939Smoke
