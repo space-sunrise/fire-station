@@ -21,19 +21,6 @@
   - type: ThrowArtifact
 
 - type: artifactEffect
-  id: ScpEffectMagnet
-  targetDepth: 1
-  effectHint: artifact-effect-hint-magnet
-  whitelist:
-    components:
-    - Scp
-  components:
-  - type: GravityWell
-    maxRange: 2
-    baseRadialAcceleration: 2
-    baseTangentialAcceleration: 6
-
-- type: artifactEffect
   id: ScpEffectShatterStructures
   targetDepth: 1
   effectHint: artifact-effect-hint-environment
@@ -52,19 +39,6 @@
     damage:
       types:
         Structural: 400
-
-- type: artifactEffect
-  id: ScpEffectAntiMagnet
-  targetDepth: 1
-  effectHint: artifact-effect-hint-magnet
-  whitelist:
-    components:
-    - Scp
-  components:
-  - type: GravityWell
-    maxRange: 2
-    baseRadialAcceleration: -2
-    baseTangentialAcceleration: -6
 
 - type: artifactEffect
   id: ScpEffectShuffle
