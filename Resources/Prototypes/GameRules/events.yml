@@ -137,6 +137,15 @@
   - type: BureaucraticErrorRule
     ignoredJobs:
     - StationAi
+    # Fire edit start
+    - Scp173
+    - Scp939
+    - Scp106
+    - Scp049
+    - Scp999
+    - Scp082
+    - Scp096
+    # Fire edit end
 
 - type: entity
   id: ClericalError
