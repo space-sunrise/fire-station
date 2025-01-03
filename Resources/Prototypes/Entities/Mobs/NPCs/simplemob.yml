@@ -33,7 +33,7 @@
     - Flip # Sunrise-Edit
   - type: EmoteAnimation # Sunrise-Edit
   - type: Buckle
-  - type: StandingState
+#  - type: StandingState нахуя мобам лежать
   - type: Tag
     tags:
     - DoorBumpOpener
