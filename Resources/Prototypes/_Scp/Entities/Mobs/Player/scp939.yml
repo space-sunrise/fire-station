@@ -35,11 +35,8 @@
       8000: Dead
   - type: Buckle
   - type: Stripping
-  - type: VoiceMask
   - type: UserInterface
     interfaces:
-      enum.VoiceMaskUIKey.Key:
-        type: Scp939Bui
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
   - type: MovementSpeedModifier
@@ -66,3 +63,4 @@
   - type: FootprintEmitter
     leftBareFootState: "footprint-left-bare-lizard"
     rightBareFootState: "footprint-right-bare-lizard"
+  - type: TTS
