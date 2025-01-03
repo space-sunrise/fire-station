@@ -11,6 +11,7 @@
     - BorgChassis
     - Jump
     - Flip
+    - Scp # Fire added
   popupMessages: [делает сальто]
   animation: true
 
@@ -27,6 +28,7 @@
     - BorgChassis
     - Jump
     - Flip
+    - Scp # Fire added
   popupMessages: [прыгает]
   animation: true
 
@@ -43,6 +45,7 @@
     - BorgChassis
     - Jump
     - Flip
+    - Scp # Fire added
   popupMessages: [танцует]
   animation: true
 
@@ -59,6 +62,7 @@
     - BorgChassis
     - Jump
     - Flip
+    - Scp # Fire added
   animation: true
 
 - type: emote
@@ -72,5 +76,6 @@
     components:
     - Ghost
     - BorgChassis
+    - Scp # Fire added
   chatMessages: [падает на шею]
   animation: true
