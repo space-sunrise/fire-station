@@ -7,6 +7,10 @@
   icon: JobIconClassD
   supervisors: job-supervisors-security-and-research
   alwaysUseSpawner: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: ClassDAppearance
 
 - type: startingGear
   id: ClassDGear
