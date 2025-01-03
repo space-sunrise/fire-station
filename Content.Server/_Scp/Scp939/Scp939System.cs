@@ -3,9 +3,9 @@ using Content.Server.Fluids.EntitySystems;
 using Content.Shared._Scp.Scp939;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage;
+using Content.Shared.Mobs;
 using Content.Shared.StatusEffect;
 using Robust.Server.GameObjects;
-using Robust.Shared.Player;
 
 namespace Content.Server._Scp.Scp939;
 
@@ -17,7 +17,6 @@ public sealed partial class Scp939System : EntitySystem
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
-    [Dependency] private readonly SharedEyeSystem _eyeSystem = default!;
 
     public override void Initialize()
     {
@@ -26,22 +25,18 @@ public sealed partial class Scp939System : EntitySystem
 
         SubscribeLocalEvent<Scp939Component, ComponentInit>(OnInit);
         SubscribeLocalEvent<Scp939Component, SleepStateChangedEvent>(OnSleepChanged);
-        SubscribeLocalEvent<Scp939Component, PlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<Scp939Component, PlayerDetachedEvent>(OnPlayerDetached);
+
+        SubscribeLocalEvent<Scp939Component, MobStateChangedEvent>(OnMobStateChanged);
 
         InitializeVisibility();
     }
 
-    private void OnPlayerAttached(Entity<Scp939Component> ent, ref PlayerAttachedEvent args)
+    private void OnMobStateChanged(Entity<Scp939Component> ent, ref MobStateChangedEvent args)
     {
-        _eyeSystem.SetDrawFov(ent, false);
-        _eyeSystem.SetDrawLight(ent.Owner, false);
-    }
+        if (args.NewMobState != MobState.Critical)
+            return;
 
-    private void OnPlayerDetached(Entity<Scp939Component> ent, ref PlayerDetachedEvent args)
-    {
-        _eyeSystem.SetDrawFov(ent, true);
-        _eyeSystem.SetDrawLight(ent.Owner, true);
+        TrySleep(ent, 360f);
     }
 
     private void OnSleepChanged(Entity<Scp939Component> ent, ref SleepStateChangedEvent args)
@@ -68,7 +63,6 @@ public sealed partial class Scp939System : EntitySystem
         // Обработка плохого зрения 939
         while (querySimple.MoveNext(out var uid, out var scp939Component))
         {
-
             if (!scp939Component.PoorEyesight)
                 continue;
 

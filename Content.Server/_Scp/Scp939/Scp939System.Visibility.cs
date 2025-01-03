@@ -18,11 +18,10 @@ public sealed partial class Scp939System
     {
         SubscribeLocalEvent<MobStateComponent, ComponentStartup>(OnMobStartup);
 
-        SubscribeLocalEvent<Scp939Component, EntityFlashedEvent>(OnFlash);
-
         SubscribeLocalEvent<Scp939VisibilityComponent, EntitySpokeEvent>(OnTargetSpoke);
         SubscribeLocalEvent<Scp939VisibilityComponent, EmoteEvent>(OnTargetEmote);
-        SubscribeLocalEvent<Scp939VisibilityComponent, ThrowEvent>(OnThrow);
+
+        SubscribeLocalEvent<Scp939Component, EntityFlashedEvent>(OnFlash);
     }
 
 
@@ -35,11 +34,6 @@ public sealed partial class Scp939System
         _popup.PopupEntity(message, ent, ent, PopupType.MediumCaution);
 
         Dirty(ent);
-    }
-
-    private void OnThrow(Entity<Scp939VisibilityComponent> ent, ref ThrowEvent args)
-    {
-        MobDidSomething(ent);
     }
 
     private void OnTargetEmote(Entity<Scp939VisibilityComponent> ent, ref EmoteEvent args)

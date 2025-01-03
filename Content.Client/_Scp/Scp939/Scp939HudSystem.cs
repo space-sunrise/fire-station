@@ -7,10 +7,12 @@ using Content.Shared._Scp.Scp939.Protection;
 using Content.Shared.Examine;
 using Content.Shared.Movement.Components;
 using Content.Shared.StatusIcon.Components;
+using Content.Shared.Throwing;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -28,11 +30,16 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
     // TODO: Выделить значения плохого зрения в отдельный компонент, не связанный с 939
     private Scp939Component? _scp939Component;
 
-    private List<ShaderInstance> _shaderInstances = new();
+    private readonly List<ShaderInstance> _shaderInstances = new();
 
     public override void Initialize()
     {
         base.Initialize();
+
+        SubscribeLocalEvent((Entity<Scp939VisibilityComponent> ent, ref StartCollideEvent args) => OnCollide(ent, args.OtherEntity));
+        SubscribeLocalEvent((Entity<Scp939VisibilityComponent> ent, ref EndCollideEvent args) => OnCollide(ent, args.OtherEntity));
+
+        SubscribeLocalEvent<Scp939VisibilityComponent, ThrowEvent>(OnThrow);
 
         SubscribeLocalEvent<Scp939VisibilityComponent, MoveEvent>(OnMove);
         SubscribeLocalEvent<Scp939VisibilityComponent, BeforePostShaderRenderEvent>(BeforeRender);
@@ -59,9 +66,7 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         var visibility = GetVisibility(ent);
 
         if (visibility < 0.2f)
-        {
             args.Cancel();
-        }
     }
 
     private void OnGetStatusIcons(Entity<Scp939VisibilityComponent> ent, ref GetStatusIconsEvent args)
@@ -75,9 +80,7 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         var visibility = GetVisibility(ent);
 
         if (visibility <= 0.5f)
-        {
             args.StatusIcons.Clear();
-        }
     }
 
     protected override void DeactivateInternal()
@@ -90,6 +93,27 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         {
             spriteComponent.PostShader = null;
         }
+    }
+
+    #region Visibility
+
+    private void OnCollide(Entity<Scp939VisibilityComponent> ent, EntityUid otherEntity)
+    {
+        if (!HasComp<Scp939Component>(otherEntity))
+            return;
+
+        MobDidSomething(ent);
+    }
+
+    private void OnThrow(Entity<Scp939VisibilityComponent> ent, ref ThrowEvent args)
+    {
+        MobDidSomething(ent);
+    }
+
+    private void MobDidSomething(Entity<Scp939VisibilityComponent> ent)
+    {
+        ent.Comp.VisibilityAcc = 0.001f;
+        Dirty(ent);
     }
 
     private void OnMove(Entity<Scp939VisibilityComponent> ent, ref MoveEvent args)
@@ -121,6 +145,8 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
             ent.Comp.VisibilityAcc = ent.Comp.HideTime / 2f;
         }
     }
+
+    #endregion
 
     private void OnPlayerAttached(Entity<Scp939Component> ent, ref PlayerAttachedEvent args)
     {

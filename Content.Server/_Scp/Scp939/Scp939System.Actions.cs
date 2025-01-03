@@ -16,11 +16,18 @@ public sealed partial class Scp939System
 
     private void OnSleepAction(Entity<Scp939Component> ent, ref Scp939SleepAction args)
     {
-        args.Handled = _sleepingSystem.TrySleeping(ent.Owner);
+        args.Handled = TrySleep(ent);
+    }
 
-        var hibernationDuration = TimeSpan.FromSeconds(ent.Comp.HibernationDuration);
+    private bool TrySleep(Entity<Scp939Component> ent, float hibernationDuration = 0)
+    {
+        if (!_sleepingSystem.TrySleeping(ent.Owner))
+            return false;
 
-        _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(ent, SleepStatusKey, hibernationDuration, false);
+        hibernationDuration = hibernationDuration == 0 ? ent.Comp.HibernationDuration : hibernationDuration;
+        _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(ent, SleepStatusKey, TimeSpan.FromSeconds(hibernationDuration), false);
+
+        return true;
     }
 
     private void OnGasAction(Entity<Scp939Component> ent, ref Scp939GasAction args)
