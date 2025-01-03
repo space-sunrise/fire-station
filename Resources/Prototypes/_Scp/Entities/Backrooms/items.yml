@@ -10,9 +10,8 @@
     state: icon
   - type: Item
     size: Ginormous
-# FIRE_STATION-TODO: ГОВНО ФИКСИТЕ ЗАЕБАЛИ
-#  - type: SpecialRespawn
-#    prototype: ScpBackroomsPainting
+  - type: SpecialRespawn
+    prototype: ScpAnomalyPainting
   - type: Wieldable
   - type: MultiHandedItem
   - type: AddComponentsPickup
