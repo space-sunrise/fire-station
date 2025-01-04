@@ -12,6 +12,7 @@
   canBeAntag: false
   displayWeight: 0 # Sunrise-Edit
   access:
+  - Research # FireStation Edit
   - Security
   - Brig
   - Maintenance
@@ -27,11 +28,13 @@
 - type: startingGear
   id: SecurityCadetGear
   equipment:
-    shoes: ClothingShoesBootsJack
-    outerClothing: ClothingOuterArmorBasic
+    mask: ClothingMaskSecurityBandBlack
+    gloves: ClothingHandsGlovesSecurity
+    jumpsuit: ClothingUniformSecurity2
+    shoes: ClothingShoesBootsSecurityGuard
+    outerClothing: ClothingOuterArmorSecurity
     id: SecurityCadetPDA
     ears: ClothingHeadsetSecurity
-    gloves: ClothingHandsGlovesColorGray
     pocket1: HyperLinkBookCorporateLaw # Sunrise-edit
   storage:
     back:

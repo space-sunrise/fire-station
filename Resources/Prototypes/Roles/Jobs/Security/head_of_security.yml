@@ -23,6 +23,7 @@
   radioBold: true # Sunrise-Edit
   displayWeight: 80 # Sunrise-Edit
   access:
+  - Research # FireStation Edit
   - HeadOfSecurity
   - Command
   - Brig

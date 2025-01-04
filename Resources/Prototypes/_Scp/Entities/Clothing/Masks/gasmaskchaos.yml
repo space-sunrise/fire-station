@@ -18,11 +18,11 @@
         Heat: 0.9
 
 - type: entity
-  parent: ClothingMaskBandanaBase
+  parent: [ClothingMaskBandanaBase, BaseRestrictedContraband]
   id: ClothingMaskSecurityBandBlack
   name: black security bandana
   description: A black sec bandana to make you look cool.
-  suffix: SCP14
+  suffix: SCP Guard
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Mask/black_bandana.rsi

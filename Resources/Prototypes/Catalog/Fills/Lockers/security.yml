@@ -60,26 +60,29 @@
   suffix: Filled
   parent: LockerSecurity
   components:
-  - type: StorageFill
+  - type: StorageFill # FireStation Edit
     contents:
       - id: FlashlightSeclite
         prob: 0.8
       - id: WeaponDisabler
-      - id: ClothingUniformJumpsuitSecGrey
+      - id: ClothingUniformSecurity
         prob: 0.3
-      - id: ClothingHeadHelmetBasic
-      - id: ClothingOuterArmorBasic
+      - id: ClothingUniformSecurity2
+        prob: 0.3
+      - id: ClothingUniformSecurity3
+        prob: 0.3
+      - id: ClothingHeadHelmetSecurity
+      - id: ClothingOuterArmorSecurity
       - id: ClothingBeltSecurityFilled
       - id: Flash
         prob: 0.5
-      - id: ClothingEyesGlassesSecurity
+      - id: ClothingEyesGlassesSecurityGuard
+      - id: ClothingMaskSecurityBandBlack
       - id: ClothingHeadsetSecurity
-      - id: ClothingHandsGlovesColorBlack
-      - id: ClothingShoesBootsJack
+      - id: ClothingHandsGlovesSecurity
+      - id: ClothingShoesBootsSecurityGuard
       - id: WeaponMeleeNeedle
         prob: 0.1
-      - id: ClothingOuterCoatSecurityOvercoat
-        prob: 0.2
       - id: HoloprojectorSecurity
         prob: 0.6
       - id: HyperLinkBookCorporateLaw # Sunrise-edit

@@ -501,6 +501,8 @@
   - SecurityJumpsuit
   - SecurityBackpack
   - SecurityOuterClothing
+  - SecurityGloves # FireStation Edit
+  - SecurityMantle # FireStation Edit
   - SecurityShoes
   #- SecurityPDA
   - SecurityBelt
@@ -519,7 +521,6 @@
   id: JobDetective
   groups:
   - DetectiveHead
-  - DetectiveNeck
   - DetectiveJumpsuit
   - SecurityBackpack
   - DetectiveOuterClothing
@@ -538,7 +539,8 @@
 - type: roleLoadout
   id: JobSecurityCadet
   groups:
-  - SecurityCadetJumpsuit
+  # - SecurityCadetJumpsuit # FireStation Edit
+  - SecurityCadetHead # FireStation Edit
   - SecurityBackpack
   - SurvivalSecurity
   - Trinkets

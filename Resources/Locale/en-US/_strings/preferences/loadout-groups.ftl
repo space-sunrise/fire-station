@@ -155,6 +155,8 @@ loadout-group-warden-outerclothing = Warden outer clothing
 loadout-group-security-head = Security head
 loadout-group-security-jumpsuit = Security jumpsuit
 loadout-group-security-backpack = Security backpack
+loadout-group-security-gloves = Security gloves
+loadout-group-security-mantle = Security mantle
 loadout-group-security-belt = Security Belt
 loadout-group-security-outerclothing = Security outer clothing
 loadout-group-security-shoes = Security shoes
@@ -165,6 +167,7 @@ loadout-group-detective-neck = Detective neck
 loadout-group-detective-jumpsuit = Detective jumpsuit
 loadout-group-detective-outerclothing = Detective outer clothing
 
+loadout-group-security-cadet-helmet = Security cadet helmet
 loadout-group-security-cadet-jumpsuit = Security cadet jumpsuit
 loadout-group-security-star = Security Star
 

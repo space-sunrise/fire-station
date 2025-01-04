@@ -3,7 +3,7 @@
   id: ClothingHeadHelmetSecurity
   name: helmet
   description: Standard black security gear. Protects the head from impacts.
-  suffix: SCP14
+  suffix: SCP Guard
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Head/security.rsi
@@ -15,7 +15,7 @@
   id: ClothingHeadClosedHelmetSecurity
   name: closed black security helmet
   description: Standard black security gear. Protects the head from impacts.
-  suffix: SCP14
+  suffix: SCP Guard
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Head/security_2.rsi
@@ -25,9 +25,9 @@
 - type: entity
   parent: ClothingHeadHeadHatBaseFlippable
   id: ClothingHeadHatSecBlack
-  name: black sec cap
-  description: Suck it.
-  suffix: SCP14
+  name: black security cap
+  description: It's a robust baseball hat in black colour.
+  suffix: SCP Guard
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Head/security_cap.rsi
@@ -38,8 +38,8 @@
   parent: ClothingHeadBase
   id: ClothingHeadSecurityBeret
   name: security black beret
-  description: You're gay.
-  suffix: SCP14
+  description: Stylish neck gaiter for your neck, can protect from the cosmic wind?...
+  suffix: SCP Guard
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Head/security_beret.rsi

@@ -1,10 +1,37 @@
-# Jumpsuit
+# Head
 - type: loadout
-  id: RedJumpsuit
+  id: SecurityHelmet
   equipment:
-    jumpsuit: ClothingUniformJumpsuitColorRed
+    head: ClothingHeadHelmetSecurity
 
 - type: loadout
-  id: RedJumpskirt
+  id: SecurityHelmet2
   equipment:
-    jumpsuit: ClothingUniformJumpskirtColorRed
+    head: ClothingHeadClosedHelmetSecurity
+
+# Back
+- type: loadout
+  id: SecurityBackpack
+  equipment:
+    back: ClothingBackpackSecurity
+
+- type: loadout
+  id: SecuritySatchel
+  equipment:
+    back: ClothingBackpackSatchelSecurity
+
+- type: loadout
+  id: SecurityDuffel
+  equipment:
+    back: ClothingBackpackDuffelSecurity
+
+# Belt
+- type: loadout
+  id: SecurityBelt
+  equipment:
+    belt: ClothingBeltSecurityFilled
+
+- type: loadout
+  id: SecurityWebbing
+  equipment:
+    belt: ClothingBeltSecurityWebbingFilled

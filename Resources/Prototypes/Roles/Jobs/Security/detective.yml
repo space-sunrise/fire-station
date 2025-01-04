@@ -13,6 +13,7 @@
   canBeAntag: false
   displayWeight: 20  # Sunrise
   access:
+  - Research # FireStation Edit
   - Security
   - Brig
   - Maintenance
