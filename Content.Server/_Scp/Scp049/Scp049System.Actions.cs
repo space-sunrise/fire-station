@@ -1,8 +1,6 @@
 ﻿using Content.Server.Administration.Systems;
-using Content.Server.Ghost.Roles;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Hands.Systems;
-using Content.Server.IdentityManagement;
 using Content.Server.Mind;
 using Content.Server.NPC.HTN;
 using Content.Server.Zombies;
@@ -15,9 +13,6 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
-using Content.Shared.Tag;
-using Content.Shared.Zombies;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Scp049;
 
@@ -42,29 +37,28 @@ public sealed partial class Scp049System
 
     private void OnHealMinion(Entity<Scp049Component> ent, ref Scp049HealMinionAction args)
     {
-        if (!TryComp<Scp049MinionComponent>(args.Target, out var minionComponent))
+        if (!HasComp<Scp049MinionComponent>(args.Target))
             return;
 
-        _rejuvenateSystem.PerformRejuvenate(args.Target);
-
-        var targetName = Identity.Name(args.Target, EntityManager);
-
-        var localeMessage = Loc.GetString("scp049-heal-minion", ("target", targetName));
-        _popupSystem.PopupEntity(localeMessage, args.Performer, PopupType.Medium);
+        Heal(args.Target, args.Performer);
 
         args.Handled = true;
     }
 
     private void OnSelfHeal(Entity<Scp049Component> ent, ref Scp049SelfHealAction args)
     {
-        _rejuvenateSystem.PerformRejuvenate(args.Performer);
-
-        var entityName = Identity.Name(args.Performer, EntityManager);
-
-        var localeMessage = Loc.GetString("scp049-self-heal", ("performer", entityName));
-        _popupSystem.PopupEntity(localeMessage, args.Performer, PopupType.Medium);
+        Heal(args.Performer, args.Performer);
 
         args.Handled = true;
+    }
+
+    private void Heal(EntityUid target, EntityUid performer)
+    {
+        _rejuvenateSystem.PerformRejuvenate(target);
+
+        var targetName = Identity.Name(target, EntityManager);
+        var localeMessage = Loc.GetString("scp049-heal-minion", ("target", targetName));
+        _popupSystem.PopupEntity(localeMessage, performer, PopupType.Medium);
     }
 
     private void OnResurrect(Entity<Scp049Component> scpEntity, ref Scp049ResurrectAction args)
@@ -76,15 +70,13 @@ public sealed partial class Scp049System
             var metaData = MetaData(heldUid);
 
             if (metaData.EntityPrototype == null)
-            {
                 continue;
-            }
 
-            if (metaData.EntityPrototype.ID == scpEntity.Comp.NextTool)
-            {
-                hasTool = true;
-                break;
-            }
+            if (metaData.EntityPrototype.ID != scpEntity.Comp.NextTool)
+                continue;
+
+            hasTool = true;
+            break;
         }
 
         if (!hasTool)
@@ -150,7 +142,6 @@ public sealed partial class Scp049System
 
         var targetName = Identity.Name(target, EntityManager);
         var performerName = Identity.Name(ent, EntityManager);
-
 
         var localeMessage = Loc.GetString("scp049-touch-action-success",
             ("target", targetName),
