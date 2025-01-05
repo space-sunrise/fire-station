@@ -9,29 +9,23 @@
   - MobRespirator
   - InventoryBase
   components:
-  - type: Pacified
-  - type: Scp049
-  - type: Hands
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      2000: Critical
-      2500: Dead
-  - type: Body
-    prototype: Human
-    requiredLegs: 2
-  - type: Inventory
-    templateId: scp049
   - type: Sprite
     noRot: true
     drawdepth: Mobs
     sprite: _Scp/Mobs/scp-049.rsi
     state: SCP-049
+  - type: Scp049
+  - type: ScpShow049Hud
+  - type: Inventory
+    templateId: scp049
+  - type: Hands
+  - type: Body
+    prototype: Human
+    requiredLegs: 2
   - type: ComplexInteraction
   - type: Buckle
-  - type: SSDIndicator
   - type: Stripping
-  - type: ScpShow049Hud
+  - type: Pacified
   - type: UserInterface
     interfaces:
       enum.StrippingUiKey.Key:
@@ -41,18 +35,26 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.5
     baseSprintSpeed: 3.5
-  - type: Pullable
-  - type: Puller
-    needsHands: true
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      2000: Critical
+      2500: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
       1000: 0.9
       1500: 0.8
       2000: 0.7
+  - type: Pullable
+  - type: Puller
+    needsHands: true
   - type: Speech
+  - type: TTS
+    voice: SCP049
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepBoots
   - type: Tag
     tags:
     - FootstepSound
     - DoorBumpOpener
-  - type: TTS
-    voice: SCP049
