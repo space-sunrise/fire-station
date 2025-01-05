@@ -3,13 +3,14 @@ using Content.Server._Scp.Scp106.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Shared._Scp.Scp106.Components;
-using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Humanoid;
+using Content.Shared.Mobs.Systems;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
-using Robust.Shared.Physics.Systems;
+using Robust.Shared.Player;
 
 namespace Content.Server._Scp.Scp106.Systems;
 
@@ -21,7 +22,9 @@ public sealed class Scp106CatwalkSystem : EntitySystem
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
-    [Dependency] private readonly FixtureSystem _fixture = default!;
+    [Dependency] private readonly MobStateSystem _mobState  = default!;
+
+    private readonly SoundSpecifier _containSound = new SoundPathSpecifier("/Audio/_Scp/scp106_contained_sound.ogg");
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -38,6 +41,9 @@ public sealed class Scp106CatwalkSystem : EntitySystem
         if (!HasComp<HumanoidAppearanceComponent>(args.OtherEntity))
             return;
 
+        if (_mobState.IsDead(args.OtherEntity))
+            return;
+
         ContainScp106(args.OtherEntity);
     }
 
@@ -50,13 +56,17 @@ public sealed class Scp106CatwalkSystem : EntitySystem
             if (scp106Component.IsContained)
                 continue;
 
-
             var containerUidPicked = EntityQuery<Scp106CatwalkContainerComponent>().First().Owner;
-            scp106Component.IsContained = true;
+            var xform = Transform(containerUidPicked);
+
             _body.GibBody(uid);
-            _transform.SetCoordinates(scp106Uid, Transform(containerUidPicked).Coordinates);
+
+            scp106Component.IsContained = true;
+            _transform.SetCoordinates(scp106Uid, xform.Coordinates);
+
             _chat.DispatchStationAnnouncement(containerUidPicked, Loc.GetString("scp106-return-to-containment"));
-            // _audio.PlayGlobal("/Audio/_Scp/scp106_contained_sound.ogg", Filter.Broadcast(), false); не знаю почему не работает
+            _audio.PlayGlobal(_containSound, Filter.BroadcastMap(xform.MapID), false);
+
             break;
         }
     }
