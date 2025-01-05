@@ -3,19 +3,12 @@
   suffix: SCP-999
   parent: BaseScp
   components:
-  - type: Scp999
-    states:
-      Default: default
-      Wall: wall
-      Rest: rest
-    createJellySound:
-      collection: desecration
   - type: Sprite
     drawdepth: Mobs
     sprite: _Scp/Mobs/scp-999.rsi
     layers:
     - state: default
-      map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default", "movement"]
+      map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default", "movement" ]
   - type: SpriteMovement
     movementLayers:
       movement:
@@ -23,6 +16,13 @@
     noMovementLayers:
       movement:
         state: default
+  - type: Scp999
+    states:
+      Default: default
+      Wall: wall
+      Rest: rest
+    createJellySound:
+      collection: desecration
   - type: DamageStateVisuals
     states:
       Alive:
@@ -36,8 +36,6 @@
         shape:
           !type:PhysShapeCircle
           radius: 0.25
-# Как же плохо сделан поворот хитбокса. Пока оно смотрит вниз - все ок. Как только смотрит в сторону или на 224 градуса - все хуйня.
-#          position: "0, -0.2"
         density: 80
         mask:
         - SmallMobMask
@@ -55,36 +53,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      9999: Dead  # это ведь сцп!!
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Blunt
-        damage: 99999
-      behaviors:
-      - !type:GibBehavior { }
-      - !type:PlaySoundBehavior
-        sound: !type:SoundPathSpecifier
-          path: /Audio/_Scp/demon-dying.ogg
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Heat
-        damage: 99999
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawnInContainer: true
-        spawn:
-          Ash:
-            min: 10
-            max: 15
-      - !type:BurnBodyBehavior { }
-      - !type:PlaySoundBehavior
-        sound: !type:SoundPathSpecifier
-          path: /Audio/_Scp/demon-dying.ogg
-  - type: Tag
-    tags:
-    - FootstepSound
+      9999: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 4
@@ -105,27 +74,6 @@
       types:
         Bloodloss:
           -0.25
-  - type: Reactive
-    groups:
-      Flammable: [ Touch ]
-      Extinguish: [ Touch ]
-    reactions:
-    - reagents: [ Water, SpaceCleaner ]
-      methods: [ Touch ]
-      effects:
-      - !type:WashCreamPieReaction
-    - reagents: [ Water ]
-      methods: [ Touch ]
-      effects:
-      - !type:HealthChange
-        scaleByQuantity: true
-        damage:
-          types:
-            Heat: 0.01
-      - !type:PopupMessage
-        type: Local
-        messages: [ "slime-hurt-by-water-popup" ]
-        probability: 0.25
   - type: Body
     prototype: Slimes
     requiredLegs: 1
@@ -167,11 +115,15 @@
   - type: Grammar
     attributes:
       proper: true
-      gender: female
-  - type: TTS
-    voice: Neco
+      gender: male
   - type: TypingIndicator
     proto: SCP-999
+  - type: Hunger
+  - type: Reflect
+    reflectProb: 0.2
+    reflects:
+    - Energy
+    - NonEnergy
   - type: PassiveDamage
     allowedStates:
     - Alive
@@ -182,13 +134,9 @@
         Burn: -0.1
       types:
         Bloodloss: -0.5
-  - type: Reflect
-    reflectProb: 0.2
-    reflects:
-    - Energy
-    - NonEnergy
   - type: ActionGrant
     actions:
     - Scp999Wallify
     - Scp999Rest
-  - type: Hunger
+  - type: TTS
+    voice: Neco

@@ -54,6 +54,7 @@
   - type: ScpRestriction
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
+  - type: FlashImmunity
   - type: Destructible
     thresholds:
     - trigger:
@@ -80,12 +81,18 @@
       - !type:PlaySoundBehavior
         sound: !type:SoundPathSpecifier
           path: /Audio/_Scp/demon-dying.ogg
+    - type: Tag
+      tags:
+      - FootstepSound
+      - CannotSuicide
+      - DoorBumpOpener
 
 # Сцп
 # TODO: Переместить в отдельный файл
-
 - type: entity
-  parent: [BaseScp, MobCombat]
+  parent:
+  - BaseScp
+  - MobCombat
   id: Scp173
   name: SCP-173
   suffix: SCP-173
@@ -134,12 +141,6 @@
     - Scp173Clog
     - Scp173DamageStructure
     - Scp173FastMovement
-  - type: Tag
-    tags:
-    - CannotSuicide
-    - IgnorePortals
-    - FootstepSound
-    - DoorBumpOpener
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepSCP173
@@ -159,7 +160,9 @@
       - dragging-5
 
 - type: entity
-  parent: [BaseScp, MobCombat]
+  parent:
+  - BaseScp
+  - MobCombat
   id: Scp106
   suffix: SCP-106
   components:
@@ -169,18 +172,13 @@
     layers:
     - map: [ "base" ]
       state: 106
-  - type: Tag
-    tags:
-    - CannotSuicide
-    - FootstepSound
-  - type: GiveActions
-    actions:
-    - Scp106BackroomsAction
-    - Scp106RandomTeleportAction
+  - type: Scp106
+  - type: ScpRestriction
+    blockBePulled: false
+    blockPull: false
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2
-  - type: Scp106
   - type: Muted
   - type: MobThresholds
     thresholds:
@@ -218,8 +216,7 @@
           Default: { state: 106 }
           Entering: { state: lusha_from_ded }
           Exiting: { state: ded_from_lusha }
-  - type: TTS
-    voice: HearthstoneSotis
-  - type: ScpRestriction
-    blockBePulled: false
-    blockPull: false
+  - type: GiveActions
+    actions:
+    - Scp106BackroomsAction
+    - Scp106RandomTeleportAction

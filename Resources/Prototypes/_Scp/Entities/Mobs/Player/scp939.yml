@@ -16,6 +16,9 @@
     - map: [ "enum.Scp939Layers.Base" ]
       state: alive
   - type: Scp939
+  - type: ScpRestriction
+    blockBePulled: false
+    blockPull: false
   - type: MeleeWeapon
     soundHit:
       collection: AlienClaw
@@ -28,39 +31,36 @@
         Slash: 20
         Structural: 50
     range: 2
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      1200: Critical
-      8000: Dead
-  - type: Buckle
-  - type: Stripping
-  - type: UserInterface
-    interfaces:
-      enum.StrippingUiKey.Key:
-        type: StrippableBoundUserInterface
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.5
     baseSprintSpeed: 4
-  - type: Puller
-    needsHands: false
-  - type: Pullable
   - type: SlowOnDamage
     speedModifierThresholds:
       2000: 0.9
       3000: 0.8
       3500: 0.7
-  - type: Tag
-    tags:
-    - IgnorePortals
-    - DoorBumpOpener
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1200: Critical
+      8000: Dead
   - type: Inventory
     templateId: scp939
+  - type: Puller
+    needsHands: false
+  - type: Pullable
+  - type: Buckle
+  - type: FlashImmunity
+    enabled: false # переопределение родитесколько иммунитета
   - type: Strippable
-  - type: ScpRestriction
-    blockBePulled: false
-    blockPull: false
+  - type: Stripping
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
   - type: FootprintEmitter
-    leftBareFootState: "footprint-left-bare-lizard"
-    rightBareFootState: "footprint-right-bare-lizard"
+    leftBareFootState:
+    - footprint-left-bare-lizard
+    rightBareFootState:
+    - footprint-right-bare-lizard
   - type: TTS

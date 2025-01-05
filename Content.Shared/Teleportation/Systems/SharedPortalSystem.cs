@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Content.Shared._Scp.Mobs.Components;
 using Content.Shared.Ghost;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
@@ -33,7 +32,7 @@ public abstract class SharedPortalSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly TagSystem _tagSystem = default!; //FireStation edit
+    [Dependency] private readonly TagSystem _tagSystem = default!; // Fire edit
 
 
     private const string PortalFixture = "portalFixture";
@@ -88,20 +87,15 @@ public abstract class SharedPortalSystem : EntitySystem
 
     private void OnCollide(EntityUid uid, PortalComponent component, ref StartCollideEvent args)
     {
-        if (_tagSystem.HasTag(args.OtherEntity, component.IgnorePortalTag)) //FireStation edit
-        {
+        // Fire added start
+        if (_tagSystem.HasTag(args.OtherEntity, component.IgnorePortalTag))
             return;
-        }
+        // Fire added end
 
         if (!ShouldCollide(args.OurFixtureId, args.OtherFixtureId, args.OurFixture, args.OtherFixture))
             return;
 
         var subject = args.OtherEntity;
-
-        // Sunrise-SCP EDIT
-        if (HasComp<ScpRestrictionComponent>(subject))
-            return;
-        // Sunrise-SCP EDIT
 
         // best not.
         if (Transform(subject).Anchored)

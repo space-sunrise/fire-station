@@ -2,11 +2,11 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Atmos.EntitySystems;
+using Content.Server.Gateway.Systems;
 using Content.Server.Station.Components;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Systems;
 using Content.Shared.Humanoid;
-using Content.Shared.Mobs.Components;
 using Content.Shared.Random.Helpers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Collections;
@@ -29,6 +29,8 @@ public sealed class Scp106System : SharedScp106System
         base.Initialize();
 
         SubscribeLocalEvent<Scp106Component, MapInitEvent>(OnMapInit);
+
+        SubscribeLocalEvent((Entity<Scp106BackRoomMapComponent> _, ref AttemptGatewayOpenEvent args) => args.Cancelled = true);
     }
 
     private void OnMapInit(Entity<Scp106Component> ent, ref MapInitEvent args)
@@ -55,9 +57,6 @@ public sealed class Scp106System : SharedScp106System
 
         // Телепортировать только людей
         if (!HasComp<HumanoidAppearanceComponent>(target))
-            return;
-
-        if (!HasComp<MobStateComponent>(target))
             return;
 
         var mark = await GetTransferMark();

@@ -104,6 +104,9 @@ public sealed partial class Scp049System
 
     private void OnKillResurrected(Entity<Scp049Component> ent, ref Scp049KillResurrectedAction args)
     {
+        if (!_zombieSystem.UnZombify(args.Target, args.Target, null))
+            return;
+
         _mobStateSystem.ChangeMobState(args.Target, MobState.Dead);
         RemComp<Scp049MinionComponent>(args.Target);
 

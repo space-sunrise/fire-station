@@ -30,7 +30,7 @@ public abstract class SharedScp106System : EntitySystem
 
 	private void OnBackroomsAction(Entity<Scp106Component> ent, ref Scp106BackroomsAction args)
 	{
-        if (ent.Comp.IsContained == true)
+        if (ent.Comp.IsContained)
         {
             _popup.PopupEntity("Ваши способности подавлены", ent.Owner, ent.Owner, PopupType.SmallCaution);
             return;
@@ -50,15 +50,13 @@ public abstract class SharedScp106System : EntitySystem
             BreakOnDamage = false
         };
 
+        _doAfter.TryStartDoAfter(doAfterEventArgs);
         _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
-
-        if (!_doAfter.TryStartDoAfter(doAfterEventArgs))
-            return;
-	}
+    }
 
     private void OnRandomTeleportAction(Entity<Scp106Component> ent, ref Scp106RandomTeleportAction args)
     {
-        if (ent.Comp.IsContained == true)
+        if (ent.Comp.IsContained)
         {
             _popup.PopupEntity("Ваши способности подавлены", ent.Owner, ent.Owner, PopupType.SmallCaution);
             return;
@@ -72,14 +70,14 @@ public abstract class SharedScp106System : EntitySystem
             BreakOnDamage = false
         };
 
+        _doAfter.TryStartDoAfter(doAfterEventArgs);
         _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
-        if (!_doAfter.TryStartDoAfter(doAfterEventArgs))
-            return;
     }
 
 	private void OnBackroomsDoAfter(Entity<Scp106Component> ent, ref Scp106BackroomsActionEvent args)
 	{
         _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Default);
+
 		if (args.Cancelled)
 			return;
 
@@ -89,6 +87,7 @@ public abstract class SharedScp106System : EntitySystem
 	private void OnTeleportDoAfter(Entity<Scp106Component> ent, ref Scp106RandomTeleportActionEvent args)
 	{
         _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Default);
+
 		if (args.Cancelled)
 			return;
 

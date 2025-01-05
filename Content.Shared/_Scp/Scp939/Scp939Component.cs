@@ -36,11 +36,19 @@ public sealed partial class Scp939Component : Component
     {
         DamageDict = new()
         {
-            { "Blunt", -20.0f },
-            { "Slash", -20.0f },
-            { "Piercing", -20.0f },
-            { "Heat", -20.0f },
-            { "Shock", -20.0f },
+            { "Blunt", -20f },
+            { "Slash", -20f },
+            { "Piercing", -20f },
+            { "Heat", -20f },
+            { "Shock", -20f },
+            { "Bloodloss", -20f},
+            { "Genetic", -20f },
+            { "Toxin", -20f },
+            { "Airloss", -20f },
+            { "Asphyxiation", -20f },
+            { "Poison", -20f },
+            { "Radiation", -20f },
+            { "Cellular", -20f}
         }
     };
 
