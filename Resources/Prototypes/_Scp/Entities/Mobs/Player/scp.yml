@@ -54,6 +54,7 @@
   - type: ScpRestriction
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
+  - type: FlashImmunity
   - type: Destructible
     thresholds:
     - trigger:

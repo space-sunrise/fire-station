@@ -50,6 +50,8 @@
     needsHands: false
   - type: Pullable
   - type: Buckle
+  - type: FlashImmunity
+    enabled: false # переопределение родитесколько иммунитета
   - type: Strippable
   - type: Stripping
   - type: UserInterface
