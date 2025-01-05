@@ -1,4 +1,5 @@
 ﻿using Content.Server.Actions;
+using Content.Server.Body.Components;
 using Content.Server.Fluids.EntitySystems;
 using Content.Shared._Scp.Scp939;
 using Content.Shared.Bed.Sleep;
@@ -42,6 +43,14 @@ public sealed partial class Scp939System : EntitySystem
 
     private void OnSleepChanged(Entity<Scp939Component> ent, ref SleepStateChangedEvent args)
     {
+        if (TryComp<BloodstreamComponent>(ent, out var bloodstreamComponent))
+        {
+            if (args.FellAsleep)
+                bloodstreamComponent.BloodRefreshAmount = 20;
+            else
+                bloodstreamComponent.BloodRefreshAmount = 1;
+        }
+
         _appearanceSystem.SetData(ent, Scp939Visuals.Sleeping, args.FellAsleep);
     }
 
