@@ -52,7 +52,6 @@
       3500: 0.7
   - type: Tag
     tags:
-    - IgnorePortals
     - DoorBumpOpener
   - type: Inventory
     templateId: scp939

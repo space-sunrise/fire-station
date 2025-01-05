@@ -138,7 +138,6 @@
   - type: Tag
     tags:
     - CannotSuicide
-    - IgnorePortals
     - FootstepSound
     - DoorBumpOpener
   - type: FootstepModifier
