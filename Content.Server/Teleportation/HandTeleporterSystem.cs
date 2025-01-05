@@ -1,5 +1,6 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Popups;
+using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Database;
 using Content.Shared.Interaction.Events;
@@ -79,6 +80,11 @@ public sealed class HandTeleporterSystem : EntitySystem
             return;
 
         var xform = Transform(user);
+
+        // Fire edit start - запрет телепортов в карманном измерении
+        if (HasComp<Scp106BackRoomMapComponent>(xform.MapUid))
+            return;
+        // Fire edit end
 
         // Create the first portal.
         if (Deleted(component.FirstPortal) && Deleted(component.SecondPortal))
