@@ -13,6 +13,7 @@
   canBeAntag: false
   displayWeight: 10
   access:
+  - Research # FireStation Edit
   - Security
   - Brig
   - Maintenance
@@ -28,11 +29,10 @@
 - type: startingGear
   id: SecurityOfficerGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
+    mask: ClothingMaskSecurityBandBlack
+    eyes: ClothingEyesGlassesSecurityGuard
     id: SecurityPDA
     ears: ClothingHeadsetSecurity
-    head: ClothingHeadHelmetBasic
-    gloves: ClothingHandsGlovesColorBlack
     pocket1: WeaponPistolG22NonLethal # Sunrise-Edit
   storage:
     back:

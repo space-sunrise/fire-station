@@ -1,0 +1,48 @@
+- type: entity
+  id: CrateMaterialUranium
+  parent: CratePlasma
+  name: solid uranium crate
+  description: 30 sheets of uranium.
+  components:
+  - type: StorageFill
+    contents:
+      - id: SheetUranium
+  - type: AccessReader
+    access: [["Research"], ["Command"], ["Engineering"]]
+
+- type: entity
+  id: CrateMaterialGold
+  parent: CrateSecure
+  name: gold crate
+  description: 30 gold bar.
+  components:
+  - type: StorageFill
+    contents:
+      - id: IngotGold
+  - type: AccessReader
+    access: [["Research"], ["Command"], ["Engineering"]]
+
+- type: entity
+  id: CrateMaterialSilver
+  parent: CrateSecure
+  name: silver crate
+  description: 30 silver bar.
+  components:
+  - type: StorageFill
+    contents:
+      - id: IngotSilver
+  - type: AccessReader
+    access: [["Research"], ["Command"], ["Engineering"]]
+
+- type: entity
+  id: CrateMaterialDiamond
+  parent: CratePrivateSecure
+  name: diamond crate
+  description: 3 diamond.
+  components:
+  - type: StorageFill
+    contents:
+      - id: MaterialDiamond1
+        amount: 3
+  - type: AccessReader
+    access: [["Research"], ["Command"]]

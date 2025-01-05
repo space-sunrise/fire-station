@@ -3,7 +3,7 @@
   id: ClothingEyesGlassesSecurityGuard
   name: security glasses
   description: Upgraded sunglasses that provide flash immunity and a security HUD.
-  suffix: SCP14
+  suffix: SCP Guard
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Eyes/secglasses.rsi
