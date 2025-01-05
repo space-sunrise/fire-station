@@ -31,10 +31,6 @@
         Bloodloss: 10
   - type: Body
     prototype: Human
-  - type: Muted
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 1.5
-    baseSprintSpeed: 1.5
   - type: Inventory
     templateId: scp096
   - type: AmbientSound
@@ -48,8 +44,10 @@
       path: /Audio/Effects/Footsteps/slime1.ogg
       params:
         volume: 3
+  - type: Pacified
   - type: Blindable
   - type: Climbing
+  - type: Muted
   - type: Damageable
     damageModifierSet: SCP-096
   - type: Fixtures
@@ -63,10 +61,6 @@
         - MobMask
         layer:
         - MobLayer
-  - type: Grammar
-    attributes:
-      proper: true
-      gender: male
   - type: MobThresholds
     thresholds:
       0: Alive
@@ -89,7 +83,9 @@
       1000: 0.9
       1500: 0.8
       2000: 0.7
-  - type: Speech
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 1.5
   - type: Appearance
   - type: GenericVisualizer
     visuals:
@@ -112,11 +108,3 @@
     - Flashed
     - RadiationProtection
     - Drowsiness
-  - type: Tag
-    tags:
-    - FootstepSound
-    - CannotSuicide
-    - DoorBumpOpener
-  - type: TypingIndicator
-    proto: alien
-  - type: Pacified

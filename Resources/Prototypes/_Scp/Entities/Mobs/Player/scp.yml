@@ -80,6 +80,11 @@
       - !type:PlaySoundBehavior
         sound: !type:SoundPathSpecifier
           path: /Audio/_Scp/demon-dying.ogg
+    - type: Tag
+      tags:
+      - FootstepSound
+      - CannotSuicide
+      - DoorBumpOpener
 
 # Сцп
 # TODO: Переместить в отдельный файл
@@ -135,11 +140,6 @@
     - Scp173Clog
     - Scp173DamageStructure
     - Scp173FastMovement
-  - type: Tag
-    tags:
-    - CannotSuicide
-    - FootstepSound
-    - DoorBumpOpener
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepSCP173
@@ -219,7 +219,3 @@
     actions:
     - Scp106BackroomsAction
     - Scp106RandomTeleportAction
-  - type: Tag
-    tags:
-    - CannotSuicide
-    - FootstepSound

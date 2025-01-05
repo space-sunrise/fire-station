@@ -4,10 +4,10 @@
   parent:
   - BaseScp
   - MobCombat
-  - StripableInventoryBase
   - MobBloodstream
   - MobRespirator
   - InventoryBase
+  - StripableInventoryBase
   components:
   - type: Sprite
     noRot: true
@@ -54,7 +54,3 @@
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepBoots
-  - type: Tag
-    tags:
-    - FootstepSound
-    - DoorBumpOpener
