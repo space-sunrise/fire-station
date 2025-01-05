@@ -83,9 +83,10 @@
 
 # Сцп
 # TODO: Переместить в отдельный файл
-
 - type: entity
-  parent: [BaseScp, MobCombat]
+  parent:
+  - BaseScp
+  - MobCombat
   id: Scp173
   name: SCP-173
   suffix: SCP-173
@@ -159,7 +160,9 @@
       - dragging-5
 
 - type: entity
-  parent: [BaseScp, MobCombat]
+  parent:
+  - BaseScp
+  - MobCombat
   id: Scp106
   suffix: SCP-106
   components:
@@ -169,18 +172,13 @@
     layers:
     - map: [ "base" ]
       state: 106
-  - type: Tag
-    tags:
-    - CannotSuicide
-    - FootstepSound
-  - type: GiveActions
-    actions:
-    - Scp106BackroomsAction
-    - Scp106RandomTeleportAction
+  - type: Scp106
+  - type: ScpRestriction
+    blockBePulled: false
+    blockPull: false
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2
-  - type: Scp106
   - type: Muted
   - type: MobThresholds
     thresholds:
@@ -218,8 +216,11 @@
           Default: { state: 106 }
           Entering: { state: lusha_from_ded }
           Exiting: { state: ded_from_lusha }
-  - type: TTS
-    voice: HearthstoneSotis
-  - type: ScpRestriction
-    blockBePulled: false
-    blockPull: false
+  - type: GiveActions
+    actions:
+    - Scp106BackroomsAction
+    - Scp106RandomTeleportAction
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
