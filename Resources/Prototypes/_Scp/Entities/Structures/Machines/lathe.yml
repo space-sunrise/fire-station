@@ -19,7 +19,7 @@
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
   - type: Machine
-    board: SecurityTechFabCircuitboard
+    board: ScpTechFabCircuitboard
   - type: Lathe
     idleState: icon
     runningState: icon
@@ -38,3 +38,21 @@
       - Sheet
       - RawMaterial
       - Ingot
+
+- type: entity
+  id: ScpTechFabCircuitboard
+  parent: BaseMachineCircuitboard
+  name: scp techfab machine board
+  description: A machine printed circuit board for a security techfab.
+  components:
+  - type: Sprite
+    state: security
+  - type: MachineBoard
+    prototype: ScpTechFab
+    stackRequirements:
+      MatterBin: 2
+      Manipulator: 2
+    tagRequirements:
+      GlassBeaker:
+        amount: 2
+        defaultPrototype: Beaker
