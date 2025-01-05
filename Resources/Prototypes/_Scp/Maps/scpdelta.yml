@@ -73,8 +73,6 @@
             Musician: [ 1, 1 ]
             # silicon
             StationAi: [ 1, 1 ]
-            Borg: [ 22, 22 ]
-            SecurityCombatBorg: [ 2, 4 ]
         - type: RelativeJobsCount
           jobs:
             ClassD:
