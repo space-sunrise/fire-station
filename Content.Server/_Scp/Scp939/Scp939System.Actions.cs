@@ -18,7 +18,7 @@ public sealed partial class Scp939System
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    private static string SleepStatusKey = "Hibernation";
+    private static string SleepStatusKey = "ForcedSleep";
 
     private void InitializeActions()
     {
