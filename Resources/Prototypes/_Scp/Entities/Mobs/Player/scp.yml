@@ -54,6 +54,32 @@
   - type: ScpRestriction
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 99999
+      behaviors:
+      - !type:GibBehavior { }
+      - !type:PlaySoundBehavior
+        sound: !type:SoundPathSpecifier
+          path: /Audio/_Scp/demon-dying.ogg
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 99999
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: true
+        spawn:
+          Ash:
+            min: 10
+            max: 15
+      - !type:BurnBodyBehavior { }
+      - !type:PlaySoundBehavior
+        sound: !type:SoundPathSpecifier
+          path: /Audio/_Scp/demon-dying.ogg
 
 # Сцп
 # TODO: Переместить в отдельный файл

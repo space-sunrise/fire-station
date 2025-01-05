@@ -345,6 +345,9 @@ namespace Content.Server.Zombies
             if (!TryComp<ZombieComponent>(args.User, out _))
                 return;
 
+            if (HasComp<NonSpreaderZombieComponent>(args.User))
+                return;
+
             if (!args.HitEntities.Any())
                 return;
 
@@ -357,7 +360,7 @@ namespace Content.Server.Zombies
 
                 if (HasComp<MechComponent>(entity))
                     continue;
-                    
+
                 // Sunrise-Edit-End
 
                 if (!TryComp<MobStateComponent>(entity, out var mobState))
@@ -369,7 +372,7 @@ namespace Content.Server.Zombies
                 }
                 else
                 {
-                    if (!HasComp<ZombieImmuneComponent>(entity) && !HasComp<NonSpreaderZombieComponent>(args.User) && _random.Prob(GetZombieInfectionChance(entity, component)))
+                    if (!HasComp<ZombieImmuneComponent>(entity) && _random.Prob(GetZombieInfectionChance(entity, component)))
                     {
                         EnsureComp<PendingZombieComponent>(entity);
                         EnsureComp<ZombifyOnDeathComponent>(entity);

@@ -1,5 +1,4 @@
-﻿using Content.Shared.Actions;
-using Content.Shared.StatusIcon;
+﻿using Content.Shared.StatusIcon;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -11,8 +10,8 @@ public sealed partial class Scp049Component : Component
     [AutoNetworkedField, ViewVariables(VVAccess.ReadOnly)]
     public HashSet<EntityUid> Minions = new();
 
-    [DataField("actions")]
-    public List<ProtoId<EntityPrototype>> Scp049Actions = new()
+    [DataField]
+    public List<ProtoId<EntityPrototype>> Actions = new()
     {
         "ActionScp049Resurrect",
         "ActionScp049KillResurrected",
