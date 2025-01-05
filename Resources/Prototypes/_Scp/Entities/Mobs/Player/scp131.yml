@@ -9,43 +9,6 @@
     sprite: _Scp/Mobs/SCP-131.rsi
     drawdepth: Mobs
     state: SCP-131A
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.3
-        density: 80
-        mask:
-        - SmallMobMask
-        layer:
-        - SmallMobLayer
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Blunt
-        damage: 99999
-      behaviors:
-      - !type:GibBehavior { }
-      - !type:PlaySoundBehavior
-        sound: !type:SoundPathSpecifier
-          path: /Audio/_Scp/demon-dying.ogg
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Heat
-        damage: 99999
-      behaviors:
-      - !type:SpawnEntitiesBehavior
-        spawnInContainer: true
-        spawn:
-          Ash:
-            min: 10
-            max: 15
-      - !type:BurnBodyBehavior { }
-      - !type:PlaySoundBehavior
-        sound: !type:SoundPathSpecifier
-          path: /Audio/_Scp/demon-dying.ogg
   - type: Muted
   - type: MovementSpeedModifier
     baseWalkSpeed: 7
