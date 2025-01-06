@@ -20,6 +20,7 @@ public sealed partial class Scp049System : SharedScp049System
 
         SubscribeLocalEvent<Scp049Component, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<Scp049Component, ScpResurrectionDoAfterEvent>(OnResurrectDoAfter);
+
         InitializeActions();
     }
 
