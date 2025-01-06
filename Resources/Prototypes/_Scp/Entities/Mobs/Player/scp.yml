@@ -81,11 +81,11 @@
       - !type:PlaySoundBehavior
         sound: !type:SoundPathSpecifier
           path: /Audio/_Scp/demon-dying.ogg
-    - type: Tag
-      tags:
-      - FootstepSound
-      - CannotSuicide
-      - DoorBumpOpener
+  - type: Tag
+    tags:
+    - FootstepSound
+    - CannotSuicide
+    - DoorBumpOpener
 
 # Сцп
 # TODO: Переместить в отдельный файл
