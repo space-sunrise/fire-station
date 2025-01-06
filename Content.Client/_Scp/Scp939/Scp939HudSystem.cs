@@ -6,8 +6,11 @@ using Content.Shared._Scp.Scp939;
 using Content.Shared._Scp.Scp939.Protection;
 using Content.Shared.Examine;
 using Content.Shared.Movement.Components;
+using Content.Shared.Standing;
 using Content.Shared.StatusIcon.Components;
 using Content.Shared.Throwing;
+using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Weapons.Ranged.Events;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -39,9 +42,16 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         SubscribeLocalEvent((Entity<Scp939VisibilityComponent> ent, ref StartCollideEvent args) => OnCollide(ent, args.OtherEntity));
         SubscribeLocalEvent((Entity<Scp939VisibilityComponent> ent, ref EndCollideEvent args) => OnCollide(ent, args.OtherEntity));
 
-        SubscribeLocalEvent<Scp939VisibilityComponent, ThrowEvent>(OnThrow);
+        #region Visibility
 
         SubscribeLocalEvent<Scp939VisibilityComponent, MoveEvent>(OnMove);
+
+        SubscribeLocalEvent<Scp939VisibilityComponent, ThrowEvent>(OnThrow);
+        SubscribeLocalEvent<Scp939VisibilityComponent, StoodEvent>(OnStood);
+        SubscribeLocalEvent<Scp939VisibilityComponent, MeleeAttackEvent>(OnMeleeAttack);
+
+        #endregion
+
         SubscribeLocalEvent<Scp939VisibilityComponent, BeforePostShaderRenderEvent>(BeforeRender);
         SubscribeLocalEvent<Scp939VisibilityComponent, GetStatusIconsEvent>(OnGetStatusIcons, after: new []{typeof(SSDIndicatorSystem)});
         SubscribeLocalEvent<Scp939VisibilityComponent, ExamineAttemptEvent>(OnExamine);
@@ -106,6 +116,16 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
     }
 
     private void OnThrow(Entity<Scp939VisibilityComponent> ent, ref ThrowEvent args)
+    {
+        MobDidSomething(ent);
+    }
+
+    private void OnStood(Entity<Scp939VisibilityComponent> ent, ref StoodEvent args)
+    {
+        MobDidSomething(ent);
+    }
+
+    private void OnMeleeAttack(Entity<Scp939VisibilityComponent> ent, ref MeleeAttackEvent args)
     {
         MobDidSomething(ent);
     }

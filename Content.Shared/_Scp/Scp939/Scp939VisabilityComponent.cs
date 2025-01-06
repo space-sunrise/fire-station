@@ -19,6 +19,4 @@ public sealed partial class Scp939VisibilityComponent : Component
     public int MaxValue = 400;
 
     #endregion
-
-
 }
