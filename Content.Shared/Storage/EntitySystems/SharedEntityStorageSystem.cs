@@ -131,8 +131,10 @@ public abstract class SharedEntityStorageSystem : EntitySystem
 
     protected void OnRelayMovement(EntityUid uid, SharedEntityStorageComponent component, ref ContainerRelayMovementEntityEvent args)
     {
+        /* Fire edit - нахуя мне руки
         if (!HasComp<HandsComponent>(args.Entity))
             return;
+        */
 
         if (!_actionBlocker.CanMove(args.Entity))
             return;
@@ -144,7 +146,7 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         Dirty(uid, component);
 
         if (component.OpenOnMove)
-            TryOpenStorage(args.Entity, uid);
+            TryOpenStorage(args.Entity, uid, requireHands: false);
     }
 
     protected void OnFoldAttempt(EntityUid uid, SharedEntityStorageComponent component, ref FoldAttemptEvent args)
@@ -210,7 +212,7 @@ public abstract class SharedEntityStorageSystem : EntitySystem
     // Fire edit start
     // Я добавил возможность сделать открытие шкафов с дуафтером, пришлось чут чут переписать этот метод и добавить еще один
     // А еще я добавил EntityUid? user = null, чтобы дуафтер мог запускаться на открывающем двери игроке
-    public void OpenStorage(EntityUid uid, SharedEntityStorageComponent? component = null, EntityUid? user = null)
+    public void OpenStorage(EntityUid uid, SharedEntityStorageComponent? component = null, EntityUid? user = null, bool force = false)
     {
         if (!ResolveStorage(uid, ref component))
             return;
@@ -222,13 +224,12 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         RaiseLocalEvent(uid, ref beforeev);
 
         // Тут начинается переписывание
-        if (component.DoAfterDelay != 0 && user.HasValue)
+        if (component.DoAfterDelay != 0 && user.HasValue && !force)
         {
             var doAfterEventArgs = new DoAfterArgs(EntityManager, user.Value, component.DoAfterDelay, new OpenStorageDoAfterEvent(), uid, target: uid)
             {
                 BreakOnMove = true,
                 BreakOnDamage = true,
-                NeedHand = true,
             };
 
             _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
@@ -325,6 +326,7 @@ public abstract class SharedEntityStorageSystem : EntitySystem
 
         var inside = EnsureComp<InsideEntityStorageComponent>(toInsert);
         inside.Storage = container;
+        Dirty(toInsert, inside); // Fire added
         return true;
     }
 
@@ -357,9 +359,9 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         return CanFit(toInsert, container, component);
     }
 
-    public bool TryOpenStorage(EntityUid user, EntityUid target, bool silent = false)
+    public bool TryOpenStorage(EntityUid user, EntityUid target, bool silent = false, bool requireHands = true)
     {
-        if (!CanOpen(user, target, silent))
+        if (!CanOpen(user, target, silent, requireHands:requireHands))
             return false;
 
         OpenStorage(target, user: user);
@@ -385,13 +387,15 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         return component.Open;
     }
 
-    public bool CanOpen(EntityUid user, EntityUid target, bool silent = false, SharedEntityStorageComponent? component = null)
+    public bool CanOpen(EntityUid user, EntityUid target, bool silent = false, SharedEntityStorageComponent? component = null, bool requireHands = true)
     {
         if (!ResolveStorage(target, ref component))
             return false;
 
-        if (!HasComp<HandsComponent>(user))
+        // Fire edit start
+        if (!HasComp<HandsComponent>(user) && requireHands)
             return false;
+        // Fire edit end
 
         if (_weldable.IsWelded(target))
         {

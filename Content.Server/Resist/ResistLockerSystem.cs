@@ -1,6 +1,8 @@
+using Content.Server._Scp.Scp173;
 using Content.Server.Popups;
 using Content.Server.Storage.Components;
 using Content.Server.Storage.EntitySystems;
+using Content.Shared._Scp.Scp173;
 using Content.Shared.DoAfter;
 using Content.Shared.Lock;
 using Content.Shared.Movement.Events;
@@ -20,6 +22,7 @@ public sealed class ResistLockerSystem : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly WeldableSystem _weldable = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private readonly Scp173System _scp173 = default!; // Fire
 
     public override void Initialize()
     {
@@ -30,8 +33,7 @@ public sealed class ResistLockerSystem : EntitySystem
 
     private void OnRelayMovement(EntityUid uid, ResistLockerComponent component, ref ContainerRelayMovementEntityEvent args)
     {
-        if (component.IsResisting)
-            return;
+        // Fire edit - перенес component.IsResisting чуть пониже, в AttemptResist
 
         if (!TryComp(uid, out EntityStorageComponent? storageComponent))
             return;
@@ -50,7 +52,18 @@ public sealed class ResistLockerSystem : EntitySystem
         if (!Resolve(target, ref storageComponent, ref resistLockerComponent))
             return;
 
-        var doAfterEventArgs = new DoAfterArgs(EntityManager, user, resistLockerComponent.ResistTime, new ResistLockerDoAfterEvent(), target, target: target)
+        // Fire edit start - чтобы 173 не запирали внутри камеры в контейнере
+        var delayTime = resistLockerComponent.ResistTime;
+        var isScp173Conainment = HasComp<Scp173Component>(user) && _scp173.IsContained(user);
+
+        if (isScp173Conainment)
+            delayTime = 5f;
+        else if (resistLockerComponent.IsResisting)
+            return;
+
+        // Fire edit end
+
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, user, delayTime, new ResistLockerDoAfterEvent(), target, target: target)
         {
             BreakOnMove = true,
             BreakOnDamage = true,

@@ -1,12 +1,10 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Linq;
+﻿using System.Linq;
 using System.Numerics;
 using Content.Server.Examine;
 using Content.Server.Ghost;
 using Content.Server.Light.Components;
 using Content.Server.Storage.Components;
 using Content.Server.Storage.EntitySystems;
-using Content.Shared._Scp.Containment.Cage;
 using Content.Shared._Scp.Scp173;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Coordinates.Helpers;
@@ -25,8 +23,6 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
-using Content.Shared.Storage.Components;
-using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
@@ -50,7 +46,6 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedPuddleSystem _puddle = default!;
     [Dependency] private readonly LockSystem _lock = default!;
@@ -64,6 +59,8 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+
+    private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
 
     public override void Initialize()
     {
@@ -112,24 +109,23 @@ public sealed class Scp173System : SharedScp173System
             return;
         }
 
-        var defileRadius = 4f;
-        var defileTilePryAmount = 10;
-
-        var xform = Transform(uid);
-
-        if (!TryComp<MapGridComponent>(xform.GridUid, out var map))
-            return;
-
-        var lookup = _lookup.GetEntitiesInRange(uid, defileRadius);
-
-        // Блокирование действия разрушения. Применяется в камере 173го
-        if (lookup.Any(HasComp<Scp173BlockStructureDamageComponent>))
+        if (IsContained(uid))
         {
             var message = Loc.GetString("scp173-damage-structures-blocked");
             _popupSystem.PopupEntity(message, uid, uid, PopupType.LargeCaution);
 
             return;
         }
+
+        var defileRadius = 4f;
+        var defileTilePryAmount = 10;
+
+        var lookup = _lookup.GetEntitiesInRange(uid, defileRadius);
+
+        var xform = Transform(uid);
+
+        if (!TryComp<MapGridComponent>(xform.GridUid, out var map))
+            return;
 
         var tiles = map.GetTilesIntersecting(Box2.CenteredAround(_transformSystem.GetWorldPosition(xform),
             new Vector2(defileRadius * 2, defileRadius))).ToArray();
@@ -157,8 +153,12 @@ public sealed class Scp173System : SharedScp173System
             _damageable.TryChangeDamage(ent, dspec);
 
             // randomly opens some lockers and such.
-            if (!HasComp<ScpCageComponent>(ent) && entityStorage.TryGetComponent(ent, out var entstorecomp))
-                _entityStorage.OpenStorage(ent, entstorecomp); // TODO: Пофиксить, что оно открывает ЗАЛОЧЕННЫЕ шкафы и они остаются залоченными, но открытыми
+            if (entityStorage.TryGetComponent(ent, out var entityStorageComponent) && !entityStorageComponent.Open)
+            {
+                _lock.TryUnlock(ent, uid);
+                _entityStorage.OpenStorage(ent, entityStorageComponent);
+                _audioSystem.PlayPvs(_storageOpenSound, ent);
+            }
 
             // chucks items
             if (items.HasComponent(ent) &&
@@ -419,19 +419,4 @@ public sealed class Scp173System : SharedScp173System
 
         return layer.HasFlag(CollisionGroup.WallLayer) || layer.HasFlag(CollisionGroup.TableLayer);
     }
-
-    private bool IsInScpCage(EntityUid uid, [NotNullWhen(true)] out EntityUid? storage)
-    {
-        storage = null;
-
-        if (TryComp<InsideEntityStorageComponent>(uid, out var insideEntityStorageComponent) &&
-            HasComp<ScpCageComponent>(insideEntityStorageComponent.Storage))
-        {
-            storage = insideEntityStorageComponent.Storage;
-            return true;
-        }
-
-        return false;
-    }
-
 }

@@ -1,6 +1,8 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Numerics;
 using Content.Shared._Scp.Blinking;
+using Content.Shared._Scp.Containment.Cage;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -9,6 +11,7 @@ using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
+using Content.Shared.Storage.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
@@ -23,7 +26,10 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+
+    private const float ContainmentRoomSearchRadius = 4f;
 
     public override void Initialize()
     {
@@ -71,13 +77,13 @@ public abstract class SharedScp173System : EntitySystem
 
     private void OnDirectionAttempt(Entity<Scp173Component> ent, ref ChangeDirectionAttemptEvent args)
     {
-        if (Is173Watched(ent, out _))
+        if (Is173Watched(ent, out _) && !IsInScpCage(ent, out _))
             args.Cancel();
     }
 
     private void OnMoveAttempt(Entity<Scp173Component> ent, ref UpdateCanMoveEvent args)
     {
-        if (Is173Watched(ent, out _))
+        if (Is173Watched(ent, out _) && !IsInScpCage(ent, out _))
             args.Cancel();
     }
 
@@ -192,6 +198,36 @@ public abstract class SharedScp173System : EntitySystem
         var angle = MathF.Acos(dotProduct) * (180f / MathF.PI);
 
         return angle;
+    }
+
+    #endregion
+
+    #region Public API
+
+    /// <summary>
+    /// Находится ли 173 в контейнере для перевозки
+    /// </summary>
+    public bool IsInScpCage(EntityUid uid, [NotNullWhen(true)] out EntityUid? storage)
+    {
+        storage = null;
+
+        if (TryComp<InsideEntityStorageComponent>(uid, out var insideEntityStorageComponent) &&
+            HasComp<ScpCageComponent>(insideEntityStorageComponent.Storage))
+        {
+            storage = insideEntityStorageComponent.Storage;
+            return true;
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// Находится ли 173 в своей камере. Проверяется по наличию рядом спавнера работы
+    /// </summary>
+    public bool IsContained(EntityUid uid)
+    {
+        var lookup = _lookup.GetEntitiesInRange(uid, ContainmentRoomSearchRadius);
+        return lookup.Any(HasComp<Scp173BlockStructureDamageComponent>);
     }
 
     #endregion
