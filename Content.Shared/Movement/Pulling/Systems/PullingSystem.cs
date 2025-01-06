@@ -464,10 +464,13 @@ public sealed class PullingSystem : EntitySystem
         if (pullAttempt.Cancelled)
             return false;
 
-        RaiseLocalEvent(pullableUid, pullAttempt);
+        // Fire edit start - чем они думали бля, когда один ивент используется для пуллабл и пуллер ентити
+        var pullableAttempt = new BeingPulledAttemptEvent(pullerUid, pullableUid);
+        RaiseLocalEvent(pullableUid, pullableAttempt);
 
-        if (pullAttempt.Cancelled)
+        if (pullableAttempt.Cancelled)
             return false;
+        // Fire edit end
 
         // Pulling confirmed
 

@@ -17,8 +17,6 @@
       state: alive
   - type: Scp939
   - type: ScpRestriction
-    blockBePulled: false
-    blockPull: false
   - type: MeleeWeapon
     soundHit:
       collection: AlienClaw
