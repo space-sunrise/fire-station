@@ -18,6 +18,7 @@
   - type: Scp939
   - type: ScpRestriction
   - type: MeleeWeapon
+    altDisarm: false
     soundHit:
       collection: AlienClaw
     angle: 30

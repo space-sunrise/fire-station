@@ -175,6 +175,11 @@
   - type: ScpRestriction
     blockBePulled: false
     blockPull: false
+  - type: MeleeWeapon
+    bluntStaminaDamageFactor: 1.0
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcPunch
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2
@@ -215,7 +220,7 @@
           Default: { state: 106 }
           Entering: { state: lusha_from_ded }
           Exiting: { state: ded_from_lusha }
-  - type: GiveActions
+  - type: ActionGrant
     actions:
     - Scp106BackroomsAction
     - Scp106RandomTeleportAction
