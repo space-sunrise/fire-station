@@ -28,6 +28,9 @@ public sealed partial class Scp173Component : Component
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     public int MinTotalSolutionVolume = 500;
 
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public int ExtraMinTotalSolutionVolume = 800;
+
     #endregion
 
     [DataField]

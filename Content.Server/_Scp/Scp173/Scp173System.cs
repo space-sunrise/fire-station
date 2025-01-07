@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using System.Numerics;
+using System.Threading;
 using Content.Server.Examine;
+using Content.Server.Explosion.EntitySystems;
 using Content.Server.Ghost;
 using Content.Server.Light.Components;
 using Content.Server.Storage.Components;
@@ -35,6 +37,7 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
+using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server._Scp.Scp173;
 
@@ -57,6 +60,7 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly ExplosionSystem _explosion = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
@@ -190,6 +194,13 @@ public sealed class Scp173System : SharedScp173System
             return;
         }
 
+        if (Is173Watched(ent, out _))
+        {
+            var message = Loc.GetString("scp173-fast-movement-too-many-watchers");
+            _popupSystem.PopupEntity(message, ent, ent, PopupType.LargeCaution);
+            return;
+        }
+
         var coords = Transform(ent).Coordinates;
 
         var tempSol = new Solution();
@@ -216,12 +227,16 @@ public sealed class Scp173System : SharedScp173System
                 if (TryComp<DoorBoltComponent>(target, out var doorBoltComp) && doorBoltComp.BoltsDown)
                     _door.SetBoltsDown((target, doorBoltComp), false, predicted: true);
 
-                if (TryComp<DoorComponent>(target, out var doorComp) && doorComp.State is not DoorState.Open)
-                    _door.StartOpening(target);
-
                 if (TryComp<LockComponent>(target, out var lockComp) && lockComp.Locked)
                     _lock.Unlock(target, args.Performer, lockComp);
+
+                if (TryComp<DoorComponent>(target, out var doorComp) && doorComp.State is not DoorState.Open)
+                    _door.StartOpening(target);
             }
+        }
+        else if (total >= ent.Comp.ExtraMinTotalSolutionVolume)
+        {
+            _explosion.QueueExplosion(_transformSystem.GetMapCoordinates(ent), ExplosionSystem.DefaultExplosionPrototypeId, 300f, 0.6f, 50f, ent);
         }
 
         args.Handled = true;
@@ -240,10 +255,18 @@ public sealed class Scp173System : SharedScp173System
             return;
         }
 
+        if (IsContained(ent))
+        {
+            var message = Loc.GetString("scp173-damage-structures-blocked");
+            _popupSystem.PopupEntity(message, ent, ent, PopupType.LargeCaution);
+
+            return;
+        }
+
         if (Is173Watched(ent, out var watchersCount) && watchersCount > ent.Comp.MaxWatchers)
         {
             var message = Loc.GetString("scp173-fast-movement-too-many-watchers");
-            _popupSystem.PopupClient(message, ent, PopupType.LargeCaution);
+            _popupSystem.PopupEntity(message, ent, ent, PopupType.LargeCaution);
             return;
         }
 
@@ -290,7 +313,6 @@ public sealed class Scp173System : SharedScp173System
 
     private EntityCoordinates? CalculateFinalPosition(Entity<Scp173Component> scpEntitiy, MapCoordinates targetCoords)
     {
-
         var performerPos = _transformSystem.GetWorldPosition(scpEntitiy);
         var direction = targetCoords.Position - performerPos;
         var normalizedDirection = Vector2.Normalize(direction);
