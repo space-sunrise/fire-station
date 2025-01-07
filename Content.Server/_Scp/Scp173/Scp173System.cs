@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using System.Numerics;
-using System.Threading;
 using Content.Server.Examine;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Ghost;
@@ -37,7 +36,6 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
-using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server._Scp.Scp173;
 
@@ -65,6 +63,7 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
+    private const float ToggleDoorStuffChance = 0.2f;
 
     public override void Initialize()
     {
@@ -113,6 +112,13 @@ public sealed class Scp173System : SharedScp173System
             return;
         }
 
+        if (Is173Watched(uid, out _))
+        {
+            var message = Loc.GetString("scp173-fast-movement-too-many-watchers");
+            _popupSystem.PopupEntity(message, uid, uid, PopupType.LargeCaution);
+            return;
+        }
+
         if (IsContained(uid))
         {
             var message = Loc.GetString("scp173-damage-structures-blocked");
@@ -147,12 +153,15 @@ public sealed class Scp173System : SharedScp173System
         var entityStorage = GetEntityQuery<EntityStorageComponent>();
         var items = GetEntityQuery<ItemComponent>();
         var lights = GetEntityQuery<PoweredLightComponent>();
+        var boltedDoors = GetEntityQuery<DoorBoltComponent>();
+        var lockedStuff = GetEntityQuery<LockComponent>();
+        var doors = GetEntityQuery<DoorComponent>();
 
         foreach (var ent in lookup)
         {
             // break random stuff
             var dspec = new DamageSpecifier();
-            var damageValue = _random.Next(40, 80);
+            var damageValue = _random.Next(20, 80);
             dspec.DamageDict.Add("Structural", damageValue);
             _damageable.TryChangeDamage(ent, dspec);
 
@@ -174,6 +183,18 @@ public sealed class Scp173System : SharedScp173System
             // flicker lights
             if (lights.HasComponent(ent))
                 _ghost.DoGhostBooEvent(ent);
+
+            // Чтобы 173 не застревал в дверях, в попытках их выломать по 5 минут, когда уже сбежал
+            var doorStuffChance = _random.NextFloat();
+
+            if (doorStuffChance <= ToggleDoorStuffChance && boltedDoors.TryGetComponent(ent, out var doorBoltComp) && doorBoltComp.BoltsDown)
+                _door.SetBoltsDown((ent, doorBoltComp), false, predicted: true);
+
+            if (doorStuffChance <= ToggleDoorStuffChance && lockedStuff.TryGetComponent(ent, out var lockComp) && lockComp.Locked)
+                _lock.Unlock(ent, args.Performer, lockComp);
+
+            if (doorStuffChance <= ToggleDoorStuffChance && doors.TryGetComponent(ent, out var doorComp) && doorComp.State is not DoorState.Open)
+                _door.StartOpening(ent);
         }
 
         // TODO: Sound.
