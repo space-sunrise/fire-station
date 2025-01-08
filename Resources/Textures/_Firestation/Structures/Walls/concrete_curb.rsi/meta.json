@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by discord: odlieerr",
+    "size": {
+      "x": 32,
+      "y": 32
+    },
+  "states": [
+    {
+      "name": "side_north",
+      "directions": 4
+    },
+    {
+      "name": "side_south",
+      "directions": 4
+    },
+    {
+      "name": "corner_north",
+      "directions": 4
+    },
+    {
+      "name": "corner_south",
+      "directions": 4
+    },
+    {
+      "name": "corner_small_north",
+      "directions": 4
+    },
+    {
+      "name": "corner_small_south",
+      "directions": 4
+    }
+  ]
+}
