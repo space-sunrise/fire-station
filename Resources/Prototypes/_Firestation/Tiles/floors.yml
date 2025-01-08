@@ -149,11 +149,11 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FSFloorTileItemSteel
+  itemDrop: FSFloorTileItemMiniSteel
   heatCapacity: 10000
 
 - type: tile
-  id: FSFloorFarkMini
+  id: FSFloorDarkMini
   name: tiles-dark-mini-floor
   sprite: /Textures/_Scp/Tiles/dark_mini.png
   variants: 24
@@ -183,7 +183,7 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FSFloorTileItemDark
+  itemDrop: FSFloorTileItemMiniSteelDark
   heatCapacity: 10000
 
 - type: tile
@@ -217,7 +217,7 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FSFloorTileItemWhite
+  itemDrop: FSFloorTileItemMiniSteelWhite
   heatCapacity: 10000
 
 - type: tile
@@ -230,7 +230,7 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FSFloorTileItemSteel
+  itemDrop: FSFloorTileItemMonoSteel
   heatCapacity: 10000
 
 - type: tile
@@ -243,7 +243,7 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FSFloorTileItemWhite
+  itemDrop: FSFloorTileItemMonoSteelWhite
   heatCapacity: 10000
 
 - type: tile
@@ -256,12 +256,12 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FSFloorTileItemDark
+  itemDrop: FSFloorTileItemMonoSteelDark
   heatCapacity: 10000
 
 - type: tile
-  id: FSFloorСheckerSteel
-  name: tiles-checker_steel-floor
+  id: FSFloorCheckerSteel
+  name: tiles-checker-steel-floor
   sprite: /Textures/_Scp/Tiles/checker_steel.png
   variants: 10
   placementVariants:
@@ -280,12 +280,12 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FSFloorTileItemСheckerSteel
+  itemDrop: FSFloorTileItemCheckerSteel
   heatCapacity: 10000
 
 - type: tile
-  id: FSFloorСheckerDark
-  name: tiles-checker_dark-floor
+  id: FSFloorCheckerDark
+  name: tiles-checker-dark-floor
   sprite: /Textures/_Scp/Tiles/checker_dark.png
   variants: 10
   placementVariants:
@@ -304,5 +304,5 @@
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  itemDrop: FSFloorTileItemСheckerDark
+  itemDrop: FSFloorTileItemCheckerDark
   heatCapacity: 10000

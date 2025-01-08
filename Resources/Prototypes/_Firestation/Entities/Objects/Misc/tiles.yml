@@ -19,6 +19,19 @@
     node: steeltile
 
 - type: entity
+  name: dark tile
+  parent: FSFloorTileItemSteel
+  id: FSFloorTileItemDark
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: dark
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FSFloorDark
+
+- type: entity
   name: white tile
   parent: FSFloorTileItemSteel
   id: FSFloorTileItemWhite
@@ -32,17 +45,17 @@
       - FSFloorWhite
 
 - type: entity
-  name: white tile
+  name: blue tile
   parent: FSFloorTileItemSteel
-  id: FSFloorTileItemDark
+  id: FSFloorTileItemBlue
   components:
   - type: Sprite
     sprite: _Scp/Objects/Tiles/tile.rsi
-    state: dark
+    state: blue
   - type: FloorTile
     outputs:
-      - Plating
-      - FSFloorDark
+    - Plating
+    - FSFloorBlue
 
 - type: entity
   name: green tile
@@ -58,22 +71,87 @@
       - FSFloorGreen
 
 - type: entity
-  name: blue tile
+  name: mini steel tile
   parent: FSFloorTileItemSteel
-  id: FSFloorTileItemBlue
+  id: FSFloorTileItemMiniSteel
   components:
   - type: Sprite
     sprite: _Scp/Objects/Tiles/tile.rsi
-    state: blue
+    state: steel
   - type: FloorTile
     outputs:
-      - Plating
-      - FSFloorBlue
+    - Plating
+    - FSFloorSteelMini
+
+- type: entity
+  name: dark mini steel tile
+  parent: FSFloorTileItemSteel
+  id: FSFloorTileItemMiniSteelDark
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: dark
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FSFloorDarkMini
+
+- type: entity
+  name: white mini steel tile
+  parent: FSFloorTileItemSteel
+  id: FSFloorTileItemMiniSteelWhite
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: white
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FSFloorWhiteMini
+
+- type: entity
+  name: mono steel tile
+  parent: FSFloorTileItemSteel
+  id: FSFloorTileItemMonoSteel
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FSFloorSteelMono
+
+- type: entity
+  name: white mono steel tile
+  parent: FSFloorTileItemSteel
+  id: FSFloorTileItemMonoSteelWhite
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: white
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FSFloorWhiteMono
+
+- type: entity
+  name: dark mono steel tile
+  parent: FSFloorTileItemSteel
+  id: FSFloorTileItemMonoSteelDark
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: dark
+  - type: FloorTile
+    outputs:
+    - Plating
+    - FSFloorDarkMono
 
 - type: entity
   name: checker steel tile
   parent: FSFloorTileItemSteel
-  id: FSFloorTileItemСheckerSteel
+  id: FSFloorTileItemCheckerSteel
   components:
   - type: Sprite
     sprite: _Scp/Objects/Tiles/tile.rsi
@@ -81,12 +159,12 @@
   - type: FloorTile
     outputs:
       - Plating
-      - FSFloorСheckerSteel
+      - FSFloorCheckerSteel
 
 - type: entity
   name: checker dark tile
-  parent: FSFloorTileItemСheckerSteel
-  id: FSFloorTileItemСheckerDark
+  parent: FSFloorTileItemCheckerSteel
+  id: FSFloorTileItemCheckerDark
   components:
   - type: Sprite
     sprite: _Scp/Objects/Tiles/tile.rsi
@@ -94,4 +172,4 @@
   - type: FloorTile
     outputs:
       - Plating
-      - FSFloorСheckerDark
+      - FSFloorCheckerDark
