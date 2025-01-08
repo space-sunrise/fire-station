@@ -11,7 +11,7 @@
   - type: FloorTile
     outputs:
       - Plating
-      - SCP14FloorSteel
+      - FSFloorSteel
   - type: Stack
     stackType: FloorTileSteel
   - type: Construction
@@ -29,7 +29,7 @@
   - type: FloorTile
     outputs:
       - Plating
-      - SCP14FloorWhite
+      - FSFloorWhite
 
 - type: entity
   name: white tile
@@ -42,7 +42,7 @@
   - type: FloorTile
     outputs:
       - Plating
-      - SCP14FloorDark
+      - FSFloorDark
 
 - type: entity
   name: green tile
@@ -68,7 +68,7 @@
   - type: FloorTile
     outputs:
       - Plating
-      - SCP14FloorBlue
+      - FSFloorBlue
 
 - type: entity
   name: checker steel tile
@@ -81,7 +81,7 @@
   - type: FloorTile
     outputs:
       - Plating
-      - SCP14FloorСheckerSteel
+      - FSFloorСheckerSteel
 
 - type: entity
   name: checker dark tile
@@ -94,4 +94,4 @@
   - type: FloorTile
     outputs:
       - Plating
-      - SCP14FloorСheckerDark
+      - FSFloorСheckerDark
