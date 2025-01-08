@@ -72,7 +72,7 @@
 
 - type: entity
   name: checker steel tile
-  parent: FSFloorTileItemСheckerSteel
+  parent: FSFloorTileItemSteel
   id: FSFloorTileItemСheckerSteel
   components:
   - type: Sprite
