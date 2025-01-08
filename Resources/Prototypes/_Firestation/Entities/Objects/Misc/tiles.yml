@@ -4,7 +4,7 @@
   id: FSFloorTileItemSteel
   components:
   - type: Sprite
-    sprite: _Firestation/Objects/Tiles/tile.rsi
+    sprite: _Scp/Objects/Tiles/tile.rsi
     state: steel
   - type: Item
     size: Normal
@@ -24,7 +24,7 @@
   id: FSFloorTileItemWhite
   components:
   - type: Sprite
-    sprite: _Firestation/Objects/Tiles/tile.rsi
+    sprite: _Scp/Objects/Tiles/tile.rsi
     state: white
   - type: FloorTile
     outputs:
@@ -37,7 +37,7 @@
   id: FSFloorTileItemDark
   components:
   - type: Sprite
-    sprite: _Firestation/Objects/Tiles/tile.rsi
+    sprite: _Scp/Objects/Tiles/tile.rsi
     state: dark
   - type: FloorTile
     outputs:
@@ -50,7 +50,7 @@
   id: FSFloorTileItemGreen
   components:
   - type: Sprite
-    sprite: _Firestation/Objects/Tiles/tile.rsi
+    sprite: _Scp/Objects/Tiles/tile.rsi
     state: green
   - type: FloorTile
     outputs:
@@ -63,7 +63,7 @@
   id: FSFloorTileItemBlue
   components:
   - type: Sprite
-    sprite: _Firestation/Objects/Tiles/tile.rsi
+    sprite: _Scp/Objects/Tiles/tile.rsi
     state: blue
   - type: FloorTile
     outputs:
@@ -76,7 +76,7 @@
   id: FSFloorTileItemСheckerSteel
   components:
   - type: Sprite
-    sprite: _Firestation/Objects/Tiles/tile.rsi
+    sprite: _Scp/Objects/Tiles/tile.rsi
     state: checker-light
   - type: FloorTile
     outputs:
@@ -89,7 +89,7 @@
   id: FSFloorTileItemСheckerDark
   components:
   - type: Sprite
-    sprite: _Firestation/Objects/Tiles/tile.rsi
+    sprite: _Scp/Objects/Tiles/tile.rsi
     state: checker-dark
   - type: FloorTile
     outputs:

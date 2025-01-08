@@ -7,7 +7,7 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: _Firestation/Structures/catwalk-steel.rsi
+    sprite: _Scp/Structures/catwalk-steel.rsi
     drawdepth: FloorTiles
 
 - type: entity
@@ -19,7 +19,7 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: _Firestation/Structures/catwalk-white.rsi
+    sprite: _Scp/Structures/catwalk-white.rsi
     drawdepth: FloorTiles
 
 - type: entity
@@ -31,5 +31,5 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: _Firestation/Structures/catwalk-dark.rsi
+    sprite: _Scp/Structures/catwalk-dark.rsi
     drawdepth: FloorTiles

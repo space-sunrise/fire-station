@@ -7,10 +7,10 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: _Firestation/Structures/Walls/concrete_curb.rsi
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: side_north
   - type: Icon
-    sprite: _Firestation/Structures/Walls/concrete_curb.rsi
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: side_north
   - type: Physics
     bodyType: Static
@@ -37,10 +37,10 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: _Firestation/Structures/Walls/concrete_curb.rsi
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: side_south
   - type: Icon
-    sprite: _Firestation/Structures/Walls/concrete_curb.rsi
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: side_south
 
 - type: entity
@@ -51,10 +51,10 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: _Firestation/Structures/Walls/concrete_curb.rsi
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: corner_north
   - type: Icon
-    sprite: _Firestation/Structures/Walls/concrete_curb.rsi
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: corner_north
   - type: Physics
     bodyType: Static
@@ -87,10 +87,10 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: _Firestation/Structures/Walls/concrete_curb.rsi
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: corner_south
   - type: Icon
-    sprite: _Firestation/Structures/Walls/concrete_curb.rsi
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: corner_south
   - type: Physics
     bodyType: Static
@@ -123,10 +123,10 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: _Firestation/Structures/Walls/concrete_curb.rsi
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: corner_small_north
   - type: Icon
-    sprite: _Firestation/Structures/Walls/concrete_curb.rsi
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: corner_small_north
   - type: Physics
     bodyType: Static
@@ -150,10 +150,10 @@
   components:
   - type: Sprite
     drawdepth: WallTops
-    sprite: _Firestation/Structures/Walls/concrete_curb.rsi
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: corner_small_south
   - type: Icon
-    sprite: _Firestation/Structures/Walls/concrete_curb.rsi
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: corner_small_south
   - type: Physics
     bodyType: Static
