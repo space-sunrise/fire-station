@@ -1,5 +1,5 @@
 - type: entity
-  id: SCP14CatwalkSteel
+  id: FSCatwalkSteel
   parent: Catwalk
   name: catwalk
   description: A catwalk for easier EVA maneuvering and cable placement.
@@ -11,7 +11,7 @@
     drawdepth: FloorTiles
 
 - type: entity
-  id: SCP14CatwalkWhite
+  id: FSCatwalkWhite
   parent: Catwalk
   name: catwalk
   description: A catwalk for easier EVA maneuvering and cable placement.
@@ -23,7 +23,7 @@
     drawdepth: FloorTiles
 
 - type: entity
-  id: SCP14CatwalkDark
+  id: FSCatwalkDark
   parent: Catwalk
   name: catwalk
   description: A catwalk for easier EVA maneuvering and cable placement.
