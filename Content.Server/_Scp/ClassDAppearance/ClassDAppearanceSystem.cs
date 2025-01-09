@@ -1,4 +1,5 @@
 ﻿using Robust.Shared.Audio.Systems;
+using Robust.Shared.Player;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.ClassDAppearance;
@@ -14,14 +15,16 @@ public sealed class ClassDAppearanceSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ClassDAppearanceComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<ClassDAppearanceComponent, PlayerAttachedEvent>(OnPlayerAttachedEvent);
+    }
+
+    private void OnPlayerAttachedEvent(Entity<ClassDAppearanceComponent> ent, ref PlayerAttachedEvent args)
+    {
+        _sharedAudioSystem.PlayEntity(ent.Comp.ClassDSpawnSound, ent, ent);
     }
 
     private void OnMapInit(Entity<ClassDAppearanceComponent> ent, ref MapInitEvent args)
     {
-
-        _sharedAudioSystem.PlayEntity(ent.Comp.ClassDSpawnSound, ent, ent);
-
-
         var name = "D-" + _random.Next(1000, 9999);
 
         _metaData.SetEntityName(ent, name);
