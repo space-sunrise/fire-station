@@ -9,6 +9,7 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Melee.Events;
+using Robust.Shared.Network;
 
 namespace Content.Shared._Scp.Scp106.Systems;
 
@@ -22,6 +23,7 @@ public abstract class SharedScp106System : EntitySystem
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
     [Dependency] private readonly SharedTransformSystem _sharedTransform = default!;
     [Dependency] private readonly SharedBodySystem _bodySystem = default!;
+    [Dependency] private readonly IServerNetManager _serverNetManager = default!;
 
     public override void Initialize()
     {
@@ -53,7 +55,7 @@ public abstract class SharedScp106System : EntitySystem
     {
         var target = args.Target;
 
-        if (!TryComp<HumanoidAppearanceComponent>(target, out var humanoidAppearanceComponent))
+        if (!HasComp<HumanoidAppearanceComponent>(target))
             return;
 
         if (!TryComp<MobStateComponent>(target, out var mobStateComponent))
@@ -79,17 +81,20 @@ public abstract class SharedScp106System : EntitySystem
             return;
         }
         var pos = Transform(uid).Coordinates;
-        var scp106Phantom = Spawn("Scp106Phantom", pos);
-
-        if (_mindSystem.TryGetMind(uid, out var mindId, out var mindComponent))
+        if (_serverNetManager.IsServer)
         {
-            _mindSystem.TransferTo(mindId, scp106Phantom);
-            component.AmoutOfPhantoms -= 1;
-        }
-        if (!TryComp<Scp106PhantomComponent>(scp106Phantom, out var scp106PhantomComponent))
-            return;
+            var scp106Phantom = Spawn("Scp106Phantom", pos);
 
-        scp106PhantomComponent.Scp106BodyUid = uid;
+            if (_mindSystem.TryGetMind(uid, out var mindId, out var mindComponent))
+            {
+                _mindSystem.TransferTo(mindId, scp106Phantom);
+                component.AmoutOfPhantoms -= 1;
+            }
+            if (!TryComp<Scp106PhantomComponent>(scp106Phantom, out var scp106PhantomComponent))
+                return;
+
+            scp106PhantomComponent.Scp106BodyUid = uid;
+        }
     }
 
 	private void OnBackroomsAction(Entity<Scp106Component> ent, ref Scp106BackroomsAction args)
