@@ -224,3 +224,6 @@
     actions:
     - Scp106BackroomsAction
     - Scp106RandomTeleportAction
+    - Scp106BecomePhantom
+  - type: TTS
+    voice: HearthstoneSotis

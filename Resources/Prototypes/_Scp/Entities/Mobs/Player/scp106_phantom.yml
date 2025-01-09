@@ -1,0 +1,56 @@
+- type: entity
+  id: Scp106Phantom
+  parent: BaseMob
+  name: SCP-106 Phantom
+  components:
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Damageable
+    damageContainer: Biological
+  - type: HealthExaminable
+    examinableTypes:
+    - Blunt
+    - Slash
+    - Piercing
+    - Heat
+    - Shock
+    - Cold
+    - Caustic
+  - type: FlashImmunity
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/scp-106.rsi
+    color: "#fff8"
+    layers:
+    - map: [ "base" ]
+      state: 106
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - SmallMobMask
+        layer:
+        - MobLayer
+  - type: Scp106Phantom
+  - type: ActionGrant
+    actions:
+    - Scp106Reverse
+    - Scp106LeavePhantom

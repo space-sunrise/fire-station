@@ -21,3 +21,42 @@
     itemIconStyle: BigAction
     useDelay: 360
     # TODO: ICON
+
+- type: entity
+  id: Scp106BecomePhantom
+  name: Стать фантомом.
+  description: "Войдите в новое воплощение чтобы найти себе раба!"
+  components:
+  - type: InstantAction
+    event: !type:Scp106BecomePhantomAction
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 60
+    # TODO: ICON
+
+- type: entity
+  id: Scp106Reverse
+  name: Реверсия
+  description: "Поменяйтесь местами с мертвецом!"
+  components:
+  - type: EntityTargetAction
+    event: !type:Scp106ReverseAction
+    canTargetSelf: false
+    itemIconStyle: BigAction
+    useDelay: 60
+    whitelist:
+      components:
+      - HumanoidAppearance
+    # TODO: ICON
+
+- type: entity
+  id: Scp106LeavePhantom
+  name: Покинуть фантом.
+  description: "Уничтожает фантома, возвращая вас в бренное тело."
+  components:
+  - type: InstantAction
+    event: !type:Scp106LeavePhantomAction
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 60
+    # TODO: ICON

@@ -7,6 +7,8 @@ using Content.Server.Station.Components;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Systems;
 using Content.Shared.Humanoid;
+using Content.Shared.Mind;
+using Content.Shared.Mobs;
 using Content.Shared.Random.Helpers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Collections;
@@ -23,6 +25,7 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly MapSystem _map = default!;
+    [Dependency] private readonly SharedMindSystem _mindSystem = default!;
 
     public override void Initialize()
     {
@@ -31,6 +34,21 @@ public sealed class Scp106System : SharedScp106System
         SubscribeLocalEvent<Scp106Component, MapInitEvent>(OnMapInit);
 
         SubscribeLocalEvent((Entity<Scp106BackRoomMapComponent> _, ref AttemptGatewayOpenEvent args) => args.Cancelled = true);
+
+        SubscribeLocalEvent<Scp106PhantomComponent, MobStateChangedEvent>(OnMobStateChangedEvent);
+        SubscribeLocalEvent<Scp106PhantomComponent, ComponentShutdown>(OnComponentShutdown);
+    }
+
+    private void OnComponentShutdown(EntityUid uid, Scp106PhantomComponent component, ComponentShutdown args)
+    {
+        _mindSystem.TryGetMind(uid, out var mindId, out var mindComponent);
+        _mindSystem.TransferTo(mindId, component.Scp106BodyUid);
+    }
+
+    private void OnMobStateChangedEvent(EntityUid uid, Scp106PhantomComponent component, MobStateChangedEvent args)
+    {
+        if (args.NewMobState == MobState.Dead)
+            RemComp<Scp106PhantomComponent>(uid);
     }
 
     private void OnMapInit(Entity<Scp106Component> ent, ref MapInitEvent args)
@@ -183,6 +201,24 @@ public sealed class Scp106System : SharedScp106System
         }
 
         return found;
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = AllEntityQuery<Scp106Component>();
+
+        while(query.MoveNext(out var uid, out var comp))
+        {
+            comp.Accumulator += frameTime;
+
+            if (comp.Accumulator < 180)
+                continue;
+
+            comp.Accumulator -= 180;
+            comp.AmoutOfPhantoms += 1;
+        }
     }
 
 }

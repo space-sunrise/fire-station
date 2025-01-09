@@ -10,4 +10,8 @@ public sealed partial class Scp106Component : Component
     /// TODO: Возможно переместить в <see cref="ScpComponent"/>
     /// </summary>
     [DataField] public bool IsContained;
+
+    [DataField] public int AmoutOfPhantoms = 3;
+
+    public float Accumulator = 0;
 }
