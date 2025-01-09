@@ -2,7 +2,7 @@
 - type: species
   id: HumanoidXeno
   name: species-name-xeno
-  roundStart: false # Fire edit
+  roundStart: true
   prototype: MobHumanoidXeno
   sprites: MobHumanoidXenoSprites
   markingLimits: MobHumanoidXenoMarkingLimits

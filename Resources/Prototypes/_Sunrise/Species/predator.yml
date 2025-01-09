@@ -2,7 +2,7 @@
 - type: species
   id: Predator
   name: species-name-predator
-  roundStart: false # Fire edit
+  roundStart: true
   prototype: MobPredator
   sprites: MobPredatorSprites
   markingLimits: MobPredatorMarkingLimits

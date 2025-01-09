@@ -1,7 +1,7 @@
 - type: species
   id: Tajaran
   name: species-name-tajaran
-  roundStart: false # Fire edit
+  roundStart: true
   prototype: MobTajaran
   sprites: MobTajaranSprites
   markingLimits: MobTajaranMarkingLimits
@@ -15,6 +15,7 @@
   youngAge: 23
   oldAge: 46
   maxAge: 49
+  sponsorOnly: true # Fire-Station
 
 - type: speciesBaseSprites
   id: MobTajaranSprites

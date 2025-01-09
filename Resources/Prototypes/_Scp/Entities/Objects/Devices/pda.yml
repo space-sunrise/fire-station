@@ -1,0 +1,10 @@
+- type: entity
+  parent: BasePDA
+  id: ClassDPDA
+  name: class D PDA
+  description: Why isn't it gray?
+  components:
+  - type: Pda
+    id: ClassDIDCard
+  - type: PdaBorderColor
+    borderColor: "#717059"

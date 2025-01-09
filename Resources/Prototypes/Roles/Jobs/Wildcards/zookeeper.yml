@@ -6,7 +6,7 @@
   startingGear: ZookeeperGear
   icon: "JobIconZookeeper"
   supervisors: job-supervisors-hop
-  setPreference: false # Fire added
+  setPreference: true
   access:
   - Service
   - Maintenance

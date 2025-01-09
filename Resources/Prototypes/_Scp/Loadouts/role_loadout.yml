@@ -1,0 +1,8 @@
+- type: roleLoadout
+  id: JobClassD
+  groups:
+  # Sunrise-start
+  - Bra
+  - Pants
+  - Socks
+  # Sunrise-end

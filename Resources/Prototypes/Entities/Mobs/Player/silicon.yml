@@ -72,7 +72,7 @@
     canShuttle: false
     title: comms-console-announcement-title-station-ai
     color: "#5ed7aa"
-    announceVoice: PortalGlados # Sunrise-Edit
+    announceVoice: SCP079 # Fire-Edit
     sound: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-Edit
   - type: HolographicAvatar
     layerData:

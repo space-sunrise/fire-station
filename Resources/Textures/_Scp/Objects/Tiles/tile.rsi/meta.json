@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "Sprited by discord: odlieerr",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "blue"
+    },
+    {
+      "name": "checker-dark"
+    },
+    {
+      "name": "checker-light"
+    },
+    {
+      "name": "dark"
+    },
+    {
+      "name": "green"
+    },
+    {
+      "name": "steel"
+    },
+    {
+      "name": "white"
+    }
+  ]
+}

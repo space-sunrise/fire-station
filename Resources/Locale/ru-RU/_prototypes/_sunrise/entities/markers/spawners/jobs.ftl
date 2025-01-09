@@ -1,6 +1,6 @@
 ent-SpawnPointMagistrat = магистрат
     .desc = { ent-SpawnPointJobBase.desc }
-ent-SpawnPointNtrep = представитель NT
+ent-SpawnPointNtrep = представитель О4
     .desc = { ent-SpawnPointJobBase.desc }
 ent-SpawnPointBrigmedic = бригмедик
     .desc = { ent-SpawnPointJobBase.desc }

@@ -1,7 +1,7 @@
 - type: species
   id: Demon
   name: species-name-demon
-  roundStart: false # Fire edit
+  roundStart: true
   prototype: MobDemon
   sprites: MobDemonSprites
   defaultSkinTone: "#34a223"
@@ -13,6 +13,7 @@
   maleLastNames: names_last_male
   femaleLastNames: names_last_female
   naming: firstlast
+  sponsorOnly: true # Fire-Station
 
 - type: speciesBaseSprites
   id: MobDemonSprites

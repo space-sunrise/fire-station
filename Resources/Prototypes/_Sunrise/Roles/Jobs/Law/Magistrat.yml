@@ -11,7 +11,7 @@
   icon: "JobIconMagistrat"
   supervisors: job-supervisors-centcom
   canBeAntag: false
-  setPreference: false # Fire edit
+  setPreference: true
   radioBold: true
   displayWeight: 75
   access:

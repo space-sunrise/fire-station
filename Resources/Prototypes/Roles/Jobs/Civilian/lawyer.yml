@@ -10,7 +10,7 @@
   icon: "JobIconLawyer"
   canBeAntag: false
   supervisors: job-supervisors-magistrate
-  setPreference: false # Fire added
+  setPreference: true
   access:
   - Service
   - Lawyer
