@@ -4,8 +4,9 @@
   name: class D ID card
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
-    - state: idpassenger
+    - state: orange-space-prison
+    - state: idprisoner-space-prison
   - type: PresetIdCard
     job: ClassD

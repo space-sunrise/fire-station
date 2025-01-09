@@ -16,7 +16,7 @@
   icon: JobIconBlueShield
   supervisors: job-supervisors-centcom
   canBeAntag: false
-  setPreference: true
+  setPreference: false # Fire added
   access:
     - Command
     - Bar

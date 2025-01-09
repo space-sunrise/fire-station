@@ -1,7 +1,7 @@
 - type: species
   id: Vox
   name: species-name-vox
-  roundStart: true
+  roundStart: false # Fire edit
   prototype: MobVox
   sprites: MobVoxSprites
   markingLimits: MobVoxMarkingLimits
@@ -13,7 +13,6 @@
   naming: First
   sexes:
   - Unsexed
-  sponsorOnly: true # Fire-Station
 
 - type: speciesBaseSprites
   id: MobVoxSprites

@@ -1,7 +1,7 @@
 - type: species
   id: Diona
   name: species-name-diona
-  roundStart: true
+  roundStart: false # Fire edit
   prototype: MobDiona
   sprites: MobDionaSprites
   defaultSkinTone: "#cdb369"
@@ -13,7 +13,6 @@
   maleLastNames: DionaLast # Russian-LastnameGender
   femaleLastNames: DionaLast # Russian-LastnameGender
   naming: TheFirstofLast
-  sponsorOnly: true # Fire-Station
 
 - type: speciesBaseSprites
   id: MobDionaSprites

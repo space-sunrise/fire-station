@@ -1,7 +1,7 @@
 - type: species
   id: Arachnid
   name: species-name-arachnid
-  roundStart: true
+  roundStart: false # Fire edit
   prototype: MobArachnid
   sprites: MobArachnidSprites
   defaultSkinTone: "#385878"
@@ -12,7 +12,6 @@
   femaleFirstNames: names_arachnid_first
   maleLastNames: names_arachnid_last # Russian-LastnameGender
   femaleLastNames: names_arachnid_last # Russian-LastnameGender
-  sponsorOnly: true # Fire-Station
   # Sunrise-Edit
   #sexes:
   #- Unsexed
