@@ -81,20 +81,21 @@ public abstract class SharedScp106System : EntitySystem
             return;
         }
         var pos = Transform(uid).Coordinates;
-        if (_serverNetManager.IsServer)
+
+        if (!_serverNetManager.IsServer)
+            return;
+
+        var scp106Phantom = Spawn("Scp106Phantom", pos);
+
+        if (_mindSystem.TryGetMind(uid, out var mindId, out var mindComponent))
         {
-            var scp106Phantom = Spawn("Scp106Phantom", pos);
-
-            if (_mindSystem.TryGetMind(uid, out var mindId, out var mindComponent))
-            {
-                _mindSystem.TransferTo(mindId, scp106Phantom);
-                component.AmoutOfPhantoms -= 1;
-            }
-            if (!TryComp<Scp106PhantomComponent>(scp106Phantom, out var scp106PhantomComponent))
-                return;
-
-            scp106PhantomComponent.Scp106BodyUid = uid;
+            _mindSystem.TransferTo(mindId, scp106Phantom);
+            component.AmoutOfPhantoms -= 1;
         }
+        if (!TryComp<Scp106PhantomComponent>(scp106Phantom, out var scp106PhantomComponent))
+            return;
+
+        scp106PhantomComponent.Scp106BodyUid = uid;
     }
 
 	private void OnBackroomsAction(Entity<Scp106Component> ent, ref Scp106BackroomsAction args)
