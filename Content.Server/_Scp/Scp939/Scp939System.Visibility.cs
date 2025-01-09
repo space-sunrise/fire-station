@@ -6,7 +6,7 @@ using Content.Shared.Item;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
-using Content.Shared.Weapons.Ranged.Events;
+using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Scp939;
@@ -23,7 +23,7 @@ public sealed partial class Scp939System
         SubscribeLocalEvent<Scp939VisibilityComponent, EntitySpokeEvent>(OnTargetSpoke);
         SubscribeLocalEvent<Scp939VisibilityComponent, EmoteEvent>(OnTargetEmote);
         SubscribeLocalEvent<Scp939VisibilityComponent, DownedEvent>(OnDown);
-        SubscribeLocalEvent<ItemComponent, HitscanAmmoShotEvent>(OnShot);
+        SubscribeLocalEvent<ItemComponent, GunShotEvent>(OnShot);
 
         SubscribeLocalEvent<Scp939Component, EntityFlashedEvent>(OnFlash);
     }
@@ -50,12 +50,12 @@ public sealed partial class Scp939System
         MobDidSomething(ent);
     }
 
-    private void OnShot(Entity<ItemComponent> ent, ref HitscanAmmoShotEvent args)
+    private void OnShot(Entity<ItemComponent> ent, ref GunShotEvent args)
     {
-        if (!TryComp<Scp939VisibilityComponent>(args.Shooter, out var scp939VisibilityComponent))
+        if (!TryComp<Scp939VisibilityComponent>(args.User, out var scp939VisibilityComponent))
             return;
 
-        MobDidSomething((args.Shooter.Value, scp939VisibilityComponent));
+        MobDidSomething((args.User, scp939VisibilityComponent));
     }
 
     private void OnMobStartup(Entity<MobStateComponent> ent, ref ComponentStartup args)
