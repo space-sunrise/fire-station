@@ -19,6 +19,17 @@
   - type: MultiHandedItem
   - type: Item
     size: Huge
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 80
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
   - type: ReplacementAccent
     accent: mouse
   - type: GhostRole
