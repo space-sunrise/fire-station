@@ -1,4 +1,5 @@
-﻿using Robust.Shared.Audio.Systems;
+﻿using Content.Shared.Mind.Components;
+using Robust.Server.Audio;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 
@@ -8,7 +9,7 @@ public sealed class ClassDAppearanceSystem : EntitySystem
 {
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly SharedAudioSystem _sharedAudioSystem = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -20,7 +21,7 @@ public sealed class ClassDAppearanceSystem : EntitySystem
 
     private void OnPlayerAttachedEvent(Entity<ClassDAppearanceComponent> ent, ref PlayerAttachedEvent args)
     {
-        _sharedAudioSystem.PlayEntity(ent.Comp.ClassDSpawnSound, ent, ent);
+        _audio.PlayEntity(ent.Comp.ClassDSpawnSound, ent, ent);
     }
 
     private void OnMapInit(Entity<ClassDAppearanceComponent> ent, ref MapInitEvent args)
