@@ -80,22 +80,25 @@ public abstract class SharedScp106System : EntitySystem
             _popup.PopupEntity($"У вас закончились фантомы!\nПодождите {Math.Floor(time)} сек", uid, uid, PopupType.Large);
             return;
         }
-        var pos = Transform(uid).Coordinates;
 
         if (!_serverNetManager.IsServer)
             return;
 
+        var pos = Transform(uid).Coordinates;
+
         var scp106Phantom = Spawn("Scp106Phantom", pos);
 
-        if (_mindSystem.TryGetMind(uid, out var mindId, out var mindComponent))
+        if (_mindSystem.TryGetMind(uid, out var mindId, out _))
         {
             _mindSystem.TransferTo(mindId, scp106Phantom);
             component.AmoutOfPhantoms -= 1;
+            Dirty(uid, component);
         }
         if (!TryComp<Scp106PhantomComponent>(scp106Phantom, out var scp106PhantomComponent))
             return;
 
         scp106PhantomComponent.Scp106BodyUid = uid;
+        Dirty(uid, component);
     }
 
 	private void OnBackroomsAction(Entity<Scp106Component> ent, ref Scp106BackroomsAction args)

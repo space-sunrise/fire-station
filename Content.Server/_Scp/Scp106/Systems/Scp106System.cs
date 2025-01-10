@@ -218,6 +218,7 @@ public sealed class Scp106System : SharedScp106System
 
             comp.Accumulator -= 180;
             comp.AmoutOfPhantoms += 1;
+            Dirty(uid, comp);
         }
     }
 

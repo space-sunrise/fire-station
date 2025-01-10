@@ -2,7 +2,7 @@
 
 namespace Content.Shared._Scp.Scp106.Components;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp106Component : Component
 {
     /// <summary>
@@ -11,7 +11,9 @@ public sealed partial class Scp106Component : Component
     /// </summary>
     [DataField] public bool IsContained;
 
-    [DataField] public int AmoutOfPhantoms = 3;
+    [DataField, AutoNetworkedField]
+    public int AmoutOfPhantoms = 0;
 
+    [AutoNetworkedField]
     public float Accumulator = 0;
 }
