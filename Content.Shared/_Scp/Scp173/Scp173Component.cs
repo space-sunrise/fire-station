@@ -37,7 +37,7 @@ public sealed partial class Scp173Component : Component
     public SoundSpecifier NeckSnapSound = new SoundCollectionSpecifier("Scp173NeckSnap");
 
     [DataField]
-    public SoundSpecifier TeleportationSound = new SoundCollectionSpecifier("FootstepSCP173");
+    public SoundSpecifier TeleportationSound = new SoundCollectionSpecifier("FootstepScp173Classic");
 
     [DataField, ViewVariables]
     public DamageSpecifier? NeckSnapDamage;

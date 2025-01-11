@@ -142,7 +142,7 @@
     - Scp173FastMovement
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: FootstepSCP173
+      collection: FootstepScp173Classic
   - type: FootprintEmitter
     walkStepInterval: 0.3
     leftBareFootState:

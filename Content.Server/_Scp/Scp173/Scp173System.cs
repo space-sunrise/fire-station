@@ -63,6 +63,7 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
+    private readonly SoundSpecifier _clogSound = new SoundPathSpecifier("/Audio/_Scp/Scp173/clog.ogg");
     private const float ToggleDoorStuffChance = 0.2f;
 
     public override void Initialize()
@@ -226,7 +227,9 @@ public sealed class Scp173System : SharedScp173System
 
         var tempSol = new Solution();
         tempSol.AddReagent(ent.Comp.Reagent, 25);
-        _puddle.TrySpillAt(coords, tempSol, out _);
+        _puddle.TrySpillAt(coords, tempSol, out _, false);
+
+        _audio.PlayPvs(_clogSound, ent);
 
         FixedPoint2 total = 0;
         var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, 5).ToList();
