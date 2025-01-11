@@ -1,0 +1,37 @@
+﻿- type: soundCollection
+  id: FireAmbienceGeneral
+  files:
+  - /Audio/_Scp/Ambient/General/ost1.ogg
+  - /Audio/_Scp/Ambient/General/ost2.ogg
+  - /Audio/_Scp/Ambient/General/ost3.ogg
+  - /Audio/_Scp/Ambient/General/ost4.ogg
+  - /Audio/_Scp/Ambient/General/ost5.ogg
+  - /Audio/_Scp/Ambient/General/ost6.ogg
+  - /Audio/_Scp/Ambient/General/ost7.ogg
+  - /Audio/_Scp/Ambient/General/ost8.ogg
+  - /Audio/_Scp/Ambient/General/ost9.ogg
+
+- type: soundCollection
+  id: FireAmbienceMedical
+  files:
+  - /Audio/_Scp/Ambient/Medical/ost1.ogg
+  - /Audio/_Scp/Ambient/Medical/ost2.ogg
+
+- type: soundCollection
+  id: FireAmbienceShuttle
+  files:
+  - /Audio/_Scp/Ambient/Shuttle/ost1.ogg
+  - /Audio/_Scp/Ambient/Shuttle/ost2.ogg
+
+- type: soundCollection
+  id: FireAmbienceScp106Dimension
+  files:
+  - /Audio/_Scp/Ambient/PocketDimension/ost1.ogg
+  - /Audio/_Scp/Ambient/PocketDimension/ost2.ogg
+  - /Audio/_Scp/Ambient/PocketDimension/ost3.ogg
+
+- type: soundCollection
+  id: FireAmbienceScp173
+  files:
+  - /Audio/_Scp/Ambient/scp173.ogg
+

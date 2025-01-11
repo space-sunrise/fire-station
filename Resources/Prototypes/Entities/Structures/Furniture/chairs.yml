@@ -196,6 +196,9 @@
   - type: Construction
     graph: Seat
     node: chairPilotSeat
+  - type: Tag # Fire
+    tags:
+    - ShuttleChair
 
 - type: entity
   name: wooden chair
