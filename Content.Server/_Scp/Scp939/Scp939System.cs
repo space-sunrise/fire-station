@@ -6,7 +6,9 @@ using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage;
 using Content.Shared.Mobs;
 using Content.Shared.StatusEffect;
+using Robust.Server.Audio;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 
 namespace Content.Server._Scp.Scp939;
 
@@ -18,6 +20,9 @@ public sealed partial class Scp939System : EntitySystem
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
+
+    private readonly SoundSpecifier _critSound = new SoundPathSpecifier("/Audio/_Scp/Scp939/crit.ogg");
 
     public override void Initialize()
     {
@@ -39,6 +44,7 @@ public sealed partial class Scp939System : EntitySystem
             return;
 
         TrySleep(ent, 360f);
+        _audio.PlayPvs(_critSound, ent);
     }
 
     private void OnSleepChanged(Entity<Scp939Component> ent, ref SleepStateChangedEvent args)

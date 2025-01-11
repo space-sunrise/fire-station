@@ -1,0 +1,14 @@
+﻿- type: soundCollection
+  id: FootstepScp939
+  files:
+  - /Audio/_Scp/Scp939/Steps/step1.ogg
+  - /Audio/_Scp/Scp939/Steps/step2.ogg
+  - /Audio/_Scp/Scp939/Steps/step3.ogg
+  - /Audio/_Scp/Scp939/Steps/step4.ogg
+  - /Audio/_Scp/Scp939/Steps/step5.ogg
+
+- type: soundCollection
+  id: HitScp939
+  files:
+  - /Audio/_Scp/Scp939/Hit/hit1.ogg
+  - /Audio/_Scp/Scp939/Hit/hit2.ogg
