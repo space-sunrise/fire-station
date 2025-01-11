@@ -51,6 +51,12 @@
   - type: Speech
   - type: TTS
     voice: SCP049
+  - type: AmbientSound
+    enabled: true
+    volume: -2
+    range: 3
+    sound:
+      path: /Audio/_Scp/Scp049/breath.ogg
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: FootstepBoots
+      collection: FootstepScp049

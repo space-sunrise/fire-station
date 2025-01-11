@@ -1,0 +1,6 @@
+﻿- type: soundCollection
+  id: FootstepScp049
+  files:
+  - /Audio/_Scp/Scp049/Steps/step1.ogg
+  - /Audio/_Scp/Scp049/Steps/step2.ogg
+  - /Audio/_Scp/Scp049/Steps/step3.ogg
