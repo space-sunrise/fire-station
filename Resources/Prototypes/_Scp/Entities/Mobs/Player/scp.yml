@@ -227,3 +227,27 @@
     - Scp106BecomePhantom
   - type: TTS
     voice: HearthstoneSotis
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepScp106
+  - type: EmitSoundRandomly
+    sound:
+      collection: IdleScp106
+      params:
+        maxDistance: 6
+  - type: RangedDamageSound
+    soundGroups:
+      Brute:
+        collection:
+          HurtScp106
+      Burn:
+        collection:
+          HurtScp106
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection:
+          HurtScp106
+      Burn:
+        collection:
+          HurtScp106

@@ -11,6 +11,8 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Random.Helpers;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -26,6 +28,9 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+
+    private readonly SoundSpecifier _sendBackroomsSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/onbackrooms.ogg");
 
     public override void Initialize()
     {
@@ -80,6 +85,8 @@ public sealed class Scp106System : SharedScp106System
         var mark = await GetTransferMark();
         _transform.SetCoordinates(target, mark);
         _transform.AttachToGridOrMap(target);
+
+        _audio.PlayEntity(_sendBackroomsSound, target, target);
     }
 
     public override void SendToStation(EntityUid target)
