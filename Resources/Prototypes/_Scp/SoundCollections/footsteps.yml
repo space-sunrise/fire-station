@@ -21,3 +21,11 @@
   - /Audio/_Scp/Effects/Footsteps/Stone/step6.ogg
   - /Audio/_Scp/Effects/Footsteps/Stone/step7.ogg
   - /Audio/_Scp/Effects/Footsteps/Stone/step8.ogg
+
+- type: soundCollection
+  id: FootstepScpSteel
+  files:
+  - /Audio/_Scp/Effects/Footsteps/Steel/step1.ogg
+  - /Audio/_Scp/Effects/Footsteps/Steel/step2.ogg
+  - /Audio/_Scp/Effects/Footsteps/Steel/step3.ogg
+  - /Audio/_Scp/Effects/Footsteps/Steel/step4.ogg
