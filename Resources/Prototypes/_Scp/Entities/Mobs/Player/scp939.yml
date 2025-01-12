@@ -71,3 +71,9 @@
       collection: IdleScp939
       params:
         maxDistance: 6
+  - type: KillGlobalSound
+    sound:
+      collection: DistanceKillScp939
+    originWhitelist:
+      components:
+      - Scp939

@@ -25,3 +25,12 @@
   - /Audio/_Scp/Scp939/Idle/sound8.ogg
   - /Audio/_Scp/Scp939/Idle/sound9.ogg
   - /Audio/_Scp/Scp939/Idle/sound10.ogg
+
+- type: soundCollection
+  id: DistanceKillScp939
+  files:
+  - /Audio/_Scp/Scp939/DistanceKill/sound1.ogg
+  - /Audio/_Scp/Scp939/DistanceKill/sound2.ogg
+  - /Audio/_Scp/Scp939/DistanceKill/sound3.ogg
+  - /Audio/_Scp/Scp939/DistanceKill/sound4.ogg
+  - /Audio/_Scp/Scp939/DistanceKill/sound5.ogg
