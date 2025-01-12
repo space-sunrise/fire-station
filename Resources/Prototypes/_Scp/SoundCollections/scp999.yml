@@ -27,3 +27,14 @@
   - /Audio/_Scp/Scp999/Wall/wall4.ogg
   - /Audio/_Scp/Scp999/Wall/wall5.ogg
   - /Audio/_Scp/Scp999/Wall/wall6.ogg
+
+- type: soundCollection
+  id: IdleScp999
+  files:
+  - /Audio/_Scp/Scp999/Idle/sound1.ogg
+  - /Audio/_Scp/Scp999/Idle/sound2.ogg
+  - /Audio/_Scp/Scp999/Idle/sound3.ogg
+  - /Audio/_Scp/Scp999/Idle/sound4.ogg
+  - /Audio/_Scp/Scp999/Idle/sound5.ogg
+  - /Audio/_Scp/Scp999/Idle/sound6.ogg
+  - /Audio/_Scp/Scp999/Idle/sound7.ogg

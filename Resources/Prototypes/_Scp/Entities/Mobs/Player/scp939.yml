@@ -66,3 +66,8 @@
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepScp939
+  - type: EmitSoundRandomly
+    sound:
+      collection: IdleScp939
+      params:
+        maxDistance: 6

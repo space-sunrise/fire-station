@@ -91,6 +91,11 @@
       Burn:
         collection:
           HurtScp999
+  - type: EmitSoundRandomly
+    sound:
+      collection: IdleScp999
+      params:
+        maxDistance: 6
   - type: Puller
     needsHands: false
   - type: SmileSlime

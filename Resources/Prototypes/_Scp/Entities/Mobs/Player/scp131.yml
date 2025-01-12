@@ -1,13 +1,11 @@
 ﻿- type: entity
   id: Scp131A
   suffix: SCP-131A
-  parent:
-  - SimpleSpaceMobBase
-  - BaseScp
+  parent: BaseScp
   components:
   - type: Sprite
+    drawdepth: SmallMobs
     sprite: _Scp/Mobs/SCP-131.rsi
-    drawdepth: Mobs
     state: SCP-131A
   - type: Muted
   - type: MovementSpeedModifier
@@ -32,6 +30,14 @@
         - SmallMobLayer
   - type: ReplacementAccent
     accent: mouse
+  - type: EmitSoundRandomly
+    sound:
+      collection: IdleScp131
+      params:
+        maxDistance: 6
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepBorg
   - type: GhostRole
     makeSentient: true
     name: ghost-role-information-scp131-name

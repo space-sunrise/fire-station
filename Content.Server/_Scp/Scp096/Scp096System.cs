@@ -1,10 +1,12 @@
-﻿using Content.Server.Defusable.WireActions;
+﻿using Content.Server._Scp.Misc.EmitSoundRandomly;
+using Content.Server.Defusable.WireActions;
 using Content.Server.Doors.Systems;
 using Content.Server.Power;
 using Content.Server.Storage.Components;
 using Content.Server.Storage.EntitySystems;
 using Content.Server.Wires;
 using Content.Shared._Scp.Scp096;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Doors.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lock;
@@ -31,7 +33,15 @@ public sealed partial class Scp096System : SharedScp096System
     {
         base.Initialize();
 
+        SubscribeLocalEvent<Scp096Component, BeforeRandomlyEmittingSoundEvent>(OnEmitSoundRandomly);
+
         InitTargets();
+    }
+
+    private void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
+    {
+        if (ent.Comp.InRageMode || HasComp<SleepingComponent>(ent))
+            args.Cancel();
     }
 
     protected override void OnAttackAttempt(Entity<Scp096Component> ent, ref AttackAttemptEvent args)
