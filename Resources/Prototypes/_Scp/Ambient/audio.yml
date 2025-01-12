@@ -14,6 +14,7 @@
     params:
       volume: -12
     collection: FireAmbienceShuttle
+  fadeIn: true
   rules: NearShuttle
   priority: 2
 

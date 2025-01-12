@@ -15,6 +15,7 @@
     params:
       volume: -12
     collection: FireAmbienceMedical # Fire
+  fadeIn: true
   interruptable: true
   rules: NearMedical
   priority: 3
@@ -39,6 +40,7 @@
     params:
       volume: -12
     collection: FireAmbienceGeneral # Fire
+  fadeIn: true
   interruptable: true
   rules: AlwaysTrue
 
