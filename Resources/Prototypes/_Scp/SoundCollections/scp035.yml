@@ -1,0 +1,5 @@
+﻿- type: soundCollection
+  id: EquipScp035
+  files:
+  - /Audio/_Scp/Scp035/Equip/sound1.ogg
+  - /Audio/_Scp/Scp035/Equip/sound2.ogg
