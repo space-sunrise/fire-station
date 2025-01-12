@@ -3,14 +3,13 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Pulling.Components;
-using Content.Shared.Nutrition;
 using Content.Shared.Tag;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp999;
@@ -25,6 +24,9 @@ public sealed class Scp999System : SharedScp999System
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private const string WallFixtureId = "fix2";
+
+    private readonly SoundSpecifier _wallSound = new SoundCollectionSpecifier("WallTransformScp999");
+    private readonly SoundSpecifier _sleepSound = new SoundPathSpecifier("/Audio/_Scp/Scp999/sleep.ogg");
 
     public override void Initialize()
     {
@@ -90,6 +92,8 @@ public sealed class Scp999System : SharedScp999System
 
                 RemComp<PullableComponent>(entity);
 
+                _audio.PlayPvs(_wallSound, entity);
+
                 break;
 
             // remove buffs
@@ -134,6 +138,7 @@ public sealed class Scp999System : SharedScp999System
         switch (entity.Comp.CurrentState)
         {
             // add buffs
+            // TODO: РЕАЛЬНЫЙ сон, а не вот это параша
             case Scp999States.Default:
                 ev = new Scp999RestEvent(netEntity, entity.Comp.States[Scp999States.Rest]);
 
@@ -143,6 +148,8 @@ public sealed class Scp999System : SharedScp999System
                 EnsureComp<BlockMovementComponent>(entity);
                 EnsureComp<NoRotateOnInteractComponent>(entity);
                 EnsureComp<NoRotateOnMoveComponent>(entity);
+
+                _audio.PlayPvs(_sleepSound, entity);
 
                 break;
 

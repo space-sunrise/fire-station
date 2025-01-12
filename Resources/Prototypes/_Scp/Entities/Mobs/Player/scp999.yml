@@ -29,7 +29,6 @@
         Base: default
       Dead:
         Base: dead
-  - type: Muted
   - type: Fixtures
     fixtures:
       fix1:
@@ -64,29 +63,40 @@
         volume: 3
   - type: Damageable
     damageModifierSet: SCP-999
-  - type: Bloodstream
-    bloodReagent: Slime  # TODO: сделай кастомный реагент в крови
-    bloodlossDamage:
-      types:
-        Bloodloss:
-          0.5
-    bloodlossHealDamage:
-      types:
-        Bloodloss:
-          -0.25
   - type: Body
     prototype: Slimes
     requiredLegs: 1
   - type: InteractionPopup
     interactDelay: 0.5
     interactSuccessSpawn: EffectHearts
-    interactSuccessSound: /Audio/Animals/cat_meow.ogg
+    interactSuccessSound:
+      collection: HappyScp999
     successChance: 1
+  - type: SleepEmitSound
+    snore: /Audio/Voice/Misc/silly_snore.ogg
+    interval: 10
+  - type: RangedDamageSound
+    soundGroups:
+      Brute:
+        collection:
+          HurtScp999
+      Burn:
+        collection:
+          HurtScp999
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection:
+          HurtScp999
+      Burn:
+        collection:
+          HurtScp999
   - type: Puller
     needsHands: false
   - type: SmileSlime
     action: Scp999Affection
-    soundSpecifier: /Audio/Animals/cat_meow.ogg
+    soundSpecifier:
+      collection: HappyScp999
     actionTime: 5
     affectionPopupText: "smile-affection-popup"
     damageSpecifier:
