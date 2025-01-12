@@ -6,12 +6,6 @@
   - /Audio/_Scp/Scp106/Steps/step3.ogg
 
 - type: soundCollection
-  id: IdleScp106
-  files:
-  - /Audio/_Scp/Scp106/Idle/sound1.ogg
-  - /Audio/_Scp/Scp106/Idle/sound2.ogg
-
-- type: soundCollection
   id: HurtScp106
   files:
   - /Audio/_Scp/Scp106/Hurt/hurt1.ogg

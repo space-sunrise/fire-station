@@ -180,6 +180,7 @@
     altDisarm: false
     angle: 0
     animation: WeaponArcPunch
+    soundHit: /Audio/_Scp/Scp106/hit.ogg
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2
@@ -230,11 +231,6 @@
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepScp106
-  - type: EmitSoundRandomly
-    sound:
-      collection: IdleScp106
-      params:
-        maxDistance: 6
   - type: RangedDamageSound
     soundGroups:
       Brute:
@@ -257,3 +253,9 @@
     originWhitelist:
       components:
       - Scp106
+  - type: AmbientSound
+    enabled: true
+    volume: -10
+    range: 3
+    sound:
+      path: /Audio/_Scp/Scp106/breath.ogg
