@@ -22,6 +22,7 @@
   canBeAntag: false
   displayWeight: 60
   access:
+  - Research # FireStation Edit
   - Security
   - Brig
   - Maintenance

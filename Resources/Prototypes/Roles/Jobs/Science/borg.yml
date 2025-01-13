@@ -6,8 +6,8 @@
   playTimeTracker: JobStationAi
   requirements:
   - !type:DepartmentTimeRequirement
-    department: Silicon
-    time: 54000  # 15 hrs
+    department: Command
+    time: 36000 # 10 hours FireStation Edit
   canBeAntag: false
   icon: JobIconStationAi
   supervisors: job-supervisors-rd

@@ -8,9 +8,12 @@
   metabolisms:
     Medicine:
       effects:
-      - !type:Rejuvenate
       - !type:PopupMessage
         visualType: LargeCaution
         messages: ["reagent-effect-scp500"]
         probability: 1
         type: Local
+      - !type:Rejuvenate
+        conditions:
+        - !type:ReagentThreshold
+          min: 0.5
