@@ -1,1 +1,2 @@
 ﻿scp106-return-to-containment = Внимание персоналу! Особые условия содержания SCP-106 успешно восстановлены.
+store-currency-display-life-essence = Эссенция жизни

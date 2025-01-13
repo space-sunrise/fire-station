@@ -7,8 +7,10 @@
     event: !type:Scp106BackroomsAction
     raiseOnUser: true
     itemIconStyle: BigAction
-    useDelay: 360
-    # TODO: ICON
+    useDelay: 4
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_teleport
 
 - type: entity
   id: Scp106RandomTeleportAction
@@ -19,8 +21,10 @@
     event: !type:Scp106RandomTeleportAction
     raiseOnUser: true
     itemIconStyle: BigAction
-    useDelay: 360
-    # TODO: ICON
+    useDelay: 4
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_teleport
 
 - type: entity
   id: Scp106BecomePhantom
@@ -31,8 +35,10 @@
     event: !type:Scp106BecomePhantomAction
     raiseOnUser: true
     itemIconStyle: BigAction
-    useDelay: 60
-    # TODO: ICON
+    useDelay: 1
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_phantom
 
 - type: entity
   id: Scp106Reverse
@@ -47,7 +53,9 @@
     whitelist:
       components:
       - HumanoidAppearance
-    # TODO: ICON
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_teleport
 
 - type: entity
   id: Scp106LeavePhantom
@@ -59,4 +67,32 @@
     raiseOnUser: true
     itemIconStyle: BigAction
     useDelay: 60
-    # TODO: ICON
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_phantom
+
+- type: entity
+  id: ActionScp106Shop
+  name: Теневой магазин
+  description: "..."
+  components:
+  - type: InstantAction
+    event: !type:Scp106ShopAction
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_shop
+
+- type: entity
+  id: BecomeCorporeaPhantomAction
+  name: Бесплотный фантом
+  description: "Наблюдай"
+  components:
+    - type: InstantAction
+      event: !type:Scp106BecomeCorporeaPhantomAction
+      itemIconStyle: BigAction
+      useDelay: 20
+      icon:
+        sprite: _Scp/Actions/scp106-actions.rsi
+        state: scp106_teleport

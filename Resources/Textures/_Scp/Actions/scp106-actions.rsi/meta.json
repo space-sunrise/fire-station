@@ -1,0 +1,20 @@
+﻿{
+    "version": 1,
+    "license": "SUNRISE",
+    "copyright": "CLA",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "scp106_phantom"
+        },
+        {
+            "name": "scp106_shop"
+        },
+        {
+            "name": "scp106_teleport"
+        }
+    ]
+}

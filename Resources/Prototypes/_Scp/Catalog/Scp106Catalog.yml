@@ -1,0 +1,27 @@
+- type: listing
+  id: Scp106Phantom
+  name: Фантом жизни
+  description: Ваше очередное воплощение.
+  productEvent: !type:Scp106BoughtPhantomAction
+  categories:
+  - Scp106Abilities
+  cost:
+    LifeEssence: 10
+  raiseProductEventOnUser: true
+  icon:
+    sprite: _Scp/Actions/scp106-actions.rsi
+    state: scp106_phantom
+
+- type: listing
+  id: Scp106CorporealPhantom
+  name: Фантом телепортации
+  description: Ваше очередное воплощение.
+  productEvent: !type:Scp106BoughtCorporealPhantomAction
+  categories:
+  - Scp106Abilities
+  cost:
+    LifeEssence: 1
+  raiseProductEventOnUser: true
+  icon:
+    sprite: _Scp/Actions/scp106-actions.rsi
+    state: scp106_phantom

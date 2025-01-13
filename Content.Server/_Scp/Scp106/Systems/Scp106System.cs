@@ -4,12 +4,16 @@ using System.Threading.Tasks;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Gateway.Systems;
 using Content.Server.Station.Components;
+using Content.Server.Store.Systems;
+using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Systems;
+using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Random.Helpers;
+using Content.Shared.Store.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
@@ -26,6 +30,8 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly MapSystem _map = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
+    [Dependency] private readonly StoreSystem _store = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
 
     public override void Initialize()
     {
@@ -36,19 +42,96 @@ public sealed class Scp106System : SharedScp106System
         SubscribeLocalEvent((Entity<Scp106BackRoomMapComponent> _, ref AttemptGatewayOpenEvent args) => args.Cancelled = true);
 
         SubscribeLocalEvent<Scp106PhantomComponent, MobStateChangedEvent>(OnMobStateChangedEvent);
-        SubscribeLocalEvent<Scp106PhantomComponent, ComponentShutdown>(OnComponentShutdown);
+
+        // Store
+        SubscribeLocalEvent<Scp106Component, Scp106ShopAction>(OnShop);
+
+        // Abilities in that store
+        SubscribeLocalEvent<Scp106Component, Scp106BoughtPhantomAction>(OnBoughtPhantom);
+        SubscribeLocalEvent<Scp106Component, Scp106BoughtCorporealPhantomAction>(OnBoughtCorporealPhantom);
     }
 
-    private void OnComponentShutdown(EntityUid uid, Scp106PhantomComponent component, ComponentShutdown args)
+    private void OnBoughtCorporealPhantom(EntityUid uid,
+        Scp106Component component,
+        Scp106BoughtCorporealPhantomAction args)
     {
-        _mindSystem.TryGetMind(uid, out var mindId, out var mindComponent);
-        _mindSystem.TransferTo(mindId, component.Scp106BodyUid);
+        if (!TryComp<Scp106Component>(uid, out var scp106Component))
+            return;
+
+        scp106Component.AmoutOfPhantoms += 1;
+
+        Dirty(uid, component);
+    }
+
+    public override bool PhantomTeleport(Scp106BecomeCorporealPhantomActionEvent args)
+    {
+        if (args.Args.EventTarget == null)
+            return false;
+
+        var phantom = args.Args.EventTarget.Value;
+
+        if (!TryComp<Scp106PhantomComponent>(phantom, out var phantomComponent))
+            return false;
+
+        var scp106 = phantomComponent.Scp106BodyUid;
+
+        var phantomPos = Transform(phantom).Coordinates;
+
+        if (_mindSystem.TryGetMind(phantom, out var mindId, out var _))
+        {
+            if (!TryComp<Scp106PhantomComponent>(phantom, out var _))
+                return false;
+
+            _mindSystem.TransferTo(mindId, scp106);
+
+            if (!TryComp<Scp106Component>(scp106, out var scp106Component))
+                return false;
+
+            scp106Component.AmountOfCorporealPhantoms -= 1;
+
+            Dirty(scp106, scp106Component);
+
+            _appearanceSystem.SetData(scp106, Scp106Visuals.Visuals, Scp106VisualsState.Default);
+
+            _transform.SetCoordinates(scp106, phantomPos);
+
+            EntityManager.DeleteEntity(phantom);
+        }
+
+        return true;
+    }
+
+    private void OnBoughtPhantom(EntityUid uid, Scp106Component component, Scp106BoughtPhantomAction args)
+    {
+        if (!TryComp<Scp106Component>(uid, out var scp106Component))
+            return;
+
+        scp106Component.AmoutOfPhantoms += 1;
+
+        Dirty(uid, scp106Component);
+    }
+
+    private void OnShop(EntityUid uid, Scp106Component component, Scp106ShopAction args)
+    {
+        if (!TryComp<StoreComponent>(uid, out var store))
+            return;
+
+        _store.ToggleUi(uid, uid, store);
     }
 
     private void OnMobStateChangedEvent(EntityUid uid, Scp106PhantomComponent component, MobStateChangedEvent args)
     {
         if (args.NewMobState == MobState.Dead)
-            RemComp<Scp106PhantomComponent>(uid);
+        {
+            if (!TryComp<Scp106PhantomComponent>(uid, out var scp106PhantomComponent))
+                return;
+
+            if (_mindSystem.TryGetMind(uid, out var mindId, out var _))
+            {
+                _mindSystem.TransferTo(mindId, scp106PhantomComponent.Scp106BodyUid);
+                EntityManager.DeleteEntity(uid);
+            }
+        }
     }
 
     private void OnMapInit(Entity<Scp106Component> ent, ref MapInitEvent args)
@@ -207,17 +290,19 @@ public sealed class Scp106System : SharedScp106System
     {
         base.Update(frameTime);
 
-        var query = AllEntityQuery<Scp106Component>();
+        var query = AllEntityQuery<Scp106Component, StoreComponent>();
 
-        while(query.MoveNext(out var uid, out var comp))
+        while(query.MoveNext(out var uid, out var comp, out var store))
         {
             comp.Accumulator += frameTime;
 
-            if (comp.Accumulator < 180)
+            if (comp.Accumulator < 30)
                 continue;
 
-            comp.Accumulator -= 180;
-            comp.AmoutOfPhantoms += 1;
+            comp.Accumulator -= 30;
+
+            _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { "LifeEssence", 1f } }, uid);
+
             Dirty(uid, comp);
         }
     }
