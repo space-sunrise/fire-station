@@ -42,7 +42,6 @@ public abstract class SharedScp106System : EntitySystem
         SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportActionEvent>(OnTeleportDoAfter);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106BecomeCorporealPhantomActionEvent>(OnBecomeCorporealPhantomActionEvent);
 
-
         // Phantom
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseAction>(OnScp106ReverseAction);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106LeavePhantomAction>(OnScp106LeavePhantomAction);

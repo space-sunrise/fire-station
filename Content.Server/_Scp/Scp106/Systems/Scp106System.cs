@@ -55,10 +55,7 @@ public sealed class Scp106System : SharedScp106System
         Scp106Component component,
         Scp106BoughtCorporealPhantomAction args)
     {
-        if (!TryComp<Scp106Component>(uid, out var scp106Component))
-            return;
-
-        scp106Component.AmoutOfPhantoms += 1;
+        component.AmoutOfPhantoms += 1;
 
         Dirty(uid, component);
     }
@@ -103,12 +100,9 @@ public sealed class Scp106System : SharedScp106System
 
     private void OnBoughtPhantom(EntityUid uid, Scp106Component component, Scp106BoughtPhantomAction args)
     {
-        if (!TryComp<Scp106Component>(uid, out var scp106Component))
-            return;
+        component.AmoutOfPhantoms += 1;
 
-        scp106Component.AmoutOfPhantoms += 1;
-
-        Dirty(uid, scp106Component);
+        Dirty(uid, component);
     }
 
     private void OnShop(EntityUid uid, Scp106Component component, Scp106ShopAction args)
