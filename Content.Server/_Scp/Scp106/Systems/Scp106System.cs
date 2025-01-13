@@ -2,7 +2,10 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Atmos.EntitySystems;
+using Content.Server.Chat.Systems;
 using Content.Server.Gateway.Systems;
+using Content.Server.Ghost;
+using Content.Server.Light.Components;
 using Content.Server.Station.Components;
 using Content.Server.Store.Systems;
 using Content.Shared._Scp.Scp106;
@@ -12,7 +15,9 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Random.Helpers;
+using Content.Shared.SSDIndicator;
 using Content.Shared.Store.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Collections;
@@ -32,6 +37,8 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
     [Dependency] private readonly StoreSystem _store = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
+    [Dependency] private readonly EntityLookupSystem _entityLookupSystem = default!;
+    [Dependency] private readonly ChatSystem _chatSystem = default!;
 
     public override void Initialize()
     {
@@ -121,6 +128,7 @@ public sealed class Scp106System : SharedScp106System
             {
                 _mindSystem.TransferTo(mindId, component.Scp106BodyUid);
                 EntityManager.DeleteEntity(uid);
+                Dirty(uid, component);
             }
         }
     }
@@ -281,21 +289,66 @@ public sealed class Scp106System : SharedScp106System
     {
         base.Update(frameTime);
 
-        var query = AllEntityQuery<Scp106Component, StoreComponent>();
+        var queryScp106 = AllEntityQuery<Scp106Component>();
 
-        while(query.MoveNext(out var uid, out var comp, out var store))
+        while(queryScp106.MoveNext(out var scp106Uid, out var scp106Component))
         {
-            comp.Accumulator += frameTime;
+            scp106Component.Accumulator += frameTime;
 
-            if (comp.Accumulator < 30)
+            if (scp106Component.Accumulator < 30)
                 continue;
 
-            comp.Accumulator -= 30;
+            scp106Component.Accumulator -= 30;
 
-            _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { "LifeEssence", 1f } }, uid);
+            _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { "LifeEssence", 1f } }, scp106Uid);
 
-            Dirty(uid, comp);
+            var queryHumans = AllEntityQuery<HumanoidAppearanceComponent, MobStateComponent>();
+
+            scp106Component.HumansInBackrooms = 0;
+
+            while (queryHumans.MoveNext(out var humanUid, out var _, out var mobStateComponent))
+            {
+                if (HasComp<Scp106BackRoomMapComponent>(Transform(humanUid).MapUid)
+                    && mobStateComponent.CurrentState == MobState.Alive
+                    && !HasComp<SSDIndicatorComponent>(humanUid))
+                {
+                    scp106Component.HumansInBackrooms += 1;
+
+                    _store.TryAddCurrency(new Dictionary<string, FixedPoint2>() { { "LifeEssence", 1f } }, scp106Uid);
+                }
+            }
+
+            scp106Component.BackroomsAccumulator += frameTime;
+
+            if (scp106Component.BackroomsAccumulator <= 60)
+            {
+                Dirty(scp106Uid, scp106Component);
+                continue;
+            }
+
+            var queryLights = AllEntityQuery<PoweredLightComponent>();
+
+            while (queryLights.MoveNext(out var lightUid, out var _))
+            {
+                var boo = new GhostBooEvent();
+                RaiseLocalEvent(lightUid, boo, true);
+            }
+
+            scp106Component.BackroomsAccumulator = 0;
+
+            if (scp106Component.HumansInBackrooms >= 10)
+            {
+                _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("scp-10-humans-in-backrooms-alarm-announcement"),
+                    null,
+                    true,
+                    null,
+                    false,
+                    null,
+                    Color.Red
+                );
+            }
+
+            Dirty(scp106Uid, scp106Component);
         }
     }
-
 }

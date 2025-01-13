@@ -23,10 +23,16 @@ public sealed partial class Scp106Component : Component
     [AutoNetworkedField]
     public float Accumulator = 0;
 
+    [AutoNetworkedField]
+    public float BackroomsAccumulator = 0;
+
     [DataField("lifeEssenceCurrencyPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<CurrencyPrototype>))]
     public string LifeEssenceCurrencyPrototype = "LifeEssence";
 
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     [AutoNetworkedField]
     public FixedPoint2 Essence = 0f;
+
+    [AutoNetworkedField]
+    public float HumansInBackrooms = 0;
 }
