@@ -59,10 +59,7 @@ public abstract class SharedScp106System : EntitySystem
             return;
         }
 
-        if (!TryComp<Scp106Component>(uid, out var scp106Component))
-            return;
-
-        if (scp106Component.AmountOfCorporealPhantoms <= 0)
+        if (component.AmountOfCorporealPhantoms <= 0)
         {
             _popup.PopupEntity("Фантомы отсутствуют!", uid, PopupType.Large);
             return;

@@ -55,7 +55,7 @@ public sealed class Scp106System : SharedScp106System
         Scp106Component component,
         Scp106BoughtCorporealPhantomAction args)
     {
-        component.AmoutOfPhantoms += 1;
+        component.AmountOfCorporealPhantoms += 1;
 
         Dirty(uid, component);
     }
@@ -117,12 +117,9 @@ public sealed class Scp106System : SharedScp106System
     {
         if (args.NewMobState == MobState.Dead)
         {
-            if (!TryComp<Scp106PhantomComponent>(uid, out var scp106PhantomComponent))
-                return;
-
             if (_mindSystem.TryGetMind(uid, out var mindId, out var _))
             {
-                _mindSystem.TransferTo(mindId, scp106PhantomComponent.Scp106BodyUid);
+                _mindSystem.TransferTo(mindId, component.Scp106BodyUid);
                 EntityManager.DeleteEntity(uid);
             }
         }
