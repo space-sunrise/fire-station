@@ -1,8 +1,9 @@
-﻿keycard-access-level-0 = Уровень допуска 0
-keycard-access-level-1 = Уровень допуска 1
-keycard-access-level-2 = Уровень допуска 2
-keycard-access-level-3 = Уровень допуска 3
-keycard-access-level-4 = Уровень допуска 4
-keycard-access-level-5 = Уровень допуска 5
-keycard-access-level-ScpSec = Уровень допуска Охраны Комплекса
-keycard-access-level-MtfLeader = Уровень допуска Лидера Опергруппы
+﻿containment-access-1 = Уровень допуска к камерам 1
+containment-access-2 = Уровень допуска к камерам 2
+armory-access-1 = Уровень допуска оружейной 1
+armory-access-2 = Уровень допуска оружейной 2
+armory-access-3 = Уровень допуска оружейной 3
+checkpoint-access = Уровень допуска чекпоинта
+gate-access = Уровень допуска врат
+intercom-access = Уровень допуска к коммуникациям
+nuke-access = Уровень допуска Alpha Боеголовки

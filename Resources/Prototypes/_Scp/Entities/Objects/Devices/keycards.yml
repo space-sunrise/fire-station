@@ -20,88 +20,110 @@
 
 - type: entity
   parent: KeyCardBase
-  id: KeyCardLevel0
-  name: карта доступа 0 уровня
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Keycards/Level0.rsi
-  - type: Access
-    groups:
-    - Level0
-
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardLevel1
-  name: карта доступа 1 уровня
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Keycards/Level1.rsi
-  - type: Access
-    groups:
-    - Level1
-
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardLevel2
-  name: карта доступа 2 уровня
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Keycards/Level2.rsi
-  - type: Access
-    groups:
-    - Level2
-
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardLevel3
-  name: карта доступа 3 уровня
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Keycards/Level3.rsi
-  - type: Access
-    groups:
-    - Level3
-
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardLevel4
-  name: карта доступа 4 уровня
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Keycards/Level4.rsi
-  - type: Access
-    groups:
-    - Level4
-
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardLevel5
-  name: карта доступа 5 уровня
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Keycards/Level5.rsi
-  - type: Access
-    groups:
-    - Level5
-
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardScpSec
-  name: карта доступа охраны корпуса
+  id: JanitorAC
+  name: janitor AC
   components:
   - type: Sprite
     sprite: _Scp/Objects/Keycards/scpsec.rsi
   - type: Access
     groups:
-    - LevelScpSec
+    - ContainmentAccessJanitor
 
 - type: entity
   parent: KeyCardBase
-  id: KeyCardMtfLeader
-  name: карта доступа лидера опергруппы
+  id: ScientistAC
+  name: scientist AC
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level1.rsi
+  - type: Access
+    groups:
+    - ContainmentAccess
+
+- type: entity
+  parent: KeyCardBase
+  id: ResearchSupervisorAC
+  name: research supervisor AC
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level2.rsi
+  - type: Access
+    groups:
+    - ResearchSupervisor
+
+- type: entity
+  parent: KeyCardBase
+  id: GuardAC
+  name: guard AC
   components:
   - type: Sprite
     sprite: _Scp/Objects/Keycards/mtfleader.rsi
   - type: Access
     groups:
-    - LevelMtfLeader
+    - Sec1
+
+- type: entity
+  parent: KeyCardBase
+  id: OperativeAC
+  name: operative AC
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level4.rsi
+  - type: Access
+    groups:
+    - Sec2
+
+- type: entity
+  parent: KeyCardBase
+  id: CaptainAC
+  name: captain AC
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level5.rsi
+  - type: Access
+    groups:
+    - Captain
+
+- type: entity
+  parent: KeyCardBase
+  id: ZoneManagerAC
+  name: zone manager AC
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/mtfleader.rsi
+  - type: Access
+    groups:
+    - ZoneManager
+
+- type: entity
+  parent: KeyCardBase
+  id: FacilityManagerAC
+  name: facility manager AC
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level5.rsi
+  - type: Access
+    groups:
+    - FacilityManager
+
+- type: entity
+  parent: KeyCardBase
+  id: ChaosInsurgencyAD
+  name: chaos AD
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/mtfleader.rsi
+  - type: Access
+    groups:
+    - Chaos
+
+- type: entity
+  parent: KeyCardBase
+  id: 05AC
+  name: 05 AC
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/mtfleader.rsi
+  - type: Access
+    groups:
+    - 05

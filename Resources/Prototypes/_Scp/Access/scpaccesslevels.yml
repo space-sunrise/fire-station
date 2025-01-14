@@ -1,98 +1,123 @@
 ﻿- type: accessLevel
-  id: Level0
-  name: keycard-access-level-0
+  id: ContainmentAccess1
+  name: containment-access-1
 
 - type: accessLevel
-  id: Level1
-  name: keycard-access-level-1
+  id: ContainmentAccess2
+  name: containment-access-2
 
 - type: accessLevel
-  id: Level2
-  name: keycard-access-level-2
+  id: ArmoryAccess1
+  name: armory-access-1
 
 - type: accessLevel
-  id: Level3
-  name: keycard-access-level-3
+  id: ArmoryAccess2
+  name: armory-access-2
 
 - type: accessLevel
-  id: Level4
-  name: keycard-access-level-4
+  id: ArmoryAccess3
+  name: armory-access-3
 
 - type: accessLevel
-  id: Level5
-  name: keycard-access-level-5
+  id: CheckpointAccess
+  name: checkpoint-access
 
 - type: accessLevel
-  id: LevelScpSec
-  name: keycard-access-level-ScpSec
+  id: GateAccess
+  name: gate-access
 
 - type: accessLevel
-  id: LevelMtfLeader
-  name: keycard-access-level-MtfLeader
+  id: IntercomAccess
+  name: intercom-access
+
+- type: accessLevel
+  id: NukeAccess
+  name: nuke-access
 
 - type: accessGroup
-  id: Level0
+  id: ContainmentAccessJanitor
   tags:
-  - Level0
-  - Level1
-  - Level2
-  - Level3
-  - Level4
-  - Level5
-  - LevelScpSec
-  - LevelMtfLeader
+  - ContainmentAccess1
 
 - type: accessGroup
-  id: Level1
+  id: ContainmentAccess
   tags:
-  - Level1
-  - Level2
-  - Level3
-  - Level4
-  - Level5
-  - LevelScpSec
-  - LevelMtfLeader
+  - ContainmentAccess1
+  - ContainmentAccess2
 
 - type: accessGroup
-  id: Level2
+  id: ResearchSupervisor
   tags:
-  - Level2
-  - Level3
-  - Level4
-  - Level5
+  - ContainmentAccess1
+  - ContainmentAccess2
+  - CheckpointAccess
 
 - type: accessGroup
-  id: LevelScpSec
+  id: Sec1
   tags:
-  - Level2
-  - Level3
-  - Level4
-  - Level5
-  - LevelScpSec
+  - ContainmentAccess1
+  - ArmoryAccess1
+  - CheckpointAccess
 
 - type: accessGroup
-  id: Level3
+  id: Sec2
   tags:
-  - Level3
-  - Level4
-  - Level5
-  - LevelMtfLeader
+  - ContainmentAccess1
+  - ContainmentAccess2
+  - ArmoryAccess1
+  - ArmoryAccess2
+  - CheckpointAccess
+  - GateAccess
 
 - type: accessGroup
-  id: Level4
+  id: Captain
   tags:
-  - Level4
-  - Level5
-  - LevelMtfLeader
+  - ContainmentAccess1
+  - ContainmentAccess2
+  - ArmoryAccess1
+  - ArmoryAccess2
+  - ArmoryAccess3
+  - CheckpointAccess
+  - GateAccess
+  - intercomAccess
 
 - type: accessGroup
-  id: LevelMtfLeader
+  id: ZoneManager
   tags:
-  - Level4
-  - Level5
-  - LevelMtfLeader
+  - ContainmentAccess1
+  - CheckpointAccess
 
 - type: accessGroup
-  id: Level5
+  id: FacilityManager
   tags:
-  - Level5
+  - ContainmentAccess1
+  - ContainmentAccess2
+  - CheckpointAccess
+  - GateAccess
+  - intercomAccess
+  - NukeAccess
+
+- type: accessGroup
+  id: Chaos
+  tags:
+  - ContainmentAccess1
+  - ContainmentAccess2
+  - ArmoryAccess1
+  - ArmoryAccess2
+  - ArmoryAccess3
+  - CheckpointAccess
+  - GateAccess
+  - intercomAccess
+
+- type: accessGroup
+  id: 05
+  tags:
+  - ContainmentAccess1
+  - ContainmentAccess2
+  - ArmoryAccess1
+  - ArmoryAccess2
+  - ArmoryAccess3
+  - CheckpointAccess
+  - GateAccess
+  - intercomAccess
+  - NukeAccess
