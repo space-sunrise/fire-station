@@ -6,6 +6,7 @@ using Content.Server.Chat.Systems;
 using Content.Server.Gateway.Systems;
 using Content.Server.Ghost;
 using Content.Server.Light.Components;
+using Content.Server.Popups;
 using Content.Server.Station.Components;
 using Content.Server.Store.Systems;
 using Content.Shared._Scp.Scp106;
@@ -16,6 +17,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.SSDIndicator;
 using Content.Shared.Store.Components;
@@ -37,8 +39,8 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
     [Dependency] private readonly StoreSystem _store = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
-    [Dependency] private readonly EntityLookupSystem _entityLookupSystem = default!;
     [Dependency] private readonly ChatSystem _chatSystem = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -298,13 +300,21 @@ public sealed class Scp106System : SharedScp106System
             if (scp106Component.Accumulator < 30)
                 continue;
 
+            scp106Component.BackroomsAccumulator += 30;
+
             scp106Component.Accumulator -= 30;
+            scp106Component.BackroomsAccumulator = 0;
+            scp106Component.HumansInBackrooms = 0;
 
             _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { "LifeEssence", 1f } }, scp106Uid);
 
-            var queryHumans = AllEntityQuery<HumanoidAppearanceComponent, MobStateComponent>();
+            if (scp106Component.BackroomsAccumulator < 60)
+            {
+                Dirty(scp106Uid, scp106Component);
+                continue;
+            }
 
-            scp106Component.HumansInBackrooms = 0;
+            var queryHumans = AllEntityQuery<HumanoidAppearanceComponent, MobStateComponent>();
 
             while (queryHumans.MoveNext(out var humanUid, out var _, out var mobStateComponent))
             {
@@ -318,36 +328,26 @@ public sealed class Scp106System : SharedScp106System
                 }
             }
 
-            scp106Component.BackroomsAccumulator += frameTime;
-
-            if (scp106Component.BackroomsAccumulator <= 60)
+            if (scp106Component.AnnouncementAccumulator < 600)
             {
+                scp106Component.AnnouncementAccumulator += 60;
                 Dirty(scp106Uid, scp106Component);
                 continue;
             }
 
-            var queryLights = AllEntityQuery<PoweredLightComponent>();
-
-            while (queryLights.MoveNext(out var lightUid, out var _))
-            {
-                var boo = new GhostBooEvent();
-                RaiseLocalEvent(lightUid, boo, true);
-            }
-
-            scp106Component.BackroomsAccumulator = 0;
-
             if (scp106Component.HumansInBackrooms >= 10)
             {
+                scp106Component.AnnouncementAccumulator = 0;
+
                 _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("scp-10-humans-in-backrooms-alarm-announcement"),
                     null,
                     true,
                     null,
-                    false,
-                    null,
+                    true,
+                    "CBMTF1",
                     Color.Red
                 );
             }
-
             Dirty(scp106Uid, scp106Component);
         }
     }

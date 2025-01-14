@@ -78,3 +78,4 @@
         density: 50
         layer:
         - GhostImpassable
+  - type: MovementIgnoreGravity
