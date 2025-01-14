@@ -21,10 +21,13 @@ using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.SSDIndicator;
 using Content.Shared.Store.Components;
+using Robust.Server.Audio;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Player;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp106.Systems;
@@ -41,6 +44,7 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -303,7 +307,6 @@ public sealed class Scp106System : SharedScp106System
             scp106Component.BackroomsAccumulator += 30;
 
             scp106Component.Accumulator -= 30;
-            scp106Component.BackroomsAccumulator = 0;
             scp106Component.HumansInBackrooms = 0;
 
             _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { "LifeEssence", 1f } }, scp106Uid);
@@ -314,17 +317,22 @@ public sealed class Scp106System : SharedScp106System
                 continue;
             }
 
+            scp106Component.BackroomsAccumulator = 0;
+
             var queryHumans = AllEntityQuery<HumanoidAppearanceComponent, MobStateComponent>();
 
             while (queryHumans.MoveNext(out var humanUid, out var _, out var mobStateComponent))
             {
                 if (HasComp<Scp106BackRoomMapComponent>(Transform(humanUid).MapUid)
-                    && mobStateComponent.CurrentState == MobState.Alive
-                    && !HasComp<SSDIndicatorComponent>(humanUid))
+                    && mobStateComponent.CurrentState == MobState.Alive)
                 {
                     scp106Component.HumansInBackrooms += 1;
 
-                    _store.TryAddCurrency(new Dictionary<string, FixedPoint2>() { { "LifeEssence", 1f } }, scp106Uid);
+                    if (scp106Component.HumansInBackrooms >= 10)
+                    {
+                        _store.TryAddCurrency(new Dictionary<string, FixedPoint2>() { { "LifeEssence", 1f } },
+                            scp106Uid);
+                    }
                 }
             }
 
@@ -347,6 +355,12 @@ public sealed class Scp106System : SharedScp106System
                     "CBMTF1",
                     Color.Red
                 );
+
+                _audio.PlayGlobal(
+                    "/Audio/_Sunrise/stab.ogg",
+                    Filter.Broadcast(),
+                    false,
+                    new AudioParams().WithVolume(-10));
             }
             Dirty(scp106Uid, scp106Component);
         }
