@@ -8,9 +8,9 @@ using Content.Shared._Scp.Scp096;
 using Content.Shared.Doors.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lock;
-using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Wires;
 using Robust.Server.Audio;
+using Robust.Server.GameStates;
 using Robust.Shared.Audio;
 using Robust.Shared.Random;
 
@@ -24,6 +24,7 @@ public sealed partial class Scp096System : SharedScp096System
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly PvsOverrideSystem _pvsOverride = default!;
 
     private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
 
@@ -88,6 +89,20 @@ public sealed partial class Scp096System : SharedScp096System
         }
 
         _audioSystem.PlayPvs(scpEntity.Comp.DoorSmashSoundCollection, doorEntity);
+    }
+
+    protected override void AddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid)
+    {
+        base.AddTarget(scpEntity, targetUid);
+
+        _pvsOverride.AddGlobalOverride(targetUid);
+    }
+
+    protected override void RemoveTarget(Entity<Scp096Component> scpEntity, Entity<Scp096TargetComponent?> targetEntity, bool removeComponent = true)
+    {
+        base.RemoveTarget(scpEntity, targetEntity, removeComponent);
+
+        _pvsOverride.RemoveGlobalOverride(targetEntity);
     }
 
 

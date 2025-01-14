@@ -172,7 +172,7 @@ public abstract partial class SharedScp096System : EntitySystem
         return true;
     }
 
-    private void AddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid)
+    protected virtual void AddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid)
     {
         scpEntity.Comp.Targets.Add(targetUid);
 
@@ -186,7 +186,7 @@ public abstract partial class SharedScp096System : EntitySystem
         Dirty(scpEntity);
     }
 
-    private void RemoveTarget(Entity<Scp096Component> scpEntity, Entity<Scp096TargetComponent?> targetEntity, bool removeComponent = true)
+    protected virtual void RemoveTarget(Entity<Scp096Component> scpEntity, Entity<Scp096TargetComponent?> targetEntity, bool removeComponent = true)
     {
         if (!Resolve(targetEntity, ref targetEntity.Comp))
             return;
