@@ -29,3 +29,15 @@
   - /Audio/_Scp/Effects/Footsteps/Steel/step2.ogg
   - /Audio/_Scp/Effects/Footsteps/Steel/step3.ogg
   - /Audio/_Scp/Effects/Footsteps/Steel/step4.ogg
+
+- type: soundCollection
+  id: FootstepScpCatwalk
+  files:
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step1.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step2.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step3.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step4.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step5.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step6.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step7.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step8.ogg
