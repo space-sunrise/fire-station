@@ -38,7 +38,7 @@ public abstract class SharedScp035System : EntitySystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
 
-    private readonly SoundSpecifier _pickupSound = new SoundCollectionSpecifier("EquipScp035");
+    private readonly SoundSpecifier _equipSound = new SoundCollectionSpecifier("EquipScp035");
 
     public override void Initialize()
     {
@@ -89,7 +89,7 @@ public abstract class SharedScp035System : EntitySystem
         _stun.TryParalyze(args.Wearer, TimeSpan.FromSeconds(5), true);
 
         _popup.PopupClient("Вы ошеломлены!", args.Wearer, args.Wearer, PopupType.LargeCaution);
-        _audio.PlayEntity(_pickupSound, args.Wearer, args.Wearer);
+        _audio.PlayEntity(_equipSound, args.Wearer, args.Wearer);
 
         var chainsaw = Spawn("Chainsaw", Transform(args.Wearer).Coordinates);
         _hands.TryForcePickupAnyHand(args.Wearer, chainsaw, false);

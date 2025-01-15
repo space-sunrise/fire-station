@@ -127,12 +127,17 @@
     - goodfeeling-artifact-13
     - goodfeeling-artifact-14
   - type: Speech
+    speechSounds: Scp999Speech
+    speechVerb: SmallMob
+    allowedEmotes: [ 'Squeak' ]
   - type: Grammar
     attributes:
       proper: true
       gender: male
   - type: TypingIndicator
     proto: SCP-999
+  - type: ReplacementAccent
+    accent: mouse
   - type: Hunger
   - type: Reflect
     reflectProb: 0.2
@@ -155,3 +160,12 @@
     - Scp999Rest
   - type: TTS
     voice: Neco
+
+- type: speechSounds
+  id: Scp999Speech
+  saySound:
+    collection: IdleScp999
+  askSound:
+    collection: IdleScp999
+  exclaimSound:
+    collection: IdleScp999

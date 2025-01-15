@@ -8,6 +8,15 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Misc.KillGlobalSound;
 
+/// <summary>
+/// Система, созданная для проигрывания отдаленного звука убийства сущности специально для сцп
+/// Проигрывает некий звук "отдаленного убийства" сущностям, что находятся далеко от места убийства, но не сильно
+/// Нужна для создания атмосферы, типо ебать там кошмар происходит арараахавыа аврыарааа
+/// </summary>
+/// <remarks>
+/// TODO: Рассмотреть вариант реализации на видимость убитой сущности и убившего сцп вместо радиусов
+/// Это будет менее производительно, но тут это допустимо.
+/// </remarks>
 public sealed class KillGlobalSoundSystem : EntitySystem
 {
     [Dependency] private readonly EntityWhitelistSystem _entityWhitelist = default!;
@@ -43,6 +52,10 @@ public sealed class KillGlobalSoundSystem : EntitySystem
         if (!xform.GridUid.HasValue)
             return;
 
+        // Нам нужны сущности, находящиеся в отдалении
+        // Поэтому мы берем сначала большой кружок максимального радиуса
+        // А потом убираем из него маленький кружок ближайших сущностей
+        // В итоге получается как раз те сущности, что находятся в отдалении, но не далеко
         var coords = _transform.GetMapCoordinates(ent);
         var filter = Filter.BroadcastGrid(xform.GridUid.Value)
             .AddInRange(coords, killSoundComponent.MaxRadius)

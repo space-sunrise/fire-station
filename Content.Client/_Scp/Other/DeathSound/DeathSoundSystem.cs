@@ -1,5 +1,4 @@
-﻿using Content.Shared.Humanoid;
-using Content.Shared.Mobs;
+﻿using Content.Shared.Mobs;
 using Robust.Client.Audio;
 using Robust.Client.Player;
 using Robust.Shared.Audio;
@@ -29,6 +28,6 @@ public sealed class DeathSoundSystem : EntitySystem
         if (args.NewMobState != MobState.Dead)
             return;
 
-        _audio.PlayGlobal(_sound, Filter.Local(), true);
+        _audio.PlayGlobal(_sound, ent);
     }
 }
