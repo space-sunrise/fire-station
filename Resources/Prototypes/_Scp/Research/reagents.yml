@@ -5,7 +5,7 @@
   group: Biological
   desc: reagent-desc-corbocarbonate
   color: "#b623d3"
-  flavor: anomaly
+  flavor: horrible
   recognizable: true
   physicalDesc: reagent-physical-desc-slimy
   slippery: false

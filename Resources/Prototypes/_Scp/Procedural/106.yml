@@ -104,7 +104,7 @@
       Rooms:
         tags:
         - SnowyLabs
-        - Mineshaft
+        - BackroomsMineshaft
   layers:
   - !type:PrototypeDunGen
     proto: BackroomsBase

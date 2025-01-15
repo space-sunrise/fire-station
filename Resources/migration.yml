@@ -566,9 +566,15 @@ ComputerShuttleCargo: null
 ClothingOuterHardsuitSecurity: ClothingOuterHardsuitSecuritySunrise
 ClothingHeadHelmetHardsuitSecurity: ClothingHeadHelmetHardsuitSecuritySunrise
 EffectHearts: null
-SpawnPointPrisoner: SpawnPointPlanetPrisoner
+CloningPod: null
+ComputerCloningConsole: null
+MedicalScanner: null
+CloningPodMachineCircuitboard: null
+CloningConsoleComputerCircuitboard: null
+MedicalScannerMachineCircuitboard: null
 
 # Fire added start
+SpawnPointPrisoner: SpawnPointPlanetPrisoner
 PosterDyshi: PosterBreath
 PosterPeremen: PosterChanges
 PosterGok: PosterGoc

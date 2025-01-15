@@ -1,21 +1,6 @@
 # Tier 2
 
 - type: technology
-  id: EnergyGuns
-  name: research-technology-energy-gun #
-  icon:
-    sprite: _Sunrise/Objects/Weapons/Guns/Battery/energygun.rsi
-    state: icon
-  discipline: Arsenal
-  tier: 1
-  cost:
-    Default: 7500
-    Scp: 3750
-  recipeUnlocks:
-  - WeaponEnergyGun
-  - WeaponEnergyGunMini
-
-- type: technology
   id: ExtendedAmunitions
   name: research-technology-extended-amunitions
   icon:

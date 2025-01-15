@@ -479,6 +479,11 @@
     Telecrystal: 20
   categories:
   - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - AssaultOpsUplink
 
 - type: listing
   id: UplinkWeaponSyndieLaserPistol
@@ -492,6 +497,11 @@
     Telecrystal: 10
   categories:
   - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - AssaultOpsUplink
 
 - type: listing
   id: UplinkClothingBackpackSyndieDL6902Filled
@@ -575,6 +585,11 @@
     Telecrystal: 16
   categories:
   - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - AssaultOpsUplink
 
 - type: listing
   id: UplinkHardsuitSyndieCommander
@@ -855,7 +870,7 @@
   discountDownTo:
     Telecrystal: 6
   cost:
-    Telecrystal: 12
+    Telecrystal: 10
   categories:
   - UplinkChemicals
 
@@ -876,12 +891,12 @@
   id: UplinkLauncherSyringeRapid
   name: uplink-syringe-rapid-name
   description: uplink-syringe-rapid-desc
-  productEntity: LauncherSyringeRapid
+  productEntity: LauncherSyringeRapidFilled
   discountCategory: usualDiscounts
   discountDownTo:
     Telecrystal: 8
   cost:
-    Telecrystal: 16
+    Telecrystal: 14
   categories:
   - UplinkChemicals
 

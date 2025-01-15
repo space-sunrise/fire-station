@@ -28,10 +28,10 @@
   name: loadout-group-security-mantle
   minLimit: 0
   loadouts:
-  - SecurityMantle
+  - GuardMantle
 
 - type: loadoutGroup
-  id: GuardOuterClothing
+  id: GuardArmorVest
   name: loadout-group-security-outerclothing
   loadouts:
   - GuardArmorVest

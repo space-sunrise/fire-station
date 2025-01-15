@@ -21,4 +21,7 @@
   id: Cartridge050
 
 - type: Tag
+  id: BackroomsMineshaft
+
+- type: Tag
   id: ShuttleChair
