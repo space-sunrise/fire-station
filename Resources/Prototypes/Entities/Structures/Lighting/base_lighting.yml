@@ -513,6 +513,14 @@
       - !type:PlaySoundBehavior
         sound:
           collection: GlassBreak
+  # Fire edit start
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: -10
+    range: 3
+    sound:
+      path: /Audio/_Scp/Ambient/Emergency/alarm.ogg
+  # Fire edit end
   placement:
     mode: SnapgridCenter
     snap:
