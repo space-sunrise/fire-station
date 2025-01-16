@@ -172,3 +172,25 @@
     - state: green
   - type: SpawnPoint
     job_id: ClassD
+
+- type: entity
+  name: Class-D Cook spawner
+  id: SpawnClassDCook
+  parent: SpawnPointJobBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: SpawnPoint
+    job_id: ClassDCook
+
+- type: entity
+  name: Class-D Botanist spawner
+  id: SpawnClassDBotanist
+  parent: SpawnPointJobBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: SpawnPoint
+    job_id: ClassDBotanist
