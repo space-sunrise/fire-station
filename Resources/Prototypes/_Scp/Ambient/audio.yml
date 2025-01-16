@@ -35,10 +35,7 @@
     params:
       volume: -12
     collection: FireAmbienceScp106Dimension
-  rules:
-  - NearClassDSpawn
-  - NearClassDFloor
-  - IsClassD
+  rules: ClassDRule
   fadeIn: true
   interruptable: true
   priority: 1
@@ -64,21 +61,17 @@
     range: 6
 
 - type: rules
-  id: NearClassDSpawn
+  id: InScp106Dimension
   rules:
+  - !type:InScp106Dimension
+
+- type: rules
+  id: ClassDRule
+  rules:
+  - !type:IsClassD
   - !type:NearbyEntitiesRule
     count: 4
     whitelist:
       tags:
       - ClassDSpawner
     range: 16
-
-- type: rules
-  id: InScp106Dimension
-  rules:
-  - !type:InScp106Dimension
-
-- type: rules
-  id: IsClassD
-  rules:
-  - !type:IsClassD
