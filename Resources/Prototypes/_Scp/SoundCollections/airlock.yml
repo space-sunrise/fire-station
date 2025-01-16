@@ -1,0 +1,24 @@
+﻿- type: soundCollection
+  id: AirlockDefaultOpen
+  files:
+  - /Audio/_Scp/Objects/Machines/Airlocks/Default/open1.ogg
+  - /Audio/_Scp/Objects/Machines/Airlocks/Default/open2.ogg
+
+- type: soundCollection
+  id: AirlockDefaultClose
+  files:
+  - /Audio/_Scp/Objects/Machines/Airlocks/Default/close1.ogg
+  - /Audio/_Scp/Objects/Machines/Airlocks/Default/close2.ogg
+
+- type: soundCollection
+  id: AirlockLargeOpen
+  files:
+  - /Audio/_Scp/Objects/Machines/Airlocks/Large/open1.ogg
+  - /Audio/_Scp/Objects/Machines/Airlocks/Large/open2.ogg
+  - /Audio/_Scp/Objects/Machines/Airlocks/Large/open3.ogg
+
+- type: soundCollection
+  id: AirlockLargeClose
+  files:
+  - /Audio/_Scp/Objects/Machines/Airlocks/Large/close1.ogg
+  - /Audio/_Scp/Objects/Machines/Airlocks/Large/close2.ogg
