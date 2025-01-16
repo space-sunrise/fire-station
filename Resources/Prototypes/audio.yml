@@ -251,7 +251,9 @@
       ignoreAnchored: true
       percent: 0.5
       tiles:
-      - FloorWhite
+      - FSFloorTileItemWhite # Fire
+      - FSFloorTileItemMiniSteelWhite # Fire
+      - FSFloorTileItemMonoSteelWhite # Fire
       range: 3
 
 - type: rules

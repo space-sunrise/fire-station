@@ -172,6 +172,9 @@
     - state: green
   - type: SpawnPoint
     job_id: ClassD
+  - type: Tag
+    tags:
+    - ClassDSpawner
 
 - type: entity
   name: Class-D Cook spawner
@@ -183,6 +186,9 @@
     - state: green
   - type: SpawnPoint
     job_id: ClassDCook
+  - type: Tag
+    tags:
+    - ClassDSpawner
 
 - type: entity
   name: Class-D Botanist spawner
@@ -194,3 +200,6 @@
     - state: green
   - type: SpawnPoint
     job_id: ClassDBotanist
+  - type: Tag
+    tags:
+    - ClassDSpawner

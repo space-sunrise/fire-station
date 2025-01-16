@@ -1,8 +1,9 @@
 using Robust.Shared.Audio;
+using Robust.Shared.GameStates;
 
-namespace Content.Server._Scp.ClassDAppearance;
+namespace Content.Shared._Scp.Other.ClassDAppearance;
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class ClassDAppearanceComponent : Component
 {
     [DataField]
