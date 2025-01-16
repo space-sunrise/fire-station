@@ -151,7 +151,9 @@
     state: fab-idle
   discipline: Experimental
   tier: 2
-  cost: 7500
+  cost:
+    Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - ExosuitFabricatorHyperConvectionMachineCircuitboard
   technologyPrerequisites:

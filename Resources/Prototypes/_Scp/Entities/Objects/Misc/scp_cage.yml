@@ -11,6 +11,7 @@
   components:
   - type: Sprite
     sprite: _Scp/Objects/Misc/scp_cage.rsi
+    offset: 0, 0.5
     layers:
     - state: base
     - state: closed
@@ -28,7 +29,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.4,-0.4,0.4,0.29"
+          bounds: -0.4,-0.4,0.4,0.29
         density: 50
         mask:
         - CrateMask #this is so they can go under plastic flaps
@@ -103,7 +104,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.4,-0.8,0.4,0.8"
+          bounds: -0.4,-0.4,0.4,0.4
         density: 75
         mask:
         - MachineMask

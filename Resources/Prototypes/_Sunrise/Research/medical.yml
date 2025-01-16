@@ -96,7 +96,6 @@
     state: cryo_base
   discipline: Biochemical
   tier: 2
-  cost: 7000
   cost:
     Default: 7000
     Scp: 2500

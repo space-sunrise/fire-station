@@ -41,6 +41,8 @@
     Scp: 6250
   recipeUnlocks:
   - ClothingShoesBootsMagCombat
+  technologyPrerequisites:
+  - AdvancedRiotControl
 
 - type: technology
   id: Advanced Laser Manipulation

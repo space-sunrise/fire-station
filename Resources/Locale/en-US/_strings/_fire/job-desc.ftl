@@ -10,7 +10,11 @@ job-name-senior-containment-guard = старший охранник зоны
 job-description-senior-containment-guard = Распоряжается персоналом класса D и следит за охраной.
 job-name-containment-guard = охранник зоны
 job-description-containment-guard = Занимается охраной персонала класса D.
+
 job-name-classd = сотрудник класса D
+job-name-classd-cook = повар класса D
+job-name-classd-botanist = растеневод класса D
+
 job-description-classd = Над ними ставят опыты...
 job-name-Governor = комендант
 job-description-Governor = Занимается внешней безопасностью комплекса от угроз с планеты.

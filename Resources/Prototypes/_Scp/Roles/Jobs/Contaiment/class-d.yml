@@ -12,9 +12,65 @@
     components:
     - type: ClassDAppearance
 
+- type: job
+  id: ClassDCook
+  name: job-name-classd-cook
+  description: job-description-classd
+  playTimeTracker: JobClassDCook
+  startingGear: ClassDCookGear
+  icon: JobIconClassD
+  supervisors: job-supervisors-security-and-research
+  access:
+  - Service
+  - Kitchen
+  alwaysUseSpawner: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: ClassDAppearance
+
+- type: job
+  id: ClassDBotanist
+  name: job-name-classd-botanist
+  description: job-description-classd
+  playTimeTracker: JobClassDBotanist
+  startingGear: ClassDBotanistGear
+  icon: JobIconClassD
+  supervisors: job-supervisors-security-and-research
+  access:
+  - Service
+  - Hydroponics
+  alwaysUseSpawner: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: ClassDAppearance
+
 - type: startingGear
   id: ClassDGear
   equipment:
-    id: ClassDIDCard
     jumpsuit: ClothingUniformClassD
     shoes: ClothingShoesClassD
+    id: ClassDIDCard
+
+- type: startingGear
+  id: ClassDCookGear
+  equipment:
+    head: ClothingHeadHatChef
+    jumpsuit: ClothingUniformClassD
+    outerClothing: ClothingOuterApronChef
+    belt: ClothingBeltChefFilled
+    gloves: ClothingHandsGlovesColorWhite
+    shoes: ClothingShoesClassD
+    id: ClassDCookIDCard
+
+- type: startingGear
+  id: ClassDBotanistGear
+  equipment:
+    head: ClothingHeadBandBotany
+    jumpsuit: ClothingUniformClassD
+    outerClothing: ClothingOuterApronBotanist
+    belt: ClothingBeltPlantFilled
+    gloves: ClothingHandsGlovesLeather
+    shoes: ClothingShoesClassD
+    id: ClassDBotanistIDCard
