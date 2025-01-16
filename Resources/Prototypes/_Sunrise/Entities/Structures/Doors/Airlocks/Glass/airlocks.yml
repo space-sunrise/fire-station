@@ -37,7 +37,7 @@
     closeSound:
       collection: AirlockLargeClose
     denySound:
-      path: /Audio/Machines/airlock_deny.ogg
+      path: /Audio/_Scp/Objects/Machines/Airlocks/deny.ogg
   # Fire end
 
 - type: entity
@@ -78,7 +78,7 @@
     closeSound:
       collection: AirlockLargeClose
     denySound:
-      path: /Audio/Machines/airlock_deny.ogg
+      path: /Audio/_Scp/Objects/Machines/Airlocks/deny.ogg
   # Fire end
 
 
