@@ -1,0 +1,26 @@
+﻿- type: entity
+  parent: HighSecDoor
+  id: HighSecScienceLocked
+  suffix: Science, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsResearch ]
+
+- type: entity
+  parent: HighSecDoor
+  id: HighSecResearchDirectorLocked
+  suffix: Research director, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsResearchDirector ]
+
+- type: entity
+  parent: HighSecDoor
+  id: HighSecSecurityLocked
+  suffix: Security, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
