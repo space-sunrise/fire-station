@@ -10,6 +10,10 @@
   - /Audio/_Scp/Ambient/General/ost7.ogg
   - /Audio/_Scp/Ambient/General/ost8.ogg
   - /Audio/_Scp/Ambient/General/ost9.ogg
+  - /Audio/_Scp/Ambient/General/ost10.ogg
+  - /Audio/_Scp/Ambient/General/ost11.ogg
+  - /Audio/_Scp/Ambient/General/ost12.ogg
+  - /Audio/_Scp/Ambient/General/ost13.ogg
 
 - type: soundCollection
   id: FireAmbienceMedical
@@ -29,6 +33,7 @@
   - /Audio/_Scp/Ambient/PocketDimension/ost1.ogg
   - /Audio/_Scp/Ambient/PocketDimension/ost2.ogg
   - /Audio/_Scp/Ambient/PocketDimension/ost3.ogg
+  - /Audio/_Scp/Ambient/PocketDimension/ost4.ogg
 
 - type: soundCollection
   id: FireAmbienceScp173
