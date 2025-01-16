@@ -33,7 +33,9 @@ public abstract class SharedBlinkingSystem : EntitySystem
 
     // TODO: Рефактор моргания с целью сделать как в контеймент бриче юнити.
     private readonly SoundSpecifier _blinkingStartSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Blinking/start.ogg");
-    private readonly SoundSpecifier _blinkSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Blinking/end.ogg");
+    private readonly SoundSpecifier _blinkingEndSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Blinking/end.ogg");
+
+    private readonly SoundSpecifier _blinkSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Blinking/blink.ogg");
 
     public bool IsBlind(EntityUid uid, BlinkableComponent? component = null, bool useTimeCompensation = false)
     {
