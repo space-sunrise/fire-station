@@ -15,3 +15,328 @@
     collection: FootstepTile
   itemDrop: FloorTileItemDark
   heatCapacity: 10000
+
+- type: tile
+  id: FSFloorSteel
+  name: scp-tiles-steel-floor
+  sprite: /Textures/_Scp/Tiles/steel.png
+  variants: 10
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: FSFloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorDark
+  name: scp-tiles-dark-floor
+  sprite: /Textures/_Scp/Tiles/dark.png
+  variants: 10
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpTile
+    params:
+      volume: -10
+  itemDrop: FSFloorTileItemDark
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorWhite
+  name: scp-tiles-white-floor
+  sprite: /Textures/_Scp/Tiles/white.png
+  variants: 10
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: FSFloorTileItemWhite
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorBlue
+  name: scp-tiles-blue-floor
+  sprite: /Textures/_Scp/Tiles/blue.png
+  variants: 10
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: FSFloorTileItemBlue
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorGreen
+  name: scp-tiles-green-floor
+  sprite: /Textures/_Scp/Tiles/green.png
+  variants: 10
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: FSFloorTileItemGreen
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorSteelMini
+  name: scp-tiles-steel-mini-floor
+  sprite: /Textures/_Scp/Tiles/steel_mini.png
+  variants: 24
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: FSFloorTileItemMiniSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorDarkMini
+  name: scp-tiles-dark-mini-floor
+  sprite: /Textures/_Scp/Tiles/dark_mini.png
+  variants: 24
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpTile
+    params:
+      volume: -10
+  itemDrop: FSFloorTileItemMiniSteelDark
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorWhiteMini
+  name: scp-tiles-white-mini-floor
+  sprite: /Textures/_Scp/Tiles/white_mini.png
+  variants: 24
+  placementVariants:
+  - 2.0
+  - 2.0
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.01
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: FSFloorTileItemMiniSteelWhite
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorSteelMono
+  name: scp-tiles-steel-mono-floor
+  sprite: /Textures/_Scp/Tiles/steel_mono.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: FSFloorTileItemMonoSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorWhiteMono
+  name: scp-tiles-white-mono-floor
+  sprite: /Textures/_Scp/Tiles/white_mono.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: FSFloorTileItemMonoSteelWhite
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorDarkMono
+  name: scp-tiles-dark-mono-floor
+  sprite: /Textures/_Scp/Tiles/dark_mono.png
+  variants: 1
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpTile
+    params:
+      volume: -10
+  itemDrop: FSFloorTileItemMonoSteelDark
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorCheckerSteel
+  name: scp-tiles-checker-steel-floor
+  sprite: /Textures/_Scp/Tiles/checker_steel.png
+  variants: 10
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: FSFloorTileItemCheckerSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: FSFloorCheckerDark
+  name: scp-tiles-checker-dark-floor
+  sprite: /Textures/_Scp/Tiles/checker_dark.png
+  variants: 10
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpTile
+    params:
+      volume: -10
+  itemDrop: FSFloorTileItemCheckerDark
+  heatCapacity: 10000
