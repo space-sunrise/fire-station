@@ -255,6 +255,10 @@ public abstract partial class SharedScp096System : EntitySystem
         if (blindableComponent.IsBlind)
             return false;
 
+        // Если таргет уже есть
+        if (TryComp<Scp096TargetComponent>(targetUid, out var targetComponent) && targetComponent.TargetedBy.Contains(scpEntity))
+            return false;
+
         var targetXform = Transform(targetUid);
 
         // Если таргет не в зоне действия агра и зона действия не игнорируется
