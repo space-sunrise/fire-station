@@ -17,6 +17,12 @@
     whitelist:
       components:
       - SurgeryTool
+      - Healing
+      - TapePlayer # бумбокс
+      - MusicTape # Касеты бумбокса
+      tags:
+      - Syringe
+      - SunriseUplink # рыбаплинк
   - type: StorageFill
     contents:
     - id: Hemostat
