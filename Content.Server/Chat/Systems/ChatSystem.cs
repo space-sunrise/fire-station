@@ -72,7 +72,7 @@ public sealed partial class ChatSystem : SharedChatSystem
     // public const int WhisperClearRange = 2; // how far whisper goes while still being understandable, in world units
     // public const int WhisperMuffledRange = 5; // how far whisper goes at all, in world units
     // Sunrise-TTS-End
-    public const string DefaultAnnouncementSound = "/Audio/_Sunrise/Announcements/announce_dig.ogg"; // Sunrise-edit
+    public const string DefaultAnnouncementSound = "/Audio/_Scp/Effects/announcement.ogg"; // Fire edit
 
     private bool _loocEnabled = true;
     private bool _deadLoocEnabled;

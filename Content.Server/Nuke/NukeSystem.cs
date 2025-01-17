@@ -56,6 +56,10 @@ public sealed class NukeSystem : EntitySystem
     /// </summary>
     private const float NukeSongBuffer = 1.5f;
 
+    // Fire added start
+    private readonly SoundSpecifier _nukeArmSound = new SoundPathSpecifier("/Audio/_Scp/Effects/new_alarm.ogg");
+    // Fire added end
+
     public override void Initialize()
     {
         base.Initialize();
@@ -479,7 +483,10 @@ public sealed class NukeSystem : EntitySystem
             ("time", (int) component.RemainingTime),
             ("location", FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((uid, nukeXform)))));
         var sender = Loc.GetString("nuke-component-announcement-sender");
-        _chatSystem.DispatchStationAnnouncement(stationUid ?? uid, announcement, sender, playDefault: false, colorOverride: Color.Red);
+
+        // Fire edit start
+        _chatSystem.DispatchStationAnnouncement(stationUid ?? uid, announcement, sender, playDefault: false, colorOverride: Color.Red, announcementSound: _nukeArmSound);
+        // Fire edit end
 
         _sound.PlayGlobalOnStation(uid, _audio.GetSound(component.ArmSound));
         _nukeSongLength = (float) _audio.GetAudioLength(_selectedNukeSong).TotalSeconds;
