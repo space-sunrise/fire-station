@@ -1,0 +1,53 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "SUNRISE",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "005"
+        },
+        {
+            "name": "035"
+        },
+        {
+            "name": "049"
+        },
+        {
+            "name": "096"
+        },
+        {
+            "name": "106"
+        },
+        {
+            "name": "173"
+        },
+        {
+            "name": "500"
+        },
+        {
+            "name": "612"
+        },
+        {
+            "name": "939"
+        },
+        {
+            "name": "969"
+        },
+        {
+            "name": "999"
+        },
+        {
+            "name": "classd"
+        },
+        {
+            "name": "hcz"
+        },
+        {
+            "name": "lcz"
+        }
+    ]
+}
