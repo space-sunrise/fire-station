@@ -55,6 +55,7 @@
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
+  - type: StationRecordKeyStorage
   - type: Destructible
     thresholds:
     - trigger:
