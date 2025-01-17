@@ -16,6 +16,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobHeadOfPersonnel
@@ -36,6 +37,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # Silicons
 - type: roleLoadout
@@ -64,6 +66,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobBartender
@@ -83,6 +86,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobServiceWorker
@@ -100,6 +104,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobChef
@@ -120,6 +125,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobLibrarian
@@ -137,6 +143,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobLawyer
@@ -155,6 +162,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobChaplain
@@ -176,6 +184,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobJanitor
@@ -197,6 +206,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobBotanist
@@ -216,6 +226,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobClown
@@ -235,6 +246,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobMime
@@ -255,6 +267,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobMusician
@@ -274,6 +287,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # Cargo
 - type: roleLoadout
@@ -296,6 +310,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobCargoTechnician
@@ -316,6 +331,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobSalvageSpecialist
@@ -334,6 +350,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # Engineering
 - type: roleLoadout
@@ -356,6 +373,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobTechnicalAssistant
@@ -372,6 +390,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobStationEngineer
@@ -393,6 +412,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobAtmosphericTechnician
@@ -412,6 +432,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # Science
 - type: roleLoadout
@@ -435,6 +456,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobScientist
@@ -458,6 +480,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobResearchAssistant
@@ -475,6 +498,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # Security
 - type: roleLoadout
@@ -498,6 +522,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobWarden
@@ -519,6 +544,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobSecurityOfficer
@@ -547,6 +573,7 @@
   - GuardJumpsuit
   - GuardArmorVest
   - GuardShoes
+  - CommonMiscItems
   # Fire-Station-End
 
 - type: roleLoadout
@@ -569,6 +596,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobSecurityCadet
@@ -592,6 +620,7 @@
   - GuardArmorVest
   - GuardShoes
   - GuardCadetHead
+  - CommonMiscItems
   # Fire-Station-End
 
 # Medical
@@ -617,6 +646,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobMedicalDoctor
@@ -640,6 +670,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobMedicalIntern
@@ -657,6 +688,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobChemist
@@ -677,6 +709,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobParamedic
@@ -699,6 +732,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # Wildcards
 - type: roleLoadout
@@ -716,6 +750,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobReporter
@@ -733,6 +768,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobPsychologist
@@ -751,6 +787,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobBoxer
@@ -769,6 +806,7 @@
   - Socks
   - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # These loadouts are used for non-crew spawns, like off-station antags and event mobs
 # They will be used without player configuration, thus they will only ever apply what is forced by MinLimit
