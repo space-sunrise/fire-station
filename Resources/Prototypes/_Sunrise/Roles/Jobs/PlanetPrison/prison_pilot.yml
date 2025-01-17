@@ -10,6 +10,7 @@
   startingGear: PrisonPilotGear
   icon: "JobIconPrisonPilot"
   alwaysUseSpawner: true
+  setPreference: false # Fire
   supervisors: job-supervisors-head-of-prison
   canBeAntag: false
   displayWeight: 80
