@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Content.Client._Scp.Scp096.Ui;
 using Content.Client.Overlays;
+using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Shared._Scp.Scp096;
-using Content.Shared.Inventory.Events;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
@@ -27,24 +27,9 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
 
         SubscribeLocalEvent<Scp096TargetComponent, GetStatusIconsEvent>(OnGetStatusIcon);
 
-        _uiManager.OnScreenChanged += (screens) =>
-        {
-            RemoveWidget();
-        };
-    }
-
-    protected override void UpdateInternal(RefreshEquipmentHudEvent<Scp096Component> args)
-    {
-        base.UpdateInternal(args);
-
-        var player = _playerManager.LocalSession?.AttachedEntity;
-
-        if (!HasComp<Scp096Component>(player))
-        {
-            return;
-        }
-
-        EnsureWidgetExist();
+        var gameplayStateLoad = _uiManager.GetUIController<GameplayStateLoadController>();
+        gameplayStateLoad.OnScreenLoad += EnsureWidgetExist;
+        gameplayStateLoad.OnScreenUnload += RemoveWidget;
     }
 
     private void EnsureWidgetExist()
@@ -73,7 +58,6 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
 
         if (_widget == null)
         {
-            EnsureWidgetExist();
             return;
         }
 
