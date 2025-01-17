@@ -8,4 +8,4 @@ earlyleave-cryo-announcement =
         [epicene] были перемещены
        *[neuter] был перемещён
     } в криогенное хранилище!
-earlyleave-cryo-sender = Станция
+earlyleave-cryo-sender = Система Оповещения Комплекса

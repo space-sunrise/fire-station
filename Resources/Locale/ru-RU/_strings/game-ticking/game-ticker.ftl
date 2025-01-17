@@ -7,7 +7,7 @@ game-ticker-unknown-role = Неизвестный
 game-ticker-delay-start = Начало раунда было отложено на { $seconds } секунд.
 game-ticker-pause-start = Начало раунда было приостановлено.
 game-ticker-pause-start-resumed = Отсчёт начала раунда возобновлён.
-game-ticker-player-join-game-message = Добро пожаловать на Космическую Станцию 14! Если вы играете впервые, обязательно нажмите ESC на клавиатуре и прочитайте правила игры, а также не бойтесь просить помощи в "Админ помощь".
+game-ticker-player-join-game-message = Добро пожаловать в Фонд SCP от проекта Fire Station! Если вы играете впервые, обязательно нажмите ESC на клавиатуре и прочитайте правила игры, а также не бойтесь просить помощи в "Админ помощь".
 game-ticker-get-info-text =
     Текущий раунд: [color=white]#{ $roundId }[/color]
     Текущее количество игроков: [color=white]{ $playerCount }[/color]
@@ -36,9 +36,9 @@ latejoin-arrival-announcement =
         [female] прибыла
         [epicene] прибыли
        *[neuter] прибыл
-    } на станцию!
-latejoin-arrival-announcement-special = { $job } { $character } на борту!
-latejoin-arrival-sender = Станции
+    } в Комплекс!
+latejoin-arrival-announcement-special = { $job } { $character } в Комплексе!
+latejoin-arrival-sender = Комплекса
 latejoin-arrivals-direction = Вскоре прибудет шаттл, который доставит вас на станцию.
 latejoin-arrivals-direction-time = Шаттл, который доставит вас на станцию, прибудет через { $time }.
 latejoin-arrivals-dumped-from-shuttle = Таинственная сила не позволяет вам улететь на шаттле прибытия.
