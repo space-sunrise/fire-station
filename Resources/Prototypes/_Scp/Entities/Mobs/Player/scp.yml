@@ -182,6 +182,9 @@
     angle: 0
     animation: WeaponArcPunch
     soundHit: /Audio/_Scp/Scp106/hit.ogg
+    damage:
+      types:
+        Cellular: 10
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2
