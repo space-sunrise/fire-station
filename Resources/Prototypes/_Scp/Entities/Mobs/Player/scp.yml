@@ -145,7 +145,7 @@
     footstepSoundCollection:
       collection: FootstepScp173Classic
   - type: FootprintEmitter
-    walkStepInterval: 0.3
+    walkStepInterval: 0.1
     leftBareFootState:
       - dragging-1
       - dragging-2

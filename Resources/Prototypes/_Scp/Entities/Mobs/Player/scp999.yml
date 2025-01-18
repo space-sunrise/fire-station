@@ -144,6 +144,20 @@
     reflects:
     - Energy
     - NonEnergy
+  - type: FootprintEmitter
+    walkStepInterval: 0.3
+    leftBareFootState:
+    - dragging-1
+    - dragging-2
+    - dragging-3
+    - dragging-4
+    - dragging-5
+    rightBareFootState:
+    - dragging-1
+    - dragging-2
+    - dragging-3
+    - dragging-4
+    - dragging-5
   - type: PassiveDamage
     allowedStates:
     - Alive
