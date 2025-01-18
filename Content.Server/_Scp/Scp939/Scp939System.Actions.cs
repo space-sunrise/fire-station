@@ -68,7 +68,12 @@ public sealed partial class Scp939System
             Dirty(ent, ttsComponent);
         }
 
-        _chatSystem.TrySendInGameICMessage(ent, messagePair.Key, InGameICChatType.Speak, ChatTransmitRange.Normal, nameOverride:messagePair.Value.Key);
+        _chatSystem.TrySendInGameICMessage(ent,
+            messagePair.Key,
+            InGameICChatType.Speak,
+            ChatTransmitRange.Normal,
+            nameOverride: messagePair.Value.Key,
+            ignoreActionBlocker: true);
 
         args.Handled = true;
     }
