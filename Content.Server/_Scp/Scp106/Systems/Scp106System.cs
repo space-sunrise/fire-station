@@ -46,7 +46,7 @@ public sealed class Scp106System : SharedScp106System
 
     private void OnComponentShutdown(EntityUid uid, Scp106PhantomComponent component, ComponentShutdown args)
     {
-        _mindSystem.TryGetMind(uid, out var mindId, out var mindComponent);
+        _mindSystem.TryGetMind(uid, out var mindId, out _);
         _mindSystem.TransferTo(mindId, component.Scp106BodyUid);
     }
 
@@ -197,7 +197,9 @@ public sealed class Scp106System : SharedScp106System
 
             tile = new Vector2i(randomX, randomY);
             if (_atmosphere.IsTileSpace(targetGrid, Transform(targetGrid).MapUid, tile)
-                || _atmosphere.IsTileAirBlocked(targetGrid, tile, mapGridComp: gridComp))
+                || _atmosphere.IsTileAirBlocked(targetGrid, tile, mapGridComp: gridComp)
+                || !_map.TryGetTileRef(targetGrid, gridComp, tile, out var tileRef)
+                || tileRef.Tile.IsEmpty)
             {
                 continue;
             }

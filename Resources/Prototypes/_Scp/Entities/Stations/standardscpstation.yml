@@ -17,6 +17,7 @@
   # - BaseStationCentComm  # У нас будет ЦК
   - BaseStationTransitHub
   - BaseStationMogGroups  # Спавн космодесанта
+  - BaseStationAllEventsEligible
   categories: [ HideSpawnMenu ]
   components:
   - type: Transform
