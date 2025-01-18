@@ -193,6 +193,8 @@ public sealed class Scp173System : SharedScp173System
 
             if (doorStuffChance <= ToggleDoorStuffChance && lockedStuff.TryGetComponent(ent, out var lockComp) && lockComp.Locked)
                 _lock.Unlock(ent, args.Performer, lockComp);
+            else // Нельзя открывать контейнеры без открытия замка, иначе он потом не закроется
+                return;
 
             if (doorStuffChance <= ToggleDoorStuffChance && doors.TryGetComponent(ent, out var doorComp) && doorComp.State is not DoorState.Open)
                 _door.StartOpening(ent);
@@ -232,7 +234,7 @@ public sealed class Scp173System : SharedScp173System
         _audio.PlayPvs(_clogSound, ent);
 
         FixedPoint2 total = 0;
-        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, 5).ToList();
+        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, 6).ToList();
         foreach (var puddle in puddles)
         {
             if (!puddle.Comp.Solution.HasValue)
