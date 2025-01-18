@@ -21,7 +21,7 @@
     - state: orange
     - state: id-cook
   - type: PresetIdCard
-    job: ClassD
+    job: ClassDCook
 
 - type: entity
   parent: ClassDIDCard
@@ -33,4 +33,4 @@
     - state: orange
     - state: id-botanist
   - type: PresetIdCard
-    job: ClassD
+    job: ClassDBotanist
