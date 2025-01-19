@@ -19,5 +19,5 @@ public sealed partial class ClothingAddActionsComponent : Component
     public List<EntityUid> ActionEntities = new();
 
     [AutoNetworkedField]
-    public EntityUid ActionsOwner;
+    public EntityUid? ActionsOwner;
 }
