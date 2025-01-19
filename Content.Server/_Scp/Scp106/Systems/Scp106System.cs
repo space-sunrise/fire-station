@@ -5,21 +5,23 @@ using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Systems;
 using Content.Server.Gateway.Systems;
 using Content.Server.Ghost;
-using Content.Server.Light.Components;
+using Content.Server.Jittering;
 using Content.Server.Popups;
+using Content.Server.Speech.EntitySystems;
 using Content.Server.Station.Components;
 using Content.Server.Store.Systems;
+using Content.Server.Stunnable;
 using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Systems;
-using Content.Shared.FixedPoint;
+using Content.Shared.Actions;
+using Content.Shared.Alert;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
-using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
-using Content.Shared.SSDIndicator;
+using Content.Shared.StatusEffect;
 using Content.Shared.Store.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
@@ -43,8 +45,11 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly StoreSystem _store = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly ChatSystem _chatSystem = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly AlertsSystem _alerts = default!;
+    [Dependency] private readonly StunSystem _stunSystem = default!;
+    [Dependency] private readonly JitteringSystem _jittering = default!;
+    [Dependency] private readonly StutteringSystem _stuttering = default!;
 
     public override void Initialize()
     {
@@ -61,16 +66,17 @@ public sealed class Scp106System : SharedScp106System
 
         // Abilities in that store
         SubscribeLocalEvent<Scp106Component, Scp106BoughtPhantomAction>(OnBoughtPhantom);
-        SubscribeLocalEvent<Scp106Component, Scp106BoughtCorporealPhantomAction>(OnBoughtCorporealPhantom);
+        SubscribeLocalEvent<Scp106Component, Scp106UpgradePhantomAction>(OnUpgradePhantom);
     }
 
-    private void OnBoughtCorporealPhantom(EntityUid uid,
+    private void OnUpgradePhantom(EntityUid uid,
         Scp106Component component,
-        Scp106BoughtCorporealPhantomAction args)
+        Scp106UpgradePhantomAction args)
     {
-        component.AmountOfCorporealPhantoms += 1;
+        if (!TryComp<InstantActionComponent>(uid, out var instantActionComponent))
+            return;
 
-        Dirty(uid, component);
+        instantActionComponent.UseDelay = TimeSpan.FromSeconds(150);
     }
 
     public override bool PhantomTeleport(Scp106BecomeCorporealPhantomActionEvent args)
@@ -97,7 +103,7 @@ public sealed class Scp106System : SharedScp106System
             if (!TryComp<Scp106Component>(scp106, out var scp106Component))
                 return false;
 
-            scp106Component.AmountOfCorporealPhantoms -= 1;
+            scp106Component.Essence -= 10;
 
             Dirty(scp106, scp106Component);
 
@@ -141,6 +147,8 @@ public sealed class Scp106System : SharedScp106System
 
     private void OnMapInit(Entity<Scp106Component> ent, ref MapInitEvent args)
     {
+        _alerts.ShowAlert(ent, ent.Comp.Scp106Alert);
+
         var marks = SearchForMarks();
         if (marks.Count == 0)
             _ = _stairs.GenerateFloor();
@@ -301,15 +309,15 @@ public sealed class Scp106System : SharedScp106System
         {
             scp106Component.Accumulator += frameTime;
 
-            if (scp106Component.Accumulator < 30)
+            if (scp106Component.Accumulator < 1)
                 continue;
 
-            scp106Component.BackroomsAccumulator += 30;
+            scp106Component.BackroomsAccumulator += 1;
 
-            scp106Component.Accumulator -= 30;
+            scp106Component.Accumulator -= 1;
+            scp106Component.Essence += 1;
             scp106Component.HumansInBackrooms = 0;
 
-            _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { "LifeEssence", 1f } }, scp106Uid);
 
             if (scp106Component.BackroomsAccumulator < 60)
             {
@@ -330,8 +338,8 @@ public sealed class Scp106System : SharedScp106System
 
                     if (scp106Component.HumansInBackrooms >= 10)
                     {
-                        _store.TryAddCurrency(new Dictionary<string, FixedPoint2>() { { "LifeEssence", 1f } },
-                            scp106Uid);
+                        // Тут должна быть логика события, например добавление особой абилки
+                        Dirty(scp106Uid, scp106Component);
                     }
                 }
             }
@@ -346,6 +354,17 @@ public sealed class Scp106System : SharedScp106System
             if (scp106Component.HumansInBackrooms >= 10)
             {
                 scp106Component.AnnouncementAccumulator = 0;
+
+                var boo = new GhostBooEvent();
+                RaiseLocalEvent(scp106Uid, boo, true);
+
+                var statusEffectQuery = EntityQueryEnumerator<StatusEffectsComponent>();
+                while (statusEffectQuery.MoveNext(out var ent, out var _))
+                {
+                    _stunSystem.TryParalyze(ent, TimeSpan.FromSeconds(5), true);
+                    _jittering.DoJitter(ent, TimeSpan.FromSeconds(15), true);
+                    _stuttering.DoStutter(ent, TimeSpan.FromSeconds(30), true);
+                }
 
                 _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("scp-10-humans-in-backrooms-alarm-announcement"),
                     null,
@@ -362,6 +381,7 @@ public sealed class Scp106System : SharedScp106System
                     false,
                     new AudioParams().WithVolume(-10));
             }
+
             Dirty(scp106Uid, scp106Component);
         }
     }

@@ -10,7 +10,7 @@ public sealed partial class Scp106RandomTeleportAction : InstantActionEvent {}
 
 public sealed partial class Scp106BecomePhantomAction : InstantActionEvent {}
 
-public sealed partial class Scp106BecomeCorporeaPhantomAction : InstantActionEvent {}
+public sealed partial class Scp106BecomeTeleportPhantomAction : InstantActionEvent {}
 
 public sealed partial class Scp106ReverseAction : EntityTargetActionEvent {}
 
@@ -20,7 +20,7 @@ public sealed partial class Scp106ShopAction : InstantActionEvent {}
 
 public sealed partial class Scp106BoughtPhantomAction : InstantActionEvent {}
 
-public sealed partial class Scp106BoughtCorporealPhantomAction : InstantActionEvent {}
+public sealed partial class Scp106UpgradePhantomAction : InstantActionEvent {}
 
 [Serializable, NetSerializable]
 public sealed partial class Scp106BackroomsActionEvent : SimpleDoAfterEvent { }

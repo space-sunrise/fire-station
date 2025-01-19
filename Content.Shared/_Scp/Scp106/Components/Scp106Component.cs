@@ -1,6 +1,9 @@
-﻿using Content.Shared.FixedPoint;
+﻿using Content.Shared._Scp.Mobs.Components;
+using Content.Shared.Alert;
+using Content.Shared.FixedPoint;
 using Content.Shared.Store;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared._Scp.Scp106.Components;
@@ -14,9 +17,14 @@ public sealed partial class Scp106Component : Component
     /// </summary>
     [DataField] public bool IsContained;
 
+    // Обычный фантом, позволяющий ходить сквозь шлюзы и если найдёт труп,
+    // переместится уже самому 106 на его место
+    // не поддается сдерживаю
     [DataField, AutoNetworkedField]
     public int AmoutOfPhantoms = 0;
 
+    // Фантом для телепортации
+    // поддается сдерживаю
     [DataField, AutoNetworkedField]
     public int AmountOfCorporealPhantoms = 0;
 
@@ -38,4 +46,7 @@ public sealed partial class Scp106Component : Component
 
     [AutoNetworkedField]
     public float HumansInBackrooms = 0;
+
+    [DataField("scp106LifeEssenceAlert")]
+    public ProtoId<AlertPrototype> Scp106Alert { get; set; } = "Scp106LifeEssence";
 }

@@ -223,7 +223,7 @@
   - type: ActionGrant
     actions:
     - Scp106BecomePhantom
-    - BecomeCorporeaPhantomAction
+    - BecomeTeleportPhantomAction
     - Scp106RandomTeleportAction
     - Scp106BackroomsAction
     - ActionScp106Shop

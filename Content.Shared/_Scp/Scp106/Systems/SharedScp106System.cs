@@ -11,6 +11,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Network;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Scp.Scp106.Systems;
 
@@ -36,7 +37,7 @@ public abstract class SharedScp106System : EntitySystem
         SubscribeLocalEvent<Scp106Component, Scp106BackroomsAction>(OnBackroomsAction);
         SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportAction>(OnRandomTeleportAction);
         SubscribeLocalEvent<Scp106Component, Scp106BecomePhantomAction>(OnScp106BecomePhantomAction);
-        SubscribeLocalEvent<Scp106Component, Scp106BecomeCorporeaPhantomAction>(OnBecomeCorporealPhantomAction);
+        SubscribeLocalEvent<Scp106Component, Scp106BecomeTeleportPhantomAction>(OnBecomeTeleportPhantomAction);
 
         SubscribeLocalEvent<Scp106Component, Scp106BackroomsActionEvent>(OnBackroomsDoAfter);
         SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportActionEvent>(OnTeleportDoAfter);
@@ -49,9 +50,9 @@ public abstract class SharedScp106System : EntitySystem
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseActionEvent>(OnScp106ReverseActionEvent);
     }
 
-    private void OnBecomeCorporealPhantomAction(EntityUid uid,
+    private void OnBecomeTeleportPhantomAction(EntityUid uid,
         Scp106Component component,
-        Scp106BecomeCorporeaPhantomAction args)
+        Scp106BecomeTeleportPhantomAction args)
     {
         if (component.IsContained)
         {
@@ -59,9 +60,9 @@ public abstract class SharedScp106System : EntitySystem
             return;
         }
 
-        if (component.AmountOfCorporealPhantoms <= 0)
+        if (component.Essence < 10)
         {
-            _popup.PopupEntity("Фантомы отсутствуют!", uid, PopupType.Large);
+            _popup.PopupEntity($"Недостаточно {10 - component.Essence} эссенции!", uid, PopupType.Large);
             return;
         }
 
@@ -174,6 +175,9 @@ public abstract class SharedScp106System : EntitySystem
 
     private void OnScp106BecomePhantomAction(EntityUid uid, Scp106Component component, Scp106BecomePhantomAction args)
     {
+        if (args.Handled)
+            return;
+
         if (component.AmoutOfPhantoms <= 0)
         {
             _popup.PopupEntity($"Фантомы отсутствуют!", uid, uid, PopupType.Large);
@@ -197,6 +201,7 @@ public abstract class SharedScp106System : EntitySystem
             return;
 
         scp106PhantomComponent.Scp106BodyUid = uid;
+        args.Handled = true;
         Dirty(uid, component);
     }
 
@@ -300,4 +305,13 @@ public abstract class SharedScp106System : EntitySystem
     public virtual void SendToHuman(EntityUid target) {}
 
     public virtual bool PhantomTeleport(Scp106BecomeCorporealPhantomActionEvent args) { return false; }
+
+}
+
+[NetSerializable, Serializable]
+public enum Scp106VisualLayers : byte
+{
+    Digit1,
+    Digit2,
+    Digit3
 }

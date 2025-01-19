@@ -29,16 +29,43 @@
 - type: entity
   id: Scp106BecomePhantom
   name: Стать фантомом.
-  description: "Войдите в новое воплощение чтобы найти себе раба!"
+  description: "Новое воплощение для поиска трупов. Фантом восстанавливается каждые 5 минут."
   components:
   - type: InstantAction
     event: !type:Scp106BecomePhantomAction
     raiseOnUser: true
     itemIconStyle: BigAction
-    useDelay: 1
+    useDelay: 300
     icon:
       sprite: _Scp/Actions/scp106-actions.rsi
       state: scp106_phantom
+
+- type: entity
+  id: ActionScp106Shop
+  name: Теневой магазин
+  description: "..."
+  components:
+  - type: InstantAction
+    event: !type:Scp106ShopAction
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_shop
+
+- type: entity
+  id: BecomeTeleportPhantomAction
+  name: Телепортация
+  description: "Удивите этих людишек."
+  components:
+    - type: InstantAction
+      event: !type:Scp106BecomeTeleportPhantomAction
+      itemIconStyle: BigAction
+      icon:
+        sprite: _Scp/Actions/scp106-actions.rsi
+        state: scp106_teleport
+
+### PHANTOM ABILITIES ### START ###
 
 - type: entity
   id: Scp106Reverse
@@ -71,28 +98,4 @@
       sprite: _Scp/Actions/scp106-actions.rsi
       state: scp106_phantom
 
-- type: entity
-  id: ActionScp106Shop
-  name: Теневой магазин
-  description: "..."
-  components:
-  - type: InstantAction
-    event: !type:Scp106ShopAction
-    raiseOnUser: true
-    itemIconStyle: BigAction
-    icon:
-      sprite: _Scp/Actions/scp106-actions.rsi
-      state: scp106_shop
-
-- type: entity
-  id: BecomeCorporeaPhantomAction
-  name: Бесплотный фантом
-  description: "Наблюдай"
-  components:
-    - type: InstantAction
-      event: !type:Scp106BecomeCorporeaPhantomAction
-      itemIconStyle: BigAction
-      useDelay: 20
-      icon:
-        sprite: _Scp/Actions/scp106-actions.rsi
-        state: scp106_teleport
+### PHANTOM ABILITIES ### END ###
