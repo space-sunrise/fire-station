@@ -24,7 +24,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     private readonly TimeSpan _blinkingInterval = TimeSpan.FromSeconds(8);
-    private readonly TimeSpan _blinkingDuration = TimeSpan.FromSeconds(2);
+    private readonly TimeSpan _blinkingDuration = TimeSpan.FromSeconds(2.4);
 
     private static readonly TimeSpan BlinkingIntervalVariance = TimeSpan.FromSeconds(4);
 
