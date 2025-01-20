@@ -29,7 +29,7 @@ public sealed partial class Scp106BackroomsActionEvent : SimpleDoAfterEvent { }
 public sealed partial class Scp106RandomTeleportActionEvent : SimpleDoAfterEvent { }
 
 [Serializable, NetSerializable]
-public sealed partial class Scp106BecomeCorporealPhantomActionEvent : SimpleDoAfterEvent {}
+public sealed partial class Scp106BecomeTeleportPhantomActionEvent : SimpleDoAfterEvent {}
 
 [Serializable, NetSerializable]
 public sealed partial class Scp106ReverseActionEvent : SimpleDoAfterEvent {}

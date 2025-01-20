@@ -48,5 +48,5 @@ public sealed partial class Scp106Component : Component
     public float HumansInBackrooms = 0;
 
     [DataField("scp106LifeEssenceAlert")]
-    public ProtoId<AlertPrototype> Scp106Alert { get; set; } = "Scp106LifeEssence";
+    public ProtoId<AlertPrototype> Scp106EssenceAlert { get; set; } = "Scp106LifeEssence";
 }

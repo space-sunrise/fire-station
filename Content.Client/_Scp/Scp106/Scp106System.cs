@@ -15,7 +15,7 @@ public sealed class Scp106System : EntitySystem
 
     private void OnUpdateAlert(Entity<Scp106Component> ent, ref UpdateAlertSpriteEvent args)
     {
-        if (args.Alert.ID != ent.Comp.Scp106Alert)
+        if (args.Alert.ID != ent.Comp.Scp106EssenceAlert)
             return;
 
         var sprite = args.SpriteViewEnt.Comp;

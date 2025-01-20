@@ -41,7 +41,7 @@ public abstract class SharedScp106System : EntitySystem
 
         SubscribeLocalEvent<Scp106Component, Scp106BackroomsActionEvent>(OnBackroomsDoAfter);
         SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportActionEvent>(OnTeleportDoAfter);
-        SubscribeLocalEvent<Scp106PhantomComponent, Scp106BecomeCorporealPhantomActionEvent>(OnBecomeCorporealPhantomActionEvent);
+        SubscribeLocalEvent<Scp106PhantomComponent, Scp106BecomeTeleportPhantomActionEvent>(OnBecomeTeleportPhantomActionEvent);
 
         // Phantom
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseAction>(OnScp106ReverseAction);
@@ -80,7 +80,7 @@ public abstract class SharedScp106System : EntitySystem
         var doAfterEventArgs = new DoAfterArgs(EntityManager,
             uid,
             TimeSpan.FromSeconds(5),
-            new Scp106BecomeCorporealPhantomActionEvent(),
+            new Scp106BecomeTeleportPhantomActionEvent(),
             phantom)
         {
             BreakOnMove = false,
@@ -92,9 +92,9 @@ public abstract class SharedScp106System : EntitySystem
         _doAfter.TryStartDoAfter(doAfterEventArgs);
     }
 
-    private void OnBecomeCorporealPhantomActionEvent(EntityUid uid,
+    private void OnBecomeTeleportPhantomActionEvent(EntityUid uid,
         Scp106PhantomComponent component,
-        Scp106BecomeCorporealPhantomActionEvent args)
+        Scp106BecomeTeleportPhantomActionEvent args)
     {
         if (args.Cancelled)
         {
@@ -177,12 +177,6 @@ public abstract class SharedScp106System : EntitySystem
     {
         if (args.Handled)
             return;
-
-        if (component.AmoutOfPhantoms <= 0)
-        {
-            _popup.PopupEntity($"Фантомы отсутствуют!", uid, uid, PopupType.Large);
-            return;
-        }
 
         if (!_serverNetManager.IsServer)
             return;
@@ -304,7 +298,7 @@ public abstract class SharedScp106System : EntitySystem
 
     public virtual void SendToHuman(EntityUid target) {}
 
-    public virtual bool PhantomTeleport(Scp106BecomeCorporealPhantomActionEvent args) { return false; }
+    public virtual bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args) { return false; }
 
 }
 

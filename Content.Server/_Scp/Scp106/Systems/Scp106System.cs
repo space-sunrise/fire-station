@@ -6,7 +6,6 @@ using Content.Server.Chat.Systems;
 using Content.Server.Gateway.Systems;
 using Content.Server.Ghost;
 using Content.Server.Jittering;
-using Content.Server.Popups;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Station.Components;
 using Content.Server.Store.Systems;
@@ -18,6 +17,7 @@ using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Random.Helpers;
@@ -73,13 +73,18 @@ public sealed class Scp106System : SharedScp106System
         Scp106Component component,
         Scp106UpgradePhantomAction args)
     {
-        if (!TryComp<InstantActionComponent>(uid, out var instantActionComponent))
+        if (!TryComp<ActionsContainerComponent>(uid, out var actionsContainerComponent))
             return;
 
-        instantActionComponent.UseDelay = TimeSpan.FromSeconds(150);
+        if (!TryComp<MindContainerComponent>(uid, out var mindContainerComponent))
+            return;
+
+        args.Action.Comp.UseDelay = TimeSpan.FromSeconds(150);
+
+        // actionsContainerComponent.Container.
     }
 
-    public override bool PhantomTeleport(Scp106BecomeCorporealPhantomActionEvent args)
+    public override bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args)
     {
         if (args.Args.EventTarget == null)
             return false;
@@ -147,7 +152,7 @@ public sealed class Scp106System : SharedScp106System
 
     private void OnMapInit(Entity<Scp106Component> ent, ref MapInitEvent args)
     {
-        _alerts.ShowAlert(ent, ent.Comp.Scp106Alert);
+        _alerts.ShowAlert(ent, ent.Comp.Scp106EssenceAlert);
 
         var marks = SearchForMarks();
         if (marks.Count == 0)

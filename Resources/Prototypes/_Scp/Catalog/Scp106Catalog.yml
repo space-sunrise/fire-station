@@ -1,6 +1,6 @@
 - type: listing
   id: Scp106UpgradeTeleportPhantom
-  name: Улучшить фант
+  name: Улучшить фантомизацию
   description: Уменьшает время для восстановления фантома вдвое.
   productEvent: !type:Scp106UpgradePhantomAction
   categories:
