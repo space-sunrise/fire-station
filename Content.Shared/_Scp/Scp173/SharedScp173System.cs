@@ -55,7 +55,7 @@ public abstract class SharedScp173System : EntitySystem
 
         SubscribeLocalEvent<Scp173Component, ChangeDirectionAttemptEvent>(OnDirectionAttempt);
         SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
-        SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnInput);
+        SubscribeLocalEvent<Scp173Component, MoveEvent>(OnInput);
 
         #endregion
 
@@ -93,7 +93,7 @@ public abstract class SharedScp173System : EntitySystem
             args.Cancel();
     }
 
-    private void OnInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
+    private void OnInput(Entity<Scp173Component> ent, ref MoveEvent args)
     {
         _blocker.UpdateCanMove(ent);
     }
