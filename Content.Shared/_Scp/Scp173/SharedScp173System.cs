@@ -28,9 +28,6 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly ILogManager _logMan = default!;
-
-    private ISawmill _sawmill = default!;
 
     private const float ContainmentRoomSearchRadius = 4f;
 
@@ -66,9 +63,6 @@ public abstract class SharedScp173System : EntitySystem
         SubscribeLocalEvent<Scp173Component, Scp173BlindAction>(OnBlind);
 
         #endregion
-
-        _sawmill = _logMan.GetSawmill("Scp173");
-        _sawmill.Level = LogLevel.Debug;
     }
 
     private void OnInit(Entity<Scp173Component> ent, ref ComponentInit args)
@@ -159,16 +153,12 @@ public abstract class SharedScp173System : EntitySystem
         if (IsWithinViewAngle(scpUid, eye, 120f))
             return true;
 
-        // Временная мера для дебага 173
-        _sawmill.Debug($"Entity: {Name(eye)}, {eye.Owner} \n Is blind: {_blinking.IsBlind(eye.Owner, eye.Comp, true)}");
         if (_blinking.IsBlind(eye.Owner, eye.Comp, true))
             return true;
 
         var canSeeAttempt = new CanSeeAttemptEvent();
         RaiseLocalEvent(eye, canSeeAttempt);
 
-        // Временная мера для дебага 173
-        _sawmill.Debug($"Entity: {Name(eye)}, {eye.Owner} \n Another is blind: {canSeeAttempt.Blind}");
         if (canSeeAttempt.Blind)
             return true;
 
@@ -178,9 +168,6 @@ public abstract class SharedScp173System : EntitySystem
     private bool IsWithinViewAngle(EntityUid scpEntity, EntityUid targetEntity, float maxAngle)
     {
         var angle = FindAngleBetween(scpEntity, targetEntity);
-
-        // Временная мера для поиска говна по 173 на сервере, потом ревернуть или закомментировать
-        _sawmill.Debug($"Entity: {Name(targetEntity)}, {targetEntity} \nAngle: {angle} \nView FOV: {maxAngle}, but i think real is {maxAngle * 2} \nCan see scp173?: {angle < maxAngle}");
 
         // Проверка: угол должен быть больше или равен maxAngle, чтобы SCP был вне поля зрения
         return angle >= maxAngle;
