@@ -177,27 +177,31 @@ public sealed class Scp173System : SharedScp173System
             if (lights.HasComp(ent))
                 _ghost.DoGhostBooEvent(ent);
 
-            // Чтобы 173 не застревал в дверях, в попытках их выломать по 5 минут, когда уже сбежал
-
+            // Снимаем болты
             if (_random.Prob(ToggleDoorStuffChance) && boltedDoors.TryComp(ent, out var doorBoltComp) && doorBoltComp.BoltsDown)
                 _door.SetBoltsDown((ent, doorBoltComp), false, predicted: true);
 
+            // Открываем шлюзы
+            if (_random.Prob(ToggleDoorStuffChance) && doors.TryComp(ent, out var doorComp) && doorComp.State is not DoorState.Open)
+                _door.StartOpening(ent);
+
+            // Кешируем шанс, так как его придется использовать несколько раз
             var unlockProb = _random.Prob(ToggleDoorStuffChance);
 
+            // Если шанс сработал и замок закрыт, то мы открываем замок.
+            // Если ШАНС НЕ сработал, но замок есть и закрыт, то мы ничего не делаем
+            // Иначе закрытые контейнеры станут открытыми, но замок останется закрыт и их невозможно будет закрыть, и исправить замок
             if (unlockProb && lockedStuff.TryComp(ent, out var lockComp) && lockComp.Locked)
                 _lock.Unlock(ent, args.Performer, lockComp);
             else if (!unlockProb && lockedStuff.TryComp(ent, out var lockComp1) && lockComp1.Locked)
                 continue;  // Нельзя открывать контейнеры без открытия замка, иначе он потом не закроется
 
-            // randomly opens some lockers and such.
+            // Открываем шкафы и подобные хранилища. Так как проверка на замок уже есть можно не беспокоиться
             if (entityStorage.TryComp(ent, out var entityStorageComponent) && !entityStorageComponent.Open)
             {
                 _entityStorage.OpenStorage(ent, entityStorageComponent);
                 _audioSystem.PlayPvs(_storageOpenSound, ent);
             }
-
-            if (_random.Prob(ToggleDoorStuffChance) && doors.TryComp(ent, out var doorComp) && doorComp.State is not DoorState.Open)
-                _door.StartOpening(ent);
         }
 
         // TODO: Sound.
@@ -234,7 +238,7 @@ public sealed class Scp173System : SharedScp173System
         _audio.PlayPvs(_clogSound, ent);
 
         FixedPoint2 total = 0;
-        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, 6).ToList();
+        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, 8).ToList();
         foreach (var puddle in puddles)
         {
             if (!puddle.Comp.Solution.HasValue)
