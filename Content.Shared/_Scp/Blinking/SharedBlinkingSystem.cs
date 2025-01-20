@@ -69,6 +69,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
                 continue;
             }
 
+            // TODO: Перенести на ивенты
             if (_closingSystem.AreEyesClosed(uid))
             {
                 ResetBlink(uid, blinkableComponent);
@@ -77,6 +78,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
 
             var currentTime = _gameTiming.CurTime;
 
+            // TODO: Пофиксить, что первый раз все моргают одновременно
             if (currentTime >= blinkableComponent.NextBlink)
             {
                 Blink(uid, blinkableComponent);
