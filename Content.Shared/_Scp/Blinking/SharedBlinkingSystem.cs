@@ -92,7 +92,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
         Dirty(uid, component);
 
         if (_gameTiming.IsFirstTimePredicted && _player.LocalEntity == uid)
-            _audio.PlayEntity(_blinkSound, uid, uid);
+            _audio.PlayGlobal(_blinkSound, Filter.Local(), true);
 
         var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
 
