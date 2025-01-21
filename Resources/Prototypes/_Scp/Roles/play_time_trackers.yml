@@ -2,6 +2,12 @@
   id: JobClassD
 
 - type: playTimeTracker
+  id: JobClassDCook
+
+- type: playTimeTracker
+  id: JobClassDBotanist
+
+- type: playTimeTracker
   id: JobScp173
 
 - type: playTimeTracker

@@ -1,0 +1,40 @@
+﻿- type: soundCollection
+  id: HurtScp999
+  files:
+  - /Audio/_Scp/Scp999/Hurt/hurt1.ogg
+  - /Audio/_Scp/Scp999/Hurt/hurt2.ogg
+  - /Audio/_Scp/Scp999/Hurt/hurt3.ogg
+  - /Audio/_Scp/Scp999/Hurt/hurt4.ogg
+  - /Audio/_Scp/Scp999/Hurt/hurt5.ogg
+
+- type: soundCollection
+  id: HappyScp999
+  files:
+  - /Audio/_Scp/Scp999/Happy/happy1.ogg
+  - /Audio/_Scp/Scp999/Happy/happy2.ogg
+  - /Audio/_Scp/Scp999/Happy/happy3.ogg
+  - /Audio/_Scp/Scp999/Happy/happy4.ogg
+  - /Audio/_Scp/Scp999/Happy/happy5.ogg
+  - /Audio/_Scp/Scp999/Happy/happy6.ogg
+  - /Audio/_Scp/Scp999/Happy/happy7.ogg
+
+- type: soundCollection
+  id: WallTransformScp999
+  files:
+  - /Audio/_Scp/Scp999/Wall/wall1.ogg
+  - /Audio/_Scp/Scp999/Wall/wall2.ogg
+  - /Audio/_Scp/Scp999/Wall/wall3.ogg
+  - /Audio/_Scp/Scp999/Wall/wall4.ogg
+  - /Audio/_Scp/Scp999/Wall/wall5.ogg
+  - /Audio/_Scp/Scp999/Wall/wall6.ogg
+
+- type: soundCollection
+  id: IdleScp999
+  files:
+  - /Audio/_Scp/Scp999/Idle/sound1.ogg
+  - /Audio/_Scp/Scp999/Idle/sound2.ogg
+  - /Audio/_Scp/Scp999/Idle/sound3.ogg
+  - /Audio/_Scp/Scp999/Idle/sound4.ogg
+  - /Audio/_Scp/Scp999/Idle/sound5.ogg
+  - /Audio/_Scp/Scp999/Idle/sound6.ogg
+  - /Audio/_Scp/Scp999/Idle/sound7.ogg

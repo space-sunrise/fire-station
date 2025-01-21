@@ -29,7 +29,6 @@
         Base: default
       Dead:
         Base: dead
-  - type: Muted
   - type: Fixtures
     fixtures:
       fix1:
@@ -64,29 +63,45 @@
         volume: 3
   - type: Damageable
     damageModifierSet: SCP-999
-  - type: Bloodstream
-    bloodReagent: Slime  # TODO: сделай кастомный реагент в крови
-    bloodlossDamage:
-      types:
-        Bloodloss:
-          0.5
-    bloodlossHealDamage:
-      types:
-        Bloodloss:
-          -0.25
   - type: Body
     prototype: Slimes
     requiredLegs: 1
   - type: InteractionPopup
     interactDelay: 0.5
     interactSuccessSpawn: EffectHearts
-    interactSuccessSound: /Audio/Animals/cat_meow.ogg
+    interactSuccessSound:
+      collection: HappyScp999
     successChance: 1
+  - type: SleepEmitSound
+    snore: /Audio/Voice/Misc/silly_snore.ogg
+    interval: 10
+  - type: RangedDamageSound
+    soundGroups:
+      Brute:
+        collection:
+          HurtScp999
+      Burn:
+        collection:
+          HurtScp999
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection:
+          HurtScp999
+      Burn:
+        collection:
+          HurtScp999
+  - type: EmitSoundRandomly
+    sound:
+      collection: IdleScp999
+      params:
+        maxDistance: 6
   - type: Puller
     needsHands: false
   - type: SmileSlime
     action: Scp999Affection
-    soundSpecifier: /Audio/Animals/cat_meow.ogg
+    soundSpecifier:
+      collection: HappyScp999
     actionTime: 5
     affectionPopupText: "smile-affection-popup"
     damageSpecifier:
@@ -112,18 +127,37 @@
     - goodfeeling-artifact-13
     - goodfeeling-artifact-14
   - type: Speech
+    speechSounds: Scp999Speech
+    speechVerb: SmallMob
+    allowedEmotes: [ 'Squeak' ]
   - type: Grammar
     attributes:
       proper: true
       gender: male
   - type: TypingIndicator
     proto: SCP-999
+  - type: ReplacementAccent
+    accent: mouse
   - type: Hunger
   - type: Reflect
     reflectProb: 0.2
     reflects:
     - Energy
     - NonEnergy
+  - type: FootprintEmitter
+    walkStepInterval: 0.3
+    leftBareFootState:
+    - dragging-1
+    - dragging-2
+    - dragging-3
+    - dragging-4
+    - dragging-5
+    rightBareFootState:
+    - dragging-1
+    - dragging-2
+    - dragging-3
+    - dragging-4
+    - dragging-5
   - type: PassiveDamage
     allowedStates:
     - Alive
@@ -140,3 +174,12 @@
     - Scp999Rest
   - type: TTS
     voice: Neco
+
+- type: speechSounds
+  id: Scp999Speech
+  saySound:
+    collection: IdleScp999
+  askSound:
+    collection: IdleScp999
+  exclaimSound:
+    collection: IdleScp999

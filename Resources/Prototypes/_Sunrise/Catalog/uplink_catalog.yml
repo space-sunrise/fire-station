@@ -42,6 +42,11 @@
     Telecrystal: 2
   categories:
   - UplinkAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - AssaultOpsUplink
 
 - type: listing
   id: UplinkMagazineShotgun
@@ -56,6 +61,11 @@
     Telecrystal: 3
   categories:
   - UplinkAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - AssaultOpsUplink
 
 - type: listing
   id: UplinkMagazineShotgunIncendiary
@@ -167,7 +177,7 @@
   description: uplink-ammo-caselesskit-desc
   productEntity: CaselessAmmoKit
   cost:
-    Telecrystal: 13
+    Telecrystal: 15
   categories:
   - UplinkAmmo
   conditions:
@@ -362,6 +372,11 @@
     Telecrystal: 5
   categories:
   - UplinkAmmo
+  conditions:
+  - !type:StoreWhitelistCondition
+    whitelist:
+      tags:
+      - NukeOpsUplink
 
 # For the China-Lake
 - type: listing
@@ -479,6 +494,11 @@
     Telecrystal: 20
   categories:
   - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - AssaultOpsUplink
 
 - type: listing
   id: UplinkWeaponSyndieLaserPistol
@@ -492,6 +512,11 @@
     Telecrystal: 10
   categories:
   - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - AssaultOpsUplink
 
 - type: listing
   id: UplinkClothingBackpackSyndieDL6902Filled
@@ -575,6 +600,11 @@
     Telecrystal: 16
   categories:
   - UplinkWeaponry
+  conditions:
+  - !type:StoreWhitelistCondition
+    blacklist:
+      tags:
+      - AssaultOpsUplink
 
 - type: listing
   id: UplinkHardsuitSyndieCommander
@@ -855,7 +885,7 @@
   discountDownTo:
     Telecrystal: 6
   cost:
-    Telecrystal: 12
+    Telecrystal: 10
   categories:
   - UplinkChemicals
 
@@ -876,12 +906,12 @@
   id: UplinkLauncherSyringeRapid
   name: uplink-syringe-rapid-name
   description: uplink-syringe-rapid-desc
-  productEntity: LauncherSyringeRapid
+  productEntity: LauncherSyringeRapidFilled
   discountCategory: usualDiscounts
   discountDownTo:
     Telecrystal: 8
   cost:
-    Telecrystal: 16
+    Telecrystal: 14
   categories:
   - UplinkChemicals
 
@@ -1249,3 +1279,22 @@
     blacklist:
       components:
       - SurplusBundle
+
+# Jobs
+
+- type: listing
+  id: UplinkLauncherCreamPieFake
+  name: uplink-launcher-cream-pie-fake-name
+  description: uplink-launcher-cream-pie-fake-desc
+  productEntity: LauncherCreamPieFake
+  discountCategory: usualDiscounts
+  discountDownTo:
+    Telecrystal: 10
+  cost:
+    Telecrystal: 15
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Clown

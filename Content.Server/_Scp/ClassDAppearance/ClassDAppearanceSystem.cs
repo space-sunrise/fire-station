@@ -1,4 +1,4 @@
-﻿using Content.Shared.Mind.Components;
+﻿using Content.Shared._Scp.Other.ClassDAppearance;
 using Robust.Server.Audio;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
@@ -16,7 +16,9 @@ public sealed class ClassDAppearanceSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ClassDAppearanceComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<ClassDAppearanceComponent, PlayerAttachedEvent>(OnPlayerAttachedEvent);
+
+        // Прости сплик, но я 2 раза заспавнился за класс д на локалке и меня этот звук уже заебал
+        // SubscribeLocalEvent<ClassDAppearanceComponent, PlayerAttachedEvent>(OnPlayerAttachedEvent);
     }
 
     private void OnPlayerAttachedEvent(Entity<ClassDAppearanceComponent> ent, ref PlayerAttachedEvent args)

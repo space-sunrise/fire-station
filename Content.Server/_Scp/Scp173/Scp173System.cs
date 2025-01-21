@@ -63,6 +63,7 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
+    private readonly SoundSpecifier _clogSound = new SoundPathSpecifier("/Audio/_Scp/Scp173/clog.ogg");
     private const float ToggleDoorStuffChance = 0.2f;
 
     public override void Initialize()
@@ -165,36 +166,42 @@ public sealed class Scp173System : SharedScp173System
             dspec.DamageDict.Add("Structural", damageValue);
             _damageable.TryChangeDamage(ent, dspec);
 
-            // randomly opens some lockers and such.
-            if (entityStorage.TryGetComponent(ent, out var entityStorageComponent) && !entityStorageComponent.Open)
-            {
-                _lock.TryUnlock(ent, uid);
-                _entityStorage.OpenStorage(ent, entityStorageComponent);
-                _audioSystem.PlayPvs(_storageOpenSound, ent);
-            }
-
             // chucks items
-            if (items.HasComponent(ent) &&
+            if (items.HasComp(ent) &&
                 TryComp<PhysicsComponent>(ent, out var phys) && phys.BodyType != BodyType.Static)
             {
                 _throwing.TryThrow(ent, _random.NextAngle().ToWorldVec());
             }
 
             // flicker lights
-            if (lights.HasComponent(ent))
+            if (lights.HasComp(ent))
                 _ghost.DoGhostBooEvent(ent);
 
-            // Чтобы 173 не застревал в дверях, в попытках их выломать по 5 минут, когда уже сбежал
-            var doorStuffChance = _random.NextFloat();
-
-            if (doorStuffChance <= ToggleDoorStuffChance && boltedDoors.TryGetComponent(ent, out var doorBoltComp) && doorBoltComp.BoltsDown)
+            // Снимаем болты
+            if (_random.Prob(ToggleDoorStuffChance) && boltedDoors.TryComp(ent, out var doorBoltComp) && doorBoltComp.BoltsDown)
                 _door.SetBoltsDown((ent, doorBoltComp), false, predicted: true);
 
-            if (doorStuffChance <= ToggleDoorStuffChance && lockedStuff.TryGetComponent(ent, out var lockComp) && lockComp.Locked)
-                _lock.Unlock(ent, args.Performer, lockComp);
-
-            if (doorStuffChance <= ToggleDoorStuffChance && doors.TryGetComponent(ent, out var doorComp) && doorComp.State is not DoorState.Open)
+            // Открываем шлюзы
+            if (_random.Prob(ToggleDoorStuffChance) && doors.TryComp(ent, out var doorComp) && doorComp.State is not DoorState.Open)
                 _door.StartOpening(ent);
+
+            // Кешируем шанс, так как его придется использовать несколько раз
+            var unlockProb = _random.Prob(ToggleDoorStuffChance);
+
+            // Если шанс сработал и замок закрыт, то мы открываем замок.
+            // Если ШАНС НЕ сработал, но замок есть и закрыт, то мы ничего не делаем
+            // Иначе закрытые контейнеры станут открытыми, но замок останется закрыт и их невозможно будет закрыть, и исправить замок
+            if (unlockProb && lockedStuff.TryComp(ent, out var lockComp) && lockComp.Locked)
+                _lock.Unlock(ent, args.Performer, lockComp);
+            else if (!unlockProb && lockedStuff.TryComp(ent, out var lockComp1) && lockComp1.Locked)
+                continue;  // Нельзя открывать контейнеры без открытия замка, иначе он потом не закроется
+
+            // Открываем шкафы и подобные хранилища. Так как проверка на замок уже есть можно не беспокоиться
+            if (entityStorage.TryComp(ent, out var entityStorageComponent) && !entityStorageComponent.Open)
+            {
+                _entityStorage.OpenStorage(ent, entityStorageComponent);
+                _audioSystem.PlayPvs(_storageOpenSound, ent);
+            }
         }
 
         // TODO: Sound.
@@ -226,10 +233,12 @@ public sealed class Scp173System : SharedScp173System
 
         var tempSol = new Solution();
         tempSol.AddReagent(ent.Comp.Reagent, 25);
-        _puddle.TrySpillAt(coords, tempSol, out _);
+        _puddle.TrySpillAt(coords, tempSol, out _, false);
+
+        _audio.PlayPvs(_clogSound, ent);
 
         FixedPoint2 total = 0;
-        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, 5).ToList();
+        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, 8).ToList();
         foreach (var puddle in puddles)
         {
             if (!puddle.Comp.Solution.HasValue)

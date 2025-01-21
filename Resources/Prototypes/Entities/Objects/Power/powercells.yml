@@ -1,7 +1,7 @@
 - type: entity
   id: BasePowerCell
   abstract: true
-  parent: BaseItem
+  parent: [BaseItem, MachineComponentSounds] # Sunrise
   components:
   - type: Item
     storedRotation: -90
@@ -34,7 +34,7 @@
   - type: PowerCellVisuals
   - type: Riggable
   - type: HitscanBatteryAmmoProvider
-    proto: BulletRedLightLaser # Sunrise-Edit
+    proto: BulletRedLaser # Sunrise-Edit
     fireCost: 50
 
 - type: entity

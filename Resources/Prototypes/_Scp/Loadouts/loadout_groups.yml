@@ -28,10 +28,10 @@
   name: loadout-group-security-mantle
   minLimit: 0
   loadouts:
-  - SecurityMantle
+  - GuardMantle
 
 - type: loadoutGroup
-  id: GuardOuterClothing
+  id: GuardArmorVest
   name: loadout-group-security-outerclothing
   loadouts:
   - GuardArmorVest
@@ -51,3 +51,10 @@
   loadouts:
   - GuardHelmet
   - GuardHelmet2
+
+- type: loadoutGroup
+  id: CommonMiscItems
+  name: loadout-group-common-misc-items
+#  minLimit: 0 Временно, пока игроки не привыкли к карте
+  loadouts:
+  - PortableStationMap

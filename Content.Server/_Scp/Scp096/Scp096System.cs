@@ -1,16 +1,18 @@
-﻿using Content.Server.Defusable.WireActions;
+﻿using Content.Server._Scp.Misc.EmitSoundRandomly;
+using Content.Server.Defusable.WireActions;
 using Content.Server.Doors.Systems;
 using Content.Server.Power;
 using Content.Server.Storage.Components;
 using Content.Server.Storage.EntitySystems;
 using Content.Server.Wires;
 using Content.Shared._Scp.Scp096;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Doors.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lock;
-using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Wires;
 using Robust.Server.Audio;
+using Robust.Server.GameStates;
 using Robust.Shared.Audio;
 using Robust.Shared.Random;
 
@@ -24,6 +26,7 @@ public sealed partial class Scp096System : SharedScp096System
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly PvsOverrideSystem _pvsOverride = default!;
 
     private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
 
@@ -31,7 +34,15 @@ public sealed partial class Scp096System : SharedScp096System
     {
         base.Initialize();
 
+        SubscribeLocalEvent<Scp096Component, BeforeRandomlyEmittingSoundEvent>(OnEmitSoundRandomly);
+
         InitTargets();
+    }
+
+    private void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
+    {
+        if (ent.Comp.InRageMode || HasComp<SleepingComponent>(ent))
+            args.Cancel();
     }
 
     protected override void OnAttackAttempt(Entity<Scp096Component> ent, ref AttackAttemptEvent args)
@@ -88,6 +99,20 @@ public sealed partial class Scp096System : SharedScp096System
         }
 
         _audioSystem.PlayPvs(scpEntity.Comp.DoorSmashSoundCollection, doorEntity);
+    }
+
+    protected override void AddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid)
+    {
+        base.AddTarget(scpEntity, targetUid);
+
+        _pvsOverride.AddGlobalOverride(targetUid);
+    }
+
+    protected override void RemoveTarget(Entity<Scp096Component> scpEntity, Entity<Scp096TargetComponent?> targetEntity, bool removeComponent = true)
+    {
+        base.RemoveTarget(scpEntity, targetEntity, removeComponent);
+
+        _pvsOverride.RemoveGlobalOverride(targetEntity);
     }
 
 

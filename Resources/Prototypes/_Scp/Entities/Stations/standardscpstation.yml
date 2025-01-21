@@ -14,9 +14,11 @@
   - BaseStationGoal  # TODO: make this
   - BaseStationAntagsTargets  # Для предателей
   - BaseStationCryoTeleport  # Телепорт в крио. Я в нем уверен на 99%
-  - BaseStationCentComm  # У нас будет ЦК
+  # - BaseStationCentComm  # У нас будет ЦК
   - BaseStationTransitHub
   - BaseStationMogGroups  # Спавн космодесанта
+  - BaseStationCargo
+  - BaseStationAllEventsEligible
   categories: [ HideSpawnMenu ]
   components:
   - type: Transform

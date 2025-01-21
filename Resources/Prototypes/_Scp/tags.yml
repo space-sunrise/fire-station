@@ -22,3 +22,9 @@
 
 - type: Tag
   id: BackroomsMineshaft
+
+- type: Tag
+  id: ShuttleChair
+
+- type: Tag
+  id: ClassDSpawner

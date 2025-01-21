@@ -1,0 +1,43 @@
+﻿- type: soundCollection
+  id: FootstepScpTile
+  files:
+  - /Audio/_Scp/Effects/Footsteps/Metal/step1.ogg
+  - /Audio/_Scp/Effects/Footsteps/Metal/step2.ogg
+  - /Audio/_Scp/Effects/Footsteps/Metal/step3.ogg
+  - /Audio/_Scp/Effects/Footsteps/Metal/step4.ogg
+  - /Audio/_Scp/Effects/Footsteps/Metal/step5.ogg
+  - /Audio/_Scp/Effects/Footsteps/Metal/step6.ogg
+  - /Audio/_Scp/Effects/Footsteps/Metal/step7.ogg
+  - /Audio/_Scp/Effects/Footsteps/Metal/step8.ogg
+
+- type: soundCollection
+  id: FootstepScpStone
+  files:
+  - /Audio/_Scp/Effects/Footsteps/Stone/step1.ogg
+  - /Audio/_Scp/Effects/Footsteps/Stone/step2.ogg
+  - /Audio/_Scp/Effects/Footsteps/Stone/step3.ogg
+  - /Audio/_Scp/Effects/Footsteps/Stone/step4.ogg
+  - /Audio/_Scp/Effects/Footsteps/Stone/step5.ogg
+  - /Audio/_Scp/Effects/Footsteps/Stone/step6.ogg
+  - /Audio/_Scp/Effects/Footsteps/Stone/step7.ogg
+  - /Audio/_Scp/Effects/Footsteps/Stone/step8.ogg
+
+- type: soundCollection
+  id: FootstepScpSteel
+  files:
+  - /Audio/_Scp/Effects/Footsteps/Steel/step1.ogg
+  - /Audio/_Scp/Effects/Footsteps/Steel/step2.ogg
+  - /Audio/_Scp/Effects/Footsteps/Steel/step3.ogg
+  - /Audio/_Scp/Effects/Footsteps/Steel/step4.ogg
+
+- type: soundCollection
+  id: FootstepScpCatwalk
+  files:
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step1.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step2.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step3.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step4.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step5.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step6.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step7.ogg
+  - /Audio/_Scp/Effects/Footsteps/Catwalk/step8.ogg

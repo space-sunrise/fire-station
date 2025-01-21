@@ -27,6 +27,18 @@
         - GlassAirlockLayer
   - type: Transform
     noRot: false
+  # Fire start
+  - type: Door
+    crushDamage:
+      types:
+        Blunt: 15
+    openSound:
+      collection: AirlockLargeOpen
+    closeSound:
+      collection: AirlockLargeClose
+    denySound:
+      path: /Audio/_Scp/Objects/Machines/Airlocks/deny.ogg
+  # Fire end
 
 - type: entity
   id: TripleGlassAirlock
@@ -56,6 +68,19 @@
         - GlassAirlockLayer
   - type: Transform
     noRot: false
+  # Fire start
+  - type: Door
+    crushDamage:
+      types:
+        Blunt: 15
+    openSound:
+      collection: AirlockLargeOpen
+    closeSound:
+      collection: AirlockLargeClose
+    denySound:
+      path: /Audio/_Scp/Objects/Machines/Airlocks/deny.ogg
+  # Fire end
+
 
 # == airlocks == #
 

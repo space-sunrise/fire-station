@@ -183,7 +183,7 @@
     - SemiAuto
     - FullAuto
     soundGunshot:
-      path: /Audio/_Sunrise/Weapons/Guns/Laser/EG_XR.ogg
+      path: /Audio/_Sunrise/Weapons/Guns/Lasers/EG_XR.ogg
       params:
         pitch: 0.5
   - type: MagazineVisuals
@@ -233,7 +233,7 @@
     - SemiAuto
     - FullAuto
     soundGunshot:
-      path: /Audio/_Sunrise/Weapons/Guns/Laser/EG_Sniper.ogg
+      path: /Audio/_Sunrise/Weapons/Guns/Lasers/EG_Sniper.ogg
   - type: MagazineVisuals
     magState: mag
     steps: 3

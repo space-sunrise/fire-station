@@ -27,7 +27,6 @@
       max: 6 # Sunrise-Edit
       playerRatio: 20 # Sunrise-Edit
       lateJoinAdditional: true
-      allowNonHumans: true
       multiAntagSetting: None
       startingGear: ThiefGear
       #components:
@@ -53,7 +52,7 @@
   - type: AntagRandomObjectives
     sets:
     - groups: ChangelingObjectiveGroups
-    maxDifficulty: 10
+    maxDifficulty: 5
   - type: AntagSelection
     agentName: changeling-roundend-name
     definitions:
@@ -79,7 +78,7 @@
   - type: AntagRandomObjectives
     sets:
     - groups: VampireObjectiveGroups
-    maxDifficulty: 10
+    maxDifficulty: 5
   - type: AntagSelection
     agentName: vampire-roundend-name
     definitions:

@@ -17,6 +17,7 @@
   supervisors: job-supervisors-centcom
   canBeAntag: false
   alwaysUseSpawner: true
+  setPreference: false # Fire
   radioBold: true
   displayWeight: 100
   accessGroups:

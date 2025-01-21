@@ -9,6 +9,7 @@
   startingGear: PrisonerGear
   alwaysUseSpawner: true
   canBeAntag: false
+  setPreference: false # Fire
   icon: "JobIconPrisoner"
   supervisors: job-supervisors-security
   displayWeight: 0

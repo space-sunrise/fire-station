@@ -1,0 +1,6 @@
+﻿- type: soundCollection
+  id: IdleScp131
+  files:
+  - /Audio/_Scp/Scp131/Idle/sound1.ogg
+  - /Audio/_Scp/Scp131/Idle/sound2.ogg
+  - /Audio/_Scp/Scp131/Idle/sound3.ogg

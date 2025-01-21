@@ -10,13 +10,13 @@
 
 <div class="header" align="center">
 
-[![Discord](https://img.shields.io/discord/831352358520725506?label=Discord&logo=discord&logoColor=white)](https://discord.gg/ssJTANEa)
+[![Discord](https://img.shields.io/discord/831352358520725506?label=Discord&logo=discord&logoColor=white)](https://discord.gg/m4xAE2rxQx)
 [![Wiki](https://img.shields.io/badge/Wiki-SS14%20SUNRISE-blue)](https://sunrise14.top/wiki/)
 [![Steam](https://img.shields.io/badge/Steam-SS14%20SUNRISE-blue)](https://store.steampowered.com/app/1255460/Space_Station_14/)
 [![Client](https://img.shields.io/badge/Client-Download-blue)](https://spacestation14.io/about/nightlies/)
 [![GitHub](https://img.shields.io/github/stars/space-sunrise/space-station-14?style=social)](https://github.com/space-sunrise/space-station-14)
 
-# Space Station 14 - SUNRISE
+# Fire Station - SS14 + SCP
 
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/space-sunrise/space-station-14)
 ![GitHub Issues](https://img.shields.io/github/issues/space-sunrise/space-station-14)
@@ -24,7 +24,9 @@
 
 </div>
 
-Space Station 14 — это ролевая игра, вдохновлённая культовой классикой Space Station 13. Space Station 14 наполнена весельем и хаосом. С первого взгляда игра кажется сложной, и это так, но мы поможем тебе освоиться в этой игре и найти своё место. Игра работает на собственном движке [Robust Toolbox](https://github.com/space-wizards/RobustToolbox), написанном на C#.
+Fire Station - первый проект в Space Station 14, перенесший тематику Фонда SCP в рамки станции. Первый запуск проекта состоялся в далеко 2023ем году. А текущий перезапуск 2.0 перевернул положение дел, расширив механики SCP в десятки раз. Множество новых объектов, механики исследования, новые измерения, роли и карты. Fire Station уникальный проект, аналогов которому не существует.
+
+Каждый игрок проекта имеет право помочь в разработке сервера и предложить свое изменение создав PR.
 
 ## Документация
 

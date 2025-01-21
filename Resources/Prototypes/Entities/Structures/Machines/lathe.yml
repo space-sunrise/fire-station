@@ -151,6 +151,7 @@
       - LightBulb
       - LedLightBulb
       - DimLightBulb
+      - WarmLightBulb
       - Bucket
       - DrinkMug
       - DrinkMugMetal
@@ -367,7 +368,7 @@
       - EnergyDomeDirectionalTurtle
       # Sunrise-start
       - PowerCellHyper
-      - ClothingHeadHelmetPubgMore
+      - ClothingHeadHelmetPubg
       - MechPhasicScanningModule
       - HandCraftedNVD
       - BasicNVD
@@ -509,14 +510,13 @@
     - SodaDispenserMachineCircuitboard
     - SpaceHeaterMachineCircuitBoard
     - CutterMachineCircuitboard
-    - StationAnchorCircuitboard
     - SalvageMagnetMachineCircuitboard
     dynamicRecipes:
       - ThermomachineFreezerMachineCircuitBoard
       - HellfireFreezerMachineCircuitBoard
       - PortableScrubberMachineCircuitBoard
-      - CloningPodMachineCircuitboard
-      - MedicalScannerMachineCircuitboard
+      #- CloningPodMachineCircuitboard
+      #- MedicalScannerMachineCircuitboard
       - CryoPodMachineCircuitboard
       - VaccinatorMachineCircuitboard
       - DiagnoserMachineCircuitboard
@@ -543,7 +543,7 @@
       - RadarConsoleCircuitboard
       - TechDiskComputerCircuitboard
       - DawInstrumentMachineCircuitboard
-      - CloningConsoleComputerCircuitboard
+      #- CloningConsoleComputerCircuitboard
       - StasisBedMachineCircuitboard
       - OreProcessorIndustrialMachineCircuitboard
       - CargoTelepadMachineCircuitboard
@@ -591,6 +591,8 @@
       - JukeboxCircuitBoard
       - SMESAdvancedMachineCircuitboard
       - HolopadMachineCircuitboard
+      - ImplantExtractorMachineCircuitboard #Sunrise-Edit
+      - ExosuitFabricatorHyperConvectionMachineCircuitboard  #Sunrise-Edit
   - type: EmagLatheRecipes
     emagDynamicRecipes:
       - ShuttleGunDusterCircuitboard
@@ -930,8 +932,6 @@
       - MagazineBoxMagnumRubber
       - MagazineBoxRifleRubber
       - MagazineBoxLightRifleRubber
-      - MagazineLightRifleBoxIncendiary
-      - MagazineLightRifleBoxUranium
       - PowerCageCombat
       - WeaponMechCombatImmolationGun # Sunrise - Mechs
       - WeaponMechCombatSolarisLaser # Sunrise - Mechs
@@ -1107,6 +1107,9 @@
       - HemostatAdvanced
       - LauncherSyringeMed #Sunrise-Edit
       - LauncherSyringePistol #Sunrise-Edit
+      - LauncherSyringeRapid #Sunrise-Edit
+      - MiniSyringeCryostasis #Sunrise-Edit
+      - MiniSyringeBluespace #Sunrise-Edit
       - MiniSyringe #Sunrise-Edit
       - LeftArmCyber
       - RightArmCyber
@@ -1299,8 +1302,28 @@
       - CarpetPurple
       - CarpetCyan
       - CarpetWhite
+      # Bedsheets
+      - BedsheetBlack
+      - BedsheetBlue
+      - BedsheetBrown
+      - BedsheetGreen
+      - BedsheetGrey
+      - BedsheetOrange
+      - BedsheetPurple
+      - BedsheetRed
+      - BedsheetWhite
+      - BedsheetYellow
+      - BedsheetClown
+      - BedsheetCosmos
+      - BedsheetIan
+      - BedsheetMedical
+      - BedsheetMime
+      - BedsheetNT
+      - BedsheetRainbow
+      - BedsheetBrigmedic
   - type: EmagLatheRecipes
     emagStaticRecipes:
+      # Clothing
       - ClothingHeadHatCentcomcap
       - ClothingHeadHatCentcom
       - ClothingUniformJumpsuitCentcomAgent
@@ -1323,6 +1346,8 @@
       - ClothingOuterWinterCentcom
       - ClothingOuterWinterSyndie
       - ClothingOuterWinterSyndieCap
+      # Bedsheets
+      - BedsheetSyndie
   - type: MaterialStorage
     whitelist:
       tags:

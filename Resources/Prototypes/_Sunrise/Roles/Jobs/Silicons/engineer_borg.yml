@@ -6,5 +6,6 @@
   icon: JobIconEngineerBorg
   supervisors: job-supervisors-human
   canBeAntag: false
+  setPreference: false # Fire
   displayWeight: -10  # Sunrise
   jobEntity: PlayerBorgEngineerBattery

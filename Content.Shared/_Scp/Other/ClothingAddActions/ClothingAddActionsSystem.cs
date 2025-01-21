@@ -6,6 +6,7 @@ namespace Content.Shared._Scp.Other.ClothingAddActions;
 public sealed class ClothingAddActionsSystem : EntitySystem
 {
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -26,11 +27,14 @@ public sealed class ClothingAddActionsSystem : EntitySystem
             EntityUid? actionEnt = null;
             _actions.AddAction(args.Equipee, ref actionEnt, action);
 
-            ent.Comp.ActionsOwner = args.Equipee;
-
             if (actionEnt != null)
                 ent.Comp.ActionEntities.Add(actionEnt.Value);
         }
+
+        if (ent.Comp.ActionEntities.Count == 0)
+            return;
+
+        ent.Comp.ActionsOwner = args.Equipee;
     }
 
     /// <summary>
@@ -51,9 +55,15 @@ public sealed class ClothingAddActionsSystem : EntitySystem
 
     private void RemoveActions(Entity<ClothingAddActionsComponent> ent)
     {
+        if (!Exists(ent.Comp.ActionsOwner))
+            return;
+
         foreach (var actionEnt in ent.Comp.ActionEntities)
         {
-            _actions.RemoveAction(ent.Comp.ActionsOwner, actionEnt);
+            _actionContainer.RemoveAction(actionEnt);
         }
+
+        ent.Comp.ActionEntities.Clear();
+        ent.Comp.ActionsOwner = null;
     }
 }

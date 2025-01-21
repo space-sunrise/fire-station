@@ -1,0 +1,36 @@
+﻿- type: soundCollection
+  id: FootstepScp939
+  files:
+  - /Audio/_Scp/Scp939/Steps/step1.ogg
+  - /Audio/_Scp/Scp939/Steps/step2.ogg
+  - /Audio/_Scp/Scp939/Steps/step3.ogg
+  - /Audio/_Scp/Scp939/Steps/step4.ogg
+  - /Audio/_Scp/Scp939/Steps/step5.ogg
+
+- type: soundCollection
+  id: HitScp939
+  files:
+  - /Audio/_Scp/Scp939/Hit/hit1.ogg
+  - /Audio/_Scp/Scp939/Hit/hit2.ogg
+
+- type: soundCollection
+  id: IdleScp939
+  files: # саунд 2 почему-то не было
+  - /Audio/_Scp/Scp939/Idle/sound1.ogg
+  - /Audio/_Scp/Scp939/Idle/sound3.ogg
+  - /Audio/_Scp/Scp939/Idle/sound4.ogg
+  - /Audio/_Scp/Scp939/Idle/sound5.ogg
+  - /Audio/_Scp/Scp939/Idle/sound6.ogg
+  - /Audio/_Scp/Scp939/Idle/sound7.ogg
+  - /Audio/_Scp/Scp939/Idle/sound8.ogg
+  - /Audio/_Scp/Scp939/Idle/sound9.ogg
+  - /Audio/_Scp/Scp939/Idle/sound10.ogg
+
+- type: soundCollection
+  id: DistanceKillScp939
+  files:
+  - /Audio/_Scp/Scp939/DistanceKill/sound1.ogg
+  - /Audio/_Scp/Scp939/DistanceKill/sound2.ogg
+  - /Audio/_Scp/Scp939/DistanceKill/sound3.ogg
+  - /Audio/_Scp/Scp939/DistanceKill/sound4.ogg
+  - /Audio/_Scp/Scp939/DistanceKill/sound5.ogg

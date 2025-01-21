@@ -66,6 +66,12 @@ public sealed partial class CCVars
         CVarDef.Create("admin.server_ban_default_severity", "High", CVar.ARCHIVE | CVar.SERVER | CVar.REPLICATED);
 
     /// <summary>
+    /// Default Roleban appeal information to player when banned
+    /// </summary>
+    public static readonly CVarDef<string> InstructionToAppeal =
+        CVarDef.Create("admin.server_ban_default_appeal_instructions", "Appeal On Forums.", CVar.ARCHIVE | CVar.SERVER | CVar.REPLICATED);
+
+    /// <summary>
     ///     Whether a server ban will ban the player's ip by default.
     /// </summary>
     public static readonly CVarDef<bool> ServerBanIpBanDefault =
@@ -157,6 +163,13 @@ public sealed partial class CCVars
     /// </summary>
     public static readonly CVarDef<bool> AdminsCountForMaxPlayers =
         CVarDef.Create("admin.admins_count_for_max_players", false, CVar.SERVERONLY);
+
+    /// <summary>
+    /// Should admins be hidden from the player count reported to the launcher/via api?
+    /// This is hub advert safe, in case that's a worry.
+    /// </summary>
+    public static readonly CVarDef<bool> AdminsCountInReportedPlayerCount =
+        CVarDef.Create("admin.admins_count_in_playercount", false, CVar.SERVERONLY);
 
     /// <summary>
     ///     Determine if custom rank names are used.

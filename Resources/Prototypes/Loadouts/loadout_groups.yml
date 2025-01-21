@@ -37,6 +37,7 @@
   - ClothingNeckLesbianPin
   - ClothingNeckNonBinaryPin
   - ClothingNeckPansexualPin
+  - ClothingNeckOmnisexualPin
   - ClothingNeckTransPin
   - ClothingNeckAutismPin
   - ClothingNeckGoldAutismPin
@@ -140,7 +141,8 @@
   id: CaptainOuterClothing
   name: loadout-group-captain-outerclothing
   loadouts:
-  - CaptainOuterClothing
+  - CaptainOuterArmor # Sunrise-Edit
+  - CaptainOuterCoat # Sunrise-Edit
   - CaptainWintercoat
 
 - type: loadoutGroup

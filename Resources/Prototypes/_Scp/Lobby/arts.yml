@@ -26,9 +26,10 @@
   id: Scp096
   background: /Textures/_Scp/Lobby/Arts/scp096.png
 
-- type: lobbyBackground
-  id: Scp173Winter
-  background: /Textures/_Scp/Lobby/Arts/scp173_winter.png
+# Новый год прошел
+#- type: lobbyBackground
+#  id: Scp173Winter
+#  background: /Textures/_Scp/Lobby/Arts/scp173_winter.png
 
 #- type: lobbyBackground
 #  id: Planet

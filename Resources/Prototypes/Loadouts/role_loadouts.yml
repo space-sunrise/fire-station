@@ -14,7 +14,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobHeadOfPersonnel
@@ -33,7 +35,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # Silicons
 - type: roleLoadout
@@ -60,7 +64,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobBartender
@@ -78,7 +84,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobServiceWorker
@@ -94,7 +102,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobChef
@@ -113,7 +123,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobLibrarian
@@ -129,7 +141,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobLawyer
@@ -146,7 +160,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobChaplain
@@ -166,7 +182,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobJanitor
@@ -186,7 +204,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobBotanist
@@ -204,7 +224,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobClown
@@ -222,7 +244,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobMime
@@ -241,7 +265,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobMusician
@@ -259,7 +285,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # Cargo
 - type: roleLoadout
@@ -280,7 +308,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobCargoTechnician
@@ -299,7 +329,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobSalvageSpecialist
@@ -316,7 +348,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # Engineering
 - type: roleLoadout
@@ -337,7 +371,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobTechnicalAssistant
@@ -352,7 +388,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobStationEngineer
@@ -372,7 +410,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobAtmosphericTechnician
@@ -390,7 +430,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # Science
 - type: roleLoadout
@@ -412,7 +454,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobScientist
@@ -434,7 +478,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobResearchAssistant
@@ -450,7 +496,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # Security
 - type: roleLoadout
@@ -472,7 +520,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobWarden
@@ -492,7 +542,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobSecurityOfficer
@@ -513,6 +565,7 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
   # Fire-Station-Start
   - GuardHead
@@ -520,7 +573,7 @@
   - GuardJumpsuit
   - GuardArmorVest
   - GuardShoes
-  - GuardOuterClothing
+  - CommonMiscItems
   # Fire-Station-End
 
 - type: roleLoadout
@@ -541,7 +594,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobSecurityCadet
@@ -556,6 +611,7 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
   # Fire-Station-Start
   - GuardHead
@@ -564,7 +620,7 @@
   - GuardArmorVest
   - GuardShoes
   - GuardCadetHead
-  - GuardOuterClothing
+  - CommonMiscItems
   # Fire-Station-End
 
 # Medical
@@ -588,7 +644,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobMedicalDoctor
@@ -610,7 +668,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobMedicalIntern
@@ -626,7 +686,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobChemist
@@ -645,7 +707,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobParamedic
@@ -666,7 +730,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # Wildcards
 - type: roleLoadout
@@ -682,7 +748,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobReporter
@@ -698,7 +766,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobPsychologist
@@ -715,7 +785,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 - type: roleLoadout
   id: JobBoxer
@@ -732,7 +804,9 @@
   - Bra
   - Pants
   - Socks
+  - CommonPets
   # Sunrise-end
+  - CommonMiscItems # Fire
 
 # These loadouts are used for non-crew spawns, like off-station antags and event mobs
 # They will be used without player configuration, thus they will only ever apply what is forced by MinLimit

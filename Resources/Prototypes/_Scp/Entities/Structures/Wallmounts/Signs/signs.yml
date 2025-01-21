@@ -1,0 +1,110 @@
+﻿- type: entity
+  parent: BaseSignDirectional
+  id: BaseSignDirectionalScp
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/signs.rsi
+    snapCardinals: false
+
+# Камеры содержания сцп
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp005
+  components:
+  - type: Sprite
+    state: 005
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp035
+  components:
+  - type: Sprite
+    state: 035
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp049
+  components:
+  - type: Sprite
+    state: 049
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp096
+  components:
+  - type: Sprite
+    state: 096
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp106
+  components:
+  - type: Sprite
+    state: 106
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp173
+  components:
+  - type: Sprite
+    state: 173
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp500
+  components:
+  - type: Sprite
+    state: 500
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp612
+  components:
+  - type: Sprite
+    state: 612
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp939
+  components:
+  - type: Sprite
+    state: 939
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp969
+  components:
+  - type: Sprite
+    state: 969
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp999
+  components:
+  - type: Sprite
+    state: 999
+
+# Места в зоне
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScpClassD
+  components:
+  - type: Sprite
+    state: classd
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScpHeavyContainmentZone
+  components:
+  - type: Sprite
+    state: hcz
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScpLightContainmentZone
+  components:
+  - type: Sprite
+    state: lcz

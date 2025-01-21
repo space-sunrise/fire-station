@@ -61,11 +61,11 @@
       types:
         Blunt: 15
     openSound:
-      path: /Audio/Machines/airlock_open.ogg
+      collection: AirlockDefaultOpen # Fire
     closeSound:
-      path: /Audio/Machines/airlock_close.ogg
+      collection: AirlockDefaultClose # Fire
     denySound:
-      path: /Audio/Machines/airlock_deny.ogg
+      path: /Audio/_Scp/Objects/Machines/Airlocks/deny.ogg # Fire
   - type: ContainerContainer
     containers:
       board: !type:Container

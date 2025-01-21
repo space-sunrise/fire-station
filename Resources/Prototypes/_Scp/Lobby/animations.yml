@@ -28,3 +28,33 @@
   id: Mtf
   rawPath: _Scp/Lobby/Animations/mtf
   scale: 13, 13
+
+- type: lobbyAnimation
+  id: DeepFacility
+  rawPath: _Scp/Lobby/Animations/deepfacility
+  scale: 13, 13
+
+- type: lobbyAnimation
+  id: Logo
+  rawPath: _Scp/Lobby/Animations/logo
+  scale: 13, 13
+
+- type: lobbyAnimation
+  id: PC
+  rawPath: _Scp/Lobby/Animations/pc
+  scale: 13, 13
+
+- type: lobbyAnimation
+  id: RedGuy
+  rawPath: _Scp/Lobby/Animations/redguy
+  scale: 13, 13
+
+- type: lobbyAnimation
+  id: Screen
+  rawPath: _Scp/Lobby/Animations/screen
+  scale: 13, 13
+
+- type: lobbyAnimation
+  id: WorldMap
+  rawPath: _Scp/Lobby/Animations/worldmap
+  scale: 8, 8

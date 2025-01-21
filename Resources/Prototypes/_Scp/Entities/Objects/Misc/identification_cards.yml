@@ -4,9 +4,33 @@
   name: class D ID card
   components:
   - type: Sprite
-    sprite: _Sunrise/Objects/Misc/id_cards.rsi
+    sprite: _Scp/Objects/Misc/id_cards.rsi
     layers:
-    - state: orange-space-prison
-    - state: idprisoner-space-prison
+    - state: orange
+    - state: id-classd
   - type: PresetIdCard
     job: ClassD
+
+- type: entity
+  parent: ClassDIDCard
+  id: ClassDCookIDCard
+  name: class D ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: orange
+    - state: id-cook
+  - type: PresetIdCard
+    job: ClassDCook
+
+- type: entity
+  parent: ClassDIDCard
+  id: ClassDBotanistIDCard
+  name: class D ID card
+  components:
+  - type: Sprite
+    layers:
+    - state: orange
+    - state: id-botanist
+  - type: PresetIdCard
+    job: ClassDBotanist

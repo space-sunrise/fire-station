@@ -39,6 +39,11 @@
     range: 15
     sound:
       path: /Audio/_Scp/Scp096/scp-096-crying.ogg
+  - type: EmitSoundRandomly
+    sound:
+      collection: IdleScp096
+      params:
+        maxDistance: 6
   - type: FootstepModifier
     footstepSoundCollection:
       path: /Audio/Effects/Footsteps/slime1.ogg

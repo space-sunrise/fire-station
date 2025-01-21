@@ -13,19 +13,11 @@ using Content.Server.Stunnable;
 using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Systems;
-using Content.Shared.Actions;
-using Content.Shared.Alert;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
-using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
 using Content.Shared.Random.Helpers;
-using Content.Shared.StatusEffect;
-using Content.Shared.Store.Components;
-using Robust.Server.Audio;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -50,6 +42,9 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly StunSystem _stunSystem = default!;
     [Dependency] private readonly JitteringSystem _jittering = default!;
     [Dependency] private readonly StutteringSystem _stuttering = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+
+    private readonly SoundSpecifier _sendBackroomsSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/onbackrooms.ogg");
 
     public override void Initialize()
     {
@@ -181,6 +176,8 @@ public sealed class Scp106System : SharedScp106System
         var mark = await GetTransferMark();
         _transform.SetCoordinates(target, mark);
         _transform.AttachToGridOrMap(target);
+
+        _audio.PlayEntity(_sendBackroomsSound, target, target);
     }
 
     public override void SendToStation(EntityUid target)
@@ -291,7 +288,9 @@ public sealed class Scp106System : SharedScp106System
 
             tile = new Vector2i(randomX, randomY);
             if (_atmosphere.IsTileSpace(targetGrid, Transform(targetGrid).MapUid, tile)
-                || _atmosphere.IsTileAirBlocked(targetGrid, tile, mapGridComp: gridComp))
+                || _atmosphere.IsTileAirBlocked(targetGrid, tile, mapGridComp: gridComp)
+                || !_map.TryGetTileRef(targetGrid, gridComp, tile, out var tileRef)
+                || tileRef.Tile.IsEmpty)
             {
                 continue;
             }

@@ -55,6 +55,7 @@
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
+  - type: StationRecordKeyStorage
   - type: Destructible
     thresholds:
     - trigger:
@@ -142,9 +143,9 @@
     - Scp173FastMovement
   - type: FootstepModifier
     footstepSoundCollection:
-      collection: FootstepSCP173
+      collection: FootstepScp173Classic
   - type: FootprintEmitter
-    walkStepInterval: 0.3
+    walkStepInterval: 0.1
     leftBareFootState:
       - dragging-1
       - dragging-2
@@ -180,6 +181,10 @@
     altDisarm: false
     angle: 0
     animation: WeaponArcPunch
+    soundHit: /Audio/_Scp/Scp106/hit.ogg
+    damage:
+      types:
+        Cellular: 10
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2
@@ -229,6 +234,37 @@
     - ActionScp106Shop
   - type: TTS
     voice: HearthstoneSotis
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepScp106
+  - type: RangedDamageSound
+    soundGroups:
+      Brute:
+        collection:
+          HurtScp106
+      Burn:
+        collection:
+          HurtScp106
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection:
+          HurtScp106
+      Burn:
+        collection:
+          HurtScp106
+  - type: KillGlobalSound
+    sound:
+      collection: DistanceKillScp106
+    originWhitelist:
+      components:
+      - Scp106
+  - type: AmbientSound
+    enabled: true
+    volume: -10
+    range: 3
+    sound:
+      path: /Audio/_Scp/Scp106/breath.ogg
   - type: Store
     balance:
       LifeEssence: 100

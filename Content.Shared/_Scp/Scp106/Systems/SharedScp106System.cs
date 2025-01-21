@@ -10,8 +10,10 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.Weapons.Melee.Events;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
-using Robust.Shared.Serialization;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp106.Systems;
 
@@ -25,7 +27,11 @@ public abstract class SharedScp106System : EntitySystem
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
     [Dependency] private readonly SharedTransformSystem _sharedTransform = default!;
     [Dependency] private readonly SharedBodySystem _bodySystem = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IServerNetManager _serverNetManager = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+
+    private readonly SoundSpecifier _teleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
 
     public override void Initialize()
@@ -257,7 +263,7 @@ public abstract class SharedScp106System : EntitySystem
 
 	private void OnBackroomsDoAfter(Entity<Scp106Component> ent, ref Scp106BackroomsActionEvent args)
 	{
-        _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Default);
+        DoTeleportEffects(ent);
 
 		if (args.Cancelled)
 			return;
@@ -266,8 +272,8 @@ public abstract class SharedScp106System : EntitySystem
     }
 
 	private void OnTeleportDoAfter(Entity<Scp106Component> ent, ref Scp106RandomTeleportActionEvent args)
-	{
-        _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Default);
+    {
+        DoTeleportEffects(ent);
 
 		if (args.Cancelled)
 			return;
@@ -275,8 +281,20 @@ public abstract class SharedScp106System : EntitySystem
         SendToStation(ent);
     }
 
+    private void DoTeleportEffects(EntityUid uid)
+    {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        _appearanceSystem.SetData(uid, Scp106Visuals.Visuals, Scp106VisualsState.Default);
+        _audio.PlayEntity(_teleportSound, uid, uid);
+    }
+
     private void OnMeleeHit(Entity<Scp106Component> ent, ref MeleeHitEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         if (!args.IsHit || !args.HitEntities.Any())
             return;
 

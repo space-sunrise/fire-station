@@ -154,8 +154,8 @@
     - prefRoles: [ Nukeops ]
       fallbackRoles: [ NukeopsCommander, NukeopsMedic ]
       spawnerPrototype: SpawnPointNukeopsOperative
-      max: 5
-      playerRatio: 20
+      max: 4
+      playerRatio: 30
       startingGear: SyndicateOperativeGearFull
       roleLoadout:
       - RoleSurvivalNukie
@@ -182,7 +182,7 @@
   - type: AntagRandomObjectives
     sets:
     - groups: TraitorObjectiveGroups
-    maxDifficulty: 10 # Sunrise-Edit
+    maxDifficulty: 5
   - type: AntagSelection
     agentName: traitor-round-end-agent-name
 
@@ -221,7 +221,7 @@
     definitions:
     - prefRoles: [ Traitor ]
       mindRoles:
-      - MindRoleTraitor
+      - MindRoleTraitorReinforcement
 
 - type: entity
   id: Revolutionary

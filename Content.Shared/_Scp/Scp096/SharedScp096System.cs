@@ -7,7 +7,6 @@ using Content.Shared.Audio;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Doors.Components;
-using Content.Shared.Doors.Systems;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
@@ -18,6 +17,7 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.StatusEffect;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp096;
@@ -104,7 +104,7 @@ public abstract partial class SharedScp096System : EntitySystem
         RemoveAllTargets(ent);
     }
 
-    private void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
+    protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
     {
         var query = EntityQueryEnumerator<Scp096TargetComponent>();
 
@@ -172,7 +172,7 @@ public abstract partial class SharedScp096System : EntitySystem
         return true;
     }
 
-    private void AddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid)
+    protected virtual void AddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid)
     {
         scpEntity.Comp.Targets.Add(targetUid);
 
@@ -186,7 +186,7 @@ public abstract partial class SharedScp096System : EntitySystem
         Dirty(scpEntity);
     }
 
-    private void RemoveTarget(Entity<Scp096Component> scpEntity, Entity<Scp096TargetComponent?> targetEntity, bool removeComponent = true)
+    protected virtual void RemoveTarget(Entity<Scp096Component> scpEntity, Entity<Scp096TargetComponent?> targetEntity, bool removeComponent = true)
     {
         if (!Resolve(targetEntity, ref targetEntity.Comp))
             return;
@@ -253,6 +253,10 @@ public abstract partial class SharedScp096System : EntitySystem
 
         // Если таргет закрыл глаза
         if (blindableComponent.IsBlind)
+            return false;
+
+        // Если таргет уже есть
+        if (TryComp<Scp096TargetComponent>(targetUid, out var targetComponent) && targetComponent.TargetedBy.Contains(scpEntity))
             return false;
 
         var targetXform = Transform(targetUid);
@@ -342,6 +346,9 @@ public abstract partial class SharedScp096System : EntitySystem
 
         scpEntity.Comp.InRageMode = false;
         scpEntity.Comp.RageStartTime = null;
+        Dirty(scpEntity);
+
+        RaiseLocalEvent(scpEntity, new Scp096RageEvent(false));
 
         _ambientSoundSystem.SetSound(scpEntity, scpEntity.Comp.CrySound);
         _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(scpEntity, SleepStatusEffectKey, TimeSpan.FromSeconds(scpEntity.Comp.PacifiedTime), true);
@@ -355,6 +362,9 @@ public abstract partial class SharedScp096System : EntitySystem
 
         scpEntity.Comp.InRageMode = true;
         scpEntity.Comp.RageStartTime = _gameTiming.CurTime;
+        Dirty(scpEntity);
+
+        RaiseLocalEvent(scpEntity, new Scp096RageEvent(true));
 
         _ambientSoundSystem.SetSound(scpEntity, scpEntity.Comp.RageSound);
 
@@ -402,4 +412,15 @@ public abstract partial class SharedScp096System : EntitySystem
         _appearanceSystem.SetData(scpEntity, Scp096Visuals.Visuals, state);
     }
 
+}
+
+[Serializable, NetSerializable]
+public sealed class Scp096RageEvent : EntityEventArgs
+{
+    public bool InRage;
+
+    public Scp096RageEvent(bool inRage)
+    {
+        InRage = inRage;
+    }
 }
