@@ -13,6 +13,7 @@ using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
+using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp106.Systems;

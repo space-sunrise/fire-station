@@ -227,7 +227,6 @@
           Exiting: { state: ded_from_lusha }
   - type: ActionGrant
     actions:
-    - Scp106BecomePhantom
     - BecomeTeleportPhantomAction
     - Scp106RandomTeleportAction
     - Scp106BackroomsAction

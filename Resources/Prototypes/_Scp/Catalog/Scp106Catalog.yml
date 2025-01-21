@@ -1,8 +1,38 @@
 - type: listing
-  id: Scp106UpgradeTeleportPhantom
-  name: Улучшить фантомизацию
-  description: Уменьшает время для восстановления фантома вдвое.
-  productEvent: !type:Scp106UpgradePhantomAction
+  id: Scp106BecomePhantom
+  name: Фантом
+  description: Разделите сознание.
+  productAction: Scp106BecomePhantom
+  productUpgradeId: Scp106BecomePhantomII
+  categories:
+  - Scp106Abilities
+  cost:
+    LifeEssence: 10
+  raiseProductEventOnUser: true
+  icon:
+    sprite: _Scp/Actions/scp106-actions.rsi
+    state: scp106_phantom
+
+- type: listing
+  id: Scp106BecomePhantomII
+  name: Фантом II
+  description: Разделите сознание.  4 минуты
+  productAction: Scp106BecomePhantomIII
+  productUpgradeId: Scp106BecomePhantomIII
+  categories:
+  - Scp106Abilities
+  cost:
+    LifeEssence: 10
+  raiseProductEventOnUser: true
+  icon:
+    sprite: _Scp/Actions/scp106-actions.rsi
+    state: scp106_phantom
+
+- type: listing
+  id: Scp106BecomePhantomIII
+  name: Фантом III
+  description: Разделите сознание.  3 минуты
+  productAction: Scp106BecomePhantomIII
   categories:
   - Scp106Abilities
   cost:

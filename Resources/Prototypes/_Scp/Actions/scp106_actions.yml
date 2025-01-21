@@ -27,20 +27,6 @@
       state: scp106_teleport
 
 - type: entity
-  id: Scp106BecomePhantom
-  name: Стать фантомом.
-  description: "Новое воплощение для поиска трупов. Фантом восстанавливается каждые 5 минут."
-  components:
-  - type: InstantAction
-    event: !type:Scp106BecomePhantomAction
-    raiseOnUser: true
-    itemIconStyle: BigAction
-    useDelay: 300
-    icon:
-      sprite: _Scp/Actions/scp106-actions.rsi
-      state: scp106_phantom
-
-- type: entity
   id: ActionScp106Shop
   name: Теневой магазин
   description: "..."
@@ -65,7 +51,7 @@
         sprite: _Scp/Actions/scp106-actions.rsi
         state: scp106_teleport
 
-### PHANTOM ABILITIES ### START ###
+### PHANTOM ABILITIES START
 
 - type: entity
   id: Scp106Reverse
@@ -98,4 +84,50 @@
       sprite: _Scp/Actions/scp106-actions.rsi
       state: scp106_phantom
 
-### PHANTOM ABILITIES ### END ###
+### PHANTOM ABILITIES END
+
+### 3 TIRES OF PHANTOM ABILITY START
+
+- type: entity
+  id: Scp106BecomePhantom
+  name: Стать фантомом.
+  description: "Новое воплощение для поиска трупов. Фантом восстанавливается каждые 5 минут."
+  components:
+  - type: InstantAction
+    event: !type:Scp106BecomePhantomAction
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 300
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_phantom
+
+- type: entity
+  id: Scp106BecomePhantomII
+  name: Стать фантомом.
+  description: "Новое воплощение для поиска трупов. Фантом восстанавливается каждые 4 минуты"
+  components:
+  - type: InstantAction
+    event: !type:Scp106BecomePhantomAction
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 240
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_phantom
+
+- type: entity
+  id: Scp106BecomePhantomIII
+  name: Стать фантомом.
+  description: "Новое воплощение для поиска трупов. Фантом восстанавливается каждые 3 минуты."
+  components:
+  - type: InstantAction
+    event: !type:Scp106BecomePhantomAction
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 180
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_phantom
+
+### 3 TIRES OF PHANTOM ABILITY END
