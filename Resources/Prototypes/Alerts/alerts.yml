@@ -4,8 +4,9 @@
   # If item is not in list it will go at the bottom (ties broken by alert type enum value)
   id: BaseAlertOrder
   order:
-    - category: Health
+    - alertType: ChangelingBiomass
     - category: Mood #Sunrise Edit
+    - category: Health #Sunrise Edit
     - category: Stamina
     - alertType: ChangelingChemicals
     - alertType: Blinking # Sunrise-SCP edit.

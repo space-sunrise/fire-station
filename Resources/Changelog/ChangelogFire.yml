@@ -1184,3 +1184,11 @@
   id: 35
   time: '2025-01-20T13:46:44.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/145
+- author: Parashut
+  changes:
+  - message: "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430 \u043A\u0430\u0440\
+      \u0442\u0430"
+    type: Tweak
+  id: 36
+  time: '2025-01-22T10:44:49.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/149
