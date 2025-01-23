@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Scp096.Mask;
 using Content.Shared._Scp.Scp096.Protection;
+using Content.Shared._Scp.ScpMask;
 using Content.Shared.Audio;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode.Pacification;
@@ -33,7 +34,7 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
-    [Dependency] private readonly Scp096MaskSystem _scp096Mask = default!;
+    [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     private ISawmill _sawmill = Logger.GetSawmill("scp096");
@@ -48,6 +49,8 @@ public abstract partial class SharedScp096System : EntitySystem
         SubscribeLocalEvent<Scp096Component, PullAttemptEvent>(OnPullAttempt);
         SubscribeLocalEvent<Scp096Component, StartCollideEvent>(OnCollide);
         SubscribeLocalEvent<Scp096Component, MobStateChangedEvent>(OnSpcStateChanged);
+
+        SubscribeLocalEvent<Scp096Component, ScpMaskTargetEquipAttempt>(OnMaskAttempt);
 
         SubscribeLocalEvent<Scp096Component, ComponentShutdown>(OnShutdown);
     }
@@ -141,6 +144,12 @@ public abstract partial class SharedScp096System : EntitySystem
         {
             args.Cancel();
         }
+    }
+
+    private void OnMaskAttempt(Entity<Scp096Component> ent, ref ScpMaskTargetEquipAttempt args)
+    {
+        if (ent.Comp.InRageMode)
+            args.Cancel();
     }
 
     #endregion
@@ -291,11 +300,11 @@ public abstract partial class SharedScp096System : EntitySystem
         if (HasComp<SleepingComponent>(entity))
             return false;
 
-        if (_mobStateSystem.IsIncapacitated(entity) || Comp<BlindableComponent>(entity).IsBlind)
+        if (_mobStateSystem.IsIncapacitated(entity))
             return false;
 
         // В маске мы мирные
-        if (_scp096Mask.TryGetScp096Mask(entity, out _))
+        if (_scpMask.TryGetScpMask(entity, out _))
             return false;
 
         return true;
