@@ -54,7 +54,7 @@ namespace Content.Server.Voting.Managers
         private readonly HashSet<ICommonSession> _playerCanCallVoteDirty = new();
         private readonly StandardVoteType[] _standardVoteTypeValues = Enum.GetValues<StandardVoteType>();
 
-        private readonly string _voteAudio = "/Audio/_Sunrise/voting.ogg";
+        // private readonly string _voteAudio = "/Audio/_Sunrise/voting.ogg"; Fire edit
         private EntityUid? _voteAudioStream;
 
         public void Initialize()
@@ -219,9 +219,11 @@ namespace Content.Server.Voting.Managers
                 _entityManager.System<SharedAudioSystem>().Stop(_voteAudioStream);
             }
 
+            /* Fire edit
             _voteAudioStream = _entityManager.System<SharedAudioSystem>()
                 .PlayGlobal(_voteAudio, Filter.Broadcast(), true,
                 AudioParams.Default.WithLoop(true).WithVolume(-10f))!.Value.Entity;
+            */
 
             if (_entityManager.System<GameTicker>().RunLevel == GameRunLevel.PreRoundLobby)
             {
