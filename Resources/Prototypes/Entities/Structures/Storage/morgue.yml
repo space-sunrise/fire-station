@@ -125,6 +125,12 @@
       path: /Audio/Items/deconstruct.ogg
     openSound:
       path: /Audio/Items/deconstruct.ogg
+    whitelist:
+      components:
+      - Body
+    blacklist:
+      components:
+      - Scp
   - type: EntityStorageLayingDownOverride
   - type: Crematorium
   - type: ContainerContainer
