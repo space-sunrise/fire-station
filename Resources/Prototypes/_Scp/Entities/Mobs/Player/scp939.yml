@@ -16,7 +16,6 @@
     - map: [ "enum.Scp939Layers.Base" ]
       state: alive
   - type: Scp939
-  - type: ScpRestriction
   - type: MeleeWeapon
     altDisarm: false
     soundHit:

@@ -38,25 +38,25 @@ public sealed class ScpRestrictionSystem : EntitySystem
 
     private void OnPullAttempt(EntityUid uid, ScpRestrictionComponent component, PullAttemptEvent args)
     {
-        if (component.BlockPull)
+        if (!component.CanPull)
             args.Cancelled = true;
     }
 
     private void OnBeingPulled(EntityUid uid, ScpRestrictionComponent component, BeingPulledAttemptEvent args)
     {
-        if (component.BlockBePulled)
+        if (!component.CanBePulled)
             args.Cancel();
     }
 
     private void OnMobStateChanged(Entity<ScpRestrictionComponent> ent, ref MobStateChangedEvent args)
     {
-        ent.Comp.BlockBePulled = !_mobState.IsIncapacitated(ent);
+        ent.Comp.CanBePulled = _mobState.IsIncapacitated(ent) || HasComp<SleepingComponent>(ent);
         Dirty(ent);
     }
 
     private void OnSleepChanged(Entity<ScpRestrictionComponent> ent, ref SleepStateChangedEvent args)
     {
-        ent.Comp.BlockBePulled = !args.FellAsleep;
+        ent.Comp.CanBePulled = args.FellAsleep;
         Dirty(ent);
     }
 }

@@ -14,9 +14,6 @@
       map: [ "base" ]
   - type: Scp096
   - type: ShowBlinkable
-  - type: ScpRestriction
-    blockBePulled: false
-    blockPull: false
   - type: Pullable
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0

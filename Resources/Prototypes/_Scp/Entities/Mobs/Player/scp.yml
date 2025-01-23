@@ -173,9 +173,6 @@
     - map: [ "base" ]
       state: 106
   - type: Scp106
-  - type: ScpRestriction
-    blockBePulled: false
-    blockPull: false
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
     altDisarm: false
