@@ -36,6 +36,7 @@ public abstract class SharedScp106System : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly MobThresholdSystem _mob = default!;
 
     private readonly SoundSpecifier _teleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
@@ -134,14 +135,12 @@ public abstract class SharedScp106System : EntitySystem
         if (!TryComp<MobThresholdsComponent>(uid, out var mobThresholdsComponent))
             return;
 
-        mobThresholdsComponent.Thresholds.TryGetValue("Dead", out var value)
+        if (!_mob.TryGetThresholdForState(uid, MobState.Dead, out var damage))
+            return;
 
         var damageType = _prototypeManager.Index<DamageTypePrototype>("Blunt");
-        var damage = new DamageSpecifier(damageType, thresholdsDict);
 
-        _damageable.TryChangeDamage(uid, new DamageSpecifier(damageType))
-
-        _mobStateSystem.ChangeMobState(uid, MobState.Dead);
+        _damageable.TryChangeDamage(uid, new DamageSpecifier(damageType, damage.Value), true);
     }
 
     private void OnScp106ReverseAction(EntityUid uid, Scp106PhantomComponent component, Scp106ReverseAction args)
