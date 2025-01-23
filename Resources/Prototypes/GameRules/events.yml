@@ -24,7 +24,7 @@
 #    - id: SpiderClownSpawn
 #    - id: SpiderSpawn
     - id: VentClog
-    - id: VentFleshWorms
+#    - id: VentFleshWorms
 
 - type: entityTable
   id: BasicAntagEventsTable
