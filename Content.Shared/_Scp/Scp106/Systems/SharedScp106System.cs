@@ -2,6 +2,8 @@
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Protection;
 using Content.Shared.Body.Systems;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
@@ -13,6 +15,7 @@ using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
@@ -31,6 +34,8 @@ public abstract class SharedScp106System : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IServerNetManager _serverNetManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     private readonly SoundSpecifier _teleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
@@ -126,6 +131,16 @@ public abstract class SharedScp106System : EntitySystem
         Scp106PhantomComponent component,
         Scp106LeavePhantomAction args)
     {
+        if (!TryComp<MobThresholdsComponent>(uid, out var mobThresholdsComponent))
+            return;
+
+        mobThresholdsComponent.Thresholds.TryGetValue("Dead", out var value)
+
+        var damageType = _prototypeManager.Index<DamageTypePrototype>("Blunt");
+        var damage = new DamageSpecifier(damageType, thresholdsDict);
+
+        _damageable.TryChangeDamage(uid, new DamageSpecifier(damageType))
+
         _mobStateSystem.ChangeMobState(uid, MobState.Dead);
     }
 

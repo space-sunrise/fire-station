@@ -1,9 +1,9 @@
 - type: listing
   id: Scp106BecomePhantom
   name: Фантом
-  description: Разделите сознание.
+  description: Способность становится фантомом.
   productAction: Scp106BecomePhantom
-  productUpgradeId: Scp106BecomePhantomII
+  productUpgradeId: Scp106BecomePhantomUpgrade
   categories:
   - Scp106Abilities
   cost:
@@ -12,13 +12,15 @@
   icon:
     sprite: _Scp/Actions/scp106-actions.rsi
     state: scp106_phantom
+  conditions:
+  - !type:ListingLimitedStockCondition
+      stock: 1
 
 - type: listing
-  id: Scp106BecomePhantomII
-  name: Фантом II
-  description: Разделите сознание.  4 минуты
-  productAction: Scp106BecomePhantomIII
-  productUpgradeId: Scp106BecomePhantomIII
+  id: Scp106BecomePhantomUpgrade
+  name: Фантом
+  description: Улучшите свою способность.
+  productUpgradeId: Scp106BecomePhantomUpgrade
   categories:
   - Scp106Abilities
   cost:
@@ -27,17 +29,9 @@
   icon:
     sprite: _Scp/Actions/scp106-actions.rsi
     state: scp106_phantom
-
-- type: listing
-  id: Scp106BecomePhantomIII
-  name: Фантом III
-  description: Разделите сознание.  3 минуты
-  productAction: Scp106BecomePhantomIII
-  categories:
-  - Scp106Abilities
-  cost:
-    LifeEssence: 10
-  raiseProductEventOnUser: true
-  icon:
-    sprite: _Scp/Actions/scp106-actions.rsi
-    state: scp106_phantom
+  conditions:
+  - !type:BuyBeforeCondition
+    whitelist:
+    - Scp106BecomePhantom
+  - !type:ListingLimitedStockCondition
+    stock: 2

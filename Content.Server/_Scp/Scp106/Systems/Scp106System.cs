@@ -136,7 +136,7 @@ public sealed class Scp106System : SharedScp106System
             if (_mindSystem.TryGetMind(uid, out var mindId, out var _))
             {
                 _mindSystem.TransferTo(mindId, component.Scp106BodyUid);
-                EntityManager.DeleteEntity(uid);
+                component.Scp106BodyUid = default;
                 Dirty(uid, component);
             }
         }
