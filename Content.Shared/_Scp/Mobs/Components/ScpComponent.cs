@@ -7,6 +7,7 @@ namespace Content.Shared._Scp.Mobs.Components;
 /// Я специально не стал использовать ScpRestrictionComponent, так как он служит другой функции
 /// Функции ограничения взаимодействий с СЦП. Не все СЦП могут его иметь
 /// </summary>
+// TODO: Сделать все компонентами сцп наследниками этого, возможно вынести сюда какой-нибудь бул отвечающий за контейм
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ScpComponent : Component
 {
