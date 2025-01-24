@@ -46,6 +46,23 @@
     components:
     - type: ClassDAppearance
 
+- type: job
+  id: ClassDJanitor
+  name: job-name-classd-janitor
+  description: job-description-classd
+  playTimeTracker: JobClassDJanitor
+  startingGear: ClassDJanitorGear
+  icon: JobIconClassD
+  supervisors: job-supervisors-security-and-research
+  access:
+  - Service
+  - Janitor
+  alwaysUseSpawner: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: ClassDAppearance
+
 - type: startingGear
   id: ClassDGear
   equipment:
@@ -74,3 +91,12 @@
     gloves: ClothingHandsGlovesLeather
     shoes: ClothingShoesClassD
     id: ClassDBotanistIDCard
+
+- type: startingGear
+  id: ClassDJanitorGear
+  equipment:
+    head: ClothingHeadHatPurplesoft
+    jumpsuit: ClothingUniformClassD
+    gloves: ClothingHandsGlovesJanitor
+    shoes: ClothingShoesGaloshes
+    id: ClassDJanitorIDCard
