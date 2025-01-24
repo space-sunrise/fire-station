@@ -1,11 +1,11 @@
 ﻿using Content.Shared._Scp.Mobs.Components;
+using Content.Shared._Scp.ScpMask;
 using Content.Shared.Actions.Events;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DragDrop;
 using Content.Shared.Electrocution;
-using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Pulling.Events;
@@ -16,6 +16,7 @@ namespace Content.Shared._Scp.Mobs.Systems;
 public sealed class ScpRestrictionSystem : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly ScpMaskSystem _scpMask = default!;
 
     public override void Initialize()
     {
@@ -31,9 +32,6 @@ public sealed class ScpRestrictionSystem : EntitySystem
         SubscribeLocalEvent<ScpRestrictionComponent, CanDragEvent>((_, _, args) => args.Handled = false);
         SubscribeLocalEvent<ScpRestrictionComponent, BeforeStaminaDamageEvent>((_, _, args) => args.Cancelled = true);
 
-        SubscribeLocalEvent<ScpRestrictionComponent, MobStateChangedEvent>(OnMobStateChanged);
-        SubscribeLocalEvent<ScpRestrictionComponent, SleepStateChangedEvent>(OnSleepChanged);
-
     }
 
     private void OnPullAttempt(EntityUid uid, ScpRestrictionComponent component, PullAttemptEvent args)
@@ -44,19 +42,12 @@ public sealed class ScpRestrictionSystem : EntitySystem
 
     private void OnBeingPulled(EntityUid uid, ScpRestrictionComponent component, BeingPulledAttemptEvent args)
     {
-        if (!component.CanBePulled)
+        var canBePulled = _mobState.IsIncapacitated(uid)
+                          || HasComp<SleepingComponent>(uid)
+                          || _scpMask.TryGetScpMask(uid, out _)
+                          || component.CanBePulled;
+
+        if (!canBePulled)
             args.Cancel();
-    }
-
-    private void OnMobStateChanged(Entity<ScpRestrictionComponent> ent, ref MobStateChangedEvent args)
-    {
-        ent.Comp.CanBePulled = _mobState.IsIncapacitated(ent) || HasComp<SleepingComponent>(ent);
-        Dirty(ent);
-    }
-
-    private void OnSleepChanged(Entity<ScpRestrictionComponent> ent, ref SleepStateChangedEvent args)
-    {
-        ent.Comp.CanBePulled = args.FellAsleep;
-        Dirty(ent);
     }
 }
