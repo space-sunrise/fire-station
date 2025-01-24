@@ -29,7 +29,7 @@ public sealed partial class ScpMaskComponent : Component, IClothingSlots
     #region Safe time
 
     [DataField, AlwaysPushInheritance]
-    public float SafeTime = 3; // 5 минут
+    public float SafeTime = 300; // 5 минут
 
     [AutoNetworkedField, AlwaysPushInheritance]
     public TimeSpan? SafeTimeEnd;
