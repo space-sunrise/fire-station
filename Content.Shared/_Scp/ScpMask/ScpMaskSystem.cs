@@ -62,7 +62,7 @@ public sealed class ScpMaskSystem : EntitySystem
         }
 
         // Уже есть маска?
-        if (TryGetScpMask(target, out _))
+        if (HasScpMask(target))
         {
             args.Cancel();
             return;
@@ -202,6 +202,11 @@ public sealed class ScpMaskSystem : EntitySystem
         mask = (maskEntity.Owner, maskEntity.Comp);
 
         return true;
+    }
+
+    public bool HasScpMask(EntityUid scp)
+    {
+        return TryGetScpMask(scp, out _);
     }
 
     /// <summary>

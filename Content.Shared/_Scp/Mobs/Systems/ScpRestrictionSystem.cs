@@ -44,7 +44,7 @@ public sealed class ScpRestrictionSystem : EntitySystem
     {
         var canBePulled = _mobState.IsIncapacitated(uid)
                           || HasComp<SleepingComponent>(uid)
-                          || _scpMask.TryGetScpMask(uid, out _)
+                          || _scpMask.HasScpMask(uid)
                           || component.CanBePulled;
 
         if (!canBePulled)

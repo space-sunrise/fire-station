@@ -300,7 +300,7 @@ public abstract partial class SharedScp096System : EntitySystem
             return false;
 
         // В маске мы мирные
-        if (_scpMask.TryGetScpMask(entity, out _) && !ignoreMask)
+        if (_scpMask.HasScpMask(entity) && !ignoreMask)
             return false;
 
         return true;
