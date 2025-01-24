@@ -381,7 +381,7 @@
 - type: entity
   id: BasicRoundstartVariation
   parent: BaseGameRule
-  components:
+  components: # Fire edit - мы вернули назад мусор
   - type: RoundstartStationVariationRule
     rules:
     - id: BasicPoweredLightVariationPass

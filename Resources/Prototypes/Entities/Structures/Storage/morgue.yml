@@ -44,9 +44,11 @@
       path: /Audio/Items/deconstruct.ogg
     openSound:
       path: /Audio/Items/deconstruct.ogg
+    # Fire start
     whitelist:
       components:
       - Body
+    # Fire end
 
   - type: EntityStorageLayingDownOverride
   - type: Morgue
@@ -125,12 +127,14 @@
       path: /Audio/Items/deconstruct.ogg
     openSound:
       path: /Audio/Items/deconstruct.ogg
+    # Fire start
     whitelist:
       components:
       - Body
     blacklist:
       components:
       - Scp
+    # Fire end
   - type: EntityStorageLayingDownOverride
   - type: Crematorium
   - type: ContainerContainer
