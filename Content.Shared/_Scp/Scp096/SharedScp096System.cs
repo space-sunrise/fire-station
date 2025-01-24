@@ -1,7 +1,7 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Numerics;
 using Content.Shared._Scp.Blinking;
-using Content.Shared._Scp.Scp096.Mask;
 using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared.Audio;
@@ -114,6 +114,7 @@ public abstract partial class SharedScp096System : EntitySystem
         while (query.MoveNext(out var entityUid, out var targetComponent))
         {
             targetComponent.TargetedBy.Remove(ent.Owner);
+            Dirty(entityUid, targetComponent);
 
             if (targetComponent.TargetedBy.Count == 0)
             {
@@ -156,24 +157,23 @@ public abstract partial class SharedScp096System : EntitySystem
 
     #region Targets
 
-    public bool TryAddTarget(EntityUid targetUid, bool ignoreDistance = false, bool ignoreAngle = false)
+    public bool TryAddTarget(EntityUid targetUid, bool ignoreDistance = false, bool ignoreAngle = false, bool ignoreMask = false)
     {
-        var query = EntityQuery<Scp096Component>().ToHashSet();
-
-        if (query.Count == 0)
+        if (!TryGetScp096(out var scpEntity))
             return false;
 
-        var scpEntity = (query.First().Owner, query.First());
+        if (!TryAddTarget(scpEntity.Value, targetUid, ignoreDistance, ignoreAngle, ignoreMask))
+            return false;
 
-        return TryAddTarget(scpEntity, targetUid, ignoreDistance, ignoreAngle);
+        return true;
     }
 
-    private bool TryAddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid, bool ignoreDistance = false, bool ignoreAngle = false)
+    public bool TryAddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid, bool ignoreDistance = false, bool ignoreAngle = false, bool ignoreMask = false)
     {
         if (!IsValidTarget(scpEntity, targetUid, ignoreDistance, ignoreAngle))
             return false;
 
-        if (!CanBeAggro(scpEntity))
+        if (!CanBeAggro(scpEntity, ignoreMask))
             return false;
 
         AddTarget(scpEntity, targetUid);
@@ -264,10 +264,6 @@ public abstract partial class SharedScp096System : EntitySystem
         if (blindableComponent.IsBlind)
             return false;
 
-        // Если таргет уже есть
-        if (TryComp<Scp096TargetComponent>(targetUid, out var targetComponent) && targetComponent.TargetedBy.Contains(scpEntity))
-            return false;
-
         var targetXform = Transform(targetUid);
 
         // Если таргет не в зоне действия агра и зона действия не игнорируется
@@ -295,7 +291,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     #region Helpers
 
-    private bool CanBeAggro(Entity<Scp096Component> entity)
+    private bool CanBeAggro(Entity<Scp096Component> entity, bool ignoreMask = false)
     {
         if (HasComp<SleepingComponent>(entity))
             return false;
@@ -304,7 +300,7 @@ public abstract partial class SharedScp096System : EntitySystem
             return false;
 
         // В маске мы мирные
-        if (_scpMask.TryGetScpMask(entity, out _))
+        if (_scpMask.TryGetScpMask(entity, out _) && !ignoreMask)
             return false;
 
         return true;
@@ -345,6 +341,18 @@ public abstract partial class SharedScp096System : EntitySystem
         _speedModifierSystem.ChangeBaseSpeed(scpEntity, newSpeed, newSpeed, 20.0f);
     }
 
+    public bool TryGetScp096([NotNullWhen(true)] out Entity<Scp096Component>? scpEntity)
+    {
+        scpEntity = null;
+        var query = EntityQuery<Scp096Component>().ToHashSet();
+
+        if (query.Count == 0)
+            return false;
+
+        scpEntity = (query.First().Owner, query.First());
+        return true;
+    }
+
     #endregion
 
     #region Rage handlers
@@ -373,7 +381,7 @@ public abstract partial class SharedScp096System : EntitySystem
         scpEntity.Comp.RageStartTime = _gameTiming.CurTime;
         Dirty(scpEntity);
 
-        RaiseLocalEvent(scpEntity, new Scp096RageEvent(true));
+        RaiseNetworkEvent(new Scp096RageEvent(true));
 
         _ambientSoundSystem.SetSound(scpEntity, scpEntity.Comp.RageSound);
 

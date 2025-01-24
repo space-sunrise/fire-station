@@ -1,12 +1,13 @@
-﻿using Content.Shared._Scp.Scp096.Photo;
+﻿using Content.Shared._Scp.ScpMask;
 using Content.Shared.Examine;
 
-namespace Content.Server._Scp.Scp096.Photo;
+namespace Content.Shared._Scp.Scp096.Photo;
 
 public sealed class Scp096PhotoSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly Scp096System _scp096 = default!;
+    [Dependency] private readonly SharedScp096System _scp096 = default!;
+    [Dependency] private readonly ScpMaskSystem _scpMask = default!;
 
     public override void Initialize()
     {
@@ -27,6 +28,10 @@ public sealed class Scp096PhotoSystem : EntitySystem
         if (!args.IsInDetailsRange)
             return;
 
-        _scp096.TryAddTarget(args.Examiner, true, true);
+        if (!_scp096.TryGetScp096(out var scp096))
+            return;
+
+        _scpMask.TryTear(scp096.Value);
+        _scp096.TryAddTarget(scp096.Value, args.Examiner, true, true, true);
     }
 }

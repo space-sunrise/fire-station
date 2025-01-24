@@ -133,7 +133,7 @@ public sealed class ScpMaskSystem : EntitySystem
     /// Моментально маску на выбранном сцп
     /// </summary>
     /// <returns>Успешна ли попытка порвать маску</returns>
-    public bool TryTear(Entity<ScpComponent> scp)
+    public bool TryTear(EntityUid scp)
     {
         if (!TryGetScpMask(scp, out var scpMask))
             return false;
@@ -167,6 +167,9 @@ public sealed class ScpMaskSystem : EntitySystem
             return false;
 
         if (!Resolve(maskEntity, ref maskEntity.Comp))
+            return false;
+
+        if (!Exists(maskEntity) || Terminating(maskEntity))
             return false;
 
         mask = (maskEntity.Owner, maskEntity.Comp);

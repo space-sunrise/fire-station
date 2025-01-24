@@ -17,12 +17,12 @@ public sealed class Scp096System : SharedScp096System
     {
         base.Initialize();
 
-        SubscribeLocalEvent<Scp096Component, Scp096RageEvent>(OnRage);
+        SubscribeNetworkEvent<Scp096RageEvent>(OnRage);
         SubscribeLocalEvent<Scp096Component, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<Scp096Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
     }
 
-    private void OnRage(Entity<Scp096Component> ent, ref Scp096RageEvent args)
+    private void OnRage(Scp096RageEvent args)
     {
         // Здесь происходит ваще хз че, поэтому распишу для понятности
 
@@ -35,11 +35,11 @@ public sealed class Scp096System : SharedScp096System
         if (!args.InRage)
             return;
 
-        _overlay = new(_transform, ent.Comp.Targets);
-
         // Если игрок это не 096, то ему не нужен оверлей
-        if (_player.LocalEntity != ent)
+        if (!TryComp<Scp096Component>(_player.LocalEntity, out var scp096Component))
             return;
+
+        _overlay = new(_transform, scp096Component.Targets);
 
         _overlayMan.AddOverlay(_overlay);
     }
