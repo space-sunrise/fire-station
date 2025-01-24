@@ -33,3 +33,6 @@ public sealed partial class Scp106BecomeTeleportPhantomActionEvent : SimpleDoAft
 
 [Serializable, NetSerializable]
 public sealed partial class Scp106ReverseActionEvent : SimpleDoAfterEvent {}
+
+[Serializable, NetSerializable]
+public sealed partial class Scp106TeleporationDelayActionEvent : SimpleDoAfterEvent { }

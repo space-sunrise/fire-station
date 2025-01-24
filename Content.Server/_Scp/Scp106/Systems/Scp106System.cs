@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Systems;
+using Content.Server.DoAfter;
 using Content.Server.Gateway.Systems;
 using Content.Server.Ghost;
 using Content.Server.Jittering;
@@ -14,6 +15,8 @@ using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Systems;
 using Content.Shared.Alert;
+using Content.Shared.DoAfter;
+using Content.Shared.Doors.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
@@ -24,10 +27,11 @@ using Content.Shared.Store.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Collections;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Physics.Components;
+using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
 using Robust.Shared.Random;
 
@@ -49,6 +53,8 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly StunSystem _stunSystem = default!;
     [Dependency] private readonly JitteringSystem _jittering = default!;
     [Dependency] private readonly StutteringSystem _stuttering = default!;
+    [Dependency] private readonly StunSystem _stun = default!;
+    [Dependency] private readonly DoAfterSystem _doAfter = default!;
 
     private readonly SoundSpecifier _sendBackroomsSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/onbackrooms.ogg");
 
@@ -104,11 +110,11 @@ public sealed class Scp106System : SharedScp106System
 
             Dirty(scp106, scp106Component);
 
-            _appearanceSystem.SetData(scp106, Scp106Visuals.Visuals, Scp106VisualsState.Default);
-
             _transform.SetCoordinates(scp106, phantomPos);
 
             EntityManager.DeleteEntity(phantom);
+
+            Scp106FinishTeleportation(scp106);
         }
 
         return true;
@@ -163,6 +169,8 @@ public sealed class Scp106System : SharedScp106System
             _transform.SetCoordinates(target, a);
             _transform.AttachToGridOrMap(target);
 
+            Scp106FinishTeleportation(target);
+
             return;
         }
 
@@ -177,6 +185,26 @@ public sealed class Scp106System : SharedScp106System
         _audio.PlayEntity(_sendBackroomsSound, target, target);
     }
 
+    public override void Scp106FinishTeleportation(EntityUid uid)
+    {
+        _stun.TryStun(uid, TimeSpan.FromSeconds(5), false);
+        _appearanceSystem.SetData(uid, Scp106Visuals.Visuals, Scp106VisualsState.Exiting);
+
+        var doAfterEventArgs = new DoAfterArgs(EntityManager,
+            uid,
+            TimeSpan.FromSeconds(5),
+            new Scp106TeleporationDelayActionEvent(),
+            uid)
+        {
+            BreakOnDamage = false,
+            BreakOnMove = false,
+            RequireCanInteract = false,
+        };
+
+        _doAfter.TryStartDoAfter(doAfterEventArgs);
+
+    }
+
     public override void SendToStation(EntityUid target)
     {
         if (!TryFindRandomTile(out _, out _, out _, out var targetCoords))
@@ -184,6 +212,7 @@ public sealed class Scp106System : SharedScp106System
 
         _transform.SetCoordinates(target, targetCoords);
         _transform.AttachToGridOrMap(target);
+        Scp106FinishTeleportation(target);
     }
 
     private async Task<EntityCoordinates> GetTransferMark()

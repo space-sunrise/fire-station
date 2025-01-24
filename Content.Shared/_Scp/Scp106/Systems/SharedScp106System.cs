@@ -1,16 +1,19 @@
 ﻿using System.Linq;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Protection;
+using Content.Shared.Actions;
 using Content.Shared.Body.Systems;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
+using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
@@ -37,6 +40,9 @@ public abstract class SharedScp106System : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly MobThresholdSystem _mob = default!;
+    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
+    [Dependency] private readonly SharedStunSystem _stun = default!;
+
 
     private readonly SoundSpecifier _teleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
@@ -132,7 +138,7 @@ public abstract class SharedScp106System : EntitySystem
         Scp106PhantomComponent component,
         Scp106LeavePhantomAction args)
     {
-        if (!TryComp<MobThresholdsComponent>(uid, out var mobThresholdsComponent))
+        if (!TryComp<MobThresholdsComponent>(uid, out var _))
             return;
 
         if (!_mob.TryGetThresholdForState(uid, MobState.Dead, out var damage))
@@ -140,7 +146,8 @@ public abstract class SharedScp106System : EntitySystem
 
         var damageType = _prototypeManager.Index<DamageTypePrototype>("Blunt");
 
-        _damageable.TryChangeDamage(uid, new DamageSpecifier(damageType, damage.Value), true);
+        // Временное значение +100 к урону из-за системы DamageModifier
+        _damageable.TryChangeDamage(uid, new DamageSpecifier(damageType, damage.Value + FixedPoint2.New(100)), true);
     }
 
     private void OnScp106ReverseAction(EntityUid uid, Scp106PhantomComponent component, Scp106ReverseAction args)
@@ -217,6 +224,18 @@ public abstract class SharedScp106System : EntitySystem
 
         scp106PhantomComponent.Scp106BodyUid = uid;
         args.Handled = true;
+
+
+        // Необходимо очищать контейнер от экшенов, т.к. при покупке scp106
+        // экшенов в магазине, они добавляются туда и фантом их получает при переселении mind
+        // TODO пофиксить исключение в дебаг сборке
+        if (!TryComp<ActionsContainerComponent>(mindId, out var actionsContainerComponent))
+            return;
+        foreach (var action in actionsContainerComponent.Container.ContainedEntities)
+        {
+            _actionContainer.RemoveAction(action);
+        }
+
         Dirty(uid, component);
     }
 
@@ -237,14 +256,15 @@ public abstract class SharedScp106System : EntitySystem
             return;
         }
 
+        _stun.TryStun(ent, TimeSpan.FromSeconds(5), false);
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(5), new Scp106BackroomsActionEvent(), args.Performer, args.Performer)
         {
             NeedHand = false,
-            BreakOnMove = true,
+            BreakOnMove = false,
             BreakOnHandChange = false,
-            BreakOnDamage = false
+            BreakOnDamage = false,
+            RequireCanInteract = false,
         };
-
         _doAfter.TryStartDoAfter(doAfterEventArgs);
         _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
 
@@ -270,6 +290,7 @@ public abstract class SharedScp106System : EntitySystem
             BreakOnDamage = false
         };
 
+        _stun.TryStun(ent, TimeSpan.FromSeconds(5), false);
         _doAfter.TryStartDoAfter(doAfterEventArgs);
         _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
 
@@ -301,7 +322,8 @@ public abstract class SharedScp106System : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        _appearanceSystem.SetData(uid, Scp106Visuals.Visuals, Scp106VisualsState.Default);
+        Scp106FinishTeleportation(uid);
+
         _audio.PlayEntity(_teleportSound, uid, uid);
     }
 
@@ -333,6 +355,7 @@ public abstract class SharedScp106System : EntitySystem
 
     public virtual bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args) { return false; }
 
+    public virtual void Scp106FinishTeleportation(EntityUid uid) {}
 }
 
 [NetSerializable, Serializable]
