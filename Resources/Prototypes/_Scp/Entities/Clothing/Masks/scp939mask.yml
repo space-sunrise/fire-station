@@ -15,8 +15,7 @@
     targetWhitelist:
       components:
       - Scp939
-    slots:
-    - Mask
+    tearChanceOnDamage: 0.4
   - type: ClothingAddActions
     actions:
     - ScpTearMask

@@ -36,6 +36,7 @@
     targetWhitelist:
       components:
       - Scp096
+    tearChanceOnDamage: 0.4
   - type: ClothingAddActions
     actions:
     - ScpTearMask
@@ -51,7 +52,10 @@
     sprite: _Scp/Clothing/Head/Scp096/scp096_bag-icons.rsi
     state: icon
   - type: ScpMask
+    slots:
+    - Head
     tearTime: 1 # мешок снимается легко
+    tearChanceOnDamage: 0.8
 
 - type: entity
   parent:
@@ -65,9 +69,6 @@
     layers:
     - state: icon
       map: [ "mask" ]
-  - type: ScpMask
-    slots:
-    - Mask
 
 - type: entity
   parent: ClothingHeadBase

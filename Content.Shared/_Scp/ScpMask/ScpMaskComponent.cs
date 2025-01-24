@@ -18,7 +18,7 @@ public sealed partial class ScpMaskComponent : Component, IClothingSlots
     /// Слот, в котором должна находиться маска
     /// </summary>
     [DataField, AlwaysPushInheritance]
-    public SlotFlags Slots { get; set; } = SlotFlags.HEAD;
+    public SlotFlags Slots { get; set; } = SlotFlags.MASK;
 
     /// <summary>
     /// Время, которое сцп 096 должен рвать свою маску
