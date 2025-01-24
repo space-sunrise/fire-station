@@ -82,6 +82,7 @@
   - type: ClothingAddComponents
     components:
     - type: Scp096Protection
+      problemChance: 0.002 # 0,2% каждый тик проебаться
 
 # Scp-049
 

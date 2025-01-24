@@ -18,6 +18,7 @@ using Content.Shared.Movement.Systems;
 using Content.Shared.StatusEffect;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
@@ -35,6 +36,7 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     private ISawmill _sawmill = Logger.GetSawmill("scp096");
@@ -245,7 +247,7 @@ public abstract partial class SharedScp096System : EntitySystem
             return false;
 
         // Если таргет не имеет защиты
-        if (HasComp<Scp096ProtectionComponent>(targetUid))
+        if (TryComp<Scp096ProtectionComponent>(targetUid, out var protection) && !_random.Prob(protection.ProblemChance))
             return false;
 
         // Если таргет не имеет возможности моргать
