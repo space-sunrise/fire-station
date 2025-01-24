@@ -26,6 +26,18 @@ public sealed partial class ScpMaskComponent : Component, IClothingSlots
     [DataField, AlwaysPushInheritance]
     public float TearTime = 10f; // 10 секунд
 
+    /// <summary>
+    /// Шанс того, что маска слетит при получении урона
+    /// </summary>
+    [DataField, AlwaysPushInheritance]
+    public float TearChanceOnDamage
+    {
+        get => _tearChanceOnDamage;
+        set => _tearChanceOnDamage = Math.Clamp(value, 0f, 1f);
+    }
+
+    private float _tearChanceOnDamage;
+
     #region Safe time
 
     [DataField, AlwaysPushInheritance]

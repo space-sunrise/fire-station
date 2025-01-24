@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Content.Shared._Scp.Mobs.Components;
 using Content.Shared.Actions;
+using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
@@ -9,6 +10,7 @@ using Content.Shared.Popups;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
+using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
@@ -27,6 +29,7 @@ public sealed class ScpMaskSystem : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
@@ -37,6 +40,8 @@ public sealed class ScpMaskSystem : EntitySystem
 
         SubscribeLocalEvent<ScpComponent, ScpTearMaskEvent>(OnTear);
         SubscribeLocalEvent<ScpComponent, ScpTearMaskDoAfterEvent>(OnTearSuccess);
+
+        SubscribeLocalEvent<ScpComponent, DamageChangedEvent>(OnDamage);
     }
 
     private void OnEquip(Entity<ScpMaskComponent> ent, ref BeingEquippedAttemptEvent args)
@@ -127,6 +132,20 @@ public sealed class ScpMaskSystem : EntitySystem
         args.Handled = true;
     }
 
+    private void OnDamage(Entity<ScpComponent> scp, ref DamageChangedEvent args)
+    {
+        if (!args.DamageIncreased)
+            return;
+
+        if (!TryGetScpMask(scp, out var scpMask))
+            return;
+
+        if (!_random.Prob(scpMask.Value.Comp.TearChanceOnDamage))
+            return;
+
+        TryTear(scp, scpMask.Value);
+    }
+
     #region Public API
 
     /// <summary>
@@ -138,19 +157,27 @@ public sealed class ScpMaskSystem : EntitySystem
         if (!TryGetScpMask(scp, out var scpMask))
             return false;
 
-        if (scpMask.Value.Comp.TearSound != null)
-            _audio.PlayPvs(scpMask.Value.Comp.TearSound,scp);
+        if (!TryTear(scp, scpMask.Value))
+            return false;
+
+        return true;
+    }
+
+    public bool TryTear(EntityUid scp, Entity<ScpMaskComponent> mask)
+    {
+        if (mask.Comp.TearSound != null)
+            _audio.PlayPvs(mask.Comp.TearSound,scp);
 
         var message = Loc.GetString(
             "scp-destroyed-mask",
             ("scp", Name(scp)),
-            ("mask", Name(scpMask.Value))
+            ("mask", Name(mask))
         );
 
         _popup.PopupPredicted(message, scp, null, PopupType.LargeCaution);
 
         if (_net.IsServer)
-            QueueDel(scpMask);
+            QueueDel(mask);
 
         return true;
     }
