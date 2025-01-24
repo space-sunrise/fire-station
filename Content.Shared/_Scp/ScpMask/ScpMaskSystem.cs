@@ -177,6 +177,22 @@ public sealed class ScpMaskSystem : EntitySystem
         return true;
     }
 
+    /// <summary>
+    /// Создает попап, говорящий о невозможности использовать способность из-за маски
+    /// </summary>
+    /// <param name="scp"></param>
+    public bool TryCreatePopup(EntityUid scp, EntityUid? mask)
+    {
+        if (!mask.HasValue)
+            return false;
+
+        var message = Loc.GetString("scp-mask-action-blocked", ("mask", Name(mask.Value)));
+        if (_net.IsServer) // Для работы вызовов с сервера
+            _popup.PopupEntity(message, scp, scp, PopupType.LargeCaution);
+
+        return true;
+    }
+
     #endregion
 
 }

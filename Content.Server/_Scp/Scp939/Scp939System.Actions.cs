@@ -1,12 +1,12 @@
 ﻿using Content.Server.Chat.Systems;
 using Content.Server.Examine;
 using Content.Shared._Scp.Scp939;
+using Content.Shared._Scp.ScpMask;
 using Content.Shared._Sunrise.TTS;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs.Components;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp939;
@@ -15,10 +15,11 @@ public sealed partial class Scp939System
 {
     [Dependency] private readonly ExamineSystem _examine = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
-    [Dependency] private readonly ChatSystem _chatSystem = default!;
+    [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    private static string SleepStatusKey = "ForcedSleep";
+    private const string SleepStatusKey = "ForcedSleep";
 
     private void InitializeActions()
     {
@@ -47,6 +48,12 @@ public sealed partial class Scp939System
 
     private void OnGasAction(Entity<Scp939Component> ent, ref Scp939GasAction args)
     {
+        if (_scpMask.TryGetScpMask(ent, out var scpMask))
+        {
+            _scpMask.TryCreatePopup(ent, scpMask);
+            return;
+        }
+
         var xform = Transform(ent);
         var smokeEntity = Spawn(ent.Comp.SmokeProtoId, xform.Coordinates.SnapToGrid());
 
@@ -68,7 +75,7 @@ public sealed partial class Scp939System
             Dirty(ent, ttsComponent);
         }
 
-        _chatSystem.TrySendInGameICMessage(ent,
+        _chat.TrySendInGameICMessage(ent,
             messagePair.Key,
             InGameICChatType.Speak,
             ChatTransmitRange.Normal,
