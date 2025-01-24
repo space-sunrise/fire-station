@@ -84,10 +84,8 @@ public sealed class Scp106System : SharedScp106System
     }
     public override bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args)
     {
-        if (args.Args.EventTarget == null)
+        if (args.Args.EventTarget is not {} phantom)
             return false;
-
-        var phantom = args.Args.EventTarget.Value;
 
         if (!TryComp<Scp106PhantomComponent>(phantom, out var phantomComponent))
             return false;
