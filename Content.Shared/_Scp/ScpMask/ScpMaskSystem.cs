@@ -137,6 +137,10 @@ public sealed class ScpMaskSystem : EntitySystem
         if (!args.DamageIncreased)
             return;
 
+        // Нужен только тот урон, что нанесли игроки
+        if (!args.Origin.HasValue)
+            return;
+
         if (!TryGetScpMask(scp, out var scpMask))
             return;
 
