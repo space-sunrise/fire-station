@@ -9,6 +9,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
@@ -42,6 +43,8 @@ public abstract class SharedScp106System : EntitySystem
     [Dependency] private readonly MobThresholdSystem _mob = default!;
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private readonly SharedActionsSystem _sharedActionsSystem = default!;
+
 
 
     private readonly SoundSpecifier _teleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
@@ -225,15 +228,18 @@ public abstract class SharedScp106System : EntitySystem
         scp106PhantomComponent.Scp106BodyUid = uid;
         args.Handled = true;
 
-
-        // Необходимо очищать контейнер от экшенов, т.к. при покупке scp106
-        // экшенов в магазине, они добавляются туда и фантом их получает при переселении mind
-        // TODO пофиксить исключение в дебаг сборке
         if (!TryComp<ActionsContainerComponent>(mindId, out var actionsContainerComponent))
             return;
+
         foreach (var action in actionsContainerComponent.Container.ContainedEntities)
         {
-            _actionContainer.RemoveAction(action);
+            if (!_sharedActionsSystem.TryGetActionData(action, out var container))
+                return;
+
+            if (container.Container != null)
+            {
+                _sharedActionsSystem.RemoveProvidedAction(mindId, container.Container.Value, action);
+            }
         }
 
         Dirty(uid, component);

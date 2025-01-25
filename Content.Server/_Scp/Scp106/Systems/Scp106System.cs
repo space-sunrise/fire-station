@@ -74,6 +74,15 @@ public sealed class Scp106System : SharedScp106System
         // Abilities in that store
         SubscribeLocalEvent<Scp106Component, Scp106BoughtPhantomAction>(OnBoughtPhantom);
         SubscribeLocalEvent<Scp106Component, Scp106UpgradePhantomAction>(OnUpgradePhantom);
+
+        SubscribeLocalEvent<Scp106Component, Scp106TeleporationDelayActionEvent>(OnScp106TeleporationDelayActionEvent);
+    }
+
+    private void OnScp106TeleporationDelayActionEvent(EntityUid uid,
+        Scp106Component component,
+        Scp106TeleporationDelayActionEvent args)
+    {
+        _appearanceSystem.SetData(uid, Scp106Visuals.Visuals, Scp106VisualsState.Default);
     }
 
     private void OnUpgradePhantom(EntityUid uid,
@@ -96,9 +105,6 @@ public sealed class Scp106System : SharedScp106System
 
         if (_mindSystem.TryGetMind(phantom, out var mindId, out var _))
         {
-            if (!TryComp<Scp106PhantomComponent>(phantom, out var _))
-                return false;
-
             _mindSystem.TransferTo(mindId, scp106);
 
             if (!TryComp<Scp106Component>(scp106, out var scp106Component))
