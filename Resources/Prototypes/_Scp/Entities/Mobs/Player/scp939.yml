@@ -39,7 +39,7 @@
     thresholds:
       0: Alive
       1000: Critical
-      8000: Dead
+      9999999: Dead
   - type: Inventory
     templateId: scp939
   - type: Puller
