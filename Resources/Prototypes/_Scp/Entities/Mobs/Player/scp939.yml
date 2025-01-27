@@ -20,9 +20,8 @@
     altDisarm: false
     soundHit:
       collection: HitScp939
-    angle: 30
+    angle: 0
     animation: WeaponArcClaw
-    attackRate: 1
     damage:
       types:
         Blunt: 20
@@ -39,7 +38,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      1200: Critical
+      1000: Critical
       8000: Dead
   - type: Inventory
     templateId: scp939
