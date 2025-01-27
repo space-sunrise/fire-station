@@ -9,6 +9,7 @@ using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Doors.Components;
 using Content.Shared.Eye.Blinding.Components;
+using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs;
@@ -28,6 +29,7 @@ public abstract partial class SharedScp096System : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly SharedBlinkingSystem _blinkingSystem = default!;
+    [Dependency] private readonly EyeClosingSystem _eyeClosing = default!;
     [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookupSystem = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifierSystem = default!;
@@ -260,6 +262,10 @@ public abstract partial class SharedScp096System : EntitySystem
 
         // Если таргет слепой
         if (_blinkingSystem.IsBlind(targetUid, blinkableComponent))
+            return false;
+
+        // Если глаза таргета закрыты
+        if (_eyeClosing.AreEyesClosed(targetUid))
             return false;
 
         // Если таргет закрыл глаза
