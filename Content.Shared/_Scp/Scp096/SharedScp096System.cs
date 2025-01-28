@@ -29,7 +29,7 @@ public abstract partial class SharedScp096System : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly SharedBlinkingSystem _blinkingSystem = default!;
-    [Dependency] private readonly EyeClosingSystem _eyeClosing = default!;
+    [Dependency] private readonly SharedEyeClosingSystem _eyeClosing = default!;
     [Dependency] private readonly SharedInteractionSystem _interactionSystem = default!;
     [Dependency] private readonly EntityLookupSystem _entityLookupSystem = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifierSystem = default!;

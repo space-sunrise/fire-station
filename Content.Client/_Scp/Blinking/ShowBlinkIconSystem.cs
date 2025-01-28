@@ -11,7 +11,7 @@ namespace Content.Client._Scp.Blinking;
 public sealed class ShowBlinkIconSystem : EquipmentHudSystem<ShowBlinkableComponent>
 {
     [Dependency] private readonly BlinkingSystem _blinkingSystem = default!;
-    [Dependency] private readonly EyeClosingSystem _eyeClosing = default!;
+    [Dependency] private readonly SharedEyeClosingSystem _eyeClosing = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     public override void Initialize()

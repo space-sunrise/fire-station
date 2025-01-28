@@ -15,7 +15,7 @@ namespace Content.Shared._Scp.Blinking;
 public abstract class SharedBlinkingSystem : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly EyeClosingSystem _closingSystem = default!;
+    [Dependency] private readonly SharedEyeClosingSystem _closingSystem = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
