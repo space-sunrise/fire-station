@@ -13,7 +13,10 @@
   canBeAntag: false
   displayWeight: 20  # Sunrise
   access:
-  - Research # FireStation Edit
+  - Research # Fire
+  - Kitchen # Fire
+  - Hydroponics # Fire
+  - Janitor # Fire
   - Security
   - Brig
   - Maintenance
