@@ -37,11 +37,14 @@ public sealed partial class Scp939System
 
     private bool TrySleep(Entity<Scp939Component> ent, float hibernationDuration = 0)
     {
+        if (HasComp<SleepingComponent>(ent))
+            return false;
+
         if (!_sleepingSystem.TrySleeping(ent.Owner))
             return false;
 
         hibernationDuration = hibernationDuration == 0 ? ent.Comp.HibernationDuration : hibernationDuration;
-        _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(ent, SleepStatusKey, TimeSpan.FromSeconds(hibernationDuration), false);
+        _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(ent, SleepStatusKey, TimeSpan.FromSeconds(hibernationDuration), true);
 
         return true;
     }
