@@ -19,4 +19,4 @@ lathe-category-mechs-durand = Дюранд
 lathe-category-mechs-phazon = Фазон
 lathe-category-mechs-equipment = Оборудование механоидов
 lathe-category-mechs-weapons = Вооружение механоидов
-lathe-category-scp = SPC
+lathe-category-scp = SCP
