@@ -75,10 +75,10 @@
             ClassD:
               HeadOfSecurity: 2
               Warden: 2
-              SeniorOfficer: 2
-              SecurityOfficer: 2
+              SeniorOfficer: 1
+              SecurityOfficer: 1
               SecurityCadet: 1
-          maxCount: 18
+          maxCount: 12
         - type: StationGoal
           goals:
           - Scp1
