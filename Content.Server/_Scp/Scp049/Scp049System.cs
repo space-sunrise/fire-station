@@ -26,6 +26,9 @@ public sealed partial class Scp049System : SharedScp049System
 
     private void OnResurrectDoAfter(Entity<Scp049Component> scpEntity, ref ScpResurrectionDoAfterEvent args)
     {
+        if (args.Cancelled || args.Handled)
+            return;
+
         var mobStateComponent = Comp<MobStateComponent>(args.Target!.Value);
         var mobStateEntity = new Entity<MobStateComponent>(args.Target.Value, mobStateComponent);
 
@@ -37,6 +40,8 @@ public sealed partial class Scp049System : SharedScp049System
             var message = Loc.GetString("scp049-cannot-zombify-entity", ("target", mobStateEntity));
             _popupSystem.PopupEntity(message, mobStateEntity, scpEntity);
         }
+
+        args.Handled = true;
     }
 
     // TODO: Перенести на другие компоненты
