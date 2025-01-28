@@ -32,6 +32,6 @@ public sealed class Scp096PhotoSystem : EntitySystem
             return;
 
         _scpMask.TryTear(scp096.Value);
-        _scp096.TryAddTarget(scp096.Value, args.Examiner, true, true, true);
+        _scp096.TryAddTarget(scp096.Value, args.Examiner, true, true);
     }
 }
