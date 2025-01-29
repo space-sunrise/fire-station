@@ -33,6 +33,7 @@
                 <!-- Graphics -->
                 <Label Text="{Loc 'ui-options-sunrise-general-graphics'}" StyleClasses="LabelKeyText"/>
                 <CheckBox Name="ChatIconsEnableCheckBox" Text="{Loc 'ui-options-chat-icons-enable'}" />
+                <CheckBox Name="LightFlickingEnableCheckBox" Text="{Loc 'ui-options-light-flicking-enable'}" />
 
             </BoxContainer>
         </ScrollContainer>

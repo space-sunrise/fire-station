@@ -412,4 +412,15 @@ public sealed class SunriseCCVars
 
     public static readonly CVarDef<bool> ChatIconsEnable =
         CVarDef.Create("chat_icon.enable", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    // Fire edit start
+
+    /*
+     * Light flicking
+     */
+
+    public static readonly CVarDef<bool> LightFlickingEnable =
+        CVarDef.Create("light_flicking.enable", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    // Fire edit end
 }
