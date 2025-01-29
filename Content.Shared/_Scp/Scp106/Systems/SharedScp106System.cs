@@ -241,7 +241,6 @@ public abstract class SharedScp106System : EntitySystem
                 _sharedActionsSystem.RemoveProvidedAction(mindId, container.Container.Value, action);
             }
         }
-
         Dirty(uid, component);
     }
 
