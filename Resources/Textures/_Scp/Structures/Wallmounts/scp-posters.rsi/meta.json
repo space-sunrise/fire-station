@@ -8,6 +8,12 @@
     },
     "states": [
         {
+            "name": "scp005"
+        },
+        {
+            "name": "scp035"
+        },
+        {
             "name": "scp049"
         },
         {
@@ -18,6 +24,9 @@
         },
         {
             "name": "scp173"
+        },
+        {
+            "name": "scp500"
         },
         {
             "name": "scp969"
