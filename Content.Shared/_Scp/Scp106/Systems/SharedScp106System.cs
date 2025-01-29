@@ -228,19 +228,8 @@ public abstract class SharedScp106System : EntitySystem
         scp106PhantomComponent.Scp106BodyUid = uid;
         args.Handled = true;
 
-        if (!TryComp<ActionsContainerComponent>(mindId, out var actionsContainerComponent))
-            return;
+        args.Action.Comp.UseDelay = component.PhantomCoolDown;
 
-        foreach (var action in actionsContainerComponent.Container.ContainedEntities)
-        {
-            if (!_sharedActionsSystem.TryGetActionData(action, out var container))
-                return;
-
-            if (container.Container != null)
-            {
-                _sharedActionsSystem.RemoveProvidedAction(mindId, container.Container.Value, action);
-            }
-        }
         Dirty(uid, component);
     }
 

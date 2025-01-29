@@ -20,7 +20,7 @@ public sealed partial class Scp106ShopAction : InstantActionEvent {}
 
 public sealed partial class Scp106BoughtPhantomAction : InstantActionEvent {}
 
-public sealed partial class Scp106UpgradePhantomAction : InstantActionEvent {}
+public sealed partial class Scp106OnUpgradePhantomAction : InstantActionEvent {}
 
 [Serializable, NetSerializable]
 public sealed partial class Scp106BackroomsActionEvent : SimpleDoAfterEvent { }

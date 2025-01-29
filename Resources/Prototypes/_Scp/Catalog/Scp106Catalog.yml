@@ -1,9 +1,8 @@
 - type: listing
-  id: Scp106BecomePhantom
+  id: Scp106BoughtPhantomAction
   name: Фантом
   description: Способность становится фантомом.
-  productAction: Scp106BecomePhantom
-  productUpgradeId: Scp106BecomePhantomUpgrade
+  productEvent: !type:Scp106BoughtPhantomAction
   categories:
   - Scp106Abilities
   cost:
@@ -17,10 +16,10 @@
       stock: 1
 
 - type: listing
-  id: Scp106BecomePhantomUpgrade
-  name: Фантом
-  description: Улучшите свою способность.
-  productUpgradeId: Scp106BecomePhantomUpgrade
+  id: Scp106UpgradePhantom
+  name: Улучшение фантомизации
+  description: Уменьшите время ожидания использования способности на 1 минуту.
+  productEvent: !type:Scp106OnUpgradePhantomAction
   categories:
   - Scp106Abilities
   cost:
@@ -30,8 +29,8 @@
     sprite: _Scp/Actions/scp106-actions.rsi
     state: scp106_phantom
   conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
   - !type:BuyBeforeCondition
     whitelist:
-    - Scp106BecomePhantom
-  - !type:ListingLimitedStockCondition
-    stock: 2
+    - Scp106BoughtPhantomAction

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
+using Content.Server.Actions;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Systems;
 using Content.Server.DoAfter;
@@ -14,6 +15,7 @@ using Content.Server.Stunnable;
 using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Systems;
+using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Content.Shared.DoAfter;
 using Content.Shared.Doors.Components;
@@ -55,6 +57,8 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly StutteringSystem _stuttering = default!;
     [Dependency] private readonly StunSystem _stun = default!;
     [Dependency] private readonly DoAfterSystem _doAfter = default!;
+    [Dependency] private readonly ActionsSystem _actions = default!;
+
 
     private readonly SoundSpecifier _sendBackroomsSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/onbackrooms.ogg");
 
@@ -73,7 +77,7 @@ public sealed class Scp106System : SharedScp106System
 
         // Abilities in that store
         SubscribeLocalEvent<Scp106Component, Scp106BoughtPhantomAction>(OnBoughtPhantom);
-        SubscribeLocalEvent<Scp106Component, Scp106UpgradePhantomAction>(OnUpgradePhantom);
+        SubscribeLocalEvent<Scp106Component, Scp106OnUpgradePhantomAction>(OnScp106OnUpgradePhantomAction);
 
         SubscribeLocalEvent<Scp106Component, Scp106TeleporationDelayActionEvent>(OnScp106TeleporationDelayActionEvent);
     }
@@ -85,11 +89,11 @@ public sealed class Scp106System : SharedScp106System
         _appearanceSystem.SetData(uid, Scp106Visuals.Visuals, Scp106VisualsState.Default);
     }
 
-    private void OnUpgradePhantom(EntityUid uid,
+    private void OnScp106OnUpgradePhantomAction(EntityUid uid,
         Scp106Component component,
-        Scp106UpgradePhantomAction args)
+        Scp106OnUpgradePhantomAction args)
     {
-        // logic
+        component.PhantomCoolDown -= TimeSpan.FromSeconds(60);
     }
     public override bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args)
     {
@@ -126,9 +130,7 @@ public sealed class Scp106System : SharedScp106System
 
     private void OnBoughtPhantom(EntityUid uid, Scp106Component component, Scp106BoughtPhantomAction args)
     {
-        component.AmoutOfPhantoms += 1;
-
-        Dirty(uid, component);
+        _actions.AddAction(uid, component.PhantomAction, uid);
     }
 
     private void OnShop(EntityUid uid, Scp106Component component, Scp106ShopAction args)

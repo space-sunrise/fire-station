@@ -101,39 +101,4 @@
     icon:
       sprite: _Scp/Actions/scp106-actions.rsi
       state: scp106_phantom
-  - type: ActionUpgrade
-    effectedLevels:
-      2: Scp106BecomePhantomII
-      3: Scp106BecomePhantomIII
-
-- type: entity
-  parent: Scp106BecomePhantom
-  id: Scp106BecomePhantomII
-  name: Стать фантомом.
-  description: "Новое воплощение для поиска трупов. Фантом восстанавливается каждые 4 минуты"
-  components:
-  - type: InstantAction
-    event: !type:Scp106BecomePhantomAction
-    raiseOnUser: true
-    itemIconStyle: BigAction
-    useDelay: 240
-    icon:
-      sprite: _Scp/Actions/scp106-actions.rsi
-      state: scp106_phantom
-
-- type: entity
-  parent: Scp106BecomePhantom
-  id: Scp106BecomePhantomIII
-  name: Стать фантомом.
-  description: "Новое воплощение для поиска трупов. Фантом восстанавливается каждые 3 минуты."
-  components:
-  - type: InstantAction
-    event: !type:Scp106BecomePhantomAction
-    raiseOnUser: true
-    itemIconStyle: BigAction
-    useDelay: 180
-    icon:
-      sprite: _Scp/Actions/scp106-actions.rsi
-      state: scp106_phantom
-
 ### 3 TIRES OF PHANTOM ABILITY END

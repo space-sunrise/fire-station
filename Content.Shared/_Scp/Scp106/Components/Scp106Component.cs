@@ -5,6 +5,7 @@ using Content.Shared.Store;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Generic;
 
 namespace Content.Shared._Scp.Scp106.Components;
 
@@ -49,4 +50,10 @@ public sealed partial class Scp106Component : Component
 
     [DataField("scp106LifeEssenceAlert")]
     public ProtoId<AlertPrototype> Scp106EssenceAlert { get; set; } = "Scp106LifeEssence";
+
+    [DataField("phantomAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
+    public string PhantomAction = "Scp106BecomePhantom";
+
+    public TimeSpan PhantomCoolDown = TimeSpan.FromSeconds(300);
+
 }
