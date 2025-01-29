@@ -4,7 +4,7 @@
   parent: BaseScp
   components:
   - type: Sprite
-    drawdepth: Mobs
+    drawdepth: SmallMobs
     sprite: _Scp/Mobs/scp-999.rsi
     layers:
     - state: default
@@ -64,8 +64,7 @@
   - type: Damageable
     damageModifierSet: SCP-999
   - type: Body
-    prototype: Slimes
-    requiredLegs: 1
+    prototype: Human # TODO: Кастомное тело
   - type: InteractionPopup
     interactDelay: 0.5
     interactSuccessSpawn: EffectHearts

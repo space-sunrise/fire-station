@@ -27,7 +27,7 @@
         Blunt: 60
         Bloodloss: 10
   - type: Body
-    prototype: Human
+    prototype: Human # TODO: Кастомное тело
   - type: Inventory
     templateId: scp096
   - type: AmbientSound
