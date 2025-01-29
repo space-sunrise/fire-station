@@ -20,9 +20,11 @@
       - Healing
       - TapePlayer # бумбокс
       - MusicTape # Касеты бумбокса
+      - Pill
       tags:
       - Syringe
       - SunriseUplink # рыбаплинк
+      - PillCanister
   - type: StorageFill
     contents:
     - id: Hemostat
