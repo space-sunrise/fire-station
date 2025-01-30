@@ -9,7 +9,6 @@ using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
-using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
@@ -314,8 +313,6 @@ public abstract class SharedScp106System : EntitySystem
     {
         if (!_timing.IsFirstTimePredicted)
             return;
-
-        Scp106FinishTeleportation(uid);
 
         _audio.PlayEntity(_teleportSound, uid, uid);
     }

@@ -187,7 +187,7 @@ public sealed class Scp106System : SharedScp106System
         var mark = await GetTransferMark();
         _transform.SetCoordinates(target, mark);
         _transform.AttachToGridOrMap(target);
-
+        _stunSystem.TryParalyze(target, TimeSpan.FromSeconds(5), true);
         _audio.PlayEntity(_sendBackroomsSound, target, target);
     }
 
