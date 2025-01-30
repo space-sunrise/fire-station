@@ -219,7 +219,6 @@ public abstract class SharedScp106System : EntitySystem
         if (_mindSystem.TryGetMind(uid, out var mindId, out _))
         {
             _mindSystem.TransferTo(mindId, scp106Phantom);
-            component.AmoutOfPhantoms -= 1;
             Dirty(uid, component);
         }
         if (!TryComp<Scp106PhantomComponent>(scp106Phantom, out var scp106PhantomComponent))

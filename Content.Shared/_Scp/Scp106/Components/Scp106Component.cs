@@ -18,17 +18,6 @@ public sealed partial class Scp106Component : Component
     /// </summary>
     [DataField] public bool IsContained;
 
-    // Обычный фантом, позволяющий ходить сквозь шлюзы и если найдёт труп,
-    // переместится уже самому 106 на его место
-    // не поддается сдерживаю
-    [DataField, AutoNetworkedField]
-    public int AmoutOfPhantoms = 0;
-
-    // Фантом для телепортации
-    // поддается сдерживаю
-    [DataField, AutoNetworkedField]
-    public int AmountOfCorporealPhantoms = 0;
-
     [AutoNetworkedField]
     public float Accumulator = 0;
 
@@ -44,9 +33,6 @@ public sealed partial class Scp106Component : Component
     [DataField, ViewVariables(VVAccess.ReadWrite)]
     [AutoNetworkedField]
     public FixedPoint2 Essence = 0f;
-
-    [AutoNetworkedField]
-    public float HumansInBackrooms = 0;
 
     [DataField("scp106LifeEssenceAlert")]
     public ProtoId<AlertPrototype> Scp106EssenceAlert { get; set; } = "Scp106LifeEssence";

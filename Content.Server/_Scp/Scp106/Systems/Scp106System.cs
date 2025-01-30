@@ -349,11 +349,10 @@ public sealed class Scp106System : SharedScp106System
                 continue;
 
             scp106Component.BackroomsAccumulator += 1;
+            scp106Component.Essence += 1;
 
             scp106Component.Accumulator -= 1;
-            scp106Component.Essence += 1;
-            scp106Component.HumansInBackrooms = 0;
-
+            var HumansInBackrooms = 0;
 
             if (scp106Component.BackroomsAccumulator < 60)
             {
@@ -370,9 +369,9 @@ public sealed class Scp106System : SharedScp106System
                 if (HasComp<Scp106BackRoomMapComponent>(Transform(humanUid).MapUid)
                     && mobStateComponent.CurrentState == MobState.Alive)
                 {
-                    scp106Component.HumansInBackrooms += 1;
+                    HumansInBackrooms += 1;
 
-                    if (scp106Component.HumansInBackrooms >= 10)
+                    if (HumansInBackrooms >= 10)
                     {
                         // Тут должна быть логика события, например добавление особой абилки
                         Dirty(scp106Uid, scp106Component);
@@ -387,7 +386,7 @@ public sealed class Scp106System : SharedScp106System
                 continue;
             }
 
-            if (scp106Component.HumansInBackrooms >= 10)
+            if (HumansInBackrooms >= 10)
             {
                 scp106Component.AnnouncementAccumulator = 0;
 
