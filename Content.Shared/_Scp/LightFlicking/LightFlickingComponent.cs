@@ -5,5 +5,8 @@ namespace Content.Shared._Scp.LightFlicking;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class LightFlickingComponent : Component
 {
-    public TimeSpan NextFlickTime;
+    [ViewVariables] public TimeSpan NextFlickTime;
+
+    [ViewVariables] public float DumpedRadius;
+    [ViewVariables] public float DumpedEnergy;
 }

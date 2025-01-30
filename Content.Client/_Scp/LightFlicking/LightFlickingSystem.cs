@@ -6,9 +6,6 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.LightFlicking;
 
-// TODO: При отключении в настройках возвращать энергию и радиус в стандартное состояние
-// TODO: Пофиксить, что при неком стечении обстоятельств лампочка может 999 раз уменьшить энергию или радиус, пока не выключится и наоборот
-
 public sealed class LightFlickingSystem : EntitySystem
 {
     [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
@@ -18,17 +15,17 @@ public sealed class LightFlickingSystem : EntitySystem
 
     private bool _enabled;
 
-    private const float RadiusVariationPercentage = 0.07f;
-    private const float EnergyVariationPercentage = 0.03f;
+    private const float RadiusVariationPercentage = 0.15f;
+    private const float EnergyVariationPercentage = 0.15f;
 
     private readonly TimeSpan _flickInterval = TimeSpan.FromSeconds(0.5);
-    private readonly TimeSpan _flickVariation = TimeSpan.FromSeconds(0.35);
+    private readonly TimeSpan _flickVariation = TimeSpan.FromSeconds(0.45);
 
     public override void Initialize()
     {
         base.Initialize();
 
-        _cfg.OnValueChanged(SunriseCCVars.LightFlickingEnable, enabled => _enabled = enabled, true);
+        _cfg.OnValueChanged(SunriseCCVars.LightFlickingEnable, OnSettingsToggle, true);
 
         SubscribeLocalEvent<LightFlickingComponent, ComponentInit>(OnInit);
     }
@@ -37,12 +34,33 @@ public sealed class LightFlickingSystem : EntitySystem
     {
         base.Shutdown();
 
-        _cfg.UnsubValueChanged(SunriseCCVars.LightFlickingEnable, enabled => _enabled = enabled);
+        _cfg.UnsubValueChanged(SunriseCCVars.LightFlickingEnable, OnSettingsToggle);
     }
 
     private void OnInit(Entity<LightFlickingComponent> ent, ref ComponentInit args)
     {
+        var light = _pointLight.EnsureLight(ent);
+        ent.Comp.DumpedRadius = light.Radius;
+        ent.Comp.DumpedEnergy = light.Energy;
+
         SetNextTime(ent);
+    }
+
+    private void OnSettingsToggle(bool enabled)
+    {
+        _enabled = enabled;
+
+        var query = AllEntityQuery<LightFlickingComponent>();
+
+        if (enabled)
+            return;
+
+        // Возвращаем значения на исходные
+        while (query.MoveNext(out var uid, out var flicking))
+        {
+            _pointLight.SetEnergy(uid, flicking.DumpedEnergy);
+            _pointLight.SetRadius(uid, flicking.DumpedRadius);
+        }
     }
 
     public override void Update(float frameTime)
@@ -59,9 +77,8 @@ public sealed class LightFlickingSystem : EntitySystem
             if (_timing.CurTime <= flicking.NextFlickTime)
                 continue;
 
-            var light = _pointLight.EnsureLight(uid);
-            _pointLight.SetEnergy(uid, Variantize(light.Energy, EnergyVariationPercentage));
-            _pointLight.SetRadius(uid, Variantize(light.Radius, RadiusVariationPercentage));
+            _pointLight.SetEnergy(uid, Variantize(flicking.DumpedEnergy, EnergyVariationPercentage));
+            _pointLight.SetRadius(uid, Variantize(flicking.DumpedRadius, RadiusVariationPercentage));
 
             SetNextTime((uid, flicking));
         }
