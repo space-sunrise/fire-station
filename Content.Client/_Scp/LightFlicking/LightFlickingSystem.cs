@@ -15,8 +15,8 @@ public sealed class LightFlickingSystem : EntitySystem
 
     private bool _enabled;
 
-    private const float RadiusVariationPercentage = 0.15f;
-    private const float EnergyVariationPercentage = 0.15f;
+    private const float RadiusVariationPercentage = 0.2f;
+    private const float EnergyVariationPercentage = 0.2f;
 
     private readonly TimeSpan _flickInterval = TimeSpan.FromSeconds(0.5);
     private readonly TimeSpan _flickVariation = TimeSpan.FromSeconds(0.45);
@@ -74,6 +74,9 @@ public sealed class LightFlickingSystem : EntitySystem
 
         while (query.MoveNext(out var uid, out var flicking))
         {
+            if (!flicking.Enabled)
+                continue;
+
             if (_timing.CurTime <= flicking.NextFlickTime)
                 continue;
 

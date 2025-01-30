@@ -26,6 +26,7 @@ using Robust.Shared.Audio.Systems;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Damage.Components;
 using Content.Shared.Power;
+using Robust.Shared.Serialization;
 
 namespace Content.Server.Light.EntitySystems
 {
@@ -147,6 +148,10 @@ namespace Content.Server.Light.EntitySystems
             if (!_containerSystem.Insert(bulbUid, light.LightBulbContainer))
                 return false;
 
+            // Fire edit start
+            RaiseLocalEvent(uid, new LightInsertEvent(bulbUid));
+            // Fire edit end
+
             UpdateLight(uid, light);
             return true;
         }
@@ -170,6 +175,10 @@ namespace Content.Server.Light.EntitySystems
 
             // try to place bulb in hands
             _handsSystem.PickupOrDrop(userUid, bulb);
+
+            // Fire edit start
+            RaiseLocalEvent(uid, new LightEjectEvent(bulb));
+            // Fire edit end
 
             UpdateLight(uid, light);
             return bulb;
@@ -441,4 +450,27 @@ namespace Content.Server.Light.EntitySystems
                 args.Affected = true;
         }
     }
+
+    // Fire edit start
+    public sealed class LightEjectEvent : EntityEventArgs
+    {
+        public EntityUid Bulb;
+
+        public LightEjectEvent(EntityUid bulb)
+        {
+            Bulb = bulb;
+        }
+    }
+
+    public sealed class LightInsertEvent : EntityEventArgs
+    {
+        public EntityUid Bulb;
+
+        public LightInsertEvent(EntityUid bulb)
+        {
+            Bulb = bulb;
+        }
+    }
+    // Fire edit end
+
 }
