@@ -14,6 +14,7 @@ job-description-containment-guard = Занимается охраной перс
 job-name-classd = сотрудник класса D
 job-name-classd-cook = повар класса D
 job-name-classd-botanist = растеневод класса D
+job-name-classd-janitor = уборщик класса D
 
 job-description-classd = Над ними ставят опыты...
 job-name-Governor = комендант

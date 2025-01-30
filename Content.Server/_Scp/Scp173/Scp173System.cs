@@ -238,7 +238,7 @@ public sealed class Scp173System : SharedScp173System
         _audio.PlayPvs(_clogSound, ent);
 
         FixedPoint2 total = 0;
-        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, 8).ToList();
+        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, ContainmentRoomSearchRadius).ToHashSet();
         foreach (var puddle in puddles)
         {
             if (!puddle.Comp.Solution.HasValue)

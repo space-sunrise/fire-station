@@ -8,6 +8,9 @@
   id: JobClassDBotanist
 
 - type: playTimeTracker
+  id: JobClassDJanitor
+
+- type: playTimeTracker
   id: JobScp173
 
 - type: playTimeTracker

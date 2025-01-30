@@ -15,6 +15,8 @@
     sprite: _Scp/Mobs/scp-049.rsi
     state: SCP-049
   - type: Scp049
+  - type: ScpRestriction
+    canPull: true
   - type: ScpShow049Hud
   - type: Inventory
     templateId: scp049
@@ -39,7 +41,7 @@
     thresholds:
       0: Alive
       2000: Critical
-      2500: Dead
+      9999999: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
       1000: 0.9

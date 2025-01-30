@@ -113,8 +113,8 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      6000: Critical
-      10000: Dead
+      9999998: Critical
+      9999999: Dead
   - type: PassiveDamage
     allowedStates:
     - Alive
@@ -173,9 +173,6 @@
     - map: [ "base" ]
       state: 106
   - type: Scp106
-  - type: ScpRestriction
-    blockBePulled: false
-    blockPull: false
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
     altDisarm: false
@@ -192,8 +189,8 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      10000: Critical
-      15000: Dead
+      9999998: Critical
+      9999999: Dead
   - type: PassiveDamage
     allowedStates:
     - Alive

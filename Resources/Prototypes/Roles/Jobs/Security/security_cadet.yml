@@ -5,14 +5,17 @@
   playTimeTracker: JobSecurityCadet
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 18000 #5 hrs # Sunrise-RoleTime
+      time: 360 #5 hrs # Sunrise-RoleTime
   startingGear: SecurityCadetGear
   icon: "JobIconSecurityCadet"
   supervisors: job-supervisors-security
   canBeAntag: false
   displayWeight: 0 # Sunrise-Edit
   access:
-  - Research # FireStation Edit
+  - Research # Fire
+  - Kitchen # Fire
+  - Hydroponics # Fire
+  - Janitor # Fire
   - Security
   - Brig
 #  - Maintenance #Sunrise-Edit

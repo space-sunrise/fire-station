@@ -37,6 +37,9 @@ public sealed partial class Scp049System
 
     private void OnHealMinion(Entity<Scp049Component> ent, ref Scp049HealMinionAction args)
     {
+        if (args.Handled)
+            return;
+
         if (!HasComp<Scp049MinionComponent>(args.Target))
             return;
 
@@ -47,6 +50,9 @@ public sealed partial class Scp049System
 
     private void OnSelfHeal(Entity<Scp049Component> ent, ref Scp049SelfHealAction args)
     {
+        if (args.Handled)
+            return;
+
         Heal(args.Performer, args.Performer);
 
         args.Handled = true;
@@ -63,6 +69,9 @@ public sealed partial class Scp049System
 
     private void OnResurrect(Entity<Scp049Component> scpEntity, ref Scp049ResurrectAction args)
     {
+        if (args.Handled)
+            return;
+
         var hasTool = false;
 
         foreach (var heldUid in _handsSystem.EnumerateHeld(scpEntity))
@@ -104,6 +113,9 @@ public sealed partial class Scp049System
 
     private void OnKillResurrected(Entity<Scp049Component> ent, ref Scp049KillResurrectedAction args)
     {
+        if (args.Handled)
+            return;
+
         if (!_zombieSystem.UnZombify(args.Target, args.Target, null))
             return;
 
@@ -124,6 +136,9 @@ public sealed partial class Scp049System
 
     private void OnKillLeavingBeing(Entity<Scp049Component> ent, ref Scp049KillLivingBeingAction args)
     {
+        if (args.Handled)
+            return;
+
         var target = args.Target;
 
         if (HasComp<ScpComponent>(target))

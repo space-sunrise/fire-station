@@ -8,6 +8,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
+using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
@@ -18,6 +19,9 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp173;
 
+// TODO: Создать единую систему/метод для получения всех смотрящих на какого-либо ентити
+// Где будет учитываться, закрыты ли глаза, не моргает ли человек т.п. базовая информация
+
 public abstract class SharedScp173System : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
@@ -27,9 +31,10 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
-    private const float ContainmentRoomSearchRadius = 4f;
+    public const float ContainmentRoomSearchRadius = 8f;
 
     public override void Initialize()
     {
@@ -226,8 +231,9 @@ public abstract class SharedScp173System : EntitySystem
     /// </summary>
     public bool IsContained(EntityUid uid)
     {
-        var lookup = _lookup.GetEntitiesInRange(uid, ContainmentRoomSearchRadius);
-        return lookup.Any(HasComp<Scp173BlockStructureDamageComponent>);
+        return _lookup.GetEntitiesInRange(uid, ContainmentRoomSearchRadius)
+            .Any(entity => HasComp<Scp173BlockStructureDamageComponent>(entity) &&
+                           _interaction.InRangeUnobstructed(uid, entity, ContainmentRoomSearchRadius));
     }
 
     #endregion

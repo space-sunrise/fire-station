@@ -16,14 +16,12 @@
     - map: [ "enum.Scp939Layers.Base" ]
       state: alive
   - type: Scp939
-  - type: ScpRestriction
   - type: MeleeWeapon
     altDisarm: false
     soundHit:
       collection: HitScp939
-    angle: 30
+    angle: 0
     animation: WeaponArcClaw
-    attackRate: 1
     damage:
       types:
         Blunt: 20
@@ -40,8 +38,8 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      1200: Critical
-      8000: Dead
+      1000: Critical
+      9999999: Dead
   - type: Inventory
     templateId: scp939
   - type: Puller

@@ -14,9 +14,6 @@
       map: [ "base" ]
   - type: Scp096
   - type: ShowBlinkable
-  - type: ScpRestriction
-    blockBePulled: false
-    blockPull: false
   - type: Pullable
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
@@ -30,13 +27,13 @@
         Blunt: 60
         Bloodloss: 10
   - type: Body
-    prototype: Human
+    prototype: Human # TODO: Кастомное тело
   - type: Inventory
     templateId: scp096
   - type: AmbientSound
     enabled: true
-    volume: -2
-    range: 15
+    volume: -4
+    range: 5
     sound:
       path: /Audio/_Scp/Scp096/scp-096-crying.ogg
   - type: EmitSoundRandomly
@@ -70,7 +67,7 @@
     thresholds:
       0: Alive
       4000: Critical
-      10000: Dead
+      9999999: Dead
   - type: PassiveDamage
     allowedStates:
     - Alive

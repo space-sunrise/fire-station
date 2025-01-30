@@ -1,21 +1,31 @@
 ﻿- type: reagent
   id: АМН-С227
-  name: reagent-name-scp500
-  desc: reagent-desc-scp500
-  physicalDesc: reagent-physicaldesc-scp500
+  name: reagent-name-amhc227
+  desc: reagent-desc-amhc227
+  physicalDesc: reagent-physicaldesc-amhc227
+  group: Special
   flavor: funny
-  color: "#57E6E633"
+  color: "#e5ead0"
   metabolisms:
     Poison:
       effects:
       - !type:Emote
+        conditions:
+        - !type:ReagentThreshold
+          min: 1
         emote: Yawn
         showInChat: true
         probability: 0.1
       - !type:MovespeedModifier
+        conditions:
+        - !type:ReagentThreshold
+          min: 1
         walkSpeedModifier: 0.65
         sprintSpeedModifier: 0.65
       - !type:DrowsinessStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          min: 1
         minAccidentTime: 30
         maxAccidentTime: 30
         minSleepTime: 30
@@ -29,6 +39,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
+    drawdepth: Effects
     sprite: Effects/chemsmoke.rsi
     state: chemsmoke
   - type: TimedDespawn

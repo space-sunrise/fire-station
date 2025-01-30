@@ -99,3 +99,14 @@
         base:
           True: { state: scp096-photo }
           False: { state: scp096-photo-undeveloped }
+
+
+- type: entity # Для спавнов
+  id: Scp096PhotoDeveloped
+  parent: BaseScpMaterial
+  name: strange photo
+  components:
+  - type: Sprite
+    layers:
+    - state: scp096-photo
+  - type: Scp096Photo

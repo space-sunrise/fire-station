@@ -1,16 +1,18 @@
 using Content.Shared._Scp.Blinking;
 using Content.Shared.Actions;
 using Content.Shared.Eye.Blinding.Components;
+using Content.Shared.Flash.Components;
 
 namespace Content.Shared.Eye.Blinding.Systems;
 
 // TODO: Почемы ты параша не являешься кор системой для моргания
-public sealed class EyeClosingSystem : EntitySystem
+// Fire edit - переименовал в SharedEyeClosingSystem и добавил наследников на сервере и клиенте
+public abstract class SharedEyeClosingSystem : EntitySystem
 {
     [Dependency] private readonly BlindableSystem _blindableSystem = default!;
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
+    [Dependency] private readonly SharedBlinkingSystem _blinking = default!; // Fire
 
     public override void Initialize()
     {
@@ -40,6 +42,11 @@ public sealed class EyeClosingSystem : EntitySystem
     {
         if (args.Handled)
             return;
+
+        // Fire edit start
+        if (HasComp<FlashedComponent>(eyelids))
+            return;
+        // Fire edit end
 
         args.Handled = true;
         SetEyelids((eyelids.Owner, eyelids.Comp), !eyelids.Comp.EyesClosed);

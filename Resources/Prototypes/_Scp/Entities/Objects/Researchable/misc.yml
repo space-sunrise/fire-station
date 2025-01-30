@@ -35,11 +35,11 @@
   name: lathe-category-scp
 
 - type: entity
-  id: Scp096TearMask
+  id: ScpTearMask
   components:
   - type: InstantAction
     icon:
-      sprite: _Scp/Clothing/Head/Scp096/scp096_bag-icons.rsi
+      sprite: _Scp/Clothing/Masks/scp096.rsi
       state: icon
-    event: !type:Scp096TearMaskEvent
+    event: !type:ScpTearMaskEvent
     useDelay: 0.5

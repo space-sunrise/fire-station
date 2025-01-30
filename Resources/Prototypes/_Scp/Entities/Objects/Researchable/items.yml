@@ -22,26 +22,45 @@
 # Scp-096
 
 - type: entity
-  parent: ClothingHeadBase
+  id: BaseScp096Mask
+  abstract: true
+  components:
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/Scp096/scp096_bag-equipped.rsi
+    equipDelay: 3
+    unequipDelay: 3
+  - type: Item
+    size: Normal
+    storedRotation: -90
+  - type: ScpMask
+    targetWhitelist:
+      components:
+      - Scp096
+    tearChanceOnDamage: 0.4
+  - type: ClothingAddActions
+    actions:
+    - ScpTearMask
+
+- type: entity
+  parent:
+  - ClothingHeadBase
+  - BaseScp096Mask
   id: ClothingHeadBagScp096
   suffix: SCP-096 Item
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Head/Scp096/scp096_bag-icons.rsi
     state: icon
-  - type: Item
-    size: Normal
-    storedRotation: -90
-  - type: Clothing
-    sprite: _Scp/Clothing/Head/Scp096/scp096_bag-equipped.rsi
-  - type: Scp096Mask
+  - type: ScpMask
+    slots:
+    - Head
     tearTime: 1 # мешок снимается легко
-  - type: ClothingAddActions
-    actions:
-    - Scp096TearMask
+    tearChanceOnDamage: 0.8
 
 - type: entity
-  parent: ClothingHeadBase
+  parent:
+  - ClothingMaskBase
+  - BaseScp096Mask
   id: ReinforcedMaskScp096
   suffix: SCP-096 Item
   components:
@@ -50,16 +69,6 @@
     layers:
     - state: icon
       map: [ "mask" ]
-  - type: Item
-    size: Normal
-    storedRotation: -90
-  - type: Clothing
-    equipDelay: 3
-    unequipDelay: 3
-  - type: Scp096Mask
-  - type: ClothingAddActions
-    actions:
-    - Scp096TearMask
 
 - type: entity
   parent: ClothingHeadBase
@@ -73,6 +82,7 @@
   - type: ClothingAddComponents
     components:
     - type: Scp096Protection
+      problemChance: 0.002 # 0,2% каждый тик проебаться
 
 # Scp-049
 

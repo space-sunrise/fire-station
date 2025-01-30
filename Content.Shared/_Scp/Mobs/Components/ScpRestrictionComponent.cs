@@ -12,8 +12,8 @@ namespace Content.Shared._Scp.Mobs.Components;
 public sealed partial class ScpRestrictionComponent : Component
 {
     [DataField, AutoNetworkedField]
-    public bool BlockPull = true;
+    public bool CanPull;
 
     [DataField, AutoNetworkedField]
-    public bool BlockBePulled = true;
+    public bool CanBePulled;
 }
