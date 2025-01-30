@@ -94,10 +94,6 @@ public sealed partial class ExtraTab : Control
 
         Control.AddOptionCheckBox(SunriseCCVars.ChatIconsEnable, ChatIconsEnableCheckBox);
 
-        // Fire edit start
-        Control.AddOptionCheckBox(SunriseCCVars.LightFlickingEnable, LightFlickingEnableCheckBox);
-        // Fire edit end
-
         Control.Initialize();
     }
 
