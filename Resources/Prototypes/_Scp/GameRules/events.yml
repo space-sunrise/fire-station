@@ -7,3 +7,9 @@
     duration: 60
     maxDuration: 120
   - type: BlackoutRule
+
+- type: entityTable
+  id: ScpEventsTable
+  table: !type:AllSelector
+    children:
+    - id: Blackout # TODO: Создать свою таблицу ивентов

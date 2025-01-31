@@ -5,7 +5,7 @@
 #    - id: AnomalySpawn
     - id: BluespaceArtifact
 #    - id: BluespaceLocker
-    - id: BreakerFlip
+#    - id: BreakerFlip У нас блекаут
     - id: BureaucraticError
     - id: ClericalError
     - id: CockroachMigration
@@ -16,7 +16,7 @@
     - id: MassHallucinations
     - id: MimicVendorRule
     - id: MouseMigration
-    - id: PowerGridCheck
+#    - id: PowerGridCheck - У нас свой крутой аналог
     - id: RandomSentience
 #    - id: SlimesSpawn
 #    - id: SolarFlare
