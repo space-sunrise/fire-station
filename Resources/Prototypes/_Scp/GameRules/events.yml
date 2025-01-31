@@ -1,0 +1,9 @@
+﻿- type: entity
+  id: Blackout
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    weight: 5
+    duration: 60
+    maxDuration: 120
+  - type: BlackoutRule
