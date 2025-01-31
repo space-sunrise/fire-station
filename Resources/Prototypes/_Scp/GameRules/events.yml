@@ -12,4 +12,4 @@
   id: ScpEventsTable
   table: !type:AllSelector
     children:
-    - id: Blackout # TODO: Создать свою таблицу ивентов
+    - id: Blackout

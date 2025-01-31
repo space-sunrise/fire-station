@@ -309,6 +309,10 @@
     children:
       - !type:NestedSelector
         tableId: BasicCalmEventsTable
+      # Fire edit start
+      - !type:NestedSelector
+        tableId: ScpEventsTable
+      # Fire edit end
       - !type:NestedSelector
         tableId: BasicAntagEventsTable
       - !type:NestedSelector
