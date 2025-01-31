@@ -11,6 +11,7 @@ using Content.Shared.Doors.Components;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Eye.Blinding.Systems;
+using Content.Shared.Ghost;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -256,15 +257,19 @@ public abstract partial class SharedScp096System : EntitySystem
         if (!TryComp<BlindableComponent>(targetUid, out var blindableComponent))
             return false;
 
-        // Если таргет слепой
+        // Если таргет не гост
+        if (HasComp<GhostComponent>(targetUid))
+            return false;
+
+        // Если таргет не слепой
         if (_blinkingSystem.IsBlind(targetUid, blinkableComponent))
             return false;
 
-        // Если глаза таргета закрыты
+        // Если глаза таргета не закрыты
         if (_eyeClosing.AreEyesClosed(targetUid))
             return false;
 
-        // Если таргет закрыл глаза
+        // Если таргет не моргнул
         if (blindableComponent.IsBlind)
             return false;
 
