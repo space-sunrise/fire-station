@@ -34,3 +34,20 @@
   - !type:BuyBeforeCondition
     whitelist:
     - Scp106BoughtPhantomAction
+
+- type: listing
+  id: CreatePortalAction
+  name: Открытие порталов
+  description: Способность открытия порталов.
+  productAction: CreatePortalAction
+  categories:
+  - Scp106Abilities
+  cost:
+    LifeEssence: 20
+  raiseProductEventOnUser: true
+  icon:
+    sprite: _Scp/Actions/scp106-actions.rsi
+    state: scp106_phantom
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

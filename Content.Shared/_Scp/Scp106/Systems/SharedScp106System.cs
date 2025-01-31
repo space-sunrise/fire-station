@@ -65,6 +65,7 @@ public abstract class SharedScp106System : EntitySystem
         SubscribeLocalEvent<Scp106Component, Scp106BackroomsActionEvent>(OnBackroomsDoAfter);
         SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportActionEvent>(OnTeleportDoAfter);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106BecomeTeleportPhantomActionEvent>(OnBecomeTeleportPhantomActionEvent);
+        SubscribeLocalEvent<Scp106Component, Scp106CreatePortalAction>(OnScp106CreatePortalAction);
 
         // Phantom
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseAction>(OnScp106ReverseAction);
@@ -73,6 +74,14 @@ public abstract class SharedScp106System : EntitySystem
 
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseActionEvent>(OnScp106ReverseActionEvent);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106PassThroughActionEvent>(OnScp106PassThroughActionEvent);
+    }
+
+    private void OnScp106CreatePortalAction(EntityUid uid, Scp106Component component, Scp106CreatePortalAction args)
+    {
+        if (component.Essence < 120)
+        {
+            _popup.PopupEntity(Loc.GetString("not-enough-essence", ( "count", 120 - component.Essence)), uid, PopupType.Medium);
+        }
     }
 
     private void OnScp106PassThroughAction(EntityUid uid,
