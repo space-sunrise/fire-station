@@ -84,6 +84,7 @@
         - MachineMask
         layer:
         - MachineLayer
+  - type: Scp106PortalSpawner
 
 - type: damageContainer
   id: Scp106Portal
