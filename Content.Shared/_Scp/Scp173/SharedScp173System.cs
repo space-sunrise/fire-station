@@ -152,7 +152,9 @@ public abstract class SharedScp173System : EntitySystem
 
     protected bool Is173Watched(Entity<Scp173Component> scp173, out int watchersCount)
     {
-        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, ExamineSystemShared.MaxRaycastRange);
+        // +1, чтобы точно все работало заебись в реальных пограничных значениях
+        // Впадлу думать, что может пойти не так, если этого не будет, раньше тут стояло вообще 100 радиус
+        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, scp173.Comp.WatchRange + 1);
 
         watchersCount = eyes
             .Where(eye => _examine.InRangeUnOccluded(eye, scp173, scp173.Comp.WatchRange, ignoreInsideBlocker: false))
