@@ -133,11 +133,14 @@ public abstract class SharedScp106System : EntitySystem
             return;
         }
 
-        if (component.Essence < 10)
+        if (component.Essence < 30)
         {
-            _popup.PopupEntity($"Недостаточно {10 - component.Essence} эссенции!", uid, PopupType.Large);
+            _popup.PopupEntity($"Недостаточно {30 - component.Essence} эссенции!", uid, PopupType.Large);
             return;
         }
+
+        component.Essence -= 30;
+        Dirty(uid, component);
 
         if (!_serverNetManager.IsServer)
             return;
@@ -260,6 +263,15 @@ public abstract class SharedScp106System : EntitySystem
         if (args.Handled)
             return;
 
+        if (component.Essence < 30)
+        {
+            _popup.PopupEntity($"Недостаточно {30 - component.Essence} эссенции!", uid, PopupType.Large);
+            return;
+        }
+
+        component.Essence -= 30;
+        Dirty(uid, component);
+
         if (!_serverNetManager.IsServer)
             return;
 
@@ -300,7 +312,16 @@ public abstract class SharedScp106System : EntitySystem
             return;
         }
 
-        _stun.TryStun(ent, TimeSpan.FromSeconds(5), false);
+        if (ent.Comp.Essence < 30)
+        {
+            _popup.PopupEntity($"Недостаточно {30 - ent.Comp.Essence} эссенции!", ent, PopupType.Large);
+            return;
+        }
+
+        ent.Comp.Essence -= 30;
+        Dirty(ent, ent.Comp);
+
+        _stun.TryStun(ent, TimeSpan.FromSeconds(5.5), false);
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(5), new Scp106BackroomsActionEvent(), args.Performer, args.Performer)
         {
             NeedHand = false,
@@ -326,6 +347,15 @@ public abstract class SharedScp106System : EntitySystem
             return;
         }
 
+        if (ent.Comp.Essence < 30)
+        {
+            _popup.PopupEntity($"Недостаточно {30 - ent.Comp.Essence} эссенции!", ent, PopupType.Large);
+            return;
+        }
+
+        ent.Comp.Essence -= 30;
+        Dirty(ent, ent.Comp);
+
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(5), new Scp106RandomTeleportActionEvent(), args.Performer, args.Performer)
         {
             NeedHand = false,
@@ -335,7 +365,7 @@ public abstract class SharedScp106System : EntitySystem
             RequireCanInteract = false,
         };
 
-        _stun.TryStun(ent, TimeSpan.FromSeconds(5), false);
+        _stun.TryStun(ent, TimeSpan.FromSeconds(5.5), false);
         _doAfter.TryStartDoAfter(doAfterEventArgs);
         _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
 
