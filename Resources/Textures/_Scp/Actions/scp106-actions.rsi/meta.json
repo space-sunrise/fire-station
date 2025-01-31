@@ -15,6 +15,12 @@
         },
         {
             "name": "scp106_teleport"
+        },
+        {
+            "name": "scp106_leave_phantom"
+        },
+        {
+            "name": "scp106_reverse"
         }
     ]
 }

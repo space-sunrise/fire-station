@@ -80,7 +80,7 @@
       - HumanoidAppearance
     icon:
       sprite: _Scp/Actions/scp106-actions.rsi
-      state: scp106_teleport
+      state: scp106_reverse
 
 - type: entity
   id: Scp106LeavePhantom
@@ -94,7 +94,7 @@
     useDelay: 60
     icon:
       sprite: _Scp/Actions/scp106-actions.rsi
-      state: scp106_phantom
+      state: scp106_leave_phantom
 
 - type: entity
   id: Scp106PassThrough

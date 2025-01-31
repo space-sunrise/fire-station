@@ -5,10 +5,9 @@
   - type: Sprite
     drawdepth: Mobs
     sprite: _Scp/scp-106.rsi
-    color: "#fff8"
     layers:
     - map: [ "base" ]
-      state: 106
+      state: phantom
   - type: FlashImmunity
   - type: Scp106Phantom
 
