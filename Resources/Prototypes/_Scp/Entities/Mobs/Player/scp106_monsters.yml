@@ -37,39 +37,30 @@
         Blunt: 10
 
 - type: entity
-  id: BaseScp106Portal
-  abstract: true
+  id: Scp106PortalPortal
+  name: black rift
+  description: Looks unstable.
+  placement:
+    mode: SnapgridCenter
   components:
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Transform
+    anchored: true
+  - type: Physics
+    bodyType: Static
   - type: Destructible
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 10
+        damage: 300
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-      - !type:PlaySoundBehavior
-        sound:
-          path: /Audio/Items/hiss.ogg
-          params:
-            variation: 0.08
-  - type: DamagedByFlashing
-    flashDamage:
-      types:
-        Heat: 10
   - type: Damageable
-    damageContainer: ShadowHaze
-
-- type: entity
-  id: Scp106PortalPortal
-  name: black rift
-  description: Looks unstable.
-  parent: [ BasePortal, BaseScp106Portal ]
-  components:
-  - type: Portal
-    arrivalSound: /Audio/Items/hiss.ogg
-    departureSound: /Audio/Items/hiss.ogg
+    damageContainer: Scp106Portal
   - type: Sprite
+    sprite: /Textures/Effects/portal.rsi
     state: portal-artifact
     color: "#000000"
   - type: PointLight
@@ -82,3 +73,19 @@
     volume: -3
     sound:
       path: /Audio/Ambience/anomaly_scary.ogg
+  - type: Fixture
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.48,0.25,0.48"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: damageContainer
+  id: Scp106Portal
+  supportedTypes:
+  - Brute
