@@ -164,7 +164,7 @@ public sealed class Scp106System : SharedScp106System
             _ = _stairs.GenerateFloor();
     }
 
-    public override async void SendToBackrooms(EntityUid target, EntityUid? scp106)
+    public override async void SendToBackrooms(EntityUid target)
     {
         // You already here.
         if (HasComp<Scp106BackRoomMapComponent>(Transform(target).MapUid))
@@ -175,20 +175,13 @@ public sealed class Scp106System : SharedScp106System
             var a = await GetTransferMark();
             _transform.SetCoordinates(target, a);
             _transform.AttachToGridOrMap(target);
-
             Scp106FinishTeleportation(target);
-
             return;
         }
 
         // Телепортировать только людей
         if (!HasComp<HumanoidAppearanceComponent>(target))
             return;
-
-        if (scp106 != null)
-        {
-            _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { "LifeEssence", 2f } }, scp106.Value, null);
-        }
 
         var mark = await GetTransferMark();
         _transform.SetCoordinates(target, mark);
@@ -425,5 +418,10 @@ public sealed class Scp106System : SharedScp106System
 
             Dirty(scp106Uid, scp106Component);
         }
+    }
+
+    public override void AddCurrencyInStore(EntityUid uid)
+    {
+        _store.TryAddCurrency(new Dictionary<string, FixedPoint2>() { { "LifeEssence", 2f }, }, uid);
     }
 }
