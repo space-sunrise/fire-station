@@ -411,6 +411,11 @@ public abstract class SharedScp106System : EntitySystem
 
     private void OnMeleeHit(Entity<Scp106Component> ent, ref MeleeHitEvent args)
     {
+        if (TryComp<Scp106BackRoomMapComponent>(Transform(ent).MapUid, out var _))
+        {
+            args.BonusDamage = args.BaseDamage * 3;
+        }
+
         if (!_timing.IsFirstTimePredicted)
             return;
 
