@@ -57,7 +57,8 @@ public abstract class SharedScp173System : EntitySystem
 
         SubscribeLocalEvent<Scp173Component, ChangeDirectionAttemptEvent>(OnDirectionAttempt);
         SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
-        SubscribeLocalEvent<Scp173Component, MoveEvent>(OnInput);
+        SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnMoveInput);
+        SubscribeLocalEvent<Scp173Component, MoveEvent>(OnMove);
 
         #endregion
 
@@ -92,7 +93,18 @@ public abstract class SharedScp173System : EntitySystem
             args.Cancel();
     }
 
-    private void OnInput(Entity<Scp173Component> ent, ref MoveEvent args)
+    private void OnMoveInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
+    {
+        // Метод подвязанный на MoveInputEvent так же нужен, вместе с методом на MoveEvent
+        // Этот метод исправляет проблему, когда 173 должен мочь двинуться, но ему об этом никто не сказал
+        // То есть последний вопрос от 173 МОГУ ЛИ Я ДВИНУТЬСЯ был когда он еще мог двинуться, через MoveEvent
+        // Потом он перестал мочь, и следственно больше НЕ МОЖЕТ задать вопрос, может они двинуться
+        // Это фикслось в игре сменой направления спрайта мышкой
+        // Но данный метод как раз будет спрашивать у 173, может ли он сдвинуться, когда как раз не двигается
+        _blocker.UpdateCanMove(ent);
+    }
+
+    private void OnMove(Entity<Scp173Component> ent, ref MoveEvent args)
     {
         _blocker.UpdateCanMove(ent);
     }
