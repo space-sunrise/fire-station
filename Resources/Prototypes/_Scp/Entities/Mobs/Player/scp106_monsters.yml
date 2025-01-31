@@ -1,0 +1,84 @@
+- type: entity
+  parent: BaseMobFlesh
+  id: MobScp106Monster
+  name: shadow monster
+  description: Death.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/scp106_monster.rsi
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: abomination
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: abomination
+      Dead:
+        Base: dead
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 2.5
+  - type: MeleeWeapon
+    soundHit:
+      path: /Audio/Weapons/Xeno/alien_claw_flesh3.ogg
+    angle: 0
+    animation: WeaponArcClaw
+    damage:
+      types:
+        Blunt: 10
+
+- type: entity
+  id: BaseScp106Portal
+  abstract: true
+  components:
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Items/hiss.ogg
+          params:
+            variation: 0.08
+  - type: DamagedByFlashing
+    flashDamage:
+      types:
+        Heat: 10
+  - type: Damageable
+    damageContainer: ShadowHaze
+
+- type: entity
+  id: Scp106PortalPortal
+  name: black rift
+  description: Looks unstable.
+  parent: [ BasePortal, BaseScp106Portal ]
+  components:
+  - type: Portal
+    arrivalSound: /Audio/Items/hiss.ogg
+    departureSound: /Audio/Items/hiss.ogg
+  - type: Sprite
+    state: portal-artifact
+    color: "#000000"
+  - type: PointLight
+    color: "#000000"
+    radius: 3
+    energy: 1
+    netsync: false
+  - type: AmbientSound
+    range: 6
+    volume: -3
+    sound:
+      path: /Audio/Ambience/anomaly_scary.ogg
