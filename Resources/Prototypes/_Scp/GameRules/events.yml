@@ -3,7 +3,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    weight: 5
+    weight: 10
     duration: 60
     maxDuration: 120
   - type: BlackoutRule
