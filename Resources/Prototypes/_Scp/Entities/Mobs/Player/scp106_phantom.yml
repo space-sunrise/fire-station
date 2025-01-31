@@ -59,6 +59,7 @@
     actions:
     - Scp106Reverse
     - Scp106LeavePhantom
+    - Scp106PassThrough
 
 - type: entity
   id: Scp106CorporealPhantom

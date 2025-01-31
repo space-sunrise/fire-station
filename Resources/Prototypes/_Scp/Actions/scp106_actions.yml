@@ -84,6 +84,20 @@
       sprite: _Scp/Actions/scp106-actions.rsi
       state: scp106_phantom
 
+- type: entity
+  id: Scp106PassThrough
+  name: ХЗ.
+  description: "Позволяет пройти любое препятствие"
+  components:
+  - type: InstantAction
+    event: !type:Scp106PassThroughAction
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 15
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_phantom
+
 ### PHANTOM ABILITIES END
 
 ### 3 TIRES OF PHANTOM ABILITY START

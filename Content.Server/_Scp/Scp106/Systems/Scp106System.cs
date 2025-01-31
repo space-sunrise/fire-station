@@ -19,6 +19,7 @@ using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Content.Shared.DoAfter;
 using Content.Shared.Doors.Components;
+using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
@@ -163,7 +164,7 @@ public sealed class Scp106System : SharedScp106System
             _ = _stairs.GenerateFloor();
     }
 
-    public override async void SendToBackrooms(EntityUid target)
+    public override async void SendToBackrooms(EntityUid target, EntityUid? scp106)
     {
         // You already here.
         if (HasComp<Scp106BackRoomMapComponent>(Transform(target).MapUid))
@@ -183,6 +184,11 @@ public sealed class Scp106System : SharedScp106System
         // Телепортировать только людей
         if (!HasComp<HumanoidAppearanceComponent>(target))
             return;
+
+        if (scp106 != null)
+        {
+            _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { "LifeEssence", 2f } }, scp106.Value, null);
+        }
 
         var mark = await GetTransferMark();
         _transform.SetCoordinates(target, mark);

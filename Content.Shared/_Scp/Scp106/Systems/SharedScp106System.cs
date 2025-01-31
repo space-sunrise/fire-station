@@ -12,12 +12,15 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
@@ -43,8 +46,7 @@ public abstract class SharedScp106System : EntitySystem
     [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedActionsSystem _sharedActionsSystem = default!;
-
-
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
 
     private readonly SoundSpecifier _teleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
@@ -67,8 +69,58 @@ public abstract class SharedScp106System : EntitySystem
         // Phantom
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseAction>(OnScp106ReverseAction);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106LeavePhantomAction>(OnScp106LeavePhantomAction);
+        SubscribeLocalEvent<Scp106PhantomComponent, Scp106PassThroughAction>(OnScp106PassThroughAction);
 
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseActionEvent>(OnScp106ReverseActionEvent);
+        SubscribeLocalEvent<Scp106PhantomComponent, Scp106PassThroughActionEvent>(OnScp106PassThroughActionEvent);
+    }
+
+    private void OnScp106PassThroughAction(EntityUid uid,
+        Scp106PhantomComponent component,
+        Scp106PassThroughAction args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryComp<FixturesComponent>(uid, out var fixturesComponent))
+            return;
+
+        foreach (var (id, fixture) in fixturesComponent.Fixtures)
+        {
+            _physics.SetCollisionMask(uid, id, fixture, (int) CollisionGroup.GhostImpassable);
+            _physics.SetCollisionLayer(uid, id, fixture, (int) CollisionGroup.GhostImpassable);
+        }
+
+        var doAfterEventArgs = new DoAfterArgs(EntityManager,
+            uid,
+            TimeSpan.FromSeconds(4),
+            new Scp106PassThroughActionEvent(),
+            uid)
+        {
+            BreakOnDropItem = false,
+            BreakOnMove = false,
+            BreakOnDamage = false,
+            BreakOnHandChange = false,
+            BreakOnWeightlessMove = false,
+        };
+
+        _doAfter.TryStartDoAfter(doAfterEventArgs);
+
+        args.Handled = true;
+    }
+
+    private void OnScp106PassThroughActionEvent(EntityUid uid,
+        Scp106PhantomComponent component,
+        Scp106PassThroughActionEvent args)
+    {
+        if (!TryComp<FixturesComponent>(uid, out var fixturesComponent))
+            return;
+
+        foreach (var (id, fixture) in fixturesComponent.Fixtures)
+        {
+            _physics.SetCollisionMask(uid, id, fixture, (int) CollisionGroup.SmallMobMask);
+            _physics.SetCollisionLayer(uid, id, fixture, (int) CollisionGroup.MobLayer);
+        }
     }
 
     private void OnBecomeTeleportPhantomAction(EntityUid uid,
@@ -279,7 +331,8 @@ public abstract class SharedScp106System : EntitySystem
             NeedHand = false,
             BreakOnMove = true,
             BreakOnHandChange = false,
-            BreakOnDamage = false
+            BreakOnDamage = false,
+            RequireCanInteract = false,
         };
 
         _stun.TryStun(ent, TimeSpan.FromSeconds(5), false);
@@ -296,7 +349,7 @@ public abstract class SharedScp106System : EntitySystem
 		if (args.Cancelled)
 			return;
 
-        SendToBackrooms(args.User);
+        SendToBackrooms(args.User, null);
     }
 
 	private void OnTeleportDoAfter(Entity<Scp106Component> ent, ref Scp106RandomTeleportActionEvent args)
@@ -333,11 +386,11 @@ public abstract class SharedScp106System : EntitySystem
             if (HasComp<Scp106ProtectionComponent>(entity))
                 continue;
 
-            SendToBackrooms(entity);
+            SendToBackrooms(entity, ent);
         }
     }
 
-    public virtual async void SendToBackrooms(EntityUid target) {}
+    public virtual async void SendToBackrooms(EntityUid target, EntityUid? scp106) {}
 
     public virtual void SendToStation(EntityUid target) {}
 

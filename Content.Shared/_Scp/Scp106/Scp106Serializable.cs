@@ -22,6 +22,8 @@ public sealed partial class Scp106BoughtPhantomAction : InstantActionEvent {}
 
 public sealed partial class Scp106OnUpgradePhantomAction : InstantActionEvent {}
 
+public sealed partial class Scp106PassThroughAction : InstantActionEvent {}
+
 [Serializable, NetSerializable]
 public sealed partial class Scp106BackroomsActionEvent : SimpleDoAfterEvent { }
 
@@ -36,3 +38,6 @@ public sealed partial class Scp106ReverseActionEvent : SimpleDoAfterEvent {}
 
 [Serializable, NetSerializable]
 public sealed partial class Scp106TeleporationDelayActionEvent : SimpleDoAfterEvent { }
+
+[Serializable, NetSerializable]
+public sealed partial class Scp106PassThroughActionEvent : SimpleDoAfterEvent { }
