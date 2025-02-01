@@ -19,34 +19,26 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Humanoid;
-using Content.Shared.Item;
 using Content.Shared.Lock;
-using Content.Shared.Maps;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
-using Content.Shared.Throwing;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Utility;
 
 namespace Content.Server._Scp.Scp173;
 
 public sealed class Scp173System : SharedScp173System
 {
-    [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly GhostSystem _ghost = default!;
-    [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
@@ -130,31 +122,11 @@ public sealed class Scp173System : SharedScp173System
         }
 
         var defileRadius = 4f;
-        var defileTilePryAmount = 10;
 
         var lookup = _lookup.GetEntitiesInRange(uid, defileRadius)
             .Where(ent => _interaction.InRangeUnobstructed(uid.Owner, ent, ExamineSystemShared.ExamineRange));
 
-        var xform = Transform(uid);
-
-        if (!TryComp<MapGridComponent>(xform.GridUid, out var map))
-            return;
-
-        var tiles = map.GetTilesIntersecting(Box2.CenteredAround(_transform.GetWorldPosition(xform),
-            new Vector2(defileRadius * 2, defileRadius))).ToArray();
-
-        _random.Shuffle(tiles);
-
-        for (var i = 0; i < defileTilePryAmount; i++)
-        {
-            if (!tiles.TryGetValue(i, out var value))
-                continue;
-
-            _tile.PryTile(value);
-        }
-
         var entityStorage = GetEntityQuery<EntityStorageComponent>();
-        var items = GetEntityQuery<ItemComponent>();
         var lights = GetEntityQuery<PoweredLightComponent>();
         var boltedDoors = GetEntityQuery<DoorBoltComponent>();
         var lockedStuff = GetEntityQuery<LockComponent>();
@@ -162,20 +134,13 @@ public sealed class Scp173System : SharedScp173System
 
         foreach (var ent in lookup)
         {
-            // break random stuff
+            // Наносим случайным вещам структурный дамаг
             var dspec = new DamageSpecifier();
             var damageValue = _random.Next(20, 80);
             dspec.DamageDict.Add("Structural", damageValue);
             _damageable.TryChangeDamage(ent, dspec);
 
-            // chucks items
-            if (items.HasComp(ent) &&
-                TryComp<PhysicsComponent>(ent, out var phys) && phys.BodyType != BodyType.Static)
-            {
-                _throwing.TryThrow(ent, _random.NextAngle().ToWorldVec());
-            }
-
-            // flicker lights
+            // Заставляем лампочки моргать
             if (lights.HasComp(ent))
                 _ghost.DoGhostBooEvent(ent);
 
