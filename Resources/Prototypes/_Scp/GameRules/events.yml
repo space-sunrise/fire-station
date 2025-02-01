@@ -10,8 +10,10 @@
 
 - type: entity
   id: SpawnScp096Photo
-  parent: BaseGameRule
+  parent: BaseStationEventShortDelay
   components:
+  - type: StationEvent
+    weight: 6
   - type: SpawnRandomEntitiesRule
     tilesPerEntityAverage: 300
     entities:

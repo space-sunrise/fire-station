@@ -1,14 +1,14 @@
 ﻿using Content.Server._Scp.GameTicking.Rules.Components;
-using Content.Server.GameTicking.Rules;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
+using Content.Server.StationEvents.Events;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Storage;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.GameTicking.Rules;
 
-public sealed class SpawnRandomEntitiesRule : GameRuleSystem<SpawnRandomEntitiesRuleComponent>
+public sealed class SpawnRandomEntitiesRule : StationEventSystem<SpawnRandomEntitiesRuleComponent>
 {
     [Dependency] private readonly StationSystem _station = default!;
 
