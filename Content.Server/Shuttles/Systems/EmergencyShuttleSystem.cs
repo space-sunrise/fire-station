@@ -376,8 +376,8 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         {
             _chatSystem.DispatchStationAnnouncement(
                 result.Station,
-                Loc.GetString("emergency-shuttle-good-luck"),
-                playDefault: false);
+                Loc.GetString("emergency-shuttle-good-luck"));
+            // Fire edit - убрал отмену проигрывания дефолтного звука
 
             // TODO: Need filter extensions or something don't blame me.
             return;
@@ -410,8 +410,8 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
                 ("time", $"{_consoleAccumulator:0}"),
                 ("direction", direction),
                 ("location", location),
-                ("extended", extendedText)),
-            playDefault: false);
+                ("extended", extendedText)));
+        // Fire edit - убрал отмену проигрывания дефолтного звука
 
         // Trigger shuttle timers on the shuttle.
 
