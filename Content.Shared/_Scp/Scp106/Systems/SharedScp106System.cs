@@ -66,6 +66,7 @@ public abstract class SharedScp106System : EntitySystem
         SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportActionEvent>(OnTeleportDoAfter);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106BecomeTeleportPhantomActionEvent>(OnBecomeTeleportPhantomActionEvent);
         SubscribeLocalEvent<Scp106Component, Scp106CreatePortalAction>(OnScp106CreatePortalAction);
+        SubscribeLocalEvent<Scp106Component, Scp106CreatePortalEvent>(OnScp106CreatePortalEvent);
 
         // Phantom
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseAction>(OnScp106ReverseAction);
@@ -76,12 +77,37 @@ public abstract class SharedScp106System : EntitySystem
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106PassThroughActionEvent>(OnScp106PassThroughActionEvent);
     }
 
+    private void OnScp106CreatePortalEvent(EntityUid uid, Scp106Component component, Scp106CreatePortalEvent args)
+    {
+        if (args.Cancelled || args.Handled)
+            return;
+
+        Scp106SpawnPortal(uid, component);
+
+        args.Handled = true;
+    }
+
     private void OnScp106CreatePortalAction(EntityUid uid, Scp106Component component, Scp106CreatePortalAction args)
     {
         if (component.Essence < 120)
         {
             _popup.PopupEntity(Loc.GetString("not-enough-essence", ( "count", 120 - component.Essence)), uid, PopupType.Medium);
+            return;
         }
+
+        if (component.Scp106HasPortals >= component.MaxScp106Portals)
+        {
+            _popup.PopupEntity(Loc.GetString("Достигнуто максимальное количество порталов"), uid, PopupType.Medium);
+            return;
+        }
+
+        var doAfterArgs = new DoAfterArgs(EntityManager, uid, TimeSpan.FromSeconds(3), new Scp106CreatePortalEvent(), uid)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+        };
+
+        _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
     private void OnScp106PassThroughAction(EntityUid uid,
@@ -443,6 +469,8 @@ public abstract class SharedScp106System : EntitySystem
     public virtual bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args) { return false; }
 
     public virtual void Scp106FinishTeleportation(EntityUid uid) {}
+
+    public virtual void Scp106SpawnPortal(EntityUid uid, Scp106Component component){}
 }
 
 [NetSerializable, Serializable]

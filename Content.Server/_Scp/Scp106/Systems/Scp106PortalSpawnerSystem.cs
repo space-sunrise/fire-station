@@ -1,5 +1,5 @@
 using Content.Server._Scp.Scp106.Components;
-using Content.Server.Construction.Completions;
+using Content.Shared._Scp.Scp106.Components;
 
 namespace Content.Server._Scp.Scp106.Systems;
 
@@ -33,7 +33,9 @@ public sealed class Scp106PortalSpawnerSystem : EntitySystem
             if (comp.SpawnedMonsters < 5)
                 return;
 
+            Spawn(comp.BigMonster, Transform(uid).Coordinates);
             _entity.DeleteEntity(uid);
+            Comp<Scp106Component>(comp.Scp106).Scp106HasPortals -= 1;
         }
     }
 }

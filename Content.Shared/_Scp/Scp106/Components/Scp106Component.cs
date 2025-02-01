@@ -42,5 +42,7 @@ public sealed partial class Scp106Component : Component
 
     public TimeSpan PhantomCoolDown = TimeSpan.FromSeconds(300);
 
-    public float MaxScp106Portals = 5;
+    public float MaxScp106Portals = 3;
+
+    public float Scp106HasPortals = 0;
 }

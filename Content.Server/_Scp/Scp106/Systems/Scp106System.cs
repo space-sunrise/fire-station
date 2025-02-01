@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
+using Content.Server._Scp.Scp106.Components;
 using Content.Server.Actions;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Systems;
@@ -81,6 +82,14 @@ public sealed class Scp106System : SharedScp106System
         SubscribeLocalEvent<Scp106Component, Scp106OnUpgradePhantomAction>(OnScp106OnUpgradePhantomAction);
 
         SubscribeLocalEvent<Scp106Component, Scp106TeleporationDelayActionEvent>(OnScp106TeleporationDelayActionEvent);
+    }
+
+    public override void Scp106SpawnPortal(EntityUid uid, Scp106Component component)
+    {
+        component.Scp106HasPortals += 1;
+
+        var portalUid = Spawn("Scp106PortalPortal", Transform(uid).Coordinates);
+        Comp<Scp106PortalSpawnerComponent>(portalUid).Scp106 = uid;
     }
 
     private void OnScp106TeleporationDelayActionEvent(EntityUid uid,

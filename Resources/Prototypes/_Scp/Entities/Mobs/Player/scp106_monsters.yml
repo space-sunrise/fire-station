@@ -53,7 +53,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300
+        damage: 50
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -86,7 +86,24 @@
         - MachineLayer
   - type: Scp106PortalSpawner
 
+- type: entity
+  parent: MobScp106Monster
+  id: MobScp106BigMonster
+  name: shadow monster
+  description: Death.
+  components:
+  - type: Sprite
+    scale: 1.5, 1.5
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      500: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1
+    baseSprintSpeed: 2
+
 - type: damageContainer
   id: Scp106Portal
   supportedTypes:
   - Brute
+

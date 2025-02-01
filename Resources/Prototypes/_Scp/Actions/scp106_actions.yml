@@ -99,7 +99,7 @@
 - type: entity
   id: Scp106PassThrough
   name: ХЗ.
-  description: "Позволяет пройти любое препятствие"
+  description: Позволяет пройти любое препятствие
   components:
   - type: InstantAction
     event: !type:Scp106PassThroughAction
