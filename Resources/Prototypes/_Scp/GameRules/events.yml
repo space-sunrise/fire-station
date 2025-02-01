@@ -15,7 +15,7 @@
   - type: StationEvent
     weight: 6
   - type: SpawnRandomEntitiesRule
-    tilesPerEntityAverage: 300
+    tilesPerEntityAverage: 400
     entities:
     - id: Scp096PhotoDeveloped
 
