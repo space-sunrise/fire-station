@@ -8,8 +8,18 @@
     maxDuration: 120
   - type: BlackoutRule
 
+- type: entity
+  id: SpawnScp096Photo
+  parent: BaseGameRule
+  components:
+  - type: SpawnRandomEntitiesRule
+    tilesPerEntityAverage: 300
+    entities:
+    - id: Scp096PhotoDeveloped
+
 - type: entityTable
   id: ScpEventsTable
   table: !type:AllSelector
     children:
     - id: Blackout
+    - id: SpawnScp096Photo
