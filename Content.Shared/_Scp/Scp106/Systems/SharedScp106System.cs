@@ -414,7 +414,7 @@ public abstract class SharedScp106System : EntitySystem
 		if (args.Cancelled)
 			return;
 
-        SendToBackrooms(args.User, null);
+        SendToBackrooms(args.User);
     }
 
 	private void OnTeleportDoAfter(Entity<Scp106Component> ent, ref Scp106RandomTeleportActionEvent args)
@@ -460,7 +460,7 @@ public abstract class SharedScp106System : EntitySystem
         }
     }
 
-    public virtual async void SendToBackrooms(EntityUid target, EntityUid? scp106) {}
+    public virtual async void SendToBackrooms(EntityUid target, EntityUid? scp106 = null) {}
 
     public virtual void SendToStation(EntityUid target) {}
 

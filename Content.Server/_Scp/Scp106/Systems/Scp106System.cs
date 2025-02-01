@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Threading.Tasks;
 using Content.Server._Scp.Scp106.Components;
@@ -153,15 +153,13 @@ public sealed class Scp106System : SharedScp106System
 
     private void OnMobStateChangedEvent(EntityUid uid, Scp106PhantomComponent component, MobStateChangedEvent args)
     {
-        if (args.NewMobState == MobState.Dead)
-        {
-            if (_mindSystem.TryGetMind(uid, out var mindId, out var _))
-            {
-                _mindSystem.TransferTo(mindId, component.Scp106BodyUid);
-                component.Scp106BodyUid = default;
-                Dirty(uid, component);
-            }
-        }
+        if (args.NewMobState != MobState.Dead)
+            return;
+
+        _mindSystem.TryGetMind(uid, out var mindId, out var _);
+        _mindSystem.TransferTo(mindId, component.Scp106BodyUid);
+        component.Scp106BodyUid = default;
+        Dirty(uid, component);
     }
 
     private void OnMapInit(Entity<Scp106Component> ent, ref MapInitEvent args)
@@ -173,7 +171,7 @@ public sealed class Scp106System : SharedScp106System
             _ = _stairs.GenerateFloor();
     }
 
-    public override async void SendToBackrooms(EntityUid target, EntityUid? scp106)
+    public override async void SendToBackrooms(EntityUid target, EntityUid? scp106 = null)
     {
         // You already here.
         if (HasComp<Scp106BackRoomMapComponent>(Transform(target).MapUid))
@@ -402,11 +400,10 @@ public sealed class Scp106System : SharedScp106System
             {
                 scp106Component.AnnouncementAccumulator = 0;
 
-                var boo = new GhostBooEvent();
-                RaiseLocalEvent(scp106Uid, boo, true);
+                RaiseLocalEvent(scp106Uid, new GhostBooEvent(), true);
 
-                var statusEffectQuery = EntityQueryEnumerator<StatusEffectsComponent>();
-                while (statusEffectQuery.MoveNext(out var ent, out var _))
+                var statusEffectQuery = EntityQueryEnumerator<HumanoidAppearanceComponent, StatusEffectsComponent>();
+                while (statusEffectQuery.MoveNext(out var ent, out var _, out var _))
                 {
                     _stunSystem.TryParalyze(ent, TimeSpan.FromSeconds(5), true);
                     _jittering.DoJitter(ent, TimeSpan.FromSeconds(15), true);
