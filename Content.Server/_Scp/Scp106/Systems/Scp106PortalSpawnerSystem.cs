@@ -24,14 +24,14 @@ public sealed class Scp106PortalSpawnerSystem : EntitySystem
             comp.Accumulator += frameTime;
 
             if (comp.Accumulator < 60)
-                return;
+                continue;
 
             Spawn(comp.Monster, Transform(uid).Coordinates);
             comp.Accumulator -= 60;
             comp.SpawnedMonsters += 1;
 
             if (comp.SpawnedMonsters < 5)
-                return;
+                continue;
 
             Spawn(comp.BigMonster, Transform(uid).Coordinates);
             _entity.DeleteEntity(uid);
