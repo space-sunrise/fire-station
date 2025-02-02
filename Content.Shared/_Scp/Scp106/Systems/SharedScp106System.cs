@@ -43,9 +43,7 @@ public abstract class SharedScp106System : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly MobThresholdSystem _mob = default!;
-    [Dependency] private readonly ActionContainerSystem _actionContainer = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
-    [Dependency] private readonly SharedActionsSystem _sharedActionsSystem = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
 
     private readonly SoundSpecifier _teleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
@@ -116,7 +114,6 @@ public abstract class SharedScp106System : EntitySystem
     {
         if (args.Handled)
             return;
-
         if (!TryComp<FixturesComponent>(uid, out var fixturesComponent))
             return;
 
@@ -138,9 +135,7 @@ public abstract class SharedScp106System : EntitySystem
             BreakOnHandChange = false,
             BreakOnWeightlessMove = false,
         };
-
         _doAfter.TryStartDoAfter(doAfterEventArgs);
-
         args.Handled = true;
     }
 
