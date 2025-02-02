@@ -34,7 +34,7 @@ public sealed class Scp106PortalSpawnerSystem : EntitySystem
                 continue;
 
             Spawn(comp.BigMonster, Transform(uid).Coordinates);
-            _entity.DeleteEntity(uid);
+            Del(uid);
             Comp<Scp106Component>(comp.Scp106).Scp106HasPortals -= 1;
         }
     }

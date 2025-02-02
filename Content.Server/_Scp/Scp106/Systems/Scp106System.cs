@@ -125,12 +125,11 @@ public sealed class Scp106System : SharedScp106System
                 return false;
 
             scp106Component.Essence -= 10;
-
             Dirty(scp106, scp106Component);
 
             _transform.SetCoordinates(scp106, phantomPos);
 
-            EntityManager.DeleteEntity(phantom);
+            Del(phantom);
 
             Scp106FinishTeleportation(scp106);
         }
