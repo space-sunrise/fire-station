@@ -279,7 +279,7 @@ public abstract class SharedScp106System : EntitySystem
             var targetPos = Transform(target).Coordinates;
 
             _sharedTransform.SetCoordinates(component.Scp106BodyUid, targetPos);
-            _bodySystem.GibBody(target);
+            SendToBackrooms(target);
 
             if (args.Args.EventTarget == null)
                 return;
