@@ -48,6 +48,10 @@
     raffle:
       settings: short
   - type: GhostTakeoverAvailable
+  - type: Tag # перезаписываем родительский список тегов, без DoorBumpOpener
+    tags:
+    - FootstepSound
+    - CannotSuicide
 #  - type: Blinkable мейби в другой жизни, когда будет не криво работать и балансно
 #  - type: EyeClosing
 
