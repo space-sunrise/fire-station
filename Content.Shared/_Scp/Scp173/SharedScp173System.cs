@@ -44,7 +44,6 @@ public abstract class SharedScp173System : EntitySystem
 
         #region Blocker
 
-        SubscribeLocalEvent((Entity<Scp173Component> _, ref BeforeDamageChangedEvent args) => args.Cancelled = true);
         SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, component, args) =>
         {
             if (Is173Watched((uid, component), out _))
