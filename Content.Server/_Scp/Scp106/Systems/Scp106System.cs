@@ -77,9 +77,13 @@ public sealed class Scp106System : SharedScp106System
         // Store
         SubscribeLocalEvent<Scp106Component, Scp106ShopAction>(OnShop);
 
-        // Abilities in that store
-        SubscribeLocalEvent<Scp106Component, Scp106BoughtPhantomAction>(OnBoughtPhantom);
-        SubscribeLocalEvent<Scp106Component, Scp106OnUpgradePhantomAction>(OnScp106OnUpgradePhantomAction);
+        // Abilities in that store - I love lambdas >:)
+        SubscribeLocalEvent((EntityUid uid, Scp106Component component, Scp106BoughtPhantomAction args) =>
+            _actions.AddAction(uid, component.PhantomAction));
+        SubscribeLocalEvent((EntityUid _, Scp106Component component, Scp106OnUpgradePhantomAction _) =>
+            component.PhantomCoolDown -= TimeSpan.FromSeconds(60));
+        SubscribeLocalEvent((EntityUid uid, Scp106Component _, Scp106BoughtBareBladeAction _) =>
+            _actions.AddAction(uid, "Scp106BareBlade"));
 
         SubscribeLocalEvent<Scp106Component, Scp106TeleporationDelayActionEvent>(OnScp106TeleporationDelayActionEvent);
     }
@@ -99,12 +103,6 @@ public sealed class Scp106System : SharedScp106System
         _appearanceSystem.SetData(uid, Scp106Visuals.Visuals, Scp106VisualsState.Default);
     }
 
-    private void OnScp106OnUpgradePhantomAction(EntityUid uid,
-        Scp106Component component,
-        Scp106OnUpgradePhantomAction args)
-    {
-        component.PhantomCoolDown -= TimeSpan.FromSeconds(60);
-    }
     public override bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args)
     {
         if (args.Args.EventTarget is not {} phantom)
@@ -135,11 +133,6 @@ public sealed class Scp106System : SharedScp106System
         }
 
         return true;
-    }
-
-    private void OnBoughtPhantom(EntityUid uid, Scp106Component component, Scp106BoughtPhantomAction args)
-    {
-        _actions.AddAction(uid, component.PhantomAction, uid);
     }
 
     private void OnShop(EntityUid uid, Scp106Component component, Scp106ShopAction args)
