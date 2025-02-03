@@ -210,7 +210,6 @@ public sealed class Scp106System : SharedScp106System
         };
 
         _doAfter.TryStartDoAfter(doAfterEventArgs);
-
     }
 
     public override void SendToStation(EntityUid target)
