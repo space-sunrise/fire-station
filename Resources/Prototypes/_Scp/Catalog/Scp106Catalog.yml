@@ -36,10 +36,10 @@
     - Scp106BoughtPhantomAction
 
 - type: listing
-  id: CreatePortalAction
+  id: Scp106BareBlade
   name: Открытие порталов
   description: Способность открытия порталов.
-  productAction: CreatePortalAction
+  productEvent: !type:Scp106BoughtBareBladeAction
   categories:
   - Scp106Abilities
   cost:

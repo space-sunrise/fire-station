@@ -115,7 +115,7 @@
   description: Клинок для рассекания плоти и костей.
   components:
   - type: InstantAction
-    event: !type:Scp106BareBlade
+    event: !type:Scp106BareBladeAction
     raiseOnUser: true
     itemIconStyle: BigAction
     useDelay: 300

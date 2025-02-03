@@ -26,6 +26,10 @@ public sealed partial class Scp106PassThroughAction : InstantActionEvent {}
 
 public sealed partial class Scp106CreatePortalAction : InstantActionEvent {}
 
+public sealed partial class Scp106BoughtBareBladeAction : InstantActionEvent {}
+
+public sealed partial class Scp106BareBladeAction : InstantActionEvent {}
+
 [Serializable, NetSerializable]
 public sealed partial class Scp106BackroomsActionEvent : SimpleDoAfterEvent { }
 
