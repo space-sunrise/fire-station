@@ -78,7 +78,7 @@ public sealed class Scp106System : SharedScp106System
         SubscribeLocalEvent<Scp106Component, Scp106ShopAction>(OnShop);
 
         // Abilities in that store - I love lambdas >:)
-        SubscribeLocalEvent((EntityUid uid, Scp106Component component, Scp106BoughtPhantomAction args) =>
+        SubscribeLocalEvent((EntityUid uid, Scp106Component component, Scp106BoughtPhantomAction _) =>
             _actions.AddAction(uid, component.PhantomAction));
         SubscribeLocalEvent((EntityUid _, Scp106Component component, Scp106OnUpgradePhantomAction _) =>
             component.PhantomCoolDown -= TimeSpan.FromSeconds(60));
