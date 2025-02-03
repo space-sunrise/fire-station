@@ -28,6 +28,9 @@
         - SmallMobMask
         layer:
         - SmallMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
   - type: ReplacementAccent
     accent: mouse
   - type: EmitSoundRandomly

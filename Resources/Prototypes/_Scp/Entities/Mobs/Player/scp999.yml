@@ -52,7 +52,6 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      9999999: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 4
@@ -157,16 +156,6 @@
     - dragging-3
     - dragging-4
     - dragging-5
-  - type: PassiveDamage
-    allowedStates:
-    - Alive
-    damageCap: 0
-    damage:
-      groups:
-        Brute: -0.1
-        Burn: -0.1
-      types:
-        Bloodloss: -0.5
   - type: ActionGrant
     actions:
     - Scp999Wallify
