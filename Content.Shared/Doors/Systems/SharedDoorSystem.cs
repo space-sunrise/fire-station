@@ -57,7 +57,9 @@ public abstract partial class SharedDoorSystem : EntitySystem
 
     private readonly HashSet<Entity<PhysicsComponent>> _doorIntersecting = new();
 
+    // Fire edit start
     private readonly SoundSpecifier _doorSmashSound = new SoundCollectionSpecifier("DoorSmash");
+    // Fire edit end
 
     public override void Initialize()
     {
