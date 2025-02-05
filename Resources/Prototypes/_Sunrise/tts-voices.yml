@@ -687,6 +687,7 @@
   sex: Female
   speaker: adjutant
   provider: ntts.fdev.team
+  roundStart: false # Fire edit
 
 - type: ttsVoice
   id: Hanson
