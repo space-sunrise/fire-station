@@ -41,7 +41,7 @@
             <BoxContainer Orientation="Vertical" Margin="20 0 20 0" VerticalAlignment="Center">
                 <PanelContainer Name="BackPanel" HorizontalAlignment="Center">
                     <PanelContainer.PanelOverride>
-                        <gfx:StyleBoxTexture Modulate="#202023" PatchMarginBottom="10" PatchMarginLeft="10" PatchMarginRight="10" PatchMarginTop="10"/>
+                        <gfx:StyleBoxTexture Modulate="#121111" PatchMarginBottom="10" PatchMarginLeft="10" PatchMarginRight="10" PatchMarginTop="10"/>
                     </PanelContainer.PanelOverride>
                     <BoxContainer Orientation="Vertical" HorizontalExpand="True" HorizontalAlignment="Center" VerticalExpand="True">
                         <GridContainer Columns="3" VSeparationOverride="0" HSeparationOverride="0" HorizontalAlignment="Center">
