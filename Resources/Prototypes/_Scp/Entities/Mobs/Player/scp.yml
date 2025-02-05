@@ -82,6 +82,9 @@
       - !type:PlaySoundBehavior
         sound: !type:SoundPathSpecifier
           path: /Audio/_Scp/demon-dying.ogg
+  - type: NightVision
+    isToggle: true
+    color: "#808080"
   - type: Tag
     tags:
     - FootstepSound
