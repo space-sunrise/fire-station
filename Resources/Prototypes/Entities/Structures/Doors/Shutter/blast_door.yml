@@ -21,7 +21,8 @@
     canPry: false
     crushDamage:
       types:
-        Blunt: 25 # yowch
+        Blunt: 50 # Fire edit
+    unsafeClosing: true # Fire edit
   - type: Occluder
   - type: Appearance
   - type: RadiationBlocker
