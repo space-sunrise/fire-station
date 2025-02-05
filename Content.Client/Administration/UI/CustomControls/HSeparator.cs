@@ -6,7 +6,7 @@ namespace Content.Client.Administration.UI.CustomControls;
 
 public sealed class HSeparator : Control
 {
-    private static readonly Color SeparatorColor = Color.FromHex("#3D4059");
+    private static readonly Color SeparatorColor = Color.FromHex("#4f4949");
 
     private readonly StyleBoxFlat _styleBox;
 
