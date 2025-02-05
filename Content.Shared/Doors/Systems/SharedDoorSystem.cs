@@ -554,7 +554,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
                 _damageableSystem.TryChangeDamage(entity, door.CrushDamage, origin: uid);
 
             _stunSystem.TryParalyze(entity, stunTime, true);
-            Audio.PlayPredicted(_doorSmashSound, entity, entity);
+            Audio.PlayPredicted(_doorSmashSound, entity, entity); // Fire
         }
 
         if (door.CurrentlyCrushing.Count == 0)
