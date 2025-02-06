@@ -92,11 +92,14 @@ public abstract class SharedScp106System : EntitySystem
                 component.Sword = Spawn("FoamCutlass");
                 _hands.TryPickupAnyHand(uid, component.Sword);
             }
+
+            component.BladeActive = true;
         }
         else
         {
             Del(component.Sword);
             _hands.RemoveHands(uid);
+            component.BladeActive = false;
         }
     }
 
