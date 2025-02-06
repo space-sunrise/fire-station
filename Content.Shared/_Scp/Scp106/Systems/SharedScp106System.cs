@@ -7,6 +7,8 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
+using Content.Shared.Hands.Components;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
@@ -45,6 +47,8 @@ public abstract class SharedScp106System : EntitySystem
     [Dependency] private readonly MobThresholdSystem _mob = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
+
 
     private readonly SoundSpecifier _teleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
@@ -59,6 +63,7 @@ public abstract class SharedScp106System : EntitySystem
         SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportAction>(OnRandomTeleportAction);
         SubscribeLocalEvent<Scp106Component, Scp106BecomePhantomAction>(OnScp106BecomePhantomAction);
         SubscribeLocalEvent<Scp106Component, Scp106BecomeTeleportPhantomAction>(OnBecomeTeleportPhantomAction);
+        SubscribeLocalEvent<Scp106Component, Scp106BareBladeAction>(OnScp106BareBladeAction);
 
         SubscribeLocalEvent<Scp106Component, Scp106BackroomsActionEvent>(OnBackroomsDoAfter);
         SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportActionEvent>(OnTeleportDoAfter);
@@ -73,6 +78,26 @@ public abstract class SharedScp106System : EntitySystem
 
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseActionEvent>(OnScp106ReverseActionEvent);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106PassThroughActionEvent>(OnScp106PassThroughActionEvent);
+    }
+
+    private void OnScp106BareBladeAction(EntityUid uid, Scp106Component component, ref Scp106BareBladeAction args)
+    {
+        if (!component.BladeActive)
+        {
+            EnsureComp<HandsComponent>(uid);
+            _hands.AddHand(uid, "asd", HandLocation.Middle);
+
+            if (_serverNetManager.IsServer)
+            {
+                component.Sword = Spawn("FoamCutlass");
+                _hands.TryPickupAnyHand(uid, component.Sword);
+            }
+        }
+        else
+        {
+            Del(component.Sword);
+            _hands.RemoveHands(uid);
+        }
     }
 
     private void OnScp106CreatePortalEvent(EntityUid uid, Scp106Component component, Scp106CreatePortalEvent args)
