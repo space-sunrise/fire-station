@@ -56,6 +56,26 @@
     - shuffle-artifact-popup
 
 - type: artifactEffect
+  id: ScpEffectHunger
+  targetDepth: 1
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: HungerArtifact
+
+- type: artifactEffect
+  id: ScpEffectThirst
+  targetDepth: 1
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ThirstArtifact
+
+- type: artifactEffect
   id: ScpEffectAnomaly
   targetDepth: 4
   effectHint: artifact-effect-hint-creation
