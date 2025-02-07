@@ -6,10 +6,7 @@
   - type: Sprite
     sprite: _Scp/Structures/Windows/window.rsi
   - type: Icon
-    sprite: Scp/Structures/Windows/window.rsi
-  - type: IconSmooth
-    key: walls
-    base: window
+    sprite: _Scp/Structures/Windows/window.rsi
   - type: Construction
     graph: Window
     node: window
@@ -22,9 +19,33 @@
   - type: Sprite
     sprite: _Scp/Structures/Windows/reinforced_window.rsi
   - type: Icon
-    sprite: Scp/Structures/Windows/reinforced_window.rsi
-  - type: IconSmooth
-    base: rwindow
+    sprite: _Scp/Structures/Windows/reinforced_window.rsi
   - type: Construction
     graph: Window
     node: reinforcedWindow
+
+- type: entity
+  parent: PlasmaWindow
+  id: FSPlasmaWindow
+  name: window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/plasma_window.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/plasma_window.rsi
+  - type: Construction
+    graph: Window
+    node: pwindow
+
+- type: entity
+  parent: UraniumWindow
+  id: FSUraniumWindow
+  name: window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/uranium_window.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/uranium_window.rsi
+  - type: Construction
+    graph: Window
+    node: uwindow
