@@ -192,6 +192,16 @@
   components:
   - type: ScpSwapArtifact
 
+- type: artifactEffect
+  id: ScpEffectCreateArtifacts
+  targetDepth: 5
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: CreateRandomArtifacts
+
 # Scp 939
 
 - type: artifactEffect
