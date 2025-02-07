@@ -1,16 +1,17 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Content.Server._Scp.LightFlicking.Components;
 using Content.Server.Light.Components;
 using Content.Server.Light.EntitySystems;
 using Content.Shared._Scp.LightFlicking;
+using Content.Shared._Scp.LightFlicking.MalfunctionLight;
 using Content.Shared.Light.Components;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.LightFlicking;
 
-public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
+public sealed class LightFlickingSystem : SharedLightFlickingSystem
 {
     [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
+    [Dependency] private readonly LightBulbSystem _bulb = default!;
     [Dependency] private readonly PoweredLightSystem _poweredLight = default!;
 
     private const float FlickingStartChance = 0.1f;
@@ -150,6 +151,7 @@ public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
         if (!TryGetBulb(lightUid, out var bulb))
             return;
 
+        _bulb.SetColor(bulb.Value, Color.FromHex("#997e65")); // коричневый
         EnsureComp<MalfunctionLightComponent>(bulb.Value);
     }
 

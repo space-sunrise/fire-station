@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Server.Light.Components;
+using Content.Shared._Scp.LightFlicking.MalfunctionLight;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Light.EntitySystems;
@@ -130,7 +131,8 @@ public sealed class LightReplacerSystem : SharedLightReplacerSystem
         {
             if (!TryComp<LightBulbComponent>(fixtureBulbUid.Value, out var fixtureBulb))
                 return false;
-            if (fixtureBulb.State == LightBulbState.Normal)
+            // Fire edit
+            if (fixtureBulb.State == LightBulbState.Normal && !HasComp<MalfunctionLightComponent>(fixtureBulbUid))
                 return false;
         }
 
@@ -180,7 +182,8 @@ public sealed class LightReplacerSystem : SharedLightReplacerSystem
             return false;
 
         // only normal (non-broken) bulbs can be inserted inside light replacer
-        if (bulb.State != LightBulbState.Normal)
+        // Fire edit
+        if (bulb.State != LightBulbState.Normal || HasComp<MalfunctionLightComponent>(bulbUid))
         {
             if (showTooltip && userUid != null)
             {
