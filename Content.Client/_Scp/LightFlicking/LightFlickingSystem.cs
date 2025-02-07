@@ -1,16 +1,21 @@
 ﻿using Content.Client.Light.Visualizers;
 using Content.Shared._Scp.LightFlicking;
 using Content.Shared.Light;
+using Robust.Client.Audio;
 using Robust.Client.GameObjects;
+using Robust.Shared.Audio;
 
 namespace Content.Client._Scp.LightFlicking;
 
 public sealed class LightFlickingSystem : SharedLightFlickingSystem
 {
     [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     private const float RadiusVariationPercentage = 0.2f;
     private const float EnergyVariationPercentage = 0.2f;
+
+    private readonly SoundSpecifier _flickSound = new SoundPathSpecifier("/Audio/_Scp/Effects/flick.ogg");
 
     public override void Update(float frameTime)
     {
@@ -37,6 +42,8 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
 
             if (TryComp<SpriteComponent>(uid, out var spriteComponent))
                 spriteComponent.LayerSetColor(PoweredLightLayers.Glow, newColor);
+
+            _audio.PlayPvs(_flickSound, uid, AudioParams.Default.WithVolume(-8).WithMaxDistance(2f));
 
             SetNextFlickingTime((uid, flicking));
         }

@@ -16,8 +16,8 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
 
     private const float FlickingStartChance = 0.1f;
 
-    private readonly TimeSpan _flickCheckInterval = TimeSpan.FromMinutes(30);
-    private readonly TimeSpan _flickCheckVariation = TimeSpan.FromMinutes(15);
+    private readonly TimeSpan _flickCheckInterval = TimeSpan.FromMinutes(1);
+    private readonly TimeSpan _flickCheckVariation = TimeSpan.FromMinutes(1);
 
     public override void Initialize()
     {
@@ -151,6 +151,7 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
         if (!TryGetBulb(lightUid, out var bulb))
             return;
 
+        // TODO: Пофиксить, что после вставления лампы она принимает этот коричневый цвет, вместо нужного оригинального
         _bulb.SetColor(bulb.Value, Color.FromHex("#997e65")); // коричневый
         EnsureComp<MalfunctionLightComponent>(bulb.Value);
     }
