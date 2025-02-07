@@ -182,6 +182,16 @@
   - type: PolyOthersArtifact
     polymorphPrototypeName: ScpEffectTable
 
+- type: artifactEffect
+  id: ScpEffectSwap
+  targetDepth: 2
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ScpSwapArtifact
+
 # Scp 939
 
 - type: artifactEffect
