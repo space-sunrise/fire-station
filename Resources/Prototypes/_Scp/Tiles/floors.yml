@@ -20,12 +20,16 @@
   id: FSFloorSteel
   name: scp-tiles-steel-floor
   sprite: /Textures/_Scp/Tiles/steel.png
-  variants: 10
+  variants: 14
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
   - 0.05
   - 0.05
   - 0.05
@@ -46,12 +50,16 @@
   id: FSFloorDark
   name: scp-tiles-dark-floor
   sprite: /Textures/_Scp/Tiles/dark.png
-  variants: 10
+  variants: 14
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
   - 0.05
   - 0.05
   - 0.05
@@ -72,12 +80,16 @@
   id: FSFloorWhite
   name: scp-tiles-white-floor
   sprite: /Textures/_Scp/Tiles/white.png
-  variants: 10
+  variants: 14
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
   - 0.05
   - 0.05
   - 0.05
@@ -102,7 +114,7 @@
   - 1.0
   - 1.0
   - 1.0
-  - 0.05
+  - 1.0
   - 0.05
   - 0.05
   - 0.05
@@ -126,7 +138,7 @@
   - 1.0
   - 1.0
   - 1.0
-  - 0.05
+  - 1.0
   - 0.05
   - 0.05
   - 0.05
@@ -144,23 +156,17 @@
   id: FSFloorSteelMini
   name: scp-tiles-steel-mini-floor
   sprite: /Textures/_Scp/Tiles/steel_mini.png
-  variants: 24
+  variants: 14
   placementVariants:
   - 1.0
   - 1.0
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
   - 0.05
   - 0.05
   - 0.05
@@ -180,23 +186,17 @@
   id: FSFloorDarkMini
   name: scp-tiles-dark-mini-floor
   sprite: /Textures/_Scp/Tiles/dark_mini.png
-  variants: 24
+  variants: 14
   placementVariants:
   - 1.0
   - 1.0
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
   - 0.05
   - 0.05
   - 0.05
@@ -216,23 +216,17 @@
   id: FSFloorWhiteMini
   name: scp-tiles-white-mini-floor
   sprite: /Textures/_Scp/Tiles/white_mini.png
-  variants: 24
+  variants: 14
   placementVariants:
-  - 2.0
-  - 2.0
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
-  - 0.01
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
   - 0.05
   - 0.05
   - 0.05
@@ -250,7 +244,18 @@
   id: FSFloorSteelMono
   name: scp-tiles-steel-mono-floor
   sprite: /Textures/_Scp/Tiles/steel_mono.png
-  variants: 1
+  variants: 10
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -265,7 +270,18 @@
   id: FSFloorWhiteMono
   name: scp-tiles-white-mono-floor
   sprite: /Textures/_Scp/Tiles/white_mono.png
-  variants: 1
+  variants: 10
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -278,7 +294,18 @@
   id: FSFloorDarkMono
   name: scp-tiles-dark-mono-floor
   sprite: /Textures/_Scp/Tiles/dark_mono.png
-  variants: 1
+  variants: 10
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -293,12 +320,16 @@
   id: FSFloorCheckerSteel
   name: scp-tiles-checker-steel-floor
   sprite: /Textures/_Scp/Tiles/checker_steel.png
-  variants: 10
+  variants: 14
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
   - 0.05
   - 0.05
   - 0.05
@@ -319,12 +350,16 @@
   id: FSFloorCheckerDark
   name: scp-tiles-checker-dark-floor
   sprite: /Textures/_Scp/Tiles/checker_dark.png
-  variants: 10
+  variants: 14
   placementVariants:
   - 1.0
   - 1.0
   - 1.0
   - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
   - 0.05
   - 0.05
   - 0.05
