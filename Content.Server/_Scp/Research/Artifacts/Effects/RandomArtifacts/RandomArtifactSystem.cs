@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Server._Scp.Helpers;
 using Content.Server.Xenoarchaeology.XenoArtifacts;
 using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
 using Content.Shared.Item;
@@ -10,6 +11,7 @@ namespace Content.Server._Scp.Research.Artifacts.Effects.RandomArtifacts;
 public sealed partial class RandomArtifactsSystem : EntitySystem
 {
     [Dependency] private readonly ArtifactSystem _artifactsSystem = default!;
+    [Dependency] private readonly ScpHelpersSystem _scpHelpers = default!;
     [Dependency] private readonly IConsoleHost _console = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
@@ -29,7 +31,7 @@ public sealed partial class RandomArtifactsSystem : EntitySystem
         var items = EntityQuery<ItemComponent>().ToList();
         _random.Shuffle(items);
 
-        var selectedItems = GetPercentageOfHashSet(items, ItemToArtifactRatio);
+        var selectedItems = _scpHelpers.GetPercentageOfHashSet(items, ItemToArtifactRatio);
 
         foreach (var item in selectedItems)
         {
@@ -38,13 +40,5 @@ public sealed partial class RandomArtifactsSystem : EntitySystem
             var artifactComponent = EnsureComp<ArtifactComponent>(entity);
             _artifactsSystem.RandomizeArtifact(entity, artifactComponent);
         }
-    }
-
-    // TODO: Перенести в ScpHelperSystem и переделать на генерик <T>
-    private HashSet<ItemComponent> GetPercentageOfHashSet(List<ItemComponent> sourceList, float percentage)
-    {
-        var countToAdd = (int) Math.Round((double) sourceList.Count * percentage / 100);
-
-        return sourceList.Where(x => !Transform(x.Owner).Anchored).Take(countToAdd).ToHashSet();
     }
 }
