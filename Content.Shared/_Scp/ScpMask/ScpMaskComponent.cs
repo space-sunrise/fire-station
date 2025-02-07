@@ -29,7 +29,7 @@ public sealed partial class ScpMaskComponent : Component, IClothingSlots
     /// <summary>
     /// Шанс того, что маска слетит при получении урона
     /// </summary>
-    [DataField, AlwaysPushInheritance]
+    [DataField]
     public float TearChanceOnDamage
     {
         get => _tearChanceOnDamage;
