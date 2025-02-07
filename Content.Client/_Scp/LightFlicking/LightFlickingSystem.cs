@@ -32,7 +32,7 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
             _pointLight.SetRadius(uid, newRadius);
 
             // Изменяем цвет лампочки в зависимости от того, насколько сильно изменилось свечение
-            var newColor = DimColorBasedOnChange(flicking.DumpedColor, flicking.DumpedEnergy, newEnergy);
+            var newColor = DimColorBasedOnChange(flicking.DumpedColor, flicking.DumpedRadius, newRadius);
             // _pointLight.SetColor(uid, newColor); слишком вырвиглазно, но работает
 
             if (TryComp<SpriteComponent>(uid, out var spriteComponent))
