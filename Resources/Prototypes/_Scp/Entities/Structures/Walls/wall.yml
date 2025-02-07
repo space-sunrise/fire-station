@@ -1,0 +1,27 @@
+# Стена
+- type: entity
+  parent: WallSolid
+  id: FSWallSolid
+  name: wall
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/solid.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/solid.rsi
+  - type: IconSmooth
+    key: walls
+    base: solid
+
+# Укрепленная стена
+- type: entity
+  parent: WallReinforced
+  id: FSWallReinforced
+  name: reinforced wall
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/solid.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/solid.rsi
+  - type: IconSmooth
+    key: walls
+    base: reinf_over

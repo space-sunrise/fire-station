@@ -1,0 +1,30 @@
+- type: entity
+  parent: Window
+  id: FSWindow
+  name: window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/window.rsi
+  - type: Icon
+    sprite: Scp/Structures/Windows/window.rsi
+  - type: IconSmooth
+    key: walls
+    base: window
+  - type: Construction
+    graph: Window
+    node: window
+
+- type: entity
+  parent: ReinforcedWindow
+  id: FSReinforcedWindow
+  name: window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/reinforced_window.rsi
+  - type: Icon
+    sprite: Scp/Structures/Windows/reinforced_window.rsi
+  - type: IconSmooth
+    base: rwindow
+  - type: Construction
+    graph: Window
+    node: reinforcedWindow
