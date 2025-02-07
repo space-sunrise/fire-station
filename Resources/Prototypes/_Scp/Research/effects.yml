@@ -3,7 +3,7 @@
 - type: artifactEffect
   id: ScpEffectLightFlicker
   targetDepth: 0
-  effectHint: artifact-effect-hint-electrical-interference
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -13,7 +13,7 @@
 - type: artifactEffect
   id: ScpEffectThrow
   targetDepth: 0
-  effectHint: artifact-effect-hint-environment
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -23,7 +23,7 @@
 - type: artifactEffect
   id: ScpEffectShatterStructures
   targetDepth: 1
-  effectHint: artifact-effect-hint-environment
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -43,7 +43,7 @@
 - type: artifactEffect
   id: ScpEffectShuffle
   targetDepth: 1
-  effectHint: artifact-effect-hint-displacement
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -78,7 +78,7 @@
 - type: artifactEffect
   id: ScpEffectAnomaly
   targetDepth: 4
-  effectHint: artifact-effect-hint-creation
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -115,22 +115,22 @@
 - type: artifactEffect
   id: ScpEffectShuffleUltra
   targetDepth: 6
-  effectHint: artifact-effect-hint-displacement
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
   components:
   - type: ShuffleArtifact
-    radius: 60
+    radius: 70
   - type: TelepathicArtifact
-    range: 60
+    range: 70
     messages:
     - shuffle-artifact-popup
 
 - type: artifactEffect
-  id: EffectPolyChair
+  id: ScpEffectPolyChair
   targetDepth: 3
-  effectHint: artifact-effect-hint-polymorph
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -139,9 +139,9 @@
     polymorphPrototypeName: ScpEffectChair
 
 - type: artifactEffect
-  id: EffectPolyWatermelon
+  id: ScpEffectPolyWatermelon
   targetDepth: 3
-  effectHint: artifact-effect-hint-polymorph
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -150,9 +150,9 @@
     polymorphPrototypeName: ScpEffectWatermelon
 
 - type: artifactEffect
-  id: EffectPolyAppendix
+  id: ScpEffectPolyAppendix
   targetDepth: 3
-  effectHint: artifact-effect-hint-polymorph
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -161,9 +161,9 @@
     polymorphPrototypeName: ScpEffectAppendix
 
 - type: artifactEffect
-  id: EffectPolyDisposal
+  id: ScpEffectPolyDisposal
   targetDepth: 3
-  effectHint: artifact-effect-hint-polymorph
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -172,9 +172,9 @@
     polymorphPrototypeName: ScpEffectDisposal
 
 - type: artifactEffect
-  id: EffectPolyTable
+  id: ScpEffectPolyTable
   targetDepth: 3
-  effectHint: artifact-effect-hint-polymorph
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -187,7 +187,7 @@
 - type: artifactEffect
   id: ScpEffectSmoke939
   targetDepth: 2
-  effectHint: artifact-effect-hint-environment
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp939
@@ -199,7 +199,7 @@
 - type: artifactEffect
   id: ScpEffectEmp106
   targetDepth: 0
-  effectHint: artifact-effect-hint-electrical-interference
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp106
@@ -212,7 +212,7 @@
 - type: artifactEffect
   id: ScpEffectHeal999
   targetDepth: 3
-  effectHint: artifact-effect-hint-environment
+  effectHint: artifact-effect-data-deleted
   whitelist:
     components:
     - Scp999
@@ -233,7 +233,7 @@
 - type: artifactEffect
   id: ScpEffectKnock
   targetDepth: 0
-  effectHint: artifact-effect-hint-electrical-interference
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp173
@@ -243,6 +243,7 @@
 - type: artifactEffect
   id: ScpEffectPointLight
   targetDepth: 0
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp173
@@ -256,7 +257,7 @@
 - type: artifactEffect
   id: ScpEffectIgnite
   targetDepth: 0
-  effectHint: artifact-effect-hint-release
+  effectHint: artifact-effect-hint-data-deleted
   blacklist:
     components:
     - Scp # TODO: кастомный компонент для 457
@@ -271,7 +272,7 @@
 - type: artifactEffect
   id: ScpEffectServantSpawn035
   targetDepth: 1
-  effectHint: artifact-effect-hint-creation
+  effectHint: artifact-effect-hint-data-deleted
   whitelist: # Fire
     components:
     - Scp035Mask
