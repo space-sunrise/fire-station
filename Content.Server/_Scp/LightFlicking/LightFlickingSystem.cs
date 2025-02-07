@@ -6,12 +6,17 @@ using Content.Shared._Scp.LightFlicking;
 using Content.Shared.Light.Components;
 using Robust.Shared.Random;
 
-namespace Content.Server._Scp.LightFlicking.Systems;
+namespace Content.Server._Scp.LightFlicking;
 
 public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
 {
     [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
     [Dependency] private readonly PoweredLightSystem _poweredLight = default!;
+
+    private const float FlickingStartChance = 0.1f;
+
+    private readonly TimeSpan _flickCheckInterval = TimeSpan.FromMinutes(30);
+    private readonly TimeSpan _flickCheckVariation = TimeSpan.FromMinutes(15);
 
     public override void Initialize()
     {
@@ -23,6 +28,8 @@ public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
         SubscribeLocalEvent<LightFlickingComponent, LightInsertEvent>(OnLightInsert);
     }
 
+    #region Event handlers
+
     private void OnMapInit(Entity<LightFlickingComponent> ent, ref MapInitEvent args)
     {
         if (!HasComp<PoweredLightComponent>(ent))
@@ -31,6 +38,23 @@ public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
         SetupFlicking(ent);
         SetNextFlickingStartTime(ent);
     }
+
+    private void OnLightEject(Entity<LightFlickingComponent> ent, ref LightEjectEvent args)
+    {
+        ent.Comp.Enabled = false;
+        Dirty(ent);
+    }
+
+    private void OnLightInsert(Entity<LightFlickingComponent> ent, ref LightInsertEvent args)
+    {
+        if (!HasComp<MalfunctionLightComponent>(args.Bulb))
+            return;
+
+        ent.Comp.Enabled = true;
+        Dirty(ent);
+    }
+
+    #endregion
 
     public override void Update(float frameTime)
     {
@@ -81,9 +105,8 @@ public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
     private bool TryGetBulbEntity(EntityUid lightUid, [NotNullWhen(true)] out Entity<LightBulbComponent>? bulb)
     {
         bulb = null;
-        var bulbUid = _poweredLight.GetBulb(lightUid);
 
-        if (!bulbUid.HasValue)
+        if (!TryGetBulb(lightUid, out var bulbUid))
             return false;
 
         if (!TryComp<LightBulbComponent>(bulbUid, out var lightBulbComponent))
@@ -93,4 +116,43 @@ public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
 
         return true;
     }
+
+    #region Flicking
+
+    private void SetupFlicking(Entity<LightFlickingComponent> ent)
+    {
+        var light = _pointLight.EnsureLight(ent);
+        ent.Comp.DumpedRadius = light.Radius;
+        ent.Comp.DumpedEnergy = light.Energy;
+
+        if (TryGetBulbEntity(ent, out var bulb))
+            ent.Comp.DumpedColor = bulb.Value.Comp.Color;
+
+        Dirty(ent);
+
+        SetNextFlickingTime(ent);
+    }
+
+    #endregion
+
+    #region Flicking start time
+
+    private void SetNextFlickingStartTime(Entity<LightFlickingComponent> ent)
+    {
+        var variation = _flickCheckInterval - Random.Next(_flickCheckVariation);
+        ent.Comp.NextFlickStartChanceTime = Timing.CurTime + variation;
+
+        Dirty(ent);
+    }
+
+    private void MalfunctionBulb(EntityUid lightUid)
+    {
+        if (!TryGetBulb(lightUid, out var bulb))
+            return;
+
+        EnsureComp<MalfunctionLightComponent>(bulb.Value);
+    }
+
+    #endregion
+
 }
