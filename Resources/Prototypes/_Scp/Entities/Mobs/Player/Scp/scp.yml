@@ -147,6 +147,10 @@
       - dragging-3
       - dragging-4
       - dragging-5
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+    - ScpResearchAdvanced
 
 - type: entity
   parent:
@@ -235,3 +239,6 @@
     range: 3
     sound:
       path: /Audio/_Scp/Scp106/breath.ogg
+  - type: GuideHelp
+    guides:
+    - ScpResearch

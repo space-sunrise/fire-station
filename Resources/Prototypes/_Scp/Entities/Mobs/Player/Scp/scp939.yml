@@ -74,3 +74,6 @@
     originWhitelist:
       components:
       - Scp939
+  - type: GuideHelp
+    guides:
+    - ScpResearch

@@ -61,3 +61,6 @@
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepScp049
+  - type: GuideHelp
+    guides:
+    - ScpResearch

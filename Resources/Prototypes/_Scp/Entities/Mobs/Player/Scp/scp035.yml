@@ -15,6 +15,9 @@
   - type: FlashImmunity
   - type: EyeProtection
   - type: Scp035Mask
+  - type: GuideHelp
+    guides:
+    - ScpResearch
 
 - type: entity
   id: MobServant035

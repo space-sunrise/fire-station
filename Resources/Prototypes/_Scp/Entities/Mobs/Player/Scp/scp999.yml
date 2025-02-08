@@ -162,6 +162,10 @@
     - Scp999Rest
   - type: TTS
     voice: Neco
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+    - ScpResearchAdvanced
 
 - type: speechSounds
   id: Scp999Speech

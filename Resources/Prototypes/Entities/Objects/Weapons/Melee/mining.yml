@@ -46,6 +46,9 @@
     whitelist:
       components:
       - Scp173
+  - type: GuideHelp
+    guides:
+    - ScpResearchAdvanced
   # Fire edit end
 
 - type: entity

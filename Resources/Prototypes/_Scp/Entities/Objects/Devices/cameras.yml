@@ -16,3 +16,6 @@
     whitelist:
       components:
       - Scp096
+  - type: GuideHelp
+    guides:
+    - ScpResearchAdvanced

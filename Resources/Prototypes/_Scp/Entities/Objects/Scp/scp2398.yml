@@ -7,3 +7,6 @@
   components:
   - type: Scp2398
     triggerThrowSpeed: 20
+  - type: GuideHelp
+    guides:
+    - ScpResearch

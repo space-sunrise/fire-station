@@ -31,3 +31,6 @@
     contents:
     - id: PillScp500
       amount: 47
+  - type: GuideHelp
+    guides:
+    - ScpResearch

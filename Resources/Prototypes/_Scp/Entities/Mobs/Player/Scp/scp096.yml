@@ -91,3 +91,7 @@
     - Flashed
     - RadiationProtection
     - Drowsiness
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+    - ScpResearchAdvanced
