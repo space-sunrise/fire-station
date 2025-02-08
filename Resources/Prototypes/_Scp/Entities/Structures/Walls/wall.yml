@@ -8,9 +8,16 @@
     sprite: _Scp/Structures/Walls/solid.rsi
   - type: Icon
     sprite: _Scp/Structures/Walls/solid.rsi
-  - type: IconSmooth
-    key: walls
-    base: solid
+
+- type: entity
+  parent: WallSolidRust
+  id: FSWallSolidRust
+  name: wall
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/solid_rust.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/solid_rust.rsi
 
 # Укрепленная стена
 - type: entity
@@ -22,6 +29,13 @@
     sprite: _Scp/Structures/Walls/solid.rsi
   - type: Icon
     sprite: _Scp/Structures/Walls/solid.rsi
-  - type: IconSmooth
-    key: walls
-    base: reinf_over
+
+- type: entity
+  parent: WallReinforcedRust
+  id: FSWallReinforcedRust
+  name: reinforced wall
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/solid_rust.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/solid_rust.rsi

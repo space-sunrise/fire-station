@@ -390,8 +390,8 @@
     rules:
     - id: BasicPoweredLightVariationPass
     - id: BasicTrashVariationPass
-    - id: SolidWallRustingVariationPass
-    - id: ReinforcedWallRustingVariationPass
+    - id: FSSolidWallRustingVariationPass # Fire edit
+    - id: FSReinforcedWallRustingVariationPass # Fire edit
     - id: BasicPuddleMessVariationPass
       prob: 0.99
       orGroup: puddleMess

@@ -1,3 +1,4 @@
+# Окно
 - type: entity
   parent: Window
   id: FSWindow
@@ -7,9 +8,6 @@
     sprite: _Scp/Structures/Windows/window.rsi
   - type: Icon
     sprite: _Scp/Structures/Windows/window.rsi
-  - type: Construction
-    graph: Window
-    node: window
 
 - type: entity
   parent: ReinforcedWindow
@@ -20,10 +18,8 @@
     sprite: _Scp/Structures/Windows/reinforced_window.rsi
   - type: Icon
     sprite: _Scp/Structures/Windows/reinforced_window.rsi
-  - type: Construction
-    graph: Window
-    node: reinforcedWindow
 
+# Плазменное окно
 - type: entity
   parent: PlasmaWindow
   id: FSPlasmaWindow
@@ -33,10 +29,18 @@
     sprite: _Scp/Structures/Windows/plasma_window.rsi
   - type: Icon
     sprite: _Scp/Structures/Windows/plasma_window.rsi
-  - type: Construction
-    graph: Window
-    node: pwindow
 
+- type: entity
+  parent: ReinforcedPlasmaWindow
+  id: FSReinforcedPlasmaWindow
+  name: window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/reinforced_plasma_window.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/reinforced_plasma_window.rsi
+
+# Урановое окно
 - type: entity
   parent: UraniumWindow
   id: FSUraniumWindow
@@ -46,6 +50,13 @@
     sprite: _Scp/Structures/Windows/uranium_window.rsi
   - type: Icon
     sprite: _Scp/Structures/Windows/uranium_window.rsi
-  - type: Construction
-    graph: Window
-    node: uwindow
+
+- type: entity
+  parent: ReinforcedUraniumWindow
+  id: FSReinforcedUraniumWindow
+  name: window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/reinforced_uranium_window.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/reinforced_uranium_window.rsi
