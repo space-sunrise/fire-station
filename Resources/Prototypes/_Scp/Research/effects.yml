@@ -374,16 +374,14 @@
     knockRange: 12
 
 - type: artifactEffect
-  id: ScpEffectPointLight
+  id: ScpEffectBlind
   targetDepth: 0
   effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp173
   components:
-  - type: TriggerArtifact
-  - type: FlashOnTrigger
-    range: 8
+  - type: ArtifactScp173BlindEveryoneInRange
 
 # Scp 457
 

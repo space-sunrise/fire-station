@@ -93,8 +93,8 @@ public abstract class SharedBlinkingSystem : EntitySystem
         component.BlinkEndTime = _gameTiming.CurTime + _blinkingDuration;
         Dirty(uid, component);
 
-        if (_gameTiming.IsFirstTimePredicted && _player.LocalEntity == uid)
-            _audio.PlayGlobal(_blinkSound, Filter.Local(), true);
+        if (_gameTiming.IsFirstTimePredicted)
+            _audio.PlayGlobal(_blinkSound, uid);
 
         var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
 
@@ -159,6 +159,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
         return !IsBlind(uid, blinkableComponent);
     }
 
+    // TODO: Объединить с Blink()
     public void ForceBlind(EntityUid uid, BlinkableComponent component, TimeSpan duration)
     {
         if (_mobState.IsIncapacitated(uid))
@@ -166,6 +167,9 @@ public abstract class SharedBlinkingSystem : EntitySystem
 
         component.BlinkEndTime = _gameTiming.CurTime + duration;
         Dirty(uid, component);
+
+        if (_gameTiming.IsFirstTimePredicted)
+            _audio.PlayGlobal(_blinkSound, uid);
 
         // Set next blink slightly after forced blindness ends
         SetNextBlink(uid, component, duration + TimeSpan.FromSeconds(1));
