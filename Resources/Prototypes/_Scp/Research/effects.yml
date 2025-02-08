@@ -57,7 +57,7 @@
     components:
     - Scp
   components:
-  - type: HungerArtifact
+  - type: ArtifactModifyHunger
 
 - type: artifactEffect
   id: ScpEffectThirst
@@ -67,7 +67,7 @@
     components:
     - Scp
   components:
-  - type: ThirstArtifact
+  - type: ArtifactModifyThirst
 
 - type: artifactEffect
   id: ScpEffectBoltAirlocks
@@ -80,7 +80,7 @@
   - type: ArtifactBoltAirlocks
 
 - type: artifactEffect
-  id: EffectTeslaDischarge
+  id: ScpEffectTeslaDischarge
   targetDepth: 2
   effectHint: artifact-effect-hint-data-deleted
   whitelist:
@@ -225,7 +225,7 @@
     components:
     - Scp
   components:
-  - type: ScpSwapArtifact
+  - type: ArtifactScpSwap
 
 - type: artifactEffect
   id: ScpEffectCreateArtifacts
@@ -235,7 +235,7 @@
     components:
     - Scp
   components:
-  - type: CreateRandomArtifacts
+  - type: ArtifactCreateRandomArtifacts
 
 - type: artifactEffect
   id: ScpEffectRandomTransformation
@@ -298,7 +298,10 @@
     components:
     - Scp939
   components:
-  - type: ScpSmokeArtifact
+  - type: ArtifactCreateSmoke
+    reagent: АМН-С227
+    quantity: 200
+    prototype: АМН-С227Smoke
 
 - type: artifactEffect
   id: ScpEffectSleep939

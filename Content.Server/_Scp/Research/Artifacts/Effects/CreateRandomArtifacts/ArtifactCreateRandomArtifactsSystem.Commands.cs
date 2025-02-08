@@ -6,15 +6,14 @@ using Content.Shared.Administration;
 using Content.Shared.Item;
 using Robust.Shared.Console;
 
-namespace Content.Server._Scp.Research.Artifacts.Effects.RandomArtifacts;
+namespace Content.Server._Scp.Research.Artifacts.Effects.CreateRandomArtifacts;
 
-public sealed partial class RandomArtifactsSystem
+public sealed partial class ArtifactCreateRandomArtifactsSystem
 {
     [AdminCommand(AdminFlags.Admin)]
     private void ListArtifacts(IConsoleShell shell, string argstr, string[] args)
     {
         var items = EntityQuery<ArtifactComponent, ItemComponent>();
-
         var msg = new StringBuilder();
 
         foreach (var (artifact, _) in items)
@@ -22,9 +21,10 @@ public sealed partial class RandomArtifactsSystem
             var entity = artifact.Owner;
             var effects = string.Join(", ", artifact.NodeTree.Select(x => x.Effect));
 
-            msg.AppendFormat("{0}: {1}, {2}\n\n", Name(entity), effects, entity);
+            msg.AppendLine($"{Name(entity)}: {effects}, {entity}\n");
         }
 
         shell.WriteLine(msg.ToString());
     }
+
 }

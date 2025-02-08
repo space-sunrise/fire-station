@@ -2,7 +2,7 @@
 using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
 using Robust.Shared.Random;
 
-namespace Content.Server._Scp.Research.Artifacts.Effects._ScpSpecific.Scp106;
+namespace Content.Server._Scp.Research.Artifacts.Effects._ScpSpecific.Scp106.Teleport;
 
 public sealed class ArtifactScp106TeleportSystem : EntitySystem
 {

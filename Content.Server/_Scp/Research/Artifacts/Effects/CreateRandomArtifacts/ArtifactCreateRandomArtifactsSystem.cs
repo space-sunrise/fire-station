@@ -6,9 +6,9 @@ using Content.Shared.Item;
 using Robust.Shared.Console;
 using Robust.Shared.Random;
 
-namespace Content.Server._Scp.Research.Artifacts.Effects.RandomArtifacts;
+namespace Content.Server._Scp.Research.Artifacts.Effects.CreateRandomArtifacts;
 
-public sealed partial class RandomArtifactsSystem : EntitySystem
+public sealed partial class ArtifactCreateRandomArtifactsSystem : EntitySystem
 {
     [Dependency] private readonly ArtifactSystem _artifactsSystem = default!;
     [Dependency] private readonly ScpHelpersSystem _scpHelpers = default!;
@@ -21,12 +21,12 @@ public sealed partial class RandomArtifactsSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<CreateRandomArtifactsComponent, ArtifactActivatedEvent>(OnActivate);
+        SubscribeLocalEvent<ArtifactCreateRandomArtifactsComponent, ArtifactActivatedEvent>(OnActivate);
 
         _console.RegisterCommand("listartifacts", "Показывает список всех артефактов-предметов, созданных в результате эффекта от изучения SCP", "listartifacts", ListArtifacts);
     }
 
-    private void OnActivate(Entity<CreateRandomArtifactsComponent> ent, ref ArtifactActivatedEvent args)
+    private void OnActivate(Entity<ArtifactCreateRandomArtifactsComponent> ent, ref ArtifactActivatedEvent args)
     {
         var items = EntityQuery<ItemComponent>().ToList();
         _random.Shuffle(items);

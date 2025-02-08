@@ -1,4 +1,4 @@
-﻿namespace Content.Server._Scp.Research.Artifacts.Effects._ScpSpecific.Scp106;
+﻿namespace Content.Server._Scp.Research.Artifacts.Effects._ScpSpecific.Scp106.Teleport;
 
 [RegisterComponent]
 public sealed partial class ArtifactScp106TeleportComponent : Component

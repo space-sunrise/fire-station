@@ -3,7 +3,7 @@ using Content.Shared._Scp.Research.Artifacts;
 
 namespace Content.Server._Scp.Research.Artifacts.Triggers.HealthAnalyzerInteraction;
 
-public sealed class HealthAnalyzerInteractionTriggerSystem : EntitySystem
+public sealed class ArtifactHealthAnalyzerInteractionTriggerSystem : EntitySystem
 {
     [Dependency] private readonly ArtifactSystem _artifactSystem = default!;
 
