@@ -30,12 +30,6 @@
   components:
   - type: DamageNearbyArtifact
     damageChance: 0.75
-    whitelist:
-      components:
-      - Door
-      tags:
-      - Window
-      - Wall
     damage:
       types:
         Structural: 400
@@ -106,7 +100,7 @@
 
 - type: artifactEffect
   id: ScpEffectSpawnEvilTwin
-  targetDepth: 4
+  targetDepth: 3
   effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
@@ -155,7 +149,7 @@
 
 - type: artifactEffect
   id: ScpEffectShuffleUltra
-  targetDepth: 6
+  targetDepth: 5
   effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
@@ -298,7 +292,7 @@
 
 - type: artifactEffect
   id: ScpEffectSmoke939
-  targetDepth: 2
+  targetDepth: 1
   effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
@@ -308,7 +302,7 @@
 
 - type: artifactEffect
   id: ScpEffectSleep939
-  targetDepth: 1
+  targetDepth: 0
   effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
@@ -320,7 +314,7 @@
 
 - type: artifactEffect
   id: ScpEffectEmp106
-  targetDepth: 0
+  targetDepth: 1
   effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
@@ -343,7 +337,7 @@
 
 - type: artifactEffect
   id: ScpEffectHeal999
-  targetDepth: 3
+  targetDepth: 1
   effectHint: artifact-effect-data-deleted
   whitelist:
     components:
@@ -364,7 +358,7 @@
 
 - type: artifactEffect
   id: ScpEffectKnock
-  targetDepth: 0
+  targetDepth: 1
   effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
