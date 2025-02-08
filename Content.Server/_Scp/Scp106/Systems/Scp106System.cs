@@ -24,6 +24,10 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
+using Content.Shared.StatusEffect;
+using Content.Shared.Store.Components;
+using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Collections;
@@ -42,7 +46,6 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly StairsSystem _stairs = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedMindSystem _mindSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ScpHelpersSystem _scpHelpers = default!;
     [Dependency] private readonly StoreSystem _store = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
