@@ -306,6 +306,16 @@
   components:
   - type: ScpSmokeArtifact
 
+- type: artifactEffect
+  id: ScpEffectSleep939
+  targetDepth: 1
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp939
+  components:
+  - type: ArtifactScp939Sleep
+
 # Scp 106
 
 - type: artifactEffect
