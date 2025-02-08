@@ -202,6 +202,24 @@
   components:
   - type: CreateRandomArtifacts
 
+- type: artifactEffect
+  id: ScpEffectRandomTransformation
+  targetDepth: 6
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ArtifactRandomTransformation
+    prototypeBlacklist:
+    - Singularity
+    - TeslaEnergyBall
+    - TeslaMiniEnergyBall
+    categoryBlacklist:
+    - HideSpawnMenu
+    - Debug
+    - Spawner
+
 # Scp 939
 
 - type: artifactEffect
