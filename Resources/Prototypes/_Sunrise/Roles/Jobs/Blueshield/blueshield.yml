@@ -40,6 +40,7 @@
     - Cargo
     - Medical
     - BlueShield
+    - Lawyer
   special:
     - !type:AddImplantSpecial
       implants: [MindShieldImplant]

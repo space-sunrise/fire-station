@@ -1,4 +1,6 @@
-﻿# Просто плакаты
+﻿# TODO: Перенести текст в локализацию
+
+# Просто плакаты
 
 - type: entity
   parent: PosterBase
@@ -119,6 +121,24 @@
 
 - type: entity
   parent: PosterScpContainmentRoomBase
+  id: PosterSCP005
+  name: SCP-005
+  description: Информационный плакат SCP-005
+  components:
+  - type: Sprite
+    state: scp005
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP035
+  name: SCP-035
+  description: Информационный плакат SCP-035
+  components:
+  - type: Sprite
+    state: scp035
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
   id: PosterSCP049
   name: SCP-049
   description: Информационный плакат SCP-049
@@ -152,6 +172,15 @@
   components:
   - type: Sprite
     state: scp173
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP500
+  name: SCP-500
+  description: Информационный плакат SCP-500
+  components:
+  - type: Sprite
+    state: scp500
 
 - type: entity
   parent: PosterScpContainmentRoomBase

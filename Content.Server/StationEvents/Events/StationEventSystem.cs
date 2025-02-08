@@ -45,11 +45,10 @@ public abstract class StationEventSystem<T> : GameRuleSystem<T> where T : ICompo
         // we don't want to send to players who aren't in game (i.e. in the lobby)
         Filter allPlayersInGame = Filter.Empty().AddWhere(GameTicker.UserHasJoinedGame);
 
-        // Sunrise-Start
+        // Sunrise-Start || FIRE EDIT - убрал отмену дефолтного звука
         if (stationEvent.StartAnnouncement != null)
             ChatSystem.DispatchFilteredAnnouncement(allPlayersInGame,
                 Loc.GetString(stationEvent.StartAnnouncement),
-                playDefault: false, // Sunrise-Edit
                 announcementSound: stationEvent.StartAudio, // Sunrise-Edit
                 colorOverride: stationEvent.StartAnnouncementColor);
         else
@@ -95,11 +94,10 @@ public abstract class StationEventSystem<T> : GameRuleSystem<T> where T : ICompo
         // we don't want to send to players who aren't in game (i.e. in the lobby)
         Filter allPlayersInGame = Filter.Empty().AddWhere(GameTicker.UserHasJoinedGame);
 
-        // Sunrise-Start
+        // Sunrise-Start || FIRE EDIT - убрал отмену дефолтного звука
         if (stationEvent.EndAnnouncement != null)
             ChatSystem.DispatchFilteredAnnouncement(allPlayersInGame,
                 Loc.GetString(stationEvent.EndAnnouncement),
-                playDefault: false, // Sunrise-Edit
                 announcementSound: stationEvent.EndAudio, // Sunrise-Edit
                 colorOverride: stationEvent.EndAnnouncementColor);
         else

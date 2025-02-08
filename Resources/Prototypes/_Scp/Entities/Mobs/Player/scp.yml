@@ -82,6 +82,9 @@
       - !type:PlaySoundBehavior
         sound: !type:SoundPathSpecifier
           path: /Audio/_Scp/demon-dying.ogg
+  - type: NightVision
+    isToggle: true
+    color: "#808080"
   - type: Tag
     tags:
     - FootstepSound
@@ -113,20 +116,6 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      9999998: Critical
-      9999999: Dead
-  - type: PassiveDamage
-    allowedStates:
-    - Alive
-    - Critical
-    damageCap: 0
-    damage:
-      groups:
-        Brute: -0.25
-        Burn: -0.25
-        Toxin: -0.25
-      types:
-        Bloodloss: -0.25
   - type: MeleeWeapon
     hidden: true
     soundHit:
@@ -189,20 +178,6 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      9999998: Critical
-      9999999: Dead
-  - type: PassiveDamage
-    allowedStates:
-    - Alive
-    - Critical
-    damageCap: 0
-    damage:
-      groups:
-        Brute: -0.25
-        Burn: -0.25
-        Toxin: -0.25
-      types:
-        Bloodloss: -0.25
   - type: Fixtures
     fixtures:
       fix1:

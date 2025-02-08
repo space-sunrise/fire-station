@@ -38,7 +38,7 @@
                     SizeFlagsStretchRatio="4">
                     <PanelContainer VerticalExpand="True">
                         <PanelContainer.PanelOverride>
-                            <gfx:StyleBoxFlat BackgroundColor="#1B1B1E" />
+                            <gfx:StyleBoxFlat BackgroundColor="#121111" />
                         </PanelContainer.PanelOverride>
                         <ScrollContainer VerticalExpand="True" HScrollEnabled="False">
                             <BoxContainer
@@ -92,7 +92,7 @@
                         HorizontalExpand="True"
                         SizeFlagsStretchRatio="3">
                         <PanelContainer.PanelOverride>
-                            <gfx:StyleBoxFlat BackgroundColor="#408040" />
+                            <gfx:StyleBoxFlat BackgroundColor="#1A4D1A" />
                         </PanelContainer.PanelOverride>
                         <Label
                             RectClipContent="False"

@@ -29,7 +29,7 @@
         </LayoutContainer>
         <PanelContainer Name="SeparatedChatPanel" SizeFlagsStretchRatio="4" MinWidth="300"> <!-- Sunrise-Edit -->
             <PanelContainer.PanelOverride>
-                <graphics:StyleBoxFlat BackgroundColor="#2B2C3B" />
+                <graphics:StyleBoxFlat BackgroundColor="#1d1c1c" />
             </PanelContainer.PanelOverride>
 
             <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="10" Margin="10">

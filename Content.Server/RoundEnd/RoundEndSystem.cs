@@ -185,7 +185,7 @@ namespace Content.Server.RoundEnd
                 ("time", time),
                 ("units", Loc.GetString(units))),
                 Loc.GetString(name),
-                false,
+                true, // Fire edit
                 null,
                 colorOverride: Color.Gold); // Sunrise-TTS
 

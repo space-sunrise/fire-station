@@ -28,6 +28,9 @@
         - SmallMobMask
         layer:
         - SmallMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
   - type: ReplacementAccent
     accent: mouse
   - type: EmitSoundRandomly
@@ -45,6 +48,10 @@
     raffle:
       settings: short
   - type: GhostTakeoverAvailable
+  - type: Tag # перезаписываем родительский список тегов, без DoorBumpOpener
+    tags:
+    - FootstepSound
+    - CannotSuicide
 #  - type: Blinkable мейби в другой жизни, когда будет не криво работать и балансно
 #  - type: EyeClosing
 

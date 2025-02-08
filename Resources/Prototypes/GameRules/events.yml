@@ -5,7 +5,7 @@
 #    - id: AnomalySpawn
     - id: BluespaceArtifact
 #    - id: BluespaceLocker
-    - id: BreakerFlip
+#    - id: BreakerFlip У нас блекаут
     - id: BureaucraticError
     - id: ClericalError
     - id: CockroachMigration
@@ -16,7 +16,7 @@
     - id: MassHallucinations
     - id: MimicVendorRule
     - id: MouseMigration
-    - id: PowerGridCheck
+#    - id: PowerGridCheck - У нас свой крутой аналог
     - id: RandomSentience
 #    - id: SlimesSpawn
 #    - id: SolarFlare
@@ -96,8 +96,8 @@
       max:  30
   - type: StationEvent
     startAnnouncementColor: "#18abf5"
-    startAudio:
-      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
+#    startAudio: Fire edit
+#      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
     weight: 8
     duration: 35
   - type: BluespaceArtifactRule
@@ -129,8 +129,8 @@
   components:
   - type: StationEvent
     startAnnouncement: station-event-bureaucratic-error-announcement
-    startAudio:
-      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
+#    startAudio: Fire edit
+#      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
     minimumPlayers: 25
     weight: 3
     duration: 1
@@ -153,8 +153,8 @@
   components:
   - type: StationEvent
     startAnnouncement: station-event-clerical-error-announcement
-    startAudio:
-      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
+#    startAudio: Fire edit
+#      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
     minimumPlayers: 15
     weight: 5
     duration: 1
@@ -344,8 +344,8 @@
   components:
   - type: StationEvent
     startAnnouncement: station-event-vent-clog-start-announcement
-    startAudio:
-      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
+#    startAudio: Fire edit
+#      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
     earliestStart: 15
     minimumPlayers: 15
     weight: 5
@@ -571,8 +571,8 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAudio:
-      path: /Audio/Announcements/attention.ogg
+#    startAudio: Fire edit
+#      path: /Audio/Announcements/attention.ogg
     weight: 5
     minimumPlayers: 25
     reoccurrenceDelay: 20

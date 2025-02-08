@@ -7,7 +7,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Administration.Commands;
 
-[AdminCommand(AdminFlags.AdminWho)]
+[AnyCommand] // Fire edit
 public sealed class AdminWhoCommand : IConsoleCommand
 {
     public string Command => "adminwho";

@@ -34,6 +34,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] protected readonly SharedPhysicsSystem PhysicsSystem = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
+    [Dependency] private readonly EmagSystem _emag = default!;
     [Dependency] private readonly SharedStunSystem _stunSystem = default!;
     [Dependency] protected readonly TagSystem Tags = default!;
     [Dependency] protected readonly SharedAudioSystem Audio = default!;
@@ -57,6 +58,10 @@ public abstract partial class SharedDoorSystem : EntitySystem
 
     private readonly HashSet<Entity<PhysicsComponent>> _doorIntersecting = new();
 
+    // Fire edit start
+    private readonly SoundSpecifier _doorSmashSound = new SoundCollectionSpecifier("DoorSmash");
+    // Fire edit end
+
     public override void Initialize()
     {
         base.Initialize();
@@ -77,8 +82,6 @@ public abstract partial class SharedDoorSystem : EntitySystem
         SubscribeLocalEvent<DoorComponent, WeldableAttemptEvent>(OnWeldAttempt);
         SubscribeLocalEvent<DoorComponent, WeldableChangedEvent>(OnWeldChanged);
         SubscribeLocalEvent<DoorComponent, GetPryTimeModifierEvent>(OnPryTimeModifier);
-
-        SubscribeLocalEvent<DoorComponent, OnAttemptEmagEvent>(OnAttemptEmag);
         SubscribeLocalEvent<DoorComponent, GotEmaggedEvent>(OnEmagged);
     }
 
@@ -118,31 +121,24 @@ public abstract partial class SharedDoorSystem : EntitySystem
         _activeDoors.Remove(door);
     }
 
-    private void OnAttemptEmag(EntityUid uid, DoorComponent door, ref OnAttemptEmagEvent args)
-    {
-        if (!TryComp<AirlockComponent>(uid, out var airlock))
-        {
-            args.Handled = true;
-            return;
-        }
-
-        if (IsBolted(uid) || !airlock.Powered)
-        {
-            args.Handled = true;
-            return;
-        }
-
-        if (door.State != DoorState.Closed)
-        {
-            args.Handled = true;
-        }
-    }
-
     private void OnEmagged(EntityUid uid, DoorComponent door, ref GotEmaggedEvent args)
     {
+        if (!_emag.CompareFlag(args.Type, EmagType.Access))
+            return;
+
+        if (!TryComp<AirlockComponent>(uid, out var airlock))
+            return;
+
+        if (IsBolted(uid) || !airlock.Powered)
+            return;
+
+        if (door.State != DoorState.Closed)
+            return;
+
         if (!SetState(uid, DoorState.Emagging, door))
             return;
-        Audio.PlayPredicted(door.SparkSound, uid, args.UserUid, AudioParams.Default.WithVolume(8));
+
+        args.Repeatable = true;
         args.Handled = true;
         // Sunrise-Start
         var emagged = new DoorEmaggedEvent(args.UserUid);
@@ -458,7 +454,8 @@ public abstract partial class SharedDoorSystem : EntitySystem
         if (!HasAccess(uid, user, door))
             return false;
 
-        return !ev.PerformCollisionCheck || !GetColliding(uid).Any();
+        // Fire edit - давить людей давить людей давить людей
+        return !ev.PerformCollisionCheck || !GetColliding(uid).Any() || door.UnsafeClosing;
     }
 
     public void StartClosing(EntityUid uid, DoorComponent? door = null, EntityUid? user = null, bool predicted = false)
@@ -549,6 +546,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
                 _damageableSystem.TryChangeDamage(entity, door.CrushDamage, origin: uid);
 
             _stunSystem.TryParalyze(entity, stunTime, true);
+            Audio.PlayPredicted(_doorSmashSound, entity, entity); // Fire
         }
 
         if (door.CurrentlyCrushing.Count == 0)

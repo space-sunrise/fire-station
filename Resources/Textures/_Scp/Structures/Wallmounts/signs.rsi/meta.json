@@ -1,4 +1,4 @@
-﻿{
+{
     "version": 1,
     "license": "CLA",
     "copyright": "SUNRISE",
@@ -8,46 +8,60 @@
     },
     "states": [
         {
-            "name": "005"
+            "name": "005",
+            "directions": 4
         },
         {
-            "name": "035"
+            "name": "035",
+            "directions": 4
         },
         {
-            "name": "049"
+            "name": "049",
+            "directions": 4
         },
         {
-            "name": "096"
+            "name": "096",
+            "directions": 4
         },
         {
-            "name": "106"
+            "name": "106",
+            "directions": 4
         },
         {
-            "name": "173"
+            "name": "173",
+            "directions": 4
         },
         {
-            "name": "500"
+            "name": "500",
+            "directions": 4
         },
         {
-            "name": "612"
+            "name": "612",
+            "directions": 4
         },
         {
-            "name": "939"
+            "name": "939",
+            "directions": 4
         },
         {
-            "name": "969"
+            "name": "969",
+            "directions": 4
         },
         {
-            "name": "999"
+            "name": "999",
+            "directions": 4
         },
         {
-            "name": "classd"
+            "name": "classd",
+            "directions": 4
         },
         {
-            "name": "hcz"
+            "name": "hcz",
+            "directions": 4
         },
         {
-            "name": "lcz"
+            "name": "lcz",
+            "directions": 4
         }
     ]
 }

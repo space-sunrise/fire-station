@@ -83,6 +83,7 @@
       - !type:PlaySoundBehavior
         sound:
           collection: GlassBreak
+  - type: LightFlicking
   placement:
     mode: SnapgridCenter
     snap:
@@ -147,7 +148,7 @@
     hasLampOnSpawn: LightTube
   - type: AmbientOnPowered
   - type: AmbientSound
-    volume: -15
+    volume: -6
     range: 2
     sound:
       path: /Audio/Ambience/Objects/light_hum.ogg
@@ -254,7 +255,7 @@
   parent: AlwaysPoweredWallLight
   components:
     - type: AmbientSound
-      volume: -15
+      volume: -6
       range: 2
       sound:
         path: /Audio/Ambience/Objects/light_hum.ogg
@@ -455,8 +456,8 @@
   components:
   - type: PointLight
     enabled: false
-    radius: 5
-    energy: 0.6
+    radius: 7 # Sunrise-Edit
+    energy: 10 # Sunrise-Edit
     offset: "0, 0.4"
     color: "#7CFC00"
     mask: /Textures/Effects/LightMasks/double_cone.png

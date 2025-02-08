@@ -50,10 +50,12 @@
             <BoxContainer Orientation="Vertical"
                 SeparationOverride="6">
 
-                <RichTextLabel Name="CountdownLabel"/>
+                <RichTextLabel Name="CountdownLabel" Visible="False"/> <!-- Fire-Edit -->
 
+                <!-- Fire-Edit -->
                 <Button Name="EmergencyShuttleButton"
-                    Access="Public" 
+                    Access="Public"
+                    Visible="False"
                     Text="Placeholder Text"
                     ToolTip="{Loc 'comms-console-menu-emergency-shuttle-button-tooltip'}"/>
             </BoxContainer>

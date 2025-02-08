@@ -1,5 +1,7 @@
 ﻿using Content.Shared._Scp.ScpMask;
 using Content.Shared.Examine;
+using Content.Shared.Ghost;
+using Content.Shared.Silicons.StationAi;
 
 namespace Content.Shared._Scp.Scp096.Photo;
 
@@ -31,7 +33,9 @@ public sealed class Scp096PhotoSystem : EntitySystem
         if (!_scp096.TryGetScp096(out var scp096))
             return;
 
+        if (!_scp096.TryAddTarget(scp096.Value, args.Examiner, true, true))
+            return;
+
         _scpMask.TryTear(scp096.Value);
-        _scp096.TryAddTarget(scp096.Value, args.Examiner, true, true);
     }
 }

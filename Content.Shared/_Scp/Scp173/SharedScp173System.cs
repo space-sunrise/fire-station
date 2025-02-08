@@ -44,7 +44,6 @@ public abstract class SharedScp173System : EntitySystem
 
         #region Blocker
 
-        SubscribeLocalEvent((Entity<Scp173Component> _, ref BeforeDamageChangedEvent args) => args.Cancelled = true);
         SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, component, args) =>
         {
             if (Is173Watched((uid, component), out _))
@@ -57,7 +56,8 @@ public abstract class SharedScp173System : EntitySystem
 
         SubscribeLocalEvent<Scp173Component, ChangeDirectionAttemptEvent>(OnDirectionAttempt);
         SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
-        SubscribeLocalEvent<Scp173Component, MoveEvent>(OnInput);
+        SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnMoveInput);
+        SubscribeLocalEvent<Scp173Component, MoveEvent>(OnMove);
 
         #endregion
 
@@ -92,7 +92,18 @@ public abstract class SharedScp173System : EntitySystem
             args.Cancel();
     }
 
-    private void OnInput(Entity<Scp173Component> ent, ref MoveEvent args)
+    private void OnMoveInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
+    {
+        // Метод подвязанный на MoveInputEvent так же нужен, вместе с методом на MoveEvent
+        // Этот метод исправляет проблему, когда 173 должен мочь двинуться, но ему об этом никто не сказал
+        // То есть последний вопрос от 173 МОГУ ЛИ Я ДВИНУТЬСЯ был когда он еще мог двинуться, через MoveEvent
+        // Потом он перестал мочь, и следственно больше НЕ МОЖЕТ задать вопрос, может они двинуться
+        // Это фикслось в игре сменой направления спрайта мышкой
+        // Но данный метод как раз будет спрашивать у 173, может ли он сдвинуться, когда как раз не двигается
+        _blocker.UpdateCanMove(ent);
+    }
+
+    private void OnMove(Entity<Scp173Component> ent, ref MoveEvent args)
     {
         _blocker.UpdateCanMove(ent);
     }
@@ -140,7 +151,9 @@ public abstract class SharedScp173System : EntitySystem
 
     protected bool Is173Watched(Entity<Scp173Component> scp173, out int watchersCount)
     {
-        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, ExamineSystemShared.MaxRaycastRange);
+        // +1, чтобы точно все работало заебись в реальных пограничных значениях
+        // Впадлу думать, что может пойти не так, если этого не будет, раньше тут стояло вообще 100 радиус
+        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, scp173.Comp.WatchRange + 1);
 
         watchersCount = eyes
             .Where(eye => _examine.InRangeUnOccluded(eye, scp173, scp173.Comp.WatchRange, ignoreInsideBlocker: false))

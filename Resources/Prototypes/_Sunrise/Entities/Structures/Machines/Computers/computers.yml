@@ -8,7 +8,7 @@
     - type: CommunicationsConsole
       title: comms-console-announcement-title-centcom
       global: true
-      announceVoice: NecoArcTwo
+      announceVoice: Adjutant # Fire edit
 
 - type: entity
   parent: BaseComputerShuttle
@@ -73,7 +73,7 @@
   - type: CommunicationsConsole
     title: comms-console-announcement-title-prison
     canShuttle: false
-    announceVoice: Voljin
+    announceVoice: Adjutant # Fire edit
     global: false
   - type: Computer
     board: PrisonCommsComputerCircuitboard

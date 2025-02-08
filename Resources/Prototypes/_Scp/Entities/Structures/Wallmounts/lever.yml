@@ -1,0 +1,33 @@
+﻿- type: entity
+  id: PowerLever
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wallmount
+  components:
+  - type: WallMount
+    arc: 360
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Physics
+    canCollide: false
+  - type: Sprite
+    drawdepth: SmallObjects
+    sprite: _Scp/Structures/Wallmounts/lever.rsi
+    layers:
+    - map: [ "enum.PowerLevelVisualLayers.Base" ]
+      state: base
+  - type: PowerLever
+  - type: Fixtures
+  - type: UseDelay
+    delay: 0.5
+  - type: GenericVisualizer
+    visuals:
+      enum.PowerLevelVisualLayers.Toggled:
+        base:
+          True: { state: up }
+          False: { state: down }
+  - type: Appearance
+  - type: Tag
+    tags:
+    - Structure

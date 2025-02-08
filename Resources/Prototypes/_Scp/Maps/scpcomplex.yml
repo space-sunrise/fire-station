@@ -22,6 +22,7 @@
             ClassD: [ 1, 1 ]
             ClassDCook: [ 2, 2 ]
             ClassDBotanist: [ 2, 2 ]
+            ClassDJanitor: [ 1, 1 ]
             #scp
             Scp049: [ 1, 1 ]
             Scp096: [ 1, 1 ]
@@ -33,7 +34,6 @@
             Captain: [ 1, 1 ]
             HeadOfPersonnel: [ 1, 1 ]
             #service
-            Botanist: [ 2, 2 ]
             Chef: [ 2, 2 ]
             Janitor: [ 4, 4 ]
             ServiceWorker: [ 5, -1 ]

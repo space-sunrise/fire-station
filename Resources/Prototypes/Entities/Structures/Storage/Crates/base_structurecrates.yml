@@ -38,6 +38,15 @@
         layer:
         - MachineLayer
   - type: EntityStorage
+    # Fire edit start
+    whitelist:
+      components:
+      - MobState
+      - Item
+    blacklist:
+      components:
+      - Scp
+    # Fire edit end
   - type: PlaceableSurface
     isPlaceable: false # defaults to closed.
   - type: Damageable
