@@ -1,7 +1,7 @@
 # Окно
 - type: entity
   parent: Window
-  id: FSWindow
+  id: ScpWindow
   name: window
   components:
   - type: Sprite
@@ -11,7 +11,7 @@
 
 - type: entity
   parent: ReinforcedWindow
-  id: FSReinforcedWindow
+  id: ScpReinforcedWindow
   name: window
   components:
   - type: Sprite
@@ -22,7 +22,7 @@
 # Плазменное окно
 - type: entity
   parent: PlasmaWindow
-  id: FSPlasmaWindow
+  id: ScpPlasmaWindow
   name: window
   components:
   - type: Sprite
@@ -32,7 +32,7 @@
 
 - type: entity
   parent: ReinforcedPlasmaWindow
-  id: FSReinforcedPlasmaWindow
+  id: ScpReinforcedPlasmaWindow
   name: window
   components:
   - type: Sprite
@@ -43,7 +43,7 @@
 # Урановое окно
 - type: entity
   parent: UraniumWindow
-  id: FSUraniumWindow
+  id: ScpUraniumWindow
   name: window
   components:
   - type: Sprite
@@ -53,10 +53,21 @@
 
 - type: entity
   parent: ReinforcedUraniumWindow
-  id: FSReinforcedUraniumWindow
+  id: ScpReinforcedUraniumWindow
   name: window
   components:
   - type: Sprite
     sprite: _Scp/Structures/Windows/reinforced_uranium_window.rsi
   - type: Icon
     sprite: _Scp/Structures/Windows/reinforced_uranium_window.rsi
+
+# Тонированное окно 
+- type: entity
+  parent: TintedWindow
+  id: ScpTintedWindow
+  name: tinted window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/tinted_window.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/tinted_window.rsi

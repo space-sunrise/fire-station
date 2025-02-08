@@ -1,5 +1,5 @@
 ﻿- type: entity
-  id: FSSolidWallRustingVariationPass
+  id: ScpSolidWallRustingVariationPass
   parent: BaseVariationPass
   components:
   - type: WallReplaceVariationPass
@@ -7,10 +7,10 @@
     entitiesPerReplacementAverage: 50
     entitiesPerReplacementStdDev: 10
     replacements:
-    - id: FSWallSolidRust
+    - id: ScpWallSolidRust
 
 - type: entity
-  id: FSReinforcedWallRustingVariationPass
+  id: ScpReinforcedWallRustingVariationPass
   parent: BaseVariationPass
   components:
   - type: ReinforcedWallReplaceVariationPass
@@ -18,4 +18,4 @@
     entitiesPerReplacementAverage: 50
     entitiesPerReplacementStdDev: 10
     replacements:
-    - id: FSWallReinforcedRust
+    - id: ScpWallReinforcedRust
