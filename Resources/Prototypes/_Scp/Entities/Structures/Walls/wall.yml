@@ -39,3 +39,17 @@
     sprite: _Scp/Structures/Walls/solid_rust.rsi
   - type: Icon
     sprite: _Scp/Structures/Walls/solid_rust.rsi
+
+# Бетонная стена
+- type: entity
+  parent: WallBrick
+  id: ScpWallConcrete
+  name: concrete wall
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/concrete.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/concrete.rsi
+  - type: IconSmooth
+    key: walls
+    base: concrete

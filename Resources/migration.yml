@@ -601,5 +601,8 @@ UraniumWindow: ScpUraniumWindow
 ReinforcedPlasmaWindow: ScpReinforcedPlasmaWindow
 ReinforcedUraniumWindow: ScpReinforcedUraniumWindow
 TintedWindow: ScpTintedWindow
+WallReinforcedRust: ScpWallReinforcedRust
+WallSolidRust: ScpWallSolidRust
+WallMining: ScpWallConcrete
 # Fire added end
 
