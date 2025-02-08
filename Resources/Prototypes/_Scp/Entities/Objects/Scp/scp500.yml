@@ -5,7 +5,7 @@
   components:
   - type: Sprite
     sprite: _Scp/Objects/Scps/scp500.rsi
-    state: pill_scp
+    state: pill_scp # TODO: Переименовать стейты
   - type: SolutionContainerManager
     solutions:
       food:
@@ -15,14 +15,19 @@
           Quantity: 1
 
 - type: entity
-  parent: PillCanister
+  parent:
+  - PillCanister
+  - BaseItemScp
   id: PillCanisterScp500
   suffix: SCP-500
   components:
   - type: Sprite
     sprite: _Scp/Objects/Scps/scp500.rsi
-    state: pill_canister_scp
+    state: pill_canister_scp # TODO: Переименовать стейты
+  - type: Storage
+    grid:
+    - 0,0,4,9
   - type: StorageFill
     contents:
     - id: PillScp500
-      amount: 10  # Соре, баланс. 47 имбовых таблеток - имба
+      amount: 47

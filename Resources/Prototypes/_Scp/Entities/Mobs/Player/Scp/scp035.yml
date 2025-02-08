@@ -1,5 +1,5 @@
 ﻿- type: entity
-  parent: [ClothingMaskBase, BaseItemSCP]
+  parent: [ClothingMaskBase, BaseItemScp]
   id: ClothingMaskScp035
   suffix: SCP-035
   components:

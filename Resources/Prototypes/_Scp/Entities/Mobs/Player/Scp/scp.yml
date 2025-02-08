@@ -38,7 +38,7 @@
   parent:
   - BaseItem
   - ScpArtifactMinor
-  id: BaseItemSCP
+  id: BaseItemScp
   components:
   - type: Scp
 
