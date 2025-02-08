@@ -383,6 +383,18 @@
   components:
   - type: ArtifactScp173BlindEveryoneInRange
 
+# Scp 096
+
+- type: artifactEffect
+  id: ScpEffectMadness096
+  targetDepth: 3
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp096
+  components:
+  - type: ArtifactScp096Madness
+
 # Scp 457
 
 - type: artifactEffect
