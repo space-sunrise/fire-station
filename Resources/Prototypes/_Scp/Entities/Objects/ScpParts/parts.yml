@@ -10,12 +10,10 @@
 
 - type: entity
   id: BaseScpResearchMaterial
-  parent: BaseScpMaterial
+  parent:
+  - BaseScpMaterial
+  - ScpArtifactMiddle
   abstract: true
-  components:
-  - type: Artifact
-    pointsPerNode:
-      Scp: 800
 
 # SCP-999
 

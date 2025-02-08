@@ -11,7 +11,7 @@
     cooldown: 600 # 5 минут
     cooldownMessage: scp-interact-time-left
     event: !type:ScpSpawnInteractDoAfterEvent
-      toSpawn: Scp096Photo
+      toSpawn: Scp096PhotoDeveloped
     sound: /Audio/Machines/machine_switch.ogg
     whitelist:
       components:
