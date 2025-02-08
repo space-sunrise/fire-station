@@ -220,6 +220,23 @@
     - Debug
     - Spawner
 
+- type: artifactEffect
+  id: EffectMagnetUltra
+  targetDepth: 4
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: AddComponentsOnActivate
+    components:
+    - type: GravityWell
+      maxRange: 80
+      baseRadialAcceleration: 90
+    - type: TimedRemoveComponents
+      components:
+      - type: GravityWell
+
 # Scp 939
 
 - type: artifactEffect
