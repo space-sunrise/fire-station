@@ -145,4 +145,15 @@ public sealed class ScpHelpersSystem : EntitySystem
         var countToAdd = (int) Math.Round((double) sourceList.Count * percentage / 100);
         return sourceList.Where(e => !Transform(e).Anchored).Take(countToAdd).ToHashSet();
     }
+
+    /// <summary>
+    /// Возвращает список с данным процентным соотношением
+    /// </summary>
+    /// <param name="sourceList">Исходный список</param>
+    /// <param name="percentage">Процент от 0 до 100</param>
+    public IEnumerable<EntityUid> GetPercentageOfHashSet(IReadOnlyCollection<EntityUid> sourceList, float percentage)
+    {
+        var countToAdd = (int) Math.Round((double) sourceList.Count * percentage / 100);
+        return sourceList.Where(e => !Transform(e).Anchored).Take(countToAdd).ToHashSet();
+    }
 }
