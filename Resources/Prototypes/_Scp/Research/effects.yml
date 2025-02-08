@@ -329,6 +329,16 @@
   - type: EmpArtifact
     range: 12
 
+- type: artifactEffect
+  id: ScpEffectScp106Teleport
+  targetDepth: 2
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp106
+  components:
+  - type: ArtifactScp106Teleport
+
 # Scp 999
 
 - type: artifactEffect
