@@ -237,6 +237,22 @@
       components:
       - type: GravityWell
 
+- type: artifactEffect
+  id: ScpEffectShiftedAsciiTableAccent
+  targetDepth: 4
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: AddComponentsInRadius
+    components:
+    - type: AnomalyAccent
+    - type: TimedRemoveComponents
+      removeAfter: 600
+      components:
+      - type: AnomalyAccent
+
 # Scp 939
 
 - type: artifactEffect
