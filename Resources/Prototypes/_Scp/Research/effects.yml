@@ -310,6 +310,7 @@
     - Scp173
   components:
   - type: KnockArtifact
+    knockRange: 12
 
 - type: artifactEffect
   id: ScpEffectPointLight
