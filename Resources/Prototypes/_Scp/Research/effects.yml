@@ -86,6 +86,25 @@
   - type: ArtifactBoltAirlocks
 
 - type: artifactEffect
+  id: EffectTeslaDischarge
+  targetDepth: 2
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: AddComponentsOnActivate
+    components:
+    - type: LightningArcShooter
+      maxLightningArc: 4
+      shootMaxInterval: 4
+      shootRange: 6
+    - type: TimedRemoveComponents
+      removeAfter: 10
+      components:
+      - type: LightningArcShooter
+
+- type: artifactEffect
   id: ScpEffectAnomaly
   targetDepth: 4
   effectHint: artifact-effect-hint-data-deleted
