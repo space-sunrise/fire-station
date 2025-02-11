@@ -1,7 +1,7 @@
 - type: listing
   id: Scp106BoughtPhantomAction
   name: Фантом
-  description: Способность становится фантомом.
+  description: Способность становиться фантомом.
   productEvent: !type:Scp106BoughtPhantomAction
   categories:
   - Scp106Abilities
@@ -18,7 +18,7 @@
 - type: listing
   id: Scp106UpgradePhantom
   name: Улучшение фантомизации
-  description: Уменьшите время ожидания использования способности на 1 минуту.
+  description: Уменьшите время ожидания использования способности.
   productEvent: !type:Scp106OnUpgradePhantomAction
   categories:
   - Scp106Abilities
@@ -37,9 +37,26 @@
 
 - type: listing
   id: Scp106BareBlade
-  name: Открытие порталов
-  description: Способность открытия порталов.
+  name: Теневой клинок
+  description: Рассекает плоть и кости.
   productEvent: !type:Scp106BoughtBareBladeAction
+  categories:
+  - Scp106Abilities
+  cost:
+    LifeEssence: 20
+  raiseProductEventOnUser: true
+  icon:
+    sprite: _Scp/Actions/scp106-actions.rsi
+    state: scp106_phantom
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: Scp106CreatePortal
+  name: Открытие порталов
+  description: Оттуда выходят монстры.
+  productEvent: !type:Scp106BoughtCreatePortal
   categories:
   - Scp106Abilities
   cost:

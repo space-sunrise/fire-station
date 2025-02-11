@@ -73,7 +73,7 @@
     volume: -3
     sound:
       path: /Audio/Ambience/anomaly_scary.ogg
-  - type: Fixture
+  - type: Fixtures
     fixtures:
       fix1:
         shape:

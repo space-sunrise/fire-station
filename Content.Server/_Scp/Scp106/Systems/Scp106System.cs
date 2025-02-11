@@ -82,6 +82,8 @@ public sealed class Scp106System : SharedScp106System
             component.PhantomCoolDown -= TimeSpan.FromSeconds(60));
         SubscribeLocalEvent((EntityUid uid, Scp106Component _, Scp106BoughtBareBladeAction _) =>
             _actions.AddAction(uid, "Scp106BareBlade"));
+        SubscribeLocalEvent((EntityUid uid, Scp106Component _, Scp106BoughtCreatePortal _) =>
+            _actions.AddAction(uid, "CreatePortalAction"));
 
         SubscribeLocalEvent<Scp106Component, Scp106TeleporationDelayActionEvent>(OnScp106TeleporationDelayActionEvent);
     }
