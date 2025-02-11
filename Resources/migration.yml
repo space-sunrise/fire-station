@@ -604,5 +604,6 @@ TintedWindow: ScpTintedWindow
 WallReinforcedRust: ScpWallReinforcedRust
 WallSolidRust: ScpWallSolidRust
 WallMining: ScpWallConcrete
+Plating: ScpPlating
 # Fire added end
 
