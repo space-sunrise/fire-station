@@ -58,6 +58,7 @@
   - type: InstantAction
     event: !type:Scp106CreatePortalAction
     itemIconStyle: BigAction
+    useDelay: 60
     icon:
       sprite: _Scp/Actions/scp106-actions.rsi
       state: scp106_teleport
@@ -97,8 +98,8 @@
 
 - type: entity
   id: Scp106PassThrough
-  name: ХЗ.
-  description: Позволяет пройти любое препятствие
+  name: Эфирный полёт
+  description: Позволяет пройти любое препятствие.
   components:
   - type: InstantAction
     event: !type:Scp106PassThroughAction

@@ -91,6 +91,7 @@ public sealed class Scp106System : SharedScp106System
     public override void Scp106SpawnPortal(EntityUid uid, Scp106Component component)
     {
         component.Scp106HasPortals += 1;
+        component.Essence -= 200;
 
         var portalUid = Spawn("Scp106PortalPortal", Transform(uid).Coordinates);
         Comp<Scp106PortalSpawnerComponent>(portalUid).Scp106 = uid;
