@@ -8,9 +8,6 @@
     },
     "states": [
         {
-            "name": "steel_box"
-        },
-        {
             "name": "steel_corner_ne"
         },
         {
@@ -21,18 +18,6 @@
         },
         {
             "name": "steel_corner_sw"
-        },
-        {
-            "name": "steel_end_n"
-        },
-        {
-            "name": "steel_end_e"
-        },
-        {
-            "name": "steel_end_s"
-        },
-        {
-            "name": "steel_end_w"
         },
         {
             "name": "steel_line_n"
@@ -47,9 +32,6 @@
             "name": "steel_line_w"
         },
         {
-            "name": "white_box"
-        },
-        {
             "name": "white_corner_ne"
         },
         {
@@ -60,18 +42,6 @@
         },
         {
             "name": "white_corner_sw"
-        },
-        {
-            "name": "white_end_n"
-        },
-        {
-            "name": "white_end_e"
-        },
-        {
-            "name": "white_end_s"
-        },
-        {
-            "name": "white_end_w"
         },
         {
             "name": "white_line_n"
@@ -86,9 +56,6 @@
             "name": "white_line_w"
         },
         {
-            "name": "dark_box"
-        },
-        {
             "name": "dark_corner_ne"
         },
         {
@@ -99,18 +66,6 @@
         },
         {
             "name": "dark_corner_sw"
-        },
-        {
-            "name": "dark_end_n"
-        },
-        {
-            "name": "dark_end_e"
-        },
-        {
-            "name": "dark_end_s"
-        },
-        {
-            "name": "dark_end_w"
         },
         {
             "name": "dark_line_n"
