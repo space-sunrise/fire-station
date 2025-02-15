@@ -6,6 +6,14 @@
   - type: Contraband
     severity: Syndicate
 
+# non-stealth Chaos stuff
+- type: entity
+  id: BaseChaosContraband
+  abstract: true
+  components:
+  - type: Contraband
+    severity: Chaos
+
 # minor contraband not departmentally restricted -- improvised weapons etc
 - type: entity
   id: BaseMinorContraband

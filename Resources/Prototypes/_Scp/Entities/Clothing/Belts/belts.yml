@@ -1,8 +1,6 @@
 ﻿- type: entity
-  parent: [ClothingBeltStorageBase, BaseRestrictedContraband]
+  parent: [ClothingBeltStorageBase, BaseChaosContraband]
   id: ClothingBeltChaos
-  name: ремень Повстанца
-  description: Лучше чем SCP.
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Belts/chaos.rsi

@@ -1,8 +1,6 @@
 ﻿- type: entity
-  parent: [ClothingUniformBase, BaseCommandContraband]
+  parent: [ClothingUniformBase, BaseChaosContraband]
   id: ClothingUniformChaosIns
-  name: униформа Повстанца
-  description: Робастная ткань. Хм, я думаю, этот парень может убить тебя хоть своей ручкой.
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Uniforms/chaosins.rsi

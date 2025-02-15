@@ -1,8 +1,6 @@
 ﻿- type: entity
-  parent: [ ClothingMaskGas, BaseRestrictedContraband ]
+  parent: [ ClothingMaskGas, BaseChaosContraband]
   id: ClothingMaskGasChaosIns
-  name: противогаз Повстанца
-  description: Противогаз, в котором дышится лучше, чем в фонде.
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Masks/gaschaosins.rsi

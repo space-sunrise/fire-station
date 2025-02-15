@@ -1,8 +1,6 @@
 ﻿- type: entity
-  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseCommandContraband]
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseChaosContraband]
   id: ClothingOuterArmorChaosVest
-  name: бронежилет Повстанца
-  description: Бронированная нагрудная часть, обеспечивающая защиту и в то же время максимальную мобильность и гибкость.
   components:
   - type: Sprite
     sprite: _Scp/Clothing/OuterClothing/Armor/chaos_vest.rsi

@@ -1,5 +1,5 @@
 ﻿- type: entity
-  parent: ClothingMaskGas
+  parent: [ClothingMaskGas, BaseChaosContraband]
   id: ClothingMaskGasChaos
   suffix: SCP
   name: газовая маска повстанцев хаоса
@@ -8,8 +8,8 @@
   - type: Sprite
     sprite: _Scp/Clothing/Masks/gaschaos.rsi
   - type: Clothing
-  - type: FlashImmunity
     sprite: _Scp/Clothing/Masks/gaschaos.rsi
+  - type: FlashImmunity
   - type: Armor
     modifiers:
       coefficients:
