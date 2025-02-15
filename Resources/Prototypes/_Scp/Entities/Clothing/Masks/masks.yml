@@ -1,13 +1,14 @@
 ﻿- type: entity
   parent: [ ClothingMaskGas, BaseRestrictedContraband ]
   id: ClothingMaskGasChaosIns
-  name: chaos gas mask
-  description: Very reliable military gas mask.
+  name: противогаз Повстанца
+  description: Противогаз, в котором дышится лучше, чем в фонде.
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Masks/gaschaosins.rsi
   - type: Clothing
     sprite: _Scp/Clothing/Masks/gaschaosins.rsi
+  - type: FlashImmunity
   - type: Armor
     modifiers:
       coefficients:

@@ -1,8 +1,8 @@
 ﻿- type: entity
   parent: [ ClothingHandsGlovesColorBlack, BaseSecurityEngineeringContraband ]
   id: ClothingHandsGlovesChaos
-  name: chaos gloves
-  description: These tactical gloves are fireproof and shock resistant.
+  name: перчатки Повстанца
+  description: Эти тактические перчатки огнеупорны и ударопрочны.
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Hands/Gloves/chaosgloves.rsi

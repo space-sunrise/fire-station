@@ -8,6 +8,7 @@
   - type: Sprite
     sprite: _Scp/Clothing/Masks/gaschaos.rsi
   - type: Clothing
+  - type: FlashImmunity
     sprite: _Scp/Clothing/Masks/gaschaos.rsi
   - type: Armor
     modifiers:

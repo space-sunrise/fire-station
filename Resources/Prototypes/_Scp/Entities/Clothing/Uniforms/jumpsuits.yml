@@ -1,8 +1,8 @@
 ﻿- type: entity
   parent: [ClothingUniformBase, BaseCommandContraband]
   id: ClothingUniformChaosIns
-  name: standard uniform of the group called "Chaos"
-  description: Robust textile. Hm, I guess this guy can kill you just with his pen.
+  name: униформа Повстанца
+  description: Робастная ткань. Хм, я думаю, этот парень может убить тебя хоть своей ручкой.
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Uniforms/chaosins.rsi
