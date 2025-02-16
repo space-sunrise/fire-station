@@ -1,0 +1,15 @@
+﻿- type: entity
+  parent: [ClothingHeadsetAlt, BaseChaosContraband]
+  id: ClothingHeadsetAltChaos
+  components:
+  - type: Headset
+  - type: EncryptionKeyHolder
+    keySlots: 5
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyChaos
+  - type: Sprite
+    sprite: _Scp/Clothing/Ears/Headsets/chaos.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Ears/Headsets/chaos.rsi
