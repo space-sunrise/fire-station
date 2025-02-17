@@ -1,0 +1,118 @@
+﻿- type: decal
+  id: ScpBrickTileWhiteBox
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_box
+
+- type: decal
+  id: ScpBrickTileWhiteCornerNe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_corner_ne
+
+- type: decal
+  id: ScpBrickTileWhiteCornerSe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_corner_se
+
+- type: decal
+  id: ScpBrickTileWhiteCornerNw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_corner_nw
+
+- type: decal
+  id: ScpBrickTileWhiteCornerSw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_corner_sw
+
+- type: decal
+  id: ScpBrickTileWhiteInnerNe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_inner_ne
+
+- type: decal
+  id: ScpBrickTileWhiteInnerSe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_inner_se
+
+- type: decal
+  id: ScpBrickTileWhiteInnerNw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_inner_nw
+
+- type: decal
+  id: ScpBrickTileWhiteInnerSw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_inner_sw
+
+- type: decal
+  id: ScpBrickTileWhiteEndN
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_end_n
+
+- type: decal
+  id: ScpBrickTileWhiteEndE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_end_e
+
+- type: decal
+  id: ScpBrickTileWhiteEndS
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_end_s
+
+- type: decal
+  id: ScpBrickTileWhiteEndW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_end_w
+
+- type: decal
+  id: ScpBrickTileWhiteLineN
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_line_n
+
+- type: decal
+  id: ScpBrickTileWhiteLineE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_line_e
+
+- type: decal
+  id: ScpBrickTileWhiteLineS
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_line_s
+
+- type: decal
+  id: ScpBrickTileWhiteLineW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/bricktile.rsi
+    state: white_line_w
