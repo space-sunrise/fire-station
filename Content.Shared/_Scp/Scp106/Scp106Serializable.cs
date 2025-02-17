@@ -1,5 +1,6 @@
 ﻿using Content.Shared.Actions;
 using Content.Shared.DoAfter;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Scp.Scp106;
@@ -30,7 +31,10 @@ public sealed partial class Scp106BoughtBareBladeAction : InstantActionEvent {}
 
 public sealed partial class Scp106BoughtCreatePortal : InstantActionEvent {}
 
-public sealed partial class Scp106BareBladeAction : InstantActionEvent {}
+public sealed partial class Scp106BareBladeAction : InstantActionEvent
+{
+    [DataField] public EntProtoId Prototype;
+}
 
 [Serializable, NetSerializable]
 public sealed partial class Scp106BackroomsActionEvent : SimpleDoAfterEvent { }

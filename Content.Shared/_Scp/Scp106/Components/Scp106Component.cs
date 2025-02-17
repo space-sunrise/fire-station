@@ -46,7 +46,7 @@ public sealed partial class Scp106Component : Component
 
     public float Scp106HasPortals = 0;
 
-    public bool BladeActive = false;
+    public bool HandTransformed = false;
 
     public EntityUid Sword;
 }

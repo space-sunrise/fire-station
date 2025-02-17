@@ -82,24 +82,21 @@ public abstract class SharedScp106System : EntitySystem
 
     private void OnScp106BareBladeAction(EntityUid uid, Scp106Component component, ref Scp106BareBladeAction args)
     {
-        if (!component.BladeActive)
-        {
-            EnsureComp<HandsComponent>(uid);
-            _hands.AddHand(uid, "asd", HandLocation.Middle);
-
-            if (_serverNetManager.IsServer)
-            {
-                component.Sword = Spawn("FoamCutlass");
-                _hands.TryPickupAnyHand(uid, component.Sword);
-            }
-
-            component.BladeActive = true;
-        }
-        else
+        if (component.HandTransformed)
         {
             Del(component.Sword);
             _hands.RemoveHands(uid);
-            component.BladeActive = false;
+            component.HandTransformed = false;
+            return;
+        }
+        if (_serverNetManager.IsServer)
+        {
+
+            EnsureComp<HandsComponent>(uid);
+            _hands.AddHand(uid, "middle", HandLocation.Middle);
+            component.Sword = Spawn(args.Prototype, Transform(uid).Coordinates);
+            _hands.TryPickup(uid, component.Sword, "middle");
+            component.HandTransformed = true;
         }
     }
 
