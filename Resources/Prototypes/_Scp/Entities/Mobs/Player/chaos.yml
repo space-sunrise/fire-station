@@ -16,7 +16,7 @@
   - type: GhostTakeoverAvailable
   - type: NpcFactionMember
     factions:
-    - Syndicate
+    - Chaos
   - type: Loadout
     prototypes: [ ChaosLeaderGear ]
   - type: RandomHumanoidAppearance
@@ -27,9 +27,6 @@
     nameSegments:
     - NamesChaosLeader
     - LastNamesChaos
-    #- type: WarpPoint
-    #  location: Повстанец Командир
-    #  follow: true
 
 
 #-----------------МЕДИК
@@ -50,7 +47,7 @@
   - type: GhostTakeoverAvailable
   - type: NpcFactionMember
     factions:
-    - Syndicate
+    - Chaos
   - type: Loadout
     prototypes: [ ChaosMedicGear ]
   - type: RandomHumanoidAppearance
@@ -61,9 +58,6 @@
     nameSegments:
     - NamesChaosMedic
     - LastNamesChaos
-    #- type: WarpPoint
-    #  location: Повстанец Медик
-    #  follow: true
 
 
 #-----------------ВОИН
@@ -84,7 +78,7 @@
   - type: GhostTakeoverAvailable
   - type: NpcFactionMember
     factions:
-    - Syndicate
+    - Chaos
   - type: Loadout
     prototypes: [ ChaosGear ]
   - type: RandomHumanoidAppearance
@@ -95,6 +89,3 @@
     nameSegments:
     - NamesChaos
     - LastNamesChaos
-  #- type: WarpPoint
-  #  location: Повстанец
-  #  follow: true

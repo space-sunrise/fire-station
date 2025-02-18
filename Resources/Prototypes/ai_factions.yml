@@ -14,6 +14,8 @@
   - Changeling
   - Vampire
   - Flesh
+  # Fire Edit
+  - Chaos
 
 - type: npcFaction
   id: Mouse
@@ -54,6 +56,8 @@
   - Vampire
   - FleshHuman
   - Flesh
+  # Fire Edit
+  - Chaos
 
 - type: npcFaction
   id: SimpleNeutral
@@ -94,6 +98,8 @@
   - Vampire
   - FleshHuman
   - Flesh
+  # Fire Edit
+  - Chaos
 
 - type: npcFaction
   id: Zombie
@@ -114,6 +120,8 @@
   - Vampire
   - FleshHuman
   - Flesh
+  # Fire Edit
+  - Chaos
 
 - type: npcFaction
   id: Revolutionary
@@ -151,6 +159,8 @@
   - Vampire
   - FleshHuman
   - Flesh
+  # Fire Edit
+  - Chaos
 
 - type: npcFaction
   id: Wizard
@@ -169,3 +179,5 @@
   - Vampire
   - FleshHuman
   - Flesh
+  # Fire Edit
+  - Chaos

@@ -1,7 +1,6 @@
 ﻿- type: entity
   parent: [ClothingMaskGas, BaseChaosContraband]
   id: ClothingMaskGasChaos
-  suffix: SCP
   name: газовая маска повстанцев хаоса
   description: Газовая маска, которую носят известные всем похитители аномалий
   components:

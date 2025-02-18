@@ -3,5 +3,5 @@
   name: chat-radio-chaos
   keycode: 'х'
   frequency: 0251
-  color: "#40826d" # Fire edit
+  color: "#40826d"
   longRange: true

@@ -34,6 +34,19 @@ ent-ClothingShoesBootsChaosFilled = { ent-ClothingShoesBootsChaos }
 ent-ClothingUniformChaosIns = униформа Повстанца
     .desc =  Прочная ткань. Хм, я думаю, парень в этой униформе может убить тебя хоть своей ручкой.
 
+ent-ChaosBalisticGlasses = баллистические очки Повстанца
+    .desc = Очки, которые прозрачнее фонда.
+
+ent-EyesHudChaosMedic = визор медика Повстанцев
+    .desc = Визор, который показывает точнее фонда.
+
+ent-ClothingEyesGlassesThermalChaos = оптический термальный сканер
+    .desc = Сканер, который видит лучше, чем фонд.
+    .suffix = CHAOS
+
+ent-HeadHatCapChaosMedic = берет медика Повстанцев
+    .desc = Берет, который светлее фонда.
+
 
 
 ent-EncryptionKeyChaos = тёмно-зелёный ключ шифрования
@@ -55,3 +68,12 @@ ent-ChaosAccessBreaker = { ent-ChaosAccessBreakerUnlimited }
 
 ent-DefibrillatorChaos = дефибриллятор Повстанцев
     .desc = Двойное оружие самообороны против всяких идиотов, лучше, чем дефибриллятор фонда.
+
+ent-BaseChaosPDA = Chaos PDA
+    .desc = Ужели вновь непостоянный мститель пошлёт его багряную десницу нам на погибель?
+ent-ChaosLeaderPDA = КПК Командира Повстанцев
+    .desc = { ent-BaseChaosPDA.desc }
+ent-ChaosPDA = КПК Повстанца
+    .desc = { ent-BaseChaosPDA.desc }
+ent-ChaosMedicPDA = КПК медика Повстанцев
+    .desc = { ent-BaseChaosPDA.desc }
