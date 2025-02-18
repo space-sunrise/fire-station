@@ -77,3 +77,6 @@ ent-ChaosPDA = КПК Повстанца
     .desc = { ent-BaseChaosPDA.desc }
 ent-ChaosMedicPDA = КПК медика Повстанцев
     .desc = { ent-BaseChaosPDA.desc }
+
+ent-ClothingNeckChaosPin = значок Повстанцев Хаоса
+    .desc = Ужели вновь непостоянный мститель пошлёт его багряную десницу нам на погибель?
