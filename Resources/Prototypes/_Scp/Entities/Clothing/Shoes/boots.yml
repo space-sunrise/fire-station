@@ -11,3 +11,13 @@
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepBoots
+
+- type: entity
+  parent: ClothingShoesBootsChaos
+  id: ClothingShoesBootsChaosFilled
+  suffix: Заполненный
+  components:
+  - type: ContainerFill
+    containers:
+      item:
+      - KukriKnife

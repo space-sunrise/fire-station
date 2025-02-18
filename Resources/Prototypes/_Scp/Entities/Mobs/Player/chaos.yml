@@ -1,0 +1,100 @@
+﻿#-----------------КОМАНДИР
+- type: entity
+  name: Командир Повстанцев Хаоса
+  parent: MobHuman
+  suffix: CHAOS | ANTAG
+  id: MobHumanChaosLeader
+  components:
+  - type: GhostRole
+    name: ghost-role-information-chaos-leader-name
+    description: ghost-role-information-chaos-leader-description
+    rules: ghost-role-information-chaos-leader-rules
+    raffle:
+      settings: short
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+  - type: GhostTakeoverAvailable
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: Loadout
+    prototypes: [ ChaosLeaderGear ]
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: ZombieImmune
+  - type: Scp049Protection
+  - type: RandomMetadata
+    nameSegments:
+    - NamesChaosLeader
+    - LastNamesChaos
+    #- type: WarpPoint
+    #  location: Повстанец Командир
+    #  follow: true
+
+
+#-----------------МЕДИК
+- type: entity
+  name: Медик Повстанцев Хаоса
+  parent: MobHuman
+  suffix: CHAOS | ANTAG
+  id: MobHumanChaosMedic
+  components:
+  - type: GhostRole
+    name: ghost-role-information-chaos-medic-name
+    description: ghost-role-information-chaos-medic-description
+    rules: ghost-role-information-chaos-rules
+    raffle:
+      settings: short
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+  - type: GhostTakeoverAvailable
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: Loadout
+    prototypes: [ ChaosMedicGear ]
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: ZombieImmune
+  - type: Scp049Protection
+  - type: RandomMetadata
+    nameSegments:
+    - NamesChaosMedic
+    - LastNamesChaos
+    #- type: WarpPoint
+    #  location: Повстанец Медик
+    #  follow: true
+
+
+#-----------------ВОИН
+- type: entity
+  name: Повстанец Хаоса
+  parent: MobHuman
+  suffix: CHAOS | ANTAG
+  id: MobHumanChaos
+  components:
+  - type: GhostRole
+    name: ghost-role-information-chaos-name
+    description: ghost-role-information-chaos-description
+    rules: ghost-role-information-chaos-rules
+    raffle:
+      settings: short
+    mindRoles:
+    - MindRoleGhostRoleTeamAntagonist
+  - type: GhostTakeoverAvailable
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
+  - type: Loadout
+    prototypes: [ ChaosGear ]
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: ZombieImmune
+  - type: Scp049Protection
+  - type: RandomMetadata
+    nameSegments:
+    - NamesChaos
+    - LastNamesChaos
+  #- type: WarpPoint
+  #  location: Повстанец
+  #  follow: true
