@@ -1,0 +1,73 @@
+# Окно
+- type: entity
+  parent: Window
+  id: ScpWindow
+  name: window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/window.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/window.rsi
+
+- type: entity
+  parent: ReinforcedWindow
+  id: ScpReinforcedWindow
+  name: window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/reinforced_window.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/reinforced_window.rsi
+
+# Плазменное окно
+- type: entity
+  parent: PlasmaWindow
+  id: ScpPlasmaWindow
+  name: window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/plasma_window.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/plasma_window.rsi
+
+- type: entity
+  parent: ReinforcedPlasmaWindow
+  id: ScpReinforcedPlasmaWindow
+  name: window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/reinforced_plasma_window.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/reinforced_plasma_window.rsi
+
+# Урановое окно
+- type: entity
+  parent: UraniumWindow
+  id: ScpUraniumWindow
+  name: window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/uranium_window.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/uranium_window.rsi
+
+- type: entity
+  parent: ReinforcedUraniumWindow
+  id: ScpReinforcedUraniumWindow
+  name: window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/reinforced_uranium_window.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/reinforced_uranium_window.rsi
+
+# Тонированное окно 
+- type: entity
+  parent: TintedWindow
+  id: ScpTintedWindow
+  name: tinted window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/tinted_window.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/tinted_window.rsi

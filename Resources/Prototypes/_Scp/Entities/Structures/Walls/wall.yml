@@ -1,0 +1,55 @@
+# Стена
+- type: entity
+  parent: WallSolid
+  id: ScpWallSolid
+  name: wall
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/solid.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/solid.rsi
+
+- type: entity
+  parent: WallSolidRust
+  id: ScpWallSolidRust
+  name: wall
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/solid_rust.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/solid_rust.rsi
+
+# Укрепленная стена
+- type: entity
+  parent: WallReinforced
+  id: ScpWallReinforced
+  name: reinforced wall
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/solid.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/solid.rsi
+
+- type: entity
+  parent: WallReinforcedRust
+  id: ScpWallReinforcedRust
+  name: reinforced wall
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/solid_rust.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/solid_rust.rsi
+
+# Бетонная стена
+- type: entity
+  parent: WallBrick
+  id: ScpWallConcrete
+  name: concrete wall
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/concrete.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/concrete.rsi
+  - type: IconSmooth
+    key: walls
+    base: concrete
