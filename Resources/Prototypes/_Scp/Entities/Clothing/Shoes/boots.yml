@@ -15,7 +15,6 @@
 - type: entity
   parent: ClothingShoesBootsChaos
   id: ClothingShoesBootsChaosFilled
-  suffix: Заполненный
   components:
   - type: ContainerFill
     containers:
