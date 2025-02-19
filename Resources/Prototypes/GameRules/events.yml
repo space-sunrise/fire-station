@@ -25,7 +25,7 @@
 #    - id: SpiderSpawn
     - id: VentClog
 #    - id: VentFleshWorms # Sunrise-Edit
-    - id: VentbullMigration # Sunrise-Edit
+#    - id: VentbullMigration # Sunrise-Edit
 
 
 - type: entityTable
