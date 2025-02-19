@@ -10,6 +10,9 @@
         {
             "name": "default",
             "directions": 4
-        }
+        },
+		{
+			"name": "dead"
+		}
     ]
 }

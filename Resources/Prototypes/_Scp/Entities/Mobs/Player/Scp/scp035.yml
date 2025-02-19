@@ -71,7 +71,6 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      15: Critical
       30: Dead
   - type: Stamina
     critThreshold: 60
@@ -108,10 +107,8 @@
       Alive:
         Base: rat
         BaseUnshaded: eyes
-      Critical:
-        Base: dead
       Dead:
-        Base: splat
+        Base: dead
   - type: Butcherable
     spawned:
     - id: FoodMeatRat
