@@ -644,5 +644,18 @@ PosterPeremen: PosterChanges
 PosterGok: PosterGoc
 PosterSCP126: PosterSCP106
 Scp939Muzzler: ClothingMaskScp939
+WallSolid: ScpWallSolid
+WallReinforced: ScpWallReinforced
+Window: ScpWindow
+ReinforcedWindow: ScpReinforcedWindow
+PlasmaWindow: ScpPlasmaWindow
+UraniumWindow: ScpUraniumWindow
+ReinforcedPlasmaWindow: ScpReinforcedPlasmaWindow
+ReinforcedUraniumWindow: ScpReinforcedUraniumWindow
+TintedWindow: ScpTintedWindow
+WallReinforcedRust: ScpWallReinforcedRust
+WallSolidRust: ScpWallSolidRust
+WallMining: ScpWallConcrete
+Plating: ScpPlating
 # Fire added end
 

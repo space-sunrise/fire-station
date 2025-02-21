@@ -1,0 +1,8 @@
+﻿- type: palette
+  id: SCP
+  name: SCP
+  colors:
+    science: "#8F8AA7"
+    medical: "#8AA7A7"
+    neutral: "#B2B2B2"
+    neutralLight: "#CCCCCC"

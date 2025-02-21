@@ -24,3 +24,35 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSecurity ]
+
+- type: entity
+  parent: Airlock
+  id: ScpAirlock
+  suffix: Science
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/basic.rsi
+
+- type: entity
+  parent: AirlockMedical
+  id: ScpAirlockMedical
+  suffix: Medical
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/medical.rsi
+
+- type: entity
+  parent: AirlockScience
+  id: ScpAirlockScience
+  suffix: Science
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/science.rsi
+
+- type: entity
+  parent: AirlockMaint
+  id: ScpAirlockMaint
+  suffix: Science
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/maint.rsi
