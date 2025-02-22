@@ -166,6 +166,7 @@
     guides:
     - ScpResearch
     - ScpResearchAdvanced
+  - type: VentCrawler
 
 - type: speechSounds
   id: Scp999Speech
