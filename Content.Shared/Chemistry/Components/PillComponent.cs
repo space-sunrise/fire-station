@@ -12,4 +12,9 @@ public sealed partial class PillComponent : Component
     [DataField("pillType")]
     [ViewVariables(VVAccess.ReadWrite)]
     public uint PillType;
+
+    // Fire edit start - поддержка нестандартных спрайтов пилюль
+    [DataField]
+    public bool UseStandardVisuals = true;
+    // Fire edit end
 }

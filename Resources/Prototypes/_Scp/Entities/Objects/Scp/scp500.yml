@@ -6,6 +6,8 @@
   - type: Sprite
     sprite: _Scp/Objects/Scps/scp500.rsi
     state: pill_scp # TODO: Переименовать стейты
+  - type: Pill
+    useStandardVisuals: false
   - type: SolutionContainerManager
     solutions:
       food:
