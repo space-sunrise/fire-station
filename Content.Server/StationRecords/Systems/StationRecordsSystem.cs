@@ -150,11 +150,14 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
 
         // when adding a record that already exists use the old one
         // this happens when respawning as the same character
+
+        /* Fire edit - чтобы сцп(которых всех зовут ???) отображались в манифесте
         if (GetRecordByName(station, name, records) is {} id)
         {
             SetIdKey(idUid, new StationRecordKey(id, station));
             return;
         }
+        */
 
         var record = new GeneralStationRecord()
         {
