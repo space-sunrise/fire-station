@@ -16,7 +16,7 @@
   # - BaseStationCryoTeleport  # Телепорт в крио. Я в нем уверен на 99%. А я не уверен
   # - BaseStationCentComm  # У нас будет ЦК. Видимо не будет
   - BaseStationTransitHub
-  - BaseStationMogGroups  # Спавн космодесанта
+  # - BaseStationMogGroups  # Спавн космодесанта
   - BaseStationCargo
   - BaseStationAllEventsEligible
   categories: [ HideSpawnMenu ]
