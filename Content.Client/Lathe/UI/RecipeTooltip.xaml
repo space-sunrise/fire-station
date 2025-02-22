@@ -1,12 +1,14 @@
 <Control xmlns="https://spacestation14.io"
          xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+         xmlns:stylesheets="clr-namespace:Content.Client.Stylesheets"
+         xmlns:xNamespace="http://schemas.microsoft.com/winfx/2006/xaml"
          MaxWidth="400">
     <PanelContainer>
         <PanelContainer.PanelOverride>
             <gfx:StyleBoxFlat
                 BorderThickness="2"
-                BorderColor="#4D0000"
-                BackgroundColor="#121111"
+                BorderColor="{xNamespace:Static stylesheets:StyleNano.SCPWhite}"
+                BackgroundColor="{xNamespace:Static stylesheets:StyleNano.PanelDarker}"
             />
         </PanelContainer.PanelOverride>
         <BoxContainer
