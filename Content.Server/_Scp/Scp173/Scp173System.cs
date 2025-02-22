@@ -70,19 +70,15 @@ public sealed class Scp173System : SharedScp173System
 
     protected override void BreakNeck(EntityUid target, Scp173Component scp)
     {
-        // Not a mob...
         if (!HasComp<MobStateComponent>(target))
             return;
 
-        // Not a human, right? Can`t broke his neck...
         if (!HasComp<HumanoidAppearanceComponent>(target))
             return;
 
-        // Already dead.
         if (_mobState.IsDead(target))
             return;
 
-        // No damage??
         if (scp.NeckSnapDamage == null)
             return;
 
