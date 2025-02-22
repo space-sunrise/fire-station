@@ -1,8 +1,6 @@
 ﻿- type: entity
-  parent: [ClothingBeltStorageBase, BaseRestrictedContraband]
+  parent: [ClothingBeltStorageBase, BaseChaosContraband]
   id: ClothingBeltChaos
-  name: chaos belt
-  description: Better than SCPs.
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Belts/chaos.rsi

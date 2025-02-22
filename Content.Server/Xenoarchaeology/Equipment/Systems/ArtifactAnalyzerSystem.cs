@@ -121,14 +121,11 @@ public sealed class ArtifactAnalyzerSystem : EntitySystem
             return null;
 
         // Fire edit start - возможность взять сцп в радиусе от платформы
-        var lookup = _lookup.GetEntitiesInRange(uid.Value, 10f, LookupFlags.Uncontained | LookupFlags.Approximate);
+        var xform = Transform(uid.Value).Coordinates;
+        var lookup = _lookup.GetEntitiesInRange<ScpComponent>(xform, 10f, LookupFlags.Uncontained | LookupFlags.Approximate);
 
-        foreach (var entUid in lookup)
-        {
-            // Если нашли хоть одного сцп рядом - возвращаем его как исследуемый артефакт
-            if (HasComp<ScpComponent>(entUid))
-                return entUid;
-        }
+        if (lookup.Count > 0)
+            return lookup.Last(); // Лукап инвентирован, поэтому первый -> самый дальний. А нужен ближайший
         // Fire edit end
 
         return placer.PlacedEntities.FirstOrNull();

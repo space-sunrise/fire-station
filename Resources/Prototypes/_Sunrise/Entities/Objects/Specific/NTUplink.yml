@@ -126,6 +126,7 @@
   name: Bluespace ERT visionary
   description: Ultra-innovative portable bluespace teleporter.
   suffix:  999, Debug
+  categories: [ Debug ] # Fire
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Devices/nt_uplink.rsi

@@ -17,6 +17,7 @@
   parent: MobNarsieBase
   id: MobNarsieSpawn
   suffix: Spawn
+  categories: [ Spawner ] # Fire
   components:
   - type: Sprite
     layers:
@@ -31,6 +32,7 @@
 - type: entity
   parent: [MobNarsieBase, BaseMob]
   id: MobNarsie
+  categories: [ HideSpawnMenu ] # Fire
   components:
   - type: AnnounceOnSpawn
     message: narsie-has-risen

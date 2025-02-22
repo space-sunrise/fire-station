@@ -45,7 +45,7 @@ public sealed partial class TTSSystem : EntitySystem
 
     private const int MaxMessageChars = 100 * 2; // same as SingleBubbleCharLimit * 2
     private bool _isEnabled;
-    private string _defaultAnnounceVoice = "Adjutant"; // Fire edit
+    private string _defaultAnnounceVoice = "CBMTF1"; // Fire edit
     private List<ICommonSession> _ignoredRecipients = new();
     private const float WhisperVoiceVolumeModifier = 0.6f; // how far whisper goes in world units
     private const int WhisperVoiceRange = 3; // how far whisper goes in world units

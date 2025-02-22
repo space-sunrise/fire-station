@@ -1,8 +1,6 @@
 ﻿- type: entity
-  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseCommandContraband]
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseChaosContraband]
   id: ClothingOuterArmorChaosVest
-  name: "chaos' bulletproof vest"
-  description: "An armored chestpiece that provides protection whilst still offering maximum mobility and flexibility."
   components:
   - type: Sprite
     sprite: _Scp/Clothing/OuterClothing/Armor/chaos_vest.rsi

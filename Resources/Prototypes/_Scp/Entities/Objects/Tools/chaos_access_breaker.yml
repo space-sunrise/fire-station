@@ -1,0 +1,20 @@
+﻿- type: entity
+  parent: [BaseItem, BaseChaosContraband]
+  id: ChaosAccessBreakerUnlimited
+  suffix: Unlimited
+  components:
+  - type: Emag
+    emagType: Access
+  - type: Sprite
+    sprite: _Scp/Objects/Tools/chaos_access_breaker.rsi
+    state: icon
+  - type: Item
+    sprite: _Scp/Objects/Tools/chaos_access_breaker.rsi
+
+- type: entity
+  parent: ChaosAccessBreakerUnlimited
+  id: ChaosAccessBreaker
+  suffix: Limited
+  components:
+  - type: LimitedCharges
+  - type: AutoRecharge

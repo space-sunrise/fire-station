@@ -8,6 +8,10 @@
     equipmentWhitelist:
       tags:
       - CombatMech
+  - type: Speech
+    speechSounds: Borg
+  - type: TTS
+    voice: Crysis2AICostume
 
 - type: entity
   id: IndustrialMech
@@ -18,6 +22,10 @@
     equipmentWhitelist:
       tags:
       - IndustrialMech
+  - type: Speech
+    speechSounds: Borg
+  - type: TTS
+    voice: Glados
 
 - type: entity
   id: SpecialMech
@@ -28,6 +36,10 @@
     equipmentWhitelist:
       tags:
       - SpecialMech
+  - type: Speech
+    speechSounds: Borg
+  - type: TTS
+    voice: Sentrybot
 
 - type: entity
   id: SmallMech
@@ -38,6 +50,10 @@
     equipmentWhitelist:
       tags:
       - SmallMech
+  - type: Speech
+    speechSounds: Pai
+  - type: TTS
+    voice: NecoArcTwo
 
 - type: entity
   id: BaseMech
@@ -178,9 +194,11 @@
     enabled: false
     mask: /Textures/Effects/LightMasks/cone.png
     autoRot: true
-    radius: 4
+    energy: 3 # Sunrise-edit
+    radius: 15 # Sunrise-edit
     netsync: false
   - type: AccessReader
+  - type: DamageOverlay
 
 # Ripley MK-I
 - type: entity
@@ -208,6 +226,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 1
@@ -273,6 +294,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 1
@@ -340,6 +364,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 1
@@ -348,11 +375,11 @@
         Blunt: 26
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.5
-    baseSprintSpeed: 4.5
+    baseSprintSpeed: 4
   - type: CanMoveInAir
   - type: MovementAlwaysTouching
   - type: Reflect
-    reflectProb: 0.15
+    reflectProb: 0.1
     spread: 180
     soundOnReflect: /Audio/Weapons/block_metal1.ogg
     reflects:
@@ -415,6 +442,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
     equipmentWhitelist:
       tags:
       - IndustrialMech
@@ -435,7 +465,7 @@
       path: "/Audio/Items/drill_use.ogg"
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
-    baseSprintSpeed: 3
+    baseSprintSpeed: 2.75
   - type: CanMoveInAir
   - type: MovementAlwaysTouching
   - type: Reflect
@@ -475,7 +505,7 @@
   - type: ContainerFill
     containers:
       mech-battery-slot:
-      - PowerCageCombat
+      - PowerCageHigh
 
 # H.O.N.K.
 - type: entity
@@ -506,6 +536,9 @@
     pilotWhitelist:
       components:
       - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: Reflect
     reflectProb: 0.15
     spread: 180
@@ -569,6 +602,8 @@
     pilotWhitelist:
       tags:
       - Hamster
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 0.8
@@ -646,6 +681,8 @@
     pilotWhitelist:
       tags:
       - VimPilot
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 0.8
@@ -672,6 +709,12 @@
       150: Critical
     showOverlays: false
     allowRevives: true
+  # Sunrise-Start
+  - type: Speech
+    speechSounds: Pai
+  - type: TTS
+    voice: NecoArcTwo
+  # Sunrise-End
   # TOOD: buzz / chime actions
   # TODO: builtin flashlight
 
@@ -714,6 +757,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 1
@@ -723,7 +769,7 @@
         Structural: 190
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
-    baseSprintSpeed: 3.5
+    baseSprintSpeed: 3
   - type: Reflect
     reflectProb: 0.20
     spread: 180
@@ -751,7 +797,7 @@
   - type: ContainerFill
     containers:
       mech-battery-slot:
-      - PowerCageCombat
+      - PowerCageHigh
 
 # Durand
 - type: entity
@@ -780,6 +826,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 1
@@ -789,7 +838,7 @@
         Structural: 250
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.5
-    baseSprintSpeed: 2.2
+    baseSprintSpeed: 2
   - type: Damageable
     damageModifierSet: MediumArmorNT
   - type: CanMoveInAir
@@ -821,7 +870,7 @@
   - type: ContainerFill
     containers:
       mech-battery-slot:
-      - PowerCageCombat
+      - PowerCageHigh
 
 # Phazon
 
@@ -852,6 +901,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 1
@@ -922,6 +974,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 1
@@ -930,8 +985,8 @@
         Blunt: 35
         Structural: 250
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2.4
-    baseSprintSpeed: 3.6
+    baseWalkSpeed: 2
+    baseSprintSpeed: 3
   - type: Reflect
     reflectProb: 0.20
     spread: 180
@@ -1007,6 +1062,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 1
@@ -1087,6 +1145,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 1
@@ -1095,8 +1156,8 @@
         Blunt: 60
         Structural: 400
   - type: MovementSpeedModifier
-    baseWalkSpeed: 1.5
-    baseSprintSpeed: 1.9
+    baseWalkSpeed: 1
+    baseSprintSpeed: 1.5
   - type: Damageable
     damageModifierSet: HeavyArmorNT
   - type: CanMoveInAir
@@ -1170,6 +1231,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 1
@@ -1178,8 +1242,8 @@
         Blunt: 35
         Structural: 280
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2.2
-    baseSprintSpeed: 3.8
+    baseWalkSpeed: 2
+    baseSprintSpeed: 3
   - type: Damageable
     damageModifierSet: MediumArmorSyndi
   - type: CanMoveInAir
@@ -1222,7 +1286,6 @@
   components:
   - type: Mech
     startingEquipment:
-      - WeaponMechChainSword
       - WeaponMechCombatMissileRack8
 
 # Rover
@@ -1253,6 +1316,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 1
@@ -1261,8 +1327,8 @@
         Blunt: 50
         Structural: 360
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2
-    baseSprintSpeed: 2.3
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 2
   - type: Damageable
     damageModifierSet: MediumArmorSyndi
   - type: CanMoveInAir
@@ -1300,7 +1366,6 @@
   components:
   - type: Mech
     startingEquipment:
-      - WeaponMechChainSword
       - WeaponMechCombatMissileRack8
 
 # Mauler
@@ -1331,6 +1396,9 @@
     pilotWhitelist:
       components:
         - HumanoidAppearance
+    pilotBlacklist:
+      species:
+      - Felinid
   - type: MeleeWeapon
     hidden: true
     attackRate: 1
@@ -1340,7 +1408,7 @@
         Structural: 390
   - type: MovementSpeedModifier
     baseWalkSpeed: 1
-    baseSprintSpeed: 1.6
+    baseSprintSpeed: 1.5
   - type: Damageable
     damageModifierSet: HeavyArmorSyndi
   - type: CanMoveInAir
@@ -1383,5 +1451,4 @@
   components:
   - type: Mech
     startingEquipment:
-      - WeaponMechChainSword
       - WeaponMechCombatMissileRack6

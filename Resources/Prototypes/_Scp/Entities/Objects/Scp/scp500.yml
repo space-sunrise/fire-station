@@ -1,0 +1,36 @@
+﻿- type: entity
+  parent: Pill
+  id: PillScp500
+  suffix: SCP-500
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scps/scp500.rsi
+    state: pill_scp # TODO: Переименовать стейты
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 2
+        reagents:
+        - ReagentId: Scp500Reagent
+          Quantity: 1
+
+- type: entity
+  parent:
+  - PillCanister
+  - BaseItemScp
+  id: PillCanisterScp500
+  suffix: SCP-500
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scps/scp500.rsi
+    state: pill_canister_scp # TODO: Переименовать стейты
+  - type: Storage
+    grid:
+    - 0,0,4,9
+  - type: StorageFill
+    contents:
+    - id: PillScp500
+      amount: 47
+  - type: GuideHelp
+    guides:
+    - ScpResearch

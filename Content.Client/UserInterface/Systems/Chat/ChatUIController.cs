@@ -270,7 +270,7 @@ public sealed class ChatUIController : UIController
 
     private void OnChatWindowOpacityChanged(float opacity)
     {
-        SetChatWindowOpacity(opacity);
+        SetChatWindowOpacity(1f); // Fire edit - нахуй вы наш сепаратед чат делаете полупрозрачным
     }
 
     public void SetChatWindowOpacity(float opacity)

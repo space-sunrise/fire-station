@@ -1,8 +1,6 @@
 ﻿- type: entity
-  parent: [ClothingHeadHelmetBase, BaseRestrictedContraband]
+  parent: [ClothingHeadHelmetBase, BaseChaosContraband]
   id: ClothingHeadHelmetChaos
-  name: helmet
-  description: Standard Chaos gear. Protects the head from impacts.
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Head/Helmets/chaos.rsi
