@@ -29,11 +29,13 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
     [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     private ShaderInstance _shaderInstance = default!;
+    private readonly Dictionary<EntityUid, ShaderInstance> _shaderCache = new();
 
     // TODO: Выделить значения плохого зрения в отдельный компонент, не связанный с 939
     private Scp939Component? _scp939Component;
 
-    private readonly List<ShaderInstance> _shaderInstances = new();
+    private float _lastUpdateTime;
+    private const float UpdateInterval = 0.05f; // Обновляем каждые n секунды
 
     public override void Initialize()
     {
@@ -57,13 +59,11 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         SubscribeLocalEvent<Scp939VisibilityComponent, ExamineAttemptEvent>(OnExamine);
 
         SubscribeLocalEvent<Scp939Component, PlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<Scp939Component, PlayerDetachedEvent>(OnPlayerDetached);
 
-        _shaderInstance = _prototypeManager.Index<ShaderPrototype>("Hide").Instance().Duplicate();
+        SubscribeLocalEvent<Scp939VisibilityComponent, EntityTerminatingEvent>(OnEntityTerminating);
 
-        for (int i = 0; i < 100; i++)
-        {
-            _shaderInstances.Add(_shaderInstance.Duplicate());
-        }
+        _shaderInstance = _prototypeManager.Index<ShaderPrototype>("Hide").Instance();
 
         UpdatesAfter.Add(typeof(StealthSystem));
     }
@@ -173,6 +173,16 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         _scp939Component = ent.Comp;
     }
 
+    private void OnPlayerDetached(Entity<Scp939Component> ent, ref PlayerDetachedEvent args)
+    {
+        _scp939Component = null;
+    }
+
+    private void OnEntityTerminating(Entity<Scp939VisibilityComponent> ent, ref EntityTerminatingEvent args)
+    {
+        _shaderCache.Remove(ent);
+    }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -180,28 +190,30 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         if (!IsActive)
             return;
 
+        _lastUpdateTime += frameTime;
+        if (_lastUpdateTime < UpdateInterval)
+            return;
+
+        _lastUpdateTime = 0f;
+
         var query = EntityQueryEnumerator<SpriteComponent, Scp939VisibilityComponent>();
 
-        var shaderId = 0;
-
-        while (query.MoveNext(out _, out var spriteComponent, out var visibilityComponent))
+        while (query.MoveNext(out var uid, out var spriteComponent, out var visibilityComponent))
         {
-            if (_shaderInstances.Count <= shaderId)
+            // Обновляем только если нужно
+            if (!_shaderCache.TryGetValue(uid, out var shader))
             {
-                _shaderInstances.Add(_shaderInstance.Duplicate());
+                shader = _shaderInstance.Duplicate();
+                _shaderCache[uid] = shader;
+                UpdateVisibility(spriteComponent, shader);
             }
 
-            var shader = _shaderInstances[shaderId];
-
-            UpdateVisibility(spriteComponent, shader);
-
-            shaderId++;
-
-            visibilityComponent.VisibilityAcc += frameTime;
+            if (visibilityComponent.VisibilityAcc < 3f)
+                visibilityComponent.VisibilityAcc += frameTime;
         }
     }
 
-    private void UpdateVisibility(SpriteComponent spriteComponent, ShaderInstance shader)
+    private static void UpdateVisibility(SpriteComponent spriteComponent, ShaderInstance shader)
     {
         spriteComponent.Color = Color.White;
         spriteComponent.GetScreenTexture = true;
@@ -210,13 +222,7 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         spriteComponent.PostShader = shader;
     }
 
-    private void BeforeRender(Entity<Scp939VisibilityComponent> ent, ref BeforePostShaderRenderEvent args)
-    {
-        var visibility = GetVisibility(ent);
-        args.Sprite.PostShader?.SetParameter("visibility", visibility);
-    }
-
-    private float GetVisibility(Entity<Scp939VisibilityComponent> ent)
+    private static float GetVisibility(Entity<Scp939VisibilityComponent> ent)
     {
         var acc = ent.Comp.VisibilityAcc;
 
@@ -224,6 +230,12 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
             return 0;
 
         return Math.Clamp(1f - (acc / ent.Comp.HideTime), 0f, 1f);
+    }
+
+    private static void BeforeRender(Entity<Scp939VisibilityComponent> ent, ref BeforePostShaderRenderEvent args)
+    {
+        var visibility = GetVisibility(ent);
+        args.Sprite.PostShader?.SetParameter("visibility", visibility);
     }
 
     // TODO: Переделать под статус эффект и добавить его в панель статус эффектов, а то непонятно игруну
