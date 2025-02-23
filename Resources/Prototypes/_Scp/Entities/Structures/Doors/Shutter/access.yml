@@ -1,0 +1,23 @@
+#Blast door
+
+- type: entity
+  parent: ScpBlastDoor
+  id: ScpBlastDoorCentralCommand
+  suffix: Central Command, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCentralCommand ]
+
+#Window shutters
+
+- type: entity
+  parent: ScpShuttersWindow
+  id: ScpShuttersWindowCentralCommand
+  suffix: Central Command, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCentralCommand ]
+  - type: AccessReader
+    containerAccessProvider: board

@@ -605,5 +605,38 @@ WallReinforcedRust: ScpWallReinforcedRust
 WallSolidRust: ScpWallSolidRust
 WallMining: ScpWallConcrete
 Plating: ScpPlating
+
+PlasticFlapsAirtightClear: ScpPlasticFlapsAirtightClear
+PlasticFlapsAirtightOpaque: ScpPlasticFlapsAirtightOpaque
+PlasticFlapsClear: ScpPlasticFlapsClear
+PlasticFlapsOpaque: ScpPlasticFlapsOpaque
+
+ShuttersNormal: ScpShuttersNormal
+ShuttersNormalOpen: ScpShuttersNormalOpen
+ShuttersRadiation: ScpShuttersRadiation
+ShuttersRadiationOpen: ScpShuttersRadiationOpen
+ShuttersFrame: ScpShuttersFrame
+ShuttersWindow: ScpShuttersWindow
+ShuttersWindowCentralCommand: ScpShuttersWindowCentralCommand
+ShuttersWindowOpen: ScpShuttersWindowOpen
+
+BlastDoorBridge: ScpBlastDoorBridge
+BlastDoor: ScpBlastDoor
+BlastDoorEngineering: ScpBlastDoorEngineering
+BlastDoorExterior1: ScpBlastDoorExterior1
+BlastDoorExterior2: ScpBlastDoorExterior2
+BlastDoorExterior3: ScpBlastDoorExterior3
+BlastDoorScience: ScpBlastDoorScience
+BlastDoorWindows: ScpBlastDoorWindows
+BlastDoorCentralCommand: ScpBlastDoorCentralCommand
+BlastDoorFrame: ScpBlastDoorFrame
+BlastDoorWindowsOpen: ScpBlastDoorWindowsOpen
+BlastDoorScienceOpen: ScpBlastDoorScienceOpen
+BlastDoorExterior2Open: ScpBlastDoorExterior2Open
+BlastDoorExterior3Open: ScpBlastDoorExterior3Open
+BlastDoorExterior1Open: ScpBlastDoorExterior1Open
+BlastDoorEngineeringOpen: ScpBlastDoorEngineeringOpen
+BlastDoorBridgeOpen: ScpBlastDoorBridgeOpen
+BlastDoorOpen: ScpBlastDoorOpen
 # Fire added end
 

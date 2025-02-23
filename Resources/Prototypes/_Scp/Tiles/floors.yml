@@ -149,6 +149,36 @@
   heatCapacity: 10000
 
 - type: tile
+  id: ScpFloorDepartmentAtmos
+  name: scp-tiles-steel-floor
+  sprite: /Textures/_Scp/Tiles/department_atmos.png
+  variants: 14
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  - 0.05
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: FSFloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
   id: ScpFloorDepartmentMed
   name: scp-tiles-steel-floor
   sprite: /Textures/_Scp/Tiles/department_med.png

@@ -2,7 +2,11 @@
   id: SCP
   name: SCP
   colors:
-    science: "#8F8AA7"
+    command: "#597493"
+    science: "#908BA6"
     medical: "#8AA7A7"
+    engineering: "#BDA66D"
+    atmospherics: "#4CA298"
+    cargo: "#AD7541"
     neutral: "#B2B2B2"
     neutralLight: "#CCCCCC"
