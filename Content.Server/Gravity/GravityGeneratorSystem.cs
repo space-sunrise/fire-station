@@ -15,7 +15,9 @@ public sealed class GravityGeneratorSystem : EntitySystem
 
         SubscribeLocalEvent<GravityGeneratorComponent, EntParentChangedMessage>(OnParentChanged);
         SubscribeLocalEvent<GravityGeneratorComponent, ChargedMachineActivatedEvent>(OnActivated);
-        SubscribeLocalEvent<GravityGeneratorComponent, ChargedMachineDeactivatedEvent>(OnDeactivated);
+
+        // Fire edit
+        // SubscribeLocalEvent<GravityGeneratorComponent, ChargedMachineDeactivatedEvent>(OnDeactivated);
     }
 
     public override void Update(float frameTime)
@@ -45,6 +47,7 @@ public sealed class GravityGeneratorSystem : EntitySystem
         }
     }
 
+    /* Fire edit
     private void OnDeactivated(Entity<GravityGeneratorComponent> ent, ref ChargedMachineDeactivatedEvent args)
     {
         ent.Comp.GravityActive = false;
@@ -56,6 +59,7 @@ public sealed class GravityGeneratorSystem : EntitySystem
             _gravitySystem.RefreshGravity(xform.ParentUid, gravity);
         }
     }
+    */
 
     private void OnParentChanged(EntityUid uid, GravityGeneratorComponent component, ref EntParentChangedMessage args)
     {
