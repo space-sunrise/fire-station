@@ -17,6 +17,7 @@
   - type: MultiHandedItem
   - type: Item
     size: Huge
+  - type: CanEscapeInventory
   - type: Fixtures
     fixtures:
       fix1:

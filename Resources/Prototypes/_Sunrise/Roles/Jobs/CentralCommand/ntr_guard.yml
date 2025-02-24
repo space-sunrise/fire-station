@@ -17,6 +17,7 @@
       requiredAge: 25
   startingGear: NtrLeaderGear
   icon: JobIconNtrLeader
+  overrideConsoleVisibility: false # Fire added
   supervisors: job-supervisors-ntrg
   canBeAntag: false
   access:
@@ -88,6 +89,7 @@
       requiredAge: 25
   startingGear: NtrLeaderGear
   icon: JobIconNtrGuard
+  overrideConsoleVisibility: false # Fire added
   supervisors: job-supervisors-ntrg
   canBeAntag: false
   access:

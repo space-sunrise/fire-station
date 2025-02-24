@@ -12,6 +12,7 @@
     time: 36000 # 10h Sunrise-RoleTime
   startingGear: NtrOfficerGear
   icon: "JobIconNtrGuard"
+  overrideConsoleVisibility: false # Fire added
   supervisors: job-supervisors-ntrg
   canBeAntag: false
   displayWeight: 40

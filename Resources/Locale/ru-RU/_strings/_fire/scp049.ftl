@@ -2,9 +2,9 @@
 scp049-kill-action-cant-kill = Существо не может умереть.
 
 scp049-touch-action-success = { $performer } прикасается к { $target }.
-scp049-self-heal = { $performer } исцеляет свои раны
+scp049-self-heal = { $performer } Исцеляет свои раны
 
-scp049-heal-minion = исцеляет раны { $target }
+scp049-heal-minion = Исцеляет раны { $target }
 
 scp049-ghost-role-name = Зомбифицированный пациент SCP-049
 scp049-ghost-role-description = Вы - воскрешенная жертва SCP-049, известного как "Чумной Доктор". Теперь вы его верный слуга, движимый непреодолимым желанием помогать своему хозяину в его "лечении".

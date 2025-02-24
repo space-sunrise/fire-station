@@ -23,6 +23,7 @@
       Rest: rest
     createJellySound:
       collection: desecration
+  - type: VentCrawler
   - type: DamageStateVisuals
     states:
       Alive:
