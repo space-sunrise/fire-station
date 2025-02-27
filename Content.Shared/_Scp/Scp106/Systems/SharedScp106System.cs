@@ -93,9 +93,9 @@ public abstract class SharedScp106System : EntitySystem
         {
 
             EnsureComp<HandsComponent>(uid);
-            _hands.AddHand(uid, "middle", HandLocation.Middle);
+            _hands.AddHand(uid, "right", HandLocation.Middle);
             component.Sword = Spawn(args.Prototype, Transform(uid).Coordinates);
-            _hands.TryPickup(uid, component.Sword, "middle");
+            _hands.TryPickup(uid, component.Sword, "right");
             component.HandTransformed = true;
         }
     }

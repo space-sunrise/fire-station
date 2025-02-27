@@ -257,3 +257,4 @@
   - type: StatusEffects
     allowed:
     - Stun
+  - type: ComplexInteraction
