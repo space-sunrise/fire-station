@@ -1,43 +1,74 @@
 ﻿- type: entity
   id: Scp106BackroomsAction
   name: Телепорт в бекрумсы.
-  description: "Телепортирует вас в бекрумсы. Нужно стоять на месте!"
+  description: Телепортирует вас в бекрумсы. Нужно стоять на месте!
   components:
   - type: InstantAction
     event: !type:Scp106BackroomsAction
     raiseOnUser: true
     itemIconStyle: BigAction
-    useDelay: 360
-    # TODO: ICON
+    useDelay: 4
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_teleport
 
 - type: entity
   id: Scp106RandomTeleportAction
   name: Телепорт на станцию.
-  description: "Телепортирует вас на станцию. Нужно стоять на месте!"
+  description: Телепортирует вас на станцию. Нужно стоять на месте!
   components:
   - type: InstantAction
     event: !type:Scp106RandomTeleportAction
     raiseOnUser: true
     itemIconStyle: BigAction
-    useDelay: 360
-    # TODO: ICON
+    useDelay: 4
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_teleport
 
 - type: entity
-  id: Scp106BecomePhantom
-  name: Стать фантомом.
-  description: "Войдите в новое воплощение чтобы найти себе раба!"
+  id: ActionScp106Shop
+  name: Теневой магазин
   components:
   - type: InstantAction
-    event: !type:Scp106BecomePhantomAction
+    event: !type:Scp106ShopAction
     raiseOnUser: true
     itemIconStyle: BigAction
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_shop
+
+- type: entity
+  id: BecomeTeleportPhantomAction
+  name: Телепортация
+  description: Разорвите их представление о возможностях пространства
+  components:
+    - type: InstantAction
+      event: !type:Scp106BecomeTeleportPhantomAction
+      itemIconStyle: BigAction
+      icon:
+        sprite: _Scp/Actions/scp106-actions.rsi
+        state: scp106_teleport
+
+- type: entity
+  id: CreatePortalAction
+  name: Открыть портал
+  description: Нечто.
+  components:
+  - type: InstantAction
+    event: !type:Scp106CreatePortalAction
+    itemIconStyle: BigAction
     useDelay: 60
-    # TODO: ICON
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_teleport
+
+### PHANTOM ABILITIES START
 
 - type: entity
   id: Scp106Reverse
   name: Реверсия
-  description: "Поменяйтесь местами с мертвецом!"
+  description: Поменяйтесь местами с мертвецом!
   components:
   - type: EntityTargetAction
     event: !type:Scp106ReverseAction
@@ -47,16 +78,68 @@
     whitelist:
       components:
       - HumanoidAppearance
-    # TODO: ICON
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_reverse
 
 - type: entity
   id: Scp106LeavePhantom
   name: Покинуть фантом.
-  description: "Уничтожает фантома, возвращая вас в бренное тело."
+  description: Уничтожает фантома, возвращая вас в бренное тело.
   components:
   - type: InstantAction
     event: !type:Scp106LeavePhantomAction
     raiseOnUser: true
     itemIconStyle: BigAction
     useDelay: 60
-    # TODO: ICON
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_leave_phantom
+
+- type: entity
+  id: Scp106PassThrough
+  name: Эфирный полёт
+  description: Позволяет пройти любое препятствие.
+  components:
+  - type: InstantAction
+    event: !type:Scp106PassThroughAction
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 15
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_phantom
+
+- type: entity
+  id: Scp106BareBlade
+  name: Обнажить клинок.
+  description: Клинок для рассекания плоти и костей.
+  components:
+  - type: InstantAction
+    event: !type:Scp106BareBladeAction
+      prototype: Scp106ArmBlade
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 300
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_phantom
+
+### PHANTOM ABILITIES END
+
+### 3 TIRES OF PHANTOM ABILITY START
+
+- type: entity
+  id: Scp106BecomePhantom
+  name: Стать фантомом.
+  description: Новое воплощение для поиска трупов
+  components:
+  - type: InstantAction
+    event: !type:Scp106BecomePhantomAction
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 300
+    icon:
+      sprite: _Scp/Actions/scp106-actions.rsi
+      state: scp106_phantom
+### 3 TIRES OF PHANTOM ABILITY END
