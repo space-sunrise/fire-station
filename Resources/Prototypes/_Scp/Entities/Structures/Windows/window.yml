@@ -10,6 +10,24 @@
     sprite: _Scp/Structures/Windows/window.rsi
 
 - type: entity
+  id: ScpWindowDirectional
+  parent: WindowDirectional
+  name: directional window
+  description: Don't smudge up the glass down there.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Windows/directional.rsi
+    state: window
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional.rsi
+    state: window
+
+- type: entity
   parent: ReinforcedWindow
   id: ScpReinforcedWindow
   name: window
@@ -18,6 +36,23 @@
     sprite: _Scp/Structures/Windows/reinforced_window.rsi
   - type: Icon
     sprite: _Scp/Structures/Windows/reinforced_window.rsi
+
+- type: entity
+  id: ScpWindowReinforcedDirectional
+  parent: WindowReinforcedDirectional
+  name: directional reinforced window
+  description: Don't smudge up the glass down there.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/directional.rsi
+    state: reinforced_window
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional.rsi
+    state: reinforced_window
 
 # Плазменное окно
 - type: entity

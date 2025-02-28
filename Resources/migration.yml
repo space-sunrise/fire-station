@@ -638,5 +638,7 @@ BlastDoorExterior1Open: ScpBlastDoorExterior1Open
 BlastDoorEngineeringOpen: ScpBlastDoorEngineeringOpen
 BlastDoorBridgeOpen: ScpBlastDoorBridgeOpen
 BlastDoorOpen: ScpBlastDoorOpen
+WindowReinforcedDirectional: ScpWindowReinforcedDirectional
+WindowDirectional: ScpWindowDirectional
 # Fire added end
 
