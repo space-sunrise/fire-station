@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Client.Stylesheets;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.UserInterface.Controls;
@@ -16,7 +17,7 @@ public sealed class MenuButton : ContainerButton
     public const string StyleClassRedTopButton = "topButtonLabel";
 
     private static readonly Color ColorNormal = Color.FromHex("#c6c1c1");
-    private static readonly Color ColorRedNormal = Color.FromHex("#FEFEFE");
+    private static readonly Color ColorRedNormal = StyleNano.PanelDarker; // Fire
     private static readonly Color ColorHovered = Color.FromHex("#ded7d7");
     private static readonly Color ColorRedHovered = Color.FromHex("#FFFFFF");
     private static readonly Color ColorPressed = Color.FromHex("#f2ebeb");

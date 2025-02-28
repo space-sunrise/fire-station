@@ -7,11 +7,6 @@ void fragment() {
 
     highp vec4 sprite = zTexture(UV);
 
-    if (sprite.a == 0.0) {
-        discard;
-    }
-
-    highp vec4 newColor = vec4(sprite.rgb, visibility);
-
-    COLOR = newColor;
+    highp float alphaThreshold = step(0.01, sprite.a);
+    COLOR = vec4(sprite.rgb, visibility * alphaThreshold);
 }

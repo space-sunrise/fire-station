@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Client.Administration.Systems;
+using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Client.Verbs.UI;
 using Content.Shared.Administration;
@@ -44,7 +45,10 @@ public sealed partial class PlayerListControl : BoxContainer
         PopulateList(_adminSystem.PlayerList);
         FilterLineEdit.OnTextChanged += _ => FilterList();
         _adminSystem.PlayerListChanged += PopulateList;
-        BackgroundPanel.PanelOverride = new StyleBoxFlat { BackgroundColor = Color.FromHex("#1d1c1c") };
+
+        // Fire edit start
+        BackgroundPanel.PanelOverride = new StyleBoxFlat { BackgroundColor = StyleNano.PanelDark };
+        // Fire edit end
     }
 
     public IReadOnlyList<PlayerInfo> PlayerInfo => _playerList;

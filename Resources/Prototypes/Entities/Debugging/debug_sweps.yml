@@ -4,6 +4,7 @@
   id: WeaponPistolDebug
   description: ded
   suffix: DEBUG
+  categories: [ Debug ] # Fire
   components:
   - type: Tag
     tags:
@@ -46,6 +47,7 @@
   name: bang, ded mag
   parent: BaseMagazinePistol
   suffix: DEBUG
+  categories: [ Debug ] # Fire
   components:
   - type: Tag
     tags:
@@ -76,6 +78,7 @@
   name: bang, ded cartridge
   parent: BaseCartridgePistol
   suffix: DEBUG
+  categories: [ Debug ] # Fire
   components:
   - type: Tag
     tags:
@@ -89,6 +92,7 @@
   id: MeleeDebugGib
   description: hit hard ye
   suffix: DEBUG
+  categories: [ Debug ] # Fire
   components:
   - type: Tag
     tags:
@@ -108,6 +112,7 @@
   name: bang stick 100dmg
   parent: MeleeDebugGib
   id: MeleeDebug100
+  categories: [ Debug ] # Fire
   components:
   - type: Tag
     tags:
@@ -121,6 +126,7 @@
   name: bang stick 200dmg
   parent: MeleeDebugGib
   id: MeleeDebug200
+  categories: [ Debug ] # Fire
   components:
   - type: Tag
     tags:

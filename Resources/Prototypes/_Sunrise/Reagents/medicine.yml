@@ -7,6 +7,7 @@
   color: "#59b23a"
   metabolisms:
     Medicine:
+      metabolismRate: 250
       effects:
       - !type:Polymorph
         prototype: PermanentlyHuman
@@ -15,52 +16,4 @@
             type: Primate
           - !type:ReagentThreshold
             min: 5
-      - !type:Polymorph
-        prototype: PermanentlyReptilian
-        conditions:
-          - !type:OrganType
-            type: Kobold
-          - !type:ReagentThreshold
-            min: 5
-      - !type:Polymorph
-        prototype: PermanentlyTajaran
-        conditions:
-          - !type:OrganType
-            type: Felinid
-          - !type:ReagentThreshold
-            min: 5
-      - !type:Polymorph
-        prototype: PermanentlySlime
-        conditions:
-          - !type:OrganType
-            type: WildSlime
-          - !type:ReagentThreshold
-            min: 5
-      - !type:Polymorph
-        prototype: PermanentlyMoth
-        conditions:
-          - !type:OrganType
-            type: Mothroach
-          - !type:ReagentThreshold
-            min: 5
-      - !type:Polymorph
-        prototype: PermanentlySwine
-        conditions:
-          - !type:OrganType
-            type: Pig
-          - !type:ReagentThreshold
-            min: 5
-      - !type:Polymorph
-        prototype: PermanentlyVox
-        conditions:
-          - !type:OrganType
-            type: Chiken
-          - !type:ReagentThreshold
-            min: 5
-      - !type:Polymorph
-        prototype: PermanentlyVulpkanin
-        conditions:
-          - !type:OrganType
-            type: Dog
-          - !type:ReagentThreshold
-            min: 5
+  # Fire edit - удалил эффекты по превращению в нелорные расы

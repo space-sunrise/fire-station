@@ -4,9 +4,7 @@ using Content.Shared.Alert;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs.Systems;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -20,7 +18,6 @@ public abstract class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     private readonly TimeSpan _blinkingInterval = TimeSpan.FromSeconds(8);
@@ -30,10 +27,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
 
 
     // TODO: Рефактор моргания с целью сделать как в контеймент бриче юнити.
-    private readonly SoundSpecifier _blinkingStartSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Blinking/start.ogg");
-    private readonly SoundSpecifier _blinkingEndSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Blinking/end.ogg");
 
-    private readonly SoundSpecifier _blinkSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Blinking/blink.ogg");
 
     public bool IsBlind(EntityUid uid, BlinkableComponent? component = null, bool useTimeCompensation = false)
     {
@@ -93,8 +87,8 @@ public abstract class SharedBlinkingSystem : EntitySystem
         component.BlinkEndTime = _gameTiming.CurTime + _blinkingDuration;
         Dirty(uid, component);
 
-        if (_gameTiming.IsFirstTimePredicted && _player.LocalEntity == uid)
-            _audio.PlayGlobal(_blinkSound, Filter.Local(), true);
+        if (_gameTiming.IsFirstTimePredicted)
+            PlayBlinkSound(uid);
 
         var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
 
@@ -159,6 +153,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
         return !IsBlind(uid, blinkableComponent);
     }
 
+    // TODO: Объединить с Blink()
     public void ForceBlind(EntityUid uid, BlinkableComponent component, TimeSpan duration)
     {
         if (_mobState.IsIncapacitated(uid))
@@ -166,6 +161,9 @@ public abstract class SharedBlinkingSystem : EntitySystem
 
         component.BlinkEndTime = _gameTiming.CurTime + duration;
         Dirty(uid, component);
+
+        if (_gameTiming.IsFirstTimePredicted)
+            PlayBlinkSound(uid);
 
         // Set next blink slightly after forced blindness ends
         SetNextBlink(uid, component, duration + TimeSpan.FromSeconds(1));
@@ -181,4 +179,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
             yield return (uid, component);
         }
     }
+
+    protected virtual void PlayBlinkSound(EntityUid uid) { }
 }
+

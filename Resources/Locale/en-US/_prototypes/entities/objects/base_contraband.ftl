@@ -1,5 +1,7 @@
 ent-BaseSyndicateContraband = { "" }
     .desc = { "" }
+ent-BaseChaosContraband = { "" }
+    .desc = { "" }
 ent-BaseMinorContraband = { "" }
     .desc = { "" }
 ent-BaseMajorContraband = { "" }

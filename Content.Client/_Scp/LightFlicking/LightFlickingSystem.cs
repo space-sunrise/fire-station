@@ -43,7 +43,8 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
             if (TryComp<SpriteComponent>(uid, out var spriteComponent))
                 spriteComponent.LayerSetColor(PoweredLightLayers.Glow, newColor);
 
-            _audio.PlayPvs(_flickSound, uid, AudioParams.Default.WithVolume(-8).WithMaxDistance(2f));
+            // Движок не справляется с таким количеством звуков
+            //_audio.PlayPvs(_flickSound, uid, AudioParams.Default.WithVolume(-8).WithMaxDistance(2f));
 
             SetNextFlickingTime((uid, flicking));
         }

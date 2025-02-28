@@ -1,0 +1,11 @@
+- type: latheRecipePack
+  id: ScpDynamic
+  recipes:
+  - EyeDroplets
+  - ClothingHeadBagScp096
+  - ReinforcedMaskScp096
+  - Scp049ProtectionImplanter
+  - ClothingHeadAwareness
+  - ClothingShoesSilent
+  - ClothingOuterAntiTeleportation
+  - ClothingHeadHelmetAiPowered

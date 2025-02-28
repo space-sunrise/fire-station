@@ -12,6 +12,7 @@
       time: 18000 # 5 hrs
   startingGear: NanoTrasenRepresentativeGear
   icon: JobIconNanotrasen
+  overrideConsoleVisibility: false # Fire added
   joinNotifyCrew: true
   supervisors: job-supervisors-centcom
   canBeAntag: false

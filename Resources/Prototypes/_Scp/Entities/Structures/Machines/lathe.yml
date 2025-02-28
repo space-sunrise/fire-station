@@ -23,15 +23,8 @@
   - type: Lathe
     idleState: icon
     runningState: icon
-    dynamicRecipes:
-    - EyeDroplets
-    - ClothingHeadBagScp096
-    - ReinforcedMaskScp096
-    - Scp049ProtectionImplanter
-    - ClothingHeadAwareness
-    - ClothingShoesSilent
-    - ClothingOuterAntiTeleportation
-    - ClothingHeadHelmetAiPowered
+    dynamicPacks:
+    - ScpDynamic
   - type: MaterialStorage
     whitelist:
       tags:

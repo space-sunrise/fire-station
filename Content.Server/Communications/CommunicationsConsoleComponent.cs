@@ -72,7 +72,7 @@ namespace Content.Server.Communications
 
         // Sunrise-Start
         [DataField("announceVoice", customTypeSerializer:typeof(PrototypeIdSerializer<TTSVoicePrototype>))]
-        public string AnnounceVoice = "Adjutant"; // Fire edit
+        public string AnnounceVoice = "CBMTF1"; // Fire edit
         // Sunrise-Start
     }
 }

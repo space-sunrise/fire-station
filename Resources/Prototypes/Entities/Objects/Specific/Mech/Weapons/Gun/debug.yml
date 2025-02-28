@@ -3,6 +3,7 @@
   parent: [ BaseMechWeaponRange, DebugMechEquipment ] # Debug equipment dose has all whitelist tags.
   suffix: Mech Weapon, DEBUG, Ballistic
   name: debug bang
+  categories: [ Debug ] # Fire
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
@@ -40,6 +41,7 @@
   suffix: Mech Weapon, DEBUG, Laser
   parent: [ BaseMechWeaponRange, DebugMechEquipment ]
   description: A weapon using light amplified by the stimulated emission of radiation.
+  categories: [ Debug ] # Fire
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/laser_retro.rsi
@@ -71,6 +73,7 @@
   description: A self-defense weapon that exhausts organic targets, weakening them until they collapse.
   suffix: Mech Weapon, DEBUG, Disabler
   parent: [ BaseMechWeaponRange, DebugMechEquipment ]
+  categories: [ Debug ] # Fire
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/disabler.rsi

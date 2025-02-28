@@ -100,3 +100,9 @@
     gloves: ClothingHandsGlovesJanitor
     shoes: ClothingShoesGaloshes
     id: ClassDJanitorIDCard
+    belt: ClothingBeltJanitor
+  storage:
+    belt:
+    - Soap
+    - LightReplacer
+    - SprayBottleSpaceCleaner

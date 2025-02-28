@@ -109,6 +109,42 @@
   - type: Sprite
     state: scp217
 
+- type: entity
+  parent: PosterScpBase
+  id: PosterContrabandChaos1
+  name: Вновь?
+  description: Контрабандный постер СО Повстанцы Хаоса. "Ужели вновь непостоянный мститель пошлёт его багряную десницу нам на погибель?"
+  components:
+  - type: Sprite
+    state: poster1_chaos_contraband
+
+- type: entity
+  parent: PosterScpBase
+  id: PosterContrabandChaos2
+  name: Враг ли Я?
+  description: Контрабандный постер СО Повстанцы Хаоса. "А точно ли твой враг - Я?" Быть может... тебе стоит задуматься?
+  components:
+  - type: Sprite
+    state: poster2_chaos_contraband
+
+- type: entity
+  parent: PosterScpBase
+  id: PosterContrabandChaos3
+  name: ВИЖУ
+  description: Контрабандный постер СО Повстанцы Хаоса. "Почему он так на меня смотрит...? Может... он меня видит?"
+  components:
+  - type: Sprite
+    state: poster3_chaos_contraband
+
+- type: entity
+  parent: PosterScpBase
+  id: PosterContrabandChaos4
+  name: ХАОС
+  description: Контрабандный постер СО Повстанцы Хаоса. Выглядит старым. "Хаос - это то, к чему мы стремимся! То, что жило, живёт и будет жить!"
+  components:
+  - type: Sprite
+    state: poster4_chaos_contraband
+
 # Плакаты камер содержания сцп
 
 - type: entity

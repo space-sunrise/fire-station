@@ -20,6 +20,8 @@ public sealed class MogSpawnSystem : EntitySystem
 
     private ISawmill _sawmill = default!;
 
+    // TODO: ЗАРЕФАКТОРИТЬ ИЛИ УДАЛИТЬ ЭТУ ПАРАШУ, ЧТО ЭТО ТАКОЕ
+
     /// <inheritdoc/>
     public override void Initialize()
     {
