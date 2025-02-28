@@ -16,6 +16,7 @@
   parent: MobRatvarBase
   id: MobRatvarSpawn
   suffix: Spawn
+  categories: [ Spawner ] # Fire
   components:
   - type: Sprite
     layers:
@@ -29,6 +30,7 @@
 - type: entity
   parent: [MobRatvarBase, BaseMob]
   id: MobRatvar
+  categories: [ HideSpawnMenu ] # Fire
   components:
   - type: AnnounceOnSpawn
     message: ratvar-has-risen

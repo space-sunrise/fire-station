@@ -130,27 +130,28 @@ namespace Content.Client.Stylesheets
 
         // Fire edit - Updated colors for SCP/Grimdark theme
 
-        public static readonly Color PanelUltraDark = Color.FromHex("#121111");
+        public static readonly Color PanelUltraDark = Color.FromHex("#090909");
         public static readonly Color PanelDarker = Color.FromHex("#121111");  // 1d1c1c 161515
-        public static readonly Color PanelDark = Color.FromHex("#1d1c1c"); // Darker background 2a2828
-        public static readonly Color PanelLightDark = Color.FromHex("#444444");
+        public static readonly Color PanelDark = Color.FromHex("#171616"); // Darker background 2a2828 1d1c1c
+        public static readonly Color PanelLightDark = Color.FromHex("#373535"); // 444444
         public static readonly Color LightGray = Color.FromHex("#b2b2b2");
         public static readonly Color BloodRed = Color.FromHex("#8B0000"); // Blood red accent
         public static readonly Color BloodRedDarker = Color.FromHex("#4D0000"); // Blood red accent
         public static readonly Color BloodRedDarker2 = Color.FromHex("#3A0000"); // Blood red accent
         public static readonly Color SCPWhite = Color.FromHex("#e1e1e1");
-        public static readonly Color NanoGold = Color.FromHex("#8B0000"); // Blyat
         public static readonly Color GoodGreenFore = Color.FromHex("#1A4D1A"); // Darker green
         public static readonly Color ConcerningOrangeFore = Color.FromHex("#8B4500"); // Burnt orange
         public static readonly Color DangerousRedFore = Color.FromHex("#660000"); // Deeper red
         public static readonly Color DisabledFore = Color.FromHex("#3A3A3A"); // Darker disabled
+
+        public static readonly Color NanoGold = BloodRed; // Blyat
 
         public static readonly Color ButtonColorDefault = PanelDarker;
         public static readonly Color ButtonColorDefaultRed = BloodRedDarker;
         public static readonly Color ButtonColorHovered = BloodRedDarker2; // Dark red hover
         public static readonly Color ButtonColorHoveredRed = Color.FromHex("#5A0000");
         public static readonly Color ButtonColorPressed = BloodRed;
-        public static readonly Color ButtonColorDisabled = Color.FromHex("#1d1c1c");
+        public static readonly Color ButtonColorDisabled = PanelLightDark;
 
         public static readonly Color ButtonColorCautionDefault = Color.FromHex("#4D0000");
         public static readonly Color ButtonColorCautionHovered = Color.FromHex("#660000");
@@ -161,7 +162,7 @@ namespace Content.Client.Stylesheets
         public static readonly Color ButtonColorGoodHovered = Color.FromHex("#2B662B");
         public static readonly Color ButtonColorGoodDisabled = Color.FromHex("#0D260D");
 
-        public static readonly Color PointRed = Color.FromHex("#8B0000");
+        public static readonly Color PointRed = BloodRed;
         public static readonly Color PointGreen = Color.FromHex("#1A4D1A");
         public static readonly Color PointMagenta = Color.FromHex("#8B008B");
 
@@ -203,28 +204,25 @@ namespace Content.Client.Stylesheets
             var notoSansBold18 = resCache.NotoStack(variation: "Bold", size: 18);
             var notoSansBold20 = resCache.NotoStack(variation: "Bold", size: 20);
             var notoSansMono = resCache.GetFont("/EngineFonts/NotoSans/NotoSansMono-Regular.ttf", size: 12);
-            var windowHeaderTex = resCache.GetTexture("/Textures/Interface/Nano/window_header.png");
-            var windowHeader = new StyleBoxTexture
-            {
-                Texture = windowHeaderTex,
-                PatchMarginBottom = 3,
-                ExpandMarginBottom = 3,
-                ContentMarginBottomOverride = 0,
-                Modulate = BloodRed // Fire edit - Red accent for headers
-            };
-            var windowHeaderAlertTex = resCache.GetTexture("/Textures/Interface/Nano/window_header_alert.png");
-            var windowHeaderAlert = new StyleBoxTexture
-            {
-                Texture = windowHeaderAlertTex,
-                PatchMarginBottom = 3,
-                ExpandMarginBottom = 3,
-                ContentMarginBottomOverride = 0
-            };
+
             // Fire edit start
-            var windowBackground = new StyleBoxFlat() // Переделал во флет, нахуй мне ваша текстура
+            var windowHeader = new StyleBoxFlat
             {
-                BackgroundColor = PanelDarker,
-                BorderColor = BloodRed,
+                ContentMarginBottomOverride = 0,
+                BackgroundColor = SCPWhite,
+                BorderColor = PanelDarker,
+            };
+            var windowHeaderAlert = new StyleBoxFlat
+            {
+                ContentMarginBottomOverride = 0,
+                BackgroundColor = SCPWhite,
+                BorderColor = PanelDarker,
+            };
+
+            var windowBackground = new StyleBoxFlat // Переделал во флет, нахуй мне ваша текстура
+            {
+                BackgroundColor = PanelDark,
+                BorderColor = SCPWhite,
             };
             windowBackground.SetContentMarginOverride(StyleBox.Margin.Horizontal | StyleBox.Margin.Bottom, 2);
             // Fire edit end
@@ -418,9 +416,9 @@ namespace Content.Client.Stylesheets
             };
             tabContainerPanel.SetContentMarginOverride(StyleBox.Margin.All, 2);
 
-            var tabContainerBoxActive = new StyleBoxFlat { BackgroundColor = PanelDarker };
+            var tabContainerBoxActive = new StyleBoxFlat { BackgroundColor = PanelDark };
             tabContainerBoxActive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
-            var tabContainerBoxInactive = new StyleBoxFlat { BackgroundColor = PanelLightDark.WithAlpha(0.3f) };
+            var tabContainerBoxInactive = new StyleBoxFlat { BackgroundColor = PanelLightDark };
             tabContainerBoxInactive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
             // Fire edit end
 
@@ -445,8 +443,8 @@ namespace Content.Client.Stylesheets
             var tooltipBox = new StyleBoxFlat()
             {
                 BackgroundColor = PanelDarker,
-                BorderColor = BloodRedDarker,
-                BorderThickness = new Thickness(2f),
+                BorderColor = SCPWhite.WithAlpha(0.5f),
+                BorderThickness = new Thickness(1f),
             };
             tooltipBox.SetContentMarginOverride(StyleBox.Margin.All, 2);
             tooltipBox.SetContentMarginOverride(StyleBox.Margin.Horizontal, 7);
@@ -594,7 +592,7 @@ namespace Content.Client.Stylesheets
                     new SelectorElement(typeof(Label), new[] {DefaultWindow.StyleClassWindowTitle}, null, null),
                     new[]
                     {
-                        new StyleProperty(Label.StylePropertyFontColor, BloodRed),
+                        new StyleProperty(Label.StylePropertyFontColor, PanelDarker),
                         new StyleProperty(Label.StylePropertyFont, notoSansDisplayBold14),
                     }),
 
@@ -613,7 +611,7 @@ namespace Content.Client.Stylesheets
                     new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat
                     {
                         BackgroundColor = PanelDark,
-                        BorderColor = BloodRed,
+                        BorderColor = SCPWhite,
                         BorderThickness = new Thickness(2)
                     })
                 }),
@@ -625,7 +623,7 @@ namespace Content.Client.Stylesheets
                     new[]
                     {
                         new StyleProperty(TextureButton.StylePropertyTexture, textureCloseButton),
-                        new StyleProperty(Control.StylePropertyModulateSelf, SCPWhite),
+                        new StyleProperty(Control.StylePropertyModulateSelf, PanelDarker),
                     }),
 
                 // Window close button hover.
@@ -634,7 +632,7 @@ namespace Content.Client.Stylesheets
                         new[] {TextureButton.StylePseudoClassHover}),
                     new[]
                     {
-                        new StyleProperty(Control.StylePropertyModulateSelf, BloodRed),
+                        new StyleProperty(Control.StylePropertyModulateSelf, PanelDarker),
                     }),
                 // Window close button pressed.
                 new StyleRule(
@@ -642,7 +640,7 @@ namespace Content.Client.Stylesheets
                         new[] {TextureButton.StylePseudoClassPressed}),
                     new[]
                     {
-                        new StyleProperty(Control.StylePropertyModulateSelf, BloodRed),
+                        new StyleProperty(Control.StylePropertyModulateSelf, PanelDarker),
                     }),
 
                 // Updated chat panel
@@ -652,7 +650,7 @@ namespace Content.Client.Stylesheets
                         new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat
                         {
                             BackgroundColor = PanelDark,
-                            BorderColor = BloodRed,
+                            BorderColor = SCPWhite,
                             BorderThickness = new Thickness(1)
                         }),
                     }),
@@ -666,7 +664,7 @@ namespace Content.Client.Stylesheets
                     new SelectorElement(typeof(Label), new[] {"windowTitleAlert"}, null, null),
                     new[]
                     {
-                        new StyleProperty(Label.StylePropertyFontColor, Color.White),
+                        new StyleProperty(Label.StylePropertyFontColor, PanelDarker), // Fire edit
                         new StyleProperty(Label.StylePropertyFont, notoSansDisplayBold14),
                     }),
                 // Window background.
@@ -951,7 +949,7 @@ namespace Content.Client.Stylesheets
 
                 Element<ContainerButton>().Class(ListContainer.StyleClassListContainerButton)
                     .Pseudo(ContainerButton.StylePseudoClassDisabled)
-                    .Prop(Control.StylePropertyModulateSelf, LightGray),
+                    .Prop(Control.StylePropertyModulateSelf, PanelLightDark),
                 // Fire edit end
 
                 // Main menu: Make those buttons bigger.
@@ -1493,7 +1491,7 @@ namespace Content.Client.Stylesheets
                         new StyleProperty(Control.StylePropertyModulateSelf, new StyleBoxFlat
                         {
                             BackgroundColor = PanelDark,
-                            BorderColor = BloodRed
+                            BorderColor = SCPWhite,
                         })
                     }
                 ),
@@ -1503,7 +1501,7 @@ namespace Content.Client.Stylesheets
                         new StyleProperty(Control.StylePropertyModulateSelf, new StyleBoxFlat
                         {
                             BackgroundColor = PanelDark,
-                            BorderColor = BloodRed
+                            BorderColor = SCPWhite,
                         })
                     }
                 ),
@@ -1545,28 +1543,30 @@ namespace Content.Client.Stylesheets
                     }),
 
                 // Window Headers
+
                 // Fire edit start
                 Element<Label>().Class("FancyWindowTitle")
                     .Prop("font", boxFont13)
-                    .Prop("font-color", BloodRed), // Fire edit
+                    .Prop("font-color", PanelDarker),
 
                 Element<PanelContainer>().Class("WindowHeadingBackground")
                     .Prop("panel", new StyleBoxTexture(BaseButtonOpenLeft) { Padding = default })
-                    .Prop(Control.StylePropertyModulateSelf, BloodRedDarker2), // Fire
+                    .Prop(Control.StylePropertyModulateSelf, SCPWhite),
 
                 Element<PanelContainer>().Class("WindowHeadingBackgroundLight")
-                    .Prop("panel", new StyleBoxTexture(BaseButtonOpenLeft) { Padding = default }),
+                    .Prop("panel", new StyleBoxTexture(BaseButtonOpenLeft) { Padding = default })
+                    .Prop(Control.StylePropertyModulateSelf, SCPWhite),
 
                 // Window Header Help Button
                 Element<TextureButton>().Class(FancyWindow.StyleClassWindowHelpButton)
                     .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Nano/help.png"))
-                    .Prop(Control.StylePropertyModulateSelf, SCPWhite), // Fire
+                    .Prop(Control.StylePropertyModulateSelf, PanelDarker),
 
                 Element<TextureButton>().Class(FancyWindow.StyleClassWindowHelpButton).Pseudo(ContainerButton.StylePseudoClassHover)
-                    .Prop(Control.StylePropertyModulateSelf, BloodRed), // Fire
+                    .Prop(Control.StylePropertyModulateSelf, PanelDarker),
 
                 Element<TextureButton>().Class(FancyWindow.StyleClassWindowHelpButton).Pseudo(ContainerButton.StylePseudoClassPressed)
-                    .Prop(Control.StylePropertyModulateSelf, BloodRed), // Fire
+                    .Prop(Control.StylePropertyModulateSelf, PanelDarker),
 
                 //The lengths you have to go through to change a background color smh
                 Element<PanelContainer>().Class("PanelBackgroundBaseDark")
@@ -1720,30 +1720,33 @@ namespace Content.Client.Stylesheets
                     .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat(PanelDark)), // Fire edit
 
                 //PDA - Buttons
+
+                // Fire edit start
                 Element<PdaSettingsButton>().Pseudo(ContainerButton.StylePseudoClassNormal)
-                    .Prop(PdaSettingsButton.StylePropertyBgColor, Color.FromHex(PdaSettingsButton.NormalBgColor))
-                    .Prop(PdaSettingsButton.StylePropertyFgColor, Color.FromHex(PdaSettingsButton.EnabledFgColor)),
+                    .Prop(PdaSettingsButton.StylePropertyBgColor, PdaSettingsButton.NormalBgColor)
+                    .Prop(PdaSettingsButton.StylePropertyFgColor, PdaSettingsButton.EnabledFgColor),
 
                 Element<PdaSettingsButton>().Pseudo(ContainerButton.StylePseudoClassHover)
-                    .Prop(PdaSettingsButton.StylePropertyBgColor, Color.FromHex(PdaSettingsButton.HoverColor))
-                    .Prop(PdaSettingsButton.StylePropertyFgColor, Color.FromHex(PdaSettingsButton.EnabledFgColor)),
+                    .Prop(PdaSettingsButton.StylePropertyBgColor, PdaSettingsButton.HoverColor)
+                    .Prop(PdaSettingsButton.StylePropertyFgColor, PdaSettingsButton.EnabledFgColor),
 
                 Element<PdaSettingsButton>().Pseudo(ContainerButton.StylePseudoClassPressed)
-                    .Prop(PdaSettingsButton.StylePropertyBgColor, Color.FromHex(PdaSettingsButton.PressedColor))
-                    .Prop(PdaSettingsButton.StylePropertyFgColor, Color.FromHex(PdaSettingsButton.EnabledFgColor)),
+                    .Prop(PdaSettingsButton.StylePropertyBgColor, PdaSettingsButton.PressedColor)
+                    .Prop(PdaSettingsButton.StylePropertyFgColor, PdaSettingsButton.EnabledFgColor),
 
                 Element<PdaSettingsButton>().Pseudo(ContainerButton.StylePseudoClassDisabled)
-                    .Prop(PdaSettingsButton.StylePropertyBgColor, Color.FromHex(PdaSettingsButton.NormalBgColor))
-                    .Prop(PdaSettingsButton.StylePropertyFgColor, Color.FromHex(PdaSettingsButton.DisabledFgColor)),
+                    .Prop(PdaSettingsButton.StylePropertyBgColor, PdaSettingsButton.NormalBgColor)
+                    .Prop(PdaSettingsButton.StylePropertyFgColor, PdaSettingsButton.DisabledFgColor),
 
                 Element<PdaProgramItem>().Pseudo(ContainerButton.StylePseudoClassNormal)
-                    .Prop(PdaProgramItem.StylePropertyBgColor, Color.FromHex(PdaProgramItem.NormalBgColor)),
+                    .Prop(PdaProgramItem.StylePropertyBgColor, PdaProgramItem.NormalBgColor),
 
                 Element<PdaProgramItem>().Pseudo(ContainerButton.StylePseudoClassHover)
-                    .Prop(PdaProgramItem.StylePropertyBgColor, Color.FromHex(PdaProgramItem.HoverColor)),
+                    .Prop(PdaProgramItem.StylePropertyBgColor, PdaProgramItem.HoverColor),
 
                 Element<PdaProgramItem>().Pseudo(ContainerButton.StylePseudoClassPressed)
-                    .Prop(PdaProgramItem.StylePropertyBgColor, Color.FromHex(PdaProgramItem.HoverColor)),
+                    .Prop(PdaProgramItem.StylePropertyBgColor, PdaProgramItem.HoverColor),
+                // Fire edit end
 
                 //PDA - Text
                 Element<Label>().Class("PdaContentFooterText")

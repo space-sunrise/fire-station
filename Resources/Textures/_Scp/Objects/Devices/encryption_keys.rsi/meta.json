@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "SUNRISE",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {"name": "chaos_label"},
+    {"name": "crypt_chaos"}
+  ]
+}

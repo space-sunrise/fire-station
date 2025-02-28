@@ -9,3 +9,4 @@
   setPreference: false # Fire
   displayWeight: -10  # Sunrise
   jobEntity: PlayerBorgClownBattery
+  overrideConsoleVisibility: false

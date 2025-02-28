@@ -306,8 +306,12 @@ namespace Content.Client.Chemistry.UI
         private Control BuildReagentRow(Color reagentColor, int rowCount, string name, ReagentId reagent, FixedPoint2 quantity, bool isBuffer, bool addReagentButtons)
         {
             //Colors rows and sets fallback for reagentcolor to the same as background, this will hide colorPanel for entities hopefully
-            var rowColor1 = Color.FromHex("#121111");
-            var rowColor2 = Color.FromHex("#1d1c1c");
+
+            // Fire edit start
+            var rowColor1 = StyleNano.PanelDarker;
+            var rowColor2 = StyleNano.PanelDark;
+            // Fire edit end
+
             var currentRowColor = (rowCount % 2 == 1) ? rowColor1 : rowColor2;
             if ((reagentColor == default(Color))|(!addReagentButtons))
             {

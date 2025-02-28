@@ -131,14 +131,7 @@ public abstract class SharedScp173System : EntitySystem
         if (args.Handled)
             return;
 
-        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(ent).Coordinates, ExamineSystemShared.MaxRaycastRange);
-
-        foreach (var eye in eyes)
-        {
-            _blinking.ForceBlind(eye.Owner, eye.Comp, TimeSpan.FromSeconds(6));
-        }
-
-        // TODO: Add sound.
+        BlindEveryoneInRange(ent);
 
         args.Handled = true;
     }
@@ -221,6 +214,19 @@ public abstract class SharedScp173System : EntitySystem
     #endregion
 
     #region Public API
+
+    public void BlindEveryoneInRange(EntityUid scp, float range = 16f, float time = 6f)
+    {
+        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp).Coordinates, range)
+            .Where(e => _examine.InRangeUnOccluded(scp, e));
+
+        foreach (var eye in eyes)
+        {
+            _blinking.ForceBlind(eye.Owner, eye.Comp, TimeSpan.FromSeconds(time));
+        }
+
+        // TODO: Add sound.
+    }
 
     /// <summary>
     /// Находится ли 173 в контейнере для перевозки

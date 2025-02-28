@@ -1,0 +1,13 @@
+﻿- type: entity
+  parent: [ EncryptionKey, BaseChaosContraband ]
+  id: EncryptionKeyChaos
+  components:
+  - type: EncryptionKey
+    channels:
+    - Chaos
+    defaultChannel: Chaos
+  - type: Sprite
+    sprite: _Scp/Objects/Devices/encryption_keys.rsi
+    layers:
+    - state: crypt_chaos
+    - state: chaos_label

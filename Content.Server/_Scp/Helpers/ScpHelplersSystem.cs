@@ -119,4 +119,41 @@ public sealed class ScpHelpersSystem : EntitySystem
 
         return found;
     }
+
+
+    /// <summary>
+    /// Возвращает список с данным процентным соотношением
+    /// </summary>
+    /// <param name="sourceList">Исходный список</param>
+    /// <param name="percentage">Процент от 0 до 100</param>
+    /// <typeparam name="T">Компонент</typeparam>
+    [Obsolete]
+    public IEnumerable<T> GetPercentageOfHashSet<T>(IReadOnlyCollection<T> sourceList, float percentage) where T : IComponent
+    {
+        var countToAdd = (int) Math.Round((double) sourceList.Count * percentage / 100);
+        return sourceList.Where(t => !Transform(t.Owner).Anchored).Take(countToAdd).ToHashSet();
+    }
+
+    /// <summary>
+    /// Возвращает список с данным процентным соотношением
+    /// </summary>
+    /// <param name="sourceList">Исходный список</param>
+    /// <param name="percentage">Процент от 0 до 100</param>
+    /// <typeparam name="T">Ентити с компонентом</typeparam>
+    public IEnumerable<Entity<T>> GetPercentageOfHashSet<T>(IReadOnlyCollection<Entity<T>> sourceList, float percentage) where T : IComponent
+    {
+        var countToAdd = (int) Math.Round((double) sourceList.Count * percentage / 100);
+        return sourceList.Where(e => !Transform(e).Anchored).Take(countToAdd).ToHashSet();
+    }
+
+    /// <summary>
+    /// Возвращает список с данным процентным соотношением
+    /// </summary>
+    /// <param name="sourceList">Исходный список</param>
+    /// <param name="percentage">Процент от 0 до 100</param>
+    public IEnumerable<EntityUid> GetPercentageOfHashSet(IReadOnlyCollection<EntityUid> sourceList, float percentage)
+    {
+        var countToAdd = (int) Math.Round((double) sourceList.Count * percentage / 100);
+        return sourceList.Where(e => !Transform(e).Anchored).Take(countToAdd).ToHashSet();
+    }
 }

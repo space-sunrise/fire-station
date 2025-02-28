@@ -11,6 +11,7 @@
   canBeAntag: false
   setPreference: false # Fire
   icon: "JobIconPrisoner"
+  overrideConsoleVisibility: false
   supervisors: job-supervisors-security
   displayWeight: 0
   special:

@@ -1,8 +1,6 @@
 ﻿- type: entity
-  parent: [ ClothingHandsGlovesColorBlack, BaseSecurityEngineeringContraband ]
+  parent: [ ClothingHandsGlovesColorBlack, BaseChaosContraband]
   id: ClothingHandsGlovesChaos
-  name: chaos gloves
-  description: These tactical gloves are fireproof and shock resistant.
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Hands/Gloves/chaosgloves.rsi

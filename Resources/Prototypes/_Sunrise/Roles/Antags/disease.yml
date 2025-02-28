@@ -2,6 +2,7 @@
   id: MobDisease
   name: sensible disease
   description: plague inc 2.0
+  categories: [ HideSpawnMenu ] # Fire
   components:
   - type: MindContainer
   - type: InputMover

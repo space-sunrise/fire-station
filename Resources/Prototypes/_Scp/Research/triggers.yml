@@ -28,6 +28,7 @@
     components:
     - Scp
     - Damageable
+    requireAll: true
   components:
   - type: ArtifactDamageTrigger
     damageTypes:
@@ -44,6 +45,7 @@
     components:
     - Scp
     - Damageable
+    requireAll: true
   components:
   - type: ArtifactHeatTrigger
 

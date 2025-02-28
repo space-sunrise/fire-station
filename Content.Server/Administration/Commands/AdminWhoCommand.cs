@@ -7,7 +7,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server.Administration.Commands;
 
-[AnyCommand] // Fire edit
+[AnyCommand] // Sunrise-Edit
 public sealed class AdminWhoCommand : IConsoleCommand
 {
     public string Command => "adminwho";

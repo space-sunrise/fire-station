@@ -1,7 +1,7 @@
 - type: gameMap
   id: SCPComplex
   mapName: 'Complex SCP'
-  mapPath: /Maps/_Fire/scp_complex.yml
+  mapPath: /Maps/_Scp/scp_complex.yml
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 0

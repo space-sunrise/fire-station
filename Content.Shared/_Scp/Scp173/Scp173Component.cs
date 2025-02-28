@@ -7,16 +7,16 @@ namespace Content.Shared._Scp.Scp173;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class Scp173Component : Component
 {
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField, ViewVariables]
     public float WatchRange = 12f;
 
     #region Fast movement action
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField, ViewVariables]
     public float MaxJumpRange = 4f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public int MaxWatchers = 2;
+    [DataField, ViewVariables]
+    public int MaxWatchers = 1;
 
     #endregion
 

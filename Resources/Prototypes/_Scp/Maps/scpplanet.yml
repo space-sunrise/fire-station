@@ -1,7 +1,7 @@
 ﻿- type: gameMap
   id: ScpPlanet
   mapName: 'ScpPlanet'
-  mapPath: /Maps/_Fire/scpmap.yml
+  mapPath: /Maps/_Scp/scpmap.yml
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 0

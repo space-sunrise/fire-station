@@ -1,0 +1,4 @@
+﻿# This is clear chaos contraband and is illegal to own IC.
+- type: contrabandSeverity
+  id: Chaos
+  examineText: contraband-examine-text-Chaos

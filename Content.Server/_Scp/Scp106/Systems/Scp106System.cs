@@ -39,7 +39,9 @@ public sealed class Scp106System : SharedScp106System
 
     private void OnComponentShutdown(EntityUid uid, Scp106PhantomComponent component, ComponentShutdown args)
     {
-        _mindSystem.TryGetMind(uid, out var mindId, out _);
+        if (!_mindSystem.TryGetMind(uid, out var mindId, out _))
+            return;
+
         _mindSystem.TransferTo(mindId, component.Scp106BodyUid);
     }
 
