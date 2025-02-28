@@ -1,1 +1,1 @@
-roles-antag-evil-twin-name = Злой Двойник
+roles-antag-evil-twin-name = Агент Повстанцев Хаоса, двойник
