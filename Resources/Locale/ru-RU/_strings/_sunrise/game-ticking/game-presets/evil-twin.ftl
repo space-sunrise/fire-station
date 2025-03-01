@@ -1,1 +1,1 @@
-roles-antag-evil-twin-name = Агент Повстанцев Хаоса, двойник
+roles-antag-evil-twin-name = SCP-2054-X, двойник
