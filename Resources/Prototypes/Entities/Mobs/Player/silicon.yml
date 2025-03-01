@@ -421,7 +421,7 @@
   - type: BlockMovement
     blockInteraction: false
   - type: SiliconLawProvider
-    laws: SCPDefault #fire edit
+    laws: ScpDefault # Fire edit
   - type: SiliconLawBound
   - type: ActionGrant
     actions:

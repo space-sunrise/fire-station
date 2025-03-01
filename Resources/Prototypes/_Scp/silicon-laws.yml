@@ -1,41 +1,41 @@
 ﻿# SCP Default
 - type: siliconLaw
-  id: SCPDefault1
+  id: ScpDefault1
   order: 1
   lawString: law-scp-default-1
 
 - type: siliconLaw
-  id: SCPDefault2
+  id: ScpDefault2
   order: 2
   lawString: law-scp-default-2
 
 - type: siliconLaw
-  id: SCPDefault3
+  id: ScpDefault3
   order: 3
   lawString: law-scp-default-3
 
 - type: siliconLaw
-  id: SCPDefault4
+  id: ScpDefault4
   order: 4
   lawString: law-scp-default-4
 
 - type: siliconLaw
-  id: SCPDefault5
+  id: ScpDefault5
   order: 5
   lawString: law-scp-default-5
 
 - type: siliconLawset
-  id: SCPDefault
+  id: ScpDefault
   laws:
-  - SCPDefault1
-  - SCPDefault2
-  - SCPDefault3
-  - SCPDefault4
-  - SCPDefault5
+  - ScpDefault1
+  - ScpDefault2
+  - ScpDefault3
+  - ScpDefault4
+  - ScpDefault5
   obeysTo: laws-owner-crew
 
 - type: entity
-  id: SCPDefaultCircuitBoard
+  id: ScpDefaultCircuitBoard
   parent: BaseElectronics
   name: law board (SCP Foundation)
   description: An electronics board containing the SCP Foundation lawset.
@@ -44,7 +44,30 @@
     sprite: Objects/Misc/module.rsi
     state: std_mod
   - type: SiliconLawProvider
-    laws: SCPDefault
+    laws: ScpDefault
+
+
+# SCP MTF Directives
+- type: siliconLaw
+  id: ScpMtf4
+  order: 4
+  lawString: law-scp-mtf-4
+
+- type: siliconLaw
+  id: ScpMtf5
+  order: 5
+  lawString: law-scp-mtf-5
+
+- type: siliconLawset
+  id: ScpMtf
+  laws:
+  - ScpDefault1
+  - ScpDefault2
+  - ScpDefault3
+  - ScpMtf4
+  - ScpMtf5
+  obeysTo: laws-owner-mtf
+
 
 # Chaos
 - type: siliconLaw

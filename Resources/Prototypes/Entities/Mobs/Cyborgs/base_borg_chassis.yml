@@ -82,7 +82,7 @@
   - type: EmagSiliconLaw
     stunTime: 5
   - type: SiliconLawProvider
-    laws: SCPDefault #fire edit
+    laws: ScpDefault # Fire edit
   - type: IonStormTarget
   - type: Inventory
     templateId: borg
