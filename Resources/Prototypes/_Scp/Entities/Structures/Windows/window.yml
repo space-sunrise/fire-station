@@ -2,7 +2,6 @@
 - type: entity
   parent: Window
   id: ScpWindow
-  name: window
   components:
   - type: Sprite
     sprite: _Scp/Structures/Windows/window.rsi
@@ -12,8 +11,6 @@
 - type: entity
   id: ScpWindowDirectional
   parent: WindowDirectional
-  name: directional window
-  description: Don't smudge up the glass down there.
   placement:
     mode: SnapgridCenter
     snap:
@@ -30,8 +27,6 @@
 - type: entity
   id: ScpWindowDirectionalCorner
   parent: WindowDirectional
-  name: directional window
-  description: Don't smudge up the glass down there.
   placement:
     mode: SnapgridCenter
     snap:
@@ -68,7 +63,6 @@
 - type: entity
   parent: ReinforcedWindow
   id: ScpReinforcedWindow
-  name: window
   components:
   - type: Sprite
     sprite: _Scp/Structures/Windows/reinforced_window.rsi
@@ -78,8 +72,6 @@
 - type: entity
   id: ScpWindowReinforcedDirectional
   parent: WindowReinforcedDirectional
-  name: directional reinforced window
-  description: Don't smudge up the glass down there.
   placement:
     mode: SnapgridCenter
     snap:
@@ -95,8 +87,6 @@
 - type: entity
   id: ScpWindowReinforcedDirectionalCorner
   parent: WindowReinforcedDirectional
-  name: directional reinforced window
-  description: Don't smudge up the glass down there.
   placement:
     mode: SnapgridCenter
     snap:
@@ -141,20 +131,122 @@
     sprite: _Scp/Structures/Windows/plasma_window.rsi
 
 - type: entity
+  id: ScpPlasmaWindowDirectional
+  parent: PlasmaWindowDirectional
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Windows/directional.rsi
+    state: plasma_window
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional.rsi
+    state: plasma_window
+
+- type: entity
+  id: ScpPlasmaWindowDirectionalCorner
+  parent: PlasmaWindowDirectional
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+    state: plasma_window
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+    state: plasma_window
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,-0.28125"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.28125,-0.5"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+
+- type: entity
   parent: ReinforcedPlasmaWindow
   id: ScpReinforcedPlasmaWindow
-  name: window
   components:
   - type: Sprite
     sprite: _Scp/Structures/Windows/reinforced_plasma_window.rsi
   - type: Icon
     sprite: _Scp/Structures/Windows/reinforced_plasma_window.rsi
+
+- type: entity
+  id: ScpPlasmaReinforcedWindowDirectional
+  parent: PlasmaReinforcedWindowDirectional
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Windows/directional.rsi
+    state: plasma_reinforced_window
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional.rsi
+    state: plasma_reinforced_window
+
+- type: entity
+  id: ScpPlasmaReinforcedWindowDirectionalCorner
+  parent: PlasmaReinforcedWindowDirectional
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+    state: plasma_reinforced_window
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+    state: plasma_reinforced_window
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,-0.28125"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.28125,-0.5"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
 
 # Урановое окно
 - type: entity
   parent: UraniumWindow
   id: ScpUraniumWindow
-  name: window
   components:
   - type: Sprite
     sprite: _Scp/Structures/Windows/uranium_window.rsi
@@ -162,20 +254,122 @@
     sprite: _Scp/Structures/Windows/uranium_window.rsi
 
 - type: entity
+  id: ScpUraniumWindowDirectional
+  parent: UraniumWindowDirectional
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Windows/directional.rsi
+    state: uranium_window
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional.rsi
+    state: uranium_window
+
+- type: entity
+  id: ScpUraniumWindowDirectionalCorner
+  parent: UraniumWindowDirectional
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+    state: uranium_window
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+    state: uranium_window
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,-0.28125"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.28125,-0.5"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+
+- type: entity
   parent: ReinforcedUraniumWindow
   id: ScpReinforcedUraniumWindow
-  name: window
   components:
   - type: Sprite
     sprite: _Scp/Structures/Windows/reinforced_uranium_window.rsi
   - type: Icon
     sprite: _Scp/Structures/Windows/reinforced_uranium_window.rsi
+
+- type: entity
+  id: ScpUraniumReinforcedWindowDirectional
+  parent: UraniumReinforcedWindowDirectional
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Windows/directional.rsi
+    state: uranium_reinforced_window
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional.rsi
+    state: uranium_reinforced_window
+
+- type: entity
+  id: ScpUraniumReinforcedWindowDirectionalCorner
+  parent: UraniumReinforcedWindowDirectional
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+    state: uranium_reinforced_window
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+    state: uranium_reinforced_window
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,-0.28125"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.28125,-0.5"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
 
 # Тонированное окно 
 - type: entity
   parent: TintedWindow
   id: ScpTintedWindow
-  name: tinted window
   components:
   - type: Sprite
     sprite: _Scp/Structures/Windows/tinted_window.rsi
