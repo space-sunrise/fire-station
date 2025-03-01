@@ -1,0 +1,10 @@
+﻿- type: entity
+  id: ScpWindoorAssembly
+  name: windoor assembly
+  description: It opens, it closes, and you can see through it!
+  parent: WindoorAssembly
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Windoors/windoor.rsi
+    layers:
+    - state: assembly

@@ -28,6 +28,44 @@
     state: window
 
 - type: entity
+  id: ScpWindowDirectionalCorner
+  parent: WindowDirectional
+  name: directional window
+  description: Don't smudge up the glass down there.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+    state: window
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+    state: window
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,-0.28125"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.28125,-0.5"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+
+- type: entity
   parent: ReinforcedWindow
   id: ScpReinforcedWindow
   name: window
@@ -53,6 +91,43 @@
   - type: Icon
     sprite: _Scp/Structures/Windows/directional.rsi
     state: reinforced_window
+
+- type: entity
+  id: ScpWindowReinforcedDirectionalCorner
+  parent: WindowReinforcedDirectional
+  name: directional reinforced window
+  description: Don't smudge up the glass down there.
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+    state: reinforced_window
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+    state: reinforced_window
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,-0.28125"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.28125,-0.5"
+        density: 1000
+        mask:
+        - TableMask
+        layer:
+        - TableLayer
 
 # Плазменное окно
 - type: entity
