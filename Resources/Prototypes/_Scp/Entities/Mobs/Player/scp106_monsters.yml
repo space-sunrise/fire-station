@@ -37,7 +37,7 @@
         Blunt: 10
 
 - type: entity
-  id: Scp106PortalPortal
+  id: Scp106Portal
   name: black rift
   description: Looks unstable.
   placement:

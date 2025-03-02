@@ -4,8 +4,6 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Store;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
-using Robust.Shared.Serialization.TypeSerializers.Implementations.Generic;
 
 namespace Content.Shared._Scp.Scp106.Components;
 
@@ -19,26 +17,20 @@ public sealed partial class Scp106Component : Component
     [DataField] public bool IsContained;
 
     [AutoNetworkedField]
-    public float Accumulator = 0;
-
-    [AutoNetworkedField]
-    public float BackroomsAccumulator = 0;
-
-    [AutoNetworkedField]
     public float AnnouncementAccumulator = 600;
 
-    [DataField("lifeEssenceCurrencyPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<CurrencyPrototype>))]
-    public string LifeEssenceCurrencyPrototype = "LifeEssence";
+    [DataField]
+    public ProtoId<CurrencyPrototype> LifeEssenceCurrencyPrototype = "LifeEssence";
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField, ViewVariables]
     [AutoNetworkedField]
     public FixedPoint2 Essence = 0f;
 
-    [DataField("scp106LifeEssenceAlert")]
+    [DataField]
     public ProtoId<AlertPrototype> Scp106EssenceAlert { get; set; } = "Scp106LifeEssence";
 
-    [DataField("phantomAction", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string PhantomAction = "Scp106BecomePhantom";
+    [DataField]
+    public EntProtoId PhantomAction = "Scp106BecomePhantom";
 
     public TimeSpan PhantomCoolDown = TimeSpan.FromSeconds(300);
 
@@ -48,5 +40,5 @@ public sealed partial class Scp106Component : Component
 
     public bool HandTransformed = false;
 
-    public EntityUid Sword;
+    public EntityUid? Sword;
 }

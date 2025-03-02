@@ -1,57 +1,38 @@
 ﻿using System.Linq;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Protection;
-using Content.Shared.Actions;
-using Content.Shared.Body.Systems;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
-using Content.Shared.FixedPoint;
-using Content.Shared.Hands.Components;
-using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
-using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Network;
-using Robust.Shared.Physics;
 using Robust.Shared.Physics.Systems;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp106.Systems;
 
-public abstract class SharedScp106System : EntitySystem
+public abstract partial class SharedScp106System : EntitySystem
 {
 	// TODO: SOUNDING, EFFECTS.
+    // TODO: Переместить требования к акшенам в прототип акшенов
 
 	[Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
 	[Dependency] private readonly SharedPopupSystem _popup = default!;
-	[Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
-    [Dependency] private readonly SharedMindSystem _mindSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _sharedTransform = default!;
-    [Dependency] private readonly SharedBodySystem _bodySystem = default!;
+	[Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IServerNetManager _serverNetManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-    [Dependency] private readonly MobThresholdSystem _mob = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-
+    [Dependency] private readonly MobStateSystem _mob = default!;
 
     private readonly SoundSpecifier _teleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
-    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
+
 
     public override void Initialize()
     {
@@ -63,7 +44,6 @@ public abstract class SharedScp106System : EntitySystem
         SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportAction>(OnRandomTeleportAction);
         SubscribeLocalEvent<Scp106Component, Scp106BecomePhantomAction>(OnScp106BecomePhantomAction);
         SubscribeLocalEvent<Scp106Component, Scp106BecomeTeleportPhantomAction>(OnBecomeTeleportPhantomAction);
-        SubscribeLocalEvent<Scp106Component, Scp106BareBladeAction>(OnScp106BareBladeAction);
 
         SubscribeLocalEvent<Scp106Component, Scp106BackroomsActionEvent>(OnBackroomsDoAfter);
         SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportActionEvent>(OnTeleportDoAfter);
@@ -71,60 +51,42 @@ public abstract class SharedScp106System : EntitySystem
         SubscribeLocalEvent<Scp106Component, Scp106CreatePortalAction>(OnScp106CreatePortalAction);
         SubscribeLocalEvent<Scp106Component, Scp106CreatePortalEvent>(OnScp106CreatePortalEvent);
 
-        // Phantom
+        #region Phantom
+
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseAction>(OnScp106ReverseAction);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106LeavePhantomAction>(OnScp106LeavePhantomAction);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106PassThroughAction>(OnScp106PassThroughAction);
 
-        SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseActionEvent>(OnScp106ReverseActionEvent);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106PassThroughActionEvent>(OnScp106PassThroughActionEvent);
+
+        #endregion
     }
 
-    private void OnScp106BareBladeAction(EntityUid uid, Scp106Component component, ref Scp106BareBladeAction args)
-    {
-        if (component.HandTransformed)
-        {
-            Del(component.Sword);
-            _hands.RemoveHands(uid);
-            component.HandTransformed = false;
-            return;
-        }
-        if (_serverNetManager.IsServer)
-        {
-
-            EnsureComp<HandsComponent>(uid);
-            _hands.AddHand(uid, "middle", HandLocation.Middle);
-            component.Sword = Spawn(args.Prototype, Transform(uid).Coordinates);
-            _hands.TryPickup(uid, component.Sword, "middle");
-            component.HandTransformed = true;
-        }
-    }
-
-    private void OnScp106CreatePortalEvent(EntityUid uid, Scp106Component component, Scp106CreatePortalEvent args)
+    private void OnScp106CreatePortalEvent(Entity<Scp106Component> ent, ref Scp106CreatePortalEvent args)
     {
         if (args.Cancelled || args.Handled)
             return;
 
-        Scp106SpawnPortal(uid, component);
+        Scp106SpawnPortal(ent);
 
         args.Handled = true;
     }
 
-    private void OnScp106CreatePortalAction(EntityUid uid, Scp106Component component, Scp106CreatePortalAction args)
+    private void OnScp106CreatePortalAction(Entity<Scp106Component> ent, ref Scp106CreatePortalAction args)
     {
-        if (component.Essence < 120)
+        if (ent.Comp.Essence < 120)
         {
-            _popup.PopupEntity(Loc.GetString("not-enough-essence", ( "count", 120 - component.Essence)), uid, PopupType.Medium);
+            _popup.PopupEntity(Loc.GetString("not-enough-essence", ( "count", 120 - ent.Comp.Essence)), ent, PopupType.Medium);
             return;
         }
 
-        if (component.Scp106HasPortals >= component.MaxScp106Portals)
+        if (ent.Comp.Scp106HasPortals >= ent.Comp.MaxScp106Portals)
         {
-            _popup.PopupEntity(Loc.GetString("Достигнуто максимальное количество порталов"), uid, PopupType.Medium);
+            _popup.PopupEntity(Loc.GetString("Достигнуто максимальное количество порталов"), ent, PopupType.Medium);
             return;
         }
 
-        var doAfterArgs = new DoAfterArgs(EntityManager, uid, TimeSpan.FromSeconds(3), new Scp106CreatePortalEvent(), uid)
+        var doAfterArgs = new DoAfterArgs(EntityManager, ent, TimeSpan.FromSeconds(3), new Scp106CreatePortalEvent(), ent)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
@@ -133,221 +95,65 @@ public abstract class SharedScp106System : EntitySystem
         _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
-    private void OnScp106PassThroughAction(EntityUid uid,
-        Scp106PhantomComponent component,
-        Scp106PassThroughAction args)
+    private void OnBecomeTeleportPhantomAction(Entity<Scp106Component> ent, ref Scp106BecomeTeleportPhantomAction args)
     {
-        if (args.Handled)
-            return;
-        if (!TryComp<FixturesComponent>(uid, out var fixturesComponent))
-            return;
-
-        foreach (var (id, fixture) in fixturesComponent.Fixtures)
+        if (ent.Comp.IsContained)
         {
-            _physics.SetCollisionMask(uid, id, fixture, (int) CollisionGroup.GhostImpassable);
-            _physics.SetCollisionLayer(uid, id, fixture, (int) CollisionGroup.GhostImpassable);
+            _popup.PopupEntity("Ваши способности подавлены", ent, ent, PopupType.SmallCaution);
+            return;
         }
 
-        var doAfterEventArgs = new DoAfterArgs(EntityManager,
-            uid,
-            TimeSpan.FromSeconds(4),
-            new Scp106PassThroughActionEvent(),
-            uid)
+        var essence = ent.Comp.Essence;
+
+        if (essence < 30)
         {
-            BreakOnDropItem = false,
-            BreakOnMove = false,
-            BreakOnDamage = false,
-            BreakOnHandChange = false,
-            BreakOnWeightlessMove = false,
-        };
-        _doAfter.TryStartDoAfter(doAfterEventArgs);
-        args.Handled = true;
+            _popup.PopupEntity($"Недостаточно {30 - essence} эссенции!", ent, PopupType.Large);
+            return;
+        }
+
+        ent.Comp.Essence -= 30;
+        Dirty(ent);
+
+        BecomeTeleportPhantom(ent);
     }
 
-    private void OnScp106PassThroughActionEvent(EntityUid uid,
-        Scp106PhantomComponent component,
-        Scp106PassThroughActionEvent args)
-    {
-        if (!TryComp<FixturesComponent>(uid, out var fixturesComponent))
-            return;
-
-        foreach (var (id, fixture) in fixturesComponent.Fixtures)
-        {
-            _physics.SetCollisionMask(uid, id, fixture, (int) CollisionGroup.SmallMobMask);
-            _physics.SetCollisionLayer(uid, id, fixture, (int) CollisionGroup.MobLayer);
-        }
-    }
-
-    private void OnBecomeTeleportPhantomAction(EntityUid uid,
-        Scp106Component component,
-        Scp106BecomeTeleportPhantomAction args)
-    {
-        if (component.IsContained)
-        {
-            _popup.PopupEntity("Ваши способности подавлены", uid, uid, PopupType.SmallCaution);
-            return;
-        }
-
-        if (component.Essence < 30)
-        {
-            _popup.PopupEntity($"Недостаточно {30 - component.Essence} эссенции!", uid, PopupType.Large);
-            return;
-        }
-
-        component.Essence -= 30;
-        Dirty(uid, component);
-
-        if (!_serverNetManager.IsServer)
-            return;
-
-        var phantom = Spawn("Scp106CorporealPhantom", Transform(uid).Coordinates);
-
-        if (_mindSystem.TryGetMind(uid, out var mindId, out var _))
-            _mindSystem.TransferTo(mindId, phantom);
-
-        if (TryComp<Scp106PhantomComponent>(phantom, out var scp106PhantomComponent))
-            scp106PhantomComponent.Scp106BodyUid = uid;
-
-        var doAfterEventArgs = new DoAfterArgs(EntityManager,
-            uid,
-            TimeSpan.FromSeconds(5),
-            new Scp106BecomeTeleportPhantomActionEvent(),
-            phantom)
-        {
-            BreakOnMove = false,
-            BreakOnDamage = true,
-        };
-
-        _appearanceSystem.SetData(uid, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
-
-        _doAfter.TryStartDoAfter(doAfterEventArgs);
-    }
-
-    private void OnBecomeTeleportPhantomActionEvent(EntityUid uid,
-        Scp106PhantomComponent component,
-        Scp106BecomeTeleportPhantomActionEvent args)
+    private void OnBecomeTeleportPhantomActionEvent(Entity<Scp106PhantomComponent> ent, ref Scp106BecomeTeleportPhantomActionEvent args)
     {
         if (args.Cancelled)
         {
             if (args.Args.EventTarget == null)
                 return;
 
-            if (_mindSystem.TryGetMind(args.Args.EventTarget.Value, out var mindId, out var _))
+            if (_mind.TryGetMind(args.Args.EventTarget.Value, out var mindId, out _))
             {
-                _mindSystem.TransferTo(mindId, args.Args.User);
-                _appearanceSystem.SetData(args.Args.User, Scp106Visuals.Visuals, Scp106VisualsState.Default);
-                _mobStateSystem.ChangeMobState(args.Args.EventTarget.Value, MobState.Dead);
+                _mind.TransferTo(mindId, args.Args.User);
+                _appearance.SetData(args.Args.User, Scp106Visuals.Visuals, Scp106VisualsState.Default);
+                _mob.ChangeMobState(args.Args.EventTarget.Value, MobState.Dead);
+
                 return;
             }
-
         }
 
         if (PhantomTeleport(args))
             args.Handled = true;
     }
 
-    private void OnScp106LeavePhantomAction(EntityUid uid,
-        Scp106PhantomComponent component,
-        Scp106LeavePhantomAction args)
-    {
-        if (!TryComp<MobThresholdsComponent>(uid, out var _))
-            return;
-
-        if (!_mob.TryGetThresholdForState(uid, MobState.Dead, out var damage))
-            return;
-
-        var damageType = _prototypeManager.Index<DamageTypePrototype>("Blunt");
-
-        // Временное значение +100 к урону из-за системы DamageModifier
-        _damageable.TryChangeDamage(uid, new DamageSpecifier(damageType, damage.Value + FixedPoint2.New(100)), true);
-    }
-
-    private void OnScp106ReverseAction(EntityUid uid, Scp106PhantomComponent component, Scp106ReverseAction args)
-    {
-        var doAfter = new DoAfterArgs(EntityManager,
-            uid,
-            TimeSpan.FromSeconds(3),
-            new Scp106ReverseActionEvent(),
-            eventTarget: uid,
-            target: args.Target)
-        {
-            BreakOnDamage = true,
-            BreakOnMove = true,
-        };
-
-        _doAfter.TryStartDoAfter(doAfter);
-    }
-
-    private void OnScp106ReverseActionEvent(EntityUid uid,
-        Scp106PhantomComponent component,
-        Scp106ReverseActionEvent args)
-    {
-        if (!_serverNetManager.IsServer)
-            return;
-
-        if (args.Cancelled)
-            return;
-
-        if (args.Args.Target != null)
-        {
-            var target = args.Args.Target.Value;
-
-            if (!HasComp<HumanoidAppearanceComponent>(target))
-                return;
-
-            if (!TryComp<MobStateComponent>(target, out var mobStateComponent))
-                return;
-
-            if (mobStateComponent.CurrentState != MobState.Dead)
-                return;
-
-            var targetPos = Transform(target).Coordinates;
-
-            _sharedTransform.SetCoordinates(component.Scp106BodyUid, targetPos);
-            SendToBackrooms(target);
-
-            if (args.Args.EventTarget == null)
-                return;
-
-            _mobStateSystem.ChangeMobState(args.Args.EventTarget.Value, MobState.Dead);
-        }
-    }
-
-    private void OnScp106BecomePhantomAction(EntityUid uid, Scp106Component component, Scp106BecomePhantomAction args)
+    private void OnScp106BecomePhantomAction(Entity<Scp106Component> ent, ref Scp106BecomePhantomAction args)
     {
         if (args.Handled)
             return;
 
-        if (component.Essence < 30)
+        if (ent.Comp.Essence < 30)
         {
-            _popup.PopupEntity($"Недостаточно {30 - component.Essence} эссенции!", uid, PopupType.Large);
+            _popup.PopupEntity($"Недостаточно {30 - ent.Comp.Essence} эссенции!", ent, PopupType.Large);
+
             return;
         }
 
-        component.Essence -= 30;
-        Dirty(uid, component);
+        ent.Comp.Essence -= 30;
+        Dirty(ent);
 
-        if (!_serverNetManager.IsServer)
-            return;
-
-        var pos = Transform(uid).Coordinates;
-
-        var scp106Phantom = Spawn("Scp106Phantom", pos);
-
-        if (_mindSystem.TryGetMind(uid, out var mindId, out _))
-        {
-            _mindSystem.TransferTo(mindId, scp106Phantom);
-            Dirty(uid, component);
-        }
-        if (!TryComp<Scp106PhantomComponent>(scp106Phantom, out var scp106PhantomComponent))
-            return;
-
-        scp106PhantomComponent.Scp106BodyUid = uid;
-        args.Handled = true;
-
-        args.Action.Comp.UseDelay = component.PhantomCoolDown;
-
-        Dirty(uid, component);
+        BecomePhantom(ent, ref args);
     }
 
 	private void OnBackroomsAction(Entity<Scp106Component> ent, ref Scp106BackroomsAction args)
@@ -386,7 +192,7 @@ public abstract class SharedScp106System : EntitySystem
             RequireCanInteract = false,
         };
         _doAfter.TryStartDoAfter(doAfterEventArgs);
-        _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
+        _appearance.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
 
         args.Handled = true;
     }
@@ -422,28 +228,27 @@ public abstract class SharedScp106System : EntitySystem
 
         _stun.TryStun(ent, TimeSpan.FromSeconds(5.5), false);
         _doAfter.TryStartDoAfter(doAfterEventArgs);
-        _appearanceSystem.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
+        _appearance.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
 
         args.Handled = true;
     }
 
 	private void OnBackroomsDoAfter(Entity<Scp106Component> ent, ref Scp106BackroomsActionEvent args)
 	{
+        if (args.Cancelled)
+            return;
+
+
         DoTeleportEffects(ent);
-
-		if (args.Cancelled)
-			return;
-
-        SendToBackrooms(args.User);
+        SendToBackrooms(ent);
     }
 
 	private void OnTeleportDoAfter(Entity<Scp106Component> ent, ref Scp106RandomTeleportActionEvent args)
     {
+        if (args.Cancelled)
+            return;
+
         DoTeleportEffects(ent);
-
-		if (args.Cancelled)
-			return;
-
         SendToStation(ent);
     }
 
@@ -457,7 +262,7 @@ public abstract class SharedScp106System : EntitySystem
 
     private void OnMeleeHit(Entity<Scp106Component> ent, ref MeleeHitEvent args)
     {
-        if (TryComp<Scp106BackRoomMapComponent>(Transform(ent).MapUid, out var _))
+        if (TryComp<Scp106BackRoomMapComponent>(Transform(ent).MapUid, out _))
         {
             args.BonusDamage = args.BaseDamage * 3;
         }
@@ -480,17 +285,22 @@ public abstract class SharedScp106System : EntitySystem
         }
     }
 
-    public virtual async void SendToBackrooms(EntityUid target, EntityUid? scp106 = null) {}
+    public virtual async void SendToBackrooms(EntityUid target, Entity<Scp106Component>? scp106 = null) {}
 
-    public virtual void SendToStation(EntityUid target) {}
+    public abstract void SendToStation(EntityUid target);
 
+    // TODO: Реализовать
     public virtual void SendToHuman(EntityUid target) {}
 
     public virtual bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args) { return false; }
 
-    public virtual void Scp106FinishTeleportation(EntityUid uid) {}
+    public abstract void Scp106FinishTeleportation(EntityUid uid);
 
-    public virtual void Scp106SpawnPortal(EntityUid uid, Scp106Component component){}
+    public abstract void BecomeTeleportPhantom(EntityUid uid);
+
+    public abstract void BecomePhantom(Entity<Scp106Component> ent, ref Scp106BecomePhantomAction args);
+
+    public abstract void Scp106SpawnPortal(Entity<Scp106Component> ent);
 }
 
 [NetSerializable, Serializable]
@@ -498,5 +308,5 @@ public enum Scp106VisualLayers : byte
 {
     Digit1,
     Digit2,
-    Digit3
+    Digit3,
 }
