@@ -1,0 +1,11 @@
+﻿- type: entity
+  id: ScpWindoor
+  parent: ScpBaseWindoor
+  name: windoor
+  description: It's a window and a sliding door. Wow!
+
+- type: entity
+  id: ScpWindoorSecure
+  parent: ScpBaseSecureWindoor
+  name: secure windoor
+  description: It's a sturdy window and a sliding door. Wow!
