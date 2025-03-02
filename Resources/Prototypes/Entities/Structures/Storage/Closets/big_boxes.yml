@@ -30,12 +30,14 @@
       openOnMove: false
       airtight: false
       capacity: 5 #5 entity capacity to fit all of your friends (or teammates on your nuclear operation without reinforcements).
+      # Fire added start
       whitelist:
         components:
         - MobState
       blacklist:
         components:
         - Scp
+      # Fire added end
     - type: ContainerContainer
       containers:
         entity_storage: !type:Container
