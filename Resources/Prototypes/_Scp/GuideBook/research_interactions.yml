@@ -1,0 +1,13 @@
+﻿# TODO: Иконки в гайдбуки. Нужно написать на санрайзе тег берущий спрайт из указанного EntProtoId
+
+- type: guideEntry
+  id: ScpResearch
+  name: guide-entry-scp-research
+  text: "/ServerInfo/_Scp/Guidebook/Research/Research.xml"
+  children:
+  - ScpResearchAdvanced
+
+- type: guideEntry
+  id: ScpResearchAdvanced
+  name: guide-entry-scp-research-advanced
+  text: "/ServerInfo/_Scp/Guidebook/Research/ResearchAdvanced.xml"

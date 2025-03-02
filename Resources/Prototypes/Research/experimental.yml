@@ -13,7 +13,8 @@
     Scp: 2500
   recipeUnlocks:
   - ProximitySensor
-  - ExosuitFabricatorMachineCircuitboard
+  - Nanopaste # Sunrise-Add
+  - HandheldRoboAnalyzer # Sunrise-Add
 
 - type: technology
   id: BasicAnomalousResearch

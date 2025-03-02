@@ -1,0 +1,7 @@
+﻿# non-stealth Chaos stuff
+- type: entity
+  id: BaseChaosContraband
+  abstract: true
+  components:
+  - type: Contraband
+    severity: Chaos

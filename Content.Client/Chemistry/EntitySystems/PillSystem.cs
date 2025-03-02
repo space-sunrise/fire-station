@@ -13,6 +13,11 @@ public sealed class PillSystem : EntitySystem
 
     private void OnHandleState(EntityUid uid, PillComponent component, ref AfterAutoHandleStateEvent args)
     {
+        // Fire edit start - поддержка нестандартных спрайтов пилюль
+        if (!component.UseStandardVisuals)
+            return;
+        // Fire edit end
+
         if (!TryComp(uid, out SpriteComponent? sprite))
             return;
 

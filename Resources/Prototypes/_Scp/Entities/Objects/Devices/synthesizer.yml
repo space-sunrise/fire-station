@@ -60,4 +60,7 @@
         base:
           True: { state: working }
           False: { state: icon }
+  - type: GuideHelp
+    guides:
+    - ScpResearchAdvanced
 

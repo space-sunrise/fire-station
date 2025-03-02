@@ -1,0 +1,17 @@
+﻿- type: npcFaction
+  id: Chaos
+  hostile:
+  - NanoTrasen
+  - SimpleHostile
+  - Xeno
+  - PetsNT
+  - Zombie
+  - AllHostile
+  - Wizard
+  # Sunrise Edit
+  - Thief
+  - Carps
+  - Changeling
+  - Vampire
+  - FleshHuman
+  - Flesh

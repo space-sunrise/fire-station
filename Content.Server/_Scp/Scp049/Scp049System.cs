@@ -29,7 +29,12 @@ public sealed partial class Scp049System : SharedScp049System
         if (args.Cancelled || args.Handled)
             return;
 
-        var mobStateComponent = Comp<MobStateComponent>(args.Target!.Value);
+        if (!args.Target.HasValue)
+            return;
+
+        if (!TryComp<MobStateComponent>(args.Target, out var mobStateComponent))
+            return;
+
         var mobStateEntity = new Entity<MobStateComponent>(args.Target.Value, mobStateComponent);
 
         scpEntity.Comp.NextTool = _random.Pick(scpEntity.Comp.SurgeryTools);

@@ -2,6 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 using Content.Server.Access.Systems;
 using Content.Server.Forensics;
 using Content.Shared.Access.Components;
+using Content.Shared.Forensics.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Inventory;
 using Content.Shared.PDA;
@@ -149,11 +150,14 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
 
         // when adding a record that already exists use the old one
         // this happens when respawning as the same character
+
+        /* Fire edit - чтобы сцп(которых всех зовут ???) отображались в манифесте
         if (GetRecordByName(station, name, records) is {} id)
         {
             SetIdKey(idUid, new StationRecordKey(id, station));
             return;
         }
+        */
 
         var record = new GeneralStationRecord()
         {

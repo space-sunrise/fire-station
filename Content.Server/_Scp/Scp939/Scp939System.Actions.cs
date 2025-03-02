@@ -35,7 +35,7 @@ public sealed partial class Scp939System
         args.Handled = TrySleep(ent);
     }
 
-    private bool TrySleep(Entity<Scp939Component> ent, float hibernationDuration = 0)
+    public bool TrySleep(Entity<Scp939Component> ent, float hibernationDuration = 0)
     {
         if (HasComp<SleepingComponent>(ent))
             return false;

@@ -12,7 +12,7 @@
   name: dwarf liver
   components:
   - type: Metabolizer
-    metabolizerTypes: [Dwarf]
+    metabolizerTypes: [Human] #fire-station fix
 
 - type: entity
   id: OrganDwarfStomach
@@ -32,7 +32,9 @@
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
   - type: Stomach
-  - type: Metabolizer
-    # mm very yummy
-    maxReagents: 5
-    metabolizerTypes: [Dwarf]
+# fire-station start
+#  - type: Metabolizer
+#    # mm very yummy
+#    maxReagents: 5
+#    metabolizerTypes: [Dwarf]
+# fire-station end

@@ -1,7 +1,7 @@
 - type: gameMap
   id: SCPFoundationDelta
   mapName: 'Delta SCP Foundation'
-  mapPath: /Maps/_Fire/delta_scpmap.yml
+  mapPath: /Maps/_Scp/delta_scpmap.yml
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 0
