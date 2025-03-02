@@ -407,11 +407,11 @@ public sealed class Scp106System : SharedScp106System
         }
 
         EnsureComp<HandsComponent>(ent);
-        _hands.AddHand(ent, "middle", HandLocation.Middle);
+        _hands.AddHand(ent, "right", HandLocation.Middle);
         var sword = Spawn(args.Prototype, Transform(ent).Coordinates);
 
         ent.Comp.Sword = sword;
-        _hands.TryPickup(ent, sword, "middle");
+        _hands.TryPickup(ent, sword, "right");
 
         ent.Comp.HandTransformed = true;
     }
