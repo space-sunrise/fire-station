@@ -59,7 +59,6 @@ public sealed class Scp106System : SharedScp106System
 
     private static readonly FixedPoint2 EssenceRate = 1f;
     private static readonly TimeSpan AddEssenceCooldown = TimeSpan.FromSeconds(1);
-    private TimeSpan _nextEssenceAddedTime;
 
     private const int HumansInBackroomsRequiredToAscent = 10;
     private static readonly TimeSpan AnnounceAfter = TimeSpan.FromMinutes(5f);
@@ -86,7 +85,6 @@ public sealed class Scp106System : SharedScp106System
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseActionEvent>(OnScp106ReverseActionEvent);
 
         #endregion
-
 
         #region Store & Its abilities
 
@@ -118,6 +116,8 @@ public sealed class Scp106System : SharedScp106System
         var marks = SearchForMarks();
         if (marks.Count == 0)
             _ = _stairs.GenerateFloor();
+
+        ent.Comp.NextEssenceAddedTime = _timing.CurTime;
     }
 
     public override void Update(float frameTime)
@@ -126,15 +126,16 @@ public sealed class Scp106System : SharedScp106System
 
         var queryScp106 = AllEntityQuery<Scp106Component>();
 
+        // TODO: Поддержка нескольких 106 через хранение значения в компоненте
         while (queryScp106.MoveNext(out var uid, out var component))
         {
-            if (_nextEssenceAddedTime < _timing.CurTime)
+            if (component.NextEssenceAddedTime > _timing.CurTime)
                 continue;
 
             component.Essence += EssenceRate;
             Dirty(uid, component);
 
-            _nextEssenceAddedTime += _timing.CurTime + AddEssenceCooldown;
+            component.NextEssenceAddedTime = _timing.CurTime + AddEssenceCooldown;
         }
     }
 
@@ -365,7 +366,7 @@ public sealed class Scp106System : SharedScp106System
 
     private void Scp106FinishTeleportation(EntityUid uid, TimeSpan teleportationDelay)
     {
-        _stun.TryStun(uid, teleportationDelay, true);
+        _stun.TryStun(uid, teleportationDelay + TeleportTimeCompensation, true);
         _appearance.SetData(uid, Scp106Visuals.Visuals, Scp106VisualsState.Exiting);
 
         var doAfterEventArgs = new DoAfterArgs(EntityManager, uid, teleportationDelay, new Scp106TeleportationDelayActionEvent(), uid)

@@ -34,7 +34,7 @@ public abstract partial class SharedScp106System : EntitySystem
     private readonly SoundSpecifier _teleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
 
     private const float DamageInPocketDimensionMultiplier = 3f;
-    private static readonly TimeSpan TeleportTimeCompensation = TimeSpan.FromSeconds(0.5f);
+    protected static readonly TimeSpan TeleportTimeCompensation = TimeSpan.FromSeconds(0.5f);
 
     public override void Initialize()
     {
@@ -190,7 +190,6 @@ public abstract partial class SharedScp106System : EntitySystem
         if (args.Cancelled)
             return;
 
-
         DoTeleportEffects(ent);
         SendToBackrooms(ent);
     }
@@ -242,7 +241,7 @@ public abstract partial class SharedScp106System : EntitySystem
         if (ent.Comp.Essence < cost)
         {
             var message = Loc.GetString("not-enough-essence", ("count", cost - ent.Comp.Essence));
-            _popup.PopupEntity(message, ent, PopupType.Medium);
+            _popup.PopupClient(message, ent, PopupType.Medium);
 
             return false;
         }
@@ -257,27 +256,28 @@ public abstract partial class SharedScp106System : EntitySystem
     {
         if (ent.Comp.IsContained)
         {
-            _popup.PopupEntity("Ваши способности подавлены", ent.Owner, ent.Owner, PopupType.SmallCaution);
-            return false;
+            _popup.PopupClient("Ваши способности подавлены", ent.Owner, ent.Owner, PopupType.SmallCaution);
+
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     public virtual async void SendToBackrooms(EntityUid target, Entity<Scp106Component>? scp106 = null) {}
 
-    public abstract void SendToStation(EntityUid target);
+    public virtual void SendToStation(EntityUid target) {}
 
     // TODO: Реализовать
     public virtual void SendToHuman(EntityUid target) {}
 
     public virtual bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args) { return false; }
 
-    public abstract void BecomeTeleportPhantom(EntityUid uid, ref Scp106BecomeTeleportPhantomAction args);
+    public virtual void BecomeTeleportPhantom(EntityUid uid, ref Scp106BecomeTeleportPhantomAction args) {}
 
-    public abstract void BecomePhantom(Entity<Scp106Component> ent, ref Scp106BecomePhantomAction args);
+    public virtual void BecomePhantom(Entity<Scp106Component> ent, ref Scp106BecomePhantomAction args) {}
 
-    public abstract void Scp106SpawnPortal(Entity<Scp106Component> ent, ref Scp106CreatePortalEvent args);
+    public virtual void Scp106SpawnPortal(Entity<Scp106Component> ent, ref Scp106CreatePortalEvent args) {}
 }
 
 [NetSerializable, Serializable]

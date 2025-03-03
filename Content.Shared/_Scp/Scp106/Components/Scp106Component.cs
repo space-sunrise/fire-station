@@ -26,6 +26,8 @@ public sealed partial class Scp106Component : Component
     [AutoNetworkedField]
     public FixedPoint2 Essence = 0f;
 
+    public TimeSpan NextEssenceAddedTime;
+
     [DataField]
     public ProtoId<AlertPrototype> Scp106EssenceAlert { get; set; } = "Scp106LifeEssence";
 
