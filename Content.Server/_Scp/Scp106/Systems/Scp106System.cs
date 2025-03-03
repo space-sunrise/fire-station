@@ -30,6 +30,7 @@ using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -56,10 +57,20 @@ public sealed class Scp106System : SharedScp106System
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
+    private static readonly FixedPoint2 EssenceRate = 1f;
     private static readonly TimeSpan AddEssenceCooldown = TimeSpan.FromSeconds(1);
     private TimeSpan _nextEssenceAddedTime;
 
+    private const int HumansInBackroomsRequiredToAscent = 10;
+    private static readonly TimeSpan AnnounceAfter = TimeSpan.FromMinutes(5f);
+
+    private static readonly TimeSpan AscentStunTime = TimeSpan.FromSeconds(5f);
+    private static readonly TimeSpan AscentJitterTime = TimeSpan.FromSeconds(15f);
+    private static readonly TimeSpan AscentStutterTime = TimeSpan.FromSeconds(30f);
+
     private readonly SoundSpecifier _sendBackroomsSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/onbackrooms.ogg");
+
+    private static readonly EntProtoId PortalPrototype = "Scp106Portal";
 
     public override void Initialize()
     {
@@ -82,21 +93,22 @@ public sealed class Scp106System : SharedScp106System
         SubscribeLocalEvent<Scp106Component, Scp106ShopAction>(OnShop);
 
         // Abilities in that store - I love lambdas >:)
-        SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106BoughtPhantomAction _) =>
-            _actions.AddAction(ent, ent.Comp.PhantomAction));
-        SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106OnUpgradePhantomAction _) =>
-            ent.Comp.PhantomCoolDown -= TimeSpan.FromSeconds(60));
-        SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106BoughtBareBladeAction _) =>
-            _actions.AddAction(ent, "Scp106BareBlade"));
-        SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106BoughtCreatePortal _) =>
-            _actions.AddAction(ent, "CreatePortalAction"));
+
+        // TODO: Проверка на хендхелд и кенселед
+        SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106BoughtPhantomAction args) =>
+            _actions.AddAction(ent, args.BoughtAction));
+        SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106OnUpgradePhantomAction args) =>
+            ent.Comp.PhantomCoolDown -= args.CooldownReduce);
+        SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106BoughtBareBladeAction args) =>
+            _actions.AddAction(ent, args.BoughtAction));
+        SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106BoughtCreatePortal args) =>
+            _actions.AddAction(ent, args.BoughtAction));
 
         SubscribeLocalEvent<Scp106Component, Scp106BareBladeAction>(OnScp106BareBladeAction);
 
         #endregion
 
-        SubscribeLocalEvent((Entity<Scp106Component> ent, ref Scp106TeleporationDelayActionEvent _) =>
-            _appearance.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Default));
+        SubscribeLocalEvent<Scp106Component, Scp106TeleportationDelayActionEvent>(OnTeleportationDelay);
     }
 
     private void OnMapInit(Entity<Scp106Component> ent, ref MapInitEvent args)
@@ -119,7 +131,7 @@ public sealed class Scp106System : SharedScp106System
             if (_nextEssenceAddedTime < _timing.CurTime)
                 continue;
 
-            component.Essence += 1;
+            component.Essence += EssenceRate;
             Dirty(uid, component);
 
             _nextEssenceAddedTime += _timing.CurTime + AddEssenceCooldown;
@@ -175,19 +187,19 @@ public sealed class Scp106System : SharedScp106System
         _mobState.ChangeMobState(args.Args.EventTarget.Value, MobState.Dead);
     }
 
-    public override void BecomeTeleportPhantom(EntityUid uid)
+    public override void BecomeTeleportPhantom(EntityUid uid, ref Scp106BecomeTeleportPhantomAction args)
     {
         if (!_mind.TryGetMind(uid, out var mindId, out _))
             return;
 
-        var phantom = Spawn("Scp106CorporealPhantom", Transform(uid).Coordinates);
+        var phantom = Spawn(args.PhantomPrototype, Transform(uid).Coordinates);
 
         _mind.TransferTo(mindId, phantom);
 
         if (TryComp<Scp106PhantomComponent>(phantom, out var scp106PhantomComponent))
             scp106PhantomComponent.Scp106BodyUid = uid;
 
-        var doAfterEventArgs = new DoAfterArgs(EntityManager, uid, TimeSpan.FromSeconds(5), new Scp106BecomeTeleportPhantomActionEvent(), phantom)
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, uid, args.Delay, new Scp106BecomeTeleportPhantomActionEvent(), phantom)
         {
             BreakOnMove = false,
             BreakOnDamage = true,
@@ -200,7 +212,7 @@ public sealed class Scp106System : SharedScp106System
 
     public override void BecomePhantom(Entity<Scp106Component> ent, ref Scp106BecomePhantomAction args)
     {
-        var scp106Phantom = Spawn("Scp106Phantom", Transform(ent).Coordinates);
+        var scp106Phantom = Spawn(args.PhantomPrototype, Transform(ent).Coordinates);
 
         if (_mind.TryGetMind(ent, out var mindId, out _))
             _mind.TransferTo(mindId, scp106Phantom);
@@ -219,14 +231,13 @@ public sealed class Scp106System : SharedScp106System
 
     #region Abilities
 
-    public override void Scp106SpawnPortal(Entity<Scp106Component> ent)
+    public override void Scp106SpawnPortal(Entity<Scp106Component> ent, ref Scp106CreatePortalEvent args)
     {
-        ent.Comp.Scp106HasPortals += 1;
-        ent.Comp.Essence -= 200;
+        ent.Comp.Scp106HasPortals ++;
 
         Dirty(ent);
 
-        var portalUid = Spawn("Scp106Portal", Transform(ent).Coordinates);
+        var portalUid = Spawn(PortalPrototype, Transform(ent).Coordinates);
         Comp<Scp106PortalSpawnerComponent>(portalUid).Scp106 = ent;
     }
 
@@ -242,24 +253,22 @@ public sealed class Scp106System : SharedScp106System
             return false;
 
         var scp106 = phantomComponent.Scp106BodyUid;
-        _mind.TransferTo(mindId, scp106);
 
         if (!Exists(scp106))
             return false;
 
-        var phantomPos = Transform(phantom).Coordinates;
-
         if (!TryComp<Scp106Component>(scp106, out var scp106Component))
             return false;
 
-        scp106Component.Essence -= 10;
-        Dirty(scp106.Value, scp106Component);
+        _mind.TransferTo(mindId, scp106);
+
+        var phantomPos = Transform(phantom).Coordinates;
 
         _transform.SetCoordinates(scp106.Value, phantomPos);
 
         Del(phantom);
 
-        Scp106FinishTeleportation(scp106.Value);
+        Scp106FinishTeleportation(scp106.Value, scp106Component.TeleportationDuration);
 
         return true;
     }
@@ -268,18 +277,18 @@ public sealed class Scp106System : SharedScp106System
 
     #region Teleport and related code
 
-        public override async void SendToBackrooms(EntityUid target, Entity<Scp106Component>? scp106 = null)
+    public override async void SendToBackrooms(EntityUid target, Entity<Scp106Component>? scp106 = null)
     {
         // You already here.
         if (HasComp<Scp106BackRoomMapComponent>(Transform(target).MapUid))
             return;
 
-        if (HasComp<Scp106Component>(target))
+        if (TryComp<Scp106Component>(target, out var scp106Component))
         {
             var a = await GetTransferMark();
             _transform.SetCoordinates(target, a);
             _transform.AttachToGridOrMap(target);
-            Scp106FinishTeleportation(target);
+            Scp106FinishTeleportation(target, scp106Component.TeleportationDuration);
 
             return;
         }
@@ -318,10 +327,10 @@ public sealed class Scp106System : SharedScp106System
             humansInBackrooms += 1;
         }
 
-        if (humansInBackrooms < 10)
+        if (humansInBackrooms < HumansInBackroomsRequiredToAscent)
             return false;
 
-        Timer.Spawn(TimeSpan.FromSeconds(600), () =>
+        Timer.Spawn(AnnounceAfter, () =>
         {
             OnAscent(scp106);
         });
@@ -331,17 +340,18 @@ public sealed class Scp106System : SharedScp106System
 
     private void OnAscent(Entity<Scp106Component> scp106)
     {
+        // TODO: Отдельный режим через геймрул с нашействием через порталы и крутым амбиентом
         var statusEffectQuery = EntityQueryEnumerator<HumanoidAppearanceComponent, StatusEffectsComponent>();
         while (statusEffectQuery.MoveNext(out var human, out _, out _))
         {
-            _stun.TryParalyze(human, TimeSpan.FromSeconds(5), true);
-            _jittering.DoJitter(human, TimeSpan.FromSeconds(15), true);
-            _stuttering.DoStutter(human, TimeSpan.FromSeconds(30), true);
+            _stun.TryParalyze(human, AscentStunTime, true);
+            _jittering.DoJitter(human, AscentJitterTime, true);
+            _stuttering.DoStutter(human,AscentStutterTime, true);
 
             RaiseLocalEvent(human, new GhostBooEvent(), true);
         }
 
-        var message = Loc.GetString("scp-10-humans-in-backrooms-alarm-announcement");
+        var message = Loc.GetString("scp106-many-humans-in-backrooms-alarm-announcement");
         _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.Red);
 
         // TODO: Смена алерта на гамма
@@ -353,16 +363,12 @@ public sealed class Scp106System : SharedScp106System
             new AudioParams().WithVolume(-10));
     }
 
-    public override void Scp106FinishTeleportation(EntityUid uid)
+    private void Scp106FinishTeleportation(EntityUid uid, TimeSpan teleportationDelay)
     {
-        _stun.TryStun(uid, TimeSpan.FromSeconds(5), false);
+        _stun.TryStun(uid, teleportationDelay, true);
         _appearance.SetData(uid, Scp106Visuals.Visuals, Scp106VisualsState.Exiting);
 
-        var doAfterEventArgs = new DoAfterArgs(EntityManager,
-            uid,
-            TimeSpan.FromSeconds(5),
-            new Scp106TeleporationDelayActionEvent(),
-            uid)
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, uid, teleportationDelay, new Scp106TeleportationDelayActionEvent(), uid)
         {
             BreakOnDamage = false,
             BreakOnMove = false,
@@ -379,7 +385,19 @@ public sealed class Scp106System : SharedScp106System
 
         _transform.SetCoordinates(target, targetCoords);
         _transform.AttachToGridOrMap(target);
-        Scp106FinishTeleportation(target);
+
+        if (TryComp<Scp106Component>(target, out var scp106Component))
+            Scp106FinishTeleportation(target, scp106Component.TeleportationDuration);
+    }
+
+    private void OnTeleportationDelay(Entity<Scp106Component> ent, ref Scp106TeleportationDelayActionEvent args)
+    {
+        if (args.Cancelled || args.Handled)
+            return;
+
+        _appearance.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Default);
+
+        args.Handled = true;
     }
 
     #endregion

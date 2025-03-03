@@ -5,6 +5,7 @@
   components:
   - type: InstantAction
     event: !type:Scp106BackroomsAction
+      cost: 30
     raiseOnUser: true
     itemIconStyle: BigAction
     useDelay: 4
@@ -19,6 +20,7 @@
   components:
   - type: InstantAction
     event: !type:Scp106RandomTeleportAction
+      cost: 30
     raiseOnUser: true
     itemIconStyle: BigAction
     useDelay: 4
@@ -45,6 +47,9 @@
   components:
     - type: InstantAction
       event: !type:Scp106BecomeTeleportPhantomAction
+        phantomPrototype: Scp106CorporealPhantom
+        delay: 5
+        cost: 30
       itemIconStyle: BigAction
       icon:
         sprite: _Scp/Actions/scp106-actions.rsi
@@ -57,6 +62,8 @@
   components:
   - type: InstantAction
     event: !type:Scp106CreatePortalAction
+      delay: 3
+      cost: 120
     itemIconStyle: BigAction
     useDelay: 60
     icon:
@@ -72,6 +79,7 @@
   components:
   - type: EntityTargetAction
     event: !type:Scp106ReverseAction
+      delay: 3
     canTargetSelf: false
     itemIconStyle: BigAction
     useDelay: 60
@@ -103,6 +111,7 @@
   components:
   - type: InstantAction
     event: !type:Scp106PassThroughAction
+      delay: 4
     raiseOnUser: true
     itemIconStyle: BigAction
     useDelay: 15
@@ -136,6 +145,8 @@
   components:
   - type: InstantAction
     event: !type:Scp106BecomePhantomAction
+      phantomPrototype: Scp106Phantom
+      cost: 30
     raiseOnUser: true
     itemIconStyle: BigAction
     useDelay: 300

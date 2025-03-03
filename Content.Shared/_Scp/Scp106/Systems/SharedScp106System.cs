@@ -2,6 +2,7 @@
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Protection;
 using Content.Shared.DoAfter;
+using Content.Shared.FixedPoint;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -19,20 +20,21 @@ namespace Content.Shared._Scp.Scp106.Systems;
 public abstract partial class SharedScp106System : EntitySystem
 {
 	// TODO: SOUNDING, EFFECTS.
-    // TODO: Переместить требования к акшенам в прототип акшенов
 
 	[Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
 	[Dependency] private readonly SharedPopupSystem _popup = default!;
 	[Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly MobStateSystem _mob = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private readonly SoundSpecifier _teleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
 
+    private const float DamageInPocketDimensionMultiplier = 3f;
+    private static readonly TimeSpan TeleportTimeCompensation = TimeSpan.FromSeconds(0.5f);
 
     public override void Initialize()
     {
@@ -67,54 +69,44 @@ public abstract partial class SharedScp106System : EntitySystem
         if (args.Cancelled || args.Handled)
             return;
 
-        Scp106SpawnPortal(ent);
+        Scp106SpawnPortal(ent, ref args);
 
         args.Handled = true;
     }
 
     private void OnScp106CreatePortalAction(Entity<Scp106Component> ent, ref Scp106CreatePortalAction args)
     {
-        if (ent.Comp.Essence < 120)
-        {
-            _popup.PopupEntity(Loc.GetString("not-enough-essence", ( "count", 120 - ent.Comp.Essence)), ent, PopupType.Medium);
+        if (args.Handled)
             return;
-        }
+
+        if (TryDeductEssence(ent, args.Cost))
+            return;
 
         if (ent.Comp.Scp106HasPortals >= ent.Comp.MaxScp106Portals)
         {
             _popup.PopupEntity(Loc.GetString("Достигнуто максимальное количество порталов"), ent, PopupType.Medium);
+
             return;
         }
 
-        var doAfterArgs = new DoAfterArgs(EntityManager, ent, TimeSpan.FromSeconds(3), new Scp106CreatePortalEvent(), ent)
+        var doAfterArgs = new DoAfterArgs(EntityManager, ent, TimeSpan.FromSeconds(args.Delay), new Scp106CreatePortalEvent(), ent)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
         };
 
-        _doAfter.TryStartDoAfter(doAfterArgs);
+        args.Handled = _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
     private void OnBecomeTeleportPhantomAction(Entity<Scp106Component> ent, ref Scp106BecomeTeleportPhantomAction args)
     {
-        if (ent.Comp.IsContained)
-        {
-            _popup.PopupEntity("Ваши способности подавлены", ent, ent, PopupType.SmallCaution);
+        if (CheckIsContained(ent))
             return;
-        }
 
-        var essence = ent.Comp.Essence;
-
-        if (essence < 30)
-        {
-            _popup.PopupEntity($"Недостаточно {30 - essence} эссенции!", ent, PopupType.Large);
+        if (TryDeductEssence(ent, args.Cost))
             return;
-        }
 
-        ent.Comp.Essence -= 30;
-        Dirty(ent);
-
-        BecomeTeleportPhantom(ent);
+        BecomeTeleportPhantom(ent, ref args);
     }
 
     private void OnBecomeTeleportPhantomActionEvent(Entity<Scp106PhantomComponent> ent, ref Scp106BecomeTeleportPhantomActionEvent args)
@@ -143,81 +135,40 @@ public abstract partial class SharedScp106System : EntitySystem
         if (args.Handled)
             return;
 
-        if (ent.Comp.Essence < 30)
-        {
-            _popup.PopupEntity($"Недостаточно {30 - ent.Comp.Essence} эссенции!", ent, PopupType.Large);
-
+        if (TryDeductEssence(ent, args.Cost))
             return;
-        }
-
-        ent.Comp.Essence -= 30;
-        Dirty(ent);
 
         BecomePhantom(ent, ref args);
     }
 
 	private void OnBackroomsAction(Entity<Scp106Component> ent, ref Scp106BackroomsAction args)
     {
-        if (args.Handled)
-            return;
-
-        if (ent.Comp.IsContained)
-        {
-            _popup.PopupEntity("Ваши способности подавлены", ent.Owner, ent.Owner, PopupType.SmallCaution);
-            return;
-        }
-
         if (HasComp<Scp106BackRoomMapComponent>(Transform(ent).MapUid))
         {
             _popup.PopupEntity("Вы уже в своем измерении", ent.Owner, ent.Owner, PopupType.SmallCaution);
             return;
         }
 
-        if (ent.Comp.Essence < 30)
-        {
-            _popup.PopupEntity($"Недостаточно {30 - ent.Comp.Essence} эссенции!", ent, PopupType.Large);
-            return;
-        }
-
-        ent.Comp.Essence -= 30;
-        Dirty(ent, ent.Comp);
-
-        _stun.TryStun(ent, TimeSpan.FromSeconds(5.5), false);
-        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(5), new Scp106BackroomsActionEvent(), args.Performer, args.Performer)
-        {
-            NeedHand = false,
-            BreakOnMove = false,
-            BreakOnHandChange = false,
-            BreakOnDamage = false,
-            RequireCanInteract = false,
-        };
-        _doAfter.TryStartDoAfter(doAfterEventArgs);
-        _appearance.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
-
-        args.Handled = true;
+        TryDoTeleport(ent, ref args, new Scp106BackroomsActionEvent ());
     }
 
     private void OnRandomTeleportAction(Entity<Scp106Component> ent, ref Scp106RandomTeleportAction args)
     {
+        TryDoTeleport(ent, ref args, new Scp106RandomTeleportActionEvent ());
+    }
+
+    private bool TryDoTeleport<T>(Entity<Scp106Component> ent, ref T args, SimpleDoAfterEvent doAfterEvent) where T : Scp106ValuableActionEvent
+    {
         if (args.Handled)
-            return;
+            return false;
 
-        if (ent.Comp.IsContained)
-        {
-            _popup.PopupEntity("Ваши способности подавлены", ent.Owner, ent.Owner, PopupType.SmallCaution);
-            return;
-        }
+        if (CheckIsContained(ent))
+            return false;
 
-        if (ent.Comp.Essence < 30)
-        {
-            _popup.PopupEntity($"Недостаточно {30 - ent.Comp.Essence} эссенции!", ent, PopupType.Large);
-            return;
-        }
+        if (!TryDeductEssence(ent, args.Cost))
+            return false;
 
-        ent.Comp.Essence -= 30;
-        Dirty(ent, ent.Comp);
-
-        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, TimeSpan.FromSeconds(5), new Scp106RandomTeleportActionEvent(), args.Performer, args.Performer)
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, ent.Comp.TeleportationDuration, doAfterEvent, args.Performer, args.Performer)
         {
             NeedHand = false,
             BreakOnMove = true,
@@ -225,12 +176,13 @@ public abstract partial class SharedScp106System : EntitySystem
             BreakOnDamage = false,
             RequireCanInteract = false,
         };
-
-        _stun.TryStun(ent, TimeSpan.FromSeconds(5.5), false);
         _doAfter.TryStartDoAfter(doAfterEventArgs);
+
+        _stun.TryStun(ent, ent.Comp.TeleportationDuration + TeleportTimeCompensation, true);
         _appearance.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
 
         args.Handled = true;
+        return true;
     }
 
 	private void OnBackroomsDoAfter(Entity<Scp106Component> ent, ref Scp106BackroomsActionEvent args)
@@ -252,19 +204,11 @@ public abstract partial class SharedScp106System : EntitySystem
         SendToStation(ent);
     }
 
-    private void DoTeleportEffects(EntityUid uid)
-    {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        _audio.PlayEntity(_teleportSound, uid, uid);
-    }
-
     private void OnMeleeHit(Entity<Scp106Component> ent, ref MeleeHitEvent args)
     {
         if (TryComp<Scp106BackRoomMapComponent>(Transform(ent).MapUid, out _))
         {
-            args.BonusDamage = args.BaseDamage * 3;
+            args.BonusDamage = args.BaseDamage * DamageInPocketDimensionMultiplier;
         }
 
         if (!_timing.IsFirstTimePredicted)
@@ -285,6 +229,41 @@ public abstract partial class SharedScp106System : EntitySystem
         }
     }
 
+    private void DoTeleportEffects(EntityUid uid)
+    {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        _audio.PlayEntity(_teleportSound, uid, uid);
+    }
+
+    public bool TryDeductEssence(Entity<Scp106Component> ent, FixedPoint2 cost)
+    {
+        if (ent.Comp.Essence < cost)
+        {
+            var message = Loc.GetString("not-enough-essence", ("count", cost - ent.Comp.Essence));
+            _popup.PopupEntity(message, ent, PopupType.Medium);
+
+            return false;
+        }
+
+        ent.Comp.Essence -= cost;
+        Dirty(ent);
+
+        return true;
+    }
+
+    public bool CheckIsContained(Entity<Scp106Component> ent)
+    {
+        if (ent.Comp.IsContained)
+        {
+            _popup.PopupEntity("Ваши способности подавлены", ent.Owner, ent.Owner, PopupType.SmallCaution);
+            return false;
+        }
+
+        return true;
+    }
+
     public virtual async void SendToBackrooms(EntityUid target, Entity<Scp106Component>? scp106 = null) {}
 
     public abstract void SendToStation(EntityUid target);
@@ -294,13 +273,11 @@ public abstract partial class SharedScp106System : EntitySystem
 
     public virtual bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args) { return false; }
 
-    public abstract void Scp106FinishTeleportation(EntityUid uid);
-
-    public abstract void BecomeTeleportPhantom(EntityUid uid);
+    public abstract void BecomeTeleportPhantom(EntityUid uid, ref Scp106BecomeTeleportPhantomAction args);
 
     public abstract void BecomePhantom(Entity<Scp106Component> ent, ref Scp106BecomePhantomAction args);
 
-    public abstract void Scp106SpawnPortal(Entity<Scp106Component> ent);
+    public abstract void Scp106SpawnPortal(Entity<Scp106Component> ent, ref Scp106CreatePortalEvent args);
 }
 
 [NetSerializable, Serializable]

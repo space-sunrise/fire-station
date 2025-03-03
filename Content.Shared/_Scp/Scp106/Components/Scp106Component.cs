@@ -29,10 +29,9 @@ public sealed partial class Scp106Component : Component
     [DataField]
     public ProtoId<AlertPrototype> Scp106EssenceAlert { get; set; } = "Scp106LifeEssence";
 
-    [DataField]
-    public EntProtoId PhantomAction = "Scp106BecomePhantom";
-
     public TimeSpan PhantomCoolDown = TimeSpan.FromSeconds(300);
+
+    public TimeSpan TeleportationDuration = TimeSpan.FromSeconds(5);
 
     public float MaxScp106Portals = 3;
 
