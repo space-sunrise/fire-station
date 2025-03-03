@@ -1,4 +1,9 @@
-﻿using Robust.Shared.GameStates;
+﻿using Content.Shared._Scp.Mobs.Components;
+using Content.Shared.Alert;
+using Content.Shared.FixedPoint;
+using Content.Shared.Store;
+using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp106.Components;
 
@@ -11,9 +16,30 @@ public sealed partial class Scp106Component : Component
     /// </summary>
     [DataField] public bool IsContained;
 
-    [DataField, AutoNetworkedField]
-    public int AmoutOfPhantoms = 0;
-
     [AutoNetworkedField]
-    public float Accumulator = 0;
+    public float AnnouncementAccumulator = 600;
+
+    [DataField]
+    public ProtoId<CurrencyPrototype> LifeEssenceCurrencyPrototype = "LifeEssence";
+
+    [DataField, ViewVariables]
+    [AutoNetworkedField]
+    public FixedPoint2 Essence = 0f;
+
+    public TimeSpan NextEssenceAddedTime;
+
+    [DataField]
+    public ProtoId<AlertPrototype> Scp106EssenceAlert { get; set; } = "Scp106LifeEssence";
+
+    public TimeSpan PhantomCoolDown = TimeSpan.FromSeconds(300);
+
+    public TimeSpan TeleportationDuration = TimeSpan.FromSeconds(5);
+
+    public float MaxScp106Portals = 3;
+
+    public float Scp106HasPortals = 0;
+
+    public bool HandTransformed = false;
+
+    public EntityUid? Sword;
 }

@@ -203,9 +203,10 @@
           Exiting: { state: ded_from_lusha }
   - type: ActionGrant
     actions:
-    - Scp106BackroomsAction
+    - BecomeTeleportPhantomAction
     - Scp106RandomTeleportAction
-    - Scp106BecomePhantom
+    - Scp106BackroomsAction
+    - ActionScp106Shop
   - type: TTS
     voice: HearthstoneSotis
   - type: FootstepModifier
@@ -242,3 +243,18 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+  - type: Store
+    balance:
+      LifeEssence: 100
+    currencyWhitelist:
+    - LifeEssence
+    categories:
+    - Scp106Abilities
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: StatusEffects
+    allowed:
+    - Stun
+  - type: ComplexInteraction
