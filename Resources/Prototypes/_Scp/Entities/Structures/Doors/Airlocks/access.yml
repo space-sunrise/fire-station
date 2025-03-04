@@ -1,3 +1,30 @@
+﻿- type: entity
+  parent: HighSecDoor
+  id: HighSecScienceLocked
+  suffix: SCP Science, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsResearch ]
+
+- type: entity
+  parent: HighSecDoor
+  id: HighSecResearchDirectorLocked
+  suffix: SCP Research director, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsResearchDirector ]
+
+- type: entity
+  parent: HighSecDoor
+  id: HighSecSecurityLocked
+  suffix: SCP Security, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
+
 - type: entity
   parent: ScpAirlock
   id: ScpAirlockServiceLocked
