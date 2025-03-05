@@ -18,7 +18,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -48,7 +48,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -78,7 +78,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -108,7 +108,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -138,7 +138,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -168,7 +168,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -198,7 +198,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -228,7 +228,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -258,7 +258,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -288,7 +288,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -318,7 +318,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -348,7 +348,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -378,7 +378,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -408,7 +408,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -438,7 +438,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -466,7 +466,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -494,7 +494,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -524,7 +524,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -554,7 +554,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -580,7 +580,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -600,7 +600,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -630,7 +630,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -660,7 +660,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -690,7 +690,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -720,7 +720,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -748,7 +748,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -776,7 +776,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -806,7 +806,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -836,7 +836,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -862,7 +862,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -882,7 +882,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -912,7 +912,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -942,7 +942,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -972,7 +972,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1002,7 +1002,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1030,7 +1030,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1058,7 +1058,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1088,7 +1088,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1118,7 +1118,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1144,7 +1144,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1164,7 +1164,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1194,7 +1194,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1224,7 +1224,7 @@
   - 0.05
   - 0.05
   - 0.05
-  baseTurf: Plating
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:

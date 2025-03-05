@@ -155,7 +155,7 @@
   components:
   - type: Sprite
     sprite: _Scp/Objects/Tiles/tile.rsi
-    state: checker-light
+    state: checker_white
   - type: FloorTile
     outputs:
       - Plating
@@ -168,7 +168,7 @@
   components:
   - type: Sprite
     sprite: _Scp/Objects/Tiles/tile.rsi
-    state: checker-dark
+    state: checker_dark
   - type: FloorTile
     outputs:
       - Plating

@@ -11,7 +11,7 @@
       "name": "blue"
     },
     {
-      "name": "checker-dark"
+      "name": "checker_dark"
     },
     {
       "name": "checker_steel"
@@ -42,6 +42,9 @@
     },
     {
       "name": "department_ser"
+    },
+    {
+      "name": "department_atmos"
     },
     {
       "name": "green"
