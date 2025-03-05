@@ -1,4 +1,4 @@
-ent-MobNarsieBase = Нар'Си
+ent-MobNarsieBase = Алый Король
     .desc = Ваш разум закипает и бурлит, пытаясь осмыслить увиденное.
 ent-MobNarsieSpawn = { ent-MobNarsieBase }
     .suffix = Спавн

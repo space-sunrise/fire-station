@@ -1,4 +1,4 @@
-ent-MobNarsieBase = Nar'Sie
+ent-MobNarsieBase = Scarlet King
     .desc = Your mind begins to bubble and ooze as it tries to comprehend what it sees.
 ent-MobNarsieSpawn = { ent-MobNarsieBase }
     .suffix = Spawn
