@@ -68,6 +68,17 @@
   - ScpMtf5
   obeysTo: laws-owner-mtf
 
+- type: entity
+  id: ScpMtfCircuitBoard
+  parent: BaseElectronics
+  name: law board (MTF Directives)
+  description: An electronics board containing the MTF directives lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: ScpMtf
 
 # Chaos
 - type: siliconLaw
