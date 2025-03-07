@@ -8,6 +8,9 @@
     sprite: _Scp/Mobs/SCP-131.rsi
     state: SCP-131A
   - type: Muted
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral # нужно что бы турели не били их т.к. они мирные
   - type: MovementSpeedModifier
     baseWalkSpeed: 7
     baseSprintSpeed: 4
