@@ -16,8 +16,9 @@ public sealed partial class Scp106Component : Component
     /// </summary>
     [DataField] public bool IsContained;
 
-    [AutoNetworkedField]
-    public float AnnouncementAccumulator = 600;
+    public TimeSpan TeleportationDuration = TimeSpan.FromSeconds(5);
+
+    #region Abilities
 
     [DataField]
     public ProtoId<CurrencyPrototype> LifeEssenceCurrencyPrototype = "LifeEssence";
@@ -25,21 +26,19 @@ public sealed partial class Scp106Component : Component
     [DataField, ViewVariables]
     [AutoNetworkedField]
     public FixedPoint2 Essence = 0f;
-
     public TimeSpan NextEssenceAddedTime;
+
+    public TimeSpan PhantomCoolDown = TimeSpan.FromSeconds(300);
+
+    public int MaxScp106Portals = 3;
+    public int Scp106HasPortals = 0;
+
+    public bool HandTransformed = false;
+    public EntityUid? Sword;
+
+    #endregion
 
     [DataField]
     public ProtoId<AlertPrototype> Scp106EssenceAlert { get; set; } = "Scp106LifeEssence";
 
-    public TimeSpan PhantomCoolDown = TimeSpan.FromSeconds(300);
-
-    public TimeSpan TeleportationDuration = TimeSpan.FromSeconds(5);
-
-    public float MaxScp106Portals = 3;
-
-    public float Scp106HasPortals = 0;
-
-    public bool HandTransformed = false;
-
-    public EntityUid? Sword;
 }

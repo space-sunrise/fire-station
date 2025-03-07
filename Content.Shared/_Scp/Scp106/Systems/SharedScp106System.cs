@@ -79,7 +79,7 @@ public abstract partial class SharedScp106System : EntitySystem
         if (args.Handled)
             return;
 
-        if (TryDeductEssence(ent, args.Cost))
+        if (!TryDeductEssence(ent, args.Cost))
             return;
 
         if (ent.Comp.Scp106HasPortals >= ent.Comp.MaxScp106Portals)
@@ -103,7 +103,7 @@ public abstract partial class SharedScp106System : EntitySystem
         if (CheckIsContained(ent))
             return;
 
-        if (TryDeductEssence(ent, args.Cost))
+        if (!TryDeductEssence(ent, args.Cost))
             return;
 
         BecomeTeleportPhantom(ent, ref args);
@@ -135,7 +135,7 @@ public abstract partial class SharedScp106System : EntitySystem
         if (args.Handled)
             return;
 
-        if (TryDeductEssence(ent, args.Cost))
+        if (!TryDeductEssence(ent, args.Cost))
             return;
 
         BecomePhantom(ent, ref args);
@@ -143,9 +143,9 @@ public abstract partial class SharedScp106System : EntitySystem
 
 	private void OnBackroomsAction(Entity<Scp106Component> ent, ref Scp106BackroomsAction args)
     {
-        if (HasComp<Scp106BackRoomMapComponent>(Transform(ent).MapUid))
+        if (CheckIsInDimension(ent))
         {
-            _popup.PopupEntity("Вы уже в своем измерении", ent.Owner, ent.Owner, PopupType.SmallCaution);
+            _popup.PopupEntity("Вы уже в своем измерении", ent, ent, PopupType.SmallCaution);
             return;
         }
 
@@ -228,6 +228,8 @@ public abstract partial class SharedScp106System : EntitySystem
         }
     }
 
+    #region Helpers
+
     private void DoTeleportEffects(EntityUid uid)
     {
         if (!_timing.IsFirstTimePredicted)
@@ -241,7 +243,7 @@ public abstract partial class SharedScp106System : EntitySystem
         if (ent.Comp.Essence < cost)
         {
             var message = Loc.GetString("not-enough-essence", ("count", cost - ent.Comp.Essence));
-            _popup.PopupClient(message, ent, PopupType.Medium);
+            _popup.PopupClient(message, ent, ent, PopupType.Medium);
 
             return false;
         }
@@ -256,13 +258,22 @@ public abstract partial class SharedScp106System : EntitySystem
     {
         if (ent.Comp.IsContained)
         {
-            _popup.PopupClient("Ваши способности подавлены", ent.Owner, ent.Owner, PopupType.SmallCaution);
+            _popup.PopupClient("Ваши способности подавлены", ent, ent, PopupType.SmallCaution);
 
             return true;
         }
 
         return false;
     }
+
+    public bool CheckIsInDimension(EntityUid ent)
+    {
+        var mapUid = Transform(ent).MapUid;
+
+        return HasComp<Scp106BackRoomMapComponent>(mapUid);
+    }
+
+    #endregion
 
     public virtual async void SendToBackrooms(EntityUid target, Entity<Scp106Component>? scp106 = null) {}
 

@@ -1,1 +1,1 @@
-not-enough-essence = "Недостаточно эссенции { $count }"
+not-enough-essence = Недостаточно эссенции { $count }

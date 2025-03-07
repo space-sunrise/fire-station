@@ -6,13 +6,13 @@ namespace Content.Server._Scp.Scp106.Components;
 [RegisterComponent]
 public sealed partial class Scp106PortalSpawnerComponent : Component
 {
-    [DataField("monster", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string Monster = "MobScp106Monster";
+    [DataField]
+    public EntProtoId Monster = "MobScp106Monster";
 
-    [DataField("bigMonster", customTypeSerializer: typeof(PrototypeIdSerializer<EntityPrototype>))]
-    public string BigMonster = "MobScp106BigMonster";
+    [DataField]
+    public EntProtoId BigMonster = "MobScp106BigMonster";
 
-    public float Accumulator;
+    public TimeSpan NextSpawnTime;
 
     public float MaxSpawnedMonsters = 5f;
 
