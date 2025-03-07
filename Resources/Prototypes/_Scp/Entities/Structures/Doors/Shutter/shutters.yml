@@ -1,0 +1,156 @@
+- type: entity
+  id: ScpBaseShutter
+  parent: BaseShutter
+  name: shutter
+  abstract: true
+  description: One shudders to think about what might be behind this shutter.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: StationAiWhitelist
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Shutters/shutters.rsi
+    drawdepth: BlastDoors
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+
+- type: entity
+  id: ScpShuttersNormal
+  parent: ScpBaseShutter
+  components:
+  - type: Occluder
+  - type: Construction
+    graph: Shutters
+    node: Shutters
+    containers:
+    - board
+
+- type: entity
+  id: ScpShuttersNormalOpen
+  parent: ScpShuttersNormal
+  suffix: Open
+  components:
+  - type: Door
+    state: Open
+  - type: Physics
+    canCollide: false
+  - type: Occluder
+    enabled: false
+  - type: Airtight
+    airBlocked: false
+  - type: RadiationBlocker
+    enabled: false
+
+- type: entity
+  id: ScpShuttersRadiation
+  parent: ScpBaseShutter
+  name: radiation shutters
+  description: Why did they make these shutters radioactive?
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Shutters/shutters_radiation.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Occluder
+  - type: Construction
+    graph: Shutters
+    node: ShuttersRadiation
+    containers:
+    - board
+  - type: RadiationBlocker
+    resistance: 4
+
+- type: entity
+  id: ScpShuttersRadiationOpen
+  parent: ScpShuttersRadiation
+  suffix: Open
+  components:
+  - type: Door
+    state: Open
+  - type: Occluder
+    enabled: false
+  - type: Physics
+    canCollide: false
+  - type: Airtight
+    airBlocked: false
+  - type: RadiationBlocker
+    enabled: false
+
+- type: entity
+  id: ScpShuttersWindow
+  parent: ScpBaseShutter
+  name: window shutters
+  description: The Best (TM) place to see your friends explode!
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Shutters/shutters_window.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Construction
+    graph: Shutters
+    node: ShuttersWindow
+    containers:
+    - board
+  - type: RadiationBlocker
+    resistance: 1
+
+- type: entity
+  id: ScpShuttersWindowOpen
+  parent: ScpShuttersWindow
+  suffix: Open
+  components:
+  - type: Door
+    state: Open
+  - type: Physics
+    canCollide: false
+  - type: Airtight
+    airBlocked: false
+  - type: RadiationBlocker
+    enabled: false
+
+# Frame for construction
+- type: entity
+  id: ScpShuttersFrame
+  parent: BaseStructureDynamic
+  name: shutter frame
+  description: A frame for constructing a shutter.
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Shutters/shutters.rsi
+    state: frame
+  - type: Construction
+    graph: Shutters
+    node: frame1
+    containers:
+    - board
+  - type: InteractionOutline
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 500
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 55
+        mask:
+        - Impassable
+        - HighImpassable
+        layer:
+        - HighImpassable
+  - type: Transform
+    noRot: true

@@ -11,13 +11,40 @@
       "name": "blue"
     },
     {
-      "name": "checker-dark"
+      "name": "checker_dark"
     },
     {
-      "name": "checker-light"
+      "name": "checker_steel"
+    },
+    {
+      "name": "checker_white"
     },
     {
       "name": "dark"
+    },
+    {
+      "name": "department_cargo"
+    },
+    {
+      "name": "department_com"
+    },
+    {
+      "name": "department_eng"
+    },
+    {
+      "name": "department_med"
+    },
+    {
+      "name": "department_rnd"
+    },
+    {
+      "name": "department_sec"
+    },
+    {
+      "name": "department_ser"
+    },
+    {
+      "name": "department_atmos"
     },
     {
       "name": "green"

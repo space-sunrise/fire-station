@@ -1,0 +1,118 @@
+﻿- type: decal
+  id: ScpMiniTileSteelBox
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_box
+
+- type: decal
+  id: ScpMiniTileSteelCornerNe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_corner_ne
+
+- type: decal
+  id: ScpMiniTileSteelCornerSe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_corner_se
+
+- type: decal
+  id: ScpMiniTileSteelCornerNw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_corner_nw
+
+- type: decal
+  id: ScpMiniTileSteelCornerSw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_corner_sw
+
+- type: decal
+  id: ScpMiniTileSteelInnerNe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_inner_ne
+
+- type: decal
+  id: ScpMiniTileSteelInnerSe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_inner_se
+
+- type: decal
+  id: ScpMiniTileSteelInnerNw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_inner_nw
+
+- type: decal
+  id: ScpMiniTileSteelInnerSw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_inner_sw
+
+- type: decal
+  id: ScpMiniTileSteelEndN
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_end_n
+
+- type: decal
+  id: ScpMiniTileSteelEndE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_end_e
+
+- type: decal
+  id: ScpMiniTileSteelEndS
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_end_s
+
+- type: decal
+  id: ScpMiniTileSteelEndW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_end_w
+
+- type: decal
+  id: ScpMiniTileSteelLineN
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_line_n
+
+- type: decal
+  id: ScpMiniTileSteelLineE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_line_e
+
+- type: decal
+  id: ScpMiniTileSteelLineS
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_line_s
+
+- type: decal
+  id: ScpMiniTileSteelLineW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: steel_line_w
