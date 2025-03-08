@@ -61,6 +61,54 @@
         - TableLayer
 
 - type: entity
+  parent: Window
+  id: ScpWindowDiagonal
+  suffix: SCP diagonal
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Scp/Structures/Windows/window_diagonal.rsi
+    state: state0
+  - type: Tag
+    tags:
+    - Diagonal
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
+  - type: Icon
+    sprite: _Scp/Structures/Windows/window_diagonal.rsi
+    state: state0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PolygonShape
+            vertices:
+            - "-0.5,-0.5"
+            - "0.5,0.5"
+            - "0.5,-0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
+  - type: DamageVisuals
+    damageOverlay:
+      sprite: Structures/Windows/cracks_diagonal.rsi
+  - type: Construction
+    graph: WindowDiagonal
+    node: windowDiagonal
+
+- type: entity
   parent: ReinforcedWindow
   id: ScpReinforcedWindow
   components:
@@ -118,6 +166,54 @@
         - TableMask
         layer:
         - TableLayer
+
+- type: entity
+  parent: ReinforcedWindow
+  id: ScpReinforcedWindowDiagonal
+  suffix: SCP diagonal
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Scp/Structures/Windows/reinforced_window_diagonal.rsi
+    state: state0
+  - type: Tag
+    tags:
+    - Diagonal
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
+  - type: Icon
+    sprite: _Scp/Structures/Windows/reinforced_window_diagonal.rsi
+    state: state0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PolygonShape
+            vertices:
+            - "-0.5,-0.5"
+            - "0.5,0.5"
+            - "0.5,-0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
+  - type: DamageVisuals
+    damageOverlay:
+      sprite: Structures/Windows/cracks_diagonal.rsi
+  - type: Construction
+    graph: WindowDiagonal
+    node: reinforcedWindowDiagonal
 
 # Плазменное окно
 - type: entity
@@ -183,6 +279,54 @@
         - TableLayer
 
 - type: entity
+  parent: PlasmaWindow
+  id: ScpPlasmaWindowDiagonal
+  suffix: SCP diagonal
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Scp/Structures/Windows/plasma_diagonal.rsi
+    state: state0
+  - type: Tag
+    tags:
+    - Diagonal
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
+  - type: Icon
+    sprite: _Scp/Structures/Windows/plasma_diagonal.rsi
+    state: state0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PolygonShape
+            vertices:
+            - "-0.5,-0.5"
+            - "0.5,0.5"
+            - "0.5,-0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
+  - type: DamageVisuals
+    damageOverlay:
+      sprite: Structures/Windows/cracks_diagonal.rsi
+  - type: Construction
+    graph: WindowDiagonal
+    node: plasmaWindowDiagonal
+
+- type: entity
   parent: ReinforcedPlasmaWindow
   id: ScpReinforcedPlasmaWindow
   components:
@@ -242,6 +386,54 @@
         - TableMask
         layer:
         - TableLayer
+
+- type: entity
+  parent: ReinforcedPlasmaWindow
+  id: ScpReinforcedPlasmaWindowDiagonal
+  suffix: SCP diagonal
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Scp/Structures/Windows/reinforced_plasma_diagonal.rsi
+    state: state0
+  - type: Tag
+    tags:
+    - Diagonal
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
+  - type: Icon
+    sprite: _Scp/Structures/Windows/reinforced_plasma_diagonal.rsi
+    state: state0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PolygonShape
+            vertices:
+            - "-0.5,-0.5"
+            - "0.5,0.5"
+            - "0.5,-0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
+  - type: DamageVisuals
+    damageOverlay:
+      sprite: Structures/Windows/cracks_diagonal.rsi
+  - type: Construction
+    graph: WindowDiagonal
+    node: reinforcedPlasmaWindowDiagonal
 
 # Урановое окно
 - type: entity
@@ -306,6 +498,54 @@
         - TableLayer
 
 - type: entity
+  parent: UraniumWindow
+  id: ScpUraniumWindowDiagonal
+  suffix: SCP diagonal
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Scp/Structures/Windows/uranium_window_diagonal.rsi
+    state: state0
+  - type: Tag
+    tags:
+    - Diagonal
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
+  - type: Icon
+    sprite: _Scp/Structures/Windows/uranium_window_diagonal.rsi
+    state: state0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PolygonShape
+            vertices:
+            - "-0.5,-0.5"
+            - "0.5,0.5"
+            - "0.5,-0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
+  - type: DamageVisuals
+    damageOverlay:
+      sprite: Structures/Windows/cracks_diagonal.rsi
+  - type: Construction
+    graph: WindowDiagonal
+    node: uraniumWindowDiagonal
+
+- type: entity
   parent: ReinforcedUraniumWindow
   id: ScpReinforcedUraniumWindow
   components:
@@ -365,6 +605,54 @@
         - TableMask
         layer:
         - TableLayer
+
+- type: entity
+  parent: ReinforcedUraniumWindow
+  id: ScpReinforcedUraniumWindowDiagonal
+  suffix: SCP diagonal
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Window
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Scp/Structures/Windows/reinforced_uranium_diagonal.rsi
+    state: state0
+  - type: Tag
+    tags:
+    - Diagonal
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
+  - type: Icon
+    sprite: _Scp/Structures/Windows/reinforced_uranium_diagonal.rsi
+    state: state0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PolygonShape
+            vertices:
+            - "-0.5,-0.5"
+            - "0.5,0.5"
+            - "0.5,-0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
+  - type: DamageVisuals
+    damageOverlay:
+      sprite: Structures/Windows/cracks_diagonal.rsi
+  - type: Construction
+    graph: WindowDiagonal
+    node: reinforcedUraniumWindowDiagonal
 
 # Тонированное окно 
 - type: entity

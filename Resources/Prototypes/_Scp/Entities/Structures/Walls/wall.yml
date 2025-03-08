@@ -19,6 +19,28 @@
   - type: Icon
     sprite: _Scp/Structures/Walls/solid_rust.rsi
 
+- type: entity
+  parent: WallShuttleDiagonal
+  id: ScpWallSolidDiagonal
+  name: solid wall
+  suffix: diagonal
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Sprite
+    drawdepth: Walls
+    sprite: _Scp/Structures/Walls/solid_diagonal.rsi
+    state: state0
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
+  - type: Icon
+    sprite: _Scp/Structures/Walls/solid_diagonal.rsi
+    state: state0
+
 # Укрепленная стена
 - type: entity
   parent: WallReinforced
@@ -39,6 +61,31 @@
     sprite: _Scp/Structures/Walls/solid_rust.rsi
   - type: Icon
     sprite: _Scp/Structures/Walls/solid_rust.rsi
+
+- type: entity
+  parent: WallShuttleDiagonal
+  id: ScpWallReinforcedDiagonal
+  name: reinforced wall
+  suffix: diagonal
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Tag
+    tags:
+    - Diagonal
+  - type: Sprite
+    drawdepth: Walls
+    sprite: _Scp/Structures/Walls/reinforced_diagonal.rsi
+    state: state0
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
+  - type: Icon
+    sprite: _ScpStructures/Walls/reinforced_diagonal.rsi
+    state: state0
 
 # Бетонная стена
 - type: entity
