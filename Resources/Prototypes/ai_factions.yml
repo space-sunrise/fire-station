@@ -87,28 +87,6 @@
   - SCPs
 
 - type: npcFaction
-  id: SCPs
-  hostile:
-  - NanoTrasen
-  - Syndicate
-  - Passive
-  - PetsNT
-  - Zombie
-  - Revolutionary
-  - AllHostile
-  - Wizard
-  - Syndicate
-  # Sunrise Edit
-  - Thief
-  - Carps
-  - Changeling
-  - Vampire
-  - FleshHuman
-  - Flesh
-  # Fire Edit
-  - Chaos
-
-- type: npcFaction
   id: Xeno
   hostile:
   - NanoTrasen

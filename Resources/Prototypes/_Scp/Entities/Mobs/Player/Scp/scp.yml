@@ -51,14 +51,14 @@
   id: BaseScp
   components:
   - type: Scp
-  - type: NpcFactionMember
-    factions:
-    - SCPs
   - type: ScpRestriction
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
   - type: StationRecordKeyStorage
+  - type: NpcFactionMember
+    factions:
+    - SCPs
   - type: Destructible
     thresholds:
     - trigger:
@@ -111,9 +111,6 @@
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: scp-173
   - type: Scp173
-  - type: NpcFactionMember
-    factions:
-    - SCPs
   - type: ShowBlinkable
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
