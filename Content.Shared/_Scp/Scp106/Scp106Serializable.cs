@@ -48,11 +48,6 @@ public sealed partial class Scp106PassThroughAction : InstantActionEvent
     [DataField] public float Delay;
 }
 
-public sealed partial class Scp106CreatePortalAction : Scp106ValuableActionEvent
-{
-    [DataField] public float Delay;
-}
-
 public sealed partial class Scp106BoughtBareBladeAction : InstantActionEvent
 {
     [DataField] public EntProtoId BoughtAction;
@@ -87,8 +82,5 @@ public sealed partial class Scp106TeleportationDelayActionEvent : SimpleDoAfterE
 
 [Serializable, NetSerializable]
 public sealed partial class Scp106PassThroughActionEvent : SimpleDoAfterEvent;
-
-[Serializable, NetSerializable]
-public sealed partial class Scp106CreatePortalEvent : SimpleDoAfterEvent;
 
 #endregion

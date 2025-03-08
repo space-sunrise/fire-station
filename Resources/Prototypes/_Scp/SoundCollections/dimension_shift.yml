@@ -1,0 +1,26 @@
+﻿- type: soundCollection
+  id: ShiftStart
+  files:
+  - /Audio/_Scp/Effects/Shift/Start/sound1.ogg
+  - /Audio/_Scp/Effects/Shift/Start/sound2.ogg
+  - /Audio/_Scp/Effects/Shift/Start/sound3.ogg
+
+- type: soundCollection
+  id: Scp106PortalSmallMobDie
+  files:
+  - /Audio/_Scp/Effects/Shift/SmallMobDie/sound1.ogg
+  - /Audio/_Scp/Effects/Shift/SmallMobDie/sound2.ogg
+  - /Audio/_Scp/Effects/Shift/SmallMobDie/sound3.ogg
+
+- type: soundCollection
+  id: Scp106PortalBigMobDie
+  files:
+  - /Audio/_Scp/Effects/Shift/BigMobDie/sound1.ogg
+  - /Audio/_Scp/Effects/Shift/BigMobDie/sound2.ogg
+
+- type: soundCollection
+  id: Scp106PortalEmitSoundRandomly
+  files:
+  - /Audio/_Scp/Effects/Shift/Emit/sound1.ogg
+  - /Audio/_Scp/Effects/Shift/Emit/sound2.ogg
+  - /Audio/_Scp/Effects/Shift/Emit/sound3.ogg

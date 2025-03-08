@@ -56,21 +56,3 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
-
-- type: listing
-  id: Scp106CreatePortal
-  name: Открытие порталов
-  description: Оттуда выходят монстры.
-  productEvent: !type:Scp106BoughtCreatePortal
-    boughtAction: CreatePortalAction
-  categories:
-  - Scp106Abilities
-  cost:
-    LifeEssence: 20
-  raiseProductEventOnUser: true
-  icon:
-    sprite: _Scp/Actions/scp106-actions.rsi
-    state: scp106_phantom
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1

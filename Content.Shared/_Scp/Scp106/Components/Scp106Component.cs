@@ -23,6 +23,9 @@ public sealed partial class Scp106Component : Component
     [DataField]
     public ProtoId<CurrencyPrototype> LifeEssenceCurrencyPrototype = "LifeEssence";
 
+    [DataField]
+    public ProtoId<AlertPrototype> Scp106EssenceAlert { get; set; } = "Scp106LifeEssence";
+
     [DataField, ViewVariables]
     [AutoNetworkedField]
     public FixedPoint2 Essence = 0f;
@@ -30,15 +33,8 @@ public sealed partial class Scp106Component : Component
 
     public TimeSpan PhantomCoolDown = TimeSpan.FromSeconds(300);
 
-    public int MaxScp106Portals = 3;
-    public int Scp106HasPortals = 0;
-
     public bool HandTransformed = false;
     public EntityUid? Sword;
 
     #endregion
-
-    [DataField]
-    public ProtoId<AlertPrototype> Scp106EssenceAlert { get; set; } = "Scp106LifeEssence";
-
 }

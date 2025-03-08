@@ -35,44 +35,34 @@
     damage:
       types:
         Blunt: 10
+  - type: EmitSoundOnMobStateChanged
+    sound:
+      collection: Scp106PortalSmallMobDie
 
 - type: entity
   id: Scp106Portal
+  parent: BaseStructure
   name: black rift
   description: Looks unstable.
   placement:
     mode: SnapgridCenter
   components:
+  - type: Sprite
+    sprite: Structures/Specific/Anomalies/shadow_anom.rsi
+    layers:
+    - state: anom
+      map: ["enum.AnomalyVisualLayers.Base"]
+    - state: pulse
+      map: ["enum.AnomalyVisualLayers.Animated"]
+  - type: PointLight
+    radius: 12.5
+    energy: 0.4
+    color: "#793a80"
   - type: InteractionOutline
-  - type: Clickable
   - type: Transform
     anchored: true
   - type: Physics
     bodyType: Static
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 50
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-  - type: Damageable
-    damageContainer: Scp106Portal
-  - type: Sprite
-    sprite: /Textures/Effects/portal.rsi
-    state: portal-artifact
-    color: "#000000"
-  - type: PointLight
-    color: "#000000"
-    radius: 3
-    energy: 1
-    netsync: false
-  - type: AmbientSound
-    range: 6
-    volume: -3
-    sound:
-      path: /Audio/Ambience/anomaly_scary.ogg
   - type: Fixtures
     fixtures:
       fix1:
@@ -84,7 +74,29 @@
         - MachineMask
         layer:
         - MachineLayer
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 150
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Damageable
+    damageContainer: Scp106Portal
+    damageModifierSet: Infernal
+  - type: AmbientSound
+    range: 6
+    volume: -3
+    sound:
+      path: /Audio/Ambience/anomaly_scary.ogg
+  - type: EmitSoundRandomly
+    sound:
+      collection: Scp106PortalEmitSoundRandomly
+      params:
+        maxDistance: 10
   - type: Scp106PortalSpawner
+  - type: XenoScreech
 
 - type: entity
   parent: MobScp106Monster
@@ -101,9 +113,12 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 1
     baseSprintSpeed: 2
+  - type: EmitSoundOnMobStateChanged
+    sound:
+      collection: Scp106PortalBigMobDie
 
 - type: damageContainer
   id: Scp106Portal
-  supportedTypes:
-  - Brute
+  supportedGroups:
+    - Brute
 

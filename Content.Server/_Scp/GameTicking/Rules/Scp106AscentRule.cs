@@ -1,12 +1,15 @@
 ﻿using System.Linq;
 using Content.Server._Scp.GameTicking.Rules.Components;
 using Content.Server._Scp.Scp106.Components;
+using Content.Server._Scp.Scp106.Systems;
 using Content.Server.AlertLevel;
 using Content.Server.Chat.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Ghost;
 using Content.Server.Jittering;
+using Content.Server.Light.Components;
+using Content.Server.Nuke;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Stunnable;
 using Content.Shared.GameTicking.Components;
@@ -15,8 +18,11 @@ using Content.Shared.StatusEffect;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.GameTicking.Rules;
+
+// TODO: Мб фонк сюда заебашить
 
 public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 {
@@ -26,15 +32,38 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly AlertLevelSystem _alertLevel = default!;
     [Dependency] private readonly GhostSystem _ghost = default!;
+    [Dependency] private readonly NukeSystem _nuke = default!;
+    [Dependency] private readonly Scp106System _scp106 = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
-    private static readonly TimeSpan AscentStunTime = TimeSpan.FromSeconds(5f);
+    private static readonly TimeSpan AscentStunTime = TimeSpan.FromSeconds(10f);
     private static readonly TimeSpan AscentJitterTime = TimeSpan.FromSeconds(15f);
     private static readonly TimeSpan AscentStutterTime = TimeSpan.FromSeconds(30f);
 
+    private static readonly TimeSpan AscentFailTime = TimeSpan.FromMinutes(1f); // TODO: Вернуть на 15 минут
+    private static readonly TimeSpan AscentAnnounceAfter = TimeSpan.FromSeconds(5f);
+
+    private static bool _tickEffectEnabled;
+    private static readonly TimeSpan TickEffectCooldown = TimeSpan.FromSeconds(1f);
+    private static TimeSpan _nextTickEffectTime;
+
+    // TODO: Ебейший эффект эха
+    private static readonly SoundSpecifier TickEffectSound = new SoundPathSpecifier("/Audio/_Scp/Effects/tick.ogg");
+
+    private static readonly SoundSpecifier ShiftStartSound = new SoundCollectionSpecifier("ShiftStart");
+    private static readonly SoundSpecifier ShiftPassedSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Shift/passed.ogg");
+
+    private const string GammaCode = "gamma";
+    private const string EpsilonCode = "epsilon";
+
+    private static bool _noReturnPointReached;
+
     // В теории несколько событий сразу без сранья педалями быть не должно, поэтому для удобства оно будет тут сохранено
     private EntityUid _ruleUid;
+    private EntityUid? _spawnPortalsRuleUid;
 
     public override void Initialize()
     {
@@ -43,50 +72,168 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         SubscribeLocalEvent<Scp106PortalSpawnerComponent, ComponentShutdown>(OnSpawnerShutdown);
     }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (!_tickEffectEnabled)
+            return;
+
+        if (_nextTickEffectTime > _timing.CurTime)
+            return;
+
+        _audio.PlayGlobal(TickEffectSound, Filter.Broadcast(), true);
+        _nextTickEffectTime = _timing.CurTime + TickEffectCooldown;
+    }
+
+    protected override void Added(EntityUid uid, Scp106AscentRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
+    {
+        base.Added(uid, component, gameRule, args);
+
+        if (!gameRule.Delay.HasValue)
+            return;
+
+        var time = TimeSpan.FromSeconds(gameRule.Delay.Value.Min);
+        var timeString = $"{time.Minutes:D2}:{time.Seconds:D2}";
+
+        var message = Loc.GetString("scp106-many-humans-in-backrooms-alarm-announcement", ("time", timeString));
+        _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.Firebrick);
+
+        _tickEffectEnabled = true;
+
+        if (!TryGetRandomStation(out var station))
+            return;
+
+        Timer.Spawn(AscentAnnounceAfter,
+            () =>
+            {
+                _alertLevel.SetLevel(station.Value, GammaCode, true, true, true);
+            });
+    }
+
     protected override void Started(EntityUid uid, Scp106AscentRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
         base.Started(uid, component, gameRule, args);
 
-        // TODO: Разделить на два события, сначала страшное предупреждение, потом пизделово
+        _tickEffectEnabled = false;
+
+        var humans = _scp106.CountHumansInBackrooms();
+
+        // Если событие было остановлено до начала(людей спасли)
+        /* Для дебага
+        if (humans < Scp106System.HumansInBackroomsRequiredToAscent)
+        {
+            var avertedMessage = Loc.GetString("scp106-dimension-shift-averted-announcement");
+            _chat.DispatchGlobalAnnouncement(avertedMessage, colorOverride: Color.Firebrick);
+
+            _gameTicker.EndGameRule(uid);
+            return;
+        }
+        */
 
         var statusEffectQuery = EntityQueryEnumerator<HumanoidAppearanceComponent, StatusEffectsComponent>();
         while (statusEffectQuery.MoveNext(out var human, out _, out _))
         {
             _stun.TryParalyze(human, AscentStunTime, true);
-            _jittering.DoJitter(human, AscentJitterTime, true);
+            _jittering.DoJitter(human, AscentJitterTime, true, 30f, 300f);
             _stuttering.DoStutter(human, AscentStutterTime, true);
 
-            _ghost.DoGhostBooEvent(human);
+            var coords = Transform(human).Coordinates;
+            var nearestLights = _lookup.GetEntitiesInRange<PoweredLightComponent>(coords, 10f, LookupFlags.Static);
+
+            foreach (var light in nearestLights)
+            {
+                _ghost.DoGhostBooEvent(light);
+            }
         }
 
-        var message = Loc.GetString("scp106-many-humans-in-backrooms-alarm-announcement");
+        var timeString = $"{AscentFailTime.Minutes:D2}:{AscentFailTime.Seconds:D2}";
+        var message = Loc.GetString("scp106-dimension-shift-alarm-announcement", ("time", timeString));
         _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.Red);
 
         _audio.PlayGlobal(
-            "/Audio/_Sunrise/stab.ogg",
+            ShiftStartSound,
             Filter.Broadcast(),
-            false,
-            new AudioParams().WithVolume(-10));
+            true,
+            new AudioParams().WithVolume(5));
 
         // TODO: Амбиент страшный пиздец
 
         if (!TryGetRandomStation(out var station))
             return;
 
-        _alertLevel.SetLevel(station.Value, "gamma", true, true);
+        Timer.Spawn(AscentAnnounceAfter,
+            () =>
+            {
+                _alertLevel.SetLevel(station.Value, EpsilonCode, true, true, true);
+            });
 
-        _gameTicker.StartGameRule(component.SpawnPortalsRule);
+        Timer.Spawn(AscentFailTime, OnTimeEnded);
+
+        _gameTicker.StartGameRule(component.SpawnPortalsRule, out var ruleEntity);
         _ruleUid = uid;
+        _spawnPortalsRuleUid = ruleEntity;
+    }
+
+    private void OnTimeEnded()
+    {
+        if (!_gameTicker.IsGameRuleActive(Scp106System.AscentRule))
+            return;
+
+        // TODO: Звук/музыка, лучше в компонент нюки сувать как нюк сонг
+
+        var nukeComponent = ToggleNuke();
+        _noReturnPointReached = true;
+
+        var message = Loc.GetString("zero-keter-start-alarm-announcement");
+        _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.DarkViolet);
+
+        Timer.Spawn(TimeSpan.FromSeconds(nukeComponent.Timer),
+            () =>
+        {
+            _gameTicker.EndRound();
+        });
+    }
+
+    private NukeComponent ToggleNuke()
+    {
+        var nukes = EntityQuery<NukeComponent>();
+
+        var nuke = nukes.First();
+        _nuke.ToggleBomb(nuke.Owner);
+
+        return nuke;
     }
 
     private void OnSpawnerShutdown(Entity<Scp106PortalSpawnerComponent> ent, ref ComponentShutdown args)
     {
+        if (!_gameTicker.IsGameRuleActive(Scp106System.AscentRule))
+            return;
+
+        // Если не успели - уже ничего не поможет
+        if (_noReturnPointReached)
+            return;
+
         var allPortals = EntityQuery<Scp106PortalSpawnerComponent>();
 
         if (!allPortals.Any())
             return;
 
+        // TODO: Поставить всем обнадеживающую амбиент музыку
+
+        _audio.PlayGlobal(
+            ShiftPassedSound,
+            Filter.Broadcast(),
+            true,
+            new AudioParams().WithVolume(5));
+
+        var message = Loc.GetString("scp106-dimension-shift-passed-alarm-announcement");
+        _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.FromHex("#1A4D1A")); // GoodGreenFore из StyleNano
+
         // Как только все порталы уничтожены завершает события вторжения
         _gameTicker.EndGameRule(_ruleUid);
+
+        if (Exists(_spawnPortalsRuleUid))
+            _gameTicker.EndGameRule(_spawnPortalsRuleUid.Value);
     }
 }

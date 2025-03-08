@@ -32,7 +32,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Scp106.Systems;
 
-public sealed class Scp106System : SharedScp106System
+public sealed partial class Scp106System : SharedScp106System
 {
     [Dependency] private readonly StairsSystem _stairs = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
@@ -55,16 +55,14 @@ public sealed class Scp106System : SharedScp106System
     private static readonly FixedPoint2 EssenceRate = 1f;
     private static readonly TimeSpan AddEssenceCooldown = TimeSpan.FromSeconds(1);
 
-    private const int HumansInBackroomsRequiredToAscent = 10;
-    private static readonly TimeSpan AnnounceAfter = TimeSpan.FromMinutes(5f);
+    public const int HumansInBackroomsRequiredToAscent = 10;
 
-    private static readonly EntProtoId AscentRule = "Scp106AscentRule";
+    public static readonly EntProtoId AscentRule = "Scp106AscentRule";
 
     private static TimeSpan _defaultOnBackroomsStunTime = TimeSpan.FromSeconds(5f);
 
     private readonly SoundSpecifier _sendBackroomsSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/onbackrooms.ogg");
 
-    private static readonly EntProtoId PortalPrototype = "Scp106Portal";
     private static readonly TimeSpan PortalSpawnRate = TimeSpan.FromSeconds(60f);
 
     public override void Initialize()
@@ -137,26 +135,7 @@ public sealed class Scp106System : SharedScp106System
         }
 
         // Спавн мобов из портала 106
-        var query = AllEntityQuery<Scp106PortalSpawnerComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            if (comp.NextSpawnTime > _timing.CurTime)
-                continue;
-
-            Spawn(comp.Monster, Transform(uid).Coordinates);
-            comp.SpawnedMonsters += 1;
-
-            comp.NextSpawnTime = _timing.CurTime + PortalSpawnRate;
-
-            if (comp.SpawnedMonsters < comp.MaxSpawnedMonsters)
-                continue;
-
-            Spawn(comp.BigMonster, Transform(uid).Coordinates);
-            QueueDel(uid);
-
-            if (TryComp<Scp106Component>(comp.Scp106, out var scp106Component))
-                scp106Component.Scp106HasPortals -= 1;
-        }
+        CheckPortals();
     }
 
     #region Phantom
@@ -252,16 +231,6 @@ public sealed class Scp106System : SharedScp106System
 
     #region Abilities
 
-    public override void Scp106SpawnPortal(Entity<Scp106Component> ent, ref Scp106CreatePortalEvent args)
-    {
-        ent.Comp.Scp106HasPortals ++;
-
-        Dirty(ent);
-
-        var portalUid = Spawn(PortalPrototype, Transform(ent).Coordinates);
-        Comp<Scp106PortalSpawnerComponent>(portalUid).Scp106 = ent;
-    }
-
     public override bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args)
     {
         if (args.Args.EventTarget is not {} phantom)
@@ -332,11 +301,23 @@ public sealed class Scp106System : SharedScp106System
         if (scp106 != null)
         {
             AddCurrencyInStore(scp106.Value);
-            CheckHumansInBackrooms(scp106.Value);
+            CheckHumansInBackrooms();
         }
     }
 
-    private bool CheckHumansInBackrooms(Entity<Scp106Component> scp106)
+    private bool CheckHumansInBackrooms()
+    {
+        var humansInBackrooms = CountHumansInBackrooms();
+
+        if (humansInBackrooms < HumansInBackroomsRequiredToAscent)
+            return false;
+
+        OnAscent();
+
+        return true;
+    }
+
+    public int CountHumansInBackrooms()
     {
         var humansInBackrooms = 0;
 
@@ -353,12 +334,7 @@ public sealed class Scp106System : SharedScp106System
             humansInBackrooms += 1;
         }
 
-        if (humansInBackrooms < HumansInBackroomsRequiredToAscent)
-            return false;
-
-        Timer.Spawn( AnnounceAfter, OnAscent);
-
-        return true;
+        return humansInBackrooms;
     }
 
     private void OnAscent()
@@ -471,11 +447,6 @@ public sealed class Scp106System : SharedScp106System
         Del(ent.Comp.Sword);
         _hands.RemoveHands(ent);
         ent.Comp.HandTransformed = false;
-    }
-
-    private void OnPortalSpawn(Entity<Scp106PortalSpawnerComponent> ent, ref ComponentInit args)
-    {
-        ent.Comp.NextSpawnTime = _timing.CurTime;
     }
 
     #endregion

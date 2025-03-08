@@ -19,8 +19,6 @@ namespace Content.Shared._Scp.Scp106.Systems;
 
 public abstract partial class SharedScp106System : EntitySystem
 {
-	// TODO: SOUNDING, EFFECTS.
-
 	[Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
 	[Dependency] private readonly SharedPopupSystem _popup = default!;
 	[Dependency] private readonly SharedAppearanceSystem _appearance = default!;
@@ -50,8 +48,6 @@ public abstract partial class SharedScp106System : EntitySystem
         SubscribeLocalEvent<Scp106Component, Scp106BackroomsActionEvent>(OnBackroomsDoAfter);
         SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportActionEvent>(OnTeleportDoAfter);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106BecomeTeleportPhantomActionEvent>(OnBecomeTeleportPhantomActionEvent);
-        SubscribeLocalEvent<Scp106Component, Scp106CreatePortalAction>(OnScp106CreatePortalAction);
-        SubscribeLocalEvent<Scp106Component, Scp106CreatePortalEvent>(OnScp106CreatePortalEvent);
 
         #region Phantom
 
@@ -62,40 +58,6 @@ public abstract partial class SharedScp106System : EntitySystem
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106PassThroughActionEvent>(OnScp106PassThroughActionEvent);
 
         #endregion
-    }
-
-    private void OnScp106CreatePortalEvent(Entity<Scp106Component> ent, ref Scp106CreatePortalEvent args)
-    {
-        if (args.Cancelled || args.Handled)
-            return;
-
-        Scp106SpawnPortal(ent, ref args);
-
-        args.Handled = true;
-    }
-
-    private void OnScp106CreatePortalAction(Entity<Scp106Component> ent, ref Scp106CreatePortalAction args)
-    {
-        if (args.Handled)
-            return;
-
-        if (!TryDeductEssence(ent, args.Cost))
-            return;
-
-        if (ent.Comp.Scp106HasPortals >= ent.Comp.MaxScp106Portals)
-        {
-            _popup.PopupEntity(Loc.GetString("Достигнуто максимальное количество порталов"), ent, PopupType.Medium);
-
-            return;
-        }
-
-        var doAfterArgs = new DoAfterArgs(EntityManager, ent, TimeSpan.FromSeconds(args.Delay), new Scp106CreatePortalEvent(), ent)
-        {
-            BreakOnMove = true,
-            BreakOnDamage = true,
-        };
-
-        args.Handled = _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
     private void OnBecomeTeleportPhantomAction(Entity<Scp106Component> ent, ref Scp106BecomeTeleportPhantomAction args)
@@ -287,8 +249,6 @@ public abstract partial class SharedScp106System : EntitySystem
     public virtual void BecomeTeleportPhantom(EntityUid uid, ref Scp106BecomeTeleportPhantomAction args) {}
 
     public virtual void BecomePhantom(Entity<Scp106Component> ent, ref Scp106BecomePhantomAction args) {}
-
-    public virtual void Scp106SpawnPortal(Entity<Scp106Component> ent, ref Scp106CreatePortalEvent args) {}
 }
 
 [NetSerializable, Serializable]

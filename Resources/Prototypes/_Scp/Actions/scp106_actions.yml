@@ -55,21 +55,6 @@
         sprite: _Scp/Actions/scp106-actions.rsi
         state: scp106_teleport
 
-- type: entity
-  id: CreatePortalAction
-  name: Открыть портал
-  description: Нечто.
-  components:
-  - type: InstantAction
-    event: !type:Scp106CreatePortalAction
-      delay: 3
-      cost: 120
-    itemIconStyle: BigAction
-    useDelay: 60
-    icon:
-      sprite: _Scp/Actions/scp106-actions.rsi
-      state: scp106_teleport
-
 ### PHANTOM ABILITIES START
 
 - type: entity
