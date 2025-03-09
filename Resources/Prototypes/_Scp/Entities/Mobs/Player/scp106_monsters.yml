@@ -38,6 +38,11 @@
   - type: EmitSoundOnMobStateChanged
     sound:
       collection: Scp106PortalSmallMobDie
+  - type: EmitSoundOnSpawn
+    sound:
+      collection: Scp106PortalEmitSoundRandomly
+      params:
+        maxDistance: 10
 
 - type: entity
   id: Scp106Portal
@@ -86,15 +91,13 @@
     damageContainer: Scp106Portal
     damageModifierSet: Infernal
   - type: AmbientSound
-    range: 6
-    volume: -3
+    range: 20
+    volume: 10
     sound:
-      path: /Audio/Ambience/anomaly_scary.ogg
-  - type: EmitSoundRandomly
-    sound:
-      collection: Scp106PortalEmitSoundRandomly
+      path: /Audio/_Scp/Ambient/Shift/portal.ogg
       params:
-        maxDistance: 10
+        maxDistance: 15
+        rolloffFactor: 4
   - type: Scp106PortalSpawner
   - type: XenoScreech
 

@@ -12,17 +12,18 @@ using Content.Server.Light.Components;
 using Content.Server.Nuke;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Stunnable;
+using Content.Shared._Scp.Audio;
+using Content.Shared.Audio;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.StatusEffect;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.GameTicking.Rules;
-
-// TODO: Мб фонк сюда заебашить
 
 public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 {
@@ -55,6 +56,10 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
     private static readonly SoundSpecifier ShiftStartSound = new SoundCollectionSpecifier("ShiftStart");
     private static readonly SoundSpecifier ShiftPassedSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Shift/passed.ogg");
+
+    private static readonly ProtoId<AmbientMusicPrototype> ShiftAddedMusic = "ShiftAdded";
+    private static readonly ProtoId<AmbientMusicPrototype> ShiftStartedMusic = "ShiftStarted";
+    private static readonly ProtoId<AmbientMusicPrototype> ShiftAvertedMusic = "ShiftAverted";
 
     private const string GammaCode = "gamma";
     private const string EpsilonCode = "epsilon";
@@ -100,6 +105,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.Firebrick);
 
         _tickEffectEnabled = true;
+        RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftAddedMusic));
 
         if (!TryGetRandomStation(out var station))
             return;
@@ -120,16 +126,18 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         var humans = _scp106.CountHumansInBackrooms();
 
         // Если событие было остановлено до начала(людей спасли)
-        /* Для дебага
         if (humans < Scp106System.HumansInBackroomsRequiredToAscent)
         {
             var avertedMessage = Loc.GetString("scp106-dimension-shift-averted-announcement");
             _chat.DispatchGlobalAnnouncement(avertedMessage, colorOverride: Color.Firebrick);
 
+            RaiseNetworkEvent(new NetworkAmbientMusicEventStop());
+
             _gameTicker.EndGameRule(uid);
             return;
         }
-        */
+
+        RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftStartedMusic));
 
         var statusEffectQuery = EntityQueryEnumerator<HumanoidAppearanceComponent, StatusEffectsComponent>();
         while (statusEffectQuery.MoveNext(out var human, out _, out _))
@@ -149,15 +157,13 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
         var timeString = $"{AscentFailTime.Minutes:D2}:{AscentFailTime.Seconds:D2}";
         var message = Loc.GetString("scp106-dimension-shift-alarm-announcement", ("time", timeString));
-        _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.Red);
+        _chat.DispatchGlobalAnnouncement(message, playDefault: false, colorOverride: Color.Red);
 
         _audio.PlayGlobal(
             ShiftStartSound,
             Filter.Broadcast(),
             true,
-            new AudioParams().WithVolume(5));
-
-        // TODO: Амбиент страшный пиздец
+            new AudioParams().WithVolume(10));
 
         if (!TryGetRandomStation(out var station))
             return;
@@ -216,11 +222,13 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
         var allPortals = EntityQuery<Scp106PortalSpawnerComponent>();
 
+        // Если все порталы уничтожены до начала конца, то все заебись все молодцы
         if (!allPortals.Any())
-            return;
+            Avert();
+    }
 
-        // TODO: Поставить всем обнадеживающую амбиент музыку
-
+    private void Avert()
+    {
         _audio.PlayGlobal(
             ShiftPassedSound,
             Filter.Broadcast(),
@@ -229,6 +237,9 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
         var message = Loc.GetString("scp106-dimension-shift-passed-alarm-announcement");
         _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.FromHex("#1A4D1A")); // GoodGreenFore из StyleNano
+
+        // Чут позже включаем спокойную музыку
+        Timer.Spawn(AscentAnnounceAfter, () => {RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftAvertedMusic));});
 
         // Как только все порталы уничтожены завершает события вторжения
         _gameTicker.EndGameRule(_ruleUid);
