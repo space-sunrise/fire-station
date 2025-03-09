@@ -47,7 +47,7 @@
               doAfter: 3
 
     - node: windowDiagonal
-      entity: WindowDiagonal
+      entity: ScpWindowDiagonal
       edges:
         - to: start
           completed:
@@ -62,7 +62,7 @@
               doAfter: 2
 
     - node: reinforcedWindowDiagonal
-      entity: ReinforcedWindowDiagonal
+      entity: ScpReinforcedWindowDiagonal
       edges:
         - to: start
           completed:
@@ -108,7 +108,7 @@
               doAfter: 2
 
     - node: plasmaWindowDiagonal
-      entity: PlasmaWindowDiagonal
+      entity: ScpPlasmaWindowDiagonal
       edges:
         - to: start
           completed:
@@ -127,7 +127,7 @@
               doAfter: 3
 
     - node: reinforcedPlasmaWindowDiagonal
-      entity: ReinforcedPlasmaWindowDiagonal
+      entity: ScpReinforcedPlasmaWindowDiagonal
       edges:
         - to: start
           completed:
@@ -150,7 +150,7 @@
               doAfter: 3
 
     - node: uraniumWindowDiagonal
-      entity: UraniumWindowDiagonal
+      entity: ScpUraniumWindowDiagonal
       edges:
         - to: start
           completed:
@@ -169,7 +169,7 @@
               doAfter: 3
 
     - node: reinforcedUraniumWindowDiagonal
-      entity: ReinforcedUraniumWindowDiagonal
+      entity: ScpReinforcedUraniumWindowDiagonal
       edges:
         - to: start
           completed:
