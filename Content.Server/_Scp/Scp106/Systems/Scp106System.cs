@@ -339,7 +339,7 @@ public sealed partial class Scp106System : SharedScp106System
 
     private void OnAscent()
     {
-        if (_gameTicker.IsGameRuleActive(AscentRule))
+        if (_gameTicker.IsGameRuleAdded(AscentRule))
             return;
 
         _gameTicker.StartGameRule(AscentRule);

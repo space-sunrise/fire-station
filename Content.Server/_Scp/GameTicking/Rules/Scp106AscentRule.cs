@@ -183,7 +183,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
     private void OnTimeEnded()
     {
-        if (!_gameTicker.IsGameRuleActive(Scp106System.AscentRule))
+        if (!_gameTicker.IsGameRuleAdded(Scp106System.AscentRule))
             return;
 
         // TODO: Звук/музыка, лучше в компонент нюки сувать как нюк сонг
@@ -213,7 +213,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
     private void OnSpawnerShutdown(Entity<Scp106PortalSpawnerComponent> ent, ref ComponentShutdown args)
     {
-        if (!_gameTicker.IsGameRuleActive(Scp106System.AscentRule))
+        if (!_gameTicker.IsGameRuleAdded(Scp106System.AscentRule))
             return;
 
         // Если не успели - уже ничего не поможет
