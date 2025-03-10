@@ -151,7 +151,7 @@
               doAfter: 1
 
     - node: wall
-      entity: WallSolid
+      entity: ScpWallSolid
       edges:
         - to: girder
           completed:
@@ -333,7 +333,7 @@
               doAfter: 2
 
     - node: reinforcedWall
-      entity: WallReinforced
+      entity: ScpWallReinforced
       edges:
         - to: reinforcedGirder
           completed:
@@ -476,7 +476,7 @@
               doAfter: 1
 
     - node: wallrust
-      entity: WallSolidRust
+      entity: ScpWallSolidRust
       edges:
         - to: wall
           steps:
@@ -484,7 +484,7 @@
               doAfter: 5
 
     - node: reinforcedWallRust
-      entity: WallReinforcedRust
+      entity: ScpWallReinforcedRust
       edges:
         - to: reinforcedWall
           steps:
