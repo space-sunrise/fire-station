@@ -7,3 +7,8 @@
   id: Hide
   kind: source
   path: "/Textures/Shaders/hide.swsl"
+
+- type: shader
+  id: Warping
+  kind: source
+  path: "/Textures/_Scp/Shaders/warping.swsl"

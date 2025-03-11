@@ -84,3 +84,9 @@ public sealed partial class Scp106TeleportationDelayActionEvent : SimpleDoAfterE
 public sealed partial class Scp106PassThroughActionEvent : SimpleDoAfterEvent;
 
 #endregion
+
+[Serializable, NetSerializable]
+public sealed class WarpingOverlayToggle(bool enable) : EntityEventArgs
+{
+    public bool Enable = enable;
+}

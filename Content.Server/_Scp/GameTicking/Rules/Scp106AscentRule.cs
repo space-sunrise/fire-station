@@ -13,7 +13,9 @@ using Content.Server.Nuke;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Stunnable;
 using Content.Shared._Scp.Audio;
+using Content.Shared._Scp.Scp106;
 using Content.Shared.Audio;
+using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.StatusEffect;
@@ -55,7 +57,9 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     private static readonly SoundSpecifier TickEffectSound = new SoundPathSpecifier("/Audio/_Scp/Effects/tick.ogg");
 
     private static readonly SoundSpecifier ShiftStartSound = new SoundCollectionSpecifier("ShiftStart");
-    private static readonly SoundSpecifier ShiftPassedSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Shift/passed.ogg");
+
+    private static readonly SoundSpecifier ShiftPassedSound =
+        new SoundPathSpecifier("/Audio/_Scp/Effects/Shift/passed.ogg");
 
     private static readonly ProtoId<AmbientMusicPrototype> ShiftAddedMusic = "ShiftAdded";
     private static readonly ProtoId<AmbientMusicPrototype> ShiftStartedMusic = "ShiftStarted";
@@ -75,6 +79,16 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         base.Initialize();
 
         SubscribeLocalEvent<Scp106PortalSpawnerComponent, ComponentShutdown>(OnSpawnerShutdown);
+        SubscribeNetworkEvent<RoundRestartCleanupEvent>(_ => _tickEffectEnabled = false);
+
+        SubscribeLocalEvent<HumanoidAppearanceComponent, PlayerAttachedEvent>(OnPlayerAttached);
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _tickEffectEnabled = default;
     }
 
     public override void Update(float frameTime)
@@ -91,7 +105,10 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         _nextTickEffectTime = _timing.CurTime + TickEffectCooldown;
     }
 
-    protected override void Added(EntityUid uid, Scp106AscentRuleComponent component, GameRuleComponent gameRule, GameRuleAddedEvent args)
+    protected override void Added(EntityUid uid,
+        Scp106AscentRuleComponent component,
+        GameRuleComponent gameRule,
+        GameRuleAddedEvent args)
     {
         base.Added(uid, component, gameRule, args);
 
@@ -115,9 +132,13 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
             {
                 _alertLevel.SetLevel(station.Value, GammaCode, true, true, true);
             });
+
     }
 
-    protected override void Started(EntityUid uid, Scp106AscentRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
+    protected override void Started(EntityUid uid,
+        Scp106AscentRuleComponent component,
+        GameRuleComponent gameRule,
+        GameRuleStartedEvent args)
     {
         base.Started(uid, component, gameRule, args);
 
@@ -148,6 +169,8 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
             var coords = Transform(human).Coordinates;
             var nearestLights = _lookup.GetEntitiesInRange<PoweredLightComponent>(coords, 10f, LookupFlags.Static);
+
+            RaiseNetworkEvent(new WarpingOverlayToggle(true), human);
 
             foreach (var light in nearestLights)
             {
@@ -186,27 +209,27 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         if (!_gameTicker.IsGameRuleAdded(Scp106System.AscentRule))
             return;
 
-        // TODO: Звук/музыка, лучше в компонент нюки сувать как нюк сонг
-
         var nukeComponent = ToggleNuke();
         _noReturnPointReached = true;
 
         var message = Loc.GetString("zero-keter-start-alarm-announcement");
         _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.DarkViolet);
 
-        Timer.Spawn(TimeSpan.FromSeconds(nukeComponent.Timer),
+        Timer.Spawn(TimeSpan.FromSeconds(nukeComponent?.Timer ?? 120f),
             () =>
-        {
-            _gameTicker.EndRound();
-        });
+            {
+                _gameTicker.EndRound();
+            });
     }
 
-    private NukeComponent ToggleNuke()
+    private NukeComponent? ToggleNuke()
     {
         var nukes = EntityQuery<NukeComponent>();
 
-        var nuke = nukes.First();
-        _nuke.ToggleBomb(nuke.Owner);
+        var nuke = nukes.FirstOrDefault();
+
+        if (nuke != null)
+            _nuke.ToggleBomb(nuke.Owner);
 
         return nuke;
     }
@@ -236,15 +259,46 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
             new AudioParams().WithVolume(5));
 
         var message = Loc.GetString("scp106-dimension-shift-passed-alarm-announcement");
-        _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.FromHex("#1A4D1A")); // GoodGreenFore из StyleNano
+        _chat.DispatchGlobalAnnouncement(message,
+            colorOverride: Color.FromHex("#1A4D1A")); // GoodGreenFore из StyleNano
+
+        RaiseNetworkEvent(new WarpingOverlayToggle(false));
 
         // Чут позже включаем спокойную музыку
-        Timer.Spawn(AscentAnnounceAfter, () => {RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftAvertedMusic));});
+        Timer.Spawn(AscentAnnounceAfter, () => { RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftAvertedMusic)); });
 
         // Как только все порталы уничтожены завершает события вторжения
         _gameTicker.EndGameRule(_ruleUid);
 
         if (Exists(_spawnPortalsRuleUid))
             _gameTicker.EndGameRule(_spawnPortalsRuleUid.Value);
+    }
+
+    /// <summary>
+    /// Обработка новозашедших/перезашедших игроков
+    /// </summary>
+    private void OnPlayerAttached(Entity<HumanoidAppearanceComponent> ent, ref PlayerAttachedEvent args)
+    {
+        if (!IsConnectedRecently(args.Player.ConnectedTime))
+            return;
+
+        if (_gameTicker.IsGameRuleActive(Scp106System.AscentRule))
+        {
+            RaiseNetworkEvent(new WarpingOverlayToggle(true), ent);
+            RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftStartedMusic));
+        }
+        else if (_gameTicker.IsGameRuleAdded(Scp106System.AscentRule))
+        {
+            RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftAddedMusic));
+        }
+    }
+
+    // TODO: Пофиксить через нормальную реализацию и получение серверного времени через какую-гнибудь систему
+    private static bool IsConnectedRecently(DateTime connectionTime)
+    {
+        var deltaTime = DateTime.Now.TimeOfDay.Minutes - connectionTime.TimeOfDay.Minutes;
+
+        // Если с момента подключения прошло <1 минуты, то мы зашли недавно
+        return deltaTime <= 1;
     }
 }
