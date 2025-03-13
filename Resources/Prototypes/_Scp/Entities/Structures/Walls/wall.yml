@@ -100,3 +100,17 @@
   - type: IconSmooth
     key: walls
     base: concrete
+
+- type: entity
+  parent: ScpWallSolidDiagonal
+  id: ScpWallConcreteDiagonal
+  name: concrete wall
+  components:
+  - type: Sprite
+    drawdepth: Walls
+    sprite: _Scp/Structures/Walls/concrete_diagonal.rsi
+    state: state0
+    base: state
+  - type: Icon
+    sprite: _ScpStructures/Walls/concrete_diagonal.rsi
+    state: state0

@@ -665,7 +665,6 @@ TintedWindow: ScpTintedWindow
 WallReinforcedRust: ScpWallReinforcedRust
 WallSolidRust: ScpWallSolidRust
 WallMining: ScpWallConcrete
-Plating: ScpPlating
 BlastDoorOpen: ScpBlastDoorOpen
 WindowReinforcedDirectional: ScpWindowReinforcedDirectional
 WindowDirectional: ScpWindowDirectional
@@ -681,6 +680,9 @@ ReinforcedWindowDiagonal: ScpReinforcedWindowDiagonal
 WindowDiagonal: ScpWindowDiagonal
 WallReinforcedDiagonal: ScpWallReinforcedDiagonal
 WallSolidDiagonal: ScpWallSolidDiagonal
+WallPlastitanium: ScpWallReinforced
+WallPlastitaniumDiagonal: ScpWallReinforcedDiagonal
+WallMiningDiagonal: ScpWallConcreteDiagonal
 
 PlasticFlapsAirtightClear: ScpPlasticFlapsAirtightClear
 PlasticFlapsAirtightOpaque: ScpPlasticFlapsAirtightOpaque

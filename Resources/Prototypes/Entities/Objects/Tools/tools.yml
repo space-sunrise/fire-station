@@ -323,7 +323,7 @@
   components:
   - type: RCD
     availablePrototypes:
-    - ScpWallSolid #Scp edit
+    - ScpWallSolid #Scp edit 
     - ScpFloorSteel #Scp edit
     - ScpPlating #Scp edit
     - Catwalk
