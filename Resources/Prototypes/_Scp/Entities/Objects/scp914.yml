@@ -1,0 +1,185 @@
+﻿- type: entity
+  id: Scp914Main
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Scp/scp-914/64x64.rsi
+    state: center
+    offset: 0, 0.5
+  - type: InteractionOutline
+  - type: Clickable
+  - type: Scp914
+  - type: UserInterface
+    interfaces:
+      enum.Scp914UiKey.Key:
+        type: Scp914BoundUserInterface
+
+- type: entity
+  id: Scp914ContainerBase
+  categories: [ HideSpawnMenu ]
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    offset: 0, 0.5
+  - type: ItemSlots
+  - type: Clickable
+  - type: InteractionOutline
+  - type: EntityStorage
+    open: true
+    itemCanStoreMobs: false
+  - type: ContainerContainer
+    containers:
+      entity_storage: !type:Container
+  - type: Appearance
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.8"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: entity
+  id: Scp914Input
+  parent: Scp914ContainerBase
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Scp914Container
+    containerType: Input
+  - type: EntityStorageVisuals
+    stateBaseClosed: left-door
+    stateDoorOpen: left-door
+    stateDoorClosed: door
+  - type: Sprite
+    noRot: true
+    sprite: _Scp/scp-914/32x32.rsi
+    offset: 0, 0.5
+    layers:
+    - state: left-door
+      map: [ "enum.StorageVisualLayers.Base" ]
+    - state: door
+      map: [ "enum.StorageVisualLayers.Door" ]
+
+- type: entity
+  id: Scp914Output
+  parent: Scp914ContainerBase
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Scp914Container
+    containerType: Output
+  - type: EntityStorageVisuals
+    stateBaseClosed: right-door
+    stateDoorOpen: right-door
+    stateDoorClosed: door
+  - type: Sprite
+    noRot: true
+    sprite: _Scp/scp-914/32x32.rsi
+    offset: 0, 0.5
+    layers:
+    - state: right-door
+      map: [ "enum.StorageVisualLayers.Base" ]
+    - state: door
+      map: [ "enum.StorageVisualLayers.Door" ]
+
+- type: entity
+  id: Scp914InputPipe
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Scp/scp-914/32x32.rsi
+    state: input
+    drawDepth: 10
+    offset: 0, 0.5
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.48,0.25,0.48"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: entity
+  id: Scp914OutputPipe
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Scp/scp-914/32x32.rsi
+    state: output
+    offset: 0, 0.5
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.48,0.25,0.48"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: entity
+  id: Scp914Left
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Scp/scp-914/32x32.rsi
+    state: left
+    offset: 0, 0.5
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.8"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+
+- type: entity
+  id: Scp914Right
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Scp/scp-914/32x32.rsi
+    state: right
+    offset: 0, 0.5
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.8"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
