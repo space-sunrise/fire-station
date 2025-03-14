@@ -5,7 +5,6 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Audio;
 
-// TODO: Разобраться/Смириться с тем, что сервер сайд звуки не поддаются эффектам
 public sealed class AudioEffectsManagerSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -14,7 +13,7 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     /// <summary>
     /// Захешированные эффекты под их прототипами пренитов. Позволяет не засрать слоты OpenAL сотней одинаковых эффектов
     /// </summary>
-    private static readonly Dictionary<ProtoId<AudioPresetPrototype>, Entity<AudioAuxiliaryComponent>> CachedEffects = new ();
+    private static readonly Dictionary<ProtoId<AudioPresetPrototype>, EntityUid> CachedEffects = new ();
 
     /// <summary>
     /// Добавляет переданный эффект к звуку
@@ -34,7 +33,7 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     /// <param name="preset">Пресет эффектов</param>
     /// <param name="effectStuff">Получаемый эффект. Не представляет собой ничего, когда метод возвращает false</param>
     /// <returns>Возвращает успешно ли создание и хеширование эффекта</returns>
-    private bool TryCreateEffect(ProtoId<AudioPresetPrototype> preset, out Entity<AudioAuxiliaryComponent> effectStuff)
+    public bool TryCreateEffect(ProtoId<AudioPresetPrototype> preset, out EntityUid effectStuff)
     {
         effectStuff = default;
 
@@ -50,10 +49,10 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         if (!Exists(auxiliary.Entity))
             return false;
 
-        if (!CachedEffects.TryAdd(preset, auxiliary))
+        if (!CachedEffects.TryAdd(preset, auxiliary.Entity))
             return false;
 
-        effectStuff = auxiliary;
+        effectStuff = auxiliary.Entity;
 
         return true;
     }
