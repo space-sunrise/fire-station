@@ -1,7 +1,9 @@
 ﻿using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Audio;
 
@@ -9,11 +11,14 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     /// <summary>
     /// Захешированные эффекты под их прототипами пренитов. Позволяет не засрать слоты OpenAL сотней одинаковых эффектов
     /// </summary>
     private static readonly Dictionary<ProtoId<AudioPresetPrototype>, EntityUid> CachedEffects = new ();
+
+    private static readonly TimeSpan RaceConditionWaiting = TimeSpan.FromTicks(10L);
 
     /// <summary>
     /// Добавляет переданный эффект к звуку
@@ -23,7 +28,27 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         if (!CachedEffects.TryGetValue(preset, out var effect) && !TryCreateEffect(preset, out effect))
             return false;
 
-        _audio.SetAuxiliary(sound, sound, effect);
+        // ЕБАННЫЙ РОТ ЭТОГО РЕЙС КОДИШЕН
+        /*
+         Лонг-рид причина почему тут стоит таймер:
+         Как только only server-side звук приходит сюда, он вызывает только серверную систему добавления Auxiliary
+         Тот вызывает Dirty(), который отлавливается на клиенте вручную через компонент стейт
+         Там на аудио сурс навешивается эффект. Только по умолчанию сурс это дамми(заглушка)
+         Аудио сурс выставляется на подписке AudioComponent на ComponentStartup().
+         Так как я могу подписаться только ComponentInit(), который идет раньше, чем ComponentStartup()
+         То мой ивент происходит раньше, чем выставляется аудиосурс на клиенте -> сервер успевает втиснуться в промежуток между этой хуйней
+         И добавить эффект на заглушку, которая ниче не сделает. Поэтому я на рандом поставил сюда 10 тиков, за это время все успевает сработать
+         ГОВНО
+         */
+        if (_net.IsServer)
+        {
+            Timer.Spawn(RaceConditionWaiting, () => _audio.SetAuxiliary(sound, sound, effect));
+        }
+        else
+        {
+            _audio.SetAuxiliary(sound, sound, effect);
+        }
+
         return true;
     }
 
