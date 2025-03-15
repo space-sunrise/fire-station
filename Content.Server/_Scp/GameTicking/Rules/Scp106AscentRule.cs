@@ -39,6 +39,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     [Dependency] private readonly Scp106System _scp106 = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
@@ -64,6 +65,8 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     private static readonly ProtoId<AmbientMusicPrototype> ShiftAvertedMusic = "ShiftAverted";
 
     private static readonly SoundSpecifier ShiftNoReturnPointReachedMusic = new SoundPathSpecifier("/Audio/_Scp/Ambient/Shift/noreturn.ogg");
+
+    private static readonly ProtoId<AudioPresetPrototype> FancyEffect = "Dizzy";
 
     private const string GammaCode = "gamma";
     private const string EpsilonCode = "epsilon";
@@ -101,7 +104,10 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         if (_nextTickEffectTime > _timing.CurTime)
             return;
 
-        _audio.PlayGlobal(TickEffectSound, Filter.Broadcast(), true);
+        var audio = _audio.PlayGlobal(TickEffectSound, Filter.Broadcast(), true);
+        if (audio != null)
+            _effectsManager.TryAddEffect(audio.Value, FancyEffect);
+
         _nextTickEffectTime = _timing.CurTime + TickEffectCooldown;
     }
 
@@ -182,11 +188,14 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         var message = Loc.GetString("scp106-dimension-shift-alarm-announcement", ("time", timeString));
         _chat.DispatchGlobalAnnouncement(message, playDefault: false, colorOverride: Color.Red);
 
-        _audio.PlayGlobal(
+        var audio = _audio.PlayGlobal(
             ShiftStartSound,
             Filter.Broadcast(),
             true,
             new AudioParams().WithVolume(10));
+
+        if (audio != null)
+            _effectsManager.TryAddEffect(audio.Value, FancyEffect);
 
         if (!TryGetRandomStation(out var station))
             return;
@@ -226,7 +235,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         var nukes = EntityQuery<NukeComponent>();
         var nuke = nukes.FirstOrDefault();
 
-        var endSongLenght = _audio.GetAudioLength(_audio.GetSound(ShiftNoReturnPointReachedMusic));
+        var endSongLenght = _audio.GetAudioLength(_audio.ResolveSound(ShiftNoReturnPointReachedMusic));
 
         if (nuke == null) // Fallback для карт без ядерки
         {
@@ -240,7 +249,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
         nuke.ArmMusic = ShiftNoReturnPointReachedMusic;
         nuke.Timer = (int) endSongLenght.TotalSeconds;
-        _nuke.ToggleBomb(nuke.Owner);
+        _nuke.ToggleBomb(nuke.Owner, nuke);
 
         return TimeSpan.FromSeconds(nuke.Timer);
     }
