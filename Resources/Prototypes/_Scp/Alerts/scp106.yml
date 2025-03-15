@@ -1,7 +1,7 @@
 - type: alert
   id: Scp106LifeEssence
   icons:
-  - sprite: /Textures/_Scp/scp106_life_essence_counter.rsi
+  - sprite: /Textures/_Scp/Scp106/life_essence_counter.rsi
     state: background
   alertViewEntity: AlertScp106LifeEssenceSpriteView
   name: alerts-scp106-life-essence-name
@@ -12,7 +12,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: /Textures/_Scp/scp106_life_essence_counter.rsi
+    sprite: _Scp/Scp106/life_essence_counter.rsi
     layers:
     - map: [ "enum.AlertVisualLayers.Base" ]
     - map: [ "enum.Scp106VisualLayers.Digit1" ]

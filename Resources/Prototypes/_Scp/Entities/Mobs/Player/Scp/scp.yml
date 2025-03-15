@@ -164,10 +164,10 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Scp/scp-106.rsi
+    sprite: _Scp/Scp106/scp106.rsi
     layers:
     - map: [ "base" ]
-      state: 106
+      state: base
   - type: Scp106
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
@@ -201,7 +201,7 @@
     visuals:
       enum.Scp106Visuals.Visuals:
         base:
-          Default: { state: 106 }
+          Default: { state: base }
           Entering: { state: lusha_from_ded }
           Exiting: { state: ded_from_lusha }
   - type: ActionGrant

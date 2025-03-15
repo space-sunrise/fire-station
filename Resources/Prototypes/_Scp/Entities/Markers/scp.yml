@@ -73,8 +73,8 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/scp-106.rsi
-      state: 106
+    - sprite: _Scp/Scp106/scp106.rsi
+      state: base
   - type: SpawnPoint
     job_id: Scp106
 

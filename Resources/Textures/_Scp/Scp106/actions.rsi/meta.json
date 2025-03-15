@@ -8,19 +8,19 @@
     },
     "states": [
         {
-            "name": "scp106_phantom"
+            "name": "become_phantom"
         },
         {
-            "name": "scp106_shop"
+            "name": "shop"
         },
         {
-            "name": "scp106_teleport"
+            "name": "teleport"
         },
         {
-            "name": "scp106_leave_phantom"
+            "name": "leave_phantom"
         },
         {
-            "name": "scp106_reverse"
+            "name": "reverse"
         }
     ]
 }
