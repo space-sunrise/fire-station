@@ -54,11 +54,11 @@
   components:
   - type: Sprite
     sprite: Structures/Specific/Anomalies/shadow_anom.rsi
+    scale: 1.5, 1.5
     layers:
-    - state: anom
-      map: ["enum.AnomalyVisualLayers.Base"]
     - state: pulse
       map: ["enum.AnomalyVisualLayers.Animated"]
+      shader: Portal
   - type: PointLight
     radius: 12.5
     energy: 0.4

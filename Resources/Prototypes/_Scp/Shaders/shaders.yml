@@ -12,3 +12,8 @@
   id: Warping
   kind: source
   path: "/Textures/_Scp/Shaders/warping.swsl"
+
+- type: shader
+  id: Portal
+  kind: source
+  path: "/Textures/_Scp/Shaders/portal.swsl"
