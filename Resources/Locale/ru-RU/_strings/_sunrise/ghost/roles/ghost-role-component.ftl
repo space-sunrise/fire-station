@@ -12,17 +12,17 @@ ghost-role-information-syndicate-saboteur-cyborg-name = Диверсионный
 ghost-role-information-syndicate-saboteur-cyborg-description = Смерть НТ.
 ghost-role-information-clown-goblin-name = клоун гоблин
 ghost-role-information-clown-goblin-description = Ужасное создание, которое поклоняется творцу...
-ghost-role-information-evil-twin-name = Злой двойник
-ghost-role-information-evil-twin-description = Вы - злой двойник какой-то другой персоны.
+ghost-role-information-evil-twin-name = SCP-2054-X, двойник
+ghost-role-information-evil-twin-description = Вы - SCP-2054-X, двойник другой персоны.
 ghost-role-information-evil-twin-rules =
     Старайтесь действовать скрытно, никто не должен прознать о подмене!
     Действуйте от лица вашего оригинала, хитрите, подставляйте, запутывайте.
 ghost-role-information-foliant-name = Фолиант
 ghost-role-information-foliant-description = Помогайте своему библиотекарю просвящать эту станцию.
 ghost-role-information-foliant-rules = Вы разумная книга-мимик. Помогайте своему хозяину скрасить жизнь, просвящайте всех на станции.
-ghost-role-information-ert-cyborg-name = Боевой киборг ОБР
-ghost-role-information-ert-cyborg-description = Слава НТ!
-ghost-role-information-ert-cyborg-rules = Подчиняйтесь ОБР и Центральному Командованию.
+ghost-role-information-ert-cyborg-name = Боевой киборг МОГ
+ghost-role-information-ert-cyborg-description = Обезопасить. Удержать. Сохранить.
+ghost-role-information-ert-cyborg-rules = Подчиняйтесь МОГ, Штабу О4 и РАФу.
 ghost-role-information-ntr-lead-name = Командир ИСН
 ghost-role-information-ntr-guard-name = Оперативник ИСН
 ghost-role-information-ntr-guard-description = Вы являетесь опорой и защитой Юридического Департамента, выполняя решения и постановления самого Магистрата и Представителя NanoTrasen!

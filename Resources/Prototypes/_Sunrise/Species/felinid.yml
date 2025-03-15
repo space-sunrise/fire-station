@@ -3,7 +3,9 @@
   name: species-name-felinid
   roundStart: false # Fire edit
   prototype: MobFelinid
-  sprites: MobHumanSprites
+  bodyTypes:
+  - HumanNormal
+  - HumanSlim
   markingLimits: MobFelinidMarkingLimits
   dollPrototype: MobFelinidDummy
   skinColoration: HumanToned

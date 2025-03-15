@@ -18,3 +18,10 @@
   - Bra
   - Pants
   - Socks
+
+- type: roleLoadout
+  id: JobClassDJanitor
+  groups:
+  - Bra
+  - Pants
+  - Socks

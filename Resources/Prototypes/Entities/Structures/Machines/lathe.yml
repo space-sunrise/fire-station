@@ -411,7 +411,9 @@
     - SecurityExplosives
     - SecurityAmmo
     - SecurityWeapons
+    - SecurityDisablers
     - SecurityDynamicSunrise # Sunrise-Add
+    - SecurityDynamicWeaponsScp # Fire added
   - type: MaterialStorage
     whitelist:
       tags:

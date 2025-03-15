@@ -16,6 +16,7 @@
   - Flesh
   # Fire Edit
   - Chaos
+  - SCPs
 
 - type: npcFaction
   id: Mouse
@@ -37,6 +38,8 @@
   # Sunrise Edit
   - Carps
   - Flesh
+  # Fire Edit
+  - SCPs
 
 - type: npcFaction
   id: SimpleHostile
@@ -58,6 +61,7 @@
   - Flesh
   # Fire Edit
   - Chaos
+  - SCPs
 
 - type: npcFaction
   id: SimpleNeutral
@@ -79,6 +83,8 @@
   - Vampire
   - FleshHuman
   - Flesh
+  # Fire Edit
+  - SCPs
 
 - type: npcFaction
   id: Xeno
@@ -100,6 +106,7 @@
   - Flesh
   # Fire Edit
   - Chaos
+  - SCPs
 
 - type: npcFaction
   id: Zombie
@@ -122,6 +129,7 @@
   - Flesh
   # Fire Edit
   - Chaos
+  - SCPs
 
 - type: npcFaction
   id: Revolutionary
@@ -137,6 +145,8 @@
   - Vampire
   - FleshHuman
   - Flesh
+  # Fire Edit
+  - SCPs
 
 - type: npcFaction
   id: AllHostile
@@ -161,6 +171,7 @@
   - Flesh
   # Fire Edit
   - Chaos
+  - SCPs
 
 - type: npcFaction
   id: Wizard
@@ -181,3 +192,4 @@
   - Flesh
   # Fire Edit
   - Chaos
+  - SCPs

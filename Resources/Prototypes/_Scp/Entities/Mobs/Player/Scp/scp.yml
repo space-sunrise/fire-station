@@ -56,6 +56,9 @@
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
   - type: StationRecordKeyStorage
+  - type: NpcFactionMember
+    factions:
+    - SCPs
   - type: Destructible
     thresholds:
     - trigger:

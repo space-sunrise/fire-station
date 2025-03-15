@@ -16,6 +16,9 @@
     noMovementLayers:
       movement:
         state: default
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral # нужно что бы турели не били его т.к. 999 мирный
   - type: Scp999
     states:
       Default: default
