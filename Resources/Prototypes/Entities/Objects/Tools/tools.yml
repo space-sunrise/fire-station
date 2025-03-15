@@ -323,17 +323,17 @@
   components:
   - type: RCD
     availablePrototypes:
-    - WallSolid
-    - FloorSteel
-    - Plating
+    - ScpWallSolid #Scp edit 
+    - ScpFloorSteel #Scp edit
+    - ScpPlating #Scp edit
     - Catwalk
     - Grille
-    - Window
-    - WindowDirectional
-    - WindowReinforcedDirectional
-    - ReinforcedWindow
-    - Airlock
-    - AirlockGlass
+    - ScpWindow #Scp edit
+    - ScpWindowDirectional #Scp edit
+    - ScpWindowReinforcedDirectional #Scp edit
+    - ScpReinforcedWindow #Scp edit
+    - ScpAirlock #Scp edit
+    - ScpAirlockGlass #Scp edit
     - Firelock
     - TubeLight
     - BulbLight

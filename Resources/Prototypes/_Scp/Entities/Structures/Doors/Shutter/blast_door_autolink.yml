@@ -1,0 +1,165 @@
+# AutoLink variants of BlastDoor (from Outer Rim)
+
+- type: entity
+  id: ScpBlastDoorExterior1
+  parent: ScpBlastDoor
+  suffix: Autolink, Ext1
+  components:
+    - type: AutoLinkReceiver
+      channel: Ext1
+
+
+- type: entity
+  id: ScpBlastDoorExterior1Open
+  parent: ScpBlastDoorOpen
+  suffix: Open, Autolink, Ext1
+  components:
+    - type: AutoLinkReceiver
+      channel: Ext1
+
+- type: entity
+  id: ScpBlastDoorExterior2
+  parent: ScpBlastDoor
+  suffix: Autolink, Ext2
+  components:
+    - type: AutoLinkReceiver
+      channel: Ext2
+
+
+- type: entity
+  id: ScpBlastDoorExterior2Open
+  parent: ScpBlastDoorOpen
+  suffix: Open, Autolink, Ext2
+  components:
+    - type: AutoLinkReceiver
+      channel: Ext2
+
+- type: entity
+  id: ScpBlastDoorExterior3
+  parent: ScpBlastDoor
+  suffix: Autolink, Ext3
+  components:
+    - type: AutoLinkReceiver
+      channel: Ext3
+
+
+- type: entity
+  id: ScpBlastDoorExterior3Open
+  parent: ScpBlastDoorOpen
+  suffix: Open, Autolink, Ext3
+  components:
+    - type: AutoLinkReceiver
+      channel: Ext3
+
+- type: entity
+  id: ScpBlastDoorBridge
+  parent: ScpBlastDoor
+  suffix: Autolink, Bridge
+  components:
+    - type: AccessReader
+      access: [["Command"]]
+      # Sunrise-start
+      alertAccesses:
+        red: RedAlertAccesses
+        blue: BlueAlertAccessesHOS
+        gamma: GammaAlertAccesses
+      # Sunrise-end
+    - type: AutoLinkReceiver
+      channel: Bridge
+
+- type: entity
+  id: ScpBlastDoorBridgeOpen
+  parent: ScpBlastDoorOpen
+  suffix: Open, Autolink, Bridge
+  components:
+    - type: AccessReader
+      access: [["Command"]]
+      # Sunrise-start
+      alertAccesses:
+        red: RedAlertAccesses
+        blue: BlueAlertAccessesHOS
+        gamma: GammaAlertAccesses
+      # Sunrise-end
+    - type: AutoLinkReceiver
+      channel: Bridge
+
+- type: entity
+  id: ScpBlastDoorEngineering
+  parent: ScpBlastDoor
+  suffix: Autolink, Engineering
+  components:
+  - type: AccessReader
+    access: [["Command"], ["Engineering"]]
+    # Sunrise-start
+    alertAccesses:
+      red: RedAlertAccesses
+      blue: BlueAlertAccessesHOS
+      gamma: GammaAlertAccesses
+    # Sunrise-end
+  - type: AutoLinkReceiver
+    channel: Engineering
+
+- type: entity
+  id: ScpBlastDoorEngineeringOpen
+  parent: ScpBlastDoorOpen
+  suffix: Open, Autolink, Engineering
+  components:
+  - type: AccessReader
+    access: [["Command"], ["Engineering"]]
+    # Sunrise-start
+    alertAccesses:
+      red: RedAlertAccesses
+      blue: BlueAlertAccessesHOS
+      gamma: GammaAlertAccesses
+    # Sunrise-end
+  - type: AutoLinkReceiver
+    channel: Engineering
+
+- type: entity
+  id: ScpBlastDoorScience
+  parent: ScpBlastDoor
+  suffix: Autolink, Science
+  components:
+  - type: AccessReader
+    access: [["Command"], ["Research"]]
+    # Sunrise-start
+    alertAccesses:
+      red: RedAlertAccesses
+      blue: BlueAlertAccessesHOS
+      gamma: GammaAlertAccesses
+    # Sunrise-end
+  - type: AutoLinkReceiver
+    channel: Research
+
+- type: entity
+  id: ScpBlastDoorScienceOpen
+  parent: ScpBlastDoorOpen
+  suffix: Open, Autolink, Science
+  components:
+  - type: AccessReader
+    access: [["Command"], ["Research"]]
+    # Sunrise-start
+    alertAccesses:
+      red: RedAlertAccesses
+      blue: BlueAlertAccessesHOS
+      gamma: GammaAlertAccesses
+    # Sunrise-end
+  - type: AutoLinkReceiver
+    channel: Research
+
+- type: entity
+  id: ScpBlastDoorWindows
+  parent: ScpBlastDoor
+  suffix: Autolink, Windows
+  components:
+    - type: AutoLinkReceiver
+      channel: Windows
+
+- type: entity
+  id: ScpBlastDoorWindowsOpen
+  parent: ScpBlastDoorOpen
+  suffix: Open, Autolink, Windows
+  components:
+    - type: AutoLinkReceiver
+      channel: Windows
+

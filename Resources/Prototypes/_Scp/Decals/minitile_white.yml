@@ -1,0 +1,118 @@
+﻿- type: decal
+  id: ScpMiniTileWhiteBox
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_box
+
+- type: decal
+  id: ScpMiniTileWhiteCornerNe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_corner_ne
+
+- type: decal
+  id: ScpMiniTileWhiteCornerSe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_corner_se
+
+- type: decal
+  id: ScpMiniTileWhiteCornerNw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_corner_nw
+
+- type: decal
+  id: ScpMiniTileWhiteCornerSw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_corner_sw
+
+- type: decal
+  id: ScpMiniTileWhiteInnerNe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_inner_ne
+
+- type: decal
+  id: ScpMiniTileWhiteInnerSe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_inner_se
+
+- type: decal
+  id: ScpMiniTileWhiteInnerNw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_inner_nw
+
+- type: decal
+  id: ScpMiniTileWhiteInnerSw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_inner_sw
+
+- type: decal
+  id: ScpMiniTileWhiteEndN
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_end_n
+
+- type: decal
+  id: ScpMiniTileWhiteEndE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_end_e
+
+- type: decal
+  id: ScpMiniTileWhiteEndS
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_end_s
+
+- type: decal
+  id: ScpMiniTileWhiteEndW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_end_w
+
+- type: decal
+  id: ScpMiniTileWhiteLineN
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_line_n
+
+- type: decal
+  id: ScpMiniTileWhiteLineE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_line_e
+
+- type: decal
+  id: ScpMiniTileWhiteLineS
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_line_s
+
+- type: decal
+  id: ScpMiniTileWhiteLineW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/minitile.rsi
+    state: white_line_w

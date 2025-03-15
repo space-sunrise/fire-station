@@ -1,0 +1,143 @@
+- type: entity
+  id: ScpDoubleGlassAirlockAtmosphericsLocked
+  parent: [ ScpDoubleGlassAirlockAtmospherics ]
+  suffix: SCP Atmospherics, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsAtmospherics ]
+
+- type: entity
+  id: ScpDoubleGlassAirlockCargoLocked
+  parent: [ ScpDoubleGlassAirlockCargo ]
+  suffix: SCP Cargo, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCargo ]
+
+- type: entity
+  id: ScpDoubleGlassAirlockCommandLocked
+  parent: [ ScpDoubleGlassAirlockCommand ]
+  suffix: SCP Command, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCommand ]
+
+- type: entity
+  id: ScpDoubleGlassAirlockCentralCommandLocked
+  parent: [ ScpDoubleGlassAirlockCentralCommand ]
+  suffix: SCP Central Command, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCentralCommand ]
+
+- type: entity
+  id: ScpDoubleGlassAirlockEngineeringLocked
+  parent: [ ScpDoubleGlassAirlockEngineering ]
+  suffix: SCP Engineering, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEngineering ]
+
+- type: entity
+  id: ScpDoubleGlassAirlockMedicalLocked
+  parent: [ ScpDoubleGlassAirlockMedical ]
+  suffix: SCP Medical, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsMedical ]
+
+- type: entity
+  id: ScpDoubleGlassAirlockScienceLocked
+  parent: [ ScpDoubleGlassAirlockScience ]
+  suffix: SCP Science, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsResearch ]
+
+- type: entity
+  id: ScpDoubleGlassAirlockSecurityLocked
+  parent: [ ScpDoubleGlassAirlockSecurity ]
+  suffix: SCP Security, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
+
+- type: entity
+  id: ScpDoubleAirlockAtmosphericsLocked
+  parent: [ ScpDoubleAirlockAtmospherics ]
+  suffix: SCP Atmospherics, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsAtmospherics ]
+
+- type: entity
+  id: ScpDoubleAirlockCargoLocked
+  parent: [ ScpDoubleAirlockCargo ]
+  suffix: SCP Cargo, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCargo ]
+
+- type: entity
+  id: ScpDoubleAirlockCommandLocked
+  parent: [ ScpDoubleAirlockCommand ]
+  suffix: SCP Command, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCommand ]
+
+- type: entity
+  id: ScpDoubleAirlockCentralCommandLocked
+  parent: [ ScpDoubleAirlockCentralCommand ]
+  suffix: SCP Central Command, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCentralCommand ]
+
+- type: entity
+  id: ScpDoubleAirlockEngineeringLocked
+  parent: [ ScpDoubleAirlockEngineering ]
+  suffix: SCP Engineering, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEngineering ]
+
+- type: entity
+  id: ScpDoubleAirlockMedicalLocked
+  parent: [ ScpDoubleAirlockMedical ]
+  suffix: SCP Medical, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsMedical ]
+
+- type: entity
+  id: ScpDoubleAirlockScienceLocked
+  parent: [ ScpDoubleAirlockScience ]
+  suffix: SCP Science, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsResearch ]
+
+- type: entity
+  id: ScpDoubleAirlockSecurityLocked
+  parent: [ ScpDoubleAirlockSecurity ]
+  suffix: SCP Security, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
