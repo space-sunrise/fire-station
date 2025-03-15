@@ -1,5 +1,5 @@
 ﻿// Шейдер для создания нестабильного портала/разлома в реальности
-// Эффект включает пульсацию, искажения, разъезжание на кусочки, сборку и ИНТЕНСИВНОЕ МЕРЦАНИЕ
+// Эффект включает пульсацию, искажения, разъезжание на кусочки, сборку и ИНТЕНСИВНОЕ ПОСТОЯННОЕ МЕРЦАНИЕ - ТОЛЬКО ЧЕРНЫЙ ПОРТАЛ
 
 uniform sampler2D SCREEN_TEXTURE;
 
@@ -55,7 +55,7 @@ void fragment() {
     // Комбинируем исходные UV и смещенные UV в зависимости от прогресса анимации
     highp vec2 final_uv = mix(dispersed_uv, uv, 1.0 - anim_progress);
 
-    // --- Остальные эффекты портала (пульсация, искажение, свечение) ---
+    // --- Остальные эффекты портала (пульсация, искажение, мерцание) ---
 
     // Пульсирующая нестабильная форма портала
     highp float form_distortion =
@@ -73,12 +73,9 @@ void fragment() {
         0.02 * sin(time1 * 1.5) +
         0.01 * sin(time3 * 3.0 + distance_from_center * 2.0);
 
-    // **УСИЛЕННЫЙ ЭФФЕКТ "СБОЕВ" ПОРТАЛА (МЕРЦАНИЕ)**
-    // Уменьшаем порог step для более частых срабатываний (с 0.97 до 0.8)
-    // Увеличиваем интенсивность эффекта (умножение на 0.2 вместо 0.1)
-    // Увеличиваем частоту быстрого синуса (30.0 до 60.0)
-    highp float glitch_effect = step(0.8, sin(time4 * 0.5) * 0.5 + 0.5) * sin(time4 * 60.0) * 0.2;
-
+    // **ПОСТОЯННЫЙ УСИЛЕННЫЙ ЭФФЕКТ "СБОЕВ" ПОРТАЛА (МЕРЦАНИЕ)**
+    highp float glitch_effect_intensity = 0.3; // Увеличиваем интенсивность мерцания
+    highp float glitch_effect = sin(time4 * 60.0) * glitch_effect_intensity;
     highp float distortion_intensity = pulse_intensity + glitch_effect;
 
     // Волнообразное искажение
@@ -95,31 +92,32 @@ void fragment() {
     highp float tear_effect = sin(angle * 5.0 + time1) * sin(time2 * 2.0) * 0.01;
     warped_uv += tear_effect * vec2(cos(angle), sin(angle)) * edge_factor;
 
-    // Хроматическая аберрация
-    highp float aberration_base = 0.003;
-    highp float aberration_pulse = aberration_base * (1.0 + sin(time2) * 0.5) * (1.0 + edge_factor * 2.0);
-    highp vec3 col;
-    col.r = texture(SCREEN_TEXTURE, warped_uv + vec2(aberration_pulse, 0.0)).r;
-    col.g = texture(SCREEN_TEXTURE, warped_uv).g;
-    col.b = texture(SCREEN_TEXTURE, warped_uv - vec2(aberration_pulse, aberration_pulse * 0.5)).b;
+    // Хроматическая аберрация (убрали ранее)
+    // highp vec3 col = texture(SCREEN_TEXTURE, warped_uv).rgb;
 
-    // Пульсирующее свечение портала
-    highp vec3 glow_color = vec3(0.3, 0.4, 0.9);
-    highp vec3 glow_shift = vec3(
-        sin(time2) * 0.2,
-        sin(time2 + 2.0) * 0.3,
-        sin(time2 + 4.0) * 0.1
-    );
-    highp vec3 final_glow = glow_color + glow_shift;
-    highp float glow_intensity = 0.6 + 0.4 * sin(time1 * 0.3) + 0.2 * sin(time3 * 2.0);
+    // --- ИЗМЕНЕНИЕ 1: Убираем СВЕЧЕНИЕ ПОРТАЛА ПОЛНОСТЬЮ ---
+    // Комментируем или удаляем блок свечения
+    /*
+    highp vec3 glow_color = vec3(0.5, 0.2, 0.0); // Темно-оранжевый цвет (статичный)
+    highp vec3 final_glow = glow_color;
+    highp float glow_intensity = (0.6 + 0.4 * sin(time1 * 0.3) + 0.2 * sin(time3 * 2.0)) * 0.6;
     col += final_glow * edge_factor * glow_intensity;
+    */
 
-    // Энергетические разряды
+    // --- ИЗМЕНЕНИЕ 2: Убираем РАЗРЯДЫ ПОРТАЛА ПОЛНОСТЬЮ ---
+    // Комментируем или удаляем блок разрядов
+    /*
+    highp vec3 discharge_final_color = vec3(0.0, 0.3, 0.3); // Темно-бирюзовый цвет (статичный)
     highp float discharge =
         step(0.7, sin(angle * 12.0 + time4) * 0.5 + 0.5) *
         step(0.8, sin(time1 * 2.0) * 0.5 + 0.5) *
-        edge_factor * 0.3;
-    col += vec3(0.8, 0.9, 1.0) * discharge;
+        edge_factor * 0.3 * 0.7;
+    col += discharge_final_color * discharge; // Используем статичный цвет
+    */
+
+    // Читаем цвет напрямую из SCREEN_TEXTURE без цветовых модификаций (кроме общих эффектов)
+    highp vec3 col = texture(SCREEN_TEXTURE, warped_uv).rgb;
+
 
     // Динамический шум
     highp float noise_time = time4 * 0.2;
@@ -129,7 +127,16 @@ void fragment() {
 
     // Эффект "размытия" реальности
     highp float reality_blur = smoothstep(0.4, 0.9, edge_factor);
-    col = mix(col, col * (1.0 + glow_intensity * 0.3), reality_blur);
+    col = mix(col, col * (1.0 + 0.0 * 0.3), reality_blur); // Убрали влияние glow_intensity, т.к. свечения больше нет
+
+    // Виньетирование (оставляем как есть)
+    float vignette = smoothstep(0.7, 1.0, distance_from_center);
+    vignette = 1.0 - vignette;
+    vignette = vignette * 0.5;
+    col = mix(col, col * (1.0 - vignette), vignette);
+
+    // Общее уменьшение яркости (оставляем как есть)
+    col *= 0.8;
 
     // Финальный цвет с использованием искаженной маски портала
     COLOR = vec4(col, distorted_mask);
