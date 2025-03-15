@@ -1,0 +1,32 @@
+uniform sampler2D SCREEN_TEXTURE;
+uniform highp float warp_intensity; // Сила искажения
+uniform highp float time_scale;     // Скорость эффекта
+
+void fragment() {
+    highp vec2 uv = FRAGCOORD.xy * SCREEN_PIXEL_SIZE;
+
+    // Быстрое мелкое дрожание экрана
+    highp float shake = (fract(sin(TIME * 123.456) * 4567.89) - 0.5) * warp_intensity * 0.005;
+    uv.x += shake;
+    uv.y += shake * 0.5;
+
+    // Локальные глитчи - случайные сдвиги фрагментов
+    highp float glitch = step(0.98, fract(sin(dot(uv + TIME * 0.5, vec2(12.9898, 78.233))) * 43758.5453));
+    glitch *= warp_intensity * 0.04;
+    uv.x += glitch;
+
+    // Хроматическая аберрация (цвета "разлетаются")
+    highp vec3 col;
+    col.r = texture(SCREEN_TEXTURE, uv + vec2(0.001, 0.0)).r;
+    col.g = texture(SCREEN_TEXTURE, uv).g;
+    col.b = texture(SCREEN_TEXTURE, uv - vec2(0.001, 0.0)).b;
+
+    // Серый шум (менее раздражающий)
+    highp float noise = fract(sin(dot(uv + TIME * 0.1, vec2(42.9898, 37.233))) * 98765.4321);
+    noise = step(0.97, noise) * 0.2; // Вспышки проявляются случайно
+    col.rgb += vec3(noise * 0.3); // Серый шум (меньше цвета, меньше раздражения)
+
+    col = clamp(col, 0.0, 1.0); // Обрезаем лишнее, чтобы не было пересветов
+
+    COLOR = vec4(col, 1.0);
+}
