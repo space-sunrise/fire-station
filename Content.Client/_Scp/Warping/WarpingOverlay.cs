@@ -15,7 +15,7 @@ public sealed class WarpOverlay : Overlay
 
     private readonly ShaderInstance _warpShader;
 
-    private TimeSpan _startTime;
+    private readonly TimeSpan _startTime;
 
     private const float StartIntensity = 0.5f;
     private const float FinalIntensity = 10.0f;

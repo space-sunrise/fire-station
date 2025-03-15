@@ -46,7 +46,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     private static readonly TimeSpan AscentJitterTime = TimeSpan.FromSeconds(15f);
     private static readonly TimeSpan AscentStutterTime = TimeSpan.FromSeconds(30f);
 
-    private static readonly TimeSpan AscentFailTime = TimeSpan.FromMinutes(1f); // TODO: Вернуть на 15 минут
+    private static readonly TimeSpan AscentFailTime = TimeSpan.FromMinutes(5f); // TODO: Вернуть на 15 минут
     private static readonly TimeSpan AscentAnnounceAfter = TimeSpan.FromSeconds(5f);
 
     private static bool _tickEffectEnabled;
@@ -57,13 +57,13 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     private static readonly SoundSpecifier TickEffectSound = new SoundPathSpecifier("/Audio/_Scp/Effects/tick.ogg");
 
     private static readonly SoundSpecifier ShiftStartSound = new SoundCollectionSpecifier("ShiftStart");
-
-    private static readonly SoundSpecifier ShiftPassedSound =
-        new SoundPathSpecifier("/Audio/_Scp/Effects/Shift/passed.ogg");
+    private static readonly SoundSpecifier ShiftPassedSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Shift/passed.ogg");
 
     private static readonly ProtoId<AmbientMusicPrototype> ShiftAddedMusic = "ShiftAdded";
     private static readonly ProtoId<AmbientMusicPrototype> ShiftStartedMusic = "ShiftStarted";
     private static readonly ProtoId<AmbientMusicPrototype> ShiftAvertedMusic = "ShiftAverted";
+
+    private static readonly SoundSpecifier ShiftNoReturnPointReachedMusic = new SoundPathSpecifier("/Audio/_Scp/Ambient/Shift/noreturn.ogg");
 
     private const string GammaCode = "gamma";
     private const string EpsilonCode = "epsilon";
@@ -209,29 +209,40 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         if (!_gameTicker.IsGameRuleAdded(Scp106System.AscentRule))
             return;
 
-        var nukeComponent = ToggleNuke();
+        var timeToExplosion = ToggleNuke();
         _noReturnPointReached = true;
+
+        RaiseNetworkEvent(new NetworkAmbientMusicEventStop());
 
         var message = Loc.GetString("zero-keter-start-alarm-announcement");
         _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.DarkViolet);
 
-        Timer.Spawn(TimeSpan.FromSeconds(nukeComponent?.Timer ?? 120f),
-            () =>
-            {
-                _gameTicker.EndRound();
-            });
+        // Завершаем раунд чуть позже конца музыки
+        Timer.Spawn(timeToExplosion + TimeSpan.FromSeconds(1f), () => _gameTicker.EndRound());
     }
 
-    private NukeComponent? ToggleNuke()
+    private TimeSpan ToggleNuke()
     {
         var nukes = EntityQuery<NukeComponent>();
-
         var nuke = nukes.FirstOrDefault();
 
-        if (nuke != null)
-            _nuke.ToggleBomb(nuke.Owner);
+        var endSongLenght = _audio.GetAudioLength(_audio.GetSound(ShiftNoReturnPointReachedMusic));
 
-        return nuke;
+        if (nuke == null) // Fallback для карт без ядерки
+        {
+            var endSong =
+                _audio.PlayGlobal(ShiftNoReturnPointReachedMusic, Filter.Broadcast(), true, AudioParams.Default.WithVolume(10f));
+
+            return endSong.HasValue
+                ? endSongLenght
+                : TimeSpan.FromSeconds(120f); // Fallback
+        }
+
+        nuke.ArmMusic = ShiftNoReturnPointReachedMusic;
+        nuke.Timer = (int) endSongLenght.TotalSeconds;
+        _nuke.ToggleBomb(nuke.Owner);
+
+        return TimeSpan.FromSeconds(nuke.Timer);
     }
 
     private void OnSpawnerShutdown(Entity<Scp106PortalSpawnerComponent> ent, ref ComponentShutdown args)
@@ -277,6 +288,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     /// <summary>
     /// Обработка новозашедших/перезашедших игроков
     /// </summary>
+    /// TODO: Реализовать получше, но оно в принципе работает
     private void OnPlayerAttached(Entity<HumanoidAppearanceComponent> ent, ref PlayerAttachedEvent args)
     {
         if (!IsConnectedRecently(args.Player.ConnectedTime))
@@ -293,7 +305,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         }
     }
 
-    // TODO: Пофиксить через нормальную реализацию и получение серверного времени через какую-гнибудь систему
+    // TODO: Пофиксить через нормальную реализацию и получение серверного времени через какую-нибудь систему
     private static bool IsConnectedRecently(DateTime connectionTime)
     {
         var deltaTime = DateTime.Now.TimeOfDay.Minutes - connectionTime.TimeOfDay.Minutes;
