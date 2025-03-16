@@ -5,8 +5,8 @@
   components:
   - type: GameRule
     delay:
-      min: 90 # Вернуть 3 минуты
-      max: 90
+      min: 180 # Вернуть 3 минуты
+      max: 180
   - type: Scp106AscentRule
     spawnPortalsRule: Scp106SpawnPortalsRule
 

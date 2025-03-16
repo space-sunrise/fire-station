@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading;
 using Content.Server._Scp.GameTicking.Rules.Components;
 using Content.Server._Scp.Scp106.Components;
 using Content.Server._Scp.Scp106.Systems;
@@ -10,6 +11,7 @@ using Content.Server.Ghost;
 using Content.Server.Jittering;
 using Content.Server.Light.Components;
 using Content.Server.Nuke;
+using Content.Server.RoundEnd;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Stunnable;
 using Content.Shared._Scp.Audio;
@@ -24,6 +26,7 @@ using Robust.Shared.Audio;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server._Scp.GameTicking.Rules;
 
@@ -40,6 +43,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
+    [Dependency] private readonly RoundEndSystem _roundEnd = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
@@ -47,14 +51,13 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     private static readonly TimeSpan AscentJitterTime = TimeSpan.FromSeconds(15f);
     private static readonly TimeSpan AscentStutterTime = TimeSpan.FromSeconds(30f);
 
-    private static readonly TimeSpan AscentFailTime = TimeSpan.FromMinutes(5f); // TODO: Вернуть на 15 минут
+    private static readonly TimeSpan AscentFailTime = TimeSpan.FromMinutes(5f); // TODO: Вернуть на 5 минут
     private static readonly TimeSpan AscentAnnounceAfter = TimeSpan.FromSeconds(5f);
 
     private static bool _tickEffectEnabled;
     private static readonly TimeSpan TickEffectCooldown = TimeSpan.FromSeconds(1f);
     private static TimeSpan _nextTickEffectTime;
 
-    // TODO: Ебейший эффект эха
     private static readonly SoundSpecifier TickEffectSound = new SoundPathSpecifier("/Audio/_Scp/Effects/tick.ogg");
 
     private static readonly SoundSpecifier ShiftStartSound = new SoundCollectionSpecifier("ShiftStart");
@@ -77,21 +80,26 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     private EntityUid _ruleUid;
     private EntityUid? _spawnPortalsRuleUid;
 
+    private CancellationTokenSource _timerDespawnToken = new ();
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<Scp106PortalSpawnerComponent, ComponentShutdown>(OnSpawnerShutdown);
-        SubscribeNetworkEvent<RoundRestartCleanupEvent>(_ => _tickEffectEnabled = false);
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
 
         SubscribeLocalEvent<HumanoidAppearanceComponent, PlayerAttachedEvent>(OnPlayerAttached);
     }
 
-    public override void Shutdown()
+    private void Clear()
     {
-        base.Shutdown();
-
         _tickEffectEnabled = default;
+        _nextTickEffectTime = default;
+        _noReturnPointReached = default;
+
+        _timerDespawnToken.Cancel();
+        _timerDespawnToken = new();
     }
 
     public override void Update(float frameTime)
@@ -137,8 +145,8 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
             () =>
             {
                 _alertLevel.SetLevel(station.Value, GammaCode, true, true, true);
-            });
-
+            },
+            _timerDespawnToken.Token);
     }
 
     protected override void Started(EntityUid uid,
@@ -203,10 +211,11 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         Timer.Spawn(AscentAnnounceAfter,
             () =>
             {
-                _alertLevel.SetLevel(station.Value, EpsilonCode, true, true, true);
-            });
+                _alertLevel.SetLevel(station.Value, EpsilonCode, false, true, true);
+            },
+            _timerDespawnToken.Token);
 
-        Timer.Spawn(AscentFailTime, OnTimeEnded);
+        Timer.Spawn(AscentFailTime, OnTimeEnded, _timerDespawnToken.Token);
 
         _gameTicker.StartGameRule(component.SpawnPortalsRule, out var ruleEntity);
         _ruleUid = uid;
@@ -227,7 +236,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.DarkViolet);
 
         // Завершаем раунд чуть позже конца музыки
-        Timer.Spawn(timeToExplosion + TimeSpan.FromSeconds(1f), () => _gameTicker.EndRound());
+        Timer.Spawn(timeToExplosion + TimeSpan.FromSeconds(1f), () => _roundEnd.EndRound(), _timerDespawnToken.Token);
     }
 
     private TimeSpan ToggleNuke()
@@ -248,8 +257,9 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         }
 
         nuke.ArmMusic = ShiftNoReturnPointReachedMusic;
-        nuke.Timer = (int) endSongLenght.TotalSeconds;
-        _nuke.ToggleBomb(nuke.Owner, nuke);
+        nuke.Timer = (int) endSongLenght.TotalSeconds + 7; // Чтобы не моментально начинала ебашить
+        nuke.RemainingTime = nuke.Timer;
+        _nuke.ArmBomb(nuke.Owner, nuke);
 
         return TimeSpan.FromSeconds(nuke.Timer);
     }
@@ -285,7 +295,9 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         RaiseNetworkEvent(new WarpingOverlayToggle(false));
 
         // Чут позже включаем спокойную музыку
-        Timer.Spawn(AscentAnnounceAfter, () => { RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftAvertedMusic)); });
+        Timer.Spawn(AscentAnnounceAfter,
+            () => RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftAvertedMusic)),
+            _timerDespawnToken.Token);
 
         // Как только все порталы уничтожены завершает события вторжения
         _gameTicker.EndGameRule(_ruleUid);
