@@ -1,10 +1,11 @@
-﻿using Content.Shared.GameTicking;
+﻿using System.Threading;
+using Content.Shared.GameTicking;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
+using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Shared._Scp.Audio;
 
@@ -18,6 +19,7 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     /// Захешированные эффекты под их прототипами пренитов. Позволяет не засрать слоты OpenAL сотней одинаковых эффектов
     /// </summary>
     private static readonly Dictionary<ProtoId<AudioPresetPrototype>, EntityUid> CachedEffects = new ();
+    private static CancellationTokenSource _tokenSource = new();
 
     private static readonly TimeSpan RaceConditionWaiting = TimeSpan.FromTicks(10L);
 
@@ -25,7 +27,15 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => CachedEffects.Clear());
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
+    }
+
+    private static void Clear()
+    {
+        CachedEffects.Clear();
+
+        _tokenSource.Cancel();
+        _tokenSource = new();
     }
 
     /// <summary>
@@ -50,7 +60,7 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
          */
         if (_net.IsServer)
         {
-            Timer.Spawn(RaceConditionWaiting, () => _audio.SetAuxiliary(sound, sound, effect));
+            Timer.Spawn(RaceConditionWaiting, () => _audio.SetAuxiliary(sound, sound, effect), _tokenSource.Token);
         }
         else
         {
