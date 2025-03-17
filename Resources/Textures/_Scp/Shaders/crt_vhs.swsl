@@ -1,23 +1,23 @@
-﻿const highp float SCANLINES_OPACITY = 0.4;
-const highp float SCANLINES_WIDTH = 0.25;
+﻿const highp float SCANLINES_OPACITY = 0.8;
+const highp float SCANLINES_WIDTH = 0.8;
 const highp float GRILLE_OPACITY = 0.3;
 const highp vec2 RESOLUTION = vec2(640.0, 480.0);
 const bool PIXELATE = true;
 const bool ROLL = true;
-const highp float ROLL_SPEED = 8.0;
-const highp float ROLL_SIZE = 15.0;
-const highp float ROLL_VARIATION = 1.8;
-const highp float DISTORT_INTENSITY = 0.05;
+const highp float ROLL_SPEED = 1.5;
+const highp float ROLL_SIZE = 0.5;
+const highp float ROLL_VARIATION = 3.0;
+const highp float DISTORT_INTENSITY = 0.2;
 const highp float NOISE_OPACITY = 0.4;
 const highp float NOISE_SPEED = 5.0;
-const highp float STATIC_NOISE_INTENSITY = 0.06;
-const highp float ABERRATION = 0.03;
-const highp float BRIGHTNESS = 1.4;
+const highp float STATIC_NOISE_INTENSITY = 1.0;
+const highp float ABERRATION = 0.02;
+const highp float BRIGHTNESS = 0.4;
 const bool DISCOLOR = true;
 const highp float WARP_AMOUNT = 1.0;
-const bool CLIP_WARP = false;
-const highp float VIGNETTE_INTENSITY = 0.4;
-const highp float VIGNETTE_OPACITY = 0.5;
+const bool CLIP_WARP = true;
+const highp float VIGNETTE_INTENSITY = 0.2;
+const highp float VIGNETTE_OPACITY = 7.0;
 
 uniform sampler2D SCREEN_TEXTURE;
 
