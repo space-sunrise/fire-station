@@ -7,3 +7,8 @@
   id: Hide
   kind: source
   path: "/Textures/Shaders/hide.swsl"
+
+- type: shader
+  id: CRT_VHS
+  kind: source
+  path: "/Textures/_Scp/Shaders/crt_vhs.swsl"

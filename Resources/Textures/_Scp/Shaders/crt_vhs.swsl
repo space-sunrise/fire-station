@@ -1,0 +1,62 @@
+﻿const highp float SCANLINES_OPACITY = 0.4;
+const highp float SCANLINES_WIDTH = 0.25;
+const highp float GRILLE_OPACITY = 0.3;
+const highp vec2 RESOLUTION = vec2(640.0, 480.0);
+const bool PIXELATE = true;
+const bool ROLL = true;
+const highp float ROLL_SPEED = 8.0;
+const highp float ROLL_SIZE = 15.0;
+const highp float ROLL_VARIATION = 1.8;
+const highp float DISTORT_INTENSITY = 0.05;
+const highp float NOISE_OPACITY = 0.4;
+const highp float NOISE_SPEED = 5.0;
+const highp float STATIC_NOISE_INTENSITY = 0.06;
+const highp float ABERRATION = 0.03;
+const highp float BRIGHTNESS = 1.4;
+const bool DISCOLOR = true;
+const highp float WARP_AMOUNT = 1.0;
+const bool CLIP_WARP = false;
+const highp float VIGNETTE_INTENSITY = 0.4;
+const highp float VIGNETTE_OPACITY = 0.5;
+
+uniform sampler2D SCREEN_TEXTURE;
+
+highp vec2 warp(highp vec2 uv) { // Добавлены квалификаторы highp
+    highp vec2 delta = uv - 0.5;
+    highp float delta2 = dot(delta, delta);
+    highp float delta4 = delta2 * delta2;
+    highp float delta_offset = delta4 * WARP_AMOUNT;
+    return uv + delta * delta_offset;
+}
+
+highp float vignette(highp vec2 uv) { // Добавлены квалификаторы highp
+    uv *= 1.0 - uv.xy;
+    highp float vignette = uv.x * uv.y * 15.0;
+    return pow(vignette, VIGNETTE_INTENSITY * VIGNETTE_OPACITY);
+}
+
+void fragment() {
+    highp vec2 uv = warp(UV); // Добавлены квалификаторы highp
+    highp vec2 text_uv = PIXELATE ? ceil(uv * RESOLUTION) / RESOLUTION : uv; // Добавлены квалификаторы highp
+
+    lowp vec4 text; // Используем lowp для COLOR, так как это конечный цвет пикселя
+    if (ROLL) {
+        highp vec2 roll_uv = vec2(0.0); // Добавлены квалификаторы highp
+        highp float time = TIME; // Добавлены квалификаторы highp
+        highp float roll_line = smoothstep(0.3, 0.9, sin(uv.y * ROLL_SIZE - (time * ROLL_SPEED))); // Добавлены квалификаторы highp
+        roll_line *= roll_line * smoothstep(0.3, 0.9, sin(uv.y * ROLL_SIZE * ROLL_VARIATION - (time * ROLL_SPEED * ROLL_VARIATION))); // Добавлены квалификаторы highp
+        roll_uv = vec2((roll_line * DISTORT_INTENSITY * (1. - UV.x)), 0.0); // Добавлены квалификаторы highp
+        text.r = texture(SCREEN_TEXTURE, text_uv + roll_uv * 0.8 + vec2(ABERRATION, 0.0) * 0.1).r;
+        text.g = texture(SCREEN_TEXTURE, text_uv + roll_uv * 1.2 - vec2(ABERRATION, 0.0) * 0.1).g;
+        text.b = texture(SCREEN_TEXTURE, text_uv + roll_uv).b;
+        text.a = 1.0;
+    } else {
+        text.r = texture(SCREEN_TEXTURE, text_uv + vec2(ABERRATION, 0.0) * 0.1).r;
+        text.g = texture(SCREEN_TEXTURE, text_uv - vec2(ABERRATION, 0.0) * 0.1).g;
+        text.b = texture(SCREEN_TEXTURE, text_uv).b;
+        text.a = 1.0;
+    }
+
+    text.rgb *= vignette(uv);
+    COLOR = text; // COLOR уже lowp, как и требуется
+}
