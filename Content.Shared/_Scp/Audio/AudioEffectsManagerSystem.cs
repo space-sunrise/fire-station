@@ -1,4 +1,5 @@
-﻿using Robust.Shared.Audio;
+﻿using Content.Shared.GameTicking;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
@@ -19,6 +20,13 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     private static readonly Dictionary<ProtoId<AudioPresetPrototype>, EntityUid> CachedEffects = new ();
 
     private static readonly TimeSpan RaceConditionWaiting = TimeSpan.FromTicks(10L);
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => CachedEffects.Clear());
+    }
 
     /// <summary>
     /// Добавляет переданный эффект к звуку
