@@ -30,6 +30,13 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
     }
 
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        Clear();
+    }
+
     private static void Clear()
     {
         CachedEffects.Clear();
