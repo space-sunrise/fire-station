@@ -6,7 +6,7 @@
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/freezer.rsi
   - type: Wires
-    layoutid: AirlockService
+    layoutId: AirlockService
 
 - type: entity
   parent: ScpAirlock
@@ -18,7 +18,7 @@
   - type: PaintableAirlock
     department: Engineering
   - type: Wires
-    layoutid: AirlockEngineering
+    layoutId: AirlockEngineering
 
 - type: entity
   parent: ScpAirlockEngineering
@@ -38,7 +38,7 @@
   - type: PaintableAirlock
     department: Cargo
   - type: Wires
-    layoutid: AirlockCargo
+    layoutId: AirlockCargo
 
 - type: entity
   parent: ScpAirlock
@@ -48,7 +48,7 @@
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/hydroponics.rsi #Sunrise-Resprite
   - type: Wires
-    layoutid: AirlockService
+    layoutId: AirlockService
 
 - type: entity
   parent: ScpAirlock
@@ -60,7 +60,7 @@
   - type: PaintableAirlock
     department: Medical
   - type: Wires
-    layoutid: AirlockMedical
+    layoutId: AirlockMedical
 
 - type: entity
   parent: ScpAirlockMedical
@@ -88,7 +88,7 @@
   - type: PaintableAirlock
     department: Science
   - type: Wires
-    layoutid: AirlockScience
+    layoutId: AirlockScience
 
 - type: entity
   parent: ScpAirlock
@@ -102,7 +102,7 @@
   - type: PaintableAirlock
     department: Command
   - type: Wires
-    layoutid: AirlockCommand
+    layoutId: AirlockCommand
 
 - type: entity
   parent: ScpAirlock
@@ -114,7 +114,7 @@
   - type: PaintableAirlock
     department: Security
   - type: Wires
-    layoutid: AirlockSecurity
+    layoutId: AirlockSecurity
 
 - type: entity
   parent: ScpAirlock
@@ -143,7 +143,7 @@
   - type: PaintableAirlock
     department: Engineering
   - type: Wires
-    layoutid: AirlockEngineering
+    layoutId: AirlockEngineering
 
 - type: entity
   parent: ScpAirlockGlass
@@ -171,7 +171,7 @@
   - type: PaintableAirlock
     department: Cargo
   - type: Wires
-    layoutid: AirlockCargo
+    layoutId: AirlockCargo
 
 - type: entity
   parent: ScpAirlockGlass
@@ -181,7 +181,7 @@
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Glass/hydroponics.rsi #Sunrise-Resprite
   - type: Wires
-    layoutid: AirlockService
+    layoutId: AirlockService
 
 - type: entity
   parent: ScpAirlockGlass
@@ -193,7 +193,7 @@
   - type: PaintableAirlock
     department: Medical
   - type: Wires
-    layoutid: AirlockMedical
+    layoutId: AirlockMedical
 
 - type: entity
   parent: ScpAirlockMedicalGlass
@@ -221,7 +221,7 @@
   - type: PaintableAirlock
     department: Science
   - type: Wires
-    layoutid: AirlockScience
+    layoutId: AirlockScience
 
 - type: entity
   parent: ScpAirlockGlass
@@ -235,7 +235,7 @@
   - type: WiresPanelSecurity
     securityLevel: medSecurity
   - type: Wires
-    layoutid: AirlockCommand
+    layoutId: AirlockCommand
 
 - type: entity
   parent: ScpAirlockGlass
@@ -247,7 +247,7 @@
   - type: PaintableAirlock
     department: Security
   - type: Wires
-    layoutid: AirlockSecurity
+    layoutId: AirlockSecurity
 
 - type: entity
   parent: ScpAirlockCommandGlass # see standard

@@ -64,7 +64,7 @@
     containers:
       board: [ DoorElectronicsCargo ]
   - type: Wires
-    layoutid: AirlockCargo
+    layoutId: AirlockCargo
 
 - type: entity
   parent: ScpWindoor
@@ -102,7 +102,7 @@
     containers:
       board: [ DoorElectronicsJanitor ]
   - type: Wires
-    layoutid: AirlockService
+    layoutId: AirlockService
 
 - type: entity
   parent: ScpWindoorServiceLocked
@@ -131,7 +131,7 @@
     containers:
       board: [ DoorElectronicsService ]
   - type: Wires
-    layoutid: AirlockService
+    layoutId: AirlockService
 
 - type: entity
   parent: ScpWindoorServiceLocked
@@ -153,7 +153,7 @@
     containers:
       board: [ DoorElectronicsArmory ]
   - type: Wires
-    layoutid: AirlockArmory
+    layoutId: AirlockArmory
 
 - type: entity
   parent: ScpWindoorSecurePlasma
@@ -164,7 +164,7 @@
     containers:
       board: [ DoorElectronicsArmory ]
   - type: Wires
-    layoutid: AirlockArmory
+    layoutId: AirlockArmory
 
 - type: entity
   parent: ScpWindoorSecureEngineeringLocked
@@ -211,7 +211,7 @@
     containers:
       board: [ DoorElectronicsCargo ]
   - type: Wires
-    layoutid: AirlockCargo
+    layoutId: AirlockCargo
 
 - type: entity
   parent: ScpWindoorSecure
@@ -240,7 +240,7 @@
     containers:
       board: [ DoorElectronicsChemistry ]
   - type: Wires
-    layoutid: AirlockMedical
+    layoutId: AirlockMedical
 
 - type: entity
   parent: ScpWindoorSecureCommandLocked
@@ -271,7 +271,7 @@
   - type: WiresPanelSecurity
     securityLevel: medSecurity
   - type: Wires
-    layoutid: AirlockCommand
+    layoutId: AirlockCommand
 
 - type: entity
   parent: ScpWindoorSecure
@@ -284,7 +284,7 @@
   - type: WiresPanelSecurity
     securityLevel: medSecurity
   - type: Wires
-    layoutid: AirlockCommand
+    layoutId: AirlockCommand
 
 - type: entity
   parent: ScpWindoorSecurePlasma
@@ -297,7 +297,7 @@
   - type: WiresPanelSecurity
     securityLevel: medSecurity
   - type: Wires
-    layoutid: AirlockCommand
+    layoutId: AirlockCommand
 
 - type: entity
   parent: ScpWindoorSecureSecurityLocked
@@ -317,7 +317,7 @@
     containers:
       board: [ DoorElectronicsEngineering ]
   - type: Wires
-    layoutid: AirlockEngineering
+    layoutId: AirlockEngineering
 
 - type: entity
   parent: ScpWindoorSecurePlasma
@@ -328,7 +328,7 @@
     containers:
       board: [ DoorElectronicsEngineering ]
   - type: Wires
-    layoutid: AirlockEngineering
+    layoutId: AirlockEngineering
 
 - type: entity
   parent: ScpWindoorSecureUranium
@@ -339,7 +339,7 @@
     containers:
       board: [ DoorElectronicsEngineering ]
   - type: Wires
-    layoutid: AirlockEngineering
+    layoutId: AirlockEngineering
 
 - type: entity
   parent: ScpWindoorSecure
@@ -350,7 +350,7 @@
     containers:
       board: [ DoorElectronicsExternal ]
   - type: Wires
-    layoutid: AirlockExternal
+    layoutId: AirlockExternal
 
 - type: entity
   parent: ScpWindoorSecureServiceLocked
@@ -370,7 +370,7 @@
     containers:
       board: [ DoorElectronicsJanitor ]
   - type: Wires
-    layoutid: AirlockService
+    layoutId: AirlockService
 
 - type: entity
   parent: ScpWindoorSecureServiceLocked
@@ -399,7 +399,7 @@
     containers:
       board: [ DoorElectronicsMedical ]
   - type: Wires
-    layoutid: AirlockMedical
+    layoutId: AirlockMedical
 
 - type: entity
   parent: ScpWindoorSecureCargoLocked
@@ -419,7 +419,7 @@
     containers:
       board: [ DoorElectronicsSecurity ]
   - type: Wires
-    layoutid: AirlockSecurity
+    layoutId: AirlockSecurity
 
 - type: entity
   parent: ScpWindoorSecurePlasma
@@ -430,7 +430,7 @@
     containers:
       board: [ DoorElectronicsSecurity ]
   - type: Wires
-    layoutid: AirlockSecurity
+    layoutId: AirlockSecurity
 
 - type: entity
   parent: ScpWindoorSecure
@@ -441,7 +441,7 @@
     containers:
       board: [ DoorElectronicsResearch ]
   - type: Wires
-    layoutid: AirlockScience
+    layoutId: AirlockScience
 
 - type: entity
   parent: ScpWindoorSecurePlasma
@@ -452,7 +452,7 @@
     containers:
       board: [ DoorElectronicsResearch ]
   - type: Wires
-    layoutid: AirlockScience
+    layoutId: AirlockScience
 
 - type: entity
   parent: ScpWindoorSecure
@@ -463,7 +463,7 @@
     containers:
       board: [ DoorElectronicsService ]
   - type: Wires
-    layoutid: AirlockService
+    layoutId: AirlockService
 
 - type: entity
   parent: ScpWindoorSecureCommandLocked
