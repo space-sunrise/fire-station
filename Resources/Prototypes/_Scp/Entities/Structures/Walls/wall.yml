@@ -84,7 +84,7 @@
     key: walls
     base: state
   - type: Icon
-    sprite: _ScpStructures/Walls/reinforced_diagonal.rsi
+    sprite: _Scp/Structures/Walls/reinforced_diagonal.rsi
     state: state0
 
 # Бетонная стена
@@ -125,7 +125,7 @@
     state: state0
     base: state
   - type: Icon
-    sprite: _ScpStructures/Walls/concrete_diagonal.rsi
+    sprite: _Scp/Structures/Walls/concrete_diagonal.rsi
     state: state0
   - type: Destructible
     thresholds:

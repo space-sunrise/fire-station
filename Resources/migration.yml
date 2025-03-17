@@ -683,6 +683,7 @@ WallSolidDiagonal: ScpWallSolidDiagonal
 WallPlastitanium: ScpWallReinforced
 WallPlastitaniumDiagonal: ScpWallReinforcedDiagonal
 WallMiningDiagonal: ScpWallConcreteDiagonal
+SolidSecretDoor: ScpSolidSecretDoor
 
 PlasticFlapsAirtightClear: ScpPlasticFlapsAirtightClear
 PlasticFlapsAirtightOpaque: ScpPlasticFlapsAirtightOpaque

@@ -34,7 +34,7 @@
     containers:
       board: [ DoorElectronicsService ]
   - type: Wires
-    layoutid: AirlockService
+    layoutId: AirlockService
 
 - type: entity
   parent: ScpAirlockServiceLocked
