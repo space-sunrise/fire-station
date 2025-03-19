@@ -29,7 +29,7 @@
     prototype: Aghost
   - type: Access
     groups:
-    - AllAccess
+    - SCPFullAccess
     tags:
     - NuclearOperative
     - SyndicateAgent

@@ -1,0 +1,102 @@
+- type: entity
+  parent: ComputerId
+  id: ComputerIdFondSCP
+  name: Fond ID card computer
+  description: Terminal for programming SCP Fond employee ID cards to access parts of the station.
+  components:
+  - type: IdCardConsole
+    privilegedIdSlot:
+      name: id-card-console-privileged-id
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+    targetIdSlot:
+      name: id-card-console-target-id
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
+      ejectOnBreak: true
+      swap: false
+      whitelist:
+        components:
+        - IdCard
+    accessLevels:
+        - Armory
+        - Atmospherics
+        - Bar
+        - Brig
+        - Detective
+        - Captain
+        - Cargo
+        - Chapel
+        - Chemistry
+        - ChiefEngineer
+        - ChiefMedicalOfficer
+        - Command
+        - Cryogenics
+        - Engineering
+        - External
+        - HeadOfPersonnel
+        - HeadOfSecurity
+        - Hydroponics
+        - Janitor
+        - Kitchen
+        - Lawyer
+        - Maintenance
+        - Medical
+        - Quartermaster
+        - Research
+        - ResearchDirector
+        - Salvage
+        - Security
+        - Service
+        - Theatre
+        - BlueShield
+        - Ntrep
+        - Magistrat
+        - Barber
+        # Fond Access
+        - APAIBAgent
+        - DClassJanitor
+        - DClassHydroponics
+        - DClassKitchen
+        - SaveClass
+        - EuclidClass
+        - KeterClass
+
+- type: entity
+  parent: ComputerComms
+  id: ChaosComputerComms
+  name: chaos communications computer
+  description: A computer capable of remotely hacking into the complex communications systems. Using this to make an announcement will alert the station to your presence.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm_syndie
+    - map: ["computerLayerKeys"]
+      state: syndie_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: AccessReader
+    access: [[ "ChaosInsurgency" ]]
+  - type: CommunicationsConsole
+    title: comms-console-announcement-title-nukie
+    color: "#ff0000"
+    canShuttle: false
+    announceVoice: Sentrybot
+    global: true #announce to everyone they're about to fuck shit up
+    sound: /Audio/Announcements/war.ogg
+  - type: Computer
+    board: ChaosCommsComputerCircuitboard
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#f71713"

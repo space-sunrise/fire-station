@@ -1,0 +1,29 @@
+ent-DoorElectronicsAPAIB = { ent-DoorElectronics }
+    .suffix = Агент АПАИБ, Закрыт
+    .desc = { ent-DoorElectronics.desc }
+ent-DoorElectronicsSCPLaw = { ent-DoorElectronics }
+    .suffix = Юристы Фонда, Закрыт
+    .desc = { ent-DoorElectronics.desc }
+
+ent-DoorElectronicsDCJ = { ent-DoorElectronics }
+    .suffix = Д Класс Уборщик, Закрыт
+    .desc = { ent-DoorElectronics.desc }
+ent-DoorElectronicsDCH = { ent-DoorElectronics }
+    .suffix = Д Класс Гидропоника, Закрыт
+    .desc = { ent-DoorElectronics.desc }
+ent-DoorElectronicsDCK = { ent-DoorElectronics }
+    .suffix = Д Класс Кухня, Закрыт
+    .desc = { ent-DoorElectronics.desc }
+ent-DoorElectronicsDCKH = { ent-DoorElectronics }
+    .suffix = Д Класс Кухня/Гидропоника, Закрыт
+    .desc = { ent-DoorElectronics.desc }
+
+ent-DoorElectronicsSaveClass = { ent-DoorElectronics }
+    .suffix = Класс Безопасный, Закрыт
+    .desc = { ent-DoorElectronics.desc }
+ent-DoorElectronicsEuclidClass = { ent-DoorElectronics }
+    .suffix = Класс Евклид, Закрыт
+    .desc = { ent-DoorElectronics.desc }
+ent-DoorElectronicsKeterClass = { ent-DoorElectronics }
+    .suffix = Класс Кетер, Закрыт
+    .desc = { ent-DoorElectronics.desc }

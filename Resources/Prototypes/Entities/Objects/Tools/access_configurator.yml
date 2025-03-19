@@ -52,6 +52,13 @@
       - Ntrep # Sunrise
       - Magistrat # Sunrise
       - Barber  # Sunrise
+      - APAIBAgent #Fire-edit start
+      - DClassJanitor
+      - DClassHydroponics
+      - DClassKitchen
+      - SaveClass
+      - EuclidClass
+      - KeterClass #Fire-edit end
       privilegedIdSlot:
         name: id-card-console-privileged-id
         ejectSound: /Audio/Machines/id_swipe.ogg
@@ -128,6 +135,13 @@
     - Ntrep # Sunrise
     - Magistrat # Sunrise
     - Barber  # Sunrise
+    - APAIBAgent #Fire-edit start
+    - DClassJanitor
+    - DClassHydroponics
+    - DClassKitchen
+    - SaveClass
+    - EuclidClass
+    - KeterClass #Fire-edit end
     privilegedIdSlot:
       name: id-card-console-privileged-id
       ejectSound: /Audio/Machines/id_swipe.ogg

@@ -24,3 +24,303 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSecurity ]
+
+# D Class
+- type: entity
+  parent: AirlockMaintJanitorLocked
+  id: AirlockMaintDClassJanitorLocked
+  suffix: D Class Janitor, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCJ ]
+
+- type: entity
+  parent: AirlockJanitorLocked
+  id: AirlockDClassJanitorLocked
+  suffix: D Class Janitor, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCJ ]
+
+- type: entity
+  parent: AirlockJanitorGlassLocked
+  id: AirlockDClassJanitorGlassLocked
+  suffix: D Class Janitor, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCJ ]
+
+- type: entity
+  parent: AirlockFreezer
+  id: AirlockFreezerDClassKitchenHydroLocked
+  suffix: D Class Kitchen/Hydroponics, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCKH ]
+
+- type: entity
+  parent: AirlockServiceGlassLocked
+  id: AirlockKitchenGlassDClassKitchenHydroLocked
+  suffix: D Class Kitchen/Hydroponics, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCKH ]
+
+- type: entity
+  parent: AirlockFreezer
+  id: AirlockFreezerDClassKitchenLocked
+  suffix: D Class Kitchen, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCK ]
+
+- type: entity
+  parent: AirlockServiceLocked
+  id: AirlockDClassKitchenLocked
+  suffix: D Class Kitchen, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCK ]
+
+- type: entity
+  parent: AirlockServiceGlassLocked
+  id: AirlockDClassKitchenGlassLocked
+  suffix: D Class Kitchen, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCK ]
+
+- type: entity
+  parent: AirlockHydroponicsGlass
+  id: AirlockDClassHydroponicsGlassLocked
+  suffix: D Class Hydroponics, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCH ]
+
+- type: entity
+  parent: AirlockHydroponics
+  id: AirlockDClassHydroponicsLocked
+  suffix: D Class Hydroponics, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCH ]
+
+#Law
+- type: entity
+  parent: AirlockCommand
+  id: AirlockAPAIBLocked
+  suffix: APAIB, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsAPAIB ]
+
+- type: entity
+  parent: AirlockMaintServiceLocked
+  id: AirlockMaintAPAIBLocked
+  suffix: APAIB, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsAPAIB ]
+
+- type: entity
+  parent: AirlockCommandGlass
+  id: AirlockAPAIBGlassLocked
+  suffix: APAIB, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsAPAIB ]
+
+- type: entity
+  parent: AirlockSecurityGlass
+  id: AirlockAPAIBSecGlassLocked
+  suffix: APAIB, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsAPAIB ]
+
+- type: entity
+  parent: AirlockServiceLocked
+  id: AirlockSCPLawLocked
+  suffix: SCP Law, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSCPLaw ]
+
+- type: entity
+  parent: AirlockMaintServiceLocked
+  id: AirlockMaintSCPLawLocked
+  suffix: SCP Law, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSCPLaw ]
+
+- type: entity
+  parent: AirlockServiceGlassLocked
+  id: AirlockSCPLawGlassLocked
+  suffix: SCP Law, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSCPLaw ]
+
+- type: entity
+  parent: AirlockSecurityGlass
+  id: AirlockSCPLawSecGlassLocked
+  suffix: SCP Law, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSCPLaw ]
+
+#SCP
+- type: entity
+  parent: HighSecDoor
+  id: HighSecSaveClassLocked
+  suffix: Save Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSaveClass ]
+
+- type: entity
+  parent: AirlockScienceGlass
+  id: AirlockSaveClassScienceGlassLocked
+  suffix: Save Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSaveClass ]
+
+- type: entity
+  parent: AirlockCommandGlass
+  id: AirlockSaveClassCommandGlassLocked
+  suffix: Save Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSaveClass ]
+
+- type: entity
+  parent: AirlockScience
+  id: AirlockSaveClassScienceLocked
+  suffix: Save Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSaveClass ]
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockSaveClassCommandLocked
+  suffix: Save Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSaveClass ]
+
+- type: entity
+  parent: HighSecDoor
+  id: HighSecEuclidClassLocked
+  suffix: Euclid Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEuclidClass ]
+
+- type: entity
+  parent: AirlockScienceGlass
+  id: AirlockEuclidClassScienceGlassLocked
+  suffix: Euclid Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEuclidClass ]
+
+- type: entity
+  parent: AirlockCommandGlass
+  id: AirlockEuclidClassCommandGlassLocked
+  suffix: Euclid Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEuclidClass ]
+
+- type: entity
+  parent: AirlockScience
+  id: AirlockEuclidClassScienceLocked
+  suffix: Euclid Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEuclidClass ]
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockEuclidClassCommandLocked
+  suffix: Euclid Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEuclidClass ]
+
+- type: entity
+  parent: HighSecDoor
+  id: HighSecKeterClassLocked
+  suffix: Keter Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsKeterClass ]
+
+- type: entity
+  parent: AirlockScienceGlass
+  id: AirlockKeterClassScienceGlassLocked
+  suffix: Keter Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsKeterClass ]
+
+- type: entity
+  parent: AirlockCommandGlass
+  id: AirlockKeterClassCommandGlassLocked
+  suffix: Keter Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsKeterClass ]
+
+- type: entity
+  parent: AirlockScience
+  id: AirlockKeterClassScienceLocked
+  suffix: Keter Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsKeterClass ]
+
+- type: entity
+  parent: AirlockCommand
+  id: AirlockKeterClassCommandLocked
+  suffix: Keter Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsKeterClass ]

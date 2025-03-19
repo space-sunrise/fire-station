@@ -1,0 +1,22 @@
+ent-LockableButtonDClassJanitor = { ent-LockableButton }
+    .suffix = Д Класс Уборщик
+    .desc = { ent-LockableButton.desc }
+ent-LockableButtonDClassHydroponics = { ent-LockableButton }
+    .suffix = Д Класс Гидропоника
+    .desc = { ent-LockableButton.desc }
+ent-LockableButtonDClassKitchen = { ent-LockableButton }
+    .suffix = Д Класс Кухня
+    .desc = { ent-LockableButton.desc }
+ent-LockableButtonDClassKH = { ent-LockableButton }
+    .suffix = Д Класс Кухня/Гидропоника
+    .desc = { ent-LockableButton.desc }
+ent-LockableButtonSaveClass = { ent-LockableButton }
+    .suffix = Класс Безопасный
+    .desc = { ent-LockableButton.desc }
+ent-LockableButtonEuclidClass = { ent-LockableButton }
+    .suffix = Класс Евклид
+    .desc = { ent-LockableButton.desc }
+ent-LockableButtonKeterClass = { ent-LockableButton }
+    .suffix = Класс Кетер
+    .desc = { ent-LockableButton.desc }
+

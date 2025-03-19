@@ -1,0 +1,251 @@
+- type: entity
+  parent: Windoor
+  id: WindoorDClassKitchenHydroLocked
+  suffix: D Class Kitchen/Hydroponics, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCKH ]
+
+- type: entity
+  parent: WindoorSecure
+  id: WindoorSecureDClassKitchenHydroLocked
+  suffix: D Class Kitchen/Hydroponics, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCKH ]
+
+- type: entity
+  parent: Windoor
+  id: WindoorDClassKitchenLocked
+  suffix: D Class Kitchen, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCK ]
+
+- type: entity
+  parent: WindoorSecure
+  id: WindoorSecureDClassKitchenLocked
+  suffix: D Class Kitchen, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCK ]
+
+- type: entity
+  parent: Windoor
+  id: WindoorDClassHydroponicsLocked
+  suffix: D Class Hydroponics, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCH ]
+
+- type: entity
+  parent: WindoorSecure
+  id: WindoorSecureDClassHydroponicsLocked
+  suffix: D Class Hydroponics, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsDCH ]
+
+- type: entity
+  parent: Windoor
+  id: WindoorAPAIBLocked
+  suffix: APAIB, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsAPAIB ]
+
+- type: entity
+  parent: WindoorSecure
+  id: WindoorSecureAPAIBLocked
+  suffix: APAIB, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsAPAIB ]
+
+- type: entity
+  parent: Windoor
+  id: WindoorSCPLawLocked
+  suffix: SCP Law, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSCPLaw ]
+
+- type: entity
+  parent: WindoorSecure
+  id: WindoorSecureSCPLawLocked
+  suffix: SCP Law, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSCPLaw ]
+
+- type: entity
+  parent: Windoor
+  id: WindoorSaveClassLocked
+  suffix: Save Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSaveClass ]
+
+- type: entity
+  parent: WindoorSecure
+  id: WindoorSecureSaveClassLocked
+  suffix: Save Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSaveClass ]
+
+- type: entity
+  parent: WindoorPlasma
+  id: PlasmaWindoorSaveClassLocked
+  suffix: Save Class, Locked, Plasma
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSaveClass ]
+
+- type: entity
+  parent: WindoorSecurePlasma
+  id: PlasmaWindoorSecureSaveClassLocked
+  suffix: Save Class, Locked, Plasma
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSaveClass ]
+
+- type: entity
+  parent: WindoorUranium
+  id: UraniumWindoorSaveClassLocked
+  suffix: Save Class, Locked, Uranium
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSaveClass ]
+
+- type: entity
+  parent: WindoorSecureUranium
+  id: UraniumWindoorSecureSaveClassLocked
+  suffix: Save Class, Locked, Uranium
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSaveClass ]
+
+- type: entity
+  parent: Windoor
+  id: WindoorEuclidClassLocked
+  suffix: Euclid Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEuclidClass ]
+
+- type: entity
+  parent: WindoorSecure
+  id: WindoorSecureEuclidClassLocked
+  suffix: Euclid Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEuclidClass ]
+
+- type: entity
+  parent: WindoorPlasma
+  id: PlasmaWindoorEuclidClassLocked
+  suffix: Euclid Class, Locked, Plasma
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEuclidClass ]
+
+- type: entity
+  parent: WindoorSecurePlasma
+  id: PlasmaWindoorSecureEuclidClassLocked
+  suffix: Euclid Class, Locked, Plasma
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEuclidClass ]
+
+- type: entity
+  parent: WindoorUranium
+  id: UraniumWindoorEuclidClassLocked
+  suffix: Euclid Class, Locked, Uranium
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEuclidClass ]
+
+- type: entity
+  parent: WindoorSecureUranium
+  id: UraniumWindoorSecureEuclidClassLocked
+  suffix: Euclid Class, Locked, Uranium
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEuclidClass ]
+
+- type: entity
+  parent: Windoor
+  id: WindoorKeterClassLocked
+  suffix: Keter Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsKeterClass ]
+
+- type: entity
+  parent: WindoorSecure
+  id: WindoorSecureKeterClassLocked
+  suffix: Keter Class, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsKeterClass ]
+
+- type: entity
+  parent: WindoorPlasma
+  id: PlasmaWindoorKeterClassLocked
+  suffix: Keter Class, Locked, Plasma
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsKeterClass ]
+
+- type: entity
+  parent: WindoorSecurePlasma
+  id: PlasmaWindoorSecureKeterClassLocked
+  suffix: Keter Class, Locked, Plasma
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsKeterClass ]
+
+- type: entity
+  parent: WindoorUranium
+  id: UraniumWindoorKeterClassLocked
+  suffix: Keter Class, Locked, Uranium
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsKeterClass ]
+
+- type: entity
+  parent: WindoorSecureUranium
+  id: UraniumWindoorSecureKeterClassLocked
+  suffix: Keter Class, Locked, Uranium
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsKeterClass ]
