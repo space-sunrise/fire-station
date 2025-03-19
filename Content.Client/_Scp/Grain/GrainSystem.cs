@@ -1,12 +1,10 @@
 ﻿using Robust.Client.Graphics;
-using Robust.Client.Player;
 using Robust.Shared.Player;
 
 namespace Content.Client._Scp.Grain;
 
 public sealed class GrainOverlaySystem : EntitySystem
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
 
     private GrainOverlay _grainOverlay = default!;
@@ -17,24 +15,18 @@ public sealed class GrainOverlaySystem : EntitySystem
 
         _grainOverlay = new ();
 
-        SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<PlayerDetachedEvent>(OnPlayerDetached);
+        SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
     }
 
-    private void OnPlayerAttached(PlayerAttachedEvent args)
+    private void OnPlayerAttached(LocalPlayerAttachedEvent args)
     {
-        if (args.Player != _player.LocalSession)
-            return;
-
-        _overlayManager.AddOverlay(_grainOverlay);
+        AddGrainOverlay();
     }
 
-    private void OnPlayerDetached(PlayerDetachedEvent args)
+    private void OnPlayerDetached(LocalPlayerDetachedEvent args)
     {
-        if (args.Player != _player.LocalSession)
-            return;
-
-        _overlayManager.RemoveOverlay(_grainOverlay);
+        RemoveGrainOverlay();
     }
 
     #region Pulic API
