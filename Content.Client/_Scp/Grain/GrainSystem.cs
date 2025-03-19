@@ -3,17 +3,18 @@ using Robust.Shared.Player;
 
 namespace Content.Client._Scp.Grain;
 
+// TODO: Коммон оверлей систем
 public sealed class GrainOverlaySystem : EntitySystem
 {
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
 
-    private GrainOverlay _grainOverlay = default!;
+    private GrainOverlay _overlay = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        _grainOverlay = new ();
+        _overlay = new ();
 
         SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
@@ -21,34 +22,34 @@ public sealed class GrainOverlaySystem : EntitySystem
 
     private void OnPlayerAttached(LocalPlayerAttachedEvent args)
     {
-        AddGrainOverlay();
+        AddOverlay();
     }
 
     private void OnPlayerDetached(LocalPlayerDetachedEvent args)
     {
-        RemoveGrainOverlay();
+        RemoveOverlay();
     }
 
     #region Pulic API
 
-    public void ToggleGrainOverlay()
+    public void ToggleOverlay()
     {
         if (_overlayManager.HasOverlay<GrainOverlay>())
-            _overlayManager.RemoveOverlay(_grainOverlay);
+            _overlayManager.RemoveOverlay(_overlay);
         else
-            _overlayManager.AddOverlay(_grainOverlay);
+            _overlayManager.AddOverlay(_overlay);
     }
 
-    public void AddGrainOverlay()
+    public void AddOverlay()
     {
         if (!_overlayManager.HasOverlay<GrainOverlay>())
-            _overlayManager.AddOverlay(_grainOverlay);
+            _overlayManager.AddOverlay(_overlay);
     }
 
-    public void RemoveGrainOverlay()
+    public void RemoveOverlay()
     {
         if (_overlayManager.HasOverlay<GrainOverlay>())
-            _overlayManager.AddOverlay(_grainOverlay);
+            _overlayManager.AddOverlay(_overlay);
     }
 
     #endregion

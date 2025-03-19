@@ -23,12 +23,12 @@ public sealed class RetroMonitorOverlaySystem : EntitySystem
     private void OnPlayerAttached(Entity<RetroMonitorViewComponent> ent, ref LocalPlayerAttachedEvent args)
     {
         _overlayManager.AddOverlay(_overlay);
-        _grain.RemoveGrainOverlay();
+        _grain.RemoveOverlay();
     }
 
     private void OnPlayerDetached(Entity<RetroMonitorViewComponent> ent, ref LocalPlayerDetachedEvent args)
     {
         _overlayManager.RemoveOverlay(_overlay);
-        _grain.AddGrainOverlay();
+        _grain.AddOverlay();
     }
 }
