@@ -1,0 +1,56 @@
+
+- type: entity
+  id: LockableButtonDClassJanitor
+  suffix: D Class Janitor
+  parent: LockableButton
+  components:
+  - type: AccessReader
+    access: [["DClassJanitor"]]
+
+- type: entity
+  id: LockableButtonDClassHydroponics
+  suffix: D Class Hydroponics
+  parent: LockableButton
+  components:
+  - type: AccessReader
+    access: [["DClassHydroponics"]]
+
+- type: entity
+  id: LockableButtonDClassKitchen
+  suffix: D Class Kitchen
+  parent: LockableButton
+  components:
+  - type: AccessReader
+    access: [["DClassKitchen"]]
+
+- type: entity
+  id: LockableButtonDClassKH
+  suffix: D Class Kitchen/Hydroponics
+  parent: LockableButton
+  components:
+  - type: AccessReader
+    access: [["DClassKitchen"], ["DClassHydroponics"]]
+
+- type: entity
+  id: LockableButtonSaveClass
+  suffix: Save Class
+  parent: LockableButton
+  components:
+  - type: AccessReader
+    access: [["SaveClass"]]
+
+- type: entity
+  id: LockableButtonEuclidClass
+  suffix: Euclid Class
+  parent: LockableButton
+  components:
+  - type: AccessReader
+    access: [["EuclidClass"]]
+
+- type: entity
+  id: LockableButtonKeterClass
+  suffix: Keter Class
+  parent: LockableButton
+  components:
+  - type: AccessReader
+    access: [["KeterClass"]]

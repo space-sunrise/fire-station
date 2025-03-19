@@ -1,0 +1,144 @@
+- type: vendingMachineInventory
+  id: ChefvendInventoryDClass
+  startingInventory:
+    ReagentContainerFlour: 3
+    ReagentContainerCornmeal: 2
+    ReagentContainerSugar: 2
+    ReagentContainerRice: 3
+    FoodCondimentPacketSalt: 4
+    FoodCondimentBottleEnzyme: 5
+    FoodCondimentBottleHotsauce: 1
+    FoodCondimentBottleKetchup: 1
+    FoodCondimentBottleBBQ: 1
+    FoodCondimentBottleVinegar: 2
+    ReagentContainerOliveoil: 2
+    ReagentContainerMayo: 1
+    FoodContainerEgg: 1
+    DrinkMilkCarton: 3
+    DrinkSoyMilkCarton: 1
+    FoodButter: 3
+    FoodCheese: 3
+    FoodMeat: 8
+
+- type: vendingMachineInventory
+  id: ChefDrobeInventoryDClass
+  startingInventory:
+    ClothingOuterApronChef: 3
+    ClothingOuterWinterChef: 2
+    ClothingOuterJacketChef: 1
+    ClothingMaskItalianMoustache: 2
+    ClothingHeadHatChef: 2
+    ClothingShoesChef: 2
+    ClothingBeltChef: 2
+
+- type: vendingMachineInventory
+  id: DinnerwareInventoryDClass
+  startingInventory:
+    KnifePlastic: 8
+    RollingPin: 4
+    SpoonPlastic: 6
+    ForkPlastic: 6
+    PairedChopsticks: 5
+    FoodBowlBig: 10
+    FoodPlatePlastic: 10
+    FoodPlateSmallPlastic: 10
+    FoodPlateTin: 5
+    FoodPlateMuffinTin: 5
+    FoodKebabSkewer: 5
+    DrinkGlass: 5
+    Beaker: 5
+    LargeBeaker: 5
+    Pitcher: 2
+    DrinkMug: 5
+    DrinkMugBlack: 2
+    DrinkMugBlue: 2
+    DrinkMugGreen: 2
+    DrinkMugHeart: 1
+    DrinkMugMetal: 2
+    DrinkMugMoebius: 1
+    DrinkMugOne: 1
+    DrinkMugRainbow: 2
+    DrinkMugRed: 2
+
+- type: vendingMachineInventory
+  id: MegaSeedServitorInventoryDClass
+  startingInventory:
+    AppleSeeds: 5
+    BerrySeeds: 5
+    CarrotSeeds: 5
+    CabbageSeeds: 5
+    ChanterelleSeeds: 5
+    CherrySeeds: 5
+    ChiliSeeds: 5
+    CocoaSeeds: 3
+    CornSeeds: 5
+    CottonSeeds: 5
+    EggplantSeeds: 5
+    EggySeeds: 5
+    GarlicSeeds: 3
+    GrapeSeeds: 5
+    LemonSeeds: 5
+    LimeSeeds: 5
+    PineappleSeeds: 5
+    LingzhiSeeds: 3
+    OatSeeds: 5
+    OnionSeeds: 5
+    OnionRedSeeds: 5
+    OrangeSeeds: 5
+    PeaSeeds: 5
+    PoppySeeds: 3
+    PotatoSeeds: 5
+    PumpkinSeeds: 5
+    RiceSeeds: 5
+    SoybeanSeeds: 5
+    SugarcaneSeeds: 5
+    TeaPlantSeeds: 5
+    TomatoSeeds: 5
+    WheatSeeds: 5
+    WatermelonSeeds: 5
+
+- type: vendingMachineInventory
+  id: NutriMaxInventoryDClass
+  startingInventory:
+    ClothingOuterApronBotanist: 2
+    ClothingHeadBandBotany: 3
+    ClothingOuterWinterHydro: 2
+    HydroponicsToolSpade: 4
+    HydroponicsToolMiniHoe: 4
+    HydroponicsToolClippers: 4
+    PlantBag: 3
+    PlantBGoneSpray: 20
+    WeedSpray: 20
+    PestSpray: 20
+    RobustHarvestChemistryBottle: 3
+    EZNutrientChemistryBottle: 3
+    Bucket: 3
+
+- type: vendingMachineInventory
+  id: BoozeOMatInventoryDClass
+  startingInventory:
+    DrinkGlass: 20 #Kept glasses at top for ease to differentiate from booze.
+    DrinkShotGlass: 10
+    DrinkGlassCoupeShaped: 10
+    DrinkVacuumFlask: 5
+    DrinkFlaskBar: 5
+    DrinkShaker: 5
+    DrinkJigger: 5
+    DrinkIceBucket: 2
+    BarSpoon: 3
+    CustomDrinkJug: 2 #to allow for custom drinks in the soda/booze dispensers
+    DrinkCoconutWaterCarton: 3
+    DrinkColaBottleFull: 4
+    DrinkEnergyDrinkCan: 8
+    DrinkMilkCarton: 2
+    DrinkCreamCarton: 5
+    DrinkGrenadineBottleFull: 2
+    DrinkJuiceLimeCarton: 3
+    DrinkJuiceLemonCarton: 3
+    DrinkJuiceOrangeCarton: 3
+    DrinkJuiceTomatoCarton: 3
+    DrinkSodaWaterCan: 8
+    DrinkSolDryCan: 8
+    DrinkSpaceMountainWindBottleFull: 3
+    DrinkSpaceUpBottleFull: 3
+    DrinkTonicWaterCan: 8

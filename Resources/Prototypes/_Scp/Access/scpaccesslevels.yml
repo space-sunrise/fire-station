@@ -1,98 +1,97 @@
-﻿- type: accessLevel
-  id: Level0
-  name: keycard-access-level-0
+﻿### Complex Access ###
+# LAW
 
 - type: accessLevel
-  id: Level1
-  name: keycard-access-level-1
+  id: APAIBAgent
+  name: keycard-access-apaib
+
+# SCP
 
 - type: accessLevel
-  id: Level2
-  name: keycard-access-level-2
+  id: SaveClass
+  name: keycard-access-saveclass
 
 - type: accessLevel
-  id: Level3
-  name: keycard-access-level-3
+  id: EuclidClass
+  name: keycard-access-euclidclass
 
 - type: accessLevel
-  id: Level4
-  name: keycard-access-level-4
+  id: KeterClass
+  name: keycard-access-keterclass
+
+# D class
 
 - type: accessLevel
-  id: Level5
-  name: keycard-access-level-5
+  id: DClassKitchen
+  name: keycard-access-dclasskitchen
 
 - type: accessLevel
-  id: LevelScpSec
-  name: keycard-access-level-ScpSec
+  id: DClassHydroponics
+  name: keycard-access-dclasshydroponics
 
 - type: accessLevel
-  id: LevelMtfLeader
-  name: keycard-access-level-MtfLeader
+  id: DClassJanitor
+  name: keycard-access-dclassjanitor
+
+### Access Groups ###
 
 - type: accessGroup
-  id: Level0
+  id: SCPDClass
   tags:
-  - Level0
-  - Level1
-  - Level2
-  - Level3
-  - Level4
-  - Level5
-  - LevelScpSec
-  - LevelMtfLeader
+  - DClassJanitor
+  - DClassHydroponics
+  - DClassKitchen
 
 - type: accessGroup
-  id: Level1
+  id: SCPFullAccess
   tags:
-  - Level1
-  - Level2
-  - Level3
-  - Level4
-  - Level5
-  - LevelScpSec
-  - LevelMtfLeader
+  - EmergencyShuttleRepealAll
+  - Captain
+  - HeadOfPersonnel
+  - ChiefEngineer
+  - ChiefMedicalOfficer
+  - HeadOfSecurity
+  - ResearchDirector
+  - Command
+  - Cryogenics
+  - Security
+  - Detective
+  - Armory
+  - Brig
+  - Lawyer
+  - Engineering
+  - Medical
+  - Quartermaster
+  - Salvage
+  - Cargo
+  - Research
+  - Service
+  - Maintenance
+  - External
+  - Janitor
+  - Theatre
+  - Bar
+  - Chemistry
+  - Kitchen
+  - Chapel
+  - Hydroponics
+  - Atmospherics
+  - Magistrat  # Sunrise-edit
+  - BlueShield  # Sunrise-edit
+  - Ntrep  # Sunrise-edit
+  - Barber  # Sunrise-edit
+  # Other
+  - APAIBAgent
+  - DClassJanitor
+  - DClassHydroponics
+  - DClassKitchen
+  - SaveClass
+  - EuclidClass
+  - KeterClass
 
 - type: accessGroup
-  id: Level2
+  id: SCPObjects
   tags:
-  - Level2
-  - Level3
-  - Level4
-  - Level5
-
-- type: accessGroup
-  id: LevelScpSec
-  tags:
-  - Level2
-  - Level3
-  - Level4
-  - Level5
-  - LevelScpSec
-
-- type: accessGroup
-  id: Level3
-  tags:
-  - Level3
-  - Level4
-  - Level5
-  - LevelMtfLeader
-
-- type: accessGroup
-  id: Level4
-  tags:
-  - Level4
-  - Level5
-  - LevelMtfLeader
-
-- type: accessGroup
-  id: LevelMtfLeader
-  tags:
-  - Level4
-  - Level5
-  - LevelMtfLeader
-
-- type: accessGroup
-  id: Level5
-  tags:
-  - Level5
+  - SaveClass
+  - EuclidClass
+  - KeterClass

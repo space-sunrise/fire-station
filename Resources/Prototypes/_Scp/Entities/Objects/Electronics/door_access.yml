@@ -1,0 +1,90 @@
+# Law
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsAPAIB
+  suffix: APAIB, Locked
+  components:
+  - type: AccessReader
+    access: [["APAIBAgent"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsSCPLaw
+  suffix: SCP Law, Locked
+  components:
+  - type: AccessReader
+    access: [["APAIBAgent"], ["Ntrep"], ["Magistrat"], ["Lawyer"]]
+    alertAccesses:
+      delta: AllAccess
+
+# D Class
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsDCJ
+  suffix: D Class Janitor, Locked
+  components:
+  - type: AccessReader
+    access: [["DClassJanitor"]]
+    alertAccesses:
+      delta: AllAccess
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsDCH
+  suffix: D Class Hydroponics, Locked
+  components:
+  - type: AccessReader
+    access: [["DClassHydroponics"]]
+    alertAccesses:
+      delta: AllAccess
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsDCK
+  suffix: D Class Kitchen, Locked
+  components:
+  - type: AccessReader
+    access: [["DClassKitchen"]]
+    alertAccesses:
+      delta: AllAccess
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsDCKH
+  suffix: D Class Kitchen/Hydroponics, Locked
+  components:
+  - type: AccessReader
+    access: [["DClassKitchen"], ["DClassHydroponics"]]
+    alertAccesses:
+      delta: AllAccess
+
+# SCP
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsSaveClass
+  suffix: Save Class, Locked
+  components:
+  - type: AccessReader
+    access: [["SaveClass"]]
+    alertAccesses:
+      delta: AllAccess
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsEuclidClass
+  suffix: Euclid Class, Locked
+  components:
+  - type: AccessReader
+    access: [["EuclidClass"]]
+    alertAccesses:
+      delta: AllAccess
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsKeterClass
+  suffix: Keter Class, Locked
+  components:
+  - type: AccessReader
+    access: [["KeterClass"]]
+    alertAccesses:
+      delta: AllAccess

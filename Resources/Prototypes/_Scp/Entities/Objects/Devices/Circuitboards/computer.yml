@@ -1,0 +1,26 @@
+- type: entity
+  parent: [BaseComputerCircuitboard, BaseGrandTheftContraband]
+  id: IDComputerCircuitboardSCPFond
+  name: Fond ID card computer board
+  description: A computer printed circuit board for an ID card console.
+  components:
+    - type: Sprite
+      state: cpu_command
+    - type: ComputerBoard
+      prototype: ComputerIdFondSCP
+    - type: StaticPrice
+      price: 750
+    - type: Tag
+      tags:
+      - HighRiskItem
+
+- type: entity
+  parent: [ BaseComputerCircuitboard, BaseSyndicateContraband ]
+  id: ChaosCommsComputerCircuitboard
+  name: chaos communications computer board
+  description: A computer printed circuit board for a chaos communications console.
+  components:
+  - type: Sprite
+    state: cpu_syndicate
+  - type: ComputerBoard
+    prototype: ChaosComputerComms
