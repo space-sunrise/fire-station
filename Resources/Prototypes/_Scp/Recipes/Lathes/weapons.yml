@@ -1,0 +1,9 @@
+﻿- type: latheRecipePack
+  id: SecurityDynamicWeaponsScp
+  recipes:
+  - WeaponEarthGovLaserPistol
+  - WeaponEarthGovLaserRifle
+  - WeaponEarthGovLaserCarbine
+  - WeaponEarthGovLaserMG
+  - WeaponARLSniper
+  - WeaponGodlikeXRay

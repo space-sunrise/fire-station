@@ -59,12 +59,13 @@ public sealed partial class ScpInteractSystem : EntitySystem
         // Обработка КД
         if (scp.Comp.TimeLastInteracted != null && timeLeft < researchTool.Cooldown)
         {
-            // TODO: Более красивое форматирование времени
-
             if (researchTool.CooldownMessage != null)
             {
-                var message = Loc.GetString(researchTool.CooldownMessage, ("time", researchTool.Cooldown - timeLeft));
-                _popup.PopupPredicted(message, args.User, args.User);
+                var nextTime = researchTool.Cooldown - timeLeft;
+                var prettyTimeString = $"{nextTime.Value.Minutes:D2}:{nextTime.Value.Seconds:D2}";
+                var message = Loc.GetString(researchTool.CooldownMessage, ("time", prettyTimeString));
+
+                _popup.PopupClient(message, args.User, args.User);
             }
 
             return;

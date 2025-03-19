@@ -1,0 +1,111 @@
+﻿# SCP Default
+- type: siliconLaw
+  id: ScpDefault1
+  order: 1
+  lawString: law-scp-default-1
+
+- type: siliconLaw
+  id: ScpDefault2
+  order: 2
+  lawString: law-scp-default-2
+
+- type: siliconLaw
+  id: ScpDefault3
+  order: 3
+  lawString: law-scp-default-3
+
+- type: siliconLaw
+  id: ScpDefault4
+  order: 4
+  lawString: law-scp-default-4
+
+- type: siliconLaw
+  id: ScpDefault5
+  order: 5
+  lawString: law-scp-default-5
+
+- type: siliconLawset
+  id: ScpDefault
+  laws:
+  - ScpDefault1
+  - ScpDefault2
+  - ScpDefault3
+  - ScpDefault4
+  - ScpDefault5
+  obeysTo: laws-owner-crew
+
+- type: entity
+  id: ScpDefaultCircuitBoard
+  parent: BaseElectronics
+  name: law board (SCP Foundation)
+  description: An electronics board containing the SCP Foundation lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: ScpDefault
+
+
+# SCP MTF Directives
+- type: siliconLaw
+  id: ScpMtf4
+  order: 4
+  lawString: law-scp-mtf-4
+
+- type: siliconLaw
+  id: ScpMtf5
+  order: 5
+  lawString: law-scp-mtf-5
+
+- type: siliconLawset
+  id: ScpMtf
+  laws:
+  - ScpDefault1
+  - ScpDefault2
+  - ScpDefault3
+  - ScpMtf4
+  - ScpMtf5
+  obeysTo: laws-owner-mtf
+
+- type: entity
+  id: ScpMtfCircuitBoard
+  parent: BaseElectronics
+  name: law board (MTF Directives)
+  description: An electronics board containing the MTF directives lawset.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: ScpMtf
+
+# Chaos
+- type: siliconLaw
+  id: Chaos1
+  order: 1
+  lawString: law-chaos-1
+
+- type: siliconLaw
+  id: Chaos2
+  order: 2
+  lawString: law-chaos-2
+
+- type: siliconLaw
+  id: Chaos3
+  order: 3
+  lawString: law-chaos-3
+
+- type: siliconLaw
+  id: Chaos4
+  order: 4
+  lawString: law-chaos-4
+
+- type: siliconLawset
+  id: ChaosStatic
+  laws:
+  - Chaos1
+  - Chaos2
+  - Chaos3
+  - Chaos4
+  obeysTo: laws-owner-chaos

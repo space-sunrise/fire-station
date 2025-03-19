@@ -15,9 +15,9 @@
       time: 18000 # 5 hrs
   startingGear: AdjutantGear
   icon: JobIconAdjutant
+  overrideConsoleVisibility: false # Fire added
   supervisors: job-supervisors-command
   canBeAntag: true # Sunrise-Edit
-  antagAdvantage: 20 # Sunrise-Edit
   setPreference: false # Fire added
   access:
     - Command

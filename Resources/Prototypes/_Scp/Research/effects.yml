@@ -3,7 +3,7 @@
 - type: artifactEffect
   id: ScpEffectLightFlicker
   targetDepth: 0
-  effectHint: artifact-effect-hint-electrical-interference
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -13,7 +13,7 @@
 - type: artifactEffect
   id: ScpEffectThrow
   targetDepth: 0
-  effectHint: artifact-effect-hint-environment
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -23,19 +23,13 @@
 - type: artifactEffect
   id: ScpEffectShatterStructures
   targetDepth: 1
-  effectHint: artifact-effect-hint-environment
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
   components:
   - type: DamageNearbyArtifact
     damageChance: 0.75
-    whitelist:
-      components:
-      - Door
-      tags:
-      - Window
-      - Wall
     damage:
       types:
         Structural: 400
@@ -43,7 +37,7 @@
 - type: artifactEffect
   id: ScpEffectShuffle
   targetDepth: 1
-  effectHint: artifact-effect-hint-displacement
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -56,9 +50,70 @@
     - shuffle-artifact-popup
 
 - type: artifactEffect
+  id: ScpEffectHunger
+  targetDepth: 1
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ArtifactModifyHunger
+
+- type: artifactEffect
+  id: ScpEffectThirst
+  targetDepth: 1
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ArtifactModifyThirst
+
+- type: artifactEffect
+  id: ScpEffectBoltAirlocks
+  targetDepth: 1
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ArtifactBoltAirlocks
+
+- type: artifactEffect
+  id: ScpEffectTeslaDischarge
+  targetDepth: 2
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: AddComponentsOnActivate
+    components:
+    - type: LightningArcShooter
+      maxLightningArc: 4
+      shootMaxInterval: 4
+      shootRange: 6
+    - type: TimedRemoveComponents
+      removeAfter: 10
+      components:
+      - type: LightningArcShooter
+
+- type: artifactEffect
+  id: ScpEffectSpawnEvilTwin
+  targetDepth: 3
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ArtifactStartGameRule
+    rules:
+      EvilTwinSpawn: 2
+
+- type: artifactEffect
   id: ScpEffectAnomaly
   targetDepth: 4
-  effectHint: artifact-effect-hint-creation
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp
@@ -68,24 +123,202 @@
     spawns:
     - id: RandomAnomalySpawner
 
+
+#  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣤⣤⣤⣴⡶⠶⠶⠶⠶⠶⠶⠶⠶⠤⠤⢤⣤⣤⣤⣤⣤⣄⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+#  ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⠟⠋⠀⠀⠀⠀⢀⣀⠤⠖⠚⢉⣉⣉⣉⣉⣀⠀⠀⠀⠀⠀⠀⠈⠉⠩⠛⠛⠛⠻⠷⣦⣄⡀⠀⠀⠀⠀⠀⠀
+#  ⠀⠀⠀⠀⠀⠀⠀⣠⡿⠋⠀⠀⠀⣀⠤⠒⣉⠤⢒⣊⡉⠠⠤⠤⢤⡄⠈⠉⠉⠀⠂⠀⠀⠐⠂⠀⠉⠉⠉⠉⠂⠀⠙⠻⣶⣄⠀⠀⠀⠀
+#  ⠀⠀⠀⠀⠀⠀⣰⡿⠁⠀⠀⡠⠊⢀⠔⣫⠔⠊⠁⠀⠀⠀⠀⠀⠀⠙⡄⠀⠀⠀⠀⠀⠘⣩⠋⠀⠀⠀⠉⠳⣄⠀⠀⠀⠈⢻⡇⠀⠀⠀
+#  ⠀⠀⠀⠀⠀⣰⡿⠁⠀⠀⠀⠀⠀⠁⠜⠁⣀⣤⣴⣶⣶⣶⣤⣤⣀⠀⠃⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠈⠆⠀⠀⠀⠸⣧⡀⠀⠀
+#  ⠀⠀⠀⣠⣾⣿⣥⠤⢄⡀⠀⢠⣤⠔⢠⣾⣿⣿⣿⣿⣿⣯⣄⡈⠙⢿⣦⠀⠀⠀⠀⡀⢀⣤⣶⣿⣿⣿⣿⣿⣦⠀⣀⣀⣀⣀⡙⢿⣦⡀
+#  ⠀⣠⡾⣻⠋⢀⣠⣴⠶⠾⢶⣤⣄⡚⠉⠉⠉⠁⣠⣼⠏⠉⠙⠛⠷⡾⠛⠀⠀⠀⠘⠛⢿⡟⠛⠋⠉⠉⠉⠁⠀⠀⠀⠀⠀⠦⣝⠦⡙⣿
+#  ⢰⡟⠁⡇⢠⣾⠋⠀⠀⣼⣄⠉⠙⠛⠷⠶⠶⠿⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣇⠀⠀⠀⠠⣦⣄⣴⡾⢛⡛⠻⠷⠘⡄⢸⣿
+#  ⢸⡇⠀⡇⢸⣇⢀⣤⣴⣿⠻⠷⣦⣄⣀⠀⠀⠀⢀⡀⠀⣀⠰⣤⡶⠶⠆⠀⠀⠀⠀⠀⠈⠛⢿⣦⣄⠀⠈⠉⠉⠁⢸⣇⠀⠀⣠⠃⢸⣿
+#  ⠸⣿⡀⢇⠘⣿⡌⠁⠈⣿⣆⠀⠀⠉⢻⣿⣶⣦⣤⣀⡀⠀⠀⢻⣦⠰⡶⠿⠶⠄⠀⠀⠀⣠⣾⠿⠟⠓⠦⡄⠀⢀⣾⣿⡇⢈⠡⠔⣿⡟
+#  ⠀⠙⢿⣌⡑⠲⠄⠀⠀⠙⢿⣿⣶⣦⣼⣿⣄⠀⠈⠉⠛⠻⣿⣶⣯⣤⣀⣀⡀⠀⠘⠿⠾⠟⠁⠀⠀⢀⣀⣤⣾⣿⢿⣿⣇⠀⠀⣼⡟⠀
+#  ⠀⠀⠀⠹⣿⣇⠀⠀⠀⠀⠈⢻⣦⠈⠙⣿⣿⣷⣶⣤⣄⣠⣿⠁⠀⠈⠉⠙⢻⡟⠛⠻⠿⣿⠿⠛⠛⢻⣿⠁⢈⣿⣨⣿⣿⠀⢰⡿⠀⠀
+#  ⠀⠀⠀⠀⠈⢻⣇⠀⠀⠀⠀⠀⠙⢷⣶⡿⠀⠈⠙⠛⠿⣿⣿⣶⣶⣦⣤⣤⣼⣧⣤⣤⣤⣿⣦⣤⣤⣶⣿⣷⣾⣿⣿⣿⡟⠀⢸⡇⠀⠀
+#  ⠀⠀⠀⠀⠀⠈⢿⣦⠀⠀⠀⠀⠀⠀⠙⢷⣦⡀⠀⠀⢀⣿⠁⠉⠙⠛⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⢸⣷⠀⠀
+#  ⠀⠀⠀⠀⠀⠀⠀⠙⢷⣄⠀⢀⡀⠀⣀⡀⠈⠻⢷⣦⣾⡃⠀⠀⠀⠀⠀⢸⡇⠀⠀⠀⢹⡟⠉⠉⣿⠏⢡⣿⠃⣾⣷⡿⠁⠀⠘⣿⠀⠀
+#  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢷⣤⣉⠒⠤⣉⠓⠦⣀⡈⠉⠛⠿⠶⢶⣤⣤⣾⣧⣀⣀⣀⣿⣄⣠⣼⣿⣤⣿⠷⠾⠟⠋⠀⠀⠀⠀⣿⠀⠀
+#  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠿⣶⣄⡉⠒⠤⢌⣑⠲⠤⣀⡀⠀⠀⠀⠈⠍⠉⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⣠⠏⠀⢰⠀⠀⣿⡄⠀
+#  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠛⠿⢷⣦⣄⡉⠑⠒⠪⠭⢄⣀⣀⠀⠐⠒⠒⠒⠒⠀⠀⠐⠒⠊⠉⠀⢀⡠⠚⠀⠀⢸⡇⠀
+#  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⢷⣦⣀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠓⠒⠒⠒⠊⠁⠀⠀⠀⢠⣿⠃⠀
+#  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠛⠷⠶⣶⣦⣄⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣠⣴⠟⠁⠀⠀
+#  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⠛⠛⠷⠶⠶⠶⠶⠶⠾⠛⠛⠉⠀⠀⠀⠀⠀
+
+
+- type: artifactEffect
+  id: ScpEffectShuffleUltra
+  targetDepth: 5
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ShuffleArtifact
+    radius: 70
+  - type: TelepathicArtifact
+    range: 70
+    messages:
+    - shuffle-artifact-popup
+
+- type: artifactEffect
+  id: ScpEffectPolyChair
+  targetDepth: 3
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: PolyOthersArtifact
+    polymorphPrototypeName: ScpEffectChair
+
+- type: artifactEffect
+  id: ScpEffectPolyWatermelon
+  targetDepth: 3
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: PolyOthersArtifact
+    polymorphPrototypeName: ScpEffectWatermelon
+
+- type: artifactEffect
+  id: ScpEffectPolyAppendix
+  targetDepth: 3
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: PolyOthersArtifact
+    polymorphPrototypeName: ScpEffectAppendix
+
+- type: artifactEffect
+  id: ScpEffectPolyDisposal
+  targetDepth: 3
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: PolyOthersArtifact
+    polymorphPrototypeName: ScpEffectDisposal
+
+- type: artifactEffect
+  id: ScpEffectPolyTable
+  targetDepth: 3
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: PolyOthersArtifact
+    polymorphPrototypeName: ScpEffectTable
+
+- type: artifactEffect
+  id: ScpEffectSwap
+  targetDepth: 2
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ArtifactScpSwap
+
+- type: artifactEffect
+  id: ScpEffectCreateArtifacts
+  targetDepth: 5
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ArtifactCreateRandomArtifacts
+
+- type: artifactEffect
+  id: ScpEffectRandomTransformation
+  targetDepth: 6
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: ArtifactRandomTransformation
+    prototypeBlacklist:
+    - Singularity
+    - TeslaEnergyBall
+    - TeslaMiniEnergyBall
+    categoryBlacklist:
+    - HideSpawnMenu
+    - Debug
+    - Spawner
+
+- type: artifactEffect
+  id: EffectMagnetUltra
+  targetDepth: 4
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: AddComponentsOnActivate
+    components:
+    - type: GravityWell
+      maxRange: 80
+      baseRadialAcceleration: 90
+    - type: TimedRemoveComponents
+      components:
+      - type: GravityWell
+
+- type: artifactEffect
+  id: ScpEffectShiftedAsciiTableAccent
+  targetDepth: 4
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp
+  components:
+  - type: AddComponentsInRadius
+    components:
+    - type: AnomalyAccent
+    - type: TimedRemoveComponents
+      removeAfter: 600
+      components:
+      - type: AnomalyAccent
+
 # Scp 939
 
 - type: artifactEffect
   id: ScpEffectSmoke939
-  targetDepth: 2
-  effectHint: artifact-effect-hint-environment
+  targetDepth: 1
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp939
   components:
-  - type: ScpSmokeArtifact
+  - type: ArtifactCreateSmoke
+    reagent: АМН-С227
+    quantity: 200
+    prototype: АМН-С227Smoke
+
+- type: artifactEffect
+  id: ScpEffectSleep939
+  targetDepth: 0
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp939
+  components:
+  - type: ArtifactScp939Sleep
 
 # Scp 106
 
 - type: artifactEffect
   id: ScpEffectEmp106
-  targetDepth: 0
-  effectHint: artifact-effect-hint-electrical-interference
+  targetDepth: 1
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp106
@@ -93,12 +326,22 @@
   - type: EmpArtifact
     range: 12
 
+- type: artifactEffect
+  id: ScpEffectScp106Teleport
+  targetDepth: 2
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp106
+  components:
+  - type: ArtifactScp106Teleport
+
 # Scp 999
 
 - type: artifactEffect
   id: ScpEffectHeal999
-  targetDepth: 3
-  effectHint: artifact-effect-hint-environment
+  targetDepth: 1
+  effectHint: artifact-effect-data-deleted
   whitelist:
     components:
     - Scp999
@@ -118,31 +361,43 @@
 
 - type: artifactEffect
   id: ScpEffectKnock
-  targetDepth: 0
-  effectHint: artifact-effect-hint-electrical-interference
+  targetDepth: 1
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp173
   components:
   - type: KnockArtifact
+    knockRange: 12
 
 - type: artifactEffect
-  id: ScpEffectPointLight
+  id: ScpEffectBlind
   targetDepth: 0
+  effectHint: artifact-effect-hint-data-deleted
   whitelist:
     components:
     - Scp173
   components:
-  - type: TriggerArtifact
-  - type: FlashOnTrigger
-    range: 8
+  - type: ArtifactScp173BlindEveryoneInRange
+
+# Scp 096
+
+- type: artifactEffect
+  id: ScpEffectMadness096
+  targetDepth: 3
+  effectHint: artifact-effect-hint-data-deleted
+  whitelist:
+    components:
+    - Scp096
+  components:
+  - type: ArtifactScp096Madness
 
 # Scp 457
 
 - type: artifactEffect
   id: ScpEffectIgnite
   targetDepth: 0
-  effectHint: artifact-effect-hint-release
+  effectHint: artifact-effect-hint-data-deleted
   blacklist:
     components:
     - Scp # TODO: кастомный компонент для 457
@@ -157,7 +412,7 @@
 - type: artifactEffect
   id: ScpEffectServantSpawn035
   targetDepth: 1
-  effectHint: artifact-effect-hint-creation
+  effectHint: artifact-effect-hint-data-deleted
   whitelist: # Fire
     components:
     - Scp035Mask

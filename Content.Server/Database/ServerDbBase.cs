@@ -228,6 +228,7 @@ namespace Content.Server.Database
             {
                 var loadout = new RoleLoadout(role.RoleName)
                 {
+                    EntityName = role.EntityName,
                 };
 
                 foreach (var group in role.Groups)
@@ -250,6 +251,7 @@ namespace Content.Server.Database
                 profile.FlavorText,
                 profile.Species,
                 voice, // Sunrise-TTS
+                profile.BodyType,
                 profile.Age,
                 sex,
                 gender,
@@ -287,6 +289,7 @@ namespace Content.Server.Database
             profile.FlavorText = humanoid.FlavorText;
             profile.Species = humanoid.Species;
             profile.Voice = humanoid.Voice; // Sunrise-TTS
+            profile.BodyType = humanoid.BodyType;
             profile.Age = humanoid.Age;
             profile.Sex = humanoid.Sex.ToString();
             profile.Gender = humanoid.Gender.ToString();
@@ -327,6 +330,7 @@ namespace Content.Server.Database
                 var dz = new ProfileRoleLoadout()
                 {
                     RoleName = role,
+                    EntityName = loadouts.EntityName ?? string.Empty,
                 };
 
                 foreach (var (group, groupLoadouts) in loadouts.SelectedLoadouts)
@@ -1120,7 +1124,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 .SingleOrDefaultAsync());
         }
 
-        public async Task SetLastReadRules(NetUserId player, DateTimeOffset date)
+        public async Task SetLastReadRules(NetUserId player, DateTimeOffset? date)
         {
             await using var db = await GetDb();
 
@@ -1130,7 +1134,7 @@ INSERT INTO player_round (players_id, rounds_id) VALUES ({players[player]}, {id}
                 return;
             }
 
-            dbPlayer.LastReadRules = date.UtcDateTime;
+            dbPlayer.LastReadRules = date?.UtcDateTime;
             await db.DbContext.SaveChangesAsync();
         }
 

@@ -140,6 +140,8 @@
   - type: ClothingAddComponents
     components:
     - type: Scp939Protection
+  - type: FootstepModifier
+    footstepSoundCollection: null
 
 # Scp-035
 

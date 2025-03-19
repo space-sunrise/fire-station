@@ -181,7 +181,7 @@
   - type: AccessReader
     access: [["Security"], ["Command"], ["Research"]]
   - type: SiliconLawProvider
-    laws: ERTLawset
+    laws: ScpMtf # Fire edit
   - type: PointLight
     color: "#9efce0"
     radius: 6

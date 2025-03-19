@@ -173,10 +173,18 @@ public sealed partial class AnomalySystem
         //Point output
         if (secret != null && secret.Secret.Contains(AnomalySecretData.OutputPoint))
             msg.AddMarkupOrThrow(Loc.GetString("anomaly-scanner-point-output-unknown"));
+        // Fire edit start - поддержка множества очков исследований
         else
-            msg.AddMarkupOrThrow(Loc.GetString("anomaly-scanner-point-output", ("point", GetAnomalyPointValue(anomaly, anomalyComp))));
-        msg.PushNewline();
-        msg.PushNewline();
+        {
+            var points = GetAnomalyPointValue(anomaly, anomalyComp);
+            foreach (var (point, amount) in points)
+            {
+                var pointString = $"{Loc.GetString(_prototype.Index(point).Name)}: {amount}";
+                msg.AddMarkupOrThrow(Loc.GetString("anomaly-scanner-point-output", ("point", pointString)));
+                msg.PushNewline();
+            }
+        }
+        // Fire edit end
 
         //Particles title
         msg.AddMarkupOrThrow(Loc.GetString("anomaly-scanner-particle-readout"));

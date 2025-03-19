@@ -22,3 +22,10 @@
   files:
   - /Audio/_Scp/Objects/Machines/Airlocks/Large/close1.ogg
   - /Audio/_Scp/Objects/Machines/Airlocks/Large/close2.ogg
+
+- type: soundCollection
+  id: DoorSmash
+  files:
+  - /Audio/_Scp/Objects/Machines/Airlocks/DoorSmash/sound1.ogg
+  - /Audio/_Scp/Objects/Machines/Airlocks/DoorSmash/sound2.ogg
+  - /Audio/_Scp/Objects/Machines/Airlocks/DoorSmash/sound3.ogg

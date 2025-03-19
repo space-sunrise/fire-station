@@ -1,4 +1,5 @@
 ﻿using Content.Server.Inventory;
+using Content.Server.Wieldable;
 using Content.Shared.Hands;
 using Content.Shared.Item;
 using Content.Shared.Wieldable;

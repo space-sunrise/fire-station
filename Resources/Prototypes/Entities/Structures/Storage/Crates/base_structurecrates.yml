@@ -5,6 +5,7 @@
   name: crate
   description: A large container for items.
   components:
+  - type: Animateable
   - type: Transform
     noRot: true
   - type: Icon
@@ -38,6 +39,15 @@
         layer:
         - MachineLayer
   - type: EntityStorage
+    # Fire edit start
+    whitelist:
+      components:
+      - MobState
+      - Item
+    blacklist:
+      components:
+      - Scp
+    # Fire edit end
   - type: PlaceableSurface
     isPlaceable: false # defaults to closed.
   - type: Damageable
@@ -72,8 +82,8 @@
           Invoice: { state: invoice }
   - type: PaperLabel
     labelSlot:
-      insertVerbText: Attach Label
-      ejectVerbText: Remove Label
+      insertVerbText: comp-paper-label-insert
+      ejectVerbText: comp-paper-label-eject
       whitelist:
         components:
         - Paper

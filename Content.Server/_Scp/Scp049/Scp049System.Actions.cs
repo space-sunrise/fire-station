@@ -8,6 +8,7 @@ using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Scp049;
 using Content.Shared._Scp.Scp049.Scp049Protection;
 using Content.Shared.DoAfter;
+using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -37,6 +38,9 @@ public sealed partial class Scp049System
 
     private void OnHealMinion(Entity<Scp049Component> ent, ref Scp049HealMinionAction args)
     {
+        if (args.Handled)
+            return;
+
         if (!HasComp<Scp049MinionComponent>(args.Target))
             return;
 
@@ -47,6 +51,9 @@ public sealed partial class Scp049System
 
     private void OnSelfHeal(Entity<Scp049Component> ent, ref Scp049SelfHealAction args)
     {
+        if (args.Handled)
+            return;
+
         Heal(args.Performer, args.Performer);
 
         args.Handled = true;
@@ -63,6 +70,9 @@ public sealed partial class Scp049System
 
     private void OnResurrect(Entity<Scp049Component> scpEntity, ref Scp049ResurrectAction args)
     {
+        if (args.Handled)
+            return;
+
         var hasTool = false;
 
         foreach (var heldUid in _handsSystem.EnumerateHeld(scpEntity))
@@ -83,6 +93,7 @@ public sealed partial class Scp049System
         {
             var message = Loc.GetString("scp049-missing-surgery-tool", ("instrument", Loc.GetEntityData(scpEntity.Comp.NextTool).Name));
             _popupSystem.PopupEntity(message, scpEntity, scpEntity, PopupType.MediumCaution);
+
             return;
         }
 
@@ -104,6 +115,9 @@ public sealed partial class Scp049System
 
     private void OnKillResurrected(Entity<Scp049Component> ent, ref Scp049KillResurrectedAction args)
     {
+        if (args.Handled)
+            return;
+
         if (!_zombieSystem.UnZombify(args.Target, args.Target, null))
             return;
 
@@ -124,6 +138,9 @@ public sealed partial class Scp049System
 
     private void OnKillLeavingBeing(Entity<Scp049Component> ent, ref Scp049KillLivingBeingAction args)
     {
+        if (args.Handled)
+            return;
+
         var target = args.Target;
 
         if (HasComp<ScpComponent>(target))
@@ -163,6 +180,9 @@ public sealed partial class Scp049System
         if (HasComp<ScpComponent>(minionEntity))
             return false;
 
+        if (!HasComp<HumanoidAppearanceComponent>(minionEntity))
+            return false;
+
         MakeMinion(minionEntity, scpEntity);
 
         return true;
@@ -174,6 +194,8 @@ public sealed partial class Scp049System
         EnsureComp<ScpShow049HudComponent>(minionEntity);
 
         minionComponent.Scp049Owner = scpEntity;
+        Dirty(minionEntity.Owner, minionComponent);
+
         scpEntity.Comp.Minions.Add(minionEntity);
 
         var zombieComponent = BuildZombieComponent(minionEntity);

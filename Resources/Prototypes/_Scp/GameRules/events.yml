@@ -1,0 +1,27 @@
+﻿- type: entity
+  id: Blackout
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    weight: 10
+    duration: 60
+    maxDuration: 120
+  - type: BlackoutRule
+
+- type: entity
+  id: SpawnScp096Photo
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    weight: 6
+  - type: SpawnRandomEntitiesRule
+    tilesPerEntityAverage: 400
+    entities:
+    - id: Scp096PhotoDeveloped
+
+- type: entityTable
+  id: ScpEventsTable
+  table: !type:AllSelector
+    children:
+    - id: Blackout
+    - id: SpawnScp096Photo

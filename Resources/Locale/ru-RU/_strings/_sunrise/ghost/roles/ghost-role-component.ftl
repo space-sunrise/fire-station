@@ -12,17 +12,20 @@ ghost-role-information-syndicate-saboteur-cyborg-name = Диверсионный
 ghost-role-information-syndicate-saboteur-cyborg-description = Смерть НТ.
 ghost-role-information-clown-goblin-name = клоун гоблин
 ghost-role-information-clown-goblin-description = Ужасное создание, которое поклоняется творцу...
-ghost-role-information-evil-twin-name = Злой двойник
-ghost-role-information-evil-twin-description = Вы - злой двойник какой-то другой персоны.
+ghost-role-information-evil-twin-name = SCP-2054-X, двойник
+ghost-role-information-evil-twin-description = Вы - SCP-2054-X, двойник другой персоны.
 ghost-role-information-evil-twin-rules =
     Старайтесь действовать скрытно, никто не должен прознать о подмене!
     Действуйте от лица вашего оригинала, хитрите, подставляйте, запутывайте.
 ghost-role-information-foliant-name = Фолиант
 ghost-role-information-foliant-description = Помогайте своему библиотекарю просвящать эту станцию.
 ghost-role-information-foliant-rules = Вы разумная книга-мимик. Помогайте своему хозяину скрасить жизнь, просвящайте всех на станции.
-ghost-role-information-ert-cyborg-name = Боевой киборг ОБР
-ghost-role-information-ert-cyborg-description = Слава НТ!
-ghost-role-information-ert-cyborg-rules = Подчиняйтесь ОБР и Центральному Командованию.
+ghost-role-information-ert-cyborg-name = Боевой киборг МОГ
+ghost-role-information-ert-cyborg-description = Обезопасить. Удержать. Сохранить.
+ghost-role-information-ert-cyborg-rules = Подчиняйтесь МОГ, Штабу О4 и РАФу.
+ghost-role-information-ntr-lead-name = Командир ИСН
+ghost-role-information-ntr-guard-name = Оперативник ИСН
+ghost-role-information-ntr-guard-description = Вы являетесь опорой и защитой Юридического Департамента, выполняя решения и постановления самого Магистрата и Представителя NanoTrasen!
 ghost-role-information-ussp-crew-name = Сотрудник СССП
 ghost-role-information-ussp-crew-description = "Вы — универсальный специалист станции СССП, обученный справляться с любыми задачами, от технических до медицинских."
 ghost-role-information-ussp-crew-rules = Вы [color=green][bold]Командный Не Антагонист[/bold][/color]. Вы должны [bold]кооперироваться и работать сообща[/bold] со своими Комрадами! Вместе с командой вы погружаетесь в криосон, готовясь к долгому полёту. Но внезапно что-то идёт не так. Вас пробуждает резкая головная боль и тревожный писк консоли. Внезапные удары сотрясают станцию, и паника охватывает вас. Вы понимаете, что что-то серьёзно нарушило планы. Без приказов и времени на раздумья вы мгновенно начинаете действовать, осознавая, что от вашей реакции зависит жизнь всего экипажа и судьба станции.

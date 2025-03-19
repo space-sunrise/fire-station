@@ -28,8 +28,8 @@
       max: 10
   - type: StationEvent
     startColor: "#18abf5"
-    startAudio:
-      path: /Audio/_Sunrise/Announcements/announce_dig.ogg
+#    startAudio: Fire edit
+#      path: /Audio/_Sunrise/Announcements/announce_dig.ogg
   - type: CargoGiftsRule
     sender: cargo-gift-default-sender
 

@@ -1,0 +1,9 @@
+- type: shader
+  id: BlinkingEffect
+  kind: source
+  path: "/Textures/Shaders/blinking_effect.swsl"
+
+- type: shader
+  id: Hide
+  kind: source
+  path: "/Textures/Shaders/hide.swsl"

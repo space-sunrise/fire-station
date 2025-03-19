@@ -1,0 +1,41 @@
+﻿- type: npcFaction
+  id: Chaos
+  hostile:
+  - NanoTrasen
+  - SimpleHostile
+  - Xeno
+  - PetsNT
+  - Zombie
+  - AllHostile
+  - Wizard
+  # =======
+  - Thief
+  - Carps
+  - Changeling
+  - Vampire
+  - FleshHuman
+  - Flesh
+  # =======
+  - SCPs
+
+- type: npcFaction
+  id: SCPs
+  hostile:
+  - NanoTrasen
+  - Syndicate
+  - Passive
+  - PetsNT
+  - Zombie
+  - Revolutionary
+  - AllHostile
+  - Wizard
+  - Syndicate
+  # =======
+  - Thief
+  - Carps
+  - Changeling
+  - Vampire
+  - FleshHuman
+  - Flesh
+  # =======
+  - Chaos

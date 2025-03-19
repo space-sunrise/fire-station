@@ -1,6 +1,6 @@
 - type: soundCollection
   id: LobbyMusic
-  files:
+  files: # Fire edit
      - /Audio/_Scp/Themes/Melancholy.ogg
      - /Audio/_Scp/Lobby/EtRatioPrincipalis.ogg
      - /Audio/_Scp/Lobby/Furnace.ogg

@@ -238,6 +238,9 @@ public abstract class SharedResearchSystem : EntitySystem
             return;
         component.MainDiscipline = prototype.Discipline;
         Dirty(uid, component);
+
+        var ev = new TechnologyDatabaseModifiedEvent();
+        RaiseLocalEvent(uid, ref ev);
     }
 
     /// <summary>

@@ -8,6 +8,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
+using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
@@ -18,6 +19,9 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp173;
 
+// TODO: Создать единую систему/метод для получения всех смотрящих на какого-либо ентити
+// Где будет учитываться, закрыты ли глаза, не моргает ли человек т.п. базовая информация
+
 public abstract class SharedScp173System : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
@@ -27,9 +31,10 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
-    private const float ContainmentRoomSearchRadius = 4f;
+    public const float ContainmentRoomSearchRadius = 8f;
 
     public override void Initialize()
     {
@@ -39,7 +44,6 @@ public abstract class SharedScp173System : EntitySystem
 
         #region Blocker
 
-        SubscribeLocalEvent((Entity<Scp173Component> _, ref BeforeDamageChangedEvent args) => args.Cancelled = true);
         SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, component, args) =>
         {
             if (Is173Watched((uid, component), out _))
@@ -52,7 +56,8 @@ public abstract class SharedScp173System : EntitySystem
 
         SubscribeLocalEvent<Scp173Component, ChangeDirectionAttemptEvent>(OnDirectionAttempt);
         SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
-        SubscribeLocalEvent<Scp173Component, MoveEvent>(OnInput);
+        SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnMoveInput);
+        SubscribeLocalEvent<Scp173Component, MoveEvent>(OnMove);
 
         #endregion
 
@@ -87,7 +92,18 @@ public abstract class SharedScp173System : EntitySystem
             args.Cancel();
     }
 
-    private void OnInput(Entity<Scp173Component> ent, ref MoveEvent args)
+    private void OnMoveInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
+    {
+        // Метод подвязанный на MoveInputEvent так же нужен, вместе с методом на MoveEvent
+        // Этот метод исправляет проблему, когда 173 должен мочь двинуться, но ему об этом никто не сказал
+        // То есть последний вопрос от 173 МОГУ ЛИ Я ДВИНУТЬСЯ был когда он еще мог двинуться, через MoveEvent
+        // Потом он перестал мочь, и следственно больше НЕ МОЖЕТ задать вопрос, может они двинуться
+        // Это фикслось в игре сменой направления спрайта мышкой
+        // Но данный метод как раз будет спрашивать у 173, может ли он сдвинуться, когда как раз не двигается
+        _blocker.UpdateCanMove(ent);
+    }
+
+    private void OnMove(Entity<Scp173Component> ent, ref MoveEvent args)
     {
         _blocker.UpdateCanMove(ent);
     }
@@ -115,14 +131,7 @@ public abstract class SharedScp173System : EntitySystem
         if (args.Handled)
             return;
 
-        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(ent).Coordinates, ExamineSystemShared.MaxRaycastRange);
-
-        foreach (var eye in eyes)
-        {
-            _blinking.ForceBlind(eye.Owner, eye.Comp, TimeSpan.FromSeconds(6));
-        }
-
-        // TODO: Add sound.
+        BlindEveryoneInRange(ent);
 
         args.Handled = true;
     }
@@ -135,7 +144,9 @@ public abstract class SharedScp173System : EntitySystem
 
     protected bool Is173Watched(Entity<Scp173Component> scp173, out int watchersCount)
     {
-        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, ExamineSystemShared.MaxRaycastRange);
+        // +1, чтобы точно все работало заебись в реальных пограничных значениях
+        // Впадлу думать, что может пойти не так, если этого не будет, раньше тут стояло вообще 100 радиус
+        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, scp173.Comp.WatchRange + 1);
 
         watchersCount = eyes
             .Where(eye => _examine.InRangeUnOccluded(eye, scp173, scp173.Comp.WatchRange, ignoreInsideBlocker: false))
@@ -204,6 +215,19 @@ public abstract class SharedScp173System : EntitySystem
 
     #region Public API
 
+    public void BlindEveryoneInRange(EntityUid scp, float range = 16f, float time = 6f)
+    {
+        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp).Coordinates, range)
+            .Where(e => _examine.InRangeUnOccluded(scp, e));
+
+        foreach (var eye in eyes)
+        {
+            _blinking.ForceBlind(eye.Owner, eye.Comp, TimeSpan.FromSeconds(time));
+        }
+
+        // TODO: Add sound.
+    }
+
     /// <summary>
     /// Находится ли 173 в контейнере для перевозки
     /// </summary>
@@ -226,8 +250,9 @@ public abstract class SharedScp173System : EntitySystem
     /// </summary>
     public bool IsContained(EntityUid uid)
     {
-        var lookup = _lookup.GetEntitiesInRange(uid, ContainmentRoomSearchRadius);
-        return lookup.Any(HasComp<Scp173BlockStructureDamageComponent>);
+        return _lookup.GetEntitiesInRange(uid, ContainmentRoomSearchRadius)
+            .Any(entity => HasComp<Scp173BlockStructureDamageComponent>(entity) &&
+                           _interaction.InRangeUnobstructed(uid, entity, ContainmentRoomSearchRadius));
     }
 
     #endregion

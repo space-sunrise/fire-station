@@ -26,7 +26,7 @@
   addComponents:
   - type: ShowCriminalRecordIcons
   - type: SiliconLawProvider
-    laws: RobocopLawset
+    laws: ScpDefault # Fire edit
   - type: Pacified
   - type: FlashImmunity
   - type: FabricateCookie
@@ -194,10 +194,11 @@
     worldTargetActions:
     - ForensicScanner
   - type: ShowCriminalRecordIcons
+  - type: ShowMindShieldIcons
   - type: BorgCuffed
   - type: FlashImmunity
   - type: SiliconLawProvider
-    laws: RobocopLawset
+    laws: ScpDefault # Fire edit
   - type: Access
     tags:
     - EmergencyShuttleRepealAll

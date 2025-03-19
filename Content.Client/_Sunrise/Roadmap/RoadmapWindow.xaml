@@ -10,13 +10,11 @@
     Title="{Loc ui-roadmap}">
     <PanelContainer>
         <PanelContainer.PanelOverride>
-            <gfx:StyleBoxFlat 
-                BackgroundColor="#1a1a1f"/>
         </PanelContainer.PanelOverride>
         <BoxContainer Orientation="Vertical">
-            <ScrollContainer VerticalExpand="True" 
-                           HScrollEnabled="False" 
-                           HorizontalExpand="True" 
+            <ScrollContainer VerticalExpand="True"
+                           HScrollEnabled="False"
+                           HorizontalExpand="True"
                            MinWidth="300"
                            Margin="10">
                 <roadmap:Roadmap Name="RoadmapBody" Access="Public" />

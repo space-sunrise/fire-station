@@ -23,7 +23,10 @@
   radioBold: true # Sunrise-Edit
   displayWeight: 80 # Sunrise-Edit
   access:
-  - Research # FireStation Edit
+  - Research # Fire
+  - Kitchen # Fire
+  - Hydroponics # Fire
+  - Janitor # Fire
   - HeadOfSecurity
   - Command
   - Brig
@@ -50,8 +53,7 @@
     id: HoSPDA
     gloves: ClothingHandsGlovesCombat
     ears: ClothingHeadsetAltSecurity
-    pocket1: WeaponPistolG22NonLethal # Sunrise-Edit
   storage:
     back:
     - Flash
-    - MagazineGlock22Rubber # Sunrise-Edit
+#    - MagazineGlock22 # Sunrise-Edit

@@ -2,11 +2,13 @@
   parent: ClothingBackpackSatchel
   id: ClothingBackpackScp049
   name: Бездонная сумка
+  description: Трендово выглядящая сумка.
   categories: [ HideSpawnMenu ]
   components:
   - type: Item
     sprite: null
     size: Ginormous
+  - type: Unremoveable
   - type: Sprite
     sprite: _Scp/Clothing/Back/Satchels/scp049-satchel.rsi
     icon: icon
@@ -20,9 +22,11 @@
       - Healing
       - TapePlayer # бумбокс
       - MusicTape # Касеты бумбокса
+      - Pill
       tags:
       - Syringe
       - SunriseUplink # рыбаплинк
+      - PillCanister
   - type: StorageFill
     contents:
     - id: Hemostat

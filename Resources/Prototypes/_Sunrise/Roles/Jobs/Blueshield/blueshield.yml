@@ -14,6 +14,7 @@
       requiredAge: 30
   startingGear: BlueShieldGear
   icon: JobIconBlueShield
+  overrideConsoleVisibility: false # Fire added
   supervisors: job-supervisors-centcom
   canBeAntag: false
   setPreference: false # Fire added
@@ -40,6 +41,7 @@
     - Cargo
     - Medical
     - BlueShield
+    - Lawyer
   special:
     - !type:AddImplantSpecial
       implants: [MindShieldImplant]

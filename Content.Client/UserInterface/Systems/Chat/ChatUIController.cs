@@ -270,7 +270,7 @@ public sealed class ChatUIController : UIController
 
     private void OnChatWindowOpacityChanged(float opacity)
     {
-        SetChatWindowOpacity(opacity);
+        SetChatWindowOpacity(1f); // Fire edit - нахуй вы наш сепаратед чат делаете полупрозрачным
     }
 
     public void SetChatWindowOpacity(float opacity)
@@ -792,7 +792,7 @@ public sealed class ChatUIController : UIController
         {
             var locWarning = Loc.GetString("chat-manager-max-message-length",
                 ("maxMessageLength", MaxMessageLength));
-            box.AddLine(locWarning, Color.Orange);
+            box.AddLine(locWarning, Color.FromHex("#e1e1e1")); // Fire
             return;
         }
 
