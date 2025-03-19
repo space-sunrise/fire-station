@@ -32,4 +32,4 @@ id-card-access-level-external = Внешний
 id-card-access-level-nuclear-operative = Повстанцы Хаоса
 id-card-access-level-syndicate-agent = Агент СО
 id-card-access-level-central-command = Региональная Администрация
-id-card-access-level-wizard = Wizard
+id-card-access-level-wizard = Волшебник
