@@ -12,3 +12,8 @@
   id: CRT_VHS
   kind: source
   path: "/Textures/_Scp/Shaders/crt_vhs.swsl"
+
+- type: shader
+  id: Grain
+  kind: source
+  path: "/Textures/_Scp/Shaders/grain.swsl"
