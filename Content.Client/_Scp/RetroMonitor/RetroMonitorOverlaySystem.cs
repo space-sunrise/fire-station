@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.RetroMonitor;
+﻿using Content.Client._Scp.Grain;
+using Content.Shared._Scp.RetroMonitor;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Player;
@@ -7,6 +8,7 @@ namespace Content.Client._Scp.RetroMonitor;
 
 public sealed class RetroMonitorOverlaySystem : EntitySystem
 {
+    [Dependency] private readonly GrainOverlaySystem _grain = default!;
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
 
@@ -26,6 +28,7 @@ public sealed class RetroMonitorOverlaySystem : EntitySystem
             return;
 
         _overlayManager.AddOverlay(_overlay);
+        _grain.RemoveGrainOverlay();
     }
 
     private void OnPlayerDetached(Entity<RetroMonitorViewComponent> ent, ref PlayerDetachedEvent args)
@@ -34,5 +37,6 @@ public sealed class RetroMonitorOverlaySystem : EntitySystem
             return;
 
         _overlayManager.RemoveOverlay(_overlay);
+        _grain.AddGrainOverlay();
     }
 }

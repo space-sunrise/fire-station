@@ -4,7 +4,7 @@ using Robust.Shared.Player;
 
 namespace Content.Client._Scp.Grain;
 
-public sealed class GrainOverlaySystemSystem : EntitySystem
+public sealed class GrainOverlaySystem : EntitySystem
 {
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayManager = default!;

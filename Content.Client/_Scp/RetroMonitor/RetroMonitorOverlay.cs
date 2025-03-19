@@ -24,12 +24,12 @@ public sealed class RetroMonitorOverlay : Overlay
         if (ScreenTexture == null)
             return;
 
-        _retroShader.SetParameter("SCREEN_TEXTURE", ScreenTexture); // Передаем ScreenTexture в шейдер
+        _retroShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
         var handle = args.WorldHandle;
         var viewport = args.WorldBounds;
 
         handle.UseShader(_retroShader);
-        handle.DrawRect(viewport, Color.White); // Рисуем шейдер на весь viewport
+        handle.DrawRect(viewport, Color.White);
         handle.UseShader(null);
     }
 }
