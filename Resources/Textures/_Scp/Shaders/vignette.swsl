@@ -1,10 +1,10 @@
 ﻿uniform sampler2D SCREEN_TEXTURE;
 uniform lowp vec4 vignette_color;
 
-const highp float inner_radius = 0.1;
+const highp float inner_radius = 0.01;
 const highp float outer_radius = 1.0;
-const highp float vignette_strength = 1.0;
-const highp float dither_strength = 0.03;
+const highp float vignette_strength = 1.4;
+const highp float dither_strength = 0.2;
 
 void fragment() {
     highp float dist = distance(UV, vec2(0.5));
