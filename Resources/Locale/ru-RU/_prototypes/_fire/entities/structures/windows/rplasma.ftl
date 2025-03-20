@@ -1,0 +1,11 @@
+ent-ScpReinforcedPlasmaWindow = плазменное бронеокно
+    .desc = { ent-Window.desc }
+ent-ScpPlasmaReinforcedWindowDirectional = направленное плазменное бронеокно
+    .desc = Смотри не заляпай.
+ent-ScpReinforcedPlasmaWindowDiagonal = { ent-ReinforcedPlasmaWindow }
+    .suffix = Диагональ
+    .desc = { ent-ReinforcedPlasmaWindow.desc }
+ent-ScpPlasmaReinforcedWindowDirectionalCorner = направленное плазменное бронеокно
+    .desc = Смотри не заляпай.
+ent-ScpPlasmaReinforcedWindowDirectionalRound = направленное плазменное бронеокно
+    .desc = Смотри не заляпай.
