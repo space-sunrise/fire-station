@@ -1,12 +1,39 @@
 ﻿using Content.Server._Scp.Scp106.Components;
 using Content.Shared._RMC14.Xenonids.Screech;
+using Content.Shared._Scp.Scp106.Components;
+using Content.Shared.Body.Components;
 using Content.Shared.Coordinates;
+using Content.Shared.Interaction;
+using Content.Shared.Mobs;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Scp106.Systems;
 
 public sealed partial class Scp106System
 {
+    private void OnHandInteract(Entity<Scp106PortalSpawnerComponent> ent, ref InteractHandEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        SendToBackrooms(args.User);
+        args.Handled = true;
+    }
+
+    private void OnHumanMobStateChanged(Entity<BodyComponent> ent, ref MobStateChangedEvent args)
+    {
+        if (!args.Origin.HasValue)
+            return;
+
+        if (!HasComp<Scp106MonsterComponent>(args.Origin))
+            return;
+
+        if (!_mobState.IsIncapacitated(ent))
+            return;
+
+        SendToBackrooms(ent);
+    }
+
     private void OnPortalSpawn(Entity<Scp106PortalSpawnerComponent> ent, ref ComponentInit args)
     {
         ent.Comp.NextSpawnTime = _timing.CurTime;

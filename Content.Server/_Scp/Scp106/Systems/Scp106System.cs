@@ -13,11 +13,13 @@ using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Systems;
 using Content.Shared.Alert;
+using Content.Shared.Body.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
+using Content.Shared.Interaction;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -98,6 +100,13 @@ public sealed partial class Scp106System : SharedScp106System
 
         SubscribeLocalEvent<Scp106Component, Scp106BareBladeAction>(OnScp106BareBladeAction);
         SubscribeLocalEvent<Scp106PortalSpawnerComponent, ComponentInit>(OnPortalSpawn);
+
+        #endregion
+
+        #region Portal
+
+        SubscribeLocalEvent<Scp106PortalSpawnerComponent, InteractHandEvent>(OnHandInteract);
+        SubscribeLocalEvent<BodyComponent, MobStateChangedEvent>(OnHumanMobStateChanged);
 
         #endregion
 
