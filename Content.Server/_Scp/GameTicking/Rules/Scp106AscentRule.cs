@@ -51,7 +51,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     private static readonly TimeSpan AscentJitterTime = TimeSpan.FromSeconds(15f);
     private static readonly TimeSpan AscentStutterTime = TimeSpan.FromSeconds(30f);
 
-    private static readonly TimeSpan AscentFailTime = TimeSpan.FromMinutes(5f); // TODO: Вернуть на 5 минут
+    private static readonly TimeSpan AscentFailTime = TimeSpan.FromMinutes(5f);
     private static readonly TimeSpan AscentAnnounceAfter = TimeSpan.FromSeconds(5f);
 
     private static bool _tickEffectEnabled;
