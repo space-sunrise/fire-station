@@ -1,4 +1,4 @@
-﻿store-category-abilities = Кошмарные способности
+﻿scp106-store-category-abilities = Кошмарные способности
 store-currency-display-life-essence = Страдания
 
 scp106-shop-phantom-name = { ent-Scp106BecomePhantom }
