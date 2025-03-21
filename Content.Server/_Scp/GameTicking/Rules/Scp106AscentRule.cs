@@ -232,7 +232,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
         RaiseNetworkEvent(new NetworkAmbientMusicEventStop());
 
-        var message = Loc.GetString("zero-keter-start-alarm-announcement");
+        var message = Loc.GetString("dimensional-shift-start-alarm-announcement");
         _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.DarkViolet);
 
         // Завершаем раунд чуть позже конца музыки
