@@ -1,7 +1,7 @@
 ﻿using Content.Shared.Mobs;
 using Robust.Shared.Audio;
 
-namespace Content.Server._Scp.Misc.EmitSoundOnMobStateChanged;
+namespace Content.Shared._Scp.Other.EmitSoundOnMobStateChanged;
 
 [RegisterComponent]
 public sealed partial class EmitSoundOnMobStateChangedComponent : Component

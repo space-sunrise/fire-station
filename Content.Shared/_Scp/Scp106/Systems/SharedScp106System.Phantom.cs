@@ -13,6 +13,9 @@ public abstract partial class SharedScp106System
         if (args.Handled)
             return;
 
+        if (!_mob.IsDead(args.Target))
+            return;
+
         var doAfter = new DoAfterArgs(EntityManager, ent, args.Delay, new Scp106ReverseActionEvent(), eventTarget: ent, target: args.Target)
         {
             BreakOnDamage = true,

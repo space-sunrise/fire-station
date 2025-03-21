@@ -248,7 +248,7 @@
     - ScpResearch
   - type: Store
     balance:
-      LifeEssence: 100
+      LifeEssence: 20
     currencyWhitelist:
     - LifeEssence
     categories:
