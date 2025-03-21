@@ -29,7 +29,7 @@ public abstract partial class SharedScp106System : EntitySystem
     [Dependency] private readonly MobStateSystem _mob = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private readonly SoundSpecifier _teleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
+    private static readonly SoundSpecifier TeleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
 
     private const float DamageInPocketDimensionMultiplier = 3f;
     protected static readonly TimeSpan TeleportTimeCompensation = TimeSpan.FromSeconds(0.5f);
@@ -197,7 +197,7 @@ public abstract partial class SharedScp106System : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        _audio.PlayEntity(_teleportSound, uid, uid);
+        _audio.PlayEntity(TeleportSound, uid, uid);
     }
 
     public bool TryDeductEssence(Entity<Scp106Component> ent, FixedPoint2 cost)

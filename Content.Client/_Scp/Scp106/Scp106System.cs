@@ -6,6 +6,8 @@ namespace Content.Client._Scp.Scp106;
 
 public sealed class Scp106System : SharedScp106System
 {
+    private const int MaxEssence = 100;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -19,7 +21,7 @@ public sealed class Scp106System : SharedScp106System
             return;
 
         var sprite = args.SpriteViewEnt.Comp;
-        var essence = Math.Clamp(ent.Comp.Essence.Int(), 0, 999);
+        var essence = Math.Clamp(ent.Comp.Essence.Int(), 0, MaxEssence);
 
         sprite.LayerSetState(Scp106VisualLayers.Digit1, $"{(essence / 100) % 10}");
         sprite.LayerSetState(Scp106VisualLayers.Digit2, $"{(essence / 10) % 10}");
