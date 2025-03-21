@@ -451,6 +451,9 @@
   - type: StartingMindRole
     mindRole: "MindRoleSiliconBrain"
     silent: true
+  # Fire added start
+  - type: RetroMonitorView
+  # Fire added end
 
 # Hologram projection that the AI's eye tracks.
 - type: entity
