@@ -1,9 +1,7 @@
-# TODO: Локализация
-
 - type: listing
   id: Scp106BoughtPhantomAction
-  name: Фантом
-  description: Способность становиться фантомом.
+  name: scp106-shop-phantom-name
+  description: scp106-shop-phantom-desc
   productEvent: !type:Scp106BoughtPhantomAction
     boughtAction: Scp106BecomePhantom
   categories:
@@ -20,8 +18,8 @@
 
 - type: listing
   id: Scp106UpgradePhantom
-  name: Улучшение фантомизации
-  description: Уменьшите время ожидания использования способности.
+  name: scp106-shop-phantom-upgrade-name
+  description: scp106-shop-phantom-upgrade-desc
   productEvent: !type:Scp106OnUpgradePhantomAction
     cooldownReduce: 60
   categories:
@@ -41,8 +39,8 @@
 
 - type: listing
   id: Scp106BareBlade
-  name: Теневой клинок
-  description: Рассекает плоть и кости.
+  name: scp106-shop-blade-name
+  description: scp106-shop-blade-desc
   productEvent: !type:Scp106BoughtBareBladeAction
     boughtAction: Scp106BareBlade
   categories:

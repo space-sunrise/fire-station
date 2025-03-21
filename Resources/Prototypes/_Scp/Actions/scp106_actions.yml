@@ -1,7 +1,5 @@
 ﻿- type: entity
   id: Scp106BackroomsAction
-  name: Телепорт в бекрумсы.
-  description: Телепортирует вас в бекрумсы. Нужно стоять на месте!
   components:
   - type: InstantAction
     event: !type:Scp106BackroomsAction
@@ -15,8 +13,6 @@
 
 - type: entity
   id: Scp106RandomTeleportAction
-  name: Телепорт на станцию.
-  description: Телепортирует вас на станцию. Нужно стоять на месте!
   components:
   - type: InstantAction
     event: !type:Scp106RandomTeleportAction
@@ -30,7 +26,6 @@
 
 - type: entity
   id: ActionScp106Shop
-  name: Теневой магазин
   components:
   - type: InstantAction
     event: !type:Scp106ShopAction
@@ -42,8 +37,6 @@
 
 - type: entity
   id: BecomeTeleportPhantomAction
-  name: Телепортация
-  description: Разорвите их представление о возможностях пространства
   components:
     - type: InstantAction
       event: !type:Scp106BecomeTeleportPhantomAction
@@ -59,8 +52,6 @@
 
 - type: entity
   id: Scp106Reverse
-  name: Реверсия
-  description: Поменяйтесь местами с мертвецом!
   components:
   - type: EntityTargetAction
     event: !type:Scp106ReverseAction
@@ -77,8 +68,6 @@
 
 - type: entity
   id: Scp106LeavePhantom
-  name: Покинуть фантом.
-  description: Уничтожает фантома, возвращая вас в бренное тело.
   components:
   - type: InstantAction
     event: !type:Scp106LeavePhantomAction
@@ -91,8 +80,6 @@
 
 - type: entity
   id: Scp106PassThrough
-  name: Эфирный полёт
-  description: Позволяет пройти любое препятствие.
   components:
   - type: InstantAction
     event: !type:Scp106PassThroughAction
@@ -106,8 +93,6 @@
 
 - type: entity
   id: Scp106BareBlade
-  name: Обнажить клинок.
-  description: Клинок для рассекания плоти и костей.
   components:
   - type: InstantAction
     event: !type:Scp106BareBladeAction
@@ -125,8 +110,6 @@
 
 - type: entity
   id: Scp106BecomePhantom
-  name: Стать фантомом.
-  description: Новое воплощение для поиска трупов
   components:
   - type: InstantAction
     event: !type:Scp106BecomePhantomAction

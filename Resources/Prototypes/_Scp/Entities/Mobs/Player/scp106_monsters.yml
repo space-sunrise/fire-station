@@ -1,8 +1,6 @@
 - type: entity
   parent: BaseMobFlesh
   id: MobScp106Monster
-  name: shadow monster
-  description: Death.
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -48,8 +46,6 @@
 - type: entity
   id: Scp106Portal
   parent: BaseStructure
-  name: black rift
-  description: Looks unstable.
   placement:
     mode: SnapgridCenter
   components:
@@ -105,8 +101,6 @@
 - type: entity
   parent: MobScp106Monster
   id: MobScp106BigMonster
-  name: shadow monster
-  description: Death.
   components:
   - type: Sprite
     scale: 1.5, 1.5
