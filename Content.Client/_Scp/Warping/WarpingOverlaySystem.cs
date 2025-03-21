@@ -1,4 +1,6 @@
-﻿using Content.Shared._Scp.Scp106;
+﻿using Content.Client._Scp.Grain;
+using Content.Client._Scp.Vignette;
+using Content.Shared._Scp.Scp106;
 using Content.Shared.GameTicking;
 using Robust.Client.Graphics;
 using Robust.Shared.Timing;
@@ -7,6 +9,8 @@ namespace Content.Client._Scp.Warping;
 
 public sealed class WarpingOverlaySystem : EntitySystem
 {
+    [Dependency] private readonly VignetteOverlaySystem _vignette = default!;
+    [Dependency] private readonly GrainOverlaySystem _grain = default!;
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
@@ -30,6 +34,10 @@ public sealed class WarpingOverlaySystem : EntitySystem
     private void OnToggle(WarpingOverlayToggle args)
     {
         Toggle(args.Enable);
+
+        // Переключаем лишние шейдеры, их все равно почти не будет видно
+        _grain.ToggleOverlay();
+        _vignette.ToggleOverlay();
     }
 
     public void Toggle(bool enable)
