@@ -1,5 +1,86 @@
 # Окно
 - type: entity
+  id: BaseScpWindowDirectional
+  abstract: true
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Windows/directional.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional.rsi
+  - type: SpriteFade
+
+- type: entity
+  id: BaseScpWindowDirectionalCorner
+  parent: BaseScpWindowDirectional
+  abstract: true
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional_corner.rsi
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,-0.28125"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.5,0.5,0.28125,-0.5"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+
+- type: entity
+  id: BaseScpWindowDirectionalRound
+  parent: BaseScpWindowDirectional
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Windows/directional_round.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Windows/directional_round.rsi
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,-0.28125"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,-0.28125,0.5"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+      fix3:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.28125,-0.5,0.5,0.5"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - GlassLayer
+
+- type: entity
   parent: Window
   id: ScpWindow
   components:
@@ -10,59 +91,39 @@
 
 - type: entity
   id: ScpWindowDirectional
-  parent: WindowDirectional
+  parent:
+  - BaseScpWindowDirectional
+  - WindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional.rsi
     state: window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional.rsi
     state: window
 
 - type: entity
   id: ScpWindowDirectionalCorner
-  parent: WindowDirectional
+  parent:
+  - BaseScpWindowDirectionalCorner
+  - WindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional_corner.rsi
     state: window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional_corner.rsi
     state: window
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.5,0.5,0.28125,-0.5"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
 
 - type: entity
   id: ScpWindowDirectionalRound
-  parent: WindowDirectional
+  parent:
+  - BaseScpWindowDirectionalRound
+  - WindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
@@ -70,41 +131,9 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional_round.rsi
     state: window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional_round.rsi
     state: window
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,-0.28125,0.5"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-      fix3:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.28125,-0.5,0.5,0.5"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-
 
 - type: entity
   parent: Window
@@ -165,97 +194,48 @@
 
 - type: entity
   id: ScpWindowReinforcedDirectional
-  parent: WindowReinforcedDirectional
+  parent:
+  - BaseScpWindowDirectional
+  - WindowReinforcedDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    sprite: _Scp/Structures/Windows/directional.rsi
     state: reinforced_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional.rsi
     state: reinforced_window
 
 - type: entity
   id: ScpWindowReinforcedDirectionalCorner
-  parent: WindowReinforcedDirectional
+  parent:
+  - BaseScpWindowDirectionalCorner
+  - WindowReinforcedDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    sprite: _Scp/Structures/Windows/directional_corner.rsi
     state: reinforced_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional_corner.rsi
     state: reinforced_window
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.5,0.5,0.28125,-0.5"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
 
 - type: entity
   id: ScpWindowReinforcedDirectionalRound
-  parent: WindowReinforcedDirectional
+  parent:
+  - BaseScpWindowDirectionalRound
+  - WindowReinforcedDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    sprite: _Scp/Structures/Windows/directional_round.rsi
     state: reinforced_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional_round.rsi
     state: reinforced_window
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,-0.28125,0.5"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-      fix3:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.28125,-0.5,0.5,0.5"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
 
 - type: entity
   parent: ReinforcedWindow
@@ -318,100 +298,48 @@
 
 - type: entity
   id: ScpPlasmaWindowDirectional
-  parent: PlasmaWindowDirectional
+  parent:
+  - BaseScpWindowDirectional
+  - PlasmaWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional.rsi
     state: plasma_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional.rsi
     state: plasma_window
 
 - type: entity
   id: ScpPlasmaWindowDirectionalCorner
-  parent: PlasmaWindowDirectional
+  parent:
+  - BaseScpWindowDirectionalCorner
+  - PlasmaWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional_corner.rsi
     state: plasma_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional_corner.rsi
     state: plasma_window
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.5,0.5,0.28125,-0.5"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
 
 - type: entity
   id: ScpPlasmaWindowDirectionalRound
-  parent: PlasmaWindowDirectional
+  parent:
+  - BaseScpWindowDirectionalRound
+  - PlasmaWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional_round.rsi
     state: plasma_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional_round.rsi
     state: plasma_window
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,-0.28125,0.5"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-      fix3:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.28125,-0.5,0.5,0.5"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
 
 - type: entity
   parent: PlasmaWindow
@@ -472,100 +400,48 @@
 
 - type: entity
   id: ScpPlasmaReinforcedWindowDirectional
-  parent: PlasmaReinforcedWindowDirectional
+  parent:
+  - BaseScpWindowDirectional
+  - PlasmaReinforcedWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional.rsi
     state: plasma_reinforced_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional.rsi
     state: plasma_reinforced_window
 
 - type: entity
   id: ScpPlasmaReinforcedWindowDirectionalCorner
-  parent: PlasmaReinforcedWindowDirectional
+  parent:
+  - BaseScpWindowDirectionalCorner
+  - PlasmaReinforcedWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional_corner.rsi
     state: plasma_reinforced_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional_corner.rsi
     state: plasma_reinforced_window
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.5,0.5,0.28125,-0.5"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
 
 - type: entity
   id: ScpPlasmaReinforcedWindowDirectionalRound
-  parent: PlasmaReinforcedWindowDirectional
+  parent:
+  - BaseScpWindowDirectionalRound
+  - PlasmaReinforcedWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional_round.rsi
     state: plasma_reinforced_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional_round.rsi
     state: plasma_reinforced_window
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,-0.28125,0.5"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-      fix3:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.28125,-0.5,0.5,0.5"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
 
 - type: entity
   parent: ReinforcedPlasmaWindow
@@ -627,100 +503,48 @@
 
 - type: entity
   id: ScpUraniumWindowDirectional
-  parent: UraniumWindowDirectional
+  parent:
+  - BaseScpWindowDirectional
+  - UraniumWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional.rsi
     state: uranium_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional.rsi
     state: uranium_window
 
 - type: entity
   id: ScpUraniumWindowDirectionalCorner
-  parent: UraniumWindowDirectional
+  parent:
+  - BaseScpWindowDirectionalCorner
+  - UraniumWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional_corner.rsi
     state: uranium_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional_corner.rsi
     state: uranium_window
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.5,0.5,0.28125,-0.5"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
 
 - type: entity
   id: ScpUraniumWindowDirectionalRound
-  parent: UraniumWindowDirectional
+  parent:
+  - BaseScpWindowDirectionalRound
+  - UraniumWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional_round.rsi
     state: uranium_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional_round.rsi
     state: uranium_window
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,-0.28125,0.5"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-      fix3:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.28125,-0.5,0.5,0.5"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
 
 - type: entity
   parent: UraniumWindow
@@ -781,100 +605,48 @@
 
 - type: entity
   id: ScpUraniumReinforcedWindowDirectional
-  parent: UraniumReinforcedWindowDirectional
+  parent:
+  - BaseScpWindowDirectional
+  - UraniumReinforcedWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional.rsi
     state: uranium_reinforced_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional.rsi
     state: uranium_reinforced_window
 
 - type: entity
   id: ScpUraniumReinforcedWindowDirectionalCorner
-  parent: UraniumReinforcedWindowDirectional
+  parent:
+  - BaseScpWindowDirectionalCorner
+  - UraniumReinforcedWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional_corner.rsi
     state: uranium_reinforced_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional_corner.rsi
     state: uranium_reinforced_window
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.5,0.5,0.28125,-0.5"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
 
 - type: entity
   id: ScpUraniumReinforcedWindowDirectionalRound
-  parent: UraniumReinforcedWindowDirectional
+  parent:
+  - BaseScpWindowDirectionalRound
+  - UraniumReinforcedWindowDirectional
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
   - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Structures/Windows/directional_round.rsi
     state: uranium_reinforced_window
   - type: Icon
-    sprite: _Scp/Structures/Windows/directional_round.rsi
     state: uranium_reinforced_window
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,-0.28125,0.5"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
-      fix3:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.28125,-0.5,0.5,0.5"
-        density: 1000
-        mask:
-          - TableMask
-        layer:
-          - TableLayer
 
 - type: entity
   parent: ReinforcedUraniumWindow
@@ -924,7 +696,7 @@
     graph: WindowDiagonal
     node: reinforcedUraniumWindowDiagonal
 
-# Тонированное окно 
+# Тонированное окно
 - type: entity
   parent: TintedWindow
   id: ScpTintedWindow
