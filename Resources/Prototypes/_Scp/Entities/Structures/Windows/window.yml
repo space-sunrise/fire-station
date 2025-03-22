@@ -55,7 +55,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,-0.28125"
+          bounds: "-0.5,-0.5,0.5,-0.38125"
         density: 1000
         mask:
         - FullTileMask
@@ -64,7 +64,7 @@
       fix2:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,-0.28125,0.5"
+          bounds: "-0.5,-0.5,-0.38125,0.5"
         density: 1000
         mask:
         - FullTileMask
@@ -73,7 +73,7 @@
       fix3:
         shape:
           !type:PhysShapeAabb
-          bounds: "0.28125,-0.5,0.5,0.5"
+          bounds: "0.38125,-0.5,0.5,0.5"
         density: 1000
         mask:
         - FullTileMask
