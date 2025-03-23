@@ -1,0 +1,37 @@
+﻿- type: job
+  id: ExternalInternalSecuritySupervisor
+  name: job-name-external-internal-security-supervisor
+  description: job-description-external-internal-security-supervisor
+  playTimeTracker: JobExternalInternalSecuritySupervisor
+  startingGear: ExternalInternalSecuritySupervisorGear
+  icon: "JobIconWarden"
+  supervisors: job-supervisors-security-commander
+  canBeAntag: false
+  displayWeight: 70  # Sunrise
+  access:
+  - Research
+  - Kitchen
+  - Hydroponics
+  - Janitor
+  - Security
+  - Brig
+  - Armory
+  #  - Maintenance
+  - Service
+  - External
+  - Detective
+  - Cryogenics
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: ExternalInternalSecuritySupervisorGear
+  equipment:
+    eyes: ClothingEyesGlassesSecurity
+    id: WardenPDA
+    ears: ClothingHeadsetSecurity
+  storage:
+    back:
+    - Flash
+#    - MagazineGlock22

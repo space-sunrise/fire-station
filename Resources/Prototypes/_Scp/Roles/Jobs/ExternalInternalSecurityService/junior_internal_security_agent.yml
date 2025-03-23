@@ -1,0 +1,35 @@
+﻿- type: job
+  id: JuniorInternalSecurityAgent
+  name: job-name-junior-internal-security-agent
+  description: job-description-junior-internal-security-agent
+  playTimeTracker: JobJuniorInternalSecurityAgent
+  startingGear: JuniorInternalSecurityAgentGear
+  icon: "JobIconSecurityCadet"
+  supervisors: job-supervisors-senior-internal-security-agent
+  canBeAntag: false
+  displayWeight: 0
+  access:
+  - Research
+  - Kitchen
+  - Hydroponics
+  - Janitor
+  - Security
+  - Brig
+  #  - Maintenance
+  - Service
+  - External
+  - Cryogenics
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: JuniorInternalSecurityAgentGear
+  equipment:
+    mask: ClothingMaskSecurityBandBlack
+    id: SecurityCadetPDA
+    ears: ClothingHeadsetSecurity
+    pocket1: HyperLinkBookCorporateLaw
+  storage:
+    back:
+    - Flash

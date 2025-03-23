@@ -1,0 +1,21 @@
+﻿- type: job
+  id: AnomarchologyResearcher
+  name: job-name-anomarchology-researcher
+  description: job-description-anomarchology-researcher
+  playTimeTracker: JobAnomarchologyResearcher
+  startingGear: AnomarchologyResearcherGear
+  icon: "JobIconScientist"
+  supervisors: job-supervisors-lead-researcher
+  displayWeight: 10
+  access:
+  - Research
+  - Maintenance
+
+- type: startingGear
+  id: AnomarchologyGear
+  equipment:
+    ears: ClothingHeadsetScience
+    id: SciencePDA
+    #storage:
+    #back:
+    #- Stuff

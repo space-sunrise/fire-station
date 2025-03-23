@@ -1,0 +1,30 @@
+﻿- type: job
+  id: TribunalOfficer
+  name: job-name-tribunal-officer
+  description: job-description-tribunal-officer
+  playTimeTracker: JobTribunalOfficer
+  startingGear: TribunalOfficerGear
+  icon: "JobIconLawyer"
+  canBeAntag: false
+  supervisors: job-supervisors-third-collegium-judicial-inspector
+  access:
+  - Service
+  - Lawyer
+  - Brig
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: TribunalOfficerGear
+  equipment:
+    shoes: ClothingShoesBootsLaceup
+    id: LawyerPDA
+    ears: ClothingHeadsetLawyer
+  inhand:
+  - BriefcaseBrownFilled
+  storage:
+    back:
+    - RubberStampLawyer
+    - HyperLinkBookCorporateLaw

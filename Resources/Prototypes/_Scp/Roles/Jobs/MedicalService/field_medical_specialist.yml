@@ -1,0 +1,34 @@
+﻿- type: job
+  id: FieldMedicalSpecialist
+  name: job-name-field-medical-specialist
+  description: job-description-field-medical-specialist
+  playTimeTracker: JobFieldMedicalSpecialist
+  startingGear: FieldMedicalSpecialistGear
+  icon: "JobIconBrigmedic"
+  supervisors: job-supervisors-health-response-coordinator
+  canBeAntag: false
+  displayWeight: 15
+  access:
+  - Medical
+  - Security
+  - Brig
+  - Maintenance
+  - External
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: FieldMedicalSpecialistGear
+  equipment:
+    outerClothing: ClothingOuterCoatLabSecurityMedic
+    shoes: ClothingShoesColorRed
+    gloves: ClothingHandsGlovesLatex
+    eyes: ClothingEyesHudMedSec
+    head: ClothingHeadHatBeretSecurityMedic
+    id: BrigmedicPDA
+    ears: ClothingHeadsetBrigmedic
+    belt: ClothingBeltMedicalFilled
+  storage:
+    back:
+    - Flash

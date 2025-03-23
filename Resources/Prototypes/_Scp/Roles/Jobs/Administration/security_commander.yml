@@ -1,0 +1,45 @@
+﻿- type: job
+  id: SecurityCommander
+  name: job-name-security-commander
+  description: job-description-security-commander
+  playTimeTracker: JobSecurityCommander
+  weight: 10
+  startingGear: SecurityCommanderGear
+  icon: "JobIconHeadOfSecurity"
+  supervisors: job-supervisors-director
+  canBeAntag: false
+  radioBold: true # Sunrise-Edit
+  displayWeight: 80 # Sunrise-Edit
+  access:
+  - Research
+  - Kitchen
+  - Hydroponics
+  - Janitor
+  - HeadOfSecurity
+  - Command
+  - Brig
+  - Security
+  - Armory
+  #  - Maintenance
+  - Service
+  - External
+  - Detective
+  - Cryogenics
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+    - type: CommandStaff
+
+- type: startingGear
+  id: SecurityCommanderGear
+  equipment:
+    eyes: ClothingEyesGlassesSecurity
+    id: HoSPDA
+    gloves: ClothingHandsGlovesCombat
+    ears: ClothingHeadsetAltSecurity
+  storage:
+    back:
+    - Flash
+#    - MagazineGlock22 # Sunrise-Edit

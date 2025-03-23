@@ -1,0 +1,38 @@
+﻿- type: job
+  id: LightContainmentSecurityOfficer
+  name: job-name-light-containment-security-officer
+  description: job-description-light-containment-security-officer
+  playTimeTracker: JobLightContainmentSecurityOfficer
+  startingGear: LightContainmentSecurityOfficerGear
+  icon: "JobIconSecurityOfficer"
+  supervisors: job-supervisors-light-containment-security-supervisor
+  canBeAntag: false
+  displayWeight: 10
+  access:
+  - Research
+  - Kitchen
+  - Hydroponics
+  - Janitor
+  - Security
+  - Brig
+  #  - Maintenance
+  - Service
+  - External
+  - Cryogenics
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: LightContainmentSecurityOfficerGear
+  equipment:
+    mask: ClothingMaskSecurityBandBlack
+    eyes: ClothingEyesGlassesSecurityGuard
+    id: SecurityPDA
+    ears: ClothingHeadsetSecurity
+    head: ClothingHeadHelmetBasic
+    gloves: ClothingHandsGlovesColorBlack
+  storage:
+    back:
+    - Flash
+#    - MagazineGlock22

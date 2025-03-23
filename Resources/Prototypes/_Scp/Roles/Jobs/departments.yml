@@ -1,9 +1,173 @@
+# Руководство
+
+- type: department
+  id: Administration
+  name: department-administration-name
+  description: department-administration-desc
+  color: "#6aa84f"
+  weight: 5
+  roles:
+  - Director
+  - SecurityCommander
+  - ScientificServiceDirector
+  - EthicsCommitteeRepresentative
+  - ChiefTechnicalSpecialist
+  - PersonnelOfficer
+  - HealthResponseCoordinator
+  - SeniorLogisticsOfficer
+
+# Гады следящие за буквой закона
+
+- type: department
+  id: InternalSecurity
+  name: department-internal-security-name
+  description: department-internal-security-desc
+  color: "#980000"
+  weight: 10
+  roles:
+  - APAIBAgent
+  - VSOOperative
+
+- type: department
+  id: EthicsCommittee
+  name: department-ethics-committee-name
+  description: department-ethics-committee-desc
+  color: "#000000"
+  weight: 15
+  roles:
+  - EthicsCommitteeRepresentative
+
+- type: department
+  id: InternalTribunalService
+  name: department-internal-tribunal-name
+  description: department-internal-tribunal-desc
+  color: "#274e13"
+  weight: 20
+  roles:
+  - ThirdCollegiumJudicialInspector
+  - TribunalOfficer
+
+# Служба безопасности
+
+- type: department
+  id: ExternalInternalSecurityService
+  name: department-internal-security-service-name
+  description: department-internal-security-service-desc
+  color: "#4a86e8"
+  weight: 25
+  roles:
+  - ExternalInternalSecuritySupervisor
+  - SeniorInternalSecurityAgent
+  - InternalSecurityAgent
+  - JuniorInternalSecurityAgent
+  - FieldMedicalSpecialist
+
+- type: department
+  id: HeavyContainmentSecurityService
+  name: department-heavy-containment-security-service-name
+  description: department-heavy-containment-security-service-desc
+  color: "#ff0000"
+  weight: 30
+  roles:
+  - HeavyContainmentSecuritySupervisor
+  - ContainmentSpecialist
+  - SecuritySpecialist
+  - FieldMedicalSpecialist
+
+- type: department
+  id: LightContainmentSecurityService
+  name: department-light-containment-security-service-name
+  description: department-light-containment-security-service-desc
+  color: "#999999"
+  weight: 35
+  roles:
+  - LightContainmentSecuritySupervisor
+  - RiotControlSpecialist
+  - LightContainmentSecurityOfficer
+  - JuniorLightContainmentOfficer
+  - FieldMedicalSpecialist
+
+# Научный отдел
+
+- type: department
+  id: ScientificService
+  name: department-scientific-service-name
+  description: department-scientific-service-desc
+  color: "#674ea7"
+  weight: 40
+  roles:
+  - ScientificServiceDirector
+  - LeadResearcher
+  - LeadDIRAResearcher
+  - DIRAResearcher
+  - AnomabiologyResearcher
+  - AnomarchologyResearcher
+  - RoboticsSpecialist
+  - JuniorResearcher
+
+# Медицинский отдел
+
+- type: department
+  id: MedicalService
+  name: department-medical-service-name
+  description: department-medical-service-desc
+  color: "#f6d2d2"
+  weight: 45
+  roles:
+  - HealthResponseCoordinator
+  - SeniorMedicalSpecialist
+  - PharmaceuticalSpecialist
+  - MedicalSpecialist
+  - HospitalIntern
+
+# Инженерный отдел
+
+- type: department
+  id: EngineeringTechnicalService
+  name: department-engineering-technical-service-name
+  description: department-engineering-technical-service-desc
+  color: "#e89946"
+  weight: 50
+  roles:
+  - ChiefTechnicalSpecialist
+  - GeneralTechnicalSpecialist
+  - HeavyContainmentTechnician
+  - LightContainmentTechnician
+  - TechnicalTrainee
+
+# Отдел логистики
+
+- type: department
+  id: LogisticsService
+  name: department-logistics-service-name
+  description: department-logistics-service-desc
+  color: "#806203"
+  weight: 55
+  roles:
+  - SeniorLogisticsOfficer
+  - LogisticsOfficer
+  - SupplyHandler
+
+# Обслуга/сервис
+
+- type: department
+  id: FoodAndSanitationServiceDepartment
+  name: department-food-and-sanitation-service-name
+  description: department-food-and-sanitation-service-desc
+  color: "#b8d8aa"
+  weight: 60
+  roles:
+  - ServiceAdministrator
+  - GastronomicSpecialist
+  - BotanicalSpecialist
+  - SanitationTechnician
+
 - type: department
   id: LowAccessPersonnel
   name: department-low-access-personnel
   description: department-low-access-personnel
   color: "#FF5297"
-  weight: 80
+  weight: 65
   roles:
   - ClassDCook
   - ClassDBotanist
@@ -15,7 +179,7 @@
   name: department-scp
   description: department-scp
   color: "#FF5297"
-  weight: 80
+  weight: 70
   roles:
   - Scp049
   - Scp939

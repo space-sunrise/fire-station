@@ -1,0 +1,24 @@
+﻿- type: job
+  id: SeniorMedicalSpecialist
+  name: job-name-senior-medical-specialist
+  description: job-description-senior-medical-specialist
+  playTimeTracker: JobSeniorMedicalSpecialist
+  startingGear: SeniorMedicalSpecialistGear
+  icon: "JobIconSeniorPhysician"
+  supervisors: job-supervisors-health-response-coordinator
+  displayWeight: 35
+  access:
+  - Medical
+  - Maintenance
+  - Chemistry
+
+- type: startingGear
+  id: SeniorMedicalSpecialistGear
+  equipment:
+    id: SeniorPhysicianPDA
+    ears: ClothingHeadsetMedical
+    eyes: ClothingEyesUniversalMedicalHud
+  storage:
+    back:
+    - MedicatedSuture
+    - RegenerativeMesh

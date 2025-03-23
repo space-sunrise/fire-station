@@ -1,0 +1,34 @@
+﻿- type: job
+  id: Director
+  name: job-name-director
+  description: job-description-director
+  playTimeTracker: JobDirector
+  weight: 5
+  startingGear: DirectorGear
+  icon: "JobIconCaptain"
+  joinNotifyCrew: true
+  supervisors: job-supervisors-regional-administration
+  canBeAntag: false
+  displayWeight: 100
+  radioBold: true
+  accessGroups:
+  - AllAccess
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+    - type: CommandStaff
+
+- type: startingGear
+  id: DirectorGear
+  equipment:
+    shoes: ClothingShoesBootsLaceup
+    eyes: ClothingEyesGlassesSunglasses
+    gloves: ClothingHandsGlovesCaptain
+    id: CaptainPDA
+    ears: ClothingHeadsetAltCommand
+  storage:
+    back:
+    - Flash
+    - Telebaton

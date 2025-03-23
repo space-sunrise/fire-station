@@ -1,0 +1,25 @@
+﻿- type: job
+  id: PharmaceuticalSpecialist
+  name: job-name-pharmaceutical-specialist
+  description: job-description-pharmaceutical-specialist
+  playTimeTracker: JobPharmaceuticalSpecialist
+  startingGear: PharmaceuticalSpecialistGear
+  icon: "JobIconChemist"
+  supervisors: job-supervisors-health-response-coordinator
+  displayWeight: 30
+  access:
+  - Medical
+  - Chemistry
+  - Maintenance
+
+- type: startingGear
+  id: PharmaceuticalSpecialistGear
+  equipment:
+    id: ChemistryPDA
+    ears: ClothingHeadsetMedical
+    belt: ChemBag
+    pocket1: HandLabeler
+    eyes: ClothingEyesGlassesChemical
+    #storage:
+    #back:
+    #- Stuff

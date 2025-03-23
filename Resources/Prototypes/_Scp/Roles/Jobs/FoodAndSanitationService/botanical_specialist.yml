@@ -1,0 +1,30 @@
+﻿- type: job
+  id: BotanicalSpecialist
+  name: job-name-botanical-specialist
+  description: job-description-botanical-specialist
+  playTimeTracker: JobBotanicalSpecialist
+  startingGear: BotanicalSpecialistGear
+  icon: "JobIconBotanist"
+  supervisors: job-supervisors-service-administrator
+  access:
+  - Service
+  - Maintenance
+  - Hydroponics
+  extendedAccess:
+  - Kitchen
+  - Bar
+  special:
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FourTwenty
+    prototype: CannabisSeeds
+
+- type: startingGear
+  id: BotanicalSpecialistGear
+  equipment:
+    shoes: ClothingShoesColorBrown
+    id: BotanistPDA
+    ears: ClothingHeadsetService
+    belt: ClothingBeltPlantFilled
+    #storage:
+    #back:
+    #- Stuff

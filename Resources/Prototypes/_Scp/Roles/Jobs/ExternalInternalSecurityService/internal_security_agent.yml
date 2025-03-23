@@ -1,0 +1,40 @@
+﻿- type: job
+  id: InternalSecurityAgent
+  name: job-name-internal-security-agent
+  description: job-description-internal-security-agent
+  playTimeTracker: JobInternalSecurityAgent
+  startingGear: InternalSecurityAgentGear
+  icon: "JobIconSecurityOfficer"
+  supervisors: job-supervisors-external-internal-security-supervisor
+  canBeAntag: false
+  displayWeight: 10
+  access:
+  - Research
+  - Kitchen
+  - Hydroponics
+  - Janitor
+  - Security
+  - Brig
+  #  - Maintenance
+  - Service
+  - External
+  - Cryogenics
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  speciesBlacklist:
+  - Vox
+
+- type: startingGear
+  id: InternalSecurityAgentGear
+  equipment:
+    mask: ClothingMaskSecurityBandBlack
+    eyes: ClothingEyesGlassesSecurityGuard
+    id: SecurityPDA
+    ears: ClothingHeadsetSecurity
+    head: ClothingHeadHelmetBasic
+    gloves: ClothingHandsGlovesColorBlack
+  storage:
+    back:
+    - Flash
+#    - MagazineGlock22

@@ -1,0 +1,38 @@
+﻿- type: job
+  id: ChiefTechnicalSpecialist
+  name: job-name-chief-technical-specialist
+  description: job-description-chief-technical-specialist
+  playTimeTracker: JobChiefTechnicalSpecialist
+  weight: 10
+  startingGear: ChiefTechnicalSpecialistGear
+  icon: "JobIconChiefEngineer"
+  supervisors: job-supervisors-director
+  radioBold: true
+  displayWeight: 70
+  canBeAntag: true
+  access:
+  - Maintenance
+  - Engineering
+  - Command
+  - External
+  - ChiefEngineer
+  - Atmospherics
+  - Brig
+  - Cryogenics
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: CommandStaff
+
+- type: startingGear
+  id: ChiefTechnicalSpecialistGear
+  equipment:
+    id: CEPDA
+    #    head: ClothingHeadHatHardhatWhite
+    eyes: ClothingEyesGlassesMeson
+    ears: ClothingHeadsetCE
+    belt: ClothingBeltUtilityEngineering
+  storage:
+    back:
+    - Flash
+    - Telebaton

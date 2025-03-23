@@ -1,0 +1,23 @@
+﻿- type: job
+  id: LeadDIRAResearcher
+  name: job-name-lead-dira-researcher
+  description: job-description-lead-dira-researcher
+  playTimeTracker: JobLeadDIRAResearcher
+  startingGear: LeadResearcherDIRAGear
+  icon: "JobIconSeniorResearcher"
+  supervisors: job-supervisors-scientific-service-director
+  displayWeight: 35
+  access:
+  - Research
+  - Maintenance
+
+- type: startingGear
+  id: LeadResearcherDIRAGear
+  equipment:
+    head: ClothingHeadHatBeretRND
+    id: SeniorResearcherPDA
+    ears: ClothingHeadsetScience
+    outerClothing: ClothingOuterCoatLabSeniorResearcher
+  storage:
+    back:
+    - WeaponPistolCHIMP

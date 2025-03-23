@@ -1,0 +1,55 @@
+﻿- type: job
+  id: ThirdCollegiumJudicialInspector
+  name: job-name-third-collegium-judicial-inspector
+  description: job-description-third-collegium-judicial-inspector
+  playTimeTracker: JobThirdCollegiumJudicialInspector
+  startingGear: ThirdCollegiumJudicialInspectorGear
+  icon: "JobIconMagistrat"
+  supervisors: job-supervisors-regional-administration
+  canBeAntag: false
+  radioBold: true
+  displayWeight: 75
+  access:
+  - Magistrat
+  - Bar
+  - Kitchen
+  - Hydroponics
+  - Janitor
+  - Theatre
+  - Chapel
+  - Lawyer
+  - Brig
+  - Security
+  - Medical
+  - Research
+  - Engineering
+  - Cargo
+  - Salvage
+  - Command
+  - Hydroponics
+  - Maintenance
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+    - type: CommandStaff
+
+- type: startingGear
+  id: ThirdCollegiumJudicialInspectorGear
+  equipment:
+    jumpsuit: MagistratUniformSuit
+    back: ClothingBackpack
+    shoes: ClothingShoesBootsLaceup
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesColorWhite
+    outerClothing: ClothingOuterRobesJudge
+    id: MagistratPDA
+    ears: ClothingHeadsetMagistrate
+    head: ClothingHeadHatPwig
+  storage:
+    back:
+    - RubberStampMagistrat
+    - ClothingNeckLawyerbadge
+    - GavelHammer
+    - GavelBlock

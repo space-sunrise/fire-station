@@ -1,0 +1,36 @@
+﻿- type: job # TODO: Узнать че за хуй и сделать норм
+  id: VSOOperative
+  name: job-name-vso-operative
+  description: job-description-vso-operative
+  playTimeTracker: JobVSOOperative
+  weight: 10
+  startingGear: VSOOperativeGear
+  icon: "JobIconQuarterMaster"
+  supervisors: job-supervisors-director
+  canBeAntag: true
+  radioBold: true
+  displayWeight: 40
+  access:
+  - Cargo
+  - Salvage
+  - Quartermaster
+  - Maintenance
+  - External
+  - Command
+  - Brig
+  - Cryogenics
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: CommandStaff
+
+- type: startingGear
+  id: VSOOperativeGear
+  equipment:
+    id: QuartermasterPDA
+    ears: ClothingHeadsetQM
+    #    belt: BoxFolderClipboard
+    pocket1: AppraisalTool
+  storage:
+    back:
+    - Flash

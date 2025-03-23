@@ -1,0 +1,23 @@
+﻿- type: job
+  id: LeadResearcher
+  name: job-name-lead-researcher
+  description: job-description-lead-researcher
+  playTimeTracker: JobLeadResearcher
+  startingGear: LeadResearcherGear
+  icon: "JobIconSeniorResearcher"
+  supervisors: job-supervisors-scientific-service-director
+  displayWeight: 35
+  access:
+  - Research
+  - Maintenance
+
+- type: startingGear
+  id: LeadResearcherGear
+  equipment:
+    head: ClothingHeadHatBeretRND
+    id: SeniorResearcherPDA
+    ears: ClothingHeadsetScience
+    outerClothing: ClothingOuterCoatLabSeniorResearcher
+  storage:
+    back:
+    - WeaponPistolCHIMP

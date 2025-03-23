@@ -1,0 +1,35 @@
+﻿- type: job
+  id: JuniorLightContainmentSecurityOfficer
+  name: job-name-junior-light-containment-security-officer
+  description: job-description-light-containment-security-officer
+  playTimeTracker: JobJuniorLightContainmentSecurityOfficer
+  startingGear: JuniorLightContainmentSecurityOfficerGear
+  icon: "JobIconSecurityCadet"
+  supervisors: job-supervisors-light-containment-security-supervisor
+  canBeAntag: false
+  displayWeight: 0
+  access:
+  - Research
+  - Kitchen
+  - Hydroponics
+  - Janitor
+  - Security
+  - Brig
+  #  - Maintenance
+  - Service
+  - External
+  - Cryogenics
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: JuniorLightContainmentSecurityOfficerGear
+  equipment:
+    mask: ClothingMaskSecurityBandBlack
+    id: SecurityCadetPDA
+    ears: ClothingHeadsetSecurity
+    pocket1: HyperLinkBookCorporateLaw
+  storage:
+    back:
+    - Flash

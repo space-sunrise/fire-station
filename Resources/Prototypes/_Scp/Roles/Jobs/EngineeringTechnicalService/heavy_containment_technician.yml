@@ -1,0 +1,26 @@
+﻿- type: job
+  id: HeavyContainmentTechnician
+  name: job-name-heavy-containment-technician
+  description: job-description-heavy-containment-technician
+  playTimeTracker: JobHeavyContainmentTechnician
+  startingGear: HeavyContainmentTechnicianGear
+  icon: "JobIconStationEngineer"
+  supervisors: job-supervisors-chief-technical-specialist
+  displayWeight: 10
+  access:
+  - Maintenance
+  - Engineering
+  - External
+  extendedAccess:
+  - Atmospherics
+
+- type: startingGear
+  id: HeavyContainmentTechnicianGear
+  equipment:
+    eyes: ClothingEyesGlassesMeson
+    belt: ClothingBeltUtilityEngineering
+    ears: ClothingHeadsetEngineering
+    id: EngineerPDA
+    #storage:
+    #back:
+    #- Stuff

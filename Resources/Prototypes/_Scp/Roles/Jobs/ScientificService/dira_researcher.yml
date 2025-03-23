@@ -1,0 +1,21 @@
+﻿- type: job
+  id: DIRAResearcher
+  name: job-name-dira-researcher
+  description: job-description-dira-researcher
+  playTimeTracker: JobDIRAResearcher
+  startingGear: DIRAResearcherGear
+  icon: "JobIconScientist"
+  supervisors: job-supervisors-lead-dira-researcher
+  displayWeight: 10
+  access:
+  - Research
+  - Maintenance
+
+- type: startingGear
+  id: DIRAResearcherGear
+  equipment:
+    ears: ClothingHeadsetScience
+    id: SciencePDA
+    #storage:
+    #back:
+    #- Stuff

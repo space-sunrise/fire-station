@@ -1,0 +1,26 @@
+﻿- type: job
+  id: HospitalIntern
+  name: job-name-hospital-intern
+  description: job-description-hospital-intern
+  playTimeTracker: JobHospitalIntern
+  startingGear: HospitalInternGear
+  icon: "JobIconMedicalIntern"
+  supervisors: job-supervisors-senior-medical-specialist
+  canBeAntag: true
+  displayWeight: 0
+  access:
+  - Medical
+  - Maintenance
+
+- type: startingGear
+  id: HospitalInternGear
+  equipment:
+    #    shoes: ClothingShoesColorWhite
+    id: MedicalInternPDA
+    ears: ClothingHeadsetMedical
+    belt: ClothingBeltMedicalFilled
+    pocket2: BookMedicalReferenceBook
+    eyes: ClothingEyesHudMedical
+    #storage:
+    #back:
+    #- Stuff

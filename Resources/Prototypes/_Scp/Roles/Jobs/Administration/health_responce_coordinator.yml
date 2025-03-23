@@ -1,0 +1,35 @@
+﻿- type: job
+  id: HealthResponseCoordinator
+  name: job-name-health-response-coordinator
+  description: job-description-health-response-coordinator
+  playTimeTracker: JobHealthResponseCoordinator
+  weight: 10
+  startingGear: HealthResponseCoordinatorGear
+  icon: "JobIconChiefMedicalOfficer"
+  supervisors: job-supervisors-director
+  canBeAntag: true
+  radioBold: true
+  displayWeight: 60
+  access:
+  - Medical
+  - Command
+  - Maintenance
+  - Chemistry
+  - ChiefMedicalOfficer
+  - Brig
+  - Cryogenics
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: CommandStaff
+
+- type: startingGear
+  id: HealthResponseCoordinatorGear
+  equipment:
+    id: CMOPDA
+    ears: ClothingHeadsetCMO
+    belt: ClothingBeltMedicalFilled
+  storage:
+    back:
+    - Flash
+    - Telebaton

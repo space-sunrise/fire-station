@@ -1,0 +1,28 @@
+﻿- type: job
+  id: SupplyHandler
+  name: job-name-logistics-supply-handler
+  description: job-description-supply-handler
+  playTimeTracker: JobSuppleHandler
+  startingGear: SupplyHandlerGear
+  icon: "JobIconCargoTechnician"
+  supervisors: job-supervisors-senior-logistics-officer
+  displayWeight: 0
+  access:
+  - Cargo
+  - Maintenance
+  extendedAccess:
+  - Salvage
+  special:
+  - !type:GiveItemOnHolidaySpecial
+    holiday: BoxingDay
+    prototype: BoxCardboard
+
+- type: startingGear
+  id: SupplyHandlerGear
+  equipment:
+    id: CargoPDA
+    ears: ClothingHeadsetCargo
+    pocket1: AppraisalTool
+    #storage:
+    #back:
+    #- Stuff

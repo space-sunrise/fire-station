@@ -1,0 +1,36 @@
+﻿- type: job
+  id: SeniorLogisticsOfficer
+  name: job-name-senior-logistics-officer
+  description: job-description-senior-logistics-officer
+  playTimeTracker: JobSeniorLogisticsOfficer
+  weight: 10
+  startingGear: SeniorLogisticsOfficerGear
+  icon: "JobIconQuarterMaster"
+  supervisors: job-supervisors-director
+  canBeAntag: true
+  radioBold: true
+  displayWeight: 40
+  access:
+  - Cargo
+  - Salvage
+  - Quartermaster
+  - Maintenance
+  - External
+  - Command
+  - Brig
+  - Cryogenics
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: CommandStaff
+
+- type: startingGear
+  id: SeniorLogisticsOfficerGear
+  equipment:
+    id: QuartermasterPDA
+    ears: ClothingHeadsetQM
+    #    belt: BoxFolderClipboard
+    pocket1: AppraisalTool
+  storage:
+    back:
+    - Flash

@@ -1,0 +1,34 @@
+﻿- type: job
+  id: RiotControlSpecialist
+  name: job-name-riot-control-specialist
+  description: job-description-riot-control-specialist
+  playTimeTracker: JobRiotControlSpecialist
+  startingGear: RiotControlSpecialistGear
+  icon: "JobIconSeniorOfficer"
+  supervisors: job-supervisors-light-containment-security-supervisor
+  canBeAntag: false
+  displayWeight: 60
+  access:
+  - Research
+  - Kitchen
+  - Hydroponics
+  - Janitor
+  - Security
+  - Brig
+  - Maintenance
+  - Service
+  - External
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: RiotControlSpecialistGear
+  equipment:
+    eyes: ClothingEyesGlassesSecurity
+    head: ClothingHeadHatBeretSecurity
+    id: SeniorOfficerPDA
+    ears: ClothingHeadsetSecurity
+  storage:
+    back:
+    - WeaponDisablerSMG

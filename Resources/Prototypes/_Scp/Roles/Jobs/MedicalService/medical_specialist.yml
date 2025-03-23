@@ -1,0 +1,29 @@
+﻿- type: job
+  id: MedicalSpecialist
+  name: job-name-medical-specialist
+  description: job-description-medical-specialist
+  playTimeTracker: JobMedicalSpecialist
+  startingGear: MedicalSpecialistGear
+  icon: "JobIconMedicalDoctor"
+  supervisors: job-supervisors-health-response-coordinator
+  displayWeight: 20
+  access:
+  - Medical
+  - Maintenance
+  extendedAccess:
+  - Chemistry
+  special:
+  - !type:GiveItemOnHolidaySpecial
+    holiday: DoctorDay
+    prototype: WehMedipen
+
+- type: startingGear
+  id: MedicalSpecialistGear
+  equipment:
+    ears: ClothingHeadsetMedical
+    belt: ClothingBeltMedicalFilled
+    eyes: ClothingEyesHudMedical
+    id: MedicalPDA
+    #storage:
+    #back:
+    #- Stuff
