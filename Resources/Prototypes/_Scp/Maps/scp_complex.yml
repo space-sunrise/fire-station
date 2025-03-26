@@ -1,12 +1,12 @@
 - type: gameMap
-  id: SCPComplex
+  id: ScpComplex
   mapName: 'Complex SCP'
   mapPath: /Maps/_Scp/scp_complex.yml
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 0
   stations:
-    SCPComplex:
+    ScpComplex:
       stationProto: StandardScpStation
       components:
         - type: StationNameSetup
