@@ -7,6 +7,7 @@
   - CargoTechnician
   - Quartermaster
   - SalvageSpecialist
+  editorHidden: true # Fire added
 
 - type: department
   id: Civilian
@@ -32,6 +33,7 @@
   - Zookeeper
   - ServiceWorker
   - Barber # Sunrise-Roles
+  editorHidden: true # Fire added
 
 - type: department
   id: CentralCommand
@@ -78,6 +80,7 @@
   - Adjutant  #Sunrise-edit
   primary: false
   weight: 100
+  editorHidden: true # Fire added
 
 - type: department
   id: Engineering
@@ -91,6 +94,7 @@
   - SeniorEngineer  # Sunrise-Senior
   - StationEngineer
   - TechnicalAssistant
+  editorHidden: true # Fire added
 
 - type: department
   id: Medical
@@ -106,6 +110,7 @@
   - Psychologist
   - Paramedic
   - MedicalPathologist  # Sunrise-pathologist
+  editorHidden: true # Fire added
 
 - type: department
   id: Security
@@ -122,6 +127,7 @@
   - Warden
   - Brigmedic  # Sunrise-Brigmedic
   - SecurityPilot # Sunrise-SecurityPilot
+  editorHidden: true # Fire added
 
 - type: department
   id: Science
@@ -134,6 +140,7 @@
   - Scientist
   - ResearchAssistant
   - Roboticist  # Sunrise-Edit
+  editorHidden: true # Fire added
 
 - type: department
   id: Silicon
@@ -153,6 +160,7 @@
   - PeaceBorg # Sunrise-Edit
   - SecurityBorg # Sunrise-Edit
   primary: false
+  editorHidden: true # Fire added
 
 - type: department
   id: Specific
@@ -167,3 +175,4 @@
   - Psychologist
   - Barber  # Sunrise-Roles
   primary: false
+  editorHidden: true # Fire added
