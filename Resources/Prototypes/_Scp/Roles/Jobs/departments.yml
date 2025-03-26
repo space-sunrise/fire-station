@@ -58,6 +58,7 @@
   - HeavyContainmentZoneCommandant
   - SeniorHeavyContainmentZoneOfficer
   - HeavyContainmentZoneOfficer
+  - JuniorHeavyContainmentZoneOfficer
   - FieldMedicalSpecialist
 
 - type: department
@@ -114,6 +115,7 @@
   weight: 60
   roles:
   - ChiefTechnicalSpecialist
+  - LeadTechnicalSpecialist
   - GeneralTechnicalSpecialist
   - ElectricalTechnicalSpecialist
   - TechnicalTrainee
@@ -130,7 +132,7 @@
   - SeniorLogisticsOfficer
   - LogisticsOfficer
 
-# Обслуга/сервис
+# Департамент продовольственного и санитарного обслуживания
 
 - type: department
   id: FoodAndSanitationServiceDepartment
@@ -143,6 +145,8 @@
   - BotanistPhytogeneticist
   - ServicePersonnel
 
+# Класс Д
+
 - type: department
   id: LowAccessPersonnel
   name: department-low-access-personnel
@@ -154,6 +158,8 @@
   - ClassDBotanist
   - ClassDJanitor
   - ClassD
+
+# Сосать
 
 - type: department
   id: SCP

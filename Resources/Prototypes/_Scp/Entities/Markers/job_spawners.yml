@@ -125,6 +125,13 @@
     job_id: HeavyContainmentZoneOfficer
 
 - type: entity
+  id: SpawnPointJuniorHeavyContainmentZoneOfficer
+  parent: SpawnPointScpBase
+  components:
+    - type: SpawnPoint
+      job_id: JuniorHeavyContainmentZoneOfficer
+
+- type: entity
   id: SpawnPointFieldMedicalSpecialist
   parent: SpawnPointScpBase
   components:
@@ -236,6 +243,13 @@
     job_id: HospitalIntern
 
 # Инженерный отдел
+
+- type: entity
+  id: SpawnPointLeadTechnicalSpecialist
+  parent: SpawnPointScpBase
+  components:
+    - type: SpawnPoint
+      job_id: LeadTechnicalSpecialist
 
 - type: entity
   id: SpawnPointGeneralTechnicalSpecialist
