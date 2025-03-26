@@ -3,6 +3,9 @@
   name: job-name-senior-medical-specialist
   description: job-description-senior-medical-specialist
   playTimeTracker: JobSeniorMedicalSpecialist
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 54000 # 15 часов
   startingGear: SeniorMedicalSpecialistGear
   icon: JobSeniorMedicalSpecialist
   supervisors: job-supervisors-health-response-coordinator

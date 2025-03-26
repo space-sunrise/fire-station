@@ -17,6 +17,9 @@
   name: job-name-classd-cook
   description: job-description-classd
   playTimeTracker: JobClassDCook
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 3600 # 1 час
   startingGear: ClassDCookGear
   icon: JobClassDCook
   supervisors: job-supervisors-security-and-research
@@ -34,6 +37,9 @@
   name: job-name-classd-botanist
   description: job-description-classd
   playTimeTracker: JobClassDBotanist
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 3600 # 1 час
   startingGear: ClassDBotanistGear
   icon: JobClassDBotanist
   supervisors: job-supervisors-security-and-research
@@ -51,6 +57,9 @@
   name: job-name-classd-janitor
   description: job-description-classd
   playTimeTracker: JobClassDJanitor
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 3600 # 1 час
   startingGear: ClassDJanitorGear
   icon: JobClassDJanitor
   supervisors: job-supervisors-security-and-research

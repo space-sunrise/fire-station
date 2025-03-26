@@ -3,6 +3,9 @@
   name: job-name-senior-heavy-containment-zone-officer
   description: job-description-senior-heavy-containment-zone-officer
   playTimeTracker: JobSeniorHeavyContainmentZoneOfficer
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+    - !type:OverallPlaytimeRequirement
+      time: 54000 # 15 часов
   startingGear: SeniorHeavyContainmentZoneOfficerGear
   icon: JobSeniorHeavyContainmentZoneOfficer
   supervisors: job-supervisors-heavy-containment-security-supervisor

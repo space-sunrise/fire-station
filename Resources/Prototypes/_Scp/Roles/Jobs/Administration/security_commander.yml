@@ -3,6 +3,9 @@
   name: job-name-security-commander
   description: job-description-security-commander
   playTimeTracker: JobSecurityCommander
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 144000 # 40 часов
   weight: 10
   startingGear: SecurityCommanderGear
   icon: JobSecurityCommander

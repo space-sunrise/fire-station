@@ -3,6 +3,9 @@
   name: job-name-head-of-medical-sector
   description: job-description-head-of-medical-sector
   playTimeTracker: JobHeadOfMedicalSector
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+    - !type:OverallPlaytimeRequirement
+      time: 108000 # 30 часов
   weight: 10
   startingGear: HeadOfMedicalSectorGear
   icon: JobHeadOfMedicalSector

@@ -3,6 +3,9 @@
   name: job-name-director
   description: job-description-director
   playTimeTracker: JobDirector
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 180000 # 50 часов
   weight: 5
   startingGear: DirectorGear
   icon: JobDirector

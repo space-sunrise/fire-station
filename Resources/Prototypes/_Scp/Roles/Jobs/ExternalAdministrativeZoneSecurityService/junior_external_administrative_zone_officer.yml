@@ -4,6 +4,9 @@
   description: job-description-junior-external-administrative-zone-officer
   playTimeTracker: JobJuniorExternalAdministrativeZoneOfficer
   startingGear: JuniorExternalAdministrativeZoneOfficerGear
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+    - !type:OverallPlaytimeRequirement
+      time: 18000 # 5 часов
   icon: JobJuniorExternalAdministrativeZoneOfficer
   supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false

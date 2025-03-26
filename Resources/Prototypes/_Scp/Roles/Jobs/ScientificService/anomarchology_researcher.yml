@@ -3,6 +3,9 @@
   name: job-name-anomarchology-researcher
   description: job-description-anomarchology-researcher
   playTimeTracker: JobAnomarchologyResearcher
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 18000 # 5 часов
   startingGear: AnomarchologyResearcherGear
   icon: JobAnomarchologyResearcher
   supervisors: job-supervisors-lead-researcher

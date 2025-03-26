@@ -3,6 +3,9 @@
   name: job-name-personnel-officer
   description: job-description-personnel-officer
   playTimeTracker: JobPersonnelOfficer
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 108000 # 30 часов
   weight: 20
   startingGear: PersonnelOfficerGear
   icon: JobPersonnelOfficer

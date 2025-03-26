@@ -3,6 +3,9 @@
   name: job-name-junior-external-administrative-zone-officer
   description: job-description-junior-external-administrative-zone-officer
   playTimeTracker: JobJuniorHeavyContainmentZoneOfficer
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 18000 # 5 часов
   startingGear: JuniorHeavyContainmentZoneOfficerGear
   icon: JobJuniorHeavyContainmentZoneOfficer
   supervisors: job-supervisors-heavy-containment-zone-commandant

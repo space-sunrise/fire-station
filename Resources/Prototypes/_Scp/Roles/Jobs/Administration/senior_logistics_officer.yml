@@ -3,6 +3,9 @@
   name: job-name-senior-logistics-officer
   description: job-description-senior-logistics-officer
   playTimeTracker: JobSeniorLogisticsOfficer
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 90000 # 25 часов
   weight: 10
   startingGear: SeniorLogisticsOfficerGear
   icon: JobSeniorLogisticsOfficer
