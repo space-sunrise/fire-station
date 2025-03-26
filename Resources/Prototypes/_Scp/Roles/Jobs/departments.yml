@@ -8,12 +8,11 @@
   weight: 5
   roles:
   - Director
-  - SecurityCommander
   - ScientificServiceDirector
-  - EthicsCommitteeRepresentative
+  - SecurityCommander
   - ChiefTechnicalSpecialist
   - PersonnelOfficer
-  - HealthResponseCoordinator
+  - HeadOfMedicalSector
   - SeniorLogisticsOfficer
 
 # Гады следящие за буквой закона
@@ -25,8 +24,8 @@
   color: "#980000"
   weight: 10
   roles:
-  - APAIBAgent
-  - VSOOperative
+  - MentalControlOfficer
+  - InternalSecurityOperative
 
 - type: department
   id: EthicsCommittee
@@ -44,23 +43,10 @@
   color: "#274e13"
   weight: 20
   roles:
-  - ThirdCollegiumJudicialInspector
+  - JudicialInspector
   - TribunalOfficer
 
 # Служба безопасности
-
-- type: department
-  id: ExternalInternalSecurityService
-  name: department-internal-security-service-name
-  description: department-internal-security-service-desc
-  color: "#4a86e8"
-  weight: 25
-  roles:
-  - ExternalInternalSecuritySupervisor
-  - SeniorInternalSecurityAgent
-  - InternalSecurityAgent
-  - JuniorInternalSecurityAgent
-  - FieldMedicalSpecialist
 
 - type: department
   id: HeavyContainmentSecurityService
@@ -69,23 +55,22 @@
   color: "#ff0000"
   weight: 30
   roles:
-  - HeavyContainmentSecuritySupervisor
-  - ContainmentSpecialist
-  - SecuritySpecialist
+  - HeavyContainmentZoneCommandant
+  - SeniorHeavyContainmentZoneOfficer
+  - HeavyContainmentZoneOfficer
   - FieldMedicalSpecialist
 
 - type: department
-  id: LightContainmentSecurityService
-  name: department-light-containment-security-service-name
-  description: department-light-containment-security-service-desc
+  id: ExternalAdministrativeZoneSecurityService
+  name: department-external-administrative-zone-security-service-name
+  description: department-external-administrative-zone-security-service-desc
   color: "#999999"
   weight: 35
   roles:
-  - LightContainmentSecuritySupervisor
-  - RiotControlSpecialist
-  - LightContainmentSecurityOfficer
-  - JuniorLightContainmentOfficer
-  - FieldMedicalSpecialist
+  - ExternalAdministrativeZoneCommandant
+  - SeniorExternalAdministrativeZoneOfficer
+  - ExternalAdministrativeZoneOfficer
+  - JuniorExternalAdministrativeZoneOfficer
 
 # Научный отдел
 
@@ -98,11 +83,9 @@
   roles:
   - ScientificServiceDirector
   - LeadResearcher
-  - LeadDIRAResearcher
-  - DIRAResearcher
   - AnomabiologyResearcher
   - AnomarchologyResearcher
-  - RoboticsSpecialist
+  - ProductionSpecialist
   - JuniorResearcher
 
 # Медицинский отдел
@@ -114,10 +97,11 @@
   color: "#f6d2d2"
   weight: 45
   roles:
-  - HealthResponseCoordinator
+  - HeadOfMedicalSector
   - SeniorMedicalSpecialist
   - PharmaceuticalSpecialist
   - MedicalSpecialist
+  - Psychotherapist
   - HospitalIntern
 
 # Инженерный отдел
@@ -131,8 +115,7 @@
   roles:
   - ChiefTechnicalSpecialist
   - GeneralTechnicalSpecialist
-  - HeavyContainmentTechnician
-  - LightContainmentTechnician
+  - ElectricalTechnicalSpecialist
   - TechnicalTrainee
 
 # Отдел логистики
@@ -146,7 +129,6 @@
   roles:
   - SeniorLogisticsOfficer
   - LogisticsOfficer
-  - SupplyHandler
 
 # Обслуга/сервис
 
@@ -157,10 +139,9 @@
   color: "#b8d8aa"
   weight: 60
   roles:
-  - ServiceAdministrator
   - GastronomicSpecialist
-  - BotanicalSpecialist
-  - SanitationTechnician
+  - BotanistPhytogeneticist
+  - ServicePersonnel
 
 - type: department
   id: LowAccessPersonnel

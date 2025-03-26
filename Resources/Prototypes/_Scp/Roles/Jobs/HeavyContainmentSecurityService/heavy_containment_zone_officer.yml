@@ -1,11 +1,11 @@
 ﻿- type: job
-  id: InternalSecurityAgent
-  name: job-name-internal-security-agent
-  description: job-description-internal-security-agent
-  playTimeTracker: JobInternalSecurityAgent
-  startingGear: InternalSecurityAgentGear
+  id: HeavyContainmentZoneOfficer
+  name: job-name-heavy-containment-zone-officer
+  description: job-description-heavy-containment-zone-officer
+  playTimeTracker: JobHeavyContainmentZoneOfficer
+  startingGear: HeavyContainmentZoneOfficerGear
   icon: "JobIconSecurityOfficer"
-  supervisors: job-supervisors-external-internal-security-supervisor
+  supervisors: job-supervisors-heavy-containment-security-supervisor
   canBeAntag: false
   displayWeight: 10
   access:
@@ -15,18 +15,16 @@
   - Janitor
   - Security
   - Brig
-  #  - Maintenance
+  - Maintenance
   - Service
   - External
   - Cryogenics
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
-  speciesBlacklist:
-  - Vox
 
 - type: startingGear
-  id: InternalSecurityAgentGear
+  id: HeavyContainmentZoneOfficerGear
   equipment:
     mask: ClothingMaskSecurityBandBlack
     eyes: ClothingEyesGlassesSecurityGuard

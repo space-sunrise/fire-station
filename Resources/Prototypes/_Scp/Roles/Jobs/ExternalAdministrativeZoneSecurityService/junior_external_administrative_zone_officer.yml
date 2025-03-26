@@ -1,11 +1,11 @@
 ﻿- type: job
-  id: JuniorLightContainmentSecurityOfficer
-  name: job-name-junior-light-containment-security-officer
-  description: job-description-light-containment-security-officer
-  playTimeTracker: JobJuniorLightContainmentSecurityOfficer
-  startingGear: JuniorLightContainmentSecurityOfficerGear
+  id: JuniorExternalAdministrativeZoneOfficer
+  name: job-name-junior-external-administrative-zone-officer
+  description: job-description-junior-external-administrative-zone-officer
+  playTimeTracker: JobJuniorExternalAdministrativeZoneOfficer
+  startingGear: JuniorExternalAdministrativeZoneOfficerGear
   icon: "JobIconSecurityCadet"
-  supervisors: job-supervisors-light-containment-security-supervisor
+  supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false
   displayWeight: 0
   access:
@@ -24,7 +24,7 @@
     implants: [ MindShieldImplant ]
 
 - type: startingGear
-  id: JuniorLightContainmentSecurityOfficerGear
+  id: JuniorExternalAdministrativeZoneOfficer
   equipment:
     mask: ClothingMaskSecurityBandBlack
     id: SecurityCadetPDA

@@ -1,9 +1,9 @@
 ﻿- type: job
-  id: HeavyContainmentTechnician
-  name: job-name-heavy-containment-technician
-  description: job-description-heavy-containment-technician
-  playTimeTracker: JobHeavyContainmentTechnician
-  startingGear: HeavyContainmentTechnicianGear
+  id: ElectricalTechnicalSpecialist
+  name: job-name-electrical-technical-specialist
+  description: job-description-electrical-technical-specialist
+  playTimeTracker: JobElectricalTechnicalSpecialist
+  startingGear: ElectricalTechnicalSpecialistGear
   icon: "JobIconStationEngineer"
   supervisors: job-supervisors-chief-technical-specialist
   displayWeight: 10
@@ -15,7 +15,7 @@
   - Atmospherics
 
 - type: startingGear
-  id: HeavyContainmentTechnicianGear
+  id: ElectricalTechnicalSpecialistGear
   equipment:
     eyes: ClothingEyesGlassesMeson
     belt: ClothingBeltUtilityEngineering

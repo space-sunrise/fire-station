@@ -1,0 +1,24 @@
+﻿- type: job
+  id: Psychotherapist
+  name: job-name-psychotherapist
+  description: job-description-psychotherapist
+  playTimeTracker: JobPsychotherapist
+  startingGear: PsychotherapistGear
+  icon: "JobIconPsychologist"
+  supervisors: job-supervisors-head-of-medical-sector
+  displayWeight: 10  # Sunrise
+  access:
+  - Medical
+  - Maintenance
+  extendedAccess:
+  - Chemistry
+
+- type: startingGear
+  id: PsychotherapistGear
+  equipment:
+    shoes: ClothingShoesLeather
+    id: PsychologistPDA
+    ears: ClothingHeadsetMedical
+  storage:
+    back:
+    - RubberStampPsychologist

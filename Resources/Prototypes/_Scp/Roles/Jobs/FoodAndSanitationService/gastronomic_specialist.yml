@@ -5,7 +5,7 @@
   playTimeTracker: JobGastronomicSpecialist
   startingGear: GastronomicSpecialistGear
   icon: "JobIconChef"
-  supervisors: job-supervisors-service-administrator
+  supervisors: job-supervisors-personnel-officer
   access:
   - Service
   - Maintenance

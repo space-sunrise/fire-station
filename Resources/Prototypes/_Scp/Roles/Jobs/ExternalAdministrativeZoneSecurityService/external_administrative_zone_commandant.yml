@@ -1,13 +1,13 @@
 ﻿- type: job
-  id: ExternalInternalSecuritySupervisor
-  name: job-name-external-internal-security-supervisor
-  description: job-description-external-internal-security-supervisor
-  playTimeTracker: JobExternalInternalSecuritySupervisor
-  startingGear: ExternalInternalSecuritySupervisorGear
+  id: ExternalAdministrativeZoneCommandant
+  name: job-name-external-administrative-zone-commandant
+  description: job-description-external-administrative-zone-commandant
+  playTimeTracker: JobExternalAdministrativeZoneCommandant
+  startingGear: ExternalAdministrativeZoneCommandantGear
   icon: "JobIconWarden"
   supervisors: job-supervisors-security-commander
   canBeAntag: false
-  displayWeight: 70  # Sunrise
+  displayWeight: 70
   access:
   - Research
   - Kitchen
@@ -26,7 +26,7 @@
     implants: [ MindShieldImplant ]
 
 - type: startingGear
-  id: ExternalInternalSecuritySupervisorGear
+  id: ExternalAdministrativeZoneCommandantGear
   equipment:
     eyes: ClothingEyesGlassesSecurity
     id: WardenPDA

@@ -1,9 +1,9 @@
 ﻿- type: job
-  id: ThirdCollegiumJudicialInspector
-  name: job-name-third-collegium-judicial-inspector
-  description: job-description-third-collegium-judicial-inspector
-  playTimeTracker: JobThirdCollegiumJudicialInspector
-  startingGear: ThirdCollegiumJudicialInspectorGear
+  id: JudicialInspector
+  name: job-name-judicial-inspector
+  description: job-description-judicial-inspector
+  playTimeTracker: JobJudicialInspector
+  startingGear: JudicialInspectorGear
   icon: "JobIconMagistrat"
   supervisors: job-supervisors-regional-administration
   canBeAntag: false
@@ -36,7 +36,7 @@
     - type: CommandStaff
 
 - type: startingGear
-  id: ThirdCollegiumJudicialInspectorGear
+  id: JudicialInspectorGear
   equipment:
     jumpsuit: MagistratUniformSuit
     back: ClothingBackpack

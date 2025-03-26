@@ -1,9 +1,9 @@
 ﻿- type: job
-  id: RoboticsSpecialist
+  id: ProductionSpecialist
   name: job-name-robotics-specialist
   description: job-description-robotics-specialist
-  playTimeTracker: JobRoboticsSpecialist
-  startingGear: RoboticsSpecialistGear
+  playTimeTracker: JobProductionSpecialist
+  startingGear: ProductionSpecialistGear
   icon: "JobIconScientist"
   supervisors: job-supervisors-lead-researcher
   displayWeight: 10
@@ -12,7 +12,7 @@
   - Maintenance
 
 - type: startingGear
-  id: RoboticsSpecialistGear
+  id: ProductionSpecialistGear
   equipment:
     ears: ClothingHeadsetScience
     id: SciencePDA

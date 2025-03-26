@@ -1,13 +1,13 @@
 ﻿- type: job
-  id: LightContainmentSecuritySupervisor
-  name: job-name-light-containment-security-supervisor
-  description: job-description-light-containment-security-supervisor
-  playTimeTracker: JobLightContainmentSecuritySupervisor
-  startingGear: LightContainmentSecuritySupervisorGear
+  id: HeavyContainmentZoneCommandant
+  name: job-name-heavy-containment-zone-commandant
+  description: job-description-heavy-containment-zone-commandant
+  playTimeTracker: JobHeavyContainmentZoneCommandant
+  startingGear: HeavyContainmentZoneCommandantGear
   icon: "JobIconWarden"
   supervisors: job-supervisors-security-commander
   canBeAntag: false
-  displayWeight: 70
+  displayWeight: 70  # Sunrise
   access:
   - Research
   - Kitchen
@@ -26,7 +26,7 @@
     implants: [ MindShieldImplant ]
 
 - type: startingGear
-  id: LightContainmentSecuritySupervisorGear
+  id: HeavyContainmentZoneCommandantGear
   equipment:
     eyes: ClothingEyesGlassesSecurity
     id: WardenPDA

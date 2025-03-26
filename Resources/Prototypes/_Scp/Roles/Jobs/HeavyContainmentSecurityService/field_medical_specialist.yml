@@ -5,7 +5,7 @@
   playTimeTracker: JobFieldMedicalSpecialist
   startingGear: FieldMedicalSpecialistGear
   icon: "JobIconBrigmedic"
-  supervisors: job-supervisors-health-response-coordinator
+  supervisors: job-supervisors-heavy-containment-security-supervisor
   canBeAntag: false
   displayWeight: 15
   access:

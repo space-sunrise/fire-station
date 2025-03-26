@@ -1,11 +1,11 @@
 ﻿- type: job
-  id: BotanicalSpecialist
-  name: job-name-botanical-specialist
-  description: job-description-botanical-specialist
-  playTimeTracker: JobBotanicalSpecialist
-  startingGear: BotanicalSpecialistGear
+  id: BotanistPhytogeneticist
+  name: job-name-botanist-phytogeneticist
+  description: job-description-botanist-phytogeneticist
+  playTimeTracker: JobBotanistPhytogeneticist
+  startingGear: BotanistPhytogeneticistGear
   icon: "JobIconBotanist"
-  supervisors: job-supervisors-service-administrator
+  supervisors: job-supervisors-personnel-officeer
   access:
   - Service
   - Maintenance
@@ -19,7 +19,7 @@
     prototype: CannabisSeeds
 
 - type: startingGear
-  id: BotanicalSpecialistGear
+  id: BotanistPhytogeneticistGear
   equipment:
     shoes: ClothingShoesColorBrown
     id: BotanistPDA

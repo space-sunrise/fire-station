@@ -1,0 +1,31 @@
+﻿- type: job
+  id: MentalControlOfficer
+  name: job-name-mental-control-officer
+  description: job-description-mental-control-officer
+  playTimeTracker: JobMentalControlOfficer
+  startingGear: MentalControlOfficerGear
+  icon: "JobIconIAA"
+  supervisors: job-supervisors-director
+  canBeAntag: false
+  displayWeight: 40
+  access:
+  - Command
+  - Service
+  - Brig
+  - Maintenance
+  - External
+  - Lawyer
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: MentalControlOfficerGear
+  equipment:
+    shoes: ClothingShoesColorBlack
+    id: IAAPDA
+    eyes: ClothingEyesGlassesSunglasses
+    ears: ClothingHeadsetIAA
+    pocket2: HyperLinkBookCorporateLaw
+  inhand:
+  - BriefcaseIAAFilled

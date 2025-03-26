@@ -1,9 +1,9 @@
 ﻿- type: job
-  id: ContainmentSpecialist
-  name: job-name-containment-specialist
-  description: job-description-containment-specialist
-  playTimeTracker: JobContainmentSpecialist
-  startingGear: ContainmentSpecialistGear
+  id: SeniorHeavyContainmentZoneOfficer
+  name: job-name-senior-heavy-containment-zone-officer
+  description: job-description-senior-heavy-containment-zone-officer
+  playTimeTracker: JobSeniorHeavyContainmentZoneOfficer
+  startingGear: SeniorHeavyContainmentZoneOfficerGear
   icon: "JobIconSecurityOfficer"
   supervisors: job-supervisors-heavy-containment-security-supervisor
   canBeAntag: false
@@ -24,7 +24,7 @@
     implants: [ MindShieldImplant ]
 
 - type: startingGear
-  id: ContainmentSecuritySpecialistGear
+  id: SeniorHeavyContainmentZoneOfficerGear
   equipment:
     mask: ClothingMaskSecurityBandBlack
     eyes: ClothingEyesGlassesSecurityGuard

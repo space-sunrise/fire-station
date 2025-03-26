@@ -1,0 +1,51 @@
+﻿- type: job
+  id: InternalSecurityOperative
+  name: job-name-internal-security-operative
+  description: job-description-internal-security-operative
+  playTimeTracker: JobInternalSecurityOperative
+  startingGear: InternalSecurityOperativeGear
+  icon: JobIconBlueShield
+  supervisors: job-supervisors-director
+  canBeAntag: false
+  access:
+  - Command
+  - Bar
+  - Service
+  - Maintenance
+  - Janitor
+  - Theatre
+  - Kitchen
+  - Chapel
+  - Hydroponics
+  - External
+  - Chemistry
+  - Engineering
+  - Research
+  - Detective
+  - Salvage
+  - Security
+  - Brig
+  - Cargo
+  - Atmospherics
+  - Cargo
+  - Medical
+  - BlueShield
+  - Lawyer
+  special:
+  - !type:AddImplantSpecial
+    implants: [MindShieldImplant]
+
+- type: startingGear
+  id: InternalSecurityOperativeGear
+  equipment:
+    shoes: ClothingShoesBootsBlueShieldFilled
+    eyes: ClothingEyesGlassesBlueShield
+    head: ClothingHeadHatBeretBlueShield
+    outerClothing: ClothingOuterArmorBlueShield
+    id: BlueShieldPDA
+    ears: ClothingHeadsetAltCommand
+    belt: ClothingBeltBlueShieldWebbingFilled
+    gloves: ClothingHandsGlovesCombat
+  storage:
+    back:
+    - HandheldCrewMonitor

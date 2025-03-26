@@ -1,10 +1,10 @@
 ﻿- type: job
-  id: HealthResponseCoordinator
-  name: job-name-health-response-coordinator
-  description: job-description-health-response-coordinator
-  playTimeTracker: JobHealthResponseCoordinator
+  id: HeadOfMedicalSector
+  name: job-name-head-of-medical-sector
+  description: job-description-head-of-medical-sector
+  playTimeTracker: JobHeadOfMedicalSector
   weight: 10
-  startingGear: HealthResponseCoordinatorGear
+  startingGear: HeadOfMedicalSectorGear
   icon: "JobIconChiefMedicalOfficer"
   supervisors: job-supervisors-director
   canBeAntag: true
@@ -24,7 +24,7 @@
     - type: CommandStaff
 
 - type: startingGear
-  id: HealthResponseCoordinatorGear
+  id: HeadOfMedicalSectorGear
   equipment:
     id: CMOPDA
     ears: ClothingHeadsetCMO

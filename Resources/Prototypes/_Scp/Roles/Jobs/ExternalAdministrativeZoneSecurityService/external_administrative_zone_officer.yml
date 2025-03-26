@@ -1,11 +1,11 @@
 ﻿- type: job
-  id: LightContainmentSecurityOfficer
-  name: job-name-light-containment-security-officer
-  description: job-description-light-containment-security-officer
-  playTimeTracker: JobLightContainmentSecurityOfficer
-  startingGear: LightContainmentSecurityOfficerGear
+  id: ExternalAdministrativeZoneOfficer
+  name: job-name-external-administrative-zone-officer
+  description: job-description-external-administrative-zone-officer
+  playTimeTracker: JobExternalAdministrativeZoneOfficer
+  startingGear: ExternalAdministrativeZoneOfficerGear
   icon: "JobIconSecurityOfficer"
-  supervisors: job-supervisors-light-containment-security-supervisor
+  supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false
   displayWeight: 10
   access:
@@ -24,7 +24,7 @@
     implants: [ MindShieldImplant ]
 
 - type: startingGear
-  id: LightContainmentSecurityOfficerGear
+  id: ExternalAdministrativeZoneOfficerGear
   equipment:
     mask: ClothingMaskSecurityBandBlack
     eyes: ClothingEyesGlassesSecurityGuard
