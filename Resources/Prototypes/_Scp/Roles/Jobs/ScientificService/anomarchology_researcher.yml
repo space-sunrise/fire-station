@@ -4,7 +4,7 @@
   description: job-description-anomarchology-researcher
   playTimeTracker: JobAnomarchologyResearcher
   startingGear: AnomarchologyResearcherGear
-  icon: "JobIconScientist"
+  icon: JobAnomarchologyResearcher
   supervisors: job-supervisors-lead-researcher
   displayWeight: 10
   access:

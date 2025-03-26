@@ -4,7 +4,7 @@
   description: job-description-heavy-containment-zone-officer
   playTimeTracker: JobHeavyContainmentZoneOfficer
   startingGear: HeavyContainmentZoneOfficerGear
-  icon: "JobIconSecurityOfficer"
+  icon: JobHeavyContainmentZoneOfficer
   supervisors: job-supervisors-heavy-containment-security-supervisor
   canBeAntag: false
   displayWeight: 10

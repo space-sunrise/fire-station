@@ -4,7 +4,7 @@
   description: job-description-psychotherapist
   playTimeTracker: JobPsychotherapist
   startingGear: PsychotherapistGear
-  icon: "JobIconPsychologist"
+  icon: JobPsychotherapist
   supervisors: job-supervisors-head-of-medical-sector
   displayWeight: 10  # Sunrise
   access:

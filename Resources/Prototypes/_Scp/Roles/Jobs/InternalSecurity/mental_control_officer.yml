@@ -4,7 +4,7 @@
   description: job-description-mental-control-officer
   playTimeTracker: JobMentalControlOfficer
   startingGear: MentalControlOfficerGear
-  icon: "JobIconIAA"
+  icon: JobMentalControlOfficer
   supervisors: job-supervisors-director
   canBeAntag: false
   displayWeight: 40

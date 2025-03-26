@@ -5,7 +5,7 @@
   playTimeTracker: JobSeniorLogisticsOfficer
   weight: 10
   startingGear: SeniorLogisticsOfficerGear
-  icon: "JobIconQuarterMaster"
+  icon: JobSeniorLogisticsOfficer
   supervisors: job-supervisors-director
   canBeAntag: true
   radioBold: true

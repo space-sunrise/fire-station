@@ -4,7 +4,7 @@
   description: job-description-junior-external-administrative-zone-officer
   playTimeTracker: JobJuniorHeavyContainmentZoneOfficer
   startingGear: JuniorHeavyContainmentZoneOfficerGear
-  icon: "JobIconSecurityCadet"
+  icon: JobJuniorHeavyContainmentZoneOfficer
   supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false
   displayWeight: 0

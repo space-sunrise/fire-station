@@ -5,7 +5,7 @@
   playTimeTracker: JobDirector
   weight: 5
   startingGear: DirectorGear
-  icon: "JobIconCaptain"
+  icon: JobDirector
   joinNotifyCrew: true
   supervisors: job-supervisors-regional-administration
   canBeAntag: false

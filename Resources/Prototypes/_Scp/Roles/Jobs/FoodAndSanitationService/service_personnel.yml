@@ -4,7 +4,7 @@
   description: job-description-service-personnel
   playTimeTracker: JobServicePersonnel
   startingGear: ServicePersonnelGear
-  icon: "JobIconJanitor"
+  icon: JobServicePersonnel
   supervisors: job-supervisors-personnel-officer
   access:
   - Service

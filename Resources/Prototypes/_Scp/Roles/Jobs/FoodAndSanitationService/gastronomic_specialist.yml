@@ -4,7 +4,7 @@
   description: job-description-gastronomic-specialist
   playTimeTracker: JobGastronomicSpecialist
   startingGear: GastronomicSpecialistGear
-  icon: "JobIconChef"
+  icon: JobGastronomicSpecialist
   supervisors: job-supervisors-personnel-officer
   access:
   - Service

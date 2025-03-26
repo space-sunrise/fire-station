@@ -5,7 +5,7 @@
   playTimeTracker: JobEthicsCommitteeRepresentative
   weight: 10
   startingGear: EthicsCommitteeRepresentativeGear
-  icon: "JobIconResearchDirector" # TODO: Сделать
+  icon: JobEthicsCommitteeRepresentative
   supervisors: job-supervisors-director
   canBeAntag: true
   radioBold: true

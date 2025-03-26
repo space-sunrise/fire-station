@@ -4,7 +4,7 @@
   description: job-description-lead-technical-specialist
   playTimeTracker: JobLeadTechnicalSpecialist
   startingGear: LeadTechnicalSpecialistGear
-  icon: "JobIconSeniorEngineer"
+  icon: JobLeadTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
   displayWeight: 30
   access:

@@ -4,7 +4,7 @@
   description: job-description-junior-researcher
   playTimeTracker: JobJuniorResearcher
   startingGear: JuniorResearcherGear
-  icon: "JobIconResearchAssistant"
+  icon: JobJuniorResearcher
   supervisors: job-supervisors-lead-researcher
   canBeAntag: true
   displayWeight: 0

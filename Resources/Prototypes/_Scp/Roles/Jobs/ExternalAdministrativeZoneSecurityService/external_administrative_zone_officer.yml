@@ -4,7 +4,7 @@
   description: job-description-external-administrative-zone-officer
   playTimeTracker: JobExternalAdministrativeZoneOfficer
   startingGear: ExternalAdministrativeZoneOfficerGear
-  icon: "JobIconSecurityOfficer"
+  icon: JobExternalAdministrativeZoneOfficer
   supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false
   displayWeight: 10

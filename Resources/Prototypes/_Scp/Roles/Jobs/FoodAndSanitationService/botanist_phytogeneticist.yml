@@ -4,8 +4,8 @@
   description: job-description-botanist-phytogeneticist
   playTimeTracker: JobBotanistPhytogeneticist
   startingGear: BotanistPhytogeneticistGear
-  icon: "JobIconBotanist"
-  supervisors: job-supervisors-personnel-officeer
+  icon: JobBotanistPhytogeneticist
+  supervisors: job-supervisors-personnel-officer
   access:
   - Service
   - Maintenance

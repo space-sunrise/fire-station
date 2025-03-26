@@ -4,7 +4,7 @@
   description: job-description-robotics-specialist
   playTimeTracker: JobProductionSpecialist
   startingGear: ProductionSpecialistGear
-  icon: "JobIconScientist"
+  icon: JobProductionSpecialist
   supervisors: job-supervisors-lead-researcher
   displayWeight: 10
   access:

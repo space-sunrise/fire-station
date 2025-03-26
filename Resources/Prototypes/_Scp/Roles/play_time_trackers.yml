@@ -26,7 +26,7 @@
 - type: playTimeTracker
   id: JobEthicsCommitteeRepresentative
 
-# Закон
+# Департамент внутренней безопасности
 
 - type: playTimeTracker
   id: JobMentalControlOfficer
@@ -34,6 +34,7 @@
 - type: playTimeTracker
   id: JobInternalSecurityOperative
 
+# Департамент внутреннего трибунала
 
 - type: playTimeTracker
   id: JudicialInspector
@@ -41,7 +42,7 @@
 - type: playTimeTracker
   id: JobTribunalOfficer
 
-# Служба безопасности/охрана
+# Служба безопасности тяжелой зоны
 
 - type: playTimeTracker
   id: JobHeavyContainmentZoneCommandant
@@ -53,8 +54,12 @@
   id: JobHeavyContainmentZoneOfficer
 
 - type: playTimeTracker
+  id: JobJuniorHeavyContainmentZoneOfficer
+
+- type: playTimeTracker
   id: JobFieldMedicalSpecialist
 
+# Служба безопасности внешней административной зоны
 
 - type: playTimeTracker
   id: JobExternalAdministrativeZoneCommandant
@@ -105,6 +110,9 @@
 # Инженерный отдел
 
 - type: playTimeTracker
+  id: JobLeadTechnicalSpecialist
+
+- type: playTimeTracker
   id: JobGeneralTechnicalSpecialist
 
 - type: playTimeTracker
@@ -118,7 +126,7 @@
 - type: playTimeTracker
   id: JobLogisticsOfficer
 
-# Обслуга/сервис
+# Департамент продовольственного и санитарного обслуживания
 
 - type: playTimeTracker
   id: JobGastronomicSpecialist

@@ -4,7 +4,7 @@
   description: job-description-junior-external-administrative-zone-officer
   playTimeTracker: JobJuniorExternalAdministrativeZoneOfficer
   startingGear: JuniorExternalAdministrativeZoneOfficerGear
-  icon: "JobIconSecurityCadet"
+  icon: JobJuniorExternalAdministrativeZoneOfficer
   supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false
   displayWeight: 0

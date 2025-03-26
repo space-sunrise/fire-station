@@ -5,7 +5,7 @@
   playTimeTracker: JobChiefTechnicalSpecialist
   weight: 10
   startingGear: ChiefTechnicalSpecialistGear
-  icon: "JobIconChiefEngineer"
+  icon: JobChiefTechnicalSpecialist
   supervisors: job-supervisors-director
   radioBold: true
   displayWeight: 70

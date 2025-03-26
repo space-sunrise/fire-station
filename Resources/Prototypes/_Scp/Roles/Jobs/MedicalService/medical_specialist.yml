@@ -4,7 +4,7 @@
   description: job-description-medical-specialist
   playTimeTracker: JobMedicalSpecialist
   startingGear: MedicalSpecialistGear
-  icon: "JobIconMedicalDoctor"
+  icon: JobMedicalSpecialist
   supervisors: job-supervisors-health-response-coordinator
   displayWeight: 20
   access:

@@ -4,7 +4,7 @@
   description: job-description-hospital-intern
   playTimeTracker: JobHospitalIntern
   startingGear: HospitalInternGear
-  icon: "JobIconMedicalIntern"
+  icon: JobHospitalIntern
   supervisors: job-supervisors-senior-medical-specialist
   canBeAntag: true
   displayWeight: 0

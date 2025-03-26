@@ -4,7 +4,7 @@
   description: job-description-general-technical-specialist
   playTimeTracker: JobGeneralTechnicalSpecialist
   startingGear: GeneralTechnicalSpecialistGear
-  icon: "JobIconStationEngineer"
+  icon: JobGeneralTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
   displayWeight: 10
   access:

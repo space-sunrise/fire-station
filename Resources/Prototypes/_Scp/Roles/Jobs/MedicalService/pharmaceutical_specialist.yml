@@ -4,7 +4,7 @@
   description: job-description-pharmaceutical-specialist
   playTimeTracker: JobPharmaceuticalSpecialist
   startingGear: PharmaceuticalSpecialistGear
-  icon: "JobIconChemist"
+  icon: JobPharmaceuticalSpecialist
   supervisors: job-supervisors-health-response-coordinator
   displayWeight: 30
   access:

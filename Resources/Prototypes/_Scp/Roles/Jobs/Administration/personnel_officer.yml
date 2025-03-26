@@ -5,7 +5,7 @@
   playTimeTracker: JobPersonnelOfficer
   weight: 20
   startingGear: PersonnelOfficerGear
-  icon: "JobIconHeadOfPersonnel"
+  icon: JobPersonnelOfficer
   supervisors: job-supervisors-director
   canBeAntag: false
   radioBold: true

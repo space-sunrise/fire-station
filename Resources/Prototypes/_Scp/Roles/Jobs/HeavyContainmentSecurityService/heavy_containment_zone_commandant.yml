@@ -4,7 +4,7 @@
   description: job-description-heavy-containment-zone-commandant
   playTimeTracker: JobHeavyContainmentZoneCommandant
   startingGear: HeavyContainmentZoneCommandantGear
-  icon: "JobIconWarden"
+  icon: JobHeavyContainmentZoneCommandant
   supervisors: job-supervisors-security-commander
   canBeAntag: false
   displayWeight: 70  # Sunrise

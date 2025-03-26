@@ -4,7 +4,7 @@
   description: job-description-senior-medical-specialist
   playTimeTracker: JobSeniorMedicalSpecialist
   startingGear: SeniorMedicalSpecialistGear
-  icon: "JobIconSeniorPhysician"
+  icon: JobSeniorMedicalSpecialist
   supervisors: job-supervisors-health-response-coordinator
   displayWeight: 35
   access:

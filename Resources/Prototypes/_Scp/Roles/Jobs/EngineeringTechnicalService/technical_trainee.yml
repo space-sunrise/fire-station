@@ -4,7 +4,7 @@
   description: job-description-technical-trainee
   playTimeTracker: JobTechnicalTrainee
   startingGear: TechnicalTraineeGear
-  icon: "JobIconTechnicalAssistant"
+  icon: JobTechnicalTrainee
   supervisors: job-supervisors-chief-technical-specialist
   canBeAntag: true
   displayWeight: 0

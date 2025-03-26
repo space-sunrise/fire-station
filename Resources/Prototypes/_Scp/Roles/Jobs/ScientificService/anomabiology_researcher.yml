@@ -4,7 +4,7 @@
   description: job-description-anomabiology-researcher
   playTimeTracker: JobAnomabiologyResearcher
   startingGear: AnomabiologyResearcherGear
-  icon: "JobIconScientist"
+  icon: JobAnomabiologyResearcher
   supervisors: job-supervisors-lead-researcher
   displayWeight: 10
   access:

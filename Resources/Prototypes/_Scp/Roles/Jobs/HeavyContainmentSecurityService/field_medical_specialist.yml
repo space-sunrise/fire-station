@@ -4,7 +4,7 @@
   description: job-description-field-medical-specialist
   playTimeTracker: JobFieldMedicalSpecialist
   startingGear: FieldMedicalSpecialistGear
-  icon: "JobIconBrigmedic"
+  icon: JobFieldMedicalSpecialist
   supervisors: job-supervisors-heavy-containment-security-supervisor
   canBeAntag: false
   displayWeight: 15

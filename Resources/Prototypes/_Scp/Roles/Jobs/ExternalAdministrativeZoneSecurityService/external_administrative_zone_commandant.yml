@@ -4,7 +4,7 @@
   description: job-description-external-administrative-zone-commandant
   playTimeTracker: JobExternalAdministrativeZoneCommandant
   startingGear: ExternalAdministrativeZoneCommandantGear
-  icon: "JobIconWarden"
+  icon: JobExternalAdministrativeZoneCommandant
   supervisors: job-supervisors-security-commander
   canBeAntag: false
   displayWeight: 70

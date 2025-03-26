@@ -4,7 +4,7 @@
   description: job-description-judicial-inspector
   playTimeTracker: JobJudicialInspector
   startingGear: JudicialInspectorGear
-  icon: "JobIconMagistrat"
+  icon: JobJudicialInspector
   supervisors: job-supervisors-regional-administration
   canBeAntag: false
   radioBold: true

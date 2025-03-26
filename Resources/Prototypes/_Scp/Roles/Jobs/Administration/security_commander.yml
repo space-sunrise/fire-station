@@ -5,7 +5,7 @@
   playTimeTracker: JobSecurityCommander
   weight: 10
   startingGear: SecurityCommanderGear
-  icon: "JobIconHeadOfSecurity"
+  icon: JobSecurityCommander
   supervisors: job-supervisors-director
   canBeAntag: false
   radioBold: true # Sunrise-Edit

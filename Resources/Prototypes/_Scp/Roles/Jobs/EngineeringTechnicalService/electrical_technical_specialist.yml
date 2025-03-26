@@ -4,7 +4,7 @@
   description: job-description-electrical-technical-specialist
   playTimeTracker: JobElectricalTechnicalSpecialist
   startingGear: ElectricalTechnicalSpecialistGear
-  icon: "JobIconStationEngineer"
+  icon: JobElectricalTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
   displayWeight: 10
   access:
