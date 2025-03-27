@@ -1,9 +1,783 @@
+# Руководство
+
 - type: roleLoadout
-  id: JobClassD
+  id: JobDirector
   groups:
+  - CaptainHead
+  - CaptainNeck
+  - CaptainJumpsuit
+  - CaptainBackpack
+  - CaptainOuterClothing
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobScientificServiceDirector
+  groups:
+  - GroupTankHarness
+  - ResearchDirectorNeck
+  - ResearchDirectorJumpsuit
+  - ScientistBackpack
+  - ResearchDirectorOuterClothing
+  - ScientistGloves
+  - ResearchDirectorShoes
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobSecurityCommander
+  groups:
+  - HeadofSecurityHead
+  - HeadofSecurityNeck
+  - HeadofSecurityJumpsuit
+  - SecurityBackpack
+  - SecurityBelt
+  - HeadofSecurityOuterClothing
+  - SecurityShoes
+  - SurvivalSecurity
+  - Trinkets
+  - SecurityStar
+  - GroupSpeciesBreathToolSecurity
+  - SecurityTrinkets
+  - SunriseSecurityGun
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobChiefTechnicalSpecialist
+  groups:
+  - GroupTankHarness
+  - ChiefEngineerHead
+  - SunriseCEMask
+  - ChiefEngineerJumpsuit
+  - SunriseCEGloves
+  - ChiefEngineerBackpack
+  - ChiefEngineerOuterClothing
+  - ChiefEngineerNeck
+  - ChiefEngineerShoes
+  - SurvivalExtended
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - TrinketsEngineering
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobPersonnelOfficer
+  groups:
+  - GroupTankHarness
+  - HoPHead
+  - HoPNeck
+  - HoPJumpsuit
+  - HoPBackpack
+  - HoPOuterClothing
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobHeadOfMedicalSector
+  groups:
+  - GroupTankHarness
+  - ChiefMedicalOfficerHead
+  - SunriseChiefMedicalOfficerMask
+  - ChiefMedicalOfficerJumpsuit
+  - SunriseChiefMedicalOfficerGloves
+  - MedicalBackpack
+  - ChiefMedicalOfficerOuterClothing
+  - ChiefMedicalOfficerNeck
+  - ChiefMedicalOfficerShoes
+  - Glasses
+  - SurvivalMedical
+  - Trinkets
+  - GroupSpeciesBreathToolMedical
+  - MedicalTrinkets
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobSeniorLogisticsOfficer
+  groups:
+  - GroupTankHarness
+  - QuartermasterHead
+  - SunriseQuartermasterMask
+  - QuartermasterJumpsuit
+  - SunriseQuartermasterGloves
+  - CargoTechnicianBackpack
+  - QuartermasterOuterClothing
+  - QuartermasterNeck
+  - QuartermasterShoes
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - TrinketsCargo
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+# Департамент внутренней безопасности
+
+- type: roleLoadout
+  id: JobMentalControlOfficer
+  groups:
+  - BackNTR
+  - UniformNTR
+  - Trinkets
+  - SecurityTrinkets
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+
+- type: roleLoadout
+  id: JobInternalSecurityOperative
+  groups:
+  - BlueShieldJumpsuit
+  - BlueShieldBackpack
+  - Trinkets
+  - Survival
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+
+# Комитет по этике
+
+- type: roleLoadout
+  id: JobEthicsCommitteeRepresentative
+  groups:
+  - LawyerNeck
+  - LawyerJumpsuit
+  - CommonBackpack
+  - Trinkets
+  - Survival
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+
+# Департамент внутреннего трибунала
+
+- type: roleLoadout
+  id: JobJudicialInspector
+  groups:
+  - CommonBackpack
+  - Trinkets
+  - Survival
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+
+- type: roleLoadout
+  id: JobTribunalOfficer
+  groups:
+  - LawyerNeck
+  - LawyerJumpsuit
+  - CommonBackpack
+  - Trinkets
+  - Survival
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+
+# Служба безопасности тяжелой зоны
+
+- type: roleLoadout
+  id: JobHeavyContainmentZoneCommandant
+  groups:
+  - WardenHead
+  - WardenJumpsuit
+  - SecurityBackpack
+  - SecurityBelt
+  - WardenOuterClothing
+  - SecurityShoes
+  - SurvivalSecurity
+  - Trinkets
+  - SecurityStar
+  - GroupSpeciesBreathToolSecurity
+  - SecurityTrinkets
+  - SunriseSecurityGun
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobSeniorHeavyContainmentZoneOfficer
+  groups:
+  - SeniorOfficerJumpsuit
+  - SecurityBackpack
+  - SecurityBelt
+  - SecurityOuterClothing
+  - SecurityShoes
+  - SurvivalSecurity
+  - Trinkets
+  - SecurityTrinkets
+  - GroupSpeciesBreathTool
+  - SunriseSecurityGun
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+
+- type: roleLoadout
+  id: JobHeavyContainmentZoneOfficer
+  groups:
+  - SecurityBackpack
+  - SecurityBelt
+  - SurvivalSecurity
+  - Trinkets
+  - SecurityStar
+  - GroupSpeciesBreathToolSecurity
+  - SecurityTrinkets
+  - SunriseSecurityGun
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - GuardHead
+  - GuardGloves
+  - GuardJumpsuit
+  - GuardArmorVest
+  - GuardShoes
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobJuniorHeavyContainmentZoneOfficer
+  groups:
+  - SecurityBackpack
+  - SurvivalSecurity
+  - Trinkets
+  - GroupSpeciesBreathToolSecurity
+  - SecurityTrinkets
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - GuardHead
+  - GuardGloves
+  - GuardJumpsuit
+  - GuardArmorVest
+  - GuardShoes
+  - GuardCadetHead
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobFieldMedicalSpecialist
+  groups:
+  - BrigmedicJumpsuit
+  - BrigmedicBackpack
+  - SurvivalSecurity
+  - Trinkets
+  - SecurityTrinkets
+  - GroupSpeciesBreathTool
+  - SunriseSecurityGun
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+
+# Служба безопасности внешней административной зоны
+
+- type: roleLoadout
+  id: JobExternalAdministrativeZoneCommandant
+  groups:
+  - WardenHead
+  - WardenJumpsuit
+  - SecurityBackpack
+  - SecurityBelt
+  - WardenOuterClothing
+  - SecurityShoes
+  - SurvivalSecurity
+  - Trinkets
+  - SecurityStar
+  - GroupSpeciesBreathToolSecurity
+  - SecurityTrinkets
+  - SunriseSecurityGun
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobSeniorExternalAdministrativeZoneOfficer
+  groups:
+  - SeniorOfficerJumpsuit
+  - SecurityBackpack
+  - SecurityBelt
+  - SecurityOuterClothing
+  - SecurityShoes
+  - SurvivalSecurity
+  - Trinkets
+  - SecurityTrinkets
+  - GroupSpeciesBreathTool
+  - SunriseSecurityGun
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+
+- type: roleLoadout
+  id: JobExternalAdministrativeZoneOfficer
+  groups:
+  - SecurityBackpack
+  - SecurityBelt
+  - SurvivalSecurity
+  - Trinkets
+  - SecurityStar
+  - GroupSpeciesBreathToolSecurity
+  - SecurityTrinkets
+  - SunriseSecurityGun
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - GuardHead
+  - GuardGloves
+  - GuardJumpsuit
+  - GuardArmorVest
+  - GuardShoes
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobJuniorExternalAdministrativeZoneOfficer
+  groups:
+  - SecurityBackpack
+  - SurvivalSecurity
+  - Trinkets
+  - GroupSpeciesBreathToolSecurity
+  - SecurityTrinkets
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - GuardHead
+  - GuardGloves
+  - GuardJumpsuit
+  - GuardArmorVest
+  - GuardShoes
+  - GuardCadetHead
+  - CommonMiscItems
+
+# Научный отдел
+
+- type: roleLoadout
+  id: JobLeadResearcher
+  groups:
+  - SeniorResearcherJumpsuit
+  - ScientistBackpack
+  - ScientistGloves
+  - ScientistShoes
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+
+- type: roleLoadout
+  id: JobAnomabiologyResearcher
+  groups:
+  - GroupTankHarness
+  - ScientistNeck
+  - ScientistJumpsuit
+  - ScientistBackpack
+  - ScientistOuterClothing
+  - ScientistGloves
+  - ScientistShoes
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobAnomarchologyResearcher
+  groups:
+  - GroupTankHarness
+  - ScientistNeck
+  - ScientistJumpsuit
+  - ScientistBackpack
+  - ScientistOuterClothing
+  - ScientistGloves
+  - ScientistShoes
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobProductionSpecialist
+  groups:
+  - RoboticistHead
+  - ScientistNeck
+  - RoboticistJumpsuit
+  - RoboticistOuterClothing
+  - ScientistBackpack
+  - ScientistShoes
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+
+- type: roleLoadout
+  id: JobJuniorResearcher
+  groups:
+  - GroupTankHarness
+  - ResearchAssistantJumpsuit
+  - ScientistBackpack
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+# Медицинский отдел
+
+- type: roleLoadout
+  id: JobSeniorMedicalSpecialist
+  groups:
+  - SeniorPhysicianHead
+  - SeniorPhysicianMask
+  - SeniorPhysicianJumpsuit
+  - SeniorPhysicianGloves
+  - MedicalBackpack
+  - SeniorPhysicianOuterClothing
+  - SeniorPhysicianNeck
+  - SeniorPhysicianBelt
+  - SeniorPhysicianShoes
+  - SurvivalMedical
+  - Trinkets
+  - MedicalTrinkets
+  - Glasses
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+
+- type: roleLoadout
+  id: JobPharmaceuticalSpecialist
+  groups:
+  - GroupTankHarness
+  - SunriseChemistHead
+  - SunriseChemistMask
+  - ChemistJumpsuit
+  - SunriseChemistGloves
+  - ChemistBackpack
+  - ChemistOuterClothing
+  - SunriseChemistNeck
+  - SunriseChemistShoes
+  - SurvivalMedical
+  - Trinkets
+  - GroupSpeciesBreathToolMedical
+  - MedicalTrinkets
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobMedicalSpecialist
+  groups:
+  - GroupTankHarness
+  - MedicalDoctorHead
+  - MedicalMask
+  - MedicalDoctorJumpsuit
+  - MedicalGloves
+  - MedicalBackpack
+  - MedicalDoctorOuterClothing
+  - SunriseMedicalDoctorNeck
+  - MedicalShoes
+  - Glasses
+  - SurvivalMedical
+  - Trinkets
+  - GroupSpeciesBreathToolMedical
+  - MedicalTrinkets
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobPsychotherapist
+  groups:
+  - SunrisePsychologistHead
+  - SunrisePsychologistMask
+  - SunrisePsychologistGloves
+  - GroupTankHarness
+  - PsychologistJumpsuit
+  - CommonBackpack
+  - MedicalBackpack
+  - SunrisePsychologistOuterClothing
+  - SunrisePsychologistNeck
+  - SunrisePsychologistShoes
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - MedicalTrinkets
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobHospitalIntern
+  groups:
+  - GroupTankHarness
+  - MedicalDoctorHead
+  - MedicalMask
+  - MedicalInternJumpsuit
+  - MedicalGloves
+  - MedicalBackpack
+  - MedicalDoctorOuterClothing
+  - SunriseMedicalDoctorNeck
+  - MedicalShoes
+  - Glasses
+  - SurvivalMedical
+  - Trinkets
+  - GroupSpeciesBreathToolMedical
+  - MedicalTrinkets
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+# Инженерный отдел
+
+- type: roleLoadout
+  id: JobLeadTechnicalSpecialist
+  groups:
+  - SeniorEngineerHead
+  - SeniorEngineerMask
+  - SeniorEngineerJumpsuit
+  - SeniorEngineerGloves
+  - StationSeniorEngineerBackpack
+  - SeniorEngineerOuterClothing
+  - SeniorEngineerNeck
+  - SeniorEngineerShoes
+  - SurvivalExtended
+  - Trinkets
+  - TrinketsEngineering
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+
+- type: roleLoadout
+  id: JobGeneralTechnicalSpecialist
+  groups:
+  - GroupTankHarness
+  - StationEngineerHead
+  - StationSunriseEngineerMask
+  - StationEngineerJumpsuit
+  - StationSunriseEngineerGloves
+  - StationEngineerBackpack
+  - StationEngineerOuterClothing
+  - StationSunriseEngineerNeck
+  - StationEngineerShoes
+  - SurvivalExtended
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - TrinketsEngineering
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobElectricalTechnicalSpecialist
+  groups:
+  - GroupTankHarness
+  - StationEngineerHead
+  - StationSunriseEngineerMask
+  - StationEngineerJumpsuit
+  - StationSunriseEngineerGloves
+  - StationEngineerBackpack
+  - StationEngineerOuterClothing
+  - StationSunriseEngineerNeck
+  - StationEngineerShoes
+  - SurvivalExtended
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - TrinketsEngineering
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobTechnicalTrainee
+  groups:
+  - GroupTankHarness
+  - StationEngineerHead
+  - StationSunriseEngineerMask
+  - TechnicalAssistantJumpsuit
+  - StationSunriseEngineerGloves
+  - StationEngineerBackpack
+  - StationEngineerOuterClothing
+  - StationSunriseEngineerNeck
+  - StationEngineerShoes
+  - SurvivalExtended
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - TrinketsEngineering
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+# Отдел логистики
+
+- type: roleLoadout
+  id: JobLogisticsOfficer
+  groups:
+  - GroupTankHarness
+  - CargoTechnicianHead
+  - SunriseCargoTechMask
+  - CargoTechnicianJumpsuit
+  - SunriseCargoTechGloves
+  - CargoTechnicianBackpack
+  - CargoTechnicianOuterClothing
+  - SunriseCargoTechNeck
+  - CargoTechnicianShoes
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - TrinketsCargo
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+# Департамент продовольственного и санитарного обслуживания
+
+- type: roleLoadout
+  id: JobGastronomicSpecialist
+  groups:
+  - GroupTankHarness
+  - ChefHead
+  - ChefMask
+  - ChefJumpsuit
+  - CommonBackpack
+  - ChefOuterClothing
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobBotanistPhytogeneticist
+  groups:
+  - GroupTankHarness
+  - BotanistHead
+  - BotanistJumpsuit
+  - BotanistBackpack
+  - BotanistOuterClothing
+  - Glasses
+  - Survival
+  - Trinkets
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+- type: roleLoadout
+  id: JobServicePersonnel
+  groups:
+  - GroupTankHarness
+  - JanitorHead
+  - JanitorJumpsuit
+  - JanitorGloves
+  - CommonBackpack
+  - JanitorOuterClothing
+  - Glasses
+  - Survival
+  - Trinkets
+  - JanitorPlunger
+  - GroupSpeciesBreathTool
+  - Bra
+  - Pants
+  - Socks
+  - CommonPets
+  - CommonMiscItems
+
+# Класс Д
 
 - type: roleLoadout
   id: JobClassDCook
@@ -21,6 +795,13 @@
 
 - type: roleLoadout
   id: JobClassDJanitor
+  groups:
+  - Bra
+  - Pants
+  - Socks
+
+- type: roleLoadout
+  id: JobClassD
   groups:
   - Bra
   - Pants
