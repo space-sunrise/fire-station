@@ -3,11 +3,17 @@
 - type: roleLoadout
   id: JobDirector
   groups:
-  - CaptainHead
-  - CaptainNeck
-  - CaptainJumpsuit
-  - CaptainBackpack
-  - CaptainOuterClothing
+  - DirectorHead
+  - CommonAdministrationGlasses
+  - DirectorNeck
+  - DirectorJumpsuit
+  - DirectorOuterClothing
+  - DirectorGloves
+  - DirectorShoes
+  - DirectorPDA
+  - DirectorBack
+  - DirectorStorage
+  - CommonAdministrationGlasses
   - Survival
   - Trinkets
   - GroupSpeciesBreathTool

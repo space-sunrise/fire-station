@@ -1,0 +1,12 @@
+﻿# В сумке
+- type: loadout
+  id: FlashStorage
+  storage:
+    back:
+    - Flash
+
+- type: loadout
+  id: TelebatonStorage
+  storage:
+    back:
+    - Telebaton

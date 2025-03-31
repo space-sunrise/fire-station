@@ -7,7 +7,6 @@
   - !type:OverallPlaytimeRequirement
     time: 180000 # 50 часов
   weight: 5
-  startingGear: DirectorGear
   icon: JobDirector
   joinNotifyCrew: true
   supervisors: job-supervisors-regional-administration
@@ -26,10 +25,15 @@
 - type: startingGear
   id: DirectorGear
   equipment:
+    head: ClothingHeadHatDirector
+    eyes: Sunglasses
+    neck: ClothingNeckTieDet
+    jumpsuit: ClothingUniformJumpsuitDirector
+    outerClothing: ClothingOuterCoatDirectorTrench
+    gloves: ClothingHandsGlovesDirectorSpecial
     shoes: ClothingShoesBootsLaceup
-    eyes: ClothingEyesGlassesSunglasses
-    gloves: ClothingHandsGlovesCaptain
-    id: CaptainPDA
+    back: ClothingBackpackSatchelLeatherDirectorFilled
+    id: DirectorPDA
     ears: ClothingHeadsetAltCommand
   storage:
     back:

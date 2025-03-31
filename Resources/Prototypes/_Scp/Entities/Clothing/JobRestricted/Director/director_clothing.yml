@@ -1,0 +1,72 @@
+﻿# TODO: Перенос русского в локализацию
+
+# Голова
+- type: entity
+  parent: ClothingHeadHatIAA
+  id: ClothingHeadHatDirector
+  name: шляпа директора комплекса
+  description: Шляпа в чёрно-белом стиле. Сделана светом для тьмы.
+
+- type: entity
+  parent: ClothingHeadHatCapcap
+  id: ClothingHeadHatCapDirector
+  name: фуражка директора
+  description: Большая, стильная фуражка директора.
+
+# Униформа
+- type: entity
+  parent: ClothingUniformJumpsuitNtrep
+  id: ClothingUniformJumpsuitDirector
+  name: костюм директора
+  description: Костюм для особых случаев.
+
+- type: entity
+  parent: ClothingUniformJumpsuitCapFormal
+  id: ClothingUniformJumpsuitBlueDirectorFormal
+  name: торжественный синий костюм директора
+
+# Верхняя одежда
+- type: entity
+  parent: ClothingOuterCoatHoSTrench
+  id: ClothingOuterCoatDirectorTrench
+  name: тренч директора
+  description: Плащ из специального сплава, обеспечивающий дополнительную защиту и стиль для людей, обладающих властью.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.6
+        Heat: 0.5
+        Caustic: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: HeldSpeedModifier
+  - type: ExplosionResistance
+    damageCoefficient: 0.65
+  - type: GroupExamine
+
+# Перчатки
+- type: entity
+  parent: ClothingHandsGlovesHop
+  id: ClothingHandsGlovesDirectorSpecial
+  name: перчатки директора от порезов
+  description: Идеально подходят для работы с бумагами и решения бюрократических вопросов.
+
+- type: entity
+  parent: ClothingHandsGlovesCaptain
+  id: ClothingHandsGlovesDirector
+  name: перчатки директора
+
+# Сумка
+- type: entity
+  parent: ClothingBackpackSatchelLeather
+  id: ClothingBackpackSatchelLeatherDirectorFilled
+  name: кожанная сумка директора
+  description: Это особая сумка, изготовленная исключительно для стильных директоров комплексов SCP.
+  components:
+  - type: StorageFill
+    contents:
+    - id: RubberStampDirector
