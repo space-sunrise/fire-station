@@ -67,8 +67,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterNtYours
-  name: НТ твое!
-  description: Плакат, призывающий вступить в Nanotrasen
+  name: SCP твое!
+  description: Плакат, призывающий вступить в SCP Foundation
   components:
   - type: Sprite
     state: nt
@@ -108,6 +108,17 @@
   components:
   - type: Sprite
     state: scp217
+
+- type: entity
+  parent: PosterScpBase
+  id: PosterLooseLipsLoseScips
+  name: болтливые губки разбалтывают секреты
+  description: Храни информацию. Ты никогда не знаешь кто подслушивает. Плакат, призывающий персонал фонда не болтать лишнюю информацию и следить за тем, что вы говорите.
+  components:
+  - type: Sprite
+    state: loose_lips_lose_scips
+
+# Контрабанда
 
 - type: entity
   parent: PosterScpBase
