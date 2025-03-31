@@ -14,14 +14,10 @@
   - DirectorBack
   - DirectorStorage
   - CommonAdministrationGlasses
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobScientificServiceDirector
@@ -34,14 +30,10 @@
   - ScientistGloves
   - ResearchDirectorShoes
   - Glasses
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobSecurityCommander
@@ -54,7 +46,6 @@
   - HeadofSecurityOuterClothing
   - SecurityShoes
   - SurvivalSecurity
-  - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets
@@ -62,8 +53,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobChiefTechnicalSpecialist
@@ -78,14 +67,11 @@
   - ChiefEngineerNeck
   - ChiefEngineerShoes
   - SurvivalExtended
-  - Trinkets
   - GroupSpeciesBreathTool
   - TrinketsEngineering
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobPersonnelOfficer
@@ -97,14 +83,10 @@
   - HoPBackpack
   - HoPOuterClothing
   - Glasses
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobHeadOfMedicalSector
@@ -120,14 +102,11 @@
   - ChiefMedicalOfficerShoes
   - Glasses
   - SurvivalMedical
-  - Trinkets
   - GroupSpeciesBreathToolMedical
   - MedicalTrinkets
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobSeniorLogisticsOfficer
@@ -142,15 +121,11 @@
   - QuartermasterNeck
   - QuartermasterShoes
   - Glasses
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - TrinketsCargo
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 # Департамент внутренней безопасности
 
@@ -159,26 +134,21 @@
   groups:
   - BackNTR
   - UniformNTR
-  - Trinkets
   - SecurityTrinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
 
 - type: roleLoadout
   id: JobInternalSecurityOperative
   groups:
   - BlueShieldJumpsuit
   - BlueShieldBackpack
-  - Trinkets
-  - Survival
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
 
 # Комитет по этике
 
@@ -188,13 +158,10 @@
   - LawyerNeck
   - LawyerJumpsuit
   - CommonBackpack
-  - Trinkets
-  - Survival
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
 
 # Департамент внутреннего трибунала
 
@@ -202,13 +169,10 @@
   id: JobJudicialInspector
   groups:
   - CommonBackpack
-  - Trinkets
-  - Survival
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
 
 - type: roleLoadout
   id: JobTribunalOfficer
@@ -216,13 +180,10 @@
   - LawyerNeck
   - LawyerJumpsuit
   - CommonBackpack
-  - Trinkets
-  - Survival
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
 
 # Служба безопасности тяжелой зоны
 
@@ -236,7 +197,6 @@
   - WardenOuterClothing
   - SecurityShoes
   - SurvivalSecurity
-  - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets
@@ -244,8 +204,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobSeniorHeavyContainmentZoneOfficer
@@ -256,14 +214,12 @@
   - SecurityOuterClothing
   - SecurityShoes
   - SurvivalSecurity
-  - Trinkets
   - SecurityTrinkets
   - GroupSpeciesBreathTool
   - SunriseSecurityGun
   - Bra
   - Pants
   - Socks
-  - CommonPets
 
 - type: roleLoadout
   id: JobHeavyContainmentZoneOfficer
@@ -271,7 +227,6 @@
   - SecurityBackpack
   - SecurityBelt
   - SurvivalSecurity
-  - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets
@@ -285,14 +240,12 @@
   - GuardJumpsuit
   - GuardArmorVest
   - GuardShoes
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobJuniorHeavyContainmentZoneOfficer
   groups:
   - SecurityBackpack
   - SurvivalSecurity
-  - Trinkets
   - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets
   - Bra
@@ -305,7 +258,6 @@
   - GuardArmorVest
   - GuardShoes
   - GuardCadetHead
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobFieldMedicalSpecialist
@@ -313,14 +265,12 @@
   - BrigmedicJumpsuit
   - BrigmedicBackpack
   - SurvivalSecurity
-  - Trinkets
   - SecurityTrinkets
   - GroupSpeciesBreathTool
   - SunriseSecurityGun
   - Bra
   - Pants
   - Socks
-  - CommonPets
 
 # Служба безопасности внешней административной зоны
 
@@ -334,7 +284,6 @@
   - WardenOuterClothing
   - SecurityShoes
   - SurvivalSecurity
-  - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets
@@ -342,8 +291,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobSeniorExternalAdministrativeZoneOfficer
@@ -354,14 +301,12 @@
   - SecurityOuterClothing
   - SecurityShoes
   - SurvivalSecurity
-  - Trinkets
   - SecurityTrinkets
   - GroupSpeciesBreathTool
   - SunriseSecurityGun
   - Bra
   - Pants
   - Socks
-  - CommonPets
 
 - type: roleLoadout
   id: JobExternalAdministrativeZoneOfficer
@@ -369,7 +314,6 @@
   - SecurityBackpack
   - SecurityBelt
   - SurvivalSecurity
-  - Trinkets
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets
@@ -383,14 +327,12 @@
   - GuardJumpsuit
   - GuardArmorVest
   - GuardShoes
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobJuniorExternalAdministrativeZoneOfficer
   groups:
   - SecurityBackpack
   - SurvivalSecurity
-  - Trinkets
   - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets
   - Bra
@@ -403,7 +345,6 @@
   - GuardArmorVest
   - GuardShoes
   - GuardCadetHead
-  - CommonMiscItems
 
 # Научный отдел
 
@@ -415,13 +356,10 @@
   - ScientistGloves
   - ScientistShoes
   - Glasses
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
 
 - type: roleLoadout
   id: JobAnomabiologyResearcher
@@ -434,14 +372,10 @@
   - ScientistGloves
   - ScientistShoes
   - Glasses
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobAnomarchologyResearcher
@@ -454,14 +388,10 @@
   - ScientistGloves
   - ScientistShoes
   - Glasses
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobProductionSpecialist
@@ -472,13 +402,10 @@
   - RoboticistOuterClothing
   - ScientistBackpack
   - ScientistShoes
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
 
 - type: roleLoadout
   id: JobJuniorResearcher
@@ -487,14 +414,10 @@
   - ResearchAssistantJumpsuit
   - ScientistBackpack
   - Glasses
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 # Медицинский отдел
 
@@ -511,7 +434,6 @@
   - SeniorPhysicianBelt
   - SeniorPhysicianShoes
   - SurvivalMedical
-  - Trinkets
   - MedicalTrinkets
   - Glasses
   - GroupSpeciesBreathTool
@@ -532,14 +454,11 @@
   - SunriseChemistNeck
   - SunriseChemistShoes
   - SurvivalMedical
-  - Trinkets
   - GroupSpeciesBreathToolMedical
   - MedicalTrinkets
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobMedicalSpecialist
@@ -555,14 +474,11 @@
   - MedicalShoes
   - Glasses
   - SurvivalMedical
-  - Trinkets
   - GroupSpeciesBreathToolMedical
   - MedicalTrinkets
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobPsychotherapist
@@ -578,15 +494,11 @@
   - SunrisePsychologistNeck
   - SunrisePsychologistShoes
   - Glasses
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - MedicalTrinkets
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobHospitalIntern
@@ -602,14 +514,11 @@
   - MedicalShoes
   - Glasses
   - SurvivalMedical
-  - Trinkets
   - GroupSpeciesBreathToolMedical
   - MedicalTrinkets
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 # Инженерный отдел
 
@@ -625,13 +534,11 @@
   - SeniorEngineerNeck
   - SeniorEngineerShoes
   - SurvivalExtended
-  - Trinkets
   - TrinketsEngineering
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
 
 - type: roleLoadout
   id: JobGeneralTechnicalSpecialist
@@ -646,14 +553,11 @@
   - StationSunriseEngineerNeck
   - StationEngineerShoes
   - SurvivalExtended
-  - Trinkets
   - GroupSpeciesBreathTool
   - TrinketsEngineering
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobElectricalTechnicalSpecialist
@@ -668,14 +572,11 @@
   - StationSunriseEngineerNeck
   - StationEngineerShoes
   - SurvivalExtended
-  - Trinkets
   - GroupSpeciesBreathTool
   - TrinketsEngineering
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobTechnicalTrainee
@@ -690,14 +591,11 @@
   - StationSunriseEngineerNeck
   - StationEngineerShoes
   - SurvivalExtended
-  - Trinkets
   - GroupSpeciesBreathTool
   - TrinketsEngineering
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 # Отдел логистики
 
@@ -714,15 +612,11 @@
   - SunriseCargoTechNeck
   - CargoTechnicianShoes
   - Glasses
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - TrinketsCargo
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 # Департамент продовольственного и санитарного обслуживания
 
@@ -736,14 +630,10 @@
   - CommonBackpack
   - ChefOuterClothing
   - Glasses
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobBotanistPhytogeneticist
@@ -754,14 +644,10 @@
   - BotanistBackpack
   - BotanistOuterClothing
   - Glasses
-  - Survival
-  - Trinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 - type: roleLoadout
   id: JobServicePersonnel
@@ -773,15 +659,11 @@
   - CommonBackpack
   - JanitorOuterClothing
   - Glasses
-  - Survival
-  - Trinkets
   - JanitorPlunger
   - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - CommonMiscItems
 
 # Класс Д
 
