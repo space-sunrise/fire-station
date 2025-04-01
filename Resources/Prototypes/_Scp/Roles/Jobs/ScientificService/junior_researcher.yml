@@ -5,7 +5,7 @@
   playTimeTracker: JobJuniorResearcher
   startingGear: JuniorResearcherGear
   icon: JobJuniorResearcher
-  supervisors: job-supervisors-lead-researcher
+  supervisors: job-supervisors-scientific-service-director
   canBeAntag: true
   displayWeight: 0
   access:

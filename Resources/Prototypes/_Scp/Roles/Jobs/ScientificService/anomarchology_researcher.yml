@@ -8,7 +8,7 @@
     time: 18000 # 5 часов
   startingGear: AnomarchologyResearcherGear
   icon: JobAnomarchologyResearcher
-  supervisors: job-supervisors-lead-researcher
+  supervisors: job-supervisors-scientific-service-director
   displayWeight: 10
   access:
   - Research

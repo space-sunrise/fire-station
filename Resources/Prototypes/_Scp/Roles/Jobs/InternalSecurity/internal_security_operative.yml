@@ -8,7 +8,7 @@
       time: 90000 # 25 часов
   startingGear: InternalSecurityOperativeGear
   icon: JobInternalSecurityOperative
-  supervisors: job-supervisors-director
+  supervisors: job-supervisors-regional-administration
   canBeAntag: false
   access:
   - Command

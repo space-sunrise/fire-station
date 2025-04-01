@@ -8,7 +8,7 @@
       time: 36000 # 10 часов
   startingGear: FieldMedicalSpecialistGear
   icon: JobFieldMedicalSpecialist
-  supervisors: job-supervisors-heavy-containment-security-supervisor
+  supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false
   displayWeight: 15
   access:

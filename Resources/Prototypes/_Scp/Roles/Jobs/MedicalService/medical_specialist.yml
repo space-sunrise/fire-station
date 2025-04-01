@@ -8,7 +8,7 @@
     time: 18000 # 5 часов
   startingGear: MedicalSpecialistGear
   icon: JobMedicalSpecialist
-  supervisors: job-supervisors-health-response-coordinator
+  supervisors: job-supervisors-head-of-medical-sector
   displayWeight: 20
   access:
   - Medical

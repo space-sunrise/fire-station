@@ -9,7 +9,7 @@
   startingGear: TribunalOfficerGear
   icon: JobTribunalOfficer
   canBeAntag: false
-  supervisors: job-supervisors-third-collegium-judicial-inspector
+  supervisors: job-supervisors-judicial-inspector
   access:
   - Service
   - Lawyer

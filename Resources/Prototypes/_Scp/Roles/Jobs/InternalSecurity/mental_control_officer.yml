@@ -5,7 +5,7 @@
   playTimeTracker: JobMentalControlOfficer
   startingGear: MentalControlOfficerGear
   icon: JobMentalControlOfficer
-  supervisors: job-supervisors-director
+  supervisors: job-supervisors-regional-administration
   canBeAntag: false
   displayWeight: 40
   access:

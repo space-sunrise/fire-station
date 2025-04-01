@@ -5,7 +5,7 @@
   playTimeTracker: JobJudicialInspector
   startingGear: JudicialInspectorGear
   icon: JobJudicialInspector
-  supervisors: job-supervisors-regional-administration
+  supervisors: job-supervisors-internal-tribunal-service
   canBeAntag: false
   radioBold: true
   displayWeight: 75

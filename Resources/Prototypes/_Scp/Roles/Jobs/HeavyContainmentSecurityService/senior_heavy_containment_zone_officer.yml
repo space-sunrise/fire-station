@@ -8,7 +8,7 @@
       time: 54000 # 15 часов
   startingGear: SeniorHeavyContainmentZoneOfficerGear
   icon: JobSeniorHeavyContainmentZoneOfficer
-  supervisors: job-supervisors-heavy-containment-security-supervisor
+  supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false
   displayWeight: 10
   access:

@@ -5,7 +5,7 @@
   playTimeTracker: JobHospitalIntern
   startingGear: HospitalInternGear
   icon: JobHospitalIntern
-  supervisors: job-supervisors-senior-medical-specialist
+  supervisors: job-supervisors-head-of-medical-sector
   canBeAntag: true
   displayWeight: 0
   access:

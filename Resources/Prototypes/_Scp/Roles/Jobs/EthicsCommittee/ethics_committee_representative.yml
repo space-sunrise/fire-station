@@ -6,7 +6,7 @@
   weight: 10
   startingGear: EthicsCommitteeRepresentativeGear
   icon: JobEthicsCommitteeRepresentative
-  supervisors: job-supervisors-director
+  supervisors: job-supervisors-ethics-committee
   canBeAntag: true
   radioBold: true
   displayWeight: 50
