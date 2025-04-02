@@ -22,14 +22,17 @@
     components:
     - type: CommandStaff
 
-- type: startingGear # TODO: Сделать
-  id: EthicsCommitteeRepresentativeGear
+- type: startingGear
+  id: JobEthicsCommitteeRepresentative
   equipment:
-    id: RnDPDA
-    pocket1: HandheldRoboAnalyzer
-    pocket2: Nanopaste10
-    ears: ClothingHeadsetRD
+    shoes: ClothingShoesBootsLaceup
+    eyes: ClothingEyesSunGlassesHudSkill
+    head: ClothingHeadHatCapNtrep
+    id: NanoTrasenRepresentativePDA
+    ears: ClothingHeadsetAltCommand
+    pocket1: FlippoEngravedLighter
+    pocket2: PenCentcom
   storage:
     back:
-    - Flash
-    - Telebaton
+    - RubberStampNtrep
+    - CaneNT

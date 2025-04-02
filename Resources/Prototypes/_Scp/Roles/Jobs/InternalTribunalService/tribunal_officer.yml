@@ -22,12 +22,10 @@
 - type: startingGear
   id: TribunalOfficerGear
   equipment:
-    shoes: ClothingShoesBootsLaceup
-    id: LawyerPDA
-    ears: ClothingHeadsetLawyer
+    shoes: ClothingShoesColorBlack
+    id: IAAPDA
+    eyes: ClothingEyesGlassesSunglasses
+    ears: ClothingHeadsetIAA
+    pocket2: HyperLinkBookCorporateLaw
   inhand:
-  - BriefcaseBrownFilled
-  storage:
-    back:
-    - RubberStampLawyer
-    - HyperLinkBookCorporateLaw
+  - BriefcaseIAAFilled

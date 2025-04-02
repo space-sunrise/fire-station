@@ -14,7 +14,6 @@
   - DirectorBack
   - DirectorStorage
   - CommonAdministrationGlasses
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -30,7 +29,6 @@
   - ScientistGloves
   - ResearchDirectorShoes
   - Glasses
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -47,7 +45,6 @@
   - SecurityShoes
   - SurvivalSecurity
   - SecurityStar
-  - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets
   - SunriseSecurityGun
   - Bra
@@ -67,7 +64,6 @@
   - ChiefEngineerNeck
   - ChiefEngineerShoes
   - SurvivalExtended
-  - GroupSpeciesBreathTool
   - TrinketsEngineering
   - Bra
   - Pants
@@ -83,7 +79,6 @@
   - HoPBackpack
   - HoPOuterClothing
   - Glasses
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -121,8 +116,20 @@
   - QuartermasterNeck
   - QuartermasterShoes
   - Glasses
-  - GroupSpeciesBreathTool
   - TrinketsCargo
+  - Bra
+  - Pants
+  - Socks
+
+# Комитет по этике
+
+- type: roleLoadout
+  id: JobEthicsCommitteeRepresentative
+  groups:
+  - NanoTrasenRepresentativeJumpsuit
+  - NanoTrasenRepresentativeOuterClothing
+  - CommonBackpack
+  - Trinkets
   - Bra
   - Pants
   - Socks
@@ -132,9 +139,10 @@
 - type: roleLoadout
   id: JobMentalControlOfficer
   groups:
-  - BackNTR
-  - UniformNTR
-  - SecurityTrinkets
+  - LawyerNeck
+  - LawyerJumpsuit
+  - CommonBackpack
+  - Trinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
@@ -145,20 +153,6 @@
   groups:
   - BlueShieldJumpsuit
   - BlueShieldBackpack
-  - GroupSpeciesBreathTool
-  - Bra
-  - Pants
-  - Socks
-
-# Комитет по этике
-
-- type: roleLoadout
-  id: JobEthicsCommitteeRepresentative
-  groups:
-  - LawyerNeck
-  - LawyerJumpsuit
-  - CommonBackpack
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -169,7 +163,6 @@
   id: JobJudicialInspector
   groups:
   - CommonBackpack
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -180,6 +173,7 @@
   - LawyerNeck
   - LawyerJumpsuit
   - CommonBackpack
+  - Trinkets
   - GroupSpeciesBreathTool
   - Bra
   - Pants
@@ -224,7 +218,11 @@
 - type: roleLoadout
   id: JobHeavyContainmentZoneOfficer
   groups:
+  - SecurityHead
+  - SecurityJumpsuit
   - SecurityBackpack
+  - SecurityOuterClothing
+  - SecurityShoes
   - SecurityBelt
   - SurvivalSecurity
   - SecurityStar
@@ -234,16 +232,11 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - GuardHead
-  - GuardGloves
-  - GuardJumpsuit
-  - GuardArmorVest
-  - GuardShoes
 
 - type: roleLoadout
   id: JobJuniorHeavyContainmentZoneOfficer
   groups:
+  - SecurityCadetJumpsuit
   - SecurityBackpack
   - SurvivalSecurity
   - GroupSpeciesBreathToolSecurity
@@ -251,13 +244,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - GuardHead
-  - GuardGloves
-  - GuardJumpsuit
-  - GuardArmorVest
-  - GuardShoes
-  - GuardCadetHead
 
 - type: roleLoadout
   id: JobFieldMedicalSpecialist
@@ -266,7 +252,6 @@
   - BrigmedicBackpack
   - SurvivalSecurity
   - SecurityTrinkets
-  - GroupSpeciesBreathTool
   - SunriseSecurityGun
   - Bra
   - Pants
@@ -279,13 +264,13 @@
   groups:
   - WardenHead
   - WardenJumpsuit
-  - SecurityBackpack
-  - SecurityBelt
   - WardenOuterClothing
+  - GuardGloves
   - SecurityShoes
+  - SecurityBelt
+  - SecurityBackpack
   - SurvivalSecurity
   - SecurityStar
-  - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets
   - SunriseSecurityGun
   - Bra
@@ -295,15 +280,17 @@
 - type: roleLoadout
   id: JobSeniorExternalAdministrativeZoneOfficer
   groups:
-  - SeniorOfficerJumpsuit
-  - SecurityBackpack
+  - GuardHead
+  - GuardJumpsuit
+  - GuardArmorVest
+  - GuardGloves
+  - GuardShoes
   - SecurityBelt
-  - SecurityOuterClothing
-  - SecurityShoes
+  - SecurityBackpack
   - SurvivalSecurity
   - SecurityTrinkets
-  - GroupSpeciesBreathTool
   - SunriseSecurityGun
+  - SecurityStar
   - Bra
   - Pants
   - Socks
@@ -311,40 +298,38 @@
 - type: roleLoadout
   id: JobExternalAdministrativeZoneOfficer
   groups:
-  - SecurityBackpack
+  - GuardHead
+  - GuardJumpsuit
+  - GuardArmorVest
+  - GuardGloves
+  - GuardShoes
   - SecurityBelt
+  - SecurityBackpack
   - SurvivalSecurity
-  - SecurityStar
-  - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets
   - SunriseSecurityGun
+  - SecurityStar
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - GuardHead
-  - GuardGloves
-  - GuardJumpsuit
-  - GuardArmorVest
-  - GuardShoes
 
 - type: roleLoadout
   id: JobJuniorExternalAdministrativeZoneOfficer
   groups:
+  - GuardCadetHead
+  - GuardJumpsuit
+  - GuardArmorVest
+  - GuardGloves
+  - GuardShoes
+  - SecurityBelt
   - SecurityBackpack
   - SurvivalSecurity
-  - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets
+  - SunriseSecurityGun
+  - SecurityStar
   - Bra
   - Pants
   - Socks
-  - CommonPets
-  - GuardHead
-  - GuardGloves
-  - GuardJumpsuit
-  - GuardArmorVest
-  - GuardShoes
-  - GuardCadetHead
 
 # Научный отдел
 
@@ -356,7 +341,6 @@
   - ScientistGloves
   - ScientistShoes
   - Glasses
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -372,7 +356,6 @@
   - ScientistGloves
   - ScientistShoes
   - Glasses
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -388,7 +371,6 @@
   - ScientistGloves
   - ScientistShoes
   - Glasses
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -414,7 +396,6 @@
   - ResearchAssistantJumpsuit
   - ScientistBackpack
   - Glasses
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -436,7 +417,6 @@
   - SurvivalMedical
   - MedicalTrinkets
   - Glasses
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -494,7 +474,6 @@
   - SunrisePsychologistNeck
   - SunrisePsychologistShoes
   - Glasses
-  - GroupSpeciesBreathTool
   - MedicalTrinkets
   - Bra
   - Pants
@@ -535,7 +514,6 @@
   - SeniorEngineerShoes
   - SurvivalExtended
   - TrinketsEngineering
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -553,7 +531,6 @@
   - StationSunriseEngineerNeck
   - StationEngineerShoes
   - SurvivalExtended
-  - GroupSpeciesBreathTool
   - TrinketsEngineering
   - Bra
   - Pants
@@ -563,16 +540,14 @@
   id: JobElectricalTechnicalSpecialist
   groups:
   - GroupTankHarness
-  - StationEngineerHead
-  - StationSunriseEngineerMask
-  - StationEngineerJumpsuit
-  - StationSunriseEngineerGloves
-  - StationEngineerBackpack
-  - StationEngineerOuterClothing
-  - StationSunriseEngineerNeck
-  - StationEngineerShoes
-  - SurvivalExtended
-  - GroupSpeciesBreathTool
+  - SunriseAtmosHead
+  - SunriseAtmosMask
+  - AtmosphericTechnicianJumpsuit
+  - SunriseAtmosGloves
+  - AtmosphericTechnicianBackpack
+  - AtmosphericTechnicianOuterClothing
+  - SunriseAtmosNeck
+  - AtmosphericTechnicianShoes
   - TrinketsEngineering
   - Bra
   - Pants
@@ -591,7 +566,6 @@
   - StationSunriseEngineerNeck
   - StationEngineerShoes
   - SurvivalExtended
-  - GroupSpeciesBreathTool
   - TrinketsEngineering
   - Bra
   - Pants
@@ -612,7 +586,6 @@
   - SunriseCargoTechNeck
   - CargoTechnicianShoes
   - Glasses
-  - GroupSpeciesBreathTool
   - TrinketsCargo
   - Bra
   - Pants
@@ -630,7 +603,6 @@
   - CommonBackpack
   - ChefOuterClothing
   - Glasses
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -644,7 +616,6 @@
   - BotanistBackpack
   - BotanistOuterClothing
   - Glasses
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -660,7 +631,6 @@
   - JanitorOuterClothing
   - Glasses
   - JanitorPlunger
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
