@@ -31,7 +31,7 @@
   id: EthicsCommittee
   name: department-ethics-committee-name
   description: department-ethics-committee-desc
-  color: "#000000"
+  color: "#741b47"
   weight: 90
   roles:
   - EthicsCommitteeRepresentative
@@ -40,7 +40,7 @@
   id: InternalTribunalService
   name: department-internal-tribunal-name
   description: department-internal-tribunal-desc
-  color: "#274e13"
+  color: "#c27ba0"
   weight: 85
   roles:
   - JudicialInspector
@@ -95,7 +95,7 @@
   id: MedicalService
   name: department-medical-service-name
   description: department-medical-service-desc
-  color: "#f6d2d2"
+  color: "#52b4e9"
   weight: 65
   roles:
   - HeadOfMedicalSector
@@ -111,7 +111,7 @@
   id: EngineeringTechnicalService
   name: department-engineering-technical-service-name
   description: department-engineering-technical-service-desc
-  color: "#e89946"
+  color: "#fbbc04"
   weight: 60
   roles:
   - ChiefTechnicalSpecialist
@@ -126,7 +126,7 @@
   id: LogisticsService
   name: department-logistics-service-name
   description: department-logistics-service-desc
-  color: "#806203"
+  color: "#bf9000"
   weight: 55
   roles:
   - SeniorLogisticsOfficer
