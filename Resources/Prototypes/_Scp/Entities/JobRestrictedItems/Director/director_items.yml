@@ -25,15 +25,6 @@
     state: pda-captain
 
 - type: entity
-  parent: RubberStampCaptain
-  id: RubberStampDirector
-  description: Печать из резины, для проставления печатей на важных документах.
-  name: печать директора
-  components:
-  - type: Stamp
-    stampedName: Директор
-
-- type: entity
   parent: PenCap
   id: PenDirector
   name: перьевая ручка  директора

@@ -1080,5 +1080,25 @@ SpawnPointBlueShield: null
 SpawnPointSeniorOfficer: null
 SpawnPointBarber: null
 SpawnPointAdjutant: null
+
+
+# Печати
+RubberStampCaptain: RubberStampDirector
+RubberStampCentcom: RubberStampRegionalAdministration
+RubberStampCE: RubberStampChiefTechnicalSpecialist
+RubberStampCMO: RubberStampHeadOfMedicalSector
+RubberStampHop: RubberStampPersonnelOfficer
+RubberStampHos: RubberStampSecurityCommander
+RubberStampQm: RubberStampSeniorLogisticsOfficer
+RubberStampRd: RubberStampScientificServiceDirector
+#
+RubberStampChaplain: null
+RubberStampLawyer: null
+RubberStampSyndicate: null
+RubberStampWarden: null
+RubberStampDetective: null
+RubberStampGreytide: null
+RubberStampPsychologist: null
+
 # Fire added end
 
