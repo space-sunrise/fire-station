@@ -66,8 +66,8 @@
 
 - type: entity
   parent: PosterScpBase
-  id: PosterNtYours
-  name: SCP твое!
+  id: PosterScpYours
+  name: SCP твое все!
   description: Плакат, призывающий вступить в SCP Foundation
   components:
   - type: Sprite
