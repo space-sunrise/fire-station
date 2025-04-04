@@ -1,6 +1,7 @@
 ﻿chat-radio-regional-administration = Региональная администрация
 chat-radio-administration = Руководство
 chat-radio-ethics-committee = Комитет по этике
+chat-radio-internal-security = Внутренняя безопасность
 chat-radio-internal-tribunal-service = Трибунал
 chat-radio-heavy-containment-security-service = Тяжелая зона
 chat-radio-external-administrative-zone-security-service = Внешняя-административная зона

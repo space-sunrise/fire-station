@@ -15,7 +15,7 @@
   - Maintenance
 
 - type: startingGear
-  id: AnomabiolobyGear
+  id: AnomabiologyResearcherGear
   equipment:
     ears: ClothingHeadsetScientificService
     id: SciencePDA

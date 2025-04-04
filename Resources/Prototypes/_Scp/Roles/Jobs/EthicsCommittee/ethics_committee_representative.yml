@@ -24,7 +24,7 @@
     - type: CommandStaff
 
 - type: startingGear
-  id: JobEthicsCommitteeRepresentative
+  id: EthicsCommitteeRepresentativeGear
   equipment:
     shoes: ClothingShoesBootsLaceup
     eyes: ClothingEyesSunGlassesHudSkill

@@ -37,7 +37,7 @@
 # Департамент внутреннего трибунала
 
 - type: playTimeTracker
-  id: JudicialInspector
+  id: JobJudicialInspector
 
 - type: playTimeTracker
   id: JobTribunalOfficer
@@ -48,7 +48,7 @@
   id: JobHeavyContainmentZoneCommandant
 
 - type: playTimeTracker
-  id: SeniorHeavyContainmentZoneOfficer
+  id: JobSeniorHeavyContainmentZoneOfficer
 
 - type: playTimeTracker
   id: JobHeavyContainmentZoneOfficer

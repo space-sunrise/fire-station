@@ -26,7 +26,6 @@
   id: DirectorGear
   equipment:
     head: ClothingHeadHatDirector
-    eyes: Sunglasses
     neck: ClothingNeckTieDet
     jumpsuit: ClothingUniformJumpsuitDirector
     outerClothing: ClothingOuterCoatDirectorTrench

@@ -27,7 +27,7 @@
     implants: [ MindShieldImplant ]
 
 - type: startingGear
-  id: JuniorExternalAdministrativeZoneOfficer
+  id: JuniorExternalAdministrativeZoneOfficerGear
   equipment:
     mask: ClothingMaskSecurityBandBlack
     id: SecurityCadetPDA

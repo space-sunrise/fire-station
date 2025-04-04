@@ -27,14 +27,14 @@
 
 - type: loadoutGroup
   id: GuardMantle
-  name: loadout-group-mantle
+  name: loadout-group-neck
   minLimit: 0
   loadouts:
   - GuardMantle
 
 - type: loadoutGroup
   id: GuardArmorVest
-  name: loadout-group-outerclothing
+  name: loadout-group-outer-clothing
   loadouts:
   - GuardArmorVest
   - GuardArmorVest2
@@ -48,7 +48,7 @@
 
 - type: loadoutGroup
   id: GuardCadetHead
-  name: loadout-group-helmet
+  name: loadout-group-head
   minLimit: 0
   loadouts:
   - GuardHelmet

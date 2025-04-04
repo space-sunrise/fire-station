@@ -175,7 +175,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
-    job_id: SeniorLeadResearcher
+    job_id: LeadResearcher
 
 - type: entity
   id: SpawnPointAnomabiologyResearcher
@@ -331,7 +331,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
-    job_id: SpawnPointScpBase
+    job_id: ClassDBotanist
   - type: Tag
     tags:
     - ClassDSpawner
