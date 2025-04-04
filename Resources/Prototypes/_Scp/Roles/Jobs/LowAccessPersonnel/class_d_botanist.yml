@@ -1,7 +1,7 @@
 ﻿- type: job
   id: ClassDBotanist
-  name: job-name-classd-botanist
-  description: job-description-classd
+  name: job-name-class-d-botanist
+  description: job-description-class-d
   playTimeTracker: JobClassDBotanist
   requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
   - !type:OverallPlaytimeRequirement

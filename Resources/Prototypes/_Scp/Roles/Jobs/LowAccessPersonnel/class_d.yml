@@ -1,7 +1,7 @@
 - type: job
   id: ClassD
-  name: job-name-classd
-  description: job-description-classd
+  name: job-name-class-d
+  description: job-description-class-d
   playTimeTracker: JobClassD
   startingGear: ClassDGear
   icon: JobClassD
