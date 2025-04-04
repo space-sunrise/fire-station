@@ -1,6 +1,7 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetIAA
+  categories: [ HideSpawnMenu ] # Fire added
   name: iaa headset
   description: A headset for internal affairs agent to hear the captain's last words.
   components:
@@ -16,6 +17,7 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetMagistrate
+  categories: [ HideSpawnMenu ] # Fire added
   name: magistrate headset
   description: A headset for internal affairs agent to hear the captain's last words.
   components:
@@ -32,6 +34,7 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetJEngineering
+  categories: [ HideSpawnMenu ] # Fire added
   name: Prison engineering headset
   description: A headset for prison engineers to chat while the station burns around them.
   components:
@@ -49,6 +52,7 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetLawyer
+  categories: [ HideSpawnMenu ] # Fire added
   name: lawyer headset
   description: A headset for internal affairs agent to hear the captain's last words.
   components:
@@ -63,6 +67,7 @@
 - type: entity
   parent: [ClothingHeadset, BaseCommandContraband]
   id: ClothingHeadsetAdjutant
+  categories: [ HideSpawnMenu ] # Fire added
   name: adjutant headset
   description: A headset for adjutant.
   components:
@@ -79,6 +84,7 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetUSSP
+  categories: [ HideSpawnMenu ] # Fire added
   name: Headset USSP
   description: A headset for internal affairs agent to hear the captain's last words.
   components:
@@ -94,6 +100,7 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetUSSPSec
+  categories: [ HideSpawnMenu ] # Fire added
   name: Headset USSP Security
   description: A headset for internal affairs agent to hear the captain's last words.
   components:
@@ -109,6 +116,7 @@
 - type: entity
   parent: ClothingHeadsetAltSyndicate
   id: ClothingHeadsetAltUSSP
+  categories: [ HideSpawnMenu ] # Fire added
   name: Full-Headset USSP
   description: A headset for internal affairs agent to hear the captain's last words.
   components:
