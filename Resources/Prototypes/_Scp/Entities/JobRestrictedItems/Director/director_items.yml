@@ -1,10 +1,6 @@
-﻿# TODO: Перенести в локализацию
-
-- type: entity
+﻿- type: entity
   parent: BasePDA
   id: DirectorPDA
-  name: КПК директора
-  description: Чем же он отличается от обычного...?
   components:
   - type: Pda
     id: CaptainIDCard
@@ -27,8 +23,6 @@
 - type: entity
   parent: PenCap
   id: PenDirector
-  name: перьевая ручка  директора
-  description: Элегантная перьевая ручка для директора станции и решения бюрократических вопросов.
   components:
   - type: Sprite
     sprite: _Scp/Objects/Items/JobRestricted/Director/director_pen.rsi
