@@ -16,69 +16,78 @@
             prefixCreator: '15'
         - type: StationEmergencyShuttle
           emergencyShuttlePath: /Maps/_Sunrise/Shuttles/emergency_delta.yml
-        - type: StationJobs # Поменять после новых ролей
+        - type: StationJobs
           availableJobs:
-            #scp staff
+            #D Class
             ClassD: [ 1, 1 ]
             ClassDCook: [ 2, 2 ]
-            ClassDBotanist: [ 2, 2 ]
+            ClassDBotanist: [ 1, 1 ]
             ClassDJanitor: [ 1, 1 ]
-            #scp
+            #SCP
             Scp049: [ 1, 1 ]
             Scp096: [ 1, 1 ]
             Scp939: [ 1, 1 ]
             Scp173: [ 1, 1 ]
-            Scp106: [ 1, 1 ]
             Scp999: [ 1, 1 ]
-            #command
-            Captain: [ 1, 1 ]
-            HeadOfPersonnel: [ 1, 1 ]
-            #service
-            Chef: [ 2, 2 ]
-            Janitor: [ 4, 4 ]
-            ServiceWorker: [ 5, -1 ]
-            #engineering
-            ChiefEngineer: [ 1, 1 ]
-            SeniorEngineer: [ 1, 1 ]
-            AtmosphericTechnician: [ 3, 3 ]
-            StationEngineer: [ 5, 5 ]
-            TechnicalAssistant: [ 5, -1 ]
-            #medical
-            ChiefMedicalOfficer: [ 1, 1 ]
-            SeniorPhysician: [ 1, 1 ]
-            Chemist: [ 2, 3 ]
-            MedicalDoctor: [ 4, 4 ]
-            Paramedic: [ 2, 4 ]
-            MedicalIntern: [ 5, -1 ]
-            Psychologist: [ 1, 1 ]
-            MedicalPathologist: [ 1, 1 ]
-            #science
-            ResearchDirector: [ 1, 1 ]
-            SeniorResearcher: [ 1, 1 ]
-            Scientist: [ 10, 15 ]
-            ResearchAssistant: [ 5, -1 ]
-            Roboticist: [ 2, 2 ]
-            #security
-            HeadOfSecurity: [ 1, 1 ]
-            Warden: [ 1, 1 ]
-            SeniorOfficer: [ 1, 1 ]
-            Brigmedic: [ 2, 2 ]
-            SecurityOfficer: [ 10, 15 ]
-            SecurityCadet: [ 5, -1 ]
-            #supply
-            Quartermaster: [ 1, 1 ]
-            CargoTechnician: [ 3, 3 ]
-            # silicon
+            #Command
+            Director: [ 1, 1 ]
+            ScientificServiceDirector: [ 1, 1 ]
+            SecurityCommander: [ 1, 1 ]
+            ChiefTechnicalSpecialist: [ 1, 1 ]
+            PersonnelOfficer: [ 1, 1 ]
+            HeadOfMedicalSector: [ 1, 1 ]
+            SeniorLogisticsOfficer: [ 1, 1 ]
+            #Law
+            MentalControlOfficer: [ 1, 1 ]
+            InternalSecurityOperative: [ 1, 1 ]
+            EthicsCommitteeRepresentative: [ 1, 1 ]
+            JudicialInspector: [ 1, 1 ]
+            TribunalOfficer: [ 1, 1 ]
+            #Sec Light Zone
+            ExternalAdministrativeZoneCommandant: [ 1, 1 ]
+            SeniorExternalAdministrativeZoneOfficer: [ 1, 1 ]
+            ExternalAdministrativeZoneOfficer: [ 5, 7 ]
+            JuniorExternalAdministrativeZoneOfficer: [ 3, -1 ]
+            #Sec Hard Zone
+            HeavyContainmentZoneCommandant: [ 1, 1 ]
+            SeniorHeavyContainmentZoneOfficer: [ 1, 1 ]
+            HeavyContainmentZoneOfficer: [ 5, 7 ]
+            JuniorHeavyContainmentZoneOfficer: [ 3, -1 ]
+            FieldMedicalSpecialist: [ 1, 1 ]
+            #Dont Fuck with the Scientist team
+            LeadResearcher: [ 1, 1 ]
+            AnomabiologyResearcher: [ 5, 7 ]
+            AnomarchologyResearcher: [ 5, 7 ]
+            ProductionSpecialist: [ 1, 1 ]
+            JuniorResearcher: [ 3, -1 ]
+            #Medical
+            SeniorMedicalSpecialist: [ 1, 1 ]
+            PharmaceuticalSpecialist: [ 2, 2 ]
+            MedicalSpecialist: [ 3, 6 ]
+            Psychotherapist: [ 1, 1 ]
+            HospitalIntern: [ 5, -1 ]
+            #Engineer
+            LeadTechnicalSpecialist: [ 1, 1 ]
+            ElectricalTechnicalSpecialist: [ 2, 2 ]
+            GeneralTechnicalSpecialist: [ 4, 4 ]
+            TechnicalTrainee: [ 5, -1 ]
+            #Logistic
+            LogisticsOfficer: [ 2, 2 ]
+            #Service
+            GastronomicSpecialist: [ 2, 2 ]
+            BotanistPhytogeneticist: [ 1, 1 ]
+            ServicePersonnel: [ 5, -1 ]
+            #AI
             StationAi: [ 1, 1 ]
         - type: RelativeJobsCount
           jobs:
             ClassD:
-              HeadOfSecurity: 2
-              Warden: 2
-              SeniorOfficer: 1
-              SecurityOfficer: 1
-              SecurityCadet: 1
-          maxCount: 12
+              SecurityCommander: 2
+              ExternalAdministrativeZoneCommandant: 2
+              SeniorExternalAdministrativeZoneOfficer: 1
+              ExternalAdministrativeZoneOfficer: 1
+              JuniorExternalAdministrativeZoneOfficer: 1
+          maxCount: 10
         - type: StationGoal
           goals:
           - Scp1

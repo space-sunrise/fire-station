@@ -55,10 +55,10 @@
             JuniorHeavyContainmentZoneOfficer: [ 3, -1 ]
             FieldMedicalSpecialist: [ 2, 2 ]
             #Dont Fuck with the Scientist team
-            LeadResearche: [ 1, 1 ]
-            AnomabiologyResearche: [ 5, 7 ]
-            AnomarchologyResearche: [ 5, 7 ]
-            ProductionSpecialis: [ 1, 1 ]
+            LeadResearcher: [ 1, 1 ]
+            AnomabiologyResearcher: [ 5, 7 ]
+            AnomarchologyResearcher: [ 5, 7 ]
+            ProductionSpecialist: [ 1, 1 ]
             JuniorResearcher: [ 3, -1 ]
             #Medical
             SeniorMedicalSpecialist: [ 1, 1 ]

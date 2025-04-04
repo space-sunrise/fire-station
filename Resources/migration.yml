@@ -1030,7 +1030,7 @@ SpawnPointMedicalDoctor: SpawnPointMedicalSpecialist
 SpawnPointChemist: SpawnPointPharmaceuticalSpecialist
 SpawnPointPsychologist: SpawnPointPsychotherapist
 #
-SpawnPointSeniorEngineer:
+SpawnPointSeniorEngineer: LeadTechnicalSpecialist
 SpawnPointStationEngineer: SpawnPointGeneralTechnicalSpecialist
 #
 SpawnPointQuartermaster: SpawnPointSeniorLogisticsOfficer
