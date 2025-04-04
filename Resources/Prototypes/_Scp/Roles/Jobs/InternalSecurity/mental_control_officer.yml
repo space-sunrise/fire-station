@@ -8,6 +8,7 @@
   supervisors: job-supervisors-regional-administration
   canBeAntag: false
   displayWeight: 40
+  setPreference: false # TODO: После добавления вайт-листа убрать
   access:
   - Command
   - Service

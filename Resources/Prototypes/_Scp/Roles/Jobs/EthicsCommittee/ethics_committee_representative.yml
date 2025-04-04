@@ -10,6 +10,7 @@
   canBeAntag: true
   radioBold: true
   displayWeight: 50
+  setPreference: false # TODO: После добавления вайт-листа убрать
   access:
   - Research
   - Command
