@@ -1,0 +1,54 @@
+﻿- type: job
+  id: InternalSecurityOperative
+  name: job-name-internal-security-operative
+  description: job-description-internal-security-operative
+  playTimeTracker: JobInternalSecurityOperative
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+    - !type:OverallPlaytimeRequirement
+      time: 90000 # 25 часов
+  startingGear: InternalSecurityOperativeGear
+  icon: JobInternalSecurityOperative
+  supervisors: job-supervisors-regional-administration
+  canBeAntag: false
+  access:
+  - Command
+  - Bar
+  - Service
+  - Maintenance
+  - Janitor
+  - Theatre
+  - Kitchen
+  - Chapel
+  - Hydroponics
+  - External
+  - Chemistry
+  - Engineering
+  - Research
+  - Detective
+  - Salvage
+  - Security
+  - Brig
+  - Cargo
+  - Atmospherics
+  - Cargo
+  - Medical
+  - BlueShield
+  - Lawyer
+  special:
+  - !type:AddImplantSpecial
+    implants: [MindShieldImplant]
+
+- type: startingGear
+  id: InternalSecurityOperativeGear
+  equipment:
+    shoes: ClothingShoesBootsBlueShieldFilled
+    eyes: ClothingEyesGlassesBlueShield
+    head: ClothingHeadHatBeretBlueShield
+    outerClothing: ClothingOuterArmorBlueShield
+    id: BlueShieldPDA
+    ears: ClothingHeadsetAltInternalSecurity
+    belt: ClothingBeltBlueShieldWebbingFilled
+    gloves: ClothingHandsGlovesCombat
+  storage:
+    back:
+    - HandheldCrewMonitor

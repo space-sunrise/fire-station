@@ -649,7 +649,9 @@ PosterDyshi: PosterBreath
 PosterPeremen: PosterChanges
 PosterGok: PosterGoc
 PosterSCP126: PosterSCP106
+
 Scp939Muzzler: ClothingMaskScp939
+
 CryogenicSleepUnitSpawnerLateJoin: null
 CryogenicSleepUnit: null
 
@@ -1012,6 +1014,194 @@ ScpDoubleAirlockEngineeringLocked: ScpDoubleGlassAirlockEngineeringLocked
 ScpDoubleAirlockMedicalLocked: ScpDoubleGlassAirlockMedicalLocked
 ScpDoubleAirlockScienceLocked: ScpDoubleGlassAirlockScienceLocked
 ScpDoubleAirlockSecurityLocked: ScpDoubleGlassAirlockSecurityLocked
+
+
+SpawnPointCaptain: SpawnPointDirector
+SpawnPointHeadOfPersonnel: SpawnPointPersonnelOfficer
+SpawnPointChiefEngineer: SpawnPointChiefTechnicalSpecialist
+SpawnPointChiefMedicalOfficer: SpawnPointHeadOfMedicalSector
+SpawnPointResearchDirector: SpawnPointScientificServiceDirector
+SpawnPointHeadOfSecurity: SpawnPointSecurityCommander
 #
+SpawnPointSeniorResearcher: SpawnPointLeadResearcher
+#
+SpawnPointSeniorPhysician: SpawnPointSeniorMedicalSpecialist
+SpawnPointMedicalDoctor: SpawnPointMedicalSpecialist
+SpawnPointChemist: SpawnPointPharmaceuticalSpecialist
+SpawnPointPsychologist: SpawnPointPsychotherapist
+#
+SpawnPointSeniorEngineer:
+SpawnPointStationEngineer: SpawnPointGeneralTechnicalSpecialist
+#
+SpawnPointQuartermaster: SpawnPointSeniorLogisticsOfficer
+SpawnPointCargoTechnician: SpawnPointLogisticsOfficer
+#
+SpawnPointTechnicalAssistant: SpawnPointTechnicalTrainee
+SpawnPointMedicalIntern: SpawnPointHospitalIntern
+SpawnPointResearchAssistant: SpawnPointJuniorResearcher
+SpawnPointChef: SpawnPointGastronomicSpecialist
+SpawnPointBotanist: SpawnPointBotanistPhytogeneticist
+SpawnPointJanitor: SpawnPointServicePersonnel
+
+
+SpawnPointSalvageSpecialist: null
+SpawnPointPassenger: null
+SpawnPointSecurityCadet: null
+SpawnPointServiceWorker: null
+SpawnPointBartender: null
+SpawnPointClown: null
+SpawnPointMime: null
+SpawnPointChaplain: null
+SpawnPointLibrarian: null
+SpawnPointLawyer: null
+SpawnPointMusician: null
+SpawnPointBoxer: null
+SpawnPointBorg: null
+SpawnPointAtmos: null
+SpawnPointParamedic: null
+SpawnPointScientist: null
+SpawnPointWarden: null
+SpawnPointSecurityOfficer: null
+SpawnPointDetective: null
+SpawnPointReporter: null
+SpawnPointZookeeper: null
+SpawnPointERTJanitor: null
+SpawnPointERTSecurity: null
+SpawnPointERTMedical: null
+SpawnPointERTEngineer: null
+SpawnPointERTChaplain: null
+SpawnPointERTLeader: null
+#
+SpawnPointMedicalPathologist: null
+SpawnPointMagistrat: null
+SpawnPointNtrep: null
+SpawnPointBrigmedic: null
+SpawnPointBlueShield: null
+SpawnPointSeniorOfficer: null
+SpawnPointBarber: null
+SpawnPointAdjutant: null
+
+
+# Печати
+RubberStampCaptain: RubberStampDirector
+RubberStampCentcom: RubberStampRegionalAdministration
+RubberStampCE: RubberStampChiefTechnicalSpecialist
+RubberStampCMO: RubberStampHeadOfMedicalSector
+RubberStampHop: RubberStampPersonnelOfficer
+RubberStampHos: RubberStampSecurityCommander
+RubberStampQm: RubberStampSeniorLogisticsOfficer
+RubberStampRd: RubberStampScientificServiceDirector
+#
+RubberStampChaplain: null
+RubberStampLawyer: null
+RubberStampSyndicate: null
+RubberStampWarden: null
+RubberStampDetective: null
+RubberStampGreytide: null
+RubberStampPsychologist: null
+RubberStampIAA: null
+RubberStampMagistrat: null
+RubberStampNtrep: null
+RubberStampPath: null
+RubberStampAdj: null
+
+
+
+# Ключи шифрования
+EncryptionKeyCargo: EncryptionKeyLogisticsService
+EncryptionKeyCentCom: EncryptionKeyRegionalAdministration
+EncryptionKeyStationMaster: EncryptionKeyFacilityMaster
+EncryptionKeyCommand: EncryptionKeyAdministration
+EncryptionKeyEngineering: EncryptionKeyEngineeringTechnicalService
+EncryptionKeyMedical: EncryptionKeyMedicalService
+EncryptionKeyScience: EncryptionKeyScientificService
+EncryptionKeyService: EncryptionKeyFoodAndSanitationService
+#
+EncryptionKeyMedicalScience: null
+EncryptionKeyRobo: null
+EncryptionKeySecurity: null
+EncryptionKeySyndie: null
+EncryptionKeyBinarySyndicate: null
+EncryptionKeyFreelance: null
+
+
+# Рации
+ClothingHeadsetCargo: ClothingHeadsetLogistics
+ClothingHeadsetQM: ClothingHeadsetAltLogistics
+ClothingHeadsetCentCom: ClothingHeadsetAltRegionalAdministration
+ClothingHeadsetCommand: ClothingHeadsetAltAdministration
+ClothingHeadsetEngineering: ClothingHeadsetEngineeringTechnicalService
+ClothingHeadsetCE: ClothingHeadsetAltEngineeringTechnicalService
+ClothingHeadsetMedical: ClothingHeadsetMedicalService
+ClothingHeadsetCMO: ClothingHeadsetAltMedicalService
+ClothingHeadsetScience: ClothingHeadsetScientificService
+ClothingHeadsetRD: ClothingHeadsetAltScientificService
+ClothingHeadsetBrigmedic: ClothingHeadsetFieldMedicalSpecialist
+ClothingHeadsetService: ClothingHeadsetFoodAndSanitation
+ClothingHeadsetAltCargo: ClothingHeadsetAltLogistics
+ClothingHeadsetAltCentCom: ClothingHeadsetAltRegionalAdministration
+ClothingHeadsetAltCommand: ClothingHeadsetAltAdministration
+ClothingHeadsetAltEngineering: ClothingHeadsetAltEngineeringTechnicalService
+ClothingHeadsetAltMedical: ClothingHeadsetAltMedicalService
+ClothingHeadsetAltSecurity: ClothingHeadsetAltSecurityAdministration
+ClothingHeadsetAltScience: ClothingHeadsetAltScientificService
+#
+ClothingHeadsetMining: null
+ClothingHeadsetMedicalScience: null
+ClothingHeadsetRobotics: null
+ClothingHeadsetSecurity: null
+ClothingHeadsetFreelance: null
+ClothingHeadsetAltSyndicate: null
+ClothingHeadsetAltFreelancer: null
+
+
+# Телекомы
+TelecomServerFilled: ScpTelecomServerFilled
+TelecomServerFilledCargo: TelecomServerFilledLogistics
+TelecomServerFilledEngineering: TelecomServerFilledEngineeringTechnicalService
+TelecomServerFilledMedical: TelecomServerFilledMedicalService
+TelecomServerFilledScience: TelecomServerFilledScientificService
+TelecomServerFilledService: TelecomServerFilledFoodAndSanitationDepartment
+TelecomServerFilledCommand: TelecomServerFilledAdministration
+#
+TelecomServerFilledSecurity: null
+
+# Шкафы
+LockerCaptain: LockerDirector
+LockerHeadOfPersonnel: LockerPersonnelOfficer
+LockerChiefEngineer: LockerChiefTechnicalSpecialist
+LockerQuarterMaster: LockerSeniorLogisticsOfficer
+LockerChiefMedicalOfficer: LockerHeadOfMedicalSector
+LockerHeadOfSecurity: LockerSecurityCommander
+LockerResearchDirector: LockerScientificServiceDirector
+LockerRepresentative: LockerEthicsCommittee
+
+LockerCaptainFilled: LockerDirectorFilled
+LockerCaptainFilledNoLaser: LockerDirectorFilled
+LockerCaptainFilledHardsuit: LockerDirectorFilled
+LockerHeadOfPersonnelFilled: LockerPersonnelOfficerFilled
+LockerChiefEngineerFilled: LockerChiefTechnicalSpecialistFilled
+LockerChiefEngineerFilledHardsuit: LockerChiefTechnicalSpecialistFilled
+LockerQuarterMasterFilled: LockerSeniorLogisticsOfficerFilled
+LockerChiefMedicalOfficerFilled: LockerHeadOfMedicalSectorFilled
+LockerChiefMedicalOfficerFilledHardsuit: LockerHeadOfMedicalSectorFilled
+LockerHeadOfSecurityFilled: LockerSecurityCommanderFilled
+LockerHeadOfSecurityFilledHardsuit: LockerSecurityCommanderFilled
+LockerResearchDirectorFilled: LockerScientificServiceDirectorFilled
+LockerResearchDirectorFilledHardsuit: LockerScientificServiceDirectorFilled
+
+LockerWarden: null
+LockerWardenFilled: null
+LockerWardenFilledHardsuit: null
+LockerSecurity: null
+LockerSecurityFilled: null
+LockerBrigmedic: null
+LockerBrigmedicFilled: null
+
+# Факсы
+FaxMachineCentcom: FaxMachineRegionalAdministration
+FaxMachineSyndie: FaxMachineEncrypted
+FaxMachineCaptain: FaxMachineDirector
+
 # Fire added end
 

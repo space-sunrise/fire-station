@@ -1,0 +1,67 @@
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineRegionalAdministration
+  name: regional administration fax machine
+  suffix: Regional Administration
+  components:
+  - type: Sprite
+    layers:
+      - state: icon
+        map: [ "base" ]
+        color: "#82e46f"
+  - type: FaxMachine
+    name: "Региональная Администрация"
+    notifyAdmins: true
+    receiveStationGoal: true
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineO4HQ
+  name: hq o4 fax machine
+  suffix: HQ O4
+  components:
+  - type: Sprite
+    layers:
+      - state: icon
+        map: [ "base" ]
+        color: "#7bac71"
+  - type: FaxMachine
+    name: "Штаб О4"
+    notifyAdmins: true
+    receiveStationGoal: true
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineEncrypted
+  name: encrypted fax machine
+  suffix: Encrypted
+  components:
+  - type: Sprite
+    layers:
+      - state: icon
+        map: [ "base" ]
+        color: "#919191"
+  - type: FaxMachine
+    name: "ERR*?*%!"
+    responsePings: false
+    notifyAdmins: true
+  - type: Emagged
+    emagType: Interaction
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineDirector
+  name: director fax machine
+  suffix: NukeCodes
+  components:
+  - type: Sprite
+    layers:
+      - state: icon
+        map: [ "base" ]
+        color: "#dbdbdb"
+  - type: FaxMachine
+    name: "Офис Директора Комлпекса"
+    receiveNukeCodes: true
+    receiveStationGoal: true
+  - type: StealTarget
+    stealGroup: FaxMachineCaptain

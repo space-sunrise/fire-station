@@ -1,0 +1,26 @@
+﻿- type: job
+  id: TechnicalTrainee
+  name: job-name-technical-trainee
+  description: job-description-technical-trainee
+  playTimeTracker: JobTechnicalTrainee
+  startingGear: TechnicalTraineeGear
+  icon: JobTechnicalTrainee
+  supervisors: job-supervisors-chief-technical-specialist
+  canBeAntag: true
+  displayWeight: 0
+  access:
+  - Maintenance
+  - Engineering
+  - External
+
+- type: startingGear
+  id: TechnicalTraineeGear
+  equipment:
+    #    shoes: ClothingShoesBootsWork
+    id: TechnicalAssistantPDA
+    belt: ClothingBeltUtilityEngineering
+    ears: ClothingHeadsetEngineeringTechnicalService
+    pocket2: BookEngineersHandbook
+    #storage:
+    #back:
+    #- Stuff

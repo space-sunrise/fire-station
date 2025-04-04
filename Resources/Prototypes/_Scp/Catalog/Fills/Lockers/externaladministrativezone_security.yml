@@ -1,0 +1,103 @@
+- type: entity
+  id: LockerExternalAdministrativeZoneCommandantFilled
+  suffix: Filled
+  parent: LockerExternalAdministrativeZoneCommandant
+  components:
+  - type: StorageFill
+    contents:
+      - id: FlashlightSeclite
+      - id: WeaponDisabler
+      - id: ClothingHeadHatCapWardenAlt
+      - id: ClothingBeltSecurityFilled
+      - id: Flash
+      - id: ClothingHeadsetAltExternalAdministrativeZoneSecurityService
+      - id: ClothingEyesGlassesSecurityGuard
+      - id: ClothingHandsGlovesCombat
+      - id: ClothingShoesBootsSecurityGuard
+      - id: ClothingOuterCoatWarden
+      - id: ClothingOuterWinterWarden
+      - id: ClothingOuterCoatWardenAlt
+      - id: RubberStampWarden
+      - id: DoorRemoteArmory
+      - id: HoloprojectorSecurity
+      - id: Binoculars
+      - id: HyperLinkBookCorporateLaw
+      - id: HandheldCriminalRecordsMonitor  # Sunrise-CriminalRecords
+
+- type: entity
+  id: LockerExternalAdministrativeZoneOfficerFilled
+  suffix: Filled
+  parent: LockerExternalAdministrativeZoneOfficer
+  components:
+  - type: StorageFill
+    contents:
+      - id: FlashlightSeclite
+        prob: 0.8
+      - id: WeaponDisabler
+      - id: ClothingUniformSecurity
+        prob: 0.3
+      - id: ClothingUniformSecurity2
+        prob: 0.3
+      - id: ClothingUniformSecurity3
+        prob: 0.3
+      - id: ClothingHeadHelmetSecurity
+      - id: ClothingOuterArmorSecurity
+      - id: ClothingBeltSecurityFilled
+      - id: Flash
+        prob: 0.5
+      - id: ClothingEyesGlassesSecurityGuard
+      - id: ClothingMaskSecurityBandBlack
+      - id: ClothingHeadsetExternalAdministrativeZoneSecurityService
+      - id: ClothingHandsGlovesSecurity
+      - id: ClothingShoesBootsSecurityGuard
+      - id: WeaponMeleeNeedle
+        prob: 0.1
+      - id: HoloprojectorSecurity
+        prob: 0.6
+      - id: HyperLinkBookCorporateLaw # Sunrise-edit
+        prob: 0.5
+
+- type: entity
+  id: LockerExternalAdministrativeZoneFieldDoctorFilled
+  suffix: Brigmedic, Filled
+  parent: LockerExternalAdministrativeZoneFieldDoctor
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingEyesGlassesSecurityGuard
+      - id: WeaponDisabler
+      - id: TrackingImplanter
+        amount: 2
+      - id: BoxSterileMask
+      - id: ClothingHeadHatBeretBrigmedic
+      - id: ClothingOuterCoatAMG
+      - id: ClothingUniformJumpsuitBrigmedic
+      - id: ClothingUniformJumpskirtBrigmedic
+      - id: ClothingUniformJumpskirtOfLife
+        prob: 0.1
+      - id: MedkitFilled
+      - id: MedkitCombatFilled
+        prob: 0.6
+      - id: MedkitAdvancedFilled
+        prob: 0.4
+      - id: MedkitOxygenFilled
+        prob: 0.3
+      - id: MedkitBruteFilled
+        prob: 0.3
+      - id: MedkitToxinFilled
+        prob: 0.3
+      - id: MedkitBurnFilled
+        prob: 0.7
+      - id: BoxMiniSyringe
+        prob: 0.75
+      - id: BoxMiniSyringe
+        prob: 0.25
+      - id: LauncherSyringeMed
+        prob: 0.45
+      - id: LauncherSyringePistol
+        prob: 0.15
+      - id: ClothingHeadHelmetSecurityMedic
+      - id: ClothingOuterVestSecurityMedic
+        prob: 0.5
+      - id: ClothingOuterCoatLabSecurityMedic
+        prob: 0.5

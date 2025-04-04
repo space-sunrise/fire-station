@@ -2,6 +2,7 @@
   name: internal affairs agent's rubber stamp
   parent: RubberStampBase
   id: RubberStampIAA
+  categories: [ DoNotMap, HideSpawnMenu ] # Fire added
   suffix: DO NOT MAP
   components:
     - type: Stamp
@@ -16,6 +17,7 @@
   name: magistrat's rubber stamp
   parent: RubberStampBase
   id: RubberStampMagistrat
+  categories: [ DoNotMap, HideSpawnMenu ] # Fire added
   suffix: DO NOT MAP
   components:
   - type: Stamp
@@ -30,6 +32,7 @@
   name: NT representative's rubber stamp
   parent: RubberStampBase
   id: RubberStampNtrep
+  categories: [ DoNotMap, HideSpawnMenu ] # Fire added
   suffix: DO NOT MAP
   components:
   - type: Stamp
@@ -44,6 +47,7 @@
   name: Pathologist rubber stamp
   parent: RubberStampBase
   id: RubberStampPath
+  categories: [ DoNotMap, HideSpawnMenu ] # Fire added
   suffix: DO NOT MAP
   components:
   - type: Stamp
@@ -58,6 +62,7 @@
   name: Adjutant's rubber stamp
   parent: RubberStampBase
   id: RubberStampAdj
+  categories: [ DoNotMap, HideSpawnMenu ] # Fire added
   suffix: DO NOT MAP
   components:
   - type: Stamp

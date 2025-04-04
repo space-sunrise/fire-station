@@ -3,6 +3,7 @@
   id: FaxMachineBase
   name: long range fax machine
   description: Bluespace technologies on the application of bureaucracy.
+  categories: [ HideSpawnMenu ] # Fire-edit
   components:
   - type: Sprite
     sprite: Structures/Machines/fax_machine.rsi
@@ -75,6 +76,7 @@
   id: FaxMachineCentcom
   name: CentComm long range fax machine
   suffix: CentCom
+  categories: [ HideSpawnMenu ] # Fire-edit
   components:
   - type: Sprite
     layers:
@@ -91,6 +93,7 @@
   id: FaxMachineSyndie
   name: syndicate long range fax machine
   suffix: Syndicate
+  categories: [ HideSpawnMenu ] # Fire-edit
   components:
   - type: Sprite
     layers:
@@ -109,6 +112,7 @@
   id: FaxMachineCaptain
   name: captain long range fax machine
   suffix: NukeCodes
+  categories: [ HideSpawnMenu ] # Fire-edit
   components:
     - type: FaxMachine
       name: "Captain's Office"

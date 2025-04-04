@@ -1,0 +1,40 @@
+﻿- type: job
+  id: Director
+  name: job-name-director
+  description: job-description-director
+  playTimeTracker: JobDirector
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 180000 # 50 часов
+  weight: 5
+  icon: JobDirector
+  joinNotifyCrew: true
+  supervisors: job-supervisors-regional-administration
+  canBeAntag: false
+  displayWeight: 100
+  radioBold: true
+  accessGroups:
+  - AllAccess
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+    - type: CommandStaff
+
+- type: startingGear
+  id: DirectorGear
+  equipment:
+    head: ClothingHeadHatDirector
+    neck: ClothingNeckTieDet
+    jumpsuit: ClothingUniformJumpsuitDirector
+    outerClothing: ClothingOuterCoatDirectorTrench
+    gloves: ClothingHandsGlovesDirectorSpecial
+    shoes: ClothingShoesBootsLaceup
+    back: ClothingBackpackSatchelLeatherDirectorFilled
+    id: DirectorPDA
+    ears: ClothingHeadsetAltAdministration
+  storage:
+    back:
+    - Flash
+    - Telebaton

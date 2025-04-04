@@ -1,0 +1,56 @@
+﻿# Голова
+- type: entity
+  parent: ClothingHeadHatIAA
+  id: ClothingHeadHatDirector
+
+- type: entity
+  parent: ClothingHeadHatCapcap
+  id: ClothingHeadHatCapDirector
+
+# Униформа
+- type: entity
+  parent: ClothingUniformJumpsuitNtrep
+  id: ClothingUniformJumpsuitDirector
+
+- type: entity
+  parent: ClothingUniformJumpsuitCapFormal
+  id: ClothingUniformJumpsuitBlueDirectorFormal
+
+# Верхняя одежда
+- type: entity
+  parent: ClothingOuterCoatHoSTrench
+  id: ClothingOuterCoatDirectorTrench
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.6
+        Heat: 0.5
+        Caustic: 0.9
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: HeldSpeedModifier
+  - type: ExplosionResistance
+    damageCoefficient: 0.65
+  - type: GroupExamine
+
+# Перчатки
+- type: entity
+  parent: ClothingHandsGlovesHop
+  id: ClothingHandsGlovesDirectorSpecial
+
+- type: entity
+  parent: ClothingHandsGlovesCaptain
+  id: ClothingHandsGlovesDirector
+
+# Сумка
+- type: entity
+  parent: ClothingBackpackSatchelLeather
+  id: ClothingBackpackSatchelLeatherDirectorFilled
+  components:
+  - type: StorageFill
+    contents:
+    - id: RubberStampDirector

@@ -1,0 +1,18 @@
+﻿# Уши
+- type: loadout
+  id: AdministrationHeadset
+  equipment:
+    ears: ClothingHeadsetAltAdministration
+
+# В сумке
+- type: loadout
+  id: FlashStorage
+  storage:
+    back:
+    - Flash
+
+- type: loadout
+  id: TelebatonStorage
+  storage:
+    back:
+    - Telebaton
