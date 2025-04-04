@@ -1,11 +1,5 @@
 - type: entity
   parent: FaxMachineBase
-  id: FaxMachineStandart
-  name: fax machine
-  description: A clever technology that allows you to copy or send documents.
-
-- type: entity
-  parent: FaxMachineBase
   id: FaxMachineRegionalAdministration
   name: regional administration fax machine
   suffix: Regional Administration
@@ -30,7 +24,7 @@
     layers:
       - state: icon
         map: [ "base" ]
-        color: "#82e46f"
+        color: "#7bac71"
   - type: FaxMachine
     name: "Штаб О4"
     notifyAdmins: true
@@ -60,9 +54,14 @@
   name: director fax machine
   suffix: NukeCodes
   components:
-    - type: FaxMachine
-      name: "Офис Директора Комлпекса"
-      receiveNukeCodes: true
-      receiveStationGoal: true
-    - type: StealTarget
-      stealGroup: FaxMachineCaptain
+  - type: Sprite
+    layers:
+      - state: icon
+        map: [ "base" ]
+        color: "#dbdbdb"
+  - type: FaxMachine
+    name: "Офис Директора Комлпекса"
+    receiveNukeCodes: true
+    receiveStationGoal: true
+  - type: StealTarget
+    stealGroup: FaxMachineCaptain

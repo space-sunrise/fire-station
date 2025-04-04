@@ -1,6 +1,3 @@
-ent-FaxMachineStandart = fax machine
-    .desc = A clever technology that allows you to copy or send documents.
-
 ent-FaxMachineRegionalAdministration = regional administration fax machine
     .suffix = Regional Administration
     .desc = { ent-FaxMachineStandart.desc }

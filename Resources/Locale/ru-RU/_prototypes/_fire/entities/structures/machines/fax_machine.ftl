@@ -1,6 +1,3 @@
-ent-FaxMachineStandart = факс
-    .desc = Хитрая технология позволяющая копировать или отправлять документы.
-
 ent-FaxMachineRegionalAdministration = факс региональной администрации
     .suffix = Regional Administration
     .desc = { ent-FaxMachineStandart.desc }
