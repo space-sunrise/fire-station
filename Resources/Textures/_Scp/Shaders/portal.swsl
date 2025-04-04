@@ -11,7 +11,7 @@ void fragment() {
     highp float portal_mask = tex_color.a;
 
     // Если текущий пиксель не входит в область портала, делаем его прозрачным
-    if (portal_mask < 1) {
+    if (portal_mask < 1.0) {
         COLOR = vec4(0.0, 0.0, 0.0, 0.0);
         return;
     }
@@ -28,27 +28,27 @@ void fragment() {
 
     // --- Эффект разъезжания и сборки ---
     // Параметры эффекта (константы)
-    const float CUT_COUNT = 7.0;
-    const float CUT_WIDTH = 0.02;
-    const float DISPERSION_FACTOR = 0.2;
-    const float ASSEMBLY_SPEED = 1.0;
+    const lowp float CUT_COUNT = 7.0;
+    const lowp float CUT_WIDTH = 0.02;
+    const lowp float DISPERSION_FACTOR = 0.2;
+    const lowp float ASSEMBLY_SPEED = 1.0;
 
     // Прогресс анимации от 0 (собран) до 1 (разобран) и обратно
     highp float anim_progress = abs(sin(TIME * ASSEMBLY_SPEED));
 
     // Создаем эффект горизонтальных "разрезов"
     highp float cut_lines = 0.0;
-    for (float i = 0.0; i < CUT_COUNT; i++) {
-        float cut_pos = (i + 0.5) / CUT_COUNT;
-        float cut_offset = sin(cut_pos * 10.0 + time1) * 0.005 * anim_progress;
-        float cut_line = smoothstep(cut_pos - CUT_WIDTH * 0.5 + cut_offset, cut_pos + CUT_WIDTH * 0.5 + cut_offset, fract(uv.y * CUT_COUNT));
+    for (lowp float i = 0.0; i < CUT_COUNT; i++) {
+        highp float cut_pos = (i + 0.5) / CUT_COUNT;
+        highp float cut_offset = sin(cut_pos * 10.0 + time1) * 0.005 * anim_progress;
+        highp float cut_line = smoothstep(cut_pos - CUT_WIDTH * 0.5 + cut_offset, cut_pos + CUT_WIDTH * 0.5 + cut_offset, fract(uv.y * CUT_COUNT));
         cut_lines += cut_line;
     }
     cut_lines = clamp(cut_lines, 0.0, 1.0);
 
     // Эффект разъезжания слоев - смещение UV координат РАДИАЛЬНО от центра
     highp vec2 dispersed_uv = uv;
-    float layer_index = floor(uv.y * CUT_COUNT);
+    highp float layer_index = floor(uv.y * CUT_COUNT);
     highp float layer_dispersion = DISPERSION_FACTOR * anim_progress;
     dispersed_uv += centered_uv * layer_dispersion;
 
@@ -92,32 +92,8 @@ void fragment() {
     highp float tear_effect = sin(angle * 5.0 + time1) * sin(time2 * 2.0) * 0.01;
     warped_uv += tear_effect * vec2(cos(angle), sin(angle)) * edge_factor;
 
-    // Хроматическая аберрация (убрали ранее)
-    // highp vec3 col = texture(SCREEN_TEXTURE, warped_uv).rgb;
-
-    // --- ИЗМЕНЕНИЕ 1: Убираем СВЕЧЕНИЕ ПОРТАЛА ПОЛНОСТЬЮ ---
-    // Комментируем или удаляем блок свечения
-    /*
-    highp vec3 glow_color = vec3(0.5, 0.2, 0.0); // Темно-оранжевый цвет (статичный)
-    highp vec3 final_glow = glow_color;
-    highp float glow_intensity = (0.6 + 0.4 * sin(time1 * 0.3) + 0.2 * sin(time3 * 2.0)) * 0.6;
-    col += final_glow * edge_factor * glow_intensity;
-    */
-
-    // --- ИЗМЕНЕНИЕ 2: Убираем РАЗРЯДЫ ПОРТАЛА ПОЛНОСТЬЮ ---
-    // Комментируем или удаляем блок разрядов
-    /*
-    highp vec3 discharge_final_color = vec3(0.0, 0.3, 0.3); // Темно-бирюзовый цвет (статичный)
-    highp float discharge =
-        step(0.7, sin(angle * 12.0 + time4) * 0.5 + 0.5) *
-        step(0.8, sin(time1 * 2.0) * 0.5 + 0.5) *
-        edge_factor * 0.3 * 0.7;
-    col += discharge_final_color * discharge; // Используем статичный цвет
-    */
-
     // Читаем цвет напрямую из SCREEN_TEXTURE без цветовых модификаций (кроме общих эффектов)
     highp vec3 col = texture(SCREEN_TEXTURE, warped_uv).rgb;
-
 
     // Динамический шум
     highp float noise_time = time4 * 0.2;
@@ -130,7 +106,7 @@ void fragment() {
     col = mix(col, col * (1.0 + 0.0 * 0.3), reality_blur); // Убрали влияние glow_intensity, т.к. свечения больше нет
 
     // Виньетирование (оставляем как есть)
-    float vignette = smoothstep(0.7, 1.0, distance_from_center);
+    highp float vignette = smoothstep(0.7, 1.0, distance_from_center);
     vignette = 1.0 - vignette;
     vignette = vignette * 0.5;
     col = mix(col, col * (1.0 - vignette), vignette);

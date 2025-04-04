@@ -17,6 +17,8 @@
   id: Grain
   kind: source
   path: "/Textures/_Scp/Shaders/grain.swsl"
+  params:
+    strength: 140.0
 
 - type: shader
   id: Vignette
