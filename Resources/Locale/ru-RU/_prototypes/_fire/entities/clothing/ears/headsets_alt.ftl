@@ -1,7 +1,4 @@
-﻿ent-ClothingHeadsetAlt = полноразмерная гарнитура
-    .desc = Гарнитура, покрывающая уши носителя
-
-ent-ClothingHeadsetAltRegionalAdministration = { ent-ClothingHeadsetAlt } региональной администрации
+﻿ent-ClothingHeadsetAltRegionalAdministration = { ent-ClothingHeadsetAlt } региональной администрации
     .desc = { ent-ClothingHeadsetAlt.desc }
 
 ent-ClothingHeadsetAltInternalSecurity = { ent-ClothingHeadsetAlt } отдела внутренней безопасности
