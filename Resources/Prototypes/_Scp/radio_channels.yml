@@ -78,7 +78,7 @@
 
 - type: radioChannel
   id: FoodAndSanitationService
-  name: chat-radio-food-and-sanitationservice
+  name: chat-radio-food-and-sanitation-service
   keycode: 'е'
   frequency: 2349
   color: "#849b6a"
