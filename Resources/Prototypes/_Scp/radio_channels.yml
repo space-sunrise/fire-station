@@ -1,4 +1,89 @@
 ﻿- type: radioChannel
+  id: RegionalAdministration
+  name: chat-radio-regional-administration
+  keycode: 'р'
+  frequency: 2337
+  color: "#2aa526"
+  longRange: true
+
+- type: radioChannel
+  id: Administration
+  name: chat-radio-administration
+  keycode: 'а'
+  frequency: 2353
+  color: "#2a9bbc"
+
+- type: radioChannel
+  id: InternalSecurity
+  name: chat-radio-internal-security
+  keycode: 'б'
+  frequency: 2359
+  color: "#8e4747"
+
+- type: radioChannel
+  id: EthicsCommittee
+  name: chat-radio-ethics-committee
+  keycode: 'э'
+  frequency: 2359
+  color: "#8c4669"
+
+- type: radioChannel
+  id: InternalTribunalService
+  name: chat-radio-internal-tribunal-service
+  keycode: 'с'
+  frequency: 2359
+  color: "#c27ba0"
+
+- type: radioChannel
+  id: HeavyContainmentSecurityService
+  name: chat-radio-heavy-containment-security-service
+  keycode: 'т'
+  frequency: 2359
+  color: "#d87777"
+
+- type: radioChannel
+  id: ExternalAdministrativeZoneSecurityService
+  name: chat-radio-external-administrative-zone-security-service
+  keycode: 'о'
+  frequency: 2359
+  color: "#acb5b8"
+
+- type: radioChannel
+  id: ScientificService
+  name: chat-radio-scientific-service
+  keycode: 'н'
+  frequency: 2351
+  color: "#c49dc4"
+
+- type: radioChannel
+  id: MedicalService
+  name: chat-radio-medical-service
+  keycode: 'м'
+  frequency: 2355
+  color: "#5b94aa"
+
+- type: radioChannel
+  id: EngineeringTechnicalService
+  name: chat-radio-engineering-technical-service
+  keycode: 'и'
+  frequency: 2357
+  color: "#cf8f76"
+
+- type: radioChannel
+  id: LogisticsService
+  name: chat-radio-logistics-service
+  keycode: 'л'
+  frequency: 2347
+  color: "#b99f7d"
+
+- type: radioChannel
+  id: FoodAndSanitationService
+  name: chat-radio-food-and-sanitationservice
+  keycode: 'е'
+  frequency: 2349
+  color: "#849b6a"
+
+- type: radioChannel
   id: Chaos
   name: chat-radio-chaos
   keycode: 'х'
