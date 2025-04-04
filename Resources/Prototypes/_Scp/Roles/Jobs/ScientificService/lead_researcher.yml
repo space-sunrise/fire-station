@@ -19,7 +19,7 @@
   equipment:
     head: ClothingHeadHatBeretRND
     id: SeniorResearcherPDA
-    ears: ClothingHeadsetScience
+    ears: ClothingHeadsetScientificService
     outerClothing: ClothingOuterCoatLabSeniorResearcher
   storage:
     back:

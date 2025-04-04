@@ -20,7 +20,7 @@
   equipment:
     id: SeniorPhysicianPDA
     ears: ClothingHeadsetMedical
-    eyes: ClothingEyesUniversalMedicalHud
+    eyes: ClothingHeadsetMedicalService
   storage:
     back:
     - MedicatedSuture

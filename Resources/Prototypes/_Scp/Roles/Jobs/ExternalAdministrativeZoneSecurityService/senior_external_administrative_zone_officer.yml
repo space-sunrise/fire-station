@@ -31,7 +31,7 @@
     eyes: ClothingEyesGlassesSecurity
     head: ClothingHeadHatBeretSecurity
     id: SeniorOfficerPDA
-    ears: ClothingHeadsetSecurity
+    ears: ClothingHeadsetExternalAdministrativeZoneSecurityService
   storage:
     back:
     - WeaponDisablerSMG

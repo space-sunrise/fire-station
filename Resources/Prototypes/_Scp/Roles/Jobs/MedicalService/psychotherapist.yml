@@ -21,7 +21,7 @@
   equipment:
     shoes: ClothingShoesLeather
     id: PsychologistPDA
-    ears: ClothingHeadsetMedical
+    ears: ClothingHeadsetMedicalService
   storage:
     back:
     - RubberStampPsychologist

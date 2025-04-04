@@ -51,7 +51,7 @@
     shoes: ClothingShoesColorBrown
     id: HoPPDA
     gloves: ClothingHandsGlovesHop
-    ears: ClothingHeadsetAltCommand
+    ears: ClothingHeadsetAltAdministration
     belt: BoxFolderClipboard
   storage:
     back:

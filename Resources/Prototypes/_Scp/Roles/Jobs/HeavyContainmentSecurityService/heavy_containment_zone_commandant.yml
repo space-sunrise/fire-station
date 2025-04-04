@@ -33,7 +33,7 @@
   equipment:
     eyes: ClothingEyesGlassesSecurity
     id: WardenPDA
-    ears: ClothingHeadsetSecurity
+    ears: ClothingHeadsetAltHeavyContainmentSecurityService
   storage:
     back:
     - Flash

@@ -17,7 +17,7 @@
 - type: startingGear
   id: AnomarchologyGear
   equipment:
-    ears: ClothingHeadsetScience
+    ears: ClothingHeadsetScientificService
     id: SciencePDA
     #storage:
     #back:

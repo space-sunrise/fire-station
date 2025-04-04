@@ -17,7 +17,7 @@
   equipment:
     #    shoes: ClothingShoesColorWhite
     id: MedicalInternPDA
-    ears: ClothingHeadsetMedical
+    ears: ClothingHeadsetMedicalService
     belt: ClothingBeltMedicalFilled
     pocket2: BookMedicalReferenceBook
     eyes: ClothingEyesHudMedical

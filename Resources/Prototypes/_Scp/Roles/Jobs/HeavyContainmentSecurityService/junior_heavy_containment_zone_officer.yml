@@ -31,7 +31,7 @@
   equipment:
     mask: ClothingMaskSecurityBandBlack
     id: SecurityCadetPDA
-    ears: ClothingHeadsetSecurity
+    ears: ClothingHeadsetHeavyContainmentSecurityService
     pocket1: HyperLinkBookCorporateLaw
   storage:
     back:

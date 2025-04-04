@@ -17,7 +17,7 @@
 - type: startingGear
   id: ProductionSpecialistGear
   equipment:
-    ears: ClothingHeadsetScience
+    ears: ClothingHeadsetScientificService
     id: SciencePDA
     #storage:
     #back:

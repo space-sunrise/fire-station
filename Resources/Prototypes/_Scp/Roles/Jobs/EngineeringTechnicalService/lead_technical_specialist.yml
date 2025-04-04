@@ -22,7 +22,7 @@
     id: SeniorEngineerPDA
     eyes: ClothingEyesGlassesMeson
     belt: ClothingBeltUtilityEngineering
-    ears: ClothingHeadsetEngineering
+    ears: ClothingHeadsetEngineeringTechnicalService
   storage:
     back:
     - ClothingOuterHardsuitEngineeringCompact

@@ -5,6 +5,7 @@
   groups:
   - DirectorHead
   - CommonAdministrationGlasses
+  - CommonAdministrationHeadset
   - DirectorNeck
   - DirectorJumpsuit
   - DirectorOuterClothing

@@ -33,7 +33,7 @@
     id: CEPDA
     #    head: ClothingHeadHatHardhatWhite
     eyes: ClothingEyesGlassesMeson
-    ears: ClothingHeadsetCE
+    ears: ClothingHeadsetAltEngineeringTechnicalService
     belt: ClothingBeltUtilityEngineering
   storage:
     back:

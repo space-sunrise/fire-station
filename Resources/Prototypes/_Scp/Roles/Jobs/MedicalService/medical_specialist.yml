@@ -23,7 +23,7 @@
 - type: startingGear
   id: MedicalSpecialistGear
   equipment:
-    ears: ClothingHeadsetMedical
+    ears: ClothingHeadsetMedicalService
     belt: ClothingBeltMedicalFilled
     eyes: ClothingEyesHudMedical
     id: MedicalPDA

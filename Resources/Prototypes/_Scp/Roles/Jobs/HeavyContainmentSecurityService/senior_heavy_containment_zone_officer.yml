@@ -32,7 +32,7 @@
     mask: ClothingMaskSecurityBandBlack
     eyes: ClothingEyesGlassesSecurityGuard
     id: SecurityPDA
-    ears: ClothingHeadsetSecurity
+    ears: ClothingHeadsetHeavyContainmentSecurityService
     head: ClothingHeadHelmetBasic
     gloves: ClothingHandsGlovesColorBlack
   storage:

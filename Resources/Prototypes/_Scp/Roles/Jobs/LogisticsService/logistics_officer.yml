@@ -21,7 +21,7 @@
   id: LogisticsOfficerGear
   equipment:
     id: CargoPDA
-    ears: ClothingHeadsetCargo
+    ears: ClothingHeadsetLogistics
     pocket1: AppraisalTool
     #storage:
     #back:

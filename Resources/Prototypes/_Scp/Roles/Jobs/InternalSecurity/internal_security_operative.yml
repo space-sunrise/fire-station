@@ -46,7 +46,7 @@
     head: ClothingHeadHatBeretBlueShield
     outerClothing: ClothingOuterArmorBlueShield
     id: BlueShieldPDA
-    ears: ClothingHeadsetAltCommand
+    ears: ClothingHeadsetAltInternalSecurity
     belt: ClothingBeltBlueShieldWebbingFilled
     gloves: ClothingHandsGlovesCombat
   storage:

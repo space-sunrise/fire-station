@@ -31,7 +31,7 @@
     id: RnDPDA
     pocket1: HandheldRoboAnalyzer
     pocket2: Nanopaste10
-    ears: ClothingHeadsetRD
+    ears: ClothingHeadsetAltScientificService
   storage:
     back:
     - Flash

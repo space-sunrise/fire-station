@@ -34,7 +34,7 @@
     shoes: ClothingShoesBootsLaceup
     back: ClothingBackpackSatchelLeatherDirectorFilled
     id: DirectorPDA
-    ears: ClothingHeadsetAltCommand
+    ears: ClothingHeadsetAltAdministration
   storage:
     back:
     - Flash

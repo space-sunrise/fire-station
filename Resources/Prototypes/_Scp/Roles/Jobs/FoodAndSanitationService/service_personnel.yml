@@ -16,7 +16,7 @@
   equipment:
     shoes: ClothingShoesGaloshes
     id: JanitorPDA
-    ears: ClothingHeadsetService
+    ears: ClothingHeadsetFoodAndSanitation
     belt: ClothingBeltJanitorFilled
     #storage:
     #back:

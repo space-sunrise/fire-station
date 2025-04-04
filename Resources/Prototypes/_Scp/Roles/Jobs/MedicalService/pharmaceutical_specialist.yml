@@ -19,7 +19,7 @@
   id: PharmaceuticalSpecialistGear
   equipment:
     id: ChemistryPDA
-    ears: ClothingHeadsetMedical
+    ears: ClothingHeadsetMedicalService
     belt: ChemBag
     pocket1: HandLabeler
     eyes: ClothingEyesGlassesChemical

@@ -30,7 +30,7 @@
   id: HeadOfMedicalSectorGear
   equipment:
     id: CMOPDA
-    ears: ClothingHeadsetCMO
+    ears: ClothingHeadsetAltMedicalService
     belt: ClothingBeltMedicalFilled
   storage:
     back:

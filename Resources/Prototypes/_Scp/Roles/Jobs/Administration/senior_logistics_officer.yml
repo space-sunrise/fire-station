@@ -31,7 +31,7 @@
   id: SeniorLogisticsOfficerGear
   equipment:
     id: QuartermasterPDA
-    ears: ClothingHeadsetQM
+    ears: ClothingHeadsetAltLogistics
     #    belt: BoxFolderClipboard
     pocket1: AppraisalTool
   storage:

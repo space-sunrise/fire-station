@@ -30,7 +30,7 @@
     eyes: ClothingEyesHudMedSec
     head: ClothingHeadHatBeretSecurityMedic
     id: BrigmedicPDA
-    ears: ClothingHeadsetBrigmedic
+    ears: ClothingHeadsetFieldMedicalSpecialist
     belt: ClothingBeltMedicalFilled
   storage:
     back:

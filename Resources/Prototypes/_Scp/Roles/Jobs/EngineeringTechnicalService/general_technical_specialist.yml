@@ -22,7 +22,7 @@
   equipment:
     eyes: ClothingEyesGlassesMeson
     belt: ClothingBeltUtilityEngineering
-    ears: ClothingHeadsetEngineering
+    ears: ClothingHeadsetEngineeringTechnicalService
     id: EngineerPDA
     #storage:
     #back:

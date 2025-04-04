@@ -41,7 +41,7 @@
     eyes: ClothingEyesGlassesSecurity
     id: HoSPDA
     gloves: ClothingHandsGlovesCombat
-    ears: ClothingHeadsetAltSecurity
+    ears: ClothingHeadsetAltSecurityAdministration
   storage:
     back:
     - Flash
