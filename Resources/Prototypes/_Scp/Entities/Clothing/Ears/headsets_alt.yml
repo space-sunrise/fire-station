@@ -23,15 +23,7 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyAdministration
-      - EncryptionKeyHeavyContainmentSecurityService
-      - EncryptionKeyExternalAdministrativeZoneSecurityService
-      - EncryptionKeyScientificService
-      - EncryptionKeyMedicalService
-      - EncryptionKeyEngineeringTechnicalService
-      - EncryptionKeyLogisticsService
-      - EncryptionKeyFoodAndSanitationService
-      - EncryptionKeyCommon
+      - EncryptionKeyFacilityMaster
   - type: Sprite
     sprite: Clothing/Ears/Headsets/command.rsi
   - type: Clothing
@@ -48,6 +40,7 @@
       key_slots:
       - EncryptionKeyAdministration
       - EncryptionKeyInternalSecurity
+      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/command.rsi
   - type: Clothing
@@ -64,6 +57,7 @@
       key_slots:
       - EncryptionKeyAdministration
       - EncryptionKeyEthicsCommittee
+      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/command.rsi
   - type: Clothing
@@ -80,6 +74,7 @@
       key_slots:
       - EncryptionKeyAdministration
       - EncryptionKeyInternalTribunalService
+      - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/command.rsi
   - type: Clothing
