@@ -10,5 +10,5 @@ ent-LockerBlueshieldFilledUplinkMultiphase = { ent-LockerBlueshield }
 ent-LockerBlueshieldFilledHardsuit = { ent-LockerBlueshield }
     .suffix = Заполнен, Скафандр
     .desc = { ent-LockerBlueshield.desc }
-ent-GunSafeBlueShield = сейф офицера "синий щит"
+ent-GunSafeBlueShield = сейф оперативника внешней безопасности
     .desc = { ent-GunSafe.desc }
