@@ -1014,7 +1014,8 @@ ScpDoubleAirlockEngineeringLocked: ScpDoubleGlassAirlockEngineeringLocked
 ScpDoubleAirlockMedicalLocked: ScpDoubleGlassAirlockMedicalLocked
 ScpDoubleAirlockScienceLocked: ScpDoubleGlassAirlockScienceLocked
 ScpDoubleAirlockSecurityLocked: ScpDoubleGlassAirlockSecurityLocked
-
+ScpDoubleAirlock: ScpDoubleGlassAirlock
+# Удалить после фикса
 
 SpawnPointCaptain: SpawnPointDirector
 SpawnPointHeadOfPersonnel: SpawnPointPersonnelOfficer
