@@ -13,15 +13,17 @@
           state: nano_label
     - type: RandomSpawner
       rarePrototypes:
-        - EncryptionKeyCommand
-        - EncryptionKeySecurity
+        - EncryptionKeyAdministration
+        - EncryptionKeyHeavyContainmentSecurityService
+        - EncryptionKeyExternalAdministrativeZoneSecurityService
+        - EncryptionKeyInternalSecurity
       rareChance: 0.1
       prototypes:
         - EncryptionKeyCommon
-        - EncryptionKeyEngineering
-        - EncryptionKeyScience
-        - EncryptionKeyService
-        - EncryptionKeyMedical
-        - EncryptionKeyCargo
+        - EncryptionKeyEngineeringTechnicalService
+        - EncryptionKeyScientificService
+        - EncryptionKeyFoodAndSanitationService
+        - EncryptionKeyMedicalService
+        - EncryptionKeyLogisticsService
       chance: 0.9
       offset: 0.0

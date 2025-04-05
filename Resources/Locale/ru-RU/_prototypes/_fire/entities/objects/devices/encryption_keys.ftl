@@ -13,6 +13,9 @@ ent-EncryptionKeyInternalSecurity = { ent-EncryptionKey } отдела внут�
 ent-EncryptionKeyInternalTribunalService = { ent-EncryptionKey } отдела внутреннего трибунала
     .desc = { ent-EncryptionKey.desc }
 
+ent-EncryptionKeyEthicsCommittee = { ent-EncryptionKey } комитета по этике
+    .desc = { ent-EncryptionKey.desc }
+
 ent-EncryptionKeyHeavyContainmentSecurityService = { ent-EncryptionKey } службы безопасности тяжелой зоны
     .desc = { ent-EncryptionKey.desc }
 

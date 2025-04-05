@@ -9,9 +9,10 @@
     - RegionalAdministration
     defaultChannel: RegionalAdministration
   - type: Sprite
+    sprite: _Scp/Objects/Devices/encryption_keys.rsi
     layers:
     - state: crypt_blue
-    - state: nano_label
+    - state: raf_label
 
 # Администрация
 
@@ -48,6 +49,7 @@
     - Administration
     defaultChannel: Administration
   - type: Sprite
+    sprite: _Scp/Objects/Devices/encryption_keys.rsi
     layers:
     - state: crypt_silver
     - state: com_label
@@ -63,9 +65,10 @@
     - InternalSecurity
     defaultChannel: InternalSecurity
   - type: Sprite
+    sprite: _Scp/Objects/Devices/encryption_keys.rsi
     layers:
     - state: crypt_silver
-    - state: com_label
+    - state: is_label
 
 # Комитет по этике
 
@@ -78,9 +81,10 @@
     - EthicsCommittee
     defaultChannel: EthicsCommittee
   - type: Sprite
+    sprite: _Scp/Objects/Devices/encryption_keys.rsi
     layers:
     - state: crypt_silver
-    - state: com_label
+    - state: ec_label
 
 # Служба внутреннего трибунала
 
@@ -93,9 +97,10 @@
     - InternalTribunalService
     defaultChannel: InternalTribunalService
   - type: Sprite
+    sprite: _Scp/Objects/Devices/encryption_keys.rsi
     layers:
     - state: crypt_silver
-    - state: com_label
+    - state: tribunal_label
 
 # Служба безопасности тяжелой зоны
 
@@ -108,9 +113,10 @@
     - HeavyContainmentSecurityService
     defaultChannel: HeavyContainmentSecurityService
   - type: Sprite
+    sprite: _Scp/Objects/Devices/encryption_keys.rsi
     layers:
     - state: crypt_gray
-    - state: sec_label
+    - state: hcss_label
 
 # Служба безопасности внешней административной зоны
 
@@ -123,9 +129,10 @@
     - ExternalAdministrativeZoneSecurityService
     defaultChannel: ExternalAdministrativeZoneSecurityService
   - type: Sprite
+    sprite: _Scp/Objects/Devices/encryption_keys.rsi
     layers:
     - state: crypt_gray
-    - state: sec_label
+    - state: eazss_label
 
 # Научный отдел
 

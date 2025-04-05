@@ -7,7 +7,18 @@
     "y": 32
   },
   "states": [
-    {"name": "chaos_label"},
-    {"name": "crypt_chaos"}
+    {"name": "crypt_chaos"},
+    {"name": "crypt_silver"},
+    {"name": "crypt_gray"},
+	{"name": "crypt_blue"},
+	{"name": "chaos_label"},
+	{"name": "com_label"},
+	{"name": "eazss_label"},
+	{"name": "ec_label"},
+	{"name": "hcss_label"},
+	{"name": "is_label"},
+	{"name": "tribunal_label"},
+	{"name": "raf_label"},
+	{"name": "hq_label"}
   ]
 }

@@ -21,6 +21,15 @@
         },
         {
             "name": "orange"
-        }
+        },
+        {
+            "name": "id-tribunal"
+        },
+        {
+            "name": "id-iso"
+        },
+		{
+			"name": "silver"
+		}
     ]
 }
