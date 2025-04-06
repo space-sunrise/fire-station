@@ -49,7 +49,7 @@ public sealed class VignetteOverlaySystem : EntitySystem
     public void RemoveOverlay()
     {
         if (_overlayManager.HasOverlay<VignetteOverlay>())
-            _overlayManager.AddOverlay(_overlay);
+            _overlayManager.RemoveOverlay(_overlay);
     }
 
     #endregion

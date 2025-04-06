@@ -10,7 +10,7 @@ public sealed class ScpCCVars
      */
 
     /// <summary>
-    /// Grain shader
+    /// Is Grain shader enabled
     /// </summary>
     public static readonly CVarDef<bool> GrainToggleOverlay = CVarDef.Create("shader.grain_toggle_overlay", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 }
