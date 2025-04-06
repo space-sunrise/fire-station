@@ -35,7 +35,6 @@
                 <CheckBox Name="ChatIconsEnableCheckBox" Text="{Loc 'ui-options-chat-icons-enable'}" />
                 <CheckBox Name="ChatPointingVisualsEnableCheckBox" Text="{Loc 'ui-options-chat-pointing-visuals-enable'}" />
                 <CheckBox Name="GrainToggleOverlayCheckBox" Text="{Loc 'ui-options-grain-toggle-overlay'}" /> <!--Scp-edit-->
-                <CheckBox Name="VignetteToggleOverlayCheckBox" Text="{Loc 'ui-options-vignette-toggle-overlay'}" /> <!--Scp-edit-->
 
             </BoxContainer>
         </ScrollContainer>

@@ -21,6 +21,15 @@ public sealed class GrainOverlaySystem : EntitySystem
 
         SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
+
+        _cfg.OnValueChanged(ScpCCVars.GrainToggleOverlay, OnGrainToggleOverlayOptionChanged, true);
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _cfg.UnsubValueChanged(ScpCCVars.GrainToggleOverlay, OnGrainToggleOverlayOptionChanged);
     }
 
     private void OnPlayerAttached(LocalPlayerAttachedEvent args)
@@ -31,6 +40,18 @@ public sealed class GrainOverlaySystem : EntitySystem
     private void OnPlayerDetached(LocalPlayerDetachedEvent args)
     {
         RemoveOverlay();
+    }
+
+    private void OnGrainToggleOverlayOptionChanged(bool option)
+    {
+        if (option)
+        {
+            AddOverlay();
+        }
+        else
+        {
+            RemoveOverlay();
+        }
     }
 
     #region Public API
