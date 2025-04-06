@@ -3,7 +3,7 @@ using Robust.Shared.Player;
 
 namespace Content.Client._Scp.Shaders;
 
-public abstract class CommonShaderSystem<T> : EntitySystem where T : Overlay, new ()
+public abstract class CommonShaderSystem<T> : EntitySystem where T : Overlay
 {
     [Dependency] protected readonly IOverlayManager OverlayManager = default!;
 
@@ -14,7 +14,8 @@ public abstract class CommonShaderSystem<T> : EntitySystem where T : Overlay, ne
     {
         base.Initialize();
 
-        Overlay = new ();
+        // Мир если бы сендбокса не существовало
+        // Overlay = new T();
 
         SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);

@@ -12,6 +12,8 @@ public sealed class GrainOverlaySystem : CommonShaderSystem<GrainOverlay>
     {
         base.Initialize();
 
+        Overlay = new GrainOverlay();
+
         _cfg.OnValueChanged(ScpCCVars.GrainToggleOverlay, OnGrainToggleOverlayOptionChanged, true);
     }
 
