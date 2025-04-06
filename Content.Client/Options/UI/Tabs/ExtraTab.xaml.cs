@@ -95,7 +95,7 @@ public sealed partial class ExtraTab : Control
 
         Control.AddOptionCheckBox(SunriseCCVars.ChatIconsEnable, ChatIconsEnableCheckBox);
         Control.AddOptionCheckBox(SunriseCCVars.ChatPointingVisuals, ChatPointingVisualsEnableCheckBox);
-        Control.AddOptionCheckBox(ScpCCVars.GrainToggleOverlay, GrainToggleOverlayCheckBox);
+        Control.AddOptionCheckBox(ScpCCVars.GrainToggleOverlay, GrainToggleOverlayCheckBox); // Scp-Edit
         Control.AddOptionCheckBox(ScpCCVars.VignetteToggleOverlay, VignetteToggleOverlayCheckBox); // Scp-Edit
 
         Control.Initialize();
