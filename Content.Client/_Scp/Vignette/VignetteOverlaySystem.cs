@@ -1,5 +1,7 @@
 ﻿using Robust.Client.Graphics;
 using Robust.Shared.Player;
+using Robust.Shared.Configuration;
+using Content.Shared._Scp.ScpCCVars;
 
 namespace Content.Client._Scp.Vignette;
 
@@ -7,6 +9,7 @@ namespace Content.Client._Scp.Vignette;
 public sealed class VignetteOverlaySystem : EntitySystem
 {
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     private VignetteOverlay _overlay = default!;
 
@@ -34,22 +37,25 @@ public sealed class VignetteOverlaySystem : EntitySystem
 
     public void ToggleOverlay()
     {
-        if (_overlayManager.HasOverlay<VignetteOverlay>())
-            _overlayManager.RemoveOverlay(_overlay);
-        else
-            _overlayManager.AddOverlay(_overlay);
+        if (_cfg.GetCVar(ScpCCVars.VignetteToggleOverlay))
+        {
+            if (_overlayManager.HasOverlay<VignetteOverlay>())
+                RemoveOverlay();
+            else
+                AddOverlay();
+        }
     }
 
     public void AddOverlay()
     {
-        if (!_overlayManager.HasOverlay<VignetteOverlay>())
+        if (_cfg.GetCVar(ScpCCVars.VignetteToggleOverlay) && !_overlayManager.HasOverlay<VignetteOverlay>())
             _overlayManager.AddOverlay(_overlay);
     }
 
     public void RemoveOverlay()
     {
         if (_overlayManager.HasOverlay<VignetteOverlay>())
-            _overlayManager.AddOverlay(_overlay);
+            _overlayManager.RemoveOverlay(_overlay);
     }
 
     #endregion

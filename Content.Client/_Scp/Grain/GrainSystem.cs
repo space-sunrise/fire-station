@@ -1,5 +1,7 @@
 ﻿using Robust.Client.Graphics;
 using Robust.Shared.Player;
+using Robust.Shared.Configuration;
+using Content.Shared._Scp.ScpCCVars;
 
 namespace Content.Client._Scp.Grain;
 
@@ -7,6 +9,7 @@ namespace Content.Client._Scp.Grain;
 public sealed class GrainOverlaySystem : EntitySystem
 {
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     private GrainOverlay _overlay = default!;
 
@@ -30,26 +33,29 @@ public sealed class GrainOverlaySystem : EntitySystem
         RemoveOverlay();
     }
 
-    #region Pulic API
+    #region Public API
 
     public void ToggleOverlay()
     {
-        if (_overlayManager.HasOverlay<GrainOverlay>())
-            _overlayManager.RemoveOverlay(_overlay);
-        else
-            _overlayManager.AddOverlay(_overlay);
+        if (_cfg.GetCVar(ScpCCVars.GrainToggleOverlay))
+        {
+            if (_overlayManager.HasOverlay<GrainOverlay>())
+                RemoveOverlay();
+            else
+                AddOverlay();
+        }
     }
 
     public void AddOverlay()
     {
-        if (!_overlayManager.HasOverlay<GrainOverlay>())
+        if (_cfg.GetCVar(ScpCCVars.GrainToggleOverlay) && !_overlayManager.HasOverlay<GrainOverlay>())
             _overlayManager.AddOverlay(_overlay);
     }
 
     public void RemoveOverlay()
     {
         if (_overlayManager.HasOverlay<GrainOverlay>())
-            _overlayManager.AddOverlay(_overlay);
+            _overlayManager.RemoveOverlay(_overlay);
     }
 
     #endregion
