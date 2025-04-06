@@ -2,7 +2,7 @@
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client._Scp.RetroMonitor;
+namespace Content.Client._Scp.Shaders.RetroMonitor;
 
 public sealed class RetroMonitorOverlay : Overlay
 {

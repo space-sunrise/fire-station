@@ -2,7 +2,7 @@
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client._Scp.Grain;
+namespace Content.Client._Scp.Shaders.Common.Grain;
 
 public sealed class GrainOverlay : Overlay
 {

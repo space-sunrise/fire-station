@@ -1,11 +1,11 @@
-﻿using Content.Client._Scp.Grain;
-using Content.Client._Scp.Vignette;
+﻿using Content.Client._Scp.Shaders.Common.Grain;
+using Content.Client._Scp.Shaders.Common.Vignette;
 using Content.Shared._Scp.Scp106;
 using Content.Shared.GameTicking;
 using Robust.Client.Graphics;
 using Robust.Shared.Timing;
 
-namespace Content.Client._Scp.Warping;
+namespace Content.Client._Scp.Shaders.Warping;
 
 public sealed class WarpingOverlaySystem : EntitySystem
 {

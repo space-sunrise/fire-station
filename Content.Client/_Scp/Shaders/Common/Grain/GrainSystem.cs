@@ -1,10 +1,9 @@
-﻿using Content.Client._Scp.Shaders;
-using Robust.Shared.Configuration;
+﻿using Robust.Shared.Configuration;
 using Content.Shared._Scp.ScpCCVars;
 
-namespace Content.Client._Scp.Grain;
+namespace Content.Client._Scp.Shaders.Common.Grain;
 
-public sealed class GrainOverlaySystem : CommonShaderSystem<GrainOverlay>
+public sealed class GrainOverlaySystem : CommonOverlaySystem<GrainOverlay>
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 

@@ -3,7 +3,7 @@ using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Client._Scp.Warping;
+namespace Content.Client._Scp.Shaders.Warping;
 
 public sealed class WarpOverlay : Overlay
 {

@@ -1,35 +1,13 @@
 ﻿using Robust.Client.Graphics;
-using Robust.Shared.Player;
 
-namespace Content.Client._Scp.Shaders;
+namespace Content.Client._Scp.Shaders.Common;
 
-public abstract class CommonShaderSystem<T> : EntitySystem where T : Overlay
+public abstract class BaseOverlaySystem<T> : EntitySystem where T : Overlay
 {
     [Dependency] protected readonly IOverlayManager OverlayManager = default!;
 
     protected T Overlay = default!;
     protected bool Enabled = true;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        // Мир если бы сендбокса не существовало
-        // Overlay = new T();
-
-        SubscribeLocalEvent<LocalPlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<LocalPlayerDetachedEvent>(OnPlayerDetached);
-    }
-
-    private void OnPlayerAttached(LocalPlayerAttachedEvent args)
-    {
-        AddOverlay();
-    }
-
-    private void OnPlayerDetached(LocalPlayerDetachedEvent args)
-    {
-        RemoveOverlay();
-    }
 
     #region Public API
 

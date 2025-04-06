@@ -2,7 +2,7 @@
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client._Scp.Vignette;
+namespace Content.Client._Scp.Shaders.Common.Vignette;
 
 public sealed class VignetteOverlay : Overlay
 {
