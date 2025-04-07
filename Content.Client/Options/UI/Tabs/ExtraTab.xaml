@@ -36,7 +36,13 @@
                 <Label Text="{Loc 'ui-options-sunrise-general-graphics'}" StyleClasses="LabelKeyText"/>
                 <CheckBox Name="ChatIconsEnableCheckBox" Text="{Loc 'ui-options-chat-icons-enable'}" />
                 <CheckBox Name="ChatPointingVisualsEnableCheckBox" Text="{Loc 'ui-options-chat-pointing-visuals-enable'}" />
-                <CheckBox Name="GrainToggleOverlayCheckBox" Text="{Loc 'ui-options-grain-toggle-overlay'}" /> <!--Scp-edit-->
+
+                <!--Scp edit start-->
+                <Label Text="{Loc 'ui-options-scp'}" StyleClasses="LabelKeyText"/>
+
+                <CheckBox Name="GrainToggleOverlayCheckBox" Text="{Loc 'ui-options-grain-toggle-overlay'}" />
+                <ui:OptionSlider Name="GrainStrengthSlider" Title="{Loc 'ui-options-grain-strength'}" />
+                <!--Scp edit end-->
 
             </BoxContainer>
         </ScrollContainer>

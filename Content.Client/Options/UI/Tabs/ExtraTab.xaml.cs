@@ -1,3 +1,4 @@
+using Content.Client._Scp.Shaders.Common.Grain;
 using Content.Client.Audio;
 using Content.Server.GameTicking.Prototypes;
 using Content.Shared._Sunrise.Lobby;
@@ -97,7 +98,11 @@ public sealed partial class ExtraTab : Control
 
         Control.AddOptionCheckBox(SunriseCCVars.ChatIconsEnable, ChatIconsEnableCheckBox);
         Control.AddOptionCheckBox(SunriseCCVars.ChatPointingVisuals, ChatPointingVisualsEnableCheckBox);
-        Control.AddOptionCheckBox(ScpCCVars.GrainToggleOverlay, GrainToggleOverlayCheckBox); // Scp-Edit
+
+        // Fire edit start
+        Control.AddOptionCheckBox(ScpCCVars.GrainToggleOverlay, GrainToggleOverlayCheckBox);
+        Control.AddOptionSlider(ScpCCVars.GrainStrength, GrainStrengthSlider, GrainOverlay.StrengthMin, GrainOverlay.StrengthMax);
+        // Fire edit end
 
         Control.Initialize();
     }
