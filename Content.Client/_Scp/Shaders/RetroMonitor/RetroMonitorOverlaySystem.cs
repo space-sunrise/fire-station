@@ -22,15 +22,15 @@ public sealed class RetroMonitorOverlaySystem : ComponentOverlaySystem<RetroMoni
     {
         base.OnPlayerAttached(ent, ref args);
 
-        _grain.RemoveOverlay();
-        _vignette.RemoveOverlay();
+        _grain.TryRemoveOverlay();
+        _vignette.TryRemoveOverlay();
     }
 
     protected override void OnPlayerDetached(Entity<RetroMonitorViewComponent> ent, ref LocalPlayerDetachedEvent args)
     {
         base.OnPlayerDetached(ent, ref args);
 
-        _grain.AddOverlay();
-        _vignette.AddOverlay();
+        _grain.TryAddOverlay();
+        _vignette.TryAddOverlay();
     }
 }
