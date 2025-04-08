@@ -164,6 +164,7 @@
   - type: IntrinsicRadioTransmitter
     channels:
     - Binary
+    # Fire edit start
     - Common
     - ScientificService
     - Administration
@@ -172,6 +173,7 @@
   - type: ActiveRadio
     channels:
     - Binary
+    # Fire edit start
     - Common
     - ScientificService
     - Administration
