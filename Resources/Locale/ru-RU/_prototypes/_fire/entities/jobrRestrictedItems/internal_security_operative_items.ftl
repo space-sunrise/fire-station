@@ -1,11 +1,11 @@
 ﻿ent-ClothingBackpackInternalSecurityOperative = рюкзак оперативника внутренней безопасности
     .desc = На стиле.
 ent-ClothingBackpackDuffelInternalSecurityOperative = вещмешок оперативника внутренней безопасности
-    .desc = На стиле.
+    .desc = Стильный вещмешок, предназначенный для больших объемов вещей.
 ent-ClothingBackpackSatchelInternalSecurityOperative = сумка оперативника внутренней безопасности
-    .desc = На стиле.
+    .desc = Стильная сумка.
 ent-ClothingBeltInternalSecurityOperativeWebbing = рпс оперативника внутренней безопасности
-    .desc = На стиле.
+    .desc = Довольно стильное хранилище для боеприпасов.
 ent-ClothingBeltInternalSecurityOperativeWebbingFilled = { ent-ClothingBeltInternalSecurityOperativeWebbing }
     .suffix = Заполнен
     .desc = { ent-ClothingBeltInternalSecurityOperativeWebbing.desc }
@@ -27,16 +27,14 @@ ent-ClothingShoesBootsInternalSecurityOperativeFilled = { ent-ClothingShoesBoots
 ent-ClothingUniformJumpskirtInternalSecurityOperative = юбка-комбинезон оперативника внутренней безопасности
     .desc = Детка...
 ent-ClothingUniformJumpsuitInternalSecurityOperative = комбинезон оперативника внутренней безопасности
-    .desc = На стиле.
-ent-LockerInternalSecurityOperative = шкаф оперативника внешней безопасности
-    .desc = { ent-LockerBaseSecure.desc }
-ent-LockerInternalSecurityOperativeFilled = { ent-LockerInternalSecurityOperative }
-    .suffix = Filled
-    .desc = { ent-LockerInternalSecurityOperative.desc }
-
-
+    .desc = Стильная одежда для стильных людей.
 
 
 
 ent-GunSafeInternalSecurityOperative = сейф оперативника внутренней безопасности
     .desc = сейф
+ent-LockerInternalSecurityOperative = шкаф оперативника внешней безопасности
+    .desc = { ent-LockerBaseSecure.desc }
+ent-LockerInternalSecurityOperativeFilled = { ent-LockerInternalSecurityOperative }
+    .suffix = Filled
+    .desc = { ent-LockerInternalSecurityOperative.desc }

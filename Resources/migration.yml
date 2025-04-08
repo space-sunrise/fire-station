@@ -670,6 +670,10 @@ PosterPeremen: PosterChanges
 PosterGok: PosterGoc
 PosterSCP126: PosterSCP106
 
+GunSafeBlueShield: GunSafeInternalSecurityOperative
+LockerBlueshield: LockerInternalSecurityOperative
+LockerBlueshieldFilled: LockerInternalSecurityOperativeFilled
+
 Scp939Muzzler: ClothingMaskScp939
 
 CryogenicSleepUnitSpawnerLateJoin: null

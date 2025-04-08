@@ -1,3 +1,3 @@
 ﻿ent-BriefcaseTribunalOfficerFilled = { ent-BriefcaseBrown }
-    .suffix = Офицер Трибунала
+    .suffix = { job-name-tribunal-officer }
     .desc = { ent-BriefcaseBrown.desc }

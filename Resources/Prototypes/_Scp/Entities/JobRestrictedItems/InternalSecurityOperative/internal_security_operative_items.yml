@@ -32,8 +32,24 @@
   - type: StorageFill
     contents:
     - id: WeaponEnergyGunMultiphase
-    - id: TrackingImplanter
     - id: HandheldCrewMonitor
+
+- type: entity
+  parent: LockerBlueshield
+  id: LockerInternalSecurityOperative
+
+- type: entity
+  parent: LockerInternalSecurityOperative
+  id: LockerInternalSecurityOperativeFilled
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponDisabler
+    - id: ClothingHeadsetAltAdministration
+    - id: CigarGoldCase
+      prob: 0.25
+    - id: TrackingImplanter
+      amount: 8
 
 # Одежда
 - type: entity
@@ -124,7 +140,6 @@
       item:
       - CombatKnife
 
-
 - type: entity
   parent: ClothingUniformJumpskirtBlueShield
   id: ClothingUniformJumpskirtInternalSecurityOperative
@@ -132,21 +147,3 @@
 - type: entity
   parent: ClothingUniformJumpsuitBlueShield
   id: ClothingUniformJumpsuitInternalSecurityOperative
-
-- type: entity
-  parent: LockerBlueshield
-  id: LockerInternalSecurityOperative
-
-- type: entity
-  parent: LockerInternalSecurityOperative
-  id: LockerInternalSecurityOperativeFilled
-  components:
-  - type: StorageFill
-    contents:
-    - id: WeaponDisabler
-    - id: ClothingHeadsetAltAdministration
-    - id: CigarGoldCase
-      prob: 0.25
-    - id: TrackingImplanter
-      amount: 8
-
