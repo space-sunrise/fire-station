@@ -45,7 +45,7 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyCargo
+      - EncryptionKeyLogisticsService
       - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/cargo.rsi
@@ -74,8 +74,8 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyCargo
-      - EncryptionKeyCommand
+      - EncryptionKeyLogisticsService
+      - EncryptionKeyAdministration
       - EncryptionKeyCommon
 
 - type: entity
@@ -88,8 +88,8 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyCentCom
-      - EncryptionKeyStationMaster
+      - EncryptionKeyRegionalAdministration
+      - EncryptionKeyFacilityMaster
   - type: Sprite
     sprite: Clothing/Ears/Headsets/centcom.rsi
   - type: Clothing
@@ -105,7 +105,7 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyStationMaster
+      - EncryptionKeyFacilityMaster
   - type: Sprite
     sprite: Clothing/Ears/Headsets/command.rsi
   - type: Clothing
@@ -121,7 +121,7 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyEngineering
+      - EncryptionKeyEngineeringTechnicalService
       - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/engineering.rsi
@@ -138,8 +138,8 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyEngineering
-      - EncryptionKeyCommand
+      - EncryptionKeyEngineeringTechnicalService
+      - EncryptionKeyAdministration
       - EncryptionKeyCommon
 
 - type: entity
@@ -152,7 +152,7 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyMedical
+      - EncryptionKeyMedicalService
       - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/medical.rsi
@@ -169,8 +169,8 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyMedical
-      - EncryptionKeyCommand
+      - EncryptionKeyMedicalService
+      - EncryptionKeyAdministration
       - EncryptionKeyCommon
 
 - type: entity
@@ -183,7 +183,7 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyScience
+      - EncryptionKeyScientificService
       - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/science.rsi
@@ -200,7 +200,8 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyMedicalScience
+      - EncryptionKeyScientificService
+      - EncryptionKeyMedicalService
       - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/medicalscience.rsi
@@ -217,7 +218,7 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyRobo
+      - EncryptionKeyScientificService
       - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/robotics.rsi
@@ -234,8 +235,8 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyScience
-      - EncryptionKeyCommand
+      - EncryptionKeyScientificService
+      - EncryptionKeyAdministration
       - EncryptionKeyCommon
 
 - type: entity
@@ -248,7 +249,8 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeySecurity
+      - EncryptionKeyHeavyContainmentSecurityService
+      - EncryptionKeyExternalAdministrativeZoneSecurityService
       - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/security.rsi
@@ -265,8 +267,9 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyMedical
-      - EncryptionKeySecurity
+      - EncryptionKeyMedicalService
+      - EncryptionKeyHeavyContainmentSecurityService
+      - EncryptionKeyExternalAdministrativeZoneSecurityService
       - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/brigmedic.rsi
@@ -283,7 +286,7 @@
   - type: ContainerFill
     containers:
       key_slots:
-      - EncryptionKeyService
+      - EncryptionKeyFoodAndSanitationService
       - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/service.rsi

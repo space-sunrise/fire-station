@@ -96,12 +96,12 @@
     channels:
     - Binary
     - Common
-    - Science
+    - ScientificService # Fire edit
   - type: ActiveRadio
     channels:
     - Binary
     - Common
-    - Science
+    - ScientificService # Fire edit
   - type: ZombieImmune
   # Sunrise-Start
   - type: Repairable

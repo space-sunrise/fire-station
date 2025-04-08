@@ -1,6 +1,9 @@
 ﻿ent-ClothingHeadsetAltRegionalAdministration = { ent-ClothingHeadsetAlt } региональной администрации
     .desc = { ent-ClothingHeadsetAlt.desc }
 
+ent-ClothingHeadsetAltAdministration = { ent-ClothingHeadsetAlt } администрации
+    .desc = { ent-ClothingHeadsetAlt.desc }
+
 ent-ClothingHeadsetAltInternalSecurity = { ent-ClothingHeadsetAlt } отдела внутренней безопасности
     .desc = { ent-ClothingHeadsetAlt.desc }
 
