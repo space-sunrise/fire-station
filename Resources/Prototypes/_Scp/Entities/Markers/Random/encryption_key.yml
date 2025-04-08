@@ -6,9 +6,9 @@
   - type: Sprite
     layers:
     - state: red
-    - sprite: Objects/Devices/encryption_keys.rsi
+    - sprite: _Scp/Objects/Devices/encryption_keys.rsi
       state: crypt_blue
-    - sprite: Objects/Devices/encryption_keys.rsi
+    - sprite: _Scp/Objects/Devices/encryption_keys.rsi
       state: hq_label
   - type: RandomSpawner
     rarePrototypes:
