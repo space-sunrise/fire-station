@@ -119,7 +119,7 @@
 
 - type: loadoutGroup
   id: BlueShieldBackpack
-  name: loadout-group-blueshield-backpack
+  name: loadout-group-backpack
   loadouts:
   - BlueShieldBackpack
   - BlueShieldSatchel
@@ -127,7 +127,7 @@
 
 - type: loadoutGroup
   id: BlueShieldJumpsuit
-  name: loadout-group-blueshield-jumpsuit
+  name: loadout-group-jumpsuit
   loadouts:
   - BlueShieldJumpsuit
   - BlueShieldJumpskirt

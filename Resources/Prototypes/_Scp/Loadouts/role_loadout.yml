@@ -152,8 +152,8 @@
 - type: roleLoadout
   id: JobInternalSecurityOperative
   groups:
-  - BlueShieldJumpsuit
-  - BlueShieldBackpack
+  - InternalSecurityOperativeJumpsuit
+  - InternalSecurityOperativeBackpack
   - Bra
   - Pants
   - Socks

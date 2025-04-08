@@ -1,6 +1,6 @@
 ent-ClothingHeadHelmetCBURNLeader = шлем командира отряда РХБЗЗ
     .desc = Огнеупорный, защищающий давления шлем, который используют специальные подразделения зачистки.
-ent-ClothingHeadHelmetHardsuitBlueshield = шлем скафандра оперативника внешней безопасности
+ent-ClothingHeadHelmetHardsuitBlueshield = шлем скафандра офицера «синий щит»
     .desc = Синий.
 ent-ClothingHeadHelmetHardsuitNTRG = NTRG's hardsuit helmet
     .desc = Blue.
