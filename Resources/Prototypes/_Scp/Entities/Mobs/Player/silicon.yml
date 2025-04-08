@@ -94,20 +94,22 @@
     node: securitycombat
   - type: IntrinsicRadioTransmitter
     channels:
-    - Security
+    - ExternalAdministrativeZoneSecurityService
+    - HeavyContainmentSecurityService
     - Binary
     - Common
-    - Science
+    - ScientificService
   - type: ActiveRadio
     channels:
-    - Security
+    - ExternalAdministrativeZoneSecurityService
+    - HeavyContainmentSecurityService
     - Binary
     - Common
-    - Science
+    - ScientificService
   - type: AccessReader
     access: [["Security"], ["Command"]]
   - type: SiliconLawProvider
-    laws: RobocopLawset
+    laws: ScpDefault
   - type: TTS
     voice: Sentrybot
   - type: PointLight

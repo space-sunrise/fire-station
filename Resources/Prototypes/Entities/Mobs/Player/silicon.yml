@@ -8,27 +8,35 @@
   - type: IntrinsicRadioTransmitter
     channels:
     - Binary
-    - Common
-    - Command
-    - Engineering
-    - Law # Sunrise-edit
-    - Medical
-    - Science
-    - Security
-    - Service
-    - Supply
+    # Fire edit start
+    - Administration
+    - InternalSecurity
+    - EthicsCommittee
+    - InternalTribunalService
+    - HeavyContainmentSecurityService
+    - ExternalAdministrativeZoneSecurityService
+    - ScientificService
+    - MedicalService
+    - EngineeringTechnicalService
+    - LogisticsService
+    - FoodAndSanitationService
+    # Fire edit end
   - type: ActiveRadio
     channels:
     - Binary
-    - Common
-    - Command
-    - Engineering
-    - Law # Sunrise-edit
-    - Medical
-    - Science
-    - Security
-    - Service
-    - Supply
+    # Fire edit start
+    - Administration
+    - InternalSecurity
+    - EthicsCommittee
+    - InternalTribunalService
+    - HeavyContainmentSecurityService
+    - ExternalAdministrativeZoneSecurityService
+    - ScientificService
+    - MedicalService
+    - EngineeringTechnicalService
+    - LogisticsService
+    - FoodAndSanitationService
+    # Fire edit end
   - type: IgnoreUIRange
   - type: StationAiHeld
   - type: StationAiOverlay

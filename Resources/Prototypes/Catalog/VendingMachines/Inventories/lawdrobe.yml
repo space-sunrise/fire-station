@@ -12,7 +12,9 @@
     ClothingUniformJumpsuitLawyerGood: 1
     ClothingUniformJumpskirtLawyerGood: 1
     ClothingShoesBootsLaceup: 2
-    ClothingHeadsetIAA: 2
+    # Fire edit start
+    ClothingHeadsetAltInternalTribunalService: 3
+    # Fire edit end
     ClothingNeckLawyerbadge: 2
     BriefcaseBrown: 2
     ClothingHandsGlovesColorWhite: 1

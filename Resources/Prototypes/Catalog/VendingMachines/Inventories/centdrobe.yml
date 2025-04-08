@@ -13,7 +13,9 @@
     ClothingHeadHatCentcom: 3
     ClothingHeadHatCentcomcap: 3
     ClothingMaskGasCentcom: 3
-    ClothingHeadsetCentCom: 3
+    # Fire edit start
+    ClothingHeadsetAltRegionalAdministration: 3
+    # Fire edit end
     ClothingOuterWinterCentcom: 3
     ClothingOuterCoatExpensive: 1
     ClothingNeckScarfStripedCentcom: 3

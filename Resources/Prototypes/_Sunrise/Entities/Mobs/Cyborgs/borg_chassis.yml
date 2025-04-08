@@ -164,20 +164,22 @@
     noMindState: ert_borg_e_r
   - type: IntrinsicRadioTransmitter
     channels:
-    - Security
     - Binary
+    # Fire edit start
     - Common
-    - Science
-    - Command
-    - CentCom
+    - ScientificService
+    - Administration
+    - RegionalAdministration
+    # Fire edit end
   - type: ActiveRadio
     channels:
-    - Security
     - Binary
+    # Fire edit start
     - Common
-    - Science
-    - Command
-    - CentCom
+    - ScientificService
+    - Administration
+    - RegionalAdministration
+    # Fire edit end
   - type: AccessReader
     access: [["Security"], ["Command"], ["Research"]]
   - type: SiliconLawProvider
