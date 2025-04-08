@@ -1,6 +1,6 @@
 ent-ClothingBeltSyndieWebbing = РПС Синдиката
     .desc = Довольно вместительное хранилище для боеприпасов.
-ent-ClothingBeltBlueShieldWebbing = рпс оперативника внешней безопасности
+ent-ClothingBeltBlueShieldWebbing = рпс офицера «синий щит»
     .desc = Голубой?!
 ent-ClothingBeltPrisonGuardianFilled = { ent-ClothingBeltSecurity }
     .suffix = Заполнен

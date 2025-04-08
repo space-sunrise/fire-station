@@ -1,6 +1,6 @@
 ent-ClothingShoesBootsJackSec = { ent-ClothingShoesBootsJack }
     .desc = { ent-ClothingShoesBootsJack.desc }
-ent-ClothingShoesBootsBlueShield = ботинки оперативника внешней безопасности
+ent-ClothingShoesBootsBlueShield = ботинки офицера «синий щит»
     .desc = Синий или голубой, вот в чём вопрос.
 ent-ClothingShoesBootsPrisonerGrey = ботинки заключённого
     .desc = Почему не оранжевые?

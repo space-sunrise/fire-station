@@ -38,39 +38,14 @@
   - !type:AddImplantSpecial
     implants: [MindShieldImplant]
 
-- type: entity
-  parent: BlueShieldPDA
-  id: ISOPDA
-  name: Internal Security Operative PDA
-  description: Your safety inside the foundation is in the hands of this guy, but can you trust him?
-  components:
-  - type: Pda
-    id: ISOIDCard
-
-- type: entity
-  parent: IDCardStandard
-  id: ISOIDCard
-  name: Internal Security Operative ID card
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Misc/id_cards.rsi
-    layers:
-    - state: silver
-    - state: id-iso
-  - type: PresetIdCard
-    job: InternalSecurityOperative
-
 - type: startingGear
   id: InternalSecurityOperativeGear
   equipment:
-    shoes: ClothingShoesBootsBlueShieldFilled
-    eyes: ClothingEyesGlassesBlueShield
-    head: ClothingHeadHatBeretBlueShield
-    outerClothing: ClothingOuterArmorBlueShield
-    id: ISOPDA
+    shoes: ClothingShoesBootsInternalSecurityOperativeFilled
+    eyes: ClothingEyesGlassesInternalSecurityOperative
+    head: ClothingHeadHatBeretInternalSecurityOperative
+    outerClothing: ClothingOuterArmorInternalSecurityOperative
+    id: InternalSecurityOperativePDA
     ears: ClothingHeadsetAltInternalSecurity
-    belt: ClothingBeltBlueShieldWebbingFilled
+    belt: ClothingBeltInternalSecurityOperativeWebbingFilled
     gloves: ClothingHandsGlovesCombat
-  storage:
-    back:
-    - HandheldCrewMonitor

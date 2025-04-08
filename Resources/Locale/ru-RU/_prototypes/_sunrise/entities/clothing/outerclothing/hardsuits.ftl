@@ -1,6 +1,6 @@
 ent-ClothingOuterHardsuitCBURNLeader = экзокостюм командира отряда РХБЗЗ
     .desc = Легковесный но прочный экзокостюм, который используют специальные подразделения зачистки.
-ent-ClothingOuterHardsuitBlueshield = скафандр оперативника внешней безопасности
+ent-ClothingOuterHardsuitBlueshield = скафандр офицера «синий щит»
     .desc = Крепкий и надёжный, как и его владелец.
 ent-ClothingOuterHardsuitNTRG = NTR Guard's hardsuit
     .desc = Tough and reliable, just like its owner.

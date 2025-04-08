@@ -54,6 +54,23 @@
   - GuardHelmet
   - GuardHelmet2
 
+# Оперативник Внутренней Безопасности
+
+- type: loadoutGroup
+  id: InternalSecurityOperativeBackpack
+  name: loadout-group-backpack
+  loadouts:
+  - InternalSecurityOperativeBackpack
+  - InternalSecurityOperativeSatchel
+  - InternalSecurityOperativeDuffel
+
+- type: loadoutGroup
+  id: InternalSecurityOperativeJumpsuit
+  name: loadout-group-jumpsuit
+  loadouts:
+  - InternalSecurityOperativeJumpsuit
+  - InternalSecurityOperativeJumpskirt
+
 # Общие
 
 - type: loadoutGroup
