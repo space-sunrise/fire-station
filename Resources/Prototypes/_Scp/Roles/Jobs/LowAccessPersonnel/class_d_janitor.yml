@@ -1,0 +1,34 @@
+﻿- type: job
+  id: ClassDJanitor
+  name: job-name-class-d-janitor
+  description: job-description-class-d
+  playTimeTracker: JobClassDJanitor
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 3600 # 1 час
+  startingGear: ClassDJanitorGear
+  icon: JobClassDJanitor
+  supervisors: job-supervisors-security-and-research
+  access:
+  - Service
+  - Janitor
+  alwaysUseSpawner: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: ClassDAppearance
+
+- type: startingGear
+  id: ClassDJanitorGear
+  equipment:
+    head: ClothingHeadHatPurplesoft
+    jumpsuit: ClothingUniformClassD
+    gloves: ClothingHandsGlovesJanitor
+    shoes: ClothingShoesGaloshes
+    id: ClassDJanitorIDCard
+    belt: ClothingBeltJanitor
+  storage:
+    belt:
+    - Soap
+    - LightReplacer
+    - SprayBottleSpaceCleaner

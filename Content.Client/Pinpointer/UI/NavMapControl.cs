@@ -230,7 +230,10 @@ public partial class NavMapControl : MapGridControl
                 if (!blip.Selectable)
                     continue;
 
-                var currentDistance = (_transformSystem.ToMapCoordinates(blip.Coordinates).Position - worldPosition).Length();
+                // Fire edit start - вынеси coords в переменную и добавил false к методу, чтобы убрать спам ошибками
+                var coords = _transformSystem.ToMapCoordinates(blip.Coordinates, false);
+                var currentDistance = (coords.Position - worldPosition).Length();
+                // Fire edit end
 
                 if (closestDistance < currentDistance || currentDistance * MinimapScale > MaxSelectableDistance)
                     continue;
@@ -394,7 +397,8 @@ public partial class NavMapControl : MapGridControl
         {
             if (lit && value.Visible)
             {
-                var mapPos = _transformSystem.ToMapCoordinates(coord);
+                // Fire edit - добавил false чтобы убрать спам ошибками
+                var mapPos = _transformSystem.ToMapCoordinates(coord, false);
 
                 if (mapPos.MapId != MapId.Nullspace)
                 {
@@ -415,7 +419,8 @@ public partial class NavMapControl : MapGridControl
             if (blip.Texture == null)
                 continue;
 
-            var mapPos = _transformSystem.ToMapCoordinates(blip.Coordinates);
+            // Fire edit - добавил false, чтобы убрать спам ошибками
+            var mapPos = _transformSystem.ToMapCoordinates(blip.Coordinates, false);
 
             if (mapPos.MapId != MapId.Nullspace)
             {

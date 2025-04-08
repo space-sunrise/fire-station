@@ -1,0 +1,27 @@
+﻿- type: job
+  id: Psychotherapist
+  name: job-name-psychotherapist
+  description: job-description-psychotherapist
+  playTimeTracker: JobPsychotherapist
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+    - !type:OverallPlaytimeRequirement
+      time: 10800 # 3 часов
+  startingGear: PsychotherapistGear
+  icon: JobPsychotherapist
+  supervisors: job-supervisors-head-of-medical-sector
+  displayWeight: 10  # Sunrise
+  access:
+  - Medical
+  - Maintenance
+  extendedAccess:
+  - Chemistry
+
+- type: startingGear
+  id: PsychotherapistGear
+  equipment:
+    shoes: ClothingShoesLeather
+    id: PsychologistPDA
+    ears: ClothingHeadsetMedicalService
+  storage:
+    back:
+    - RubberStampPsychologist

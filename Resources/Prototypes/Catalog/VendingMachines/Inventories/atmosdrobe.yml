@@ -9,7 +9,9 @@
     ClothingUniformJumpskirtAtmos: 3
     ClothingUniformJumpsuitAtmosCasual: 3
     ClothingShoesColorWhite: 3
-    ClothingHeadsetEngineering: 2
+    # Fire edit start
+    ClothingHeadsetEngineeringTechnicalService: 2
+    # Fire edit end
     ClothingHeadHelmetFire: 2
     ClothingOuterSuitFire: 2
     ClothingOuterWinterAtmos: 2

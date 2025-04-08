@@ -38,6 +38,7 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetCargo
+  categories: [ HideSpawnMenu ] # Fire added
   name: cargo headset
   description: A headset used by supply employees.
   components:
@@ -54,6 +55,7 @@
 - type: entity
   parent: ClothingHeadsetCargo
   id: ClothingHeadsetMining
+  categories: [ HideSpawnMenu ] # Fire added
   name: mining headset
   description: Headset used by shaft miners.
   components:
@@ -65,6 +67,7 @@
 - type: entity
   parent: [ClothingHeadsetCargo, BaseCommandContraband]
   id: ClothingHeadsetQM
+  categories: [ HideSpawnMenu ] # Fire added
   name: qm headset
   description: A headset used by the quartermaster.
   components:
@@ -78,6 +81,7 @@
 - type: entity
   parent: [ ClothingHeadset, BaseCentcommContraband ]
   id: ClothingHeadsetCentCom
+  categories: [ HideSpawnMenu ] # Fire added
   name: CentComm headset
   description: A headset used by the upper echelons of Nanotrasen.
   components:
@@ -94,6 +98,7 @@
 - type: entity
   parent: [ClothingHeadset, BaseCommandContraband]
   id: ClothingHeadsetCommand
+  categories: [ HideSpawnMenu ] # Fire added
   name: command headset
   description: A headset with a commanding channel.
   components:
@@ -109,6 +114,7 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetEngineering
+  categories: [ HideSpawnMenu ] # Fire added
   name: engineering headset
   description: A headset for engineers to chat while the station burns around them.
   components:
@@ -125,6 +131,7 @@
 - type: entity
   parent: [ClothingHeadsetEngineering, BaseCommandContraband]
   id: ClothingHeadsetCE
+  categories: [ HideSpawnMenu ] # Fire added
   name: ce headset
   description: A headset for the chief engineer to ignore all emergency calls on.
   components:
@@ -138,6 +145,7 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetMedical
+  categories: [ HideSpawnMenu ] # Fire added
   name: medical headset
   description: A headset for the trained staff of the medbay.
   components:
@@ -154,6 +162,7 @@
 - type: entity
   parent: [ClothingHeadsetMedical, BaseCommandContraband]
   id: ClothingHeadsetCMO
+  categories: [ HideSpawnMenu ] # Fire added
   name: cmo headset
   description: A headset used by the CMO.
   components:
@@ -167,6 +176,7 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetScience
+  categories: [ HideSpawnMenu ] # Fire added
   name: science headset
   description: A sciency headset. Like usual.
   components:
@@ -183,6 +193,7 @@
 - type: entity
   parent: ClothingHeadsetScience
   id: ClothingHeadsetMedicalScience
+  categories: [ HideSpawnMenu ] # Fire added
   name: medical research headset
   description: A headset that is a result of the mating between medical and science.
   components:
@@ -199,6 +210,7 @@
 - type: entity
   parent: ClothingHeadsetScience
   id: ClothingHeadsetRobotics
+  categories: [ HideSpawnMenu ] # Fire added
   name: robotics headset
   description: Made specifically for the roboticists, who cannot decide between departments.
   components:
@@ -215,6 +227,7 @@
 - type: entity
   parent: [ClothingHeadsetScience, BaseCommandContraband]
   id: ClothingHeadsetRD
+  categories: [ HideSpawnMenu ] # Fire added
   name: rd headset
   description: Lamarr used to love chewing on this...
   components:
@@ -228,6 +241,7 @@
 - type: entity
   parent: [ClothingHeadset, BaseSecurityLawyerContraband]
   id: ClothingHeadsetSecurity
+  categories: [ HideSpawnMenu ] # Fire added
   name: security headset
   description: This is used by your elite security force.
   components:
@@ -244,6 +258,7 @@
 - type: entity
   parent: [ClothingHeadset, BaseSecurityContraband]
   id: ClothingHeadsetBrigmedic
+  categories: [ HideSpawnMenu ] # Fire added
   name: brigmedic headset
   description: A headset that helps to hear the death cries.
   components:
@@ -261,6 +276,7 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetService
+  categories: [ HideSpawnMenu ] # Fire added
   name: service headset
   description: Headset used by the service staff, tasked with keeping the station full, happy and clean.
   components:
@@ -277,6 +293,7 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetFreelance
+  categories: [ HideSpawnMenu ] # Fire added
   name: freelancer headset
   description: This is used by a roaming group of freelancers.
   components:

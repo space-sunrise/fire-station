@@ -1,0 +1,14 @@
+﻿job-name-external-administrative-zone-commandant = Комендант внешней-административной зоны
+job-description-external-administrative-zone-commandant = Начальник охраны ВАЗ, отвечающий за безопасность вверенной ему территории, сохранность ворот А, В, а так-же отвечающий за безопасность руководства комплекса, расположенного в ВАЗ. КЛАСС С
+
+job-name-senior-external-administrative-zone-officer = Старший офицер службы безопасности внешней-административной зоны
+job-description-senior-external-administrative-zone-officer = Элитный специалист, мастер на все руки. Имеет специально вооружение и расширенные полномочия, являясь правой рукой Коменданта. КЛАСС С
+
+job-name-external-administrative-zone-officer = Офицер внешней-административной зоны
+job-description-external-administrative-zone-officer = Охранный специалист выполняющий базовые обязанности, патрулируя ВАЗ и сопровождая администрацию комплекса к воротам ТЗС. КЛАСС С
+
+job-name-junior-external-administrative-zone-officer = Младший офицер внешней-административной зоны
+job-description-junior-external-administrative-zone-officer = Младший агент безопасности, проходящий курс обучения. КЛАСС С
+
+job-supervisors-security-commander = начальнику охраны
+job-supervisors-external-administrative-zone-commandant = коменданту внешней-административной зоны

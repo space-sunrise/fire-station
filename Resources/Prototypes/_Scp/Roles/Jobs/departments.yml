@@ -1,21 +1,172 @@
+# Руководство
+
+- type: department
+  id: Administration
+  name: department-administration-name
+  description: department-administration-desc
+  color: "#6aa84f"
+  weight: 100
+  roles:
+  - Director
+  - ScientificServiceDirector
+  - SecurityCommander
+  - ChiefTechnicalSpecialist
+  - PersonnelOfficer
+  - HeadOfMedicalSector
+  - SeniorLogisticsOfficer
+
+# Гады следящие за буквой закона
+
+- type: department
+  id: InternalSecurity
+  name: department-internal-security-name
+  description: department-internal-security-desc
+  color: "#980000"
+  weight: 95
+  roles:
+  - MentalControlOfficer
+  - InternalSecurityOperative
+
+- type: department
+  id: EthicsCommittee
+  name: department-ethics-committee-name
+  description: department-ethics-committee-desc
+  color: "#741b47"
+  weight: 90
+  roles:
+  - EthicsCommitteeRepresentative
+
+- type: department
+  id: InternalTribunalService
+  name: department-internal-tribunal-name
+  description: department-internal-tribunal-desc
+  color: "#c27ba0"
+  weight: 85
+  roles:
+  - JudicialInspector
+  - TribunalOfficer
+
+# Служба безопасности
+
+- type: department
+  id: HeavyContainmentSecurityService
+  name: department-heavy-containment-security-service-name
+  description: department-heavy-containment-security-service-desc
+  color: "#ff0000"
+  weight: 80
+  roles:
+  - HeavyContainmentZoneCommandant
+  - SeniorHeavyContainmentZoneOfficer
+  - HeavyContainmentZoneOfficer
+  - JuniorHeavyContainmentZoneOfficer
+  - FieldMedicalSpecialist
+
+- type: department
+  id: ExternalAdministrativeZoneSecurityService
+  name: department-external-administrative-zone-security-service-name
+  description: department-external-administrative-zone-security-service-desc
+  color: "#999999"
+  weight: 75
+  roles:
+  - ExternalAdministrativeZoneCommandant
+  - SeniorExternalAdministrativeZoneOfficer
+  - ExternalAdministrativeZoneOfficer
+  - JuniorExternalAdministrativeZoneOfficer
+
+# Научный отдел
+
+- type: department
+  id: ScientificService
+  name: department-scientific-service-name
+  description: department-scientific-service-desc
+  color: "#674ea7"
+  weight: 70
+  roles:
+  - ScientificServiceDirector
+  - LeadResearcher
+  - AnomabiologyResearcher
+  - AnomarchologyResearcher
+  - ProductionSpecialist
+  - JuniorResearcher
+
+# Медицинский отдел
+
+- type: department
+  id: MedicalService
+  name: department-medical-service-name
+  description: department-medical-service-desc
+  color: "#52b4e9"
+  weight: 65
+  roles:
+  - HeadOfMedicalSector
+  - SeniorMedicalSpecialist
+  - PharmaceuticalSpecialist
+  - MedicalSpecialist
+  - Psychotherapist
+  - HospitalIntern
+
+# Инженерный отдел
+
+- type: department
+  id: EngineeringTechnicalService
+  name: department-engineering-technical-service-name
+  description: department-engineering-technical-service-desc
+  color: "#fbbc04"
+  weight: 60
+  roles:
+  - ChiefTechnicalSpecialist
+  - LeadTechnicalSpecialist
+  - GeneralTechnicalSpecialist
+  - ElectricalTechnicalSpecialist
+  - TechnicalTrainee
+
+# Отдел логистики
+
+- type: department
+  id: LogisticsService
+  name: department-logistics-service-name
+  description: department-logistics-service-desc
+  color: "#bf9000"
+  weight: 55
+  roles:
+  - SeniorLogisticsOfficer
+  - LogisticsOfficer
+
+# Департамент продовольственного и санитарного обслуживания
+
+- type: department
+  id: FoodAndSanitationServiceDepartment
+  name: department-food-and-sanitation-service-name
+  description: department-food-and-sanitation-service-desc
+  color: "#b8d8aa"
+  weight: 50
+  roles:
+  - GastronomicSpecialist
+  - BotanistPhytogeneticist
+  - ServicePersonnel
+
+# Класс Д
+
 - type: department
   id: LowAccessPersonnel
   name: department-low-access-personnel
   description: department-low-access-personnel
   color: "#FF5297"
-  weight: 80
+  weight: 45
   roles:
   - ClassDCook
   - ClassDBotanist
   - ClassDJanitor
   - ClassD
 
+# Сосать
+
 - type: department
   id: SCP
   name: department-scp
   description: department-scp
   color: "#FF5297"
-  weight: 80
+  weight: 120
   roles:
   - Scp049
   - Scp939

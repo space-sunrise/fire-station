@@ -1,0 +1,29 @@
+﻿- type: job
+  id: GeneralTechnicalSpecialist
+  name: job-name-general-technical-specialist
+  description: job-description-general-technical-specialist
+  playTimeTracker: JobGeneralTechnicalSpecialist
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+    - !type:OverallPlaytimeRequirement
+      time: 18000 # 5 часов
+  startingGear: GeneralTechnicalSpecialistGear
+  icon: JobGeneralTechnicalSpecialist
+  supervisors: job-supervisors-chief-technical-specialist
+  displayWeight: 10
+  access:
+  - Maintenance
+  - Engineering
+  - External
+  extendedAccess:
+  - Atmospherics
+
+- type: startingGear
+  id: GeneralTechnicalSpecialistGear
+  equipment:
+    eyes: ClothingEyesGlassesMeson
+    belt: ClothingBeltUtilityEngineering
+    ears: ClothingHeadsetEngineeringTechnicalService
+    id: EngineerPDA
+    #storage:
+    #back:
+    #- Stuff

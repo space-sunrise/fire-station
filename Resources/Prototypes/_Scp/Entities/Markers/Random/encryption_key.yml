@@ -1,0 +1,28 @@
+﻿- type: entity
+  name: random facility encryption key spawner
+  id: LootSpawnerFacilityEncryptionKey
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Scp/Objects/Devices/encryption_keys.rsi
+      state: crypt_blue
+    - sprite: _Scp/Objects/Devices/encryption_keys.rsi
+      state: hq_label
+  - type: RandomSpawner
+    rarePrototypes:
+      - EncryptionKeyAdministration
+      - EncryptionKeyHeavyContainmentSecurityService
+      - EncryptionKeyExternalAdministrativeZoneSecurityService
+      - EncryptionKeyInternalSecurity
+    rareChance: 0.1
+    prototypes:
+      - EncryptionKeyCommon
+      - EncryptionKeyEngineeringTechnicalService
+      - EncryptionKeyScientificService
+      - EncryptionKeyFoodAndSanitationService
+      - EncryptionKeyMedicalService
+      - EncryptionKeyLogisticsService
+    chance: 0.9
+    offset: 0.0

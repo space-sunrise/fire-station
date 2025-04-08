@@ -1,0 +1,55 @@
+﻿- type: decal
+  id: ScpMonoTileDarkCornerNe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/mono.rsi
+    state: dark_corner_ne
+
+- type: decal
+  id: ScpMonoTileDarkCornerSe
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/mono.rsi
+    state: dark_corner_se
+
+- type: decal
+  id: ScpMonoTileDarkCornerNw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/mono.rsi
+    state: dark_corner_nw
+
+- type: decal
+  id: ScpMonoTileDarkCornerSw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/mono.rsi
+    state: dark_corner_sw
+
+- type: decal
+  id: ScpMonoTileDarkLineN
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/mono.rsi
+    state: dark_line_n
+
+- type: decal
+  id: ScpMonoTileDarkLineE
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/mono.rsi
+    state: dark_line_e
+
+- type: decal
+  id: ScpMonoTileDarkLineS
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/mono.rsi
+    state: dark_line_s
+
+- type: decal
+  id: ScpMonoTileDarkLineW
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/mono.rsi
+    state: dark_line_w

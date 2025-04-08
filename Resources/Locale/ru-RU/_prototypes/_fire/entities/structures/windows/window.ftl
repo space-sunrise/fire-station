@@ -1,0 +1,16 @@
+ent-ScpWindow = окно
+    .desc = Смотри не заляпай.
+ent-ScpTintedWindow = матовое окно
+    .desc = { ent-Window.desc }
+ent-ScpWindowRCDResistant = { ent-Window }
+    .desc = { ent-Window.desc }
+ent-ScpWindowDirectional = направленное окно
+    .desc = Смотри не заляпай.
+ent-ScpWindowDirectionalRCDResistant = { ent-WindowDirectional }
+    .desc = { ent-WindowDirectional.desc }
+ent-ScpWindowFrostedDirectional = направленное матовое окно
+    .desc = Смотри не заляпай.
+ent-ScpWindowDirectionalRound = направленное окно
+    .desc = Смотри не заляпай.
+ent-ScpWindowDirectionalCorner = направленное окно
+    .desc = Смотри не заляпай.

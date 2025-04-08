@@ -12,7 +12,9 @@
     HandLabeler: 3
     ClothingBeltMedical: 2
     ClothingHandsGlovesLatex: 2
-    ClothingHeadsetMedical: 2
+    # Fire edit start
+    ClothingHeadsetMedicalService: 2
+    # Fire edit end
     ClothingOuterWinterChem: 2
   contrabandInventory:
     ToyFigurineChemist: 1

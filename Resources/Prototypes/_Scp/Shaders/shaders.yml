@@ -7,3 +7,30 @@
   id: Hide
   kind: source
   path: "/Textures/Shaders/hide.swsl"
+
+- type: shader
+  id: CRT_VHS
+  kind: source
+  path: "/Textures/_Scp/Shaders/crt_vhs.swsl"
+
+- type: shader
+  id: Grain
+  kind: source
+  path: "/Textures/_Scp/Shaders/grain.swsl"
+  params:
+    strength: 140.0
+
+- type: shader
+  id: Vignette
+  kind: source
+  path: "/Textures/_Scp/Shaders/vignette.swsl"
+
+- type: shader
+  id: Warping
+  kind: source
+  path: "/Textures/_Scp/Shaders/warping.swsl"
+
+- type: shader
+  id: Portal
+  kind: source
+  path: "/Textures/_Scp/Shaders/portal.swsl"

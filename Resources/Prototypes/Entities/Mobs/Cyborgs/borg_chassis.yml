@@ -33,7 +33,7 @@
     - Binary
     notifyChannels:
     - Binary
-    - Science
+    - ScientificService # Fire edit
 
 - type: entity
   id: BorgChassisGeneric

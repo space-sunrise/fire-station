@@ -1,0 +1,57 @@
+﻿# Голова
+- type: loadout
+  id: DirectorHat
+  equipment:
+    head: ClothingHeadHatDirector
+
+- type: loadout
+  id: DirectorCap
+  equipment:
+    head: ClothingHeadHatCapDirector
+
+# Униформа
+- type: loadout
+  id: DirectorJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitDirector
+
+- type: loadout
+  id: DirectorJumpsuitBlueFormal
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitBlueDirectorFormal
+
+# Верхняя одежда
+- type: loadout
+  id: DirectorTrench
+  equipment:
+    outerClothing: ClothingOuterCoatDirectorTrench
+
+# Перчатки
+- type: loadout
+  id: DirectorGloves
+  equipment:
+    gloves: ClothingHandsGlovesDirector
+
+- type: loadout
+  id: DirectorGlovesSpecial
+  equipment:
+    gloves: ClothingHandsGlovesDirectorSpecial
+
+# ПДА
+- type: loadout
+  id: DirectorPDA
+  equipment:
+    id: DirectorPDA
+
+# Сумка
+- type: loadout
+  id: DirectorSatchelLeather
+  equipment:
+    back: ClothingBackpackSatchelLeatherDirectorFilled
+
+# В сумке
+- type: loadout
+  id: DirectorStamp
+  storage:
+    back:
+    - RubberStampCaptain

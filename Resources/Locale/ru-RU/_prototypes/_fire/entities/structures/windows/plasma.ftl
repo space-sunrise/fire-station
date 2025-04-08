@@ -1,0 +1,11 @@
+ent-ScpPlasmaWindow = плазменное окно
+    .desc = { ent-Window.desc }
+ent-ScpPlasmaWindowDirectional = направленное плазменное окно
+    .desc = Смотри не заляпай.
+ent-ScpPlasmaWindowDiagonal = { ent-PlasmaWindow }
+    .suffix = Диагональ
+    .desc = { ent-PlasmaWindow.desc }
+ent-ScpPlasmaWindowDirectionalCorner = направленное плазменное окно
+    .desc = Смотри не заляпай.
+ent-ScpPlasmaWindowDirectionalRound = направленное плазменное окно
+    .desc = Смотри не заляпай.

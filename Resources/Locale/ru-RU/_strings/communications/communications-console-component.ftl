@@ -22,3 +22,4 @@ comms-console-announcement-title-station = Консоль связи
 comms-console-announcement-title-centcom = Штаб «О4»
 comms-console-announcement-title-nukie = Ядерные оперативники Синдиката
 comms-console-announcement-title-station-ai = Система безопасности комплекса
+comms-console-announcement-title-wizard = Маг

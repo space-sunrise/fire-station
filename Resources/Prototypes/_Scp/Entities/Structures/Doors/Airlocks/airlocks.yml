@@ -1,26 +1,258 @@
-﻿- type: entity
-  parent: HighSecDoor
-  id: HighSecScienceLocked
-  suffix: Science, Locked
+- type: entity
+  parent: ScpAirlock
+  id: ScpAirlockFreezer
+  suffix: SCP Freezer
   components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsResearch ]
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/freezer.rsi
+  - type: Wires
+    layoutId: AirlockService
 
 - type: entity
-  parent: HighSecDoor
-  id: HighSecResearchDirectorLocked
-  suffix: Research director, Locked
+  parent: ScpAirlock
+  id: ScpAirlockEngineering
+  suffix: SCP Engineering
   components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsResearchDirector ]
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/engineering.rsi
+  - type: PaintableAirlock
+    department: Engineering
+  - type: Wires
+    layoutId: AirlockEngineering
 
 - type: entity
-  parent: HighSecDoor
-  id: HighSecSecurityLocked
-  suffix: Security, Locked
+  parent: ScpAirlockEngineering
+  id: ScpAirlockAtmospherics
+  suffix: SCP Atmospherics
   components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSecurity ]
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/atmospherics.rsi
+
+- type: entity
+  parent: ScpAirlock
+  id: ScpAirlockCargo
+  suffix: SCP Cargo
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/cargo.rsi
+  - type: PaintableAirlock
+    department: Cargo
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: ScpAirlock
+  id: ScpAirlockHydroponics
+  suffix: SCP Hydroponics
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/hydroponics.rsi #Sunrise-Resprite
+  - type: Wires
+    layoutId: AirlockService
+
+- type: entity
+  parent: ScpAirlock
+  id: ScpAirlockMedical
+  suffix: SCP Medical
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/medical.rsi
+  - type: PaintableAirlock
+    department: Medical
+  - type: Wires
+    layoutId: AirlockMedical
+
+- type: entity
+  parent: ScpAirlockMedical
+  id: ScpAirlockVirology
+  suffix: SCP Virology
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/virology.rsi
+
+- type: entity
+  parent: ScpAirlockMedical
+  id: ScpAirlockChemistry
+  suffix: SCP Chemistry
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/chemistry.rsi #Sunrise-Resprite
+
+- type: entity
+  parent: ScpAirlock
+  id: ScpAirlockScience
+  suffix: SCP Science
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/science.rsi
+  - type: PaintableAirlock
+    department: Science
+  - type: Wires
+    layoutId: AirlockScience
+
+- type: entity
+  parent: ScpAirlock
+  id: ScpAirlockCommand
+  suffix: SCP Command
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/command.rsi
+  - type: WiresPanelSecurity
+    securityLevel: medSecurity
+  - type: PaintableAirlock
+    department: Command
+  - type: Wires
+    layoutId: AirlockCommand
+
+- type: entity
+  parent: ScpAirlock
+  id: ScpAirlockSecurity
+  suffix: SCP Security
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/security.rsi
+  - type: PaintableAirlock
+    department: Security
+  - type: Wires
+    layoutId: AirlockSecurity
+
+- type: entity
+  parent: ScpAirlock
+  id: ScpAirlockMaint
+  name: maintenance access
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/maint.rsi
+
+- type: entity
+  parent: ScpAirlockCommand # if you get centcom door somehow it counts as command, also inherit panel
+  id: ScpAirlockCentralCommand
+  suffix: SCP Central Command
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/centcomm.rsi
+
+# Glass
+- type: entity
+  parent: ScpAirlockGlass
+  id: ScpAirlockEngineeringGlass
+  suffix: SCP Engineering
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/engineering.rsi
+  - type: PaintableAirlock
+    department: Engineering
+  - type: Wires
+    layoutId: AirlockEngineering
+
+- type: entity
+  parent: ScpAirlockGlass
+  id: ScpAirlockMaintGlass
+  suffix: SCP Maintenance
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/maint.rsi
+
+- type: entity
+  parent: ScpAirlockEngineeringGlass
+  id: ScpAirlockAtmosphericsGlass
+  suffix: SCP Atmospherics
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/atmospherics.rsi
+
+- type: entity
+  parent: ScpAirlockGlass
+  id: ScpAirlockCargoGlass
+  suffix: SCP Cargo
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/cargo.rsi
+  - type: PaintableAirlock
+    department: Cargo
+  - type: Wires
+    layoutId: AirlockCargo
+
+- type: entity
+  parent: ScpAirlockGlass
+  id: ScpAirlockHydroponicsGlass
+  suffix: SCP Hydroponics
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/hydroponics.rsi #Sunrise-Resprite
+  - type: Wires
+    layoutId: AirlockService
+
+- type: entity
+  parent: ScpAirlockGlass
+  id: ScpAirlockMedicalGlass
+  suffix: SCP Medical
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/medical.rsi
+  - type: PaintableAirlock
+    department: Medical
+  - type: Wires
+    layoutId: AirlockMedical
+
+- type: entity
+  parent: ScpAirlockMedicalGlass
+  id: ScpAirlockChemistryGlass
+  suffix: SCP Chemistry
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/chemistry.rsi #Sunrise-Resprite
+
+- type: entity
+  parent: ScpAirlockMedicalGlass
+  id: ScpAirlockVirologyGlass
+  suffix: SCP Virology
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/virology.rsi
+
+- type: entity
+  parent: ScpAirlockGlass
+  id: ScpAirlockScienceGlass
+  suffix: SCP Science
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/science.rsi
+  - type: PaintableAirlock
+    department: Science
+  - type: Wires
+    layoutId: AirlockScience
+
+- type: entity
+  parent: ScpAirlockGlass
+  id: ScpAirlockCommandGlass
+  suffix: SCP Command
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/command.rsi
+  - type: PaintableAirlock
+    department: Command
+  - type: WiresPanelSecurity
+    securityLevel: medSecurity
+  - type: Wires
+    layoutId: AirlockCommand
+
+- type: entity
+  parent: ScpAirlockGlass
+  id: ScpAirlockSecurityGlass
+  suffix: SCP Security
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/security.rsi
+  - type: PaintableAirlock
+    department: Security
+  - type: Wires
+    layoutId: AirlockSecurity
+
+- type: entity
+  parent: ScpAirlockCommandGlass # see standard
+  id: ScpAirlockCentralCommandGlass
+  suffix: SCP Central Command
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/centcomm.rsi

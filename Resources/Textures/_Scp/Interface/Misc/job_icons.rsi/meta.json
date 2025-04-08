@@ -1,44 +1,140 @@
 {
     "version": 1,
-    "license": "CC-BY-SA-3.0",
-    "copyright": "made by discord: pacable",
+    "license": "CLA",
+    "copyright": "SUNRISE",
     "size": {
         "x": 8,
         "y": 8
     },
     "states": [
         {
-            "name": "ContainmentSpecialist"
+            "name": "Director"
         },
         {
-            "name": "BiologicalDefenseSpecialist"
+            "name": "ScientificServiceDirector"
         },
         {
-            "name": "ContainmentPsycologist"
+            "name": "SecurityCommander"
         },
         {
-            "name": "SeniorContainmentGuard"
+            "name": "ChiefTechnicalSpecialist"
         },
         {
-            "name": "ContainmentGuard"
+            "name": "PersonnelOfficer"
+        },
+        {
+            "name": "HeadOfMedicalSector"
+        },
+        {
+            "name": "SeniorLogisticsOfficer"
+        },
+        {
+            "name": "MentalControlOfficer"
+        },
+        {
+            "name": "InternalSecurityOperative"
+        },
+        {
+            "name": "EthicsCommitteeRepresentative"
+        },
+        {
+            "name": "JudicialInspector"
+        },
+        {
+            "name": "TribunalOfficer"
+        },
+        {
+            "name": "HeavyContainmentZoneCommandant"
+        },
+        {
+            "name": "SeniorHeavyContainmentZoneOfficer"
+        },
+        {
+            "name": "HeavyContainmentZoneOfficer"
+        },
+        {
+            "name": "JuniorHeavyContainmentZoneOfficer"
+        },
+        {
+            "name": "FieldMedicalSpecialist"
+        },
+        {
+            "name": "ExternalAdministrativeZoneCommandant"
+        },
+        {
+            "name": "SeniorExternalAdministrativeZoneOfficer"
+        },
+        {
+            "name": "ExternalAdministrativeZoneOfficer"
+        },
+        {
+            "name": "JuniorExternalAdministrativeZoneOfficer"
+        },
+        {
+            "name": "LeadResearcher"
+        },
+        {
+            "name": "AnomabiologyResearcher"
+        },
+        {
+            "name": "AnomarchologyResearcher"
+        },
+        {
+            "name": "ProductionSpecialist"
+        },
+        {
+            "name": "JuniorResearcher"
+        },
+        {
+            "name": "SeniorMedicalSpecialist"
+        },
+        {
+            "name": "PharmaceuticalSpecialist"
+        },
+        {
+            "name": "MedicalSpecialist"
+        },
+        {
+            "name": "Psychotherapist"
+        },
+        {
+            "name": "HospitalIntern"
+        },
+        {
+            "name": "LeadTechnicalSpecialist"
+        },
+        {
+            "name": "GeneralTechnicalSpecialist"
+        },
+        {
+            "name": "ElectricalTechnicalSpecialist"
+        },
+        {
+            "name": "TechnicalTrainee"
+        },
+        {
+            "name": "LogisticsOfficer"
+        },
+        {
+            "name": "GastronomicSpecialist"
+        },
+        {
+            "name": "BotanistPhytogeneticist"
+        },
+        {
+            "name": "ServicePersonnel"
+        },
+        {
+            "name": "ClassDCook"
+        },
+        {
+            "name": "ClassDBotanist"
+        },
+        {
+            "name": "ClassDJanitor"
         },
         {
             "name": "ClassD"
-        },
-        {
-            "name": "Governor"
-        },
-        {
-            "name": "PerimeterSecurityOfficer"
-        },
-        {
-            "name": "FieldScientist"
-        },
-        {
-            "name": "SiteManager"
-        },
-        {
-            "name": "HeadOfContainment"
         }
     ]
 }

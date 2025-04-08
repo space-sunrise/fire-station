@@ -101,8 +101,7 @@
     sounds:
       Unsexed: Reaper
   - type: RandomMetadata
-    nameSegments:
-    - names_first_reaper
+    nameSegments: [NamesBorg]
   - type: InnateItem
     worldTargetActions:
     - Emag
@@ -164,20 +163,22 @@
     noMindState: ert_borg_e_r
   - type: IntrinsicRadioTransmitter
     channels:
-    - Security
     - Binary
+    # Fire edit start
     - Common
-    - Science
-    - Command
-    - CentCom
+    - ScientificService
+    - Administration
+    - RegionalAdministration
+    # Fire edit end
   - type: ActiveRadio
     channels:
-    - Security
     - Binary
+    # Fire edit start
     - Common
-    - Science
-    - Command
-    - CentCom
+    - ScientificService
+    - Administration
+    - RegionalAdministration
+    # Fire edit end
   - type: AccessReader
     access: [["Security"], ["Command"], ["Research"]]
   - type: SiliconLawProvider
@@ -213,8 +214,7 @@
     - Hydroponics
     - Atmospherics
   - type: RandomMetadata
-    nameSegments:
-    - BorgNamesERT
+    nameSegments: [NamesBorg]
   - type: MovementSpeedModifier
     baseWalkSpeed : 2.5
     baseSprintSpeed : 4.5
@@ -228,25 +228,6 @@
     instantActions:
     - PortableSurveillanceCameraMonitor
     - HandheldCrewMonitorBorg
-
-- type: dataset
-  id: BorgNamesERT
-  values:
-  - Хал 900
-  - Ева
-  - Прайм
-  - Джет
-  - Арнольд
-  - Систэм
-  - Вавилон
-  - Логан
-  - Гэбриэл
-  - Майкл
-  - Рафаэль
-  - Уриэль
-  - Иеримиил
-  - Сариэль
-  - Рамиэль
 
 - type: entity
   id: BorgChassisSyndicateHeavy
@@ -343,8 +324,7 @@
   - type: RandomHumanoidAppearance
     randomizeName: False
   - type: RandomMetadata
-    nameSegments:
-    - BorgHeavyNames
+    nameSegments: [NamesBorg]
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepCyborgSpider
@@ -428,8 +408,7 @@
   - type: RandomHumanoidAppearance
     randomizeName: False
   - type: RandomMetadata
-    nameSegments:
-    - BorgScoutNames
+    nameSegments: [NamesBorg]
   - type: MovementSpeedModifier
     baseWalkSpeed : 3
     baseSprintSpeed : 5

@@ -164,10 +164,10 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Scp/scp-106.rsi
+    sprite: _Scp/Scp106/scp106.rsi
     layers:
     - map: [ "base" ]
-      state: 106
+      state: base
   - type: Scp106
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
@@ -201,14 +201,15 @@
     visuals:
       enum.Scp106Visuals.Visuals:
         base:
-          Default: { state: 106 }
+          Default: { state: base }
           Entering: { state: lusha_from_ded }
           Exiting: { state: ded_from_lusha }
   - type: ActionGrant
     actions:
-    - Scp106BackroomsAction
+    - BecomeTeleportPhantomAction
     - Scp106RandomTeleportAction
-    - Scp106BecomePhantom
+    - Scp106BackroomsAction
+    - ActionScp106Shop
   - type: TTS
     voice: HearthstoneSotis
   - type: FootstepModifier
@@ -245,3 +246,18 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+  - type: Store
+    balance:
+      LifeEssence: 20
+    currencyWhitelist:
+    - LifeEssence
+    categories:
+    - Scp106Abilities
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: StatusEffects
+    allowed:
+    - Stun
+  - type: ComplexInteraction

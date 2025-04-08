@@ -8,27 +8,35 @@
   - type: IntrinsicRadioTransmitter
     channels:
     - Binary
-    - Common
-    - Command
-    - Engineering
-    - Law # Sunrise-edit
-    - Medical
-    - Science
-    - Security
-    - Service
-    - Supply
+    # Fire edit start
+    - Administration
+    - InternalSecurity
+    - EthicsCommittee
+    - InternalTribunalService
+    - HeavyContainmentSecurityService
+    - ExternalAdministrativeZoneSecurityService
+    - ScientificService
+    - MedicalService
+    - EngineeringTechnicalService
+    - LogisticsService
+    - FoodAndSanitationService
+    # Fire edit end
   - type: ActiveRadio
     channels:
     - Binary
-    - Common
-    - Command
-    - Engineering
-    - Law # Sunrise-edit
-    - Medical
-    - Science
-    - Security
-    - Service
-    - Supply
+    # Fire edit start
+    - Administration
+    - InternalSecurity
+    - EthicsCommittee
+    - InternalTribunalService
+    - HeavyContainmentSecurityService
+    - ExternalAdministrativeZoneSecurityService
+    - ScientificService
+    - MedicalService
+    - EngineeringTechnicalService
+    - LogisticsService
+    - FoodAndSanitationService
+    # Fire edit end
   - type: IgnoreUIRange
   - type: StationAiHeld
   - type: StationAiOverlay
@@ -436,6 +444,7 @@
   - type: Access
     groups:
     - AllAccess
+    - Silicon
   - type: Eye
     drawFov: false
   - type: Examiner
@@ -451,6 +460,9 @@
   - type: StartingMindRole
     mindRole: "MindRoleSiliconBrain"
     silent: true
+  # Fire added start
+  - type: RetroMonitorView
+  # Fire added end
 
 # Hologram projection that the AI's eye tracks.
 - type: entity
@@ -618,7 +630,7 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellHigh
   - type: RandomMetadata
-    nameSegments: [names_borg]
+    nameSegments: [NamesBorg]
 
 - type: entity
   id: PlayerBorgDerelictGhostRole

@@ -1,7 +1,5 @@
 ﻿- type: entity
   id: Scp106CatwalkBase
-  name: accelerating catwalk
-  description: High-tech catwalk that speeds up everyone who moves on it
   parent: Catwalk
   placement:
     mode: SnapgridCenter
@@ -25,13 +23,11 @@
 - type: entity
   parent: Scp106CatwalkBase
   id: Scp106CatwalkTarget
-  suffix: Цель
   components:
   - type: Scp106CatwalkTarget
 
 - type: entity
   parent: Scp106CatwalkBase
   id: Scp106CatwalkContainer
-  suffix: Сдерживатель
   components:
   - type: Scp106CatwalkContainer

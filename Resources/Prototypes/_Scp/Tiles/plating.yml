@@ -1,0 +1,16 @@
+﻿- type: tile
+  id: ScpPlating
+  name: tiles-plating
+  sprite: /Textures/_Scp/Tiles/plating.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Lattice
+  isSubfloor: true
+  footstepSounds:
+    collection: FootstepPlating
+  friction: 0.3
+  heatCapacity: 10000

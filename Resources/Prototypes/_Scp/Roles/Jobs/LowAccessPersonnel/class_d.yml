@@ -1,0 +1,20 @@
+- type: job
+  id: ClassD
+  name: job-name-class-d
+  description: job-description-class-d
+  playTimeTracker: JobClassD
+  startingGear: ClassDGear
+  icon: JobClassD
+  supervisors: job-supervisors-security-and-research
+  alwaysUseSpawner: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: ClassDAppearance
+
+- type: startingGear
+  id: ClassDGear
+  equipment:
+    jumpsuit: ClothingUniformClassD
+    shoes: ClothingShoesClassD
+    id: ClassDIDCard

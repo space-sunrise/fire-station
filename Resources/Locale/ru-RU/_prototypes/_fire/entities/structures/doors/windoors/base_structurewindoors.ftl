@@ -1,0 +1,12 @@
+ent-ScpBaseWindoor = { ent-BaseStructure }
+    .desc = { ent-BaseStructure.desc }
+ent-ScpBaseSecureWindoor = { ent-BaseWindoor }
+    .desc = { ent-BaseWindoor.desc }
+ent-ScpBasePlasmaWindoor = { ent-BaseWindoor }
+    .desc = { ent-BaseWindoor.desc }
+ent-ScpBaseSecurePlasmaWindoor = { ent-BaseSecureWindoor }
+    .desc = { ent-BaseSecureWindoor.desc }
+ent-ScpBaseUraniumWindoor = { ent-BaseWindoor }
+    .desc = { ent-BaseWindoor.desc }
+ent-ScpBaseSecureUraniumWindoor = { ent-BaseSecureWindoor }
+    .desc = { ent-BaseSecureWindoor.desc }

@@ -1,3 +1,144 @@
+# Руководство
+
+- type: playTimeTracker
+  id: JobDirector
+
+- type: playTimeTracker
+  id: JobScientificServiceDirector
+
+- type: playTimeTracker
+  id: JobSecurityCommander
+
+- type: playTimeTracker
+  id: JobChiefTechnicalSpecialist
+
+- type: playTimeTracker
+  id: JobPersonnelOfficer
+
+- type: playTimeTracker
+  id: JobHeadOfMedicalSector
+
+- type: playTimeTracker
+  id: JobSeniorLogisticsOfficer
+
+# Комитет по этике
+
+- type: playTimeTracker
+  id: JobEthicsCommitteeRepresentative
+
+# Департамент внутренней безопасности
+
+- type: playTimeTracker
+  id: JobMentalControlOfficer
+
+- type: playTimeTracker
+  id: JobInternalSecurityOperative
+
+# Департамент внутреннего трибунала
+
+- type: playTimeTracker
+  id: JobJudicialInspector
+
+- type: playTimeTracker
+  id: JobTribunalOfficer
+
+# Служба безопасности тяжелой зоны
+
+- type: playTimeTracker
+  id: JobHeavyContainmentZoneCommandant
+
+- type: playTimeTracker
+  id: JobSeniorHeavyContainmentZoneOfficer
+
+- type: playTimeTracker
+  id: JobHeavyContainmentZoneOfficer
+
+- type: playTimeTracker
+  id: JobJuniorHeavyContainmentZoneOfficer
+
+- type: playTimeTracker
+  id: JobFieldMedicalSpecialist
+
+# Служба безопасности внешней административной зоны
+
+- type: playTimeTracker
+  id: JobExternalAdministrativeZoneCommandant
+
+- type: playTimeTracker
+  id: JobSeniorExternalAdministrativeZoneOfficer
+
+- type: playTimeTracker
+  id: JobExternalAdministrativeZoneOfficer
+
+- type: playTimeTracker
+  id: JobJuniorExternalAdministrativeZoneOfficer
+
+# Научный отдел
+
+- type: playTimeTracker
+  id: JobLeadResearcher
+
+- type: playTimeTracker
+  id: JobAnomabiologyResearcher
+
+- type: playTimeTracker
+  id: JobAnomarchologyResearcher
+
+- type: playTimeTracker
+  id: JobProductionSpecialist
+
+- type: playTimeTracker
+  id: JobJuniorResearcher
+
+# Медицинский отдел
+
+- type: playTimeTracker
+  id: JobSeniorMedicalSpecialist
+
+- type: playTimeTracker
+  id: JobPharmaceuticalSpecialist
+
+- type: playTimeTracker
+  id: JobMedicalSpecialist
+
+- type: playTimeTracker
+  id: JobPsychotherapist
+
+- type: playTimeTracker
+  id: JobHospitalIntern
+
+# Инженерный отдел
+
+- type: playTimeTracker
+  id: JobLeadTechnicalSpecialist
+
+- type: playTimeTracker
+  id: JobGeneralTechnicalSpecialist
+
+- type: playTimeTracker
+  id: JobElectricalTechnicalSpecialist
+
+- type: playTimeTracker
+  id: JobTechnicalTrainee
+
+# Отдел логистики
+
+- type: playTimeTracker
+  id: JobLogisticsOfficer
+
+# Департамент продовольственного и санитарного обслуживания
+
+- type: playTimeTracker
+  id: JobGastronomicSpecialist
+
+- type: playTimeTracker
+  id: JobBotanistPhytogeneticist
+
+- type: playTimeTracker
+  id: JobServicePersonnel
+
+# Класс Д
+
 - type: playTimeTracker
   id: JobClassD
 
@@ -9,6 +150,8 @@
 
 - type: playTimeTracker
   id: JobClassDJanitor
+
+# SCP
 
 - type: playTimeTracker
   id: JobScp173

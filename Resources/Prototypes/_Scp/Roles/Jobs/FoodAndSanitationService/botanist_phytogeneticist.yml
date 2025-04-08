@@ -1,0 +1,30 @@
+﻿- type: job
+  id: BotanistPhytogeneticist
+  name: job-name-botanist-phytogeneticist
+  description: job-description-botanist-phytogeneticist
+  playTimeTracker: JobBotanistPhytogeneticist
+  startingGear: BotanistPhytogeneticistGear
+  icon: JobBotanistPhytogeneticist
+  supervisors: job-supervisors-personnel-officer
+  access:
+  - Service
+  - Maintenance
+  - Hydroponics
+  extendedAccess:
+  - Kitchen
+  - Bar
+  special:
+  - !type:GiveItemOnHolidaySpecial
+    holiday: FourTwenty
+    prototype: CannabisSeeds
+
+- type: startingGear
+  id: BotanistPhytogeneticistGear
+  equipment:
+    shoes: ClothingShoesColorBrown
+    id: BotanistPDA
+    ears: ClothingHeadsetFoodAndSanitation
+    belt: ClothingBeltPlantFilled
+    #storage:
+    #back:
+    #- Stuff

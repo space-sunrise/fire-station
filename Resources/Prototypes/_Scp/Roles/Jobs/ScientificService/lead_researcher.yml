@@ -1,0 +1,26 @@
+﻿- type: job
+  id: LeadResearcher
+  name: job-name-lead-researcher
+  description: job-description-lead-researcher
+  playTimeTracker: JobLeadResearcher
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 54000 # 15 часов
+  startingGear: LeadResearcherGear
+  icon: JobLeadResearcher
+  supervisors: job-supervisors-scientific-service-director
+  displayWeight: 35
+  access:
+  - Research
+  - Maintenance
+
+- type: startingGear
+  id: LeadResearcherGear
+  equipment:
+    head: ClothingHeadHatBeretRND
+    id: SeniorResearcherPDA
+    ears: ClothingHeadsetScientificService
+    outerClothing: ClothingOuterCoatLabSeniorResearcher
+  storage:
+    back:
+    - WeaponPistolCHIMP

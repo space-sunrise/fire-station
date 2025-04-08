@@ -1,0 +1,38 @@
+﻿ent-EncryptionKeyRegionalAdministration = { ent-EncryptionKey } региональной администрации
+    .desc = { ent-EncryptionKey.desc }
+
+ent-EncryptionKeyFacilityMaster = мастер { ent-EncryptionKey }
+    .desc = { ent-EncryptionKey.desc }
+
+ent-EncryptionKeyAdministration = { ent-EncryptionKey } администрации комплекса
+    .desc = { ent-EncryptionKey.desc }
+
+ent-EncryptionKeyInternalSecurity = { ent-EncryptionKey } отдела внутренней безопасности
+    .desc = { ent-EncryptionKey.desc }
+
+ent-EncryptionKeyInternalTribunalService = { ent-EncryptionKey } отдела внутреннего трибунала
+    .desc = { ent-EncryptionKey.desc }
+
+ent-EncryptionKeyEthicsCommittee = { ent-EncryptionKey } комитета по этике
+    .desc = { ent-EncryptionKey.desc }
+
+ent-EncryptionKeyHeavyContainmentSecurityService = { ent-EncryptionKey } службы безопасности тяжелой зоны
+    .desc = { ent-EncryptionKey.desc }
+
+ent-EncryptionKeyExternalAdministrativeZoneSecurityService = { ent-EncryptionKey } службы безопасности внешней-административной зоны
+    .desc = { ent-EncryptionKey.desc }
+
+ent-EncryptionKeyScientificService = { ent-EncryptionKey } научной службы
+    .desc = { ent-EncryptionKey.desc }
+
+ent-EncryptionKeyMedicalService = { ent-EncryptionKey } медицинской службы
+    .desc = { ent-EncryptionKey.desc }
+
+ent-EncryptionKeyEngineeringTechnicalService = { ent-EncryptionKey } инженерно-технической службы
+    .desc = { ent-EncryptionKey.desc }
+
+ent-EncryptionKeyLogisticsService = { ent-EncryptionKey } отдела логистики
+    .desc = { ent-EncryptionKey.desc }
+
+ent-EncryptionKeyFoodAndSanitationService = { ent-EncryptionKey } санитарно-продовольственного отдела
+    .desc = { ent-EncryptionKey.desc }

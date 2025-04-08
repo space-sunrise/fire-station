@@ -40,7 +40,38 @@
   interruptable: true
   priority: 1
 
+- type: ambientMusic
+  id: ShiftAdded
+  sound:
+    collection: FireAmbienceShiftAdded
+    params:
+      volume: -12
+      loop: true
+  rules: AlwaysFalse
+
+- type: ambientMusic
+  id: ShiftStarted
+  sound:
+    collection: FireAmbienceShiftStarted
+    params:
+      volume: -6
+      loop: true
+  rules: AlwaysFalse
+
+- type: ambientMusic
+  id: ShiftAverted
+  sound:
+    collection: FireAmbienceShiftAverted
+    params:
+      loop: true
+  rules: AlwaysFalse
+
 # Rules
+
+- type: rules
+  id: AlwaysFalse
+  rules:
+  - !type:AlwaysFalseRule
 
 - type: rules
   id: NearScp173

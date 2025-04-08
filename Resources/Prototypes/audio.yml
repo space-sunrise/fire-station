@@ -251,9 +251,9 @@
       ignoreAnchored: true
       percent: 0.5
       tiles:
-      - FSFloorWhite # Fire
-      - FSFloorWhiteMini # Fire
-      - FSFloorWhiteMini # Fire
+      - ScpFloorWhite # Fire
+      - ScpFloorWhiteMini # Fire
+      - ScpFloorWhiteMini # Fire
       range: 3
 
 - type: rules

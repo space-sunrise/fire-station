@@ -1,0 +1,83 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by discord: odlieerr",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "steel_corner_ne"
+        },
+        {
+            "name": "steel_corner_se"
+        },
+        {
+            "name": "steel_corner_nw"
+        },
+        {
+            "name": "steel_corner_sw"
+        },
+        {
+            "name": "steel_line_n"
+        },
+        {
+            "name": "steel_line_e"
+        },
+        {
+            "name": "steel_line_s"
+        },
+        {
+            "name": "steel_line_w"
+        },
+        {
+            "name": "white_corner_ne"
+        },
+        {
+            "name": "white_corner_se"
+        },
+        {
+            "name": "white_corner_nw"
+        },
+        {
+            "name": "white_corner_sw"
+        },
+        {
+            "name": "white_line_n"
+        },
+        {
+            "name": "white_line_e"
+        },
+        {
+            "name": "white_line_s"
+        },
+        {
+            "name": "white_line_w"
+        },
+        {
+            "name": "dark_corner_ne"
+        },
+        {
+            "name": "dark_corner_se"
+        },
+        {
+            "name": "dark_corner_nw"
+        },
+        {
+            "name": "dark_corner_sw"
+        },
+        {
+            "name": "dark_line_n"
+        },
+        {
+            "name": "dark_line_e"
+        },
+        {
+            "name": "dark_line_s"
+        },
+        {
+            "name": "dark_line_w"
+        }
+    ]
+}

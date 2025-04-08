@@ -8,7 +8,7 @@
 - type: radioChannel
   id: CentCom
   name: chat-radio-centcom
-  keycode: 'ц' # Sunrise-Localization
+  keycode: '1' # Fire edit - чтобы не конфликтовало
   frequency: 1337
   color: "#2681a5"
   longRange: true
@@ -16,56 +16,56 @@
 - type: radioChannel
   id: Command
   name: chat-radio-command
-  keycode: 'к' # Sunrise-Localization
+  keycode: '2' # Fire edit - чтобы не конфликтовало
   frequency: 1353
   color: "#d1c56b" # Fire edit
 
 - type: radioChannel
   id: Engineering
   name: chat-radio-engineering
-  keycode: 'и' # Sunrise-Localization
+  keycode: '3' # Fire edit - чтобы не конфликтовало
   frequency: 1357
   color: "#cf8f76" # Fire edit
 
 - type: radioChannel
   id: Medical
   name: chat-radio-medical
-  keycode: 'м' # Sunrise-Localization
+  keycode: '4' # Fire edit - чтобы не конфликтовало
   frequency: 1355
   color: "#5b94aa" # Fire edit
 
 - type: radioChannel
   id: Science
   name: chat-radio-science
-  keycode: 'н' # Sunrise-Localization
+  keycode: '5' # Fire edit - чтобы не конфликтовало
   frequency: 1351
   color: "#c49dc4" # Fire edit
 
 - type: radioChannel
   id: Security
   name: chat-radio-security
-  keycode: 'о' # Sunrise-Localization
+  keycode: '6' # Fire edit - чтобы не конфликтовало
   frequency: 1359
   color: "#d87777" # Fire edit
 
 - type: radioChannel
   id: Service
   name: chat-radio-service
-  keycode: 'с' # Sunrise-Localization
+  keycode: '7' # Fire edit - чтобы не конфликтовало
   frequency: 1349
   color: "#849b6a" # Fire edit
 
 - type: radioChannel
   id: Supply
   name: chat-radio-supply
-  keycode: 'п' # Sunrise-Localization
+  keycode: '8' # Fire edit - чтобы не конфликтовало
   frequency: 1347
   color: "#b99f7d" # Fire edit
 
 - type: radioChannel
   id: Syndicate
   name: chat-radio-syndicate
-  keycode: 'т' # Sunrise-Localization
+  keycode: '9' # Fire edit - чтобы не конфликтовало
   frequency: 1213
   color: "#976162" # Fire edit
   longRange: true
@@ -81,7 +81,7 @@
 - type: radioChannel
   id: Binary
   name: chat-radio-binary
-  keycode: 'д' # Sunrise-Localization
+  keycode: 'д' # Fire edit - чтобы не конфликтовало
   frequency: 1001
   color: "#9fd6c1" # Fire edit
   # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
@@ -90,7 +90,7 @@
 - type: radioChannel
   id: Freelance
   name: chat-radio-freelance
-  keycode: 'ф' # Sunrise-Localization
+  keycode: 'ф' # Fire edit - чтобы не конфликтовало
   frequency: 1984
   color: "#f6ce64"
   # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms

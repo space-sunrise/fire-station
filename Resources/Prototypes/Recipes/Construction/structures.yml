@@ -1,3 +1,4 @@
+# Fire edit: Большую часть спрайтов заменили на scp версию
 - type: construction
   name: girder
   id: Girder
@@ -61,7 +62,7 @@
   category: construction-category-structures
   description: Keeps the air in and the greytide out.
   icon:
-    sprite: Structures/Walls/solid.rsi
+    sprite: _Scp/Structures/Walls/solid.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -79,7 +80,7 @@
   category: construction-category-structures
   description: Keeps the air in and the greytide out.
   icon:
-    sprite: Structures/Walls/solid.rsi
+    sprite: _Scp/Structures/Walls/solid.rsi
     state: rgeneric
   objectType: Structure
   placementMode: SnapgridCenter
@@ -387,7 +388,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/window.rsi
+    sprite: _Scp/Structures/Windows/window.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -406,7 +407,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/window_diagonal.rsi
+    sprite: _Scp/Structures/Windows/window_diagonal.rsi
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
@@ -424,7 +425,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_window.rsi
+    sprite: _Scp/Structures/Windows/reinforced_window.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -443,7 +444,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_window_diagonal.rsi
+    sprite: _Scp/Structures/Windows/reinforced_window_diagonal.rsi
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
@@ -461,7 +462,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/tinted_window.rsi
+    sprite: _Scp/Structures/Windows/tinted_window.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -517,7 +518,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/plasma_window.rsi
+    sprite: _Scp/Structures/Windows/plasma_window.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -536,7 +537,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_plasma_window.rsi
+    sprite: _Scp/Structures/Windows/reinforced_plasma_window.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -574,7 +575,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/plasma_diagonal.rsi
+    sprite: _Scp/Structures/Windows/plasma_diagonal.rsi
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
@@ -592,7 +593,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_plasma_diagonal.rsi
+    sprite: _Scp/Structures/Windows/reinforced_plasma_diagonal.rsi
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
@@ -610,7 +611,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Scp/Structures/Windows/directional.rsi
     state: window
   objectType: Structure
   placementMode: SnapgridCenter
@@ -628,7 +629,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Scp/Structures/Windows/directional.rsi
     state: reinforced_window
   objectType: Structure
   placementMode: SnapgridCenter
@@ -664,7 +665,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Scp/Structures/Windows/directional.rsi
     state: plasma_window
   objectType: Structure
   placementMode: SnapgridCenter
@@ -682,7 +683,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/directional.rsi
+    sprite: _Scp/Structures/Windows/directional.rsi
     state: plasma_reinforced_window
   objectType: Structure
   placementMode: SnapgridCenter
@@ -700,7 +701,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/uranium_window.rsi
+    sprite: _Scp/Structures/Windows/uranium_window.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -719,7 +720,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_uranium_window.rsi
+    sprite: _Scp/Structures/Windows/reinforced_uranium_window.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -738,7 +739,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/uranium_window_diagonal.rsi
+    sprite: _Scp/Structures/Windows/uranium_window_diagonal.rsi
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
@@ -756,7 +757,7 @@
     - !type:EmptyOrWindowValidInTile
     - !type:NoWindowsInTile
   icon:
-    sprite: Structures/Windows/reinforced_uranium_diagonal.rsi
+    sprite: _Scp/Structures/Windows/reinforced_uranium_diagonal.rsi
     state: state1
   objectType: Structure
   placementMode: SnapgridCenter
@@ -823,7 +824,7 @@
   category: construction-category-structures
   description: This is a shutter - connect it to a button to open and close it.
   icon:
-    sprite: Structures/Doors/Shutters/shutters.rsi
+    sprite: _Scp/Structures/Doors/Shutters/shutters.rsi
     state: closed
   objectType: Structure
   placementMode: SnapgridCenter
@@ -838,7 +839,7 @@
   category: construction-category-structures
   description: This is a shutter - connect it to a button to open and close it.
   icon:
-    sprite: Structures/Doors/Shutters/shutters_window.rsi
+    sprite: _Scp/Structures/Doors/Shutters/shutters_window.rsi
     state: closed
   objectType: Structure
   placementMode: SnapgridCenter
@@ -853,7 +854,7 @@
   category: construction-category-structures
   description: This is a shutter - connect it to a button to open and close it.
   icon:
-    sprite: Structures/Doors/Shutters/shutters_radiation.rsi
+    sprite: _Scp/Structures/Doors/Shutters/shutters_radiation.rsi
     state: closed
   objectType: Structure
   placementMode: SnapgridCenter
@@ -868,7 +869,7 @@
   category: construction-category-structures
   description: This one says 'BLAST DONGER'.
   icon:
-    sprite: Structures/Doors/Shutters/blastdoor.rsi
+    sprite: _Scp/Structures/Doors/Shutters/blastdoor.rsi
     state: closed
   objectType: Structure
   placementMode: SnapgridCenter
@@ -1270,7 +1271,7 @@
   category: construction-category-structures
   description: It opens, it closes, and maybe crushes you.
   icon:
-    sprite: Structures/Doors/Airlocks/Standard/basic.rsi
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/basic.rsi
     state: assembly
   objectType: Structure
   placementMode: SnapgridCenter
@@ -1287,7 +1288,7 @@
   category: construction-category-structures
   description: It opens, it closes, and maybe crushes you.
   icon:
-    sprite: Structures/Doors/Airlocks/Glass/glass.rsi
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/glass.rsi
     state: assembly
   objectType: Structure
   placementMode: SnapgridCenter
@@ -1338,7 +1339,7 @@
   category: construction-category-structures
   description: It opens, it closes, and maybe crushes you. Necessary for connecting two space craft together.
   icon:
-    sprite: Structures/Doors/Airlocks/Glass/shuttle.rsi
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/shuttle.rsi
     state: closed
   #  state: assembly
   objectType: Structure
@@ -1356,7 +1357,7 @@
   category: construction-category-structures
   description: It opens, it closes, and maybe crushes you. Necessary for connecting two space craft together. This one has a window.
   icon:
-    sprite: Structures/Doors/Airlocks/Glass/shuttle.rsi
+    sprite: _Scp/Structures/Doors/Airlocks/Glass/shuttle.rsi
     state: closed
   #  state: assembly
   objectType: Structure
@@ -1374,7 +1375,7 @@
   category: construction-category-structures
   description: It opens, it closes, and you can see through it! And it can be made of Plasma, Uranium, or normal Glass!
   icon:
-    sprite: Structures/Doors/Windoors/windoor.rsi
+    sprite: _Scp/Structures/Doors/Windoors/windoor.rsi
     state: closed
   objectType: Structure
   placementMode: SnapgridCenter
@@ -1391,7 +1392,7 @@
   category: construction-category-structures
   description: It's tough, it's a door, and you can see through it! And it can be made of Plasma, Uranium, or normal Glass!
   icon:
-    sprite: Structures/Doors/Windoors/windoor.rsi
+    sprite: _Scp/Structures/Doors/Windoors/secure_windoor.rsi
     state: closed
   objectType: Structure
   placementMode: SnapgridCenter
@@ -1639,7 +1640,7 @@
   objectType: Structure
   canBuildInImpassable: false
   icon:
-    sprite: Structures/plastic_flaps.rsi
+    sprite: _Scp/Structures/plastic_flaps.rsi
     state: plasticflaps
   conditions:
     - !type:TileNotBlocked
@@ -1656,7 +1657,7 @@
   objectType: Structure
   canBuildInImpassable: false
   icon:
-    sprite: Structures/plastic_flaps.rsi
+    sprite: _Scp/Structures/plastic_flaps.rsi
     state: plasticflaps
   conditions:
     - !type:TileNotBlocked
@@ -1742,7 +1743,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   icon:
-    sprite: Structures/Doors/secret_door.rsi
+    sprite: _Scp/Structures/Doors/secret_door.rsi
     state: closed
   conditions:
     - !type:TileNotBlocked

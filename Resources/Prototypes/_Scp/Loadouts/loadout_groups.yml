@@ -1,6 +1,8 @@
+# Служба безопасности внешней административной зоны
+
 - type: loadoutGroup
   id: GuardHead
-  name: loadout-group-security-head
+  name: loadout-group-head
   minLimit: 0
   loadouts:
   - GuardHelmet
@@ -10,7 +12,7 @@
 
 - type: loadoutGroup
   id: GuardJumpsuit
-  name: loadout-group-security-jumpsuit
+  name: loadout-group-jumpsuit
   loadouts:
   - GuardJumpsuit
   - GuardJumpsuit2
@@ -18,39 +20,58 @@
 
 - type: loadoutGroup
   id: GuardGloves
-  name: loadout-group-security-gloves
+  name: loadout-group-gloves
   loadouts:
   - GuardGloves
   - GuardGlovesWinter
 
 - type: loadoutGroup
   id: GuardMantle
-  name: loadout-group-security-mantle
+  name: loadout-group-neck
   minLimit: 0
   loadouts:
   - GuardMantle
 
 - type: loadoutGroup
   id: GuardArmorVest
-  name: loadout-group-security-outerclothing
+  name: loadout-group-outer-clothing
   loadouts:
   - GuardArmorVest
   - GuardArmorVest2
 
 - type: loadoutGroup
   id: GuardShoes
-  name: loadout-group-security-shoes
+  name: loadout-group-shoes
   loadouts:
   - GuardCombatBoots
   - GuardWinterBoots
 
 - type: loadoutGroup
   id: GuardCadetHead
-  name: loadout-group-security-cadet-helmet
+  name: loadout-group-head
   minLimit: 0
   loadouts:
   - GuardHelmet
   - GuardHelmet2
+
+# Оперативник Внутренней Безопасности
+
+- type: loadoutGroup
+  id: InternalSecurityOperativeBackpack
+  name: loadout-group-backpack
+  loadouts:
+  - InternalSecurityOperativeBackpack
+  - InternalSecurityOperativeSatchel
+  - InternalSecurityOperativeDuffel
+
+- type: loadoutGroup
+  id: InternalSecurityOperativeJumpsuit
+  name: loadout-group-jumpsuit
+  loadouts:
+  - InternalSecurityOperativeJumpsuit
+  - InternalSecurityOperativeJumpskirt
+
+# Общие
 
 - type: loadoutGroup
   id: CommonMiscItems

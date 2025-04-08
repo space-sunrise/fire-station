@@ -1,0 +1,126 @@
+﻿# Служба безопасности тяжелой зоны
+
+- type: entity
+  parent: [ClothingHeadset, BaseSecurityLawyerContraband]
+  id: ClothingHeadsetHeavyContainmentSecurityService
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyHeavyContainmentSecurityService
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/security.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/security.rsi
+
+- type: entity
+  parent: [ClothingHeadset, BaseSecurityContraband]
+  id: ClothingHeadsetFieldMedicalSpecialist
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMedicalService
+      - EncryptionKeyHeavyContainmentSecurityService
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/brigmedic.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/brigmedic.rsi
+
+# Служба безопасности внешней административной зоны
+
+- type: entity
+  parent: [ClothingHeadset, BaseSecurityLawyerContraband]
+  id: ClothingHeadsetExternalAdministrativeZoneSecurityService
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyExternalAdministrativeZoneSecurityService
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/security.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/security.rsi
+
+# Научный отдел
+
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetScientificService
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyScientificService
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/science.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/science.rsi
+
+# Медицинский отдел
+
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetMedicalService
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMedicalService
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/medical.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/medical.rsi
+
+# Инженерно-технический отдел
+
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetEngineeringTechnicalService
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyEngineeringTechnicalService
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/engineering.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/engineering.rsi
+
+# Отдел логистики
+
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetLogistics
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyLogisticsService
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/cargo.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/cargo.rsi
+
+# Департамент продовольствия и санитарной службы
+
+- type: entity
+  parent: ClothingHeadset
+  id: ClothingHeadsetFoodAndSanitation
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyFoodAndSanitationService
+      - EncryptionKeyCommon
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/service.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/service.rsi
