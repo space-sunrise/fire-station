@@ -13,8 +13,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterTattered
-  name: порванный плакат
-  description: От него остались лишь жалкие обрывки, непозволяющие различить оригинальное изображение
   components:
   - type: Sprite
     state: tattered
@@ -22,8 +20,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterScp
-  name: Secure Contain Protect
-  description: Плакат с эмблемой организации SCP
   components:
   - type: Sprite
     state: scp
@@ -31,8 +27,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterChaos
-  name: Хаос
-  description: Плакат с эмблемой повстанцев хаоса
   components:
   - type: Sprite
     state: chaos
@@ -40,8 +34,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterGoc
-  name: Г.О.К.
-  description: Плакат с эмблемой Глобальной Оккультной Организации
   components:
   - type: Sprite
     state: goc
@@ -49,8 +41,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterChanges
-  name: Перемен
-  description: Содержание этого плаката вам что-то напоминает.. Что?..
   components:
   - type: Sprite
     state: changes
@@ -58,17 +48,13 @@
 - type: entity
   parent: PosterScpBase
   id: PosterBreath
-  name: Дыши!
-  description: Плакат, призывающий... дышать!!
   components:
   - type: Sprite
     state: breath
 
 - type: entity
   parent: PosterScpBase
-  id: PosterNtYours
-  name: SCP твое!
-  description: Плакат, призывающий вступить в SCP Foundation
+  id: PosterScpYours
   components:
   - type: Sprite
     state: nt
@@ -76,8 +62,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterLook
-  name: Смотри в оба
-  description: Плакат, призывающий держать зрительный контакт
   components:
   - type: Sprite
     state: scp173
@@ -85,8 +69,6 @@
 - type: entity
   parent: PosterScpBase
   id: Poster217
-  name: SCP-217
-  description: Плакат, показывающий анатомию SCP-217
   components:
   - type: Sprite
     state: scp217
@@ -94,8 +76,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterSaulAgency
-  name: реклама адвокатского агенства
-  description: Плакат, размещающий рекламное изображения адвокатского агентства Сола
   components:
   - type: Sprite
     state: saul
@@ -103,8 +83,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterAlertness
-  name: будь бдителен
-  description: Плакат, предостерегающий об необходимости бдительности среди персонала комплекса.
   components:
   - type: Sprite
     state: scp217
@@ -112,8 +90,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterLooseLipsLoseScips
-  name: болтливые губки разбалтывают секреты
-  description: Храни информацию. Ты никогда не знаешь кто подслушивает. Плакат, призывающий персонал фонда не болтать лишнюю информацию и следить за тем, что вы говорите.
   components:
   - type: Sprite
     state: loose_lips_lose_scips
@@ -123,8 +99,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterContrabandChaos1
-  name: Вновь?
-  description: Контрабандный постер СО Повстанцы Хаоса. "Ужели вновь непостоянный мститель пошлёт его багряную десницу нам на погибель?"
   components:
   - type: Sprite
     state: poster1_chaos_contraband
@@ -132,8 +106,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterContrabandChaos2
-  name: Враг ли Я?
-  description: Контрабандный постер СО Повстанцы Хаоса. "А точно ли твой враг - Я?" Быть может... тебе стоит задуматься?
   components:
   - type: Sprite
     state: poster2_chaos_contraband
@@ -141,8 +113,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterContrabandChaos3
-  name: ВИЖУ
-  description: Контрабандный постер СО Повстанцы Хаоса. "Почему он так на меня смотрит...? Может... он меня видит?"
   components:
   - type: Sprite
     state: poster3_chaos_contraband
@@ -150,8 +120,6 @@
 - type: entity
   parent: PosterScpBase
   id: PosterContrabandChaos4
-  name: ХАОС
-  description: Контрабандный постер СО Повстанцы Хаоса. Выглядит старым. "Хаос - это то, к чему мы стремимся! То, что жило, живёт и будет жить!"
   components:
   - type: Sprite
     state: poster4_chaos_contraband
@@ -169,8 +137,6 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP005
-  name: SCP-005
-  description: Информационный плакат SCP-005
   components:
   - type: Sprite
     state: scp005
@@ -178,8 +144,6 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP035
-  name: SCP-035
-  description: Информационный плакат SCP-035
   components:
   - type: Sprite
     state: scp035
@@ -187,8 +151,6 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP049
-  name: SCP-049
-  description: Информационный плакат SCP-049
   components:
   - type: Sprite
     state: scp049
@@ -196,8 +158,6 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP096
-  name: SCP-096
-  description: Информационный плакат SCP-096
   components:
   - type: Sprite
     state: scp096
@@ -205,8 +165,6 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP106
-  name: SCP-106
-  description: Информационный плакат SCP-106
   components:
   - type: Sprite
     state: scp106
@@ -214,8 +172,6 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP173
-  name: SCP-173
-  description: Информационный плакат SCP-173
   components:
   - type: Sprite
     state: scp173
@@ -223,8 +179,6 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP500
-  name: SCP-500
-  description: Информационный плакат SCP-500
   components:
   - type: Sprite
     state: scp500
@@ -232,8 +186,6 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP969
-  name: SCP-969
-  description: Информационный плакат SCP-969
   components:
   - type: Sprite
     state: scp969
@@ -241,8 +193,6 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP999
-  name: SCP-999
-  description: Информационный плакат SCP-999
   components:
   - type: Sprite
     state: scp999
@@ -250,8 +200,6 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP939
-  name: SCP-939
-  description: Информационный плакат SCP-939
   components:
   - type: Sprite
     state: scp939
@@ -259,8 +207,6 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP612
-  name: SCP-612
-  description: Информационный плакат SCP-612
   components:
   - type: Sprite
     state: scp612
@@ -278,8 +224,6 @@
 - type: entity
   parent: PosterWideBase
   id: PosterScp173Wide
-  name: гляделки
-  description: Информационный плакат, информирующий о необходимости соблюдения зрительного контакта с SCP-173 в шуточной форме
   components:
   - type: Sprite
     state: 173
@@ -297,8 +241,6 @@
 - type: entity
   parent: PosterSchemaBase
   id: PosterAKDisassemblySchema
-  name: схема автомата калашникова
-  description: Информационный плакат, изображающий автомат калашникова в разборе
   components:
   - type: Sprite
     state: ak
@@ -306,8 +248,6 @@
 - type: entity
   parent: PosterSchemaBase
   id: PosterMk56DisassemblySchema
-  name: схема пистолета
-  description: Информационный плакат, изображающий пистолет mk56 в разборе
   components:
   - type: Sprite
     state: mk56
@@ -315,8 +255,6 @@
 - type: entity
   parent: PosterSchemaBase
   id: PosterEngineeringSchema
-  name: схема инженерного оборудования
-  description: Информационный плакат, изображающий системы используемые космическими шаттлами и гаечного ключа
   components:
   - type: Sprite
     state: engineering

@@ -688,6 +688,8 @@ ClothingShoesBootsBlueShield: ClothingShoesBootsInternalSecurityOperative
 ClothingUniformJumpskirtBlueShield: ClothingUniformJumpskirtInternalSecurityOperative
 ClothingUniformJumpsuitBlueShield: ClothingUniformJumpsuitInternalSecurityOperative
 
+PosterNtYours: PosterScpYours
+
 LootSpawnerEncryptionKey: LootSpawnerFacilityEncryptionKey
 
 Scp939Muzzler: ClothingMaskScp939

@@ -1,90 +1,90 @@
 ﻿ent-PosterTattered = порванный плакат
     .desc = От него остались лишь жалкие обрывки, не позволяющие различить оригинальное изображение
 
-ent-PosterScp = Secure Contain Protect
+ent-PosterScp = плакат «Secure Contain Protect»
     .desc = Плакат с эмблемой фонда SCP
 
-ent-PosterChaos = Хаос
+ent-PosterChaos = плакат «Хаос»
     .desc = Плакат с эмблемой повстанцев хаоса
 
-ent-PosterGoc = Г.О.К.
+ent-PosterGoc = плакат «Г.О.К.»
     .desc = Плакат с эмблемой Глобальной Оккультной Организации
 
-ent-PosterChanges = Перемен
+ent-PosterChanges = плакат «Перемен»
     .desc = Содержание этого плаката вам что-то напоминает.. Что?..
 
-ent-PosterBreath = Дыши!
+ent-PosterBreath = плакат «Дыши!»
     .desc = Плакат, призывающий... дышать!!
 
-ent-PosterScpYours = SCP твое все!
+ent-PosterScpYours = плакат «SCP твое все!»
     .desc = Плакат, призывающий вступить в SCP Foundation
 
-ent-PosterLook = Смотри в оба
+ent-PosterLook = плакат «Смотри в оба»
     .desc = Плакат, призывающий держать зрительный контакт
 
-ent-Poster217 = SCP-217
+ent-Poster217 = плакат «SCP-217»
     .desc = Плакат, показывающий анатомию SCP-217
 
-ent-PosterSaulAgency = реклама адвокатского агенства
+ent-PosterSaulAgency = реклама адвокатского агентства
     .desc = Плакат, размещающий рекламное изображения адвокатского агентства Сола
 
-ent-PosterAlertness = будь бдителен
+ent-PosterAlertness = плакат «Будь бдителен»
     .desc = Плакат, предостерегающий об необходимости бдительности среди персонала комплекса.
 
-ent-PosterLooseLipsLoseScips = болтливые губки разбалтывают секреты
+ent-PosterLooseLipsLoseScips = плакат «Болтливые губки разбалтывают секреты»
     .desc = Храни информацию. Ты никогда не знаешь кто подслушивает. Плакат, призывающий персонал фонда не болтать лишнюю информацию и следить за тем, что вы говорите.
 
 
-ent-PosterContrabandChaos1 = Вновь?
+ent-PosterContrabandChaos1 = плакат «Вновь?»
     .desc = Контрабандный постер СО Повстанцы Хаоса. "Ужели вновь непостоянный мститель пошлёт его багряную десницу нам на погибель?"
 
-ent-PosterContrabandChaos2 = Враг ли Я?
+ent-PosterContrabandChaos2 = плакат «Враг ли Я?»
     .desc = Контрабандный постер СО Повстанцы Хаоса. "А точно ли твой враг - Я?" Быть может... тебе стоит задуматься?
 
-ent-PosterContrabandChaos3 = ВИЖУ
+ent-PosterContrabandChaos3 = плакат «ВИЖУ»
     .desc = Контрабандный постер СО Повстанцы Хаоса. "Почему он так на меня смотрит...? Может... он меня видит?"
 
-ent-PosterContrabandChaos4 = ХАОС
+ent-PosterContrabandChaos4 = плакат «ХАОС»
     .desc = Контрабандный постер СО Повстанцы Хаоса. Выглядит старым. "Хаос - это то, к чему мы стремимся! То, что жило, живёт и будет жить!"
 
 
 
-ent-PosterSCP005 = SCP-005
+ent-PosterSCP005 = плакат «SCP-005»
     .desc = Информационный плакат SCP-005
 
-ent-PosterSCP035 = SCP-035
+ent-PosterSCP035 = плакат «SCP-035»
     .desc = Информационный плакат SCP-035
 
-ent-PosterSCP049 = SCP-049
+ent-PosterSCP049 = плакат «SCP-049»
     .desc = Информационный плакат SCP-049
 
-ent-PosterSCP096 = SCP-096
+ent-PosterSCP096 = плакат «SCP-096»
     .desc = Информационный плакат SCP-096
 
-ent-PosterSCP106 = SCP-106
+ent-PosterSCP106 = плакат «SCP-106»
     .desc = Информационный плакат SCP-106
 
-ent-PosterSCP173 = SCP-173
+ent-PosterSCP173 = плакат «SCP-173»
     .desc = Информационный плакат SCP-173
 
-ent-PosterSCP500 = SCP-500
+ent-PosterSCP500 = плакат «SCP-500»
     .desc = Информационный плакат SCP-500
 
-ent-PosterSCP969 =  SCP-969
+ent-PosterSCP969 =  плакат «SCP-969»
     .desc = Информационный плакат SCP-969
 
-ent-PosterSCP999 = SCP-999
+ent-PosterSCP999 = плакат «SCP-999»
     .desc = Информационный плакат SCP-999
 
-ent-PosterSCP939 = SCP-939
+ent-PosterSCP939 = плакат «SCP-939»
     .desc = Информационный плакат SCP-939
 
-ent-PosterSCP612 = SCP-612
+ent-PosterSCP612 = плакат «SCP-612»
     .desc = Информационный плакат SCP-612
 
 
 
-ent-PosterScp173Wide = гляделки
+ent-PosterScp173Wide = плакат «Гляделки»
     .desc = Информационный плакат, информирующий о необходимости соблюдения зрительного контакта с SCP-173 в шуточной форме
 
 ent-PosterAKDisassemblySchema = схема автомата калашникова
