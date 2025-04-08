@@ -104,7 +104,7 @@
   parent: PosterScpBase
   id: PosterAlertness
   name: будь бдителен
-  description: Плакат, предостерегающий об необходимости бдительности среди персонала станции.
+  description: Плакат, предостерегающий об необходимости бдительности среди персонала комплекса.
   components:
   - type: Sprite
     state: scp217
