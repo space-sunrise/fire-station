@@ -1,0 +1,108 @@
+- type: job
+  id: ClassD
+  name: job-name-classd
+  description: job-description-classd
+  playTimeTracker: JobClassD
+  startingGear: ClassDGear
+  icon: JobIconClassD
+  supervisors: job-supervisors-security-and-research
+  alwaysUseSpawner: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: ClassDAppearance
+
+- type: job
+  id: ClassDCook
+  name: job-name-classd-cook
+  description: job-description-classd
+  playTimeTracker: JobClassDCook
+  startingGear: ClassDCookGear
+  icon: JobIconClassD
+  supervisors: job-supervisors-security-and-research
+  access:
+  - Service
+  - Kitchen
+  alwaysUseSpawner: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: ClassDAppearance
+
+- type: job
+  id: ClassDBotanist
+  name: job-name-classd-botanist
+  description: job-description-classd
+  playTimeTracker: JobClassDBotanist
+  startingGear: ClassDBotanistGear
+  icon: JobIconClassD
+  supervisors: job-supervisors-security-and-research
+  access:
+  - Service
+  - Hydroponics
+  alwaysUseSpawner: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: ClassDAppearance
+
+- type: job
+  id: ClassDJanitor
+  name: job-name-classd-janitor
+  description: job-description-classd
+  playTimeTracker: JobClassDJanitor
+  startingGear: ClassDJanitorGear
+  icon: JobIconClassD
+  supervisors: job-supervisors-security-and-research
+  access:
+  - Service
+  - Janitor
+  alwaysUseSpawner: true
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: ClassDAppearance
+
+- type: startingGear
+  id: ClassDGear
+  equipment:
+    jumpsuit: ClothingUniformClassD
+    shoes: ClothingShoesClassD
+    id: ClassDIDCard
+
+- type: startingGear
+  id: ClassDCookGear
+  equipment:
+    head: ClothingHeadHatChef
+    jumpsuit: ClothingUniformClassD
+    outerClothing: ClothingOuterApronChef
+    belt: ClothingBeltChefFilled
+    gloves: ClothingHandsGlovesColorWhite
+    shoes: ClothingShoesClassD
+    id: ClassDCookIDCard
+
+- type: startingGear
+  id: ClassDBotanistGear
+  equipment:
+    head: ClothingHeadBandBotany
+    jumpsuit: ClothingUniformClassD
+    outerClothing: ClothingOuterApronBotanist
+    belt: ClothingBeltPlantFilled
+    gloves: ClothingHandsGlovesLeather
+    shoes: ClothingShoesClassD
+    id: ClassDBotanistIDCard
+
+- type: startingGear
+  id: ClassDJanitorGear
+  equipment:
+    head: ClothingHeadHatPurplesoft
+    jumpsuit: ClothingUniformClassD
+    gloves: ClothingHandsGlovesJanitor
+    shoes: ClothingShoesGaloshes
+    id: ClassDJanitorIDCard
+    belt: ClothingBeltJanitor
+  storage:
+    belt:
+    - Soap
+    - LightReplacer
+    - SprayBottleSpaceCleaner

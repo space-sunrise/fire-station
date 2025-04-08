@@ -16,7 +16,7 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellMedium
   - type: RandomMetadata
-    nameSegments: [ NamesBorg ]
+    nameSegments: [names_borg]
 
 
 - type: entity

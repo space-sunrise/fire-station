@@ -392,7 +392,7 @@
     description: ghost-role-information-snail-description
     rules: ghost-role-information-freeagent-rules
     mindRoles:
-    - MindRoleGhostRoleFreeAgentHarmless
+    - MindRoleGhostRoleFreeAgent
   - type: GhostTakeoverAvailable
   - type: Emoting
   - type: Sprite
@@ -518,9 +518,6 @@
   id: MobSnailInstantDeath
   suffix: Smite
   components:
-  - type: GhostRole
-    mindRoles:
-    - MindRoleGhostRoleFreeAgent
   - type: MobStateActions
     actions:
       Alive:

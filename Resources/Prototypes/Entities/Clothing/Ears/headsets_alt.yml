@@ -2,7 +2,6 @@
   abstract: true
   parent: ClothingHeadset
   id: ClothingHeadsetAlt
-  categories: [ HideSpawnMenu ] # Fire added
   name: headset
   description: An updated, modular intercom that fits over the head. Takes encryption keys.
   components:
@@ -14,7 +13,6 @@
 - type: entity
   parent: ClothingHeadsetAlt
   id: ClothingHeadsetAltCargo
-  categories: [ HideSpawnMenu ] # Fire added
   name: quartermaster's over-ear headset
   components:
   - type: ContainerFill
@@ -31,7 +29,6 @@
 - type: entity
   parent: ClothingHeadsetAlt
   id: ClothingHeadsetAltCentCom
-  categories: [ HideSpawnMenu ] # Fire added
   name: CentComm over-ear headset
   components:
   - type: ContainerFill
@@ -47,7 +44,6 @@
 - type: entity
   parent: [ClothingHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltCommand
-  categories: [ HideSpawnMenu ] # Fire added
   name: command over-ear headset
   components:
   - type: ContainerFill
@@ -62,7 +58,6 @@
 - type: entity
   parent: [ClothingHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltEngineering
-  categories: [ HideSpawnMenu ] # Fire added
   name: chief engineer's over-ear headset
   components:
   - type: ContainerFill
@@ -79,7 +74,6 @@
 - type: entity
   parent: [ClothingHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltMedical
-  categories: [ HideSpawnMenu ] # Fire added
   name: chief medical officer's over-ear headset
   components:
   - type: ContainerFill
@@ -98,7 +92,6 @@
 - type: entity
   parent: [ClothingHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltSecurity
-  categories: [ HideSpawnMenu ] # Fire added
   name: head of security's over-ear headset
   components:
   - type: ContainerFill
@@ -115,7 +108,6 @@
 - type: entity
   parent: [ClothingHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltScience
-  categories: [ HideSpawnMenu ] # Fire added
   name: research director's over-ear headset
   components:
   - type: ContainerFill
@@ -132,7 +124,6 @@
 - type: entity
   parent: [ClothingHeadsetAlt, BaseSyndicateContraband]
   id: ClothingHeadsetAltSyndicate
-  categories: [ HideSpawnMenu ] # Fire added
   name: blood-red over-ear headset
   description: An updated, modular syndicate intercom that fits over the head and takes encryption keys (there are 5 key slots.).
   components:
@@ -151,7 +142,6 @@
 - type: entity
   parent: ClothingHeadsetAlt
   id: ClothingHeadsetAltFreelancer
-  categories: [ HideSpawnMenu ] # Fire added
   name: freelancer's over-ear headset
   components:
     - type: Headset

@@ -66,9 +66,9 @@ namespace Content.Shared.Research.Prototypes
         public bool ApplyMaterialDiscount = true;
 
         /// <summary>
-        /// List of categories used for visually sorting lathe recipes in the UI.
+        /// A category used for visually sorting lathe recipes in the UI.
         /// </summary>
         [DataField]
-        public List<ProtoId<LatheCategoryPrototype>> Categories = new();
+        public ProtoId<LatheCategoryPrototype>? Category;
     }
 }

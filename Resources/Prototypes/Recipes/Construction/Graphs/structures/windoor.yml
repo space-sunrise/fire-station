@@ -31,7 +31,7 @@
         doAfter: 2
 
   - node: assembly
-    entity: ScpWindoorAssembly
+    entity: WindoorAssembly
     actions:
     - !type:SnapToGrid {}
     - !type:SetAnchor {}
@@ -79,7 +79,7 @@
 
   #normal windoor node
   - node: glass
-    entity: ScpWindoorAssembly
+    entity: WindoorAssembly
     edges:
     - to: wired
       conditions:
@@ -101,7 +101,7 @@
         doAfter: 2
 
   - node: wired
-    entity: ScpWindoorAssembly
+    entity: WindoorAssembly
     edges:
     - to: electronics
       conditions:
@@ -124,7 +124,7 @@
         doAfter: 1
 
   - node: electronics
-    entity: ScpWindoorAssembly
+    entity: WindoorAssembly
     edges:
     - to: windoor
       conditions:
@@ -134,7 +134,7 @@
         doAfter: 2
 
   - node: windoor
-    entity: ScpWindoor
+    entity: Windoor
     edges:
     - to: wired
       conditions:
@@ -153,7 +153,7 @@
 
   #plasma windoor node
   - node: pglass
-    entity: ScpWindoorAssemblyPlasma
+    entity: WindoorAssemblyPlasma
     edges:
     - to: pwired
       conditions:
@@ -175,7 +175,7 @@
         doAfter: 2
 
   - node: pwired
-    entity: ScpWindoorAssemblyPlasma
+    entity: WindoorAssemblyPlasma
     edges:
     - to: pelectronics
       conditions:
@@ -198,7 +198,7 @@
         doAfter: 1
 
   - node: pelectronics
-    entity: ScpWindoorAssemblyPlasma
+    entity: WindoorAssemblyPlasma
     edges:
     - to: pwindoor
       conditions:
@@ -208,7 +208,7 @@
         doAfter: 2
 
   - node: pwindoor
-    entity: ScpWindoorPlasma
+    entity: WindoorPlasma
     edges:
     - to: pwired
       conditions:
@@ -227,7 +227,7 @@
 
   #uranium windoor node
   - node: uglass
-    entity: ScpWindoorAssemblyUranium
+    entity: WindoorAssemblyUranium
     edges:
     - to: uwired
       conditions:
@@ -249,7 +249,7 @@
         doAfter: 2
 
   - node: uwired
-    entity: ScpWindoorAssemblyUranium
+    entity: WindoorAssemblyUranium
     edges:
     - to: uelectronics
       conditions:
@@ -272,7 +272,7 @@
         doAfter: 1
 
   - node: uelectronics
-    entity: ScpWindoorAssemblyUranium
+    entity: WindoorAssemblyUranium
     edges:
     - to: uwindoor
       conditions:
@@ -282,7 +282,7 @@
         doAfter: 2
 
   - node: uwindoor
-    entity: ScpWindoorUranium
+    entity: WindoorUranium
     edges:
     - to: uwired
       conditions:
@@ -301,7 +301,7 @@
 
   #secure windoor nodes
   - node: assemblySecure
-    entity: ScpWindoorAssemblySecure
+    entity: WindoorAssemblySecure
     actions:
     - !type:SnapToGrid { }
     - !type:SetAnchor { }
@@ -349,7 +349,7 @@
 
   #secure node
   - node: glassSecure
-    entity: ScpWindoorAssemblySecure
+    entity: WindoorAssemblySecure
     edges:
     - to: wiredSecure
       conditions:
@@ -371,7 +371,7 @@
         doAfter: 4
 
   - node: wiredSecure
-    entity: ScpWindoorAssemblySecure
+    entity: WindoorAssemblySecure
     edges:
     - to: electronicsSecure
       conditions:
@@ -394,7 +394,7 @@
         doAfter: 3
 
   - node: electronicsSecure
-    entity: ScpWindoorAssemblySecure
+    entity: WindoorAssemblySecure
     edges:
     - to: windoorSecure
       conditions:
@@ -404,7 +404,7 @@
         doAfter: 4
 
   - node: windoorSecure
-    entity: ScpWindoorSecure
+    entity: WindoorSecure
     doNotReplaceInheritingEntities: true
     actions:
     - !type:SetWiresPanelSecurity
@@ -535,7 +535,7 @@
 
   #secure plasma node
   - node: pglassSecure
-    entity: ScpWindoorAssemblySecurePlasma
+    entity: WindoorAssemblySecurePlasma
     edges:
     - to: pwiredSecure
       conditions:
@@ -558,7 +558,7 @@
         doAfter: 4
 
   - node: pwiredSecure
-    entity: ScpWindoorAssemblySecurePlasma
+    entity: WindoorAssemblySecurePlasma
     edges:
     - to: pelectronicsSecure
       conditions:
@@ -581,7 +581,7 @@
         doAfter: 3
 
   - node: pelectronicsSecure
-    entity: ScpWindoorAssemblySecurePlasma
+    entity: WindoorAssemblySecurePlasma
     edges:
     - to: pwindoorSecure
       conditions:
@@ -591,7 +591,7 @@
         doAfter: 4
 
   - node: pwindoorSecure
-    entity: ScpWindoorSecurePlasma
+    entity: WindoorSecurePlasma
     doNotReplaceInheritingEntities: true
     actions:
     - !type:SetWiresPanelSecurity
@@ -614,7 +614,7 @@
 
   #secure Uranium node
   - node: uglassSecure
-    entity: ScpWindoorAssemblySecureUranium
+    entity: WindoorAssemblySecureUranium
     edges:
     - to: uwiredSecure
       conditions:
@@ -636,7 +636,7 @@
         doAfter: 4
 
   - node: uwiredSecure
-    entity: ScpWindoorAssemblySecureUranium
+    entity: WindoorAssemblySecureUranium
     edges:
     - to: uelectronicsSecure
       conditions:
@@ -659,7 +659,7 @@
         doAfter: 3
 
   - node: uelectronicsSecure
-    entity: ScpWindoorAssemblySecureUranium
+    entity: WindoorAssemblySecureUranium
     edges:
     - to: uwindoorSecure
       conditions:
@@ -669,7 +669,7 @@
         doAfter: 4
 
   - node: uwindoorSecure
-    entity: ScpWindoorSecureUranium
+    entity: WindoorSecureUranium
     doNotReplaceInheritingEntities: true
     actions:
     - !type:SetWiresPanelSecurity

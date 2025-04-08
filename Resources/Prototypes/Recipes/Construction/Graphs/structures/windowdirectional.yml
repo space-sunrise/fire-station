@@ -47,7 +47,7 @@
               doAfter: 3
 
     - node: windowDirectional
-      entity: ScpWindowDirectional
+      entity: WindowDirectional
       edges:
         - to: start
           completed:
@@ -62,7 +62,7 @@
               doAfter: 2
 
     - node: windowReinforcedDirectional
-      entity: ScpWindowReinforcedDirectional
+      entity: WindowReinforcedDirectional
       edges:
         - to: start
           completed:
@@ -81,7 +81,7 @@
               doAfter: 2
 
     - node: plasmaWindowDirectional
-      entity: ScpPlasmaWindowDirectional
+      entity: PlasmaWindowDirectional
       edges:
         - to: start
           completed:
@@ -119,7 +119,7 @@
               doAfter: 3
 
     - node: plasmaReinforcedWindowDirectional
-      entity: ScpPlasmaReinforcedWindowDirectional
+      entity: PlasmaReinforcedWindowDirectional
       edges:
         - to: start
           completed:
@@ -137,7 +137,7 @@
             - tool: Anchoring
               doAfter: 3
     - node: uraniumWindowDirectional
-      entity: ScpUraniumWindowDirectional
+      entity: UraniumWindowDirectional
       edges:
         - to: start
           completed:
@@ -156,7 +156,7 @@
               doAfter: 3
 
     - node: uraniumReinforcedWindowDirectional
-      entity: ScpUraniumReinforcedWindowDirectional
+      entity: UraniumReinforcedWindowDirectional
       edges:
         - to: start
           completed:

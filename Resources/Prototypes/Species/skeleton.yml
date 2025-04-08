@@ -7,8 +7,8 @@
   - SkeletonNormal
   defaultSkinTone: "#fff9e2"
   markingLimits: MobHumanMarkingLimits
-  maleFirstNames: NamesSkeletonFirst
-  femaleFirstNames: NamesSkeletonFirst
+  maleFirstNames: skeletonNamesFirst
+  femaleFirstNames: skeletonNamesFirst
   dollPrototype: MobSkeletonPersonDummy
   skinColoration: TintedHues
 

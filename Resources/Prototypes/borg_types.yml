@@ -1,4 +1,4 @@
-# Generic borg
+﻿# Generic borg
 - type: borgType
   id: generic
 
@@ -14,7 +14,6 @@
   moduleWhitelist:
     tags:
     - BorgModuleGeneric
-    - BorgModuleScience #until sciborgs are added
 
   defaultModules:
   - BorgModuleTool
@@ -79,7 +78,6 @@
   - type: InnateItem
     instantActions:
     - AtmosAlertsMonitor
-    - EngiAlertsMonitor
   # Sunrise-End
 
   # Visual

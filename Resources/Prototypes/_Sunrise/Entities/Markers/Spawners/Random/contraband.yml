@@ -141,7 +141,7 @@
         - WeaponRevolverPythonAP
         - ThrowingKnivesKit
         - ExGrenade
-        - ChemistryBottleNocturine
+        - NocturineChemistryBottle
         - ChameleonProjector
       rareChance: 0.2
       prototypes:

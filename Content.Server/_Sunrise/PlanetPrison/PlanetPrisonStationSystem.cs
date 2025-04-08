@@ -1,4 +1,6 @@
-﻿using System.Numerics;
+﻿using System.Linq;
+using System.Numerics;
+using Content.Server._Sunrise.NightDayMapLight;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Maps;
@@ -7,7 +9,6 @@ using Content.Server.Shuttles.Systems;
 using Content.Shared._Sunrise.AlwaysPoweredMap;
 using Content.Shared._Sunrise.Shuttles;
 using Content.Shared._Sunrise.SunriseCCVars;
-using Content.Shared.Light.Components;
 using Content.Shared.Parallax.Biomes;
 using Content.Shared.Salvage;
 using Content.Shared.Shuttles.Components;
@@ -68,10 +69,11 @@ public sealed class PlanetPrisonStationSystem : EntitySystem
             _chat.DispatchServerAnnouncement(Loc.GetString("planet-prison-not-enough-players", ("minimumPlayers", minPlayers)), Color.OrangeRed);
             return;
         }
-
-        if (component.MapId != MapId.Nullspace)
+        if (TryComp<TransformComponent>(component.Entity, out var xform))
+        {
+            component.MapId = xform.MapID;
             return;
-
+        }
         AddPlanetPrison(component);
     }
 
@@ -105,10 +107,7 @@ public sealed class PlanetPrisonStationSystem : EntitySystem
         _chat.DispatchServerAnnouncement(Loc.GetString("planet-prison-select-map", ("stationName", gameMap.MapName)), Color.LightBlue);
         _chat.DispatchServerAnnouncement(Loc.GetString("planet-prison-select-biome", ("biomeName", biome.ID)), Color.LightBlue);
 
-        var opts = DeserializationOptions.Default with {InitializeMaps = true};
-        var uids = _gameTicker.LoadGameMap(gameMap, out var mapId, opts, rot: Angle.Zero);
-
-        component.MapId = mapId;
+        var uids = _gameTicker.LoadGameMap(gameMap, out var mapId, rot: Angle.Zero);
 
         if (uids.Count != 1)
         {
@@ -129,15 +128,17 @@ public sealed class PlanetPrisonStationSystem : EntitySystem
         var mapUid = _mapManager.GetMapEntityId(mapId);
         _biomeSystem.EnsurePlanet(mapUid, biome);
 
+        // Sunrise-Start
         var restricted = new RestrictedRangeComponent
         {
             Origin = new Vector2(0, 0),
-            Range = 200,
+            Range = 160,
         };
         AddComp(mapUid, restricted);
+        // Sunrise-End
 
         EnsureComp<AlwaysPoweredMapComponent>(mapUid);
-        EnsureComp<LightCycleComponent>(mapUid);
+        EnsureComp<NightDayMapLightComponent>(mapUid);
 
         var destComp = _entManager.EnsureComponent<FTLDestinationComponent>(mapUid);
         destComp.BeaconsOnly = true;

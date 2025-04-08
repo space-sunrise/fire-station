@@ -2,7 +2,6 @@
   id: SpawnPointMagistrat
   parent: SpawnPointJobBase
   name: Magistrat
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: Magistrat
@@ -17,7 +16,6 @@
   id: SpawnPointNtrep
   parent: SpawnPointJobBase
   name: NanoTrasen Representative
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: NanoTrasenRepresentative
@@ -32,7 +30,6 @@
   id: SpawnPointBrigmedic
   parent: SpawnPointJobBase
   name: brigmedic
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: Brigmedic
@@ -45,7 +42,6 @@
   id: SpawnPointBlueShield
   parent: SpawnPointJobBase
   name: blueshield
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: BlueShield
@@ -60,7 +56,6 @@
   id: SpawnPointCentCommOperator
   parent: SpawnPointJobBase
   name: Central Command Operator
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: CentCommOperator
@@ -74,7 +69,6 @@
   id: SpawnPointCentCommOfficial
   parent: SpawnPointJobBase
   name: Central Command Official
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: CentCommOfficial
@@ -88,7 +82,6 @@
   id: SpawnPointHeadOfPrison
   parent: SpawnPointJobBase
   name: head of prison
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: HeadOfPrison
@@ -101,7 +94,6 @@
   id: SpawnPointPrisonChef
   parent: SpawnPointJobBase
   name: prison's chef
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: PrisonChef
@@ -114,7 +106,6 @@
   id: SpawnPointPrisonDoctor
   parent: SpawnPointJobBase
   name: prison's doctor
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: PrisonDoctor
@@ -127,7 +118,6 @@
   id: SpawnPointPrisonEngineer
   parent: SpawnPointJobBase
   name: prison's engineer
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: PrisonEngineer
@@ -140,7 +130,6 @@
   id: SpawnPointPrisonGuard
   parent: SpawnPointJobBase
   name: prison's guard
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: PrisonGuard
@@ -152,7 +141,6 @@
   id: SpawnPointPrisonPilot
   parent: SpawnPointJobBase
   name: prison's pilot
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: PrisonPilot
@@ -165,7 +153,6 @@
   id: SpawnPointPlanetPrisoner
   parent: SpawnPointJobBase
   name: prisoner
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: PlanetPrisoner
@@ -178,7 +165,6 @@
   id: SpawnPointPrisonWorker
   parent: SpawnPointJobBase
   name: prison's worker
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: PrisonWorker
@@ -191,7 +177,6 @@
   id: SpawnPointSeniorEngineer
   parent: SpawnPointJobBase
   name: senior engineer
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: SeniorEngineer
@@ -204,7 +189,6 @@
   id: SpawnPointSeniorPhysician
   parent: SpawnPointJobBase
   name: senior physician
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: SeniorPhysician
@@ -217,7 +201,6 @@
   id: SpawnPointSeniorResearcher
   parent: SpawnPointJobBase
   name: senior researcher
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: SeniorResearcher
@@ -230,7 +213,6 @@
   id: SpawnPointSeniorOfficer
   parent: SpawnPointJobBase
   name: senior officer
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: SeniorOfficer
@@ -243,7 +225,6 @@
   id: SpawnPointBarber
   parent: SpawnPointJobBase
   name: barber
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: Barber
@@ -257,7 +238,6 @@
   id: SpawnPointMedicalPathologist
   parent: SpawnPointJobBase
   name: pathologist
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: MedicalPathologist
@@ -270,7 +250,6 @@
   id: SpawnPointAdjutant
   parent: SpawnPointJobBase
   name: adjutant
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
     job_id: Adjutant

@@ -119,7 +119,7 @@
 
 - type: loadoutGroup
   id: BlueShieldBackpack
-  name: loadout-group-backpack
+  name: loadout-group-blueshield-backpack
   loadouts:
   - BlueShieldBackpack
   - BlueShieldSatchel
@@ -127,7 +127,7 @@
 
 - type: loadoutGroup
   id: BlueShieldJumpsuit
-  name: loadout-group-jumpsuit
+  name: loadout-group-blueshield-jumpsuit
   loadouts:
   - BlueShieldJumpsuit
   - BlueShieldJumpskirt
@@ -208,7 +208,7 @@
   loadouts:
   #- SunriseWeaponPistolG22
   - SunriseWeaponEnergyGun
-  - SunriseWeaponTaser
+
 # Medical
 
 - type: loadoutGroup
@@ -273,8 +273,6 @@
   - BeretSeniorPhysician
   - MedicalBeret
   - ParamedicBeret
-  - ChemistBeret
-  - PatologonatBeret
   - NurseHat
   - BlueSurgeryCap
   - GreenSurgeryCap
@@ -391,7 +389,6 @@
   maxLimit: 1
   loadouts:
   - MedicalBeret
-  - ChemistBeret
   - NurseHat
   - BlueSurgeryCap
   - GreenSurgeryCap
@@ -580,7 +577,6 @@
   maxLimit: 1
   loadouts:
   - MedicalBeret
-  - PatologonatBeret
   - NurseHat
   - BlueSurgeryCap
   - GreenSurgeryCap
@@ -787,7 +783,6 @@
   maxLimit: 2
   loadouts:
   - TrinketsEngineeringAAM
-  - TrinketsEngineeringEAM
   - TrinketsEngineeringTS
   - TrinketsEngineeringFL
   - TrinketsEngineeringGA
@@ -1063,13 +1058,6 @@
   - OrangeGloves
   - Sunrise-LightBrownGloves
   - Sunrise-BrownGloves
-
-- type: loadoutGroup
-  id: MailCarrierJumpsuit
-  name: loadout-group-mail-jumpsuit
-  loadouts:
-  - MailCarrierJumpsuit
-  - MailCarrierJumpskirt
 
 - type: loadoutGroup
   id: SunriseSalvageGloves

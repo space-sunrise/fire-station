@@ -4,7 +4,6 @@
   description: department-Law-description
   color: "#FF5297"
   weight: 80
-  editorHidden: true # Fire added
   roles:
     - Magistrat
     - IAA
@@ -19,7 +18,6 @@
   roles:
     - BlueShield
   primary: false
-  editorHidden: true # Fire added
   weight: 50
 
 - type: department
@@ -28,7 +26,6 @@
   name: department-PlanetPrison
   description: department-PlanetPrison-description
   color: "#9f4000"
-  editorHidden: true # Fire added
   roles:
   - HeadOfPrison
   - PrisonPilot

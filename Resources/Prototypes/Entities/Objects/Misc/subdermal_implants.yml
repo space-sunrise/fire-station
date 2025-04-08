@@ -171,10 +171,7 @@
       dropContainerItemsIfGib: true
     - type: Storage
       grid:
-      - 0,0,0,1
-      - 1,0,1,0
-      - 1,2,1,2
-      - 2,1,2,2
+      - 0,0,2,2
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
@@ -248,7 +245,7 @@
       implantAction: ActionActivateEmpImplant
     - type: TriggerImplantAction
     - type: EmpOnTrigger
-      range: 2.75
+      range: 5.5 #2.75 Sunrise-Edit
       energyConsumption: 50000
       disableDuration: 10
 
@@ -422,7 +419,7 @@
   #categories: [ HideSpawnMenu ] Sunrsie-Edit
   components:
    - type: SubdermalImplant
-   - type: MindShieldImplant
+     #permanent: true Sunrsie-Edit
    - type: Tag
      tags:
        - MindShield
@@ -441,13 +438,3 @@
   - type: RadioImplant
     radioChannels:
     - CentCom
-
-- type: entity
-  parent: DeathRattleImplant
-  id: DeathRattleImplantCentcomm
-  name: centcomm death rattle implant
-  description: This implant will inform the Centcomm radio channel should the user fall into critical condition or die.
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Rattle
-    radioChannel: CentCom

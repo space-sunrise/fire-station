@@ -13,10 +13,9 @@
       maxPicks: 1
     - groups: ThiefObjectiveGroups
       maxPicks: 10
-    maxDifficulty: 5
+    maxDifficulty: 2.5
   - type: AntagSelection
     agentName: thief-round-end-agent-name
-    selectionTime: IntraPlayerSpawn
     definitions:
     - prefRoles: [ Thief ]
       max: 3
@@ -34,6 +33,7 @@
 
 # Needs testing
 - type: entity
+  abstract: true
   parent: BaseWizardRule
   id: SubWizard
   components:
@@ -60,8 +60,7 @@
         - Wizard
       - type: RandomMetadata
         nameSegments:
-        - NamesWizardFirst
-        - NamesWizardLast
-        nameFormat: name-format-wizard
+        - names_wizard_first
+        - names_wizard_last
       mindRoles:
       - MindRoleWizard

@@ -1,7 +1,5 @@
 - type: npcFaction
   id: Flesh
-  friendly:
-  - FleshHuman
   hostile:
     - NanoTrasen
     - Syndicate
@@ -14,9 +12,6 @@
     - Vampire
     - Changeling
     - Thief
-    - BloodCult
 
 - type: npcFaction
   id: FleshHuman
-  friendly:
-  - Flesh

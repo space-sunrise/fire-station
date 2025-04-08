@@ -57,7 +57,7 @@ public sealed class NukeSystem : EntitySystem
     private const float NukeSongBuffer = 1.5f;
 
     // Fire added start
-    private readonly SoundSpecifier _nukeArmSound = new SoundPathSpecifier("/Audio/_Scp/Effects/nuke_alarm.ogg");
+    private readonly SoundSpecifier _nukeArmSound = new SoundPathSpecifier("/Audio/_Scp/Effects/new_alarm.ogg");
     // Fire added end
 
     public override void Initialize()

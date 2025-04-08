@@ -18,7 +18,9 @@
     prototypes: [SyndicateOperativeGearExtremelyBasic]
     roleLoadout: [ RoleSurvivalSyndicate ]
   - type: RandomMetadata
-    nameSegments: [NamesDeathCommando]
+    nameSegments: # Russian-LastNameGender
+    - names_first_male
+    - names_last_male
   - type: NpcFactionMember
     factions:
     - Syndicate
@@ -68,8 +70,8 @@
   - type: NukeOperative
   - type: RandomMetadata
     nameSegments:
-    - NamesSyndicateNormal
-    nameFormat: name-format-nukie-operator
+    - nukeops-role-operator
+    - SyndicateNamesNormal
   - type: Loadout
     prototypes: [SyndicateOperativeGearFullNoUplink]
 
@@ -97,9 +99,8 @@
     roleLoadout: [ RoleSurvivalSyndicate ]
   - type: RandomMetadata
     nameSegments:
-    - NamesSyndicatePrefix
-    - NamesSyndicateNormal
-    nameFormat: name-format-nukie-generic
+    - SyndicateNamesPrefix
+    - SyndicateNamesNormal
   - type: NpcFactionMember
     factions:
     - Syndicate

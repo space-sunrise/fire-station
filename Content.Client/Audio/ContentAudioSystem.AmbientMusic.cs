@@ -1,6 +1,5 @@
 using System.Linq;
 using Content.Client.Gameplay;
-using Content.Shared._Scp.Audio;
 using Content.Shared.Audio;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
@@ -72,11 +71,6 @@ public sealed partial class ContentAudioSystem
         _state.OnStateChanged += OnStateChange;
         // On round end summary OR lobby cut audio.
         SubscribeNetworkEvent<RoundEndMessageEvent>(OnRoundEndMessage);
-
-        // Fire edit start
-        SubscribeNetworkEvent<NetworkAmbientMusicEvent>(OnNetworkAmbientMusic);
-        SubscribeNetworkEvent<NetworkAmbientMusicEventStop>(OnNetworkAmbientMusicStop);
-        // Fire edit end
     }
 
     private void AmbienceCVarChanged(float obj)
@@ -269,62 +263,4 @@ public sealed partial class ContentAudioSystem
         FadeOut(_ambientMusicStream);
         _ambientMusicStream = null;
     }
-
-    // Fire edit start
-
-    private void OnNetworkAmbientMusic(NetworkAmbientMusicEvent ev)
-    {
-        // Остановить текущую музыку без задержки
-        _ambientMusicStream = _audio.Stop(_ambientMusicStream);
-
-        // Найти прототип новой музыки
-        if (!_proto.TryIndex(ev.Prototype, out var proto))
-        {
-            _sawmill.Error($"Invalid ambient music prototype: {ev.Prototype}");
-            return;
-        }
-
-        _musicProto = proto;
-        _interruptable = proto.Interruptable;
-
-        // Получить треки для прототипа
-        var tracks = _ambientSounds[proto.ID];
-        if (tracks.Count == 0)
-            RefreshTracks(proto.Sound, tracks, null);
-
-        // Выбрать и воспроизвести следующий трек
-        var track = tracks[^1];
-        tracks.RemoveAt(tracks.Count - 1);
-
-        var strim = _audio.PlayGlobal(
-            track.ToString(),
-            Filter.Local(),
-            false,
-            AudioParams.Default.WithVolume(proto.Sound.Params.Volume + _volumeSlider));
-
-        _ambientMusicStream = strim?.Entity;
-
-        // Применить fade-in если нужно
-        if (proto.FadeIn && strim != null)
-            FadeIn(_ambientMusicStream, strim.Value.Component, AmbientMusicFadeTime);
-
-        // Обновить список треков если необходимо
-        if (tracks.Count == 0)
-            RefreshTracks(proto.Sound, tracks, track);
-    }
-
-    private void OnNetworkAmbientMusicStop(NetworkAmbientMusicEventStop ev)
-    {
-        // Мгновенная остановка текущей музыки
-        _ambientMusicStream = _audio.Stop(_ambientMusicStream);
-
-        // Сброс состояния системы
-        _musicProto = null;
-        _interruptable = false;
-        _nextAudio = TimeSpan.MinValue; // Форсируем немедленный выбор
-
-        // Принудительный запуск логики выбора музыки
-        UpdateAmbientMusic();
-    }
-    // Fire edit end
 }

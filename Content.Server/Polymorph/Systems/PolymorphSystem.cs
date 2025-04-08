@@ -22,10 +22,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
-// Sunrise-Start
-using Content.Shared.EntityEffects; 
-using Content.Shared.Mind.Components;
-// Sunrise-End
 
 namespace Content.Server.Polymorph.Systems;
 
@@ -64,8 +60,8 @@ public sealed partial class PolymorphSystem : EntitySystem
         SubscribeLocalEvent<PolymorphedEntityComponent, BeforeFullySlicedEvent>(OnBeforeFullySliced);
         SubscribeLocalEvent<PolymorphedEntityComponent, DestructionEventArgs>(OnDestruction);
 
+        InitializeCollide();
         InitializeMap();
-        InitializeTrigger();
     }
 
     public override void Update(float frameTime)
@@ -93,7 +89,7 @@ public sealed partial class PolymorphSystem : EntitySystem
             }
         }
 
-        UpdateTrigger();
+        UpdateCollide();
     }
 
     private void OnComponentStartup(Entity<PolymorphableComponent> ent, ref ComponentStartup args)
@@ -187,14 +183,6 @@ public sealed partial class PolymorphSystem : EntitySystem
     /// <returns></returns>
     public EntityUid? PolymorphEntity(EntityUid uid, PolymorphConfiguration configuration)
     {
-        // Sunrise-Start
-        if (configuration.BlockIfHasMind 
-            && TryComp<MindContainerComponent>(uid, out var mindContainer) 
-            && mindContainer.HasMind)
-        {
-            return null;
-        }
-        // Sunrise-End
         // if it's already morphed, don't allow it again with this condition active.
         if (!configuration.AllowRepeatedMorphs && HasComp<PolymorphedEntityComponent>(uid))
             return null;
@@ -215,12 +203,6 @@ public sealed partial class PolymorphSystem : EntitySystem
             _audio.PlayPvs(configuration.PolymorphSound, targetTransformComp.Coordinates);
 
         var child = Spawn(configuration.Entity, _transform.GetMapCoordinates(uid, targetTransformComp), rotation: _transform.GetWorldRotation(uid));
-
-        if (configuration.PolymorphPopup != null)
-            _popup.PopupEntity(Loc.GetString(configuration.PolymorphPopup,
-                ("parent", Identity.Entity(uid, EntityManager)),
-                ("child", Identity.Entity(child, EntityManager))),
-                child);
 
         MakeSentientCommand.MakeSentient(child, EntityManager);
 
@@ -365,11 +347,10 @@ public sealed partial class PolymorphSystem : EntitySystem
         var ev = new PolymorphedEvent(uid, parent, true);
         RaiseLocalEvent(uid, ref ev);
 
-        if (component.Configuration.ExitPolymorphPopup != null)
-            _popup.PopupEntity(Loc.GetString(component.Configuration.ExitPolymorphPopup,
+        _popup.PopupEntity(Loc.GetString("polymorph-revert-popup-generic",
                 ("parent", Identity.Entity(uid, EntityManager)),
                 ("child", Identity.Entity(parent, EntityManager))),
-                parent);
+            parent);
         QueueDel(uid);
 
         return parent;

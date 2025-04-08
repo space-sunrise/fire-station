@@ -1,5 +1,3 @@
-using Content.Shared.Dataset;
-using Content.Shared.Humanoid.Markings;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
@@ -7,7 +5,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared.Humanoid.Prototypes;
 
-[Prototype]
+[Prototype("species")]
 public sealed partial class SpeciesPrototype : IPrototype
 {
     /// <summary>
@@ -76,7 +74,7 @@ public sealed partial class SpeciesPrototype : IPrototype
     ///     The limit of body markings that you can place on this species.
     /// </summary>
     [DataField("markingLimits")]
-    public ProtoId<MarkingPointsPrototype> MarkingPoints { get; private set; } = default!;
+    public string MarkingPoints { get; private set; } = default!;
 
     /// <summary>
     ///     Humanoid species variant used by this entity.
@@ -97,18 +95,18 @@ public sealed partial class SpeciesPrototype : IPrototype
     public HumanoidSkinColor SkinColoration { get; private set; }
 
     [DataField]
-    public ProtoId<LocalizedDatasetPrototype> MaleFirstNames { get; private set; } = "NamesFirstMale";
+    public string MaleFirstNames { get; private set; } = "names_first_male";
 
     [DataField]
-    public ProtoId<LocalizedDatasetPrototype> FemaleFirstNames { get; private set; } = "NamesFirstFemale";
+    public string FemaleFirstNames { get; private set; } = "names_first_female";
 
-    // SUNRISE-TODO: Локализированые гендерные фамилии
     // Russian-LastnameGender-Start: Split lastname field by gender
     [DataField]
-    public ProtoId<LocalizedDatasetPrototype> MaleLastNames { get; private set; } = "NamesLast"; // = "NamesLastMale";
+    public string MaleLastNames { get; private set; } = "names_last_male";
 
     [DataField]
-    public ProtoId<LocalizedDatasetPrototype> FemaleLastNames { get; private set; } = "NamesLast"; // = "NamesLastFemale";
+    public string FemaleLastNames { get; private set; } = "names_last_female";
+    // Russian-LastnameGender-End
 
     [DataField]
     public SpeciesNaming Naming { get; private set; } = SpeciesNaming.FirstLast;

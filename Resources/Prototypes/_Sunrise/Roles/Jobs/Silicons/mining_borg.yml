@@ -5,9 +5,6 @@
   playTimeTracker: JobMiningBorg
   icon: JobIconMiningBorg
   supervisors: job-supervisors-human
-  requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 72000 #20 hrs # Sunrise-Edit
   canBeAntag: false
   setPreference: false # Fire
   displayWeight: -10  # Sunrise

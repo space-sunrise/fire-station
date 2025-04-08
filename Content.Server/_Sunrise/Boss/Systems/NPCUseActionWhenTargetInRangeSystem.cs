@@ -85,9 +85,9 @@ public sealed class NPCUseActionWhenTargetInRangeSystem : EntitySystem
                     _timing.CurTime,
                     false);
             }
-            else if (HasComp<EntityWorldTargetActionComponent>(actionWhenTargetInRange.ActionEnt))
+            else if (HasComp<WorldTargetActionComponent>(actionWhenTargetInRange.ActionEnt))
             {
-                var action = Comp<EntityWorldTargetActionComponent>(actionWhenTargetInRange.ActionEnt.Value);
+                var action = Comp<WorldTargetActionComponent>(actionWhenTargetInRange.ActionEnt.Value);
 
                 if (!_actions.ValidAction(action))
                     continue;
@@ -103,9 +103,7 @@ public sealed class NPCUseActionWhenTargetInRangeSystem : EntitySystem
                     continue;
 
                 if (action.Event != null)
-                {
-                    action.Event.Coords = targetXform.Coordinates;
-                }
+                    action.Event.Target = targetXform.Coordinates;
 
                 _actions.PerformAction(user,
                     null,

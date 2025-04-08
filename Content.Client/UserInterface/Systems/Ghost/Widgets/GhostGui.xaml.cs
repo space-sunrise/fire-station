@@ -14,7 +14,6 @@ public sealed partial class GhostGui : UIWidget
     public event Action? RequestWarpsPressed;
     public event Action? ReturnToBodyPressed;
     public event Action? GhostRolesPressed;
-    private int _prevNumberRoles;
     public event Action? RespawnPressed; // Sunrise-Edit
     public event Action? ChangeServerPressed;
 
@@ -29,7 +28,6 @@ public sealed partial class GhostGui : UIWidget
         GhostWarpButton.OnPressed += _ => RequestWarpsPressed?.Invoke();
         ReturnToBodyButton.OnPressed += _ => ReturnToBodyPressed?.Invoke();
         GhostRolesButton.OnPressed += _ => GhostRolesPressed?.Invoke();
-        GhostRolesButton.OnPressed += _ => GhostRolesButton.StyleClasses.Remove(StyleBase.ButtonCaution);
         RespawnButton.OnPressed += _ => RespawnPressed?.Invoke(); // Sunrise-Edit
         ChangeServerButton.OnPressed += _ => ChangeServerPressed?.Invoke();
     }
@@ -47,13 +45,14 @@ public sealed partial class GhostGui : UIWidget
         if (roles != null)
         {
             GhostRolesButton.Text = Loc.GetString("ghost-gui-ghost-roles-button", ("count", roles));
-
-            if (roles > _prevNumberRoles)
+            if (roles > 0)
             {
                 GhostRolesButton.StyleClasses.Add(StyleBase.ButtonCaution);
             }
-
-            _prevNumberRoles = (int)roles;
+            else
+            {
+                GhostRolesButton.StyleClasses.Remove(StyleBase.ButtonCaution);
+            }
         }
 
         // Sunrise-Start

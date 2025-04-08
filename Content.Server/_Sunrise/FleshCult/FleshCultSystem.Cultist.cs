@@ -222,17 +222,15 @@ public sealed partial class FleshCultSystem
     {
         if (_mindSystem.TryGetMind(uid, out var mindId, out var mind))
         {
-            if (_mindSystem.TryFindObjective((mindId, mind), CreateFleshHeartObjective, out var fleshHeartObjective))
-            {
-                _mindSystem.TryRemoveObjective(mindId, mind, mind.Objectives.IndexOf(fleshHeartObjective.Value));
-            }
-
-            if (_mindSystem.TryFindObjective((mindId, mind), FleshCultSurviveObjective, out var surviveObjective))
-            {
-                _mindSystem.TryRemoveObjective(mindId, mind, mind.Objectives.IndexOf(surviveObjective.Value));
-            }
-
             _roles.MindRemoveRole<FleshCultistRoleComponent>((mindId, mind));
+            var indexesToRemove = mind.Objectives
+                .Select((objective, index) => new { objective, index })
+                .Where(x => MetaData(x.objective).EntityPrototype!.ID is CreateFleshHeartObjective or FleshCultSurviveObjective)
+                .Select(x => x.index)
+                .ToList();
+
+            foreach (var index in indexesToRemove.OrderByDescending(i => i))
+                _mindSystem.TryRemoveObjective(mindId, mind, index);
         }
     }
 
@@ -307,7 +305,7 @@ public sealed partial class FleshCultSystem
             var tempSol = new Solution { MaxVolume = 5 };
             tempSol.AddSolution(bloodstream.BloodSolution.Value.Comp.Solution, _prototypeManager);
 
-            if (_puddleSystem.TrySpillAt(uid, tempSol.SplitSolution(50), out var puddleUid) && TryComp<DnaComponent>(uid, out var dna) && dna.DNA != null)
+            if (_puddleSystem.TrySpillAt(uid, tempSol.SplitSolution(50), out var puddleUid) && TryComp<DnaComponent>(uid, out var dna))
             {
                 var comp = EnsureComp<ForensicsComponent>(puddleUid);
                 comp.DNAs.Add(dna.DNA);

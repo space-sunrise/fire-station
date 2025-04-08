@@ -13,15 +13,7 @@
           !type:PhysShapeCircle
           radius: 0.25
         mask:
-        - Impassable
-        - HighImpassable
-        - MidImpassable
-      fix2:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.25
-        mask:
-        - MachineLayer
+        - SubfloorMask
         layer:
         - LowImpassable
         hard: false

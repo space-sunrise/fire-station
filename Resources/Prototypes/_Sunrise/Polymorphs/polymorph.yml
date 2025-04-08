@@ -11,89 +11,81 @@
 - type: polymorph
   id: PermanentlyHuman
   configuration:
-    entity: MobHumanRandomization
+    entity: MobHuman
     forced: true
     transferName: true
     inventory: Transfer
     revertOnCrit: false
     revertOnDeath: false
-    blockIfHasMind: true
 
 - type: polymorph
   id: PermanentlyReptilian
   configuration:
-    entity: MobReptilianRandomization
+    entity: MobReptilian
     forced: true
     transferName: true
     inventory: Transfer
     revertOnCrit: false
     revertOnDeath: false
-    blockIfHasMind: true
 
 - type: polymorph
   id: PermanentlyTajaran
   configuration:
-    entity: MobTajaranRandomization
+    entity: MobTajaran
     forced: true
     transferName: true
     inventory: Transfer
     revertOnCrit: false
     revertOnDeath: false
     allowRepeatedMorphs: true
-    blockIfHasMind: true
 
 - type: polymorph
   id: PermanentlySlime
   configuration:
-    entity: MobSlimePersonRandomization
+    entity: MobSlimePerson
     forced: true
     transferName: true
     revertOnCrit: false
     revertOnDeath: false
-    blockIfHasMind: true
 
 - type: polymorph
   id: PermanentlyMoth
   configuration:
-    entity: MobMothRandomization
+    entity: MobMoth
     forced: true
     transferName: true
     inventory: Transfer
     revertOnCrit: false
     revertOnDeath: false
-    blockIfHasMind: true
 
 - type: polymorph
   id: PermanentlySwine
   configuration:
-    entity: MobSwineRandomization
+    entity: MobSwine
     forced: true
     transferName: true
     inventory: Transfer
     revertOnCrit: false
     revertOnDeath: false
-    blockIfHasMind: true
 
 - type: polymorph
   id: PermanentlyVox
   configuration:
-    entity: MobVoxRandomization
+    entity: MobVox
     forced: true
     transferName: true
     revertOnCrit: false
     revertOnDeath: false
-    blockIfHasMind: true
 
 - type: polymorph
   id: PermanentlyVulpkanin
   configuration:
-    entity: MobVulpkaninRandomization
+    entity: MobVulpkanin
     forced: true
-    transferName: true 
+    transferName: true
     inventory: Transfer
     revertOnCrit: false
     revertOnDeath: false
-    blockIfHasMind: true
 
 # TODO: Генетика
 #- type: polymorph

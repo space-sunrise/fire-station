@@ -22,165 +22,55 @@ public sealed partial class GhostThemeMenu : DefaultWindow
     public event Action<string>? OnIdSelected;
 
     private List<string> _availableGhostThemes = [];
-    private string _currentSelectedTheme = string.Empty;
-    private string _searchText = string.Empty;
-    private string _previewedTheme = string.Empty;
 
     public GhostThemeMenu()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
-        
-        SearchBar.OnTextChanged += OnSearchTextChanged;
-        SelectButton.OnPressed += OnSelectButtonPressed;
-    }
-
-    private void OnSearchTextChanged(LineEdit.LineEditEventArgs args)
-    {
-        _searchText = args.Text;
-        UpdateButtons();
     }
 
     public void UpdateState(List<string> ghostThemes)
     {
         _availableGhostThemes = ghostThemes;
-        
-        if (string.IsNullOrEmpty(_previewedTheme))
-        {
-            var currentTheme = _cfg.GetCVar(SunriseCCVars.SponsorGhostTheme);
-            if (!string.IsNullOrEmpty(currentTheme) && _availableGhostThemes.Contains(currentTheme))
-            {
-                _currentSelectedTheme = currentTheme;
-                _previewedTheme = currentTheme;
-                UpdatePreview(_previewedTheme);
-            }
-            else if (_availableGhostThemes.Count > 0)
-            {
-                _currentSelectedTheme = _availableGhostThemes[0];
-                _previewedTheme = _availableGhostThemes[0];
-                UpdatePreview(_previewedTheme);
-            }
-        }
-        else
-        {
-            UpdateSelectButtonState();
-        }
-        
-        UpdateButtons();
+        UpdateGrid();
     }
 
-    private void UpdateButtons()
+    private void UpdateGrid()
     {
-        var currentlyPreviewedTheme = _previewedTheme;
-        
-        ClearButtons();
+        ClearGrid();
 
         foreach (var ghostTheme in _availableGhostThemes)
         {
             if (!_prototypeManager.TryIndex(ghostTheme, out GhostThemePrototype? ghostThemePrototype))
                 continue;
 
-            var themeName = Loc.GetString(ghostThemePrototype.Name);
-            if (!string.IsNullOrEmpty(_searchText) && 
-                !themeName.ToLowerInvariant().Contains(_searchText.ToLowerInvariant()) &&
-                !ghostTheme.ToLowerInvariant().Contains(_searchText.ToLowerInvariant()))
-                continue;
-
             var button = new Button
             {
-                MinHeight = 50,
+                SetSize = new Vector2(128, 128),
                 HorizontalExpand = true,
-                ToggleMode = true,
-                Pressed = ghostTheme == currentlyPreviewedTheme
+                ToggleMode = false,
+                StyleClasses = {StyleBase.ButtonSquare},
             };
-            
-            var panel = new PanelContainer
+            button.OnPressed += _ =>
             {
-                HorizontalExpand = true
+                OnIdSelected?.Invoke(ghostTheme);
+                _cfg.SetCVar(SunriseCCVars.SponsorGhostTheme, ghostTheme);
+                _cfg.SaveToFile();
             };
-            
-            var box = new BoxContainer
-            {
-                Orientation = BoxContainer.LayoutOrientation.Horizontal,
-                HorizontalExpand = true,
-                Margin = new Thickness(5)
-            };
+            Grid.AddChild(button);
 
-            var ghostIcon = new TextureRect
+            var ghost = new TextureRect()
             {
                 Texture = ghostThemePrototype.Sprite.Frame0(),
                 Stretch = TextureRect.StretchMode.KeepAspectCentered,
-                SetSize = new Vector2(40, 40)
             };
-            
-            var nameLabel = new Label
-            {
-                Text = Loc.GetString(ghostThemePrototype.Name),
-                StyleClasses = { StyleNano.StyleClassLabelBig },
-                HorizontalExpand = true,
-                VerticalAlignment = VAlignment.Center,
-                Margin = new Thickness(10, 0, 0, 0)
-            };
-            
-            box.AddChild(ghostIcon);
-            box.AddChild(nameLabel);
-            panel.AddChild(box);
-            button.AddChild(panel);
-            
-            button.OnPressed += _ =>
-            {
-                foreach (var child in ButtonContainer.Children)
-                {
-                    if (child is Button otherButton && otherButton != button)
-                        otherButton.Pressed = false;
-                }
-                
-                button.Pressed = true;
-                _previewedTheme = ghostTheme;
-                
-                UpdatePreview(ghostTheme);
-            };
-            
-            ButtonContainer.AddChild(button);
+
+            button.AddChild(ghost);
         }
     }
-    
-    private void UpdatePreview(string ghostTheme)
-    {
-        if (!_prototypeManager.TryIndex(ghostTheme, out GhostThemePrototype? ghostThemePrototype))
-            return;
-        
-        PreviewTexture.Texture = ghostThemePrototype.Sprite.Frame0();
-        PreviewTexture.ModulateSelfOverride = ghostThemePrototype.SpriteColor;
-        PreviewName.Text = Loc.GetString(ghostThemePrototype.Name);
-        
-        PreviewDescription.Text = Loc.GetString("ghost-theme-preview-description");
-        
-        UpdateSelectButtonState();
-    }
-    
-    private void UpdateSelectButtonState()
-    {
-        SelectButton.Disabled = _previewedTheme == _currentSelectedTheme;
-    }
 
-    private void ClearButtons()
+    private void ClearGrid()
     {
-        ButtonContainer.RemoveAllChildren();
-    }
-
-    private void OnSelectButtonPressed(BaseButton.ButtonEventArgs args)
-    {
-        if (!string.IsNullOrEmpty(_previewedTheme))
-        {
-            _currentSelectedTheme = _previewedTheme;
-            OnIdSelected?.Invoke(_currentSelectedTheme);
-            _cfg.SetCVar(SunriseCCVars.SponsorGhostTheme, _currentSelectedTheme);
-            _cfg.SaveToFile();
-            
-            UpdateButtons();
-            
-            Close();
-        }
+        Grid.RemoveAllChildren();
     }
 }

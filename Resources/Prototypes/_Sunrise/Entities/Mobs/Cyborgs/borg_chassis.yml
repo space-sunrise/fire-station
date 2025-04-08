@@ -101,7 +101,8 @@
     sounds:
       Unsexed: Reaper
   - type: RandomMetadata
-    nameSegments: [NamesBorg]
+    nameSegments:
+    - names_first_reaper
   - type: InnateItem
     worldTargetActions:
     - Emag
@@ -214,7 +215,8 @@
     - Hydroponics
     - Atmospherics
   - type: RandomMetadata
-    nameSegments: [NamesBorg]
+    nameSegments:
+    - BorgNamesERT
   - type: MovementSpeedModifier
     baseWalkSpeed : 2.5
     baseSprintSpeed : 4.5
@@ -228,6 +230,25 @@
     instantActions:
     - PortableSurveillanceCameraMonitor
     - HandheldCrewMonitorBorg
+
+- type: dataset
+  id: BorgNamesERT
+  values:
+  - Хал 900
+  - Ева
+  - Прайм
+  - Джет
+  - Арнольд
+  - Систэм
+  - Вавилон
+  - Логан
+  - Гэбриэл
+  - Майкл
+  - Рафаэль
+  - Уриэль
+  - Иеримиил
+  - Сариэль
+  - Рамиэль
 
 - type: entity
   id: BorgChassisSyndicateHeavy
@@ -324,7 +345,8 @@
   - type: RandomHumanoidAppearance
     randomizeName: False
   - type: RandomMetadata
-    nameSegments: [NamesBorg]
+    nameSegments:
+    - BorgHeavyNames
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepCyborgSpider
@@ -408,7 +430,8 @@
   - type: RandomHumanoidAppearance
     randomizeName: False
   - type: RandomMetadata
-    nameSegments: [NamesBorg]
+    nameSegments:
+    - BorgScoutNames
   - type: MovementSpeedModifier
     baseWalkSpeed : 3
     baseSprintSpeed : 5

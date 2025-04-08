@@ -89,8 +89,6 @@
       - map: [ "enum.HumanoidVisualLayers.LArm" ]
       - map: [ "enum.HumanoidVisualLayers.RLeg" ]
       - map: [ "enum.HumanoidVisualLayers.LLeg" ]
-      - map: [ "enum.HumanoidVisualLayers.UndergarmentBottom" ]
-      - map: [ "enum.HumanoidVisualLayers.UndergarmentTop" ]
       - map: ["enum.HumanoidVisualLayers.LFoot"]
       - map: ["enum.HumanoidVisualLayers.RFoot"]
       # Sunrise-start
@@ -130,7 +128,6 @@
         visible: false
   - type: Inventory
     templateId: arachnid
-    speciesId: arachnid
   # Sunrise-start
   - type: FootstepModifier
     footstepSoundCollection:
@@ -167,8 +164,6 @@
   components:
   - type: HumanoidAppearance
     species: Arachnid
-  - type: Inventory
-    speciesId: arachnid
 
 
 #>88w88<

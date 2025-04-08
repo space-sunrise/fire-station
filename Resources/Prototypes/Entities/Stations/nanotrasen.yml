@@ -27,8 +27,7 @@
     - BaseStationSiliconLawCrewsimov
     - BaseStationAllEventsEligible
     - BaseStationNanotrasen
-    - BaseStationDeliveries
-  # Sunrise-Start
+    # Sunrise-Start
     - BaseStationTransitHub
     - BaseStationDontSelling
     - BaseStationPlanetPrison
@@ -36,7 +35,7 @@
     - BaseStationAntagsTargets
     - BaseStationCryoTeleport
     - BaseStationMeteorSwarmTarget
-  # Sunrise-End
+    # Sunrise-End
   components:
     - type: Transform
 

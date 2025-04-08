@@ -20,7 +20,7 @@
       startingGear: FleshCultistLeaderGear
       components:
       - type: FleshCultist
-        startingMutationPoints: 15
+        startingMutationPoints: 50
       - type: NpcFactionMember
         factions:
         - FleshHuman
@@ -40,7 +40,7 @@
       blacklist:
         components:
         - AntagImmune
-        #- Synth # SUNRISE-TODO: КПБ
+        - Synth
         - BibleUser
       mindRoles:
       - MindRoleFleshCultistLeader
@@ -50,7 +50,7 @@
       playerRatio: 15
       components:
       - type: FleshCultist
-        startingMutationPoints: 5
+        startingMutationPoints: 15
       - type: NpcFactionMember
         factions:
         - FleshHuman
@@ -70,7 +70,7 @@
       blacklist:
         components:
         - AntagImmune
-        #- Synth # SUNRISE-TODO: КПБ
+        - Synth
         - BibleUser
       mindRoles:
       - MindRoleFleshCultist

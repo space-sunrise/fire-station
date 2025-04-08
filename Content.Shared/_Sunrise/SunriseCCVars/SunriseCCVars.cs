@@ -88,6 +88,16 @@ public sealed class SunriseCCVars
         CVarDef.Create("game.godmode_end", false, CVar.SERVERONLY);
 
     /*
+     * Peaceful Round End
+     */
+
+    /// <summary>
+    /// Making everyone a pacifist at the end of a round.
+    /// </summary>
+    public static readonly CVarDef<bool> PeacefulRoundEnd =
+        CVarDef.Create("game.peaceful_end", false, CVar.SERVERONLY);
+
+    /*
      * Queue
      */
 
@@ -206,7 +216,7 @@ public sealed class SunriseCCVars
             CVarDef.Create("planet_prison.enable", true, CVar.SERVERONLY);
 
     public static readonly CVarDef<int> MinPlayersPlanetPrison =
-        CVarDef.Create("planet_prison.min_players", 0, CVar.SERVERONLY);
+        CVarDef.Create("planet_prison.min_players", 60, CVar.SERVERONLY);
 
     /*
      * MaxLoadedChunks
@@ -258,7 +268,7 @@ public sealed class SunriseCCVars
 
     public static readonly CVarDef<bool> NPCDisableWithoutPlayers = CVarDef.Create("npc.disable_without_players", true);
 
-    public static readonly CVarDef<float> NPCDisableDistance = CVarDef.Create("npc.disable_distance", 20f);
+    public static readonly CVarDef<float> NPCDisableDistance = CVarDef.Create("npc.disable_distance", 15f);
 
     /*
      * Vote
@@ -278,13 +288,11 @@ public sealed class SunriseCCVars
 
     public static readonly CVarDef<int> VotingsDelay = CVarDef.Create("vote.votings_delay", 60);
 
-    public static readonly CVarDef<int> MapVotingCount = CVarDef.Create("vote.map_voting_count", 5);
+    public static readonly CVarDef<int> MapVotingCount = CVarDef.Create("vote.map_voting_count", 3);
 
     public static readonly CVarDef<int> RoundVotingCount = CVarDef.Create("vote.round_voting_count", 3);
 
     public static readonly CVarDef<string> RoundVotingChancesPrototype = CVarDef.Create("vote.round_voting_chances_prototype", "SunriseVoteSecret");
-
-    public static readonly CVarDef<bool> VoteMusicDisable = CVarDef.Create("vote.music_disable", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /*
      * Preset
@@ -331,8 +339,8 @@ public sealed class SunriseCCVars
     public static readonly CVarDef<float> JumpCooldown =
         CVarDef.Create("jump.cooldown", 0.600f, CVar.SERVER | CVar.REPLICATED);
 
-    public static readonly CVarDef<bool> JumpSoundDisable =
-        CVarDef.Create("jump.sound_disable", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+    public static readonly CVarDef<bool> JumpSoundEnable =
+        CVarDef.Create("jump.sound_enable", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     public static readonly CVarDef<bool> BunnyHopEnable =
         CVarDef.Create("bunny_hop.enable", true, CVar.SERVER | CVar.REPLICATED);
@@ -379,6 +387,9 @@ public sealed class SunriseCCVars
     public static readonly CVarDef<string> VigersRayVictims =
         CVarDef.Create("vigers_ray.victims", "", CVar.SERVERONLY);
 
+    public static readonly CVarDef<bool> DisableGameRules =
+        CVarDef.Create("vigers_ray.disable_game_rules", true, CVar.SERVERONLY);
+
     /// <summary>
     ///     Flavor Profile
     /// </summary>
@@ -414,11 +425,4 @@ public sealed class SunriseCCVars
 
     public static readonly CVarDef<bool> ChatPointingVisuals =
         CVarDef.Create("chat_icon_pointing.enable", true, CVar.CLIENTONLY | CVar.ARCHIVE);
-
-    /*
-     * Mute new ghost role sound
-     */
-
-    public static readonly CVarDef<bool> MuteGhostRoleNotification =
-        CVarDef.Create("ghost.mute_role_notification", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

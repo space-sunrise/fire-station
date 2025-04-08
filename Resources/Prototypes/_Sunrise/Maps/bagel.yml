@@ -69,7 +69,6 @@
           Quartermaster: [ 1, 1 ]
           SalvageSpecialist: [ 3, 3 ]
           CargoTechnician: [ 3, 3 ]
-          MailCarrier: [ 1, 2 ]
           #civilian
           Passenger: [ -1, -1 ]
           Clown: [ 1, 1 ]
@@ -103,7 +102,7 @@
         - Zoo
         - MiningOutpost
         - Tesla
-        #- XenobiologyRepair
+        - XenobiologyRepair
         - VirusologyAmbusol
         - Containment
         - WeaponsSecurity
@@ -118,7 +117,7 @@
         - Cyborgs
         - Testing
         - Anomaly
-        #- Replenishment
+        - Replenishment
         - IntelWeapons
         - Reports
         - Reconnaissance

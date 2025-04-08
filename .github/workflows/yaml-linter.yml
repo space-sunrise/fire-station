@@ -13,41 +13,23 @@ jobs:
     if: github.actor != 'GayBot' && github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4.2.2
-
-    - name: Setup submodule
-      run: |
-        git submodule update --init --recursive
-
-    - name: Pull engine updates
-      uses: space-wizards/submodule-dependency@v0.1.5
-
-    - name: Update Engine Submodules
-      run: |
-        cd RobustToolbox/
-        git submodule update --init --recursive
-
-    - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4.1.0
-      with:
-        dotnet-version: 9.0.x
-
-    - name: Install system dependencies
-      run: |
-        sudo apt update
-        sudo apt install -y libopenal1
-
-    - name: Verify OpenAL installation
-      run: |
-        ldconfig -p | grep openal || (echo "OpenAL not found!" && exit 1)
-
-    - name: Install .NET dependencies
-      run: dotnet restore
-
-    - name: Build
-      run: dotnet build --configuration Release --no-restore /p:WarningsAsErrors= /m
-
-    - name: Run Linter
-      run: |
-        export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
-        dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj --no-build
+      - uses: actions/checkout@v3.6.0
+      - name: Setup submodule
+        run: |
+          git submodule update --init --recursive
+      - name: Pull engine updates
+        uses: space-wizards/submodule-dependency@v0.1.5
+      - name: Update Engine Submodules
+        run: |
+          cd RobustToolbox/
+          git submodule update --init --recursive
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v3.2.0
+        with:
+          dotnet-version: 9.0.x
+      - name: Install dependencies
+        run: dotnet restore
+      - name: Build
+        run: dotnet build --configuration Release --no-restore /p:WarningsAsErrors= /m
+      - name: Run Linter
+        run: dotnet run --project Content.YAMLLinter/Content.YAMLLinter.csproj --no-build

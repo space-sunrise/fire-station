@@ -1,6 +1,5 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-using Content.Shared._Sunrise.Events;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Alert;
 using Content.Shared.Audio;
@@ -150,9 +149,6 @@ public sealed class ReflectSystem : EntitySystem
             projectileComp.Shooter = user;
             projectileComp.Weapon = user;
             Dirty(projectile, projectileComp);
-
-            var reflectedEv = new ReflectedEvent(projectileComp.Shooter, projectileComp.Weapon.Value, projectileComp.Damage, reflective.Reflective);
-            RaiseLocalEvent(reflector, reflectedEv);
         }
         else
         {

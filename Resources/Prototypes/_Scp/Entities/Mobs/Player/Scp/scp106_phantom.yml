@@ -1,19 +1,6 @@
 - type: entity
-  id: BaseScp106Phantom
-  parent: BaseMob
-  components:
-  - type: Sprite
-    drawdepth: Mobs
-    sprite: _Scp/Scp106/scp106.rsi
-    layers:
-    - map: [ "base" ]
-      state: phantom
-  - type: FlashImmunity
-  - type: Scp106Phantom
-
-- type: entity
   id: Scp106Phantom
-  parent: BaseScp106Phantom
+  parent: BaseMob
   name: SCP-106 Phantom
   components:
   - type: MobState
@@ -39,10 +26,18 @@
     - Shock
     - Cold
     - Caustic
+  - type: FlashImmunity
   - type: MobThresholds
     thresholds:
       0: Alive
       50: Dead
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/scp-106.rsi
+    color: "#fff8"
+    layers:
+    - map: [ "base" ]
+      state: 106
   - type: Fixtures
     fixtures:
       fix1:
@@ -54,28 +49,8 @@
         - SmallMobMask
         layer:
         - MobLayer
+  - type: Scp106Phantom
   - type: ActionGrant
     actions:
     - Scp106Reverse
     - Scp106LeavePhantom
-    - Scp106PassThrough
-
-- type: entity
-  id: Scp106CorporealPhantom
-  parent: BaseScp106Phantom
-  name: SCP-106 Phantom
-  components:
-  - type: Eye
-    drawFov: false
-  - type: Visibility
-    layer: 2 #ghost vis layer
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.35
-        density: 50
-        layer:
-        - GhostImpassable
-  - type: MovementIgnoreGravity

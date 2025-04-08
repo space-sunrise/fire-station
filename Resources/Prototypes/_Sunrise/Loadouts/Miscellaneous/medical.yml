@@ -22,7 +22,7 @@
       time: 7200 # 2hr
   storage:
     back:
-    - ChemistryBottleEpinephrine
+    - EpinephrineChemistryBottle
 
 - type: loadout
   id: TrinketsMedicalHHA

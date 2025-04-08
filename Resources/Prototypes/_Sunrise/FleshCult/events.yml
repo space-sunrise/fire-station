@@ -7,4 +7,5 @@
     earliestStart: 15
     minimumPlayers: 20
     weight: 5
+    duration: 60
   - type: VentFleshWormsRule

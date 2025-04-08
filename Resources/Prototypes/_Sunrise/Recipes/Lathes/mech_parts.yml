@@ -2,8 +2,7 @@
 - type: latheRecipe
   id: ClarkeHarness
   result: ClarkeHarness
-  categories:
-  - Clarke
+  category: Clarke
   completetime: 60
   materials:
     Steel: 2500
@@ -14,8 +13,7 @@
 - type: latheRecipe
   id: ClarkeHead
   result: ClarkeHead
-  categories:
-  - Clarke
+  category: Clarke
   completetime: 30
   materials:
     Steel: 1550
@@ -26,8 +24,7 @@
 - type: latheRecipe
   id: ClarkeLArm
   result: ClarkeLArm
-  categories:
-  - Clarke
+  category: Clarke
   completetime: 30
   materials:
     Steel: 900
@@ -36,8 +33,7 @@
 - type: latheRecipe
   id: ClarkeRArm
   result: ClarkeRArm
-  categories:
-  - Clarke
+  category: Clarke
   completetime: 30
   materials:
     Steel: 900
@@ -46,8 +42,7 @@
 - type: latheRecipe
   id: ClarkeTreads
   result: ClarkeTreads
-  categories:
-  - Clarke
+  category: Clarke
   completetime: 30
   materials:
     Steel: 950
@@ -56,8 +51,7 @@
 - type: latheRecipe
   id: DurandHarness
   result: DurandHarness
-  categories:
-  - Durand
+  category: Durand
   completetime: 60
   materials:
     Steel: 2500
@@ -67,8 +61,7 @@
 - type: latheRecipe
   id: DurandArmor
   result: DurandArmorPlate
-  categories:
-  - Durand
+  category: Durand
   completetime: 20
   materials:
     Steel: 3000
@@ -77,8 +70,7 @@
 - type: latheRecipe
   id: DurandHead
   result: DurandHead
-  categories:
-  - Durand
+  category: Durand
   completetime: 20
   materials:
     Steel: 1500
@@ -89,8 +81,7 @@
 - type: latheRecipe
   id: DurandLArm
   result: DurandLArm
-  categories:
-  - Durand
+  category: Durand
   completetime: 30
   materials:
     Steel: 1100
@@ -99,8 +90,7 @@
 - type: latheRecipe
   id: DurandLLeg
   result: DurandLLeg
-  categories:
-  - Durand
+  category: Durand
   completetime: 30
   materials:
     Steel: 1100
@@ -109,8 +99,7 @@
 - type: latheRecipe
   id: DurandRLeg
   result: DurandRLeg
-  categories:
-  - Durand
+  category: Durand
   completetime: 30
   materials:
     Steel: 1100
@@ -119,8 +108,7 @@
 - type: latheRecipe
   id: DurandRArm
   result: DurandRArm
-  categories:
-  - Durand
+  category: Durand
   completetime: 30
   materials:
     Steel: 1100
@@ -130,8 +118,7 @@
 - type: latheRecipe
   id: GygaxHarness
   result: GygaxHarness
-  categories:
-  - Gygax
+  category: Gygax
   completetime: 30
   materials:
     Steel: 2500
@@ -140,8 +127,7 @@
 - type: latheRecipe
   id: GygaxArmor
   result: GygaxArmorPlate
-  categories:
-  - Gygax
+  category: Gygax
   completetime: 30
   materials:
     Steel: 3000
@@ -149,8 +135,7 @@
 - type: latheRecipe
   id: GygaxHead
   result: GygaxHead
-  categories:
-  - Gygax
+  category: Gygax
   completetime: 30
   materials:
     Steel: 1500
@@ -161,8 +146,7 @@
 - type: latheRecipe
   id: GygaxLArm
   result: GygaxLArm
-  categories:
-  - Gygax
+  category: Gygax
   completetime: 30
   materials:
     Steel: 1100
@@ -170,8 +154,7 @@
 - type: latheRecipe
   id: GygaxLLeg
   result: GygaxLLeg
-  categories:
-  - Gygax
+  category: Gygax
   completetime: 30
   materials:
     Steel: 1100
@@ -179,8 +162,7 @@
 - type: latheRecipe
   id: GygaxRLeg
   result: GygaxRLeg
-  categories:
-  - Gygax
+  category: Gygax
   completetime: 30
   materials:
     Steel: 1100
@@ -188,8 +170,7 @@
 - type: latheRecipe
   id: GygaxRArm
   result: GygaxRArm
-  categories:
-  - Gygax
+  category: Gygax
   completetime: 30
   materials:
     Steel: 1100
@@ -198,8 +179,7 @@
 - type: latheRecipe
   id: RipleyMKIIHarness
   result: RipleyMKIIHarness
-  categories:
-  - RipleyMKII
+  category: RipleyMKII
   completetime: 30
   materials:
     Steel: 1500
@@ -208,8 +188,7 @@
 - type: latheRecipe
   id: RipleyUpgradeKit
   result: RipleyUpgradeKit
-  categories:
-  - RipleyMKII
+  category: RipleyMKII
   completetime: 30
   materials:
     Steel: 500
@@ -219,8 +198,7 @@
 - type: latheRecipe
   id: PhazonHarness
   result: PhazonHarness
-  categories:
-  - Phazon
+  category: Phazon
   completetime: 60
   materials:
     Steel: 3500
@@ -230,8 +208,7 @@
 - type: latheRecipe
   id: PhazonArmor
   result: PhazonArmorPlate
-  categories:
-  - Phazon
+  category: Phazon
   completetime: 20
   materials:
     Steel: 3000
@@ -240,8 +217,7 @@
 - type: latheRecipe
   id: PhazonHead
   result: PhazonHead
-  categories:
-  - Phazon
+  category: Phazon
   completetime: 45
   materials:
     Steel: 1500
@@ -253,8 +229,7 @@
 - type: latheRecipe
   id: PhazonLArm
   result: PhazonLArm
-  categories:
-  - Phazon
+  category: Phazon
   completetime: 18
   materials:
     Steel: 1100
@@ -263,8 +238,7 @@
 - type: latheRecipe
   id: PhazonLLeg
   result: PhazonLLeg
-  categories:
-  - Phazon
+  category: Phazon
   completetime: 18
   materials:
     Steel: 1100
@@ -273,8 +247,7 @@
 - type: latheRecipe
   id: PhazonRLeg
   result: PhazonRLeg
-  categories:
-  - Phazon
+  category: Phazon
   completetime: 18
   materials:
     Steel: 1100
@@ -283,8 +256,7 @@
 - type: latheRecipe
   id: PhazonRArm
   result: PhazonRArm
-  categories:
-  - Phazon
+  category: Phazon
   completetime: 18
   materials:
     Steel: 1100
@@ -295,8 +267,7 @@
 - type: latheRecipe
   id: MechEquipmentDrill
   result: WeaponMechMelleDrill
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 30
   materials:
     Steel: 1000
@@ -305,8 +276,7 @@
 - type: latheRecipe
   id: MechEquipmentDrillDiamond
   result: WeaponMechMelleDrillDiamond
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 30
   materials:
     Steel: 1000
@@ -317,8 +287,7 @@
 - type: latheRecipe
   id: MechEquipmentHonkerBananaMortar
   result: WeaponMechSpecialBananaMortar
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 10
   materials:
     Steel: 1150
@@ -327,8 +296,7 @@
 - type: latheRecipe
   id: MechEquipmentHonkerMousetrapMortar
   result: WeaponMechSpecialMousetrapMortar
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 10
   materials:
     Steel: 1200
@@ -338,8 +306,7 @@
 - type: latheRecipe
   id: MechPhasicScanningModule
   result: MechPhasicScanningModule
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 30
   materials:
     Steel: 2000
@@ -349,8 +316,7 @@
 - type: latheRecipe
   id: MechAirTank
   result: MechAirTank
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 15
   materials:
     Steel: 1000
@@ -359,8 +325,7 @@
 - type: latheRecipe
   id: MechThruster
   result: MechThruster
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 15
   materials:
     Steel: 1000
@@ -370,8 +335,7 @@
 - type: latheRecipe
   id: PaintClarkeOrangey
   result: MechPaintClarkeOrangey
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 30
   materials:
     Steel: 500
@@ -381,8 +345,7 @@
 - type: latheRecipe
   id: PaintRipleyAluminizer
   result: MechPaintRipleyAluminizer
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 30
   materials:
     Steel: 800
@@ -392,8 +355,7 @@
 - type: latheRecipe
   id: PaintRipleyFirestarter
   result: MechPaintRipleyFirestarter
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 30
   materials:
     Steel: 800
@@ -403,8 +365,7 @@
 - type: latheRecipe
   id: PaintRipleyHauler
   result: MechPaintRipleyHauler
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 30
   materials:
     Steel: 800
@@ -414,8 +375,7 @@
 - type: latheRecipe
   id: PaintRipleyZairjah
   result: MechPaintRipleyZairjah
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 30
   materials:
     Steel: 800
@@ -425,8 +385,7 @@
 - type: latheRecipe
   id: PaintDurandExecutor
   result: MechPaintDurandExecutor
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 30
   materials:
     Steel: 1600
@@ -436,8 +395,7 @@
 - type: latheRecipe
   id: PaintDurandShire
   result: MechPaintDurandShire
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 30
   materials:
     Steel: 1600
@@ -447,8 +405,7 @@
 - type: latheRecipe
   id: PaintGygaxOld
   result: MechPaintGygaxOld
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 30
   materials:
     Steel: 1800
@@ -458,8 +415,7 @@
 - type: latheRecipe
   id: PaintGygaxWhite
   result: MechPaintGygaxWhite
-  categories:
-  - MechEquipment
+  category: MechEquipment
   completetime: 30
   materials:
     Steel: 1800

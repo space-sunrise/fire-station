@@ -8,8 +8,3 @@
   id: SunriseWeaponEnergyGun
   equipment:
     pocket1: WeaponEnergyGunPistolSecurity
-
-- type: loadout
-  id: SunriseWeaponTaser
-  equipment:
-    pocket1: WeaponTaser

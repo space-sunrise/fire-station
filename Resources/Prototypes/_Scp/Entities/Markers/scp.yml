@@ -73,8 +73,8 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/Scp106/scp106.rsi
-      state: base
+    - sprite: _Scp/scp-106.rsi
+      state: 106
   - type: SpawnPoint
     job_id: Scp106
 
@@ -159,3 +159,61 @@
   - type: ConditionalSpawner
     prototypes:
     - Scp247
+
+# class D
+
+- type: entity
+  name: Class-D spawner
+  id: SpawnClassD
+  parent: SpawnPointJobBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: SpawnPoint
+    job_id: ClassD
+  - type: Tag
+    tags:
+    - ClassDSpawner
+
+- type: entity
+  name: Class-D Cook spawner
+  id: SpawnClassDCook
+  parent: SpawnPointJobBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: SpawnPoint
+    job_id: ClassDCook
+  - type: Tag
+    tags:
+    - ClassDSpawner
+
+- type: entity
+  name: Class-D Botanist spawner
+  id: SpawnClassDBotanist
+  parent: SpawnPointJobBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: SpawnPoint
+    job_id: ClassDBotanist
+  - type: Tag
+    tags:
+    - ClassDSpawner
+
+- type: entity
+  name: Class-D Janitor spawner
+  id: SpawnClassDJanitor
+  parent: SpawnPointJobBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+  - type: SpawnPoint
+    job_id: ClassDJanitor
+  - type: Tag
+    tags:
+    - ClassDSpawner

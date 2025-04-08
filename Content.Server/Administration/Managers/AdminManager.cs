@@ -58,16 +58,6 @@ namespace Content.Server.Administration.Managers
             return GetAdminData(session, includeDeAdmin) != null;
         }
 
-        public AdminData? GetAdminDataByUserId(NetUserId userId, bool includeDeAdmin = false)
-        {
-            if (_playerManager.TryGetSessionById(userId, out var session))
-            {
-                return GetAdminData(session, includeDeAdmin);
-            }
-
-            return null;
-        }
-
         public AdminData? GetAdminData(ICommonSession session, bool includeDeAdmin = false)
         {
             if (_admins.TryGetValue(session, out var reg) && (reg.Data.Active || includeDeAdmin))
@@ -457,62 +447,59 @@ namespace Content.Server.Administration.Managers
 
                 return (data, null, true);
             }
-
-            return await LoadAdminData(session.UserId);
-        }
-
-        public async Task<(AdminData dat, int? rankId, bool specialLogin)?> LoadAdminData(NetUserId session)
-        {
-            var dbData = await _dbManager.GetAdminDataForAsync(session);
-
-            if (dbData == null)
+            else
             {
-                // Not an admin!
-                return null;
-            }
+                var dbData = await _dbManager.GetAdminDataForAsync(session.UserId);
 
-            if (dbData.Suspended)
-            {
-                // Suspended admins don't count.
-                return null;
-            }
-
-            var flags = AdminFlags.None;
-
-            if (dbData.AdminRank != null)
-            {
-                flags = AdminFlagsHelper.NamesToFlags(dbData.AdminRank.Flags.Select(p => p.Flag));
-            }
-
-            foreach (var dbFlag in dbData.Flags)
-            {
-                var flag = AdminFlagsHelper.NameToFlag(dbFlag.Flag);
-                if (dbFlag.Negative)
+                if (dbData == null)
                 {
-                    flags &= ~flag;
+                    // Not an admin!
+                    return null;
                 }
-                else
+
+                if (dbData.Suspended)
                 {
-                    flags |= flag;
+                    // Suspended admins don't count.
+                    return null;
                 }
-            }
 
-            var data = new AdminData
-            {
-                Flags = flags,
-                Active = !dbData.Deadminned,
-            };
+                var flags = AdminFlags.None;
 
-            if (dbData.Title != null  && _cfg.GetCVar(CCVars.AdminUseCustomNamesAdminRank))
-            {
-                data.Title = dbData.Title;
-            }
-            else if (dbData.AdminRank != null)
-            {
-                data.Title = dbData.AdminRank.Name;
-            }
+                if (dbData.AdminRank != null)
+                {
+                    flags = AdminFlagsHelper.NamesToFlags(dbData.AdminRank.Flags.Select(p => p.Flag));
+                }
 
-            return (data, dbData.AdminRankId, false);
+                foreach (var dbFlag in dbData.Flags)
+                {
+                    var flag = AdminFlagsHelper.NameToFlag(dbFlag.Flag);
+                    if (dbFlag.Negative)
+                    {
+                        flags &= ~flag;
+                    }
+                    else
+                    {
+                        flags |= flag;
+                    }
+                }
+
+                var data = new AdminData
+                {
+                    Flags = flags,
+                    Active = !dbData.Deadminned,
+                };
+
+                if (dbData.Title != null  && _cfg.GetCVar(CCVars.AdminUseCustomNamesAdminRank))
+                {
+                    data.Title = dbData.Title;
+                }
+                else if (dbData.AdminRank != null)
+                {
+                    data.Title = dbData.AdminRank.Name;
+                }
+
+                return (data, dbData.AdminRankId, false);
+            }
         }
 
         private static bool IsLocal(ICommonSession player)

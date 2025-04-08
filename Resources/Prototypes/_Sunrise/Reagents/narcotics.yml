@@ -14,11 +14,11 @@
       - !type:HealthChange
         damage:
           types:
-            Poison: 0.65
+            Poison: 3
       - !type:HealthChange
         conditions:
         - !type:ReagentThreshold
-          min: 25
+          min: 10
         damage:
           types:
             Poison: 5
@@ -32,33 +32,17 @@
         time: 30
         refresh: true
       - !type:MovespeedModifier
-        walkSpeedModifier: 1.35
-        sprintSpeedModifier: 1.50
+        walkSpeedModifier: 1.30
+        sprintSpeedModifier: 1.45
       - !type:Jitter
-      - !type:GenericStatusEffect
-        key: Stun
-        time: 3.5
-        type: Remove
-      - !type:GenericStatusEffect
-        key: KnockedDown
-        time: 3.5
-        type: Remove
       - !type:PopupMessage
         visualType: Medium
         messages: ["ephedrine-effect-tight-pain", "ephedrine-effect-heart-pounds"]
         type: Local
         probability: 0.25
-      - !type:GenericStatusEffect
-        conditions:
-        - !type:ReagentThreshold
-          reagent: Haloperidol
-          max: 0.01
-        key: Drowsiness
-        time: 10
-        type: Remove
     Medicine:
       effects:
       - !type:ResetNarcolepsy
         conditions:
         - !type:ReagentThreshold
-          min: 20
+          min: 30

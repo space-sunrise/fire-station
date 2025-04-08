@@ -8,9 +8,6 @@
   id: JobBrigmedic
 
 - type: playTimeTracker
-  id: JobMailCarrier
-
-- type: playTimeTracker
   id: JobCentCommOperator
 
 - type: playTimeTracker
@@ -123,6 +120,3 @@
 
 - type: playTimeTracker
   id: JobUSSPCaptain
-
-- type: playTimeTracker
-  id: AntagBloodCultist

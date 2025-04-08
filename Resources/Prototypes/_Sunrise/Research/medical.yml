@@ -57,20 +57,6 @@
     - LauncherSyringeMed
 
 - type: technology
-  id: MedicalHyposprays
-  name: research-technology-medical-hyposprays
-  icon:
-    sprite: _Sunrise/Objects/Specific/Medical/hypospray.rsi
-    state: med-hypospray
-  discipline: Biochemical
-  tier: 2
-  cost:
-    Default: 6500
-    Scp: 2500
-  recipeUnlocks:
-    - HyposprayMedical
-
-- type: technology
   id: CompactSyringeGun
   name: research-technology-compact-syringegun
   icon:

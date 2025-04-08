@@ -1,5 +1,5 @@
-ent-FaxMachineBase = fax machine
-    .desc = A clever technology that allows you to copy or send documents.
+ent-FaxMachineBase = long range fax machine
+    .desc = Bluespace technologies on the application of bureaucracy.
 ent-FaxMachineCentcom = CentComm long range fax machine
     .suffix = CentCom
     .desc = { ent-FaxMachineBase.desc }

@@ -11,7 +11,7 @@ public sealed partial class VentCrawTubeComponent : Component
     [DataField("containerId")]
     public string ContainerId { get; set; } = "VentCrawTube";
 
-    [ViewVariables]
+    [DataField("connected")]
     public bool Connected;
 
     [ViewVariables]

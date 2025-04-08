@@ -55,9 +55,6 @@ public sealed partial class BlockingSystem
             blockFraction = Math.Clamp(blockFraction, 0, 1);
             _damageable.TryChangeDamage(component.BlockingItem, blockFraction * args.OriginalDamage);
 
-            var ev = new BlockingEvent(uid, args.Damage);
-            RaiseLocalEvent(component.BlockingItem.Value, ev);
-
             var modify = new DamageModifierSet();
             foreach (var key in dmgComp.Damage.DamageDict.Keys)
             {

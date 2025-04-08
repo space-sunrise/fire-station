@@ -1,0 +1,19 @@
+- type: reagent
+  id: Darvinium
+  name: reagent-name-darvinium
+  group: Medicine
+  desc: reagent-desc-darvinium
+  physicalDesc: reagent-physical-desc-glowing
+  color: "#59b23a"
+  metabolisms:
+    Medicine:
+      metabolismRate: 250
+      effects:
+      - !type:Polymorph
+        prototype: PermanentlyHuman
+        conditions:
+          - !type:OrganType
+            type: Primate
+          - !type:ReagentThreshold
+            min: 5
+  # Fire edit - удалил эффекты по превращению в нелорные расы

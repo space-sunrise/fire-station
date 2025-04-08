@@ -35,7 +35,6 @@
   id: LockerQuarterMaster
   parent: LockerBaseSecure
   name: quartermaster's locker
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -70,7 +69,6 @@
   id: LockerCaptain
   parent: LockerBaseSecure
   name: captain's locker
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -84,7 +82,6 @@
   id: LockerHeadOfPersonnel
   parent: LockerBaseSecure
   name: head of personnel's locker
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -99,7 +96,6 @@
   id: LockerChiefEngineer
   parent: LockerBaseSecure
   name: chief engineer's locker
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -332,7 +328,6 @@
   id: LockerChiefMedicalOfficer
   parent: LockerBaseSecure
   name: chief medical officer's locker
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -347,7 +342,6 @@
   id: LockerResearchDirector
   parent: LockerBase
   name: research director's locker
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -381,7 +375,6 @@
   id: LockerHeadOfSecurity
   parent: LockerBaseSecure
   name: head of security's locker
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -396,7 +389,6 @@
   id: LockerWarden
   parent: LockerBaseSecure
   name: warden's locker
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -411,7 +403,6 @@
   id: LockerBrigmedic
   parent: LockerBaseSecure
   name: brigmedic locker
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -432,7 +423,6 @@
   id: LockerSecurity
   parent: LockerBaseSecure
   name: security officer's locker
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -573,7 +563,6 @@
   id: LockerRepresentative
   name: representative locker
   parent: LockerBaseSecure
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: AccessReader

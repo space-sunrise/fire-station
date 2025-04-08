@@ -2,7 +2,6 @@
   id: LockerWardenFilledHardsuit
   suffix: Filled, Hardsuit
   parent: LockerWarden
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: StorageFill
     contents:
@@ -31,7 +30,6 @@
   id: LockerWardenFilled
   suffix: Filled
   parent: LockerWarden
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: StorageFill
     contents:
@@ -62,7 +60,6 @@
   id: LockerSecurityFilled
   suffix: Filled
   parent: LockerSecurity
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: StorageFill
     contents:
@@ -96,7 +93,6 @@
   id: LockerBrigmedicFilled
   suffix: Brigmedic, Filled
   parent: LockerBrigmedic
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: StorageFill
     contents:
@@ -150,7 +146,7 @@
     contents:
       - id: ClothingEyesGlassesSecurity
         prob: 0.3
-      - id: ClothingHeadHatDetGadget
+      - id: ClothingHeadHatFedoraBrown
       - id: ClothingNeckTieDet
       - id: ClothingOuterVestDetective
       - id: ClothingOuterCoatDetective

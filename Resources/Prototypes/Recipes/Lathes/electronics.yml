@@ -3,8 +3,7 @@
 - type: latheRecipe
   abstract: true
   id: BaseElectronicsRecipe
-  categories:
-  - Circuitry
+  category: Circuitry
   completetime: 2
   materials:
     Steel: 100
@@ -129,10 +128,10 @@
   id: SignalTimerElectronics
   result: SignalTimerElectronics
 
-- type: latheRecipe
-  parent: BaseGoldCircuitboardRecipe
-  id: CloningPodMachineCircuitboard
-  result: CloningPodMachineCircuitboard
+#- type: latheRecipe
+#  parent: BaseGoldCircuitboardRecipe
+#  id: CloningPodMachineCircuitboard
+#  result: CloningPodMachineCircuitboard
 
 - type: latheRecipe
   parent: BaseGoldCircuitboardRecipe
@@ -485,10 +484,10 @@
   id: SolarTrackerElectronics
   result: SolarTrackerElectronics
 
-- type: latheRecipe
-  parent: BaseCircuitboardRecipe
-  id: CloningConsoleComputerCircuitboard
-  result: CloningConsoleComputerCircuitboard
+#- type: latheRecipe
+#  parent: BaseCircuitboardRecipe
+#  id: CloningConsoleComputerCircuitboard
+#  result: CloningConsoleComputerCircuitboard
 
 - type: latheRecipe
   parent: BaseCircuitboardRecipe

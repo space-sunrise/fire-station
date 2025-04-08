@@ -15,8 +15,7 @@ public sealed partial class GasLeakRuleComponent : Component
         Gas.Frezon,
         Gas.WaterVapor, // the fog
         Gas.BZ, //SunRise edit
-        Gas.Healium, //SunRise edit
-        Gas.Nitrium, //SunRise edit
+        Gas.Healium //SunRise edit
     };
 
     /// <summary>

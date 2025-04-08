@@ -14,7 +14,7 @@
         doAfter: 2
 
   - node: assembly
-    entity: ScpAirlockAssembly
+    entity: AirlockAssembly
     actions:
     - !type:SnapToGrid {}
     - !type:SetAnchor {}
@@ -40,7 +40,7 @@
         doAfter: 3
 
   - node: wired
-    entity: ScpAirlockAssembly
+    entity: AirlockAssembly
     edges:
     - to: electronics
       conditions:
@@ -89,7 +89,7 @@
         doAfter: 5
 
   - node: glassElectronics
-    entity: ScpAirlockAssembly
+    entity: AirlockAssembly
     edges:
     - to: glassAirlock
       conditions:
@@ -116,7 +116,7 @@
 
 ## Glass airlock
   - node: glassAirlock
-    entity: ScpAirlockGlass
+    entity: AirlockGlass
     doNotReplaceInheritingEntities: true
     actions:
     - !type:SetWiresPanelSecurity
@@ -156,7 +156,7 @@
 
 ## Standard airlock
   - node: airlock
-    entity: ScpAirlock
+    entity: Airlock
     doNotReplaceInheritingEntities: true
     actions:
     - !type:SetWiresPanelSecurity

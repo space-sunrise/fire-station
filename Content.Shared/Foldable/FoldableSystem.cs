@@ -1,4 +1,3 @@
-using Content.Shared.Body.Components;
 using Content.Shared.Buckle;
 using Content.Shared.Buckle.Components;
 using Content.Shared.Storage.Components;
@@ -24,7 +23,7 @@ public sealed class FoldableSystem : EntitySystem
 
         SubscribeLocalEvent<FoldableComponent, ComponentInit>(OnFoldableInit);
         SubscribeLocalEvent<FoldableComponent, ContainerGettingInsertedAttemptEvent>(OnInsertEvent);
-        SubscribeLocalEvent<FoldableComponent, InsertIntoEntityStorageAttemptEvent>(OnStoreThisAttempt);
+        SubscribeLocalEvent<FoldableComponent, StoreMobInItemContainerAttemptEvent>(OnStoreThisAttempt);
         SubscribeLocalEvent<FoldableComponent, StorageOpenAttemptEvent>(OnFoldableOpenAttempt);
 
         SubscribeLocalEvent<FoldableComponent, StrapAttemptEvent>(OnStrapAttempt);
@@ -46,8 +45,10 @@ public sealed class FoldableSystem : EntitySystem
             args.Cancelled = true;
     }
 
-    public void OnStoreThisAttempt(EntityUid uid, FoldableComponent comp, ref InsertIntoEntityStorageAttemptEvent args)
+    public void OnStoreThisAttempt(EntityUid uid, FoldableComponent comp, ref StoreMobInItemContainerAttemptEvent args)
     {
+        args.Handled = true;
+
         if (comp.IsFolded)
             args.Cancelled = true;
     }
@@ -103,7 +104,7 @@ public sealed class FoldableSystem : EntitySystem
         if (_container.IsEntityInContainer(uid) && !fold.CanFoldInsideContainer)
             return false;
 
-        var ev = new FoldAttemptEvent(fold);
+        var ev = new FoldAttemptEvent();
         RaiseLocalEvent(uid, ref ev);
         return !ev.Cancelled;
     }
@@ -157,7 +158,7 @@ public sealed class FoldableSystem : EntitySystem
 /// </summary>
 /// <param name="Cancelled"></param>
 [ByRefEvent]
-public record struct FoldAttemptEvent(FoldableComponent Comp, bool Cancelled = false);
+public record struct FoldAttemptEvent(bool Cancelled = false);
 
 /// <summary>
 /// Event raised on an entity after it has been folded.

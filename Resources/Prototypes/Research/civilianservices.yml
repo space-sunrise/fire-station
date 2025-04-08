@@ -102,11 +102,11 @@
   discipline: CivilianServices
   tier: 1
   cost:
-    Default: 4500
-    Scp: 2000
+    Default: 7500
+    Scp: 3750
   recipeUnlocks:
   - FatExtractorMachineCircuitboard
-  # - BiofabricatorMachineCircuitboard #Sunrise-edit
+  - BiofabricatorMachineCircuitboard
   - BiomassReclaimerMachineCircuitboard
 
 # Tier 2

@@ -3,7 +3,6 @@ using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.Power.Components;
 using Content.Server.Power.NodeGroups;
 using Content.Server.Power.Pow3r;
-using Content.Shared._Sunrise.AlwaysPoweredMap;
 using Content.Shared.CCVar;
 using Content.Shared.Power;
 using Content.Shared.Power.Components;
@@ -323,13 +322,10 @@ namespace Content.Server.Power.EntitySystems
             var enumerator = AllEntityQuery<ApcPowerReceiverComponent>();
             while (enumerator.MoveNext(out var uid, out var apcReceiver))
             {
-                var mapId = Transform(uid).MapUid;
-                var isAlwaysPowered = HasComp<AlwaysPoweredMapComponent>(mapId);
-
-                var powered = isAlwaysPowered || (!apcReceiver.PowerDisabled
+                var powered = !apcReceiver.PowerDisabled
                               && (!apcReceiver.NeedsPower
                                   || MathHelper.CloseToPercent(apcReceiver.NetworkLoad.ReceivingPower,
-                                      apcReceiver.Load)));
+                                      apcReceiver.Load));
 
                 MetaDataComponent? metadata = null;
 
@@ -396,10 +392,7 @@ namespace Content.Server.Power.EntitySystems
             var enumerator = EntityQueryEnumerator<PowerConsumerComponent>();
             while (enumerator.MoveNext(out var uid, out var consumer))
             {
-                var mapId = Transform(uid).MapUid;
-                var isAlwaysPowered = HasComp<AlwaysPoweredMapComponent>(mapId);
-
-                var newRecv = isAlwaysPowered ? consumer.DrawRate : consumer.NetworkLoad.ReceivingPower;
+                var newRecv = consumer.NetworkLoad.ReceivingPower;
                 ref var lastRecv = ref consumer.LastReceived;
                 if (MathHelper.CloseToPercent(lastRecv, newRecv))
                     continue;
@@ -415,11 +408,8 @@ namespace Content.Server.Power.EntitySystems
             var enumerator = EntityQueryEnumerator<PowerNetworkBatteryComponent>();
             while (enumerator.MoveNext(out var uid, out var powerNetBattery))
             {
-                var mapId = Transform(uid).MapUid;
-                var isAlwaysPowered = HasComp<AlwaysPoweredMapComponent>(mapId);
-
                 var lastSupply = powerNetBattery.LastSupply;
-                var currentSupply = isAlwaysPowered ? powerNetBattery.MaxSupply : powerNetBattery.CurrentSupply;
+                var currentSupply = powerNetBattery.CurrentSupply;
 
                 if (lastSupply == 0f && currentSupply != 0f)
                 {
@@ -528,14 +518,6 @@ namespace Content.Server.Power.EntitySystems
                 netNode.Supplies.Add(supplier.NetworkSupply.Id);
                 supplier.NetworkSupply.LinkedNetwork = netNode.Id;
             }
-        }
-
-        /// <summary>
-        /// Validate integrity of the power state data. Throws if an error is found.
-        /// </summary>
-        public void Validate()
-        {
-            _solver.Validate(_powerState);
         }
     }
 

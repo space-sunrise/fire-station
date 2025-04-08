@@ -8,7 +8,6 @@ using Content.Server.Administration.Managers;
 using Content.Server.Chat.Managers;
 using Content.Server.GameTicking;
 using Content.Server.Maps;
-using Content.Shared._Sunrise.Vote;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Database;
@@ -50,22 +49,18 @@ namespace Content.Server.Voting.Managers
         private readonly Dictionary<int, VoteReg> _votes = new();
         private readonly Dictionary<int, VoteHandle> _voteHandles = new();
 
-        private readonly List<ICommonSession> _ignoredMusicClients = [];
-
         private readonly Dictionary<StandardVoteType, TimeSpan> _standardVoteTimeout = new();
         private readonly Dictionary<NetUserId, TimeSpan> _voteTimeout = new();
         private readonly HashSet<ICommonSession> _playerCanCallVoteDirty = new();
         private readonly StandardVoteType[] _standardVoteTypeValues = Enum.GetValues<StandardVoteType>();
 
-        private readonly SoundSpecifier _voteAudio = new SoundPathSpecifier("/Audio/_Sunrise/voting.ogg");
+        // private readonly string _voteAudio = "/Audio/_Sunrise/voting.ogg"; Fire edit
         private EntityUid? _voteAudioStream;
 
         public void Initialize()
         {
             _netManager.RegisterNetMessage<MsgVoteData>();
             _netManager.RegisterNetMessage<MsgVoteCanCall>();
-            _netManager.RegisterNetMessage<RequestVoteMusicDisableOptionMessage>();
-            _netManager.RegisterNetMessage<VoteMusicDisableOptionMessage>(OnClientVoteMusicDisableOption);
             _netManager.RegisterNetMessage<MsgVoteMenu>(ReceiveVoteMenu);
 
             _playerManager.PlayerStatusChanged += PlayerManagerOnPlayerStatusChanged;
@@ -83,16 +78,6 @@ namespace Content.Server.Voting.Managers
                     DirtyCanCallVoteAll();
                 });
             }
-        }
-
-        private async void OnClientVoteMusicDisableOption(VoteMusicDisableOptionMessage message)
-        {
-            var sender = message.MsgChannel;
-            var session = _playerManager.GetSessionByChannel(sender);
-            if (message.Disable)
-                _ignoredMusicClients.Add(session);
-            else
-                _ignoredMusicClients.Remove(session);
         }
 
         private void ReceiveVoteMenu(MsgVoteMenu message)
@@ -119,9 +104,6 @@ namespace Content.Server.Voting.Managers
                 }
 
                 DirtyCanCallVote(e.Session);
-                var message = new RequestVoteMusicDisableOptionMessage();
-                _netManager.ServerSendMessage(message, e.Session.Channel);
-
             }
             else if (e.NewStatus == SessionStatus.Disconnected)
             {
@@ -237,13 +219,11 @@ namespace Content.Server.Voting.Managers
                 _entityManager.System<SharedAudioSystem>().Stop(_voteAudioStream);
             }
 
-            var audio = _entityManager.System<SharedAudioSystem>();
-
-            _voteAudioStream = audio.PlayGlobal(
-                audio.ResolveSound(_voteAudio),
-                Filter.Broadcast().RemovePlayers(_ignoredMusicClients),
-                true,
+            /* Fire edit
+            _voteAudioStream = _entityManager.System<SharedAudioSystem>()
+                .PlayGlobal(_voteAudio, Filter.Broadcast(), true,
                 AudioParams.Default.WithLoop(true).WithVolume(-10f))!.Value.Entity;
+            */
 
             if (_entityManager.System<GameTicker>().RunLevel == GameRunLevel.PreRoundLobby)
             {

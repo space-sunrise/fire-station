@@ -76,7 +76,7 @@
     attributes:
       proper: true
   - type: RandomMetadata
-    nameSegments: [ NamesPibble ]
+    nameSegments: [names_pitbull]
   - type: GhostRole
     makeSentient: true
     allowSpeech: true

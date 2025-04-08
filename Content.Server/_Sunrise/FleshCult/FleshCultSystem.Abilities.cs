@@ -74,13 +74,13 @@ public sealed partial class FleshCultSystem
     {
         if (hasAppearance)
         {
-            return 10;
+            return 30;
         }
         return bloodVolume switch
         {
-            >= 300 => 5,
-            >= 150 => 3,
-            >= 100 => 1,
+            >= 300 => 20,
+            >= 150 => 15,
+            >= 100 => 10,
             _ => 0
         };
     }

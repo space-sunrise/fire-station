@@ -14,7 +14,7 @@
 
 
     - node: frame1
-      entity: ScpShuttersFrame
+      entity: ShuttersFrame
       edges:
         - to: frame2
           conditions:
@@ -109,7 +109,7 @@
               doAfter: 0.75
 
     - node: Shutters
-      entity: ScpShuttersNormalOpen
+      entity: ShuttersNormalOpen
       edges:
         - to: frame4
           conditions:
@@ -139,7 +139,7 @@
 
 
     - node: ShuttersWindow
-      entity: ScpShuttersWindowOpen
+      entity: ShuttersWindowOpen
       edges:
         - to: ShuttersWindowFrame
           conditions:
@@ -168,7 +168,7 @@
               doAfter: 1
 
     - node: ShuttersRadiation
-      entity: ScpShuttersRadiationOpen
+      entity: ShuttersRadiationOpen
       edges:
         - to: frame4
           conditions:

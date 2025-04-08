@@ -1,7 +1,5 @@
 ent-BasePDA = КПК
     .desc = Ассистент по персональным данным.
-ent-BaseWidePDA = { ent-BasePDA }
-    .desc = { ent-BasePDA.desc }
 ent-BaseSecurityPDA = { "" }
     .desc = { "" }
 ent-BaseMedicalPDA = { ent-BasePDA }
@@ -157,8 +155,6 @@ ent-SyndiAgentPDA = медицинский ало-красный КПК
 ent-ChameleonPDA = passenger PDA
     .desc = Why isn't it gray?
     .suffix = Chameleon
-ent-WizardPDA = wizard PDA
-    .desc = You hear faint whispers coming from it.
 ent-CentcomPDAFake = { ent-CentcomPDA }
     .suffix = Фальшивый
     .desc = { ent-CentcomPDA.desc }

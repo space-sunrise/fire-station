@@ -3,12 +3,10 @@
   name: department-Cargo
   description: department-Cargo-description
   color: "#A46106"
-  editorHidden: true # Fire added
   roles:
   - CargoTechnician
   - Quartermaster
   - SalvageSpecialist
-  - MailCarrier # Sunrise-Roles
 
 - type: department
   id: Civilian
@@ -16,7 +14,6 @@
   description: department-Civilian-description
   color: "#9FED58"
   weight: -10
-  editorHidden: true # Fire added
   roles:
   - Bartender
   - Botanist
@@ -31,7 +28,7 @@
   - Musician
   - Passenger
   - Reporter
-  - Visitor
+  # - Visitor
   - Zookeeper
   - ServiceWorker
   - Barber # Sunrise-Roles
@@ -41,7 +38,6 @@
   name: department-CentralCommand
   description: department-CentralCommand-description
   color: "#0c344d"
-  editorHidden: true # Fire added
   roles:
   - CentCommOperator # Sunrise-Edit
   - CentCommOfficial # Sunrise-Edit
@@ -53,6 +49,7 @@
   - ERTSecurity
   - ERTEngineer
   - DeathSquad
+  editorHidden: true
   weight: 120
 
 - type: department
@@ -60,7 +57,6 @@
   name: department-Command
   description: department-Command-description
   color: "#052EED" # Sunrise-Edit
-  editorHidden: true # Fire added
   roles:
   - Captain
   - ChiefEngineer
@@ -89,7 +85,6 @@
   description: department-Engineering-description
   color: "#EFB341"
   weight: 10  # Sunrise-weights
-  editorHidden: true # Fire added
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
@@ -102,7 +97,6 @@
   name: department-Medical
   description: department-Medical-description
   color: "#52B4E9"
-  editorHidden: true # Fire added
   roles:
   - Chemist
   - ChiefMedicalOfficer
@@ -119,7 +113,6 @@
   description: department-Security-description
   color: "#DE3A3A"
   weight: 20
-  editorHidden: true # Fire added
   roles:
   - HeadOfSecurity
   - SeniorOfficer  # Sunrise-Senior
@@ -135,7 +128,6 @@
   name: department-Science
   description: department-Science-description
   color: "#D381C9"
-  editorHidden: true # Fire added
   roles:
   - ResearchDirector
   - SeniorResearcher  # Sunrise-Senior
@@ -149,7 +141,6 @@
   name: department-Silicon
   description: department-Silicon-description
   color: "#D381C9"
-  editorHidden: true # Fire added
   roles:
   - StationAi
   - Borg
@@ -169,7 +160,6 @@
   description: department-Specific-description
   color: "#9FED58"
   weight: 5  # Sunrise-weights
-  editorHidden: true # Fire added
   roles:
   - Boxer
   - Reporter

@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "SUNRISE",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "106",
+      "directions": 4
+    },
+    {
+        "name": "ded_from_lusha",
+        "delays": [
+            [
+                0.84,
+                0.84,
+                0.84,
+                0.84,
+                0.84,
+                0.84
+            ]
+        ]
+    },
+    {
+        "name": "lusha_from_ded",
+        "delays": [
+            [
+                0.84,
+                0.84,
+                0.84,
+                0.84,
+                0.84,
+                0.84
+            ]
+        ]
+    }
+  ]
+}

@@ -6,7 +6,7 @@
   - type: StorageFill
     contents:
     - id: BoxSurvivalSyndicate
-    - id: ChemistryBottleNocturine
+    - id: NocturineChemistryBottle
     - id: FreedomImplanter
     - id: PinpointerIcarus
     - id: EncryptionKeySyndie

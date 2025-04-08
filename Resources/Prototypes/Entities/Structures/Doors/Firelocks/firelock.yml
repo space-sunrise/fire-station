@@ -109,8 +109,6 @@
       arc: 360
     - type: StaticPrice
       price: 150
-    - type: AccessReader
-      access: [ [ "Engineering" ] ]
     - type: PryUnpowered
       pryModifier: 0.5
     - type: PointLight

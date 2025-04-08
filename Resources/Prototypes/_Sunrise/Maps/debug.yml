@@ -11,4 +11,4 @@
           mapNameTemplate: "Dev"
         - type: StationJobs
           availableJobs:
-            Director: [ -1, -1 ] # Fire edit
+            Captain: [ -1, -1 ]

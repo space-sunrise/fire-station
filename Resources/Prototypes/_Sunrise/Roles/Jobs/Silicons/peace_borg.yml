@@ -5,9 +5,6 @@
   playTimeTracker: JobPeaceBorg
   icon: JobIconPeaceBorg
   supervisors: job-supervisors-hos
-  requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 72000 #20 hrs # Sunrise-Edit
   canBeAntag: false
   setPreference: false # Fire
   displayWeight: -10  # Sunrise

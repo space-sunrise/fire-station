@@ -159,7 +159,7 @@
   discipline: Arsenal
   tier: 3
   cost:
-    Default: 17500
-    Scp: 7500
+    Default: 25000
+    Scp: 12500
   recipeUnlocks:
   - WeaponTemperatureGun

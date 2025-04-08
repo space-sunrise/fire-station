@@ -1,7 +1,5 @@
-using System.Threading.Tasks;
 using Content.Shared.Administration;
 using Content.Shared.Administration.Managers;
-using Robust.Shared.Network;
 using Robust.Shared.Player;
 using Robust.Shared.Toolshed;
 
@@ -71,7 +69,5 @@ namespace Content.Server.Administration.Managers
         void PromoteHost(ICommonSession player);
 
         bool TryGetCommandFlags(CommandSpec command, out AdminFlags[]? flags);
-
-        public Task<(AdminData dat, int? rankId, bool specialLogin)?> LoadAdminData(NetUserId session);
     }
 }

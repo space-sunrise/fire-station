@@ -30,7 +30,7 @@ public sealed class SmokeFilterSystem : EntitySystem
 
     private void OnMaskToggled(Entity<SmokeFilterComponent> ent, ref ItemMaskToggledEvent args)
     {
-        if (args.Mask.Comp.IsToggled || args.Wearer != null)
+        if (args.IsToggled || args.IsEquip)
         {
             ent.Comp.IsActive = false;
         }

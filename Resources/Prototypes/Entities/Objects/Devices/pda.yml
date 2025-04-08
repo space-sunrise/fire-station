@@ -78,10 +78,9 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
     cartridgeSlot:
       priority: -1
       name: device-pda-slot-component-slot-name-cartridge
@@ -125,25 +124,6 @@
 
 - type: entity
   parent: BasePDA
-  id: BaseWidePDA
-  abstract: true
-  components:
-  - type: Sprite
-    sprite: Objects/Devices/pda.rsi
-    layers:
-    - map: [ "enum.PdaVisualLayers.Base" ]
-      state: "pda"
-    - state: "light_overlay_wide"
-      map: [ "enum.PdaVisualLayers.Flashlight" ]
-      shader: "unshaded"
-      visible: false
-    - state: "id_overlay_wide"
-      map: [ "enum.PdaVisualLayers.IdLight" ]
-      shader: "unshaded"
-      visible: false
-
-- type: entity
-  parent: BasePDA
   id: BaseSecurityPDA
   abstract: true
   components:
@@ -151,7 +131,6 @@
     preinstalled:
     - CrewManifestCartridge
     - NotekeeperCartridge
-    - NanoTaskCartridge
     - NewsReaderCartridge
     - WantedListCartridge
 
@@ -163,11 +142,10 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - MedTekCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
 
 - type: entity
   parent: BasePDA
@@ -519,11 +497,10 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - AstroNavCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - AstroNavCartridge
 
 - type: entity
   parent: BasePDA
@@ -544,7 +521,7 @@
     state: pda-bartender
 
 - type: entity
-  parent: BaseWidePDA
+  parent: BasePDA
   id: LibrarianPDA
   name: librarian PDA
   description: Smells like books.
@@ -899,7 +876,6 @@
     preinstalled:
     - CrewManifestCartridge
     - NotekeeperCartridge
-    - NanoTaskCartridge
     - NewsReaderCartridge
     - WantedListCartridge
     - LogProbeCartridge
@@ -966,14 +942,13 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - MedTekCartridge
-      - WantedListCartridge
-      - LogProbeCartridge
-      - AstroNavCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
+    - WantedListCartridge
+    - LogProbeCartridge
+    - AstroNavCartridge
 
 - type: entity
   parent: CentcomPDA
@@ -1003,21 +978,19 @@
   - type: Pda
     id: UniversalIDCard
   - type: HealthAnalyzer
-    maxScanRange: null
     scanDelay: 0
     silent: true
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     notificationsEnabled: false
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - LogProbeCartridge
-      - WantedListCartridge
-      - MedTekCartridge
-      - AstroNavCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - LogProbeCartridge
+    - WantedListCartridge
+    - MedTekCartridge
+    - AstroNavCartridge
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener
@@ -1134,8 +1107,7 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - NotekeeperCartridge
-      - NanoTaskCartridge
+    - NotekeeperCartridge
 
 - type: entity
   parent: BaseSecurityPDA
@@ -1160,14 +1132,13 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - MedTekCartridge
-      - WantedListCartridge
-      - LogProbeCartridge
-      - AstroNavCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
+    - WantedListCartridge
+    - LogProbeCartridge
+    - AstroNavCartridge
 
 - type: entity
   parent: ERTLeaderPDA
@@ -1333,7 +1304,6 @@
     preinstalled:
     - CrewManifestCartridge
     - NotekeeperCartridge
-    - NanoTaskCartridge
     - NewsReaderCartridge
     - WantedListCartridge
     - LogProbeCartridge
@@ -1361,7 +1331,6 @@
     preinstalled:
     - CrewManifestCartridge
     - NotekeeperCartridge
-    - NanoTaskCartridge
     - NewsReaderCartridge
     - WantedListCartridge
     - MedTekCartridge
@@ -1375,13 +1344,6 @@
   components:
   - type: Pda
     id: CluwneIDCard
-    penSlot:
-      startingItem: CrayonGreen
-      ejectSound: /Audio/Items/bikehorn.ogg
-      priority: -1
-      whitelist:
-        tags:
-        - Write
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
@@ -1391,6 +1353,13 @@
     borderColor: "#b2b2b2"
   - type: Icon
     state: pda-cluwne
+    penSlot:
+      startingItem: CrayonGreen
+      ejectSound: /Audio/Items/bikehorn.ogg
+      priority: -1
+      whitelist:
+        tags:
+        - Write
   - type: Unremoveable
 
 - type: entity
@@ -1507,9 +1476,8 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - MedTekCartridge
+    - NotekeeperCartridge
+    - MedTekCartridge
 
 - type: entity
   parent: BasePDA
@@ -1547,27 +1515,3 @@
     - Syndicate
     - Thief
   # Sunrise-End
-
-- type: entity
-  parent: BaseWidePDA
-  id: WizardPDA
-  name: wizard PDA
-  description: You hear faint whispers coming from it.
-  components:
-  - type: Pda
-    id: WizardIDCard
-    penSlot:
-      startingItem: PenWiz
-      priority: -1
-      whitelist:
-        tags:
-        - Write
-  - type: Appearance
-    appearanceDataInit:
-     enum.PdaVisuals.PdaType:
-       !type:String
-       pda-wizard
-  - type: PdaBorderColor
-    borderColor: "#7F3300"
-  - type: Icon
-    state: pda-wizard

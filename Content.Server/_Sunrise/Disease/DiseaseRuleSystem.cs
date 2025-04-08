@@ -5,15 +5,11 @@ using Content.Server.Objectives;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Shared.GameTicking.Components;
-using Content.Server.Chat.Systems;
-using Robust.Shared.Timing;
 
 namespace Content.Server._Sunrise.Disease;
 
 public sealed class DiseaseRuleSystem : GameRuleSystem<DiseaseRuleComponent>
 {
-    [Dependency] private readonly ChatSystem _chatSystem = default!;
-    
     public override void Initialize()
     {
         base.Initialize();
@@ -21,23 +17,10 @@ public sealed class DiseaseRuleSystem : GameRuleSystem<DiseaseRuleComponent>
         SubscribeLocalEvent<DiseaseRuleComponent, ObjectivesTextGetInfoEvent>(OnObjectivesTextGetInfo);
     }
 
-    protected override void Started(EntityUid uid, DiseaseRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
-    {
-        base.Started(uid, component, gameRule, args);
-        
-        Timer.Spawn(TimeSpan.FromMinutes(6), () => 
-        {
-            var message = Loc.GetString("disease-biohazard-announcement");
-            var sender = Loc.GetString("disease-biohazard-announcement-sender");
-            
-            _chatSystem.DispatchGlobalAnnouncement(message, sender, playDefault: true, colorOverride: Color.Red);
-        });
-    }
-
     private void OnObjectivesTextGetInfo(EntityUid uid, DiseaseRuleComponent comp, ref ObjectivesTextGetInfoEvent args)
     {
         args.Minds = comp.DiseasesMinds;
-        args.AgentName = Loc.GetString("disease-agent-name");
+        args.AgentName = "разумная болезнь";
     }
 
     protected override void AppendRoundEndText(EntityUid uid,

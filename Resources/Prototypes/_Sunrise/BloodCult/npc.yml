@@ -1,9 +1,0 @@
-﻿- type: htnCompound
-  id: HostileIllusionCompound
-  branches:
-  - tasks:
-    - !type:HTNCompoundTask
-      task: RangedCombatCompound
-  - tasks:
-    - !type:HTNCompoundTask
-      task: MeleeCombatCompound

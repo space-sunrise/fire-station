@@ -54,7 +54,6 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
 
         SubscribeNetworkEvent<BwoinkDiscordRelayUpdated>(DiscordRelayUpdated);
         SubscribeNetworkEvent<BwoinkPlayerTypingUpdated>(PeopleTypingUpdated);
-        SubscribeNetworkEvent<SharedBwoinkSystem.BwoinkDbLoadedMessage>(OnBwoinkDbLoadedMessage);
 
         _adminManager.AdminStatusUpdated += OnAdminStatusUpdated;
         _config.OnValueChanged(CCVars.AHelpSound, v => _aHelpSound = v, true);
@@ -136,7 +135,7 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
         {
             return;
         }
-        if (message.PlaySound && localPlayer.UserId != message.TrueSender && !message.DbLoad)
+        if (message.PlaySound && localPlayer.UserId != message.TrueSender)
         {
             if (_aHelpSound != null && (_bwoinkSoundEnabled || !_adminManager.IsActive()))
                 _audio.PlayGlobal(_aHelpSound, Filter.Local(), false);
@@ -164,11 +163,6 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
         UIHelper?.PeopleTypingUpdated(args);
     }
 
-    private void OnBwoinkDbLoadedMessage(SharedBwoinkSystem.BwoinkDbLoadedMessage args, EntitySessionEventArgs session)
-    {
-        UIHelper?.SetLoadDb(args.UserId);
-    }
-
     public void EnsureUIHelper()
     {
         var isAdmin = _adminManager.HasFlag(AdminFlags.Adminhelp);
@@ -178,10 +172,8 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
 
         UIHelper?.Dispose();
         var ownerUserId = _playerManager.LocalUser!.Value;
-
         UIHelper = isAdmin ? new AdminAHelpUIHandler(ownerUserId) : new UserAHelpUIHandler(ownerUserId);
         UIHelper.DiscordRelayChanged(_discordRelayActive);
-        _bwoinkSystem?.LoadDbMessages(isAdmin);
 
         UIHelper.SendMessageAction = (userId, textMessage, playSound, adminOnly) => _bwoinkSystem?.Send(userId, textMessage, playSound, adminOnly);
         UIHelper.InputTextChanged += (channel, text) => _bwoinkSystem?.SendInputTextUpdated(channel, text.Length > 0);
@@ -334,7 +326,6 @@ public interface IAHelpUIHandler : IDisposable
     public event Action OnOpen;
     public Action<NetUserId, string, bool, bool>? SendMessageAction { get; set; }
     public event Action<NetUserId, string>? InputTextChanged;
-    public void SetLoadDb(NetUserId userId);
 }
 public sealed class AdminAHelpUIHandler : IAHelpUIHandler
 {
@@ -356,8 +347,6 @@ public sealed class AdminAHelpUIHandler : IAHelpUIHandler
     public void Receive(SharedBwoinkSystem.BwoinkTextMessage message)
     {
         var panel = EnsurePanel(message.UserId);
-        if (message.DbLoad && panel.LoadDb)
-            return;
         panel.ReceiveLine(message);
         Control?.OnBwoink(message.UserId);
     }
@@ -415,14 +404,6 @@ public sealed class AdminAHelpUIHandler : IAHelpUIHandler
     {
         if (_activePanelMap.TryGetValue(args.Channel, out var panel))
             panel.UpdatePlayerTyping(args.PlayerName, args.Typing);
-    }
-
-    public void SetLoadDb(NetUserId userId)
-    {
-        if (_activePanelMap.TryGetValue(userId, out var panel))
-        {
-            panel.LoadDb = true;
-        }
     }
 
     public event Action? OnClose;
@@ -519,7 +500,6 @@ public sealed class UserAHelpUIHandler : IAHelpUIHandler
     private DefaultWindow? _window;
     private BwoinkPanel? _chatPanel;
     private bool _discordRelayActive;
-    public bool LoadDb;
 
     public void Receive(SharedBwoinkSystem.BwoinkTextMessage message)
     {
@@ -527,11 +507,6 @@ public sealed class UserAHelpUIHandler : IAHelpUIHandler
         EnsureInit(_discordRelayActive);
         _chatPanel!.ReceiveLine(message);
         _window!.OpenCentered();
-    }
-
-    public void SetLoadDb(NetUserId userId)
-    {
-        LoadDb = true;
     }
 
     public void Close()

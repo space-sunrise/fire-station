@@ -1,5 +1,5 @@
 - type: entity
-  parent: BoxSurvivalBase
+  parent: BoxCardboard
   id: BoxSurvival
   name: survival box
   description: It's a box with basic internals inside.
@@ -10,7 +10,6 @@
     - id: ClothingMaskBreath
     - id: EmergencyOxygenTankFilled
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -36,7 +35,6 @@
     - id: ClothingMaskBreath
     - id: EmergencyNitrogenTankFilled
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -55,7 +53,7 @@
     currentLabel: reagent-name-nitrogen
 
 - type: entity
-  parent: BoxSurvivalBase
+  parent: BoxCardboard
   id: BoxSurvivalEngineering
   name: extended-capacity survival box
   description: It's a box with basic internals inside. This one is labelled to contain an extended-capacity tank.
@@ -66,7 +64,6 @@
     - id: ClothingMaskBreath
     - id: ExtendedEmergencyOxygenTankFilled
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -92,7 +89,6 @@
     - id: ClothingMaskBreath
     - id: ExtendedEmergencyNitrogenTankFilled
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -111,7 +107,7 @@
     currentLabel: reagent-name-nitrogen
 
 - type: entity
-  parent: BoxSurvivalBase
+  parent: BoxCardboard
   id: BoxSurvivalSecurity
   name: survival box
   description: It's a box with basic internals inside.
@@ -122,7 +118,6 @@
     - id: ClothingMaskGasSecurity
     - id: ExtendedEmergencyOxygenTankFilled #Sunrise-Edit
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -148,7 +143,6 @@
     - id: ClothingMaskGasSecurity
     - id: ExtendedEmergencyNitrogenTankFilled #Sunrise-Edit
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -167,7 +161,7 @@
     currentLabel: reagent-name-nitrogen
 
 - type: entity
-  parent: BoxSurvivalBase
+  parent: BoxCardboard
   id: BoxSurvivalMedical
   name: survival box
   description: It's a box with basic internals inside.
@@ -178,7 +172,6 @@
     - id: ClothingMaskBreathMedical
     - id: EmergencyOxygenTankFilled
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -204,7 +197,6 @@
     - id: ClothingMaskBreathMedical
     - id: EmergencyNitrogenTankFilled
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -223,7 +215,7 @@
     currentLabel: reagent-name-nitrogen
 
 - type: entity
-  parent: BoxSurvivalBase
+  parent: BoxCardboard
   id: BoxHug
   name: box of hugs
   description: A special box for sensitive people.
@@ -240,7 +232,6 @@
     - id: ClothingMaskBreath
     - id: EmergencyFunnyOxygenTankFilled
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -265,7 +256,6 @@
     - id: ClothingMaskBreath
     - id: EmergencyNitrogenTankFilled
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -289,7 +279,6 @@
     - id: ClothingMaskBreath
     - id: EmergencyOxygenTankFilled
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -311,7 +300,6 @@
     - id: ClothingMaskBreath
     - id: EmergencyNitrogenTankFilled
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -330,7 +318,7 @@
     currentLabel: reagent-name-nitrogen
 
 - type: entity
-  parent: BoxSurvivalBase
+  parent: BoxCardboard
   id: BoxSurvivalSyndicate
   name: extended-capacity survival box
   description: It's a box with basic internals inside. This one is labelled to contain an extended-capacity tank.
@@ -341,7 +329,6 @@
     - id: ClothingMaskGasSyndicate
     - id: ExtendedEmergencyOxygenTankFilled
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple
@@ -366,7 +353,6 @@
     - id: ClothingMaskGasSyndicate
     - id: ExtendedEmergencyNitrogenTankFilled
     - id: EmergencyMedipen
-    - id: SpaceMedipen
     - id: GlowstickRed
       orGroup: Glowstick
     - id: GlowstickPurple

@@ -67,5 +67,3 @@ ent-FoodBakedCroissant = croissant
     .desc = Buttery, flaky goodness.
 ent-FoodBakedCroissantCotton = cotton croissant
     .desc = Buttery, flaky, fibery goodness.
-ent-FoodBakedGrilledCheeseSandwich = grilled cheese sandwich
-    .desc = Bread and cheese toasted with butter, perfect for a chilly day in space.

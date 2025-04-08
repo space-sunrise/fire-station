@@ -14,7 +14,7 @@
               doAfter: 3
 
     - node: frame1
-      entity: ScpBlastDoorFrame
+      entity: BlastDoorFrame
       actions:
         - !type:SnapToGrid {}
         - !type:SetAnchor {}
@@ -98,7 +98,7 @@
               doAfter: 3
 
     - node: blastdoor
-      entity: ScpBlastDoorOpen
+      entity: BlastDoorOpen
       edges:
         - to: frame4
           conditions:

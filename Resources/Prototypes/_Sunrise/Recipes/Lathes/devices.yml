@@ -1,17 +1,16 @@
 - type: latheRecipe
   id: HandCraftedNVD
   result: ClothingEyesNVDHandcrafted
-  completetime: 30
+  completetime: 10
   materials:
-    Steel: 1000
-    Plastic: 400
+    Steel: 500
+    Plastic: 200
     Plasma: 300
-    Silver: 100
 
 - type: latheRecipe
   id: BasicNVD
   result: ClothingEyesNVD
-  completetime: 30
+  completetime: 10
   materials:
     Steel: 1000
     Plastic: 400
@@ -21,25 +20,9 @@
 - type: latheRecipe
   id: BasicThermals
   result: ClothingEyesGlassesThermal
-  completetime: 30
+  completetime: 16
   materials:
     Steel: 1000
     Plastic: 400
     Silver: 100
     Diamond: 100
-
-- type: latheRecipe
-  id: WeaponPlasmaCutter
-  result: WeaponPlasmaCutter
-  categories:
-  - Weapons
-  completetime: 30
-  materials:
-    Steel: 1200
-    Plasma: 750
-    Glass: 500
-
-- type: latheRecipe
-  parent: ClothingBackpackHolding
-  id: PlantBagOfHolding
-  result: PlantBagOfHolding

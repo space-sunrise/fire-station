@@ -53,17 +53,12 @@ namespace Content.Shared.Doors
         /// If true, this check is being performed when the door is partially closing.
         /// </summary>
         public bool Partial;
-
         public bool PerformCollisionCheck;
-        public EntityUid? User; // Sunrise-Edit
 
-        public BeforeDoorClosedEvent(bool performCollisionCheck,
-            bool partial = false,
-            EntityUid? user = null) // Sunrise-Edit
+        public BeforeDoorClosedEvent(bool performCollisionCheck, bool partial = false)
         {
             Partial = partial;
             PerformCollisionCheck = performCollisionCheck;
-            User = user; // Sunrise-Edit
         }
     }
 

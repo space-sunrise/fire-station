@@ -266,9 +266,9 @@
     - Scalpel
     - BoneGel
     - BoneSetterAdvanced
-    - ChemistryBottleOmnizine
-    - ChemistryBottleEpinephrine
-    - ChemistryBottleEphedrine
+    - OmnizineChemistryBottle
+    - EpinephrineChemistryBottle
+    - EphedrineChemistryBottle
     - MiniSyringe
     - MiniSyringe
     - MiniSyringe
@@ -307,9 +307,9 @@
     - EmergencyRollerBedSpawnFolded
     - BoneGel
     - BoneSetterAdvanced
-    - ChemistryBottleOmnizine
-    - ChemistryBottleEpinephrine
-    - ChemistryBottleEphedrine
+    - OmnizineChemistryBottle
+    - EpinephrineChemistryBottle
+    - EphedrineChemistryBottle
 
 # Janitor
 

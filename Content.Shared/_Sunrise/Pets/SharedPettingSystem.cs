@@ -2,7 +2,6 @@
 using Content.Shared.Actions;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Cloning;
-using Content.Shared.Cloning.Events;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
@@ -353,7 +352,7 @@ public sealed class SharedPettingSystem : EntitySystem
     /// <param name="args">Ивент типа CloningEvent</param>
     private void OnMasterCloned(Entity<PetOnInteractComponent> master, ref CloningEvent args)
     {
-        CleanMaster(master, args.CloneUid);
+        CleanMaster(master, args.Target);
     }
 
     /// <summary>
