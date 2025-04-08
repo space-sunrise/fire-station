@@ -3,11 +3,12 @@
   name: department-Cargo
   description: department-Cargo-description
   color: "#A46106"
+  editorHidden: true # Fire added
   roles:
   - CargoTechnician
   - Quartermaster
   - SalvageSpecialist
-  editorHidden: true # Fire added
+  - MailCarrier # Sunrise-Roles
 
 - type: department
   id: Civilian
@@ -15,6 +16,7 @@
   description: department-Civilian-description
   color: "#9FED58"
   weight: -10
+  editorHidden: true # Fire added
   roles:
   - Bartender
   - Botanist
@@ -29,17 +31,17 @@
   - Musician
   - Passenger
   - Reporter
-  # - Visitor
+  - Visitor
   - Zookeeper
   - ServiceWorker
   - Barber # Sunrise-Roles
-  editorHidden: true # Fire added
 
 - type: department
   id: CentralCommand
   name: department-CentralCommand
   description: department-CentralCommand-description
   color: "#0c344d"
+  editorHidden: true # Fire added
   roles:
   - CentCommOperator # Sunrise-Edit
   - CentCommOfficial # Sunrise-Edit
@@ -51,7 +53,6 @@
   - ERTSecurity
   - ERTEngineer
   - DeathSquad
-  editorHidden: true
   weight: 120
 
 - type: department
@@ -59,6 +60,7 @@
   name: department-Command
   description: department-Command-description
   color: "#052EED" # Sunrise-Edit
+  editorHidden: true # Fire added
   roles:
   - Captain
   - ChiefEngineer
@@ -80,7 +82,6 @@
   - Adjutant  #Sunrise-edit
   primary: false
   weight: 100
-  editorHidden: true # Fire added
 
 - type: department
   id: Engineering
@@ -88,19 +89,20 @@
   description: department-Engineering-description
   color: "#EFB341"
   weight: 10  # Sunrise-weights
+  editorHidden: true # Fire added
   roles:
   - AtmosphericTechnician
   - ChiefEngineer
   - SeniorEngineer  # Sunrise-Senior
   - StationEngineer
   - TechnicalAssistant
-  editorHidden: true # Fire added
 
 - type: department
   id: Medical
   name: department-Medical
   description: department-Medical-description
   color: "#52B4E9"
+  editorHidden: true # Fire added
   roles:
   - Chemist
   - ChiefMedicalOfficer
@@ -110,7 +112,6 @@
   - Psychologist
   - Paramedic
   - MedicalPathologist  # Sunrise-pathologist
-  editorHidden: true # Fire added
 
 - type: department
   id: Security
@@ -118,6 +119,7 @@
   description: department-Security-description
   color: "#DE3A3A"
   weight: 20
+  editorHidden: true # Fire added
   roles:
   - HeadOfSecurity
   - SeniorOfficer  # Sunrise-Senior
@@ -127,20 +129,19 @@
   - Warden
   - Brigmedic  # Sunrise-Brigmedic
   - SecurityPilot # Sunrise-SecurityPilot
-  editorHidden: true # Fire added
 
 - type: department
   id: Science
   name: department-Science
   description: department-Science-description
   color: "#D381C9"
+  editorHidden: true # Fire added
   roles:
   - ResearchDirector
   - SeniorResearcher  # Sunrise-Senior
   - Scientist
   - ResearchAssistant
   - Roboticist  # Sunrise-Edit
-  editorHidden: true # Fire added
 
 - type: department
   id: Silicon
@@ -148,6 +149,7 @@
   name: department-Silicon
   description: department-Silicon-description
   color: "#D381C9"
+  editorHidden: true # Fire added
   roles:
   - StationAi
   - Borg
@@ -160,7 +162,6 @@
   - PeaceBorg # Sunrise-Edit
   - SecurityBorg # Sunrise-Edit
   primary: false
-  editorHidden: true # Fire added
 
 - type: department
   id: Specific
@@ -168,6 +169,7 @@
   description: department-Specific-description
   color: "#9FED58"
   weight: 5  # Sunrise-weights
+  editorHidden: true # Fire added
   roles:
   - Boxer
   - Reporter
@@ -175,4 +177,3 @@
   - Psychologist
   - Barber  # Sunrise-Roles
   primary: false
-  editorHidden: true # Fire added
