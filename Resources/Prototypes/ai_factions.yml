@@ -14,6 +14,7 @@
   - Changeling
   - Vampire
   - Flesh
+  - BloodCult
   # Fire Edit
   - Chaos
   - SCPs
@@ -23,6 +24,7 @@
   hostile:
   - PetsNT
   - AllHostile
+  - Wizard
 
 - type: npcFaction
   id: Passive
@@ -35,6 +37,7 @@
   - Zombie
   - Xeno
   - AllHostile
+  - Wizard
   # Sunrise Edit
   - Carps
   - Flesh
@@ -59,6 +62,7 @@
   - Vampire
   - FleshHuman
   - Flesh
+  - BloodCult
   # Fire Edit
   - Chaos
   - SCPs
@@ -83,6 +87,7 @@
   - Vampire
   - FleshHuman
   - Flesh
+  - BloodCult
   # Fire Edit
   - SCPs
 
@@ -104,6 +109,7 @@
   - Vampire
   - FleshHuman
   - Flesh
+  - BloodCult
   # Fire Edit
   - Chaos
   - SCPs
@@ -127,6 +133,7 @@
   - Vampire
   - FleshHuman
   - Flesh
+  - BloodCult
   # Fire Edit
   - Chaos
   - SCPs
@@ -145,6 +152,7 @@
   - Vampire
   - FleshHuman
   - Flesh
+  - BloodCult
   # Fire Edit
   - SCPs
 
@@ -169,6 +177,7 @@
   - Vampire
   - FleshHuman
   - Flesh
+  - BloodCult
   # Fire Edit
   - Chaos
   - SCPs
@@ -177,7 +186,11 @@
   id: Wizard
   hostile:
   - NanoTrasen
+  - Mouse
+  - Passive
+  - PetsNT
   - SimpleHostile
+  - SimpleNeutral
   - Syndicate
   - Xeno
   - Zombie
@@ -190,6 +203,8 @@
   - Vampire
   - FleshHuman
   - Flesh
+  - Xeno
+  - BloodCult
   # Fire Edit
   - Chaos
   - SCPs

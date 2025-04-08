@@ -4,12 +4,12 @@
   description: department-Law-description
   color: "#FF5297"
   weight: 80
+  editorHidden: true # Fire added
   roles:
     - Magistrat
     - IAA
     - Lawyer
     - NtrOfficer
-  editorHidden: true # Fire added
 
 - type: department # Surnise-Blueshield
   id: Blueshield
@@ -19,8 +19,8 @@
   roles:
     - BlueShield
   primary: false
-  weight: 50
   editorHidden: true # Fire added
+  weight: 50
 
 - type: department
   id: PlanetPrison
@@ -28,6 +28,7 @@
   name: department-PlanetPrison
   description: department-PlanetPrison-description
   color: "#9f4000"
+  editorHidden: true # Fire added
   roles:
   - HeadOfPrison
   - PrisonPilot
@@ -37,4 +38,3 @@
   - PrisonEngineer
   - PrisonGuard
   - PlanetPrisoner
-  editorHidden: true # Fire added

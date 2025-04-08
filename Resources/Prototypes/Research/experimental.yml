@@ -79,6 +79,7 @@
     Scp: 3750
   recipeUnlocks:
   - ClothingShoesBootsMagSci
+  - ClothingShoesBootsMagSec #Sunrise-Add
   - ClothingShoesBootsMoon
 
 - type: technology

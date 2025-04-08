@@ -88,5 +88,7 @@ loadout-group-salvage-specialist-gloves = Утилизатор, перчатки
 loadout-group-salvage-specialist-mask = Утилизатор, маска
 loadout-group-salvage-specialist-neck = Утилизатор, шея
 loadout-group-salvage-specialist-head = Утилизатор, голова
+loadout-group-mail-jumpsuit = Почтальон, комбинезон
+loadout-group-mail-backpack = Почтальон, рюкзак
 loadout-group-cargo-trinkets = Безделушки СНБ
 loadout-group-security-gun = СБ, оружие
