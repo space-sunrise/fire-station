@@ -1,25 +1,30 @@
 - type: vendingMachineInventory
   id: SecDrobeInventory
   startingInventory:
+    # Fire edit start
+    ClothingUniformSecurity: 2
+    ClothingUniformSecurity2: 3
+    ClothingUniformSecurity3: 2
+    ClothingShoesBootsSecurityGuard: 3
+    ClothingHeadSecurityBeret: 3
+    ClothingHeadHatSecBlack: 3
+    ClothingMaskSecurityBandBlack: 3
+    ClothingHandsGlovesSecurity: 3
+    ClothingHandsGlovesWinterSecurity: 3
+    ClothingOuterArmorSecurity: 3
+    ClothingShoesBootsWinterSecurityGuard: 2
+    ClothingHeadsetExternalAdministrativeZoneSecurityService: 3
+    ClothingHeadsetHeavyContainmentSecurityService: 3
+    # Fire edit end
+    # Sunrise edit start
+    HandheldCamera: 6
+    PepperSprayBottleBlue: 2
+    # Sunrise edit end
     ClothingBackpackSecurity: 3
     ClothingBackpackSatchelSecurity: 3
     ClothingBackpackDuffelSecurity: 3
-    ClothingUniformSecurity: 2 # Fire-Station
-    ClothingUniformSecurity2: 3 # Fire-Station
-    ClothingUniformSecurity3: 2 # Fire-Station
-    ClothingShoesBootsSecurityGuard: 3 # Fire-Station
-    ClothingHeadSecurityBeret: 3 # Fire-Station
-    ClothingHeadHatSecBlack: 3 # Fire-Station
-    ClothingMaskSecurityBandBlack: 3 # Fire-Station
-    ClothingHandsGlovesSecurity: 3 # Fire-Station
-    ClothingHandsGlovesWinterSecurity: 3 # Fire-Station
-    ClothingHeadsetSecurity: 3
-    ClothingOuterArmorSecurity: 3 # Fire-Station
     ClothingEyesBlindfold: 1
     ClothingShoesBootsCombat: 1
-    ClothingShoesBootsWinterSecurityGuard: 2 # Fire-Station
-    HandheldCamera: 6  # Sunrise-Edit
-    PepperSprayBottleBlue: 2  # Sunrise-Edit
   contrabandInventory:
     ClothingMaskClownSecurity: 1
     ToyFigurineSecurity: 1

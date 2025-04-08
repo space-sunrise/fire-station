@@ -4,26 +4,23 @@
   id: LootSpawnerEncryptionKey
   parent: MarkerBase
   components:
-    - type: Sprite
-      layers:
-        - state: red
-        - sprite: Objects/Devices/encryption_keys.rsi
-          state: crypt_rusted
-        - sprite: Objects/Devices/encryption_keys.rsi
-          state: nano_label
-    - type: RandomSpawner
-      rarePrototypes:
-        - EncryptionKeyAdministration
-        - EncryptionKeyHeavyContainmentSecurityService
-        - EncryptionKeyExternalAdministrativeZoneSecurityService
-        - EncryptionKeyInternalSecurity
-      rareChance: 0.1
-      prototypes:
-        - EncryptionKeyCommon
-        - EncryptionKeyEngineeringTechnicalService
-        - EncryptionKeyScientificService
-        - EncryptionKeyFoodAndSanitationService
-        - EncryptionKeyMedicalService
-        - EncryptionKeyLogisticsService
-      chance: 0.9
-      offset: 0.0
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: Objects/Devices/encryption_keys.rsi
+      state: crypt_rusted
+    - sprite: Objects/Devices/encryption_keys.rsi
+      state: nano_label
+  - type: RandomSpawner
+    rarePrototypes:
+      - EncryptionKeyCommand
+      - EncryptionKeySecurity
+    rareChance: 0.1
+    prototypes:
+      - EncryptionKeyEngineering
+      - EncryptionKeyScience
+      - EncryptionKeyService
+      - EncryptionKeyMedical
+      - EncryptionKeyCargo
+    chance: 0.9
+    offset: 0.0

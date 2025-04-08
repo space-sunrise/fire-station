@@ -163,9 +163,6 @@
     noMindState: ert_borg_e_r
   - type: IntrinsicRadioTransmitter
     channels:
-    # Fire edit start
-    - HeavyContainmentSecurityService
-    - ExternalAdministrativeZoneSecurityService
     - Binary
     - Common
     - ScientificService
@@ -174,9 +171,6 @@
     # Fire edit end
   - type: ActiveRadio
     channels:
-    # Fire edit start
-    - HeavyContainmentSecurityService
-    - ExternalAdministrativeZoneSecurityService
     - Binary
     - Common
     - ScientificService

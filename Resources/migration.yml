@@ -688,6 +688,8 @@ ClothingShoesBootsBlueShield: ClothingShoesBootsInternalSecurityOperative
 ClothingUniformJumpskirtBlueShield: ClothingUniformJumpskirtInternalSecurityOperative
 ClothingUniformJumpsuitBlueShield: ClothingUniformJumpsuitInternalSecurityOperative
 
+LootSpawnerEncryptionKey: LootSpawnerFacilityEncryptionKey
+
 Scp939Muzzler: ClothingMaskScp939
 
 CryogenicSleepUnitSpawnerLateJoin: null

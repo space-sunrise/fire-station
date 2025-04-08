@@ -7,7 +7,9 @@
     ClothingShoesColorBlack: 2
     ClothingHeadHatPurplesoft: 2
     ClothingBeltJanitor: 2
-    ClothingHeadsetService: 2
+    # Fire edit start
+    ClothingHeadsetFoodAndSanitation: 2
+    # Fire edit end
     ClothingOuterWinterJani: 2
     ClothingNeckScarfStripedPurple: 3
   contrabandInventory:
