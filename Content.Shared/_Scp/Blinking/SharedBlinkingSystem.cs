@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp173;
 using Content.Shared.Alert;
 using Content.Shared.Examine;
@@ -16,7 +17,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly SharedEyeClosingSystem _closingSystem = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedScpHelpersSystem _scpHelpers = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
@@ -102,7 +103,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
     /// <param name="uid">Моргающий</param>
     /// <param name="component">Компонент моргания</param>
     /// <param name="interval">Через сколько будет следующее моргание</param>
-    /// <param name="variance">Плюс минус время следующего моргания, чтобы вся станция не моргала в один такт</param>
+    /// <param name="variance">Плюс-минус время следующего моргания, чтобы вся станция не моргала в один такт</param>
     public void SetNextBlink(EntityUid uid, BlinkableComponent component, TimeSpan interval, double variance = 0)
     {
         component.NextBlink = _gameTiming.CurTime + interval + TimeSpan.FromSeconds(variance) + TimeSpan.FromSeconds(component.AdditionalBlinkingTime);
@@ -113,8 +114,15 @@ public abstract class SharedBlinkingSystem : EntitySystem
 
     private bool IsScp173Nearby(EntityUid uid)
     {
-        var entities = GetScp173().ToList();
-        return entities.Count != 0 && entities.Any(scp => _examine.InRangeUnOccluded(uid, scp, 12f, ignoreInsideBlocker:false));
+        var entities = _scpHelpers.GetAll<Scp173Component>().ToHashSet();
+
+        if (entities.Count == 0)
+            return false;
+
+        if (!entities.Any(scp => _examine.InRangeUnOccluded(uid, scp, 12f, ignoreInsideBlocker: false)))
+            return false;
+
+        return true;
     }
 
     protected virtual void UpdateAlert(EntityUid uid, BlinkableComponent component)
@@ -169,15 +177,6 @@ public abstract class SharedBlinkingSystem : EntitySystem
         SetNextBlink(uid, component, duration + TimeSpan.FromSeconds(1));
 
         UpdateAlert(uid, component);
-    }
-
-    public IEnumerable<Entity<Scp173Component>> GetScp173()
-    {
-        var query = EntityManager.AllEntityQueryEnumerator<Scp173Component>();
-        while (query.MoveNext(out var uid, out var component))
-        {
-            yield return (uid, component);
-        }
     }
 
     protected virtual void PlayBlinkSound(EntityUid uid) { }
