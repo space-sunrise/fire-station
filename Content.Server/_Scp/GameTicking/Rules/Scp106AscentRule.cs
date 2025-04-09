@@ -86,7 +86,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     {
         base.Initialize();
 
-        SubscribeLocalEvent<Scp106PortalSpawnerComponent, ComponentShutdown>(OnSpawnerShutdown);
+        SubscribeLocalEvent<Scp106PortalSpawnerComponent, EntityTerminatingEvent>(OnSpawnerShutdown);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
 
         SubscribeLocalEvent<HumanoidAppearanceComponent, PlayerAttachedEvent>(OnPlayerAttached);
@@ -264,7 +264,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         return TimeSpan.FromSeconds(nuke.Timer);
     }
 
-    private void OnSpawnerShutdown(Entity<Scp106PortalSpawnerComponent> ent, ref ComponentShutdown args)
+    private void OnSpawnerShutdown(Entity<Scp106PortalSpawnerComponent> ent, ref EntityTerminatingEvent args)
     {
         if (!_gameTicker.IsGameRuleAdded(Scp106System.AscentRule))
             return;
@@ -318,11 +318,11 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         if (_gameTicker.IsGameRuleActive(Scp106System.AscentRule))
         {
             RaiseNetworkEvent(new WarpingOverlayToggle(true), ent);
-            RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftStartedMusic));
+            RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftStartedMusic), ent);
         }
         else if (_gameTicker.IsGameRuleAdded(Scp106System.AscentRule))
         {
-            RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftAddedMusic));
+            RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftAddedMusic), ent);
         }
     }
 
