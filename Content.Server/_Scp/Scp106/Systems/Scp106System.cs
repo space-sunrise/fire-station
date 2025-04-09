@@ -362,6 +362,9 @@ public sealed partial class Scp106System : SharedScp106System
 
     public void HideBlade(Entity<Scp106Component> ent)
     {
+        if (!Exists(ent.Comp.Sword))
+            return;
+
         Del(ent.Comp.Sword);
         _hands.RemoveHands(ent);
         ent.Comp.HandTransformed = false;
