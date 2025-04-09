@@ -2,6 +2,7 @@
 using System.Linq;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Station.Components;
+using Content.Shared._Scp.Helpers;
 using Content.Shared.Random.Helpers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Collections;
@@ -14,7 +15,7 @@ namespace Content.Server._Scp.Helpers;
 /// <summary>
 /// Система-набор хелпер методов
 /// </summary>
-public sealed class ScpHelpersSystem : EntitySystem
+public sealed class ScpHelpersSystem : SharedScpHelpersSystem
 {
     [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
     [Dependency] private readonly MapSystem _map = default!;
@@ -49,7 +50,9 @@ public sealed class ScpHelpersSystem : EntitySystem
 
     #endregion
 
-    public bool TryFindRandomTile(out Vector2i tile,
+    #region Tile
+
+        public bool TryFindRandomTile(out Vector2i tile,
         [NotNullWhen(true)] out EntityUid? targetStation,
         out EntityUid targetGrid,
         out EntityCoordinates targetCoords)
@@ -120,40 +123,5 @@ public sealed class ScpHelpersSystem : EntitySystem
         return found;
     }
 
-
-    /// <summary>
-    /// Возвращает список с данным процентным соотношением
-    /// </summary>
-    /// <param name="sourceList">Исходный список</param>
-    /// <param name="percentage">Процент от 0 до 100</param>
-    /// <typeparam name="T">Компонент</typeparam>
-    [Obsolete]
-    public IEnumerable<T> GetPercentageOfHashSet<T>(IReadOnlyCollection<T> sourceList, float percentage) where T : IComponent
-    {
-        var countToAdd = (int) Math.Round((double) sourceList.Count * percentage / 100);
-        return sourceList.Where(t => !Transform(t.Owner).Anchored).Take(countToAdd).ToHashSet();
-    }
-
-    /// <summary>
-    /// Возвращает список с данным процентным соотношением
-    /// </summary>
-    /// <param name="sourceList">Исходный список</param>
-    /// <param name="percentage">Процент от 0 до 100</param>
-    /// <typeparam name="T">Ентити с компонентом</typeparam>
-    public IEnumerable<Entity<T>> GetPercentageOfHashSet<T>(IReadOnlyCollection<Entity<T>> sourceList, float percentage) where T : IComponent
-    {
-        var countToAdd = (int) Math.Round((double) sourceList.Count * percentage / 100);
-        return sourceList.Where(e => !Transform(e).Anchored).Take(countToAdd).ToHashSet();
-    }
-
-    /// <summary>
-    /// Возвращает список с данным процентным соотношением
-    /// </summary>
-    /// <param name="sourceList">Исходный список</param>
-    /// <param name="percentage">Процент от 0 до 100</param>
-    public IEnumerable<EntityUid> GetPercentageOfHashSet(IReadOnlyCollection<EntityUid> sourceList, float percentage)
-    {
-        var countToAdd = (int) Math.Round((double) sourceList.Count * percentage / 100);
-        return sourceList.Where(e => !Transform(e).Anchored).Take(countToAdd).ToHashSet();
-    }
+    #endregion
 }
