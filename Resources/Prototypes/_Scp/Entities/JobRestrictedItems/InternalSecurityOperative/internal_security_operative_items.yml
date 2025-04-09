@@ -33,6 +33,8 @@
     contents:
     - id: WeaponEnergyGunMultiphase
     - id: HandheldCrewMonitor
+    - id: WeaponRevolverMatebaNew
+    - id: SpeedLoaderMagnum
 
 - type: entity
   parent: LockerBlueshield
@@ -50,6 +52,27 @@
       prob: 0.25
     - id: TrackingImplanter
       amount: 8
+    - id: MindShieldImplanter
+      amount: 3
+
+- type: entity
+  parent: LockerInternalSecurityOperativeFilled
+  id: LockerInternalSecurityOperativeFilledHardsuit
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponDisabler
+    - id: ClothingHeadsetAltAdministration
+    - id: CigarGoldCase
+      prob: 0.25
+    - id: TrackingImplanter
+      amount: 8
+    - id: MindShieldImplanter
+      amount: 3
+    - id: OxygenTankFilled
+    - id: ClothingMaskBreathMedicalSecurity
+    - id: ClothingMaskGasInternalSecurityOperative
+    - id: ClothingOuterHardsuitInternalSecurityOperative
 
 # Одежда
 - type: entity
@@ -126,6 +149,13 @@
 - type: entity
   parent: ClothingOuterHardsuitBlueshield
   id: ClothingOuterHardsuitInternalSecurityOperative
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitInternalSecurityOperative
+
+- type: entity
+  parent: ClothingMaskGasBlueShield
+  id: ClothingMaskGasInternalSecurityOperative
 
 - type: entity
   parent: ClothingShoesBootsBlueShield
