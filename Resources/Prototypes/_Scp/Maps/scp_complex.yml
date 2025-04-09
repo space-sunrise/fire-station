@@ -53,10 +53,10 @@
             ExternalAdministrativeZoneOfficer: [ 10, 15 ]
             JuniorExternalAdministrativeZoneOfficer: [ 5, -1 ]
             # Научная служба
-            LeadResearche: [ 1, 1 ]
-            AnomabiologyResearche: [ 8, 12 ]
-            AnomarchologyResearche: [ 8, 12 ]
-            ProductionSpecialis: [ 2, 2 ]
+            LeadResearcher: [ 1, 1 ]
+            AnomabiologyResearcher: [ 8, 12 ]
+            AnomarchologyResearcher: [ 8, 12 ]
+            ProductionSpecialist: [ 2, 2 ]
             JuniorResearcher: [ 5, -1 ]
             # Медицинская служба
             SeniorMedicalSpecialist: [ 1, 1 ]
