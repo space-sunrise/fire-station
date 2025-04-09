@@ -32,7 +32,7 @@ public abstract partial class SharedScp106System : EntitySystem
     private static readonly SoundSpecifier TeleportSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/return.ogg");
 
     private const float DamageInPocketDimensionMultiplier = 3f;
-    protected static readonly TimeSpan TeleportTimeCompensation = TimeSpan.FromSeconds(0.5f);
+    protected static readonly TimeSpan TeleportTimeCompensation = TimeSpan.FromSeconds(0.1f);
 
     public override void Initialize()
     {
@@ -149,20 +149,24 @@ public abstract partial class SharedScp106System : EntitySystem
 
 	private void OnBackroomsDoAfter(Entity<Scp106Component> ent, ref Scp106BackroomsActionEvent args)
 	{
-        if (args.Cancelled)
+        if (args.Cancelled || args.Handled)
             return;
 
         DoTeleportEffects(ent);
         SendToBackrooms(ent);
+
+        args.Handled = true;
     }
 
 	private void OnTeleportDoAfter(Entity<Scp106Component> ent, ref Scp106RandomTeleportActionEvent args)
     {
-        if (args.Cancelled)
+        if (args.Cancelled || args.Handled)
             return;
 
         DoTeleportEffects(ent);
         SendToStation(ent);
+
+        args.Handled = true;
     }
 
     private void OnMeleeHit(Entity<Scp106Component> ent, ref MeleeHitEvent args)
@@ -220,7 +224,8 @@ public abstract partial class SharedScp106System : EntitySystem
     {
         if (ent.Comp.IsContained)
         {
-            _popup.PopupClient("Ваши способности подавлены", ent, ent, PopupType.SmallCaution);
+            if (_timing.IsFirstTimePredicted)
+                _popup.PopupClient("Ваши способности подавлены", ent, ent,  PopupType.SmallCaution);
 
             return true;
         }

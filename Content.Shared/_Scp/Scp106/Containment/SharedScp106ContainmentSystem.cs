@@ -1,0 +1,113 @@
+﻿using System.Linq;
+using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Scp106.Components;
+using Content.Shared.Body.Systems;
+using Content.Shared.Humanoid;
+using Content.Shared.Mobs.Systems;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Events;
+using Robust.Shared.Physics.Systems;
+using Robust.Shared.Player;
+
+namespace Content.Shared._Scp.Scp106.Containment;
+
+public abstract class SharedScp106ContainmentSystem : EntitySystem
+{
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly MobStateSystem _mobState  = default!;
+    [Dependency] private readonly SharedScpHelpersSystem _scpHelpers  = default!;
+
+    private readonly SoundSpecifier _containSound = new SoundPathSpecifier("/Audio/_Scp/scp106_contained_sound.ogg");
+
+    /// <inheritdoc/>
+    public override void Initialize()
+    {
+        SubscribeLocalEvent<Scp106BoneBreakerCellComponent, StartCollideEvent>(OnBoneBreakerCollide);
+
+        SubscribeLocalEvent<Scp106ContainmentCatwalkComponent, StartCollideEvent>(OnContainmentCatwalkCollideStart);
+        SubscribeLocalEvent<Scp106ContainmentCatwalkComponent, EndCollideEvent>(OnContainmentCatwalkCollideEnd);
+    }
+
+    protected virtual void OnBoneBreakerCollide(Entity<Scp106BoneBreakerCellComponent> ent, ref StartCollideEvent args)
+    {
+        if (!HasComp<HumanoidAppearanceComponent>(args.OtherEntity))
+            return;
+
+        if (_mobState.IsDead(args.OtherEntity))
+            return;
+
+        if (!TryContain())
+            return;
+
+        _body.GibBody(args.OtherEntity);
+
+        // Аннонс в сервер-сайд системе
+        _audio.PlayGlobal(_containSound, Filter.BroadcastMap(Transform(ent).MapID), false);
+    }
+
+    private bool TryContain()
+    {
+        if (!_scpHelpers.TryGetFirst<Scp106Component>(out var scp106))
+            return false;
+
+        if (!_scpHelpers.TryGetFirst<Scp106ContainmentCatwalkComponent>(out var chamberTile))
+            return false;
+
+        var xform = Transform(chamberTile.Value);
+
+        scp106.Value.Comp.IsContained = true;
+        Dirty(scp106.Value);
+
+        _transform.SetCoordinates(scp106.Value, xform.Coordinates);
+
+        return false;
+    }
+
+    private void OnContainmentCatwalkCollideStart(Entity<Scp106ContainmentCatwalkComponent> ent, ref StartCollideEvent args)
+    {
+        if (!TryComp<Scp106Component>(args.OtherEntity, out var scp106Component))
+            return;
+
+        scp106Component.IsContained = true;
+        Dirty(ent);
+
+        if (!TryComp<FixturesComponent>(args.OtherEntity, out var fixturesComponent))
+            return;
+
+        foreach (var (id, fixture) in fixturesComponent.Fixtures)
+        {
+            _physics.SetCollisionMask(args.OtherEntity, id, fixture, 30);
+        }
+    }
+
+    private void OnContainmentCatwalkCollideEnd(Entity<Scp106ContainmentCatwalkComponent> ent, ref EndCollideEvent args)
+    {
+        if (!TryComp<Scp106Component>(args.OtherEntity, out var scp106Component))
+            return;
+
+        // Проверка, стоит ли SCP-106 всё ещё на другом контейнере
+        var isStillOnContainer = _lookup.GetEntitiesInRange(Transform(args.OtherEntity).Coordinates, 0.1f)
+            .Any(HasComp<Scp106ContainmentCatwalkComponent>);
+
+        if (isStillOnContainer)
+            return;
+
+        // Если он не на другом контейнере, сбрасываем состояние
+        scp106Component.IsContained = false;
+        Dirty(args.OtherEntity, scp106Component);
+
+        if (!TryComp<FixturesComponent>(args.OtherEntity, out var fixturesComponent))
+            return;
+
+        foreach (var (id, fixture) in fixturesComponent.Fixtures)
+        {
+            _physics.SetCollisionMask(args.OtherEntity, id, fixture, 18);
+        }
+    }
+}

@@ -24,10 +24,10 @@
   parent: Scp106CatwalkBase
   id: Scp106CatwalkTarget
   components:
-  - type: Scp106CatwalkTarget
+  - type: Scp106BoneBreakerCell
 
 - type: entity
   parent: Scp106CatwalkBase
   id: Scp106CatwalkContainer
   components:
-  - type: Scp106CatwalkContainer
+  - type: Scp106ContainmentCatwalk
