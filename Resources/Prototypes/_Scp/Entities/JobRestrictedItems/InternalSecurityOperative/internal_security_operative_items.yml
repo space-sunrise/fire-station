@@ -43,6 +43,7 @@
 - type: entity
   parent: LockerInternalSecurityOperative
   id: LockerInternalSecurityOperativeFilled
+  suffix: Filled
   components:
   - type: StorageFill
     contents:
@@ -58,6 +59,7 @@
 - type: entity
   parent: LockerInternalSecurityOperativeFilled
   id: LockerInternalSecurityOperativeFilledHardsuit
+  suffix: Filled, Hardsuit
   components:
   - type: StorageFill
     contents:

@@ -48,3 +48,6 @@ ent-LockerInternalSecurityOperative = шкаф оперативника внеш
 ent-LockerInternalSecurityOperativeFilled = { ent-LockerInternalSecurityOperative }
     .suffix = Filled
     .desc = { ent-LockerInternalSecurityOperative.desc }
+ent-LockerInternalSecurityOperativeFilledHardsuit = { ent-LockerInternalSecurityOperative }
+    .suffix = Filled, Hardsuit
+    .desc = { ent-LockerInternalSecurityOperative.desc }
