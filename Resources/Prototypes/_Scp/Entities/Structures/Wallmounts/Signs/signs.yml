@@ -1,4 +1,13 @@
 ﻿- type: entity
+  parent: BaseSign
+  id: BaseSignScp
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/signs.rsi
+    snapCardinals: true
+
+- type: entity
   parent: BaseSignDirectional
   id: BaseSignDirectionalScp
   abstract: true
@@ -121,7 +130,7 @@
   id: SignDirectionalScpLogisticsService
   components:
   - type: Sprite
-    state: direction_logistic
+    state: direction_logistics
 
 - type: entity
   parent: BaseSignDirectionalScp
@@ -140,22 +149,25 @@
 # Не направленные указатели
 
 - type: entity
-  parent: BaseSignDirectionalScp
+  parent: BaseSignScp
   id: SignScpAdministration
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/signs.rsi
     state: administration
 
 - type: entity
-  parent: BaseSignDirectionalScp
+  parent: BaseSignScp
   id: SignScpHead
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/signs.rsi
     state: head
 
 - type: entity
-  parent: BaseSignDirectionalScp
+  parent: BaseSignScp
   id: SignScpCSS
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/signs.rsi
     state: CSS
