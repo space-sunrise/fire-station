@@ -1,36 +1,38 @@
-department-administration-name = Администрация комплекса
-department-administration-desc = TODO
+department-Administration = Администрация комплекса
+department-Administration-description = Управляющий орган Фонда, координирующий работу зон содержания, распределение ресурсов и контроль персонала, обеспечивая выполнение миссии по Сдерживанию.
 
-department-internal-security-name = Департамент внутренней безопасности
-department-internal-security-desc = TODO
+department-InternalSecurity = Департамент внутренней безопасности
+department-InternalSecurity-desc = Карающий меч Фонда, выявляющий угрозы среди персонала, пресекающий нарушения протоколов и гарантирующий, что сдерживание не рухнет из-за человеческой слабости или измены.
 
-department-ethics-committee-name = Комитет по этике
-department-ethics-committee-desc = TODO
+department-EthicsCommittee = Комитет по этике
+department-EthicsCommittee-desc = Совесть Фонда, следящая, чтобы цена Сдерживания не превышала человечность, а протоколы не превращали нас в монстров, которых мы призваны контролировать.
 
-department-internal-tribunal-name = Служба внутреннего трибунала
-department-internal-tribunal-desc = TODO
+department-InternalTribunalService = Служба внутреннего трибунала
+department-InternalTribunalService-desc = Суд последней инстанции Фонда, где вершат правосудие над предателями, нарушителями протоколов и теми, кто поставил под угрозу само Сдерживание. Их приговор обжалованию не подлежит.
 
-department-heavy-containment-security-service-name = Служба безопасности тяжелой зоны содержания
-department-heavy-containment-security-service-desc = TODO
+department-HeavyContainmentSecurityService = Служба безопасности тяжелой зоны содержания
+department-HeavyContainmentSecurityService-desc = Бронежилет Фонда, стоящий между человечеством и самыми опасными объектами. Их правила просты: сомневаешься — стреляй, ошибаешься — умрёшь. Протоколы здесь заменяют заповеди.
 
-department-external-administrative-zone-security-service-name = Служба безопасности внешней-административной зоны
-department-external-administrative-zone-security-service-desc = TODO
+department-ExternalAdministrativeZoneSecurityService = Служба безопасности внешней-административной зоны
+department-ExternalAdministrativeZoneSecurityService-desc = Надзиратели за видимой частью айсберга. Они следят, чтобы персонал класса D не сбежал с метлой, а учёные не унесли в карманах аномалии. Их оружие — не только автоматы, но и профессионализм.
 
-department-scientific-service-name = Научная служба
-department-scientific-service-desc = TODO
+department-ScientificService = Научная служба
+department-ScientificService-desc = Любопытные умы Фонда, превращающие аномалии в уравнения, а хаос — в методички. Их лаборатории находятся ровно на грани между гениальностью и безумием, а каждый отчёт может стоить кому-то разума… или жизни.
 
-department-medical-service-name = Медицинская служба
-department-medical-service-desc = TODO
+department-MedicalService = Медицинская служба
+department-MedicalService-desc = Лекари Фонда, латающие плоть и разум после встреч с невообразимым. Их скальпели вскрывают не только тела, но и саму природу аномалий, а в аптечках хранятся коктейли из антидепрессантов и амнезиаков.
 
-department-engineering-technical-service-name = Инженерно-техническая служба
-department-engineering-technical-service-desc = TODO
+department-EngineeringTechnicalService = Инженерно-техническая служба
+department-EngineeringTechnicalService-desc = Стальные нервы Фонда, поддерживающие сердцебиение комплекса. Они следят, чтобы системы сдерживания не давали сбоев, стены оставались непробиваемыми, а аномалии — именно там, где должны быть.
 
-department-logistics-service-name = Служба логистики
-department-logistics-service-desc = TODO
+department-LogisticsService = Служба логистики
+department-LogisticsService-desc = Невидимые артерии Фонда, по которым течёт всё: от патронов для охраны до кофе для О5. Они доставят что угодно, куда угодно и когда угодно — главное, чтобы в накладных значилось «обычное офисное оборудование».
 
-department-food-and-sanitation-service-name = Департамент продовольственного и санитарного обслуживания
-department-food-and-sanitation-service-desc = TODO
+department-FoodAndSanitationServiceDepartment = Департамент продовольственного и санитарного обслуживания
+department-FoodAndSanitationServiceDepartment-desc = Желудок и гигиена Фонда, кормящий персонал и вычищающий последствия их ошибок. Они знают, как превратить пайки D-класса в баланс между бунтом и голодной смертью, а дезинфекцию после инцидента — в «плановую уборку».
 
-department-low-access-personnel = Сотрудники класса Д
+department-LowAccessPersonnel = Сотрудники класса Д
+department-LowAccessPersonnel-description = Расходный материал Фонда, подопытные кролики в системе, где этика уступает место необходимости. Их труд — тестировать аномалии, их награда — лишний день жизни, их пенсия — аккуратная урна с номером вместо имени.
 
-department-scp = Объекты SCP
+department-SCP = Объекты SCP
+department-SCP-description = Живое (и не очень) воплощение кошмаров Фонда. Они — причина, по которой ученые седеют, охрана пьёт антидепрессанты и существуют все эти протоколы. Их нельзя уничтожить, нельзя понять — только сдерживать, пока они не осознали, что правила пишем не мы.

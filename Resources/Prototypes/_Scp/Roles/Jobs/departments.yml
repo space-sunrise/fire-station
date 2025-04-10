@@ -149,8 +149,8 @@
 
 - type: department
   id: LowAccessPersonnel
-  name: department-low-access-personnel
-  description: department-low-access-personnel
+  name: department-LowAccessPersonnel
+  description: department-LowAccessPersonnel-description
   color: "#FF5297"
   weight: 45
   roles:
