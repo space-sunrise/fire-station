@@ -1,0 +1,29 @@
+﻿- type: entity
+  parent: WeaponEnergyTurretAI
+  id: WeaponEnergyTurretCSS
+  name: Complex's Security System sentry turret
+  description: High-tech equipment under the direct control of the Complex's Security System.
+  components:
+  - type: Machine
+    board: WeaponEnergyTurretCSSMachineCircuitboard
+
+- type: entity
+  parent: WeaponEnergyTurretStation
+  id: WeaponEnergyTurretFacility
+  name: facility sentry turret
+  description: High-tech equipment designed to keep unauthorized personnel out of sensitive areas.
+  components:
+  - type: Machine
+    board: WeaponEnergyTurretFacilityMachineCircuitboard
+
+- type: entity
+  parent: WeaponEnergyTurretStationMachineCircuitboard
+  id: WeaponEnergyTurretFacilityMachineCircuitboard
+  name: facility sentry turret machine board
+  description: A machine printed circuit board for a sentry turret.
+
+- type: entity
+  parent: WeaponEnergyTurretAIMachineCircuitboard
+  id: WeaponEnergyTurretCSSMachineCircuitboard
+  name: CSS sentry turret machine board
+  description: A machine printed circuit board for an facility CSS sentry turret.

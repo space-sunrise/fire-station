@@ -27,7 +27,6 @@ using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Utility;
 using Content.Server.StatsBoard;
-using Content.Shared._Sunrise.StatsBoard;
 
 namespace Content.Server.GameTicking
 {

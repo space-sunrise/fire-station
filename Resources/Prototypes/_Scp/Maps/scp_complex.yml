@@ -1,6 +1,6 @@
 - type: gameMap
   id: ScpComplex
-  mapName: 'Complex SCP'
+  mapName: 'Комплекс SCP'
   mapPath: /Maps/_Scp/scp_complex.yml
   maxRandomOffset: 0
   randomRotation: false
@@ -18,18 +18,14 @@
           emergencyShuttlePath: /Maps/_Sunrise/Shuttles/emergency_delta.yml
         - type: StationJobs
           availableJobs:
-            #D Class
-            ClassD: [ 1, 1 ]
-            ClassDCook: [ 2, 2 ]
-            ClassDBotanist: [ 1, 1 ]
-            ClassDJanitor: [ 1, 1 ]
-            #SCP
+            # SCP
             Scp049: [ 1, 1 ]
             Scp096: [ 1, 1 ]
             Scp939: [ 1, 1 ]
             Scp173: [ 1, 1 ]
+            Scp106: [ 1, 1 ]
             Scp999: [ 1, 1 ]
-            #Command
+            # Администрация
             Director: [ 1, 1 ]
             ScientificServiceDirector: [ 1, 1 ]
             SecurityCommander: [ 1, 1 ]
@@ -37,47 +33,54 @@
             PersonnelOfficer: [ 1, 1 ]
             HeadOfMedicalSector: [ 1, 1 ]
             SeniorLogisticsOfficer: [ 1, 1 ]
-            #Law
-            # MentalControlOfficer: [ 1, 1 ]
-            # InternalSecurityOperative: [ 1, 1 ]
-            # EthicsCommitteeRepresentative: [ 1, 1 ]
-            # JudicialInspector: [ 1, 1 ]
-            # TribunalOfficer: [ 1, 1 ]
-            #Sec Light Zone
-            ExternalAdministrativeZoneCommandant: [ 1, 1 ]
-            SeniorExternalAdministrativeZoneOfficer: [ 1, 1 ]
-            ExternalAdministrativeZoneOfficer: [ 5, 7 ]
-            JuniorExternalAdministrativeZoneOfficer: [ 3, -1 ]
-            #Sec Hard Zone
+            # Отдел внутренней безопасности
+            #MentalControlOfficer: [ 1, 1 ]
+            #InternalSecurityOperative: [ 1, 1 ]
+            # Комитет по этике
+            #EthicsCommitteeRepresentative: [ 1, 1 ]
+            # Служба внутреннего трибунала
+            #JudicialInspector: [ 1, 1 ]
+            #TribunalOfficer: [ 1, 1 ]
+            # Служба безопасности тяжелой зоны
             HeavyContainmentZoneCommandant: [ 1, 1 ]
             SeniorHeavyContainmentZoneOfficer: [ 1, 1 ]
-            HeavyContainmentZoneOfficer: [ 5, 7 ]
-            JuniorHeavyContainmentZoneOfficer: [ 3, -1 ]
+            HeavyContainmentZoneOfficer: [ 10, 15 ]
+            JuniorHeavyContainmentZoneOfficer: [ 5, -1 ]
             FieldMedicalSpecialist: [ 2, 2 ]
-            #Dont Fuck with the Scientist team
+            # Служба безопасности внешней-административной зоны
+            ExternalAdministrativeZoneCommandant: [ 1, 1 ]
+            SeniorExternalAdministrativeZoneOfficer: [ 1, 1 ]
+            ExternalAdministrativeZoneOfficer: [ 10, 15 ]
+            JuniorExternalAdministrativeZoneOfficer: [ 5, -1 ]
+            # Научная служба
             LeadResearcher: [ 1, 1 ]
-            AnomabiologyResearcher: [ 5, 7 ]
-            AnomarchologyResearcher: [ 5, 7 ]
-            ProductionSpecialist: [ 1, 1 ]
-            JuniorResearcher: [ 3, -1 ]
-            #Medical
+            AnomabiologyResearcher: [ 8, 12 ]
+            AnomarchologyResearcher: [ 8, 12 ]
+            ProductionSpecialist: [ 2, 2 ]
+            JuniorResearcher: [ 5, -1 ]
+            # Медицинская служба
             SeniorMedicalSpecialist: [ 1, 1 ]
-            PharmaceuticalSpecialist: [ 2, 2 ]
-            MedicalSpecialist: [ 3, 6 ]
+            PharmaceuticalSpecialist: [ 2, 3 ]
+            MedicalSpecialist: [ 5, 8 ]
             Psychotherapist: [ 1, 1 ]
             HospitalIntern: [ 5, -1 ]
-            #Engineer
+            # Инженерно-техническая служба
             LeadTechnicalSpecialist: [ 1, 1 ]
-            ElectricalTechnicalSpecialist: [ 2, 2 ]
-            GeneralTechnicalSpecialist: [ 4, 4 ]
+            ElectricalTechnicalSpecialist: [ 3, 3 ]
+            GeneralTechnicalSpecialist: [ 5, 5 ]
             TechnicalTrainee: [ 5, -1 ]
-            #Logistic
-            LogisticsOfficer: [ 2, 2 ]
-            #Service
+            # Логистическая служба
+            LogisticsOfficer: [ 3, 3 ]
+            # Департамент продовольственного и санитарного обслуживания
             GastronomicSpecialist: [ 2, 2 ]
-            BotanistPhytogeneticist: [ 1, 1 ]
+            BotanistPhytogeneticist: [ 2, 2 ]
             ServicePersonnel: [ 5, -1 ]
-            #AI
+            # Класс Д
+            ClassD: [ 1, 1 ]
+            ClassDCook: [ 2, 2 ]
+            ClassDBotanist: [ 2, 2 ]
+            ClassDJanitor: [ 1, 1 ]
+            # Система безопасности комплекса
             StationAi: [ 1, 1 ]
         - type: RelativeJobsCount
           jobs:
@@ -87,7 +90,7 @@
               SeniorExternalAdministrativeZoneOfficer: 1
               ExternalAdministrativeZoneOfficer: 1
               JuniorExternalAdministrativeZoneOfficer: 1
-          maxCount: 10
+          maxCount: 16
         - type: StationGoal
           goals:
           - Scp1

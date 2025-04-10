@@ -8,6 +8,7 @@
   - type: IntrinsicRadioTransmitter
     channels:
     - Binary
+    - Common
     # Fire edit start
     - Administration
     - InternalSecurity
@@ -24,6 +25,7 @@
   - type: ActiveRadio
     channels:
     - Binary
+    - Common
     # Fire edit start
     - Administration
     - InternalSecurity

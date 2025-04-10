@@ -52,7 +52,6 @@
 - type: loadoutGroup
   id: DirectorShoes
   name: loadout-group-shoes
-  minLimit: 0
   loadouts:
   - LaceupBoots
   - LeatherShoes
