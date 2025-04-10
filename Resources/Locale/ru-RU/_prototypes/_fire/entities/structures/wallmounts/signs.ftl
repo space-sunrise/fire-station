@@ -42,3 +42,29 @@ ent-SignDirectionalScpHeavyContainmentZone = указатель "Тяжелая 
 
 ent-SignDirectionalScpLightContainmentZone = указатель "Легкая зона содержания"
     .desc = Показывает в сторону, где в теории должно быть легко, но на практике тяжело.
+
+ent-SignDirectionalScpAdministration = указатель "Администрация комплекса"
+    .desc = { ent-BaseSignDirectionalScp.desc }
+
+ent-SignDirectionalScpLogisticsService = указатель "Служба логистики"
+    .desc = { ent-BaseSignDirectionalScp.desc }
+
+ent-SignDirectionalScpPersonnelOfficer = указатель "Кадровый офицер"
+    .desc = { ent-BaseSignDirectionalScp.desc }
+
+ent-SignDirectionalScpScientificService = указатель "Научная служба"
+    .desc = { ent-BaseSignDirectionalScp.desc }
+
+ent-SignDirectionalScpLogisticsService = указатель "Служба логистики"
+    .desc = { ent-BaseSignDirectionalScp.desc }
+
+
+
+ent-SignScpAdministration = знак "Администрация комплекса"
+    .desc = Судя по всему, перед вами зона администрации комплекса или, как её называют моряки, «мостик».
+
+ent-SignScpHead = знак "Глава отдела"
+    .desc = Судя по всему, перед вами комната главы какого-то отдела, высокопоставленного сотрудника комплекса SCP.
+
+ent-SignScpCSS = знак "Система Безопасности Комплекса"
+    .desc = Судя по всему, перед вами центр размещения и управления Системой Безопасности Комплекса.

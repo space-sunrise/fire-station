@@ -688,7 +688,17 @@ ClothingShoesBootsBlueShield: ClothingShoesBootsInternalSecurityOperative
 ClothingUniformJumpskirtBlueShield: ClothingUniformJumpskirtInternalSecurityOperative
 ClothingUniformJumpsuitBlueShield: ClothingUniformJumpsuitInternalSecurityOperative
 
+SignDirectionalBridge: SignDirectionalScpAdministration
+SignDirectionalSupply: SignDirectionalScpLogisticsService
+SignDirectionalHop: SignDirectionalScpPersonnelOfficer
+
+SignBridge: SignScpAdministration
+SignHead: SignScpHead
+SignAi: SignScpCSS
+
 PosterNtYours: PosterScpYours
+
+SignDirectionalSci: SignDirectionalScpScientificService
 
 LootSpawnerEncryptionKey: LootSpawnerFacilityEncryptionKey
 

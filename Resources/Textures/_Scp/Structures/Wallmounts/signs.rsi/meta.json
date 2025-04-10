@@ -62,6 +62,31 @@
         {
             "name": "lcz",
             "directions": 4
+        },
+        {
+            "name": "direction_administration",
+            "directions": 4
+        },
+        {
+            "name": "direction_logistic",
+            "directions": 4
+        },
+        {
+            "name": "direction_ss",
+            "directions": 4
+        },
+        {
+            "name": "direction_po",
+            "directions": 4
+        },
+        {
+            "name": "CSS"
+        },
+        {
+            "name": "administration"
+        },
+        {
+            "name": "head"
         }
     ]
 }

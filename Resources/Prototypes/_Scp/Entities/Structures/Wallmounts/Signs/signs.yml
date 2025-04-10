@@ -108,3 +108,54 @@
   components:
   - type: Sprite
     state: lcz
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScpAdministration
+  components:
+  - type: Sprite
+    state: direction_administration
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScpLogisticsService
+  components:
+  - type: Sprite
+    state: direction_logistic
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScpPersonnelOfficer
+  components:
+  - type: Sprite
+    state: direction_po
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScpScientificService
+  components:
+  - type: Sprite
+    state: direction_ss
+
+# Не направленные указатели
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignScpAdministration
+  components:
+  - type: Sprite
+    state: administration
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignScpHead
+  components:
+  - type: Sprite
+    state: head
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignScpCSS
+  components:
+  - type: Sprite
+    state: CSS
