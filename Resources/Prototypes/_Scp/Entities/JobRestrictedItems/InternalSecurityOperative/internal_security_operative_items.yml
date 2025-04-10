@@ -31,7 +31,6 @@
     access: [["BlueShield"]]
   - type: StorageFill
     contents:
-    - id: WeaponEnergyGunMultiphase
     - id: HandheldCrewMonitor
     - id: WeaponRevolverMatebaNew
     - id: SpeedLoaderMagnum
@@ -52,7 +51,7 @@
     - id: CigarGoldCase
       prob: 0.25
     - id: TrackingImplanter
-      amount: 8
+      amount: 3
     - id: MindShieldImplanter
       amount: 3
 
@@ -68,7 +67,7 @@
     - id: CigarGoldCase
       prob: 0.25
     - id: TrackingImplanter
-      amount: 8
+      amount: 3
     - id: MindShieldImplanter
       amount: 3
     - id: OxygenTankFilled
