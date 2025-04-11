@@ -13,7 +13,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _Scp/Structures/Wallmounts/signs.rsi
+    sprite: _Scp/Structures/Wallmounts/signs-directional.rsi
     snapCardinals: false
 
 # Камеры содержания сцп
@@ -153,7 +153,6 @@
   id: SignScpAdministration
   components:
   - type: Sprite
-    sprite: _Scp/Structures/Wallmounts/signs.rsi
     state: administration
 
 - type: entity
@@ -161,7 +160,6 @@
   id: SignScpHead
   components:
   - type: Sprite
-    sprite: _Scp/Structures/Wallmounts/signs.rsi
     state: head
 
 - type: entity
@@ -169,5 +167,4 @@
   id: SignScpCSS
   components:
   - type: Sprite
-    sprite: _Scp/Structures/Wallmounts/signs.rsi
     state: CSS
