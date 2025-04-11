@@ -3,7 +3,7 @@
 - type: department
   id: Administration
   name: department-Administration
-  description: department-administration-description
+  description: department-Administration-description
   color: "#6aa84f"
   weight: 100
   roles:
@@ -20,7 +20,7 @@
 - type: department
   id: InternalSecurity
   name: department-InternalSecurity
-  description: department-internal-security-description
+  description: department-InternalSecurity-description
   color: "#980000"
   weight: 95
   roles:
