@@ -77,6 +77,11 @@ public abstract class SharedScp106ContainmentSystem : EntitySystem
         if (!TryComp<Scp106Component>(args.OtherEntity, out var scp106Component))
             return;
 
+        var mapUid = Transform(args.OtherEntity).MapUid;
+
+        if (HasComp<Scp106DimensionShiftingMapComponent>(mapUid))
+            return;
+
         scp106Component.IsContained = true;
         Dirty(ent);
 

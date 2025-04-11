@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading;
 using Content.Server._Scp.GameTicking.Rules.Components;
+using Content.Server._Scp.Helpers;
 using Content.Server._Scp.Scp106.Components;
 using Content.Server._Scp.Scp106.Systems;
 using Content.Server.AlertLevel;
@@ -16,6 +17,7 @@ using Content.Server.Speech.EntitySystems;
 using Content.Server.Stunnable;
 using Content.Shared._Scp.Audio;
 using Content.Shared._Scp.Scp106;
+using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.Audio;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
@@ -40,6 +42,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     [Dependency] private readonly GhostSystem _ghost = default!;
     [Dependency] private readonly NukeSystem _nuke = default!;
     [Dependency] private readonly Scp106System _scp106 = default!;
+    [Dependency] private readonly ScpHelpersSystem _scpHelpers = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
@@ -172,6 +175,9 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
             return;
         }
 
+        if (!TryGetRandomStation(out var station))
+            return;
+
         RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftStartedMusic));
 
         var statusEffectQuery = EntityQueryEnumerator<HumanoidAppearanceComponent, StatusEffectsComponent>();
@@ -205,8 +211,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         if (audio != null)
             _effectsManager.TryAddEffect(audio.Value, FancyEffect);
 
-        if (!TryGetRandomStation(out var station))
-            return;
+        EnsureComp<Scp106DimensionShiftingMapComponent>(station.Value);
 
         Timer.Spawn(AscentAnnounceAfter,
             () =>
