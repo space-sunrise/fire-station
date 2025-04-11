@@ -18,12 +18,9 @@ public abstract class SharedScp106ContainmentSystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedBodySystem _body = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly MobStateSystem _mobState  = default!;
     [Dependency] private readonly SharedScpHelpersSystem _scpHelpers  = default!;
-
-    private readonly SoundSpecifier _containSound = new SoundPathSpecifier("/Audio/_Scp/scp106_contained_sound.ogg");
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -34,21 +31,27 @@ public abstract class SharedScp106ContainmentSystem : EntitySystem
         SubscribeLocalEvent<Scp106ContainmentCatwalkComponent, EndCollideEvent>(OnContainmentCatwalkCollideEnd);
     }
 
-    protected virtual void OnBoneBreakerCollide(Entity<Scp106BoneBreakerCellComponent> ent, ref StartCollideEvent args)
+    private void OnBoneBreakerCollide(Entity<Scp106BoneBreakerCellComponent> ent, ref StartCollideEvent args)
+    {
+        BoneBreakerCanCollide(ent, ref args);
+    }
+
+    protected virtual bool BoneBreakerCanCollide(Entity<Scp106BoneBreakerCellComponent> ent, ref StartCollideEvent args)
     {
         if (!HasComp<HumanoidAppearanceComponent>(args.OtherEntity))
-            return;
+            return false;
 
         if (_mobState.IsDead(args.OtherEntity))
-            return;
+            return false;
 
         if (!TryContain())
-            return;
+            return false;
 
         _body.GibBody(args.OtherEntity);
 
         // Аннонс в сервер-сайд системе
-        _audio.PlayGlobal(_containSound, Filter.BroadcastMap(Transform(ent).MapID), false);
+
+        return true;
     }
 
     private bool TryContain()
@@ -66,7 +69,7 @@ public abstract class SharedScp106ContainmentSystem : EntitySystem
 
         _transform.SetCoordinates(scp106.Value, xform.Coordinates);
 
-        return false;
+        return true;
     }
 
     private void OnContainmentCatwalkCollideStart(Entity<Scp106ContainmentCatwalkComponent> ent, ref StartCollideEvent args)
