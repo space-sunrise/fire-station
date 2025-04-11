@@ -46,9 +46,6 @@ ent-SignDirectionalScpLightContainmentZone = указатель "Легкая з
 ent-SignDirectionalScpAdministration = указатель "Администрация комплекса"
     .desc = { ent-BaseSignDirectionalScp.desc }
 
-ent-SignDirectionalScpLogisticsService = указатель "Служба логистики"
-    .desc = { ent-BaseSignDirectionalScp.desc }
-
 ent-SignDirectionalScpPersonnelOfficer = указатель "Кадровый офицер"
     .desc = { ent-BaseSignDirectionalScp.desc }
 
