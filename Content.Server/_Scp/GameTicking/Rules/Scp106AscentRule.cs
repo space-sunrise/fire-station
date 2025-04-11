@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Threading;
 using Content.Server._Scp.GameTicking.Rules.Components;
-using Content.Server._Scp.Helpers;
 using Content.Server._Scp.Scp106.Components;
 using Content.Server._Scp.Scp106.Systems;
 using Content.Server.AlertLevel;
@@ -42,7 +41,6 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     [Dependency] private readonly GhostSystem _ghost = default!;
     [Dependency] private readonly NukeSystem _nuke = default!;
     [Dependency] private readonly Scp106System _scp106 = default!;
-    [Dependency] private readonly ScpHelpersSystem _scpHelpers = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
