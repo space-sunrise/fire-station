@@ -32,6 +32,7 @@ public sealed partial class Scp106Component : Component
     public FixedPoint2 Essence = 0f;
     public TimeSpan NextEssenceAddedTime;
 
+    [AutoNetworkedField]
     public TimeSpan PhantomCoolDown = TimeSpan.FromSeconds(300);
 
     [ViewVariables]
