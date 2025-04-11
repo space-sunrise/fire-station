@@ -173,14 +173,13 @@ namespace Content.Client.Viewport
 
             var drawBox = GetDrawBox();
             var drawBoxGlobal = drawBox.Translated(GlobalPixelPosition);
-            // Fire edit start
+            // Fire edit start`
 
-            // Закоментил ручной рендер оверлеев, потому что срали ошибками, а без ниче не меняется
-            // _viewport.RenderScreenOverlaysBelow(handle, this, drawBoxGlobal);
+            _viewport.RenderScreenOverlaysBelow(handle, this, drawBoxGlobal);
             handle.DrawingHandleScreen.UseShader(Shader);
             handle.DrawingHandleScreen.DrawTextureRect(_viewport.RenderTarget.Texture, drawBox);
             handle.DrawingHandleScreen.UseShader(null);
-            // _viewport.RenderScreenOverlaysAbove(handle, this, drawBoxGlobal);
+            _viewport.RenderScreenOverlaysAbove(handle, this, drawBoxGlobal);
 
             // Fire edit end
         }
