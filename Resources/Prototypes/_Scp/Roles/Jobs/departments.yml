@@ -2,8 +2,8 @@
 
 - type: department
   id: Administration
-  name: department-administration-name
-  description: department-administration-desc
+  name: department-Administration
+  description: department-administration-description
   color: "#6aa84f"
   weight: 100
   roles:
@@ -19,8 +19,8 @@
 
 - type: department
   id: InternalSecurity
-  name: department-internal-security-name
-  description: department-internal-security-desc
+  name: department-InternalSecurity
+  description: department-internal-security-description
   color: "#980000"
   weight: 95
   roles:
@@ -29,8 +29,8 @@
 
 - type: department
   id: EthicsCommittee
-  name: department-ethics-committee-name
-  description: department-ethics-committee-desc
+  name: department-EthicsCommittee
+  description: department-EthicsCommittee-description
   color: "#741b47"
   weight: 90
   roles:
@@ -38,8 +38,8 @@
 
 - type: department
   id: InternalTribunalService
-  name: department-internal-tribunal-name
-  description: department-internal-tribunal-desc
+  name: department-InternalTribunalService
+  description: department-InternalTribunalService-description
   color: "#c27ba0"
   weight: 85
   roles:
@@ -50,8 +50,8 @@
 
 - type: department
   id: HeavyContainmentSecurityService
-  name: department-heavy-containment-security-service-name
-  description: department-heavy-containment-security-service-desc
+  name: department-HeavyContainmentSecurityService
+  description: department-HeavyContainmentSecurityService-description
   color: "#ff0000"
   weight: 80
   roles:
@@ -63,8 +63,8 @@
 
 - type: department
   id: ExternalAdministrativeZoneSecurityService
-  name: department-external-administrative-zone-security-service-name
-  description: department-external-administrative-zone-security-service-desc
+  name: department-ExternalAdministrativeZoneSecurityService
+  description: department-ExternalAdministrativeZoneSecurityService-description
   color: "#999999"
   weight: 75
   roles:
@@ -77,8 +77,8 @@
 
 - type: department
   id: ScientificService
-  name: department-scientific-service-name
-  description: department-scientific-service-desc
+  name: department-ScientificService
+  description: department-ScientificService-description
   color: "#674ea7"
   weight: 70
   roles:
@@ -93,8 +93,8 @@
 
 - type: department
   id: MedicalService
-  name: department-medical-service-name
-  description: department-medical-service-desc
+  name: department-MedicalService
+  description: department-MedicalService-description
   color: "#52b4e9"
   weight: 65
   roles:
@@ -109,8 +109,8 @@
 
 - type: department
   id: EngineeringTechnicalService
-  name: department-engineering-technical-service-name
-  description: department-engineering-technical-service-desc
+  name: department-EngineeringTechnicalService
+  description: department-EngineeringTechnicalService-description
   color: "#fbbc04"
   weight: 60
   roles:
@@ -124,8 +124,8 @@
 
 - type: department
   id: LogisticsService
-  name: department-logistics-service-name
-  description: department-logistics-service-desc
+  name: department-LogisticsService
+  description: department-LogisticsService-description
   color: "#bf9000"
   weight: 55
   roles:
@@ -136,8 +136,8 @@
 
 - type: department
   id: FoodAndSanitationServiceDepartment
-  name: department-food-and-sanitation-service-name
-  description: department-food-and-sanitation-service-desc
+  name: department-FoodAndSanitationServiceDepartment
+  description: department-FoodAndSanitationServiceDepartment-description
   color: "#b8d8aa"
   weight: 50
   roles:
@@ -163,8 +163,8 @@
 
 - type: department
   id: SCP
-  name: department-scp
-  description: department-scp
+  name: department-SCP
+  description: department-SCP-description
   color: "#FF5297"
   weight: 120
   roles:
