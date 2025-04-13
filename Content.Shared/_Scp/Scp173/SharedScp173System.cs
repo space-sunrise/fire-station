@@ -26,7 +26,6 @@ public abstract class SharedScp173System : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
-    [Dependency] private readonly EntityLookupSystem _lookupSystem = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
@@ -146,7 +145,7 @@ public abstract class SharedScp173System : EntitySystem
     {
         // +1, чтобы точно все работало заебись в реальных пограничных значениях
         // Впадлу думать, что может пойти не так, если этого не будет, раньше тут стояло вообще 100 радиус
-        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, scp173.Comp.WatchRange + 1);
+        var eyes = _lookup.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, scp173.Comp.WatchRange + 1);
 
         watchersCount = eyes
             .Where(eye => _examine.InRangeUnOccluded(eye, scp173, scp173.Comp.WatchRange, ignoreInsideBlocker: false))
@@ -217,7 +216,7 @@ public abstract class SharedScp173System : EntitySystem
 
     public void BlindEveryoneInRange(EntityUid scp, float range = 16f, float time = 6f)
     {
-        var eyes = _lookupSystem.GetEntitiesInRange<BlinkableComponent>(Transform(scp).Coordinates, range)
+        var eyes = _lookup.GetEntitiesInRange<BlinkableComponent>(Transform(scp).Coordinates, range)
             .Where(e => _examine.InRangeUnOccluded(scp, e));
 
         foreach (var eye in eyes)

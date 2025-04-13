@@ -20,19 +20,6 @@ public sealed partial class Scp173Component : Component
 
     #endregion
 
-    #region Clog action
-
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public string Reagent = "Scp173Reagent";
-
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public int MinTotalSolutionVolume = 500;
-
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public int ExtraMinTotalSolutionVolume = 800;
-
-    #endregion
-
     [DataField]
     public SoundSpecifier NeckSnapSound = new SoundCollectionSpecifier("Scp173NeckSnap");
 
