@@ -1,8 +1,6 @@
 ﻿using Content.Client.Overlays;
 using Content.Shared._Scp.Blinking;
-using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Eye.Blinding.Systems;
-using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Robust.Shared.Prototypes;
 
@@ -27,7 +25,8 @@ public sealed class ShowBlinkIconSystem : EquipmentHudSystem<ShowBlinkableCompon
             return;
         }
 
-        if (!_blinkingSystem.IsBlind(ent, ent.Comp) && !_eyeClosing.AreEyesClosed(ent.Owner))
+        // Вы че ебланы почему я не могу Entity<BlinkableComponent> передать как Entity<BlinkableComponent?>
+        if (!_blinkingSystem.IsBlind(ent.Owner) && !_eyeClosing.AreEyesClosed(ent.Owner))
         {
             return;
         }

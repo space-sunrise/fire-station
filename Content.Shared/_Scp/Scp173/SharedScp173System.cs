@@ -1,16 +1,14 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Numerics;
 using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Containment.Cage;
+using Content.Shared._Scp.Watching;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.Examine;
-using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
-using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Storage.Components;
 using Robust.Shared.Physics.Components;
@@ -24,11 +22,10 @@ namespace Content.Shared._Scp.Scp173;
 
 public abstract class SharedScp173System : EntitySystem
 {
-    [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
+    [Dependency] protected readonly EyeWatchingSystem Watching = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
@@ -43,9 +40,9 @@ public abstract class SharedScp173System : EntitySystem
 
         #region Blocker
 
-        SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, component, args) =>
+        SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, _, args) =>
         {
-            if (Is173Watched((uid, component), out _))
+            if (Watching.IsWatched(uid))
                 args.Cancel();
         });
 
@@ -81,13 +78,13 @@ public abstract class SharedScp173System : EntitySystem
 
     private void OnDirectionAttempt(Entity<Scp173Component> ent, ref ChangeDirectionAttemptEvent args)
     {
-        if (Is173Watched(ent, out _) && !IsInScpCage(ent, out _))
+        if (Watching.IsWatched(ent.Owner) && !IsInScpCage(ent, out _))
             args.Cancel();
     }
 
     private void OnMoveAttempt(Entity<Scp173Component> ent, ref UpdateCanMoveEvent args)
     {
-        if (Is173Watched(ent, out _) && !IsInScpCage(ent, out _))
+        if (Watching.IsWatched(ent.Owner) && !IsInScpCage(ent, out _))
             args.Cancel();
     }
 
@@ -139,89 +136,15 @@ public abstract class SharedScp173System : EntitySystem
 
     #endregion
 
-    #region Helpers
-
-    protected bool Is173Watched(Entity<Scp173Component> scp173, out int watchersCount)
-    {
-        // +1, чтобы точно все работало заебись в реальных пограничных значениях
-        // Впадлу думать, что может пойти не так, если этого не будет, раньше тут стояло вообще 100 радиус
-        var eyes = _lookup.GetEntitiesInRange<BlinkableComponent>(Transform(scp173).Coordinates, scp173.Comp.WatchRange + 1);
-
-        watchersCount = eyes
-            .Where(eye => _examine.InRangeUnOccluded(eye, scp173, scp173.Comp.WatchRange, ignoreInsideBlocker: false))
-            .Count(eye => !IsEyeBlinded(eye, scp173));
-
-        return watchersCount != 0;
-    }
-
-    private bool IsEyeBlinded(Entity<BlinkableComponent> eye, EntityUid scpUid)
-    {
-        if (_mobState.IsIncapacitated(eye))
-            return true;
-
-        // Проверка на то, что игрок смотрит на сцп лицом.
-        if (IsWithinViewAngle(scpUid, eye, 120f))
-            return true;
-
-        if (_blinking.IsBlind(eye.Owner, eye.Comp, true))
-            return true;
-
-        var canSeeAttempt = new CanSeeAttemptEvent();
-        RaiseLocalEvent(eye, canSeeAttempt);
-
-        if (canSeeAttempt.Blind)
-            return true;
-
-        return false;
-    }
-
-    private bool IsWithinViewAngle(EntityUid scpEntity, EntityUid targetEntity, float maxAngle)
-    {
-        var angle = FindAngleBetween(scpEntity, targetEntity);
-
-        // Проверка: угол должен быть больше или равен maxAngle, чтобы SCP был вне поля зрения
-        return angle >= maxAngle;
-    }
-
-    private float FindAngleBetween(Entity<TransformComponent?> scp, Entity<TransformComponent?> target)
-    {
-        if (!Resolve<TransformComponent>(scp, ref scp.Comp))
-            return float.MaxValue;
-
-        if (!Resolve<TransformComponent>(target, ref target.Comp))
-            return float.MaxValue;
-
-        var scpWorldPosition = _transformSystem.GetMoverCoordinates(scp.Owner);
-        var targetWorldPosition = _transformSystem.GetMoverCoordinates(target.Owner);
-
-        var toScp = (scpWorldPosition.Position - targetWorldPosition.Position).Normalized(); // Вектор от target к SCP
-        var targetForward = target.Comp.LocalRotation.ToWorldVec(); // Направление взгляда target
-
-        // Проверка, смотрит ли цель на SCP или спиной к нему
-        var dotProduct = Vector2.Dot(targetForward, toScp);
-
-        // Если цель смотрит спиной (угол > 90 градусов), возвращаем MaxValue
-        if (dotProduct < 0)
-            return float.MaxValue;
-
-        // Иначе вычисляем угол
-        var angle = MathF.Acos(dotProduct) * (180f / MathF.PI);
-
-        return angle;
-    }
-
-    #endregion
-
     #region Public API
 
     public void BlindEveryoneInRange(EntityUid scp, float range = 16f, float time = 6f)
     {
-        var eyes = _lookup.GetEntitiesInRange<BlinkableComponent>(Transform(scp).Coordinates, range)
-            .Where(e => _examine.InRangeUnOccluded(scp, e));
+        var eyes = Watching.GetWatchers(scp);
 
         foreach (var eye in eyes)
         {
-            _blinking.ForceBlind(eye.Owner, eye.Comp, TimeSpan.FromSeconds(time));
+            _blinking.ForceBlind(eye, TimeSpan.FromSeconds(time));
         }
 
         // TODO: Add sound.

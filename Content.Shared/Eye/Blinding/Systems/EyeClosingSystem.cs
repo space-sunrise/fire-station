@@ -86,7 +86,7 @@ public abstract class SharedEyeClosingSystem : EntitySystem
             return;
 
         // Fire edit start.
-        if (!_blinking.CanCloseEyes(eyelids))
+        if (!_blinking.CanCloseEyes(eyelids.Owner))
             return;
         // Fire edit end.
 
@@ -101,7 +101,7 @@ public abstract class SharedEyeClosingSystem : EntitySystem
         // Fire edit start.
         if (value)
         {
-            _blinking.ResetBlink(eyelids);
+            _blinking.ResetBlink(eyelids.Owner);
         }
         // Fire edit end.
     }

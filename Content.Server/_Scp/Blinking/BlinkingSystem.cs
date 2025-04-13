@@ -15,12 +15,14 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
     private void OnCompInit(Entity<BlinkableComponent> ent, ref ComponentInit args)
     {
-        ResetBlink(ent.Owner, ent.Comp);
+        // Вы че ебланы почему я не могу Entity<BlinkableComponent> передать как Entity<BlinkableComponent?>
+        ResetBlink(ent.Owner);
     }
 
     private void OnMapInit(Entity<BlinkableComponent> ent, ref MapInitEvent args)
     {
-        ResetBlink(ent.Owner, ent.Comp);
+        // Вы че ебланы почему я не могу Entity<BlinkableComponent> передать как Entity<BlinkableComponent?>
+        ResetBlink(ent.Owner);
     }
 
     private void OnUnpaused(Entity<BlinkableComponent> ent, ref EntityUnpausedEvent args)
