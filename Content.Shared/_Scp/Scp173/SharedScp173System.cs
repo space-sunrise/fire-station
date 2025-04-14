@@ -6,7 +6,6 @@ using Content.Shared._Scp.Watching;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
-using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Events;
@@ -25,7 +24,6 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] protected readonly EyeWatchingSystem Watching = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;

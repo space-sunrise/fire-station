@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp173;
+using Content.Shared._Scp.Watching;
 using Content.Shared.Alert;
-using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Random;
@@ -14,9 +13,8 @@ public abstract class SharedBlinkingSystem : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedEyeClosingSystem _closingSystem = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly AlertsSystem _alertsSystem = default!;
-    [Dependency] private readonly SharedScpHelpersSystem _scpHelpers = default!;
+    [Dependency] private readonly EyeWatchingSystem  _watching = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
@@ -25,9 +23,7 @@ public abstract class SharedBlinkingSystem : EntitySystem
 
     private static readonly TimeSpan BlinkingIntervalVariance = TimeSpan.FromSeconds(4);
 
-
     // TODO: Рефактор моргания с целью сделать как в контеймент бриче юнити.
-
 
     public bool IsBlind(Entity<BlinkableComponent?> ent, bool useTimeCompensation = false)
     {
@@ -115,17 +111,11 @@ public abstract class SharedBlinkingSystem : EntitySystem
         Dirty(ent);
     }
 
-    private bool IsScp173Nearby(EntityUid uid)
+    private bool IsScp173Nearby(EntityUid player)
     {
-        var entities = _scpHelpers.GetAll<Scp173Component>().ToHashSet();
+        var allScp173InView = _watching.GetAllVisibleTo<Scp173Component>(player);
 
-        if (entities.Count == 0)
-            return false;
-
-        if (!entities.Any(scp => _examine.InRangeUnOccluded(uid, scp, 12f, ignoreInsideBlocker: false)))
-            return false;
-
-        return true;
+        return allScp173InView.Any();
     }
 
     protected void UpdateAlert(Entity<BlinkableComponent?> ent)

@@ -16,7 +16,7 @@ public sealed class EyeWatchingSystem : EntitySystem
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
 
-    // Возможно удваивается на 2, что приводит к использованию фова в 240 градусов в реальности
+    // Возможно удваивается на 2, что приводит к использованию поля зрения в 240 градусов в реальности
     // Не ебу за математику, поэтому хз
     public const float DefaultFieldOfViewAngle = 120f;
 
@@ -24,10 +24,12 @@ public sealed class EyeWatchingSystem : EntitySystem
     /// Проверяет, смотрит ли кто-то на указанную цель
     /// </summary>
     /// <param name="ent">Цель, которую проверяем</param>
+    /// <param name="useFov">Нужно ли проверять поле зрения</param>
+    /// <param name="fovOverride">Если нужно использовать другой угол обзора, отличный от стандартного</param>
     /// <returns>Смотрит ли на цель хоть кто-то</returns>
-    public bool IsWatched(Entity<TransformComponent?> ent)
+    public bool IsWatched(Entity<TransformComponent?> ent, bool useFov = true, float? fovOverride = null)
     {
-        return IsWatched(ent, out _);
+        return IsWatched(ent, out _, useFov, fovOverride);
     }
 
     /// <summary>
@@ -38,13 +40,8 @@ public sealed class EyeWatchingSystem : EntitySystem
     /// <param name="useFov">Нужно ли проверять поле зрения</param>
     /// <param name="fovOverride">Если нужно использовать другой угол обзора, отличный от стандартного</param>
     /// <returns>Смотрит ли на цель хоть кто-то</returns>
-    public bool IsWatched(Entity<TransformComponent?> ent, [NotNullWhen(true)] out int? watchersCount, bool useFov = true, float? fovOverride = null)
+    public bool IsWatched(EntityUid ent, [NotNullWhen(true)] out int? watchersCount, bool useFov = true, float? fovOverride = null)
     {
-        watchersCount = null;
-
-        if (!Resolve(ent.Owner, ref ent.Comp))
-            return false;
-
         var eyes = GetWatchers(ent);
 
         var isWatched = IsWatchedBy(ent, eyes, out var count , useFov, fovOverride);
@@ -64,10 +61,24 @@ public sealed class EyeWatchingSystem : EntitySystem
     /// <returns>Список всех, кто потенциально видит цель</returns>
     public IEnumerable<EntityUid> GetWatchers(Entity<TransformComponent?> ent)
     {
+        return GetAllVisibleTo<BlinkableComponent>(ent);
+    }
+
+    /// <summary>
+    /// Получает и возвращает всех потенциально смотрящих на указанную цель.
+    /// </summary>
+    /// <remarks>
+    /// В методе нет проверок на дополнительные состояния, такие как моргание/закрыты ли глаза/поле зрения т.п.
+    /// Единственная проверка - можно ли физически увидеть цель(т.е. не закрыта ли она стеной и т.п.)
+    /// </remarks>
+    /// <param name="ent">Цель, для которой ищем потенциальных смотрящих</param>
+    /// <returns>Список всех, кто потенциально видит цель</returns>
+    public IEnumerable<EntityUid> GetAllVisibleTo<T>(Entity<TransformComponent?> ent) where T : IComponent
+    {
         if (!Resolve(ent.Owner, ref ent.Comp))
             return [];
 
-        return _lookup.GetEntitiesInRange<BlinkableComponent>(ent.Comp.Coordinates, ExamineSystemShared.ExamineRange)
+        return _lookup.GetEntitiesInRange<T>(ent.Comp.Coordinates, ExamineSystemShared.ExamineRange)
             .Where(eye => _examine.InRangeUnOccluded(eye, ent, ignoreInsideBlocker: false))
             .Select(e => e.Owner);
     }
@@ -81,13 +92,8 @@ public sealed class EyeWatchingSystem : EntitySystem
     /// <param name="useFov">Нужно ли проверять, находится ли цель в поле зрения сущности</param>
     /// <param name="fovOverride">Если нужно перезаписать угол поля зрения</param>
     /// <returns>Смотрит ли хоть кто-то на цель</returns>
-    public bool IsWatchedBy(Entity<TransformComponent?> target, IEnumerable<EntityUid> watchers, out int watchersCount, bool useFov = true, float? fovOverride = null)
+    public bool IsWatchedBy(EntityUid target, IEnumerable<EntityUid> watchers, out int watchersCount, bool useFov = true, float? fovOverride = null)
     {
-        watchersCount = 0;
-
-        if (!Resolve(target.Owner, ref target.Comp))
-            return false;
-
         watchersCount = watchers
             .Count(eye => !IsEyeBlinded(eye, target, useFov, fovOverride));
 
