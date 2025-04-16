@@ -1,0 +1,420 @@
+﻿### ------=========[ID карта]=========------ ###
+#Капитан
+- type: entity
+  parent: IDCardMTFStandard
+  id: IDCardLLHLeader
+  name: карта доступа Капитана "Омега-1"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PresetIdCard
+    job: LLHLeader
+#Специалист
+- type: entity
+  parent: IDCardMTFStandard
+  id: IDCardLLHSpecialist
+  name: карта доступа Специалиста "Омега-1"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PresetIdCard
+    job: LLHSpecialist
+#Кадет
+- type: entity
+  parent: IDCardMTFStandard
+  id: IDCardLLHCadet
+  name: карта доступа Кадета "Омега-1"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PresetIdCard
+    job: LLHCadet
+### ------=========[КПК]=========------ ###
+#Капитан
+- type: entity
+  parent: BaseMTFPDA
+  id: LLHLeaderPDA
+  name: КПК капитана "Омега-1"
+  components:
+  - type: Pda
+    id: IDCardLLHLeader
+#Специалист
+- type: entity
+  parent: BaseMTFPDA
+  id: LLHSpecialistPDA
+  name: КПК специалиста "Омега-1"
+  components:
+  - type: Pda
+    id: IDCardLLHSpecialist
+#Кадет
+- type: entity
+  parent: BaseMTFPDA
+  id: LLHCadetPDA
+  name: КПК кадета "Омега-1"
+  components:
+  - type: Pda
+    id: IDCardLLHCadet
+### ------=========[Вещи]=========------ ###
+- type: entity
+  name: Костюм "Омега-1"
+  description: ДАННЫЕ УДАЛЕНЫ
+  parent: NineTailedFoxSuit
+  id: ClothingUniformLLH
+  components:
+  - sprite: _Scp/Clothing/Uniforms/mtf/uniformLLH.rsi
+    type: Sprite
+  - sprite: _Scp/Clothing/Uniforms/mtf/uniformLLH.rsi
+    type: Clothing
+#---------------------кастом вещи группы
+- type: entity
+  name: Рюкзак "Омега-1"
+  description: ДАННЫЕ УДАЛЕНЫ
+  categories: [ HideSpawnMenu ]
+  parent: ClothingDeathSquadronBackpack
+  id: ClothingBackpackLLH
+
+- type: entity
+  name: Противогаз "Омега-1"
+  description: ДАННЫЕ УДАЛЕНЫ
+  categories: [ HideSpawnMenu ]
+  parent: ClothingMaskGasSwat
+  id: ClothingMaskGasLLH
+
+- type: entity
+  name: Броня "Омега-1"
+  description: ДАННЫЕ УДАЛЕНЫ
+  categories: [ HideSpawnMenu ]
+  parent: ClothingOuterArmorHeavy
+  id: ClothingOuterArmorHeavyLLH
+#---------------------Аплинк/Визионер для Омега-1
+- type: entity
+  parent: BaseUplinkMTF
+  id: BaseUplinkLLH
+  name: Визионер-Арсенал "Омега-1"
+  description: Сверхинновационный портативный телепортатор Омега-1.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Store
+    balance:
+      Bluecrystal: 15
+      Crystallite: 15
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+- type: entity
+  parent: BaseUplinkLLH
+  id: BaseUplinkLLHLeader
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Store
+    balance:
+      Bluecrystal: 40
+      Crystallite: 35
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+- type: entity
+  parent: BaseUplinkLLH
+  id: BaseUplinkLLHSpecialist
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Store
+    balance:
+      Bluecrystal: 28
+      Crystallite: 17
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+### ------=========[Профессии]=========------ ###
+#----------------------------------КМД
+- type: job
+  id: LLHLeader
+  name: Командир МОГ Омега-1
+  description: Возглавьте Мобильно Оперативную Группу. Слушайте приказы Штаба О4 и КпЭ.
+  playTimeTracker: JobLLHLeader
+  setPreference: false
+  startingGear: LLHLeaderGear
+  icon: JobIconLLH
+  supervisors: Штабу О4 и КпЭ
+  canBeAntag: false
+  radioBold: true # Sunrise-Edit
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+
+- type: startingGear
+  id: LLHLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformLLH
+    back: ClothingBackpackLLH
+    shoes: ClothingShoesBootsMagAdv
+    #head ClothingHelmetMTF
+    mask: ClothingMaskGasLLH
+    eyes: ClothingEyesNVD
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorHeavyLLH
+    id: LLHLeaderPDA
+    ears: ClothingHeadsetAltRegionalAdministration
+    belt: MTFCommanderWebbing
+    pocket1: BaseUplinkLLHLeader
+    pocket2: PinpointerNuclear
+  storage:
+    back:
+    - Crowbar
+    - CombatKnife
+    - HandheldCriminalRecordsMonitorUnpowered
+    - DoubleEmergencyOxygenTankFilled
+    - HandheldCrewMonitor
+    belt:
+    - Stunbaton
+    - Handcuffs
+
+- type: entity
+  id: RandomHumanoidSpawnerLLHLeader
+  name: Командир МОГ Омега-1
+  suffix: MTF | LLH
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertleader
+  - type: RandomMetadata
+    nameSegments:
+    - NamesLeader
+    - NamesOperativeLeaderLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidSpawner
+    settings: LLHLeader
+
+- type: randomHumanoidSettings
+  id: LLHLeader
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  #- type: EmitSoundOnSpawn
+  #  sound:
+  #    path: /Uploaded/mtf_all_in/files/sounds/LLH.ogg
+  #    params:
+  #        volume: 7
+  - type: GhostRole
+    name: Командир МОГ Омега-1
+    description: ghost-role-information-mtf-leader-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: LLHLeader
+  - type: Loadout
+    prototypes: [ LLHLeaderGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesLeader
+    - NamesOperativeLeaderLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+#----------------------------------СПЕЦ
+- type: job
+  id: LLHSpecialist
+  name: Специалист МОГ Омега-1
+  description: Слушайте указания вашего командира.
+  playTimeTracker: JobLLHSpecialist
+  setPreference: false
+  startingGear: LLHSpecialistGear
+  icon: JobIconLLH
+  supervisors: Командиру вашего отряда, Штабу О4 и КпЭ
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+
+- type: startingGear
+  id: LLHSpecialistGear
+  equipment:
+    jumpsuit: ClothingUniformLLH
+    back: ClothingBackpackLLH
+    shoes: ClothingShoesBootsMagAdv
+    #head ClothingHelmetMTF
+    mask: ClothingMaskGasLLH
+    eyes: ClothingEyesNVD
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorHeavyLLH
+    id: LLHSpecialistPDA
+    ears: ClothingHeadsetAltRegionalAdministration
+    belt: MTFWebbing
+    pocket1: BaseUplinkLLHSpecialist
+    pocket2: CombatKnife
+  storage:
+    back:
+    - Crowbar
+    - DoubleEmergencyOxygenTankFilled
+    belt:
+    - Stunbaton
+    - Handcuffs
+
+- type: entity
+  id: RandomHumanoidSpawnerLLHSpecialist
+  name: Специалист МОГ Омега-1
+  suffix: MTF | LLH
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertsecurityeva
+  - type: RandomMetadata
+    nameSegments:
+    - NamesCadet
+    - NamesOperativeLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidSpawner
+    settings: LLHSpecialist
+
+- type: randomHumanoidSettings
+  id: LLHSpecialist
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  - type: GhostRole
+    name: Специалист МОГ Омега-1
+    description: ghost-role-information-mtf-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: LLHSpecialist
+  - type: Loadout
+    prototypes: [ LLHSpecialistGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesCadet
+    - NamesOperativeLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+#----------------------------------КАДЕТ
+- type: job
+  id: LLHCadet
+  name: Кадет МОГ Омега-1
+  description: Слушайте указания вашего командира.
+  playTimeTracker: JobLLHCadet
+  setPreference: false
+  startingGear: LLHCadetGear
+  icon: JobIconLLH
+  supervisors: Командиру вашего отряда, Специалисту, Штабу О4 и КпЭ
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+
+- type: startingGear
+  id: LLHCadetGear
+  equipment:
+    jumpsuit: ClothingUniformLLH
+    back: ClothingBackpackLLH
+    shoes: ClothingShoesBootsMagAdv
+    #head ClothingHelmetMTF
+    mask: ClothingMaskGasLLH
+    eyes: ClothingEyesNVD
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorHeavyLLH
+    id: LLHCadetPDA
+    ears: ClothingHeadsetAltRegionalAdministration
+    belt: MTFWebbing
+    pocket1: BaseUplinkLLH
+    pocket2: CombatKnife
+  storage:
+    back:
+    - Crowbar
+    - DoubleEmergencyOxygenTankFilled
+    belt:
+    - Stunbaton
+    - Handcuffs
+
+- type: entity
+  id: RandomHumanoidSpawnerLLHCadet
+  name: Кадет МОГ Омега-1
+  suffix: MTF | LLH
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertsecurityeva
+  - type: RandomMetadata
+    nameSegments:
+    - NamesCadet
+    - NamesOperativeLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidSpawner
+    settings: LLHCadet
+
+- type: randomHumanoidSettings
+  id: LLHCadet
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  - type: GhostRole
+    name: Кадет МОГ Омега-1
+    description: ghost-role-information-mtf-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: LLHCadet
+  - type: Loadout
+    prototypes: [ LLHCadetGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesCadet
+    - NamesOperativeLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+
+
+
+### ------=========[мета]=========------ ###
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconLLH
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+    state: LLH
+  jobName: МОГ Омега-1

@@ -24,7 +24,7 @@
   id: ReactiveAnomalySuppressionComplex
   name: research-technology-reactive-anomaly-suppression-complex
   icon:
-    sprite: _Scp/Clothing/Masks/scp096.rsi
+    sprite: _Scp/Clothing/Mask/scp096.rsi
     state: icon
   discipline: SCP
   tier: 2

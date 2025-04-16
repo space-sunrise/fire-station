@@ -1,0 +1,405 @@
+﻿### ------=========[ID карта]=========------ ###
+#Капитан
+- type: entity
+  parent: IDCardMTFStandard
+  id: IDCardHDLeader
+  name: карта доступа Капитана "Ню-7"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PresetIdCard
+    job: HDLeader
+#Специалист
+- type: entity
+  parent: IDCardMTFStandard
+  id: IDCardHDSpecialist
+  name: карта доступа Специалиста "Ню-7"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PresetIdCard
+    job: HDSpecialist
+#Кадет
+- type: entity
+  parent: IDCardMTFStandard
+  id: IDCardHDCadet
+  name: карта доступа Кадета "Ню-7"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PresetIdCard
+    job: HDCadet
+### ------=========[КПК]=========------ ###
+#Капитан
+- type: entity
+  parent: BaseMTFPDA
+  id: HDLeaderPDA
+  name: КПК капитана "Ню-7"
+  components:
+  - type: Pda
+    id: IDCardHDLeader
+#Специалист
+- type: entity
+  parent: BaseMTFPDA
+  id: HDSpecialistPDA
+  name: КПК специалиста "Ню-7"
+  components:
+  - type: Pda
+    id: IDCardHDSpecialist
+#Кадет
+- type: entity
+  parent: BaseMTFPDA
+  id: HDCadetPDA
+  name: КПК кадета "Ню-7"
+  components:
+  - type: Pda
+    id: IDCardHDCadet
+### ------=========[Вещи]=========------ ###
+- type: entity
+  name: Костюм "Ню-7"
+  description: ДАННЫЕ УДАЛЕНЫ
+  parent: NineTailedFoxSuit
+  id: ClothingUniformHD
+  components:
+  - sprite: _Scp/Clothing/Uniforms/mtf/uniformHD.rsi
+    type: Sprite
+  - sprite: _Scp/Clothing/Uniforms/mtf/uniformHD.rsi
+    type: Clothing
+
+- type: entity
+  name: Броня "Ню-7"
+  description: Элитная броня отряда "Ню-7"
+  parent: ClothingOuterArmorSWAT
+  id: ClothingOuterArmorHD
+  components:
+  - type: ExplosionResistance
+    damageCoefficient: 0.3
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.2
+        Slash: 0.2
+        Piercing: 0.2
+        Heat: 0.2
+        Radiation: 0.2
+        Caustic: 0.2
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.65
+  - type: HeldSpeedModifier
+
+- type: entity
+  name: Фуражка командира "Ню-7"
+  categories: [ HideSpawnMenu ]
+  description: ДАННЫЕ УДАЛЕНЫ
+  suffix: MTF | HD
+  parent: ClothingHeadHatSyndieMAA
+  id: ClothingHeadHatHDMAA
+
+- type: entity
+  name: Подкованные сапоги "Ню-7"
+  categories: [ HideSpawnMenu ]
+  description: ДАННЫЕ УДАЛЕНЫ
+  suffix: MTF | HD
+  parent: ClothingShoesBootsJackSecFilled
+  id: ClothingShoesBootsHDFilled
+### ------=========[Профессии]=========------ ###
+#----------------------------------КМД
+- type: job
+  id: HDLeader
+  name: Командир МОГ Ню-7
+  description: Возглавьте Мобильно Оперативную Группу для устранения угрозы в комплексе.
+  playTimeTracker: JobHDLeader
+  setPreference: false
+  startingGear: HDLeaderGear
+  icon: "JobIconHD"
+  supervisors: Штабу О4
+  canBeAntag: false
+  radioBold: true
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+
+- type: startingGear
+  id: HDLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformHD
+    back: MTFSpecialistBackpack
+    shoes: ClothingShoesBootsHDFilled
+    head: ClothingHeadHatHDMAA
+    mask: ClothingMaskMTF
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorHD
+    id: HDLeaderPDA
+    ears: ClothingHeadsetAltRegionalAdministration
+    belt: MTFCommanderWebbing
+    pocket1: BaseUplinkMTFLeader
+    pocket2: PinpointerNuclear
+  storage:
+    back:
+    - Crowbar
+    - CombatKnife
+    - HandheldCriminalRecordsMonitorUnpowered
+    - DoubleEmergencyOxygenTankFilled
+    - HandheldCrewMonitor
+    belt:
+    - Stunbaton
+    - Handcuffs
+    - Handcuffs
+    - Handcuffs
+
+- type: entity
+  id: RandomHumanoidSpawnerHDLeader
+  name: Командир МОГ Ню-7
+  suffix: MTF | HD
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertleader
+  - type: RandomMetadata
+    nameSegments:
+    - NamesLeader
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidSpawner
+    settings: HDLeader
+
+- type: randomHumanoidSettings
+  id: HDLeader
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  #- type: EmitSoundOnSpawn
+  #  sound:
+  #    path: /Uploaded/mtf_all_in/files/sounds/HD.ogg
+  #    params:
+  #        volume: 7
+  - type: GhostRole
+    name: Командир МОГ Ню-7
+    description: ghost-role-information-mtf-leader-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: HDLeader
+  - type: Loadout
+    prototypes: [ HDLeaderGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesLeader
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+#----------------------------------СПЕЦ
+- type: job
+  id: HDSpecialist
+  name: Специалист МОГ Ню-7
+  description: Слушайте указания вашего командира и восстановите условия содержания объектов Фонда.
+  playTimeTracker: JobHDSpecialist
+  setPreference: false
+  startingGear: HDSpecialistGear
+  icon: "JobIconHD"
+  supervisors: Командиру вашего отряда и Штабу О4
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+
+- type: startingGear
+  id: HDSpecialistGear
+  equipment:
+    jumpsuit: ClothingUniformHD
+    back: MTFSpecialistBackpack
+    shoes: ClothingShoesBootsHDFilled
+    head: ClothingHelmetMTF
+    mask: ClothingMaskMTF
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorHD
+    id: HDSpecialistPDA
+    ears: ClothingHeadsetAltRegionalAdministration
+    belt: MTFWebbing
+    pocket1: BaseUplinkMTFSpecialist
+    pocket2: CombatKnife
+  storage:
+    back:
+    - Crowbar
+    - DoubleEmergencyOxygenTankFilled
+    belt:
+    - Stunbaton
+    - Handcuffs
+    - Handcuffs
+    - Handcuffs
+
+- type: entity
+  id: RandomHumanoidSpawnerHDSpecialist
+  name: Специалист МОГ Ню-7
+  suffix: MTF | HD
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertsecurityeva
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSpecialist
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidSpawner
+    settings: HDSpecialist
+
+- type: randomHumanoidSettings
+  id: HDSpecialist
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  - type: GhostRole
+    name: Специалист МОГ Ню-7
+    description: ghost-role-information-mtf-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: HDSpecialist
+  - type: Loadout
+    prototypes: [ HDSpecialistGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSpecialist
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+#----------------------------------КАДЕТ
+- type: job
+  id: HDCadet
+  name: Кадет МОГ Ню-7
+  description: Слушайте указания вашего командира и восстановите условия содержания объектов Фонда.
+  playTimeTracker: JobHDCadet
+  setPreference: false
+  startingGear: HDCadetGear
+  icon: "JobIconHD"
+  supervisors: Командиру вашего отряда, Специалисту и Штабу О4
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+
+- type: startingGear
+  id: HDCadetGear
+  equipment:
+    jumpsuit: ClothingUniformHD
+    back: MTFSpecialistBackpack
+    shoes: ClothingShoesBootsHDFilled
+    head: ClothingHelmetMTF
+    mask: ClothingMaskMTF
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorHD
+    id: HDCadetPDA
+    ears: ClothingHeadsetAltRegionalAdministration
+    belt: MTFWebbing
+    pocket1: BaseUplinkMTFCadet
+    pocket2: CombatKnife
+  storage:
+    back:
+    - Crowbar
+    - DoubleEmergencyOxygenTankFilled
+    belt:
+    - Stunbaton
+    - Handcuffs
+    - Handcuffs
+    - Handcuffs
+
+- type: entity
+  id: RandomHumanoidSpawnerHDCadet
+  name: Кадет МОГ Ню-7
+  suffix: MTF | HD
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertsecurityeva
+  - type: RandomMetadata
+    nameSegments:
+    - NamesCadet
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidSpawner
+    settings: HDCadet
+
+- type: randomHumanoidSettings
+  id: HDCadet
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  - type: GhostRole
+    name: Кадет МОГ Ню-7
+    description: ghost-role-information-mtf-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: HDCadet
+  - type: Loadout
+    prototypes: [ HDCadetGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesCadet
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+
+
+
+### ------=========[мета]=========------ ###
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconHD
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+    state: HD
+  jobName: МОГ Ню-7

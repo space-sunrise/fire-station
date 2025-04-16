@@ -65,7 +65,7 @@
   suffix: SCP-096 Item
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Masks/scp096.rsi
+    sprite: _Scp/Clothing/Mask/scp096.rsi
     layers:
     - state: icon
       map: [ "mask" ]

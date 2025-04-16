@@ -11,3 +11,8 @@ ent-MobHumanChaos = { ghost-role-information-chaos-name }
 ghost-role-information-chaos-medic-description = Лечите отряд повстанцев и подчиняйтесь вашему командиру для выполнения поставленной цели
 ghost-role-information-chaos-medic-name = Медик Повстанцев Хаоса
 ent-MobHumanChaosMedic = { ghost-role-information-chaos-medic-name }
+
+
+
+ghost-role-information-mtf-description = Слушайте своего командира и устраните все угрозы, для обеспечения безопасности персонала комплекса, SCP объектов и секретности фонда.
+ghost-role-information-mtf-leader-description = Руководите командой оперативников для обеспечения безопасности персонала комплекса, SCP объектов и секретности фонда.

@@ -5,9 +5,9 @@
   description: Газовая маска, которую носят известные всем похитители аномалий
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Masks/gaschaos.rsi
+    sprite: _Scp/Clothing/Mask/gaschaos.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/Masks/gaschaos.rsi
+    sprite: _Scp/Clothing/Mask/gaschaos.rsi
   - type: FlashImmunity
   - type: Armor
     modifiers:

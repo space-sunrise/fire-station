@@ -27,6 +27,7 @@
     nameSegments:
     - NamesChaosLeader
     - LastNamesChaos
+    nameFormat: name-format-ert
 
 
 #-----------------МЕДИК
@@ -58,6 +59,7 @@
     nameSegments:
     - NamesChaosMedic
     - LastNamesChaos
+    nameFormat: name-format-ert
 
 
 #-----------------ВОИН
@@ -89,3 +91,4 @@
     nameSegments:
     - NamesChaos
     - LastNamesChaos
+    nameFormat: name-format-ert

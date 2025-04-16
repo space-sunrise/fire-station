@@ -1,0 +1,251 @@
+﻿### ------=========[Карты Доступа]=========------ ###
+#базовая ID карта
+- type: entity
+  parent: IDCardStandard
+  id: IDCardMTFStandard
+  name: карта доступа МОГ
+  description: карта, необходимая для доступа в различные области комплекса.
+  categories: [ HideSpawnMenu ]
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/mtfleader.rsi
+    state: icon
+  - type: Item
+    heldPrefix: blue
+
+
+
+### ------=========[КПК]=========------ ###
+#базовый КПК
+- type: entity
+  parent: AdjutantPDA
+  id: BaseMTFPDA
+  name: КПК МОГ
+  categories: [ HideSpawnMenu ]
+  description: Нам приказывают, а мы исполняем.
+  abstract: true
+  components:
+  - type: Pda
+    state: pda-ert
+  - type: PdaBorderColor
+    borderColor: "#A32D26"
+    accentHColor: "#447987"
+    accentVColor: "#447987"
+  - type: Icon
+    state: pda-ert
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NewsReaderCartridge
+    - WantedListCartridge
+    - AstroNavCartridge
+    - MedTekCartridge
+
+
+
+
+### ------=========[Вещи]=========------ ###
+- type: entity
+  name: Противогаз Мобильной Оперативной Группы
+  description: Нам приказывают, а мы исполняем.
+  suffix: MTF | МОГ
+  parent: [NineTailedFoxGasmask, BaseCentcommContraband]
+  id: ClothingMaskMTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Mask/mtfGasMask.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Mask/mtfGasMask.rsi
+
+- type: entity
+  name: Шлем Мобильной Оперативной Группы
+  description: Нам приказывают, а мы исполняем.
+  suffix: MTF | МОГ
+  parent: [NineTailedFoxHelmet, BaseCentcommContraband]
+  id: ClothingHelmetMTF
+  components:
+  - sprite: _Scp/Clothing/Head/Helmets/mtfHelmet.rsi
+    type: Sprite
+  - sprite: _Scp/Clothing/Head/Helmets/mtfHelmet.rsi
+    type: Clothing
+
+- type: entity
+  parent: [NineTailedFoxVest, BaseCentcommContraband]
+  id: MTFVest
+  name: Бронежилет Мобильной Оперативной Группы
+  description: Нам приказывают, а мы исполняем.
+
+- type: entity
+  parent: [NineTailedFoxCommanderVest, BaseCentcommContraband]
+  id: MTFCommanderVest
+  name: Бронежилет командира Мобильной Оперативной Группы
+  description: Нам приказывают, а мы исполняем.
+
+- type: entity
+  parent: [NineTailedFoxWebbing, BaseCentcommContraband]
+  id: MTFWebbing
+  name: Разгрузка Мобильной Оперативной Группы
+  description: Нам приказывают, а мы исполняем.
+
+- type: entity
+  parent: [NineTailedFoxCommanderWebbing, BaseCentcommContraband]
+  id: MTFCommanderWebbing
+  name: Разгрузка командира Мобильной Оперативной Группы
+  description: Нам приказывают, а мы исполняем.
+
+- type: entity
+  parent: [NineTailedFoxSpecialistWebbing, BaseCentcommContraband]
+  id: MTFSpecialistWebbing
+  name: Разгрузка специалиста Мобильной Оперативной Группы
+  description: Нам приказывают, а мы исполняем.
+
+- type: entity
+  parent: [NineTailedFoxSpecialistBackpack, BaseCentcommContraband]
+  id: MTFSpecialistBackpack
+  name: Рюкзак Мобильной Оперативной Группы
+  description: Нам приказывают, а мы исполняем.
+
+
+
+
+
+
+
+### ------=========[Аплинк/Визионер стандарт]=========------ ###
+- type: entity
+  parent: [BaseItem, StorePresetNTUplink, BaseCentcommContraband]
+  id: BaseUplinkMTF
+  name: Визионер-Арсенал МОГ
+  description: Сверхинновационный портативный магазин.
+  suffix: Пустой
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Devices/nt_uplink.rsi
+    layers:
+    - state: icon
+    - state: active
+      shader: unshaded
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: ActivatableUI
+    key: enum.StoreUiKey.Key
+  - type: Store
+    balance:
+      Bluecrystal: 0
+      Crystallite: 0
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+  - type: Tag
+    tags:
+    - NTUplink
+
+- type: entity
+  parent: BaseUplinkMTF
+  id: BaseUplinkMTFCadet
+  name: Визионер-Арсенал кадета МОГ
+  suffix: Заполнен
+  components:
+  - type: Store
+    balance:
+      Bluecrystal: 10
+      Crystallite: 10
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+- type: entity
+  parent: BaseUplinkMTF
+  id: BaseUplinkMTFLeader
+  name: Визионер-Арсенал капитана МОГ
+  components:
+  - type: Store
+    balance:
+      Bluecrystal: 20
+      Crystallite: 30
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+- type: entity
+  parent: BaseUplinkMTF
+  id: BaseUplinkMTFSpecialist
+  name: Визионер-Арсенал специалиста МОГ
+  components:
+  - type: Store
+    balance:
+      Bluecrystal: 24
+      Crystallite: 10
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+
+
+### ------=========[звания]=========------ ###
+- type: localizedDataset
+  id: NamesLeader
+  values:
+    prefix: names-mtf-leader-first-dataset-
+    count: 1
+
+- type: localizedDataset
+  id: NamesSpecialist
+  values:
+    prefix: names-mtf-specialist-first-dataset-
+    count: 1
+
+- type: localizedDataset
+  id: NamesCadet
+  values:
+    prefix: names-mtf-cadet-first-dataset-
+    count: 1
+
+- type: localizedDataset
+  id: NamesOperativeFirst
+  values:
+    prefix: names-mtf-operative-first-dataset-
+    count: 1
+
+- type: localizedDataset
+  id: NamesOperativeLast
+  values:
+    prefix: names-mtf-operative-last-dataset-
+    count: 24
+
+- type: localizedDataset
+  id: NamesOperativeLeaderLast
+  values:
+    prefix: names-mtf-operative-leader-last-dataset-
+    count: 7
+
+
+### ------=========[департамент МОГа]=========------ ###
+- type: department
+  id: MTFDepartment
+  name: Мобильная Оперативная Группа
+  description: Группа быстрого реагирования для устранения чрезвычайных ситуаций в комплексе или проведения специальных операций.
+  color: "#808080"
+  roles:
+  - RRHLeader
+  - RRHSpecialist
+  - RRHCadet
+  #
+  - HDLeader
+  - HDSpecialist
+  - HDCadet
+  #
+  - MHLeader
+  - MHSpecialist
+  - MHCadet
+  #
+  - LLHLeader
+  - LLHSpecialist
+  - LLHCadet
+  #
+  - NTFLeader
+  - NTFSpecialist
+  - NTFCadet
+  editorHidden: true
+  weight: 99

@@ -1,0 +1,418 @@
+﻿### ------=========[ID карта]=========------ ###
+#Капитан
+- type: entity
+  parent: IDCardMTFStandard
+  id: IDCardMHLeader
+  name: карта доступа Капитана "Бета-7"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PresetIdCard
+    job: MHLeader
+#Специалист
+- type: entity
+  parent: IDCardMTFStandard
+  id: IDCardMHSpecialist
+  name: карта доступа Специалиста "Бета-7"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PresetIdCard
+    job: MHSpecialist
+#Кадет
+- type: entity
+  parent: IDCardMTFStandard
+  id: IDCardMHCadet
+  name: карта доступа Кадета "Бета-7"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PresetIdCard
+    job: MHCadet
+### ------=========[КПК]=========------ ###
+#Капитан
+- type: entity
+  parent: BaseMTFPDA
+  id: MHLeaderPDA
+  name: КПК капитана "Бета-7"
+  components:
+  - type: Pda
+    id: IDCardMHLeader
+#Специалист
+- type: entity
+  parent: BaseMTFPDA
+  id: MHSpecialistPDA
+  name: КПК специалиста "Бета-7"
+  components:
+  - type: Pda
+    id: IDCardMHSpecialist
+#Кадет
+- type: entity
+  parent: BaseMTFPDA
+  id: MHCadetPDA
+  name: КПК кадета "Бета-7"
+  components:
+  - type: Pda
+    id: IDCardMHCadet
+### ------=========[Вещи]=========------ ###
+- type: entity
+  name: Костюм "Бета-7"
+  description: ДАННЫЕ УДАЛЕНЫ
+  parent: NineTailedFoxSuit
+  id: ClothingUniformMH
+  components:
+  - sprite: _Scp/Clothing/Uniforms/mtf/uniformMH.rsi
+    type: Sprite
+  - sprite: _Scp/Clothing/Uniforms/mtf/uniformMH.rsi
+    type: Clothing
+#---------------------кастом вещи группы
+- type: entity
+  name: Скафандр "Бета-7"
+  description: ДАННЫЕ УДАЛЕНЫ
+  parent: ClothingOuterHardsuitCBURN
+  categories: [ HideSpawnMenu ]
+  id: ClothingOuterHardsuitMH
+
+- type: entity
+  name: Скафандр командира "Бета-7"
+  description: ДАННЫЕ УДАЛЕНЫ
+  categories: [ HideSpawnMenu ]
+  parent: ClothingOuterHardsuitCBURNLeader
+  id: ClothingOuterHardsuitMHLeader
+
+- type: entity
+  name: Шлем МОГ "Бета-7"
+  description: ДАННЫЕ УДАЛЕНЫ
+  categories: [ HideSpawnMenu ]
+  parent: ClothingHeadHelmetCBURN
+  id: ClothingHeadHelmetMH
+
+- type: entity
+  name: РПС МОГ "Бета-7"
+  description: ДАННЫЕ УДАЛЕНЫ
+  categories: [ HideSpawnMenu ]
+  parent: ClothingBeltMilitaryWebbingMed
+  id: ClothingBeltMilitaryWebbingMH
+### ------=========[Профессии]=========------ ###
+#----------------------------------КМД
+- type: job
+  id: MHLeader
+  name: Командир МОГ Бета-7
+  description: Возглавьте Мобильно Оперативную Группу для устранения угрозы в комплексе.
+  playTimeTracker: JobMHLeader
+  setPreference: false
+  startingGear: MHLeaderGear
+  icon: "JobIconMH"
+  supervisors: Штабу О4
+  canBeAntag: false
+  radioBold: true
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+
+- type: startingGear
+  id: MHLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformMH
+    back: MTFSpecialistBackpack
+    shoes: ClothingShoesBootsMagCombat
+    head: ClothingHeadHelmetMH
+    mask: ClothingMaskMTF
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitMHLeader
+    id: MHLeaderPDA
+    ears: ClothingHeadsetAltRegionalAdministration
+    belt: ClothingBeltMilitaryWebbingMH
+    pocket1: BaseUplinkMTFLeader
+    pocket2: PinpointerNuclear
+  storage:
+    back:
+    - Crowbar
+    - CombatKnife
+    - HandheldCriminalRecordsMonitorUnpowered
+    - DoubleEmergencyOxygenTankFilled
+    - HandheldCrewMonitor
+    belt:
+    - MedkitCombatFilled
+    - ChemistryBottleEpinephrine
+    - ChemistryBottleEpinephrine
+    - PrefilledSyringe
+    - PillAmbuzolPlus
+    - PillAmbuzolPlus
+    - PillAmbuzolPlus
+    - PillAmbuzol
+    - PillAmbuzol
+    - PillAmbuzol
+    - Handcuffs
+
+- type: entity
+  id: RandomHumanoidSpawnerMHLeader
+  name: Командир МОГ Бета-7
+  suffix: MTF | MH
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertleader
+  - type: RandomMetadata
+    nameSegments:
+    - NamesLeader
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidSpawner
+    settings: MHLeader
+
+- type: randomHumanoidSettings
+  id: MHLeader
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  #- type: EmitSoundOnSpawn
+  #  sound:
+  #    path: /Uploaded/mtf_all_in/files/sounds/MH.ogg
+  #    params:
+  #        volume: 7
+  - type: GhostRole
+    name: Командир МОГ Бета-7
+    description: ghost-role-information-mtf-leader-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: MHLeader
+  - type: Loadout
+    prototypes: [ MHLeaderGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesLeader
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+#----------------------------------СПЕЦ
+- type: job
+  id: MHSpecialist
+  name: Специалист МОГ Бета-7
+  description: Слушайте указания вашего командира и восстановите условия содержания объектов Фонда.
+  playTimeTracker: JobMHSpecialist
+  setPreference: false
+  startingGear: MHSpecialistGear
+  icon: "JobIconMH"
+  supervisors: Командиру вашего отряда и Штабу О4
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+
+- type: startingGear
+  id: MHSpecialistGear
+  equipment:
+    jumpsuit: ClothingUniformMH
+    back: MTFSpecialistBackpack
+    shoes: ClothingShoesBootsMagCombat
+    head: ClothingHeadHelmetMH
+    mask: ClothingMaskMTF
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitMH
+    id: MHSpecialistPDA
+    ears: ClothingHeadsetAltRegionalAdministration
+    belt: ClothingBeltMilitaryWebbingMH
+    pocket1: BaseUplinkMTFSpecialist
+    pocket2: CombatKnife
+  storage:
+    back:
+    - Crowbar
+    - DoubleEmergencyOxygenTankFilled
+    belt:
+    - MedkitCombatFilled
+    - ChemistryBottleEpinephrine
+    - ChemistryBottleEpinephrine
+    - PrefilledSyringe
+    - PillAmbuzolPlus
+    - PillAmbuzolPlus
+    - PillAmbuzolPlus
+    - PillAmbuzol
+    - PillAmbuzol
+    - PillAmbuzol
+    - Handcuffs
+
+- type: entity
+  id: RandomHumanoidSpawnerMHSpecialist
+  name: Специалист МОГ Бета-7
+  suffix: MTF | MH
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertsecurityeva
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSpecialist
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidSpawner
+    settings: MHSpecialist
+
+- type: randomHumanoidSettings
+  id: MHSpecialist
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  - type: GhostRole
+    name: Специалист МОГ Бета-7
+    description: ghost-role-information-mtf-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: MHSpecialist
+  - type: Loadout
+    prototypes: [ MHSpecialistGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSpecialist
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+#----------------------------------КАДЕТ
+- type: job
+  id: MHCadet
+  name: Кадет МОГ Бета-7
+  description: Слушайте указания вашего командира и восстановите условия содержания объектов Фонда.
+  playTimeTracker: JobMHCadet
+  setPreference: false
+  startingGear: MHCadetGear
+  icon: "JobIconMH"
+  supervisors: Командиру вашего отряда, Специалисту и Штабу О4
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+
+- type: startingGear
+  id: MHCadetGear
+  equipment:
+    jumpsuit: ClothingUniformMH
+    back: MTFSpecialistBackpack
+    shoes: ClothingShoesBootsMagCombat
+    head: ClothingHeadHelmetMH
+    mask: ClothingMaskMTF
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterHardsuitMH
+    id: MHCadetPDA
+    ears: ClothingHeadsetAltRegionalAdministration
+    belt: ClothingBeltMilitaryWebbingMH
+    pocket1: BaseUplinkMTFCadet
+    pocket2: CombatKnife
+  storage:
+    back:
+    - Crowbar
+    - DoubleEmergencyOxygenTankFilled
+    belt:
+    - MedkitCombatFilled
+    - ChemistryBottleEpinephrine
+    - ChemistryBottleEpinephrine
+    - PrefilledSyringe
+    - PillAmbuzolPlus
+    - PillAmbuzolPlus
+    - PillAmbuzolPlus
+    - PillAmbuzol
+    - PillAmbuzol
+    - PillAmbuzol
+    - Handcuffs
+
+- type: entity
+  id: RandomHumanoidSpawnerMHCadet
+  name: Кадет МОГ Бета-7
+  suffix: MTF | MH
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertsecurityeva
+  - type: RandomMetadata
+    nameSegments:
+    - NamesCadet
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidSpawner
+    settings: MHCadet
+
+- type: randomHumanoidSettings
+  id: MHCadet
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  - type: GhostRole
+    name: Кадет МОГ Бета-7
+    description: ghost-role-information-mtf-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: MHCadet
+  - type: Loadout
+    prototypes: [ MHCadetGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesCadet
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+
+
+
+
+
+### ------=========[мета]=========------ ###
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconMH
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+    state: MH
+  jobName: МОГ Бета-7

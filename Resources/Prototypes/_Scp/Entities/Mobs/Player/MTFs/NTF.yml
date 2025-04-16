@@ -1,0 +1,366 @@
+﻿### ------=========[ID карта]=========------ ###
+#Капитан
+- type: entity
+  parent: IDCardMTFStandard
+  id: IDCardNTFLeader
+  name: карта доступа Капитана "Эпсилон-11"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PresetIdCard
+    job: NTFLeader
+#Специалист
+- type: entity
+  parent: IDCardMTFStandard
+  id: IDCardNTFSpecialist
+  name: карта доступа Специалиста "Эпсилон-11"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PresetIdCard
+    job: NTFSpecialist
+#Кадет
+- type: entity
+  parent: IDCardMTFStandard
+  id: IDCardNTFCadet
+  name: карта доступа Кадета "Эпсилон-11"
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: PresetIdCard
+    job: NTFCadet
+### ------=========[КПК]=========------ ###
+#Капитан
+- type: entity
+  parent: BaseMTFPDA
+  id: NTFLeaderPDA
+  name: КПК капитана "Эпсилон-11"
+  components:
+  - type: Pda
+    id: IDCardNTFLeader
+#Специалист
+- type: entity
+  parent: BaseMTFPDA
+  id: NTFSpecialistPDA
+  name: КПК специалиста "Эпсилон-11"
+  components:
+  - type: Pda
+    id: IDCardNTFSpecialist
+#Кадет
+- type: entity
+  parent: BaseMTFPDA
+  id: NTFCadetPDA
+  name: КПК кадета "Эпсилон-11"
+  components:
+  - type: Pda
+    id: IDCardNTFCadet
+### ------=========[Вещи]=========------ ###
+- type: entity
+  name: Костюм "Эпсилон-11"
+  description: ДАННЫЕ УДАЛЕНЫ
+  suffix: MTF | NTF
+  parent: NineTailedFoxSuit
+  id: ClothingUniformNTF
+  components:
+  - sprite: _Scp/Clothing/Uniforms/mtf/uniformNTF.rsi
+    type: Sprite
+  - sprite: _Scp/Clothing/Uniforms/mtf/uniformNTF.rsi
+    type: Clothing
+### ------=========[Профессии]=========------ ###
+#----------------------------------КМД
+- type: job
+  id: NTFLeader
+  name: Командир МОГ Эпсилон-11
+  playTimeTracker: JobNTFLeader
+  setPreference: false
+  startingGear: NTFLeaderGear
+  icon: "JobIconNTF"
+  supervisors: Штабу О4
+  canBeAntag: false
+  radioBold: true # Sunrise-Edit
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+
+- type: startingGear
+  id: NTFLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformNTF
+    back: MTFSpecialistBackpack
+    shoes: ClothingShoesBootsMagCombat
+    head: NineTailedFoxHelmet
+    mask: ClothingMaskMTF
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: MTFCommanderVest
+    id: NTFLeaderPDA
+    ears: ClothingHeadsetAltRegionalAdministration
+    belt: MTFCommanderWebbing
+    pocket1: BaseUplinkMTFLeader
+    pocket2: PinpointerNuclear
+  storage:
+    back:
+    - Crowbar
+    - CombatKnife
+    - HandheldCriminalRecordsMonitorUnpowered
+    - DoubleEmergencyOxygenTankFilled
+    - HandheldCrewMonitor
+    belt:
+    - Stunbaton
+    - Handcuffs
+    - Handcuffs
+    - Handcuffs
+
+- type: entity
+  id: RandomHumanoidSpawnerNTFLeader
+  name: Командир МОГ Эпсилон-11
+  suffix: MTF | NTF
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertleader
+  - type: RandomMetadata
+    nameSegments:
+    - NamesLeader
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidSpawner
+    settings: NTFLeader
+
+- type: randomHumanoidSettings
+  id: NTFLeader
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  #- type: EmitSoundOnSpawn
+  #  sound:
+  #    path: /Uploaded/mtf_all_in/files/sounds/NTF.ogg
+  #    params:
+  #        volume: 7
+  - type: GhostRole
+    name: Командир МОГ Эпсилон-11
+    description: ghost-role-information-mtf-leader-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: NTFLeader
+  - type: Loadout
+    prototypes: [ NTFLeaderGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesLeader
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+#----------------------------------СПЕЦ
+- type: job
+  id: NTFSpecialist
+  name: Специалист МОГ Эпсилон-11
+  playTimeTracker: JobNTFSpecialist
+  setPreference: false
+  startingGear: NTFSpecialistGear
+  icon: "JobIconNTF"
+  supervisors: Командиру вашего отряда и Штабу О4
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+
+- type: startingGear
+  id: NTFSpecialistGear
+  equipment:
+    jumpsuit: ClothingUniformNTF
+    back: MTFSpecialistBackpack
+    shoes: ClothingShoesBootsMagCombat
+    head: ClothingHelmetMTF
+    mask: ClothingMaskMTF
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: MTFVest
+    id: NTFSpecialistPDA
+    ears: ClothingHeadsetAltRegionalAdministration
+    belt: MTFWebbing
+    pocket1: BaseUplinkMTFSpecialist
+    pocket2: CombatKnife
+  storage:
+    back:
+    - Crowbar
+    - DoubleEmergencyOxygenTankFilled
+    belt:
+    - Stunbaton
+    - Handcuffs
+    - Handcuffs
+    - Handcuffs
+
+- type: entity
+  id: RandomHumanoidSpawnerNTFSpecialist
+  name: Специалист МОГ Эпсилон-11
+  suffix: MTF | NTF
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertsecurityeva
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSpecialist
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidSpawner
+    settings: NTFSpecialist
+
+- type: randomHumanoidSettings
+  id: NTFSpecialist
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  - type: GhostRole
+    name: Специалист МОГ Эпсилон-11
+    description: ghost-role-information-mtf-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: NTFSpecialist
+  - type: Loadout
+    prototypes: [ NTFSpecialistGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSpecialist
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+#----------------------------------КАДЕТ
+- type: job
+  id: NTFCadet
+  name: Кадет МОГ Эпсилон-11
+  playTimeTracker: JobNTFCadet
+  setPreference: false
+  startingGear: NTFCadetGear
+  icon: "JobIconNTF"
+  supervisors: Командиру вашего отряда, Специалисту и Штабу О4
+  canBeAntag: false
+  accessGroups:
+  - AllAccess
+  access:
+  - CentralCommand
+
+- type: startingGear
+  id: NTFCadetGear
+  equipment:
+    jumpsuit: ClothingUniformNTF
+    back: MTFSpecialistBackpack
+    shoes: ClothingShoesBootsMagCombat
+    head: ClothingHelmetMTF
+    mask: ClothingMaskMTF
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: MTFVest
+    id: NTFCadetPDA
+    ears: ClothingHeadsetAltRegionalAdministration
+    belt: MTFWebbing
+    pocket1: BaseUplinkMTFCadet
+    pocket2: CombatKnife
+  storage:
+    back:
+    - Crowbar
+    - DoubleEmergencyOxygenTankFilled
+    belt:
+    - Stunbaton
+    - Handcuffs
+    - Handcuffs
+    - Handcuffs
+
+- type: entity
+  id: RandomHumanoidSpawnerNTFCadet
+  name: Кадет МОГ Эпсилон-11
+  suffix: MTF | NTF
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertsecurityeva
+  - type: RandomMetadata
+    nameSegments:
+    - NamesCadet
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: RandomHumanoidSpawner
+    settings: NTFCadet
+
+- type: randomHumanoidSettings
+  id: NTFCadet
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  - type: GhostRole
+    name: Кадет МОГ Эпсилон-11
+    description: ghost-role-information-mtf-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: NTFCadet
+  - type: Loadout
+    prototypes: [ NTFCadetGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesCadet
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+
+
+
+
+### ------=========[мета]=========------ ###
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNTF
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+    state: NTF
+  jobName: МОГ Эпсилон-11

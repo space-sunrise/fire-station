@@ -1,0 +1,84 @@
+﻿# Лазеры:
+- type: listing
+  id: ScpUplinkWeaponWeaponPulseRifle
+  productEntity: WeaponPulseRifle
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pulse-r }
+  cost:
+    Bluecrystal: 30
+  categories:
+  - ScpLasers
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkWeaponSniperPulseCarbine
+  productEntity: WeaponSniperPulseCarbine
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pulse-sc }
+  cost:
+    Bluecrystal: 25
+  categories:
+  - ScpLasers
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkWeaponIONRifle
+  productEntity: WeaponIONRifle
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: ion-r }
+  cost:
+    Bluecrystal: 10
+  categories:
+  - ScpLasers
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkWeaponPulseCarbine
+  productEntity: WeaponPulseCarbine
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pulse-c }
+  cost:
+    Bluecrystal: 24
+  categories:
+  - ScpLasers
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkWeaponLaserLNT620
+  productEntity: WeaponLaserLNT620
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: lnt620 }
+  cost:
+    Bluecrystal: 10
+  categories:
+  - ScpLasers
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkWeaponEnergyGunTactical
+  productEntity: WeaponEnergyGunTactical
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: energygun_tac }
+  cost:
+    Bluecrystal: 12
+  categories:
+  - ScpLasers
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkWeaponWeaponEnergyGun
+  productEntity: WeaponEnergyGun
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: energygun }
+  cost:
+    Bluecrystal: 1
+  categories:
+  - ScpLasers
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
