@@ -707,6 +707,9 @@ Scp939Muzzler: ClothingMaskScp939
 CryogenicSleepUnitSpawnerLateJoin: null
 CryogenicSleepUnit: null
 
+WeaponEnergyTurretStation: WeaponEnergyTurretFacility
+WeaponEnergyTurretAI: WeaponEnergyTurretCSS
+
 WallSolid: ScpWallSolid
 WallReinforced: ScpWallReinforced
 Window: ScpWindow
