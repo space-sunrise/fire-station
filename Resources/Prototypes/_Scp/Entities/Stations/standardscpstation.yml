@@ -5,18 +5,15 @@
   - BaseStationNews  # Новости
   - BaseStationJobsSpawning
   - BaseStationRecords
-  - BaseStationGateway  # гейт
-  - BaseStationArrivals  # стандартное прибытие.. А нужно ли оно?
   - BaseStationEvacuation  # базовый эвак.. а нужен ли он?
   - BaseStationAlertLevels  # Красный итд коды, мб надо переделать
   - BaseStationSiliconLawCrewsimov  # TODO: кастомные законы
   - BaseStationNanotrasen  # Дает фракцию
-  - BaseStationGoal  # TODO: make this
+  - ScpComplexGoal # Цели комплекса по изучению SCP
   - BaseStationAntagsTargets  # Для предателей
   # - BaseStationCryoTeleport  # Телепорт в крио. Я в нем уверен на 99%. А я не уверен
-  # - BaseStationCentComm  # У нас будет ЦК. Видимо не будет
-  - BaseStationTransitHub
-  # - BaseStationMogGroups  # Спавн космодесанта
+  # - BaseStationRegionalAdministration  Добавляет неиспользуемое(игровое) ЦК. Настоящее ЦК через BaseComplexTransitHub
+  - BaseComplexTransitHub
   - BaseStationCargo
   - BaseStationAllEventsEligible
   categories: [ HideSpawnMenu ]

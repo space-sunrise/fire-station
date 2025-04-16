@@ -1,0 +1,16 @@
+﻿- type: gameMap
+  id: RegionalAdministrationBase
+  mapName: 'Штаб региональной администрации'
+  mapPath: /Maps/_Scp/regional_administration_base.yml
+  maxRandomOffset: 0
+  randomRotation: false
+  minPlayers: 0
+  stations:
+    RegionalAdministrationBase:
+      stationProto: ScpRegionalAdministration
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: '{0} Штаб региональной администрации {1}'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: 'SCP'
