@@ -60,42 +60,15 @@
   categories: [ HideSpawnMenu ]
   parent: ClothingOuterArmorHeavy
   id: ClothingOuterArmorHeavyLLH
-#---------------------Аплинк/Визионер для Омега-1
-- type: entity
-  parent: BaseUplinkMTF
-  id: BaseUplinkLLH
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Store
-    balance:
-      Bluecrystal: 15
-      Crystallite: 15
-    buySuccessSound:
-      path: /Audio/Effects/Arcade/newgame.ogg
 
-- type: entity
-  parent: BaseUplinkLLH
-  id: BaseUplinkLLHLeader
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Store
-    balance:
-      Bluecrystal: 40
-      Crystallite: 35
-    buySuccessSound:
-      path: /Audio/Effects/Arcade/newgame.ogg
 
-- type: entity
-  parent: BaseUplinkLLH
-  id: BaseUplinkLLHSpecialist
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Store
-    balance:
-      Bluecrystal: 28
-      Crystallite: 17
-    buySuccessSound:
-      path: /Audio/Effects/Arcade/newgame.ogg
+
+
+
+
+
+
+
 ### ------=========[Профессии]=========------ ###
 #----------------------------------КМД
 - type: job

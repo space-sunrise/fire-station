@@ -4,8 +4,6 @@ names-mtf-specialist-first-dataset-1 = Специалист
 
 names-mtf-cadet-first-dataset-1 = Кадет
 
-ghost-role-information-mtf-description = Оказывайте содействие в обеспечении безопасности для решения проблем станции.
-
 names-mtf-operative-first-dataset-1 = Оперативник
 
 names-mtf-operative-last-dataset-1 = Дядя

@@ -1,6 +1,8 @@
 ﻿ent-BaseUplinkMTF = Визионер-Арсенал МОГ
     .desc = Сверхинновационный портативный телепортатор.
     .suffix = Пустой
+ent-StorePresetScpUplink = { "" }
+    .desc = { "" }
 
 
 ent-BaseUplinkMTFLeader = Визионер-Арсенал командира МОГ
