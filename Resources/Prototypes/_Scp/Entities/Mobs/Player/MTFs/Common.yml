@@ -3,8 +3,6 @@
 - type: entity
   parent: IDCardStandard
   id: IDCardMTFStandard
-  name: карта доступа МОГ
-  description: карта, необходимая для доступа в различные области комплекса.
   categories: [ HideSpawnMenu ]
   abstract: true
   components:
@@ -21,17 +19,11 @@
 - type: entity
   parent: AdjutantPDA
   id: BaseMTFPDA
-  name: КПК МОГ
   categories: [ HideSpawnMenu ]
-  description: Нам приказывают, а мы исполняем.
   abstract: true
   components:
   - type: Pda
     state: pda-ert
-  - type: PdaBorderColor
-    borderColor: "#A32D26"
-    accentHColor: "#447987"
-    accentVColor: "#447987"
   - type: Icon
     state: pda-ert
   - type: CartridgeLoader
@@ -49,8 +41,6 @@
 
 ### ------=========[Вещи]=========------ ###
 - type: entity
-  name: Противогаз Мобильной Оперативной Группы
-  description: Нам приказывают, а мы исполняем.
   suffix: MTF | МОГ
   parent: [NineTailedFoxGasmask, BaseCentcommContraband]
   id: ClothingMaskMTF
@@ -61,9 +51,6 @@
     sprite: _Scp/Clothing/Mask/mtfGasMask.rsi
 
 - type: entity
-  name: Шлем Мобильной Оперативной Группы
-  description: Нам приказывают, а мы исполняем.
-  suffix: MTF | МОГ
   parent: [NineTailedFoxHelmet, BaseCentcommContraband]
   id: ClothingHelmetMTF
   components:
@@ -75,38 +62,25 @@
 - type: entity
   parent: [NineTailedFoxVest, BaseCentcommContraband]
   id: MTFVest
-  name: Бронежилет Мобильной Оперативной Группы
-  description: Нам приказывают, а мы исполняем.
 
 - type: entity
   parent: [NineTailedFoxCommanderVest, BaseCentcommContraband]
   id: MTFCommanderVest
-  name: Бронежилет командира Мобильной Оперативной Группы
-  description: Нам приказывают, а мы исполняем.
 
 - type: entity
   parent: [NineTailedFoxWebbing, BaseCentcommContraband]
   id: MTFWebbing
-  name: Разгрузка Мобильной Оперативной Группы
-  description: Нам приказывают, а мы исполняем.
-
 - type: entity
   parent: [NineTailedFoxCommanderWebbing, BaseCentcommContraband]
   id: MTFCommanderWebbing
-  name: Разгрузка командира Мобильной Оперативной Группы
-  description: Нам приказывают, а мы исполняем.
 
 - type: entity
   parent: [NineTailedFoxSpecialistWebbing, BaseCentcommContraband]
   id: MTFSpecialistWebbing
-  name: Разгрузка специалиста Мобильной Оперативной Группы
-  description: Нам приказывают, а мы исполняем.
 
 - type: entity
   parent: [NineTailedFoxSpecialistBackpack, BaseCentcommContraband]
   id: MTFSpecialistBackpack
-  name: Рюкзак Мобильной Оперативной Группы
-  description: Нам приказывают, а мы исполняем.
 
 
 
@@ -118,9 +92,6 @@
 - type: entity
   parent: [BaseItem, StorePresetScpUplink, BaseCentcommContraband]
   id: BaseUplinkMTF
-  name: Визионер-Арсенал МОГ
-  description: Сверхинновационный портативный магазин.
-  suffix: Пустой
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Devices/nt_uplink.rsi
@@ -146,21 +117,7 @@
 
 - type: entity
   parent: BaseUplinkMTF
-  id: BaseUplinkMTFCadet
-  name: Визионер-Арсенал кадета МОГ
-  suffix: Заполнен
-  components:
-  - type: Store
-    balance:
-      Bluecrystal: 10
-      Crystallite: 10
-    buySuccessSound:
-      path: /Audio/Effects/Arcade/newgame.ogg
-
-- type: entity
-  parent: BaseUplinkMTF
   id: BaseUplinkMTFLeader
-  name: Визионер-Арсенал капитана МОГ
   components:
   - type: Store
     balance:
@@ -172,11 +129,21 @@
 - type: entity
   parent: BaseUplinkMTF
   id: BaseUplinkMTFSpecialist
-  name: Визионер-Арсенал специалиста МОГ
   components:
   - type: Store
     balance:
       Bluecrystal: 24
+      Crystallite: 10
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+- type: entity
+  parent: BaseUplinkMTF
+  id: BaseUplinkMTFCadet
+  components:
+  - type: Store
+    balance:
+      Bluecrystal: 10
       Crystallite: 10
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
@@ -271,6 +238,7 @@
       contents:
         - id: ScpDefaultCircuitBoard
         - id: ScpMtfCircuitBoard
+        - id: Intellicard
 
 - type: entity
   parent: CrateAdministrationSecure
@@ -348,29 +316,3 @@
   values:
     prefix: names-mtf-operative-leader-last-dataset-
     count: 7
-
-
-### ------=========[департамент МОГа]=========------ ###
-- type: department
-  id: MTFDepartment
-  name: Мобильная Оперативная Группа
-  description: Группа быстрого реагирования для устранения чрезвычайных ситуаций в комплексе или проведения специальных операций.
-  color: "#808080"
-  roles:
-  - RRHLeader # А-1
-  - RRHSpecialist
-  - RRHCadet
-  - HDLeader # Ню-7
-  - HDSpecialist
-  - HDCadet
-  - MHLeader # Б-7
-  - MHSpecialist
-  - MHCadet
-  - LLHLeader # О-1
-  - LLHSpecialist
-  - LLHCadet
-  - NTFLeader # Э-11
-  - NTFSpecialist
-  - NTFCadet
-  editorHidden: true
-  weight: 99

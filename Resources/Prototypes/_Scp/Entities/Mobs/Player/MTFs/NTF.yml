@@ -3,7 +3,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardNTFLeader
-  name: карта доступа Капитана "Эпсилон-11"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
@@ -12,7 +11,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardNTFSpecialist
-  name: карта доступа Специалиста "Эпсилон-11"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
@@ -21,7 +19,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardNTFCadet
-  name: карта доступа Кадета "Эпсилон-11"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
@@ -31,7 +28,6 @@
 - type: entity
   parent: BaseMTFPDA
   id: NTFLeaderPDA
-  name: КПК капитана "Эпсилон-11"
   components:
   - type: Pda
     id: IDCardNTFLeader
@@ -39,7 +35,6 @@
 - type: entity
   parent: BaseMTFPDA
   id: NTFSpecialistPDA
-  name: КПК специалиста "Эпсилон-11"
   components:
   - type: Pda
     id: IDCardNTFSpecialist
@@ -47,22 +42,9 @@
 - type: entity
   parent: BaseMTFPDA
   id: NTFCadetPDA
-  name: КПК кадета "Эпсилон-11"
   components:
   - type: Pda
     id: IDCardNTFCadet
-### ------=========[Вещи]=========------ ###
-- type: entity
-  name: Костюм "Эпсилон-11"
-  description: ДАННЫЕ УДАЛЕНЫ
-  suffix: MTF | NTF
-  parent: NineTailedFoxSuit
-  id: ClothingUniformNTF
-  components:
-  - sprite: _Scp/Clothing/Uniforms/mtf/uniformNTF.rsi
-    type: Sprite
-  - sprite: _Scp/Clothing/Uniforms/mtf/uniformNTF.rsi
-    type: Clothing
 ### ------=========[Профессии]=========------ ###
 #----------------------------------КМД
 - type: job
@@ -166,6 +148,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 #----------------------------------СПЕЦ
 - type: job
   id: NTFSpecialist
@@ -259,6 +242,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 #----------------------------------КАДЕТ
 - type: job
   id: NTFCadet
@@ -352,6 +336,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 
 
 

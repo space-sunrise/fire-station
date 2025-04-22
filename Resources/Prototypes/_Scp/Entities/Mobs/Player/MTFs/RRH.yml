@@ -1,9 +1,8 @@
 ﻿### ------=========[ID карта]=========------ ###
-#Капитан
+#Командир
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardRRHLeader
-  name: карта доступа Капитана "Альфа-1"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
@@ -12,7 +11,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardRRHSpecialist
-  name: карта доступа Специалиста "Альфа-1"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
@@ -21,17 +19,15 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardRRHCadet
-  name: карта доступа Кадета "Альфа-1"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: RRHCadet
 ### ------=========[КПК]=========------ ###
-#Капитан
+#Командир
 - type: entity
   parent: BaseMTFPDA
   id: RRHLeaderPDA
-  name: КПК капитана "Альфа-1"
   components:
   - type: Pda
     id: IDCardRRHLeader
@@ -39,7 +35,6 @@
 - type: entity
   parent: BaseMTFPDA
   id: RRHSpecialistPDA
-  name: КПК специалиста "Альфа-1"
   components:
   - type: Pda
     id: IDCardRRHSpecialist
@@ -47,38 +42,20 @@
 - type: entity
   parent: BaseMTFPDA
   id: RRHCadetPDA
-  name: КПК кадета "Альфа-1"
   components:
   - type: Pda
     id: IDCardRRHCadet
-### ------=========[Вещи]=========------ ###
-- type: entity
-  name: Костюм "Альфа-1"
-  description: ДАННЫЕ УДАЛЕНЫ
-  parent: NineTailedFoxSuit
-  id: ClothingUniformRRH
-  components:
-  - sprite: _Scp/Clothing/Uniforms/mtf/uniformRRH.rsi
-    type: Sprite
-  - sprite: _Scp/Clothing/Uniforms/mtf/uniformRRH.rsi
-    type: Clothing
 #---------------------кастом вещи группы
 - type: entity
-  name: противогаз "Альфа-1"
-  description: ДАННЫЕ УДАЛЕНЫ
   parent: ClothingMaskGasDeathSquad
   id: ClothingMaskGasRRH
 #========================================
 - type: entity
-  name: рюкзак "Альфа-1"
-  description: ДАННЫЕ УДАЛЕНЫ
   categories: [ HideSpawnMenu ]
   parent: ClothingDeathSquadronBackpack
   id: ClothingBackpackRRH
 #========================================
 - type: entity
-  name: шлем скафандра "Альфа-1"
-  description: ДАННЫЕ УДАЛЕНЫ
   categories: [ HideSpawnMenu ]
   parent: ClothingHeadHelmetHardsuitDeathsquad
   id: ClothingHeadHelmetHardsuitRRH
@@ -89,19 +66,16 @@
       problemChance: 0.002 # 0,2% каждый тик проебаться
 #========================================
 - type: entity
-  name: скафандр "Альфа-1"
-  description: ДАННЫЕ УДАЛЕНЫ
   parent: ClothingOuterHardsuitDeathsquad
   id: ClothingOuterHardsuitRRH
   components:
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitRRH
+
 #---------------------Аплинк/Визионер для Альфа-1
 - type: entity
   parent: BaseUplinkMTF
   id: BaseUplinkRRH
-  name: Визионер-Арсенал "Альфа-1"
-  description: Сверхинновационный портативный телепортатор Альфа-1.
   categories: [ HideSpawnMenu ]
   suffix: RRH | RRH
   components:
@@ -252,6 +226,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 #----------------------------------СПЕЦ
 - type: job
   id: RRHSpecialist
@@ -347,6 +322,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 #----------------------------------КАДЕТ
 - type: job
   id: RRHCadet
@@ -443,6 +419,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 
 
 

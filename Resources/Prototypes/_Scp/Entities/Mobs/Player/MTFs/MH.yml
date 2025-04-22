@@ -1,9 +1,8 @@
 ﻿### ------=========[ID карта]=========------ ###
-#Капитан
+#Командир
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardMHLeader
-  name: карта доступа Капитана "Бета-7"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
@@ -12,7 +11,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardMHSpecialist
-  name: карта доступа Специалиста "Бета-7"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
@@ -21,17 +19,15 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardMHCadet
-  name: карта доступа Кадета "Бета-7"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: MHCadet
 ### ------=========[КПК]=========------ ###
-#Капитан
+#Командир
 - type: entity
   parent: BaseMTFPDA
   id: MHLeaderPDA
-  name: КПК капитана "Бета-7"
   components:
   - type: Pda
     id: IDCardMHLeader
@@ -39,7 +35,6 @@
 - type: entity
   parent: BaseMTFPDA
   id: MHSpecialistPDA
-  name: КПК специалиста "Бета-7"
   components:
   - type: Pda
     id: IDCardMHSpecialist
@@ -47,46 +42,26 @@
 - type: entity
   parent: BaseMTFPDA
   id: MHCadetPDA
-  name: КПК кадета "Бета-7"
   components:
   - type: Pda
     id: IDCardMHCadet
-### ------=========[Вещи]=========------ ###
-- type: entity
-  name: Костюм "Бета-7"
-  description: ДАННЫЕ УДАЛЕНЫ
-  parent: NineTailedFoxSuit
-  id: ClothingUniformMH
-  components:
-  - sprite: _Scp/Clothing/Uniforms/mtf/uniformMH.rsi
-    type: Sprite
-  - sprite: _Scp/Clothing/Uniforms/mtf/uniformMH.rsi
-    type: Clothing
 #---------------------кастом вещи группы
 - type: entity
-  name: Скафандр "Бета-7"
-  description: ДАННЫЕ УДАЛЕНЫ
   parent: ClothingOuterHardsuitCBURN
   categories: [ HideSpawnMenu ]
   id: ClothingOuterHardsuitMH
 
 - type: entity
-  name: Скафандр командира "Бета-7"
-  description: ДАННЫЕ УДАЛЕНЫ
   categories: [ HideSpawnMenu ]
   parent: ClothingOuterHardsuitCBURNLeader
   id: ClothingOuterHardsuitMHLeader
 
 - type: entity
-  name: Шлем МОГ "Бета-7"
-  description: ДАННЫЕ УДАЛЕНЫ
   categories: [ HideSpawnMenu ]
   parent: ClothingHeadHelmetCBURN
   id: ClothingHeadHelmetMH
 
 - type: entity
-  name: РПС МОГ "Бета-7"
-  description: ДАННЫЕ УДАЛЕНЫ
   categories: [ HideSpawnMenu ]
   parent: ClothingBeltMilitaryWebbingMed
   id: ClothingBeltMilitaryWebbingMH
@@ -201,6 +176,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 #----------------------------------СПЕЦ
 - type: job
   id: MHSpecialist
@@ -302,6 +278,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 #----------------------------------КАДЕТ
 - type: job
   id: MHCadet
@@ -403,6 +380,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 
 
 

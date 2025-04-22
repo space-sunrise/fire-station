@@ -39,7 +39,7 @@
   description: description
   id: NineTailedFoxCommanderVest
   name: nine tailed fox commander vest
-  parent: ClothingOuterVestWeb
+  parent: [ClothingOuterVestWeb, BaseCentcommContraband]
   suffix: SCP
   type: entity
 - components:
@@ -50,7 +50,7 @@
   description: description
   id: NineTailedFoxCommanderWebbing
   name: nine tailed fox commander webbing
-  parent: ClothingBeltSecurityWebbing
+  parent: [ClothingBeltSecurityWebbing, BaseCentcommContraband]
   suffix: SCP
   type: entity
 - components:
@@ -138,7 +138,7 @@
   description: description
   id: NineTailedFoxGasmask
   name: nine tailed fox gasmask
-  parent: ClothingMaskGasERT
+  parent: [ClothingMaskGasERT, BaseCentcommContraband]
   suffix: SCP
   type: entity
 - components:
@@ -149,7 +149,7 @@
   description: description
   id: NineTailedFoxHelmet
   name: nine tailed fox helmet
-  parent: ClothingHeadHelmetBasic
+  parent: [ClothingHeadHelmetBasic, BaseCentcommContraband]
   suffix: SCP
   type: entity
 - components:
@@ -160,7 +160,7 @@
   description: description
   id: NineTailedFoxSuit
   name: nine tailed fox suit
-  parent: ClothingUniformBase
+  parent: [ClothingUniformBase, BaseCentcommContraband]
   suffix: SCP
   type: entity
 - components:
@@ -171,7 +171,7 @@
   description: description
   id: NineTailedFoxVest
   name: nine tailed fox vest
-  parent: ClothingOuterVestWeb
+  parent: [ClothingOuterVestWeb, BaseCentcommContraband]
   suffix: SCP
   type: entity
 - components:
@@ -182,7 +182,7 @@
   description: description
   id: NineTailedFoxWebbing
   name: nine tailed fox webbing
-  parent: ClothingBeltSecurityWebbing
+  parent: [ClothingBeltSecurityWebbing, BaseCentcommContraband]
   suffix: SCP
   type: entity
 - components:
@@ -206,7 +206,7 @@
   description: description
   id: NineTailedFoxSpecialistBackpack
   name: nine tailed fox specialist backpack
-  parent: ClothingBackpack
+  parent: [ClothingBackpack, BaseCentcommContraband]
   suffix: SCP
   type: entity
 - components:
@@ -286,6 +286,6 @@
   description: description
   id: NineTailedFoxSpecialistWebbing
   name: nine tailed fox specialist webbing
-  parent: ClothingBeltSecurityWebbing
+  parent: [ClothingBeltSecurityWebbing, BaseCentcommContraband]
   suffix: SCP
   type: entity

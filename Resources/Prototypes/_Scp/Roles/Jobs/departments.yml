@@ -14,6 +14,47 @@
   - PersonnelOfficer
   - HeadOfMedicalSector
   - SeniorLogisticsOfficer
+  - RRHLeader # А-1
+  - RRHSpecialist
+  - RRHCadet
+  - HDLeader # Ню-7
+  - HDSpecialist
+  - HDCadet
+  - MHLeader # Б-7
+  - MHSpecialist
+  - MHCadet
+  - LLHLeader # О-1
+  - LLHSpecialist
+  - LLHCadet
+  - NTFLeader # Э-11
+  - NTFSpecialist
+  - NTFCadet
+
+# Мобильные Оперативные Группы
+
+- type: department
+  id: MobileTaskForce
+  name: department-MobileTaskForce
+  description: department-MobileTaskForce-description
+  color: "#808080"
+  roles:
+  - RRHLeader # А-1
+  - RRHSpecialist
+  - RRHCadet
+  - HDLeader # Ню-7
+  - HDSpecialist
+  - HDCadet
+  - MHLeader # Б-7
+  - MHSpecialist
+  - MHCadet
+  - LLHLeader # О-1
+  - LLHSpecialist
+  - LLHCadet
+  - NTFLeader # Э-11
+  - NTFSpecialist
+  - NTFCadet
+  editorHidden: true
+  weight: 99 # что бы оперативники МОГ показывались под Администрацией комплекса
 
 # Гады следящие за буквой закона
 

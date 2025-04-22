@@ -1,9 +1,8 @@
 ﻿### ------=========[ID карта]=========------ ###
-#Капитан
+#Командир
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardHDLeader
-  name: карта доступа Капитана "Ню-7"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
@@ -12,7 +11,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardHDSpecialist
-  name: карта доступа Специалиста "Ню-7"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
@@ -21,17 +19,15 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardHDCadet
-  name: карта доступа Кадета "Ню-7"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: HDCadet
 ### ------=========[КПК]=========------ ###
-#Капитан
+#Командир
 - type: entity
   parent: BaseMTFPDA
   id: HDLeaderPDA
-  name: КПК капитана "Ню-7"
   components:
   - type: Pda
     id: IDCardHDLeader
@@ -39,7 +35,6 @@
 - type: entity
   parent: BaseMTFPDA
   id: HDSpecialistPDA
-  name: КПК специалиста "Ню-7"
   components:
   - type: Pda
     id: IDCardHDSpecialist
@@ -47,25 +42,11 @@
 - type: entity
   parent: BaseMTFPDA
   id: HDCadetPDA
-  name: КПК кадета "Ню-7"
   components:
   - type: Pda
     id: IDCardHDCadet
 ### ------=========[Вещи]=========------ ###
 - type: entity
-  name: Костюм "Ню-7"
-  description: ДАННЫЕ УДАЛЕНЫ
-  parent: NineTailedFoxSuit
-  id: ClothingUniformHD
-  components:
-  - sprite: _Scp/Clothing/Uniforms/mtf/uniformHD.rsi
-    type: Sprite
-  - sprite: _Scp/Clothing/Uniforms/mtf/uniformHD.rsi
-    type: Clothing
-
-- type: entity
-  name: Броня "Ню-7"
-  description: Элитная броня отряда "Ню-7"
   parent: ClothingOuterArmorSWAT
   id: ClothingOuterArmorHD
   components:
@@ -86,18 +67,12 @@
   - type: HeldSpeedModifier
 
 - type: entity
-  name: Фуражка командира "Ню-7"
   categories: [ HideSpawnMenu ]
-  description: ДАННЫЕ УДАЛЕНЫ
-  suffix: MTF | HD
   parent: ClothingHeadHatSyndieMAA
   id: ClothingHeadHatHDMAA
 
 - type: entity
-  name: Подкованные сапоги "Ню-7"
   categories: [ HideSpawnMenu ]
-  description: ДАННЫЕ УДАЛЕНЫ
-  suffix: MTF | HD
   parent: ClothingShoesBootsJackSecFilled
   id: ClothingShoesBootsHDFilled
 ### ------=========[Профессии]=========------ ###
@@ -204,6 +179,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 #----------------------------------СПЕЦ
 - type: job
   id: HDSpecialist
@@ -298,6 +274,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 #----------------------------------КАДЕТ
 - type: job
   id: HDCadet
@@ -392,6 +369,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 
 
 

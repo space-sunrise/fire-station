@@ -1,9 +1,8 @@
 ﻿### ------=========[ID карта]=========------ ###
-#Капитан
+#Командир
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardLLHLeader
-  name: карта доступа Капитана "Омега-1"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
@@ -12,7 +11,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardLLHSpecialist
-  name: карта доступа Специалиста "Омега-1"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
@@ -21,17 +19,15 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardLLHCadet
-  name: карта доступа Кадета "Омега-1"
   categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: LLHCadet
 ### ------=========[КПК]=========------ ###
-#Капитан
+#Командир
 - type: entity
   parent: BaseMTFPDA
   id: LLHLeaderPDA
-  name: КПК капитана "Омега-1"
   components:
   - type: Pda
     id: IDCardLLHLeader
@@ -39,7 +35,6 @@
 - type: entity
   parent: BaseMTFPDA
   id: LLHSpecialistPDA
-  name: КПК специалиста "Омега-1"
   components:
   - type: Pda
     id: IDCardLLHSpecialist
@@ -47,39 +42,21 @@
 - type: entity
   parent: BaseMTFPDA
   id: LLHCadetPDA
-  name: КПК кадета "Омега-1"
   components:
   - type: Pda
     id: IDCardLLHCadet
-### ------=========[Вещи]=========------ ###
-- type: entity
-  name: Костюм "Омега-1"
-  description: ДАННЫЕ УДАЛЕНЫ
-  parent: NineTailedFoxSuit
-  id: ClothingUniformLLH
-  components:
-  - sprite: _Scp/Clothing/Uniforms/mtf/uniformLLH.rsi
-    type: Sprite
-  - sprite: _Scp/Clothing/Uniforms/mtf/uniformLLH.rsi
-    type: Clothing
 #---------------------кастом вещи группы
 - type: entity
-  name: Рюкзак "Омега-1"
-  description: ДАННЫЕ УДАЛЕНЫ
   categories: [ HideSpawnMenu ]
   parent: ClothingDeathSquadronBackpack
   id: ClothingBackpackLLH
 
 - type: entity
-  name: Противогаз "Омега-1"
-  description: ДАННЫЕ УДАЛЕНЫ
   categories: [ HideSpawnMenu ]
   parent: ClothingMaskGasSwat
   id: ClothingMaskGasLLH
 
 - type: entity
-  name: Броня "Омега-1"
-  description: ДАННЫЕ УДАЛЕНЫ
   categories: [ HideSpawnMenu ]
   parent: ClothingOuterArmorHeavy
   id: ClothingOuterArmorHeavyLLH
@@ -87,8 +64,6 @@
 - type: entity
   parent: BaseUplinkMTF
   id: BaseUplinkLLH
-  name: Визионер-Арсенал "Омега-1"
-  description: Сверхинновационный портативный телепортатор Омега-1.
   categories: [ HideSpawnMenu ]
   components:
   - type: Store
@@ -223,6 +198,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 #----------------------------------СПЕЦ
 - type: job
   id: LLHSpecialist
@@ -315,6 +291,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 #----------------------------------КАДЕТ
 - type: job
   id: LLHCadet
@@ -407,6 +384,7 @@
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
+    - TrackingImplantMTF
 
 
 
