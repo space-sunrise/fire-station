@@ -63,4 +63,4 @@
 - type: storeCategory
   id: ScpRecontainment
   name: store-category-scprecontainment
-  priority: 10
+  priority: 11

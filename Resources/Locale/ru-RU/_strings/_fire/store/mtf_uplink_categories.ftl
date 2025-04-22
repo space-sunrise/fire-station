@@ -1,2 +1,2 @@
 ﻿store-preset-name-ScpUplink = Визионер/Арсенал
-store-category-scprecontainment = Восстановление Условий Содержания
+store-category-scprecontainment = Восстановление У.С.

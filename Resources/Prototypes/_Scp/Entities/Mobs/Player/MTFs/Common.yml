@@ -116,7 +116,7 @@
 
 ### ------=========[Аплинк/Визионер стандарт]=========------ ###
 - type: entity
-  parent: [BaseItem, StorePresetNTUplink, BaseCentcommContraband]
+  parent: [BaseItem, StorePresetScpUplink, BaseCentcommContraband]
   id: BaseUplinkMTF
   name: Визионер-Арсенал МОГ
   description: Сверхинновационный портативный магазин.
@@ -182,6 +182,135 @@
       path: /Audio/Effects/Arcade/newgame.ogg
 
 
+- type: entity
+  parent: WeaponPulseCarbine
+  id: WeaponPulseCarbineScp
+
+- type: entity
+  parent: WeaponSniperPulseCarbine
+  id: WeaponSniperPulseCarbineScp
+
+- type: entity
+  parent: WeaponPulsePistol
+  id: WeaponPulsePistolScp
+
+- type: entity
+  parent: HyposprayERT
+  id: HyposprayMTF
+
+- type: entity
+  parent: ClothingBackpackDuffelNanotrasenMedicalBundleFilled
+  id: ClothingBackpackDuffelScpMedicalBundleFilled
+  components:
+    - type: StorageFill
+      contents:
+        - id: DefibrillatorCompact
+        - id: MedkitCombatFilled
+          amount: 3
+        - id: Tourniquet
+          amount: 2
+        - id: MedipenCombatInjector
+          amount: 2
+        - id: CombatMedipen
+          amount: 4
+        - id: PunctAutoInjector
+          amount: 4
+        - id: PyraAutoInjector
+          amount: 4
+        - id: AirlossAutoInjector
+          amount: 4
+
+- type: entity
+  parent: TrackingImplanterERT
+  id: TrackingImplanterMTF
+  suffix: tracking
+  components:
+    - type: Implanter
+      implant: TrackingImplantMTF
+
+- type: entity
+  parent: TrackingImplantErt
+  id: TrackingImplantMTF
+  components:
+    - type: Rattle
+      radioChannel: "RegionalAdministration"
+
+- type: entity
+  parent: BoxErtImplants
+  id: BoxMTFImplants
+  components:
+    - type: StorageFill
+      contents:
+        - id: TrackingImplanterMTF
+          amount: 6
+
+- type: entity
+  parent: PowerCellNanoTrasen
+  id: PowerCellScp
+
+- type: entity
+  parent: CrateCommandSecure
+  id: CrateAdministrationSecure
+  components:
+  - type: Icon
+    sprite: _Scp/Structures/Storage/Crates/administration.rsi
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/Crates/administration.rsi
+
+- type: entity
+  parent: PowerCageERT
+  id: PowerCageMTF
+
+#для ВУСа
+- type: entity
+  parent: CrateAdministrationSecure
+  id: CrateAdministrationRecontainmentCircuitsBoards
+  suffix: Filled
+  components:
+    - type: StorageFill
+      contents:
+        - id: ScpDefaultCircuitBoard
+        - id: ScpMtfCircuitBoard
+
+- type: entity
+  parent: CrateAdministrationSecure
+  id: CrateAdministrationRecontainment173
+  suffix: Filled
+  components:
+    - type: StorageFill
+      contents:
+        - id: CrateScpCageFolded
+        - id: EyeDroplets
+        - id: Screwdriver
+
+- type: entity
+  parent: CrateAdministrationSecure
+  id: CrateAdministrationRecontainment939
+  suffix: Filled
+  components:
+    - type: StorageFill
+      contents:
+        - id: ClothingShoesSilent
+        - id: ClothingMaskScp939
+
+- type: entity
+  parent: CrateAdministrationSecure
+  id: CrateAdministrationRecontainment106
+  suffix: Filled
+  components:
+    - type: StorageFill
+      contents:
+        - id: ClothingOuterAntiTeleportation
+
+- type: entity
+  parent: CrateAdministrationSecure
+  id: CrateAdministrationRecontainment096
+  suffix: Filled
+  components:
+    - type: StorageFill
+      contents:
+        - id: ClothingHeadBagScp096
+        - id: ClothingHeadHelmetAiPowered
 
 ### ------=========[звания]=========------ ###
 - type: localizedDataset
@@ -228,23 +357,19 @@
   description: Группа быстрого реагирования для устранения чрезвычайных ситуаций в комплексе или проведения специальных операций.
   color: "#808080"
   roles:
-  - RRHLeader
+  - RRHLeader # А-1
   - RRHSpecialist
   - RRHCadet
-  #
-  - HDLeader
+  - HDLeader # Ню-7
   - HDSpecialist
   - HDCadet
-  #
-  - MHLeader
+  - MHLeader # Б-7
   - MHSpecialist
   - MHCadet
-  #
-  - LLHLeader
+  - LLHLeader # О-1
   - LLHSpecialist
   - LLHCadet
-  #
-  - NTFLeader
+  - NTFLeader # Э-11
   - NTFSpecialist
   - NTFCadet
   editorHidden: true

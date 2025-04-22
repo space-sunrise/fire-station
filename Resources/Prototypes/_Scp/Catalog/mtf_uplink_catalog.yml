@@ -1,4 +1,137 @@
-﻿# Лазеры:
+﻿# Автоматы:
+- type: listing
+  id: ScpUplinkClothingBackpackDuffelWeaponSubMachineGunMP5
+  productEntity: ClothingBackpackDuffelWeaponSubMachineGunMP5Filled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mp5 }
+  cost:
+    Bluecrystal: 4
+  categories:
+  - ScpAutoGun
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkClothingBackpackDuffelWeaponSubMachineGunMP7
+  productEntity: ClothingBackpackDuffelWeaponSubMachineGunMP7Filled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mp7 }
+  cost:
+    Bluecrystal: 6
+  categories:
+  - ScpAutoGun
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkClothingBackpackDuffelWeaponSubMachineGunP90
+  productEntity: ClothingBackpackDuffelWeaponSubMachineGunP90Filled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: p90 }
+  cost:
+    Bluecrystal: 9
+  categories:
+  - ScpAutoGun
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkClothingBackpackDuffelWeaponAMS42Filled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: ams42 }
+  productEntity: ClothingBackpackDuffelWeaponAMS42Filled
+  cost:
+    Bluecrystal: 10
+  categories:
+  - ScpAutoGun
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkClothingBackpackDuffelWeaponRifleG36Filled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: g36 }
+  productEntity: ClothingBackpackDuffelWeaponRifleG36Filled
+  cost:
+    Bluecrystal: 8
+  categories:
+  - ScpAutoGun
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkClothingBackpackDuffelWeaponLightMachineGunMG42
+  productEntity: WeaponMachineGunMG42
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mg42 }
+  cost:
+    Bluecrystal: 35
+  categories:
+  - ScpAutoGun
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkClothingBackpackDuffelWeaponRifleBR64Filled
+  productEntity: ClothingBackpackDuffelWeaponRifleBR64Filled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: br64 }
+  cost:
+    Bluecrystal: 34
+  categories:
+  - ScpAutoGun
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkClothingBackpackDuffelWeaponSniperHristovFilled
+  productEntity: ClothingBackpackDuffelWeaponSniperHristovFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: hristov }
+  cost:
+    Bluecrystal: 15
+  categories:
+  - ScpAutoGun
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkClothingBackpackDuffelWeaponShotgunZauer
+  productEntity: ClothingBackpackDuffelWeaponShotgunZauerFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: zauer }
+  cost:
+    Bluecrystal: 15
+  categories:
+  - ScpAutoGun
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkClothingBackpackDuffelWeaponXM1014
+  productEntity: ClothingBackpackDuffelWeaponXM1014Filled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: xm1014 }
+  cost:
+    Bluecrystal: 7
+  categories:
+  - ScpAutoGun
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkClothingBackpackDuffelWeaponShotgun12
+  productEntity: ClothingBackpackDuffelWeaponShotgun12Filled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: spas12 }
+  cost:
+    Bluecrystal: 9
+  categories:
+  - ScpAutoGun
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+# Лазеры:
 - type: listing
   id: ScpUplinkWeaponWeaponPulseRifle
   productEntity: WeaponPulseRifle
@@ -13,7 +146,7 @@
 
 - type: listing
   id: ScpUplinkWeaponSniperPulseCarbine
-  productEntity: WeaponSniperPulseCarbine
+  productEntity: WeaponSniperPulseCarbineScp
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pulse-sc }
   cost:
     Bluecrystal: 25
@@ -37,22 +170,10 @@
 
 - type: listing
   id: ScpUplinkWeaponPulseCarbine
-  productEntity: WeaponPulseCarbine
+  productEntity: WeaponPulseCarbineScp
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pulse-c }
   cost:
     Bluecrystal: 24
-  categories:
-  - ScpLasers
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 6
-
-- type: listing
-  id: ScpUplinkWeaponLaserLNT620
-  productEntity: WeaponLaserLNT620
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: lnt620 }
-  cost:
-    Bluecrystal: 10
   categories:
   - ScpLasers
   conditions:
@@ -82,3 +203,995 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 4
+
+# Пистолеты:
+
+- type: listing
+  id: ScpUplinkWeaponSubMachineGunSkorpion
+  productEntity: WeaponSubMachineGunSkorpion
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: skorpion }
+  cost:
+    Bluecrystal: 6
+  categories:
+  - ScpPistols
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkWeaponPulsePistol
+  productEntity: WeaponPulsePistolScp
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pulse-p }
+  cost:
+    Bluecrystal: 9
+  categories:
+  - ScpPistols
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkWeaponEnergyGunPistolSecurity
+  productEntity: WeaponEnergyGunPistolSecurity
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: energygun-psec }
+  cost:
+    Bluecrystal: 4
+  categories:
+  - ScpPistols
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkWeaponPistolN1984
+  name: N1984
+  productEntity: WeaponPistolN1984
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: n1984 }
+  cost:
+    Bluecrystal: 8
+  categories:
+  - ScpPistols
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkWeaponFlareGun
+  productEntity: WeaponFlareGunSecurity
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: sec_flaregun }
+  cost:
+    Bluecrystal: 1
+  categories:
+  - ScpPistols
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+# Боеприпасы:
+
+- type: listing
+  id: ScpUplinkBoxShotgunFlare
+  productEntity: BoxShotgunFlare
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shot_flare }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkBoxMagazineRifle
+  productEntity: BoxMagazineRifle
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_rifle }
+  cost:
+    Crystallite: 5
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkMagazineMagnum
+  productEntity: MagazineMagnum
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mag_magnum }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkMagazineBoxMagnumIncendiary
+  productEntity: MagazineBoxMagnumIncendiary
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_magnum_ince }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkMagazineBoxMagnumUranium
+  productEntity: MagazineBoxMagnumUranium
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_magnum_uran }
+  cost:
+    Crystallite: 5
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkMagazineP90
+  productEntity: MagazineP90
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mag_p90 }
+  cost:
+    Crystallite: 4
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkSMGAmmoKit
+  productEntity: SMGAmmoKit
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_smg }
+  cost:
+    Crystallite: 10
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkSMGIncendiaryAmmoKit
+  productEntity: SMGIncendiaryAmmoKit
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_smg_red }
+  cost:
+    Crystallite: 14
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkSMGUraniumAmmoKit
+  productEntity: SMGUraniumAmmoKit
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_smg_uran }
+  cost:
+    Crystallite: 20
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkBoxMagazineShotgun
+  productEntity: BoxMagazineShotgun
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shot }
+  cost:
+    Crystallite: 5
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkBoxMagazineShotgunIncendiary
+  productEntity: BoxMagazineShotgunIncendiary
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shot_red }
+  cost:
+    Crystallite: 10
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkBoxMagazineShotgunSlug
+  productEntity: BoxMagazineShotgunSlug
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shot_slug }
+  cost:
+    Crystallite: 6
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkBoxMagazineShotgunBeanbag
+  productEntity: BoxMagazineShotgunBeanbag
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shot }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkMagazineBR64
+  productEntity: MagazineBR64
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mag_br64 }
+  cost:
+    Crystallite: 6
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkMagazineMachineGunMG42
+  productEntity: MagazineMachineGunMG42
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mag_mg342 }
+  cost:
+    Crystallite: 8
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkPortableRecharger
+  productEntity: PortableRecharger
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: port_recharge }
+  cost:
+    Crystallite: 15
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+# ScpExplosive:
+- type: listing
+  id: ScpUplinkBoxFlashbang
+  productEntity: BoxFlashbang
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_flashbangs }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpExplosive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkBoxTearGasGrenade
+  productEntity: BoxTearGasGrenade
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_flashbangs }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpExplosive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkBoxSmokeGrenade
+  productEntity: BoxSmokeGrenade
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_flashbangs }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpExplosive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkBoxClusterBangFull
+  productEntity: BoxClusterBangFull
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_flashbangs }
+  cost:
+    Crystallite: 4
+  categories:
+  - ScpExplosive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkBoxGrenadeStinger
+  productEntity: BoxGrenadeStinger
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_stinger }
+  cost:
+    Crystallite: 5
+  categories:
+  - ScpExplosive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkBoxGrenadeShrapnel
+  productEntity: BoxGrenadeShrapnel
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shrapnel }
+  cost:
+    Crystallite: 8
+  categories:
+  - ScpExplosive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkBoxGrenadeIncendiary
+  productEntity: BoxGrenadeIncendiary
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_incendiary }
+  cost:
+    Crystallite: 8
+  categories:
+  - ScpExplosive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+# Медицина:
+- type: listing
+  id: ScpUplinkMaterialBiomass
+  productEntity: MaterialBiomass
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: monkeycube }
+  cost:
+    Crystallite: 5
+  categories:
+  - ScpMedicine
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkDefibrillator
+  productEntity: DefibrillatorCompact
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: comp_defib }
+  cost:
+    Crystallite: 4
+  categories:
+  - ScpMedicine
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkMedkitOxygenFilled
+  productEntity: MedkitOxygenFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med-oxygen }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpMedicine
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkMedkitBruteFilled
+  productEntity: MedkitBruteFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med-brute }
+  cost:
+    Crystallite: 3
+  categories:
+  - ScpMedicine
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkMedkitRadiationFilled
+  productEntity: MedkitRadiationFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med-rad }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpMedicine
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkMedkitToxinFilled
+  productEntity: MedkitToxinFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med-toxin }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpMedicine
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkMedkitBurnFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med-burn }
+  productEntity: MedkitBurnFilled
+  cost:
+    Crystallite: 3
+  categories:
+  - ScpMedicine
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 12
+
+- type: listing
+  id: ScpUplinkMedkitCombatFilled
+  productEntity: MedkitCombatFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med-black }
+  cost:
+    Crystallite: 5
+  categories:
+  - ScpMedicine
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkDuffelScpMedicalBundleFilled
+  productEntity: ClothingBackpackDuffelScpMedicalBundleFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med_bundle }
+  cost:
+    Crystallite: 35
+  categories:
+  - ScpMedicine
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkMedipenCombatInjector
+  productEntity: MedipenCombatInjector
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: hypospray_combat }
+  cost:
+    Crystallite: 10
+  categories:
+  - ScpMedicine
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkHypospray
+  productEntity: Hypospray
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: hypospray_cmo }
+  cost:
+    Crystallite: 15
+  categories:
+  - ScpMedicine
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkHyposprayMTF
+  productEntity: HyposprayMTF
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: hypospray_ert }
+  cost:
+    Crystallite: 25
+  categories:
+  - ScpMedicine
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+# Дополнительное:
+
+- type: listing
+  id: ScpUplinkMindShieldImplants
+  productEntity: CrateMindShieldImplants
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: crate_med }
+  cost:
+    Crystallite: 8
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkPinpointerNuclear
+  productEntity: PinpointerNuclear
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: nuke_pinpointer }
+  cost:
+    Crystallite: 5
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkPinpointerUniversal
+  productEntity: PinpointerUniversal
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: universal_pinpointer }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkBoxMRE
+  productEntity: BoxMRE
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_mre }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkBoxHandcuff
+  productEntity: BoxHandcuff
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_handcuffs }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkFlash
+  productEntity: Flash
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: flash }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkStunbaton
+  productEntity: Stunbaton
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: stunbaton }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 6
+
+- type: listing
+  id: ScpUplinkDeployableBarrier
+  productEntity: DeployableBarrier
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: deploy_barrier }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkBoxMTFImplants
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_ertrattle }
+  productEntity: BoxMTFImplants
+  cost:
+    Crystallite: 5
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+# Санитария
+
+- type: listing
+  id: ScpUplinkPestSpray
+  productEntity: PestSpray
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pest_spray }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpSanitary
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 12
+
+- type: listing
+  id: ScpUplinkWeedSpray
+  productEntity: WeedSpray
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: weed_spray }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpSanitary
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 12
+
+- type: listing
+  id: ScpUplinkSprayBottleSpaceCleaner
+  productEntity: SprayBottleSpaceCleaner
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: cleaner }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpSanitary
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 12
+
+- type: listing
+  id: ScpUplinkTrashBagBlue
+  productEntity: TrashBagBlue
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: trash_bag_blue }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpSanitary
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkBoxBodyBag
+  productEntity: BoxBodyBag
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_bodybags }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpSanitary
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkBoxCleanerGrenades
+  productEntity: BoxCleanerGrenades
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_flashbangs }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpSanitary
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkAdvMopItem
+  productEntity: AdvMopItem
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: adv-mop }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpSanitary
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+# Инженерия
+- type: listing
+  id: ScpUplinkBoxLightMixed
+  productEntity: BoxLightMixed
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_light }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpEngineering
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkBoxMetalFoamGrenade
+  productEntity: BoxMetalFoamGrenade
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_flashbangs }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpEngineering
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkJawsOfLife
+  productEntity: JawsOfLife
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: jaws }
+  cost:
+    Crystallite: 4
+  categories:
+  - ScpEngineering
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkOmnitool
+  productEntity: Omnitool
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: omnitool }
+  cost:
+    Crystallite: 5
+  categories:
+  - ScpEngineering
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkPowerCellScp
+  productEntity: PowerCellScp
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: power_cell_nt }
+  cost:
+    Crystallite: 6
+  categories:
+  - ScpEngineering
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 14
+
+# Экипировка:
+- type: listing
+  id: ScpUplinkTelescopicShield
+  productEntity: TelescopicShield
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: telescopic_shield }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkRiotBulletShield
+  productEntity: RiotBulletShield
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: riot_bullet_shield }
+  cost:
+    Crystallite: 3
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkRiotLaserShield
+  productEntity: RiotLaserShield
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: riot_laser_shield }
+  cost:
+    Crystallite: 3
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkRiotShield
+  productEntity: RiotShield
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: riot_shield }
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkJetpackBlueFilled
+  productEntity: JetpackBlueFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: jet_blue }
+  cost:
+    Crystallite: 3
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkJetpackMiniFilled
+  productEntity: JetpackMiniFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mini_jet }
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkJetpackVoidFilled
+  productEntity: JetpackVoidFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: void_jet }
+  cost:
+    Crystallite: 10
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkClothingEyesNVD
+  productEntity: ClothingEyesNVDSec
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: nvd }
+  cost:
+    Crystallite: 6
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkClothingEyesGlassesThermalSec
+  productEntity: ClothingEyesGlassesThermalSec
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: thermals }
+  cost:
+    Crystallite: 11
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkEnergyDomeGeneratorBackpackNT
+  productEntity: EnergyDomeGeneratorBackpackNT
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: nanotrasen_back }
+  cost:
+    Crystallite: 15
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkEnergyDomeGeneratorPersonalNT
+  productEntity: EnergyDomeGeneratorPersonalNT
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: nanotrasen_belt }
+  cost:
+    Crystallite: 25
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+# Mechs
+- type: listing
+  id: ScpUplinkPowerCageERT
+  productEntity: PowerCageMTF
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: powercage_nt }
+  cost:
+    Crystallite: 14
+  categories:
+  - ScpMechs
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkBorgERT
+  productEntity: PlayerBorgChassisERTBattery
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: cyborg_ert }
+  cost:
+    Bluecrystal: 40
+  categories:
+  - ScpMechs
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkNTGygax
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mech_ntgygax }
+  productEntity: CrateCommandNTGygaxBundle
+  cost:
+    Bluecrystal: 85
+  categories:
+  - ScpMechs
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkMarauder
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mech_marauder }
+  productEntity: CrateCommandMarauderBundle
+  cost:
+    Bluecrystal: 120
+  categories:
+  - ScpMechs
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkSeraph
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mech_seraph }
+  productEntity: CrateCommandSeraphBundle
+  cost:
+    Bluecrystal: 160
+  categories:
+  - ScpMechs
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+
+
+# Восстановление Условий Содержания
+- type: listing
+  id: ScpUplinkRecontainmentCircuitsBoards
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationRecontainmentCircuitsBoards
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkRecontainment173
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationRecontainment173
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkRecontainment939
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationRecontainment939
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkRecontainment106
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationRecontainment106
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkRecontainment096
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationRecontainment096
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+

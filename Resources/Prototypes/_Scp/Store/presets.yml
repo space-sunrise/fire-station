@@ -5,18 +5,19 @@
   - type: Store
     name: store-preset-name-ScpUplink
     categories:
-    - NTAutoGun
+    - ScpAutoGun
     - ScpLasers
-    - NTPistols
-    - NTAmmo
-    - NTMedicine
-    - NTAdditional
-    - NTexplosive
-    - NTMechs
-    - NTSanitary
-    - NTEngineering
+    - ScpPistols
+    - ScpAmmo
+    - ScpMedicine
+    - ScpAdditional
+    - ScpExplosive
+    - ScpMechs
+    - ScpSanitary
+    - ScpEngineering
     #- NTCBURN
-    - NTEquipment
+    - ScpEquipment
+    - ScpRecontainment
     currencyWhitelist:
     - Bluecrystal
     - Crystallite

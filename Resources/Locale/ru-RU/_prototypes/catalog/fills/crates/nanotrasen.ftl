@@ -1,9 +1,9 @@
-ent-CrateCommandNTGygaxBundle = набор Nanotrasen "Гигакс"
-    .desc = Содержит набор легкобронированного меха Nanotrasen.
+ent-CrateCommandNTGygaxBundle = набор "Гигакс"
+    .desc = Содержит набор легкобронированного меха фонда SCP.
     .suffix = Заполненный
-ent-CrateCommandMarauderBundle = набор Nanotrasen "Мародёр"
-    .desc = Содержит набор тяжело бронированного меха Nanotrasen.
+ent-CrateCommandMarauderBundle = набор "Мародёр"
+    .desc = Содержит набор тяжело бронированного меха фонда SCP.
     .suffix = Заполненный
-ent-CrateCommandSeraphBundle = набор Nanotrasen "Серафим"
-    .desc = Содержит набор элитного тяжело бронированного меха Nanotrasen.
+ent-CrateCommandSeraphBundle = набор "Серафим"
+    .desc = Содержит набор элитного тяжело бронированного меха фонда SCP.
     .suffix = Заполненный

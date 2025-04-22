@@ -53,5 +53,5 @@ ent-PowerCageHighEmpty = { ent-PowerCageHigh }
     .desc = { ent-PowerCageHigh.desc }
 ent-PowerCageSyndicate = syndicate power cage
     .desc = A rechargeable power cage for big devices. Increased capacity for increased power levels.
-ent-PowerCageERT = NanoTrasen combat power cage
-    .desc = A rechargeable power cage for big devices. Increased capacity for increased power levels. Immune to EMP.
+ent-PowerCageERT = боевая энергоячейка НаноТрейзен
+    .desc = Перезаряжаемая энергетическая ячейка для больших устройств. Увеличенная ёмкость для увеличенного уровня мощности. Имеет встроенную ЭМИ защиту.
