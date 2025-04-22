@@ -7,7 +7,7 @@
   - BaseStationRecords
   - BaseStationEvacuation  # базовый эвак.. а нужен ли он?
   - BaseStationAlertLevels  # Красный итд коды, мб надо переделать
-  - BaseStationSiliconLawCrewsimov  # TODO: кастомные законы
+  - BaseFacilitySiliconLawScpDefault
   - BaseStationNanotrasen  # Дает фракцию
   - ScpComplexGoal # Цели комплекса по изучению SCP
   - BaseStationAntagsTargets  # Для предателей

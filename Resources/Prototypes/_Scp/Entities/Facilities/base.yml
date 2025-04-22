@@ -1,0 +1,6 @@
+﻿- type: entity
+  id: BaseFacilitySiliconLawScpDefault
+  abstract: true
+  components:
+  - type: SiliconLawProvider
+    laws: ScpDefault
