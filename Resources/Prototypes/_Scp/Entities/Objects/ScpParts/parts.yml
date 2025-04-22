@@ -12,7 +12,7 @@
   id: BaseScpResearchMaterial
   parent:
   - BaseScpMaterial
-  - ScpArtifactMiddle
+  - BaseScpArtifactMajor
   abstract: true
   components:
   - type: GuideHelp

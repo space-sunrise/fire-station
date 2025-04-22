@@ -8,7 +8,6 @@ using Content.Server.Administration.Managers;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.Chat.Systems;
 using Content.Server.Communications;
-using Content.Server.DeviceNetwork.Components;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.GameTicking;
 using Content.Server.GameTicking.Events;
@@ -55,6 +54,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Shared.DeviceNetwork.Components;
 
 namespace Content.Server.Shuttles.Systems;
 
@@ -622,7 +622,6 @@ public sealed partial class EmergencyShuttleSystem : EntitySystem
         AddComp(mapUid, restricted);
         // Sunrise-End
 
-        EnsureComp<AlwaysPoweredMapComponent>(mapUid);
         EnsureComp<ParallaxComponent>(mapUid, out var parallaxComponent);
         parallaxComponent.Parallax = "Grass";
         Dirty(mapUid, parallaxComponent);

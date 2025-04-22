@@ -1,20 +1,14 @@
-﻿using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
-using Content.Shared.Humanoid;
+﻿using Content.Shared.Humanoid;
+using Content.Shared.Xenoarchaeology.Artifact;
+using Content.Shared.Xenoarchaeology.Artifact.XAE;
 
 namespace Content.Server._Scp.Research.Artifacts.Effects.AddComponentsInRadius;
 
-public sealed class AddComponentsInRadiusSystem : EntitySystem
+public sealed class AddComponentsInRadiusSystem : BaseXAESystem<AddComponentsInRadiusComponent>
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<AddComponentsInRadiusComponent, ArtifactActivatedEvent>(OnActivate);
-    }
-
-    private void OnActivate(Entity<AddComponentsInRadiusComponent> ent, ref ArtifactActivatedEvent args)
+    protected override void OnActivated(Entity<AddComponentsInRadiusComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
         var coords = Transform(ent).Coordinates;
         var players = _lookup.GetEntitiesInRange<HumanoidAppearanceComponent>(coords, ent.Comp.Radius);

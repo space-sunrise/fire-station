@@ -1,20 +1,14 @@
 ﻿using Content.Server.GameTicking;
-using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
+using Content.Shared.Xenoarchaeology.Artifact;
+using Content.Shared.Xenoarchaeology.Artifact.XAE;
 
 namespace Content.Server._Scp.Research.Artifacts.Effects.StartGamerule;
 
-public sealed class ArtifactStartGameRuleSystem : EntitySystem
+public sealed class ArtifactStartGameRuleSystem : BaseXAESystem<ArtifactStartGameRuleComponent>
 {
     [Dependency] private readonly GameTicker _gameTicker = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ArtifactStartGameRuleComponent, ArtifactActivatedEvent>(OnActivate);
-    }
-
-    private void OnActivate(Entity<ArtifactStartGameRuleComponent> ent, ref ArtifactActivatedEvent args)
+    protected override void OnActivated(Entity<ArtifactStartGameRuleComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
         foreach (var (rule, amount) in ent.Comp.Rules)
         {

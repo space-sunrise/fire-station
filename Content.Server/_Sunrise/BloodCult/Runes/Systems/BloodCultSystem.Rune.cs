@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Numerics;
 using Content.Server._Sunrise.BloodCult.GameRule;
+using Content.Server._Sunrise.BloodCult.Objectives.Components;
 using Content.Server._Sunrise.BloodCult.Runes.Comps;
 using Content.Server.Atmos.Components;
 using Content.Server.Bible.Components;
@@ -93,7 +94,9 @@ namespace Content.Server._Sunrise.BloodCult.Runes.Systems
 
         private void TeleportRuneInit(EntityUid uid, CultRuneTeleportComponent component, MapInitEvent args)
         {
-            component.Label = Loc.GetString("cult-teleport-rune-default-label");
+            var xform = Transform(uid);
+            var location = FormattedMessage.RemoveMarkupOrThrow(_navMap.GetNearestBeaconString((uid, xform), true));
+            component.Label = location;
         }
 
         /*
@@ -177,15 +180,9 @@ namespace Content.Server._Sunrise.BloodCult.Runes.Systems
                 if (rule == null)
                     return false;
 
-                var targetsKilled = true;
+                var targetsKill = _bloodCultRuleSystem.TargetsKill();
 
-                var targets = _bloodCultRuleSystem.GetTargets();
-                foreach (var mindComponent in targets)
-                {
-                    targetsKilled = _mindSystem.IsCharacterDeadIc(mindComponent);
-                }
-
-                if (!targetsKilled)
+                if (!targetsKill)
                 {
                     _popupSystem.PopupEntity("Цели не были принесены в жертву.", whoCalled, whoCalled);
                     return false;
@@ -426,24 +423,24 @@ namespace Content.Server._Sunrise.BloodCult.Runes.Systems
 
             bool result;
 
-            var cultTargets = _bloodCultRuleSystem.GetTargets();
+            var cultTargets = rule.CultTargets;
+
+            var isTarget = cultTargets.ContainsKey(victim.Value);
+
+            if (isTarget)
+            {
+                result = Sacrifice(uid, victim.Value, args.User, args.Cultists, rule, isTarget);
+                args.Result = result;
+                return;
+            }
 
             if (state.CurrentState != MobState.Dead)
             {
                 var hasMind = _mindSystem.TryGetMind(victim.Value, out var mindId, out var mind);
 
-                var isTarget = false;
-                if (mind != null)
-                {
-                    foreach (var mindComponent in cultTargets)
-                    {
-                        isTarget = mind.Session == mindComponent.Session;
-                    }
-                }
-
                 var jobAllowConvert = !HasComp<MindShieldComponent>(victim.Value);
 
-                if (hasMind && jobAllowConvert && !isTarget)
+                if (hasMind && jobAllowConvert)
                 {
                     if (args.Cultists.Count < component.ConvertMinCount)
                     {
@@ -487,6 +484,14 @@ namespace Content.Server._Sunrise.BloodCult.Runes.Systems
 
             if (isTarget)
             {
+                rule.CultTargets[target] = true;
+                var query = EntityQueryEnumerator<KillCultistTargetsConditionComponent>();
+
+                while (query.MoveNext(out var obj, out var killCultistTargetsComponent))
+                {
+                    _cultistTargetsConditionSystem.RefresTitle(obj, rule.CultTargets, killCultistTargetsComponent);
+                }
+
                 _bodySystem.GibBody(target);
                 _bloodCultRuleSystem.ChangeSacrificeCount(rule, rule.SacrificeCount + 1);
 

@@ -1,49 +1,23 @@
-﻿- type: dataset
+﻿- type: localizedDataset
   id: NamesChaosLeader
   values:
-  - Командир Повстанцев
+    prefix: chaos-leader-
+    count: 1
 
-- type: dataset
+- type: localizedDataset
   id: NamesChaos
   values:
-  - Повстанец
+    prefix: chaos-soldier-
+    count: 1
 
-- type: dataset
+- type: localizedDataset
   id: NamesChaosMedic
   values:
-  - Медик Повстанцев
+    prefix: chaos-medic-
+    count: 1
 
-- type: dataset
+- type: localizedDataset
   id: LastNamesChaos
   values:
-  - Альфа
-  - Браво
-  - Чарли
-  - Дельта
-  - Эхо
-  - Фокстрот
-  - Голф
-  - Хотэл
-  - Индиа
-  - Джулиет
-  - Новембер
-  - Оскар
-  - Папа
-  - Кьюбек
-  - Ромэо
-  - Сьера
-  - Танго
-  - Юниформ
-  - Виктор
-  - Виски
-  - Филипп
-  #-------
-  - Хуэло
-  - Арбуз
-  - Парашут
-  - Зерд
-  - Дестерио
-  - Легенда
-  - Порвед
-  - Данцов
-  - Пэдро
+    prefix: chaos-last-name-
+    count: 30

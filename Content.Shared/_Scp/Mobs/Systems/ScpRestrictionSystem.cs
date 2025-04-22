@@ -3,7 +3,7 @@ using Content.Shared._Scp.ScpMask;
 using Content.Shared.Actions.Events;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Buckle.Components;
-using Content.Shared.Damage.Systems;
+using Content.Shared.Damage.Events;
 using Content.Shared.DragDrop;
 using Content.Shared.Electrocution;
 using Content.Shared.Mobs.Systems;
@@ -22,7 +22,7 @@ public sealed class ScpRestrictionSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ScpRestrictionComponent, DisarmAttemptEvent>((_, _, args) => args.Cancel());
+        SubscribeLocalEvent<ScpRestrictionComponent, DisarmAttemptEvent>((_, _, args) => args.Cancelled = true);
         SubscribeLocalEvent<ScpRestrictionComponent, ElectrocutionAttemptEvent>((_, _, args) => args.Cancel());
         SubscribeLocalEvent<ScpRestrictionComponent, TryingToSleepEvent>((_, _, args) => args.Cancelled = true);
         SubscribeLocalEvent<ScpRestrictionComponent, PullAttemptEvent>(OnPullAttempt);
@@ -34,7 +34,7 @@ public sealed class ScpRestrictionSystem : EntitySystem
 
     }
 
-    private void OnPullAttempt(EntityUid uid, ScpRestrictionComponent component, PullAttemptEvent args)
+    private static void OnPullAttempt(EntityUid uid, ScpRestrictionComponent component, PullAttemptEvent args)
     {
         if (!component.CanPull)
             args.Cancelled = true;

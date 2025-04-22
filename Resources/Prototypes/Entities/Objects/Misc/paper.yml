@@ -49,6 +49,7 @@
           Quantity: 1
   - type: Item
     size: Tiny
+  - type: PhysicalComposition
   # Sunrise edit start
   - type: EmitSoundOnPickup
     sound:
@@ -616,7 +617,7 @@
           tags:
           - Write
   - type: CargoOrderConsole
-  - type: BankClient
+    removeLimitAccess: [ "Quartermaster" ]
   - type: ActivatableUI
     verbText: qm-clipboard-computer-verb-text
     key: enum.CargoConsoleUiKey.Orders

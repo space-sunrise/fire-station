@@ -1,20 +1,20 @@
-﻿using Content.Server.Research.Systems;
-using Content.Server.Xenoarchaeology.XenoArtifacts;
-using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
+﻿/*
+using Content.Server.Research.Systems;
 using Content.Shared._Scp.Mobs.Components;
+using Content.Shared.Xenoarchaeology.Artifact;
 
 namespace Content.Server._Scp.Research.Artifacts;
 
 public sealed class ScpArtifactSystem : EntitySystem
 {
-    [Dependency] private readonly ArtifactSystem _artifact= default!;
+    [Dependency] private readonly SharedXenoArtifactSystem _artifact= default!;
     [Dependency] private readonly ResearchSystem _research = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ScpComponent, ArtifactActivatedEvent>(OnTrigger);
+        SubscribeLocalEvent<ScpComponent, XenoArtifactActivatedEvent>(OnTrigger);
     }
 
     /// <summary>
@@ -41,3 +41,4 @@ public sealed class ScpArtifactSystem : EntitySystem
     }
 
 }
+*/

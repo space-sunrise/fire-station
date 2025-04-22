@@ -26,6 +26,12 @@ namespace Content.Shared.Research.Components
 
     }
 
+    // Fire edit start - сканирование артефактов на расстоянии.
+    // Ивент будет сообщать, что при открытии окна нужно поискать на расстоянии таргет, если его нет
+    [Serializable, NetSerializable]
+    public sealed class ConsoleServerSearchForArtifactInRadius : BoundUserInterfaceMessage;
+    // Fire edit end
+
     [Serializable, NetSerializable]
     public sealed class ResearchConsoleBoundInterfaceState : BoundUserInterfaceState
     {

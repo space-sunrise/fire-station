@@ -2,33 +2,35 @@
 # Для разных сцп нужны разные пресеты
 
 - type: entity
+  id: BaseScpArtifactMajor
+  parent: BaseXenoArtifact
   abstract: true
-  id: ScpArtifactMinor
   components:
-  - type: Artifact
-    addActivateAction: false
-    pointsPerNode:
-      Scp: 500
+  - type: XenoArtifact
+    nodeCount:
+      min: 9
+      max: 13
+    effectsTable: !type:GroupSelector
+      children:
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsDefaultTable
+        weight: 3
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsUltraFunnyTable
+        weight: 1
   - type: ResearchClient
 
 - type: entity
+  id: BaseScpArtifactMinor
+  parent: BaseXenoArtifact
   abstract: true
-  id: ScpArtifactMiddle
   components:
-  - type: Artifact
-    addActivateAction: false
-    pointsPerNode:
-      Scp: 1250
-  - type: ResearchClient
-
-- type: entity
-  abstract: true
-  id: ScpArtifactMajor
-  components:
-  - type: Artifact
-    addActivateAction: false
-    pointsPerNode:
-      Scp: 2500
+  - type: XenoArtifact
+    nodeCount:
+      min: 3
+      max: 5
+    effectsTable: !type:NestedSelector
+      tableId: ScpArtifactEffectsDefaultTable
   - type: ResearchClient
 
 # Приколы-помогаторы с базовыми компонентами
@@ -37,7 +39,7 @@
   abstract: true
   parent:
   - BaseItem
-  - ScpArtifactMinor
+  - BaseScpArtifactMinor
   id: BaseItemScp
   components:
   - type: Scp
@@ -47,7 +49,7 @@
   parent:
   - BaseSimpleMob
   - MobFlammable
-  - ScpArtifactMajor
+  - BaseScpArtifactMajor
   id: BaseScp
   components:
   - type: Scp
@@ -112,6 +114,18 @@
       state: scp-173
   - type: Scp173
   - type: ShowBlinkable
+  - type: XenoArtifact
+    effectsTable: !type:GroupSelector
+      children:
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsDefaultTable
+        weight: 3
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsScp173Table
+        weight: 3
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsUltraFunnyTable
+        weight: 1
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
     baseSprintSpeed: 12
