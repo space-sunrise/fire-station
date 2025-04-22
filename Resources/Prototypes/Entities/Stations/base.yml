@@ -177,7 +177,7 @@
   abstract: true
   components:
   - type: SiliconLawProvider
-    laws: ScpDefault
+    laws: Crewsimov
 
 - type: entity
   id: BaseStationNews
