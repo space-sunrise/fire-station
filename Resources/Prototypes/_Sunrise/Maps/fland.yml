@@ -1,10 +1,10 @@
 - type: gameMap
   id: SunriseFland
-  mapName: 'Fland Installation'
+  mapName: 'Fland'
   mapPath: /Maps/_Sunrise/Station/fland.yml
   maxRandomOffset: 0
   randomRotation: false
-  minPlayers: 40
+  minPlayers: 0
   stations:
     Fland:
       stationProto: StandardNanotrasenStation
@@ -127,4 +127,5 @@
           - CleaningUp
           - HumanitarianAid
           - PersonnelRecovery
+          - CrewEducation
           #- VirusFlesh

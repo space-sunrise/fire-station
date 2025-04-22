@@ -1,21 +1,16 @@
 ﻿using Content.Server.Fluids.EntitySystems;
-using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Coordinates.Helpers;
+using Content.Shared.Xenoarchaeology.Artifact;
+using Content.Shared.Xenoarchaeology.Artifact.XAE;
 
 namespace Content.Server._Scp.Research.Artifacts.Effects.CreateSmoke;
 
-public sealed class ArtifactCreateSmokeSystem : EntitySystem
+public sealed class ArtifactCreateSmokeSystem : BaseXAESystem<ArtifactCreateSmokeComponent>
 {
     [Dependency] private readonly SmokeSystem _smokeSystem = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-        SubscribeLocalEvent<ArtifactCreateSmokeComponent, ArtifactActivatedEvent>(OnActivate);
-    }
-
-    private void OnActivate(Entity<ArtifactCreateSmokeComponent> ent, ref ArtifactActivatedEvent args)
+    protected override void OnActivated(Entity<ArtifactCreateSmokeComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
         var xform = Transform(ent);
         var smokeEntity = Spawn(ent.Comp.Prototype, xform.Coordinates.SnapToGrid());

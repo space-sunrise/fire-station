@@ -1,6 +1,7 @@
 ﻿using Content.Client.Actions;
 using Content.Client.UserInterface.Systems.Actions;
 using Content.Shared._Scp.Scp173;
+using Content.Shared.Charges.Systems;
 using Content.Shared.Examine;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -19,6 +20,7 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly IUserInterfaceManager _ui = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private readonly SharedChargesSystem _charges = default!;
 
     private Scp173Overlay _overlay = default!;
 
@@ -32,7 +34,7 @@ public sealed class Scp173System : SharedScp173System
         SubscribeLocalEvent<Scp173Component, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<Scp173Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
-        _overlay = new(_transform, _ui.GetUIController<ActionUIController>(), _actionsSystem, _physics, _examine);
+        _overlay = new(_transform, _ui.GetUIController<ActionUIController>(), _actionsSystem, _physics, _examine, _charges);
     }
 
     private void OnInit(EntityUid uid, Scp173Component component, MapInitEvent args)

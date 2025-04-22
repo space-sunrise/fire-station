@@ -1,8 +1,9 @@
-﻿using System.Linq;
+﻿/*
+using System.Linq;
 using Content.Server._Scp.Helpers;
-using Content.Server.Xenoarchaeology.XenoArtifacts;
-using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
 using Content.Shared.Item;
+using Content.Shared.Xenoarchaeology.Artifact;
+using Content.Shared.Xenoarchaeology.Artifact.Components;
 using Robust.Shared.Console;
 using Robust.Shared.Random;
 
@@ -10,7 +11,7 @@ namespace Content.Server._Scp.Research.Artifacts.Effects.CreateRandomArtifacts;
 
 public sealed partial class ArtifactCreateRandomArtifactsSystem : EntitySystem
 {
-    [Dependency] private readonly ArtifactSystem _artifactsSystem = default!;
+    [Dependency] private readonly SharedXenoArtifactSystem _artifact = default!;
     [Dependency] private readonly ScpHelpersSystem _scpHelpers = default!;
     [Dependency] private readonly IConsoleHost _console = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -21,12 +22,12 @@ public sealed partial class ArtifactCreateRandomArtifactsSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ArtifactCreateRandomArtifactsComponent, ArtifactActivatedEvent>(OnActivate);
+        SubscribeLocalEvent<ArtifactCreateRandomArtifactsComponent, XenoArtifactActivatedEvent>(OnActivate);
 
         _console.RegisterCommand("listartifacts", "Показывает список всех артефактов-предметов, созданных в результате эффекта от изучения SCP", "listartifacts", ListArtifacts);
     }
 
-    private void OnActivate(Entity<ArtifactCreateRandomArtifactsComponent> ent, ref ArtifactActivatedEvent args)
+    private void OnActivate(Entity<ArtifactCreateRandomArtifactsComponent> ent, ref XenoArtifactActivatedEvent args)
     {
         var items = EntityQuery<ItemComponent>().ToList();
         _random.Shuffle(items);
@@ -37,8 +38,9 @@ public sealed partial class ArtifactCreateRandomArtifactsSystem : EntitySystem
         {
             var entity = item.Owner;
 
-            var artifactComponent = EnsureComp<ArtifactComponent>(entity);
-            _artifactsSystem.RandomizeArtifact(entity, artifactComponent);
+            var artifactComponent = EnsureComp<XenoArtifactComponent>(entity);
+            _artifact.RandomizeArtifact(entity, artifactComponent);
         }
     }
 }
+*/

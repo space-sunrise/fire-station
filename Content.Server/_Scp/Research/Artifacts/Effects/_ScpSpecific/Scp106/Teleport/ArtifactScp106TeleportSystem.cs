@@ -1,22 +1,16 @@
 ﻿using Content.Server._Scp.Scp106.Systems;
-using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
+using Content.Shared.Xenoarchaeology.Artifact;
+using Content.Shared.Xenoarchaeology.Artifact.XAE;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Research.Artifacts.Effects._ScpSpecific.Scp106.Teleport;
 
-public sealed class ArtifactScp106TeleportSystem : EntitySystem
+public sealed class ArtifactScp106TeleportSystem : BaseXAESystem<ArtifactScp106TeleportComponent>
 {
     [Dependency] private readonly Scp106System _scp106 = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ArtifactScp106TeleportComponent, ArtifactActivatedEvent>(OnActivate);
-    }
-
-    private void OnActivate(Entity<ArtifactScp106TeleportComponent> ent, ref ArtifactActivatedEvent args)
+    protected override void OnActivated(Entity<ArtifactScp106TeleportComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
         switch (ent.Comp.Mode)
         {

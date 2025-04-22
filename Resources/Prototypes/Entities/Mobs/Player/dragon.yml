@@ -32,7 +32,7 @@
         true
   - type: NpcFactionMember
     factions:
-    - Carps
+    - Dragon
   - type: Speech
     speechVerb: LargeMob
   - type: CombatMode
@@ -55,6 +55,10 @@
     - map: [ "enum.DamageStateVisualLayers.BaseUnshaded" ]
       state: alive-unshaded
       shader: unshaded
+  # Sunrise-Start
+  - type: ExplosionResistance
+    damageCoefficient: 0.3
+  # Sunrise-End
   - type: Appearance
   - type: DamageStateVisuals
     states:
@@ -154,6 +158,11 @@
     - DoorBumpOpener
   - type: Puller
     needsHands: false
+  - type: RandomMetadata
+    nameSegments:
+    - NamesDragon
+    - NamesDragonTitle
+    nameFormat: name-format-dragon
   # Sunrise-Start
   - type: CollectiveMind
     minds:
@@ -189,6 +198,13 @@
   - type: GuideHelp
     guides:
     - MinorAntagonists
+  # Sunrise-start
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - DoorBumpOpener
+    - CarpRiftHealTarget
+  # Sunrise-end
 
 - type: entity
   categories: [ HideSpawnMenu ]

@@ -1,24 +1,18 @@
-﻿using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
-using Content.Shared.Nutrition.Components;
+﻿using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Xenoarchaeology.Artifact;
+using Content.Shared.Xenoarchaeology.Artifact.XAE;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Research.Artifacts.Effects.ModifyHunger;
 
-public sealed class ArtifactModifyHungerSystem : EntitySystem
+public sealed class ArtifactModifyHungerSystem : BaseXAESystem<ArtifactModifyHungerComponent>
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly HungerSystem _hunger = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ArtifactModifyHungerComponent, ArtifactActivatedEvent>(OnActivate);
-    }
-
-    private void OnActivate(Entity<ArtifactModifyHungerComponent> ent, ref ArtifactActivatedEvent args)
+    protected override void OnActivated(Entity<ArtifactModifyHungerComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
         var humans = _lookup.GetEntitiesInRange<HungerComponent>(Transform(ent).Coordinates, ent.Comp.Range);
 

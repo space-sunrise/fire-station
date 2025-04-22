@@ -2,6 +2,7 @@
 using Content.Client.Actions;
 using Content.Client.UserInterface.Systems.Actions;
 using Content.Shared.Actions;
+using Content.Shared.Charges.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -30,12 +31,14 @@ public sealed class Scp173Overlay : Overlay
     private readonly ActionsSystem _actionsSystem;
     private readonly SharedPhysicsSystem _physics;
     private readonly ExamineSystemShared _examine;
+    private readonly SharedChargesSystem _charges;
 
     public Scp173Overlay(SharedTransformSystem transform,
         ActionUIController controller,
         ActionsSystem actionsSystem,
         SharedPhysicsSystem physics,
-        ExamineSystemShared examine)
+        ExamineSystemShared examine,
+        SharedChargesSystem charges)
     {
         IoCManager.InjectDependencies(this);
         _transform = transform;
@@ -43,6 +46,7 @@ public sealed class Scp173Overlay : Overlay
         _actionsSystem = actionsSystem;
         _physics = physics;
         _examine = examine;
+        _charges = charges;
     }
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -60,9 +64,13 @@ public sealed class Scp173Overlay : Overlay
             baseAction is not WorldTargetActionComponent action)
             return;
 
-        if (!action.Enabled
-            || action is { Charges: 0, RenewCharges: false }
-            || action.Cooldown.HasValue && action.Cooldown.Value.End > _timing.CurTime)
+        if (!action.Enabled)
+            return;
+
+        if (_charges.IsEmpty(actionId))
+            return;
+
+        if (action.Cooldown.HasValue && action.Cooldown.Value.End > _timing.CurTime)
             return;
 
         var mousePos = _eyeManager.PixelToMap(_inputManager.MouseScreenPosition);

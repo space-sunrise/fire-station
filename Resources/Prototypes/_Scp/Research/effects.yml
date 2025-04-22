@@ -1,93 +1,81 @@
-﻿# Base scp effects
-
-- type: artifactEffect
-  id: ScpEffectLightFlicker
-  targetDepth: 0
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+﻿- type: entity
+  id: BaseScpArtifactEffect
+  parent: BaseXenoArtifactEffect
+  abstract: true
   components:
-  - type: LightFlickerArtifact
+  - type: XenoArtifactNode
+    researchPointType: Scp
 
-- type: artifactEffect
-  id: ScpEffectThrow
-  targetDepth: 0
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+- type: entity
+  id: BaseOneTimeScpArtifactEffect
+  parent: BaseOneTimeXenoArtifactEffect
+  abstract: true
   components:
-  - type: ThrowArtifact
+  - type: XenoArtifactNode
+    researchPointType: Scp
 
-- type: artifactEffect
-  id: ScpEffectShatterStructures
-  targetDepth: 1
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+# Базовые для всех СЦП эффекты
+
+- type: entity
+  id: ScpArtifactWandering
+  parent: BaseOneTimeScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
-  - type: DamageNearbyArtifact
+  - type: XAEApplyComponents
+    components:
+    - type: RandomWalk
+      minSpeed: 12
+      maxSpeed: 20
+      minStepCooldown: 1
+      maxStepCooldown: 3
+
+- type: entity
+  id: ScpArtifactThrowThingsAround
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: XAEThrowThingsAround
+
+- type: entity
+  id: ScpArtifactKnock
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: XAEKnock
+  - type: XAELightFlicker
+
+- type: entity
+  id: ScpArtifactShatterWindows
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: XenoArtifactNode
+    maxDurability: 3
+    maxDurabilityCanDecreaseBy:
+      min: 0
+      max: 2
+  - type: XAEDamageInArea
     damageChance: 0.75
+    whitelist:
+      tags:
+      - Window
     damage:
       types:
-        Structural: 400
+        Structural: 200
 
-- type: artifactEffect
-  id: ScpEffectShuffle
-  targetDepth: 1
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
-  components:
-  - type: ShuffleArtifact
-    radius: 15
-  - type: TelepathicArtifact
-    range: 15
-    messages:
-    - shuffle-artifact-popup
-
-- type: artifactEffect
-  id: ScpEffectHunger
-  targetDepth: 1
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
-  components:
-  - type: ArtifactModifyHunger
-
-- type: artifactEffect
-  id: ScpEffectThirst
-  targetDepth: 1
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
-  components:
-  - type: ArtifactModifyThirst
-
-- type: artifactEffect
+- type: entity
   id: ScpEffectBoltAirlocks
-  targetDepth: 1
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
   - type: ArtifactBoltAirlocks
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectTeslaDischarge
-  targetDepth: 2
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
-  - type: AddComponentsOnActivate
+  - type: XAEApplyComponents
     components:
     - type: LightningArcShooter
       maxLightningArc: 4
@@ -98,30 +86,14 @@
       components:
       - type: LightningArcShooter
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectSpawnEvilTwin
-  targetDepth: 3
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
   - type: ArtifactStartGameRule
     rules:
       EvilTwinSpawn: 2
-
-- type: artifactEffect
-  id: ScpEffectAnomaly
-  targetDepth: 4
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
-  components:
-  - type: SpawnArtifact
-    maxSpawns: 1
-    spawns:
-    - id: RandomAnomalySpawner
 
 
 #  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣤⣤⣤⣴⡶⠶⠶⠶⠶⠶⠶⠶⠶⠤⠤⢤⣤⣤⣤⣤⣤⣄⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -147,103 +119,72 @@
 #  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠙⠛⠛⠷⠶⠶⠶⠶⠶⠾⠛⠛⠉⠀⠀⠀⠀⠀
 
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectShuffleUltra
-  targetDepth: 5
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
-  - type: ShuffleArtifact
+  - type: XAEShuffle
     radius: 70
-  - type: TelepathicArtifact
-    range: 70
-    messages:
-    - shuffle-artifact-popup
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectPolyChair
-  targetDepth: 3
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
-  - type: PolyOthersArtifact
+  - type: XAEPolymorph
     polymorphPrototypeName: ScpEffectChair
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectPolyWatermelon
-  targetDepth: 3
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
-  - type: PolyOthersArtifact
+  - type: XAEPolymorph
     polymorphPrototypeName: ScpEffectWatermelon
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectPolyAppendix
-  targetDepth: 3
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
-  - type: PolyOthersArtifact
+  - type: XAEPolymorph
     polymorphPrototypeName: ScpEffectAppendix
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectPolyDisposal
-  targetDepth: 3
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
-  - type: PolyOthersArtifact
+  - type: XAEPolymorph
     polymorphPrototypeName: ScpEffectDisposal
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectPolyTable
-  targetDepth: 3
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
-  - type: PolyOthersArtifact
+  - type: XAEPolymorph
     polymorphPrototypeName: ScpEffectTable
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectSwap
-  targetDepth: 2
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
   - type: ArtifactScpSwap
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectCreateArtifacts
-  targetDepth: 5
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
   - type: ArtifactCreateRandomArtifacts
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectRandomTransformation
-  targetDepth: 6
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
   - type: ArtifactRandomTransformation
     prototypeBlacklist:
@@ -255,15 +196,12 @@
     - Debug
     - Spawner
 
-- type: artifactEffect
+- type: entity
   id: EffectMagnetUltra
-  targetDepth: 4
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
-  - type: AddComponentsOnActivate
+  - type: XAEApplyComponents
     components:
     - type: GravityWell
       maxRange: 80
@@ -272,13 +210,10 @@
       components:
       - type: GravityWell
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectShiftedAsciiTableAccent
-  targetDepth: 4
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
   - type: AddComponentsInRadius
     components:
@@ -290,63 +225,102 @@
 
 # Scp 939
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectSmoke939
-  targetDepth: 1
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp939
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
   - type: ArtifactCreateSmoke
     reagent: АМН-С227
     quantity: 200
     prototype: АМН-С227Smoke
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectSleep939
-  targetDepth: 0
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp939
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
   - type: ArtifactScp939Sleep
 
+- type: entity
+  id: ScpArtifactHunger
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: ArtifactModifyHunger
+
+- type: entity
+  id: ScpEffectThirst
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: ArtifactModifyThirst
+
 # Scp 106
 
-- type: artifactEffect
-  id: ScpEffectEmp106
-  targetDepth: 1
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp106
+- type: entity
+  id: ScpArtifactTeleport
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
-  - type: EmpArtifact
-    range: 12
-
-- type: artifactEffect
-  id: ScpEffectScp106Teleport
-  targetDepth: 2
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
+  - type: XAEApplyComponents
     components:
-    - Scp106
+    - type: XAERandomTeleportInvoker
+
+- type: entity
+  id: ScpArtifactEmp
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: XenoArtifactNode
+    maxDurability: 5
+    maxDurabilityCanDecreaseBy:
+      min: 0
+      max: 3
+  - type: XAEEmpInArea
+
+- type: entity
+  id: ScpArtifactShuffle
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: XAEShuffle
+  - type: XAETelepathic
+    range: 7.5
+    messages:
+    - shuffle-artifact-popup
+
+- type: entity
+  id: ScpArtifactScp106Teleport
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
   - type: ArtifactScp106Teleport
 
+- type: entity
+  id: ScpArtifactGenerateEnergy
+  parent: BaseOneTimeScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: XAEApplyComponents
+    components:
+    - type: PowerSupplier
+      supplyRate: 20000
+    - type: NodeContainer
+      examinable: true
+      nodes:
+        output_hv:
+          !type:CableDeviceNode
+          nodeGroupID: HVPower
+
 # Scp 999
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectHeal999
-  targetDepth: 1
-  effectHint: artifact-effect-data-deleted
-  whitelist:
-    components:
-    - Scp999
+  parent: BaseScpArtifactEffect
+  description: Чудесно излечивает всех существ рядом
   components:
-  - type: DamageNearbyArtifact
+  - type: XAEDamageInArea
     damageChance: 1
     radius: 8
     whitelist:
@@ -354,70 +328,81 @@
       - MobState
     damage:
       groups:
-        Brute: -50
-        Burn: -50
+        Brute: -300
+        Burn: -300
 
 # Scp 173
 
-- type: artifactEffect
-  id: ScpEffectKnock
-  targetDepth: 1
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp173
-  components:
-  - type: KnockArtifact
-    knockRange: 12
-
-- type: artifactEffect
+- type: entity
   id: ScpEffectBlind
-  targetDepth: 0
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp173
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
   - type: ArtifactScp173BlindEveryoneInRange
 
+- type: entity
+  id: ScpArtifactEffectJunkSpawn
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: XAEApplyComponents
+    applyIfAlreadyHave: true
+    refreshOnReactivate: true
+    components:
+    - type: EntityTableSpawner
+      deleteSpawnerAfterSpawn: false
+      table: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 10, 40
+        children:
+        - !type:NestedSelector
+          tableId: GenericTrashItems
+          weight: 35
+
+- type: entity
+  id: ScpArtifactEffectLightFlicker
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: XAELightFlicker
+
 # Scp 096
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectMadness096
-  targetDepth: 3
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist:
-    components:
-    - Scp096
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
   - type: ArtifactScp096Madness
 
 # Scp 457
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectIgnite
-  targetDepth: 0
-  effectHint: artifact-effect-hint-data-deleted
-  blacklist:
-    components:
-    - Scp # TODO: кастомный компонент для 457
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
-  - type: IgniteArtifact
+  - type: XAEIgnite
     range: 7
-    minFireStack: 3
-    maxFireStack: 6
+    fireStack:
+      min: 3
+      max: 6
 
 # Scp 035
 
-- type: artifactEffect
+- type: entity
   id: ScpEffectServantSpawn035
-  targetDepth: 1
-  effectHint: artifact-effect-hint-data-deleted
-  whitelist: # Fire
-    components:
-    - Scp035Mask
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
   components:
-  - type: SpawnArtifact
-    spawns:
-    - id: MobServant035
-      maxAmount: 5
+  - type: XAEApplyComponents
+    applyIfAlreadyHave: true
+    refreshOnReactivate: true
+    components:
+    - type: EntityTableSpawner
+      deleteSpawnerAfterSpawn: false
+      table: !type:GroupSelector
+        rolls: !type:RangeNumberSelector
+          range: 4, 7
+        children:
+        - id: MobServant035

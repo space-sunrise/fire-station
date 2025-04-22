@@ -1,9 +1,8 @@
-﻿- type: gameMap
+- type: gameMap
   id: SunriseBagel
-  mapName: 'Bagel Station'
+  mapName: 'Bagel'
   mapPath: /Maps/_Sunrise/Station/bagel.yml
   minPlayers: 0
-  maxPlayers: 65
   maxRandomOffset: 0
   randomRotation: false
   stations:
@@ -126,4 +125,7 @@
         - Furs
         - Crew
         - CleaningUp
+        - HumanitarianAid
+        - PersonnelRecovery
+        - CrewEducation
         #- VirusFlesh

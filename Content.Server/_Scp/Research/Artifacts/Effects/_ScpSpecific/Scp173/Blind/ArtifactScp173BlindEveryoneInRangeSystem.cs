@@ -1,20 +1,14 @@
 ﻿using Content.Server._Scp.Scp173;
-using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
+using Content.Shared.Xenoarchaeology.Artifact;
+using Content.Shared.Xenoarchaeology.Artifact.XAE;
 
 namespace Content.Server._Scp.Research.Artifacts.Effects._ScpSpecific.Scp173.Blind;
 
-public sealed class ArtifactScp173BlindEveryoneInRangeSystem : EntitySystem
+public sealed class ArtifactScp173BlindEveryoneInRangeSystem : BaseXAESystem<ArtifactScp173BlindEveryoneInRangeComponent>
 {
     [Dependency] private readonly Scp173System _scp173 = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ArtifactScp173BlindEveryoneInRangeComponent, ArtifactActivatedEvent>(OnActivate);
-    }
-
-    private void OnActivate(Entity<ArtifactScp173BlindEveryoneInRangeComponent> ent, ref ArtifactActivatedEvent args)
+    protected override void OnActivated(Entity<ArtifactScp173BlindEveryoneInRangeComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
         _scp173.BlindEveryoneInRange(ent, ent.Comp.Radius, ent.Comp.Time);
     }
