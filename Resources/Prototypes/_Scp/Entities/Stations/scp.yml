@@ -1,0 +1,15 @@
+﻿- type: entity
+  categories: [ HideSpawnMenu ]
+  id: ScpRegionalAdministration
+  abstract: true
+  parent:
+  - BaseStation
+  - BaseStationAlertLevels
+  - BaseStationNanotrasen
+  - BaseStationRecords
+  - BaseStationJobsSpawning
+  - BaseCentCommShuttles
+  - BaseStationImmortal
+  - BaseStationDontSelling
+  components:
+  - type: Transform

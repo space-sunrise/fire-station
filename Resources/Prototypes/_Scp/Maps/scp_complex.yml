@@ -15,7 +15,7 @@
             !type:ScpSiteNameGenerator
             prefixCreator: '15'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/_Sunrise/Shuttles/emergency_delta.yml
+          emergencyShuttlePath: /Maps/_Scp/Shuttles/emergency_complex.yml
         - type: StationJobs
           availableJobs:
             # SCP
@@ -35,12 +35,12 @@
             SeniorLogisticsOfficer: [ 1, 1 ]
             # Отдел внутренней безопасности
             #MentalControlOfficer: [ 1, 1 ]
-            #InternalSecurityOperative: [ 1, 1 ]
+            InternalSecurityOperative: [ 1, 1 ]
             # Комитет по этике
             #EthicsCommitteeRepresentative: [ 1, 1 ]
             # Служба внутреннего трибунала
             #JudicialInspector: [ 1, 1 ]
-            #TribunalOfficer: [ 1, 1 ]
+            TribunalOfficer: [ 1, 1 ]
             # Служба безопасности тяжелой зоны
             HeavyContainmentZoneCommandant: [ 1, 1 ]
             SeniorHeavyContainmentZoneOfficer: [ 1, 1 ]
@@ -91,13 +91,3 @@
               ExternalAdministrativeZoneOfficer: 1
               JuniorExternalAdministrativeZoneOfficer: 1
           maxCount: 16
-        - type: StationGoal
-          goals:
-          - Scp1
-          - Scp2
-          - Scp3
-          - Scp4
-          - Scp5
-          - Scp6
-          - Scp7
-          - Scp8
