@@ -1,9 +1,8 @@
 - type: gameMap
   id: SunriseLoop
-  mapName: 'Loop Station'
+  mapName: 'Loop'
   mapPath: /Maps/_Sunrise/Station/loop.yml
-  minPlayers: 35
-  maxPlayers: 70
+  minPlayers: 0
   maxRandomOffset: 0
   randomRotation: false
   stations:
@@ -16,7 +15,7 @@
             !type:NanotrasenNameGenerator
             prefixCreator: '14'
         - type: StationEmergencyShuttle
-          emergencyShuttlePath: /Maps/Shuttles/emergency_wode.yml
+          emergencyShuttlePath: /Maps/_Sunrise/Shuttles/emergency_loop.yml
         - type: StationJobs
           availableJobs:
             #command

@@ -45,6 +45,16 @@ namespace Content.Server.GameTicking
             "ss14_round_length",
             "Round length in seconds.");
 
+        // Sunrise-Start
+        private static readonly Counter MapPlayedMetric = Metrics.CreateCounter(
+            "ss14_map_played_total",
+            "Number of times each map has been played.",
+            new CounterConfiguration
+            {
+                LabelNames = ["map_id"]
+            });
+        // Sunrise-End
+
 #if EXCEPTION_TOLERANCE
         [ViewVariables]
         private int _roundStartFailCount = 0;
@@ -135,6 +145,10 @@ namespace Content.Server.GameTicking
 
             // Let game rules dictate what maps we should load.
             RaiseLocalEvent(new LoadingMapsEvent(maps));
+            // Sunrise-Start
+            MapPlayedMetric.WithLabels(mainStationMap.ID).Inc();
+            _gameMapManager.AddExcludedMap(mainStationMap.ID);
+            // Sunrise-End
 
             if (maps.Count == 0)
             {
@@ -665,6 +679,9 @@ namespace Content.Server.GameTicking
             // Handle restart for server update
             if (_serverUpdates.RoundEnded())
                 return;
+
+            // Check if the GamePreset needs to be reset
+            TryResetPreset();
 
             _sawmill.Info("Restarting round!");
 

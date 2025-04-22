@@ -1,7 +1,6 @@
 ﻿using Content.Server.Administration.Systems;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Hands.Systems;
-using Content.Server.Mind;
 using Content.Server.NPC.HTN;
 using Content.Server.Zombies;
 using Content.Shared._Scp.Mobs.Components;
@@ -14,6 +13,7 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
+using Robust.Shared.Player;
 
 namespace Content.Server._Scp.Scp049;
 
@@ -23,9 +23,9 @@ public sealed partial class Scp049System
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private readonly RejuvenateSystem _rejuvenateSystem = default!;
     [Dependency] private readonly ZombieSystem _zombieSystem = default!;
-    [Dependency] private readonly MindSystem _mindSystem = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
     [Dependency] private readonly HandsSystem _handsSystem = default!;
+    [Dependency] private readonly ISharedPlayerManager _player = default!;
 
     private void InitializeActions()
     {
@@ -213,8 +213,8 @@ public sealed partial class Scp049System
 
     private void TryMakeAGhostRole(EntityUid minionUid)
     {
-        if (_mindSystem.TryGetMind(minionUid, out _, out var mindComponent) &&
-            _mindSystem.TryGetSession(mindComponent, out _))
+        // Если игрок в теле, то не даем призракам возможности занять его тело
+        if (_player.TryGetSessionByEntity(minionUid, out _))
             return;
 
         var ghostRoleComponent = EnsureComp<GhostRoleComponent>(minionUid);

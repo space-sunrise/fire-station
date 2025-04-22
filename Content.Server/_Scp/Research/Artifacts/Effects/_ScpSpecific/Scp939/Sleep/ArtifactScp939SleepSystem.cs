@@ -1,23 +1,17 @@
 ﻿using Content.Server._Scp.Scp939;
-using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
 using Content.Shared._Scp.Scp939;
+using Content.Shared.Xenoarchaeology.Artifact;
+using Content.Shared.Xenoarchaeology.Artifact.XAE;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Research.Artifacts.Effects._ScpSpecific.Scp939.Sleep;
 
-public sealed class ArtifactScp939SleepSystem : EntitySystem
+public sealed class ArtifactScp939SleepSystem : BaseXAESystem<ArtifactScp939SleepComponent>
 {
     [Dependency] private readonly Scp939System _scp939 = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ArtifactScp939SleepComponent, ArtifactActivatedEvent>(OnActivate);
-    }
-
-    private void OnActivate(Entity<ArtifactScp939SleepComponent> ent, ref ArtifactActivatedEvent args)
+    protected override void OnActivated(Entity<ArtifactScp939SleepComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
         if (!TryComp<Scp939Component>(ent, out var scp939Component))
             return;

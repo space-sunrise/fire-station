@@ -6,6 +6,7 @@ using Content.Server.Station.Systems;
 using Content.Server.Store.Systems;
 using Content.Shared._Sunrise.StatsBoard;
 using Content.Shared.Bed.Sleep;
+using Content.Shared.Cargo.Components;
 using Content.Shared.Clumsy;
 using Content.Shared.Construction;
 using Content.Shared.Cuffs.Components;
@@ -39,6 +40,7 @@ public sealed class StatsBoardSystem : EntitySystem
     [Dependency] private readonly MindSystem _mindSystem = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
+    [Dependency] private readonly ISharedPlayerManager _player = default!;
 
     private (EntityUid? killer, EntityUid? victim, TimeSpan time) _firstMurder = (null, null, TimeSpan.Zero);
     private EntityUid? _hamsterKiller;
@@ -66,10 +68,10 @@ public sealed class StatsBoardSystem : EntitySystem
 
     private void OnMindAdded(EntityUid uid, ActorComponent comp, MindAddedMessage ev)
     {
-        if (_statisticEntries.ContainsKey(uid) || ev.Mind.Comp.Session == null || HasComp<GhostComponent>(uid))
+        if (_statisticEntries.ContainsKey(uid) || ev.Mind.Comp.UserId == null || HasComp<GhostComponent>(uid))
             return;
 
-        var value = new StatisticEntry(MetaData(uid).EntityName, ev.Mind.Comp.Session.UserId);
+        var value = new StatisticEntry(MetaData(uid).EntityName, ev.Mind.Comp.UserId.Value);
         _statisticEntries.Add(uid, value);
     }
 
@@ -530,7 +532,13 @@ public sealed class StatsBoardSystem : EntitySystem
         var bank = GetBankAccount(station);
 
         if (bank != null)
-            result += Loc.GetString("statsentry-bank-balance", ("balance", bank.Balance)) + "\n";
+        {
+            result += Loc.GetString("statsentry-bank-balance-total", ("balance", bank.Accounts.Values.Sum())) + "\n";
+            foreach (var (account, balance) in bank.Accounts)
+            {
+                result += Loc.GetString("statsentry-bank-balance-account", ("account", Loc.GetString(account)), ("balance", balance)) + "\n";
+            }
+        }
 
         if (_firstMurder.victim != null)
         {
@@ -743,9 +751,9 @@ public sealed class StatsBoardSystem : EntitySystem
     {
         string? username = null;
 
-        if (_mindSystem.TryGetMind(uid, out var mindId, out var mind))
+        if (_mindSystem.TryGetMind(uid, out var mindId, out var mind) && _player.TryGetSessionById(mind.UserId, out var session))
         {
-            username = mind.Session?.Name;
+            username = session.Name;
         }
 
         return username;

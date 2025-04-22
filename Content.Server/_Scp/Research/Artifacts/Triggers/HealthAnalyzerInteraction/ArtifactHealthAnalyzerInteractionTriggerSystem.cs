@@ -1,24 +1,25 @@
-﻿using Content.Server.Xenoarchaeology.XenoArtifacts;
-using Content.Shared._Scp.Research.Artifacts;
+﻿using Content.Shared._Scp.Research.Artifacts;
+using Content.Shared.Xenoarchaeology.Artifact.Components;
+using Content.Shared.Xenoarchaeology.Artifact.XAT;
 
 namespace Content.Server._Scp.Research.Artifacts.Triggers.HealthAnalyzerInteraction;
 
-public sealed class ArtifactHealthAnalyzerInteractionTriggerSystem : EntitySystem
+public sealed class ArtifactHealthAnalyzerInteractionTriggerSystem : BaseXATSystem<ArtifactHealthAnalyzerInteractionTriggerComponent>
 {
-    [Dependency] private readonly ArtifactSystem _artifactSystem = default!;
-
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ArtifactHealthAnalyzerInteractionTriggerComponent, EntityAnalyzedEvent>(OnInteract);
+        XATSubscribeDirectEvent<EntityAnalyzedEvent>(OnAnalyzed);
     }
 
-    private void OnInteract(Entity<ArtifactHealthAnalyzerInteractionTriggerComponent> target, ref EntityAnalyzedEvent args)
+    private void OnAnalyzed(Entity<XenoArtifactComponent> artifact, Entity<ArtifactHealthAnalyzerInteractionTriggerComponent, XenoArtifactNodeComponent> node, ref EntityAnalyzedEvent args)
     {
         if (args.Handled)
             return;
 
-        args.Handled = _artifactSystem.TryActivateArtifact(target);
+        Trigger(artifact, node);
+        args.Handled = true;
     }
 }
+

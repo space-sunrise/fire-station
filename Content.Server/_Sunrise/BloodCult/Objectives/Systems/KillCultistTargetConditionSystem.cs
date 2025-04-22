@@ -21,39 +21,28 @@ public sealed class KillCultistTargetsConditionSystem : EntitySystem
         SubscribeLocalEvent<KillCultistTargetsConditionComponent, ObjectiveGetProgressEvent>(OnGetProgress);
 
         SubscribeLocalEvent<KillCultistTargetsConditionComponent, ObjectiveAssignedEvent>(OnPersonAssigned);
-        SubscribeLocalEvent<KillCultistTargetsConditionComponent, ObjectiveAfterAssignEvent>(OnAfterAssign);
     }
 
-    public void SetTargets(EntityUid uid, KillCultistTargetsConditionComponent comp, List<EntityUid> targets)
+    public void RefresTitle(EntityUid uid, Dictionary<EntityUid, bool> targets, KillCultistTargetsConditionComponent comp)
     {
-        comp.Targets = targets;
+        _metaData.SetEntityName(uid, GetTitle(targets, comp.Title));
     }
 
-    public void RefresTitle(EntityUid uid, KillCultistTargetsConditionComponent comp)
-    {
-        _metaData.SetEntityName(uid, GetTitle(comp.Targets, comp.Title));
-    }
-
-    private void OnAfterAssign(EntityUid uid,
-        KillCultistTargetsConditionComponent comp,
-        ref ObjectiveAfterAssignEvent args)
-    {
-        _metaData.SetEntityName(uid, GetTitle(comp.Targets, comp.Title), args.Meta);
-    }
-
-    private string GetTitle(List<EntityUid> targets, string title)
+    private string GetTitle(Dictionary<EntityUid, bool> targets, string title)
     {
         var targetsList = "";
         foreach (var target in targets)
         {
-            if (!TryComp<MindComponent>(target, out var mind) || mind.CharacterName == null)
+            if (!_mind.TryGetMind(target.Key, out var mindId, out var mind) || mind.CharacterName == null)
                 continue;
 
             var targetName = mind.CharacterName;
-            var jobName = _job.MindTryGetJobName(target);
+            var jobName = _job.MindTryGetJobName(mindId);
+            var sacrificed = target.Value ? "\u2714" : "\u2718";
             targetsList += Loc.GetString("objective-condition-cult-kill-target",
                 ("targetName", targetName),
-                ("job", jobName));
+                ("job", jobName),
+                ("status", sacrificed));
             targetsList += "\n";
         }
 
@@ -64,35 +53,22 @@ public sealed class KillCultistTargetsConditionSystem : EntitySystem
         KillCultistTargetsConditionComponent comp,
         ref ObjectiveGetProgressEvent args)
     {
-        args.Progress = KillCultistTargetsProgress(args.MindId);
+        args.Progress = KillCultistTargetsProgress();
     }
 
     private void OnPersonAssigned(EntityUid uid,
         KillCultistTargetsConditionComponent component,
         ref ObjectiveAssignedEvent args)
     {
-        // target already assigned
-        if (component.Targets.Count != 0)
+        var cultistRule = EntityManager.EntityQuery<BloodCultRuleComponent>().FirstOrDefault();
+
+        if (cultistRule == null)
             return;
 
-        var cultistRule = EntityManager.EntityQuery<BloodCultRuleComponent>().FirstOrDefault();
-        Debug.Assert(cultistRule != null, nameof(cultistRule) + " != null");
-        var cultTargets = cultistRule.CultTargets;
-
-        component.Targets = cultTargets;
+        _metaData.SetEntityName(uid, GetTitle(cultistRule.CultTargets, component.Title));
     }
 
-    private bool GetTagretProgress(EntityUid target)
-    {
-        // deleted or gibbed or something, counts as dead
-        if (!TryComp<MindComponent>(target, out var mind) || mind.OwnedEntity == null)
-            return true;
-
-        // dead is success
-        return _mind.IsCharacterDeadIc(mind);
-    }
-
-    private float KillCultistTargetsProgress(EntityUid? mindId)
+    private float KillCultistTargetsProgress()
     {
         var cultistRule = EntityManager.EntityQuery<BloodCultRuleComponent>().FirstOrDefault();
         Debug.Assert(cultistRule != null, nameof(cultistRule) + " != null");
@@ -108,7 +84,7 @@ public sealed class KillCultistTargetsConditionSystem : EntitySystem
 
         foreach (var cultTarget in cultTargets)
         {
-            if (GetTagretProgress(cultTarget))
+            if (cultTarget.Value)
             {
                 deadTargetsCount += 1;
             }

@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using Content.Server._Scp.Helpers;
-using Content.Server.Xenoarchaeology.XenoArtifacts.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Item;
+using Content.Shared.Xenoarchaeology.Artifact;
+using Content.Shared.Xenoarchaeology.Artifact.XAE;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -10,7 +11,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Research.Artifacts.Effects.RandomTransformation;
 
-public sealed class ArtifactRandomTransformationSystem : EntitySystem
+public sealed class ArtifactRandomTransformationSystem : BaseXAESystem<ArtifactRandomTransformationComponent>
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
@@ -19,14 +20,7 @@ public sealed class ArtifactRandomTransformationSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
 
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<ArtifactRandomTransformationComponent, ArtifactActivatedEvent>(OnActivate);
-    }
-
-    private void OnActivate(Entity<ArtifactRandomTransformationComponent> ent, ref ArtifactActivatedEvent args)
+    protected override void OnActivated(Entity<ArtifactRandomTransformationComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
         var coords = Transform(ent).Coordinates;
         var entities = _lookup.GetEntitiesInRange<ItemComponent>(coords, ent.Comp.Radius)
@@ -42,7 +36,7 @@ public sealed class ArtifactRandomTransformationSystem : EntitySystem
     private void SearchPlayersInventoryForItems(Entity<ArtifactRandomTransformationComponent> ent, EntityCoordinates coords, out HashSet<EntityUid> items)
     {
         var players = _lookup.GetEntitiesInRange<InventoryComponent>(coords, ent.Comp.Radius);
-        items = new HashSet<EntityUid>();
+        items = [];
 
         foreach (var player in players)
         {
@@ -78,9 +72,9 @@ public sealed class ArtifactRandomTransformationSystem : EntitySystem
                 continue;
 
             /*
-             * TODO: Обработка ентити в конейтейнерах
-             * Требуется сделать проверку, что если ентити находится в конейнере
-             * То после создания нового оно помещается в тот же слот конейтенера
+             * TODO: Обработка ентити в контейнерах
+             * Требуется сделать проверку, что если ентити находится в контейнере
+             * То после создания нового оно помещается в тот же слот контейнера
              */
 
             Spawn(prototype.ID, _transform.GetMapCoordinates(item));
