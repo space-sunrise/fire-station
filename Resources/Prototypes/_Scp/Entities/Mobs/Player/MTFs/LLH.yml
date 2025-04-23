@@ -95,7 +95,7 @@
     shoes: ClothingShoesBootsMagAdv
     #head ClothingHelmetMTF
     mask: ClothingMaskGasLLH
-    eyes: ClothingEyesNVD
+    eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHeavyLLH
     id: LLHLeaderPDA
@@ -196,7 +196,7 @@
     shoes: ClothingShoesBootsMagAdv
     #head ClothingHelmetMTF
     mask: ClothingMaskGasLLH
-    eyes: ClothingEyesNVD
+    eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHeavyLLH
     id: LLHSpecialistPDA
@@ -289,7 +289,7 @@
     shoes: ClothingShoesBootsMagAdv
     #head ClothingHelmetMTF
     mask: ClothingMaskGasLLH
-    eyes: ClothingEyesNVD
+    eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHeavyLLH
     id: LLHCadetPDA

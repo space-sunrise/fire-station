@@ -39,7 +39,7 @@
   description: description
   id: NineTailedFoxCommanderVest
   name: nine tailed fox commander vest
-  parent: [ClothingOuterVestWeb, BaseCentcommContraband]
+  parent: [AllowSuitStorageClothing, ClothingOuterStorageBase, BaseCentcommContraband]
   suffix: SCP
   type: entity
 - components:
@@ -47,6 +47,15 @@
     type: Sprite
   - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderWebbing.rsi
     type: Clothing
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6 #ballistic plates = better protection
+        Slash: 0.6
+        Piercing: 0.3
+        Heat: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
   description: description
   id: NineTailedFoxCommanderWebbing
   name: nine tailed fox commander webbing
@@ -171,7 +180,7 @@
   description: description
   id: NineTailedFoxVest
   name: nine tailed fox vest
-  parent: [ClothingOuterVestWeb, BaseCentcommContraband]
+  parent: [NineTailedFoxCommanderVest, BaseCentcommContraband]
   suffix: SCP
   type: entity
 - components:
