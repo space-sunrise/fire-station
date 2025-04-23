@@ -22,10 +22,6 @@
   categories: [ HideSpawnMenu ]
   abstract: true
   components:
-  - type: Pda
-    state: pda-ert
-  - type: Icon
-    state: pda-ert
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
