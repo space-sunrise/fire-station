@@ -5,7 +5,6 @@
 
 #MTF uplink categoires
 - type: storeCategory
-  parent: NTAutoGun
   id: ScpAutoGun
   name: store-category-ntautogun
   priority: 0

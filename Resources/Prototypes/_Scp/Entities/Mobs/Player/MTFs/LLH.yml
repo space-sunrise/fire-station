@@ -369,3 +369,12 @@
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: LLH
   jobName: МОГ Омега-1
+
+- type: playTimeTracker
+  id: JobLLHLeader
+
+- type: playTimeTracker
+  id: JobLLHSpecialist
+
+- type: playTimeTracker
+  id: JobLLHCadet

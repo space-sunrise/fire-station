@@ -394,3 +394,12 @@
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: MH
   jobName: МОГ Бета-7
+
+- type: playTimeTracker
+  id: JobMHLeader
+
+- type: playTimeTracker
+  id: JobMHSpecialist
+
+- type: playTimeTracker
+  id: JobMHCadet

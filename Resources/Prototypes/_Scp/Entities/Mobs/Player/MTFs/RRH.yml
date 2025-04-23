@@ -396,3 +396,12 @@
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: RRH
   jobName: МОГ Альфа-1
+
+- type: playTimeTracker
+  id: JobRRHLeader
+
+- type: playTimeTracker
+  id: JobRRHSpecialist
+
+- type: playTimeTracker
+  id: JobRRHCadet

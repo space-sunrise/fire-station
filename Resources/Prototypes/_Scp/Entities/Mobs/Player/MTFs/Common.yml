@@ -41,7 +41,6 @@
 
 ### ------=========[Вещи]=========------ ###
 - type: entity
-  suffix: MTF | МОГ
   parent: [NineTailedFoxGasmask, BaseCentcommContraband]
   id: ClothingMaskMTF
   components:
@@ -70,6 +69,7 @@
 - type: entity
   parent: [NineTailedFoxWebbing, BaseCentcommContraband]
   id: MTFWebbing
+
 - type: entity
   parent: [NineTailedFoxCommanderWebbing, BaseCentcommContraband]
   id: MTFCommanderWebbing
