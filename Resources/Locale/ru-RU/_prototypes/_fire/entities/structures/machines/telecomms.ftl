@@ -4,44 +4,44 @@
 
 ent-TelecomServerFilledAdministration = { ent-TelecomServer }
     .desc = { ent-TelecomServer.desc }
-    .suffix = { department-administration-name }
+    .suffix = { department-Administration }
 
 ent-TelecomServerFilledInternalSecurity = { ent-TelecomServer }
     .desc = { ent-TelecomServer.desc }
-    .suffix = { department-internal-security-name }
+    .suffix = { department-InternalSecurity }
 
 ent-TelecomServerFilledEthicsCommittee = { ent-TelecomServer }
     .desc = { ent-TelecomServer.desc }
-    .suffix = { department-ethics-committee-name }
+    .suffix = { department-EthicsCommittee }
 
 ent-TelecomServerFilledInternalTribunalService = { ent-TelecomServer }
     .desc = { ent-TelecomServer.desc }
-    .suffix = { department-internal-tribunal-name }
+    .suffix = { department-InternalTribunalService }
 
 ent-TelecomServerFilledHeavyContainmentSecurityService = { ent-TelecomServer }
     .desc = { ent-TelecomServer.desc }
-    .suffix = { department-heavy-containment-security-service-name }
+    .suffix = { department-HeavyContainmentSecurityService }
 
 ent-TelecomServerFilledExternalAdministrativeSecurityService = { ent-TelecomServer }
     .desc = { ent-TelecomServer.desc }
-    .suffix = { department-external-administrative-zone-security-service-name }
+    .suffix = { department-ExternalAdministrativeZoneSecurityService }
 
 ent-TelecomServerFilledScientificService = { ent-TelecomServer }
     .desc = { ent-TelecomServer.desc }
-    .suffix = { department-scientific-service-name }
+    .suffix = { department-ScientificService }
 
 ent-TelecomServerFilledMedicalService = { ent-TelecomServer }
     .desc = { ent-TelecomServer.desc }
-    .suffix = { department-medical-service-name }
+    .suffix = { department-MedicalService }
 
 ent-TelecomServerFilledEngineeringTechnicalService = { ent-TelecomServer }
     .desc = { ent-TelecomServer.desc }
-    .suffix = { department-engineering-technical-service-name }
+    .suffix = { department-EngineeringTechnicalService }
 
 ent-TelecomServerFilledLogistics = { ent-TelecomServer }
     .desc = { ent-TelecomServer.desc }
-    .suffix = { department-logistics-service-name }
+    .suffix = { department-LogisticsService }
 
 ent-TelecomServerFilledFoodAndSanitationDepartment = { ent-TelecomServer }
     .desc = { ent-TelecomServer.desc }
-    .suffix = { department-food-and-sanitation-service-name }
+    .suffix = { department-FoodAndSanitationServiceDepartment }
