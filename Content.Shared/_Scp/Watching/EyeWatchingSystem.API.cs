@@ -8,7 +8,7 @@ using Content.Shared.Mobs.Systems;
 
 namespace Content.Shared._Scp.Watching;
 
-public sealed class EyeWatchingSystem : EntitySystem
+public sealed partial class EyeWatchingSystem
 {
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
     [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
@@ -44,7 +44,7 @@ public sealed class EyeWatchingSystem : EntitySystem
     {
         var eyes = GetWatchers(ent);
 
-        var isWatched = IsWatchedBy(ent, eyes, out var count , useFov, fovOverride);
+        var isWatched = IsWatchedBy(ent, eyes, out int count , useFov, fovOverride);
         watchersCount = count;
 
         return isWatched;
@@ -94,10 +94,27 @@ public sealed class EyeWatchingSystem : EntitySystem
     /// <returns>Смотрит ли хоть кто-то на цель</returns>
     public bool IsWatchedBy(EntityUid target, IEnumerable<EntityUid> watchers, out int watchersCount, bool useFov = true, float? fovOverride = null)
     {
-        watchersCount = watchers
-            .Count(eye => !IsEyeBlinded(eye, target, useFov, fovOverride));
+        var isWatched = IsWatchedBy(target, watchers, out IEnumerable<EntityUid> viewers, useFov, fovOverride);
+        watchersCount = viewers.Count();
 
-        return watchersCount != 0;
+        return isWatched;
+    }
+
+    /// <summary>
+    /// Проверяет, смотрят ли переданные сущности на указанную цель. Передает список всех сущностей, что действительно смотрят на цель
+    /// </summary>
+    /// <param name="target">Цель</param>
+    /// <param name="watchers">Список сущностей для проверки</param>
+    /// <param name="viewers">Список всех сущностей, что действительно смотрят на цель</param>
+    /// <param name="useFov">Нужно ли проверять, находится ли цель в поле зрения сущности</param>
+    /// <param name="fovOverride">Если нужно перезаписать угол поля зрения</param>
+    /// <returns>Смотрит ли хоть кто-то на цель</returns>
+    public bool IsWatchedBy(EntityUid target, IEnumerable<EntityUid> watchers, out IEnumerable<EntityUid> viewers, bool useFov = true, float? fovOverride = null)
+    {
+        viewers = watchers
+            .Where(eye => !IsEyeBlinded(eye, target, useFov, fovOverride));
+
+        return viewers.Any();
     }
 
     /// <summary>
@@ -115,6 +132,9 @@ public sealed class EyeWatchingSystem : EntitySystem
 
         if (_mobState.IsIncapacitated(viewer))
             return true;
+
+        if (viewer.Owner == target)
+            return false;
 
         // Проверяем, видит ли смотрящий цель
         if (useFov & !IsInViewAngle(viewer, target, fovOverride ?? DefaultFieldOfViewAngle))

@@ -6,7 +6,6 @@ using Content.Shared.Audio;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Doors.Components;
-using Content.Shared.Examine;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -26,8 +25,6 @@ namespace Content.Shared._Scp.Scp096;
 public abstract partial class SharedScp096System : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifierSystem = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSoundSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
@@ -44,6 +41,8 @@ public abstract partial class SharedScp096System : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+
+        SubscribeLocalEvent<Scp096Component, EntitySeenEvent>(OnSeen);
 
         SubscribeLocalEvent<Scp096Component, AttackAttemptEvent>(OnAttackAttempt);
         SubscribeLocalEvent<Scp096Component, AttemptPacifiedAttackEvent>(OnPacifiedAttackAttempt);
@@ -75,11 +74,6 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void UpdateScp096(Entity<Scp096Component> scpEntity)
     {
-        if (!CanBeAggro(scpEntity))
-            return;
-
-        FindTargets(scpEntity);
-
         if (!scpEntity.Comp.InRageMode)
             return;
 
@@ -98,6 +92,11 @@ public abstract partial class SharedScp096System : EntitySystem
     #endregion
 
     #region Event handlers
+
+    private void OnSeen(Entity<Scp096Component> ent, ref EntitySeenEvent args)
+    {
+        TryAddTarget(ent, args.Viewer);
+    }
 
     private void OnSpcStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
     {
@@ -164,10 +163,10 @@ public abstract partial class SharedScp096System : EntitySystem
 
     public bool TryAddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid, bool ignoreAngle = false, bool ignoreMask = false)
     {
-        if (!IsValidTarget(scpEntity, targetUid, ignoreAngle))
+        if (!CanBeAggro(scpEntity, ignoreMask))
             return false;
 
-        if (!CanBeAggro(scpEntity, ignoreMask))
+        if (!IsValidTarget(scpEntity, targetUid, ignoreAngle))
             return false;
 
         AddTarget(scpEntity, targetUid);
@@ -221,20 +220,10 @@ public abstract partial class SharedScp096System : EntitySystem
         }
     }
 
-    private void FindTargets(Entity<Scp096Component> scpEntity)
-    {
-        var watchers = _watching.GetWatchers(scpEntity.Owner);
-
-        foreach (var targetUid in watchers)
-        {
-            TryAddTarget(scpEntity, targetUid);
-        }
-    }
-
     private bool IsValidTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid, bool ignoreAngle = false)
     {
         // Проверяем, может ли цель видеть 096. Без учета поля зрения
-        if (!_watching.IsWatchedBy(targetUid, [targetUid], out _, false))
+        if (!_watching.IsWatchedBy(targetUid, [targetUid], viewers: out _ , false))
             return false;
 
         // Проверяем, есть ли у цели защита от 096

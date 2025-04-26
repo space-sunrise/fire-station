@@ -13,6 +13,7 @@
     - state: walking
       map: [ "base" ]
   - type: Scp096
+  - type: WatchingTarget
   - type: ShowBlinkable
   - type: Pullable
   - type: MeleeWeapon
