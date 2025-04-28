@@ -315,7 +315,7 @@
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: MH
-  jobName: МОГ Бета-7
+  jobName: mobile-task-force-MH-name
 
 - type: playTimeTracker
   id: JobMHLeader

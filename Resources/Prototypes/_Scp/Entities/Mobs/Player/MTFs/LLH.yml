@@ -1,5 +1,5 @@
-﻿# ID карта
-#Командир
+﻿# ID КАРТА
+# Командир
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardLLHLeader
@@ -7,7 +7,7 @@
   components:
   - type: PresetIdCard
     job: LLHLeader
-#Специалист
+# Специалист
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardLLHSpecialist
@@ -15,7 +15,7 @@
   components:
   - type: PresetIdCard
     job: LLHSpecialist
-#Кадет
+# Кадет
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardLLHCadet
@@ -24,28 +24,28 @@
   - type: PresetIdCard
     job: LLHCadet
 # КПК
-#Командир
+# Командир
 - type: entity
   parent: BaseMTFPDA
   id: LLHLeaderPDA
   components:
   - type: Pda
     id: IDCardLLHLeader
-#Специалист
+# Специалист
 - type: entity
   parent: BaseMTFPDA
   id: LLHSpecialistPDA
   components:
   - type: Pda
     id: IDCardLLHSpecialist
-#Кадет
+# Кадет
 - type: entity
   parent: BaseMTFPDA
   id: LLHCadetPDA
   components:
   - type: Pda
     id: IDCardLLHCadet
-#---------------------кастом вещи группы
+# кастом вещи группы
 - type: entity
   categories: [ HideSpawnMenu ]
   parent: ClothingDeathSquadronBackpack
@@ -302,7 +302,7 @@
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: LLH
-  jobName: МОГ Омега-1
+  jobName: mobile-task-force-LLH-name
 
 - type: playTimeTracker
   id: JobLLHLeader

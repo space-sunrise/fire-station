@@ -1,5 +1,5 @@
-﻿# ID карта
-#Командир
+﻿# ID КАРТА
+# Командир
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardRRHLeader
@@ -7,7 +7,7 @@
   components:
   - type: PresetIdCard
     job: RRHLeader
-#Специалист
+# Специалист
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardRRHSpecialist
@@ -15,7 +15,7 @@
   components:
   - type: PresetIdCard
     job: RRHSpecialist
-#Кадет
+# Кадет
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardRRHCadet
@@ -24,37 +24,37 @@
   - type: PresetIdCard
     job: RRHCadet
 # КПК
-#Командир
+# Командир
 - type: entity
   parent: BaseMTFPDA
   id: RRHLeaderPDA
   components:
   - type: Pda
     id: IDCardRRHLeader
-#Специалист
+# Специалист
 - type: entity
   parent: BaseMTFPDA
   id: RRHSpecialistPDA
   components:
   - type: Pda
     id: IDCardRRHSpecialist
-#Кадет
+# Кадет
 - type: entity
   parent: BaseMTFPDA
   id: RRHCadetPDA
   components:
   - type: Pda
     id: IDCardRRHCadet
-#---------------------кастом вещи группы
+# кастом вещи группы
 - type: entity
   parent: ClothingMaskGasDeathSquad
   id: ClothingMaskGasRRH
-#========================================
+
 - type: entity
   categories: [ HideSpawnMenu ]
   parent: ClothingDeathSquadronBackpack
   id: ClothingBackpackRRH
-#========================================
+
 - type: entity
   categories: [ HideSpawnMenu ]
   parent: ClothingHeadHelmetHardsuitDeathsquad
@@ -64,7 +64,7 @@
     components:
     - type: Scp096Protection
       problemChance: 0.002 # 0,2% каждый тик проебаться
-#========================================
+
 - type: entity
   parent: ClothingOuterHardsuitDeathsquad
   id: ClothingOuterHardsuitRRH
@@ -384,7 +384,7 @@
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: RRH
-  jobName: МОГ Альфа-1
+  jobName: mobile-task-force-RRH-name
 
 - type: playTimeTracker
   id: JobRRHLeader
