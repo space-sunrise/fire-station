@@ -23,6 +23,7 @@
   components:
   - type: PresetIdCard
     job: LLHCadet
+
 # КПК
 # Командир
 - type: entity
@@ -45,6 +46,7 @@
   components:
   - type: Pda
     id: IDCardLLHCadet
+
 # кастом вещи группы
 - type: entity
   categories: [ HideSpawnMenu ]

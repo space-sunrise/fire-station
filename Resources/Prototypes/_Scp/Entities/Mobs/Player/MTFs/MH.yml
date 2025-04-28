@@ -1,4 +1,4 @@
-﻿# ID карта
+﻿# ID КАРТА
 # Командир
 - type: entity
   parent: IDCardMTFStandard
@@ -23,6 +23,7 @@
   components:
   - type: PresetIdCard
     job: MHCadet
+
 # КПК
 # Командир
 - type: entity
@@ -45,6 +46,7 @@
   components:
   - type: Pda
     id: IDCardMHCadet
+
 # кастом вещи группы
 - type: entity
   parent: ClothingOuterHardsuitCBURN
