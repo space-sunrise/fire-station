@@ -7,7 +7,7 @@ ent-ClothingUniformRRH = униформа "Альфа-1"
 ent-ClothingUniformLLH = униформа "Омега-1"
     .desc = Эта униформа ассоциируется с кодексом этики и охраной тех, кто даже не может вкрутить лампочку.
 
-ent-ClothingUniformMH = униформа "Бета-77"
+ent-ClothingUniformMH = униформа "Бета-7"
     .desc = Пахнет химикатами и поджаренными людьми. Что?
 
 ent-ClothingUniformHD = униформа "Ню-7"
