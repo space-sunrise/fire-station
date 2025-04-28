@@ -1,5 +1,5 @@
-﻿### ------=========[ID карта]=========------ ###
-#Командир
+﻿# ID карта
+# Командир
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardMHLeader
@@ -7,7 +7,7 @@
   components:
   - type: PresetIdCard
     job: MHLeader
-#Специалист
+# Специалист
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardMHSpecialist
@@ -15,7 +15,7 @@
   components:
   - type: PresetIdCard
     job: MHSpecialist
-#Кадет
+# Кадет
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardMHCadet
@@ -23,29 +23,29 @@
   components:
   - type: PresetIdCard
     job: MHCadet
-### ------=========[КПК]=========------ ###
-#Командир
+# КПК
+# Командир
 - type: entity
   parent: BaseMTFPDA
   id: MHLeaderPDA
   components:
   - type: Pda
     id: IDCardMHLeader
-#Специалист
+# Специалист
 - type: entity
   parent: BaseMTFPDA
   id: MHSpecialistPDA
   components:
   - type: Pda
     id: IDCardMHSpecialist
-#Кадет
+# Кадет
 - type: entity
   parent: BaseMTFPDA
   id: MHCadetPDA
   components:
   - type: Pda
     id: IDCardMHCadet
-#---------------------кастом вещи группы
+# кастом вещи группы
 - type: entity
   parent: ClothingOuterHardsuitCBURN
   categories: [ HideSpawnMenu ]
@@ -65,17 +65,17 @@
   categories: [ HideSpawnMenu ]
   parent: ClothingBeltMilitaryWebbingMed
   id: ClothingBeltMilitaryWebbingMH
-### ------=========[Профессии]=========------ ###
-#----------------------------------КМД
+# ПРОФЕССИИ
+# Командир
 - type: job
   id: MHLeader
-  name: Командир МОГ Бета-7
-  description: Возглавьте Мобильно Оперативную Группу для устранения угрозы в комплексе.
+  name: ghost-role-information-mtf-leader-MH-name
+  description: ghost-role-information-mtf-leader-description
   playTimeTracker: JobMHLeader
   setPreference: false
   startingGear: MHLeaderGear
-  icon: "JobIconMH"
-  supervisors: Штабу О4
+  icon: JobIconMH
+  supervisors: ghost-role-information-mtf-leader-supervisors
   canBeAntag: false
   radioBold: true
   accessGroups:
@@ -121,8 +121,6 @@
 
 - type: entity
   id: RandomHumanoidSpawnerMHLeader
-  name: Командир МОГ Бета-7
-  suffix: MTF | MH
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -137,29 +135,11 @@
 
 - type: randomHumanoidSettings
   id: MHLeader
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
+  parent: CommonMTFLeader
   randomizeName: false
   components:
-  #- type: EmitSoundOnSpawn
-  #  sound:
-  #    path: /Uploaded/mtf_all_in/files/sounds/MH.ogg
-  #    params:
-  #        volume: 7
   - type: GhostRole
-    name: Командир МОГ Бета-7
+    name: ghost-role-information-mtf-leader-MH-name
     description: ghost-role-information-mtf-leader-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
@@ -167,26 +147,17 @@
     job: MHLeader
   - type: Loadout
     prototypes: [ MHLeaderGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesLeader
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
-#----------------------------------СПЕЦ
+
+# специалист
 - type: job
   id: MHSpecialist
-  name: Специалист МОГ Бета-7
-  description: Слушайте указания вашего командира и восстановите условия содержания объектов Фонда.
+  name: ghost-role-information-mtf-specialist-MH-name
+  description: ghost-role-information-mtf-specialist-description
   playTimeTracker: JobMHSpecialist
   setPreference: false
   startingGear: MHSpecialistGear
-  icon: "JobIconMH"
-  supervisors: Командиру вашего отряда и Штабу О4
+  icon: JobIconMH
+  supervisors: ghost-role-information-mtf-specialist-supervisors
   canBeAntag: false
   accessGroups:
   - AllAccess
@@ -228,8 +199,6 @@
 
 - type: entity
   id: RandomHumanoidSpawnerMHSpecialist
-  name: Специалист МОГ Бета-7
-  suffix: MTF | MH
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -244,51 +213,29 @@
 
 - type: randomHumanoidSettings
   id: MHSpecialist
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
+  parent: CommonMTFSpecialist
   randomizeName: false
   components:
   - type: GhostRole
-    name: Специалист МОГ Бета-7
-    description: ghost-role-information-mtf-description
+    name: ghost-role-information-mtf-specialist-MH-name
+    description: ghost-role-information-mtf-specialist-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
     job: MHSpecialist
   - type: Loadout
     prototypes: [ MHSpecialistGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesSpecialist
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
-#----------------------------------КАДЕТ
+
+# кадет
 - type: job
   id: MHCadet
-  name: Кадет МОГ Бета-7
-  description: Слушайте указания вашего командира и восстановите условия содержания объектов Фонда.
+  name: ghost-role-information-mtf-cadet-MH-name
+  description: ghost-role-information-mtf-cadet-description
   playTimeTracker: JobMHCadet
   setPreference: false
   startingGear: MHCadetGear
-  icon: "JobIconMH"
-  supervisors: Командиру вашего отряда, Специалисту и Штабу О4
+  icon: JobIconMH
+  supervisors: ghost-role-information-mtf-cadet-supervisors
   canBeAntag: false
   accessGroups:
   - AllAccess
@@ -330,8 +277,6 @@
 
 - type: entity
   id: RandomHumanoidSpawnerMHCadet
-  name: Кадет МОГ Бета-7
-  suffix: MTF | MH
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -346,47 +291,24 @@
 
 - type: randomHumanoidSettings
   id: MHCadet
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
+  parent: CommonMTFCadet
   randomizeName: false
   components:
   - type: GhostRole
-    name: Кадет МОГ Бета-7
-    description: ghost-role-information-mtf-description
+    name: ghost-role-information-mtf-cadet-MH-name
+    description: ghost-role-information-mtf-cadet-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
     job: MHCadet
   - type: Loadout
     prototypes: [ MHCadetGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesCadet
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
 
 
 
 
 
-### ------=========[мета]=========------ ###
+# мета
 - type: jobIcon
   parent: JobIcon
   id: JobIconMH

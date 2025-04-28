@@ -1,4 +1,4 @@
-﻿### ------=========[ID карта]=========------ ###
+﻿# ID карта
 #Командир
 - type: entity
   parent: IDCardMTFStandard
@@ -23,7 +23,7 @@
   components:
   - type: PresetIdCard
     job: HDCadet
-### ------=========[КПК]=========------ ###
+# КПК
 #Командир
 - type: entity
   parent: BaseMTFPDA
@@ -45,7 +45,8 @@
   components:
   - type: Pda
     id: IDCardHDCadet
-### ------=========[Вещи]=========------ ###
+
+# ВЕЩИ
 - type: entity
   parent: ClothingOuterArmorSWAT
   id: ClothingOuterArmorHD
@@ -75,16 +76,17 @@
   categories: [ HideSpawnMenu ]
   parent: ClothingShoesBootsJackSecFilled
   id: ClothingShoesBootsHDFilled
-### ------=========[Профессии]=========------ ###
-#----------------------------------КМД
+
+# ПРОФЕССИИ
+# Командир
 - type: job
   id: HDLeader
-  name: Командир МОГ Ню-7
-  description: Возглавьте Мобильно Оперативную Группу для устранения угрозы в комплексе.
+  name: ghost-role-information-mtf-leader-HD-name
+  description: ghost-role-information-mtf-leader-description
   playTimeTracker: JobHDLeader
   setPreference: false
   startingGear: HDLeaderGear
-  icon: "JobIconHD"
+  icon: JobIconHD
   supervisors: Штабу О4
   canBeAntag: false
   radioBold: true
@@ -124,8 +126,6 @@
 
 - type: entity
   id: RandomHumanoidSpawnerHDLeader
-  name: Командир МОГ Ню-7
-  suffix: MTF | HD
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -140,29 +140,11 @@
 
 - type: randomHumanoidSettings
   id: HDLeader
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
+  parent: CommonMTFLeader
   randomizeName: false
   components:
-  #- type: EmitSoundOnSpawn
-  #  sound:
-  #    path: /Uploaded/mtf_all_in/files/sounds/HD.ogg
-  #    params:
-  #        volume: 7
   - type: GhostRole
-    name: Командир МОГ Ню-7
+    name: ghost-role-information-mtf-leader-HD-name
     description: ghost-role-information-mtf-leader-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
@@ -170,26 +152,17 @@
     job: HDLeader
   - type: Loadout
     prototypes: [ HDLeaderGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesLeader
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
-#----------------------------------СПЕЦ
+
+# специалист
 - type: job
   id: HDSpecialist
-  name: Специалист МОГ Ню-7
-  description: Слушайте указания вашего командира и восстановите условия содержания объектов Фонда.
+  name: ghost-role-information-mtf-specialist-HD-name
+  description: ghost-role-information-mtf-specialist-description
   playTimeTracker: JobHDSpecialist
   setPreference: false
   startingGear: HDSpecialistGear
-  icon: "JobIconHD"
-  supervisors: Командиру вашего отряда и Штабу О4
+  icon: JobIconHD
+  supervisors: ghost-role-information-mtf-specialist-supervisors
   canBeAntag: false
   accessGroups:
   - AllAccess
@@ -224,8 +197,6 @@
 
 - type: entity
   id: RandomHumanoidSpawnerHDSpecialist
-  name: Специалист МОГ Ню-7
-  suffix: MTF | HD
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -240,51 +211,28 @@
 
 - type: randomHumanoidSettings
   id: HDSpecialist
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
-  randomizeName: false
+  parent: CommonMTFSpecialist
   components:
   - type: GhostRole
-    name: Специалист МОГ Ню-7
-    description: ghost-role-information-mtf-description
+    name: ghost-role-information-mtf-specialist-HD-name
+    description: ghost-role-information-mtf-specialist-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
     job: HDSpecialist
   - type: Loadout
     prototypes: [ HDSpecialistGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesSpecialist
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
-#----------------------------------КАДЕТ
+
+# кадет
 - type: job
   id: HDCadet
-  name: Кадет МОГ Ню-7
-  description: Слушайте указания вашего командира и восстановите условия содержания объектов Фонда.
+  name: ghost-role-information-mtf-cadet-HD-name
+  description: ghost-role-information-mtf-cadet-description
   playTimeTracker: JobHDCadet
   setPreference: false
   startingGear: HDCadetGear
-  icon: "JobIconHD"
-  supervisors: Командиру вашего отряда, Специалисту и Штабу О4
+  icon: JobIconHD
+  supervisors: ghost-role-information-mtf-cadet-supervisors
   canBeAntag: false
   accessGroups:
   - AllAccess
@@ -319,8 +267,6 @@
 
 - type: entity
   id: RandomHumanoidSpawnerHDCadet
-  name: Кадет МОГ Ню-7
-  suffix: MTF | HD
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -335,52 +281,28 @@
 
 - type: randomHumanoidSettings
   id: HDCadet
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
-  randomizeName: false
+  parent: CommonMTFCadet
   components:
   - type: GhostRole
-    name: Кадет МОГ Ню-7
-    description: ghost-role-information-mtf-description
+    name:  ghost-role-information-mtf-cadet-HD-name
+    description: ghost-role-information-mtf-cadet-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
     job: HDCadet
   - type: Loadout
     prototypes: [ HDCadetGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesCadet
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
 
 
 
-### ------=========[мета]=========------ ###
+# мета
 - type: jobIcon
   parent: JobIcon
   id: JobIconHD
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: HD
-  jobName: МОГ Ню-7
+  jobName: mobile-task-force-HD-name
 
 - type: playTimeTracker
   id: JobHDLeader

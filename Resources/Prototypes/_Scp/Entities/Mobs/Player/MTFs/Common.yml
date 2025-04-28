@@ -1,5 +1,4 @@
-﻿### ------=========[Карты Доступа]=========------ ###
-#базовая ID карта
+﻿#базовая ID карта
 - type: entity
   parent: IDCardStandard
   id: IDCardMTFStandard
@@ -14,7 +13,6 @@
 
 
 
-### ------=========[КПК]=========------ ###
 #базовый КПК
 - type: entity
   parent: AdjutantPDA
@@ -35,7 +33,7 @@
 
 
 
-### ------=========[Вещи]=========------ ###
+# ВЕЩИ
 - type: entity
   parent: [NineTailedFoxGasmask, BaseCentcommContraband]
   id: ClothingMaskMTF
@@ -84,7 +82,7 @@
 
 
 
-### ------=========[Вещи аплинка]=========------ ###
+# ВЕЩИ АПЛИНКА
 - type: entity
   parent: WeaponPulseCarbine
   id: WeaponPulseCarbineScp
@@ -216,7 +214,62 @@
         - id: ClothingHeadBagScp096
         - id: ClothingHeadHelmetAiPowered
 
-### ------=========[звания]=========------ ###
+# РАНДОМ ХУМАНОИДЫ ОБЩИЕ
+# командир
+- type: randomHumanoidSettings
+  id: CommonMTFLeader
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoidMindShielded
+  randomizeName: false
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesLeader
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: ZombieImmune
+  - type: AutoImplant
+    implants:
+    - Scp049ProtectionImplant
+    - TrackingImplantMTF
+
+# специалист
+- type: randomHumanoidSettings
+  id: CommonMTFSpecialist
+  parent: CommonMTFLeader
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSpecialist
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+
+# Кадет
+- type: randomHumanoidSettings
+  id: CommonMTFCadet
+  parent: CommonMTFLeader
+  randomizeName: false
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesCadet
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+
+
+# ЗВАНИЯ
 - type: localizedDataset
   id: NamesLeader
   values:

@@ -1,4 +1,4 @@
-﻿### ------=========[ID карта]=========------ ###
+﻿# ID карта
 #Командир
 - type: entity
   parent: IDCardMTFStandard
@@ -23,7 +23,7 @@
   components:
   - type: PresetIdCard
     job: LLHCadet
-### ------=========[КПК]=========------ ###
+# КПК
 #Командир
 - type: entity
   parent: BaseMTFPDA
@@ -69,19 +69,19 @@
 
 
 
-### ------=========[Профессии]=========------ ###
-#----------------------------------КМД
+# ПРОФЕССИИ
+# Командир
 - type: job
   id: LLHLeader
-  name: Командир МОГ Омега-1
-  description: Возглавьте Мобильно Оперативную Группу. Слушайте приказы Штаба О4 и КпЭ.
+  name: ghost-role-information-mtf-leader-LLH-name
+  description: ghost-role-information-mtf-leader-description
   playTimeTracker: JobLLHLeader
   setPreference: false
   startingGear: LLHLeaderGear
   icon: JobIconLLH
-  supervisors: Штабу О4 и КпЭ
+  supervisors: ghost-role-information-mtf-LLH-leader-supervisors
   canBeAntag: false
-  radioBold: true # Sunrise-Edit
+  radioBold: true
   accessGroups:
   - AllAccess
   access:
@@ -93,7 +93,6 @@
     jumpsuit: ClothingUniformLLH
     back: ClothingBackpackLLH
     shoes: ClothingShoesBootsMagAdv
-    #head ClothingHelmetMTF
     mask: ClothingMaskGasLLH
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
@@ -116,8 +115,6 @@
 
 - type: entity
   id: RandomHumanoidSpawnerLLHLeader
-  name: Командир МОГ Омега-1
-  suffix: MTF | LLH
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -132,29 +129,11 @@
 
 - type: randomHumanoidSettings
   id: LLHLeader
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
+  parent: CommonMTFLeader
   randomizeName: false
   components:
-  #- type: EmitSoundOnSpawn
-  #  sound:
-  #    path: /Uploaded/mtf_all_in/files/sounds/LLH.ogg
-  #    params:
-  #        volume: 7
   - type: GhostRole
-    name: Командир МОГ Омега-1
+    name: ghost-role-information-mtf-leader-LLH-name
     description: ghost-role-information-mtf-leader-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
@@ -167,21 +146,17 @@
     - NamesLeader
     - NamesOperativeLeaderLast
     nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
-#----------------------------------СПЕЦ
+
+# специалист
 - type: job
   id: LLHSpecialist
-  name: Специалист МОГ Омега-1
-  description: Слушайте указания вашего командира.
+  name: ghost-role-information-mtf-specialist-LLH-name
+  description: ghost-role-information-mtf-specialist-description
   playTimeTracker: JobLLHSpecialist
   setPreference: false
   startingGear: LLHSpecialistGear
   icon: JobIconLLH
-  supervisors: Командиру вашего отряда, Штабу О4 и КпЭ
+  supervisors: ghost-role-information-mtf-LLH-specialist-supervisors
   canBeAntag: false
   accessGroups:
   - AllAccess
@@ -194,7 +169,6 @@
     jumpsuit: ClothingUniformLLH
     back: ClothingBackpackLLH
     shoes: ClothingShoesBootsMagAdv
-    #head ClothingHelmetMTF
     mask: ClothingMaskGasLLH
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
@@ -214,8 +188,6 @@
 
 - type: entity
   id: RandomHumanoidSpawnerLLHSpecialist
-  name: Специалист МОГ Омега-1
-  suffix: MTF | LLH
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -230,25 +202,12 @@
 
 - type: randomHumanoidSettings
   id: LLHSpecialist
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
+  parent: CommonMTFSpecialist
   randomizeName: false
   components:
   - type: GhostRole
-    name: Специалист МОГ Омега-1
-    description: ghost-role-information-mtf-description
+    name: ghost-role-information-mtf-specialist-LLH-name
+    description: ghost-role-information-mtf-specialist-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
@@ -260,21 +219,17 @@
     - NamesCadet
     - NamesOperativeLast
     nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
-#----------------------------------КАДЕТ
+
+# кадет
 - type: job
   id: LLHCadet
-  name: Кадет МОГ Омега-1
-  description: Слушайте указания вашего командира.
+  name: ghost-role-information-mtf-cadet-LLH-name
+  description: ghost-role-information-mtf-cadet-description
   playTimeTracker: JobLLHCadet
   setPreference: false
   startingGear: LLHCadetGear
   icon: JobIconLLH
-  supervisors: Командиру вашего отряда, Специалисту, Штабу О4 и КпЭ
+  supervisors: ghost-role-information-mtf-LLH-cadet-supervisors
   canBeAntag: false
   accessGroups:
   - AllAccess
@@ -287,7 +242,6 @@
     jumpsuit: ClothingUniformLLH
     back: ClothingBackpackLLH
     shoes: ClothingShoesBootsMagAdv
-    #head ClothingHelmetMTF
     mask: ClothingMaskGasLLH
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
@@ -307,8 +261,6 @@
 
 - type: entity
   id: RandomHumanoidSpawnerLLHCadet
-  name: Кадет МОГ Омега-1
-  suffix: MTF | LLH
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -323,25 +275,12 @@
 
 - type: randomHumanoidSettings
   id: LLHCadet
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
+  parent: CommonMTFCadet
   randomizeName: false
   components:
   - type: GhostRole
-    name: Кадет МОГ Омега-1
-    description: ghost-role-information-mtf-description
+    name: ghost-role-information-mtf-cadet-LLH-name
+    description: ghost-role-information-mtf-cadet-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
@@ -353,15 +292,10 @@
     - NamesCadet
     - NamesOperativeLast
     nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
 
 
 
-### ------=========[мета]=========------ ###
+# мета
 - type: jobIcon
   parent: JobIcon
   id: JobIconLLH

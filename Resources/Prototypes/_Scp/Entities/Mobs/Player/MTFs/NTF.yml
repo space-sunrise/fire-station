@@ -1,5 +1,5 @@
-﻿### ------=========[ID карта]=========------ ###
-#Капитан
+﻿# ID карта
+#Командир
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardNTFLeader
@@ -23,8 +23,8 @@
   components:
   - type: PresetIdCard
     job: NTFCadet
-### ------=========[КПК]=========------ ###
-#Капитан
+# КПК
+#Командир
 - type: entity
   parent: BaseMTFPDA
   id: NTFLeaderPDA
@@ -45,18 +45,19 @@
   components:
   - type: Pda
     id: IDCardNTFCadet
-### ------=========[Профессии]=========------ ###
-#----------------------------------КМД
+# ПРОФЕССИИ
+# Командир
 - type: job
   id: NTFLeader
-  name: Командир МОГ Эпсилон-11
+  name: ghost-role-information-mtf-leader-NTF-name
+  description: ghost-role-information-mtf-leader-description
   playTimeTracker: JobNTFLeader
   setPreference: false
   startingGear: NTFLeaderGear
-  icon: "JobIconNTF"
-  supervisors: Штабу О4
+  icon: JobIconNTF
+  supervisors: ghost-role-information-mtf-leader-supervisors
   canBeAntag: false
-  radioBold: true # Sunrise-Edit
+  radioBold: true
   accessGroups:
   - AllAccess
   access:
@@ -93,8 +94,6 @@
 
 - type: entity
   id: RandomHumanoidSpawnerNTFLeader
-  name: Командир МОГ Эпсилон-11
-  suffix: MTF | NTF
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -109,29 +108,11 @@
 
 - type: randomHumanoidSettings
   id: NTFLeader
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
+  parent: CommonMTFLeader
   randomizeName: false
   components:
-  #- type: EmitSoundOnSpawn
-  #  sound:
-  #    path: /Uploaded/mtf_all_in/files/sounds/NTF.ogg
-  #    params:
-  #        volume: 7
   - type: GhostRole
-    name: Командир МОГ Эпсилон-11
+    name: ghost-role-information-mtf-leader-NTF-name
     description: ghost-role-information-mtf-leader-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
@@ -139,25 +120,17 @@
     job: NTFLeader
   - type: Loadout
     prototypes: [ NTFLeaderGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesLeader
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
-#----------------------------------СПЕЦ
+
+# специалист
 - type: job
   id: NTFSpecialist
-  name: Специалист МОГ Эпсилон-11
+  name: ghost-role-information-mtf-specialist-NTF-name
+  description: ghost-role-information-mtf-specialist-description
   playTimeTracker: JobNTFSpecialist
   setPreference: false
   startingGear: NTFSpecialistGear
-  icon: "JobIconNTF"
-  supervisors: Командиру вашего отряда и Штабу О4
+  icon: JobIconNTF
+  supervisors: ghost-role-information-mtf-specialist-supervisors
   canBeAntag: false
   accessGroups:
   - AllAccess
@@ -192,8 +165,6 @@
 
 - type: entity
   id: RandomHumanoidSpawnerNTFSpecialist
-  name: Специалист МОГ Эпсилон-11
-  suffix: MTF | NTF
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -208,50 +179,29 @@
 
 - type: randomHumanoidSettings
   id: NTFSpecialist
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
+  parent: CommonMTFSpecialist
   randomizeName: false
   components:
   - type: GhostRole
-    name: Специалист МОГ Эпсилон-11
-    description: ghost-role-information-mtf-description
+    name: ghost-role-information-mtf-specialist-NTF-name
+    description: ghost-role-information-mtf-specialist-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
     job: NTFSpecialist
   - type: Loadout
     prototypes: [ NTFSpecialistGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesSpecialist
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
-#----------------------------------КАДЕТ
+
+# кадет
 - type: job
   id: NTFCadet
-  name: Кадет МОГ Эпсилон-11
+  name: ghost-role-information-mtf-cadet-NTF-name
+  description: ghost-role-information-mtf-cadet-description
   playTimeTracker: JobNTFCadet
   setPreference: false
   startingGear: NTFCadetGear
-  icon: "JobIconNTF"
-  supervisors: Командиру вашего отряда, Специалисту и Штабу О4
+  icon: JobIconNTF
+  supervisors: ghost-role-information-mtf-cadet-supervisors
   canBeAntag: false
   accessGroups:
   - AllAccess
@@ -286,8 +236,6 @@
 
 - type: entity
   id: RandomHumanoidSpawnerNTFCadet
-  name: Кадет МОГ Эпсилон-11
-  suffix: MTF | NTF
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -302,46 +250,23 @@
 
 - type: randomHumanoidSettings
   id: NTFCadet
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
+  parent: CommonMTFCadet
   randomizeName: false
   components:
   - type: GhostRole
-    name: Кадет МОГ Эпсилон-11
-    description: ghost-role-information-mtf-description
+    name: ghost-role-information-mtf-cadet-NTF-name
+    description: ghost-role-information-mtf-cadet-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
     job: NTFCadet
   - type: Loadout
     prototypes: [ NTFCadetGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesCadet
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
 
 
 
 
-### ------=========[мета]=========------ ###
+# мета
 - type: jobIcon
   parent: JobIcon
   id: JobIconNTF

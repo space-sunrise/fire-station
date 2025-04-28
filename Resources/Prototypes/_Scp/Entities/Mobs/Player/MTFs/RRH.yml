@@ -1,4 +1,4 @@
-﻿### ------=========[ID карта]=========------ ###
+﻿# ID карта
 #Командир
 - type: entity
   parent: IDCardMTFStandard
@@ -23,7 +23,7 @@
   components:
   - type: PresetIdCard
     job: RRHCadet
-### ------=========[КПК]=========------ ###
+# КПК
 #Командир
 - type: entity
   parent: BaseMTFPDA
@@ -78,31 +78,30 @@
 
 
 
-### ------=========[Роли]=========------ ###
-#----------------------------------КМД
+# ПРОФЕССИИ
+# Командир
 - type: job
   id: RRHLeader
-  name: Командир МОГ Альфа-1
-  description: Возглавьте Мобильно Оперативную Группу. Слушайте приказы Штаба О4.
+  name: ghost-role-information-mtf-leader-RRH-name
+  description: ghost-role-information-mtf-leader-description
   playTimeTracker: JobRRHLeader
   setPreference: false
   startingGear: RRHLeaderGear
-  icon: "JobIconRRH"
-  supervisors: Штабу О4
+  icon: JobIconRRH
+  supervisors: ghost-role-information-mtf-leader-supervisors
   canBeAntag: false
   radioBold: true
   accessGroups:
   - AllAccess
   access:
   - CentralCommand
-#========================================
+
 - type: startingGear
   id: RRHLeaderGear
   equipment:
     jumpsuit: ClothingUniformRRH
     back: ClothingBackpackRRH
     shoes: ClothingShoesBootsMagAdv
-    #head ClothingHelmetMTF
     mask: ClothingMaskGasRRH
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
@@ -126,11 +125,9 @@
     - ChemistryBottleOmnizine
     - Hypospray
     - MedkitCombatFilled
-#========================================
+
 - type: entity
   id: RandomHumanoidSpawnerRRHLeader
-  name: Командир МОГ Альфа-1
-  suffix: MTF | RRH
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -142,7 +139,7 @@
     nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: RRHLeader
-#========================================
+
 - type: randomHumanoidSettings
   id: RRHLeader
   speciesBlacklist:
@@ -161,13 +158,8 @@
   parent: EventHumanoidMindShielded
   randomizeName: false
   components:
-  #- type: EmitSoundOnSpawn
-  #  sound:
-  #    path: /Uploaded/mtf_all_in/files/sounds/RRH.ogg
-  #    params:
-  #        volume: 7
   - type: GhostRole
-    name: Командир МОГ Альфа-1
+    name: ghost-role-information-mtf-leader-RRH-name
     description: ghost-role-information-mtf-leader-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
@@ -185,22 +177,23 @@
     implants:
     - Scp049ProtectionImplant
     - TrackingImplantMTF
-#----------------------------------СПЕЦ
+
+# специалист
 - type: job
   id: RRHSpecialist
-  name: Специалист МОГ Альфа-1
-  description: Слушайте указания вашего командира.
+  name: ghost-role-information-mtf-specialist-RRH-name
+  description: ghost-role-information-mtf-leader-description
   playTimeTracker: JobRRHSpecialist
   setPreference: false
   startingGear: RRHSpecialistGear
-  icon: "JobIconRRH"
-  supervisors: Командиру вашего отряда и Штабу О4
+  icon: JobIconRRH
+  supervisors: ghost-role-information-mtf-specialist-supervisors
   canBeAntag: false
   accessGroups:
   - AllAccess
   access:
   - CentralCommand
-#========================================
+
 - type: startingGear
   id: RRHSpecialistGear
   equipment:
@@ -227,11 +220,9 @@
     - ChemistryBottleOmnizine
     - Hypospray
     - MedkitCombatFilled
-#========================================
+
 - type: entity
   id: RandomHumanoidSpawnerRRHSpecialist
-  name: Специалист МОГ Альфа-1
-  suffix: MTF | RRH
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -243,7 +234,7 @@
     nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: RRHSpecialist
-#========================================
+
 - type: randomHumanoidSettings
   id: RRHSpecialist
   speciesBlacklist:
@@ -263,8 +254,8 @@
   randomizeName: false
   components:
   - type: GhostRole
-    name: Специалист МОГ Альфа-1
-    description: ghost-role-information-mtf-description
+    name: ghost-role-information-mtf-specialist-RRH-name
+    description: ghost-role-information-mtf-specialist-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
@@ -281,29 +272,29 @@
     implants:
     - Scp049ProtectionImplant
     - TrackingImplantMTF
-#----------------------------------КАДЕТ
+
+# кадет
 - type: job
   id: RRHCadet
-  name: Кадет МОГ Альфа-1
-  description: Слушайте указания вашего командира.
+  name: ghost-role-information-mtf-cadet-RRH-name
+  description: ghost-role-information-mtf-cadet-description
   playTimeTracker: JobRRHCadet
   setPreference: false
   startingGear: RRHCadetGear
-  icon: "JobIconRRH"
-  supervisors: Командиру вашего отряда, Специалисту и Штабу О4
+  icon: JobIconRRH
+  supervisors: ghost-role-information-mtf-cadet-supervisors
   canBeAntag: false
   accessGroups:
   - AllAccess
   access:
   - CentralCommand
-#========================================
+
 - type: startingGear
   id: RRHCadetGear
   equipment:
     jumpsuit: ClothingUniformRRH
     back: ClothingBackpackRRH
     shoes: ClothingShoesBootsMagAdv
-    #head ClothingHelmetMTF
     mask: ClothingMaskGasRRH
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
@@ -324,11 +315,9 @@
     - ChemistryBottleOmnizine
     - Hypospray
     - MedkitCombatFilled
-#========================================
+
 - type: entity
   id: RandomHumanoidSpawnerRRHCadet
-  name: Кадет МОГ Альфа-1
-  suffix: MTF | RRH
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -340,7 +329,7 @@
     nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: RRHCadet
-#========================================
+
 - type: randomHumanoidSettings
   id: RRHCadet
   speciesBlacklist:
@@ -360,8 +349,8 @@
   randomizeName: false
   components:
   - type: GhostRole
-    name: Кадет МОГ Альфа-1
-    description: ghost-role-information-mtf-description
+    name: ghost-role-information-mtf-cadet-RRH-name
+    description: ghost-role-information-mtf-cadet-description
     rules: ghost-role-information-nonantagonist-rules
     raffle:
       settings: short
@@ -388,7 +377,7 @@
 
 
 
-### ------=========[мета]=========------ ###
+# мета
 - type: jobIcon
   parent: JobIcon
   id: JobIconRRH

@@ -9,6 +9,7 @@
   parent: ClothingMaskGasERT
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderHelmet.rsi
     type: Sprite
@@ -20,6 +21,7 @@
   parent: ClothingHeadHelmetBasic
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderSuit.rsi
     type: Sprite
@@ -31,6 +33,7 @@
   parent: ClothingUniformBase
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderVest.rsi
     type: Sprite
@@ -42,6 +45,7 @@
   parent: [AllowSuitStorageClothing, ClothingOuterStorageBase, BaseCentcommContraband]
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderWebbing.rsi
     type: Sprite
@@ -62,6 +66,7 @@
   parent: [ClothingBeltSecurityWebbing, BaseCentcommContraband]
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicBackpack.rsi
     type: Sprite
@@ -73,6 +78,7 @@
   parent: ClothingBackpack
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicGasmask.rsi
     type: Sprite
@@ -84,6 +90,7 @@
   parent: ClothingMaskGasERT
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicGlassesHud.rsi
     type: Sprite
@@ -95,6 +102,7 @@
   parent: ClothingEyesHudMedical
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicHelmet.rsi
     type: Sprite
@@ -106,6 +114,7 @@
   parent: ClothingHeadHelmetBasic
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicSuit.rsi
     type: Sprite
@@ -117,6 +126,7 @@
   parent: ClothingUniformBase
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicVest.rsi
     type: Sprite
@@ -128,6 +138,7 @@
   parent: ClothingOuterVestWeb
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicWebbing.rsi
     type: Sprite
@@ -139,6 +150,7 @@
   parent: ClothingBeltSecurityWebbing
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxGasmask.rsi
     type: Sprite
@@ -150,6 +162,7 @@
   parent: [ClothingMaskGasERT, BaseCentcommContraband]
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxHelmet.rsi
     type: Sprite
@@ -161,6 +174,7 @@
   parent: [ClothingHeadHelmetBasic, BaseCentcommContraband]
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxSuit.rsi
     type: Sprite
@@ -172,6 +186,7 @@
   parent: [ClothingUniformBase, BaseCentcommContraband]
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxVest.rsi
     type: Sprite
@@ -183,6 +198,7 @@
   parent: [NineTailedFoxCommanderVest, BaseCentcommContraband]
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Regular/NineTailedFoxWebbing.rsi
     type: Sprite
@@ -194,6 +210,7 @@
   parent: [ClothingBeltSecurityWebbing, BaseCentcommContraband]
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistArmor.rsi
     type: Sprite
@@ -207,6 +224,7 @@
   - BaseRestrictedContraband
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistBackpack.rsi
     type: Sprite
@@ -218,6 +236,7 @@
   parent: [ClothingBackpack, BaseCentcommContraband]
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistBalisticGlasses
     type: Sprite
@@ -229,6 +248,7 @@
   parent: ClothingEyesGlassesSecurity
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistGasmask.rsi
     type: Sprite
@@ -240,6 +260,7 @@
   parent: ClothingMaskGasERT
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistGloves.rsi
     type: Sprite
@@ -251,6 +272,7 @@
   parent: ClothingHandsGlovesCombat
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistHelmet.rsi
     type: Sprite
@@ -287,6 +309,7 @@
   parent: ClothingUniformBase
   suffix: SCP
   type: entity
+
 - components:
   - sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistWebbing.rsi
     type: Sprite
