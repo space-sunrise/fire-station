@@ -43,7 +43,7 @@ ent-ClothingUniformJumpsuitInternalSecurityOperative = комбинезон оп
 
 ent-GunSafeInternalSecurityOperative = сейф оперативника внутренней безопасности
     .desc = сейф
-ent-LockerInternalSecurityOperative = шкаф оперативника внешней безопасности
+ent-LockerInternalSecurityOperative = шкаф оперативника внутренней безопасности
     .desc = { ent-LockerBaseSecure.desc }
 ent-LockerInternalSecurityOperativeFilled = { ent-LockerInternalSecurityOperative }
     .suffix = Заполнен
