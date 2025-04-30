@@ -16,6 +16,8 @@
     - map: [ "enum.Scp939Layers.Base" ]
       state: alive
   - type: Scp939
+  - type: Eye
+    drawFov: false
   - type: MeleeWeapon
     altDisarm: false
     soundHit:
@@ -77,5 +79,3 @@
   - type: GuideHelp
     guides:
     - ScpResearch
-  - type: Eye
-    drawFov: false
