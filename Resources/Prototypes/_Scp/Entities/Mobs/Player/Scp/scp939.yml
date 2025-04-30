@@ -77,3 +77,5 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+  - type: Eye
+    drawFov: false
