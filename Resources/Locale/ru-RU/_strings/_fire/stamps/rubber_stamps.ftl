@@ -7,5 +7,5 @@ stamp-component-stamped-name-head-of-medical-sector = { job-name-head-of-medical
 stamp-component-stamped-name-personnel-officer = { job-name-personnel-officer }
 stamp-component-stamped-name-security-commander = { job-name-security-commander }
 stamp-component-stamped-name-senior-logistics-officer = { job-name-senior-logistics-officer }
-stamp-component-stamped-name-scientific-service-director = { job-name-scintific-service-director }
+stamp-component-stamped-name-scientific-service-director = { job-name-scientific-service-director }
 stamp-component-stamped-name-tribunal-officer = { job-name-tribunal-officer }

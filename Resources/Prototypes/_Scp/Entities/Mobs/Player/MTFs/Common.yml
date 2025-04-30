@@ -176,6 +176,27 @@
 
 - type: entity
   parent: CrateAdministrationSecure
+  id: CrateAdministrationRecontainment049
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: Scp049ProtectionImplanter
+    - id: BookTheBookOfControl
+    - id: BoxSterileMask
+
+- type: entity
+  parent: CrateAdministrationSecure
+  id: CrateAdministrationRecontainment035
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingHeadAwareness
+    - id: SciFlash
+
+- type: entity
+  parent: CrateAdministrationSecure
   id: CrateAdministrationRecontainment173
   suffix: Filled
   components:

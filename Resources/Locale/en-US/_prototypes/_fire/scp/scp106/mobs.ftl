@@ -12,9 +12,9 @@ ent-Scp106CorporealPhantom = { ent-BaseScp106Phantom }
 
 ent-MobScp106Monster = Теневое нечто
     .desc = Аккумуляция страха в ненависть явилась из гигантского разлома, чтобы заполнить это измерение
-    .sufix = SCP-106 Монстр
+    .suffix = SCP-106 Монстр
 
-ent-MobScp106BigMonster = Гигансткое теневое нечто
+ent-MobScp106BigMonster = Гигантское теневое нечто
     .desc = { ent-MobScp106Monster.desc }
     .suffix = { ent-MobScp106Monster.suffix }
 
