@@ -18,7 +18,7 @@ public sealed class EyeClosingSystem : EntitySystem
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
 
-    /* Fire edit - вся логика перемещена в BlinkingSystem
+    /* Fire edit - вся логика перемещена в BlinkingSystem. Там это тут не нужно
     public override void Initialize()
     {
         base.Initialize();
@@ -132,9 +132,13 @@ public sealed class EyeClosingSystem : EntitySystem
             return;
         }
 
+        /* Fire edit - не надо нам этого компонента, у нас свой аналог, который и так у всех есть.
+
         var naturalEyelids = EnsureComp<EyeClosingComponent>(blindable);
         naturalEyelids.NaturallyCreated = true;
         Dirty(blindable);
+
+        */
     }
 }
 

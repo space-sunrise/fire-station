@@ -1,5 +1,4 @@
 ﻿using Content.Shared.Alert;
-using Content.Shared.StatusIcon;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -18,11 +17,47 @@ public sealed partial class BlinkableComponent : Component
     public float AdditionalBlinkingTime;
 
     [DataField]
-    public ProtoId<BlinkIconPrototype> ClosedEyeIcon = "ClosedEyeIcon";
-
-    [DataField]
     public ProtoId<AlertPrototype> BlinkingAlert = "Blinking";
 
+    #region Eye closing
+
+    /// <summary>
+    /// Айди прототипа способности закрыть глаза
+    /// </summary>
+    [DataField]
+    public EntProtoId EyeToggleAction = "ActionToggleEyes";
+
+    /// <summary>
+    /// Сущность способности закрыть глаза вручную
+    /// </summary>
+    public EntityUid? EyeToggleActionEntity;
+
+    /// <summary>
+    /// Закрыты ли глаза
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public EyesState State = EyesState.Opened;
+
+    [ViewVariables, AutoNetworkedField]
+    public bool ManuallyClosed;
+
+    #endregion
+
+}
+
+/// <summary>
+/// Состояние глаз - закрыты/открыты
+/// </summary>
+/// <remarks>
+/// Я не хотел использовать true/false, потому что в коде образуются непонятки
+/// И приходится тратить слишком много времени на понимание, как true/false соотносится с закрытыми/открытыми
+/// В разных методах можно случайно использовать разные варианты комбинаций true/false к закрытым/открытым что приводит к непонятностям
+/// Enum намного более прост в понимании и такой код будет легко читаем
+/// </remarks>
+public enum EyesState : byte
+{
+    Closed,
+    Opened,
 }
 
 [RegisterComponent, NetworkedComponent]

@@ -126,6 +126,7 @@
       - !type:NestedSelector
         tableId: ScpArtifactEffectsUltraFunnyTable
         weight: 1
+  - type: WatchingTarget
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
     baseSprintSpeed: 12
