@@ -42,7 +42,7 @@ public abstract partial class SharedScp096System : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<Scp096Component, EntitySeenEvent>(OnSeen);
+        SubscribeLocalEvent<Scp096Component, SimpleEntitySeenEvent>(OnSeen);
 
         SubscribeLocalEvent<Scp096Component, AttackAttemptEvent>(OnAttackAttempt);
         SubscribeLocalEvent<Scp096Component, AttemptPacifiedAttackEvent>(OnPacifiedAttackAttempt);
@@ -93,7 +93,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     #region Event handlers
 
-    private void OnSeen(Entity<Scp096Component> ent, ref EntitySeenEvent args)
+    private void OnSeen(Entity<Scp096Component> ent, ref SimpleEntitySeenEvent args)
     {
         TryAddTarget(ent, args.Viewer);
     }
@@ -223,7 +223,7 @@ public abstract partial class SharedScp096System : EntitySystem
     private bool IsValidTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid, bool ignoreAngle = false)
     {
         // Проверяем, может ли цель видеть 096. Без учета поля зрения
-        if (!_watching.IsWatchedBy(targetUid, [targetUid], viewers: out _ , false))
+        if (!_watching.IsWatchedBy(scpEntity, [targetUid], viewers: out _ , false))
             return false;
 
         // Проверяем, есть ли у цели защита от 096

@@ -42,13 +42,22 @@ public sealed partial class EyeWatchingSystem : EntitySystem
             // Все потенциально возможные смотрящие. Среди них те, что прошли фаст-чек из самых простых проверок
             var potentialViewers = GetWatchers(uid);
 
+            // Вызываем ивенты на потенциально смотрящих. Без особых проверок
+            // Полезно в коде, который уже использует подобные проверки или не требует этого
+            foreach (var potentialViewer in potentialViewers)
+            {
+                // За подробностями какой ивент для чего навести мышку на название ивента
+                RaiseLocalEvent(potentialViewer, new SimpleEntityLookedAtEvent((uid, watchingComponent)));
+                RaiseLocalEvent(uid, new SimpleEntitySeenEvent(potentialViewer));
+            }
+
             // Проверяет всех потенциальных смотрящих на то, действительно ли они видят цель.
             // Каждый потенциально смотрящий проходит полный комплекс проверок.
             // Выдает полный список всех сущностей, кто действительно видит цель
             if (!IsWatchedBy(uid, potentialViewers, viewers: out var viewers, false))
                 continue;
 
-            // Вызываем ивент на смотрящем, говорящем, что он видит цель
+            // Вызываем ивент на смотрящем, говорящие, что он действительно видит цель
             foreach (var viewer in viewers)
             {
                 var firstTime = !watchingComponent.AlreadyLookedAt.ContainsKey(viewer);
@@ -93,4 +102,14 @@ public sealed class EntitySeenEvent(EntityUid viewer, bool firstTime) : EntityEv
 {
     public readonly EntityUid Viewer = viewer;
     public readonly bool IsSeenFirstTime = firstTime;
+}
+
+public sealed class SimpleEntityLookedAtEvent(Entity<WatchingTargetComponent> target) : EntityEventArgs
+{
+    public readonly Entity<WatchingTargetComponent> Target = target;
+}
+
+public sealed class SimpleEntitySeenEvent(EntityUid viewer) : EntityEventArgs
+{
+    public readonly EntityUid Viewer = viewer;
 }
