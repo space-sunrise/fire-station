@@ -1,4 +1,4 @@
-﻿  ent-CrateAdministrationScpGygaxBundle = набор "Гигакс"
+﻿ent-CrateAdministrationScpGygaxBundle = набор "Гигакс"
     .desc = Содержит набор легкобронированного меха фонда SCP.
     .suffix = Заполненный
 ent-CrateAdministrationMarauderBundle = набор "Мародёр"
