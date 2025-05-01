@@ -245,9 +245,9 @@ public partial class SharedBodySystem
         BodyComponent? body = null,
         BodyPartComponent? rootPart = null)
     {
-        if (id is null
+        if (!id.HasValue // Fire edit - фикс Null Reference Exception
             || !Resolve(id.Value, ref body, logMissing: false)
-            || body.RootContainer.ContainedEntity is null
+            || !body.RootContainer.ContainedEntity.HasValue // Fire edit - фикс Null Reference Exception
             || !Resolve(body.RootContainer.ContainedEntity.Value, ref rootPart))
         {
             yield break;
@@ -263,7 +263,7 @@ public partial class SharedBodySystem
         EntityUid? bodyId,
         BodyComponent? body = null)
     {
-        if (bodyId is null || !Resolve(bodyId.Value, ref body, logMissing: false))
+        if (!bodyId.HasValue || !Resolve(bodyId.Value, ref body, logMissing: false)) // Fire edit - фикс Null Reference Exception
             yield break;
 
         foreach (var part in GetBodyChildren(bodyId, body))
