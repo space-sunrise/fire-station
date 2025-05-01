@@ -289,6 +289,18 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert
 
+# Оперативник
+- type: randomHumanoidSettings
+  id: CommonMTFOperative
+  parent: CommonMTFLeader
+  randomizeName: false
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesOperativeFirst
+    - NamesOperativeLast
+    nameFormat: name-format-ert
+
 
 # ЗВАНИЯ
 - type: localizedDataset

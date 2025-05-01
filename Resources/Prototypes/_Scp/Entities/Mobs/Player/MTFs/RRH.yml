@@ -132,31 +132,13 @@
   - type: Sprite
     sprite: Markers/jobs.rsi
     state: ertleader
-  - type: RandomMetadata
-    nameSegments:
-    - NamesLeader
-    - NamesOperativeLeaderLast
     nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: RRHLeader
 
 - type: randomHumanoidSettings
   id: RRHLeader
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
-  randomizeName: false
+  parent: CommonMTFLeader
   components:
   - type: GhostRole
     name: ghost-role-information-mtf-leader-RRH-name
@@ -172,11 +154,6 @@
     - NamesLeader
     - NamesOperativeLeaderLast
     nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
 
 # специалист
 - type: job
@@ -227,31 +204,12 @@
   - type: Sprite
     sprite: Markers/jobs.rsi
     state: ertsecurityeva
-  - type: RandomMetadata
-    nameSegments:
-    - NamesOperativeFirst
-    - NamesOperativeLast
-    nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: RRHSpecialist
 
 - type: randomHumanoidSettings
   id: RRHSpecialist
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
-  randomizeName: false
+  parent: CommonMTFOperative
   components:
   - type: GhostRole
     name: ghost-role-information-mtf-specialist-RRH-name
@@ -262,16 +220,6 @@
     job: RRHSpecialist
   - type: Loadout
     prototypes: [ RRHSpecialistGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesOperativeFirst
-    - NamesOperativeLast
-    nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
 
 # кадет
 - type: job
@@ -322,31 +270,12 @@
   - type: Sprite
     sprite: Markers/jobs.rsi
     state: ertsecurityeva
-  - type: RandomMetadata
-    nameSegments:
-    - NamesOperativeFirst
-    - NamesOperativeLast
-    nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: RRHCadet
 
 - type: randomHumanoidSettings
   id: RRHCadet
-  speciesBlacklist:
-  - Diona
-  - Vox
-  - Felinid
-  - Moth
-  - Arachnid
-  - Reptilian
-  - Vulpkanin
-  - Swine
-  - Tajaran
-  - Demon
-  - SlimePerson
-  - Dwarf
-  parent: EventHumanoidMindShielded
-  randomizeName: false
+  parent: CommonMTFOperative
   components:
   - type: GhostRole
     name: ghost-role-information-mtf-cadet-RRH-name
@@ -357,16 +286,6 @@
     job: RRHCadet
   - type: Loadout
     prototypes: [ RRHCadetGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesOperativeFirst
-    - NamesOperativeLast
-    nameFormat: name-format-ert
-  - type: ZombieImmune
-  - type: AutoImplant
-    implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
 
 
 
