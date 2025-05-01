@@ -4,6 +4,7 @@ using Content.Shared._Scp.Scp173;
 using Content.Shared._Scp.Watching;
 using Content.Shared.Alert;
 using Content.Shared.Eye.Blinding.Systems;
+using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Random;
@@ -44,6 +45,9 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         SubscribeLocalEvent<BlinkableComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<BlinkableComponent, ToggleEyesActionEvent>(OnToggleAction);
         SubscribeLocalEvent<BlinkableComponent, CanSeeAttemptEvent>(OnTrySee);
+
+        SubscribeLocalEvent<HumanoidAppearanceComponent, EntityClosedEyesEvent>(OnHumanoidClosedEyes);
+        SubscribeLocalEvent<HumanoidAppearanceComponent, EntityOpenedEyesEvent>(OnHumanoidOpenedEyes);
 
         #endregion
     }

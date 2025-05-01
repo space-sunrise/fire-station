@@ -41,6 +41,13 @@ public sealed partial class BlinkableComponent : Component
     [ViewVariables, AutoNetworkedField]
     public bool ManuallyClosed;
 
+    /// <summary>
+    /// Сохраненный цвет глаз персонажа.
+    /// Используется, чтобы вернуть изначальный цвет глаз после открытия глаз.
+    /// Так как во время закрытия цвет глаз меняется на цвет кожи.
+    /// </summary>
+    public Color? CachedEyesColor;
+
     #endregion
 
 }

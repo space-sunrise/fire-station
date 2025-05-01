@@ -1,6 +1,7 @@
 ﻿using Content.Shared.Actions;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Flash.Components;
+using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 
 namespace Content.Shared._Scp.Blinking;
@@ -25,6 +26,19 @@ public abstract partial class SharedBlinkingSystem
     private void OnShutdown(Entity<BlinkableComponent> ent, ref ComponentShutdown args)
     {
         _actions.RemoveAction(ent, ent.Comp.EyeToggleActionEntity);
+
+        if (!Exists(ent))
+            return;
+
+        // Возвращаем цвет глаз на исходный, если в момент удаления компонента они были закрыты
+        if (ent.Comp.CachedEyesColor == null)
+            return;
+
+        if (!TryComp<HumanoidAppearanceComponent>(ent, out var humanoidAppearanceComponent))
+            return;
+
+        humanoidAppearanceComponent.EyeColor = ent.Comp.CachedEyesColor.Value;
+        Dirty(ent.Owner, humanoidAppearanceComponent);
     }
 
     private void OnToggleAction(Entity<BlinkableComponent> ent, ref ToggleEyesActionEvent args)
@@ -43,6 +57,36 @@ public abstract partial class SharedBlinkingSystem
     {
         if (ent.Comp.State == EyesState.Closed)
             args.Cancel();
+    }
+
+    /// <summary>
+    /// Создает эффект закрытия глаз на спрайте, путем смены цвета глаз на цвет кожи, но чуть более темный
+    /// </summary>
+    private void OnHumanoidClosedEyes(Entity<HumanoidAppearanceComponent> ent, ref EntityClosedEyesEvent args)
+    {
+        if (!TryComp<BlinkableComponent>(ent, out var blinkableComponent))
+            return;
+
+        blinkableComponent.CachedEyesColor = ent.Comp.EyeColor;
+        ent.Comp.EyeColor = DarkenSkinColor(ent.Comp.SkinColor);
+
+        Dirty(ent);
+    }
+
+    /// <summary>
+    /// Возвращает цвет глаз на исходный, когда они открываются
+    /// </summary>
+    private void OnHumanoidOpenedEyes(Entity<HumanoidAppearanceComponent> ent, ref EntityOpenedEyesEvent args)
+    {
+        if (!TryComp<BlinkableComponent>(ent, out var blinkableComponent))
+            return;
+
+        if (blinkableComponent.CachedEyesColor == null)
+            return;
+
+        ent.Comp.EyeColor = blinkableComponent.CachedEyesColor.Value;
+
+        Dirty(ent);
     }
 
     #endregion
@@ -138,6 +182,18 @@ public abstract partial class SharedBlinkingSystem
             return;
 
         SetEyelids(ent, EyesState.Closed, true);
+    }
+
+    private static Color DarkenSkinColor(Color original)
+    {
+        var hsl = Color.ToHsl(original);
+
+        var newLightness = hsl.Z * 0.85f;
+        newLightness = Math.Clamp(newLightness, 0f, 1f);
+
+        var newHsl = new Vector4(hsl.X, hsl.Y, newLightness, hsl.W);
+
+        return Color.FromHsl(newHsl);
     }
 }
 
