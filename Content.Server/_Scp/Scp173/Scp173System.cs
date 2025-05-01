@@ -64,7 +64,7 @@ public sealed class Scp173System : SharedScp173System
 
     public readonly ProtoId<ReagentPrototype> Reagent = "Scp173Reagent";
 
-    private const float ToggleDoorStuffChance = 0.2f;
+    private const float ToggleDoorStuffChance = 0.35f;
 
     public override void Initialize()
     {
