@@ -95,7 +95,7 @@ public sealed class AdvertiseSystem : EntitySystem
 
     private static void OnVendingAttemptAdvertiseEvent(EntityUid uid, VendingMachineComponent machine, ref AttemptAdvertiseEvent args)
     {
-        args.Cancelled |= machine.Broken;
+        args.Cancelled = true; // Fire edit
     }
 }
 
