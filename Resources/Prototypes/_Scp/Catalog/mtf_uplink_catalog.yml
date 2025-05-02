@@ -1195,3 +1195,22 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
+- type: listing
+  id: ScpUplinkRecontainment035
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationRecontainment035
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkRecontainment049
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationRecontainment049
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
