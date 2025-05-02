@@ -7,7 +7,7 @@ ent-EncryptionKeyFacilityMaster = мастер { ent-EncryptionKey }
 ent-EncryptionKeyAdministration = { ent-EncryptionKey } администрации комплекса
     .desc = { ent-EncryptionKey.desc }
 
-ent-EncryptionKeyMTFMaster = мастер { ent-EncryptionKey } МОГ
+ent-EncryptionKeyMTFMaster = мастер { ent-EncryptionKey } мобильной оперативной группы
     .desc = { ent-EncryptionKey.desc }
 
 ent-EncryptionKeyInternalSecurity = { ent-EncryptionKey } отдела внутренней безопасности

@@ -4,10 +4,10 @@
 ent-ClothingHeadsetAltMTF = { ent-ClothingHeadsetAlt } мобильной оперативной группы
     .desc = { ent-ClothingHeadsetAlt.desc }
 
-ent-ClothingHeadsetAltMTFRRH = { ent-ClothingHeadsetAlt } МОГ "Альфа-1"
+ent-ClothingHeadsetAltMTFRRH = { ent-ClothingHeadsetAlt } "Альфа-1"
     .desc = { ent-ClothingHeadsetAlt.desc }
 
-ent-ClothingHeadsetAltMTFLLH = { ent-ClothingHeadsetAlt } МОГ "Омега-1"
+ent-ClothingHeadsetAltMTFLLH = { ent-ClothingHeadsetAlt } "Омега-1"
     .desc = { ent-ClothingHeadsetAlt.desc }
 
 ent-ClothingHeadsetAltAdministration = { ent-ClothingHeadsetAlt } администрации
