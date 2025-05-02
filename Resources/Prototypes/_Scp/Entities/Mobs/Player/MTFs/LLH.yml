@@ -50,6 +50,11 @@
 # кастом вещи группы
 - type: entity
   categories: [ HideSpawnMenu ]
+  parent: ClothingHeadHatCapLeatherHoS
+  id: ClothingHeadHatCapLeatherLLHLeader
+
+- type: entity
+  categories: [ HideSpawnMenu ]
   parent: ClothingDeathSquadronBackpack
   id: ClothingBackpackLLH
 
@@ -95,6 +100,7 @@
     jumpsuit: ClothingUniformLLH
     back: ClothingBackpackLLH
     shoes: ClothingShoesBootsMagAdv
+    head: ClothingHeadHatCapLeatherLLHLeader
     mask: ClothingMaskGasLLH
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
@@ -166,6 +172,7 @@
     jumpsuit: ClothingUniformLLH
     back: ClothingBackpackLLH
     shoes: ClothingShoesBootsMagAdv
+    head: ClothingHelmetMTF
     mask: ClothingMaskGasLLH
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
@@ -229,6 +236,7 @@
     jumpsuit: ClothingUniformLLH
     back: ClothingBackpackLLH
     shoes: ClothingShoesBootsMagAdv
+    head: ClothingHelmetMTF
     mask: ClothingMaskGasLLH
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat

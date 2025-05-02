@@ -1,4 +1,4 @@
-ent-NineTailedFoxCommanderGasmask = Противогаз командира "Девятихвостый Лис"
+﻿ent-NineTailedFoxCommanderGasmask = Противогаз командира "Девятихвостый Лис"
     .desc = Противогаз для защиты от опасных газов.
 ent-NineTailedFoxCommanderHelmet = Шлем командира "Девятихвостый Лис"
     .desc = Тактический шлем для защиты головы.
@@ -106,6 +106,9 @@ ent-ClothingBeltMilitaryWebbingMH = Разгрузка Мобильной Опе
     .desc = { ent-MTFWebbing.desc }
 
 #LLH
+ent-ClothingHeadHatCapLeatherLLHLeader = кожаная фуражка командира "Омега-1"
+    .desc = Довольно старая вещь для этих времён, навевающая старые воспоминания...
+
 ent-ClothingBackpackLLH = Рюкзак "Омега-1"
     .desc = Поговаривают, он не способен вмещать лампочки.
 
