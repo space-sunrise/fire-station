@@ -236,9 +236,9 @@
         - id: ClothingHeadHelmetAiPowered
 
 # РАНДОМ ХУМАНОИДЫ ОБЩИЕ
-# командир
+# Кадет
 - type: randomHumanoidSettings
-  id: CommonMTFLeader
+  id: CommonMTFCadet
   speciesBlacklist:
   - Diona
   - Vox
@@ -257,7 +257,7 @@
   components:
   - type: RandomMetadata
     nameSegments:
-    - NamesLeader
+    - NamesCadet
     - NamesMilitaryLast
     nameFormat: name-format-ert
   - type: ZombieImmune
@@ -269,7 +269,7 @@
 # специалист
 - type: randomHumanoidSettings
   id: CommonMTFSpecialist
-  parent: CommonMTFLeader
+  parent: CommonMTFCadet
   components:
   - type: RandomMetadata
     nameSegments:
@@ -277,15 +277,15 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert
 
-# Кадет
+# командир
 - type: randomHumanoidSettings
-  id: CommonMTFCadet
-  parent: CommonMTFLeader
+  id: CommonMTFLeader
+  parent: CommonMTFSpecialist
   randomizeName: false
   components:
   - type: RandomMetadata
     nameSegments:
-    - NamesCadet
+    - NamesLeader
     - NamesMilitaryLast
     nameFormat: name-format-ert
 
