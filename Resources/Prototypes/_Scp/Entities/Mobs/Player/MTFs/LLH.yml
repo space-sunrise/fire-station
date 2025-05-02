@@ -100,7 +100,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHeavyLLH
     id: LLHLeaderPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTFLLH
     belt: MTFCommanderWebbing
     pocket1: BaseUplinkLLHLeader
     pocket2: PinpointerNuclear
@@ -176,7 +176,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHeavyLLH
     id: LLHSpecialistPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTFLLH
     belt: MTFWebbing
     pocket1: BaseUplinkLLHSpecialist
     pocket2: CombatKnife
@@ -249,7 +249,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHeavyLLH
     id: LLHCadetPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTFLLH
     belt: MTFWebbing
     pocket1: BaseUplinkLLH
     pocket2: CombatKnife

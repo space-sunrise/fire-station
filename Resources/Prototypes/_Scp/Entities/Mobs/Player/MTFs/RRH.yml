@@ -107,7 +107,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitRRH
     id: RRHLeaderPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTFRRH
     belt: MTFCommanderWebbing
     pocket1: BaseUplinkRRHLeader
     pocket2: PinpointerNuclear
@@ -205,7 +205,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitRRH
     id: RRHSpecialistPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTFRRH
     belt: MTFWebbing
     pocket1: BaseUplinkRRHSpecialist
     pocket2: EnergyDaggerLoud
@@ -300,7 +300,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitRRH
     id: RRHCadetPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTFRRH
     belt: MTFWebbing
     pocket1: BaseUplinkRRH
     pocket2: EnergyDaggerLoud

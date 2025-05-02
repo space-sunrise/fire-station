@@ -76,7 +76,36 @@
   parent: [NineTailedFoxSpecialistBackpack, BaseCentcommContraband]
   id: MTFSpecialistBackpack
 
+# гарнитуры для разных МОГ
+- type: entity
+  parent: [ClothingHeadsetAltRegionalAdministration, BaseCentcommContraband]
+  id: ClothingHeadsetAltMTF
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMTFMaster
 
+- type: entity
+  parent: ClothingHeadsetAltMTF
+  id: ClothingHeadsetAltMTFRRH
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMTFMaster
+      - EncryptionKeyInternalSecurity
+      - EncryptionKeyInternalTribunalService
+
+- type: entity
+  parent: ClothingHeadsetAltMTF
+  id: ClothingHeadsetAltMTFLLH
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMTFMaster
+      - EncryptionKeyEthicsCommittee
 
 
 

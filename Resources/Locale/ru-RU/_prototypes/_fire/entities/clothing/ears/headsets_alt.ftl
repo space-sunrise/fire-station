@@ -1,6 +1,15 @@
 ﻿ent-ClothingHeadsetAltRegionalAdministration = { ent-ClothingHeadsetAlt } региональной администрации
     .desc = { ent-ClothingHeadsetAlt.desc }
 
+ent-ClothingHeadsetAltMTF = { ent-ClothingHeadsetAlt } мобильной оперативной группы
+    .desc = { ent-ClothingHeadsetAlt.desc }
+
+ent-ClothingHeadsetAltMTFRRH = { ent-ClothingHeadsetAlt } МОГ "Альфа-1"
+    .desc = { ent-ClothingHeadsetAlt.desc }
+
+ent-ClothingHeadsetAltMTFLLH = { ent-ClothingHeadsetAlt } МОГ "Омега-1"
+    .desc = { ent-ClothingHeadsetAlt.desc }
+
 ent-ClothingHeadsetAltAdministration = { ent-ClothingHeadsetAlt } администрации
     .desc = { ent-ClothingHeadsetAlt.desc }
 

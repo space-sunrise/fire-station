@@ -97,7 +97,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitMHLeader
     id: MHLeaderPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMilitaryWebbingMH
     pocket1: BaseUplinkMTFLeader
     pocket2: PinpointerNuclear
@@ -178,7 +178,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitMH
     id: MHSpecialistPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMilitaryWebbingMH
     pocket1: BaseUplinkMTFSpecialist
     pocket2: CombatKnife
@@ -256,7 +256,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitMH
     id: MHCadetPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMilitaryWebbingMH
     pocket1: BaseUplinkMTFCadet
     pocket2: CombatKnife

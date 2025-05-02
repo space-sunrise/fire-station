@@ -75,7 +75,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: MTFCommanderVest
     id: NTFLeaderPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTF
     belt: MTFCommanderWebbing
     pocket1: BaseUplinkMTFLeader
     pocket2: PinpointerNuclear
@@ -149,7 +149,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: MTFVest
     id: NTFSpecialistPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTF
     belt: MTFWebbing
     pocket1: BaseUplinkMTFSpecialist
     pocket2: CombatKnife
@@ -220,7 +220,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: MTFVest
     id: NTFCadetPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTF
     belt: MTFWebbing
     pocket1: BaseUplinkMTFCadet
     pocket2: CombatKnife

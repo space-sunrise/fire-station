@@ -54,6 +54,31 @@
     - state: crypt_silver
     - state: com_label
 
+# Мобильная Оперативная Группа
+
+- type: entity
+  parent: [ EncryptionKey, BaseCentcommContraband ]
+  id: EncryptionKeyMTFMaster
+  components:
+  - type: EncryptionKey
+    channels:
+    - Common
+    - RegionalAdministration
+    - Administration
+    - HeavyContainmentSecurityService
+    - ExternalAdministrativeZoneSecurityService
+    - ScientificService
+    - MedicalService
+    - EngineeringTechnicalService
+    - LogisticsService
+    - FoodAndSanitationService
+    defaultChannel: RegionalAdministration
+  - type: Sprite
+    sprite: _Scp/Objects/Devices/encryption_keys.rsi
+    layers:
+    - state: crypt_blue
+    - state: hq_label
+
 # Служба внутренней безопасности
 
 - type: entity
