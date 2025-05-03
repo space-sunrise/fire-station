@@ -50,6 +50,11 @@
 # кастом вещи группы
 - type: entity
   categories: [ HideSpawnMenu ]
+  parent: ClothingHeadHatCapLeatherHoS
+  id: ClothingHeadHatCapLeatherLLHLeader
+
+- type: entity
+  categories: [ HideSpawnMenu ]
   parent: ClothingDeathSquadronBackpack
   id: ClothingBackpackLLH
 
@@ -95,12 +100,13 @@
     jumpsuit: ClothingUniformLLH
     back: ClothingBackpackLLH
     shoes: ClothingShoesBootsMagAdv
+    head: ClothingHeadHatCapLeatherLLHLeader
     mask: ClothingMaskGasLLH
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHeavyLLH
     id: LLHLeaderPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTFLLH
     belt: MTFCommanderWebbing
     pocket1: BaseUplinkLLHLeader
     pocket2: PinpointerNuclear
@@ -121,11 +127,6 @@
   - type: Sprite
     sprite: Markers/jobs.rsi
     state: ertleader
-  - type: RandomMetadata
-    nameSegments:
-    - NamesLeader
-    - NamesOperativeLeaderLast
-    nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: LLHLeader
 
@@ -171,12 +172,13 @@
     jumpsuit: ClothingUniformLLH
     back: ClothingBackpackLLH
     shoes: ClothingShoesBootsMagAdv
+    head: ClothingHelmetMTF
     mask: ClothingMaskGasLLH
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHeavyLLH
     id: LLHSpecialistPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTFLLH
     belt: MTFWebbing
     pocket1: BaseUplinkLLHSpecialist
     pocket2: CombatKnife
@@ -194,17 +196,12 @@
   - type: Sprite
     sprite: Markers/jobs.rsi
     state: ertsecurityeva
-  - type: RandomMetadata
-    nameSegments:
-    - NamesCadet
-    - NamesOperativeLast
-    nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: LLHSpecialist
 
 - type: randomHumanoidSettings
   id: LLHSpecialist
-  parent: CommonMTFSpecialist
+  parent: CommonMTFOperative
   randomizeName: false
   components:
   - type: GhostRole
@@ -216,11 +213,6 @@
     job: LLHSpecialist
   - type: Loadout
     prototypes: [ LLHSpecialistGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesCadet
-    - NamesOperativeLast
-    nameFormat: name-format-ert
 
 # кадет
 - type: job
@@ -244,12 +236,13 @@
     jumpsuit: ClothingUniformLLH
     back: ClothingBackpackLLH
     shoes: ClothingShoesBootsMagAdv
+    head: ClothingHelmetMTF
     mask: ClothingMaskGasLLH
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHeavyLLH
     id: LLHCadetPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTFLLH
     belt: MTFWebbing
     pocket1: BaseUplinkLLH
     pocket2: CombatKnife
@@ -267,17 +260,12 @@
   - type: Sprite
     sprite: Markers/jobs.rsi
     state: ertsecurityeva
-  - type: RandomMetadata
-    nameSegments:
-    - NamesCadet
-    - NamesOperativeLast
-    nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: LLHCadet
 
 - type: randomHumanoidSettings
   id: LLHCadet
-  parent: CommonMTFCadet
+  parent: CommonMTFOperative
   randomizeName: false
   components:
   - type: GhostRole
@@ -289,11 +277,6 @@
     job: LLHCadet
   - type: Loadout
     prototypes: [ LLHCadetGear ]
-  - type: RandomMetadata
-    nameSegments:
-    - NamesCadet
-    - NamesOperativeLast
-    nameFormat: name-format-ert
 
 
 

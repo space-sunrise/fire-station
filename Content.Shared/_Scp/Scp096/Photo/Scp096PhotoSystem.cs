@@ -1,7 +1,6 @@
-﻿using Content.Shared._Scp.ScpMask;
+﻿using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.ScpMask;
 using Content.Shared.Examine;
-using Content.Shared.Ghost;
-using Content.Shared.Silicons.StationAi;
 
 namespace Content.Shared._Scp.Scp096.Photo;
 
@@ -9,6 +8,7 @@ public sealed class Scp096PhotoSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedScp096System _scp096 = default!;
+    [Dependency] private readonly SharedScpHelpersSystem _scpHelpers = default!;
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
 
     public override void Initialize()
@@ -30,7 +30,7 @@ public sealed class Scp096PhotoSystem : EntitySystem
         if (!args.IsInDetailsRange)
             return;
 
-        if (!_scp096.TryGetScp096(out var scp096))
+        if (!_scpHelpers.TryGetFirst<Scp096Component>(out var scp096))
             return;
 
         if (!_scp096.TryAddTarget(scp096.Value, args.Examiner, true, true))

@@ -1083,7 +1083,7 @@
 
 # Mechs
 - type: listing
-  id: ScpUplinkPowerCageERT
+  id: ScpUplinkPowerCageMTF
   productEntity: PowerCageMTF
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: powercage_nt }
   cost:
@@ -1095,7 +1095,7 @@
     stock: 2
 
 - type: listing
-  id: ScpUplinkBorgERT
+  id: ScpUplinkBorgMTF
   productEntity: PlayerBorgChassisERTBattery
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: cyborg_ert }
   cost:
@@ -1107,9 +1107,9 @@
     stock: 2
 
 - type: listing
-  id: ScpUplinkNTGygax
+  id: ScpUplinkScpGygax
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mech_ntgygax }
-  productEntity: CrateCommandNTGygaxBundle
+  productEntity: CrateAdministrationScpGygaxBundle
   cost:
     Bluecrystal: 85
   categories:
@@ -1121,7 +1121,7 @@
 - type: listing
   id: ScpUplinkMarauder
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mech_marauder }
-  productEntity: CrateCommandMarauderBundle
+  productEntity: CrateAdministrationMarauderBundle
   cost:
     Bluecrystal: 120
   categories:
@@ -1133,7 +1133,7 @@
 - type: listing
   id: ScpUplinkSeraph
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mech_seraph }
-  productEntity: CrateCommandSeraphBundle
+  productEntity: CrateAdministrationSeraphBundle
   cost:
     Bluecrystal: 160
   categories:
@@ -1195,3 +1195,22 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
+- type: listing
+  id: ScpUplinkRecontainment035
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationRecontainment035
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkRecontainment049
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationRecontainment049
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

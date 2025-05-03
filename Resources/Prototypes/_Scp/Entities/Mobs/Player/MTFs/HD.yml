@@ -108,7 +108,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHD
     id: HDLeaderPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTF
     belt: MTFCommanderWebbing
     pocket1: BaseUplinkMTFLeader
     pocket2: PinpointerNuclear
@@ -131,11 +131,6 @@
   - type: Sprite
     sprite: Markers/jobs.rsi
     state: ertleader
-  - type: RandomMetadata
-    nameSegments:
-    - NamesLeader
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: HDLeader
 
@@ -182,7 +177,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHD
     id: HDSpecialistPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTF
     belt: MTFWebbing
     pocket1: BaseUplinkMTFSpecialist
     pocket2: CombatKnife
@@ -202,11 +197,6 @@
   - type: Sprite
     sprite: Markers/jobs.rsi
     state: ertsecurityeva
-  - type: RandomMetadata
-    nameSegments:
-    - NamesSpecialist
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: HDSpecialist
 
@@ -252,7 +242,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHD
     id: HDCadetPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTF
     belt: MTFWebbing
     pocket1: BaseUplinkMTFCadet
     pocket2: CombatKnife
@@ -272,11 +262,6 @@
   - type: Sprite
     sprite: Markers/jobs.rsi
     state: ertsecurityeva
-  - type: RandomMetadata
-    nameSegments:
-    - NamesCadet
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: HDCadet
 

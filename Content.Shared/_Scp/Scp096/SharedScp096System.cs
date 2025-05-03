@@ -1,17 +1,11 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Linq;
-using System.Numerics;
-using Content.Shared._Scp.Blinking;
+﻿using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.ScpMask;
+using Content.Shared._Scp.Watching;
 using Content.Shared.Audio;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Doors.Components;
-using Content.Shared.Examine;
-using Content.Shared.Eye.Blinding.Components;
-using Content.Shared.Eye.Blinding.Systems;
-using Content.Shared.Ghost;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -31,15 +25,12 @@ namespace Content.Shared._Scp.Scp096;
 public abstract partial class SharedScp096System : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
-    [Dependency] private readonly SharedBlinkingSystem _blinkingSystem = default!;
-    [Dependency] private readonly SharedEyeClosingSystem _eyeClosing = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifierSystem = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSoundSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] private readonly SharedScpHelpersSystem _scpHelpers = default!;
+    [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
@@ -50,6 +41,8 @@ public abstract partial class SharedScp096System : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+
+        SubscribeLocalEvent<Scp096Component, SimpleEntitySeenEvent>(OnSeen);
 
         SubscribeLocalEvent<Scp096Component, AttackAttemptEvent>(OnAttackAttempt);
         SubscribeLocalEvent<Scp096Component, AttemptPacifiedAttackEvent>(OnPacifiedAttackAttempt);
@@ -81,11 +74,6 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void UpdateScp096(Entity<Scp096Component> scpEntity)
     {
-        if (!CanBeAggro(scpEntity))
-            return;
-
-        FindTargets(scpEntity);
-
         if (!scpEntity.Comp.InRageMode)
             return;
 
@@ -104,6 +92,11 @@ public abstract partial class SharedScp096System : EntitySystem
     #endregion
 
     #region Event handlers
+
+    private void OnSeen(Entity<Scp096Component> ent, ref SimpleEntitySeenEvent args)
+    {
+        TryAddTarget(ent, args.Viewer);
+    }
 
     private void OnSpcStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
     {
@@ -159,7 +152,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     public bool TryAddTarget(EntityUid targetUid, bool ignoreAngle = false, bool ignoreMask = false)
     {
-        if (!TryGetScp096(out var scpEntity))
+        if (!_scpHelpers.TryGetFirst<Scp096Component>(out var scpEntity))
             return false;
 
         if (!TryAddTarget(scpEntity.Value, targetUid, ignoreAngle, ignoreMask))
@@ -170,10 +163,10 @@ public abstract partial class SharedScp096System : EntitySystem
 
     public bool TryAddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid, bool ignoreAngle = false, bool ignoreMask = false)
     {
-        if (!IsValidTarget(scpEntity, targetUid, ignoreAngle))
+        if (!CanBeAggro(scpEntity, ignoreMask))
             return false;
 
-        if (!CanBeAggro(scpEntity, ignoreMask))
+        if (!IsValidTarget(scpEntity, targetUid, ignoreAngle))
             return false;
 
         AddTarget(scpEntity, targetUid);
@@ -227,61 +220,21 @@ public abstract partial class SharedScp096System : EntitySystem
         }
     }
 
-    private void FindTargets(Entity<Scp096Component> scpEntity)
-    {
-        var eyes = _lookup.GetEntitiesInRange<BlinkableComponent>(Transform(scpEntity).Coordinates, scpEntity.Comp.AgroDistance);
-        var watchers = eyes
-            .Where(eye => _examine.InRangeUnOccluded(eye, scpEntity, scpEntity.Comp.AgroDistance, ignoreInsideBlocker: false));
-
-        foreach (var targetUid in watchers)
-        {
-            TryAddTarget(scpEntity, targetUid);
-        }
-    }
-
     private bool IsValidTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid, bool ignoreAngle = false)
     {
-        // Если не умер, не в крите и вообще чувствует себя хорошо
-        if (_mobStateSystem.IsIncapacitated(targetUid))
+        // Проверяем, может ли цель видеть 096. Без учета поля зрения
+        if (!_watching.IsWatchedBy(scpEntity, [targetUid], viewers: out _ , false))
             return false;
 
-        // Если таргет не имеет защиты
+        // Проверяем, есть ли у цели защита от 096
         if (TryComp<Scp096ProtectionComponent>(targetUid, out var protection) && !_random.Prob(protection.ProblemChance))
             return false;
 
-        // Если таргет не имеет возможности моргать
-        if (!TryComp<BlinkableComponent>(targetUid, out var blinkableComponent))
+        // Проверяем, смотрит ли 096 на цель и цель на 096
+        if (!IsTargetSeeScp096(targetUid, scpEntity, ignoreAngle))
             return false;
 
-        // Если таргет не может быть слепым
-        if (!TryComp<BlindableComponent>(targetUid, out var blindableComponent))
-            return false;
-
-        // Если таргет не гост
-        if (HasComp<GhostComponent>(targetUid))
-            return false;
-
-        // Если таргет не слепой
-        if (_blinkingSystem.IsBlind(targetUid, blinkableComponent))
-            return false;
-
-        // Если глаза таргета не закрыты
-        if (_eyeClosing.AreEyesClosed(targetUid))
-            return false;
-
-        // Если таргет не моргнул
-        if (blindableComponent.IsBlind)
-            return false;
-
-        // Если таргет не смотрит на 096 под определенным углом и требуемый угол не игнорируется
-        // Два раза ебашу IsWithinViewAngle, чтобы проверить, что 096 смотрит в лицо игроку, но и игрок в лицо 096
-        if ((!IsWithinViewAngle(scpEntity.Owner, targetUid, scpEntity.Comp.ArgoAngle) || !IsWithinViewAngle(targetUid, scpEntity.Owner, scpEntity.Comp.ArgoAngle))
-            && !ignoreAngle)
-        {
-            return false;
-        }
-
-        // Тогда все заебись и таргет подходит
+        // Если все условия выполнены, то цель валидна
         return true;
     }
 
@@ -309,45 +262,27 @@ public abstract partial class SharedScp096System : EntitySystem
         return true;
     }
 
-    private bool IsWithinViewAngle(EntityUid scpEntity, EntityUid targetEntity, float maxAngle)
-    {
-        return FindAngleBetween(scpEntity, targetEntity) <= maxAngle;
-    }
-
-    private float FindAngleBetween(Entity<TransformComponent?> scp, Entity<TransformComponent?> target)
-    {
-        if (!Resolve<TransformComponent>(scp, ref scp.Comp))
-            return float.MaxValue;
-
-        if (!Resolve<TransformComponent>(target, ref target.Comp))
-            return float.MaxValue;
-
-        var scpWorldPosition = _transformSystem.GetMoverCoordinates(scp.Owner);
-        var targetWorldPosition = _transformSystem.GetMoverCoordinates(target.Owner);
-
-        var toEntity = (scpWorldPosition.Position - targetWorldPosition.Position).Normalized();
-
-        var dotProduct = Vector2.Dot(target.Comp.LocalRotation.ToWorldVec(), toEntity);
-        var angle = MathF.Acos(dotProduct) * (180f / MathF.PI);
-
-        return angle;
-    }
-
     private void RefreshSpeedModifiers(Entity<Scp096Component> scpEntity)
     {
         var newSpeed = scpEntity.Comp.InRageMode ? scpEntity.Comp.RageSpeed : scpEntity.Comp.BaseSpeed;
         _speedModifierSystem.ChangeBaseSpeed(scpEntity, newSpeed, newSpeed, 20.0f);
     }
 
-    public bool TryGetScp096([NotNullWhen(true)] out Entity<Scp096Component>? scpEntity)
+    private bool IsTargetSeeScp096(EntityUid viewer, Entity<Scp096Component> scp, bool ignoreAngle)
     {
-        scpEntity = null;
-        var query = EntityQuery<Scp096Component>().ToHashSet();
+        // Если игнорируем угол, то считаем, что смотрящий видит 096
+        if (ignoreAngle)
+            return true;
 
-        if (query.Count == 0)
+        // Проверяем, смотрит ли 096 в лицо цели
+        if (!_watching.IsInViewAngle(scp.Owner, viewer, scp.Comp.ArgoAngle))
             return false;
 
-        scpEntity = (query.First().Owner, query.First());
+        // Проверяем, смотри ли цель в лицо 096
+        if (!_watching.IsInViewAngle(viewer, scp.Owner, scp.Comp.ArgoAngle))
+            return false;
+
+        // Соответственно если обе проверки прошли, то цель видит 096
         return true;
     }
 

@@ -17,6 +17,7 @@
   - Brig
   - Maintenance
   - External
+  - Research
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

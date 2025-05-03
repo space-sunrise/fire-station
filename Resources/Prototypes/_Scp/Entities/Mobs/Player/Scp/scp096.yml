@@ -13,6 +13,7 @@
     - state: walking
       map: [ "base" ]
   - type: Scp096
+  - type: WatchingTarget
   - type: ShowBlinkable
   - type: Pullable
   - type: MeleeWeapon
@@ -91,6 +92,10 @@
     - Flashed
     - RadiationProtection
     - Drowsiness
+  - type: TimedRemoveComponents
+    removeAfter: 1
+    components:
+    - type: MobCollision
   - type: GuideHelp
     guides:
     - ScpResearch

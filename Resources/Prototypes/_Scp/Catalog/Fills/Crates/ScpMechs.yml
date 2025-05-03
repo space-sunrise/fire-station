@@ -1,0 +1,41 @@
+﻿- type: entity
+  id: CrateAdministrationScpGygaxBundle
+  parent: CrateAdministrationSecure
+  components:
+  - type: StorageFill
+    contents:
+      - id: MechNTGygaxFilled
+      - id: HandheldMechAnalyzer
+      - id: Nanopaste10
+      - id: CableApcStack
+      - id: ToolboxMechanicalFilled
+      - id: WelderIndustrial
+      - id: HyperLinkBookCorporateLaw
+
+- type: entity
+  id: CrateAdministrationMarauderBundle
+  parent: CrateAdministrationSecure
+  components:
+  - type: StorageFill
+    contents:
+      - id: MechMarauderFilled
+      - id: HandheldMechAnalyzer
+      - id: Nanopaste10
+      - id: CableApcStack
+      - id: ToolboxMechanicalFilled
+      - id: WelderIndustrial
+      - id: HyperLinkBookCorporateLaw
+
+- type: entity
+  id: CrateAdministrationSeraphBundle
+  parent: CrateAdministrationSecure
+  components:
+  - type: StorageFill
+    contents:
+      - id: MechSeraphFilled
+      - id: HandheldMechAnalyzer
+      - id: Nanopaste10
+      - id: CableApcStack
+      - id: ToolboxMechanicalFilled
+      - id: WelderIndustrial
+      - id: HyperLinkBookCorporateLaw

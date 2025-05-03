@@ -14,7 +14,7 @@ namespace Content.Shared.Eye.Blinding.Systems;
 public sealed class BlindableSystem : EntitySystem
 {
     [Dependency] private readonly BlurryVisionSystem _blurriness = default!;
-    [Dependency] private readonly SharedEyeClosingSystem _eyelids = default!; // Fire edit
+    [Dependency] private readonly EyeClosingSystem _eyelids = default!;
     [Dependency] private readonly SharedBodySystem _bodySystem = default!;
 
     public override void Initialize()

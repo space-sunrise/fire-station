@@ -5,6 +5,7 @@ using Content.Server.Examine;
 using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Scp096;
 using Content.Shared._Scp.ScpMask;
+using Content.Shared._Scp.Watching;
 using Content.Shared.Xenoarchaeology.Artifact;
 using Content.Shared.Xenoarchaeology.Artifact.XAE;
 
@@ -14,8 +15,7 @@ public sealed class ArtifactScp096MadnessSystem : BaseXAESystem<ArtifactScp096Ma
 {
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly Scp096System _scp096 = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly ExamineSystem _examine = default!;
+    [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly ScpHelpersSystem _scpHelpers = default!;
 
     protected override void OnActivated(Entity<ArtifactScp096MadnessComponent> ent, ref XenoArtifactNodeActivatedEvent args)
@@ -23,11 +23,7 @@ public sealed class ArtifactScp096MadnessSystem : BaseXAESystem<ArtifactScp096Ma
         if (!_scpHelpers.TryGetFirst<Scp096Component>(out var scp096))
             return;
 
-        var coords = Transform(ent).Coordinates;
-        var targets = _lookup.GetEntitiesInRange<BlinkableComponent>(coords, ent.Comp.Radius)
-            .Where(h => _examine.InRangeUnOccluded(ent, h, ent.Comp.Radius))
-            .ToHashSet();
-
+        var targets = _watching.GetWatchers(ent.Owner).ToHashSet();
         var reducedTargets = _scpHelpers.GetPercentageOfHashSet(targets, ent.Comp.Percent);
 
         foreach (var target in reducedTargets)

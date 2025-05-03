@@ -126,6 +126,7 @@
       - !type:NestedSelector
         tableId: ScpArtifactEffectsUltraFunnyTable
         weight: 1
+  - type: WatchingTarget
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
     baseSprintSpeed: 12
@@ -164,6 +165,10 @@
       - dragging-3
       - dragging-4
       - dragging-5
+  - type: TimedRemoveComponents
+    removeAfter: 1
+    components:
+    - type: MobCollision
   - type: GuideHelp
     guides:
     - ScpResearch
@@ -274,4 +279,8 @@
   - type: StatusEffects
     allowed:
     - Stun
+  - type: TimedRemoveComponents
+    removeAfter: 1
+    components:
+    - type: MobCollision
   - type: ComplexInteraction

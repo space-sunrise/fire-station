@@ -10,6 +10,7 @@ using Content.Server.Storage.Components;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared._Scp.Scp173;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Damage;
 using Content.Shared.Doors.Components;
@@ -57,7 +58,13 @@ public sealed class Scp173System : SharedScp173System
 
     private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
     private readonly SoundSpecifier _clogSound = new SoundPathSpecifier("/Audio/_Scp/Scp173/clog.ogg");
-    private const float ToggleDoorStuffChance = 0.2f;
+
+    public const int MinTotalSolutionVolume = 500;
+    public const int ExtraMinTotalSolutionVolume = 800;
+
+    public readonly ProtoId<ReagentPrototype> Reagent = "Scp173Reagent";
+
+    private const float ToggleDoorStuffChance = 0.35f;
 
     public override void Initialize()
     {
@@ -102,7 +109,7 @@ public sealed class Scp173System : SharedScp173System
             return;
         }
 
-        if (Is173Watched(uid, out _))
+        if (Watching.IsWatched(uid.Owner))
         {
             var message = Loc.GetString("scp173-fast-movement-too-many-watchers");
             _popup.PopupEntity(message, uid, uid, PopupType.LargeCaution);
@@ -185,7 +192,7 @@ public sealed class Scp173System : SharedScp173System
             return;
         }
 
-        if (Is173Watched(ent, out _))
+        if (Watching.IsWatched(ent.Owner))
         {
             var message = Loc.GetString("scp173-fast-movement-too-many-watchers");
             _popup.PopupEntity(message, ent, ent, PopupType.LargeCaution);
@@ -195,7 +202,7 @@ public sealed class Scp173System : SharedScp173System
         var coords = Transform(ent).Coordinates;
 
         var tempSol = new Solution();
-        tempSol.AddReagent(ent.Comp.Reagent, 25);
+        tempSol.AddReagent(Reagent, 25);
         _puddle.TrySpillAt(coords, tempSol, out _, false);
 
         _audio.PlayPvs(_clogSound, ent);
@@ -212,11 +219,11 @@ public sealed class Scp173System : SharedScp173System
 
             var allReagents = puddle.Comp.Solution.Value.Comp.Solution.GetReagentPrototypes(_prototype);
             total = allReagents
-                .Where(reagent => reagent.Key.ID == "Scp173Reagent")
+                .Where(reagent => reagent.Key.ID == Reagent)
                 .Aggregate(total, (current, reagent) => current + reagent.Value);
         }
 
-        if (total >= ent.Comp.MinTotalSolutionVolume)
+        if (total >= MinTotalSolutionVolume)
         {
             var transform = Transform(args.Performer);
             var lookup = _lookup.GetEntitiesInRange(transform.Coordinates, 5, flags: LookupFlags.Dynamic | LookupFlags.Static)
@@ -234,7 +241,7 @@ public sealed class Scp173System : SharedScp173System
                     _door.StartOpening(target);
             }
         }
-        else if (total >= ent.Comp.ExtraMinTotalSolutionVolume)
+        else if (total >= ExtraMinTotalSolutionVolume)
         {
             _explosion.QueueExplosion(_transform.GetMapCoordinates(ent), ExplosionSystem.DefaultExplosionPrototypeId, 300f, 0.6f, 50f, ent);
         }
@@ -263,10 +270,11 @@ public sealed class Scp173System : SharedScp173System
             return;
         }
 
-        if (Is173Watched(ent, out var watchersCount) && watchersCount > ent.Comp.MaxWatchers)
+        if (Watching.IsWatched(ent.Owner, out var watchersCount) && watchersCount > ent.Comp.MaxWatchers)
         {
             var message = Loc.GetString("scp173-fast-movement-too-many-watchers");
             _popup.PopupEntity(message, ent, ent, PopupType.LargeCaution);
+
             return;
         }
 

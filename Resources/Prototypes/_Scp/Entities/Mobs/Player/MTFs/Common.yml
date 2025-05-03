@@ -76,7 +76,36 @@
   parent: [NineTailedFoxSpecialistBackpack, BaseCentcommContraband]
   id: MTFSpecialistBackpack
 
+# гарнитуры для разных МОГ
+- type: entity
+  parent: [ClothingHeadsetAltRegionalAdministration, BaseCentcommContraband]
+  id: ClothingHeadsetAltMTF
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMTFMaster
 
+- type: entity
+  parent: ClothingHeadsetAltMTF
+  id: ClothingHeadsetAltMTFRRH
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMTFMaster
+      - EncryptionKeyInternalSecurity
+      - EncryptionKeyInternalTribunalService
+
+- type: entity
+  parent: ClothingHeadsetAltMTF
+  id: ClothingHeadsetAltMTFLLH
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyMTFMaster
+      - EncryptionKeyEthicsCommittee
 
 
 
@@ -176,6 +205,27 @@
 
 - type: entity
   parent: CrateAdministrationSecure
+  id: CrateAdministrationRecontainment049
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: Scp049ProtectionImplanter
+    - id: BookTheBookOfControl
+    - id: BoxSterileMask
+
+- type: entity
+  parent: CrateAdministrationSecure
+  id: CrateAdministrationRecontainment035
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: ClothingHeadAwareness
+    - id: SciFlash
+
+- type: entity
+  parent: CrateAdministrationSecure
   id: CrateAdministrationRecontainment173
   suffix: Filled
   components:
@@ -215,9 +265,9 @@
         - id: ClothingHeadHelmetAiPowered
 
 # РАНДОМ ХУМАНОИДЫ ОБЩИЕ
-# командир
+# Кадет
 - type: randomHumanoidSettings
-  id: CommonMTFLeader
+  id: CommonMTFCadet
   speciesBlacklist:
   - Diona
   - Vox
@@ -236,7 +286,7 @@
   components:
   - type: RandomMetadata
     nameSegments:
-    - NamesLeader
+    - NamesCadet
     - NamesMilitaryLast
     nameFormat: name-format-ert
   - type: ZombieImmune
@@ -248,7 +298,7 @@
 # специалист
 - type: randomHumanoidSettings
   id: CommonMTFSpecialist
-  parent: CommonMTFLeader
+  parent: CommonMTFCadet
   components:
   - type: RandomMetadata
     nameSegments:
@@ -256,16 +306,28 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert
 
-# Кадет
+# командир
 - type: randomHumanoidSettings
-  id: CommonMTFCadet
+  id: CommonMTFLeader
+  parent: CommonMTFSpecialist
+  randomizeName: false
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesLeader
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+
+# Оперативник
+- type: randomHumanoidSettings
+  id: CommonMTFOperative
   parent: CommonMTFLeader
   randomizeName: false
   components:
   - type: RandomMetadata
     nameSegments:
-    - NamesCadet
-    - NamesMilitaryLast
+    - NamesOperativeFirst
+    - NamesOperativeLast
     nameFormat: name-format-ert
 
 

@@ -1,19 +1,24 @@
 using Content.Shared._Scp.Blinking;
 using Content.Shared.Actions;
 using Content.Shared.Eye.Blinding.Components;
-using Content.Shared.Flash.Components;
+using Robust.Shared.Audio.Systems;
+using Robust.Shared.Network;
+using Robust.Shared.Player;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.Eye.Blinding.Systems;
 
-// TODO: Почемы ты параша не являешься кор системой для моргания
-// Fire edit - переименовал в SharedEyeClosingSystem и добавил наследников на сервере и клиенте
-public abstract class SharedEyeClosingSystem : EntitySystem
+public sealed class EyeClosingSystem : EntitySystem
 {
+    [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly BlindableSystem _blindableSystem = default!;
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
     [Dependency] private readonly IEntityManager _entityManager = default!;
-    [Dependency] private readonly SharedBlinkingSystem _blinking = default!; // Fire
 
+    /* Fire edit - вся логика перемещена в BlinkingSystem. Там это тут не нужно
     public override void Initialize()
     {
         base.Initialize();
@@ -24,6 +29,7 @@ public abstract class SharedEyeClosingSystem : EntitySystem
         SubscribeLocalEvent<EyeClosingComponent, CanSeeAttemptEvent>(OnTrySee);
         SubscribeLocalEvent<EyeClosingComponent, AfterAutoHandleStateEvent>(OnHandleState);
     }
+    */
 
     private void OnMapInit(Entity<EyeClosingComponent> eyelids, ref MapInitEvent args)
     {
@@ -43,17 +49,13 @@ public abstract class SharedEyeClosingSystem : EntitySystem
         if (args.Handled)
             return;
 
-        // Fire edit start
-        if (HasComp<FlashedComponent>(eyelids))
-            return;
-        // Fire edit end
-
         args.Handled = true;
         SetEyelids((eyelids.Owner, eyelids.Comp), !eyelids.Comp.EyesClosed);
     }
 
     private void OnHandleState(Entity<EyeClosingComponent> eyelids, ref AfterAutoHandleStateEvent args)
     {
+        DoAudioFeedback((eyelids.Owner, eyelids.Comp), eyelids.Comp.EyesClosed);
     }
 
     private void OnTrySee(Entity<EyeClosingComponent> eyelids, ref CanSeeAttemptEvent args)
@@ -85,11 +87,6 @@ public abstract class SharedEyeClosingSystem : EntitySystem
         if (eyelids.Comp.EyesClosed == value)
             return;
 
-        // Fire edit start.
-        if (!_blinking.CanCloseEyes(eyelids))
-            return;
-        // Fire edit end.
-
         eyelids.Comp.EyesClosed = value;
         Dirty(eyelids);
 
@@ -98,12 +95,24 @@ public abstract class SharedEyeClosingSystem : EntitySystem
 
         _blindableSystem.UpdateIsBlind(eyelids.Owner);
 
-        // Fire edit start.
-        if (value)
-        {
-            _blinking.ResetBlink(eyelids);
-        }
-        // Fire edit end.
+        DoAudioFeedback(eyelids, eyelids.Comp.EyesClosed);
+    }
+
+    public void DoAudioFeedback(Entity<EyeClosingComponent?> eyelids, bool eyelidTarget)
+    {
+        if (!Resolve(eyelids, ref eyelids.Comp))
+            return;
+
+        if (!_net.IsClient || !_timing.IsFirstTimePredicted)
+            return;
+
+        if (eyelids.Comp.PreviousEyelidPosition == eyelidTarget)
+            return;
+
+        eyelids.Comp.PreviousEyelidPosition = eyelidTarget;
+
+        if (_playerManager.TryGetSessionByEntity(eyelids, out var session))
+            _audio.PlayGlobal(eyelidTarget ? eyelids.Comp.EyeCloseSound : eyelids.Comp.EyeOpenSound, session);
     }
 
     public void UpdateEyesClosable(Entity<BlindableComponent?> blindable)
@@ -123,12 +132,18 @@ public abstract class SharedEyeClosingSystem : EntitySystem
             return;
         }
 
+        /* Fire edit - не надо нам этого компонента, у нас свой аналог, который и так у всех есть.
+
         var naturalEyelids = EnsureComp<EyeClosingComponent>(blindable);
         naturalEyelids.NaturallyCreated = true;
         Dirty(blindable);
+
+        */
     }
 }
 
+/* Fire edit - перемещено в нашу папку и объединено с BlinkingSystem
 public sealed partial class ToggleEyesActionEvent : InstantActionEvent
 {
 }
+*/

@@ -45,6 +45,8 @@
   components:
   - type: Pda
     id: IDCardNTFCadet
+
+
 # ПРОФЕССИИ
 # Командир
 - type: job
@@ -75,7 +77,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: MTFCommanderVest
     id: NTFLeaderPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTF
     belt: MTFCommanderWebbing
     pocket1: BaseUplinkMTFLeader
     pocket2: PinpointerNuclear
@@ -98,11 +100,6 @@
   - type: Sprite
     sprite: Markers/jobs.rsi
     state: ertleader
-  - type: RandomMetadata
-    nameSegments:
-    - NamesLeader
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: NTFLeader
 
@@ -149,7 +146,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: MTFVest
     id: NTFSpecialistPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTF
     belt: MTFWebbing
     pocket1: BaseUplinkMTFSpecialist
     pocket2: CombatKnife
@@ -169,11 +166,6 @@
   - type: Sprite
     sprite: Markers/jobs.rsi
     state: ertsecurityeva
-  - type: RandomMetadata
-    nameSegments:
-    - NamesSpecialist
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: NTFSpecialist
 
@@ -220,7 +212,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: MTFVest
     id: NTFCadetPDA
-    ears: ClothingHeadsetAltRegionalAdministration
+    ears: ClothingHeadsetAltMTF
     belt: MTFWebbing
     pocket1: BaseUplinkMTFCadet
     pocket2: CombatKnife
@@ -240,11 +232,6 @@
   - type: Sprite
     sprite: Markers/jobs.rsi
     state: ertsecurityeva
-  - type: RandomMetadata
-    nameSegments:
-    - NamesCadet
-    - NamesMilitaryLast
-    nameFormat: name-format-ert
   - type: RandomHumanoidSpawner
     settings: NTFCadet
 
