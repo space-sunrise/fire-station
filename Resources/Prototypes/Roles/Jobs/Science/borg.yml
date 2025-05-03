@@ -7,7 +7,7 @@
   playTimeTracker: JobStationAi
   requirements:
   - !type:DepartmentTimeRequirement
-    department: Command
+    department: Administration # Fire edit
     time: 36000 # 10 hours FireStation Edit
   canBeAntag: false
   icon: JobIconStationAi
