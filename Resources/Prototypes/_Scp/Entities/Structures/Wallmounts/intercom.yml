@@ -1,0 +1,39 @@
+﻿- type: entity
+  id: IntercomHeavyContainmentSecurityService
+  parent: IntercomSecurity
+  suffix: HeavyContainmentSecurityService
+  components:
+  - type: ContainerFill
+    containers:
+      board:
+      - IntercomElectronics
+      key_slots:
+      - EncryptionKeyCommon
+      - EncryptionKeyHeavyContainmentSecurityService
+
+- type: entity
+  id: IntercomExternalAdministrativeZoneSecurityService
+  parent: IntercomHeavyContainmentSecurityService
+  suffix: ExternalAdministrativeZoneSecurityService
+  components:
+  - type: ContainerFill
+    containers:
+      board:
+      - IntercomElectronics
+      key_slots:
+      - EncryptionKeyCommon
+      - EncryptionKeyExternalAdministrativeZoneSecurityService
+
+- type: entity
+  id: IntercomMasterZoneSecurityService
+  parent: IntercomHeavyContainmentSecurityService
+  suffix: MasterZoneSecurityService
+  components:
+  - type: ContainerFill
+    containers:
+      board:
+      - IntercomElectronics
+      key_slots:
+      - EncryptionKeyCommon
+      - EncryptionKeyExternalAdministrativeZoneSecurityService
+      - EncryptionKeyHeavyContainmentSecurityService

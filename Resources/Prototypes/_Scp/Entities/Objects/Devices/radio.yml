@@ -1,0 +1,21 @@
+﻿- type: entity
+  parent: RadioHandheldSecurity
+  id: RadioHandheldHeavyContainmentSecurityService
+  components:
+  - type: RadioMicrophone
+    broadcastChannel: HeavyContainmentSecurityService
+    listenRange: 1
+  - type: RadioSpeaker
+    channels:
+    - HeavyContainmentSecurityService
+
+- type: entity
+  parent: RadioHandheldHeavyContainmentSecurityService
+  id: RadioHandheldExternalAdministrativeZoneSecurityService
+  components:
+  - type: RadioMicrophone
+    broadcastChannel: ExternalAdministrativeZoneSecurityService
+    listenRange: 1
+  - type: RadioSpeaker
+    channels:
+    - ExternalAdministrativeZoneSecurityService
