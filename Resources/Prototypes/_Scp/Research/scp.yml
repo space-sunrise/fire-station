@@ -82,7 +82,8 @@
   - ReinforcedMaskScp096
   
 - type: technology
-  id: ReactiveAnomalyshifrator
+  id: SecondOrderNeurovisualFilter
+
   name: research-technology-second-order-neurovisual-filter
 
   icon:
