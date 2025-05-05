@@ -50,7 +50,8 @@
   
 - type: technology
   id: BagScp096Reseach
-  name: research-technology-bag-096
+  name: research-technology-rapid-deployment-fiber-synthesis
+
   icon:
     sprite: _Scp/Clothing/Head/Scp096/scp096_bag-icons.rsi
     state: icon
