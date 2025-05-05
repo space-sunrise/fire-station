@@ -13,6 +13,7 @@ research-technology-cognitive-screen-protocol = Протокол когнити�
 
 research-technology-conscious-inversion-filter = Сознательный инверсионный фильтр «Эон-8»
 
-research-technology-eye-droplets = Увлажнение глаз
+research-technology-agent-type-solution = Раствор агентного типа «Вигилий»
+
 research-technology-anomalous-resonance-laser = Аномальный резонансный лазер
 research-technology-anomalous-optical-destructor = Аномально-оптический деструктор
