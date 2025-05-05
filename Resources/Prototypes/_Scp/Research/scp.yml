@@ -35,7 +35,8 @@
   
 - type: technology
   id: Scp049ImplanterReseach
-  name: research-technology-implanter-049
+  name: research-technology-cognitive-screen-protocol
+
   icon:
     sprite: Objects/Specific/Medical/implanter.rsi
     state: implanter0
