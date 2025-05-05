@@ -5,7 +5,8 @@
 - type: technology
   id: AgentTypeSolution
 
-  name: research-technology-eye-droplets
+  name: research-technology-agent-type-solution
+
   icon: 
     sprite: Objects/Consumable/Drinks/patronbottle.rsi # TODO: Нормальный спрайт, а не алкашка
     state: icon_empty
