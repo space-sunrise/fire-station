@@ -1,7 +1,8 @@
 ﻿research-discipline-scp = SCP
 
 research-technology-silent-shoes = Поглощение звука
-research-technology-anti-teleportation = Локальное защитное поле
+research-technology-counter-space-barrier = Контр-пространственный барьер «Гайя-11»
+
 research-technology-shifrator = Продвинутые нейросети
 research-technology-reinforced-mask = Композитные материалы
 research-technology-bag-096 = Синтезация хлопковых волокон
