@@ -3,7 +3,8 @@
 research-technology-silent-shoes = Поглощение звука
 research-technology-counter-space-barrier = Контр-пространственный барьер «Гайя-11»
 
-research-technology-shifrator = Продвинутые нейросети
+research-technology-second-order-neurovisual-filter = Нейровизуальный фильтр второго порядка «Аррет-96»
+
 research-technology-reinforced-mask = Композитные материалы
 research-technology-bag-096 = Синтезация хлопковых волокон
 research-technology-implanter-049 = Блокировка мозговых процессов
