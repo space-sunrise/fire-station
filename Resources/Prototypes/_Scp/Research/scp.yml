@@ -67,7 +67,8 @@
 
   
 - type: technology
-  id: ReactiveAnomalySuppressionComplex
+  id: ShieldingComposite
+
   name: research-technology-shielding-composite
 
   icon:
