@@ -1,6 +1,7 @@
 ﻿research-discipline-scp = SCP
 
-research-technology-silent-shoes = Поглощение звука
+research-technology-silent-step-module = Модуль бесшумного шага «Ноктис-2»
+
 research-technology-counter-space-barrier = Контр-пространственный барьер «Гайя-11»
 
 research-technology-second-order-neurovisual-filter = Нейровизуальный фильтр второго порядка «Аррет-96»
