@@ -20,7 +20,8 @@
   
 - type: technology
   id: HeadAwarenessReseach
-  name: research-technology-integra
+  name: research-technology-conscious-inversion-filter
+
   icon:
     sprite: _Scp/Clothing/Head/Helmets/techno.rsi
     state: icon
