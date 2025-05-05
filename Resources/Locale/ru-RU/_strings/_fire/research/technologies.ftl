@@ -7,7 +7,8 @@ research-technology-second-order-neurovisual-filter = Нейровизуальн
 
 research-technology-shielding-composite = Экранирующий композит «Лигнус-С»
 
-research-technology-bag-096 = Синтезация хлопковых волокон
+research-technology-rapid-deployment-fiber-synthesis = Синтезация волокон быстрого развертывания «ГАЗЕЛВИВ-9»
+
 research-technology-implanter-049 = Блокировка мозговых процессов
 research-technology-integra = Поглощение психических волн
 research-technology-eye-droplets = Увлажнение глаз
