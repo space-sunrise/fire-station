@@ -34,7 +34,8 @@
   - ClothingHeadAwareness
   
 - type: technology
-  id: Scp049ImplanterReseach
+  id: CognitiveScreenProtocolArk11
+
   name: research-technology-cognitive-screen-protocol
 
   icon:
