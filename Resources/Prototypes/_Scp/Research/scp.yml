@@ -3,7 +3,8 @@
 # Tier 1
 
 - type: technology
-  id: EyeDropletReseach
+  id: AgentTypeSolution
+
   name: research-technology-eye-droplets
   icon: 
     sprite: Objects/Consumable/Drinks/patronbottle.rsi # TODO: Нормальный спрайт, а не алкашка
