@@ -9,7 +9,8 @@ research-technology-shielding-composite = Экранирующий композ�
 
 research-technology-rapid-deployment-fiber-synthesis = Синтезация волокон быстрого развертывания «ГАЗЕЛВИВ-9»
 
-research-technology-implanter-049 = Блокировка мозговых процессов
+research-technology-cognitive-screen-protocol = Протокол когнитивного экрана «Ковчег-11»
+
 research-technology-integra = Поглощение психических волн
 research-technology-eye-droplets = Увлажнение глаз
 research-technology-anomalous-resonance-laser = Аномальный резонансный лазер
