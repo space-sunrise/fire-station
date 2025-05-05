@@ -83,7 +83,8 @@
   
 - type: technology
   id: ReactiveAnomalyshifrator
-  name: research-technology-shifrator
+  name: research-technology-second-order-neurovisual-filter
+
   icon:
     sprite: _Scp/Clothing/Head/Helmets/aipowered.rsi
     state: icon
