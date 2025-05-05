@@ -11,7 +11,8 @@ research-technology-rapid-deployment-fiber-synthesis = Синтезация во
 
 research-technology-cognitive-screen-protocol = Протокол когнитивного экрана «Ковчег-11»
 
-research-technology-integra = Поглощение психических волн
+research-technology-conscious-inversion-filter = Сознательный инверсионный фильтр «Эон-8»
+
 research-technology-eye-droplets = Увлажнение глаз
 research-technology-anomalous-resonance-laser = Аномальный резонансный лазер
 research-technology-anomalous-optical-destructor = Аномально-оптический деструктор
