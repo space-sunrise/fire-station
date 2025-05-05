@@ -68,7 +68,8 @@
   
 - type: technology
   id: ReactiveAnomalySuppressionComplex
-  name: research-technology-reinforced-mask
+  name: research-technology-shielding-composite
+
   icon:
     sprite: _Scp/Clothing/Mask/scp096.rsi
     state: icon
