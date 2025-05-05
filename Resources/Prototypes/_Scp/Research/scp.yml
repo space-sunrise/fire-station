@@ -100,7 +100,8 @@
   
 - type: technology
   id: ReactiveAnomalyShoesSilent
-  name: research-technology-silent-shoes
+  name: research-technology-silent-step-module
+
   icon:
     sprite: _Scp/Clothing/Shoes/Boots/silentboots.rsi
     state: icon
