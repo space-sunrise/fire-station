@@ -5,7 +5,8 @@ research-technology-counter-space-barrier = Контр-пространстве�
 
 research-technology-second-order-neurovisual-filter = Нейровизуальный фильтр второго порядка «Аррет-96»
 
-research-technology-reinforced-mask = Композитные материалы
+research-technology-shielding-composite = Экранирующий композит «Лигнус-С»
+
 research-technology-bag-096 = Синтезация хлопковых волокон
 research-technology-implanter-049 = Блокировка мозговых процессов
 research-technology-integra = Поглощение психических волн
