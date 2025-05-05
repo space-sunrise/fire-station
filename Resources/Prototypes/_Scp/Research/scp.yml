@@ -86,7 +86,8 @@
 
   
 - type: technology
-  id: ReactiveAnomalyAntiTeleportation
+  id: CounterSpaceBarrier
+
   name: research-technology-anti-teleportation
   icon:
     sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
