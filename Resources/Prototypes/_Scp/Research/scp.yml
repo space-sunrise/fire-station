@@ -99,7 +99,8 @@
   - ClothingOuterAntiTeleportation
   
 - type: technology
-  id: ReactiveAnomalyShoesSilent
+  id: SilentStepModule
+
   name: research-technology-silent-step-module
 
   icon:
