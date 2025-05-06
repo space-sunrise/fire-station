@@ -4,9 +4,7 @@
 
 - type: technology
   id: AgentTypeSolution
-
   name: research-technology-agent-type-solution
-
   icon: 
     sprite: Objects/Consumable/Drinks/patronbottle.rsi # TODO: Нормальный спрайт, а не алкашка
     state: icon_empty
@@ -20,9 +18,7 @@
   
 - type: technology
   id: ConsciousInversionFilter
-
   name: research-technology-conscious-inversion-filter
-
   icon:
     sprite: _Scp/Clothing/Head/Helmets/techno.rsi
     state: icon
@@ -35,9 +31,7 @@
   
 - type: technology
   id: CognitiveScreenProtocolArk11
-
   name: research-technology-cognitive-screen-protocol
-
   icon:
     sprite: Objects/Specific/Medical/implanter.rsi
     state: implanter0
@@ -50,9 +44,7 @@
   
 - type: technology
   id: RapidDeploymentFiberSynthesis
-
   name: research-technology-rapid-deployment-fiber-synthesis
-
   icon:
     sprite: _Scp/Clothing/Head/Scp096/scp096_bag-icons.rsi
     state: icon
@@ -68,9 +60,7 @@
   
 - type: technology
   id: ShieldingComposite
-
   name: research-technology-shielding-composite
-
   icon:
     sprite: _Scp/Clothing/Mask/scp096.rsi
     state: icon
@@ -83,9 +73,7 @@
   
 - type: technology
   id: SecondOrderNeurovisualFilter
-
   name: research-technology-second-order-neurovisual-filter
-
   icon:
     sprite: _Scp/Clothing/Head/Helmets/aipowered.rsi
     state: icon
@@ -98,9 +86,7 @@
 
 - type: technology
   id: CounterSpaceBarrier
-
   name: research-technology-counter-space-barrier
-
   icon:
     sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi
     state: icon
@@ -113,9 +99,7 @@
   
 - type: technology
   id: SilentStepModule
-
   name: research-technology-silent-step-module
-
   icon:
     sprite: _Scp/Clothing/Shoes/Boots/silentboots.rsi
     state: icon
