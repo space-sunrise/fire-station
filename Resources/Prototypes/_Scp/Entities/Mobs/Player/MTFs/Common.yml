@@ -231,7 +231,7 @@
   components:
     - type: StorageFill
       contents:
-        - id: CrateScpCageFolded
+        - id: CrateScpCageScp173
         - id: EyeDroplets
         - id: Screwdriver
 
