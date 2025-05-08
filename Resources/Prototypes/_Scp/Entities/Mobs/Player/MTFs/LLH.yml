@@ -277,6 +277,7 @@
     job: LLHCadet
   - type: Loadout
     prototypes: [ LLHCadetGear ]
+  - type: NoEmotions
 
 
 

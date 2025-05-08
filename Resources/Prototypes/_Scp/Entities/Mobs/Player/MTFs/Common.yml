@@ -305,6 +305,7 @@
     - NamesSpecialist
     - NamesMilitaryLast
     nameFormat: name-format-ert
+  - type: NoEmotions
 
 # командир
 - type: randomHumanoidSettings
@@ -317,6 +318,7 @@
     - NamesLeader
     - NamesMilitaryLast
     nameFormat: name-format-ert
+  - type: NoEmotions
 
 # Оперативник
 - type: randomHumanoidSettings
@@ -329,6 +331,7 @@
     - NamesOperativeFirst
     - NamesOperativeLast
     nameFormat: name-format-ert
+  - type: NoEmotions
 
 
 # ЗВАНИЯ

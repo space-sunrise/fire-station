@@ -286,6 +286,7 @@
     job: RRHCadet
   - type: Loadout
     prototypes: [ RRHCadetGear ]
+  - type: NoEmotions
 
 
 
