@@ -15,8 +15,8 @@
     layers:
     - map: [ "enum.Scp939Layers.Base" ]
       state: alive
-  - type: Scp939
-  - type: Eye
+#  - type: Scp939
+#  - type: Eye
     drawFov: false
   - type: MeleeWeapon
     altDisarm: false
