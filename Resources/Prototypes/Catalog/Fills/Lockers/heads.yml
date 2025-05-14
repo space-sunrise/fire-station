@@ -43,7 +43,7 @@
   id: LockerFillCaptainNoLaser
   table: !type:AllSelector
     children:
-    - id: CaptainIDCard
+    #- id: CaptainIDCard Не ну а че как клоун?
     - id: CigarGoldCase
       prob: 0.25
     - id: ClothingBeltSheathFilled
