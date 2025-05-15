@@ -105,8 +105,8 @@
       whitelist:
         components:
         - NukeDisk
-    alertLevelOnActivate: delta
-    alertLevelOnDeactivate: green
+    alertLevelOnActivate: scpDelta
+    alertLevelOnDeactivate: scpNone
   - type: ActivatableUI
     key: enum.NukeUiKey.Key
   - type: UserInterface
