@@ -20,7 +20,7 @@ public sealed class AlertLevelSystem : EntitySystem
     [Dependency] private readonly RoundEndSystem _roundEnd = default!;
 
     // Until stations are a prototype, this is how it's going to have to be.
-    public const string DefaultAlertLevelSet = "stationAlerts";
+    public const string DefaultAlertLevelSet = "FacilityAlerts"; //Fire edit FacilityAlerts
 
     public override void Initialize()
     {
@@ -186,7 +186,7 @@ public sealed class AlertLevelSystem : EntitySystem
         }
 
         // The full announcement to be spat out into chat.
-        var announcementFull = Loc.GetString("alert-level-announcement", ("name", name), ("announcement", announcement));
+        var announcementFull = Loc.GetString("alert-level-scp-announcement", ("name", name), ("announcement", announcement));
 
         var playDefault = false;
         if (playSound)
