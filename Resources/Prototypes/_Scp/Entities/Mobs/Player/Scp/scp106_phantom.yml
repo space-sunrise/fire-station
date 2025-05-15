@@ -10,6 +10,9 @@
       state: phantom
   - type: FlashImmunity
   - type: Scp106Phantom
+  - type: NightVision
+    isToggle: true
+    color: "#808080"
 
 - type: entity
   id: Scp106Phantom
