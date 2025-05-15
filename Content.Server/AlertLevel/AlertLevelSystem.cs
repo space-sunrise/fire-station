@@ -20,7 +20,7 @@ public sealed class AlertLevelSystem : EntitySystem
     [Dependency] private readonly RoundEndSystem _roundEnd = default!;
 
     // Until stations are a prototype, this is how it's going to have to be.
-    public const string DefaultAlertLevelSet = "FacilityAlerts"; //Fire edit FacilityAlerts
+    public const string DefaultAlertLevelSet = "FacilityAlerts"; //Fire edit
 
     public override void Initialize()
     {
