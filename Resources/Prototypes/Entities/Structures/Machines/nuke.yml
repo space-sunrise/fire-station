@@ -105,8 +105,8 @@
       whitelist:
         components:
         - NukeDisk
-    alertLevelOnActivate: scpDelta
-    alertLevelOnDeactivate: scpNone
+    alertLevelOnActivate: scpDelta # Fire edit
+    alertLevelOnDeactivate: scpNone # Fire edit
   - type: ActivatableUI
     key: enum.NukeUiKey.Key
   - type: UserInterface
