@@ -43,10 +43,10 @@
   id: LockerFillCaptainNoLaser
   table: !type:AllSelector
     children:
-    #- id: CaptainIDCard Не ну а че как клоун?
+    - id: CaptainIDCard
     - id: CigarGoldCase
       prob: 0.25
-    - id: ClothingBeltSheathFilled
+    #- id: ClothingBeltSheathFilled Не ну а че как клоун?
     - id: ClothingHeadsetAltCommand
     #- id: ClothingOuterArmorCaptainCarapace # Sunrise-Edit
     - id: CommsComputerCircuitboard
