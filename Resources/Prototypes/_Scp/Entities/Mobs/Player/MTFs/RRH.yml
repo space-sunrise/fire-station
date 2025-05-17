@@ -293,8 +293,40 @@
 
 
 
-
-
+# Спавнер отряда
+- type: entity
+  id: SpawnerMTFSquadRRH
+  parent: SpawnPointScpBase
+  suffix: RRH
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: RRH
+      sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+  - type: EntityTableSpawner
+    deleteSpawnerAfterSpawn: true
+    table: !type:AllSelector
+      children:
+      - id: RandomHumanoidSpawnerRRHLeader
+      - id: RandomHumanoidSpawnerRRHSpecialist # 2
+      - id: RandomHumanoidSpawnerRRHSpecialist
+      - id: RandomHumanoidSpawnerRRHCadet # 2
+      - id: RandomHumanoidSpawnerRRHCadet
+    offset: 1
+# Спавнер, но юзается по кнопке
+- type: entity
+  id: SpawnerMTFSquadRRHSpawnOnTrigger
+  parent: SpawnerOnTriggerMTFBase
+  suffix: RRH | SpawnOnTrigger
+  components:
+  - type: SpawnOnTrigger
+    proto: SpawnerMTFSquadRRH
+  - type: Sprite
+    layers:
+    - state: green
+    - state: RRH
+      sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
 
 
 # мета

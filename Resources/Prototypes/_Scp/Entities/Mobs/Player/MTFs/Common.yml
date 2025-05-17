@@ -370,3 +370,22 @@
   values:
     prefix: names-mtf-operative-leader-last-dataset-
     count: 7
+
+
+# ПРОЧЕЕ
+- type: entity
+  id: SpawnerOnTriggerMTFBase
+  parent: SpawnPointScpBase
+  suffix: Base | Spawn On Trigger
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: DeviceLinkSink
+    ports:
+    - Trigger
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: BasicDevice
+  - type: WirelessNetworkConnection
+    range: 200
+  - type: TriggerOnSignal
+  - type: DeleteOnTrigger

@@ -252,6 +252,41 @@
 
 
 
+# Спавнер отряда
+- type: entity
+  id: SpawnerMTFSquadNTF
+  parent: SpawnPointScpBase
+  suffix: NTF
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: NTF
+      sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+  - type: EntityTableSpawner
+    deleteSpawnerAfterSpawn: true
+    table: !type:AllSelector
+      children:
+      - id: RandomHumanoidSpawnerNTFLeader
+      - id: RandomHumanoidSpawnerNTFSpecialist # 2
+      - id: RandomHumanoidSpawnerNTFSpecialist
+      - id: RandomHumanoidSpawnerNTFCadet # 2
+      - id: RandomHumanoidSpawnerNTFCadet
+    offset: 1
+# Спавнер, но юзается по кнопке
+- type: entity
+  id: SpawnerMTFSquadNTFSpawnOnTrigger
+  parent: SpawnerOnTriggerMTFBase
+  suffix: NTF | SpawnOnTrigger
+  components:
+  - type: SpawnOnTrigger
+    proto: SpawnerMTFSquadNTF
+  - type: Sprite
+    layers:
+    - state: green
+    - state: NTF
+      sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+
 
 # мета
 - type: jobIcon
