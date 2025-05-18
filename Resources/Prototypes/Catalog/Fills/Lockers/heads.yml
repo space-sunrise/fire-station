@@ -56,7 +56,7 @@
     - id: PinpointerNuclear
     - id: PlushieNuke
       prob: 0.1
-    - id: RubberStampCaptain
+    - id: RubberStampDirector # Fire edit
     - id: SpaceCash1000
     - id: WeaponDisabler
     - id: ClothingEyesGlassesCommand

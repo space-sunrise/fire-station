@@ -5,7 +5,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Command
+      department: Administration # Fire edit
       time: 3600 # 1 hour
 
 # Flowers
@@ -85,7 +85,7 @@
   id: CigarCase
   effects:
   - !type:GroupLoadoutEffect
-    proto: Command
+    proto: Administration # Fire edit
   storage:
     back:
     - CigarCase
@@ -94,7 +94,7 @@
   id: CigarGold
   effects:
   - !type:GroupLoadoutEffect
-    proto: Command
+    proto: Administration # Fire edit
   storage:
     back:
     - CigarGold
