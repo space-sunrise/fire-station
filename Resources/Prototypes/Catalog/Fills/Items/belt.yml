@@ -49,7 +49,7 @@
     - id: Handcuffs
     - id: Handcuffs
     - id: HoloprojectorSecurity
-    - id: RadioHandheldSecurity
+    #- id: RadioHandheldSecurity # Fire edit
 
 - type: entity
   id: ClothingBeltSecurityFilled
