@@ -13,7 +13,6 @@
   - DirectorShoes
   - DirectorPDA
   - DirectorBack
-  - DirectorStorage
   - CommonAdministrationGlasses
   - Bra
   - Pants
@@ -194,7 +193,7 @@
   - SurvivalSecurity
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
-  - SecurityTrinkets
+  - TrinketsHeavyContainmentSecurityService
   - SunriseSecurityGun
   - Bra
   - Pants
@@ -209,7 +208,7 @@
   - SecurityOuterClothing
   - SecurityShoes
   - SurvivalSecurity
-  - SecurityTrinkets
+  - TrinketsHeavyContainmentSecurityService
   - GroupSpeciesBreathTool
   - SunriseSecurityGun
   - Bra
@@ -228,7 +227,7 @@
   - SurvivalSecurity
   - SecurityStar
   - GroupSpeciesBreathToolSecurity
-  - SecurityTrinkets
+  - TrinketsHeavyContainmentSecurityService
   - SunriseSecurityGun
   - Bra
   - Pants
@@ -241,7 +240,7 @@
   - SecurityBackpack
   - SurvivalSecurity
   - GroupSpeciesBreathToolSecurity
-  - SecurityTrinkets
+  - TrinketsHeavyContainmentSecurityService
   - Bra
   - Pants
   - Socks
@@ -252,7 +251,7 @@
   - BrigmedicJumpsuit
   - BrigmedicBackpack
   - SurvivalSecurity
-  - SecurityTrinkets
+  - TrinketsHeavyContainmentSecurityService
   - SunriseSecurityGun
   - Bra
   - Pants
@@ -272,7 +271,7 @@
   - SecurityBackpack
   - SurvivalSecurity
   - SecurityStar
-  - SecurityTrinkets
+  - TrinketsExternalAdministrativeZoneSecurityService
   - SunriseSecurityGun
   - Bra
   - Pants
@@ -289,7 +288,7 @@
   - SecurityBelt
   - SecurityBackpack
   - SurvivalSecurity
-  - SecurityTrinkets
+  - TrinketsExternalAdministrativeZoneSecurityService
   - SunriseSecurityGun
   - SecurityStar
   - Bra
@@ -307,7 +306,7 @@
   - SecurityBelt
   - SecurityBackpack
   - SurvivalSecurity
-  - SecurityTrinkets
+  - TrinketsExternalAdministrativeZoneSecurityService
   - SunriseSecurityGun
   - SecurityStar
   - Bra
@@ -325,7 +324,7 @@
   - SecurityBelt
   - SecurityBackpack
   - SurvivalSecurity
-  - SecurityTrinkets
+  - TrinketsExternalAdministrativeZoneSecurityService
   - SunriseSecurityGun
   - SecurityStar
   - Bra

@@ -119,7 +119,7 @@
 # Command
 - type: loadoutGroup
   id: CaptainHead
-  name: loadout-group-captain-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - CaptainHead
@@ -128,7 +128,7 @@
 
 - type: loadoutGroup
   id: CaptainJumpsuit
-  name: loadout-group-captain-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - CaptainJumpsuit
   - CaptainJumpskirt
@@ -137,7 +137,7 @@
 
 - type: loadoutGroup
   id: CaptainNeck
-  name: loadout-group-captain-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   loadouts:
   - CaptainCloak
@@ -148,7 +148,7 @@
 
 - type: loadoutGroup
   id: CaptainBackpack
-  name: loadout-group-captain-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - CaptainBackpack
   - CaptainSatchel
@@ -156,7 +156,7 @@
 
 - type: loadoutGroup
   id: CaptainOuterClothing
-  name: loadout-group-captain-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   loadouts:
   - CaptainOuterArmor # Sunrise-Edit
   - CaptainOuterCoat # Sunrise-Edit
@@ -165,21 +165,21 @@
 
 - type: loadoutGroup
   id: HoPHead
-  name: loadout-group-hop-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - HoPHead
 
 - type: loadoutGroup
   id: HoPJumpsuit
-  name: loadout-group-hop-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - HoPJumpsuit
   - HoPJumpskirt
 
 - type: loadoutGroup
   id: HoPNeck
-  name: loadout-group-hop-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   loadouts:
   - HoPCloak
@@ -188,7 +188,7 @@
 
 - type: loadoutGroup
   id: HoPBackpack
-  name: loadout-group-hop-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - CommonBackpack
   - CommonSatchel
@@ -197,7 +197,7 @@
 
 - type: loadoutGroup
   id: HoPOuterClothing
-  name: loadout-group-hop-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - HoPWintercoat
@@ -205,7 +205,7 @@
 # Civilian
 - type: loadoutGroup
   id: PassengerJumpsuit
-  name: loadout-group-passenger-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - GreyJumpsuit
   - GreyJumpskirt
@@ -214,21 +214,21 @@
 
 - type: loadoutGroup
   id: PassengerFace
-  name: loadout-group-passenger-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   loadouts:
   - PassengerFace
 
 - type: loadoutGroup
   id: PassengerGloves
-  name: loadout-group-passenger-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   loadouts:
   - PassengerGloves
 
 - type: loadoutGroup
   id: CommonBackpack
-  name: loadout-group-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - CommonBackpack
   - CommonSatchel
@@ -236,28 +236,28 @@
 
 - type: loadoutGroup
   id: PassengerNeck
-  name: loadout-group-passenger-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   loadouts:
   - Mantle
 
 - type: loadoutGroup
   id: PassengerOuterClothing
-  name: loadout-group-passenger-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - PassengerWintercoat
 
 - type: loadoutGroup
   id: PassengerShoes
-  name: loadout-group-passenger-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - BlackShoes
   - WinterBoots
 
 - type: loadoutGroup
   id: BartenderHead
-  name: loadout-group-bartender-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - BartenderHead
@@ -265,7 +265,7 @@
 
 - type: loadoutGroup
   id: BartenderJumpsuit
-  name: loadout-group-bartender-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - BartenderJumpsuit
   - BartenderJumpskirt
@@ -273,7 +273,7 @@
 
 - type: loadoutGroup
   id: BartenderOuterClothing
-  name: loadout-group-bartender-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - BartenderVest
@@ -282,28 +282,28 @@
 
 - type: loadoutGroup
   id: ChefHead
-  name: loadout-group-chef-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - ChefHead
 
 - type: loadoutGroup
   id: ChefMask
-  name: loadout-group-chef-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   loadouts:
   - ChefMask
 
 - type: loadoutGroup
   id: ChefJumpsuit
-  name: loadout-group-chef-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - ChefJumpsuit
   - ChefJumpskirt
 
 - type: loadoutGroup
   id: ChefOuterClothing
-  name: loadout-group-chef-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - ChefApron
@@ -312,7 +312,7 @@
 
 - type: loadoutGroup
   id: LibrarianJumpsuit
-  name: loadout-group-librarian-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - LibrarianJumpsuit
   - LibrarianJumpskirt
@@ -321,7 +321,7 @@
 
 - type: loadoutGroup
   id: LawyerJumpsuit
-  name: loadout-group-lawyer-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - LawyerJumpsuit
   - LawyerJumpskirt
@@ -336,14 +336,14 @@
 
 - type: loadoutGroup
   id: LawyerNeck
-  name: loadout-group-lawyer-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   loadouts:
   - LawyerNeck
 
 - type: loadoutGroup
   id: ChaplainHead
-  name: loadout-group-chaplain-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - ChaplainHead
@@ -354,14 +354,14 @@
 
 - type: loadoutGroup
   id: ChaplainMask
-  name: loadout-group-chaplain-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   loadouts:
   - ChaplainMask
 
 - type: loadoutGroup
   id: ChaplainJumpsuit
-  name: loadout-group-chaplain-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - ChaplainJumpsuit
   - ChaplainJumpskirt
@@ -370,7 +370,7 @@
 
 - type: loadoutGroup
   id: ChaplainOuterClothing
-  name: loadout-group-chaplain-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - ChaplainPlagueSuit
@@ -380,21 +380,21 @@
 
 - type: loadoutGroup
   id: ChaplainNeck
-  name: loadout-group-chaplain-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   loadouts:
   - ChaplainNeck
 
 - type: loadoutGroup
   id: JanitorHead
-  name: loadout-group-janitor-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - JanitorHead
 
 - type: loadoutGroup
   id: JanitorJumpsuit
-  name: loadout-group-janitor-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - JanitorJumpsuit
   - JanitorJumpskirt
@@ -402,7 +402,7 @@
 
 - type: loadoutGroup
   id: JanitorGloves
-  name: loadout-group-janitor-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   loadouts:
   - JanitorRubberGloves
@@ -411,7 +411,7 @@
 
 - type: loadoutGroup
   id: JanitorOuterClothing
-  name: loadout-group-janitor-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - JanitorWintercoat
@@ -425,7 +425,7 @@
 
 - type: loadoutGroup
   id: BotanistHead
-  name: loadout-group-botanist-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - BotanistHead
@@ -433,7 +433,7 @@
 
 - type: loadoutGroup
   id: BotanistJumpsuit
-  name: loadout-group-botanist-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - BotanistJumpsuit
   - BotanistJumpskirt
@@ -441,7 +441,7 @@
 
 - type: loadoutGroup
   id: BotanistBackpack
-  name: loadout-group-botanist-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - BotanistBackpack
   - BotanistSatchel
@@ -449,7 +449,7 @@
 
 - type: loadoutGroup
   id: BotanistOuterClothing
-  name: loadout-group-botanist-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - BotanistApron
@@ -457,7 +457,7 @@
 
 - type: loadoutGroup
   id: ClownHead
-  name: loadout-group-clown-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - JesterHat
@@ -465,7 +465,7 @@
 
 - type: loadoutGroup
   id: ClownJumpsuit
-  name: loadout-group-clown-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - ClownSuit
   - ClownSkirt
@@ -474,7 +474,7 @@
 
 - type: loadoutGroup
   id: ClownBackpack
-  name: loadout-group-clown-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - ClownBackpack
   - ClownSatchel
@@ -482,7 +482,7 @@
 
 - type: loadoutGroup
   id: ClownOuterClothing
-  name: loadout-group-clown-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - ClownRobes
@@ -490,7 +490,7 @@
 
 - type: loadoutGroup
   id: ClownShoes
-  name: loadout-group-clown-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - ClownShoes
   - JesterShoes
@@ -509,7 +509,7 @@
 
 - type: loadoutGroup
   id: MimeHead
-  name: loadout-group-mime-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - MimeHead
@@ -518,7 +518,7 @@
 
 - type: loadoutGroup
   id: MimeMask
-  name: loadout-group-mime-mask
+  name: loadout-group-mask # Fire edit
   loadouts:
   - MimeMask
   - MimeMaskSad
@@ -526,14 +526,14 @@
 
 - type: loadoutGroup
   id: MimeJumpsuit
-  name: loadout-group-mime-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - MimeJumpsuit
   - MimeJumpskirt
 
 - type: loadoutGroup
   id: MimeBackpack
-  name: loadout-group-mime-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - MimeBackpack
   - MimeSatchel
@@ -541,14 +541,14 @@
 
 - type: loadoutGroup
   id: MimeOuterClothing
-  name: loadout-group-mime-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - MimeWintercoat
 
 - type: loadoutGroup
   id: MimeBelt
-  name: loadout-group-mime-belt
+  name: loadout-group-belt # Fire edit
   loadouts:
   - MimeSuspendersRed
   - MimeSuspendersBlack
@@ -567,14 +567,14 @@
 
 - type: loadoutGroup
   id: MusicianJumpsuit
-  name: loadout-group-musician-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - MusicianJumpsuit
   - MusicianJumpskirt
 
 - type: loadoutGroup
   id: MusicianOuterClothing
-  name: loadout-group-musician-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - MusicianWintercoat
@@ -618,7 +618,7 @@
 # Cargo
 - type: loadoutGroup
   id: QuartermasterHead
-  name: loadout-group-quartermaster-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - QuartermasterHead
@@ -643,7 +643,7 @@
 
 - type: loadoutGroup
   id: QuartermasterJumpsuit
-  name: loadout-group-quartermaster-jumpsuit
+  name: loadout-group-jumpsuit  # Fire edit
   loadouts:
   - QuartermasterJumpsuit
   - QuartermasterJumpskirt
@@ -653,7 +653,7 @@
 
 - type: loadoutGroup
   id: QuartermasterNeck
-  name: loadout-group-quartermaster-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   loadouts:
   - QuartermasterCloak
@@ -669,7 +669,7 @@
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
-  name: loadout-group-quartermaster-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - QuartermasterWintercoat
@@ -687,7 +687,7 @@
 
 - type: loadoutGroup
   id: QuartermasterShoes
-  name: loadout-group-quartermaster-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - BrownShoes
   - CargoWinterBoots
@@ -701,7 +701,7 @@
 
 - type: loadoutGroup
   id: CargoTechnicianHead
-  name: loadout-group-cargo-technician-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - CargoTechnicianHead
@@ -719,14 +719,14 @@
 
 - type: loadoutGroup
   id: CargoTechnicianJumpsuit
-  name: loadout-group-cargo-technician-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - CargoTechnicianJumpsuit
   - CargoTechnicianJumpskirt
 
 - type: loadoutGroup
   id: CargoTechnicianBackpack
-  name: loadout-group-cargo-technician-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - CargoTechnicianBackpack
   - CargoTechnicianSatchel
@@ -734,7 +734,7 @@
 
 - type: loadoutGroup
   id: CargoTechnicianOuterClothing
-  name: loadout-group-cargo-technician-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - CargoTechnicianWintercoat
@@ -749,7 +749,7 @@
 
 - type: loadoutGroup
   id: CargoTechnicianShoes
-  name: loadout-group-cargo-technician-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - BlackShoes
   - CargoWinterBoots
@@ -761,7 +761,7 @@
 
 - type: loadoutGroup
   id: SalvageSpecialistBackpack
-  name: loadout-group-salvage-specialist-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - SalvageSpecialistBackpack
   - SalvageSpecialistSatchel
@@ -769,7 +769,7 @@
 
 - type: loadoutGroup
   id: SalvageSpecialistOuterClothing
-  name: loadout-group-salvage-specialist-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - SalvageSpecialistWintercoat
@@ -785,7 +785,7 @@
 
 - type: loadoutGroup
   id: SalvageSpecialistShoes
-  name: loadout-group-salvage-specialist-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - SalvageBoots
   - CargoWinterBoots
@@ -800,7 +800,7 @@
 # Engineering
 - type: loadoutGroup
   id: ChiefEngineerJumpsuit
-  name: loadout-group-chief-engineer-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - ChiefEngineerJumpsuit
   - ChiefEngineerJumpskirt
@@ -809,7 +809,7 @@
 
 - type: loadoutGroup
   id: ChiefEngineerNeck
-  name: loadout-group-chief-engineer-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   loadouts:
   - ChiefEngineerCloak
@@ -826,7 +826,7 @@
 
 - type: loadoutGroup
   id: ChiefEngineerOuterClothing
-  name: loadout-group-chief-engineer-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - ChiefEngineerWintercoat
@@ -843,7 +843,7 @@
 
 - type: loadoutGroup
   id: ChiefEngineerShoes
-  name: loadout-group-chief-engineer-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - BrownShoes
   - EngineeringWinterBoots
@@ -855,14 +855,14 @@
 #Sunrise-end
 - type: loadoutGroup
   id: TechnicalAssistantJumpsuit
-  name: loadout-group-technical-assistant-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - YellowJumpsuit
   - YellowJumpskirt
 
 - type: loadoutGroup
   id: StationEngineerHead
-  name: loadout-group-station-engineer-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
 #sunrise-start
@@ -883,7 +883,7 @@
 
 - type: loadoutGroup
   id: StationEngineerJumpsuit
-  name: loadout-group-station-engineer-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - StationEngineerJumpsuit
   - StationEngineerJumpskirt
@@ -891,7 +891,7 @@
 
 - type: loadoutGroup
   id: StationEngineerBackpack
-  name: loadout-group-station-engineer-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - StationEngineerBackpack
   - StationEngineerSatchel
@@ -899,7 +899,7 @@
 
 - type: loadoutGroup
   id: StationEngineerOuterClothing
-  name: loadout-group-station-engineer-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - StationEngineerOuterVest
@@ -911,7 +911,7 @@
 #sunrise-end
 - type: loadoutGroup
   id: StationEngineerShoes
-  name: loadout-group-station-engineer-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - WorkBoots
   - EngineeringWinterBoots
@@ -923,7 +923,7 @@
 
 - type: loadoutGroup
   id: AtmosphericTechnicianJumpsuit
-  name: loadout-group-atmospheric-technician-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - AtmosphericTechnicianJumpsuit
   - AtmosphericTechnicianJumpskirt
@@ -931,7 +931,7 @@
 
 - type: loadoutGroup
   id: AtmosphericTechnicianOuterClothing
-  name: loadout-group-atmospheric-technician-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - AtmosphericTechnicianWintercoat
@@ -944,7 +944,7 @@
 
 - type: loadoutGroup
   id: AtmosphericTechnicianBackpack
-  name: loadout-group-atmospheric-technician-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - AtmosphericTechnicianBackpack
   - AtmosphericTechnicianSatchel
@@ -952,7 +952,7 @@
 
 - type: loadoutGroup
   id: AtmosphericTechnicianShoes
-  name: loadout-group-atmospheric-technician-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - WhiteShoes
   - EngineeringWinterBoots
@@ -977,7 +977,7 @@
 # Science
 - type: loadoutGroup
   id: ResearchDirectorNeck
-  name: loadout-group-research-director-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   loadouts:
   - ResearchDirectorMantle
@@ -986,14 +986,14 @@
 
 - type: loadoutGroup
   id: ResearchDirectorJumpsuit
-  name: loadout-group-research-director-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - ResearchDirectorJumpsuit
   - ResearchDirectorJumpskirt
 
 - type: loadoutGroup
   id: ResearchDirectorOuterClothing
-  name: loadout-group-research-director-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - ResearchDirectorLabCoat
@@ -1001,28 +1001,28 @@
 
 - type: loadoutGroup
   id: ResearchDirectorShoes
-  name: loadout-group-research-director-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - BrownShoes
   - ScienceWinterBoots
 
 - type: loadoutGroup
   id: ScientistNeck
-  name: loadout-group-scientist-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   loadouts:
   - ScientistTie
 
 - type: loadoutGroup
   id: ScientistJumpsuit
-  name: loadout-group-scientist-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - ScientistJumpsuit
   - ScientistJumpskirt
 
 - type: loadoutGroup
   id: ScientistBackpack
-  name: loadout-group-scientist-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - ScientistBackpack
   - ScientistSatchel
@@ -1030,7 +1030,7 @@
 
 - type: loadoutGroup
   id: ScientistOuterClothing
-  name: loadout-group-scientist-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - RegularLabCoat
@@ -1039,7 +1039,7 @@
 
 - type: loadoutGroup
   id: ScientistShoes
-  name: loadout-group-scientist-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - WhiteShoes
   - BlackShoes
@@ -1047,7 +1047,7 @@
 
 - type: loadoutGroup
   id: ScientistGloves
-  name: loadout-group-scientist-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   loadouts:
   - LatexGloves
@@ -1055,7 +1055,7 @@
 
 - type: loadoutGroup
   id: ResearchAssistantJumpsuit
-  name: loadout-group-research-assistant-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - WhiteJumpsuit
   - WhiteJumpskirt
@@ -1063,7 +1063,7 @@
 # Security
 - type: loadoutGroup
   id: HeadofSecurityHead
-  name: loadout-group-head-of-security-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - HeadofSecurityHead
@@ -1076,7 +1076,7 @@
 
 - type: loadoutGroup
   id: HeadofSecurityJumpsuit
-  name: loadout-group-head-of-security-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - HeadofSecurityJumpsuit
   - HeadofSecurityJumpskirt
@@ -1089,7 +1089,7 @@
 
 - type: loadoutGroup
   id: HeadofSecurityNeck
-  name: loadout-group-head-of-security-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   loadouts:
   - HeadofSecurityCloak
@@ -1100,7 +1100,7 @@
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
-  name: loadout-group-head-of-security-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   loadouts:
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
@@ -1113,7 +1113,7 @@
 
 - type: loadoutGroup
   id: WardenHead
-  name: loadout-group-warden-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - WardenHead
@@ -1121,21 +1121,21 @@
 
 - type: loadoutGroup
   id: WardenJumpsuit
-  name: loadout-group-warden-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - WardenJumpsuit
   - WardenJumpskirt
 
 - type: loadoutGroup
   id: WardenOuterClothing
-  name: loadout-group-warden-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   loadouts:
   - WardenCoat
   - WardenArmoredWinterCoat
 
 - type: loadoutGroup
   id: SecurityHead
-  name: loadout-group-security-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - SecurityHelmet
@@ -1145,7 +1145,7 @@
 
 - type: loadoutGroup
   id: SecurityJumpsuit
-  name: loadout-group-security-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - SecurityJumpsuit
   - SecurityJumpskirt
@@ -1157,7 +1157,7 @@
 
 - type: loadoutGroup
   id: SecurityBackpack
-  name: loadout-group-security-backpack
+  name: loadout-group-backpack
   loadouts:
   - SecurityBackpack
   - SecuritySatchel
@@ -1165,7 +1165,7 @@
 
 - type: loadoutGroup
   id: SecurityBelt
-  name: loadout-group-security-belt
+  name: loadout-group-belt
   loadouts:
   - SecurityBelt
   - SecurityWebbing
@@ -1180,14 +1180,14 @@
 
 - type: loadoutGroup
   id: SecurityShoes
-  name: loadout-group-security-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - JackBoots
   - SecurityWinterBoots
 
 - type: loadoutGroup
   id: DetectiveHead
-  name: loadout-group-detective-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - DetectiveFedora
@@ -1195,14 +1195,14 @@
 
 - type: loadoutGroup
   id: DetectiveNeck
-  name: loadout-group-detective-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   loadouts:
   - DetectiveTie
 
 - type: loadoutGroup
   id: DetectiveJumpsuit
-  name: loadout-group-detective-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - DetectiveJumpsuit
   - DetectiveJumpskirt
@@ -1211,7 +1211,7 @@
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
-  name: loadout-group-detective-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   loadouts:
   - DetectiveArmorVest
   - DetectiveCoat
@@ -1220,7 +1220,7 @@
 
 - type: loadoutGroup
   id: SecurityCadetJumpsuit
-  name: loadout-group-security-cadet-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - RedJumpsuit
   - RedJumpskirt
@@ -1247,7 +1247,7 @@
 # Medical
 - type: loadoutGroup
   id: ChiefMedicalOfficerHead
-  name: loadout-group-chief-medical-officer-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - ChiefMedicalOfficerBeret
@@ -1274,7 +1274,7 @@
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerJumpsuit
-  name: loadout-group-chief-medical-officer-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - ChiefMedicalOfficerJumpsuit
   - ChiefMedicalOfficerJumpskirt
@@ -1283,7 +1283,7 @@
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerOuterClothing
-  name: loadout-group-chief-medical-officer-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - ChiefMedicalOfficerLabCoat
@@ -1312,7 +1312,7 @@
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerNeck
-  name: loadout-group-chief-medical-officer-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   loadouts:
   - ChiefMedicalOfficerCloak
@@ -1330,7 +1330,7 @@
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerShoes
-  name: loadout-group-chief-medical-officer-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - BrownShoes
 # Sunrise-start
@@ -1346,7 +1346,7 @@
 
 - type: loadoutGroup
   id: MedicalDoctorHead
-  name: loadout-group-medical-doctor-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - MedicalBeret
@@ -1363,7 +1363,7 @@
 
 - type: loadoutGroup
   id: MedicalDoctorJumpsuit
-  name: loadout-group-medical-doctor-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - MedicalDoctorJumpsuit
   - MedicalDoctorJumpskirt
@@ -1373,7 +1373,7 @@
 
 - type: loadoutGroup
   id: MedicalDoctorOuterClothing
-  name: loadout-group-medical-doctor-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - RegularLabCoat
@@ -1387,7 +1387,7 @@
 
 - type: loadoutGroup
   id: MedicalBackpack
-  name: loadout-group-medical-doctor-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - MedicalDoctorBackpack
   - MedicalDoctorSatchel
@@ -1395,7 +1395,7 @@
 
 - type: loadoutGroup
   id: MedicalShoes
-  name: loadout-group-medical-doctor-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
   - WhiteShoes
 # Sunrise-start
@@ -1440,21 +1440,21 @@
 
 - type: loadoutGroup
   id: MedicalInternJumpsuit
-  name: loadout-group-medical-intern-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - WhiteJumpsuit
   - WhiteJumpskirt
 
 - type: loadoutGroup
   id: ChemistJumpsuit
-  name: loadout-group-chemist-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - ChemistJumpsuit
   - ChemistJumpskirt
 
 - type: loadoutGroup
   id: ChemistOuterClothing
-  name: loadout-group-chemist-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - RegularLabCoat
@@ -1474,7 +1474,7 @@
 
 - type: loadoutGroup
   id: ChemistBackpack
-  name: loadout-group-chemist-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - ChemistBackpack
   - ChemistSatchel
@@ -1482,7 +1482,7 @@
 
 - type: loadoutGroup
   id: ParamedicHead
-  name: loadout-group-paramedic-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
 # Sunrise-start
@@ -1504,14 +1504,14 @@
 
 - type: loadoutGroup
   id: ParamedicJumpsuit
-  name: loadout-group-paramedic-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - ParamedicJumpsuit
   - ParamedicJumpskirt
 
 - type: loadoutGroup
   id: ParamedicOuterClothing
-  name: loadout-group-paramedic-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - ParamedicWindbreaker
@@ -1530,7 +1530,7 @@
 
 - type: loadoutGroup
   id: ParamedicShoes
-  name: loadout-group-paramedic-shoes
+  name: loadout-group-shoes # Fire edit
   loadouts:
 # Sunrise-start
   - WhiteShoes
@@ -1565,7 +1565,7 @@
 
 - type: loadoutGroup
   id: PsychologistJumpsuit
-  name: loadout-group-psychologist-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - PsychologistJumpsuit
   - PsychologistJumpskirt

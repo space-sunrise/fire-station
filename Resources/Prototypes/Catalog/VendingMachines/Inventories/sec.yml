@@ -20,7 +20,8 @@
     RiotShield: 2
     RiotLaserShield: 2
     RiotBulletShield: 2
-    RadioHandheldSecurity: 5
+    RadioHandheldExternalAdministrativeZoneSecurityService: 5 # Fire-Station
+    RadioHandheldHeavyContainmentSecurityService: 5 # Fire-Station
   # security officers need to follow a diet regimen!
   contrabandInventory:
     WeaponMeleeNeedle: 2

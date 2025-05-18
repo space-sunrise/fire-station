@@ -38,6 +38,17 @@
     back:
     - RadioHandheldSecurity
 
+# Fire edit start
+- type: loadout
+  id: RadioHandheldHeavyContainmentSecurityService
+  startingGear: RadioHandheldHeavyContainmentSecurityService
+- type: startingGear
+  id: RadioHandheldHeavyContainmentSecurityService
+  storage:
+    back:
+    - RadioHandheldHeavyContainmentSecurityService
+# Fire edit end
+
 - type: loadout
   id: SecurityTourniquet
   startingGear: SecurityTourniquet
