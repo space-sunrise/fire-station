@@ -18,8 +18,6 @@
 - type: loadoutGroup
   id: DirectorJumpsuit
   name: loadout-group-jumpsuit
-  minLimit: 1
-  maxLimit: 1
   loadouts:
   - DirectorJumpsuit
   - DirectorJumpsuitBlueFormal
@@ -42,24 +40,18 @@
 - type: loadoutGroup
   id: DirectorPDA
   name: loadout-group-pda
-  minLimit: 1
-  maxLimit: 1
   loadouts:
   - DirectorPDA
 
 - type: loadoutGroup
   id: DirectorBack
   name: loadout-group-back
-  minLimit: 1
-  maxLimit: 1
   loadouts:
   - DirectorSatchelLeather
 
 - type: loadoutGroup
   id: DirectorShoes
   name: loadout-group-shoes
-  minLimit: 1
-  maxLimit: 1
   loadouts:
   - LaceupBoots
   - LeatherShoes
