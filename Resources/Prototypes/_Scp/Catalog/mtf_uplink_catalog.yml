@@ -60,9 +60,9 @@
     stock: 4
 
 - type: listing
-  id: ScpUplinkClothingBackpackDuffelWeaponLightMachineGunMG42
-  productEntity: WeaponMachineGunMG42
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mg42 }
+  id: ScpUplinkClothingBackpackDuffelMilitaryFilledLMG
+  productEntity: ClothingBackpackDuffelMilitaryFilledLMG
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: Base_Icon }
   cost:
     Bluecrystal: 35
   categories:
@@ -438,9 +438,9 @@
     stock: 8
 
 - type: listing
-  id: ScpUplinkMagazineMachineGunMG42
-  productEntity: MagazineMachineGunMG42
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mag_mg342 }
+  id: ScpUplinkMagazineLightRifleBox
+  productEntity: MagazineLightRifleBox
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: Base_Icon }
   cost:
     Crystallite: 8
   categories:

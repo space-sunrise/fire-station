@@ -179,6 +179,15 @@
   id: PowerCellScp
 
 - type: entity
+  parent: ClothingBackpackDuffelMilitary
+  id: ClothingBackpackDuffelMilitaryFilledLMG
+  components:
+  - type: StorageFill
+    contents:
+    - id: WeaponLightMachineGunL6
+    - id: MagazineLightRifleBox
+
+- type: entity
   parent: CrateCommandSecure
   id: CrateAdministrationSecure
   components:
