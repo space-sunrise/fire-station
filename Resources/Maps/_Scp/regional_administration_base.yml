@@ -1,11 +1,11 @@
 meta:
   format: 7
   category: Grid
-  engineVersion: 252.0.0
-  forkId: ""
-  forkVersion: ""
-  time: 04/16/2025 14:25:46
-  entityCount: 5093
+  engineVersion: 254.1.0
+  forkId: fire_station
+  forkVersion: 0b23f4886ca258d0cd2a0ec619de7582ec918732
+  time: 05/05/2025 11:42:40
+  entityCount: 5095
 maps: []
 grids:
 - 2
@@ -859,24 +859,23 @@ entities:
           -1,1:
             0: 65534
           0,2:
-            0: 65488
-            1: 32
+            0: 65520
           -1,2:
-            0: 65459
+            0: 48051
           0,3:
             0: 4095
           -1,3:
-            0: 4027
+            0: 3003
           1,0:
             0: 14135
           1,1:
             0: 30579
-          1,2:
-            0: 30574
-          1,3:
-            0: 4078
           1,-1:
             0: 12544
+          1,2:
+            0: 26214
+          1,3:
+            0: 3822
           1,4:
             0: 65526
           2,0:
@@ -884,7 +883,7 @@ entities:
           2,1:
             0: 65280
           2,2:
-            0: 62719
+            0: 61695
           2,3:
             0: 61439
           2,4:
@@ -892,19 +891,23 @@ entities:
           2,-1:
             0: 61422
           3,0:
-            0: 1
-            2: 4352
+            0: 143
+            1: 4352
           3,1:
-            2: 44579
+            1: 8193
           3,3:
             0: 57447
           3,2:
-            2: 34
+            1: 230
             0: 24576
+          3,-1:
+            0: 61312
           3,4:
             0: 65534
-          4,1:
-            2: 4096
+          4,0:
+            0: 3
+          4,2:
+            1: 3696
           -1,-1:
             0: 60416
           2,-4:
@@ -917,10 +920,18 @@ entities:
             0: 61166
           3,-4:
             0: 16
-          3,-1:
-            0: 256
           3,-5:
             0: 4096
+          4,-1:
+            0: 29440
+          -4,-1:
+            0: 65152
+          -4,0:
+            0: 142
+          -3,-1:
+            0: 49032
+          -3,0:
+            0: 15
           -3,-4:
             0: 35016
           -3,-5:
@@ -929,10 +940,6 @@ entities:
             0: 34952
           -3,-2:
             0: 34952
-          -3,-1:
-            0: 35976
-          -3,0:
-            0: 12
           -2,-4:
             0: 13171
           -2,-3:
@@ -946,33 +953,31 @@ entities:
           -2,0:
             0: 14135
           -4,2:
-            2: 15
+            1: 15
             0: 24576
           -5,2:
-            2: 15
+            1: 15
             0: 53248
           -4,3:
             0: 62566
           -5,3:
-            0: 63965
+            0: 59613
           -4,4:
             0: 65535
-          -4,1:
-            2: 32768
-          -3,1:
-            2: 13092
-            0: 34816
           -3,2:
-            2: 3
+            1: 3
             0: 45192
           -3,3:
             0: 47803
           -3,4:
             0: 65467
+          -3,1:
+            1: 8196
+            0: 34816
           -2,1:
             0: 30464
           -2,2:
-            0: 29055
+            0: 28791
           -2,3:
             0: 16383
           -2,4:
@@ -1035,18 +1040,18 @@ entities:
             0: 65535
           2,6:
             0: 7
-            3: 65280
+            2: 65280
           2,7:
-            3: 15
+            2: 15
             0: 65280
           2,8:
             0: 65535
-          3,7:
-            0: 65262
           3,5:
             0: 58886
           3,6:
             0: 60934
+          3,7:
+            0: 61166
           3,8:
             0: 3822
           4,4:
@@ -1058,7 +1063,7 @@ entities:
           4,7:
             0: 4095
           -5,4:
-            0: 65535
+            0: 65534
           -4,5:
             0: 65327
           -5,5:
@@ -1068,7 +1073,7 @@ entities:
           -4,7:
             0: 4095
           -4,8:
-            2: 35225
+            1: 2463
           -3,5:
             0: 48011
           -3,6:
@@ -1077,93 +1082,84 @@ entities:
             0: 61439
           -3,8:
             0: 14
-            2: 36608
+            1: 36608
           -2,5:
             0: 65535
           -2,6:
-            0: 21831
+            0: 21767
           -2,7:
-            0: 64785
+            0: 56593
           -2,8:
             0: 52429
-            2: 4352
+            1: 4352
           -1,8:
             0: 65535
-          4,2:
-            2: 3699
           4,3:
             0: 58606
           5,2:
-            2: 4040
+            1: 4040
           5,3:
             0: 58606
           5,4:
             0: 65535
-          5,1:
-            2: 32768
           6,2:
+            1: 240
             0: 57344
           6,3:
             0: 58606
           6,4:
             0: 65535
           7,2:
-            2: 3712
+            1: 3728
           7,3:
             0: 58606
           7,4:
             0: 65535
           8,2:
-            2: 31
+            1: 240
             0: 24576
           4,8:
-            0: 3326
-            1: 512
+            0: 3822
           5,5:
             0: 63263
           5,6:
-            0: 7
+            0: 55
           5,7:
             0: 1911
           5,8:
-            0: 3959
+            0: 1911
           6,5:
             0: 65535
           6,6:
-            0: 63887
+            0: 65423
           6,7:
             0: 65535
           6,8:
             0: 783
-            2: 34816
+            1: 34816
           7,5:
             0: 65535
           7,6:
-            0: 63263
+            0: 65311
           7,7:
-            0: 49151
+            0: 65535
           7,8:
             0: 15
-            2: 256
+            1: 3840
           8,5:
             0: 65262
-          8,6:
-            0: 15
-            2: 36352
           8,7:
-            0: 50
-            2: 57344
+            0: 59450
           -8,2:
             0: 48059
           -9,2:
-            0: 32776
-            1: 2176
-            2: 12851
+            0: 34952
+            1: 12851
           -8,3:
             0: 48048
           -9,3:
             0: 34944
-            2: 2
+            1: 2
           -7,2:
             0: 65535
           -7,3:
@@ -1172,28 +1168,28 @@ entities:
             0: 65522
           -6,2:
             0: 57456
-            2: 142
+            1: 142
           -6,1:
-            2: 41472
+            1: 41728
           -6,3:
             0: 61166
           -6,4:
-            0: 65518
+            0: 65516
           -5,1:
-            2: 36864
+            1: 36864
           -8,4:
-            2: 13072
+            1: 13072
             0: 34944
           -9,4:
-            2: 2240
+            1: 2240
           -8,7:
-            2: 8960
+            1: 8994
             0: 34952
           -8,5:
-            2: 2
+            1: 2
             0: 34824
           -8,8:
-            2: 36387
+            1: 36387
             0: 8
           -8,6:
             0: 34952
@@ -1219,17 +1215,15 @@ entities:
             0: 30583
           -5,8:
             0: 7
-            2: 36608
+            1: 36608
           -10,2:
-            2: 128
+            1: 128
           -9,1:
-            2: 8704
+            1: 8704
           -9,8:
-            2: 12
-          -8,9:
-            2: 8
+            1: 8
           -2,9:
-            2: 17
+            1: 17
             0: 12
           -1,9:
             0: 2303
@@ -1240,53 +1234,70 @@ entities:
           2,9:
             0: 63
           3,9:
-            2: 38
+            1: 38
           8,3:
             0: 60934
           8,4:
-            0: 61166
+            0: 60654
           9,2:
-            2: 2247
+            1: 35062
             0: 12288
           9,3:
-            0: 13059
+            0: 45827
+            1: 136
           9,4:
-            0: 13107
-            2: 2184
-          8,8:
-            2: 550
-          9,5:
-            0: 15291
-          9,6:
-            0: 3
-            2: 3840
+            0: 45503
+          10,3:
+            1: 208
+            0: 28672
           10,4:
-            2: 256
+            0: 28791
+          11,3:
+            1: 4368
+          11,4:
+            1: 113
+            0: 61440
+          8,6:
+            0: 35342
+          8,8:
+            0: 14
+            1: 768
+          9,5:
+            0: 48063
+          9,6:
+            0: 48019
+          9,7:
+            0: 13075
+            1: 34944
+          9,8:
+            0: 3
+            1: 8
           10,5:
-            0: 1911
+            0: 32631
+          10,6:
+            0: 13105
+            1: 2176
+          10,7:
+            1: 16
+          11,5:
+            0: 65535
+          11,6:
+            1: 16
+          12,4:
+            0: 4096
+            1: 1136
+          12,5:
+            0: 4369
+          4,9:
+            1: 14
           5,9:
-            2: 14
+            1: 15
         uniqueMixes:
         - volume: 2500
           temperature: 293.15
           moles:
           - 21.824879
           - 82.10312
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-          - 0
-        - volume: 2500
-          temperature: 293.14996
-          moles:
-          - 20.078888
-          - 75.53487
           - 0
           - 0
           - 0
@@ -1337,8 +1348,8 @@ entities:
     - type: Transform
       parent: 4
     - type: InstantAction
-      container: 4
       originalIconColor: '#FFFFFFFF'
+      container: 4
 - proto: AirAlarmFreezer
   entities:
   - uid: 12
@@ -2415,10 +2426,43 @@ entities:
       parent: 2
   - uid: 239
     components:
+    - type: MetaData
+      name: Протоколы
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.015775,33.6696
+      pos: 0.7813664,34.00094
       parent: 2
+    - type: Storage
+      storedItems:
+        3908:
+          position: 0,0
+          _rotation: South
+        3294:
+          position: 1,0
+          _rotation: South
+        4781:
+          position: 2,0
+          _rotation: South
+        4784:
+          position: 3,0
+          _rotation: South
+        4787:
+          position: 4,0
+          _rotation: South
+        4791:
+          position: 0,1
+          _rotation: South
+    - type: ContainerContainer
+      containers:
+        storagebase: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 3908
+          - 3294
+          - 4784
+          - 4781
+          - 4787
+          - 4791
 - proto: BoxFolderWhiteBlack
   entities:
   - uid: 240
@@ -2607,6 +2651,11 @@ entities:
       parent: 2
 - proto: CableApcExtension
   entities:
+  - uid: 1
+    components:
+    - type: Transform
+      pos: -5.5,22.5
+      parent: 2
   - uid: 48
     components:
     - type: Transform
@@ -6486,6 +6535,16 @@ entities:
     components:
     - type: Transform
       pos: 45.5,20.5
+      parent: 2
+  - uid: 2925
+    components:
+    - type: Transform
+      pos: -5.5,23.5
+      parent: 2
+  - uid: 2926
+    components:
+    - type: Transform
+      pos: -4.5,23.5
       parent: 2
   - uid: 2972
     components:
@@ -12233,9 +12292,6 @@ entities:
     - type: Transform
       pos: -7.5,29.5
       parent: 2
-    - type: DisposalUnit
-      recentlyEjected:
-      - invalid
   - uid: 1951
     components:
     - type: Transform
@@ -19656,11 +19712,14 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         171:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         170:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         42:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
   - uid: 51
     components:
     - type: Transform
@@ -19669,11 +19728,14 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         5125:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         169:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         47:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
   - uid: 2910
     components:
     - type: Transform
@@ -19694,25 +19756,35 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         4995:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         4994:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         4993:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         231:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         4684:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         251:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         248:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         4992:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         4997:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         4996:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
   - uid: 5009
     components:
     - type: Transform
@@ -19721,9 +19793,11 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         5004:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         5005:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
   - uid: 5010
     components:
     - type: Transform
@@ -19732,11 +19806,14 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         5000:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         4999:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         4998:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
   - uid: 5011
     components:
     - type: Transform
@@ -19745,7 +19822,8 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         5007:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
   - uid: 5012
     components:
     - type: Transform
@@ -19754,11 +19832,14 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         5002:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         5003:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         5001:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
   - uid: 5013
     components:
     - type: Transform
@@ -19767,7 +19848,8 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         5006:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
   - uid: 5014
     components:
     - type: Transform
@@ -19782,17 +19864,23 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         197:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         194:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         193:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         192:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         195:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         196:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
   - uid: 5019
     components:
     - type: Transform
@@ -19802,17 +19890,23 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         196:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         195:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         192:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         193:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         197:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         194:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
 - proto: LockableButtonKitchen
   entities:
   - uid: 2912
@@ -19824,11 +19918,14 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         3489:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         3488:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         3487:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
 - proto: LockableButtonSecurity
   entities:
   - uid: 2917
@@ -19840,9 +19937,11 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         3511:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         3512:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
   - uid: 2918
     components:
     - type: Transform
@@ -19852,9 +19951,11 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         3509:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         3510:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
   - uid: 2919
     components:
     - type: Transform
@@ -19864,9 +19965,11 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         3513:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         3514:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
 - proto: LockerBoozeFilled
   entities:
   - uid: 2920
@@ -20180,14 +20283,6 @@ entities:
       rot: -1.5707963267948966 rad
       pos: -24.479588,15.41418
       parent: 2
-- proto: MagazineV31
-  entities:
-  - uid: 2940
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: -31.515823,15.328658
-      parent: 2
 - proto: Mattress
   entities:
   - uid: 2941
@@ -20479,6 +20574,17 @@ entities:
       parent: 2
 - proto: Paper
   entities:
+  - uid: 2927
+    components:
+    - type: Transform
+      pos: -31.521347,15.754695
+      parent: 2
+    - type: Paper
+      stampState: paper_stamp-centcom
+      stampedBy:
+      - stampedColor: '#006600FF'
+        stampedName: stamp-component-stamped-name-regional-administration
+      content: Рельсовый испепелитель, спиздили
   - uid: 2966
     components:
     - type: Transform
@@ -20502,10 +20608,17 @@ entities:
       parent: 2
   - uid: 3294
     components:
+    - type: MetaData
+      name: Коды Изоляционного Реагирования
     - type: Transform
-      pos: 0.7229026,34.26673
-      parent: 2
+      parent: 239
+    - type: Physics
+      canCollide: False
     - type: Paper
+      stampState: paper_stamp-centcom
+      stampedBy:
+      - stampedColor: '#006600FF'
+        stampedName: stamp-component-stamped-name-regional-administration
       content: >-
         КОД ИЗОЛЯЦИОННОГО РЕАГИРОВАНИЯ
 
@@ -20597,10 +20710,17 @@ entities:
         Назначенные МОГ: МОГ Эпсилон-11 («Девятихвостая лиса»).
   - uid: 3908
     components:
+    - type: MetaData
+      name: Справочник Протоколов Изоляции
     - type: Transform
-      pos: 0.40821773,34.60391
-      parent: 2
+      parent: 239
+    - type: Physics
+      canCollide: False
     - type: Paper
+      stampState: paper_stamp-centcom
+      stampedBy:
+      - stampedColor: '#006600FF'
+        stampedName: stamp-component-stamped-name-regional-administration
       content: >+
         СТАНДАРНЫЙ СПРАВОЧНИК ФОНДА
 
@@ -20682,14 +20802,21 @@ entities:
       parent: 2
   - uid: 4781
     components:
+    - type: MetaData
+      name: Коды опастности
     - type: Transform
-      pos: 0.40821773,34.140858
-      parent: 2
+      parent: 239
+    - type: Physics
+      canCollide: False
     - type: Paper
+      stampState: paper_stamp-centcom
+      stampedBy:
+      - stampedColor: '#006600FF'
+        stampedName: stamp-component-stamped-name-regional-administration
       content: >-
         КОД: ЗЕЛЁНЫЙ
 
-        Описание: Обозначает любую опасность, имеющую отношение к био-угрозе4, инфекции либо другому источнику заражения5. Это может включать в себя микроорганизмы с повышенной заразностью6, биологическое оружие, а также аномальные самоподдерживающиеся химические реакции7, способные привести к фатальным последствиям в отсутствие немедленного противодействия. Кроме того, КОД: ЗЕЛЁНЫЙ не обязательно обозначает побег конкретного объекта и может часто использоваться в сочетании с другими кодами для указания на биологическую угрозу.
+        Описание: Обозначает любую опасность, имеющую отношение к био-угрозе 4, инфекции либо другому источнику заражения 5. Это может включать в себя микроорганизмы с повышенной заразностью6, биологическое оружие, а также аномальные самоподдерживающиеся химические реакции 7, способные привести к фатальным последствиям в отсутствие немедленного противодействия. Кроме того, КОД: ЗЕЛЁНЫЙ не обязательно обозначает побег конкретного объекта и может часто использоваться в сочетании с другими кодами для указания на биологическую угрозу.
 
 
         Особые указания: Персоналу предписывается избегать контакта с любыми источниками заражения или заражённым персоналом сверх необходимого для запроса эвакуации. Не покидайте Зону. Будьте готовыми к карантину после события.
@@ -20728,7 +20855,7 @@ entities:
         Особые указания: Персоналу предписывается эвакуироваться немедленно. Все объекты должны быть изолированы, а двери/входы в Зону — заблокированы. Хранилища данных могут быть зашифрованы для предотвращения захвата важной информации противником. Не атакуйте противника без явной необходимости; ожидайте прибытия ММОГ; цель охраны — защита персонала и ресурсов, а не противодействие угрозе. Персонал должен быть поставлен в известность, что САР будут настроены на ведение боя с человеческими целями и могут быть использованы в любое время во время удерживания Зоны.
 
 
-        Назначенные МОГ: Все ММОГ уровня батальона, такие как МОГ Ню-7 («Удар молота»).
+        Назначенные МОГ: Все МОГ уровня батальона, такие как МОГ Ню-7 («Удар молота»).
 
 
         КОД: СЕРЫЙ
@@ -20798,11 +20925,17 @@ entities:
         При активации САР определяет приоритет, назначенный нарушению. Чем выше приоритет, тем больше и выраженнее вмешательство САР.
   - uid: 4784
     components:
+    - type: MetaData
+      name: Протоколы САР
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.42919666,33.763237
-      parent: 2
+      parent: 239
+    - type: Physics
+      canCollide: False
     - type: Paper
+      stampState: paper_stamp-centcom
+      stampedBy:
+      - stampedColor: '#006600FF'
+        stampedName: stamp-component-stamped-name-regional-administration
       content: >-
         САР-1: «ПРЕДОХРАНИТЕЛЬ»
 
@@ -20849,10 +20982,17 @@ entities:
         Эвакуация Зоны — процедура, предшествующая изоляции, в процессе которой сотрудники покидают затронутые учреждения. Эвакуация проходит во время «фазы эвакуации» — периода, когда угроза всё ещё развивается и не достигла уровня, при котором требуется закрытие эвакуационных убежищ.
   - uid: 4787
     components:
+    - type: MetaData
+      name: Руководства
     - type: Transform
-      pos: 0.26966286,33.281494
-      parent: 2
+      parent: 239
+    - type: Physics
+      canCollide: False
     - type: Paper
+      stampState: paper_stamp-centcom
+      stampedBy:
+      - stampedColor: '#006600FF'
+        stampedName: stamp-component-stamped-name-regional-administration
       content: >
         РУКОВОДСТВО
 
@@ -20922,11 +21062,17 @@ entities:
         Протоколы повторного содержания описывают методы, которых должны придерживаться команды перемещения объектов для безопасного захвата конкретного аномального объекта. Для каждой угрозы предназначены уникальные протоколы повторного содержания, и один и тот же метод не подойдёт для всех.
   - uid: 4791
     components:
+    - type: MetaData
+      name: Возможные угрозы от сущности
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 0.37455845,32.798973
-      parent: 2
+      parent: 239
+    - type: Physics
+      canCollide: False
     - type: Paper
+      stampState: paper_stamp-centcom
+      stampedBy:
+      - stampedColor: '#006600FF'
+        stampedName: stamp-component-stamped-name-regional-administration
       content: >-
         Агрессивно настроенные сущности (АНС) — одни из самых сложных объектов с точки зрения успешного отлова и повторной постановки на содержание. Множественные инциденты с SCP-682 указывают на то, что лучшей стратегией сдерживания является отвлечение и заманивание. Редко существуют способы сделать АНС послушной, в связи с чем может потребоваться привлечение нескольких ММОГ уровня батальона для окружения и силового захвата даже после заманивания в подходящее для захвата место. АНС могут критически нарушить секретность, в связи с чем их следует уводить как можно дальше от гражданского населения. Критически важно оценивание и использование слабостей угрозы. При возможности следует использовать транквилизаторы. Также, практически в каждом случае следует учитывать возможность полной нейтрализации угрозы.
 
@@ -25669,13 +25815,17 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         4981:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         4982:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         4985:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         4984:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
 - proto: SignalButtonExt3
   entities:
   - uid: 3515
@@ -25687,41 +25837,59 @@ entities:
     - type: DeviceLinkSource
       linkedPorts:
         213:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         217:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         216:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         214:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         215:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         212:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         211:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         210:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         208:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         207:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         204:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         206:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         205:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         201:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         202:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         200:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         199:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
         198:
-        - Pressed: Toggle
+        - - Pressed
+          - Toggle
 - proto: SignArmory
   entities:
   - uid: 3516
@@ -32617,13 +32785,6 @@ entities:
     - type: HitscanBatteryAmmoProvider
       fireCost: 50
       proto: BulletDisabler
-- proto: WeaponGodlikeXRay
-  entities:
-  - uid: 4653
-    components:
-    - type: Transform
-      pos: -31.536804,15.538449
-      parent: 2
 - proto: WeaponRevolverMatebaNew
   entities:
   - uid: 1030
