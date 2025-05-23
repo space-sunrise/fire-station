@@ -1,4 +1,5 @@
-﻿alert-level-scp-announcement = Внимание! Уровень угрозы комплекса теперь "{ $name }"! { $announcement }
+alert-level-scp-announcement = Внимание! Установлен уровень угрозы  "{ $name }"!
+{ $announcement }
 
 alert-level-scpUnknown = Неизвестный.
 alert-level-scpUnknown-instructions = Неизвестно.
