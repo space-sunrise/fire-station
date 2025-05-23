@@ -3,7 +3,7 @@
 alert-level-scpUnknown = Неизвестный.
 alert-level-scpUnknown-instructions = Неизвестно.
 
-alert-level-scpNone = Нету
+alert-level-scpNone = Отсутствует
 alert-level-scpNone-announcement = Можно безопасно возвращаться на свои рабочие места.
 alert-level-scpNone-instructions = На данный момент отсутствуют какие-либо угрозы. Выполняйте свою работу.
 
