@@ -1,12 +1,14 @@
 ﻿loadout-group-common-misc-items = Другие предметы
 
 loadout-group-head = Голова
+loadout-group-hat = { loadout-group-head }
 loadout-group-eyes = Глаза
 loadout-group-ears = Уши
 loadout-group-neck = Шея
 loadout-group-jumpsuit = Униформа
 loadout-group-outer-clothing = Верхняя одежда
 loadout-group-outerclothing = { loadout-group-outer-clothing }
+loadout-group-outerClothing = { loadout-group-outerclothing }
 loadout-group-belt = Пояс
 loadout-group-gloves = Перчатки
 loadout-group-shoes = Ботинки

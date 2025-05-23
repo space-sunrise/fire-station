@@ -85,7 +85,7 @@
   id: CigarCase
   effects:
   - !type:GroupLoadoutEffect
-    proto: Administration # Fire edit
+    proto: Command
   storage:
     back:
     - CigarCase
@@ -94,7 +94,7 @@
   id: CigarGold
   effects:
   - !type:GroupLoadoutEffect
-    proto: Administration # Fire edit
+    proto: Command
   storage:
     back:
     - CigarGold
@@ -345,7 +345,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: Director
+      role: JobDirector # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -369,7 +369,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: TribunalOfficer
+      role: JobTribunalOfficer # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -381,7 +381,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: ClassD # Fire edit
+      role: JobClassD # Fire edit
       time: 180000 # 50hr  # Fire edit
   storage:
     back:
