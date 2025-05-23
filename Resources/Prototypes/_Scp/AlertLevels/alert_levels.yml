@@ -105,7 +105,7 @@
         params:
           volume: -2
       disableSelection: true
-      color: LightCyan
-      emergencyLightColor: LightCyan
+      color: DarkCyan
+      emergencyLightColor: DarkCyan
       forceEnableEmergencyLights: true
       shuttleTime: 1200
