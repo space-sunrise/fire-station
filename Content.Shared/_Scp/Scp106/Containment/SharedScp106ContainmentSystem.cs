@@ -1,7 +1,7 @@
 using System.Linq;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp106.Components;
-# using Content.Shared.Body.Systems;
+/// using Content.Shared.Body.Systems;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Damage;
