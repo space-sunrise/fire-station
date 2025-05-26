@@ -1,7 +1,7 @@
 using System.Linq;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp106.Components;
-/// using Content.Shared.Body.Systems;
+using Content.Shared.Body.Systems;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Damage;
@@ -19,7 +19,7 @@ public abstract class SharedScp106ContainmentSystem : EntitySystem
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-  ///  [Dependency] private readonly SharedBodySystem _body = default!;
+    [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly MobStateSystem _mobState  = default!;
     [Dependency] private readonly SharedScpHelpersSystem _scpHelpers = default!;
