@@ -1,7 +1,7 @@
 using System.Linq;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp106.Components;
-using Content.Shared.Body.Systems;
+# using Content.Shared.Body.Systems;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Damage;
@@ -51,7 +51,7 @@ public abstract class SharedScp106ContainmentSystem : EntitySystem
         if (!TryContain())
             return false;
 
-        var damage = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Slash"), 60);
+        var damage = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Slash"), 30);
         _damageableSystem.TryChangeDamage(args.OtherEntity, damage);
 
         if (!_scpHelpers.TryGetFirst<Scp106ContainmentCatwalkComponent>(out var chamberTile))
