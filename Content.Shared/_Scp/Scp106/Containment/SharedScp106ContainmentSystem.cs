@@ -19,7 +19,7 @@ public abstract class SharedScp106ContainmentSystem : EntitySystem
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!;
+  ///  [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly MobStateSystem _mobState  = default!;
     [Dependency] private readonly SharedScpHelpersSystem _scpHelpers = default!;
