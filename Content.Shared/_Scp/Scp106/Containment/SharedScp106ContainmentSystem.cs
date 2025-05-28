@@ -51,7 +51,7 @@ public abstract class SharedScp106ContainmentSystem : EntitySystem
         if (!TryContain())
             return false;
 
-        var damage = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Slash"), 30);
+        var damage = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Blunt"), 30);
         _damageableSystem.TryChangeDamage(args.OtherEntity, damage);
 
         if (!_scpHelpers.TryGetFirst<Scp106ContainmentCatwalkComponent>(out var chamberTile))
