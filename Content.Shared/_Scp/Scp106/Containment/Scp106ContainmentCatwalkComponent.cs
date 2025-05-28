@@ -3,5 +3,5 @@
 /// <summary>
 /// Сдерживатель для 106
 /// </summary>
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class Scp106ContainmentCatwalkComponent : Component;
