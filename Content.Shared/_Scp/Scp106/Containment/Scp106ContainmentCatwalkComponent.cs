@@ -1,3 +1,5 @@
+using Robust.Shared.GameStates;
+
 ﻿namespace Content.Shared._Scp.Scp106.Containment;
 
 /// <summary>
