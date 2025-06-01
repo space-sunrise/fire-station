@@ -14,13 +14,7 @@
   - type: BorgSwitchableType
     selectedBorgType: peace
 
-- type: entity
-  id: BorgChassisClown
-  parent: BorgChassisSelectable
-  name: clown cyborg
-  components:
-  - type: BorgSwitchableType
-    selectedBorgType: clown
+
 
 - type: entity
   id: BorgChassisSyndicateReaper

@@ -89,59 +89,6 @@
   petSuccessString: petting-success-peace-cyborg
   petFailureString: petting-failure-peace-cyborg
 
-
-# Clown borg
-- type: borgType
-  id: clown
-
-  job: ClownBorg
-
-  # Description
-  dummyPrototype: BorgChassisClown
-
-  # Functional
-  extraModuleCount: 2
-  moduleWhitelist:
-    tags:
-    - BorgModuleGeneric
-    - BorgModuleService
-
-  defaultModules:
-  - BorgModuleStandart
-  - BorgModuleClowning
-
-  radioChannels:
-  - Science
-  - Service
-
-  addComponents:
-  - type: FabricateSoap
-    soapList:
-    - Soap
-    - SoapNT
-    - SoapDeluxe
-    - SoapHomemade
-  - type: PieThrower
-    pieProtoId: FoodPieBananaCream
-  - type: TTS
-    voice: NecoArcTwo
-
-  # Sounds
-  footstepCollection:
-    collection: FootstepClown
-
-  # Visual
-  inventoryTemplateId: borgTall
-  spriteBodyState: clown
-  spriteHasMindState: clown_e
-  spriteNoMindState: clown_e_r
-  spriteToggleLightState: clown_l
-
-  # Pet
-  petSuccessString: petting-success-clown-cyborg
-  petFailureString: petting-failure-clown-cyborg
-
-
 # Security borg
 - type: borgType
   id: security

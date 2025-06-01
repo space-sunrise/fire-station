@@ -126,24 +126,6 @@
     mindRole: "MindRoleSiliconBrain"
     silent: true
 
-- type: entity
-  id: PlayerBorgClownBattery
-  parent: BorgChassisClown
-  suffix: Battery
-  components:
-  - type: ContainerFill
-    containers:
-      borg_brain:
-      - Boris
-  - type: ItemSlots
-    slots:
-      cell_slot:
-        name: power-cell-slot-component-slot-name-default
-        startingItem: PowerCellHigh
-  - type: StartingMindRole
-    mindRole: "MindRoleSiliconBrain"
-    silent: true
-
 # Ert
 
 - type: entity
@@ -189,7 +171,7 @@
         name: power-cell-slot-component-slot-name-default
         startingItem: PowerCellSyndicate
   - type: NoSlip
-  
+
 
 - type: entity
   id: PlayerBorgSyndicateReaperBattery
