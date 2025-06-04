@@ -140,14 +140,14 @@
   materials:
     Plastic: 100
 
-- type: latheRecipe
-  parent: BaseToolRecipe
-  id: HoloprojectorSecurity
-  result: HoloprojectorSecurityEmpty
-  materials:
-    Steel: 300
-    Glass: 50
-    Plastic: 50
+# - type: latheRecipe #Fire-Station
+#   parent: BaseToolRecipe
+#   id: HoloprojectorSecurity
+#   result: HoloprojectorSecurityEmpty
+#   materials:
+#     Steel: 300
+#     Glass: 50
+#     Plastic: 50
 
 - type: latheRecipe
   parent: BaseToolRecipe

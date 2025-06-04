@@ -118,7 +118,7 @@
   recipeUnlocks:
   - Truncheon
   - TelescopicShield
-  - HoloprojectorSecurity
+  # - HoloprojectorSecurity #Fire-Station
   - WeaponDisablerSMG
   - ClothingHeadHelmetPubg  # Sunrise-Add
 

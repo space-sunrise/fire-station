@@ -135,7 +135,7 @@
     - Truncheon
     - WeaponLaserBorg
     - WeaponLaserBorg
-    - HoloprojectorSecurityBorg
+    # - HoloprojectorSecurityBorg #Fire-Station
 
 - type: entity
   id: BorgModuleCombat
@@ -150,7 +150,7 @@
     items:
     - CombatKnife
     - WeaponLaserBorg
-    - HoloprojectorSecurityBorg
+    # - HoloprojectorSecurityBorg #Fire-Station
 
 - type: entity
   id: BorgModulePeace
