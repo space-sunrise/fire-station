@@ -1286,5 +1286,8 @@ FaxMachineCentcom: FaxMachineRegionalAdministration
 FaxMachineSyndie: FaxMachineEncrypted
 FaxMachineCaptain: FaxMachineDirector
 
+# Остальное
+HoloprojectorSecurity: null
+
 # Fire added end
 
