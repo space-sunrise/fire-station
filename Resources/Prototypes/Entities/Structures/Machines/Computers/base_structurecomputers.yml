@@ -5,6 +5,15 @@
   placement:
     mode: SnapgridCenter
   components:
+  # Fire added start
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: 3
+    range: 3
+    enabled: false
+    sound:
+      path: /Audio/_Scp/Ambience/Machines/Consoles/ost1.ogg
+  # Fire added end
   - type: Animateable
   - type: MeleeSound
     soundGroups:
