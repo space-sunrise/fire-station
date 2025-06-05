@@ -9,7 +9,7 @@
   - type: AmbientOnPowered
   - type: AmbientSound
     volume: 3
-    range: 3
+    maxDistance: 3
     enabled: false
     sound:
       path: /Audio/_Scp/Ambience/Machines/Consoles/ost1.ogg
@@ -70,7 +70,7 @@
       # Fire edit start
       collection: ScpKeyboard
       params:
-        range: 3
+        maxDistance: 3
         volume: -5
         variation: 0.1
         pitch: 0.9  # low pitch keyboard sounds feel kinda weird
