@@ -9,10 +9,11 @@
   - type: AmbientOnPowered
   - type: AmbientSound
     volume: 3
-    maxDistance: 3
     enabled: false
     sound:
       path: /Audio/_Scp/Ambience/Machines/Consoles/ost1.ogg
+      params:
+        maxDistance: 3
   # Fire added end
   - type: Animateable
   - type: MeleeSound
