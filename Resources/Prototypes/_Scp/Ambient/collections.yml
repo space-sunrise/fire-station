@@ -1,80 +1,80 @@
 ﻿- type: soundCollection
   id: FireAmbienceGeneral
   files:
-  - /Audio/_Scp/Ambient/General/ost1.ogg
-  - /Audio/_Scp/Ambient/General/ost2.ogg
-  - /Audio/_Scp/Ambient/General/ost3.ogg
-  - /Audio/_Scp/Ambient/General/ost4.ogg
-  - /Audio/_Scp/Ambient/General/ost5.ogg
-  - /Audio/_Scp/Ambient/General/ost6.ogg
-  - /Audio/_Scp/Ambient/General/ost7.ogg
-  - /Audio/_Scp/Ambient/General/ost8.ogg
-  - /Audio/_Scp/Ambient/General/ost9.ogg
-  - /Audio/_Scp/Ambient/General/ost10.ogg
-  - /Audio/_Scp/Ambient/General/ost11.ogg
-  - /Audio/_Scp/Ambient/General/ost12.ogg
-  - /Audio/_Scp/Ambient/General/ost13.ogg
-  - /Audio/_Scp/Ambient/General/ost14.ogg
-  - /Audio/_Scp/Ambient/General/ost15.ogg
-  - /Audio/_Scp/Ambient/General/ost16.ogg
-  - /Audio/_Scp/Ambient/General/ost17.ogg
-  - /Audio/_Scp/Ambient/General/ost18.ogg
-  - /Audio/_Scp/Ambient/General/ost19.ogg
-  - /Audio/_Scp/Ambient/General/ost20.ogg
-  - /Audio/_Scp/Ambient/General/ost21.ogg
-  - /Audio/_Scp/Ambient/General/ost22.ogg
-  - /Audio/_Scp/Ambient/General/ost23.ogg
-  - /Audio/_Scp/Ambient/General/ost24.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost1.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost2.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost3.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost4.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost5.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost6.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost7.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost8.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost9.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost10.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost11.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost12.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost13.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost14.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost15.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost16.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost17.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost18.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost19.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost20.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost21.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost22.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost23.ogg
+  - /Audio/_Scp/Ambience/Music/General/ost24.ogg
 
 - type: soundCollection
   id: FireAmbienceMedical
   files:
-  - /Audio/_Scp/Ambient/Medical/ost1.ogg
-  - /Audio/_Scp/Ambient/Medical/ost2.ogg
-  - /Audio/_Scp/Ambient/Medical/ost3.ogg
-  - /Audio/_Scp/Ambient/Medical/ost4.ogg
-  - /Audio/_Scp/Ambient/Medical/ost5.ogg
-  - /Audio/_Scp/Ambient/Medical/ost6.ogg
-  - /Audio/_Scp/Ambient/Medical/ost7.ogg
+  - /Audio/_Scp/Ambience/Music/Medical/ost1.ogg
+  - /Audio/_Scp/Ambience/Music/Medical/ost2.ogg
+  - /Audio/_Scp/Ambience/Music/Medical/ost3.ogg
+  - /Audio/_Scp/Ambience/Music/Medical/ost4.ogg
+  - /Audio/_Scp/Ambience/Music/Medical/ost5.ogg
+  - /Audio/_Scp/Ambience/Music/Medical/ost6.ogg
+  - /Audio/_Scp/Ambience/Music/Medical/ost7.ogg
 
 - type: soundCollection
   id: FireAmbienceShuttle
   files:
-  - /Audio/_Scp/Ambient/Shuttle/ost1.ogg
-  - /Audio/_Scp/Ambient/Shuttle/ost2.ogg
+  - /Audio/_Scp/Ambience/Music/Shuttle/ost1.ogg
+  - /Audio/_Scp/Ambience/Music/Shuttle/ost2.ogg
 
 - type: soundCollection
   id: FireAmbienceScp106Dimension
   files:
-  - /Audio/_Scp/Ambient/PocketDimension/ost1.ogg
-  - /Audio/_Scp/Ambient/PocketDimension/ost2.ogg
-  - /Audio/_Scp/Ambient/PocketDimension/ost3.ogg
-  - /Audio/_Scp/Ambient/PocketDimension/ost4.ogg
+  - /Audio/_Scp/Ambience/Music/PocketDimension/ost1.ogg
+  - /Audio/_Scp/Ambience/Music/PocketDimension/ost2.ogg
+  - /Audio/_Scp/Ambience/Music/PocketDimension/ost3.ogg
+  - /Audio/_Scp/Ambience/Music/PocketDimension/ost4.ogg
 
 - type: soundCollection
   id: FireAmbienceScp173
   files:
-  - /Audio/_Scp/Ambient/scp173.ogg
+  - /Audio/_Scp/Ambience/Music/scp173.ogg
 
 - type: soundCollection
   id: FireAmbienceClassD
   files:
-  - /Audio/_Scp/Ambient/ClassD/ost1.ogg
-  - /Audio/_Scp/Ambient/ClassD/ost2.ogg
-  - /Audio/_Scp/Ambient/ClassD/ost3.ogg
-  - /Audio/_Scp/Ambient/ClassD/ost4.ogg
+  - /Audio/_Scp/Ambience/Music/ClassD/ost1.ogg
+  - /Audio/_Scp/Ambience/Music/ClassD/ost2.ogg
+  - /Audio/_Scp/Ambience/Music/ClassD/ost3.ogg
+  - /Audio/_Scp/Ambience/Music/ClassD/ost4.ogg
 
 - type: soundCollection
   id: FireAmbienceShiftAdded
   files:
-  - /Audio/_Scp/Ambient/Shift/added.ogg
+  - /Audio/_Scp/Ambience/Music/Shift/added.ogg
 
 - type: soundCollection
   id: FireAmbienceShiftStarted
   files:
-  - /Audio/_Scp/Ambient/Shift/started.ogg
+  - /Audio/_Scp/Ambience/Music/Shift/started.ogg
 
 - type: soundCollection
   id: FireAmbienceShiftAverted
   files:
-  - /Audio/_Scp/Ambient/Shift/averted.ogg
+  - /Audio/_Scp/Ambience/Music/Shift/averted.ogg

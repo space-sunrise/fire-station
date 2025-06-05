@@ -520,7 +520,7 @@
     volume: -10
     range: 3
     sound:
-      path: /Audio/_Scp/Ambient/Emergency/alarm.ogg
+      path: /Audio/_Scp/Ambience/Emergency/alarm.ogg
   # Fire edit end
   placement:
     mode: SnapgridCenter
