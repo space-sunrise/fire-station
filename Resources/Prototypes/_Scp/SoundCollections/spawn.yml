@@ -1,0 +1,8 @@
+﻿- type: soundCollection
+  id: SpawnSound
+  files:
+  - /Audio/_Scp/Effects/Spawn/sound1.ogg
+  - /Audio/_Scp/Effects/Spawn/sound2.ogg
+  - /Audio/_Scp/Effects/Spawn/sound3.ogg
+  - /Audio/_Scp/Effects/Spawn/sound4.ogg
+  - /Audio/_Scp/Effects/Spawn/sound5.ogg
