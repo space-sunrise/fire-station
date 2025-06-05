@@ -270,12 +270,17 @@ public sealed class ChatUIController : UIController
 
     private void OnChatWindowOpacityChanged(float opacity)
     {
-        SetChatWindowOpacity(1f); // Fire edit - нахуй вы наш сепаратед чат делаете полупрозрачным
+        SetChatWindowOpacity(opacity);
     }
 
     public void SetChatWindowOpacity(float opacity)
     {
         var chatBox = UIManager.ActiveScreen?.GetWidget<ChatBox>() ?? UIManager.ActiveScreen?.GetWidget<ResizableChatBox>();
+
+        // Fire added start - если у нас маленький чат, то его прозрачность можно будет поменять
+        // Если нет - всегда 0
+        opacity = UIManager.ActiveScreen?.GetWidget<ResizableChatBox>() != null ? opacity : 0f;
+        // Fire added end
 
         var panel = chatBox?.ChatWindowPanel;
         if (panel is null)
