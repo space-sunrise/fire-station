@@ -769,6 +769,7 @@ WallPlastitaniumDiagonal: ScpWallReinforcedDiagonal
 WallMiningDiagonal: ScpWallConcreteDiagonal
 SolidSecretDoor: ScpSolidSecretDoor
 WindowFrostedDirectional: ScpWindowReinforcedDirectional
+WallBrick: ScpWallFireBrick
 
 PlasticFlapsAirtightClear: ScpPlasticFlapsAirtightClear
 PlasticFlapsAirtightOpaque: ScpPlasticFlapsAirtightOpaque
