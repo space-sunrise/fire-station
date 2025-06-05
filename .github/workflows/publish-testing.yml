@@ -2,11 +2,12 @@
 
 concurrency:
   group: publish-testing
+  cancel-in-progress: true
 
 on:
   workflow_dispatch:
-#  schedule:
-#  - cron: '0 10 * * *'
+  schedule:
+  - cron: '0 10 * * *'
 
 jobs:
   build:
