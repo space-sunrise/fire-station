@@ -279,7 +279,8 @@ public sealed class ChatUIController : UIController
 
         // Fire added start - если у нас маленький чат, то его прозрачность можно будет поменять
         // Если нет - всегда 0
-        opacity = UIManager.ActiveScreen?.GetWidget<ResizableChatBox>() != null ? opacity : 0f;
+        var isResizableChat = UIManager.ActiveScreen?.GetWidget<ResizableChatBox>() != null;
+        opacity = isResizableChat ? opacity : 0f;
         // Fire added end
 
         var panel = chatBox?.ChatWindowPanel;
