@@ -151,7 +151,7 @@
   - SecurityRadioHandheld
   - SecurityTourniquet
   - SecurityWeaponMeleeNeedle
-  - SecurityHoloprojector
+  # - SecurityHoloprojector # Fire edit
 
 - type: loadoutGroup
   id: CorporateLaw
