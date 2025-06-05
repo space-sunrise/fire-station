@@ -24,7 +24,7 @@
     Radiation: 0.0
 
 - type: damageModifierSet
-  id: StructuralMetallicHardCellsSCP
+  id: StructuralMetallicHardCellsScp
   coefficients:
     Blunt: 0.1
     Slash: 0.1
@@ -38,7 +38,7 @@
     Structural: 20
 
 - type: damageModifierSet
-  id: StructuralMetallicStrongSCP
+  id: StructuralMetallicStrongScp
   coefficients:
     Blunt: 0.3
     Slash: 0.2
@@ -53,7 +53,7 @@
     Structural: 15
 
 - type: damageModifierSet
-  id: StructuralMetallicSCP
+  id: StructuralMetallicScp
   coefficients:
     Blunt: 0.8
     Slash: 0.8

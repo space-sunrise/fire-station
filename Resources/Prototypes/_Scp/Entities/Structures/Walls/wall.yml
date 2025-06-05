@@ -10,7 +10,7 @@
     sprite: _Scp/Structures/Walls/solid.rsi
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicSCP
+    damageModifierSet: StructuralMetallicScp
 
 - type: entity
   parent: WallSolidRust
@@ -23,7 +23,7 @@
     sprite: _Scp/Structures/Walls/solid_rust.rsi
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicSCP
+    damageModifierSet: StructuralMetallicScp
 
 - type: entity
   parent: WallShuttleDiagonal
@@ -48,7 +48,7 @@
     state: state0
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicSCP
+    damageModifierSet: StructuralMetallicScp
 
 # Укрепленная стена
 - type: entity
@@ -62,7 +62,7 @@
     sprite: _Scp/Structures/Walls/solid.rsi
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrongSCP
+    damageModifierSet: StructuralMetallicStrongScp
   - type: Destructible
     thresholds:
       - trigger:
@@ -88,12 +88,12 @@
     sprite: _Scp/Structures/Walls/solid_rust.rsi
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrongSCP
+    damageModifierSet: StructuralMetallicStrongScp
   - type: Destructible
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 1500
+          damage: 1100
         behaviors:
           - !type:SpawnEntitiesBehavior
             spawn:
@@ -129,7 +129,7 @@
     state: state0
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicStrongSCP
+    damageModifierSet: StructuralMetallicStrongScp
   - type: Destructible
     thresholds:
       - trigger:
@@ -159,7 +159,7 @@
     base: concrete
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicSCP
+    damageModifierSet: StructuralMetallicScp
   - type: Destructible
     thresholds:
       - trigger:
@@ -189,7 +189,7 @@
     state: state0
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicSCP
+    damageModifierSet: StructuralMetallicScp
   - type: Destructible
     thresholds:
       - trigger:
@@ -207,7 +207,7 @@
 # Стена Лёгкой Зоны Содержания
 - type: entity
   parent: BaseWall
-  id: ScpWallConcreteLowContaiment
+  id: ScpWallConcreteLightContaiment
   name: concrete wall low contaiment
   components:
   - type: Sprite
@@ -219,7 +219,7 @@
     base: concrete_low_contaiment
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicSCP
+    damageModifierSet: StructuralMetallicScp
   - type: RCDDeconstructable
     cost: 6
     delay: 10
@@ -253,7 +253,7 @@
     base: concrete_science
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicSCP
+    damageModifierSet: StructuralMetallicScp
   - type: RCDDeconstructable
     cost: 6
     delay: 10
@@ -287,7 +287,7 @@
     base: metall_hard_contaiment
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicHardCellsSCP
+    damageModifierSet: StructuralMetallicHardCellsScp
   - type: Destructible
     thresholds:
       - trigger:
