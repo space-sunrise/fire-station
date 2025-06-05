@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by discord: odlieerr",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "full"
+        },
+        {
+            "name": "fire_brick0",
+            "directions": 4
+        },
+        {
+            "name": "fire_brick1",
+            "directions": 4
+        },
+        {
+            "name": "fire_brick2",
+            "directions": 4
+        },
+        {
+            "name": "fire_brick3",
+            "directions": 4
+        },
+        {
+            "name": "fire_brick4",
+            "directions": 4
+        },
+        {
+            "name": "fire_brick5",
+            "directions": 4
+        },
+        {
+            "name": "fire_brick6",
+            "directions": 4
+        },
+        {
+            "name": "fire_brick7",
+            "directions": 4
+        }
+    ]
+}
