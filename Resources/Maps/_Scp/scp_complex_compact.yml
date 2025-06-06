@@ -88,7 +88,7 @@ entities:
   - uid: 1
     components:
     - type: MetaData
-      name: SCP Map
+      name: Scp Map
     - type: Transform
     - type: Map
       mapPaused: True
@@ -126,7 +126,7 @@ entities:
   - uid: 2
     components:
     - type: MetaData
-      name: ScpComplexMini
+      name: ScpComplexCompact
     - type: Transform
       pos: -0.51063824,-0.4893613
       parent: 1

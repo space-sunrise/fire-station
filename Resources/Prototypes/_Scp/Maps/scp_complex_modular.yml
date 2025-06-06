@@ -10,7 +10,7 @@
       stationProto: StandardScpStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Зона-{0} типа - Modular'
+          mapNameTemplate: 'Зона-{0} тип - Modular'
           nameGenerator:
             !type:ScpSiteNameGenerator
             prefixCreator: '15'
