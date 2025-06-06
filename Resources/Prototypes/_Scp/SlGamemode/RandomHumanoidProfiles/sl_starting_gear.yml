@@ -1,0 +1,85 @@
+﻿- type: startingGear
+  id: SlClassDGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitPrisoner
+
+- type: startingGear
+  id: SlScientistGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCapFormal
+    shoes: ClothingShoesBootsLaceup
+    eyes: ClothingEyesGlassesSunglasses
+    gloves: ClothingHandsGlovesCaptain
+    head: ClothingHeadHatCapcap
+    neck: ClothingNeckMantleCap
+    id: VisitorPDA
+    belt: WeaponDisabler
+    back: ClothingBackpackSatchelCaptain
+    ears: ClothingHeadsetAltCommand
+    outerClothing: ClothingOuterArmorCaptainCarapace
+    pocket1: WeaponDisabler
+
+- type: startingGear
+  id: SlSecurityGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCapFormal
+    shoes: ClothingShoesBootsLaceup
+    eyes: ClothingEyesGlassesSunglasses
+    gloves: ClothingHandsGlovesCaptain
+    head: ClothingHeadHatCapcap
+    neck: ClothingNeckMantleCap
+    id: VisitorPDA
+    belt: WeaponDisabler
+    back: ClothingBackpackSatchelCaptain
+    ears: ClothingHeadsetAltCommand
+    outerClothing: ClothingOuterArmorCaptainCarapace
+    pocket1: WeaponDisabler
+
+- type: startingGear
+  id: SlMogGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCapFormal
+    shoes: ClothingShoesBootsLaceup
+    eyes: ClothingEyesGlassesSunglasses
+    gloves: ClothingHandsGlovesCaptain
+    head: ClothingHeadHatCapcap
+    neck: ClothingNeckMantleCap
+    id: VisitorPDA
+    belt: WeaponDisabler
+    back: ClothingBackpackSatchelCaptain
+    ears: ClothingHeadsetAltCommand
+    outerClothing: ClothingOuterArmorCaptainCarapace
+    pocket1: WeaponDisabler
+
+- type: startingGear
+  id: SlChaosGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCapFormal
+    shoes: ClothingShoesBootsLaceup
+    eyes: ClothingEyesGlassesSunglasses
+    gloves: ClothingHandsGlovesCaptain
+    head: ClothingHeadHatCapcap
+    neck: ClothingNeckMantleCap
+    id: VisitorPDA
+    belt: WeaponDisabler
+    back: ClothingBackpackSatchelCaptain
+    ears: ClothingHeadsetAltCommand
+    outerClothing: ClothingOuterArmorCaptainCarapace
+    pocket1: WeaponDisabler
+
+- type: startingGear
+  id: SlMogCaptainGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitCapFormal
+    shoes: ClothingShoesBootsLaceup
+    eyes: ClothingEyesGlassesSunglasses
+    gloves: ClothingHandsGlovesCaptain
+    head: ClothingHeadHatCapcap
+    neck: ClothingNeckMantleCap
+    id: VisitorPDA
+    belt: WeaponDisabler
+    back: ClothingBackpackSatchelCaptain
+    ears: ClothingHeadsetAltCommand
+    outerClothing: ClothingOuterArmorCaptainCarapace
+    pocket1: WeaponDisabler
+
