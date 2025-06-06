@@ -3,17 +3,20 @@ using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Scp106.Systems;
 
 public sealed partial class Scp106System
 {
+    private static readonly EntProtoId PhantomRemains = "Ash";
+
     private void OnMobStateChangedEvent(Entity<Scp106PhantomComponent> ent, ref MobStateChangedEvent args)
     {
         if (!_mobState.IsIncapacitated(ent))
             return;
 
-        Spawn("Ash", Transform(ent).Coordinates);
+        Spawn(PhantomRemains, Transform(ent).Coordinates);
         QueueDel(ent);
 
         if (!_mind.TryGetMind(ent, out var mindId, out _))
