@@ -1,6 +1,6 @@
 - type: gameMap
   id: ScpComplexModular
-  mapName: 'Комплекс Типа - Modular'
+  mapName: 'Комплекс типа - Modular'
   mapPath: /Maps/_Scp/scp_complex_modular.yml
   maxRandomOffset: 0
   randomRotation: false
@@ -10,7 +10,7 @@
       stationProto: StandardScpStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Зона-{0} Типа - Modular'
+          mapNameTemplate: 'Зона-{0} типа - Modular'
           nameGenerator:
             !type:ScpSiteNameGenerator
             prefixCreator: '15'
@@ -34,12 +34,12 @@
             HeadOfMedicalSector: [ 1, 1 ]
             SeniorLogisticsOfficer: [ 1, 1 ]
             # Отдел внутренней безопасности
-            #MentalControlOfficer: [ 1, 1 ]
+            # MentalControlOfficer: [ 1, 1 ]
             InternalSecurityOperative: [ 1, 1 ]
             # Комитет по этике
-            #EthicsCommitteeRepresentative: [ 1, 1 ]
+            # EthicsCommitteeRepresentative: [ 1, 1 ]
             # Служба внутреннего трибунала
-            #JudicialInspector: [ 1, 1 ]
+            # JudicialInspector: [ 1, 1 ]
             TribunalOfficer: [ 1, 1 ]
             # Служба безопасности тяжелой зоны
             HeavyContainmentZoneCommandant: [ 1, 1 ]
