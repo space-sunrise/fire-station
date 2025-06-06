@@ -1,7 +1,7 @@
 - type: gameMap
   id: ScpComplexStandard
   mapName: 'Комплекс типа - Standard'
-  mapPath: /Maps/_Scp/scp_complex_standart.yml
+  mapPath: /Maps/_Scp/scp_complex_standard.yml
   maxRandomOffset: 0
   randomRotation: false
   minPlayers: 20
