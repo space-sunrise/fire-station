@@ -2,8 +2,25 @@
 # Для разных сцп нужны разные пресеты
 
 - type: entity
+  id: BaseScpArtifact
+  abstract: true
+  components:
+  - type: ContainerContainer
+    containers:
+      node-container: !type:Container
+        showEnts: False
+        occludes: True
+        ents: [ ]
+  - type: RadiationReceiver
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+      Acidic: [ Touch ]
+
+- type: entity
   id: BaseScpArtifactMajor
-  parent: BaseXenoArtifact
+  parent: BaseScpArtifact
   abstract: true
   components:
   - type: XenoArtifact
@@ -18,11 +35,10 @@
       - !type:NestedSelector
         tableId: ScpArtifactEffectsUltraFunnyTable
         weight: 1
-  - type: ResearchClient
 
 - type: entity
   id: BaseScpArtifactMinor
-  parent: BaseXenoArtifact
+  parent: BaseScpArtifact
   abstract: true
   components:
   - type: XenoArtifact
