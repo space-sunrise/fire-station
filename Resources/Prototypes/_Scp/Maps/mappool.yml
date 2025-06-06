@@ -1,6 +1,6 @@
 - type: gameMapPool
   id: FireStationMapPool
   maps:
-  - ScpComplex
-  - ScpComplexCB
-  - ScpComplexMini
+  - ScpComplexCompact
+  - ScpComplexStandart
+  - ScpComplexModular
