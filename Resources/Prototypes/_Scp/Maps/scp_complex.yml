@@ -1,16 +1,17 @@
 - type: gameMap
   id: ScpComplex
-  mapName: 'Комплекс SCP'
+  mapName: 'Комплекс Типа - Standart'
   mapPath: /Maps/_Scp/scp_complex.yml
   maxRandomOffset: 0
   randomRotation: false
-  minPlayers: 0
+  minPlayers: 20
+  maxPlayers: 50
   stations:
     ScpComplex:
       stationProto: StandardScpStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Зона-{0}'
+          mapNameTemplate: 'Зона-{0} Типа - Standart'
           nameGenerator:
             !type:ScpSiteNameGenerator
             prefixCreator: '15'
@@ -44,33 +45,33 @@
             # Служба безопасности тяжелой зоны
             HeavyContainmentZoneCommandant: [ 1, 1 ]
             SeniorHeavyContainmentZoneOfficer: [ 1, 1 ]
-            HeavyContainmentZoneOfficer: [ 10, 15 ]
+            HeavyContainmentZoneOfficer: [ 6, 6 ]
             JuniorHeavyContainmentZoneOfficer: [ 5, -1 ]
             FieldMedicalSpecialist: [ 2, 2 ]
             # Служба безопасности внешней-административной зоны
             ExternalAdministrativeZoneCommandant: [ 1, 1 ]
             SeniorExternalAdministrativeZoneOfficer: [ 1, 1 ]
-            ExternalAdministrativeZoneOfficer: [ 10, 15 ]
+            ExternalAdministrativeZoneOfficer: [ 6, 6 ]
             JuniorExternalAdministrativeZoneOfficer: [ 5, -1 ]
             # Научная служба
             LeadResearcher: [ 1, 1 ]
-            AnomabiologyResearcher: [ 8, 12 ]
-            AnomarchologyResearcher: [ 8, 12 ]
+            AnomabiologyResearcher: [ 6, 6 ]
+            AnomarchologyResearcher: [ 4, 4 ]
             ProductionSpecialist: [ 2, 2 ]
             JuniorResearcher: [ 5, -1 ]
             # Медицинская служба
             SeniorMedicalSpecialist: [ 1, 1 ]
-            PharmaceuticalSpecialist: [ 2, 3 ]
-            MedicalSpecialist: [ 5, 8 ]
+            PharmaceuticalSpecialist: [ 3, 3 ]
+            MedicalSpecialist: [ 4, 5 ]
             Psychotherapist: [ 1, 1 ]
             HospitalIntern: [ 5, -1 ]
             # Инженерно-техническая служба
             LeadTechnicalSpecialist: [ 1, 1 ]
             ElectricalTechnicalSpecialist: [ 3, 3 ]
-            GeneralTechnicalSpecialist: [ 5, 5 ]
+            GeneralTechnicalSpecialist: [ 4, 5 ]
             TechnicalTrainee: [ 5, -1 ]
             # Логистическая служба
-            LogisticsOfficer: [ 3, 3 ]
+            LogisticsOfficer: [ 2, 2 ]
             # Департамент продовольственного и санитарного обслуживания
             GastronomicSpecialist: [ 2, 2 ]
             BotanistPhytogeneticist: [ 2, 2 ]
