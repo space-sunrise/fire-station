@@ -76,7 +76,8 @@ public sealed partial class Scp106System
             BreakOnDamage = true,
         };
 
-        _doAfter.TryStartDoAfter(doAfterEventArgs);
+        if (!_doAfter.TryStartDoAfter(doAfterEventArgs))
+            return;
 
         _appearance.SetData(uid, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
     }

@@ -1,9 +1,6 @@
 ﻿using System.Linq;
-using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp106.Components;
-using Content.Shared.Body.Systems;
-using Content.Shared.Humanoid;
-using Content.Shared.Mobs.Systems;
+using Content.Shared.DoAfter;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
@@ -13,61 +10,42 @@ namespace Content.Shared._Scp.Scp106.Containment;
 public abstract class SharedScp106ContainmentSystem : EntitySystem
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly MobStateSystem _mobState  = default!;
-    [Dependency] private readonly SharedScpHelpersSystem _scpHelpers  = default!;
+    [Dependency] private readonly SharedDoAfterSystem _doAfter  = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
     {
-        SubscribeLocalEvent<Scp106BoneBreakerCellComponent, StartCollideEvent>(OnBoneBreakerCollide);
+        base.Initialize();
+
+        SubscribeLocalEvent<Scp106Component, Scp106RecontainmentAttemptEvent>(OnRecontainment);
 
         SubscribeLocalEvent<Scp106ContainmentCatwalkComponent, StartCollideEvent>(OnContainmentCatwalkCollideStart);
         SubscribeLocalEvent<Scp106ContainmentCatwalkComponent, EndCollideEvent>(OnContainmentCatwalkCollideEnd);
     }
 
-    private void OnBoneBreakerCollide(Entity<Scp106BoneBreakerCellComponent> ent, ref StartCollideEvent args)
+    /// <summary>
+    /// Отвечает за логику после начала реконтейма.
+    /// Отключает все текущие дуафтеры, чтобы оборвать текущие способности.
+    /// <remarks>
+    /// Логика телепорта находится в методе <see cref="TryContain"/>
+    /// </remarks>
+    /// </summary>
+    private void OnRecontainment(Entity<Scp106Component> ent, ref Scp106RecontainmentAttemptEvent args)
     {
-        BoneBreakerCanCollide(ent, ref args);
+        if (args.Cancelled)
+            return;
+
+        if (!TryComp<DoAfterComponent>(ent, out var doAfter))
+            return;
+
+        foreach (var doAfterId in doAfter.DoAfters.Values)
+        {
+            _doAfter.Cancel(doAfterId.Id);
+        }
     }
 
-    protected virtual bool BoneBreakerCanCollide(Entity<Scp106BoneBreakerCellComponent> ent, ref StartCollideEvent args)
-    {
-        if (!HasComp<HumanoidAppearanceComponent>(args.OtherEntity))
-            return false;
-
-        if (_mobState.IsDead(args.OtherEntity))
-            return false;
-
-        if (!TryContain())
-            return false;
-
-        _body.GibBody(args.OtherEntity);
-
-        // Аннонс в сервер-сайд системе
-
-        return true;
-    }
-
-    private bool TryContain()
-    {
-        if (!_scpHelpers.TryGetFirst<Scp106Component>(out var scp106))
-            return false;
-
-        if (!_scpHelpers.TryGetFirst<Scp106ContainmentCatwalkComponent>(out var chamberTile))
-            return false;
-
-        var xform = Transform(chamberTile.Value);
-
-        scp106.Value.Comp.IsContained = true;
-        Dirty(scp106.Value);
-
-        _transform.SetCoordinates(scp106.Value, xform.Coordinates);
-
-        return true;
-    }
+    #region Containment chamber stuff
 
     private void OnContainmentCatwalkCollideStart(Entity<Scp106ContainmentCatwalkComponent> ent, ref StartCollideEvent args)
     {
@@ -115,4 +93,15 @@ public abstract class SharedScp106ContainmentSystem : EntitySystem
             _physics.SetCollisionMask(args.OtherEntity, id, fixture, 18);
         }
     }
+
+    #endregion
 }
+
+/// <summary>
+/// Ивент, являющийся последней частью проверки на возможность реконтейма SCP-106.
+/// Позволяет отменить реконтейм извне системы реконтейма или подписаться на событие реконтейма.
+/// <remarks>
+/// Для подписки на событие реконтейма достаточно просто сделать проверку, что ивент не был отменен
+/// </remarks>
+/// </summary>
+public sealed class Scp106RecontainmentAttemptEvent : CancellableEntityEventArgs;

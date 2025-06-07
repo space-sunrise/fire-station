@@ -5,6 +5,7 @@
     mode: SnapgridCenter
   components:
   - type: Physics
+    bodyType: Static
     canCollide: true
   - type: Sprite
     sprite: _Scp/Structures/accelerating_catwalk.rsi
