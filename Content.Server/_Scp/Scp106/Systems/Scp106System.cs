@@ -51,15 +51,15 @@ public sealed partial class Scp106System : SharedScp106System
     private static readonly FixedPoint2 EssenceRate = 1f;
     private static readonly TimeSpan AddEssenceCooldown = TimeSpan.FromSeconds(1);
 
-    public const int HumansInBackroomsRequiredToAscent = 10;
+    private const string BackroomsCurrencyPrototype = "LifeEssence";
+    private static readonly FixedPoint2 BackroomsEssenceRate = 2f;
 
+    public const int HumansInBackroomsRequiredToAscent = 10;
     public static readonly EntProtoId AscentRule = "Scp106AscentRule";
 
     private static TimeSpan _defaultOnBackroomsStunTime = TimeSpan.FromSeconds(5f);
 
-    private readonly SoundSpecifier _sendBackroomsSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/onbackrooms.ogg");
-
-    private static readonly TimeSpan PortalSpawnRate = TimeSpan.FromSeconds(60f);
+    private static readonly SoundSpecifier SendBackroomsSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/onbackrooms.ogg");
 
     public override void Initialize()
     {
@@ -174,11 +174,7 @@ public sealed partial class Scp106System : SharedScp106System
 
         if (TryComp<Scp106Component>(target, out var scp106Component))
         {
-            var a = await GetTransferMark();
-
-            _transform.SetCoordinates(target, a);
-            _transform.AttachToGridOrMap(target);
-
+            TeleportToBackroomsInternal(target);
             Scp106FinishTeleportation(target, scp106Component.TeleportationDuration);
 
             return;
@@ -188,20 +184,25 @@ public sealed partial class Scp106System : SharedScp106System
         if (!HasComp<HumanoidAppearanceComponent>(target))
             return;
 
-        var mark = await GetTransferMark();
-
-        _transform.SetCoordinates(target, mark);
-        _transform.AttachToGridOrMap(target);
+        TeleportToBackroomsInternal(target);
 
         _stun.TryParalyze(target, _defaultOnBackroomsStunTime, true);
 
-        _audio.PlayEntity(_sendBackroomsSound, target, target);
+        _audio.PlayGlobal(SendBackroomsSound, target);
 
         if (scp106 != null)
         {
             AddCurrencyInStore(scp106.Value);
             CheckHumansInBackrooms();
         }
+    }
+
+    private async void TeleportToBackroomsInternal(EntityUid target)
+    {
+        var mark = await GetTransferMark();
+
+        _transform.SetCoordinates(target, mark);
+        _transform.AttachToGridOrMap(target);
     }
 
     private bool CheckHumansInBackrooms()
@@ -310,6 +311,6 @@ public sealed partial class Scp106System : SharedScp106System
 
     private void AddCurrencyInStore(EntityUid uid)
     {
-        _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { "LifeEssence", 2f }, }, uid);
+        _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { BackroomsCurrencyPrototype, BackroomsEssenceRate }, }, uid);
     }
 }
