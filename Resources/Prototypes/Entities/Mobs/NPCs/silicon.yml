@@ -282,9 +282,9 @@
   - type: Sprite
     sprite: Mobs/Silicon/Bots/cleanbot.rsi
     state: cleanbot
-  - type: Construction
-    graph: CleanBot
-    node: bot
+  # - type: Construction #Fire edit
+  #   graph: CleanBot
+  #   node: bot
   - type: Absorbent
     pickupAmount: 10
   - type: UseDelay

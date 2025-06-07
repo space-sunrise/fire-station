@@ -1,0 +1,12 @@
+- type: entity
+  parent: MobCleanBot
+  id: MobRoomba
+  name: roomba
+  description: The creep of automation now threatening janitors.
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Silicon/Bots/roomba.rsi
+    state: roomba
+  - type: Construction
+    graph: RoombaConstruct
+    node: bot
