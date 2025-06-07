@@ -1289,6 +1289,7 @@ FaxMachineCaptain: FaxMachineDirector
 
 # Остальное
 HoloprojectorSecurity: null
+SpawnMobCleanBot: SpawnMobRoomba
 
 # Fire added end
 
