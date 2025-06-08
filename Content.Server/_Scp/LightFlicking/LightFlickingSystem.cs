@@ -101,16 +101,11 @@ public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
 
     private bool TryStartFlicking(Entity<LightFlickingComponent> ent)
     {
-        if (!TryGetBulb(ent, out var bulb))
-            return false;
-
-        if (HasComp<MalfunctionLightComponent>(bulb))
+        if (!TryMalfunctionBulb(ent))
             return false;
 
         AddComp<ActiveLightFlickingComponent>(ent);
         Dirty(ent);
-
-        MalfunctionBulb(bulb.Value);
 
         return true;
     }
@@ -152,14 +147,19 @@ public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
         Dirty(ent);
     }
 
-    private void MalfunctionBulb(EntityUid lightUid)
+    private bool TryMalfunctionBulb(EntityUid lightUid)
     {
         if (!TryGetBulb(lightUid, out var bulb))
-            return;
+            return false;
+
+        if (HasComp<MalfunctionLightComponent>(bulb.Value))
+            return false;
 
         // TODO: Пофиксить, что после вставления лампы она принимает этот коричневый цвет, вместо нужного оригинального
         _bulb.SetColor(bulb.Value, MalfunctionBulbColor);
         AddComp<MalfunctionLightComponent>(bulb.Value);
+
+        return true;
     }
 
     #endregion

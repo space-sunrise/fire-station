@@ -1,8 +1,6 @@
-﻿using Robust.Shared.GameStates;
+﻿namespace Content.Server._Scp.LightFlicking;
 
-namespace Content.Shared._Scp.LightFlicking;
-
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class LightFlickingComponent : Component
 {
     [ViewVariables] public TimeSpan? NextFlickStartChanceTime = null;
