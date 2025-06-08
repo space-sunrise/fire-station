@@ -222,7 +222,7 @@ public abstract partial class SharedScp106System : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        _audio.PlayEntity(TeleportSound, uid, uid);
+        _audio.PlayPredicted(TeleportSound, uid, uid);
     }
 
     public bool TryDeductEssence(Entity<Scp106Component> ent, FixedPoint2 cost)
