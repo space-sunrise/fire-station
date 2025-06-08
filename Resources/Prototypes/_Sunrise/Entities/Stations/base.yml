@@ -63,19 +63,7 @@
 - type: entity
   id: BaseStationPlanetPrison
   abstract: true
-  components:
-  - type: PlanetPrisonStation
-    stations:
-    - PlanetPrison
-    biomes:
-    - PrisonGrasslands
-    - PrisonLowDesert
-    - PrisonSnow
-    shuttleWhitelist:
-      components:
-      - SecurityShuttle
-      - PrisonShuttle
-      - ErtShuttle
+  # Fire edit - нету такой карты больше. Я удалил в рамках оптимизации RAM
 
 - type: entity
   id: PrisonStationAlertLevels
