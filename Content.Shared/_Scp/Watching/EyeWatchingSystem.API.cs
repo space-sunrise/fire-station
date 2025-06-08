@@ -12,7 +12,7 @@ namespace Content.Shared._Scp.Watching;
 public sealed partial class EyeWatchingSystem
 {
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
@@ -195,8 +195,8 @@ public sealed partial class EyeWatchingSystem
         if (!Resolve(viewer, ref viewer.Comp))
             return float.MaxValue;
 
-        var targetWorldPosition = _transformSystem.GetMoverCoordinates(target.Owner);
-        var viewerWorldPosition = _transformSystem.GetMoverCoordinates(viewer.Owner);
+        var targetWorldPosition = _transform.GetMoverCoordinates(target.Owner);
+        var viewerWorldPosition = _transform.GetMoverCoordinates(viewer.Owner);
 
         var toTarget = (targetWorldPosition.Position - viewerWorldPosition.Position).Normalized(); // Вектор от target к SCP
         var viewerForward = viewer.Comp.LocalRotation.ToWorldVec(); // Направление взгляда target

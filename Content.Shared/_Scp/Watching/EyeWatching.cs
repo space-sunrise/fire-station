@@ -60,7 +60,8 @@ public sealed partial class EyeWatchingSystem : EntitySystem
             // Вызываем ивент на смотрящем, говорящие, что он действительно видит цель
             foreach (var viewer in viewers)
             {
-                var firstTime = !watchingComponent.AlreadyLookedAt.ContainsKey(viewer);
+                var netViewer = GetNetEntity(viewer);
+                var firstTime = !watchingComponent.AlreadyLookedAt.ContainsKey(netViewer);
 
                 // За подробностями какой ивент для чего навести мышку на название ивента
                 RaiseLocalEvent(viewer, new EntityLookedAtEvent((uid, watchingComponent), firstTime));
@@ -68,7 +69,7 @@ public sealed partial class EyeWatchingSystem : EntitySystem
 
                 // Добавляет смотрящего в список уже смотревших, чтобы позволить системам манипулировать этим
                 // И предотвращать эффект, если игрок смотрит не первый раз или не так давно
-                if (watchingComponent.AlreadyLookedAt.TryAdd(viewer, _timing.CurTime))
+                if (watchingComponent.AlreadyLookedAt.TryAdd(netViewer, _timing.CurTime))
                     Dirty(uid, watchingComponent);
             }
 
