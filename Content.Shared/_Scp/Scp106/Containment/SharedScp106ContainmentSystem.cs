@@ -1,12 +1,17 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.Body.Systems;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Prototypes;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.GameObjects;
+using Robust.Shared.IoC;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp106.Containment;
 
@@ -17,7 +22,9 @@ public abstract class SharedScp106ContainmentSystem : EntitySystem
     [Dependency] private readonly SharedBodySystem _body = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly MobStateSystem _mobState  = default!;
-    [Dependency] private readonly SharedScpHelpersSystem _scpHelpers  = default!;
+    [Dependency] private readonly SharedScpHelpersSystem _scpHelpers = default!;
+    [Dependency] private readonly DamageableSystem _damageableSystem = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -44,8 +51,15 @@ public abstract class SharedScp106ContainmentSystem : EntitySystem
         if (!TryContain())
             return false;
 
-        _body.GibBody(args.OtherEntity);
+        var damage = new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Blunt"), 30);
+        _damageableSystem.TryChangeDamage(args.OtherEntity, damage);
 
+        if (!_scpHelpers.TryGetFirst<Scp106ContainmentCatwalkComponent>(out var chamberTile))
+            return false;
+
+        var xform = Transform(chamberTile.Value);
+
+        _transform.SetCoordinates(args.OtherEntity, xform.Coordinates);
         // Аннонс в сервер-сайд системе
 
         return true;
