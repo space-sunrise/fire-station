@@ -166,7 +166,7 @@ public sealed partial class Scp106System : SharedScp106System
 
     #region Teleport and related code
 
-    public override async void SendToBackrooms(EntityUid target, Entity<Scp106Component>? scp106 = null)
+    public override async Task SendToBackrooms(EntityUid target, Entity<Scp106Component>? scp106 = null)
     {
         // You already here.
         if (HasComp<Scp106BackRoomMapComponent>(Transform(target).MapUid))
@@ -174,7 +174,7 @@ public sealed partial class Scp106System : SharedScp106System
 
         if (TryComp<Scp106Component>(target, out var scp106Component))
         {
-            TeleportToBackroomsInternal(target);
+            await TeleportToBackroomsInternal(target);
             Scp106FinishTeleportation(target, scp106Component.TeleportationDuration);
 
             return;
@@ -184,7 +184,7 @@ public sealed partial class Scp106System : SharedScp106System
         if (!HasComp<HumanoidAppearanceComponent>(target))
             return;
 
-        TeleportToBackroomsInternal(target);
+        await TeleportToBackroomsInternal(target);
 
         _stun.TryParalyze(target, _defaultOnBackroomsStunTime, true);
 
@@ -197,7 +197,7 @@ public sealed partial class Scp106System : SharedScp106System
         }
     }
 
-    private async void TeleportToBackroomsInternal(EntityUid target)
+    private async Task TeleportToBackroomsInternal(EntityUid target)
     {
         var mark = await GetTransferMark();
 

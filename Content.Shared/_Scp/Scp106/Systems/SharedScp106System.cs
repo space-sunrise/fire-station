@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Threading.Tasks;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Protection;
 using Content.Shared.Actions;
@@ -173,7 +174,7 @@ public abstract partial class SharedScp106System : EntitySystem
             return;
 
         DoTeleportEffects(ent);
-        SendToBackrooms(ent);
+        _ = SendToBackrooms(ent);
 
         args.Handled = true;
     }
@@ -210,7 +211,7 @@ public abstract partial class SharedScp106System : EntitySystem
             if (HasComp<Scp106ProtectionComponent>(entity))
                 continue;
 
-            SendToBackrooms(entity, ent);
+            _ = SendToBackrooms(entity, ent);
         }
     }
 
@@ -262,7 +263,10 @@ public abstract partial class SharedScp106System : EntitySystem
 
     #endregion
 
-    public virtual async void SendToBackrooms(EntityUid target, Entity<Scp106Component>? scp106 = null) {}
+    public virtual async Task SendToBackrooms(EntityUid target, Entity<Scp106Component>? scp106 = null)
+    {
+        await Task.CompletedTask;
+    }
 
     public virtual void SendToStation(EntityUid target) {}
 
