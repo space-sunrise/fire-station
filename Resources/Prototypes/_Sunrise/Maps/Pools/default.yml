@@ -3,33 +3,5 @@
 
 - type: gameMapPool
   id: SunriseMapPool
-  maps:
-  # НАИБОЛЕЕ ПРИОРИТЕТНЫЕ КАРТЫ
-  - SunriseDelta
-  - SunriseBox
-  - SunriseMeta
-  # МЕНЕЕ ВАЖНЫЕ:
-  - SunriseBarratry
-  - SunriseFland
-  - SunriseMarathon
-  - SunriseBagel
-  - SunrisePlasma
-  - SunrisePacked
-  - SunriseOasis
-  - SunriseConvex
-  - SunriseLoop
-  # НЕИГРАБЕЛЬНЫЕ:
-  #- SunriseReach
-  #- SunriseCorvaxGelta
-  #- SunriseRelic
-  # SUNRISE-TODO: Старые-новые карты
-  #- Glacier
-  #- Shoukou
-  #- Hammurabi
-  #- Lighthouse
-  #- Angle
-  #- Pebble
-  #- Ovni
-  #- Kettle
-  #- Tortuga
-  #- Arena
+  maps: # Fire edit - все санрайзовские карты удалены в качестве оптимизации использования RAM
+  - Empty
