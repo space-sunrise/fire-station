@@ -9,7 +9,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Scp.LightFlicking;
 
-public sealed class LightFlickingSystem : SharedLightFlickingSystem
+public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
 {
     [Dependency] private readonly PointLightSystem _pointLight = default!;
     [Dependency] private readonly LightBulbSystem _bulb = default!;
@@ -25,6 +25,8 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
     public override void Initialize()
     {
         base.Initialize();
+
+        InitializeCommands();
 
         SubscribeLocalEvent<LightFlickingComponent, MapInitEvent>(OnMapInit, after: [typeof(PoweredLightSystem)]);
         SubscribeLocalEvent<ActiveLightFlickingComponent, MapInitEvent>(OnActiveMapInit, after: [typeof(PoweredLightSystem)]);
@@ -84,12 +86,6 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
             if (Timing.CurTime <= flicking.NextFlickStartChanceTime)
                 continue;
 
-            if (!TryGetBulb(uid, out var bulb))
-                continue;
-
-            if (HasComp<MalfunctionLightComponent>(bulb))
-                continue;
-
             if (HasComp<ActiveLightFlickingComponent>(uid))
                 continue;
 
@@ -99,11 +95,24 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
                 continue;
             }
 
-            AddComp<ActiveLightFlickingComponent>(uid);
-            Dirty(uid, flicking);
-
-            MalfunctionBulb(uid);
+            TryStartFlicking((uid, flicking));
         }
+    }
+
+    private bool TryStartFlicking(Entity<LightFlickingComponent> ent)
+    {
+        if (!TryGetBulb(ent, out var bulb))
+            return false;
+
+        if (HasComp<MalfunctionLightComponent>(bulb))
+            return false;
+
+        AddComp<ActiveLightFlickingComponent>(ent);
+        Dirty(ent);
+
+        MalfunctionBulb(bulb.Value);
+
+        return true;
     }
 
     private bool TryGetBulb(EntityUid lightUid, [NotNullWhen(true)] out EntityUid? bulb)
@@ -150,7 +159,7 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
 
         // TODO: Пофиксить, что после вставления лампы она принимает этот коричневый цвет, вместо нужного оригинального
         _bulb.SetColor(bulb.Value, MalfunctionBulbColor);
-        EnsureComp<MalfunctionLightComponent>(bulb.Value);
+        AddComp<MalfunctionLightComponent>(bulb.Value);
     }
 
     #endregion
