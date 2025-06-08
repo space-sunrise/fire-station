@@ -69,8 +69,8 @@ public sealed partial class EyeWatchingSystem : EntitySystem
 
                 // Добавляет смотрящего в список уже смотревших, чтобы позволить системам манипулировать этим
                 // И предотвращать эффект, если игрок смотрит не первый раз или не так давно
-                if (watchingComponent.AlreadyLookedAt.TryAdd(netViewer, _timing.CurTime))
-                    Dirty(uid, watchingComponent);
+                watchingComponent.AlreadyLookedAt[netViewer] = _timing.CurTime;
+                Dirty(uid, watchingComponent);
             }
 
             SetNextTime(watchingComponent);
