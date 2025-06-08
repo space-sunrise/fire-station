@@ -1,36 +1,3 @@
 ﻿- type: lobbyBackground
   id: BlackRoom
   background: /Textures/_Scp/Lobby/Arts/black_room.png
-
-#- type: lobbyBackground
-#  id: PinkRoom
-#  background: /Textures/_Scp/Lobby/Arts/pink_room.png
-
-- type: lobbyBackground
-  id: WhiteRoom
-  background: /Textures/_Scp/Lobby/Arts/white_room.png
-
-- type: lobbyBackground
-  id: Mtf
-  background: /Textures/_Scp/Lobby/Arts/mtf.png
-
-#- type: lobbyBackground
-#  id: Dclass
-#  background: /Textures/_Scp/Lobby/Arts/dclass.png
-
-#- type: lobbyBackground
-#  id: ScpWarhammer
-#  background: /Textures/_Scp/Lobby/Arts/scp_warhammer.png
-
-- type: lobbyBackground
-  id: Scp096
-  background: /Textures/_Scp/Lobby/Arts/scp096.png
-
-# Новый год прошел
-#- type: lobbyBackground
-#  id: Scp173Winter
-#  background: /Textures/_Scp/Lobby/Arts/scp173_winter.png
-
-#- type: lobbyBackground
-#  id: Planet
-#  background: /Textures/_Scp/Lobby/Arts/planet.png
