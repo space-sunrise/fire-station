@@ -4,6 +4,7 @@ using Content.Shared.Light;
 using Robust.Client.Audio;
 using Robust.Client.GameObjects;
 using Robust.Shared.Audio;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.LightFlicking;
 
@@ -11,6 +12,7 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
 {
     [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private const float RadiusVariationPercentage = 0.2f;
     private const float EnergyVariationPercentage = 0.2f;
@@ -20,6 +22,9 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        if (!_timing.IsFirstTimePredicted)
+            return;
 
         var query = AllEntityQuery<ActiveLightFlickingComponent, PoweredLightVisualsComponent, SpriteComponent>();
 
