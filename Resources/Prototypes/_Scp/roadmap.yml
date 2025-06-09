@@ -2,101 +2,146 @@
   id: FireStationRoadmap
   fork: FIRE STATION
   versions:
-    2024:
-      name: 2024
+    launch-server:
+      name: roadmap-launch-server-name
       goals:
-        scp-173:
-          id: scp-173
-          name: SCP-173 «Статуя»
-          desc: Статуя, убивающая при потере зрительного контакта. Быстрая, бесшумная и смертельная, если моргнуть.
+        add-popular-scp:
+          id: add-popular-scp
+          name: roadmap-add-popular-scp-name
+          desc: roadmap-add-popular-scp-description
           state: Complete
-        scp-999:
-          id: scp-999
-          name: SCP-999 «Желейный Монстр»
-          desc: Дружелюбная студнеобразная сущность, вызывающая безграничную радость и смех. Способен снимать стресс и лечить депрессию.
+        create-first-map:
+          id: create-first-map
+          name: roadmap-create-first-map-name
+          desc: roadmap-create-first-map-description
           state: Complete
-        scp-096:
-          id: scp-096
-          name: SCP-096 «Скромник»
-          desc: Чрезвычайно опасное существо, реагирующее на взгляд. Если кто-то увидит его лицо - жертву ничто не спасёт.
+        basic-research-system:
+          id: basic-research-system
+          name: roadmap-basic-research-system-name
+          desc: roadmap-basic-research-system-description
           state: Complete
-        scp-939:
-          id: scp-939
-          name: SCP-939 «Со множеством голосов»
-          desc: Хищные существа без глаз, привлекающие жертв голосами предыдущих жертв. Идеальны для скрытных атак в темноте.
-          state: Complete
-        scp-106:
-          id: scp-106
-          name: SCP-106 «Старик»
-          desc: Старый, гнилой монстр, появляющийся из коррозионных порталов. Охотится на жертвы с садистской жестокостью.
-          state: Complete
-        scp-049:
-          id: scp-049
-          name: SCP-049 «Чумной Доктор»
-          desc: Загадочный гуманоид в мантии, считающий себя врачом. Его прикосновение смертельно, а цель - «излечить» человечество.
-          state: Complete
-    2025:
-      name: 2025
+    big-update-one:
+      name: roadmap-big-update-one-name
       goals:
-        scp-082:
-          id: scp-082
-          name: SCP-082 «Каннибал Фернанд»
-          desc: Гигант с изысканными манерами и вкусом к человеческой плоти. Любит рассказывать истории перед тем, как устроить пир.
-          state: InProgress
-        scp-rebalance:
-          id: scp-rebalance
-          name: Ребаланс SCP
-          desc: Сцп объекты будут полностью перебалансированы. Слабые и скучные объекты станут сильнее и веселее, слишком сильные наоборот перестанут быть таковыми. Мощность сцп будет рассчитана из их класса содержания - Безопасного, Евклид или Кетер
-          state: InProgress
-        access:
-          id: access
-          name: Карты доступа по уровням
-          desc: Карты доступа будут сделаны по уровням, от 0го до 5го, прямо как в лоре
-          state: InProgress
-        sounds:
-          id: sounds
-          name: Большой апдейт звуков и амбиентов
-          desc: Добавление новых атмосферных амбиентов, музыки, переделка основных звуков на более качественные, темные, приглушенные для соответствия атмосфере сцп. Новый подход к звуковому дизайну позволит сильно улучшить гнетущую атмосферу комплекса SCP
-          state: Complete
         foundation-map:
           id: foundation-map
-          name: Новая карта - комплекс
-          desc: Будет доделана новая карта - комплекс, полностью новая и совершенно непохожая на станцию.
+          name: roadmap-foundation-map-name
+          desc: roadmap-foundation-map-description
           state: Complete
-        rules:
-          id: rules
-          name: Переделка правил в механики
-          desc: Большинство правил связанных с новыми объектами или ролями будут переработаны под механики, которые сами будут позволять игроку что-то делать, а что-то не делать. Игра будет следить за игрокам, а не администрация.
-          state: InProgress
+        ambient-sound-big-update:
+          id: ambient-sound-big-update
+          name: roadmap-ambient-sound-big-update-name
+          desc: roadmap-ambient-sound-big-update-description
+          state: Complete
+        scp096-target-pointer:
+          id: scp096-target-pointer
+          name: roadmap-scp096-target-pointer-name
+          desc: roadmap-scp096-target-pointer-description
+          state: Complete
+        scp106-upgrade:
+          id: scp106-upgrade
+          name: roadmap-scp106-upgrade-name
+          desc: roadmap-scp106-upgrade-description
+          state: Complete
+    between-1-2:
+      name: roadmap-between
+      goals:
+        ui-recolor:
+          id: ui-recolor
+          name: roadmap-ui-recolor-name
+          desc: roadmap-ui-recolor-description
+          state: Complete
+        bugfixes:
+          id: bugfixes
+          name: roadmap-bugfixes-name
+          desc: roadmap-bugfixes-description
+          state: Complete
+    big-update-two:
+      name: roadmap-big-update-two-name
+      goals:
+        big-resprite:
+          id: big-resprite
+          name: roadmap-big-resprite-name
+          desc: roadmap-big-resprite-description
+          state: Complete
         new-roles:
           id: new-roles
-          name: Переработка ролей под фонд SCP
-          desc: Все роли будут переработаны под работников фонда SCP, получат уникальные спрайты экипировки, новые департаменты и систему взаимодействия друг с другом.
+          name: roadmap-new-roles-name
+          desc: roadmap-new-roles-description
+          state: Complete
+        scp106-rework:
+          id: scp106-rework
+          name: roadmap-scp106-rework-name
+          desc: roadmap-scp106-rework-description
+          state: Complete
+        low-pop-map:
+          id: scp106-rework
+          name: roadmap-low-pop-map-name
+          desc: roadmap-low-pop-map-description
+          state: Complete
+        shaders:
+          id: shaders
+          name: roadmap-shaders-name
+          desc: roadmap-shaders-description
+          state: Complete
+        echo:
+          id: echo
+          name: roadmap-echo-name
+          desc: roadmap-echo-description
+          state: Complete
+    between-2-3:
+      name: roadmap-between
+      goals:
+        blinking-rework:
+          id: blinking-rework
+          name: roadmap-blinking-rework-name
+          desc: roadmap-blinking-rework-description
+          state: Complete
+        fear:
+          id: fear
+          name: roadmap-fear-name
+          desc: roadmap-fear-description
           state: InProgress
-        resprite:
-          id: resprite
-          name: Большой респрайт
-          desc: Респрайт всех основных объектов комплекса для достижения максимального погружения за счет единого визуального стиля подходящего для тяжелой атмосферы комплекса взамен пластиковой и ненастоящей, игрушечной атмосферы обычной станции
+        life-cost:
+          id: life-cost
+          name: roadmap-life-cost-name
+          desc: roadmap-life-cost-description
+          state: InProgress
+        new-accesses:
+          id: new-accesses
+          name: roadmap-new-accesses-name
+          desc: roadmap-new-accesses-description
+          state: InProgress
+    big-update-three:
+      name: roadmap-big-update-three-name
+      goals:
+        traitors:
+          id: traitors
+          name: roadmap-traitors-name
+          desc: roadmap-traitors-description
           state: Planned
-        mtf:
-          id: mtf
-          name: Вызов отряда МОГ
-          desc: Возможность самостоятельного вызова отряда МОГ для восстановления условий содержания SCP. Снаряжение и механики отряда будут полностью переработаны
+        assault:
+          id: assault
+          name: roadmap-assault-name
+          desc: roadmap-assault-description
           state: Planned
-        chaos:
-          id: chaos
-          name: Повстанцы хаоса
-          desc: Будут добавлены игровые режимы, связанные с проникновением в комплекс повстанцев хаоса. Как полноценный рейд с перестрелками, так и скрытное проникновение.
+        scp082:
+          id: scp082
+          name: roadmap-scp082-name
+          desc: roadmap-scp082-description
           state: Planned
-        gamemodes:
-          id: gamemodes
-          name: Переработка стандартных игровых режимов
-          desc: Игровые режимы будут полностью переработаны под лор SCP. Например революция превратится в бунт класса Д, с уникальными игровыми механиками для этого, вроде разных вариантов развития событий - тихого подкопа, агрессивной атаки или еще чего.
+        scp062-fr:
+          id: scp062-fr
+          name: roadmap-scp062-fr-name
+          desc: roadmap-scp062-fr-description
           state: Planned
-        scpsl:
-          id: scpsl
-          name: Режим SCP SL
-          desc: Уникальный игровой режим взятый с одноименной игры. Персонал стартует во время массово нарушения условий содержания в полностью процедурно генерируемом комплексе. Задача игроков - выжить, сбежав из комплекса. Прибывающие отряды МОГ или Повстанцев хаоса помогут или помешают этому.
+        community-scp:
+          id: community-scp
+          name: roadmap-community-scp-name
+          desc: roadmap-community-scp-description
           state: Planned
-    2026:
-      name: 2026
+        auto-mtf:
+          id: auto-mtf
+          name: roadmap-auto-mtf-name
+          desc: roadmap-auto-mtf-description
+          state: Planned
