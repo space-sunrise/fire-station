@@ -238,7 +238,7 @@
   id: JobLeadTechnicalSpecialist
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-    state: MedicalSpecialist
+    state: LeadTechnicalSpecialist
 
 - type: jobIcon
   parent: JobIcon
