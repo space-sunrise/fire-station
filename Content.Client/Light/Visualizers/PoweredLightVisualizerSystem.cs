@@ -120,6 +120,7 @@ public sealed class PoweredLightVisualizerSystem : VisualizerSystem<PoweredLight
             }
         };
 
+        /* Fire edit - эта параша не выключается, когда ентити пропадает из ПВС рейнжа
         if (comp.BlinkingSound != null)
         {
             var sound = _audio.ResolveSound(comp.BlinkingSound);
@@ -131,6 +132,7 @@ public sealed class PoweredLightVisualizerSystem : VisualizerSystem<PoweredLight
                 }
             });
         }
+        */
 
         return blinkingAnim;
     }

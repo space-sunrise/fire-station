@@ -30,7 +30,7 @@ public sealed class EchoEffectSystem : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        if (!Exists(sound))
+        if (TerminatingOrDeleted(sound) || Paused(sound))
             return;
 
         // Фоновая музыка не должна подвергаться эффектам эха
