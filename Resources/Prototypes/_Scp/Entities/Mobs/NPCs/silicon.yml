@@ -10,3 +10,10 @@
   - type: Construction
     graph: RoombaConstruct
     node: bot
+  - type: FootprintAreaCleaner
+  - type: HTN
+    rootTask:
+      task: CleanbotCompound
+    blackboard:
+      MeleeRange: !type:Single
+        0.1
