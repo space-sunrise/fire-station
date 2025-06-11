@@ -3,7 +3,7 @@
   name: tiles-cult-floor
   sprite: /Textures/_Sunrise/BloodCult/Tiles/cult_tile.rsi/cult.png
   variants: 1
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   footstepSounds:
     collection: FootstepFloor

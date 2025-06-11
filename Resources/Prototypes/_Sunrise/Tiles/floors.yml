@@ -2,7 +2,7 @@
   id: FloorLightFancyWood
   name: tiles-light-fancy-wood
   sprite: /Textures/_Sunrise/Tiles/light-fancy-wood.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:

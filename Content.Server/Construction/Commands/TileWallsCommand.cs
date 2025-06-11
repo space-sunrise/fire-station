@@ -21,7 +21,7 @@ public sealed class TileWallsCommand : IConsoleCommand
     public string Help => $"Usage: {Command} <gridId> | {Command}";
 
     [ValidatePrototypeId<ContentTileDefinition>]
-    public const string TilePrototypeId = "Plating";
+    public const string TilePrototypeId = "ScpPlating"; // Fire edit
 
     [ValidatePrototypeId<TagPrototype>]
     public const string WallTag = "Wall";
