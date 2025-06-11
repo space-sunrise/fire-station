@@ -1290,5 +1290,10 @@ FaxMachineCaptain: FaxMachineDirector
 # Остальное
 HoloprojectorSecurity: null
 
+FSCatwalkSteel: ScpCatwalkSteel
+FSCatwalkDark: ScpCatwalkDark
+FSCatwalkWhite: ScpCatwalkWhite
+Catwalk: ScpCatwalkSteel
+
 # Fire added end
 
