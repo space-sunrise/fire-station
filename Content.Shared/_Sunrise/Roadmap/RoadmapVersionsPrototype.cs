@@ -11,36 +11,25 @@ public sealed class RoadmapVersionsPrototype : IPrototype
     public string Fork { get; set; } = "SUNRISE";
 
     [DataField]
-    public HashSet<RoadmapGroup> Versions = [];
+    public List<RoadmapGroup> Versions = [];
 }
 
 [DataDefinition]
-[Serializable, NetSerializable]
-public sealed partial class RoadmapGroup
+public partial record struct RoadmapGroup
 {
-    [DataField]
-    public string Name { get; set; } = string.Empty;
+    [DataField] public string Name;
 
-    [DataField]
-    public int Year { get; set; } = 2024;
-
-    [DataField]
-    public HashSet<RoadmapGoal> Goals = [];
+    [DataField] public List<RoadmapGoal> Goals = [];
 }
 
 [DataDefinition]
-[Serializable, NetSerializable]
-public sealed partial class RoadmapGoal
+public partial record struct RoadmapGoal
 {
+    [DataField] public string Name;
 
-    [DataField]
-    public string Name { get; set; } = string.Empty;
+    [DataField] public string Desc;
 
-    [DataField]
-    public string Desc { get; set; } = string.Empty;
-
-    [DataField]
-    public RoadmapItemState State { get; set; } = RoadmapItemState.Planned;
+    [DataField] public RoadmapItemState State = RoadmapItemState.Planned;
 }
 
 [Serializable, NetSerializable]
@@ -49,5 +38,5 @@ public enum RoadmapItemState
     Planned,
     InProgress,
     Partial,
-    Complete
+    Complete,
 }

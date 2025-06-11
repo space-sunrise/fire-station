@@ -38,46 +38,58 @@ public sealed partial class Roadmap : DefaultWindow
 
         foreach (var data in roadmapVersions.Versions)
         {
-            var column = new BoxContainer
-            {
-                Orientation = BoxContainer.LayoutOrientation.Vertical,
-                HorizontalExpand = true,
-                VerticalExpand = true,
-                Margin = new Thickness(0, 0, 10, 0),
-            };
-
-            var nameLabel = new Label
-            {
-                Text = _loc.GetString(data.Name),
-                StyleClasses = { "LabelHeadingBigger" },
-                HorizontalAlignment = HAlignment.Center,
-                HorizontalExpand = true,
-                FontColorOverride = Color.FromHex("#ffffff"),
-                Margin = new Thickness(0, 0, 0, 10),
-            };
-
+            var column = CreateVersionColumn(data.Name);
             var targetColumn = new BoxContainer
             {
                 Orientation = BoxContainer.LayoutOrientation.Vertical,
                 Margin = new Thickness(0, 0, 10, 0),
             };
 
-            column.AddChild(nameLabel);
             column.AddChild(targetColumn);
 
-            foreach (var goal in data.Goals)
-            {
-                var roadmapItem = new RoadmapItem
-                {
-                    HeaderText = _loc.GetString(goal.Name),
-                    Text = _loc.GetString(goal.Desc),
-                    ItemState = goal.State,
-                };
-
-                targetColumn.AddChild(roadmapItem);
-            }
+            GenerateGoals(data.Goals, targetColumn);
 
             MainBox.AddChild(column);
+        }
+    }
+
+    private BoxContainer CreateVersionColumn(string labelName)
+    {
+        var column = new BoxContainer
+        {
+            Orientation = BoxContainer.LayoutOrientation.Vertical,
+            HorizontalExpand = true,
+            VerticalExpand = true,
+            Margin = new Thickness(0, 0, 10, 0),
+        };
+
+        var nameLabel = new Label
+        {
+            Text = _loc.GetString(labelName),
+            StyleClasses = { "LabelHeadingBigger" },
+            HorizontalAlignment = HAlignment.Center,
+            HorizontalExpand = true,
+            FontColorOverride = Color.FromHex("#ffffff"),
+            Margin = new Thickness(0, 0, 0, 10),
+        };
+
+        column.AddChild(nameLabel);
+
+        return column;
+    }
+
+    private void GenerateGoals(IReadOnlyList<RoadmapGoal>goals, BoxContainer targetColumn)
+    {
+        foreach (var goal in goals)
+        {
+            var roadmapItem = new RoadmapItem
+            {
+                HeaderText = _loc.GetString(goal.Name),
+                Text = _loc.GetString(goal.Desc),
+                ItemState = goal.State,
+            };
+
+            targetColumn.AddChild(roadmapItem);
         }
     }
 }
