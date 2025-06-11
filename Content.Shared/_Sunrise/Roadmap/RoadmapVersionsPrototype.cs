@@ -11,7 +11,7 @@ public sealed class RoadmapVersionsPrototype : IPrototype
     public string Fork { get; set; } = "SUNRISE";
 
     [DataField]
-    public Dictionary<string, RoadmapGroup> Versions = new();
+    public HashSet<RoadmapGroup> Versions = [];
 }
 
 [DataDefinition]
@@ -25,15 +25,13 @@ public sealed partial class RoadmapGroup
     public int Year { get; set; } = 2024;
 
     [DataField]
-    public Dictionary<string, RoadmapGoal> Goals = new();
+    public HashSet<RoadmapGoal> Goals = [];
 }
 
 [DataDefinition]
 [Serializable, NetSerializable]
 public sealed partial class RoadmapGoal
 {
-    [DataField]
-    public string Id { get; set; } = string.Empty; //Хуйня нужная для локализации, не трогать
 
     [DataField]
     public string Name { get; set; } = string.Empty;

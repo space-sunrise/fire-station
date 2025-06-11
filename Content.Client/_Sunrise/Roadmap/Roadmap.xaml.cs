@@ -37,7 +37,7 @@ public sealed partial class Roadmap : DefaultWindow
 
         MainBox.RemoveAllChildren();
 
-        foreach (var data in roadmapVersions.Versions.Values)
+        foreach (var data in roadmapVersions.Versions)
         {
             var column = new BoxContainer
             {
@@ -66,7 +66,7 @@ public sealed partial class Roadmap : DefaultWindow
             column.AddChild(nameLabel);
             column.AddChild(targetColumn);
 
-            foreach (var goal in data.Goals.Values)
+            foreach (var goal in data.Goals)
             {
                 var roadmapItem = new RoadmapItem
                 {
