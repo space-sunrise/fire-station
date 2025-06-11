@@ -3,7 +3,7 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._Sunrise.Roadmap;
 
-[Prototype("roadmapVersions")]
+[Prototype]
 public sealed class RoadmapVersionsPrototype : IPrototype
 {
     [IdDataField] public string ID { get; } = default!;
@@ -34,7 +34,7 @@ public sealed partial class RoadmapGoal
 {
     [DataField]
     public string Id { get; set; } = string.Empty; //Хуйня нужная для локализации, не трогать
-    
+
     [DataField]
     public string Name { get; set; } = string.Empty;
 
