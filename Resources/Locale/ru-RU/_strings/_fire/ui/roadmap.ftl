@@ -1,6 +1,6 @@
 ﻿roadmap-launch-server-name = Запуск сервера
 roadmap-add-popular-scp-name = Добавление популярных SCP объектов
-roadmap-add-popular-scp-description = Добавление ставших культовыми SCP объектов: SCP-173, SCP-096, SCP-096, SCP-939, SCP-106, SCP-999
+roadmap-add-popular-scp-description = Добавление ставших культовыми SCP объектов: SCP-173, SCP-049, SCP-096, SCP-939, SCP-106, SCP-999
 roadmap-create-first-map-name = Создание карты SCP Delta
 roadmap-create-first-map-description = Создание первой играбельной карты для билда Fire Station. Модифицированная Delta Station, включающая исследований SCP внутри Научного отдела станции
 roadmap-basic-research-system-name = Базовая система исследований SCP объектов
