@@ -2,115 +2,90 @@
   id: FireStationRoadmap
   fork: FIRE STATION
   versions:
-    - name: roadmap-launch-server-name
-      goals:
-      - id: add-popular-scp
-        name: roadmap-add-popular-scp-name
-        desc: roadmap-add-popular-scp-description
-        state: Complete
-      - id: create-first-map
-        name: roadmap-create-first-map-name
-        desc: roadmap-create-first-map-description
-        state: Complete
-      - id: basic-research-system
-        name: roadmap-basic-research-system-name
-        desc: roadmap-basic-research-system-description
-        state: Complete
-    - name: roadmap-big-update-one-name
-      goals:
-      - id: foundation-map
-        name: roadmap-foundation-map-name
-        desc: roadmap-foundation-map-description
-        state: Complete
-      - id: ambient-sound-big-update
-        name: roadmap-ambient-sound-big-update-name
-        desc: roadmap-ambient-sound-big-update-description
-        state: Complete
-      - id: scp096-target-pointer
-        name: roadmap-scp096-target-pointer-name
-        desc: roadmap-scp096-target-pointer-description
-        state: Complete
-      - id: scp106-upgrade
-        name: roadmap-scp106-upgrade-name
-        desc: roadmap-scp106-upgrade-description
-        state: Complete
-    - name: roadmap-between
-      goals:
-      - id: ui-recolor
-        name: roadmap-ui-recolor-name
-        desc: roadmap-ui-recolor-description
-        state: Complete
-      - id: bugfixes
-        name: roadmap-bugfixes-name
-        desc: roadmap-bugfixes-description
-        state: Complete
-    - name: roadmap-big-update-two-name
-      goals:
-      - id: big-resprite
-        name: roadmap-big-resprite-name
-        desc: roadmap-big-resprite-description
-        state: Complete
-      - id: new-roles
-        name: roadmap-new-roles-name
-        desc: roadmap-new-roles-description
-        state: Complete
-      - id: scp106-rework
-        name: roadmap-scp106-rework-name
-        desc: roadmap-scp106-rework-description
-        state: Complete
-      - id: low-pop-map
-        name: roadmap-low-pop-map-name
-        desc: roadmap-low-pop-map-description
-        state: Complete
-      - id: shaders
-        name: roadmap-shaders-name
-        desc: roadmap-shaders-description
-        state: Complete
-      - id: echo
-        name: roadmap-echo-name
-        desc: roadmap-echo-description
-        state: Complete
-    - name: roadmap-between
-      goals:
-      - id: blinking-rework
-        name: roadmap-blinking-rework-name
-        desc: roadmap-blinking-rework-description
-        state: Complete
-      - id: fear
-        name: roadmap-fear-name
-        desc: roadmap-fear-description
-        state: InProgress
-      - id: life-cost
-        name: roadmap-life-cost-name
-        desc: roadmap-life-cost-description
-        state: InProgress
-      - id: new-accesses
-        name: roadmap-new-accesses-name
-        desc: roadmap-new-accesses-description
-        state: InProgress
-    - name: roadmap-big-update-three-name
-      goals:
-      - id: traitors
-        name: roadmap-traitors-name
-        desc: roadmap-traitors-description
-        state: Planned
-      - id: assault
-        name: roadmap-assault-name
-        desc: roadmap-assault-description
-        state: Planned
-      - id: scp082
-        name: roadmap-scp082-name
-        desc: roadmap-scp082-description
-        state: Planned
-      - id: scp062-fr
-        name: roadmap-scp062-fr-name
-        desc: roadmap-scp062-fr-description
-        state: Planned
-      - id: community-scp
-        name: roadmap-community-scp-name
-        desc: roadmap-community-scp-description
-        state: Planned
-      - id: auto-mtf
-        name: roadmap-auto-mtf-name
-        desc: roadmap-auto-mtf-description
-        state: Planned
+  - name: roadmap-launch-server-name
+    goals:
+    - name: roadmap-add-popular-scp-name
+      desc: roadmap-add-popular-scp-description
+      state: Complete
+    - name: roadmap-create-first-map-name
+      desc: roadmap-create-first-map-description
+      state: Complete
+    - name: roadmap-basic-research-system-name
+      desc: roadmap-basic-research-system-description
+      state: Complete
+  - name: roadmap-big-update-one-name
+    goals:
+    - name: roadmap-foundation-map-name
+      desc: roadmap-foundation-map-description
+      state: Complete
+    - name: roadmap-ambient-sound-big-update-name
+      desc: roadmap-ambient-sound-big-update-description
+      state: Complete
+    - name: roadmap-scp096-target-pointer-name
+      desc: roadmap-scp096-target-pointer-description
+      state: Complete
+    - name: roadmap-scp106-upgrade-name
+      desc: roadmap-scp106-upgrade-description
+      state: Complete
+  - name: roadmap-between
+    goals:
+    - name: roadmap-ui-recolor-name
+      desc: roadmap-ui-recolor-description
+      state: Complete
+    - name: roadmap-bugfixes-name
+      desc: roadmap-bugfixes-description
+      state: Complete
+  - name: roadmap-big-update-two-name
+    goals:
+    - name: roadmap-big-resprite-name
+      desc: roadmap-big-resprite-description
+      state: Complete
+    - name: roadmap-new-roles-name
+      desc: roadmap-new-roles-description
+      state: Complete
+    - name: roadmap-scp106-rework-name
+      desc: roadmap-scp106-rework-description
+      state: Complete
+    - name: roadmap-low-pop-map-name
+      desc: roadmap-low-pop-map-description
+      state: Complete
+    - name: roadmap-shaders-name
+      desc: roadmap-shaders-description
+      state: Complete
+    - name: roadmap-echo-name
+      desc: roadmap-echo-description
+      state: Complete
+  - name: roadmap-between
+    goals:
+    - name: roadmap-blinking-rework-name
+      desc: roadmap-blinking-rework-description
+      state: Complete
+    - name: roadmap-fear-name
+      desc: roadmap-fear-description
+      state: InProgress
+    - name: roadmap-life-cost-name
+      desc: roadmap-life-cost-description
+      state: InProgress
+    - name: roadmap-new-accesses-name
+      desc: roadmap-new-accesses-description
+      state: InProgress
+  - name: roadmap-big-update-three-name
+    goals:
+    - name: roadmap-traitors-name
+      desc: roadmap-traitors-description
+      state: Planned
+    - name: roadmap-assault-name
+      desc: roadmap-assault-description
+      state: Planned
+    - name: roadmap-scp082-name
+      desc: roadmap-scp082-description
+      state: Planned
+    - name: roadmap-scp062-fr-name
+      desc: roadmap-scp062-fr-description
+      state: Planned
+    - name: roadmap-community-scp-name
+      desc: roadmap-community-scp-description
+      state: Planned
+    - name: roadmap-auto-mtf-name
+      desc: roadmap-auto-mtf-description
+      state: Planned
