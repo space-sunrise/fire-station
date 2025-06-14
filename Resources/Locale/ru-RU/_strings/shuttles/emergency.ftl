@@ -19,7 +19,7 @@ emergency-shuttle-left = Эвакуационный шаттл покинул к
 emergency-shuttle-launch-time = Эвакуационный шаттл будет запущен через { $consoleAccumulator } секунд.
 emergency-shuttle-docked = Эвакуационный шаттл пристыковался к станции, направление: { $direction }. Он улетит через { $time } секунд.
 emergency-shuttle-good-luck = Эвакуационный шаттл не может найти ближайшее место приземления. Удачи.
-emergency-shuttle-nearby = Эвакуационный шаттл не может найти подходящий стыковочный шлюз. Он высадился недалеко от комплекса, направление: { $direction }.
+emergency-shuttle-nearby = Эвакуационный шаттл не может найти подходящий стыковочный шлюз, поэтому высаживается недалеко от комплекса, направление: { $direction }.
 emergency-shuttle-extended = Время запуска { " " } было продлено из-за неудобных обстоятельств.
 # Emergency shuttle console popup / announcement
 emergency-shuttle-console-no-early-launches = Досрочный запуск отключён
