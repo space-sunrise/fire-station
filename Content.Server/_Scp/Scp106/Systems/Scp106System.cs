@@ -82,6 +82,7 @@ public sealed partial class Scp106System : SharedScp106System
         #region Phantom
 
         SubscribeLocalEvent<Scp106PhantomComponent, MobStateChangedEvent>(OnMobStateChangedEvent);
+        SubscribeLocalEvent<Scp106PhantomComponent, EntityTerminatingEvent>(OnPhantomShutdown);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseActionEvent>(OnScp106ReverseActionEvent);
 
         #endregion
