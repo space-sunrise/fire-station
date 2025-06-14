@@ -3,7 +3,7 @@ objective-condition-doorjack-title =
         [one] дверь
         [few] двери
        *[other] дверей
-    } на станции.
+    } в комплексе.
 objective-condition-doorjack-description =
     Ваши перчатки могут взламывать шлюзы. Сделайте это с { $count } { $count ->
         [one] дверью
