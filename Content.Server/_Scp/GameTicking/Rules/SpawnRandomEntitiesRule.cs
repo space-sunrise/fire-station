@@ -1,4 +1,5 @@
 ﻿using Content.Server._Scp.GameTicking.Rules.Components;
+using Content.Server._Sunrise.Helpers;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Events;
@@ -11,6 +12,7 @@ namespace Content.Server._Scp.GameTicking.Rules;
 public sealed class SpawnRandomEntitiesRule : StationEventSystem<SpawnRandomEntitiesRuleComponent>
 {
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly SunriseHelpersSystem _helpers = default!;
 
     protected override void Started(EntityUid uid, SpawnRandomEntitiesRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
@@ -29,7 +31,7 @@ public sealed class SpawnRandomEntitiesRule : StationEventSystem<SpawnRandomEnti
 
         for (var i = 0; i < trashTiles; i++)
         {
-            if (!TryFindRandomTileOnStation((station.Value, stationDataComponent), out _, out _, out var coords))
+            if (!_helpers.TryFindRandomTileOnStation((station.Value, stationDataComponent), out _, out _, out var coords))
                 continue;
 
             var ents = EntitySpawnCollection.GetSpawns(component.Entities, RobustRandom);
