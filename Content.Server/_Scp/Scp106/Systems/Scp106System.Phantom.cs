@@ -100,14 +100,9 @@ public sealed partial class Scp106System
 
     private bool TryAshAndReturnToBody(Entity<Scp106PhantomComponent> ent)
     {
-        if (!TryReturnToBody(ent))
-        {
-            PhantomAsh(ent);
-            return false;
-        }
-
+        var returned = TryReturnToBody(ent);
         PhantomAsh(ent);
-        return true;
+        return returned;
     }
 
     private void PhantomAsh(EntityUid uid)
