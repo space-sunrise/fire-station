@@ -7,9 +7,6 @@
   - type: Sprite
     sprite: _Scp/Mobs/Silicon/Bots/roomba.rsi
     state: roomba
-  - type: Construction
-    graph: RoombaConstruct
-    node: bot
   - type: FootprintAreaCleaner
   - type: HTN
     rootTask:
@@ -17,3 +14,15 @@
     blackboard:
       MeleeRange: !type:Single
         0.1
+  - type: AmbientSound
+    enabled: true
+    volume: -7
+    range: 5
+    sound:
+      path: /Audio/_Sunrise/Effects/Flying/medibot.ogg
+  - type: FootstepModifier # Из-за какого-то бага не работает
+    footstepSoundCollection:
+      collection: FootstepBorg
+  - type: Construction
+    graph: RoombaConstruct
+    node: bot
