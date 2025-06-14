@@ -10,6 +10,11 @@
   description: "An always powered light."
   suffix: Always powered
   components:
+  # Sunrise start
+  - type: DamageOverlay
+    damagePopupType: SmallFloating
+    isStructure: true
+  # Sunrise end
   - type: MeleeSound
     soundGroups:
       Brute:
@@ -518,9 +523,9 @@
   - type: AmbientOnPowered
   - type: AmbientSound
     volume: -10
-    range: 3
+    range: 10
     sound:
-      path: /Audio/_Scp/Ambient/Emergency/alarm.ogg
+      path: /Audio/_Scp/Ambience/Emergency/alarm.ogg
   # Fire edit end
   placement:
     mode: SnapgridCenter

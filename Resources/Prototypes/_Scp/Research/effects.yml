@@ -133,7 +133,7 @@
   description: artifact-effect-hint-data-deleted
   components:
   - type: XAEPolymorph
-    polymorphPrototypeName: ScpEffectChair
+    polymorphPrototypeName: SunriseEffectChair
 
 - type: entity
   id: ScpEffectPolyWatermelon
@@ -141,7 +141,7 @@
   description: artifact-effect-hint-data-deleted
   components:
   - type: XAEPolymorph
-    polymorphPrototypeName: ScpEffectWatermelon
+    polymorphPrototypeName: SunriseEffectWatermelon
 
 - type: entity
   id: ScpEffectPolyAppendix
@@ -149,7 +149,7 @@
   description: artifact-effect-hint-data-deleted
   components:
   - type: XAEPolymorph
-    polymorphPrototypeName: ScpEffectAppendix
+    polymorphPrototypeName: SunriseEffectAppendix
 
 - type: entity
   id: ScpEffectPolyDisposal
@@ -157,7 +157,7 @@
   description: artifact-effect-hint-data-deleted
   components:
   - type: XAEPolymorph
-    polymorphPrototypeName: ScpEffectDisposal
+    polymorphPrototypeName: SunriseEffectDisposal
 
 - type: entity
   id: ScpEffectPolyTable
@@ -165,36 +165,18 @@
   description: artifact-effect-hint-data-deleted
   components:
   - type: XAEPolymorph
-    polymorphPrototypeName: ScpEffectTable
+    polymorphPrototypeName: SunriseEffectTable
 
 - type: entity
   id: ScpEffectSwap
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
   components:
-  - type: ArtifactScpSwap
-
-- type: entity
-  id: ScpEffectCreateArtifacts
-  parent: BaseScpArtifactEffect
-  description: artifact-effect-hint-data-deleted
-  components:
-  - type: ArtifactCreateRandomArtifacts
-
-- type: entity
-  id: ScpEffectRandomTransformation
-  parent: BaseScpArtifactEffect
-  description: artifact-effect-hint-data-deleted
-  components:
-  - type: ArtifactRandomTransformation
-    prototypeBlacklist:
-    - Singularity
-    - TeslaEnergyBall
-    - TeslaMiniEnergyBall
-    categoryBlacklist:
-    - HideSpawnMenu
-    - Debug
-    - Spawner
+  - type: ArtifactWhitelistSwap
+    targetWhitelist:
+      components:
+      - Scp
+      - MobState
 
 - type: entity
   id: EffectMagnetUltra
@@ -204,7 +186,7 @@
   - type: XAEApplyComponents
     components:
     - type: GravityWell
-      maxRange: 80
+      maxRange: 10
       baseRadialAcceleration: 90
     - type: TimedRemoveComponents
       components:
@@ -216,6 +198,9 @@
   description: artifact-effect-hint-data-deleted
   components:
   - type: AddComponentsInRadius
+    whitelist:
+      components:
+      - HumanoidAppearance
     components:
     - type: AnomalyAccent
     - type: TimedRemoveComponents

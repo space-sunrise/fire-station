@@ -1,0 +1,37 @@
+﻿# Где это у нас используется?
+# TODO: Локализация
+
+- type: entity
+  id: BorgDash
+  name: Колесо смерти
+  description: Запускает борга в выбранном направлении, нанося урон органике на пути.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _Scp/Actions/borg.rsi
+      state: dash
+    itemIconStyle: BigAction
+    raiseOnUser: true
+  - type: TargetAction
+    range: 500
+    checkCanAccess: false
+  - type: WorldTargetAction
+    event: !type:BorgDashActionEvent
+
+- type: entity
+  id: BorgResist
+  name: Включить энергетический барьер
+  description: Включает энергетический барьер вокруг борга.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 0.5
+    icon:
+      sprite: _Scp/Actions/borg.rsi
+      state: resist
+    itemIconStyle: BigAction
+    raiseOnUser: true
+  - type: InstantAction
+    event: !type:BorgResistanceActionEvent

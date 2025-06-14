@@ -18,3 +18,7 @@ ent-ClothingHandsGlovesChristmas = christmas gloves
     .desc = Stylish Christmas leather gloves.
 ent-ClothingHandsGlovesChristmasLong = christmas gloves long
     .desc = Stylish Christmas long leather gloves.
+ent-InsulatedGlovesAtmos = insulated gloves atmos
+    .desc = Insulated gloves made especially for atmospheric technicians.
+ent-ClothingHandsGlovesCombatCQC = combat gloves
+    .desc = These high-quality tactical gloves are fireproof and shock resistant.

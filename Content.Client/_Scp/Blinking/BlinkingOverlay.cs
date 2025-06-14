@@ -19,6 +19,9 @@ public sealed class BlinkingOverlay : Overlay
     public BlinkingOverlay()
     {
         IoCManager.InjectDependencies(this);
+
+        ZIndex = 999;
+
         _shader = _prototypeManager.Index<ShaderPrototype>("BlinkingEffect").InstanceUnique();
     }
 

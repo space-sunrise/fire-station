@@ -19,6 +19,14 @@ namespace Content.Shared.Storage
     {
         public static string ContainerId = "storagebase";
 
+        public const byte ChunkSize = 8;
+
+        // No datafield because we can just derive it from stored items.
+        /// <summary>
+        /// Bitmask of occupied tiles
+        /// </summary>
+        public Dictionary<Vector2i, ulong> OccupiedGrid = new();
+
         [ViewVariables]
         public Container Container = default!;
 
@@ -112,7 +120,7 @@ namespace Content.Shared.Storage
         /// Sound played whenever an entity is removed from storage.
         /// </summary>
         [DataField]
-        public SoundSpecifier? StorageRemoveSound;
+        public SoundSpecifier? StorageRemoveSound = new SoundCollectionSpecifier("storageRustle"); // Sunrise edit
 
         /// <summary>
         /// Sound played whenever the storage window is opened.

@@ -2,27 +2,27 @@
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
+using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Scp106.Systems;
 
 public sealed partial class Scp106System
 {
+    private static readonly EntProtoId PhantomRemains = "Ash";
+
     private void OnMobStateChangedEvent(Entity<Scp106PhantomComponent> ent, ref MobStateChangedEvent args)
     {
         if (!_mobState.IsIncapacitated(ent))
             return;
 
-        Spawn("Ash", Transform(ent).Coordinates);
-        QueueDel(ent);
+        TryAshAndReturnToBody(ent);
+    }
 
-        if (!_mind.TryGetMind(ent, out var mindId, out _))
-            return;
-
-        if (!Exists(ent.Comp.Scp106BodyUid))
-            return;
-
-        _mind.TransferTo(mindId, ent.Comp.Scp106BodyUid);
+    private void OnPhantomShutdown(Entity<Scp106PhantomComponent> ent, ref EntityTerminatingEvent args)
+    {
+        TryReturnToBody(ent);
     }
 
     private void OnScp106ReverseActionEvent(Entity<Scp106PhantomComponent> ent, ref Scp106ReverseActionEvent args)
@@ -47,7 +47,7 @@ public sealed partial class Scp106System
         var targetPos = Transform(target).Coordinates;
 
         _transform.SetCoordinates(ent.Comp.Scp106BodyUid.Value, targetPos);
-        SendToBackrooms(target);
+        _ = SendToBackrooms(target);
 
         if (args.Args.EventTarget == null)
             return;
@@ -73,7 +73,8 @@ public sealed partial class Scp106System
             BreakOnDamage = true,
         };
 
-        _doAfter.TryStartDoAfter(doAfterEventArgs);
+        if (!_doAfter.TryStartDoAfter(doAfterEventArgs))
+            return;
 
         _appearance.SetData(uid, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
     }
@@ -91,7 +92,39 @@ public sealed partial class Scp106System
         scp106PhantomComponent.Scp106BodyUid = ent;
         Dirty(ent);
 
-        args.Action.Comp.UseDelay = ent.Comp.PhantomCoolDown;
+        _actions.SetCooldown(args.Action.AsNullable(), ent.Comp.PhantomCoolDown);
         args.Handled = true;
     }
+
+    #region Helpers
+
+    private bool TryAshAndReturnToBody(Entity<Scp106PhantomComponent> ent)
+    {
+        var returned = TryReturnToBody(ent);
+        PhantomAsh(ent);
+        return returned;
+    }
+
+    private void PhantomAsh(EntityUid uid)
+    {
+        Spawn(PhantomRemains, Transform(uid).Coordinates);
+        QueueDel(uid);
+    }
+
+    private bool TryReturnToBody(Entity<Scp106PhantomComponent> ent)
+    {
+        if (!TryComp<MindContainerComponent>(ent, out var mind))
+            return false;
+
+        var anyMind = mind.Mind ?? mind.LastMindStored;
+
+        if (!Exists(ent.Comp.Scp106BodyUid) || !Exists(anyMind))
+            return false;
+
+        _mind.TransferTo(anyMind.Value, ent.Comp.Scp106BodyUid);
+
+        return true;
+    }
+
+    #endregion
 }

@@ -1,0 +1,13 @@
+- type: entity
+  name: roomba spawner
+  id: SpawnMobRoomba
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+      - state: green
+      - sprite: _Scp/Mobs/Silicon/Bots/roomba.rsi
+        state: roomba
+  - type: ConditionalSpawner
+    prototypes:
+      - MobRoomba

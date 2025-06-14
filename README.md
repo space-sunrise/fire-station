@@ -15,6 +15,7 @@
 [![Steam](https://img.shields.io/badge/Steam-SS14%20SUNRISE-blue)](https://store.steampowered.com/app/1255460/Space_Station_14/)
 [![Client](https://img.shields.io/badge/Client-Download-blue)](https://spacestation14.io/about/nightlies/)
 [![GitHub](https://img.shields.io/github/stars/space-sunrise/space-station-14?style=social)](https://github.com/space-sunrise/space-station-14)
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/space-sunrise/sunrise-station?utm_source=oss&utm_medium=github&utm_campaign=space-sunrise%2Fsunrise-station&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 
 # Fire Station - SS14 + SCP
 
@@ -28,9 +29,14 @@ Fire Station - первый проект в Space Station 14, перенесши
 
 Каждый игрок проекта имеет право помочь в разработке сервера и предложить свое изменение создав PR.
 
+## Запуск локального сервера
+
+Следуйте [этому руководству](https://github.com/space-sunrise/fire-station/discussions/345) и у вас все получится
+
+
 ## Документация
 
-На официальном [сайте с документацией](https://docs.spacestation14.io/) имеется вся необходимая информация о контенте SS14, движке, дизайне игры и многом другом. Также представлено множество полезных материалов для начинающих разработчиков.
+У нас имеется своя документация, включающая дизайн-документы механик -> [читать тут](https://github.com/space-sunrise/fire-station/discussions/categories/%D0%B3%D0%B5%D0%B9%D0%BC%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD)
 
 ## Активность проекта
 <!---

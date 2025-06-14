@@ -4,28 +4,34 @@ using Content.Server.Light.EntitySystems;
 using Content.Shared._Scp.LightFlicking;
 using Content.Shared._Scp.LightFlicking.MalfunctionLight;
 using Content.Shared.Light.Components;
+using Robust.Server.GameObjects;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.LightFlicking;
 
-public sealed class LightFlickingSystem : SharedLightFlickingSystem
+public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
 {
-    [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
+    [Dependency] private readonly PointLightSystem _pointLight = default!;
     [Dependency] private readonly LightBulbSystem _bulb = default!;
     [Dependency] private readonly PoweredLightSystem _poweredLight = default!;
 
     private const float FlickingStartChance = 0.1f;
 
-    private readonly TimeSpan _flickCheckInterval = TimeSpan.FromMinutes(30);
-    private readonly TimeSpan _flickCheckVariation = TimeSpan.FromMinutes(15);
+    private static readonly TimeSpan FlickCheckInterval = TimeSpan.FromMinutes(30);
+    private static readonly TimeSpan FlickCheckVariation = TimeSpan.FromMinutes(15);
+
+    private static readonly Color MalfunctionBulbColor = Color.FromHex("#997e65"); // коричневый
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<LightFlickingComponent, MapInitEvent>(OnMapInit, after: [typeof(PoweredLightSystem)]);
+        InitializeCommands();
 
-        SubscribeLocalEvent<LightFlickingComponent, LightEjectEvent>(OnLightEject);
+        SubscribeLocalEvent<LightFlickingComponent, MapInitEvent>(OnMapInit, after: [typeof(PoweredLightSystem)]);
+        SubscribeLocalEvent<ActiveLightFlickingComponent, MapInitEvent>(OnActiveMapInit, after: [typeof(PoweredLightSystem)]);
+
+        SubscribeLocalEvent<ActiveLightFlickingComponent, LightEjectEvent>(OnLightEject);
         SubscribeLocalEvent<LightFlickingComponent, LightInsertEvent>(OnLightInsert);
     }
 
@@ -36,14 +42,26 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
         if (!HasComp<PoweredLightComponent>(ent))
             return;
 
-        SetupFlicking(ent);
         SetNextFlickingStartTime(ent);
     }
 
-    private void OnLightEject(Entity<LightFlickingComponent> ent, ref LightEjectEvent args)
+    private void OnActiveMapInit(Entity<ActiveLightFlickingComponent> ent, ref MapInitEvent args)
     {
-        ent.Comp.Enabled = false;
+        var light = _pointLight.EnsureLight(ent);
+        ent.Comp.CachedRadius = light.Radius;
+        ent.Comp.CachedEnergy = light.Energy;
+
+        if (TryGetBulbEntity(ent, out var bulb))
+            ent.Comp.CachedColor = bulb.Value.Comp.Color;
+
         Dirty(ent);
+
+        SetNextFlickingTime(ent);
+    }
+
+    private void OnLightEject(Entity<ActiveLightFlickingComponent> ent, ref LightEjectEvent args)
+    {
+        RemComp<ActiveLightFlickingComponent>(ent);
     }
 
     private void OnLightInsert(Entity<LightFlickingComponent> ent, ref LightInsertEvent args)
@@ -51,8 +69,7 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
         if (!HasComp<MalfunctionLightComponent>(args.Bulb))
             return;
 
-        ent.Comp.Enabled = true;
-        Dirty(ent);
+        EnsureComp<ActiveLightFlickingComponent>(ent);
     }
 
     #endregion
@@ -69,13 +86,7 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
             if (Timing.CurTime <= flicking.NextFlickStartChanceTime)
                 continue;
 
-            if (!TryGetBulb(uid, out var bulb))
-                continue;
-
-            if (HasComp<MalfunctionLightComponent>(bulb))
-                continue;
-
-            if (flicking.Enabled)
+            if (HasComp<ActiveLightFlickingComponent>(uid))
                 continue;
 
             if (!Random.Prob(FlickingStartChance))
@@ -84,11 +95,19 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
                 continue;
             }
 
-            flicking.Enabled = true;
-            Dirty(uid, flicking);
-
-            MalfunctionBulb(uid);
+            TryStartFlicking((uid, flicking));
         }
+    }
+
+    private bool TryStartFlicking(Entity<LightFlickingComponent> ent)
+    {
+        if (!TryMalfunctionBulb(ent))
+            return false;
+
+        AddComp<ActiveLightFlickingComponent>(ent);
+        Dirty(ent);
+
+        return true;
     }
 
     private bool TryGetBulb(EntityUid lightUid, [NotNullWhen(true)] out EntityUid? bulb)
@@ -118,42 +137,29 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
         return true;
     }
 
-    #region Flicking
-
-    private void SetupFlicking(Entity<LightFlickingComponent> ent)
-    {
-        var light = _pointLight.EnsureLight(ent);
-        ent.Comp.DumpedRadius = light.Radius;
-        ent.Comp.DumpedEnergy = light.Energy;
-
-        if (TryGetBulbEntity(ent, out var bulb))
-            ent.Comp.DumpedColor = bulb.Value.Comp.Color;
-
-        Dirty(ent);
-
-        SetNextFlickingTime(ent);
-    }
-
-    #endregion
-
     #region Flicking start time
 
     private void SetNextFlickingStartTime(Entity<LightFlickingComponent> ent)
     {
-        var variation = _flickCheckInterval - Random.Next(_flickCheckVariation);
+        var variation = FlickCheckInterval - Random.Next(FlickCheckVariation);
         ent.Comp.NextFlickStartChanceTime = Timing.CurTime + variation;
 
         Dirty(ent);
     }
 
-    private void MalfunctionBulb(EntityUid lightUid)
+    private bool TryMalfunctionBulb(EntityUid lightUid)
     {
         if (!TryGetBulb(lightUid, out var bulb))
-            return;
+            return false;
+
+        if (HasComp<MalfunctionLightComponent>(bulb.Value))
+            return false;
 
         // TODO: Пофиксить, что после вставления лампы она принимает этот коричневый цвет, вместо нужного оригинального
-        _bulb.SetColor(bulb.Value, Color.FromHex("#997e65")); // коричневый
-        EnsureComp<MalfunctionLightComponent>(bulb.Value);
+        _bulb.SetColor(bulb.Value, MalfunctionBulbColor);
+        AddComp<MalfunctionLightComponent>(bulb.Value);
+
+        return true;
     }
 
     #endregion

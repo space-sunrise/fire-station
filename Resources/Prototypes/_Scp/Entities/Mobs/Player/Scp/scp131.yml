@@ -17,6 +17,10 @@
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Scale
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-minor-name
+    description: ghost-panel-antagonist-scp-minor-description
+    priority: 0
   - type: MultiHandedItem
   - type: Item
     size: Huge

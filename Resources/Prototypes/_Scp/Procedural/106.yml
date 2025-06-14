@@ -20,24 +20,44 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 
-- type: entitySpawnEntry
+- type: entityTable
   id: BackroomsEntrance
-  entries:
-  - id: CableApcExtension
-  - id: AirlockGlass
+  table: !type:GroupSelector
+    children:
+    - id: CableApcExtension
+      amount: 1
+    - id: AirlockGlass
+      amount: 1
 
-- type: entitySpawnEntry
+- type: entityTable
   id: BackroomsWalls
-  entries:
-  - id: ExtinguisherCabinetFilled
-    prob: 0.2
-    orGroup: content
-  - id: RandomPainting
-    prob: 0.05
-    orGroup: content
-  - id: IntercomCommon
-    prob: 0.1
-    orGroup: content
+  table: !type:GroupSelector
+    children:
+    - id: ExtinguisherCabinetFilled
+      amount: 1
+      prob: 0.05
+    - id: RandomPainting
+      amount: 1
+      prob: 0.05
+    - id: IntercomCommon
+      amount: 1
+      prob: 0.05
+
+- type: entityTable
+  id: BackroomsMobs
+  table: !type:GroupSelector
+    children:
+    - id: MobScp106Monster
+      amount: 2
+    - id: MobScp106BigMonster
+      amount: 1
+
+- type: entityTable
+  id: BaseAirlockScp
+  table: !type:GroupSelector
+    children:
+    - id: CableApcExtension
+    - id: ScpAirlockMaint
 
 - type: dungeonConfig
   id: BackroomsBase
@@ -48,22 +68,39 @@
     - Wow
     - SpaceShip
     - Tall
+    fallbackTile: FloorConcreteSmooth
+    roomWhitelist:
+      tags:
+      - SnowyLabs
+      - BackroomsMineshaft
 
   - !type:CorridorDunGen
     width: 3
+    tile: FloorConcreteSmooth
 
   - !type:RoomEntranceDunGen
+    tile: FloorConcreteSmooth
+    contents: BackroomsEntrance
 
   - !type:WallMountDunGen
+    contents: BackroomsWalls
+    tile: FloorConcreteSmooth
 
   - !type:BoundaryWallDunGen
+    wall: WallBrick106
+    cornerWall: WallBrick106
+    tile: FloorConcreteSmooth
 
   - !type:JunctionDunGen
     width: 1
+    tile: FloorConcreteSmooth
+    contents: BaseAirlockScp
 
   - !type:AutoCablingDunGen
+    entity: CableApcExtension
 
   - !type:CornerClutterDunGen
+    contents: BaseClutter
 
   - !type:LimitedEntityDunGen
     entity: Scp106Backrooms
@@ -76,11 +113,9 @@
     entity: StairsDown106
 
   - !type:MobsDunGen
-    minCount: 1
-    maxCount: 4
-    groups:
-    - id: SalvageSpawnerMobMiningAsteroid
-      amount: 1
+    minCount: 4
+    maxCount: 9
+    contents: VGRoidExteriorDungeonsMobs
 
   # TODO: Add Mobs/Items.
   # For items -> LimitedEntityDunGen
@@ -88,23 +123,6 @@
 
 - type: dungeonConfig
   id: Backrooms
-  data:
-    entities:
-      Cabling: CableApcExtension
-      CornerWalls: WallBrick106
-      Walls: WallBrick106
-    spawnGroups:
-      CornerClutter: BaseClutter
-      Junction: BaseAirlock
-      Entrance: BackroomsEntrance
-      WallMounts: BackroomsWalls
-    tiles:
-      FallbackTile: FloorConcreteSmooth
-    whitelists:
-      Rooms:
-        tags:
-        - SnowyLabs
-        - BackroomsMineshaft
   layers:
   - !type:PrototypeDunGen
     proto: BackroomsBase

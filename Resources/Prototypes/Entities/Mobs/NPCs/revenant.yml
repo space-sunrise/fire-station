@@ -6,6 +6,12 @@
   name: revenant
   description: A spooky ghostie.
   components:
+  # Sunrise edit start
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-revenant-name
+    description: ghost-panel-antagonist-revenant-description
+    priority: 70
+  # Sunrise edit end
   - type: Input
     context: "ghost"
   - type: Spectral
@@ -87,4 +93,12 @@
     - NoPaint
   - type: TTS
     voice: HermaeusMora
+  # Sunrise-end
+  # Sunrise-start
+  - type: Electrified
+    onHandInteract: false
+    onInteractUsing: false
+    onBump: false
+    requirePower: false
+    shockDamage: 30
   # Sunrise-end

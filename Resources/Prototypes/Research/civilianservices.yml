@@ -12,8 +12,6 @@
     Default: 5000
     Scp: 2500
   recipeUnlocks:
-  - BorgModuleGardening
-  - BorgModuleHarvesting
   - SeedExtractorMachineCircuitboard
   - HydroponicsTrayMachineCircuitboard
   - ReagentGrinderIndustrialMachineCircuitboard
@@ -80,20 +78,6 @@
     - JukeboxCircuitBoard
 
 - type: technology
-  id: RoboticCleanliness
-  name: research-technology-robotic-cleanliness
-  icon:
-    sprite: Mobs/Silicon/chassis.rsi
-    state: janitor
-  discipline: CivilianServices
-  tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
-  recipeUnlocks:
-  - BorgModuleAdvancedCleaning
-
-- type: technology
   id: MeatManipulation
   name: research-technology-meat-manipulation
   icon:
@@ -147,7 +131,7 @@
   - CryostasisBeaker
   - SyringeCryostasis
 
-- type: technology
+- type: technology # Merge with other T2 medical research if possible!
   id: MechanizedTreatment
   name: research-technology-mechanized-treatment
   icon:
@@ -159,8 +143,7 @@
     Default: 5000
     Scp: 2500
   recipeUnlocks:
-  - BorgModuleAdvancedTreatment
-  - BorgModuleDefibrillator
+  - BorgModuleAdvancedChemical
 
 - type: technology
   id: AdvancedCleaning
@@ -176,6 +159,7 @@
   recipeUnlocks:
   - AdvMopItem
   - MegaSprayBottle
+  - BorgModuleAdvancedCleaning
 
 - type: technology
   id: HONKMech
@@ -243,6 +227,20 @@
   recipeUnlocks:
   - CargoTelepadMachineCircuitboard
 
+- type: technology
+  id: PushHorn
+  name: research-technology-clowning-utilities
+  icon:
+    sprite: Objects/Fun/push_horn.rsi
+    state: icon
+  discipline: CivilianServices
+  tier: 2
+  cost:
+    Default: 4000
+    Scp: 2000
+  recipeUnlocks:
+  - PushHorn
+
 # Tier 3
 
 - type: technology
@@ -273,3 +271,18 @@
   recipeUnlocks:
   - BluespaceBeaker
   - SyringeBluespace
+
+- type: technology
+  id: LauncherSyringe
+  name: research-technology-launcher-syringe
+  icon:
+    sprite: Objects/Weapons/Guns/Cannons/syringe_gun.rsi
+    state: syringe_gun
+  discipline: CivilianServices
+  tier: 3
+  cost:
+    Default: 15000
+    Scp: 7500
+  recipeUnlocks:
+  - LauncherSyringe
+  - MiniSyringe

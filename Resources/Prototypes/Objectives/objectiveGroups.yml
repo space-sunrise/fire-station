@@ -27,6 +27,7 @@
     MultiphaseEnergygunStealObjective: 1
     CMOAdvancedDefibrillatorStealObjective: 1
     StealSupermatterSliverObjective: 1
+    HandheldFaxStealObjective: 1
     # Sunrise-End
 
 - type: weightedRandom
@@ -47,7 +48,7 @@
 - type: weightedRandom
   id: TraitorObjectiveGroupSocial
   weights:
-    RandomTraitorAliveObjective: 1
+#    RandomTraitorAliveObjective: 1 - Removed because the objective was boring and didn't progress the round.
     RandomTraitorProgressObjective: 1
 
 #Thief groups

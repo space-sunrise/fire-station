@@ -177,12 +177,12 @@ public abstract class SharedScp035System : EntitySystem
             _mobState.ChangeMobState(servant, MobState.Dead);
         }
 
-        _action.RemoveAction(ent, ent.Comp.ActionRaiseArmy);
-        _action.RemoveAction(ent, ent.Comp.ActionOrderStayEntity);
-        _action.RemoveAction(ent, ent.Comp.ActionOrderFollowEntity);
-        _action.RemoveAction(ent, ent.Comp.ActionOrderKillEmEntity);
-        _action.RemoveAction(ent, ent.Comp.ActionOrderLooseEntity);
-        _action.RemoveAction(ent, ent.Comp.ActionStunEntity);
+        _action.RemoveAction(ent.Owner, ent.Comp.ActionRaiseArmy);
+        _action.RemoveAction(ent.Owner, ent.Comp.ActionOrderStayEntity);
+        _action.RemoveAction(ent.Owner, ent.Comp.ActionOrderFollowEntity);
+        _action.RemoveAction(ent.Owner, ent.Comp.ActionOrderKillEmEntity);
+        _action.RemoveAction(ent.Owner, ent.Comp.ActionOrderLooseEntity);
+        _action.RemoveAction(ent.Owner, ent.Comp.ActionStunEntity);
     }
 
     private void OnServantShutdown(Entity<Scp035ServantComponent> ent, ref ComponentShutdown args)

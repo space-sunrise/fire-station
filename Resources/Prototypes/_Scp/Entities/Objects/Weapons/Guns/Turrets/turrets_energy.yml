@@ -8,7 +8,7 @@
     board: WeaponEnergyTurretCSSMachineCircuitboard
 
 - type: entity
-  parent: WeaponEnergyTurretStation
+  parent: WeaponEnergyTurretStationBase
   id: WeaponEnergyTurretFacility
   name: facility sentry turret
   description: High-tech equipment designed to keep unauthorized personnel out of sensitive areas.
@@ -17,7 +17,7 @@
     board: WeaponEnergyTurretFacilityMachineCircuitboard
 
 - type: entity
-  parent: WeaponEnergyTurretStationMachineCircuitboard
+  parent: WeaponEnergyTurretStationMachineCircuitboardBase
   id: WeaponEnergyTurretFacilityMachineCircuitboard
   name: facility sentry turret machine board
   description: A machine printed circuit board for a sentry turret.

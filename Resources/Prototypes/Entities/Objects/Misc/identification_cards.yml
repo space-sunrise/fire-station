@@ -5,6 +5,17 @@
   description: A card necessary to access various areas aboard the station.
   abstract: true
   components:
+  # Sunrise added start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/ID/pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/ID/drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/ID/drop.ogg
+  # Sunrise added end
   - type: Sprite
     sprite: Objects/Misc/id_cards.rsi
   - type: Clothing
@@ -34,6 +45,7 @@
   name: passenger ID card
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi # Sunrise-Edit
     layers:
     - state: default
     - state: idpassenger
@@ -262,6 +274,7 @@
   name: mime ID card
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi # Sunrise-Edit
     layers:
     - state: default
     - state: idmime
@@ -526,6 +539,7 @@
   name: ERT engineer ID card
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi # Sunrise-Edit
     layers:
     - state: gold
     - state: ert_engineer
@@ -538,6 +552,7 @@
   name: ERT janitor ID card
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi # Sunrise-Edit
     layers:
     - state: gold
     - state: ert_janitor
@@ -550,6 +565,7 @@
   name: ERT medic ID card
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi # Sunrise-Edit
     layers:
     - state: gold
     - state: ert_medic
@@ -562,6 +578,7 @@
   name: ERT security ID card
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi # Sunrise-Edit
     layers:
     - state: gold
     - state: ert_security
@@ -574,6 +591,7 @@
   name: musician ID card
   components:
     - type: Sprite
+      sprite: _Sunrise/Objects/Misc/id_cards.rsi # Sunrise-Edit
       layers:
         - state: default
         - state: idmusician
@@ -607,6 +625,7 @@
     - Maintenance
     - SyndicateAgent
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi # Sunrise-Edit
     layers:
     - state: default
     - state: idpassenger
@@ -659,7 +678,7 @@
     job: AtmosphericTechnician
 
 - type: entity
-  parent: IDCardStandard
+  parent: [ IDCardStandard, BaseSyndicateContraband ]
   id: SyndicateIDCard
   name: syndicate ID card
   components:
@@ -672,7 +691,7 @@
     - SyndicateAgent
 
 - type: entity
-  parent: IDCardStandard
+  parent: [ IDCardStandard, BaseMajorContraband ]
   id: PirateIDCard
   name: pirate ID card
   components:
@@ -745,6 +764,40 @@
     job: Detective
 
 - type: entity
+  parent: IDCardStandard
+  id: PrisonerIDCard
+  name: prisoner ID card
+  description: A generically printed ID card for scummy prisoners.
+  components:
+  - type: Sprite
+    layers:
+    - state: orange
+  - type: Item
+    heldPrefix: orange
+  - type: Access
+    tags:
+    - GenpopEnter
+  - type: GenpopIdCard
+  - type: IdCard
+    jobTitle: job-name-prisoner
+    jobIcon: JobIconPrisoner
+    canMicrowave: false
+  - type: ExpireIdCard
+    expireMessage: genpop-prisoner-id-expire
+    expiredAccess:
+    - GenpopLeave
+  - type: Speech
+    speechVerb: Robotic
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - WhitelistChameleon
+    - WhitelistChameleonIdCard
+    - Recyclable
+  - type: StaticPrice # these are infinitely producible.
+    price: 0
+
+- type: entity
   parent: CentcomIDCard
   id: CBURNIDcard
   name: CBURN ID card
@@ -770,6 +823,7 @@
     - state: idcluwne
   - type: IdCard
     jobTitle: job-title-cluwne
+    jobIcon: JobIconCluwne
   - type: Unremoveable
 
 - type: entity
@@ -863,6 +917,7 @@
     - NuclearOperative
     - SyndicateAgent
     - Wizard
+    - Xenoborg
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener

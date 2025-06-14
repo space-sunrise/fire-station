@@ -322,7 +322,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpSteel
+    collection: FootstepScpTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemCheckerDark
@@ -330,7 +330,7 @@
 
 - type: tile
   id: ScpFloorCheckerSteel
-  name: scp-tiles-dark-floor
+  name: scp-tiles-steel-floor
   sprite: /Textures/_Scp/Tiles/checker_steel.png
   variants: 14
   placementVariants:
@@ -360,7 +360,7 @@
 
 - type: tile
   id: ScpFloorCheckerWhite
-  name: scp-tiles-dark-floor
+  name: scp-tiles-white-floor
   sprite: /Textures/_Scp/Tiles/checker_white.png
   variants: 14
   placementVariants:
@@ -382,7 +382,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpSteel
+    collection: FootstepTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemCheckerWhite
@@ -412,7 +412,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpSteel
+    collection: FootstepScpTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemDark
@@ -442,7 +442,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpSteel
+    collection: FootstepScpTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemDark
@@ -470,7 +470,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpSteel
+    collection: FootstepScpTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemDark
@@ -498,7 +498,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpSteel
+    collection: FootstepScpTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemDark
@@ -528,7 +528,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpSteel
+    collection: FootstepScpTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemDark
@@ -558,7 +558,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpSteel
+    collection: FootstepScpTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemDark
@@ -584,7 +584,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpSteel
+    collection: FootstepScpTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemDark
@@ -604,7 +604,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpSteel
+    collection: FootstepScpTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemDark
@@ -634,7 +634,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpSteel
+    collection: FootstepScpTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemDark
@@ -664,7 +664,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpSteel
+    collection: FootstepScpTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemDark
@@ -976,7 +976,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpTile
+    collection: FootstepTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemWhite
@@ -1006,7 +1006,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpTile
+    collection: FootstepTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemWhite
@@ -1034,7 +1034,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpTile
+    collection: FootstepTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemWhite
@@ -1062,7 +1062,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpTile
+    collection: FootstepTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemWhite
@@ -1092,7 +1092,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpTile
+    collection: FootstepTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemWhite
@@ -1122,7 +1122,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpTile
+    collection: FootstepTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemWhite
@@ -1148,7 +1148,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpTile
+    collection: FootstepTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemWhite
@@ -1168,7 +1168,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpTile
+    collection: FootstepTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemWhite
@@ -1198,7 +1198,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpTile
+    collection: FootstepTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemWhite
@@ -1228,7 +1228,7 @@
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpTile
+    collection: FootstepTile
     params:
       volume: -7
   itemDrop: ScpFloorTileItemWhite

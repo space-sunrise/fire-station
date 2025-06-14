@@ -86,6 +86,8 @@
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Sunrise/Items/Handling/drinkglass_pickup.ogg
+      params:
+        volume: -3
   - type: EmitSoundOnDrop
     sound:
       path: /Audio/_Sunrise/Items/Handling/drinkglass_drop.ogg
@@ -146,6 +148,8 @@
     - type: SolutionContainerVisuals
       maxFillLevels: 5
       fillBaseName: fill
+      inHandsMaxFillLevels: 1
+      inHandsFillBaseName: -fill-
 
 - type: entity
   parent: DrinkGlass
@@ -155,10 +159,10 @@
   - type: SolutionContainerManager
     solutions:
       drink:
-        maxVol: 30
+        maxVol: 20
         reagents:
         - ReagentId: Absinthe
-          Quantity: 30
+          Quantity: 20
   - type: Icon
     sprite: Objects/Consumable/Drinks/absintheglass.rsi
     state: icon

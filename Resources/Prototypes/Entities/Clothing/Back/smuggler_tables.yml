@@ -628,7 +628,7 @@
       weight: 30
     - id: HolofanProjector
     - id: HoloprojectorField
-    - id: HoloprojectorSecurity
+    # - id: HoloprojectorSecurity #Fire-Station
     - id: DeviceQuantumSpinInverter
       amount: !type:ConstantNumberSelector
         value: 2

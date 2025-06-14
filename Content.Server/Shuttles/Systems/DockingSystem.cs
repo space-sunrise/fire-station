@@ -31,8 +31,11 @@ namespace Content.Server.Shuttles.Systems
         [Dependency] private readonly SharedJointSystem _jointSystem = default!;
         [Dependency] private readonly SharedPopupSystem _popup = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
+        [Dependency] private readonly ILogManager _logMan = default!;
 
         private const string DockingJoint = "docking";
+
+        private ISawmill? _logger;
 
         private EntityQuery<MapGridComponent> _gridQuery;
         private EntityQuery<PhysicsComponent> _physicsQuery;
@@ -59,6 +62,8 @@ namespace Content.Server.Shuttles.Systems
             // in which case I would also add their subs here.
             SubscribeLocalEvent<ShuttleConsoleComponent, DockRequestMessage>(OnRequestDock);
             SubscribeLocalEvent<ShuttleConsoleComponent, UndockRequestMessage>(OnRequestUndock);
+
+            _logger = _logMan.GetSawmill("DockingSystem");
         }
 
         public void UndockDocks(EntityUid gridUid)
@@ -358,10 +363,26 @@ namespace Content.Server.Shuttles.Systems
 
         private void OnRequestUndock(EntityUid uid, ShuttleConsoleComponent component, UndockRequestMessage args)
         {
+            var console = _console.GetDroneConsole(uid);
+
+            if (console == null)
+            {
+                _popup.PopupCursor(Loc.GetString("shuttle-console-undock-fail"));
+                return;
+            }
+
+            var shuttleUid = Transform(console.Value).GridUid;
+
             if (!TryGetEntity(args.DockEntity, out var dockEnt) ||
                 !TryComp(dockEnt, out DockingComponent? dockComp))
             {
                 _popup.PopupCursor(Loc.GetString("shuttle-console-undock-fail"));
+                return;
+            }
+
+            if (!CanShuttleUndock(shuttleUid))
+            {
+                _popup.PopupCursor(Loc.GetString("shuttle-console-dock-fail"));
                 return;
             }
 

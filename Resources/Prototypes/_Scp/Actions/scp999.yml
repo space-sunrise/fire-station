@@ -1,0 +1,58 @@
+﻿# TODO: Локализация
+
+- type: entity
+  id: Scp999Wallify
+  name: Превратиться в стену
+  description: Вы меняете свою форму, превращаясь в нечто, похожее на стенку.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 3
+    icon:
+      sprite: _Scp/Actions/scp-999.rsi
+      state: wall
+    itemIconStyle: BigAction
+    raiseOnUser: true
+  - type: InstantAction
+    event: !type:Scp999WallifyActionEvent
+
+- type: entity
+  id: Scp999Rest
+  name: Прилечь отдохнуть
+  description: Вы засыпаете.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 3
+    icon:
+      sprite: _Scp/Actions/scp-999.rsi
+      state: sleep
+    itemIconStyle: BigAction
+    raiseOnUser: true
+    checkCanInteract: false
+    checkConsciousness: false
+  - type: InstantAction
+    event: !type:Scp999RestActionEvent
+
+- type: entity
+  id: Scp999Affection
+  name: Обнимашки
+  description: Затянуть цель в объятия, восстановив ей небольшое количество здоровья.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 30
+    icon:
+      sprite: _Scp/Actions/scp-999.rsi
+      state: love
+  - type: TargetAction
+    range: 3
+    targetingIndicator: true
+    interactOnMiss: false
+    ignoreContainer: true
+  - type: EntityTargetAction
+    event: !type:SmileLoveActionEvent
+    canTargetSelf: false
+    whitelist:
+      components:
+      - Body

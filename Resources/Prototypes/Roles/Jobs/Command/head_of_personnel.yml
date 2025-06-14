@@ -51,12 +51,14 @@
   - Brig
   - Lawyer
   - Cargo
+  - CargoPurchaseAccess # Sunrise-edit
+  - ResearchConsoleAccess # Sunrise-Edit
   - Atmospherics
   - Medical
   - Barber  # Sunrise-edit
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
+    implants: [ MindShieldImplant, TrackingImplant, DeathRattleImplantBlueShield ]
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
@@ -75,3 +77,15 @@
     back:
     - Flash
     - Telebaton # Sunrise-Edit
+
+- type: chameleonOutfit
+  id: HeadOfPersonnelChameleonOutfit
+  job: HeadOfPersonnel
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatHopcap
+    eyes: ClothingEyesHudCommand
+    mask: ClothingMaskNeckGaiterRed
+    neck: ClothingNeckCloakHop
+    outerClothing: ClothingOuterWinterHoP
+

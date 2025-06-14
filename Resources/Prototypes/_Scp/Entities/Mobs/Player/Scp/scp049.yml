@@ -18,6 +18,10 @@
   - type: ScpRestriction
     canPull: true
   - type: ScpShow049Hud
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-name
+    description: ghost-panel-antagonist-scp-description
+    priority: -10
   - type: Inventory
     templateId: scp049
   - type: Hands

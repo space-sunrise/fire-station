@@ -1,0 +1,107 @@
+﻿- type: tileAlias
+  id: Plating
+  target: ScpPlating
+
+- type: tileAlias
+  id: FloorSteel
+  target: ScpFloorSteel
+
+- type: tileAlias
+  id: FloorSteelCheckerDark
+  target: ScpFloorCheckerDark
+
+- type: tileAlias
+  id: FloorSteelMini
+  target: ScpFloorSteelMini
+
+- type: tileAlias
+  id: FloorSteelPavement
+  target: ScpFloorSteelPavement
+
+- type: tileAlias
+  id: FloorSteelDiagonal
+  target: ScpFloorSteelDiagonal
+
+- type: tileAlias
+  id: FloorSteelOffset
+  target: ScpFloorSteeloffset # Note: SCP ID uses lowercase 'o'
+
+- type: tileAlias
+  id: FloorSteelMono
+  target: ScpFloorSteelMono
+
+- type: tileAlias
+  id: FloorSteelPavementVertical
+  target: ScpFloorSteelPavementVertical
+
+- type: tileAlias
+  id: FloorSteelHerringbone
+  target: ScpFloorSteelHerringbone
+
+- type: tileAlias
+  id: FloorWhite
+  target: ScpFloorWhite
+
+- type: tileAlias
+  id: FloorWhiteMini
+  target: ScpFloorWhiteMini
+
+- type: tileAlias
+  id: FloorWhitePavement
+  target: ScpFloorWhitePavement
+
+- type: tileAlias
+  id: FloorWhiteDiagonal
+  target: ScpFloorWhiteDiagonal
+
+- type: tileAlias
+  id: FloorWhiteOffset
+  target: ScpFloorWhiteoffset # Note: SCP ID uses lowercase 'o'
+
+- type: tileAlias
+  id: FloorWhiteMono
+  target: ScpFloorWhiteMono
+
+- type: tileAlias
+  id: FloorWhitePavementVertical
+  target: ScpFloorWhitePavementVertical
+
+- type: tileAlias
+  id: FloorWhiteHerringbone
+  target: ScpFloorWhiteHerringbone
+
+- type: tileAlias
+  id: FloorDark
+  target: ScpFloorDark
+
+- type: tileAlias
+  id: FloorDarkMini
+  target: ScpFloorDarkMini
+
+- type: tileAlias
+  id: FloorDarkPavement
+  target: ScpFloorDarkPavement
+
+- type: tileAlias
+  id: FloorDarkDiagonal
+  target: ScpFloorDarkDiagonal
+
+- type: tileAlias
+  id: FloorDarkOffset
+  target: ScpFloorDarkoffset # Note: SCP ID uses lowercase 'o'
+
+- type: tileAlias
+  id: FloorDarkMono
+  target: ScpFloorDarkMono
+
+- type: tileAlias
+  id: FloorDarkPavementVertical
+  target: ScpFloorDarkPavementVertical
+
+- type: tileAlias
+  id: FloorDarkHerringbone
+  target: ScpFloorDarkHerringbone
+
+- type: tileAlias
+  id: FloorBlue
+  target: ScpFloorBlue

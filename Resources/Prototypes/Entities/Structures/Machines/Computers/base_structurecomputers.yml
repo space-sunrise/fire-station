@@ -5,6 +5,16 @@
   placement:
     mode: SnapgridCenter
   components:
+  # Fire added start
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: 3
+    enabled: false
+    sound:
+      path: /Audio/_Scp/Ambience/Machines/Consoles/ost1.ogg
+      params:
+        maxDistance: 3
+  # Fire added end
   - type: Animateable
   - type: MeleeSound
     soundGroups:
@@ -58,11 +68,14 @@
     castShadows: false
   - type: EmitSoundOnUIOpen
     sound:
-      collection: Keyboard
+      # Fire edit start
+      collection: ScpKeyboard
       params:
-        volume: -1
-        variation: 0.10
-        pitch: 1.10  # low pitch keyboard sounds feel kinda weird
+        maxDistance: 3
+        volume: -5
+        variation: 0.1
+        pitch: 0.9  # low pitch keyboard sounds feel kinda weird
+      # Fire edit end
     blacklist:
       tags:
       - NoConsoleSound

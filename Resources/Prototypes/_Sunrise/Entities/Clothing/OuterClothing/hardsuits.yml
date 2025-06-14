@@ -13,8 +13,8 @@
 
 - type: entity
   parent: ClothingOuterHardsuitBase
-  id: ClothingOuterHardsuitBlueshield
-  name: blueshield's hardsuit
+  id: ClothingOuterHardsuitBlueShield
+  name: blue shield hardsuit
   description: Tough and reliable, just like its owner.
   components:
   - type: Sprite
@@ -30,19 +30,17 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.5
-        Heat: 0.5  # У ОСЩ пушка с тепловым уроном, следовательно броник должен защищать от лазеров
-        Radiation: 0.25
-        Caustic: 0.5
+        Blunt: 0.75
+        Slash: 0.75
+        Piercing: 0.75
+        Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.6
   - type: ToggleableClothing
     clothingPrototype: ClothingHeadHelmetHardsuitBlueshield
 
 - type: entity
-  parent: ClothingOuterHardsuitBlueshield
+  parent: ClothingOuterHardsuitBlueShield
   id: ClothingOuterHardsuitNTRG
   name: NTR Guard's hardsuit
   description: Tough and reliable, just like its owner.
@@ -108,10 +106,8 @@
       coefficients:
         Blunt: 0.8
         Slash: 0.8
-        Piercing: 0.7
-        Heat: 0.7
-        Caustic: 0.55
-        Radiation: 0.6
+        Piercing: 0.75
+        Heat: 0.75
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
@@ -447,7 +443,7 @@
     price: 0
 
 - type: entity
-  parent: ClothingOuterHardsuitBasic
+  parent: ClothingOuterHardsuitEVA
   id: ClothingOuterHardsuitChameleon
   name: syndicate chameleon
   description: Looking at his material, Sci-fi images inadvertently pop up in your head.
@@ -467,7 +463,7 @@
       - Thief
     - type: ChameleonClothing
       slot: [outerClothing]
-      default: ClothingOuterHardsuitBasic
+      default: ClothingOuterHardsuitEVA
       requireTag: WhitelistChameleonSuit
     - type: UserInterface
       interfaces:

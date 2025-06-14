@@ -21,10 +21,11 @@ public sealed class TileWallsCommand : IConsoleCommand
     public string Help => $"Usage: {Command} <gridId> | {Command}";
 
     [ValidatePrototypeId<ContentTileDefinition>]
-    public const string TilePrototypeId = "Plating";
+    public const string TilePrototypeId = "ScpPlating"; // Fire edit
 
     [ValidatePrototypeId<TagPrototype>]
     public const string WallTag = "Wall";
+    public const string DiagonalTag = "Diagonal";
 
     public void Execute(IConsoleShell shell, string argStr, string[] args)
     {
@@ -81,6 +82,11 @@ public sealed class TileWallsCommand : IConsoleCommand
             }
 
             if (!tagSystem.HasTag(child, WallTag))
+            {
+                continue;
+            }
+
+            if (tagSystem.HasTag(child, DiagonalTag))
             {
                 continue;
             }

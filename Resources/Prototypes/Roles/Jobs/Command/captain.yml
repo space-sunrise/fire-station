@@ -31,9 +31,12 @@
   - AllAccess
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
+    implants: [ MindShieldImplant, TrackingImplant, DeathRattleImplantBlueShield ]
   - !type:AddComponentSpecial
     components:
+      # Sunrise added start
+      - type: ArtifactFunnyTarget
+      # Sunrise added end
       - type: CommandStaff
   speciesBlacklist:
   - Vox # Sunrise-Edit
@@ -51,3 +54,13 @@
     - Flash
     - Telebaton # Sunrise-Edit
     # - StationCharter
+
+- type: chameleonOutfit
+  id: CaptainChameleonOutfit
+  job: Captain
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatCapcap
+    eyes: ClothingEyesGlassesCommand
+    mask: ClothingMaskGasCaptain
+    neck: ClothingNeckCloakCap

@@ -38,6 +38,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Replays;
 using Robust.Shared.Utility;
+using Content.Server._Sunrise.AntiSpam;
 
 namespace Content.Server.Chat.Systems;
 
@@ -201,6 +202,15 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         if (!CanSendInGame(message, shell, player))
             return;
+        //sunrise-edit-start : IC Spam-mute
+        if (player != null)
+        {
+            var ev = new TrySendICMessageEvent(message, desiredType, player);
+            RaiseLocalEvent(source, ev);
+            if (ev.Cancelled)
+                return;
+        }
+        //sunrise-edit-end
 
         ignoreActionBlocker = CheckIgnoreSpeechBlocker(source, ignoreActionBlocker);
 

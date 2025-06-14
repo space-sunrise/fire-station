@@ -1,8 +1,6 @@
 - type: entity
-  id: FSCatwalkSteel
+  id: ScpCatwalkSteel
   parent: Catwalk
-  name: catwalk
-  description: A catwalk for easier EVA maneuvering and cable placement.
   placement:
     mode: SnapgridCenter
   components:
@@ -16,10 +14,8 @@
         volume: -6
 
 - type: entity
-  id: FSCatwalkWhite
-  parent: FSCatwalkSteel
-  name: catwalk
-  description: A catwalk for easier EVA maneuvering and cable placement.
+  id: ScpCatwalkWhite
+  parent: ScpCatwalkSteel
   placement:
     mode: SnapgridCenter
   components:
@@ -28,10 +24,8 @@
     drawdepth: FloorTiles
 
 - type: entity
-  id: FSCatwalkDark
-  parent: FSCatwalkSteel
-  name: catwalk
-  description: A catwalk for easier EVA maneuvering and cable placement.
+  id: ScpCatwalkDark
+  parent: ScpCatwalkSteel
   placement:
     mode: SnapgridCenter
   components:

@@ -19,7 +19,6 @@
       - id: ClothingOuterCoatWardenAlt
       - id: RubberStampWarden
       - id: DoorRemoteArmory
-      - id: HoloprojectorSecurity
       - id: Binoculars
       - id: HyperLinkBookCorporateLaw
       - id: HandheldCriminalRecordsMonitor  # Sunrise-CriminalRecords
@@ -52,8 +51,6 @@
       - id: ClothingShoesBootsSecurityGuard
       - id: WeaponMeleeNeedle
         prob: 0.1
-      - id: HoloprojectorSecurity
-        prob: 0.6
       - id: HyperLinkBookCorporateLaw # Sunrise-edit
         prob: 0.5
 
@@ -88,13 +85,7 @@
         prob: 0.3
       - id: MedkitBurnFilled
         prob: 0.7
-      - id: BoxMiniSyringe
-        prob: 0.75
-      - id: BoxMiniSyringe
-        prob: 0.25
-      - id: LauncherSyringeMed
-        prob: 0.45
-      - id: LauncherSyringePistol
+      - id: LauncherSyringe
         prob: 0.15
       - id: ClothingHeadHelmetSecurityMedic
       - id: ClothingOuterVestSecurityMedic

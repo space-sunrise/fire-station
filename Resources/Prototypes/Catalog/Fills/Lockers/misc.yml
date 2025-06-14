@@ -8,7 +8,7 @@
       entity_storage: !type:AllSelector
         children:
         - id: ClothingBeltMilitaryWebbing
-        - id: ClothingHandsGlovesCombat
+        - id: ClothingHandsGlovesCombatCQC #Sunrise-edit
         - id: JetpackBlackFilled
         - id: ClothingUniformJumpsuitOperative
         - id: ClothingUniformJumpskirtOperative
@@ -168,6 +168,7 @@
     - id: MechPaintGygaxPirate
     - id: MechPaintGygaxBlack
       weight: 2
+    - id: ClothingHandsKnuckleDustersSyndicate
 
 - type: entityTable
   id: MaintenanceLockerLoot

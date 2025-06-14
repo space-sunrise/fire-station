@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by discord: odlieerr",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "full"
+        },
+        {
+            "name": "metall_hard_contaiment0",
+            "directions": 4
+        },
+        {
+            "name": "metall_hard_contaiment1",
+            "directions": 4
+        },
+        {
+            "name": "metall_hard_contaiment2",
+            "directions": 4
+        },
+        {
+            "name": "metall_hard_contaiment3",
+            "directions": 4
+        },
+        {
+            "name": "metall_hard_contaiment4",
+            "directions": 4
+        },
+        {
+            "name": "metall_hard_contaiment5",
+            "directions": 4
+        },
+        {
+            "name": "metall_hard_contaiment6",
+            "directions": 4
+        },
+        {
+            "name": "metall_hard_contaiment7",
+            "directions": 4
+        }
+    ]
+}

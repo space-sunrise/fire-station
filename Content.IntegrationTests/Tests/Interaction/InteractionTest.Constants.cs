@@ -7,7 +7,7 @@ public abstract partial class InteractionTest
     // Tiles
     protected const string Floor = "FloorSteel";
     protected const string FloorItem = "FloorTileItemSteel";
-    protected const string Plating = "Plating";
+    protected const string Plating = "ScpPlating"; // Fire edit
     protected const string Lattice = "Lattice";
 
     // Structures
@@ -29,8 +29,6 @@ public abstract partial class InteractionTest
     protected const string Rod = "MetalRod";
 
     // Parts
-    protected const string Bin1 = "MatterBinStockPart";
-    protected const string Cap1 = "CapacitorStockPart";
     protected const string Manipulator1 = "MicroManipulatorStockPart";
     protected const string Battery1 = "PowerCellSmall";
     protected const string Battery4 = "PowerCellHyper";

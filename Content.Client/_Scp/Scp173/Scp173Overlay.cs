@@ -2,6 +2,7 @@
 using Content.Client.Actions;
 using Content.Client.UserInterface.Systems.Actions;
 using Content.Shared.Actions;
+using Content.Shared.Actions.Components;
 using Content.Shared.Charges.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
@@ -60,8 +61,7 @@ public sealed class Scp173Overlay : Overlay
         if (_controller.SelectingTargetFor is not { } actionId)
             return;
 
-        if (!_actionsSystem.TryGetActionData(actionId, out var baseAction) ||
-            baseAction is not WorldTargetActionComponent action)
+        if (!_entity.TryGetComponent<ActionComponent>(actionId, out var action))
             return;
 
         if (!action.Enabled)

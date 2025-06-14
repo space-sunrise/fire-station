@@ -12,13 +12,13 @@
     Default: 4000
     Scp: 2000
   recipeUnlocks:
-    - BoneSetter
-    - BoneGel
-    - Scalpel
-    - Retractor
-    - Cautery
-    - Saw
-    - Hemostat
+  - BoneSetter
+  - BoneGel
+  - Scalpel
+  - Retractor
+  - Cautery
+  - Saw
+  - Hemostat
 
 - type: technology
   id: CyberLimbsTechAdvanced
@@ -32,92 +32,14 @@
     Default: 4000
     Scp: 2000
   recipeUnlocks:
-    - LeftArmCyber
-    - RightArmCyber
-    - LeftHandCyber
-    - RightHandCyber
-    - LeftLegCyber
-    - RightLegCyber
-    - LeftFootCyber
-    - RightFootCyber
-
-- type: technology
-  id: BasicSyringeGun
-  name: research-technology-basic-syringegun
-  icon:
-    sprite: Objects/Weapons/Guns/Cannons/syringe_gun.rsi
-    state: syringe_gun
-  discipline: Biochemical
-  tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
-  recipeUnlocks:
-    - MiniSyringe
-    - LauncherSyringeMed
-
-- type: technology
-  id: MedicalHyposprays
-  name: research-technology-medical-hyposprays
-  icon:
-    sprite: _Sunrise/Objects/Specific/Medical/hypospray.rsi
-    state: med-hypospray
-  discipline: Biochemical
-  tier: 2
-  cost:
-    Default: 6500
-    Scp: 2500
-  recipeUnlocks:
-    - HyposprayMedical
-
-- type: technology
-  id: CompactSyringeGun
-  name: research-technology-compact-syringegun
-  icon:
-    sprite: _Sunrise/Objects/Weapons/Guns/Launchers/syringe_pistol.rsi
-    state: syringe_gun
-  discipline: Biochemical
-  tier: 2
-  cost:
-    Default: 7500
-    Scp: 5000
-  recipeUnlocks:
-    - LauncherSyringePistol
-  technologyPrerequisites:
-  - BasicSyringeGun
-
-- type: technology
-  id: RapidSyringeGun
-  name: research-technology-rapid-syringegun
-  icon:
-    sprite: _Sunrise/Objects/Weapons/Guns/Launchers/syringe_rapidgun.rsi
-    state: syringe_gun
-  discipline: Biochemical
-  tier: 2
-  cost:
-    Default: 12500
-    Scp: 7500
-  recipeUnlocks:
-    - LauncherSyringeRapid
-  technologyPrerequisites:
-  - CompactSyringeGun
-
-- type: technology
-  id: SyringeGunCryostasis
-  name: research-technology-cryostasis-ammo
-  icon:
-    sprite: _Sunrise/Entities/Objects/Specific/Medical/syringe.rsi
-    state: cryo_base
-  discipline: Biochemical
-  tier: 2
-  cost:
-    Default: 7000
-    Scp: 2500
-  recipeUnlocks:
-    - MiniSyringeCryostasis
-  technologyPrerequisites:
-  - BasicSyringeGun
-  - BiochemicalStasis
+  - LeftArmCyber
+  - RightArmCyber
+  - LeftHandCyber
+  - RightHandCyber
+  - LeftLegCyber
+  - RightLegCyber
+  - LeftFootCyber
+  - RightFootCyber
 
 - type: technology
   id: SurgeryTechAdvanced
@@ -131,12 +53,26 @@
     Default: 7000
     Scp: 3500
   recipeUnlocks:
-    - Drill
-    - SawAdvanced
-    - ScalpelAdvanced
-    - BoneSetterAdvanced
-    - RetractorAdvanced
-    - HemostatAdvanced
+  - Drill
+  - SawAdvanced
+  - ScalpelAdvanced
+  - BoneSetterAdvanced
+  - RetractorAdvanced
+  - HemostatAdvanced
+
+- type: technology
+  id: MedicalHyposprays
+  name: research-technology-medical-hyposprays
+  icon:
+    sprite: _Sunrise/Objects/Specific/Medical/hypospray.rsi
+    state: med-hypospray
+  discipline: Biochemical
+  tier: 2
+  cost:
+    Default: 6500
+    Scp: 3250
+  recipeUnlocks:
+  - HyposprayMedical
 
 - type: technology
   id: ImplantExtractor
@@ -150,21 +86,4 @@
     Default: 12500
     Scp: 7500
   recipeUnlocks:
-    - ImplantExtractorMachineCircuitboard
-
-- type: technology
-  id: SyringeGunBluespace
-  name: research-technology-bluespace-ammo
-  icon:
-    sprite: _Sunrise/Entities/Objects/Specific/Medical/syringe.rsi
-    state: bluespace_base
-  discipline: Biochemical
-  tier: 3
-  cost:
-    Default: 10000
-    Scp: 5000
-  recipeUnlocks:
-    - MiniSyringeBluespace
-  technologyPrerequisites:
-  - BasicSyringeGun
-  - BluespaceChemistry
+  - ImplantExtractorMachineCircuitboard

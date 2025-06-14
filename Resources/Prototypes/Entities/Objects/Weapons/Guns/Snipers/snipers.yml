@@ -27,10 +27,10 @@
       path: /Audio/Weapons/Guns/Gunshots/sniper.ogg
   - type: BallisticAmmoProvider
     capacity: 10
-    proto: CartridgeLightRifle
+    proto: CartridgeHeavyLightRifle #Sunrise-Edit 7,62x54R
     whitelist:
       tags:
-      - CartridgeLightRifle
+      - CartridgeHeavyRifle #Sunrise-Edit
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
@@ -57,10 +57,27 @@
   name: Kardashev-Mosin
   parent: [BaseWeaponSniper, BaseGunWieldable, BaseMajorContraband]
   id: WeaponSniperMosin
-  description: A weapon for hunting, or endless trench warfare. Uses .30 rifle ammo.
+  description: A true relic, the Kardashev-Mosin has served in nearly every armed conflict since its creation 670 years ago. The bolt-action design of the rifle remains virtually identical to its original design, whether used for hunting, sniping, or endless trench warfare. Loads 10 rounds of .30 rifle.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Snipers/bolt_gun_wood.rsi
+  - type: GunRequiresWield
+  - type: StaticPrice
+    price: 500
+  # Sunrise start
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Piercing: 15
+        Bloodloss: 2
+    angle: 0
+    animation: WeaponArcThrust
+    soundHit:
+      path: /Audio/Weapons/bladeslice.ogg
+  - type: AltFireMelee
+    attackType: Heavy
+  # Sunrise end
 
 - type: entity
   name: Hristov
@@ -80,6 +97,7 @@
     - SemiAuto
     soundGunshot:
       collection: awp # Sunrise-Edit
+    projectileSpeed: 55 # Sunrise-Edit
   - type: BallisticAmmoProvider
     whitelist:
       tags:
@@ -91,8 +109,10 @@
     sprintModifier: 0.25
   - type: CursorOffsetRequiresWield
   - type: EyeCursorOffset
-    maxOffset: 3
-    pvsIncrease: 0.3
+    maxOffset: 10 # Sunrise-Edit
+    pvsIncrease: 1 # Sunrise-Edit
+  - type: StaticPrice
+    price: 3500
 
 - type: entity
   name: musket
@@ -131,6 +151,7 @@
     animation: WeaponArcThrust
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
+  - type: GunRequiresWield
 
 - type: entity
   name: flintlock pistol
@@ -157,17 +178,15 @@
   - type: BallisticAmmoProvider
     whitelist:
       tags:
-        - CartridgeMagnum # changed from Anti-material rifle rounds because it's a flintlock pistol not a Hristov 
+        - CartridgeMagnum # changed from Anti-material rifle rounds because it's a flintlock pistol not a Hristov
     capacity: 1
     proto: CartridgeMagnum
   - type: StaticPrice
     price: 0
 
 - type: entity
-  name: flintlock pistol
   parent: WeaponPistolFlintlock
   id: WeaponPistolFlintlockEmpty
-  description: A pirate's companion. Yarrr! Uses .45 magnum ammo.
   suffix: Empty
   components:
   - type: BallisticAmmoProvider

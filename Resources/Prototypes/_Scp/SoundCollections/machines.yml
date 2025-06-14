@@ -1,0 +1,5 @@
+﻿- type: soundCollection
+  id: ScpKeyboard
+  files:
+  - /Audio/_Scp/Machines/Keyboard/sound1.ogg
+  - /Audio/_Scp/Machines/Keyboard/sound2.ogg

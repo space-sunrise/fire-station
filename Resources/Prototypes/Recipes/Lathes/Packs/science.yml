@@ -47,6 +47,7 @@
   recipes:
   - PowerCellMicroreactor
   - PowerCellHigh
+  - PowerCellHyper
   - PowerCageSmall # Sunrise-edit
 
 - type: latheRecipePack
@@ -56,6 +57,9 @@
   - WeaponForceGun
   - WeaponProtoKineticAccelerator
   - WeaponPlasmaCutter  # Sunrise-Add
+  - PKAUpgradeDamage
+  - PKAUpgradeRange
+  - PKAUpgradeFireRate
   - WeaponTetherGun
   - WeaponGauntletGorilla
 

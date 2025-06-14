@@ -86,7 +86,7 @@
 
 - type: loadoutGroup
   id: BrigmedicBackpack
-  name: loadout-group-brigmedic-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - BrigmedicBackpack
   - BrigmedicSatchel
@@ -94,14 +94,14 @@
 
 - type: loadoutGroup
   id: BrigmedicJumpsuit
-  name: loadout-group-brigmedic-jumpsuit
+  name: loadout-group-jumpsuit  # Fire edit
   loadouts:
   - BrigmedicJumpsuit
   - BrigmedicJumpskirt
 
 - type: loadoutGroup
   id: NanoTrasenRepresentativeJumpsuit
-  name: loadout-group-nanotrasenrepresentative-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   minLimit: 1
   loadouts:
   - NanoTrasenRepresentativeJumpsuit
@@ -110,7 +110,7 @@
 
 - type: loadoutGroup
   id: NanoTrasenRepresentativeOuterClothing
-  name: loadout-group-nanotrasenrepresentative-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -131,17 +131,32 @@
   loadouts:
   - BlueShieldJumpsuit
   - BlueShieldJumpskirt
+  - BlueShieldTurtleneck
+
+- type: loadoutGroup
+  id: BlueShieldBelt
+  name: loadout-group-blueshield-belt
+  loadouts:
+  - BlueShieldWebbing
+  - AssaultBeltBS
+
+- type: loadoutGroup
+  id: BlueShieldNeck
+  name: loadout-group-blueshield-neck
+  loadouts:
+  - BlueShieldMantle
+  - BlueShieldCoat
 
 - type: loadoutGroup
   id: BarberJumpsuit
-  name: loadout-group-barber-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - BarberJumpsuit
   - BarberJumpskirt
 
 - type: loadoutGroup
   id: SecurityTrinkets
-  name: loadout-group-security-trinkets
+  name: loadout-group-trinkets # Fire edit
   minLimit: 0
   maxLimit: 3
   loadouts:
@@ -151,7 +166,7 @@
   - SecurityRadioHandheld
   - SecurityTourniquet
   - SecurityWeaponMeleeNeedle
-  - SecurityHoloprojector
+  # - SecurityHoloprojector # Fire edit
 
 - type: loadoutGroup
   id: CorporateLaw
@@ -162,7 +177,7 @@
 
 - type: loadoutGroup
   id: CentCommOperatorJumpsuit
-  name: loadout-group-centcomm-operator-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - CentCommOfficerJumpsuit
   - CentCommOfficerJumpskirt
@@ -171,14 +186,14 @@
 
 - type: loadoutGroup
   id: CentCommOperatorHats
-  name: loadout-group-centcomm-operator-head-hat
+  name: loadout-group-hat # Fire edit
   loadouts:
   - HeadHatBeretCentcomNaval
   - HeadHatCentcomcap
 
 - type: loadoutGroup
   id: ChiefEngineerBackpack
-  name: loadout-group-chief-engineer-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - ChiefEngineerBackpack
   - ChiefEngineerSatchel
@@ -186,14 +201,14 @@
 
 - type: loadoutGroup
   id: SeniorOfficerJumpsuit
-  name: loadout-group-senior-officer-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - JumpsuitSeniorOfficer
   - JumpskirtSeniorOfficer
 
 - type: loadoutGroup
   id: SeniorResearcherJumpsuit
-  name: loadout-group-senior-researcher-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - JumpsuitSeniorResearcher
   - JumpskirtSeniorResearcher
@@ -209,25 +224,39 @@
   #- SunriseWeaponPistolG22
   - SunriseWeaponEnergyGun
   - SunriseWeaponTaser
+
+# Security  HoS
+- type: loadoutGroup
+  id: SunriseSecurityGunHos
+  name: loadout-group-hos-gun
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - SunriseWeaponPistolG22
+  - SunriseWeaponTaser
+  - HeadofSecurityWeapon20h
+  - HeadofSecurityWeapon50h
+  - HeadofSecurityWeapon50h2
+  - HeadofSecurityWeapon100h
 # Medical
 
 - type: loadoutGroup
   id: SeniorPhysicianJumpsuit
-  name: loadout-group-senior-physician-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - JumpsuitSeniorPhysician
   - JumpskirtSeniorPhysician
 
 - type: loadoutGroup
   id: SeniorPhysicianBelt
-  name: loadout-group-senior-physician-belt
+  name: loadout-group-belt  # Fire edit
   loadouts:
   - BeltMedicalSeniorPhysician
   - ChemBagSeniorPhysician
 
 - type: loadoutGroup
   id: SunriseChiefMedicalOfficerMask
-  name: loadout-group-chief-medical-officer-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -246,7 +275,7 @@
 
 - type: loadoutGroup
   id: SunriseChiefMedicalOfficerGloves
-  name: loadout-group-chief-medical-officer-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -266,7 +295,7 @@
 
 - type: loadoutGroup
   id: SeniorPhysicianHead
-  name: loadout-group-senior-physician-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -290,7 +319,7 @@
 
 - type: loadoutGroup
   id: SeniorPhysicianOuterClothing
-  name: loadout-group-senior-physician-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -316,7 +345,7 @@
 
 - type: loadoutGroup
   id: SeniorPhysicianNeck
-  name: loadout-group-senior-physician-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -331,7 +360,7 @@
 
 - type: loadoutGroup
   id: SeniorPhysicianMask
-  name: loadout-group-senior-physician-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -350,7 +379,7 @@
 
 - type: loadoutGroup
   id: SeniorPhysicianShoes
-  name: loadout-group-senior-physician-shoes
+  name: loadout-group-shoes # Fire edit
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -366,7 +395,7 @@
 
 - type: loadoutGroup
   id: SeniorPhysicianGloves
-  name: loadout-group-senior-physician-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -386,7 +415,7 @@
 
 - type: loadoutGroup
   id: SunriseChemistHead
-  name: loadout-group-chemist-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -403,7 +432,7 @@
 
 - type: loadoutGroup
   id: SunriseChemistNeck
-  name: loadout-group-chemist-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -416,7 +445,7 @@
 
 - type: loadoutGroup
   id: SunriseChemistMask
-  name: loadout-group-chemist-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -432,7 +461,7 @@
 
 - type: loadoutGroup
   id: SunriseChemistGloves
-  name: loadout-group-chemist-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -448,7 +477,7 @@
 
 - type: loadoutGroup
   id: SunriseChemistShoes
-  name: loadout-group-chemist-shoes
+  name: loadout-group-shoes # Fire edit
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -461,7 +490,7 @@
 
 - type: loadoutGroup
   id: SunrisePsychologistHead
-  name: loadout-group-psychologist-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -469,7 +498,7 @@
 
 - type: loadoutGroup
   id: SunrisePsychologistOuterClothing
-  name: loadout-group-psychologist-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -481,7 +510,7 @@
 
 - type: loadoutGroup
   id: SunrisePsychologistNeck
-  name: loadout-group-psychologist-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -490,7 +519,7 @@
 
 - type: loadoutGroup
   id: SunrisePsychologistMask
-  name: loadout-group-psychologist-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -499,7 +528,7 @@
 
 - type: loadoutGroup
   id: SunrisePsychologistGloves
-  name: loadout-group-psychologist-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -509,7 +538,7 @@
 
 - type: loadoutGroup
   id: SunrisePsychologistShoes
-  name: loadout-group-psychologist-shoes
+  name: loadout-group-shoes # Fire edit
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -518,7 +547,7 @@
 
 - type: loadoutGroup
   id: SunriseMedicalDoctorNeck
-  name: loadout-group-medical-doctor-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -530,7 +559,7 @@
 
 - type: loadoutGroup
   id: SunriseParamedicNeck
-  name: loadout-group-paramedic-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -543,7 +572,7 @@
 
 - type: loadoutGroup
   id: SunriseParamedicMask
-  name: loadout-group-paramedic-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -558,7 +587,7 @@
 
 - type: loadoutGroup
   id: SunriseParamedicGloves
-  name: loadout-group-paramedic-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -575,7 +604,7 @@
 
 - type: loadoutGroup
   id: PathologistHead
-  name: loadout-group-pathologist-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -593,7 +622,7 @@
 
 - type: loadoutGroup
   id: PathologistOuterClothing
-  name: loadout-group-pathologist-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -609,7 +638,7 @@
 
 - type: loadoutGroup
   id: PathologistNeck
-  name: loadout-group-pathologist-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -620,7 +649,7 @@
 
 - type: loadoutGroup
   id: PathologistMask
-  name: loadout-group-pathologist-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -635,7 +664,7 @@
 
 - type: loadoutGroup
   id: PathologistShoes
-  name: loadout-group-pathologist-shoes
+  name: loadout-group-shoes # Fire edit
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -648,7 +677,7 @@
 
 - type: loadoutGroup
   id: PathologistGloves
-  name: loadout-group-pathologist-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -665,7 +694,7 @@
 
 - type: loadoutGroup
   id: MedicalTrinkets
-  name: loadout-group-medical-trinkets
+  name: loadout-group-trinkets # Fire edit
   minLimit: 0
   maxLimit: 2
   loadouts:
@@ -683,21 +712,21 @@
 
 - type: loadoutGroup
   id: SeniorEngineerJumpsuit
-  name: loadout-group-senior-engineer-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - JumpsuitSeniorEngineer
   - JumpskirtSeniorEngineer
 
 - type: loadoutGroup
   id: RoboticistJumpsuit
-  name: loadout-group-roboticist-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - RoboticistJumpsuit
   - RoboticistJumpskirt
 
 - type: loadoutGroup
   id: RoboticistOuterClothing
-  name: loadout-group-roboticist-outerclothing
+  name: loadout-group-outerclothing # Fire edit
   minLimit: 0
   loadouts:
   - RoboticistLabCoat
@@ -705,7 +734,7 @@
 
 - type: loadoutGroup
   id: RoboticistHead
-  name: loadout-group-roboticist-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   loadouts:
   - RoboticistCap
@@ -751,14 +780,14 @@
 
 - type: loadoutGroup
   id: AdjutantJumpsuit
-  name: loadout-group-adj-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - AdjutantJumpsuit
   - AdjutantJumpskirt
 
 - type: loadoutGroup
   id: AdjutantBackpack
-  name: loadout-group-adj-backpack
+  name: loadout-group-backpack # Fire edit
   loadouts:
   - AdjutantBackpack
   - AdjutantSatchel
@@ -766,7 +795,7 @@
 
 - type: loadoutGroup
   id: AdjutantHead
-  name: loadout-group-adj-head
+  name: loadout-group-head # Fire edit
   loadouts:
   - AdjutantCap
   - AdjutantBeret
@@ -774,7 +803,7 @@
 
 - type: loadoutGroup
   id: AdjutantOuterClothing
-  name: loadout-group-adj-outerClothing
+  name: loadout-group-outerClothing # Fire edit
   loadouts:
   - AdjutantCoat
 
@@ -782,7 +811,7 @@
 
 - type: loadoutGroup
   id: TrinketsEngineering
-  name: loadout-group-engineering-trinkets
+  name: loadout-group-trinkets # Fire edit
   minLimit: 0
   maxLimit: 2
   loadouts:
@@ -801,7 +830,7 @@
 
 - type: loadoutGroup
   id: SeniorEngineerNeck
-  name: loadout-group-senior-engineering-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -814,7 +843,7 @@
 
 - type: loadoutGroup
   id: SeniorEngineerMask
-  name: loadout-group-senior-engineering-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -827,13 +856,14 @@
 
 - type: loadoutGroup
   id: SeniorEngineerHead
-  name: loadout-group-senior-engineering-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
   - Sunrise-EngineerHeadBeret
   - Sunrise-BandRed
   - Sunrise-BandOrange
+  - Sunrise-AtmosBeret
   - Sunrise-BandYellow
   - Sunrise-BandCyan
   - StationEngineerHardhatRed
@@ -847,7 +877,7 @@
 
 - type: loadoutGroup
   id: SeniorEngineerShoes
-  name: loadout-group-senior-engineering-shoes
+  name: loadout-group-shoes # Fire edit
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -861,7 +891,7 @@
 
 - type: loadoutGroup
   id: SeniorEngineerOuterClothing
-  name: loadout-group-senior-engineering-outer-clothing
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -874,7 +904,7 @@
 
 - type: loadoutGroup
   id: StationSeniorEngineerBackpack
-  name: loadout-group-senior-engineering-backpack
+  name: loadout-group-backpack # Fire edit
   minLimit: 1
   maxLimit: 1
   loadouts:
@@ -887,7 +917,7 @@
 
 - type: loadoutGroup
   id: SeniorEngineerGloves
-  name: loadout-group-senior-engineering-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -900,7 +930,7 @@
 
 - type: loadoutGroup
   id: StationSunriseEngineerGloves
-  name: loadout-group-station-engineer-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -911,7 +941,7 @@
 
 - type: loadoutGroup
   id: StationSunriseEngineerMask
-  name: loadout-group-station-engineer-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -922,7 +952,7 @@
 
 - type: loadoutGroup
   id: StationSunriseEngineerNeck
-  name: loadout-group-station-engineer-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -933,7 +963,7 @@
 
 - type: loadoutGroup
   id: SunriseAtmosGloves
-  name: loadout-group-atmospheric-technician-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -946,11 +976,12 @@
 
 - type: loadoutGroup
   id: SunriseAtmosHead
-  name: loadout-group-atmospheric-technician-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
   - Sunrise-EngineerHeadBeret
+  - Sunrise-AtmosBeret
   - Sunrise-BandRed
   - Sunrise-BandOrange
   - Sunrise-BandYellow
@@ -966,7 +997,7 @@
 
 - type: loadoutGroup
   id: SunriseAtmosMask
-  name: loadout-group-atmospheric-technician-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -979,7 +1010,7 @@
 
 - type: loadoutGroup
   id: SunriseAtmosNeck
-  name: loadout-group-atmospheric-technician-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -992,7 +1023,7 @@
 
 - type: loadoutGroup
   id: SunriseCEGloves
-  name: loadout-group-chief-engineer-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -1005,7 +1036,7 @@
 
 - type: loadoutGroup
   id: SunriseCEMask
-  name: loadout-group-chief-engineer-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -1019,7 +1050,7 @@
 
 - type: loadoutGroup
   id: ChiefEngineerHead
-  name: loadout-group-chief-engineer-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -1045,7 +1076,7 @@
 
 - type: loadoutGroup
   id: SunriseQuartermasterGloves
-  name: loadout-group-quartermaster-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -1056,7 +1087,7 @@
 
 - type: loadoutGroup
   id: SunriseCargoTechGloves
-  name: loadout-group-cargo-technician-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -1066,14 +1097,14 @@
 
 - type: loadoutGroup
   id: MailCarrierJumpsuit
-  name: loadout-group-mail-jumpsuit
+  name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - MailCarrierJumpsuit
   - MailCarrierJumpskirt
 
 - type: loadoutGroup
   id: SunriseSalvageGloves
-  name: loadout-group-salvage-specialist-gloves
+  name: loadout-group-gloves # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -1084,7 +1115,7 @@
 
 - type: loadoutGroup
   id: SunriseQuartermasterMask
-  name: loadout-group-quartermaster-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -1096,7 +1127,7 @@
 
 - type: loadoutGroup
   id: SunriseCargoTechMask
-  name: loadout-group-cargo-technician-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -1106,7 +1137,7 @@
 
 - type: loadoutGroup
   id: SunriseSalvageMask
-  name: loadout-group-salvage-specialist-mask
+  name: loadout-group-mask # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -1118,7 +1149,7 @@
 
 - type: loadoutGroup
   id: SunriseCargoTechNeck
-  name: loadout-group-cargo-technician-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -1128,7 +1159,7 @@
 
 - type: loadoutGroup
   id: SunriseSalvageNeck
-  name: loadout-group-salvage-specialist-neck
+  name: loadout-group-neck # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -1140,7 +1171,7 @@
 
 - type: loadoutGroup
   id: SunriseSalvageHead
-  name: loadout-group-salvage-specialist-head
+  name: loadout-group-head # Fire edit
   minLimit: 0
   maxLimit: 1
   loadouts:
@@ -1161,7 +1192,7 @@
 
 - type: loadoutGroup
   id: TrinketsCargo
-  name: loadout-group-cargo-trinkets
+  name: loadout-group-trinkets # Fire edit
   minLimit: 0
   maxLimit: 2
   loadouts:

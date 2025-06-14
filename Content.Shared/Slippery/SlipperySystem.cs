@@ -59,7 +59,7 @@ public sealed class SlipperySystem : EntitySystem
         SubscribeLocalEvent<SlowedOverSlipperyComponent, InventoryRelayedEvent<GetSlowedOverSlipperyModifierEvent>>(OnGetSlowedOverSlipperyModifier);
         SubscribeLocalEvent<SlipperyComponent, EndCollideEvent>(OnEntityExit);
 
-        _cfg.OnValueChanged(SunriseCCVars.SlipDeadChanse, OnSLipDeadChanseChanged, true);
+        _cfg.OnValueChanged(SunriseCCVars.SlipDeadChance, OnSLipDeadChanseChanged, true);
     }
 
     // Sunrise-Start
@@ -119,7 +119,7 @@ public sealed class SlipperySystem : EntitySystem
         if (HasComp<KnockedDownComponent>(other) && !component.SlipData.SuperSlippery)
             return;
 
-        var attemptEv = new SlipAttemptEvent();
+        var attemptEv = new SlipAttemptEvent(uid);
         RaiseLocalEvent(other, attemptEv);
         if (attemptEv.SlowOverSlippery)
             _speedModifier.AddModifiedEntity(other);
@@ -143,6 +143,7 @@ public sealed class SlipperySystem : EntitySystem
             {
                 var sliding = EnsureComp<SlidingComponent>(other);
                 sliding.CollidingEntities.Add(uid);
+                // Why the fuck does this assertion stack overflow every once in a while
                 DebugTools.Assert(_physics.GetContactingEntities(other, physics).Contains(uid));
             }
         }
@@ -183,7 +184,14 @@ public sealed class SlipAttemptEvent : EntityEventArgs, IInventoryRelayEvent
 
     public bool SlowOverSlippery;
 
+    public EntityUid? SlipCausingEntity;
+
     public SlotFlags TargetSlots { get; } = SlotFlags.FEET;
+
+    public SlipAttemptEvent(EntityUid? slipCausingEntity)
+    {
+        SlipCausingEntity = slipCausingEntity;
+    }
 }
 
 /// <summary>

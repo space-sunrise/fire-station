@@ -25,7 +25,7 @@ public abstract partial class SharedBlinkingSystem
 
     private void OnShutdown(Entity<BlinkableComponent> ent, ref ComponentShutdown args)
     {
-        _actions.RemoveAction(ent, ent.Comp.EyeToggleActionEntity);
+        _actions.RemoveAction(ent.Owner, ent.Comp.EyeToggleActionEntity);
 
         if (!Exists(ent))
             return;

@@ -8,6 +8,20 @@
     layers:
     - map: [ "base" ]
       state: phantom
+  - type: Damageable
+    damageContainer: Biological
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      50: Dead
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp106-phantom-name
+    description: ghost-panel-antagonist-scp106-phantom-description
+    priority: -5
   - type: FlashImmunity
   - type: Scp106Phantom
   - type: NightVision
@@ -19,10 +33,6 @@
   parent: BaseScp106Phantom
   name: SCP-106 Phantom
   components:
-  - type: MobState
-    allowedStates:
-    - Alive
-    - Dead
   - type: Destructible
     thresholds:
     - trigger:
@@ -31,8 +41,6 @@
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
-  - type: Damageable
-    damageContainer: Biological
   - type: HealthExaminable
     examinableTypes:
     - Blunt
@@ -42,10 +50,6 @@
     - Shock
     - Cold
     - Caustic
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      50: Dead
   - type: Fixtures
     fixtures:
       fix1:

@@ -18,7 +18,7 @@
   - type: StaticPrice
     price: 0
   - type: StackPrice
-    price: -2000
+    price: -10
   - type: Currency
     price:
       Suntick: 1
@@ -49,3 +49,30 @@
   components:
   - type: Stack
     count: 10
+
+- type: entity
+  parent: Suntick
+  id: Suntick40
+  categories: [ HideSpawnMenu ]
+  suffix: 40 ST
+  components:
+  - type: Stack
+    count: 40
+
+- type: entity
+  parent: Suntick
+  id: Suntick80
+  categories: [ HideSpawnMenu ]
+  suffix: 80 ST
+  components:
+  - type: Stack
+    count: 80
+
+- type: entity
+  parent: Suntick
+  id: Suntick100
+  categories: [ HideSpawnMenu ]
+  suffix: 100 ST
+  components:
+  - type: Stack
+    count: 100

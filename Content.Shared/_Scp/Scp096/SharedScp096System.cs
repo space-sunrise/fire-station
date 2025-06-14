@@ -1,7 +1,7 @@
-﻿using Content.Shared._Scp.Helpers;
-using Content.Shared._Scp.Scp096.Protection;
+﻿using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
+using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Audio;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode.Pacification;
@@ -29,7 +29,7 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSoundSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
-    [Dependency] private readonly SharedScpHelpersSystem _scpHelpers = default!;
+    [Dependency] private readonly SharedSunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -152,7 +152,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     public bool TryAddTarget(EntityUid targetUid, bool ignoreAngle = false, bool ignoreMask = false)
     {
-        if (!_scpHelpers.TryGetFirst<Scp096Component>(out var scpEntity))
+        if (!_helpers.TryGetFirst<Scp096Component>(out var scpEntity))
             return false;
 
         if (!TryAddTarget(scpEntity.Value, targetUid, ignoreAngle, ignoreMask))

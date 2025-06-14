@@ -1,8 +1,6 @@
 ﻿using System.Linq;
-using Content.Server._Scp.Helpers;
 using Content.Server._Scp.Scp096;
-using Content.Server.Examine;
-using Content.Shared._Scp.Blinking;
+using Content.Server._Sunrise.Helpers;
 using Content.Shared._Scp.Scp096;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
@@ -16,15 +14,15 @@ public sealed class ArtifactScp096MadnessSystem : BaseXAESystem<ArtifactScp096Ma
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly Scp096System _scp096 = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
-    [Dependency] private readonly ScpHelpersSystem _scpHelpers = default!;
+    [Dependency] private readonly SunriseHelpersSystem _helpers = default!;
 
     protected override void OnActivated(Entity<ArtifactScp096MadnessComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
-        if (!_scpHelpers.TryGetFirst<Scp096Component>(out var scp096))
+        if (!_helpers.TryGetFirst<Scp096Component>(out var scp096))
             return;
 
         var targets = _watching.GetWatchers(ent.Owner).ToHashSet();
-        var reducedTargets = _scpHelpers.GetPercentageOfHashSet(targets, ent.Comp.Percent);
+        var reducedTargets = _helpers.GetPercentageOfHashSet(targets, ent.Comp.Percent);
 
         foreach (var target in reducedTargets)
         {

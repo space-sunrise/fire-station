@@ -1,5 +1,7 @@
 ent-CrateServiceJanitorialSupplies = ящик с уборочным инвентарём
     .desc = Победите копоть и грязь с Незаменимыми Припасами для Уборки от Nanotrasen! Содержит три ведра, таблички мокрого пола, и очищающие гранаты. Также содержит одну швабру, тряпку, щётку, чистящий спрей, и мусорный пакет.
+ent-CrateServiceCleanerGrenades = оптовый ящик с чистящими гранатами
+    .desc = Содержит 2 коробки с чистящими гранатами для особенно запущенных случаев.
 ent-CrateServiceReplacementLights = ящик запасных лампочек
     .desc = Да воссияет над станцией Свет Эфира! Или хотя бы свет сорока двух лампочек-труб и двадцати одной обычной лампочки.
 ent-CrateServiceHolidayLights = ящик с праздничными огнями
@@ -35,5 +37,7 @@ ent-CrateTrashCartFilled = { ent-CrateTrashCart }
     .desc = { ent-CrateTrashCart.desc }
 ent-CrateCandles = ящик свечей
     .desc = Содержит 4 коробки свечей, 2 больших и 2 маленьких. Для создания атмосферы или ещё чего-нибудь.
+ent-CrateServiceColorfulLights = ящик с разноцветными огнями
+    .desc = Это не вечеринка, пока плохо видно, немного дезориентирует и болят уши.
 ent-CrateJanitorExplosive = { ent-ClosetJanitorBomb }
     .desc = { ent-ClosetJanitorBomb.desc }

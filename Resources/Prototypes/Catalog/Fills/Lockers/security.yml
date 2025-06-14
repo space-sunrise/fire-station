@@ -18,7 +18,7 @@
       - id: RubberStampWarden
       - id: DoorRemoteArmory
       - id: ClothingOuterHardsuitWarden
-      - id: HoloprojectorSecurity
+      # - id: HoloprojectorSecurity #Fire-Station
       - id: BookSpaceLaw
       - id: ClothingBackpackElectropack
         amount: 2
@@ -48,7 +48,7 @@
       - id: ClothingOuterCoatWardenAlt
       - id: RubberStampWarden
       - id: DoorRemoteArmory
-      - id: HoloprojectorSecurity
+      # - id: HoloprojectorSecurity #Fire-Station
       - id: BookSpaceLaw
       - id: ClothingBackpackElectropack
         amount: 2
@@ -86,9 +86,9 @@
       - id: ClothingHandsGlovesSecurity # Fire-Station
       - id: ClothingShoesBootsSecurityGuard # Fire-Station
       - id: WeaponMeleeNeedle
-        prob: 0.1
-      - id: HoloprojectorSecurity
-        prob: 0.6
+      #   prob: 0.1
+      # - id: HoloprojectorSecurity #Fire-Station
+      #   prob: 0.6
       - id: HyperLinkBookCorporateLaw # Sunrise-edit
         prob: 0.5
 
@@ -125,14 +125,6 @@
         prob: 0.3
       - id: MedkitBurnFilled
         prob: 0.7
-      - id: BoxMiniSyringe
-        prob: 0.75
-      - id: BoxMiniSyringe
-        prob: 0.25
-      - id: LauncherSyringeMed
-        prob: 0.45
-      - id: LauncherSyringePistol
-        prob: 0.15
       - id: ClothingNeckCloakMoth #bzzz Moth-pocalypse
         prob: 0.15
       - id: ClothingHeadHelmetSecurityMedic
@@ -148,8 +140,7 @@
   components:
   - type: StorageFill
     contents:
-      - id: ClothingEyesGlassesSecurity
-        prob: 0.3
+      - id: ClothingEyesGlassesNoir
       - id: ClothingHeadHatDetGadget
       - id: ClothingNeckTieDet
       - id: ClothingOuterVestDetective
@@ -162,7 +153,7 @@
       - id: DrinkDetFlask
       - id: ClothingHandsGlovesForensic
       - id: RubberStampDetective
-      - id: HoloprojectorSecurity
+      # - id: HoloprojectorSecurity #Fire-Station
       - id: BoxEvidenceMarkers
       - id: HandLabeler
       - id: PortableSurveillanceCameraMonitor # Sunrise-edit

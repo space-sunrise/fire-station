@@ -1,7 +1,7 @@
 - type: entity
   parent: IDCardStandard
-  id: BlueShieldIDCard
-  name: blueshield ID card
+  id: BlueShieldOfficerIDCard
+  name: blue shield officer ID card
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -11,7 +11,22 @@
   - type: Item
     heldPrefix: silver
   - type: PresetIdCard
-    job: BlueShield
+    job: BlueShieldOfficer
+
+- type: entity
+  parent: IDCardStandard
+  id: BlueShieldEnsignIDCard
+  name: blue shield ensign ID card
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
+    layers:
+    - state: gold
+    - state: idblueshield
+  - type: Item
+    heldPrefix: gold
+  - type: PresetIdCard
+    job: BlueShieldEnsign
 
 - type: entity
   parent: IDCardStandard
@@ -31,9 +46,10 @@
   name: security pilot ID card
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: default
-    - state: idsecurityofficer
+    - state: idsecuritypilot
   - type: PresetIdCard
     job: SecurityPilot
 
@@ -79,6 +95,7 @@
   name: brigmedic ID card
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: default
     - state: idbrigmedic
@@ -87,7 +104,7 @@
 
 - type: entity
   parent: IDCardStandard
-  id: PrisonerIDCard
+  id: PlanetPrisonerIDCard
   name: prisoner ID card
   components:
   - type: Sprite
@@ -330,3 +347,16 @@
     - state: idmail
   - type: PresetIdCard
     job: MailCarrier
+
+- type: entity
+  parent: IDCardStandard
+  id: MiningIDCard
+  name: mining ID card
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - state: idstationminer
+  - type: PresetIdCard
+    job: MiningSpecialist

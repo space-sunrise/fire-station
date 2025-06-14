@@ -48,8 +48,8 @@
     - id: Stunbaton
     - id: Handcuffs
     - id: Handcuffs
-    - id: HoloprojectorSecurity
-    - id: RadioHandheldSecurity
+    # - id: HoloprojectorSecurity #Fire-Station
+    #- id: RadioHandheldSecurity # Fire edit
 
 - type: entity
   id: ClothingBeltSecurityFilled

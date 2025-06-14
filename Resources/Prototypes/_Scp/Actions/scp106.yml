@@ -1,0 +1,134 @@
+﻿- type: entity
+  id: Scp106BackroomsAction
+  components:
+  - type: Action
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 4
+    icon:
+      sprite: _Scp/Scp106/actions.rsi
+      state: teleport
+  - type: InstantAction
+    event: !type:Scp106BackroomsAction
+      cost: 30
+
+- type: entity
+  id: Scp106RandomTeleportAction
+  components:
+  - type: Action
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 4
+    icon:
+      sprite: _Scp/Scp106/actions.rsi
+      state: teleport
+
+  - type: InstantAction
+    event: !type:Scp106RandomTeleportAction
+      cost: 30
+
+- type: entity
+  id: ActionScp106Shop
+  components:
+  - type: Action
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    icon:
+      sprite: _Scp/Scp106/actions.rsi
+      state: shop
+  - type: InstantAction
+    event: !type:Scp106ShopAction
+
+- type: entity
+  id: BecomeTeleportPhantomAction
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    icon:
+      sprite: _Scp/Scp106/actions.rsi
+      state: teleport
+  - type: InstantAction
+    event: !type:Scp106BecomeTeleportPhantomAction
+      phantomPrototype: Scp106CorporealPhantom
+      delay: 5
+      cost: 30
+
+### PHANTOM ABILITIES START
+
+- type: entity
+  id: Scp106Reverse
+  components:
+  - type: Action
+    itemIconStyle: BigAction
+    useDelay: 60
+    icon:
+      sprite: _Scp/Scp106/actions.rsi
+      state: reverse
+  - type: EntityTargetAction
+    event: !type:Scp106ReverseAction
+      delay: 3
+    canTargetSelf: false
+    whitelist:
+      components:
+      - HumanoidAppearance
+
+- type: entity
+  id: Scp106LeavePhantom
+  components:
+  - type: Action
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 60
+    icon:
+      sprite: _Scp/Scp106/actions.rsi
+      state: leave_phantom
+  - type: InstantAction
+    event: !type:Scp106LeavePhantomAction
+
+- type: entity
+  id: Scp106PassThrough
+  components:
+  - type: Action
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 15
+    icon:
+      sprite: _Scp/Scp106/actions.rsi
+      state: become_phantom
+  - type: InstantAction
+    event: !type:Scp106PassThroughAction
+      delay: 4
+
+- type: entity
+  id: Scp106BareBlade
+  components:
+  - type: Action
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 300
+    icon:
+      sprite: _Scp/Scp106/actions.rsi
+      state: become_phantom
+  - type: InstantAction
+    event: !type:Scp106BareBladeAction
+      prototype: Scp106ArmBlade
+
+### PHANTOM ABILITIES END
+
+### 3 TIRES OF PHANTOM ABILITY START
+
+- type: entity
+  id: Scp106BecomePhantom
+  components:
+  - type: Action
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 300
+    icon:
+      sprite: _Scp/Scp106/actions.rsi
+      state: become_phantom
+  - type: InstantAction
+    event: !type:Scp106BecomePhantomAction
+      phantomPrototype: Scp106Phantom
+      cost: 30
+### 3 TIRES OF PHANTOM ABILITY END

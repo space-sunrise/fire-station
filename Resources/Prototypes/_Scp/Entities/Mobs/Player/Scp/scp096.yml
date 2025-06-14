@@ -15,6 +15,10 @@
   - type: Scp096
   - type: WatchingTarget
   - type: ShowBlinkable
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-name
+    description: ghost-panel-antagonist-scp-description
+    priority: -10
   - type: Pullable
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0

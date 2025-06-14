@@ -46,7 +46,7 @@
   suffix: Salvage
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/salvage.rsi
+    sprite: Structures/Doors/Airlocks/Standard/cargo.rsi
   - type: Wires
     layoutId: AirlockCargo
 
@@ -148,7 +148,7 @@
   suffix: Mining(Salvage)
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Standard/mining.rsi
+    sprite: _Sunrise/Structures/Doors/Airlocks/Standard/salvage.rsi #Sunrise-Resprite
   - type: Wires
     layoutId: AirlockCargo
 
@@ -160,8 +160,8 @@
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/centcomm.rsi
 
-# edited by Sunrise, view in _Sunrise\Entities\Structures\Doors    
-#    
+# edited by Sunrise, view in _Sunrise\Entities\Structures\Doors
+#
 #- type: entity
 #  parent: Airlock
 #  id: AirlockHatch
@@ -227,7 +227,7 @@
   suffix: Salvage
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/salvage.rsi
+    sprite: _Sunrise/Structures/Doors/Airlocks/Glass/salvage.rsi #Sunrise-Resprite
   - type: Wires
     layoutId: AirlockCargo
 
@@ -321,7 +321,7 @@
   suffix: Mining(Salvage)
   components:
   - type: Sprite
-    sprite: Structures/Doors/Airlocks/Glass/mining.rsi
+    sprite: _Sunrise/Structures/Doors/Airlocks/Glass/salvage.rsi #Sunrise-Resprite
 
 - type: entity
   parent: AirlockCommandGlass # see standard

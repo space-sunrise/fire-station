@@ -136,15 +136,14 @@ SalvagePartsT4Spawner: SalvageLootSpawner
 SalvagePartsT3Spawner: SalvageLootSpawner
 SalvagePartsT3T4Spawner: SalvageLootSpawner
 SalvagePartsT2Spawner: SalvageLootSpawner
-AdvancedCapacitorStockPart: CapacitorStockPart
-SuperCapacitorStockPart: CapacitorStockPart
-QuadraticCapacitorStockPart: CapacitorStockPart
-NanoManipulatorStockPart: MicroManipulatorStockPart
+#SuperCapacitorStockPart: CapacitorStockPart
+#QuadraticCapacitorStockPart: CapacitorStockPart
+#NanoManipulatorStockPart: MicroManipulatorStockPart
 PicoManipulatorStockPart: MicroManipulatorStockPart
 FemtoManipulatorStockPart: MicroManipulatorStockPart
-AdvancedMatterBinStockPart: MatterBinStockPart
-SuperMatterBinStockPart: MatterBinStockPart
-BluespaceMatterBinStockPart: MatterBinStockPart
+#AdvancedMatterBinStockPart: MatterBinStockPart
+#SuperMatterBinStockPart: MatterBinStockPart
+#BluespaceMatterBinStockPart: MatterBinStockPart
 AnsibleSubspaceStockPart: null
 FilterSubspaceStockPart: null
 AmplifierSubspaceStockPart: null
@@ -542,6 +541,10 @@ LightTree06: LightTree
 DrinkIrishCarBomb: DrinkIrishSlammer
 
 # 2025-01-06
+BorgModuleRadiationDetection: null
+BorgModuleGPS: null
+BorgModuleLightReplacer: BorgModuleCustodial
+BorgModuleAdvancedTreatment: null
 ClothingMaskSexyClown: ClothingMaskBlushingClown
 ClothingMaskSexyMime: ClothingMaskBlushingMime
 
@@ -554,6 +557,10 @@ WeaponSubMachineGunVectorRubber: null
 
 # 2025-02-11
 WallShuttleInterior: WallShuttle
+
+# 2025-02-18
+PosterContrabandLustyExomorph: PosterContrabandRealExomorph
+PosterContrabandBustyBackdoorExoBabes6: PosterContrabandRouny
 
 # 2025-02-20
 MagazineBoxAntiMaterielBig: null
@@ -604,6 +611,76 @@ MediumXenoArtifact: ComplexXenoArtifact
 SimpleXenoArtifactItem: ComplexXenoArtifactItem
 MediumXenoArtifactItem: ComplexXenoArtifactItem
 VariedXenoArtifactItem: ComplexXenoArtifactItem
+
+# 2025-04-19
+ClothingOuterHardsuitSyndicate: ClothingOuterEVASuitSyndicate
+
+# 2025-04-26
+#ComputerCargoShuttle: ComputerShuttleCargo
+CargoShuttleComputerCircuitboard: CargoShuttleConsoleCircuitboard
+
+# 2025-05-02
+CigPackMixedNasty: CigPackMixed
+CigPackMixedMedical: CigPackMixed
+CigaretteIpecac: CigaretteNutriment
+CigarettePax: CigaretteSaline
+CigaretteTHC: CigaretteRobustHarvest
+CigaretteMuteToxin: CigaretteSodiumPolyacrylate
+CigaretteSpaceDrugs: CigaretteLipolicide
+CigaretteMilk: CigaretteHaloperidol
+CigaretteBread: CigaretteBbqSauce
+
+# 2025-05-09
+ClothingOuterHardsuitBasic: ClothingOuterHardsuitEVA
+ClothingHeadHelmetHardsuitBasic: null
+SuitStorageBasic: SuitStorageEVA
+
+# 2025-05-18
+ClothingNeckCloakMiner: null
+
+# 2025-05-22
+MatterBinStockPart: MicroManipulatorStockPart
+CapacitorStockPart: MicroManipulatorStockPart
+
+# 2025-05-26 Turrets
+#WeaponEnergyTurretStation: WeaponEnergyTurretSecurity Fire
+WeaponEnergyTurretStationControlPanel: WeaponEnergyTurretSecurityControlPanel
+WeaponEnergyTurretStationMachineCircuitboardBase: WeaponEnergyTurretSecurityMachineCircuitboard
+
+# 2025-05-30
+SpawnHonkBot: SpawnMobHonkBot
+
+# 2025-06-01
+CrateFoodPizzaLarge: CrateFoodPizza
+CrateFoodSoftdrinksLarge: CrateFoodSoftdrinks
+
+# 2025-06-09
+BarSignAlignTile: BarSign
+BarSignComboCafeAlignTile: BarSignComboCafe
+BarSignEmergencyRumPartyAlignTile: BarSignEmergencyRumParty
+BarSignLV426AlignTile: BarSignLV426
+BarSignMaidCafeAlignTile: BarSignMaidCafe
+BarSignMalteseFalconAlignTile: BarSignMalteseFalcon
+BarSignOfficerBeerskyAlignTile: BarSignOfficerBeersky
+BarSignRobustaCafeAlignTile: BarSignRobustaCafe
+BarSignTheAleNathAlignTile: BarSignTheAleNath
+BarSignTheBirdCageAlignTile: BarSignTheBirdCage
+BarSignTheCoderbusAlignTile: BarSignTheCoderbus
+BarSignTheDrunkCarpAlignTile: BarSignTheDrunkCarp
+BarSignEngineChangeAlignTile: BarSignEngineChange
+BarSignTheHarmbatonAlignTile: BarSignTheHarmbaton
+BarSignTheLightbulbAlignTile: BarSignTheLightbulb
+BarSignTheLooseGooseAlignTile: BarSignTheLooseGoose
+BarSignTheNetAlignTile: BarSignTheNet
+BarSignTheOuterSpessAlignTile: BarSignTheOuterSpess
+BarSignTheSinguloAlignTile: BarSignTheSingulo
+BarSignTheSunAlignTile: BarSignTheSun
+BarSignWiggleRoomAlignTile: BarSignWiggleRoom
+BarSignZocaloAlignTile: BarSignZocalo
+BarSignEmprahAlignTile: BarSignEmprah
+BarSignSpacebucksAlignTile: BarSignSpacebucks
+BarSignMaltroachAlignTile: BarSignMaltroach
+BarSignWhiskeyEchoesAlignTile: BarSignWhiskeyEchoes
 
 # Sunrise migrations
 # AirlockExternalGlassShuttleArrivals: AirlockExternalGlassShuttleArrivalsLocked # Fire edit
@@ -684,6 +761,30 @@ ScienceTechFab: null
 ReverseEngineeringMachine: null
 ScienceTechFabCircuitboard: null
 EngineeringTechFabCircuitboard: null
+WeaponPistolDeagle: null #Пока не обновят кабинеты ГСБ на картах.
+MagazineDeagle: null
+MagazineMagnum: null
+LockerBlueShieldFilledUplink: LockerBlueShieldEnsignFilled
+LockerBlueShieldFilledUplinkMultiphase: LockerBlueShieldEnsignFilled
+#GunSafeBlueShield: null Fire
+#SpawnPointBlueShield: SpawnPointBlueShieldOfficer Fire
+SuitStorageBlueShield: null
+LockerBlueShieldEnsignFilled: null
+LockerBlueShieldOfficerFilled: null
+PoweredLightBlueInterior: null
+RandomItem: null
+TableWoodReinforced: null
+BoxMiniSyringe: null
+LauncherSyringeMed: null
+PlushieUunaMiira: null
+
+# Кто удалил и не добавил в миграции
+PrintedDocumentClosingIndictment: null
+PrintedDocumentPermissionDisposeBody: null
+PrintedDocumentDeathCertificate: null
+PrintedDocumentReportOnTheChaptersMeeting: null
+SheetPrinter1: null
+BorgModuleDefibrillator: null
 
 # Fire added start
 PosterDyshi: PosterBreath
@@ -692,7 +793,7 @@ PosterGok: PosterGoc
 PosterSCP126: PosterSCP106
 
 GunSafeBlueShield: GunSafeInternalSecurityOperative
-LockerBlueshield: LockerInternalSecurityOperative
+LockerBlueShield: LockerInternalSecurityOperative
 LockerBlueshieldFilled: LockerInternalSecurityOperativeFilled
 LockerBlueshieldFilledUplink: LockerInternalSecurityOperativeFilled
 LockerBlueshieldFilledUplinkMultiphase: LockerInternalSecurityOperativeFilled
@@ -707,6 +808,7 @@ ClothingEyesGlassesBlueShield: ClothingEyesGlassesInternalSecurityOperative
 ClothingHeadHelmetHardsuitBlueshield: ClothingHeadHelmetHardsuitInternalSecurityOperative
 ClothingHeadHatBeretBlueShield: ClothingHeadHatBeretInternalSecurityOperative
 ClothingOuterArmorBlueShield: ClothingOuterArmorInternalSecurityOperative
+ClothingOuterHardsuitBlueShield: ClothingOuterHardsuitInternalSecurityOperative
 ClothingOuterHardsuitBlueshield: ClothingOuterHardsuitInternalSecurityOperative
 ClothingShoesBootsBlueShield: ClothingShoesBootsInternalSecurityOperative
 ClothingUniformJumpskirtBlueShield: ClothingUniformJumpskirtInternalSecurityOperative
@@ -734,6 +836,7 @@ Scp939Muzzler: ClothingMaskScp939
 CryogenicSleepUnitSpawnerLateJoin: null
 CryogenicSleepUnit: null
 
+WeaponEnergyTurretStationBase: WeaponEnergyTurretFacility
 WeaponEnergyTurretStation: WeaponEnergyTurretFacility
 WeaponEnergyTurretAI: WeaponEnergyTurretCSS
 
@@ -769,6 +872,7 @@ WallPlastitaniumDiagonal: ScpWallReinforcedDiagonal
 WallMiningDiagonal: ScpWallConcreteDiagonal
 SolidSecretDoor: ScpSolidSecretDoor
 WindowFrostedDirectional: ScpWindowReinforcedDirectional
+WallBrick: ScpWallFireBrick
 
 PlasticFlapsAirtightClear: ScpPlasticFlapsAirtightClear
 PlasticFlapsAirtightOpaque: ScpPlasticFlapsAirtightOpaque
@@ -910,12 +1014,12 @@ AirlockBrigGlassLocked: ScpAirlockBrigGlassLocked
 AirlockSecurityLawyerGlassLocked: ScpAirlockSecurityLawyerGlassLocked
 AirlockArmoryGlassLocked: ScpAirlockArmoryGlassLocked
 AirlockEVAGlassLocked: ScpAirlockEVAGlassLocked
-AirlockMaintLocked: ScpAirlockMaintLocked
 AirlockMaintGlassLocked: ScpAirlockMaintGlassLocked
 AirlockMaintSalvageLocked: ScpAirlockMaintSalvageLocked
 AirlockMaintCargoLocked: ScpAirlockMaintCargoLocked
 AirlockMaintCommandLocked: ScpAirlockMaintCommandLocked
 AirlockMaintCommonLocked: ScpAirlockMaintCommonLocked
+AirlockMaintLocked: ScpAirlockMaintCommonLocked
 AirlockMaintEngiLocked: ScpAirlockMaintEngiLocked
 AirlockMaintAtmoLocked: ScpAirlockMaintAtmoLocked
 AirlockMaintBarLocked: ScpAirlockMaintBarLocked
@@ -1285,6 +1389,15 @@ LockerBrigmedicFilled: null
 FaxMachineCentcom: FaxMachineRegionalAdministration
 FaxMachineSyndie: FaxMachineEncrypted
 FaxMachineCaptain: FaxMachineDirector
+
+# Остальное
+HoloprojectorSecurity: null
+SpawnMobCleanBot: SpawnMobRoomba
+
+FSCatwalkSteel: ScpCatwalkSteel
+FSCatwalkDark: ScpCatwalkDark
+FSCatwalkWhite: ScpCatwalkWhite
+Catwalk: ScpCatwalkSteel
 
 # Fire added end
 

@@ -18,11 +18,18 @@
 - type: loadoutEffectGroup
   id: SecurityStarWorthy
   effects:
+    # Fire edit start
     - !type:JobRequirementLoadoutEffect
       requirement:
         !type:DepartmentTimeRequirement
-        department: Security
-        time: 360000 #100 hrs
+        department: HeavyContainmentSecurityService
+        time: 180000 #50 hrs
+    - !type:JobRequirementLoadoutEffect
+      requirement:
+        !type:DepartmentTimeRequirement
+        department: ExternalAdministrativeZoneSecurityService
+        time: 180000 #50 hrs
+    # Fire edit end
 
 # Head
 - type: loadout

@@ -84,6 +84,17 @@
   name: cloth
   suffix: Full
   components:
+  # Sunrise added start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/Leather/pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/Leather/drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/Leather/drop.ogg
+  # Sunrise added end
   - type: Healing
     damageContainers:
       - Biological
@@ -173,6 +184,17 @@
   name: durathread
   suffix: Full
   components:
+  # Sunrise added start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/Leather/pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/Leather/drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/Leather/drop.ogg
+  # Sunrise added end
   - type: Stack
     stackType: Durathread
     baseLayer: base
@@ -232,6 +254,17 @@
   name: wood
   suffix: Full
   components:
+  # Sunrise added start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/Wood/pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/Wood/drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/Wood/drop.ogg
+  # Sunrise added end
   - type: Material
   - type: PhysicalComposition
     materialComposition:
@@ -390,6 +423,10 @@
   - type: PhysicalComposition
     materialComposition:
       Diamond: 100
+  - type: Tag
+    tags:
+    - RawMaterial
+    - Diamond
 
 - type: entity
   parent: MaterialDiamond
@@ -439,8 +476,14 @@
     tags:
       - ClothMade
       - RawMaterial
+      - Boll
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Cotton: 100
   - type: Item
     heldPrefix: cotton
+
 
 - type: entity
   parent: MaterialCotton
@@ -671,6 +714,10 @@
   description: Looks sharp. Sharp enough to poke someone's eye out. Holy fuck it's big.
   suffix: Full
   components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Slash: 15
   - type: Sprite
     sprite: Objects/Materials/Mob/sharktooth.rsi
     layers:
@@ -791,6 +838,9 @@
     sprite: Objects/Materials/hide.rsi
     shape:
     - 0,0,2,2
+  - type: Tag
+    tags:
+    - GoliathPlate
 
 - type: entity
   parent: MaterialGoliathHide

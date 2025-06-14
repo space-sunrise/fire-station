@@ -91,7 +91,7 @@
     range: 20
     volume: 10
     sound:
-      path: /Audio/_Scp/Ambient/Shift/portal.ogg
+      path: /Audio/_Scp/Ambience/Music/Shift/portal.ogg
       params:
         maxDistance: 15
         rolloffFactor: 4

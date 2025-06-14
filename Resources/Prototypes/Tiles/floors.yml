@@ -8,7 +8,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -26,7 +26,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -44,7 +44,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -62,7 +62,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -80,7 +80,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -98,7 +98,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -110,7 +110,7 @@
   id: FloorSteelOffset
   name: tiles-steel-floor-offset
   sprite: /Textures/Tiles/steel_offset.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -128,7 +128,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -146,7 +146,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -164,7 +164,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -182,7 +182,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -194,7 +194,7 @@
   id: FloorBrassFilled
   name: tiles-brass-floor-filled
   sprite: /Textures/Tiles/Misc/clockwork/clockwork_floor_filled.png
-  baseTurf: PlatingBrass
+  baseTurf: ScpPlating # Fire editBrass
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -206,7 +206,7 @@
   id: FloorBrassReebe
   name: tiles-brass-floor-reebe
   sprite: /Textures/Tiles/Misc/clockwork/reebe.png
-  baseTurf: PlatingBrass
+  baseTurf: ScpPlating # Fire editBrass
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -224,7 +224,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -242,7 +242,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -262,7 +262,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -280,7 +280,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -298,7 +298,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -316,7 +316,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -328,7 +328,7 @@
   id: FloorWhiteOffset
   name: tiles-white-floor-offset
   sprite: /Textures/Tiles/white_offset.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -346,7 +346,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -364,7 +364,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -382,7 +382,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -400,7 +400,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -418,7 +418,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -436,7 +436,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -454,7 +454,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -472,7 +472,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -490,7 +490,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -502,7 +502,7 @@
   id: FloorDarkOffset
   name: tiles-dark-floor-offset
   sprite: /Textures/Tiles/dark_offset.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -520,7 +520,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -538,7 +538,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -556,7 +556,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -574,7 +574,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -592,7 +592,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -604,7 +604,7 @@
   id: FloorTechMaint
   name: tiles-techmaint-floor
   sprite: /Textures/Tiles/tech_maint.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -613,10 +613,22 @@
   heatCapacity: 10000
 
 - type: tile
+  id: FloorTechMaintDark
+  name: tiles-techmaint-floor-dark
+  sprite: /Textures/Tiles/tech_maint_dark.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  itemDrop: FloorTileItemTechmaintDark
+  heatCapacity: 10000
+
+- type: tile
   id: FloorReinforced
   name: tiles-reinforced-floor
   sprite: /Textures/Tiles/reinforced.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -628,7 +640,7 @@
   id: FloorMono
   name: tiles-mono-floor
   sprite: /Textures/Tiles/mono.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -640,7 +652,7 @@
   id: FloorLino
   name: tiles-linoleum-floor
   sprite: /Textures/Tiles/lino.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -652,7 +664,7 @@
   id: FloorSteelDirty
   name: tiles-dirty-steel-floor
   sprite: /Textures/Tiles/steel_dirty.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -664,7 +676,7 @@
   id: FloorElevatorShaft
   name: tiles-elevator-shaft
   sprite: /Textures/Tiles/elevator_shaft.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -676,7 +688,7 @@
   id: FloorMetalDiamond
   name: tiles-diamond-plate-floor
   sprite: /Textures/Tiles/metaldiamond.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -688,7 +700,7 @@
   id: FloorRockVault
   name: tiles-rock-floor
   sprite: /Textures/Tiles/rock_vault.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -700,7 +712,7 @@
   id: FloorBlue
   name: tiles-blue-tile
   sprite: /Textures/Tiles/blue.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -718,7 +730,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -730,7 +742,7 @@
   id: FloorMining
   name: tiles-mining-tile
   sprite: /Textures/Tiles/mining_floor.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -742,7 +754,7 @@
   id: FloorMiningDark
   name: tiles-mining-dark-tile
   sprite: /Textures/Tiles/mining_floor_dark.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -754,7 +766,7 @@
   id: FloorMiningLight
   name: tiles-mining-light-tile
   sprite: /Textures/Tiles/mining_floor_light.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -767,7 +779,7 @@
   id: FloorFreezer
   name: tiles-freezer
   sprite: /Textures/Tiles/freezer.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -779,7 +791,7 @@
   id: FloorShowroom
   name: tiles-showroom-floor
   sprite: /Textures/Tiles/showroom.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -791,7 +803,7 @@
   id: FloorHydro
   name: tiles-hydro-floor
   sprite: /Textures/Tiles/hydro.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -809,7 +821,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -821,7 +833,7 @@
   id: FloorClown
   name: tiles-clown-floor
   sprite: /Textures/Tiles/clown.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -833,7 +845,7 @@
   id: FloorMime
   name: tiles-mime-floor
   sprite: /Textures/Tiles/mime.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -845,7 +857,7 @@
   id: FloorKitchen
   name: tiles-kitchen-floor
   sprite: /Textures/Tiles/kitchen.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -857,7 +869,7 @@
   id: FloorLaundry
   name: tiles-laundry-floor
   sprite: /Textures/Tiles/laundry.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -876,7 +888,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -895,7 +907,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -915,7 +927,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -935,7 +947,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -955,7 +967,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -975,7 +987,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -995,7 +1007,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1015,7 +1027,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1035,7 +1047,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1055,7 +1067,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1070,14 +1082,14 @@
   id: FloorArcadeBlue
   name: tiles-blue-arcade-floor
   sprite: /Textures/Tiles/arcadeblue.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepCarpet
   barestepSounds:
     collection: BarestepCarpet
-  friction: 0.25
+  friction: 1.25
   itemDrop: FloorTileItemArcadeBlue
   heatCapacity: 10000
 
@@ -1085,14 +1097,14 @@
   id: FloorArcadeBlue2
   name: tiles-blue-arcade-floor
   sprite: /Textures/Tiles/arcadeblue2.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepCarpet
   barestepSounds:
     collection: BarestepCarpet
-  friction: 0.25
+  friction: 1.25
   itemDrop: FloorTileItemArcadeBlue2
   heatCapacity: 10000
 
@@ -1100,14 +1112,14 @@
   id: FloorArcadeRed
   name: tiles-red-arcade-floor
   sprite: /Textures/Tiles/arcadered.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepCarpet
   barestepSounds:
     collection: BarestepCarpet
-  friction: 0.25
+  friction: 1.25
   itemDrop: FloorTileItemArcadeRed
   heatCapacity: 10000
 
@@ -1115,14 +1127,14 @@
   id: FloorEighties
   name: tiles-eighties-floor
   sprite: /Textures/Tiles/eighties.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepCarpet
   barestepSounds:
     collection: BarestepCarpet
-  friction: 0.25
+  friction: 1.25
   itemDrop: FloorTileItemEighties
   heatCapacity: 10000
 
@@ -1130,14 +1142,14 @@
   id: FloorCarpetClown
   name: tiles-clown-carpet-floor
   sprite: /Textures/Tiles/carpetclown.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepCarpet
   barestepSounds:
     collection: BarestepCarpet
-  friction: 0.25
+  friction: 1.25
   itemDrop: FloorTileItemCarpetClown
   heatCapacity: 10000
 
@@ -1145,14 +1157,14 @@
   id: FloorCarpetOffice
   name: tiles-office-carpet-floor
   sprite: /Textures/Tiles/carpetoffice.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepCarpet
   barestepSounds:
     collection: BarestepCarpet
-  friction: 0.25
+  friction: 1.25
   itemDrop: FloorTileItemCarpetOffice
   heatCapacity: 10000
 
@@ -1166,12 +1178,12 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  friction: 0.25
+  friction: 1.25
   itemDrop: FloorTileItemBoxing
   heatCapacity: 10000
 
@@ -1185,12 +1197,12 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepFloor
-  friction: 0.25
+  friction: 1.25
   itemDrop: FloorTileItemGym
   heatCapacity: 10000
 
@@ -1205,7 +1217,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1223,7 +1235,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1241,7 +1253,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1259,7 +1271,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1277,7 +1289,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1295,7 +1307,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1313,7 +1325,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1327,7 +1339,7 @@
   id: FloorGold
   name: tiles-gold-tile
   sprite: /Textures/Tiles/gold.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1339,7 +1351,7 @@
   id: FloorSilver
   name: tiles-silver-tile
   sprite: /Textures/Tiles/silver.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1357,7 +1369,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1375,7 +1387,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1390,7 +1402,7 @@
   variants: 1
   placementVariants:
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1403,7 +1415,7 @@
   id: FloorGreenCircuit
   name: tiles-green-circuit-floor
   sprite: /Textures/Tiles/green_circuit.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1415,7 +1427,7 @@
   id: FloorBlueCircuit
   name: tiles-blue-circuit-floor
   sprite: /Textures/Tiles/blue_circuit.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1427,7 +1439,7 @@
   id: FloorRedCircuit
   name: tiles-red-circuit-floor
   sprite: /Textures/Tiles/red_circuit.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1539,7 +1551,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: true
   footstepSounds:
     collection: FootstepAsteroid
@@ -1549,8 +1561,8 @@
 # Asteroid
 
 - type: tile
-  id: FloorAsteroidSand
-  name: tiles-asteroid-sand
+  id: FloorAsteroidSandBorderless
+  name: tiles-asteroid-sand-borderless
   sprite: /Textures/Tiles/Asteroid/asteroid.png
   variants: 13
   placementVariants:
@@ -1575,8 +1587,23 @@
   weather: true
 
 - type: tile
-  id: FloorAsteroidSandDug
+  id: FloorAsteroidSand
+  parent: FloorAsteroidSandBorderless
   name: tiles-asteroid-sand
+  edgeSpritePriority: 1
+  edgeSprites:
+    SouthEast: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    NorthEast: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    NorthWest: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    SouthWest: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    South: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+    East: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+    North: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+    West: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+
+- type: tile
+  id: FloorAsteroidSandDugBorderless
+  name: tiles-asteroid-sand-borderless
   sprite: /Textures/Tiles/Asteroid/asteroid_dug.png
   baseTurf: Space
   isSubfloor: true
@@ -1586,8 +1613,23 @@
   weather: true
 
 - type: tile
-  id: FloorAsteroidSandRed
+  id: FloorAsteroidSandDug
+  parent: FloorAsteroidSandDugBorderless
   name: tiles-asteroid-sand
+  edgeSpritePriority: 1
+  edgeSprites:
+    SouthEast: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    NorthEast: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    NorthWest: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    SouthWest: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    South: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+    East: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+    North: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+    West: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+
+- type: tile
+  id: FloorAsteroidSandRedBorderless
+  name: tiles-asteroid-sand-borderless
   sprite: /Textures/Tiles/Asteroid/asteroid_red.png
   variants: 13
   placementVariants:
@@ -1612,10 +1654,25 @@
   weather: true
 
 - type: tile
+  id: FloorAsteroidSandRed
+  parent: FloorAsteroidSandRedBorderless
+  name: tiles-asteroid-sand
+  edgeSpritePriority: 1
+  edgeSprites:
+    SouthEast: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    NorthEast: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    NorthWest: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    SouthWest: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    South: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+    East: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+    North: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+    West: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+
+- type: tile
   id: FloorAsteroidTile
   name: tiles-asteroid-tile
   sprite: /Textures/Tiles/Asteroid/asteroid_tile.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1624,8 +1681,8 @@
   weather: true
 
 - type: tile
-  id: FloorAsteroidIronsand
-  name: tiles-asteroid-ironsand
+  id: FloorAsteroidIronsandBorderless
+  name: tiles-asteroid-ironsand-borderless
   sprite: /Textures/Tiles/Asteroid/ironsand.png
   variants: 15
   placementVariants:
@@ -1652,8 +1709,23 @@
   weather: true
 
 - type: tile
-  id: FloorAsteroidSandUnvariantized
-  name: tiles-asteroid-sand
+  id: FloorAsteroidIronsand
+  parent: FloorAsteroidIronsandBorderless
+  name: tiles-asteroid-ironsand
+  edgeSpritePriority: 1
+  edgeSprites:
+    SouthEast: /Textures/Tiles/Asteroid/iron_single_edge.png
+    NorthEast: /Textures/Tiles/Asteroid/iron_single_edge.png
+    NorthWest: /Textures/Tiles/Asteroid/iron_single_edge.png
+    SouthWest: /Textures/Tiles/Asteroid/iron_single_edge.png
+    South: /Textures/Tiles/Asteroid/iron_double_edge.png
+    East: /Textures/Tiles/Asteroid/iron_double_edge.png
+    North: /Textures/Tiles/Asteroid/iron_double_edge.png
+    West: /Textures/Tiles/Asteroid/iron_double_edge.png
+
+- type: tile
+  id: FloorAsteroidSandUnvariantizedBorderless
+  name: tiles-asteroid-sand-borderless
   sprite: /Textures/Tiles/Asteroid/asteroid0.png
   baseTurf: Space
   isSubfloor: true
@@ -1663,8 +1735,23 @@
   weather: true
 
 - type: tile
-  id: FloorAsteroidIronsandUnvariantized
-  name: tiles-asteroid-ironsand
+  id: FloorAsteroidSandUnvariantized
+  parent: FloorAsteroidSandUnvariantizedBorderless
+  name: tiles-asteroid-sand
+  edgeSpritePriority: 1
+  edgeSprites:
+    SouthEast: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    NorthEast: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    NorthWest: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    SouthWest: /Textures/Tiles/Asteroid/asteroid_single_edge.png
+    South: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+    East: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+    North: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+    West: /Textures/Tiles/Asteroid/asteroid_double_edge.png
+
+- type: tile
+  id: FloorAsteroidIronsandUnvariantizedBorderless
+  name: tiles-asteroid-ironsand-borderless
   sprite: /Textures/Tiles/Asteroid/ironsand0.png
   baseTurf: Space
   isSubfloor: true
@@ -1672,6 +1759,21 @@
     collection: FootstepAsteroid
   heatCapacity: 10000
   weather: true
+
+- type: tile
+  id: FloorAsteroidIronsandUnvariantized
+  parent: FloorAsteroidIronsandUnvariantizedBorderless
+  name: tiles-asteroid-ironsand
+  edgeSpritePriority: 1
+  edgeSprites:
+    SouthEast: /Textures/Tiles/Asteroid/iron_single_edge.png
+    NorthEast: /Textures/Tiles/Asteroid/iron_single_edge.png
+    NorthWest: /Textures/Tiles/Asteroid/iron_single_edge.png
+    SouthWest: /Textures/Tiles/Asteroid/iron_single_edge.png
+    South: /Textures/Tiles/Asteroid/iron_double_edge.png
+    East: /Textures/Tiles/Asteroid/iron_double_edge.png
+    North: /Textures/Tiles/Asteroid/iron_double_edge.png
+    West: /Textures/Tiles/Asteroid/iron_double_edge.png
 
 # Caves
 - type: tile
@@ -1723,20 +1825,20 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepBlood
   itemDrop: FloorTileItemFlesh
-  friction: 0.05 #slippy
+  friction: 0.25 #slippy
   heatCapacity: 10000
 
 - type: tile
   id: FloorTechMaint2
   name: tiles-techmaint2-floor
   sprite: /Textures/Tiles/steel_maint.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1754,7 +1856,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1772,7 +1874,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1795,7 +1897,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1809,7 +1911,7 @@
   id: FloorWebTile
   name: tiles-web
   sprite: /Textures/Tiles/Misc/Web/web_tile.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1843,7 +1945,7 @@
   id: FloorHull
   name: tiles-hull
   sprite: /Textures/Tiles/hull.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   footstepSounds:
     collection: FootstepHull
@@ -1854,7 +1956,7 @@
   id: FloorHullReinforced
   name: tiles-hull-reinforced
   sprite: /Textures/Tiles/hull_reinforced.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   footstepSounds:
     collection: FootstepHull
@@ -1866,7 +1968,7 @@
   id: FloorReinforcedHardened
   name: tiles-super-reinforced-floor
   sprite: /Textures/Tiles/super_reinforced.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   footstepSounds:
     collection: FootstepHull
@@ -1895,7 +1997,7 @@
     East: /Textures/Tiles/Planet/Grass/double_edge.png
     North: /Textures/Tiles/Planet/Grass/double_edge.png
     West: /Textures/Tiles/Planet/Grass/double_edge.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Cutting ]
   footstepSounds:
@@ -1914,7 +2016,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Cutting ]
   itemDrop: FloorTileItemMowedAstroGrass
@@ -1923,7 +2025,7 @@
   id: FloorJungleAstroGrass
   name: tiles-jungle-astro-grass
   parent: FloorGrassJungle
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Cutting ]
   itemDrop: FloorTileItemJungleAstroGrass
@@ -1933,21 +2035,20 @@
   id: FloorAstroIce
   name: tiles-astro-ice
   sprite: /Textures/Tiles/Planet/Snow/ice.png
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   friction: 0.05
   heatCapacity: 10000
-  mobFriction: 0.5
-  mobFrictionNoInput: 0.05
-  mobAcceleration: 2
+  mobFriction: 0.05
+  mobAcceleration: 0.1
   itemDrop: FloorTileItemAstroIce
 
 - type: tile
   id: FloorAstroSnow
   name: tiles-astro-snow
   parent: FloorSnow
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   itemDrop: FloorTileItemAstroSnow
@@ -1957,6 +2058,16 @@
   id: FloorAstroAsteroidSand
   name: tiles-astro-asteroid-sand
   parent: FloorAsteroidSand
+  baseTurf: ScpPlating # Fire edit
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  itemDrop: FloorTileItemAstroAsteroidSand
+  weather: false
+
+- type: tile
+  id: FloorAstroAsteroidSandBorderless
+  name: tiles-astro-asteroid-sand-borderless
+  parent: FloorAsteroidSandBorderless
   baseTurf: Plating
   isSubfloor: false
   deconstructTools: [ Prying ]
@@ -1973,7 +2084,7 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: Plating
+  baseTurf: ScpPlating # Fire edit
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
@@ -1981,4 +2092,89 @@
   barestepSounds:
     collection: BarestepWood
   itemDrop: FloorTileItemWoodLarge
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorXeno
+  name: tiles-xeno-floor
+  sprite: /Textures/Tiles/xeno_flooring.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepBlood
+  itemDrop: FloorTileItemXeno
+  friction: 0.05 #slippy
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorXenoSteel
+  name: tiles-xeno-steel
+  sprite: /Textures/Tiles/xeno_steel.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: FloorTileItemXeno
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorXenoSteelHorizontal
+  name: tiles-xeno-steel-horizontal
+  sprite: /Textures/Tiles/xeno_steel_horizontal.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepTile
+  itemDrop: FloorTileItemXeno
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorDarkSquiggly
+  name: tiles-dark-squiggly
+  sprite: /Textures/Tiles/dark_squiggly.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorDarkSquigglyVertical
+  name: tiles-dark-squiggly-vertical
+  sprite: /Textures/Tiles/dark_squiggly_vertical.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepFloor
+  itemDrop: FloorTileItemSteel
+  heatCapacity: 10000
+
+- type: tile
+  id: FloorXenoMaint
+  name: tiles-xeno-maint
+  sprite: /Textures/Tiles/xeno_maint.png
+  baseTurf: Plating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepHull
+  itemDrop: FloorTileItemXeno
   heatCapacity: 10000

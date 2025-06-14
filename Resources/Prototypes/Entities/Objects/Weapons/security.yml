@@ -4,11 +4,22 @@
   id: Stunbaton
   description: A stun baton for incapacitating people with. Actively harming with this is considered bad tone.
   components:
+  # Sunrise added start
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/Stunbatons/pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/Stunbatons/pickup.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/Stunbatons/pickup.ogg
+  # Sunrise added end
   - type: Sprite
     sprite: Objects/Weapons/Melee/stunbaton.rsi
     layers:
     - state: stunbaton_off
-      map: [ "enum.ToggleVisuals.Layer" ]
+      map: [ "enum.ToggleableVisuals.Layer" ]
   - type: Stunbaton
     energyPerUse: 50
   - type: ItemToggle
@@ -64,8 +75,8 @@
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-     enum.ToggleVisuals.Toggled:
-        enum.ToggleVisuals.Layer:
+     enum.ToggleableVisuals.Enabled:
+        enum.ToggleableVisuals.Layer:
           True: {state: stunbaton_on}
           False: {state: stunbaton_off}
   - type: StaticPrice
@@ -105,7 +116,7 @@
     wideAnimationRotation: -135
     damage:
       types:
-        Blunt: 20
+        Blunt: 15 # Sunrise-Edit
     soundHit:
       collection: MetalThud
     bluntStaminaDamageFactor: 1.5
@@ -174,6 +185,10 @@
       guides:
       - Security
       - Antagonists
+    - type: Tag #Sunerise-start
+      tags:
+      - Flash
+#Sunerise-end
 
 - type: entity
   name: flash

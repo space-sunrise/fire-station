@@ -36,6 +36,10 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 3
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-minor-name
+    description: ghost-panel-antagonist-scp-minor-description
+    priority: 0
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepBlood

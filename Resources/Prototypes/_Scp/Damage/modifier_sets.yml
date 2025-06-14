@@ -22,3 +22,48 @@
     Poison: 0.0
     Cellular: 0.0
     Radiation: 0.0
+
+- type: damageModifierSet
+  id: StructuralMetallicHardCellsScp
+  coefficients:
+    Blunt: 0.1
+    Slash: 0.1
+    Piercing: 0.1
+    Structural: 0.3
+  flatReductions:
+    Blunt: 30
+    Slash: 30
+    Piercing: 30
+    Heat: 20
+    Structural: 20
+
+- type: damageModifierSet
+  id: StructuralMetallicStrongScp
+  coefficients:
+    Blunt: 0.3
+    Slash: 0.2
+    Piercing: 0.1
+    Shock: 1.2
+    Structural: 0.5
+  flatReductions:
+    Blunt: 20
+    Slash: 20
+    Piercing: 20
+    Heat: 15
+    Structural: 15
+
+- type: damageModifierSet
+  id: StructuralMetallicScp
+  coefficients:
+    Blunt: 0.8
+    Slash: 0.8
+    Piercing: 0.8
+    Shock: 1.2
+    Heat: 1.2
+    Structural: 0.5
+  flatReductions:
+    Blunt: 15
+    Slash: 15
+    Piercing: 15
+    Heat: 10
+    Structural: 10

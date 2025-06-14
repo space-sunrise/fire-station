@@ -15,6 +15,7 @@
     - !type:DepartmentTimeRequirement
       department: Medical
       time: 36000 #10 hrs
+  weight: 10
   startingGear: CMOGear
   icon: "JobIconChiefMedicalOfficer"
   supervisors: job-supervisors-captain
@@ -30,6 +31,8 @@
   - Brig
   - Cryogenics
   special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant, TrackingImplant, DeathRattleImplantBlueShield ]
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
@@ -46,3 +49,15 @@
     back:
     - Flash
     - Telebaton # Sunrise-Edit
+
+- type: chameleonOutfit
+  id: ChiefMedicalOfficerChameleonOutfit
+  job: ChiefMedicalOfficer
+  hasMindShield: true
+  equipment:
+    head: ClothingHeadHatBeretCmo
+    eyes: ClothingEyesHudMedical
+    mask: ClothingMaskSterile
+    neck: ClothingCloakCmo
+    outerClothing: ClothingOuterCoatLabCmo
+    gloves: ClothingHandsGlovesNitrile

@@ -38,7 +38,6 @@
     - id: CargoBountyComputerCircuitboard
     - id: CargoRequestComputerCircuitboard
     - id: CargoSaleComputerCircuitboard
-    - id: CargoShuttleComputerCircuitboard
     - id: CargoShuttleConsoleCircuitboard
     - id: SalvageMagnetMachineCircuitboard
     - id: CigPackGreen
@@ -148,12 +147,6 @@
     #Sunrise-start
     - id: ClothingEyesUniversalMedicalHud
     - id: AdvancedDefibrillator
-    - id: LauncherSyringeMed
-      prob: 0.6
-    - id: BoxMiniSyringe
-      prob: 0.8
-    - id: BoxMiniSyringe
-      prob: 0.20
     #Sunrise-end
     - id: MedicalTechFabCircuitboard
     - id: MedkitFilled
@@ -214,7 +207,6 @@
     - id: ClothingMaskNeckGaiter
     - id: ClothingShoesBootsSecurityGuard
     - id: DoorRemoteSecurity
-    - id: HoloprojectorSecurity
     - id: RubberStampSecurityCommander
     - id: SecurityTechFabCircuitboard
     - id: WeaponDisabler

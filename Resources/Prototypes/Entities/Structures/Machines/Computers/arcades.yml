@@ -45,13 +45,13 @@
     price: 300
   - type: SpamEmitSoundRequirePower
   - type: SpamEmitSound
-    minInterval: 30
+    minInterval: 50
     maxInterval: 90
     sound:
       collection: ArcadeNoise
       params:
-        volume: -8
-        maxDistance: 10
+        volume: -12 # Fire edit
+        maxDistance: 3 # Fire edit
         variation: 0.05
 
 - type: entity

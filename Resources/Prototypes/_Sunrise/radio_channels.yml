@@ -6,6 +6,14 @@
   color: "#ff178b"
 
 - type: radioChannel
+  id: BlueShield
+  name: chat-radio-blue-shield
+  keycode: 'Z' # Fire edit - чтобы не конфликтовало
+  frequency: 1781
+  color: "#005bfb"
+  longRange: false
+
+- type: radioChannel
   id: USSP
   name: chat-radio-ussp
   keycode: 'Ё' # Fire edit - чтобы не конфликтовало

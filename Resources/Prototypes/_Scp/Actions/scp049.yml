@@ -2,34 +2,42 @@
   id: ActionScp049Resurrect
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityTargetAction
+  - type: Action
     useDelay: 120
-    icon: { sprite: _Scp/Actions/scp049-actions.rsi, state: resurrect }
+    icon:
+      sprite: _Scp/Actions/scp049-actions.rsi
+      state: resurrect
     itemIconStyle: NoItem
     priority: 12
+  - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
     event: !type:Scp049ResurrectAction
     canTargetSelf: false
-    interactOnMiss: false
     whitelist:
       components:
       - MobState
-#    blacklist: не работает бля
-#      components:
-#      - Scp
-#      - Scp049Protection
+    blacklist:
+      components:
+      - Scp
+      - Scp049Protection
 
 - type: entity
   id: ActionScp049KillResurrected
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityTargetAction
+  - type: Action
     useDelay: 0
-    icon: { sprite: _Scp/Actions/scp049-actions.rsi, state: kill_minion }
+    icon:
+      sprite: _Scp/Actions/scp049-actions.rsi
+      state: kill_minion
     itemIconStyle: NoItem
     priority: 12
+  - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
     event: !type:Scp049KillResurrectedAction
     canTargetSelf: false
-    interactOnMiss: false
     whitelist:
       components:
       - Scp049Minion
@@ -38,39 +46,49 @@
   id: ActionScp049KillLeavingBeing
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityTargetAction
+  - type: Action
     useDelay: 180
-    icon: { sprite: _Scp/Actions/scp049-actions.rsi, state: kill }
+    icon:
+      sprite: _Scp/Actions/scp049-actions.rsi
+      state: kill
     itemIconStyle: NoItem
     priority: 12
+  - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
     event: !type:Scp049KillLivingBeingAction
     canTargetSelf: false
-    interactOnMiss: false
     whitelist:
       components:
       - MobState
-#    blacklist: почему не работает суки
-#      components:
-#      - Scp
+    blacklist:
+      components:
+      - Scp
 
 - type: entity
   id: ActionScp049SelfHeal
   categories: [ HideSpawnMenu ]
   components:
-  - type: InstantAction
+  - type: Action
     useDelay: 300
-    icon: { sprite: _Scp/Actions/scp049-actions.rsi, state: heal }
+    icon:
+      sprite: _Scp/Actions/scp049-actions.rsi
+      state: heal
     itemIconStyle: NoItem
     priority: 12
+  - type: InstantAction
     event: !type:Scp049SelfHealAction
 
 - type: entity
   id: ActionScp049HealMinion
   categories: [ HideSpawnMenu ]
   components:
-  - type: EntityTargetAction
+  - type: Action
     useDelay: 300
-    icon: { sprite: _Scp/Actions/scp049-actions.rsi, state: heal }
+    icon:
+      sprite: _Scp/Actions/scp049-actions.rsi
+      state: heal
     itemIconStyle: NoItem
     priority: 12
+  - type: EntityTargetAction
     event: !type:Scp049HealMinionAction

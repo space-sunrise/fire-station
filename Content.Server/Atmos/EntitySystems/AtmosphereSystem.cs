@@ -1,6 +1,5 @@
 using Content.Server.Administration.Logs;
 using Content.Server.Atmos.Components;
-using Content.Server.Body.Systems;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Shared.Atmos.EntitySystems;
@@ -15,6 +14,7 @@ using Robust.Shared.Map;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using System.Linq;
+using System.Diagnostics;
 
 namespace Content.Server.Atmos.EntitySystems;
 
@@ -28,7 +28,6 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
     [Dependency] private readonly ITileDefinitionManager _tileDefinitionManager = default!;
     [Dependency] private readonly IAdminLogManager _adminLog = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly InternalsSystem _internals = default!;
     [Dependency] private readonly SharedContainerSystem _containers = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly GasTileOverlaySystem _gasTileOverlaySystem = default!;
@@ -50,13 +49,17 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
 
     private string[] _burntDecals = [];
 
+    private readonly Stopwatch _frameStopwatch = new();
+    private float _lastFrameTime;
+    private float _averageFrameTime;
+    private int _frameCount;
+
     public override void Initialize()
     {
         base.Initialize();
 
         UpdatesAfter.Add(typeof(NodeGroupSystem));
 
-        InitializeBreathTool();
         InitializeGases();
         InitializeCommands();
         InitializeCVars();
@@ -83,7 +86,10 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
 
     private void OnTileChanged(ref TileChangedEvent ev)
     {
-        InvalidateTile(ev.NewTile.GridUid, ev.NewTile.GridIndices);
+        foreach (var change in ev.Changes)
+        {
+            InvalidateTile(ev.Entity.Owner, change.GridIndices);
+        }
     }
 
     private void OnPrototypesReloaded(PrototypesReloadedEventArgs ev)
@@ -94,10 +100,22 @@ public sealed partial class AtmosphereSystem : SharedAtmosphereSystem
 
     public override void Update(float frameTime)
     {
+        _frameStopwatch.Restart();
+
         base.Update(frameTime);
 
         UpdateProcessing(frameTime);
         UpdateHighPressure(frameTime);
+
+        _frameStopwatch.Stop();
+        _lastFrameTime = (float)_frameStopwatch.Elapsed.TotalMilliseconds;
+        _averageFrameTime = (_averageFrameTime * _frameCount + _lastFrameTime) / (_frameCount + 1);
+        _frameCount++;
+
+        if (_frameCount % 100 == 0)
+        {
+            Logger.Info($"AtmosphereSystem: Last frame time: {_lastFrameTime:F2}ms, Average frame time: {_averageFrameTime:F2}ms");
+        }
 
         _exposedTimer += frameTime;
 

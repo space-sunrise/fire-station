@@ -37,6 +37,9 @@
 - type: Tag
   id: AnomalyCore
 
+- type: Tag
+  id: Flash
+
 # Catridges:
 
 - type: Tag
@@ -52,7 +55,20 @@
   id: CartridgeRail
 
 - type: Tag
+  id: CartridgeHeavyRifleNT
+
+- type: Tag
   id: MiniSyringe
+
+- type: Tag
+  id: HandGrenadeAmmo
+
+# Weapons
+- type: Tag
+  id: WrappedWeapon
+
+- type: Tag
+  id: UpgradeFlareGun
 
 # Magazines:
 - type: Tag
@@ -158,9 +174,6 @@
 
 - type: Tag
   id: MicroManipulatorStockPart
-
-- type: Tag
-  id: MatterBinStockPart
 
 - type: Tag
   id: PartRodMetal
@@ -353,3 +366,18 @@
 
 - type: Tag
   id: CarpRiftHealTarget
+
+- type: Tag
+  id: SheetPaper
+
+- type: Tag
+  id: PowerCellHigh
+
+- type: Tag
+  id: RiotShield
+
+- type: Tag
+  id: RiotShieldStrobe
+
+- type: Tag
+  id: DockCentComm

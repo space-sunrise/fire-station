@@ -10,6 +10,7 @@
     - Ghost
     - Jump
     - Flip
+    - Fall
     - Scp # Fire added
   popupMessages: ["animations-msg-flip"]
   animation: true
@@ -26,6 +27,7 @@
     - Ghost
     - Jump
     - Flip
+    - Fall
     - Scp # Fire added
   popupMessages: ["animations-msg-jump"]
   animation: true
@@ -42,6 +44,7 @@
     - Ghost
     - Jump
     - Flip
+    - Fall
     - Scp # Fire added
   popupMessages: ["animations-msg-dance"]
   animation: true
@@ -58,6 +61,7 @@
     - Ghost
     - Jump
     - Flip
+    - Fall
     - Scp # Fire added
   animation: true
 

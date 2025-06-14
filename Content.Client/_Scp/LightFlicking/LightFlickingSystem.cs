@@ -1,16 +1,16 @@
 ﻿using Content.Client.Light.Visualizers;
 using Content.Shared._Scp.LightFlicking;
 using Content.Shared.Light;
-using Robust.Client.Audio;
 using Robust.Client.GameObjects;
 using Robust.Shared.Audio;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.LightFlicking;
 
 public sealed class LightFlickingSystem : SharedLightFlickingSystem
 {
     [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
-    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private const float RadiusVariationPercentage = 0.2f;
     private const float EnergyVariationPercentage = 0.2f;
@@ -21,28 +21,28 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
     {
         base.Update(frameTime);
 
-        var query = AllEntityQuery<LightFlickingComponent, PoweredLightVisualsComponent>();
+        if (!_timing.IsFirstTimePredicted)
+            return;
 
-        while (query.MoveNext(out var uid, out var flicking, out _))
+        var query = AllEntityQuery<ActiveLightFlickingComponent, PoweredLightVisualsComponent, SpriteComponent>();
+
+        while (query.MoveNext(out var uid, out var flicking, out _, out var sprite))
         {
-            if (!flicking.Enabled)
-                continue;
-
             if (Timing.CurTime <= flicking.NextFlickTime)
                 continue;
 
-            var newEnergy = Variantize(flicking.DumpedEnergy, EnergyVariationPercentage);
-            var newRadius = Variantize(flicking.DumpedRadius, RadiusVariationPercentage);
+            var newEnergy = Variantize(flicking.CachedEnergy, EnergyVariationPercentage);
+            var newRadius = Variantize(flicking.CachedRadius, RadiusVariationPercentage);
             _pointLight.SetEnergy(uid, newEnergy);
             _pointLight.SetRadius(uid, newRadius);
 
             // Изменяем цвет лампочки в зависимости от того, насколько сильно изменилось свечение
-            var newColor = DimColorBasedOnChange(flicking.DumpedColor, flicking.DumpedRadius, newRadius);
+            var newColor = DimColorBasedOnChange(flicking.CachedColor, flicking.CachedRadius, newRadius);
             // _pointLight.SetColor(uid, newColor); слишком вырвиглазно, но работает
 
-            if (TryComp<SpriteComponent>(uid, out var spriteComponent))
-                spriteComponent.LayerSetColor(PoweredLightLayers.Glow, newColor);
+            sprite.LayerSetColor(PoweredLightLayers.Glow, newColor);
 
+            // TODO: Возможная реализация звука через AmbientSound
             // Движок не справляется с таким количеством звуков
             //_audio.PlayPvs(_flickSound, uid, AudioParams.Default.WithVolume(-8).WithMaxDistance(2f));
 
@@ -57,7 +57,7 @@ public sealed class LightFlickingSystem : SharedLightFlickingSystem
     }
 
     // Мне это написал чатгпт
-    private Color DimColorBasedOnChange(Color color, float firstNumber, float secondNumber)
+    private static Color DimColorBasedOnChange(Color color, float firstNumber, float secondNumber)
     {
         // Вычисляем разницу между вторым и первым числом
         var difference = Math.Abs(secondNumber - firstNumber);

@@ -74,6 +74,10 @@
     interactSuccessSound:
       collection: HappyScp999
     successChance: 1
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-name
+    description: ghost-panel-antagonist-scp-description
+    priority: -10
   - type: SleepEmitSound
     snore: /Audio/Voice/Misc/silly_snore.ogg
     interval: 10
@@ -137,7 +141,7 @@
       proper: true
       gender: male
   - type: TypingIndicator
-    proto: SCP-999
+    proto: scp999
   - type: ReplacementAccent
     accent: mouse
   - type: Hunger

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Linq;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.Power.Components;
@@ -32,17 +33,20 @@ namespace Content.Server.Power.EntitySystems
         private readonly HashSet<ApcNet> _apcNetReconnectQueue = new();
 
         private EntityQuery<ApcPowerReceiverBatteryComponent> _apcBatteryQuery;
-        private EntityQuery<AppearanceComponent> _appearanceQuery;
         private EntityQuery<BatteryComponent> _batteryQuery;
 
         private BatteryRampPegSolver _solver = new();
+
+        private readonly Stopwatch _frameStopwatch = new();
+        private float _lastFrameTime;
+        private float _averageFrameTime;
+        private int _frameCount;
 
         public override void Initialize()
         {
             base.Initialize();
 
             _apcBatteryQuery = GetEntityQuery<ApcPowerReceiverBatteryComponent>();
-            _appearanceQuery = GetEntityQuery<AppearanceComponent>();
             _batteryQuery = GetEntityQuery<BatteryComponent>();
 
             UpdatesAfter.Add(typeof(NodeGroupSystem));
@@ -274,6 +278,8 @@ namespace Content.Server.Power.EntitySystems
 
         public override void Update(float frameTime)
         {
+            _frameStopwatch.Restart();
+
             base.Update(frameTime);
 
             ReconnectNetworks();
@@ -293,6 +299,16 @@ namespace Content.Server.Power.EntitySystems
             UpdateApcPowerReceiver(frameTime);
             UpdatePowerConsumer();
             UpdateNetworkBattery();
+
+            _frameStopwatch.Stop();
+            _lastFrameTime = (float)_frameStopwatch.Elapsed.TotalMilliseconds;
+            _averageFrameTime = (_averageFrameTime * _frameCount + _lastFrameTime) / (_frameCount + 1);
+            _frameCount++;
+
+            if (_frameCount % 100 == 0)
+            {
+                Logger.Info($"PowerNetSystem: Last frame time: {_lastFrameTime:F2}ms, Average frame time: {_averageFrameTime:F2}ms");
+            }
         }
 
         private void ReconnectNetworks()
@@ -318,6 +334,19 @@ namespace Content.Server.Power.EntitySystems
             _powerNetReconnectQueue.Clear();
         }
 
+        private bool IsPoweredCalculate(ApcPowerReceiverComponent comp)
+        {
+            return !comp.PowerDisabled
+                   && (!comp.NeedsPower
+                       || MathHelper.CloseToPercent(comp.NetworkLoad.ReceivingPower,
+                           comp.Load));
+        }
+
+        public override bool IsPoweredCalculate(SharedApcPowerReceiverComponent comp)
+        {
+            return IsPoweredCalculate((ApcPowerReceiverComponent)comp);
+        }
+
         private void UpdateApcPowerReceiver(float frameTime)
         {
             var enumerator = AllEntityQuery<ApcPowerReceiverComponent>();
@@ -326,10 +355,7 @@ namespace Content.Server.Power.EntitySystems
                 var mapId = Transform(uid).MapUid;
                 var isAlwaysPowered = HasComp<AlwaysPoweredMapComponent>(mapId);
 
-                var powered = isAlwaysPowered || (!apcReceiver.PowerDisabled
-                              && (!apcReceiver.NeedsPower
-                                  || MathHelper.CloseToPercent(apcReceiver.NetworkLoad.ReceivingPower,
-                                      apcReceiver.Load)));
+                var powered = isAlwaysPowered || IsPoweredCalculate(apcReceiver);
 
                 MetaDataComponent? metadata = null;
 
@@ -385,9 +411,6 @@ namespace Content.Server.Power.EntitySystems
 
                 var ev = new PowerChangedEvent(powered, apcReceiver.NetworkLoad.ReceivingPower);
                 RaiseLocalEvent(uid, ref ev);
-
-                if (_appearanceQuery.TryComp(uid, out var appearance))
-                    _appearance.SetData(uid, PowerDeviceVisuals.Powered, powered, appearance);
             }
         }
 
@@ -396,10 +419,7 @@ namespace Content.Server.Power.EntitySystems
             var enumerator = EntityQueryEnumerator<PowerConsumerComponent>();
             while (enumerator.MoveNext(out var uid, out var consumer))
             {
-                var mapId = Transform(uid).MapUid;
-                var isAlwaysPowered = HasComp<AlwaysPoweredMapComponent>(mapId);
-
-                var newRecv = isAlwaysPowered ? consumer.DrawRate : consumer.NetworkLoad.ReceivingPower;
+                var newRecv = consumer.NetworkLoad.ReceivingPower;
                 ref var lastRecv = ref consumer.LastReceived;
                 if (MathHelper.CloseToPercent(lastRecv, newRecv))
                     continue;
@@ -415,11 +435,8 @@ namespace Content.Server.Power.EntitySystems
             var enumerator = EntityQueryEnumerator<PowerNetworkBatteryComponent>();
             while (enumerator.MoveNext(out var uid, out var powerNetBattery))
             {
-                var mapId = Transform(uid).MapUid;
-                var isAlwaysPowered = HasComp<AlwaysPoweredMapComponent>(mapId);
-
                 var lastSupply = powerNetBattery.LastSupply;
-                var currentSupply = isAlwaysPowered ? powerNetBattery.MaxSupply : powerNetBattery.CurrentSupply;
+                var currentSupply = powerNetBattery.CurrentSupply;
 
                 if (lastSupply == 0f && currentSupply != 0f)
                 {

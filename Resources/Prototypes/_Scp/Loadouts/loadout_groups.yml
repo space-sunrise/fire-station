@@ -54,6 +54,34 @@
   - GuardHelmet
   - GuardHelmet2
 
+- type: loadoutGroup
+  id: TrinketsHeavyContainmentSecurityService
+  name: loadout-group-trinkets
+  minLimit: 0
+  maxLimit: 3
+  loadouts:
+  - RadioHandheldHeavyContainmentSecurityService
+  - SecurityBodycam
+  - SecurityPepperspray
+  - SecurityWhistle
+  - SecurityTourniquet
+  - SecurityWeaponMeleeNeedle
+  # - SecurityHoloprojector # Fire edit
+
+- type: loadoutGroup
+  id: TrinketsExternalAdministrativeZoneSecurityService
+  name: loadout-group-trinkets
+  minLimit: 0
+  maxLimit: 3
+  loadouts:
+  - RadioHandheldExternalAdministrativeZoneSecurityService
+  - SecurityBodycam
+  - SecurityPepperspray
+  - SecurityWhistle
+  - SecurityTourniquet
+  - SecurityWeaponMeleeNeedle
+  # - SecurityHoloprojector # Fire edit
+
 # Оперативник Внутренней Безопасности
 
 - type: loadoutGroup

@@ -1,7 +1,7 @@
 using System.Linq;
 using System.Threading.Tasks;
-using Content.Server._Scp.Helpers;
 using Content.Server._Scp.Scp106.Components;
+using Content.Server._Sunrise.Helpers;
 using Content.Server.DoAfter;
 using Content.Server.GameTicking;
 using Content.Server.Gateway.Systems;
@@ -10,6 +10,7 @@ using Content.Server.Stunnable;
 using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Systems;
+using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Content.Shared.Body.Components;
 using Content.Shared.DoAfter;
@@ -35,7 +36,7 @@ public sealed partial class Scp106System : SharedScp106System
     [Dependency] private readonly StairsSystem _stairs = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
-    [Dependency] private readonly ScpHelpersSystem _scpHelpers = default!;
+    [Dependency] private readonly SunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly StoreSystem _store = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
@@ -44,6 +45,7 @@ public sealed partial class Scp106System : SharedScp106System
     [Dependency] private readonly DoAfterSystem _doAfter = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
+    [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -51,15 +53,15 @@ public sealed partial class Scp106System : SharedScp106System
     private static readonly FixedPoint2 EssenceRate = 1f;
     private static readonly TimeSpan AddEssenceCooldown = TimeSpan.FromSeconds(1);
 
-    public const int HumansInBackroomsRequiredToAscent = 10;
+    private const string BackroomsCurrencyPrototype = "LifeEssence";
+    private static readonly FixedPoint2 BackroomsEssenceRate = 2f;
 
+    public const int HumansInBackroomsRequiredToAscent = 10;
     public static readonly EntProtoId AscentRule = "Scp106AscentRule";
 
     private static TimeSpan _defaultOnBackroomsStunTime = TimeSpan.FromSeconds(5f);
 
-    private readonly SoundSpecifier _sendBackroomsSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/onbackrooms.ogg");
-
-    private static readonly TimeSpan PortalSpawnRate = TimeSpan.FromSeconds(60f);
+    private static readonly SoundSpecifier SendBackroomsSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/onbackrooms.ogg");
 
     public override void Initialize()
     {
@@ -80,6 +82,7 @@ public sealed partial class Scp106System : SharedScp106System
         #region Phantom
 
         SubscribeLocalEvent<Scp106PhantomComponent, MobStateChangedEvent>(OnMobStateChangedEvent);
+        SubscribeLocalEvent<Scp106PhantomComponent, EntityTerminatingEvent>(OnPhantomShutdown);
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseActionEvent>(OnScp106ReverseActionEvent);
 
         #endregion
@@ -166,7 +169,7 @@ public sealed partial class Scp106System : SharedScp106System
 
     #region Teleport and related code
 
-    public override async void SendToBackrooms(EntityUid target, Entity<Scp106Component>? scp106 = null)
+    public override async Task SendToBackrooms(EntityUid target, Entity<Scp106Component>? scp106 = null)
     {
         // You already here.
         if (HasComp<Scp106BackRoomMapComponent>(Transform(target).MapUid))
@@ -174,11 +177,7 @@ public sealed partial class Scp106System : SharedScp106System
 
         if (TryComp<Scp106Component>(target, out var scp106Component))
         {
-            var a = await GetTransferMark();
-
-            _transform.SetCoordinates(target, a);
-            _transform.AttachToGridOrMap(target);
-
+            await TeleportToBackroomsInternal(target);
             Scp106FinishTeleportation(target, scp106Component.TeleportationDuration);
 
             return;
@@ -188,20 +187,25 @@ public sealed partial class Scp106System : SharedScp106System
         if (!HasComp<HumanoidAppearanceComponent>(target))
             return;
 
-        var mark = await GetTransferMark();
-
-        _transform.SetCoordinates(target, mark);
-        _transform.AttachToGridOrMap(target);
+        await TeleportToBackroomsInternal(target);
 
         _stun.TryParalyze(target, _defaultOnBackroomsStunTime, true);
 
-        _audio.PlayEntity(_sendBackroomsSound, target, target);
+        _audio.PlayGlobal(SendBackroomsSound, target);
 
         if (scp106 != null)
         {
             AddCurrencyInStore(scp106.Value);
             CheckHumansInBackrooms();
         }
+    }
+
+    private async Task TeleportToBackroomsInternal(EntityUid target)
+    {
+        var mark = await GetTransferMark();
+
+        _transform.SetCoordinates(target, mark);
+        _transform.AttachToGridOrMap(target);
     }
 
     private bool CheckHumansInBackrooms()
@@ -261,7 +265,7 @@ public sealed partial class Scp106System : SharedScp106System
 
     public override void SendToStation(EntityUid target)
     {
-        if (!_scpHelpers.TryFindRandomTile(out _, out _, out _, out var targetCoords))
+        if (!_helpers.TryFindRandomTile(out _, out _, out _, out var targetCoords))
             return;
 
         _transform.SetCoordinates(target, targetCoords);
@@ -301,7 +305,7 @@ public sealed partial class Scp106System : SharedScp106System
 
     private HashSet<EntityCoordinates> SearchForMarks()
     {
-        return _scpHelpers.GetAll<Scp106BackRoomMarkComponent>()
+        return _helpers.GetAll<Scp106BackRoomMarkComponent>()
             .Select(entity => Transform(entity.Owner).Coordinates)
             .ToHashSet();
     }
@@ -310,6 +314,6 @@ public sealed partial class Scp106System : SharedScp106System
 
     private void AddCurrencyInStore(EntityUid uid)
     {
-        _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { "LifeEssence", 2f }, }, uid);
+        _store.TryAddCurrency(new Dictionary<string, FixedPoint2> { { BackroomsCurrencyPrototype, BackroomsEssenceRate }, }, uid);
     }
 }

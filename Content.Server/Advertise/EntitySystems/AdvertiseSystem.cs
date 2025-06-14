@@ -30,7 +30,7 @@ public sealed class AdvertiseSystem : EntitySystem
         SubscribeLocalEvent<AdvertiseComponent, MapInitEvent>(OnMapInit);
 
         SubscribeLocalEvent<ApcPowerReceiverComponent, AttemptAdvertiseEvent>(OnPowerReceiverAttemptAdvertiseEvent);
-        SubscribeLocalEvent<VendingMachineComponent, AttemptAdvertiseEvent>(OnVendingAttemptAdvertiseEvent);
+        SubscribeLocalEvent<AttemptAdvertiseEvent>(OnVendingAttemptAdvertiseEvent); // Fire
 
         _nextCheckTime = TimeSpan.MinValue;
     }
@@ -93,9 +93,9 @@ public sealed class AdvertiseSystem : EntitySystem
         args.Cancelled |= !powerReceiver.Powered;
     }
 
-    private static void OnVendingAttemptAdvertiseEvent(EntityUid uid, VendingMachineComponent machine, ref AttemptAdvertiseEvent args)
+    private static void OnVendingAttemptAdvertiseEvent(ref AttemptAdvertiseEvent args)
     {
-        args.Cancelled |= machine.Broken;
+        args.Cancelled = true; // Fire edit
     }
 }
 

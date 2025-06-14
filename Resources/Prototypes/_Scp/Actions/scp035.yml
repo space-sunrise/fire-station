@@ -1,0 +1,103 @@
+﻿# TODO: Локализация и кастомные названия + описания
+
+- type: entity
+  id: ActionScp035RaiseArmy
+  name: Raise Army
+  description: Spend some hunger to summon an allied rat to help defend you.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 4
+    icon:
+      sprite: _Scp/Actions/scp-035.rsi
+      state: raise
+  - type: InstantAction
+    event: !type:MaskRaiseArmyActionEvent
+
+- type: entity
+  id: ActionScp035OrderStay
+  name: Stay
+  description: Command your army to stand in place.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 1
+    icon:
+      sprite: _Scp/Actions/scp-035.rsi
+      state: stay
+    priority: 5
+  - type: InstantAction
+    event:
+      !type:MaskOrderActionEvent
+      type: Stay
+
+- type: entity
+  id: ActionScp035OrderFollow
+  name: Follow
+  description: Command your army to follow you around.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 1
+    icon:
+      sprite: _Scp/Actions/scp-035.rsi
+      state: follow
+    priority: 6
+  - type: InstantAction
+    event:
+      !type:MaskOrderActionEvent
+      type: Follow
+
+- type: entity
+  id: ActionScp035OrderKill
+  name: Kill 'Em
+  description: Command your army to attack whoever you point at.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 1
+    icon:
+      sprite: _Scp/Actions/scp-035.rsi
+      state: attack
+    priority: 7
+  - type: InstantAction
+    event:
+      !type:MaskOrderActionEvent
+      type: Kill
+
+- type: entity
+  id: ActionScp035OrderLoose
+  name: Loose
+  description: Command your army to act at their own will.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 1
+    icon:
+      sprite: _Scp/Actions/scp-035.rsi
+      state: loose
+    priority: 8
+  - type: InstantAction
+    event:
+      !type:MaskOrderActionEvent
+      type: Loose
+
+- type: entity
+  id: ActionScp035Stun
+  name: Гипноз
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 180
+    icon:
+      sprite: _Scp/Actions/scp-035.rsi
+      state: hypnosis
+    priority: 9
+  - type: TargetAction
+    interactOnMiss: false
+  - type: EntityTargetAction
+    event: !type:MaskStunActionEvent
+    canTargetSelf: false
+    whitelist:
+      components:
+      - MobState

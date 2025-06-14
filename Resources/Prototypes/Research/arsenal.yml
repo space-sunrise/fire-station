@@ -118,9 +118,10 @@
   recipeUnlocks:
   - Truncheon
   - TelescopicShield
-  - HoloprojectorSecurity
+  # - HoloprojectorSecurity #Fire-Station
   - WeaponDisablerSMG
   - ClothingHeadHelmetPubg  # Sunrise-Add
+  - FlareGunSecurityUpgrade # Sunrise-Add
 
 - type: technology
   id: ExplosiveTechnology
@@ -187,6 +188,22 @@
   recipeUnlocks:
   - WeaponXrayCannon
   - WeaponMechCombatXray  #Sunrise-Add
+
+- type: technology
+  id: KineticModifications
+  name: research-technology-kinetic-modifications
+  icon:
+    sprite: Objects/Tools/upgrade.rsi
+    state: display
+  discipline: Arsenal
+  tier: 2
+  cost:
+    Default: 7500
+    Scp: 3250
+  recipeUnlocks:
+  - PKAUpgradeDamage
+  - PKAUpgradeRange
+  - PKAUpgradeFireRate
 
 - type: technology
   id: BasicShuttleArmament

@@ -53,7 +53,9 @@
   - type: ItemBorgModule
     items:
     - DL6902Borg
-    - WeaponLauncherChinaLakeBorg
+    # - WeaponLauncherChinaLakeBorg
+    - HeavyRifleBorg
+    - WeaponLauncherDusterBorg
 
 - type: entity
   id: BorgScoutModuleSyndicateCombat
@@ -135,7 +137,7 @@
     - Truncheon
     - WeaponLaserBorg
     - WeaponLaserBorg
-    - HoloprojectorSecurityBorg
+    # - HoloprojectorSecurityBorg #Fire-Station
 
 - type: entity
   id: BorgModuleCombat
@@ -150,7 +152,7 @@
     items:
     - CombatKnife
     - WeaponLaserBorg
-    - HoloprojectorSecurityBorg
+    # - HoloprojectorSecurityBorg #Fire-Station
 
 - type: entity
   id: BorgModulePeace

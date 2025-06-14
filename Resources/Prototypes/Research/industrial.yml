@@ -32,7 +32,6 @@
   recipeUnlocks:
   - RadarConsoleCircuitboard
   - HandHeldMassScanner
-  - BorgModuleGPS
 
 - type: technology
   id: AdvancedPowercells
@@ -208,53 +207,10 @@
     - OreBagOfHolding
     - MiningDrillDiamond
     - AdvancedMineralScannerEmpty
+    - BorgModuleAdvancedMining
     - MechEquipmentDrillDiamond
     - MechIndustrialPlasmaCutter # Sunrise-Add
     - WeaponPlasmaCutter # Sunrise-Add
-
-- type: technology
-  id: Ripley2
-  name: research-technology-ripley-mkii
-  icon:
-    sprite: Objects/Specific/Mech/ripley.rsi
-    state: ripleymkii
-  discipline: Industrial
-  tier: 2
-  cost:
-    Default: 5000
-    Scp: 2500
-  recipeUnlocks:
-  - RipleyMKIIHarness
-  - RipleyUpgradeKit
-  - PaintRipleyAluminizer
-  - PaintRipleyFirestarter
-  - PaintRipleyHauler
-  - PaintRipleyZairjah
-  technologyPrerequisites:
-  - RipleyAPLU
-
-- type: technology
-  id: Clarke
-  name: research-technology-clarke
-  icon:
-    sprite: Objects/Specific/Mech/clarke.rsi
-    state: clarke
-  discipline: Industrial
-  tier: 2
-  cost:
-    Default: 9000
-    Scp: 4500
-  recipeUnlocks:
-  - ClarkeHarness
-  - ClarkeHead
-  - ClarkeLArm
-  - ClarkeRArm
-  - ClarkeTreads
-  - ClarkeCentralElectronics
-  - ClarkePeripheralsElectronics
-  - PaintClarkeOrangey
-  technologyPrerequisites:
-  - Ripley2
 
 # Tier 3
 
@@ -276,8 +232,8 @@
   - PlantBagOfHolding  # Sunrise-edit
 
 - type: technology
-  id: PortableFission
-  name: research-technology-portable-fission
+  id: OptimizedMicrogalvanism
+  name: research-technology-optimized-microgalvanism
   icon:
     sprite: Objects/Power/power_cells.rsi
     state: microreactor
@@ -288,5 +244,6 @@
     Scp: 5000
   recipeUnlocks:
   - PowerCellMicroreactor
+  - PowerCellHyper
   technologyPrerequisites:
   - AdvancedPowercells

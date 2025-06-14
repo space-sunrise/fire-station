@@ -40,8 +40,6 @@
 #    - id: ScpEffectCreateArtifacts
 #      weight: 1
 # Пока не работает
-    - id: ScpEffectRandomTransformation
-      weight: 1
     - id: EffectMagnetUltra
       weight: 1
     - id: ScpEffectShiftedAsciiTableAccent

@@ -1,5 +1,4 @@
 - type: gameMapPool
   id: DeathMatchMapPool
-  maps:
-  - MeteorArena
-  - dm01-entryway
+  maps: # Fire edit - все стандартные карты удалены в целях оптимизации использования RAM
+  - Empty

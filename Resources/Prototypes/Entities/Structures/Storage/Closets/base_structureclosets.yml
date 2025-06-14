@@ -56,13 +56,25 @@
         layer:
         - MachineLayer
   - type: EntityStorage
+    # Sunrise edit start
+    closeSound:
+      path: /Audio/_Sunrise/Structures/Closets/close.ogg
+      params:
+        volume: -1
+    openSound:
+      path: /Audio/_Sunrise/Structures/Closets/open.ogg
+      params:
+        volume: -1
+    # Sunrise edit end
+    # Fire edit start
     whitelist:
       components:
       - MobState
       - Item
-    blacklist: # Fire
+    blacklist:
       components:
       - Scp
+    # Fire edit end
   - type: ContainerContainer
     containers:
       entity_storage: !type:Container
@@ -202,6 +214,11 @@
           SheetSteel1:
             min: 1
             max: 1
+  - type: Appearance
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: generic_door
   - type: Construction
     graph: ClosetWall
     node: done

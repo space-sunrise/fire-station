@@ -64,7 +64,7 @@ public sealed class TilePryCommand : IConsoleCommand
 
                 if (!tileDef.CanCrowbar) continue;
 
-                var plating = tileDefinitionManager["Plating"];
+                var plating = tileDefinitionManager["ScpPlating"]; // Fire edit
                 mapSystem.SetTile(playerGrid.Value, mapGrid, coordinates, new Tile(plating.TileId));
             }
         }

@@ -129,6 +129,8 @@
       totalIntensity: 4000.0
       intensitySlope: 3
       maxIntensity: 400
+    - type: StaticPrice
+      price: 10000 # Good luck!
 
 - type: entity
   parent: SyndicateBomb
@@ -147,6 +149,7 @@
   id: DebugHardBomb
   name: debug bomb
   suffix: DEBUG
+  categories: [ Debug ] # Sunrise added
   description: Holy shit this is gonna explode.
   components:
     - type: Defusable

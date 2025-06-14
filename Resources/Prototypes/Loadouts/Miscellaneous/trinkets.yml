@@ -5,7 +5,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Command
+      department: Administration # Fire edit
       time: 3600 # 1 hour
 
 # Flowers
@@ -185,6 +185,12 @@
     - ClothingNeckGenderqueerPin
 
 - type: loadout
+  id: ClothingNeckGenderfluidPin
+  storage:
+    back:
+    - ClothingNeckGenderfluidPin
+
+- type: loadout
   id: ClothingNeckTransPin
   storage:
     back:
@@ -242,7 +248,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Cargo
+      department: LogisticsService # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -254,7 +260,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Civilian
+      department: FoodAndSanitationServiceDepartment # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -266,7 +272,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Command
+      department: Administration # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -278,11 +284,11 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Engineering
+      department: EngineeringTechnicalService # Fire edit
       time: 360000 # 100hr
   storage:
     back:
-    - TowelColorOrange
+    - TowelColorYellow # Fire edit
 
 - type: loadout
   id: TowelColorLightBlue
@@ -290,7 +296,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Medical
+      department: MedicalService # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -302,7 +308,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Science
+      department: ScientificService # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -311,11 +317,18 @@
 - type: loadout
   id: TowelColorRed
   effects:
+  # Fire edit start
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Security
-      time: 360000 # 100hr
+      department: HeavyContainmentSecurityService
+      time: 180000 #50 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService
+      time: 180000 #50 hrs
+  # Fire edit end
   storage:
     back:
     - TowelColorRed
@@ -338,7 +351,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobChaplain
+      role: JobDirector # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -362,7 +375,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobLawyer
+      role: JobTribunalOfficer # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -374,11 +387,11 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobClown
-      time: 360000 # 100hr
+      role: JobClassD # Fire edit
+      time: 180000 # 50hr  # Fire edit
   storage:
     back:
-    - TowelColorYellow
+    - TowelColorOrange # Fire edit
 
 - type: loadout
   id: TowelColorMime

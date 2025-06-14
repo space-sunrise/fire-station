@@ -2,19 +2,20 @@
   id: Cargo
   name: department-Cargo
   description: department-Cargo-description
-  color: "#A46106"
+  color: "#9E6A34" # Sunrise edit
   editorHidden: true # Fire added
   roles:
   - CargoTechnician
   - Quartermaster
   - SalvageSpecialist
   - MailCarrier # Sunrise-Roles
+  - MiningSpecialist # Sunrise-Roles
 
 - type: department
   id: Civilian
   name: department-Civilian
   description: department-Civilian-description
-  color: "#9FED58"
+  color: "#4e7c22" # Sunrise edit
   weight: -10
   editorHidden: true # Fire added
   roles:
@@ -36,30 +37,30 @@
   - ServiceWorker
   - Barber # Sunrise-Roles
 
-- type: department
-  id: CentralCommand
-  name: department-CentralCommand
-  description: department-CentralCommand-description
-  color: "#0c344d"
-  editorHidden: true # Fire added
-  roles:
-  - CentCommOperator # Sunrise-Edit
-  - CentCommOfficial # Sunrise-Edit
-  - CBURN
-  - ERTLeader
-  - ERTChaplain
-  - ERTJanitor
-  - ERTMedical
-  - ERTSecurity
-  - ERTEngineer
-  - DeathSquad
-  weight: 120
+# Вынесено в _Sunrise
+#- type: department
+#  id: CentralCommand
+#  name: department-CentralCommand
+#  description: department-CentralCommand-description
+#  color: "#0c344d"
+#  editorHidden: true # Fire added
+#  roles:
+#  - CBURN
+#  - ERTLeader
+#  - ERTChaplain
+#  - ERTJanitor
+#  - ERTMedical
+#  - ERTSecurity
+#  - ERTEngineer
+#  - DeathSquad
+#  editorHidden: true
+#  weight: 120
 
 - type: department
   id: Command
   name: department-Command
   description: department-Command-description
-  color: "#052EED" # Sunrise-Edit
+  color: "#065290" # Sunrise-Edit 2
   editorHidden: true # Fire added
   roles:
   - Captain
@@ -87,7 +88,7 @@
   id: Engineering
   name: department-Engineering
   description: department-Engineering-description
-  color: "#EFB341"
+  color: "#c07d1e" # Sunrise edit
   weight: 10  # Sunrise-weights
   editorHidden: true # Fire added
   roles:
@@ -101,7 +102,7 @@
   id: Medical
   name: department-Medical
   description: department-Medical-description
-  color: "#52B4E9"
+  color: "#3b627a" # Sunrise edit
   editorHidden: true # Fire added
   roles:
   - Chemist
@@ -117,7 +118,7 @@
   id: Security
   name: department-Security
   description: department-Security-description
-  color: "#DE3A3A"
+  color: "#770101" # Sunrise edit
   weight: 20
   editorHidden: true # Fire added
   roles:
@@ -134,7 +135,7 @@
   id: Science
   name: department-Science
   description: department-Science-description
-  color: "#D381C9"
+  color: "#984EB4" # Sunrise edit
   editorHidden: true # Fire added
   roles:
   - ResearchDirector
@@ -148,7 +149,7 @@
   sort: 0
   name: department-Silicon
   description: department-Silicon-description
-  color: "#D381C9"
+  color: "#61738d" # Sunrise edit
   roles:
   - StationAi
   - Borg
@@ -166,7 +167,7 @@
   id: Specific
   name: department-Specific
   description: department-Specific-description
-  color: "#9FED58"
+  color: "#7f7f7f" # Sunrise edit
   weight: 5  # Sunrise-weights
   editorHidden: true # Fire added
   roles:

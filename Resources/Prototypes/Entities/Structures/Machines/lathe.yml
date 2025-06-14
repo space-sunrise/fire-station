@@ -18,6 +18,12 @@
         layer:
           - MachineLayer
   - type: Lathe
+    producingSound:
+      path: /Audio/Machines/circuitprinter.ogg
+      params:
+        volume: -2
+        maxDistance: 4
+        pitch: 0.7
   - type: MaterialStorage
   - type: Destructible
     thresholds:
@@ -553,6 +559,7 @@
         - Sheet
         - RawMaterial
         - Ingot
+  - type: OreSiloClient
 
 - type: entity
   id: Biogenerator
@@ -673,6 +680,7 @@
       tags:
       - Raw
       - Wooden
+      - Boll
   - type: Lathe
     idleState: base_machine
     runningState: base_machine_processing
@@ -714,3 +722,4 @@
         - Wooden
         - RawMaterial
         - Plastic
+  - type: OreSiloClient

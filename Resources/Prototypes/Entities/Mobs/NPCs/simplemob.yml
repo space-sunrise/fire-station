@@ -4,7 +4,6 @@
   - BaseMob
   - MobDamageable
   - MobPolymorphable
-  - MobAtmosExposed
   id: BaseSimpleMob
   abstract: true
   components:
@@ -43,6 +42,7 @@
   abstract: true
   parent:
   - BaseSimpleMob
+  - MobAtmosExposed
   - MobCombat
   - MobBloodstream
   - MobFlammable

@@ -8,3 +8,11 @@
   # Fire edit
   # ПОЖАЛУЙСТА НЕ ДОБАВЛЯЙТЕ СЮДА ЭФФЕКТЫ ОБРАТНО
   # НАМ ОНИ НЕ НУЖНЫ
+
+- type: reagent
+  id: Inc
+  name: reagent-name-inc
+  group: Special
+  desc: reagent-desc-inc
+  physicalDesc: reagent-physical-desc-glowing
+  color: "#000000"

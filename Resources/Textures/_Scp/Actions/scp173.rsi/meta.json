@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "size":
+  {
+    "x": 32,
+    "y": 32
+},
+"license": "CLA",
+"copyright": "SUNRISE",
+  "states":
+  [
+    {
+      "name": "blind"
+    },
+
+    {
+      "name": "clog"
+    },
+
+    {
+      "name": "damage_structures"
+    },
+
+    {
+      "name": "jump"
+    }
+  ]
+}

@@ -43,9 +43,10 @@ using Robust.Shared.Replays;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
+
 namespace Content.Client.UserInterface.Systems.Chat;
 
-public sealed class ChatUIController : UIController
+public sealed partial class ChatUIController : UIController
 {
     [Dependency] private readonly IClientAdminManager _admin = default!;
     [Dependency] private readonly IChatManager _manager = default!;
@@ -251,6 +252,7 @@ public sealed class ChatUIController : UIController
 
         _config.OnValueChanged(CCVars.ChatWindowOpacity, OnChatWindowOpacityChanged);
 
+        InitializeHighlights();
     }
 
     public void OnScreenLoad()
@@ -270,12 +272,18 @@ public sealed class ChatUIController : UIController
 
     private void OnChatWindowOpacityChanged(float opacity)
     {
-        SetChatWindowOpacity(1f); // Fire edit - нахуй вы наш сепаратед чат делаете полупрозрачным
+        SetChatWindowOpacity(opacity);
     }
 
     public void SetChatWindowOpacity(float opacity)
     {
         var chatBox = UIManager.ActiveScreen?.GetWidget<ChatBox>() ?? UIManager.ActiveScreen?.GetWidget<ResizableChatBox>();
+
+        // Fire added start - если у нас маленький чат, то его прозрачность можно будет поменять
+        // Если нет - всегда 0
+        var isResizableChat = UIManager.ActiveScreen?.GetWidget<ResizableChatBox>() != null;
+        opacity = isResizableChat ? opacity : 0f;
+        // Fire added end
 
         var panel = chatBox?.ChatWindowPanel;
         if (panel is null)
@@ -437,6 +445,8 @@ public sealed class ChatUIController : UIController
     private void OnAttachedChanged(EntityUid uid)
     {
         UpdateChannelPermissions();
+
+        UpdateAutoFillHighlights();
     }
 
     private void AddSpeechBubble(ChatMessage msg, SpeechBubble.SpeechType speechType)
@@ -868,6 +878,12 @@ public sealed class ChatUIController : UIController
                 msg.WrappedMessage = SharedChatSystem.InjectTagInsideTag(msg, "Name", "color", GetNameColor(SharedChatSystem.GetStringInsideTag(msg, "Name")));
         }
 
+        // Color any words chosen by the client.
+        foreach (var highlight in _highlights)
+        {
+            msg.WrappedMessage = SharedChatSystem.InjectTagAroundString(msg, highlight, "color", _highlightsColor);
+        }
+
         // Color any codewords for minds that have roles that use them
         if (_player.LocalUser != null && _mindSystem != null && _roleCodewordSystem != null)
         {
@@ -959,6 +975,11 @@ public sealed class ChatUIController : UIController
     public void NotifyChatTextChange()
     {
         _typingIndicator?.ClientChangedChatText();
+    }
+
+    public void NotifyChatFocus(bool isFocused)
+    {
+        _typingIndicator?.ClientChangedChatFocus(isFocused);
     }
 
     public void Repopulate()

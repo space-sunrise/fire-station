@@ -8,10 +8,11 @@ using Content.Shared.Mobs.Systems;
 
 namespace Content.Shared._Scp.Watching;
 
+// TODO: Отдельная система FOV с затемнением всего, что находится за спиной персонажа
 public sealed partial class EyeWatchingSystem
 {
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
-    [Dependency] private readonly SharedTransformSystem _transformSystem = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
@@ -112,9 +113,30 @@ public sealed partial class EyeWatchingSystem
     public bool IsWatchedBy(EntityUid target, IEnumerable<EntityUid> watchers, out IEnumerable<EntityUid> viewers, bool useFov = true, float? fovOverride = null)
     {
         viewers = watchers
+            .Where(eye => CanBeWatched(eye, target))
             .Where(eye => !IsEyeBlinded(eye, target, useFov, fovOverride));
 
         return viewers.Any();
+    }
+
+    /// <summary>
+    /// Проверяет, может ли цель вообще быть увидена смотрящим
+    /// </summary>
+    /// <remarks>
+    /// Проверка заключается в поиске базовых компонентов, без которых Watching система не будет работать
+    /// </remarks>
+    /// <param name="viewer">Смотрящий, который в теории может увидеть цель</param>
+    /// <param name="target">Цель, которую мы проверяем на возможность быть увиденной смотрящим</param>
+    /// <returns>Да/нет</returns>
+    public bool CanBeWatched(Entity<BlinkableComponent?> viewer, EntityUid target)
+    {
+        if (!Resolve(viewer.Owner, ref viewer.Comp, false))
+            return false;
+
+        if (viewer.Owner == target)
+            return false;
+
+        return true;
     }
 
     /// <summary>
@@ -127,14 +149,8 @@ public sealed partial class EyeWatchingSystem
     /// <returns>Видит ли смотрящий цель</returns>
     public bool IsEyeBlinded(Entity<BlinkableComponent?> viewer, EntityUid target, bool useFov = false, float? fovOverride = null)
     {
-        if (!Resolve(viewer.Owner, ref viewer.Comp))
-            return false;
-
         if (_mobState.IsIncapacitated(viewer))
             return true;
-
-        if (viewer.Owner == target)
-            return false;
 
         // Проверяем, видит ли смотрящий цель
         if (useFov & !IsInViewAngle(viewer, target, fovOverride ?? DefaultFieldOfViewAngle))
@@ -179,8 +195,8 @@ public sealed partial class EyeWatchingSystem
         if (!Resolve(viewer, ref viewer.Comp))
             return float.MaxValue;
 
-        var targetWorldPosition = _transformSystem.GetMoverCoordinates(target.Owner);
-        var viewerWorldPosition = _transformSystem.GetMoverCoordinates(viewer.Owner);
+        var targetWorldPosition = _transform.GetMoverCoordinates(target.Owner);
+        var viewerWorldPosition = _transform.GetMoverCoordinates(viewer.Owner);
 
         var toTarget = (targetWorldPosition.Position - viewerWorldPosition.Position).Normalized(); // Вектор от target к SCP
         var viewerForward = viewer.Comp.LocalRotation.ToWorldVec(); // Направление взгляда target

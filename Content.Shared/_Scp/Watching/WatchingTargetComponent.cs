@@ -14,7 +14,7 @@ public sealed partial class WatchingTargetComponent : Component
     /// Сохраняет время последнего взгляда
     /// </summary>
     [AutoNetworkedField]
-    public Dictionary<EntityUid, TimeSpan> AlreadyLookedAt = new();
+    public Dictionary<NetEntity, TimeSpan> AlreadyLookedAt = new();
 
     public TimeSpan NextTimeWatchedCheck;
 }

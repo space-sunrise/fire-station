@@ -243,7 +243,7 @@
       implantAction: ActionActivateEmpImplant
     - type: TriggerImplantAction
     - type: EmpOnTrigger
-      range: 5.5 #2.75 Sunrise-Edit
+      range: 3 #2.75 Sunrise-Edit
       energyConsumption: 50000
       disableDuration: 10
 
@@ -289,6 +289,23 @@
       whitelist:
         components:
         - HumanoidAppearance # syndies cant turn hamlet into a human
+
+- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseSubdermalImplant
+  id: ChameleonControllerImplant
+  name: chameleon controller implant
+  description: This implant allows you to instantly change the appearance of all worn chameleon clothing.
+  components:
+  - type: ChameleonControllerImplant
+  - type: SubdermalImplant
+    implantAction: ActionChameleonController
+  - type: UseDelay
+    delay: 1
+  - type: UserInterface
+    interfaces:
+      enum.ChameleonControllerKey.Key:
+        type: ChameleonControllerBoundUserInterface
 
 #Nuclear Operative/Special Exclusive implants
 
@@ -435,6 +452,16 @@
   - type: RadioImplant
     radioChannels:
     - CentCom
+
+- type: entity
+  parent: DeathRattleImplant
+  id: DeathRattleImplantBlueShield
+  name: blue shield death rattle implant
+  description: This implant will inform the Centcomm radio channel should the user fall into critical condition or die.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Rattle
+    radioChannel: BlueShield
 
 - type: entity
   parent: DeathRattleImplant

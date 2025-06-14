@@ -206,15 +206,9 @@ public sealed partial class AnalysisConsoleMenu : FancyWindow
 
         var hasInfo = _xenoArtifact.HasUnlockedPredecessor(artifact.Value, node.Value);
 
-        // Fire edit start - поддержка локали в эффектах
-        var description = _ent.GetComponentOrNull<MetaDataComponent>(node.Value)?.EntityDescription ?? string.Empty;
-        description = _loc.TryGetString(description, out var descriptionLocalized) ? descriptionLocalized : description;
-
         EffectValueLabel.SetMarkup(Loc.GetString("analysis-console-info-effect-value",
             ("state", hasInfo),
-            ("info", description)));
-        // Fire edit end
-
+            ("info", Loc.GetString("artifact-effect-hint-data-deleted")))); // _ent.GetComponentOrNull<MetaDataComponent>(node.Value)?.EntityDescription ?? string.Empty
 
         var predecessorNodes = _xenoArtifact.GetPredecessorNodes(artifact.Value.Owner, node.Value);
         if (!hasInfo)
