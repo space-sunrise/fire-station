@@ -1,3 +1,4 @@
+using Content.Client._Scp.Blinking;
 using Content.Shared._Sunrise.ThermalVision;
 using Content.Shared.Body.Components;
 using Robust.Client.GameObjects;
@@ -13,6 +14,7 @@ public sealed class ThroughWallsVisionOverlay : Overlay
     [Dependency] private readonly IEntityManager _entityManager = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly IOverlayManager _overlay = default!; // Fire added
     private readonly ContainerSystem _containerSystem;
     private readonly TransformSystem _transform;
     private readonly ShaderInstance _shader;
@@ -43,6 +45,11 @@ public sealed class ThroughWallsVisionOverlay : Overlay
 
         if (!_entityManager.TryGetComponent<ThermalVisionComponent>(playerEntity, out var blurComp))
             return false;
+
+        // Fire edit start
+        if (_overlay.HasOverlay<BlinkingOverlay>())
+            return false;
+        // Fire edit end
 
         return true;
     }
