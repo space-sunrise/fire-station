@@ -72,8 +72,8 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
     private static readonly ProtoId<AudioPresetPrototype> FancyEffect = "Dizzy";
 
-    private const string GammaCode = "gamma";
-    private const string EpsilonCode = "epsilon";
+    private const string GammaCode = "scpPurple";
+    private const string EpsilonCode = "scpGamma";
 
     private static bool _noReturnPointReached;
 
