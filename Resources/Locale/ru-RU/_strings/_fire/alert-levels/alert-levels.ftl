@@ -1,9 +1,9 @@
-﻿alert-level-scp-announcement = Внимание! Установлен уровень угрозы  "{ $name }"!
+﻿alert-level-scp-announcement = Внимание! Установлен уровень угрозы "{ $name }"!
 { $announcement }
 
 go-to-bunker-instruction = Всему неуполномоченному в восстановлении условий содержания персоналу незамедлительно прекратить работу и пройти в любое безопасное место или бункер.
 
-alert-level-scpUnknown = Неизвестный.
+alert-level-scpUnknown = Неизвестный
 alert-level-scpUnknown-instructions = Неизвестно.
 
 alert-level-scpNone = Отсутствует
