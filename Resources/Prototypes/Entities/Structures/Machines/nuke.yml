@@ -112,7 +112,7 @@
         components:
         - NukeDisk
     alertLevelOnActivate: scpDelta # Fire edit
-    alertLevelOnDeactivate: scpNone # Fire edit
+    alertLevelOnDeactivate: scpBlue # Fire edit
   - type: ActivatableUI
     key: enum.NukeUiKey.Key
   - type: UserInterface

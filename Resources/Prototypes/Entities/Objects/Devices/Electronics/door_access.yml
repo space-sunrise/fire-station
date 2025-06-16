@@ -52,7 +52,7 @@
     # Fire-start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
@@ -71,7 +71,7 @@
     # Fire-start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
@@ -92,7 +92,7 @@
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
       scpOrange: ScpOrangeAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
@@ -110,7 +110,7 @@
     # Fire-start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpYellow: ScpYellowAlertAccesses
       scpRd: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
@@ -133,9 +133,9 @@
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
       scpOrange: ScpOrangeAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpYellow: ScpYellowAlertAccesses
-      scpRd: ScpRedAlertAccesses
+      scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
@@ -156,9 +156,9 @@
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
       scpOrange: ScpOrangeAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpYellow: ScpYellowAlertAccesses
-      scpRd: ScpRedAlertAccesses
+      scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
@@ -179,7 +179,7 @@
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
       scpOrange: ScpOrangeAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
@@ -200,7 +200,7 @@
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
       scpOrange: ScpOrangeAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpYellow: ScpYellowAlertAccesses
       scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
@@ -219,7 +219,7 @@
     access: [["Lawyer"]]
     # Fire-start
     alertAccesses:
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
       scpBlack: ScpBlackAlertAccesses
@@ -239,7 +239,7 @@
     # Fire-start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpYellow: ScpYellowAlertAccesses
       scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
@@ -280,7 +280,7 @@
     # Fire-start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpYellow: ScpYellowAlertAccesses
       scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
@@ -300,7 +300,7 @@
   # Fire-start
   alertAccesses:
     scpBlue: ScpBlueAlertAccesses
-    scpGrey: ScpGreyAlertAccesses
+    scpGray: ScpGrayAlertAccesses
     scpRed: ScpRedAlertAccesses
     scpPurple: ScpPurpleAlertAccesses
     scpBlack: ScpBlackAlertAccesses
@@ -350,7 +350,7 @@
     # Fire-start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
       scpBlack: ScpBlackAlertAccesses
@@ -371,7 +371,7 @@
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpOrange: ScpOrangeAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpYellow: ScpYellowAlertAccesses
       scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
@@ -404,7 +404,7 @@
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpYellow: ScpYellowAlertAccesses
       scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
@@ -425,7 +425,7 @@
   alertAccesses:
     scpGreen: ScpGreenAlertAccesses
     scpBlue: ScpBlueAlertAccesses
-    scpGrey: ScpGreyAlertAccesses
+    scpGray: ScpGrayAlertAccesses
     scpYellow: ScpYellowAlertAccesses
     scpRed: ScpRedAlertAccesses
     scpPurple: ScpPurpleAlertAccesses
@@ -458,7 +458,7 @@
     # Fire-start
     alertAccesses:
       scpOrange: ScpOrangeAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
@@ -545,7 +545,7 @@
     # Fire-start
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
     # Fire-end
@@ -562,7 +562,7 @@
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
       scpOrange: ScpOrangeAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpYellow: AllAccess
       scpRed: AllAccess
       scpPurple: AllAccess
@@ -609,7 +609,7 @@
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
       scpOrange: ScpOrangeAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpYellow: ScpYellowAlertAccesses
       scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
@@ -630,7 +630,7 @@
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
       scpOrange: ScpOrangeAlertAccesses
-      scpGrey: ScpGreyAlertAccesses
+      scpGray: ScpGrayAlertAccesses
       scpYellow: ScpYellowAlertAccesses
       scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses

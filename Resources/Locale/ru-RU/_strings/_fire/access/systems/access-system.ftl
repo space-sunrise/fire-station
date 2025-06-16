@@ -14,3 +14,4 @@ access-system-accesses-delay-scpPurple = { access-system-accesses-delay-basic-te
 
 access-system-accesses-delay-scpBlack = { access-system-accesses-delay-basic-text } Сотрудники службы безопасности и администрация комплекса получат расширенный доступ через { $time } секунд.
 access-system-accesses-delay-scpDelta = { access-system-accesses-delay-basic-text } Аварийные доступы будут выданы через { $time } секунд.
+access-system-accesses-delay-scpColdSilver = { access-system-accesses-delay-basic-text } Администрация комплекса получит специальные доступы через { $time } секунд.

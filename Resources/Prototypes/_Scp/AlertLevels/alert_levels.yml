@@ -7,7 +7,7 @@
       announcement: alert-level-scpNone-announcement
       color: White
       emergencyLightColor: White
-      shuttleTime: 600
+      shuttleTime: 1800
       extendedAccessOptions:
         announcement: access-system-accesses-delay-scpNone
     scpGreen:
@@ -19,7 +19,7 @@
       color: Green
       forceEnableEmergencyLights: true
       emergencyLightColor: LawnGreen
-      shuttleTime: 600
+      shuttleTime: 1200
       extendedAccessOptions:
         announcement: access-system-accesses-delay-scpGreen
     scpBlue:
