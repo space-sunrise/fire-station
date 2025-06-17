@@ -1,7 +1,7 @@
 ﻿using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 
-namespace Content.Server._Scp.Misc.AirlockManEater;
+namespace Content.Shared._Scp.Other.AirlockManEater;
 
 [RegisterComponent]
 public sealed partial class AirlockManEaterComponent : Component

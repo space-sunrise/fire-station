@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using Content.Server._Scp.Misc.AirlockManEater;
 using Content.Server._Sunrise.Helpers;
 using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Events;
+using Content.Shared._Scp.Other.AirlockManEater;
 using Content.Shared.Doors.Components;
 using Content.Shared.GameTicking.Components;
 using Robust.Shared.Random;
