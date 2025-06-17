@@ -70,7 +70,7 @@
     - trigger:
         !type:DamageGroupTrigger # Sunrise-Edit
         damageGroup: Brute # Sunrise-Edit
-        damage: 400
+        damage: 1000 # Fire edit
       behaviors:
       - !type:GibBehavior { }
     - trigger:
