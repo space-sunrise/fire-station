@@ -64,6 +64,7 @@
     icon:
       sprite: _Scp/Scp106/actions.rsi
       state: reverse
+  - type: TargetAction
   - type: EntityTargetAction
     event: !type:Scp106ReverseAction
       delay: 3
