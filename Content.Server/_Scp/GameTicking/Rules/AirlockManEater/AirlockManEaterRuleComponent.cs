@@ -3,5 +3,5 @@
 [RegisterComponent]
 public sealed partial class AirlockManEaterRuleComponent : Component
 {
-    [DataField] public float Percentage = 100f; // TODO: Убрать дебаг значение
+    [DataField] public float Percentage = 5f;
 }

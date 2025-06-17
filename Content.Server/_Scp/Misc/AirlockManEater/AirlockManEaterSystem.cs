@@ -85,6 +85,8 @@ public sealed class AirlockManEaterSystem : EntitySystem
 
         Timer.Spawn(LaughAfter, () => _audio.PlayPvs(AirlockLaughSound, ent, AudioParams.Default.WithPitchScale(0.5f)), _token.Token);
         Timer.Spawn(CrushAgainAfter, () => _door.TryOpen(ent), _token.Token);
+
+        // TODO: Какой-нибудь звук победы шлюза над человеком
     }
 
     private static void Clear()
