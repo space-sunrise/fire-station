@@ -112,7 +112,7 @@
       scpBlue: ScpBlueAlertAccesses
       scpGray: ScpGrayAlertAccesses
       scpYellow: ScpYellowAlertAccesses
-      scpRd: ScpRedAlertAccesses
+      scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess

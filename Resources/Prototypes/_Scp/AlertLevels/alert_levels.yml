@@ -55,7 +55,7 @@
       color: Gray
       emergencyLightColor: Gray
       forceEnableEmergencyLights: true
-      shuttleTime: 1200
+      shuttleTime: 600
       extendedAccessOptions:
         announcement: access-system-accesses-delay-scpGray
 
