@@ -44,6 +44,7 @@
   name: department-CentralCommand
   description: department-CentralCommand-description
   color: "#0d4f1d"
+  editorHidden: true # Fire added
   roles:
   - CentCommOperator
   - CentCommOfficial
