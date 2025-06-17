@@ -20,6 +20,7 @@
   - ResearchDirector
   - Brig
   - Cryogenics
+  - ResearchConsoleAccess
   special:
   - !type:AddComponentSpecial
     components:

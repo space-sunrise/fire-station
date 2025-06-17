@@ -35,6 +35,8 @@
   - Brig
   - Lawyer
   - Cargo
+  - CargoPurchaseAccess
+  - ResearchConsoleAccess
   - Atmospherics
   - Medical
   - Barber

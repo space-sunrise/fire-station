@@ -16,6 +16,7 @@
   access:
   - Cargo
   - Salvage
+  - CargoPurchaseAccess
   - Quartermaster
   - Maintenance
   - External
