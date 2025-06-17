@@ -2,6 +2,7 @@
   parent: TelecomServer
   id: TelecomServerFilledLaw
   suffix: Law
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: ContainerFill
     containers:
@@ -12,6 +13,7 @@
   parent: TelecomServer
   id: TelecomServerFilledBlueShield
   suffix: BlueShield
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: ContainerFill
     containers:
@@ -22,6 +24,7 @@
   parent: TelecomServer
   id: TelecomServerFilledUSSP
   suffix: USSP
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: ContainerFill
     containers:
