@@ -29,7 +29,7 @@ public abstract partial class SharedSunriseHelpersSystem : EntitySystem
     public IEnumerable<Entity<T>> GetPercentageOfHashSet<T>(IReadOnlyCollection<Entity<T>> sourceList, float percentage) where T : IComponent
     {
         var countToAdd = (int) Math.Round((double) sourceList.Count * percentage / 100);
-        return sourceList.Where(e => !Transform(e).Anchored).Take(countToAdd).ToHashSet();
+        return sourceList.Take(countToAdd).ToHashSet();
     }
 
     /// <summary>

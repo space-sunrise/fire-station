@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Scp.Other.Events;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Administration.Logs;
@@ -562,6 +563,7 @@ public abstract partial class SharedDoorSystem : EntitySystem
 
             _stunSystem.TryParalyze(entity, stunTime, true);
             Audio.PlayPredicted(_doorSmashSound, entity, entity); // Fire
+            RaiseLocalEvent(uid, new AirlockCrushedEvent(GetNetEntity(entity))); // Fire
         }
 
         if (door.CurrentlyCrushing.Count == 0)
