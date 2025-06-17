@@ -16,7 +16,7 @@ public abstract class SharedAirlockManEaterSystem : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private const float VictimSearchRadiusOpen = 4.5f;
+    private const float VictimSearchRadiusOpen = 5f;
     private const float VictimSearchRadiusClose = 2.3f;
 
     private static readonly TimeSpan VictimSearchDelay = TimeSpan.FromSeconds(0.3f);
