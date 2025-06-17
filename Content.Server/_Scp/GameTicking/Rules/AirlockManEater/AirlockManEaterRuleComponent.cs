@@ -3,5 +3,5 @@
 [RegisterComponent]
 public sealed partial class AirlockManEaterRuleComponent : Component
 {
-    [DataField] public float Percentage = 5f;
+    [DataField] public float Percentage = 100f;
 }

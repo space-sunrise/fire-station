@@ -7,7 +7,7 @@ namespace Content.Server._Scp.Misc.AirlockManEater;
 public sealed partial class AirlockManEaterComponent : Component
 {
     [ViewVariables]
-    public const float AutoCloseModifier = 0.1f;
+    public const float AutoCloseModifier = 100f;
 
     [ViewVariables]
     public const float TimeModifier = 2f;
