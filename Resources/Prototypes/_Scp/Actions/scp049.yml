@@ -90,5 +90,6 @@
       state: heal
     itemIconStyle: NoItem
     priority: 12
+  - type: TargetAction
   - type: EntityTargetAction
     event: !type:Scp049HealMinionAction
