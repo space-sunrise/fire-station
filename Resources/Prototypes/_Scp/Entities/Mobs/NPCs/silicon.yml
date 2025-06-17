@@ -5,15 +5,25 @@
   description: The creep of automation now threatening janitors.
   components:
   - type: Sprite
+    drawdepth: SmallMobs
     sprite: _Scp/Mobs/Silicon/Bots/roomba.rsi
     state: roomba
   - type: FootprintAreaCleaner
+    interval: 0.1
+  - type: UseDelay
+    delay: 0.1
   - type: HTN
     rootTask:
       task: CleanbotCompound
     blackboard:
       MeleeRange: !type:Single
-        0.1
+        0.01
+  - type: SolutionRegeneration
+    solution: absorbed
+    generated:
+      reagents:
+      - ReagentId: Water
+        Quantity: 30
   - type: AmbientSound
     enabled: true
     volume: -7
@@ -23,6 +33,17 @@
   - type: FootstepModifier # Из-за какого-то бага не работает
     footstepSoundCollection:
       collection: FootstepBorg
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.25
+        density: 80
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
   - type: Construction
     graph: RoombaConstruct
     node: bot
