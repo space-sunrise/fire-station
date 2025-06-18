@@ -18,10 +18,3 @@
         - NukeDisk
     alertLevelOnActivate: scpDelta
     alertLevelOnDeactivate: scpBlue
-  - type: HolidayVisuals
-    enabled: False
-    deleted: True
-  - type: TimedRemoveComponents
-    removeAfter: 0.1
-    components:
-    - type: HolidayVisuals
