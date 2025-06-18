@@ -63,10 +63,8 @@ public sealed class SecretRuleSystem : GameRuleSystem<SecretRuleComponent>
             // if we're pre-round (i.e. will only be added)
             // then just add rules. if we're added in the middle of the round (or at any other point really)
             // then we want to start them as well
-            if (GameTicker.RunLevel <= GameRunLevel.InRound)
-                ruleEnt = GameTicker.AddGameRule(rule);
-            else
-                GameTicker.StartGameRule(rule, out ruleEnt);
+
+            GameTicker.StartGameRule(rule, out ruleEnt);
 
             component.AdditionalGameRules.Add(ruleEnt);
         }
