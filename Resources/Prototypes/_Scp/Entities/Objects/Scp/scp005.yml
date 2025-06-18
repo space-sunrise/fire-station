@@ -6,6 +6,8 @@
   - type: Sprite
     sprite: _Scp/Objects/Scps/scp005.rsi
     state: item
+  - type: Scp
+    class: Safe
   - type: Item
     size: Normal
   - type: Access

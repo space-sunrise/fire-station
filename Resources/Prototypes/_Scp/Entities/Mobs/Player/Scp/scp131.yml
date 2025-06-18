@@ -7,6 +7,8 @@
     drawdepth: SmallMobs
     sprite: _Scp/Mobs/SCP-131.rsi
     state: SCP-131A
+  - type: Scp
+    class: Safe
   - type: Muted
   - type: NpcFactionMember
     factions:

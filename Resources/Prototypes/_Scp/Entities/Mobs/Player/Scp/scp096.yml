@@ -12,6 +12,8 @@
     layers:
     - state: walking
       map: [ "base" ]
+  - type: Scp
+    class: Euclid
   - type: Scp096
   - type: WatchingTarget
   - type: ShowBlinkable

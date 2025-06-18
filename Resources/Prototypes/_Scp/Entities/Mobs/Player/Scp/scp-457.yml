@@ -2,6 +2,7 @@
   id: Scp457
   suffix: SCP-457
   parent:
+  - BaseScp
   - SimpleSpaceMobBase
   components:
   - type: Sprite
@@ -11,6 +12,8 @@
     - state: fireguy
       shader: unshaded
       map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: Scp
+    class: Euclid
   - type: DamageStateVisuals
     states:
       Alive:

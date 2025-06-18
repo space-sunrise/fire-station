@@ -16,4 +16,18 @@ public sealed partial class ScpComponent : Component
     /// </summary>
     [ViewVariables, AutoNetworkedField]
     public TimeSpan? TimeLastInteracted;
+
+    /// <summary>
+    /// Класс SCP объекта
+    /// </summary>
+    [DataField(required: true)]
+    public Classification Class;
+}
+
+public enum Classification
+{
+    Neutralized,
+    Safe,
+    Euclid,
+    Keter,
 }

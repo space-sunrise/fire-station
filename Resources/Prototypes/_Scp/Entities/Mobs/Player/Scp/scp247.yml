@@ -2,6 +2,7 @@
   id: Scp247
   suffix: SCP-247
   parent:
+  - BaseScp
   - SimpleMobBase
   - MobCombat
   components:
@@ -11,6 +12,8 @@
     layers:
     - state: scp-247
       map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: Scp
+    class: Euclid
   - type: Fixtures
     fixtures:
       fix1:

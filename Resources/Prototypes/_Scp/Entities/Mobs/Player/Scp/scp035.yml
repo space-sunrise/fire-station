@@ -14,6 +14,8 @@
   - type: IngestionBlocker
   - type: FlashImmunity
   - type: EyeProtection
+  - type: Scp
+    class: Keter
   - type: Scp035Mask
   - type: GuideHelp
     guides:

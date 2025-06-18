@@ -3,6 +3,7 @@
   name: SCP-082
   suffix: SCP-082
   parent:
+  - BaseScp
   - BaseMob
   - MobDamageable
   - MobCombat
@@ -13,6 +14,8 @@
   - MobFlammable
   - InventoryBase
   components:
+  - type: Scp
+    class: Euclid
   - type: Hands
     showInHands: false
   - type: MobThresholds
