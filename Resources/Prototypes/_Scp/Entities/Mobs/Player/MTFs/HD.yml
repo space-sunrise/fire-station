@@ -65,7 +65,7 @@
         Caustic: 0.2
   - type: ClothingSpeedModifier
     walkModifier: 0.7
-    sprintModifier: 0.6
+    sprintModifier: 0.5
   - type: HeldSpeedModifier
 
 - type: entity
