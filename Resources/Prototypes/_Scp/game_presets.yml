@@ -1,11 +1,64 @@
 ﻿- type: gamePreset
-  id: Scp
+  id: Neutralized
   alias:
-  - scp
-  name: scp-title
+  - neutralized
+  name: scp-title-neutralized
   showInVote: true
   hide: false
-  description: scp-description
+  description: scp-description-neutralized
   rules:
+  - ScpModeNeutralized
+  - BasicStationEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: Safe
+  alias:
+  - safe
+  name: scp-title-safe
+  showInVote: true
+  hide: false
+  description: scp-description-safe
+  rules:
+  - ScpModeSafe
+  - BasicStationEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: Euclid
+  alias:
+  - euclid
+  name: scp-title-euclid
+  showInVote: true
+  hide: false
+  description: scp-description-euclid
+  rules:
+  - ScpModeEuclid
+  - BasicStationEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: Keter
+  alias:
+  - keter
+  name: scp-title-keter
+  showInVote: true
+  hide: false
+  description: scp-description-keter
+  rules:
+  - ScpModeKeter
+  - BasicStationEventScheduler
+  - BasicRoundstartVariation
+
+- type: gamePreset
+  id: Thaumiel
+  alias:
+  - thaumiel
+  name: scp-title-thaumiel
+  showInVote: true
+  hide: false
+  description: scp-description-thaumiel
+  rules:
+  - ScpModeThaumiel
   - BasicStationEventScheduler
   - BasicRoundstartVariation
