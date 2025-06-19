@@ -36,6 +36,9 @@
     useRate: 0
   - type: UseDelay
     delay: 10.0
+  - type: Biocode
+    factions:
+    - Syndicate
 
 - type: entity
   name: BR-50c "Bastion"

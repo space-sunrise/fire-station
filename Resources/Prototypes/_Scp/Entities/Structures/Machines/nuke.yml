@@ -1,0 +1,20 @@
+﻿- type: entity
+  parent: NuclearBomb
+  id: NuclearBombScp
+  components:
+  - type: Nuke
+    explosionType: DefaultStandardEffect
+    maxIntensity: 100
+    intensitySlope: 400
+    totalIntensity: 80000000
+    diskSlot:
+      name: nuke-slot-component-slot-name-disk
+      insertSound:
+        path: /Audio/Machines/terminal_insert_disc.ogg
+      ejectSound:
+        path: /Audio/Machines/terminal_insert_disc.ogg
+      whitelist:
+        components:
+        - NukeDisk
+    alertLevelOnActivate: scpDelta
+    alertLevelOnDeactivate: scpBlue
