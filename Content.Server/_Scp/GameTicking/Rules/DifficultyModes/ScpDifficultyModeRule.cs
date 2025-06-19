@@ -24,6 +24,8 @@ public sealed class ScpDifficultyModeRule : GameRuleSystem<ScpDifficultyModeRule
     [Dependency] private readonly GameTicker _ticker = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
+    private ScpDifficultyModeRuleComponent? _activeRule;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -43,17 +45,22 @@ public sealed class ScpDifficultyModeRule : GameRuleSystem<ScpDifficultyModeRule
 
         // Проверяем, запущен ли сейчас какой-либо режим сложности
         // Если да, сможем получить его компонент для получения настроек сложности
-        var isGameModeStarted = _ticker.GetActiveGameRules()
-            .Where(HasComp<ScpDifficultyModeRuleComponent>)
-            .Select(Comp<ScpDifficultyModeRuleComponent>)
-            .TryFirstOrDefault(out var rule);
+        if (_activeRule == null)
+        {
+            var isGameModeStarted = _ticker.GetActiveGameRules()
+                .Where(HasComp<ScpDifficultyModeRuleComponent>)
+                .Select(Comp<ScpDifficultyModeRuleComponent>)
+                .TryFirstOrDefault(out var rule);
 
-        if (!isGameModeStarted || rule == null)
-            return;
+            if (!isGameModeStarted || rule == null)
+                return;
+
+            _activeRule = rule;
+        }
 
         // Получаем все работки SCP, которые соответствуют классу содержания зашедшего SCP объекта
         var matchingScp = _prototype.EnumeratePrototypes<JobPrototype>()
-            .Where(proto => IsMatchingScpJob(ent.Comp.Class, proto, rule.PlayableWhitelist, rule.PlayableBlacklist));
+            .Where(proto => IsMatchingScpJob(ent.Comp.Class, proto, _activeRule.PlayableWhitelist, _activeRule.PlayableBlacklist));
 
         // Забираем у каждого SCP с классом схожим с только что зашедшим слот
         foreach (var scp in matchingScp)
@@ -61,7 +68,7 @@ public sealed class ScpDifficultyModeRule : GameRuleSystem<ScpDifficultyModeRule
             if (!_stationJobs.TryGetJobSlot(args.Station, scp, out var currentSlots))
                 continue;
 
-            if (currentSlots <= 0 || currentSlots == null)
+            if (currentSlots == null || currentSlots <= 0)
                 continue;
 
             _stationJobs.TrySetJobSlot(args.Station, scp, currentSlots.Value - 1);
