@@ -1,24 +1,72 @@
 ﻿using System.Linq;
 using Content.Server._Sunrise.Helpers;
+using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Station.Systems;
 using Content.Shared._Scp.Mobs.Components;
+using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Item;
 using Content.Shared.Roles;
 using Content.Shared.Whitelist;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Utility;
 
 namespace Content.Server._Scp.GameTicking.Rules.DifficultyModes;
 
 public sealed class ScpDifficultyModeRule : GameRuleSystem<ScpDifficultyModeRuleComponent>
 {
-    [Dependency] private readonly StationJobsSystem _jobs = default!;
+    [Dependency] private readonly StationJobsSystem _stationJobs = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly SunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private readonly GameTicker _ticker = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<ScpComponent, PlayerSpawnCompleteEvent>(OnPlayerSpawn);
+    }
+
+    /// <summary>
+    /// Отрабатывает при спавне игрока на SCP объекте и закрывает слоты других объектов, если их лимит превышен.
+    /// Лимиты прописываются в текущем режиме сложности как количество определенных классов содержания в раунде.
+    /// Если игрок на данном классе содержания заходит в раунд, то из всех слотов SCP объектов с данным классом так же вычитается 1 слот
+    /// </summary>
+    private void OnPlayerSpawn(Entity<ScpComponent> ent, ref PlayerSpawnCompleteEvent args)
+    {
+        if (args.JobId == null)
+            return;
+
+        // Проверяем, запущен ли сейчас какой-либо режим сложности
+        // Если да, сможем получить его компонент для получения настроек сложности
+        var isGameModeStarted = _ticker.GetActiveGameRules()
+            .Where(HasComp<ScpDifficultyModeRuleComponent>)
+            .Select(Comp<ScpDifficultyModeRuleComponent>)
+            .TryFirstOrDefault(out var rule);
+
+        if (!isGameModeStarted || rule == null)
+            return;
+
+        // Получаем все работки SCP, которые соответствуют классу содержания зашедшего SCP объекта
+        var matchingScp = _prototype.EnumeratePrototypes<JobPrototype>()
+            .Where(proto => IsMatchingScpJob(ent.Comp.Class, proto, rule.PlayableWhitelist, rule.PlayableBlacklist));
+
+        // Забираем у каждого SCP с классом схожим с только что зашедшим слот
+        foreach (var scp in matchingScp)
+        {
+            if (!_stationJobs.TryGetJobSlot(args.Station, scp, out var currentSlots))
+                continue;
+
+            if (currentSlots <= 0 || currentSlots == null)
+                continue;
+
+            _stationJobs.TrySetJobSlot(args.Station, scp, currentSlots.Value - 1);
+        }
+    }
 
     protected override void Started(EntityUid uid,
         ScpDifficultyModeRuleComponent component,
@@ -54,11 +102,14 @@ public sealed class ScpDifficultyModeRule : GameRuleSystem<ScpDifficultyModeRule
             // Устанавливаем для каждого подходящего SCP количество слотов
             foreach (var job in matchingScp)
             {
-                _jobs.TrySetJobSlot(targetStation, job, targetSlots);
+                _stationJobs.TrySetJobSlot(targetStation, job, targetSlots);
             }
         }
     }
 
+    /// <summary>
+    /// Проходится по SCP предметам и удаляем неразрешенные
+    /// </summary>
     private void DealWithItems(ScpDifficultyModeRuleComponent component, EntityUid targetStation)
     {
         // Находим все неподходящие для данного режима предметы
