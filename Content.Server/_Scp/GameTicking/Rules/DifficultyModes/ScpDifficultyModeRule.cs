@@ -24,15 +24,11 @@ public sealed class ScpDifficultyModeRule : GameRuleSystem<ScpDifficultyModeRule
     [Dependency] private readonly GameTicker _ticker = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    private ScpDifficultyModeRuleComponent? _activeRule;
-
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<ScpComponent, PlayerSpawnCompleteEvent>(OnPlayerSpawn);
-
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _activeRule = null);
     }
 
     /// <summary>
@@ -47,22 +43,17 @@ public sealed class ScpDifficultyModeRule : GameRuleSystem<ScpDifficultyModeRule
 
         // Проверяем, запущен ли сейчас какой-либо режим сложности
         // Если да, сможем получить его компонент для получения настроек сложности
-        if (_activeRule == null)
-        {
-            var isGameModeStarted = _ticker.GetActiveGameRules()
-                .Where(HasComp<ScpDifficultyModeRuleComponent>)
-                .Select(Comp<ScpDifficultyModeRuleComponent>)
-                .TryFirstOrDefault(out var rule);
+        var isGameModeStarted = _ticker.GetActiveGameRules()
+            .Where(HasComp<ScpDifficultyModeRuleComponent>)
+            .Select(Comp<ScpDifficultyModeRuleComponent>)
+            .TryFirstOrDefault(out var rule);
 
-            if (!isGameModeStarted || rule == null)
-                return;
-
-            _activeRule = rule;
-        }
+        if (!isGameModeStarted || rule == null)
+            return;
 
         // Получаем все работки SCP, которые соответствуют классу содержания зашедшего SCP объекта
         var matchingScp = _prototype.EnumeratePrototypes<JobPrototype>()
-            .Where(proto => IsMatchingScpJob(ent.Comp.Class, proto, _activeRule.PlayableWhitelist, _activeRule.PlayableBlacklist));
+            .Where(proto => IsMatchingScpJob(ent.Comp.Class, proto, rule.PlayableWhitelist, rule.PlayableBlacklist));
 
         // Забираем у каждого SCP с классом схожим с только что зашедшим слот
         foreach (var scp in matchingScp)
