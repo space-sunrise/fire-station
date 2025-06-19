@@ -122,7 +122,8 @@ public sealed class ScpDifficultyModeRule : GameRuleSystem<ScpDifficultyModeRule
         // Находим все неподходящие для данного режима предметы
         var inappropriateItems = _helpers.GetAll<ScpComponent, ItemComponent>()
             .Where(item =>
-                !IsMatchingItem((item, item.Comp1), component.ItemWhitelist, component.ItemBlacklist, targetStation));
+                !IsMatchingItem((item, item.Comp1), component.ItemWhitelist, component.ItemBlacklist, targetStation))
+            .ToList();
 
         // И удаляем их
         foreach (var item in inappropriateItems)
