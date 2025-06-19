@@ -31,6 +31,8 @@ public sealed class ScpDifficultyModeRule : GameRuleSystem<ScpDifficultyModeRule
         base.Initialize();
 
         SubscribeLocalEvent<ScpComponent, PlayerSpawnCompleteEvent>(OnPlayerSpawn);
+
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _activeRule = null);
     }
 
     /// <summary>
