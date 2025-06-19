@@ -1,0 +1,74 @@
+﻿- type: entity
+  id: BaseGameRuleShortDelay
+  parent: BaseGameRule
+  abstract: true
+  components:
+  - type: GameRule
+    delay:
+      min: 20
+      max: 20
+
+- type: entity
+  id: SendDocumentNeutralizedMode
+  parent: BaseGameRuleShortDelay
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SendDocumentRule
+    documentName: document-difficulty-mode-summary
+    textParts:
+    - paper-generic-scp-header
+    - paper-neutralized-mode-info
+    - paper-generic-scp-bottom
+    stampProtoId: RubberStampRegionalAdministration
+
+- type: entity
+  id: SendDocumentSafeMode
+  parent: BaseGameRuleShortDelay
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SendDocumentRule
+    documentName: document-difficulty-mode-summary
+    textParts:
+    - paper-generic-scp-header
+    - paper-safe-mode-info
+    - paper-generic-scp-bottom
+    stampProtoId: RubberStampRegionalAdministration
+
+- type: entity
+  id: SendDocumentEuclidMode
+  parent: BaseGameRuleShortDelay
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SendDocumentRule
+    documentName: document-difficulty-mode-summary
+    textParts:
+    - paper-generic-scp-header
+    - paper-euclid-mode-info
+    - paper-generic-scp-bottom
+    stampProtoId: RubberStampRegionalAdministration
+
+- type: entity
+  id: SendDocumentKeterMode
+  parent: BaseGameRuleShortDelay
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SendDocumentRule
+    documentName: document-difficulty-mode-summary
+    textParts:
+    - paper-generic-scp-header
+    - paper-keter-mode-info
+    - paper-generic-scp-bottom
+    stampProtoId: RubberStampRegionalAdministration
+
+- type: entity
+  id: SendDocumentThaumielMode
+  parent: BaseGameRuleShortDelay
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SendDocumentRule
+    documentName: document-difficulty-mode-summary
+    textParts:
+    - paper-generic-scp-header
+    - paper-thaumiel-mode-info
+    - paper-generic-scp-bottom
+    stampProtoId: RubberStampRegionalAdministration

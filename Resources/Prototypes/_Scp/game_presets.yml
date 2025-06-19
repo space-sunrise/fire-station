@@ -7,6 +7,7 @@
   description: scp-description-neutralized
   rules:
   - ScpModeNeutralized
+  - SendDocumentNeutralizedMode
   - BasicStationEventScheduler
   - BasicRoundstartVariation
 
@@ -19,6 +20,7 @@
   description: scp-description-safe
   rules:
   - ScpModeSafe
+  - SendDocumentSafeMode
   - BasicStationEventScheduler
   - BasicRoundstartVariation
 
@@ -32,6 +34,7 @@
   minPlayers: 15
   rules:
   - ScpModeEuclid
+  - SendDocumentEuclidMode
   - BasicStationEventScheduler
   - BasicRoundstartVariation
 
@@ -45,6 +48,7 @@
   minPlayers: 20
   rules:
   - ScpModeKeter
+  - SendDocumentKeterMode
   - BasicStationEventScheduler
   - BasicRoundstartVariation
 
@@ -58,5 +62,6 @@
   minPlayers: 20
   rules:
   - ScpModeThaumiel
+  - SendDocumentThaumielMode
   - BasicStationEventScheduler
   - BasicRoundstartVariation
