@@ -14,13 +14,23 @@ public sealed partial class ScpTab : Control
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        // Графика
+        /*
+         * Графика
+         */
 
+        // Зернистость
         Control.AddOptionCheckBox(ScpCCVars.GrainToggleOverlay, GrainToggleOverlayCheckBox);
         Control.AddOptionSlider(ScpCCVars.GrainStrength, GrainStrengthSlider, GrainOverlay.StrengthMin, GrainOverlay.StrengthMax);
 
-        // Подавление звуков
+        /*
+         * Аудио
+         */
 
+        // Эхо
+        Control.AddOptionCheckBox(ScpCCVars.EchoEnabled, EchoEnabled);
+        Control.AddOptionCheckBox(ScpCCVars.EchoStrongPresetPreferred, EchoStrongPresetPreferred);
+
+        // Подавление звуков
         Control.AddOptionCheckBox(ScpCCVars.AudioMufflingEnabled, AudioMufflingEnabled);
         Control.AddOptionCheckBox(ScpCCVars.AudioMufflingHighFrequencyUpdate, AudioMufflingHighFrequencyUpdate);
 

@@ -16,6 +16,13 @@
 
                 <Label Text="{Loc 'ui-options-scp-audio'}" StyleClasses="LabelKeyText"/>
 
+                <CheckBox Name="EchoEnabled"
+                          Text="{Loc 'ui-options-scp-echo-enabled'}"
+                          ToolTip="{Loc ui-options-scp-echo-enabled-tooltip}" />
+                <CheckBox Name="EchoStrongPresetPreferred"
+                          Text="{Loc 'ui-options-scp-echo-strong-preset-preferred'}"
+                          ToolTip="{Loc ui-options-scp-echo-strong-preset-preferred-tooltip}" />
+
                 <CheckBox Name="AudioMufflingEnabled"
                           Text="{Loc 'ui-options-scp-audio-muffling-enabled'}"
                           ToolTip="{Loc ui-options-scp-audio-muffling-enabled-tooltip}" />

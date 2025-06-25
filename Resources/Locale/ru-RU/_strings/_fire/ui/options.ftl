@@ -10,7 +10,15 @@ ui-options-grain-strength = Сила шейдера зернистости
 ui-options-grain-strength-tooltip = Определяет интенсивность эффектов шейдера зернистости.
     Чем больше, тем больше будет "шуршания" на экране
 
-ui-options-scp-audio-muffling-enabled = Использовать подавление звуков
+ui-options-scp-echo-enabled = Эффект эха
+ui-options-scp-echo-enabled-tooltip = При включении каждый неглобальный звук получит эффект эха.
+    При включении все звуки могут стать громче. Используйте слайдер громкости, чтобы отрегулировать громкость.
+
+ui-options-scp-echo-strong-preset-preferred = Использовать усиленный эффект эха
+ui-options-scp-echo-strong-preset-preferred-tooltip = Определяет, будет ли использован сильный эффект эха.
+    В усиленном эффекте звуки будут иметь более долгий хвост.
+
+ui-options-scp-audio-muffling-enabled = Подавление звуков
 ui-options-scp-audio-muffling-enabled-tooltip = В зависимости от расположения источника делает звук глухим или тихим.
     Может вызывать проблемы с производительностью на слабых системах.
 

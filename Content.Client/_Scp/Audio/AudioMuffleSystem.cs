@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Scp.Audio;
+using Content.Shared._Scp.Audio.Components;
 using Content.Shared._Scp.ScpCCVars;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;

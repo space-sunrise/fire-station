@@ -2,7 +2,7 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Scp.Audio;
+namespace Content.Shared._Scp.Audio.Components;
 
 [RegisterComponent, NetworkedComponent]
 public sealed partial class AudioMuffledComponent : Component
