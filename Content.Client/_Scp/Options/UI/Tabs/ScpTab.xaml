@@ -5,6 +5,8 @@
         <ScrollContainer VerticalExpand="True">
             <BoxContainer Orientation="Vertical" Margin="8 8 8 8">
 
+                <Label Text="{Loc 'ui-options-tab-hover-to-see-details'}" StyleClasses="LabelSecondaryColor"/>
+
                 <Label Text="{Loc 'ui-options-scp-graphics'}" StyleClasses="LabelKeyText"/>
 
                 <CheckBox Name="GrainToggleOverlayCheckBox"
