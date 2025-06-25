@@ -25,7 +25,7 @@ public sealed partial class ScpCCVars
      */
 
     /// <summary>
-    /// Будет ли подавление звуков в завимости от видимости работать?
+    /// Будет ли подавление звуков в зависимости от видимости работать?
     /// </summary>
     public static readonly CVarDef<bool> AudioMufflingEnabled =
         CVarDef.Create("scp.audio_muffling_enabled", true, CVar.CLIENTONLY | CVar.ARCHIVE);
