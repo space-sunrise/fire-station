@@ -21,7 +21,7 @@ public sealed class AudioMuffleSystem : EntitySystem
     [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
-    private static readonly ProtoId<AudioPresetPrototype> MuffingEffectPreset = "ScpBehindWalls";
+    private static readonly ProtoId<AudioPresetPrototype> MufflingEffectPreset = "ScpBehindWalls";
 
     private const float ReducedVolume = -20f;
     private const float HearRange = 14f;
@@ -137,7 +137,7 @@ public sealed class AudioMuffleSystem : EntitySystem
     /// <returns>Получилось ли добавить эффект?</returns>
     public bool TryMuffleSound(Entity<AudioComponent> ent, bool decreaseVolume = true)
     {
-        if (AudioEffectsManagerSystem.HasEffect(ent, MuffingEffectPreset))
+        if (AudioEffectsManagerSystem.HasEffect(ent, MufflingEffectPreset))
             return false;
 
         if (HasComp<AudioMuffledComponent>(ent))
@@ -154,7 +154,7 @@ public sealed class AudioMuffleSystem : EntitySystem
         // Очищение лишних эффектов(например эхо)
         _effectsManager.RemoveAllEffects(ent);
 
-        _effectsManager.TryAddEffect(ent, MuffingEffectPreset);
+        _effectsManager.TryAddEffect(ent, MufflingEffectPreset);
 
         if (decreaseVolume)
             _audio.SetVolume(ent, ent.Comp.Volume + ReducedVolume, ent);
@@ -170,13 +170,13 @@ public sealed class AudioMuffleSystem : EntitySystem
     /// <returns></returns>
     public bool TryUnMuffleSound(Entity<AudioComponent> ent, AudioMuffledComponent? muffledComponent = null)
     {
-        if (!AudioEffectsManagerSystem.HasEffect(ent, MuffingEffectPreset))
+        if (!AudioEffectsManagerSystem.HasEffect(ent, MufflingEffectPreset))
             return false;
 
         if (!Resolve(ent.Owner, ref muffledComponent))
             return false;
 
-        _effectsManager.TryRemoveEffect(ent, MuffingEffectPreset);
+        _effectsManager.TryRemoveEffect(ent, MufflingEffectPreset);
 
         if (muffledComponent.CachedPreset != null)
             _effectsManager.TryAddEffect(ent, muffledComponent.CachedPreset.Value);
