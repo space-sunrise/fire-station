@@ -1,9 +1,11 @@
 ﻿using Content.Shared._Scp.Audio;
+using Content.Shared._Scp.ScpCCVars;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
@@ -16,21 +18,48 @@ public sealed class AudioMuffleSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     private static readonly ProtoId<AudioPresetPrototype> MuffingEffectPreset = "ScpBehindWalls";
 
     private const float ReducedVolume = -20f;
     private const float HearRange = 14f;
 
+    private bool _isClientSideEnabled;
     // Отвечает за выбор цикла для итерации звуков.
     // При true будет использована итерация каждый фрейм, что гораздо больше, чем стандартный Update
     // Но это может позволить избежать проблем со звуками, которые успеют издать пук между тиками
     // При true будет использовать FrameUpdate. При false стандартный завязанный на тиках Update
-    private bool _useHighFrequencyUpdate = true;
+    private bool _useHighFrequencyUpdate;
+
+    #region CCvar events
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        _isClientSideEnabled = _cfg.GetCVar(ScpCCVars.AudioMufflingEnabled);
+
+        _cfg.OnValueChanged(ScpCCVars.AudioMufflingEnabled, OnToggled);
+        _cfg.OnValueChanged(ScpCCVars.AudioMufflingHighFrequencyUpdate, b => _useHighFrequencyUpdate = b);
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _cfg.UnsubValueChanged(ScpCCVars.AudioMufflingEnabled, OnToggled);
+        _cfg.UnsubValueChanged(ScpCCVars.AudioMufflingHighFrequencyUpdate, b => _useHighFrequencyUpdate = b);
+    }
+
+    #endregion
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        if (!_isClientSideEnabled)
+            return;
 
         if (_useHighFrequencyUpdate)
             return;
@@ -41,6 +70,9 @@ public sealed class AudioMuffleSystem : EntitySystem
     public override void FrameUpdate(float frameTime)
     {
         base.FrameUpdate(frameTime);
+
+        if (!_isClientSideEnabled)
+            return;
 
         if (!_useHighFrequencyUpdate)
             return;
@@ -153,5 +185,27 @@ public sealed class AudioMuffleSystem : EntitySystem
         RemComp<AudioMuffledComponent>(ent);
 
         return true;
+    }
+
+    private void OnToggled(bool enabled)
+    {
+        _isClientSideEnabled = enabled;
+
+        if (!enabled)
+            RevertChanges();
+    }
+
+    /// <summary>
+    /// Возвращает всем звукам предыдущие незаглушенные параметры.
+    /// Используется при отключении игроком настройки, отвечающей за механику заглушения звуков.
+    /// </summary>
+    private void RevertChanges()
+    {
+        var query = AllEntityQuery<AudioMuffledComponent, AudioComponent>();
+
+        while (query.MoveNext(out var uid, out var muffled, out var audio))
+        {
+            TryUnMuffleSound((uid, audio), muffled);
+        }
     }
 }
