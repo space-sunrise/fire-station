@@ -4,7 +4,6 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Audio.Components;
 
-[RegisterComponent, NetworkedComponent]
 /// <summary>
 /// Компонент для кэширования исходных параметров звука при применении эффекта приглушения.
 /// </summary>
