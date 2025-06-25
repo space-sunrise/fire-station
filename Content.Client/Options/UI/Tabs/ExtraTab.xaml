@@ -38,13 +38,6 @@
                 <CheckBox Name="ChatIconsEnableCheckBox" Text="{Loc 'ui-options-chat-icons-enable'}" />
                 <CheckBox Name="ChatPointingVisualsEnableCheckBox" Text="{Loc 'ui-options-chat-pointing-visuals-enable'}" />
 
-                <!--Scp edit start-->
-                <Label Text="{Loc 'ui-options-scp'}" StyleClasses="LabelKeyText"/>
-
-                <CheckBox Name="GrainToggleOverlayCheckBox" Text="{Loc 'ui-options-grain-toggle-overlay'}" />
-                <ui:OptionSlider Name="GrainStrengthSlider" Title="{Loc 'ui-options-grain-strength'}" />
-                <!--Scp edit end-->
-
             </BoxContainer>
         </ScrollContainer>
         <ui:OptionsTabControlRow Name="Control" Access="Public" />

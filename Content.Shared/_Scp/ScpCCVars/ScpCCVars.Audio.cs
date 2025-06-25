@@ -1,0 +1,20 @@
+﻿using Robust.Shared.Configuration;
+
+namespace Content.Shared._Scp.ScpCCVars;
+
+public sealed partial class ScpCCVars
+{
+    /**
+     * Audio muffing
+     */
+
+    /// <summary>
+    /// Будет ли подавление звуков в завимости от видимости работать?
+    /// </summary>
+    public static readonly CVarDef<bool> AudioMufflingEnabled = CVarDef.Create("scp.audio_muffling_enabled", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Будет ли использована частая проверка параметров для подавления звуков?
+    /// </summary>
+    public static readonly CVarDef<bool> AudioMufflingHighFrequencyUpdate = CVarDef.Create("scp.audio_muffling_use_high_frequency_update", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+}

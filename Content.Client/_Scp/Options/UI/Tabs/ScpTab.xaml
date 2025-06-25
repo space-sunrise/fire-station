@@ -1,0 +1,30 @@
+﻿<tabs:ScpTab xmlns="https://spacestation14.io"
+                 xmlns:tabs="clr-namespace:Content.Client._Scp.Options.UI.Tabs"
+                 xmlns:ui="clr-namespace:Content.Client.Options.UI">
+    <BoxContainer Orientation="Vertical">
+        <ScrollContainer VerticalExpand="True">
+            <BoxContainer Orientation="Vertical" Margin="8 8 8 8">
+
+                <Label Text="{Loc 'ui-options-scp-graphics'}" StyleClasses="LabelKeyText"/>
+
+                <CheckBox Name="GrainToggleOverlayCheckBox"
+                          Text="{Loc 'ui-options-grain-toggle-overlay'}"
+                          ToolTip="{Loc ui-options-grain-toggle-overlay-tooltip}"/>
+                <ui:OptionSlider Name="GrainStrengthSlider"
+                                 Title="{Loc 'ui-options-grain-strength'}"
+                                 ToolTip="{Loc ui-options-grain-strength-tooltip}"/>
+
+                <Label Text="{Loc 'ui-options-scp-audio'}" StyleClasses="LabelKeyText"/>
+
+                <CheckBox Name="AudioMufflingEnabled"
+                          Text="{Loc 'ui-options-scp-audio-muffling-enabled'}"
+                          ToolTip="{Loc ui-options-scp-audio-muffling-enabled-tooltip}" />
+                <CheckBox Name="AudioMufflingHighFrequencyUpdate"
+                          Text="{Loc 'ui-options-scp-audio-muffling-use-high-frequency-update'}"
+                          ToolTip="{Loc ui-options-scp-audio-muffling-use-high-frequency-update-tooltip}" />
+
+            </BoxContainer>
+        </ScrollContainer>
+        <ui:OptionsTabControlRow Name="Control" Access="Public" />
+    </BoxContainer>
+</tabs:ScpTab>
