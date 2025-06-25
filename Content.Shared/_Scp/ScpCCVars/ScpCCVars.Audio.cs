@@ -21,11 +21,11 @@ public sealed partial class ScpCCVars
         CVarDef.Create("scp.echo_strong_preset_preferred", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /**
-     * Audio muffing
+     * Audio muffling
      */
 
     /// <summary>
-    /// Будет ли подавление звуков в завимости от видимости работать?
+    /// Будет ли подавление звуков в зависимости от видимости работать?
     /// </summary>
     public static readonly CVarDef<bool> AudioMufflingEnabled =
         CVarDef.Create("scp.audio_muffling_enabled", true, CVar.CLIENTONLY | CVar.ARCHIVE);
