@@ -189,10 +189,6 @@
       - dragging-3
       - dragging-4
       - dragging-5
-  - type: TimedRemoveComponents
-    removeAfter: 1
-    components:
-    - type: MobCollision
   - type: GuideHelp
     guides:
     - ScpResearch
@@ -305,8 +301,4 @@
   - type: StatusEffects
     allowed:
     - Stun
-  - type: TimedRemoveComponents
-    removeAfter: 1
-    components:
-    - type: MobCollision
   - type: ComplexInteraction

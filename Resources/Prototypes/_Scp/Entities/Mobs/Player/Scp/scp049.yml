@@ -19,6 +19,7 @@
   - type: Scp049
   - type: ScpRestriction
     canPull: true
+    canMobCollide: true
   - type: ScpShow049Hud
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name

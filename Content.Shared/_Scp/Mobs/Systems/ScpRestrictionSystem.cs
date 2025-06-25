@@ -8,6 +8,7 @@ using Content.Shared.DragDrop;
 using Content.Shared.Electrocution;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Pulling.Events;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Slippery;
 
@@ -32,22 +33,30 @@ public sealed class ScpRestrictionSystem : EntitySystem
         SubscribeLocalEvent<ScpRestrictionComponent, CanDragEvent>((_, _, args) => args.Handled = false);
         SubscribeLocalEvent<ScpRestrictionComponent, BeforeStaminaDamageEvent>((_, _, args) => args.Cancelled = true);
 
+        SubscribeLocalEvent<ScpRestrictionComponent, AttemptMobCollideEvent>(OnCollideAttempt);
+
     }
 
-    private static void OnPullAttempt(EntityUid uid, ScpRestrictionComponent component, PullAttemptEvent args)
+    private static void OnPullAttempt(Entity<ScpRestrictionComponent> ent, ref PullAttemptEvent args)
     {
-        if (!component.CanPull)
+        if (!ent.Comp.CanPull)
             args.Cancelled = true;
     }
 
-    private void OnBeingPulled(EntityUid uid, ScpRestrictionComponent component, BeingPulledAttemptEvent args)
+    private void OnBeingPulled(Entity<ScpRestrictionComponent> ent, ref BeingPulledAttemptEvent args)
     {
-        var canBePulled = _mobState.IsIncapacitated(uid)
-                          || HasComp<SleepingComponent>(uid)
-                          || _scpMask.HasScpMask(uid)
-                          || component.CanBePulled;
+        var canBePulled = _mobState.IsIncapacitated(ent)
+                          || HasComp<SleepingComponent>(ent)
+                          || _scpMask.HasScpMask(ent)
+                          || ent.Comp.CanBePulled;
 
         if (!canBePulled)
             args.Cancel();
+    }
+
+    private static void OnCollideAttempt(Entity<ScpRestrictionComponent> ent, ref AttemptMobCollideEvent args)
+    {
+        if (!ent.Comp.CanMobCollide)
+            args.Cancelled = true;
     }
 }

@@ -21,6 +21,9 @@
     - SimpleNeutral # нужно что бы турели не били его т.к. 999 мирный
   - type: Scp
     class: Safe
+  - type: ScpRestriction
+    canBePulled: true
+    canMobCollide: true
   - type: Scp999
     states:
       Default: default
