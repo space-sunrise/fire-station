@@ -1,0 +1,53 @@
+﻿- type: randomHumanoidSettings
+  id: ClassDHumanoidSettings
+  randomizeName: true
+  components:
+  - type: Loadout
+    prototypes: [ SlClassDGear]
+  - type: ScpSlHumanoidMarker
+    humanoidType: ClassD
+
+- type: randomHumanoidSettings
+  id: ScientistHumanoidSettings
+  randomizeName: true
+  components:
+  - type: Loadout
+    prototypes: [ SlScientistGear ]
+  - type: ScpSlHumanoidMarker
+    humanoidType: Scientist
+
+- type: randomHumanoidSettings
+  id: SecurityHumanoidSettings
+  randomizeName: true
+  components:
+  - type: Loadout
+    prototypes: [ SlSecurityGear ]
+  - type: ScpSlHumanoidMarker
+    humanoidType: Security
+
+- type: randomHumanoidSettings
+  id: MogHumanoidSettings
+  randomizeName: true
+  components:
+  - type: Loadout
+    prototypes: [ SlMogGear ]
+  - type: ScpSlHumanoidMarker
+    humanoidType: Mog
+
+- type: randomHumanoidSettings
+  id: MogCaptainSettings
+  randomizeName: true
+  components:
+  - type: Loadout
+    prototypes: [ SlMogCaptainGear ]
+  - type: ScpSlHumanoidMarker
+    humanoidType: Mog
+
+- type: randomHumanoidSettings
+  id: ChaosHumanoidSettings
+  randomizeName: true
+  components:
+  - type: Loadout
+    prototypes: [ SlChaosGear ]
+  - type: ScpSlHumanoidMarker
+    humanoidType: Chaos
