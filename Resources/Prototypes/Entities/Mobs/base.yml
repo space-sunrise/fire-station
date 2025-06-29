@@ -5,6 +5,10 @@
   id: BaseMob
   abstract: true
   components:
+  # Fire edit start
+  - type: GrainOverlay
+  - type: VignetteOverlay
+  # Fire edit end
   - type: Sprite
     noRot: true
     drawdepth: Mobs

@@ -1,6 +1,8 @@
-﻿namespace Content.Client._Scp.Shaders.Common.Vignette;
+﻿using Content.Shared._Scp.Other.Shaders;
 
-public sealed class VignetteOverlaySystem : CommonOverlaySystem<VignetteOverlay>
+namespace Content.Client._Scp.Shaders.Common.Vignette;
+
+public sealed class VignetteOverlaySystem : ComponentOverlaySystem<VignetteOverlay, VignetteOverlayComponent>
 {
     public override void Initialize()
     {
