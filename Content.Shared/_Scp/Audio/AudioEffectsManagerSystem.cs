@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Threading;
 using Content.Shared.GameTicking;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
@@ -78,6 +79,26 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     }
 
     /// <summary>
+    /// Пытается убрать данный эффект со звука
+    /// </summary>
+    public bool TryRemoveEffect(Entity<AudioComponent> sound, ProtoId<AudioPresetPrototype> preset)
+    {
+        if (!CachedEffects.TryGetValue(preset, out var effect))
+            return false;
+
+        if (sound.Comp.Auxiliary != effect)
+            return false;
+
+        _audio.SetAuxiliary(sound, sound, null);
+        return true;
+    }
+
+    public void RemoveAllEffects(Entity<AudioComponent> sound)
+    {
+        _audio.SetAuxiliary(sound, sound, null);
+    }
+
+    /// <summary>
     /// Пытается создать эффект и захешировать его
     /// </summary>
     /// <param name="preset">Пресет эффектов</param>
@@ -105,5 +126,29 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         effectStuff = auxiliary.Entity;
 
         return true;
+    }
+
+    public static bool HasEffect(Entity<AudioComponent> sound, ProtoId<AudioPresetPrototype> preset)
+    {
+        if (!CachedEffects.TryGetValue(preset, out var effect))
+            return false;
+
+        return sound.Comp.Auxiliary == effect;
+    }
+
+    public bool TryGetEffect(Entity<AudioComponent> sound, [NotNullWhen(true)] out ProtoId<AudioPresetPrototype>? preset)
+    {
+        preset = null;
+
+        foreach (var (storedPreset, auxUid) in CachedEffects)
+        {
+            if (sound.Comp.Auxiliary != auxUid)
+                continue;
+
+            preset = storedPreset;
+            return true;
+        }
+
+        return false;
     }
 }

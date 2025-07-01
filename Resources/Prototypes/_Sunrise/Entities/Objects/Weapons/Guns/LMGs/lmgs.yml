@@ -114,7 +114,7 @@
         priority: 1
         whitelist:
           tags:
-          - Cartridge762x39
+          - CartridgeLightRifle  # 762x39
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -175,11 +175,11 @@
           - MagazineMachineGunMG42
       gun_chamber:
         name: Chamber
-        startingItem: Cartridge762x39
+        startingItem: CartridgeRifle  # 556
         priority: 1
         whitelist:
           tags:
-          - Cartridge762x39
+          - CartridgeRifle  # 556
   - type: ContainerContainer
     containers:
       gun_magazine: !type:ContainerSlot
@@ -230,7 +230,7 @@
     fireRate: 8
     selectedMode: FullAuto
     availableModes:
-      - FullAuto
+    - FullAuto
     soundGunshot:
       collection: m249
       params:
@@ -252,15 +252,15 @@
         priority: 2
         whitelist:
           tags:
-            - MagazineDl6902
-            - MagazineLightRifleBox
+          - MagazineDl6902
+          - MagazineLightRifleBox
       gun_chamber:
         name: Chamber
         startingItem: SunriseCartridgeLightRifle
         priority: 1
         whitelist:
           tags:
-            - CartridgeLightRifle
+          - CartridgeLightRifle
   - type: SpeedModifiedOnWield
     walkModifier: 0.75
     sprintModifier: 0.75

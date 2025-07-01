@@ -12,6 +12,8 @@
     layers:
     - state: walking
       map: [ "base" ]
+  - type: Scp
+    class: Euclid
   - type: Scp096
   - type: WatchingTarget
   - type: ShowBlinkable
@@ -96,10 +98,6 @@
     - Flashed
     - RadiationProtection
     - Drowsiness
-  - type: TimedRemoveComponents
-    removeAfter: 1
-    components:
-    - type: MobCollision
   - type: GuideHelp
     guides:
     - ScpResearch

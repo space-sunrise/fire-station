@@ -38,7 +38,7 @@
   name: all-at-once-title
   description: all-at-once-description
   showInVote: false
-  hide: false # Sunrise-Edit
+  hide: true # Fire edit
   minPlayers: 20 # Sunrise-Edit: 20 players for NUKEOPS
   rules:
     - Nukeops
@@ -65,7 +65,7 @@
   name: aller-at-once-title
   description: aller-at-once-description
   showInVote: false #Please god dont do this
-  hide: false # Sunrise-Edit
+  hide: true # Fire edit
   minPlayers: 20 # Sunrise-Edit: 20 players for NUKEOPS
   rules:
     - Nukeops
@@ -108,7 +108,7 @@
   - shittersafarideluxeedition
   name: greenshift-title
   showInVote: false # Sunrise-Edit
-  hide: false # Sunrise-Edit
+  hide: true # Fire edit
   description: greenshift-description
   rules:
   - SpaceTrafficControlFriendlyEventScheduler
@@ -121,7 +121,7 @@
     - secret
     - sekrit
   name: secret-title
-  showInVote: false # Fire edit
+  showInVote: true
   hide: false # Sunrise-Edit
   description: secret-description
   rules:
@@ -133,6 +133,7 @@
     - secretextended
   name: secret-title
   showInVote: false #Admin Use
+  hide: true # Fire edit
   description: secret-description
   rules:
     - BasicStationEventScheduler
@@ -146,6 +147,7 @@
   - secretgreenshift
   name: secret-title
   showInVote: false #Admin Use
+  hide: true # Fire edit
   description: secret-description
   rules:
   - SpaceTrafficControlFriendlyEventScheduler
@@ -158,6 +160,7 @@
   name: sandbox-title
   description: sandbox-description
   showInVote: false # Not suitable for use without admin intervention, since entity spamming can quickly crash a server
+  hide: true # Fire edit
   maxPlayers: 5
   rules:
     - Sandbox
@@ -237,6 +240,7 @@
   name: wizard-title
   description: wizard-description
   showInVote: false
+  hide: true # Fire edit
   rules:
   - Wizard
   - DummyNonAntagChance

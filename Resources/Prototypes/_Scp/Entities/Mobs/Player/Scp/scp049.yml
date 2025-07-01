@@ -14,9 +14,12 @@
     drawdepth: Mobs
     sprite: _Scp/Mobs/scp-049.rsi
     state: SCP-049
+  - type: Scp
+    class: Euclid
   - type: Scp049
   - type: ScpRestriction
     canPull: true
+    canMobCollide: true
   - type: ScpShow049Hud
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name

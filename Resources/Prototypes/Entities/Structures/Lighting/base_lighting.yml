@@ -522,7 +522,7 @@
   # Fire edit start
   - type: AmbientOnPowered
   - type: AmbientSound
-    volume: -10
+    volume: -5
     range: 10
     sound:
       path: /Audio/_Scp/Ambience/Emergency/alarm.ogg

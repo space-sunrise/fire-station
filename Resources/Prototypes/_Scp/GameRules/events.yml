@@ -43,3 +43,4 @@
     children:
     - id: Blackout
     - id: SpawnScp096Photo
+    - id: AirlockManEater

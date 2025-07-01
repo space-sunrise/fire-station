@@ -59,6 +59,7 @@
   id: BaseItemScp
   components:
   - type: Scp
+    class: Neutralized
 
 - type: entity # Онли для мобов
   abstract: true
@@ -69,6 +70,7 @@
   id: BaseScp
   components:
   - type: Scp
+    class: Neutralized
   - type: ScpRestriction
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
@@ -128,6 +130,8 @@
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: scp-173
+  - type: Scp
+    class: Euclid
   - type: Scp173
   - type: ShowBlinkable
   - type: XenoArtifact
@@ -185,10 +189,6 @@
       - dragging-3
       - dragging-4
       - dragging-5
-  - type: TimedRemoveComponents
-    removeAfter: 1
-    components:
-    - type: MobCollision
   - type: GuideHelp
     guides:
     - ScpResearch
@@ -207,6 +207,8 @@
     layers:
     - map: [ "base" ]
       state: base
+  - type: Scp
+    class: Keter
   - type: Scp106
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
@@ -299,8 +301,4 @@
   - type: StatusEffects
     allowed:
     - Stun
-  - type: TimedRemoveComponents
-    removeAfter: 1
-    components:
-    - type: MobCollision
   - type: ComplexInteraction

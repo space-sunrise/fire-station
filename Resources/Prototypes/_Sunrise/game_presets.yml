@@ -6,7 +6,7 @@
   - SilentGreenshift
   name: event-title
   showInVote: false
-  hide: false
+  hide: true # Fire edit
   description: event-description
   rules:
   - BasicRoundstartVariation
@@ -18,7 +18,7 @@
   - extra
   name: extra-title
   showInVote: false # Fire
-  hide: false
+  hide: true # Fire edit
   description: extra-description
   rules:
   - BasicStationEventScheduler
@@ -33,7 +33,7 @@
   - secretextra
   name: secret-title
   showInVote: false #Admin Use
-  hide: false
+  hide: true # Fire edit
   description: secret-description
   rules:
   - BasicStationEventScheduler

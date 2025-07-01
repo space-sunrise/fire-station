@@ -1,3 +1,4 @@
+
 - type: entity
   name: MG-100 Vindicator Minigun
   parent: BaseItem
@@ -36,7 +37,7 @@
   components:
   - type: BallisticAmmoProvider
     mayTransfer: True
-    proto: Cartridge762x39
+    proto: CartridgeRifle  # 556
 
 - type: entity
   id: BasePowerpackMG100
@@ -55,7 +56,7 @@
     mayTransfer: true
     whitelist:
       tags:
-      - Cartridge762x39
+      - CartridgeLightRifle  # 762x39
     capacity: 1000
   - type: ClothingSpeedModifier
     walkModifier: 0.7

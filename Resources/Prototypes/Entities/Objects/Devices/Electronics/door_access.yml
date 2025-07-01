@@ -6,10 +6,10 @@
   components:
   - type: AccessReader
     access: [["Captain"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 - type: entity
   parent: DoorElectronics
@@ -18,10 +18,10 @@
   components:
   - type: AccessReader
     access: [["HeadOfPersonnel"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 - type: entity
   parent: DoorElectronics
@@ -30,14 +30,14 @@
   components:
   - type: AccessReader
     access: [["Command"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpRed: ScpRedAlertAccesses
       scpPurple: ScpPurpleAlertAccesses
       scpBlack: ScpBlackAlertAccesses
       scpDelta: ScpDeltaAlertAccesses
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 
@@ -49,7 +49,7 @@
   components:
   - type: AccessReader
     access: [["Bar"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
       scpGray: ScpGrayAlertAccesses
@@ -57,7 +57,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 
@@ -68,7 +68,7 @@
   components:
   - type: AccessReader
     access: [["Bar"], ["Kitchen"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
       scpGray: ScpGrayAlertAccesses
@@ -76,7 +76,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 
@@ -87,7 +87,7 @@
   components:
   - type: AccessReader
     access: [["Hydroponics"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
@@ -97,7 +97,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 - type: entity
@@ -107,7 +107,7 @@
   components:
   - type: AccessReader
     access: [["Chapel"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
       scpGray: ScpGrayAlertAccesses
@@ -117,7 +117,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 
@@ -128,7 +128,7 @@
   components:
   - type: AccessReader
     access: [["Theatre"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
@@ -140,7 +140,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 
@@ -151,7 +151,7 @@
   components:
   - type: AccessReader
     access: [["Kitchen"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
@@ -163,7 +163,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 
@@ -174,7 +174,7 @@
   components:
   - type: AccessReader
     access: [["Kitchen"], ["Hydroponics"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
@@ -184,7 +184,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 
@@ -195,7 +195,7 @@
   components:
   - type: AccessReader
     access: [["Janitor"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
@@ -207,7 +207,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 - type: entity
@@ -217,7 +217,7 @@
   components:
   - type: AccessReader
     access: [["Lawyer"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpGray: ScpGrayAlertAccesses
       scpRed: ScpRedAlertAccesses
@@ -225,7 +225,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: ScpDeltaAlertAccesses
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 
@@ -236,7 +236,7 @@
   components:
   - type: AccessReader
     access: [["Service"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
       scpGray: ScpGrayAlertAccesses
@@ -246,7 +246,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 - type: entity
@@ -265,10 +265,10 @@
   components:
   - type: AccessReader
     access: [["Quartermaster"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 - type: entity
   parent: DoorElectronics
@@ -277,7 +277,7 @@
   components:
   - type: AccessReader
     access: [["Salvage"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
       scpGray: ScpGrayAlertAccesses
@@ -287,7 +287,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 - type: entity
@@ -297,17 +297,16 @@
   components:
   - type: AccessReader
     access: [["Cargo"]]
-  # Fire-start
-  alertAccesses:
-    scpBlue: ScpBlueAlertAccesses
-    scpGray: ScpGrayAlertAccesses
-    scpRed: ScpRedAlertAccesses
-    scpPurple: ScpPurpleAlertAccesses
-    scpBlack: ScpBlackAlertAccesses
-    scpDelta: ScpDeltaAlertAccesses
-    scpColdSilver: ScpColdSilverAlertAccesses
-  # Fire-end
-
+    # Fire added start
+    alertAccesses:
+      scpBlue: ScpBlueAlertAccesses
+      scpGray: ScpGrayAlertAccesses
+      scpRed: ScpRedAlertAccesses
+      scpPurple: ScpPurpleAlertAccesses
+      scpBlack: ScpBlackAlertAccesses
+      scpDelta: ScpDeltaAlertAccesses
+      scpColdSilver: ScpColdSilverAlertAccesses
+    # Fire added end
 
 # Engineering
 - type: entity
@@ -317,10 +316,10 @@
   components:
   - type: AccessReader
     access: [["ChiefEngineer"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 - type: entity
   parent: DoorElectronics
@@ -329,7 +328,7 @@
   components:
   - type: AccessReader
     access: [["Atmospherics"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
       scpRed: ScpRedAlertAccesses
@@ -337,7 +336,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 - type: entity
@@ -347,7 +346,7 @@
   components:
   - type: AccessReader
     access: [["Engineering"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpBlue: ScpBlueAlertAccesses
       scpGray: ScpGrayAlertAccesses
@@ -356,7 +355,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 # Science
@@ -367,7 +366,7 @@
   components:
   - type: AccessReader
     access: [["Medical"], ["Detective"], ["Chapel"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpOrange: ScpOrangeAlertAccesses
@@ -378,7 +377,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 - type: entity
@@ -388,10 +387,10 @@
   components:
   - type: AccessReader
     access: [["ResearchDirector"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 - type: entity
   parent: DoorElectronics
@@ -400,7 +399,7 @@
   components:
   - type: AccessReader
     access: [["Research"], ["Medical"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
@@ -411,7 +410,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 - type: entity
@@ -421,18 +420,18 @@
   components:
   - type: AccessReader
     access: [["Research"]]
-  # Fire-start
-  alertAccesses:
-    scpGreen: ScpGreenAlertAccesses
-    scpBlue: ScpBlueAlertAccesses
-    scpGray: ScpGrayAlertAccesses
-    scpYellow: ScpYellowAlertAccesses
-    scpRed: ScpRedAlertAccesses
-    scpPurple: ScpPurpleAlertAccesses
-    scpBlack: ScpBlackAlertAccesses
-    scpDelta: AllAccess
-    scpColdSilver: ScpColdSilverAlertAccesses
-  # Fire-end
+    # Fire added start
+    alertAccesses:
+      scpGreen: ScpGreenAlertAccesses
+      scpBlue: ScpBlueAlertAccesses
+      scpGray: ScpGrayAlertAccesses
+      scpYellow: ScpYellowAlertAccesses
+      scpRed: ScpRedAlertAccesses
+      scpPurple: ScpPurpleAlertAccesses
+      scpBlack: ScpBlackAlertAccesses
+      scpDelta: AllAccess
+      scpColdSilver: ScpColdSilverAlertAccesses
+    # Fire added end
 
 # Security
 - type: entity
@@ -442,10 +441,10 @@
   components:
   - type: AccessReader
     access: [["HeadOfSecurity"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 - type: entity
@@ -455,7 +454,7 @@
   components:
   - type: AccessReader
     access: [["Armory"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpOrange: ScpOrangeAlertAccesses
       scpGray: ScpGrayAlertAccesses
@@ -463,7 +462,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 - type: entity
   parent: DoorElectronics
@@ -485,11 +484,11 @@
   components:
   - type: AccessReader
     access: [["Security"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 - type: entity
@@ -499,11 +498,11 @@
   components:
   - type: AccessReader
     access: [["Security"], ["Lawyer"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 - type: entity
@@ -513,12 +512,12 @@
   components:
   - type: AccessReader
     access: [["Brig"]]
-  # Fire-start
-  alertAccesses:
-    scpBlack: AllAccess
-    scpDelta: AllAccess
-    scpColdSilver: ScpColdSilverAlertAccesses
-  # Fire-end
+    # Fire added start
+    alertAccesses:
+      scpBlack: AllAccess
+      scpDelta: AllAccess
+      scpColdSilver: ScpColdSilverAlertAccesses
+    # Fire added end
 
 # Medical
 - type: entity
@@ -528,11 +527,11 @@
   components:
   - type: AccessReader
     access: [["ChiefMedicalOfficer"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 - type: entity
@@ -542,13 +541,13 @@
   components:
   - type: AccessReader
     access: [["Chemistry"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpGray: ScpGrayAlertAccesses
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 - type: entity
   parent: DoorElectronics
@@ -557,7 +556,7 @@
   components:
   - type: AccessReader
     access: [["Medical"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
@@ -569,7 +568,7 @@
       scpBlack: AllAccess
       scpDelta: AllAccess
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 # Syndicate
 - type: entity
@@ -604,7 +603,7 @@
   components:
   - type: AccessReader
     access: [["External"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
@@ -616,7 +615,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: ScpDeltaAlertAccesses
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 - type: entity
   parent: DoorElectronics
@@ -625,7 +624,7 @@
   components:
   - type: AccessReader
     access: [["Maintenance"]]
-    # Fire-start
+    # Fire added start
     alertAccesses:
       scpGreen: ScpGreenAlertAccesses
       scpBlue: ScpBlueAlertAccesses
@@ -637,7 +636,7 @@
       scpBlack: ScpBlackAlertAccesses
       scpDelta: ScpDeltaAlertAccesses
       scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire-end
+    # Fire added end
 
 
 - type: entity
@@ -647,8 +646,8 @@
   components:
   - type: AccessReader
     access: [["Security"], ["Command"]]
-  # Fire-start
-  alertAccesses:
-    scpDelta: ScpDeltaAlertAccesses
-    scpColdSilver: ScpColdSilverAlertAccesses
-  # Fire-end
+    # Fire added start
+    alertAccesses:
+      scpDelta: ScpDeltaAlertAccesses
+      scpColdSilver: ScpColdSilverAlertAccesses
+    # Fire added end
