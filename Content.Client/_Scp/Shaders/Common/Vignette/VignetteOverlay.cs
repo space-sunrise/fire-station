@@ -10,6 +10,8 @@ public sealed class VignetteOverlay : Overlay
 
     private readonly ShaderInstance _shader;
 
+    public float CurrentStrength;
+
     public VignetteOverlay()
     {
         IoCManager.InjectDependencies(this);
@@ -21,6 +23,14 @@ public sealed class VignetteOverlay : Overlay
 
     public override bool RequestScreenTexture => true;
 
+    protected override bool BeforeDraw(in OverlayDrawArgs args)
+    {
+        if (CurrentStrength == 0)
+            return false;
+
+        return true;
+    }
+
     protected override void Draw(in OverlayDrawArgs args)
     {
         if (ScreenTexture is null)
@@ -28,6 +38,7 @@ public sealed class VignetteOverlay : Overlay
 
         _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
         _shader.SetParameter("vignette_color", Color.Black.WithAlpha(0.9f));
+        _shader.SetParameter("effect_overall_strength", CurrentStrength);
 
         args.WorldHandle.UseShader(_shader);
         args.WorldHandle.DrawRect(args.WorldBounds, Color.White);

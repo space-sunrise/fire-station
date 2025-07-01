@@ -1,5 +1,6 @@
 ﻿using Robust.Shared.Configuration;
 using Content.Shared._Scp.ScpCCVars;
+using Content.Shared._Scp.Shaders;
 using Content.Shared._Scp.Shaders.Grain;
 using Robust.Client.Player;
 using Robust.Shared.Player;
@@ -8,6 +9,7 @@ namespace Content.Client._Scp.Shaders.Common.Grain;
 
 public sealed class GrainOverlaySystem : ComponentOverlaySystem<GrainOverlay, GrainOverlayComponent>
 {
+    [Dependency] private readonly SharedShaderStrengthSystem _shaderStrength = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
 
@@ -50,23 +52,9 @@ public sealed class GrainOverlaySystem : ComponentOverlaySystem<GrainOverlay, Gr
         if (!player.HasValue)
             return;
 
-        TrySetBaseStrength(player.Value, value);
-    }
+        if (!_shaderStrength.TrySetBaseStrength<GrainOverlayComponent>(player.Value, value, out var component))
+            return;
 
-    /// <summary>
-    /// Устанавливает базовую силу шейдера зернистости: <see cref="GrainOverlayComponent.BaseStrength"/>
-    /// </summary>
-    /// <param name="ent">Сущность, к которой будет применено значение</param>
-    /// <param name="value">Значение, которое будет установлено</param>
-    /// <returns>Получилось/Не получилось</returns>
-    public bool TrySetBaseStrength(Entity<GrainOverlayComponent?> ent, int value)
-    {
-        if (!Resolve(ent, ref ent.Comp))
-            return false;
-
-        ent.Comp.BaseStrength = value;
-        Overlay.CurrentStrength = ent.Comp.CurrentStrength;
-
-        return true;
+        Overlay.CurrentStrength = component.CurrentStrength;
     }
 }
