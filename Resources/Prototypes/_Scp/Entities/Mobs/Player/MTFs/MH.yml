@@ -93,7 +93,6 @@
     jumpsuit: ClothingUniformMH
     back: MTFSpecialistBackpack
     shoes: ClothingShoesBootsMagCombat
-    head: ClothingHeadHelmetMH
     mask: ClothingMaskMTF
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
@@ -169,7 +168,6 @@
     jumpsuit: ClothingUniformMH
     back: MTFSpecialistBackpack
     shoes: ClothingShoesBootsMagCombat
-    head: ClothingHeadHelmetMH
     mask: ClothingMaskMTF
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
@@ -242,7 +240,6 @@
     jumpsuit: ClothingUniformMH
     back: MTFSpecialistBackpack
     shoes: ClothingShoesBootsMagCombat
-    head: ClothingHeadHelmetMH
     mask: ClothingMaskMTF
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
