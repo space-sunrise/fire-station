@@ -10,19 +10,19 @@ public interface IShaderStrength
     /// <remarks>
     /// КЛИЕНТСКИЙ ПАРАМЕТР -> НЕ МЕНЯТЬ С СЕРВЕРА!!
     /// </remarks>
-    public int BaseStrength { get; set; }
+    public float BaseStrength { get; set; }
 
     /// <summary>
     /// Дополнительная сила шейдера.
     /// Складывается с <see cref="BaseStrength"/> в <see cref="CurrentStrength"/>.
     /// Не может быть настроена клиентом, настраивается различными системами извне в качестве негативного эффекта.
     /// </summary>
-    public int AdditionalStrength { get; set; }
+    public float AdditionalStrength { get; set; }
 
     /// <summary>
     /// Текущая сила шейдера.
     /// Складывается из <see cref="BaseStrength"/> и <see cref="AdditionalStrength"/>.
     /// Определяет реальную силу шейдера, учитывая все параметры.
     /// </summary>
-    public int CurrentStrength { get; }
+    public float CurrentStrength { get; }
 }

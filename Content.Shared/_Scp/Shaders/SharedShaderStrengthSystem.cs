@@ -13,7 +13,7 @@ public sealed class SharedShaderStrengthSystem : EntitySystem
     /// <param name="ent">Сущность, к которой будет применено значение</param>
     /// <param name="value">Значение, которое будет установлено</param>
     /// <returns>Получилось/Не получилось</returns>
-    public bool TrySetBaseStrength<T>(Entity<T?> ent, int value) where T : Component, IShaderStrength
+    public bool TrySetBaseStrength<T>(Entity<T?> ent, float value) where T : IComponent, IShaderStrength
     {
         // Базовая сила это чисто клиентский параметр
         // Поэтому ее задавать только на клиенте
@@ -35,7 +35,7 @@ public sealed class SharedShaderStrengthSystem : EntitySystem
     /// <param name="value">Значение, которое будет установлено</param>
     /// <param name="component">Возвращаемый компонент с параметрами</param>
     /// <returns>Получилось/Не получилось</returns>
-    public bool TrySetBaseStrength<T>(Entity<T?> ent, int value, [NotNullWhen(true)] out T? component) where T : Component, IShaderStrength
+    public bool TrySetBaseStrength<T>(Entity<T?> ent, float value, [NotNullWhen(true)] out T? component) where T : Component, IShaderStrength
     {
         component = null;
 
@@ -59,15 +59,19 @@ public sealed class SharedShaderStrengthSystem : EntitySystem
     /// <param name="ent">Сущность, к которой будет применено значение</param>
     /// <param name="value">Значение, которое будет установлено</param>
     /// <returns>Получилось/Не получилось</returns>
-    public bool TrySetAdditionalStrength<T>(Entity<T?> ent, int value) where T : Component, IShaderStrength, IComponentDelta
+    public bool TrySetAdditionalStrength<T>(Entity<T?> ent, float value) where T : IComponent, IShaderStrength
     {
         if (!Resolve(ent, ref ent.Comp))
             return false;
 
         ent.Comp.AdditionalStrength = value;
 
-        DirtyField(ent, nameof(ent.Comp.AdditionalStrength));
+        var ev = new ShaderAdditionalStrengthChanged();
+        RaiseLocalEvent(ent, ref ev);
 
         return true;
     }
 }
+
+[ByRefEvent]
+public record struct ShaderAdditionalStrengthChanged();

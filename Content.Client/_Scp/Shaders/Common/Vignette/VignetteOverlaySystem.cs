@@ -15,6 +15,17 @@ public sealed class VignetteOverlaySystem : ComponentOverlaySystem<VignetteOverl
         base.Initialize();
 
         Overlay = new VignetteOverlay();
+
+        SubscribeLocalEvent<VignetteOverlayComponent, ShaderAdditionalStrengthChanged>(OnAdditionalStrengthChanged);
+    }
+
+    private void OnAdditionalStrengthChanged(Entity<VignetteOverlayComponent> ent,
+        ref ShaderAdditionalStrengthChanged args)
+    {
+        if (_player.LocalEntity != ent)
+            return;
+
+        Overlay.CurrentStrength = ent.Comp.CurrentStrength;
     }
 
     protected override void OnPlayerAttached(Entity<VignetteOverlayComponent> ent, ref LocalPlayerAttachedEvent args)
@@ -24,7 +35,7 @@ public sealed class VignetteOverlaySystem : ComponentOverlaySystem<VignetteOverl
         SetBaseStrength(ent.Comp.BaseStrength);
     }
 
-    private void SetBaseStrength(int value)
+    private void SetBaseStrength(float value)
     {
         var player = _player.LocalEntity;
 

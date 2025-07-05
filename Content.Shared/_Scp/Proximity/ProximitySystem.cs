@@ -22,11 +22,11 @@ public sealed class ProximitySystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private static readonly TimeSpan ProximitySearchCooldown = TimeSpan.FromSeconds(0.3f);
+    private static readonly TimeSpan ProximitySearchCooldown = TimeSpan.FromSeconds(0.05f);
     private static TimeSpan _nextSearchTime = TimeSpan.Zero;
 
     // Оптимизации аллокации памяти
-    private static HashSet<Entity<ProximityTargetComponent>> _targets = [];
+    private static readonly HashSet<Entity<ProximityTargetComponent>> Targets = [];
 
     public override void Initialize()
     {
@@ -50,10 +50,10 @@ public sealed class ProximitySystem : EntitySystem
 
         while (query.MoveNext(out var uid, out var receiver, out var xform))
         {
-            _targets.Clear();
-            _lookup.GetEntitiesInRange(xform.Coordinates, receiver.CloseRange, _targets);
+            Targets.Clear();
+            _lookup.GetEntitiesInRange(xform.Coordinates, receiver.CloseRange, Targets);
 
-            foreach (var target in _targets)
+            foreach (var target in Targets)
             {
                 if (!IsRightType(uid, target, receiver.RequiredLineOfSight, out var lightOfSightBlockerLevel))
                     continue;

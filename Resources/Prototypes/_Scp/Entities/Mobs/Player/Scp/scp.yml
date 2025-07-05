@@ -72,6 +72,9 @@
   - type: Scp
     class: Neutralized
   - type: ScpRestriction
+  - type: ProximityReceiver
+    requiredLineOfSight: Transparent
+  - type: FearSource
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
