@@ -274,6 +274,8 @@
   # Fire start
   - type: Blinkable
   - type: EyeClosing
+  - type: Fear
+  - type: ProximityTarget
   # Fire end
   - type: Barotrauma
     damage:

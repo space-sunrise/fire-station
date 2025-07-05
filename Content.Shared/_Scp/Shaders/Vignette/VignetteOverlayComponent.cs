@@ -7,13 +7,13 @@ public sealed partial class VignetteOverlayComponent : Component, IShaderStrengt
 {
     /// <inheritdoc/>
     [ViewVariables]
-    public int BaseStrength { get; set; } = 100;
+    public float BaseStrength { get; set; } = 100f;
 
     /// <inheritdoc/>
     [AutoNetworkedField, ViewVariables]
-    public int AdditionalStrength { get; set; }
+    public float AdditionalStrength { get; set; }
 
     /// <inheritdoc/>
     [ViewVariables]
-    public int CurrentStrength => BaseStrength + AdditionalStrength;
+    public float CurrentStrength => BaseStrength + AdditionalStrength;
 }
