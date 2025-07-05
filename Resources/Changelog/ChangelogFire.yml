@@ -3793,3 +3793,12 @@
   id: 152
   time: '2025-07-02T12:14:27.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/404
+- author: EngineerLND
+  changes:
+  - message: "\u0418\u0441\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430 \u0432\u044B\
+      \u0434\u0430\u0447\u0430 \u0448\u043B\u0435\u043C\u0430 \u0441\u043A\u0430\u0444\
+      \u0430\u043D\u0434\u0440\u0430 \u0411-7."
+    type: Fix
+  id: 153
+  time: '2025-07-02T12:51:05.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/405
