@@ -27,13 +27,33 @@ public sealed class ProximitySystem : EntitySystem
 
     // Оптимизации аллокации памяти
     private static readonly HashSet<Entity<ProximityTargetComponent>> Targets = [];
+    private static readonly HashSet<EntityUid> PossibleNotInRange = [];
+    private static readonly HashSet<EntityUid> AllTargets = [];
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _nextSearchTime = TimeSpan.Zero);
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clean());
+
+        SubscribeLocalEvent<ProximityTargetComponent, ComponentStartup>(OnTargetStartUp);
+        SubscribeLocalEvent<ProximityTargetComponent, ComponentShutdown>(OnTargetShutdown);
+        SubscribeLocalEvent<ProximityTargetComponent, EntityTerminatingEvent>(OnTargetTerminating);
     }
+
+    private static void Clean()
+    {
+        _nextSearchTime = TimeSpan.Zero;
+        AllTargets.Clear();
+    }
+
+    #region All targets population
+
+    private static void OnTargetStartUp(Entity<ProximityTargetComponent> ent, ref ComponentStartup args) => AllTargets.Add(ent);
+    private static void OnTargetShutdown(Entity<ProximityTargetComponent> ent, ref ComponentShutdown args) => AllTargets.Remove(ent);
+    private static void OnTargetTerminating(Entity<ProximityTargetComponent> ent, ref EntityTerminatingEvent args) => AllTargets.Remove(ent);
+
+    #endregion
 
     public override void Update(float frameTime)
     {
@@ -45,6 +65,9 @@ public sealed class ProximitySystem : EntitySystem
         // Оптимизации, чтобы просчет не происходил часто
         if (_timing.CurTime < _nextSearchTime)
             return;
+
+        PossibleNotInRange.Clear();
+        PossibleNotInRange.UnionWith(AllTargets);
 
         var query = EntityQueryEnumerator<ProximityReceiverComponent, TransformComponent>();
 
@@ -68,7 +91,15 @@ public sealed class ProximitySystem : EntitySystem
 
                 var targetEvent = new ProximityInRangeTargetEvent(uid, range, receiver.CloseRange, lightOfSightBlockerLevel);
                 RaiseLocalEvent(target, targetEvent);
+
+                PossibleNotInRange.Remove(target);
             }
+        }
+
+        foreach (var target in PossibleNotInRange)
+        {
+            var notInRangeEvent = new ProximityNotInRangeTargetEvent();
+            RaiseLocalEvent(target, ref notInRangeEvent);
         }
 
         _nextSearchTime = _timing.CurTime + ProximitySearchCooldown;

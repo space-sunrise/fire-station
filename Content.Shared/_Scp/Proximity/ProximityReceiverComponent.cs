@@ -77,3 +77,11 @@ public sealed class ProximityInRangeTargetEvent(EntityUid receiver, float range,
     public readonly float CloseRange = closeRange;
     public readonly LineOfSightBlockerLevel Type = type;
 }
+
+/// <summary>
+/// Ивент, вызываемый, когда сущность <see cref="ProximityTargetComponent"/> отсутствует рядом с любым <see cref="ProximityReceiverComponent"/>.
+/// Вызывается на цели.
+/// Служит, чтобы убирать какие-то эффекты, вызванные ивента приближения.
+/// </summary>
+[ByRefEvent]
+public record struct ProximityNotInRangeTargetEvent;
