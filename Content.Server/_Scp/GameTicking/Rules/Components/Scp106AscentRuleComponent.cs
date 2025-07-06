@@ -7,4 +7,7 @@ public sealed partial class Scp106AscentRuleComponent : Component
 {
     [DataField]
     public EntProtoId SpawnPortalsRule;
+
+    [ViewVariables] public EntityUid TargetStation;
+    [ViewVariables] public string CachedAlertLevel;
 }

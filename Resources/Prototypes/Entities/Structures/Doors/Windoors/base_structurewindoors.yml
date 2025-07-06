@@ -167,6 +167,11 @@
   - type: StaticPrice
     price: 150
   - type: PryUnpowered
+  # Fire edit start
+  - type: Tag
+    tags:
+    - Windoor
+  # Fire edit end
 
 - type: entity
   id: BaseSecureWindoor

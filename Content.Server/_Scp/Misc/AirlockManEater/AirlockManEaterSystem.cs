@@ -12,6 +12,7 @@ using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server._Scp.Misc.AirlockManEater;
 
+// TODO: Фикс отстающего от маски спрайта. Или наоборот.
 public sealed class AirlockManEaterSystem : SharedAirlockManEaterSystem
 {
     [Dependency] private readonly DoorSystem _door = default!;

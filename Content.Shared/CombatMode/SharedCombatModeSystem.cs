@@ -31,10 +31,12 @@ public abstract class SharedCombatModeSystem : EntitySystem
     // Sunrise-Start
     private void OnCollide(EntityUid uid, CombatModeComponent component, ref AttemptMobCollideEvent args)
     {
+        /* Fire edit - нам нужна коллизия всегда
         if (!component.IsInCombatMode)
         {
             args.Cancelled = true;
         }
+        */
     }
     // Sunrise-End
 

@@ -80,10 +80,6 @@
     originWhitelist:
       components:
       - Scp939
-  - type: TimedRemoveComponents
-    removeAfter: 1
-    components:
-    - type: MobCollision
   - type: GuideHelp
     guides:
     - ScpResearch

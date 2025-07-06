@@ -55,10 +55,28 @@
 - type: entity
   parent: [NineTailedFoxVest, BaseCentcommContraband]
   id: MTFVest
+  components:
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.5
 
 - type: entity
   parent: [NineTailedFoxCommanderVest, BaseCentcommContraband]
   id: MTFCommanderVest
+  components:
+  - type: ExplosionResistance
+    damageCoefficient: 0.8
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.4
 
 - type: entity
   parent: [NineTailedFoxWebbing, BaseCentcommContraband]
