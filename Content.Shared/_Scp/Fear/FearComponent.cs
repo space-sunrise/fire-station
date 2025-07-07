@@ -1,5 +1,4 @@
-﻿using Content.Shared._Scp.Shaders;
-using Robust.Shared.GameStates;
+﻿using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Fear;
 
@@ -18,7 +17,7 @@ public sealed partial class FearComponent : Component
     /// Время, через которое уровень страха понизится.
     /// </summary>
     [DataField, ViewVariables]
-    public TimeSpan TimeToDecreaseFearLevel = TimeSpan.FromMinutes(3f);
+    public TimeSpan TimeToDecreaseFearLevel = TimeSpan.FromSeconds(15f); // TODO: 3 минуты
 
     /// <summary>
     /// Следующее время, когда будут понижен уровень страха со временем.
@@ -65,6 +64,9 @@ public sealed partial class FearComponent : Component
     public Dictionary<string, float> CurrentFearBasedShaderStrength = new();
 
     #endregion
+
+    [DataField, ViewVariables]
+    public TimeSpan TimeToGetScaredAgainOnLookAt = TimeSpan.FromSeconds(10f); // TODO: 5 минут
 }
 
 /// <summary>

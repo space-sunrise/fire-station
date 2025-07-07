@@ -15,7 +15,6 @@
   - type: Scp
     class: Euclid
   - type: Scp096
-  - type: WatchingTarget
   - type: ShowBlinkable
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name

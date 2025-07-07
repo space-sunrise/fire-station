@@ -3,6 +3,7 @@ using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Shaders;
 using Content.Shared._Scp.Shaders.Grain;
 using Content.Shared._Scp.Shaders.Vignette;
+using Content.Shared._Scp.Watching;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Fear;
@@ -15,6 +16,8 @@ public sealed partial class FearSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+
+        SubscribeLocalEvent<FearComponent, EntityLookedAtEvent>(OnEntityLookedAt);
 
         SubscribeLocalEvent<FearComponent, ProximityInRangeTargetEvent>(OnProximityInRange);
         SubscribeLocalEvent<FearComponent, ProximityNotInRangeTargetEvent>(OnProximityNotInRange);
@@ -45,6 +48,21 @@ public sealed partial class FearSystem : EntitySystem
 
             // TODO: Звук облегчения
         }
+    }
+
+    private void OnEntityLookedAt(Entity<FearComponent> ent, ref EntityLookedAtEvent args)
+    {
+        if (!args.Target.Comp.AlreadyLookedAt.TryGetValue(GetNetEntity(ent), out var lastSeenTime))
+            return;
+
+        if (_timing.CurTime < lastSeenTime + ent.Comp.TimeToGetScaredAgainOnLookAt)
+            return;
+
+        if (!TryComp<FearSourceComponent>(args.Target, out var fearSource))
+            return;
+
+        if (!TrySetFearLevel(ent.AsNullable(), fearSource.UponSeenState))
+            return;
     }
 
     private void OnProximityInRange(Entity<FearComponent> ent, ref ProximityInRangeTargetEvent args)

@@ -74,6 +74,7 @@
   - type: ScpRestriction
   - type: ProximityReceiver
     requiredLineOfSight: Transparent
+  - type: WatchingTarget
   - type: FearSource
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
@@ -149,7 +150,6 @@
       - !type:NestedSelector
         tableId: ScpArtifactEffectsUltraFunnyTable
         weight: 1
-  - type: WatchingTarget
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name
     description: ghost-panel-antagonist-scp-description
