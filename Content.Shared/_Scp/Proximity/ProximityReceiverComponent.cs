@@ -27,6 +27,7 @@ public sealed partial class ProximityReceiverComponent : Component
 /// <remarks>
 /// Это создано, чтобы как-то единым образом обозначить и назвать "когда между этим и тем стоит стена/окно/ничего нет"
 /// </remarks>
+/// TODO: Когда-нибудь это должно переехать в систему FOV.
 public enum LineOfSightBlockerLevel
 {
     /// <summary>

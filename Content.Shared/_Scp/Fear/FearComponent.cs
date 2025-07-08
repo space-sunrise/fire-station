@@ -1,4 +1,5 @@
-﻿using Robust.Shared.GameStates;
+﻿using Content.Shared._Scp.Proximity;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Fear;
 
@@ -61,12 +62,47 @@ public sealed partial class FearComponent : Component
     /// Ключ в виде строки означает имя компонента с силой шейдера.
     /// </remarks>
     [ViewVariables]
-    public Dictionary<string, float> CurrentFearBasedShaderStrength = new();
+    public readonly Dictionary<string, float> CurrentFearBasedShaderStrength = new();
 
     #endregion
 
+    #region Close to scary thing parameters
+
+    /// <summary>
+    /// Модификатор силы шейдера, накладываемый, когда сущность приближается к источнику страха через прозрачный объект.
+    /// Через прозрачные объекты приближаться к чем-тому не так страшно.
+    /// Рассчитанная сила делится на этот модификатор, НЕ умножается.
+    /// </summary>
+    [DataField, ViewVariables]
+    public float TransparentStrengthDecreaseFactor = 2f;
+
+    /// <summary>
+    /// Уровень видимости, который требуется, чтобы почувствовать страх.
+    /// Если итоговый уровень будет выше, то не будет и эффекта.
+    /// А если ниже, то будет.
+    /// </summary>
+    [DataField, ViewVariables]
+    public LineOfSightBlockerLevel ProximityBlockerLevel = LineOfSightBlockerLevel.Transparent;
+
+    #endregion
+
+    #region Seen scary thing parameters
+
+    /// <summary>
+    /// Уровень видимости, который требуется, чтобы почувствовать страх.
+    /// Если итоговый уровень будет выше, то не будет и эффекта.
+    /// А если ниже, то будет.
+    /// </summary>
+    [DataField, ViewVariables]
+    public LineOfSightBlockerLevel SeenBlockerLevel = LineOfSightBlockerLevel.Transparent;
+
+    /// <summary>
+    /// Время, через которое игрок снова сможет испугаться источника страха, когда увидит его.
+    /// </summary>
     [DataField, ViewVariables]
     public TimeSpan TimeToGetScaredAgainOnLookAt = TimeSpan.FromSeconds(10f); // TODO: 5 минут
+
+    #endregion
 }
 
 /// <summary>

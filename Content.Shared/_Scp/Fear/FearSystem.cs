@@ -52,30 +52,61 @@ public sealed partial class FearSystem : EntitySystem
 
     private void OnEntityLookedAt(Entity<FearComponent> ent, ref EntityLookedAtEvent args)
     {
+        // Проверка на видимость.
+        // Это нужно, чтобы можно было не пугаться через стекло, например.
+        // Это будет использовано, например, у ученых, которые 100 лет видели сцп через стекла и не должны пугаться.
+        if (args.BlockerLevel > ent.Comp.SeenBlockerLevel)
+            return;
+
         if (!args.Target.Comp.AlreadyLookedAt.TryGetValue(GetNetEntity(ent), out var lastSeenTime))
             return;
 
         if (_timing.CurTime < lastSeenTime + ent.Comp.TimeToGetScaredAgainOnLookAt)
             return;
 
-        if (!TryComp<FearSourceComponent>(args.Target, out var fearSource))
+        if (!TryComp<FearSourceComponent>(args.Target, out var source))
             return;
 
-        if (!TrySetFearLevel(ent.AsNullable(), fearSource.UponSeenState))
+        // Если текущий уровень страха выше, чем тот, что мы хотим поставить,
+        // то мы не должны его ставить.
+        if (ent.Comp.State >= source.UponSeenState)
+            return;
+
+        if (!TrySetFearLevel(ent.AsNullable(), source.UponSeenState))
             return;
     }
 
     private void OnProximityInRange(Entity<FearComponent> ent, ref ProximityInRangeTargetEvent args)
     {
-        Logger.Error($"{Name(ent)}, {Name(args.Receiver)}, {args.Range}, {args.Type}");
+        // Проверка на видимость.
+        // Это нужно, чтобы можно было не пугаться через стекло, например.
+        // Это будет использовано, например, у ученых, которые 100 лет видели сцп через стекла и не должны пугаться.
+        if (args.Type > ent.Comp.ProximityBlockerLevel)
+            return;
 
         if (!TryComp<FearSourceComponent>(args.Receiver, out var source))
             return;
 
-        TrySetFearLevel(ent.AsNullable(), source.UponComeCloser);
+        Logger.Error($"{Name(ent)}, {Name(args.Receiver)}, {args.Range}, {args.Type}");
 
-        SetRangeBasedShaderStrength<GrainOverlayComponent>(ent.Owner, args.Range, args.CloseRange, source.GrainShaderStrength);
-        SetRangeBasedShaderStrength<VignetteOverlayComponent>(ent.Owner, args.Range, args.CloseRange, source.VignetteShaderStrength);
+        // Если текущий уровень страха выше, чем тот, что мы хотим поставить,
+        // то мы не должны его ставить.
+        if (ent.Comp.State < source.UponComeCloser)
+            TrySetFearLevel(ent.AsNullable(), source.UponComeCloser);
+
+        SetRangeBasedShaderStrength<GrainOverlayComponent>(ent.Owner,
+            args.Range,
+            args.CloseRange,
+            source.GrainShaderStrength,
+            args.Type,
+            ent.Comp);
+
+        SetRangeBasedShaderStrength<VignetteOverlayComponent>(ent.Owner,
+            args.Range,
+            args.CloseRange,
+            source.VignetteShaderStrength,
+            args.Type,
+            ent.Comp);
     }
 
     private void OnProximityNotInRange(Entity<FearComponent> ent, ref ProximityNotInRangeTargetEvent args)
@@ -133,15 +164,25 @@ public sealed partial class FearSystem : EntitySystem
     /// <param name="maxRange">Расстояние, на котором начинаются увеличиваться параметры шейдера</param>
     /// <param name="parameters">Параметры силы шейдера. Минимальное означает силу шейдера на входе в <see cref="maxRange"/>,
     /// максимальное силу при максимальном приближении к источнику страха</param>
+    /// <param name="type"> <see cref="LineOfSightBlockerLevel"/> </param>
     /// <param name="fear">Компонент страха</param>
     /// <typeparam name="T">Компонент с настройками шейдера</typeparam>
-    private void SetRangeBasedShaderStrength<T>(Entity<T?> ent, float currentRange, float maxRange, MinMaxExtended parameters, FearComponent? fear = null)
+    private void SetRangeBasedShaderStrength<T>(Entity<T?> ent,
+        float currentRange,
+        float maxRange,
+        MinMaxExtended parameters,
+        LineOfSightBlockerLevel type,
+        FearComponent? fear = null)
         where T : IShaderStrength, IComponent
     {
         if (!Resolve(ent, ref fear))
             return;
 
         var strength = CalculateShaderStrength(currentRange, maxRange, parameters);
+
+        if (type == LineOfSightBlockerLevel.Transparent)
+            strength /= fear.TransparentStrengthDecreaseFactor;
+
         SetShaderStrength(ent, fear, strength);
     }
 
