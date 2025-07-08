@@ -1,7 +1,7 @@
 ﻿using Content.Shared._Scp.Helpers;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Scp.Fear;
+namespace Content.Shared._Scp.Fear.Components;
 
 /// <summary>
 /// Сущность с этим компонентом будет являться источников страха для игрока.

@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Helpers;
+﻿using Content.Shared._Scp.Fear.Components;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Shaders;
 using Content.Shared._Scp.Shaders.Grain;
@@ -7,7 +8,7 @@ using Content.Shared._Scp.Watching;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._Scp.Fear;
+namespace Content.Shared._Scp.Fear.Systems;
 
 public abstract partial class SharedFearSystem : EntitySystem
 {

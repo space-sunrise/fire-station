@@ -1,4 +1,6 @@
-﻿namespace Content.Shared._Scp.Fear;
+﻿using Content.Shared._Scp.Fear.Components;
+
+namespace Content.Shared._Scp.Fear.Systems;
 
 // TODO: Рефактор системы сердцебиения, чтобы оперировать сердцебиение там, а не тут.
 public abstract partial class SharedFearSystem

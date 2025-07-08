@@ -1,6 +1,7 @@
-﻿using Robust.Shared.GameStates;
+﻿using Content.Shared._Scp.Fear.Systems;
+using Robust.Shared.GameStates;
 
-namespace Content.Shared._Scp.Fear;
+namespace Content.Shared._Scp.Fear.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class FearActiveSoundEffectsComponent : Component

@@ -1,7 +1,8 @@
-﻿using Content.Shared._Scp.Helpers;
+﻿using Content.Shared._Scp.Fear.Components;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Shaders;
 
-namespace Content.Shared._Scp.Fear;
+namespace Content.Shared._Scp.Fear.Systems;
 
 public abstract partial class SharedFearSystem
 {

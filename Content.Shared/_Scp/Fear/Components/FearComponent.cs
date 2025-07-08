@@ -1,7 +1,7 @@
 ﻿using Content.Shared._Scp.Proximity;
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Scp.Fear;
+namespace Content.Shared._Scp.Fear.Components;
 
 /// <summary>
 /// Компонент, отвечающий за возможность пугаться.
