@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Fear.Components;
+﻿using System.Linq;
+using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Shaders;
@@ -12,6 +13,7 @@ namespace Content.Shared._Scp.Fear.Systems;
 
 public abstract partial class SharedFearSystem : EntitySystem
 {
+    [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedShaderStrengthSystem _shaderStrength = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -45,12 +47,19 @@ public abstract partial class SharedFearSystem : EntitySystem
             if (fear.State == FearState.None)
                 continue;
 
+            if (fear.NextTimeDecreaseFearLevel > _timing.CurTime)
+                continue;
+
             // Немного костыль, но это означает, что мы прямо сейчас испытываем какие-то приколы со страхом
             // И пугаемся чего-то в данный момент. Значит мы не должны успокаиваться.
             if (_activeFearEffects.HasComp(uid))
                 continue;
 
-            if (fear.NextTimeDecreaseFearLevel > _timing.CurTime)
+            var visibleFearSources = _watching.GetAllVisibleTo<FearSourceComponent>(uid, fear.SeenBlockerLevel);
+
+            // Проверка на то, что мы в данный момент не смотрим на какую-то страшную сущность.
+            // Нельзя успокоиться, когда мы смотрим на источник страха.
+            if (visibleFearSources.Any())
                 continue;
 
             var newFearState = GetDecreasedLevel(fear.State);

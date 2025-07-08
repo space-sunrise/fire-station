@@ -66,6 +66,10 @@ public sealed partial class EyeWatchingSystem : EntitySystem
                 var firstTime = !watchingComponent.AlreadyLookedAt.ContainsKey(netViewer);
                 var blockerLevel = _proximity.GetLightOfSightBlockerLevel(viewer, uid);
 
+                // Небольшая заглушка для удобства работы с ивентами.
+                // Использовать firstTime не очень удобно, поэтому в качестве дополнительного способа определения будет TimeSpan.Zero
+                watchingComponent.AlreadyLookedAt[netViewer] = TimeSpan.Zero;
+
                 // За подробностями какой ивент для чего навести мышку на название ивента
                 RaiseLocalEvent(viewer, new EntityLookedAtEvent((uid, watchingComponent), firstTime, blockerLevel));
                 RaiseLocalEvent(uid, new EntitySeenEvent(viewer, firstTime, blockerLevel));

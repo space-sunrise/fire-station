@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Shared._Scp.Blinking;
+using Content.Shared._Scp.Proximity;
 using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs.Systems;
@@ -72,15 +73,16 @@ public sealed partial class EyeWatchingSystem
     /// В методе нет проверок на дополнительные состояния, такие как моргание/закрыты ли глаза/поле зрения т.п.
     /// Единственная проверка - можно ли физически увидеть цель(т.е. не закрыта ли она стеной и т.п.)
     /// </remarks>
-    /// <param name="ent">Цель, для которой ищем потенциальных смотрящих</param>
+    /// <param name="ent">Цель, для которой ищем потенциальных смотрящих</param>\
+    /// <param name="type">Требуемая прозрачность линии видимости.</param>
     /// <returns>Список всех, кто потенциально видит цель</returns>
-    public IEnumerable<EntityUid> GetAllVisibleTo<T>(Entity<TransformComponent?> ent) where T : IComponent
+    public IEnumerable<EntityUid> GetAllVisibleTo<T>(Entity<TransformComponent?> ent, LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent) where T : IComponent
     {
         if (!Resolve(ent.Owner, ref ent.Comp))
             return [];
 
         return _lookup.GetEntitiesInRange<T>(ent.Comp.Coordinates, ExamineSystemShared.ExamineRange)
-            .Where(eye => _examine.InRangeUnOccluded(eye, ent, ignoreInsideBlocker: false))
+            .Where(eye => _proximity.IsRightType(ent, eye, type, out _))
             .Select(e => e.Owner);
     }
 
