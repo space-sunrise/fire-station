@@ -86,7 +86,7 @@ public sealed partial class FearComponent : Component
 
     #endregion
 
-    #region Seen scary thing parameters
+    #region See scary thing parameters
 
     /// <summary>
     /// Уровень видимости, который требуется, чтобы почувствовать страх.

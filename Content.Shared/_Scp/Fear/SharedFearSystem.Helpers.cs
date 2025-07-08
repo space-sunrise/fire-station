@@ -3,7 +3,7 @@ using Content.Shared._Scp.Shaders;
 
 namespace Content.Shared._Scp.Fear;
 
-public sealed partial class FearSystem
+public abstract partial class SharedFearSystem
 {
     private const int MinPossibleValue = (int) FearState.None;
     private const int MaxPossibleValue = (int) FearState.Terror;
@@ -17,7 +17,7 @@ public sealed partial class FearSystem
         where T : IShaderStrength, IComponent
     {
         var fearBasedStrength = fear.CurrentFearBasedShaderStrength.GetValueOrDefault(typeof(T).Name);
-        Logger.Warning($"{fearBasedStrength}, {typeof(T).Name}");
+        // Logger.Warning($"{fearBasedStrength}, {typeof(T).Name}");
         var actualStrength = Math.Clamp(strength, fearBasedStrength, float.MaxValue);
 
         return actualStrength;
@@ -33,12 +33,28 @@ public sealed partial class FearSystem
     /// <returns>Рассчитанную силу шейдера</returns>
     private static float CalculateShaderStrength(float currentRange, float maxRange, MinMaxExtended parameters)
     {
+        return CalculateStrength(currentRange, maxRange, parameters.Min, parameters.Max);
+    }
+
+    /// <summary>
+    /// Рассчитывает силу чего-либо исходя из приближения к источнику страха.
+    /// Более универсальный метод, не требующий <see cref="MinMaxExtended"/>
+    /// </summary>
+    private static float CalculateStrength(float currentRange, float maxRange, float min, float max, bool inverse = false)
+    {
         if (currentRange <= 0f)
-            return parameters.Max;
+            return max;
 
-        var proximityFactor = 1f - Math.Clamp(currentRange / maxRange, 0f, 1f);
+        if (currentRange >= maxRange)
+            return min;
 
-        return MathHelper.Lerp(parameters.Min, parameters.Max, proximityFactor);
+        // Фактор близости: 1.0 = вплотную, 0.0 = на максимальном расстоянии
+        var proximityFactor = 1f - (currentRange / maxRange);
+
+        if (inverse)
+            return MathHelper.Lerp(max, min, proximityFactor);
+
+        return MathHelper.Lerp(min, max, proximityFactor);
     }
 
     /// <summary>

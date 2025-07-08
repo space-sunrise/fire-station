@@ -4,14 +4,18 @@ using Content.Shared._Scp.Shaders;
 using Content.Shared._Scp.Shaders.Grain;
 using Content.Shared._Scp.Shaders.Vignette;
 using Content.Shared._Scp.Watching;
+using Content.Shared.Mobs.Systems;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Fear;
 
-public sealed partial class FearSystem : EntitySystem
+public abstract partial class SharedFearSystem : EntitySystem
 {
+    [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedShaderStrengthSystem _shaderStrength = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+
+    private EntityQuery<FearActiveSoundEffectsComponent> _activeFearEffects;
 
     public override void Initialize()
     {
@@ -21,6 +25,8 @@ public sealed partial class FearSystem : EntitySystem
 
         SubscribeLocalEvent<FearComponent, ProximityInRangeTargetEvent>(OnProximityInRange);
         SubscribeLocalEvent<FearComponent, ProximityNotInRangeTargetEvent>(OnProximityNotInRange);
+
+        _activeFearEffects = GetEntityQuery<FearActiveSoundEffectsComponent>();
     }
 
     public override void Update(float frameTime)
@@ -38,6 +44,11 @@ public sealed partial class FearSystem : EntitySystem
             if (fear.State == FearState.None)
                 continue;
 
+            // Немного костыль, но это означает, что мы прямо сейчас испытываем какие-то приколы со страхом
+            // И пугаемся чего-то в данный момент. Значит мы не должны успокаиваться.
+            if (_activeFearEffects.HasComp(uid))
+                continue;
+
             if (fear.NextTimeDecreaseFearLevel > _timing.CurTime)
                 continue;
 
@@ -52,6 +63,9 @@ public sealed partial class FearSystem : EntitySystem
 
     private void OnEntityLookedAt(Entity<FearComponent> ent, ref EntityLookedAtEvent args)
     {
+        if (!_mobState.IsAlive(ent))
+            return;
+
         // Проверка на видимость.
         // Это нужно, чтобы можно было не пугаться через стекло, например.
         // Это будет использовано, например, у ученых, которые 100 лет видели сцп через стекла и не должны пугаться.
@@ -78,6 +92,9 @@ public sealed partial class FearSystem : EntitySystem
 
     private void OnProximityInRange(Entity<FearComponent> ent, ref ProximityInRangeTargetEvent args)
     {
+        if (!_mobState.IsAlive(ent))
+            return;
+
         // Проверка на видимость.
         // Это нужно, чтобы можно было не пугаться через стекло, например.
         // Это будет использовано, например, у ученых, которые 100 лет видели сцп через стекла и не должны пугаться.
@@ -87,12 +104,13 @@ public sealed partial class FearSystem : EntitySystem
         if (!TryComp<FearSourceComponent>(args.Receiver, out var source))
             return;
 
-        Logger.Error($"{Name(ent)}, {Name(args.Receiver)}, {args.Range}, {args.Type}");
-
         // Если текущий уровень страха выше, чем тот, что мы хотим поставить,
         // то мы не должны его ставить.
         if (ent.Comp.State < source.UponComeCloser)
             TrySetFearLevel(ent.AsNullable(), source.UponComeCloser);
+
+        StartEffects(ent);
+        RecalculateEffectsStrength(ent.Owner, args.Range, args.CloseRange);
 
         SetRangeBasedShaderStrength<GrainOverlayComponent>(ent.Owner,
             args.Range,
@@ -111,12 +129,12 @@ public sealed partial class FearSystem : EntitySystem
 
     private void OnProximityNotInRange(Entity<FearComponent> ent, ref ProximityNotInRangeTargetEvent args)
     {
-        Logger.Debug($"{Name(ent)}");
-
         // Как только игрок отходит от источника страха он должен перестать бояться
         // Но значения шейдера от уровня страха должны продолжать действовать, что и учитывает метод
         SetShaderStrength<GrainOverlayComponent>(ent.Owner, ent.Comp, 0f);
         SetShaderStrength<VignetteOverlayComponent>(ent.Owner, ent.Comp, 0f);
+
+        RemoveEffects(ent.Owner);
     }
 
     /// <summary>
