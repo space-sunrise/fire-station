@@ -62,8 +62,8 @@ public sealed partial class SunriseCCVars : CVars
      * Service Authorization
      */
 
-    public static readonly CVarDef<bool> ServiceAuthEnabled =
-        CVarDef.Create("service_auth.enabled", false, CVar.SERVER | CVar.REPLICATED);
+    public static readonly CVarDef<bool> ServiceAuthEnabled = // Fire edit
+        CVarDef.Create("service_auth.enabled", true, CVar.SERVER | CVar.REPLICATED);
 
     public static readonly CVarDef<string> ServiceAuthApiUrl =
         CVarDef.Create("service_auth.api_url", "", CVar.SERVERONLY);
@@ -74,8 +74,8 @@ public sealed partial class SunriseCCVars : CVars
     public static readonly CVarDef<bool> ServiceAuthCheckTelegramMember =
         CVarDef.Create("service_auth.check_telegram_member", false, CVar.SERVERONLY);
 
-    public static readonly CVarDef<bool> ServiceAuthCheckDiscordMember =
-        CVarDef.Create("service_auth.check_discord_member", false, CVar.SERVERONLY);
+    public static readonly CVarDef<bool> ServiceAuthCheckDiscordMember = // Fire edit
+        CVarDef.Create("service_auth.check_discord_member", true, CVar.SERVERONLY);
 
     public static readonly CVarDef<string> ServiceAuthProjectName =
         CVarDef.Create("service_auth.project_name", string.Empty, CVar.SERVERONLY);
@@ -114,8 +114,8 @@ public sealed partial class SunriseCCVars : CVars
      *  Greetings
      */
 
-    public static readonly CVarDef<bool> GreetingsEnable =
-        CVarDef.Create("greetings.enable", true);
+    public static readonly CVarDef<bool> GreetingsEnable = // Fire edit
+        CVarDef.Create("greetings.enable", false);
 
     public static readonly CVarDef<string> GreetingsMessage =
         CVarDef.Create("greetings.message", "Привет");
@@ -219,7 +219,7 @@ public sealed partial class SunriseCCVars : CVars
      * Roadmap
      */
 
-    public static readonly CVarDef<string> RoadmapId =
+    public static readonly CVarDef<string> RoadmapId = // Fire edit
         CVarDef.Create("roadmap.id", "FireStationRoadmap");
 
     /**
@@ -233,8 +233,8 @@ public sealed partial class SunriseCCVars : CVars
      * Cryoteleport
      */
 
-    public static readonly CVarDef<bool> CryoTeleportEnable =
-        CVarDef.Create("cryo_teleport.enable", true, CVar.SERVERONLY);
+    public static readonly CVarDef<bool> CryoTeleportEnable = // Fire edit
+        CVarDef.Create("cryo_teleport.enable", false, CVar.SERVERONLY);
 
     public static readonly CVarDef<int> CryoTeleportTransferDelay =
         CVarDef.Create("cryo_teleport.transfer_delay", 5, CVar.SERVERONLY);
@@ -395,8 +395,8 @@ public sealed partial class SunriseCCVars : CVars
     /// <summary>
     ///     Flavor Profile
     /// </summary>
-    public static readonly CVarDef<bool> FlavorTextSponsorOnly =
-        CVarDef.Create("flavor_text.sponsor_only", true, CVar.SERVER | CVar.REPLICATED);
+    public static readonly CVarDef<bool> FlavorTextSponsorOnly = // Fire edit
+        CVarDef.Create("flavor_text.sponsor_only", false, CVar.SERVER | CVar.REPLICATED);
 
     public static readonly CVarDef<int> FlavorTextBaseLength =
         CVarDef.Create("flavor_text.length", 512, CVar.SERVER | CVar.REPLICATED);
@@ -474,14 +474,14 @@ public sealed partial class SunriseCCVars : CVars
     /*
      * AntiSpam params
      */
-    public static readonly CVarDef<bool> AntiSpamEnable =
-        CVarDef.Create("anti_spam.enable", false, CVar.SERVER | CVar.ARCHIVE);
+    public static readonly CVarDef<bool> AntiSpamEnable = // Fire edit
+        CVarDef.Create("anti_spam.enable", true, CVar.SERVER | CVar.ARCHIVE);
     public static readonly CVarDef<int> AntiSpamCounterShort =
         CVarDef.Create("anti_spam.counter_short", 1, CVar.SERVER | CVar.ARCHIVE);
     public static readonly CVarDef<int> AntiSpamCounterLong =
         CVarDef.Create("anti_spam.counter_long", 2, CVar.SERVER | CVar.ARCHIVE);
-    public static readonly CVarDef<float> AntiSpamMuteDuration =
-        CVarDef.Create("anti_spam.mute_duration", 10f, CVar.SERVER | CVar.ARCHIVE);
+    public static readonly CVarDef<float> AntiSpamMuteDuration = // Fire edit
+        CVarDef.Create("anti_spam.mute_duration", 30f, CVar.SERVER | CVar.ARCHIVE);
     public static readonly CVarDef<float> AntiSpamTimeShort =
         CVarDef.Create("anti_spam.time_short", 1.5f, CVar.SERVER | CVar.ARCHIVE);
     public static readonly CVarDef<float> AntiSpamTimeLong =
