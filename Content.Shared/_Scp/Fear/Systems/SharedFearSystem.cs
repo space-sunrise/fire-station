@@ -11,6 +11,13 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Fear.Systems;
 
+/// <summary>
+/// Система страха.
+/// Работает на следующих базовых принципах:
+/// Есть два способа взаимодействовать со страхом: повышать уровень страха или приближаться к источнику страха.
+/// Приближение к источнику страха сильно усиливает эффекты в зависимости от расстояния до источника.
+/// Повышение уровня страха усиливает эффекты, уровень страха понижается со временем.
+/// </summary>
 public abstract partial class SharedFearSystem : EntitySystem
 {
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
@@ -50,29 +57,24 @@ public abstract partial class SharedFearSystem : EntitySystem
             if (fear.NextTimeDecreaseFearLevel > _timing.CurTime)
                 continue;
 
-            // Немного костыль, но это означает, что мы прямо сейчас испытываем какие-то приколы со страхом
-            // И пугаемся чего-то в данный момент. Значит мы не должны успокаиваться.
-            if (_activeFearEffects.HasComp(uid))
-                continue;
+            var entity = (uid, fear);
 
-            var visibleFearSources = _watching.GetAllVisibleTo<FearSourceComponent>(uid, fear.SeenBlockerLevel);
-
-            // Проверка на то, что мы в данный момент не смотрим на какую-то страшную сущность.
-            // Нельзя успокоиться, когда мы смотрим на источник страха.
-            if (visibleFearSources.Any())
-                continue;
-
-            var newFearState = GetDecreasedLevel(fear.State);
-
-            if (!TrySetFearLevel((uid, fear), newFearState))
-                continue;
-
-            // TODO: Звук облегчения
+            // Если по какой-то причине не получилось успокоиться, то ждем снова
+            // Это нужно, чтобы игрок только что отойдя от источника страха не успокоился моментально
+            if (!TryCalmDown(entity))
+                SetNextCalmDownTime(entity);
         }
     }
 
+    /// <summary>
+    /// Обрабатывает событие, когда игрок посмотрел на источник страха.
+    /// Повышает уровень страха до указанного у источника уровня.
+    /// </summary>
     private void OnEntityLookedAt(Entity<FearComponent> ent, ref EntityLookedAtEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         if (!_mobState.IsAlive(ent))
             return;
 
@@ -96,12 +98,18 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (ent.Comp.State >= source.UponSeenState)
             return;
 
-        if (!TrySetFearLevel(ent.AsNullable(), source.UponSeenState))
-            return;
+        TrySetFearLevel(ent.AsNullable(), source.UponSeenState);
     }
 
+    /// <summary>
+    /// Обрабатывает событие, когда игрок находится вблизи с источником страха.
+    /// Нужен, чтобы включить разные страшные эффекты.
+    /// </summary>
     private void OnProximityInRange(Entity<FearComponent> ent, ref ProximityInRangeTargetEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         if (!_mobState.IsAlive(ent))
             return;
 
@@ -137,14 +145,47 @@ public abstract partial class SharedFearSystem : EntitySystem
             ent.Comp);
     }
 
+    /// <summary>
+    /// Обрабатывает событие, когда сущность НЕ находится рядом с источником страха.
+    /// Нужен, чтобы выключить эффекты от источника страха.
+    /// </summary>
     private void OnProximityNotInRange(Entity<FearComponent> ent, ref ProximityNotInRangeTargetEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         // Как только игрок отходит от источника страха он должен перестать бояться
         // Но значения шейдера от уровня страха должны продолжать действовать, что и учитывает метод
         SetShaderStrength<GrainOverlayComponent>(ent.Owner, ent.Comp, 0f);
         SetShaderStrength<VignetteOverlayComponent>(ent.Owner, ent.Comp, 0f);
 
         RemoveEffects(ent.Owner);
+    }
+
+    /// <summary>
+    /// Пытается успокоить сущность, испытывающую страх.
+    /// Понижает уровень страха на 1, пока не успокоит полностью.
+    /// </summary>
+    public bool TryCalmDown(Entity<FearComponent> ent)
+    {
+        // Немного костыль, но это означает, что мы прямо сейчас испытываем какие-то приколы со страхом
+        // И пугаемся чего-то в данный момент. Значит мы не должны успокаиваться.
+        if (_activeFearEffects.HasComp(ent))
+            return false;
+
+        var visibleFearSources = _watching.GetAllVisibleTo<FearSourceComponent>(ent.Owner, ent.Comp.SeenBlockerLevel);
+
+        // Проверка на то, что мы в данный момент не смотрим на какую-то страшную сущность.
+        // Нельзя успокоиться, когда мы смотрим на источник страха.
+        if (visibleFearSources.Any())
+            return false;
+
+        var newFearState = GetDecreasedLevel(ent.Comp.State);
+
+        if (!TrySetFearLevel(ent.AsNullable(), newFearState))
+            return false;
+
+        return true;
     }
 
     /// <summary>
@@ -158,10 +199,14 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (ent.Comp.State == state)
             return true;
 
+        var entity = (ent, ent.Comp);
+
+        PlayFearStateSound(entity, state);
+
         ent.Comp.State = state;
 
-        SetFearBasedShaderStrength((ent, ent.Comp));
-        SetNextCalmDownTime((ent, ent.Comp));
+        SetFearBasedShaderStrength(entity);
+        SetNextCalmDownTime(entity);
 
         Dirty(ent);
 
@@ -218,7 +263,7 @@ public abstract partial class SharedFearSystem : EntitySystem
     /// Устанавливает силу шейдера, учитывая текущий уровень страха и его потребности в силе.
     /// </summary>
     /// <typeparam name="T">Компонент настроек, контролирующий силу шейдера</typeparam>
-    public void SetShaderStrength<T>(Entity<T?> ent, FearComponent? fear, float strength)
+    private void SetShaderStrength<T>(Entity<T?> ent, FearComponent? fear, float strength)
         where T : IShaderStrength, IComponent
     {
         if (!Resolve(ent, ref fear))

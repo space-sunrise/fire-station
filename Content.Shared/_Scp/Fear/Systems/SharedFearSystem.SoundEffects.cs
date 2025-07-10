@@ -18,6 +18,8 @@ public abstract partial class SharedFearSystem
 
     protected virtual void StartHeartBeat(Entity<FearActiveSoundEffectsComponent> ent) {}
 
+    protected virtual void PlayFearStateSound(Entity<FearComponent> ent, FearState newState) {}
+
     private void StartEffects(EntityUid uid)
     {
         if (HasComp<FearActiveSoundEffectsComponent>(uid))
