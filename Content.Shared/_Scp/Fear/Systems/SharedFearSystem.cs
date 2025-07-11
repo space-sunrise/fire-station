@@ -4,6 +4,7 @@ using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Shaders;
 using Content.Shared._Scp.Shaders.Grain;
+using Content.Shared._Scp.Shaders.Highlighting;
 using Content.Shared._Scp.Shaders.Vignette;
 using Content.Shared._Scp.Watching;
 using Content.Shared.Mobs.Systems;
@@ -20,6 +21,7 @@ namespace Content.Shared._Scp.Fear.Systems;
 /// </summary>
 public abstract partial class SharedFearSystem : EntitySystem
 {
+    [Dependency] private readonly SharedHighlightSystem _highlight = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedShaderStrengthSystem _shaderStrength = default!;
@@ -98,7 +100,10 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (ent.Comp.State >= source.UponSeenState)
             return;
 
-        TrySetFearLevel(ent.AsNullable(), source.UponSeenState);
+        if (!TrySetFearLevel(ent.AsNullable(), source.UponSeenState))
+            return;
+
+        HighLightAllVisibleFears(ent);
     }
 
     /// <summary>

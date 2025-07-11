@@ -15,7 +15,6 @@ public sealed partial class EyeWatchingSystem
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
 
     // Возможно удваивается на 2, что приводит к использованию поля зрения в 240 градусов в реальности
@@ -78,12 +77,27 @@ public sealed partial class EyeWatchingSystem
     /// <returns>Список всех, кто потенциально видит цель</returns>
     public IEnumerable<EntityUid> GetAllVisibleTo<T>(Entity<TransformComponent?> ent, LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent) where T : IComponent
     {
+        return GetAllEntitiesVisibleTo<T>(ent, type)
+            .Select(e => e.Owner);
+    }
+
+    /// <summary>
+    /// Получает и возвращает всех потенциально смотрящих на указанную цель.
+    /// </summary>
+    /// <remarks>
+    /// В методе нет проверок на дополнительные состояния, такие как моргание/закрыты ли глаза/поле зрения т.п.
+    /// Единственная проверка - можно ли физически увидеть цель(т.е. не закрыта ли она стеной и т.п.)
+    /// </remarks>
+    /// <param name="ent">Цель, для которой ищем потенциальных смотрящих</param>\
+    /// <param name="type">Требуемая прозрачность линии видимости.</param>
+    /// <returns>Список всех, кто потенциально видит цель</returns>
+    public IEnumerable<Entity<T>> GetAllEntitiesVisibleTo<T>(Entity<TransformComponent?> ent, LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent) where T : IComponent
+    {
         if (!Resolve(ent.Owner, ref ent.Comp))
             return [];
 
         return _lookup.GetEntitiesInRange<T>(ent.Comp.Coordinates, ExamineSystemShared.ExamineRange)
-            .Where(eye => _proximity.IsRightType(ent, eye, type, out _))
-            .Select(e => e.Owner);
+            .Where(eye => _proximity.IsRightType(ent, eye, type, out _));
     }
 
     /// <summary>
