@@ -7,19 +7,19 @@ namespace Content.Shared._Scp.Fear.Components;
 /// Сущность с этим компонентом будет являться источников страха для игрока.
 /// Здесь настраивается, какой уровень страха будет вызван у игрока при разных обстоятельствах.
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class FearSourceComponent : Component
 {
     /// <summary>
     /// Какой уровень страха будет у жертвы, когда она увидит это?
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public FearState UponSeenState = FearState.Anxiety;
 
     /// <summary>
     /// Какой уровень страха будет у жертвы, когда она подойдет близко?
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public FearState UponComeCloser = FearState.Fear;
 
     /// <summary>
@@ -27,7 +27,7 @@ public sealed partial class FearSourceComponent : Component
     /// Минимальное значение отображает силу при минимальном приближении.
     /// Максимальное при максимальном.
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public MinMaxExtended GrainShaderStrength = new (0, 800);
 
     /// <summary>
@@ -35,6 +35,18 @@ public sealed partial class FearSourceComponent : Component
     /// Минимальное значение отображает силу при минимальном приближении.
     /// Максимальное при максимальном.
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public MinMaxExtended VignetteShaderStrength = new (0, 300);
+
+    /// <summary>
+    /// Должен ли источник страха вызывать звуки дыхания у пугающегося при приближении?
+    /// </summary>
+    [DataField, ViewVariables, AutoNetworkedField]
+    public bool PlayBreathingSound = true;
+
+    /// <summary>
+    /// Должен ли источник страха вызывать звуки сердцебиения у пугающегося при приближении?
+    /// </summary>
+    [DataField, ViewVariables, AutoNetworkedField]
+    public bool PlayHeartbeatSound = true;
 }

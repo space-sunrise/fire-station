@@ -1,5 +1,6 @@
 ﻿using Content.Shared._Scp.Proximity;
 using Robust.Shared.GameStates;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Scp.Fear.Components;
 
@@ -108,25 +109,26 @@ public sealed partial class FearComponent : Component
 /// <summary>
 /// Уровни страха. Чем больше значение, тем сильнее страх
 /// </summary>
-public enum FearState
+[Serializable, NetSerializable]
+public enum FearState : byte
 {
     /// <summary>
     /// Отсутствие страха. Сущность в спокойном состоянии
     /// </summary>
-    None,
+    None = 0,
 
     /// <summary>
     /// Тревожность. Сущность немного напугана
     /// </summary>
-    Anxiety,
+    Anxiety = 1,
 
     /// <summary>
     /// Страх. Сущность испытает прямой страх от чего-либо
     /// </summary>
-    Fear,
+    Fear = 2,
 
     /// <summary>
     /// Неконтролируемый ужас. Сущность невероятно напугана, что-то СЛИШКОМ ужасно, чтобы знать об этом.
     /// </summary>
-    Terror,
+    Terror = 3,
 }

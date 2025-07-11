@@ -18,7 +18,6 @@ public abstract partial class SharedFearSystem
         where T : IShaderStrength, IComponent
     {
         var fearBasedStrength = fear.CurrentFearBasedShaderStrength.GetValueOrDefault(typeof(T).Name);
-        // Logger.Warning($"{fearBasedStrength}, {typeof(T).Name}");
         var actualStrength = Math.Clamp(strength, fearBasedStrength, float.MaxValue);
 
         return actualStrength;

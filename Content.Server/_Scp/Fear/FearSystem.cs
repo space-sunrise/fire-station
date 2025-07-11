@@ -5,7 +5,7 @@ using Robust.Shared.Audio;
 
 namespace Content.Server._Scp.Fear;
 
-public sealed class FearSystem : SharedFearSystem
+public sealed partial class FearSystem : SharedFearSystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
 
@@ -17,6 +17,8 @@ public sealed class FearSystem : SharedFearSystem
         base.Initialize();
 
         SubscribeLocalEvent<FearActiveSoundEffectsComponent, ComponentShutdown>(OnShutdown);
+
+        InitializeFears();
     }
 
     private void OnShutdown(Entity<FearActiveSoundEffectsComponent> ent, ref ComponentShutdown args)
@@ -27,6 +29,9 @@ public sealed class FearSystem : SharedFearSystem
     protected override void StartBreathing(Entity<FearActiveSoundEffectsComponent> ent)
     {
         base.StartBreathing(ent);
+
+        if (!ent.Comp.PlayBreathingSound)
+            return;
 
         if (ent.Comp.BreathingAudioStream.HasValue)
             return;

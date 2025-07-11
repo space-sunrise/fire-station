@@ -127,7 +127,7 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (ent.Comp.State < source.UponComeCloser)
             TrySetFearLevel(ent.AsNullable(), source.UponComeCloser);
 
-        StartEffects(ent);
+        StartEffects(ent, source.PlayHeartbeatSound, source.PlayBreathingSound);
         RecalculateEffectsStrength(ent.Owner, args.Range, args.CloseRange);
 
         SetRangeBasedShaderStrength<GrainOverlayComponent>(ent.Owner,

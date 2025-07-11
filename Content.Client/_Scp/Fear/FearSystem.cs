@@ -55,6 +55,9 @@ public sealed class FearSystem : SharedFearSystem
         if (!_activeEffects.TryComp(player, out var effectsComponent))
             return;
 
+        if (!effectsComponent.PlayHeartbeatSound)
+            return;
+
         if (_timing.CurTime < effectsComponent.NextHeartbeatTime)
             return;
 
@@ -83,8 +86,6 @@ public sealed class FearSystem : SharedFearSystem
     /// </summary>
     protected override void PlayFearStateSound(Entity<FearComponent> ent, FearState newState)
     {
-        base.PlayFearStateSound(ent, newState);
-
         if (_player.LocalEntity != ent)
             return;
 
