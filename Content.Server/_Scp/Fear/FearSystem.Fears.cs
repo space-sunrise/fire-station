@@ -43,13 +43,14 @@ public sealed partial class FearSystem
         while (query.MoveNext(out var uid, out var hemophobia, out var fear))
         {
             var bloodAmount = GetAroundBloodVolume((uid, hemophobia), out var bloodList);
+            var requiredBloodAmount = hemophobia.BloodRequiredPerState[fear.State];
 
-            if (bloodAmount < hemophobia.ScaryBloodAmount)
+            if (bloodAmount <= requiredBloodAmount)
                 continue;
 
             var fearEntity = (uid, fear);
 
-            if (!TrySetFearLevel(fearEntity, hemophobia.UponSeenBloodState))
+            if (!TrySetFearLevel(fearEntity, GetHemophobiaFearState(hemophobia, bloodAmount)))
                 continue;
 
             _highlight.HighLightAll(bloodList, uid);
@@ -82,6 +83,24 @@ public sealed partial class FearSystem
     }
 
     /// <summary>
+    /// Получает уровень страха, соответствующий текущему количеству крови вокруг.
+    /// </summary>
+    private static FearState GetHemophobiaFearState(HemophobiaComponent component, FixedPoint2 bloodAmount)
+    {
+        var result = FearState.None;
+
+        foreach (var kvp in component.BloodRequiredPerState.OrderBy(kv => kv.Value))
+        {
+            if (bloodAmount >= kvp.Value)
+                result = kvp.Key;
+            else
+                break;
+        }
+
+        return result;
+    }
+
+    /// <summary>
     /// Проверяет, может ли сущность с гемофобией успокоиться в данный момент.
     /// Для этого рядом не должно быть большого количества крови
     /// </summary>
@@ -89,6 +108,7 @@ public sealed partial class FearSystem
     {
         FixedPoint2 total = 0;
         var blood = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(ent.Owner);
+        var requiredBloodToCancel = ent.Comp.BloodRequiredPerState[args.NewState];
 
         foreach (var puddle in blood)
         {
@@ -101,7 +121,7 @@ public sealed partial class FearSystem
                 .Where(reagent => reagent.Key.ID == ent.Comp.Reagent)
                 .Aggregate(total, (current, reagent) => current + reagent.Value);
 
-            if (total >= ent.Comp.ScaryBloodAmount)
+            if (total > requiredBloodToCancel)
             {
                 args.Cancel();
                 return;

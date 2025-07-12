@@ -18,14 +18,20 @@ public sealed partial class HemophobiaComponent : Component
     public ProtoId<ReagentPrototype> Reagent = "Blood";
 
     /// <summary>
-    /// Какое количество окружающей крови будет пугать персонажа?
-    /// </summary>
-    [DataField, ViewVariables]
-    public FixedPoint2 ScaryBloodAmount = 25f;
-
-    /// <summary>
     /// Какой уровень страха будет установлен при виде крови?
     /// </summary>
     [DataField, ViewVariables]
     public FearState UponSeenBloodState = FearState.Fear;
+
+    /// <summary>
+    /// Определяет пороговые значения количества крови рядом, которые приведут к повышению уровня страха.
+    /// </summary>
+    [DataField, ViewVariables]
+    public Dictionary<FearState, FixedPoint2> BloodRequiredPerState = new()
+    {
+        { FearState.None, 0f },
+        { FearState.Anxiety, 10f },
+        { FearState.Fear, 25f },
+        { FearState.Terror, 50f },
+    };
 }

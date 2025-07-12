@@ -151,14 +151,6 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (_activeFearEffects.HasComp(ent))
             return false;
 
-        // АХТУНГ, МИСПРЕДИКТ!!
-        // Использовать только с сервера до предикта Solution
-        var attempt = new FearCalmDownAttemptEvent();
-        RaiseLocalEvent(ent, attempt);
-
-        if (attempt.Cancelled)
-            return false;
-
         var visibleFearSources = _watching.GetAllVisibleTo<FearSourceComponent>(ent.Owner, ent.Comp.SeenBlockerLevel);
 
         // Проверка на то, что мы в данный момент не смотрим на какую-то страшную сущность.
@@ -167,6 +159,14 @@ public abstract partial class SharedFearSystem : EntitySystem
             return false;
 
         var newFearState = GetDecreasedLevel(ent.Comp.State);
+
+        // АХТУНГ, МИСПРЕДИКТ!!
+        // Использовать только с сервера до предикта Solution
+        var attempt = new FearCalmDownAttemptEvent(newFearState);
+        RaiseLocalEvent(ent, attempt);
+
+        if (attempt.Cancelled)
+            return false;
 
         if (!TrySetFearLevel(ent.AsNullable(), newFearState))
             return false;
