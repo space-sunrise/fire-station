@@ -3,7 +3,6 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Proximity;
-using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs.Systems;
 
@@ -75,7 +74,8 @@ public sealed partial class EyeWatchingSystem
     /// <param name="ent">Цель, для которой ищем потенциальных смотрящих</param>\
     /// <param name="type">Требуемая прозрачность линии видимости.</param>
     /// <returns>Список всех, кто потенциально видит цель</returns>
-    public IEnumerable<EntityUid> GetAllVisibleTo<T>(Entity<TransformComponent?> ent, LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent) where T : IComponent
+    public IEnumerable<EntityUid> GetAllVisibleTo<T>(Entity<TransformComponent?> ent, LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent)
+        where T : IComponent
     {
         return GetAllEntitiesVisibleTo<T>(ent, type)
             .Select(e => e.Owner);
@@ -91,12 +91,13 @@ public sealed partial class EyeWatchingSystem
     /// <param name="ent">Цель, для которой ищем потенциальных смотрящих</param>\
     /// <param name="type">Требуемая прозрачность линии видимости.</param>
     /// <returns>Список всех, кто потенциально видит цель</returns>
-    public IEnumerable<Entity<T>> GetAllEntitiesVisibleTo<T>(Entity<TransformComponent?> ent, LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent) where T : IComponent
+    public IEnumerable<Entity<T>> GetAllEntitiesVisibleTo<T>(Entity<TransformComponent?> ent, LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent)
+        where T : IComponent
     {
         if (!Resolve(ent.Owner, ref ent.Comp))
             return [];
 
-        return _lookup.GetEntitiesInRange<T>(ent.Comp.Coordinates, ExamineSystemShared.ExamineRange)
+        return _lookup.GetEntitiesInRange<T>(ent.Comp.Coordinates, SeeRange)
             .Where(eye => _proximity.IsRightType(ent, eye, type, out _));
     }
 

@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Scp.Helpers;
+using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Fear.Components;
@@ -49,4 +50,10 @@ public sealed partial class FearSourceComponent : Component
     /// </summary>
     [DataField, ViewVariables, AutoNetworkedField]
     public bool PlayHeartbeatSound = true;
+
+    /// <summary>
+    /// Вайтлист сущностей, которые могут испугаться этого источника страха.
+    /// </summary>
+    [DataField, ViewVariables, AutoNetworkedField]
+    public EntityWhitelist? FearWhitelist;
 }

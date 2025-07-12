@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Fear.Components;
+﻿using Content.Shared._Scp.Fear;
+using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Systems;
 using Content.Shared._Sunrise.Heartbeat;
 using Robust.Client.Audio;
@@ -16,11 +17,6 @@ public sealed class FearSystem : SharedFearSystem
 
     private static readonly SoundSpecifier HeartbeatSound =
         new SoundPathSpecifier("/Audio/_Sunrise/Effects/heartbeat.ogg");
-
-    private static readonly SoundSpecifier FearIncreaseSound =
-        new SoundPathSpecifier("/Audio/_Scp/Effects/Fear/increase.ogg", AudioParams.Default.WithVolume(5f));
-    private static readonly SoundSpecifier FearDecreaseSound =
-        new SoundPathSpecifier("/Audio/_Scp/Effects/Fear/decrease.ogg", AudioParams.Default.WithVolume(-1f));
 
     private EntityQuery<FearActiveSoundEffectsComponent> _activeEffects;
 
@@ -78,20 +74,6 @@ public sealed class FearSystem : SharedFearSystem
         base.StartHeartBeat(ent);
 
         SetNextTime(ent);
-    }
-
-    /// <summary>
-    /// Проигрывает специфический звук в зависимости от установленного уровня страха.
-    /// Для повышения и понижения уровня звуки разные.
-    /// </summary>
-    protected override void PlayFearStateSound(Entity<FearComponent> ent, FearState newState)
-    {
-        if (_player.LocalEntity != ent)
-            return;
-
-        // Выбираем звук. Если уровень страха повысился, то проигрываем звук увеличения и наоборот.
-        var sound = newState > ent.Comp.State ? FearIncreaseSound : FearDecreaseSound;
-        _audio.PlayGlobal(sound, ent);
     }
 
     private void OnOptionsChanged(HeartbeatOptionsChangedEvent ev)

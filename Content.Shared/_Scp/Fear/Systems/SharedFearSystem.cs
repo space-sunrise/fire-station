@@ -41,33 +41,6 @@ public abstract partial class SharedFearSystem : EntitySystem
         _activeFearEffects = GetEntityQuery<FearActiveSoundEffectsComponent>();
     }
 
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        var query = EntityQueryEnumerator<FearComponent>();
-
-        // Проходимся по людям с компонентом страха и уменьшаем уровень страха со временем
-        while (query.MoveNext(out var uid, out var fear))
-        {
-            if (fear.State == FearState.None)
-                continue;
-
-            if (fear.NextTimeDecreaseFearLevel > _timing.CurTime)
-                continue;
-
-            var entity = (uid, fear);
-
-            // Если по какой-то причине не получилось успокоиться, то ждем снова
-            // Это нужно, чтобы игрок только что отойдя от источника страха не успокоился моментально
-            if (!TryCalmDown(entity))
-                SetNextCalmDownTime(entity);
-        }
-    }
-
     /// <summary>
     /// Обрабатывает событие, когда игрок посмотрел на источник страха.
     /// Повышает уровень страха до указанного у источника уровня.
@@ -178,6 +151,14 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (_activeFearEffects.HasComp(ent))
             return false;
 
+        // АХТУНГ, МИСПРЕДИКТ!!
+        // Использовать только с сервера до предикта Solution
+        var attempt = new FearCalmDownAttemptEvent();
+        RaiseLocalEvent(ent, attempt);
+
+        if (attempt.Cancelled)
+            return false;
+
         var visibleFearSources = _watching.GetAllVisibleTo<FearSourceComponent>(ent.Owner, ent.Comp.SeenBlockerLevel);
 
         // Проверка на то, что мы в данный момент не смотрим на какую-то страшную сущность.
@@ -202,13 +183,14 @@ public abstract partial class SharedFearSystem : EntitySystem
             return false;
 
         if (ent.Comp.State == state)
-            return true;
+            return false;
 
         var entity = (ent, ent.Comp);
-
-        PlayFearStateSound(entity, state);
+        var ev = new FearStateChangedEvent(ent.Comp.State);
 
         ent.Comp.State = state;
+
+        RaiseLocalEvent(ent, ref ev);
 
         SetFearBasedShaderStrength(entity);
         SetNextCalmDownTime(entity);
@@ -231,6 +213,8 @@ public abstract partial class SharedFearSystem : EntitySystem
 
         ent.Comp.CurrentFearBasedShaderStrength[nameof(GrainOverlayComponent)] = grainStrength;
         ent.Comp.CurrentFearBasedShaderStrength[nameof(VignetteOverlayComponent)] = vignetteStrength;
+
+        Dirty(ent);
     }
 
     /// <summary>

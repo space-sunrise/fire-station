@@ -14,6 +14,8 @@ public sealed partial class EyeWatchingSystem : EntitySystem
 
     private static readonly TimeSpan WatchingCheckInterval = TimeSpan.FromSeconds(0.2f);
 
+    public const float SeeRange = 13f;
+
     public override void Initialize()
     {
         SubscribeLocalEvent<WatchingTargetComponent, MapInitEvent>(OnMapInit);

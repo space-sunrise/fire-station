@@ -1,6 +1,7 @@
 ﻿using Content.Shared._Scp.Shaders.Highlighting;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._Scp.Shaders.Highlighting;
@@ -11,6 +12,7 @@ namespace Content.Client._Scp.Shaders.Highlighting;
 public sealed class HighlightSystem : SharedHighlightSystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly ISharedPlayerManager _player = default!;
 
     /// <summary>
     /// Шейдер подсвечивания.
@@ -30,6 +32,9 @@ public sealed class HighlightSystem : SharedHighlightSystem
 
     private void OnHighlightAdded(Entity<HighlightedComponent> ent, ref ComponentInit args)
     {
+        if (ent.Comp.Recipient.HasValue && _player.LocalEntity != ent.Comp.Recipient)
+            return;
+
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
 

@@ -28,10 +28,17 @@ public abstract class SharedHighlightSystem : EntitySystem
     /// Чтобы подсвечивать бесконечно передать -1.
     /// </summary>
     /// <param name="target">Сущность, которая будет подсвечена</param>
+    /// <param name="recipient">Сущность, которая увидит подсвечивание. Если null, то его увидят все</param>
     /// <param name="highlightTimes">Количество раз подсвечивания</param>
-    public void Highlight(EntityUid target, int highlightTimes = 3)
+    public void Highlight(EntityUid target, EntityUid? recipient = null, int highlightTimes = 3)
     {
-        AddComp<HighlightedComponent>(target);
+        var comp = EnsureComp<HighlightedComponent>(target);
+
+        if (!recipient.HasValue)
+        {
+            comp.Recipient = recipient;
+            Dirty(target, comp);
+        }
 
         if (highlightTimes == -1)
             return;
@@ -39,6 +46,17 @@ public abstract class SharedHighlightSystem : EntitySystem
         var time = OneHighlightTime * highlightTimes;
 
         Timer.Spawn(time, () => RemComp<HighlightedComponent>(target), _token.Token);
+    }
+
+    /// <summary>
+    /// Подсвечивает все сущности из списка
+    /// </summary>
+    public void HighLightAll(IEnumerable<EntityUid> list, EntityUid? recipient = null)
+    {
+        foreach (var uid in list)
+        {
+            Highlight(uid, recipient);
+        }
     }
 
     private static void RecreateToken()

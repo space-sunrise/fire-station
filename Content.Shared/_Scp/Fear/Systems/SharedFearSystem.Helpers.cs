@@ -23,7 +23,7 @@ public abstract partial class SharedFearSystem
             if (source.Comp.UponSeenState != ent.Comp.State)
                 continue;
 
-            _highlight.Highlight(source);
+            _highlight.Highlight(source, ent);
         }
     }
 
@@ -95,7 +95,10 @@ public abstract partial class SharedFearSystem
         return (FearState) Math.Min(MaxPossibleValue, newValue);
     }
 
-    private void SetNextCalmDownTime(Entity<FearComponent> ent)
+    /// <summary>
+    /// Устанавливает следующее время попытки сущности успокоиться
+    /// </summary>
+    protected void SetNextCalmDownTime(Entity<FearComponent> ent)
     {
         ent.Comp.NextTimeDecreaseFearLevel = _timing.CurTime + ent.Comp.TimeToDecreaseFearLevel;
         Dirty(ent);

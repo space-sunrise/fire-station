@@ -62,8 +62,8 @@ public sealed partial class FearComponent : Component
     /// <remarks>
     /// Ключ в виде строки означает имя компонента с силой шейдера.
     /// </remarks>
-    [ViewVariables]
-    public readonly Dictionary<string, float> CurrentFearBasedShaderStrength = new();
+    [AutoNetworkedField, ViewVariables]
+    public Dictionary<string, float> CurrentFearBasedShaderStrength = new ();
 
     #endregion
 
