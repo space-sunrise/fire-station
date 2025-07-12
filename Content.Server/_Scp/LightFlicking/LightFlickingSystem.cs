@@ -105,7 +105,6 @@ public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
             return false;
 
         AddComp<ActiveLightFlickingComponent>(ent);
-        Dirty(ent);
 
         return true;
     }
@@ -143,8 +142,6 @@ public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
     {
         var variation = FlickCheckInterval - Random.Next(FlickCheckVariation);
         ent.Comp.NextFlickStartChanceTime = Timing.CurTime + variation;
-
-        Dirty(ent);
     }
 
     private bool TryMalfunctionBulb(EntityUid lightUid)

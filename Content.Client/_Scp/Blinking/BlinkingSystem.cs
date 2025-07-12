@@ -16,9 +16,6 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
 
-    private static readonly SoundSpecifier BlinkingStartSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Blinking/start.ogg");
-    private static readonly SoundSpecifier BlinkingEndSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Blinking/end.ogg");
-
     private static readonly SoundSpecifier EyeOpenSound = new SoundCollectionSpecifier("EyeOpen");
     private static readonly SoundSpecifier EyeCloseSound = new SoundCollectionSpecifier("EyeClose");
 
