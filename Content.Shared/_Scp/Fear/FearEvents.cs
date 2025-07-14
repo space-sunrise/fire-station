@@ -8,7 +8,8 @@ public sealed class FearCalmDownAttemptEvent(FearState newState) : CancellableEn
 }
 
 [ByRefEvent]
-public record struct FearStateChangedEvent(FearState OldState)
+public record struct FearStateChangedEvent(FearState NewState, FearState OldState)
 {
-    public FearState OldState = OldState;
+    public readonly FearState NewState = NewState;
+    public readonly FearState OldState = OldState;
 }

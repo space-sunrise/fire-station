@@ -119,9 +119,14 @@ public abstract partial class SharedFearSystem
         Dirty(ent);
     }
 
-    protected void RemoveComponentAfter<T>(Entity<T> ent, float removeAfter) where T : IComponent
+    protected void RemoveComponentAfter<T>(EntityUid ent, float removeAfter) where T : IComponent
     {
         Timer.Spawn(TimeSpan.FromSeconds(removeAfter), () => RemComp<T>(ent), _restartToken.Token);
+    }
+
+    protected void RemoveComponentAfter<T>(EntityUid ent, TimeSpan removeAfter) where T : IComponent
+    {
+        Timer.Spawn(removeAfter, () => RemComp<T>(ent), _restartToken.Token);
     }
 
     /// <summary>

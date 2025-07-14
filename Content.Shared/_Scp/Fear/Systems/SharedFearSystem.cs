@@ -208,7 +208,7 @@ public abstract partial class SharedFearSystem : EntitySystem
             return false;
 
         var entity = (ent, ent.Comp);
-        var ev = new FearStateChangedEvent(ent.Comp.State);
+        var ev = new FearStateChangedEvent(state, ent.Comp.State);
 
         ent.Comp.State = state;
 

@@ -1,5 +1,4 @@
-﻿using Content.Shared._Scp.Fear;
-using Content.Shared._Scp.Fear.Components;
+﻿using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Systems;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
@@ -28,6 +27,7 @@ public sealed partial class FearSystem : SharedFearSystem
 
         InitializeFears();
         InitializeGameplay();
+        InitializeTraits();
     }
 
     public override void Update(float frameTime)

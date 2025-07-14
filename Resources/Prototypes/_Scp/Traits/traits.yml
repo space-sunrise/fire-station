@@ -1,0 +1,10 @@
+﻿- type: trait
+  id: Stupor
+  name: trait-stupor-name
+  description: trait-stupor-desc
+  category: Disabilities
+  whitelist:
+    components:
+    - Fear
+  components:
+  - type: FearStupor
