@@ -112,6 +112,10 @@ public abstract partial class SharedGunSystem
 
     private void OnGunSelected(EntityUid uid, GunComponent component, HandSelectedEvent args)
     {
+        // Fire edit start - навык кривой стрельбы
+        RefreshModifiers((uid, component));
+        // Fire edit end
+
         if (Timing.ApplyingState)
              return;
 
