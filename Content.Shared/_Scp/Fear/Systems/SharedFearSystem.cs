@@ -7,6 +7,7 @@ using Content.Shared._Scp.Shaders.Grain;
 using Content.Shared._Scp.Shaders.Highlighting;
 using Content.Shared._Scp.Shaders.Vignette;
 using Content.Shared._Scp.Watching;
+using Content.Shared.GameTicking;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Timing;
 
@@ -37,6 +38,10 @@ public abstract partial class SharedFearSystem : EntitySystem
 
         SubscribeLocalEvent<FearComponent, ProximityInRangeTargetEvent>(OnProximityInRange);
         SubscribeLocalEvent<FearComponent, ProximityNotInRangeTargetEvent>(OnProximityNotInRange);
+
+        SubscribeLocalEvent<FearComponent, FearStateChangedEvent>(OnFearStateChanged);
+
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
 
         _activeFearEffects = GetEntityQuery<FearActiveSoundEffectsComponent>();
     }
@@ -138,6 +143,23 @@ public abstract partial class SharedFearSystem : EntitySystem
         SetShaderStrength<VignetteOverlayComponent>(ent.Owner, ent.Comp, 0f);
 
         RemoveEffects(ent.Owner);
+    }
+
+    /// <summary>
+    /// Обрабатывает событие изменения уровня страха у персонажа.
+    /// </summary>
+    private void OnFearStateChanged(Entity<FearComponent> ent, ref FearStateChangedEvent args)
+    {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        PlayFearStateSound(ent, args.OldState);
+
+        // Добавляем геймплейные проблемы, завязанный на уровне страха
+        ManageShootingProblems(ent);
+        ManageJitter(ent);
+        ManageAdrenaline(ent);
+        TryScream(ent);
     }
 
     /// <summary>

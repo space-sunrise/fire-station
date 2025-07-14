@@ -19,7 +19,7 @@ public sealed partial class FearComponent : Component
     /// Время, через которое уровень страха понизится.
     /// </summary>
     [DataField, ViewVariables]
-    public TimeSpan TimeToDecreaseFearLevel = TimeSpan.FromSeconds(15f); // TODO: 3 минуты
+    public TimeSpan TimeToDecreaseFearLevel = TimeSpan.FromMinutes(3f); // TODO: 3 минуты
 
     /// <summary>
     /// Следующее время, когда будут понижен уровень страха со временем.
@@ -104,11 +104,64 @@ public sealed partial class FearComponent : Component
     public TimeSpan TimeToGetScaredAgainOnLookAt = TimeSpan.FromSeconds(10f); // TODO: 5 минут
 
     #endregion
+
+    #region Gameplay
+
+    /// <summary>
+    /// Словарь параметров увеличения разброса при стрельбе.
+    /// </summary>
+    [DataField, ViewVariables]
+    public Dictionary<FearState, float> FearBasedSpreadAngleModifier = new ()
+    {
+        { FearState.Anxiety, 3f },
+        { FearState.Fear, 10f },
+        { FearState.Terror, 20f },
+    };
+
+    /// <summary>
+    /// Базовый модификатор трясучки, которая будет возникать при повышении уровня страха.
+    /// </summary>
+    [DataField, ViewVariables]
+    public float BaseJitterTime = 20f;
+
+    /// <summary>
+    /// Необходимый уровень страха, чтобы начать падать при хождении.
+    /// </summary>
+    [DataField, ViewVariables]
+    public FearState FallOffRequiredState = FearState.Terror;
+
+    /// <summary>
+    /// Шанс упасть при хождении во время страха постигшего <see cref="FallOffRequiredState"/>
+    /// </summary>
+    [DataField, ViewVariables]
+    public float FallOffChance = 3f; // TODO: Вернуть 1%
+
+    /// <summary>
+    /// Какой уровень страха нужен, чтобы у человека появился адреналин.
+    /// </summary>
+    [DataField, ViewVariables]
+    public FearState AdrenalineRequiredState = FearState.Fear;
+
+    /// <summary>
+    /// Базовое количество времени действий адреналина при повышении уровня страха.
+    /// На него умножается модификатор от текущего уровня страха.
+    /// </summary>
+    [DataField, ViewVariables]
+    public float AdrenalineBaseTime = 5f;
+
+    /// <summary>
+    /// Какой уровень страха требуется, чтобы закричать при поднятии до этого уровня.
+    /// </summary>
+    [DataField, ViewVariables]
+    public FearState ScreamRequiredState = FearState.Terror;
+
+    #endregion
 }
 
 /// <summary>
 /// Уровни страха. Чем больше значение, тем сильнее страх
 /// </summary>
+/// TODO: Возможно сделать struct, отвечающий за страх и параметры
 [Serializable, NetSerializable]
 public enum FearState : byte
 {

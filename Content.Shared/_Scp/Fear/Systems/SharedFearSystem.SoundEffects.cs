@@ -18,8 +18,18 @@ public abstract partial class SharedFearSystem
 
     protected virtual void StartHeartBeat(Entity<FearActiveSoundEffectsComponent> ent) {}
 
-    protected virtual void PlayFearStateSound(Entity<FearComponent> ent, FearState newState) {}
+    /// <summary>
+    /// Проигрывает специфический звук в зависимости от установленного уровня страха.
+    /// Для повышения и понижения уровня звуки разные.
+    /// </summary>
+    protected virtual void PlayFearStateSound(Entity<FearComponent> ent, FearState oldState) {}
 
+    /// <summary>
+    /// Запускает звуковые эффекты, связанные со страхом.
+    /// </summary>
+    /// <param name="uid">Сущность, для которой будет запущены эффекты</param>
+    /// <param name="playHeartbeatSound">Проигрывать звук сердцебиения?</param>
+    /// <param name="playBreathingSound">Проигрывать звук дыхания?</param>
     private void StartEffects(EntityUid uid, bool playHeartbeatSound, bool playBreathingSound)
     {
         if (HasComp<FearActiveSoundEffectsComponent>(uid))
@@ -35,6 +45,9 @@ public abstract partial class SharedFearSystem
         StartHeartBeat((uid, effects));
     }
 
+    /// <summary>
+    /// Пересчитывает и актуализирует параметры звуковых эффект в зависимости от расстояния до источника страха.
+    /// </summary>
     private void RecalculateEffectsStrength(Entity<FearActiveSoundEffectsComponent?> ent, float currentRange, float maxRange)
     {
         if (!Resolve(ent, ref ent.Comp))
@@ -52,6 +65,9 @@ public abstract partial class SharedFearSystem
         Dirty(ent);
     }
 
+    /// <summary>
+    /// Убирает все звуковые эффекты.
+    /// </summary>
     private void RemoveEffects(EntityUid uid)
     {
         RemComp<FearActiveSoundEffectsComponent>(uid);

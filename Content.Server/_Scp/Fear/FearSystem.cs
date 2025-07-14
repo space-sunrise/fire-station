@@ -24,10 +24,10 @@ public sealed partial class FearSystem : SharedFearSystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<FearComponent, FearStateChangedEvent>(OnFearStateChanged);
         SubscribeLocalEvent<FearActiveSoundEffectsComponent, ComponentShutdown>(OnShutdown);
 
         InitializeFears();
+        InitializeGameplay();
     }
 
     public override void Update(float frameTime)
@@ -60,10 +60,12 @@ public sealed partial class FearSystem : SharedFearSystem
     /// Проигрывает специфический звук в зависимости от установленного уровня страха.
     /// Для повышения и понижения уровня звуки разные.
     /// </summary>
-    private void OnFearStateChanged(Entity<FearComponent> ent, ref FearStateChangedEvent args)
+    protected override void PlayFearStateSound(Entity<FearComponent> ent, FearState oldState)
     {
+        base.PlayFearStateSound(ent, oldState);
+
         // Выбираем звук. Если уровень страха повысился, то проигрываем звук увеличения и наоборот.
-        var sound = ent.Comp.State > args.OldState ? FearIncreaseSound : FearDecreaseSound;
+        var sound = ent.Comp.State > oldState ? FearIncreaseSound : FearDecreaseSound;
         _audio.PlayGlobal(sound, ent);
     }
 

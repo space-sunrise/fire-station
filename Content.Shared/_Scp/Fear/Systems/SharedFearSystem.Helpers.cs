@@ -1,13 +1,19 @@
-﻿using Content.Shared._Scp.Fear.Components;
+﻿using System.Threading;
+using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Shaders;
+using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Shared._Scp.Fear.Systems;
 
 public abstract partial class SharedFearSystem
 {
+    private static CancellationTokenSource _restartToken = new ();
+
     private const int MinPossibleValue = (int) FearState.None;
     private const int MaxPossibleValue = (int) FearState.Terror;
+
+    private const int GenericFearBasedScaleModifier = 2;
 
     /// <summary>
     /// Подсвечивает все сущности, которые вызывают страх.
@@ -96,11 +102,39 @@ public abstract partial class SharedFearSystem
     }
 
     /// <summary>
+    /// Возвращает стандартный модификатор, зависящий от текущего уровня страха.
+    /// По умолчанию используется квадратичный рост модификатора с уровнем страха.
+    /// </summary>
+    public static int GetGenericFearBasedModifier(FearState state)
+    {
+        return (int) Math.Pow((int) state, GenericFearBasedScaleModifier);
+    }
+
+    /// <summary>
     /// Устанавливает следующее время попытки сущности успокоиться
     /// </summary>
     protected void SetNextCalmDownTime(Entity<FearComponent> ent)
     {
         ent.Comp.NextTimeDecreaseFearLevel = _timing.CurTime + ent.Comp.TimeToDecreaseFearLevel;
         Dirty(ent);
+    }
+
+    protected void RemoveComponentAfter<T>(Entity<T> ent, float removeAfter) where T : IComponent
+    {
+        Timer.Spawn(TimeSpan.FromSeconds(removeAfter), () => RemComp<T>(ent), _restartToken.Token);
+    }
+
+    /// <summary>
+    /// Преобразует процент из человеческого формата в probный.
+    /// </summary>
+    protected static float PercentToNormalized(float percent)
+    {
+        return Math.Clamp(percent / 100f, 0f, 1f);
+    }
+
+    private static void Clear()
+    {
+        _restartToken.Cancel();
+        _restartToken = new();
     }
 }
