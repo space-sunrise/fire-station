@@ -26,11 +26,11 @@ public sealed class HighlightSystem : SharedHighlightSystem
 
         _highlightShader = _prototype.Index<ShaderPrototype>("HighlightWave").Instance();
 
-        SubscribeLocalEvent<HighlightedComponent, ComponentInit>(OnHighlightAdded);
-        SubscribeLocalEvent<HighlightedComponent, ComponentRemove>(OnHighlightRemoved);
+        SubscribeLocalEvent<HighlightedComponent, HighLightStartEvent>(OnHighlightStarted);
+        SubscribeLocalEvent<HighlightedComponent, HighLightEndEvent>(OnHighlightEnded);
     }
 
-    private void OnHighlightAdded(Entity<HighlightedComponent> ent, ref ComponentInit args)
+    private void OnHighlightStarted(Entity<HighlightedComponent> ent, ref HighLightStartEvent args)
     {
         if (ent.Comp.Recipient.HasValue && _player.LocalEntity != ent.Comp.Recipient)
             return;
@@ -39,9 +39,11 @@ public sealed class HighlightSystem : SharedHighlightSystem
             return;
 
         sprite.PostShader = _highlightShader;
+
+        Logger.Error($"shader added");
     }
 
-    private void OnHighlightRemoved(Entity<HighlightedComponent> ent, ref ComponentRemove args)
+    private void OnHighlightEnded(Entity<HighlightedComponent> ent, ref HighLightEndEvent args)
     {
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
@@ -50,5 +52,7 @@ public sealed class HighlightSystem : SharedHighlightSystem
             return;
 
         sprite.PostShader = null;
+
+        Logger.Error($"shader removed");
     }
 }

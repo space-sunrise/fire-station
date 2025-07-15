@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Content.Shared._Scp.Fear.Components;
+﻿using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Shaders;
@@ -28,8 +27,6 @@ public abstract partial class SharedFearSystem : EntitySystem
     [Dependency] private readonly SharedShaderStrengthSystem _shaderStrength = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private EntityQuery<FearActiveSoundEffectsComponent> _activeFearEffects;
-
     public override void Initialize()
     {
         base.Initialize();
@@ -42,8 +39,6 @@ public abstract partial class SharedFearSystem : EntitySystem
         SubscribeLocalEvent<FearComponent, FearStateChangedEvent>(OnFearStateChanged);
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
-
-        _activeFearEffects = GetEntityQuery<FearActiveSoundEffectsComponent>();
     }
 
     /// <summary>
@@ -157,43 +152,15 @@ public abstract partial class SharedFearSystem : EntitySystem
 
         // Добавляем геймплейные проблемы, завязанный на уровне страха
         ManageShootingProblems(ent);
+
+        // Если старый стейт больше, значит мы снизили уровень страха -> успокоились
+        // Следователь геймплейные штуки ниже не нужно триггерить.
+        if (args.OldState > args.NewState)
+            return;
+
         ManageJitter(ent);
         ManageAdrenaline(ent);
         TryScream(ent);
-    }
-
-    /// <summary>
-    /// Пытается успокоить сущность, испытывающую страх.
-    /// Понижает уровень страха на 1, пока не успокоит полностью.
-    /// </summary>
-    public bool TryCalmDown(Entity<FearComponent> ent)
-    {
-        // Немного костыль, но это означает, что мы прямо сейчас испытываем какие-то приколы со страхом
-        // И пугаемся чего-то в данный момент. Значит мы не должны успокаиваться.
-        if (_activeFearEffects.HasComp(ent))
-            return false;
-
-        var visibleFearSources = _watching.GetAllVisibleTo<FearSourceComponent>(ent.Owner, ent.Comp.SeenBlockerLevel);
-
-        // Проверка на то, что мы в данный момент не смотрим на какую-то страшную сущность.
-        // Нельзя успокоиться, когда мы смотрим на источник страха.
-        if (visibleFearSources.Any())
-            return false;
-
-        var newFearState = GetDecreasedLevel(ent.Comp.State);
-
-        // АХТУНГ, МИСПРЕДИКТ!!
-        // Использовать только с сервера до предикта Solution
-        var attempt = new FearCalmDownAttemptEvent(newFearState);
-        RaiseLocalEvent(ent, attempt);
-
-        if (attempt.Cancelled)
-            return false;
-
-        if (!TrySetFearLevel(ent.AsNullable(), newFearState))
-            return false;
-
-        return true;
     }
 
     /// <summary>

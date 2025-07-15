@@ -38,6 +38,9 @@ public sealed partial class FearSystem
         _standing.Fall(ent);
     }
 
+    /// <summary>
+    /// Пытается закричать, если увиденный объект настолько страшный.
+    /// </summary>
     protected override void TryScream(Entity<FearComponent> ent)
     {
         base.TryScream(ent);

@@ -1,33 +1,27 @@
-﻿using Content.Shared._Scp.Fear.Components;
+﻿using System.Linq;
+using Content.Shared._Scp.Fear;
+using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Systems;
-using Robust.Server.Audio;
-using Robust.Shared.Audio;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Fear;
 
 public sealed partial class FearSystem : SharedFearSystem
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private static readonly SoundSpecifier FearIncreaseSound =
-        new SoundPathSpecifier("/Audio/_Scp/Effects/Fear/increase.ogg", AudioParams.Default.WithVolume(5f));
-    private static readonly SoundSpecifier FearDecreaseSound =
-        new SoundPathSpecifier("/Audio/_Scp/Effects/Fear/decrease.ogg", AudioParams.Default.WithVolume(-1f));
-
-    private static readonly SoundSpecifier BreathingSound =
-        new SoundPathSpecifier("/Audio/_Scp/Effects/Fear/breathing.ogg");
+    private EntityQuery<FearActiveSoundEffectsComponent> _activeFearEffects;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<FearActiveSoundEffectsComponent, ComponentShutdown>(OnShutdown);
-
+        InitializeSoundEffects();
         InitializeFears();
         InitializeGameplay();
         InitializeTraits();
+
+        _activeFearEffects = GetEntityQuery<FearActiveSoundEffectsComponent>();
     }
 
     public override void Update(float frameTime)
@@ -57,38 +51,36 @@ public sealed partial class FearSystem : SharedFearSystem
     }
 
     /// <summary>
-    /// Проигрывает специфический звук в зависимости от установленного уровня страха.
-    /// Для повышения и понижения уровня звуки разные.
+    /// Пытается успокоить сущность, испытывающую страх.
+    /// Понижает уровень страха на 1, пока не успокоит полностью.
     /// </summary>
-    protected override void PlayFearStateSound(Entity<FearComponent> ent, FearState oldState)
+    public bool TryCalmDown(Entity<FearComponent> ent)
     {
-        base.PlayFearStateSound(ent, oldState);
+        // Немного костыль, но это означает, что мы прямо сейчас испытываем какие-то приколы со страхом
+        // И пугаемся чего-то в данный момент. Значит мы не должны успокаиваться.
+        if (_activeFearEffects.HasComp(ent))
+            return false;
 
-        // Выбираем звук. Если уровень страха повысился, то проигрываем звук увеличения и наоборот.
-        var sound = ent.Comp.State > oldState ? FearIncreaseSound : FearDecreaseSound;
-        _audio.PlayGlobal(sound, ent);
-    }
+        var visibleFearSources = _watching.GetAllVisibleTo<FearSourceComponent>(ent.Owner, ent.Comp.SeenBlockerLevel);
 
-    private void OnShutdown(Entity<FearActiveSoundEffectsComponent> ent, ref ComponentShutdown args)
-    {
-        ent.Comp.BreathingAudioStream = _audio.Stop(ent.Comp.BreathingAudioStream);
-    }
+        // Проверка на то, что мы в данный момент не смотрим на какую-то страшную сущность.
+        // Нельзя успокоиться, когда мы смотрим на источник страха.
+        if (visibleFearSources.Any())
+            return false;
 
-    protected override void StartBreathing(Entity<FearActiveSoundEffectsComponent> ent)
-    {
-        base.StartBreathing(ent);
+        var newFearState = GetDecreasedLevel(ent.Comp.State);
 
-        if (!ent.Comp.PlayBreathingSound)
-            return;
+        // АХТУНГ, МИСПРЕДИКТ!!
+        // Использовать только с сервера до предикта Solution
+        var attempt = new FearCalmDownAttemptEvent(newFearState);
+        RaiseLocalEvent(ent, attempt);
 
-        if (ent.Comp.BreathingAudioStream.HasValue)
-            return;
+        if (attempt.Cancelled)
+            return false;
 
-        var audioParams = AudioParams.Default
-            .AddVolume(ent.Comp.AdditionalVolume)
-            .WithLoop(true);
+        if (!TrySetFearLevel(ent.AsNullable(), newFearState))
+            return false;
 
-        var audio = _audio.PlayGlobal(BreathingSound, ent, audioParams);
-        ent.Comp.BreathingAudioStream = audio?.Entity;
+        return true;
     }
 }

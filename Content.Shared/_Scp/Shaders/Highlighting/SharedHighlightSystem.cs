@@ -34,18 +34,33 @@ public abstract class SharedHighlightSystem : EntitySystem
     {
         var comp = EnsureComp<HighlightedComponent>(target);
 
-        if (!recipient.HasValue)
+        if (recipient.HasValue)
         {
             comp.Recipient = recipient;
             Dirty(target, comp);
         }
+
+        Logger.Error($"start event is about to be raised");
+
+        var ev = new HighLightStartEvent();
+        RaiseLocalEvent(target, ref ev);
 
         if (highlightTimes == -1)
             return;
 
         var time = OneHighlightTime * highlightTimes;
 
-        Timer.Spawn(time, () => RemComp<HighlightedComponent>(target), _token.Token);
+        Timer.Spawn(time,
+            () =>
+            {
+                Logger.Error($"end is about to be raised");
+
+                var endEvent = new HighLightEndEvent();
+                RaiseLocalEvent(target, ref endEvent);
+
+                RemComp<HighlightedComponent>(target);
+            },
+            _token.Token);
     }
 
     /// <summary>
@@ -65,3 +80,9 @@ public abstract class SharedHighlightSystem : EntitySystem
         _token = new();
     }
 }
+
+[ByRefEvent]
+public record struct HighLightStartEvent;
+
+[ByRefEvent]
+public record struct HighLightEndEvent;

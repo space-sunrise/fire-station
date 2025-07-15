@@ -26,6 +26,11 @@ public sealed partial class FearSystem
         SubscribeLocalEvent<HemophobiaComponent, FearCalmDownAttemptEvent>(OnCalmDown);
     }
 
+    /// <summary>
+    /// Обрабатывает событие смерти персонажей.
+    /// Если персонаж умер, он становится страшным.
+    /// Если воскрес, перестает
+    /// </summary>
     private void OnMobStateChanged(MobStateChangedEvent ev)
     {
         if (!HasComp<HumanoidAppearanceComponent>(ev.Target))
@@ -36,6 +41,10 @@ public sealed partial class FearSystem
         RaiseLocalEvent(ev.Target, ref toggleUsed);
     }
 
+    /// <summary>
+    /// Обрабатывает страх гемофобов.
+    /// Проверяет количество окружающей крови и в зависимости от этого пугает персонажей.
+    /// </summary>
     private void UpdateHemophobia()
     {
         var query = EntityQueryEnumerator<HemophobiaComponent, FearComponent>();
