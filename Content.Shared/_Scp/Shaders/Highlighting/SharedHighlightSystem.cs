@@ -40,8 +40,6 @@ public abstract class SharedHighlightSystem : EntitySystem
             Dirty(target, comp);
         }
 
-        Logger.Error($"start event is about to be raised");
-
         var ev = new HighLightStartEvent();
         RaiseLocalEvent(target, ref ev);
 
@@ -53,8 +51,6 @@ public abstract class SharedHighlightSystem : EntitySystem
         Timer.Spawn(time,
             () =>
             {
-                Logger.Error($"end is about to be raised");
-
                 var endEvent = new HighLightEndEvent();
                 RaiseLocalEvent(target, ref endEvent);
 

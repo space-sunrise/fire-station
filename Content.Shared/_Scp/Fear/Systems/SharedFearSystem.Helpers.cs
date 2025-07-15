@@ -102,6 +102,14 @@ public abstract partial class SharedFearSystem
     }
 
     /// <summary>
+    /// Проверяет, растет ли уровень страха на основе переданных нового уровня и старого уровня страха.
+    /// </summary>
+    public static bool IsIncreasing(FearState newState, FearState oldState)
+    {
+        return newState > oldState;
+    }
+
+    /// <summary>
     /// Возвращает стандартный модификатор, зависящий от текущего уровня страха.
     /// По умолчанию используется квадратичный рост модификатора с уровнем страха.
     /// </summary>

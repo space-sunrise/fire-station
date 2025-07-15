@@ -1,5 +1,7 @@
 ﻿using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Weapons.Ranged;
+using Content.Shared.Administration;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage.Components;
 using Content.Shared.Jittering;
 using Content.Shared.StatusEffect;
@@ -11,7 +13,7 @@ public abstract partial class SharedFearSystem
     [Dependency] private readonly StatusEffectsSystem _effects = default!;
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
 
-    private const float BaseJitteringAmplitude = 3f;
+    private const float BaseJitteringAmplitude = 1f;
     private const float BaseJitteringFrequency = 4f;
 
     private const string AdrenalineEffectKey = "Adrenaline";
@@ -38,6 +40,14 @@ public abstract partial class SharedFearSystem
 
     private void ManageJitter(Entity<FearComponent> ent)
     {
+        // Компонент, выдающийся при ступоре
+        if (HasComp<AdminFrozenComponent>(ent))
+            return;
+
+        // Компонент, выдающийся при обмороке
+        if (HasComp<ForcedSleepingComponent>(ent))
+            return;
+
         // Значения будут коррелировать с текущем уровнем страха
         var genericModifier = GetGenericFearBasedModifier(ent.Comp.State);
 

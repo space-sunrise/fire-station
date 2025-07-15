@@ -4,6 +4,10 @@ using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Components.Traits;
 using Content.Shared.Administration;
+using Content.Shared.Bed.Sleep;
+using Content.Shared.Jittering;
+using Content.Shared.StatusEffect;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Fear;
@@ -11,11 +15,15 @@ namespace Content.Server._Scp.Fear;
 public sealed partial class FearSystem
 {
     [Dependency] private readonly AdminFrozenSystem _adminFrozen = default!;
+    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
+
+    private static readonly ProtoId<StatusEffectPrototype> JitterStatusEffectKey = "Jitter";
 
     private void InitializeTraits()
     {
         SubscribeLocalEvent<FearStuporComponent, FearStateChangedEvent>(OnStuporFearStateChanged);
         SubscribeLocalEvent<FearStutteringComponent, FearStateChangedEvent>(OnStutteringFearStateChanged);
+        SubscribeLocalEvent<FearFaintingComponent, FearStateChangedEvent>(OnFaintingFearStateChanged);
     }
 
     /// <summary>
@@ -26,7 +34,7 @@ public sealed partial class FearSystem
     {
         // Если старый стейт больше, значит персонаж успокоился
         // От этого не нужно впадать в ступор
-        if (args.OldState > args.NewState)
+        if (!IsIncreasing(args.NewState, args.OldState))
             return;
 
         if (args.NewState < ent.Comp.RequiredState)
@@ -45,7 +53,6 @@ public sealed partial class FearSystem
     private void AddStupor(EntityUid uid, TimeSpan time)
     {
         _adminFrozen.FreezeAndMute(uid);
-
         RemoveComponentAfter<AdminFrozenComponent>(uid, time);
     }
 
@@ -63,5 +70,24 @@ public sealed partial class FearSystem
         stuttering.CutRandomProb *= modifier;
         stuttering.FourRandomProb *= modifier;
         stuttering.ThreeRandomProb *= modifier;
+    }
+
+    private void OnFaintingFearStateChanged(Entity<FearFaintingComponent> ent, ref FearStateChangedEvent args)
+    {
+        // Проверяем, что стейт не увеличивается
+        if (!IsIncreasing(args.NewState, args.OldState))
+            return;
+
+        if (args.NewState < ent.Comp.RequiredState)
+            return;
+
+        var percentNormalized = PercentToNormalized(ent.Comp.Chance);
+        if (!_random.Prob(percentNormalized))
+            return;
+
+        _statusEffects.TryAddStatusEffect<ForcedSleepingComponent>(ent,
+            FearFaintingComponent.StatusEffectKey,
+            ent.Comp.Time,
+            false);
     }
 }

@@ -19,3 +19,14 @@
     - Fear
   components:
   - type: FearStuttering
+
+- type: trait
+  id: FearFainting
+  name: trait-fainting-name
+  description: trait-fainting-desc
+  category: Disabilities
+  whitelist:
+    components:
+    - Fear
+  components:
+  - type: FearFainting

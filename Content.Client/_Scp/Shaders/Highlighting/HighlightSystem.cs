@@ -39,8 +39,6 @@ public sealed class HighlightSystem : SharedHighlightSystem
             return;
 
         sprite.PostShader = _highlightShader;
-
-        Logger.Error($"shader added");
     }
 
     private void OnHighlightEnded(Entity<HighlightedComponent> ent, ref HighLightEndEvent args)
@@ -52,7 +50,5 @@ public sealed class HighlightSystem : SharedHighlightSystem
             return;
 
         sprite.PostShader = null;
-
-        Logger.Error($"shader removed");
     }
 }
