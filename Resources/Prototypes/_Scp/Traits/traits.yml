@@ -8,3 +8,14 @@
     - Fear
   components:
   - type: FearStupor
+
+- type: trait
+  id: FearStuttering
+  name: trait-fear-stuttering-name
+  description: trait-fear-stuttering-desc
+  category: Disabilities
+  whitelist:
+    components:
+    - Fear
+  components:
+  - type: FearStuttering

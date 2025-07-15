@@ -39,6 +39,8 @@ public abstract partial class SharedFearSystem : EntitySystem
         SubscribeLocalEvent<FearComponent, FearStateChangedEvent>(OnFearStateChanged);
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
+
+        InitializeTraits();
     }
 
     /// <summary>

@@ -1,5 +1,7 @@
 ﻿using Content.Server.Administration.Systems;
+using Content.Server.Speech.Components;
 using Content.Shared._Scp.Fear;
+using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Components.Traits;
 using Content.Shared.Administration;
 using Robust.Shared.Random;
@@ -13,6 +15,7 @@ public sealed partial class FearSystem
     private void InitializeTraits()
     {
         SubscribeLocalEvent<FearStuporComponent, FearStateChangedEvent>(OnStuporFearStateChanged);
+        SubscribeLocalEvent<FearStutteringComponent, FearStateChangedEvent>(OnStutteringFearStateChanged);
     }
 
     /// <summary>
@@ -44,5 +47,21 @@ public sealed partial class FearSystem
         _adminFrozen.FreezeAndMute(uid);
 
         RemoveComponentAfter<AdminFrozenComponent>(uid, time);
+    }
+
+    private void OnStutteringFearStateChanged(Entity<FearStutteringComponent> ent, ref FearStateChangedEvent args)
+    {
+        if (args.NewState == FearState.None)
+        {
+            RemComp<StutteringAccentComponent>(ent);
+            return;
+        }
+
+        var stuttering = EnsureComp<StutteringAccentComponent>(ent);
+        var modifier = GetGenericFearBasedModifier(args.NewState, 1);
+
+        stuttering.CutRandomProb *= modifier;
+        stuttering.FourRandomProb *= modifier;
+        stuttering.ThreeRandomProb *= modifier;
     }
 }

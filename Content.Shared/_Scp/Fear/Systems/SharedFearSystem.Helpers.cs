@@ -105,9 +105,9 @@ public abstract partial class SharedFearSystem
     /// Возвращает стандартный модификатор, зависящий от текущего уровня страха.
     /// По умолчанию используется квадратичный рост модификатора с уровнем страха.
     /// </summary>
-    public static int GetGenericFearBasedModifier(FearState state)
+    public static int GetGenericFearBasedModifier(FearState state, int scale = GenericFearBasedScaleModifier)
     {
-        return (int) Math.Pow((int) state, GenericFearBasedScaleModifier);
+        return (int) Math.Pow((int) state, scale);
     }
 
     /// <summary>

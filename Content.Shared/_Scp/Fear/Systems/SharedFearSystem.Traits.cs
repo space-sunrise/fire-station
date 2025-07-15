@@ -2,5 +2,8 @@
 
 public abstract partial class SharedFearSystem
 {
+    private void InitializeTraits()
+    {
 
+    }
 }
