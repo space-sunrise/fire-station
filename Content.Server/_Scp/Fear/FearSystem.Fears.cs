@@ -1,9 +1,11 @@
 ﻿using System.Linq;
 using Content.Server._Scp.Shaders.Highlighting;
+using Content.Server._Sunrise.Mood;
 using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Components.Fears;
 using Content.Shared._Scp.Watching;
+using Content.Shared._Sunrise.Mood;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Humanoid;
@@ -18,6 +20,11 @@ public sealed partial class FearSystem
     [Dependency] private readonly HighlightSystem _highlight = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+
+    private const string MoodSomeoneDiedOnMyEyes = "FearSomeoneDiedOnMyEyes";
+
+    private const string MoodHemophobicBleeding = "FearHemophobicBleeding";
+    private const string MoodHemophobicSeeBlood = "FearHemophobicSeeBlood";
 
     private void InitializeFears()
     {
@@ -39,6 +46,16 @@ public sealed partial class FearSystem
         var activated = ev.NewMobState == MobState.Dead;
         var toggleUsed = new ItemToggledEvent(false, activated, null);
         RaiseLocalEvent(ev.Target, ref toggleUsed);
+
+        if (!activated)
+            return;
+
+        var whoSaw = _watching.GetAllEntitiesVisibleTo<MoodComponent>(ev.Target);
+
+        foreach (var uid in whoSaw)
+        {
+            RaiseLocalEvent(uid, new MoodEffectEvent(MoodSomeoneDiedOnMyEyes));
+        }
     }
 
     /// <summary>
@@ -63,6 +80,7 @@ public sealed partial class FearSystem
                 continue;
 
             _highlight.HighLightAll(bloodList, uid);
+            RaiseLocalEvent(uid, new MoodEffectEvent(MoodHemophobicSeeBlood));
         }
     }
 

@@ -2,6 +2,8 @@
 using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Systems;
+using Content.Shared._Sunrise.Mood;
+using Content.Shared.Rejuvenate;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Fear;
@@ -82,5 +84,14 @@ public sealed partial class FearSystem : SharedFearSystem
             return false;
 
         return true;
+    }
+
+    protected override void OnRejuvenate(Entity<FearComponent> ent, ref RejuvenateEvent args)
+    {
+        base.OnRejuvenate(ent, ref args);
+
+        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodSomeoneDiedOnMyEyes));
+        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodHemophobicSeeBlood));
+        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodHemophobicBleeding));
     }
 }

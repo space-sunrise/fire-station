@@ -1,5 +1,6 @@
 ﻿using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Weapons.Ranged;
+using Content.Shared._Sunrise.Mood;
 using Content.Shared.Administration;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage.Components;
@@ -17,6 +18,13 @@ public abstract partial class SharedFearSystem
     private const float BaseJitteringFrequency = 4f;
 
     private const string AdrenalineEffectKey = "Adrenaline";
+
+    private static readonly Dictionary<FearState, string> FearMoodStates = new()
+    {
+        { FearState.Anxiety, "FearStateAnxiety" },
+        { FearState.Fear, "FearStateFear" },
+        { FearState.Terror, "FearStateTerror" },
+    };
 
     /// <summary>
     /// Регулирует проблемы со стрельбой при увеличении страха
@@ -64,6 +72,25 @@ public abstract partial class SharedFearSystem
         var time = TimeSpan.FromSeconds(ent.Comp.AdrenalineBaseTime * modifier);
 
         _effects.TryAddStatusEffect<IgnoreSlowOnDamageComponent>(ent, AdrenalineEffectKey, time, true);
+    }
+
+    private void ManageStateBasedMood(Entity<FearComponent> ent)
+    {
+        if (ent.Comp.State == FearState.None)
+            WipeMood(ent);
+
+        if (!FearMoodStates.TryGetValue(ent.Comp.State, out var moodEffect))
+            return;
+
+        RaiseLocalEvent(ent, new MoodEffectEvent(moodEffect));
+    }
+
+    private void WipeMood(EntityUid uid)
+    {
+        foreach (var effect in FearMoodStates.Values)
+        {
+            RaiseLocalEvent(uid, new MoodRemoveEffectEvent(effect));
+        }
     }
 
     protected virtual void TryScream(Entity<FearComponent> ent) {}

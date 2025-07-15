@@ -6,8 +6,10 @@ using Content.Shared._Scp.Shaders.Grain;
 using Content.Shared._Scp.Shaders.Highlighting;
 using Content.Shared._Scp.Shaders.Vignette;
 using Content.Shared._Scp.Watching;
+using Content.Shared._Sunrise.Mood;
 using Content.Shared.GameTicking;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Rejuvenate;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Fear.Systems;
@@ -27,16 +29,20 @@ public abstract partial class SharedFearSystem : EntitySystem
     [Dependency] private readonly SharedShaderStrengthSystem _shaderStrength = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
+    private const string MoodSourceClose = "FearSourceClose";
+    private const string MoodFearSourceSeen = "FearSourceSeen";
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<FearComponent, EntityLookedAtEvent>(OnEntityLookedAt);
-
         SubscribeLocalEvent<FearComponent, ProximityInRangeTargetEvent>(OnProximityInRange);
         SubscribeLocalEvent<FearComponent, ProximityNotInRangeTargetEvent>(OnProximityNotInRange);
 
         SubscribeLocalEvent<FearComponent, FearStateChangedEvent>(OnFearStateChanged);
+
+        SubscribeLocalEvent<FearComponent, RejuvenateEvent>(OnRejuvenate);
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
 
@@ -78,6 +84,7 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (!TrySetFearLevel(ent.AsNullable(), source.UponSeenState))
             return;
 
+        RaiseLocalEvent(ent, new MoodEffectEvent(MoodFearSourceSeen));
         HighLightAllVisibleFears(ent);
     }
 
@@ -123,6 +130,8 @@ public abstract partial class SharedFearSystem : EntitySystem
             source.VignetteShaderStrength,
             args.Type,
             ent.Comp);
+
+        RaiseLocalEvent(ent, new MoodEffectEvent(MoodSourceClose));
     }
 
     /// <summary>
@@ -140,6 +149,7 @@ public abstract partial class SharedFearSystem : EntitySystem
         SetShaderStrength<VignetteOverlayComponent>(ent.Owner, ent.Comp, 0f);
 
         RemoveEffects(ent.Owner);
+        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodSourceClose));
     }
 
     /// <summary>
@@ -154,15 +164,23 @@ public abstract partial class SharedFearSystem : EntitySystem
 
         // Добавляем геймплейные проблемы, завязанный на уровне страха
         ManageShootingProblems(ent);
+        ManageStateBasedMood(ent);
 
-        // Если старый стейт больше, значит мы снизили уровень страха -> успокоились
-        // Следователь геймплейные штуки ниже не нужно триггерить.
-        if (args.OldState > args.NewState)
+        // Проверка на то, что уровень понизился -> мы успокоились.
+        // Геймплейные штуки ниже не нужно триггерить.
+        if (!IsIncreasing(args.NewState, args.OldState))
             return;
 
         ManageJitter(ent);
         ManageAdrenaline(ent);
         TryScream(ent);
+    }
+
+    protected virtual void OnRejuvenate(Entity<FearComponent> ent, ref RejuvenateEvent args)
+    {
+        TrySetFearLevel(ent.AsNullable(), FearState.None);
+
+        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodFearSourceSeen));
     }
 
     /// <summary>
