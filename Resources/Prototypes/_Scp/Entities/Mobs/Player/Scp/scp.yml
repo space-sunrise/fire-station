@@ -73,7 +73,6 @@
     class: Neutralized
   - type: ScpRestriction
   - type: ProximityReceiver
-    requiredLineOfSight: Transparent
   - type: WatchingTarget
   - type: FearSource
   - type: FootprintEmitter
@@ -213,6 +212,15 @@
   - type: Scp
     class: Keter
   - type: Scp106
+  - type: FearSource
+    uponSeenState: Fear
+    uponComeCloser: Terror
+    grainShaderStrength:
+      min: 0
+      max: 1000
+    vignetteShaderStrength:
+      min: 0
+      max: 400
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
     altDisarm: false

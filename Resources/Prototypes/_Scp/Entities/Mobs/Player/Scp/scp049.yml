@@ -21,6 +21,15 @@
     canPull: true
     canMobCollide: true
   - type: ScpShow049Hud
+  - type: FearSource
+    uponSeenState: Anxiety
+    uponComeCloser: Anxiety
+    grainShaderStrength:
+      min: 0
+      max: 400
+    vignetteShaderStrength:
+      min: 0
+      max: 200
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name
     description: ghost-panel-antagonist-scp-description

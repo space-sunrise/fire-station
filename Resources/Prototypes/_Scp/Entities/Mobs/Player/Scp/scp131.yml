@@ -9,6 +9,15 @@
     state: SCP-131A
   - type: Scp
     class: Safe
+  - type: FearSource
+    uponSeenState: None
+    uponComeCloser: None
+    grainShaderStrength:
+      min: 0
+      max: 0
+    vignetteShaderStrength:
+      min: 0
+      max: 0
   - type: Muted
   - type: NpcFactionMember
     factions:
