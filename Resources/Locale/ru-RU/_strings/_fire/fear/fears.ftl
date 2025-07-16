@@ -1,4 +1,6 @@
-﻿phobia-unspecified-name = Неназвано
+﻿character-info-fears-label = Фобии и страхи
+
+phobia-unspecified-name = Неназвано
 phobia-unspecified-description = Страх витает на периферии сознания. Вы не понимаете его причину.
 
 exoremophobia-name = Экзоревмофобия

@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client._Scp.Fear.UI;
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
 using Content.Client.Stylesheets;
@@ -6,6 +7,7 @@ using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Character.Controls;
 using Content.Client.UserInterface.Systems.Character.Windows;
 using Content.Client.UserInterface.Systems.Objectives.Controls;
+using Content.Shared._Scp.Fear.Components;
 using Content.Shared.Input;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
@@ -135,6 +137,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         _window.SpriteView.SetEntity(entity);
 
         UpdateRoleType();
+        UpdateFears(entity, ref _window); // Fire added
 
         _window.NameLabel.Text = entityName;
         _window.SubText.Text = job;
@@ -222,6 +225,33 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         _window.RoleType.Text = Loc.GetString(proto?.Name ?? "role-type-crew-aligned-name");
         _window.RoleType.FontColorOverride = proto?.Color ?? Color.White;
     }
+
+    // Fire added start
+    private void UpdateFears(EntityUid uid, ref CharacterWindow window)
+    {
+        window.Fears.RemoveAllChildren();
+
+        if (!_ent.TryGetComponent<FearComponent>(uid, out var fear))
+            return;
+
+        foreach (var phobia in fear.Phobias)
+        {
+            if (!_prototypeManager.TryIndex(phobia, out var phobiaProto))
+                continue;
+
+            var item = new FearInfo
+            {
+                PhobiaNameString = phobiaProto.Name,
+                Description = phobiaProto.Description,
+                Color = phobiaProto.Color,
+            };
+
+            window.Fears.AddChild(item);
+        }
+
+        window.FearsPlaceholder.Visible = window.Fears.ChildCount == 0;
+    }
+    // Fire added end
 
     private void CharacterDetached(EntityUid uid)
     {
