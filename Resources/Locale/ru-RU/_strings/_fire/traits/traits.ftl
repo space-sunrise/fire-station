@@ -1,4 +1,4 @@
-﻿trait-category-fears = Страхи
+﻿trait-category-fear = Страх
 
 trait-hemophobia-name = Гемофобия
 trait-hemophobia-desc = Пульс учащается. Руки дрожат. Каждый алый след — как напоминание, что ты не бессмертен.
@@ -9,5 +9,5 @@ trait-stupor-desc = В критический момент ты замираеш
 trait-fear-stuttering-name = Сломанный голос
 trait-fear-stuttering-desc = Каждое слово даётся с трудом. В моменты опасности твоя речь становится ломаной — и окружающие это замечают.
 
-trait-fear-stuttering-name = Мерцающее сознание
-trait-fear-stuttering-desc = Иногда страх настолько сильный, что мозг решает: проще выключиться. Ты падаешь — и только тишина.
+trait-fainting-name = Мерцающее сознание
+trait-fainting-desc = Иногда страх настолько сильный, что мозг решает: проще выключиться. Ты падаешь — и только тишина.
