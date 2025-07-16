@@ -5,7 +5,6 @@ using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Components.Fears;
 using Content.Shared._Scp.Watching;
-using Content.Shared._Sunrise.Mood;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Humanoid;
@@ -54,7 +53,7 @@ public sealed partial class FearSystem
 
         foreach (var uid in whoSaw)
         {
-            RaiseLocalEvent(uid, new MoodEffectEvent(MoodSomeoneDiedOnMyEyes));
+            AddNegativeMoodEffect(uid, MoodSomeoneDiedOnMyEyes);
         }
     }
 
@@ -80,7 +79,7 @@ public sealed partial class FearSystem
                 continue;
 
             _highlight.HighLightAll(bloodList, uid);
-            RaiseLocalEvent(uid, new MoodEffectEvent(MoodHemophobicSeeBlood));
+            AddNegativeMoodEffect(uid, MoodHemophobicSeeBlood);
         }
     }
 

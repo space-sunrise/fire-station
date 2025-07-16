@@ -46,6 +46,7 @@ public abstract partial class SharedFearSystem : EntitySystem
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
 
+        InitializeGameplay();
         InitializeTraits();
     }
 
@@ -84,7 +85,7 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (!TrySetFearLevel(ent.AsNullable(), source.UponSeenState))
             return;
 
-        RaiseLocalEvent(ent, new MoodEffectEvent(MoodFearSourceSeen));
+        AddNegativeMoodEffect(ent, MoodFearSourceSeen);
         HighLightAllVisibleFears(ent);
     }
 
@@ -131,7 +132,7 @@ public abstract partial class SharedFearSystem : EntitySystem
             args.Type,
             ent.Comp);
 
-        RaiseLocalEvent(ent, new MoodEffectEvent(MoodSourceClose));
+        AddNegativeMoodEffect(ent, MoodSourceClose);
     }
 
     /// <summary>
@@ -268,6 +269,8 @@ public abstract partial class SharedFearSystem : EntitySystem
             return;
 
         var actualStrength = GetActualStrength<T>(fear, strength);
+        actualStrength /= GetDrunkModifier(ent);
+
         _shaderStrength.TrySetAdditionalStrength(ent, actualStrength);
     }
 }

@@ -5,9 +5,7 @@ using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Components.Traits;
 using Content.Shared.Administration;
 using Content.Shared.Bed.Sleep;
-using Content.Shared.Jittering;
 using Content.Shared.StatusEffect;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Fear;
@@ -16,8 +14,6 @@ public sealed partial class FearSystem
 {
     [Dependency] private readonly AdminFrozenSystem _adminFrozen = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
-
-    private static readonly ProtoId<StatusEffectPrototype> JitterStatusEffectKey = "Jitter";
 
     private void InitializeTraits()
     {
