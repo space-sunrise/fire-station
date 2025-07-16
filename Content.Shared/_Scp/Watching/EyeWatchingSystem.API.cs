@@ -5,6 +5,7 @@ using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Proximity;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Storage.Components;
 
 namespace Content.Shared._Scp.Watching;
 
@@ -137,6 +138,22 @@ public sealed partial class EyeWatchingSystem
     }
 
     /// <summary>
+    /// Простая проверка на то, видят ли переданную сущность другие сущности.
+    /// Вместо проверки на интервальное моргание используется проверка на мануальное закрытие глаз.
+    /// </summary>
+    /// <param name="target">Сущность, на которую смотрят</param>
+    /// <param name="watchers">Смотрящие</param>
+    /// <returns>Смотри ли хоть кто-нибудь из переданных</returns>
+    public bool SimpleIsWatchedBy(EntityUid target, IEnumerable<EntityUid> watchers)
+    {
+        var viewers = watchers
+            .Where(eye => CanBeWatched(eye, target))
+            .Where(eye => !_blinking.AreEyesClosed(eye));
+
+        return viewers.Any();
+    }
+
+    /// <summary>
     /// Проверяет, может ли цель вообще быть увидена смотрящим
     /// </summary>
     /// <remarks>
@@ -151,6 +168,9 @@ public sealed partial class EyeWatchingSystem
             return false;
 
         if (viewer.Owner == target)
+            return false;
+
+        if (HasComp<InsideEntityStorageComponent>(target))
             return false;
 
         return true;

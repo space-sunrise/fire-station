@@ -1,6 +1,7 @@
 ﻿using Content.Shared.Examine;
 using Content.Shared.GameTicking;
 using Content.Shared.Interaction;
+using Content.Shared.Storage.Components;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Proximity;
@@ -128,6 +129,9 @@ public sealed class ProximitySystem : EntitySystem
     /// <returns>Тип прозрачности сущностей, перекрывающий прямой контакт между этими двумя</returns>
     public LineOfSightBlockerLevel GetLightOfSightBlockerLevel(EntityUid receiver, EntityUid target)
     {
+        if (HasComp<InsideEntityStorageComponent>(receiver))
+            return LineOfSightBlockerLevel.Solid;
+
         var isUnobstructed = _interaction.InRangeUnobstructed(receiver, target, float.MaxValue);
         var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, float.MaxValue);
 

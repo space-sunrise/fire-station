@@ -32,6 +32,8 @@ public abstract partial class SharedFearSystem : EntitySystem
     private const string MoodSourceClose = "FearSourceClose";
     private const string MoodFearSourceSeen = "FearSourceSeen";
 
+    private EntityQuery<FearSourceComponent> _fears;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -48,6 +50,8 @@ public abstract partial class SharedFearSystem : EntitySystem
 
         InitializeGameplay();
         InitializeTraits();
+
+        _fears = GetEntityQuery<FearSourceComponent>();
     }
 
     /// <summary>
@@ -74,7 +78,10 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (_timing.CurTime < lastSeenTime + ent.Comp.TimeToGetScaredAgainOnLookAt)
             return;
 
-        if (!TryComp<FearSourceComponent>(args.Target, out var source))
+        if (!_fears.TryComp(args.Target, out var source))
+            return;
+
+        if (source.UponComeCloser == FearState.None)
             return;
 
         // Если текущий уровень страха выше, чем тот, что мы хотим поставить,
@@ -107,7 +114,14 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (args.Type > ent.Comp.ProximityBlockerLevel)
             return;
 
-        if (!TryComp<FearSourceComponent>(args.Receiver, out var source))
+        if (!_fears.TryComp(args.Receiver, out var source))
+            return;
+
+        if (source.UponComeCloser == FearState.None)
+            return;
+
+        // Проверка на зрение, чтобы можно было закрыть глазки и было не страшно
+        if (!_watching.SimpleIsWatchedBy(args.Receiver, [ent]))
             return;
 
         // Если текущий уровень страха выше, чем тот, что мы хотим поставить,

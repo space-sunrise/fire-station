@@ -13,11 +13,11 @@ public sealed partial class ProximityReceiverComponent : Component
     /// На каком расстоянии будут вызываться ивент?
     /// </summary>
     [DataField, AutoNetworkedField, ViewVariables]
-    public float CloseRange = 5f;
+    public float CloseRange = 3f;
 
     /// <inheritdoc cref="LineOfSightBlockerLevel"/>
-    [DataField, AutoNetworkedField, ViewVariables]
-    public LineOfSightBlockerLevel RequiredLineOfSight  = LineOfSightBlockerLevel.None;
+    [DataField, ViewVariables, AutoNetworkedField]
+    public LineOfSightBlockerLevel RequiredLineOfSight = LineOfSightBlockerLevel.Transparent;
 }
 
 /// <summary>

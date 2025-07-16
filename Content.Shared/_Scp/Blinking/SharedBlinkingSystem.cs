@@ -236,7 +236,8 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         var allScp173InView = _watching.GetAllVisibleTo<Scp173Component>(player);
         var allScp096InView = _watching.GetAllVisibleTo<Scp096Component>(player);
 
-        return allScp173InView.Any() || allScp096InView.Any();
+        return allScp173InView.Any(e => _watching.CanBeWatched(player, e))
+               || allScp096InView.Any(e => _watching.CanBeWatched(player, e));
     }
 }
 
