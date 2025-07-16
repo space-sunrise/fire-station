@@ -25,6 +25,11 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+    - type: Fear
+      proximityBlockerLevel: None
+      seenBlockerLevel: None
 
 - type: startingGear
   id: JuniorHeavyContainmentZoneOfficerGear

@@ -34,6 +34,14 @@
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: Fear
+      timeToDecreaseFearLevel: 120
+      proximityBlockerLevel: None
+      seenBlockerLevel: None
+      fearBasedSpreadAngleModifier:
+        Anxiety: 2
+        Fear: 5
+        Terror: 10
 
 - type: startingGear
   id: SecurityCommanderGear

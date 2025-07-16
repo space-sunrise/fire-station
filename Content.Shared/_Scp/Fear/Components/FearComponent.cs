@@ -18,8 +18,8 @@ public sealed partial class FearComponent : Component
     /// <summary>
     /// Время, через которое уровень страха понизится.
     /// </summary>
-    [DataField, ViewVariables]
-    public TimeSpan TimeToDecreaseFearLevel = TimeSpan.FromMinutes(3f); // TODO: 3 минуты
+    [DataField, ViewVariables, AutoNetworkedField]
+    public TimeSpan TimeToDecreaseFearLevel = TimeSpan.FromSeconds(180); // TODO: 3 минуты
 
     /// <summary>
     /// Следующее время, когда будут понижен уровень страха со временем.
@@ -33,8 +33,8 @@ public sealed partial class FearComponent : Component
     /// Этот словарь описывает зависимость силы шейдера зернистости от уровня страха у владельца компонента.
     /// Эти значения будут суммироваться с другими при добавлении.
     /// </summary>
-    [ViewVariables]
-    public readonly Dictionary<FearState, float> FearBasedGrainStrength = new ()
+    [DataField, ViewVariables, AutoNetworkedField]
+    public Dictionary<FearState, float> FearBasedGrainStrength = new ()
     {
         { FearState.None , 0f },
         { FearState.Anxiety, 100f },
@@ -46,8 +46,8 @@ public sealed partial class FearComponent : Component
     /// Этот словарь описывает зависимость силы шейдера виньетки от уровня страха у владельца компонента.
     /// Эти значения будут суммироваться с другими при добавлении.
     /// </summary>
-    [ViewVariables]
-    public readonly Dictionary<FearState, float> FearBasedVignetteStrength = new ()
+    [DataField, ViewVariables, AutoNetworkedField]
+    public Dictionary<FearState, float> FearBasedVignetteStrength = new ()
     {
         { FearState.None , 0f },
         { FearState.Anxiety, 30f },
@@ -74,7 +74,7 @@ public sealed partial class FearComponent : Component
     /// Через прозрачные объекты приближаться к чем-тому не так страшно.
     /// Рассчитанная сила делится на этот модификатор, НЕ умножается.
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public float TransparentStrengthDecreaseFactor = 2f;
 
     /// <summary>
@@ -82,7 +82,7 @@ public sealed partial class FearComponent : Component
     /// Если итоговый уровень будет выше, то не будет и эффекта.
     /// А если ниже, то будет.
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public LineOfSightBlockerLevel ProximityBlockerLevel = LineOfSightBlockerLevel.Transparent;
 
     #endregion
@@ -94,13 +94,13 @@ public sealed partial class FearComponent : Component
     /// Если итоговый уровень будет выше, то не будет и эффекта.
     /// А если ниже, то будет.
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public LineOfSightBlockerLevel SeenBlockerLevel = LineOfSightBlockerLevel.Transparent;
 
     /// <summary>
     /// Время, через которое игрок снова сможет испугаться источника страха, когда увидит его.
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public TimeSpan TimeToGetScaredAgainOnLookAt = TimeSpan.FromSeconds(10f); // TODO: 5 минут
 
     #endregion
@@ -109,8 +109,9 @@ public sealed partial class FearComponent : Component
 
     /// <summary>
     /// Словарь параметров увеличения разброса при стрельбе.
+    /// Каждый уровень страха соответствует модификаторы разброса.
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public Dictionary<FearState, float> FearBasedSpreadAngleModifier = new ()
     {
         { FearState.Anxiety, 3f },
@@ -121,38 +122,38 @@ public sealed partial class FearComponent : Component
     /// <summary>
     /// Базовый модификатор трясучки, которая будет возникать при повышении уровня страха.
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public float BaseJitterTime = 10f;
 
     /// <summary>
     /// Необходимый уровень страха, чтобы начать падать при хождении.
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public FearState FallOffRequiredState = FearState.Terror;
 
     /// <summary>
     /// Шанс упасть при хождении во время страха постигшего <see cref="FallOffRequiredState"/>
     /// </summary>
-    [DataField, ViewVariables]
-    public float FallOffChance = 3f; // TODO: Вернуть 1%
+    [DataField, ViewVariables, AutoNetworkedField]
+    public float FallOffChance = 3f; // 3%
 
     /// <summary>
     /// Какой уровень страха нужен, чтобы у человека появился адреналин.
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public FearState AdrenalineRequiredState = FearState.Fear;
 
     /// <summary>
     /// Базовое количество времени действий адреналина при повышении уровня страха.
     /// На него умножается модификатор от текущего уровня страха.
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public float AdrenalineBaseTime = 5f;
 
     /// <summary>
     /// Какой уровень страха требуется, чтобы закричать при поднятии до этого уровня.
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField, ViewVariables, AutoNetworkedField]
     public FearState ScreamRequiredState = FearState.Terror;
 
     #endregion

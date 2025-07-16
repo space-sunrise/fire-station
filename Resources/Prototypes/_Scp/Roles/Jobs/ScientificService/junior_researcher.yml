@@ -11,6 +11,11 @@
   access:
   - Research
   - Maintenance
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Fear
+      seenBlockerLevel: None
 
 - type: startingGear
   id: JuniorResearcherGear
