@@ -48,6 +48,7 @@ public abstract partial class SharedFearSystem : EntitySystem
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
 
+        InitializeFears();
         InitializeGameplay();
         InitializeTraits();
 
@@ -81,12 +82,16 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (!_fears.TryComp(args.Target, out var source))
             return;
 
-        if (source.UponComeCloser == FearState.None)
+        if (source.UponSeenState == FearState.None)
             return;
 
         // Если текущий уровень страха выше, чем тот, что мы хотим поставить,
         // то мы не должны его ставить.
-        if (ent.Comp.State >= source.UponSeenState)
+        if (ent.Comp.State > source.UponSeenState)
+            return;
+
+        // Если в списке фобий персонажа нет фобии, которой является источник, то мы ее не боимся
+        if (source.PhobiaType.HasValue && !ent.Comp.Phobias.Contains(source.PhobiaType.Value))
             return;
 
         if (!TrySetFearLevel(ent.AsNullable(), source.UponSeenState))
@@ -118,6 +123,10 @@ public abstract partial class SharedFearSystem : EntitySystem
             return;
 
         if (source.UponComeCloser == FearState.None)
+            return;
+
+        // Если в списке фобий персонажа нет фобии, которой является источник, то мы ее не боимся
+        if (source.PhobiaType.HasValue && !ent.Comp.Phobias.Contains(source.PhobiaType.Value))
             return;
 
         // Проверка на зрение, чтобы можно было закрыть глазки и было не страшно

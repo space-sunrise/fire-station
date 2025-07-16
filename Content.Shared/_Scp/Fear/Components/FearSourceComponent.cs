@@ -1,6 +1,7 @@
 ﻿using Content.Shared._Scp.Helpers;
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Fear.Components;
 
@@ -11,6 +12,9 @@ namespace Content.Shared._Scp.Fear.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class FearSourceComponent : Component
 {
+    [DataField, ViewVariables, AutoNetworkedField]
+    public ProtoId<PhobiaPrototype>? PhobiaType;
+
     /// <summary>
     /// Какой уровень страха будет у жертвы, когда она увидит это?
     /// </summary>

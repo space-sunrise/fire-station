@@ -34,4 +34,10 @@ public sealed partial class HemophobiaComponent : Component
         { FearState.Fear, 25f },
         { FearState.Terror, 50f },
     };
+
+    /// <summary>
+    /// Айди прототипа фобии для гемофобии
+    /// </summary>
+    [DataField, ViewVariables]
+    public ProtoId<PhobiaPrototype> Phobia = "Hemophobia";
 }

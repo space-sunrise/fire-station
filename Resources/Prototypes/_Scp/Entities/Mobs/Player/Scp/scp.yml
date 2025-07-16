@@ -75,6 +75,7 @@
   - type: ProximityReceiver
   - type: WatchingTarget
   - type: FearSource
+    phobiaType: Exoremophobia
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
@@ -214,7 +215,7 @@
   - type: Scp106
   - type: FearSource
     uponSeenState: Fear
-    uponComeCloser: Terror
+    uponComeCloser: Fear
     grainShaderStrength:
       min: 0
       max: 1000

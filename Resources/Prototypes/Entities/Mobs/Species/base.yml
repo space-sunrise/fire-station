@@ -275,22 +275,16 @@
   - type: Blinkable
   - type: EyeClosing
   - type: Fear
+    phobias:
+    - Exoremophobia
+    - Necrophobia
   - type: ProximityTarget
   - type: ComponentToggler
     components:
     - type: FearSource
-      uponComeCloser: Anxiety
-      playHeartbeatSound: false
-      playBreathingSound: false
-      grainShaderStrength:
-        min: 0
-        max: 300
-      vignetteShaderStrength:
-        min: 0
-        max: 80
+      phobiaType: Necrophobia
+      uponComeCloser: None
     - type: WatchingTarget
-    - type: ProximityReceiver
-      closeRange: 2
   # Fire end
   - type: Barotrauma
     damage:

@@ -1,6 +1,6 @@
 ﻿using Content.Shared._Scp.Proximity;
 using Robust.Shared.GameStates;
-using Robust.Shared.Serialization;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Fear.Components;
 
@@ -14,6 +14,12 @@ public sealed partial class FearComponent : Component
     /// <inheritdoc cref="FearState"/>
     [AutoNetworkedField, ViewVariables]
     public FearState State = FearState.None;
+
+    /// <summary>
+    /// Список, содержащий информацию о фобиях персонажа
+    /// </summary>
+    [DataField, ViewVariables, AutoNetworkedField]
+    public HashSet<ProtoId<PhobiaPrototype>> Phobias = [];
 
     /// <summary>
     /// Время, через которое уровень страха понизится.
@@ -157,32 +163,4 @@ public sealed partial class FearComponent : Component
     public FearState ScreamRequiredState = FearState.Terror;
 
     #endregion
-}
-
-/// <summary>
-/// Уровни страха. Чем больше значение, тем сильнее страх
-/// </summary>
-/// TODO: Возможно сделать struct, отвечающий за страх и параметры
-[Serializable, NetSerializable]
-public enum FearState : byte
-{
-    /// <summary>
-    /// Отсутствие страха. Сущность в спокойном состоянии
-    /// </summary>
-    None = 0,
-
-    /// <summary>
-    /// Тревожность. Сущность немного напугана
-    /// </summary>
-    Anxiety = 1,
-
-    /// <summary>
-    /// Страх. Сущность испытает прямой страх от чего-либо
-    /// </summary>
-    Fear = 2,
-
-    /// <summary>
-    /// Неконтролируемый ужас. Сущность невероятно напугана, что-то СЛИШКОМ ужасно, чтобы знать об этом.
-    /// </summary>
-    Terror = 3,
 }

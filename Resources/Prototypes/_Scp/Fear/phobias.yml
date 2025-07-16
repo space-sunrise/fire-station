@@ -1,0 +1,23 @@
+﻿- type: phobia
+  id: Unspecified
+  name: phobia-unspecified-name
+  description: phobia-unspecified-description
+  color: "#f1c40f"
+
+- type: phobia
+  id: Exoremophobia
+  name: exoremophobia-name
+  description: exoremophobia-description
+  color: "#e74c3c"
+
+- type: phobia
+  id: Necrophobia
+  name: necrophobia-name
+  description: necrophobia-description
+  color: "#3498db"
+
+- type: phobia
+  id: Hemophobia
+  name: hemophobia-name
+  description: hemophobia-description
+  color: "#3498db"

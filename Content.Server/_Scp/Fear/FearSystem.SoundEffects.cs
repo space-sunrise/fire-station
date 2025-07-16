@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Fear.Components;
+﻿using Content.Shared._Scp.Fear;
+using Content.Shared._Scp.Fear.Components;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
