@@ -14,6 +14,13 @@
   - Medical
   - Maintenance
   - Chemistry
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: Fear
+      phobias:
+      - Exoremophobia
+      # Врачи не пугаются трупов, у них не будет некрофобии
 
 - type: startingGear
   id: SeniorMedicalSpecialistGear

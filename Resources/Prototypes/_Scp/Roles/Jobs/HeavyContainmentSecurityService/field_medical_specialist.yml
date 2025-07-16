@@ -21,6 +21,12 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+    - type: Fear
+      phobias:
+      - Exoremophobia
+      # Врачи не пугаются трупов, у них не будет некрофобии
 
 - type: startingGear
   id: FieldMedicalSpecialistGear

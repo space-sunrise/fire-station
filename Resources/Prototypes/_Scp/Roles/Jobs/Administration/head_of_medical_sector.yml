@@ -25,6 +25,10 @@
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: Fear
+      phobias:
+      - Exoremophobia
+      # Врачи не пугаются трупов, у них не будет некрофобии
 
 - type: startingGear
   id: HeadOfMedicalSectorGear

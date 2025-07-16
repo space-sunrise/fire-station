@@ -11,6 +11,7 @@
   access:
   - Medical
   - Maintenance
+  # Интерн исключение из врачей, он пугается трупов, потому что слишком неопытен.
 
 - type: startingGear
   id: HospitalInternGear
