@@ -37,8 +37,8 @@ public sealed partial class FearComponent : Component
     public readonly Dictionary<FearState, float> FearBasedGrainStrength = new ()
     {
         { FearState.None , 0f },
-        { FearState.Anxiety, 50f },
-        { FearState.Fear , 100f },
+        { FearState.Anxiety, 100f },
+        { FearState.Fear , 300f },
         { FearState.Terror, 700f },
     };
 
@@ -122,7 +122,7 @@ public sealed partial class FearComponent : Component
     /// Базовый модификатор трясучки, которая будет возникать при повышении уровня страха.
     /// </summary>
     [DataField, ViewVariables]
-    public float BaseJitterTime = 20f;
+    public float BaseJitterTime = 10f;
 
     /// <summary>
     /// Необходимый уровень страха, чтобы начать падать при хождении.
