@@ -28,46 +28,46 @@ book-text-ame-scribbles =
     Поставите больше - и это приведёт к перегреву ДАМ, что в конечном итоге вызовет взрыв. Давайте без этого.
     Не забывайте заправлять ДАМ, так как топливо имеет тенденцию заканчиваться в самый неподходящий момент.
 book-text-agrichemkit-manual =
-    Thank you for choosing the safe-for-all-ages NanoTrasen Agri-Chem is Fun! chemistry kit, the best learning-adjacent toy of 2468! Be prepared to discover all about the biggest innovations in agriculture since people buried fish with their corn seeds.
-    
-    Contents:
-    5 handily labeled 30u bottles, 1 each of nitrogen, phosphorus, hydrogen, potassium, and ethanol
-    2 Safe-T-Fun(TM) sized 5u vials, 1 each of chlorine and radium
-    1 30u empty bottle, ready for your experiments.
-    
-    First Experiment: EZ Nutrient
-    To create EZ Nutrient, a fertilizer densely packed with nutrients required for healthy plants, mix equal parts nitrogen, phosphorus, and potassium. To make a full bottle, thats 10u of each.
-    A little bottle of EZ Nutrient replaces a big stack of produce you'd otherwise compost to keep your plants growing strong. And crops you compost are crops you didn't make a profit on, so keep that EZ Nutrient flowing.
-    
-    Second Experiment: Ammonia and Diethylamine
-    Mix 3 parts hydrogen to 1 part nitrogen to make ammonia. It's a healthy, nutritious treat for your crops that aren't at their best. 
-    But if you want to impress the judges at your local NanoTrasen-sponsored County Fair, you'll need to add an equal amount of ethanol to your ammonia.
-    This will mix into Diethylamine, a miracle fertilizer that can make plants grow faster AND live longer! Keep the crops you love with you longer thanks to Diethylamine.
-    
-    Third Experiment: Unstable Mutagen
-    When you're ready to show everyone you're the greatest botanist on the station, you'll need to mix up some unstable mutagen and hope for the best. Despite the scary name, unstable mutagen is entirely safe when applied to plants, but do not drink the appealingly green chemical yourself.
-    
-    Mix equal parts radium, phosphorus, and chlorine together to get a bright green batch of unstable mutagen, the safe and fun way to get the most of your farm. The 15u this kit lets you make could be your introduction to agrichemical stardom!
-    Unstable mutagen can have a wide variety of effects on plant life, including drastic changes to all sorts of growth parameters, produce full of helpful pharmaceuticals, plants that glow in the dark, or creating entirely new species.
-    
-    Each individual plant responds to unstable mutagen differently, so you may want to use small doses on multiple crops and try to crossbreed the best traits from each of those. Applying multiple doses to one plant can stack multiple changes and make it harder to single out desirable traits.
-    Unstable mutagen is entirely safe when used as a fertilizer, and NanoTrasen takes no responsibility for dead crops, excessive water bills, newly sentient plants asking existential questions, or flora-strangled farmhands that may coincidentally occur while using it.
-    Do not drink unstable mutagen. Wash your hands thoroughly after handing. Wash your eyes if you have looked at unstable mutagen for over 30 minutes in a 24 hour period. Store in a dark room between 293–295K. Do not use on corporate holidays. If you begin hearing voices telling you to drink unstable mutagen, please contact your doctor, head of personnel, or exorcist.
+    Благодарим вас за то, что выбрали SCP Agri-Chem - это весело и безопасно для детей всех возрастов! набор для химии - лучшая обучающая игрушка из серии 2468! Будьте готовы узнать все о крупнейших инновациях в сельском хозяйстве с тех пор, как люди закапывали рыбу вместе с зернами кукурузы.
+
+    Содержание:
+    5 флаконов емкостью 30 унций с удобными этикетками, по 1 флакону с азотом, фосфором, водородом, калием и этанолом
+    2 флакона Safe-T-Fun (TM) размером 5 унций, по 1 флакону с хлором и радием
+    1 пустой флакон емкостью 30 унций, готовый для ваших экспериментов.
+
+    Первый эксперимент: EZ Nutrient
+    Чтобы создать удобрение EZ Nutrient, богатое питательными веществами, необходимыми для здоровья растений, смешайте равные части азота, фосфора и калия. Чтобы получить полную бутылку, возьмите по 10 унций каждого удобрения.
+    Маленькая бутылочка EZ Nutrient заменяет большую кучу продуктов, которые вы бы в противном случае компостировали для поддержания роста растений. А культуры, которые вы компостируете, не приносят прибыли, поэтому поддерживайте поступление EZ Nutrient.
+
+    Второй эксперимент: Аммиак и диэтиламин.
+    Смешайте 3 части водорода и 1 часть азота, чтобы получить аммиак. Это полезное и питательное лакомство для ваших культур, которые находятся не в лучшем состоянии.
+    Но если вы хотите произвести впечатление на судей на местной ярмарке, спонсируемой Фондом, вам нужно добавить к аммиаку равное количество этанола.
+    В результате получится диэтиламин - чудо-удобрение, которое ускоряет рост растений И продлевает их жизнь! Благодаря диэтиламину вы сможете дольше сохранять урожай, который вам нравится.
+
+    Третий эксперимент: Нестабильный мутаген
+    Когда вы будете готовы показать всем, что вы лучший ботаник на станции, вам нужно будет смешать какой-нибудь нестабильный мутаген и надеяться на лучшее. Несмотря на пугающее название, нестабильный мутаген абсолютно безопасен при нанесении на растения, но не пейте это привлекательно зеленое вещество самостоятельно.
+
+    Смешайте равные части радия, фосфора и хлора, чтобы получить ярко-зеленую порцию нестабильного мутагена - безопасный и интересный способ получить максимальную отдачу от своей фермы. 15u, который вы получите с помощью этого набора, может стать вашим знакомством с агрохимической славой!
+    Нестабильный мутаген может оказывать самое разнообразное воздействие на жизнь растений, включая радикальные изменения всех параметров роста, производство полезных фармацевтических препаратов, растений, которые светятся в темноте, или создание совершенно новых видов.
+
+    Каждое отдельное растение реагирует на нестабильный мутаген по-разному, поэтому вы можете использовать небольшие дозы для нескольких культур и попытаться получить лучшие признаки от каждой из них. Применение нескольких доз для одного растения может привести к многочисленным изменениям и затруднить выделение желаемых признаков.
+    Нестабильный мутаген абсолютно безопасен при использовании в качестве удобрения, и Фонд не несет ответственности за гибель урожая, чрезмерные счета за воду, вновь обретающие сознание растения, задающие экзистенциальные вопросы, или за гибель растений на фермах, которые могут случайно возникнуть при его использовании.
+    Не употребляйте нестабильный мутаген. Тщательно мойте руки после употребления. Промойте глаза, если вы смотрели на нестабильный мутаген более 30 минут в течение 24 часов. Храните в темном помещении при температуре от 293 до 295 К. Не используйте во время корпоративных праздников. Если вы начнете слышать голоса, советующие вам пить нестабильный мутаген, пожалуйста, обратитесь к своему врачу, руководителю отдела персонала или экзорцисту.
 book-text-combat-bakery-kit =
-    Thank you for choosing our combat bakery kit!
-    Enclosed are two (2) CyberSun patented Throwing Croissants, and one (1) patent-pending Baguette Sword.
-    The included Donk Co. microwave board can construct a microwave capable of baking more weapons.
-    Just like the baked weapons, be sure to eat this note after use. Good luck, agent.
-    
-    Baguette Sword Recipe:
-    Dough x 1
-    Salt 5u
-    Pepper 5u
-    Metal Rod x 1
-    Cook Time: 15 seconds
-    
-    Throwing Croissant Recipe:
-    Raw Croissant x 1
-    Butter Slice x 1
-    Glass Shard x 1
-    Cook Time: 5 seconds
+    Благодарим вас за выбор нашего набора для боевой выпечки!
+    В комплект поставки входят два (2) круассана для метания, запатентованных компанией CyberSun, и один (1) багетный меч, на который еще не получен патент.
+    Микроволновая печь Donk Co., входящая в комплект поставки, может использоваться для изготовления большего количества оружия.
+    Как и в случае с запеченным оружием, обязательно съешьте эту заметку после использования. Удачи, агент.
+
+    Рецепт приготовления багетного меча:
+    Тесто - 1 шт.
+    Соль - 5 шт.
+    Перец - 5 шт.
+    Металлическая палочка - 1 шт.
+    Время приготовления: 15 секунд
+
+    Рецепт приготовления круассанов для метания:
+    1 Сырой круассан
+    1 ломтик сливочного масла
+    1 осколок стекла
+    Время приготовления: 5 секунд
