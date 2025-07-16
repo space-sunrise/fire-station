@@ -3,8 +3,6 @@ using Content.Shared._Scp.Scp096;
 using Content.Shared._Scp.Scp173;
 using Content.Shared._Scp.Watching;
 using Content.Shared.Alert;
-using Content.Shared.Eye.Blinding.Systems;
-using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Random;
@@ -30,26 +28,12 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     {
         base.Initialize();
 
-        #region Blinking
-
         SubscribeLocalEvent<BlinkableComponent, EntityOpenedEyesEvent>(OnOpenedEyes);
         SubscribeLocalEvent<BlinkableComponent, EntityClosedEyesEvent>(OnClosedEyes);
 
         SubscribeLocalEvent<BlinkableComponent, MobStateChangedEvent>(OnMobStateChanged);
 
-        #endregion
-
-        #region Eye closing
-
-        SubscribeLocalEvent<BlinkableComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<BlinkableComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<BlinkableComponent, ToggleEyesActionEvent>(OnToggleAction);
-        SubscribeLocalEvent<BlinkableComponent, CanSeeAttemptEvent>(OnTrySee);
-
-        SubscribeLocalEvent<HumanoidAppearanceComponent, EntityClosedEyesEvent>(OnHumanoidClosedEyes);
-        SubscribeLocalEvent<HumanoidAppearanceComponent, EntityOpenedEyesEvent>(OnHumanoidOpenedEyes);
-
-        #endregion
+        InitializeEyeClosing();
     }
 
     #region Event handlers
