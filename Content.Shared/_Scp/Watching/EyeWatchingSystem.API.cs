@@ -148,7 +148,7 @@ public sealed partial class EyeWatchingSystem
     {
         var viewers = watchers
             .Where(eye => CanBeWatched(eye, target))
-            .Where(eye => !_blinking.AreEyesClosed(eye));
+            .Where(eye => !_blinking.AreEyesClosedManually(eye));
 
         return viewers.Any();
     }

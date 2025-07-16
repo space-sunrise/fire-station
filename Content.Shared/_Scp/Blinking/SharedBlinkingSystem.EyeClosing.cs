@@ -194,6 +194,23 @@ public abstract partial class SharedBlinkingSystem
         return true;
     }
 
+    /// <summary>
+    /// Проверяет, закрыты ли у сущности глаза вручную.
+    /// </summary>
+    public bool AreEyesClosedManually(Entity<BlinkableComponent?> ent)
+    {
+        if (!Resolve(ent.Owner, ref ent.Comp, false))
+            return false;
+
+        if (ent.Comp.State != EyesState.Closed)
+            return false;
+
+        if (!ent.Comp.ManuallyClosed)
+            return false;
+
+        return true;
+    }
+
     #endregion
 
     private bool TryOpenEyes(Entity<BlinkableComponent> ent)
