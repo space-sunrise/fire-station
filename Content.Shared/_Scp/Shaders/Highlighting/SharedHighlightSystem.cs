@@ -51,6 +51,9 @@ public abstract class SharedHighlightSystem : EntitySystem
         Timer.Spawn(time,
             () =>
             {
+                if (!Exists(target))
+                    return;
+
                 var endEvent = new HighLightEndEvent();
                 RaiseLocalEvent(target, ref endEvent);
 
