@@ -67,6 +67,7 @@ public sealed partial class Scp106System
             return;
 
         Del(ent.Comp.Sword);
+        ent.Comp.Sword = null;
         _hands.RemoveHands(ent);
         ent.Comp.HandTransformed = false;
     }
