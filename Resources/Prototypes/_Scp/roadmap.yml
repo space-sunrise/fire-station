@@ -62,7 +62,7 @@
       state: Complete
     - name: roadmap-fear-name
       desc: roadmap-fear-description
-      state: InProgress
+      state: Complete
     - name: roadmap-life-cost-name
       desc: roadmap-life-cost-description
       state: InProgress
