@@ -35,6 +35,7 @@ public sealed partial class FearInfo : Control
             }
 
             panel.BackgroundColor = value.Value;
+            ColoredLine.Visible = true;
         }
     }
 
