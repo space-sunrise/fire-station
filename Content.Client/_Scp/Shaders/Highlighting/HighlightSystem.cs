@@ -28,10 +28,44 @@ public sealed class HighlightSystem : SharedHighlightSystem
 
         SubscribeLocalEvent<HighlightedComponent, HighLightStartEvent>(OnHighlightStarted);
         SubscribeLocalEvent<SpriteComponent, HighLightEndEvent>(OnHighlightEnded);
+
+        SubscribeNetworkEvent<HighLightStartEvent>(OnNetworkHighlightStarted);
+        SubscribeNetworkEvent<HighLightEndEvent>(OnNetworkHighlightEnded);
     }
 
     private void OnHighlightStarted(Entity<HighlightedComponent> ent, ref HighLightStartEvent args)
     {
+        StartHighlight(ent.AsNullable());
+    }
+
+    private void OnHighlightEnded(Entity<SpriteComponent> ent, ref HighLightEndEvent args)
+    {
+        EndHighlight(ent.AsNullable());
+    }
+
+    private void OnNetworkHighlightStarted(HighLightStartEvent args)
+    {
+        var uid = GetEntity(args.Entity);
+        if (!uid.HasValue)
+            return;
+
+        StartHighlight(uid.Value);
+    }
+
+    private void OnNetworkHighlightEnded(HighLightEndEvent args)
+    {
+        var uid = GetEntity(args.Entity);
+        if (!uid.HasValue)
+            return;
+
+        EndHighlight(uid.Value);
+    }
+
+    private void StartHighlight(Entity<HighlightedComponent?> ent)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return;
+
         if (ent.Comp.Recipient.HasValue && _player.LocalEntity != ent.Comp.Recipient)
             return;
 
@@ -41,8 +75,11 @@ public sealed class HighlightSystem : SharedHighlightSystem
         sprite.PostShader = _highlightShader;
     }
 
-    private void OnHighlightEnded(Entity<SpriteComponent> ent, ref HighLightEndEvent args)
+    private void EndHighlight(Entity<SpriteComponent?> ent)
     {
+        if (!Resolve(ent, ref ent.Comp))
+            return;
+
         if (ent.Comp.PostShader != _highlightShader)
             return;
 

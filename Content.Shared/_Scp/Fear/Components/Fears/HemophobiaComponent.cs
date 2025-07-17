@@ -8,7 +8,7 @@ namespace Content.Shared._Scp.Fear.Components.Fears;
 /// <summary>
 /// Компонент, отвечающий за страх перед кровью
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class HemophobiaComponent : Component
 {
     /// <summary>
@@ -30,10 +30,13 @@ public sealed partial class HemophobiaComponent : Component
     public Dictionary<FearState, FixedPoint2> BloodRequiredPerState = new()
     {
         { FearState.None, 0f },
-        { FearState.Anxiety, 10f },
-        { FearState.Fear, 25f },
-        { FearState.Terror, 50f },
+        { FearState.Anxiety, 20f },
+        { FearState.Fear, 35f },
+        { FearState.Terror, 80f },
     };
+
+    [AutoNetworkedField, ViewVariables]
+    public List<KeyValuePair<FearState, FixedPoint2>> SortedBloodRequiredPerState = [];
 
     /// <summary>
     /// Айди прототипа фобии для гемофобии

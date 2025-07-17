@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Content.Server._Scp.Shaders.Highlighting;
+﻿using Content.Server._Scp.Shaders.Highlighting;
 using Content.Server._Sunrise.Mood;
 using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
@@ -10,7 +9,6 @@ using Content.Shared.Fluids.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Mobs;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Fear;
 
@@ -18,7 +16,6 @@ public sealed partial class FearSystem
 {
     [Dependency] private readonly HighlightSystem _highlight = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
 
     private const string MoodSomeoneDiedOnMyEyes = "FearSomeoneDiedOnMyEyes";
 
@@ -78,7 +75,7 @@ public sealed partial class FearSystem
             if (!TrySetFearLevel(fearEntity, GetHemophobiaFearState(hemophobia, bloodAmount)))
                 continue;
 
-            _highlight.HighLightAll(bloodList, uid);
+            _highlight.NetHighlightAll(bloodList, uid);
             AddNegativeMoodEffect(uid, MoodHemophobicSeeBlood);
         }
     }
@@ -86,7 +83,7 @@ public sealed partial class FearSystem
     /// <summary>
     /// Получает суммарное количество крови в зоне видимости персонажа.
     /// </summary>
-    private FixedPoint2 GetAroundBloodVolume(Entity<HemophobiaComponent> ent, out List<EntityUid> bloodList)
+    private FixedPoint2 GetAroundBloodVolume(Entity<HemophobiaComponent> ent, out HashSet<EntityUid> bloodList)
     {
         FixedPoint2 total = 0;
         var blood = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(ent.Owner);
@@ -97,12 +94,16 @@ public sealed partial class FearSystem
             if (!puddle.Comp.Solution.HasValue)
                 continue;
 
-            bloodList.Add(puddle);
+            var solution = puddle.Comp.Solution.Value.Comp.Solution;
 
-            var allReagents = puddle.Comp.Solution.Value.Comp.Solution.GetReagentPrototypes(_prototype);
-            total = allReagents
-                .Where(reagent => reagent.Key.ID == ent.Comp.Reagent)
-                .Aggregate(total, (current, reagent) => current + reagent.Value);
+            foreach (var (reagentId, quantity) in solution.Contents)
+            {
+                if (reagentId.Prototype != ent.Comp.Reagent)
+                    continue;
+
+                bloodList.Add(puddle);
+                total += quantity;
+            }
         }
 
         return total;
@@ -115,7 +116,7 @@ public sealed partial class FearSystem
     {
         var result = FearState.None;
 
-        foreach (var kvp in component.BloodRequiredPerState.OrderBy(kv => kv.Value))
+        foreach (var kvp in component.SortedBloodRequiredPerState)
         {
             if (bloodAmount >= kvp.Value)
                 result = kvp.Key;
@@ -132,26 +133,10 @@ public sealed partial class FearSystem
     /// </summary>
     private void OnCalmDown(Entity<HemophobiaComponent> ent, ref FearCalmDownAttemptEvent args)
     {
-        FixedPoint2 total = 0;
-        var blood = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(ent.Owner);
+        var bloodAmount = GetAroundBloodVolume(ent, out _);
         var requiredBloodToCancel = ent.Comp.BloodRequiredPerState[args.NewState];
 
-        foreach (var puddle in blood)
-        {
-            if (!puddle.Comp.Solution.HasValue)
-                continue;
-
-            var allReagents = puddle.Comp.Solution.Value.Comp.Solution.GetReagentPrototypes(_prototype);
-
-            total = allReagents
-                .Where(reagent => reagent.Key.ID == ent.Comp.Reagent)
-                .Aggregate(total, (current, reagent) => current + reagent.Value);
-
-            if (total > requiredBloodToCancel)
-            {
-                args.Cancel();
-                return;
-            }
-        }
+        if (bloodAmount > requiredBloodToCancel)
+            args.Cancel();
     }
 }

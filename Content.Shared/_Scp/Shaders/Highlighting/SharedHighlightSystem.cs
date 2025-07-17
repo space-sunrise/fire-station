@@ -1,5 +1,6 @@
 ﻿using System.Threading;
 using Content.Shared.GameTicking;
+using Robust.Shared.Serialization;
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Shared._Scp.Shaders.Highlighting;
@@ -14,7 +15,7 @@ public abstract class SharedHighlightSystem : EntitySystem
     /// </summary>
     public static readonly TimeSpan OneHighlightTime = TimeSpan.FromSeconds(1.6f);
 
-    private static CancellationTokenSource _token = new();
+    protected CancellationTokenSource Token = new();
 
     public override void Initialize()
     {
@@ -41,7 +42,7 @@ public abstract class SharedHighlightSystem : EntitySystem
         }
 
         var ev = new HighLightStartEvent();
-        RaiseLocalEvent(target, ref ev);
+        RaiseLocalEvent(target, ev);
 
         if (highlightTimes == -1)
             return;
@@ -55,11 +56,11 @@ public abstract class SharedHighlightSystem : EntitySystem
                     return;
 
                 var endEvent = new HighLightEndEvent();
-                RaiseLocalEvent(target, ref endEvent);
+                RaiseLocalEvent(target, endEvent);
 
                 RemCompDeferred<HighlightedComponent>(target);
             },
-            _token.Token);
+            Token.Token);
     }
 
     /// <summary>
@@ -73,15 +74,21 @@ public abstract class SharedHighlightSystem : EntitySystem
         }
     }
 
-    private static void RecreateToken()
+    private void RecreateToken()
     {
-        _token.Cancel();
-        _token = new();
+        Token.Cancel();
+        Token = new();
     }
 }
 
-[ByRefEvent]
-public record struct HighLightStartEvent;
+[Serializable, NetSerializable]
+public sealed class HighLightStartEvent(NetEntity? entity = null) : EntityEventArgs
+{
+    public NetEntity? Entity = entity;
+}
 
-[ByRefEvent]
-public record struct HighLightEndEvent;
+[Serializable, NetSerializable]
+public sealed class HighLightEndEvent(NetEntity? entity = null) : EntityEventArgs
+{
+    public NetEntity? Entity = entity;
+}

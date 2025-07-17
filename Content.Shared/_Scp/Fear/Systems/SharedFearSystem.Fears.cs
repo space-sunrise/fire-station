@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Fear.Components;
+﻿using System.Linq;
+using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Components.Fears;
 
 namespace Content.Shared._Scp.Fear.Systems;
@@ -17,6 +18,10 @@ public abstract partial class SharedFearSystem
     /// </summary>
     private void OnHemophobiaInit(Entity<HemophobiaComponent> ent, ref ComponentStartup args)
     {
+        ent.Comp.SortedBloodRequiredPerState = ent.Comp.BloodRequiredPerState
+            .OrderBy(kv => kv.Value)
+            .ToList();
+
         if (!TryComp<FearComponent>(ent, out var fearComponent))
             return;
 
