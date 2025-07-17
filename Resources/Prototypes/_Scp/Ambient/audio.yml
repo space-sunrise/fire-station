@@ -1,14 +1,4 @@
 ﻿- type: ambientMusic
-  id: Scp173
-  sound:
-    params:
-      volume: -18
-    collection: FireAmbienceScp173
-  fadeIn: true
-  rules: NearScp173
-  priority: 1
-
-- type: ambientMusic
   id: Shuttle
   sound:
     params:
@@ -16,29 +6,28 @@
     collection: FireAmbienceShuttle
   fadeIn: true
   rules: NearShuttle
-  priority: 2
+  priority: 5
 
 - type: ambientMusic
-  id: Scp106Dimension
+  id: FearAmbience
   sound:
+    collection: ScpFearAmbience
     params:
       volume: -12
-    collection: FireAmbienceScp106Dimension
-  rules: InScp106Dimension
-  fadeIn: true
+  rules: FearRule
   interruptable: true
-  priority: 1
+  priority: 100
 
 - type: ambientMusic
   id: ClassDAmbience
   sound:
     params:
       volume: -12
-    collection: FireAmbienceScp106Dimension
+    collection: FireAmbienceClassD
   rules: ClassDRule
   fadeIn: true
   interruptable: true
-  priority: 1
+  priority: 99
 
 - type: ambientMusic
   id: ShiftAdded
@@ -66,20 +55,22 @@
       loop: true
   rules: AlwaysFalse
 
+- type: ambientMusic
+  id: BeingDead
+  sound:
+    collection: ScpAmbienceDead
+    params:
+      volume: -8
+  rules: IsCriticalDeadRule
+  interruptable: true
+  priority: 101
+
 # Rules
 
 - type: rules
   id: AlwaysFalse
   rules:
   - !type:AlwaysFalseRule
-
-- type: rules
-  id: NearScp173
-  rules:
-  - !type:NearbyComponentsRule
-    components:
-    - type: Scp173
-    range: 8
 
 - type: rules
   id: NearShuttle
@@ -92,11 +83,6 @@
     range: 6
 
 - type: rules
-  id: InScp106Dimension
-  rules:
-  - !type:InScp106Dimension
-
-- type: rules
   id: ClassDRule
   rules:
   - !type:IsClassD
@@ -106,3 +92,22 @@
       tags:
       - ClassDSpawner
     range: 16
+
+- type: rules
+  id: FearRule
+  rules:
+  - !type:MobStateRule
+    allowedStates:
+    - Alive
+    - Critical
+  - !type:FearStateRule
+    requiredState: Anxiety
+    canBeGreater: true
+
+- type: rules
+  id: IsCriticalDeadRule
+  rules:
+  - !type:MobStateRule
+    allowedStates:
+    - Dead
+    - Critical
