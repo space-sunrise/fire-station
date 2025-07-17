@@ -153,7 +153,7 @@ public abstract partial class SharedScp106System : EntitySystem
             return false;
 
         if (_timing.IsFirstTimePredicted)
-            _popup.PopupClient("Ваши способности подавлены", ent, ent,  PopupType.SmallCaution);
+            _popup.PopupClient(Loc.GetString("scp106-abilities-suppressed"), ent, ent,  PopupType.SmallCaution);
 
         return true;
     }
