@@ -72,7 +72,8 @@ public sealed class HighlightSystem : SharedHighlightSystem
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
 
-        sprite.PostShader = _highlightShader;
+        if (sprite.PostShader != _highlightShader)
+            sprite.PostShader = _highlightShader;
     }
 
     private void EndHighlight(Entity<SpriteComponent?> ent)
