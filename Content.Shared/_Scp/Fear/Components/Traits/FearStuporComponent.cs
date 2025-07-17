@@ -12,7 +12,7 @@ public sealed partial class FearStuporComponent : Component
     public FearState RequiredState = FearState.Fear;
 
     [DataField, ViewVariables]
-    public float Chance = 100f; // TODO: 10%
+    public float Chance = 10f;
 
     [DataField, ViewVariables]
     public TimeSpan StuporTime = TimeSpan.FromSeconds(10f);
