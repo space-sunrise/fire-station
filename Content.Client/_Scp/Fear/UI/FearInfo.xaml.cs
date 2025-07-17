@@ -28,7 +28,12 @@ public sealed partial class FearInfo : Control
                 return;
             }
 
-            var panel = (StyleBoxFlat) ColoredLine.PanelOverride!;
+            if (ColoredLine.PanelOverride is not StyleBoxFlat panel)
+            {
+                ColoredLine.Visible = false;
+                return;
+            }
+
             panel.BackgroundColor = value.Value;
         }
     }
