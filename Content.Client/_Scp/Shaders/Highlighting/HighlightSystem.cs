@@ -27,7 +27,7 @@ public sealed class HighlightSystem : SharedHighlightSystem
         _highlightShader = _prototype.Index<ShaderPrototype>("HighlightWave").Instance();
 
         SubscribeLocalEvent<HighlightedComponent, HighLightStartEvent>(OnHighlightStarted);
-        SubscribeLocalEvent<HighlightedComponent, HighLightEndEvent>(OnHighlightEnded);
+        SubscribeLocalEvent<SpriteComponent, HighLightEndEvent>(OnHighlightEnded);
     }
 
     private void OnHighlightStarted(Entity<HighlightedComponent> ent, ref HighLightStartEvent args)
@@ -41,14 +41,11 @@ public sealed class HighlightSystem : SharedHighlightSystem
         sprite.PostShader = _highlightShader;
     }
 
-    private void OnHighlightEnded(Entity<HighlightedComponent> ent, ref HighLightEndEvent args)
+    private void OnHighlightEnded(Entity<SpriteComponent> ent, ref HighLightEndEvent args)
     {
-        if (!TryComp<SpriteComponent>(ent, out var sprite))
+        if (ent.Comp.PostShader != _highlightShader)
             return;
 
-        if (sprite.PostShader != _highlightShader)
-            return;
-
-        sprite.PostShader = null;
+        ent.Comp.PostShader = null;
     }
 }

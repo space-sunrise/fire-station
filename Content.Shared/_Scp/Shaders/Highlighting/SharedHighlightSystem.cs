@@ -54,7 +54,7 @@ public abstract class SharedHighlightSystem : EntitySystem
                 var endEvent = new HighLightEndEvent();
                 RaiseLocalEvent(target, ref endEvent);
 
-                RemComp<HighlightedComponent>(target);
+                RemCompDeferred<HighlightedComponent>(target);
             },
             _token.Token);
     }
