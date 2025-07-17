@@ -26,7 +26,7 @@ public sealed partial class FearFaintingComponent : Component
     /// Шанс упасть в обморок при достижении <see cref="RequiredState"/>
     /// </summary>
     [DataField, ViewVariables]
-    public float Chance = 100f; // TODO: 30%
+    public float Chance = 30f;
 
     public static readonly ProtoId<StatusEffectPrototype> StatusEffectKey = "ForcedSleep";
 }
