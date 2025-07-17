@@ -18,8 +18,6 @@ public sealed class HighlightSystem : SharedHighlightSystem
             Dirty(target, comp);
         }
 
-        Logger.Error($"START event is about to be raised");
-
         var entity = GetNetEntity(target);
 
         var ev = new HighLightStartEvent(entity);
@@ -30,15 +28,11 @@ public sealed class HighlightSystem : SharedHighlightSystem
 
         var time = OneHighlightTime * highlightTimes;
 
-        Logger.Error($"TIME {time.Seconds}");
-
         Timer.Spawn(time,
             () =>
             {
                 if (!Exists(target))
                     return;
-
-                Logger.Error($"END event is about to be raised");
 
                 var endEvent = new HighLightEndEvent(entity);
                 RaiseNetworkEvent(endEvent);
