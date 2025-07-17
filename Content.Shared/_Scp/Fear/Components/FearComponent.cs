@@ -25,7 +25,7 @@ public sealed partial class FearComponent : Component
     /// Время, через которое уровень страха понизится.
     /// </summary>
     [DataField, ViewVariables, AutoNetworkedField]
-    public TimeSpan TimeToDecreaseFearLevel = TimeSpan.FromSeconds(180); // TODO: 3 минуты
+    public TimeSpan TimeToDecreaseFearLevel = TimeSpan.FromSeconds(180); // 3 минуты
 
     /// <summary>
     /// Следующее время, когда будут понижен уровень страха со временем.
