@@ -1,4 +1,5 @@
-﻿using Content.Shared.Actions;
+﻿using Content.Shared._Scp.Fear;
+using Content.Shared.Actions;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Prototypes;
@@ -19,6 +20,7 @@ public sealed partial class Scp106BecomePhantomAction : Scp106ValuableActionEven
     [DataField] public EntProtoId PhantomPrototype;
 }
 
+public sealed partial class Scp106TerrifyNearbyActionEvent : Scp106ValuableActionEvent;
 public sealed partial class Scp106BecomeTeleportPhantomAction : Scp106ValuableActionEvent
 {
     [DataField] public EntProtoId PhantomPrototype;
@@ -61,6 +63,11 @@ public sealed partial class Scp106BoughtCreatePortal : InstantActionEvent
 public sealed partial class Scp106BareBladeAction : InstantActionEvent
 {
     [DataField] public EntProtoId Prototype;
+}
+
+public sealed partial class Scp106BoughtTerrify : InstantActionEvent
+{
+    [DataField] public EntProtoId BoughtAction;
 }
 
 #region DoAfters

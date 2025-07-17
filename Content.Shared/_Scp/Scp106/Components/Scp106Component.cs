@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Mobs.Components;
+﻿using Content.Shared._Scp.Fear;
+using Content.Shared._Scp.Mobs.Components;
 using Content.Shared.Alert;
 using Content.Shared.FixedPoint;
 using Content.Shared.Store;
@@ -19,17 +20,20 @@ public sealed partial class Scp106Component : Component
 
     public TimeSpan TeleportationDuration = TimeSpan.FromSeconds(3.7f);
 
-    #region Abilities
-
     [DataField]
     public ProtoId<CurrencyPrototype> LifeEssenceCurrencyPrototype = "LifeEssence";
 
     [DataField]
-    public ProtoId<AlertPrototype> Scp106EssenceAlert { get; set; } = "Scp106LifeEssence";
+    public ProtoId<AlertPrototype> Scp106EssenceAlert= "Scp106LifeEssence";
 
-    [DataField, ViewVariables]
-    [AutoNetworkedField]
+    [DataField, ViewVariables, AutoNetworkedField]
     public FixedPoint2 Essence = 0f;
+
+    #region Abilities
+
+    [ViewVariables, AutoNetworkedField]
+    public HashSet<FearState> AbsorbedFears = [];
+
     public TimeSpan NextEssenceAddedTime;
 
     [AutoNetworkedField]

@@ -234,6 +234,7 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2
+  - type: XenoScreech
   - type: Muted
   - type: MobThresholds
     thresholds:

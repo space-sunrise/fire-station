@@ -1,16 +1,28 @@
-﻿using Content.Shared._Scp.Scp106;
+﻿using Content.Server.Actions;
+using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Scp106.Systems;
 
 public sealed partial class Scp106System
 {
+    [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly ActionsSystem _actions = default!;
+
     private static readonly EntProtoId PhantomRemains = "Ash";
+
+    private void InitializePhantom()
+    {
+        SubscribeLocalEvent<Scp106PhantomComponent, MobStateChangedEvent>(OnMobStateChangedEvent);
+        SubscribeLocalEvent<Scp106PhantomComponent, EntityTerminatingEvent>(OnPhantomShutdown);
+        SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseActionEvent>(OnScp106ReverseActionEvent);
+    }
 
     private void OnMobStateChangedEvent(Entity<Scp106PhantomComponent> ent, ref MobStateChangedEvent args)
     {

@@ -22,7 +22,6 @@
     icon:
       sprite: _Scp/Scp106/actions.rsi
       state: teleport
-
   - type: InstantAction
     event: !type:Scp106RandomTeleportAction
       cost: 30
@@ -113,6 +112,20 @@
   - type: InstantAction
     event: !type:Scp106BareBladeAction
       prototype: Scp106ArmBlade
+
+- type: entity
+  id: Scp106Terrify
+  components:
+  - type: Action
+    raiseOnUser: true
+    itemIconStyle: BigAction
+    useDelay: 300
+    icon:
+      sprite: _Scp/Scp106/actions.rsi
+      state: leave_phantom
+  - type: InstantAction
+    event: !type:Scp106TerrifyNearbyActionEvent
+      cost: 30
 
 ### PHANTOM ABILITIES END
 
