@@ -1,17 +1,12 @@
 ﻿using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.FixedPoint;
-using Content.Shared.Hands.Components;
-using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Store.Components;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Scp106.Systems;
 
 public sealed partial class Scp106System
 {
-    [Dependency] private readonly SharedHandsSystem _hands = default!;
-
     private void InitializeStore()
     {
         SubscribeLocalEvent<Scp106Component, Scp106ShopAction>(OnShop);

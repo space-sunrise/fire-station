@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Scp106;
+﻿using Content.Server.Hands.Systems;
+using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.Hands.Components;
 using Robust.Shared.Prototypes;
@@ -7,6 +8,8 @@ namespace Content.Server._Scp.Scp106.Systems;
 
 public sealed partial class Scp106System
 {
+    [Dependency] private readonly HandsSystem _hands = default!;
+
     public override bool PhantomTeleport(Scp106BecomeTeleportPhantomActionEvent args)
     {
         if (args.Args.EventTarget is not {} phantom)
