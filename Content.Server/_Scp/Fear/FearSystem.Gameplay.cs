@@ -30,7 +30,11 @@ public sealed partial class FearSystem
         if (ent.Comp.State < ent.Comp.FallOffRequiredState)
             return;
 
+        if (_timing.CurTime < ent.Comp.FallOffNextCheckTime)
+            return;
+
         var percentNormalized = PercentToNormalized(ent.Comp.FallOffChance);
+        SetNextFallOffTime(ent); // Даже если не прокнет, то время все равно должно устанавливаться
 
         if (!_random.Prob(percentNormalized))
             return;
@@ -49,5 +53,13 @@ public sealed partial class FearSystem
             return;
 
         _chat.TryEmoteWithChat(ent, ScreamProtoId);
+    }
+
+    /// <summary>
+    /// Устанавливает следующее время возможности запнуться.
+    /// </summary>
+    private void SetNextFallOffTime(Entity<FearComponent> ent)
+    {
+        ent.Comp.FallOffNextCheckTime = _timing.CurTime + ent.Comp.FallOffCheckInterval;
     }
 }

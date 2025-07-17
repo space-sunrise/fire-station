@@ -144,6 +144,18 @@ public sealed partial class FearComponent : Component
     public float FallOffChance = 3f; // 3%
 
     /// <summary>
+    /// Время следующей проверки на возможность запнуться при высоком уровне страха.
+    /// </summary>
+    [ViewVariables]
+    public TimeSpan FallOffNextCheckTime = TimeSpan.Zero;
+
+    /// <summary>
+    /// Время между проверками на возможность запнуться.
+    /// </summary>
+    [DataField, ViewVariables]
+    public TimeSpan FallOffCheckInterval = TimeSpan.FromSeconds(0.3f);
+
+    /// <summary>
     /// Какой уровень страха нужен, чтобы у человека появился адреналин.
     /// </summary>
     [DataField, ViewVariables, AutoNetworkedField]
