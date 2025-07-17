@@ -99,7 +99,8 @@ public sealed partial class EyeWatchingSystem
             return [];
 
         return _lookup.GetEntitiesInRange<T>(ent.Comp.Coordinates, SeeRange)
-            .Where(eye => _proximity.IsRightType(ent, eye, type, out _));
+            .Where(eye => _proximity.IsRightType(ent, eye, type, out _))
+            .Where(e => e.Owner != ent.Owner);
     }
 
     /// <summary>
