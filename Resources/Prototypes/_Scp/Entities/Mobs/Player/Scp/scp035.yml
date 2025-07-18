@@ -17,10 +17,12 @@
   - type: Scp
     class: Keter
   - type: Scp035Mask
-  - type: FearSource
-    uponSeenState: None
-    uponComeCloser: Terror
-  - type: ProximityReceiver
+  - type: ComponentToggler
+    components:
+    - type: FearSource
+      uponSeenState: None
+      uponComeCloser: Terror
+    - type: ProximityReceiver
   - type: GuideHelp
     guides:
     - ScpResearch

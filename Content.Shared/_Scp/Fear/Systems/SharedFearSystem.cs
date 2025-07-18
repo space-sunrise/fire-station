@@ -45,6 +45,7 @@ public abstract partial class SharedFearSystem : EntitySystem
 
         SubscribeLocalEvent<FearComponent, FearStateChangedEvent>(OnFearStateChanged);
 
+        SubscribeLocalEvent<FearComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<FearComponent, RejuvenateEvent>(OnRejuvenate);
 
         SubscribeLocalEvent<FearComponent, ExaminedEvent>(OnExamine);
@@ -201,6 +202,17 @@ public abstract partial class SharedFearSystem : EntitySystem
         ManageJitter(ent);
         ManageAdrenaline(ent);
         TryScream(ent);
+    }
+
+    protected virtual void OnShutdown(Entity<FearComponent> ent, ref ComponentShutdown args)
+    {
+        _shaderStrength.TrySetAdditionalStrength<GrainOverlayComponent>(ent.Owner, 0f);
+        _shaderStrength.TrySetAdditionalStrength<VignetteOverlayComponent>(ent.Owner, 0f);
+
+        RemoveEffects(ent.Owner);
+
+        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodFearSourceSeen));
+        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodSourceClose));
     }
 
     protected virtual void OnRejuvenate(Entity<FearComponent> ent, ref RejuvenateEvent args)

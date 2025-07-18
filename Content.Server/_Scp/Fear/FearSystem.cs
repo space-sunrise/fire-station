@@ -86,12 +86,24 @@ public sealed partial class FearSystem : SharedFearSystem
         return true;
     }
 
+    protected override void OnShutdown(Entity<FearComponent> ent, ref ComponentShutdown args)
+    {
+        base.OnShutdown(ent, ref args);
+
+        RemoveMoodEffects(ent);
+    }
+
     protected override void OnRejuvenate(Entity<FearComponent> ent, ref RejuvenateEvent args)
     {
         base.OnRejuvenate(ent, ref args);
 
-        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodSomeoneDiedOnMyEyes));
-        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodHemophobicSeeBlood));
-        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodHemophobicBleeding));
+        RemoveMoodEffects(ent);
+    }
+
+    private void RemoveMoodEffects(EntityUid uid)
+    {
+        RaiseLocalEvent(uid, new MoodRemoveEffectEvent(MoodSomeoneDiedOnMyEyes));
+        RaiseLocalEvent(uid, new MoodRemoveEffectEvent(MoodHemophobicSeeBlood));
+        RaiseLocalEvent(uid, new MoodRemoveEffectEvent(MoodHemophobicBleeding));
     }
 }

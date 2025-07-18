@@ -8,10 +8,12 @@ using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Inventory.Events;
+using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Rejuvenate;
 using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Shared.Audio;
@@ -95,6 +97,9 @@ public abstract class SharedScp035System : EntitySystem
 
         var chainsaw = Spawn("Chainsaw", Transform(args.Wearer).Coordinates);
         _hands.TryForcePickupAnyHand(args.Wearer, chainsaw, false);
+
+        var toggleUsed = new ItemToggledEvent(true, false, null);
+        RaiseLocalEvent(ent, ref toggleUsed);
     }
 
     private void OnMaskUnequipped(Entity<Scp035MaskComponent> ent, ref ClothingGotUnequippedEvent args)
@@ -102,11 +107,17 @@ public abstract class SharedScp035System : EntitySystem
         ent.Comp.User = null;
         Dirty(ent);
 
+        var toggleUsed = new ItemToggledEvent(true, true, null);
+        RaiseLocalEvent(ent, ref toggleUsed);
+
         RemComp<Scp035MaskUserComponent>(args.Wearer);
     }
 
     private void OnEquippeAttempt(Entity<Scp035MaskComponent> ent, ref BeingEquippedAttemptEvent args)
     {
+        if (!_mobState.IsAlive(ent))
+            return;
+
         if (!HasComp<HumanoidAppearanceComponent>(args.Equipee))
         {
             args.Cancel();
@@ -171,6 +182,8 @@ public abstract class SharedScp035System : EntitySystem
 
     private void OnMaskUserStartUp(Entity<Scp035MaskUserComponent> ent, ref ComponentStartup args)
     {
+        RaiseLocalEvent(ent, new RejuvenateEvent());
+
         // Маска овладевает разумом человека и блокирует страх.
         // ЧТО БУДЕТ ЕСЛИ ЧЕЛОВЕК ОВЛАДЕЕТ РАЗУМОМ НА ВСЕ 100????!!
         RemCompDeferred<FearComponent>(ent);
