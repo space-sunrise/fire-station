@@ -102,13 +102,25 @@
     components:
     - type: CommandStaff
     - type: Fear
-      timeToDecreaseFearLevel: 120
       proximityBlockerLevel: None
       seenBlockerLevel: None
+      phobias:
+      - Exoremophobia
       fearBasedSpreadAngleModifier:
-        Anxiety: 2
-        Fear: 5
-        Terror: 10
+        Anxiety: 1.2
+        Fear: 2
+        Terror: 5
+      fearBasedGrainStrength:
+        None: 0
+        Anxiety: 70
+        Fear: 230
+        Terror: 550
+      fearBasedVignetteStrength:
+        None: 0
+        Anxiety: 30
+        Fear: 60
+        Terror: 350
+      baseJitterTime: 4
 
 - type: startingGear
   id: RRHLeaderGear
@@ -191,13 +203,25 @@
     components:
     - type: CommandStaff
     - type: Fear
-      timeToDecreaseFearLevel: 120
       proximityBlockerLevel: None
       seenBlockerLevel: None
+      phobias:
+      - Exoremophobia
       fearBasedSpreadAngleModifier:
-        Anxiety: 2
-        Fear: 5
-        Terror: 10
+        Anxiety: 1.2
+        Fear: 2
+        Terror: 5
+      fearBasedGrainStrength:
+        None: 0
+        Anxiety: 70
+        Fear: 230
+        Terror: 550
+      fearBasedVignetteStrength:
+        None: 0
+        Anxiety: 30
+        Fear: 60
+        Terror: 350
+      baseJitterTime: 4
 
 - type: startingGear
   id: RRHSpecialistGear
@@ -271,13 +295,25 @@
     components:
     - type: CommandStaff
     - type: Fear
-      timeToDecreaseFearLevel: 120
       proximityBlockerLevel: None
       seenBlockerLevel: None
+      phobias:
+      - Exoremophobia
       fearBasedSpreadAngleModifier:
-        Anxiety: 2
-        Fear: 5
-        Terror: 10
+        Anxiety: 1.2
+        Fear: 2
+        Terror: 5
+      fearBasedGrainStrength:
+        None: 0
+        Anxiety: 70
+        Fear: 230
+        Terror: 550
+      fearBasedVignetteStrength:
+        None: 0
+        Anxiety: 30
+        Fear: 60
+        Terror: 350
+      baseJitterTime: 4
 
 - type: startingGear
   id: RRHCadetGear

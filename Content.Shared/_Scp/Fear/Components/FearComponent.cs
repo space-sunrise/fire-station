@@ -117,12 +117,14 @@ public sealed partial class FearComponent : Component
     /// Словарь параметров увеличения разброса при стрельбе.
     /// Каждый уровень страха соответствует модификаторы разброса.
     /// </summary>
+    /// TODO: Заменить высокие значения при появлении системы навыков
+    /// или другой системы, которая сделает не-боевые роли слабыми в бою
     [DataField, ViewVariables, AutoNetworkedField]
     public Dictionary<FearState, float> FearBasedSpreadAngleModifier = new ()
     {
-        { FearState.Anxiety, 3f },
-        { FearState.Fear, 10f },
-        { FearState.Terror, 20f },
+        { FearState.Anxiety, 2f },
+        { FearState.Fear, 4f },
+        { FearState.Terror, 8f },
     };
 
     /// <summary>

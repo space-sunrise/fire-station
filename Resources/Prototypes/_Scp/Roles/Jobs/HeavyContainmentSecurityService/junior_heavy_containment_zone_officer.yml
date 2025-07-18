@@ -30,6 +30,11 @@
     - type: Fear
       proximityBlockerLevel: None
       seenBlockerLevel: None
+      fearBasedSpreadAngleModifier:
+        Anxiety: 1.5
+        Fear: 2.2
+        Terror: 5
+      baseJitterTime: 4
 
 - type: startingGear
   id: JuniorHeavyContainmentZoneOfficerGear
