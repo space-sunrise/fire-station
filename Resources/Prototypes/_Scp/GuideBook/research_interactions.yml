@@ -11,3 +11,8 @@
   id: ScpResearchAdvanced
   name: guide-entry-scp-research-advanced
   text: "/ServerInfo/_Scp/Guidebook/Research/ResearchAdvanced.xml"
+
+- type: guideEntry
+  id: ScpFear
+  name: guide-entry-scp-fear
+  text: "/ServerInfo/_Scp/Guidebook/Fear/Fear.xml"
