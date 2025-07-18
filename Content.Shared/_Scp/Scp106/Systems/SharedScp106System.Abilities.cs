@@ -114,7 +114,7 @@ public abstract partial class SharedScp106System
 
         ent.Comp.AbsorbedFears.Remove(state);
         Dirty(ent);
-        StartScreech(ent.Owner);
+        StartScreech(ent.Owner, false);
 
         args.Handled = true;
     }
