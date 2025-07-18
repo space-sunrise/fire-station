@@ -7,6 +7,7 @@ using Content.Shared._Scp.Shaders.Highlighting;
 using Content.Shared._Scp.Shaders.Vignette;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Sunrise.Mood;
+using Content.Shared.Examine;
 using Content.Shared.GameTicking;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Rejuvenate;
@@ -45,6 +46,8 @@ public abstract partial class SharedFearSystem : EntitySystem
         SubscribeLocalEvent<FearComponent, FearStateChangedEvent>(OnFearStateChanged);
 
         SubscribeLocalEvent<FearComponent, RejuvenateEvent>(OnRejuvenate);
+
+        SubscribeLocalEvent<FearComponent, ExaminedEvent>(OnExamine);
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
 
@@ -205,6 +208,20 @@ public abstract partial class SharedFearSystem : EntitySystem
         TrySetFearLevel(ent.AsNullable(), FearState.None);
 
         RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodFearSourceSeen));
+    }
+
+    /// <summary>
+    /// Обрабатывает событие осмотра персонажа с компонентом страха.
+    /// Позволяет увидеть текущий уровень страха, посмотрев на человека, в ИЦ форме.
+    /// </summary>
+    private void OnExamine(Entity<FearComponent> ent, ref ExaminedEvent args)
+    {
+        var text = GetExamineText(ent, ent.Comp.State);
+
+        if (text == null)
+            return;
+
+        args.PushMarkup(text, -1000);
     }
 
     /// <summary>

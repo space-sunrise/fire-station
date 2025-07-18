@@ -138,6 +138,20 @@ public abstract partial class SharedFearSystem
     }
 
     /// <summary>
+    /// Возвращает переведенную строку, содержащую ИЦ информацию об уровне страха человека.
+    /// Если уровень страха отсутствует, то возвращает null
+    /// </summary>
+    private string? GetExamineText(EntityUid target, FearState type) => type switch
+    {
+        FearState.None => null,
+        FearState.Anxiety => Loc.GetString("examine-fear-state-anxiety", ("target", target)),
+        FearState.Fear => Loc.GetString("examine-fear-state-fear", ("target", target)),
+        FearState.Terror => Loc.GetString("examine-fear-state-terror", ("target", target)),
+
+        _ => null,
+    };
+
+    /// <summary>
     /// Преобразует процент из человеческого формата в probный.
     /// </summary>
     protected static float PercentToNormalized(float percent)
