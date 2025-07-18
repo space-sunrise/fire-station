@@ -4,6 +4,7 @@
   id: ScpResearch
   name: guide-entry-scp-research
   text: "/ServerInfo/_Scp/Guidebook/Research/Research.xml"
+  priority: -1
   children:
   - ScpResearchAdvanced
 
@@ -16,3 +17,4 @@
   id: ScpFear
   name: guide-entry-scp-fear
   text: "/ServerInfo/_Scp/Guidebook/Fear/Fear.xml"
+  priority: -2
