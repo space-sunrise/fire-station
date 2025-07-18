@@ -31,6 +31,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Server._Scp.Scp035;
 
+// TODO: АНХАРДКОД
 public sealed class Scp035System : SharedScp035System
 {
     [Dependency] private readonly HTNSystem _htn = default!;

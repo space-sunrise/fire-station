@@ -19,13 +19,8 @@
   - type: Scp035Mask
   - type: FearSource
     uponSeenState: None
-    uponComeCloser: Anxiety
-    grainShaderStrength:
-      min: 0
-      max: 300
-    vignetteShaderStrength:
-      min: 0
-      max: 100
+    uponComeCloser: Terror
+  - type: ProximityReceiver
   - type: GuideHelp
     guides:
     - ScpResearch

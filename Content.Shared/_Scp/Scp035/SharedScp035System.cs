@@ -1,4 +1,5 @@
-﻿using Content.Shared.Actions;
+﻿using Content.Shared._Scp.Fear.Components;
+using Content.Shared.Actions;
 using Content.Shared.Clothing;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -53,6 +54,7 @@ public abstract class SharedScp035System : EntitySystem
         SubscribeLocalEvent<Scp035MaskUserComponent, MaskStunActionEvent>(OnStun);
         SubscribeLocalEvent<Scp035MaskUserComponent, MaskOrderActionEvent>(OnOrder);
         SubscribeLocalEvent<Scp035MaskUserComponent, MobStateChangedEvent>(OnMobStateChanged);
+        SubscribeLocalEvent<Scp035MaskUserComponent, ComponentStartup>(OnMaskUserStartUp);
         SubscribeLocalEvent<Scp035MaskUserComponent, ComponentShutdown>(OnMaskShutdown);
 
         SubscribeLocalEvent<Scp035ServantComponent, ComponentShutdown>(OnServantShutdown);
@@ -165,6 +167,13 @@ public abstract class SharedScp035System : EntitySystem
             _popup.PopupEntity("ваше тело онемело!", args.Target, args.Target, PopupType.LargeCaution);
 
         args.Handled = true;
+    }
+
+    private void OnMaskUserStartUp(Entity<Scp035MaskUserComponent> ent, ref ComponentStartup args)
+    {
+        // Маска овладевает разумом человека и блокирует страх.
+        // ЧТО БУДЕТ ЕСЛИ ЧЕЛОВЕК ОВЛАДЕЕТ РАЗУМОМ НА ВСЕ 100????!!
+        RemCompDeferred<FearComponent>(ent);
     }
 
     private void OnMaskShutdown(Entity<Scp035MaskUserComponent> ent, ref ComponentShutdown args)
