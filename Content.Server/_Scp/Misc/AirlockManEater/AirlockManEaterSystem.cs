@@ -1,7 +1,10 @@
 ﻿using System.Threading;
 using Content.Server.Doors.Systems;
+using Content.Shared._Scp.Fear;
+using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Other.AirlockManEater;
 using Content.Shared._Scp.Other.Events;
+using Content.Shared._Scp.Proximity;
 using Content.Shared.Doors.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Mobs.Components;
@@ -47,6 +50,7 @@ public sealed class AirlockManEaterSystem : SharedAirlockManEaterSystem
     {
         DoAirlockStuff(ent);
         DoDoorStuff(ent);
+        MakeScary(ent);
     }
 
     private void DoAirlockStuff(Entity<AirlockManEaterComponent> ent)
@@ -78,6 +82,27 @@ public sealed class AirlockManEaterSystem : SharedAirlockManEaterSystem
         doorComponent.UnsafeClosing = true;
 
         Dirty(ent, doorComponent);
+    }
+
+    /// <summary>
+    /// Делает шлюз страшным, чтобы дать игроку возможность отличить опасный шлюз от неопасного.
+    /// </summary>
+    private void MakeScary(EntityUid uid)
+    {
+        var fearSource = EnsureComp<FearSourceComponent>(uid);
+        fearSource.UponSeenState = FearState.None;
+        fearSource.UponComeCloser = FearState.Anxiety;
+        fearSource.GrainShaderStrength = new(0, 300);
+        fearSource.VignetteShaderStrength = new(0, 120);
+        fearSource.PlayHeartbeatSound = false;
+
+        Dirty(uid, fearSource);
+
+        var proximityReceiver = EnsureComp<ProximityReceiverComponent>(uid);
+        proximityReceiver.RequiredLineOfSight = LineOfSightBlockerLevel.None;
+        proximityReceiver.CloseRange = 2f;
+
+        Dirty(uid, proximityReceiver);
     }
 
     private void OnCrush(Entity<AirlockManEaterComponent> ent, ref AirlockCrushedEvent args)

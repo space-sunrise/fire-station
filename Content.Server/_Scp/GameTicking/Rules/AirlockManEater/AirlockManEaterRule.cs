@@ -19,6 +19,7 @@ public sealed class AirlockManEaterRule : StationEventSystem<AirlockManEaterRule
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private static readonly ProtoId<TagPrototype> WindoorTag = "Windoor";
+    private static readonly ProtoId<TagPrototype> SecureWindoorTag = "SecureWindoor";
 
     protected override void Started(EntityUid uid, AirlockManEaterRuleComponent component, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {
@@ -54,7 +55,7 @@ public sealed class AirlockManEaterRule : StationEventSystem<AirlockManEaterRule
         if (_station.GetOwningStation(ent) != station)
             return false;
 
-        if (_tag.HasTag(ent, WindoorTag))
+        if (_tag.HasTag(ent, WindoorTag) || _tag.HasTag(ent, SecureWindoorTag))
             return false;
 
         return true;
