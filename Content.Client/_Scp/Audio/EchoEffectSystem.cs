@@ -1,6 +1,7 @@
 ﻿using Content.Shared._Scp.Audio;
 using Content.Shared._Scp.Audio.Components;
 using Content.Shared._Scp.ScpCCVars;
+using Content.Client._Scp.Audio.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
@@ -30,7 +31,8 @@ public sealed class EchoEffectSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<AudioComponent, ComponentInit>(OnInit, before: [typeof(SharedAudioSystem)]);
+        SubscribeLocalEvent<AudioComponent, ComponentAdd>(OnAudioAdd);
+        SubscribeLocalEvent<AudioEffectedComponent, ComponentStartup>(OnEffectedAudioStartup, after: [typeof(SharedAudioSystem)]);
 
         _isClientSideEnabled = _cfg.GetCVar(ScpCCVars.EchoEnabled);
         _strongPresetPreferred = _cfg.GetCVar(ScpCCVars.EchoStrongPresetPreferred);
@@ -47,15 +49,23 @@ public sealed class EchoEffectSystem : EntitySystem
         _cfg.UnsubValueChanged(ScpCCVars.EchoStrongPresetPreferred, OnPreferredPresetToggled);
     }
 
-    private void OnInit(Entity<AudioComponent> ent, ref ComponentInit args)
+    private void OnAudioAdd(Entity<AudioComponent> ent, ref ComponentAdd args)
     {
         if (!_isClientSideEnabled)
             return;
 
-        if (!_timing.IsFirstTimePredicted)
+        EnsureComp<AudioEffectedComponent>(ent);
+    }
+
+    private void OnEffectedAudioStartup(Entity<AudioEffectedComponent> ent, ref ComponentStartup args)
+    {
+        if (!_isClientSideEnabled)
             return;
 
-        TryApplyEcho(ent);
+        if (!TryComp<AudioComponent>(ent.Owner, out var audio))
+            return;
+
+        TryApplyEcho((ent.Owner, audio));
     }
 
     /// <summary>
