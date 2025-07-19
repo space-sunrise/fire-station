@@ -15,6 +15,10 @@
   - !type:AddComponentSpecial
     components:
     - type: Fear
+      phobias:
+      - Exoremophobia
+      - Necrophobia
+      proximityBlockerLevel: None
       seenBlockerLevel: None
 
 - type: startingGear

@@ -29,7 +29,10 @@
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
-    - type: Fear
+    - type: Fear # переопределение компонента страха для СБ
+      phobias:
+      - Exoremophobia
+      - Necrophobia
       proximityBlockerLevel: None
       seenBlockerLevel: None
       fearBasedSpreadAngleModifier:
@@ -46,7 +49,7 @@
         Anxiety: 30
         Fear: 60
         Terror: 350
-      baseJitterTime: 4
+      baseJitterTime: 2
 
 - type: startingGear
   id: HeavyContainmentZoneCommandantGear

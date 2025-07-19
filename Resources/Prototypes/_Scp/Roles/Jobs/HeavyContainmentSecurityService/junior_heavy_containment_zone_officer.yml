@@ -27,7 +27,10 @@
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
-    - type: Fear
+    - type: Fear  # переопределение компонента страха для СБ
+      phobias:
+      - Exoremophobia
+      - Necrophobia
       proximityBlockerLevel: None
       seenBlockerLevel: None
       fearBasedSpreadAngleModifier:
