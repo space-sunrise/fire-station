@@ -43,6 +43,8 @@
       1000: Critical
   - type: Inventory
     templateId: scp939
+  - type: ToggleableNightVision
+    effect: ScpEffectNightVisionScp939
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name
     description: ghost-panel-antagonist-scp-description
