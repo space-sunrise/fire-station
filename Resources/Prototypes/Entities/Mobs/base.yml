@@ -52,7 +52,7 @@
   - type: TTS
   - type: DamageOverlay
   - type: EmoteAnimation
-  - type: Interactions
+  #- type: Interactions Fire edit
   - type: CustomLimbVisualizer
     displacements:
       LHand:
