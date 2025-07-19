@@ -26,6 +26,9 @@
     components:
     - type: CommandStaff
     - type: Fear
+      phobias:
+      - Exoremophobia
+      - Necrophobia
       proximityBlockerLevel: None
       seenBlockerLevel: None
 
