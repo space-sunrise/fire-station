@@ -55,6 +55,7 @@
         Fear: 60
         Terror: 350
       baseJitterTime: 2
+      fallOffChance: 1
 
 - type: startingGear
   id: SecurityCommanderGear
