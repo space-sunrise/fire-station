@@ -19,6 +19,14 @@ public abstract class BaseOverlaySystem<T> : EntitySystem where T : Overlay
             AddOverlay();
     }
 
+    public void ToggleOverlay(bool enable)
+    {
+        if (!enable && OverlayManager.HasOverlay<T>())
+            RemoveOverlay();
+        else if (enable)
+            AddOverlay();
+    }
+
     public bool TryAddOverlay()
     {
         if (OverlayManager.HasOverlay<T>())

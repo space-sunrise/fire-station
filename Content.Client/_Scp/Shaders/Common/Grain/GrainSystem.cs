@@ -37,6 +37,7 @@ public sealed class GrainOverlaySystem : ComponentOverlaySystem<GrainOverlay, Gr
     {
         base.OnPlayerAttached(ent, ref args);
 
+        ToggleGrainOverlay(_cfg.GetCVar(ScpCCVars.GrainToggleOverlay));
         SetBaseStrength(_cfg.GetCVar(ScpCCVars.GrainStrength));
     }
 
@@ -52,7 +53,7 @@ public sealed class GrainOverlaySystem : ComponentOverlaySystem<GrainOverlay, Gr
     {
         Enabled = option;
 
-        ToggleOverlay();
+        ToggleOverlay(option);
     }
 
     private void SetBaseStrength(int value)
