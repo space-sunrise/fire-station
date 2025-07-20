@@ -118,7 +118,7 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
 
     private void HideSprite(EntityUid uid, ref SpriteComponent sprite)
     {
-        if (sprite.Visible)
+        if (!sprite.Visible)
             return;
 
         _sprite.SetVisible((uid, sprite), false);
@@ -127,7 +127,7 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
 
     private void ShowSprite(EntityUid uid, ref SpriteComponent sprite)
     {
-        if (!sprite.Visible)
+        if (sprite.Visible)
             return;
 
         _sprite.SetVisible((uid, sprite), true);
