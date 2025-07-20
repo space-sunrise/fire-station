@@ -6,5 +6,5 @@ namespace Content.Shared._Scp.Watching.FOV;
 public sealed partial class FieldOfViewComponent : Component
 {
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public float Angle = 240f;
+    public float Angle = 220f;
 }
