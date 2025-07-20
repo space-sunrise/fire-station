@@ -1,24 +1,30 @@
 ﻿uniform sampler2D SCREEN_TEXTURE;
+uniform sampler2D BLURRED_TEXTURE;
+
 uniform highp vec2 playerScreenPos;
 uniform highp vec2 playerForward;
 uniform highp float fovCosine;
 uniform highp float safeZoneRadius;
+uniform highp float coneOpacity;
+uniform highp float edgeHardness;
+uniform highp float safeZoneEdgeWidth;
 
 void fragment() {
     highp vec2 toPixel = FRAGCOORD.xy - playerScreenPos;
     highp float distance = length(toPixel);
 
-    if (distance <= safeZoneRadius) {
-        COLOR = texture(SCREEN_TEXTURE, UV);
-        return;
-    }
-
     highp vec2 directionToPixel = normalize(toPixel);
     highp float dotProduct = dot(playerForward, directionToPixel);
 
-    if (dotProduct < fovCosine) {
-        COLOR = vec4(0.0, 0.0, 0.0, 1.0);
-    } else {
-        COLOR = texture(SCREEN_TEXTURE, UV);
-    }
+    highp float coneFactor = smoothstep(fovCosine + edgeHardness, fovCosine - edgeHardness, dotProduct);
+
+    highp vec4 inFovColor = texture(SCREEN_TEXTURE, UV);
+    highp vec4 blurredColor = texture(BLURRED_TEXTURE, UV);
+    highp vec4 outOfFovColor = mix(blurredColor, vec4(0.0, 0.0, 0.0, 1.0), coneOpacity);
+
+    highp vec4 effectColor = mix(inFovColor, outOfFovColor, coneFactor);
+
+    highp float safeZoneFactor = smoothstep(safeZoneRadius + safeZoneEdgeWidth, safeZoneRadius, distance);
+
+    COLOR = mix(effectColor, inFovColor, safeZoneFactor);
 }
