@@ -1,9 +1,12 @@
-﻿using Content.Shared._Scp.Watching.FOV;
+﻿using System.Numerics;
+using Content.Shared._Scp.Watching.FOV;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
+using Robust.Shared.Maths;
 
 namespace Content.Client._Scp.Shaders.FieldOfView;
 
@@ -12,10 +15,14 @@ public sealed class FieldOfViewOverlay : Overlay
     [Dependency] private readonly IEntityManager _entManager = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private readonly SharedTransformSystem _transform;
     private readonly SpriteSystem _spriteSystem;
     private readonly ShaderInstance _shader;
+
+    private Angle _currentAngle;
+    private const float LerpSpeed = 8f;
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -54,13 +61,19 @@ public sealed class FieldOfViewOverlay : Overlay
             return;
         }
 
+        var correctedAngle = playerXform.LocalRotation - Angle.FromDegrees(90);
+
+        if (_currentAngle.Theta == 0)
+            _currentAngle = correctedAngle;
+
+        var targetAngle = correctedAngle.GetDir().ToAngle();
+
+        _currentAngle = Angle.Lerp(_currentAngle, targetAngle, LerpSpeed * (float)_timing.FrameTime.TotalSeconds);
+        var forwardVec = _currentAngle.ToVec();
+
         var worldPos = _transform.GetWorldPosition(playerXform);
         var screenPos = args.Viewport.WorldToLocal(worldPos);
         screenPos.Y = args.Viewport.Size.Y - screenPos.Y;
-
-        var playerAngle = playerXform.LocalRotation;
-        var cardinalDirection = playerAngle.GetDir();
-        var forwardVec = cardinalDirection.ToVec();
 
         var fovCosine = FieldOfViewSystem.GetFovCosine(visionComponent.Angle);
 
