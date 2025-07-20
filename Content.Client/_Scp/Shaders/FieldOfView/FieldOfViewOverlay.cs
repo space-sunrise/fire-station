@@ -113,9 +113,9 @@ public sealed class FieldOfViewOverlay : Overlay
         if (_currentAngle.Theta == 0)
             _currentAngle = correctedAngle;
 
-        var targetAngle = correctedAngle.GetDir().ToAngle();
+        var deltaTime = Math.Min((float)_timing.FrameTime.TotalSeconds, 1f / 30f);
+        _currentAngle = Angle.Lerp(_currentAngle, correctedAngle, LerpSpeed * deltaTime);
 
-        _currentAngle = Angle.Lerp(_currentAngle, targetAngle, LerpSpeed * (float)_timing.FrameTime.TotalSeconds);
         var forwardVec = _currentAngle.ToVec();
 
         var worldPos = _transform.GetWorldPosition(playerXform);
@@ -125,7 +125,7 @@ public sealed class FieldOfViewOverlay : Overlay
         var fovCosine = FieldOfViewSystem.GetFovCosine(visionComponent.Angle);
 
         var bounds = _spriteSystem.GetLocalBounds((playerEntity.Value, sprite));
-        var worldRadius = bounds.Height;
+        var worldRadius = Math.Max(bounds.Width, bounds.Height);
 
         var zoom = eye.Zoom.X;
         var pixelRadius = worldRadius * EyeManager.PixelsPerMeter / zoom;

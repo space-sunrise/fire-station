@@ -13,7 +13,7 @@ void fragment() {
     highp vec2 toPixel = FRAGCOORD.xy - playerScreenPos;
     highp float distance = length(toPixel);
 
-    highp vec2 directionToPixel = normalize(toPixel);
+    highp vec2 directionToPixel = distance > 0.001 ? normalize(toPixel) : vec2(0.0, 1.0);
     highp float dotProduct = dot(playerForward, directionToPixel);
 
     highp float coneFactor = smoothstep(fovCosine + edgeHardness, fovCosine - edgeHardness, dotProduct);
