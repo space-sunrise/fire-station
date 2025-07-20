@@ -14,7 +14,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -35,7 +34,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -70,7 +68,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -90,7 +87,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -108,7 +104,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -129,7 +124,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -147,7 +141,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -166,7 +159,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -188,7 +180,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -210,7 +201,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -230,7 +220,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -251,7 +240,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -273,7 +261,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -293,7 +280,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -326,7 +312,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -357,7 +342,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -385,7 +369,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -417,7 +400,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -447,7 +429,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -478,7 +459,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -508,7 +488,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -532,7 +511,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -556,7 +534,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -574,7 +551,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -599,7 +575,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -622,7 +597,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -646,7 +620,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   # Fire-Station-Start
   - GuardHead
@@ -672,10 +645,10 @@
   - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets  # Sunrise
   # Sunrise-start
+  - SunriseWeaponDetective
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -689,10 +662,10 @@
   - GroupSpeciesBreathToolSecurity
   - SecurityTrinkets  # Sunrise
   # Sunrise-start
+  - SunriseWeaponCadet
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   # Fire-Station-Start
   - GuardHead
@@ -732,7 +705,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -760,7 +732,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -791,7 +762,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -824,7 +794,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -857,7 +826,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -875,7 +843,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -893,7 +860,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -924,7 +890,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 
@@ -943,7 +908,6 @@
   - Bra
   - Pants
   - Socks
-  - CommonPets
   # Sunrise-end
   - CommonMiscItems # Fire
 

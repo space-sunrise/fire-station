@@ -256,7 +256,7 @@
   categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: SpawnPoint
-    job_id: IAA # Lawyer replaced with IAA
+    job_id: Lawyer
   - type: Sprite
     layers:
       - state: green

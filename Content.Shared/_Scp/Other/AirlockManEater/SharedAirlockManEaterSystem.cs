@@ -1,9 +1,9 @@
-﻿using System.Linq;
-using Content.Shared.Doors.Components;
+﻿using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Systems;
+using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Other.AirlockManEater;
@@ -22,6 +22,9 @@ public abstract class SharedAirlockManEaterSystem : EntitySystem
     private static readonly TimeSpan VictimSearchDelay = TimeSpan.FromSeconds(0.3f);
     private static TimeSpan _nextVictimSearchTime = TimeSpan.Zero;
 
+    private readonly List<Entity<HumanoidAppearanceComponent>> _midRangeEntities = [];
+    private readonly HashSet<Entity<HumanoidAppearanceComponent>> _closeEntities = [];
+
     // Возможно это не самый производительный способ
     // Но зато смешно. Ловушка шлюзера
     public override void Update(float frameTime)
@@ -35,41 +38,53 @@ public abstract class SharedAirlockManEaterSystem : EntitySystem
 
         while (query.MoveNext(out var uid, out _, out var door, out var xform))
         {
-            var nearbyEntities = _lookup.GetEntitiesInRange<HumanoidAppearanceComponent>(xform.Coordinates, VictimSearchRadiusOpen)
-                .Where(e => IsProperVictim(uid, e, VictimSearchRadiusOpen))
-                .ToList();
-
-            var closeEntities = _lookup.GetEntitiesInRange<HumanoidAppearanceComponent>(xform.Coordinates, VictimSearchRadiusClose)
-                .Where(e => IsProperVictim(uid, e, VictimSearchRadiusClose))
-                .ToHashSet();
-
-            var midRangeEntities = nearbyEntities.Where(e => !closeEntities.Contains(e)).ToList();
-
-            // Закрытие, если кто-то вблизи
-            if (closeEntities.Any())
-            {
-                if (door.State == DoorState.Closed || door.State == DoorState.Closing)
-                    continue;
-
-                _door.TryClose(uid, door);
-                continue;
-            }
-
-            //  Открытие, если кто-то в миде
-            if (midRangeEntities.Any())
-            {
-                if (door.State == DoorState.Open || door.State == DoorState.Opening)
-                    continue;
-
-                _door.TryOpen(uid, door);
-            }
+            ProcessNearbyEntities(uid, door, xform.Coordinates);
         }
 
         _nextVictimSearchTime = _timing.CurTime + VictimSearchDelay;
     }
 
+    private void ProcessNearbyEntities(EntityUid airlockUid, DoorComponent door, EntityCoordinates coords)
+    {
+        _midRangeEntities.Clear();
+        _closeEntities.Clear();
+
+        foreach (var ent in _lookup.GetEntitiesInRange<HumanoidAppearanceComponent>(coords, VictimSearchRadiusOpen))
+        {
+            if (!IsProperVictim(airlockUid, ent, VictimSearchRadiusOpen))
+                continue;
+
+            var distance = (Transform(ent).Coordinates.Position - coords.Position).Length();
+
+            if (distance <= VictimSearchRadiusClose)
+                _closeEntities.Add(ent);
+            else
+                _midRangeEntities.Add(ent);
+        }
+
+        if (ShouldClose(door))
+        {
+            _door.TryClose(airlockUid, door);
+            return;
+        }
+
+        if (ShouldOpen(door))
+            _door.TryOpen(airlockUid, door);
+    }
+
+    private bool ShouldClose(DoorComponent door)
+    {
+        return _closeEntities.Count > 0 && door.State != DoorState.Closed && door.State != DoorState.Closing;
+    }
+
+    private bool ShouldOpen(DoorComponent door)
+    {
+        return _midRangeEntities.Count > 0 && door.State != DoorState.Open && door.State != DoorState.Opening;
+    }
+
     private bool IsProperVictim(EntityUid airlock, EntityUid human, float range)
     {
-        return (_mob.IsAlive(human) || _mob.IsCritical(human)) && _interaction.InRangeUnobstructed(airlock, Transform(human).Coordinates, range);
+        return (_mob.IsAlive(human) || _mob.IsCritical(human)) &&
+               _interaction.InRangeUnobstructed(airlock, Transform(human).Coordinates, range);
     }
 }

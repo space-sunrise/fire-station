@@ -84,6 +84,7 @@
   - WeaponMechCombatMG
   - PaintDurandExecutor
   - PaintDurandShire
+  - PowerCageHigh
   technologyPrerequisites:
   - Gygax
 
@@ -106,13 +107,10 @@
   - MagazineMP5Extended
   - MagazineMP7Extended
   - MagazineP90Extended
-  - MagazineM16A4Extended
+  - SunriseMagazineRifleExtended
   - MagazineAR18Extended
   #- MagazineM28Extended
-  - MagazineG36Extended
-  - MagazineFamasExtended
   - MagazineV31Extended
-  #- MagazineBauer127Extended
   - MagazineBR64Extended
   - MagazineDragunovExtended
 
@@ -130,6 +128,7 @@
     Scp: 6250
   recipeUnlocks:
   - ClothingShoesBootsMagCombat
+  - ModularReceiverAuto
   technologyPrerequisites:
   - AdvancedRiotControl
 

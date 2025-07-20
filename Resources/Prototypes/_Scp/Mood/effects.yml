@@ -1,0 +1,45 @@
+﻿- type: moodCategory
+  id: FearState
+
+- type: moodCategory
+  id: HemophobicBlood
+
+- type: moodEffect
+  id: FearStateAnxiety
+  moodChange: -5
+  category: FearState
+
+- type: moodEffect
+  id: FearStateFear
+  moodChange: -10
+  category: FearState
+
+- type: moodEffect
+  id: FearStateTerror
+  moodChange: -25
+  category: FearState
+
+- type: moodEffect
+  id: FearSomeoneDiedOnMyEyes
+  moodChange: -10
+  timeout: 300
+
+- type: moodEffect
+  id: FearSourceClose
+  moodChange: -15
+
+- type: moodEffect
+  id: FearSourceSeen
+  moodChange: -8
+  timeout: 120
+
+- type: moodEffect # TODO: Реализовать
+  id: FearHemophobicBleeding
+  moodChange: -5
+  category: HemophobicBlood
+
+- type: moodEffect
+  id: FearHemophobicSeeBlood
+  moodChange: -7
+  timeout: 120
+  category: HemophobicBlood

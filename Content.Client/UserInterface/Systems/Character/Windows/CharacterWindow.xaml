@@ -3,8 +3,8 @@
     xmlns:cc="clr-namespace:Content.Client.UserInterface.Controls"
     xmlns:windows="clr-namespace:Content.Client.UserInterface.Systems.Character.Windows"
     Title="{Loc 'character-info-title'}"
-    MinWidth="400"
-    MinHeight="545">
+    MinWidth="440"
+    MinHeight="580">
     <ScrollContainer>
         <BoxContainer Orientation="Vertical">
             <Label Name="RoleType" VerticalAlignment="Top" Margin="0 6 0 10" HorizontalAlignment="Center" StyleClasses="LabelHeading" Access="Public"/>
@@ -18,6 +18,11 @@
             <Label Name="ObjectivesLabel" Access="Public" Text="{Loc 'character-info-objectives-label'}" HorizontalAlignment="Center"/>
             <BoxContainer Orientation="Vertical" Name="Objectives" Access="Public"/>
             <cc:Placeholder Name="RolePlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-roles-antagonist-text'}"/>
+
+            <Label Name="FearsLabel" Access="Public" Text="{Loc 'character-info-fears-label'}" HorizontalAlignment="Center" StyleClasses="LabelHeadingBigger"/>
+            <BoxContainer Name="Fears" Orientation="Vertical" Access="Public" MaxWidth="400"/>
+            <cc:Placeholder Name="FearsPlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-fears-text'}"/>
+
         </BoxContainer>
     </ScrollContainer>
 </windows:CharacterWindow>

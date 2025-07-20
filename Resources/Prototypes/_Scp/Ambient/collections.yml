@@ -24,7 +24,6 @@
   - /Audio/_Scp/Ambience/Music/General/ost21.ogg
   - /Audio/_Scp/Ambience/Music/General/ost22.ogg
   - /Audio/_Scp/Ambience/Music/General/ost23.ogg
-  - /Audio/_Scp/Ambience/Music/General/ost24.ogg
 
 - type: soundCollection
   id: FireAmbienceMedical
@@ -44,17 +43,15 @@
   - /Audio/_Scp/Ambience/Music/Shuttle/ost2.ogg
 
 - type: soundCollection
-  id: FireAmbienceScp106Dimension
+  id: ScpFearAmbience
   files:
-  - /Audio/_Scp/Ambience/Music/PocketDimension/ost1.ogg
-  - /Audio/_Scp/Ambience/Music/PocketDimension/ost2.ogg
-  - /Audio/_Scp/Ambience/Music/PocketDimension/ost3.ogg
-  - /Audio/_Scp/Ambience/Music/PocketDimension/ost4.ogg
-
-- type: soundCollection
-  id: FireAmbienceScp173
-  files:
-  - /Audio/_Scp/Ambience/Music/scp173.ogg
+  - /Audio/_Scp/Ambience/Music/Fear/ost1.ogg
+  - /Audio/_Scp/Ambience/Music/Fear/ost2.ogg
+  - /Audio/_Scp/Ambience/Music/Fear/ost3.ogg
+  - /Audio/_Scp/Ambience/Music/Fear/ost4.ogg
+  - /Audio/_Scp/Ambience/Music/Fear/ost5.ogg
+  - /Audio/_Scp/Ambience/Music/Fear/ost6.ogg
+  - /Audio/_Scp/Ambience/Music/Fear/ost7.ogg
 
 - type: soundCollection
   id: FireAmbienceClassD
@@ -78,3 +75,9 @@
   id: FireAmbienceShiftAverted
   files:
   - /Audio/_Scp/Ambience/Music/Shift/averted.ogg
+
+- type: soundCollection
+  id: ScpAmbienceDead
+  files:
+  - /Audio/_Scp/Ambience/Music/Dead/ost1.ogg
+  - /Audio/_Scp/Ambience/Music/Dead/ost2.ogg

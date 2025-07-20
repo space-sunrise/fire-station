@@ -18,6 +18,8 @@
   - CigPackBlack
   - CigarCase
   - CigarGold
+  - ClothingWraps # Sunrise
+  - ClothingWrapsHigh # Sunrise
   - ClothingNeckNanoTrasenPin  # Sunrise
   - ClothingNeckNakamuraPin  # Sunrise
   - ClothingNeckLogistikaPin  # Sunrise
@@ -1204,6 +1206,7 @@
   minLimit: 0
   loadouts:
   - DetectiveTie
+  - DetectiveTieHorrific #Sunrise-add
 
 - type: loadoutGroup
   id: DetectiveJumpsuit

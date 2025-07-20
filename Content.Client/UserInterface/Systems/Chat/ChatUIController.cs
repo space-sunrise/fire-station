@@ -15,6 +15,7 @@ using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Chat.Widgets;
 using Content.Client.UserInterface.Systems.Gameplay;
+using Content.Shared._Scp.Watching.FOV;
 using Content.Shared._Sunrise.CollectiveMind;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
@@ -69,6 +70,7 @@ public sealed partial class ChatUIController : UIController
     [UISystemDependency] private readonly TransformSystem? _transform = default;
     [UISystemDependency] private readonly MindSystem? _mindSystem = default!;
     [UISystemDependency] private readonly RoleCodewordSystem? _roleCodewordSystem = default!;
+    [UISystemDependency] private readonly FieldOfViewSystem? _fov = default!;
 
     [ValidatePrototypeId<ColorPalettePrototype>]
     private const string ChatNamePalette = "ChatNames";
@@ -76,6 +78,8 @@ public sealed partial class ChatUIController : UIController
     private bool _chatNameColorsEnabled;
 
     private ISawmill _sawmill = default!;
+
+    private EntityQuery<FieldOfViewComponent> _fovQuery;
 
     public static readonly Dictionary<char, ChatSelectChannel> PrefixToChannel = new()
     {
@@ -253,6 +257,7 @@ public sealed partial class ChatUIController : UIController
         _config.OnValueChanged(CCVars.ChatWindowOpacity, OnChatWindowOpacityChanged);
 
         InitializeHighlights();
+        _fovQuery = _ent.GetEntityQuery<FieldOfViewComponent>();
     }
 
     public void OnScreenLoad()
@@ -681,6 +686,17 @@ public sealed partial class ChatUIController : UIController
             }
 
             var otherPos = _transform?.GetMapCoordinates(ent) ?? MapCoordinates.Nullspace;
+
+            // Fire edit start - чтобы в поле зрения не попадались чатбаблы
+            if (player.HasValue && _fov != null && _fovQuery.HasComp(player))
+            {
+                if (!_fov.IsInViewAngle(player.Value, ent))
+                {
+                    SetBubbles(bubs, false);
+                    continue;
+                }
+            }
+            // Fire edit end
 
             if (occluded && !_examine.InRangeUnOccluded(
                     playerPos,

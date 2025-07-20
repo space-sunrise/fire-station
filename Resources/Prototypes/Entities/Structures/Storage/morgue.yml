@@ -5,6 +5,19 @@
   placement:
     mode: SnapgridCenter
   components:
+  # Fire edit start
+  - type: ProximityReceiver
+  - type: FearSource
+    phobiaType: Necrophobia
+    uponComeCloser: Anxiety
+    grainShaderStrength:
+      min: 0
+      max: 400
+    vignetteShaderStrength:
+      min: 0
+      max: 150
+    playBreathingSound: false
+  # Fire edit end
   - type: Pullable
   - type: Anchorable
   - type: Sprite

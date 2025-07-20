@@ -19,6 +19,12 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: DoctorDay
     prototype: WehMedipen
+  - !type:AddComponentSpecial
+    components:
+    - type: Fear
+      phobias:
+      - Exoremophobia
+      # Врачи не пугаются трупов, у них не будет некрофобии
 
 - type: startingGear
   id: MedicalSpecialistGear

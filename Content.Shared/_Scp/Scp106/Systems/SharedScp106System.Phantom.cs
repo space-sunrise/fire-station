@@ -3,11 +3,23 @@ using Content.Shared.DoAfter;
 using Content.Shared.Mobs;
 using Content.Shared.Physics;
 using Robust.Shared.Physics;
+using Robust.Shared.Physics.Systems;
 
 namespace Content.Shared._Scp.Scp106.Systems;
 
 public abstract partial class SharedScp106System
 {
+    [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+
+    private void InitializePhantom()
+    {
+        SubscribeLocalEvent<Scp106PhantomComponent, Scp106ReverseAction>(OnScp106ReverseAction);
+        SubscribeLocalEvent<Scp106PhantomComponent, Scp106LeavePhantomAction>(OnScp106LeavePhantomAction);
+        SubscribeLocalEvent<Scp106PhantomComponent, Scp106PassThroughAction>(OnScp106PassThroughAction);
+
+        SubscribeLocalEvent<Scp106PhantomComponent, Scp106PassThroughActionEvent>(OnScp106PassThroughActionEvent);
+    }
+
     private void OnScp106ReverseAction(Entity<Scp106PhantomComponent> ent, ref Scp106ReverseAction args)
     {
         if (args.Handled)

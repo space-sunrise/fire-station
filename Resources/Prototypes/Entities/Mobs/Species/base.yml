@@ -38,6 +38,7 @@
     - map: [ "belt" ]
     - map: [ "id" ]
     - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.Back" ] # SUNRISE
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]
@@ -272,8 +273,20 @@
   - type: CritHeartbeat
   # Sunrise-End
   # Fire start
+  - type: FieldOfView
   - type: Blinkable
   - type: EyeClosing
+  - type: Fear
+    phobias:
+    - Exoremophobia
+    - Necrophobia
+  - type: ProximityTarget
+  - type: ComponentToggler
+    components:
+    - type: FearSource
+      phobiaType: Necrophobia
+      uponComeCloser: None
+    - type: WatchingTarget
   # Fire end
   - type: Barotrauma
     damage:
@@ -343,7 +356,7 @@
   - type: ComplexInteraction
   - type: ContainerContainer
   - type: Icon
-    sprite: Mobs/Species/Human/parts.rsi
+    sprite: _Sunrise/Mobs/Species/Human/Basic/parts.rsi
     state: full
   - type: Sprite
     drawdepth: Mobs
@@ -381,6 +394,7 @@
     - map: [ "id" ]
     - map: [ "outerClothing" ]
     - map: [ "back" ]
+    - map: [ "enum.HumanoidVisualLayers.Back" ] # SUNRISE
     - map: [ "neck" ]
     - map: [ "enum.HumanoidVisualLayers.FacialHair" ]
     - map: [ "enum.HumanoidVisualLayers.Hair" ]

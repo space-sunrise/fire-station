@@ -1,6 +1,7 @@
 ﻿using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
+using Content.Shared._Scp.Watching.FOV;
 using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Audio;
 using Content.Shared.Bed.Sleep;
@@ -31,6 +32,7 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly SharedSunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
+    [Dependency] private readonly FieldOfViewSystem _fov = default!;
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
@@ -275,11 +277,11 @@ public abstract partial class SharedScp096System : EntitySystem
             return true;
 
         // Проверяем, смотрит ли 096 в лицо цели
-        if (!_watching.IsInViewAngle(scp.Owner, viewer, scp.Comp.ArgoAngle))
+        if (!_fov.IsInViewAngle(scp.Owner, viewer, scp.Comp.ArgoAngle))
             return false;
 
         // Проверяем, смотри ли цель в лицо 096
-        if (!_watching.IsInViewAngle(viewer, scp.Owner, scp.Comp.ArgoAngle))
+        if (!_fov.IsInViewAngle(viewer, scp.Owner, scp.Comp.ArgoAngle))
             return false;
 
         // Соответственно если обе проверки прошли, то цель видит 096

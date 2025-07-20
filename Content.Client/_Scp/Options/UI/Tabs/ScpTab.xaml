@@ -7,8 +7,10 @@
 
                 <Label Text="{Loc 'ui-options-tab-hover-to-see-details'}" StyleClasses="LabelSecondaryColor"/>
 
+                <!-- ГРАФИКА -->
                 <Label Text="{Loc 'ui-options-scp-graphics'}" StyleClasses="LabelKeyText"/>
 
+                <!-- Зернистость -->
                 <CheckBox Name="GrainToggleOverlayCheckBox"
                           Text="{Loc 'ui-options-grain-toggle-overlay'}"
                           ToolTip="{Loc ui-options-grain-toggle-overlay-tooltip}"/>
@@ -16,8 +18,15 @@
                                  Title="{Loc 'ui-options-grain-strength'}"
                                  ToolTip="{Loc ui-options-grain-strength-tooltip}"/>
 
+                <!-- Поле зрения -->
+                <ui:OptionSlider Name="FieldOfViewOpacitySlider"
+                                 Title="{Loc 'ui-options-field-of-view-opacity'}"
+                                 ToolTip="{Loc ui-options-field-of-view-opacity-tooltip}"/>
+
+                <!-- АУДИО -->
                 <Label Text="{Loc 'ui-options-scp-audio'}" StyleClasses="LabelKeyText"/>
 
+                <!-- Эхо -->
                 <CheckBox Name="EchoEnabled"
                           Text="{Loc 'ui-options-scp-echo-enabled'}"
                           ToolTip="{Loc ui-options-scp-echo-enabled-tooltip}" />
@@ -25,6 +34,7 @@
                           Text="{Loc 'ui-options-scp-echo-strong-preset-preferred'}"
                           ToolTip="{Loc ui-options-scp-echo-strong-preset-preferred-tooltip}" />
 
+                <!-- Подавление звуков -->
                 <CheckBox Name="AudioMufflingEnabled"
                           Text="{Loc 'ui-options-scp-audio-muffling-enabled'}"
                           ToolTip="{Loc ui-options-scp-audio-muffling-enabled-tooltip}" />

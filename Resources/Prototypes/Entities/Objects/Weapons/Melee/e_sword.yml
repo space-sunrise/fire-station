@@ -43,7 +43,7 @@
       types:
         Slash: 15
         Heat: 15
-        Structural: 40
+        Structural: 20
   - type: MeleeWeapon
     wideAnimationRotation: -135
     attackRate: 1
@@ -71,8 +71,6 @@
       - state: inhand-right-blade
         shader: unshaded
   - type: Reflect
-    reflectProb: .35
-    spread: 45
   # Sunrise-start
   - type: Tag
     tags:
@@ -100,6 +98,15 @@
     sprite: Objects/Weapons/Melee/e_sword-inhands.rsi
   - type: StaticPrice
     price: 2500
+  # Sunrise-start
+  - type: Scalpel
+  - type: SurgeryTool
+    successRate: 0.6
+    startSound:
+      path: /Audio/_Sunrise/Medical/Surgery/scalpel1.ogg
+    endSound:
+      path: /Audio/_Sunrise/Medical/Surgery/scalpel2.ogg
+  # Sunrise-end
 
 - type: entity
   name: energy dagger
@@ -164,6 +171,15 @@
     energy: 1.5
     color: white
     netsync: false
+  # Sunrise-start
+  - type: Scalpel
+  - type: SurgeryTool
+    successRate: 0.6
+    startSound:
+      path: /Audio/_Sunrise/Medical/Surgery/scalpel1.ogg
+    endSound:
+      path: /Audio/_Sunrise/Medical/Surgery/scalpel2.ogg
+  # Sunrise-end
 
 - type: entity
   name: pen
@@ -230,13 +246,19 @@
     damage:
       types:
         Blunt: 1
-  - type: Reflect
-    reflectProb: .15
-    spread: 45
   - type: Tag
     tags:
     - Write
     - NoPaint  # Sunrise-edit
+  # Sunrise-start
+  - type: Scalpel
+  - type: SurgeryTool
+    successRate: 0.6
+    startSound:
+      path: /Audio/_Sunrise/Medical/Surgery/scalpel1.ogg
+    endSound:
+      path: /Audio/_Sunrise/Medical/Surgery/scalpel2.ogg
+  # Sunrise-end
 
 - type: entity
   parent: [BaseItem, BaseSyndicateContraband]
@@ -307,7 +329,7 @@
       types:
         Slash: 12
         Heat: 12
-        Structural: 30
+        Structural: 15
   - type: ItemToggleActiveSound
     activeSound:
       path: /Audio/Weapons/ebladehum.ogg
@@ -346,6 +368,15 @@
     spread: 75
   - type: FlipOnAttack # Sunrise-Edit
     probability: 0.5 # Sunrise-Edit
+  # Sunrise-start
+  - type: Scalpel
+  - type: SurgeryTool
+    successRate: 0.6
+    startSound:
+      path: /Audio/_Sunrise/Medical/Surgery/scalpel1.ogg
+    endSound:
+      path: /Audio/_Sunrise/Medical/Surgery/scalpel2.ogg
+  # Sunrise-end
 
 # Item will look weird in handslot. Will need to adjust handstorage visuals in a future PR
 - type: entity
@@ -418,3 +449,12 @@
   - type: EnergySword
     colorOptions:
     - "#2288ff" # can only be blue
+  # Sunrise-start
+  - type: Scalpel
+  - type: SurgeryTool
+    successRate: 0.6
+    startSound:
+      path: /Audio/_Sunrise/Medical/Surgery/scalpel1.ogg
+    endSound:
+      path: /Audio/_Sunrise/Medical/Surgery/scalpel2.ogg
+  # Sunrise-end

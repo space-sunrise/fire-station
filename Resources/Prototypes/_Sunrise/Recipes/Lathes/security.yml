@@ -51,8 +51,9 @@
   id: MagazineLightRifleBoxIncendiary
   result: MagazineLightRifleBoxIncendiary
   materials:
-    Steel: 300
-    Plastic: 1800
+    Steel: 150
+    Plastic: 475
+    Plasma: 475
 
 - type: latheRecipe
   parent: BaseEmptyAmmoRecipe
@@ -69,8 +70,8 @@
     Steel: 145
 
 - type: latheRecipe
-  id: MagazineM16A4
-  result: MagazineM16A4
+  id: SunriseMagazineRifle
+  result: SunriseMagazineRifle
   categories:
   - Ammo
   completetime: 5
@@ -111,7 +112,7 @@
   - Ammo
   completetime: 5
   materials:
-    Steel: 1465
+    Steel: 1100
 
 - type: latheRecipe
   id: MagazineNewVector
@@ -185,15 +186,6 @@
   materials:
     Steel: 500
 
-- type: latheRecipe
-  id: MagazineG36
-  result: MagazineG36
-  categories:
-  - Ammo
-  completetime: 5
-  materials:
-    Steel: 325
-
 # - type: latheRecipe
 #   id: MagazineM28 #Есть MagazineAR18
 #   result: MagazineM28
@@ -202,15 +194,6 @@
 #   completetime: 5
 #   materials:
 #     Steel: 325
-
-- type: latheRecipe
-  id: MagazineFamas
-  result: MagazineFamas
-  categories:
-  - Ammo
-  completetime: 5
-  materials:
-    Steel: 325
 
 - type: latheRecipe
   id: MagazineBR64
@@ -318,6 +301,16 @@
     Silver: 200
 
 - type: latheRecipe
+  id: ModularReceiverAuto
+  result: ModularReceiverAuto
+  categories:
+  - Weapons
+  completetime: 12
+  materials:
+    Steel: 800
+    Plastic: 100
+
+- type: latheRecipe
   id: MagazinePistolHighCapacity
   result: MagazinePistolHighCapacity
   categories:
@@ -383,13 +376,13 @@
     Plastic: 50
 
 - type: latheRecipe
-  id: MagazineM16A4Extended
-  result: MagazineM16A4Extended
+  id: SunriseMagazineRifleExtended
+  result: SunriseMagazineRifleExtended
   categories:
   - Weapons
   completetime: 12
   materials:
-    Steel: 650
+    Steel: 450
 
 - type: latheRecipe
   id: MagazineAR18Extended
@@ -408,24 +401,6 @@
 #  completetime: 12
 #  materials:
 #    Steel: 650
-
-- type: latheRecipe
-  id: MagazineG36Extended
-  result: MagazineG36Extended
-  categories:
-  - Weapons
-  completetime: 12
-  materials:
-    Steel: 650
-
-- type: latheRecipe
-  id: MagazineFamasExtended
-  result: MagazineFamasExtended
-  categories:
-  - Weapons
-  completetime: 12
-  materials:
-    Steel: 650
 
 - type: latheRecipe
   id: MagazineV31Extended

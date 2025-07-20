@@ -14,6 +14,15 @@
       map: [ "enum.DamageStateVisualLayers.Base" ]
   - type: Scp
     class: Euclid
+  - type: FearSource
+    uponSeenState: None
+    uponComeCloser: Anxiety
+    grainShaderStrength:
+      min: 0
+      max: 300
+    vignetteShaderStrength:
+      min: 0
+      max: 100
   - type: DamageStateVisuals
     states:
       Alive:

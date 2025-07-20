@@ -25,6 +25,20 @@
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+    - type: Fear # переопределение компонента страха для СБ
+      phobias:
+      - Exoremophobia
+      - Necrophobia
+      proximityBlockerLevel: None
+      seenBlockerLevel: None
+      fearBasedSpreadAngleModifier:
+        Anxiety: 1.7
+        Fear: 2.2
+        Terror: 5
+      baseJitterTime: 3
+      fallOffChance: 2
 
 - type: startingGear
   id: JuniorExternalAdministrativeZoneOfficerGear

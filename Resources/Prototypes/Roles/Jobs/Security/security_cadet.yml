@@ -12,10 +12,6 @@
   canBeAntag: false
   displayWeight: 0 # Sunrise-Edit
   access:
-  - Research # Fire
-  - Kitchen # Fire
-  - Hydroponics # Fire
-  - Janitor # Fire
   - Security
   - Brig
 #  - Maintenance #Sunrise-Edit
@@ -34,6 +30,9 @@
     mask: ClothingMaskSecurityBandBlack
     id: SecurityCadetPDA
     ears: ClothingHeadsetSecurity
+    eyes: ClothingEyesHudSecurity #Sunrise-edit
+    belt: ClothingBeltSecurityFilled
+    gloves: ClothingHandsGlovesColorGray
     pocket1: HyperLinkBookCorporateLaw # Sunrise-edit
   storage:
     back:

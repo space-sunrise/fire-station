@@ -34,6 +34,14 @@ public abstract class SharedDrunkSystem : EntitySystem
         {
             _statusEffectsSystem.TryAddTime(uid, DrunkKey, TimeSpan.FromSeconds(boozePower), status);
         }
+
+        // Fire edit start - для уменьшения уровня страха от алкоголя
+        if (!TryComp<DrunkComponent>(uid, out var drunk))
+            return;
+
+        drunk.CurrentBoozePower += boozePower;
+        Dirty(uid, drunk);
+        // Fire edit end
     }
 
     public void TryRemoveDrunkenness(EntityUid uid)

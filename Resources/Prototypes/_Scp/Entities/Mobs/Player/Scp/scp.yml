@@ -72,6 +72,10 @@
   - type: Scp
     class: Neutralized
   - type: ScpRestriction
+  - type: ProximityReceiver
+  - type: WatchingTarget
+  - type: FearSource
+    phobiaType: Exoremophobia
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
@@ -105,9 +109,8 @@
       - !type:PlaySoundBehavior
         sound: !type:SoundPathSpecifier
           path: /Audio/_Scp/demon-dying.ogg
-  - type: NightVision
-    isToggle: true
-    color: "#808080"
+  - type: ToggleableNightVision
+    effect: ScpEffectNightVision
   - type: Tag
     tags:
     - FootstepSound
@@ -146,7 +149,6 @@
       - !type:NestedSelector
         tableId: ScpArtifactEffectsUltraFunnyTable
         weight: 1
-  - type: WatchingTarget
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name
     description: ghost-panel-antagonist-scp-description
@@ -210,6 +212,15 @@
   - type: Scp
     class: Keter
   - type: Scp106
+  - type: FearSource
+    uponSeenState: Fear
+    uponComeCloser: Fear
+    grainShaderStrength:
+      min: 0
+      max: 1000
+    vignetteShaderStrength:
+      min: 0
+      max: 400
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
     altDisarm: false
@@ -222,6 +233,7 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2
+  - type: XenoScreech
   - type: Muted
   - type: MobThresholds
     thresholds:

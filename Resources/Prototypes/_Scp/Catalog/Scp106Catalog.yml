@@ -54,3 +54,21 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+
+- type: listing
+  id: Scp106Terrify
+  name: ent-Scp106Terrify
+  description: ent-Scp106Terrify.desc
+  productEvent: !type:Scp106BoughtTerrify
+    boughtAction: Scp106Terrify
+  categories:
+  - Scp106Abilities
+  cost:
+    LifeEssence: 20
+  raiseProductEventOnUser: true
+  icon:
+    sprite: _Scp/Scp106/actions.rsi
+    state: leave_phantom
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

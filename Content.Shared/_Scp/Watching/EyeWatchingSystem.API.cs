@@ -1,25 +1,20 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Numerics;
 using Content.Shared._Scp.Blinking;
-using Content.Shared.Examine;
+using Content.Shared._Scp.Proximity;
+using Content.Shared._Scp.Watching.FOV;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Storage.Components;
 
 namespace Content.Shared._Scp.Watching;
 
-// TODO: Отдельная система FOV с затемнением всего, что находится за спиной персонажа
 public sealed partial class EyeWatchingSystem
 {
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-
-    // Возможно удваивается на 2, что приводит к использованию поля зрения в 240 градусов в реальности
-    // Не ебу за математику, поэтому хз
-    public const float DefaultFieldOfViewAngle = 120f;
+    [Dependency] private readonly FieldOfViewSystem _fov = default!;
 
     /// <summary>
     /// Проверяет, смотрит ли кто-то на указанную цель
@@ -72,16 +67,35 @@ public sealed partial class EyeWatchingSystem
     /// В методе нет проверок на дополнительные состояния, такие как моргание/закрыты ли глаза/поле зрения т.п.
     /// Единственная проверка - можно ли физически увидеть цель(т.е. не закрыта ли она стеной и т.п.)
     /// </remarks>
-    /// <param name="ent">Цель, для которой ищем потенциальных смотрящих</param>
+    /// <param name="ent">Цель, для которой ищем потенциальных смотрящих</param>\
+    /// <param name="type">Требуемая прозрачность линии видимости.</param>
     /// <returns>Список всех, кто потенциально видит цель</returns>
-    public IEnumerable<EntityUid> GetAllVisibleTo<T>(Entity<TransformComponent?> ent) where T : IComponent
+    public IEnumerable<EntityUid> GetAllVisibleTo<T>(Entity<TransformComponent?> ent, LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent)
+        where T : IComponent
+    {
+        return GetAllEntitiesVisibleTo<T>(ent, type)
+            .Select(e => e.Owner);
+    }
+
+    /// <summary>
+    /// Получает и возвращает всех потенциально смотрящих на указанную цель.
+    /// </summary>
+    /// <remarks>
+    /// В методе нет проверок на дополнительные состояния, такие как моргание/закрыты ли глаза/поле зрения т.п.
+    /// Единственная проверка - можно ли физически увидеть цель(т.е. не закрыта ли она стеной и т.п.)
+    /// </remarks>
+    /// <param name="ent">Цель, для которой ищем потенциальных смотрящих</param>\
+    /// <param name="type">Требуемая прозрачность линии видимости.</param>
+    /// <returns>Список всех, кто потенциально видит цель</returns>
+    public IEnumerable<Entity<T>> GetAllEntitiesVisibleTo<T>(Entity<TransformComponent?> ent, LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent)
+        where T : IComponent
     {
         if (!Resolve(ent.Owner, ref ent.Comp))
             return [];
 
-        return _lookup.GetEntitiesInRange<T>(ent.Comp.Coordinates, ExamineSystemShared.ExamineRange)
-            .Where(eye => _examine.InRangeUnOccluded(eye, ent, ignoreInsideBlocker: false))
-            .Select(e => e.Owner);
+        return _lookup.GetEntitiesInRange<T>(ent.Comp.Coordinates, SeeRange)
+            .Where(eye => _proximity.IsRightType(ent, eye, type, out _))
+            .Where(e => e.Owner != ent.Owner);
     }
 
     /// <summary>
@@ -120,6 +134,22 @@ public sealed partial class EyeWatchingSystem
     }
 
     /// <summary>
+    /// Простая проверка на то, видят ли переданную сущность другие сущности.
+    /// Вместо проверки на интервальное моргание используется проверка на мануальное закрытие глаз.
+    /// </summary>
+    /// <param name="target">Сущность, на которую смотрят</param>
+    /// <param name="watchers">Смотрящие</param>
+    /// <returns>Смотри ли хоть кто-нибудь из переданных</returns>
+    public bool SimpleIsWatchedBy(EntityUid target, IEnumerable<EntityUid> watchers)
+    {
+        var viewers = watchers
+            .Where(eye => CanBeWatched(eye, target))
+            .Where(eye => !_blinking.AreEyesClosedManually(eye));
+
+        return viewers.Any();
+    }
+
+    /// <summary>
     /// Проверяет, может ли цель вообще быть увидена смотрящим
     /// </summary>
     /// <remarks>
@@ -136,6 +166,9 @@ public sealed partial class EyeWatchingSystem
         if (viewer.Owner == target)
             return false;
 
+        if (HasComp<InsideEntityStorageComponent>(target))
+            return false;
+
         return true;
     }
 
@@ -147,13 +180,13 @@ public sealed partial class EyeWatchingSystem
     /// <param name="useFov">Применять ли проверку на поле зрения?</param>
     /// <param name="fovOverride">Если нужно использовать другой угол поля зрения</param>
     /// <returns>Видит ли смотрящий цель</returns>
-    public bool IsEyeBlinded(Entity<BlinkableComponent?> viewer, EntityUid target, bool useFov = false, float? fovOverride = null)
+    public bool IsEyeBlinded(Entity<BlinkableComponent?> viewer, EntityUid target, bool useFov = true, float? fovOverride = null)
     {
         if (_mobState.IsIncapacitated(viewer))
             return true;
 
         // Проверяем, видит ли смотрящий цель
-        if (useFov & !IsInViewAngle(viewer, target, fovOverride ?? DefaultFieldOfViewAngle))
+        if (useFov & !_fov.IsInViewAngle(viewer.Owner, target, fovOverride))
             return true; // Если не видит, то не считаем его как смотрящего
 
         if (_blinking.IsBlind(viewer, true))
@@ -166,50 +199,5 @@ public sealed partial class EyeWatchingSystem
             return true;
 
         return false;
-    }
-
-    /// <summary>
-    /// Проверяет, находится ли цель в поле зрения
-    /// </summary>
-    /// <param name="viewer">Смотрящий</param>
-    /// <param name="target">Цель, которую мы проверяем</param>
-    /// <param name="maxAngle">Угол обзора в градусах</param>
-    /// <returns>Находится ли цель в поле зрения</returns>
-    public bool IsInViewAngle(EntityUid viewer, EntityUid target, float maxAngle)
-    {
-        var angle = FindAngleBetween(viewer, target);
-
-        // Если angle больше, чем maxAngle -> цель вне поля зрения
-        // Если меньше, значит в поле зрения
-        return angle < maxAngle;
-    }
-
-    // TODO: Более подробно описать, что делает метод
-    // После нескольких месяцев после написания этого кода нейронкой я забыл, что тут конкретно происходит
-    // Но зато работает
-    public float FindAngleBetween(Entity<TransformComponent?> viewer, Entity<TransformComponent?> target)
-    {
-        if (!Resolve(target, ref target.Comp))
-            return float.MaxValue;
-
-        if (!Resolve(viewer, ref viewer.Comp))
-            return float.MaxValue;
-
-        var targetWorldPosition = _transform.GetMoverCoordinates(target.Owner);
-        var viewerWorldPosition = _transform.GetMoverCoordinates(viewer.Owner);
-
-        var toTarget = (targetWorldPosition.Position - viewerWorldPosition.Position).Normalized(); // Вектор от target к SCP
-        var viewerForward = viewer.Comp.LocalRotation.ToWorldVec(); // Направление взгляда target
-
-        var dotProduct = Vector2.Dot(viewerForward, toTarget);
-
-        // Если цель смотрит спиной, возвращаем MaxValue
-        if (dotProduct < 0)
-            return float.MaxValue;
-
-        // Иначе вычисляем угол
-        var angle = MathF.Acos(dotProduct) * (180f / MathF.PI);
-
-        return angle;
     }
 }

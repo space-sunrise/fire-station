@@ -85,8 +85,8 @@ names-ai-dataset-74 = МаММи
 names-ai-dataset-75 = Дурной3000
 names-ai-dataset-76 = Мультивак
 # names-ai-dataset-77 = NCH
-# A play on both NT as in NanoTrasen and NT as in windows NT, of which version 6.0 is windows vista
-names-ai-dataset-78 = NT v6.0
+# Обыгрывалась аббревиатура NT (Nanotrasen); после замены на «ФОНД v6.0» шутка утратила актуальность.
+names-ai-dataset-78 = ФОНД v6.0
 names-ai-dataset-79 = Пакард Бэлл
 # names-ai-dataset-80 = PTO
 names-ai-dataset-81 = Проект Y2K

@@ -1,4 +1,5 @@
 ﻿using Content.Shared.Actions;
+using Content.Shared.Bed.Sleep;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Flash.Components;
 using Content.Shared.Humanoid;
@@ -10,6 +11,20 @@ public abstract partial class SharedBlinkingSystem
 {
     [Dependency] private readonly BlindableSystem _blindable = default!;
     [Dependency] private readonly SharedActionsSystem _actions = default!;
+
+    private void InitializeEyeClosing()
+    {
+        SubscribeLocalEvent<BlinkableComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<BlinkableComponent, ComponentShutdown>(OnShutdown);
+        SubscribeLocalEvent<BlinkableComponent, ToggleEyesActionEvent>(OnToggleAction);
+        SubscribeLocalEvent<BlinkableComponent, CanSeeAttemptEvent>(OnTrySee);
+
+        SubscribeLocalEvent<HumanoidAppearanceComponent, EntityClosedEyesEvent>(OnHumanoidClosedEyes);
+        SubscribeLocalEvent<HumanoidAppearanceComponent, EntityOpenedEyesEvent>(OnHumanoidOpenedEyes);
+
+        SubscribeLocalEvent<BlinkableComponent, SleepStateChangedEvent>(OnWakeUp);
+        SubscribeLocalEvent<BlinkableComponent, TryingToSleepEvent>(OnTryingSleep);
+    }
 
     #region Event handlers
 
@@ -51,6 +66,10 @@ public abstract partial class SharedBlinkingSystem
         if (HasComp<FlashedComponent>(ent))
             return;
 
+        // Нельзя дергать глазами, пока мы спим
+        if (HasComp<SleepingComponent>(ent))
+            return;
+
         var newState = ent.Comp.State == EyesState.Closed ? EyesState.Opened : EyesState.Closed;
         args.Handled = TrySetEyelids((ent.Owner, ent.Comp), newState, true);
     }
@@ -64,6 +83,22 @@ public abstract partial class SharedBlinkingSystem
             return;
 
         args.Cancel();
+    }
+
+    private void OnWakeUp(Entity<BlinkableComponent> ent, ref SleepStateChangedEvent args)
+    {
+        if (args.FellAsleep)
+            return;
+
+        TrySetEyelids((ent.Owner, ent.Comp), EyesState.Opened, true);
+    }
+
+    private void OnTryingSleep(Entity<BlinkableComponent> ent, ref TryingToSleepEvent args)
+    {
+        if (args.Cancelled)
+            return;
+
+        TrySetEyelids((ent.Owner, ent.Comp), EyesState.Closed, true);
     }
 
     /// <summary>
@@ -154,6 +189,23 @@ public abstract partial class SharedBlinkingSystem
 
         // Мб одна из проверок лишняя, но ладно пусть будет. Не сильная потеря производительности
         if (!IsBlind(ent) || ent.Comp.State != EyesState.Closed)
+            return false;
+
+        return true;
+    }
+
+    /// <summary>
+    /// Проверяет, закрыты ли у сущности глаза вручную.
+    /// </summary>
+    public bool AreEyesClosedManually(Entity<BlinkableComponent?> ent)
+    {
+        if (!Resolve(ent.Owner, ref ent.Comp, false))
+            return false;
+
+        if (ent.Comp.State != EyesState.Closed)
+            return false;
+
+        if (!ent.Comp.ManuallyClosed)
             return false;
 
         return true;

@@ -1,0 +1,52 @@
+﻿- type: traitCategory
+  id: Fear
+  name: trait-category-fear
+  maxTraitPoints: 2
+
+- type: trait
+  id: Hemophobia
+  name: trait-hemophobia-name
+  description: trait-hemophobia-desc
+  category: Fear
+  cost: 1
+  whitelist:
+    components:
+    - Fear
+  components:
+  - type: Hemophobia
+
+- type: trait
+  id: Stupor
+  name: trait-stupor-name
+  description: trait-stupor-desc
+  category: Fear
+  cost: 1
+  whitelist:
+    components:
+    - Fear
+  components:
+  - type: FearStupor
+
+- type: trait
+  id: FearStuttering
+  name: trait-fear-stuttering-name
+  description: trait-fear-stuttering-desc
+  category: Fear
+  cost: 1
+  whitelist:
+    components:
+    - Fear
+  components:
+  - type: FearStuttering
+
+- type: trait
+  id: FearFainting
+  name: trait-fainting-name
+  description: trait-fainting-desc
+  category: Fear
+  cost: 1
+  whitelist:
+    components:
+    - Fear
+  components:
+  - type: FearFainting

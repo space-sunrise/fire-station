@@ -24,9 +24,8 @@
     priority: -5
   - type: FlashImmunity
   - type: Scp106Phantom
-  - type: NightVision
-    isToggle: true
-    color: "#808080"
+  - type: ToggleableNightVision
+    effect: ScpEffectNightVision
 
 - type: entity
   id: Scp106Phantom
