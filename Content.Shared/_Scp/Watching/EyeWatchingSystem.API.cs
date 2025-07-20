@@ -180,7 +180,7 @@ public sealed partial class EyeWatchingSystem
     /// <param name="useFov">Применять ли проверку на поле зрения?</param>
     /// <param name="fovOverride">Если нужно использовать другой угол поля зрения</param>
     /// <returns>Видит ли смотрящий цель</returns>
-    public bool IsEyeBlinded(Entity<BlinkableComponent?> viewer, EntityUid target, bool useFov = false, float? fovOverride = null)
+    public bool IsEyeBlinded(Entity<BlinkableComponent?> viewer, EntityUid target, bool useFov = true, float? fovOverride = null)
     {
         if (_mobState.IsIncapacitated(viewer))
             return true;

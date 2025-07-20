@@ -58,7 +58,7 @@ public sealed partial class EyeWatchingSystem : EntitySystem
             // Проверяет всех потенциальных смотрящих на то, действительно ли они видят цель.
             // Каждый потенциально смотрящий проходит полный комплекс проверок.
             // Выдает полный список всех сущностей, кто действительно видит цель
-            if (!IsWatchedBy(uid, potentialViewers, viewers: out var viewers, false))
+            if (!IsWatchedBy(uid, potentialViewers, viewers: out var viewers))
                 continue;
 
             // Вызываем ивент на смотрящем, говорящие, что он действительно видит цель

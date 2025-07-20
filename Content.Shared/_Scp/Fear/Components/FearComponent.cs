@@ -107,7 +107,7 @@ public sealed partial class FearComponent : Component
     /// Время, через которое игрок снова сможет испугаться источника страха, когда увидит его.
     /// </summary>
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public TimeSpan TimeToGetScaredAgainOnLookAt = TimeSpan.FromSeconds(240f); // 4 минуты
+    public TimeSpan TimeToGetScaredAgainOnLookAt = TimeSpan.FromMinutes(2); // 2 минуты
 
     #endregion
 
