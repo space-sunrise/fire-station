@@ -9,7 +9,7 @@ public sealed partial class FieldOfViewComponent : Component
     public const float MinOpacity = 0.55f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public float Angle = 100f;
+    public float Angle = 160f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public float AngleTolerance = 18f;
