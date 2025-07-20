@@ -6,7 +6,6 @@ using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
-using Robust.Shared.Maths;
 
 namespace Content.Client._Scp.Shaders.FieldOfView;
 

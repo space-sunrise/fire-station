@@ -13,7 +13,7 @@ public sealed class FieldOfViewSystem : EntitySystem
     /// <param name="target">Сущность, которую проверяют.</param>
     /// <param name="fovAngleOverride">Полный угол поля зрения в градусах (например, 120).</param>
     /// <returns>True, если цель в поле зрения.</returns>
-    public bool IsInViewAngle(Entity<FieldOfViewComponent?> viewer, EntityUid target, float? fovAngleOverride)
+    public bool IsInViewAngle(Entity<FieldOfViewComponent?> viewer, EntityUid target, float? fovAngleOverride = null)
     {
         if (!Resolve(viewer, ref viewer.Comp))
             return false;
