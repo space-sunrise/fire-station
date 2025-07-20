@@ -1,7 +1,9 @@
 ﻿using Content.Client._Scp.Shaders.Common;
+using Content.Shared._Scp.ScpCCVars;
 using Content.Shared._Scp.Watching.FOV;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
+using Robust.Shared.Configuration;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Player;
@@ -13,6 +15,7 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly IConfigurationManager _configuration = default!;
 
     private EntityQuery<FieldOfViewComponent> _fovQuery;
     private EntityQuery<FOVHiddenSpriteComponent> _hiddenQuery;
@@ -25,6 +28,9 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
 
         _fovQuery = GetEntityQuery<FieldOfViewComponent>();
         _hiddenQuery = GetEntityQuery<FOVHiddenSpriteComponent>();
+
+        Overlay.ConeOpacity = _configuration.GetCVar(ScpCCVars.FieldOfViewOpacity);
+        _configuration.OnValueChanged(ScpCCVars.FieldOfViewOpacity, OnOpacityChanged);
     }
 
     public override void Update(float frameTime)
@@ -88,5 +94,10 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
     {
         _sprite.SetVisible((uid, sprite), true);
         RemComp<FOVHiddenSpriteComponent>(uid);
+    }
+
+    private void OnOpacityChanged(float option)
+    {
+        Overlay.ConeOpacity = option;
     }
 }

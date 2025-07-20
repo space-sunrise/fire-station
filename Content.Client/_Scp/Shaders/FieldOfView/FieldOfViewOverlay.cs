@@ -29,8 +29,8 @@ public sealed class FieldOfViewOverlay : Overlay
 
     private Angle _currentAngle;
     private const float LerpSpeed = 8f;
-    private const float ConeOpacity = 0.85f;
-    private const float EdgeHardness = 0.08f;
+    public float ConeOpacity;
+    private const float EdgeHardness = 0.4f;
     private const float SafeZoneEdgeWidth = 24.0f;
 
     public override bool RequestScreenTexture => true;

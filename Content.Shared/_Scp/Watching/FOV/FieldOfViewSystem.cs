@@ -19,7 +19,7 @@ public sealed class FieldOfViewSystem : EntitySystem
             return false;
 
         var angle = FindAngleBetween(viewer.Owner, target);
-        var fovAngle = fovAngleOverride ?? viewer.Comp.Angle;
+        var fovAngle = fovAngleOverride ?? Math.Clamp(viewer.Comp.Angle + viewer.Comp.AngleTolerance, 0f, 360f);
 
         // Сравниваем с ПОЛОВИНОЙ угла, так как FindAngleBetween считает угол от центральной линии взгляда.
         // Если угол до цели меньше половины FOV, значит, она внутри конуса зрения.
