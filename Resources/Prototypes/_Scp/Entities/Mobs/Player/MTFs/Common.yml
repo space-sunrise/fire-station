@@ -355,6 +355,25 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert
   - type: NoEmotions
+  - type: Fear # переопределение компонента страха. Ну иначе они ботики какие-то
+    proximityBlockerLevel: None
+    seenBlockerLevel: None
+    fearBasedSpreadAngleModifier:
+      Anxiety: 1.2
+      Fear: 2
+      Terror: 5
+    fearBasedGrainStrength:
+      None: 0
+      Anxiety: 70
+      Fear: 230
+      Terror: 550
+    fearBasedVignetteStrength:
+      None: 0
+      Anxiety: 30
+      Fear: 60
+      Terror: 350
+    baseJitterTime: 2
+    fallOffChance: 1
 
 # командир
 - type: randomHumanoidSettings
