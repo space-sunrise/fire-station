@@ -1,6 +1,7 @@
 ﻿using Content.Client._Scp.Shaders.Common;
 using Content.Shared._Scp.ScpCCVars;
 using Content.Shared._Scp.Watching.FOV;
+using Content.Shared._Sunrise.Footprints;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Shared.Configuration;
@@ -52,20 +53,33 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
             if (player == uid)
                 continue;
 
-            var inFov = _fov.IsInViewAngle(player.Value, uid);
+            ManageSprites(player.Value, uid, sprite);
+        }
 
-            if (sprite.Visible && !inFov && !_hiddenQuery.HasComp(uid))
-            {
-                HideSprite(uid, sprite);
-                continue;
-            }
+        var footprintQuery = EntityQueryEnumerator<FootprintComponent, SpriteComponent>();
 
-            if (inFov && _hiddenQuery.HasComp(uid))
-            {
-                ShowSprite(uid, sprite);
-            }
+        while (footprintQuery.MoveNext(out var uid, out _, out var sprite))
+        {
+            ManageSprites(player.Value, uid, sprite);
         }
     }
+
+    private void ManageSprites(EntityUid player, EntityUid uid, SpriteComponent sprite)
+    {
+        var inFov = _fov.IsInViewAngle(player, uid);
+
+        if (sprite.Visible && !inFov && !_hiddenQuery.HasComp(uid))
+        {
+            HideSprite(uid, sprite);
+            return;
+        }
+
+        if (inFov && _hiddenQuery.HasComp(uid))
+        {
+            ShowSprite(uid, sprite);
+        }
+    }
+
 
     protected override void OnPlayerDetached(Entity<FieldOfViewComponent> ent, ref LocalPlayerDetachedEvent args)
     {
