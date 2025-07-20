@@ -79,6 +79,8 @@ public sealed partial class ChatUIController : UIController
 
     private ISawmill _sawmill = default!;
 
+    private EntityQuery<FieldOfViewComponent> _fovQuery;
+
     public static readonly Dictionary<char, ChatSelectChannel> PrefixToChannel = new()
     {
         {SharedChatSystem.LocalPrefix, ChatSelectChannel.Local},
@@ -255,6 +257,7 @@ public sealed partial class ChatUIController : UIController
         _config.OnValueChanged(CCVars.ChatWindowOpacity, OnChatWindowOpacityChanged);
 
         InitializeHighlights();
+        _fovQuery = _ent.GetEntityQuery<FieldOfViewComponent>();
     }
 
     public void OnScreenLoad()
@@ -685,7 +688,7 @@ public sealed partial class ChatUIController : UIController
             var otherPos = _transform?.GetMapCoordinates(ent) ?? MapCoordinates.Nullspace;
 
             // Fire edit start - чтобы в поле зрения не попадались чатбаблы
-            if (player.HasValue && _fov != null)
+            if (player.HasValue && _fov != null && _fovQuery.HasComp(player))
             {
                 if (!_fov.IsInViewAngle(player.Value, ent))
                 {
