@@ -33,6 +33,15 @@ public sealed class FieldOfViewOverlay : Overlay
     private const float EdgeHardness = 0.4f;
     private const float SafeZoneEdgeWidth = 24.0f;
 
+    private readonly EntityQuery<FieldOfViewComponent> _fovQuery;
+    private readonly EntityQuery<EyeComponent> _eyeQuery;
+    private readonly EntityQuery<SpriteComponent> _spriteQuery;
+    private readonly EntityQuery<TransformComponent> _xformQuery;
+
+    private TransformComponent? _xform;
+    private SpriteComponent? _sprite;
+    private FieldOfViewComponent? _fov;
+
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
@@ -42,6 +51,11 @@ public sealed class FieldOfViewOverlay : Overlay
 
         _transform = _entManager.System<SharedTransformSystem>();
         _spriteSystem = _entManager.System<SpriteSystem>();
+
+        _fovQuery = _entManager.GetEntityQuery<FieldOfViewComponent>();
+        _eyeQuery = _entManager.GetEntityQuery<EyeComponent>();
+        _spriteQuery = _entManager.GetEntityQuery<SpriteComponent>();
+        _xformQuery = _entManager.GetEntityQuery<TransformComponent>();
 
         _shader = _prototype.Index<ShaderPrototype>("FieldOfView").InstanceUnique();
         _blurXShader = _prototype.Index<ShaderPrototype>("BlurryVisionX").InstanceUnique();
@@ -59,10 +73,10 @@ public sealed class FieldOfViewOverlay : Overlay
     {
         var playerEntity = _player.LocalEntity;
 
-        if (!_entManager.HasComponent<FieldOfViewComponent>(playerEntity))
+        if (!_fovQuery.HasComponent(playerEntity))
             return false;
 
-        if (!_entManager.TryGetComponent<EyeComponent>(playerEntity, out var eyeComp) || args.Viewport.Eye != eyeComp.Eye)
+        if (!_eyeQuery.TryGetComponent(playerEntity, out var eyeComp) || args.Viewport.Eye != eyeComp.Eye)
             return false;
 
         var size = args.Viewport.Size;
@@ -83,13 +97,20 @@ public sealed class FieldOfViewOverlay : Overlay
         var playerEntity = _player.LocalEntity;
         var eye = args.Viewport.Eye;
 
-        if (ScreenTexture == null || _backBuffer == null || _blurPass == null || eye == null ||
-            !_entManager.TryGetComponent(playerEntity, out TransformComponent? playerXform) ||
-            !_entManager.TryGetComponent(playerEntity, out FieldOfViewComponent? visionComponent) ||
-            !_entManager.TryGetComponent(playerEntity, out SpriteComponent? sprite))
-        {
+        if (!playerEntity.HasValue)
             return;
-        }
+
+        if (ScreenTexture == null || _backBuffer == null || _blurPass == null || eye == null)
+            return;
+
+        if (_xform == null && !_xformQuery.TryGetComponent(playerEntity, out _xform))
+            return;
+
+        if (_fov == null && !_fovQuery.TryGetComponent(playerEntity, out _fov))
+            return;
+
+        if (_sprite == null && !_spriteQuery.TryGetComponent(playerEntity, out _sprite))
+            return;
 
         var handle = args.WorldHandle;
         var viewportBounds = new Box2(Vector2.Zero, args.Viewport.Size);
@@ -108,7 +129,7 @@ public sealed class FieldOfViewOverlay : Overlay
             handle.DrawRect(viewportBounds, Color.White);
         }, Color.Transparent);
 
-        var correctedAngle = playerXform.LocalRotation - Angle.FromDegrees(90);
+        var correctedAngle = _xform.LocalRotation - Angle.FromDegrees(90);
 
         if (_currentAngle.Theta == 0)
             _currentAngle = correctedAngle;
@@ -118,13 +139,13 @@ public sealed class FieldOfViewOverlay : Overlay
 
         var forwardVec = _currentAngle.ToVec();
 
-        var worldPos = _transform.GetWorldPosition(playerXform);
+        var worldPos = _transform.GetWorldPosition(_xform);
         var screenPos = args.Viewport.WorldToLocal(worldPos);
         screenPos.Y = args.Viewport.Size.Y - screenPos.Y;
 
-        var fovCosine = FieldOfViewSystem.GetFovCosine(visionComponent.Angle);
+        var fovCosine = FieldOfViewSystem.GetFovCosine(_fov.Angle);
 
-        var bounds = _spriteSystem.GetLocalBounds((playerEntity.Value, sprite));
+        var bounds = _spriteSystem.GetLocalBounds((playerEntity.Value, _sprite));
         var worldRadius = Math.Max(bounds.Width, bounds.Height);
 
         var zoom = eye.Zoom.X;
