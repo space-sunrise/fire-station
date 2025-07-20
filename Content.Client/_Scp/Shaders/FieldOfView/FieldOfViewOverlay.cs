@@ -82,8 +82,9 @@ public sealed class FieldOfViewOverlay : Overlay
     protected override void Draw(in OverlayDrawArgs args)
     {
         var playerEntity = _player.LocalEntity;
+        var eye = args.Viewport.Eye;
 
-        if (ScreenTexture == null || _backBuffer == null || _blurPass == null ||
+        if (ScreenTexture == null || _backBuffer == null || _blurPass == null || eye == null ||
             !_entManager.TryGetComponent(playerEntity, out TransformComponent? playerXform) ||
             !_entManager.TryGetComponent(playerEntity, out FieldOfViewComponent? visionComponent) ||
             !_entManager.TryGetComponent(playerEntity, out SpriteComponent? sprite))
@@ -92,7 +93,7 @@ public sealed class FieldOfViewOverlay : Overlay
         }
 
         var handle = args.WorldHandle;
-        var viewportBounds = Box2.FromDimensions(Vector2.Zero, args.Viewport.Size);
+        var viewportBounds = new Box2(Vector2.Zero, args.Viewport.Size);
 
         handle.RenderInRenderTarget(_blurPass, () =>
         {
@@ -126,7 +127,10 @@ public sealed class FieldOfViewOverlay : Overlay
 
         var bounds = _spriteSystem.GetLocalBounds((playerEntity.Value, sprite));
         var worldRadius = bounds.Height;
-        var pixelRadius = worldRadius * EyeManager.PixelsPerMeter * args.Viewport.RenderScale.Y;
+
+        var zoom = eye.Zoom.X;
+        var pixelRadius = worldRadius * EyeManager.PixelsPerMeter / zoom;
+        var pixelEdgeWidth = SafeZoneEdgeWidth / zoom;
 
         _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
         _shader.SetParameter("BLURRED_TEXTURE", _backBuffer.Texture);
@@ -136,7 +140,7 @@ public sealed class FieldOfViewOverlay : Overlay
         _shader.SetParameter("safeZoneRadius", pixelRadius);
         _shader.SetParameter("coneOpacity", ConeOpacity);
         _shader.SetParameter("edgeHardness", EdgeHardness);
-        _shader.SetParameter("safeZoneEdgeWidth", SafeZoneEdgeWidth);
+        _shader.SetParameter("safeZoneEdgeWidth", pixelEdgeWidth);
 
         handle.UseShader(_shader);
         handle.DrawRect(args.WorldBounds, Color.White);
