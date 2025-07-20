@@ -273,6 +273,7 @@
   - type: CritHeartbeat
   # Sunrise-End
   # Fire start
+  - type: FieldOfView
   - type: Blinkable
   - type: EyeClosing
   - type: Fear

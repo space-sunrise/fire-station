@@ -1,0 +1,24 @@
+﻿uniform sampler2D SCREEN_TEXTURE;
+uniform highp vec2 playerScreenPos;
+uniform highp vec2 playerForward;
+uniform highp float fovCosine;
+uniform highp float safeZoneRadius;
+
+void fragment() {
+    highp vec2 toPixel = FRAGCOORD.xy - playerScreenPos;
+    highp float distance = length(toPixel);
+
+    if (distance <= safeZoneRadius) {
+        COLOR = texture(SCREEN_TEXTURE, UV);
+        return;
+    }
+
+    highp vec2 directionToPixel = normalize(toPixel);
+    highp float dotProduct = dot(playerForward, directionToPixel);
+
+    if (dotProduct < fovCosine) {
+        COLOR = vec4(0.0, 0.0, 0.0, 1.0);
+    } else {
+        COLOR = texture(SCREEN_TEXTURE, UV);
+    }
+}

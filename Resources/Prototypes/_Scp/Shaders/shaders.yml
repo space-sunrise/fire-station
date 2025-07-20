@@ -39,3 +39,8 @@
   id: HighlightWave
   kind: source
   path: "/Textures/_Scp/Shaders/highlight_wave.swsl"
+
+- type: shader
+  id: FieldOfView
+  kind: source
+  path: "/Textures/_Scp/Shaders/field_of_view.swsl"
