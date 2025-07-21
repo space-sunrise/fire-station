@@ -44,6 +44,9 @@ public sealed class FieldOfViewOverlay : Overlay
 
     public EntityUid? EntityOverride;
 
+    private static readonly Angle AngleCorrection = Angle.FromDegrees(180);
+    private const float DeltaTimeFrameRate = 1f / 30f;
+
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
@@ -140,12 +143,13 @@ public sealed class FieldOfViewOverlay : Overlay
             handle.DrawRect(viewportBounds, Color.White);
         }, Color.Transparent);
 
-        var correctedAngle = _xform.LocalRotation - Angle.FromDegrees(90);
+        var onScreenAngle = _xform.LocalRotation + eye.Rotation.RoundToCardinalAngle();
+        var correctedAngle = onScreenAngle - AngleCorrection;
 
         if (_currentAngle.Theta == 0)
             _currentAngle = correctedAngle;
 
-        var deltaTime = Math.Min((float)_timing.FrameTime.TotalSeconds, 1f / 30f);
+        var deltaTime = Math.Min((float)_timing.FrameTime.TotalSeconds, DeltaTimeFrameRate);
         _currentAngle = Angle.Lerp(_currentAngle, correctedAngle, LerpSpeed * deltaTime);
 
         var forwardVec = _currentAngle.ToVec();
