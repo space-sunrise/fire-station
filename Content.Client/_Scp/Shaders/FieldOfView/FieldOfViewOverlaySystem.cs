@@ -16,6 +16,7 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
 {
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IConfigurationManager _configuration = default!;
@@ -24,9 +25,18 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
     private EntityQuery<FieldOfViewComponent> _fovQuery;
     private EntityQuery<FOVHiddenSpriteComponent> _hiddenQuery;
     private EntityQuery<SpriteComponent> _spriteQuery;
+    private EntityQuery<TransformComponent> _xformQuery;
+
+    private EntityQuery<ItemComponent> _itemQuery;
+    private EntityQuery<MobStateComponent> _mobQuery;
+    private EntityQuery<FootprintComponent> _footprintQuery;
 
     private TimeSpan _nextTimeUpdate = TimeSpan.Zero;
     private TimeSpan _updateCooldown = TimeSpan.FromSeconds(0.1f);
+
+    private const float UpdateRange = 20f;
+
+    private bool _useAltMethod;
 
     public override void Initialize()
     {
@@ -37,15 +47,23 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
         _fovQuery = GetEntityQuery<FieldOfViewComponent>();
         _hiddenQuery = GetEntityQuery<FOVHiddenSpriteComponent>();
         _spriteQuery = GetEntityQuery<SpriteComponent>();
+        _xformQuery = GetEntityQuery<TransformComponent>();
 
-        Overlay.ConeOpacity = _configuration.GetCVar(ScpCCVars.FieldOfViewOpacity);
-        _configuration.OnValueChanged(ScpCCVars.FieldOfViewOpacity, OnOpacityChanged);
+        _itemQuery = GetEntityQuery<ItemComponent>();
+        _mobQuery = GetEntityQuery<MobStateComponent>();
+        _footprintQuery = GetEntityQuery<FootprintComponent>();
+
+        _useAltMethod = _configuration.GetCVar(ScpCCVars.FieldOfViewUseAltMethod);
+        _configuration.OnValueChanged(ScpCCVars.FieldOfViewUseAltMethod, b => _useAltMethod = b);
 
         Overlay.BlurScale = _configuration.GetCVar(ScpCCVars.FieldOfViewBlurScale);
         _configuration.OnValueChanged(ScpCCVars.FieldOfViewBlurScale, OnBlurScaleChanged);
 
         _updateCooldown = TimeSpan.FromSeconds(_configuration.GetCVar(ScpCCVars.FieldOfViewCheckCooldown));
         _configuration.OnValueChanged(ScpCCVars.FieldOfViewCheckCooldown, OnCheckCooldownChanged);
+
+        Overlay.ConeOpacity = _configuration.GetCVar(ScpCCVars.FieldOfViewOpacity);
+        _configuration.OnValueChanged(ScpCCVars.FieldOfViewOpacity, OnOpacityChanged);
 
         SubscribeLocalEvent<FOVHiddenSpriteComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<FieldOfViewComponent, AfterAutoHandleStateEvent>(AfterHandleState);
@@ -68,10 +86,7 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
         if (_player.LocalEntity != ent)
             return;
 
-        if (!_spriteQuery.TryComp(args.Transform.ParentUid, out var sprite))
-            return;
-
-        ShowSprite(args.Transform.ParentUid, ref sprite);
+        ShowSprite(args.Transform.ParentUid);
     }
 
     private void OnShutdown(Entity<FOVHiddenSpriteComponent> ent, ref ComponentShutdown args)
@@ -109,50 +124,89 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
         if (_timing.CurTime < _nextTimeUpdate)
             return;
 
-        var player = _player.LocalEntity;
+        _nextTimeUpdate = _timing.CurTime + _updateCooldown;
 
+        var player = _player.LocalEntity;
         if (!_fovQuery.TryComp(player, out var localFov))
             return;
 
         var chosenEntity = localFov.RelayEntity ?? player;
-
         if (!chosenEntity.HasValue)
             return;
 
-        var playerParent = Transform(player.Value).ParentUid;
+        var playerParent = _xformQuery.Comp(player.Value).ParentUid;
         var defaultAngle = localFov.Angle;
         var angleTolerance = localFov.AngleTolerance;
+
+        UpdatePrimaryMethod(chosenEntity.Value, player.Value, playerParent, defaultAngle, angleTolerance);
+        UpdateAltMethod(chosenEntity.Value, player.Value, playerParent, defaultAngle, angleTolerance);
+    }
+
+    private void UpdatePrimaryMethod(EntityUid chosenEntity, EntityUid player, EntityUid playerParent, Angle defaultAngle, Angle angleTolerance)
+    {
+        if (_useAltMethod)
+            return;
 
         var query = EntityQueryEnumerator<ItemComponent, SpriteComponent>();
 
         while (query.MoveNext(out var uid, out _, out var sprite))
         {
-            ManageSprites(chosenEntity.Value, defaultAngle, angleTolerance,  uid, ref sprite);
+            ManageSprites(chosenEntity, defaultAngle, angleTolerance,  uid, ref sprite);
         }
 
         var mobQuery = EntityQueryEnumerator<MobStateComponent, SpriteComponent>();
 
         while (mobQuery.MoveNext(out var uid, out _, out var sprite))
         {
-            if (uid == player)
-                continue;
-
             // Здесь остается именно парент игрока, так как в большинстве случаев
             // chosenEntity и будет этим парентом.
-            if (uid == playerParent)
+            if (uid == player || uid == playerParent)
                 continue;
 
-            ManageSprites(chosenEntity.Value, defaultAngle, angleTolerance,  uid, ref sprite);
+            ManageSprites(chosenEntity, defaultAngle, angleTolerance,  uid, ref sprite);
         }
 
         var footprintQuery = EntityQueryEnumerator<FootprintComponent, SpriteComponent>();
 
         while (footprintQuery.MoveNext(out var uid, out _, out var sprite))
         {
-            ManageSprites(chosenEntity.Value, defaultAngle, angleTolerance,  uid, ref sprite);
+            ManageSprites(chosenEntity, defaultAngle, angleTolerance,  uid, ref sprite);
+        }
+    }
+
+
+    private void UpdateAltMethod(EntityUid chosenEntity, EntityUid player, EntityUid playerParent, Angle defaultAngle, Angle angleTolerance)
+    {
+        if (!_useAltMethod)
+            return;
+
+        if (!_xformQuery.TryComp(chosenEntity, out var chosenXform))
+            return;
+
+        var entitiesInRange = _lookup.GetEntitiesInRange<SpriteComponent>(chosenXform.Coordinates, UpdateRange);
+
+        foreach (var (uid, sprite) in entitiesInRange)
+        {
+            if (uid == player || uid == playerParent)
+                continue;
+
+            if (!CanBeHidden(uid))
+                continue;
+
+            if (_fov.IsInViewAngle(chosenEntity, defaultAngle, angleTolerance, uid))
+                continue;
+
+            HideSprite(uid, in sprite);
         }
 
-        _nextTimeUpdate = _timing.CurTime + _updateCooldown;
+        var toShowQuery = EntityQueryEnumerator<FOVHiddenSpriteComponent>();
+        while (toShowQuery.MoveNext(out var uid, out _))
+        {
+            if (!_fov.IsInViewAngle(chosenEntity, defaultAngle, angleTolerance, uid))
+                continue;
+
+            ShowSprite(uid);
+        }
     }
 
     private void ManageSprites(EntityUid chosenEntity, Angle defaultAngle, Angle angleTolerance, EntityUid target, ref SpriteComponent sprite)
@@ -169,14 +223,31 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
             if (!_transform.InRange(chosenEntity, target, 16f))
                 return;
 
-            HideSprite(target, ref sprite);
+            HideSprite(target, in sprite);
             return;
         }
 
         if (inFov && isHidden)
         {
-            ShowSprite(target, ref sprite);
+            ShowSprite(target);
         }
+    }
+
+    private bool CanBeHidden(EntityUid uid)
+    {
+        if (IsClientSide(uid))
+            return false;
+
+        if (_itemQuery.HasComp(uid))
+            return true;
+
+        if (_mobQuery.HasComp(uid))
+            return true;
+
+        if (_footprintQuery.HasComp(uid))
+            return true;
+
+        return false;
     }
 
     protected override void OnPlayerAttached(Entity<FieldOfViewComponent> ent, ref LocalPlayerAttachedEvent args)
@@ -196,15 +267,15 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
 
     private void ShowAllHiddenSprites()
     {
-        var query = EntityQueryEnumerator<FOVHiddenSpriteComponent, SpriteComponent>();
+        var query = EntityQueryEnumerator<FOVHiddenSpriteComponent>();
 
-        while (query.MoveNext(out var uid, out _, out var sprite))
+        while (query.MoveNext(out var uid, out _))
         {
-            ShowSprite(uid, ref sprite);
+            ShowSprite(uid);
         }
     }
 
-    private void HideSprite(EntityUid uid, ref SpriteComponent sprite)
+    private void HideSprite(EntityUid uid, in SpriteComponent sprite)
     {
         if (!sprite.Visible)
             return;
@@ -213,11 +284,8 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
         AddComp<FOVHiddenSpriteComponent>(uid);
     }
 
-    private void ShowSprite(EntityUid uid, ref SpriteComponent sprite)
+    private void ShowSprite(EntityUid uid)
     {
-        if (sprite.Visible)
-            return;
-
         RemComp<FOVHiddenSpriteComponent>(uid);
     }
 

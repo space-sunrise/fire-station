@@ -25,6 +25,7 @@ public sealed partial class ScpTab : Control
             GrainOverlayComponent.BaseStrengthLimit.Min, GrainOverlayComponent.BaseStrengthLimit.Max);
 
         // Поле зрения
+        Control.AddOptionCheckBox(ScpCCVars.FieldOfViewUseAltMethod, FieldOfViewUseAltMethod);
         Control.AddOptionPercentSlider(ScpCCVars.FieldOfViewOpacity, FieldOfViewOpacitySlider,
             FieldOfViewComponent.MinOpacity, FieldOfViewComponent.MaxOpacity);
         Control.AddOptionPercentSlider(ScpCCVars.FieldOfViewBlurScale, FieldOfViewBlurScale,

@@ -22,10 +22,10 @@ public sealed partial class ScpCCVars
         CVarDef.Create("shader.grain_strength", 140, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
-    /// Прозрачность наложения поля зрения
+    /// Будет ли использовать альтернативный метод просчета сущностей для поля зрения
     /// </summary>
-    public static readonly CVarDef<float> FieldOfViewOpacity =
-        CVarDef.Create("shader.field_of_view_opacity", 0.7f, CVar.CLIENTONLY | CVar.ARCHIVE);
+    public static readonly CVarDef<bool> FieldOfViewUseAltMethod =
+        CVarDef.Create("shader.field_of_view_use_alt_method", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
     /// Размер текстуры размытия у шейдера поля зрения
@@ -38,4 +38,11 @@ public sealed partial class ScpCCVars
     /// </summary>
     public static readonly CVarDef<float> FieldOfViewCheckCooldown =
         CVarDef.Create("shader.field_of_view_check_cooldown", 0.1f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Прозрачность наложения поля зрения
+    /// </summary>
+    public static readonly CVarDef<float> FieldOfViewOpacity =
+        CVarDef.Create("shader.field_of_view_opacity", 0.7f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
 }
