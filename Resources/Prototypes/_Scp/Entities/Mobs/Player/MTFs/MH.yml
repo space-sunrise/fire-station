@@ -115,6 +115,7 @@
     - HandheldCriminalRecordsMonitorUnpowered
     - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
+    - BoxMRE
     belt:
     - MedkitCombatFilled
     - ChemistryBottleEpinephrine
@@ -122,8 +123,6 @@
     - PrefilledSyringe
     - PillAmbuzolPlus
     - PillAmbuzolPlus
-    - PillAmbuzolPlus
-    - PillAmbuzol
     - PillAmbuzol
     - PillAmbuzol
     - Handcuffs
@@ -193,6 +192,7 @@
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
+    - BoxMRE
     belt:
     - MedkitCombatFilled
     - ChemistryBottleEpinephrine
@@ -200,8 +200,6 @@
     - PrefilledSyringe
     - PillAmbuzolPlus
     - PillAmbuzolPlus
-    - PillAmbuzolPlus
-    - PillAmbuzol
     - PillAmbuzol
     - PillAmbuzol
     - Handcuffs
@@ -271,6 +269,7 @@
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
+    - BoxMRE
     belt:
     - MedkitCombatFilled
     - ChemistryBottleEpinephrine
@@ -278,8 +277,6 @@
     - PrefilledSyringe
     - PillAmbuzolPlus
     - PillAmbuzolPlus
-    - PillAmbuzolPlus
-    - PillAmbuzol
     - PillAmbuzol
     - PillAmbuzol
     - Handcuffs

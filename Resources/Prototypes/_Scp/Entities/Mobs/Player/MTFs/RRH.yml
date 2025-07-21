@@ -124,6 +124,7 @@
     - HandheldCriminalRecordsMonitorUnpowered
     - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
+    - BoxMRE
     belt:
     - Stunbaton
     - Handcuffs
@@ -202,6 +203,7 @@
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
+    - BoxMRE
     belt:
     - Stunbaton
     - Handcuffs
@@ -274,6 +276,7 @@
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
+    - BoxMRE
     belt:
     - Stunbaton
     - Handcuffs
