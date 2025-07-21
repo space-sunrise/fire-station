@@ -45,6 +45,7 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
         SubscribeLocalEvent<FieldOfViewComponent, AfterAutoHandleStateEvent>(AfterHandleState);
 
         SubscribeLocalEvent<FieldOfViewComponent, EntParentChangedMessage>(OnParentChanged);
+        SubscribeNetworkEvent<CameraSwitchedEvent>(OnSwitchMessage);
     }
 
     private void AfterHandleState(Entity<FieldOfViewComponent> ent, ref AfterAutoHandleStateEvent args)
@@ -73,6 +74,20 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
             return;
 
         _sprite.SetVisible((ent, sprite), true);
+    }
+
+    // TODO: Лютый щиткод, который работает 50 на 50, но лучше, чем ничего
+    private void OnSwitchMessage(CameraSwitchedEvent args)
+    {
+        var actor = GetEntity(args.Actor);
+
+        if (_player.LocalEntity != actor)
+            return;
+
+        if (!_fovQuery.HasComp(actor))
+            return;
+
+        ShowAllHiddenSprites();
     }
 
     /// <summary>
@@ -144,7 +159,8 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
 
         if (sprite.Visible && !inFov && !isHidden)
         {
-            if (!_transform.InRange(chosenEntity, target, 25f))
+            // TODO: Щиткод затычка, которая нужна для камер
+            if (!_transform.InRange(chosenEntity, target, 16f))
                 return;
 
             HideSprite(target, ref sprite);
