@@ -16,10 +16,10 @@ public sealed partial class FieldOfViewComponent : Component
     public const float MinCooldownCheck = 0.05f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public float Angle = 100f;
+    public float Angle = 180f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public float AngleTolerance = 18f;
+    public float AngleTolerance = 14f;
 
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public float ConeOpacity = 0.85f;
