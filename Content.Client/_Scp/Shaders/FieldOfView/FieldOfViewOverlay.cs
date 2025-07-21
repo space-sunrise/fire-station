@@ -128,7 +128,7 @@ public sealed class FieldOfViewOverlay : Overlay
             return;
 
         var handle = args.WorldHandle;
-        var viewportBounds = new Box2(Vector2.Zero, _blurPass.Size);;
+        var viewportBounds = new Box2(Vector2.Zero, _blurPass.Size);
 
         handle.RenderInRenderTarget(_blurPass, () =>
         {
