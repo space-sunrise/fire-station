@@ -42,6 +42,16 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
         _configuration.OnValueChanged(ScpCCVars.FieldOfViewOpacity, OnOpacityChanged);
 
         SubscribeLocalEvent<FOVHiddenSpriteComponent, ComponentShutdown>(OnShutdown);
+        SubscribeLocalEvent<FieldOfViewComponent, AfterAutoHandleStateEvent>(AfterHandleState);
+    }
+
+    private void AfterHandleState(Entity<FieldOfViewComponent> ent, ref AfterAutoHandleStateEvent args)
+    {
+        if (_player.LocalEntity != ent)
+            return;
+
+        Overlay.NullifyComponents();
+        Overlay.EntityOverride = ent.Comp.RelayEntity;
     }
 
     private void OnShutdown(Entity<FOVHiddenSpriteComponent> ent, ref ComponentShutdown args)
@@ -52,23 +62,38 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
         _sprite.SetVisible((ent, sprite), true);
     }
 
+    /// <summary>
+    /// Цикл обновления скрытия спрайтов за пределами FOV.
+    /// В начале выбирает сущность, от лица которой будет скрытие. Это нужно для поддержки мехов и других сущностей, которым игрок "передает управление".
+    /// Дальше проходится по трем большим группам - предметы, сущности и следы. И переключает их спрайт в зависимости от расположения сущности.
+    /// Сам игрок и его Transform.ParentUid не скрываются.
+    /// </summary>
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var player = _player.LocalEntity;
-
-        if (!_fovQuery.HasComp(player))
-            return;
-
         if (_timing.CurTime < _nextTimeUpdate)
             return;
+
+        var player = _player.LocalEntity;
+
+        if (!_fovQuery.TryComp(player, out var localFov))
+            return;
+
+        var chosenEntity = localFov.RelayEntity ?? player;
+
+        if (!chosenEntity.HasValue)
+            return;
+
+        var playerParent = Transform(player.Value).ParentUid;
+        var defaultAngle = localFov.Angle;
+        var angleTolerance = localFov.AngleTolerance;
 
         var query = EntityQueryEnumerator<ItemComponent, SpriteComponent>();
 
         while (query.MoveNext(out var uid, out _, out var sprite))
         {
-            ManageSprites(player.Value, uid, ref sprite);
+            ManageSprites(chosenEntity.Value, defaultAngle, angleTolerance,  uid, ref sprite);
         }
 
         var mobQuery = EntityQueryEnumerator<MobStateComponent, SpriteComponent>();
@@ -78,39 +103,44 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
             if (uid == player)
                 continue;
 
-            ManageSprites(player.Value, uid, ref sprite);
+            // Здесь остается именно парент игрока, так как в большинстве случаев
+            // chosenEntity и будет этим парентом.
+            if (uid == playerParent)
+                continue;
+
+            ManageSprites(chosenEntity.Value, defaultAngle, angleTolerance,  uid, ref sprite);
         }
 
         var footprintQuery = EntityQueryEnumerator<FootprintComponent, SpriteComponent>();
 
         while (footprintQuery.MoveNext(out var uid, out _, out var sprite))
         {
-            ManageSprites(player.Value, uid, ref sprite);
+            ManageSprites(chosenEntity.Value, defaultAngle, angleTolerance,  uid, ref sprite);
         }
 
         _nextTimeUpdate = _timing.CurTime + _updateCooldown;
     }
 
-    private void ManageSprites(EntityUid player, EntityUid uid, ref SpriteComponent sprite)
+    private void ManageSprites(EntityUid chosenEntity, Angle defaultAngle, Angle angleTolerance, EntityUid target, ref SpriteComponent sprite)
     {
-        if (IsClientSide(uid))
+        if (IsClientSide(target))
             return;
 
-        var inFov = _fov.IsInViewAngle(player, uid);
-        var isHidden = _hiddenQuery.HasComp(uid);
+        var inFov = _fov.IsInViewAngle(chosenEntity, defaultAngle, angleTolerance, target);
+        var isHidden = _hiddenQuery.HasComp(target);
 
         if (sprite.Visible && !inFov && !isHidden)
         {
-            if (!_transform.InRange(player, uid, 25f))
+            if (!_transform.InRange(chosenEntity, target, 25f))
                 return;
 
-            HideSprite(uid, ref sprite);
+            HideSprite(target, ref sprite);
             return;
         }
 
         if (inFov && isHidden)
         {
-            ShowSprite(uid, ref sprite);
+            ShowSprite(target, ref sprite);
         }
     }
 
@@ -118,7 +148,7 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
     {
         base.OnPlayerAttached(ent, ref args);
 
-        Overlay = new FieldOfViewOverlay();
+        Overlay.NullifyComponents();
         Overlay.ConeOpacity = _configuration.GetCVar(ScpCCVars.FieldOfViewOpacity);
     }
 

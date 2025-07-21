@@ -3,7 +3,7 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Watching.FOV;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true, true)]
 public sealed partial class FieldOfViewComponent : Component
 {
     public const float MaxOpacity = 0.95f;
@@ -20,4 +20,7 @@ public sealed partial class FieldOfViewComponent : Component
 
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public Vector2 Offset = new(0, 0.5f);
+
+    [ViewVariables, AutoNetworkedField]
+    public EntityUid? RelayEntity;
 }

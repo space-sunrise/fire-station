@@ -42,6 +42,8 @@ public sealed class FieldOfViewOverlay : Overlay
     private SpriteComponent? _sprite;
     private FieldOfViewComponent? _fov;
 
+    public EntityUid? EntityOverride;
+
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
@@ -60,6 +62,14 @@ public sealed class FieldOfViewOverlay : Overlay
         _shader = _prototype.Index<ShaderPrototype>("FieldOfView").InstanceUnique();
         _blurXShader = _prototype.Index<ShaderPrototype>("BlurryVisionX").InstanceUnique();
         _blurYShader = _prototype.Index<ShaderPrototype>("BlurryVisionY").InstanceUnique();
+    }
+
+    public void NullifyComponents()
+    {
+        _xform = null;
+        _sprite = null;
+        _fov = null;
+        EntityOverride = null;
     }
 
     protected override void DisposeBehavior()
@@ -95,21 +105,22 @@ public sealed class FieldOfViewOverlay : Overlay
     protected override void Draw(in OverlayDrawArgs args)
     {
         var playerEntity = _player.LocalEntity;
-        var eye = args.Viewport.Eye;
+        var chosenEntity = EntityOverride ?? playerEntity;
 
-        if (!playerEntity.HasValue)
+        if (!chosenEntity.HasValue)
             return;
 
+        var eye = args.Viewport.Eye;
         if (ScreenTexture == null || _backBuffer == null || _blurPass == null || eye == null)
             return;
 
-        if (_xform == null && !_xformQuery.TryGetComponent(playerEntity, out _xform))
+        if (_xform == null && !_xformQuery.TryGetComponent(chosenEntity, out _xform))
             return;
 
         if (_fov == null && !_fovQuery.TryGetComponent(playerEntity, out _fov))
             return;
 
-        if (_sprite == null && !_spriteQuery.TryGetComponent(playerEntity, out _sprite))
+        if (_sprite == null && !_spriteQuery.TryGetComponent(chosenEntity, out _sprite))
             return;
 
         var handle = args.WorldHandle;
@@ -145,7 +156,7 @@ public sealed class FieldOfViewOverlay : Overlay
 
         var fovCosine = FieldOfViewSystem.GetFovCosine(_fov.Angle);
 
-        var bounds = _spriteSystem.GetLocalBounds((playerEntity.Value, _sprite));
+        var bounds = _spriteSystem.GetLocalBounds((chosenEntity.Value, _sprite));
         var worldRadius = Math.Max(bounds.Width, bounds.Height);
 
         var zoom = eye.Zoom.X;

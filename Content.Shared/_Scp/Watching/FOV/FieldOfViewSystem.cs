@@ -21,6 +21,7 @@ public sealed class FieldOfViewSystem : EntitySystem
 
         _fovQuery = GetEntityQuery<FieldOfViewComponent>();
     }
+
     private void OnBuckle(Entity<FieldOfViewComponent> ent, ref BuckledEvent args)
     {
         AddComp<MouseRotatorComponent>(ent);
@@ -52,6 +53,20 @@ public sealed class FieldOfViewSystem : EntitySystem
             return false;
 
         var fovAngle = fovAngleOverride ?? Math.Clamp(viewer.Comp.Angle + viewer.Comp.AngleTolerance, 0f, 360f);
+
+        // Сравниваем с ПОЛОВИНОЙ угла, так как FindAngleBetween считает угол от центральной линии взгляда.
+        // Если угол до цели меньше половины FOV, значит, она внутри конуса зрения.
+        return angle < fovAngle / 2f;
+    }
+
+    public bool IsInViewAngle(EntityUid entity, Angle defaultAngle, Angle angleTolerance, EntityUid target)
+    {
+        var angle = FindAngleBetween(entity, target);
+
+        if (float.IsNaN(angle))
+            return false;
+
+        var fovAngle = Math.Clamp(defaultAngle + angleTolerance, 0f, 360f);
 
         // Сравниваем с ПОЛОВИНОЙ угла, так как FindAngleBetween считает угол от центральной линии взгляда.
         // Если угол до цели меньше половины FOV, значит, она внутри конуса зрения.
@@ -104,6 +119,15 @@ public sealed class FieldOfViewSystem : EntitySystem
 
         // Смещение уже находится в локальных координатах, поэтому просто добавляем его.
         return new EntityCoordinates(viewer.Owner, fov.Offset);
+    }
+
+    public void SetRelay(Entity<FieldOfViewComponent?> ent, EntityUid? relay)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
+        ent.Comp.RelayEntity = relay;
+        DirtyField(ent, nameof(FieldOfViewComponent.RelayEntity));
     }
 
     /// <summary>
