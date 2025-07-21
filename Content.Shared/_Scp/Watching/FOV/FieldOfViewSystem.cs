@@ -1,10 +1,33 @@
 ﻿using System.Numerics;
+using Content.Shared.Buckle.Components;
+using Content.Shared.CombatMode;
+using Content.Shared.MouseRotator;
 
 namespace Content.Shared._Scp.Watching.FOV;
 
 public sealed class FieldOfViewSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<FieldOfViewComponent, BuckledEvent>(OnBuckle);
+        SubscribeLocalEvent<FieldOfViewComponent, UnbuckledEvent>(OnUnbuckle);
+    }
+    private void OnBuckle(Entity<FieldOfViewComponent> ent, ref BuckledEvent args)
+    {
+        AddComp<MouseRotatorComponent>(ent);
+    }
+
+    private void OnUnbuckle(Entity<FieldOfViewComponent> ent, ref UnbuckledEvent args)
+    {
+        if (TryComp<CombatModeComponent>(ent, out var combat) && combat.IsInCombatMode)
+            return;
+
+        RemComp<MouseRotatorComponent>(ent);
+    }
 
     /// <summary>
     /// Проверяет, находится ли цель в поле зрения смотрящего.

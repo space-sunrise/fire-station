@@ -18,6 +18,21 @@ public sealed partial class StrapComponent : Component
     [DataField, AutoNetworkedField]
     public HashSet<EntityUid> BuckledEntities = new();
 
+    // Fire edit start - для осматривания на стульях
+    /// <summary>
+    /// If true, allows the buckled entity to rotate using MouseRotator.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool AllowRotation = true;
+
+    /// <summary>
+    /// The maximum angle (from the center) that the entity can rotate to.
+    /// A value of 120 degrees means a total arc of 240 degrees.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public Angle MaxAngle = Angle.FromDegrees(80);
+    // Fire edit end
+
     // Sunrise-Start
     [DataField, AutoNetworkedField]
     public Dictionary<EntityUid, Vector2> CurrentOffsets { get; set; } = new();

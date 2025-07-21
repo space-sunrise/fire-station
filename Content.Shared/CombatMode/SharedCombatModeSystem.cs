@@ -1,4 +1,5 @@
 using Content.Shared.Actions;
+using Content.Shared.Buckle.Components;
 using Content.Shared.Mind;
 using Content.Shared.MouseRotator;
 using Content.Shared.Mech.Components;
@@ -118,7 +119,11 @@ public abstract class SharedCombatModeSystem : EntitySystem
                 RemComp<NoRotateOnMoveComponent>(mechPilot.Mech);
             }
 
-            RemComp<MouseRotatorComponent>(uid);
+            // Fire edit start - для осматривания на стульях
+            if (!TryComp<BuckleComponent>(uid, out var buckle) || !buckle.Buckled)
+                RemComp<MouseRotatorComponent>(uid);
+            // Fire edit end
+
             RemComp<NoRotateOnMoveComponent>(uid);
         }
     }
