@@ -2,6 +2,7 @@
   id: CatEars
   bodyPart: Special
   markingCategory: Special
+  speciesRestriction: [Felinid] # Fire edit
   sponsorOnly: true # Sunrise-Sponsors
   coloring:
     default:
