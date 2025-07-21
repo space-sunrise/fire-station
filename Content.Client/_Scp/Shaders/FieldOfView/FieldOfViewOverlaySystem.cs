@@ -43,6 +43,8 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
 
         SubscribeLocalEvent<FOVHiddenSpriteComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<FieldOfViewComponent, AfterAutoHandleStateEvent>(AfterHandleState);
+
+        SubscribeLocalEvent<FieldOfViewComponent, EntParentChangedMessage>(OnParentChanged);
     }
 
     private void AfterHandleState(Entity<FieldOfViewComponent> ent, ref AfterAutoHandleStateEvent args)
@@ -52,6 +54,17 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
 
         Overlay.NullifyComponents();
         Overlay.EntityOverride = ent.Comp.RelayEntity;
+    }
+
+    private void OnParentChanged(Entity<FieldOfViewComponent> ent, ref EntParentChangedMessage args)
+    {
+        if (_player.LocalEntity != ent)
+            return;
+
+        if (!_spriteQuery.TryComp(args.Transform.ParentUid, out var sprite))
+            return;
+
+        ShowSprite(args.Transform.ParentUid, ref sprite);
     }
 
     private void OnShutdown(Entity<FOVHiddenSpriteComponent> ent, ref ComponentShutdown args)
