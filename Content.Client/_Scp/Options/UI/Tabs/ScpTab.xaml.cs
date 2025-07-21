@@ -27,6 +27,10 @@ public sealed partial class ScpTab : Control
         // Поле зрения
         Control.AddOptionPercentSlider(ScpCCVars.FieldOfViewOpacity, FieldOfViewOpacitySlider,
             FieldOfViewComponent.MinOpacity, FieldOfViewComponent.MaxOpacity);
+        Control.AddOptionPercentSlider(ScpCCVars.FieldOfViewBlurScale, FieldOfViewBlurScale,
+            FieldOfViewComponent.MinBlurScale, FieldOfViewComponent.MaxBlurScale);
+        Control.AddOptionPercentSlider(ScpCCVars.FieldOfViewCheckCooldown, FieldOfViewCheckCooldown,
+            FieldOfViewComponent.MinCooldownCheck, FieldOfViewComponent.MaxCooldownCheck);
 
         /*
          * Аудио

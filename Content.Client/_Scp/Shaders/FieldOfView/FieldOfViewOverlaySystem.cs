@@ -26,7 +26,7 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
     private EntityQuery<SpriteComponent> _spriteQuery;
 
     private TimeSpan _nextTimeUpdate = TimeSpan.Zero;
-    private readonly TimeSpan _updateCooldown = TimeSpan.FromSeconds(0.1f);
+    private TimeSpan _updateCooldown = TimeSpan.FromSeconds(0.1f);
 
     public override void Initialize()
     {
@@ -40,6 +40,12 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
 
         Overlay.ConeOpacity = _configuration.GetCVar(ScpCCVars.FieldOfViewOpacity);
         _configuration.OnValueChanged(ScpCCVars.FieldOfViewOpacity, OnOpacityChanged);
+
+        Overlay.BlurScale = _configuration.GetCVar(ScpCCVars.FieldOfViewBlurScale);
+        _configuration.OnValueChanged(ScpCCVars.FieldOfViewBlurScale, OnBlurScaleChanged);
+
+        _updateCooldown = TimeSpan.FromSeconds(_configuration.GetCVar(ScpCCVars.FieldOfViewCheckCooldown));
+        _configuration.OnValueChanged(ScpCCVars.FieldOfViewCheckCooldown, OnCheckCooldownChanged);
 
         SubscribeLocalEvent<FOVHiddenSpriteComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<FieldOfViewComponent, AfterAutoHandleStateEvent>(AfterHandleState);
@@ -218,5 +224,15 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
     private void OnOpacityChanged(float option)
     {
         Overlay.ConeOpacity = option;
+    }
+
+    private void OnBlurScaleChanged(float option)
+    {
+        Overlay.BlurScale = option;
+    }
+
+    private void OnCheckCooldownChanged(float option)
+    {
+        _updateCooldown = TimeSpan.FromSeconds(option);
     }
 }

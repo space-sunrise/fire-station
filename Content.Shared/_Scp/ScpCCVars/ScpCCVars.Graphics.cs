@@ -26,4 +26,16 @@ public sealed partial class ScpCCVars
     /// </summary>
     public static readonly CVarDef<float> FieldOfViewOpacity =
         CVarDef.Create("shader.field_of_view_opacity", 0.7f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Размер текстуры размытия у шейдера поля зрения
+    /// </summary>
+    public static readonly CVarDef<float> FieldOfViewBlurScale =
+        CVarDef.Create("shader.field_of_view_blur_scale", 0.7f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Скорость проверки для изменения видимости спрайтов
+    /// </summary>
+    public static readonly CVarDef<float> FieldOfViewCheckCooldown =
+        CVarDef.Create("shader.field_of_view_check_cooldown", 0.1f, CVar.CLIENTONLY | CVar.ARCHIVE);
 }

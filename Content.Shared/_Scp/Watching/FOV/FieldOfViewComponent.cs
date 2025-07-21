@@ -9,6 +9,12 @@ public sealed partial class FieldOfViewComponent : Component
     public const float MaxOpacity = 0.95f;
     public const float MinOpacity = 0.55f;
 
+    public const float MaxBlurScale = 1f;
+    public const float MinBlurScale = 0.25f;
+
+    public const float MaxCooldownCheck = 0.3f;
+    public const float MinCooldownCheck = 0.05f;
+
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
     public float Angle = 100f;
 

@@ -26,6 +26,7 @@ public sealed class FieldOfViewOverlay : Overlay
 
     private IRenderTexture? _blurPass;
     private IRenderTexture? _backBuffer;
+    public float BlurScale = 0.7f;
 
     private Angle _currentAngle;
     private const float LerpSpeed = 8f;
@@ -44,7 +45,7 @@ public sealed class FieldOfViewOverlay : Overlay
 
     public EntityUid? EntityOverride;
 
-    private static readonly Angle AngleCorrection = Angle.FromDegrees(180);
+    private static readonly Angle AngleCorrection = Angle.FromDegrees(90);
     private const float DeltaTimeFrameRate = 1f / 30f;
 
     public override bool RequestScreenTexture => true;
@@ -92,7 +93,7 @@ public sealed class FieldOfViewOverlay : Overlay
         if (!_eyeQuery.TryGetComponent(playerEntity, out var eyeComp) || args.Viewport.Eye != eyeComp.Eye)
             return false;
 
-        var size = args.Viewport.Size;
+        var size = (Vector2i)(args.Viewport.Size * BlurScale);
         if (_backBuffer == null || _backBuffer.Size != size)
         {
             _backBuffer?.Dispose();
@@ -127,7 +128,7 @@ public sealed class FieldOfViewOverlay : Overlay
             return;
 
         var handle = args.WorldHandle;
-        var viewportBounds = new Box2(Vector2.Zero, args.Viewport.Size);
+        var viewportBounds = new Box2(Vector2.Zero, _blurPass.Size);;
 
         handle.RenderInRenderTarget(_blurPass, () =>
         {
@@ -144,7 +145,7 @@ public sealed class FieldOfViewOverlay : Overlay
         }, Color.Transparent);
 
         var onScreenAngle = _transform.GetWorldRotation(_xform, _xformQuery) + eye.Rotation;
-        var correctedAngle = onScreenAngle - Angle.FromDegrees(90);
+        var correctedAngle = onScreenAngle - AngleCorrection;
 
         if (_currentAngle.Theta == 0)
             _currentAngle = correctedAngle;
