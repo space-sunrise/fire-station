@@ -27,7 +27,7 @@ public sealed partial class StrapComponent : Component
 
     /// <summary>
     /// The maximum angle (from the center) that the entity can rotate to.
-    /// A value of 120 degrees means a total arc of 240 degrees.
+    /// A value of 80 degrees means a total arc of 160 degrees.
     /// </summary>
     [DataField, AutoNetworkedField]
     public Angle MaxAngle = Angle.FromDegrees(80);
