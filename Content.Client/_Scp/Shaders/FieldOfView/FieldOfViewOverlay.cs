@@ -143,8 +143,8 @@ public sealed class FieldOfViewOverlay : Overlay
             handle.DrawRect(viewportBounds, Color.White);
         }, Color.Transparent);
 
-        var onScreenAngle = _xform.LocalRotation + eye.Rotation.RoundToCardinalAngle();
-        var correctedAngle = onScreenAngle - AngleCorrection;
+        var onScreenAngle = _transform.GetWorldRotation(_xform, _xformQuery) + eye.Rotation;
+        var correctedAngle = onScreenAngle - Angle.FromDegrees(90);
 
         if (_currentAngle.Theta == 0)
             _currentAngle = correctedAngle;
