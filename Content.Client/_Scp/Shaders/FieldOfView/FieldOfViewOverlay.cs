@@ -159,6 +159,8 @@ public sealed class FieldOfViewOverlay : Overlay
         screenPos.Y = args.Viewport.Size.Y - screenPos.Y;
 
         var fovCosine = FieldOfViewSystem.GetFovCosine(_fov.Angle);
+        var fovCosMinusHardness = fovCosine - EdgeHardness;
+        var fovCosPlusHardness = fovCosine + EdgeHardness;
 
         var bounds = _spriteSystem.GetLocalBounds((chosenEntity.Value, _sprite));
         var worldRadius = Math.Max(bounds.Width, bounds.Height);
@@ -171,10 +173,10 @@ public sealed class FieldOfViewOverlay : Overlay
         _shader.SetParameter("BLURRED_TEXTURE", _backBuffer.Texture);
         _shader.SetParameter("playerScreenPos", screenPos);
         _shader.SetParameter("playerForward", forwardVec);
-        _shader.SetParameter("fovCosine", fovCosine);
+        _shader.SetParameter("fovCosMinusHardness", fovCosMinusHardness);
+        _shader.SetParameter("fovCosPlusHardness", fovCosPlusHardness);
         _shader.SetParameter("safeZoneRadius", pixelRadius);
         _shader.SetParameter("coneOpacity", ConeOpacity);
-        _shader.SetParameter("edgeHardness", EdgeHardness);
         _shader.SetParameter("safeZoneEdgeWidth", pixelEdgeWidth);
 
         handle.UseShader(_shader);
