@@ -10,7 +10,7 @@
     - category: Health #Sunrise Edit
     - category: Stamina
     - alertType: ChangelingChemicals
-    - alertType: Blinking # Sunrise-SCP edit.
+    - alertType: Blinking # Fire added
     - alertType: SuitPower
     - category: Internals
     - alertType: Fire
