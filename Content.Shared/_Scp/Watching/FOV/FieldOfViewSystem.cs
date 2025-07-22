@@ -11,6 +11,7 @@ public sealed class FieldOfViewSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private EntityQuery<FieldOfViewComponent> _fovQuery;
+    private EntityQuery<TransformComponent> _xformQuery;
 
     public override void Initialize()
     {
@@ -20,6 +21,7 @@ public sealed class FieldOfViewSystem : EntitySystem
         SubscribeLocalEvent<FieldOfViewComponent, UnbuckledEvent>(OnUnbuckle);
 
         _fovQuery = GetEntityQuery<FieldOfViewComponent>();
+        _xformQuery = GetEntityQuery<TransformComponent>();
     }
 
     private void OnBuckle(Entity<FieldOfViewComponent> ent, ref BuckledEvent args)
@@ -87,13 +89,15 @@ public sealed class FieldOfViewSystem : EntitySystem
         // Получаем позицию цели (ее центр)
         var targetCoords = new EntityCoordinates(target.Owner, Vector2.Zero);
 
-        var viewerWorldPos = _transform.GetMoverCoordinates(viewerOriginCoords);
-        var targetWorldPos = _transform.GetMoverCoordinates(targetCoords);
+        var viewerWorldPos = _transform.GetMoverCoordinates(viewerOriginCoords, _xformQuery);
+        var targetWorldPos = _transform.GetMoverCoordinates(targetCoords, _xformQuery);
 
         var toTargetVector = (targetWorldPos.Position - viewerWorldPos.Position).Normalized();
 
         // Направление взгляда смотрящего (вектор вперед).
-        var viewerForward = viewer.Comp.LocalRotation.ToWorldVec();
+        var viewerForward = viewer.Comp.GridUid.HasValue
+            ? _transform.GetRelativePositionRotation(viewer.Comp, viewer.Comp.GridUid.Value, _xformQuery).Rotation.ToWorldVec()
+            : viewer.Comp.LocalRotation.ToWorldVec();
 
         // Скалярное произведение векторов.
         var dotProduct = Vector2.Dot(viewerForward, toTargetVector);
