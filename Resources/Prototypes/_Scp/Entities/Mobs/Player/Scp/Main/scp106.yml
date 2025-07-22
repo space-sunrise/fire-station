@@ -1,0 +1,118 @@
+﻿- type: entity
+  parent:
+  - BaseScp
+  - MobCombat
+  id: Scp106
+  suffix: SCP-106
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Scp106/scp106.rsi
+    layers:
+    - map: [ "base" ]
+      state: base
+  - type: Scp
+    class: Keter
+  - type: Scp106
+  - type: FearSource
+    uponSeenState: Fear
+    uponComeCloser: Fear
+    grainShaderStrength:
+      min: 0
+      max: 1000
+    vignetteShaderStrength:
+      min: 0
+      max: 400
+  - type: MeleeWeapon
+    bluntStaminaDamageFactor: 1.0
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcPunch
+    soundHit: /Audio/_Scp/Scp106/hit.ogg
+    damage:
+      types:
+        Cellular: 10
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2
+  - type: XenoScreech
+  - type: Muted
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.35
+        density: 50
+        mask:
+        - SmallMobMask
+        layer:
+        - MobLayer
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.Scp106Visuals.Visuals:
+        base:
+          Default: { state: base }
+          Entering: { state: lusha_from_ded }
+          Exiting: { state: ded_from_lusha }
+  - type: ActionGrant
+    actions:
+    - BecomeTeleportPhantomAction
+    - Scp106RandomTeleportAction
+    - Scp106BackroomsAction
+    - ActionScp106Shop
+  - type: TTS
+    voice: HearthstoneSotis
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepScp106
+  - type: RangedDamageSound
+    soundGroups:
+      Brute:
+        collection:
+          HurtScp106
+      Burn:
+        collection:
+          HurtScp106
+  - type: MeleeSound
+    soundGroups:
+      Brute:
+        collection:
+          HurtScp106
+      Burn:
+        collection:
+          HurtScp106
+  - type: KillGlobalSound
+    sound:
+      collection: DistanceKillScp106
+    originWhitelist:
+      components:
+      - Scp106
+  - type: AmbientSound
+    enabled: true
+    volume: -10
+    range: 3
+    sound:
+      path: /Audio/_Scp/Scp106/breath.ogg
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: Store
+    balance:
+      LifeEssence: 20
+    currencyWhitelist:
+    - LifeEssence
+    categories:
+    - Scp106Abilities
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: StatusEffects
+    allowed:
+    - Stun
+  - type: ComplexInteraction
