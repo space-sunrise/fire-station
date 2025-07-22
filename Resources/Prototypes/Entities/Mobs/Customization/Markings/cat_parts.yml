@@ -27,6 +27,7 @@
   bodyPart: Tail
   markingCategory: Tail
   sponsorOnly: true # Sunrise-Sponsors
+  speciesRestriction: [Felinid] # Fire edit
   coloring:
     default:
       type:
