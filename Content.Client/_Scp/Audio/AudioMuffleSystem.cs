@@ -106,6 +106,8 @@ public sealed class AudioMuffleSystem : EntitySystem
             if (audioComp.Global)
                 continue;
 
+            var inRangeUnOccluded = _examine.InRangeUnOccluded(sound, player, HearRange);
+
             // В чем прикол этой конструкции снизу:
             // Если что-то находится за каким-то объектом и его НЕ видно через стекла -> 1ый случай.
             // Примеры первого случая - что-то за стеной.
@@ -113,12 +115,11 @@ public sealed class AudioMuffleSystem : EntitySystem
             // Примеры второго случая: Что-то за стеклом или стеклянным шлюзом
             // Если ничего из этого, значит объект в прямой зоне видимости игрока
             // И никаких эффектов заглушения быть не должно. Поэтому мы снимаем эффекты
-            if (!_examine.InRangeUnOccluded(sound, player, HearRange))
+            if (!inRangeUnOccluded)
             {
                 TryMuffleSound((sound, audioComp));
             }
-            else if (_examine.InRangeUnOccluded(sound, player, HearRange)
-                     && !_interaction.InRangeUnobstructed(sound, player, HearRange))
+            else if (inRangeUnOccluded && !_interaction.InRangeUnobstructed(sound, player, HearRange))
             {
                 TryMuffleSound((sound, audioComp), false);
             }
