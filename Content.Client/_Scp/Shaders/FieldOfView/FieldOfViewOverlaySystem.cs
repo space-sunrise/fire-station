@@ -4,6 +4,7 @@ using Content.Shared._Scp.Watching.FOV;
 using Content.Shared._Sunrise.Footprints;
 using Content.Shared.Item;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Movement.Pulling.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
 using Robust.Shared.Configuration;
@@ -26,6 +27,7 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
     private EntityQuery<FOVHiddenSpriteComponent> _hiddenQuery;
     private EntityQuery<SpriteComponent> _spriteQuery;
     private EntityQuery<TransformComponent> _xformQuery;
+    private EntityQuery<PullerComponent> _pullerQuery;
 
     private EntityQuery<ItemComponent> _itemQuery;
     private EntityQuery<MobStateComponent> _mobQuery;
@@ -48,6 +50,7 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
         _hiddenQuery = GetEntityQuery<FOVHiddenSpriteComponent>();
         _spriteQuery = GetEntityQuery<SpriteComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
+        _pullerQuery = GetEntityQuery<PullerComponent>();
 
         _itemQuery = GetEntityQuery<ItemComponent>();
         _mobQuery = GetEntityQuery<MobStateComponent>();
@@ -190,7 +193,7 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
             if (uid == player || uid == playerParent)
                 continue;
 
-            if (!CanBeHidden(uid))
+            if (!CanBeHidden(uid, player))
                 continue;
 
             if (_fov.IsInViewAngle(chosenEntity, defaultAngle, angleTolerance, uid))
@@ -219,6 +222,9 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
 
         if (sprite.Visible && !inFov && !isHidden)
         {
+            if (_pullerQuery.TryComp(chosenEntity, out var puller) && puller.Pulling == target)
+                return;
+
             // TODO: Щиткод затычка, которая нужна для камер
             if (!_transform.InRange(chosenEntity, target, 16f))
                 return;
@@ -233,9 +239,12 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
         }
     }
 
-    private bool CanBeHidden(EntityUid uid)
+    private bool CanBeHidden(EntityUid uid, EntityUid player)
     {
         if (IsClientSide(uid))
+            return false;
+
+        if (_pullerQuery.TryComp(player, out var puller) && puller.Pulling == uid)
             return false;
 
         if (_itemQuery.HasComp(uid))
