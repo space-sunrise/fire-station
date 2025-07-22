@@ -70,26 +70,7 @@
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
-    - type: Fear
-      proximityBlockerLevel: None
-      seenBlockerLevel: None
-      phobias:
-      - Exoremophobia
-      fearBasedSpreadAngleModifier:
-        Anxiety: 1.2
-        Fear: 2
-        Terror: 5
-      fearBasedGrainStrength:
-        None: 0
-        Anxiety: 70
-        Fear: 230
-        Terror: 550
-      fearBasedVignetteStrength:
-        None: 0
-        Anxiety: 30
-        Fear: 60
-        Terror: 350
-      baseJitterTime: 4
+
 - type: startingGear
   id: NTFLeaderGear
   equipment:
@@ -113,6 +94,7 @@
     - HandheldCriminalRecordsMonitorUnpowered
     - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
+    - BoxMRE
     belt:
     - Stunbaton
     - Handcuffs
@@ -164,26 +146,6 @@
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
-    - type: Fear
-      proximityBlockerLevel: None
-      seenBlockerLevel: None
-      phobias:
-      - Exoremophobia
-      fearBasedSpreadAngleModifier:
-        Anxiety: 1.2
-        Fear: 2
-        Terror: 5
-      fearBasedGrainStrength:
-        None: 0
-        Anxiety: 70
-        Fear: 230
-        Terror: 550
-      fearBasedVignetteStrength:
-        None: 0
-        Anxiety: 30
-        Fear: 60
-        Terror: 350
-      baseJitterTime: 4
 
 - type: startingGear
   id: NTFSpecialistGear
@@ -205,6 +167,7 @@
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
+    - BoxMRE
     belt:
     - Stunbaton
     - Handcuffs
@@ -256,26 +219,6 @@
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
-    - type: Fear
-      proximityBlockerLevel: None
-      seenBlockerLevel: None
-      phobias:
-      - Exoremophobia
-      fearBasedSpreadAngleModifier:
-        Anxiety: 1.2
-        Fear: 2
-        Terror: 5
-      fearBasedGrainStrength:
-        None: 0
-        Anxiety: 70
-        Fear: 230
-        Terror: 550
-      fearBasedVignetteStrength:
-        None: 0
-        Anxiety: 30
-        Fear: 60
-        Terror: 350
-      baseJitterTime: 4
 
 - type: startingGear
   id: NTFCadetGear
@@ -297,6 +240,7 @@
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
+    - BoxMRE
     belt:
     - Stunbaton
     - Handcuffs
