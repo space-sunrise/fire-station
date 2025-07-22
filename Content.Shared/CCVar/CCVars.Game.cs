@@ -155,41 +155,41 @@ public sealed partial class CCVars
     /// <summary>
     ///     Whether or not the panic bunker will disable when an admin comes online.
     /// </summary>
-    public static readonly CVarDef<bool> PanicBunkerDisableWithAdmins =
-        CVarDef.Create("game.panic_bunker.disable_with_admins", false, CVar.SERVERONLY);
+    public static readonly CVarDef<bool> PanicBunkerDisableWithAdmins = // Fire edit
+        CVarDef.Create("game.panic_bunker.disable_with_admins", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     Whether or not the panic bunker will enable when no admins are online.
     ///     This counts everyone with the 'Admin' AdminFlag.
     /// </summary>
-    public static readonly CVarDef<bool> PanicBunkerEnableWithoutAdmins =
-        CVarDef.Create("game.panic_bunker.enable_without_admins", false, CVar.SERVERONLY);
+    public static readonly CVarDef<bool> PanicBunkerEnableWithoutAdmins = // Fire edit
+        CVarDef.Create("game.panic_bunker.enable_without_admins", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     Whether or not the panic bunker will count deadminned admins for
     ///     <see cref="PanicBunkerDisableWithAdmins"/> and
     ///     <see cref="PanicBunkerEnableWithoutAdmins"/>
     /// </summary>
-    public static readonly CVarDef<bool> PanicBunkerCountDeadminnedAdmins =
-        CVarDef.Create("game.panic_bunker.count_deadminned_admins", false, CVar.SERVERONLY);
+    public static readonly CVarDef<bool> PanicBunkerCountDeadminnedAdmins = // Fire edit
+        CVarDef.Create("game.panic_bunker.count_deadminned_admins", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     Show reason of disconnect for user or not.
     /// </summary>
-    public static readonly CVarDef<bool> PanicBunkerShowReason =
-        CVarDef.Create("game.panic_bunker.show_reason", false, CVar.SERVERONLY);
+    public static readonly CVarDef<bool> PanicBunkerShowReason = // Fire edit
+        CVarDef.Create("game.panic_bunker.show_reason", true, CVar.SERVERONLY);
 
     /// <summary>
     ///     Minimum age of the account (from server's PoV, so from first-seen date) in minutes.
     /// </summary>
-    public static readonly CVarDef<int> PanicBunkerMinAccountAge =
-        CVarDef.Create("game.panic_bunker.min_account_age", 1440, CVar.SERVERONLY);
+    public static readonly CVarDef<int> PanicBunkerMinAccountAge = // Fire edit
+        CVarDef.Create("game.panic_bunker.min_account_age", 720, CVar.SERVERONLY);
 
     /// <summary>
     ///     Minimal overall played time.
     /// </summary>
-    public static readonly CVarDef<int> PanicBunkerMinOverallMinutes =
-        CVarDef.Create("game.panic_bunker.min_overall_minutes", 600, CVar.SERVERONLY);
+    public static readonly CVarDef<int> PanicBunkerMinOverallMinutes = // Fire edit
+        CVarDef.Create("game.panic_bunker.min_overall_minutes", 0, CVar.SERVERONLY);
 
     /// <summary>
     ///     A custom message that will be used for connections denied to the panic bunker
