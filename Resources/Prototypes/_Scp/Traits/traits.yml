@@ -78,5 +78,5 @@
     - MobState
   components:
   - type: DispersingShotSource
-    defaultAngleIncreaseMultiplier: 10
+    defaultAngleIncreaseModifier: 10
     defaultMaxAngleMultiplier: 10

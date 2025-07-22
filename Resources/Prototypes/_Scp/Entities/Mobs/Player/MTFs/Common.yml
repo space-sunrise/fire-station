@@ -311,8 +311,8 @@
   parent: EventHumanoidMindShielded
   randomizeName: false
   voiceWhitelist:
-  - CBMTF
   - CBMTF1
+  - CBMTF2
   genderWhitelist:
   - Male
   components:
