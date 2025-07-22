@@ -90,7 +90,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
     private bool TryAddOverlay(EntityUid ent)
     {
-        if (!AreEyesClosed(ent))
+        if (!AreEyesClosedManually(ent))
             return false;
 
         if (_overlayMan.HasOverlay<BlinkingOverlay>())
