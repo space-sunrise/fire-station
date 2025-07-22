@@ -6,14 +6,28 @@ namespace Content.Shared._Scp.Weapons.Ranged;
 public sealed partial class DispersingShotSourceComponent : Component
 {
     /// <summary>
+    /// <inheritdoc cref="AngleIncreaseMultiplier"/>.
+    /// Устанавливается только через прототипы.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField, Access(typeof(DispersingShotSystem))]
+    public float DefaultAngleIncreaseModifier = 2f;
+
+    /// <summary>
+    /// <inheritdoc cref="MaxAngleMultiplier"/>.
+    /// Устанавливается только через прототипы.
+    /// </summary>
+    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField, Access(typeof(DispersingShotSystem))]
+    public float DefaultMaxAngleMultiplier = 2f;
+
+    /// <summary>
     /// Модификатор влияющий на то, как будет увеличиваться угол при каждом выстреле.
     /// </summary>
-    [DataField, ViewVariables, AutoNetworkedField]
-    public float AngleIncreaseMultiplier = 15f;
+    [ViewVariables, AutoNetworkedField]
+    public float AngleIncreaseMultiplier;
 
     /// <summary>
     /// Модификатор, влияющий на максимальный угол разброса.
     /// </summary>
-    [DataField, ViewVariables, AutoNetworkedField]
-    public float MaxAngleMultiplier = 15f;
+    [ViewVariables, AutoNetworkedField]
+    public float MaxAngleMultiplier;
 }

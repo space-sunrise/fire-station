@@ -67,3 +67,16 @@
   - type: FieldOfView
     angle: 80
     angleTolerance: 18
+
+- type: trait
+  id: BadShooter
+  name: trait-bad-shooter-name
+  description: trait-bad-shooter-desc
+  category: ScpTraits
+  whitelist:
+    components:
+    - MobState
+  components:
+  - type: DispersingShotSource
+    defaultAngleIncreaseMultiplier: 10
+    defaultMaxAngleMultiplier: 10

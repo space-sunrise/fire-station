@@ -44,17 +44,21 @@ public abstract partial class SharedFearSystem
     {
         if (ent.Comp.State == FearState.None)
         {
-            RemComp<DispersingShotSourceComponent>(ent);
+            SetSpreadParameters(ent, 1f, 1f); // Убирает модификаторы, скручивая их до 1
             return;
         }
 
-        var component = EnsureComp<DispersingShotSourceComponent>(ent);
         var modifier = ent.Comp.FearBasedSpreadAngleModifier[ent.Comp.State];
+        SetSpreadParameters(ent, modifier, modifier);
+    }
 
-        component.AngleIncreaseMultiplier = modifier;
-        component.MaxAngleMultiplier = modifier;
+    private void SetSpreadParameters(EntityUid uid, float angleIncrease, float maxAngle)
+    {
+        var component = EnsureComp<DispersingShotSourceComponent>(uid);
+        component.AngleIncreaseMultiplier = angleIncrease;
+        component.MaxAngleMultiplier = maxAngle;
 
-        Dirty(ent, component);
+        Dirty(uid, component);
     }
 
     /// <summary>
