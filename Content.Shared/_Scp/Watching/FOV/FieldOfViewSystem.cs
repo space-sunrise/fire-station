@@ -26,7 +26,7 @@ public sealed class FieldOfViewSystem : EntitySystem
 
     private void OnBuckle(Entity<FieldOfViewComponent> ent, ref BuckledEvent args)
     {
-        AddComp<MouseRotatorComponent>(ent);
+        EnsureComp<MouseRotatorComponent>(ent);
     }
 
     private void OnUnbuckle(Entity<FieldOfViewComponent> ent, ref UnbuckledEvent args)
