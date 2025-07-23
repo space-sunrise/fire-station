@@ -16,6 +16,9 @@ reagent-amnesiac-raw-desc = Сырьё, из которого производя
 ent-CrateChemistryRawAmnesiac = ящик с сырьем для амнезиака
     .desc = Содержит один кувшин с сырьем для производства амнезиака.
 
+ent-JugRawAmnesiac = кувшин
+    .desc = Используется для хранения химикатов.
+
 reagent-amnesiac-a-msg = Вы забываете последние 10 минут своей жизни
 reagent-amnesiac-b-msg = Вы забываете последние 30 минут своей жизни
 reagent-amnesiac-c-msg = Вы забываете последний час своей жизни
