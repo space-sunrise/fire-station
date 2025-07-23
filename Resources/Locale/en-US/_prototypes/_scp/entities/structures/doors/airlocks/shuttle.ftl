@@ -1,0 +1,9 @@
+ent-ScpAirlockShuttle = { ent-ScpAirlockRCDResistant }
+    .suffix = SCP Docking
+    .desc = { ent-ScpAirlockRCDResistant.desc }
+ent-ScpAirlockGlassShuttle = external airlock
+    .suffix = SCP Glass, Docking
+    .desc = { ent-ScpAirlockShuttle.desc }
+ent-ScpAirlockShuttleAssembly = { ent-ScpAirlockAssembly }
+    .suffix = SCP Docking
+    .desc = { ent-ScpAirlockAssembly.desc }
