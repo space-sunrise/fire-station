@@ -1,8 +1,8 @@
 - type: reagent
   id: AmnesiakA
-  name: амнезиак класса A
+  name: reagent-amnesiac-a-name
   group: Toxins
-  desc: Амнезиак класса A, стирает из памяти жертвы последние 10 минут жизни.
+  desc: reagent-amnesiac-a-desc
   flavor: bitter
   color: "#acb78e"
   physicalDesc: reagent-physical-desc-exotic-smelling
@@ -17,7 +17,7 @@
       - !type:PopupMessage
         type: Local
         visualType: MediumCaution
-        messages: [ "Вы забываете последние 10 минут своей жизни" ]
+        messages: [ reagent-amnesiac-a-msg ]
         probability: 1
     Narcotic:
       effects:
@@ -33,9 +33,9 @@
     
 - type: reagent
   id: AmnesiakB
-  name: амнезиак класса B
+  name: reagent-amnesiac-b-name
   group: Toxins
-  desc: Амнезиак класса B, стирает из памяти жертвы последние 30 минут жизни.
+  desc: reagent-amnesiac-b-desc
   flavor: bitter
   color: "#383e28"
   physicalDesc: reagent-physical-desc-exotic-smelling
@@ -50,7 +50,7 @@
       - !type:PopupMessage
         type: Local
         visualType: MediumCaution
-        messages: [ "Вы забываете последние 30 минут своей жизни" ]
+        messages: [ reagent-amnesiac-b-msg ]
         probability: 1
     Narcotic:
       effects:
@@ -65,10 +65,10 @@
         type: Add
         
 - type: reagent
-  id: AmnesiakС
-  name: амнезиак класса C
+  id: AmnesiakC
+  name: reagent-amnesiac-c-name
   group: Toxins
-  desc: Амнезиак класса C, стирает из памяти жертвы последний час жизни.
+  desc: reagent-amnesiac-c-desc
   flavor: bitter
   color: "#383e28"
   physicalDesc: reagent-physical-desc-exotic-smelling
@@ -83,7 +83,7 @@
       - !type:PopupMessage
         type: Local
         visualType: MediumCaution
-        messages: [ "Вы забываете последние час своей жизни" ]
+        messages: [ reagent-amnesiac-c-msg ]
         probability: 1
     Narcotic:
       effects:
@@ -99,9 +99,9 @@
     
 - type: reagent
   id: AmnesiakD
-  name: амнезиак класса D
+  name: reagent-amnesiac-d-name
   group: Toxins
-  desc: Амнезиак класса D, полностью стирает личность.
+  desc: reagent-amnesiac-d-desc
   flavor: bitter
   color: "#383e28"
   physicalDesc: reagent-physical-desc-exotic-smelling
@@ -116,7 +116,7 @@
       - !type:PopupMessage
         type: Local
         visualType: MediumCaution
-        messages: [ "Вы забываете кто вы, где вы, почему вы тут" ]
+        messages: [ reagent-amnesiac-d-msg ]
         probability: 1
     Narcotic:
       effects:
@@ -132,9 +132,9 @@
         
 - type: reagent
   id: RawAmnesiak
-  name: сырье для амнезиака
+  name: reagent-amnesiac-raw-name
   group: Toxins
-  desc: Сырье из которого делается так называемый, Амнезиак
+  desc: reagent-amnesiac-raw-desc
   flavor: bitter
   color: "#383e28"
   physicalDesc: reagent-physical-desc-exotic-smelling
@@ -164,8 +164,8 @@
 - type: entity
   id: CrateChemistryRawAmnesiak
   parent: CrateChemistrySecure
-  name: ящик с сырьем для амнезиака
-  description: Содержит пять кувшинов с сырьем для производства амнезиака.
+  name: reagent-amnesiac-raw-container-name
+  description: reagent-amnesiac-raw-container-desc
   components:
     - type: StorageFill
       contents:
@@ -174,12 +174,11 @@
           
 - type: entity
   parent: Jug
-  name: кувшин
-  suffix: сырье
+  suffix: raw
   id: JugRawAmnesiak
   components:
   - type: Label
-    currentLabel: сырье для амнезиака
+    currentLabel: reagent-amnesiac-raw-jug-label
   - type: SolutionContainerManager
     solutions:
       beaker:
