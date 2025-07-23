@@ -5,7 +5,7 @@
   name: Jug
   components:
   - type: Label
-    currentLabel: 
+    currentLabel: reagent-amnesiac-raw-name
   - type: SolutionContainerManager
     solutions:
       beaker:

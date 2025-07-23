@@ -4,6 +4,6 @@
     sprite: Objects/Specific/Chemistry/beaker.rsi
     state: beaker
   product: CrateChemistryRawAmnesiac
-  cost: 5300 
+  cost: 5300
   category: cargoproduct-category-name-science
   group: market

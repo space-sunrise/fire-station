@@ -1,5 +1,5 @@
 - type: reaction
-  id: AmnesiacDResi
+  id: AmnesiacDRecipe
   impact: Medium
   reactants:
     MindbreakerToxin:
@@ -12,7 +12,7 @@
     AmnesiacD: 3
 
 - type: reaction
-  id: AmnesiacCResi
+  id: AmnesiacCRecipe
   impact: Medium
   reactants:
     PolytrinicAcid:
@@ -25,7 +25,7 @@
     AmnesiacC: 3
 
 - type: reaction
-  id: AmnesiacBResi
+  id: AmnesiacBRecipe
   impact: Medium
   reactants:
     Lipolicide:
@@ -38,7 +38,7 @@
     AmnesiacB: 3
 
 - type: reaction
-  id: AmnesiacAResi
+  id: AmnesiacARecipe
   impact: Medium
   reactants:
     Ephedrine:

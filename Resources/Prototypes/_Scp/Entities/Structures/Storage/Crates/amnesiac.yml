@@ -2,7 +2,7 @@
   id: CrateChemistryRawAmnesiac
   parent: CrateChemistrySecure
   name: Amnesiac container
-  description: Contains five jars of raw materials for producing amnesiacs.
+  description: Contains one jug of raw amnesiac used for producing amnesiacs.
   components:
     - type: StorageFill
       contents:

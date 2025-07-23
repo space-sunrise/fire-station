@@ -13,12 +13,10 @@ reagent-amnesiac-d-desc = Амнезиак класса D, полностью с
 reagent-amnesiac-raw-name = сырье для амнезиака
 reagent-amnesiac-raw-desc = Сырьё, из которого производят так называемый амнезиак.
 
-ent-CrateChemistryRawAmnesiak = ящик с сырьем для амнезиака
-    .desc = Содержит пять кувшинов с сырьем для производства амнезиака.
-
-reagent-amnesiac-raw-jug-label = сырье для амнезиака
+ent-CrateChemistryRawAmnesiac = ящик с сырьем для амнезиака
+    .desc = Содержит один кувшин с сырьем для производства амнезиака.
 
 reagent-amnesiac-a-msg = Вы забываете последние 10 минут своей жизни
 reagent-amnesiac-b-msg = Вы забываете последние 30 минут своей жизни
 reagent-amnesiac-c-msg = Вы забываете последний час своей жизни
-reagent-amnesiac-d-msg = Вы забываете кто вы, где вы и что вы тут делает
+reagent-amnesiac-d-msg = Вы забываете кто вы, где вы и что вы тут делаете
