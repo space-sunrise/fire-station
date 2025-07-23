@@ -91,7 +91,6 @@
     sprite: Clothing/Mask/gascentcom.rsi
   - type: BreathMask
   - type: IngestionBlocker
-  - type: FilterMask  # Sunrise-SCP
 
 - type: entity
   parent: [ClothingMaskGas, BaseCargoContraband]
