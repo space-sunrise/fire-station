@@ -1,5 +1,5 @@
 - type: reagent
-  id: AmnesiakA
+  id: AmnesiacA
   name: reagent-amnesiac-a-name
   group: Toxins
   desc: reagent-amnesiac-a-desc
@@ -24,7 +24,7 @@
       - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiakA
+          reagent: AmnesiacA
           min: 20
         key: ForcedSleep
         component: ForcedSleeping
@@ -32,7 +32,7 @@
         type: Add
     
 - type: reagent
-  id: AmnesiakB
+  id: AmnesiacB
   name: reagent-amnesiac-b-name
   group: Toxins
   desc: reagent-amnesiac-b-desc
@@ -57,7 +57,7 @@
       - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiakB
+          reagent: AmnesiacB
           min: 10
         key: ForcedSleep
         component: ForcedSleeping
@@ -65,7 +65,7 @@
         type: Add
         
 - type: reagent
-  id: AmnesiakC
+  id: AmnesiacC
   name: reagent-amnesiac-c-name
   group: Toxins
   desc: reagent-amnesiac-c-desc
@@ -90,7 +90,7 @@
       - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiakC
+          reagent: AmnesiacC
           min: 5
         key: ForcedSleep
         component: ForcedSleeping
@@ -98,7 +98,7 @@
         type: Add
     
 - type: reagent
-  id: AmnesiakD
+  id: AmnesiacD
   name: reagent-amnesiac-d-name
   group: Toxins
   desc: reagent-amnesiac-d-desc
@@ -123,7 +123,7 @@
       - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiakD
+          reagent: AmnesiacD
           min: 1
         key: ForcedSleep
         component: ForcedSleeping
@@ -131,7 +131,7 @@
         type: Add
         
 - type: reagent
-  id: RawAmnesiak
+  id: RawAmnesiac
   name: reagent-amnesiac-raw-name
   group: Toxins
   desc: reagent-amnesiac-raw-desc
@@ -144,95 +144,9 @@
       - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
-          reagent: RawAmnesiak
+          reagent: RawAmnesiac
           min: 5
         key: ForcedSleep
         component: ForcedSleeping
         refresh: false
         type: Add
-        
-- type: cargoProduct
-  id: RawAmnesiak
-  icon:
-    sprite: Objects/Specific/Chemistry/beaker.rsi
-    state: beaker
-  product: CrateChemistryRawAmnesiak
-  cost: 5300 
-  category: cargoproduct-category-name-science
-  group: market
-  
-- type: entity
-  id: CrateChemistryRawAmnesiak
-  parent: CrateChemistrySecure
-  name: reagent-amnesiac-raw-container-name
-  description: reagent-amnesiac-raw-container-desc
-  components:
-    - type: StorageFill
-      contents:
-        - id: JugRawAmnesiak
-          amount: 5
-          
-- type: entity
-  parent: Jug
-  suffix: raw
-  id: JugRawAmnesiak
-  components:
-  - type: Label
-    currentLabel: reagent-amnesiac-raw-jug-label
-  - type: SolutionContainerManager
-    solutions:
-      beaker:
-        reagents:
-        - ReagentId: RawAmnesiak
-          Quantity: 200
-
-
-
-- type: reaction
-  id: AmnesiakDResi
-  impact: Medium
-  reactants:
-    MindbreakerToxin:
-      amount: 1
-    Dylomet:
-      amount: 1
-    RawAmnesiak:
-      amount: 1
-  products:
-    AmnesiakD: 3
-- type: reaction
-  id: AmnesiakCResi
-  impact: Medium
-  reactants:
-    PolytrinicAcid:
-      amount: 1
-    Dylomet:
-      amount: 1
-    RawAmnesiak:
-      amount: 1
-  products:
-    AmnesiakC: 3
-- type: reaction
-  id: AmnesiakBResi
-  impact: Medium
-  reactants:
-    Lipolicide:
-      amount: 1
-    Dylomet:
-      amount: 1
-    RawAmnesiak:
-      amount: 1
-  products:
-    AmnesiakB: 3
-- type: reaction
-  id: AmnesiakAResi
-  impact: Medium
-  reactants:
-    Ephedrine:
-      amount: 1
-    Dylomet:
-      amount: 1
-    RawAmnesiak:
-      amount: 1
-  products:
-    AmnesiakA: 3

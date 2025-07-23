@@ -1,0 +1,10 @@
+- type: entity
+  id: CrateChemistryRawAmnesiac
+  parent: CrateChemistrySecure
+  name: Amnesiac container
+  description: Contains five jars of raw materials for producing amnesiacs.
+  components:
+    - type: StorageFill
+      contents:
+        - id: JugRawAmnesiac
+          amount: 1

@@ -1,0 +1,14 @@
+- type: entity
+  parent: Jug
+  suffix: raw
+  id: JugRawAmnesiac
+  name: Jug
+  components:
+  - type: Label
+    currentLabel: 
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: RawAmnesiac
+          Quantity: 50
