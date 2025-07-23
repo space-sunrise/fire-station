@@ -1,15 +1,15 @@
 ﻿- type: alert
   id: Blinking
   icons:
-  - sprite: /Textures/_Scp/blink.rsi
+  - sprite: /Textures/_Scp/Alerts/blink.rsi
     state: blink0
-  - sprite: /Textures/_Scp/blink.rsi
+  - sprite: /Textures/_Scp/Alerts/blink.rsi
     state: blink1
-  - sprite: /Textures/_Scp/blink.rsi
+  - sprite: /Textures/_Scp/Alerts/blink.rsi
     state: blink2
-  - sprite: /Textures/_Scp/blink.rsi
+  - sprite: /Textures/_Scp/Alerts/blink.rsi
     state: blink3
-  - sprite: /Textures/_Scp/blink.rsi
+  - sprite: /Textures/_Scp/Alerts/blink.rsi
     state: blink4
   name: "Индикатор моргания"
   description: "Показывает статус моргания"
@@ -19,7 +19,7 @@
 - type: alert
   id: Scp106LifeEssence
   icons:
-  - sprite: /Textures/_Scp/Scp106/life_essence_counter.rsi
+  - sprite: /Textures/_Scp/Alerts/life_essence_counter.rsi
     state: background
   alertViewEntity: AlertScp106LifeEssenceSpriteView
   name: alerts-scp106-life-essence-name
@@ -30,7 +30,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
-    sprite: _Scp/Scp106/life_essence_counter.rsi
+    sprite: _Scp/Alerts/life_essence_counter.rsi
     layers:
     - map: [ "enum.AlertVisualLayers.Base" ]
     - map: [ "enum.Scp106VisualLayers.Digit1" ]
