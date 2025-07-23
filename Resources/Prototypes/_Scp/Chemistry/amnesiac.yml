@@ -1,0 +1,239 @@
+- type: reagent
+  id: AmnesiakA
+  name: амнезиак класса A
+  group: Toxins
+  desc: Амнезиак класса A, стирает из памяти жертвы последние 10 минут жизни.
+  flavor: bitter
+  color: "#acb78e"
+  physicalDesc: reagent-physical-desc-exotic-smelling
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: 10
+  - !type:PlantAdjustHealth
+    amount: -5
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ "Вы забываете последние 10 минут своей жизни" ]
+        probability: 1
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiakA
+          min: 20
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+    
+- type: reagent
+  id: AmnesiakB
+  name: амнезиак класса B
+  group: Toxins
+  desc: Амнезиак класса B, стирает из памяти жертвы последние 30 минут жизни.
+  flavor: bitter
+  color: "#383e28"
+  physicalDesc: reagent-physical-desc-exotic-smelling
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: 10
+  - !type:PlantAdjustHealth
+    amount: -5
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ "Вы забываете последние 30 минут своей жизни" ]
+        probability: 1
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiakB
+          min: 10
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+        
+- type: reagent
+  id: AmnesiakС
+  name: амнезиак класса C
+  group: Toxins
+  desc: Амнезиак класса C, стирает из памяти жертвы последний час жизни.
+  flavor: bitter
+  color: "#383e28"
+  physicalDesc: reagent-physical-desc-exotic-smelling
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: 10
+  - !type:PlantAdjustHealth
+    amount: -5
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ "Вы забываете последние час своей жизни" ]
+        probability: 1
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiakC
+          min: 5
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+    
+- type: reagent
+  id: AmnesiakD
+  name: амнезиак класса D
+  group: Toxins
+  desc: Амнезиак класса D, полностью стирает личность.
+  flavor: bitter
+  color: "#383e28"
+  physicalDesc: reagent-physical-desc-exotic-smelling
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: 10
+  - !type:PlantAdjustHealth
+    amount: -5
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ "Вы забываете кто вы, где вы, почему вы тут" ]
+        probability: 1
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiakD
+          min: 1
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+        
+- type: reagent
+  id: RawAmnesiak
+  name: сырье для амнезиака
+  group: Toxins
+  desc: Сырье из которого делается так называемый, Амнезиак
+  flavor: bitter
+  color: "#383e28"
+  physicalDesc: reagent-physical-desc-exotic-smelling
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: RawAmnesiak
+          min: 5
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+        
+- type: cargoProduct
+  id: RawAmnesiak
+  icon:
+    sprite: Objects/Specific/Chemistry/beaker.rsi
+    state: beaker
+  product: CrateChemistryRawAmnesiak
+  cost: 5300 
+  category: cargoproduct-category-name-science
+  group: market
+  
+- type: entity
+  id: CrateChemistryRawAmnesiak
+  parent: CrateChemistrySecure
+  name: ящик с сырьем для амнезиака
+  description: Содержит пять кувшинов с сырьем для производства амнезиака.
+  components:
+    - type: StorageFill
+      contents:
+        - id: JugRawAmnesiak
+          amount: 5
+          
+- type: entity
+  parent: Jug
+  name: кувшин
+  suffix: сырье
+  id: JugRawAmnesiak
+  components:
+  - type: Label
+    currentLabel: сырье для амнезиака
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        reagents:
+        - ReagentId: RawAmnesiak
+          Quantity: 200
+
+
+
+- type: reaction
+  id: AmnesiakDResi
+  impact: Medium
+  reactants:
+    MindbreakerToxin:
+      amount: 1
+    Dylomet:
+      amount: 1
+    RawAmnesiak:
+      amount: 1
+  products:
+    AmnesiakD: 3
+- type: reaction
+  id: AmnesiakCResi
+  impact: Medium
+  reactants:
+    PolytrinicAcid:
+      amount: 1
+    Dylomet:
+      amount: 1
+    RawAmnesiak:
+      amount: 1
+  products:
+    AmnesiakC: 3
+- type: reaction
+  id: AmnesiakBResi
+  impact: Medium
+  reactants:
+    Lipolicide:
+      amount: 1
+    Dylomet:
+      amount: 1
+    RawAmnesiak:
+      amount: 1
+  products:
+    AmnesiakB: 3
+- type: reaction
+  id: AmnesiakAResi
+  impact: Medium
+  reactants:
+    Ephedrine:
+      amount: 1
+    Dylomet:
+      amount: 1
+    RawAmnesiak:
+      amount: 1
+  products:
+    AmnesiakA: 3
