@@ -4,10 +4,10 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Scp/Scp106/scp106.rsi
+    sprite: _Scp/Mobs/Scp106Servants/phantom.rsi
     layers:
     - map: [ "base" ]
-      state: phantom
+      state: icon
   - type: Damageable
     damageContainer: Biological
   - type: MobState

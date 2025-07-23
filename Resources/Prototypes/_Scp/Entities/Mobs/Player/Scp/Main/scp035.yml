@@ -4,7 +4,7 @@
   suffix: SCP-035
   components:
   - type: Sprite
-    sprite: _Scp/scp-035.rsi
+    sprite: _Scp/Objects/Scp/scp-035.rsi
     layers:
     - state: icon
       map: [ "mask" ]

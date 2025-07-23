@@ -7,7 +7,7 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Scp/Scp106/scp106.rsi
+    sprite: _Scp/Mobs/Scp/scp-106.rsi
     layers:
     - map: [ "base" ]
       state: base

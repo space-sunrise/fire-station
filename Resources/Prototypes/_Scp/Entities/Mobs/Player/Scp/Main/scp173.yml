@@ -8,7 +8,7 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Scp/scp-173.rsi
+    sprite: _Scp/Mobs/Scp/scp-173.rsi
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: scp-173

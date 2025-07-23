@@ -8,10 +8,10 @@
     },
     "states": [
         {
-            "name": "pill_canister_scp"
+            "name": "canister"
         },
         {
-            "name": "pill_scp"
+            "name": "pill"
         }
     ]
 }

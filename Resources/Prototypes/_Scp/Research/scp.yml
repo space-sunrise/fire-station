@@ -5,7 +5,7 @@
 - type: technology
   id: AgentTypeSolution
   name: research-technology-agent-type-solution
-  icon: 
+  icon:
     sprite: Objects/Consumable/Drinks/patronbottle.rsi # TODO: Нормальный спрайт, а не алкашка
     state: icon_empty
     scale: 0.4,0.6
@@ -15,7 +15,7 @@
     Scp: 1250
   recipeUnlocks:
   - EyeDroplets
-  
+
 - type: technology
   id: ConsciousInversionFilter
   name: research-technology-conscious-inversion-filter
@@ -28,7 +28,7 @@
     Scp: 1250
   recipeUnlocks:
   - ClothingHeadAwareness
-  
+
 - type: technology
   id: CognitiveScreenProtocolArk11
   name: research-technology-cognitive-screen-protocol
@@ -41,7 +41,7 @@
     Scp: 1500
   recipeUnlocks:
   - Scp049ProtectionImplanter
-  
+
 - type: technology
   id: RapidDeploymentFiberSynthesis
   name: research-technology-rapid-deployment-fiber-synthesis
@@ -54,15 +54,14 @@
     Scp: 1000
   recipeUnlocks:
   - ClothingHeadBagScp096
-  
+
 # Tier 2
 
-  
 - type: technology
   id: ShieldingComposite
   name: research-technology-shielding-composite
   icon:
-    sprite: _Scp/Clothing/Mask/scp096.rsi
+    sprite: _Scp/Clothing/Mask/scp-096.rsi
     state: icon
   discipline: SCP
   tier: 2
@@ -70,7 +69,7 @@
     Scp: 1500
   recipeUnlocks:
   - ReinforcedMaskScp096
-  
+
 - type: technology
   id: SecondOrderNeurovisualFilter
   name: research-technology-second-order-neurovisual-filter
@@ -96,7 +95,7 @@
     Scp: 3000
   recipeUnlocks:
   - ClothingOuterAntiTeleportation
-  
+
 - type: technology
   id: SilentStepModule
   name: research-technology-silent-step-module

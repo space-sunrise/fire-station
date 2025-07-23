@@ -31,7 +31,7 @@
   - type: Sprite
     noRot: true
     drawdepth: Mobs
-    sprite: _Scp/Mobs/scp-082.rsi
+    sprite: _Scp/Mobs/Scp/scp-082.rsi
     state: 082_fullbody
   - type: ComplexInteraction
   - type: Buckle

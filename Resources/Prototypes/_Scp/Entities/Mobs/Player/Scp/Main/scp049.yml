@@ -12,7 +12,7 @@
   - type: Sprite
     noRot: true
     drawdepth: Mobs
-    sprite: _Scp/Mobs/scp-049.rsi
+    sprite: _Scp/Mobs/Scp/scp-049.rsi
     state: SCP-049
   - type: Scp
     class: Euclid

@@ -4,15 +4,15 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Scp/Mobs/scp106_monster.rsi
+    sprite: _Scp/Mobs/Scp106Servants/abomination.rsi
     layers:
     - map: ["enum.DamageStateVisualLayers.Base"]
-      state: abomination
+      state: icon
       shader: Portal
   - type: DamageStateVisuals
     states:
       Alive:
-        Base: abomination
+        Base: icon
       Dead:
         Base: dead
   - type: MobState

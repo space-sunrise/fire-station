@@ -5,7 +5,7 @@
   components:
   - type: Sprite
     drawdepth: SmallMobs
-    sprite: _Scp/Mobs/scp-999.rsi
+    sprite: _Scp/Mobs/Scp/scp-999.rsi
     layers:
     - state: default
       map: [ "enum.DamageStateVisualLayers.Base", "enum.Scp999States.Default", "movement" ]

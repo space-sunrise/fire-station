@@ -8,11 +8,11 @@
   },
   "states": [
     {
-      "name": "SCP-131A",
+      "name": "scp-131-a",
       "directions": 4
     },
     {
-      "name": "SCP-131B",
+      "name": "scp-131-b",
       "directions": 4
     }
   ]

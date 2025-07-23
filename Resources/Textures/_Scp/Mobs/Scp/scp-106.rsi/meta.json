@@ -12,10 +12,6 @@
       "directions": 4
     },
     {
-      "name": "phantom",
-      "directions": 4
-    },
-    {
         "name": "ded_from_lusha",
         "delays": [
             [

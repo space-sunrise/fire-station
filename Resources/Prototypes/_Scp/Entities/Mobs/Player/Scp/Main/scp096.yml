@@ -8,9 +8,9 @@
   - StripableInventoryBase
   components:
   - type: Sprite
-    sprite: _Scp/Mobs/scp-096.rsi
+    sprite: _Scp/Mobs/Scp/scp-096.rsi
     layers:
-    - state: walking
+    - state: idle
       map: [ "base" ]
   - type: Scp
     class: Euclid

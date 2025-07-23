@@ -7,7 +7,7 @@
   components:
   - type: Sprite
     drawdepth: Mobs
-    sprite: _Scp/Mobs/scp-457.rsi
+    sprite: _Scp/Mobs/Scp/scp-457.rsi
     layers:
     - state: fireguy
       shader: unshaded

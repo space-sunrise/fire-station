@@ -10,7 +10,7 @@
     LifeEssence: 10
   raiseProductEventOnUser: true
   icon:
-    sprite: _Scp/Scp106/actions.rsi
+    sprite: _Scp/Actions/scp-106.rsi
     state: become_phantom
   conditions:
   - !type:ListingLimitedStockCondition
@@ -28,7 +28,7 @@
     LifeEssence: 10
   raiseProductEventOnUser: true
   icon:
-    sprite: _Scp/Scp106/actions.rsi
+    sprite: _Scp/Actions/scp-106.rsi
     state: become_phantom
   conditions:
   - !type:ListingLimitedStockCondition
@@ -49,7 +49,7 @@
     LifeEssence: 20
   raiseProductEventOnUser: true
   icon:
-    sprite: _Scp/Scp106/actions.rsi
+    sprite: _Scp/Actions/scp-106.rsi
     state: become_phantom
   conditions:
   - !type:ListingLimitedStockCondition
@@ -67,7 +67,7 @@
     LifeEssence: 20
   raiseProductEventOnUser: true
   icon:
-    sprite: _Scp/Scp106/actions.rsi
+    sprite: _Scp/Actions/scp-106.rsi
     state: leave_phantom
   conditions:
   - !type:ListingLimitedStockCondition

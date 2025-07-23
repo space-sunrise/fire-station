@@ -5,8 +5,8 @@
   components:
   - type: Sprite
     drawdepth: SmallMobs
-    sprite: _Scp/Mobs/SCP-131.rsi
-    state: SCP-131A
+    sprite: _Scp/Mobs/Scp/scp-131.rsi
+    state: scp-131-a
   - type: Scp
     class: Safe
   - type: FearSource
@@ -80,4 +80,4 @@
   parent: Scp131A
   components:
   - type: Sprite
-    state: SCP-131B
+    state: scp-131-b
