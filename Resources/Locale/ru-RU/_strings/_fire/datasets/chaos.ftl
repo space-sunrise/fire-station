@@ -1,7 +1,6 @@
-﻿chaos-leader-1 = Командир
+chaos-leader-1 = Командир
 chaos-soldier-1 = Рядовой
 chaos-medic-1 = Медик
-
 chaos-last-name-1 = Альфа
 chaos-last-name-2 = Браво
 chaos-last-name-3 = Чарли

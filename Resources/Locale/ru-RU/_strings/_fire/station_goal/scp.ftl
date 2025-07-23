@@ -1,4 +1,4 @@
-﻿station-goal-scp-1 =
+station-goal-scp-1 =
     |
     |   [head=1]SCP[/head]
     |   [bold]Обезопасить. Удержать. Сохранить.[/bold]

@@ -1,1 +1,1 @@
-﻿malfunction-light-tip = {$item} выглядит изношенным
+malfunction-light-tip = { $item } выглядит изношенным

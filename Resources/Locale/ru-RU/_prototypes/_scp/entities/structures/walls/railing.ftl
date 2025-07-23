@@ -1,0 +1,14 @@
+ent-FSConcreteCurbNorth = бетонное ограждение
+    .desc = Простое ограждение, чтобы такие идиоты, как ты, не улетели вниз.
+    .suffix = Север
+ent-FSConcreteCurbSouth = бетонное ограждение
+    .desc = Простое ограждение, чтобы такие идиоты, как ты, не улетели вниз.
+    .suffix = Юг
+ent-FSConcreteCurbCornerNorth = ограждение
+    .desc = Простое ограждение, чтобы такие идиоты, как ты, не улетели вниз.
+ent-FSConcreteCurbCornerSouth = ограждение
+    .desc = Простое ограждение, чтобы такие идиоты, как ты, не улетели вниз.
+ent-FSConcreteCurbCornerSmallNorth = ограждение
+    .desc = Простое ограждение, чтобы такие идиоты, как ты, не улетели вниз.
+ent-FSConcreteCurbCornerSmallSouth = ограждение
+    .desc = Простое ограждение, чтобы такие идиоты, как ты, не улетели вниз.

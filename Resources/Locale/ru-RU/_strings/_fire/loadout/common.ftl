@@ -1,5 +1,4 @@
-﻿loadout-group-common-misc-items = Другие предметы
-
+loadout-group-common-misc-items = Другие предметы
 loadout-group-head = Голова
 loadout-group-hat = { loadout-group-head }
 loadout-group-eyes = Глаза

@@ -1,4 +1,4 @@
-﻿ent-FSFloorTileItemSteel = { ent-FloorTileItemSteel }
+ent-FSFloorTileItemSteel = { ent-FloorTileItemSteel }
     .desc = { ent-FloorTileItemBase.desc }
 ent-FSFloorTileItemDark = темная { ent-FloorTileItemSteel }
     .desc = { ent-FloorTileItemBase.desc }
@@ -24,7 +24,6 @@ ent-FSFloorTileItemCheckerSteel = { ent-FloorTileItemSteel }
     .desc = { ent-FloorTileItemBase.desc }
 ent-FSFloorTileItemCheckerDark = темная { ent-FloorTileItemSteel }
     .desc = { ent-FloorTileItemBase.desc }
-
 scp-tiles-steel-floor = [SCP] { ent-FSFloorTileItemSteel }
 scp-tiles-dark-floor = [SCP] { ent-FSFloorTileItemDark }
 scp-tiles-white-floor = [SCP] { ent-FSFloorTileItemWhite }

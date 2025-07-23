@@ -1,4 +1,4 @@
-﻿ghost-panel-antagonist-scp-name = SCP объекты
+ghost-panel-antagonist-scp-name = SCP объекты
 ghost-panel-antagonist-scp-description = Загадочное создание невероятной случайности, невозможное явление живой природы.
 ghost-panel-antagonist-scp-minor-name = Незначительные SCP объекты
 ghost-panel-antagonist-scp-minor-description = Не столь значимые аномальные создания, ставшие частью фонового шума бурной жизни комплекса

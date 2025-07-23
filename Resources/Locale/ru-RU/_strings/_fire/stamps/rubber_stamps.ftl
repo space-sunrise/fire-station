@@ -1,4 +1,4 @@
-﻿stamp-component-stamped-name-director = { job-name-director }
+stamp-component-stamped-name-director = { job-name-director }
 stamp-component-stamped-name-regional-administration = Региональная администрация
 stamp-component-stamped-name-ethics-committee = { job-name-ethics-committee-representative }
 stamp-component-stamped-name-mental-control-officer = { job-name-mental-control-officer }

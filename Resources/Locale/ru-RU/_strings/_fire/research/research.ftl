@@ -1,2 +1,2 @@
-﻿research-point-default = Базовые
+research-point-default = Базовые
 research-point-scp = SCP

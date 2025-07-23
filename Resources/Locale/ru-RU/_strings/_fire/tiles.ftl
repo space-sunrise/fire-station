@@ -1,1 +1,1 @@
-﻿tiles-pink-floor = розовая плитка
+tiles-pink-floor = розовая плитка

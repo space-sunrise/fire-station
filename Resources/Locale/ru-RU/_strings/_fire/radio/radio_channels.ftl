@@ -1,4 +1,4 @@
-﻿chat-radio-regional-administration = Региональная администрация
+chat-radio-regional-administration = Региональная администрация
 chat-radio-administration = Руководство
 chat-radio-ethics-committee = Комитет по этике
 chat-radio-internal-security = Внутренняя безопасность
@@ -10,5 +10,4 @@ chat-radio-medical-service = Медицинский
 chat-radio-engineering-technical-service = Инженерно-технический
 chat-radio-logistics-service = Логистика
 chat-radio-food-and-sanitation-service = Санитарно-продовольственный
-
 chat-radio-chaos = Повстанцы

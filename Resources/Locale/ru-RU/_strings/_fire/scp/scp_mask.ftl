@@ -1,1 +1,1 @@
-﻿scp-mask-action-blocked = {$mask} блокирует ваши аномальные способности!
+scp-mask-action-blocked = { $mask } блокирует ваши аномальные способности!

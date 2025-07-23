@@ -10,8 +10,6 @@ job-name-senior-containment-guard = старший охранник зоны
 job-description-senior-containment-guard = Распоряжается персоналом класса D и следит за охраной.
 job-name-containment-guard = охранник зоны
 job-description-containment-guard = Занимается охраной персонала класса D.
-
-
 job-name-Governor = комендант
 job-description-Governor = Занимается внешней безопасностью комплекса от угроз с планеты.
 job-name-perimeter-security-officer = офицер периметра
@@ -20,11 +18,7 @@ job-name-field-scientist = полевой агент
 job-description-field-scientist = Агент, работающий совместно с группой сдерживания SCP, он занимается захватом SCP объектов в полевых условиях, транспортирует SCP с одного места в другое.
 job-name-head-of-containment = глава сдерживания
 job-description-head-of-containment = Ответственный за правильное выполнение процедур сдерживания.
-
-
-
 job-supervisors-security-and-research = Охранному и Научному отделу
-
 department-Outer = Охрана Периметра
 department-Outer-description = Защищайте периметр от угроз
 department-Containment = Агенство Сдерживания

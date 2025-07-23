@@ -1,1 +1,1 @@
-﻿ui-options-light-flicking-enable = Мерцание ламп
+ui-options-light-flicking-enable = Мерцание ламп

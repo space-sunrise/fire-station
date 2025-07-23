@@ -1,4 +1,4 @@
-﻿keycard-access-level-0 = Уровень допуска 0
+keycard-access-level-0 = Уровень допуска 0
 keycard-access-level-1 = Уровень допуска 1
 keycard-access-level-2 = Уровень допуска 2
 keycard-access-level-3 = Уровень допуска 3

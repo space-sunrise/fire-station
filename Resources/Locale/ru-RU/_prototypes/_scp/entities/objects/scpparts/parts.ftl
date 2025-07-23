@@ -1,0 +1,16 @@
+ent-BaseScpMaterial = { ent-BaseItem }
+    .desc = { ent-BaseItem.desc }
+ent-BaseScpResearchMaterial = { ent-BaseScpMaterial }
+    .desc = { ent-BaseScpMaterial.desc }
+ent-Scp999Jelly = слизневая жижа
+    .desc = Сгусток липкой растекающейся жижи
+ent-Scp173Shard = осколок камня
+    .desc = Небольшой каменный осколок светло-оранжевого цвета
+ent-Scp173PaintChips = кусочки краски
+    .desc = Множественные кусочки краски, содранные грубым предметом
+ent-Scp173PaintBall = крашенный шарик
+    .desc = Множественные кусочки краски, слипшиеся в шарик. Зачем я это сделал?
+ent-Scp096Photo = странная фотография
+    .desc = Небольшая фотография, на которой практически неразличимо содержимое. С трудом можно опознать очертание гуманоидного силуэта
+ent-Scp096PhotoDeveloped = странное фото
+    .desc = { ent-BaseScpMaterial.desc }
