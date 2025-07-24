@@ -49,7 +49,7 @@
   suffix: Amnesiac C
   components:
   - type: Label
-    currentLabel: reagent-amnesiac-C-name
+    currentLabel: reagent-amnesiac-c-name
   - type: SolutionContainerManager
     solutions:
       beaker:
@@ -65,7 +65,7 @@
   name: vial
   components:
   - type: Label
-    currentLabel: reagent-amnesiac-D-name
+    currentLabel: reagent-amnesiac-d-name
   - type: SolutionContainerManager
     solutions:
       beaker:

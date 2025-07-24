@@ -24,16 +24,16 @@ reagent-amnesiac-b-msg = Вы забываете последние 30 мину�
 reagent-amnesiac-c-msg = Вы забываете последний час своей жизни
 reagent-amnesiac-d-msg = Вы забываете кто вы, где вы и что вы тут делаете
 
-ent-AmnesiacAChemistryVial = { ent-BaseChemistryEmptyVial }
+ent-ChemistryVialAmnesiacA = { ent-BaseChemistryEmptyVial }
     .desc = { ent-BaseChemistryEmptyVial.desc }
     .suffix = Амнезиак A
-ent-AmnesiacBChemistryVial = { ent-BaseChemistryEmptyVial }
+ent-ChemistryVialAmnesiacB = { ent-BaseChemistryEmptyVial }
     .desc = { ent-BaseChemistryEmptyVial.desc }
     .suffix = Амнезиак B
-ent-AmnesiacCChemistryVial = { ent-BaseChemistryEmptyVial }
+ent-ChemistryVialAmnesiacC = { ent-BaseChemistryEmptyVial }
     .desc = { ent-BaseChemistryEmptyVial.desc }
     .suffix = Амнезиак C
-ent-AmnesiacDChemistryVial = { ent-BaseChemistryEmptyVial }
+ent-ChemistryVialAmnesiacD = { ent-BaseChemistryEmptyVial }
     .desc = { ent-BaseChemistryEmptyVial.desc }
     .suffix = Амнезиак D
 
