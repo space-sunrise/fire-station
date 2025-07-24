@@ -1,5 +1,2 @@
-﻿scp-mask-cannot-equip = Маска слишком велика для {$name}
-scp-mask-cannot-tear-safetime = Вы не можете снять маску сейчас. Оставшее время до возможного снятия: {$time}
-
-ent-ScpTearMask = Разорвать маску
-    .desc = Разорвите сдерживающую вас маску, чтобы вернуть ваши способности
+scp-mask-cannot-equip = The mask is too big for { $name }
+scp-mask-cannot-tear-safetime = You cannot tear the mask off right now. Remaining safe time: { $time }

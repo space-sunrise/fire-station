@@ -1,0 +1,10 @@
+ent-BaseCrateScpCage = { ent-BaseStructureDynamic }
+    .desc = { ent-BaseStructureDynamic.desc }
+ent-CrateScpCageFolded = Collapsed Pandora Hangar
+    .desc = { ent-CrateScpCage.desc }
+    .suffix = Collapsed
+ent-CrateScpCage = Pandora Hangar
+    .desc = A multi-functional collapsible lockable container for transporting SCPs, combining mobility and maximum protection against anomalous effects. Can be folded and unfolded with a screwdriver.
+ent-CrateScpCageScp173 = { ent-CrateScpCage }
+    .desc = { ent-CrateScpCage.desc }
+    .suffix = SCP-173

@@ -1,0 +1,9 @@
+ent-MobScp106Monster = Shadowy Thing
+    .desc = An accumulation of fear into hatred, emerged from a giant rift to fill this dimension.
+    .suffix = SCP-106 Monster
+ent-Scp106Portal = Reality Rift
+    .desc = The unimaginable horror on the other side shakes even the possible thought of existing within it.
+    .suffix = SCP-106 Portal
+ent-MobScp106BigMonster = Giant Shadowy Thing
+    .desc = { ent-MobScp106Monster.desc }
+    .suffix = { ent-MobScp106Monster.suffix }
