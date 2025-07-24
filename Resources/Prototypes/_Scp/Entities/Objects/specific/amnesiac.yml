@@ -14,7 +14,7 @@
           Quantity: 50
 
 - type: entity
-  id: AmnesiacAChemistryVial
+  id: ChemistryVialAmnesiacA
   parent: BaseChemistryEmptyVial
   suffix: Amnesiac A
   components:
@@ -29,7 +29,7 @@
             Quantity: 10
 
 - type: entity
-  id: AmnesiacBChemistryVial
+  id: ChemistryVialAmnesiacB
   parent: BaseChemistryEmptyVial
   suffix: Amnesiac B
   components:
@@ -44,7 +44,7 @@
             Quantity: 10
 
 - type: entity
-  id: AmnesiacCChemistryVial
+  id: ChemistryVialAmnesiacC
   parent: BaseChemistryEmptyVial
   suffix: Amnesiac C
   components:
@@ -59,7 +59,7 @@
             Quantity: 10
 
 - type: entity
-  id: AmnesiacDChemistryVial
+  id: ChemistryVialAmnesiacD
   parent: BaseChemistryEmptyVial
   suffix: Amnesiac D
   name: vial

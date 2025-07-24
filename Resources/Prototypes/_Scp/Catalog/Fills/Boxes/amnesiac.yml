@@ -10,7 +10,7 @@
     - 0,0,2,0
   - type: StorageFill
     contents:
-      - id: AmnesiacAChemistryVial
+      - id: ChemistryVialAmnesiacA
         amount: 3
   - type: Sprite
     layers:
@@ -29,7 +29,7 @@
     - 0,0,2,0
   - type: StorageFill
     contents:
-      - id: AmnesiacBChemistryVial
+      - id: ChemistryVialAmnesiacB
         amount: 3
   - type: Sprite
     layers:
@@ -48,7 +48,7 @@
     - 0,0,2,0
   - type: StorageFill
     contents:
-      - id: AmnesiacCChemistryVial
+      - id: ChemistryVialAmnesiacC
         amount: 3
   - type: Sprite
     layers:
@@ -67,7 +67,7 @@
     - 0,0,2,0
   - type: StorageFill
     contents:
-      - id: AmnesiacDChemistryVial
+      - id: ChemistryVialAmnesiacD
         amount: 3
   - type: Sprite
     layers:
