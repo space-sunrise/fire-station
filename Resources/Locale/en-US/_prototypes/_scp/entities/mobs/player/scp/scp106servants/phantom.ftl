@@ -1,9 +1,0 @@
-ent-BaseScp106Phantom = Фантомное существо
-    .desc = Дереализированное создание сотканное из кошмаров безумцев. Более слабое и гибкое воплощение SCP-106
-    .suffix = SCP-106 Фантом
-ent-Scp106Phantom = { ent-BaseScp106Phantom }
-    .desc = { ent-BaseScp106Phantom.desc }
-    .suffix = { ent-BaseScp106Phantom.suffix }
-ent-Scp106CorporealPhantom = { ent-BaseScp106Phantom }
-    .desc = { ent-BaseScp106Phantom.desc }
-    .suffix = { ent-BaseScp106Phantom.suffix }

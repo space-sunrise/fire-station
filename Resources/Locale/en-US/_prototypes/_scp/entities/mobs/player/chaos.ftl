@@ -1,9 +1,0 @@
-ent-MobHumanChaosLeader = Командир Повстанцев Хаоса
-    .suffix = CHAOS | ANTAG
-    .desc = { ent-MobHuman.desc }
-ent-MobHumanChaosMedic = Медик Повстанцев Хаоса
-    .suffix = CHAOS | ANTAG
-    .desc = { ent-MobHuman.desc }
-ent-MobHumanChaos = Повстанец Хаоса
-    .suffix = CHAOS | ANTAG
-    .desc = { ent-MobHuman.desc }
