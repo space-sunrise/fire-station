@@ -1,1 +1,1 @@
-﻿scp035-protection-success = Ваше сознание сопротивляется прикасаться к {$name}
+scp035-protection-success = Your mind resists touching {$name}

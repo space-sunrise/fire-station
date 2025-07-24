@@ -1,4 +1,4 @@
-﻿reagent-name-scp500 = "SCP-500-D"
-reagent-desc-scp500 = "Белая, мелкодисперсная пыль без запаха и вкуса."
-reagent-effect-scp500 = Вы поклялись себе бросить все плохие привычки.
-reagent-physicaldesc-scp500 = хрустящие, белые кристаллы
+reagent-name-scp500 = "SCP-500-D"
+reagent-desc-scp500 = "A fine, odorless, and tasteless white powder."
+reagent-effect-scp500 = You swore to quit all bad habits.
+reagent-physicaldesc-scp500 = brittle, white crystals

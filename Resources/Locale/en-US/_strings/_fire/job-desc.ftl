@@ -1,56 +1,55 @@
-job-name-containment-specialist = специалист
-job-description-containment-specialist = Работает непосредственно с аномальными объектами фонда.
-job-name-biological-defense-specialist = специалист биозащиты
-job-description-biological-defense-specialist = Сотрудник сдерживания, работающий с зараженными местами. Именно они обычно носят ХАЗМАТ костюмы.
-job-name-site-manager = менеджер комплекса
-job-description-site-manager = Отвечает за отчетность, архивы и внутренние проблемы комплекса. Левая рука Главы Комплекса
-job-name-containment-psycologist = психолог сдерживания
-job-description-containment-psycologist = Обученный сотрудник, контактирующий в основном с разумными объектами SCP.
-job-name-senior-containment-guard = старший охранник зоны
-job-description-senior-containment-guard = Распоряжается персоналом класса D и следит за охраной.
-job-name-containment-guard = охранник зоны
-job-description-containment-guard = Занимается охраной персонала класса D.
+job-name-containment-specialist = Containment Specialist
+job-description-containment-specialist = Works directly with the Foundation's anomalous objects.
+job-name-biological-defense-specialist = Biological Defense Specialist
+job-description-biological-defense-specialist = Containment employee working with infected sites. They are the ones who usually wear HAZMAT suits.
+job-name-site-manager = Site Manager
+job-description-site-manager = Responsible for reporting, archives and internal problems of the complex. The left hand of the Head of the Complex.
+job-name-containment-psycologist = Containment Psychologist
+job-description-containment-psycologist = A trained employee who mainly interacts with intelligent SCP objects.
+job-name-senior-containment-guard = Senior Containment Guard
+job-description-senior-containment-guard = Manages Class D personnel and monitors security.
+job-name-containment-guard = Containment Guard
+job-description-containment-guard = Engaged in guarding Class D personnel.
 
-job-name-classd = сотрудник класса D
-job-name-classd-cook = повар класса D
-job-name-classd-botanist = растеневод класса D
-job-name-classd-janitor = уборщик класса D
+job-name-classd = Class D Personnel
+job-name-classd-cook = Class D Cook
+job-name-classd-botanist = Class D Botanist
+job-name-classd-janitor = Class D Janitor
 
-job-description-classd = Над ними ставят опыты...
-job-name-Governor = комендант
-job-description-Governor = Занимается внешней безопасностью комплекса от угроз с планеты.
-job-name-perimeter-security-officer = офицер периметра
-job-description-perimeter-security-officer = Занимается как охраной периметра комплекса, так и вылазками на поверхность.
-job-name-field-scientist = полевой агент
-job-description-field-scientist = Агент, работающий совместно с группой сдерживания SCP, он занимается захватом SCP объектов в полевых условиях, транспортирует SCP с одного места в другое.
-job-name-head-of-containment = глава сдерживания
-job-description-head-of-containment = Ответственный за правильное выполнение процедур сдерживания.
+job-description-classd = They are experimented on...
+job-name-Governor = Governor
+job-description-Governor = Deals with the external security of the complex from threats from the planet.
+job-name-perimeter-security-officer = Perimeter Security Officer
+job-description-perimeter-security-officer = Deals with both guarding the perimeter of the complex and sorties to the surface.
+job-name-field-scientist = Field Scientist
+job-description-field-scientist = An agent working in conjunction with the SCP containment group, he is engaged in capturing SCP objects in the field, transporting SCP from one place to another.
+job-name-head-of-containment = Head of Containment
+job-description-head-of-containment = Responsible for the correct execution of containment procedures.
 
-job-name-scp049 = SCP-049 «Чумной Доктор»
-job-description-scp049 = Загадочный гуманоид в мантии, считающий себя врачом. Его прикосновение смертельно, а цель - «излечить» человечество.
+job-name-scp049 = SCP-049 "Plague Doctor"
+job-description-scp049 = A mysterious humanoid in a robe who considers himself a doctor. His touch is deadly, and his goal is to "cure" humanity.
 
-job-name-scp106 = SCP-106 «Дед»
-job-description-scp106 = Старый, гнилой монстр, появляющийся из коррозионных порталов. Охотится на жертвы с садистской жестокостью.
+job-name-scp106 = SCP-106 "The Old Man"
+job-description-scp106 = An old, rotting monster that emerges from corrosive portals. Hunts victims with sadistic cruelty.
 
-job-name-scp939 = SCP-939 «Собака»
-job-description-scp939 = Хищные существа без глаз, привлекающие жертв голосами предыдущих жертв. Идеальны для скрытных атак в темноте.
+job-name-scp939 = SCP-939 "With Many Voices"
+job-description-scp939 = Predatory creatures without eyes, attracting victims with the voices of previous victims. Ideal for stealth attacks in the dark.
 
-job-name-scp082 = SCP-082 «Каннибал Фернанд»
-job-description-scp082 = Гигант с изысканными манерами и вкусом к человеческой плоти. Любит рассказывать истории перед тем, как устроить пир.
+job-name-scp082 = SCP-082 "Fernand the Cannibal"
+job-description-scp082 = A giant with exquisite manners and a taste for human flesh. He likes to tell stories before feasting.
 
-job-name-scp096 = SCP-096 «Скромник»
-job-description-scp096 = Чрезвычайно опасное существо, реагирующее на взгляд. Если кто-то увидит его лицо - жертву ничто не спасёт.
+job-name-scp096 = SCP-096 "The Shy Guy"
+job-description-scp096 = An extremely dangerous creature that reacts to a look. If someone sees his face, nothing will save the victim.
 
-job-name-scp999 = SCP-999 «Желейный Монстр»
-job-description-scp999 = Дружелюбная студнеобразная сущность, вызывающая безграничную радость и смех. Способен снимать стресс и лечить депрессию.
+job-name-scp999 = SCP-999 "The Tickle Monster"
+job-description-scp999 = A friendly gelatinous entity that causes boundless joy and laughter. Able to relieve stress and treat depression.
 
-job-name-scp173 = SCP-173 «Статуя»
-job-description-scp173 = Статуя, убивающая при потере зрительного контакта. Быстрая, бесшумная и смертельная, если моргнуть.
+job-name-scp173 = SCP-173 "The Sculpture"
+job-description-scp173 = A statue that kills when eye contact is lost. Fast, silent and deadly if you blink.
 
-job-supervisors-security-and-research = Охранному и Научному отделу
+job-supervisors-security-and-research = To the Security and Research Department
 
-department-Outer = Охрана Периметра
-department-Outer-description = Защищайте периметр от угроз
-department-Containment = Агенство Сдерживания
-department-containment-description = Ни в коем случае не нарушайте процедуры содержания аномалий!
-
+department-Outer = Perimeter Security
+department-Outer-description = Protect the perimeter from threats
+department-Containment = Containment Agency
+department-containment-description = Under no circumstances violate the procedures for containing anomalies!

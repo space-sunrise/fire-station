@@ -1,3 +1,3 @@
-ent-ClothingUniformPathologist = Pathologist Uniform
-    .desc = Smells like alpine freshness.
-    .suffix = SCP
+ent-ClothingUniformPathologist = Uniform of the pathologist
+.desc = Smells like alpine freshness.
+.suffix = SCP

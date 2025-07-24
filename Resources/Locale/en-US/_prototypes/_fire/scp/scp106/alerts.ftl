@@ -1,2 +1,2 @@
-﻿alerts-scp106-life-essence-name = Эссенсия
-alerts-scp106-life-essence-desc = Сконцентрированная энергия страха и ненависти, позволяющая вам совершать микро-разрывы в реальности. Требуется для действий
+alerts-scp106-life-essence-name = Essence
+alerts-scp106-life-essence-desc = Concentrated energy of fear and hatred that allows you to make micro-tears in reality. Required for actions.

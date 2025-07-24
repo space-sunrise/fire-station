@@ -1,1 +1,1 @@
-scp-457-extinguished = Оно тушится!
+scp-457-extinguished = It's being extinguished!

@@ -1,13 +1,13 @@
-﻿scp096-non-argo-attack-attempt = Я не хочу этого делать
+scp096-non-argo-attack-attempt = I don't want to do this
 
-scp096-targets-left-label = Осталось: { $targets } {$targets ->
-        [one] цель
-        [few] цели
-        *[other] целей
+scp096-targets-left-label = Remaining: { $targets } {$targets ->
+        [one] target
+        [few] targets
+        *[other] targets
         }.
 
-scp096-time-left-label = Осталось: { $time } { $time ->
-        [one] секунда
-        [few] секунды
-        *[other] секунд
+scp096-time-left-label = Remaining: { $time } { $time ->
+        [one] second
+        [few] seconds
+        *[other] seconds
         }

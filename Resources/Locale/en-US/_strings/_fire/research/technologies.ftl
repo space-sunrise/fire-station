@@ -1,6 +1,6 @@
-﻿research-discipline-scp = SCP
+research-discipline-scp = SCP
 
-research-technology-anti-anomalous-security-framework = Комплекс противоаномальной безопасности
-research-technology-reactive-anomaly-suppression-complex = Реактивный комплекс подавления аномалий
-research-technology-anomalous-resonance-laser = Аномальный резонансный лазер
-research-technology-anomalous-optical-destructor = Аномально-оптический деструктор
+research-technology-anti-anomalous-security-framework = Anti-Anomalous Security Framework
+research-technology-reactive-anomaly-suppression-complex = Reactive Anomaly Suppression Complex
+research-technology-anomalous-resonance-laser = Anomalous Resonance Laser
+research-technology-anomalous-optical-destructor = Anomalous Optical Destructor

@@ -1,6 +1,6 @@
-﻿scp173-fast-movement-too-many-watchers = На вас смотрит слишком много людей!
-scp173-damage-structures-blocked = Ваша камера содержания подавляет вашу способность к разрушению!
-scp-cage-suppress-ability = {$container} подавляет ваши аномальные способности!
+scp173-fast-movement-too-many-watchers = Too many people are watching you!
+scp173-damage-structures-blocked = Your containment chamber is suppressing your destruction ability!
+scp-cage-suppress-ability = {$container} is suppressing your anomalous abilities!
 
-reagent-name-scp173 = коричневое нечто
-reagent-desc-scp173 = отвратительно пахнущее вещество
+reagent-name-scp173 = Brown Stuff
+reagent-desc-scp173 = A disgusting smelling substance.

@@ -1,3 +1,3 @@
-﻿send-mog-command-descriptio = Отправляет выбранную оперативную группу.
-send-mog-command-help-text = Использование: { $command } <id-станции> <id-группы>
-send-mog-group-command-arg-id = <ID оперативной группы>
+send-mog-command-descriptio = Sends the selected rapid response team.
+send-mog-command-help-text = Usage: {$command} <station id> <team id>
+send-mog-group-command-arg-id = <Response Team ID>

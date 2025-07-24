@@ -1,3 +1,3 @@
-﻿deployable-tool-deny = Инструмент не подходит
+deployable-tool-deny = This tool is not suitable.
 
-deployable-deploy-success = {$deployer} развертывает {$target}
+deployable-deploy-success = {$deployer} deploys {$target}.

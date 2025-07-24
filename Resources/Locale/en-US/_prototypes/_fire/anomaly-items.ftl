@@ -1,1 +1,0 @@
-Okay, I understand. I will only translate the Russian lines to English, leaving the technical notations, comments, and existing English lines untouched. I will maintain the original formatting and not add any additional text or markdown. If the file is empty, I will output "THE FILE IS EMPTY" ten times, each on a new line.

@@ -1,48 +1,48 @@
-﻿scp106-return-to-containment = Внимание персоналу! Особые условия содержания SCP-106 успешно восстановлены.
+scp106-return-to-containment = Attention personnel! SCP-106 Special Containment Procedures have been successfully restored.
 
 scp106-dimension-shift-alarm-announcement =
-    ЭКСТРЕННОЕ СООБЩЕНИЕ ПЕРСОНАЛУ КОМПЛЕКСА!
+    EMERGENCY ANNOUNCEMENT TO FACILITY PERSONNEL!
 
-    Зафиксировано множественное проникновение за пределы стабильной реальности. Количество затянутых субъектов превышает допустимый порог.
-    Вероятность пространственного коллапса 95%. Изоляция зоны не гарантирует безопасность. Нормальность дестабилизируется через {$time}
+    Multiple breaches of stable reality have been detected. The number of dragged subjects exceeds the acceptable threshold.
+    Probability of spatial collapse is 95%. Zone isolation does not guarantee safety. Normality will destabilize in {$time}
 
-    КЛАССИФИЦИКАЦИЯ ИНЦИНДИЕНТА: DIMENSIONAL SHIFT
+    INCIDENT CLASSIFICATION: DIMENSIONAL SHIFT
 
-    Не откликайтесь на их голоса.
+    Do not respond to their voices.
 
 scp106-many-humans-in-backrooms-alarm-announcement =
-    ОБРАТНЫЙ ОТСЧЁТ НАЧАТ!!
+    COUNTDOWN STARTED!!
 
-    {$time} до фазового обрушения
-    SCP-106 нарушает границы известного. Реальность теряет сцепление
+    {$time} until phase collapse
+    SCP-106 is violating the boundaries of the known. Reality is losing its grip
 
-    Выведите выживших. Закройте глаза
-    Не дышите
+    Evacuate the survivors. Close your eyes
+    Do not breathe
 
 scp106-dimension-shift-averted-announcement =
-    Аномальная активность SCP-106 локализована.
-    Пространственные параметры стабилизированы. Реальность восстановила целостность. Критическое количество пропавших субъектов нормализовано.
+    Anomalous SCP-106 activity has been localized.
+    Spatial parameters have been stabilized. Reality has been restored. The critical number of missing subjects has been normalized.
 
-    Слушайте тишину, пока она ещё принадлежит вам.
+    Listen to the silence, while it still belongs to you.
 
 scp106-dimension-shift-passed-alarm-announcement =
-    Реальность устояла
+    Reality has held
 
-    Все разломы запечатаны. Континуум скреплён якорями реальности. Слияние миров предотвращено.
-    Комплекс остаётся в пределах известного нам пространства.
+    All rifts are sealed. The continuum is secured with reality anchors. The merging of worlds has been prevented.
+    The complex remains within the space known to us.
 
-    Персонал, вы сделали невозможное.
-    Но помните: трещины могут появиться снова. Будьте готовы.
+    Personnel, you have done the impossible.
+    But remember: cracks can reappear. Be prepared.
 
 dimensional-shift-start-alarm-announcement =
-    ‼ ИНИЦИИРОВАН ПРОТОКОЛ DIMENSIONAL SHIFT ‼
-    СДЕРЖИВАНИЕ ПРОВАЛЕНО
+    ‼ PROTOCOL DIMENSIONAL SHIFT INITIATED ‼
+    CONTAINMENT BREACH
 
-    Разломы поглощают структуру комплекса. Локальная геометрия разрушена.
-    Пространственная изоляция невозможна.
+    Rifts are consuming the structure of the complex. Local geometry is destroyed.
+    Spatial isolation is impossible.
 
-    КОНТАКТ С ПЕРВОЙ РЕАЛЬНОСТЬЮ УТРАЧЕН.
-    ОСТАТОЧНЫЕ ВОСПРИЯТИЯ НЕ СООТВЕТСТВУЮТ ДОПУСТИМЫМ КОГНИТИВНЫМ ОБРАЗЦАМ.
+    CONTACT WITH PRIMARY REALITY LOST.
+    RESIDUAL PERCEPTIONS DO NOT CONFORM TO ACCEPTABLE COGNITIVE PATTERNS.
 
-    ТРЕХУРОВНЕВАЯ ДЕТОНАЦИЯ АКТИВИРОВАНА.
-    БЕЗОПАСНОСТЬ БУДЕТ ДОСТИГНУТА АБСОЛЮТНОЙ ЦЕНОЙ
+    THREE-LEVEL DETONATION ACTIVATED.
+    SAFETY WILL BE ACHIEVED AT AN ABSOLUTE PRICE

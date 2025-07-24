@@ -1,4 +1,4 @@
-﻿ent-BaseSignScp = { ent-BaseSign }
+ent-BaseSignScp = { ent-BaseSign }
     .desc = { ent-BaseSign.desc }
 ent-BaseSignDirectionalScp = { ent-BaseSignDirectional }
     .desc = { ent-BaseSignDirectional.desc }

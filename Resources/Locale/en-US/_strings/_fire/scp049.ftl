@@ -1,14 +1,14 @@
-﻿scp049-kill-action-already-dead = Существо уже мертво.
-scp049-kill-action-cant-kill = Существо не может умереть.
+scp049-kill-action-already-dead = The entity is already dead.
+scp049-kill-action-cant-kill = The entity cannot die.
 
-scp049-touch-action-success = { $performer } прикасается к { $target }.
-scp049-self-heal = { $performer } исцеляет свои раны
+scp049-touch-action-success = { $performer } touches { $target }.
+scp049-self-heal = { $performer } heals their wounds
 
-scp049-heal-minion = исцеляет раны { $target }
+scp049-heal-minion = heals the wounds of { $target }
 
-scp049-ghost-role-name = Зомбифицированный пациент SCP-049
-scp049-ghost-role-description = Вы - воскрешенная жертва SCP-049, известного как "Чумной Доктор". Теперь вы его верный слуга, движимый непреодолимым желанием помогать своему хозяину в его "лечении".
-scp049-ghost-role-rules = Следуйте указаниям SCP-049. Не нападайте на других рабов или SCP-049. Ваша главная цель - помогать "Чумному Доктору" в его миссии. Вы не помните свою прошлую жизнь.
+scp049-ghost-role-name = SCP-049 Zombified Patient
+scp049-ghost-role-description = You are a reanimated victim of SCP-049, also known as "The Plague Doctor". Now you are his loyal servant, driven by an overwhelming desire to aid your master in his "cure".
+scp049-ghost-role-rules = Follow the instructions of SCP-049. Do not attack other thralls or SCP-049. Your primary objective is to assist "The Plague Doctor" in his mission. You do not remember your past life.
 
-scp049-missing-surgery-tool = Для операции мне требуется { $instrument }.
-scp049-cannot-zombify-entity = Организм {$name} сопротивляется и не подлежит лечению
+scp049-missing-surgery-tool = I need { $instrument } for surgery.
+scp049-cannot-zombify-entity = {$name}'s organism resists and is not subject to treatment

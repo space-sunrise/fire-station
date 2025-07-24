@@ -1,2 +1,2 @@
-ent-ScpRegionalAdministration = { ent-BaseStation }
-    .desc = { ent-BaseStation.desc }
+ent-ScpRegionalAdministration = Regional SCP Administration
+    .desc = A regional office tasked with managing and administering the station's SCPs.
