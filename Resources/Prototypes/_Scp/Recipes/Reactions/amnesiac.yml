@@ -1,4 +1,17 @@
 - type: reaction
+  id: AmnesiacARecipe
+  impact: Medium
+  reactants:
+    Ephedrine:
+      amount: 1
+    Dylomet:
+      amount: 1
+    RawAmnesiac:
+      amount: 1
+  products:
+    AmnesiacA: 3
+
+- type: reaction
   id: AmnesiacDRecipe
   impact: Medium
   reactants:
@@ -36,16 +49,3 @@
       amount: 1
   products:
     AmnesiacB: 3
-
-- type: reaction
-  id: AmnesiacARecipe
-  impact: Medium
-  reactants:
-    Ephedrine:
-      amount: 1
-    Dylomet:
-      amount: 1
-    RawAmnesiac:
-      amount: 1
-  products:
-    AmnesiacA: 3

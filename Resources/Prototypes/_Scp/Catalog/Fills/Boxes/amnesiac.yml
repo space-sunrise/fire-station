@@ -1,0 +1,75 @@
+- type: entity
+  name: vial box
+  parent: BoxCardboard
+  id: BoxVialAmnesiacA
+  description: A box full of vials.
+  suffix: Amnesiac A
+  components:
+  - type: Storage
+    grid:
+    - 0,0,2,0
+  - type: StorageFill
+    contents:
+      - id: AmnesiacAChemistryVial
+        amount: 3
+  - type: Sprite
+    layers:
+      - state: box
+      - state: vials
+
+- type: entity
+  name: vial box
+  parent: BoxCardboard
+  id: BoxVialAmnesiacB
+  description: A box full of vials.
+  suffix: Amnesiac B
+  components:
+  - type: Storage
+    grid:
+    - 0,0,2,0
+  - type: StorageFill
+    contents:
+      - id: AmnesiacBChemistryVial
+        amount: 3
+  - type: Sprite
+    layers:
+      - state: box
+      - state: vials
+
+- type: entity
+  name: vial box
+  parent: BoxCardboard
+  id: BoxVialAmnesiacC
+  description: A box full of vials.
+  suffix: Amnesiac C
+  components:
+  - type: Storage
+    grid:
+    - 0,0,2,0
+  - type: StorageFill
+    contents:
+      - id: AmnesiacCChemistryVial
+        amount: 3
+  - type: Sprite
+    layers:
+      - state: box
+      - state: vials
+
+- type: entity
+  name: vial box
+  parent: BoxCardboard
+  id: BoxVialAmnesiacD
+  description: A box full of vials.
+  suffix: Amnesiac D
+  components:
+  - type: Storage
+    grid:
+    - 0,0,2,0
+  - type: StorageFill
+    contents:
+      - id: AmnesiacDChemistryVial
+        amount: 3
+  - type: Sprite
+    layers:
+      - state: box
+      - state: vials

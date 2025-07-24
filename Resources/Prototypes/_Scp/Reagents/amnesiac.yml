@@ -19,17 +19,21 @@
         visualType: MediumCaution
         messages: [ reagent-amnesiac-a-msg ]
         probability: 1
-    Narcotic:
-      effects:
-      - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
           reagent: AmnesiacA
-          min: 20
+          min: 5
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
         key: ForcedSleep
         component: ForcedSleeping
         refresh: false
         type: Add
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiacA
+          min: 20
     
 - type: reagent
   id: AmnesiacB
@@ -52,17 +56,21 @@
         visualType: MediumCaution
         messages: [ reagent-amnesiac-b-msg ]
         probability: 1
-    Narcotic:
-      effects:
-      - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
           reagent: AmnesiacB
-          min: 10
+          min: 5
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
         key: ForcedSleep
         component: ForcedSleeping
         refresh: false
         type: Add
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiacB
+          min: 10
         
 - type: reagent
   id: AmnesiacC
@@ -85,17 +93,21 @@
         visualType: MediumCaution
         messages: [ reagent-amnesiac-c-msg ]
         probability: 1
-    Narcotic:
-      effects:
-      - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
           reagent: AmnesiacC
           min: 5
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
         key: ForcedSleep
         component: ForcedSleeping
         refresh: false
         type: Add
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiacC
+          min: 5
     
 - type: reagent
   id: AmnesiacD
@@ -118,17 +130,21 @@
         visualType: MediumCaution
         messages: [ reagent-amnesiac-d-msg ]
         probability: 1
-    Narcotic:
-      effects:
-      - !type:GenericStatusEffect
         conditions:
         - !type:ReagentThreshold
           reagent: AmnesiacD
-          min: 1
+          min: 5
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
         key: ForcedSleep
         component: ForcedSleeping
         refresh: false
         type: Add
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiacD
+          min: 1
         
 - type: reagent
   id: RawAmnesiac

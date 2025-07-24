@@ -12,3 +12,64 @@
         reagents:
         - ReagentId: RawAmnesiac
           Quantity: 50
+
+- type: entity
+  id: AmnesiacAChemistryVial
+  parent: BaseChemistryEmptyVial
+  suffix: Amnesiac A
+  components:
+  - type: Label
+    currentLabel: reagent-amnesiac-a-name
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 10
+        reagents:
+          - ReagentId: AmnesiacA
+            Quantity: 10
+
+- type: entity
+  id: AmnesiacBChemistryVial
+  parent: BaseChemistryEmptyVial
+  suffix: Amnesiac B
+  components:
+  - type: Label
+    currentLabel: reagent-amnesiac-b-name
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 10
+        reagents:
+          - ReagentId: AmnesiacB
+            Quantity: 10
+
+- type: entity
+  id: AmnesiacCChemistryVial
+  parent: BaseChemistryEmptyVial
+  suffix: Amnesiac C
+  components:
+  - type: Label
+    currentLabel: reagent-amnesiac-C-name
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 10
+        reagents:
+          - ReagentId: AmnesiacC
+            Quantity: 10
+
+- type: entity
+  id: AmnesiacDChemistryVial
+  parent: BaseChemistryEmptyVial
+  suffix: Amnesiac D
+  name: vial
+  components:
+  - type: Label
+    currentLabel: reagent-amnesiac-D-name
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 10
+        reagents:
+          - ReagentId: AmnesiacD
+            Quantity: 10
