@@ -277,11 +277,11 @@ public abstract partial class SharedScp096System : EntitySystem
             return true;
 
         // Проверяем, смотрит ли 096 в лицо цели
-        if (!_fov.IsInViewAngle(scp.Owner, viewer, scp.Comp.ArgoAngle))
+        if (!_fov.IsInViewAngle(scp.Owner, scp.Comp.ArgoAngle, Angle.Zero, viewer))
             return false;
 
         // Проверяем, смотри ли цель в лицо 096
-        if (!_fov.IsInViewAngle(viewer, scp.Owner, scp.Comp.ArgoAngle))
+        if (!_fov.IsInViewAngle(viewer, scp.Comp.ArgoAngle, Angle.Zero, scp.Owner))
             return false;
 
         // Соответственно если обе проверки прошли, то цель видит 096

@@ -3,6 +3,10 @@
   name: trait-category-fear
   maxTraitPoints: 2
 
+- type: traitCategory
+  id: ScpTraits
+  name: trait-category-scp-traits
+
 - type: trait
   id: Hemophobia
   name: trait-hemophobia-name
@@ -50,3 +54,29 @@
     - Fear
   components:
   - type: FearFainting
+
+- type: trait
+  id: TunnelVision
+  name: trait-tunnel-vision-name
+  description: trait-tunnel-vision-desc
+  category: ScpTraits
+  whitelist:
+    components:
+    - MobState
+  components:
+  - type: FieldOfView
+    angle: 80
+    angleTolerance: 18
+
+- type: trait
+  id: BadShooter
+  name: trait-bad-shooter-name
+  description: trait-bad-shooter-desc
+  category: ScpTraits
+  whitelist:
+    components:
+    - MobState
+  components:
+  - type: DispersingShotSource
+    defaultAngleIncreaseModifier: 10
+    defaultMaxAngleMultiplier: 10

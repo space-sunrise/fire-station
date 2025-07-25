@@ -402,7 +402,9 @@ public abstract partial class SharedBuckleSystem
 
         var coords = new EntityCoordinates(strap, offset);
         // Sunrise-End
-        _transform.SetCoordinates(buckle, xform, coords, rotation: Angle.Zero);
+
+        Angle? angle = strap.Comp.AllowRotation ? null : Angle.Zero;
+        _transform.SetCoordinates(buckle, xform, coords, rotation: angle);
 
         _joints.SetRelay(buckle, strap);
 

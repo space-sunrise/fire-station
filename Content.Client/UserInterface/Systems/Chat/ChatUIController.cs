@@ -23,6 +23,7 @@ using Content.Shared.Chat;
 using Content.Shared.Decals;
 using Content.Shared.Damage.ForceSay;
 using Content.Shared.Decals;
+using Content.Shared.Examine;
 using Content.Shared.Input;
 using Content.Shared.Radio;
 using Content.Shared.Roles.RoleCodeword;
@@ -70,7 +71,6 @@ public sealed partial class ChatUIController : UIController
     [UISystemDependency] private readonly TransformSystem? _transform = default;
     [UISystemDependency] private readonly MindSystem? _mindSystem = default!;
     [UISystemDependency] private readonly RoleCodewordSystem? _roleCodewordSystem = default!;
-    [UISystemDependency] private readonly FieldOfViewSystem? _fov = default!;
 
     [ValidatePrototypeId<ColorPalettePrototype>]
     private const string ChatNamePalette = "ChatNames";
@@ -78,8 +78,6 @@ public sealed partial class ChatUIController : UIController
     private bool _chatNameColorsEnabled;
 
     private ISawmill _sawmill = default!;
-
-    private EntityQuery<FieldOfViewComponent> _fovQuery;
 
     public static readonly Dictionary<char, ChatSelectChannel> PrefixToChannel = new()
     {
@@ -257,7 +255,6 @@ public sealed partial class ChatUIController : UIController
         _config.OnValueChanged(CCVars.ChatWindowOpacity, OnChatWindowOpacityChanged);
 
         InitializeHighlights();
-        _fovQuery = _ent.GetEntityQuery<FieldOfViewComponent>();
     }
 
     public void OnScreenLoad()
@@ -687,17 +684,6 @@ public sealed partial class ChatUIController : UIController
 
             var otherPos = _transform?.GetMapCoordinates(ent) ?? MapCoordinates.Nullspace;
 
-            // Fire edit start - чтобы в поле зрения не попадались чатбаблы
-            if (player.HasValue && _fov != null && _fovQuery.HasComp(player))
-            {
-                if (!_fov.IsInViewAngle(player.Value, ent))
-                {
-                    SetBubbles(bubs, false);
-                    continue;
-                }
-            }
-            // Fire edit end
-
             if (occluded && !_examine.InRangeUnOccluded(
                     playerPos,
                     otherPos, 0f,
@@ -886,6 +872,11 @@ public sealed partial class ChatUIController : UIController
 
     public void ProcessChatMessage(ChatMessage msg, bool speechBubble = true)
     {
+        // Fire added start - через стены не слышно
+        if (!CanHear(_player.LocalEntity, _ent.GetEntity(msg.SenderEntity), msg.Channel))
+            return;
+        // Fire added end
+
         // color the name unless it's something like "the old man"
         if ((msg.Channel == ChatChannel.Local || msg.Channel == ChatChannel.Whisper) && _chatNameColorsEnabled)
         {
@@ -962,6 +953,31 @@ public sealed partial class ChatUIController : UIController
                 break;
         }
     }
+
+    // Fire added start - через стены не будет слышно
+    private bool CanHear(EntityUid? player, EntityUid sender, ChatChannel channel)
+    {
+        if (channel != ChatChannel.Emotes && channel != ChatChannel.Local && channel != ChatChannel.Whisper)
+            return true;
+
+        if (_examine == null || !player.HasValue || _transform == null)
+            return true;
+
+        if (!_examine.IsOccluded(player.Value))
+            return true;
+
+        // Все, что не через стены - слышно
+        if (_examine.InRangeUnOccluded(player.Value, sender))
+            return true;
+
+        // Если подойти вплотную к стене, то будет слышно
+        if (_transform.InRange(player.Value, sender, 2.5f))
+            return true;
+
+        // Иначе не слышно
+        return false;
+    }
+    // Fire added end
 
     public void OnDeleteChatMessagesBy(MsgDeleteChatMessagesBy msg)
     {

@@ -181,7 +181,7 @@
   id: TrackingImplantMTF
   components:
     - type: Rattle
-      radioChannel: "RegionalAdministration"
+      radioChannel: RegionalAdministration
 
 - type: entity
   parent: BoxErtImplants
@@ -310,6 +310,11 @@
   - Dwarf
   parent: EventHumanoidMindShielded
   randomizeName: false
+  voiceWhitelist:
+  - CBMTF1
+  - CBMTF2
+  genderWhitelist:
+  - Male
   components:
   - type: RandomMetadata
     nameSegments:
@@ -321,6 +326,30 @@
     implants:
     - Scp049ProtectionImplant
     - TrackingImplantMTF
+    - MindShieldImplant
+  - type: TTS
+  - type: Fear
+    phobias:
+    - Exoremophobia
+    - Necrophobia
+    proximityBlockerLevel: None
+    seenBlockerLevel: None
+    fearBasedSpreadAngleModifier:
+      Anxiety: 1.1
+      Fear: 1.4
+      Terror: 4
+    fearBasedGrainStrength:
+      None: 0
+      Anxiety: 33
+      Fear: 130
+      Terror: 440
+    fearBasedVignetteStrength:
+      None: 0
+      Anxiety: 30
+      Fear: 35
+      Terror: 330
+    baseJitterTime: 2
+    fallOffChance: 0.5
 
 # специалист
 - type: randomHumanoidSettings
@@ -333,6 +362,27 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert
   - type: NoEmotions
+  - type: Fear
+    phobias:
+    - Exoremophobia
+    proximityBlockerLevel: None
+    seenBlockerLevel: None
+    fearBasedSpreadAngleModifier:
+      Anxiety: 1
+      Fear: 1.3
+      Terror: 3
+    fearBasedGrainStrength:
+      None: 0
+      Anxiety: 30
+      Fear: 110
+      Terror: 400
+    fearBasedVignetteStrength:
+      None: 0
+      Anxiety: 20
+      Fear: 30
+      Terror: 230
+    baseJitterTime: 1.5
+    fallOffChance: 0.5
 
 # командир
 - type: randomHumanoidSettings
@@ -345,7 +395,6 @@
     - NamesLeader
     - NamesMilitaryLast
     nameFormat: name-format-ert
-  - type: NoEmotions
 
 # Оперативник
 - type: randomHumanoidSettings
@@ -358,8 +407,6 @@
     - NamesOperativeFirst
     - NamesOperativeLast
     nameFormat: name-format-ert
-  - type: NoEmotions
-
 
 # ЗВАНИЯ
 - type: localizedDataset

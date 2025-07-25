@@ -1,0 +1,51 @@
+- type: reaction
+  id: AmnesiacARecipe
+  impact: Medium
+  reactants:
+    Ephedrine:
+      amount: 1
+    Dylomet:
+      amount: 1
+    RawAmnesiac:
+      amount: 1
+  products:
+    AmnesiacA: 3
+
+- type: reaction
+  id: AmnesiacDRecipe
+  impact: Medium
+  reactants:
+    MindbreakerToxin:
+      amount: 1
+    Dylomet:
+      amount: 1
+    RawAmnesiac:
+      amount: 1
+  products:
+    AmnesiacD: 3
+
+- type: reaction
+  id: AmnesiacCRecipe
+  impact: Medium
+  reactants:
+    PolytrinicAcid:
+      amount: 1
+    Dylomet:
+      amount: 1
+    RawAmnesiac:
+      amount: 1
+  products:
+    AmnesiacC: 3
+
+- type: reaction
+  id: AmnesiacBRecipe
+  impact: Medium
+  reactants:
+    Lipolicide:
+      amount: 1
+    Dylomet:
+      amount: 1
+    RawAmnesiac:
+      amount: 1
+  products:
+    AmnesiacB: 3

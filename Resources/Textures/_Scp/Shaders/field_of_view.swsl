@@ -1,30 +1,30 @@
-﻿uniform sampler2D SCREEN_TEXTURE;
-uniform sampler2D BLURRED_TEXTURE;
-
-uniform highp vec2 playerScreenPos;
-uniform highp vec2 playerForward;
-uniform highp float fovCosine;
+﻿uniform highp vec2 playerScreenPos;
+uniform mediump vec2 playerForward;
+uniform mediump float fovCosMinusHardness;
+uniform mediump float fovCosPlusHardness;
+uniform mediump float coneOpacity;
 uniform highp float safeZoneRadius;
-uniform highp float coneOpacity;
-uniform highp float edgeHardness;
-uniform highp float safeZoneEdgeWidth;
+uniform mediump float safeZoneEdgeWidth;
+
+uniform sampler2D SCREEN_TEXTURE;
+uniform sampler2D BLURRED_TEXTURE;
 
 void fragment() {
     highp vec2 toPixel = FRAGCOORD.xy - playerScreenPos;
     highp float distance = length(toPixel);
 
-    highp vec2 directionToPixel = distance > 0.001 ? normalize(toPixel) : vec2(0.0, 1.0);
-    highp float dotProduct = dot(playerForward, directionToPixel);
+    mediump vec2 directionToPixel = distance > 0.001 ? normalize(toPixel) : vec2(0.0, 1.0);
+    mediump float dotProduct = dot(playerForward, directionToPixel);
 
-    highp float coneFactor = smoothstep(fovCosine + edgeHardness, fovCosine - edgeHardness, dotProduct);
+    mediump float coneFactor = smoothstep(fovCosPlusHardness, fovCosMinusHardness, dotProduct);
 
-    highp vec4 inFovColor = texture(SCREEN_TEXTURE, UV);
-    highp vec4 blurredColor = texture(BLURRED_TEXTURE, UV);
-    highp vec4 outOfFovColor = mix(blurredColor, vec4(0.0, 0.0, 0.0, 1.0), coneOpacity);
+    mediump vec4 inFovColor = texture(SCREEN_TEXTURE, UV);
+    mediump vec4 blurredColor = texture(BLURRED_TEXTURE, UV);
+    mediump vec4 outOfFovColor = mix(blurredColor, vec4(0.0, 0.0, 0.0, 1.0), coneOpacity);
 
-    highp vec4 effectColor = mix(inFovColor, outOfFovColor, coneFactor);
+    mediump vec4 effectColor = mix(inFovColor, outOfFovColor, coneFactor);
 
-    highp float safeZoneFactor = smoothstep(safeZoneRadius + safeZoneEdgeWidth, safeZoneRadius, distance);
+    mediump float safeZoneFactor = smoothstep(safeZoneRadius + safeZoneEdgeWidth, safeZoneRadius, distance);
 
     COLOR = mix(effectColor, inFovColor, safeZoneFactor);
 }

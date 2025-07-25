@@ -26,6 +26,7 @@ public sealed class FieldOfViewOverlay : Overlay
 
     private IRenderTexture? _blurPass;
     private IRenderTexture? _backBuffer;
+    public float BlurScale = 0.7f;
 
     private Angle _currentAngle;
     private const float LerpSpeed = 8f;
@@ -41,6 +42,11 @@ public sealed class FieldOfViewOverlay : Overlay
     private TransformComponent? _xform;
     private SpriteComponent? _sprite;
     private FieldOfViewComponent? _fov;
+
+    public EntityUid? EntityOverride;
+
+    private static readonly Angle AngleCorrection = Angle.FromDegrees(90);
+    private const float DeltaTimeFrameRate = 1f / 30f;
 
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -62,6 +68,14 @@ public sealed class FieldOfViewOverlay : Overlay
         _blurYShader = _prototype.Index<ShaderPrototype>("BlurryVisionY").InstanceUnique();
     }
 
+    public void NullifyComponents()
+    {
+        _xform = null;
+        _sprite = null;
+        _fov = null;
+        EntityOverride = null;
+    }
+
     protected override void DisposeBehavior()
     {
         base.DisposeBehavior();
@@ -79,7 +93,7 @@ public sealed class FieldOfViewOverlay : Overlay
         if (!_eyeQuery.TryGetComponent(playerEntity, out var eyeComp) || args.Viewport.Eye != eyeComp.Eye)
             return false;
 
-        var size = args.Viewport.Size;
+        var size = (Vector2i)(args.Viewport.Size * BlurScale);
         if (_backBuffer == null || _backBuffer.Size != size)
         {
             _backBuffer?.Dispose();
@@ -95,25 +109,26 @@ public sealed class FieldOfViewOverlay : Overlay
     protected override void Draw(in OverlayDrawArgs args)
     {
         var playerEntity = _player.LocalEntity;
-        var eye = args.Viewport.Eye;
+        var chosenEntity = EntityOverride ?? playerEntity;
 
-        if (!playerEntity.HasValue)
+        if (!chosenEntity.HasValue)
             return;
 
+        var eye = args.Viewport.Eye;
         if (ScreenTexture == null || _backBuffer == null || _blurPass == null || eye == null)
             return;
 
-        if (_xform == null && !_xformQuery.TryGetComponent(playerEntity, out _xform))
+        if (_xform == null && !_xformQuery.TryGetComponent(chosenEntity, out _xform))
             return;
 
         if (_fov == null && !_fovQuery.TryGetComponent(playerEntity, out _fov))
             return;
 
-        if (_sprite == null && !_spriteQuery.TryGetComponent(playerEntity, out _sprite))
+        if (_sprite == null && !_spriteQuery.TryGetComponent(chosenEntity, out _sprite))
             return;
 
         var handle = args.WorldHandle;
-        var viewportBounds = new Box2(Vector2.Zero, args.Viewport.Size);
+        var viewportBounds = new Box2(Vector2.Zero, _blurPass.Size);
 
         handle.RenderInRenderTarget(_blurPass, () =>
         {
@@ -129,12 +144,13 @@ public sealed class FieldOfViewOverlay : Overlay
             handle.DrawRect(viewportBounds, Color.White);
         }, Color.Transparent);
 
-        var correctedAngle = _xform.LocalRotation - Angle.FromDegrees(90);
+        var onScreenAngle = _transform.GetWorldRotation(_xform, _xformQuery) + eye.Rotation;
+        var correctedAngle = onScreenAngle - AngleCorrection;
 
         if (_currentAngle.Theta == 0)
             _currentAngle = correctedAngle;
 
-        var deltaTime = Math.Min((float)_timing.FrameTime.TotalSeconds, 1f / 30f);
+        var deltaTime = Math.Min((float)_timing.FrameTime.TotalSeconds, DeltaTimeFrameRate);
         _currentAngle = Angle.Lerp(_currentAngle, correctedAngle, LerpSpeed * deltaTime);
 
         var forwardVec = _currentAngle.ToVec();
@@ -144,8 +160,10 @@ public sealed class FieldOfViewOverlay : Overlay
         screenPos.Y = args.Viewport.Size.Y - screenPos.Y;
 
         var fovCosine = FieldOfViewSystem.GetFovCosine(_fov.Angle);
+        var fovCosMinusHardness = fovCosine - EdgeHardness;
+        var fovCosPlusHardness = fovCosine + EdgeHardness;
 
-        var bounds = _spriteSystem.GetLocalBounds((playerEntity.Value, _sprite));
+        var bounds = _spriteSystem.GetLocalBounds((chosenEntity.Value, _sprite));
         var worldRadius = Math.Max(bounds.Width, bounds.Height);
 
         var zoom = eye.Zoom.X;
@@ -156,10 +174,10 @@ public sealed class FieldOfViewOverlay : Overlay
         _shader.SetParameter("BLURRED_TEXTURE", _backBuffer.Texture);
         _shader.SetParameter("playerScreenPos", screenPos);
         _shader.SetParameter("playerForward", forwardVec);
-        _shader.SetParameter("fovCosine", fovCosine);
+        _shader.SetParameter("fovCosMinusHardness", fovCosMinusHardness);
+        _shader.SetParameter("fovCosPlusHardness", fovCosPlusHardness);
         _shader.SetParameter("safeZoneRadius", pixelRadius);
         _shader.SetParameter("coneOpacity", ConeOpacity);
-        _shader.SetParameter("edgeHardness", EdgeHardness);
         _shader.SetParameter("safeZoneEdgeWidth", pixelEdgeWidth);
 
         handle.UseShader(_shader);

@@ -99,14 +99,6 @@
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
-    - type: Fear
-      timeToDecreaseFearLevel: 120
-      proximityBlockerLevel: None
-      seenBlockerLevel: None
-      fearBasedSpreadAngleModifier:
-        Anxiety: 2
-        Fear: 5
-        Terror: 10
 
 - type: startingGear
   id: LLHLeaderGear
@@ -131,6 +123,7 @@
     - HandheldCriminalRecordsMonitorUnpowered
     - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
+    - BoxMRE
     belt:
     - Stunbaton
     - Handcuffs
@@ -185,14 +178,6 @@
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
-    - type: Fear
-      timeToDecreaseFearLevel: 120
-      proximityBlockerLevel: None
-      seenBlockerLevel: None
-      fearBasedSpreadAngleModifier:
-        Anxiety: 2
-        Fear: 5
-        Terror: 10
 
 - type: startingGear
   id: LLHSpecialistGear
@@ -214,6 +199,7 @@
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
+    - BoxMRE
     belt:
     - Stunbaton
     - Handcuffs
@@ -263,14 +249,6 @@
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
-    - type: Fear
-      timeToDecreaseFearLevel: 120
-      proximityBlockerLevel: None
-      seenBlockerLevel: None
-      fearBasedSpreadAngleModifier:
-        Anxiety: 2
-        Fear: 5
-        Terror: 10
 
 - type: startingGear
   id: LLHCadetGear
@@ -292,6 +270,7 @@
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
+    - BoxMRE
     belt:
     - Stunbaton
     - Handcuffs

@@ -33,8 +33,8 @@ public sealed class DispersingShotSystem : EntitySystem
         if (!TryComp<DispersingShotSourceComponent>(user, out var dispersionComp))
             return;
 
-        args.AngleIncrease *= dispersionComp.AngleIncreaseMultiplier;
-        args.MaxAngle *= dispersionComp.MaxAngleMultiplier;
+        args.AngleIncrease *= Math.Max(dispersionComp.DefaultAngleIncreaseModifier, dispersionComp.AngleIncreaseMultiplier);
+        args.MaxAngle *= Math.Max(dispersionComp.DefaultMaxAngleMultiplier, dispersionComp.MaxAngleMultiplier);
     }
 
     private void RefreshHeldGun(EntityUid user)

@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Scp.Watching.FOV;
 using Content.Shared.Access.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Actions;
@@ -39,6 +40,7 @@ namespace Content.Shared.Mech.EntitySystems;
 /// </summary>
 public abstract partial class SharedMechSystem : EntitySystem
 {
+    [Dependency] private readonly FieldOfViewSystem _fov = default!; // Fire added
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly SharedAudioSystem _audioSystem = default!;
@@ -158,6 +160,7 @@ public abstract partial class SharedMechSystem : EntitySystem
 
         _mover.SetRelay(pilot, mech);
         _interaction.SetRelay(pilot, mech, irelay);
+        _fov.SetRelay(pilot, mech);
         rider.Mech = mech;
         Dirty(pilot, rider);
 
@@ -176,6 +179,8 @@ public abstract partial class SharedMechSystem : EntitySystem
             return;
         RemComp<RelayInputMoverComponent>(pilot);
         RemComp<InteractionRelayComponent>(pilot);
+
+        _fov.SetRelay(pilot, null);
 
         _actions.RemoveProvidedActions(pilot, mech);
     }

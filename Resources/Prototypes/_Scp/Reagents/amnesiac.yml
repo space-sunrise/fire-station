@@ -1,0 +1,168 @@
+- type: reagent
+  id: AmnesiacA
+  name: reagent-amnesiac-a-name
+  group: Toxins
+  desc: reagent-amnesiac-a-desc
+  flavor: bitter
+  color: "#acb78e"
+  physicalDesc: reagent-physical-desc-exotic-smelling
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: 10
+  - !type:PlantAdjustHealth
+    amount: -5
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ reagent-amnesiac-a-msg ]
+        probability: 1
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiacA
+          min: 5
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiacA
+          min: 20
+    
+- type: reagent
+  id: AmnesiacB
+  name: reagent-amnesiac-b-name
+  group: Toxins
+  desc: reagent-amnesiac-b-desc
+  flavor: bitter
+  color: "#383e28"
+  physicalDesc: reagent-physical-desc-exotic-smelling
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: 10
+  - !type:PlantAdjustHealth
+    amount: -5
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ reagent-amnesiac-b-msg ]
+        probability: 1
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiacB
+          min: 5
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiacB
+          min: 10
+        
+- type: reagent
+  id: AmnesiacC
+  name: reagent-amnesiac-c-name
+  group: Toxins
+  desc: reagent-amnesiac-c-desc
+  flavor: bitter
+  color: "#383e28"
+  physicalDesc: reagent-physical-desc-exotic-smelling
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: 10
+  - !type:PlantAdjustHealth
+    amount: -5
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ reagent-amnesiac-c-msg ]
+        probability: 1
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiacC
+          min: 5
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiacC
+          min: 5
+    
+- type: reagent
+  id: AmnesiacD
+  name: reagent-amnesiac-d-name
+  group: Toxins
+  desc: reagent-amnesiac-d-desc
+  flavor: bitter
+  color: "#383e28"
+  physicalDesc: reagent-physical-desc-exotic-smelling
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: 10
+  - !type:PlantAdjustHealth
+    amount: -5
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ reagent-amnesiac-d-msg ]
+        probability: 1
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiacD
+          min: 5
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+        conditions:
+        - !type:ReagentThreshold
+          reagent: AmnesiacD
+          min: 1
+        
+- type: reagent
+  id: RawAmnesiac
+  name: reagent-amnesiac-raw-name
+  group: Toxins
+  desc: reagent-amnesiac-raw-desc
+  flavor: bitter
+  color: "#383e28"
+  physicalDesc: reagent-physical-desc-exotic-smelling
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: RawAmnesiac
+          min: 5
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add

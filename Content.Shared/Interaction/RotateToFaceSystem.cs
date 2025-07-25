@@ -18,6 +18,19 @@ namespace Content.Shared.Interaction
         [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
         [Dependency] private readonly SharedTransformSystem _transform = default!;
 
+        // Fire edit start - для осматривания на стульях
+        private EntityQuery<StrapComponent> _strapQuery;
+        private EntityQuery<BuckleComponent> _buckleQuery;
+
+        public override void Initialize()
+        {
+            base.Initialize();
+
+            _strapQuery = GetEntityQuery<StrapComponent>();
+            _buckleQuery = GetEntityQuery<BuckleComponent>();
+        }
+        // Fire edit end
+
         /// <summary>
         /// Tries to rotate the entity towards the target rotation. Returns false if it needs to keep rotating.
         /// </summary>
@@ -82,24 +95,34 @@ namespace Content.Shared.Interaction
             if (!_actionBlockerSystem.CanChangeDirection(user))
                 return false;
 
-            if (TryComp(user, out BuckleComponent? buckle) && buckle.BuckledTo is {} strap)
+            // Fire edit start - для осматривания на стульях
+            if (_buckleQuery.TryComp(user, out var buckle) && buckle.BuckledTo is { } strap)
             {
-                // What if a person is strapped to a borg?
-                // I'm pretty sure this would allow them to be partially ratatouille'd
+                if (_strapQuery.TryComp(strap, out var strapComp) && strapComp.AllowRotation)
+                {
+                    var baseRotation = _transform.GetWorldRotation(strap);
+                    var delta = Angle.ShortestDistance(baseRotation, diffAngle);
+                    var clampedTheta = Math.Clamp(delta.Theta, -strapComp.MaxAngle.Theta, strapComp.MaxAngle.Theta);
 
-                // We're buckled to another object. Is that object rotatable?
-                if (!TryComp<RotatableComponent>(strap, out var rotatable) || !rotatable.RotateWhileAnchored)
-                    return false;
+                    var finalAngle = baseRotation + clampedTheta;
 
-                // Note the assumption that even if unanchored, user can only do spinnychair with an "independent wheel".
-                // (Since the user being buckled to it holds it down with their weight.)
-                // This is logically equivalent to RotateWhileAnchored.
-                // Barstools and office chairs have independent wheels, while regular chairs don't.
-                _transform.SetWorldRotation(Transform(strap), diffAngle);
-                return true;
+                    if (!Resolve(user, ref xform))
+                        return false;
+
+                    _transform.SetWorldRotation(xform, finalAngle);
+                    return true;
+                }
+
+                if (TryComp<RotatableComponent>(strap, out var rotatable) && rotatable.RotateWhileAnchored)
+                {
+                    _transform.SetWorldRotation(Transform(strap), diffAngle);
+                    return true;
+                }
+
+                return false;
             }
+            // Fire edit end
 
-            // user is not buckled in; apply to their transform
             if (!Resolve(user, ref xform))
                 return false;
 
