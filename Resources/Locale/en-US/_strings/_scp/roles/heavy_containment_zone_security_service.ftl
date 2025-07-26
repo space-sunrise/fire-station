@@ -1,0 +1,11 @@
+job-name-heavy-containment-zone-commandant = Heavy Containment Zone Commandant
+job-description-heavy-containment-zone-commandant = Head of security for the HCZ, ensuring the observance of containment procedures and the absence of unauthorized activity of HCZ objects. Coordinates the work of the HCZ security, considering requests for entry into the HCZ territory. CLASS C
+job-name-senior-heavy-containment-zone-officer = Senior Heavy Containment Zone Officer
+job-description-senior-heavy-containment-zone-officer = An elite specialist, a jack of all trades. Possesses specialized weaponry and extended powers, being the right hand of the Commandant. CLASS C
+job-name-field-medical-specialist = Field Medical Specialist
+job-description-field-medical-specialist = A combat unit focused on providing medical assistance to security personnel. CLASS C
+job-name-heavy-containment-zone-officer = Heavy Containment Zone Officer
+job-description-heavy-containment-zone-officer = An employee responsible for the security of the HCZ and preventing the entry of persons without access to this zone. CLASS C
+job-name-junior-heavy-containment-zone-officer = Junior Heavy Containment Zone Officer
+job-description-junior-heavy-containment-zone-officer = A junior security specialist undergoing training. CLASS C
+job-supervisors-heavy-containment-zone-commandant = Heavy Containment Zone Commandant

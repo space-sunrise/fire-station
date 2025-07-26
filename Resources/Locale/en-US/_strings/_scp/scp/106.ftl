@@ -1,5 +1,3 @@
-scp106-return-to-containment = Attention personnel! SCP-106 Special Containment Procedures have been successfully restored.
-
 scp106-dimension-shift-alarm-announcement =
     EMERGENCY ANNOUNCEMENT TO FACILITY PERSONNEL!
 
