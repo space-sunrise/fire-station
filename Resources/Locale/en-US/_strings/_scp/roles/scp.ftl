@@ -1,0 +1,14 @@
+job-name-scp049 = SCP-049 "Plague Doctor"
+job-description-scp049 = An enigmatic humanoid in a robe who believes himself to be a doctor. His touch is deadly, and his goal is to "cure" humanity.
+job-name-scp106 = SCP-106 "The Old Man"
+job-description-scp106 = An old, decaying monster emerging from corrosive portals. Hunts victims with sadistic cruelty.
+job-name-scp939 = SCP-939 "With Many Voices"
+job-description-scp939 = Sightless, predatory creatures, attracting victims with the voices of previous victims. Ideal for stealth attacks in the dark.
+job-name-scp082 = SCP-082 "Fernand the Cannibal"
+job-description-scp082 = A giant with exquisite manners and a taste for human flesh. Enjoys telling stories before feasting.
+job-name-scp096 = SCP-096 "The Shy Guy"
+job-description-scp096 = An extremely dangerous creature that reacts to being looked at. If someone sees his face, the victim is doomed.
+job-name-scp999 = SCP-999 "The Tickle Monster"
+job-description-scp999 = A friendly, gelatinous entity that causes boundless joy and laughter. Able to relieve stress and cure depression.
+job-name-scp173 = SCP-173 "The Sculpture"
+job-description-scp173 = A sculpture that kills when visual contact is broken. Fast, silent, and deadly if you blink.

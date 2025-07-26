@@ -1,0 +1,17 @@
+loadout-group-common-misc-items = Miscellaneous Items
+loadout-group-head = Head
+loadout-group-hat = { loadout-group-head }
+loadout-group-eyes = Eyes
+loadout-group-ears = Ears
+loadout-group-neck = Neck
+loadout-group-jumpsuit = Jumpsuit
+loadout-group-outer-clothing = Outerwear
+loadout-group-outerclothing = { loadout-group-outer-clothing }
+loadout-group-outerClothing = { loadout-group-outerclothing }
+loadout-group-belt = Belt
+loadout-group-gloves = Gloves
+loadout-group-shoes = Shoes
+loadout-group-pda = PDA
+loadout-group-back = Backpack
+loadout-group-storage = Carried Items
+loadout-group-mask = Mask

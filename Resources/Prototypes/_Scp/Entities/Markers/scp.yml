@@ -8,7 +8,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/scp-173.rsi
+    - sprite: _Scp/Mobs/Scp/scp-173.rsi
       state: scp-173
   - type: SpawnPoint
     job_id: Scp173
@@ -22,7 +22,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/scp-173.rsi
+    - sprite: _Scp/Mobs/Scp/scp-173.rsi
       state: scp-173
   - type: Scp173BlockStructureDamage
 
@@ -34,7 +34,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/Mobs/scp-096.rsi
+    - sprite: _Scp/Mobs/Scp/scp-096.rsi
       state: idle
   - type: SpawnPoint
     job_id: Scp096
@@ -47,7 +47,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/Mobs/scp-939.rsi
+    - sprite: _Scp/Mobs/Scp/scp-939.rsi
       state: alive
   - type: SpawnPoint
     job_id: Scp939
@@ -60,7 +60,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/Mobs/scp-049.rsi
+    - sprite: _Scp/Mobs/Scp/scp-049.rsi
       state: SCP-049
   - type: SpawnPoint
     job_id: Scp049
@@ -73,7 +73,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/Scp106/scp106.rsi
+    - sprite: _Scp/Mobs/Scp/scp-106.rsi
       state: base
   - type: SpawnPoint
     job_id: Scp106
@@ -86,7 +86,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/Mobs/scp-999.rsi
+    - sprite: _Scp/Mobs/Scp/scp-999.rsi
       state: default
   - type: SpawnPoint
     job_id: Scp999
@@ -112,8 +112,8 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/Mobs/SCP-131.rsi
-      state: SCP-131A
+    - sprite: _Scp/Mobs/Scp/scp-131.rsi
+      state: scp-131-a
   - type: ConditionalSpawner
     prototypes:
     - Scp131A
@@ -126,8 +126,8 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/Mobs/SCP-131.rsi
-      state: SCP-131B
+    - sprite: _Scp/Mobs/Scp/scp-131.rsi
+      state: scp-131-a
   - type: ConditionalSpawner
     prototypes:
     - Scp131B
@@ -140,7 +140,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/Mobs/scp-457.rsi
+    - sprite: _Scp/Mobs/Scp/scp-457.rsi
       state: fireguy
   - type: ConditionalSpawner
     prototypes:
@@ -154,7 +154,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/Mobs/scp-247.rsi
+    - sprite: _Scp/Mobs/Scp/scp-247.rsi
       state: scp-247
   - type: ConditionalSpawner
     prototypes:

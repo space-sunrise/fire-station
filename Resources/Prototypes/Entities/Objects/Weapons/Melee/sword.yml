@@ -92,7 +92,7 @@
   - type: Reflect
     reflects:
     - NonEnergy
-    reflectProb: .35  # Sunrise-Scp edit
+    reflectProb: 0.20
     spread: 90
   - type: Item
     storedSprite:

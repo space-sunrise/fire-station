@@ -1,0 +1,9 @@
+ent-TribunalOfficerPDA = КПК Офицера Трибунала
+    .desc = Лучший друг документации Фонда SCP.
+ent-TribunalOfficerIDCard = ID карта Офицера Трибунала
+    .desc = { ent-IDCardStandard.desc }
+ent-RubberStampTribunalOfficer = печать офицера трибунала
+    .desc = { ent-RubberStampBase.desc }
+ent-BriefcaseTribunalOfficerFilled = { ent-BriefcaseBrown }
+    .suffix = { job-name-tribunal-officer }
+    .desc = { ent-BriefcaseBrown.desc }
