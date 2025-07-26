@@ -1,2 +1,2 @@
-reagent-name-corbocarbonate = Corbocarbonate
-reagent-desc-corbocarbonate = Piece of shit
+reagent-name-corbocarbonate = Корбокорбонат
+reagent-desc-corbocarbonate = Неизвестное науке вещество

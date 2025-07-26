@@ -1,8 +1,8 @@
 ﻿- type: entity
   parent: [ ClothingShoesBase, ClothingShoesBaseButcherable ]
   id: ClothingShoesPathologist
-  name: сапоги патологиста
-  description: Крепкие сапоги с эмблемой на боку.
+  name: pathologist's boots
+  description: Sturdy boots with an emblem on the side.
   suffix: SCP
   components:
   - type: Sprite
