@@ -1,9 +1,7 @@
-﻿# TODO: Локализация
-
-- type: entity
+﻿- type: entity
   id: Scp999Wallify
-  name: Превратиться в стену
-  description: Вы меняете свою форму, превращаясь в нечто, похожее на стенку.
+  name: Become a wall
+  description: You change your shape, turning into something resembling a wall.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
@@ -18,8 +16,8 @@
 
 - type: entity
   id: Scp999Rest
-  name: Прилечь отдохнуть
-  description: Вы засыпаете.
+  name: Rest
+  description: You fall asleep.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
@@ -36,8 +34,8 @@
 
 - type: entity
   id: Scp999Affection
-  name: Обнимашки
-  description: Затянуть цель в объятия, восстановив ей небольшое количество здоровья.
+  name: Hugs
+  description: Embrace the target, restoring a small amount of their health.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action

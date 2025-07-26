@@ -1,8 +1,6 @@
 ﻿- type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackScp049
-  name: Бездонная сумка
-  description: Трендово выглядящая сумка.
   categories: [ HideSpawnMenu ]
   components:
   - type: Item

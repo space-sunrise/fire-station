@@ -1,9 +1,7 @@
-﻿# TODO: Локализация
-
-- type: entity
+﻿- type: entity
   id: Scp173Blind
-  name: Ослепить
-  description: Ослепление всех в радиусе своей видимости на 6 секунд.
+  name: Blind
+  description: Blinds everyone within line of sight for 6 seconds.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
@@ -18,8 +16,8 @@
 
 - type: entity
   id: Scp173Clog
-  name: Засорить тайл
-  description: Чем больше - тем лучше.
+  name: Clog Tile
+  description: The more, the better.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
@@ -34,8 +32,8 @@
 
 - type: entity
   id: Scp173DamageStructure
-  name: Осквернить
-  description: Нанесение небольшого урона по всем строениям рядом.
+  name: Desecrate
+  description: Deals minor damage to all nearby structures.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
@@ -50,8 +48,8 @@
 
 - type: entity
   id: Scp173FastMovement
-  name: Скачок
-  description: Быстрое передвижение в небольшом радиусе. Задетые людишки умирают.
+  name: Leap
+  description: A rapid dash over a short distance. Any humans in your path will die.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action

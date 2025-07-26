@@ -1,8 +1,6 @@
 ﻿- type: entity
   parent: [ClothingMaskGas, BaseChaosContraband]
   id: ClothingMaskGasChaos
-  name: газовая маска повстанцев хаоса
-  description: Газовая маска, которую носят известные всем похитители аномалий
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Mask/gaschaos.rsi

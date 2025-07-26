@@ -11,8 +11,8 @@
     state: blink3
   - sprite: /Textures/_Scp/Alerts/blink.rsi
     state: blink4
-  name: "Индикатор моргания"
-  description: "Показывает статус моргания"
+  name: alert-name-blinking
+  description: alert-desc-blinking
   minSeverity: 0
   maxSeverity: 4
 

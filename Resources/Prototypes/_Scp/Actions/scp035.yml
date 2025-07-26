@@ -1,4 +1,4 @@
-﻿# TODO: Локализация и кастомные названия + описания
+﻿# TODO: Кастомные названия + описания
 
 - type: entity
   id: ActionScp035RaiseArmy
@@ -84,7 +84,7 @@
 
 - type: entity
   id: ActionScp035Stun
-  name: Гипноз
+  name: Hypnosis
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
