@@ -1,9 +1,0 @@
-ent-ScpDoubleGlassAirlockChemistry = { ent-DoubleGlassAirlock }
-    .suffix = Химия
-    .desc = { ent-DoubleGlassAirlock.desc }
-ent-ScpDoubleGlassAirlockMaint = { ent-DoubleGlassAirlock }
-    .suffix = Обслуживание
-    .desc = { ent-DoubleGlassAirlock.desc }
-ent-ScpDoubleGlassAirlockVirology = { ent-DoubleGlassAirlock }
-    .suffix = Вирусология
-    .desc = { ent-DoubleGlassAirlock.desc }
