@@ -1,4 +1,4 @@
-﻿ent-BaseGameRuleShortDelay = { ent-BaseGameRule }
+ent-BaseGameRuleShortDelay = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }
 ent-SendDocumentNeutralizedMode = { ent-BaseGameRuleShortDelay }
     .desc = { ent-BaseGameRuleShortDelay.desc }

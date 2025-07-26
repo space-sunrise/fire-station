@@ -42,4 +42,3 @@ ent-ScpFloorTileItemDepartmentSec = охранная плитка
     .desc = { ent-ScpFloorTileItemCheckerSteel.desc }
 ent-ScpFloorTileItemDepartmentSer = сервисная плитка
     .desc = { ent-ScpFloorTileItemCheckerSteel.desc }
-
