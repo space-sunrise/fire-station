@@ -163,6 +163,7 @@ ignore_list:
   - '{$linked ->'
   - <username>
   - <index>
+  - AMH-C227 # Fire added
 
 ignore_files:
   - 'italian.ftl'

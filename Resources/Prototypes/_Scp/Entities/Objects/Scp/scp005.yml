@@ -4,8 +4,8 @@
   suffix: SCP-005
   components:
   - type: Sprite
-    sprite: _Scp/Objects/Scps/scp005.rsi
-    state: item
+    sprite: _Scp/Objects/Scp/scp-005.rsi
+    state: icon
   - type: Scp
     class: Safe
   - type: Item

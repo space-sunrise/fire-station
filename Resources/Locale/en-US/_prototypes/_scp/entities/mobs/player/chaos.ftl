@@ -1,0 +1,9 @@
+ent-MobHumanChaosLeader = Chaos Rebel Leader
+    .suffix = CHAOS | ANTAG
+    .desc = { ent-MobHuman.desc }
+ent-MobHumanChaosMedic = Chaos Rebel Medic
+    .suffix = CHAOS | ANTAG
+    .desc = { ent-MobHuman.desc }
+ent-MobHumanChaos = Chaos Rebel
+    .suffix = CHAOS | ANTAG
+    .desc = { ent-MobHuman.desc }

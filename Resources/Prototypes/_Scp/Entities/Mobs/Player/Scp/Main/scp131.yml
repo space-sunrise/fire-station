@@ -1,0 +1,83 @@
+﻿- type: entity
+  id: Scp131A
+  suffix: SCP-131A
+  parent: BaseScp
+  components:
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _Scp/Mobs/Scp/scp-131.rsi
+    state: scp-131-a
+  - type: Scp
+    class: Safe
+  - type: FearSource
+    uponSeenState: None
+    uponComeCloser: None
+    grainShaderStrength:
+      min: 0
+      max: 0
+    vignetteShaderStrength:
+      min: 0
+      max: 0
+  - type: Muted
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral # нужно что бы турели не били их т.к. они мирные
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 7
+    baseSprintSpeed: 4
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Scale
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-minor-name
+    description: ghost-panel-antagonist-scp-minor-description
+    priority: 0
+  - type: MultiHandedItem
+  - type: Item
+    size: Huge
+  - type: CanEscapeInventory
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 80
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+  - type: ReplacementAccent
+    accent: mouse
+  - type: EmitSoundRandomly
+    sound:
+      collection: IdleScp131
+      params:
+        maxDistance: 6
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepBorg
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-scp131-name
+    description: ghost-role-information-scp131-description
+    raffle:
+      settings: short
+  - type: GhostTakeoverAvailable
+  - type: Tag # перезаписываем родительский список тегов, без DoorBumpOpener
+    tags:
+    - FootstepSound
+    - CannotSuicide
+#  - type: Blinkable мейби в другой жизни, когда будет не криво работать и балансно
+#  - type: EyeClosing
+
+- type: entity
+  id: Scp131B
+  suffix: SCP-131B
+  parent: Scp131A
+  components:
+  - type: Sprite
+    state: scp-131-b
