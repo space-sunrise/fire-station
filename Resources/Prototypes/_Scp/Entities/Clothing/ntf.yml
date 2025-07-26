@@ -5,7 +5,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderGasmask.rsi
+    sprite: _Scp/NineTailedFox/Commander/gasmask.rsi
   - type: Clothing
 
 - type: entity
@@ -15,7 +15,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderHelmet.rsi
+    sprite: _Scp/NineTailedFox/Commander/helmet.rsi
   - type: Clothing
 
 - type: entity
@@ -25,7 +25,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderSuit.rsi
+    sprite: _Scp/NineTailedFox/Commander/suit.rsi
   - type: Clothing
 
 - type: entity
@@ -35,7 +35,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderVest.rsi
+    sprite: _Scp/NineTailedFox/Commander/vest.rsi
   - type: Clothing
 
 - type: entity
@@ -45,7 +45,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Commander/NineTailedFoxCommanderWebbing.rsi
+    sprite: _Scp/NineTailedFox/Commander/webbing.rsi
   - type: Clothing
   - type: Armor
     modifiers:
@@ -64,7 +64,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicBackpack.rsi
+    sprite: _Scp/NineTailedFox/Medic/backpack.rsi
   - type: Clothing
 
 - type: entity
@@ -74,7 +74,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicGasmask.rsi
+    sprite: _Scp/NineTailedFox/Medic/gasmask.rsi
   - type: Clothing
 
 - type: entity
@@ -84,7 +84,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicGlassesHud.rsi
+    sprite: _Scp/NineTailedFox/Medic/glasses.rsi
   - type: Clothing
 
 - type: entity
@@ -94,7 +94,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicHelmet.rsi
+    sprite: _Scp/NineTailedFox/Medic/helmet.rsi
   - type: Clothing
 
 - type: entity
@@ -104,7 +104,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicSuit.rsi
+    sprite: _Scp/NineTailedFox/Medic/suit.rsi
   - type: Clothing
 
 - type: entity
@@ -114,7 +114,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicVest.rsi
+    sprite: _Scp/NineTailedFox/Medic/vest.rsi
   - type: Clothing
 
 - type: entity
@@ -124,7 +124,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Medic/NineTailedFoxMedicWebbing.rsi
+    sprite: _Scp/NineTailedFox/Medic/webbing.rsi
   - type: Clothing
 
 - type: entity
@@ -134,7 +134,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Regular/NineTailedFoxGasmask.rsi
+    sprite: _Scp/NineTailedFox/Regular/gasmask.rsi
   - type: Clothing
 
 - type: entity
@@ -144,7 +144,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Regular/NineTailedFoxHelmet.rsi
+    sprite: _Scp/NineTailedFox/Regular/helmet.rsi
   - type: Clothing
 
 - type: entity
@@ -154,7 +154,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Regular/NineTailedFoxSuit.rsi
+    sprite: _Scp/NineTailedFox/Regular/suit.rsi
   - type: Clothing
 
 - type: entity
@@ -164,7 +164,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Regular/NineTailedFoxVest.rsi
+    sprite: _Scp/NineTailedFox/Regular/vest.rsi
   - type: Clothing
 
 - type: entity
@@ -174,7 +174,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Regular/NineTailedFoxWebbing.rsi
+    sprite: _Scp/NineTailedFox/Regular/webbing.rsi
   - type: Clothing
 
 - type: entity
@@ -184,7 +184,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistArmor.rsi
+    sprite: _Scp/NineTailedFox/Specialist/armor.rsi
   - type: Clothing
 
 - type: entity
@@ -194,7 +194,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistBackpack.rsi
+    sprite: _Scp/NineTailedFox/Specialist/backpack.rsi
   - type: Clothing
 
 - type: entity
@@ -204,7 +204,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistBalisticGlasses
+    sprite: _Scp/NineTailedFox/Specialist/glasses.rsi
   - type: Clothing
 
 - type: entity
@@ -214,7 +214,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistGasmask.rsi
+    sprite: _Scp/NineTailedFox/Specialist/gasmask.rsi
   - type: Clothing
 
 - type: entity
@@ -224,7 +224,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistGloves.rsi
+    sprite: _Scp/NineTailedFox/Specialist/gloves.rsi
   - type: Clothing
 
 - type: entity
@@ -234,7 +234,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistHelmet.rsi
+    sprite: _Scp/NineTailedFox/Specialist/helmet.rsi
   - type: Clothing
 
 - type: entity
@@ -244,7 +244,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistShield.rsi
+    sprite: _Scp/NineTailedFox/Specialist/shield.rsi
     state: icon
   - type: Item
     heldPrefix: riot
@@ -256,7 +256,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistSuit.rsi
+    sprite: _Scp/NineTailedFox/Specialist/suit.rsi
   - type: Clothing
 
 - type: entity
@@ -266,5 +266,5 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Specialist/NineTailedFoxSpecialistWebbing.rsi
+    sprite: _Scp/NineTailedFox/Specialist/webbing.rsi
   - type: Clothing
