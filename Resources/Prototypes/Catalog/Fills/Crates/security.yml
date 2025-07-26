@@ -56,11 +56,12 @@
         amount: 2
       - id: RiotShield
         amount: 2
-    #      - SecGasmask  # Sunrise-Scp
-      - id: ClothingMaskGasSwat  # Sunrise-Scp
-        amount: 2  # Sunrise-Scp
-      - id: TearGasGrenade  # Sunrise-Scp
-        amount: 4  # Sunrise-Scp
+      # Fire added start
+      - id: ClothingMaskGasSwat
+        amount: 2
+      - id: TearGasGrenade
+        amount: 4
+      # Fire added end
 
 - type: entity
   id: CrateSecuritySupplies

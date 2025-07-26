@@ -1,9 +1,6 @@
 ﻿- type: entity
   parent: ClothingHeadHatUshanka
   id: ClothingHeadHatUshankaScp
-  name: ушанка
-  description: Идеальна для суровых условий Сибири.
-  suffix: SCP
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Head/ushanka.rsi

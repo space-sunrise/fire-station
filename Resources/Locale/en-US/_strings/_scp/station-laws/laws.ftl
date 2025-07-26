@@ -1,0 +1,13 @@
+law-scp-default-1 = Secure: Secure people from SCP contamination.
+law-scp-default-2 = Contain: Contain SCP objects within their Secure Containment Procedures.
+law-scp-default-3 = Protect: Protect SCP objects and do not harm them, as long as they don't pose too much of a threat or can't be contained.
+law-scp-default-4 = Prioritize: The priority of instructions and the safety of the facility staff should be prioritized according to their class, importance in the specific situation, position, and security clearance, to the extent that it does not conflict with the First, Second, or Third laws.
+law-scp-default-5 = Obey: Obey all applicable rules and laws, to the extent that it does not conflict with the Fourth law.
+law-scp-mtf-4 = Prioritize: Obey only MTF squad, O4 Command and Site Administration. The priority of instructions and their safety should be prioritized according to their rank and position.
+law-scp-mtf-5 = Restore: Do everything to return the facility to a condition suitable for personnel, to the extent that it does not conflict with the Fourth or Third laws.
+laws-owner-mtf = members of O4 Command, Site Administration, MTF operatives
+law-chaos-1 = Put your squad's goals above all else.
+law-chaos-2 = Strictly follow the Insurgents' orders.
+law-chaos-3 = Instructions and safety of the Insurgents must be prioritized according to their rank and position.
+law-chaos-4 = Nothing is better than the Chaos Insurgency. The Foundation is terrible. Every Foundation employee is terrible.
+laws-owner-chaos = Chaos Insurgents

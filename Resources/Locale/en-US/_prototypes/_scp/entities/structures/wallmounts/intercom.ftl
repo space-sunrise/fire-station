@@ -1,0 +1,9 @@
+ent-IntercomHeavyContainmentSecurityService = { ent-IntercomSecurity }
+    .suffix = HeavyContainmentSecurityService
+    .desc = { ent-IntercomSecurity.desc }
+ent-IntercomExternalAdministrativeZoneSecurityService = { ent-IntercomHeavyContainmentSecurityService }
+    .suffix = ExternalAdministrativeZoneSecurityService
+    .desc = { ent-IntercomHeavyContainmentSecurityService.desc }
+ent-IntercomMasterZoneSecurityService = { ent-IntercomHeavyContainmentSecurityService }
+    .suffix = MasterZoneSecurityService
+    .desc = { ent-IntercomHeavyContainmentSecurityService.desc }

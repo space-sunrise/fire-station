@@ -1,0 +1,9 @@
+ent-BaseScp106Phantom = Phantom creature
+    .desc = A derealized creation woven from the nightmares of madmen. A weaker and more flexible embodiment of SCP-106.
+    .suffix = SCP-106 Phantom
+ent-Scp106Phantom = { ent-BaseScp106Phantom }
+    .desc = { ent-BaseScp106Phantom.desc }
+    .suffix = { ent-BaseScp106Phantom.suffix }
+ent-Scp106CorporealPhantom = { ent-BaseScp106Phantom }
+    .desc = { ent-BaseScp106Phantom.desc }
+    .suffix = { ent-BaseScp106Phantom.suffix }

@@ -10,7 +10,7 @@
         map: [ "base" ]
         color: "#82e46f"
   - type: FaxMachine
-    name: "Региональная Администрация"
+    name: fax-name-regional-administration
     notifyAdmins: true
     receiveStationGoal: true
 
@@ -26,7 +26,7 @@
         map: [ "base" ]
         color: "#7bac71"
   - type: FaxMachine
-    name: "Штаб О4"
+    name: fax-name-o4-headquarters
     notifyAdmins: true
     receiveStationGoal: true
 
@@ -42,7 +42,7 @@
         map: [ "base" ]
         color: "#919191"
   - type: FaxMachine
-    name: "ERR*?*%!"
+    name: fax-name-encrypted
     responsePings: false
     notifyAdmins: true
   - type: Emagged
@@ -60,7 +60,7 @@
         map: [ "base" ]
         color: "#dbdbdb"
   - type: FaxMachine
-    name: "Офис Директора Комлпекса"
+    name: fax-name-complex-director-office
     receiveNukeCodes: true
     receiveStationGoal: true
   - type: StealTarget

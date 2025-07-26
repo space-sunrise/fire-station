@@ -1,0 +1,16 @@
+job-name-director = Complex Director
+job-description-director = The direct supervisor of the complex, with full access. His tasks include coordinating the administration to ensure the speedy completion of the tasks set by the RAF. Class A
+job-name-scientific-service-director = Scientific Service Director
+job-description-scientific-service-director = Head of the complex's scientific service, regulating its work and most often responsible for achieving the goal. The second most important person in the complex. CLASS A
+job-name-security-commander = Security Commander
+job-description-security-commander = The second “Head” of the complex, as he is directly responsible for the operability of the security of all Zones - VA and TZS. He has full access throughout the zone, as well as special equipment to assist in his work. The third most important person in the complex. CLASS B
+job-name-chief-technical-specialist = Chief Technical Specialist
+job-description-chief-technical-specialist = The chief technician of the complex, responsible for coordinating the IT service. The fourth most important person in the complex. CLASS C
+job-name-personnel-officer = Personnel Officer
+job-description-personnel-officer = The local head of the personnel department, regulating certain accesses for employees of the complex. Responsible for issuing new cards, and also monitors the operability of the food and sanitary maintenance department of the complex. The fifth most important person in the complex. CLASS B
+job-name-head-of-medical-sector = Head of Medical Sector
+job-description-head-of-medical-sector = The chief physician of the complex, whose responsibilities include ensuring the lives of employees and the administration of the complex. The sixth most important person in the complex. CLASS B
+job-name-senior-logistics-officer = Senior Logistics Officer
+job-description-senior-logistics-officer = The chief logistician, responsible for supplying the complex with certain materials, sending valuable cargo to the MPA. The seventh most important person in the complex. CLASS C
+job-supervisors-regional-administration = regional administration
+job-supervisors-director = Complex Director

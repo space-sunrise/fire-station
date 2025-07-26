@@ -1,0 +1,9 @@
+ent-LockerHeavyContainmentZoneCommandantFilled = { ent-LockerHeavyContainmentZoneCommandant }
+    .suffix = Заполненный
+    .desc = { ent-LockerHeavyContainmentZoneCommandant.desc }
+ent-LockerHeavyContainmentZoneOfficerFilled = { ent-LockerHeavyContainmentZoneOfficer }
+    .suffix = Заполненный
+    .desc = { ent-LockerHeavyContainmentZoneOfficer.desc }
+ent-LockerHeavyContainmentZoneFieldDoctorFilled = { ent-LockerHeavyContainmentZoneFieldDoctor }
+    .suffix = Заполненный
+    .desc = { ent-LockerHeavyContainmentZoneFieldDoctor.desc }

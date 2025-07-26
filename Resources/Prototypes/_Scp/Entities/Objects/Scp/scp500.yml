@@ -4,8 +4,8 @@
   suffix: SCP-500
   components:
   - type: Sprite
-    sprite: _Scp/Objects/Scps/scp500.rsi
-    state: pill_scp # TODO: Переименовать стейты
+    sprite: _Scp/Objects/Scp/scp-500.rsi
+    state: pill
   - type: Pill
     useStandardVisuals: false
   - type: SolutionContainerManager
@@ -24,8 +24,8 @@
   suffix: SCP-500
   components:
   - type: Sprite
-    sprite: _Scp/Objects/Scps/scp500.rsi
-    state: pill_canister_scp # TODO: Переименовать стейты
+    sprite: _Scp/Objects/Scp/scp-500.rsi
+    state: canister
   - type: Storage
     grid:
     - 0,0,4,9

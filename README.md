@@ -38,7 +38,7 @@
 
 Для дополнительной помощи в ознакомлении с проектом перейдите в наш дискорд <br>
 
-[![Discord](https://img.shields.io/discord/831352358520725506?label=Discord&logo=discord&logoColor=white)](https://discord.gg/m4xAE2rxQx)
+[![Discord](https://img.shields.io/discord/1051873590301184031?label=Discord&logo=discord&logoColor=white)](https://discord.gg/m4xAE2rxQx)
 
 ## ♻ Запуск локального сервера ♻
 
@@ -57,12 +57,12 @@
 🌐 **Read this in other languages:**
 
 - 🇺🇸 [English](README.en.md)
-- 🇷🇺 [Русский](README.ru.md)
+- 🇷🇺 [Русский](README.md)
 
 <div class="header" align="center">
 
-[![Discord](https://img.shields.io/discord/831352358520725506?label=Discord&logo=discord&logoColor=white)](https://discord.gg/m4xAE2rxQx)
-[![Wiki](https://img.shields.io/badge/Wiki-Fire%20Station%20Wiki-red)]([https://sunrise14.top/wiki/](https://fire.station.wiki.shizainc.com/w/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D0%B0%D1%8F_%D1%81%D1%82%D1%80%D0%B0%D0%BD%D0%B8%D1%86%D0%B0)) <br>
+[![Discord](https://img.shields.io/discord/1051873590301184031?label=Discord&logo=discord&logoColor=white)](https://discord.gg/m4xAE2rxQx)
+[![Wiki](https://img.shields.io/badge/Wiki-Fire%20Station%20Wiki-red)](https://fire.station.wiki.shizainc.com/) <br>
 [![GitHub](https://img.shields.io/github/stars/space-sunrise/fire-station?style=social)](https://github.com/space-sunrise/fire-station)
 ![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/space-sunrise/fire-station?utm_source=oss&utm_medium=github&utm_campaign=space-sunrise%2Ffire-station&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 </div>
@@ -81,7 +81,7 @@
 <details>
 <summary><a href="#"><img src="https://img.shields.io/badge/licence-MIT-green?style=for-the-badge" alt="MIT license"></a></summary>
 
->Некоторые файлы лицензированы в соответствии с [MIT license](https://opensource.org/license/MIT), эти файлы являються кодом Space Wizards Federation.
+>Некоторые файлы лицензированы в соответствии с [MIT license](https://opensource.org/license/MIT), эти файлы являются кодом Space Wizards Federation.
 </details>
 
 <details>
@@ -93,5 +93,5 @@
 <details>
 <summary><a href="#"><img src="https://img.shields.io/badge/licence-CLA-orange?style=for-the-badge" alt="CLA"></a></summary>
 
->Весь код, а так-же ассеты Sunrise или Fire Station, защищены лицензией [CLA](https://github.com/space-sunrise/space-station-14/blob/master/CLA.txt).
+>Весь код, относящийся к Sunrise или Fire Station, а также ассеты Sunrise или Fire Station, защищены лицензией [CLA](https://github.com/space-sunrise/space-station-14/blob/master/CLA.txt).
 </details>

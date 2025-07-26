@@ -303,7 +303,7 @@
 - type: entity
   id: ScpEffectHeal999
   parent: BaseScpArtifactEffect
-  description: Чудесно излечивает всех существ рядом
+  description: Miraculously heals all nearby creatures.
   components:
   - type: XAEDamageInArea
     damageChance: 1

@@ -1,0 +1,78 @@
+- type: entity
+  id: Scp082
+  name: SCP-082
+  suffix: SCP-082
+  parent:
+  - BaseScp
+  - BaseMob
+  - MobDamageable
+  - MobCombat
+  - StripableInventoryBase
+  - MobBloodstream
+  - MobRespirator
+  - MobAtmosStandard
+  - MobFlammable
+  - InventoryBase
+  components:
+  - type: Scp
+    class: Euclid
+  - type: Hands
+    showInHands: false
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      9500: Critical
+      10000: Dead
+  - type: Body
+    prototype: Human
+    requiredLegs: 2
+  - type: Inventory
+    templateId: scp082
+  - type: Sprite
+    noRot: true
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/Scp/scp-082.rsi
+    state: 082_fullbody
+  - type: ComplexInteraction
+  - type: Buckle
+  - type: ZombieImmune
+  - type: SSDIndicator
+  - type: Stripping
+  - type: UserInterface
+    interfaces:
+      enum.StrippingUiKey.Key:
+        type: StrippableBoundUserInterface
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-name
+    description: ghost-panel-antagonist-scp-description
+    priority: -10
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1.5
+    baseSprintSpeed: 2.5
+  - type: Pullable
+  - type: Puller
+    needsHands: true
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      3000: 0.9
+      5500: 0.8
+      7000: 0.7
+  - type: Speech
+  - type: Tag
+    tags:
+    - FootstepSound
+    - DoorBumpOpener
+  - type: Scp082
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: Punch
+    damage:
+      types:
+        Blunt: 40
+    attackRate: 1.25
+    range: 2
+  - type: TTS
+    voice: Dota2Pudge
