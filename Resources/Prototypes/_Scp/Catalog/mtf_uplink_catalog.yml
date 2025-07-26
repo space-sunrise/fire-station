@@ -706,6 +706,54 @@
     stock: 6
 
 - type: listing
+  id: ScpUplinkCrateAdministrationAmnesiacA
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationAmnesiacA
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkCrateAdministrationAmnesiacB
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationAmnesiacB
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkCrateAdministrationAmnesiacC
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationAmnesiacC
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkCrateAdministrationAmnesiacD
+  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  productEntity: CrateAdministrationAmnesiacD
+  cost:
+    Crystallite: 2
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: ScpUplinkPinpointerNuclear
   productEntity: PinpointerNuclear
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: nuke_pinpointer }

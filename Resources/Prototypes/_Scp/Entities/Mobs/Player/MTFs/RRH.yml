@@ -119,12 +119,12 @@
     pocket2: PinpointerNuclear
   storage:
     back:
+    - BoxMRE
     - Crowbar
-    - EnergyDaggerLoud
     - HandheldCriminalRecordsMonitorUnpowered
     - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
-    - BoxMRE
+    - EnergyDaggerLoud
     belt:
     - Stunbaton
     - Handcuffs
