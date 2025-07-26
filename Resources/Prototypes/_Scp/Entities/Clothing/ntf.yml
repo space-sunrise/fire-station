@@ -1,11 +1,13 @@
-﻿- type: entity
+﻿# TODO: Респрайт, а после перемещение по нормальным путям. Текущие спрайты говно говном
+
+- type: entity
   id: NineTailedFoxCommanderGasmask
   name: nine tailed fox commander gasmask
   parent: ClothingMaskGasERT
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Commander/gasmask.rsi
+    sprite: _Scp/NineTailedFox/Common/gasmask.rsi
   - type: Clothing
 
 - type: entity
@@ -74,7 +76,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Medic/gasmask.rsi
+    sprite: _Scp/NineTailedFox/Common/gasmask.rsi
   - type: Clothing
 
 - type: entity
@@ -134,7 +136,7 @@
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Regular/gasmask.rsi
+    sprite: _Scp/NineTailedFox/Common/gasmask.rsi
   - type: Clothing
 
 - type: entity
