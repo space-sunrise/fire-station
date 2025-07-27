@@ -1,0 +1,9 @@
+ent-CrateAdministrationScpGygaxBundle = набор "Гигакс"
+    .desc = Содержит набор легкобронированного меха фонда SCP.
+    .suffix = Заполненный
+ent-CrateAdministrationMarauderBundle = набор "Мародёр"
+    .desc = Содержит набор тяжело бронированного меха фонда SCP.
+    .suffix = Заполненный
+ent-CrateAdministrationSeraphBundle = набор "Серафим"
+    .desc = Содержит набор элитного тяжело бронированного меха фонда SCP.
+    .suffix = Заполненный

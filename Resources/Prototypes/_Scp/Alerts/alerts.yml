@@ -1,0 +1,40 @@
+﻿- type: alert
+  id: Blinking
+  icons:
+  - sprite: /Textures/_Scp/Alerts/blink.rsi
+    state: blink0
+  - sprite: /Textures/_Scp/Alerts/blink.rsi
+    state: blink1
+  - sprite: /Textures/_Scp/Alerts/blink.rsi
+    state: blink2
+  - sprite: /Textures/_Scp/Alerts/blink.rsi
+    state: blink3
+  - sprite: /Textures/_Scp/Alerts/blink.rsi
+    state: blink4
+  name: alert-name-blinking
+  description: alert-desc-blinking
+  minSeverity: 0
+  maxSeverity: 4
+
+- type: alert
+  id: Scp106LifeEssence
+  icons:
+  - sprite: /Textures/_Scp/Alerts/life_essence_counter.rsi
+    state: background
+  alertViewEntity: AlertScp106LifeEssenceSpriteView
+  name: alerts-scp106-life-essence-name
+  description: alerts-scp106-life-essence-desc
+
+- type: entity
+  id: AlertScp106LifeEssenceSpriteView
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    sprite: _Scp/Alerts/life_essence_counter.rsi
+    layers:
+    - map: [ "enum.AlertVisualLayers.Base" ]
+    - map: [ "enum.Scp106VisualLayers.Digit1" ]
+      offset: -0.35, 0
+    - map: [ "enum.Scp106VisualLayers.Digit2" ]
+      offset: -0.150, 0
+    - map: [ "enum.Scp106VisualLayers.Digit3" ]

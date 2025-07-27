@@ -1,8 +1,6 @@
 ﻿- type: entity
   parent: ClothingNeckPinBase
   id: ClothingNeckChaosPin
-  name: значок Повстанцев Хаоса
-  description: Ужели вновь непостоянный мститель пошлёт его багряную десницу нам на погибель?
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Neck/Misc/pins.rsi

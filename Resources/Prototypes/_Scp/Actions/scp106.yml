@@ -6,7 +6,7 @@
     itemIconStyle: BigAction
     useDelay: 4
     icon:
-      sprite: _Scp/Scp106/actions.rsi
+      sprite: _Scp/Actions/scp-106.rsi
       state: teleport
   - type: InstantAction
     event: !type:Scp106BackroomsAction
@@ -20,7 +20,7 @@
     itemIconStyle: BigAction
     useDelay: 4
     icon:
-      sprite: _Scp/Scp106/actions.rsi
+      sprite: _Scp/Actions/scp-106.rsi
       state: teleport
   - type: InstantAction
     event: !type:Scp106RandomTeleportAction
@@ -33,7 +33,7 @@
     raiseOnUser: true
     itemIconStyle: BigAction
     icon:
-      sprite: _Scp/Scp106/actions.rsi
+      sprite: _Scp/Actions/scp-106.rsi
       state: shop
   - type: InstantAction
     event: !type:Scp106ShopAction
@@ -44,7 +44,7 @@
   - type: Action
     itemIconStyle: BigAction
     icon:
-      sprite: _Scp/Scp106/actions.rsi
+      sprite: _Scp/Actions/scp-106.rsi
       state: teleport
   - type: InstantAction
     event: !type:Scp106BecomeTeleportPhantomAction
@@ -61,7 +61,7 @@
     itemIconStyle: BigAction
     useDelay: 60
     icon:
-      sprite: _Scp/Scp106/actions.rsi
+      sprite: _Scp/Actions/scp-106.rsi
       state: reverse
   - type: TargetAction
   - type: EntityTargetAction
@@ -80,7 +80,7 @@
     itemIconStyle: BigAction
     useDelay: 60
     icon:
-      sprite: _Scp/Scp106/actions.rsi
+      sprite: _Scp/Actions/scp-106.rsi
       state: leave_phantom
   - type: InstantAction
     event: !type:Scp106LeavePhantomAction
@@ -93,7 +93,7 @@
     itemIconStyle: BigAction
     useDelay: 15
     icon:
-      sprite: _Scp/Scp106/actions.rsi
+      sprite: _Scp/Actions/scp-106.rsi
       state: become_phantom
   - type: InstantAction
     event: !type:Scp106PassThroughAction
@@ -107,7 +107,7 @@
     itemIconStyle: BigAction
     useDelay: 300
     icon:
-      sprite: _Scp/Scp106/actions.rsi
+      sprite: _Scp/Actions/scp-106.rsi
       state: become_phantom
   - type: InstantAction
     event: !type:Scp106BareBladeAction
@@ -121,7 +121,7 @@
     itemIconStyle: BigAction
     useDelay: 300
     icon:
-      sprite: _Scp/Scp106/actions.rsi
+      sprite: _Scp/Actions/scp-106.rsi
       state: leave_phantom
   - type: InstantAction
     event: !type:Scp106TerrifyNearbyActionEvent
@@ -139,7 +139,7 @@
     itemIconStyle: BigAction
     useDelay: 300
     icon:
-      sprite: _Scp/Scp106/actions.rsi
+      sprite: _Scp/Actions/scp-106.rsi
       state: become_phantom
   - type: InstantAction
     event: !type:Scp106BecomePhantomAction

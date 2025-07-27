@@ -1,0 +1,12 @@
+ent-FaxMachineRegionalAdministration = факс региональной администрации
+    .suffix = Региональная администрация
+    .desc = { ent-FaxMachineStandart.desc }
+ent-FaxMachineO4HQ = факс штаба О4
+    .suffix = Штаб О4
+    .desc = { ent-FaxMachineStandart.desc }
+ent-FaxMachineEncrypted = зашифрованный факс
+    .suffix = зашифрованный
+    .desc = { ent-FaxMachineStandart.desc }
+ent-FaxMachineDirector = факс директора комплекса
+    .suffix = Коды
+    .desc = { ent-FaxMachineStandart.desc }

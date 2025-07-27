@@ -1,0 +1,118 @@
+﻿# Пресеты для артефактов-сцп.
+# Для разных сцп нужны разные пресеты
+
+- type: entity
+  id: BaseScpArtifact
+  abstract: true
+  components:
+  - type: ContainerContainer
+    containers:
+      node-container: !type:Container
+        showEnts: False
+        occludes: True
+        ents: [ ]
+  - type: RadiationReceiver
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+      Acidic: [ Touch ]
+
+- type: entity
+  id: BaseScpArtifactMajor
+  parent: BaseScpArtifact
+  abstract: true
+  components:
+  - type: XenoArtifact
+    nodeCount:
+      min: 9
+      max: 13
+    effectsTable: !type:GroupSelector
+      children:
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsDefaultTable
+        weight: 3
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsUltraFunnyTable
+        weight: 1
+
+- type: entity
+  id: BaseScpArtifactMinor
+  parent: BaseScpArtifact
+  abstract: true
+  components:
+  - type: XenoArtifact
+    nodeCount:
+      min: 3
+      max: 5
+    effectsTable: !type:NestedSelector
+      tableId: ScpArtifactEffectsDefaultTable
+  - type: ResearchClient
+
+# Приколы-помогаторы с базовыми компонентами
+
+- type: entity
+  abstract: true
+  parent:
+  - BaseItem
+  - BaseScpArtifactMinor
+  id: BaseItemScp
+  components:
+  - type: Scp
+    class: Neutralized
+
+- type: entity # Онли для мобов
+  abstract: true
+  parent:
+  - BaseSimpleMob
+  - MobFlammable
+  - BaseScpArtifactMajor
+  id: BaseScp
+  components:
+  - type: Scp
+    class: Neutralized
+  - type: ScpRestriction
+  - type: ProximityReceiver
+  - type: WatchingTarget
+  - type: FearSource
+    phobiaType: Exoremophobia
+  - type: FootprintEmitter
+  - type: ZombieImmune # ебало игроков представили?
+  - type: FlashImmunity
+  - type: StationRecordKeyStorage
+  - type: NpcFactionMember
+    factions:
+    - SCPs
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Blunt
+        damage: 99999
+      behaviors:
+      - !type:GibBehavior { }
+      - !type:PlaySoundBehavior
+        sound: !type:SoundPathSpecifier
+          path: /Audio/_Scp/demon-dying.ogg
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 99999
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawnInContainer: true
+        spawn:
+          Ash:
+            min: 10
+            max: 15
+      - !type:BurnBodyBehavior { }
+      - !type:PlaySoundBehavior
+        sound: !type:SoundPathSpecifier
+          path: /Audio/_Scp/demon-dying.ogg
+  - type: ToggleableNightVision
+    effect: ScpEffectNightVision
+  - type: Tag
+    tags:
+    - FootstepSound
+    - CannotSuicide
+    - DoorBumpOpener

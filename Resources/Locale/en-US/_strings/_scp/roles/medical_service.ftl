@@ -1,0 +1,11 @@
+job-name-senior-medical-specialist = Senior Medical Specialist
+job-description-senior-medical-specialist = Trains interns and delegates authority to the Head of Medical Sector. CLASS C
+job-name-pharmaceutical-specialist = Pharmaceutical Specialist
+job-description-pharmaceutical-specialist = Deals with pharmaceutical activities. Brews medicines and experiments with chemicals. CLASS C
+job-name-psychotherapist = Psychotherapist
+job-description-psychotherapist = Provides psychological assistance to staff, and works with SCP objects as needed. CLASS C
+job-name-medical-specialist = Medical Specialist
+job-description-medical-specialist = Standard doctor. CLASS C
+job-name-hospital-intern = Intern
+job-description-hospital-intern = Medical intern. CLASS C
+job-supervisors-head-of-medical-sector = Head of Medical Sector

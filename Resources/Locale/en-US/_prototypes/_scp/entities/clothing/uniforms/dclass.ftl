@@ -1,0 +1,3 @@
+ent-ClothingUniformClassD = Class D Uniform
+    .desc = Smells like shit... Someone else's shit...
+    .suffix = SCP

@@ -1,0 +1,10 @@
+scp049-kill-action-already-dead = The entity is already dead.
+scp049-kill-action-cant-kill = The entity cannot die.
+scp049-touch-action-success = { $performer } touches { $target }.
+scp049-self-heal = { $performer } heals their wounds.
+scp049-heal-minion = Heals { $target }'s wounds.
+scp049-ghost-role-name = SCP-049 Reanimated Patient
+scp049-ghost-role-description = You are a reanimated victim of SCP-049, known as "The Plague Doctor". You are now his loyal servant, driven by an overwhelming desire to assist your master in his "cure".
+scp049-ghost-role-rules = Follow SCP-049's instructions. Do not attack other thralls or SCP-049. Your primary objective is to aid "The Plague Doctor" in his mission. You have no memories of your previous life.
+scp049-missing-surgery-tool = I require { $instrument } to perform surgery.
+scp049-cannot-zombify-entity = { $name } resists and cannot be cured.

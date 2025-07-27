@@ -1,0 +1,9 @@
+job-name-lead-technical-specialist = Lead Technical Specialist
+job-description-lead-technical-specialist = Instructor-technician, more important technician. CLASS C
+job-name-electrical-technical-specialist = Electrical Technical Specialist
+job-description-electrical-technical-specialist = Electrical engineer responsible for the Complex's power generation, electrical equipment, and air distribution system. CLASS C
+job-name-general-technical-specialist = General Technical Specialist
+job-description-general-technical-specialist = Specialized employee responsible for the repair of object containment chambers. CLASS C
+job-name-technical-trainee = Technical Trainee
+job-description-technical-trainee = IT service trainee.
+job-supervisors-chief-technical-specialist = Chief Technical Specialist

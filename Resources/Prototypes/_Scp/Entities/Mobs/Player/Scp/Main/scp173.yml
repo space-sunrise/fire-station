@@ -1,0 +1,76 @@
+﻿- type: entity
+  parent:
+  - BaseScp
+  - MobCombat
+  id: Scp173
+  name: SCP-173
+  suffix: SCP-173
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/Scp/scp-173.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: scp-173
+  - type: Scp
+    class: Euclid
+  - type: Scp173
+  - type: ShowBlinkable
+  - type: XenoArtifact
+    effectsTable: !type:GroupSelector
+      children:
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsDefaultTable
+        weight: 3
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsScp173Table
+        weight: 3
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsUltraFunnyTable
+        weight: 1
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-name
+    description: ghost-panel-antagonist-scp-description
+    priority: -10
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5
+    baseSprintSpeed: 12
+  - type: MobState
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+  - type: MeleeWeapon
+    hidden: true
+    soundHit:
+      collection: MetalThud
+    damage:
+      groups:
+        Brute: 10
+  - type: Muted
+  - type: ActionGrant
+    actions:
+    #    - Scp173Blind В целях баланса
+    - Scp173Clog
+    - Scp173DamageStructure
+    - Scp173FastMovement
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepScp173Classic
+  - type: FootprintEmitter
+    walkStepInterval: 0.1
+    leftBareFootState:
+    - dragging-1
+    - dragging-2
+    - dragging-3
+    - dragging-4
+    - dragging-5
+    rightBareFootState:
+    - dragging-1
+    - dragging-2
+    - dragging-3
+    - dragging-4
+    - dragging-5
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+    - ScpResearchAdvanced
