@@ -4358,3 +4358,34 @@
   id: 171
   time: '2025-07-24T14:58:39.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/444
+- author: wizardy
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u0448\u0430\u0442\u0442\
+      \u043B \u041C\u041E\u0413 \"\u041E\u043C\u0435\u0433\u0430-1\""
+    type: Add
+  id: 172
+  time: '2025-07-27T20:31:30.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/450
+- author: ThereDrD
+  changes:
+  - message: "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430 \u043A\u0430\u0440\
+      \u0442\u0430 \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0441\u0430 Compact\
+      \ v20 -> v22"
+    type: Tweak
+  - message: "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430 \u043A\u0430\u0440\
+      \u0442\u0430 \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0441\u0430 Standard\
+      \ v14 -> v15"
+    type: Tweak
+  - message: "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430 \u043A\u0430\u0440\
+      \u0442\u0430 \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0441\u0430 Modular\
+      \ v8 -> v9"
+    type: Tweak
+  - message: "\u041D\u0430 \u0432\u0441\u0435 \u043A\u0430\u0440\u0442\u044B \u0434\
+      \u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430 \u043F\u043E\u043B\u043A\u0430\
+      \ \u0441 \u0430\u043C\u043D\u0435\u0437\u0438\u0430\u043A\u0430\u043C\u0438\
+      \ \u0432 \u0441\u043C\u043E\u0442\u0440\u043E\u0432\u0443\u044E \u043E\u0445\
+      \u0440\u0430\u043D\u043D\u043E\u0433\u043E \u0431\u043B\u043E\u043A\u0430"
+    type: Tweak
+  id: 173
+  time: '2025-07-26T11:08:01.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/447
