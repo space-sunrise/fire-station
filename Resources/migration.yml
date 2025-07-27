@@ -1406,4 +1406,16 @@ FSCatwalkDark: ScpCatwalkDark
 FSCatwalkWhite: ScpCatwalkWhite
 Catwalk: ScpCatwalkSteel
 
+# Растения из будущего
+PottedPlantRandom: ScpPottedPlantRandom
+PottedPlantBioluminscent: null
+PottedPlant3: null
+PottedPlant7: null
+PottedPlant13: null
+PottedPlant14: null
+PottedPlant16: null
+PottedPlant19: null
+PottedPlant20: null
+PottedPlant26: null
+
 # Fire added end
