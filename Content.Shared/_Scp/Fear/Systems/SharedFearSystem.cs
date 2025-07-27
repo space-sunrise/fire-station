@@ -228,7 +228,11 @@ public abstract partial class SharedFearSystem : EntitySystem
     /// </summary>
     private void OnExamine(Entity<FearComponent> ent, ref ExaminedEvent args)
     {
-        var text = GetExamineText(ent, ent.Comp.State);
+        var isDead = _mobState.IsDead(ent);
+
+        var text = isDead
+            ? GetDeadExamineText(ent, ent.Comp.State)
+            : GetExamineText(ent, ent.Comp.State);
 
         if (text == null)
             return;
