@@ -47,6 +47,7 @@
   parent: BaseFigurine
   id: ToyFigurinePassenger
   name: passenger figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting an every day, run-of-the-mill passenger. No funny business here.
   components:
   - type: Sprite
@@ -58,6 +59,7 @@
   parent: BaseFigurine
   id: ToyFigurineGreytider
   name: greytider figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting a dubious-looking passenger. Greytide worldwide!
   components:
   - type: Sprite
@@ -69,6 +71,7 @@
   parent: BaseFigurine
   id: ToyFigurineClown
   name: clown figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting a clown. You shudder to think of what people have probably done to this figurine before.
   components:
   - type: Sprite
@@ -91,6 +94,7 @@
   parent: BaseFigurine
   id: ToyFigurineMime
   name: mime figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting that silent bastard you are all too familiar with.
   components:
   - type: Sprite
@@ -102,6 +106,7 @@
   parent: BaseFigurine
   id: ToyFigurineMusician
   name: musician figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting a Musician, his music was electrifying.
   components:
   - type: Sprite
@@ -113,6 +118,7 @@
   parent: BaseFigurine
   id: ToyFigurineBoxer
   name: boxer figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting a Boxer holding their red gloves.
   components:
   - type: Sprite
@@ -124,6 +130,7 @@
   parent: BaseFigurine
   id: ToyFigurineCaptain
   name: captain figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting the standard outfit of a captain belonging to a civilian-sector Nanotrasen vessel.
   components:
   - type: Sprite
@@ -157,6 +164,7 @@
   parent: BaseFigurine
   id: ToyFigurineDetective
   name: detective figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting a Detective wearing their iconic trench coat.
   components:
   - type: Sprite
@@ -179,6 +187,7 @@
   parent: BaseFigurine
   id: ToyFigurineLawyer
   name: lawyer figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting a Lawyer sporting a freshly tailored suit.
   components:
   - type: Sprite
@@ -201,6 +210,7 @@
   parent: BaseFigurine
   id: ToyFigurineSalvage
   name: salvage specialist figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting a Salvage Specialist holding a survival knife.
   components:
   - type: Sprite
@@ -300,6 +310,7 @@
   parent: BaseFigurine
   id: ToyFigurineParamedic
   name: paramedic figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting a Paramedic wearing their void suit.
   components:
   - type: Sprite
@@ -322,6 +333,7 @@
   parent: BaseFigurine
   id: ToyFigurineLibrarian
   name: librarian figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting the one-and-only librarian.
   components:
   - type: Sprite
@@ -333,6 +345,7 @@
   parent: BaseFigurine
   id: ToyFigurineChaplain
   name: chaplain figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting a Chaplain hopefully praying for good things.
   components:
   - type: Sprite
@@ -355,6 +368,7 @@
   parent: BaseFigurine
   id: ToyFigurineBartender
   name: bartender figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting a Bartender looking stylish with their rockin shades and tophat.
   components:
   - type: Sprite
@@ -388,6 +402,7 @@
   parent: BaseFigurine
   id: ToyFigurineNukie
   name: syndicate operative figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting someone in a blood-red hardsuit, similar to what someone on a nuclear operative team might wear.
   components:
   - type: Sprite
@@ -399,6 +414,7 @@
   parent: BaseFigurine
   id: ToyFigurineNukieElite
   name: elite syndicate operative figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting someone in an elite blood-red hardsuit, similar to what someone on a nuclear operative team might wear.
   components:
   - type: Sprite
@@ -410,6 +426,7 @@
   parent: BaseFigurine
   id: ToyFigurineNukieCommander
   name: syndicate operative commander figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting someone in a beefed-up blood-red hardsuit, similar to what the commander of a nuclear operative team might wear.
   components:
   - type: Sprite
@@ -421,6 +438,7 @@
   parent: BaseFigurine
   id: ToyFigurineFootsoldier
   name: syndicate footsoldier figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting the outfit of a syndicate footsoldier.
   components:
   - type: Sprite
@@ -432,6 +450,7 @@
   parent: BaseFigurine
   id: ToyFigurineWizard
   name: wizard figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting someone with a long, silky beard wearing a wizard outfit. Warlocks wish they had anything on this.
   components:
   - type: Sprite
@@ -443,6 +462,7 @@
   parent: BaseFigurine
   id: ToyFigurineWizardFake
   name: fake wizard figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting someone in a fake-ass wizard costume. What a ripoff!
   components:
   - type: Sprite
@@ -456,6 +476,7 @@
   parent: BaseFigurine
   id: ToyFigurineSpaceDragon
   name: space dragon figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A large figurine depicting a space dragon, its red eyes on gazing on its prey.
   components:
   - type: Sprite
@@ -467,6 +488,7 @@
   parent: BaseFigurine
   id: ToyFigurineQueen
   name: xeno queen figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A large figurine depicting a xeno queen, ready to attack.
   components:
   - type: Sprite
@@ -478,6 +500,7 @@
   parent: BaseFigurine
   id: ToyFigurineRatKing
   name: rat king figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A large figurine depicting a rat king, prepared to make its nest.
   components:
   - type: Sprite
@@ -489,6 +512,7 @@
   parent: BaseFigurine
   id: ToyFigurineRatServant
   name: rat servant figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting a rat serving the king of rats!
   components:
   - type: Sprite
@@ -511,6 +535,7 @@
   parent: BaseFigurine
   id: ToyFigurineSlime
   name: slime figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A figurine depicting a translucent blue slime.
   components:
   - type: Sprite
@@ -536,6 +561,7 @@
   parent: BaseFigurine
   id: ToyGriffin
   name: griffin figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: An action figure modeled after 'The Griffin', criminal mastermind.
   components:
   - type: Sprite
@@ -545,6 +571,7 @@
   parent: BaseFigurine
   id: ToyOwlman
   name: owl figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: An action figure modeled after 'The Owl', defender of justice.
   components:
   - type: Sprite
@@ -554,6 +581,7 @@
   parent: BaseFigurine
   id: ToySkeleton
   name: skeleton figure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Spooked ya!
   components:
   - type: Sprite

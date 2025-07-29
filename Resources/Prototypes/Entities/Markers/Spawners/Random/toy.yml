@@ -2,6 +2,7 @@
   name: Toy Spawner
   id: ToySpawner
   parent: MarkerBase
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
     - type: Sprite
       layers:
@@ -41,6 +42,7 @@
 - type: entity
   name: Prize Figurine Spawner
   id: FigureSpawner
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: MarkerBase
   components:
     - type: Sprite
@@ -77,6 +79,7 @@
   name: Spacemen Minifigure Spawner
   suffix: Librarian only, map with care!
   id: SpacemenFigureSpawner
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: MarkerBase
   components:
     - type: Sprite
