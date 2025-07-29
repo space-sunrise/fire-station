@@ -2107,6 +2107,7 @@
   id: VendingMachineHappyHonk
   name: Happy Honk Dispenser
   description: A happy honk meal box dispenser made by honk! co.
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: VendingMachine
     pack: HappyHonkDispenserInventory

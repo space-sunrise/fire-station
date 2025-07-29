@@ -960,8 +960,11 @@ public sealed partial class ChatUIController : UIController
         if (channel != ChatChannel.Emotes && channel != ChatChannel.Local && channel != ChatChannel.Whisper)
             return true;
 
-        if (_examine == null || !player.HasValue || _transform == null)
-            return true;
+        if (_examine == null || _transform == null)
+            return false;
+
+        if (!_ent.EntityExists(sender) || !_ent.EntityExists(player))
+            return false;
 
         if (!_examine.IsOccluded(player.Value))
             return true;

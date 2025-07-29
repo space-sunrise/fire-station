@@ -56,6 +56,8 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
         _mobQuery = GetEntityQuery<MobStateComponent>();
         _footprintQuery = GetEntityQuery<FootprintComponent>();
 
+        #region CCVars
+
         _useAltMethod = _configuration.GetCVar(ScpCCVars.FieldOfViewUseAltMethod);
         _configuration.OnValueChanged(ScpCCVars.FieldOfViewUseAltMethod, b => _useAltMethod = b);
 
@@ -67,6 +69,8 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
 
         Overlay.ConeOpacity = _configuration.GetCVar(ScpCCVars.FieldOfViewOpacity);
         _configuration.OnValueChanged(ScpCCVars.FieldOfViewOpacity, OnOpacityChanged);
+
+        #endregion
 
         SubscribeLocalEvent<FOVHiddenSpriteComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<FieldOfViewComponent, AfterAutoHandleStateEvent>(AfterHandleState);
@@ -131,7 +135,10 @@ public sealed class FieldOfViewOverlaySystem : ComponentOverlaySystem<FieldOfVie
 
         var player = _player.LocalEntity;
         if (!_fovQuery.TryComp(player, out var localFov))
+        {
+            ShowAllHiddenSprites();
             return;
+        }
 
         var chosenEntity = localFov.RelayEntity ?? player;
         if (!chosenEntity.HasValue)
