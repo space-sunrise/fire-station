@@ -54,15 +54,14 @@
       state: plushie_blackcat
   - type: RandomSpawner
     prototypes:
-    - PlushieBlackfox
-    - PlushieBluefox
-    - PlushieCoffeefox
-    - PlushieCrimsonfox
-    - PlushieMarblefox
-    - PlushieOrangefox
-    - PlushiePinkfox
-    - PlushiePurplefox
-    - PlushieRedfox
+    - PlushieBlackCat
+    - PlushieGreyCat
+    - PlushieWhiteCat
+    - PlushieOrangeCat
+    - PlushieRicehatCat
+    - PlushieSiameseCat
+    - PlushieTabbyCat
+    - PlushieTuxedoCat
     chance: 1
 
 - type: entity
@@ -77,14 +76,15 @@
       state: plushie_blackfox
   - type: RandomSpawner
     prototypes:
-    - PlushieBlackCat
-    - PlushieGreyCat
-    - PlushieWhiteCat
-    - PlushieOrangeCat
-    - PlushieRicehatCat
-    - PlushieSiameseCat
-    - PlushieTabbyCat
-    - PlushieTuxedoCat
+    - PlushieBlackfox
+    - PlushieBluefox
+    - PlushieCoffeefox
+    - PlushieCrimsonfox
+    - PlushieMarblefox
+    - PlushieOrangefox
+    - PlushiePinkfox
+    - PlushiePurplefox
+    - PlushieRedfox
     chance: 1
 
 - type: entity
