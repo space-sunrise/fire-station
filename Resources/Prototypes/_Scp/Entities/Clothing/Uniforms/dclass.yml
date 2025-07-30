@@ -7,3 +7,8 @@
     sprite: _Scp/Clothing/Uniforms/uniformClassD.rsi
   - type: Clothing
     sprite: _Scp/Clothing/Uniforms/uniformClassD.rsi
+  - type: Access
+  - type: IdCard
+  - type: StationRecordKeyStorage
+  - type: PresetIdCard
+    job: ClassD
