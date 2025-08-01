@@ -231,25 +231,25 @@
       board: [ DoorElectronicsEngineering ]
 
 - type: entity
-  parent: ScpAirlockAtmospherics
+  parent: ScpAirlockLifeSupport
   id: ScpAirlockAtmosphericsLocked
-  suffix: SCP Atmospherics, Locked
+  suffix: SCP Life support, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsAtmospherics ]
 
 - type: entity
-  parent: ScpAirlockCargo
+  parent: ScpAirlockLogistics
   id: ScpAirlockCargoLocked
-  suffix: SCP Cargo, Locked
+  suffix: SCP Logistics, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCargo ]
 
 - type: entity
-  parent: ScpAirlockCargo
+  parent: ScpAirlockLogistics
   id: ScpAirlockSalvageLocked
   suffix: SCP Salvage, Locked
   components:
@@ -276,7 +276,7 @@
       board: [ DoorElectronicsMedical ]
 
 - type: entity
-  parent: ScpAirlockChemistry
+  parent: ScpAirlockLaboratory
   id: ScpAirlockChemistryLocked
   suffix: SCP Chemistry, Locked
   components:
@@ -312,25 +312,25 @@
       board: [ DoorElectronicsMedicalResearch ]
 
 - type: entity
-  parent: ScpAirlockCentralCommand
+  parent: ScpAirlockRegionalAdministration
   id: ScpAirlockCentralCommandLocked
-  suffix: SCP Central Command, Locked
+  suffix: SCP Regional Administration, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCentralCommand ]
 
 - type: entity
-  parent: ScpAirlockCommand
+  parent: ScpAirlockAdministration
   id: ScpAirlockCommandLocked
-  suffix: SCP Command, Locked
+  suffix: SCP Administration, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCommand ]
 
 - type: entity
-  parent: ScpAirlockCommand
+  parent: ScpAirlockAdministration
   id: ScpAirlockCaptainLocked
   suffix: SCP Captain, Locked
   components:
@@ -339,7 +339,7 @@
       board: [ DoorElectronicsCaptain ]
 
 - type: entity
-  parent: ScpAirlockCommand
+  parent: ScpAirlockAdministration
   id: ScpAirlockChiefMedicalOfficerLocked
   suffix: SCP ChiefMedicalOfficer, Locked
   components:
@@ -348,7 +348,7 @@
       board: [ DoorElectronicsChiefMedicalOfficer ]
 
 - type: entity
-  parent: ScpAirlockCommand
+  parent: ScpAirlockAdministration
   id: ScpAirlockChiefEngineerLocked
   suffix: SCP ChiefEngineer, Locked
   components:
@@ -357,7 +357,7 @@
       board: [ DoorElectronicsChiefEngineer ]
 
 - type: entity
-  parent: ScpAirlockCommand
+  parent: ScpAirlockAdministration
   id: ScpAirlockHeadOfSecurityLocked
   suffix: SCP HeadOfSecurity, Locked
   components:
@@ -366,7 +366,7 @@
       board: [ DoorElectronicsHeadOfSecurity ]
 
 - type: entity
-  parent: ScpAirlockCommand
+  parent: ScpAirlockAdministration
   id: ScpAirlockResearchDirectorLocked
   suffix: SCP ResearchDirector, Locked
   components:
@@ -375,7 +375,7 @@
       board: [ DoorElectronicsResearchDirector ]
 
 - type: entity
-  parent: ScpAirlockCommand
+  parent: ScpAirlockAdministration
   id: ScpAirlockHeadOfPersonnelLocked
   suffix: SCP HeadOfPersonnel, Locked
   components:
@@ -384,7 +384,7 @@
       board: [ DoorElectronicsHeadOfPersonnel ]
 
 - type: entity
-  parent: ScpAirlockCommand
+  parent: ScpAirlockAdministration
   id: ScpAirlockQuartermasterLocked
   suffix: SCP Quartermaster, Locked
   components:
@@ -449,7 +449,7 @@
       board: [ DoorElectronicsVault ]
 
 - type: entity
-  parent: ScpAirlockCommand
+  parent: ScpAirlockAdministration
   id: ScpAirlockEVALocked
   suffix: SCP EVA, Locked
   components:
@@ -616,25 +616,25 @@
       board: [ DoorElectronicsEngineering ]
 
 - type: entity
-  parent: ScpAirlockAtmosphericsGlass
+  parent: ScpAirlockLifeSupportGlass
   id: ScpAirlockAtmosphericsGlassLocked
-  suffix: SCP Atmospherics, Locked
+  suffix: SCP Life support, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsAtmospherics ]
 
 - type: entity
-  parent: ScpAirlockCargoGlass
+  parent: ScpAirlockLogisticsGlass
   id: ScpAirlockCargoGlassLocked
-  suffix: SCP Cargo, Locked
+  suffix: SCP Logistics, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCargo ]
 
 - type: entity
-  parent: ScpAirlockCargoGlass
+  parent: ScpAirlockLogisticsGlass
   id: ScpAirlockSalvageGlassLocked
   suffix: SCP Salvage, Locked
   components:
@@ -643,9 +643,9 @@
       board: [ DoorElectronicsSalvage ]
 
 - type: entity
-  parent: ScpAirlockChemistryGlass
+  parent: ScpAirlockLaboratoryGlass
   id: ScpAirlockChemistryGlassLocked
-  suffix: SCP Chemistry, Locked
+  suffix: SCP Laboratory, Locked
   components:
   - type: ContainerFill
     containers:
@@ -697,25 +697,25 @@
       board: [ DoorElectronicsMedicalResearch ]
 
 - type: entity
-  parent: ScpAirlockCentralCommandGlass
+  parent: ScpAirlockRegionalAdministrationGlass
   id: ScpAirlockCentralCommandGlassLocked
-  suffix: SCP Central Command, Locked
+  suffix: SCP Regional Administration, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCentralCommand ]
 
 - type: entity
-  parent: ScpAirlockCommandGlass
+  parent: ScpAirlockAdministrationGlass
   id: ScpAirlockCommandGlassLocked
-  suffix: SCP Command, Locked
+  suffix: SCP Administration, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsCommand ]
 
 - type: entity
-  parent: ScpAirlockCommandGlass
+  parent: ScpAirlockAdministrationGlass
   id: ScpAirlockCaptainGlassLocked
   suffix: SCP Captain, Locked
   components:
@@ -724,7 +724,7 @@
       board: [ DoorElectronicsCaptain ]
 
 - type: entity
-  parent: ScpAirlockCommandGlass
+  parent: ScpAirlockAdministrationGlass
   id: ScpAirlockChiefMedicalOfficerGlassLocked
   suffix: SCP ChiefMedicalOfficer, Locked
   components:
@@ -733,7 +733,7 @@
       board: [ DoorElectronicsChiefMedicalOfficer ]
 
 - type: entity
-  parent: ScpAirlockCommandGlass
+  parent: ScpAirlockAdministrationGlass
   id: ScpAirlockChiefEngineerGlassLocked
   suffix: SCP ChiefEngineer, Locked
   components:
@@ -742,7 +742,7 @@
       board: [ DoorElectronicsChiefEngineer ]
 
 - type: entity
-  parent: ScpAirlockCommandGlass
+  parent: ScpAirlockAdministrationGlass
   id: ScpAirlockHeadOfSecurityGlassLocked
   suffix: SCP HeadOfSecurity, Locked
   components:
@@ -751,7 +751,7 @@
       board: [ DoorElectronicsHeadOfSecurity ]
 
 - type: entity
-  parent: ScpAirlockCommandGlass
+  parent: ScpAirlockAdministrationGlass
   id: ScpAirlockResearchDirectorGlassLocked
   suffix: SCP ResearchDirector, Locked
   components:
@@ -760,7 +760,7 @@
       board: [ DoorElectronicsResearchDirector ]
 
 - type: entity
-  parent: ScpAirlockCommandGlass
+  parent: ScpAirlockAdministrationGlass
   id: ScpAirlockHeadOfPersonnelGlassLocked
   suffix: SCP HeadOfPersonnel, Locked
   components:
@@ -769,7 +769,7 @@
       board: [ DoorElectronicsHeadOfPersonnel ]
 
 - type: entity
-  parent: ScpAirlockCommandGlass
+  parent: ScpAirlockAdministrationGlass
   id: ScpAirlockQuartermasterGlassLocked
   suffix: SCP Quartermaster, Locked
   components:
@@ -823,7 +823,7 @@
       board: [ DoorElectronicsArmory ]
 
 - type: entity
-  parent: ScpAirlockCommandGlassLocked
+  parent: ScpAirlockAdministrationGlass
   id: ScpAirlockEVAGlassLocked
   suffix: SCP EVA, Locked
   components:

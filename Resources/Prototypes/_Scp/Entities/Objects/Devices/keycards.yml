@@ -7,6 +7,7 @@
   components:
   - type: Item
     size: Small
+    heldPrefix: default
   - type: Clothing
     quickEquip: true
     slots:
@@ -14,9 +15,24 @@
   - type: Sprite
     state: icon
   - type: Access
+  - type: IdCard
+  - type: StationRecordKeyStorage
   - type: Tag
     tags:
     - DoorBumpOpener
+    - WhitelistChameleon
+    - WhitelistChameleonIdCard
+  - type: StealTarget
+    stealGroup: IDCard
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/ID/pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/ID/drop.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/ID/drop.ogg
 
 - type: entity
   parent: KeyCardBase
@@ -26,7 +42,7 @@
     sprite: _Scp/Objects/Keycards/Level0.rsi
   - type: Access
     groups:
-    - Level0
+    - Example
 
 - type: entity
   parent: KeyCardBase
@@ -36,7 +52,7 @@
     sprite: _Scp/Objects/Keycards/Level1.rsi
   - type: Access
     groups:
-    - Level1
+    - Example
 
 - type: entity
   parent: KeyCardBase
@@ -46,7 +62,7 @@
     sprite: _Scp/Objects/Keycards/Level2.rsi
   - type: Access
     groups:
-    - Level2
+    - Example
 
 - type: entity
   parent: KeyCardBase
@@ -56,7 +72,7 @@
     sprite: _Scp/Objects/Keycards/Level3.rsi
   - type: Access
     groups:
-    - Level3
+    - Example
 
 - type: entity
   parent: KeyCardBase
@@ -66,7 +82,7 @@
     sprite: _Scp/Objects/Keycards/Level4.rsi
   - type: Access
     groups:
-    - Level4
+    - Example
 
 - type: entity
   parent: KeyCardBase
@@ -74,9 +90,12 @@
   components:
   - type: Sprite
     sprite: _Scp/Objects/Keycards/Level5.rsi
+  - type: IdCard
+    jobTitle: job-title-universal
+    jobIcon: JobIconAdmin
   - type: Access
     groups:
-    - Level5
+    - AllAccess # TODO: Для тестов, убрать
 
 - type: entity
   parent: KeyCardBase
@@ -86,7 +105,7 @@
     sprite: _Scp/Objects/Keycards/scpsec.rsi
   - type: Access
     groups:
-    - LevelScpSec
+    - Example
 
 - type: entity
   parent: KeyCardBase
@@ -96,4 +115,4 @@
     sprite: _Scp/Objects/Keycards/mtfleader.rsi
   - type: Access
     groups:
-    - LevelMtfLeader
+    - Example

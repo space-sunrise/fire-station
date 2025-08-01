@@ -22,16 +22,16 @@
 
 - type: entity
   parent: ScpAirlockEngineering
-  id: ScpAirlockAtmospherics
-  suffix: SCP Atmospherics
+  id: ScpAirlockLifeSupport
+  suffix: SCP Life support
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/atmospherics.rsi
 
 - type: entity
   parent: ScpAirlock
-  id: ScpAirlockCargo
-  suffix: SCP Cargo
+  id: ScpAirlockLogistics
+  suffix: SCP Logistics
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/cargo.rsi
@@ -72,11 +72,11 @@
 
 - type: entity
   parent: ScpAirlockMedical
-  id: ScpAirlockChemistry
-  suffix: SCP Chemistry
+  id: ScpAirlockLaboratory
+  suffix: SCP Laboratory
   components:
   - type: Sprite
-    sprite: _Scp/Structures/Doors/Airlocks/Standard/chemistry.rsi #Sunrise-Resprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/chemistry.rsi
 
 - type: entity
   parent: ScpAirlock
@@ -92,8 +92,8 @@
 
 - type: entity
   parent: ScpAirlock
-  id: ScpAirlockCommand
-  suffix: SCP Command
+  id: ScpAirlockAdministration
+  suffix: SCP Administration
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/command.rsi
@@ -125,9 +125,9 @@
     sprite: _Scp/Structures/Doors/Airlocks/Standard/maint.rsi
 
 - type: entity
-  parent: ScpAirlockCommand # if you get centcom door somehow it counts as command, also inherit panel
-  id: ScpAirlockCentralCommand
-  suffix: SCP Central Command
+  parent: ScpAirlockAdministration
+  id: ScpAirlockRegionalAdministration
+  suffix: SCP Regional Administration
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/centcomm.rsi
@@ -155,16 +155,16 @@
 
 - type: entity
   parent: ScpAirlockEngineeringGlass
-  id: ScpAirlockAtmosphericsGlass
-  suffix: SCP Atmospherics
+  id: ScpAirlockLifeSupportGlass
+  suffix: SCP Life support
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Glass/atmospherics.rsi
 
 - type: entity
   parent: ScpAirlockGlass
-  id: ScpAirlockCargoGlass
-  suffix: SCP Cargo
+  id: ScpAirlockLogisticsGlass
+  suffix: SCP Logistics
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Glass/cargo.rsi
@@ -197,8 +197,8 @@
 
 - type: entity
   parent: ScpAirlockMedicalGlass
-  id: ScpAirlockChemistryGlass
-  suffix: SCP Chemistry
+  id: ScpAirlockLaboratoryGlass
+  suffix: SCP Laboratory
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Glass/chemistry.rsi #Sunrise-Resprite
@@ -225,8 +225,8 @@
 
 - type: entity
   parent: ScpAirlockGlass
-  id: ScpAirlockCommandGlass
-  suffix: SCP Command
+  id: ScpAirlockAdministrationGlass
+  suffix: SCP Administration
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Glass/command.rsi
@@ -250,9 +250,9 @@
     layoutId: AirlockSecurity
 
 - type: entity
-  parent: ScpAirlockCommandGlass # see standard
-  id: ScpAirlockCentralCommandGlass
-  suffix: SCP Central Command
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockRegionalAdministrationGlass
+  suffix: SCP Regional administration
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Glass/centcomm.rsi
