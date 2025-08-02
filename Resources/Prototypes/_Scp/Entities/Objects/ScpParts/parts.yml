@@ -20,6 +20,8 @@
     - ScpResearchAdvanced
   - type: Damageable
   - type: DamageOverlay
+    damagePopupType: SmallFloating
+    isStructure: true
 
 # SCP-999
 
