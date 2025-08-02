@@ -18,6 +18,8 @@
   - type: GuideHelp
     guides:
     - ScpResearchAdvanced
+  - type: Damageable
+  - type: DamageOverlay
 
 # SCP-999
 

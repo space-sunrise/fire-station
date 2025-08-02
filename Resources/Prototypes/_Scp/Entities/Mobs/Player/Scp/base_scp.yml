@@ -60,6 +60,8 @@
   components:
   - type: Scp
     class: Neutralized
+  - type: Damageable
+  - type: DamageOverlay
 
 - type: entity # Онли для мобов
   abstract: true
