@@ -693,9 +693,9 @@
 
 # Дополнительное:
 - type: listing
-  id: ScpUplinkCrateAdministrationAmnesiacA
-  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
-  productEntity: CrateAdministrationAmnesiacA
+  id: ScpUplinkAmnesiacA
+  icon: { sprite: Objects\Storage\boxes.rsi, state: box }
+  productEntity: BoxVialAmnesiacA
   cost:
     Crystallite: 2
   categories:
@@ -705,9 +705,9 @@
     stock: 1
 
 - type: listing
-  id: ScpUplinkCrateAdministrationAmnesiacB
-  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
-  productEntity: CrateAdministrationAmnesiacB
+  id: ScpUplinkAmnesiacB
+  icon: { sprite: Objects\Storage\boxes.rsi, state: box }
+  productEntity: BoxVialAmnesiacB
   cost:
     Crystallite: 2
   categories:
@@ -717,9 +717,9 @@
     stock: 1
 
 - type: listing
-  id: ScpUplinkCrateAdministrationAmnesiacC
-  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
-  productEntity: CrateAdministrationAmnesiacC
+  id: ScpUplinkAmnesiacC
+  icon: { sprite: Objects\Storage\boxes.rsi, state: box }
+  productEntity: BoxVialAmnesiacC
   cost:
     Crystallite: 2
   categories:
@@ -729,9 +729,9 @@
     stock: 1
 
 - type: listing
-  id: ScpUplinkCrateAdministrationAmnesiacD
-  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
-  productEntity: CrateAdministrationAmnesiacD
+  id: ScpUplinkAmnesiacD
+  icon: { sprite: Objects\Storage\boxes.rsi, state: box }
+  productEntity: BoxVialAmnesiacD
   cost:
     Crystallite: 2
   categories:
