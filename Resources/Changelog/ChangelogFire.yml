@@ -4475,3 +4475,13 @@
   id: 175
   time: '2025-08-02T14:33:25.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/462
+- author: EngineerLND
+  changes:
+  - message: "\u0418\u0441\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430 \u043D\u0435\
+      \u0432\u043E\u0437\u043C\u043E\u0436\u043D\u043E\u0441\u0442\u044C \u043F\u0438\
+      \u0442\u044C \u0438 \u0435\u0441\u0442\u044C \u0441 \u043D\u0430\u0434\u0435\
+      \u0442\u044B\u043C SCP 035."
+    type: Fix
+  id: 176
+  time: '2025-08-02T16:15:34.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/465
