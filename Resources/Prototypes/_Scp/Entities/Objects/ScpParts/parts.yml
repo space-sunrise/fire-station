@@ -107,6 +107,7 @@
   id: Scp096PhotoDeveloped
   parent: BaseScpMaterial
   name: strange photo
+  description: A small photograph depicting a humanoid creature of anomalously large stature with disproportionately long arms. You peer into its face... oh god...
   components:
   - type: Sprite
     layers:
