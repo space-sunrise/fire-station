@@ -3,6 +3,7 @@ using Content.Shared._Scp.Audio.Components;
 using Content.Shared._Scp.ScpCCVars;
 using Content.Shared.Examine;
 using Content.Shared.Interaction;
+using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
@@ -16,12 +17,14 @@ public sealed class AudioMuffleSystem : EntitySystem
 {
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     private static readonly ProtoId<AudioPresetPrototype> MufflingEffectPreset = "ScpBehindWalls";
+    private static readonly HashSet<ProtoId<TagPrototype>> SoundproofingTags = ["Wall", "Window", "Airlock", "GlassAirlock"];
 
     private const float ReducedVolume = -20f;
     private const float HearRange = 14f;
@@ -119,7 +122,7 @@ public sealed class AudioMuffleSystem : EntitySystem
             {
                 TryMuffleSound((sound, audioComp));
             }
-            else if (inRangeUnOccluded && !_interaction.InRangeUnobstructed(sound, player, HearRange))
+            else if (inRangeUnOccluded && !InRangeUnobstructed(sound, player))
             {
                 TryMuffleSound((sound, audioComp), false);
             }
@@ -188,6 +191,13 @@ public sealed class AudioMuffleSystem : EntitySystem
 
         return true;
     }
+
+    private bool InRangeUnobstructed(Entity<TransformComponent?> first, Entity<TransformComponent?> second)
+    {
+        return _interaction.InRangeUnobstructed(first, second, HearRange, predicate: IsNotSoundproofing);
+    }
+
+    private bool IsNotSoundproofing(EntityUid e) => !_tag.HasAnyTag(e, SoundproofingTags);
 
     private void OnToggled(bool enabled)
     {

@@ -9,7 +9,7 @@
     - state: icon
       map: [ "mask" ]
   - type: Clothing
-    sprite: _Scp/scp-035.rsi
+    sprite: _Scp/Objects/Scp/scp-035.rsi
   - type: SelfEquipOnly
   - type: IngestionBlocker
   - type: FlashImmunity

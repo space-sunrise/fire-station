@@ -152,6 +152,21 @@ public abstract partial class SharedFearSystem
     };
 
     /// <summary>
+    /// Возвращает переведенную строку, содержащую ИЦ информацию об уровне страха человека.
+    /// Если уровень страха отсутствует, то возвращает null.
+    /// Вариант для мертвых тел, описывающий застывшее на лице состояние в зависимости от уровня страха.
+    /// </summary>
+    private string? GetDeadExamineText(EntityUid target, FearState type) => type switch
+    {
+        FearState.None => Loc.GetString("examine-fear-state-none-dead", ("target", target)),
+        FearState.Anxiety => Loc.GetString("examine-fear-state-anxiety-dead", ("target", target)),
+        FearState.Fear => Loc.GetString("examine-fear-state-fear-dead", ("target", target)),
+        FearState.Terror => Loc.GetString("examine-fear-state-terror-dead", ("target", target)),
+
+        _ => null,
+    };
+
+    /// <summary>
     /// Преобразует процент из человеческого формата в probный.
     /// </summary>
     protected static float PercentToNormalized(float percent)

@@ -2,6 +2,7 @@
   id: PlushieOne
   parent: BasePlushie
   name: Dekus-Kiurs
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Unath, whom no one is expecting.
   components:
   - type: Sprite
@@ -12,6 +13,7 @@
   id: PlushieTwo
   parent: BasePlushie
   name: Unknown
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush, polite man with refined taste and a moustache.
   components:
   - type: Sprite
@@ -22,6 +24,7 @@
   id: PlushieThree
   parent: BasePlushie
   name: Teresa Sharapova
+  categories: [ HideSpawnMenu ] # Fire edit
   description: The plush head of staff, he's pissing you off.
   components:
   - type: Sprite
@@ -32,6 +35,7 @@
   id: PlushieUunaKatsuhiro
   parent: BasePlushie
   name: Uuna Katsuhiro
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A dark elf with a bright soul.
   components:
   - type: Sprite
@@ -62,6 +66,7 @@
   id: PlushieFour
   parent: BasePlushie
   name: Yasly Chunkanjuk
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush orange fox in an officer's uniform.
   components:
   - type: Sprite
@@ -72,6 +77,7 @@
   id: PlushieFive
   parent: BasePlushie
   name: Robert Krapivin
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush toy of a caretaker in a strange blue uniform.
   components:
   - type: Sprite
@@ -82,6 +88,7 @@
   id: PlushieSix
   parent: BasePlushie
   name: Anatoly Bobrov
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush disposer with a hole in his spacesuit.
   components:
   - type: Sprite
@@ -92,6 +99,7 @@
   id: PlushieSeven
   parent: BasePlushie
   name: Cain De La Mace
+  categories: [ HideSpawnMenu ] # Fire edit
   description: The plush commander of the nuclear operatives. Very scary.
   components:
   - type: Sprite
@@ -102,6 +110,7 @@
   id: PlushieEight
   parent: BasePlushie
   name: Artem Spirin Jr.
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush toy of the Chief of Staff of Central Command. A rejection note can be seen in his hand.
   components:
   - type: Sprite
@@ -112,6 +121,7 @@
   id: PlushieNine
   parent: BasePlushie
   name: Victoria Hoffmann
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush caretaker with a bloody nose and an electric guitar.
   components:
   - type: Sprite
@@ -122,6 +132,7 @@
   id: PlushieTen
   parent: BasePlushie
   name: Artyom Spirin Sr.
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush, heavily dusted scientist.
   components:
   - type: Sprite
@@ -132,6 +143,7 @@
   id: PlushieEleven
   parent: BasePlushie
   name: Akepa Gryaznov
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush manly dwarf in a Central Command operator's turtleneck.
   components:
   - type: Sprite
@@ -142,6 +154,7 @@
   id: PlushieTwelve
   parent: BasePlushie
   name: Vouiar Teriyakin
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Plush Captain toy with green cabbage coloured hair.
   components:
   - type: Sprite
@@ -152,6 +165,7 @@
   id: PlushieThirteen
   parent: BasePlushie
   name: Marianna Bragina
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A very cute plush toy of an atmospheric technician.
   components:
   - type: Sprite
@@ -162,6 +176,7 @@
   id: PlushieFourteen
   parent: BasePlushie
   name: Drakosha
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush humongoid dragon toy with brown scales.
   components:
   - type: Sprite
@@ -172,6 +187,7 @@
   id: PlushieFifteen
   parent: BasePlushie
   name: Puro
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush vulpas toy with a white mask on its face.
   components:
   - type: Sprite
@@ -182,6 +198,7 @@
   id: PlushieSixteen
   parent: BasePlushie
   name: Rudolf Von-Weiner
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush toy of a senior engineer with hair as purple as plasma.
   components:
   - type: Sprite
@@ -192,6 +209,7 @@
   id: PlushieSeventeen
   parent: BasePlushie
   name: TR-263
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A robotic Raptor. You don't want to put your hands on his plush face. Everyone knows how that usually ends, right?
   components:
   - type: Sprite
@@ -202,6 +220,7 @@
   id: PlushieEighteen
   parent: BasePlushie
   name: Commissioner
+  categories: [ HideSpawnMenu ] # Fire edit
   description: The Commissioner is a super-specialised investigator of plush offences. The most formidable and gentle justice in the plush universe.
   components:
   - type: Sprite
@@ -212,6 +231,7 @@
   id: PlushieNineteen
   parent: BasePlushie
   name: Sneaky crook
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Some call him bad, some say he's the worst, but we all know who he is.
   components:
   - type: Sprite
@@ -222,6 +242,7 @@
   id: PlushieTwenty
   parent: BasePlushie
   name: Louras-Ma
+  categories: [ HideSpawnMenu ] # Fire edit
   description: His scales may be black, but his thoughts are pure! And don't ask him where he got his hypo-arm and why he needs nocturine in it!
   components:
   - type: Sprite
@@ -232,6 +253,7 @@
   id: PlushieTwentyOne
   parent: BasePlushie
   name: Gentuhw Anmimisz
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A great warrior of the green robusta clan. Was wounded in the knee and forced to suspend his journey in your soft or not so soft hands. Katana not included.
   components:
   - type: Sprite
@@ -242,6 +264,7 @@
   id: PlushieTwentyTwo
   parent: BasePlushie
   name: Kondrat Seran
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Legend has it that the red-haired Seran has successfully completed many cases and closed his lawyer's office because of the new NT decree. He lives in a dark corner, weaving silk thread, and he's sneaking in here to build a new house.
   components:
   - type: Sprite
@@ -252,6 +275,7 @@
   id: PlushieTwentyThree
   parent: BasePlushie
   name: Darth Vader
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A long time ago, in a galaxy far, far away...
   components:
   - type: Sprite
@@ -262,6 +286,7 @@
   id: PlushieTwentyFour
   parent: BasePlushie
   name: Uzo-Kur-Petaksay
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A grey Unath dressed in the garb of the so-called ‘Arbiter’. A kind enough Master.
   components:
   - type: Sprite
@@ -272,6 +297,7 @@
   id: PlushieTwentyFive
   parent: BasePlushie
   name: Roman Filchenkov
+  categories: [ HideSpawnMenu ] # Fire edit
   description: The most famous square plush on the plush world!
   components:
   - type: Sprite
@@ -282,6 +308,7 @@
   id: PlushieTwentySix
   parent: BasePlushie
   name: Konradra Alexeev
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Let this young girl with long blue hair, red eyes and a love for beer and NanoTrasen Corporation continue her adventure of bringing her uniqueness and joie de vivre to the world.
   components:
   - type: Sprite
@@ -292,6 +319,7 @@
   id: PlushieTwentySeven
   parent: BasePlushie
   name: Igor
+  categories: [ HideSpawnMenu ] # Fire edit
   description: "A teddy bear in a black hooded sweatshirt. Don't ask him why Vim is better. It says on the label: \"I use Arch btw\""
   components:
   - type: Sprite
@@ -302,6 +330,7 @@
   id: PlushieTwentyEight
   parent: BasePlushie
   name: Husky Huskovic
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Anthroporiforma Grey and white dog wearing a blue suit and lime shoes.
   components:
   - type: Sprite
@@ -312,6 +341,7 @@
   id: PlushieTwentyNine
   parent: BasePlushie
   name: Ah Wadumiek
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A regular purple lizard that likes technical tunnels and digging-digging the ground.
   components:
   - type: Sprite
@@ -322,6 +352,7 @@
   id: PlushieThirty
   parent: BasePlushie
   name: Nanati
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Naaa, a fluffy and delicious smelling toy.
   components:
   - type: Sprite
@@ -332,6 +363,7 @@
   id: PlushieThirtyOne
   parent: BasePlushie
   name: Scout bird
+  categories: [ HideSpawnMenu ] # Fire edit
   description: "The bird is red in colour. The label says: \"I'm Scout main and Scout gaming.\""
   components:
   - type: Sprite
@@ -342,6 +374,7 @@
   id: PlushieThirtyTwo
   parent: BasePlushie
   name: Kirieszka
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Cat-man.
   components:
   - type: Sprite
@@ -352,6 +385,7 @@
   id: PlushieThirtyThree
   parent: BasePlushie
   name: Allan Haskovic
+  categories: [ HideSpawnMenu ] # Fire edit
   description: The suspicious type.
   components:
   - type: Sprite
@@ -362,6 +396,7 @@
   id: PlushieThirtyFour
   parent: BasePlushie
   name: Spiffo
+  categories: [ HideSpawnMenu ] # Fire edit
   description: This little raccoon will do anything to make you DIE from zombies!
   components:
   - type: Sprite
@@ -372,6 +407,7 @@
   id: PlushieThirtyFive
   parent: BasePlushie
   name: Brick Jim
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Surprisingly. looks like a brick. It reeks of the power of bureaucracy.
   components:
   - type: Sprite
@@ -381,6 +417,7 @@
 - type: entity
   id: PlushieThirtySixBig
   name: Big Brick Jim
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Gigachad brick. Very big. It reeks of the power of bureaucracy.
   components:
   - type: Clickable
@@ -448,6 +485,7 @@
   id: PlushieThirtySeven
   parent: BasePlushie
   name: V.O.R.T.E.X.
+  categories: [ HideSpawnMenu ] # Fire edit
   description: They say there's always light where this toy lies, but we don't believe it.
   components:
   - type: Sprite
@@ -458,6 +496,7 @@
   id: PlushieThirtyEight
   parent: BasePlushie
   name: Dan Heng Moon Eater
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Cloud dragon. Rise up!
   components:
   - type: Sprite
@@ -468,6 +507,7 @@
   id: PlushieRichardDetective
   parent: BasePlushie
   name: Unlucky Detective Richard Reid
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Honourably lost at Russian roulette with myself..... 17 times....
   components:
   - type: Sprite
@@ -478,6 +518,7 @@
   id: PlushieCaptainTartarus
   parent: BasePlushie
   name: Captain Tartarus
+  categories: [ HideSpawnMenu ] # Fire edit
   description: In my pocket is a picture of a gallows with the caption "sps for cyberbullying", addressed to "Elik"
   components:
   - type: Sprite
@@ -488,6 +529,7 @@
   id: PlushieCaptainEmily
   parent: BasePlushie
   name: Captain Emily
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Captain Emily Fill, usually when you see her you shout something like "AAA, WOMAN", but when you see the toy you only shout "AAA FURRY"
   components:
   - type: Sprite
@@ -498,6 +540,7 @@
   id: PlushieCrusader
   parent: BasePlushie
   name: Plushie Crusader
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Deus vult! Ave maria!
   components:
   - type: Sprite
@@ -508,6 +551,7 @@
   id: PlushieGenok
   parent: BasePlushie
   name: Plushie librarian
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A quiet and demure toy with brightly coloured hair, perfect for library work. She smells like a scribe
   components:
   - type: Sprite
@@ -524,6 +568,7 @@
   id: PlushieMegane
   parent: BasePlushie
   name: The missing Richard Reed
+  categories: [ HideSpawnMenu ] # Fire edit
   description: No body was found, so it never existed. The last thing eyewitnesses heard was the opening guitar riffs of «(Don't Fear) The Reaper», you don't want to get into that.
   components:
   - type: Sprite
@@ -559,6 +604,7 @@
   id: PlushieFrizko
   parent: [ EmitVulpGrowl, BasePlushie ]
   name: Plush Eustace Lauda
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush toy of a psychologist who takes her job seriously. The tag says "I eat vulpine"
   components:
   - type: Sprite
@@ -569,6 +615,7 @@
   id: PlushieMiron
   parent: [ EmitVulpGrowl, BasePlushie ]
   name: Plush Miron Potapov
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush toy of a medical department veteran ready to share his expertise with others. The tag says "Made from natural chemicals"
   components:
   - type: Sprite
@@ -579,6 +626,7 @@
   id: PlushieBublegum
   parent: BasePlushie
   name: Plush Bubblegum
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A cute toy of a terrifying monster from the depths of lavaland. She can't hurt you
   components:
   - type: Sprite
@@ -589,6 +637,7 @@
   id: PlushieCikuus
   parent: BasePlushie
   name: Plush Lilith Bonaventure
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Cute vulpochka in a maid costume, she smells nice with flowers and will be happy to clean your house. Who hasn't dreamed of one?
   components:
   - type: Sprite
@@ -599,6 +648,7 @@
   id: PlushieSuvagesi
   parent: BasePlushie
   name: Plush Holo Suwageshi
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A regular vulpa, huh? Wait, is that a knife? Wait. No, run! SHE'S FINISHED!
   components:
   - type: Sprite
@@ -609,6 +659,7 @@
   id: PlushiePrototupus
   parent: BasePlushie
   name: Plush Lily Barton
+  categories: [ HideSpawnMenu ] # Fire edit
   description: and every question has a definite answer - "squelch squelch squelch".
   components:
   - type: Sprite
@@ -683,6 +734,7 @@
   - EmitMeow
   - BasePlushie
   name: Victoria Belaya
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A person in the strict costume of a PST employee. Constantly punishing and unsparing. Loves to spoil and meow.
   components:
   - type: Sprite
@@ -695,6 +747,7 @@
   id: PlushieSebastian
   parent: BasePlushie
   name: Plush Commander Sebastian Hayes
+  categories: [ HideSpawnMenu ] # Fire edit
   description: He's actually an agent who forgot to go undercover.
   components:
   - type: Sprite
@@ -705,6 +758,7 @@
   parent: BasePlushie
   id: PlushieNara
   name: Na-Ra
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A noir unath just came out of the dormitories.
   components:
   - type: Sprite
@@ -715,6 +769,7 @@
   parent: BasePlushie
   id: PlushiePeacemaker
   name: Peacemaker
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Where he is, there is peace, but where there is war, he brings death.
   components:
   - type: Sprite
@@ -727,6 +782,7 @@
   parent: BasePlushie
   id: PlushieEblan
   name: Plush Milos-Tanaka
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Protector of the station, always ready for unexpected adventures!
   components:
   - type: Sprite
@@ -737,6 +793,7 @@
   parent: BasePlushie
   id: PlushieKlim
   name: Plush Klim Kuzmin
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Vulpa atm, he smells like plasma. It'll fix any hole, even in your heart.
   components:
   - type: Sprite
@@ -747,6 +804,7 @@
   parent: BasePlushie
   id: PlushieMelania
   name: Plush Melania Kiseleva
+  categories: [ HideSpawnMenu ] # Fire edit
   description: The greatest jellybean in the universe, loving her sisters. Squish!
   components:
   - type: Sprite
@@ -757,6 +815,7 @@
   parent: BasePlushie
   id: PlushieOkobius
   name: Plush Ocobius Aquatica
+  categories: [ HideSpawnMenu ] # Fire edit
   description: One of the worst brig medics that ever existed.
   components:
   - type: Sprite
@@ -767,6 +826,7 @@
   parent: BasePlushie
   id: PlushieVyacheslav
   name: Plushy Vyacheslav Nekrasov
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A popular personality in relevant circles.
   components:
   - type: Sprite
@@ -777,6 +837,7 @@
   parent: [ EmitVulpGrowl, BasePlushie ]
   id: PlushieLu
   name: Plush Lou'Slime
+  categories: [ HideSpawnMenu ] # Fire edit
   description: You think this vulpa chemist is a woman? Keep thinking that... Sometimes she snorts
   components:
   - type: Sprite
@@ -787,6 +848,7 @@
   parent: BasePlushie
   id: PlushieAgata
   name: Plush Agent Agata Katsuhiro
+  categories: [ HideSpawnMenu ] # Fire edit
   description: This plushie was made on a planetary prison by convicted Syndicate agents. Wear it proudly, corporate
   components:
   - type: Sprite
@@ -797,6 +859,7 @@
   parent: BasePlushie
   id: PlushieMilosTanka
   name: Plush Milos-Tanaka
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Unathi in a Central Command uniform, what could he possibly be hiding in him besides two knives and a revolver?
   components:
   - type: Sprite
@@ -810,6 +873,7 @@
   parent: BasePlushie
   id: PlushieAlice
   name: Plushie Alice
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
     state: alice
@@ -819,6 +883,7 @@
   id: PlushieKaioshi
   parent: BasePlushie
   name: Plush Kaioshi
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Bartender.. with a chainsaw in his hand?..
   components:
   - type: Sprite
@@ -829,6 +894,7 @@
   parent: BasePlushie
   id: PlushieRaisya
   name: Plushie Raisya
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Purr! “Meow! Nya! her favorite UwU words.
   components:
   - type: Sprite
@@ -870,6 +936,7 @@
   - BasePlushie
   id: LegendaryGoldenWeh
   name: Legendary golden Weh
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Do you remember how you made your way through the dangers, how you left a fake instead, accidentally activated a trap and started running away from a huge ball! But wait, it was a dream, then where did you get it?
   components:
   - type: Sprite
@@ -890,6 +957,7 @@
   id: PlushieAnatolyLisitsyn
   parent: BasePlushie
   name: Anatoly Lisitsyn
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Fun/toys.rsi
@@ -906,6 +974,7 @@
   id: PlushieEvgeniyaKrein
   parent: BasePlushie
   name: Evgeniya Krein
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Fun/toys.rsi
@@ -922,6 +991,7 @@
   id: PlushieMiraKovalskaya
   parent: BasePlushie
   name: Mira Kovalskaya
+  categories: [ HideSpawnMenu ] # Fire edit
   description: The most harmless greytide. She won't touch you, because she will lose even to a space tick:3
   components:
   - type: Sprite
@@ -944,6 +1014,7 @@
   id: PlushieMihailOsipov
   parent: BasePlushie
   name: Mihail Osipov
+  categories: [ HideSpawnMenu ] # Fire edit
   description: He is able to dissolve into the world of illusions and shower passersby with some metaphorical "pies". He probably knows the secret to making really witty and funny jokes.
   components:
   - type: Sprite
@@ -966,6 +1037,7 @@
   id: PlushieMadokaMori
   parent: BasePlushie
   name: Madoka Mori
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A plush toy of the blue detective... It seems quite familiar, as if I've seen him in many sectors... The toy itself is made of a nice, silky material, and he has a gold-plated ring glued to his right hand. And yes, he's back again to the envy of everyone.
   components:
   - type: Sprite
@@ -988,6 +1060,7 @@
   id: PlushieMechanixFaurHorseman
   parent: BasePlushie
   name: Mechanix Faur Horseman
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A gloomy plush toy that you may have seen somewhere, its arms are sewn into the pockets of a sweater, and its eyes are covered with something like chemical glasses. It smells of something pleasant, reminiscent of lemon oil. When you look at the toy, it seems to you that you have missed something...
   components:
   - type: Sprite
@@ -1019,6 +1092,7 @@
   id: PlushieExperiencedSalvageSpecialist
   parent: BasePlushie
   name: Experienced Salvage Specialist
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A toy of a Salvage Specialist in a spacesuit that was reinforced with shields and goliath flesh. The tag has the signature snkrs. The toy looks pretty scary...
   components:
   - type: Sprite
@@ -1029,6 +1103,7 @@
   id: PlushieAlisaKrokozyabka
   parent: BasePlushie
   name: Alisa Krokozyabka
+  categories: [ HideSpawnMenu ] # Fire edit
   description: The only Head of Personnel who won't go to lunch. Uga Booga!
   components:
   - type: Sprite
@@ -1051,6 +1126,7 @@
   id: PlushieJamalDotsenko
   parent: [ EmitVulpGrowl, BasePlushie ]
   name: Plushie Jamal Dotsenko
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Master of the Brig. Knows the history of the Vulpakins better than the Working Procedures.
   components:
   - type: Sprite
@@ -1061,6 +1137,7 @@
   id: PlushieMolnia
   parent: [ PlushieMoth, BasePlushie ]
   name: Plushie Lightning Star Trek
+  categories: [ HideSpawnMenu ] # Fire edit
   description: The toy is made of pure cotton, don't eat it, think about it! XD
   components:
   - type: Sprite
@@ -1071,6 +1148,7 @@
   id: PlushieAndrewNarvi
   parent: BasePlushie
   name: AndrewNarvi
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Fun/toys.rsi
@@ -1088,6 +1166,7 @@
   id: PlushieTimofeyTatarchuk
   parent: BasePlushie
   name: Timofey Tatarchuk
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Fun/toys.rsi
@@ -1105,6 +1184,7 @@
   id: PlushieSansaMontanelli
   parent: BasePlushie
   name: Sansa Montanelli
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Fun/toys.rsi
@@ -1122,6 +1202,7 @@
   id: PlushieKalium
   parent: BasePlushie
   name: Kalium Fon Dez
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Fun/toys.rsi

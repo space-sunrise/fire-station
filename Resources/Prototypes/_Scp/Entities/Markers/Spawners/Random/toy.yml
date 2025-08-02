@@ -1,0 +1,146 @@
+﻿- type: entity
+  name: Toy Spawner
+  id: ScpToySpawner
+  parent: ToySpawner
+  components:
+  - type: RandomSpawner
+    rarePrototypes:
+    - FoamBlade
+    - PlushieGhost
+    rareChance: 0.03
+    prototypes:
+    - PlushieBee
+    - PlushieAtmosian
+    - PlushieLizard
+    - PlushieCarp
+    - PlushieSlime
+    - PlushieSnake
+    - PlushieSpaceLizard
+    - PlushieLamp
+    - PlushieSharkBlue
+    - PlushieSharkPink
+    - PlushieSharkGrey
+    - ToyMouse
+    - PlushieSmile  # Sunrise-edit
+    - PlushieBlackCat
+    - PlushieGreyCat
+    - PlushieWhiteCat
+    - PlushieOrangeCat
+    - PlushieRicehatCat
+    - PlushieSiameseCat
+    - PlushieTabbyCat
+    - PlushieTuxedoCat
+    - PlushieBlackfox
+    - PlushieBluefox
+    - PlushieCoffeefox
+    - PlushieCrimsonfox
+    - PlushieMarblefox
+    - PlushieOrangefox
+    - PlushiePinkfox
+    - PlushiePurplefox
+    - PlushieRedfox
+    chance: 0.5
+    offset: 0.2
+
+- type: entity
+  name: plushie cat spawner
+  id: ScpPlushieCatSpawner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Sunrise/Objects/Fun/toy_cats.rsi
+      state: plushie_blackcat
+  - type: RandomSpawner
+    prototypes:
+    - PlushieBlackCat
+    - PlushieGreyCat
+    - PlushieWhiteCat
+    - PlushieOrangeCat
+    - PlushieRicehatCat
+    - PlushieSiameseCat
+    - PlushieTabbyCat
+    - PlushieTuxedoCat
+    chance: 1
+
+- type: entity
+  name: plushie fox spawner
+  id: ScpPlushieFoxSpawner
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: red
+    - sprite: _Sunrise/Objects/Fun/toy_foxes.rsi
+      state: plushie_blackfox
+  - type: RandomSpawner
+    prototypes:
+    - PlushieBlackfox
+    - PlushieBluefox
+    - PlushieCoffeefox
+    - PlushieCrimsonfox
+    - PlushieMarblefox
+    - PlushieOrangefox
+    - PlushiePinkfox
+    - PlushiePurplefox
+    - PlushieRedfox
+    chance: 1
+
+- type: entity
+  name: Prize Figurine Spawner
+  id: ScpFigureSpawner
+  parent: FigureSpawner
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - ToyAi
+    - ToyNuke
+    - ToyGriffin
+    - ToyHonk
+    - ToyIan
+    - ToyMarauder
+    - ToyMauler
+    - ToyGygax
+    - ToyOdysseus
+    - ToyDeathRipley
+    - ToyPhazon
+    - ToyFireRipley
+    - ToyReticence
+    - ToyRipley
+    - ToySeraph
+    - ToyDurand
+    - MysteryFigureBox
+    chance: 0.5
+    offset: 0.2
+
+- type: entity
+  name: Spacemen Minifigure Spawner
+  suffix: Librarian only, map with care!
+  id: ScpSpacemenFigureSpawner
+  parent: SpacemenFigureSpawner
+  components:
+  - type: RandomSpawner
+    prototypes:
+    - ToyFigurineHeadOfSecurity
+    - ToyFigurineWarden
+    - ToyFigurineSecurity
+    - ToyFigurineCargoTech
+    - ToyFigurineQuartermaster
+    - ToyFigurineChiefEngineer
+    - ToyFigurineAtmosTech
+    - ToyFigurineEngineer
+    - ToyFigurineResearchDirector
+    - ToyFigurineScientist
+    - ToyFigurineChiefMedicalOfficer
+    - ToyFigurineChemist
+    - ToyFigurineMedicalDoctor
+    - ToyFigurineHeadOfPersonnel
+    - ToyFigurineChef
+    - ToyFigurineBotanist
+    - ToyFigurineJanitor
+    - ToyFigurineMouse
+    - ToyFigurineHamlet
+    - ToyFigurineThief
+    chance: 0.90
+    offset: 0.2

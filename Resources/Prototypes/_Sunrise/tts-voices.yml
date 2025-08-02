@@ -115,6 +115,7 @@
   name: tts-voice-name-neco
   sex: Female
   speaker: neco
+  roundStart: false # Fire edit
   provider: ntts.fdev.team
 
 - type: ttsVoice
@@ -546,6 +547,7 @@
   name: tts-voice-name-skippy
   sex: Male
   speaker: skippy
+  roundStart: false # Fire edit
   provider: ntts.fdev.team
 
 - type: ttsVoice
@@ -734,7 +736,7 @@
   name: tts-voice-name-robert-maccready
   sex: Male
   speaker: robert_maccready
-  roundStart: true
+  roundStart: false # Fire edit
   sponsorOnly: true
   provider: ntts.fdev.team
 
@@ -761,7 +763,7 @@
   name: tts-voice-name-romka
   sex: Male
   speaker: romka
-  roundStart: true
+  roundStart: false # Fire edit
   sponsorOnly: true
   provider: ntts.fdev.team
 
@@ -795,7 +797,7 @@
   name: tts-voice-name-semen-baburin-tb
   sex: Male
   speaker: semen_baburin_tb
-  roundStart: true
+  roundStart: false # Fire edit
   sponsorOnly: true
   provider: ntts.fdev.team
 
@@ -839,7 +841,7 @@
   name: tts-voice-name-myron
   sex: Male
   speaker: myron
-  roundStart: true
+  roundStart: false # Fire edit
   sponsorOnly: true
   provider: ntts.fdev.team
 
