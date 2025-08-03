@@ -694,7 +694,7 @@
 # Дополнительное:
 - type: listing
   id: ScpUplinkAmnesiacA
-  icon: { sprite: Objects\Storage\boxes.rsi, state: box }
+  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
   productEntity: BoxVialAmnesiacA
   cost:
     Crystallite: 2
@@ -706,7 +706,7 @@
 
 - type: listing
   id: ScpUplinkAmnesiacB
-  icon: { sprite: Objects\Storage\boxes.rsi, state: box }
+  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
   productEntity: BoxVialAmnesiacB
   cost:
     Crystallite: 2
@@ -718,7 +718,7 @@
 
 - type: listing
   id: ScpUplinkAmnesiacC
-  icon: { sprite: Objects\Storage\boxes.rsi, state: box }
+  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
   productEntity: BoxVialAmnesiacC
   cost:
     Crystallite: 2
@@ -730,7 +730,7 @@
 
 - type: listing
   id: ScpUplinkAmnesiacD
-  icon: { sprite: Objects\Storage\boxes.rsi, state: box }
+  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
   productEntity: BoxVialAmnesiacD
   cost:
     Crystallite: 2

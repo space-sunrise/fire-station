@@ -24,4 +24,4 @@ ent-SpawnerMTFSquadNTF = { spawner-squad-name } МОГ Эпсилон-11
     .suffix = Эпсилон-11
 ent-SpawnerMTFSquadNTFSpawnOnTrigger = { ent-SpawnerMTFSquadNTF }
     .desc = { ent-SpawnerMTFSquadNTF.desc }
-    .suffix = { ent-SpawnerMTFSquadNTF.suffix }, { spawner-on-trigger }
+    .suffix = { ent-SpawnerMTFSquadNTF.suffix }, { spawner-on-trigger-suffix }
