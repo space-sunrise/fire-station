@@ -1,38 +1,38 @@
 - type: entity
-  id: ScpDoubleGlassAirlockAtmosphericsLocked
+  id: ScpDoubleGlassAirlockLifeSupportLocked
   parent: [ ScpDoubleGlassAirlockLifeSupport ]
   suffix: SCP Life support, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsAtmospherics ]
+      board: [ DoorElectronicsLifeSupport ]
 
 - type: entity
-  id: ScpDoubleGlassAirlockCargoLocked
+  id: ScpDoubleGlassAirlockLogisticsLocked
   parent: [ ScpDoubleGlassAirlockLogistics ]
   suffix: SCP Logistics, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCargo ]
+      board: [ DoorElectronicsLogistics ]
 
 - type: entity
-  id: ScpDoubleGlassAirlockCommandLocked
+  id: ScpDoubleGlassAirlockAdministrationLocked
   parent: [ ScpDoubleGlassAirlockAdministration ]
   suffix: SCP Administration, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCommand ]
+      board: [ DoorElectronicsAdministration ]
 
 - type: entity
-  id: ScpDoubleGlassAirlockCentralCommandLocked
+  id: ScpDoubleGlassAirlockRegionalAdministrationLocked
   parent: [ ScpDoubleGlassAirlockRegionalAdministration ]
   suffix: SCP Regional Administration, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCentralCommand ]
+      board: [ DoorElectronicsMTF ]
 
 - type: entity
   id: ScpDoubleGlassAirlockEngineeringLocked
@@ -71,40 +71,40 @@
       board: [ DoorElectronicsSecurity ]
 
 - type: entity
-  id: ScpDoubleAirlockAtmosphericsLocked
+  id: ScpDoubleAirlockLifeSupportLocked
   parent: [ ScpDoubleAirlockLifeSupport ]
   suffix: SCP Life support, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsAtmospherics ]
+      board: [ DoorElectronicsLifeSupport ]
 
 - type: entity
-  id: ScpDoubleAirlockCargoLocked
+  id: ScpDoubleAirlockLogisticsLocked
   parent: [ ScpDoubleAirlockLogistics ]
   suffix: SCP Logistics, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCargo ]
+      board: [ DoorElectronicsLogistics ]
 
 - type: entity
-  id: ScpDoubleAirlockCommandLocked
+  id: ScpDoubleAirlockAdministrationLocked
   parent: [ ScpDoubleAirlockAdministration ]
   suffix: SCP Administration, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCommand ]
+      board: [ DoorElectronicsAdministration ]
 
 - type: entity
-  id: ScpDoubleAirlockCentralCommandLocked
+  id: ScpDoubleAirlockRegionalAdministrationLocked
   parent: [ ScpDoubleAirlockRegionalAdministration ]
   suffix: SCP Regional Administration, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCentralCommand ]
+      board: [ DoorElectronicsMTF ]
 
 - type: entity
   id: ScpDoubleAirlockEngineeringLocked
