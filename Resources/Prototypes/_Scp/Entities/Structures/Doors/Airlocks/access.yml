@@ -200,7 +200,7 @@
 
 - type: entity
   parent: ScpAirlockAdministration
-  id: ScpAirlockHeadOfPersonnelLocked
+  id: ScpAirlockPersonnelOfficerLocked
   suffix: SCP Personnel officer, Locked
   components:
   - type: ContainerFill

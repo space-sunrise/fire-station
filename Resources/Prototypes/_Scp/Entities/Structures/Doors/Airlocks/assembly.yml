@@ -1,8 +1,8 @@
 #Atmospherics
 - type: entity
   parent: ScpAirlockAssembly
-  id: ScpAirlockAssemblyAtmospherics
-  suffix: SCP Atmospherics
+  id: ScpAirlockAssemblyLifeSupport
+  suffix: SCP Life support
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/atmospherics.rsi
@@ -10,8 +10,8 @@
 
 - type: entity
   parent: ScpAirlockAssembly
-  id: ScpAirlockAssemblyAtmosphericsGlass
-  suffix: SCP Atmospherics, Glass
+  id: ScpAirlockAssemblyLifeSupportGlass
+  suffix: SCP Life support, Glass
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Glass/atmospherics.rsi
@@ -20,8 +20,8 @@
 #Cargo
 - type: entity
   parent: ScpAirlockAssembly
-  id: ScpAirlockAssemblyCargo
-  suffix: SCP Cargo
+  id: ScpAirlockAssemblyLogistics
+  suffix: SCP Logistics
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/cargo.rsi
@@ -29,8 +29,8 @@
 
 - type: entity
   parent: ScpAirlockAssembly
-  id: ScpAirlockAssemblyCargoGlass
-  suffix: SCP Cargo, Glass
+  id: ScpAirlockAssemblyLogisticsGlass
+  suffix: SCP Logistics, Glass
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Glass/cargo.rsi
@@ -39,8 +39,8 @@
 #Command
 - type: entity
   parent: ScpAirlockAssembly
-  id: ScpAirlockAssemblyCommand
-  suffix: SCP Command
+  id: ScpAirlockAssemblyAdministration
+  suffix: SCP Administration
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/command.rsi
@@ -48,8 +48,8 @@
 
 - type: entity
   parent: ScpAirlockAssembly
-  id: ScpAirlockAssemblyCommandGlass
-  suffix: SCP Command, Glass
+  id: ScpAirlockAssemblyAdministrationGlass
+  suffix: SCP Administration, Glass
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Glass/command.rsi
@@ -77,8 +77,8 @@
 #External
 - type: entity
   parent: ScpAirlockAssembly
-  id: ScpAirlockAssemblyExternal
-  suffix: SCP External
+  id: ScpAirlockAssemblyExit
+  suffix: SCP Exit
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/external.rsi
@@ -249,8 +249,8 @@
 #CentralCommand
 - type: entity
   parent: ScpAirlockAssembly
-  id: ScpAirlockAssemblyCentralCommand
-  suffix: SCP CentralCommand
+  id: ScpAirlockAssemblyRegionalAdministration
+  suffix: SCP Regional administration
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/centcomm.rsi
@@ -258,8 +258,8 @@
 
 - type: entity
   parent: ScpAirlockAssembly
-  id: ScpAirlockAssemblyCentralCommandGlass
-  suffix: SCP CentralCommand, Glass
+  id: ScpAirlockAssemblyRegionalAdministrationGlass
+  suffix: SCP Regional administration, Glass
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Glass/centcomm.rsi
