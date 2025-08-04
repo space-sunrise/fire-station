@@ -32,4 +32,4 @@ ent-SpawnerMTFSquadLLH = { spawner-squad-name } МОГ Омега-1
     .suffix = Омега-1
 ent-SpawnerMTFSquadLLHSpawnOnTrigger = { ent-SpawnerMTFSquadLLH }
     .desc = { ent-SpawnerMTFSquadLLH.desc }
-    .suffix = { ent-SpawnerMTFSquadLLH.suffix }, { spawner-on-trigger }
+    .suffix = { ent-SpawnerMTFSquadLLH.suffix }, { spawner-on-trigger-suffix }
