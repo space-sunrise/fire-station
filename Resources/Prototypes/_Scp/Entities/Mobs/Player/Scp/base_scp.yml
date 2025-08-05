@@ -60,6 +60,10 @@
   components:
   - type: Scp
     class: Neutralized
+  - type: Damageable
+  - type: DamageOverlay
+    damagePopupType: SmallFloating
+    isStructure: true
 
 - type: entity # Онли для мобов
   abstract: true

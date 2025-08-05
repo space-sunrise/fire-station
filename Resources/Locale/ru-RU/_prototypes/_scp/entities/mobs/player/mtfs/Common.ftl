@@ -1,4 +1,4 @@
-ent-IDCardMTFStandard = { ent-IDCardStandard }
+﻿ent-IDCardMTFStandard = { ent-IDCardStandard }
     .desc = { ent-IDCardStandard.desc }
 ent-BaseMTFPDA = { ent-AdjutantPDA }
     .desc = { ent-AdjutantPDA.desc }
@@ -77,3 +77,29 @@ ent-CrateAdministrationRecontainment096 = набор Восстановлени�
 ent-SpawnerOnTriggerMTFBase = { ent-SpawnPointScpBase }
     .suffix = Base | Spawn On Trigger
     .desc = { ent-SpawnPointScpBase.desc }
+
+ent-CrateAdministrationAmnesiacA = ящик пробирок амнезиака класса А
+    .desc = Содержит коробку пробирок. Эффекты амнезиака: { reagent-amnesiac-a-desc }
+    .suffix = Заполненный
+
+ent-CrateAdministrationAmnesiacB = ящик пробирок амнезиака класса B
+    .desc = Содержит коробку пробирок. Эффекты амнезиака: { reagent-amnesiac-b-desc }
+    .suffix = Заполненный
+
+ent-CrateAdministrationAmnesiacC = ящик пробирок амнезиака класса C
+    .desc = Содержит коробку пробирок. Эффекты амнезиака: { reagent-amnesiac-c-desc }
+    .suffix = Заполненный
+
+ent-CrateAdministrationAmnesiacD = ящик пробирок амнезиака класса D
+    .desc = Содержит коробку пробирок. Эффекты амнезиака: { reagent-amnesiac-d-desc }
+    .suffix = Заполненный
+
+ent-CrateAdministrationScpGygaxBundle = набор "Гигакс"
+    .desc = Содержит набор легкобронированного меха фонда SCP.
+    .suffix = Заполненный
+ent-CrateAdministrationMarauderBundle = набор "Мародёр"
+    .desc = Содержит набор тяжело бронированного меха фонда SCP.
+    .suffix = Заполненный
+ent-CrateAdministrationSeraphBundle = набор "Серафим"
+    .desc = Содержит набор элитного тяжело бронированного меха фонда SCP.
+    .suffix = Заполненный
