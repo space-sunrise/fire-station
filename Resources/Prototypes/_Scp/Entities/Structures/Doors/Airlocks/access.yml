@@ -250,7 +250,7 @@
 
 - type: entity
   parent: ScpAirlockLifeSupport
-  id: ScpAirlockAtmosphericsLocked
+  id: ScpAirlockLifeSupportLocked
   suffix: SCP Life support, Locked
   components:
   - type: ContainerFill

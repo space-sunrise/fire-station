@@ -1,7 +1,6 @@
 ﻿- type: entity
   id: ScpPottedPlantRandom
   parent: PottedPlantRandom
-  name: random potted plant spawner
   components:
   - type: RandomSpawner
     offset: 0

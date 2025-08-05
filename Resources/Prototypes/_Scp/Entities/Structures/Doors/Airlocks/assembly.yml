@@ -216,8 +216,8 @@
 
 - type: entity
   parent: ScpAirlockAssembly
-  id: ScpAirlockAssemblyExternalGlass
-  suffix: SCP External, Glass
+  id: ScpAirlockAssemblyExitGlass
+  suffix: SCP Exit, Glass
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Glass/external.rsi

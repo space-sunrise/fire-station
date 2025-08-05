@@ -1,0 +1,12 @@
+ent-BoxVialAmnesiacA = { ent-BoxVial }
+    .desc = { ent-BoxVial.desc }
+    .suffix = Амнезиак A
+ent-BoxVialAmnesiacB = { ent-BoxVial }
+    .desc = { ent-BoxVial.desc }
+    .suffix = Амнезиак B
+ent-BoxVialAmnesiacC = { ent-BoxVial }
+    .desc = { ent-BoxVial.desc }
+    .suffix = Амнезиак C
+ent-BoxVialAmnesiacD = { ent-BoxVial }
+    .desc = { ent-BoxVial.desc }
+    .suffix = Амнезиак D
