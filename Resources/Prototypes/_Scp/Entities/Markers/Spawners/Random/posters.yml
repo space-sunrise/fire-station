@@ -1,7 +1,6 @@
 ﻿- type: entity
   parent: RandomPosterAny
   id: ScpRandomPosterAny
-  name: random poster spawner
   components:
   - type: RandomSpawner
     offset: 0
@@ -16,7 +15,6 @@
 - type: entity
   parent: RandomPosterContraband
   id: ScpRandomPosterContraband
-  name: random contraband poster spawner
   components:
   - type: RandomSpawner
     offset: 0
@@ -44,7 +42,6 @@
 - type: entity
   parent: RandomPosterLegit
   id: ScpRandomPosterLegit
-  name: random legit poster spawner
   components:
   - type: RandomSpawner
     offset: 0

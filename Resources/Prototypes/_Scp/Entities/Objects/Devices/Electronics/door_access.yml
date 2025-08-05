@@ -10,7 +10,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsComplexDirector
-  suffix: ComplexDirector, Locked
+  suffix: Director, Locked
   components:
   - type: AccessReader
     access: [["ComplexDirector"]]
@@ -18,7 +18,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsScientificDirector
-  suffix: ScientificDirector, Locked
+  suffix: Scientific director, Locked
   components:
   - type: AccessReader
     access: [["ScientificDirector"]]
@@ -26,7 +26,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsSecurityCommander
-  suffix: SecurityCommander, Locked
+  suffix: Security commander, Locked
   components:
   - type: AccessReader
     access: [["SecurityCommander"]]
@@ -34,7 +34,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsChiefTechnicalSpecialist
-  suffix: ChiefTechnicalSpecialist, Locked
+  suffix: Chief technical specialist, Locked
   components:
   - type: AccessReader
     access: [["ChiefTechnicalSpecialist"]]
@@ -42,7 +42,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsPersonnelOfficer
-  suffix: PersonnelOfficer, Locked
+  suffix: Personnel officer, Locked
   components:
   - type: AccessReader
     access: [["PersonnelOfficer"]]
@@ -50,7 +50,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsHeadOfMedicalSector
-  suffix: HeadOfMedicalSector, Locked
+  suffix: Head of medical sector, Locked
   components:
   - type: AccessReader
     access: [["HeadOfMedicalSector"]]
@@ -58,7 +58,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsSeniorLogisticsOfficer
-  suffix: SeniorLogisticsOfficer, Locked
+  suffix: Senior logistics officer, Locked
   components:
   - type: AccessReader
     access: [["SeniorLogisticsOfficer"]]
@@ -66,7 +66,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsEthicsCommittee
-  suffix: EthicsCommittee, Locked
+  suffix: Ethics committee, Locked
   components:
   - type: AccessReader
     access: [["EthicsCommittee"]]
@@ -74,7 +74,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsInternalTribunalService
-  suffix: InternalTribunalService, Locked
+  suffix: Internal tribunal service, Locked
   components:
   - type: AccessReader
     access: [["InternalTribunalService"]]
@@ -91,7 +91,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsLifeSupport
-  suffix: LifeSupport, Locked
+  suffix: Life support, Locked
   components:
   - type: AccessReader
     access: [["LifeSupport"]]
@@ -129,7 +129,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsNuclearWarhead
-  suffix: NuclearWarhead, Locked
+  suffix: Nuclear warhead, Locked
   components:
   - type: AccessReader
     access: [["NuclearWarhead"]]
@@ -181,7 +181,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsClassDCanteen
-  suffix: ClassDCanteen, Locked
+  suffix: Class D canteen, Locked
   components:
   - type: AccessReader
     access: [["ClassDCanteen"]]
@@ -189,7 +189,7 @@
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsClassDJanitor
-  suffix: ClassDJanitor, Locked
+  suffix: Class D janitor, Locked
   components:
   - type: AccessReader
     access: [["ClassDJanitor"]]
