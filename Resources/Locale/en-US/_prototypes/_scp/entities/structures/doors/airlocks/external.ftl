@@ -1,3 +1,9 @@
+ent-ScpAirlockExit = { ent-ScpAirlockRCDResistant }
+    .suffix = SCP, Exit
+    .desc = { ent-ScpAirlockRCDResistant.desc }
+ent-ScpAirlockExitGlass = { ent-ScpAirlockExit }
+    .suffix = SCP Glass, Exit
+    .desc = { ent-ScpAirlockExit.desc }
 ent-ScpAirlockExternal = { ent-ScpAirlockRCDResistant }
     .desc = { ent-ScpAirlockRCDResistant.desc }
 ent-ScpAirlockExternalGlass = { ent-ScpAirlockExternal }
