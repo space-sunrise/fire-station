@@ -205,13 +205,19 @@
 
 - type: entity
   parent: DoorElectronics
-  id: DoorElectronicsInsurgents
-  suffix: Insurgents, Locked
+  id: DoorElectronicsChaosInsurgency
+  suffix: Chaos insurgency, Locked
   components:
   - type: AccessReader
-    access: [["Insurgents"]]
+    access: [["ChaosInsurgency"]]
 
-# Сторонний(External) есть в ваниле
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsThirdParty
+  suffix: Third party, Locked
+  components:
+  - type: AccessReader
+    access: [["ThirdParty"]]
 
 - type: entity
   parent: DoorElectronics

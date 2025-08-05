@@ -113,10 +113,12 @@
   name: access-name-mtf
 
 - type: accessLevel
-  id: Insurgents
-  name: access-name-insurgents
+  id: ChaosInsurgency
+  name: access-name-chaos-insurgency
 
-# Внешний уже представлен в ваниле
+- type: accessLevel
+  id: ThirdParty
+  name: access-name-third-party
 
 - type: accessLevel
   id: O5

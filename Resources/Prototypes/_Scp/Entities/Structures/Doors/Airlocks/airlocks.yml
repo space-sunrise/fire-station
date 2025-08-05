@@ -23,6 +23,10 @@
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/centcomm.rsi
+  - type: WiresPanelSecurity
+    securityLevel: medSecurity
+  - type: Wires
+    layoutId: AirlockCommand
 
 # Служба безопасности
 
