@@ -891,7 +891,7 @@ ShuttersRadiation: ScpShuttersRadiation
 ShuttersRadiationOpen: ScpShuttersRadiationOpen
 ShuttersFrame: ScpShuttersFrame
 ShuttersWindow: ScpShuttersWindow
-ShuttersWindowCentralCommand: ScpShuttersWindowCentralCommand
+ShuttersWindowCentralCommand: ScpShuttersWindowRegionalAdministration
 ShuttersWindowOpen: ScpShuttersWindowOpen
 BlastDoorBridge: ScpBlastDoorBridge
 BlastDoor: ScpBlastDoor
@@ -901,7 +901,7 @@ BlastDoorExterior2: ScpBlastDoorExterior2
 BlastDoorExterior3: ScpBlastDoorExterior3
 BlastDoorScience: ScpBlastDoorScience
 BlastDoorWindows: ScpBlastDoorWindows
-BlastDoorCentralCommand: ScpBlastDoorCentralCommand
+BlastDoorCentralCommand: ScpBlastDoorRegionalAdministration
 BlastDoorFrame: ScpBlastDoorFrame
 BlastDoorWindowsOpen: ScpBlastDoorWindowsOpen
 BlastDoorScienceOpen: ScpBlastDoorScienceOpen
@@ -1365,6 +1365,8 @@ ScpPlasmaWindoorNukeopLocked: null
 ScpPlasmaWindoorSecureNukeopLocked: null
 ScpUraniumWindoorNukeopLocked: null
 ScpUraniumWindoorSecureNukeopLocked: null
+ScpBlastDoorCentralCommand: ScpBlastDoorRegionalAdministration
+ScpShuttersWindowCentralCommand: ScpShuttersWindowRegionalAdministration
 
 # Удалить после фикса
 ScpDoubleAirlockAtmospherics: ScpDoubleGlassAirlockLifeSupport

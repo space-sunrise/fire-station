@@ -8,7 +8,6 @@
     - type: AutoLinkReceiver
       channel: Ext1
 
-
 - type: entity
   id: ScpBlastDoorExterior1Open
   parent: ScpBlastDoorOpen
@@ -24,7 +23,6 @@
   components:
     - type: AutoLinkReceiver
       channel: Ext2
-
 
 - type: entity
   id: ScpBlastDoorExterior2Open
@@ -42,7 +40,6 @@
     - type: AutoLinkReceiver
       channel: Ext3
 
-
 - type: entity
   id: ScpBlastDoorExterior3Open
   parent: ScpBlastDoorOpen
@@ -57,13 +54,11 @@
   suffix: Autolink, Bridge
   components:
     - type: AccessReader
-      access: [["Command"]]
-      # Sunrise-start
+      access: [["Administration"]]
       alertAccesses:
         red: RedAlertAccesses
         blue: BlueAlertAccessesHOS
         gamma: GammaAlertAccesses
-      # Sunrise-end
     - type: AutoLinkReceiver
       channel: Bridge
 
@@ -73,13 +68,11 @@
   suffix: Open, Autolink, Bridge
   components:
     - type: AccessReader
-      access: [["Command"]]
-      # Sunrise-start
+      access: [["Administration"]]
       alertAccesses:
         red: RedAlertAccesses
         blue: BlueAlertAccessesHOS
         gamma: GammaAlertAccesses
-      # Sunrise-end
     - type: AutoLinkReceiver
       channel: Bridge
 
@@ -89,13 +82,11 @@
   suffix: Autolink, Engineering
   components:
   - type: AccessReader
-    access: [["Command"], ["Engineering"]]
-    # Sunrise-start
+    access: [["Administration"], ["Engineering"]]
     alertAccesses:
       red: RedAlertAccesses
       blue: BlueAlertAccessesHOS
       gamma: GammaAlertAccesses
-    # Sunrise-end
   - type: AutoLinkReceiver
     channel: Engineering
 
@@ -105,13 +96,11 @@
   suffix: Open, Autolink, Engineering
   components:
   - type: AccessReader
-    access: [["Command"], ["Engineering"]]
-    # Sunrise-start
+    access: [["Administration"], ["Engineering"]]
     alertAccesses:
       red: RedAlertAccesses
       blue: BlueAlertAccessesHOS
       gamma: GammaAlertAccesses
-    # Sunrise-end
   - type: AutoLinkReceiver
     channel: Engineering
 
@@ -121,13 +110,11 @@
   suffix: Autolink, Science
   components:
   - type: AccessReader
-    access: [["Command"], ["Research"]]
-    # Sunrise-start
+    access: [["Administration"], ["Research"]]
     alertAccesses:
       red: RedAlertAccesses
       blue: BlueAlertAccessesHOS
       gamma: GammaAlertAccesses
-    # Sunrise-end
   - type: AutoLinkReceiver
     channel: Research
 
@@ -137,13 +124,11 @@
   suffix: Open, Autolink, Science
   components:
   - type: AccessReader
-    access: [["Command"], ["Research"]]
-    # Sunrise-start
+    access: [["Administration"], ["Research"]]
     alertAccesses:
       red: RedAlertAccesses
       blue: BlueAlertAccessesHOS
       gamma: GammaAlertAccesses
-    # Sunrise-end
   - type: AutoLinkReceiver
     channel: Research
 
