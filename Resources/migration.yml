@@ -1204,7 +1204,7 @@ DoubleGlassAirlockMedicalLocked: ScpDoubleGlassAirlockMedicalLocked
 DoubleGlassAirlockScienceLocked: ScpDoubleGlassAirlockScienceLocked
 DoubleGlassAirlockSecurityLocked: ScpDoubleGlassAirlockSecurityLocked
 
-# Убранные шлюзы
+# Переименованные и убранные прототипы в связи с новыми доступами
 HighSecResearchDirectorLocked: HighSecScientificDirectorLocked
 ScpAirlockLawyerLocked: ScpAirlockServiceLocked
 ScpAirlockTheatreLocked: ScpAirlockServiceLocked
@@ -1367,6 +1367,10 @@ ScpUraniumWindoorNukeopLocked: null
 ScpUraniumWindoorSecureNukeopLocked: null
 ScpBlastDoorCentralCommand: ScpBlastDoorRegionalAdministration
 ScpShuttersWindowCentralCommand: ScpShuttersWindowRegionalAdministration
+LockerExternalAdministrativeZoneFieldDoctor: LockerHeavyContainmentZoneFieldMedic
+LockerHeavyContainmentZoneFieldDoctor: LockerHeavyContainmentZoneFieldMedic
+LockerExternalAdministrativeZoneFieldDoctorFilled: LockerHeavyContainmentZoneFieldMedicFilled
+LockerHeavyContainmentZoneFieldDoctorFilled: LockerHeavyContainmentZoneFieldMedicFilled
 
 # Удалить после фикса
 ScpDoubleAirlockAtmospherics: ScpDoubleGlassAirlockLifeSupport
@@ -1547,6 +1551,11 @@ LockerChiefMedicalOfficer: LockerHeadOfMedicalSector
 LockerHeadOfSecurity: LockerSecurityCommander
 LockerResearchDirector: LockerScientificServiceDirector
 LockerRepresentative: LockerEthicsCommittee
+LockerChemistry: LockerLaboratory
+LockerAtmospherics: LockerLifeSupport
+LockerFreezer: ScpLockerFreezer
+LockerBotanist: ScpLockerBotanist
+LockerBooze: ScpLockerBooze
 
 LockerCaptainFilled: LockerDirectorFilled
 LockerCaptainFilledNoLaser: LockerDirectorFilled
@@ -1561,6 +1570,12 @@ LockerHeadOfSecurityFilled: LockerSecurityCommanderFilled
 LockerHeadOfSecurityFilledHardsuit: LockerSecurityCommanderFilled
 LockerResearchDirectorFilled: LockerScientificServiceDirectorFilled
 LockerResearchDirectorFilledHardsuit: LockerScientificServiceDirectorFilled
+LockerChemistryFilled: LockerLaboratoryFilled
+LockerAtmosphericsFilled: LockerLifeSupportFilled
+LockerAtmosphericsFilledHardsuit: LockerLifeSupportFilled
+LockerBotanistFilled: ScpLockerBotanistFilled
+LockerBoozeFilled: ScpLockerBoozeFilled
+
 
 LockerWarden: null
 LockerWardenFilled: null
