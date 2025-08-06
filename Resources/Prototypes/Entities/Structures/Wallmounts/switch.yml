@@ -259,6 +259,7 @@
   id: LockableButtonCaptain
   suffix: Captain
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Captain"]]
@@ -267,6 +268,7 @@
   id: LockableButtonHeadOfPersonnel
   suffix: HeadOfPersonnel
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["HeadOfPersonnel"]]
@@ -275,6 +277,7 @@
   id: LockableButtonChiefEngineer
   suffix: ChiefEngineer
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["ChiefEngineer"]]
@@ -283,6 +286,7 @@
   id: LockableButtonChiefMedicalOfficer
   suffix: ChiefMedicalOfficer
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["ChiefMedicalOfficer"]]
@@ -291,6 +295,7 @@
   id: LockableButtonHeadOfSecurity
   suffix: HeadOfSecurity
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["HeadOfSecurity"]]
@@ -299,6 +304,7 @@
   id: LockableButtonResearchDirector
   suffix: ResearchDirector
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["ResearchDirector"]]
@@ -307,6 +313,7 @@
   id: LockableButtonCommand
   suffix: Command
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Command"]]
@@ -321,6 +328,7 @@
   id: LockableButtonCryogenics
   suffix: Cryogenics
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Cryogenics"]]
@@ -343,6 +351,7 @@
   id: LockableButtonDetective
   suffix: Detective
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Detective"]]
@@ -359,6 +368,7 @@
   id: LockableButtonBrig
   suffix: Brig
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Brig"]]
@@ -367,6 +377,7 @@
   id: LockableButtonLawyer
   suffix: Lawyer
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Lawyer"]]
@@ -409,6 +420,7 @@
   id: LockableButtonQuartermaster
   suffix: Quartermaster
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Quartermaster"]]
@@ -417,6 +429,7 @@
   id: LockableButtonSalvage
   suffix: Salvage
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Salvage"]]
@@ -431,6 +444,7 @@
   id: LockableButtonCargo
   suffix: Cargo
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Cargo"]]
@@ -487,6 +501,7 @@
   id: LockableButtonExternal
   suffix: External
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["External"]]
@@ -501,6 +516,7 @@
   id: LockableButtonJanitor
   suffix: Janitor
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Janitor"]]
@@ -515,6 +531,7 @@
   id: LockableButtonTheatre
   suffix: Theatre
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Theatre"]]
@@ -529,6 +546,7 @@
   id: LockableButtonBar
   suffix: Bar
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Bar"]]
@@ -543,6 +561,7 @@
   id: LockableButtonChemistry
   suffix: Chemistry
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Chemistry"]]
@@ -557,6 +576,7 @@
   id: LockableButtonKitchen
   suffix: Kitchen
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Kitchen"]]
@@ -571,6 +591,7 @@
   id: LockableButtonChapel
   suffix: Chapel
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Chapel"]]
@@ -585,6 +606,7 @@
   id: LockableButtonHydroponics
   suffix: Hydroponics
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Hydroponics"]]
@@ -599,6 +621,7 @@
   id: LockableButtonAtmospherics
   suffix: Atmospherics
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Atmospherics"]]
@@ -613,6 +636,7 @@
   id: LockableButtonCentcomm
   suffix: CentComm
   parent: LockableButton
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["CentralCommand"]]
