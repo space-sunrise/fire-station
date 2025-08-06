@@ -1505,7 +1505,23 @@ RubberStampNtrep: null
 RubberStampPath: null
 RubberStampAdj: null
 
-
+# Вендинговые автоматы
+VendingMachineBooze: ScpVendingMachineBooze
+VendingMachineBoozeSyndicate: ScpVendingMachineBoozeChaosInsurgency
+VendingMachineCart: ScpVendingMachineCart
+VendingMachineDinnerware: ScpVendingMachineDinnerware
+VendingMachineNutri: ScpVendingMachineNutri
+VendingMachineSeeds: ScpVendingMachineSeeds
+VendingMachineHydrobe: ScpVendingMachineHydrobe
+VendingMachineLawDrobe: ScpVendingMachineLawDrobe
+VendingBarDrobe: ScpVendingBarDrobe
+VendingMachineCargoDrobe: ScpVendingMachineLogisticsDrobe
+VendingMachineChemDrobe: ScpVendingMachineLaboratoryDrobe
+VendingMachineChefDrobe: ScpVendingMachineChefDrobe
+VendingMachineJaniDrobe: ScpVendingMachineJaniDrobe
+VendingMachineSyndieDrobe: ScpVendingMachineChaosInsurgencyDrobe
+VendingMachineCentDrobe: ScpVendingMachineO5Drobe
+VendingMachineChemicals: ScpVendingMachineChemicals
 
 # Ключи шифрования
 EncryptionKeyCargo: EncryptionKeyLogisticsService
