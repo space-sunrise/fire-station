@@ -169,6 +169,7 @@
   parent: WeaponEnergyTurretStationControlPanelBase
   id: WeaponEnergyTurretAIControlPanel
   suffix: AI, Silicon
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["StationAi"], ["ResearchDirector"]]
@@ -194,6 +195,7 @@
   parent: WeaponEnergyTurretStationControlPanelBase
   id: WeaponEnergyTurretSecurityControlPanel
   suffix: Security
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["StationAi"], ["Security"]]
@@ -211,6 +213,7 @@
   parent: WeaponEnergyTurretStationControlPanelBase
   id: WeaponEnergyTurretCommandControlPanel
   suffix: Command
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["StationAi"], ["Command"]]
