@@ -185,6 +185,9 @@ public sealed partial class TTSSystem
             {"eh", "э"},
             {"ju", "ю"},
             {"ja", "я"},
+            {"і", "и"},
+            {"ї", "ё"},
+            {"є", "е"}
         };
 }
 

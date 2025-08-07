@@ -19,6 +19,7 @@
 #  roles:
 #    - BlueShieldEnsign
 #    - BlueShieldOfficer
+#    - BlueShieldOperative
 #  primary: false
 #  editorHidden: true # Fire added
 #  weight: 50
