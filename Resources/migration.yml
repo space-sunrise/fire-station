@@ -1482,6 +1482,11 @@ LockableButtonHydroponics: LockableButtonService
 LockableButtonAtmospherics: LockableButtonLifeSupport
 LockableButtonCentcomm: LockableButtonMTF
 
+# Пульты
+DoorRemoteCommand: DoorRemoteAdministration
+DoorRemoteResearch: DoorRemoteScientificService
+DoorRemoteCargo: DoorRemoteLogistics
+
 # Печати
 RubberStampCaptain: RubberStampDirector
 RubberStampCentcom: RubberStampRegionalAdministration

@@ -9,7 +9,7 @@
     - id: ClothingBeltSheathFilled
     - id: ClothingHeadsetAltAdministration
     - id: CommsComputerCircuitboard
-    - id: DoorRemoteCommand
+    - id: DoorRemoteAdministration
     - id: MedalCase
     - id: NukeDisk
     - id: PinpointerNuclear
@@ -43,18 +43,16 @@
     - id: CigPackGreen
       prob: 0.50
     - id: ClothingHeadsetAltLogistics
-    - id: DoorRemoteCargo
+    - id: DoorRemoteLogistics
     - id: RubberStampApproved
     - id: RubberStampDenied
     - id: RubberStampSeniorLogisticsOfficer
     - id: AstroNavCartridge
-    # Sunrise-start: Flippos + Cargo suit
     - id: ClothingOuterSuitCargo
     - id: BluespaceBox
     - id: BluespaceBox
       prob: 0.25
     - id: FlippoLighterSunriseQm
-    # Sunrise-end
 
 - type: entity
   id: LockerSeniorLogisticsOfficerFilled
@@ -173,7 +171,8 @@
     - id: CircuitImprinterMachineCircuitboard
     - id: ClothingBeltUtilityFilled
     - id: ClothingHeadsetAltScientificService
-    - id: DoorRemoteResearch
+    - id: DoorRemoteScientificService
+    - id: DoorRemoteScpChambers
     - id: HandTeleporter
     - id: ProtolatheMachineCircuitboard
     - id: ResearchComputerCircuitboard
@@ -207,12 +206,13 @@
     - id: ClothingMaskNeckGaiter
     - id: ClothingShoesBootsSecurityGuard
     - id: DoorRemoteSecurity
+    - id: DoorRemoteClassD
     - id: RubberStampSecurityCommander
     - id: SecurityTechFabCircuitboard
     - id: WeaponDisabler
     - id: WantedListCartridge
     - id: DrinkHosFlask
-    - id: FlippoLighterSunriseHos  # Sunrise-Flippo
+    - id: FlippoLighterSunriseHos
 
 - type: entity
   id: LockerSecurityCommanderFilled

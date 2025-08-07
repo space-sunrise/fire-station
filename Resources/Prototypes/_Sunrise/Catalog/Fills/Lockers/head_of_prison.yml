@@ -28,5 +28,5 @@
     - id: ClothingUniformJumpsuitHosFormal
     - id: RubberStampHos
     - id: BoxEncryptionKeySecurity
-    # - id: HoloprojectorSecurity #Fire-Station
+    - id: HoloprojectorSecurity
     - id: RubberStampNpt
