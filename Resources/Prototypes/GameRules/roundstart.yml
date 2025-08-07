@@ -425,9 +425,9 @@
   id: BasicGameRulesTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
-      - !type:NestedSelector
-        tableId: BasicCalmEventsTable
       # Fire edit start
+      - !type:NestedSelector
+        tableId: ScpVanillaEventsTable
       - !type:NestedSelector
         tableId: ScpEventsTable
       # Fire edit end
