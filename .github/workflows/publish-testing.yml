@@ -17,6 +17,9 @@ jobs:
       with:
         python-version: '3.x'
 
+    - name: Install Dependencies
+      run: pip install pyyaml requests
+
     - uses: actions/checkout@v4.2.2
       with:
         submodules: 'recursive'
@@ -32,7 +35,7 @@ jobs:
       run: python3 Tools/_sunrise/move_private.py --clone-dir "SunrisePrivate" --target-dirs "Resources" "Content.Client" "Content.Server" "Content.Shared"
 
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v3.2.0
+      uses: actions/setup-dotnet@v4.1.0
       with:
         dotnet-version: 9.0.x
 
