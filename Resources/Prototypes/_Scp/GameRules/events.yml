@@ -13,7 +13,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    weight: 2
+    weight: 5
     duration: 60
     maxDuration: 120
   - type: BlackoutRule
@@ -23,7 +23,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    weight: 2
+    weight: 3
   - type: SpawnRandomEntitiesRule
     tilesPerEntityAverage: 600
     entities:
