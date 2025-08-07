@@ -7,61 +7,57 @@
 - type: accessGroup
   id: ScpBlueAlertAccesses
   tags:
-  - HeadOfSecurity
+  - SecurityCommander
   - Security
 
 - type: accessGroup
   id: ScpOrangeAlertAccesses
   tags:
-  - HeadOfSecurity
+  - SecurityCommander
   - Security
   - Armory
 
 - type: accessGroup
   id: ScpGrayAlertAccesses
   tags:
-  - HeadOfSecurity
+  - SecurityCommander
   - Security
   - Armory
-
-
 
 - type: accessGroup
   id: ScpYellowAlertAccesses
   tags:
-  - HeadOfSecurity
+  - SecurityCommander
   - Security
 
 - type: accessGroup
   id: ScpRedAlertAccesses
   tags:
-  - HeadOfSecurity
+  - SecurityCommander
   - Security
 
 - type: accessGroup
   id: ScpPurpleAlertAccesses
   tags:
-  - HeadOfSecurity
+  - SecurityCommander
   - Security
   - Research
 
 - type: accessGroup
   id: ScpBlackAlertAccesses
   tags:
-  - HeadOfSecurity
+  - SecurityCommander
   - Security
-  - Command
-
-
+  - Administration
 
 - type: accessGroup
   id: ScpDeltaAlertAccesses
   tags:
-  - HeadOfSecurity
+  - SecurityCommander
   - Security
-  - Command
+  - Administration
 
 - type: accessGroup
   id: ScpColdSilverAlertAccesses
   tags:
-  - Command
+  - Administration

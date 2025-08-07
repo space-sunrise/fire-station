@@ -127,7 +127,48 @@
 # Группы доступов
 
 - type: accessGroup
-  id: Example
+  id: Administration
+  tags:
+  - Administration
+  - ComplexDirector
+  - ScientificDirector
+  - SecurityCommander
+  - HeadOfMedicalSector
+  - PersonnelOfficer
+  - ChiefTechnicalSpecialist
+  - SeniorLogisticsOfficer
+
+- type: accessGroup
+  id: RegionalAdministration
   tags:
   - MTF
-  - Insurgents
+  - O5
+
+- type: accessGroup
+  id: ScientificService
+  tags:
+  - ScientificDirector
+  - Research
+  - Laboratory
+  - Safe
+  - Euclid
+  - Keter
+
+- type: accessGroup
+  id: Logistics
+  tags:
+  - SeniorLogisticsOfficer
+  - Logistics
+
+- type: accessGroup
+  id: ClassD
+  tags:
+  - ClassDCanteen
+  - ClassDJanitor
+
+- type: accessGroup
+  id: ScpClasses
+  tags:
+  - Safe
+  - Euclid
+  - Keter
