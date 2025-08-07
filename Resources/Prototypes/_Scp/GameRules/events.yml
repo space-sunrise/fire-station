@@ -13,7 +13,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    weight: 10
+    weight: 2
     duration: 60
     maxDuration: 120
   - type: BlackoutRule
@@ -23,9 +23,9 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    weight: 6
+    weight: 2
   - type: SpawnRandomEntitiesRule
-    tilesPerEntityAverage: 400
+    tilesPerEntityAverage: 600
     entities:
     - id: Scp096PhotoDeveloped
 
@@ -34,8 +34,26 @@
   parent: BaseStationEventZeroDelay
   components:
   - type: StationEvent
-    weight: 10
+    weight: 1
   - type: AirlockManEaterRule
+
+- type: entityTable
+  id: ScpVanillaEventsTable
+  table: !type:AllSelector
+    children:
+    - id: BluespaceArtifact
+    - id: BureaucraticError
+    - id: ClericalError
+    - id: CockroachMigration
+    - id: GasLeak
+    - id: GreytideVirus
+    - id: IonStorm
+    - id: MassHallucinations
+    - id: MimicVendorRule
+    - id: MouseMigration
+    - id: RandomSentience
+    - id: SolarFlare
+    - id: VentClog
 
 - type: entityTable
   id: ScpEventsTable
