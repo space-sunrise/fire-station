@@ -1,22 +1,36 @@
-﻿name: Publish Testing
+﻿name: Publish Mapping
 
 concurrency:
-  group: publish-testing
+  group: publish-mapping
   cancel-in-progress: true
 
 on:
   workflow_dispatch:
-  schedule:
-  - cron: '0 10 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3.6.0
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - uses: actions/checkout@v4.2.2
       with:
         submodules: 'recursive'
+
+    - name: Checkout SunrisePrivate
+      uses: actions/checkout@v4.2.2
+      with:
+        repository: ${{ secrets.SUNRISE_PRIVATE_REPO }}
+        path: SunrisePrivate
+        ssh-key: ${{ secrets.SUNRISE_PRIVATE_REPO_SSH_KEY }}
+
+    - name: Move Sunrise Private files
+      run: python3 Tools/_sunrise/move_private.py --clone-dir "SunrisePrivate" --target-dirs "Resources" "Content.Client" "Content.Server" "Content.Shared"
+
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v3.2.0
       with:
@@ -40,7 +54,13 @@ jobs:
       run: dotnet run --project Content.Packaging client --no-wipe-release
 
     - name: Publish version
-      run: Tools/publish_multi_request.py --fork-id sunrise_station_public
+      run: Tools/publish_multi_request.py --fork-id fire_station_mapping
       env:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
+
+    - name: Publish discord changelog (FIRE)
+      run: Tools/_sunrise/actions_changelogs_since_last_run.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK_FIRE }}
