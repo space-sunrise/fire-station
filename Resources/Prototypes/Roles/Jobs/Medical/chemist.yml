@@ -11,6 +11,7 @@
   icon: "JobIconChemist"
   supervisors: job-supervisors-cmo
   displayWeight: 30  # Sunrise
+  overrideConsoleVisibility: false
   access:
   - Medical
   - Chemistry

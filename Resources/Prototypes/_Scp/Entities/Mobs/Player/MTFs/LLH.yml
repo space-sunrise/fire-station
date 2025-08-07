@@ -89,6 +89,7 @@
   supervisors: ghost-role-information-mtf-LLH-leader-supervisors
   canBeAntag: false
   radioBold: true
+  overrideConsoleVisibility: false
   accessGroups:
   - AllAccess
   access:
@@ -168,6 +169,7 @@
   icon: JobIconLLH
   supervisors: ghost-role-information-mtf-LLH-specialist-supervisors
   canBeAntag: false
+  overrideConsoleVisibility: false
   accessGroups:
   - AllAccess
   access:
@@ -239,6 +241,7 @@
   icon: JobIconLLH
   supervisors: ghost-role-information-mtf-LLH-cadet-supervisors
   canBeAntag: false
+  overrideConsoleVisibility: false
   accessGroups:
   - AllAccess
   access:

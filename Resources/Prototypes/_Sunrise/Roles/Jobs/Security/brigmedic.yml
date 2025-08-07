@@ -15,6 +15,7 @@
   supervisors: job-supervisors-hos
   canBeAntag: false
   displayWeight: 15
+  overrideConsoleVisibility: false # Fire added
   access:
   - Medical
   - Security

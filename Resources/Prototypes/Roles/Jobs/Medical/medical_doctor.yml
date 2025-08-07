@@ -11,6 +11,7 @@
   icon: "JobIconMedicalDoctor"
   supervisors: job-supervisors-cmo
   displayWeight: 20  # Sunrise
+  overrideConsoleVisibility: false
   access:
   - Medical
   - Maintenance

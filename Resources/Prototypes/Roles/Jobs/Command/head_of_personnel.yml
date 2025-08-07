@@ -26,6 +26,7 @@
   canBeAntag: false
   radioBold: true # Sunrise-Edit
   displayWeight: 90 # Sunrise-Edit
+  overrideConsoleVisibility: false
   access:
   - Command
   - HeadOfPersonnel

@@ -17,6 +17,7 @@
   icon: "JobIconSeniorPhysician"
   supervisors: job-supervisors-cmo
   displayWeight: 35
+  overrideConsoleVisibility: false # Fire added
   access:
   - Medical
   - Maintenance

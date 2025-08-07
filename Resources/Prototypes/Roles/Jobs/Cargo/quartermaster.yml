@@ -20,6 +20,7 @@
   canBeAntag: true # Sunrise-Edit
   radioBold: true # Sunrise-Edit
   displayWeight: 40  # Sunrise-Edit
+  overrideConsoleVisibility: false
   access:
   - Cargo
   - Salvage

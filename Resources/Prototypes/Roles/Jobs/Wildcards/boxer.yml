@@ -6,6 +6,7 @@
   startingGear: BoxerGear
   icon: "JobIconBoxer"
   supervisors: job-supervisors-hop
+  overrideConsoleVisibility: false # Fire added
   access:
   - Service
   - Maintenance
