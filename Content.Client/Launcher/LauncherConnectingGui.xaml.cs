@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Client._Sunrise.ServersHub;
+using Content.Client.Resources;
 using Content.Client.Stylesheets;
 using Content.Shared._Sunrise.Lobby;
 using Content.Shared._Sunrise.ServersHub;
@@ -39,7 +40,6 @@ namespace Content.Client.Launcher
         private readonly IConfigurationManager _cfg;
         private readonly IClipboardManager _clipboard;
         private readonly ServersHubManager _serversHubManager; // Sunrise-Edit
-        private readonly IResourceCache _resourceCache;
 
         private string _discordLink = ""; // Sunrise-Edit
         private string _telegramLink = ""; // Sunrise-Edit
@@ -79,10 +79,10 @@ namespace Content.Client.Launcher
             Telegram.OnPressed += _ => _uri.OpenUri(_telegramLink); // Sunrise-Edit
 
             // Fire added start - анимация вместо паралакса при загрузке
-            _resourceCache = IoCManager.Resolve<IResourceCache>();
+            var resourceCache = IoCManager.Resolve<IResourceCache>();
             SetAnimation();
 
-            var logoTexture = _resourceCache.GetResource<TextureResource>("/Textures/_Scp/Logo/logo-hollow.png"); // Sunrise-Edit
+            var logoTexture = resourceCache.GetTexture("/Textures/_Scp/Logo/logo-hollow.png"); // Fire edit
             Logo.Texture = logoTexture;
             Logo.TextureScale = new Vector2(0.125f, 0.125f);
             // Fire added end

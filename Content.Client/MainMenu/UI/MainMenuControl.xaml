@@ -21,7 +21,7 @@
                           Margin="6 5">
                 <TextureRect Name="Logo" Stretch="KeepCentered" Margin="0, 0, 2, 0"/>
                 <Label Name="ServerName"
-                       Text="Fire Station"
+                       Text="{Loc 'launcher-server-name'}"
                        StyleClasses="LabelHeadingTheBiggest"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"/>
