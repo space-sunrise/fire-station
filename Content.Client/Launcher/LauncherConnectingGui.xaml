@@ -3,22 +3,22 @@
          xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
          xmlns:parallax="clr-namespace:Content.Client.Parallax"
          xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-         xmlns:serversHub="clr-namespace:Content.Client._Sunrise.ServersHub">
-    <parallax:ParallaxControl SpeedX="20"/>
+         xmlns:serversHub="clr-namespace:Content.Client._Sunrise.ServersHub"
+         xmlns:texture="clr-namespace:Content.Client._Sunrise.Texture">
+
+    <texture:RawAnimatedTexture Name="ConnectionAnimation" HorizontalExpand="True" VerticalExpand="True" Access="Public" />
 
     <BoxContainer Orientation="Vertical"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Center"
                   Margin="40 0 0 0">
-        <PanelContainer StyleClasses="AngleRect" MinWidth="200">
+        <PanelContainer StyleClasses="AngleRect" MinWidth="300">
             <PanelContainer.PanelOverride>
-                <gfx:StyleBoxFlat BackgroundColor="#1a1a1a"
-                                 BorderColor="#3E3E4A"
-                                 BorderThickness="2"/>
+                <gfx:StyleBoxFlat BackgroundColor="#171616E5" />
             </PanelContainer.PanelOverride>
             <BoxContainer Orientation="Vertical" Margin="0 5">
                 <controls:StripeBack>
-                    <BoxContainer Orientation="Vertical" Margin="0 8">
+                    <BoxContainer Orientation="Vertical" Margin="4 8">
                         <Label Text="Наше сообщество!"
                                StyleClasses="LabelHeadingBigger"
                                HorizontalAlignment="Center"/>
@@ -28,7 +28,7 @@
                     </BoxContainer>
                 </controls:StripeBack>
 
-                <PanelContainer Margin="0 5">
+                <PanelContainer Margin="5 5">
                     <PanelContainer.PanelOverride>
                         <gfx:StyleBoxFlat BackgroundColor="#5865F2"/>
                     </PanelContainer.PanelOverride>
@@ -37,7 +37,7 @@
                             StyleClasses="SocialButton SocialButtonDiscord"/>
                 </PanelContainer>
 
-                <PanelContainer Margin="0 10">
+                <PanelContainer Margin="5 10">
                     <PanelContainer.PanelOverride>
                         <gfx:StyleBoxFlat BackgroundColor="#0088cc"/>
                     </PanelContainer.PanelOverride>
@@ -53,11 +53,9 @@
         <BoxContainer Orientation="Vertical">
             <PanelContainer StyleClasses="AngleRect">
                 <PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BackgroundColor="#1a1a1a"
-                                     BorderColor="#2ecc71"
-                                     BorderThickness="2"/>
+                    <gfx:StyleBoxFlat BackgroundColor="#171616E5" />
                 </PanelContainer.PanelOverride>
-                <BoxContainer Orientation="Vertical" MinSize="400 250">
+                <BoxContainer Orientation="Vertical" MinSize="600 250">
                     <!-- Header -->
                     <controls:StripeBack>
                         <BoxContainer Orientation="Horizontal" Margin="10 5">
@@ -148,8 +146,8 @@
                                HorizontalAlignment="Center" />
                     </BoxContainer>
 
-                    <!-- Footer -->
-                    <PanelContainer>
+                    <!-- Footer УДАЛЕН НАХУЙ-->
+                    <PanelContainer Visible="False">
                         <PanelContainer.PanelOverride>
                             <gfx:StyleBoxFlat BackgroundColor="#222"
                                              ContentMarginTopOverride="2" />
@@ -211,9 +209,7 @@
                     VerticalExpand="True"
                     VerticalAlignment="Bottom">
         <PanelContainer.PanelOverride>
-            <gfx:StyleBoxFlat BackgroundColor="#1a1a1a"
-                             BorderColor="#f1c40f"
-                             BorderThickness="2"/>
+            <gfx:StyleBoxFlat BackgroundColor="#171616E5"/>
         </PanelContainer.PanelOverride>
         <BoxContainer Orientation="Vertical" VerticalExpand="True">
             <controls:StripeBack>

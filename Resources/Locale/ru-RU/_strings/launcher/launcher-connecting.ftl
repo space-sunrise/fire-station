@@ -1,6 +1,6 @@
 ### Connecting dialog when you start up the game
 
-connecting-title = Space Station 14
+connecting-title = Fire Station: Scp Foundation
 connecting-exit = Выйти
 connecting-retry = Повторить
 connecting-reconnect = Переподключиться

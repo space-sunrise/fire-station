@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Client._Sunrise.ServersHub;
 using Content.Client.Stylesheets;
+using Content.Shared._Sunrise.Lobby;
 using Content.Shared._Sunrise.ServersHub;
 using Content.Shared._Sunrise.SunriseCCVars;
 using Content.Shared.CCVar;
@@ -15,6 +16,7 @@ using Robust.Shared.Timing;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Utility;
 
 namespace Content.Client.Launcher
 {
@@ -39,6 +41,8 @@ namespace Content.Client.Launcher
         private string _discordLink = ""; // Sunrise-Edit
         private string _telegramLink = ""; // Sunrise-Edit
 
+        private const string AnimationId = "DeepFacility"; // Fire added
+
         public LauncherConnectingGui(LauncherConnecting state, IRobustRandom random,
             IPrototypeManager prototype, IConfigurationManager config, IClipboardManager clipboard,
             ServersHubManager serversHubManager) // Sunrise-Edit
@@ -55,7 +59,7 @@ namespace Content.Client.Launcher
 
             LayoutContainer.SetAnchorPreset(this, LayoutContainer.LayoutPreset.Wide);
 
-            Stylesheet = IoCManager.Resolve<IStylesheetManager>().SheetSpace;
+            Stylesheet = IoCManager.Resolve<IStylesheetManager>().SheetNano;
 
             ChangeLoginTip();
             RetryButton.OnPressed += ReconnectButtonPressed;
@@ -70,6 +74,10 @@ namespace Content.Client.Launcher
 
             Discord.OnPressed += _ => _uri.OpenUri(_discordLink); // Sunrise-Edit
             Telegram.OnPressed += _ => _uri.OpenUri(_telegramLink); // Sunrise-Edit
+
+            // Fire added start - анимация вместо паралакса при загрузке
+            SetAnimation();
+            // Fire added end
 
             var addr = state.Address;
             if (addr != null)
@@ -98,6 +106,18 @@ namespace Content.Client.Launcher
             ServersHubHeaderLabel.Text = Loc.GetString("serverhub-playingnow", ("total", totalPlayers), ("max", maxPlayers)); // Sunrise-Edit
         }
         // Sunrise-End
+
+        // Fire added start - анимация при загрузке вместо паралакса
+        private void SetAnimation()
+        {
+            if (!_prototype.TryIndex<LobbyAnimationPrototype>(AnimationId, out var lobbyAnimationPrototype))
+                return;
+
+            ConnectionAnimation.SetFromSpriteSpecifier(new SpriteSpecifier.Rsi(new ResPath(lobbyAnimationPrototype.RawPath), lobbyAnimationPrototype.State));
+            ConnectionAnimation.DisplayRect.TextureScale = lobbyAnimationPrototype.Scale;
+            ConnectionAnimation.DisplayRect.Stretch = TextureRect.StretchMode.Scale;
+        }
+        // Fire added end
 
         // Just button, there's only one at once anyways :)
         private void ReconnectButtonPressed(BaseButton.ButtonEventArgs args)
@@ -224,7 +244,7 @@ namespace Content.Client.Launcher
             if (page == LauncherConnecting.Page.Disconnected)
             {
                 DisconnectReason.Text = _state.LastDisconnectReason;
-                ServersHub.Visible = true; // Sunrise-edit
+                ServersHub.Visible = false; // Fire edit - а я убрал
             }
         }
 
