@@ -8,6 +8,7 @@ DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 DISCORD_ROLE_ID = os.environ.get("DISCORD_ROLE_ID")
 BUILD_PATH = os.environ.get("BUILD_PATH")
 VERSION = os.environ['GITHUB_SHA']
+GITHUB_LINK = "https://github.com/space-sunrise/fire-station"
 
 def get_build_size(path):
     try:
@@ -35,13 +36,13 @@ def main():
     engine_version = get_engine_version() or "Не указано"
     build_hash = VERSION or "Не указано"
 
-    content = f"<@&{DISCORD_ROLE_ID}> Сервер был обновлен!\n"
+    content = f"⚒️ <@&{DISCORD_ROLE_ID}> сервер получил обновление! Изменения вступят в силу со следующего раунда\n"
     embed = {
-        "title": "Обновление сервера",
+        "title": "Данные об обновлении",
         "fields": [
             {"name": "Версия движка", "value": engine_version, "inline": True},
             {"name": "Размер билда", "value": build_size, "inline": True},
-            {"name": "Версия", "value": build_hash, "inline": False},
+            {"name": "Версия", "value": f"[{GITHUB_LINK}/tree/{build_hash}](build_hash)", "inline": False},
         ],
         "color": 0x2ecc71
     }
