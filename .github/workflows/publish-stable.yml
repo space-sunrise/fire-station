@@ -61,7 +61,7 @@ jobs:
       run: dotnet run --project Content.Packaging client --no-wipe-release
 
     - name: Publish version
-      run: Tools/publish_multi_request.py --fork-id fire_station_mapping
+      run: Tools/publish_multi_request.py --fork-id fire_station_stable
       env:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
@@ -80,4 +80,4 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK }}
-        CHANGELOG_FILE: 'Resources/Changelog/ChangelogSunrise.yml'
+        CHANGELOG_FILE: 'Resources/Changelog/ChangelogFire.yml'
