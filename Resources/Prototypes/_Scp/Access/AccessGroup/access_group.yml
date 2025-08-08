@@ -45,6 +45,13 @@
   - Euclid
   - Keter
 
+- type: accessGroup
+  id: ScpCommon
+  tags:
+  - AI
+  - NuclearWarhead
+  - Exit
+
 # Дополнительные доступы при угрозах
 
 - type: accessGroup
