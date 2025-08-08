@@ -42,7 +42,7 @@ def main():
         "fields": [
             {"name": "Версия движка", "value": engine_version, "inline": True},
             {"name": "Размер билда", "value": build_size, "inline": True},
-            {"name": "Версия", "value": f"[{GITHUB_LINK}/tree/{build_hash}](build_hash)", "inline": False},
+            {"name": "Версия", "value": f"[{GITHUB_LINK}/tree/{build_hash}]({build_hash})", "inline": False},
         ],
         "color": 0x2ecc71
     }
