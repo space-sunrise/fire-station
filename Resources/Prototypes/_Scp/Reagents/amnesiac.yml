@@ -155,7 +155,50 @@
   color: "#383e28"
   physicalDesc: reagent-physical-desc-exotic-smelling
   metabolisms:
+    Poison:
+      metabolismRate: 100
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ reagent-amnesiac-a-msg ]
+        probability: 1
+        conditions:
+        - !type:ReagentThreshold
+          reagent: RawAmnesiac
+          min: 5
+          max: 9
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ reagent-amnesiac-b-msg ]
+        probability: 1
+        conditions:
+        - !type:ReagentThreshold
+          reagent: RawAmnesiac
+          min: 10
+          max: 14
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ reagent-amnesiac-c-msg ]
+        probability: 1
+        conditions:
+        - !type:ReagentThreshold
+          reagent: RawAmnesiac
+          min: 15
+          max: 19
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ reagent-amnesiac-d-msg ]
+        probability: 1
+        conditions:
+        - !type:ReagentThreshold
+          reagent: RawAmnesiac
+          min: 20
     Narcotic:
+      metabolismRate: 100
       effects:
       - !type:GenericStatusEffect
         conditions:
