@@ -126,7 +126,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void OnPacifiedAttackAttempt(Entity<Scp096Component> ent, ref AttemptPacifiedAttackEvent args)
     {
-        args.Reason = Loc.GetString("scp096-non-argo-attack-attempt");
+        args.Reason = Loc.GetString("scp096-non-agro-attack-attempt");
         args.Cancelled = true;
     }
 
