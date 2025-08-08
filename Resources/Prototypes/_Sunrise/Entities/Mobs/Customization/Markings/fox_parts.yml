@@ -2,8 +2,8 @@
   id: FoxEars
   bodyPart: HeadTop
   markingCategory: HeadTop
-  speciesRestriction: [Human]
-  sponsorOnly: true # Sunrise-Sponsors
+  speciesRestriction: [Felinid] # Fire edit - опять насрали своими ушками
+  sponsorOnly: false
   sprites:
   - sprite: _Sunrise/Mobs/Customization/fox_parts.rsi
     state: ears_fox_outer

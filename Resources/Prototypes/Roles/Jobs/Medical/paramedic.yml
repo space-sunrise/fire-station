@@ -18,6 +18,7 @@
   access:
   - Medical
   - Maintenance
+  - External # Sunrise-Add
   extendedAccess:
   - Chemistry
 

@@ -1,4 +1,4 @@
 ﻿- type: gamePresetPool
   id: ScpPresetPool
   presets:
-  - Secret
+    Secret: [0, 200]

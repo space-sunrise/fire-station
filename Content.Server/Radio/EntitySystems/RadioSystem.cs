@@ -12,7 +12,6 @@ using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Chat;
 using Content.Shared.Database;
-using Content.Shared.Inventory;
 using Content.Shared.PDA;
 using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
@@ -227,12 +226,12 @@ public sealed class RadioSystem : EntitySystem
 
         var idUid = accessItems.FirstOrDefault();
 
-        if (EntityManager.TryGetComponent(idUid, out PdaComponent? pda) && pda.ContainedId is not null)
+        if (TryComp<PdaComponent>(idUid, out var pda) && pda.ContainedId.HasValue)
         {
             if (TryComp<IdCardComponent>(pda.ContainedId, out var idComp))
                 return idComp;
         }
-        else if (EntityManager.TryGetComponent(idUid, out IdCardComponent? id))
+        else if (TryComp<IdCardComponent>(idUid, out var id))
         {
             return id;
         }

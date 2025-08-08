@@ -32,21 +32,8 @@
   id: BasicAntagEventsTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
-#    - id: ClosetSkeleton
-#    - id: DragonSpawn
-#    - id: KingRatMigration
-#    - id: NinjaSpawn
     - id: ParadoxCloneSpawn
-#    - id: RevenantSpawn
-#    - id: SleeperAgents
-#    - id: ZombieOutbreak
-#    - id: LoneOpsSpawn
-#    - id: DerelictCyborgSpawn
-#    - id: DiseaseSpawn
-#    - id: FugitiveSpawn
     - id: EvilTwinSpawn
-#    - id: TerminatorSpawn
-#    - id: WizardSpawn
 
 - type: entity
   id: BaseStationEvent
@@ -361,14 +348,11 @@
   id: GasLeak
   parent: BaseStationEventShortDelay
   components:
+  # Fire edit - убрал звуки аннонсментов
   - type: StationEvent
     startAnnouncement: station-event-gas-leak-start-announcement
-    startAudio:
-      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
     endAnnouncement: station-event-gas-leak-end-announcement
     weight: 8
-    endAudio:
-      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
   - type: GasLeakRule
 
 - type: entity
@@ -402,10 +386,12 @@
   components:
   - type: StationEvent
     weight: 8
-    startAnnouncement: station-event-solar-flare-start-announcement
-    endAnnouncement: station-event-solar-flare-end-announcement
+    # Fire edit start - оповещение нахуй, звук поменял
     startAudio:
-      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
+      path: /Audio/_Sunrise/Announcements/ionstorm.ogg
+      params:
+        volume: -10
+    # Fire edit end
     duration: 120
     maxDuration: 240
   - type: SolarFlareRule
