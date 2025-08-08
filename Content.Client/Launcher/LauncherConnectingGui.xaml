@@ -51,22 +51,29 @@
 
     <Control HorizontalAlignment="Center" VerticalAlignment="Center">
         <BoxContainer Orientation="Vertical">
+            <controls:StripeBack>
+                <BoxContainer Orientation="Horizontal"
+                              HorizontalAlignment="Center"
+                              Margin="6 5">
+                    <TextureRect Name="Logo" Stretch="KeepCentered" Margin="0, 0, 2, 0"/>
+                    <Label Name="ServerName"
+                           Text="Fire Station"
+                           StyleClasses="LabelHeadingTheBiggest"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+                </BoxContainer>
+            </controls:StripeBack>
             <PanelContainer StyleClasses="AngleRect">
                 <PanelContainer.PanelOverride>
                     <gfx:StyleBoxFlat BackgroundColor="#171616E5" />
                 </PanelContainer.PanelOverride>
-                <BoxContainer Orientation="Vertical" MinSize="600 250">
-                    <!-- Header -->
+                <BoxContainer Orientation="Vertical" MinSize="600 150">
+                    <!-- Header УДАЛЕН-->
                     <controls:StripeBack>
-                        <BoxContainer Orientation="Horizontal" Margin="10 5">
+                        <BoxContainer Orientation="Horizontal" Margin="10 5" Visible="False">
                             <Label Text="{Loc 'connecting-title'}"
                                    StyleClasses="LabelBigger"
                                    VAlign="Center" />
-                            <Button Name="ExitButton"
-                                    Text="{Loc 'connecting-exit'}"
-                                    StyleClasses="ButtonColorRed"
-                                    HorizontalAlignment="Right"
-                                    HorizontalExpand="True" />
                         </BoxContainer>
                     </controls:StripeBack>
 
@@ -214,18 +221,29 @@
         <BoxContainer Orientation="Vertical" VerticalExpand="True">
             <controls:StripeBack>
                 <BoxContainer Orientation="Horizontal"
-                            HorizontalAlignment="Center"
-                            Margin="0 5">
+                            Margin="0 5"
+                            HorizontalAlignment="Center">
                     <Label Name="LoginTipTitle"
                            Text="Tip"
                            StyleClasses="LabelBigger"
-                           Align="Center"/>
+                           Align="Center"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
                 </BoxContainer>
             </controls:StripeBack>
             <BoxContainer Orientation="Vertical" Margin="8">
+                <Button Name="ExitButton"
+                        Text="{Loc 'connecting-exit'}"
+                        StyleClasses="ButtonColorRed"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        HorizontalExpand="True"
+                        MinSize="270, 40"
+                        Margin="0, 2"/>
                 <RichTextLabel Name="LoginTip"
-                              VerticalExpand="True"
-                              StyleClasses="LabelSubText"/>
+                               VerticalExpand="True"
+                               StyleClasses="LabelSubText"
+                               Visible="False"/>
             </BoxContainer>
         </BoxContainer>
     </PanelContainer>

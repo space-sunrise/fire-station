@@ -1,12 +1,11 @@
 ﻿<Control xmlns="https://spacestation14.io"
          xmlns:pllax="clr-namespace:Content.Client.Parallax"
-         xmlns:clog="clr-namespace:Content.Client.Changelog">
-    <pllax:ParallaxControl
-        ParallaxPrototype="FastSpace"
-        SpeedX="5"
-        SpeedY="20"
-        ScaleX="3"
-        ScaleY="3"/>
+         xmlns:clog="clr-namespace:Content.Client.Changelog"
+         xmlns:texture="clr-namespace:Content.Client._Sunrise.Texture"
+         xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls">
+
+    <texture:RawAnimatedTexture Name="ConnectionAnimation" HorizontalExpand="True" VerticalExpand="True" Access="Public" />
+
     <BoxContainer Name="VBox"
                   Orientation="Vertical"
                   HorizontalAlignment="Center"
@@ -14,9 +13,20 @@
                   HorizontalExpand="True"
                   VerticalExpand="True"
                   StyleIdentifier="mainMenuVBox"
-                  SeparationOverride="3">
-        <TextureRect Name="Logo"
-                     Stretch="KeepCentered"/>
+                  SeparationOverride="3"
+                  MinSize="600, 300">
+        <controls:StripeBack>
+            <BoxContainer Orientation="Horizontal"
+                          HorizontalAlignment="Center"
+                          Margin="6 5">
+                <TextureRect Name="Logo" Stretch="KeepCentered" Margin="0, 0, 2, 0"/>
+                <Label Name="ServerName"
+                       Text="Fire Station"
+                       StyleClasses="LabelHeadingTheBiggest"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+            </BoxContainer>
+        </controls:StripeBack>
         <GridContainer Columns="2">
             <Label Text="{Loc 'main-menu-username-label'}" />
             <LineEdit Name="UsernameBox"
