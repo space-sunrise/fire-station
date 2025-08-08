@@ -1,4 +1,4 @@
-﻿name: Publish Testing
+﻿name: Publish Public build
 
 concurrency:
   group: publish-mapping
