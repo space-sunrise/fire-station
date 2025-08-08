@@ -79,5 +79,13 @@ jobs:
       run: Tools/_sunrise/actions_changelogs_since_last_run.py
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK }}
+        DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK_FIRE }}
         CHANGELOG_FILE: 'Resources/Changelog/ChangelogFire.yml'
+
+    - name: Publish discord changelog
+      continue-on-error: true
+      run: Tools/_sunrise/actions_changelogs_since_last_run.py
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK_SUNRISE }}
+        CHANGELOG_FILE: 'Resources/Changelog/ChangelogSunrise.yml'
