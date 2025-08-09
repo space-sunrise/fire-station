@@ -157,6 +157,13 @@
 
 - type: entity
   parent: PosterScpContainmentRoomBase
+  id: PosterSCP082
+  components:
+  - type: Sprite
+    state: scp082
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
   id: PosterSCP096
   components:
   - type: Sprite
@@ -171,10 +178,31 @@
 
 - type: entity
   parent: PosterScpContainmentRoomBase
+  id: PosterSCP131
+  components:
+  - type: Sprite
+    state: scp131
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
   id: PosterSCP173
   components:
   - type: Sprite
     state: scp173
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP247
+  components:
+  - type: Sprite
+    state: scp247
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP457
+  components:
+  - type: Sprite
+    state: scp457
 
 - type: entity
   parent: PosterScpContainmentRoomBase
