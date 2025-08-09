@@ -1,1 +1,1 @@
-ent-Scp106 = ???
+ent-Scp106 = SCP-106

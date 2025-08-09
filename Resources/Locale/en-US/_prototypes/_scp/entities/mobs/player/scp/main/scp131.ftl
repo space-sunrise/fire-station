@@ -1,2 +1,2 @@
-ent-Scp131A = ???
-ent-Scp131B = ???
+ent-Scp131A = SCP-131A
+ent-Scp131B = SCP-131B
