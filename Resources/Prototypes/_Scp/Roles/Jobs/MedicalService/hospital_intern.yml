@@ -8,20 +8,15 @@
   supervisors: job-supervisors-head-of-medical-sector
   canBeAntag: true
   displayWeight: 0
-  access:
-  - Medical
-  - Maintenance
+  accessGroups:
+  - PharmaceuticalSpecialist
   # Интерн исключение из врачей, он пугается трупов, потому что слишком неопытен.
 
 - type: startingGear
   id: HospitalInternGear
   equipment:
-    #    shoes: ClothingShoesColorWhite
     id: MedicalInternPDA
     ears: ClothingHeadsetMedicalService
     belt: ClothingBeltMedicalFilled
     pocket2: BookMedicalReferenceBook
     eyes: ClothingEyesHudMedical
-    #storage:
-    #back:
-    #- Stuff

@@ -1,5 +1,7 @@
 - type: accessGroup
   id: Administration
+  groups:
+  - AdministrationHeadless
   tags:
   - Administration
   - ComplexDirector
@@ -20,17 +22,15 @@
   id: ScientificService
   tags:
   - ScientificDirector
-  - Research
-  - Laboratory
-  - Safe
-  - Euclid
-  - Keter
+  groups:
+  - ScientificServiceHeadless
 
 - type: accessGroup
   id: Logistics
   tags:
   - SeniorLogisticsOfficer
-  - Logistics
+  groups:
+  - LogisticsHeadless
 
 - type: accessGroup
   id: ClassD
@@ -52,68 +52,48 @@
   - NuclearWarhead
   - Exit
 
-# Дополнительные доступы при угрозах
+# Отделы без глав
 
 - type: accessGroup
-  id: ScpGreenAlertAccesses
+  id: AdministrationHeadless
   tags:
-  - Security
-  - Medical
+  - Administration
 
 - type: accessGroup
-  id: ScpBlueAlertAccesses
+  id: SecurityHeadless
   tags:
-  - SecurityCommander
-  - Security
-
-- type: accessGroup
-  id: ScpOrangeAlertAccesses
-  tags:
-  - SecurityCommander
   - Security
   - Armory
+  - Checkpoint
 
 - type: accessGroup
-  id: ScpGrayAlertAccesses
+  id: ScientificServiceHeadless
   tags:
-  - SecurityCommander
-  - Security
-  - Armory
-
-- type: accessGroup
-  id: ScpYellowAlertAccesses
-  tags:
-  - SecurityCommander
-  - Security
-
-- type: accessGroup
-  id: ScpRedAlertAccesses
-  tags:
-  - SecurityCommander
-  - Security
-
-- type: accessGroup
-  id: ScpPurpleAlertAccesses
-  tags:
-  - SecurityCommander
-  - Security
   - Research
+  - Laboratory
+  - Safe
+  - Euclid
+  - Keter
 
 - type: accessGroup
-  id: ScpBlackAlertAccesses
+  id: MedicalHeadless
   tags:
-  - SecurityCommander
-  - Security
-  - Administration
+  - Medical
+  - Laboratory
 
 - type: accessGroup
-  id: ScpDeltaAlertAccesses
+  id: EngineeringHeadless
   tags:
-  - SecurityCommander
-  - Security
-  - Administration
+  - Engineering
+  - LifeSupport
+  - Maintenance
 
 - type: accessGroup
-  id: ScpColdSilverAlertAccesses
+  id: LogisticsHeadless
   tags:
-  - Administration
+  - Logistics
+
+- type: accessGroup
+  id: ServiceHeadless
+  tags:
+  - Service

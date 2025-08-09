@@ -10,11 +10,8 @@
   icon: JobLeadTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
   displayWeight: 30
-  access:
-  - Maintenance
-  - Engineering
-  - External
-  - Atmospherics
+  accessGroups:
+  - LeadTechnicalSpecialist
 
 - type: startingGear
   id: LeadTechnicalSpecialistGear

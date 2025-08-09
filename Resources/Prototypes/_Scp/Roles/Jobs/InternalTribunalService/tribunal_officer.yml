@@ -10,11 +10,8 @@
   icon: JobTribunalOfficer
   canBeAntag: false
   supervisors: job-supervisors-judicial-inspector
-  access:
-  - Service
-  - Lawyer
-  - Brig
-  - Maintenance
+  accessGroups:
+  - InternalTribunalService
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

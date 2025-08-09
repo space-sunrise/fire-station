@@ -12,9 +12,9 @@
 
 - type: accessGroup
   id: Engineering
+  # Fire edit start
   tags:
-  - ChiefEngineer
-  - Engineering
-  - Atmospherics
-  - LifeSupport # Fire added
-  - Maintenance # Fire added
+  - ChiefTechnicalSpecialist
+  groups:
+  - EngineeringHeadless
+  # Fire edit end

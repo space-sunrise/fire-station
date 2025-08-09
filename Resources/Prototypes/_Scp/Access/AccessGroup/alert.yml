@@ -1,0 +1,65 @@
+﻿# Дополнительные доступы при угрозах
+
+- type: accessGroup
+  id: ScpGreenAlertAccesses
+  tags:
+  - Security
+  - Medical
+
+- type: accessGroup
+  id: ScpBlueAlertAccesses
+  tags:
+  - SecurityCommander
+  - Security
+
+- type: accessGroup
+  id: ScpOrangeAlertAccesses
+  tags:
+  - SecurityCommander
+  - Security
+  - Armory
+
+- type: accessGroup
+  id: ScpGrayAlertAccesses
+  tags:
+  - SecurityCommander
+  - Security
+  - Armory
+
+- type: accessGroup
+  id: ScpYellowAlertAccesses
+  tags:
+  - SecurityCommander
+  - Security
+
+- type: accessGroup
+  id: ScpRedAlertAccesses
+  tags:
+  - SecurityCommander
+  - Security
+
+- type: accessGroup
+  id: ScpPurpleAlertAccesses
+  tags:
+  - SecurityCommander
+  - Security
+  - Research
+
+- type: accessGroup
+  id: ScpBlackAlertAccesses
+  tags:
+  - SecurityCommander
+  - Security
+  - Administration
+
+- type: accessGroup
+  id: ScpDeltaAlertAccesses
+  tags:
+  - SecurityCommander
+  - Security
+  - Administration
+
+- type: accessGroup
+  id: ScpColdSilverAlertAccesses
+  tags:
+  - Administration

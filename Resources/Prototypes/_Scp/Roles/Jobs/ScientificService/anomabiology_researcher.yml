@@ -10,9 +10,8 @@
   icon: JobAnomabiologyResearcher
   supervisors: job-supervisors-scientific-service-director
   displayWeight: 10
-  access:
-  - Research
-  - Maintenance
+  accessGroups:
+  - Scientist
   special:
   - !type:AddComponentSpecial
     components:

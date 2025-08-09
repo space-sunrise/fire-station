@@ -8,19 +8,13 @@
   supervisors: job-supervisors-chief-technical-specialist
   canBeAntag: true
   displayWeight: 0
-  access:
-  - Maintenance
-  - Engineering
-  - External
+  accessGroups:
+  - CommonEngineeringJob
 
 - type: startingGear
   id: TechnicalTraineeGear
   equipment:
-    #    shoes: ClothingShoesBootsWork
     id: TechnicalAssistantPDA
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineeringTechnicalService
     pocket2: BookEngineersHandbook
-    #storage:
-    #back:
-    #- Stuff

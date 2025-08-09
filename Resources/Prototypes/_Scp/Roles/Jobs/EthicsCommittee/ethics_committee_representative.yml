@@ -11,13 +11,8 @@
   radioBold: true
   displayWeight: 50
   setPreference: false # TODO: После добавления вайт-листа убрать
-  access:
-  - Research
-  - Command
-  - Maintenance
-  - ResearchDirector
-  - Brig
-  - Cryogenics
+  accessGroups:
+  - EthicsCommittee
   special:
   - !type:AddComponentSpecial
     components:

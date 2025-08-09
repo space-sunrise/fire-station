@@ -13,14 +13,8 @@
   canBeAntag: true
   radioBold: true
   displayWeight: 60
-  access:
-  - Medical
-  - Command
-  - Maintenance
-  - Chemistry
-  - ChiefMedicalOfficer
-  - Brig
-  - Cryogenics
+  accessGroups:
+  - HeadOfMedicalSector
   special:
   - !type:AddComponentSpecial
     components:

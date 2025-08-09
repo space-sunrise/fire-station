@@ -10,8 +10,7 @@
   icon: JobClassDBotanist
   supervisors: job-supervisors-security-and-research
   access:
-  - Service
-  - Hydroponics
+  - ClassDCanteen
   alwaysUseSpawner: true
   special:
   - !type:AddComponentSpecial

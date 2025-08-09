@@ -8,8 +8,6 @@
   supervisors: job-supervisors-personnel-officer
   access:
   - Service
-  - Janitor
-  - Maintenance
 
 - type: startingGear
   id: ServicePersonnelGear

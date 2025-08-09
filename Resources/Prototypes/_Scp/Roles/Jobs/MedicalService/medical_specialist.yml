@@ -10,15 +10,9 @@
   icon: JobMedicalSpecialist
   supervisors: job-supervisors-head-of-medical-sector
   displayWeight: 20
-  access:
-  - Medical
-  - Maintenance
-  extendedAccess:
-  - Chemistry
+  accessGroups:
+  - CommonMedicalJob
   special:
-  - !type:GiveItemOnHolidaySpecial
-    holiday: DoctorDay
-    prototype: WehMedipen
   - !type:AddComponentSpecial
     components:
     - type: Fear

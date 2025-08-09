@@ -8,11 +8,6 @@
   supervisors: job-supervisors-personnel-officer
   access:
   - Service
-  - Maintenance
-  - Kitchen
-  extendedAccess:
-  - Hydroponics
-  - Bar
 
 - type: startingGear
   id: GastronomicSpecialistGear

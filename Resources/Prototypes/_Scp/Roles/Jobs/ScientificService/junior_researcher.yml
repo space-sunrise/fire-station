@@ -8,9 +8,8 @@
   supervisors: job-supervisors-scientific-service-director
   canBeAntag: true
   displayWeight: 0
-  access:
-  - Research
-  - Maintenance
+  accessGroups:
+  - JuniorResearcher
   special:
   - !type:AddComponentSpecial
     components:

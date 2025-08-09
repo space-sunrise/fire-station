@@ -10,12 +10,8 @@
   icon: JobGeneralTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
   displayWeight: 10
-  access:
-  - Maintenance
-  - Engineering
-  - External
-  extendedAccess:
-  - Atmospherics
+  accessGroups:
+  - CommonEngineeringJob
 
 - type: startingGear
   id: GeneralTechnicalSpecialistGear

@@ -11,17 +11,8 @@
   supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false
   displayWeight: 0
-  access:
-  - Research
-  - Kitchen
-  - Hydroponics
-  - Janitor
-  - Security
-  - Brig
-  #  - Maintenance
-  - Service
-  - External
-  - Cryogenics
+  accessGroups:
+  - SecurityJobCommon
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

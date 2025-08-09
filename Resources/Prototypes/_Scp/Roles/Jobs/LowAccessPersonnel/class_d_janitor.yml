@@ -10,8 +10,7 @@
   icon: JobClassDJanitor
   supervisors: job-supervisors-security-and-research
   access:
-  - Service
-  - Janitor
+  - ClassDJanitor
   alwaysUseSpawner: true
   special:
   - !type:AddComponentSpecial

@@ -32,14 +32,9 @@
 
 - type: accessGroup
   id: Service
+  # Fire edit start
   tags:
-  - HeadOfPersonnel
-  - Bar
-  - Kitchen
-  - Hydroponics
-  - Service
-  - Janitor
-  - Theatre
-  - Chapel
-  - Lawyer
-  - Barber  # Sunrise-edit
+  - PersonnelOfficer
+  groups:
+  - ServiceHeadless
+  # Fire edit end

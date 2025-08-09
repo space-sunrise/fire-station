@@ -7,11 +7,8 @@
   icon: JobLogisticsOfficer
   supervisors: job-supervisors-senior-logistics-officer
   displayWeight: 0
-  access:
-  - Cargo
-  - Maintenance
-  extendedAccess:
-  - Salvage
+  accessGroups:
+  - LogisticsOfficer
   special:
   - !type:GiveItemOnHolidaySpecial
     holiday: BoxingDay
