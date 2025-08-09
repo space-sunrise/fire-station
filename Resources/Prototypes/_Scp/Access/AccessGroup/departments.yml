@@ -3,7 +3,6 @@
   groups:
   - AdministrationHeadless
   tags:
-  - Administration
   - ComplexDirector
   - ScientificDirector
   - SecurityCommander
@@ -97,3 +96,22 @@
   id: ServiceHeadless
   tags:
   - Service
+
+- type: accessGroup
+  id: AllComplex
+  groups:
+  - Administration
+  - RegionalAdministration
+  - Security
+  - ScientificService
+  - Medical
+  - Engineering
+  - Logistics
+  - Service
+  - ClassD
+  tags:
+  - AI
+  - NuclearWarhead
+  - Exit
+  - EthicsCommittee
+  - InternalTribunalService

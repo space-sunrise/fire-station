@@ -10,6 +10,8 @@
   - Logistics
   - Service
   - ClassD
+  tags:
+  - AI
 
 - type: accessGroup
   id: ScientificDirector

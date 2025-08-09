@@ -1,118 +1,409 @@
 ﻿- type: entity
   abstract: true
   id: KeyCardBase
-  parent: Clothing
-  suffix: SCP-KeyCard
-  description:
+  parent: IDCardStandard
+  suffix: SCP keycard
   components:
   - type: Item
     size: Small
     heldPrefix: default
   - type: Clothing
+    sprite: _Scp/Objects/Keycards/Level0.rsi
     quickEquip: true
     slots:
     - neck
+    - idcard
   - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
     state: icon
-  - type: Access
-  - type: IdCard
-  - type: StationRecordKeyStorage
-  - type: Tag
-    tags:
-    - DoorBumpOpener
-    - WhitelistChameleon
-    - WhitelistChameleonIdCard
-  - type: StealTarget
-    stealGroup: IDCard
-  - type: EmitSoundOnPickup
-    sound:
-      path: /Audio/_Sunrise/Items/Handling/ID/pickup.ogg
-  - type: EmitSoundOnDrop
-    sound:
-      path: /Audio/_Sunrise/Items/Handling/ID/drop.ogg
-  - type: EmitSoundOnLand
-    sound:
-      path: /Audio/_Sunrise/Items/Handling/ID/drop.ogg
+
+# Администрация
 
 - type: entity
   parent: KeyCardBase
-  id: KeyCardLevel0
+  id: KeyCardDirector
+  name: complex director keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: Director
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardScientificDirector
+  name: scientific director keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: ScientificDirector
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardSecurityCommander
+  name: security commander keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: SecurityCommander
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardChiefTechnicalSpecialist
+  name: chief technical specialist keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: ChiefTechnicalSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardPersonnelOfficer
+  name: personnel officer keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: PersonnelOfficer
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardHeadOfMedicalSector
+  name: head of medical sector keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: HeadOfMedicalSector
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardSeniorLogisticsOfficer
+  name: senior logistics officer keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: SeniorLogisticsOfficer
+
+# Комитет по этике
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardEthicsCommittee
+  name: ethics committee representative pass
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: EthicsCommitteeRepresentative
+
+# Служба внутреннего трибунала
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardInternalTribunalService
+  name: internal tribunal service representative pass
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: JudicialInspector
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardInternalTribunalService
+  name: internal tribunal service representative pass
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: TribunalOfficer
+
+# Служба безопасности легкой зоны содержания
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardLightContainmentZoneSecurityCommandant
+  name: security commandant keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: ExternalAdministrativeZoneCommandant
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardSeniorLightContainmentZoneSecurityOfficer
+  name: security guard keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: SeniorExternalAdministrativeZoneOfficer
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardLightContainmentZoneSecurityOfficer
+  name: security guard keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: ExternalAdministrativeZoneOfficer
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardJuniorLightContainmentZoneSecurityOfficer
+  name: security guard keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: JuniorExternalAdministrativeZoneOfficer
+
+# Служба безопасности тяжелой зоны содержания
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardHeavyContainmentZoneCommandant
+  name: security commandant keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: HeavyContainmentZoneCommandant
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardSeniorHeavyContainmentZoneOfficer
+  name: security guard keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: SeniorHeavyContainmentZoneOfficer
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardHeavyContainmentZoneOfficer
+  name: security guard keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: HeavyContainmentZoneOfficer
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardJuniorHeavyContainmentZoneOfficer
+  name: security guard keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: JuniorHeavyContainmentZoneOfficer
+
+# Научная служба
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardLeadResearcher
+  name: lead researcher keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: LeadResearcher
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardAnomabiologyResearcher
+  name: research personnel keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: AnomabiologyResearcher
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardAnomarchologyResearcher
+  name: research personnel keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: AnomarchologyResearcher
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardProductionSpecialist
+  name: production specialist keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: ProductionSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardJuniorResearcher
+  name: junior research personnel keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: JuniorResearcher
+
+# Медицинская служба
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardSeniorMedicalSpecialist
+  name: senior medical specialist keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: SeniorMedicalSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardMedicalSpecialist
+  name: medical personnel keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: MedicalSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardPharmaceuticalSpecialist
+  name: pharmaceutical specialist keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: PharmaceuticalSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardPsychotherapist
+  name: medical personnel keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: Psychotherapist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardHospitalIntern
+  name: hospital intern keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: HospitalIntern
+
+# Логистическая служба
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardLogisticsOfficer
+  name: logistics personnel keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: LogisticsOfficer
+
+# Санитарно-продовольственный отдел
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardBotanistPhytogeneticist
+  name: service personnel keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: BotanistPhytogeneticist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardGastronomicSpecialist
+  name: service personnel keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: GastronomicSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardServicePersonnel
+  name: service personnel keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: ServicePersonnel
+
+# Класс Д
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardClassDCock
+  name: class d personnel keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: ClassDCock
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardClassDBotanist
+  name: class d personnel keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: ClassDBotanist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardClassDJanitor
+  name: class d personnel keycard
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/Level0.rsi
+  - type: PresetIdCard
+    job: ClassDJanitor
+
+# Отдельные
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardOmni
+  name: omni keycard
   components:
   - type: Sprite
     sprite: _Scp/Objects/Keycards/Level0.rsi
   - type: Access
     groups:
-    - Example
+    - AllComplex
 
 - type: entity
   parent: KeyCardBase
-  id: KeyCardLevel1
+  id: KeyCardEmpty
+  name: keycard
   components:
   - type: Sprite
-    sprite: _Scp/Objects/Keycards/Level1.rsi
-  - type: Access
-    groups:
-    - Example
-
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardLevel2
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Keycards/Level2.rsi
-  - type: Access
-    groups:
-    - Example
-
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardLevel3
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Keycards/Level3.rsi
-  - type: Access
-    groups:
-    - Example
-
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardLevel4
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Keycards/Level4.rsi
-  - type: Access
-    groups:
-    - Example
-
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardLevel5
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Keycards/Level5.rsi
-  - type: IdCard
-    jobTitle: job-title-universal
-    jobIcon: JobIconAdmin
-  - type: Access
-    groups:
-    - AllAccess # TODO: Для тестов, убрать
-
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardScpSec
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Keycards/scpsec.rsi
-  - type: Access
-    groups:
-    - Example
-
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardMtfLeader
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Keycards/mtfleader.rsi
-  - type: Access
-    groups:
-    - Example
+    sprite: _Scp/Objects/Keycards/Level0.rsi

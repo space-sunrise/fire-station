@@ -1377,6 +1377,14 @@ LockerExternalAdministrativeZoneFieldDoctor: LockerHeavyContainmentZoneFieldMedi
 LockerHeavyContainmentZoneFieldDoctor: LockerHeavyContainmentZoneFieldMedic
 LockerExternalAdministrativeZoneFieldDoctorFilled: LockerHeavyContainmentZoneFieldMedicFilled
 LockerHeavyContainmentZoneFieldDoctorFilled: LockerHeavyContainmentZoneFieldMedicFilled
+KeyCardLevel0: null
+KeyCardLevel1: null
+KeyCardLevel2: null
+KeyCardLevel3: null
+KeyCardLevel4: null
+KeyCardLevel5: null
+KeyCardScpSec: null
+KeyCardMtfLeader: null
 
 # Удалить после фикса
 ScpDoubleAirlockAtmospherics: ScpDoubleGlassAirlockLifeSupport
