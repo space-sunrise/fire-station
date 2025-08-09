@@ -80,11 +80,11 @@
             "directions": 4
         },
         {
-            "name": "direction-shelter",
+            "name": "direction_shelter",
             "directions": 4
         },
         {
-            "name": "scp_save",
+            "name": "scp_safe",
             "directions": 4
         },
         {

@@ -151,14 +151,14 @@
   id: SignDirectionalScpShelter
   components:
   - type: Sprite
-    state: direction-shelter
+    state: direction_shelter
 
 - type: entity
   parent: BaseSignDirectionalScp
-  id: SignDirectionalScpSave
+  id: SignDirectionalScpSafe
   components:
   - type: Sprite
-    state: scp_save
+    state: scp_safe
 
 - type: entity
   parent: BaseSignDirectionalScp
