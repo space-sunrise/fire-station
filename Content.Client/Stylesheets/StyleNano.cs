@@ -135,6 +135,8 @@ namespace Content.Client.Stylesheets
 
         // Fire edit - Updated colors for SCP/Grimdark theme
 
+        public const string StyleClassLabelHeadingTheBiggest = "LabelHeadingTheBiggest";
+
         public static readonly Color PanelUltraDark = Color.FromHex("#090909");
         public static readonly Color PanelDarker = Color.FromHex("#121111");  // 1d1c1c 161515
         public static readonly Color PanelDark = Color.FromHex("#171616"); // Darker background 2a2828 1d1c1c
@@ -215,6 +217,8 @@ namespace Content.Client.Stylesheets
 
             var windowHeaderTex = resCache.GetTexture("/Textures/Interface/Nano/window_header.png");
             // Fire edit start
+            var notoSansBold48 = resCache.NotoStack(variation: "Bold", size: 48); // Fire added
+
             var windowHeader = new StyleBoxFlat
             {
                 ContentMarginBottomOverride = 0,
@@ -1668,6 +1672,13 @@ namespace Content.Client.Stylesheets
                         })
                     }
                 ),
+
+                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelHeadingTheBiggest}, null, null),
+                    new[]
+                    {
+                        new StyleProperty(Label.StylePropertyFont, notoSansBold48),
+                        new StyleProperty(Label.StylePropertyFontColor, SCPWhite),
+                    }),
                 // Fire edit end
 
                 Element<TextureButton>()
