@@ -1,1 +1,1 @@
-ent-Scp939 = ???
+ent-Scp939 = SCP-939

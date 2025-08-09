@@ -1,1 +1,1 @@
-ent-Scp247 = ???
+ent-Scp247 = SCP-247
