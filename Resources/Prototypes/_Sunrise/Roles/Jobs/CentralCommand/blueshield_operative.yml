@@ -14,6 +14,7 @@
   icon: JobIconNanotrasen
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  overrideConsoleVisibility: false # Fire added
   accessGroups:
   - AllAccess
   access:
