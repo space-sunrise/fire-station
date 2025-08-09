@@ -60,6 +60,7 @@
   supervisors: ghost-role-information-mtf-leader-supervisors
   canBeAntag: false
   radioBold: true
+  overrideConsoleVisibility: false
   accessGroups:
   - AllAccess
   access:
@@ -136,6 +137,7 @@
   icon: JobIconNTF
   supervisors: ghost-role-information-mtf-specialist-supervisors
   canBeAntag: false
+  overrideConsoleVisibility: false
   accessGroups:
   - AllAccess
   access:
@@ -209,6 +211,7 @@
   icon: JobIconNTF
   supervisors: ghost-role-information-mtf-cadet-supervisors
   canBeAntag: false
+  overrideConsoleVisibility: false
   accessGroups:
   - AllAccess
   access:

@@ -10,6 +10,7 @@
   startingGear: BartenderGear
   icon: "JobIconBartender"
   supervisors: job-supervisors-hop
+  overrideConsoleVisibility: false # Fire added
   access:
   - Service
   - Maintenance

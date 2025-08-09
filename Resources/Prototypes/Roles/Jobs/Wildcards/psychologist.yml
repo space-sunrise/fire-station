@@ -7,6 +7,7 @@
   icon: "JobIconPsychologist"
   supervisors: job-supervisors-cmo
   displayWeight: 10  # Sunrise
+  overrideConsoleVisibility: false # Fire added
   access:
   - Medical
   - Maintenance

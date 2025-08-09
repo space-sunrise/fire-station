@@ -10,10 +10,8 @@
   icon: JobPharmaceuticalSpecialist
   supervisors: job-supervisors-head-of-medical-sector
   displayWeight: 30
-  access:
-  - Medical
-  - Chemistry
-  - Maintenance
+  accessGroups:
+  - PharmaceuticalSpecialist
   special:
   - !type:AddComponentSpecial
     components:

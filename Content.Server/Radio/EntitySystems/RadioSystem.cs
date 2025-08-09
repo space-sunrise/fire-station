@@ -1,5 +1,6 @@
 using System.Globalization;
 using System.Linq;
+using Content.Server._Sunrise.Chat;
 using Content.Server._Sunrise.Chat.Sanitization;
 using Content.Server.Administration.Logs;
 using Content.Server.Chat.Systems;

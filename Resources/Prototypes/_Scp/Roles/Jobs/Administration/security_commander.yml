@@ -13,21 +13,8 @@
   canBeAntag: false
   radioBold: true # Sunrise-Edit
   displayWeight: 80 # Sunrise-Edit
-  access:
-  - Research
-  - Kitchen
-  - Hydroponics
-  - Janitor
-  - HeadOfSecurity
-  - Command
-  - Brig
-  - Security
-  - Armory
-  #  - Maintenance
-  - Service
-  - External
-  - Detective
-  - Cryogenics
+  accessGroups:
+  - SecurityCommander
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -67,4 +54,3 @@
   storage:
     back:
     - Flash
-#    - MagazineGlock22 # Sunrise-Edit

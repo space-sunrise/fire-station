@@ -350,31 +350,19 @@
     - NanoTrasen
   - type: Access
     enabled: false
-    # Sunrise-Start
-    tags:
-    - Borg
-    - EmergencyShuttleRepealAll
-    - Command
-    - Lawyer
+    # Fire edit start - новые доступы
+    groups:
+    - Administration
+    - Security
+    - ScientificService
     - Engineering
-    - Medical
-    - Salvage
-    - Cargo
-    - Research
+    - Logistics
     - Service
-    - Maintenance
-    - External
-    - Janitor
-    - Theatre
-    - Bar
-    - Chemistry
-    - Kitchen
-    - Chapel
-    - Hydroponics
-    - Atmospherics
-    # Sunrise-End
+    - ClassD
+    - ScpCommon
   - type: AccessReader
-    access: [["Command"], ["Research"]]
+    access: [["Administration"], ["Research"]]
+  # Fire edit end
   - type: ShowJobIcons
   - type: InteractionPopup
     interactSuccessSound:

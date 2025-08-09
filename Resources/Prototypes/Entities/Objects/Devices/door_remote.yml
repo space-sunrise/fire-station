@@ -18,6 +18,7 @@
   parent: [DoorRemoteDefault, BaseCommandContraband]
   id: DoorRemoteCommand
   name: command door remote
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -82,6 +83,7 @@
   parent: [DoorRemoteDefault, BaseCommandContraband]
   id: DoorRemoteResearch
   name: research door remote
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -98,6 +100,7 @@
   parent: [DoorRemoteDefault, BaseCommandContraband]
   id: DoorRemoteCargo
   name: cargo door remote
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -169,6 +172,7 @@
   parent: [ DoorRemoteDefault, BaseXenoborgContraband ]
   id: DoorRemoteXenoborg
   name: xenoborg door remote
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:

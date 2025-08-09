@@ -91,6 +91,7 @@
   supervisors: Штабу О4
   canBeAntag: false
   radioBold: true
+  overrideConsoleVisibility: false
   accessGroups:
   - AllAccess
   access:
@@ -167,6 +168,7 @@
   icon: JobIconHD
   supervisors: ghost-role-information-mtf-specialist-supervisors
   canBeAntag: false
+  overrideConsoleVisibility: false
   accessGroups:
   - AllAccess
   access:
@@ -239,6 +241,7 @@
   icon: JobIconHD
   supervisors: ghost-role-information-mtf-cadet-supervisors
   canBeAntag: false
+  overrideConsoleVisibility: false
   accessGroups:
   - AllAccess
   access:

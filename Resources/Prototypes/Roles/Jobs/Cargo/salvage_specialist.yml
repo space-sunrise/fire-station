@@ -12,6 +12,7 @@
   supervisors: job-supervisors-qm
   setPreference: false # Fire
   displayWeight: 10  # Sunrise
+  overrideConsoleVisibility: false
   access:
   - Cargo
   - Salvage

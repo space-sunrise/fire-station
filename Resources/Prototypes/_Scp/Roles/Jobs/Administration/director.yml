@@ -14,7 +14,7 @@
   displayWeight: 100
   radioBold: true
   accessGroups:
-  - AllAccess
+  - Director
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

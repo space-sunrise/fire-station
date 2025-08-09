@@ -9,14 +9,16 @@
 - type: accessLevel
   id: Chemistry
   name: id-card-access-level-chemistry
-  
+
 - type: accessLevel
   id: Paramedic
   name: id-card-access-level-paramedic
 
 - type: accessGroup
   id: Medical
+  # Fire edit start
   tags:
-  - ChiefMedicalOfficer
-  - Medical
-  - Chemistry
+  - HeadOfMedicalSector
+  groups:
+  - MedicalHeadless
+  # Fire edit end

@@ -367,7 +367,7 @@
     - id: ClothingOuterCoatHoSTrench
     - id: ClothingShoesBootsJack
     - id: DoorRemoteSecurity
-    # - id: HoloprojectorSecurity #Fire-Station
+    - id: HoloprojectorSecurity
     - id: RubberStampHos
     - id: SecurityTechFabCircuitboard
     - id: CargoRequestSecurityComputerCircuitboard

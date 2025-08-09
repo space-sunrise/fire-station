@@ -168,6 +168,7 @@
   id: VendingMachineBooze
   name: Booze-O-Mat
   description: A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: BoozeOMatInventory
@@ -202,6 +203,7 @@
   id: VendingMachineBoozeSyndicate # syndie booze-o-mat for nukie outpost
   name: Bruise-O-Mat
   description: A refurbished Booze-O-Mat for boosting operative morale. An imprint of a blood-red hardsuit is visible on one side, and the paint seems ashed off on the other side.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: BoozeOMatInventory
@@ -236,6 +238,7 @@
   id: VendingMachineCart
   name: PTech
   description: PTech vending! Providing a ROBUST selection of PDAs, cartridges, and anything else a dull paper pusher needs!
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: PTechInventory
@@ -725,6 +728,7 @@
   id: VendingMachineDinnerware
   name: Plasteel Chef's Dinnerware Vendor
   description: A kitchen and restaurant equipment vendor.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: DinnerwareInventory
@@ -896,6 +900,7 @@
   id: VendingMachineNutri
   name: NutriMax
   description: A vending machine containing nutritional substances for plants and botanical tools.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: NutriMaxInventory
@@ -1000,6 +1005,7 @@
   parent: VendingMachineSeedsUnlocked
   id: VendingMachineSeeds
   suffix: Hydroponics
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Hydroponics"]]
@@ -1392,6 +1398,7 @@
   id: VendingMachineSalvage
   name: Salvage Vendor
   description: A dwarf's best friend!
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: SalvageEquipmentInventory
@@ -1519,6 +1526,7 @@
   id: VendingMachineHydrobe
   name: HyDrobe
   description: A machine with a catchy name. It dispenses botany related clothing and gear.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: HyDrobeInventory
@@ -1551,6 +1559,7 @@
   id: VendingMachineLawDrobe
   name: LawDrobe
   description: Objection! This wardrobe dispenses the rule of law... and lawyer clothing..
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: LawDrobeInventory
@@ -1611,6 +1620,7 @@
   id: VendingBarDrobe
   name: BarDrobe
   description: A stylish vendor to dispense the most stylish bar clothing!
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: BarDrobeInventory
@@ -1638,6 +1648,7 @@
   parent: VendingMachine
   id: VendingMachineChapel
   name: PietyVend
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: PietyVendInventory
@@ -1667,6 +1678,7 @@
   id: VendingMachineCargoDrobe
   name: CargoDrobe
   description: A highly advanced vending machine for buying cargo related clothing for free.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: CargoDrobeInventory
@@ -1727,6 +1739,7 @@
   id: VendingMachineChemDrobe
   name: ChemDrobe
   description: A vending machine for dispensing chemistry related clothing.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: ChemDrobeInventory
@@ -1847,6 +1860,7 @@
   id: VendingMachineChefDrobe
   name: ChefDrobe
   description: This vending machine might not dispense meat, but it certainly dispenses chef related clothing.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: ChefDrobeInventory
@@ -1875,6 +1889,7 @@
   id: VendingMachineDetDrobe
   name: DetDrobe
   description: A machine for all your detective needs, as long as you need clothes.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: DetDrobeInventory
@@ -1903,6 +1918,7 @@
   id: VendingMachineJaniDrobe
   name: JaniDrobe
   description: A self cleaning vending machine capable of dispensing clothing for janitors.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: JaniDrobeInventory
@@ -1963,6 +1979,7 @@
   id: VendingMachineSyndieDrobe
   name: SyndieDrobe
   description: Wardrobe machine encoded by the syndicate, contains elite outfits for various operations.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: SyndieDrobeInventory
@@ -2079,6 +2096,7 @@
   id: VendingMachineCentDrobe
   name: CentDrobe
   description: A one-of-a-kind vending machine for all your centcomm aesthetic needs!
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: CentDrobeInventory
@@ -2221,6 +2239,7 @@
   id: VendingMachineChemicals
   name: ChemVend
   description: Probably not the coffee machine.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: ChemVendInventory
@@ -2250,6 +2269,7 @@
   id: VendingMachineChemicalsSyndicate
   name: SyndieJuice
   description: Not made with freshly squeezed syndies I hope.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: VendingMachine
     pack: ChemVendInventorySyndicate

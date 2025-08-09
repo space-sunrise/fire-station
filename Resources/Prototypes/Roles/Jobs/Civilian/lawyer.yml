@@ -11,6 +11,7 @@
   canBeAntag: false
   supervisors: job-supervisors-magistrate
   setPreference: false # Fire added
+  overrideConsoleVisibility: false # Fire added
   access:
   - Service
   - Lawyer

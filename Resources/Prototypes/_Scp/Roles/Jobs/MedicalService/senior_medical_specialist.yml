@@ -10,10 +10,8 @@
   icon: JobSeniorMedicalSpecialist
   supervisors: job-supervisors-head-of-medical-sector
   displayWeight: 35
-  access:
-  - Medical
-  - Maintenance
-  - Chemistry
+  accessGroups:
+  - SeniorMedicalSpecialist
   special:
   - !type:AddComponentSpecial
     components:

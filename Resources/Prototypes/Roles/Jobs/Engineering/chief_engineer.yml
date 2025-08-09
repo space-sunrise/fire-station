@@ -20,6 +20,7 @@
   radioBold: true # Sunrise-Edit
   displayWeight: 70 # Sunrise-Edit
   canBeAntag: true # RaMbUt878-edit
+  overrideConsoleVisibility: false # Fire added
   access:
   - Maintenance
   - Engineering

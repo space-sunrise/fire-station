@@ -10,12 +10,8 @@
   icon: JobElectricalTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
   displayWeight: 10
-  access:
-  - Maintenance
-  - Engineering
-  - External
-  extendedAccess:
-  - Atmospherics
+  accessGroups:
+  - ElectricalSpecialist
 
 - type: startingGear
   id: ElectricalTechnicalSpecialistGear

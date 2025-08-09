@@ -8,11 +8,6 @@
   supervisors: job-supervisors-personnel-officer
   access:
   - Service
-  - Maintenance
-  - Hydroponics
-  extendedAccess:
-  - Kitchen
-  - Bar
   special:
   - !type:GiveItemOnHolidaySpecial
     holiday: FourTwenty

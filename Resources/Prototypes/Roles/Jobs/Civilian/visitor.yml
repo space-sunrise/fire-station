@@ -9,7 +9,7 @@
   canBeAntag: false
   icon: JobIconVisitor
   setPreference: false
-  overrideConsoleVisibility: true
+  overrideConsoleVisibility: false # Fire added
   access:
   - Maintenance
   extendedAccess:

@@ -1,8 +1,7 @@
 - type: entity
   parent: Jug
-  suffix: raw
   id: JugRawAmnesiac
-  name: Jug
+  suffix: Raw Amnesiac
   components:
   - type: Label
     currentLabel: reagent-amnesiac-raw-name
@@ -62,7 +61,6 @@
   id: ChemistryVialAmnesiacD
   parent: BaseChemistryEmptyVial
   suffix: Amnesiac D
-  name: vial
   components:
   - type: Label
     currentLabel: reagent-amnesiac-d-name

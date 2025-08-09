@@ -23,11 +23,8 @@
   canBeAntag: false
   radioBold: true # Sunrise-Edit
   displayWeight: 80 # Sunrise-Edit
+  overrideConsoleVisibility: false # Fire added
   access:
-  - Research # Fire
-  - Kitchen # Fire
-  - Hydroponics # Fire
-  - Janitor # Fire
   - HeadOfSecurity
   - Command
   - Brig

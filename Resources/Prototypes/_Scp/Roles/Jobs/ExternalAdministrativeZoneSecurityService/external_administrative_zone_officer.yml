@@ -11,17 +11,8 @@
   supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false
   displayWeight: 10
-  access:
-  - Research
-  - Kitchen
-  - Hydroponics
-  - Janitor
-  - Security
-  - Brig
-  #  - Maintenance
-  - Service
-  - External
-  - Cryogenics
+  accessGroups:
+  - SecurityJobCommon
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
