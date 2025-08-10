@@ -45,6 +45,7 @@
   - type: ComplexInteraction
   - type: Buckle
   - type: Stripping
+  - type: StandingState
   - type: Pacified
   - type: UserInterface
     interfaces:
@@ -58,12 +59,12 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      2000: Critical
+      500: Critical
   - type: SlowOnDamage
     speedModifierThresholds:
-      1000: 0.9
-      1500: 0.8
-      2000: 0.7
+      100: 0.9
+      250: 0.8
+      400: 0.7
   - type: Pullable
   - type: Puller
     needsHands: true

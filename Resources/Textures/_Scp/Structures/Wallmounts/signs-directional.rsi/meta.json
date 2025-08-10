@@ -78,6 +78,22 @@
         {
             "name": "direction_po",
             "directions": 4
+        },
+        {
+            "name": "direction_shelter",
+            "directions": 4
+        },
+        {
+            "name": "scp_safe",
+            "directions": 4
+        },
+        {
+            "name": "scp_euclid",
+            "directions": 4
+        },
+        {
+            "name": "scp_keter",
+            "directions": 4
         }
     ]
 }
