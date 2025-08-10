@@ -24,7 +24,7 @@
   table: !type:GroupSelector
     children:
     - id: ScpEffectShuffleUltra
-      weight: 1
+      weight: 0.5
       #    - id: ScpEffectPolyChair
       #      weight: 2
       #    - id: ScpEffectPolyWatermelon
