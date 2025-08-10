@@ -1,0 +1,7 @@
+- type: emoteSounds
+  id: SCP106
+  params:
+    variation: 1
+  sounds:
+    Laugh:
+      path: /Audio/_Scp/Scp106/laugh.ogg

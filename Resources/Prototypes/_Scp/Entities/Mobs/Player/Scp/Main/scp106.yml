@@ -67,6 +67,11 @@
     - ActionScp106Shop
   - type: TTS
     voice: HearthstoneSotis
+  - type: Vocal
+    sounds:
+      Male: SCP106
+      Female: SCP106
+      Unsexed: SCP106
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepScp106
