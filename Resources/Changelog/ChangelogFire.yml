@@ -4651,3 +4651,11 @@
   id: 183
   time: '2025-08-10T03:54:14.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/474
+- author: Mr_Samuel
+  changes:
+  - message: "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u044B \u043A\u0430\u0440\
+      \u0442\u044B Compact, Standart \u0438 Modular"
+    type: Tweak
+  id: 184
+  time: '2025-08-10T09:25:53.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/481
