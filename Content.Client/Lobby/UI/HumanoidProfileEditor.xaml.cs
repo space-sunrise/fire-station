@@ -10,7 +10,6 @@ using Content.Client.Sprite;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Systems.Guidebook;
 using Content.Shared._Sunrise;
-using Content.Shared._Sunrise.MarkingEffects;
 using Content.Shared._Sunrise.SunriseCCVars;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing;
@@ -264,54 +263,6 @@ namespace Content.Client.Lobby.UI
                 OnSkinColorOnValueChanged();
             };
 
-            //Sunrise start
-            #region Size
-            UpdateSizeControls();
-
-            WidthSlider.OnValueChanged += args =>
-            {
-                UpdateSizeText();
-            };
-
-            HeightSlider.OnValueChanged += args =>
-            {
-                UpdateSizeText();
-            };
-
-            WidthSlider.OnReleased += args =>
-            {
-                SetWidth(args.Value);
-            };
-
-            HeightSlider.OnReleased += args =>
-            {
-                SetHeight(args.Value);
-            };
-
-            WidthResetButton.OnPressed += _ =>
-            {
-                if (Profile is null)
-                {
-                    return;
-                }
-
-                ResetWidth();
-                ReloadPreview();
-            };
-
-            HeightResetButton.OnPressed += _ =>
-            {
-                if (Profile is null)
-                {
-                    return;
-                }
-
-                ResetHeight();
-                ReloadPreview();
-            };
-            #endregion Size
-            //Sinrise end
-
             #region Skin
 
             Skin.OnValueChanged += _ =>
@@ -329,30 +280,6 @@ namespace Content.Client.Lobby.UI
 
             #region Hair
 
-            // sunrise gradient edit start
-
-            HairStylePicker.OnExtendedColorChanged += newColor =>
-            {
-                if (Profile is null)
-                    return;
-                Profile = Profile.WithCharacterAppearance(
-                    Profile.Appearance.WithHairExtendedColor(newColor.marking.MarkingEffects[0]));
-                UpdateCMarkingsHair();
-                ReloadPreview();
-            };
-
-            FacialHairPicker.OnExtendedColorChanged += newColor =>
-            {
-                if (Profile is null)
-                    return;
-                Profile = Profile.WithCharacterAppearance(
-                    Profile.Appearance.WithFacialHairExtendedColor(newColor.marking.MarkingEffects[0]));
-                UpdateCMarkingsFacialHair();
-                ReloadPreview();
-            };
-
-            // sunrise gradient edit end
-
             HairStylePicker.OnMarkingSelect += newStyle =>
             {
                 if (Profile is null)
@@ -366,9 +293,8 @@ namespace Content.Client.Lobby.UI
             {
                 if (Profile is null)
                     return;
-                var newExtended = newColor.marking.MarkingEffects[0].Clone();
                 Profile = Profile.WithCharacterAppearance(
-                    Profile.Appearance.WithHairColor(newColor.marking.MarkingColors[0], newExtended)); // sunrise gradient edit
+                    Profile.Appearance.WithHairColor(newColor.marking.MarkingColors[0]));
                 UpdateCMarkingsHair();
                 ReloadPreview();
             };
@@ -386,9 +312,8 @@ namespace Content.Client.Lobby.UI
             {
                 if (Profile is null)
                     return;
-                var newExtended = newColor.marking.MarkingEffects[0].Clone();
                 Profile = Profile.WithCharacterAppearance(
-                    Profile.Appearance.WithFacialHairColor(newColor.marking.MarkingColors[0], newExtended)); // sunrise gradient edit
+                    Profile.Appearance.WithFacialHairColor(newColor.marking.MarkingColors[0]));
                 UpdateCMarkingsFacialHair();
                 ReloadPreview();
             };
@@ -880,7 +805,6 @@ namespace Content.Client.Lobby.UI
             UpdateFlavorTextEdit();
             UpdateSexControls();
             UpdateGenderControls();
-            UpdateSizeControls(); //Sunrise edit
             UpdateSkinColor();
             UpdateSpawnPriorityControls();
             UpdateAgeEdit();
@@ -1367,51 +1291,6 @@ namespace Content.Client.Lobby.UI
             ReloadPreview();
         }
 
-        //Sunrise start
-        private void UpdateSizeText()
-        {
-
-            if (Profile is null || !_prototypeManager.TryIndex<SpeciesPrototype>(Profile.Species, out var speciesPrototype))
-            {
-                return;
-            }
-
-            var heightRaw = HeightSlider.Value;
-            var weightRaw = WidthSlider.Value;
-
-            var height = speciesPrototype.StandardSize * heightRaw + 13; // 13 тут просто как заглушка, чтобы рост получатся 200 метра максимум
-            var weight = speciesPrototype.StandardWeight + speciesPrototype.StandardDensity * (weightRaw * heightRaw - 1);
-            HeightDescribeLabel.Text = Loc.GetString("humanoid-profile-editor-height-label", ("height", Math.Round(height)));
-            WidthDescribeLabel.Text = Loc.GetString("humanoid-profile-editor-width-label", ("weight", Math.Round(weight)));
-        }
-
-        private void SetWidth(float newWidth)
-        {
-            if (Profile is null)
-            {
-                return;
-            }
-
-            Profile.Appearance = Profile.Appearance.WithWidth(newWidth);
-
-            UpdateSizeText();
-            ReloadPreview();
-        }
-
-        private void SetHeight(float newHeight)
-        {
-            if (Profile is null)
-            {
-                return;
-            }
-
-            Profile.Appearance = Profile.Appearance.WithHeight(newHeight);
-
-            UpdateSizeText();
-            ReloadPreview();
-        }
-        //Sunrise end
-
         // Sunrise-TTS-Start
         private void SetVoice(string newVoice)
         {
@@ -1432,7 +1311,6 @@ namespace Content.Client.Lobby.UI
             UpdateSexControls(); // update sex for new species
             UpdateBodyTypes();
             UpdateSpeciesGuidebookIcon();
-            ResetSize();
             ReloadPreview();
         }
 
@@ -1529,74 +1407,6 @@ namespace Content.Client.Lobby.UI
             else
                 SexButton.SelectId((int) sexes[0]);
         }
-
-        //Sunrise start
-
-        private void ResetWidth()
-        {
-            if (Profile is null || !_prototypeManager.TryIndex<SpeciesPrototype>(Profile.Species, out var speciesPrototype))
-            {
-                return;
-            }
-
-            var defaultWidth = speciesPrototype.DefaultWidth;
-
-            WidthSlider.MinValue = speciesPrototype.MinWidth;
-            WidthSlider.MaxValue = speciesPrototype.MaxWidth;
-            WidthSlider.Value = defaultWidth;
-
-            Profile.Appearance = Profile.Appearance.WithWidth(defaultWidth);
-
-            UpdateSizeText();
-        }
-
-        private void ResetHeight()
-        {
-            if (Profile is null || !_prototypeManager.TryIndex<SpeciesPrototype>(Profile.Species, out var speciesPrototype))
-            {
-                return;
-            }
-
-            var defaultHeight = speciesPrototype.DefaultHeight;
-
-            HeightSlider.MinValue = speciesPrototype.MinHeight;
-            HeightSlider.MaxValue = speciesPrototype.MaxHeight;
-            HeightSlider.Value = defaultHeight;
-
-            Profile.Appearance = Profile.Appearance.WithHeight(defaultHeight);
-
-            UpdateSizeText();
-        }
-
-        private void ResetSize()
-        {
-            if (Profile is null || !_prototypeManager.TryIndex<SpeciesPrototype>(Profile.Species, out var speciesPrototype))
-            {
-                return;
-            }
-
-            ResetWidth();
-            ResetHeight();
-        }
-
-        private void UpdateSizeControls()
-        {
-            if (Profile is null || !_prototypeManager.TryIndex<SpeciesPrototype>(Profile.Species, out var speciesPrototype))
-            {
-                return;
-            }
-
-            WidthSlider.MinValue = speciesPrototype.MinWidth;
-            WidthSlider.MaxValue = speciesPrototype.MaxWidth;
-            WidthSlider.Value = Profile.Appearance.Width;
-
-            HeightSlider.MinValue = speciesPrototype.MinHeight;
-            HeightSlider.MaxValue = speciesPrototype.MaxHeight;
-            HeightSlider.Value = Profile.Appearance.Height;
-
-            UpdateSizeText();
-        }
-        //Sunrise end
 
         private void UpdateSkinColor()
         {
@@ -1728,29 +1538,13 @@ namespace Content.Client.Lobby.UI
             var hairMarking = Profile.Appearance.HairStyleId switch
             {
                 HairStyles.DefaultHairStyle => new List<Marking>(),
-                _ => new List<Marking>
-                {
-                    new(
-                        Profile.Appearance.HairStyleId,
-                        new[] { Profile.Appearance.HairColor },
-                        Profile.Appearance.HairMarkingEffect is { } hairExt
-                            ? new List<MarkingEffect> { hairExt.Clone() }
-                            : null)
-                }
+                _ => new() { new(Profile.Appearance.HairStyleId, new List<Color>() { Profile.Appearance.HairColor }) },
             };
 
             var facialHairMarking = Profile.Appearance.FacialHairStyleId switch
             {
                 HairStyles.DefaultFacialHairStyle => new List<Marking>(),
-                _ => new List<Marking>
-                {
-                    new(
-                        Profile.Appearance.FacialHairStyleId,
-                        new[] { Profile.Appearance.FacialHairColor },
-                        Profile.Appearance.FacialHairMarkingEffect is { } facialExt
-                            ? new List<MarkingEffect> { facialExt.Clone() }
-                            : null)
-                }
+                _ => new() { new(Profile.Appearance.FacialHairStyleId, new List<Color>() { Profile.Appearance.FacialHairColor }) },
             };
 
             HairStylePicker.UpdateData(
@@ -1790,12 +1584,7 @@ namespace Content.Client.Lobby.UI
             }
             if (hairColor != null)
             {
-                Markings.HairMarking = new (
-                    Profile.Appearance.HairStyleId,
-                    new List<Color>() { hairColor.Value },
-                    Profile.Appearance.HairMarkingEffect is { } hairExt
-                        ? new List<MarkingEffect> { hairExt.Clone() }
-                        : null);
+                Markings.HairMarking = new (Profile.Appearance.HairStyleId, new List<Color>() { hairColor.Value });
             }
             else
             {
@@ -1829,12 +1618,7 @@ namespace Content.Client.Lobby.UI
             }
             if (facialHairColor != null)
             {
-                Markings.FacialHairMarking = new(
-                    Profile.Appearance.FacialHairStyleId,
-                    new List<Color>() { facialHairColor.Value },
-                    Profile.Appearance.FacialHairMarkingEffect is { } facialExt
-                        ? new List<MarkingEffect> { facialExt.Clone() }
-                        : null);
+                Markings.FacialHairMarking = new (Profile.Appearance.FacialHairStyleId, new List<Color>() { facialHairColor.Value });
             }
             else
             {
@@ -2009,6 +1793,7 @@ namespace Content.Client.Lobby.UI
             }
 
             CBodyTypesButton.Select(_bodyTypes.FindIndex(x => x.ID == Profile.BodyType));
+            IsDirty = true;
         }
     }
 }

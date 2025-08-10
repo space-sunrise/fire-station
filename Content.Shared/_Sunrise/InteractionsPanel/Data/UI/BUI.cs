@@ -1,5 +1,4 @@
 using Robust.Shared.Configuration;
-using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared._Sunrise.InteractionsPanel.Data.UI;
@@ -41,11 +40,6 @@ public sealed class InteractionMessage : BoundUserInterfaceMessage
 }
 
 [Serializable, NetSerializable]
-public sealed class RequestSavePosAndCloseMessage : BoundUserInterfaceMessage
-{
-}
-
-[Serializable, NetSerializable]
 public sealed class CustomInteractionData
 {
     public string InteractionMessage { get; }
@@ -76,20 +70,20 @@ public sealed class CustomInteractionData
 public sealed class InteractionsCVars
 {
     public static readonly CVarDef<bool> EmoteVisibility =
-        CVarDef.Create("interactions.emote", true, CVar.CLIENTONLY);
+        CVarDef.Create("interactions.emote", true, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
 
     public static readonly CVarDef<bool> Expand =
-        CVarDef.Create("interactions.expand", false, CVar.CLIENTONLY);
+        CVarDef.Create("interactions.expand", false, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
 
     public static readonly CVarDef<string> OpenInteractionCategories =
-        CVarDef.Create("interactions.open_categories", "", CVar.CLIENTONLY);
+        CVarDef.Create("interactions.open_categories", "", CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
 
     public static readonly CVarDef<string> FavoriteInteractions =
-        CVarDef.Create("interactions.favorites", "", CVar.CLIENTONLY);
+        CVarDef.Create("interactions.favorites", "", CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
 
     public static readonly CVarDef<int> WindowPosX =
-        CVarDef.Create("interactions.window_pos_x", 0, CVar.CLIENTONLY);
+        CVarDef.Create("interactions.window_pos_x", 0, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
 
     public static readonly CVarDef<int> WindowPosY =
-        CVarDef.Create("interactions.window_pos_y", 0, CVar.CLIENTONLY);
+        CVarDef.Create("interactions.window_pos_y", 0, CVar.CLIENT | CVar.ARCHIVE | CVar.REPLICATED);
 }

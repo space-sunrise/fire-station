@@ -9,5 +9,4 @@ public enum StepInvalidReason
     MissingTool,
     DisabledTool,
     TooHigh,
-    NeedToolInhand,
 }

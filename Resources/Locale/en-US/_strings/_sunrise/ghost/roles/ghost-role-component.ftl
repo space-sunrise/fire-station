@@ -22,12 +22,9 @@ ghost-role-information-ert-cyborg-name = Боевой киборг МОГ
 ghost-role-information-ert-cyborg-description = Обезопасить. Удержать. Сохранить.
 ghost-role-information-ert-cyborg-rules = Подчиняйтесь МОГ, Штабу О4 и РАФу.
 
-ghost-role-information-ntr-lead-name = командир ИСН
-ghost-role-information-ntr-guard-name = оперативник ИСН
+ghost-role-information-ntr-lead-name = Командир ИСН
+ghost-role-information-ntr-guard-name = Оператор ИСН
 ghost-role-information-ntr-guard-description = Вы являетесь опорой и защитой Юридического Департамента, выполняя решения и постановления самого Магистрата и Представителя NanoTrasen!
-
-ghost-role-information-blueshield-operative-name = BlueShield Operative
-ghost-role-information-blueshield-operative-description = Accompany the most senior officials of the NanoTrasen Corporation.
 
 ghost-role-information-ussp-crew-name = Сотрудник СССП
 ghost-role-information-ussp-crew-description = "Вы — универсальный специалист станции СССП, обученный справляться с любыми задачами, от технических до медицинских."

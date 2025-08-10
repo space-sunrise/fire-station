@@ -11,6 +11,7 @@
   - type: Clothing
     sprite: _Scp/Objects/Scp/scp-035.rsi
   - type: SelfEquipOnly
+  - type: IngestionBlocker
   - type: FlashImmunity
   - type: EyeProtection
   - type: Scp

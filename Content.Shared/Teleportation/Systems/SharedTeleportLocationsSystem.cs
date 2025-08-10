@@ -55,10 +55,5 @@ public abstract partial class SharedTeleportLocationsSystem : EntitySystem
 
         // Teleport's done, now tell the BUI to close if needed.
         _ui.CloseUi(ent.Owner, TeleportLocationUiKey.Key);
-
-        // Sunrise-start
-        if (comp.DeleteAfterUse)
-            QueueDel(ent);
-        // Sunrise-end
     }
 }

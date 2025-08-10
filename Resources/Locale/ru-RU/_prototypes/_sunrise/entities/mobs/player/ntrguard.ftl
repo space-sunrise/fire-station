@@ -1,6 +1,6 @@
-ent-RandomHumanoidSpawnerNtrLeader = командир ИСН
-    .suffix = ИСН, Командир
+ent-RandomHumanoidSpawnerNtrLeader = NTR leader
+    .suffix = NTR Role, Leader
     .desc = { "" }
-ent-RandomHumanoidSpawnerNtrGuard = оперативник ИСН
-    .suffix = ИСН, Оперативник
+ent-RandomHumanoidSpawnerNtrGuard = NTR operator
+    .suffix = NTR Role, Operator
     .desc = { ent-RandomHumanoidSpawnerNtrLeader.desc }

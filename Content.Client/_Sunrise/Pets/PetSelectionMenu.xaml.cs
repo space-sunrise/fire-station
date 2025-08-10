@@ -274,6 +274,10 @@ public sealed partial class PetSelectionMenu : DefaultWindow
         _previewedPet = string.Empty;
         OnIdSelected?.Invoke(string.Empty);
 
+        var cache = _playerCache.GetCache();
+        cache.Pet = null;
+        _playerCache.SetCache(cache);
+
         _cfg.SetCVar(SunriseCCVars.SponsorPet, "");
         _cfg.SaveToFile();
 
@@ -288,6 +292,10 @@ public sealed partial class PetSelectionMenu : DefaultWindow
 
     private void SetCurrentPetSelection(string petSelection)
     {
+        var cache = _playerCache.GetCache();
+        cache.Pet = petSelection;
+        _playerCache.SetCache(cache);
+
         _cfg.SetCVar(SunriseCCVars.SponsorPet, petSelection);
         _cfg.SaveToFile();
     }

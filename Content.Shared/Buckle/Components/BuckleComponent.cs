@@ -70,11 +70,6 @@ public sealed partial class BuckleComponent : Component
     /// Used for client rendering
     /// </summary>
     [ViewVariables] public int? OriginalDrawDepth;
-
-    // Sunrise-Start
-    [DataField]
-    public float UnbuckleDoafterTime = 2f;
-    // Sunrise-End
 }
 
 public sealed partial class UnbuckleAlertEvent : BaseAlertEvent;

@@ -342,7 +342,6 @@ public sealed partial class DockingSystem
                         Coordinates = gridPosition,
                         Area = cacheDockedAABB,
                         Angle = cacheTargetAngle,
-                        TargetGrid = targetGrid,
                     });
                 }
             });

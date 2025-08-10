@@ -56,9 +56,6 @@
       300: Critical
     showOverlays: false
     allowRevives: true
-  - type: Construction
-    graph: LockerMechConstruction
-    node: lockermech
 
 - type: entity
   id: MechLockerBattery

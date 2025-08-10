@@ -63,10 +63,6 @@
     sprite: Effects/emp.rsi
     layers:
     - state: emp_pulse
-  - type: Projectile
-    damage:
-      types:
-        Shock: 8
   - type: EmpOnTrigger
     range: 2
     energyConsumption: 30000
@@ -379,12 +375,12 @@
   - type: OnUseTimerTrigger
     initialBeepDelay: 0
     beepInterval: 2
-    delay: 2.75
+    delay: 3.5
   - type: EmitSoundOnSpawn
     sound:
       path: /Audio/Effects/countdown.ogg
   - type: TimedDespawn
-    lifetime: 2.75
+    lifetime: 3.5
 
 - type: entity
   id: BulletSyndieMiniBomb

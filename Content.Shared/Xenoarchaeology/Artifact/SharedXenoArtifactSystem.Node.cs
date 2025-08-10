@@ -83,13 +83,7 @@ public abstract partial class SharedXenoArtifactSystem
         if (!Resolve(ent, ref ent.Comp))
             return;
 
-        if (ent.Comp.MaxDurability < 0)
-        {
-            Log.Warning($"Max durability to {ent.Comp.MaxDurability}, which is less than 0. Clamping to 0.");
-            ent.Comp.MaxDurability = Math.Abs(ent.Comp.MaxDurability);
-        }
-
-        ent.Comp.Durability = Math.Clamp(durability, 0, Math.Abs(ent.Comp.MaxDurability));
+        ent.Comp.Durability = Math.Clamp(durability, 0, ent.Comp.MaxDurability);
         UpdateNodeResearchValue((ent, ent.Comp));
         Dirty(ent);
     }

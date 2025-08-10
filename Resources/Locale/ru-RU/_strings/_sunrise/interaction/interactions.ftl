@@ -1,7 +1,8 @@
-# face.yml
+﻿# face.yml
 interaction-name-face-cheeks-pull = Потискать за щёчки
 interaction-name-face-pats = Погладить по лицу
 interaction-name-face-lick-doggy-style = Облизать лицо по-собачьи
+
 # friendly.yml
 interaction-name-friendly-handshake = Пожать руку
 interaction-name-friendly-pat-shoulder = Похлопать по плечу
@@ -28,9 +29,12 @@ interaction-name-friendly-fuck = Показать фак
 interaction-name-friendly-finger-intertwine = Сплестись пальчиками
 interaction-name-friendly-nose-click = Дать по носу
 interaction-name-friendly-fofan = Дать фофан
+
 # horn.yml
 interaction-name-horns-pat = Погладить рожки
+
 # neck.yml
 interaction-name-neck-nuzzle = Потереться мордочкой о шею
+
 # tail.yml
 interaction-name-pat-tail = Погладить хвост

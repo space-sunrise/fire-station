@@ -7,5 +7,4 @@ public sealed class PlayerCacheData
 {
     public string? GhostTheme { get; set; }
     public string? Pet { get; set; }
-    public bool? EmoteVisibility { get; set; }
 }

@@ -62,7 +62,7 @@
   name: research-technology-durand
   icon:
     sprite: Objects/Specific/Mech/durand.rsi
-    state: base
+    state: durand
   discipline: Arsenal
   tier: 3
   cost:
@@ -84,7 +84,6 @@
   - WeaponMechCombatMG
   - PaintDurandExecutor
   - PaintDurandShire
-  - PaintDurandOld
   - PowerCageHigh
   technologyPrerequisites:
   - Gygax

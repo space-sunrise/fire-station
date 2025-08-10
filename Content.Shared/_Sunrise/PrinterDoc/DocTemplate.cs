@@ -14,9 +14,4 @@ public sealed partial class DocTemplatePrototype : IPrototype
 
     [DataField(required: true)]
     public ResPath Content;
-
-    [DataField(required: true)]
-    public string Component { get; private set; } = default!;
-    [DataField]
-    public bool IsPublic { get; private set; } = true;
 }

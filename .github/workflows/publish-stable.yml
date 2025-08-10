@@ -1,7 +1,7 @@
-name: Publish Stable
+name: Publish Mapping
 
 concurrency:
-  group: publish-stable
+  group: publish-mapping
   cancel-in-progress: true
 
 on:
@@ -12,24 +12,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Fail if not on stable branch
-      if: ${{GITHUB.REF_NAME != 'stable'}}
-      run: exit 1
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-
-    - name: Install Dependencies
-      run: pip install pyyaml requests
-
-    - uses: actions/checkout@v4.2.2
+    - uses: actions/checkout@v3.6.0
       with:
         submodules: 'recursive'
 
     - name: Checkout SunrisePrivate
-      uses: actions/checkout@v4.2.2
+      uses: actions/checkout@v2
       with:
         repository: ${{ secrets.SUNRISE_PRIVATE_REPO }}
         path: SunrisePrivate
@@ -61,31 +49,7 @@ jobs:
       run: dotnet run --project Content.Packaging client --no-wipe-release
 
     - name: Publish version
-      run: Tools/publish_multi_request.py --fork-id fire_station_stable
+      run: Tools/publish_multi_request.py --fork-id fire_station_mapping
       env:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}
-
-    - name: Publish server update info
-      continue-on-error: true
-      run: Tools/_sunrise/discord_publish_announce.py
-      env:
-        DISCORD_WEBHOOK_URL: ${{ secrets.ANNOUNCE_UPDATE_DISCORD_WEBHOOK }}
-        DISCORD_ROLE_ID: ${{ secrets.ANNOUNCE_UPDATE_DISCORD_ROLE_ID }}
-        BUILD_PATH: ./release/SS14.Client.zip
-
-    - name: Publish discord changelog
-      continue-on-error: true
-      run: Tools/_sunrise/actions_changelogs_since_last_run.py
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK_FIRE }}
-        CHANGELOG_FILE: 'Resources/Changelog/ChangelogFire.yml'
-
-    - name: Publish discord changelog
-      continue-on-error: true
-      run: Tools/_sunrise/actions_changelogs_since_last_run.py
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        DISCORD_WEBHOOK_URL: ${{ secrets.CHANGELOG_DISCORD_WEBHOOK_SUNRISE }}
-        CHANGELOG_FILE: 'Resources/Changelog/ChangelogSunrise.yml'

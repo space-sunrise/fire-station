@@ -48,10 +48,6 @@ public sealed partial class CustomInteractionEditor : DefaultWindow
     private readonly Dictionary<int, string> _effectIds = new();
     private readonly Dictionary<int, string> _soundIds = new();
 
-    private const int MaxNameLength = 64;
-    private const int MaxDescriptionLength = 256;
-    private const int MaxMessageLength = 128;
-
     #endregion
 
     #region Constructor
@@ -304,12 +300,6 @@ public sealed partial class CustomInteractionEditor : DefaultWindow
         if (string.IsNullOrEmpty(message))
             return;
 
-        if (message.Length > MaxMessageLength)
-        {
-            ShowError($"Сообщение слишком длинное (макс. {MaxMessageLength} символов)");
-            return;
-        }
-
         _interaction.InteractionMessages.Add(message);
         AddMessageToList(message);
         NewMessageInput.Text = string.Empty;
@@ -343,18 +333,6 @@ public sealed partial class CustomInteractionEditor : DefaultWindow
         if (string.IsNullOrEmpty(NameInput.Text.Trim()))
         {
             ShowError("Имя взаимодействия не может быть пустым");
-            return;
-        }
-
-        if (_interaction.Name.Length > MaxNameLength)
-        {
-            ShowError($"Имя слишком длинное (макс. {MaxNameLength} символов)");
-            return;
-        }
-
-        if (_interaction.Description.Length > MaxDescriptionLength)
-        {
-            ShowError($"Описание слишком длинное (макс. {MaxDescriptionLength} символов)");
             return;
         }
 

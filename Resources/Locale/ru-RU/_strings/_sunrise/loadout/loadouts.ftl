@@ -15,7 +15,7 @@ Lawyer-loadout = Снаряжение юриста
 Magistrate-loadout = Снаряжение магистрата
 OfficerNTR-loadout = Снаряжение ИСН
 # Blueshield
-Blueshield-loadout = Снаряжение офицера «Синий щит»
+Blueshield-loadout = Снаряжение офицера «синий щит»
 # Security
 Brigmedic-loadout = Снаряжение бригмедика
 Detective-loadout = Снаряжение детектива

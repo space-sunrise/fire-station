@@ -3,7 +3,6 @@ using System.Linq;
 using Content.Shared._Sunrise;
 using Content.Shared._Sunrise.TTS;
 using System.Numerics;
-using Content.Shared._Sunrise.MarkingEffects;
 using Content.Shared.CCVar;
 using Content.Shared.Decals;
 using Content.Shared.Examine;
@@ -197,8 +196,6 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         targetHumanoid.MarkingSet = new(sourceHumanoid.MarkingSet);
         SetTTSVoice(target, sourceHumanoid.Voice, targetHumanoid); // Sunrise-TTS
         targetHumanoid.BodyType = sourceHumanoid.BodyType;
-        targetHumanoid.Width = sourceHumanoid.Width; //Sunrise
-        targetHumanoid.Height = sourceHumanoid.Height; //Sunrise
 
         targetHumanoid.Gender = sourceHumanoid.Gender;
 
@@ -457,13 +454,13 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
         if (_markingManager.Markings.TryGetValue(profile.Appearance.HairStyleId, out var hairPrototype) &&
             _markingManager.CanBeApplied(profile.Species, profile.Sex, hairPrototype, _proto))
         {
-            AddMarking(uid, profile.Appearance.HairStyleId, hairColor, false, markingEffect: profile.Appearance.HairMarkingEffect);
+            AddMarking(uid, profile.Appearance.HairStyleId, hairColor, false);
         }
 
         if (_markingManager.Markings.TryGetValue(profile.Appearance.FacialHairStyleId, out var facialHairPrototype) &&
             _markingManager.CanBeApplied(profile.Species, profile.Sex, facialHairPrototype, _proto))
         {
-            AddMarking(uid, profile.Appearance.FacialHairStyleId, facialHairColor, false, markingEffect: profile.Appearance.FacialHairMarkingEffect);
+            AddMarking(uid, profile.Appearance.FacialHairStyleId, facialHairColor, false);
         }
 
         humanoid.MarkingSet.EnsureSpecies(profile.Species, profile.Appearance.SkinColor, _markingManager, _proto);
@@ -492,9 +489,6 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
 
         humanoid.Age = profile.Age;
 
-        humanoid.Width = profile.Appearance.Width; //Sunrise
-        humanoid.Height = profile.Appearance.Height; //Sunrise
-
         Dirty(uid, humanoid);
     }
 
@@ -507,7 +501,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     /// <param name="sync">Whether to immediately sync this marking or not</param>
     /// <param name="forced">If this marking was forced (ignores marking points)</param>
     /// <param name="humanoid">Humanoid component of the entity</param>
-    public void AddMarking(EntityUid uid, string marking, Color? color = null, bool sync = true, bool forced = false, HumanoidAppearanceComponent? humanoid = null, MarkingEffect? markingEffect = null)
+    public void AddMarking(EntityUid uid, string marking, Color? color = null, bool sync = true, bool forced = false, HumanoidAppearanceComponent? humanoid = null)
     {
         if (!Resolve(uid, ref humanoid)
             || !_markingManager.Markings.TryGetValue(marking, out var prototype))
@@ -522,8 +516,6 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
             for (var i = 0; i < prototype.Sprites.Count; i++)
             {
                 markingObject.SetColor(i, color.Value);
-                if(markingEffect != null)
-                    markingObject.SetMarkingEffect(i, markingEffect);
             }
         }
 

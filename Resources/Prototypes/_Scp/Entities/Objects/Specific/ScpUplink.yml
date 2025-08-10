@@ -57,18 +57,6 @@
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
-- type: entity
-  parent: BaseUplinkMTF
-  id: BaseUplinkMTFDebug
-  categories: [ Debug ]
-  components:
-  - type: Store
-    balance:
-      Bluecrystal: 999
-      Crystallite: 999
-    buySuccessSound:
-      path: /Audio/Effects/Arcade/newgame.ogg
-
 
 
 

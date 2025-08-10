@@ -1,7 +1,5 @@
 ent-SpawnMechRipley = спавнер Рипли АВП
     .desc = { ent-MarkerBase.desc }
-ent-SpawnMechHauler = Hauler APLU Spawner
-    .desc = { ent-MarkerBase.desc }
 ent-SpawnMechRipley2 = спавнер Рипли АВП MK-II
     .desc = { ent-MarkerBase.desc }
 ent-SpawnMechHonker = спавнер Х.О.Н.К.
@@ -47,7 +45,4 @@ ent-SpawnMechSecPodFilled = спавнер Патрульного Пода
     .desc = { ent-MarkerBase.desc }
 ent-SpawnMechMiningPodFilled = Mining Pod Spawner
     .suffix = Filled
-    .desc = { ent-MarkerBase.desc }
-ent-SpawnMechPaddyFilled = спавнер Падди
-    .suffix = Заполнен
     .desc = { ent-MarkerBase.desc }

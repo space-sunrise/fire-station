@@ -3,22 +3,22 @@
          xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
          xmlns:parallax="clr-namespace:Content.Client.Parallax"
          xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-         xmlns:serversHub="clr-namespace:Content.Client._Sunrise.ServersHub"
-         xmlns:texture="clr-namespace:Content.Client._Sunrise.Texture">
-
-    <texture:RawAnimatedTexture Name="ConnectionAnimation" HorizontalExpand="True" VerticalExpand="True" Access="Public" />
+         xmlns:serversHub="clr-namespace:Content.Client._Sunrise.ServersHub">
+    <parallax:ParallaxControl SpeedX="20"/>
 
     <BoxContainer Orientation="Vertical"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Center"
                   Margin="40 0 0 0">
-        <PanelContainer StyleClasses="AngleRect" MinWidth="300">
+        <PanelContainer StyleClasses="AngleRect" MinWidth="200">
             <PanelContainer.PanelOverride>
-                <gfx:StyleBoxFlat BackgroundColor="#171616E5" />
+                <gfx:StyleBoxFlat BackgroundColor="#1a1a1a"
+                                 BorderColor="#3E3E4A"
+                                 BorderThickness="2"/>
             </PanelContainer.PanelOverride>
             <BoxContainer Orientation="Vertical" Margin="0 5">
                 <controls:StripeBack>
-                    <BoxContainer Orientation="Vertical" Margin="4 8">
+                    <BoxContainer Orientation="Vertical" Margin="0 8">
                         <Label Text="Наше сообщество!"
                                StyleClasses="LabelHeadingBigger"
                                HorizontalAlignment="Center"/>
@@ -28,13 +28,19 @@
                     </BoxContainer>
                 </controls:StripeBack>
 
-                <PanelContainer Margin="5 5">
+                <PanelContainer Margin="0 5">
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BackgroundColor="#5865F2"/>
+                    </PanelContainer.PanelOverride>
                     <Button Name="Discord"
                             Text="Discord"
                             StyleClasses="SocialButton SocialButtonDiscord"/>
                 </PanelContainer>
 
-                <PanelContainer Margin="5 10">
+                <PanelContainer Margin="0 10">
+                    <PanelContainer.PanelOverride>
+                        <gfx:StyleBoxFlat BackgroundColor="#0088cc"/>
+                    </PanelContainer.PanelOverride>
                     <Button Name="Telegram"
                             Text="Telegram"
                             StyleClasses="SocialButton SocialButtonTelegram"/>
@@ -45,29 +51,24 @@
 
     <Control HorizontalAlignment="Center" VerticalAlignment="Center">
         <BoxContainer Orientation="Vertical">
-            <controls:StripeBack>
-                <BoxContainer Orientation="Horizontal"
-                              HorizontalAlignment="Center"
-                              Margin="6 5">
-                    <TextureRect Name="Logo" Stretch="KeepCentered" Margin="0, 0, 2, 0"/>
-                    <Label Name="ServerName"
-                           Text="{Loc 'launcher-server-name'}"
-                           StyleClasses="LabelHeadingTheBiggest"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
-                </BoxContainer>
-            </controls:StripeBack>
             <PanelContainer StyleClasses="AngleRect">
                 <PanelContainer.PanelOverride>
-                    <gfx:StyleBoxFlat BackgroundColor="#171616E5" />
+                    <gfx:StyleBoxFlat BackgroundColor="#1a1a1a"
+                                     BorderColor="#2ecc71"
+                                     BorderThickness="2"/>
                 </PanelContainer.PanelOverride>
-                <BoxContainer Orientation="Vertical" MinSize="600 150">
-                    <!-- Header УДАЛЕН-->
+                <BoxContainer Orientation="Vertical" MinSize="400 250">
+                    <!-- Header -->
                     <controls:StripeBack>
-                        <BoxContainer Orientation="Horizontal" Margin="10 5" Visible="False">
+                        <BoxContainer Orientation="Horizontal" Margin="10 5">
                             <Label Text="{Loc 'connecting-title'}"
                                    StyleClasses="LabelBigger"
                                    VAlign="Center" />
+                            <Button Name="ExitButton"
+                                    Text="{Loc 'connecting-exit'}"
+                                    StyleClasses="ButtonColorRed"
+                                    HorizontalAlignment="Right"
+                                    HorizontalExpand="True" />
                         </BoxContainer>
                     </controls:StripeBack>
 
@@ -147,8 +148,8 @@
                                HorizontalAlignment="Center" />
                     </BoxContainer>
 
-                    <!-- Footer УДАЛЕН НАХУЙ-->
-                    <PanelContainer Visible="False">
+                    <!-- Footer -->
+                    <PanelContainer>
                         <PanelContainer.PanelOverride>
                             <gfx:StyleBoxFlat BackgroundColor="#222"
                                              ContentMarginTopOverride="2" />
@@ -210,34 +211,25 @@
                     VerticalExpand="True"
                     VerticalAlignment="Bottom">
         <PanelContainer.PanelOverride>
-            <gfx:StyleBoxFlat BackgroundColor="#171616E5"/>
+            <gfx:StyleBoxFlat BackgroundColor="#1a1a1a"
+                             BorderColor="#f1c40f"
+                             BorderThickness="2"/>
         </PanelContainer.PanelOverride>
         <BoxContainer Orientation="Vertical" VerticalExpand="True">
             <controls:StripeBack>
                 <BoxContainer Orientation="Horizontal"
-                            Margin="0 5"
-                            HorizontalAlignment="Center">
+                            HorizontalAlignment="Center"
+                            Margin="0 5">
                     <Label Name="LoginTipTitle"
                            Text="Tip"
                            StyleClasses="LabelBigger"
-                           Align="Center"
-                           HorizontalAlignment="Center"
-                           VerticalAlignment="Center"/>
+                           Align="Center"/>
                 </BoxContainer>
             </controls:StripeBack>
             <BoxContainer Orientation="Vertical" Margin="8">
-                <Button Name="ExitButton"
-                        Text="{Loc 'connecting-exit'}"
-                        StyleClasses="ButtonColorRed"
-                        HorizontalAlignment="Center"
-                        VerticalAlignment="Center"
-                        HorizontalExpand="True"
-                        MinSize="270, 40"
-                        Margin="0, 2"/>
                 <RichTextLabel Name="LoginTip"
-                               VerticalExpand="True"
-                               StyleClasses="LabelSubText"
-                               Visible="False"/>
+                              VerticalExpand="True"
+                              StyleClasses="LabelSubText"/>
             </BoxContainer>
         </BoxContainer>
     </PanelContainer>

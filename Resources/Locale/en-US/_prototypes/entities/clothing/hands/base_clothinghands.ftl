@@ -10,5 +10,3 @@ ent-GoldRingBase = { "" }
     .desc = { "" }
 ent-SilverRingBase = silver ring
     .desc = Looks slightly less valuable than a gold one.
-ent-ClothingHandsSmooth = { ent-ClothingHandsBase }
-    .desc = { ent-ClothingHandsBase.desc }

@@ -682,7 +682,7 @@ BarSignSpacebucksAlignTile: BarSignSpacebucks
 BarSignMaltroachAlignTile: BarSignMaltroach
 BarSignWhiskeyEchoesAlignTile: BarSignWhiskeyEchoes
 
-# Sunrise-Start
+# Sunrise migrations
 # AirlockExternalGlassShuttleArrivals: AirlockExternalGlassShuttleArrivalsLocked # Fire edit
 AirlockHatchSyndicate: AirlockHatchSyndicateLocked
 SurveillanceCameraWirelessRouterBase: SurveillanceCameraWirelessRouterConstructed
@@ -777,8 +777,9 @@ TableWoodReinforced: null
 BoxMiniSyringe: null
 LauncherSyringeMed: null
 PlushieUunaMiira: null
-AbductorDispencer: VendingMachineAbductorDispenser
-SpawnMechRipley: SpawnMechHauler
+AbductorDispencer: VendingMachineAbductorDispenser # Abductor shit.
+
+# Кто удалил и не добавил в миграции
 PrintedDocumentClosingIndictment: null
 PrintedDocumentPermissionDisposeBody: null
 PrintedDocumentDeathCertificate: null
@@ -788,14 +789,7 @@ BorgModuleDefibrillator: null
 MagazineM16A4: null
 MagazineG36: null
 MagazineFamas: null
-BaseUplinkNTERT75BC: null
-BaseUplinkNTERT100BC: null
-BaseUplinkNTERT200BC: null
-SupermatterSliver: null
-# Удалить только когда все карты будут обновлены под их удаление
-#AtmosDeviceFanTiny: null
-#AtmosDeviceFanDirectional: null
-# Sunrise-End
+# Sunrise migrations end
 
 # Fire added start
 PosterDyshi: PosterBreath

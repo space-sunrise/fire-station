@@ -14,7 +14,6 @@
     - type: ChameleonClothing
       slot: [outerClothing]
       default: ClothingOuterVest
-      requireTag: Vest # Sunrise-Edit
     - type: UserInterface
       interfaces:
         enum.ChameleonUiKey.Key:

@@ -1,5 +1,4 @@
 ﻿using Robust.Client.Graphics;
-using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 
@@ -8,10 +7,6 @@ namespace Content.Client._Scp.Shaders.Common.Vignette;
 public sealed class VignetteOverlay : Overlay
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
-    [Dependency] private readonly IEntityManager _entManager = default!;
-
-    private readonly EntityQuery<EyeComponent> _eyeQuery;
 
     private readonly ShaderInstance _shader;
 
@@ -21,9 +16,7 @@ public sealed class VignetteOverlay : Overlay
     {
         IoCManager.InjectDependencies(this);
 
-        _eyeQuery = _entManager.GetEntityQuery<EyeComponent>();
-
-        _shader = _prototype.Index<ShaderPrototype>("Vignette").InstanceUnique();
+        _shader = _prototype.Index<ShaderPrototype>("Vignette").Instance().Duplicate();
     }
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -33,11 +26,6 @@ public sealed class VignetteOverlay : Overlay
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
         if (CurrentStrength == 0)
-            return false;
-
-        var playerEntity = _player.LocalEntity;
-
-        if (!_eyeQuery.TryGetComponent(playerEntity, out var eyeComp) || args.Viewport.Eye != eyeComp.Eye)
             return false;
 
         return true;

@@ -1,4 +1,4 @@
-using Content.Shared._Sunrise.Aphrodisiac;
+using Content.Shared._Sunrise.Aphrodesiac;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;

@@ -1,5 +1,7 @@
+using Content.Server.GameTicking.Presets;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype.Set;
 
 namespace Content.Server._Sunrise.Presets;
 
@@ -11,8 +13,8 @@ public sealed partial class GamePresetPoolPrototype : IPrototype
     public string ID { get; private set; } = default!;
 
     /// <summary>
-    ///     Presets with their respective player limits.
+    ///     Which presets are in this pool.
     /// </summary>
-    [DataField("presets", required: true)]
-    public Dictionary<string, int[]> Presets { get; private set; } = new();
+    [DataField("presets", customTypeSerializer:typeof(PrototypeIdHashSetSerializer<GamePresetPrototype>), required: true)]
+    public HashSet<string> Presets = new(0);
 }

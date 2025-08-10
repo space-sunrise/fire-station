@@ -223,6 +223,10 @@ public sealed partial class GhostThemeMenu : DefaultWindow
 
     private void SetCurrentGhostTheme(string ghostTheme)
     {
+        var cache = _playerCache.GetCache();
+        cache.GhostTheme = ghostTheme;
+        _playerCache.SetCache(cache);
+
         _cfg.SetCVar(SunriseCCVars.SponsorGhostTheme, ghostTheme);
         _cfg.SaveToFile();
     }

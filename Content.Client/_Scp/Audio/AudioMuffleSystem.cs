@@ -24,17 +24,7 @@ public sealed class AudioMuffleSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     private static readonly ProtoId<AudioPresetPrototype> MufflingEffectPreset = "ScpBehindWalls";
-    private static readonly HashSet<ProtoId<TagPrototype>> SoundproofingTags =
-    [
-        "Wall",
-        "Window",
-        "Airlock",
-        "GlassAirlock",
-        "Windoor",
-        "SecureWindoor",
-        "SecurePlasmaWindoor",
-        "SecureUraniumWindoor",
-    ];
+    private static readonly HashSet<ProtoId<TagPrototype>> SoundproofingTags = ["Wall", "Window", "Airlock", "GlassAirlock"];
 
     private const float ReducedVolume = -20f;
     private const float HearRange = 14f;

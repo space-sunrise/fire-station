@@ -218,7 +218,6 @@ namespace Content.Shared.Preferences
             return new()
             {
                 Species = species,
-                Appearance = HumanoidCharacterAppearance.DefaultWithSpecies(species)
             };
         }
 

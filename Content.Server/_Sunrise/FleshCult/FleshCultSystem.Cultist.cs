@@ -4,7 +4,6 @@ using Content.Server.Body.Components;
 using Content.Server.Flash.Components;
 using Content.Server.Forensics;
 using Content.Server.Temperature.Components;
-using Content.Shared._Sunrise.NightVision.Components;
 using Content.Shared._Sunrise.CollectiveMind;
 using Content.Shared._Sunrise.FleshCult;
 using Content.Shared.Actions;
@@ -57,7 +56,6 @@ public sealed partial class FleshCultSystem
     {
         SubscribeLocalEvent<FleshCultistComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<FleshCultistComponent, ComponentShutdown>(OnShutdown);
-        SubscribeLocalEvent<FleshCultistComponent, FleshCultistNightVisionMutationEvent>(OnNightVisionMutation);
         SubscribeLocalEvent<FleshCultistComponent, FleshCultistInsulatedImmunityMutationEvent>(OnInsulatedImmunityMutation);
         SubscribeLocalEvent<FleshCultistComponent, FleshCultistPressureImmunityMutationEvent>(OnPressureImmunityMutation);
         SubscribeLocalEvent<FleshCultistComponent, FleshCultistFlashImmunityMutationEvent>(OnFlashImmunityMutation);
@@ -239,11 +237,6 @@ public sealed partial class FleshCultSystem
 
             _roles.MindRemoveRole<FleshCultistRoleComponent>((mindId, mind));
         }
-    }
-
-    private void OnNightVisionMutation(EntityUid uid, FleshCultistComponent component, FleshCultistNightVisionMutationEvent args)
-    {
-        EnsureComp<ToggleableNightVisionComponent>(uid);
     }
 
     private void OnInsulatedImmunityMutation(EntityUid uid, FleshCultistComponent component, FleshCultistInsulatedImmunityMutationEvent args)

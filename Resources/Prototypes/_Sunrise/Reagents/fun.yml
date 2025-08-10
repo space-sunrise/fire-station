@@ -1,9 +1,9 @@
 - type: reagent
-  id: Aphrodisiac
-  name: reagent-name-aphrodisiac
+  id: Aphrodesiac
+  name: reagent-name-aphrodesiac
   group: Special
-  desc: reagent-desc-aphrodisiac
-  physicalDesc: reagent-physical-desc-aphrodisiac
+  desc: reagent-desc-aphrodesiac
+  physicalDesc: reagent-physical-desc-aphrodesiac
   flavor: funny
   color: "#FF00E8"
   metabolisms:
@@ -11,7 +11,7 @@
       effects:
       - !type:PopupMessage
         type: Local
-        messages: [ "aphrodisiac-effect1", "aphrodisiac-effect2" ]
+        messages: [ "aphrodesiac-effect1", "aphrodesiac-effect2" ]
         probability: 0.1
       - !type:GenericStatusEffect
         key: LoveEffect

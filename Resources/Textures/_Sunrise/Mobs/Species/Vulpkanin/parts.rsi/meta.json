@@ -11,19 +11,11 @@
             "name": "full"
         },
         {
-            "name": "head_f_small_muzzle",
+            "name": "head_f",
             "directions": 4
         },
         {
-            "name": "head_f_big_muzzle",
-            "directions": 4
-        },
-        {
-            "name": "head_m_small_muzzle",
-            "directions": 4
-        },
-        {
-            "name": "head_m_big_muzzle",
+            "name": "head_m",
             "directions": 4
         },
         {
@@ -31,11 +23,7 @@
             "directions": 4
         },
         {
-            "name": "l_foot_straight",
-            "directions": 4
-        },
-        {
-            "name": "l_foot_curved",
+            "name": "l_foot",
             "directions": 4
         },
         {
@@ -43,11 +31,7 @@
             "directions": 4
         },
         {
-            "name": "l_leg_straight",
-            "directions": 4
-        },
-        {
-            "name": "l_leg_curved",
+            "name": "l_leg",
             "directions": 4
         },
         {
@@ -55,11 +39,7 @@
             "directions": 4
         },
         {
-            "name": "r_foot_straight",
-            "directions": 4
-        },
-        {
-            "name": "r_foot_curved",
+            "name": "r_foot",
             "directions": 4
         },
         {
@@ -67,11 +47,7 @@
             "directions": 4
         },
         {
-            "name": "r_leg_straight",
-            "directions": 4
-        },
-        {
-            "name": "r_leg_curved",
+            "name": "r_leg",
             "directions": 4
         },
         {

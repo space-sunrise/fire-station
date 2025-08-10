@@ -16,7 +16,9 @@ public sealed class MoldovanAccentSystem : EntitySystem
 
     public string Accentuate(string message)
     {
-        return _replacement.ApplyReplacements(message, "moldovan");
+        var accentedMessage = new StringBuilder(_replacement.ApplyReplacements(message, "moldovan"));
+
+        return accentedMessage.ToString();
     }
 
     private void OnAccent(EntityUid uid, MoldovanAccentComponent component, AccentGetEvent args)

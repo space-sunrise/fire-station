@@ -3,7 +3,7 @@
 - type: entity
   id: SunriseEffectHeal
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-heal
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEDamageInArea
@@ -20,7 +20,7 @@
 - type: entity
   id: SunriseArtifactGenerateEnergy
   parent: BaseOneTimeXenoArtifactEffect
-  description: artifact-effect-description-generate-energy
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
@@ -37,7 +37,7 @@
 - type: entity
   id: SunriseArtifactWandering
   parent: BaseOneTimeXenoArtifactEffect
-  description: artifact-effect-description-wandering
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
@@ -45,13 +45,13 @@
     - type: RandomWalk
       minSpeed: 12
       maxSpeed: 20
-      minStepCooldown: 5
-      maxStepCooldown: 5
+      minStepCooldown: 1
+      maxStepCooldown: 3
 
 - type: entity
   id: SunriseArtifactThrowThingsAround
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-throw-things
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEThrowThingsAround
@@ -59,7 +59,7 @@
 - type: entity
   id: SunriseArtifactKnock
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-knock
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEKnock
@@ -68,7 +68,7 @@
 - type: entity
   id: SunriseArtifactEffectJunkSpawn
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-junk-spawn
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
@@ -89,7 +89,7 @@
 - type: entity
   id: SunriseArtifactShatterWindows
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-shatter-windows
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XenoArtifactNode
@@ -109,7 +109,7 @@
 - type: entity
   id: SunriseEffectBoltAirlocks
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-bolt-airlocks
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactBoltAirlocks
@@ -117,7 +117,7 @@
 - type: entity
   id: SunriseArtifactHunger
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-hunger
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactModifyHunger
@@ -125,7 +125,7 @@
 - type: entity
   id: SunriseEffectThirst
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-thirst
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactModifyThirst
@@ -133,7 +133,7 @@
 - type: entity
   id: SunriseEffectTeslaDischarge
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-tesla-discharge
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
@@ -150,15 +150,9 @@
 - type: entity
   id: SunriseEffectSpawnEvilTwin
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-spawn-evil-twin
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
-  - type: XenoArtifactNode
-    maxDurability: 1
-    maxDurabilityCanDecreaseBy:
-      min: 0
-      max: 0
-    triggerDecreasesDurability: true
   - type: ArtifactStartGameRule
     rules:
       EvilTwinSpawn: 2
@@ -166,7 +160,7 @@
 - type: entity
   id: SunriseArtifactTeleport
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-teleport
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
@@ -176,7 +170,7 @@
 - type: entity
   id: SunriseArtifactEmp
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-emp
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XenoArtifactNode
@@ -189,7 +183,7 @@
 - type: entity
   id: SunriseEffectIgnite
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-ignite
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEIgnite
@@ -201,16 +195,16 @@
 - type: entity
   id: SunriseEffectShuffleUltra
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-shuffle-ultra
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEShuffle
-    radius: 30
+    radius: 70
 
 - type: entity
   id: SunriseEffectPolyChair
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-polymorph-chair
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
@@ -219,7 +213,7 @@
 - type: entity
   id: SunriseEffectPolyWatermelon
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-polymorph-watermelon
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
@@ -228,7 +222,7 @@
 - type: entity
   id: SunriseEffectPolyAppendix
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-polymorph-appendix
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
@@ -237,7 +231,7 @@
 - type: entity
   id: SunriseEffectPolyDisposal
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-polymorph-disposal
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
@@ -246,7 +240,7 @@
 - type: entity
   id: SunriseEffectPolyTable
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-polymorph-table
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
@@ -255,7 +249,7 @@
 - type: entity
   id: SunriseEffectSwap
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-swap
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactWhitelistSwap
@@ -266,41 +260,14 @@
 - type: entity
   id: SunriseEffectRandomTransformation
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-random-transformation
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactRandomTransformation
     prototypeBlacklist:
-    - BaseBloodCultGod
-    - BaseCentcommContraband
-    - BaseGameRule
-    - BaseGrandTheftContraband
-    - BaseMagicalContraband
-    - BaseMajorContraband
-    - BaseMobFleshCult
-    - BaseSyndicateContraband
-    - BaseXenoborgContraband
-    - ContainmentField
-    - FleshHeart
-    - GasMinerBase
-    - ImmovableRod
-    - Incorporeal
-    - MobNarsieBase
-    - MobObserverBase
-    - MobRatvarBase
-    - MobTerminatorBase
-    - MobXenoRounyGhostRole
-    - NuclearGrenade
     - Singularity
-    - SupermatterCrystal
     - TeslaEnergyBall
     - TeslaMiniEnergyBall
-    componentBlacklist:
-    - MapGrid
-    - SurgeryStep
-    - SpawnPoint
-    - Contraband
-    - Meteor
     categoryBlacklist:
     - HideSpawnMenu
     - Debug
@@ -309,7 +276,7 @@
 - type: entity
   id: SunriseEffectMagnetUltra
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-magnet-ultra
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
@@ -324,7 +291,7 @@
 - type: entity
   id: SunriseEffectShiftedAsciiTableAccent
   parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-shifted-ascii
+  description: artifact-effect-hint-data-deleted
   categories: [ HideSpawnMenu ]
   components:
   - type: AddComponentsInRadius

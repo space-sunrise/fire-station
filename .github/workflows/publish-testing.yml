@@ -1,31 +1,24 @@
-﻿name: Publish Public build
+﻿name: Publish Testing
 
 concurrency:
-  group: publish-mapping
+  group: publish-testing
   cancel-in-progress: true
 
 on:
   workflow_dispatch:
+  schedule:
+  - cron: '0 10 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-
-    - name: Install Dependencies
-      run: pip install pyyaml requests
-
-    - uses: actions/checkout@v4.2.2
+    - uses: actions/checkout@v3.6.0
       with:
         submodules: 'recursive'
-
     - name: Setup .NET Core
-      uses: actions/setup-dotnet@v4.1.0
+      uses: actions/setup-dotnet@v3.2.0
       with:
         dotnet-version: 9.0.x
 
@@ -47,7 +40,7 @@ jobs:
       run: dotnet run --project Content.Packaging client --no-wipe-release
 
     - name: Publish version
-      run: Tools/publish_multi_request.py --fork-id fire_station_public
+      run: Tools/publish_multi_request.py --fork-id sunrise_station_public
       env:
         PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
         GITHUB_REPOSITORY: ${{ vars.GITHUB_REPOSITORY }}

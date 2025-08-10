@@ -54,8 +54,7 @@ public sealed partial class VampireSystem
     public void MakeVulnerableToHoly(Entity<VampireComponent> vampire)
     {
         //React to being beaten with the bible
-        // Слишком посос
-        //EnsureComp<UnholyComponent>(vampire);
+        EnsureComp<UnholyComponent>(vampire);
 
         //Take damage from holy water splash
         if (TryComp<ReactiveComponent>(vampire, out var reactive))
@@ -147,6 +146,6 @@ public sealed partial class VampireSystem
             reactive.ReactiveGroups.Remove("Unholy");
         }
 
-        //RemComp<UnholyComponent>(vampire);
+        RemComp<UnholyComponent>(vampire);
     }
 }

@@ -62,10 +62,10 @@ public sealed class SunriseAdminLogLabel : RichTextLabel
 
     private static string GetTypeSpecificColor(LogImpact type) => type switch
     {
-        LogImpact.Extreme => "red",
-        LogImpact.High => "orange",
+        LogImpact.Extreme => "magenta",
+        LogImpact.High => "red",
         LogImpact.Medium => "yellow",
-        LogImpact.Low => "green",
+        LogImpact.Low => "cyan",
 
         _ => "blue",
     };

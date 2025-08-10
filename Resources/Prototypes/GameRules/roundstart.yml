@@ -127,7 +127,7 @@
   id: Nukeops
   components:
   - type: GameRule
-    minPlayers: 50 # НЕ ТРОГАТЬ БЕЗ МОЕГО РАЗРЕШЕНИЯ!!! SplikZerys
+    minPlayers: 20
   - type: LoadMapRule
     mapPath: /Maps/_Sunrise/Nonstations/nukieplanet.yml
   - type: AntagSelection
@@ -225,7 +225,7 @@
   id: Traitor
   components:
   - type: GameRule
-    minPlayers: 50 # НЕ ТРОГАТЬ БЕЗ МОЕГО РАЗРЕШЕНИЯ!!! SplikZerys
+    minPlayers: 5
     delay:
       min: 600 # Sunrise-Edit
       max: 900 # Sunrise-Edit
@@ -263,11 +263,11 @@
   parent: BaseGameRule
   components:
   - type: GameRule
-    minPlayers: 50 # НЕ ТРОГАТЬ БЕЗ МОЕГО РАЗРЕШЕНИЯ!!! SplikZerys
+    minPlayers: 15
     # Sunrise-Start
     delay:
-      min: 900
-      max: 1200
+      min: 1800
+      max: 2000
     # Sunrise-End
   - type: RevolutionaryRule
   - type: AntagSelection
@@ -333,7 +333,7 @@
   id: Wizard
   components:
   - type: GameRule
-    minPlayers: 50 # НЕ ТРОГАТЬ БЕЗ МОЕГО РАЗРЕШЕНИЯ!!! SplikZerys
+    minPlayers: 10
   - type: AntagSelection
     agentName: wizard-round-end-name
     selectionTime: PrePlayerSpawn
@@ -374,7 +374,7 @@
   parent: BaseGameRule
   components:
   - type: GameRule
-    minPlayers: 50 # НЕ ТРОГАТЬ БЕЗ МОЕГО РАЗРЕШЕНИЯ!!! SplikZerys
+    minPlayers: 20
     delay:
       min: 600
       max: 900
@@ -425,9 +425,9 @@
   id: BasicGameRulesTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
-      # Fire edit start
       - !type:NestedSelector
-        tableId: ScpVanillaEventsTable
+        tableId: BasicCalmEventsTable
+      # Fire edit start
       - !type:NestedSelector
         tableId: ScpEventsTable
       # Fire edit end

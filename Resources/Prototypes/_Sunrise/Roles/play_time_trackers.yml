@@ -23,9 +23,6 @@
   id: JobBlueShieldEnsign
 
 - type: playTimeTracker
-  id: JobBlueShieldOperative
-
-- type: playTimeTracker
   id: JobNtrGuard
 
 - type: playTimeTracker

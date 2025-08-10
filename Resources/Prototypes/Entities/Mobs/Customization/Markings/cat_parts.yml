@@ -3,7 +3,7 @@
   bodyPart: Special
   markingCategory: Special
   speciesRestriction: [Felinid] # Fire edit
-  sponsorOnly: false
+  sponsorOnly: true # Sunrise-Sponsors
   coloring:
     default:
       type:
@@ -26,7 +26,7 @@
   id: CatTail
   bodyPart: Tail
   markingCategory: Tail
-  sponsorOnly: false
+  sponsorOnly: true # Sunrise-Sponsors
   speciesRestriction: [Felinid] # Fire edit
   coloring:
     default:

@@ -192,8 +192,6 @@
         - Sheet
         - RawMaterial
         - Ingot
-        - SheetPaper #Sunrise-edit
-
   - type: OreSiloClient
   - type: Lathe
     idleState: icon
@@ -201,7 +199,6 @@
     unlitIdleState: unlit
     unlitRunningState: unlit-building
     staticPacks:
-    - PaperStatic #Sunrise-edit
     - ChemistryStatic
     - SurgeryStatic
     dynamicPacks:

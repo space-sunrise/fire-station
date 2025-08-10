@@ -20,6 +20,3 @@ ent-RubberStampVeto = VETO stamp
     .desc = { ent-RubberStampBase.desc }
 ent-RubberStampRedo = Redo stamp
     .desc = { ent-RubberStampBase.desc }
-ent-RubberStampSpecOps = Special Operations rubber stamp
-    .desc = { ent-RubberStampBase.desc }
-    .suffix = DO NOT MAP

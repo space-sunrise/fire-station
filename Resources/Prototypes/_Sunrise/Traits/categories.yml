@@ -1,5 +1,4 @@
 - type: traitCategory
-  id: VocalTraits
-  name: trait-category-vocal
+  id: HeightTraits
+  name: trait-category-height
   maxTraitPoints: 1
-

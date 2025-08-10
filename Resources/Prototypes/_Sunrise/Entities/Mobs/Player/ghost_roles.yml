@@ -10,12 +10,13 @@
     head: ClothingHeadEVAHelmetERTLeader
     eyes: ClothingEyesGlassesSecurity
     neck: SecurityWhistle
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorAmberCom
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
     pocket1: SpeedLoaderMagnum
-    pocket2: SpeedLoaderMagnum
+    pocket2: BaseUplinkNTERT75BC
   inhand:
   - WeaponRevolverSpearhead
   storage:
@@ -26,7 +27,6 @@
     - MagazineMagnum
     - Omnitool
     - Flash
-    - ClothingHandsPowerGlovesUplinkNTERTAmberLeader
 
 - type: startingGear
   id: ERTLeaderGearRed
@@ -38,12 +38,13 @@
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     neck: ClothingNeckCloakWhite
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTLeader
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
     pocket1: SpeedLoaderMagnum
-    pocket2: SpeedLoaderMagnum
+    pocket2: BaseUplinkNTERT100BC
   inhand:
   - WeaponRevolverSpearhead
   storage:
@@ -54,7 +55,6 @@
     - Omnitool
     - Flash
     - MagazineMagnum
-    - ClothingHandsPowerGlovesUplinkNTERTRedLeader
 
 - type: startingGear
   id: ERTLeaderGearGamma
@@ -66,21 +66,22 @@
     mask: ClothingMaskGasERT
     eyes: ClothingEyesNVDSec
     neck: ClothingNeckMantleERTLeader
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTLeader
     id: ERTLeaderPDA
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
     pocket1: MagazineMagnum
-    pocket2: DoorRemoteOmni
+    pocket2: BaseUplinkNTERT200BC
   inhand:
   - WeaponPistolN1984
   storage:
     back:
     - BoxErtLeaderKit
     - BoxZiptie
+    - DoorRemoteOmni
     - Omnitool
     - MagazineMagnum
-    - ClothingHandsPowerGlovesUplinkNTERTGammaLeader
 
 # Security
 
@@ -93,6 +94,7 @@
     head: ClothingHeadEVAHelmetERTSecurity
     eyes: ClothingEyesGlassesSecurity
     neck: HandheldCamera
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorAmberSec
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
@@ -108,7 +110,6 @@
     - CrowbarRed
     - MedkitCombatFilled
     - MagazinePistolSubMachineGun
-    - ClothingHandsPowerGlovesUplinkNTERTAmber
 
 - type: startingGear
   id: ERTSecurityGearGamma
@@ -120,6 +121,7 @@
     mask: ClothingMaskGasERT
     eyes: ClothingEyesNVDSec
     neck: HandheldCamera
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTSecurity
     id: ERTSecurityPDA
     ears: ClothingHeadsetAltCentCom
@@ -137,7 +139,6 @@
     - C4
     - C4
     - SmokeGrenade
-    - ClothingHandsPowerGlovesUplinkNTERTGamma
 
 # Chaplain
 - type: startingGear
@@ -149,6 +150,7 @@
     head: ClothingHeadEVAHelmetERTChaplain
     eyes: ClothingEyesHudMedSec
     neck: ClothingNeckStoleChaplain
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorAmberChap
     id: ERTChaplainPDA
     ears: ClothingHeadsetAltCentCom
@@ -165,7 +167,6 @@
     - SpeedLoaderMagnum
     - FlippoLighterSunriseBlack
     - Candle
-    - ClothingHandsPowerGlovesUplinkNTERTAmber
 
 # Engineer
 - type: startingGear
@@ -177,6 +178,7 @@
     head: ClothingHeadEVAHelmetERTEngineer
     eyes: ClothingEyesHudDiagnosticERT
     neck: HandheldCamera
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorAmberEng
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
@@ -197,7 +199,6 @@
     - SheetGlass
     - SheetSteel
     - PowerCellHigh
-    - ClothingHandsPowerGlovesUplinkNTERTAmber
 
 - type: startingGear
   id: ERTEngineerGearGamma
@@ -209,6 +210,7 @@
     mask: ClothingMaskGasERT
     eyes: ClothingEyesNVDSec
     neck: HandheldCamera
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTEngineer
     id: ERTEngineerPDA
     ears: ClothingHeadsetAltCentCom
@@ -229,7 +231,6 @@
     - SheetGlass
     - SheetSteel
     - PowerCellHigh
-    - ClothingHandsPowerGlovesUplinkNTERTGamma
 
 # Medical
 
@@ -242,6 +243,7 @@
     head: ClothingHeadEVAHelmetERTMedic
     neck: HandheldCamera
     eyes: ClothingEyesHudMedical
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorAmberMed
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
@@ -266,7 +268,9 @@
     - ChemistryBottleOmnizine
     - ChemistryBottleEpinephrine
     - ChemistryBottleEphedrine
-    - ClothingHandsPowerGlovesUplinkNTERTAmber
+    - MiniSyringe
+    - MiniSyringe
+    - MiniSyringe
 
 - type: startingGear
   id: ERTMedicalGearGamma
@@ -278,6 +282,7 @@
     neck: HandheldCamera
     mask: ClothingMaskGasERT
     eyes: ClothingEyesNVDMedSec
+    gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTMedical
     id: ERTMedicPDA
     ears: ClothingHeadsetAltCentCom
@@ -304,7 +309,6 @@
     - ChemistryBottleOmnizine
     - ChemistryBottleEpinephrine
     - ChemistryBottleEphedrine
-    - ClothingHandsPowerGlovesUplinkNTERTGamma
 
 # Janitor
 
@@ -317,6 +321,7 @@
     head: ClothingHeadEVAHelmetERTJanitor
     neck: HandheldCamera
     eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsTacticalMaidGloves
     outerClothing: ClothingOuterArmorAmberJan
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
@@ -333,7 +338,6 @@
     - BoxCleanerGrenades
     - BoxCleanerGrenades
     - CrowbarRed
-    - ClothingHandsPowerGlovesUplinkNTERTAmber
 
 - type: startingGear
   id: ERTJanitorGearGamma
@@ -345,6 +349,7 @@
     mask: ClothingMaskGasERT
     neck: HandheldCamera
     eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsTacticalMaidGloves
     outerClothing: ClothingOuterHardsuitERTJanitor
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
@@ -361,4 +366,3 @@
     - BoxCleanerGrenades
     - BoxCleanerGrenades
     - CrowbarRed
-    - ClothingHandsPowerGlovesUplinkNTERTGamma

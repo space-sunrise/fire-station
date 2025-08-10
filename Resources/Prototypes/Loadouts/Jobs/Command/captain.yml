@@ -42,7 +42,7 @@
 
 - type: loadout #Sunrise-add
   id: EliteCaptainCap
-  sponsorOnly: false
+  sponsorOnly: true
   equipment:
     head: ClothingHeadEliteCaptainCap
 
@@ -67,7 +67,7 @@
 
 - type: loadout #Sunrise-add
   id: CaptainEliteCloak
-  sponsorOnly: false
+  sponsorOnly: true
   equipment:
     head: ClothingEliteNeckCloakCaptain
   effects:
@@ -109,7 +109,7 @@
 
 - type: loadout
   id: CaptainOuterOverCoat
-  sponsorOnly: false
+  sponsorOnly: true
   equipment:
     outerClothing: ClothingOuterCoatCaptainOvercoat
 #Sunrise-End
