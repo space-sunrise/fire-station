@@ -99,6 +99,7 @@ namespace Content.Client.PDA
                 ToHomeScreen();
             };
 
+            // Fire Edit-Start
             // PdaOwnerButton.OnPressed += _ =>
             // {
             //     _clipboard.SetText(_pdaOwner);
@@ -108,6 +109,7 @@ namespace Content.Client.PDA
             // {
             //     _clipboard.SetText(_owner + ", " + _jobTitle);
             // };
+            // Fire Edit-End
 
             StationNameButton.OnPressed += _ =>
             {
@@ -163,6 +165,7 @@ namespace Content.Client.PDA
             _evacShuttleStatus = state.PdaOwnerInfo.EvacShuttleStatus;
             // Sunrise-end
 
+            // Fire Edit-Start
             // if (state.PdaOwnerInfo.ActualOwnerName != null)
             // {
             //     _pdaOwner = state.PdaOwnerInfo.ActualOwnerName;
@@ -188,7 +191,8 @@ namespace Content.Client.PDA
             // {
             //     IdInfoLabel.SetMarkup(Loc.GetString("comp-pda-ui-blank"));
             // }
-
+            // Fire Edit-End
+            
             _stationName = state.StationName ?? Loc.GetString("comp-pda-ui-unknown");
             StationNameLabel.SetMarkup(Loc.GetString("comp-pda-ui-station",
                 ("station", _stationName)));
