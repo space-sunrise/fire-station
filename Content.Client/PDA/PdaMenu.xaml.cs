@@ -55,7 +55,7 @@ namespace Content.Client.PDA
             HomeButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/home.png"));
             FlashLightToggleButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/light.png"));
             EjectPenButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pencil.png"));
-            EjectIdButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/eject.png"));
+            // EjectIdButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/eject.png"));
             EjectPaiButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pai.png"));
             ProgramCloseButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/Nano/cross.svg.png"));
 
@@ -99,15 +99,15 @@ namespace Content.Client.PDA
                 ToHomeScreen();
             };
 
-            PdaOwnerButton.OnPressed += _ =>
-            {
-                _clipboard.SetText(_pdaOwner);
-            };
+            // PdaOwnerButton.OnPressed += _ =>
+            // {
+            //     _clipboard.SetText(_pdaOwner);
+            // };
 
-            IdInfoButton.OnPressed += _ =>
-            {
-                _clipboard.SetText(_owner + ", " + _jobTitle);
-            };
+            // IdInfoButton.OnPressed += _ =>
+            // {
+            //     _clipboard.SetText(_owner + ", " + _jobTitle);
+            // };
 
             StationNameButton.OnPressed += _ =>
             {
@@ -163,31 +163,31 @@ namespace Content.Client.PDA
             _evacShuttleStatus = state.PdaOwnerInfo.EvacShuttleStatus;
             // Sunrise-end
 
-            if (state.PdaOwnerInfo.ActualOwnerName != null)
-            {
-                _pdaOwner = state.PdaOwnerInfo.ActualOwnerName;
-                PdaOwnerLabel.SetMarkup(Loc.GetString("comp-pda-ui-owner",
-                    ("actualOwnerName", _pdaOwner)));
-                PdaOwnerLabel.Visible = true;
-            }
-            else
-            {
-                PdaOwnerLabel.Visible = false;
-            }
+            // if (state.PdaOwnerInfo.ActualOwnerName != null)
+            // {
+            //     _pdaOwner = state.PdaOwnerInfo.ActualOwnerName;
+            //     PdaOwnerLabel.SetMarkup(Loc.GetString("comp-pda-ui-owner",
+            //         ("actualOwnerName", _pdaOwner)));
+            //     PdaOwnerLabel.Visible = true;
+            // }
+            // else
+            // {
+            //     PdaOwnerLabel.Visible = false;
+            // }
 
 
-            if (state.PdaOwnerInfo.IdOwner != null || state.PdaOwnerInfo.JobTitle != null)
-            {
-                _owner = state.PdaOwnerInfo.IdOwner ?? Loc.GetString("comp-pda-ui-unknown");
-                _jobTitle = state.PdaOwnerInfo.JobTitle ?? Loc.GetString("comp-pda-ui-unassigned");
-                IdInfoLabel.SetMarkup(Loc.GetString("comp-pda-ui",
-                    ("owner", _owner),
-                    ("jobTitle", _jobTitle)));
-            }
-            else
-            {
-                IdInfoLabel.SetMarkup(Loc.GetString("comp-pda-ui-blank"));
-            }
+            // if (state.PdaOwnerInfo.IdOwner != null || state.PdaOwnerInfo.JobTitle != null)
+            // {
+            //     _owner = state.PdaOwnerInfo.IdOwner ?? Loc.GetString("comp-pda-ui-unknown");
+            //     _jobTitle = state.PdaOwnerInfo.JobTitle ?? Loc.GetString("comp-pda-ui-unassigned");
+            //     IdInfoLabel.SetMarkup(Loc.GetString("comp-pda-ui",
+            //         ("owner", _owner),
+            //         ("jobTitle", _jobTitle)));
+            // }
+            // else
+            // {
+            //     IdInfoLabel.SetMarkup(Loc.GetString("comp-pda-ui-blank"));
+            // }
 
             _stationName = state.StationName ?? Loc.GetString("comp-pda-ui-unknown");
             StationNameLabel.SetMarkup(Loc.GetString("comp-pda-ui-station",
@@ -234,7 +234,7 @@ namespace Content.Client.PDA
 
             AddressLabel.Text = state.Address?.ToUpper() ?? " - ";
 
-            EjectIdButton.IsActive = state.PdaOwnerInfo.IdOwner != null || state.PdaOwnerInfo.JobTitle != null;
+            // EjectIdButton.IsActive = state.PdaOwnerInfo.IdOwner != null || state.PdaOwnerInfo.JobTitle != null;
             EjectPenButton.IsActive = state.HasPen;
             EjectPaiButton.IsActive = state.HasPai;
             ActivateMusicButton.Visible = state.CanPlayMusic;

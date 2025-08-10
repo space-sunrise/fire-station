@@ -37,10 +37,10 @@ namespace Content.Client.PDA
                 SendMessage(new PdaToggleFlashlightMessage());
             };
 
-            _menu.EjectIdButton.OnPressed += _ =>
-            {
-                SendPredictedMessage(new ItemSlotButtonPressedEvent(PdaComponent.PdaIdSlotId));
-            };
+            // _menu.EjectIdButton.OnPressed += _ =>
+            // {
+            //     SendPredictedMessage(new ItemSlotButtonPressedEvent(PdaComponent.PdaIdSlotId));
+            // };
 
             _menu.EjectPenButton.OnPressed += _ =>
             {

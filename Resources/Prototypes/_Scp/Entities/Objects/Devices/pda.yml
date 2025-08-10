@@ -1,8 +1,297 @@
 - type: entity
-  parent: BasePDA
-  id: ClassDPDA
+  abstract: true
+  parent: [ BaseItem, StorePresetUplink ] #PDA's have uplinks so they have to inherit the data.
+  id: BasePDASCP
+  name: PDA
+  description: Personal Data Assistant.
   components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _SCP/Objects/Devices/scp_pda.rsi
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+  - type: Icon
+    sprite: _SCP/Objects/Devices/scp_pda.rsi
+    state: pda
   - type: Pda
-    id: ClassDIDCard
+    paiSlot:
+      priority: -2
+      whitelist:
+        components:
+        - PAI
+    penSlot:
+      startingItem: Pen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    idSlot:
+      whitelist:
+        requireAllTags: true
+  - type: PdaVisuals
+  - type: Item
+    size: Small
+  - type: ContainerContainer
+    containers:
+      PDA-pen: !type:ContainerSlot {}
+      PDA-pai: !type:ContainerSlot {}
+      Cartridge-Slot: !type:ContainerSlot {}
+      program-container: !type:Container
+  - type: ItemSlots
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+  - type: UnpoweredFlashlight
+  - type: PointLight
+    enabled: false
+    radius: 1.5
+    softness: 5
+    autoRot: true
+  - type: Ringer
+  - type: RingerUplink
+  - type: DeviceNetwork
+    deviceNetId: Wireless
+    receiveFrequencyId: PDA
+    prefix: device-address-prefix-console
+    savableAddress: false
+  - type: WirelessNetworkConnection
+    range: 500
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+    cartridgeSlot:
+      priority: -1
+      name: device-pda-slot-component-slot-name-cartridge
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Machines/id_insert.ogg
+      whitelist:
+        components:
+        - Cartridge
+  - type: ActivatableUI
+    key: enum.PdaUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.PdaUiKey.Key:
+        type: PdaBoundUserInterface
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+      enum.RingerUiKey.Key:
+        type: RingerBoundUserInterface
+      enum.InstrumentUiKey.Key:
+        type: InstrumentBoundUserInterface
+      enum.HealthAnalyzerUiKey.Key:
+        type: HealthAnalyzerBoundUserInterface
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+    - WhitelistChameleon
+    - WhitelistChameleonPDA
+    - SyndieAgentUplink # Sunrise-Edit
+  - type: Input
+    context: "human"
+  - type: SentienceTarget # sentient PDA = pAI lite
+    flavorKind: station-event-random-sentience-flavor-mechanical
+    weight: 0.001 # 1,000 PDAs = as likely to be picked as 1 regular animal
+  - type: BlockMovement
+    blockInteraction: false # lets the PDA toggle its own flashlight
+  - type: TypingIndicator
+    proto: robot
+  - type: Speech
+    speechVerb: Robotic
+
+- type: entity
+  parent: BasePDASCP
+  id: BaseSecurityPDASCP
+  abstract: true
+  components:
+  - type: CartridgeLoader
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - WantedListCartridge
+    - LogProbeCartridge
+
+- type: entity
+  parent: BasePDASCP
+  id: BaseMedicalPDASCP
+  abstract: true
+  components:
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - MedTekCartridge
+
+- type: entity
+  parent: BasePDASCP
+  id: BaseEngineerPDASCP
+  abstract: true
+  components:
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - NetProbeCartridge
+      - AstroNavCartridge
+
+- type: entity
+  parent: BasePDASCP
+  id: PDABaseFond
+  name: foundation PDA
+  description: Standart SCP Foundation PDA.
+  components:
   - type: PdaBorderColor
-    borderColor: "#717059"
+    borderColor: "#636262"
+    accentHColor: "#A6A6A6"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda"
+    - state: "generic"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: BasePDASCP
+  id: EngineerPDASCP
+  name: engineer PDA
+  description: Why isn't it yellow?
+  components:
+  - type: PdaBorderColor
+    borderColor: "#959393"
+    accentHColor: "#C7863C"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-e"
+    - state: "request"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: BaseMedicalPDASCP
+  id: MedicalPDASCP
+  name: medical PDA
+  description: Why isn't it white?
+  components:
+  - type: PdaBorderColor
+    borderColor: "#C2C0C0"
+    accentHColor: "#579CAB"
+  - type: GuideHelp
+    guides:
+    - Medical Doctor
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-m"
+    - state: "menu"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: BaseSecurityPDASCP
+  id: SecurityPDASCP
+  name: security PDA
+  description: Why isn't it red?
+  components:
+  - type: PdaBorderColor
+    borderColor: "#579CAB"
+    accentHColor: "#A63C3C"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-s"
+    - state: "warrant"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: BasePDASCP
+  id: ResearchPDASCP
+  name: research PDA
+  description: Why isn't it purple?
+  components:
+  - type: PdaBorderColor
+    borderColor: "#C2C0C0"
+    accentHColor: "#500677"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-exp"
+    - state: "word"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: BasePDASCP
+  id: ServicePDASCP
+  name: service PDA
+  description: Why isn't it gray?
+  components:
+  - type: PdaBorderColor
+    borderColor: "#C2C0C0"
+    accentHColor: "#276B4F"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-serv"
+    - state: "generic"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: BasePDASCP
+  id: CargoPDASCP
+  name: logistic PDA
+  description: PDA for the guys that order the pizzas.
+  components:
+  - type: PdaBorderColor
+    borderColor: "#959393"
+    accentHColor: "#754A23"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-sup"
+    - state: "supply"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
