@@ -223,7 +223,7 @@
   description: Why isn't it red?
   components:
   - type: PdaBorderColor
-    borderColor: "#579CAB"
+    borderColor: "#636262"
     accentHColor: "#A63C3C"
   - type: Sprite
     layers:
