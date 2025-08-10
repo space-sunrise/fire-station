@@ -1,7 +1,7 @@
 ﻿- type: entity
   id: Scp999
   suffix: SCP-999
-  parent: BaseScp
+  parent: BaseScpFriendly
   components:
   - type: Sprite
     drawdepth: SmallMobs
