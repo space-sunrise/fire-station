@@ -40,7 +40,7 @@
         - FullTileMask
         layer:
         - GlassLayer
-  - type: Airtight #Fire Edit
+  - type: Airtight
     noAirWhenFullyAirBlocked: false
     airBlockedDirection:
     - South
@@ -84,7 +84,7 @@
         - FullTileMask
         layer:
         - GlassLayer
-  - type: Airtight #Fire Edit
+  - type: Airtight
     noAirWhenFullyAirBlocked: false
     airBlockedDirection:
     - South
