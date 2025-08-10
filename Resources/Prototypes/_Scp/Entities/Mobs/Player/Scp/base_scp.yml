@@ -49,6 +49,37 @@
       tableId: ScpArtifactEffectsDefaultTable
   - type: ResearchClient
 
+- type: entity
+  id: BaseFriendlyScpArtifactMajor
+  parent: BaseScpArtifact
+  abstract: true
+  components:
+  - type: XenoArtifact
+    nodeCount:
+      min: 9
+      max: 13
+    effectsTable: !type:GroupSelector
+      children:
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsDefaultFriendlyTable
+        weight: 3
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsUltraFunnyFriendlyTable
+        weight: 1
+
+- type: entity
+  id: BaseFriendlyScpArtifactMinor
+  parent: BaseScpArtifact
+  abstract: true
+  components:
+  - type: XenoArtifact
+    nodeCount:
+      min: 3
+      max: 5
+    effectsTable: !type:NestedSelector
+      tableId: ScpArtifactEffectsDefaultFriendlyTable
+  - type: ResearchClient
+
 # Приколы-помогаторы с базовыми компонентами
 
 - type: entity
@@ -65,13 +96,12 @@
     damagePopupType: SmallFloating
     isStructure: true
 
-- type: entity # Онли для мобов
+- type: entity # Базовый Entity для BaseScp и BaseScpFriendly
   abstract: true
   parent:
   - BaseSimpleMob
   - MobFlammable
-  - BaseScpArtifactMajor
-  id: BaseScp
+  id: BaseScpEntity
   components:
   - type: Scp
     class: Neutralized
@@ -120,3 +150,18 @@
     - FootstepSound
     - CannotSuicide
     - DoorBumpOpener
+
+- type: entity # Онли для мобов
+  abstract: true
+  parent:
+  - BaseScpEntity
+  - BaseScpArtifactMajor
+  id: BaseScp
+
+- type: entity # Для добрых SCP: 131, 999 и т.д.
+  abstract: true
+  parent:
+  - BaseScpEntity
+  - BaseFriendlyScpArtifactMajor
+  id: BaseScpFriendly
+
