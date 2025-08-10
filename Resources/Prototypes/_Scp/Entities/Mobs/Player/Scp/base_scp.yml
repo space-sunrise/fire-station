@@ -108,8 +108,6 @@
   - type: ScpRestriction
   - type: ProximityReceiver
   - type: WatchingTarget
-  - type: FearSource
-    phobiaType: Exoremophobia
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
@@ -157,6 +155,9 @@
   - BaseScpEntity
   - BaseScpArtifactMajor
   id: BaseScp
+  components:
+  - type: FearSource
+    phobiaType: Exoremophobia
 
 - type: entity # Для добрых SCP: 131, 999 и т.д.
   abstract: true

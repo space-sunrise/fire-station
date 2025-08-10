@@ -21,15 +21,6 @@
     - SimpleNeutral # нужно что бы турели не били его т.к. 999 мирный
   - type: Scp
     class: Safe
-  - type: FearSource
-    uponSeenState: None
-    uponComeCloser: None
-    grainShaderStrength:
-      min: 0
-      max: 0
-    vignetteShaderStrength:
-      min: 0
-      max: 0
   - type: ScpRestriction
     canBePulled: true
     canMobCollide: true

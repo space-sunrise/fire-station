@@ -35,7 +35,7 @@
       #      weight: 2
       #    - id: ScpEffectPolyTable
       #      weight: 2
-      # Сломано
+      # Сломано TODO: вернём после фикса
     - id: ScpEffectSwap
       weight: 2
 #    - id: ScpEffectCreateArtifacts
@@ -137,7 +137,7 @@
   table: !type:GroupSelector
     children:
     - id: ScpEffectShuffleUltra
-      weight: 0.001
+      weight: 0.01
     - id: ScpEffectSwap
       weight: 2
     - id: EffectMagnetUltra
