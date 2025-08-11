@@ -153,6 +153,10 @@
       - NetProbeCartridge
       - AstroNavCartridge
 
+
+
+
+
 - type: entity
   parent: BasePDASCP
   id: PDABaseFond
@@ -174,7 +178,7 @@
       visible: false
 
 - type: entity
-  parent: BasePDASCP
+  parent: BaseEngineerPDASCP
   id: EngineerPDASCP
   name: engineer PDA
   description: Why isn't it yellow?
@@ -295,3 +299,319 @@
       map: [ "enum.PdaVisualLayers.Flashlight" ]
       shader: "unshaded"
       visible: false
+
+- type: entity
+  parent: BasePDASCP
+  id: DirPDA
+  name: Director PDA
+  description: Surprisingly no different from your PDA.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: PenDirector
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#D1B152"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-c"
+    - state: "uplink_blue"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    notificationsEnabled: false
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - WantedListCartridge
+
+- type: entity
+  parent: BasePDASCP
+  id: POPDA
+  name: personnel officer PDA
+  description: Looks like it's been chewed on.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: PenHop
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#949494"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-hop"
+    - state: "menu"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    notificationsEnabled: false
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - WantedListCartridge
+
+- type: entity
+  parent: BaseEngineerPDASCP
+  id: CTSPDA
+  name: chief technical specialist PDA
+  description: Looks like it's barely been used.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: CEPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#C7863C"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-ce"
+    - state: "request"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: BasePDASCP
+  id: SLOPDA
+  name: senior logistics officer PDA
+  description: PDA for the guy that orders the guns.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: QmPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#754A23"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-qm"
+    - state: "supply"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    
+- type: entity
+  parent: BaseMedicalPDASCP
+  id: HMSPDA
+  name: head of medical sector PDA
+  description: Extraordinarily shiny and sterile.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: CmoPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#579CAB"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-cmo"
+    - state: "menu"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: BasePDASCP
+  id: RDPDA
+  name: research director PDA
+  description: It appears surprisingly ordinary.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: RdPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#500677"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-rd"
+    - state: "word"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: BaseSecurityPDASCP
+  id: SCPDA
+  name: security commander PDA
+  description: Whosoever bears this PDA is the law.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: HosPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#A63C3C"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-hos"
+    - state: "warrant"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: BaseSecurityPDASCP
+  id: MTFPDA
+  name: MTF PDA
+  description: Mobile Task Force PDA.
+  components:
+  - type: PdaBorderColor
+    borderColor: "#3D3D3D"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-syn"
+    - state: "menu"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - MedTekCartridge
+      - WantedListCartridge
+      - LogProbeCartridge
+      - AstroNavCartridge
+
+- type: entity
+  parent: BaseSecurityPDASCP
+  id: O5PDA
+  name: Administration PDA
+  description: Light sign of walking bureaucracy.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: PenCentcom
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#3D3D3D"
+    accentHColor: "#F0BB3E"
+    accentVColor: "#F0BB3E"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-neo"
+    - state: "menu"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - MedTekCartridge
+      - WantedListCartridge
+      - LogProbeCartridge
+      - AstroNavCartridge
+
+- type: entity
+  parent: O5PDA
+  id: AdminPDASCP
+  name: Admin PDA
+  suffix: Admin
+  description: If you are not an admin please return this PDA to the nearest admin.
+  components:
+  - type: PdaBorderColor
+    borderColor: "#252C4D"
+    accentHColor: "#650FB6"
+    accentVColor: "#650FB6"
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-club"
+    - state: "cameras"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+  - type: HealthAnalyzer
+    maxScanRange: null
+    scanDelay: 0
+    silent: true
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    notificationsEnabled: false
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - LogProbeCartridge
+      - WantedListCartridge
+      - MedTekCartridge
+      - AstroNavCartridge
+  - type: Tag #  Ignore Chameleon tags
+    tags:
+    - DoorBumpOpener

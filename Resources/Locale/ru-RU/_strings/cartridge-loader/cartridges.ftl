@@ -1,7 +1,7 @@
 device-pda-slot-component-slot-name-cartridge = Картридж
 default-program-name = Программа
 notekeeper-program-name = Заметки
-nano-task-program-name = NanoTask
+nano-task-program-name = Задачи
 news-read-program-name = Новости комплекса
 crew-manifest-program-name = Манифест экипажа
 crew-manifest-cartridge-loading = Загрузка...
@@ -23,7 +23,7 @@ log-probe-printout-entry = #{ $number } / { $time } / { $accessor }
 astro-nav-program-name = АстроНав
 med-tek-program-name = МедТек
 # Wanted list cartridge
-wanted-list-program-name = Список разыскиваемых
+wanted-list-program-name = Разыскиваемые
 nano-task-ui-heading-high-priority-tasks =
     { $amount ->
         [zero] Нет задач высокого приоритета
