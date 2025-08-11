@@ -1414,6 +1414,9 @@ Catwalk: ScpCatwalkSteel
 FoodBoxCloth: null
 FoodBoxDonkpocketMoth: null
 
+ClearPDA: PDABaseFond
+PassengerPDA: PDABaseFond
+
 # Растения из будущего
 PottedPlantRandom: ScpPottedPlantRandom
 PottedPlantBioluminscent: null
