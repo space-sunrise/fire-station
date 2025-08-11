@@ -4659,3 +4659,13 @@
   id: 184
   time: '2025-08-10T09:25:53.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/481
+- author: Parashut
+  changes:
+  - message: "\u0418\u0441\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430 \u043A\u043E\
+      \u043B\u043B\u0438\u0437\u0438\u044F \u0430\u0442\u043C\u043E\u0441\u0430 \u0443\
+      \ \u0443\u0433\u043B\u043E\u0432\u044B\u0445 \u0441\u0442\u0435\u043A\u043B\u044F\
+      \u043D\u043D\u044B\u0445 \u043F\u0430\u043D\u0435\u043B\u0435\u0439."
+    type: Fix
+  id: 185
+  time: '2025-08-11T06:48:47.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/476
