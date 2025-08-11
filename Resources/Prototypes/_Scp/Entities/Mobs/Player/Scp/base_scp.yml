@@ -35,6 +35,7 @@
       - !type:NestedSelector
         tableId: ScpArtifactEffectsUltraFunnyTable
         weight: 1
+  - type: ResearchClient
 
 - type: entity
   id: BaseScpArtifactMinor
@@ -56,8 +57,8 @@
   components:
   - type: XenoArtifact
     nodeCount:
-      min: 9
-      max: 13
+      min: 4
+      max: 8
     effectsTable: !type:GroupSelector
       children:
       - !type:NestedSelector
@@ -66,6 +67,7 @@
       - !type:NestedSelector
         tableId: ScpArtifactEffectsUltraFunnyFriendlyTable
         weight: 1
+  - type: ResearchClient
 
 - type: entity
   id: BaseFriendlyScpArtifactMinor
@@ -101,13 +103,12 @@
   parent:
   - BaseSimpleMob
   - MobFlammable
-  id: BaseScpEntity
+  id: BaseScpComponents
   components:
   - type: Scp
     class: Neutralized
   - type: ScpRestriction
   - type: ProximityReceiver
-  - type: WatchingTarget
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
@@ -149,20 +150,21 @@
     - CannotSuicide
     - DoorBumpOpener
 
-- type: entity # Онли для мобов
+- type: entity # Для агрессивных (опасных) SCP
   abstract: true
   parent:
-  - BaseScpEntity
+  - BaseScpComponents
   - BaseScpArtifactMajor
   id: BaseScp
   components:
   - type: FearSource
     phobiaType: Exoremophobia
+  - type: WatchingTarget
 
 - type: entity # Для добрых SCP: 131, 999 и т.д.
   abstract: true
   parent:
-  - BaseScpEntity
+  - BaseScpComponents
   - BaseFriendlyScpArtifactMajor
   id: BaseScpFriendly
 

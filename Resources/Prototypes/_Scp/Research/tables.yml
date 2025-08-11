@@ -24,12 +24,18 @@
   table: !type:GroupSelector
     children:
     - id: ScpEffectShuffleUltra
-      weight: 0.5
+      weight: 2
+    - id: ScpEffectPolyWatermelon
+      weight: 2
+    - id: ScpEffectPolyAppendix
+      weight: 2
+    - id: ScpEffectPolyScrewdriver
+      weight: 2
+    - id: ScpEffectPolyCigarSpent
+      weight: 2
+    - id: ScpEffectPolyToyRubberDuck
+      weight: 2
       #    - id: ScpEffectPolyChair
-      #      weight: 2
-      #    - id: ScpEffectPolyWatermelon
-      #      weight: 2
-      #    - id: ScpEffectPolyAppendix
       #      weight: 2
       #    - id: ScpEffectPolyDisposal
       #      weight: 2

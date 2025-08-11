@@ -38,6 +38,45 @@
     duration: 120
 
 - type: polymorph
+  id: SunriseEffectScrewdriver
+  configuration:
+    entity: Screwdriver
+    forced: true
+    transferName: false
+    transferHumanoidAppearance: false
+    inventory: None
+    revertOnDeath: true
+    revertOnCrit: true
+    revertOnEat: true
+    duration: 120
+
+- type: polymorph
+  id: SunriseEffectCigarSpent
+  configuration:
+    entity: CigarSpent
+    forced: true
+    transferName: false
+    transferHumanoidAppearance: false
+    inventory: None
+    revertOnDeath: true
+    revertOnCrit: true
+    revertOnEat: true
+    duration: 120
+
+- type: polymorph
+  id: SunriseEffectToyRubberDuck
+  configuration:
+    entity: ToyRubberDuck
+    forced: true
+    transferName: false
+    transferHumanoidAppearance: false
+    inventory: None
+    revertOnDeath: true
+    revertOnCrit: true
+    revertOnEat: true
+    duration: 120
+
+- type: polymorph
   id: SunriseEffectDisposal
   configuration:
     entity: DisposalUnit
