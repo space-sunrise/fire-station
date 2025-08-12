@@ -31,7 +31,7 @@ public sealed class CharacterInfoSystem : EntitySystem
         var entity = args.SenderSession.AttachedEntity.Value;
 
         var objectives = new Dictionary<string, List<ObjectiveInfo>>();
-        var jobTitle = Loc.GetString("character-info-no-profession");
+        var job = string.Empty;
         string? briefing = null;
         if (_minds.TryGetMind(entity, out var mindId, out var mind))
         {
@@ -49,13 +49,16 @@ public sealed class CharacterInfoSystem : EntitySystem
                 objectives[issuer].Add(info.Value);
             }
 
-            if (_jobs.MindTryGetJobName(mindId, out var jobName))
-                jobTitle = jobName;
+            // Fire edit start - для крутого меню персонажа
+            if (_jobs.MindTryGetJob(mindId, out var jobProto))
+                job = jobProto.ID;
+            // Fire edit end
 
             // Get briefing
             briefing = _roles.MindGetBriefing(mindId);
         }
 
-        RaiseNetworkEvent(new CharacterInfoEvent(GetNetEntity(entity), jobTitle, objectives, briefing), args.SenderSession);
+        // Fire edit
+        RaiseNetworkEvent(new CharacterInfoEvent(GetNetEntity(entity), job, objectives, briefing), args.SenderSession);
     }
 }

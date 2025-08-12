@@ -1,5 +1,3 @@
-character-info-fears-label = Фобии и страхи
-character-info-fears-text = Вы бесстрашны. Гордитесь этим.
 phobia-unspecified-name = Неназвано
 phobia-unspecified-description = Страх витает на периферии сознания. Вы не понимаете его причину.
 exoremophobia-name = Экзоревмофобия

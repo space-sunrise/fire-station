@@ -1,6 +1,6 @@
-﻿<ui:FearInfo
+﻿<ui:ColoredInfo
     xmlns="https://spacestation14.io"
-    xmlns:ui="clr-namespace:Content.Client._Scp.Fear.UI"
+    xmlns:ui="clr-namespace:Content.Client._Scp.UI"
     xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client">
 
     <BoxContainer Orientation="Horizontal" Margin="5 10 0 15">
@@ -15,9 +15,9 @@
             </PanelContainer.PanelOverride>
         </PanelContainer>
         <BoxContainer Orientation="Vertical" Margin="10 0 0 0">
-            <Label Name="PhobiaName" StyleClasses="LabelBig"/>
-            <RichTextLabel Name="PhobiaDescription" StyleClasses="LabelSubText"/>
+            <Label Name="Name" StyleClasses="LabelBig"/>
+            <RichTextLabel Name="Description" StyleClasses="LabelSubText"/>
         </BoxContainer>
     </BoxContainer>
 
-</ui:FearInfo>
+</ui:ColoredInfo>

@@ -3,19 +3,19 @@ using Robust.Client.Graphics;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.XAML;
 
-namespace Content.Client._Scp.Fear.UI;
+namespace Content.Client._Scp.UI;
 
 [GenerateTypedNameReferences]
-public sealed partial class FearInfo : Control
+public sealed partial class ColoredInfo : Control
 {
-    public string PhobiaNameString
+    public string NameString
     {
-        set => PhobiaName.Text = Loc.GetString(value);
+        set => Name.Text = Loc.GetString(value);
     }
 
-    public string Description
+    public string DescriptionString
     {
-        set => PhobiaDescription.Text = Loc.GetString(value);
+        set => Description.Text = Loc.GetString(value);
     }
 
     public Color? Color
@@ -39,7 +39,7 @@ public sealed partial class FearInfo : Control
         }
     }
 
-    public FearInfo()
+    public ColoredInfo()
     {
         RobustXamlLoader.Load(this);
     }
