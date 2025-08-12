@@ -12,9 +12,9 @@ public sealed partial class EyeWatchingSystem : EntitySystem
     [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private static readonly TimeSpan WatchingCheckInterval = TimeSpan.FromSeconds(0.2f);
+    private static readonly TimeSpan WatchingCheckInterval = TimeSpan.FromSeconds(0.3f);
 
-    public const float SeeRange = 13f;
+    public const float SeeRange = 12f;
 
     public override void Initialize()
     {

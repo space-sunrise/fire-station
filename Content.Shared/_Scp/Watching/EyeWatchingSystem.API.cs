@@ -186,7 +186,7 @@ public sealed partial class EyeWatchingSystem
             return true;
 
         // Проверяем, видит ли смотрящий цель
-        if (useFov & !_fov.IsInViewAngle(viewer.Owner, target, fovOverride))
+        if (useFov && !_fov.IsInViewAngle(viewer.Owner, target, fovOverride))
             return true; // Если не видит, то не считаем его как смотрящего
 
         if (_blinking.IsBlind(viewer, true))

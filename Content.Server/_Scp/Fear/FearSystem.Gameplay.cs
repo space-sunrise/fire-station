@@ -18,6 +18,7 @@ public sealed partial class FearSystem
 
     private void InitializeGameplay()
     {
+        // TODO: Перенести это на отдельный компонент, чтобы не перебирать всех потенциально пугающихся.
         SubscribeLocalEvent<FearComponent, MoveInputEvent>(OnMove);
     }
 

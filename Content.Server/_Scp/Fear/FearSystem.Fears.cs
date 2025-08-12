@@ -9,6 +9,7 @@ using Content.Shared.Fluids.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Systems;
 
 namespace Content.Server._Scp.Fear;
 
@@ -16,11 +17,15 @@ public sealed partial class FearSystem
 {
     [Dependency] private readonly HighlightSystem _highlight = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
+    [Dependency] private readonly MobStateSystem _mob = default!;
 
     private const string MoodSomeoneDiedOnMyEyes = "FearSomeoneDiedOnMyEyes";
 
     private const string MoodHemophobicBleeding = "FearHemophobicBleeding";
     private const string MoodHemophobicSeeBlood = "FearHemophobicSeeBlood";
+
+    private static readonly TimeSpan HemophobiaCheckCooldown = TimeSpan.FromSeconds(0.5f);
+    private TimeSpan _nextHemophobiaCheck = TimeSpan.Zero;
 
     private void InitializeFears()
     {
@@ -60,10 +65,16 @@ public sealed partial class FearSystem
     /// </summary>
     private void UpdateHemophobia()
     {
+        if (_timing.CurTime < _nextHemophobiaCheck)
+            return;
+
         var query = EntityQueryEnumerator<HemophobiaComponent, FearComponent>();
 
         while (query.MoveNext(out var uid, out var hemophobia, out var fear))
         {
+            if (!_mob.IsAlive(uid))
+                continue;
+
             var bloodAmount = GetAroundBloodVolume((uid, hemophobia), out var bloodList);
             var requiredBloodAmount = hemophobia.BloodRequiredPerState[fear.State];
 
@@ -78,6 +89,8 @@ public sealed partial class FearSystem
             _highlight.NetHighlightAll(bloodList, uid);
             AddNegativeMoodEffect(uid, MoodHemophobicSeeBlood);
         }
+
+        _nextHemophobiaCheck = _timing.CurTime + HemophobiaCheckCooldown;
     }
 
     /// <summary>

@@ -3,6 +3,7 @@ using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Systems;
 using Content.Shared._Sunrise.Mood;
+using Content.Shared.GameTicking;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Timing;
 
@@ -14,6 +15,9 @@ public sealed partial class FearSystem : SharedFearSystem
 
     private EntityQuery<FearActiveSoundEffectsComponent> _activeFearEffects;
 
+    private static readonly TimeSpan CalmDownCheckCooldown = TimeSpan.FromSeconds(1f);
+    private TimeSpan _nextCalmDownCheck = TimeSpan.Zero;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -23,6 +27,8 @@ public sealed partial class FearSystem : SharedFearSystem
         InitializeGameplay();
         InitializeTraits();
 
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => OnRestart());
+
         _activeFearEffects = GetEntityQuery<FearActiveSoundEffectsComponent>();
     }
 
@@ -30,11 +36,23 @@ public sealed partial class FearSystem : SharedFearSystem
     {
         base.Update(frameTime);
 
+        UpdateCalmDown();
+        UpdateHemophobia();
+    }
+
+    private void UpdateCalmDown()
+    {
+        if (_timing.CurTime < _nextCalmDownCheck)
+            return;
+
         var query = EntityQueryEnumerator<FearComponent>();
 
         // Проходимся по людям с компонентом страха и уменьшаем уровень страха со временем
         while (query.MoveNext(out var uid, out var fear))
         {
+            if (!_mob.IsAlive(uid))
+                continue;
+
             if (fear.State == FearState.None)
                 continue;
 
@@ -49,7 +67,7 @@ public sealed partial class FearSystem : SharedFearSystem
                 SetNextCalmDownTime(entity);
         }
 
-        UpdateHemophobia();
+        _nextCalmDownCheck = _timing.CurTime + CalmDownCheckCooldown;
     }
 
     /// <summary>
@@ -105,5 +123,11 @@ public sealed partial class FearSystem : SharedFearSystem
         RaiseLocalEvent(uid, new MoodRemoveEffectEvent(MoodSomeoneDiedOnMyEyes));
         RaiseLocalEvent(uid, new MoodRemoveEffectEvent(MoodHemophobicSeeBlood));
         RaiseLocalEvent(uid, new MoodRemoveEffectEvent(MoodHemophobicBleeding));
+    }
+
+    private void OnRestart()
+    {
+        _nextHemophobiaCheck = TimeSpan.Zero;
+        _nextCalmDownCheck = TimeSpan.Zero;
     }
 }

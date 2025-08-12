@@ -171,6 +171,9 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
+        if (!_mobState.IsAlive(ent))
+            return;
+
         // Как только игрок отходит от источника страха он должен перестать бояться
         // Но значения шейдера от уровня страха должны продолжать действовать, что и учитывает метод
         SetShaderStrength<GrainOverlayComponent>(ent.Owner, ent.Comp, 0f);
@@ -321,6 +324,9 @@ public abstract partial class SharedFearSystem : EntitySystem
     private void SetShaderStrength<T>(Entity<T?> ent, FearComponent? fear, float strength)
         where T : IShaderStrength, IComponent
     {
+        if (IsStrengthSimilar(ent, strength))
+            return;
+
         if (!Resolve(ent, ref fear))
             return;
 
@@ -328,5 +334,21 @@ public abstract partial class SharedFearSystem : EntitySystem
         actualStrength /= GetDrunkModifier(ent);
 
         _shaderStrength.TrySetAdditionalStrength(ent, actualStrength);
+    }
+
+    /// <summary>
+    /// Проверяет, является ли текущая сила шейдера близкой к текущей.
+    /// </summary>
+    private bool IsStrengthSimilar<T>(Entity<T?> ent, float strength)
+        where T : IShaderStrength, IComponent
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return false;
+
+        // Ранний выход, чтобы не просчитывать всякое, если текущая сила уже равна подобной.
+        if (MathHelper.CloseTo(ent.Comp.AdditionalStrength, strength))
+            return false;
+
+        return true;
     }
 }
