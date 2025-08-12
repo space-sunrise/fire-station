@@ -25,10 +25,10 @@
   #   BalloonSyn: 2 # Sunrise Edit
   # Fire Edit End
   startingInventory: # Fire Edit
-    PDABaseFond: 8
-    EngineerPDASCP: 2
-    MedicalPDASCP: 2
-    SecurityPDASCP: 1
+    BaseFoundationPDA: 8
+    ScpEngineerPDA: 2
+    ScpMedicalPDA: 2
+    ScpSecurityPDA: 1
     PassengerIDCard: 5
     ClothingHeadsetGrey: 5
     RubberStampApproved: 1

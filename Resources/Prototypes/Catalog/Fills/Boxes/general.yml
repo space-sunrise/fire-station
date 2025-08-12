@@ -153,7 +153,7 @@
     contents:
       # - id: PassengerPDA # Fire Edit
       #   amount: 4
-      - id: PDABaseFond # Fire Edit
+      - id: BaseFoundationPDA # Fire Edit
         amount: 4
   - type: Sprite
     layers:

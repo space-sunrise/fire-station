@@ -165,7 +165,7 @@
         prob: 0.10
       # - id: ClearPDA # change to visitor one day. # Fire Edit
       #   prob: 0.10
-      - id: PDABaseFond # Fire Edit
+      - id: BaseFoundationPDA # Fire Edit
         prob: 0.10
       - id: PersonalAI
 
