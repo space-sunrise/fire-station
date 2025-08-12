@@ -1,0 +1,10 @@
+ent-DoorRemoteAdministration = пульт от дверей администрации
+    .desc = { ent-DoorRemoteCommand.desc }
+ent-DoorRemoteScientificService = { ent-DoorRemoteResearch }
+    .desc = { ent-DoorRemoteResearch.desc }
+ent-DoorRemoteScpChambers = пульт от дверей камер содержания SCP
+    .desc = { ent-DoorRemoteResearch.desc }
+ent-DoorRemoteLogistics = пульт от дверей логистики
+    .desc = { ent-DoorRemoteCargo.desc }
+ent-DoorRemoteClassD = пульт от дверей комнат класса D
+    .desc = { ent-DoorRemoteSecurity.desc }

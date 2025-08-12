@@ -1,3 +1,15 @@
+ent-ScpBlastDoorRegionalAdministration = { ent-ScpBlastDoor }
+    .suffix = Региональная администрация, Закрыт
+    .desc = { ent-ScpBlastDoor.desc }
+ent-ScpBlastDoorExit = { ent-ScpBlastDoor }
+    .suffix = Выход, Закрыт
+    .desc = { ent-ScpBlastDoor.desc }
+ent-ScpShuttersWindowRegionalAdministration = { ent-ScpShuttersWindow }
+    .suffix = Региональная администрация, Закрыт
+    .desc = { ent-ScpShuttersWindow.desc }
+ent-ScpShuttersWindowExit = { ent-ScpShuttersWindow }
+    .suffix = Выход, Закрыт
+    .desc = { ent-ScpShuttersWindow.desc }
 ent-ScpBlastDoorCentralCommand = { ent-ScpBlastDoor }
     .suffix = Центральное командование, Закрыт
     .desc = { ent-ScpBlastDoor.desc }

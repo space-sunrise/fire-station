@@ -1,1 +1,1 @@
-﻿launcher-server-name = Fire Station
+launcher-server-name = Fire Station
