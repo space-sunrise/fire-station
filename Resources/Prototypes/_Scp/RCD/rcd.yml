@@ -17,7 +17,9 @@
   id: ScpFloorSteel
   name: rcd-component-floor-steel
   category: WallsAndFlooring
-  sprite: /Textures/Interface/Radial/RCD/metal_tile.png
+  sprite:
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel
   mode: ConstructTile
   prototype: ScpFloorSteel
   cost: 1
@@ -31,7 +33,9 @@
 - type: rcd
   id: ScpWallSolid
   category: WallsAndFlooring
-  sprite: /Textures/Interface/Radial/RCD/solid_wall.png
+  sprite:
+    sprite: _Scp/Structures/Walls/solid.rsi
+    state: full
   mode: ConstructObject
   prototype: ScpWallSolid
   cost: 4
@@ -44,7 +48,9 @@
 - type: rcd
   id: ScpWindow
   category: WindowsAndGrilles
-  sprite: /Textures/Interface/Radial/RCD/window.png
+  sprite:
+    sprite: _Scp/Structures/Windows/window.rsi
+    state: full
   mode: ConstructObject
   prototype: ScpWindow
   cost: 3
@@ -73,7 +79,9 @@
 - type: rcd
   id: ScpReinforcedWindow
   category: WindowsAndGrilles
-  sprite: /Textures/Interface/Radial/RCD/window_reinforced.png
+  sprite:
+    sprite: _Scp/Structures/Windows/reinforced_window.rsi
+    state: full
   mode: ConstructObject
   prototype: ScpReinforcedWindow
   cost: 4
