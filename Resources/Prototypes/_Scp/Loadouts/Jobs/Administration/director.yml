@@ -39,9 +39,9 @@
 
 # ПДА
 - type: loadout
-  id: DirectorPDA
+  id: DirectorKeyCard
   equipment:
-    id: DirectorPDA
+    id: KeyCardDirector
 
 # Сумка
 - type: loadout

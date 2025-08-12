@@ -27,7 +27,4 @@
   id: AnomabiologyResearcherGear
   equipment:
     ears: ClothingHeadsetScientificService
-    id: SciencePDA
-    #storage:
-    #back:
-    #- Stuff
+    id: KeyCardAnomabiologyResearcher

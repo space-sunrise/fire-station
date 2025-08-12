@@ -17,9 +17,6 @@
 - type: startingGear
   id: LogisticsOfficerGear
   equipment:
-    id: CargoPDA
+    id: KeyCardLogisticsOfficer
     ears: ClothingHeadsetLogistics
     pocket1: AppraisalTool
-    #storage:
-    #back:
-    #- Stuff

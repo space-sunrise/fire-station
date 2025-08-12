@@ -23,7 +23,7 @@
 - type: startingGear
   id: ChiefTechnicalSpecialistGear
   equipment:
-    id: CEPDA
+    id: KeyCardChiefTechnicalSpecialist
     eyes: ClothingEyesGlassesMeson
     ears: ClothingHeadsetAltEngineeringTechnicalService
     belt: ClothingBeltUtilityEngineering

@@ -17,6 +17,6 @@
   id: ElectricalTechnicalSpecialistGear
   equipment:
     eyes: ClothingEyesGlassesMeson
-    id: AtmosPDA
+    id: KeyCardElectricalTechnicalSpecialist
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineeringTechnicalService

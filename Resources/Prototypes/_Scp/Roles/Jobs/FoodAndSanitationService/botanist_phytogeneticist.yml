@@ -17,9 +17,6 @@
   id: BotanistPhytogeneticistGear
   equipment:
     shoes: ClothingShoesColorBrown
-    id: BotanistPDA
+    id: KeyCardBotanistPhytogeneticist
     ears: ClothingHeadsetFoodAndSanitation
     belt: ClothingBeltPlantFilled
-    #storage:
-    #back:
-    #- Stuff

@@ -16,7 +16,7 @@
 - type: startingGear
   id: LeadTechnicalSpecialistGear
   equipment:
-    id: SeniorEngineerPDA
+    id: KeyCardLeadTechnicalSpecialist
     eyes: ClothingEyesGlassesMeson
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineeringTechnicalService

@@ -23,7 +23,7 @@
 - type: startingGear
   id: SeniorLogisticsOfficerGear
   equipment:
-    id: QuartermasterPDA
+    id: KeyCardSeniorLogisticsOfficer
     ears: ClothingHeadsetAltLogistics
     pocket1: AppraisalTool
   storage:

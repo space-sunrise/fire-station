@@ -38,10 +38,10 @@
   - DirectorGlovesSpecial
 
 - type: loadoutGroup
-  id: DirectorPDA
-  name: loadout-group-pda
+  id: DirectorKeyCard
+  name: loadout-group-key-card
   loadouts:
-  - DirectorPDA
+  - DirectorKeyCard
 
 - type: loadoutGroup
   id: DirectorBack

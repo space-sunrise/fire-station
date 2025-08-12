@@ -24,9 +24,6 @@
   id: JuniorResearcherGear
   equipment:
     shoes: ClothingShoesColorWhite
-    id: ResearchAssistantPDA
+    id: KeyCardJuniorResearcher
     ears: ClothingHeadsetScientificService
     pocket2: BookScientistsGuidebook
-    #storage:
-    #back:
-    #- Stuff

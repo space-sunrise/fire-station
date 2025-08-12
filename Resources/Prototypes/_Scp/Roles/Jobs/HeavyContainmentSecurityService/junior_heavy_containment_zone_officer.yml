@@ -35,7 +35,7 @@
   id: JuniorHeavyContainmentZoneOfficerGear
   equipment:
     mask: ClothingMaskSecurityBandBlack
-    id: SecurityCadetPDA
+    id: KeyCardJuniorHeavyContainmentZoneOfficer
     ears: ClothingHeadsetHeavyContainmentSecurityService
     pocket1: HyperLinkBookCorporateLaw
   storage:

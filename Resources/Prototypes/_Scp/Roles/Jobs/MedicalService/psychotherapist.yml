@@ -17,7 +17,7 @@
   id: PsychotherapistGear
   equipment:
     shoes: ClothingShoesLeather
-    id: PsychologistPDA
+    id: KeyCardPsychotherapist
     ears: ClothingHeadsetMedicalService
   storage:
     back:

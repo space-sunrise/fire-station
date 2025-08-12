@@ -35,7 +35,7 @@
   id: JuniorExternalAdministrativeZoneOfficerGear
   equipment:
     mask: ClothingMaskSecurityBandBlack
-    id: SecurityCadetPDA
+    id: KeyCardJuniorLightContainmentZoneSecurityOfficer
     ears: ClothingHeadsetExternalAdministrativeZoneSecurityService
     pocket1: HyperLinkBookCorporateLaw
   storage:

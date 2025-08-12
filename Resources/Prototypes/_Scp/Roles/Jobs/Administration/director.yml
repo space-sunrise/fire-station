@@ -32,7 +32,7 @@
     gloves: ClothingHandsGlovesDirectorSpecial
     shoes: ClothingShoesBootsLaceup
     back: ClothingBackpackSatchelLeatherDirectorFilled
-    id: DirectorPDA
+    id: KeyCardDirector
     ears: ClothingHeadsetAltAdministration
   storage:
     back:

@@ -26,7 +26,4 @@
     ears: ClothingHeadsetMedicalService
     belt: ClothingBeltMedicalFilled
     eyes: ClothingEyesHudMedical
-    id: MedicalPDA
-    #storage:
-    #back:
-    #- Stuff
+    id: KeyCardMedicalSpecialist

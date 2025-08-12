@@ -26,7 +26,4 @@
   id: AnomarchologyResearcherGear
   equipment:
     ears: ClothingHeadsetScientificService
-    id: SciencePDA
-    #storage:
-    #back:
-    #- Stuff
+    id: KeyCardAnomarchologyResearcher

@@ -46,7 +46,7 @@
   equipment:
     eyes: ClothingEyesGlassesSecurity
     head: ClothingHeadHatBeretSecurity
-    id: SeniorOfficerPDA
+    id: KeyCardSeniorLightContainmentZoneSecurityOfficer
     ears: ClothingHeadsetExternalAdministrativeZoneSecurityService
   storage:
     back:

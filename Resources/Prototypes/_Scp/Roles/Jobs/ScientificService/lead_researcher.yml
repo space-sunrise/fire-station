@@ -26,7 +26,7 @@
   id: LeadResearcherGear
   equipment:
     head: ClothingHeadHatBeretRND
-    id: SeniorResearcherPDA
+    id: KeyCardLeadResearcher
     ears: ClothingHeadsetScientificService
     outerClothing: ClothingOuterCoatLabSeniorResearcher
   storage:

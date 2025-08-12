@@ -67,7 +67,7 @@
   id: TribunalOfficerGear
   equipment:
     shoes: ClothingShoesColorBlack
-    id: TribunalOfficerPDA
+    id: KeyCardTribunalOfficer
     eyes: ClothingEyesGlassesSunglasses
     ears: ClothingHeadsetAltInternalTribunalService
     pocket2: HyperLinkBookCorporateLaw
