@@ -1,6 +1,6 @@
 - type: vendingMachineInventory
   id: PTechInventory
-  #Fire Edit Start
+  # Fire Edit Start
   # startingInventory:
   #   PassengerPDA: 5
   #   ClearPDA: 5
@@ -23,7 +23,7 @@
   # emaggedInventory:
   #   CyberPen: 1 # Sunrise Edit
   #   BalloonSyn: 2 # Sunrise Edit
-  #Fire Edit End
+  # Fire Edit End
   startingInventory: # Fire Edit
     PDABaseFond: 8
     EngineerPDASCP: 2

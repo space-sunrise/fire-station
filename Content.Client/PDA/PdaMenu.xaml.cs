@@ -99,17 +99,17 @@ namespace Content.Client.PDA
                 ToHomeScreen();
             };
 
-            // Fire Edit-Start
-            // PdaOwnerButton.OnPressed += _ =>
-            // {
-            //     _clipboard.SetText(_pdaOwner);
-            // };
+            /* Fire Edit
+            PdaOwnerButton.OnPressed += _ =>
+            {
+                _clipboard.SetText(_pdaOwner);
+            };
 
-            // IdInfoButton.OnPressed += _ =>
-            // {
-            //     _clipboard.SetText(_owner + ", " + _jobTitle);
-            // };
-            // Fire Edit-End
+            IdInfoButton.OnPressed += _ =>
+            {
+                _clipboard.SetText(_owner + ", " + _jobTitle);
+            };
+            */
 
             StationNameButton.OnPressed += _ =>
             {
@@ -165,33 +165,33 @@ namespace Content.Client.PDA
             _evacShuttleStatus = state.PdaOwnerInfo.EvacShuttleStatus;
             // Sunrise-end
 
-            // Fire Edit-Start
-            // if (state.PdaOwnerInfo.ActualOwnerName != null)
-            // {
-            //     _pdaOwner = state.PdaOwnerInfo.ActualOwnerName;
-            //     PdaOwnerLabel.SetMarkup(Loc.GetString("comp-pda-ui-owner",
-            //         ("actualOwnerName", _pdaOwner)));
-            //     PdaOwnerLabel.Visible = true;
-            // }
-            // else
-            // {
-            //     PdaOwnerLabel.Visible = false;
-            // }
+            /* Fire Edit
+            if (state.PdaOwnerInfo.ActualOwnerName != null)
+            {
+                _pdaOwner = state.PdaOwnerInfo.ActualOwnerName;
+                PdaOwnerLabel.SetMarkup(Loc.GetString("comp-pda-ui-owner",
+                    ("actualOwnerName", _pdaOwner)));
+                PdaOwnerLabel.Visible = true;
+            }
+            else
+            {
+                PdaOwnerLabel.Visible = false;
+            }
 
 
-            // if (state.PdaOwnerInfo.IdOwner != null || state.PdaOwnerInfo.JobTitle != null)
-            // {
-            //     _owner = state.PdaOwnerInfo.IdOwner ?? Loc.GetString("comp-pda-ui-unknown");
-            //     _jobTitle = state.PdaOwnerInfo.JobTitle ?? Loc.GetString("comp-pda-ui-unassigned");
-            //     IdInfoLabel.SetMarkup(Loc.GetString("comp-pda-ui",
-            //         ("owner", _owner),
-            //         ("jobTitle", _jobTitle)));
-            // }
-            // else
-            // {
-            //     IdInfoLabel.SetMarkup(Loc.GetString("comp-pda-ui-blank"));
-            // }
-            // Fire Edit-End
+            if (state.PdaOwnerInfo.IdOwner != null || state.PdaOwnerInfo.JobTitle != null)
+            {
+                _owner = state.PdaOwnerInfo.IdOwner ?? Loc.GetString("comp-pda-ui-unknown");
+                _jobTitle = state.PdaOwnerInfo.JobTitle ?? Loc.GetString("comp-pda-ui-unassigned");
+                IdInfoLabel.SetMarkup(Loc.GetString("comp-pda-ui",
+                    ("owner", _owner),
+                    ("jobTitle", _jobTitle)));
+            }
+            else
+            {
+                IdInfoLabel.SetMarkup(Loc.GetString("comp-pda-ui-blank"));
+            }
+            */
             
             _stationName = state.StationName ?? Loc.GetString("comp-pda-ui-unknown");
             StationNameLabel.SetMarkup(Loc.GetString("comp-pda-ui-station",

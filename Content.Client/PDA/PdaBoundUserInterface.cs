@@ -37,12 +37,12 @@ namespace Content.Client.PDA
                 SendMessage(new PdaToggleFlashlightMessage());
             };
 
-            // Fire Edit-Start
-            // _menu.EjectIdButton.OnPressed += _ =>
-            // {
-            //     SendPredictedMessage(new ItemSlotButtonPressedEvent(PdaComponent.PdaIdSlotId));
-            // };
-            // Fire Edit-End
+            /* Fire Edit
+            _menu.EjectIdButton.OnPressed += _ =>
+            {
+                SendPredictedMessage(new ItemSlotButtonPressedEvent(PdaComponent.PdaIdSlotId));
+            };
+            */
 
             _menu.EjectPenButton.OnPressed += _ =>
             {
