@@ -1,5 +1,3 @@
-character-info-fears-label = Phobias and Fears
-character-info-fears-text = You are fearless. Be proud of it.
 phobia-unspecified-name = Unspecified
 phobia-unspecified-description = A fear lingers on the edge of your mind. You don't understand its cause.
 exoremophobia-name = Exoremophobia
