@@ -1,0 +1,177 @@
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineChefvendDClass
+  name: ChefVend
+  description: An ingredient vendor for all your cheffin needs.
+  suffix: D Class Kitchen
+  components:
+  - type: VendingMachine
+    pack: ChefvendInventoryDClass
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/chefvend.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  # - type: AccessReader
+  #   access: [["ClassDCanteen"]]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#4b93ad"
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineChefDrobeDClass
+  name: ChefDrobe
+  description: This vending machine might not dispense meat, but it certainly dispenses chef related clothing.
+  suffix: D Class Kitchen
+  components:
+  - type: VendingMachine
+    pack: ChefDrobeInventoryDClass
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/chefdrobe.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  # - type: AccessReader
+  #   access: [["ClassDCanteen"]]
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineDinnerwareDClass
+  name: Plasteel Chef's Dinnerware Vendor
+  description: A kitchen and restaurant equipment vendor.
+  suffix: D Class Kitchen
+  components:
+  - type: VendingMachine
+    pack: DinnerwareInventoryDClass
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/dinnerware.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  # - type: AccessReader
+  #   access: [["ClassDCanteen"]]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#4b93ad"
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineSeedsDClass
+  name: MegaSeed Servitor
+  description: For when you need seeds fast. Hands down the best seed selection on the station!
+  suffix: D Class Hydroponics
+  components:
+  - type: VendingMachine
+    pack: MegaSeedServitorInventoryDClass
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+    denyState: deny-unshaded
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/seeds.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#326e3f"
+  # - type: AccessReader
+  #   access: [["ClassDCanteen"]]
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineNutriDClass
+  name: NutriMax
+  description: A vending machine containing nutritional substances for plants and botanical tools.
+  suffix: D Class Hydroponics
+  components:
+  - type: VendingMachine
+    pack: NutriMaxInventoryDClass
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+    denyState: deny-unshaded
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/nutri.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  # - type: AccessReader
+  #   access: [["ClassDCanteen"]]
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#326e3f"
+
+- type: entity
+  parent: VendingMachine
+  id: VendingMachineBoozeDClass
+  name: Booze-O-Mat
+  description: A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one.
+  suffix: D Class Kitchen
+  components:
+  - type: VendingMachine
+    pack: BoozeOMatInventoryDClass
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    denyState: deny-unshaded
+    loopDeny: false
+  - type: Sprite
+    sprite: Structures/Machines/VendingMachines/boozeomat.rsi
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+  # - type: AccessReader
+  #   access: [["ClassDCanteen"]]
+  - type: GuideHelp
+    guides:
+    - Bartender
+    - Drinks
