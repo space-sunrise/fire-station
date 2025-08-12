@@ -8,6 +8,13 @@
   supervisors: job-supervisors-personnel-officer
   access:
   - Service
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: One
 
 - type: startingGear
   id: GastronomicSpecialistGear

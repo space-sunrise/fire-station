@@ -12,6 +12,13 @@
   displayWeight: 10  # Sunrise
   accessGroups:
   - CommonMedicalJob
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Two
 
 - type: startingGear
   id: PsychotherapistGear

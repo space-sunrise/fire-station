@@ -12,6 +12,13 @@
   displayWeight: 30
   accessGroups:
   - LeadTechnicalSpecialist
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
 
 - type: startingGear
   id: LeadTechnicalSpecialistGear

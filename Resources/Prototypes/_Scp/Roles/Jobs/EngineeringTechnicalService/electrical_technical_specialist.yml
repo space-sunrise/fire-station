@@ -12,6 +12,13 @@
   displayWeight: 10
   accessGroups:
   - ElectricalSpecialist
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
 
 - type: startingGear
   id: ElectricalTechnicalSpecialistGear

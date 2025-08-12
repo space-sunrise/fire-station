@@ -12,6 +12,12 @@
   - !type:GiveItemOnHolidaySpecial
     holiday: FourTwenty
     prototype: CannabisSeeds
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: One
 
 - type: startingGear
   id: BotanistPhytogeneticistGear

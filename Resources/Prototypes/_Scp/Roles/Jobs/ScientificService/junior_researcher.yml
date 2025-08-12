@@ -13,6 +13,10 @@
   special:
   - !type:AddComponentSpecial
     components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: One
     - type: Fear
       phobias:
       - Exoremophobia

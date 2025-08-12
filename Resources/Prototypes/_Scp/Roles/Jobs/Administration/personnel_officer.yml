@@ -21,6 +21,10 @@
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: EmployeeClass
+      class: B
+    - type: AccessLevel
+      level: Four
 
 - type: startingGear
   id: PersonnelOfficerGear
