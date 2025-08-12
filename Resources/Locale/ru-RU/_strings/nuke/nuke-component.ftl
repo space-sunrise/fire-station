@@ -1,9 +1,9 @@
 nuke-component-cant-anchor-floor = Крепёжным болтам не удаётся закрепиться в полу!
 nuke-component-cant-anchor-toggle = The nuclear authentication disk is required to toggle the floor bolts!
 nuke-component-announcement-sender = Ядерная боеголовка
-nuke-component-announcement-armed = Внимание! Механизм самоуничтожения станции был активирован { $location }. До детонации { $time } секунд.
-nuke-component-announcement-unarmed = Механизм самоуничтожение станции деактивирован! Хорошего дня!
-nuke-component-announcement-send-codes = Внимание! Запрошенные коды самоуничтожения были отправлены на факс капитана.
+nuke-component-announcement-armed = Активирован механизм уничтожения комплекса! До уничтожения комплекса: { $time } секунд. Место запуска: { $location }.
+nuke-component-announcement-unarmed = Механизм уничтожения комплекса деактивирован! Хорошего дня!
+nuke-component-announcement-send-codes = Внимание! Запрошенные коды ядерной аутентификации отправлены на факсимильный аппарат директора комплекса.
 nuke-component-doafter-warning = Вы начинаете перебирать провода и кнопки, в попытке обезвредить ядерную бомбу. Это может занять некоторое время.
 nuke-user-interface-title = Ядерная боеголовка
 nuke-user-interface-arm-button = ВЗВЕСТИ
