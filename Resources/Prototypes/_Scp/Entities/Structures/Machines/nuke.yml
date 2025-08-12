@@ -18,7 +18,5 @@
         - NukeDisk
     armMusic:
       path: /Audio/_Scp/StationEvents/war_without_reason.ogg
-      #params:
-      #  volume: 100
     alertLevelOnActivate: scpDelta
     alertLevelOnDeactivate: scpBlue
