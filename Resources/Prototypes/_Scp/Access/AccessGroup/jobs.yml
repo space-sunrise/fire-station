@@ -48,7 +48,7 @@
 - type: accessGroup
   id: PersonnelOfficer
   groups:
-  - AdministrationCommon
+  - AdministrationJobCommon
   - EngineeringHeadless
   - LogisticsHeadless
   - ClassD
@@ -62,7 +62,7 @@
 - type: accessGroup
   id: HeadOfMedicalSector
   groups:
-  - AdministrationCommon
+  - AdministrationJobCommon
   - Medical
   - ServiceHeadless
   - ClassD
@@ -70,7 +70,7 @@
 - type: accessGroup
   id: SeniorLogisticsOfficer
   groups:
-  - AdministrationCommon
+  - AdministrationJobCommon
   - Logistics
   - ServiceHeadless
   - ClassD

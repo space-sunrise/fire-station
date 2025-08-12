@@ -190,7 +190,7 @@
   suffix: Third party
   components:
   - type: AccessReader
-    access: [["Third party"]]
+    access: [["ThirdParty"]]
 
 - type: entity
   parent: LockableButton

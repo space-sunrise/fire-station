@@ -89,7 +89,7 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsDirector ]
+      board: [ DoorElectronicsComplexDirector ]
 
 - type: entity
   parent: ScpWindoorSecureAdministrationLocked

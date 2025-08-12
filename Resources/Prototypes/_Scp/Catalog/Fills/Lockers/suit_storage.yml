@@ -6,7 +6,7 @@
   suffix: Complex director
   components:
   - type: AccessReader
-    access: [["Director"]]
+    access: [["ComplexDirector"]]
 
 - type: entity
   id: SuitStorageSecurityCommander

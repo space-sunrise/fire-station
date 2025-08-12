@@ -417,7 +417,7 @@
   - type: Sprite
     sprite: _Scp/Objects/Keycards/Level0.rsi
   - type: PresetIdCard
-    job: ClassDCock
+    job: ClassDCook
 
 - type: entity
   parent: KeyCardBase
