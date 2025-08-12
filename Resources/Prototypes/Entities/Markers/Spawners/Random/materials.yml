@@ -8,7 +8,7 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Objects/Materials/Sheets/metal.rsi
+        - sprite: _Scp/Objects/Materials/Sheets/metal.rsi # Fire Edit
           state: steel_3
     - type: EntityTableSpawner
       table: !type:NestedSelector
@@ -42,7 +42,7 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Objects/Materials/Sheets/metal.rsi
+        - sprite: _Scp/Objects/Materials/Sheets/metal.rsi # Fire Edit
           state: plasteel_2
     - type: EntityTableSpawner
       table: !type:NestedSelector
@@ -57,7 +57,7 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Objects/Materials/Sheets/other.rsi
+        - sprite: _Scp/Objects/Materials/Sheets/other.rsi # Fire Edit
           state: plasma_2
     - type: EntityTableSpawner
       table: !type:NestedSelector
@@ -75,7 +75,7 @@
     - type: Sprite
       layers:
         - state: red
-        - sprite: Objects/Materials/Sheets/metal.rsi
+        - sprite: _Scp/Objects/Materials/Sheets/metal.rsi # Fire Edit
           state: steel_3
     - type: EntityTableSpawner
       table: !type:NestedSelector

@@ -5,9 +5,9 @@
   description: A sheet of material, used often on the station in various applications.
   components:
   - type: Sprite
-    sprite: Objects/Materials/Sheets/other.rsi
+    sprite: _Scp/Objects/Materials/Sheets/other.rsi # Fire Edit
   - type: Item
-    sprite: Objects/Materials/Sheets/other.rsi
+    sprite: _Scp/Objects/Materials/Sheets/other.rsi # Fire Edit
     size: Normal
   - type: Tag
     tags:
@@ -34,6 +34,16 @@
   name: paper
   suffix: Full
   components:
+  - type: Sprite
+    sprite: Objects/Materials/Sheets/other.rsi # Fire Edit
+    state: paper_3
+    layers:
+    - state: paper_3
+      map: ["base"]
+  - type: Item
+    sprite: Objects/Materials/Sheets/other.rsi # Fire Edit
+    size: Normal
+    heldPrefix: paper
   - type: Stack
     stackType: Paper
     baseLayer: base
@@ -45,13 +55,13 @@
   - type: PhysicalComposition
     materialComposition:
       Paper: 100
-  - type: Sprite
-    state: paper_3
-    layers:
-    - state: paper_3
-      map: ["base"]
-  - type: Item
-    heldPrefix: paper
+  # - type: Sprite # Fire Edit
+  #   state: paper_3
+  #   layers:
+  #   - state: paper_3
+  #     map: ["base"]
+  # - type: Item
+  #   heldPrefix: paper
   - type: Appearance
   - type: Extractable
     grindableSolutionName: paper

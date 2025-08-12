@@ -6,9 +6,9 @@
   description: A sheet of glass, used often on the station in various applications.
   components:
   - type: Sprite
-    sprite: Objects/Materials/Sheets/glass.rsi
+    sprite: _Scp/Objects/Materials/Sheets/glass.rsi # Fire Edit
   - type: Item
-    sprite: Objects/Materials/Sheets/glass.rsi
+    sprite: _Scp/Objects/Materials/Sheets/glass.rsi # Fire Edit
     size: Normal
   - type: StaticPrice
     price: 0
@@ -482,6 +482,16 @@
   description: A sheet of brass-hardened glass, primarily used by clockwork enthusiasts and remnants of Ratvarian cults.
   suffix: Full
   components:
+  - type: Sprite
+    sprite: Objects/Materials/Sheets/glass.rsi # Fire Edit
+    state: cglass_3
+    layers:
+    - state: cglass_3
+      map: ["base"]
+  - type: Item
+    sprite: Objects/Materials/Sheets/glass.rsi # Fire Edit
+    size: Normal
+    heldPrefix: cglass
   - type: PhysicalComposition
     materialComposition:
       BrassGlass: 100
@@ -492,13 +502,13 @@
     - cglass
     - cglass_2
     - cglass_3
-  - type: Sprite
-    state: cglass_3
-    layers:
-    - state: cglass_3
-      map: ["base"]
-  - type: Item
-    heldPrefix: cglass
+  # - type: Sprite # Fire Edit
+  #   state: cglass_3
+  #   layers:
+  #   - state: cglass_3
+  #     map: ["base"]
+  # - type: Item
+  #   heldPrefix: cglass
   - type: Construction
     graph: Glass
     node: SheetClockworkGlass

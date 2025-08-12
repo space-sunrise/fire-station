@@ -1,14 +1,14 @@
 - type: stack
   id: Steel
   name: stack-steel
-  icon: { sprite: /Textures/Objects/Materials/Sheets/metal.rsi, state: steel }
+  icon: { sprite: /Textures/_Scp/Objects/Materials/Sheets/metal.rsi, state: steel } # Fire Edit
   spawn: SheetSteel1
   maxCount: 30
 
 - type: stack
   id: Plasteel
   name: stack-plasteel
-  icon: { sprite: /Textures/Objects/Materials/Sheets/metal.rsi, state: plasteel }
+  icon: { sprite: /Textures/_Scp/Objects/Materials/Sheets/metal.rsi, state: plasteel } # Fire Edit
   spawn: SheetPlasteel1
   maxCount: 30
 
