@@ -14,7 +14,7 @@
   - AI
 
 - type: accessGroup
-  id: ScientificDirector
+  id: ScientificServiceDirector
   groups:
   - AdministrationJobCommon
   - ScientificService

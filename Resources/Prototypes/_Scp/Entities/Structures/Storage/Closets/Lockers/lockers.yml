@@ -54,7 +54,7 @@
   name: scientific director's locker
   components:
   - type: AccessReader
-    access: [ [ "ScientificDirector" ] ]
+    access: [ [ "ScientificServiceDirector" ] ]
 
 - type: entity
   id: LockerEthicsCommittee

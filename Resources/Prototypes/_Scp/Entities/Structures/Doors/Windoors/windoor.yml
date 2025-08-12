@@ -102,12 +102,12 @@
 
 - type: entity
   parent: ScpWindoorSecureAdministrationLocked
-  id: ScpWindoorSecureScientificDirectorLocked
+  id: ScpWindoorSecureScientificServiceDirectorLocked
   suffix: SCP Scientific director, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsScientificDirector ]
+      board: [ DoorElectronicsScientificServiceDirector ]
 
 - type: entity
   parent: ScpWindoorSecureAdministrationLocked

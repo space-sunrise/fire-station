@@ -22,7 +22,7 @@
       # Fire added start - новые доступы
       - Administration
       - ComplexDirector
-      - ScientificDirector
+      - ScientificServiceDirector
       - SecurityCommander
       - ChiefTechnicalSpecialist
       - PersonnelOfficer
@@ -93,7 +93,7 @@
     # Fire added start - новые доступы
     - Administration
     - ComplexDirector
-    - ScientificDirector
+    - ScientificServiceDirector
     - SecurityCommander
     - ChiefTechnicalSpecialist
     - PersonnelOfficer

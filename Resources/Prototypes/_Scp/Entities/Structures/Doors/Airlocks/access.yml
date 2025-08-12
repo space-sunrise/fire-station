@@ -49,12 +49,12 @@
 
 - type: entity
   parent: ScpAirlockAdministration
-  id: ScpAirlockScientificDirectorLocked
+  id: ScpAirlockScientificServiceDirectorLocked
   suffix: SCP Scientific director, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsScientificDirector ]
+      board: [ DoorElectronicsScientificServiceDirector ]
 
 - type: entity
   parent: ScpAirlockAdministration
@@ -446,12 +446,12 @@
 
 - type: entity
   parent: ScpAirlockAdministrationGlass
-  id: ScpAirlockScientificDirectorGlassLocked
+  id: ScpAirlockScientificServiceDirectorGlassLocked
   suffix: SCP Scientific director, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsScientificDirector ]
+      board: [ DoorElectronicsScientificServiceDirector ]
 
 - type: entity
   parent: ScpAirlockAdministrationGlass
@@ -807,12 +807,12 @@
 
 - type: entity
   parent: ScpAirlockMaintAdministrationLocked
-  id: ScpAirlockMaintScientificDirectorLocked
+  id: ScpAirlockMaintScientificServiceDirectorLocked
   suffix: SCP Scientific director, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsScientificDirector ]
+      board: [ DoorElectronicsScientificServiceDirector ]
 
 - type: entity
   parent: ScpAirlockMaintAdministrationLocked
@@ -1099,12 +1099,12 @@
 
 - type: entity
   parent: ScpHighSecDoor
-  id: HighSecScientificDirectorLocked
+  id: HighSecScientificServiceDirectorLocked
   suffix: SCP Scientific Director, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsScientificDirector ]
+      board: [ DoorElectronicsScientificServiceDirector ]
 
 # Региональная администрация
 

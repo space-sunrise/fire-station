@@ -18,7 +18,7 @@
     accessLevels:
     - Administration
     - ComplexDirector
-    - ScientificDirector
+    - ScientificServiceDirector
     - SecurityCommander
     - ChiefTechnicalSpecialist
     - PersonnelOfficer
@@ -52,7 +52,7 @@
   suffix: AI
   components:
   - type: AccessReader
-    access: [["AI"], ["ScientificDirector"]]
+    access: [["AI"], ["ScientificServiceDirector"]]
   - type: DeviceNetwork
     receiveFrequencyId: TurretAI
     transmitFrequencyId: TurretControlAI

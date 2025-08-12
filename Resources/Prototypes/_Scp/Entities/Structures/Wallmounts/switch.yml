@@ -26,11 +26,11 @@
 
 - type: entity
   parent: LockableButton
-  id: LockableButtonScientificDirector
+  id: LockableButtonScientificServiceDirector
   suffix: Scientific director
   components:
   - type: AccessReader
-    access: [["ScientificDirector"]]
+    access: [["ScientificServiceDirector"]]
 
 - type: entity
   parent: LockableButton

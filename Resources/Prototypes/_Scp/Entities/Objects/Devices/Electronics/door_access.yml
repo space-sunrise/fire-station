@@ -17,11 +17,11 @@
 
 - type: entity
   parent: DoorElectronics
-  id: DoorElectronicsScientificDirector
+  id: DoorElectronicsScientificServiceDirector
   suffix: Scientific director, Locked
   components:
   - type: AccessReader
-    access: [["ScientificDirector"]]
+    access: [["ScientificServiceDirector"]]
 
 - type: entity
   parent: DoorElectronics

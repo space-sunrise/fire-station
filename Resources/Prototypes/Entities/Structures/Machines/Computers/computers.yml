@@ -576,7 +576,7 @@
     accessLevels:
     - Administration
     - ComplexDirector
-    - ScientificDirector
+    - ScientificServiceDirector
     - SecurityCommander
     - ChiefTechnicalSpecialist
     - PersonnelOfficer
@@ -1119,7 +1119,7 @@
   - type: CargoOrderConsole
     account: Science
     announcementChannel: Science
-    removeLimitAccess: [ "ScientificDirector" ] # Fire edit
+    removeLimitAccess: [ "ScientificServiceDirector" ] # Fire edit
     mode: SendToPrimary
   - type: ActiveRadio
     channels:
@@ -1661,7 +1661,7 @@
   - type: Computer
     board: RoboticsConsoleCircuitboard
   - type: AccessReader # only used for dangerous things
-    access: [["ScientificDirector"]] # Fire edit
+    access: [["ScientificServiceDirector"]] # Fire edit
   - type: Lock
     unlockOnClick: false
 
@@ -1688,7 +1688,7 @@
   - type: Computer
     board: StationAiUploadCircuitboard
   - type: AccessReader
-    access: [ [ "ScientificDirector" ] ] # Fire edit
+    access: [ [ "ScientificServiceDirector" ] ] # Fire edit
   - type: Lock
     unlockOnClick: false
   - type: SiliconLawUpdater

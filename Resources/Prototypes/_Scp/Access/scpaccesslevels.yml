@@ -9,8 +9,8 @@
   name: access-name-complex-director
 
 - type: accessLevel
-  id: ScientificDirector
-  name: access-name-scientific-director
+  id: ScientificServiceDirector
+  name: access-name-scientific-service-director
 
 - type: accessLevel
   id: SecurityCommander

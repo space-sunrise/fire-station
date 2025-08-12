@@ -49,12 +49,12 @@
 
 - type: entity
   parent: [ ScpDoubleAirlockAdministration ]
-  id: ScpDoubleAirlockScientificDirectorLocked
+  id: ScpDoubleAirlockScientificServiceDirectorLocked
   suffix: SCP Scientific director, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsScientificDirector ]
+      board: [ DoorElectronicsScientificServiceDirector ]
 
 - type: entity
   parent: [ ScpDoubleAirlockAdministration ]
@@ -374,12 +374,12 @@
 
 - type: entity
   parent: [ ScpDoubleGlassAirlockAdministration ]
-  id: ScpDoubleGlassAirlockScientificDirectorLocked
+  id: ScpDoubleGlassAirlockScientificServiceDirectorLocked
   suffix: SCP Scientific director, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsScientificDirector ]
+      board: [ DoorElectronicsScientificServiceDirector ]
 
 - type: entity
   parent: [ ScpDoubleGlassAirlockAdministration ]

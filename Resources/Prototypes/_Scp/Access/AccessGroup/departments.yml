@@ -4,7 +4,7 @@
   - AdministrationHeadless
   tags:
   - ComplexDirector
-  - ScientificDirector
+  - ScientificServiceDirector
   - SecurityCommander
   - HeadOfMedicalSector
   - PersonnelOfficer
@@ -20,7 +20,7 @@
 - type: accessGroup
   id: ScientificService
   tags:
-  - ScientificDirector
+  - ScientificServiceDirector
   groups:
   - ScientificServiceHeadless
 
