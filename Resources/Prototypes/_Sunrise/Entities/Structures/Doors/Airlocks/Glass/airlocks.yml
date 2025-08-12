@@ -4,6 +4,7 @@
   id: DoubleGlassAirlock
   parent: AirlockGlass
   name: double glass airlock
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: MeleeSound
     soundGroups:
@@ -88,6 +89,7 @@
   id: DoubleGlassAirlockBasic
   parent: [ DoubleGlassAirlock ]
   name: double basic glass airlock
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_basic.rsi
@@ -96,6 +98,7 @@
   id: DoubleGlassAirlockAtmospherics
   parent: [ DoubleGlassAirlockEngineering ]
   suffix: Atmospherics
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_atmospherics.rsi
@@ -104,6 +107,7 @@
   id: DoubleGlassAirlockCargo
   parent: [ DoubleGlassAirlock, AirlockCargoGlass ]
   suffix: Cargo
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_cargo.rsi
@@ -112,6 +116,7 @@
   id: DoubleGlassAirlockChemistry
   parent: [ DoubleGlassAirlock, AirlockChemistryGlass ]
   suffix: Chemistry
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_chemistry.rsi
@@ -120,6 +125,7 @@
   id: DoubleGlassAirlockCommand
   parent: [ DoubleGlassAirlock, AirlockCommandGlass ]
   suffix: Command
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_command.rsi
@@ -128,6 +134,7 @@
   id: DoubleGlassAirlockCentralCommand
   parent: [ DoubleGlassAirlock, AirlockCentralCommandGlass ]
   suffix: Central Command
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_centcomm.rsi
@@ -136,6 +143,7 @@
   id: DoubleGlassAirlockEngineering
   parent: [ DoubleGlassAirlock, AirlockEngineeringGlass ]
   suffix: Engineering
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_engineering.rsi
@@ -144,6 +152,7 @@
   id: DoubleGlassAirlockMaint
   parent: [ DoubleGlassAirlock, AirlockMaintGlass ]
   suffix: Maintenance
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_maint.rsi
@@ -152,6 +161,7 @@
   id: DoubleGlassAirlockMedical
   parent: [ DoubleGlassAirlock, AirlockMedicalGlass ]
   suffix: Medical
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_medical.rsi
@@ -160,6 +170,7 @@
   id: DoubleGlassAirlockScience
   parent: [ DoubleGlassAirlock, AirlockScienceGlass ]
   suffix: Science
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_science.rsi
@@ -168,6 +179,7 @@
   id: DoubleGlassAirlockSecurity
   parent: [ DoubleGlassAirlock, AirlockSecurityGlass ]
   suffix: Security
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_security.rsi
@@ -176,6 +188,7 @@
   id: DoubleGlassAirlockVirology
   parent: [ DoubleGlassAirlock, AirlockVirologyGlass ]
   suffix: Virology
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_virology.rsi
@@ -184,6 +197,7 @@
   id: DoubleGlassAirlockSalvage
   parent: [ DoubleGlassAirlock, AirlockMiningGlass ]
   suffix: Mining(Salvage)
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/double_salvage.rsi
@@ -194,6 +208,7 @@
   id: TripleGlassAirlockBasic
   parent: [ TripleGlassAirlock ]
   name: triple basic glass airlock
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_basic.rsi
@@ -202,6 +217,7 @@
   id: TripleGlassAirlockAtmospherics
   parent: [ TripleGlassAirlock, AirlockAtmosphericsGlass ]
   suffix: Atmospherics
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_atmospherics.rsi
@@ -210,6 +226,7 @@
   id: TripleGlassAirlockCargo
   parent: [ TripleGlassAirlock, AirlockCargoGlass ]
   suffix: Cargo
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_cargo.rsi
@@ -218,6 +235,7 @@
   id: TripleGlassAirlockCentralCommand
   parent: [ TripleGlassAirlock, AirlockCentralCommandGlass ]
   suffix: Central Command
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_centcomm.rsi
@@ -226,6 +244,7 @@
   id: TripleGlassAirlockChemistry
   parent: [ TripleGlassAirlock, AirlockChemistryGlass ]
   suffix: Chemistry
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_chemistry.rsi
@@ -234,6 +253,7 @@
   id: TripleGlassAirlockCommand
   parent: [ TripleGlassAirlock, AirlockCommandGlass ]
   suffix: Command
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_command.rsi
@@ -242,6 +262,7 @@
   id: TripleGlassAirlockEngineering
   parent: [ TripleGlassAirlock, AirlockEngineeringGlass ]
   suffix: Engineering
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_engineering.rsi
@@ -250,6 +271,7 @@
   id: TripleGlassAirlockMaint
   parent: [ TripleGlassAirlock, AirlockMaintGlass ]
   suffix: Maintenance
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_maint.rsi
@@ -258,6 +280,7 @@
   id: TripleGlassAirlockMedical
   parent: [ TripleGlassAirlock, AirlockMedicalGlass ]
   suffix: Medical
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_medical.rsi
@@ -266,6 +289,7 @@
   id: TripleGlassAirlockSalvage
   parent: [ TripleGlassAirlock, AirlockMiningGlass ]
   suffix: Mining(Salvage)
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_salvage.rsi
@@ -274,6 +298,7 @@
   id: TripleGlassAirlockScience
   parent: [ TripleGlassAirlock, AirlockScienceGlass ]
   suffix: Science
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_science.rsi
@@ -282,6 +307,7 @@
   id: TripleGlassAirlockSecurity
   parent: [ TripleGlassAirlock, AirlockSecurityGlass ]
   suffix: Security
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_security.rsi
@@ -290,6 +316,7 @@
   id: TripleGlassAirlockVirology
   parent: [ TripleGlassAirlockMedical ]
   suffix: Virology
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/triple_virology.rsi

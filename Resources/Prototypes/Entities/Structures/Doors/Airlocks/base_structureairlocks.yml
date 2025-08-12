@@ -3,6 +3,7 @@
   parent: BaseStructure
   name: airlock
   description: It opens, it closes, and maybe crushes you.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: StationAiWhitelist
   - type: MeleeSound
@@ -194,6 +195,7 @@
   id: AirlockGlass
   parent: Airlock
   name: glass airlock
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: MeleeSound
     soundGroups:

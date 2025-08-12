@@ -6,6 +6,7 @@
   id: DoubleGlassAirlockAtmosphericsLocked
   parent: [ DoubleGlassAirlockAtmospherics ]
   suffix: Atmospherics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -15,6 +16,7 @@
   id: DoubleGlassAirlockCargoLocked
   parent: [ DoubleGlassAirlockCargo ]
   suffix: Cargo, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -24,6 +26,7 @@
   id: DoubleGlassAirlockSalvageLocked
   parent: [ DoubleGlassAirlockSalvage ]
   suffix: Salvage, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -33,6 +36,7 @@
   id: DoubleGlassAirlockChemistryLocked
   parent: [ DoubleGlassAirlockChemistry ]
   suffix: Chemistry, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -43,6 +47,7 @@
   id: DoubleGlassAirlockCommandLocked
   parent: [ DoubleGlassAirlockCommand ]
   suffix: Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -52,6 +57,7 @@
   id: DoubleGlassAirlockCentralCommandLocked
   parent: [ DoubleGlassAirlockCentralCommand ]
   suffix: Central Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -61,6 +67,7 @@
   id: DoubleGlassAirlockEngineeringLocked
   parent: [ DoubleGlassAirlockEngineering ]
   suffix: Engineering, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -70,6 +77,7 @@
   id: DoubleGlassAirlockMaintLocked
   parent: [ DoubleGlassAirlockMaint ]
   suffix: Maintenance, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -79,6 +87,7 @@
   id: DoubleGlassAirlockMedicalLocked
   parent: [ DoubleGlassAirlockMedical ]
   suffix: Medical, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -88,6 +97,7 @@
   id: DoubleGlassAirlockScienceLocked
   parent: [ DoubleGlassAirlockScience ]
   suffix: Science, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -97,6 +107,7 @@
   id: DoubleGlassAirlockSecurityLocked
   parent: [ DoubleGlassAirlockSecurity ]
   suffix: Security, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -106,6 +117,7 @@
   id: DoubleGlassAirlockVirologyLocked
   parent: [ DoubleGlassAirlockVirology ]
   suffix: Virology, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -117,6 +129,7 @@
   id: TripleGlassAirlockAtmosphericsLocked
   parent: [ TripleGlassAirlockAtmospherics ]
   suffix: Atmospherics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -126,6 +139,7 @@
   id: TripleGlassAirlockCargoLocked
   parent: [ TripleGlassAirlockCargo ]
   suffix: Cargo, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -135,6 +149,7 @@
   id: TripleGlassAirlockSalvageLocked
   parent: [ TripleGlassAirlockSalvage ]
   suffix: Salvage, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -144,6 +159,7 @@
   id: TripleGlassAirlockCentralCommandLocked
   parent: [ TripleGlassAirlockCentralCommand ]
   suffix: Central Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -153,6 +169,7 @@
   id: TripleGlassAirlockChemistryLocked
   parent: [ TripleGlassAirlockChemistry ]
   suffix: Chemistry, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -162,6 +179,7 @@
   id: TripleGlassAirlockCommandLocked
   parent: [ TripleGlassAirlockCommand ]
   suffix: Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -171,6 +189,7 @@
   id: TripleGlassAirlockEngineeringLocked
   parent: [ TripleGlassAirlockEngineering ]
   suffix: Engineering, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -180,6 +199,7 @@
   id: TripleGlassAirlockMaintLocked
   parent: [ TripleGlassAirlockMaint ]
   suffix: Maintenance, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -189,6 +209,7 @@
   id: TripleGlassAirlockMedicalLocked
   parent: [ TripleGlassAirlockMedical ]
   suffix: Medical, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -198,6 +219,7 @@
   id: TripleGlassAirlockScienceLocked
   parent: [ TripleGlassAirlockScience ]
   suffix: Science, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -207,6 +229,7 @@
   id: TripleGlassAirlockSecurityLocked
   parent: [ TripleGlassAirlockSecurity ]
   suffix: Security, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -216,6 +239,7 @@
   id: TripleGlassAirlockVirologyLocked
   parent: [ TripleGlassAirlockVirology ]
   suffix: Virology, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
