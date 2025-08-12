@@ -1,6 +1,6 @@
 ent-ScpDoubleGlassAirlock = двойной стеклянный шлюз
-    .desc = Он открывается, он закрывается, и он может вас раздавить, но он больше, чем обычно.
-ent-ScpDoubleAirlock = двойной стеклянный шлюз
+    .desc = { ent-ScpAirlockGlass.desc }
+ent-ScpDoubleAirlock = двойной шлюз
     .desc = { ent-ScpAirlock.desc }
 ent-ScpDoubleAirlockAdministration = { ent-ScpDoubleAirlock }
     .suffix = Администрация

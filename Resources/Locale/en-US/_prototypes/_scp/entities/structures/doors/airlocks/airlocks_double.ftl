@@ -1,6 +1,6 @@
 ent-ScpDoubleGlassAirlock = double glass airlock
     .desc = { ent-ScpAirlockGlass.desc }
-ent-ScpDoubleAirlock = double glass airlock
+ent-ScpDoubleAirlock = double airlock
     .desc = { ent-ScpAirlock.desc }
 ent-ScpDoubleAirlockAdministration = { ent-ScpDoubleAirlock }
     .suffix = SCP Administration
