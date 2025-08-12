@@ -1,4 +1,4 @@
-# Flooring 
+# Flooring
 - type: rcd
   id: ScpPlating
   name: rcd-component-plating
@@ -12,7 +12,7 @@
   rules:
     - CanBuildOnEmptyTile
   fx: EffectRCDConstruct1
-  
+
 - type: rcd
   id: ScpFloorSteel
   name: rcd-component-floor-steel
@@ -33,7 +33,7 @@
   category: WallsAndFlooring
   sprite: /Textures/Interface/Radial/RCD/solid_wall.png
   mode: ConstructObject
-  prototype: ScpWallSolid 
+  prototype: ScpWallSolid
   cost: 4
   delay: 2
   collisionMask: FullTileMask
@@ -54,7 +54,7 @@
     - IsWindow
   rotation: Fixed
   fx: EffectRCDConstruct2
-  
+
 - type: rcd
   id: ScpWindowDirectional
   category: WindowsAndGrilles
@@ -69,7 +69,7 @@
     - IsWindow
   rotation: User
   fx: EffectRCDConstruct1
-  
+
 - type: rcd
   id: ScpReinforcedWindow
   category: WindowsAndGrilles
@@ -83,7 +83,7 @@
     - IsWindow
   rotation: User
   fx: EffectRCDConstruct3
-    
+
 - type: rcd
   id: ScpWindowReinforcedDirectional
   category: WindowsAndGrilles
@@ -111,7 +111,7 @@
   collisionMask: FullTileMask
   rotation: User
   fx: EffectRCDConstruct4
-  
+
 - type: rcd
   id: ScpAirlockGlass
   category: Airlocks
@@ -119,6 +119,30 @@
   mode: ConstructObject
   prototype: ScpAirlockGlass
   cost: 4
+  delay: 4
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct4
+
+- type: rcd
+  id: ScpDoubleGlassAirlock
+  category: Airlocks
+  sprite: /Textures/Interface/Radial/RCD/double_glass_airlock.png
+  mode: ConstructObject
+  prototype: ScpDoubleGlassAirlock
+  cost: 8
+  delay: 4
+  collisionMask: FullTileMask
+  rotation: User
+  fx: EffectRCDConstruct4
+
+- type: rcd
+  id: ScpDoubleGlassAirlockBasic
+  category: Airlocks
+  sprite: /Textures/Interface/Radial/RCD/double_glass_airlock_basic.png
+  mode: ConstructObject
+  prototype: ScpDoubleGlassAirlockBasic
+  cost: 8
   delay: 4
   collisionMask: FullTileMask
   rotation: User
