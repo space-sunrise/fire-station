@@ -1610,6 +1610,18 @@ VendingMachineSyndieDrobe: ScpVendingMachineChaosInsurgencyDrobe
 VendingMachineCentDrobe: ScpVendingMachineO5Drobe
 VendingMachineChemicals: ScpVendingMachineChemicals
 
+# Хранилища скафандров
+SuitStorageCaptain: SuitStorageDirector
+SuitStorageHOS: SuitStorageSecurityCommander
+SuitStorageRD: SuitStorageScientificServiceDirector
+SuitStorageCMO: SuitStorageHeadOfMedicalSector
+SuitStorageCE: SuitStorageChiefTechnicalSpecialist
+SuitStorageAtmos: SuitStorageLifeSupport
+SuitStorageSalv: null
+SuitStorageSyndie: null
+SuitStoragePirateCap: null
+SuitStorageWizard: null
+
 # Ключи шифрования
 EncryptionKeyCargo: EncryptionKeyLogisticsService
 EncryptionKeyCentCom: EncryptionKeyRegionalAdministration
