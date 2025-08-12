@@ -29,7 +29,7 @@
 - type: entity
   parent: ScpShuttersWindow
   id: ScpShuttersWindowRegionalAdministration
-  suffix: Regional Administration, Locked
+  suffix: Regional administration, Locked
   components:
   - type: ContainerFill
     containers:

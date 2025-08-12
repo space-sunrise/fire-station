@@ -5,7 +5,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockAdministration ]
   id: ScpDoubleAirlockAdministrationLocked
-  suffix: SCP Administration, Locked
+  suffix: Administration, Locked
   components:
   - type: ContainerFill
     containers:
@@ -14,7 +14,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockAdministration ]
   id: ScpDoubleAirlockDirectorLocked
-  suffix: SCP Director, Locked
+  suffix: Director, Locked
   components:
   - type: ContainerFill
     containers:
@@ -23,7 +23,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockAdministration ]
   id: ScpDoubleAirlockHeadOfMedicalSectorLocked
-  suffix: SCP Head of medical sector, Locked
+  suffix: Head of medical sector, Locked
   components:
   - type: ContainerFill
     containers:
@@ -32,7 +32,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockAdministration ]
   id: ScpDoubleAirlockChiefTechnicalSpecialistLocked
-  suffix: SCP Chief technical specialist, Locked
+  suffix: Chief technical specialist, Locked
   components:
   - type: ContainerFill
     containers:
@@ -41,7 +41,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockAdministration ]
   id: ScpDoubleAirlockSecurityCommanderLocked
-  suffix: SCP Security commander, Locked
+  suffix: Security commander, Locked
   components:
   - type: ContainerFill
     containers:
@@ -50,7 +50,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockAdministration ]
   id: ScpDoubleAirlockScientificServiceDirectorLocked
-  suffix: SCP Scientific director, Locked
+  suffix: Scientific service director, Locked
   components:
   - type: ContainerFill
     containers:
@@ -59,7 +59,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockAdministration ]
   id: ScpDoubleAirlockPersonnelOfficerLocked
-  suffix: SCP Personnel officer, Locked
+  suffix: Personnel officer, Locked
   components:
   - type: ContainerFill
     containers:
@@ -68,7 +68,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockAdministration ]
   id: ScpDoubleAirlockSeniorLogisticsOfficerLocked
-  suffix: SCP Senior logistics officer, Locked
+  suffix: Senior logistics officer, Locked
   components:
   - type: ContainerFill
     containers:
@@ -77,7 +77,7 @@
 - type: entity
   parent: ScpDoubleAirlockAdministration
   id: ScpDoubleAirlockEthicsCommitteeLocked
-  suffix: SCP Ethics committee, Locked
+  suffix: Ethics committee, Locked
   components:
   - type: ContainerFill
     containers:
@@ -86,7 +86,7 @@
 - type: entity
   parent: ScpDoubleAirlockAdministration
   id: ScpDoubleAirlockInternalTribunalServiceLocked
-  suffix: SCP Internal tribunal service, Locked
+  suffix: Internal tribunal service, Locked
   components:
   - type: ContainerFill
     containers:
@@ -97,7 +97,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockRegionalAdministration ]
   id: ScpDoubleAirlockRegionalAdministrationLocked
-  suffix: SCP Regional Administration, Locked
+  suffix: Regional Administration, Locked
   components:
   - type: ContainerFill
     containers:
@@ -106,7 +106,7 @@
 - type: entity
   parent: ScpDoubleAirlockRegionalAdministration
   id: ScpDoubleAirlockRegionalO5Locked
-  suffix: SCP O5, Locked
+  suffix: O5, Locked
   components:
   - type: ContainerFill
     containers:
@@ -115,7 +115,7 @@
 - type: entity
   parent: ScpDoubleAirlockAdministration
   id: ScpDoubleAirlockRegionalO5AdministrationLocked
-  suffix: SCP O5, Locked
+  suffix: O5, Locked
   components:
   - type: ContainerFill
     containers:
@@ -124,7 +124,7 @@
 - type: entity
   parent: ScpDoubleAirlockSecurity
   id: ScpDoubleAirlockRegionalO5SecurityLocked
-  suffix: SCP O5, Locked
+  suffix: O5, Locked
   components:
   - type: ContainerFill
     containers:
@@ -135,7 +135,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockSecurity ]
   id: ScpDoubleAirlockSecurityLocked
-  suffix: SCP Security, Locked
+  suffix: Security, Locked
   components:
   - type: ContainerFill
     containers:
@@ -144,7 +144,7 @@
 - type: entity
   parent: ScpDoubleAirlockSecurity
   id: ScpDoubleAirlockCheckpointLocked
-  suffix: SCP Checkpoint, Locked
+  suffix: Checkpoint, Locked
   components:
   - type: ContainerFill
     containers:
@@ -153,7 +153,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockSecurity ]
   id: ScpDoubleAirlockArmoryLocked
-  suffix: SCP Armory, Locked
+  suffix: Armory, Locked
   components:
   - type: ContainerFill
     containers:
@@ -166,7 +166,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockScience ]
   id: ScpDoubleAirlockScienceLocked
-  suffix: SCP Science, Locked
+  suffix: Science, Locked
   components:
   - type: ContainerFill
     containers:
@@ -175,7 +175,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockScience ]
   id: ScpDoubleAirlockMedicalScienceLocked
-  suffix: SCP Medical/Science, Locked
+  suffix: Medical/Science, Locked
   components:
   - type: ContainerFill
     containers:
@@ -184,7 +184,7 @@
 - type: entity
   parent: ScpDoubleAirlockScience
   id: ScpDoubleAirlockSafeLocked
-  suffix: SCP Safe, Locked
+  suffix: Safe, Locked
   components:
   - type: ContainerFill
     containers:
@@ -193,7 +193,7 @@
 - type: entity
   parent: ScpDoubleAirlockScience
   id: ScpDoubleAirlockEuclidLocked
-  suffix: SCP Euclid, Locked
+  suffix: Euclid, Locked
   components:
   - type: ContainerFill
     containers:
@@ -202,7 +202,7 @@
 - type: entity
   parent: ScpDoubleAirlockScience
   id: ScpDoubleAirlockKeterLocked
-  suffix: SCP Keter, Locked
+  suffix: Keter, Locked
   components:
   - type: ContainerFill
     containers:
@@ -213,7 +213,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockMedical ]
   id: ScpDoubleAirlockMedicalLocked
-  suffix: SCP Medical, Locked
+  suffix: Medical, Locked
   components:
   - type: ContainerFill
     containers:
@@ -222,7 +222,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockMedical ]
   id: ScpDoubleAirlockLaboratoryLocked
-  suffix: SCP Laboratory, Locked
+  suffix: Laboratory, Locked
   components:
   - type: ContainerFill
     containers:
@@ -233,7 +233,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockEngineering ]
   id: ScpDoubleAirlockEngineeringLocked
-  suffix: SCP Engineering, Locked
+  suffix: Engineering, Locked
   components:
   - type: ContainerFill
     containers:
@@ -242,7 +242,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockLifeSupport ]
   id: ScpDoubleAirlockLifeSupportLocked
-  suffix: SCP Life support, Locked
+  suffix: Life support, Locked
   components:
   - type: ContainerFill
     containers:
@@ -253,7 +253,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockLogistics ]
   id: ScpDoubleAirlockLogisticsLocked
-  suffix: SCP Logistics, Locked
+  suffix: Logistics, Locked
   components:
   - type: ContainerFill
     containers:
@@ -264,7 +264,7 @@
 - type: entity
   parent: [ ScpDoubleAirlock ]
   id: ScpDoubleAirlockServiceLocked
-  suffix: SCP Service, Locked
+  suffix: Service, Locked
   components:
   - type: ContainerFill
     containers:
@@ -277,7 +277,7 @@
 - type: entity
   parent: ScpDoubleAirlock
   id: ScpDoubleAirlockClassDCanteenLocked
-  suffix: SCP Class D canteen, Locked
+  suffix: Class D canteen, Locked
   components:
   - type: ContainerFill
     containers:
@@ -286,7 +286,7 @@
 - type: entity
   parent: ScpDoubleAirlock
   id: ScpDoubleAirlockClassDJanitorLocked
-  suffix: SCP Class D janitor, Locked
+  suffix: Class D janitor, Locked
   components:
   - type: ContainerFill
     containers:
@@ -299,7 +299,7 @@
 - type: entity
   parent: [ ScpDoubleAirlockSecurity ]
   id: ScpDoubleAirlockNuclearWarheadLocked
-  suffix: SCP Nuclear warhead, Locked
+  suffix: Nuclear warhead, Locked
   components:
   - type: ContainerFill
     containers:
@@ -308,7 +308,7 @@
 - type: entity
   parent: ScpDoubleAirlockSecurity
   id: ScpDoubleAirlockAiSecurityLocked
-  suffix: SCP AI, Locked
+  suffix: AI, Locked
   components:
   - type: ContainerFill
     containers:
@@ -317,7 +317,7 @@
 - type: entity
   parent: ScpDoubleAirlockAdministration
   id: ScpDoubleAirlockAiAdministrationLocked
-  suffix: SCP AI, Locked
+  suffix: AI, Locked
   components:
   - type: ContainerFill
     containers:
@@ -330,7 +330,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockAdministration ]
   id: ScpDoubleGlassAirlockAdministrationLocked
-  suffix: SCP Administration, Locked
+  suffix: Administration, Locked
   components:
   - type: ContainerFill
     containers:
@@ -339,7 +339,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockAdministration ]
   id: ScpDoubleGlassAirlockDirectorLocked
-  suffix: SCP Director, Locked
+  suffix: Director, Locked
   components:
   - type: ContainerFill
     containers:
@@ -348,7 +348,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockAdministration ]
   id: ScpDoubleGlassAirlockHeadOfMedicalSectorLocked
-  suffix: SCP Head of medical sector, Locked
+  suffix: Head of medical sector, Locked
   components:
   - type: ContainerFill
     containers:
@@ -357,7 +357,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockAdministration ]
   id: ScpDoubleGlassAirlockChiefTechnicalSpecialistLocked
-  suffix: SCP Chief technical specialist, Locked
+  suffix: Chief technical specialist, Locked
   components:
   - type: ContainerFill
     containers:
@@ -366,7 +366,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockAdministration ]
   id: ScpDoubleGlassAirlockSecurityCommanderLocked
-  suffix: SCP Security commander, Locked
+  suffix: Security commander, Locked
   components:
   - type: ContainerFill
     containers:
@@ -375,7 +375,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockAdministration ]
   id: ScpDoubleGlassAirlockScientificServiceDirectorLocked
-  suffix: SCP Scientific director, Locked
+  suffix: Scientific service director, Locked
   components:
   - type: ContainerFill
     containers:
@@ -384,7 +384,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockAdministration ]
   id: ScpDoubleGlassAirlockPersonnelOfficerLocked
-  suffix: SCP Personnel officer, Locked
+  suffix: Personnel officer, Locked
   components:
   - type: ContainerFill
     containers:
@@ -393,7 +393,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockAdministration ]
   id: ScpDoubleGlassAirlockSeniorLogisticsOfficerLocked
-  suffix: SCP Senior logistics officer, Locked
+  suffix: Senior logistics officer, Locked
   components:
   - type: ContainerFill
     containers:
@@ -402,7 +402,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlockAdministration
   id: ScpDoubleAirlockEthicsCommitteeGlassLocked
-  suffix: SCP Ethics committee, Locked
+  suffix: Ethics committee, Locked
   components:
   - type: ContainerFill
     containers:
@@ -411,7 +411,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlockAdministration
   id: ScpDoubleAirlockInternalTribunalServiceGlassLocked
-  suffix: SCP Internal tribunal service, Locked
+  suffix: Internal tribunal service, Locked
   components:
   - type: ContainerFill
     containers:
@@ -422,7 +422,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockRegionalAdministration ]
   id: ScpDoubleGlassAirlockRegionalAdministrationLocked
-  suffix: SCP Regional Administration, Locked
+  suffix: Regional Administration, Locked
   components:
   - type: ContainerFill
     containers:
@@ -431,7 +431,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlockRegionalAdministration
   id: ScpDoubleGlassAirlockRegionalO5Locked
-  suffix: SCP O5, Locked
+  suffix: O5, Locked
   components:
   - type: ContainerFill
     containers:
@@ -440,7 +440,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlockAdministration
   id: ScpDoubleGlassAirlockRegionalO5AdministrationLocked
-  suffix: SCP O5, Locked
+  suffix: O5, Locked
   components:
   - type: ContainerFill
     containers:
@@ -449,7 +449,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlockSecurity
   id: ScpDoubleGlassAirlockRegionalO5SecurityLocked
-  suffix: SCP O5, Locked
+  suffix: O5, Locked
   components:
   - type: ContainerFill
     containers:
@@ -460,7 +460,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockSecurity ]
   id: ScpDoubleGlassAirlockSecurityLocked
-  suffix: SCP Security, Locked
+  suffix: Security, Locked
   components:
   - type: ContainerFill
     containers:
@@ -469,7 +469,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlockSecurity
   id: ScpDoubleGlassAirlockCheckpointLocked
-  suffix: SCP Checkpoint, Locked
+  suffix: Checkpoint, Locked
   components:
   - type: ContainerFill
     containers:
@@ -478,7 +478,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockSecurity ]
   id: ScpDoubleGlassAirlockArmoryLocked
-  suffix: SCP Armory, Locked
+  suffix: Armory, Locked
   components:
   - type: ContainerFill
     containers:
@@ -489,7 +489,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockScience ]
   id: ScpDoubleGlassAirlockScienceLocked
-  suffix: SCP Science, Locked
+  suffix: Science, Locked
   components:
   - type: ContainerFill
     containers:
@@ -498,7 +498,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockScience ]
   id: ScpDoubleGlassAirlockMedicalScienceLocked
-  suffix: SCP Medical/Science, Locked
+  suffix: Medical/Science, Locked
   components:
   - type: ContainerFill
     containers:
@@ -507,7 +507,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlockScience
   id: ScpDoubleAirlockSafeGlassLocked
-  suffix: SCP Safe, Locked
+  suffix: Safe, Locked
   components:
   - type: ContainerFill
     containers:
@@ -516,7 +516,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlockScience
   id: ScpDoubleAirlockEuclidGlassLocked
-  suffix: SCP Euclid, Locked
+  suffix: Euclid, Locked
   components:
   - type: ContainerFill
     containers:
@@ -525,7 +525,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlockScience
   id: ScpDoubleAirlockKeterGlassLocked
-  suffix: SCP Keter, Locked
+  suffix: Keter, Locked
   components:
   - type: ContainerFill
     containers:
@@ -536,7 +536,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockMedical ]
   id: ScpDoubleGlassAirlockMedicalLocked
-  suffix: SCP Medical, Locked
+  suffix: Medical, Locked
   components:
   - type: ContainerFill
     containers:
@@ -545,7 +545,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockMedical ]
   id: ScpDoubleGlassAirlockLaboratoryLocked
-  suffix: SCP Laboratory, Locked
+  suffix: Laboratory, Locked
   components:
   - type: ContainerFill
     containers:
@@ -556,7 +556,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockEngineering ]
   id: ScpDoubleGlassAirlockEngineeringLocked
-  suffix: SCP Engineering, Locked
+  suffix: Engineering, Locked
   components:
   - type: ContainerFill
     containers:
@@ -565,7 +565,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockLifeSupport ]
   id: ScpDoubleGlassAirlockLifeSupportLocked
-  suffix: SCP Life support, Locked
+  suffix: Life support, Locked
   components:
   - type: ContainerFill
     containers:
@@ -576,7 +576,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlockLogistics ]
   id: ScpDoubleGlassAirlockLogisticsLocked
-  suffix: SCP Logistics, Locked
+  suffix: Logistics, Locked
   components:
   - type: ContainerFill
     containers:
@@ -587,7 +587,7 @@
 - type: entity
   parent: [ ScpDoubleGlassAirlock ]
   id: ScpDoubleGlassAirlockServiceLocked
-  suffix: SCP Service, Locked
+  suffix: Service, Locked
   components:
   - type: ContainerFill
     containers:
@@ -600,7 +600,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlock
   id: ScpDoubleAirlockClassDCanteenGlassLocked
-  suffix: SCP Class D canteen, Locked
+  suffix: Class D canteen, Locked
   components:
   - type: ContainerFill
     containers:
@@ -609,7 +609,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlock
   id: ScpDoubleAirlockClassDJanitorGlassLocked
-  suffix: SCP Class D janitor, Locked
+  suffix: Class D janitor, Locked
   components:
   - type: ContainerFill
     containers:
@@ -622,7 +622,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlockSecurity
   id: ScpDoubleGlassAirlockNuclearWarheadLocked
-  suffix: SCP Nuclear warhead, Locked
+  suffix: Nuclear warhead, Locked
   components:
   - type: ContainerFill
     containers:
@@ -631,7 +631,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlockSecurity
   id: ScpDoubleGlassAirlockAiSecurityLocked
-  suffix: SCP AI, Locked
+  suffix: AI, Locked
   components:
   - type: ContainerFill
     containers:
@@ -640,7 +640,7 @@
 - type: entity
   parent: ScpDoubleGlassAirlockAdministration
   id: ScpDoubleGlassAirlockAiAdministrationLocked
-  suffix: SCP AI, Locked
+  suffix: AI, Locked
   components:
   - type: ContainerFill
     containers:

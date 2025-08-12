@@ -85,4 +85,3 @@ ent-ScpAirlockAssemblyShuttle = { ent-ScpAirlockAssembly }
 ent-ScpAirlockAssemblyShuttleGlass = { ent-ScpAirlockAssembly }
     .suffix = Shuttle, Glass
     .desc = { ent-ScpAirlockAssembly.desc }
-
