@@ -3,7 +3,6 @@ using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Systems;
 using Content.Shared._Sunrise.Mood;
-using Content.Shared.GameTicking;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Timing;
 
@@ -26,8 +25,6 @@ public sealed partial class FearSystem : SharedFearSystem
         InitializeFears();
         InitializeGameplay();
         InitializeTraits();
-
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => OnRestart());
 
         _activeFearEffects = GetEntityQuery<FearActiveSoundEffectsComponent>();
     }
@@ -125,7 +122,7 @@ public sealed partial class FearSystem : SharedFearSystem
         RaiseLocalEvent(uid, new MoodRemoveEffectEvent(MoodHemophobicBleeding));
     }
 
-    private void OnRestart()
+    protected override void Clear()
     {
         _nextHemophobiaCheck = TimeSpan.Zero;
         _nextCalmDownCheck = TimeSpan.Zero;

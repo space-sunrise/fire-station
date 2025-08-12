@@ -174,7 +174,7 @@ public abstract partial class SharedFearSystem
         return Math.Clamp(percent / 100f, 0f, 1f);
     }
 
-    private static void Clear()
+    protected virtual void Clear()
     {
         _restartToken.Cancel();
         _restartToken = new();
