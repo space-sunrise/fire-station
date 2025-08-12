@@ -108,7 +108,6 @@
   - type: Scp
     class: Neutralized
   - type: ScpRestriction
-  - type: ProximityReceiver
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
@@ -160,6 +159,7 @@
   - type: FearSource
     phobiaType: Exoremophobia
   - type: WatchingTarget
+  - type: ProximityReceiver
 
 - type: entity # Для добрых SCP: 131, 999 и т.д.
   abstract: true
