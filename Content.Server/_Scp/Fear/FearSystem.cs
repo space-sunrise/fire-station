@@ -124,6 +124,8 @@ public sealed partial class FearSystem : SharedFearSystem
 
     protected override void Clear()
     {
+        base.Clear();
+
         _nextHemophobiaCheck = TimeSpan.Zero;
         _nextCalmDownCheck = TimeSpan.Zero;
     }

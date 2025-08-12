@@ -27,7 +27,7 @@ public sealed partial class FearSystem
     private static readonly TimeSpan HemophobiaCheckCooldown = TimeSpan.FromSeconds(0.5f);
     private TimeSpan _nextHemophobiaCheck = TimeSpan.Zero;
 
-    private readonly List<EntityUid> _hemophobiaBloodList = [];
+    private readonly IReadCollection<EntityUid> _hemophobiaBloodList = [];
 
     private void InitializeFears()
     {
