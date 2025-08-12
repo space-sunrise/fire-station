@@ -27,6 +27,8 @@ public sealed partial class FearSystem
     private static readonly TimeSpan HemophobiaCheckCooldown = TimeSpan.FromSeconds(0.5f);
     private TimeSpan _nextHemophobiaCheck = TimeSpan.Zero;
 
+    private readonly List<EntityUid> _hemophobiaBloodList = [];
+
     private void InitializeFears()
     {
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
@@ -75,7 +77,8 @@ public sealed partial class FearSystem
             if (!_mob.IsAlive(uid))
                 continue;
 
-            var bloodAmount = GetAroundBloodVolume((uid, hemophobia), out var bloodList);
+            _hemophobiaBloodList.Clear();
+            var bloodAmount = GetAroundBloodVolume((uid, hemophobia), in _hemophobiaBloodList);
             var requiredBloodAmount = hemophobia.BloodRequiredPerState[fear.State];
 
             if (bloodAmount <= requiredBloodAmount)
@@ -86,7 +89,7 @@ public sealed partial class FearSystem
             if (!TrySetFearLevel(fearEntity, GetHemophobiaFearState(hemophobia, bloodAmount)))
                 continue;
 
-            _highlight.NetHighlightAll(bloodList, uid);
+            _highlight.NetHighlightAll(in _hemophobiaBloodList, uid);
             AddNegativeMoodEffect(uid, MoodHemophobicSeeBlood);
         }
 
@@ -96,11 +99,10 @@ public sealed partial class FearSystem
     /// <summary>
     /// Получает суммарное количество крови в зоне видимости персонажа.
     /// </summary>
-    private FixedPoint2 GetAroundBloodVolume(Entity<HemophobiaComponent> ent, out HashSet<EntityUid> bloodList)
+    private FixedPoint2 GetAroundBloodVolume(Entity<HemophobiaComponent> ent, in List<EntityUid> bloodList)
     {
         FixedPoint2 total = 0;
         var blood = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(ent.Owner);
-        bloodList = [];
 
         foreach (var puddle in blood)
         {
@@ -146,7 +148,8 @@ public sealed partial class FearSystem
     /// </summary>
     private void OnCalmDown(Entity<HemophobiaComponent> ent, ref FearCalmDownAttemptEvent args)
     {
-        var bloodAmount = GetAroundBloodVolume(ent, out _);
+        _hemophobiaBloodList.Clear();
+        var bloodAmount = GetAroundBloodVolume(ent, in _hemophobiaBloodList);
         var requiredBloodToCancel = ent.Comp.BloodRequiredPerState[args.NewState];
 
         if (bloodAmount > requiredBloodToCancel)
