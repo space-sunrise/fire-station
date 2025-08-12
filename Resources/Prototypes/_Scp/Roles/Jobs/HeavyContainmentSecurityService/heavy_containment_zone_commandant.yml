@@ -45,9 +45,8 @@
   id: HeavyContainmentZoneCommandantGear
   equipment:
     eyes: ClothingEyesGlassesSecurity
-    id: WardenPDA
+    id: KeyCardHeavyContainmentZoneCommandant
     ears: ClothingHeadsetAltHeavyContainmentSecurityService
   storage:
     back:
     - Flash
-#    - MagazineGlock22

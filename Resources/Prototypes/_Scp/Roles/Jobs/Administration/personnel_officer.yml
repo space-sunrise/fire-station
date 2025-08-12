@@ -26,7 +26,7 @@
   id: PersonnelOfficerGear
   equipment:
     shoes: ClothingShoesColorBrown
-    id: HoPPDA
+    id: KeyCardPersonnelOfficer
     gloves: ClothingHandsGlovesHop
     ears: ClothingHeadsetAltAdministration
     belt: BoxFolderClipboard

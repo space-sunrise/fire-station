@@ -24,11 +24,7 @@
     shoes: ClothingShoesBootsLaceup
     eyes: ClothingEyesSunGlassesHudSkill
     head: ClothingHeadHatCapNtrep
-    id: NanoTrasenRepresentativePDA
+    id: KeyCardEthicsCommitteePass
     ears: ClothingHeadsetAltEthicsCommittee
     pocket1: FlippoEngravedLighter
     pocket2: PenCentcom
-  storage:
-    back:
-    - RubberStampNtrep
-    - CaneNT

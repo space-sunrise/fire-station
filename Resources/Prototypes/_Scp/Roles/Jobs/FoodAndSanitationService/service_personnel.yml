@@ -13,9 +13,6 @@
   id: ServicePersonnelGear
   equipment:
     shoes: ClothingShoesGaloshes
-    id: JanitorPDA
+    id: KeyCardServicePersonnel
     ears: ClothingHeadsetFoodAndSanitation
     belt: ClothingBeltJanitorFilled
-    #storage:
-    #back:
-    #- Stuff

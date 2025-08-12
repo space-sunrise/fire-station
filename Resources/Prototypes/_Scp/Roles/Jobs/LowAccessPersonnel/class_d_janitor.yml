@@ -24,7 +24,7 @@
     jumpsuit: ClothingUniformClassD
     gloves: ClothingHandsGlovesJanitor
     shoes: ClothingShoesGaloshes
-    id: ClassDJanitorIDCard
+    id: KeyCardClassDJanitor
     belt: ClothingBeltJanitor
   storage:
     belt:

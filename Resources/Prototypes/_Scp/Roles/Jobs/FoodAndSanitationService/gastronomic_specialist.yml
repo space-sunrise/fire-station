@@ -13,9 +13,6 @@
   id: GastronomicSpecialistGear
   equipment:
     shoes: ClothingShoesColorBlack
-    id: ChefPDA
+    id: KeyCardGastronomicSpecialist
     ears: ClothingHeadsetFoodAndSanitation
     belt: ClothingBeltChefFilled
-    #storage:
-    #back:
-    #- Stuff

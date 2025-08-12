@@ -46,11 +46,10 @@
   equipment:
     mask: ClothingMaskSecurityBandBlack
     eyes: ClothingEyesGlassesSecurityGuard
-    id: SecurityPDA
+    id: KeyCardSeniorHeavyContainmentZoneOfficer
     ears: ClothingHeadsetHeavyContainmentSecurityService
     head: ClothingHeadHelmetBasic
     gloves: ClothingHandsGlovesColorBlack
   storage:
     back:
     - Flash
-#    - MagazineGlock22

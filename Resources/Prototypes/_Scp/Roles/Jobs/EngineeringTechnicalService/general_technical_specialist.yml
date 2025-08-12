@@ -19,7 +19,4 @@
     eyes: ClothingEyesGlassesMeson
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineeringTechnicalService
-    id: EngineerPDA
-    #storage:
-    #back:
-    #- Stuff
+    id: KeyCardGeneralTechnicalSpecialist

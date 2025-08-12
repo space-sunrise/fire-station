@@ -26,7 +26,4 @@
   id: ProductionSpecialistGear
   equipment:
     ears: ClothingHeadsetScientificService
-    id: SciencePDA
-    #storage:
-    #back:
-    #- Stuff
+    id: KeyCardProductionSpecialist

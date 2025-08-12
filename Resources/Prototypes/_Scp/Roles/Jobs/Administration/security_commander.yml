@@ -48,7 +48,7 @@
   id: SecurityCommanderGear
   equipment:
     eyes: ClothingEyesGlassesSecurity
-    id: HoSPDA
+    id: KeyCardSecurityCommander
     gloves: ClothingHandsGlovesCombat
     ears: ClothingHeadsetAltSecurityAdministration
   storage:

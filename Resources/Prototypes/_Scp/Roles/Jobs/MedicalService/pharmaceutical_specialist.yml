@@ -23,11 +23,8 @@
 - type: startingGear
   id: PharmaceuticalSpecialistGear
   equipment:
-    id: ChemistryPDA
+    id: KeyCardPharmaceuticalSpecialist
     ears: ClothingHeadsetMedicalService
     belt: ChemBag
     pocket1: HandLabeler
     eyes: ClothingEyesGlassesChemical
-    #storage:
-    #back:
-    #- Stuff

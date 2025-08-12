@@ -28,7 +28,7 @@
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesColorWhite
     outerClothing: ClothingOuterRobesJudge
-    id: MagistratPDA
+    id: KeyCardJudicialInspector
     ears: ClothingHeadsetAltInternalTribunalService
     head: ClothingHeadHatPwig
   storage:

@@ -45,9 +45,8 @@
   id: ExternalAdministrativeZoneCommandantGear
   equipment:
     eyes: ClothingEyesGlassesSecurity
-    id: WardenPDA
+    id: KeyCardLightContainmentZoneSecurityCommandant
     ears: ClothingHeadsetAltExternalAdministrativeZoneSecurityService
   storage:
     back:
     - Flash
-#    - MagazineGlock22

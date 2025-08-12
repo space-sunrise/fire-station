@@ -23,7 +23,7 @@
 - type: startingGear
   id: SeniorMedicalSpecialistGear
   equipment:
-    id: SeniorPhysicianPDA
+    id: KeyCardSeniorMedicalSpecialist
     ears: ClothingHeadsetMedical
     eyes: ClothingHeadsetMedicalService
   storage:

@@ -31,7 +31,7 @@
     gloves: ClothingHandsGlovesLatex
     eyes: ClothingEyesHudMedSec
     head: ClothingHeadHatBeretSecurityMedic
-    id: BrigmedicPDA
+    id: KeyCardFieldMedicalSpecialist
     ears: ClothingHeadsetFieldMedicalSpecialist
     belt: ClothingBeltMedicalFilled
   storage:
