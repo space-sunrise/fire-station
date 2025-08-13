@@ -18,6 +18,14 @@
 
 - type: entity
   parent: LockableButton
+  id: LockableButtonPersonnelOfficer
+  suffix: Personnel officer
+  components:
+  - type: AccessReader
+    access: [["PersonnelOfficer"]]
+
+- type: entity
+  parent: LockableButton
   id: LockableButtonSecurityCommander
   suffix: Security commander
   components:

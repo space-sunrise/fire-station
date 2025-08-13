@@ -420,6 +420,7 @@
   id: LockerFreezerVaultFilled
   suffix: Vault, Locked
   parent: LockerFreezerBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
     access: [ [ "Command" ] ]

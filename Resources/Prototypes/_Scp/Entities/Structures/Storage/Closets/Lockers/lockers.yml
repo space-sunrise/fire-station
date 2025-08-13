@@ -98,7 +98,7 @@
   name: heavy containment zone commandant's locker
   components:
   - type: AccessReader
-    access: [["Security"], ["Armory"]]
+    access: [["Armory"]]
 
 - type: entity
   id: LockerHeavyContainmentZoneOfficer
@@ -124,7 +124,7 @@
   name: light containment zone commandant's locker
   components:
   - type: AccessReader
-    access: [["Security"], ["Armory"]]
+    access: [["Armory"]]
 
 - type: entity
   id: LockerExternalAdministrativeZoneOfficer

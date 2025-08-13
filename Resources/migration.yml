@@ -1568,6 +1568,33 @@ SeniorResearcherIDCard: null
 SeniorPhysicianIDCard: null
 SeniorOfficerIDCard: null
 WizardIDCard: null
+BlueShieldOfficerIDCard: null
+BlueShieldEnsignIDCard: null
+BlueShieldOperativeIDCard: null
+RoboticistIDCard: null
+SecurityPilotIDCard: null
+PrisonEngineeringIDCard: null
+IAAIDCard: null
+MagistratIDCard: null
+BrigmedicIDCard: null
+PlanetPrisonerIDCard: null
+GuardIDCard: null
+PrisonPilotIDCard: null
+HeadOfPrisonIDCard: null
+NanoTrasenRepresentativeIDCard: null
+BarberIDCard: null
+AdjutantIDCard: null
+PathologistIDCard: null
+USSPIDCard: null
+USSPOfficerIDCard: null
+USSPSoldierIDCard: null
+USSPSoldierOfficerIDCard: null
+USSPCaptainIDCard: null
+NtrGuardIDCard: null
+NtrLeadGuardIDCard: null
+MailCarrierIDCard: null
+MiningIDCard: null
+AbductorIDCard: null
 
 # Печати
 RubberStampCaptain: RubberStampDirector
@@ -1715,7 +1742,7 @@ LockerAtmosphericsFilledHardsuit: LockerLifeSupportFilled
 LockerBotanistFilled: ScpLockerBotanistFilled
 LockerBoozeFilled: ScpLockerBoozeFilled
 
-
+LockerFreezerVaultFilled: null
 LockerWarden: null
 LockerWardenFilled: null
 LockerWardenFilledHardsuit: null

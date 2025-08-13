@@ -1240,4 +1240,4 @@
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsExit ]
+      board: [ DoorElectronicsChaosInsurgency ]
