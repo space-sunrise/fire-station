@@ -8,11 +8,15 @@
   },
   "states": [
     {
-      "name": "scp-131-a",
+      "name": "scp-131-b",
       "directions": 4
     },
-    {
-      "name": "scp-131-b",
+	{
+      "name": "inhand-left",
+      "directions": 4
+    },
+	{
+      "name": "inhand-right",
       "directions": 4
     }
   ]

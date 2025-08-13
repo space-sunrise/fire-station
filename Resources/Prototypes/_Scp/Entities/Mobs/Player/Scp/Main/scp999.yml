@@ -179,6 +179,13 @@
     guides:
     - ScpResearch
     - ScpResearchAdvanced
+  - type: Item
+    size: Huge
+    sprite: _Scp/Mobs/Scp/scp-999.rsi
+  - type: Clothing
+    sprite: _Scp/Mobs/Scp/scp-999.rsi
+    slots:
+    - HEAD
 
 - type: speechSounds
   id: Scp999Speech

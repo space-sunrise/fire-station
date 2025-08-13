@@ -112,7 +112,7 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/Mobs/Scp/scp-131.rsi
+    - sprite: _Scp/Mobs/Scp/scp-131/scp-131-a.rsi
       state: scp-131-a
   - type: ConditionalSpawner
     prototypes:
@@ -126,8 +126,8 @@
   - type: Sprite
     layers:
     - state: green
-    - sprite: _Scp/Mobs/Scp/scp-131.rsi
-      state: scp-131-a
+    - sprite: _Scp/Mobs/Scp/scp-131/scp-131-b.rsi
+      state: scp-131-b
   - type: ConditionalSpawner
     prototypes:
     - Scp131B
