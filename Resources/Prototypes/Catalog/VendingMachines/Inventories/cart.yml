@@ -24,9 +24,9 @@
   #   CyberPen: 1 # Sunrise Edit
   #   BalloonSyn: 2 # Sunrise Edit
   # Fire Edit End
-  startingInventory: # Fire Edit
+  startingInventory: # Fire Edit Start
     BaseFoundationPDA: 8
-    ScpEngineerPDA: 2
+    ScpEngineeringPDA: 2
     ScpMedicalPDA: 2
     ScpSecurityPDA: 1
     PassengerIDCard: 5
