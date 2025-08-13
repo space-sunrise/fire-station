@@ -3,7 +3,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardRRHLeader
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: RRHLeader
@@ -11,7 +10,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardRRHSpecialist
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: RRHSpecialist
@@ -19,7 +17,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardRRHCadet
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: RRHCadet
@@ -51,12 +48,10 @@
   id: ClothingMaskGasRRH
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingDeathSquadronBackpack
   id: ClothingBackpackRRH
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingHeadHelmetHardsuitDeathsquad
   id: ClothingHeadHelmetHardsuitRRH
   components:
@@ -93,9 +88,7 @@
   radioBold: true
   overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -176,9 +169,7 @@
   canBeAntag: false
   overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -250,9 +241,7 @@
   canBeAntag: false
   overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

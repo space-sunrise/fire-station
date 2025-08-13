@@ -3,7 +3,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardMHLeader
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: MHLeader
@@ -11,7 +10,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardMHSpecialist
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: MHSpecialist
@@ -19,7 +17,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardMHCadet
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: MHCadet
@@ -50,21 +47,17 @@
 # кастом вещи группы
 - type: entity
   parent: ClothingOuterHardsuitCBURN
-  categories: [ HideSpawnMenu ]
   id: ClothingOuterHardsuitMH
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingOuterHardsuitCBURNLeader
   id: ClothingOuterHardsuitMHLeader
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingHeadHelmetCBURN
   id: ClothingHeadHelmetMH
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingBeltMilitaryWebbingMed
   id: ClothingBeltMilitaryWebbingMH
 
@@ -84,9 +77,7 @@
   radioBold: true
   overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -165,9 +156,7 @@
   canBeAntag: false
   overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -243,9 +232,7 @@
   canBeAntag: false
   overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

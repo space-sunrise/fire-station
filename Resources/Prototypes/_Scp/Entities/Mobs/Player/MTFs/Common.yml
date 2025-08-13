@@ -8,10 +8,11 @@
   - type: Sprite
     sprite: _Scp/Objects/Keycards/mtfleader.rsi
     state: icon
+  - type: Access
+    groups:
+    - AllComplex
   - type: Item
     heldPrefix: blue
-
-
 
 #базовый КПК
 - type: entity

@@ -3,7 +3,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardHDLeader
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: HDLeader
@@ -11,7 +10,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardHDSpecialist
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: HDSpecialist
@@ -19,7 +17,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardHDCadet
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: HDCadet
@@ -69,12 +66,10 @@
   - type: HeldSpeedModifier
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingHeadHatSyndieMAA
   id: ClothingHeadHatHDMAA
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingShoesBootsJackSecFilled
   id: ClothingShoesBootsHDFilled
 
@@ -93,9 +88,7 @@
   radioBold: true
   overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -170,9 +163,7 @@
   canBeAntag: false
   overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -243,9 +234,7 @@
   canBeAntag: false
   overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

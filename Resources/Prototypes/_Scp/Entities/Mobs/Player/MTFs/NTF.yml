@@ -3,7 +3,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardNTFLeader
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: NTFLeader
@@ -11,7 +10,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardNTFSpecialist
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: NTFSpecialist
@@ -19,7 +17,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardNTFCadet
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: NTFCadet
@@ -62,9 +59,7 @@
   radioBold: true
   overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -139,9 +134,7 @@
   canBeAntag: false
   overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -213,9 +206,7 @@
   canBeAntag: false
   overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
