@@ -1,5 +1,5 @@
 - type: polymorph
-  id: SunriseEffectScrewdriver
+  id: ScpEffectScrewdriver
   configuration:
     entity: Screwdriver
     forced: true
@@ -12,7 +12,7 @@
     duration: 120
 
 - type: polymorph
-  id: SunriseEffectCigarSpent
+  id: ScpEffectCigarSpent
   configuration:
     entity: CigarSpent
     forced: true
@@ -25,7 +25,7 @@
     duration: 120
 
 - type: polymorph
-  id: SunriseEffectToyRubberDuck
+  id: ScpEffectToyRubberDuck
   configuration:
     entity: ToyRubberDuck
     forced: true

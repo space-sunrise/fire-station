@@ -157,7 +157,7 @@
   description: artifact-effect-hint-data-deleted
   components:
   - type: XAEPolymorph
-    polymorphPrototypeName: SunriseEffectScrewdriver
+    polymorphPrototypeName: ScpEffectScrewdriver
 
 - type: entity
   id: ScpEffectPolyCigarSpent
@@ -165,7 +165,7 @@
   description: artifact-effect-hint-data-deleted
   components:
   - type: XAEPolymorph
-    polymorphPrototypeName: SunriseEffectCigarSpent
+    polymorphPrototypeName: ScpEffectCigarSpent
 
 - type: entity
   id: ScpEffectPolyToyRubberDuck
@@ -173,7 +173,7 @@
   description: artifact-effect-hint-data-deleted
   components:
   - type: XAEPolymorph
-    polymorphPrototypeName: SunriseEffectToyRubberDuck
+    polymorphPrototypeName: ScpEffectToyRubberDuck
 
 - type: entity
   id: ScpEffectPolyDisposal
