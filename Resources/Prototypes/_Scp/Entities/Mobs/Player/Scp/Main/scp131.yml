@@ -27,6 +27,8 @@
   - type: Item
     size: Huge
     sprite: _Scp/Mobs/Scp/scp-131/scp-131-a.rsi
+  - type: ItemRepickupCooldown
+    cooldown: 5
   - type: CanEscapeInventory
   - type: Fixtures
     fixtures:

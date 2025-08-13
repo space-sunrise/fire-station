@@ -182,6 +182,9 @@
   - type: Item
     size: Huge
     sprite: _Scp/Mobs/Scp/scp-999.rsi
+  - type: CanEscapeInventory
+  - type: ItemRepickupCooldown
+    cooldown: 5
   - type: Clothing
     sprite: _Scp/Mobs/Scp/scp-999.rsi
     slots:
