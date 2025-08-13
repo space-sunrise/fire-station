@@ -3,7 +3,7 @@
   id: VendingMachineChefvendDClass
   name: ChefVend
   description: An ingredient vendor for all your cheffin needs.
-  suffix: D Class Kitchen
+  suffix: D Class
   components:
   - type: VendingMachine
     pack: ChefvendInventoryDClass
@@ -12,7 +12,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
   - type: Sprite
-    sprite: Structures/Machines/VendingMachines/chefvend.rsi
+    sprite: _Scp/Structures/Machines/VendingMachines/chefvenddclass.rsi
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]
@@ -33,7 +33,7 @@
   id: VendingMachineChefDrobeDClass
   name: ChefDrobe
   description: This vending machine might not dispense meat, but it certainly dispenses chef related clothing.
-  suffix: D Class Kitchen
+  suffix: D Class
   components:
   - type: VendingMachine
     pack: ChefDrobeInventoryDClass
@@ -41,7 +41,7 @@
     brokenState: broken
     normalState: normal-unshaded
   - type: Sprite
-    sprite: Structures/Machines/VendingMachines/chefdrobe.rsi
+    sprite: _Scp/Structures/Machines/VendingMachines/chefdrobedclass.rsi
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]
@@ -58,7 +58,7 @@
   id: VendingMachineDinnerwareDClass
   name: Plasteel Chef's Dinnerware Vendor
   description: A kitchen and restaurant equipment vendor.
-  suffix: D Class Kitchen
+  suffix: D Class
   components:
   - type: VendingMachine
     pack: DinnerwareInventoryDClass
@@ -67,7 +67,7 @@
     normalState: normal-unshaded
     ejectState: eject-unshaded
   - type: Sprite
-    sprite: Structures/Machines/VendingMachines/dinnerware.rsi
+    sprite: _Scp/Structures/Machines/VendingMachines/dinnerwaredclass.rsi
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]
@@ -88,7 +88,7 @@
   id: VendingMachineSeedsDClass
   name: MegaSeed Servitor
   description: For when you need seeds fast. Hands down the best seed selection on the station!
-  suffix: D Class Hydroponics
+  suffix: D Class
   components:
   - type: VendingMachine
     pack: MegaSeedServitorInventoryDClass
@@ -98,7 +98,7 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
   - type: Sprite
-    sprite: Structures/Machines/VendingMachines/seeds.rsi
+    sprite: _Scp/Structures/Machines/VendingMachines/seedsdclass.rsi
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]
@@ -119,7 +119,7 @@
   id: VendingMachineNutriDClass
   name: NutriMax
   description: A vending machine containing nutritional substances for plants and botanical tools.
-  suffix: D Class Hydroponics
+  suffix: D Class
   components:
   - type: VendingMachine
     pack: NutriMaxInventoryDClass
@@ -129,7 +129,7 @@
     ejectState: eject-unshaded
     denyState: deny-unshaded
   - type: Sprite
-    sprite: Structures/Machines/VendingMachines/nutri.rsi
+    sprite: _Scp/Structures/Machines/VendingMachines/nutridclass.rsi
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]
@@ -150,7 +150,7 @@
   id: VendingMachineBoozeDClass
   name: Booze-O-Mat
   description: A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one.
-  suffix: D Class Kitchen
+  suffix: D Class
   components:
   - type: VendingMachine
     pack: BoozeOMatInventoryDClass
@@ -160,7 +160,7 @@
     denyState: deny-unshaded
     loopDeny: false
   - type: Sprite
-    sprite: Structures/Machines/VendingMachines/boozeomat.rsi
+    sprite: _Scp/Structures/Machines/VendingMachines/boozeomatdclass.rsi
     layers:
     - state: "off"
       map: ["enum.VendingMachineVisualLayers.Base"]
