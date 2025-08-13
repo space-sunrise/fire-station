@@ -115,16 +115,6 @@
   description: A sheet of brass, primarily used by clockwork enthusiasts and the remnants of Ratvarian cults.
   suffix: Full
   components:
-  - type: Sprite
-    sprite: Objects/Materials/Sheets/metal.rsi # Fire Edit
-    state: brass_3
-    layers:
-    - state: brass_3
-      map: ["base"]
-  - type: Item
-    sprite: Objects/Materials/Sheets/metal.rsi # Fire Edit
-    size: Normal
-    heldPrefix: brass
   - type: Material
   - type: PhysicalComposition
     materialComposition:
@@ -136,13 +126,15 @@
     - brass
     - brass_2
     - brass_3
-  # - type: Sprite # Fire Edit
-  #   state: brass_3
-  #   layers:
-  #   - state: brass_3
-  #     map: ["base"]
-  # - type: Item
-  #   heldPrefix: brass
+  - type: Sprite
+    sprite: Objects/Materials/Sheets/metal.rsi # Fire Edit
+    state: brass_3
+    layers:
+    - state: brass_3
+      map: ["base"]
+  - type: Item
+    sprite: Objects/Materials/Sheets/metal.rsi # Fire Edit
+    heldPrefix: brass
   - type: Appearance
   - type: FloorTile
     outputs:
