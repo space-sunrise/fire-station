@@ -1,7 +1,7 @@
 ﻿- type: entity
   id: Scp131A
   suffix: SCP-131A
-  parent: BaseScp
+  parent: BaseScpFriendly
   components:
   - type: Sprite
     drawdepth: SmallMobs
@@ -9,15 +9,6 @@
     state: scp-131-a
   - type: Scp
     class: Safe
-  - type: FearSource
-    uponSeenState: None
-    uponComeCloser: None
-    grainShaderStrength:
-      min: 0
-      max: 0
-    vignetteShaderStrength:
-      min: 0
-      max: 0
   - type: Muted
   - type: NpcFactionMember
     factions:

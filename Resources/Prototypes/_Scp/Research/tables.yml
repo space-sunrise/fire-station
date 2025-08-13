@@ -24,17 +24,24 @@
   table: !type:GroupSelector
     children:
     - id: ScpEffectShuffleUltra
-      weight: 1
-    - id: ScpEffectPolyChair
       weight: 2
     - id: ScpEffectPolyWatermelon
       weight: 2
     - id: ScpEffectPolyAppendix
       weight: 2
-    - id: ScpEffectPolyDisposal
+    - id: ScpEffectPolyScrewdriver
       weight: 2
-    - id: ScpEffectPolyTable
+    - id: ScpEffectPolyCigarSpent
       weight: 2
+    - id: ScpEffectPolyToyRubberDuck
+      weight: 2
+      #    - id: ScpEffectPolyChair
+      #      weight: 2
+      #    - id: ScpEffectPolyDisposal
+      #      weight: 2
+      #    - id: ScpEffectPolyTable
+      #      weight: 2
+      # Сломано TODO: вернём после фикса
     - id: ScpEffectSwap
       weight: 2
 #    - id: ScpEffectCreateArtifacts
@@ -111,6 +118,39 @@
     children:
     - id: ScpEffectIgnite
       weight: 1
+
+- type: entityTable
+  id: ScpArtifactEffectsDefaultFriendlyTable
+  table: !type:GroupSelector
+    children:
+    - id: ScpArtifactWandering
+      weight: 3
+    - id: ScpArtifactThrowThingsAround
+      weight: 3
+    - id: ScpArtifactKnock
+      weight: 2
+    - id: ScpArtifactShatterWindows
+      weight: 2
+    - id: ScpEffectBoltAirlocks
+      weight: 3
+    - id: ScpEffectTeslaDischarge
+      weight: 0.02
+    - id: ScpEffectSpawnEvilTwin
+      weight: 0.05
+
+- type: entityTable
+  id: ScpArtifactEffectsUltraFunnyFriendlyTable
+  table: !type:GroupSelector
+    children:
+    - id: ScpEffectShuffleUltra
+      weight: 0.01
+    - id: ScpEffectSwap
+      weight: 2
+    - id: EffectMagnetUltra
+      weight: 1
+    - id: ScpEffectShiftedAsciiTableAccent
+      weight: 2
+
 
 # Триггеры
 

@@ -152,6 +152,30 @@
     polymorphPrototypeName: SunriseEffectAppendix
 
 - type: entity
+  id: ScpEffectPolyScrewdriver
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: XAEPolymorph
+    polymorphPrototypeName: ScpEffectScrewdriver
+
+- type: entity
+  id: ScpEffectPolyCigarSpent
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: XAEPolymorph
+    polymorphPrototypeName: ScpEffectCigarSpent
+
+- type: entity
+  id: ScpEffectPolyToyRubberDuck
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  components:
+  - type: XAEPolymorph
+    polymorphPrototypeName: ScpEffectToyRubberDuck
+
+- type: entity
   id: ScpEffectPolyDisposal
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted

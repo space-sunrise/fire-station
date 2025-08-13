@@ -35,6 +35,7 @@
       - !type:NestedSelector
         tableId: ScpArtifactEffectsUltraFunnyTable
         weight: 1
+  - type: ResearchClient
 
 - type: entity
   id: BaseScpArtifactMinor
@@ -47,6 +48,38 @@
       max: 5
     effectsTable: !type:NestedSelector
       tableId: ScpArtifactEffectsDefaultTable
+  - type: ResearchClient
+
+- type: entity
+  id: BaseFriendlyScpArtifactMajor
+  parent: BaseScpArtifact
+  abstract: true
+  components:
+  - type: XenoArtifact
+    nodeCount:
+      min: 4
+      max: 8
+    effectsTable: !type:GroupSelector
+      children:
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsDefaultFriendlyTable
+        weight: 3
+      - !type:NestedSelector
+        tableId: ScpArtifactEffectsUltraFunnyFriendlyTable
+        weight: 1
+  - type: ResearchClient
+
+- type: entity
+  id: BaseFriendlyScpArtifactMinor
+  parent: BaseScpArtifact
+  abstract: true
+  components:
+  - type: XenoArtifact
+    nodeCount:
+      min: 3
+      max: 5
+    effectsTable: !type:NestedSelector
+      tableId: ScpArtifactEffectsDefaultFriendlyTable
   - type: ResearchClient
 
 # Приколы-помогаторы с базовыми компонентами
@@ -65,21 +98,16 @@
     damagePopupType: SmallFloating
     isStructure: true
 
-- type: entity # Онли для мобов
+- type: entity # Базовый Entity для BaseScp и BaseScpFriendly
   abstract: true
   parent:
   - BaseSimpleMob
   - MobFlammable
-  - BaseScpArtifactMajor
-  id: BaseScp
+  id: BaseScpComponents
   components:
   - type: Scp
     class: Neutralized
   - type: ScpRestriction
-  - type: ProximityReceiver
-  - type: WatchingTarget
-  - type: FearSource
-    phobiaType: Exoremophobia
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
@@ -120,3 +148,23 @@
     - FootstepSound
     - CannotSuicide
     - DoorBumpOpener
+
+- type: entity # Для агрессивных (опасных) SCP
+  abstract: true
+  parent:
+  - BaseScpComponents
+  - BaseScpArtifactMajor
+  id: BaseScp
+  components:
+  - type: FearSource
+    phobiaType: Exoremophobia
+  - type: WatchingTarget
+  - type: ProximityReceiver
+
+- type: entity # Для добрых SCP: 131, 999 и т.д.
+  abstract: true
+  parent:
+  - BaseScpComponents
+  - BaseFriendlyScpArtifactMajor
+  id: BaseScpFriendly
+
