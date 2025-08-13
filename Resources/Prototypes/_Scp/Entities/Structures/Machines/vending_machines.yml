@@ -21,8 +21,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  # - type: AccessReader
-  #   access: [["ClassDCanteen"]]
+  - type: AccessReader
+    access: [["ClassDCanteen"]]
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -50,8 +50,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  # - type: AccessReader
-  #   access: [["ClassDCanteen"]]
+  - type: AccessReader
+    access: [["ClassDCanteen"]]
 
 - type: entity
   parent: VendingMachine
@@ -76,8 +76,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  # - type: AccessReader
-  #   access: [["ClassDCanteen"]]
+  - type: AccessReader
+    access: [["ClassDCanteen"]]
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -111,8 +111,8 @@
     radius: 1.5
     energy: 1.6
     color: "#326e3f"
-  # - type: AccessReader
-  #   access: [["ClassDCanteen"]]
+  - type: AccessReader
+    access: [["ClassDCanteen"]]
 
 - type: entity
   parent: VendingMachine
@@ -138,8 +138,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  # - type: AccessReader
-  #   access: [["ClassDCanteen"]]
+  - type: AccessReader
+    access: [["ClassDCanteen"]]
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -169,8 +169,8 @@
       shader: unshaded
     - state: panel
       map: ["enum.WiresVisualLayers.MaintenancePanel"]
-  # - type: AccessReader
-  #   access: [["ClassDCanteen"]]
+  - type: AccessReader
+    access: [["ClassDCanteen"]]
   - type: GuideHelp
     guides:
     - Bartender
