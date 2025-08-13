@@ -1,4 +1,4 @@
-ent-VendingMachineBoozeDClass = Раздатчик Напитков
+ent-VendingMachineBoozeDClass = Раздатчик напитков
     .desc = Стандартный раздатчик различных напитков. Эта версия устанавливается в тюремных столовых.
     .suffix = Д Класс
 ent-VendingMachineChefvendDClass = ИнгредиентоМат
@@ -10,7 +10,7 @@ ent-VendingMachineChefDrobeDClass = Шкаф Шефа
 ent-VendingMachineDinnerwareDClass = ПосудоМат
     .desc = Поставщик оборудования для тюремных столовых.
     .suffix = Д Класс
-ent-VendingMachineSeedsDClass = Раздатчик Семян
+ent-VendingMachineSeedsDClass = Раздатчик семян
     .desc = Для тех случаев, когда нужны семена. Лучший ассортимент семян для заключённых!
     .suffix = Д Класс
 ent-VendingMachineNutriDClass = ГрядкоМат
