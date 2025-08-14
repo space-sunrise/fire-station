@@ -1,3 +1,4 @@
+using Content.Shared.Preferences;
 using Robust.Shared.Enums;
 using Robust.Shared.Serialization;
 
@@ -69,6 +70,11 @@ public sealed record GeneralStationRecord
     [DataField]
     public string? DNA;
 
+    // Sunrise added start
     [DataField]
-    public bool Silicon; // Sunrise-Edit
+    public bool Silicon;
+
+    [DataField]
+    public HumanoidCharacterProfile? HumanoidProfile;
+    // Sunrise added end
 }

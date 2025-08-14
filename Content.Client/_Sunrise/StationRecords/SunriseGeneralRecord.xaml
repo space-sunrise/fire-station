@@ -1,0 +1,36 @@
+<BoxContainer xmlns="https://spacestation14.io"
+         xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+         xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+         Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True"
+         MinSize="500, 500">
+    <controls:StripeBack VerticalAlignment="Top">
+        <BoxContainer Orientation="Vertical" VerticalAlignment="Top">
+            <Label Name="NameLabel" Access="Public" StyleClasses="LabelHeading" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <BoxContainer Orientation="Horizontal" Align="Center">
+                <Label Name="SubText" VerticalAlignment="Center" HorizontalAlignment="Center" StyleClasses="LabelSubText" Access="Public"/>
+            </BoxContainer>
+        </BoxContainer>
+    </controls:StripeBack>
+    <SpriteView OverrideDirection="South" Scale="8 8" Name="SpriteView" Access="Public" MinSize="256 256" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 25 5 25"/>
+    <controls:StripeBack VerticalAlignment="Bottom" >
+        <BoxContainer Orientation="Horizontal" VerticalAlignment="Center" Margin="5 5 5 5">
+            <PanelContainer
+                VerticalExpand="True"
+                MinWidth="2"
+                MaxWidth="2"
+                Margin="9 5 9 0">
+                <PanelContainer.PanelOverride>
+                    <graphics:StyleBoxFlat BackgroundColor="#CFCFCF"/>
+                </PanelContainer.PanelOverride>
+            </PanelContainer>
+            <BoxContainer Orientation="Vertical" HorizontalAlignment="Left" >
+                <RichTextLabel Name="Age"/>
+                <RichTextLabel Name="Species"/>
+                <RichTextLabel Name="Gender"/>
+                <RichTextLabel Name="Fingerprint"/>
+                <RichTextLabel Name="Dna"/>
+                <Button Visible="False" Name="DeleteButton" Text="{Loc 'general-station-record-console-delete'}"/>
+            </BoxContainer>
+        </BoxContainer>
+    </controls:StripeBack>
+</BoxContainer>
