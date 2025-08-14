@@ -2,8 +2,8 @@
          xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
          xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
          Orientation="Vertical" VerticalExpand="True" HorizontalExpand="True"
-         MinSize="500, 500">
-    <controls:StripeBack VerticalAlignment="Top">
+         MinSize="500 600">
+    <controls:StripeBack VerticalAlignment="Top" HorizontalExpand="True" VerticalExpand="True">
         <BoxContainer Orientation="Vertical" VerticalAlignment="Top">
             <Label Name="NameLabel" Access="Public" StyleClasses="LabelHeading" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
             <BoxContainer Orientation="Horizontal" Align="Center">
@@ -12,7 +12,7 @@
         </BoxContainer>
     </controls:StripeBack>
     <SpriteView OverrideDirection="South" Scale="8 8" Name="SpriteView" Access="Public" MinSize="256 256" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 25 5 25"/>
-    <controls:StripeBack VerticalAlignment="Bottom" >
+    <controls:StripeBack VerticalAlignment="Bottom" HorizontalExpand="True" VerticalExpand="True">
         <BoxContainer Orientation="Horizontal" VerticalAlignment="Center" Margin="5 5 5 5">
             <PanelContainer
                 VerticalExpand="True"
@@ -23,14 +23,15 @@
                     <graphics:StyleBoxFlat BackgroundColor="#CFCFCF"/>
                 </PanelContainer.PanelOverride>
             </PanelContainer>
-            <BoxContainer Orientation="Vertical" HorizontalAlignment="Left" >
-                <RichTextLabel Name="Age"/>
-                <RichTextLabel Name="Species"/>
-                <RichTextLabel Name="Gender"/>
-                <RichTextLabel Name="Fingerprint"/>
-                <RichTextLabel Name="Dna"/>
-                <Button Visible="False" Name="DeleteButton" Text="{Loc 'general-station-record-console-delete'}"/>
-            </BoxContainer>
+            <GridContainer Columns="2" HorizontalAlignment="Stretch" >
+                <Label Name="AgeLabel"/> <LineEdit Name="Age"/>
+                <Label Name="SpeciesLabel"/> <OptionButton Name="Species"/>
+                <Label Name="GenderLabel"/> <OptionButton Name="Gender"/>
+                <Label Name="FingerprintLabel"/> <LineEdit Name="Fingerprint"/>
+                <Label Name="DnaLabel"/> <LineEdit Name="Dna"/>
+                <Button Visible="False" Name="SaveButton" Text="Сохранить" StyleClasses="ButtonColorGreen"/>
+                <Button Visible="False" Name="DeleteButton" Text="{Loc 'general-station-record-console-delete'}" StyleClasses="ButtonColorRed"/>
+            </GridContainer>
         </BoxContainer>
     </controls:StripeBack>
 </BoxContainer>

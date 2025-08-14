@@ -6,7 +6,7 @@ using Robust.Server.GameObjects;
 
 namespace Content.Server.StationRecords.Systems;
 
-public sealed class GeneralStationRecordConsoleSystem : EntitySystem
+public sealed partial class GeneralStationRecordConsoleSystem : EntitySystem
 {
     [Dependency] private readonly UserInterfaceSystem _ui = default!;
     [Dependency] private readonly StationSystem _station = default!;
@@ -25,6 +25,9 @@ public sealed class GeneralStationRecordConsoleSystem : EntitySystem
             subs.Event<SetStationRecordFilter>(OnFiltersChanged);
             subs.Event<DeleteStationRecord>(OnRecordDelete);
         });
+
+        // Sunrise added
+        InitializeSunrise();
     }
 
     private void OnRecordDelete(Entity<GeneralStationRecordConsoleComponent> ent, ref DeleteStationRecord args)
@@ -37,6 +40,9 @@ public sealed class GeneralStationRecordConsoleSystem : EntitySystem
         if (owning != null)
             _stationRecords.RemoveRecord(new StationRecordKey(args.Id, owning.Value));
         UpdateUserInterface(ent); // Apparently an event does not get raised for this.
+
+        // Sunrise added
+        // TODO: Радио оповещение в канал командования/сб
     }
 
     private void UpdateUserInterface<T>(Entity<GeneralStationRecordConsoleComponent> ent, ref T args)

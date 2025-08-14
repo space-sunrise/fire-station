@@ -23,8 +23,11 @@ public sealed partial class GeneralStationRecordConsoleWindow : DefaultWindow
     private StationRecordFilterType _currentFilterType;
 
     // Sunrise added start
+    public Action<GeneralStationRecord, uint>? OnSaved;
+
     private readonly IEntityManager _entity;
     private readonly IPrototypeManager _prototype;
+    private readonly ILocalizationManager _loc;
     private readonly JobSystem _job;
     private readonly LobbyUIController _controller;
     // Sunrise added end
@@ -36,6 +39,7 @@ public sealed partial class GeneralStationRecordConsoleWindow : DefaultWindow
         // Sunrise added start
         _entity = IoCManager.Resolve<IEntityManager>();
         _prototype = IoCManager.Resolve<IPrototypeManager>();
+        _loc = IoCManager.Resolve<ILocalizationManager>();
         var interfaceManager = IoCManager.Resolve<IUserInterfaceManager>();
         _job = _entity.System<JobSystem>();
         _controller = interfaceManager.GetUIController<LobbyUIController>();
@@ -160,9 +164,11 @@ public sealed partial class GeneralStationRecordConsoleWindow : DefaultWindow
     {
         RecordContainer.RemoveAllChildren();
         // Sunrise edit start
-        var newRecord = new SunriseGeneralRecord(record, enableDelete, id, in _entity, in _prototype, in _job, in _controller);
+        var newRecord =
+            new SunriseGeneralRecord(record, enableDelete, id, in _entity, in _prototype, in _loc, in _job, in _controller);
         // Sunrise edit end
         newRecord.OnDeletePressed = OnDeleted;
+        newRecord.OnSaveButtonPressed = OnSaved;
 
         RecordContainer.AddChild(newRecord);
     }
