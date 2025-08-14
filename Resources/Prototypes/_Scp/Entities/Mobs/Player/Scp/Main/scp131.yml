@@ -23,7 +23,7 @@
     name: ghost-panel-antagonist-scp-minor-name
     description: ghost-panel-antagonist-scp-minor-description
     priority: 0
-  #- type: MultiHandedItem временно вырубаем
+  - type: MultiHandedItem
   - type: Item
     size: Huge
     sprite: _Scp/Mobs/Scp/scp-131/scp-131-a.rsi

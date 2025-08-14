@@ -183,6 +183,7 @@
     size: Huge
     sprite: _Scp/Mobs/Scp/scp-999.rsi
   - type: CanEscapeInventory
+  - type: MultiHandedItem
   - type: ItemRepickupCooldown
     cooldown: 5
   - type: Clothing
