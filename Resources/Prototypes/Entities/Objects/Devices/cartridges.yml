@@ -29,8 +29,8 @@
   - type: Cartridge
     programName: nano-task-program-name
     icon:
-      sprite: Interface/Misc/program_icons.rsi
-      state: nano_task
+      sprite: _Scp/Interface/Misc/program_icons.rsi # Fire Edit
+      state: todo_task # Fire Edit
   - type: UIFragment
     ui: !type:NanoTaskUi
   - type: NanoTaskCartridge
@@ -67,7 +67,7 @@
     - type: Cartridge
       programName: crew-manifest-program-name
       icon:
-        sprite: Interface/Misc/program_icons.rsi
+        sprite: _Scp/Interface/Misc/program_icons.rsi # Fire Edit
         state: crew_manifest
     - type: CrewManifestCartridge
 
@@ -106,7 +106,7 @@
     - type: Cartridge
       programName: log-probe-program-name
       icon:
-        sprite: Structures/Doors/Airlocks/Standard/security.rsi
+        sprite: _Scp/Structures/Doors/Airlocks/Standard/engineering.rsi # Fire Edit
         state: closed
     - type: LogProbeCartridge
     - type: GuideHelp

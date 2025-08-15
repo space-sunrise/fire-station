@@ -1,0 +1,38 @@
+- type: polymorph
+  id: ScpEffectScrewdriver
+  configuration:
+    entity: Screwdriver
+    forced: true
+    transferName: false
+    transferHumanoidAppearance: false
+    inventory: None
+    revertOnDeath: true
+    revertOnCrit: true
+    revertOnEat: true
+    duration: 120
+
+- type: polymorph
+  id: ScpEffectCigarSpent
+  configuration:
+    entity: CigarSpent
+    forced: true
+    transferName: false
+    transferHumanoidAppearance: false
+    inventory: None
+    revertOnDeath: true
+    revertOnCrit: true
+    revertOnEat: true
+    duration: 120
+
+- type: polymorph
+  id: ScpEffectToyRubberDuck
+  configuration:
+    entity: ToyRubberDuck
+    forced: true
+    transferName: false
+    transferHumanoidAppearance: false
+    inventory: None
+    revertOnDeath: true
+    revertOnCrit: true
+    revertOnEat: true
+    duration: 120

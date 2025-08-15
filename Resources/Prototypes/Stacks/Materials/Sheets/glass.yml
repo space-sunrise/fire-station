@@ -1,42 +1,42 @@
 - type: stack
   id: Glass
   name: stack-glass
-  icon: { sprite: /Textures/Objects/Materials/Sheets/glass.rsi, state: glass }
+  icon: { sprite: /Textures/_Scp/Objects/Materials/Sheets/glass.rsi, state: glass } # Fire Edit
   spawn: SheetGlass1
   maxCount: 30
 
 - type: stack
   id: ReinforcedGlass
   name: stack-reinforced-glass
-  icon: { sprite: /Textures/Objects/Materials/Sheets/glass.rsi, state: rglass }
+  icon: { sprite: /Textures/_Scp/Objects/Materials/Sheets/glass.rsi, state: rglass } # Fire Edit
   spawn: SheetRGlass1
   maxCount: 30
 
 - type: stack
   id: PlasmaGlass
   name: stack-plasma-glass
-  icon: { sprite: /Textures/Objects/Materials/Sheets/glass.rsi, state: pglass }
+  icon: { sprite: /Textures/_Scp/Objects/Materials/Sheets/glass.rsi, state: pglass } # Fire Edit
   spawn: SheetPGlass1
   maxCount: 30
 
 - type: stack
   id: ReinforcedPlasmaGlass
   name: stack-reinforced-plasma-glass
-  icon: { sprite: /Textures/Objects/Materials/Sheets/glass.rsi, state: rpglass }
+  icon: { sprite: /Textures/_Scp/Objects/Materials/Sheets/glass.rsi, state: rpglass } # Fire Edit
   spawn: SheetRPGlass1
   maxCount: 30
 
 - type: stack
   id: UraniumGlass
   name: stack-uranium-glass
-  icon: { sprite: /Textures/Objects/Materials/Sheets/glass.rsi, state: uglass }
+  icon: { sprite: /Textures/_Scp/Objects/Materials/Sheets/glass.rsi, state: uglass } # Fire Edit
   spawn: SheetUGlass1
   maxCount: 30
 
 - type: stack
   id: ReinforcedUraniumGlass
   name: stack-reinforced-uranium-glass
-  icon: { sprite: /Textures/Objects/Materials/Sheets/glass.rsi, state: ruglass }
+  icon: { sprite: /Textures/_Scp/Objects/Materials/Sheets/glass.rsi, state: ruglass } # Fire Edit
   spawn: SheetRUGlass1
   maxCount: 30
 
