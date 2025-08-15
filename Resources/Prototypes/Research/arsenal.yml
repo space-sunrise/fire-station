@@ -85,7 +85,7 @@
   id: UraniumMunitions
   name: research-technology-uranium-munitions
   icon:
-    sprite: Objects/Materials/Sheets/other.rsi
+    sprite: _Scp/Objects/Materials/Sheets/other.rsi # Fire Edit
     state: uranium
   discipline: Arsenal
   tier: 1
