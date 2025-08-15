@@ -11,28 +11,6 @@
 
 - type: entity
   parent: RubberStampBase
-  id: RubberStampRegionalAdministration
-  components:
-  - type: Stamp
-    stampedName: stamp-component-stamped-name-regional-administration
-    stampedColor: "#006600"
-    stampState: "paper_stamp-centcom"
-  - type: Sprite
-    state: stamp-centcom
-
-- type: entity
-  parent: RubberStampBase
-  id: RubberStampEthicsCommittee
-  components:
-  - type: Stamp
-    stampedName: stamp-component-stamped-name-ethics-committee
-    stampedColor: "#741b47"
-    stampState: "paper_stamp-lawyer"
-  - type: Sprite
-    state: stamp-lawyer
-
-- type: entity
-  parent: RubberStampBase
   id: RubberStampMentalControlOfficer
   components:
   - type: Stamp

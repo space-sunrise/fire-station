@@ -1291,6 +1291,7 @@ RubberStampHop: RubberStampPersonnelOfficer
 RubberStampHos: RubberStampSecurityCommander
 RubberStampQm: RubberStampSeniorLogisticsOfficer
 RubberStampRd: RubberStampScientificServiceDirector
+RubberStampRegionalAdministration: RubberStampRegionalCommand
 #
 RubberStampChaplain: null
 RubberStampLawyer: null
