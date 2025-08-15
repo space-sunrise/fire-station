@@ -33,6 +33,15 @@ public sealed partial class GeneralStationRecordConsoleComponent : Component
     public bool CanRedactSensitiveData;
 
     [DataField]
+    public bool HasAccess;
+
+    [DataField]
+    public bool Silent;
+
+    [DataField]
+    public bool SkipAccessCheck;
+
+    [DataField]
     public SoundSpecifier SuccessfulSound = new SoundPathSpecifier("/Audio/Effects/Cargo/ping.ogg");
 
     [DataField]

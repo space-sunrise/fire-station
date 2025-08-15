@@ -40,6 +40,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     public SunriseGeneralRecord(GeneralStationRecord record,
         bool canDelete,
         bool canRedactSensitiveData,
+        bool hasAccess,
         uint? id,
         in IEntityManager entity,
         in IPrototypeManager prototype,
@@ -73,8 +74,8 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
             DeleteButton.OnPressed += _ => OnDeletePressed?.Invoke(id.Value);
         }
 
-        Fingerprint.Editable = canRedactSensitiveData;
-        Dna.Editable = canRedactSensitiveData;
+        Fingerprint.Editable = canRedactSensitiveData && hasAccess;
+        Dna.Editable = canRedactSensitiveData && hasAccess;
 
         if (id != null )
         {
@@ -94,6 +95,13 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         UpdateEditableInfo(record);
         UpdateHeading(record);
         ReloadPreview(record.JobPrototype);
+
+        Name.Editable = hasAccess;
+        Age.Editable = hasAccess;
+        Gender.Disabled = !hasAccess;
+        Species.Disabled = !hasAccess;
+        Job.Disabled = !hasAccess;
+        SaveButton.Disabled = !hasAccess;
     }
 
     protected override void ExitedTree()

@@ -20,7 +20,7 @@ public sealed partial class GeneralStationRecordConsoleSystem : EntitySystem
 
         Subs.BuiEvents<GeneralStationRecordConsoleComponent>(GeneralStationRecordConsoleKey.Key, subs =>
         {
-            subs.Event<BoundUIOpenedEvent>(UpdateUserInterface);
+            subs.Event<BoundUIOpenedEvent>(OnOpened);
             subs.Event<SelectStationRecord>(OnKeySelected);
             subs.Event<SetStationRecordFilter>(OnFiltersChanged);
             subs.Event<DeleteStationRecord>(OnRecordDelete);
@@ -39,6 +39,10 @@ public sealed partial class GeneralStationRecordConsoleSystem : EntitySystem
 
         // Sunrise added start
         if (owning == null)
+            return;
+
+        // Дополнительная серверная проверка на случай педиков с читами
+        if (!HasAccess(ent, args.Actor))
             return;
 
         if (!_stationRecords.TryGetRecord<GeneralStationRecord>(new StationRecordKey(args.Id, owning.Value), out var record))
@@ -110,7 +114,7 @@ public sealed partial class GeneralStationRecordConsoleSystem : EntitySystem
         _stationRecords.TryGetRecord<GeneralStationRecord>(key, out var record, stationRecords);
 
         // Sunrise edit
-        GeneralStationRecordConsoleState newState = new(id, record, listing, console.Filter, ent.Comp.CanDeleteEntries, ent.Comp.CanRedactSensitiveData);
+        GeneralStationRecordConsoleState newState = new(id, record, listing, console.Filter, ent.Comp.CanDeleteEntries, ent.Comp.CanRedactSensitiveData, ent.Comp.HasAccess);
         _ui.SetUiState(uid, GeneralStationRecordConsoleKey.Key, newState);
     }
 }

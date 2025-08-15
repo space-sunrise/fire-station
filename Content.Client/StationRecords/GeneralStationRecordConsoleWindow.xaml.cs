@@ -135,7 +135,8 @@ public sealed partial class GeneralStationRecordConsoleWindow : DefaultWindow
             RecordContainerStatus.Text = state.SelectedKey == null
                 ? Loc.GetString("general-station-record-console-no-record-found")
                 : Loc.GetString("general-station-record-console-select-record-info");
-            PopulateRecordContainer(state.Record, state.CanDeleteEntries, state.CanRedactSensitiveData, state.SelectedKey);
+            // Sunrise edit
+            PopulateRecordContainer(state.Record, state.CanDeleteEntries, state.CanRedactSensitiveData, state.HasAccess, state.SelectedKey);
         }
         else
         {
@@ -161,12 +162,12 @@ public sealed partial class GeneralStationRecordConsoleWindow : DefaultWindow
     }
 
     // Sunrise edit
-    private void PopulateRecordContainer(GeneralStationRecord record, bool enableDelete, bool canRedactSensitiveData, uint? id)
+    private void PopulateRecordContainer(GeneralStationRecord record, bool enableDelete, bool canRedactSensitiveData, bool hasAccess, uint? id)
     {
         RecordContainer.RemoveAllChildren();
         // Sunrise edit start
         var newRecord =
-            new SunriseGeneralRecord(record, enableDelete, canRedactSensitiveData, id, in _entity, in _prototype, in _loc, in _job, in _controller);
+            new SunriseGeneralRecord(record, enableDelete, canRedactSensitiveData, hasAccess, id, in _entity, in _prototype, in _loc, in _job, in _controller);
         // Sunrise edit end
         newRecord.OnDeletePressed = OnDeleted;
         newRecord.OnSaveButtonPressed = OnSaved;

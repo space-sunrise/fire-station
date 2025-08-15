@@ -39,24 +39,27 @@ public sealed class GeneralStationRecordConsoleState : BoundUserInterfaceState
     public readonly StationRecordsFilter? Filter;
     public readonly bool CanDeleteEntries;
     public readonly bool CanRedactSensitiveData; // Sunrise added
+    public readonly bool HasAccess; // Sunrise added
 
     public GeneralStationRecordConsoleState(uint? key,
         GeneralStationRecord? record,
         Dictionary<uint, string>? recordListing,
         StationRecordsFilter? newFilter,
         bool canDeleteEntries,
-        bool canRedactSensitiveData)  // Sunrise added
+        bool canRedactSensitiveData, // Sunrise added
+        bool hasAccess) // Sunrise added
     {
         SelectedKey = key;
         Record = record;
         RecordListing = recordListing;
         Filter = newFilter;
         CanDeleteEntries = canDeleteEntries;
-        CanRedactSensitiveData = canRedactSensitiveData;  // Sunrise added
+        CanRedactSensitiveData = canRedactSensitiveData; // Sunrise added
+        HasAccess = hasAccess; // Sunrise added
     }
 
     // Sunrise edit
-    public GeneralStationRecordConsoleState() : this(null, null, null, null, false, false)
+    public GeneralStationRecordConsoleState() : this(null, null, null, null, false, false, false)
     {
     }
 
