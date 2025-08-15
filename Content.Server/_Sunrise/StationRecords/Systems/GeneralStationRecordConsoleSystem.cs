@@ -25,10 +25,12 @@ public sealed partial class GeneralStationRecordConsoleSystem
             return;
 
         // Удаляем старую запись
-        _stationRecords.RemoveRecord(new StationRecordKey(args.Id, owning.Value));
+        if (!_stationRecords.RemoveRecord(new StationRecordKey(args.Id, owning.Value)))
+            return;
 
         // Добавляем новую
-        var id = _stationRecords.AddRecordEntry(owning.Value, GeneralStationRecord.SanitizeRecord(args.Record, in _prototype));
+        var record = GeneralStationRecord.SanitizeRecord(args.Record, in _prototype);
+        var id = _stationRecords.AddRecordEntry(owning.Value, record);
         ent.Comp.ActiveKey = id.Id;
 
         // TODO: Радио оповещение в канал Командования/СБ
