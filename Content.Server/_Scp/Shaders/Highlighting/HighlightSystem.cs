@@ -56,7 +56,7 @@ public sealed class HighlightSystem : SharedHighlightSystem
     /// <summary>
     /// <inheritdoc cref="SharedHighlightSystem.HighLightAll"/>
     /// </summary>
-    public void NetHighlightAll(in List<EntityUid> list, EntityUid? recipient = null)
+    public void NetHighlightAll(ReadOnlySpan<EntityUid> list, EntityUid? recipient = null)
     {
         foreach (var uid in list)
         {

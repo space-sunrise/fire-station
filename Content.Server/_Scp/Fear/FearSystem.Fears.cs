@@ -27,7 +27,7 @@ public sealed partial class FearSystem
     private static readonly TimeSpan HemophobiaCheckCooldown = TimeSpan.FromSeconds(0.5f);
     private TimeSpan _nextHemophobiaCheck = TimeSpan.Zero;
 
-    private readonly IReadCollection<EntityUid> _hemophobiaBloodList = [];
+    private readonly List<EntityUid> _hemophobiaBloodList = [];
 
     private void InitializeFears()
     {
@@ -89,7 +89,7 @@ public sealed partial class FearSystem
             if (!TrySetFearLevel(fearEntity, GetHemophobiaFearState(hemophobia, bloodAmount)))
                 continue;
 
-            _highlight.NetHighlightAll(in _hemophobiaBloodList, uid);
+            _highlight.NetHighlightAll(_hemophobiaBloodList, uid);
             AddNegativeMoodEffect(uid, MoodHemophobicSeeBlood);
         }
 
