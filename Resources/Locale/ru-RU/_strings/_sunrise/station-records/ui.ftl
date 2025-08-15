@@ -9,7 +9,6 @@
 station-records-ui-name = Имя:
 station-records-ui-age = Возраст:
 station-records-ui-job = Должность:
-station-records-ui-department = Отдел:
 station-records-ui-species = Раса:
 station-records-ui-gender = Пол:
 station-records-ui-fingerprint = Отпечатки:
