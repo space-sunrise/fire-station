@@ -31,11 +31,15 @@
                 <Label Name="JobLabel"/> <OptionButton Name="Job"/>
                 <Label Name="FingerprintLabel"/> <LineEdit Name="Fingerprint" Editable="False"/>
                 <Label Name="DnaLabel"/> <LineEdit Name="Dna" Editable="False"/>
-                <Button Visible="False" Name="SaveButton" Text="Сохранить" Disabled="True" StyleClasses="ButtonColorGreen"/>
-                <Button Visible="False" Name="DeleteButton" Text="{Loc 'general-station-record-console-delete'}" StyleClasses="ButtonColorRed"/>
             </GridContainer>
         </BoxContainer>
     </controls:StripeBack>
+
+    <GridContainer Columns="3" HorizontalAlignment="Stretch" HorizontalExpand="True">
+        <Button Visible="False" Name="SaveButton" Text="Сохранить" Disabled="True" StyleClasses="ButtonColorGreen"/>
+        <Button Visible="False" Name="PrintButton" Text="Распечатать"/>
+        <Button Visible="False" Name="DeleteButton" Text="{Loc 'general-station-record-console-delete'}" StyleClasses="ButtonColorRed"/>
+    </GridContainer>
 
     <controls:StripeBack VerticalAlignment="Bottom" HorizontalExpand="True" VerticalExpand="True">
         <BoxContainer Orientation="Horizontal" VerticalAlignment="Center" Margin="5 5 5 5">

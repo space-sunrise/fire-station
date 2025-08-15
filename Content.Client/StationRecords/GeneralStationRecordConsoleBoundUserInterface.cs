@@ -26,6 +26,7 @@ public sealed class GeneralStationRecordConsoleBoundUserInterface : BoundUserInt
 
         // Sunrise added start
         _window.OnSaved += (record, id) => SendMessage(new SaveStationRecord(record, id));
+        _window.OnPrinted += id => SendMessage(new PrintStationRecord(id));
         // Sunrise added end
     }
 

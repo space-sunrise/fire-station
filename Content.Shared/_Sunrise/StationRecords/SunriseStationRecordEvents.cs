@@ -9,3 +9,9 @@ public sealed class SaveStationRecord(GeneralStationRecord record, uint id) : Bo
     public readonly uint Id = id;
     public readonly GeneralStationRecord Record = record;
 }
+
+[Serializable, NetSerializable]
+public sealed class PrintStationRecord(uint id) : BoundUserInterfaceMessage
+{
+    public readonly uint Id = id;
+}

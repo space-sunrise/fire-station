@@ -25,8 +25,9 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     private readonly JobSystem _job;
     private readonly LobbyUIController _controller;
 
-    public Action<uint>? OnDeletePressed;
     public Action<GeneralStationRecord, uint>? OnSaveButtonPressed;
+    public Action<uint>? OnPrintPressed;
+    public Action<uint>? OnDeletePressed;
 
     private EntityUid _previewDummy;
     private readonly HumanoidCharacterProfile? _profile;
@@ -35,7 +36,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     private readonly List<JobPrototype> _allJobs;
     private readonly Gender[] _allGender;
 
-    private bool _hasAccess;
+    private readonly bool _hasAccess;
 
     // Копия этого хранится в серверной системе
     private const int MaxAgeLength = 6;
@@ -71,14 +72,14 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         _allJobs.Sort((a, b)
             => string.Compare(a.LocalizedName, b.LocalizedName, StringComparison.Ordinal));
 
+        Fingerprint.Editable = canRedactSensitiveData && hasAccess;
+        Dna.Editable = canRedactSensitiveData && hasAccess;
+
         if (canDelete && id != null )
         {
             DeleteButton.Visible = true;
             DeleteButton.OnPressed += _ => OnDeletePressed?.Invoke(id.Value);
         }
-
-        Fingerprint.Editable = canRedactSensitiveData && hasAccess;
-        Dna.Editable = canRedactSensitiveData && hasAccess;
 
         if (id != null )
         {
@@ -88,6 +89,12 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
                 var updatedRecord = BuildUpdatedRecord(record);
                 OnSaveButtonPressed?.Invoke(updatedRecord, id.Value);
             };
+        }
+
+        if (id != null )
+        {
+            PrintButton.Visible = true;
+            PrintButton.OnPressed += _ => OnPrintPressed?.Invoke(id.Value);
         }
 
         _hasAccess = hasAccess;
@@ -126,7 +133,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         for (var i = 0; i < _allGender.Length; i++)
         {
             var item = _allGender[i];
-            var name = _loc.GetString("station-records-gender", ("gender", item));
+            var name = _loc.GetString("station-records-gender", ("gender", item.ToString()));
 
             Gender.AddItem(name, i);
 

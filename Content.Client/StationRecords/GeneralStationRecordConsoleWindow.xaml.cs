@@ -24,6 +24,7 @@ public sealed partial class GeneralStationRecordConsoleWindow : DefaultWindow
 
     // Sunrise added start
     public Action<GeneralStationRecord, uint>? OnSaved;
+    public Action<uint>? OnPrinted;
 
     private readonly IEntityManager _entity;
     private readonly IPrototypeManager _prototype;
@@ -170,6 +171,7 @@ public sealed partial class GeneralStationRecordConsoleWindow : DefaultWindow
             new SunriseGeneralRecord(record, enableDelete, canRedactSensitiveData, hasAccess, id, in _entity, in _prototype, in _loc, in _job, in _controller);
         // Sunrise edit end
         newRecord.OnDeletePressed = OnDeleted;
+        newRecord.OnPrintPressed = OnPrinted;
         newRecord.OnSaveButtonPressed = OnSaved;
 
         RecordContainer.AddChild(newRecord);

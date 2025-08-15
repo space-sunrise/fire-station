@@ -45,6 +45,20 @@ public sealed partial class GeneralStationRecordConsoleComponent : Component
     public SoundSpecifier SuccessfulSound = new SoundPathSpecifier("/Audio/Effects/Cargo/ping.ogg");
 
     [DataField]
+    public SoundSpecifier FailedSound = new SoundPathSpecifier("/Audio/Effects/Cargo/buzz_sigh.ogg");
+
+    public TimeSpan NextPrintTime = TimeSpan.Zero;
+
+    [DataField]
+    public TimeSpan PrintCooldown = TimeSpan.FromSeconds(5);
+
+    [DataField]
+    public EntProtoId Paper = "Paper";
+
+    [DataField]
+    public SoundSpecifier SoundPrint = new SoundPathSpecifier("/Audio/Machines/short_print_and_rip.ogg");
+
+    [DataField]
     public List<ProtoId<RadioChannelPrototype>> AnnouncementChannels = ["Common"]; // TODO: Поставить сб + командование
     // Sunrise added end
 }
