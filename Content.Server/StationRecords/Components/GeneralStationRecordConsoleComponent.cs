@@ -59,6 +59,6 @@ public sealed partial class GeneralStationRecordConsoleComponent : Component
     public SoundSpecifier SoundPrint = new SoundPathSpecifier("/Audio/Machines/short_print_and_rip.ogg");
 
     [DataField]
-    public List<ProtoId<RadioChannelPrototype>> AnnouncementChannels = ["Common"]; // TODO: Поставить сб + командование
+    public List<ProtoId<RadioChannelPrototype>> AnnouncementChannels = ["Command", "Security"];
     // Sunrise added end
 }
