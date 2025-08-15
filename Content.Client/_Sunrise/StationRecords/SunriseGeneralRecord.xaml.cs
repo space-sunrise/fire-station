@@ -120,15 +120,8 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     /// </summary>
     private void UpdateEditableInfo(GeneralStationRecord record)
     {
-        // TODO: Локализация
-
-        NameLabel.Text = "Имя: ";
         Name.Text = record.Name;
-
-        AgeLabel.Text = "Возраст: ";
         Age.Text = record.Age.ToString();
-
-        GenderLabel.Text = "Пол: ";
 
         for (var i = 0; i < _allGender.Length; i++)
         {
@@ -140,8 +133,6 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
             if (item == record.Gender)
                 Gender.SelectId(i);
         }
-
-        SpeciesLabel.Text = "Раса: ";
 
         for (var i = 0; i < _allSpecies.Count; i++)
         {
@@ -157,8 +148,6 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
                 Species.SelectId(i);
         }
 
-        JobLabel.Text = "Должность: ";
-
         for (var i = 0; i < _allJobs.Count; i++)
         {
             var item = _allJobs[i];
@@ -173,13 +162,10 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
                 Job.SelectId(i);
         }
 
-        FingerprintLabel.Text = "Отпечатки: ";
         Fingerprint.Text = record.Fingerprint ?? _loc.GetString("generic-not-available-shorthand");
-
-        DnaLabel.Text = "ДНК: ";
         Dna.Text = record.DNA ?? _loc.GetString("generic-not-available-shorthand");
 
-        Personality.Placeholder = new Rope.Leaf("Здесь будет текст...");
+        Personality.Placeholder = new Rope.Leaf(_loc.GetString("station-records-ui-personality-placeholder"));
 
         if (!string.IsNullOrEmpty(record.Personality))
             Personality.TextRope = new Rope.Leaf(record.Personality);

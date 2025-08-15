@@ -1,12 +1,4 @@
-﻿station-records-gender =
-    { $gender ->
-        [Male] Мужской
-        [Female] Женский
-        [Epicene] Двуполый
-        *[Neuter] Бесполый
-    }
-
-printed-station-records-content =
+﻿printed-station-records-content =
     ​
     ​
     ​[head=1]NanoTransen[/head]
