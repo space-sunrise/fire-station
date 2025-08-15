@@ -34,6 +34,8 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     private readonly List<JobPrototype> _allJobs;
     private readonly Gender[] _allGender;
 
+    private bool _hasAccess;
+
     // Копия этого хранится в серверной системе
     private const int MaxAgeLength = 6;
 
@@ -87,21 +89,15 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
             };
         }
 
-        // Почему это не встроено в сами кнопки
-        Gender.OnItemSelected += Select;
-        Species.OnItemSelected += Select;
-        Job.OnItemSelected += Select;
+        _hasAccess = hasAccess;
 
         UpdateEditableInfo(record);
         UpdateHeading(record);
         ReloadPreview(record.JobPrototype);
 
-        Name.Editable = hasAccess;
-        Age.Editable = hasAccess;
-        Gender.Disabled = !hasAccess;
-        Species.Disabled = !hasAccess;
-        Job.Disabled = !hasAccess;
-        SaveButton.Disabled = !hasAccess;
+        MakeDropDownSelectable();
+        CheckAccess();
+        CheckChanges();
     }
 
     protected override void ExitedTree()
@@ -238,8 +234,46 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         return GeneralStationRecord.SanitizeRecord(updated, in _prototype);
     }
 
-    private static void Select(OptionButton.ItemSelectedEventArgs args)
+    private void MakeDropDownSelectable()
+    {
+        // Почему это не встроено в сами кнопки
+        foreach (var child in ControlGrid.Children)
+        {
+            if (child is not OptionButton optionButton)
+                continue;
+
+            optionButton.OnItemSelected += Select;
+        }
+    }
+
+    private void Select(OptionButton.ItemSelectedEventArgs args)
     {
         args.Button.SelectId(args.Id);
+        MakeSaveAvailable();
+    }
+
+    private void CheckAccess()
+    {
+        Name.Editable = _hasAccess;
+        Age.Editable = _hasAccess;
+        Gender.Disabled = !_hasAccess;
+        Species.Disabled = !_hasAccess;
+        Job.Disabled = !_hasAccess;
+    }
+
+    private void CheckChanges()
+    {
+        foreach (var child in ControlGrid.Children)
+        {
+            if (child is not LineEdit lineEdit)
+                continue;
+
+            lineEdit.OnTextChanged += _ => MakeSaveAvailable();
+        }
+    }
+
+    private void MakeSaveAvailable()
+    {
+        SaveButton.Disabled = !_hasAccess;
     }
 }
