@@ -5,7 +5,7 @@
          MinSize="500 600">
     <controls:StripeBack VerticalAlignment="Top" HorizontalExpand="True" VerticalExpand="True">
         <BoxContainer Orientation="Vertical" VerticalAlignment="Top">
-            <Label Name="NameLabel" Access="Public" StyleClasses="LabelHeading" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+            <Label Name="NameHeading" Access="Public" StyleClasses="LabelHeading" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
             <BoxContainer Orientation="Horizontal" Align="Center">
                 <Label Name="SubText" VerticalAlignment="Center" HorizontalAlignment="Center" StyleClasses="LabelSubText" Access="Public"/>
             </BoxContainer>
@@ -24,9 +24,11 @@
                 </PanelContainer.PanelOverride>
             </PanelContainer>
             <GridContainer Columns="2" HorizontalAlignment="Stretch" >
+                <Label Name="NameLabel"/> <LineEdit Name="Name"/>
                 <Label Name="AgeLabel"/> <LineEdit Name="Age"/>
-                <Label Name="SpeciesLabel"/> <OptionButton Name="Species"/>
                 <Label Name="GenderLabel"/> <OptionButton Name="Gender"/>
+                <Label Name="SpeciesLabel"/> <OptionButton Name="Species"/>
+                <Label Name="JobLabel"/> <OptionButton Name="Job"/>
                 <Label Name="FingerprintLabel"/> <LineEdit Name="Fingerprint"/>
                 <Label Name="DnaLabel"/> <LineEdit Name="Dna"/>
                 <Button Visible="False" Name="SaveButton" Text="Сохранить" StyleClasses="ButtonColorGreen"/>

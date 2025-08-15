@@ -1,6 +1,7 @@
 using System.Linq;
 using Content.Client.Lobby;
 using Content.Client.Roles;
+using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
 using Content.Shared.Roles;
@@ -30,7 +31,11 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     private readonly HumanoidCharacterProfile? _profile;
 
     private readonly List<SpeciesPrototype> _allSpecies;
+    private readonly List<JobPrototype> _allJobs;
     private readonly Gender[] _allGender;
+
+    // Копия этого хранится в серверной системе
+    private const int MaxAgeLength = 6;
 
     public SunriseGeneralRecord(GeneralStationRecord record,
         bool canDelete,
@@ -51,7 +56,15 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
 
         _profile = record.HumanoidProfile;
         _allSpecies = _prototype.EnumeratePrototypes<SpeciesPrototype>().ToList();
+        _allJobs = _prototype.EnumeratePrototypes<JobPrototype>().ToList();
         _allGender = Enum.GetValues<Gender>();
+
+        // Сортировка рас и работ по имени
+        _allSpecies.Sort((a, b)
+            => string.Compare(_loc.GetString(a.Name), _loc.GetString(b.Name), StringComparison.Ordinal));
+
+        _allJobs.Sort((a, b)
+            => string.Compare(a.LocalizedName, b.LocalizedName, StringComparison.Ordinal));
 
         if (canDelete && id != null )
         {
@@ -69,20 +82,48 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
             };
         }
 
-        UpdatePersonnelInfo(record);
-        UpdateJobInfo(record);
+        // Почему это не встроено в сами кнопки
+        Gender.OnItemSelected += Select;
+        Species.OnItemSelected += Select;
+        Job.OnItemSelected += Select;
+
+        UpdateEditableInfo(record);
+        UpdateHeading(record);
         ReloadPreview(record.JobPrototype);
     }
 
-    ~SunriseGeneralRecord()
+    protected override void ExitedTree()
     {
+        base.ExitedTree();
+
         _entity.DeleteEntity(_previewDummy);
     }
 
-    private void UpdatePersonnelInfo(GeneralStationRecord record)
+    /// <summary>
+    /// Обновляет информацию, которая может быть изменена игроком.
+    /// </summary>
+    private void UpdateEditableInfo(GeneralStationRecord record)
     {
+        // TODO: Локализация
+
+        NameLabel.Text = "Имя: ";
+        Name.Text = record.Name;
+
         AgeLabel.Text = "Возраст: ";
         Age.Text = record.Age.ToString();
+
+        GenderLabel.Text = "Пол: ";
+
+        for (var i = 0; i < _allGender.Length; i++)
+        {
+            var item = _allGender[i];
+            var name = _loc.GetString("station-records-gender", ("gender", item));
+
+            Gender.AddItem(name, i);
+
+            if (item == record.Gender)
+                Gender.SelectId(i);
+        }
 
         SpeciesLabel.Text = "Раса: ";
 
@@ -100,17 +141,20 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
                 Species.SelectId(i);
         }
 
-        GenderLabel.Text = "Пол: ";
+        JobLabel.Text = "Должность: ";
 
-        for (var i = 0; i < _allGender.Length; i++)
+        for (var i = 0; i < _allJobs.Count; i++)
         {
-            var item = _allGender[i];
-            var name = _loc.GetString("station-records-gender", ("gender", item));
+            var item = _allJobs[i];
 
-            Gender.AddItem(name, i);
+            if (item.OverrideConsoleVisibility == false && item.ID != record.JobPrototype)
+                continue;
 
-            if (item == record.Gender)
-                Gender.SelectId(i);
+            var name = item.LocalizedName;
+            Job.AddItem(name, i);
+
+            if (item.ID == record.JobPrototype)
+                Job.SelectId(i);
         }
 
         FingerprintLabel.Text = "Отпечатки: ";
@@ -120,10 +164,13 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         Dna.Text = record.DNA ?? _loc.GetString("generic-not-available-shorthand");
     }
 
-    private void UpdateJobInfo(GeneralStationRecord record)
+    /// <summary>
+    /// Обновляет заголовок сверху персонажа.
+    /// </summary>
+    private void UpdateHeading(GeneralStationRecord record)
     {
         SubText.Visible = false;
-        NameLabel.Text = record.Name;
+        NameHeading.Text = record.Name;
 
         if (!_prototype.TryIndex<JobPrototype>(record.JobPrototype, out var job))
             return;
@@ -137,6 +184,9 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         SubText.Text = $"{_loc.GetString(department.Name)}, {job.LocalizedName}";
     }
 
+    /// <summary>
+    /// Обновляет превью игрока.
+    /// </summary>
     private void ReloadPreview(ProtoId<JobPrototype> jobProtoId)
     {
         if (!_prototype.TryIndex(jobProtoId, out var job))
@@ -154,18 +204,30 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         SpriteView.SetEntity(_previewDummy);
     }
 
+    /// <summary>
+    /// Создает новую структуру, помещающую в себя из полей в интерфейсе для отправки на сервере для сохранения.
+    /// Перед этим проводит валидацию строк и проверяет, что данные не обосраны.
+    /// </summary>
     private GeneralStationRecord BuildUpdatedRecord(GeneralStationRecord original)
     {
-        // Делаем копию, чтобы не трогать оригинал напрямую
+        var textAge = Age.Text.SanitizeInput(MaxAgeLength);
+
         var updated = original with
         {
-            Age = int.TryParse(Age.Text, out var ageVal) ? ageVal : original.Age,
-            Species = _allSpecies[Species.SelectedId].ID,
+            Name = Name.Text,
+            Age = int.TryParse(textAge, out var ageVal) ? ageVal : original.Age,
             Gender = _allGender[Gender.SelectedId],
+            Species = _allSpecies[Species.SelectedId].ID,
+            JobPrototype = _allJobs[Job.SelectedId].ID,
             Fingerprint = Fingerprint.Text,
             DNA = Dna.Text,
         };
 
-        return updated;
+        return GeneralStationRecord.SanitizeRecord(updated, in _prototype);
+    }
+
+    private static void Select(OptionButton.ItemSelectedEventArgs args)
+    {
+        args.Button.SelectId(args.Id);
     }
 }

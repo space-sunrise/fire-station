@@ -1,11 +1,14 @@
 ﻿using Content.Server.StationRecords.Components;
 using Content.Shared._Sunrise.StationRecords;
 using Content.Shared.StationRecords;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.StationRecords.Systems;
 
 public sealed partial class GeneralStationRecordConsoleSystem
 {
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
+
     private void InitializeSunrise()
     {
         Subs.BuiEvents<GeneralStationRecordConsoleComponent>(GeneralStationRecordConsoleKey.Key, subs =>
@@ -16,8 +19,6 @@ public sealed partial class GeneralStationRecordConsoleSystem
 
     private void OnSave(Entity<GeneralStationRecordConsoleComponent> ent, ref SaveStationRecord args)
     {
-        // TODO: Санитизация инпута от игрока
-
         var owning = _station.GetOwningStation(ent.Owner);
 
         if (owning == null)
@@ -27,7 +28,7 @@ public sealed partial class GeneralStationRecordConsoleSystem
         _stationRecords.RemoveRecord(new StationRecordKey(args.Id, owning.Value));
 
         // Добавляем новую
-        var id = _stationRecords.AddRecordEntry(owning.Value, args.Record);
+        var id = _stationRecords.AddRecordEntry(owning.Value, GeneralStationRecord.SanitizeRecord(args.Record, in _prototype));
         ent.Comp.ActiveKey = id.Id;
 
         // TODO: Радио оповещение в канал Командования/СБ
