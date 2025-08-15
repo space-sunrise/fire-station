@@ -2,6 +2,7 @@
   parent: Airlock
   id: AirlockFreezer
   suffix: Freezer
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/freezer.rsi
@@ -12,6 +13,7 @@
   parent: Airlock
   id: AirlockEngineering
   suffix: Engineering
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/engineering.rsi
@@ -24,6 +26,7 @@
   parent: AirlockEngineering
   id: AirlockAtmospherics
   suffix: Atmospherics
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/atmospherics.rsi
@@ -32,6 +35,7 @@
   parent: Airlock
   id: AirlockCargo
   suffix: Cargo
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/cargo.rsi
@@ -44,6 +48,7 @@
   parent: Airlock
   id: AirlockSalvage
   suffix: Salvage
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/cargo.rsi
@@ -54,6 +59,7 @@
   parent: Airlock
   id: AirlockHydroponics
   suffix: Hydroponics
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Standard/hydroponics.rsi #Sunrise-Resprite
@@ -64,6 +70,7 @@
   parent: Airlock
   id: AirlockMedical
   suffix: Medical
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/medical.rsi
@@ -76,6 +83,7 @@
   parent: AirlockMedical
   id: AirlockVirology
   suffix: Virology
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/virology.rsi
@@ -84,6 +92,7 @@
   parent: AirlockMedical
   id: AirlockChemistry
   suffix: Chemistry
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Standard/chemistry.rsi #Sunrise-Resprite
@@ -92,6 +101,7 @@
   parent: Airlock
   id: AirlockScience
   suffix: Science
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/science.rsi
@@ -104,6 +114,7 @@
   parent: Airlock
   id: AirlockCommand
   suffix: Command
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/command.rsi
@@ -118,6 +129,7 @@
   parent: Airlock
   id: AirlockSecurity
   suffix: Security
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/security.rsi
@@ -130,6 +142,7 @@
   parent: Airlock
   id: AirlockMaint
   name: maintenance access
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -138,6 +151,7 @@
   parent: AirlockSecurity # if you get syndie door somehow it counts as sec
   id: AirlockSyndicate
   suffix: Syndicate
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/syndicate.rsi
@@ -146,6 +160,7 @@
   parent: AirlockCargo
   id: AirlockMining
   suffix: Mining(Salvage)
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Standard/salvage.rsi #Sunrise-Resprite
@@ -156,6 +171,7 @@
   parent: AirlockCommand # if you get centcom door somehow it counts as command, also inherit panel
   id: AirlockCentralCommand
   suffix: Central Command
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/centcomm.rsi
@@ -185,6 +201,7 @@
   parent: AirlockGlass
   id: AirlockEngineeringGlass
   suffix: Engineering
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/engineering.rsi
@@ -197,6 +214,7 @@
   parent: AirlockGlass
   id: AirlockMaintGlass
   suffix: Maintenance
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/maint.rsi
@@ -205,6 +223,7 @@
   parent: AirlockEngineeringGlass
   id: AirlockAtmosphericsGlass
   suffix: Atmospherics
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/atmospherics.rsi
@@ -213,6 +232,7 @@
   parent: AirlockGlass
   id: AirlockCargoGlass
   suffix: Cargo
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/cargo.rsi
@@ -225,6 +245,7 @@
   parent: AirlockGlass
   id: AirlockSalvageGlass
   suffix: Salvage
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/salvage.rsi #Sunrise-Resprite
@@ -235,6 +256,7 @@
   parent: AirlockGlass
   id: AirlockHydroponicsGlass
   suffix: Hydroponics
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/hydroponics.rsi #Sunrise-Resprite
@@ -245,6 +267,7 @@
   parent: AirlockGlass
   id: AirlockMedicalGlass
   suffix: Medical
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/medical.rsi
@@ -257,6 +280,7 @@
   parent: AirlockMedicalGlass
   id: AirlockChemistryGlass
   suffix: Chemistry
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/chemistry.rsi #Sunrise-Resprite
@@ -265,6 +289,7 @@
   parent: AirlockMedicalGlass
   id: AirlockVirologyGlass
   suffix: Virology
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/virology.rsi
@@ -273,6 +298,7 @@
   parent: AirlockGlass
   id: AirlockScienceGlass
   suffix: Science
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/science.rsi
@@ -285,6 +311,7 @@
   parent: AirlockGlass
   id: AirlockCommandGlass
   suffix: Command
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/command.rsi
@@ -299,6 +326,7 @@
   parent: AirlockGlass
   id: AirlockSecurityGlass
   suffix: Security
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/security.rsi
@@ -311,6 +339,7 @@
   parent: AirlockSecurityGlass # see standard
   id: AirlockSyndicateGlass
   suffix: Syndicate
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/syndicate.rsi
@@ -319,6 +348,7 @@
   parent: AirlockCargoGlass
   id: AirlockMiningGlass
   suffix: Mining(Salvage)
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Structures/Doors/Airlocks/Glass/salvage.rsi #Sunrise-Resprite
@@ -327,6 +357,7 @@
   parent: AirlockCommandGlass # see standard
   id: AirlockCentralCommandGlass
   suffix: Central Command
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/centcomm.rsi
@@ -335,6 +366,7 @@
   parent: AirlockGlass
   id: AirlockStandardGlass
   suffix: Service
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/basic.rsi
@@ -343,6 +375,7 @@
   parent: Airlock
   id: AirlockXeno
   suffix: Xeno
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/xeno.rsi
@@ -354,6 +387,7 @@
   parent: AirlockGlass
   id: AirlockGlassXeno
   suffix: Xeno
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Glass/xeno.rsi

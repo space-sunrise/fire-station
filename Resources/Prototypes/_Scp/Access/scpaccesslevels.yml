@@ -1,98 +1,125 @@
-﻿- type: accessLevel
-  id: Level0
-  name: keycard-access-level-0
+﻿# Администрация комплекса
 
 - type: accessLevel
-  id: Level1
-  name: keycard-access-level-1
+  id: Administration
+  name: access-name-administration
 
 - type: accessLevel
-  id: Level2
-  name: keycard-access-level-2
+  id: ComplexDirector
+  name: access-name-complex-director
 
 - type: accessLevel
-  id: Level3
-  name: keycard-access-level-3
+  id: ScientificServiceDirector
+  name: access-name-scientific-service-director
 
 - type: accessLevel
-  id: Level4
-  name: keycard-access-level-4
+  id: SecurityCommander
+  name: access-name-security-commander
 
 - type: accessLevel
-  id: Level5
-  name: keycard-access-level-5
+  id: ChiefTechnicalSpecialist
+  name: access-name-chief-technical-specialist
 
 - type: accessLevel
-  id: LevelScpSec
-  name: keycard-access-level-ScpSec
+  id: PersonnelOfficer
+  name: access-name-personnel-officer
 
 - type: accessLevel
-  id: LevelMtfLeader
-  name: keycard-access-level-MtfLeader
+  id: HeadOfMedicalSector
+  name: access-name-head-of-medical-sector
 
-- type: accessGroup
-  id: Level0
-  tags:
-  - Level0
-  - Level1
-  - Level2
-  - Level3
-  - Level4
-  - Level5
-  - LevelScpSec
-  - LevelMtfLeader
+- type: accessLevel
+  id: SeniorLogisticsOfficer
+  name: access-name-senior-logistics-officer
 
-- type: accessGroup
-  id: Level1
-  tags:
-  - Level1
-  - Level2
-  - Level3
-  - Level4
-  - Level5
-  - LevelScpSec
-  - LevelMtfLeader
+- type: accessLevel
+  id: EthicsCommittee
+  name: access-name-ethics-committee
 
-- type: accessGroup
-  id: Level2
-  tags:
-  - Level2
-  - Level3
-  - Level4
-  - Level5
+- type: accessLevel
+  id: InternalTribunalService
+  name: access-name-internal-tribunal-service
 
-- type: accessGroup
-  id: LevelScpSec
-  tags:
-  - Level2
-  - Level3
-  - Level4
-  - Level5
-  - LevelScpSec
+# СБ
 
-- type: accessGroup
-  id: Level3
-  tags:
-  - Level3
-  - Level4
-  - Level5
-  - LevelMtfLeader
+# Охранный уже представлен в ваниле
+# Оружейная уже представлен в ваниле
 
-- type: accessGroup
-  id: Level4
-  tags:
-  - Level4
-  - Level5
-  - LevelMtfLeader
+# Инженерно-технические
+# Теха уже есть в ваниле
+# Инженерный уже есть в ваниле
+- type: accessLevel
+  id: LifeSupport
+  name: access-name-life-support
 
-- type: accessGroup
-  id: LevelMtfLeader
-  tags:
-  - Level4
-  - Level5
-  - LevelMtfLeader
+# Научно-медицинские
 
-- type: accessGroup
-  id: Level5
-  tags:
-  - Level5
+- type: accessLevel
+  id: Laboratory
+  name: access-name-laboratory
+
+# Общие
+
+- type: accessLevel
+  id: Checkpoint
+  name: access-name-checkpoint
+
+- type: accessLevel
+  id: Exit
+  name: access-name-exit
+
+- type: accessLevel
+  id: NuclearWarhead
+  name: access-name-nuclear-warhead
+
+#Сервисный уже представлен в ваниле
+
+- type: accessLevel
+  id: Logistics
+  name: access-name-logistics
+
+- type: accessLevel
+  id: AI
+  name: access-name-ai
+
+# SCP
+
+- type: accessLevel
+  id: Safe
+  name: access-name-safe
+
+- type: accessLevel
+  id: Euclid
+  name: access-name-euclid
+
+- type: accessLevel
+  id: Keter
+  name: access-name-keter
+
+# Класс Д
+
+- type: accessLevel
+  id: ClassDCanteen
+  name: access-name-class-d-canteen
+
+- type: accessLevel
+  id: ClassDJanitor
+  name: access-name-class-d-janitor
+
+# Сторонние
+
+- type: accessLevel
+  id: MTF
+  name: access-name-mtf
+
+- type: accessLevel
+  id: ChaosInsurgency
+  name: access-name-chaos-insurgency
+
+- type: accessLevel
+  id: ThirdParty
+  name: access-name-third-party
+
+- type: accessLevel
+  id: O5
+  name: access-name-o5

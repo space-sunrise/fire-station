@@ -2,6 +2,7 @@
   parent: DoorElectronics
   id: DoorElectronicsBlueShield
   suffix: BlueShield, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["BlueShield"]]
@@ -10,6 +11,7 @@
   parent: DoorElectronics
   id: DoorElectronicsNtrep
   suffix: Ntrep, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Ntrep"]]

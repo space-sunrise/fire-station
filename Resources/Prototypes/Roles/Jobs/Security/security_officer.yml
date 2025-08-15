@@ -12,11 +12,8 @@
   supervisors: job-supervisors-hos
   canBeAntag: false
   displayWeight: 10
+  overrideConsoleVisibility: false # Fire added
   access:
-  - Research # Fire
-  - Kitchen # Fire
-  - Hydroponics # Fire
-  - Janitor # Fire
   - Security
   - Brig
 #  - Maintenance #Sunrise-Edit

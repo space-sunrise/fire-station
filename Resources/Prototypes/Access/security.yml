@@ -28,13 +28,12 @@
 
 - type: accessGroup
   id: Security
+  # Fire edit start
   tags:
-  - HeadOfSecurity
-  - Security
-  - Armory
-  - Brig
-  - Detective
-  - Cryogenics
+  - SecurityCommander
+  groups:
+  - SecurityHeadless
+  # Fire edit end
 
 - type: accessGroup
   id: Armory

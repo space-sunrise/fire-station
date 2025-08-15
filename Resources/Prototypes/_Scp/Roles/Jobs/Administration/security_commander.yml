@@ -13,27 +13,18 @@
   canBeAntag: false
   radioBold: true # Sunrise-Edit
   displayWeight: 80 # Sunrise-Edit
-  access:
-  - Research
-  - Kitchen
-  - Hydroponics
-  - Janitor
-  - HeadOfSecurity
-  - Command
-  - Brig
-  - Security
-  - Armory
-  #  - Maintenance
-  - Service
-  - External
-  - Detective
-  - Cryogenics
+  accessGroups:
+  - SecurityCommander
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: EmployeeClass
+      class: B
+    - type: AccessLevel
+      level: Four
     - type: Fear # переопределение компонента страха для СБ
       phobias:
       - Exoremophobia
@@ -61,10 +52,9 @@
   id: SecurityCommanderGear
   equipment:
     eyes: ClothingEyesGlassesSecurity
-    id: HoSPDA
+    id: KeyCardSecurityCommander
     gloves: ClothingHandsGlovesCombat
     ears: ClothingHeadsetAltSecurityAdministration
   storage:
     back:
     - Flash
-#    - MagazineGlock22 # Sunrise-Edit

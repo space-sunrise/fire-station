@@ -10,6 +10,7 @@
   startingGear: PathologistGear
   icon: "JobIconPathologist"
   supervisors: job-supervisors-cmo
+  overrideConsoleVisibility: false # Fire added
   access:
   - Medical
   - Maintenance
@@ -20,7 +21,7 @@
     id: PathologistPDA
     ears: ClothingHeadsetMedical
     belt: ClothingBeltMedicalFilled
-    
+
 - type: jobIcon
   parent: JobIcon
   id: JobIconPathologist

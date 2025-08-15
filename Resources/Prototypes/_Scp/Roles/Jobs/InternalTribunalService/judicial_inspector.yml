@@ -10,31 +10,18 @@
   radioBold: true
   displayWeight: 75
   setPreference: false # TODO: После добавления вайт-листа убрать
-  access:
-  - Magistrat
-  - Bar
-  - Kitchen
-  - Hydroponics
-  - Janitor
-  - Theatre
-  - Chapel
-  - Lawyer
-  - Brig
-  - Security
-  - Medical
-  - Research
-  - Engineering
-  - Cargo
-  - Salvage
-  - Command
-  - Hydroponics
-  - Maintenance
+  accessGroups:
+  - InternalTribunalService
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: EmployeeClass
+      class: A
+    - type: AccessLevel
+      level: Four
 
 - type: startingGear
   id: JudicialInspectorGear
@@ -45,7 +32,7 @@
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesColorWhite
     outerClothing: ClothingOuterRobesJudge
-    id: MagistratPDA
+    id: KeyCardJudicialInspector
     ears: ClothingHeadsetAltInternalTribunalService
     head: ClothingHeadHatPwig
   storage:

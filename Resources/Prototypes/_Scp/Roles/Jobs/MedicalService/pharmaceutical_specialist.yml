@@ -10,13 +10,15 @@
   icon: JobPharmaceuticalSpecialist
   supervisors: job-supervisors-head-of-medical-sector
   displayWeight: 30
-  access:
-  - Medical
-  - Chemistry
-  - Maintenance
+  accessGroups:
+  - PharmaceuticalSpecialist
   special:
   - !type:AddComponentSpecial
     components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Two
     - type: Fear
       phobias:
       - Exoremophobia
@@ -25,11 +27,8 @@
 - type: startingGear
   id: PharmaceuticalSpecialistGear
   equipment:
-    id: ChemistryPDA
+    id: KeyCardPharmaceuticalSpecialist
     ears: ClothingHeadsetMedicalService
     belt: ChemBag
     pocket1: HandLabeler
     eyes: ClothingEyesGlassesChemical
-    #storage:
-    #back:
-    #- Stuff

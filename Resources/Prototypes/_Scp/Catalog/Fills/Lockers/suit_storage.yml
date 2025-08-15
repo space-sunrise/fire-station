@@ -1,0 +1,52 @@
+﻿# Администрация
+
+- type: entity
+  id: SuitStorageDirector
+  parent: SuitStorageCaptain
+  suffix: Complex director
+  components:
+  - type: AccessReader
+    access: [["ComplexDirector"]]
+
+- type: entity
+  id: SuitStorageSecurityCommander
+  parent: SuitStorageHOS
+  suffix: Security commander
+  components:
+  - type: AccessReader
+    access: [["SecurityCommander"]]
+
+- type: entity
+  id: SuitStorageScientificServiceDirector
+  parent: SuitStorageRD
+  suffix: Scientific service director
+  components:
+  - type: AccessReader
+    access: [["ScientificServiceDirector"]]
+
+- type: entity
+  id: SuitStorageHeadOfMedicalSector
+  parent: SuitStorageCMO
+  suffix: Head of medical sector
+  components:
+  - type: AccessReader
+    access: [["HeadOfMedicalSector"]]
+
+- type: entity
+  id: SuitStorageChiefTechnicalSpecialist
+  parent: SuitStorageCE
+  suffix: Chief technical specialist
+  components:
+  - type: AccessReader
+    access: [["ChiefTechnicalSpecialist"]]
+
+# Инженерно-технический отдел
+
+- type: entity
+  id: SuitStorageLifeSupport
+  parent: SuitStorageAtmos
+  suffix: Life support
+  components:
+  - type: AccessReader
+    access: [["LifeSupport"]]
+

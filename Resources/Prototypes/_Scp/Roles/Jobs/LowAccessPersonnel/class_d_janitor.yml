@@ -10,13 +10,16 @@
   icon: JobClassDJanitor
   supervisors: job-supervisors-security-and-research
   access:
-  - Service
-  - Janitor
+  - ClassDJanitor
   alwaysUseSpawner: true
   special:
   - !type:AddComponentSpecial
     components:
     - type: ClassDAppearance
+    - type: EmployeeClass
+      class: D
+    - type: AccessLevel
+      level: Zero
 
 - type: startingGear
   id: ClassDJanitorGear
@@ -25,7 +28,7 @@
     jumpsuit: ClothingUniformClassD
     gloves: ClothingHandsGlovesJanitor
     shoes: ClothingShoesGaloshes
-    id: ClassDJanitorIDCard
+    id: KeyCardClassDJanitor
     belt: ClothingBeltJanitor
   storage:
     belt:

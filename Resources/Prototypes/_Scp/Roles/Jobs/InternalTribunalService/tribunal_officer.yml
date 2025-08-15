@@ -10,14 +10,17 @@
   icon: JobTribunalOfficer
   canBeAntag: false
   supervisors: job-supervisors-judicial-inspector
-  access:
-  - Service
-  - Lawyer
-  - Brig
-  - Maintenance
+  accessGroups:
+  - InternalTribunalService
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: B
+    - type: AccessLevel
+      level: Three
 
 - type: entity
   parent: IAAPDA
@@ -70,7 +73,7 @@
   id: TribunalOfficerGear
   equipment:
     shoes: ClothingShoesColorBlack
-    id: TribunalOfficerPDA
+    id: KeyCardTribunalOfficer
     eyes: ClothingEyesGlassesSunglasses
     ears: ClothingHeadsetAltInternalTribunalService
     pocket2: HyperLinkBookCorporateLaw

@@ -3,6 +3,7 @@
   parent: Airlock
   id: AirlockServiceLocked
   suffix: Service, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -14,6 +15,7 @@
   parent: AirlockServiceLocked
   id: AirlockLawyerLocked
   suffix: Lawyer, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -23,6 +25,7 @@
   parent: AirlockServiceLocked
   id: AirlockTheatreLocked
   suffix: Theatre, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -32,6 +35,7 @@
   parent: AirlockServiceLocked
   id: AirlockServiceTheatreLocked
   suffix: Service, Theatre, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -41,6 +45,7 @@
   parent: AirlockServiceLocked
   id: AirlockChapelLocked
   suffix: Chapel, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -50,6 +55,7 @@
   parent: AirlockServiceLocked
   id: AirlockJanitorLocked
   suffix: Janitor, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -59,6 +65,7 @@
   parent: AirlockServiceLocked
   id: AirlockKitchenLocked
   suffix: Kitchen, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -68,6 +75,7 @@
   parent: AirlockServiceLocked
   id: AirlockBarLocked
   suffix: Bar, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -77,6 +85,7 @@
   parent: AirlockServiceLocked
   id: AirlockBarKitchenLocked
   suffix: Bar&Kitchen, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -86,6 +95,7 @@
   parent: AirlockHydroponics
   id: AirlockHydroponicsLocked
   suffix: Hydroponics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -95,6 +105,7 @@
   parent: AirlockExternal
   id: AirlockExternalLocked
   suffix: External, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -104,6 +115,7 @@
   parent: AirlockExternal
   id: AirlockExternalCargoLocked
   suffix: External, Cargo, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -115,6 +127,7 @@
   parent: AirlockExternal
   id: AirlockExternalEngineeringLocked
   suffix: External, Engineering, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -126,6 +139,7 @@
   parent: AirlockExternal
   id: AirlockExternalCommandLocked
   suffix: External, Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -137,6 +151,7 @@
   parent: AirlockExternalGlass
   id: AirlockExternalGlassCommandLocked
   suffix: External, Glass, Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -148,6 +163,7 @@
   parent: AirlockExternal
   id: AirlockExternalAtmosphericsLocked
   suffix: External, Atmospherics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -159,6 +175,7 @@
   parent: AirlockExternal
   id: AirlockExternalSyndicateLocked
   suffix: External, Syndicate, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -170,6 +187,7 @@
   parent: AirlockExternal
   id: AirlockExternalNukeopLocked
   suffix: External, Nukeop, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -181,6 +199,7 @@
   parent: AirlockFreezer
   id: AirlockFreezerLocked
   suffix: Kitchen, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -190,6 +209,7 @@
   parent: AirlockFreezer
   id: AirlockFreezerKitchenHydroLocked
   suffix: Kitchen/Hydroponics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -199,6 +219,7 @@
   parent: AirlockFreezer
   id: AirlockFreezerHydroponicsLocked
   suffix: Hydroponics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -208,6 +229,7 @@
   parent: AirlockEngineering
   id: AirlockEngineeringLocked
   suffix: Engineering, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -217,6 +239,7 @@
   parent: AirlockAtmospherics
   id: AirlockAtmosphericsLocked
   suffix: Atmospherics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -226,6 +249,7 @@
   parent: AirlockCargo
   id: AirlockCargoLocked
   suffix: Cargo, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -235,6 +259,7 @@
   parent: AirlockSalvage
   id: AirlockSalvageLocked
   suffix: Salvage, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -244,6 +269,7 @@
   parent: AirlockMining
   id: AirlockMiningLocked
   suffix: Mining(Salvage), Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -253,6 +279,7 @@
   parent: AirlockMedical
   id: AirlockMedicalLocked
   suffix: Medical, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -262,6 +289,7 @@
   parent: AirlockVirology
   id: AirlockVirologyLocked
   suffix: Virology, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -271,6 +299,7 @@
   parent: AirlockChemistry
   id: AirlockChemistryLocked
   suffix: Chemistry, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -280,6 +309,7 @@
   parent: AirlockMedical
   id: AirlockMedicalMorgueLocked
   suffix: Morgue, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -289,6 +319,7 @@
   parent: AirlockScience
   id: AirlockScienceLocked
   suffix: Science, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -298,6 +329,7 @@
   parent: AirlockScience
   id: AirlockMedicalScienceLocked
   suffix: Medical/Science, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -307,6 +339,7 @@
   parent: AirlockCentralCommand
   id: AirlockCentralCommandLocked
   suffix: Central Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -316,6 +349,7 @@
   parent: AirlockCommand
   id: AirlockCommandLocked
   suffix: Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -325,6 +359,7 @@
   parent: AirlockCommand
   id: AirlockCaptainLocked
   suffix: Captain, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -334,6 +369,7 @@
   parent: AirlockCommand
   id: AirlockChiefMedicalOfficerLocked
   suffix: ChiefMedicalOfficer, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -343,6 +379,7 @@
   parent: AirlockCommand
   id: AirlockChiefEngineerLocked
   suffix: ChiefEngineer, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -352,6 +389,7 @@
   parent: AirlockCommand
   id: AirlockHeadOfSecurityLocked
   suffix: HeadOfSecurity, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -361,6 +399,7 @@
   parent: AirlockCommand
   id: AirlockResearchDirectorLocked
   suffix: ResearchDirector, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -370,6 +409,7 @@
   parent: AirlockCommand
   id: AirlockHeadOfPersonnelLocked
   suffix: HeadOfPersonnel, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -379,6 +419,7 @@
   parent: AirlockCommand
   id: AirlockQuartermasterLocked
   suffix: Quartermaster, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -388,6 +429,7 @@
   parent: AirlockSecurity
   id: AirlockSecurityLocked
   suffix: Security, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -397,6 +439,7 @@
   parent: AirlockSecurity
   id: AirlockDetectiveLocked
   suffix: Detective, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -406,6 +449,7 @@
   parent: AirlockSecurity
   id: AirlockBrigLocked
   suffix: Brig, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -415,6 +459,7 @@
   parent: AirlockSecurity
   id: AirlockSecurityLawyerLocked
   suffix: Security/Lawyer, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -424,6 +469,7 @@
   parent: AirlockSecurity
   id: AirlockArmoryLocked
   suffix: Armory, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -435,6 +481,7 @@
   parent: AirlockSecurity
   id: AirlockVaultLocked
   suffix: Vault, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -444,6 +491,7 @@
   parent: AirlockCommand
   id: AirlockEVALocked
   suffix: EVA, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -454,6 +502,7 @@
   parent: AirlockGlass
   id: AirlockServiceGlassLocked
   suffix: Service, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -465,6 +514,7 @@
   parent: AirlockServiceGlassLocked
   id: AirlockLawyerGlassLocked
   suffix: Lawyer, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -474,6 +524,7 @@
   parent: AirlockServiceGlassLocked
   id: AirlockTheatreGlassLocked
   suffix: Theatre, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -483,6 +534,7 @@
   parent: AirlockServiceGlassLocked
   id: AirlockServiceTheatreGlassLocked
   suffix: Service, Theatre, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -492,6 +544,7 @@
   parent: AirlockServiceGlassLocked
   id: AirlockBarGlassLocked
   suffix: Bar, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -501,6 +554,7 @@
   parent: AirlockServiceGlassLocked
   id: AirlockBarKitchenGlassLocked
   suffix: Bar&Kitchen, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -511,6 +565,7 @@
   parent: AirlockExternalGlass
   id: AirlockExternalGlassLocked
   suffix: External, Glass, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -520,6 +575,7 @@
   parent: AirlockExternalGlass
   id: AirlockExternalGlassCargoLocked
   suffix: External, Glass, Cargo, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -531,6 +587,7 @@
   parent: AirlockExternalGlass
   id: AirlockExternalGlassSyndicateLocked
   suffix: External, Glass, Syndicate, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -542,6 +599,7 @@
   parent: AirlockExternalGlass
   id: AirlockExternalGlassNukeopLocked
   suffix: External, Glass, Nukeop, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -553,6 +611,7 @@
   parent: AirlockExternalGlass
   id: AirlockExternalGlassEngineeringLocked
   suffix: External, Glass, Engineering, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -564,6 +623,7 @@
   parent: AirlockExternalGlass
   id: AirlockExternalGlassAtmosphericsLocked
   suffix: External, Glass, Atmospherics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -575,6 +635,7 @@
   parent: AirlockServiceGlassLocked
   id: AirlockKitchenGlassLocked
   suffix: Kitchen, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -584,6 +645,7 @@
   parent: AirlockServiceGlassLocked
   id: AirlockJanitorGlassLocked
   suffix: Janitor, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -593,6 +655,7 @@
   parent: AirlockHydroponicsGlass
   id: AirlockHydroGlassLocked
   suffix: Hydroponics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -602,6 +665,7 @@
   parent: AirlockServiceGlassLocked
   id: AirlockChapelGlassLocked
   suffix: Chapel, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -611,6 +675,7 @@
   parent: AirlockStandardGlass
   id: AirlockChapelStandardGlassLocked
   suffix: Chapel, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -622,6 +687,7 @@
   parent: AirlockEngineeringGlass
   id: AirlockEngineeringGlassLocked
   suffix: Engineering, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -631,6 +697,7 @@
   parent: AirlockAtmosphericsGlass
   id: AirlockAtmosphericsGlassLocked
   suffix: Atmospherics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -640,6 +707,7 @@
   parent: AirlockCargoGlass
   id: AirlockCargoGlassLocked
   suffix: Cargo, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -649,6 +717,7 @@
   parent: AirlockSalvageGlass
   id: AirlockSalvageGlassLocked
   suffix: Salvage, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -658,6 +727,7 @@
   parent: AirlockMiningGlass
   id: AirlockMiningGlassLocked
   suffix: Mining(Salvage), Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -667,6 +737,7 @@
   parent: AirlockChemistryGlass
   id: AirlockChemistryGlassLocked
   suffix: Chemistry, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -676,6 +747,7 @@
   parent: AirlockMedicalGlass
   id: AirlockMedicalMorgueGlassLocked
   suffix: Morgue, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -685,6 +757,7 @@
   parent: AirlockMedicalGlass
   id: AirlockMedicalGlassLocked
   suffix: Medical, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -694,6 +767,7 @@
   parent: AirlockVirologyGlass
   id: AirlockVirologyGlassLocked
   suffix: Virology, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -703,6 +777,7 @@
   parent: AirlockScienceGlass
   id: AirlockScienceGlassLocked
   suffix: Science, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -712,6 +787,7 @@
   parent: AirlockScienceGlass
   id: AirlockMedicalScienceGlassLocked
   suffix: Medical/Science, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -721,6 +797,7 @@
   parent: AirlockCentralCommandGlass
   id: AirlockCentralCommandGlassLocked
   suffix: Central Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -730,6 +807,7 @@
   parent: AirlockCommandGlass
   id: AirlockCommandGlassLocked
   suffix: Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -739,6 +817,7 @@
   parent: AirlockCommandGlass
   id: AirlockCaptainGlassLocked
   suffix: Captain, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -748,6 +827,7 @@
   parent: AirlockCommandGlass
   id: AirlockChiefMedicalOfficerGlassLocked
   suffix: ChiefMedicalOfficer, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -757,6 +837,7 @@
   parent: AirlockCommandGlass
   id: AirlockChiefEngineerGlassLocked
   suffix: ChiefEngineer, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -766,6 +847,7 @@
   parent: AirlockCommandGlass
   id: AirlockHeadOfSecurityGlassLocked
   suffix: HeadOfSecurity, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -775,6 +857,7 @@
   parent: AirlockCommandGlass
   id: AirlockResearchDirectorGlassLocked
   suffix: ResearchDirector, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -784,6 +867,7 @@
   parent: AirlockCommandGlass
   id: AirlockHeadOfPersonnelGlassLocked
   suffix: HeadOfPersonnel, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -793,6 +877,7 @@
   parent: AirlockCommandGlass
   id: AirlockQuartermasterGlassLocked
   suffix: Quartermaster, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -802,6 +887,7 @@
   parent: AirlockSecurityGlass
   id: AirlockSecurityGlassLocked
   suffix: Security, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -811,6 +897,7 @@
   parent: AirlockSecurityGlass
   id: AirlockDetectiveGlassLocked
   suffix: Detective, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -820,6 +907,7 @@
   parent: AirlockSecurityGlass
   id: AirlockBrigGlassLocked
   suffix: Brig, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -829,6 +917,7 @@
   parent: AirlockSecurityGlass
   id: AirlockSecurityLawyerGlassLocked
   suffix: Security/Lawyer, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -838,6 +927,7 @@
   parent: AirlockSecurityGlass
   id: AirlockArmoryGlassLocked
   suffix: Armory, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -847,6 +937,7 @@
   parent: AirlockCommandGlassLocked
   id: AirlockEVAGlassLocked
   suffix: EVA, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -856,6 +947,7 @@
   parent: AirlockSyndicateGlass
   id: AirlockSyndicateGlassLocked
   suffix: Syndicate, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -865,6 +957,7 @@
   parent: AirlockSyndicateGlass
   id: AirlockSyndicateNukeopGlassLocked
   suffix: Nukeop, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -875,6 +968,7 @@
   parent: AirlockMaint
   id: AirlockMaintLocked
   suffix: Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -884,6 +978,7 @@
   parent: AirlockXeno
   id: AirlockXenoMaintLocked
   suffix: Maintenance, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -893,6 +988,7 @@
   parent: AirlockMaintGlass
   id: AirlockMaintGlassLocked
   suffix: Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -901,6 +997,7 @@
 - type: entity
   parent: AirlockSalvageLocked
   id: AirlockMaintSalvageLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -908,6 +1005,7 @@
 - type: entity
   parent: AirlockCargoLocked
   id: AirlockMaintCargoLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -915,6 +1013,7 @@
 - type: entity
   parent: AirlockCommandLocked
   id: AirlockMaintCommandLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -922,6 +1021,7 @@
 - type: entity
   parent: AirlockEngineeringLocked
   id: AirlockMaintEngiLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -929,6 +1029,7 @@
 - type: entity
   parent: AirlockAtmosphericsLocked
   id: AirlockMaintAtmoLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -936,6 +1037,7 @@
 - type: entity
   parent: AirlockBarLocked
   id: AirlockMaintBarLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -943,6 +1045,7 @@
 - type: entity
   parent: AirlockBarKitchenLocked
   id: AirlockMaintBarKitchenLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -950,6 +1053,7 @@
 - type: entity
   parent: AirlockChapelLocked
   id: AirlockMaintChapelLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -957,6 +1061,7 @@
 - type: entity
   parent: AirlockHydroponicsLocked
   id: AirlockMaintHydroLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -964,6 +1069,7 @@
 - type: entity
   parent: AirlockJanitorLocked
   id: AirlockMaintJanitorLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -971,6 +1077,7 @@
 - type: entity
   parent: AirlockLawyerLocked
   id: AirlockMaintLawyerLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -978,6 +1085,7 @@
 - type: entity
   parent: AirlockServiceLocked
   id: AirlockMaintServiceLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -985,6 +1093,7 @@
 - type: entity
   parent: AirlockTheatreLocked
   id: AirlockMaintTheatreLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -992,6 +1101,7 @@
 - type: entity
   parent: AirlockServiceTheatreLocked
   id: AirlockMaintServiceTheatreLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -999,6 +1109,7 @@
 - type: entity
   parent: AirlockKitchenLocked
   id: AirlockMaintKitchenLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1006,6 +1117,7 @@
 - type: entity
   parent: AirlockFreezerKitchenHydroLocked
   id: AirlockMaintKitchenHydroLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1013,6 +1125,7 @@
 - type: entity
   parent: AirlockMedicalLocked
   id: AirlockMaintMedLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1020,6 +1133,7 @@
 - type: entity
   parent: AirlockMedicalMorgueLocked
   id: AirlockMedicalMorgueMaintLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1027,6 +1141,7 @@
 - type: entity
   parent: AirlockChemistryLocked
   id: AirlockMaintChemLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1034,6 +1149,7 @@
 - type: entity
   parent: AirlockScienceLocked
   id: AirlockMaintRnDLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1041,6 +1157,7 @@
 - type: entity
   parent: AirlockMedicalScienceLocked
   id: AirlockMaintRnDMedLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1048,6 +1165,7 @@
 - type: entity
   parent: AirlockSecurityLocked
   id: AirlockMaintSecLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1055,6 +1173,7 @@
 - type: entity
   parent: AirlockDetectiveLocked
   id: AirlockMaintDetectiveLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1062,6 +1181,7 @@
 - type: entity
   parent: AirlockHeadOfPersonnelLocked
   id: AirlockMaintHOPLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1069,6 +1189,7 @@
 - type: entity
   parent: AirlockCaptainLocked
   id: AirlockMaintCaptainLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1076,6 +1197,7 @@
 - type: entity
   parent: AirlockChiefEngineerLocked
   id: AirlockMaintChiefEngineerLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1083,6 +1205,7 @@
 - type: entity
   parent: AirlockChiefMedicalOfficerLocked
   id: AirlockMaintChiefMedicalOfficerLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1090,6 +1213,7 @@
 - type: entity
   parent: AirlockHeadOfSecurityLocked
   id: AirlockMaintHeadOfSecurityLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1097,6 +1221,7 @@
 - type: entity
   parent: AirlockResearchDirectorLocked
   id: AirlockMaintResearchDirectorLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1104,6 +1229,7 @@
 - type: entity
   parent: AirlockQuartermasterLocked
   id: AirlockMaintQuartermasterLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1111,6 +1237,7 @@
 - type: entity
   parent: AirlockArmoryLocked
   id: AirlockMaintArmoryLocked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Airlocks/Standard/maint.rsi
@@ -1119,6 +1246,7 @@
   parent: AirlockSyndicate
   id: AirlockSyndicateLocked
   suffix: Syndicate, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -1128,6 +1256,7 @@
   parent: AirlockSyndicate
   id: AirlockSyndicateNukeopLocked
   suffix: Nukeop, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -1138,6 +1267,7 @@
   parent: AirlockShuttle
   id: AirlockExternalShuttleLocked
   suffix: External, Docking, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -1147,6 +1277,7 @@
   parent: AirlockShuttleSyndicate
   id: AirlockExternalShuttleSyndicateLocked
   suffix: External, Docking, Syndicate, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -1156,6 +1287,7 @@
   parent: AirlockShuttleSyndicate
   id: AirlockExternalShuttleNukeopLocked
   suffix: External, Docking, Nukeop, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -1165,6 +1297,7 @@
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassShuttleLocked
   suffix: External, Glass, Docking, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -1174,6 +1307,7 @@
   parent: AirlockGlassShuttleSyndicate
   id: AirlockExternalGlassShuttleSyndicateLocked
   suffix: Syndicate, Locked, Glass
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -1183,6 +1317,7 @@
   parent: AirlockGlassShuttleSyndicate
   id: AirlockExternalGlassShuttleNukeopLocked
   suffix: Nukeop, Locked, Glass
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -1192,6 +1327,7 @@
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassShuttleEmergencyLocked
   suffix: External, Emergency, Glass, Docking, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: PriorityDock
     tag: DockEmergency
@@ -1203,6 +1339,7 @@
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassShuttleArrivals
   suffix: External, Arrivals, Glass, Docking
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: PriorityDock
     tag: DockArrivals
@@ -1214,6 +1351,7 @@
   parent: AirlockExternalGlassShuttleArrivals
   id: AirlockExternalGlassShuttleArrivalsLocked
   suffix: External, Arrivals, Glass, Docking, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -1223,6 +1361,7 @@
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassShuttleEscape
   suffix: External, Escape 3x4, Glass, Docking
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: GridFill
     addComponents:
@@ -1238,6 +1377,7 @@
   parent: HighSecDoor
   id: HighSecCentralCommandLocked
   suffix: Central Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -1247,6 +1387,7 @@
   parent: HighSecDoor
   id: HighSecCommandLocked
   suffix: Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -1256,6 +1397,7 @@
   parent: HighSecDoor
   id: HighSecCaptainLocked
   suffix: Captain, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -1265,6 +1407,7 @@
   parent: HighSecDoor
   id: HighSecArmoryLocked
   suffix: Armory, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:

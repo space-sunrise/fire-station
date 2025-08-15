@@ -9,6 +9,7 @@
   icon: "JobIconBarber"
   supervisors: job-supervisors-hop
   setPreference: false # Fire added
+  overrideConsoleVisibility: false # Fire added
   access:
   - Barber
   - Service

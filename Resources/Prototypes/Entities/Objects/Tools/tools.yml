@@ -344,7 +344,7 @@
   components:
   - type: RCD
     availablePrototypes:
-    - ScpWallSolid #Scp edit 
+    - ScpWallSolid #Scp edit
     - ScpFloorSteel #Scp edit
     - ScpPlating #Scp edit
     - Catwalk
@@ -363,10 +363,12 @@
     - HVCable
     - CableTerminal
     - Deconstruct
-    - TripleGlassAirlockBasic #sunrise start
-    - TripleGlassAirlock
-    - DoubleGlassAirlock
-    - DoubleGlassAirlockBasic #sunrise end
+    # Fire edit start
+    #- TripleGlassAirlockBasic
+    #- TripleGlassAirlock
+    - ScpDoubleGlassAirlock
+    - ScpDoubleGlassAirlockBasic
+    # Fire edit end
   - type: LimitedCharges
     maxCharges: 30
   - type: Sprite

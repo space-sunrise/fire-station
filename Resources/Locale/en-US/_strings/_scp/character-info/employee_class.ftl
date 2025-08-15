@@ -1,0 +1,12 @@
+employee-class-name-a = Class "A"
+employee-class-name-b = Class "B"
+employee-class-name-c = Class "C"
+employee-class-name-d = Class "D"
+employee-class-name-e = Class "E"
+employee-class-name-unspecified = Unspecified Class
+employee-class-description-a = Class "A" is assigned to personnel deemed vital for the Foundation's strategic operations, and as such, they are prohibited from any direct access to anomalous objects.
+employee-class-description-b = Class "B" is assigned to personnel considered important for the Foundation's local operations. They are permitted access only to anomalous objects, entities, and phenomena that have been quarantined and subjected to measures blocking potential mental or memetic effects.
+employee-class-description-c = Class "C" is assigned to personnel with direct access to most anomalies that are not dangerous or hostile. Class C personnel who have directly contacted potential sources of mental or memetic effects may be subjected to mandatory quarantine or psychiatric evaluation, at the discretion of security services.
+employee-class-description-d = Class "D" is assigned to expendable personnel used for working with extremely dangerous anomalies. They are prohibited from any contact with Class A or B personnel.
+employee-class-description-e = Class "E" is a temporary designation assigned to field agents and containment personnel if they have been exposed to potentially hazardous effects during the containment of a new object.
+employee-class-description-unspecified = Class not declared, effects unknown.

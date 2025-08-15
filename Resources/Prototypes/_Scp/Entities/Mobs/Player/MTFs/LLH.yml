@@ -3,7 +3,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardLLHLeader
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: LLHLeader
@@ -11,7 +10,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardLLHSpecialist
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: LLHSpecialist
@@ -19,7 +17,6 @@
 - type: entity
   parent: IDCardMTFStandard
   id: IDCardLLHCadet
-  categories: [ HideSpawnMenu ]
   components:
   - type: PresetIdCard
     job: LLHCadet
@@ -49,22 +46,18 @@
 
 # кастом вещи группы
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingHeadHatCapLeatherHoS
   id: ClothingHeadHatCapLeatherLLHLeader
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingDeathSquadronBackpack
   id: ClothingBackpackLLH
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingMaskGasSwat
   id: ClothingMaskGasLLH
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingOuterArmorHeavy
   id: ClothingOuterArmorHeavyLLH
 
@@ -89,10 +82,9 @@
   supervisors: ghost-role-information-mtf-LLH-leader-supervisors
   canBeAntag: false
   radioBold: true
+  overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -168,10 +160,9 @@
   icon: JobIconLLH
   supervisors: ghost-role-information-mtf-LLH-specialist-supervisors
   canBeAntag: false
+  overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -239,10 +230,9 @@
   icon: JobIconLLH
   supervisors: ghost-role-information-mtf-LLH-cadet-supervisors
   canBeAntag: false
+  overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

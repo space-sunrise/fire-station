@@ -2,27 +2,58 @@
     xmlns="https://spacestation14.io"
     xmlns:cc="clr-namespace:Content.Client.UserInterface.Controls"
     xmlns:windows="clr-namespace:Content.Client.UserInterface.Systems.Character.Windows"
+    xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
     Title="{Loc 'character-info-title'}"
-    MinWidth="440"
-    MinHeight="580">
-    <ScrollContainer>
-        <BoxContainer Orientation="Vertical">
-            <Label Name="RoleType" VerticalAlignment="Top" Margin="0 6 0 10" HorizontalAlignment="Center" StyleClasses="LabelHeading" Access="Public"/>
-            <BoxContainer Orientation="Horizontal">
-                <SpriteView OverrideDirection="South" Scale="2 2" Name="SpriteView" Access="Public" SetSize="64 64"/>
-                <BoxContainer Orientation="Vertical" VerticalAlignment="Top">
-                    <Label Name="NameLabel" Access="Public"/>
-                    <Label Name="SubText" VerticalAlignment="Top" StyleClasses="LabelSubText" Access="Public"/>
-                </BoxContainer>
+    MinWidth="900"
+    MinHeight="720">
+    <!-- Fire edit start -->
+    <BoxContainer Orientation="Horizontal" VerticalExpand="True">  <!-- Страхи, класс персонажа и уровень допуска -->
+        <ScrollContainer HScrollEnabled="False" VerticalExpand="True" HorizontalExpand="True" MinWidth="430">
+            <BoxContainer Orientation="Vertical">
+                <Label Name="ObjectivesLabel" Access="Public" Text="{Loc 'character-info-objectives-label'}" HorizontalAlignment="Center"/>
+                <BoxContainer Orientation="Vertical" Name="Objectives" Access="Public"/>
+                <cc:Placeholder Name="RolePlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-roles-antagonist-text'}" Visible="False"/>
+
+                <Label Name="FearsLabel" Access="Public" Text="{Loc 'character-info-fears-label'}" HorizontalAlignment="Center" StyleClasses="LabelHeadingBigger"/>
+                <BoxContainer Name="Fears" Orientation="Vertical" Access="Public" MaxWidth="400"/>
+                <cc:Placeholder Name="FearsPlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-fears-text'}"/>
+
+                <Label Access="Public" Text="{Loc 'character-info-employee-class-label'}" HorizontalAlignment="Center" StyleClasses="LabelHeadingBigger"/>
+                <BoxContainer Name="EmployeeClass" Orientation="Vertical" Access="Public" MaxWidth="400"/>
+                <cc:Placeholder Name="EmployeeClassPlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-employee-class-text'}"/>
+
+                <Label Access="Public" Text="{Loc 'character-info-access-level-label'}" HorizontalAlignment="Center" StyleClasses="LabelHeadingBigger"/>
+                <BoxContainer Name="AccessLevel" Orientation="Vertical" Access="Public" MaxWidth="400"/>
+                <cc:Placeholder Name="AccessLevelPlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-access-level-text'}"/>
             </BoxContainer>
-            <Label Name="ObjectivesLabel" Access="Public" Text="{Loc 'character-info-objectives-label'}" HorizontalAlignment="Center"/>
-            <BoxContainer Orientation="Vertical" Name="Objectives" Access="Public"/>
-            <cc:Placeholder Name="RolePlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-roles-antagonist-text'}"/>
-
-            <Label Name="FearsLabel" Access="Public" Text="{Loc 'character-info-fears-label'}" HorizontalAlignment="Center" StyleClasses="LabelHeadingBigger"/>
-            <BoxContainer Name="Fears" Orientation="Vertical" Access="Public" MaxWidth="400"/>
-            <cc:Placeholder Name="FearsPlaceholder" Access="Public" PlaceholderText="{Loc 'character-info-fears-text'}"/>
-
+        </ScrollContainer>
+        <PanelContainer
+            VerticalExpand="True"
+            MinWidth="2"
+            MaxWidth="2"
+            Margin="14 14 14 14">
+            <PanelContainer.PanelOverride>
+                <graphics:StyleBoxFlat BackgroundColor="#CFCFCF"/>
+            </PanelContainer.PanelOverride>
+        </PanelContainer>
+        <BoxContainer Orientation="Vertical" VerticalExpand="True"> <!-- Спрайт персонажа, описание работы и отдел -->
+            <cc:StripeBack VerticalAlignment="Top">
+                <BoxContainer Orientation="Vertical" VerticalAlignment="Top">
+                    <Label Name="NameLabel" Access="Public" StyleClasses="LabelHeading" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                    <BoxContainer Orientation="Horizontal" Align="Center">
+                        <Label Name="RoleType" VerticalAlignment="Center" HorizontalAlignment="Center" StyleClasses="LabelSubText" Access="Public"/>
+                        <Label Name="Separator" Text="|" Margin="4 0 4 0" StyleClasses="LabelSubText" Access="Public"/>
+                        <Label Name="SubText" VerticalAlignment="Center" HorizontalAlignment="Center" StyleClasses="LabelSubText" Access="Public"/>
+                    </BoxContainer>
+                </BoxContainer>
+            </cc:StripeBack>
+            <SpriteView OverrideDirection="South" Scale="15 15" Name="SpriteView" Access="Public" MinSize="480 480" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 25 5 25"/>
+            <cc:StripeBack VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                <BoxContainer Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5 5 5 5">
+                    <RichTextLabel Name="JobInfo" Access="Public" StyleClasses="LabelSubText"/>
+                </BoxContainer>
+            </cc:StripeBack>
         </BoxContainer>
-    </ScrollContainer>
+    </BoxContainer>
+    <!-- Fire edit end -->
 </windows:CharacterWindow>

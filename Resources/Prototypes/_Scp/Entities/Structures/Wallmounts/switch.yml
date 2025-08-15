@@ -1,0 +1,209 @@
+﻿# Администрация
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonAdministration
+  suffix: Administration
+  components:
+  - type: AccessReader
+    access: [["Administration"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonDirector
+  suffix: Director
+  components:
+  - type: AccessReader
+    access: [["ComplexDirector"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonPersonnelOfficer
+  suffix: Personnel officer
+  components:
+  - type: AccessReader
+    access: [["PersonnelOfficer"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonSecurityCommander
+  suffix: Security commander
+  components:
+  - type: AccessReader
+    access: [["SecurityCommander"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonScientificServiceDirector
+  suffix: Scientific service director
+  components:
+  - type: AccessReader
+    access: [["ScientificServiceDirector"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonHeadOfMedicalSector
+  suffix: Head of medical sector
+  components:
+  - type: AccessReader
+    access: [["HeadOfMedicalSector"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonChiefTechnicalSpecialist
+  suffix: Chief technical specialist
+  components:
+  - type: AccessReader
+    access: [["ChiefTechnicalSpecialist"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonSeniorLogisticsOfficer
+  suffix: Senior logistics officer
+  components:
+  - type: AccessReader
+    access: [["SeniorLogisticsOfficer"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonEthicsCommittee
+  suffix: Ethics committee
+  components:
+  - type: AccessReader
+    access: [["EthicsCommittee"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonInternalTribunalService
+  suffix: Internal tribunal service
+  components:
+  - type: AccessReader
+    access: [["InternalTribunalService"]]
+
+# Региональная администрация
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonMTF
+  suffix: MTF
+  components:
+  - type: AccessReader
+    access: [["MTF"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonO5
+  suffix: O5
+  components:
+  - type: AccessReader
+    access: [["O5"]]
+
+# Служба безопасности
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonCheckpoint
+  suffix: Checkpoint
+  components:
+  - type: AccessReader
+    access: [["Checkpoint"]]
+
+# Научная служба
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonSafe
+  suffix: Safe
+  components:
+  - type: AccessReader
+    access: [["Safe"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonEuclid
+  suffix: Euclid
+  components:
+  - type: AccessReader
+    access: [["Euclid"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonKeter
+  suffix: Keter
+  components:
+  - type: AccessReader
+    access: [["Keter"]]
+
+# Медицинская служба
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonLaboratory
+  suffix: Laboratory
+  components:
+  - type: AccessReader
+    access: [["Laboratory"]]
+
+# Инженерно-техническая служба
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonLifeSupport
+  suffix: Life support
+  components:
+  - type: AccessReader
+    access: [["LifeSupport"]]
+
+# Отдел логистики
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonLogistics
+  suffix: Logistics
+  components:
+  - type: AccessReader
+    access: [["Logistics"]]
+
+# Общие доступы
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonExit
+  suffix: Exit
+  components:
+  - type: AccessReader
+    access: [["Exit"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonNuclearWarhead
+  suffix: Nuclear warhead
+  components:
+  - type: AccessReader
+    access: [["NuclearWarhead"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonAI
+  suffix: AI
+  components:
+  - type: AccessReader
+    access: [["AI"]]
+
+# Сторонние
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonThirdParty
+  suffix: Third party
+  components:
+  - type: AccessReader
+    access: [["ThirdParty"]]
+
+- type: entity
+  parent: LockableButton
+  id: LockableButtonChaosInsurgency
+  suffix: Chaos insurgency
+  components:
+  - type: AccessReader
+    access: [["ChaosInsurgency"]]

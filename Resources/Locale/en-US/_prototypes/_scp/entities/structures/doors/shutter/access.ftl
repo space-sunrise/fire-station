@@ -1,3 +1,15 @@
+ent-ScpBlastDoorRegionalAdministration = { ent-ScpBlastDoor }
+    .suffix = Regional administration, Locked
+    .desc = { ent-ScpBlastDoor.desc }
+ent-ScpBlastDoorExit = { ent-ScpBlastDoor }
+    .suffix = Exit, Locked
+    .desc = { ent-ScpBlastDoor.desc }
+ent-ScpShuttersWindowRegionalAdministration = { ent-ScpShuttersWindow }
+    .suffix = Regional administration, Locked
+    .desc = { ent-ScpShuttersWindow.desc }
+ent-ScpShuttersWindowExit = { ent-ScpShuttersWindow }
+    .suffix = Exit, Locked
+    .desc = { ent-ScpShuttersWindow.desc }
 ent-ScpBlastDoorCentralCommand = { ent-ScpBlastDoor }
     .suffix = Central Command, Locked
     .desc = { ent-ScpBlastDoor.desc }

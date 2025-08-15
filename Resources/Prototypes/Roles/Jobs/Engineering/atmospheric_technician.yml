@@ -11,6 +11,7 @@
   icon: "JobIconAtmosphericTechnician"
   supervisors: job-supervisors-ce
   displayWeight: 20  # Sunrise
+  overrideConsoleVisibility: false # Fire added
   access:
   - Maintenance
   - Engineering

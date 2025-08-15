@@ -1,0 +1,15 @@
+ent-JugRawAmnesiac = { ent-Jug }
+    .desc = { ent-Jug.desc }
+    .suffix = Сырье для амнезиака
+ent-ChemistryVialAmnesiacA = { ent-BaseChemistryEmptyVial }
+    .desc = { ent-BaseChemistryEmptyVial.desc }
+    .suffix = Амнезиак A
+ent-ChemistryVialAmnesiacB = { ent-BaseChemistryEmptyVial }
+    .desc = { ent-BaseChemistryEmptyVial.desc }
+    .suffix = Амнезиак B
+ent-ChemistryVialAmnesiacC = { ent-BaseChemistryEmptyVial }
+    .desc = { ent-BaseChemistryEmptyVial.desc }
+    .suffix = Амнезиак C
+ent-ChemistryVialAmnesiacD = { ent-BaseChemistryEmptyVial }
+    .desc = { ent-BaseChemistryEmptyVial.desc }
+    .suffix = Амнезиак D

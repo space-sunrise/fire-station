@@ -6,6 +6,7 @@
   startingGear: MusicianGear
   icon: "JobIconMusician"
   supervisors: job-supervisors-hop
+  overrideConsoleVisibility: false # Fire added
   access:
   - Maintenance
   - Theatre

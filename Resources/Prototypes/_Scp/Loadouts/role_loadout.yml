@@ -11,7 +11,7 @@
   - DirectorOuterClothing
   - DirectorGloves
   - DirectorShoes
-  - DirectorPDA
+  - DirectorKeyCard
   - DirectorBack
   - CommonAdministrationGlasses
   - Bra
@@ -331,7 +331,7 @@
   - Pants
   - Socks
 
-# Научный отдел
+# Научная служба
 
 - type: roleLoadout
   id: JobLeadResearcher
@@ -400,7 +400,7 @@
   - Pants
   - Socks
 
-# Медицинский отдел
+# Медицинская служба
 
 - type: roleLoadout
   id: JobSeniorMedicalSpecialist
@@ -499,7 +499,7 @@
   - Pants
   - Socks
 
-# Инженерный отдел
+# Инженерно-технический отдел
 
 - type: roleLoadout
   id: JobLeadTechnicalSpecialist

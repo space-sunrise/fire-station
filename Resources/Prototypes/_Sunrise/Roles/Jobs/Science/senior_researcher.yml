@@ -11,6 +11,7 @@
   icon: "JobIconSeniorResearcher"
   supervisors: job-supervisors-rd
   displayWeight: 35
+  overrideConsoleVisibility: false # Fire added
   access:
   - Research
   - Maintenance

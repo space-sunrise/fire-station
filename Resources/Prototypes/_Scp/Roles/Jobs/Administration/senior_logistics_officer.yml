@@ -13,27 +13,22 @@
   canBeAntag: true
   radioBold: true
   displayWeight: 40
-  access:
-  - Cargo
-  - Salvage
-  - CargoPurchaseAccess
-  - Quartermaster
-  - Maintenance
-  - External
-  - Command
-  - Brig
-  - Cryogenics
+  accessGroups:
+  - SeniorLogisticsOfficer
   special:
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
 
 - type: startingGear
   id: SeniorLogisticsOfficerGear
   equipment:
-    id: QuartermasterPDA
+    id: KeyCardSeniorLogisticsOfficer
     ears: ClothingHeadsetAltLogistics
-    #    belt: BoxFolderClipboard
     pocket1: AppraisalTool
   storage:
     back:

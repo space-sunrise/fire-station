@@ -10,6 +10,16 @@
     state: icon
   - type: Item
     sprite: _Scp/Objects/Tools/chaos_access_breaker.rsi
+  - type: Clothing
+    slots:
+    - idcard
+  - type: Access
+    tags:
+    - ChaosInsurgency
+  - type: IdCard
+  - type: Tag
+    tags:
+    - DoorBumpOpener
 
 - type: entity
   parent: ChaosAccessBreakerUnlimited

@@ -10,17 +10,21 @@
   icon: JobPsychotherapist
   supervisors: job-supervisors-head-of-medical-sector
   displayWeight: 10  # Sunrise
-  access:
-  - Medical
-  - Maintenance
-  extendedAccess:
-  - Chemistry
+  accessGroups:
+  - CommonMedicalJob
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Two
 
 - type: startingGear
   id: PsychotherapistGear
   equipment:
     shoes: ClothingShoesLeather
-    id: PsychologistPDA
+    id: KeyCardPsychotherapist
     ears: ClothingHeadsetMedicalService
   storage:
     back:

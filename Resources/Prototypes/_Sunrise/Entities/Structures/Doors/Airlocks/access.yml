@@ -2,6 +2,7 @@
   parent: AirlockCommandGlass
   id: AirlockBlueShieldGlassLocked
   suffix: BlueShield, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -11,6 +12,7 @@
   parent: AirlockMaint
   id: AirlockMaintBlueShieldLocked
   suffix: BlueShield, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -20,6 +22,7 @@
   parent: AirlockCommand
   id: AirlockBlueShieldLocked
   suffix: BlueShield, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -29,6 +32,7 @@
   parent: AirlockCommandGlass
   id: AirlockNtrepGlassLocked
   suffix: Ntrep, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -38,6 +42,7 @@
   parent: AirlockMaint
   id: AirlockMaintNtrepLocked
   suffix: Ntrep, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -47,6 +52,7 @@
   parent: AirlockCommand
   id: AirlockNrepLocked
   suffix: Ntrep, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -58,6 +64,7 @@
   id: AirlockHatchCentcommLocked
   name: CentCom Hatch
   suffix: CentCom, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["CentralCommand"]]
@@ -67,6 +74,7 @@
   id: AirlockHatchMaintenanceLocked
   name: Maintenance Hatch
   suffix: Maint, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Maintenance"]]
@@ -76,6 +84,7 @@
   id: AirlockHatchSyndicateLocked
   name: Syndicate Hatch
   suffix: Syndicate, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["SyndicateAgent"]]
@@ -84,6 +93,7 @@
   parent: AirlockMaint
   id: AirlockMaintSyndicateLocked
   suffix: Syndicate, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["SyndicateAgent"]]
@@ -94,6 +104,7 @@
   parent: DoubleGlassAirlock
   id: DoubleGlassAirlockBasicCentralCommandLocked
   suffix: Central Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["CentralCommand"]]
@@ -102,6 +113,7 @@
   parent: DoubleGlassAirlock
   id: DoubleGlassAirlockBasicSyndicateLocked
   suffix: Syndicate, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["SyndicateAgent"]]
@@ -112,6 +124,7 @@
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassShuttleGamma
   suffix: External, Gamma, Glass, Docking
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: PriorityDock
     tag: DockGamma
@@ -120,6 +133,7 @@
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassCentCommShuttle
   suffix: External, CentComm, Glass, Docking, AutoDock
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: PriorityDock
     tag: DockCentComm
@@ -128,6 +142,7 @@
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassMiningShuttle
   suffix: External, Mining, Glass, Docking, AutoDock
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: PriorityDock
     tag: DockMining
@@ -136,6 +151,7 @@
   parent: AirlockExternalGlassShuttleArrivals
   id: AirlockExternalGlassShuttleArrivalsLockedCentComm
   suffix: External, Arrivals, Glass, Docking, Locked, CentComm
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: ContainerFill
     containers:
@@ -153,6 +169,7 @@
   parent: AirlockGlassShuttle
   id: AirlockExternalGlassShuttleEmergencyLockedCentComm
   suffix: External, Emergency, Glass, Docking, Locked, CentComm
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: PriorityDock
     tag: DockEmergency

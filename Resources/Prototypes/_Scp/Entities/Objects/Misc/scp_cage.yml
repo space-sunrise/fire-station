@@ -4,6 +4,7 @@
   abstract: true
   components:
   - type: Sprite
+    drawdepth: Overdoors
     sprite: _Scp/Objects/Misc/scp_cage.rsi
     offset: 0, 0.5
     layers:
@@ -13,6 +14,7 @@
   - type: Icon
     sprite: _Scp/Objects/Misc/scp_cage.rsi
     state: closed
+  - type: SpriteFade
   # Копипаста с CrateGeneric
   - type: Transform
     noRot: true
@@ -73,7 +75,7 @@
       - Scp
   - type: Lock
   - type: AccessReader
-    access: [["Security"]]
+    access: [["Security"], ["Research"]]
   - type: SuppressArtifactContainer
   - type: RadiationBlockingContainer
     resistance: 5

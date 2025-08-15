@@ -126,6 +126,7 @@
   id: LockerAtmosphericsFilledHardsuit
   suffix: Filled, Hardsuit
   parent: LockerAtmospherics
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -140,6 +141,7 @@
   id: LockerAtmosphericsFilled
   suffix: Filled
   parent: LockerAtmospherics
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:

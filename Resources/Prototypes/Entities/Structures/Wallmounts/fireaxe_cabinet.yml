@@ -53,7 +53,7 @@
           - FireAxe
   - type: Lock
   - type: AccessReader
-    access: [["Atmospherics"], ["Command"]]
+    access: [["LifeSupport"], ["Administration"]] # Fire edit
     # Sunrise-start
     alertAccesses:
       red: RedAlertAccesses
