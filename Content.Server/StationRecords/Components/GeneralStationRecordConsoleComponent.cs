@@ -24,4 +24,9 @@ public sealed partial class GeneralStationRecordConsoleComponent : Component
     /// </summary>
     [DataField]
     public bool CanDeleteEntries;
+
+    // Sunrise added start - возможность редактировать отпечатки через емаг
+    [DataField]
+    public bool CanRedactSensitiveData;
+    // Sunrise added end
 }

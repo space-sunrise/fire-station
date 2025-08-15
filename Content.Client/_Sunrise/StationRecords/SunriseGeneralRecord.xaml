@@ -23,14 +23,14 @@
                     <graphics:StyleBoxFlat BackgroundColor="#CFCFCF"/>
                 </PanelContainer.PanelOverride>
             </PanelContainer>
-            <GridContainer Columns="2" HorizontalAlignment="Stretch" >
-                <Label Name="NameLabel"/> <LineEdit Name="Name"/>
+            <GridContainer Columns="2" HorizontalAlignment="Stretch" HorizontalExpand="True">
+                <Label Name="NameLabel"/> <LineEdit Name="Name" HorizontalExpand="True"/>
                 <Label Name="AgeLabel"/> <LineEdit Name="Age"/>
                 <Label Name="GenderLabel"/> <OptionButton Name="Gender"/>
                 <Label Name="SpeciesLabel"/> <OptionButton Name="Species"/>
                 <Label Name="JobLabel"/> <OptionButton Name="Job"/>
-                <Label Name="FingerprintLabel"/> <LineEdit Name="Fingerprint"/>
-                <Label Name="DnaLabel"/> <LineEdit Name="Dna"/>
+                <Label Name="FingerprintLabel"/> <LineEdit Name="Fingerprint" Editable="False"/>
+                <Label Name="DnaLabel"/> <LineEdit Name="Dna" Editable="False"/>
                 <Button Visible="False" Name="SaveButton" Text="Сохранить" StyleClasses="ButtonColorGreen"/>
                 <Button Visible="False" Name="DeleteButton" Text="{Loc 'general-station-record-console-delete'}" StyleClasses="ButtonColorRed"/>
             </GridContainer>

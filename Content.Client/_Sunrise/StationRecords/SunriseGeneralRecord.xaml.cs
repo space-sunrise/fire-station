@@ -39,6 +39,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
 
     public SunriseGeneralRecord(GeneralStationRecord record,
         bool canDelete,
+        bool canRedactSensitiveData,
         uint? id,
         in IEntityManager entity,
         in IPrototypeManager prototype,
@@ -71,6 +72,9 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
             DeleteButton.Visible = true;
             DeleteButton.OnPressed += _ => OnDeletePressed?.Invoke(id.Value);
         }
+
+        Fingerprint.Editable = canRedactSensitiveData;
+        Dna.Editable = canRedactSensitiveData;
 
         if (id != null )
         {

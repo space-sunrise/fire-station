@@ -1,5 +1,6 @@
 ﻿using Content.Server.StationRecords.Components;
 using Content.Shared._Sunrise.StationRecords;
+using Content.Shared.Emag.Systems;
 using Content.Shared.StationRecords;
 using Robust.Shared.Prototypes;
 
@@ -11,6 +12,8 @@ public sealed partial class GeneralStationRecordConsoleSystem
 
     private void InitializeSunrise()
     {
+        SubscribeLocalEvent<GeneralStationRecordConsoleComponent, GotEmaggedEvent>(OnEmagged);
+
         Subs.BuiEvents<GeneralStationRecordConsoleComponent>(GeneralStationRecordConsoleKey.Key, subs =>
         {
             subs.Event<SaveStationRecord>(OnSave);
@@ -36,5 +39,20 @@ public sealed partial class GeneralStationRecordConsoleSystem
         // TODO: Радио оповещение в канал Командования/СБ
         // TODO: Крутой пикающий звук
         UpdateUserInterface(ent);
+    }
+
+    private void OnEmagged(Entity<GeneralStationRecordConsoleComponent> ent, ref GotEmaggedEvent args)
+    {
+        if (ent.Comp.CanRedactSensitiveData && ent.Comp.CanDeleteEntries)
+            return;
+
+        if (args.Handled)
+            return;
+
+        ent.Comp.CanDeleteEntries = true;
+        ent.Comp.CanRedactSensitiveData = true;
+
+        UpdateUserInterface(ent);
+        args.Handled = true;
     }
 }

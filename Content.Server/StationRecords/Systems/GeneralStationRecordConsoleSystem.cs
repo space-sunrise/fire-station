@@ -99,7 +99,8 @@ public sealed partial class GeneralStationRecordConsoleSystem : EntitySystem
         var key = new StationRecordKey(id, owningStation.Value);
         _stationRecords.TryGetRecord<GeneralStationRecord>(key, out var record, stationRecords);
 
-        GeneralStationRecordConsoleState newState = new(id, record, listing, console.Filter, ent.Comp.CanDeleteEntries);
+        // Sunrise edit
+        GeneralStationRecordConsoleState newState = new(id, record, listing, console.Filter, ent.Comp.CanDeleteEntries, ent.Comp.CanRedactSensitiveData);
         _ui.SetUiState(uid, GeneralStationRecordConsoleKey.Key, newState);
     }
 }
