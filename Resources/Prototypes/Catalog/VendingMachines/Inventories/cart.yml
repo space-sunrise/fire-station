@@ -1,24 +1,53 @@
 - type: vendingMachineInventory
   id: PTechInventory
-  startingInventory:
-    PassengerPDA: 5
-    ClearPDA: 5
+  # Fire Edit Start
+  # startingInventory:
+  #   PassengerPDA: 5
+  #   ClearPDA: 5
+  #   PassengerIDCard: 5
+  #   ClothingHeadsetGrey: 5
+  #   RubberStampApproved: 1
+  #   RubberStampDenied: 1
+  #   Paper: 10
+  #   Envelope: 10
+  #   HandLabeler: 2
+  #   EncryptionKeyCargo: 2
+  #   EncryptionKeyEngineering: 2
+  #   EncryptionKeyMedical: 2
+  #   EncryptionKeyScience: 2
+  #   EncryptionKeySecurity: 1
+  #   EncryptionKeyService: 3
+  # contrabandInventory:
+  #   BalloonNT: 2
+  #   LuxuryPen: 1
+  # emaggedInventory:
+  #   CyberPen: 1 # Sunrise Edit
+  #   BalloonSyn: 2 # Sunrise Edit
+  # Fire Edit End
+  startingInventory: # Fire Edit Start
+    BaseFoundationPDA: 8
+    ScpEngineeringPDA: 2
+    ScpMedicalPDA: 2
+    ScpSecurityPDA: 1
     PassengerIDCard: 5
     ClothingHeadsetGrey: 5
     RubberStampApproved: 1
     RubberStampDenied: 1
+    Pen: 5
     Paper: 10
     Envelope: 10
     HandLabeler: 2
-    EncryptionKeyCargo: 2
-    EncryptionKeyEngineering: 2
-    EncryptionKeyMedical: 2
-    EncryptionKeyScience: 2
-    EncryptionKeySecurity: 1
-    EncryptionKeyService: 3
+    DrinkInc: 4
+    EncryptionKeyCommon: 6
+    EncryptionKeyLogisticsService: 2
+    EncryptionKeyEngineeringTechnicalService: 2
+    EncryptionKeyMedicalService: 2
+    EncryptionKeyScientificService: 2
+    EncryptionKeyExternalAdministrativeZoneSecurityService: 1
+    EncryptionKeyHeavyContainmentSecurityService: 1
+    EncryptionKeyFoodAndSanitationService: 3
   contrabandInventory:
-    BalloonNT: 2
     LuxuryPen: 1
   emaggedInventory:
-    CyberPen: 1 # Sunrise Edit
-    BalloonSyn: 2 # Sunrise Edit
+    CyberPen: 1
+    ClothingNeckChaosPin: 2

@@ -1,0 +1,156 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "pda"
+    },
+    {
+      "name": "pda-dir"
+    },
+    {
+      "name": "pda-sup"
+    },
+    {
+      "name": "pda-ce"
+    },
+    {
+      "name": "pda-cmo"
+    },
+    {
+      "name": "pda-e"
+    },
+    {
+      "name": "pda-h"
+    },
+    {
+      "name": "pda-hop"
+    },
+    {
+      "name": "pda-qm"
+    },
+    {
+      "name": "pda-hos"
+    },
+    {
+      "name": "pda-m"
+    },
+    {
+      "name": "pda-rd"
+    },
+    {
+      "name": "pda-robot"
+    },
+    {
+      "name": "pda-s"
+    },
+    {
+      "name": "pda-syn"
+    },
+    {
+      "name": "pda-serv"
+    },
+    {
+      "name": "pda-exp"
+    },
+    {
+      "name": "pda-neo"
+    },
+    {
+      "name": "pda-club"
+    },
+    {
+      "name": "generic",
+      "delays": [
+        [
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ]
+      ]
+    },
+    {
+      "name": "word"
+    },
+    {
+      "name": "uplink"
+    },
+    {
+      "name": "menu"
+    },
+    {
+      "name": "supply",
+      "delays": [
+        [
+          1.8,
+          1,
+          2.4
+        ]
+      ]
+    },
+    {
+      "name": "request",
+      "delays": [
+        [
+          1.8,
+          1,
+          2.4
+        ]
+      ]
+    },
+    {
+      "name": "warrant",
+      "delays": [
+        [
+          0.6,
+          0.6,
+          0.7,
+          0.8,
+          0.7,
+          0.6
+        ]
+      ]
+    },
+    {
+      "name": "cameras",
+      "delays": [
+        [
+          0.3,
+          0.3,
+          0.8,
+          0.8,
+          0.3,
+          0.3,
+          0.3
+        ]
+      ]
+    },
+    {
+      "name": "uplink_blue"
+    },
+    {
+      "name": "uplink_green"
+    },
+    {
+      "name": "equipped-BELT"
+    },
+    {
+      "name": "inhand-left"
+    },
+    {
+      "name": "inhand-right"
+    },
+    {
+      "name": "light_overlay"
+    },
+    {
+      "name": "id_overlay"
+    }
+  ]
+}
