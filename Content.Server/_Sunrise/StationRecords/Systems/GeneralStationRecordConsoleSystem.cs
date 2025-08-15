@@ -1,7 +1,10 @@
-﻿using Content.Server.StationRecords.Components;
+﻿using Content.Server.Popups;
+using Content.Server.Radio.EntitySystems;
+using Content.Server.StationRecords.Components;
 using Content.Shared._Sunrise.StationRecords;
 using Content.Shared.Emag.Systems;
 using Content.Shared.StationRecords;
+using Robust.Server.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.StationRecords.Systems;
@@ -9,6 +12,9 @@ namespace Content.Server.StationRecords.Systems;
 public sealed partial class GeneralStationRecordConsoleSystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
 
     private void InitializeSunrise()
     {
@@ -36,8 +42,11 @@ public sealed partial class GeneralStationRecordConsoleSystem
         var id = _stationRecords.AddRecordEntry(owning.Value, record);
         ent.Comp.ActiveKey = id.Id;
 
-        // TODO: Радио оповещение в канал Командования/СБ
-        // TODO: Крутой пикающий звук
+        var message = Loc.GetString("station-record-updated", ("name", args.Record.Name));
+        var popup = Loc.GetString("station-record-updated-successfully");
+
+        DoFeedback(ent, message, popup);
+
         UpdateUserInterface(ent);
     }
 
@@ -54,5 +63,16 @@ public sealed partial class GeneralStationRecordConsoleSystem
 
         UpdateUserInterface(ent);
         args.Handled = true;
+    }
+
+    private void DoFeedback(Entity<GeneralStationRecordConsoleComponent> ent, string message, string popup)
+    {
+        foreach (var channel in ent.Comp.AnnouncementChannels)
+        {
+            _radio.SendRadioMessage(ent, message, channel, ent);
+        }
+
+        _audio.PlayPvs(ent.Comp.SuccessfulSound, ent);
+        _popup.PopupEntity(popup, ent);
     }
 }

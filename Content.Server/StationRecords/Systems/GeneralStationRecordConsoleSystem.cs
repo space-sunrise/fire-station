@@ -37,12 +37,22 @@ public sealed partial class GeneralStationRecordConsoleSystem : EntitySystem
 
         var owning = _station.GetOwningStation(ent.Owner);
 
+        // Sunrise added start
+        if (owning == null)
+            return;
+
+        if (!_stationRecords.TryGetRecord<GeneralStationRecord>(new StationRecordKey(args.Id, owning.Value), out var record))
+            return;
+
+        var message = Loc.GetString("station-record-deleted", ("name", record.Name));
+        var popup = Loc.GetString("station-record-deleted-successfully");
+
+        DoFeedback(ent, message, popup);
+        // Sunrise added end
+
         if (owning != null)
             _stationRecords.RemoveRecord(new StationRecordKey(args.Id, owning.Value));
         UpdateUserInterface(ent); // Apparently an event does not get raised for this.
-
-        // Sunrise added
-        // TODO: Радио оповещение в канал командования/сб
     }
 
     private void UpdateUserInterface<T>(Entity<GeneralStationRecordConsoleComponent> ent, ref T args)

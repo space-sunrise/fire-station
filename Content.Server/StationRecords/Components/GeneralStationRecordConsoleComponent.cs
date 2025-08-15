@@ -1,5 +1,8 @@
 using Content.Server.StationRecords.Systems;
+using Content.Shared.Radio;
 using Content.Shared.StationRecords;
+using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server.StationRecords.Components;
 
@@ -28,5 +31,11 @@ public sealed partial class GeneralStationRecordConsoleComponent : Component
     // Sunrise added start - возможность редактировать отпечатки через емаг
     [DataField]
     public bool CanRedactSensitiveData;
+
+    [DataField]
+    public SoundSpecifier SuccessfulSound = new SoundPathSpecifier("/Audio/Effects/Cargo/ping.ogg");
+
+    [DataField]
+    public List<ProtoId<RadioChannelPrototype>> AnnouncementChannels = ["Common"]; // TODO: Поставить сб + командование
     // Sunrise added end
 }
