@@ -81,10 +81,14 @@ public sealed record GeneralStationRecord
     [DataField]
     public HumanoidCharacterProfile? HumanoidProfile;
 
+    [DataField]
+    public string Personality = string.Empty;
+
     [NonSerialized] private const int MaxNameLength = 64;
     [NonSerialized] private const int MaxAge = 10000;
     [NonSerialized] private const int MaxFingerprintLength = 32;
     [NonSerialized] private const int MaxDnaLength = 16;
+    [NonSerialized] private const int MaxPersonalityLength = 1024;
 
     [NonSerialized] private static readonly ProtoId<JobPrototype> FallbackJobPrototype = "Passenger";
     [NonSerialized] private static readonly ProtoId<SpeciesPrototype> FallbackSpeciesPrototype = "Human";
@@ -102,6 +106,7 @@ public sealed record GeneralStationRecord
             JobPrototype = prototype.TryIndex<JobPrototype>(original.JobPrototype, out var job) ? job.ID : FallbackJobPrototype,
             Fingerprint = original.Fingerprint.SanitizeInput(MaxFingerprintLength),
             DNA = original.DNA.SanitizeInput(MaxDnaLength),
+            Personality = original.Personality.SanitizeInput(MaxPersonalityLength),
         };
 
         return updated;

@@ -36,4 +36,22 @@
             </GridContainer>
         </BoxContainer>
     </controls:StripeBack>
+
+    <controls:StripeBack VerticalAlignment="Bottom" HorizontalExpand="True" VerticalExpand="True">
+        <BoxContainer Orientation="Horizontal" VerticalAlignment="Center" Margin="5 5 5 5">
+            <PanelContainer
+                VerticalExpand="True"
+                MinWidth="2"
+                MaxWidth="2"
+                Margin="9 5 9 0">
+                <PanelContainer.PanelOverride>
+                    <graphics:StyleBoxFlat BackgroundColor="#CFCFCF"/>
+                </PanelContainer.PanelOverride>
+            </PanelContainer>
+            <GridContainer Columns="1" HorizontalAlignment="Stretch" HorizontalExpand="True">
+                <Label Name="PersonalityLabel" Text="Характеристика:"/>
+                <TextEdit Name="Personality" HorizontalExpand="True" VerticalExpand="True" MinSize="300 100"/>
+            </GridContainer>
+        </BoxContainer>
+    </controls:StripeBack>
 </BoxContainer>

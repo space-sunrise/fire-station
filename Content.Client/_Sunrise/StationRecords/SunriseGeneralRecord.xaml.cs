@@ -12,6 +12,7 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Utility;
 
 namespace Content.Client._Sunrise.StationRecords;
 
@@ -170,6 +171,11 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
 
         DnaLabel.Text = "ДНК: ";
         Dna.Text = record.DNA ?? _loc.GetString("generic-not-available-shorthand");
+
+        Personality.Placeholder = new Rope.Leaf("Здесь будет текст...");
+
+        if (!string.IsNullOrEmpty(record.Personality))
+            Personality.TextRope = new Rope.Leaf(record.Personality);
     }
 
     /// <summary>
@@ -229,6 +235,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
             JobPrototype = _allJobs[Job.SelectedId].ID,
             Fingerprint = Fingerprint.Text,
             DNA = Dna.Text,
+            Personality = Rope.Collapse(Personality.TextRope),
         };
 
         return GeneralStationRecord.SanitizeRecord(updated, in _prototype);
@@ -256,6 +263,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     {
         Name.Editable = _hasAccess;
         Age.Editable = _hasAccess;
+        Personality.Editable = _hasAccess;
         Gender.Disabled = !_hasAccess;
         Species.Disabled = !_hasAccess;
         Job.Disabled = !_hasAccess;
@@ -270,6 +278,8 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
 
             lineEdit.OnTextChanged += _ => MakeSaveAvailable();
         }
+
+        Personality.OnTextChanged += _ => MakeSaveAvailable();
     }
 
     private void MakeSaveAvailable()
