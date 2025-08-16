@@ -3,4 +3,4 @@ ent-CrateMaterialUranium = ящик цельного урана
 ent-CrateMaterialDiamond = ящик бриллиантов
     .desc = Содержит 3 бриллианта.
 ent-CrateMaterialConcrete = ящик цемента
-    .desc = Содержит 90 цемента.
+    .desc = Содержит 90 мешков цемента.
