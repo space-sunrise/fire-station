@@ -151,7 +151,9 @@
   components:
   - type: StorageFill
     contents:
-      - id: PassengerPDA
+      # - id: PassengerPDA # Fire Edit
+      #   amount: 4
+      - id: BaseFoundationPDA # Fire Edit
         amount: 4
   - type: Sprite
     layers:

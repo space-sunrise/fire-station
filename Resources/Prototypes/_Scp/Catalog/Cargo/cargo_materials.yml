@@ -1,7 +1,7 @@
 - type: cargoProduct
   id: MaterialUranium
   icon:
-    sprite: Objects/Materials/Sheets/other.rsi
+    sprite: _Scp/Objects/Materials/Sheets/other.rsi # Fire Edit
     state: uranium_3
   product: CrateMaterialUranium
   cost: 15000

@@ -80,7 +80,10 @@ public abstract partial class SharedFearSystem : EntitySystem
         if (!args.Target.Comp.AlreadyLookedAt.TryGetValue(GetNetEntity(ent), out var lastSeenTime))
             return;
 
-        if (_timing.CurTime < lastSeenTime + ent.Comp.TimeToGetScaredAgainOnLookAt)
+        // Первая проверка существует для ситуаций, когда длина раунда меньше нужного времени, чтобы испугаться снова.
+        // Если ее не будет, персонаж не будет пугаться при виде страшного объекта в первые N минут раунда
+        if (_timing.CurTime > ent.Comp.TimeToGetScaredAgainOnLookAt
+            && _timing.CurTime < lastSeenTime + ent.Comp.TimeToGetScaredAgainOnLookAt)
             return;
 
         if (!_fears.TryComp(args.Target, out var source))
@@ -168,7 +171,14 @@ public abstract partial class SharedFearSystem : EntitySystem
     /// </summary>
     private void OnProximityNotInRange(Entity<FearComponent> ent, ref ProximityNotInRangeTargetEvent args)
     {
+        // Оказывается этот метод фиксит серверные проблемы,
+        // из-за которых изменение уровня страха на сервере не меняет параметры оверлеев на клиенте.
+        // Благодаря тому, что оно вызывается постоянно, это создает костыль, который закрывает проблему. Вот оно как.
+        // TODO: Избавиться от этого костыля когда-нибудь и реализовать Net версию изменения уровня страха
         if (!_timing.IsFirstTimePredicted)
+            return;
+
+        if (!_mobState.IsAlive(ent))
             return;
 
         // Как только игрок отходит от источника страха он должен перестать бояться
@@ -176,7 +186,7 @@ public abstract partial class SharedFearSystem : EntitySystem
         SetShaderStrength<GrainOverlayComponent>(ent.Owner, ent.Comp, 0f);
         SetShaderStrength<VignetteOverlayComponent>(ent.Owner, ent.Comp, 0f);
 
-        RemoveEffects(ent.Owner);
+        RemoveEffects(ent);
         RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodSourceClose));
     }
 
@@ -256,6 +266,8 @@ public abstract partial class SharedFearSystem : EntitySystem
 
         ent.Comp.State = state;
 
+        // TODO: Реализовать версию метода использующую RaiseNetworkEvent для вызова с сервера адекватной синхронизации
+        // Или перенести все в Shared, но это не от меня зависит.
         RaiseLocalEvent(ent, ref ev);
 
         SetFearBasedShaderStrength(entity);
@@ -327,6 +339,25 @@ public abstract partial class SharedFearSystem : EntitySystem
         var actualStrength = GetActualStrength<T>(fear, strength);
         actualStrength /= GetDrunkModifier(ent);
 
+        if (IsStrengthSimilar(ent, actualStrength))
+            return;
+
         _shaderStrength.TrySetAdditionalStrength(ent, actualStrength);
+    }
+
+    /// <summary>
+    /// Проверяет, является ли текущая сила шейдера близкой к текущей.
+    /// </summary>
+    private bool IsStrengthSimilar<T>(Entity<T?> ent, float strength)
+        where T : IShaderStrength, IComponent
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return true;
+
+        // Ранний выход, чтобы не просчитывать всякое, если текущая сила уже равна подобной.
+        if (MathHelper.CloseTo(ent.Comp.AdditionalStrength, strength))
+            return true;
+
+        return false;
     }
 }

@@ -2,6 +2,36 @@
   parent: NuclearBomb
   id: NuclearBombScp
   components:
+  - type: Sprite
+    sprite: _Scp/Objects/Devices/nuke.rsi
+    noRot: true
+    layers:
+    - state: nuclearbomb_base
+      map: ["enum.NukeVisualLayers.Base"]
+    - state: lights-safety
+      map: ["enum.NukeVisualLayers.Unlit"]
+      shader: unshaded
+      visible: false
+  - type: GenericVisualizer
+    visuals:
+      enum.HolidayVisuals.Holiday:
+        christmas:
+          festive: { visible: true }
+        pride:
+          pride: { visible: true }
+      enum.NukeVisuals.Deployed:
+        enum.NukeVisualLayers.Base:
+          False: { state: nuclearbomb_base }
+          True:  { state: nuclearbomb_deployed }
+        enum.NukeVisualLayers.Unlit:
+          True:  { visible: true }
+          False: { visible: false }
+      enum.NukeVisuals.State:
+        enum.NukeVisualLayers.Unlit:
+          Idle:        { state: lights-safety }
+          Armed:       { state: lights-timing }
+          YoureFucked: { state: lights-exploding }
+  - type: HolidayVisuals
   - type: Nuke
     explosionType: DefaultStandardEffect
     maxIntensity: 100
@@ -17,6 +47,14 @@
         components:
         - NukeDisk
     armMusic:
-      path: /Audio/_Scp/StationEvents/war_without_reason.ogg
+      path: /Audio/_Scp/StationEvents/nuke_countdown.ogg
     alertLevelOnActivate: scpDelta
     alertLevelOnDeactivate: scpBlue
+    minimumTime: 130
+    alertTime: 0
+    alertSound:
+      path: /Audio/_Scp/StationEvents/nuke_boom.ogg
+    armSound:
+      path: /Audio/_Scp/StationEvents/nuke_on.ogg
+    disarmSound:
+      path: /Audio/_Scp/StationEvents/nuke_restart.ogg
