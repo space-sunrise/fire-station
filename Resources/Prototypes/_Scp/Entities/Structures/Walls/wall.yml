@@ -160,8 +160,22 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: Construction
+    graph: concreteWall
+    node: concreteWallEnd
   - type: Destructible
     thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 1300
+        behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
       - trigger:
           !type:DamageTrigger
           damage: 1000
@@ -190,11 +204,25 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: Construction
+    graph: concreteWallDiagonal
+    node: concreteWallDiagonalEnd
   - type: Destructible
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 1000
+          damage: 1200
+        behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
+      - trigger:
+          !type:DamageTrigger
+          damage: 800
         behaviors:
           - !type:SpawnEntitiesBehavior
             spawn:
@@ -220,12 +248,26 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: Construction
+    graph: concreteWallLightContaiment
+    node: concreteWallLightContaimentEnd
   - type: RCDDeconstructable
     cost: 6
     delay: 10
     fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 1300
+        behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
       - trigger:
           !type:DamageTrigger
           damage: 1000
@@ -254,12 +296,26 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: Construction
+    graph: concreteWallScience
+    node: concreteWallScienceEnd
   - type: RCDDeconstructable
     cost: 6
     delay: 10
     fx: EffectRCDDeconstruct8
   - type: Destructible
     thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 1300
+        behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
       - trigger:
           !type:DamageTrigger
           damage: 1000
