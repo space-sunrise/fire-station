@@ -1,11 +1,11 @@
 ﻿- type: entity
   abstract: true
   parent: [BaseStructure, BaseMajorContraband]
-  id: BaseNuclearBombScp
+  id: BaseNuclearWarhead
   components:
   - type: Sprite
     sprite: _Scp/Objects/Devices/alpha_warhead.rsi
-    noRot: true
+    noRot: false
     layers:
     - state: nuclearbomb_base
       map: ["enum.NukeVisualLayers.Base"]
@@ -34,9 +34,13 @@
     fixtures:
       fix1:
         shape:
-          !type:PhysShapeCircle
-          radius: 0.45
-        density: 255 # Has "bluespace technology" to make it lighter, whatever that means. Don't mind the fact that this is lighter then a high capacity fuel tank.
+          !type:PolygonShape
+            vertices:
+            - "0.0,-0.5"
+            - "0.0,0.5"
+            - "1.0,-0.0"
+            - "-1.0,0.0"
+        density: 255
         mask:
         - MachineMask
         layer:
@@ -71,8 +75,8 @@
     enabled: false
 
 - type: entity
-  parent: BaseNuclearBombScp
-  id: NuclearBombScp
+  parent: BaseNuclearWarhead
+  id: NuclearWarheadAlpha
   components:
   - type: Nuke
     explosionType: DefaultStandardEffect
