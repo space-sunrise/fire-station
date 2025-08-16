@@ -17,3 +17,13 @@
   cost: 7000
   category: cargoproduct-category-name-materials
   group: market
+
+- type: cargoProduct
+  id: MaterialConcrete
+  icon:
+    sprite: _Scp/Objects/Materials/concrete.rsi
+    state: concrete_3
+  product: CrateMaterialConcrete
+  cost: 2500
+  category: cargoproduct-category-name-materials
+  group: market
