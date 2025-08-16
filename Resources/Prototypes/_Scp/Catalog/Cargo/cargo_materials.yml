@@ -24,6 +24,6 @@
     sprite: _Scp/Objects/Materials/concrete.rsi
     state: concrete_3
   product: CrateMaterialConcrete
-  cost: 2500
+  cost: 2000
   category: cargoproduct-category-name-materials
   group: market
