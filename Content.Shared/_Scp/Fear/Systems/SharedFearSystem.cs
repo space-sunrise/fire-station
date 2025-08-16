@@ -324,14 +324,14 @@ public abstract partial class SharedFearSystem : EntitySystem
     private void SetShaderStrength<T>(Entity<T?> ent, FearComponent? fear, float strength)
         where T : IShaderStrength, IComponent
     {
-        if (IsStrengthSimilar(ent, strength))
-            return;
-
         if (!Resolve(ent, ref fear))
             return;
 
         var actualStrength = GetActualStrength<T>(fear, strength);
         actualStrength /= GetDrunkModifier(ent);
+
+        if (IsStrengthSimilar(ent, actualStrength))
+            return;
 
         _shaderStrength.TrySetAdditionalStrength(ent, actualStrength);
     }
