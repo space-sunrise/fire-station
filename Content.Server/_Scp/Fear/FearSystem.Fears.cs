@@ -1,4 +1,5 @@
-﻿using Content.Server._Scp.Shaders.Highlighting;
+﻿using System.Runtime.InteropServices;
+using Content.Server._Scp.Shaders.Highlighting;
 using Content.Server._Sunrise.Mood;
 using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
@@ -89,7 +90,7 @@ public sealed partial class FearSystem
             if (!TrySetFearLevel(fearEntity, GetHemophobiaFearState(hemophobia, bloodAmount)))
                 continue;
 
-            _highlight.NetHighlightAll(_hemophobiaBloodList, uid);
+            _highlight.NetHighlightAll(CollectionsMarshal.AsSpan(_hemophobiaBloodList), uid);
             AddNegativeMoodEffect(uid, MoodHemophobicSeeBlood);
         }
 
