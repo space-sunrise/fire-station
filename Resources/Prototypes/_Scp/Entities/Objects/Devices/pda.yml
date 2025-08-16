@@ -438,7 +438,7 @@
       map: [ "enum.PdaVisualLayers.IdLight" ]
       shader: "unshaded"
       visible: false
-    
+
 - type: entity
   parent: ScpBaseMedicalPDA
   id: HeadOfMedicalSectorPDA
@@ -589,7 +589,7 @@
   components:
   - type: Pda
     penSlot:
-      startingItem: PenCentcom
+      startingItem: PenRegionalAdministration
       whitelist:
         tags:
         - Write
