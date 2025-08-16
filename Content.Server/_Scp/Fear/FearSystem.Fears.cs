@@ -10,6 +10,7 @@ using Content.Shared.Fluids.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 
 namespace Content.Server._Scp.Fear;
@@ -71,11 +72,11 @@ public sealed partial class FearSystem
         if (_timing.CurTime < _nextHemophobiaCheck)
             return;
 
-        var query = EntityQueryEnumerator<HemophobiaComponent, FearComponent>();
+        var query = EntityQueryEnumerator<HemophobiaComponent, FearComponent, MobStateComponent>();
 
-        while (query.MoveNext(out var uid, out var hemophobia, out var fear))
+        while (query.MoveNext(out var uid, out var hemophobia, out var fear, out var mob))
         {
-            if (!_mob.IsAlive(uid))
+            if (!_mob.IsAlive(uid, mob))
                 continue;
 
             _hemophobiaBloodList.Clear();

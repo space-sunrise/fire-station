@@ -3,6 +3,7 @@ using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Systems;
 using Content.Shared._Sunrise.Mood;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Timing;
 
@@ -42,12 +43,12 @@ public sealed partial class FearSystem : SharedFearSystem
         if (_timing.CurTime < _nextCalmDownCheck)
             return;
 
-        var query = EntityQueryEnumerator<FearComponent>();
+        var query = EntityQueryEnumerator<FearComponent, MobStateComponent>();
 
         // Проходимся по людям с компонентом страха и уменьшаем уровень страха со временем
-        while (query.MoveNext(out var uid, out var fear))
+        while (query.MoveNext(out var uid, out var fear, out var mob))
         {
-            if (!_mob.IsAlive(uid))
+            if (!_mob.IsAlive(uid, mob))
                 continue;
 
             if (fear.State == FearState.None)
