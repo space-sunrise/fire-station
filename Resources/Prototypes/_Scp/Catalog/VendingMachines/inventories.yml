@@ -1,0 +1,106 @@
+- type: vendingMachineInventory
+  id: ChefvendInventoryDClass
+  startingInventory:
+    ReagentContainerFlour: 1
+    ReagentContainerCornmeal: 1
+    ReagentContainerSugar: 1
+    ReagentContainerRice: 1
+    FoodCondimentPacketSalt: 5
+    FoodCondimentBottleEnzyme: 2
+    FoodCondimentBottleHotsauce: 1
+    FoodCondimentBottleKetchup: 1
+    FoodCondimentBottleBBQ: 1
+    FoodCondimentBottleVinegar: 1
+    ReagentContainerOliveoil: 1
+    ReagentContainerMayo: 1
+    FoodContainerEgg: 1
+    DrinkMilkCarton: 1
+    DrinkSoyMilkCarton: 2
+    FoodMeat: 2
+
+- type: vendingMachineInventory
+  id: ChefDrobeInventoryDClass
+  startingInventory:
+    ClothingOuterApronChef: 3
+    ClothingMaskItalianMoustache: 2
+    ClothingHeadHatChef: 2
+    ClothingShoesChef: 2
+    ClothingBeltChef: 2
+
+- type: vendingMachineInventory
+  id: DinnerwareInventoryDClass
+  startingInventory:
+    KnifePlastic: 8
+    RollingPin: 2
+    SpoonPlastic: 6
+    ForkPlastic: 6
+    PairedChopsticks: 5
+    FoodBowlBig: 10
+    FoodPlatePlastic: 10
+    FoodPlateSmallPlastic: 10
+    FoodPlateTin: 5
+    FoodPlateMuffinTin: 5
+    FoodKebabSkewer: 5
+    Pitcher: 2
+
+- type: vendingMachineInventory
+  id: MegaSeedServitorInventoryDClass
+  startingInventory:
+    AppleSeeds: 3
+    BerrySeeds: 2
+    CarrotSeeds: 2
+    CherrySeeds: 1
+    CornSeeds: 1
+    EggplantSeeds: 2
+    EggySeeds: 3
+    GarlicSeeds: 1
+    LemonSeeds: 2
+    PineappleSeeds: 1
+    OatSeeds: 2
+    OnionSeeds: 2
+    OnionRedSeeds: 2
+    OrangeSeeds: 2
+    PeaSeeds: 1
+    PotatoSeeds: 2
+    PumpkinSeeds: 1
+    RiceSeeds: 2
+    SoybeanSeeds: 2
+    SugarcaneSeeds: 2
+    TomatoSeeds: 2
+    WheatSeeds: 3
+    WatermelonSeeds: 1
+    MeatwheatSeeds: 1
+
+- type: vendingMachineInventory
+  id: NutriMaxInventoryDClass
+  startingInventory:
+    ClothingOuterApronBotanist: 2
+    ClothingHeadBandBotany: 2
+    HydroponicsToolSpade: 2
+    HydroponicsToolMiniHoe: 2
+    HydroponicsToolClippers: 2
+    PlantBag: 2
+    PlantBGoneSpray: 3
+    WeedSpray: 5
+    PestSpray: 5
+    Bucket: 2
+
+- type: vendingMachineInventory
+  id: BoozeOMatInventoryDClass
+  startingInventory:
+    DrinkMugMetal: 9
+    DrinkMugBlack: 2
+    DrinkMugRed: 4
+    DrinkMugBlue: 4
+    DrinkMugGreen: 3
+    DrinkIceBucket: 1
+    BarSpoon: 1
+    DrinkWaterBottleFull: 8
+    DrinkCoconutWaterCarton: 3
+    DrinkEnergyDrinkCan: 3
+    DrinkCreamCarton: 5
+    DrinkJuiceLimeCarton: 3
+    DrinkJuiceLemonCarton: 2
+    DrinkJuiceOrangeCarton: 3
+    DrinkJuiceTomatoCarton: 3
+    DrinkSodaWaterCan: 5
