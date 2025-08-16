@@ -343,12 +343,12 @@ public abstract partial class SharedFearSystem : EntitySystem
         where T : IShaderStrength, IComponent
     {
         if (!Resolve(ent, ref ent.Comp))
-            return false;
+            return true;
 
         // Ранний выход, чтобы не просчитывать всякое, если текущая сила уже равна подобной.
         if (MathHelper.CloseTo(ent.Comp.AdditionalStrength, strength))
-            return false;
+            return true;
 
-        return true;
+        return false;
     }
 }
