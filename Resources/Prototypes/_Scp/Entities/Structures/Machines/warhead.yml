@@ -1,0 +1,98 @@
+﻿- type: entity
+  abstract: true
+  parent: [BaseStructure, BaseMajorContraband]
+  id: BaseNuclearBombScp
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Devices/alpha_warhead.rsi
+    noRot: true
+    layers:
+    - state: nuclearbomb_base
+      map: ["enum.NukeVisualLayers.Base"]
+    - state: lights-safety
+      map: ["enum.NukeVisualLayers.Unlit"]
+      shader: unshaded
+      visible: false
+  - type: GenericVisualizer
+    visuals:
+      enum.NukeVisuals.Deployed:
+        enum.NukeVisualLayers.Base:
+          False: { state: nuclearbomb_base }
+          True:  { state: nuclearbomb_deployed }
+        enum.NukeVisualLayers.Unlit:
+          True:  { visible: true }
+          False: { visible: false }
+      enum.NukeVisuals.State:
+        enum.NukeVisualLayers.Unlit:
+          Idle:        { state: lights-safety }
+          Armed:       { state: lights-timing }
+          YoureFucked: { state: lights-exploding }
+  - type: Appearance
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 255 # Has "bluespace technology" to make it lighter, whatever that means. Don't mind the fact that this is lighter then a high capacity fuel tank.
+        mask:
+        - MachineMask
+        layer:
+        - HalfWallLayer
+  - type: InteractionOutline
+  - type: CargoSellBlacklist
+  - type: ArrivalsBlacklist
+  - type: StealTarget
+    stealGroup: NuclearBomb
+  - type: Tag
+    tags:
+    - GhostOnlyWarp
+  - type: WarpPoint
+    follow: true
+    location: nuclear bomb
+    blacklist:
+      tags:
+      - GhostOnlyWarp
+  - type: PointLight
+    enabled: false
+    radius: 6
+    energy: 2.0
+    color: "#FF4020"
+    mask: /Textures/Effects/LightMasks/double_cone.png
+  - type: RotatingLight
+    speed: 90
+  - type: Nuke
+  - type: FTLSmashImmune
+  - type: NavMapBeacon
+    color: "#ff0000"
+    text: nuclear fission explosive
+    enabled: false
+
+- type: entity
+  parent: BaseNuclearBombScp
+  id: NuclearBombScp
+  components:
+  - type: Nuke
+    explosionType: DefaultStandardEffect
+    maxIntensity: 100
+    intensitySlope: 400
+    totalIntensity: 80000000
+    diskSlot:
+      whitelist:
+        components:
+        - Wall
+    armMusic:
+      path: /Audio/_Scp/StationEvents/nuke_countdown.ogg
+    alertLevelOnActivate: scpDelta
+    alertLevelOnDeactivate: scpBlue
+    minimumTime: 130
+    alertTime: 0
+    alertSound:
+      path: /Audio/_Scp/StationEvents/nuke_boom.ogg
+    armSound:
+      path: /Audio/_Scp/StationEvents/nuke_on.ogg
+    disarmSound:
+      path: /Audio/_Scp/StationEvents/nuke_restart.ogg
+    requiredFloorRadius: 1
