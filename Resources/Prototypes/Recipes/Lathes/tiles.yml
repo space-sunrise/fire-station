@@ -54,8 +54,7 @@
   categories:
   - Concrete
   materials:
-    Steel: 25
-    Plastic: 25
+    Concrete: 25 # Fire Edit
 
 ## Recipes
 

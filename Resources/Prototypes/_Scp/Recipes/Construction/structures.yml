@@ -1,0 +1,51 @@
+- type: construction
+  id: ScpWallConcrete
+  graph: concreteWall
+  startNode: start
+  targetNode: concreteWallEnd
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpWallConcreteDiagonal
+  graph: concreteWallDiagonal
+  startNode: start
+  targetNode: concreteWallDiagonalEnd
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: true
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpWallConcreteLightContaiment
+  graph: concreteWallLightContaiment
+  startNode: start
+  targetNode: concreteWallLightContaimentEnd
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpWallConcreteScience
+  graph: concreteWallScience
+  startNode: start
+  targetNode: concreteWallScienceEnd
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

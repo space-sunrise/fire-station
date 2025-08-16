@@ -1,0 +1,6 @@
+- type: stack
+  id: Concrete
+  name: stack-concrete
+  icon: { sprite: /Textures/_Scp/Objects/Materials/concrete.rsi, state: concrete }
+  spawn: MaterialConcrete1
+  maxCount: 30
