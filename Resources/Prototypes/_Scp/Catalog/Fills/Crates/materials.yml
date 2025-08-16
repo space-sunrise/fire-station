@@ -26,8 +26,8 @@
 - type: entity
   id: CrateMaterialConcrete
   parent: CrateGenericSteel
-  name: сoncrete crate
-  description: 90 сoncrete.
+  name: concrete crate
+  description: 90 concrete.
   components:
   - type: StorageFill
     contents:
