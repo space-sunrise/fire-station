@@ -37,8 +37,8 @@
           !type:PolygonShape
             vertices:
             - "0.0,-0.5"
+            - "1.0,0.0"
             - "0.0,0.5"
-            - "1.0,-0.0"
             - "-1.0,0.0"
         density: 255
         mask:
@@ -71,7 +71,7 @@
   - type: FTLSmashImmune
   - type: NavMapBeacon
     color: "#ff0000"
-    text: nuclear fission explosive
+    text: thermonuclear device
     enabled: false
 
 - type: entity
