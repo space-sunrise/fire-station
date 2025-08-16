@@ -9,6 +9,7 @@
     sprite: _Scp/Objects/Items/painting.rsi
     state: icon
   - type: Item
+    sprite: _Scp/Objects/Items/painting.rsi
     size: Ginormous
   - type: SpecialRespawn
     prototype: ScpAnomalyPainting
