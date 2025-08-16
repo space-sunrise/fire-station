@@ -180,13 +180,18 @@
           !type:DamageTrigger
           damage: 1000
         behaviors:
-          - !type:SpawnEntitiesBehavior
-            spawn:
-              Girder:
-                min: 1
-                max: 1
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            PartRodMetal1:
+              min: 1
+              max: 3
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
 
 - type: entity
   parent: ScpWallSolidDiagonal
@@ -224,13 +229,18 @@
           !type:DamageTrigger
           damage: 800
         behaviors:
-          - !type:SpawnEntitiesBehavior
-            spawn:
-              Girder:
-                min: 1
-                max: 1
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            PartRodMetal1:
+              min: 1
+              max: 2
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
 
 # Стена Лёгкой Зоны Содержания
 - type: entity
@@ -272,13 +282,18 @@
           !type:DamageTrigger
           damage: 1000
         behaviors:
-          - !type:SpawnEntitiesBehavior
-            spawn:
-              Girder:
-                min: 1
-                max: 1
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            PartRodMetal1:
+              min: 1
+              max: 3
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
 
 # Стена Административной Зоны / Научной
 - type: entity
@@ -320,13 +335,18 @@
           !type:DamageTrigger
           damage: 1000
         behaviors:
-          - !type:SpawnEntitiesBehavior
-            spawn:
-              Girder:
-                min: 1
-                max: 1
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            PartRodMetal1:
+              min: 1
+              max: 3
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
 
 # Стена Сдерживания
 - type: entity
