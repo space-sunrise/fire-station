@@ -2,6 +2,7 @@
   id: Demon
   name: species-name-demon
   roundStart: false # Fire edit
+  stationRecordsHidden: true # Fire added
   prototype: MobDemon
   bodyTypes:
   - DemonNormal

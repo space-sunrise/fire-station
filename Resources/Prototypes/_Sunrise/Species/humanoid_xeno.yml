@@ -3,6 +3,7 @@
   id: HumanoidXeno
   name: species-name-xeno
   roundStart: false # Fire edit
+  stationRecordsHidden: true # Fire added
   prototype: MobHumanoidXeno
   bodyTypes:
   - HumanoidXenoNormal

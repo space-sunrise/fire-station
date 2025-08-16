@@ -413,6 +413,10 @@
     access: [["Security"], ["HeadOfPersonnel"]]
   # Sunrise added end
   - type: GeneralStationRecordConsole
+    announcementChannels:
+    - Administration
+    - HeavyContainmentSecurityService
+    - ExternalAdministrativeZoneSecurityService
   - type: UserInterface
     interfaces:
         enum.GeneralStationRecordConsoleKey.Key:

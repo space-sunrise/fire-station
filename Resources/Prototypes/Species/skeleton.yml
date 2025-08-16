@@ -2,6 +2,7 @@
   id: Skeleton
   name: species-name-skeleton
   roundStart: false
+  stationRecordsHidden: true # Fire added
   prototype: MobSkeletonPerson
   bodyTypes:
   - SkeletonNormal

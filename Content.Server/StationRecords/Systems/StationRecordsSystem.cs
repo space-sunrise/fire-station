@@ -97,12 +97,13 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
 
         // Sunrise-Start
         // Чтобы борги отображались в манифесте экипажа.
-        var name = profile.Name;
-        if (!_inventory.TryGetSlotEntity(player, "id", out var idUid))
-        {
-            idUid = player;
-            name = MetaData(player).EntityName;
-        }
+
+        // Fire edit - чтобы дешники отображались с именем дешников
+        var name = MetaData(player).EntityName;
+
+        if (_idCard.TryGetIdCard(player, out var idUid))
+            name = idUid.Comp.FullName ?? name;
+        // Fire edit end
 
         var silicon = HasComp<BorgChassisComponent>(player) || HasComp<StationAiHeldComponent>(player);
         // Sunrise-End

@@ -3,6 +3,7 @@
   id: Predator
   name: species-name-predator
   roundStart: false # Fire edit
+  stationRecordsHidden: true # Fire added
   prototype: MobPredator
   bodyTypes:
   - PredatorNormal
