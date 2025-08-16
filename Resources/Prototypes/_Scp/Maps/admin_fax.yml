@@ -1,0 +1,16 @@
+﻿- type: gameMap
+  id: AdminFaxBase
+  mapName: 'Штаб регионального руководства'
+  mapPath: /Maps/_Scp/admin_fax.yml
+  maxRandomOffset: 0
+  randomRotation: false
+  minPlayers: 0
+  stations:
+    AdminFaxBase:
+      stationProto: ScpRegionalAdministration
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Штаб региональной администрации'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: 'SCP'
