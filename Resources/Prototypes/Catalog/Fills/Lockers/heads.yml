@@ -53,8 +53,8 @@
     - id: CommsComputerCircuitboard
     - id: DoorRemoteCommand
     - id: MedalCase
-    # - id: NukeDisk # Fire Edit
-    # - id: PinpointerNuclear # Fire Edit
+    - id: NukeDisk
+    - id: PinpointerNuclear
     - id: PlushieNuke
       prob: 0.1
     - id: RubberStampDirector # Fire edit
