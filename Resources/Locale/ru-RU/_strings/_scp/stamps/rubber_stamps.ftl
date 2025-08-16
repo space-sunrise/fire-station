@@ -14,5 +14,3 @@ stamp-component-stamped-name-ethics-committee = Комитет по этике
 stamp-component-stamped-name-lesser-council = Совет О4
 stamp-component-stamped-name-regional-command = Региональное управление
 stamp-component-stamped-name-o4-command = Штаб О4
-
-job-name-regional-administration = Региональная Администрация

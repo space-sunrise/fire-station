@@ -1284,7 +1284,7 @@ SpawnPointAdjutant: null
 
 # Печати
 RubberStampCaptain: RubberStampDirector
-RubberStampCentcom: RubberStampRegionalAdministration
+RubberStampCentcom: RubberStampRegionalCommand
 RubberStampCE: RubberStampChiefTechnicalSpecialist
 RubberStampCMO: RubberStampHeadOfMedicalSector
 RubberStampHop: RubberStampPersonnelOfficer

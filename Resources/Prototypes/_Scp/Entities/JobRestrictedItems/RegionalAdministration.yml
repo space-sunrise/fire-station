@@ -77,14 +77,12 @@
     shoes: ClothingShoesLeather
     eyes: ClothingEyesGlassesCommand
     gloves: ClothingHandsGlovesHop
-    id: RegionalAdministrationPDA
-    ears: ClothingHeadsetAltMTF
+    id: RegionalAdministrationIDCard
+    ears: ClothingHeadsetAltRegionalAdministration
     pocket1: MindShieldImplanter
+    pocket2: ManagerPDA
   inhand:
   - ClothingBackpackSatchelLeather
-  storage:
-    belt:
-    - WeaponPistolN1984
 
 - type: entity
   parent: ClothingUniformJumpsuitCentcomAgent
@@ -106,15 +104,3 @@
 - type: entity
   parent: PenCentcom
   id: PenRegionalAdministration
-
-- type: entity
-  parent: CentcomOperatorPDA
-  id: RegionalAdministrationPDA
-  components:
-  - type: Pda
-    id: RegionalAdministrationIDCard
-    penSlot:
-      startingItem: PenRegionalAdministration
-      whitelist:
-        tags:
-        - Write
