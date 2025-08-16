@@ -2,6 +2,7 @@
   id: Gingerbread
   name: species-name-gingerbread
   roundStart: false
+  stationRecordsHidden: true # Fire added
   prototype: MobGingerbread
   bodyTypes:
   - GingerbreadNormal

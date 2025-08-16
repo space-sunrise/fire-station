@@ -2,6 +2,7 @@
   id: Arachnid
   name: species-name-arachnid
   roundStart: false # Fire edit
+  stationRecordsHidden: true # Fire added
   prototype: MobArachnid
   bodyTypes:
   - ArachnidNormal
