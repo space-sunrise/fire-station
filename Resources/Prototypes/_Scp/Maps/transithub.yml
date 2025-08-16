@@ -1,0 +1,16 @@
+﻿- type: gameMap
+  id: TransitHub
+  mapName: 'Распределительный центр Фонда'
+  mapPath: /Maps/_Scp/transithub.yml
+  maxRandomOffset: 0
+  randomRotation: false
+  minPlayers: 0
+  stations:
+    TransitHub:
+      stationProto: ScpRegionalAdministration
+      components:
+      - type: StationNameSetup
+        mapNameTemplate: 'Распределительный центр Фонда'
+        nameGenerator:
+          !type:NanotrasenNameGenerator
+          prefixCreator: 'SCP'

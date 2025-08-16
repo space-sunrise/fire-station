@@ -12,7 +12,7 @@
   - ScpComplexGoal # Цели комплекса по изучению SCP
   - BaseStationAntagsTargets  # Для предателей
   # - BaseStationCryoTeleport  # Телепорт в крио. Я в нем уверен на 99%. А я не уверен
-  # - BaseStationRegionalAdministration  Добавляет неиспользуемое(игровое) ЦК. Настоящее ЦК через BaseComplexTransitHub
+  - BaseStationRegionalAdministration  # Добавляет неиспользуемое(игровое) ЦК. Настоящее ЦК через BaseComplexTransitHub
   - BaseComplexTransitHub
   - BaseStationCargo
   - BaseStationAllEventsEligible
