@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "size": {
+    "x": 96,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "nuclearbomb_base"
+    },
+    {
+      "name": "nuclearbomb_deployed"
+    },
+    {
+      "name": "lights-safety"
+    },
+    {
+      "name": "lights-timing",
+      "delays": [
+        [
+          0.4,
+          0.4,
+          0.4,
+          1.2
+        ]
+      ]
+    },
+    {
+      "name": "lights-exploding"
+    }
+  ]
+}
