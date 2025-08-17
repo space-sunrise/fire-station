@@ -363,7 +363,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         _window?.Close();
     }
 
-    private void ToggleWindow()
+    public void ToggleWindow()
     {
         if (_window == null)
             return;
