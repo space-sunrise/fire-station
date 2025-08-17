@@ -258,11 +258,11 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     private void CheckAccess()
     {
         Name.Editable = _hasAccess;
-        Age.Editable = _hasAccess || !_nonHumanoid;
+        Age.Editable = _hasAccess;
         Personality.Editable = _hasAccess;
-        Gender.Disabled = !_hasAccess || _nonHumanoid;
-        Species.Disabled = !_hasAccess || _nonHumanoid;
-        Job.Disabled = !_hasAccess || _nonHumanoid;
+        Gender.Disabled = !_hasAccess;
+        Species.Disabled = !_hasAccess;
+        Job.Disabled = !_hasAccess;
     }
 
     private void CheckChanges()
