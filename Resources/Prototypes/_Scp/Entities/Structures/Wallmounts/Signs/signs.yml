@@ -146,6 +146,34 @@
   - type: Sprite
     state: direction_ss
 
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScpShelter
+  components:
+  - type: Sprite
+    state: direction_shelter
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScpSafe
+  components:
+  - type: Sprite
+    state: scp_safe
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScpEuclid
+  components:
+  - type: Sprite
+    state: scp_euclid
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScpKeter
+  components:
+  - type: Sprite
+    state: scp_keter
+
 # Не направленные указатели
 
 - type: entity

@@ -163,7 +163,9 @@
         prob: 0.50
       - id: CrayonBox
         prob: 0.10
-      - id: ClearPDA # change to visitor one day.
+      # - id: ClearPDA # change to visitor one day. # Fire Edit
+      #   prob: 0.10
+      - id: BaseFoundationPDA # Fire Edit
         prob: 0.10
       - id: PersonalAI
 

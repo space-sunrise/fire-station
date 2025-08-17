@@ -52,4 +52,15 @@ public sealed class HighlightSystem : SharedHighlightSystem
             NetHighlight(uid, recipient);
         }
     }
+
+    /// <summary>
+    /// <inheritdoc cref="SharedHighlightSystem.HighLightAll"/>
+    /// </summary>
+    public void NetHighlightAll(ReadOnlySpan<EntityUid> list, EntityUid? recipient = null)
+    {
+        foreach (var uid in list)
+        {
+            NetHighlight(uid, recipient);
+        }
+    }
 }

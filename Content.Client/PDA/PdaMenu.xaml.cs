@@ -55,7 +55,7 @@ namespace Content.Client.PDA
             HomeButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/home.png"));
             FlashLightToggleButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/light.png"));
             EjectPenButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pencil.png"));
-            EjectIdButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/eject.png"));
+            // EjectIdButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/eject.png"));
             EjectPaiButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/pai.png"));
             ProgramCloseButton.IconTexture = new SpriteSpecifier.Texture(new("/Textures/Interface/Nano/cross.svg.png"));
 
@@ -99,6 +99,7 @@ namespace Content.Client.PDA
                 ToHomeScreen();
             };
 
+            /* Fire Edit
             PdaOwnerButton.OnPressed += _ =>
             {
                 _clipboard.SetText(_pdaOwner);
@@ -108,6 +109,7 @@ namespace Content.Client.PDA
             {
                 _clipboard.SetText(_owner + ", " + _jobTitle);
             };
+            */
 
             StationNameButton.OnPressed += _ =>
             {
@@ -163,6 +165,7 @@ namespace Content.Client.PDA
             _evacShuttleStatus = state.PdaOwnerInfo.EvacShuttleStatus;
             // Sunrise-end
 
+            /* Fire Edit
             if (state.PdaOwnerInfo.ActualOwnerName != null)
             {
                 _pdaOwner = state.PdaOwnerInfo.ActualOwnerName;
@@ -188,7 +191,8 @@ namespace Content.Client.PDA
             {
                 IdInfoLabel.SetMarkup(Loc.GetString("comp-pda-ui-blank"));
             }
-
+            */
+            
             _stationName = state.StationName ?? Loc.GetString("comp-pda-ui-unknown");
             StationNameLabel.SetMarkup(Loc.GetString("comp-pda-ui-station",
                 ("station", _stationName)));
@@ -234,7 +238,7 @@ namespace Content.Client.PDA
 
             AddressLabel.Text = state.Address?.ToUpper() ?? " - ";
 
-            EjectIdButton.IsActive = state.PdaOwnerInfo.IdOwner != null || state.PdaOwnerInfo.JobTitle != null;
+            // EjectIdButton.IsActive = state.PdaOwnerInfo.IdOwner != null || state.PdaOwnerInfo.JobTitle != null;
             EjectPenButton.IsActive = state.HasPen;
             EjectPaiButton.IsActive = state.HasPai;
             ActivateMusicButton.Visible = state.CanPlayMusic;

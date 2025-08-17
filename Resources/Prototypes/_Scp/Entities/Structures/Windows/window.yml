@@ -40,6 +40,11 @@
         - FullTileMask
         layer:
         - GlassLayer
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
 
 - type: entity
   id: BaseScpWindowDirectionalRound
@@ -79,6 +84,12 @@
         - FullTileMask
         layer:
         - GlassLayer
+  - type: Airtight
+    noAirWhenFullyAirBlocked: false
+    airBlockedDirection:
+    - South
+    - East
+    - West
 
 - type: entity
   parent: Window
