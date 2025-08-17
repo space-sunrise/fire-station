@@ -23,12 +23,12 @@
       requirement:
         !type:DepartmentTimeRequirement
         department: HeavyContainmentSecurityService
-        time: 180000 #50 hrs
+        time: 90000 #25 hrs
     - !type:JobRequirementLoadoutEffect
       requirement:
         !type:DepartmentTimeRequirement
         department: ExternalAdministrativeZoneSecurityService
-        time: 180000 #50 hrs
+        time: 90000 #25 hrs
     # Fire edit end
 
 # Head

@@ -13,29 +13,50 @@
 - type: loadoutEffectGroup
   id: MasterCadet5h
   effects:
+  # Fire edit start
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Security
-      time: 18000 #5 hrs
+      department: HeavyContainmentSecurityService
+      time: 9000 #2.5 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService
+      time: 9000 #2.5 hrs
+  # Fire edit end
 
 - type: loadoutEffectGroup
   id: MasterCadet10h
   effects:
+  # Fire edit start
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Security
-      time: 36000 #10 hrs
+      department: HeavyContainmentSecurityService
+      time: 18000 #5 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService
+      time: 18000 #5 hrs
+  # Fire edit end
 
 - type: loadoutEffectGroup
   id: MasterCadet20h
   effects:
+  # Fire edit start
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Security
-      time: 72000 #20 hrs
+      department: HeavyContainmentSecurityService
+      time: 36000 #10 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService
+      time: 36000 #10 hrs
+  # Fire edit end
 
 - type: loadout
   id: CadetWeaponACP14Box
