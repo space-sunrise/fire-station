@@ -1,5 +1,6 @@
 ﻿using Content.Server.Players.PlayTimeTracking;
 using Content.Shared._Scp.Other.AutoOpenCharacterMenu;
+using Content.Shared._Scp.ScpCCVars;
 using Content.Shared.GameTicking;
 using Content.Shared.Roles;
 using Robust.Shared.Prototypes;
@@ -11,15 +12,23 @@ public sealed class AutoOpenCharacterMenuSystem : SharedAutoOpenCharacterMenuSys
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly PlayTimeTrackingManager _playtime = default!;
 
+    private bool _enabled;
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<PlayerSpawnCompleteEvent>(OnPlayerSpawnComplete);
+
+        _enabled = Configuration.GetCVar(ScpCCVars.AutoOpenCharacterMenuServerSideEnabled);
+        Configuration.OnValueChanged(ScpCCVars.AutoOpenCharacterMenuServerSideEnabled, b => _enabled = b);
     }
 
     private void OnPlayerSpawnComplete(PlayerSpawnCompleteEvent ev)
     {
+        if (!_enabled)
+            return;
+
         if (ev.JobId == null || !_prototype.TryIndex<JobPrototype>(ev.JobId, out var job))
             return;
 
