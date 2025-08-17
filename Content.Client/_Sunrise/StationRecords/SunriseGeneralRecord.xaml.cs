@@ -108,6 +108,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         MakeDropDownSelectable();
         CheckAccess();
         CheckChanges();
+        CheckPossibleInvisible();
     }
 
     protected override void ExitedTree()
@@ -123,7 +124,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     private void UpdateEditableInfo(GeneralStationRecord record)
     {
         Name.Text = record.Name;
-        Age.Text = !_nonHumanoid ? record.Age.ToString() : "0";
+        Age.Text = record.Age.ToString();
 
         for (var i = 0; i < _allGender.Length; i++)
         {
@@ -275,6 +276,27 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         }
 
         Personality.OnTextChanged += _ => MakeSaveAvailable();
+    }
+
+    private void CheckPossibleInvisible()
+    {
+        AgeLabel.Visible = !_nonHumanoid;
+        Age.Visible = !_nonHumanoid;
+
+        GenderLabel.Visible = !_nonHumanoid;
+        Gender.Visible = !_nonHumanoid;
+
+        SpeciesLabel.Visible = !_nonHumanoid;
+        Species.Visible = !_nonHumanoid;
+
+        JobLabel.Visible = !_nonHumanoid;
+        Job.Visible = !_nonHumanoid;
+
+        FingerprintLabel.Visible = !_nonHumanoid;
+        Fingerprint.Visible = !_nonHumanoid;
+
+        DnaLabel.Visible = !_nonHumanoid;
+        Dna.Visible = !_nonHumanoid;
     }
 
     private void MakeSaveAvailable()
