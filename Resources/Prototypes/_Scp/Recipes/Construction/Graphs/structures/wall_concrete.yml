@@ -1,0 +1,85 @@
+- type: constructionGraph
+  id: concreteWall
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: concreteWallEnd
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: MetalRod
+              amount: 4
+              doAfter: 0
+            - material: Concrete
+              amount: 3
+              doAfter: 9
+    - node: concreteWallEnd
+      entity: ScpWallConcrete
+
+- type: constructionGraph
+  id: concreteWallDiagonal
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: concreteWallDiagonalEnd
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: MetalRod
+              amount: 2
+              doAfter: 0
+            - material: Concrete
+              amount: 2
+              doAfter: 6
+    - node: concreteWallDiagonalEnd
+      entity: ScpWallConcreteDiagonal
+
+- type: constructionGraph
+  id: concreteWallLightContaiment
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: concreteWallLightContaimentEnd
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: MetalRod
+              amount: 4
+              doAfter: 0
+            - material: Concrete
+              amount: 3
+              doAfter: 9
+    - node: concreteWallLightContaimentEnd
+      entity: ScpWallConcreteLightContaiment
+
+- type: constructionGraph
+  id: concreteWallScience
+  start: start
+  graph:
+    - node: start
+      entity: ScpWallConcreteScience
+      edges:
+        - to: concreteWallScienceEnd
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: MetalRod
+              amount: 4
+              doAfter: 0
+            - material: Concrete
+              amount: 3
+              doAfter: 9
+    - node: concreteWallScienceEnd
+      entity: ScpWallConcreteScience

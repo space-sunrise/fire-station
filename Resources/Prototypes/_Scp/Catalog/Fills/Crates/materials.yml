@@ -22,3 +22,14 @@
         amount: 3
   - type: AccessReader
     access: [["Research"], ["Command"]]
+
+- type: entity
+  id: CrateMaterialConcrete
+  parent: CrateGenericSteel
+  name: concrete crate
+  description: 90 concrete.
+  components:
+  - type: StorageFill
+    contents:
+      - id: MaterialConcrete
+        amount: 3
