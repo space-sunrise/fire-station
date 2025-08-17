@@ -18,7 +18,7 @@
     - type: EmployeeClass
       class: C
     - type: AccessLevel
-      level: Three
+      level: Two
 
 - type: startingGear
   id: ElectricalTechnicalSpecialistGear

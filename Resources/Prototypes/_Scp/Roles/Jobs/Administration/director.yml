@@ -22,9 +22,9 @@
     components:
     - type: CommandStaff
     - type: EmployeeClass
-      class: A
+      class: B
     - type: AccessLevel
-      level: Five
+      level: Four
 
 - type: startingGear
   id: DirectorGear

@@ -18,8 +18,6 @@
     - type: ClassDAppearance
     - type: EmployeeClass
       class: D
-    - type: AccessLevel
-      level: Zero
 
 - type: startingGear
   id: ClassDJanitorGear

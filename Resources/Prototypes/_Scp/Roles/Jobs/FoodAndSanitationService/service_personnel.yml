@@ -14,7 +14,7 @@
     - type: EmployeeClass
       class: C
     - type: AccessLevel
-      level: Zero
+      level: One
 
 - type: startingGear
   id: ServicePersonnelGear

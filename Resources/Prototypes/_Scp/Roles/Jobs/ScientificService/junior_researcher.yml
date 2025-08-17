@@ -16,7 +16,7 @@
     - type: EmployeeClass
       class: C
     - type: AccessLevel
-      level: One
+      level: Two
     - type: Fear
       phobias:
       - Exoremophobia

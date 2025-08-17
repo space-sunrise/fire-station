@@ -20,9 +20,9 @@
     components:
     - type: CommandStaff
     - type: EmployeeClass
-      class: B
+      class: C
     - type: AccessLevel
-      level: Five
+      level: Four
     - type: Fear
       phobias:
       - Exoremophobia
