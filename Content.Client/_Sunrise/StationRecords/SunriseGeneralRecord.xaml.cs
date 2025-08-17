@@ -37,6 +37,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     private readonly Gender[] _allGender;
 
     private readonly bool _hasAccess;
+    private readonly bool _nonHumanoid;
 
     // Копия этого хранится в серверной системе
     private const int MaxAgeLength = 6;
@@ -98,6 +99,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         }
 
         _hasAccess = hasAccess;
+        _nonHumanoid = record.NonHumanoid;
 
         UpdateEditableInfo(record);
         UpdateHeading(record);
@@ -121,7 +123,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     private void UpdateEditableInfo(GeneralStationRecord record)
     {
         Name.Text = record.Name;
-        Age.Text = record.Age.ToString();
+        Age.Text = !_nonHumanoid ? record.Age.ToString() : "0";
 
         for (var i = 0; i < _allGender.Length; i++)
         {
@@ -255,11 +257,11 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     private void CheckAccess()
     {
         Name.Editable = _hasAccess;
-        Age.Editable = _hasAccess;
+        Age.Editable = _hasAccess || !_nonHumanoid;
         Personality.Editable = _hasAccess;
-        Gender.Disabled = !_hasAccess;
-        Species.Disabled = !_hasAccess;
-        Job.Disabled = !_hasAccess;
+        Gender.Disabled = !_hasAccess || _nonHumanoid;
+        Species.Disabled = !_hasAccess || _nonHumanoid;
+        Job.Disabled = !_hasAccess || _nonHumanoid;
     }
 
     private void CheckChanges()
