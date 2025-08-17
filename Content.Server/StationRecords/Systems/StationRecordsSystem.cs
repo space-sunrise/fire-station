@@ -92,25 +92,26 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
     {
         // TODO make PlayerSpawnCompleteEvent.JobId a ProtoId
         if (string.IsNullOrEmpty(jobId)
-            || !_prototypeManager.HasIndex<JobPrototype>(jobId))
+            || !_prototypeManager.TryIndex<JobPrototype>(jobId, out var job))
             return;
 
         // Sunrise-Start
         // Чтобы борги отображались в манифесте экипажа.
-        var name = profile.Name;
-        if (!_inventory.TryGetSlotEntity(player, "id", out var idUid))
-        {
-            idUid = player;
-            name = MetaData(player).EntityName;
-        }
 
-        var silicon = HasComp<BorgChassisComponent>(player) || HasComp<StationAiHeldComponent>(player);
+        // Fire edit - чтобы дешники отображались с именем дешников
+        var name = MetaData(player).EntityName;
+
+        if (_idCard.TryGetIdCard(player, out var idUid))
+            name = idUid.Comp.FullName ?? name;
+        // Fire edit end
+
+        var nonHumanoid = HasComp<BorgChassisComponent>(player) || HasComp<StationAiHeldComponent>(player) || job.JobEntity != null;
         // Sunrise-End
 
         TryComp<FingerprintComponent>(player, out var fingerprintComponent);
         TryComp<DnaComponent>(player, out var dnaComponent);
 
-        CreateGeneralRecord(station, idUid, name, profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records, silicon); // Sunrise-Edit
+        CreateGeneralRecord(station, idUid, name, profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records, nonHumanoid); // Sunrise-Edit
     }
 
 
@@ -153,7 +154,7 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         string? dna,
         HumanoidCharacterProfile profile,
         StationRecordsComponent records,
-        bool silicon = false) // Sunrise-Edit
+        bool nonHumanoid = false) // Sunrise-Edit
     {
         if (!_prototypeManager.TryIndex<JobPrototype>(jobId, out var jobPrototype))
             throw new ArgumentException($"Invalid job prototype ID: {jobId}");
@@ -181,7 +182,7 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
             DisplayPriority = jobPrototype.RealDisplayWeight,
             Fingerprint = mobFingerprint,
             DNA = dna,
-            Silicon = silicon, // Sunrise-Edit
+            NonHumanoid = nonHumanoid, // Sunrise-Edit
             HumanoidProfile = profile, // Sunrise edit
         };
 

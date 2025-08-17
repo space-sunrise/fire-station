@@ -12,7 +12,6 @@ using Content.Shared.Roles;
 using Content.Shared.StationRecords;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
-using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
@@ -140,11 +139,11 @@ public sealed partial class GeneralStationRecordConsoleSystem
         var text = Loc.GetString(
             "printed-station-records-content",
             ("name", record.Name),
-            ("job", GetJobName(record.JobPrototype)),
-            ("department", GetDepartmentName(record.JobPrototype)),
-            ("age", record.Age),
-            ("gender", GetGenderName(record.Gender)),
-            ("species", GetSpeciesName(record.Species)),
+            ("job", GetJobName(record)),
+            ("department", GetDepartmentName(record)),
+            ("age", GetAgeName(record)),
+            ("gender", GetGenderName(record)),
+            ("species", GetSpeciesName(record)),
             ("dna", record.DNA ?? Loc.GetString("printed-station-records-unrecognized")),
             ("fingerprint", record.Fingerprint ?? Loc.GetString("printed-station-records-unrecognized")),
             ("personality", GetPersonality(record.Personality))
@@ -193,30 +192,50 @@ public sealed partial class GeneralStationRecordConsoleSystem
 
     #region Helpers
 
-    private string GetJobName(ProtoId<JobPrototype> job)
+    private string GetJobName(GeneralStationRecord record)
     {
-        if (!_prototype.TryIndex(job, out var jobPrototype))
+        if (record.NonHumanoid)
+            return Loc.GetString("generic-not-available-shorthand");
+
+        if (!_prototype.TryIndex<JobPrototype>(record.JobPrototype, out var jobPrototype))
             return Loc.GetString("printed-station-records-unrecognized");
 
         return jobPrototype.LocalizedName;
     }
 
-    private string GetDepartmentName(ProtoId<JobPrototype> job)
+    private string GetDepartmentName(GeneralStationRecord record)
     {
-        if (!_job.TryGetDepartment(job, out var department))
+        if (record.NonHumanoid)
+            return Loc.GetString("generic-not-available-shorthand");
+
+        if (!_job.TryGetDepartment(record.JobPrototype, out var department))
             return Loc.GetString("printed-station-records-unrecognized");
 
         return Loc.GetString(department.Name);
     }
 
-    private string GetGenderName(Gender gender)
+    private string GetAgeName(GeneralStationRecord record)
     {
-        return Loc.GetString("station-records-gender", ("gender", gender.ToString()));
+        if (record.NonHumanoid)
+            return Loc.GetString("generic-not-available-shorthand");
+
+        return record.Age.ToString();
     }
 
-    private string GetSpeciesName(ProtoId<SpeciesPrototype> species)
+    private string GetGenderName(GeneralStationRecord record)
     {
-        if (!_prototype.TryIndex(species, out var speciesPrototype))
+        if (record.NonHumanoid)
+            return Loc.GetString("generic-not-available-shorthand");
+
+        return Loc.GetString("station-records-gender", ("gender", record.Gender.ToString()));
+    }
+
+    private string GetSpeciesName(GeneralStationRecord record)
+    {
+        if (record.NonHumanoid)
+            return Loc.GetString("generic-not-available-shorthand");
+
+        if (!_prototype.TryIndex<SpeciesPrototype>(record.Species, out var speciesPrototype))
             return Loc.GetString("printed-station-records-unrecognized");
 
         return Loc.GetString(speciesPrototype.Name);

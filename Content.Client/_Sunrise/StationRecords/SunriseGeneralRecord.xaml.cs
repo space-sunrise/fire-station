@@ -37,6 +37,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     private readonly Gender[] _allGender;
 
     private readonly bool _hasAccess;
+    private readonly bool _nonHumanoid;
 
     // Копия этого хранится в серверной системе
     private const int MaxAgeLength = 6;
@@ -98,6 +99,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         }
 
         _hasAccess = hasAccess;
+        _nonHumanoid = record.NonHumanoid;
 
         UpdateEditableInfo(record);
         UpdateHeading(record);
@@ -106,6 +108,7 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         MakeDropDownSelectable();
         CheckAccess();
         CheckChanges();
+        CheckPossibleInvisible();
     }
 
     protected override void ExitedTree()
@@ -273,6 +276,27 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         }
 
         Personality.OnTextChanged += _ => MakeSaveAvailable();
+    }
+
+    private void CheckPossibleInvisible()
+    {
+        AgeLabel.Visible = !_nonHumanoid;
+        Age.Visible = !_nonHumanoid;
+
+        GenderLabel.Visible = !_nonHumanoid;
+        Gender.Visible = !_nonHumanoid;
+
+        SpeciesLabel.Visible = !_nonHumanoid;
+        Species.Visible = !_nonHumanoid;
+
+        JobLabel.Visible = !_nonHumanoid;
+        Job.Visible = !_nonHumanoid;
+
+        FingerprintLabel.Visible = !_nonHumanoid;
+        Fingerprint.Visible = !_nonHumanoid;
+
+        DnaLabel.Visible = !_nonHumanoid;
+        Dna.Visible = !_nonHumanoid;
     }
 
     private void MakeSaveAvailable()

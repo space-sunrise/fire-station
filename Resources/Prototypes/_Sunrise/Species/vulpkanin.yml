@@ -2,6 +2,7 @@
   id: Vulpkanin
   name: species-name-foxes
   roundStart: false # Fire edit
+  stationRecordsHidden: true # Fire added
   prototype: MobVulpkanin
   bodyTypes:
   # оставил VulpkaninNormal чтобы у людей не сбрасывались их настройки
