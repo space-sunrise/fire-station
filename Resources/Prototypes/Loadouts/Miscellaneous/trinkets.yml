@@ -338,8 +338,8 @@
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
-      !type:RoleTimeRequirement
-      role: JobPassenger
+      !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService # Fire Edit
       time: 360000 # 100hr
   storage:
     back:
@@ -363,7 +363,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobLibrarian
+      role: JobServicePersonnel # Fire Edit
       time: 360000 # 100hr
   storage:
     back:
@@ -399,7 +399,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobMime
+      role: JobServicePersonnel # Fire Edit
       time: 360000 # 100hr
   storage:
     back:

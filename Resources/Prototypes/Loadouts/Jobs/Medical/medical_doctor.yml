@@ -5,17 +5,17 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobChemist
+      role: JobPharmaceuticalSpecialist # Fire Edit
       time: 21600 #6 hrs
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobMedicalDoctor
+      role: JobMedicalSpecialist # Fire Edit
       time: 21600 #6 hrs
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Medical
+      department: MedicalService # Fire Edit
       time: 216000 # 60 hrs
 
 # Other Timers
@@ -26,7 +26,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobMedicalDoctor
+      role: JobMedicalSpecialist # Fire Edit
       time: 108000 #30 hrs
 
 # Head

@@ -4,7 +4,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobChiefEngineer
+      role: JobChiefTechnicalSpecialist # Fire Edit
       time: 360000 #100 hrs
 
 - type: loadout

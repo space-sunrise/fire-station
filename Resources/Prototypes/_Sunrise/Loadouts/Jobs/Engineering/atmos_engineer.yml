@@ -4,7 +4,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobAtmosphericTechnician
+      role: JobElectricalTechnicalSpecialist # Fire Edit
       time: 360000 # 100 hour
   equipment:
     head: ClothingHeadHatBeretAtmos

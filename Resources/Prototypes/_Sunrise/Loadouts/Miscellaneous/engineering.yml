@@ -6,7 +6,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Engineering
+      department: EngineeringTechnicalService # Fire Edit
       time: 72000 # 20hr
   storage:
     back:
@@ -18,7 +18,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Engineering
+      department: EngineeringTechnicalService # Fire Edit
       time: 72000 # 20hr
   storage:
     back:
@@ -30,7 +30,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Engineering
+      department: EngineeringTechnicalService # Fire Edit
       time: 7200 # 2hr
   storage:
     back:
@@ -42,7 +42,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Engineering
+      department: EngineeringTechnicalService # Fire Edit
       time: 7200 # 2hr
   storage:
     back:
@@ -54,7 +54,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Engineering
+      department: EngineeringTechnicalService # Fire Edit
       time: 7200 # 2hr
   storage:
     back:
@@ -66,7 +66,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Engineering
+      department: EngineeringTechnicalService # Fire Edit
       time: 7200 # 2hr
   storage:
     back:
@@ -78,7 +78,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Engineering
+      department: EngineeringTechnicalService # Fire Edit
       time: 1080000 # 300hr
   storage:
     back:
@@ -90,7 +90,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobChiefEngineer
+      role: JobChiefTechnicalSpecialist # Fire Edit
       time: 72000 # 20 hour
   storage:
     back:
@@ -103,7 +103,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobAtmosphericTechnician
+      role: JobElectricalTechnicalSpecialist # Fire Edit
       time: 72000 # 20 hour
   storage:
     back:
@@ -115,7 +115,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobStationEngineer
+      role: JobGeneralTechnicalSpecialist # Fire Edit
       time: 72000 # 20 hour
   storage:
     back:
@@ -127,7 +127,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Engineering
+      department: EngineeringTechnicalService # Fire Edit
       time: 1080000 # 300hr
   storage:
     back:
@@ -139,7 +139,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Engineering
+      department: EngineeringTechnicalService # Fire Edit
       time: 36000 # 10hr
   storage:
     back:

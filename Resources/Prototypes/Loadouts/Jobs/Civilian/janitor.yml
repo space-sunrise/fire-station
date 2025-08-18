@@ -5,7 +5,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobJanitor
+      role: JobServicePersonnel # Fire Edit
       time: 72000 # 20 hrs
 # Sunrise-end
 
@@ -15,7 +15,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobJanitor
+      role: JobServicePersonnel # Fire Edit
       time: 187200 #52 hrs (1 hour per week for 1 year)
 
 # Head

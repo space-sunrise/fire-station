@@ -5,7 +5,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobHeadOfSecurity
+      role: JobSecurityCommander # Fire Edit
       time: 72000 #20 hrs
 
 #Sunrise-Start
@@ -15,7 +15,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobHeadOfSecurity
+      role: JobSecurityCommander # Fire Edit
       time: 180000 #50 hrs
 
 - type: loadoutEffectGroup
@@ -24,7 +24,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobHeadOfSecurity
+      role: JobSecurityCommander # Fire Edit
       time: 360000 #100 hrs
 
 #WeaponsHos
