@@ -1,21 +1,51 @@
 ﻿- type: entity
-  parent: RadioHandheldSecurity
-  id: RadioHandheldHeavyContainmentSecurityService
+  parent: BaseItem
+  id: ScpRadioHandheldCommon
+  name: handheld radio
   components:
-  - type: RadioMicrophone
-    broadcastChannel: HeavyContainmentSecurityService
-    listenRange: 1
-  - type: RadioSpeaker
+  - type: Sprite
+    sprite: Objects/Devices/securityhandy.rsi
+    layers:
+    - state: walkietalkie
+    - state: walkietalkie-on
+    state: walkietalkie
+  - type: Item
+    sprite: Objects/Devices/securityhandy.rsi
+    heldPrefix: walkietalkie
+  - type: ScpRadio
+    channels:
+    - Common
+  - type: Speech
+    speechVerb: Robotic
+  - type: TelecomExempt
+  - type: Appearance
+  - type: Tag
+    tags:
+    - Radio
+
+- type: entity
+  parent: ScpRadioHandheldCommon
+  id: RadioHandheldHeavyContainmentSecurityService
+  name: security handheld radio
+  components:
+  - type: ScpRadio
     channels:
     - HeavyContainmentSecurityService
 
 - type: entity
-  parent: RadioHandheldHeavyContainmentSecurityService
+  parent: ScpRadioHandheldCommon
   id: RadioHandheldExternalAdministrativeZoneSecurityService
+  name: security handheld radio
   components:
-  - type: RadioMicrophone
-    broadcastChannel: ExternalAdministrativeZoneSecurityService
-    listenRange: 1
-  - type: RadioSpeaker
+  - type: ScpRadio
     channels:
     - ExternalAdministrativeZoneSecurityService
+
+- type: entity
+  parent: ScpRadioHandheldCommon
+  id: ScpRadioHandheldSecurity
+  name: security handheld radio
+  components:
+  - type: ScpRadio
+    channels:
+    - Security
