@@ -1,6 +1,6 @@
 ent-ClothingHeadsetHeavyContainmentSecurityService = { ent-ClothingHeadset } службы безопасности
     .desc = { ent-ClothingHeadset.desc }
-ent-ClothingHeadsetFieldMedicalSpecialist = { ent-ClothingHeadset } амнестезиолог
+ent-ClothingHeadsetFieldMedicalSpecialist = { ent-ClothingHeadset } амнестезиолога
     .desc = { ent-ClothingHeadset.desc }
 ent-ClothingHeadsetExternalAdministrativeZoneSecurityService = { ent-ClothingHeadsetHeavyContainmentSecurityService }
     .desc = { ent-ClothingHeadset.desc }
