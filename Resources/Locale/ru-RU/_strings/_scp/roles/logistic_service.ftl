@@ -1,2 +1,2 @@
-job-name-logistics-officer = Офицер логистики
-job-description-logistics-officer = Сотрудник склада, отвечающий за продажу и транспортировку грузов. КЛАСС С
+job-name-logistics-officer = Логист
+job-description-logistics-officer = Занимается обслуживанием складских помещений и распределением поступающих ресурсов и оборудования по учреждению.

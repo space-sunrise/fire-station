@@ -67,6 +67,7 @@
   id: InternalTribunalService
   name: department-InternalTribunalService
   description: department-InternalTribunalService-description
+  editorHidden: true # выводим СВТ до лучших времен
   color: "#c27ba0"
   weight: 85
   roles:
@@ -86,7 +87,6 @@
   - SeniorHeavyContainmentZoneOfficer
   - HeavyContainmentZoneOfficer
   - JuniorHeavyContainmentZoneOfficer
-  - FieldMedicalSpecialist
 
 - type: department
   id: ExternalAdministrativeZoneSecurityService
@@ -99,6 +99,7 @@
   - SeniorExternalAdministrativeZoneOfficer
   - ExternalAdministrativeZoneOfficer
   - JuniorExternalAdministrativeZoneOfficer
+  - FieldMedicalSpecialist
 
 # Научный отдел
 
@@ -111,7 +112,6 @@
   roles:
   - ScientificServiceDirector
   - LeadResearcher
-  - AnomabiologyResearcher
   - AnomarchologyResearcher
   - ProductionSpecialist
   - JuniorResearcher

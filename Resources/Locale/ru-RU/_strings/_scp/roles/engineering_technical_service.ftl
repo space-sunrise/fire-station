@@ -1,9 +1,9 @@
-job-name-lead-technical-specialist = Ведущий технический специалист
-job-description-lead-technical-specialist = Техник-инструктор, более важный техник. КЛАСС С
-job-name-electrical-technical-specialist = Электротехнический специалист
-job-description-electrical-technical-specialist = Инженер-электрик, отвечающий за электрогенерацию Комплекса, за электрическое оборудование и систему дистрибуции воздуха. КЛАСС С
-job-name-general-technical-specialist = Общий технический специалист
-job-description-general-technical-specialist = Специализированный сотрудник отвечающий за ремонт камер содержания объектов. КЛАСС С
+job-name-lead-technical-specialist = Старший инженер
+job-description-lead-technical-specialist = Технический специалист с многолетним опытом.
+job-name-electrical-technical-specialist = Электротехник
+job-description-electrical-technical-specialist = Инженер-электрик, отвечающий за электроснабжение, электрическое оборудование и систему отопления, вентиляции, кондиционирования воздуха (ОВКВ).
+job-name-general-technical-specialist = Техник
+job-description-general-technical-specialist = Сотрудник, занимающийся обслуживанием техники и оборудования. В комнате отдыха вновь перегорела лампочка? Не работает ваш новый SCiPhone? — Он решит ваши проблемы!
 job-name-technical-trainee = Техник-стажер
-job-description-technical-trainee = Стажёр ИТ службы.
-job-supervisors-chief-technical-specialist = главному техническому специалисту
+job-description-technical-trainee = Начинающий техник. Проходит обучение у старших техников и помогает по мелочам.
+job-supervisors-chief-technical-specialist = ведущему технику

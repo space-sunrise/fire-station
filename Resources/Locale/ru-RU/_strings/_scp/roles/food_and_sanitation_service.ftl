@@ -1,7 +1,7 @@
-job-name-gastronomic-specialist = Гастрономический специалист
-job-description-gastronomic-specialist = Шеф-повар комплекса. Готовит вкусные блюда. КЛАСС С
+job-name-gastronomic-specialist = Гастроном
+job-description-gastronomic-specialist = Шеф-повар. Готовит вкусные блюда.
 job-name-botanist-phytogeneticist = Ботаник-фитогенетик
-job-description-botanist-phytogeneticist = Ботаник комплекса, выращивающий интересные рекреационные и пищевые продукты. КЛАСС С
+job-description-botanist-phytogeneticist = Ботаник, выращивающий рекреационные и пищевые продукты.
 job-name-service-personnel = Обслуживающий персонал
-job-description-service-personnel = И уборщик, и поднеси, и унеси, и уйди. Общая роль, отвечающая за порядок в комплексе КЛАСС С
-job-supervisors-personnel-officer = кадровому офицеру
+job-description-service-personnel = Уборщик, и поднеси, и унеси, и уйди. Иными словами - разнорабочий.
+job-supervisors-personnel-officer = менеджеру по персоналу

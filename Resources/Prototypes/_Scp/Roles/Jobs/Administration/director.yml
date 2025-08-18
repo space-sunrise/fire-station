@@ -9,7 +9,7 @@
   weight: 5
   icon: JobDirector
   joinNotifyCrew: true
-  supervisors: job-supervisors-regional-administration
+  supervisors: job-supervisors-O5-command
   canBeAntag: false
   displayWeight: 100
   radioBold: true

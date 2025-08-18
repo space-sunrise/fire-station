@@ -1,4 +1,4 @@
-ent-RadioHandheldHeavyContainmentSecurityService = { ent-RadioHandheldSecurity } тяжелой зоны содержания
+ent-RadioHandheldHeavyContainmentSecurityService = рация отряда специального назначения
     .desc = { ent-RadioHandheldSecurity.desc }
-ent-RadioHandheldExternalAdministrativeZoneSecurityService = { ent-RadioHandheldSecurity } внешней-административной зоны
+ent-RadioHandheldExternalAdministrativeZoneSecurityService = рация комендантского отряда
     .desc = { ent-RadioHandheldSecurity.desc }
