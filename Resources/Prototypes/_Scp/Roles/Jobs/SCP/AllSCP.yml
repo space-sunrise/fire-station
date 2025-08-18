@@ -73,7 +73,7 @@
   playTimeTracker: JobScp096
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 1080000 # 200h
+    time: 720000 # 200h
   weight: 25
   icon: JobIconScp096
   joinNotifyCrew: false
