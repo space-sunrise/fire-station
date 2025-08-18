@@ -21,7 +21,12 @@
       - id: DoorRemoteArmory
       - id: Binoculars
       - id: HyperLinkBookCorporateLaw
-      - id: HandheldCriminalRecordsMonitor  # Sunrise-CriminalRecords
+      - id: HandheldCriminalRecordsMonitor
+      - id: PortableSurveillanceCameraMonitor
+      - id: ForensicScanner
+      - id: BoxForensicPad
+      - id: BoxEvidenceMarkers
+      - id: HandLabeler
 
 - type: entity
   id: LockerExternalAdministrativeZoneOfficerFilled
