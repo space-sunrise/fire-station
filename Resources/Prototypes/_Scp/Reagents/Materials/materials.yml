@@ -1,0 +1,8 @@
+- type: material
+  id: Concrete
+  stackEntity: MaterialConcrete1
+  name: materials-concrete
+  unit: materials-unit-bag
+  icon: { sprite: /Textures/_Scp/Objects/Materials/concrete.rsi, state: concrete }
+  color: "#70736c"
+  price: 0.025

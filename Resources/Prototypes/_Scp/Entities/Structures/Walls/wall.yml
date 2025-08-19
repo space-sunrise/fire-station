@@ -160,19 +160,38 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: Construction
+    graph: concreteWall
+    node: concreteWallEnd
   - type: Destructible
     thresholds:
       - trigger:
           !type:DamageTrigger
+          damage: 1300
+        behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
+      - trigger:
+          !type:DamageTrigger
           damage: 1000
         behaviors:
-          - !type:SpawnEntitiesBehavior
-            spawn:
-              Girder:
-                min: 1
-                max: 1
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            PartRodMetal1:
+              min: 1
+              max: 3
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
 
 - type: entity
   parent: ScpWallSolidDiagonal
@@ -190,19 +209,38 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: Construction
+    graph: concreteWallDiagonal
+    node: concreteWallDiagonalEnd
   - type: Destructible
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 1000
+          damage: 1200
         behaviors:
-          - !type:SpawnEntitiesBehavior
-            spawn:
-              Girder:
-                min: 1
-                max: 1
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
+      - trigger:
+          !type:DamageTrigger
+          damage: 800
+        behaviors:
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            PartRodMetal1:
+              min: 1
+              max: 2
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
 
 # Стена Лёгкой Зоны Содержания
 - type: entity
@@ -220,6 +258,9 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: Construction
+    graph: concreteWallLightContaiment
+    node: concreteWallLightContaimentEnd
   - type: RCDDeconstructable
     cost: 6
     delay: 10
@@ -228,15 +269,31 @@
     thresholds:
       - trigger:
           !type:DamageTrigger
+          damage: 1300
+        behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
+      - trigger:
+          !type:DamageTrigger
           damage: 1000
         behaviors:
-          - !type:SpawnEntitiesBehavior
-            spawn:
-              Girder:
-                min: 1
-                max: 1
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            PartRodMetal1:
+              min: 1
+              max: 3
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
 
 # Стена Административной Зоны / Научной
 - type: entity
@@ -254,6 +311,9 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: Construction
+    graph: concreteWallScience
+    node: concreteWallScienceEnd
   - type: RCDDeconstructable
     cost: 6
     delay: 10
@@ -262,15 +322,31 @@
     thresholds:
       - trigger:
           !type:DamageTrigger
+          damage: 1300
+        behaviors:
+        - !type:DoActsBehavior
+          acts: ["Destruction"]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
+      - trigger:
+          !type:DamageTrigger
           damage: 1000
         behaviors:
-          - !type:SpawnEntitiesBehavior
-            spawn:
-              Girder:
-                min: 1
-                max: 1
-          - !type:DoActsBehavior
-            acts: [ "Destruction" ]
+        - !type:SpawnEntitiesBehavior
+          spawn:
+            PartRodMetal1:
+              min: 1
+              max: 3
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+        - !type:PlaySoundBehavior
+          sound:
+            path: /Audio/Effects/break_stone.ogg
+            params:
+              volume: -6
 
 # Стена Сдерживания
 - type: entity

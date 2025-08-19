@@ -1,9 +1,5 @@
 ent-RubberStampDirector = печать директора комплекса
     .desc = { ent-RubberStampBase.desc }
-ent-RubberStampRegionalAdministration = печать региональной администрации
-    .desc = { ent-RubberStampBase.desc }
-ent-RubberStampEthicsCommittee = печать комитета по этике
-    .desc = { ent-RubberStampBase.desc }
 ent-RubberStampMentalControlOfficer = печать офицера ментального контроля
     .desc = { ent-RubberStampBase.desc }
 ent-RubberStampChiefTechnicalSpecialist = печать главного технического специалиста

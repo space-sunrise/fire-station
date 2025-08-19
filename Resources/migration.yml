@@ -1598,13 +1598,14 @@ AbductorIDCard: null
 
 # Печати
 RubberStampCaptain: RubberStampDirector
-RubberStampCentcom: RubberStampRegionalAdministration
+RubberStampCentcom: RubberStampRegionalCommand
 RubberStampCE: RubberStampChiefTechnicalSpecialist
 RubberStampCMO: RubberStampHeadOfMedicalSector
 RubberStampHop: RubberStampPersonnelOfficer
 RubberStampHos: RubberStampSecurityCommander
 RubberStampQm: RubberStampSeniorLogisticsOfficer
 RubberStampRd: RubberStampScientificServiceDirector
+RubberStampRegionalAdministration: RubberStampRegionalCommand
 #
 RubberStampChaplain: null
 RubberStampLawyer: null

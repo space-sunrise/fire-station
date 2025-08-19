@@ -1,0 +1,56 @@
+- type: entity
+  parent: MaterialBase
+  id: MaterialConcrete
+  name: concrete
+  suffix: Full
+  components:
+  - type: Material
+  - type: PhysicalComposition
+    materialComposition:
+      Concrete: 100
+  - type: Stack
+    stackType: Concrete
+    baseLayer: base
+    layerStates:
+    - concrete
+    - concrete_2
+    - concrete_3
+  - type: Sprite
+    sprite: _Scp/Objects/Materials/concrete.rsi
+    state: concrete_3
+    layers:
+    - state: concrete_3
+      map: ["base"]
+  - type: Appearance
+  - type: Item
+    sprite: _Scp/Objects/Materials/concrete.rsi
+    size: Normal
+    heldPrefix: concrete
+  - type: Extractable
+    grindableSolutionName: concrete
+  - type: SolutionContainerManager
+    solutions:
+      concrete:
+        reagents:
+        - ReagentId: SodiumHydroxide
+          Quantity: 10
+
+- type: entity
+  parent: MaterialConcrete
+  id: MaterialConcrete10
+  suffix: 10
+  components:
+  - type: Sprite
+    state: concrete
+  - type: Stack
+    count: 10
+
+- type: entity
+  parent: MaterialConcrete
+  id: MaterialConcrete1
+  suffix: Single
+  components:
+  - type: Sprite
+    state: concrete
+  - type: Stack
+    count: 1

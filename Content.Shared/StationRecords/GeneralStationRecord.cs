@@ -76,7 +76,7 @@ public sealed record GeneralStationRecord
 
     // Sunrise added start
     [DataField]
-    public bool Silicon;
+    public bool NonHumanoid;
 
     [DataField]
     public HumanoidCharacterProfile? HumanoidProfile;

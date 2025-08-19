@@ -58,7 +58,7 @@ public sealed partial class DeliverySystem : SharedDeliverySystem
         {
             foreach (var (id, record) in records)
             {
-                if (record.Silicon)
+                if (record.NonHumanoid)
                     siliconIds.Add(id);
             }
         }

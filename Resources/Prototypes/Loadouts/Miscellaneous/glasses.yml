@@ -5,7 +5,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobLibrarian
+      role: JobServicePersonnel # Fire Edit
       time: 3600 # 1 hour of being the biggest nerd on the station
 
 - type: loadoutEffectGroup
@@ -14,7 +14,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Cargo
+      department: LogisticsService # Fire Edit
       time: 36000 #10 hours of being a space trucker
 
 # Basic options

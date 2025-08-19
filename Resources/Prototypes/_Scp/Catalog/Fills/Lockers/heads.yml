@@ -11,8 +11,8 @@
     - id: CommsComputerCircuitboard
     - id: DoorRemoteAdministration
     - id: MedalCase
-    - id: NukeDisk
-    - id: PinpointerNuclear
+    # - id: NukeDisk
+    # - id: PinpointerNuclear
     - id: RubberStampDirector
     - id: SpaceCash1000
     - id: WeaponDisabler
