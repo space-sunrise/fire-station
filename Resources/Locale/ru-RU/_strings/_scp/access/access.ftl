@@ -1,4 +1,4 @@
-﻿access-name-administration = Администрация
+access-name-administration = Администрация
 access-name-complex-director = { job-name-complex-director }
 access-name-scientific-service-director = { job-name-scientific-service-director }
 access-name-security-commander = { job-name-security-commander }

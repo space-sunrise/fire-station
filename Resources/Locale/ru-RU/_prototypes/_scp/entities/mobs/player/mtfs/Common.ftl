@@ -1,5 +1,5 @@
-ent-IDCardMTFStandard = { ent-IDCardStandard }
-    .desc = { ent-IDCardStandard.desc }
+ent-KeyCardMtfBase = { ent-KeyCardBase }
+    .desc = { ent-KeyCardBase.desc }
 ent-ClothingMaskMTF = Противогаз Мобильной Оперативной Группы
     .desc = Не дает унюхать трупный запах мертвых сотрудников фонда.
 ent-ClothingHelmetMTF = Шлем Мобильной Оперативной Группы
@@ -75,6 +75,8 @@ ent-CrateAdministrationRecontainment096 = набор Восстановлени�
 ent-SpawnerOnTriggerMTFBase = { ent-SpawnPointScpBase }
     .suffix = Base | Spawn On Trigger
     .desc = { ent-SpawnPointScpBase.desc }
+ent-IDCardMTFStandard = { ent-IDCardStandard }
+    .desc = { ent-IDCardStandard.desc }
 ent-CrateAdministrationAmnesiacA = ящик пробирок амнезиака класса А
     .desc = Содержит коробку пробирок. Эффекты амнезиака: { reagent-amnesiac-a-desc }
     .suffix = Заполненный
