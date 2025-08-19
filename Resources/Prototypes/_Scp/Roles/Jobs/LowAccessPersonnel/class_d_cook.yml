@@ -10,13 +10,14 @@
   icon: JobClassDCook
   supervisors: job-supervisors-security-and-research
   access:
-  - Service
-  - Kitchen
+  - ClassDCanteen
   alwaysUseSpawner: true
   special:
   - !type:AddComponentSpecial
     components:
     - type: ClassDAppearance
+    - type: EmployeeClass
+      class: D
 
 - type: startingGear
   id: ClassDCookGear
@@ -27,4 +28,4 @@
     belt: ClothingBeltChefFilled
     gloves: ClothingHandsGlovesColorWhite
     shoes: ClothingShoesClassD
-    id: ClassDCookIDCard
+    id: KeyCardClassDCock

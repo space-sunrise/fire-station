@@ -1,26 +1,4 @@
 ﻿- type: entity
-  parent: BasePDA
-  id: DirectorPDA
-  components:
-  - type: Pda
-    id: CaptainIDCard
-    penSlot:
-      startingItem: PenDirector
-      priority: -1
-      whitelist:
-        tags:
-        - Write
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-captain
-  - type: PdaBorderColor
-    borderColor: "#333333"
-  - type: Icon
-    state: pda-captain
-
-- type: entity
   parent: PenCap
   id: PenDirector
   components:

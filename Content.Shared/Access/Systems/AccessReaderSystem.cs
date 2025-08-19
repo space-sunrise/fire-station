@@ -664,6 +664,20 @@ public sealed class AccessReaderSystem : EntitySystem
             items.Add(idUid.Value);
         }
 
+        // Fire edit start - для нашейных айди карт.
+        if (_inventorySystem.TryGetSlotEntity(uid, "neck", out var neckUid))
+        {
+            if (HasComp<AccessComponent>(neckUid))
+                items.Add(neckUid.Value);
+        }
+
+        if (_inventorySystem.TryGetSlotEntity(uid, "jumpsuit", out var jumpsuitUid))
+        {
+            if (HasComp<AccessComponent>(jumpsuitUid))
+                items.Add(jumpsuitUid.Value);
+        }
+        // Fire edit end
+
         return items.Any();
     }
 

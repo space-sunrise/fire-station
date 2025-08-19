@@ -18,14 +18,14 @@ public sealed class RequestCharacterInfoEvent : EntityEventArgs
 public sealed class CharacterInfoEvent : EntityEventArgs
 {
     public readonly NetEntity NetEntity;
-    public readonly string JobTitle;
+    public readonly string Job; // Fire edit
     public readonly Dictionary<string, List<ObjectiveInfo>> Objectives;
     public readonly string? Briefing;
 
     public CharacterInfoEvent(NetEntity netEntity, string jobTitle, Dictionary<string, List<ObjectiveInfo>> objectives, string? briefing)
     {
         NetEntity = netEntity;
-        JobTitle = jobTitle;
+        Job = jobTitle;  // Fire edit
         Objectives = objectives;
         Briefing = briefing;
     }

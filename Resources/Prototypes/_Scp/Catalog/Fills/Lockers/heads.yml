@@ -1,15 +1,15 @@
-# Director
+# Директор
 - type: entityTable
   id: LockerFillDirector
   table: !type:AllSelector
     children:
-    - id: CaptainIDCard
+    - id: KeyCardDirector
     - id: CigarGoldCase
       prob: 0.25
     - id: ClothingBeltSheathFilled
     - id: ClothingHeadsetAltAdministration
     - id: CommsComputerCircuitboard
-    - id: DoorRemoteCommand
+    - id: DoorRemoteAdministration
     - id: MedalCase
     # - id: NukeDisk
     # - id: PinpointerNuclear
@@ -17,7 +17,7 @@
     - id: SpaceCash1000
     - id: WeaponDisabler
     - id: ClothingEyesGlassesCommand
-    - id: FlippoLighterSunriseCap  # Sunrise-Flippo
+    - id: FlippoLighterSunriseCap
 
 - type: entity
   id: LockerDirectorFilled
@@ -29,7 +29,7 @@
       entity_storage: !type:NestedSelector
         tableId: LockerFillDirector
 
-#QM
+# Старший логистический офицер
 - type: entityTable
   id: LockerFillSeniorLogisticsOfficer
   table: !type:AllSelector
@@ -43,18 +43,16 @@
     - id: CigPackGreen
       prob: 0.50
     - id: ClothingHeadsetAltLogistics
-    - id: DoorRemoteCargo
+    - id: DoorRemoteLogistics
     - id: RubberStampApproved
     - id: RubberStampDenied
     - id: RubberStampSeniorLogisticsOfficer
     - id: AstroNavCartridge
-    # Sunrise-start: Flippos + Cargo suit
     - id: ClothingOuterSuitCargo
     - id: BluespaceBox
     - id: BluespaceBox
       prob: 0.25
     - id: FlippoLighterSunriseQm
-    # Sunrise-end
 
 - type: entity
   id: LockerSeniorLogisticsOfficerFilled
@@ -66,7 +64,7 @@
       entity_storage: !type:NestedSelector
         tableId: LockerFillSeniorLogisticsOfficer
 
-#HOP
+# Кадровый офицер
 - type: entityTable
   id: LockerFillPersonnelOfficer
   table: !type:AllSelector
@@ -88,7 +86,7 @@
     - id: RubberStampPersonnelOfficer
     - id: WeaponDisabler
     - id: ClothingEyesHudCommand
-    - id: FlippoLighterSunriseHop  # Sunrise-Flippo
+    - id: FlippoLighterSunriseHop
 
 - type: entity
   id: LockerPersonnelOfficerFilled
@@ -100,7 +98,7 @@
       entity_storage: !type:NestedSelector
         tableId: LockerFillPersonnelOfficer
 
-# CE
+# Главный технический специалист
 - type: entityTable
   id: LockerFillChiefTechnicalSpecialist
   table: !type:AllSelector
@@ -116,8 +114,8 @@
     - id: RCD
     - id: RCDAmmo
     - id: RubberStampChiefTechnicalSpecialist
-    - id: FlippoLighterSunriseCe  # Sunrise-Flippo
-    - id: VariantCubeBoxSunrise  # Sunrise Edit
+    - id: FlippoLighterSunriseCe
+    - id: VariantCubeBoxSunrise
 
 - type: entity
   id: LockerChiefTechnicalSpecialistFilled
@@ -129,14 +127,13 @@
       entity_storage: !type:NestedSelector
         tableId: LockerFillChiefTechnicalSpecialist
 
-# CMO
+# Глава медицинского сектора
 - type: entityTable
   id: LockerFillHeadOfMedicalSector
   table: !type:AllSelector
     children:
     - id: ClothingBackpackDuffelSurgeryFilled
     - id: ClothingCloakCmo
-#    - id: ClothingEyesHudMedical # Sunrise-edit
     - id: ClothingHandsGlovesNitrile
     - id: ClothingHeadHatBeretCmo
     - id: ClothingHeadsetAltMedicalService
@@ -144,15 +141,13 @@
     - id: DoorRemoteMedical
     - id: HandheldCrewMonitor
     - id: Hypospray
-    #Sunrise-start
     - id: ClothingEyesUniversalMedicalHud
     - id: AdvancedDefibrillator
-    #Sunrise-end
     - id: MedicalTechFabCircuitboard
     - id: MedkitFilled
     - id: RubberStampHeadOfMedicalSector
     - id: MedTekCartridge
-    - id: FlippoLighterSunriseCmo  # Sunrise-Flippos
+    - id: FlippoLighterSunriseCmo
 
 - type: entity
   id: LockerHeadOfMedicalSectorFilled
@@ -164,7 +159,7 @@
       entity_storage: !type:NestedSelector
         tableId: LockerFillHeadOfMedicalSector
 
-# RD
+# Директор научной службы
 - type: entityTable
   id: LockerFillScientificServiceDirector
   table: !type:AllSelector
@@ -173,12 +168,13 @@
     - id: CircuitImprinterMachineCircuitboard
     - id: ClothingBeltUtilityFilled
     - id: ClothingHeadsetAltScientificService
-    - id: DoorRemoteResearch
+    - id: DoorRemoteScientificService
+    - id: DoorRemoteScpChambers
     - id: HandTeleporter
     - id: ProtolatheMachineCircuitboard
     - id: ResearchComputerCircuitboard
     - id: RubberStampScientificServiceDirector
-    - id: FlippoLighterSunriseRd  # Sunrise-Flippo
+    - id: FlippoLighterSunriseRd
 
 - type: entity
   id: LockerScientificServiceDirectorFilled
@@ -190,7 +186,7 @@
       entity_storage: !type:NestedSelector
         tableId: LockerFillScientificServiceDirector
 
-# HOS
+# Начальник охраны
 - type: entityTable
   id: LockerFillSecurityCommander
   table: !type:AllSelector
@@ -207,12 +203,13 @@
     - id: ClothingMaskNeckGaiter
     - id: ClothingShoesBootsSecurityGuard
     - id: DoorRemoteSecurity
+    - id: DoorRemoteClassD
     - id: RubberStampSecurityCommander
     - id: SecurityTechFabCircuitboard
     - id: WeaponDisabler
     - id: WantedListCartridge
     - id: DrinkHosFlask
-    - id: FlippoLighterSunriseHos  # Sunrise-Flippo
+    - id: FlippoLighterSunriseHos
 
 - type: entity
   id: LockerSecurityCommanderFilled

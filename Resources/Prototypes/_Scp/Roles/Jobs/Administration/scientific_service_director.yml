@@ -13,18 +13,16 @@
   canBeAntag: true
   radioBold: true
   displayWeight: 50
-  access:
-  - Research
-  - Command
-  - Maintenance
-  - ResearchDirector
-  - Brig
-  - Cryogenics
-  - ResearchConsoleAccess
+  accessGroups:
+  - ScientificServiceDirector
   special:
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Four
     - type: Fear
       phobias:
       - Exoremophobia
@@ -35,7 +33,7 @@
 - type: startingGear
   id: ScientificServiceDirectorGear
   equipment:
-    id: RnDPDA
+    id: KeyCardScientificServiceDirector
     pocket1: HandheldRoboAnalyzer
     pocket2: Nanopaste10
     ears: ClothingHeadsetAltScientificService

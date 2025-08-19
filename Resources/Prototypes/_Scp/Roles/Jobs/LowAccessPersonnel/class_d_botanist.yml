@@ -10,13 +10,14 @@
   icon: JobClassDBotanist
   supervisors: job-supervisors-security-and-research
   access:
-  - Service
-  - Hydroponics
+  - ClassDCanteen
   alwaysUseSpawner: true
   special:
   - !type:AddComponentSpecial
     components:
     - type: ClassDAppearance
+    - type: EmployeeClass
+      class: D
 
 - type: startingGear
   id: ClassDBotanistGear
@@ -27,5 +28,5 @@
     belt: ClothingBeltPlantFilled
     gloves: ClothingHandsGlovesLeather
     shoes: ClothingShoesClassD
-    id: ClassDBotanistIDCard
+    id: KeyCardClassDBotanist
 

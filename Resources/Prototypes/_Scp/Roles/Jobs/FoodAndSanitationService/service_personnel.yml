@@ -8,16 +8,18 @@
   supervisors: job-supervisors-personnel-officer
   access:
   - Service
-  - Janitor
-  - Maintenance
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: One
 
 - type: startingGear
   id: ServicePersonnelGear
   equipment:
     shoes: ClothingShoesGaloshes
-    id: JanitorPDA
+    id: KeyCardServicePersonnel
     ears: ClothingHeadsetFoodAndSanitation
     belt: ClothingBeltJanitorFilled
-    #storage:
-    #back:
-    #- Stuff

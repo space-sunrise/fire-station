@@ -515,7 +515,7 @@
   - type: Computer
     board: ResearchComputerCircuitboard
   - type: AccessReader
-    access: [["ResearchConsoleAccess"]]
+    access: [["Research"]] # Fire edit
   - type: PointLight
     radius: 1.5
     energy: 1.6
@@ -580,6 +580,38 @@
   description: Terminal for programming Nanotrasen employee ID cards to access parts of the station.
   components:
   - type: IdCardConsole
+    # Fire added start - новые доступы
+    accessLevels:
+    - Administration
+    - ComplexDirector
+    - ScientificServiceDirector
+    - SecurityCommander
+    - ChiefTechnicalSpecialist
+    - PersonnelOfficer
+    - HeadOfMedicalSector
+    - SeniorLogisticsOfficer
+    - EthicsCommittee
+    - InternalTribunalService
+    - LifeSupport
+    - Laboratory
+    - Checkpoint
+    - Exit
+    - NuclearWarhead
+    - Logistics
+    - AI
+    - Safe
+    - Euclid
+    - Keter
+    - ClassDCanteen
+    - ClassDJanitor
+    - Armory
+    - Engineering
+    - Maintenance
+    - Medical
+    - Research
+    - Security
+    - Service
+    # Fire added end
     privilegedIdSlot:
       name: id-card-console-privileged-id
       ejectSound: /Audio/Machines/id_swipe.ogg
@@ -759,7 +791,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: AccessReader
-    access: [[ "Command" ]]
+    access: [[ "Administration" ]] # Fire edit
   - type: CommunicationsConsole
     title: comms-console-announcement-title-station
   - type: DeviceNetwork
@@ -870,7 +902,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: AccessReader
-    access: [[ "CentralCommand" ]]
+    access: [[ "MTF" ]] # Fire edit
   - type: CommunicationsConsole
     title: comms-console-announcement-title-centcom
     color: "#1d8bad"
@@ -974,7 +1006,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: CargoOrderConsole
-    removeLimitAccess: [ "Quartermaster" ]
+    removeLimitAccess: [ "Logistics" ] # Fire edit
   - type: ActiveRadio
     channels:
     - Supply
@@ -993,7 +1025,7 @@
     energy: 1.6
     color: "#b89f25"
   - type: AccessReader
-    access: [["CargoPurchaseAccess"]] # Sunrise-Edit
+    access: [["Logistics"]] # Fire edit
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: BasicDevice
@@ -1029,7 +1061,7 @@
   - type: CargoOrderConsole
     account: Engineering
     announcementChannel: Engineering
-    removeLimitAccess: [ "ChiefEngineer" ]
+    removeLimitAccess: [ "ChiefTechnicalSpecialist" ] # Fire edit
     mode: SendToPrimary
   - type: ActiveRadio
     channels:
@@ -1062,7 +1094,7 @@
   - type: CargoOrderConsole
     account: Medical
     announcementChannel: Medical
-    removeLimitAccess: [ "ChiefMedicalOfficer" ]
+    removeLimitAccess: [ "HeadOfMedicalSector" ] # Fire edit
     mode: SendToPrimary
   - type: ActiveRadio
     channels:
@@ -1095,7 +1127,7 @@
   - type: CargoOrderConsole
     account: Science
     announcementChannel: Science
-    removeLimitAccess: [ "ResearchDirector" ]
+    removeLimitAccess: [ "ScientificServiceDirector" ] # Fire edit
     mode: SendToPrimary
   - type: ActiveRadio
     channels:
@@ -1128,7 +1160,7 @@
   - type: CargoOrderConsole
     account: Security
     announcementChannel: Security
-    removeLimitAccess: [ "HeadOfSecurity" ]
+    removeLimitAccess: [ "SecurityCommander" ] # Fire edit
     mode: SendToPrimary
   - type: ActiveRadio
     channels:
@@ -1161,7 +1193,7 @@
   - type: CargoOrderConsole
     account: Service
     announcementChannel: Service
-    removeLimitAccess: [ "HeadOfPersonnel" ]
+    removeLimitAccess: [ "PersonnelOfficer" ] # Fire edit
     mode: SendToPrimary
   - type: ActiveRadio
     channels:
@@ -1171,7 +1203,7 @@
   - type: PointLight
     color: "#afe837"
   - type: AccessReader
-    access: [["Service"], ["Theatre"]]
+    access: [["Service"]] # Fire edit
 
 - type: entity
   id: ComputerCargoBounty
@@ -1207,7 +1239,7 @@
     energy: 1.6
     color: "#b89f25"
   - type: AccessReader
-    access: [["Quartermaster"]]
+    access: [["Logistics"]] # Fire edit
   - type: GuideHelp
     guides:
     - CargoBounties
@@ -1236,7 +1268,7 @@
     key: enum.FundingAllocationConsoleUiKey.Key
   - type: ActivatableUIRequiresAccess
   - type: AccessReader
-    access: [["HeadOfPersonnel"]]
+    access: [["PersonnelOfficer"]] # Fire edit
   - type: UserInterface
     interfaces:
       enum.FundingAllocationConsoleUiKey.Key:
@@ -1509,7 +1541,7 @@
     energy: 1.6
     color: "#b89f25"
   - type: AccessReader
-    access: [["Cargo"]]
+    access: [["Logistics"]] # Fire edit
   - type: GuideHelp
     guides:
     - Cargo
@@ -1637,7 +1669,7 @@
   - type: Computer
     board: RoboticsConsoleCircuitboard
   - type: AccessReader # only used for dangerous things
-    access: [["ResearchDirector"]]
+    access: [["ScientificServiceDirector"]] # Fire edit
   - type: Lock
     unlockOnClick: false
 
@@ -1664,7 +1696,7 @@
   - type: Computer
     board: StationAiUploadCircuitboard
   - type: AccessReader
-    access: [ [ "ResearchDirector" ] ]
+    access: [ [ "ScientificServiceDirector" ] ] # Fire edit
   - type: Lock
     unlockOnClick: false
   - type: SiliconLawUpdater

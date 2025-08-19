@@ -1,0 +1,85 @@
+﻿- type: entity
+  abstract: true
+  parent: WeaponEnergyTurretStationControlPanelBase
+  id: ScpWeaponEnergyTurretStationControlPanelBase
+  components:
+  - type: DeployableTurretController
+    accessGroups:
+    - Administration
+    - Security
+    - ScientificService
+    - Logistics
+    - Medical
+    - Engineering
+    - Service
+    - General
+    - ClassD
+    - Silicon
+    accessLevels:
+    - Administration
+    - ComplexDirector
+    - ScientificServiceDirector
+    - SecurityCommander
+    - ChiefTechnicalSpecialist
+    - PersonnelOfficer
+    - HeadOfMedicalSector
+    - SeniorLogisticsOfficer
+    - EthicsCommittee
+    - InternalTribunalService
+    - LifeSupport
+    - Laboratory
+    - Checkpoint
+    - Exit
+    - NuclearWarhead
+    - Logistics
+    - AI
+    - Safe
+    - Euclid
+    - Keter
+    - ClassDCanteen
+    - ClassDJanitor
+    - Security
+    - Armory
+    - Engineering
+    - Maintenance
+    - Medical
+    - Research
+    - Service
+
+- type: entity
+  parent: ScpWeaponEnergyTurretStationControlPanelBase
+  id: ScpWeaponEnergyTurretAIControlPanel
+  suffix: AI
+  components:
+  - type: AccessReader
+    access: [["AI"], ["ScientificServiceDirector"]]
+  - type: DeviceNetwork
+    receiveFrequencyId: TurretAI
+    transmitFrequencyId: TurretControlAI
+  - type: TurretTargetSettings
+    exemptAccessLevels:
+    - AI
+
+- type: entity
+  parent: ScpWeaponEnergyTurretStationControlPanelBase
+  id: ScpWeaponEnergyTurretSecurityControlPanel
+  suffix: Security
+  components:
+  - type: AccessReader
+    access: [["AI"], ["Security"]]
+  - type: TurretTargetSettings
+    exemptAccessLevels:
+    - Security
+    - AI
+
+- type: entity
+  parent: ScpWeaponEnergyTurretStationControlPanelBase
+  id: ScpWeaponEnergyTurretAdministrationControlPanel
+  suffix: Administration
+  components:
+  - type: AccessReader
+    access: [["AI"], ["Administration"]]
+  - type: TurretTargetSettings
+    exemptAccessLevels:
+    - Administration
+    - AI

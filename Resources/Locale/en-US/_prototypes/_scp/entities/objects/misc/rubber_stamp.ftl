@@ -1,9 +1,5 @@
 ent-RubberStampDirector = { ent-RubberStampBase }
     .desc = { ent-RubberStampBase.desc }
-ent-RubberStampRegionalAdministration = { ent-RubberStampBase }
-    .desc = { ent-RubberStampBase.desc }
-ent-RubberStampEthicsCommittee = { ent-RubberStampBase }
-    .desc = { ent-RubberStampBase.desc }
 ent-RubberStampMentalControlOfficer = { ent-RubberStampBase }
     .desc = { ent-RubberStampBase.desc }
 ent-RubberStampChiefTechnicalSpecialist = { ent-RubberStampBase }
@@ -17,4 +13,6 @@ ent-RubberStampSecurityCommander = { ent-RubberStampBase }
 ent-RubberStampSeniorLogisticsOfficer = quartermaster's rubber stamp
     .desc = { ent-RubberStampBase.desc }
 ent-RubberStampScientificServiceDirector = { ent-RubberStampBase }
+    .desc = { ent-RubberStampBase.desc }
+ent-RubberStampRegionalAdministration = { ent-RubberStampBase }
     .desc = { ent-RubberStampBase.desc }

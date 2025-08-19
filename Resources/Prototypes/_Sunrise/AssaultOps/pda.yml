@@ -3,6 +3,7 @@
   id: AssaultOpsPDA
   name: passenger PDA
   description: Why isn't it gray?
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: Pda
       id: AgentIDCard
