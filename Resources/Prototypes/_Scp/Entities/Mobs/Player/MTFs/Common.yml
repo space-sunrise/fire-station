@@ -13,11 +13,6 @@
   - type: Item
     heldPrefix: blue
 
-#базовый КПК
-- type: entity
-  parent: ManagerPDA
-  id: MobileTaskForcePDA
-
 # ВЕЩИ
 - type: entity
   parent: [NineTailedFoxGasmask, BaseCentcommContraband]

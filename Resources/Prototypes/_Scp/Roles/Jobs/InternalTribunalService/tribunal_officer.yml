@@ -6,7 +6,6 @@
   requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
   - !type:OverallPlaytimeRequirement
     time: 90000 # 25 часов
-  startingGear: TribunalOfficerGear
   icon: JobTribunalOfficer
   canBeAntag: false
   supervisors: job-supervisors-judicial-inspector
@@ -21,61 +20,3 @@
       class: B
     - type: AccessLevel
       level: Three
-
-- type: entity
-  parent: IAAPDA
-  id: TribunalOfficerPDA
-  name: Tribunal Officer PDA
-  description: The best friend of the Foundation's Documentation.
-  components:
-  - type: Pda
-    id: TribunalOfficerIDCard
-
-- type: entity
-  parent: IDCardStandard
-  id: TribunalOfficerIDCard
-  name: Tribunal Officer ID card
-  components:
-  - type: Sprite
-    sprite: _Scp/Objects/Misc/id_cards.rsi
-    layers:
-    - state: silver
-    - state: id-tribunal
-  - type: PresetIdCard
-    job: TribunalOfficer
-
-- type: entity
-  parent: RubberStampBase
-  id: RubberStampTribunalOfficer
-  components:
-  - type: Stamp
-    stampedName: stamp-component-stamped-name-tribunal-officer
-    stampedColor: "#B77E9EFF"
-    stampState: "paper_stamp-magistrat"
-  - type: Sprite
-    sprite: _Sunrise/Objects/Misc/stamps.rsi
-    state: stamp-magistrat
-
-- type: entity
-  id: BriefcaseTribunalOfficerFilled
-  parent: BriefcaseBrown
-  suffix: Tribunal Officer
-  components:
-  - type: StorageFill
-    contents:
-    - id: Paper
-    - id: Paper
-    - id: BoxFolderScp
-    - id: LuxuryPen
-    - id: RubberStampTribunalOfficer
-
-- type: startingGear
-  id: TribunalOfficerGear
-  equipment:
-    shoes: ClothingShoesColorBlack
-    id: KeyCardTribunalOfficer
-    eyes: ClothingEyesGlassesSunglasses
-    ears: ClothingHeadsetAltInternalTribunalService
-    pocket2: HyperLinkBookCorporateLaw
-  inhand:
-  - BriefcaseTribunalOfficerFilled

@@ -1,7 +1,5 @@
 ent-IDCardMTFStandard = { ent-IDCardStandard }
     .desc = { ent-IDCardStandard.desc }
-ent-BaseMTFPDA = { ent-AdjutantPDA }
-    .desc = { ent-AdjutantPDA.desc }
 ent-ClothingMaskMTF = Противогаз Мобильной Оперативной Группы
     .desc = Не дает унюхать трупный запах мертвых сотрудников фонда.
 ent-ClothingHelmetMTF = Шлем Мобильной Оперативной Группы
