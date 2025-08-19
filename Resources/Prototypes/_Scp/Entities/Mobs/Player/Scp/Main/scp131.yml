@@ -27,6 +27,10 @@
   - type: Item
     size: Huge
     sprite: _Scp/Mobs/Scp/scp-131/scp-131-a.rsi
+  - type: Clothing
+    sprite: _Scp/Mobs/Scp/scp-131/scp-131-a.rsi
+    slots:
+    - NECK
   - type: ItemRepickupCooldown
     cooldown: 5
   - type: CanEscapeInventory
@@ -79,3 +83,7 @@
   - type: Item
     size: Huge
     sprite: _Scp/Mobs/Scp/scp-131/scp-131-b.rsi
+  - type: Clothing
+    sprite: _Scp/Mobs/Scp/scp-131/scp-131-b.rsi
+    slots:
+    - NECK
