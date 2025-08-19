@@ -1,5 +1,5 @@
 job-name-senior-medical-specialist = Старший врач
-job-description-senior-medical-specialist = Обучает интернов и делегирует полномочия заведующего медицинским сектором.
+job-description-senior-medical-specialist = Обучает медицинских ассистентов и исполняет обязанности главного врача при его отсутствии.
 job-name-pharmaceutical-specialist = Фармацевт
 job-description-pharmaceutical-specialist = Отвечает за снабжение учреждения медицинскими препаратами и различными лекарствами.
 job-name-psychotherapist = Парапсихолог
