@@ -15,6 +15,8 @@ using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using System.Linq;
+using Content.Shared._Scp.CharacterInfo.AccessLevel;
+using Content.Shared._Scp.CharacterInfo.EmployeeClass;
 
 
 namespace Content.Server.StationRecords.Systems;
@@ -111,7 +113,7 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         TryComp<FingerprintComponent>(player, out var fingerprintComponent);
         TryComp<DnaComponent>(player, out var dnaComponent);
 
-        CreateGeneralRecord(station, idUid, name, profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records, nonHumanoid); // Sunrise-Edit
+        CreateGeneralRecord(station, player, idUid, name, profile.Age, profile.Species, profile.Gender, jobId, fingerprintComponent?.Fingerprint, dnaComponent?.DNA, profile, records, nonHumanoid); // Sunrise-Edit
     }
 
 
@@ -144,6 +146,7 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
     /// <param name="records">Station records component.</param>
     public void CreateGeneralRecord(
         EntityUid station,
+        EntityUid player,
         EntityUid? idUid,
         string name,
         int age,
@@ -170,6 +173,9 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
         }
         */
 
+        TryComp<AccessLevelComponent>(player, out var accessLevel);
+        TryComp<EmployeeClassComponent>(player, out var employeeClass);
+
         var record = new GeneralStationRecord()
         {
             Name = name,
@@ -184,6 +190,8 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
             DNA = dna,
             NonHumanoid = nonHumanoid, // Sunrise-Edit
             HumanoidProfile = profile, // Sunrise edit
+            EmployeeClass = employeeClass?.Class, // Fire added
+            AccessLevel = accessLevel?.Level, // Fire added
         };
 
         var key = AddRecordEntry(station, record);
