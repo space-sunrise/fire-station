@@ -1,48 +1,28 @@
-﻿# ID карта
-#Командир
+﻿# TODO: Положить ПДА в рюкзак/карман/разгрузку.
+# Ключ карты
+
 - type: entity
-  parent: IDCardMTFStandard
-  id: IDCardNTFLeader
+  parent: KeyCardMtfBase
+  id: KeyCardMtfNTFLeader
   components:
+  - type: Sprite
+    state: mtf_commander
   - type: PresetIdCard
     job: NTFLeader
-#Специалист
+
 - type: entity
-  parent: IDCardMTFStandard
-  id: IDCardNTFSpecialist
+  parent: KeyCardMtfBase
+  id: KeyCardMtfNTFSpecialist
   components:
   - type: PresetIdCard
     job: NTFSpecialist
-#Кадет
+
 - type: entity
-  parent: IDCardMTFStandard
-  id: IDCardNTFCadet
+  parent: KeyCardMtfBase
+  id: KeyCardMtfNTFCadet
   components:
   - type: PresetIdCard
     job: NTFCadet
-# КПК
-#Командир
-- type: entity
-  parent: BaseMTFPDA
-  id: NTFLeaderPDA
-  components:
-  - type: Pda
-    id: IDCardNTFLeader
-#Специалист
-- type: entity
-  parent: BaseMTFPDA
-  id: NTFSpecialistPDA
-  components:
-  - type: Pda
-    id: IDCardNTFSpecialist
-#Кадет
-- type: entity
-  parent: BaseMTFPDA
-  id: NTFCadetPDA
-  components:
-  - type: Pda
-    id: IDCardNTFCadet
-
 
 # ПРОФЕССИИ
 # Командир
@@ -78,7 +58,7 @@
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: MTFCommanderVest
-    id: NTFLeaderPDA
+    id: KeyCardMtfNTFLeader
     ears: ClothingHeadsetAltMTF
     belt: MTFCommanderWebbing
     pocket1: BaseUplinkMTFLeader
@@ -153,7 +133,7 @@
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: MTFVest
-    id: NTFSpecialistPDA
+    id: KeyCardMtfNTFSpecialist
     ears: ClothingHeadsetAltMTF
     belt: MTFWebbing
     pocket1: BaseUplinkMTFSpecialist
@@ -225,7 +205,7 @@
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: MTFVest
-    id: NTFCadetPDA
+    id: KeyCardMtfNTFCadet
     ears: ClothingHeadsetAltMTF
     belt: MTFWebbing
     pocket1: BaseUplinkMTFCadet

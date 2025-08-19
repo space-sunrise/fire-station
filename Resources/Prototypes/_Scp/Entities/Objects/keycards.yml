@@ -1,0 +1,460 @@
+﻿- type: entity
+  abstract: true
+  id: KeyCardBase
+  parent: IDCardStandard
+  suffix: SCP keycard
+  components:
+  - type: Item
+    size: Small
+    heldPrefix: default
+  - type: Clothing
+    sprite: _Scp/Objects/Keycards/keycards.rsi
+    quickEquip: true
+    slots:
+    - neck
+    - idcard
+  - type: Sprite
+    sprite: _Scp/Objects/Keycards/keycards.rsi
+
+# Администрация
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardDirector
+  name: complex director keycard
+  components:
+  - type: Sprite
+    state: director
+  - type: PresetIdCard
+    job: Director
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardScientificServiceDirector
+  name: scientific director keycard
+  components:
+  - type: Sprite
+    state: chief_scientific_officer
+  - type: PresetIdCard
+    job: ScientificServiceDirector
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardSecurityCommander
+  name: security commander keycard
+  components:
+  - type: Sprite
+    state: head_of_security
+  - type: PresetIdCard
+    job: SecurityCommander
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardChiefTechnicalSpecialist
+  name: chief technical specialist keycard
+  components:
+  - type: Sprite
+    state: lead_engineer
+  - type: PresetIdCard
+    job: ChiefTechnicalSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardPersonnelOfficer
+  name: personnel officer keycard
+  components:
+  - type: Sprite
+    state: personnel_manager
+  - type: PresetIdCard
+    job: PersonnelOfficer
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardHeadOfMedicalSector
+  name: head of medical sector keycard
+  components:
+  - type: Sprite
+    state: chief_medical_officer
+  - type: PresetIdCard
+    job: HeadOfMedicalSector
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardSeniorLogisticsOfficer
+  name: senior logistics officer keycard
+  components:
+  - type: Sprite
+    state: quartermaster
+  - type: PresetIdCard
+    job: SeniorLogisticsOfficer
+
+# Комитет по этике
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardEthicsCommitteePass
+  name: ethics committee representative pass
+  components:
+  - type: Sprite
+    state: ethics_committee
+  - type: PresetIdCard
+    job: EthicsCommitteeRepresentative
+
+# Служба внутреннего трибунала
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardJudicialInspector
+  name: internal tribunal service representative pass
+  components:
+  - type: Sprite
+    state: ethics_committee
+  - type: PresetIdCard
+    job: JudicialInspector
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardTribunalOfficer
+  name: internal tribunal service representative pass
+  components:
+  - type: Sprite
+    state: ethics_committee
+  - type: PresetIdCard
+    job: TribunalOfficer
+
+# Служба безопасности легкой зоны содержания
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardLightContainmentZoneSecurityCommandant
+  name: security commandant keycard
+  components:
+  - type: Sprite
+    state: head_security_gray
+  - type: PresetIdCard
+    job: ExternalAdministrativeZoneCommandant
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardSeniorLightContainmentZoneSecurityOfficer
+  name: security guard keycard
+  components:
+  - type: Sprite
+    state: security_gray
+  - type: PresetIdCard
+    job: SeniorExternalAdministrativeZoneOfficer
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardLightContainmentZoneSecurityOfficer
+  name: security guard keycard
+  components:
+  - type: Sprite
+    state: security_gray
+  - type: PresetIdCard
+    job: ExternalAdministrativeZoneOfficer
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardJuniorLightContainmentZoneSecurityOfficer
+  name: security guard keycard
+  components:
+  - type: Sprite
+    state: security_gray
+  - type: PresetIdCard
+    job: JuniorExternalAdministrativeZoneOfficer
+
+# Служба безопасности тяжелой зоны содержания
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardHeavyContainmentZoneCommandant
+  name: security commandant keycard
+  components:
+  - type: Sprite
+    state: head_security_red
+  - type: PresetIdCard
+    job: HeavyContainmentZoneCommandant
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardSeniorHeavyContainmentZoneOfficer
+  name: security guard keycard
+  components:
+  - type: Sprite
+    state: security_red
+  - type: PresetIdCard
+    job: SeniorHeavyContainmentZoneOfficer
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardHeavyContainmentZoneOfficer
+  name: security guard keycard
+  components:
+  - type: Sprite
+    state: security_red
+  - type: PresetIdCard
+    job: HeavyContainmentZoneOfficer
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardJuniorHeavyContainmentZoneOfficer
+  name: security guard keycard
+  components:
+  - type: Sprite
+    state: security_red
+  - type: PresetIdCard
+    job: JuniorHeavyContainmentZoneOfficer
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardFieldMedicalSpecialist
+  name: field medical specialist keycard
+  components:
+  - type: Sprite
+    state: medical_gray
+  - type: PresetIdCard
+    job: FieldMedicalSpecialist
+
+# Научная служба
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardLeadResearcher
+  name: lead researcher keycard
+  components:
+  - type: Sprite
+    state: science
+  - type: PresetIdCard
+    job: LeadResearcher
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardAnomabiologyResearcher
+  name: research personnel keycard
+  components:
+  - type: Sprite
+    state: science
+  - type: PresetIdCard
+    job: AnomabiologyResearcher
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardAnomarchologyResearcher
+  name: research personnel keycard
+  components:
+  - type: Sprite
+    state: science
+  - type: PresetIdCard
+    job: AnomarchologyResearcher
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardProductionSpecialist
+  name: production specialist keycard
+  components:
+  - type: Sprite
+    state: science
+  - type: PresetIdCard
+    job: ProductionSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardJuniorResearcher
+  name: junior research personnel keycard
+  components:
+  - type: Sprite
+    state: science
+  - type: PresetIdCard
+    job: JuniorResearcher
+
+# Медицинская служба
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardSeniorMedicalSpecialist
+  name: senior medical specialist keycard
+  components:
+  - type: Sprite
+    state: medical
+  - type: PresetIdCard
+    job: SeniorMedicalSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardMedicalSpecialist
+  name: medical personnel keycard
+  components:
+  - type: Sprite
+    state: medical
+  - type: PresetIdCard
+    job: MedicalSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardPharmaceuticalSpecialist
+  name: pharmaceutical specialist keycard
+  components:
+  - type: Sprite
+    state: medical
+  - type: PresetIdCard
+    job: PharmaceuticalSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardPsychotherapist
+  name: medical personnel keycard
+  components:
+  - type: Sprite
+    state: medical
+  - type: PresetIdCard
+    job: Psychotherapist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardHospitalIntern
+  name: hospital intern keycard
+  components:
+  - type: Sprite
+    state: medical
+  - type: PresetIdCard
+    job: HospitalIntern
+
+# Инженерно-техническая служба
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardLeadTechnicalSpecialist
+  name: lead technical specialist keycard
+  components:
+  - type: Sprite
+    state: engineer
+  - type: PresetIdCard
+    job: LeadTechnicalSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardElectricalTechnicalSpecialist
+  name: electrical technical specialist keycard
+  components:
+  - type: Sprite
+    state: engineer
+  - type: PresetIdCard
+    job: ElectricalTechnicalSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardGeneralTechnicalSpecialist
+  name: engineering personnel keycard
+  components:
+  - type: Sprite
+    state: engineer
+  - type: PresetIdCard
+    job: GeneralTechnicalSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardTechnicalTrainee
+  name: engineering personnel keycard
+  components:
+  - type: Sprite
+    state: engineer
+  - type: PresetIdCard
+    job: TechnicalTrainee
+
+# Логистическая служба
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardLogisticsOfficer
+  name: logistics personnel keycard
+  components:
+  - type: Sprite
+    state: logistics
+  - type: PresetIdCard
+    job: LogisticsOfficer
+
+# Санитарно-продовольственный отдел
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardBotanistPhytogeneticist
+  name: service personnel keycard
+  components:
+  - type: Sprite
+    state: service
+  - type: PresetIdCard
+    job: BotanistPhytogeneticist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardGastronomicSpecialist
+  name: service personnel keycard
+  components:
+  - type: Sprite
+    state: service
+  - type: PresetIdCard
+    job: GastronomicSpecialist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardServicePersonnel
+  name: service personnel keycard
+  components:
+  - type: Sprite
+    state: service
+  - type: PresetIdCard
+    job: ServicePersonnel
+
+# Класс Д
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardClassDCock
+  name: class d personnel keycard
+  components:
+  - type: Sprite
+    state: class_d_service
+  - type: PresetIdCard
+    job: ClassDCook
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardClassDBotanist
+  name: class d personnel keycard
+  components:
+  - type: Sprite
+    state: class_d_service
+  - type: PresetIdCard
+    job: ClassDBotanist
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardClassDJanitor
+  name: class d personnel keycard
+  components:
+  - type: Sprite
+    state: class_d_janitor
+  - type: PresetIdCard
+    job: ClassDJanitor
+
+# Отдельные
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardOmni
+  name: omni keycard
+  components:
+  - type: Sprite
+    state: omni
+  - type: Access
+    groups:
+    - AllComplex
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardEmpty
+  name: keycard
+  components:
+  - type: Sprite
+    state: empty

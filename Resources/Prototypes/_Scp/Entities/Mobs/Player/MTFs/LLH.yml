@@ -1,48 +1,28 @@
-﻿# ID КАРТА
-# Командир
+﻿# TODO: Положить ПДА в рюкзак/карман/разгрузку.
+# Ключ карты
+
 - type: entity
-  parent: IDCardMTFStandard
-  id: IDCardLLHLeader
+  parent: KeyCardMtfBase
+  id:  KeyCardMtfLLHLeader
   components:
+  - type: Sprite
+    state: mtf_commander
   - type: PresetIdCard
     job: LLHLeader
-# Специалист
+
 - type: entity
-  parent: IDCardMTFStandard
-  id: IDCardLLHSpecialist
+  parent: KeyCardMtfBase
+  id: KeyCardMtfLLHSpecialist
   components:
   - type: PresetIdCard
     job: LLHSpecialist
-# Кадет
+
 - type: entity
-  parent: IDCardMTFStandard
-  id: IDCardLLHCadet
+  parent: KeyCardMtfBase
+  id: KeyCardMtfLLHCadet
   components:
   - type: PresetIdCard
     job: LLHCadet
-
-# КПК
-# Командир
-- type: entity
-  parent: BaseMTFPDA
-  id: LLHLeaderPDA
-  components:
-  - type: Pda
-    id: IDCardLLHLeader
-# Специалист
-- type: entity
-  parent: BaseMTFPDA
-  id: LLHSpecialistPDA
-  components:
-  - type: Pda
-    id: IDCardLLHSpecialist
-# Кадет
-- type: entity
-  parent: BaseMTFPDA
-  id: LLHCadetPDA
-  components:
-  - type: Pda
-    id: IDCardLLHCadet
 
 # кастом вещи группы
 - type: entity
@@ -103,7 +83,7 @@
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHeavyLLH
-    id: LLHLeaderPDA
+    id: KeyCardMtfLLHLeader
     ears: ClothingHeadsetAltMTFLLH
     belt: MTFCommanderWebbing
     pocket1: BaseUplinkLLHLeader
@@ -181,7 +161,7 @@
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHeavyLLH
-    id: LLHSpecialistPDA
+    id: KeyCardMtfLLHSpecialist
     ears: ClothingHeadsetAltMTFLLH
     belt: MTFWebbing
     pocket1: BaseUplinkLLHSpecialist
@@ -251,7 +231,7 @@
     eyes: ClothingEyesNVDSec
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHeavyLLH
-    id: LLHCadetPDA
+    id: KeyCardMtfLLHCadet
     ears: ClothingHeadsetAltMTFLLH
     belt: MTFWebbing
     pocket1: BaseUplinkLLH
