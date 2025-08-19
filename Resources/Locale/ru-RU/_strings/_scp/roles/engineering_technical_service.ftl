@@ -1,5 +1,5 @@
 job-name-lead-technical-specialist = Старший инженер
-job-description-lead-technical-specialist = Технический специалист с многолетним опытом.
+job-description-lead-technical-specialist = Технический специалист со многолетним опытом.
 job-name-electrical-technical-specialist = Электротехник
 job-description-electrical-technical-specialist = Инженер-электрик, отвечающий за электроснабжение, электрическое оборудование и систему отопления, вентиляции, кондиционирования воздуха (ОВКВ).
 job-name-general-technical-specialist = Техник
