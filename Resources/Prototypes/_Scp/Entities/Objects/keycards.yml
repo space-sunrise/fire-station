@@ -458,3 +458,11 @@
   components:
   - type: Sprite
     state: empty
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardPassEmpty
+  name: pass
+  components:
+  - type: Sprite
+    state: pass

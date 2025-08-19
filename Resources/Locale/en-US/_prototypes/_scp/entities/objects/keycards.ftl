@@ -85,3 +85,5 @@ ent-KeyCardOmni = omni keycard
     .desc = { ent-KeyCardBase.desc }
 ent-KeyCardEmpty = keycard
     .desc = { ent-KeyCardBase.desc }
+ent-KeyCardPassEmpty = pass
+    .desc = { ent-KeyCardBase.desc }
