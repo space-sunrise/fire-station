@@ -1,5 +1,4 @@
 ﻿- type: entity
-  name: Toy Spawner
   id: ScpToySpawner
   parent: ToySpawner
   components:
@@ -88,7 +87,6 @@
     chance: 1
 
 - type: entity
-  name: Prize Figurine Spawner
   id: ScpFigureSpawner
   parent: FigureSpawner
   components:
@@ -115,8 +113,6 @@
     offset: 0.2
 
 - type: entity
-  name: Spacemen Minifigure Spawner
-  suffix: Librarian only, map with care!
   id: ScpSpacemenFigureSpawner
   parent: SpacemenFigureSpawner
   components:

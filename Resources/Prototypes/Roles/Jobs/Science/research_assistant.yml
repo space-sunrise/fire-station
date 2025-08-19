@@ -11,6 +11,7 @@
   supervisors: job-supervisors-science
   canBeAntag: true # Sunrise-Edit
   displayWeight: 0 # Sunrise-Edit
+  overrideConsoleVisibility: false # Fire added
   access:
   - Research
   - Maintenance

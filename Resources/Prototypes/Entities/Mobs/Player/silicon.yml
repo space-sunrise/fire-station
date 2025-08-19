@@ -295,9 +295,12 @@
   - type: ComplexInteraction
   - type: Actions
   - type: Access
+    # Fire edit start
     groups:
-    - AllAccess
-    - Silicon
+    - AllComplex
+    tags:
+    - AI
+    # Fire edit end
   - type: Eye
     drawFov: false
   - type: Examiner

@@ -1,0 +1,43 @@
+﻿- type: entity
+  parent: DoorRemoteCommand
+  id: DoorRemoteAdministration
+  name: administration door remote
+  components:
+  - type: Access
+    groups:
+    - Administration
+
+- type: entity
+  parent: DoorRemoteResearch
+  id: DoorRemoteScientificService
+  components:
+  - type: Access
+    groups:
+    - ScientificService
+
+- type: entity
+  parent: DoorRemoteResearch
+  id: DoorRemoteScpChambers
+  name: SCP chambers door remote
+  components:
+  - type: Access
+    groups:
+    - ScpClasses
+
+- type: entity
+  parent: DoorRemoteCargo
+  id: DoorRemoteLogistics
+  name: logistics door remote
+  components:
+  - type: Access
+    groups:
+    - Logistics
+
+- type: entity
+  parent: DoorRemoteSecurity
+  id: DoorRemoteClassD
+  name: class D rooms door remote
+  components:
+  - type: Access
+    groups:
+    - ClassD

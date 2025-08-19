@@ -11,22 +11,17 @@
   supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false
   displayWeight: 0
-  access:
-  - Research
-  - Kitchen
-  - Hydroponics
-  - Janitor
-  - Security
-  - Brig
-  #  - Maintenance
-  - Service
-  - External
-  - Cryogenics
+  accessGroups:
+  - SecurityJobCommon
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
     - type: Fear # переопределение компонента страха для СБ
       phobias:
       - Exoremophobia
@@ -44,7 +39,7 @@
   id: JuniorExternalAdministrativeZoneOfficerGear
   equipment:
     mask: ClothingMaskSecurityBandBlack
-    id: SecurityCadetPDA
+    id: KeyCardJuniorLightContainmentZoneSecurityOfficer
     ears: ClothingHeadsetExternalAdministrativeZoneSecurityService
     pocket1: HyperLinkBookCorporateLaw
   storage:

@@ -62,13 +62,13 @@
       - id: ClothingShoesBootsSecurityGuard
       - id: WeaponMeleeNeedle
         prob: 0.1
-      - id: HyperLinkBookCorporateLaw # Sunrise-edit
+      - id: HyperLinkBookCorporateLaw
         prob: 0.5
 
 - type: entity
-  id: LockerHeavyContainmentZoneFieldDoctorFilled
+  id: LockerHeavyContainmentZoneFieldMedicFilled
   suffix: Brigmedic, Filled
-  parent: LockerHeavyContainmentZoneFieldDoctor
+  parent: LockerHeavyContainmentZoneFieldMedic
   components:
   - type: StorageFill
     contents:
