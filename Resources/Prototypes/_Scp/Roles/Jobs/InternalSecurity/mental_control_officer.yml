@@ -21,6 +21,10 @@
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
+    - type: EmployeeClass
+      class: B
+    - type: AccessLevel
+      level: Four
     - type: Fear
       timeToDecreaseFearLevel: 120
       proximityBlockerLevel: None

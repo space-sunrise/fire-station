@@ -1,72 +1,4 @@
-﻿### ------=========[PDA]=========------ ###
-- type: entity
-  parent: [BotanistPDA, BaseChaosContraband]
-  id: BaseChaosPDA
-  categories: [ HideSpawnMenu ]
-  abstract: true
-  components:
-  - type: Pda
-    state: pda-syndi
-  - type: PdaBorderColor
-    borderColor: "#013220"
-    accentHColor: "#013220"
-    accentVColor: "#013220"
-  - type: Icon
-    state: pda-syndi
-  - type: CartridgeLoader
-    uiKey: enum.PdaUiKey.Key
-    preinstalled:
-    - NotekeeperCartridge
-    - AstroNavCartridge
-
-# командир
-- type: entity
-  parent: BaseChaosPDA
-  id: ChaosLeaderPDA
-  components:
-  - type: Pda
-    id: ChaosAgentIDCard
-
-# медик
-- type: entity
-  parent: BaseChaosPDA
-  id: ChaosMedicPDA
-  components:
-  - type: Pda
-    id: ChaosAgentIDCard
-  - type: CartridgeLoader
-    uiKey: enum.PdaUiKey.Key
-    preinstalled:
-    - NotekeeperCartridge
-    - AstroNavCartridge
-    - MedTekCartridge
-
-# повстанец
-- type: entity
-  parent: BaseChaosPDA
-  id: ChaosPDA
-  components:
-  - type: Pda
-    id: ChaosAgentIDCard
-
-
-### ------=========[New (special) items]=========------ ###
-#карта ПХ
-- type: entity
-  parent: NukieAgentIDCard
-  id: ChaosAgentIDCard
-  suffix: CHAOS
-  components:
-  - type: Access
-    tags:
-    - Maintenance
-    - SyndicateAgent
-    - NuclearOperative
-  - type: Biocode
-    factions:
-    - Chaos
-
-#дефиб ПХ медика
+﻿#дефиб ПХ медика
 - type: entity
   parent: [DefibrillatorSyndicate, BaseChaosContraband]
   id: DefibrillatorChaos
@@ -163,7 +95,7 @@
     gloves: ClothingHandsGlovesChaos
     outerClothing: ClothingOuterArmorChaosVest
     shoes: ClothingShoesBootsChaosFilled
-    id: ChaosLeaderPDA
+    id: ChaosAccessBreakerUnlimited
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
     pocket1: ChaosAccessBreaker
@@ -182,7 +114,7 @@
     gloves: ClothingHandsGlovesChaos
     outerClothing: ClothingOuterArmorChaosVest
     shoes: ClothingShoesBootsChaosFilled
-    id: ChaosMedicPDA
+    id: ChaosAccessBreakerUnlimited
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
     pocket1: CombatMedipen
@@ -202,7 +134,7 @@
     gloves: ClothingHandsGlovesChaos
     outerClothing: ClothingOuterArmorChaosVest
     shoes: ClothingShoesBootsChaosFilled
-    id: ChaosPDA
+    id: ChaosAccessBreakerUnlimited
     ears: ClothingHeadsetAltChaos
     belt: ClothingBeltChaosFilled
     pocket1: C4

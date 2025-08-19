@@ -1,23 +1,51 @@
-#Blast door
+# ГЕРМОЗАТВОРЫ
+
+# Региональная администрация
 
 - type: entity
   parent: ScpBlastDoor
-  id: ScpBlastDoorCentralCommand
-  suffix: Central Command, Locked
+  id: ScpBlastDoorRegionalAdministration
+  suffix: Regional administration, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCentralCommand ]
+      board: [ DoorElectronicsMTF ]
 
-#Window shutters
+# Общие доступы
+
+- type: entity
+  parent: ScpBlastDoor
+  id: ScpBlastDoorExit
+  suffix: Exit, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsExit ]
+
+# СТВОРКИ
+
+# Региональная администрация
 
 - type: entity
   parent: ScpShuttersWindow
-  id: ScpShuttersWindowCentralCommand
-  suffix: Central Command, Locked
+  id: ScpShuttersWindowRegionalAdministration
+  suffix: Regional administration, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCentralCommand ]
+      board: [ DoorElectronicsMTF ]
+  - type: AccessReader
+    containerAccessProvider: board
+
+# Общие доступы
+
+- type: entity
+  parent: ScpShuttersWindow
+  id: ScpShuttersWindowExit
+  suffix: Exit, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsExit ]
   - type: AccessReader
     containerAccessProvider: board

@@ -367,7 +367,7 @@
     - id: ClothingOuterCoatHoSTrench
     - id: ClothingShoesBootsJack
     - id: DoorRemoteSecurity
-    # - id: HoloprojectorSecurity #Fire-Station
+    - id: HoloprojectorSecurity
     - id: RubberStampHos
     - id: SecurityTechFabCircuitboard
     - id: CargoRequestSecurityComputerCircuitboard
@@ -420,6 +420,7 @@
   id: LockerFreezerVaultFilled
   suffix: Vault, Locked
   parent: LockerFreezerBase
+  categories: [ HideSpawnMenu ]
   components:
   - type: AccessReader
     access: [ [ "Command" ] ]

@@ -3,41 +3,28 @@
   parent: DoorElectronics
   id: DoorElectronicsCaptain
   suffix: Captain, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Captain"]]
-    # Fire added start
-    alertAccesses:
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsHeadOfPersonnel
   suffix: HeadOfPersonnel, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["HeadOfPersonnel"]]
-    # Fire added start
-    alertAccesses:
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsCommand
   suffix: Command, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Command"]]
-    # Fire added start
-    alertAccesses:
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: ScpDeltaAlertAccesses
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 
@@ -46,18 +33,10 @@
   parent: DoorElectronics
   id: DoorElectronicsBar
   suffix: Bar, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Bar"]]
-    # Fire added start
-    alertAccesses:
-      scpBlue: ScpBlueAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 
@@ -65,18 +44,10 @@
   parent: DoorElectronics
   id: DoorElectronicsBarKitchen
   suffix: Bar, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Bar"], ["Kitchen"]]
-    # Fire added start
-    alertAccesses:
-      scpBlue: ScpBlueAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 
@@ -84,40 +55,20 @@
   parent: DoorElectronics
   id: DoorElectronicsHydroponics
   suffix: Hydroponics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Hydroponics"]]
-    # Fire added start
-    alertAccesses:
-      scpGreen: ScpGreenAlertAccesses
-      scpBlue: ScpBlueAlertAccesses
-      scpOrange: ScpOrangeAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsChapel
   suffix: Chapel, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Chapel"]]
-    # Fire added start
-    alertAccesses:
-      scpBlue: ScpBlueAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpYellow: ScpYellowAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 
@@ -125,22 +76,10 @@
   parent: DoorElectronics
   id: DoorElectronicsTheatre
   suffix: Theatre, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Theatre"]]
-    # Fire added start
-    alertAccesses:
-      scpGreen: ScpGreenAlertAccesses
-      scpBlue: ScpBlueAlertAccesses
-      scpOrange: ScpOrangeAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpYellow: ScpYellowAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 
@@ -148,22 +87,10 @@
   parent: DoorElectronics
   id: DoorElectronicsKitchen
   suffix: Kitchen, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Kitchen"]]
-    # Fire added start
-    alertAccesses:
-      scpGreen: ScpGreenAlertAccesses
-      scpBlue: ScpBlueAlertAccesses
-      scpOrange: ScpOrangeAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpYellow: ScpYellowAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 
@@ -171,20 +98,10 @@
   parent: DoorElectronics
   id: DoorElectronicsKitchenHydroponics
   suffix: Kitchen/Hydroponics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Kitchen"], ["Hydroponics"]]
-    # Fire added start
-    alertAccesses:
-      scpGreen: ScpGreenAlertAccesses
-      scpBlue: ScpBlueAlertAccesses
-      scpOrange: ScpOrangeAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 
@@ -192,41 +109,20 @@
   parent: DoorElectronics
   id: DoorElectronicsJanitor
   suffix: Janitor, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Janitor"]]
-    # Fire added start
-    alertAccesses:
-      scpGreen: ScpGreenAlertAccesses
-      scpBlue: ScpBlueAlertAccesses
-      scpOrange: ScpOrangeAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpYellow: ScpYellowAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsLawyer
   suffix: Lawyer, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Lawyer"]]
-    # Fire added start
-    alertAccesses:
-      scpGray: ScpGrayAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: ScpDeltaAlertAccesses
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
-
 
 
 - type: entity
@@ -236,23 +132,13 @@
   components:
   - type: AccessReader
     access: [["Service"]]
-    # Fire added start
-    alertAccesses:
-      scpBlue: ScpBlueAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpYellow: ScpYellowAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsServiceTheatre
   suffix: Service, Theatre, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Service"], ["Theatre"]]
@@ -262,81 +148,48 @@
   parent: DoorElectronics
   id: DoorElectronicsQuartermaster
   suffix: Quartermaster, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Quartermaster"]]
-    # Fire added start
-    alertAccesses:
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsSalvage
   suffix: Salvage, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Salvage"]]
-    # Fire added start
-    alertAccesses:
-      scpBlue: ScpBlueAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpYellow: ScpYellowAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsCargo
   suffix: Cargo, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Cargo"]]
-    # Fire added start
-    alertAccesses:
-      scpBlue: ScpBlueAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: ScpDeltaAlertAccesses
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 # Engineering
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsChiefEngineer
   suffix: ChiefEngineer, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["ChiefEngineer"]]
-    # Fire added start
-    alertAccesses:
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsAtmospherics
   suffix: Atmospherics, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Atmospherics"]]
-    # Fire added start
-    alertAccesses:
-      scpBlue: ScpBlueAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 - type: entity
@@ -346,51 +199,26 @@
   components:
   - type: AccessReader
     access: [["Engineering"]]
-    # Fire added start
-    alertAccesses:
-      scpBlue: ScpBlueAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
-
 
 # Science
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsMorgue
   suffix: Morgue, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Medical"], ["Detective"], ["Chapel"]]
-    # Fire added start
-    alertAccesses:
-      scpGreen: ScpGreenAlertAccesses
-      scpOrange: ScpOrangeAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpYellow: ScpYellowAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsResearchDirector
   suffix: ResearchDirector, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["ResearchDirector"]]
-    # Fire added start
-    alertAccesses:
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 - type: entity
   parent: DoorElectronics
@@ -399,18 +227,6 @@
   components:
   - type: AccessReader
     access: [["Research"], ["Medical"]]
-    # Fire added start
-    alertAccesses:
-      scpGreen: ScpGreenAlertAccesses
-      scpBlue: ScpBlueAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpYellow: ScpYellowAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 - type: entity
@@ -420,54 +236,32 @@
   components:
   - type: AccessReader
     access: [["Research"]]
-    # Fire added start
-    alertAccesses:
-      scpGreen: ScpGreenAlertAccesses
-      scpBlue: ScpBlueAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpYellow: ScpYellowAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 # Security
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsHeadOfSecurity
   suffix: HeadOfSecurity, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["HeadOfSecurity"]]
-    # Fire added start
-    alertAccesses:
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsArmory
   suffix: Armory, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Armory"]]
-    # Fire added start
-    alertAccesses:
-      scpOrange: ScpOrangeAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsDetective
   suffix: Detective, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Detective"]]
@@ -484,70 +278,46 @@
   components:
   - type: AccessReader
     access: [["Security"]]
-    # Fire added start
-    alertAccesses:
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsSecurityLawyer
   suffix: Security/Lawyer, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Security"], ["Lawyer"]]
-    # Fire added start
-    alertAccesses:
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsBrig
   suffix: Brig, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Brig"]]
-    # Fire added start
-    alertAccesses:
-      scpBlack: AllAccess
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 # Medical
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsChiefMedicalOfficer
   suffix: ChiefMedicalOfficer, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["ChiefMedicalOfficer"]]
-    # Fire added start
-    alertAccesses:
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsChemistry
   suffix: Chemistry, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Chemistry"]]
-    # Fire added start
-    alertAccesses:
-      scpGreen: ScpGreenAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 - type: entity
   parent: DoorElectronics
@@ -556,25 +326,13 @@
   components:
   - type: AccessReader
     access: [["Medical"]]
-    # Fire added start
-    alertAccesses:
-      scpGreen: ScpGreenAlertAccesses
-      scpBlue: ScpBlueAlertAccesses
-      scpOrange: ScpOrangeAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpYellow: AllAccess
-      scpRed: AllAccess
-      scpPurple: AllAccess
-      scpBlack: AllAccess
-      scpDelta: AllAccess
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 # Syndicate
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsNukeop
   suffix: Nukeop, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["NuclearOperative"]]
@@ -583,6 +341,7 @@
   parent: DoorElectronics
   id: DoorElectronicsSyndicateAgent
   suffix: SyndicateAgent, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["SyndicateAgent"]]
@@ -592,6 +351,7 @@
   parent: DoorElectronics
   id: DoorElectronicsCentralCommand
   suffix: CentralCommand, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["CentralCommand"]]
@@ -600,54 +360,26 @@
   parent: DoorElectronics
   id: DoorElectronicsExternal
   suffix: External, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["External"]]
-    # Fire added start
-    alertAccesses:
-      scpGreen: ScpGreenAlertAccesses
-      scpBlue: ScpBlueAlertAccesses
-      scpOrange: ScpOrangeAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpYellow: ScpYellowAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: ScpDeltaAlertAccesses
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsMaintenance
   suffix: Maintenance, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Maintenance"]]
-    # Fire added start
-    alertAccesses:
-      scpGreen: ScpGreenAlertAccesses
-      scpBlue: ScpBlueAlertAccesses
-      scpOrange: ScpOrangeAlertAccesses
-      scpGray: ScpGrayAlertAccesses
-      scpYellow: ScpYellowAlertAccesses
-      scpRed: ScpRedAlertAccesses
-      scpPurple: ScpPurpleAlertAccesses
-      scpBlack: ScpBlackAlertAccesses
-      scpDelta: ScpDeltaAlertAccesses
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end
 
 
 - type: entity
   parent: DoorElectronics
   id: DoorElectronicsVault
   suffix: Vault, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Security"], ["Command"]]
-    # Fire added start
-    alertAccesses:
-      scpDelta: ScpDeltaAlertAccesses
-      scpColdSilver: ScpColdSilverAlertAccesses
-    # Fire added end

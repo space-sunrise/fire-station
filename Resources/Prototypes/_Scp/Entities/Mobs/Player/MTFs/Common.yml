@@ -1,37 +1,17 @@
 ﻿#базовая ID карта
 - type: entity
-  parent: IDCardStandard
-  id: IDCardMTFStandard
+  parent: KeyCardBase
+  id: KeyCardMtfBase
   categories: [ HideSpawnMenu ]
   abstract: true
   components:
   - type: Sprite
-    sprite: _Scp/Objects/Keycards/mtfleader.rsi
-    state: icon
+    state: mtf_operative
+  - type: Access
+    groups:
+    - AllComplex
   - type: Item
     heldPrefix: blue
-
-
-
-#базовый КПК
-- type: entity
-  parent: AdjutantPDA
-  id: BaseMTFPDA
-  categories: [ HideSpawnMenu ]
-  abstract: true
-  components:
-  - type: CartridgeLoader
-    uiKey: enum.PdaUiKey.Key
-    preinstalled:
-    - CrewManifestCartridge
-    - NotekeeperCartridge
-    - NewsReaderCartridge
-    - WantedListCartridge
-    - AstroNavCartridge
-    - MedTekCartridge
-
-
-
 
 # ВЕЩИ
 - type: entity

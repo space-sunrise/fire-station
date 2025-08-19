@@ -4,6 +4,6 @@ job-name-electrical-technical-specialist = Электротехник
 job-description-electrical-technical-specialist = Инженер-электрик, отвечающий за электроснабжение, электрическое оборудование и систему отопления, вентиляции, кондиционирования воздуха (ОВКВ).
 job-name-general-technical-specialist = Техник
 job-description-general-technical-specialist = Сотрудник, занимающийся обслуживанием техники и оборудования. В комнате отдыха вновь перегорела лампочка? Не работает ваш новый SCiPhone? — Он решит ваши проблемы!
-job-name-technical-trainee = Техник-стажер
+job-name-technical-trainee = Техник-стажёр
 job-description-technical-trainee = Начинающий техник. Проходит обучение у старших техников и помогает по мелочам.
 job-supervisors-chief-technical-specialist = старшему инженеру

@@ -13,25 +13,21 @@
   radioBold: true
   displayWeight: 70
   canBeAntag: true
-  access:
-  - Maintenance
-  - Engineering
-  - Command
-  - External
-  - ChiefEngineer
-  - Atmospherics
-  - Brig
-  - Cryogenics
+  accessGroups:
+  - ChiefTechnicalSpecialist
   special:
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Four
 
 - type: startingGear
   id: ChiefTechnicalSpecialistGear
   equipment:
-    id: CEPDA
-    #    head: ClothingHeadHatHardhatWhite
+    id: KeyCardChiefTechnicalSpecialist
     eyes: ClothingEyesGlassesMeson
     ears: ClothingHeadsetAltEngineeringTechnicalService
     belt: ClothingBeltUtilityEngineering

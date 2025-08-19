@@ -3,6 +3,7 @@
   parent: LockerBase
   name: booze storage
   description: This is where the bartender keeps the booze.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -50,6 +51,7 @@
   parent: LockerBase
   name: salvage specialist's equipment
   description: Nevermind the pickaxe.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -154,6 +156,7 @@
   id: LockerAtmospherics
   parent: LockerBase
   name: atmospheric technician's locker
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -230,6 +233,7 @@
   parent: LockerFreezerBase
   name: freezer
   suffix: Kitchen, Locked
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [ [ "Kitchen" ] ]
@@ -245,6 +249,7 @@
   id: LockerBotanist
   parent: LockerBase
   name: botanist's locker
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -306,6 +311,7 @@
   id: LockerParamedic
   parent: LockerBase
   name: paramedic's locker
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -327,6 +333,7 @@
   id: LockerChemistry
   parent: LockerBase
   name: chemical locker
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -600,6 +607,7 @@
   parent: LockerBooze
   name: detective's cabinet
   description: Usually cold and empty... like your heart.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Detective"]]
@@ -609,6 +617,7 @@
   parent: LockerSecurity
   name: evidence locker
   description: To store bags of bullet casings and detainee belongings.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Security"]]
@@ -619,6 +628,7 @@
   name: armory closet
   parent: LockerBaseSecure
   description: It's a personal storage unit for operative gear.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -658,6 +668,7 @@
   id: LockerClown
   name: clown locker
   parent: LockerBaseSecure
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: AccessReader
@@ -678,6 +689,7 @@
   id: LockerMime
   name: mime locker
   parent: LockerBaseSecure
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: AccessReader

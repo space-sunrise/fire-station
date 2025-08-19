@@ -19,40 +19,37 @@
         - Belt
     - type: AccessOverrider
       accessLevels:
+      # Fire added start - новые доступы
+      - Administration
+      - ComplexDirector
+      - ScientificServiceDirector
+      - SecurityCommander
+      - ChiefTechnicalSpecialist
+      - PersonnelOfficer
+      - HeadOfMedicalSector
+      - SeniorLogisticsOfficer
+      - EthicsCommittee
+      - InternalTribunalService
+      - LifeSupport
+      - Laboratory
+      - Checkpoint
+      - Exit
+      - NuclearWarhead
+      - Logistics
+      - AI
+      - Safe
+      - Euclid
+      - Keter
+      - ClassDCanteen
+      - ClassDJanitor
       - Armory
-      - Atmospherics
-      - Bar
-      - Brig
-      - Detective
-      - Captain
-      - Cargo
-      - Chapel
-      - Chemistry
-      - ChiefEngineer
-      - ChiefMedicalOfficer
-      - Command
       - Engineering
-      - External
-      - HeadOfPersonnel
-      - HeadOfSecurity
-      - Hydroponics
-      - Janitor
-      - Kitchen
-      - Lawyer
       - Maintenance
       - Medical
-      - Quartermaster
       - Research
-      - ResearchDirector
-      - Salvage
       - Security
       - Service
-      - Theatre
-      - BlueShield # Sunrise
-      - BlueShieldEnsign # Sunrise
-      - Ntrep # Sunrise
-      - Magistrat # Sunrise
-      - Barber  # Sunrise
+      # Fire added end
       privilegedIdSlot:
         name: id-card-console-privileged-id
         ejectSound: /Audio/Machines/id_swipe.ogg
@@ -93,6 +90,34 @@
     sprite: Objects/Tools/universal_access_configurator.rsi
   - type: AccessOverrider
     accessLevels:
+    # Fire added start - новые доступы
+    - Administration
+    - ComplexDirector
+    - ScientificServiceDirector
+    - SecurityCommander
+    - ChiefTechnicalSpecialist
+    - PersonnelOfficer
+    - HeadOfMedicalSector
+    - SeniorLogisticsOfficer
+    - EthicsCommittee
+    - InternalTribunalService
+    - LifeSupport
+    - Laboratory
+    - Checkpoint
+    - Exit
+    - NuclearWarhead
+    - Logistics
+    - AI
+    - Safe
+    - Euclid
+    - Keter
+    - ClassDCanteen
+    - ClassDJanitor
+    - MTF
+    - ChaosInsurgency
+    - ThirdParty
+    - O5
+    # Fire added end
     - Armory
     - Atmospherics
     - Bar

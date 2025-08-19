@@ -11,7 +11,7 @@
   - DirectorOuterClothing
   - DirectorGloves
   - DirectorShoes
-  - DirectorPDA
+  - DirectorKeyCard
   - DirectorBack
   - CommonAdministrationGlasses
   - Bra
@@ -130,51 +130,6 @@
   - NanoTrasenRepresentativeOuterClothing
   - CommonBackpack
   - Trinkets
-  - Bra
-  - Pants
-  - Socks
-
-# Департамент внутренней безопасности
-
-- type: roleLoadout
-  id: JobMentalControlOfficer
-  groups:
-  - LawyerNeck
-  - LawyerJumpsuit
-  - CommonBackpack
-  - Trinkets
-  - GroupSpeciesBreathTool
-  - Bra
-  - Pants
-  - Socks
-
-- type: roleLoadout
-  id: JobInternalSecurityOperative
-  groups:
-  - InternalSecurityOperativeJumpsuit
-  - InternalSecurityOperativeBackpack
-  - Bra
-  - Pants
-  - Socks
-
-# Департамент внутреннего трибунала
-
-- type: roleLoadout
-  id: JobJudicialInspector
-  groups:
-  - CommonBackpack
-  - Bra
-  - Pants
-  - Socks
-
-- type: roleLoadout
-  id: JobTribunalOfficer
-  groups:
-  - LawyerNeck
-  - LawyerJumpsuit
-  - CommonBackpack
-  - Trinkets
-  - GroupSpeciesBreathTool
   - Bra
   - Pants
   - Socks
@@ -331,7 +286,7 @@
   - Pants
   - Socks
 
-# Научный отдел
+# Научная служба
 
 - type: roleLoadout
   id: JobLeadResearcher
@@ -400,7 +355,7 @@
   - Pants
   - Socks
 
-# Медицинский отдел
+# Медицинская служба
 
 - type: roleLoadout
   id: JobSeniorMedicalSpecialist
@@ -499,7 +454,7 @@
   - Pants
   - Socks
 
-# Инженерный отдел
+# Инженерно-технический отдел
 
 - type: roleLoadout
   id: JobLeadTechnicalSpecialist
