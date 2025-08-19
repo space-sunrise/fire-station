@@ -11,22 +11,17 @@
   supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false
   displayWeight: 0
-  access:
-  - Research
-  - Kitchen
-  - Hydroponics
-  - Janitor
-  - Security
-  - Brig
-  #  - Maintenance
-  - Service
-  - External
-  - Cryogenics
+  accessGroups:
+  - SecurityJobCommon
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
     - type: Fear  # переопределение компонента страха для СБ
       phobias:
       - Exoremophobia
@@ -44,7 +39,7 @@
   id: JuniorHeavyContainmentZoneOfficerGear
   equipment:
     mask: ClothingMaskSecurityBandBlack
-    id: SecurityCadetPDA
+    id: KeyCardJuniorHeavyContainmentZoneOfficer
     ears: ClothingHeadsetHeavyContainmentSecurityService
     pocket1: HyperLinkBookCorporateLaw
   storage:

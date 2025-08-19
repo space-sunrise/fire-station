@@ -1,0 +1,14 @@
+access-level-name-zero = Level 0 (General Use)
+access-level-name-one = Level 1 (Official Use)
+access-level-name-two = Level 2 (Restricted Use)
+access-level-name-three = Level 3 (Confidential)
+access-level-name-four = Level 4 (Top Secret)
+access-level-name-five = Level 5 (Thaumiel)
+access-level-name-unspecified = Access Level Unknown
+access-level-description-zero = Access Level 0 is granted to personnel of low value who do not require access to information regarding anomalous artifacts or entities contained by the Foundation.
+access-level-description-one = Access Level 1 is granted to personnel working in close proximity to anomalous objects or entities, but who do not possess direct, indirect, or informational access to them, as well as to personnel dealing with classified information.
+access-level-description-two = Access Level 2 is granted to security and research personnel who require direct access to basic information regarding contained anomalous objects or entities.
+access-level-description-three = Access Level 3 is granted to senior security and research personnel who require access to detailed information regarding contained anomalous objects or entities, including their origin, acquisition circumstances, and long-term plans.
+access-level-description-four = Access Level 4 is granted to senior management personnel who require access to all information for a specific facility and/or region, as well as to long-term plans regarding Foundation operations and research projects.
+access-level-description-five = Access Level 5 is granted to the highest-level Foundation management personnel and provides virtually full access to all strategic and top-secret information.
+access-level-description-unspecified = Access level not declared, impact unknown.

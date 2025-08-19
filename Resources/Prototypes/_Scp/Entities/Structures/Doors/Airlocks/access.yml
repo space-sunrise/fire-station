@@ -1,266 +1,219 @@
-﻿- type: entity
-  parent: ScpHighSecDoor
-  id: HighSecScienceLocked
-  suffix: SCP Science, Locked
+﻿# ОБЫЧНЫЕ ШЛЮЗЫ
+
+# Администрация
+
+- type: entity
+  parent: ScpAirlockAdministration
+  id: ScpAirlockAdministrationLocked
+  suffix: Administration, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsResearch ]
+      board: [ DoorElectronicsAdministration ]
 
 - type: entity
-  parent: ScpHighSecDoor
-  id: HighSecResearchDirectorLocked
-  suffix: SCP Research director, Locked
+  parent: ScpAirlockAdministration
+  id: ScpAirlockDirectorLocked
+  suffix: Director, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsResearchDirector ]
+      board: [ DoorElectronicsComplexDirector ]
 
 - type: entity
-  parent: ScpHighSecDoor
-  id: HighSecSecurityLocked
-  suffix: SCP Security, Locked
+  parent: ScpAirlockAdministration
+  id: ScpAirlockHeadOfMedicalSectorLocked
+  suffix: Head of medical sector, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsHeadOfMedicalSector ]
+
+- type: entity
+  parent: ScpAirlockAdministration
+  id: ScpAirlockChiefTechnicalSpecialistLocked
+  suffix: Chief technical specialist, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsChiefTechnicalSpecialist ]
+
+- type: entity
+  parent: ScpAirlockAdministration
+  id: ScpAirlockSecurityCommanderLocked
+  suffix: Security commander, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurityCommander ]
+
+- type: entity
+  parent: ScpAirlockAdministration
+  id: ScpAirlockScientificServiceDirectorLocked
+  suffix: Scientific service director, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsScientificServiceDirector ]
+
+- type: entity
+  parent: ScpAirlockAdministration
+  id: ScpAirlockPersonnelOfficerLocked
+  suffix: Personnel officer, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsPersonnelOfficer ]
+
+- type: entity
+  parent: ScpAirlockAdministration
+  id: ScpAirlockSeniorLogisticsOfficerLocked
+  suffix: Senior logistics officer, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSeniorLogisticsOfficer ]
+
+- type: entity
+  parent: ScpAirlockAdministration
+  id: ScpAirlockEthicsCommitteeLocked
+  suffix: Ethics committee, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEthicsCommittee ]
+
+- type: entity
+  parent: ScpAirlockAdministration
+  id: ScpAirlockInternalTribunalServiceLocked
+  suffix: Internal tribunal service, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsInternalTribunalService ]
+
+# Региональная администрация
+
+- type: entity
+  parent: ScpAirlockRegionalAdministration
+  id: ScpAirlockRegionalAdministrationLocked
+  suffix: Regional Administration, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsMTF ]
+
+- type: entity
+  parent: ScpAirlockRegionalAdministration
+  id: ScpAirlockRegionalO5Locked
+  suffix: O5, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsO5 ]
+
+- type: entity
+  parent: ScpAirlockAdministration
+  id: ScpAirlockRegionalO5AdministrationLocked
+  suffix: O5, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsO5 ]
+
+- type: entity
+  parent: ScpAirlockSecurity
+  id: ScpAirlockRegionalO5SecurityLocked
+  suffix: O5, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsO5 ]
+
+# Служба безопасности
+
+- type: entity
+  parent: ScpAirlockSecurity
+  id: ScpAirlockSecurityLocked
+  suffix: Security, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsSecurity ]
 
 - type: entity
-  parent: ScpAirlock
-  id: ScpAirlockServiceLocked
-  suffix: SCP Service, Locked
+  parent: ScpAirlockSecurityLocked
+  id: ScpAirlockCheckpointLocked
+  suffix: Checkpoint, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsService ]
+      board: [ DoorElectronicsCheckpoint ]
+
+- type: entity
+  parent: ScpAirlockSecurity
+  id: ScpAirlockArmoryLocked
+  suffix: Armory, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsArmory ]
   - type: Wires
-    layoutId: AirlockService
+    layoutId: AirlockArmory
+
+# Научная служба
 
 - type: entity
-  parent: ScpAirlockServiceLocked
-  id: ScpAirlockLawyerLocked
-  suffix: SCP Lawyer, Locked
+  parent: ScpAirlockScience
+  id: ScpAirlockScienceLocked
+  suffix: Science, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsLawyer ]
+      board: [ DoorElectronicsResearch ]
 
 - type: entity
-  parent: ScpAirlockServiceLocked
-  id: ScpAirlockTheatreLocked
-  suffix: SCP Theatre, Locked
+  parent: ScpAirlockScience
+  id: ScpAirlockSafeLocked
+  suffix: Safe, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsTheatre ]
+      board: [ DoorElectronicsSafe ]
 
 - type: entity
-  parent: ScpAirlockServiceLocked
-  id: ScpAirlockChapelLocked
-  suffix: SCP Chapel, Locked
+  parent: ScpAirlockScience
+  id: ScpAirlockEuclidLocked
+  suffix: Euclid, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsChapel ]
+      board: [ DoorElectronicsEuclid ]
 
 - type: entity
-  parent: ScpAirlockServiceLocked
-  id: ScpAirlockJanitorLocked
-  suffix: SCP Janitor, Locked
+  parent: ScpAirlockScience
+  id: ScpAirlockKeterLocked
+  suffix: Keter, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsJanitor ]
+      board: [ DoorElectronicsKeter ]
 
 - type: entity
-  parent: ScpAirlockServiceLocked
-  id: ScpAirlockKitchenLocked
-  suffix: SCP Kitchen, Locked
+  parent: ScpAirlockScience
+  id: ScpAirlockMedicalScienceLocked
+  suffix: Medical/Science, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsKitchen ]
+      board: [ DoorElectronicsMedicalResearch ]
 
-- type: entity
-  parent: ScpAirlockServiceLocked
-  id: ScpAirlockBarLocked
-  suffix: SCP Bar, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsBar ]
-
-- type: entity
-  parent: ScpAirlockServiceLocked
-  id: ScpAirlockBarKitchenLocked
-  suffix: SCP Bar&Kitchen, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsBarKitchen ]
-
-- type: entity
-  parent: ScpAirlockHydroponics
-  id: ScpAirlockHydroponicsLocked
-  suffix: SCP Hydroponics, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsHydroponics ]
-
-- type: entity
-  parent: ScpAirlockExternal
-  id: ScpAirlockExternalLocked
-  suffix: SCP External, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsExternal ]
-
-- type: entity
-  parent: ScpAirlockExternal
-  id: ScpAirlockExternalCargoLocked
-  suffix: SCP External, Cargo, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsCargo ]
-  - type: Wires
-    layoutId: AirlockCargo
-
-- type: entity
-  parent: ScpAirlockExternal
-  id: ScpAirlockExternalEngineeringLocked
-  suffix: SCP External, Engineering, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsEngineering ]
-  - type: Wires
-    layoutId: AirlockEngineering
-
-- type: entity
-  parent: ScpAirlockExternal
-  id: ScpAirlockExternalCommandLocked
-  suffix: SCP External, Command, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsCommand ]
-  - type: Wires
-    layoutId: AirlockCommand
-
-- type: entity
-  parent: ScpAirlockExternalGlass
-  id: ScpAirlockExternalGlassCommandLocked
-  suffix: SCP External, Glass, Command, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsCommand ]
-  - type: Wires
-    layoutId: AirlockCommand
-
-- type: entity
-  parent: ScpAirlockExternal
-  id: ScpAirlockExternalAtmosphericsLocked
-  suffix: SCP External, Atmospherics, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsAtmospherics ]
-  - type: Wires
-    layoutId: AirlockEngineering
-
-- type: entity
-  parent: ScpAirlockExternal
-  id: ScpAirlockExternalSyndicateLocked
-  suffix: SCP External, Syndicate, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSyndicateAgent ]
-  - type: Wires
-    layoutId: AirlockSecurity
-
-- type: entity
-  parent: ScpAirlockExternal
-  id: ScpAirlockExternalNukeopLocked
-  suffix: SCP External, Nukeop, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsNukeop ]
-  - type: Wires
-    layoutId: AirlockSecurity
-
-- type: entity
-  parent: ScpAirlockFreezer
-  id: ScpAirlockFreezerLocked
-  suffix: SCP Kitchen, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsKitchen ]
-
-- type: entity
-  parent: ScpAirlockFreezer
-  id: ScpAirlockFreezerKitchenHydroLocked
-  suffix: SCP Kitchen/Hydroponics, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsKitchenHydroponics ]
-
-- type: entity
-  parent: ScpAirlockFreezer
-  id: ScpAirlockFreezerHydroponicsLocked
-  suffix: SCP Hydroponics, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsHydroponics ]
-
-- type: entity
-  parent: ScpAirlockEngineering
-  id: ScpAirlockEngineeringLocked
-  suffix: SCP Engineering, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsEngineering ]
-
-- type: entity
-  parent: ScpAirlockAtmospherics
-  id: ScpAirlockAtmosphericsLocked
-  suffix: SCP Atmospherics, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsAtmospherics ]
-
-- type: entity
-  parent: ScpAirlockCargo
-  id: ScpAirlockCargoLocked
-  suffix: SCP Cargo, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsCargo ]
-
-- type: entity
-  parent: ScpAirlockCargo
-  id: ScpAirlockSalvageLocked
-  suffix: SCP Salvage, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSalvage ]
+# Медицинская служба
 
 - type: entity
   parent: ScpAirlockMedical
   id: ScpAirlockMedicalLocked
-  suffix: SCP Medical, Locked
+  suffix: Medical, Locked
   components:
   - type: ContainerFill
     containers:
@@ -269,199 +222,58 @@
 - type: entity
   parent: ScpAirlockVirology
   id: ScpAirlockVirologyLocked
-  suffix: SCP Virology, Locked
+  suffix: Medical, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsMedical ]
 
 - type: entity
-  parent: ScpAirlockChemistry
-  id: ScpAirlockChemistryLocked
-  suffix: SCP Chemistry, Locked
+  parent: ScpAirlockLaboratory
+  id: ScpAirlockLaboratoryLocked
+  suffix: Laboratory, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsChemistry ]
+      board: [ DoorElectronicsLaboratory ]
+
+# Инженерно-техническая служба
 
 - type: entity
-  parent: ScpAirlockMedical
-  id: ScpAirlockMedicalMorgueLocked
-  suffix: SCP Morgue, Locked
+  parent: ScpAirlockEngineering
+  id: ScpAirlockEngineeringLocked
+  suffix: Engineering, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsMorgue ]
+      board: [ DoorElectronicsEngineering ]
 
 - type: entity
-  parent: ScpAirlockScience
-  id: ScpAirlockScienceLocked
-  suffix: SCP Science, Locked
+  parent: ScpAirlockLifeSupport
+  id: ScpAirlockLifeSupportLocked
+  suffix: Life support, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsResearch ]
+      board: [ DoorElectronicsLifeSupport ]
+
+# Отдел логистики
 
 - type: entity
-  parent: ScpAirlockScience
-  id: ScpAirlockMedicalScienceLocked
-  suffix: SCP Medical/Science, Locked
+  parent: ScpAirlockLogistics
+  id: ScpAirlockLogisticsLocked
+  suffix: Logistics, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsMedicalResearch ]
+      board: [ DoorElectronicsLogistics ]
+
+# Санитарно-продовольственный отдел
 
 - type: entity
-  parent: ScpAirlockCentralCommand
-  id: ScpAirlockCentralCommandLocked
-  suffix: SCP Central Command, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsCentralCommand ]
-
-- type: entity
-  parent: ScpAirlockCommand
-  id: ScpAirlockCommandLocked
-  suffix: SCP Command, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsCommand ]
-
-- type: entity
-  parent: ScpAirlockCommand
-  id: ScpAirlockCaptainLocked
-  suffix: SCP Captain, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsCaptain ]
-
-- type: entity
-  parent: ScpAirlockCommand
-  id: ScpAirlockChiefMedicalOfficerLocked
-  suffix: SCP ChiefMedicalOfficer, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsChiefMedicalOfficer ]
-
-- type: entity
-  parent: ScpAirlockCommand
-  id: ScpAirlockChiefEngineerLocked
-  suffix: SCP ChiefEngineer, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsChiefEngineer ]
-
-- type: entity
-  parent: ScpAirlockCommand
-  id: ScpAirlockHeadOfSecurityLocked
-  suffix: SCP HeadOfSecurity, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsHeadOfSecurity ]
-
-- type: entity
-  parent: ScpAirlockCommand
-  id: ScpAirlockResearchDirectorLocked
-  suffix: SCP ResearchDirector, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsResearchDirector ]
-
-- type: entity
-  parent: ScpAirlockCommand
-  id: ScpAirlockHeadOfPersonnelLocked
-  suffix: SCP HeadOfPersonnel, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsHeadOfPersonnel ]
-
-- type: entity
-  parent: ScpAirlockCommand
-  id: ScpAirlockQuartermasterLocked
-  suffix: SCP Quartermaster, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsQuartermaster ]
-
-- type: entity
-  parent: ScpAirlockSecurity
-  id: ScpAirlockSecurityLocked
-  suffix: SCP Security, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSecurity ]
-
-- type: entity
-  parent: ScpAirlockSecurity
-  id: ScpAirlockDetectiveLocked
-  suffix: SCP Detective, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsDetective ]
-
-- type: entity
-  parent: ScpAirlockSecurity
-  id: ScpAirlockBrigLocked
-  suffix: SCP Brig, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsBrig ]
-
-- type: entity
-  parent: ScpAirlockSecurity
-  id: ScpAirlockSecurityLawyerLocked
-  suffix: SCP Security/Lawyer, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSecurityLawyer ]
-
-- type: entity
-  parent: ScpAirlockSecurity
-  id: ScpAirlockArmoryLocked
-  suffix: SCP Armory, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsArmory ]
-  - type: Wires
-    layoutId: AirlockArmory
-
-- type: entity
-  parent: ScpAirlockSecurity
-  id: ScpAirlockVaultLocked
-  suffix: SCP Vault, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsVault ]
-
-- type: entity
-  parent: ScpAirlockCommand
-  id: ScpAirlockEVALocked
-  suffix: SCP EVA, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsExternal ]
-
-# Glass Airlocks
-- type: entity
-  parent: ScpAirlockGlass
-  id: ScpAirlockServiceGlassLocked
-  suffix: SCP Service, Locked
+  parent: ScpAirlock
+  id: ScpAirlockServiceLocked
+  suffix: Service, Locked
   components:
   - type: ContainerFill
     containers:
@@ -470,218 +282,286 @@
     layoutId: AirlockService
 
 - type: entity
-  parent: ScpAirlockServiceGlassLocked
-  id: ScpAirlockLawyerGlassLocked
-  suffix: SCP Lawyer, Locked
+  parent: ScpAirlockHydroponics
+  id: ScpAirlockHydroponicsLocked
+  suffix: Service, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsLawyer ]
+      board: [ DoorElectronicsService ]
 
 - type: entity
-  parent: ScpAirlockServiceGlassLocked
-  id: ScpAirlockTheatreGlassLocked
-  suffix: SCP Theatre, Locked
+  parent: ScpAirlockFreezer
+  id: ScpAirlockFreezerLocked
+  suffix: Service, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsTheatre ]
+      board: [ DoorElectronicsService ]
+
+# Класс Д
 
 - type: entity
-  parent: ScpAirlockServiceGlassLocked
-  id: ScpAirlockBarGlassLocked
-  suffix: SCP Bar, Locked
+  parent: ScpAirlockMaint
+  id: ScpAirlockClassDCanteenLocked
+  suffix: Class D canteen, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsBar ]
+      board: [ DoorElectronicsClassDCanteen ]
 
 - type: entity
-  parent: ScpAirlockServiceGlassLocked
-  id: ScpAirlockBarKitchenGlassLocked
-  suffix: SCP Bar&Kitchen, Locked
+  parent: ScpAirlockFreezer
+  id: ScpAirlockClassDCanteenFreezerLocked
+  suffix: Class D canteen, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsBarKitchen ]
-
-
-- type: entity
-  parent: ScpAirlockExternalGlass
-  id: ScpAirlockExternalGlassLocked
-  suffix: SCP External, Glass, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsExternal ]
+      board: [ DoorElectronicsClassDCanteen ]
 
 - type: entity
-  parent: ScpAirlockExternalGlass
-  id: ScpAirlockExternalGlassCargoLocked
-  suffix: SCP External, Glass, Cargo, Locked
+  parent: ScpAirlockHydroponics
+  id: ScpAirlockClassDCanteenHydroponicsLocked
+  suffix: Class D canteen, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCargo ]
+      board: [ DoorElectronicsClassDCanteen ]
+
+- type: entity
+  parent: ScpAirlockMaint
+  id: ScpAirlockClassDJanitorLocked
+  suffix: Class D janitor, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsClassDJanitor ]
+
+- type: entity
+  parent: ScpAirlock
+  id: ScpAirlockClassDJanitorAlternativeLocked
+  suffix: Class D janitor, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsClassDJanitor ]
   - type: Wires
-    layoutId: AirlockCargo
+    layoutId: AirlockService
+
+# Общие доступы
 
 - type: entity
-  parent: ScpAirlockExternalGlass
-  id: ScpAirlockExternalGlassSyndicateLocked
-  suffix: SCP External, Glass, Syndicate, Locked
+  parent: ScpAirlockExit
+  id: ScpAirlockExitLocked
+  suffix: Exit, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsSyndicateAgent ]
-  - type: Wires
-    layoutId: AirlockSecurity
+      board: [ DoorElectronicsExit ]
 
 - type: entity
-  parent: ScpAirlockExternalGlass
-  id: ScpAirlockExternalGlassNukeopLocked
-  suffix: SCP External, Glass, Nukeop, Locked
+  parent: ScpAirlockSecurity
+  id: ScpAirlockNuclearWarheadLocked
+  suffix: Nuclear warhead, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsNukeop ]
-  - type: Wires
-    layoutId: AirlockSecurity
+      board: [ DoorElectronicsNuclearWarhead ]
 
 - type: entity
-  parent: ScpAirlockExternalGlass
-  id: ScpAirlockExternalGlassEngineeringLocked
-  suffix: SCP External, Glass, Engineering, Locked
+  parent: ScpAirlockSecurity
+  id: ScpAirlockAiSecurityLocked
+  suffix: AI, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsEngineering ]
-  - type: Wires
-    layoutId: AirlockEngineering
+      board: [ DoorElectronicsAI ]
 
 - type: entity
-  parent: ScpAirlockExternalGlass
-  id: ScpAirlockExternalGlassAtmosphericsLocked
-  suffix: SCP External, Glass, Atmospherics, Locked
+  parent: ScpAirlockAdministration
+  id: ScpAirlockAiAdministrationLocked
+  suffix: AI, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsAtmospherics ]
-  - type: Wires
-    layoutId: AirlockEngineering
+      board: [ DoorElectronicsAI ]
 
 - type: entity
-  parent: ScpAirlockServiceGlassLocked
-  id: ScpAirlockKitchenGlassLocked
-  suffix: SCP Kitchen, Locked
+  parent: ScpAirlockMaint
+  id: ScpAirlockAiMaintenanceLocked
+  suffix: AI, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsKitchen ]
+      board: [ DoorElectronicsAI ]
+
+# СТЕКЛЯННЫЕ ШЛЮЗЫ
+
+# Администрация
 
 - type: entity
-  parent: ScpAirlockServiceGlassLocked
-  id: ScpAirlockJanitorGlassLocked
-  suffix: SCP Janitor, Locked
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockAdministrationGlassLocked
+  suffix: Administration, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsJanitor ]
+      board: [ DoorElectronicsAdministration ]
 
 - type: entity
-  parent: ScpAirlockHydroponicsGlass
-  id: ScpAirlockHydroGlassLocked
-  suffix: SCP Hydroponics, Locked
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockDirectorGlassLocked
+  suffix: Director, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsHydroponics ]
+      board: [ DoorElectronicsComplexDirector ]
 
 - type: entity
-  parent: ScpAirlockServiceGlassLocked
-  id: ScpAirlockChapelGlassLocked
-  suffix: SCP Chapel, Locked
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockHeadOfMedicalSectorGlassLocked
+  suffix: Head of medical sector, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsChapel ]
+      board: [ DoorElectronicsHeadOfMedicalSector ]
 
 - type: entity
-  parent: ScpAirlockEngineeringGlass
-  id: ScpAirlockEngineeringGlassLocked
-  suffix: SCP Engineering, Locked
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockChiefTechnicalSpecialistGlassLocked
+  suffix: Chief technical specialist, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsEngineering ]
+      board: [ DoorElectronicsChiefTechnicalSpecialist ]
 
 - type: entity
-  parent: ScpAirlockAtmosphericsGlass
-  id: ScpAirlockAtmosphericsGlassLocked
-  suffix: SCP Atmospherics, Locked
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockSecurityCommanderGlassLocked
+  suffix: Security commander, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsAtmospherics ]
+      board: [ DoorElectronicsSecurityCommander ]
 
 - type: entity
-  parent: ScpAirlockCargoGlass
-  id: ScpAirlockCargoGlassLocked
-  suffix: SCP Cargo, Locked
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockScientificServiceDirectorGlassLocked
+  suffix: Scientific service director, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCargo ]
+      board: [ DoorElectronicsScientificServiceDirector ]
 
 - type: entity
-  parent: ScpAirlockCargoGlass
-  id: ScpAirlockSalvageGlassLocked
-  suffix: SCP Salvage, Locked
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockPersonnelOfficerGlassLocked
+  suffix: Personnel officer, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsSalvage ]
+      board: [ DoorElectronicsPersonnelOfficer ]
 
 - type: entity
-  parent: ScpAirlockChemistryGlass
-  id: ScpAirlockChemistryGlassLocked
-  suffix: SCP Chemistry, Locked
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockSeniorLogisticsOfficerGlassLocked
+  suffix: Senior logistics officer, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsChemistry ]
+      board: [ DoorElectronicsSeniorLogisticsOfficer ]
 
 - type: entity
-  parent: ScpAirlockMedicalGlass
-  id: ScpAirlockMedicalMorgueGlassLocked
-  suffix: SCP Morgue, Locked
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockEthicsCommitteeGlassLocked
+  suffix: Ethics committee, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsMorgue ]
+      board: [ DoorElectronicsEthicsCommittee ]
 
 - type: entity
-  parent: ScpAirlockMedicalGlass
-  id: ScpAirlockMedicalGlassLocked
-  suffix: SCP Medical, Locked
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockInternalTribunalServiceGlassLocked
+  suffix: Internal tribunal service, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsMedical ]
+      board: [ DoorElectronicsInternalTribunalService ]
+
+# Региональная администрация
 
 - type: entity
-  parent: ScpAirlockVirologyGlass
-  id: ScpAirlockVirologyGlassLocked
-  suffix: SCP Virology, Locked
+  parent: ScpAirlockRegionalAdministrationGlass
+  id: ScpAirlockRegionalAdministrationGlassLocked
+  suffix: Regional Administration, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsMedical ]
+      board: [ DoorElectronicsMTF ]
+
+- type: entity
+  parent: ScpAirlockRegionalAdministrationGlass
+  id: ScpAirlockO5GlassLocked
+  suffix: O5, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsO5 ]
+
+- type: entity
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockO5AdministrationGlassLocked
+  suffix: O5, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsO5 ]
+
+- type: entity
+  parent: ScpAirlockSecurityGlass
+  id: ScpAirlockO5SecurityGlassLocked
+  suffix: O5, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsO5 ]
+
+# Служба безопасности
+
+- type: entity
+  parent: ScpAirlockSecurityGlass
+  id: ScpAirlockSecurityGlassLocked
+  suffix: Security, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
+
+- type: entity
+  parent: ScpAirlockSecurityGlass
+  id: ScpAirlockCheckpointGlassLocked
+  suffix: Checkpoint, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCheckpoint ]
+
+- type: entity
+  parent: ScpAirlockSecurityGlass
+  id: ScpAirlockArmoryGlassLocked
+  suffix: Armory, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsArmory ]
+
+# Научная служба
 
 - type: entity
   parent: ScpAirlockScienceGlass
   id: ScpAirlockScienceGlassLocked
-  suffix: SCP Science, Locked
+  suffix: Science, Locked
   components:
   - type: ContainerFill
     containers:
@@ -690,278 +570,105 @@
 - type: entity
   parent: ScpAirlockScienceGlass
   id: ScpAirlockMedicalScienceGlassLocked
-  suffix: SCP Medical/Science, Locked
+  suffix: Medical/Science, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsMedicalResearch ]
 
 - type: entity
-  parent: ScpAirlockCentralCommandGlass
-  id: ScpAirlockCentralCommandGlassLocked
-  suffix: SCP Central Command, Locked
+  parent: ScpAirlockScienceGlass
+  id: ScpAirlockSafeGlassLocked
+  suffix: Safe, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCentralCommand ]
+      board: [ DoorElectronicsSafe ]
 
 - type: entity
-  parent: ScpAirlockCommandGlass
-  id: ScpAirlockCommandGlassLocked
-  suffix: SCP Command, Locked
+  parent: ScpAirlockScienceGlass
+  id: ScpAirlockEuclidGlassLocked
+  suffix: Euclid, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCommand ]
+      board: [ DoorElectronicsEuclid ]
 
 - type: entity
-  parent: ScpAirlockCommandGlass
-  id: ScpAirlockCaptainGlassLocked
-  suffix: SCP Captain, Locked
+  parent: ScpAirlockScienceGlass
+  id: ScpAirlockKeterGlassLocked
+  suffix: Keter, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCaptain ]
+      board: [ DoorElectronicsKeter ]
+
+# Медицинская служба
 
 - type: entity
-  parent: ScpAirlockCommandGlass
-  id: ScpAirlockChiefMedicalOfficerGlassLocked
-  suffix: SCP ChiefMedicalOfficer, Locked
+  parent: ScpAirlockMedicalGlass
+  id: ScpAirlockMedicalGlassLocked
+  suffix: Medical, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsChiefMedicalOfficer ]
+      board: [ DoorElectronicsMedical ]
 
 - type: entity
-  parent: ScpAirlockCommandGlass
-  id: ScpAirlockChiefEngineerGlassLocked
-  suffix: SCP ChiefEngineer, Locked
+  parent: ScpAirlockVirologyGlass
+  id: ScpAirlockVirologyGlassLocked
+  suffix: Virology, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsChiefEngineer ]
+      board: [ DoorElectronicsMedical ]
 
 - type: entity
-  parent: ScpAirlockCommandGlass
-  id: ScpAirlockHeadOfSecurityGlassLocked
-  suffix: SCP HeadOfSecurity, Locked
+  parent: ScpAirlockLaboratoryGlass
+  id: ScpAirlockLaboratoryGlassLocked
+  suffix: Laboratory, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsHeadOfSecurity ]
+      board: [ DoorElectronicsLaboratory ]
+
+# Инженерно-техническая служба
 
 - type: entity
-  parent: ScpAirlockCommandGlass
-  id: ScpAirlockResearchDirectorGlassLocked
-  suffix: SCP ResearchDirector, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsResearchDirector ]
-
-- type: entity
-  parent: ScpAirlockCommandGlass
-  id: ScpAirlockHeadOfPersonnelGlassLocked
-  suffix: SCP HeadOfPersonnel, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsHeadOfPersonnel ]
-
-- type: entity
-  parent: ScpAirlockCommandGlass
-  id: ScpAirlockQuartermasterGlassLocked
-  suffix: SCP Quartermaster, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsQuartermaster ]
-
-- type: entity
-  parent: ScpAirlockSecurityGlass
-  id: ScpAirlockSecurityGlassLocked
-  suffix: SCP Security, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSecurity ]
-
-- type: entity
-  parent: ScpAirlockSecurityGlass
-  id: ScpAirlockDetectiveGlassLocked
-  suffix: SCP Detective, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsDetective ]
-
-- type: entity
-  parent: ScpAirlockSecurityGlass
-  id: ScpAirlockBrigGlassLocked
-  suffix: SCP Brig, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsBrig ]
-
-- type: entity
-  parent: ScpAirlockSecurityGlass
-  id: ScpAirlockSecurityLawyerGlassLocked
-  suffix: SCP Security/Lawyer, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSecurityLawyer ]
-
-- type: entity
-  parent: ScpAirlockSecurityGlass
-  id: ScpAirlockArmoryGlassLocked
-  suffix: SCP Armory, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsArmory ]
-
-- type: entity
-  parent: ScpAirlockCommandGlassLocked
-  id: ScpAirlockEVAGlassLocked
-  suffix: SCP EVA, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsExternal ]
-
-# Maintenance Hatches
-- type: entity
-  parent: ScpAirlockMaint
-  id: ScpAirlockMaintLocked
-  suffix: SCP Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsMaintenance ]
-
-- type: entity
-  parent: ScpAirlockMaintGlass
-  id: ScpAirlockMaintGlassLocked
-  suffix: SCP Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsMaintenance ]
-
-- type: entity
-  parent: ScpAirlockMaint
-  id: ScpAirlockMaintSalvageLocked
-  suffix: SCP Salvage, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsSalvage ]
-
-- type: entity
-  parent: ScpAirlockMaint
-  id: ScpAirlockMaintCargoLocked
-  suffix: SCP Cargo, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsCargo ]
-
-- type: entity
-  parent: ScpAirlockMaint
-  id: ScpAirlockMaintCommandLocked
-  suffix: SCP Command, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsCommand ]
-
-- type: entity
-  parent: ScpAirlockMaint
-  id: ScpAirlockMaintCommonLocked
-  suffix: SCP Common, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsMaintenance ]
-
-- type: entity
-  parent: ScpAirlockMaint
-  id: ScpAirlockMaintEngiLocked
-  suffix: SCP Engineering, Locked
+  parent: ScpAirlockEngineeringGlass
+  id: ScpAirlockEngineeringGlassLocked
+  suffix: Engineering, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsEngineering ]
 
 - type: entity
-  parent: ScpAirlockMaint
-  id: ScpAirlockMaintAtmoLocked
-  suffix: SCP Atmospherics, Locked
+  parent: ScpAirlockLifeSupportGlass
+  id: ScpAirlockLifeSupportGlassLocked
+  suffix: Life support, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsAtmospherics ]
+      board: [ DoorElectronicsLifeSupport ]
+
+# Отдел логистики
 
 - type: entity
-  parent: ScpAirlockMaintServiceLocked
-  id: ScpAirlockMaintBarLocked
-  suffix: SCP Bar, Locked
+  parent: ScpAirlockLogisticsGlass
+  id: ScpAirlockLogisticsGlassLocked
+  suffix: Logistics, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsBar ]
+      board: [ DoorElectronicsLogistics ]
+
+# Санитарно-продовольственный отдел
 
 - type: entity
-  parent: ScpAirlockMaintServiceLocked
-  id: ScpAirlockMaintBarKitchenLocked
-  suffix: SCP Bar&Kitchen, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsBarKitchen ]
-
-- type: entity
-  parent: ScpAirlockMaintServiceLocked
-  id: ScpAirlockMaintChapelLocked
-  suffix: SCP Chapel, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsChapel ]
-
-- type: entity
-  parent: ScpAirlockMaintServiceLocked
-  id: ScpAirlockMaintHydroLocked
-  suffix: SCP Hydroponics, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsHydroponics ]
-
-- type: entity
-  parent: ScpAirlockMaintServiceLocked
-  id: ScpAirlockMaintJanitorLocked
-  suffix: SCP Janitor, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsJanitor ]
-
-- type: entity
-  parent: ScpAirlockMaintServiceLocked
-  id: ScpAirlockMaintLawyerLocked
-  suffix: SCP Lawyer, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsLawyer ]
-
-- type: entity
-  parent: ScpAirlockMaint
-  id: ScpAirlockMaintServiceLocked
-  suffix: SCP Service, Locked
+  parent: ScpAirlockGlass
+  id: ScpAirlockServiceGlassLocked
+  suffix: Service, Locked
   components:
   - type: ContainerFill
     containers:
@@ -970,74 +677,182 @@
     layoutId: AirlockService
 
 - type: entity
-  parent: ScpAirlockMaintServiceLocked
-  id: ScpAirlockMaintTheatreLocked
-  suffix: SCP Theatre, Locked
+  parent: ScpAirlockHydroponicsGlass
+  id: ScpAirlockHydroGlassLocked
+  suffix: Hydroponics, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsTheatre ]
-
-- type: entity
-  parent: ScpAirlockMaintServiceLocked
-  id: ScpAirlockMaintKitchenLocked
-  suffix: SCP Kitchen, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsKitchen ]
-
-- type: entity
-  parent: ScpAirlockMaintServiceLocked
-  id: ScpAirlockMaintKitchenHydroLocked
-  suffix: SCP Kitchen/Hydroponics, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsKitchenHydroponics ]
-
-- type: entity
-  parent: ScpAirlockMaint
-  id: ScpAirlockMaintIntLocked
-  suffix: SCP Interior, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsMaintenance ]
-
-- type: entity
-  parent: ScpAirlockMaint
-  id: ScpAirlockMaintMedLocked
-  suffix: SCP Medical, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsMedical ]
+      board: [ DoorElectronicsService ]
   - type: Wires
-    layoutId: AirlockMedical
+    layoutId: AirlockService
+
+# Класс Д
 
 - type: entity
-  parent: ScpAirlockMaintMedLocked
-  id: ScpAirlockMedicalMorgueMaintLocked
-  suffix: SCP Morgue, Locked
+  parent: ScpAirlockGlass
+  id: ScpAirlockClassDCanteenGlassLocked
+  suffix: Class D canteen, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsMorgue ]
+      board: [ DoorElectronicsClassDCanteen ]
 
 - type: entity
-  parent: ScpAirlockMaintMedLocked
-  id: ScpAirlockMaintChemLocked
-  suffix: SCP Chemistry, Locked
+  parent: ScpAirlockHydroponicsGlass
+  id: ScpAirlockClassDCanteenHydroponicsGlassLocked
+  suffix: Class D canteen, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsChemistry ]
+      board: [ DoorElectronicsClassDCanteen ]
+
+- type: entity
+  parent: ScpAirlockGlass
+  id: ScpAirlockClassDJanitorGlassLocked
+  suffix: Class D janitor, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsClassDJanitor ]
+  - type: Wires
+    layoutId: AirlockService
+
+# Общие доступы
+
+- type: entity
+  parent: ScpAirlockExitGlass
+  id: ScpAirlockExitGlassLocked
+  suffix: Exit, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsExit ]
+
+- type: entity
+  parent: ScpAirlockSecurityGlass
+  id: ScpAirlockAiSecurityGlassLocked
+  suffix: AI, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsAI ]
+
+- type: entity
+  parent: ScpAirlockAdministrationGlass
+  id: ScpAirlockAiAdministrationGlassLocked
+  suffix: AI, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsAI ]
+
+# ТЕХНИЧЕСКИЕ ШЛЮЗЫ
+
+# Администрация
+
+- type: entity
+  parent: ScpAirlockMaint
+  id: ScpAirlockMaintAdministrationLocked
+  suffix: Administration, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsAdministration ]
+
+- type: entity
+  parent: ScpAirlockMaintAdministrationLocked
+  id: ScpAirlockMaintPersonnelOfficerLocked
+  suffix: Personnel Officer, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsPersonnelOfficer ]
+
+- type: entity
+  parent: ScpAirlockMaintAdministrationLocked
+  id: ScpAirlockMaintDirectorLocked
+  suffix: Director, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsComplexDirector ]
+
+- type: entity
+  parent: ScpAirlockMaintAdministrationLocked
+  id: ScpAirlockMaintChiefTechnicalSpecialistLocked
+  suffix: Chief technical specialist, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsChiefTechnicalSpecialist]
+
+- type: entity
+  parent: ScpAirlockMaintAdministrationLocked
+  id: ScpAirlockMaintHeadOfMedicalSectorLocked
+  suffix: Head of medical sector, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsHeadOfMedicalSector ]
+
+- type: entity
+  parent: ScpAirlockMaintAdministrationLocked
+  id: ScpAirlockMaintSecurityCommanderLocked
+  suffix: Security Commander, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurityCommander ]
+
+- type: entity
+  parent: ScpAirlockMaintAdministrationLocked
+  id: ScpAirlockMaintScientificServiceDirectorLocked
+  suffix: Scientific service director, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsScientificServiceDirector ]
+
+- type: entity
+  parent: ScpAirlockMaintAdministrationLocked
+  id: ScpAirlockMaintSeniorLogisticsOfficerLocked
+  suffix: Senior logistics officer, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSeniorLogisticsOfficer ]
+
+# Служба безопасности
+
+- type: entity
+  parent: ScpAirlockMaint
+  id: ScpAirlockMaintSecLocked
+  suffix: Security, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
+  - type: Wires
+    layoutId: AirlockSecurity
+
+- type: entity
+  parent: ScpAirlockMaint
+  id: ScpAirlockMaintArmoryLocked
+  suffix: Armory, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsArmory ]
+  - type: Wires
+    layoutId: AirlockArmory
+
+# Научная служба
 
 - type: entity
   parent: ScpAirlockMaint
   id: ScpAirlockMaintRnDLocked
-  suffix: SCP Science, Locked
+  suffix: Science, Locked
   components:
   - type: ContainerFill
     containers:
@@ -1048,219 +863,381 @@
 - type: entity
   parent: ScpAirlockMaintRnDLocked
   id: ScpAirlockMaintRnDMedLocked
-  suffix: SCP Medical/Science, Locked
+  suffix: Medical/Science, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsMedicalResearch ]
+  - type: Wires
+    layoutId: AirlockScience
+
+# Медицинская служба
 
 - type: entity
   parent: ScpAirlockMaint
-  id: ScpAirlockMaintSecLocked
-  suffix: SCP Security, Locked
+  id: ScpAirlockMaintMedLocked
+  suffix: Medical, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsSecurity ]
+      board: [ DoorElectronicsMedical ]
   - type: Wires
-    layoutId: AirlockSecurity
+    layoutId: AirlockMedical
 
 - type: entity
-  parent: ScpAirlockMaintSecLocked
-  id: ScpAirlockMaintDetectiveLocked
-  suffix: SCP Detective, Locked
+  parent: ScpAirlockMaintMedLocked
+  id: ScpAirlockMaintLaboratoryLocked
+  suffix: Laboratory, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsDetective ]
+      board: [ DoorElectronicsChemistry ]
 
-- type: entity
-  parent: ScpAirlockMaintCommandLocked
-  id: ScpAirlockMaintHOPLocked
-  suffix: SCP HeadOfPersonnel, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsHeadOfPersonnel ]
-
-- type: entity
-  parent: ScpAirlockMaintCommandLocked
-  id: ScpAirlockMaintCaptainLocked
-  suffix: SCP Captain, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsCaptain ]
-
-- type: entity
-  parent: ScpAirlockMaintCommandLocked
-  id: ScpAirlockMaintChiefEngineerLocked
-  suffix: SCP ChiefEngineer, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsChiefEngineer ]
-
-- type: entity
-  parent: ScpAirlockMaintCommandLocked
-  id: ScpAirlockMaintChiefMedicalOfficerLocked
-  suffix: SCP ChiefMedicalOfficer, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsChiefMedicalOfficer ]
-
-- type: entity
-  parent: ScpAirlockMaintCommandLocked
-  id: ScpAirlockMaintHeadOfSecurityLocked
-  suffix: SCP HeadOfSecurity, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsHeadOfSecurity ]
-
-- type: entity
-  parent: ScpAirlockMaintCommandLocked
-  id: ScpAirlockMaintResearchDirectorLocked
-  suffix: SCP ResearchDirector, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsResearchDirector ]
-
-- type: entity
-  parent: ScpAirlockMaintCommandLocked
-  id: ScpAirlockMaintQuartermasterLocked
-  suffix: SCP Quartermaster, Locked
-  components:
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronicsQuartermaster ]
+# Инженерно-техническая служба
 
 - type: entity
   parent: ScpAirlockMaint
-  id: ScpAirlockMaintArmoryLocked
-  suffix: SCP Armory, Locked
+  id: ScpAirlockMaintEngiLocked
+  suffix: Engineering, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsArmory ]
-  - type: Wires
-    layoutId: AirlockArmory
+      board: [ DoorElectronicsEngineering ]
 
-# Shuttle airlocks
+- type: entity
+  parent: ScpAirlockMaint
+  id: ScpAirlockMaintLifeSupportLocked
+  suffix: Life support, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLifeSupport ]
+
+# Отдел логистики
+
+- type: entity
+  parent: ScpAirlockMaint
+  id: ScpAirlockMaintLogisticsLocked
+  suffix: Logistics, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsLogistics ]
+
+# Санитарно-продовольственный отдел
+
+- type: entity
+  parent: ScpAirlockMaint
+  id: ScpAirlockMaintServiceLocked
+  suffix: Service, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsService ]
+  - type: Wires
+    layoutId: AirlockService
+
+# Общие доступы
+
+- type: entity
+  parent: ScpAirlockMaint
+  id: ScpAirlockMaintLocked
+  suffix: Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsMaintenance ]
+
+- type: entity
+  parent: ScpAirlockMaintGlass
+  id: ScpAirlockMaintGlassLocked
+  suffix: Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsMaintenance ]
+
+- type: entity
+  parent: ScpAirlockMaint
+  id: ScpAirlockMaintCommonLocked
+  suffix: Common, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsMaintenance ]
+
+# Сторонние
+
+- type: entity
+  parent: ScpAirlockMaint
+  id: ScpAirlockMaintChaosInsurgencyLocked
+  suffix: Chaos insurgency, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsChaosInsurgency]
+
+- type: entity
+  parent: ScpAirlockMaint
+  id: ScpAirlockMaintThirdPartyLocked
+  suffix: Third party, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsThirdParty ]
+
+# СТЫКОВОЧНЫЕ ШЛЮЗЫ
+
 - type: entity
   parent: ScpAirlockShuttle
-  id: ScpAirlockExternalShuttleLocked
-  suffix: SCP External, Docking, Locked
+  id: ScpAirlockExitShuttleLocked
+  suffix: Exit, Docking, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsExternal ]
+      board: [ DoorElectronicsExit ]
 
 - type: entity
   parent: ScpAirlockGlassShuttle
-  id: ScpAirlockExternalGlassShuttleLocked
-  suffix: SCP External, Glass, Docking, Locked
+  id: ScpAirlockExitGlassShuttleLocked
+  suffix: Exit, Glass, Docking, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsExternal ]
+      board: [ DoorElectronicsExit ]
 
 - type: entity
   parent: ScpAirlockGlassShuttle
-  id: ScpAirlockExternalGlassShuttleEmergencyLocked
-  suffix: SCP External, Emergency, Glass, Docking, Locked
+  id: ScpAirlockExitGlassShuttleEmergencyLocked
+  suffix: Exit, Emergency, Glass, Docking, Locked
   components:
   - type: PriorityDock
     tag: DockEmergency
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsExternal ]
+      board: [ DoorElectronicsExit ]
 
 - type: entity
   parent: ScpAirlockGlassShuttle
-  id: ScpAirlockExternalGlassShuttleArrivals
-  suffix: SCP External, Arrivals, Glass, Docking
+  id: ScpAirlockExitGlassShuttleArrivals
+  suffix: Exit, Arrivals, Glass, Docking
   components:
   - type: PriorityDock
     tag: DockArrivals
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsExternal ]
+      board: [ DoorElectronicsExit ]
 
 - type: entity
-  parent: ScpAirlockExternalGlassShuttleArrivals
-  id: ScpAirlockExternalGlassShuttleArrivalsLocked
-  suffix: SCP External, Arrivals, Glass, Docking, Locked
+  parent: ScpAirlockExitGlassShuttleArrivals
+  id: ScpAirlockExitGlassShuttleArrivalsLocked
+  suffix: Exit, Arrivals, Glass, Docking, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsExternal ]
+      board: [ DoorElectronicsExit ]
+
+# Сторонние
 
 - type: entity
-  parent: ScpAirlockExternalGlassShuttleArrivals
-  id: ScpAirlockExternalGlassShuttleArrivalsLockedCentComm
-  suffix: SCP External, Arrivals, Glass, Docking, Locked
+  parent: ScpAirlockShuttle
+  id: ScpAirlockChaosInsurgencyShuttleLocked
+  suffix: Chaos insurgency, Docking, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCentralCommand ]
-  - type: Airlock
-    safety: false
-  - type: Door
-    forcedCrushClose: true
-    crushDamage:
-      types:
-        Blunt: 10 # А вот нехуй.
+      board: [ DoorElectronicsChaosInsurgency ]
+
+- type: entity
+  parent: ScpAirlockShuttle
+  id: ScpAirlockThirdPartyShuttleLocked
+  suffix: Third party, Docking, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsThirdParty ]
 
 - type: entity
   parent: ScpAirlockGlassShuttle
-  id: ScpAirlockExternalGlassShuttleEscape
-  suffix: SCP External, Escape 3x4, Glass, Docking
+  id: ScpAirlockChaosInsurgencyGlassShuttleLocked
+  suffix: Chaos insurgency, Docking, Glass, Locked
   components:
-  - type: GridFill
-    addComponents:
-    - type: IFF
-      flags:
-      - HideLabel
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsExternal ]
+      board: [ DoorElectronicsChaosInsurgency ]
 
-#HighSecDoors
 - type: entity
-  parent: ScpHighSecDoor
-  id: ScpHighSecCentralCommandLocked
-  suffix: SCP Central Command, Locked
+  parent: ScpAirlockGlassShuttle
+  id: ScpAirlockThirdPartyGlassShuttleLocked
+  suffix: Third party, Docking, Glass, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCentralCommand ]
+      board: [ DoorElectronicsThirdParty ]
+
+# ЗАЩИЩЕННЫЕ ШЛЮЗЫ
+
+# Администрация
 
 - type: entity
   parent: ScpHighSecDoor
-  id: ScpHighSecCommandLocked
-  suffix: SCP Command, Locked
+  id: ScpHighSecAdministrationLocked
+  suffix: Administration, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCommand ]
+      board: [ DoorElectronicsAdministration]
 
 - type: entity
   parent: ScpHighSecDoor
-  id: ScpHighSecCaptainLocked
-  suffix: SCP Captain, Locked
+  id: ScpHighSecDirectorLocked
+  suffix: Director, Locked
   components:
   - type: ContainerFill
     containers:
-      board: [ DoorElectronicsCaptain ]
+      board: [ DoorElectronicsComplexDirector ]
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: HighSecScientificServiceDirectorLocked
+  suffix: Scientific service director, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsScientificServiceDirector ]
+
+# Региональная администрация
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: ScpHighSecRegionalAdministrationLocked
+  suffix: Regional administration, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsMTF ]
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: ScpHighSecO5Locked
+  suffix: O5, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsO5 ]
+
+# Служба безопасности
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: HighSecSecurityLocked
+  suffix: Security, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSecurity ]
 
 - type: entity
   parent: ScpHighSecDoor
   id: ScpHighSecArmoryLocked
-  suffix: SCP Armory, Locked
+  suffix: Armory, Locked
   components:
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsArmory ]
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: ScpHighSecCheckpointLocked
+  suffix: Checkpoint, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCheckpoint ]
+
+# Научная служба
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: HighSecScienceLocked
+  suffix: Science, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsResearch ]
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: HighSecSafeLocked
+  suffix: Safe, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsSafe]
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: HighSecEuclidLocked
+  suffix: Euclid, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsEuclid ]
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: HighSecKeterLocked
+  suffix: Keter, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsKeter ]
+
+# Общие доступы
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: HighSecNuclearWarheadLocked
+  suffix: Nuclear warhead, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsNuclearWarhead ]
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: HighSecAILocked
+  suffix: AI, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsAI ]
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: HighSecExitLocked
+  suffix: Exit, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsExit ]
+
+# Сторонние
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: HighSecThirdPartyLocked
+  suffix: Third party, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsThirdParty ]
+
+- type: entity
+  parent: ScpHighSecDoor
+  id: HighSecChaosInsurgencyLocked
+  suffix: Chaos insurgency, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsChaosInsurgency ]

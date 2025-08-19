@@ -3,6 +3,7 @@
   name: job-name-mail-carrier
   description: job-description-mail-carrier
   playTimeTracker: JobMailCarrier
+  overrideConsoleVisibility: false # Fire added
   requirements:
     - !type:DepartmentTimeRequirement
       department: Cargo

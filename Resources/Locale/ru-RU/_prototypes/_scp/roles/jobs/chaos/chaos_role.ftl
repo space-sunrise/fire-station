@@ -1,14 +1,3 @@
-ent-BaseChaosPDA = КПК Повстанцев
-    .desc = Ужели вновь непостоянный мститель пошлёт его багряную десницу нам на погибель?
-ent-ChaosLeaderPDA = КПК Командира Повстанцев
-    .desc = { ent-BaseChaosPDA.desc }
-ent-ChaosMedicPDA = КПК медика Повстанцев
-    .desc = { ent-BaseChaosPDA.desc }
-ent-ChaosPDA = КПК Повстанца
-    .desc = { ent-BaseChaosPDA.desc }
-ent-ChaosAgentIDCard = { ent-PassengerIDCard }
-    .suffix = Хаос
-    .desc = { ent-IDCardStandard.desc }
 ent-DefibrillatorChaos = дефибриллятор Повстанцев
     .desc = Двойное оружие самообороны против всяких идиотов, лучше, чем дефибриллятор фонда.
 ent-ClothingBackpackChaos = рюкзак Повстанца

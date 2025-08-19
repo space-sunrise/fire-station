@@ -1,4 +1,4 @@
-role-type-crew-aligned-name = Экипаж станции
+role-type-crew-aligned-name = Персонал комплекса
 role-type-solo-antagonist-name = Одиночный антагонист
 role-type-team-antagonist-name = Командный антагонист
 role-type-free-agent-name = Свободный агент

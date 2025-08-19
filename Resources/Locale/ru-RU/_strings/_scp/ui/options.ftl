@@ -1,6 +1,7 @@
 ui-options-tab-scp = Настройки SCP
 ui-options-scp-graphics = Графика
 ui-options-scp-audio = Аудио
+ui-options-scp-game = Игра
 ui-options-tab-hover-to-see-details = Наведите мышку на настройку, чтобы увидеть подсказку о действии настройки.
 ui-options-grain-toggle-overlay = Использовать шейдер зернистости
 ui-options-grain-toggle-overlay-tooltip =
@@ -42,3 +43,8 @@ ui-options-scp-audio-muffling-use-high-frequency-update = Использоват
 ui-options-scp-audio-muffling-use-high-frequency-update-tooltip =
     Определяет частоту проверок системы подавления звуков, с включенной опцией ~2-3 чаще обычного.
     Крайне не рекомендуется при проблемах с производительностью, гарантированно будет вызывать понижение FPS
+ui-options-scp-game-auto-open-character-window-enabled = Автооткрытие меню персонажа
+ui-options-scp-game-auto-open-character-window-enabled-tooltip =
+    Будет ли меню персонажа автоматически открываться при заходе на новую должность.
+    Если вы ранее не играли на этой должности, меню покажет минимальную информацию о вашем персонаже и его должности.
+    При последующих захода меню перестанет открываться.

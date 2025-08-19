@@ -65,10 +65,10 @@
       state: Complete
     - name: roadmap-life-cost-name
       desc: roadmap-life-cost-description
-      state: InProgress
+      state: Planned
     - name: roadmap-new-accesses-name
       desc: roadmap-new-accesses-description
-      state: InProgress
+      state: Complete
   - name: roadmap-big-update-three-name
     goals:
     - name: roadmap-traitors-name
