@@ -7,6 +7,6 @@ job-description-external-administrative-zone-officer = Боец комендан
 job-name-junior-external-administrative-zone-officer = Младший комендант
 job-description-junior-external-administrative-zone-officer = Только заступивший на службу младший боец комендантского отряда. Он помогает старшим офицерам следить за порядком в комплексе.
 job-name-field-medical-specialist = Амнестезиолог
-job-description-field-medical-specialist = Медицинский специалист СБ. Он оказывает медицинскую помощь и амнестирует персонал
+job-description-field-medical-specialist = Медицинский специалист службы безопасности. Оказывает медицинскую помощь и проводит амнезирование персонала.
 job-supervisors-security-commander = начальнику службы безопасности
 job-supervisors-external-administrative-zone-commandant = главному коменданту
