@@ -1,7 +1,5 @@
-ent-IDCardMTFStandard = { ent-IDCardStandard }
-    .desc = { ent-IDCardStandard.desc }
-ent-BaseMTFPDA = { ent-AdjutantPDA }
-    .desc = { ent-AdjutantPDA.desc }
+ent-KeyCardMtfBase = { ent-KeyCardBase }
+    .desc = { ent-KeyCardBase.desc }
 ent-ClothingMaskMTF = { ent-NineTailedFoxGasmask }
     .desc = { ent-NineTailedFoxGasmask.desc }
 ent-ClothingHelmetMTF = { ent-NineTailedFoxHelmet }
@@ -73,3 +71,7 @@ ent-CrateAdministrationRecontainment096 = { ent-CrateAdministrationSecure }
 ent-SpawnerOnTriggerMTFBase = { ent-SpawnPointScpBase }
     .suffix = Base | Spawn On Trigger
     .desc = { ent-SpawnPointScpBase.desc }
+ent-IDCardMTFStandard = { ent-IDCardStandard }
+    .desc = { ent-IDCardStandard.desc }
+ent-BaseMTFPDA = { ent-AdjutantPDA }
+    .desc = { ent-AdjutantPDA.desc }

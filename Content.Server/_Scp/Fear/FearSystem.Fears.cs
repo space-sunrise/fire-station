@@ -1,4 +1,5 @@
-﻿using Content.Server._Scp.Shaders.Highlighting;
+﻿using System.Runtime.InteropServices;
+using Content.Server._Scp.Shaders.Highlighting;
 using Content.Server._Sunrise.Mood;
 using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
@@ -9,6 +10,8 @@ using Content.Shared.Fluids.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Mobs.Systems;
 
 namespace Content.Server._Scp.Fear;
 
@@ -16,11 +19,17 @@ public sealed partial class FearSystem
 {
     [Dependency] private readonly HighlightSystem _highlight = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
+    [Dependency] private readonly MobStateSystem _mob = default!;
 
     private const string MoodSomeoneDiedOnMyEyes = "FearSomeoneDiedOnMyEyes";
 
     private const string MoodHemophobicBleeding = "FearHemophobicBleeding";
     private const string MoodHemophobicSeeBlood = "FearHemophobicSeeBlood";
+
+    private static readonly TimeSpan HemophobiaCheckCooldown = TimeSpan.FromSeconds(0.5f);
+    private TimeSpan _nextHemophobiaCheck = TimeSpan.Zero;
+
+    private readonly List<EntityUid> _hemophobiaBloodList = [];
 
     private void InitializeFears()
     {
@@ -60,11 +69,18 @@ public sealed partial class FearSystem
     /// </summary>
     private void UpdateHemophobia()
     {
-        var query = EntityQueryEnumerator<HemophobiaComponent, FearComponent>();
+        if (_timing.CurTime < _nextHemophobiaCheck)
+            return;
 
-        while (query.MoveNext(out var uid, out var hemophobia, out var fear))
+        var query = EntityQueryEnumerator<HemophobiaComponent, FearComponent, MobStateComponent>();
+
+        while (query.MoveNext(out var uid, out var hemophobia, out var fear, out var mob))
         {
-            var bloodAmount = GetAroundBloodVolume((uid, hemophobia), out var bloodList);
+            if (!_mob.IsAlive(uid, mob))
+                continue;
+
+            _hemophobiaBloodList.Clear();
+            var bloodAmount = GetAroundBloodVolume((uid, hemophobia), in _hemophobiaBloodList);
             var requiredBloodAmount = hemophobia.BloodRequiredPerState[fear.State];
 
             if (bloodAmount <= requiredBloodAmount)
@@ -75,19 +91,20 @@ public sealed partial class FearSystem
             if (!TrySetFearLevel(fearEntity, GetHemophobiaFearState(hemophobia, bloodAmount)))
                 continue;
 
-            _highlight.NetHighlightAll(bloodList, uid);
+            _highlight.NetHighlightAll(CollectionsMarshal.AsSpan(_hemophobiaBloodList), uid);
             AddNegativeMoodEffect(uid, MoodHemophobicSeeBlood);
         }
+
+        _nextHemophobiaCheck = _timing.CurTime + HemophobiaCheckCooldown;
     }
 
     /// <summary>
     /// Получает суммарное количество крови в зоне видимости персонажа.
     /// </summary>
-    private FixedPoint2 GetAroundBloodVolume(Entity<HemophobiaComponent> ent, out HashSet<EntityUid> bloodList)
+    private FixedPoint2 GetAroundBloodVolume(Entity<HemophobiaComponent> ent, in List<EntityUid> bloodList)
     {
         FixedPoint2 total = 0;
         var blood = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(ent.Owner);
-        bloodList = [];
 
         foreach (var puddle in blood)
         {
@@ -133,7 +150,8 @@ public sealed partial class FearSystem
     /// </summary>
     private void OnCalmDown(Entity<HemophobiaComponent> ent, ref FearCalmDownAttemptEvent args)
     {
-        var bloodAmount = GetAroundBloodVolume(ent, out _);
+        _hemophobiaBloodList.Clear();
+        var bloodAmount = GetAroundBloodVolume(ent, in _hemophobiaBloodList);
         var requiredBloodToCancel = ent.Comp.BloodRequiredPerState[args.NewState];
 
         if (bloodAmount > requiredBloodToCancel)

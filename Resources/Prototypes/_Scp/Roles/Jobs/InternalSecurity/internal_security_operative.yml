@@ -6,7 +6,6 @@
   requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
     - !type:OverallPlaytimeRequirement
       time: 90000 # 25 часов
-  startingGear: InternalSecurityOperativeGear
   icon: JobInternalSecurityOperative
   supervisors: job-supervisors-regional-administration
   canBeAntag: false
@@ -39,6 +38,10 @@
     implants: [MindShieldImplant]
   - !type:AddComponentSpecial
     components:
+    - type: EmployeeClass
+      class: B
+    - type: AccessLevel
+      level: Four
     - type: Fear
       timeToDecreaseFearLevel: 120
       proximityBlockerLevel: None
@@ -47,15 +50,3 @@
         Anxiety: 2
         Fear: 5
         Terror: 10
-
-- type: startingGear
-  id: InternalSecurityOperativeGear
-  equipment:
-    shoes: ClothingShoesBootsInternalSecurityOperativeFilled
-    eyes: ClothingEyesGlassesInternalSecurityOperative
-    head: ClothingHeadHatBeretInternalSecurityOperative
-    outerClothing: ClothingOuterArmorInternalSecurityOperative
-    id: InternalSecurityOperativePDA
-    ears: ClothingHeadsetAltInternalSecurity
-    belt: ClothingBeltInternalSecurityOperativeWebbingFilled
-    gloves: ClothingHandsGlovesCombat

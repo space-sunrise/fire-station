@@ -1260,7 +1260,7 @@
   loadouts:
   - ChiefMedicalOfficerBeret
   - ParamedicBeret # Sunrise-Edit
-  - CMOMedicalHeadMirror
+  # - CMOMedicalHeadMirror # Fire Edit
 # Sunrise-start
   - BeretSeniorPhysician
   - MedicalBeret

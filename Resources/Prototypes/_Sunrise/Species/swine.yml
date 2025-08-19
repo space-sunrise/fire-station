@@ -2,6 +2,7 @@
   id: Swine
   name: species-name-swine
   roundStart: false # Fire edit
+  stationRecordsHidden: true # Fire added
   prototype: MobSwine
   bodyTypes:
   - SwineNormal

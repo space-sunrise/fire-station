@@ -1,12 +1,17 @@
 using System.Linq;
-using Content.Client._Scp.Fear.UI;
+using System.Numerics;
+using Content.Client._Scp.UI;
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
+using Content.Client.Mind;
+using Content.Client.Roles;
 using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Character.Controls;
 using Content.Client.UserInterface.Systems.Character.Windows;
 using Content.Client.UserInterface.Systems.Objectives.Controls;
+using Content.Shared._Scp.CharacterInfo.AccessLevel;
+using Content.Shared._Scp.CharacterInfo.EmployeeClass;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared.Input;
 using Content.Shared.Mind;
@@ -35,6 +40,13 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
 
     [UISystemDependency] private readonly CharacterInfoSystem _characterInfo = default!;
     [UISystemDependency] private readonly SpriteSystem _sprite = default!;
+    // Fire added start
+    [Dependency] private readonly ILocalizationManager _loc = default!;
+    [UISystemDependency] private readonly EmployeeClassSystem _employeeClass = default!;
+    [UISystemDependency] private readonly AccessLevelSystem _accessLevel = default!;
+    [UISystemDependency] private readonly MindSystem _mind = default!;
+    [UISystemDependency] private readonly JobSystem _job = default!;
+    // Fire added end
 
     public override void Initialize()
     {
@@ -137,10 +149,15 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         _window.SpriteView.SetEntity(entity);
 
         UpdateRoleType();
-        UpdateFears(entity, ref _window); // Fire added
+        // Fire added start
+        UpdateJobInfo(job, ref _window);
+        UpdateFears(entity, ref _window);
+        UpdateEmployeeClass(entity, ref _window);
+        UpdateAccessLevel(entity, ref _window);
+        // Fire added end
 
         _window.NameLabel.Text = entityName;
-        _window.SubText.Text = job;
+        // _window.SubText.Text = job; Fire edit
         _window.Objectives.RemoveAllChildren();
         _window.ObjectivesLabel.Visible = objectives.Any();
 
@@ -199,7 +216,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             _window.Objectives.AddChild(control);
         }
 
-        _window.RolePlaceholder.Visible = briefing == null && !controls.Any() && !objectives.Any();
+        _window.RolePlaceholder.Visible = false; // Fire edit - не сри мне тут
     }
 
     private void OnRoleTypeChanged(MindRoleTypeChangedEvent ev, EntitySessionEventArgs _)
@@ -227,9 +244,35 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
     }
 
     // Fire added start
+    private void UpdateJobInfo(string jobProtoId, ref CharacterWindow window)
+    {
+        window.JobInfo.Visible = false;
+        window.SubText.Visible = false;
+        window.Separator.Visible = false;
+
+        if (!_prototypeManager.TryIndex<JobPrototype>(jobProtoId, out var job))
+            return;
+
+        window.JobInfo.Visible = true;
+        window.JobInfo.Text = $"{job.LocalizedName}: {job.LocalizedDescription}";
+
+        // ФАК Ю, РИЧ ТЕКСТ, КОТОРЫЙ НЕ ХОЧЕТ СТАНОВИТЬСЯ НОРМАЛЬНЫМ
+        // ПОКА Я НЕ РЕСАЙЗНУ ОКНО :>
+        window.SetSize = new Vector2(window.Size.X + 1, window.Size.Y + 1);
+        window.SetSize = new Vector2(window.Size.X - 1, window.Size.Y - 1);
+
+        if (!_job.TryGetDepartment(job.ID, out var department))
+            return;
+
+        window.SubText.Text = Loc.GetString(department.Name);
+        window.SubText.Visible = true;
+        window.Separator.Visible = true;
+    }
+
     private void UpdateFears(EntityUid uid, ref CharacterWindow window)
     {
         window.Fears.RemoveAllChildren();
+        window.FearsPlaceholder.Visible = true;
 
         if (!_ent.TryGetComponent<FearComponent>(uid, out var fear))
             return;
@@ -239,17 +282,69 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
             if (!_prototypeManager.TryIndex(phobia, out var phobiaProto))
                 continue;
 
-            var item = new FearInfo
+            var item = new ColoredInfo
             {
-                PhobiaNameString = phobiaProto.Name,
-                Description = phobiaProto.Description,
+                NameString = _loc.GetString(phobiaProto.Name),
+                DescriptionString = _loc.GetString(phobiaProto.Description),
                 Color = phobiaProto.Color,
             };
 
             window.Fears.AddChild(item);
         }
 
-        window.FearsPlaceholder.Visible = window.Fears.ChildCount == 0;
+        window.FearsPlaceholder.Visible = false;
+    }
+
+    private void UpdateEmployeeClass(EntityUid uid, ref CharacterWindow window)
+    {
+        window.EmployeeClass.RemoveAllChildren();
+        window.EmployeeClassPlaceholder.Visible = true;
+
+        if (!_employeeClass.TryGetName(uid, out var name, false))
+            return;
+
+        if (!_employeeClass.TryGetDescription(uid, out var description, false))
+            return;
+
+        var item = new ColoredInfo
+        {
+            NameString = name,
+            DescriptionString = description,
+            Color = EmployeeClassComponent.InfoColor,
+        };
+
+        window.EmployeeClass.AddChild(item);
+        window.EmployeeClassPlaceholder.Visible = false;
+    }
+
+    private void UpdateAccessLevel(EntityUid uid, ref CharacterWindow window)
+    {
+        window.AccessLevel.RemoveAllChildren();
+        window.AccessLevelPlaceholder.Visible = true;
+
+        if (!_accessLevel.TryGetName(uid, out var name, false))
+            return;
+
+        if (!_accessLevel.TryGetDescription(uid, out var description, false))
+            return;
+
+        var item = new ColoredInfo
+        {
+            NameString = name,
+            DescriptionString = description,
+            Color = AccessLevelComponent.InfoColor,
+        };
+
+        window.AccessLevel.AddChild(item);
+        window.AccessLevelPlaceholder.Visible = false;
+    }
+
+    private void OnResized()
+    {
+        if (_window == null)
+            return;
+
+
     }
     // Fire added end
 
@@ -268,7 +363,7 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
         _window?.Close();
     }
 
-    private void ToggleWindow()
+    public void ToggleWindow()
     {
         if (_window == null)
             return;

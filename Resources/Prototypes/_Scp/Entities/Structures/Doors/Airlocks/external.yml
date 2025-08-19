@@ -1,6 +1,7 @@
 - type: entity
   parent: ScpAirlockRCDResistant
-  id: ScpAirlockExternal
+  id: ScpAirlockExit
+  suffix: SCP, Exit
   components:
   - type: Door
     crushDamage:
@@ -21,9 +22,9 @@
     layoutId: AirlockExternal
 
 - type: entity
-  parent: ScpAirlockExternal
-  id: ScpAirlockExternalGlass
-  suffix: SCP Glass, External
+  parent: ScpAirlockExit
+  id: ScpAirlockExitGlass
+  suffix: SCP Glass, Exit
   components:
   - type: Door
     occludes: false

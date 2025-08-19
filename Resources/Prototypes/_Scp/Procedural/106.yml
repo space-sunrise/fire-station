@@ -26,7 +26,7 @@
     children:
     - id: CableApcExtension
       amount: 1
-    - id: AirlockGlass
+    - id: ScpAirlockGlass
       amount: 1
 
 - type: entityTable

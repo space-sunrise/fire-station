@@ -19,7 +19,7 @@
     - paper-generic-scp-header
     - paper-neutralized-mode-info
     - paper-generic-scp-bottom
-    stampProtoId: RubberStampRegionalAdministration
+    stampProtoId: RubberStampRegionalCommand
 
 - type: entity
   id: SendDocumentSafeMode
@@ -32,7 +32,7 @@
     - paper-generic-scp-header
     - paper-safe-mode-info
     - paper-generic-scp-bottom
-    stampProtoId: RubberStampRegionalAdministration
+    stampProtoId: RubberStampRegionalCommand
 
 - type: entity
   id: SendDocumentEuclidMode
@@ -45,7 +45,7 @@
     - paper-generic-scp-header
     - paper-euclid-mode-info
     - paper-generic-scp-bottom
-    stampProtoId: RubberStampRegionalAdministration
+    stampProtoId: RubberStampRegionalCommand
 
 - type: entity
   id: SendDocumentKeterMode
@@ -58,7 +58,7 @@
     - paper-generic-scp-header
     - paper-keter-mode-info
     - paper-generic-scp-bottom
-    stampProtoId: RubberStampRegionalAdministration
+    stampProtoId: RubberStampRegionalCommand
 
 - type: entity
   id: SendDocumentThaumielMode
@@ -71,4 +71,4 @@
     - paper-generic-scp-header
     - paper-thaumiel-mode-info
     - paper-generic-scp-bottom
-    stampProtoId: RubberStampRegionalAdministration
+    stampProtoId: RubberStampRegionalCommand

@@ -5,7 +5,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobQuartermaster
+      role: JobSeniorLogisticsOfficer # Fire Edit
       time: 72000 #20 hrs
 
 # Jumpsuit
@@ -53,7 +53,7 @@
 
 - type: loadout
   id: QuartermasterMantle
-  equipment: 
+  equipment:
     neck: ClothingNeckMantleQM
   effects:
   - !type:GroupLoadoutEffect

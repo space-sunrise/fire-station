@@ -1,8 +1,707 @@
 - type: entity
+  abstract: true
   parent: BasePDA
-  id: ClassDPDA
+  id: ScpBasePDA
+  name: PDA
+  description: Personal Data Assistant.
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda
+  - type: Sprite
+    sprite: _Scp/Objects/Devices/scp_pda.rsi
+  - type: Pda
+    paiSlot:
+      priority: -2
+      whitelist:
+        components:
+        - PAI
+    penSlot:
+      startingItem: Pen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+    idSlot:
+      whitelist:
+        requireAllTags: true
+  - type: ContainerContainer
+    containers:
+      PDA-pen: !type:ContainerSlot {}
+      PDA-pai: !type:ContainerSlot {}
+      Cartridge-Slot: !type:ContainerSlot {}
+      program-container: !type:Container
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - Belt
+
+- type: entity
+  parent: ScpBasePDA
+  id: ScpBaseSecurityPDA
+  abstract: true
+  components:
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - WantedListCartridge
+    - LogProbeCartridge
+
+- type: entity
+  parent: ScpBasePDA
+  id: ScpBaseMedicalPDA
+  abstract: true
+  components:
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
+
+- type: entity
+  parent: ScpBasePDA
+  id: ScpBaseEngineerPDA
+  abstract: true
+  components:
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - NetProbeCartridge
+    - AstroNavCartridge
+
+- type: entity
+  parent: ScpBasePDA
+  id: BaseFoundationPDA
+  name: PDA
+  description: "Universal corporate PDA base model: a standalone terminal for accounting, communication, and information access. Reliable, easy-to-use, with a basic set of modules and upgrade capability."
+  components:
+  - type: PdaBorderColor
+    borderColor: "#636262"
+    accentHColor: "#A6A6A6"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda"
+    - state: "generic"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: ScpBaseEngineerPDA
+  id: ScpEngineeringPDA
+  name: engineer PDA
+  description: "Modified PDA with a set of engineering utilities: equipment diagnostics, geolocation, and network zone debugger. Ideal for repairing, configuring, and emergency restoring systems."
+  components:
+  - type: PdaBorderColor
+    borderColor: "#959393"
+    accentHColor: "#C7863C"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-e
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-e"
+    - state: "request"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: ScpBaseMedicalPDA
+  id: ScpMedicalPDA
+  name: medical PDA
+  description: Medical PDA with a database on anatomy, pharmacology, and first aid protocols. Includes tools for monitoring vital signs and recommendations for patient stabilization.
+  components:
+  - type: PdaBorderColor
+    borderColor: "#C2C0C0"
+    accentHColor: "#579CAB"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-m
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-m"
+    - state: "menu"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: GuideHelp
+    guides:
+    - Medical Doctor
+
+- type: entity
+  parent: ScpBaseSecurityPDA
+  id: ScpSecurityPDA
+  name: security PDA
+  description: Security service PDA with access to access logs, wanted lists, and response protocols. Equipped with a reinforced casing and a more durable display.
+  components:
+  - type: PdaBorderColor
+    borderColor: "#636262"
+    accentHColor: "#A63C3C"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-s
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-s"
+    - state: "warrant"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: ScpBasePDA
+  id: ScpResearchPDA
+  name: research PDA
+  description: Research PDA with an extensive scientific database, experiment protocols, and the Foundation's library. Supports storage of experimental records.
+  components:
+  - type: PdaBorderColor
+    borderColor: "#C2C0C0"
+    accentHColor: "#500677"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-exp
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-exp"
+    - state: "word"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: ScpBasePDA
+  id: ScpServicePDA
+  name: service PDA
+  description: Service PDA for maintenance personnel. Simplifies work coordination and documentation of completed tasks.
+  components:
+  - type: PdaBorderColor
+    borderColor: "#C2C0C0"
+    accentHColor: "#276B4F"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-serv
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-serv"
+    - state: "generic"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: ScpBasePDA
+  id: ScpLogisticsPDA
+  name: logistics PDA
+  description: Logistics PDA with modules for warehouse management, delivery routes, and cargo accounting. Allows checking invoices and optimizing supply documentation.
+  components:
+  - type: PdaBorderColor
+    borderColor: "#959393"
+    accentHColor: "#754A23"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-sup
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-sup"
+    - state: "supply"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: ScpBasePDA
+  id: DirectorPDA
+  name: director's PDA
+  description: Personal PDA for the director with extended access rights, encrypted mail, and secret archives. Used for decision-making and managing key facility resources.
   components:
   - type: Pda
-    id: ClassDIDCard
+    penSlot:
+      startingItem: PenDirector
+      priority: -1
+      whitelist:
+        tags:
+        - Write
   - type: PdaBorderColor
-    borderColor: "#717059"
+    borderColor: "#323A63"
+    accentHColor: "#D1B152"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-dir
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-dir"
+    - state: "uplink_blue"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    notificationsEnabled: false
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - WantedListCartridge
+
+- type: entity
+  parent: ScpBasePDA
+  id: PersonnelOfficerPDA
+  name: personnel officer PDA
+  description: The personnel officer's PDA contains employee personal files, shift schedules, hiring and termination protocols, and personnel evaluation tools. Ensures compliance with HR procedures and data confidentiality.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: PenHop
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#949494"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-hop
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-hop"
+    - state: "menu"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    notificationsEnabled: false
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - WantedListCartridge
+
+- type: entity
+  parent: ScpBaseEngineerPDA
+  id: ChiefTechnicalSpecialistPDA
+  name: chief technician specialist PDA
+  description: The Chief Technician's PDA with an infrastructure system map, repair log, and preventive maintenance plan. Designed for strategic control of technical condition and coordination of technician teams.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: CEPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#C7863C"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-ce
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-ce"
+    - state: "request"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: ScpBasePDA
+  id: SeniorLogisticsOfficerPDA
+  name: senior logistics officer PDA
+  description: Senior Logistics Officer's PDA for managing warehouse flows, resource allocation, and supply coordination between departments. Includes inventory reports.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: QmPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#754A23"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-qm
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-qm"
+    - state: "supply"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: ScpBaseMedicalPDA
+  id: HeadOfMedicalSectorPDA
+  name: head of medical sector PDA
+  description: Head Physician's PDA with extended clinical references, prioritized patient lists, medical staff schedules, and department operating protocols. Serves for operational management of the treatment process.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: CmoPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#579CAB"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-cmo
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-cmo"
+    - state: "menu"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: ScpBasePDA
+  id: ScientificServiceDirectorPDA
+  name: scientific service director PDA
+  description: The Scientific Director's PDA integrates strategic research plans, access to restricted publications, project budgets, and results reports. A tool for managing scientific activities and distributing research tasks.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: RdPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#500677"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-rd
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-rd"
+    - state: "word"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: ScpBaseSecurityPDA
+  id: SecurityCommanderPDA
+  name: security commander's PDA
+  description: The Head of Security's PDA with full access to monitoring systems, security deployments, and emergency protocols. Allows for task creation, threat analysis, and issuing on-site commands.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: HosPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#323A63"
+    accentHColor: "#A63C3C"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-hos
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-hos"
+    - state: "warrant"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+
+- type: entity
+  parent: ScpBaseSecurityPDA
+  id: MobileTaskForcePDA
+  name: mobile task force operative PDA
+  description: "Field PDA for Mobile Task Force operatives: quick access to maps, target data, orders, and action logs. Optimized for autonomous and extreme conditions."
+  components:
+  - type: PdaBorderColor
+    borderColor: "#3D3D3D"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-syn
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-syn"
+    - state: "menu"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
+    - WantedListCartridge
+    - LogProbeCartridge
+    - AstroNavCartridge
+
+- type: entity
+  parent: MobileTaskForcePDA
+  id: ChaosInsurgencyPDA
+  name: chaos insurgency operative PDA
+  description: "Field PDA for Chaos Insurgency operatives: quick access to maps, target data, orders, and action logs. Optimized for autonomous and extreme conditions."
+
+- type: entity
+  parent: ScpBaseSecurityPDA
+  id: ManagerPDA
+  name: manager PDA
+  description: High-level administrative PDA with limited but critical access to directives, policy drafts, and secure communication channels. Intended for managing organizational decisions and coordinating leadership.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: PenRegionalAdministration
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#3D3D3D"
+    accentHColor: "#F0BB3E"
+    accentVColor: "#F0BB3E"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-neo
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-neo"
+    - state: "menu"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
+    - WantedListCartridge
+    - LogProbeCartridge
+    - AstroNavCartridge
+
+- type: entity
+  parent: ScpBasePDA
+  id: ScpAdminPDA
+  name: admin PDA
+  suffix: Admin
+  description: If you found this PDA, please urgently contact the nearest Ahelp point and return it to the Administration.
+  components:
+  - type: Pda
+    penSlot:
+      startingItem: PenCentcom
+      whitelist:
+        tags:
+        - Write
+  - type: PdaBorderColor
+    borderColor: "#252C4D"
+    accentHColor: "#650FB6"
+    accentVColor: "#650FB6"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-club
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-club"
+    - state: "cameras"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: HealthAnalyzer
+    maxScanRange: null
+    scanDelay: 0
+    silent: true
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    notificationsEnabled: false
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - LogProbeCartridge
+    - WantedListCartridge
+    - MedTekCartridge
+    - AstroNavCartridge
+  - type: Tag #  Ignore Chameleon tags
+    tags:
+    - DoorBumpOpener

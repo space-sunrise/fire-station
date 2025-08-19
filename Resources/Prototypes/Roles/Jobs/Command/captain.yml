@@ -29,6 +29,7 @@
   radioBold: true # Sunrise-Edit
   accessGroups:
   - AllAccess
+  overrideConsoleVisibility: false
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant, DeathRattleImplantBlueShield ]

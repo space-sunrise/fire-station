@@ -1,0 +1,1 @@
+stack-concrete = цемент

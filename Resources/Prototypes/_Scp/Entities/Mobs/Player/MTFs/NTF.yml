@@ -1,51 +1,28 @@
-﻿# ID карта
-#Командир
+﻿# TODO: Положить ПДА в рюкзак/карман/разгрузку.
+# Ключ карты
+
 - type: entity
-  parent: IDCardMTFStandard
-  id: IDCardNTFLeader
-  categories: [ HideSpawnMenu ]
+  parent: KeyCardMtfBase
+  id: KeyCardMtfNTFLeader
   components:
+  - type: Sprite
+    state: mtf_commander
   - type: PresetIdCard
     job: NTFLeader
-#Специалист
+
 - type: entity
-  parent: IDCardMTFStandard
-  id: IDCardNTFSpecialist
-  categories: [ HideSpawnMenu ]
+  parent: KeyCardMtfBase
+  id: KeyCardMtfNTFSpecialist
   components:
   - type: PresetIdCard
     job: NTFSpecialist
-#Кадет
+
 - type: entity
-  parent: IDCardMTFStandard
-  id: IDCardNTFCadet
-  categories: [ HideSpawnMenu ]
+  parent: KeyCardMtfBase
+  id: KeyCardMtfNTFCadet
   components:
   - type: PresetIdCard
     job: NTFCadet
-# КПК
-#Командир
-- type: entity
-  parent: BaseMTFPDA
-  id: NTFLeaderPDA
-  components:
-  - type: Pda
-    id: IDCardNTFLeader
-#Специалист
-- type: entity
-  parent: BaseMTFPDA
-  id: NTFSpecialistPDA
-  components:
-  - type: Pda
-    id: IDCardNTFSpecialist
-#Кадет
-- type: entity
-  parent: BaseMTFPDA
-  id: NTFCadetPDA
-  components:
-  - type: Pda
-    id: IDCardNTFCadet
-
 
 # ПРОФЕССИИ
 # Командир
@@ -60,10 +37,9 @@
   supervisors: ghost-role-information-mtf-leader-supervisors
   canBeAntag: false
   radioBold: true
+  overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -82,7 +58,7 @@
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: MTFCommanderVest
-    id: NTFLeaderPDA
+    id: KeyCardMtfNTFLeader
     ears: ClothingHeadsetAltMTF
     belt: MTFCommanderWebbing
     pocket1: BaseUplinkMTFLeader
@@ -136,10 +112,9 @@
   icon: JobIconNTF
   supervisors: ghost-role-information-mtf-specialist-supervisors
   canBeAntag: false
+  overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -158,7 +133,7 @@
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: MTFVest
-    id: NTFSpecialistPDA
+    id: KeyCardMtfNTFSpecialist
     ears: ClothingHeadsetAltMTF
     belt: MTFWebbing
     pocket1: BaseUplinkMTFSpecialist
@@ -209,10 +184,9 @@
   icon: JobIconNTF
   supervisors: ghost-role-information-mtf-cadet-supervisors
   canBeAntag: false
+  overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -231,7 +205,7 @@
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: MTFVest
-    id: NTFCadetPDA
+    id: KeyCardMtfNTFCadet
     ears: ClothingHeadsetAltMTF
     belt: MTFWebbing
     pocket1: BaseUplinkMTFCadet
