@@ -27,3 +27,6 @@
     belt: ClothingBeltMedicalFilled
     pocket2: BookMedicalReferenceBook
     eyes: ClothingEyesHudMedical
+  storage:
+    back:
+    - ScpMedicalPDA

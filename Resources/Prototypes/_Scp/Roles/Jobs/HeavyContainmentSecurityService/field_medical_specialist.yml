@@ -41,3 +41,4 @@
   storage:
     back:
     - Flash
+    - ScpMedicalPDA

@@ -26,3 +26,6 @@
     id: KeyCardLogisticsOfficer
     ears: ClothingHeadsetLogistics
     pocket1: AppraisalTool
+  storage:
+    back:
+    - ScpLogisticsPDA

@@ -1057,7 +1057,7 @@ AirlockMaintKitchenLocked: ScpAirlockMaintServiceLocked
 AirlockMaintKitchenHydroLocked: ScpAirlockMaintServiceLocked
 AirlockMaintIntLocked: ScpAirlockMaintCommonLocked
 AirlockMaintMedLocked: ScpAirlockMaintMedLocked
-AirlockMedicalMorgueMaintLocked: ScpAirlockMedicalMorgueMaintLocked
+AirlockMedicalMorgueMaintLocked: ScpAirlockMaintMedLocked
 AirlockMaintChemLocked: ScpAirlockMaintLaboratoryLocked
 AirlockMaintRnDLocked: ScpAirlockMaintRnDLocked
 AirlockMaintRnDMedLocked: ScpAirlockMaintRnDMedLocked
@@ -1157,7 +1157,7 @@ PlasmaWindoorSecureEngineeringLocked: ScpPlasmaWindoorSecureEngineeringLocked
 UraniumWindoorSecureEngineeringLocked: ScpUraniumWindoorSecureEngineeringLocked
 WindoorSecureExternalLocked: ScpWindoorSecureExitLocked
 WindoorSecureJanitorLocked: ScpWindoorSecureServiceLocked
-PlasmaWindoorSecureJanitorLocked: ScpPlasmaWindoorSecureJanitorLocked
+PlasmaWindoorSecureJanitorLocked: ScpPlasmaWindoorSecureServiceLocked
 WindoorSecureKitchenLocked: ScpWindoorSecureServiceLocked
 WindoorSecureSecurityLawyerLocked: ScpWindoorSecureSecurityLocked
 WindoorSecureMedicalLocked: ScpWindoorSecureMedicalLocked
@@ -1175,7 +1175,7 @@ PlasmaWindoorSecureSyndicateLocked: null
 UraniumWindoorSyndicateLocked: null
 UraniumWindoorSecureSyndicateLocked: null
 WindoorNukeopLocked: null
-WindoorSecureNukeopLocked: v
+WindoorSecureNukeopLocked: null
 PlasmaWindoorNukeopLocked: null
 PlasmaWindoorSecureNukeopLocked: null
 UraniumWindoorNukeopLocked: null
@@ -1497,7 +1497,6 @@ LockableButtonAtmospherics: LockableButtonLifeSupport
 LockableButtonCentcomm: LockableButtonMTF
 
 # Пульты управления турелями
-WeaponEnergyTurretStationControlPanelBase: ScpWeaponEnergyTurretStationControlPanelBase
 WeaponEnergyTurretAIControlPanel: ScpWeaponEnergyTurretAIControlPanel
 WeaponEnergyTurretSecurityControlPanel: ScpWeaponEnergyTurretSecurityControlPanel
 WeaponEnergyTurretCommandControlPanel: ScpWeaponEnergyTurretAdministrationControlPanel
@@ -2033,7 +2032,6 @@ ToyFigurineQueen: null
 ToyFigurineNukieCommander: null
 ToyFigurineClown: null
 ToyFigurineCaptain: null
-ToyFigurineDetective: null
 ToyFigurineWizard: null
 ToyFigurineBoxer: null
 ToyFigurineLibrarian: null

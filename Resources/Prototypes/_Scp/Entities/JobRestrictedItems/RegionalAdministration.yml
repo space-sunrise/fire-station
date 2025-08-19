@@ -80,7 +80,7 @@
     id: RegionalAdministrationIDCard
     ears: ClothingHeadsetAltRegionalAdministration
     pocket1: MindShieldImplanter
-    pocket2: ManagerPDA
+    pocket2: RegionalAdministrationPDA
   inhand:
   - ClothingBackpackSatchelLeather
 

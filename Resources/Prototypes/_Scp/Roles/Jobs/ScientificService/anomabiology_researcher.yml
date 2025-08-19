@@ -32,3 +32,6 @@
   equipment:
     ears: ClothingHeadsetScientificService
     id: KeyCardAnomabiologyResearcher
+  storage:
+    back:
+    - ScpResearchPDA

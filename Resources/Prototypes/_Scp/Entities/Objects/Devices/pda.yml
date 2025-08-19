@@ -605,8 +605,8 @@
 
 - type: entity
   parent: ScpBaseSecurityPDA
-  id: ManagerPDA
-  name: manager PDA
+  id: RegionalAdministrationPDA
+  name: regional administrator PDA
   description: High-level administrative PDA with limited but critical access to directives, policy drafts, and secure communication channels. Intended for managing organizational decisions and coordinating leadership.
   components:
   - type: Pda

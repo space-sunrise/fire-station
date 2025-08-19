@@ -27,3 +27,6 @@
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineeringTechnicalService
     id: KeyCardGeneralTechnicalSpecialist
+  storage:
+    back:
+    - ScpEngineeringPDA

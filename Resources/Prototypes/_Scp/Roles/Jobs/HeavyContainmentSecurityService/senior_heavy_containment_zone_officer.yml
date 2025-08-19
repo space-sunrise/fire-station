@@ -57,3 +57,4 @@
   storage:
     back:
     - Flash
+    - ScpSecurityPDA

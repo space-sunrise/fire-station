@@ -25,3 +25,6 @@
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineeringTechnicalService
     pocket2: BookEngineersHandbook
+  storage:
+    back:
+    - ScpEngineeringPDA

@@ -36,3 +36,4 @@
   storage:
     back:
     - WeaponPistolCHIMP
+    - ScpResearchPDA

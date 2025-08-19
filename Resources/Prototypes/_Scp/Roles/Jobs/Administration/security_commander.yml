@@ -58,3 +58,4 @@
   storage:
     back:
     - Flash
+    - SecurityCommanderPDA

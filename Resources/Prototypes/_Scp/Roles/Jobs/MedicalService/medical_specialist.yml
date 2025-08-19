@@ -31,3 +31,6 @@
     belt: ClothingBeltMedicalFilled
     eyes: ClothingEyesHudMedical
     id: KeyCardMedicalSpecialist
+  storage:
+    back:
+    - ScpMedicalPDA

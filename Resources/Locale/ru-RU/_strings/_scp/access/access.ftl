@@ -1,5 +1,5 @@
-access-name-administration = Администрация
-access-name-complex-director = { job-name-complex-director }
+access-name-administration = Руководство
+access-name-complex-director = { job-name-director }
 access-name-scientific-service-director = { job-name-scientific-service-director }
 access-name-security-commander = { job-name-security-commander }
 access-name-chief-technical-specialist = { job-name-chief-technical-specialist }

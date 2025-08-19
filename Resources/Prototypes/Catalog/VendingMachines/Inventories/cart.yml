@@ -30,6 +30,7 @@
     ScpMedicalPDA: 2
     ScpSecurityPDA: 1
     KeyCardEmpty: 5
+    KeyCardPassEmpty: 2
     ClothingHeadsetGrey: 5
     RubberStampApproved: 1
     RubberStampDenied: 1

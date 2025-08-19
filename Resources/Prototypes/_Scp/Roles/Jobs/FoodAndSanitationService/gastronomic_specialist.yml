@@ -23,3 +23,6 @@
     id: KeyCardGastronomicSpecialist
     ears: ClothingHeadsetFoodAndSanitation
     belt: ClothingBeltChefFilled
+  storage:
+    back:
+    - ScpServicePDA
