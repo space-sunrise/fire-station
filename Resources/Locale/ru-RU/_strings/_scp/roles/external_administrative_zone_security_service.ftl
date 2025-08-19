@@ -1,7 +1,7 @@
 job-name-external-administrative-zone-commandant = Главный комендант
 job-description-external-administrative-zone-commandant = Лидер комендантского отряда. Он координирует силы охраны для поддержания порядка.
 job-name-senior-external-administrative-zone-officer = Старший комендант
-job-description-senior-external-administrative-zone-officer = Старший боец комендантского отряда. Проверенный временем сотрудник который знает свою работу от А до Я.
+job-description-senior-external-administrative-zone-officer = Старший боец комендантского отряда. Проверенный временем сотрудник, который знает свою работу от А до Я.
 job-name-external-administrative-zone-officer = Комендант
 job-description-external-administrative-zone-officer = Боец комендантского отряда. Он отвечает за поддержание порядка среди персонала в учреждении.
 job-name-junior-external-administrative-zone-officer = Младший комендант
