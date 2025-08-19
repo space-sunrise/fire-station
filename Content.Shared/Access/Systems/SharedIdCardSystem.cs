@@ -310,18 +310,20 @@ public abstract class SharedIdCardSystem : EntitySystem
     /// </remarks>
     private void UpdateEntityName(EntityUid uid, IdCardComponent? id = null)
     {
+        /* Fire edit - у нас будут названия из прототипов, нам не нужно такое.
         if (!Resolve(uid, ref id))
             return;
 
-        var jobSuffix = string.IsNullOrWhiteSpace(id.LocalizedJobTitle) ? string.Empty : $" ({id.LocalizedJobTitle})";
+        var jobSuffix = string.IsNullOrWhiteSpace(id.LocalizedJobTitle) ? string.Empty : $" {id.LocalizedJobTitle}";
 
         var val = string.IsNullOrWhiteSpace(id.FullName)
             ? Loc.GetString(id.NameLocId,
                 ("jobSuffix", jobSuffix))
             : Loc.GetString(id.FullNameLocId,
                 ("fullName", id.FullName),
-                ("jobSuffix", jobSuffix));
+                ("jobSuffix", jobSuffix.ToLower()));
         _metaSystem.SetEntityName(uid, val);
+        */
     }
 
     private static string ExtractFullTitle(IdCardComponent idCardComponent)
