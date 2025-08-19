@@ -9,6 +9,7 @@ using Content.Server.Speech.Components;
 using Content.Shared._Scp.Other.Radio;
 using Content.Shared.Chat;
 using Content.Shared.Emp;
+using Robust.Server.Audio;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 
@@ -19,6 +20,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -27,6 +29,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         SubscribeLocalEvent<ScpRadioComponent, ListenEvent>(OnListen);
         SubscribeLocalEvent<ScpRadioComponent, ListenAttemptEvent>(OnAttemptListen);
         SubscribeLocalEvent<ScpRadioComponent, RadioReceiveEvent>(OnReceive);
+        SubscribeLocalEvent<ScpRadioComponent, RadioReceiveAttemptEvent>(OnAttemptReceive);
 
         SubscribeLocalEvent<ScpRadioComponent, EmpPulseEvent>(OnEmpPulse);
     }
@@ -35,6 +38,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
     {
         var channel = _prototype.Index(ent.Comp.ActiveChannel);
         _radio.SendRadioMessage(args.Source, args.Message, channel, ent);
+        _audio.PlayEntity(ent.Comp.SendSound, args.Source, ent);
     }
 
     private void OnAttemptListen(Entity<ScpRadioComponent> ent, ref ListenAttemptEvent args)
@@ -48,26 +52,32 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
     private void OnReceive(Entity<ScpRadioComponent> ent, ref RadioReceiveEvent args)
     {
-        if (!ent.Comp.SpeakerEnabled)
-            return;
-
-        if (HasComp<EmpDisabledComponent>(ent))
-            return;
-
         var receiverUid = Transform(ent).ParentUid;
 
         if (!TryComp<ActorComponent>(receiverUid, out var actor))
         {
             // Если радио не находится у игрока - пусть говорит в чатик.
             SayMessage(ent, args.MessageSource, args.Message);
+            _audio.PlayPvs(ent.Comp.ReceiveSound, ent);
+
             return;
         }
 
-        // TODO: Звуки
+        if (args.MessageSource != receiverUid)
+            _audio.PlayEntity(ent.Comp.ReceiveSound, receiverUid, ent);
 
         _net.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
         if (receiverUid != args.MessageSource && !args.Receivers.Contains(receiverUid))
             args.Receivers.Add(receiverUid);
+    }
+
+    private void OnAttemptReceive(Entity<ScpRadioComponent> ent, ref RadioReceiveAttemptEvent args)
+    {
+        if (!ent.Comp.SpeakerEnabled)
+            args.Cancelled = true;
+
+        if (HasComp<EmpDisabledComponent>(ent))
+            args.Cancelled = true;
     }
 
     protected override void ToggleMicrophone(Entity<ScpRadioComponent> ent, EntityUid user)
@@ -75,6 +85,13 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         base.ToggleMicrophone(ent, user);
 
         UpdateMicrophone(ent);
+    }
+
+    protected override void ToggleSpeaker(Entity<ScpRadioComponent> ent, EntityUid user)
+    {
+        base.ToggleSpeaker(ent, user);
+
+        UpdateSpeaker(ent);
     }
 
     protected override void OnStartup(Entity<ScpRadioComponent> ent, ref ComponentStartup args)

@@ -17,6 +17,11 @@
     - Common
   - type: Speech
     speechVerb: Robotic
+  - type: AmbientSound
+    range: 1.5
+    volume: -10
+    sound:
+      path: /Audio/_Scp/Effects/Radio/static.ogg
   - type: TelecomExempt
   - type: Appearance
   - type: Tag
@@ -31,6 +36,7 @@
   - type: ScpRadio
     channels:
     - HeavyContainmentSecurityService
+    - Common
 
 - type: entity
   parent: ScpRadioHandheldCommon
@@ -40,6 +46,7 @@
   - type: ScpRadio
     channels:
     - ExternalAdministrativeZoneSecurityService
+    - Common
 
 - type: entity
   parent: ScpRadioHandheldCommon
@@ -49,3 +56,4 @@
   - type: ScpRadio
     channels:
     - Security
+    - Common

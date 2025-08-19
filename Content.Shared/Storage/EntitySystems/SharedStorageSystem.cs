@@ -1,6 +1,7 @@
 using System.Collections.Frozen;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using Content.Shared._Scp.Other.Events;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Administration.Logs;
 using Content.Shared.CCVar;
@@ -696,12 +697,15 @@ public abstract class SharedStorageSystem : EntitySystem
                 LogImpact.Low,
                 $"{ToPrettyString(player):player} is attempting to take {ToPrettyString(item):item} out of {ToPrettyString(storage):storage}");
 
-            if (_sharedHandsSystem.TryPickupAnyHand(player, item, handsComp: player.Comp)
-                && storage.Comp.StorageRemoveSound != null
-                && !_tag.HasTag(player, storage.Comp.SilentStorageUserTag))
+            // Fire edit start
+            if (_sharedHandsSystem.TryPickupAnyHand(player, item, handsComp: player.Comp))
             {
-                Audio.PlayPredicted(storage.Comp.StorageRemoveSound, storage, player, _audioParams);
+                RaiseLocalEvent(item, new EntityRemovedFromStorageEvent(storage));
+
+                if (storage.Comp.StorageRemoveSound != null && !_tag.HasTag(player, storage.Comp.SilentStorageUserTag))
+                    Audio.PlayPredicted(storage.Comp.StorageRemoveSound, storage, player, _audioParams);
             }
+            // Fire edit end
 
             return;
         }
@@ -1165,6 +1169,10 @@ public abstract class SharedStorageSystem : EntitySystem
             if (canPlaySound)
                 Audio.PlayPredicted(storageComp.StorageInsertSound, uid, user, _audioParams);
 
+            // Fire edit start
+            RaiseLocalEvent(insertEnt, new EntityInsertedIntoStorageEvent(uid));
+            // Fire edit end
+
             return true;
         }
 
@@ -1194,6 +1202,10 @@ public abstract class SharedStorageSystem : EntitySystem
 
         if (canPlaySound)
             Audio.PlayPredicted(storageComp.StorageInsertSound, uid, user, _audioParams);
+
+        // Fire edit start
+        RaiseLocalEvent(insertEnt, new EntityInsertedIntoStorageEvent(uid));
+        // Fire edit end
 
         return true;
     }
