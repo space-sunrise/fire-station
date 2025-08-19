@@ -1,4 +1,140 @@
-﻿- type: entity
+- type: entity
+  abstract: true
+  parent: VendingMachine
+  id: VendingMachineDClassBase
+  suffix: D Class
+  components:
+  - type: AccessReader
+    access: [["ClassDCanteen"]]
+  - type: Sprite
+    layers:
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.Base"]
+    - state: "off"
+      map: ["enum.VendingMachineVisualLayers.BaseUnshaded"]
+      shader: unshaded
+    - state: panel
+      map: ["enum.WiresVisualLayers.MaintenancePanel"]
+
+- type: entity
+  parent: VendingMachineDClassBase
+  id: VendingMachineChefvendDClass
+  name: ChefVend
+  description: An ingredient vendor for all your cheffin needs.
+  suffix: D Class
+  components:
+  - type: VendingMachine
+    pack: ChefvendInventoryDClass
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/chefvenddclass.rsi
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#4b93ad"
+
+- type: entity
+  parent: VendingMachineDClassBase
+  id: VendingMachineChefDrobeDClass
+  name: ChefDrobe
+  description: This vending machine might not dispense meat, but it certainly dispenses chef related clothing.
+  suffix: D Class
+  components:
+  - type: VendingMachine
+    pack: ChefDrobeInventoryDClass
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/chefdrobedclass.rsi
+
+- type: entity
+  parent: VendingMachineDClassBase
+  id: VendingMachineDinnerwareDClass
+  name: Dinnerware Vendor
+  description: A kitchen and restaurant equipment vendor.
+  suffix: D Class
+  components:
+  - type: VendingMachine
+    pack: DinnerwareInventoryDClass
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/dinnerwaredclass.rsi
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#4b93ad"
+
+- type: entity
+  parent: VendingMachineDClassBase
+  id: VendingMachineSeedsDClass
+  name: Seed Servitor
+  description: For when you need seeds fast. Hands down the best seed selection on the station!
+  suffix: D Class
+  components:
+  - type: VendingMachine
+    pack: MegaSeedServitorInventoryDClass
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+    denyState: deny-unshaded
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/seedsdclass.rsi
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#326e3f"
+
+- type: entity
+  parent: VendingMachineDClassBase
+  id: VendingMachineNutriDClass
+  name: NutriMax
+  description: A vending machine containing nutritional substances for plants and botanical tools.
+  suffix: D Class
+  components:
+  - type: VendingMachine
+    pack: NutriMaxInventoryDClass
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+    denyState: deny-unshaded
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/nutridclass.rsi
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#326e3f"
+
+- type: entity
+  parent: VendingMachineDClassBase
+  id: VendingMachineBoozeDClass
+  name: DrinkoVend
+  description: A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one.
+  suffix: D Class
+  components:
+  - type: VendingMachine
+    pack: BoozeOMatInventoryDClass
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    denyState: deny-unshaded
+    loopDeny: false
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/VendingMachines/boozeomatdclass.rsi
+  - type: GuideHelp
+    guides:
+    - Bartender
+    - Drinks
+
+- type: entity
   parent: VendingMachineBooze
   id: ScpVendingMachineBooze
   components:
