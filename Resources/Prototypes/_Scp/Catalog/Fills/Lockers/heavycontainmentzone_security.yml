@@ -27,6 +27,12 @@
       - id: Binoculars
       - id: HyperLinkBookCorporateLaw
       - id: HandheldCriminalRecordsMonitor
+      - id: PortableSurveillanceCameraMonitor
+      # Добавлены "Детективные" вещи до добавления отдельного шкафчика/должности под эти дела.
+      - id: ForensicScanner
+      - id: BoxForensicPad
+      - id: BoxEvidenceMarkers
+      - id: HandLabeler
 
 - type: entity
   id: LockerHeavyContainmentZoneOfficerFilled
