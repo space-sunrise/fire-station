@@ -22,11 +22,24 @@
     volume: -10
     sound:
       path: /Audio/_Scp/Effects/Radio/static.ogg
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
   - type: TelecomExempt
   - type: Appearance
   - type: Tag
     tags:
     - Radio
+
+# Пока общий канал доступен через наушник он не будет в рациях
+# Так как иначе будет попросту жрать заряд у раций на прием сообщений
 
 - type: entity
   parent: ScpRadioHandheldCommon
@@ -36,7 +49,6 @@
   - type: ScpRadio
     channels:
     - HeavyContainmentSecurityService
-    - Common
 
 - type: entity
   parent: ScpRadioHandheldCommon
@@ -46,7 +58,6 @@
   - type: ScpRadio
     channels:
     - ExternalAdministrativeZoneSecurityService
-    - Common
 
 - type: entity
   parent: ScpRadioHandheldCommon
@@ -56,4 +67,3 @@
   - type: ScpRadio
     channels:
     - Security
-    - Common

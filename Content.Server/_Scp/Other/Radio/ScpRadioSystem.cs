@@ -1,6 +1,10 @@
 ﻿using System.Linq;
+using Content.Server.Audio;
 using Content.Server.Chat.Systems;
 using Content.Server.Emp;
+using Content.Server.Popups;
+using Content.Server.Power.EntitySystems;
+using Content.Server.PowerCell;
 using Content.Server.Radio;
 using Content.Server.Radio.Components;
 using Content.Server.Radio.EntitySystems;
@@ -20,7 +24,11 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
+    [Dependency] private readonly AmbientSoundSystem _ambientSound = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly PowerCellSystem _powerCell = default!;
+    [Dependency] private readonly BatterySystem _battery = default!;
 
     public override void Initialize()
     {
@@ -36,13 +44,20 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
     private void OnListen(Entity<ScpRadioComponent> ent, ref ListenEvent args)
     {
-        var channel = _prototype.Index(ent.Comp.ActiveChannel);
+        var channel = PrototypeManager.Index(ent.Comp.ActiveChannel);
         _radio.SendRadioMessage(args.Source, args.Message, channel, ent);
         _audio.PlayEntity(ent.Comp.SendSound, args.Source, ent);
+
+        // Это находится здесь, а не в начале, чтобы при малом заряде рация проиграла сообщения и сдохла.
+        // Вместо того чтобы половина сообщений просто пропускалась из-за малого заряда.
+        TryTakeCharge(ent, true);
     }
 
     private void OnAttemptListen(Entity<ScpRadioComponent> ent, ref ListenAttemptEvent args)
     {
+        if (!ent.Comp.Enabled)
+            args.Cancel();
+
         if (!ent.Comp.MicrophoneEnabled)
             args.Cancel();
 
@@ -69,11 +84,15 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         _net.ServerSendMessage(args.ChatMsg, actor.PlayerSession.Channel);
         if (receiverUid != args.MessageSource && !args.Receivers.Contains(receiverUid))
             args.Receivers.Add(receiverUid);
+
+        // Это находится здесь, а не в начале, чтобы при малом заряде рация проиграла сообщения и сдохла.
+        // Вместо того чтобы половина сообщений просто пропускалась из-за малого заряда.
+        TryTakeCharge(ent);
     }
 
     private void OnAttemptReceive(Entity<ScpRadioComponent> ent, ref RadioReceiveAttemptEvent args)
     {
-        if (!ent.Comp.SpeakerEnabled)
+        if (!ent.Comp.Enabled)
             args.Cancelled = true;
 
         if (HasComp<EmpDisabledComponent>(ent))
@@ -87,19 +106,33 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         UpdateMicrophone(ent);
     }
 
-    protected override void ToggleSpeaker(Entity<ScpRadioComponent> ent, EntityUid user)
-    {
-        base.ToggleSpeaker(ent, user);
-
-        UpdateSpeaker(ent);
-    }
-
     protected override void OnStartup(Entity<ScpRadioComponent> ent, ref ComponentStartup args)
     {
         base.OnStartup(ent, ref args);
 
         UpdateMicrophone(ent);
         UpdateSpeaker(ent);
+    }
+
+    private bool TryTakeCharge(Entity<ScpRadioComponent> ent, bool sending = false)
+    {
+        if (!_powerCell.TryGetBatteryFromSlot(ent, out var batteryUid, out var battery))
+        {
+            ToggleRadio(ent, false);
+            return false;
+        }
+
+        var wattage = sending ? ent.Comp.WattageSendMessage : ent.Comp.WattageReceiveMessage;
+
+        if (!_battery.TryUseCharge(batteryUid.Value, wattage, battery))
+        {
+            ToggleRadio(ent, false);
+            _battery.TryUseCharge(batteryUid.Value, battery.CurrentCharge, battery);
+
+            return false;
+        }
+
+        return true;
     }
 
     private void SayMessage(Entity<ScpRadioComponent> ent, EntityUid source, string message)
@@ -114,6 +147,35 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         _chat.TrySendInGameICMessage(ent, message, InGameICChatType.Whisper, ChatTransmitRange.GhostRangeLimit, nameOverride: name, checkRadioPrefix: false);
     }
 
+    protected override void ToggleRadio(Entity<ScpRadioComponent> ent, bool value, EntityUid? user = null)
+    {
+        base.ToggleRadio(ent, value, user);
+
+        user ??= Transform(ent).ParentUid;
+
+        // Если мы включаем(value == true) и недостаточно заряда -> выходим из метода
+        // Если выключаем(value == false) -> проверка на заряд не нужна, просто выключаем.
+        if ((!_powerCell.TryGetBatteryFromSlot(ent, out _, out var battery) || MathHelper.CloseTo(battery.CurrentCharge, 0f))
+            && value)
+        {
+            _popup.PopupEntity("Недостаточно заряда", ent, user.Value);
+
+            return;
+        }
+
+        ent.Comp.Enabled = value;
+        Dirty(ent);
+
+        var message = value ? $"{Name(ent)} включается" : $"{Name(ent)} выключается";
+
+        _popup.PopupEntity(message, ent, user.Value);
+        _ambientSound.SetAmbience(ent, value);
+        _audio.PlayEntity(ent.Comp.ToggleSound, user.Value, ent);
+
+        UpdateMicrophone(ent);
+        UpdateSpeaker(ent);
+    }
+
     private void UpdateMicrophone(Entity<ScpRadioComponent> ent)
     {
         if (ent.Comp.MicrophoneEnabled)
@@ -124,7 +186,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
     private void UpdateSpeaker(Entity<ScpRadioComponent> ent)
     {
-        if (ent.Comp.SpeakerEnabled)
+        if (ent.Comp.Enabled)
             EnsureComp<ActiveRadioComponent>(ent).Channels = ent.Comp.Channels.Select(id => id.ToString()).ToHashSet();
         else
             RemCompDeferred<ActiveRadioComponent>(ent);

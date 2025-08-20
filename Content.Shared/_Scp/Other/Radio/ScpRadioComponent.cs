@@ -5,7 +5,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Other.Radio;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ScpRadioComponent : Component
 {
     [DataField(required: true)]
@@ -14,11 +14,17 @@ public sealed partial class ScpRadioComponent : Component
     [DataField]
     public ProtoId<RadioChannelPrototype> ActiveChannel;
 
-    [DataField]
-    public bool SpeakerEnabled = true;
+    [DataField, AutoNetworkedField]
+    public bool Enabled = true;
+
+    [DataField, AutoNetworkedField]
+    public bool MicrophoneEnabled;
 
     [DataField]
-    public bool MicrophoneEnabled;
+    public float WattageReceiveMessage = 4f;
+
+    [DataField]
+    public float WattageSendMessage = 30f;
 
     [DataField]
     public float ListenRange = 1f;

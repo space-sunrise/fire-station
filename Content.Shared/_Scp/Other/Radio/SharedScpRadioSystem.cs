@@ -18,10 +18,10 @@ namespace Content.Shared._Scp.Other.Radio;
 public abstract class SharedScpRadioSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] protected readonly IPrototypeManager _prototype = default!;
+    [Dependency] protected readonly IPrototypeManager PrototypeManager = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -70,7 +70,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
         if (!args.IsInDetailsRange)
             return;
 
-        var proto = _prototype.Index(ent.Comp.ActiveChannel);
+        var proto = PrototypeManager.Index(ent.Comp.ActiveChannel);
 
         using (args.PushGroup(nameof(ScpRadioComponent)))
         {
@@ -86,7 +86,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
 
     private void EnableAmbience<T>(Entity<ScpRadioComponent> ent, ref T _)
     {
-        if (!ent.Comp.SpeakerEnabled)
+        if (!ent.Comp.Enabled)
             return;
 
         _ambientSound.SetAmbience(ent, true);
@@ -114,11 +114,11 @@ public abstract class SharedScpRadioSystem : EntitySystem
     {
         var verb = new Verb
         {
-            Text = "Переключить приемник",
+            Text = "Вкл/выкл",
             Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/dot.svg.192dpi.png")),
             Act = () =>
             {
-                ToggleSpeaker(ent, ev.User);
+                ToggleRadio(ent, !ent.Comp.Enabled, ev.User);
             },
         };
 
@@ -135,7 +135,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
         if (next == ent.Comp.ActiveChannel)
             return;
 
-        if (!_prototype.TryIndex(next, out var nextPrototype))
+        if (!PrototypeManager.TryIndex(next, out var nextPrototype))
             return;
 
         ent.Comp.ActiveChannel = next;
@@ -159,21 +159,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
         _audio.PlayLocal(ent.Comp.ToggleSound, user, ent);
     }
 
-    protected virtual void ToggleSpeaker(Entity<ScpRadioComponent> ent, EntityUid user)
-    {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        ent.Comp.SpeakerEnabled = !ent.Comp.SpeakerEnabled;
-
-        var message = ent.Comp.SpeakerEnabled
-            ? "Приемник включен"
-            : "Приемник выключен";
-
-        _popup.PopupPredicted(message, ent, user);
-        _audio.PlayLocal(ent.Comp.ToggleSound, user, ent);
-        _ambientSound.SetAmbience(ent, ent.Comp.SpeakerEnabled);
-    }
+    protected virtual void ToggleRadio(Entity<ScpRadioComponent> ent, bool value, EntityUid? user = null) { }
 
     private static ProtoId<RadioChannelPrototype> GetNextChannel(List<ProtoId<RadioChannelPrototype>> channels,
         ProtoId<RadioChannelPrototype> current)
