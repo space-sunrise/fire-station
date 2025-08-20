@@ -11,7 +11,7 @@ public sealed partial class ScpRadioComponent : Component
     [DataField(required: true)]
     public List<ProtoId<RadioChannelPrototype>> Channels;
 
-    [DataField]
+    [ViewVariables]
     public ProtoId<RadioChannelPrototype> ActiveChannel;
 
     [DataField, AutoNetworkedField]
@@ -30,14 +30,14 @@ public sealed partial class ScpRadioComponent : Component
     public float ListenRange = 1f;
 
     [DataField]
-    public SoundSpecifier SendSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Radio/send.ogg", AudioParams.Default.AddVolume(-7));
+    public SoundSpecifier SendSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Radio/send.ogg", AudioParams.Default.AddVolume(-7).WithMaxDistance(2f));
 
     [DataField]
     public SoundSpecifier ReceiveSound = new SoundCollectionSpecifier("RadioReceive", AudioParams.Default.AddVolume(-7).WithMaxDistance(2f));
 
     [DataField]
-    public SoundSpecifier ChannelCycleSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Radio/cycle.ogg", AudioParams.Default.AddVolume(-7));
+    public SoundSpecifier ChannelCycleSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Radio/cycle.ogg", AudioParams.Default.AddVolume(-7).WithMaxDistance(2f));
 
     [DataField]
-    public SoundSpecifier ToggleSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Radio/toggle.ogg", AudioParams.Default.AddVolume(-7));
+    public SoundSpecifier ToggleSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Radio/toggle.ogg", AudioParams.Default.AddVolume(-7).WithMaxDistance(2f));
 }

@@ -22,6 +22,7 @@ namespace Content.Server._Scp.Other.Radio;
 public sealed class ScpRadioSystem : SharedScpRadioSystem
 {
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly ILogManager _log = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly AmbientSoundSystem _ambientSound = default!;
@@ -29,6 +30,8 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly BatterySystem _battery = default!;
+
+    private ISawmill _sawmill = default!;
 
     public override void Initialize()
     {
@@ -40,6 +43,8 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         SubscribeLocalEvent<ScpRadioComponent, RadioReceiveAttemptEvent>(OnAttemptReceive);
 
         SubscribeLocalEvent<ScpRadioComponent, EmpPulseEvent>(OnEmpPulse);
+
+        _sawmill = _log.GetSawmill("scp_radio");
     }
 
     private void OnListen(Entity<ScpRadioComponent> ent, ref ListenEvent args)
@@ -127,6 +132,8 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         if (!_battery.TryUseCharge(batteryUid.Value, wattage, battery))
         {
             ToggleRadio(ent, false);
+
+            // Дообъедаем остаток заряда, чтобы избежать проблем с минимальными остатками типа 0.0001%
             _battery.TryUseCharge(batteryUid.Value, battery.CurrentCharge, battery);
 
             return false;
@@ -152,6 +159,13 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         base.ToggleRadio(ent, value, user);
 
         user ??= Transform(ent).ParentUid;
+
+        // Вдруг, по какой-то случайности, ParentUid будет не существовать вообще.
+        if (!Exists(user))
+        {
+            _sawmill.Error("Found non-existing user while toggling radio");
+            return;
+        }
 
         // Если мы включаем(value == true) и недостаточно заряда -> выходим из метода
         // Если выключаем(value == false) -> проверка на заряд не нужна, просто выключаем.

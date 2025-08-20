@@ -62,7 +62,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
             return;
 
         AddCycleChannelVerb((ev.Target, scpRadio), ev);
-        AddToggleSpeakerVerb((ev.Target, scpRadio), ev);
+        AddToggleRadioVerb((ev.Target, scpRadio), ev);
     }
 
     private void OnExamine(Entity<ScpRadioComponent> ent, ref ExaminedEvent args)
@@ -110,7 +110,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
         ev.Verbs.Add(verb);
     }
 
-    private void AddToggleSpeakerVerb(Entity<ScpRadioComponent> ent, GetVerbsEvent<Verb> ev)
+    private void AddToggleRadioVerb(Entity<ScpRadioComponent> ent, GetVerbsEvent<Verb> ev)
     {
         var verb = new Verb
         {
