@@ -404,3 +404,58 @@
                 max: 1
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
+
+# Ограничители карт
+- type: entity
+  id: ScpFogWallBorder
+  name: dense fog
+  description: It looks way too dangerous to traverse.
+  suffix: Permanent
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Transform
+    anchored: true
+  - type: Sprite
+    drawdepth: Effects
+    sprite: _Scp/Structures/Walls/fog_wall.rsi
+    state: smoke
+  - type: PlacementReplacement
+    key: walls
+  - type: Physics
+    bodyType: Static
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.5,-0.5,0.5,0.5"
+        mask:
+        - FullTileMask
+        layer:
+        - WallLayer
+        density: 1000
+  - type: Occluder
+
+- type: entity
+  parent: BaseWall
+  id: ScpWallRockBorder
+  name: rock wall
+  description: A rough wall of hardened rock.
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/cave.rsi
+    color: "#E2F9FF"
+  - type: Icon
+    sprite: _Scp/Structures/Walls/cave.rsi
+    state: cavewall
+  - type: IconSmooth
+    key: walls
+    base: cavewall
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrongScp
+  - type: RadiationBlocker
+    resistance: 5
