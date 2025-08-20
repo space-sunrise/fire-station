@@ -3,6 +3,8 @@ using Content.Server.Popups;
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Roles.Jobs;
 using Content.Server.StationRecords.Components;
+using Content.Shared._Scp.CharacterInfo.AccessLevel;
+using Content.Shared._Scp.CharacterInfo.EmployeeClass;
 using Content.Shared._Sunrise.StationRecords;
 using Content.Shared.Access.Systems;
 using Content.Shared.Emag.Systems;
@@ -29,6 +31,8 @@ public sealed partial class GeneralStationRecordConsoleSystem
     [Dependency] private readonly MetaDataSystem _metaData = default!;
     [Dependency] private readonly JobSystem _job = default!;
     [Dependency] private readonly PaperSystem _paper = default!;
+    [Dependency] private readonly EmployeeClassSystem _employeeClass = default!; // Fire added
+    [Dependency] private readonly AccessLevelSystem _accessLevel = default!; // Fire added
 
     private void InitializeSunrise()
     {
@@ -141,6 +145,8 @@ public sealed partial class GeneralStationRecordConsoleSystem
             ("name", record.Name),
             ("job", GetJobName(record)),
             ("department", GetDepartmentName(record)),
+            ("class", _employeeClass.GetName(record.EmployeeClass)), // Fire added
+            ("access", _accessLevel.GetName(record.AccessLevel)), // Fire added
             ("age", GetAgeName(record)),
             ("gender", GetGenderName(record)),
             ("species", GetSpeciesName(record)),

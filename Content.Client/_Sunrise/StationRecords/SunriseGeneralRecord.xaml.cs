@@ -1,6 +1,8 @@
 using System.Linq;
 using Content.Client.Lobby;
 using Content.Client.Roles;
+using Content.Shared._Scp.CharacterInfo.AccessLevel;
+using Content.Shared._Scp.CharacterInfo.EmployeeClass;
 using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
@@ -24,6 +26,8 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     private readonly ILocalizationManager _loc;
     private readonly JobSystem _job;
     private readonly LobbyUIController _controller;
+    private readonly EmployeeClassSystem _employeeClass; // Fire added
+    private readonly AccessLevelSystem _accessLevel; // Fire added
 
     public Action<GeneralStationRecord, uint>? OnSaveButtonPressed;
     public Action<uint>? OnPrintPressed;
@@ -35,6 +39,8 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
     private readonly List<SpeciesPrototype> _allSpecies;
     private readonly List<JobPrototype> _allJobs;
     private readonly Gender[] _allGender;
+    private readonly EmployeeClass[] _employeeClasses; // Fire added
+    private readonly AccessLevel[] _accessLevels; // Fire added
 
     private readonly bool _hasAccess;
     private readonly bool _nonHumanoid;
@@ -65,6 +71,14 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         _allSpecies = _prototype.EnumeratePrototypes<SpeciesPrototype>().ToList();
         _allJobs = _prototype.EnumeratePrototypes<JobPrototype>().ToList();
         _allGender = Enum.GetValues<Gender>();
+
+        // Fire added start
+        _employeeClass = _entity.System<EmployeeClassSystem>();
+        _accessLevel = _entity.System<AccessLevelSystem>();
+
+        _employeeClasses = Enum.GetValues<EmployeeClass>();
+        _accessLevels = Enum.GetValues<AccessLevel>();
+        // Fire added end
 
         // Сортировка рас и работ по имени
         _allSpecies.Sort((a, b)
@@ -136,6 +150,30 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
             if (item == record.Gender)
                 Gender.SelectId(i);
         }
+
+        // Fire added start
+        for (var i = 0; i < _employeeClasses.Length; i++)
+        {
+            var item = _employeeClasses[i];
+            var name = _employeeClass.GetName(item);
+
+            EmployeeClass.AddItem(name, i);
+
+            if (item == record.EmployeeClass)
+                EmployeeClass.SelectId(i);
+        }
+
+        for (var i = 0; i < _accessLevels.Length; i++)
+        {
+            var item = _accessLevels[i];
+            var name = _accessLevel.GetName(item);
+
+            AccessLevel.AddItem(name, i);
+
+            if (item == record.AccessLevel)
+                AccessLevel.SelectId(i);
+        }
+        // Fire added end
 
         for (var i = 0; i < _allSpecies.Count; i++)
         {
@@ -232,6 +270,8 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
             Fingerprint = Fingerprint.Text,
             DNA = Dna.Text,
             Personality = Rope.Collapse(Personality.TextRope),
+            EmployeeClass = _employeeClasses[EmployeeClass.SelectedId], // Fire
+            AccessLevel = _accessLevels[AccessLevel.SelectedId], // Fire
         };
 
         return GeneralStationRecord.SanitizeRecord(updated, in _prototype);
@@ -263,6 +303,10 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
         Gender.Disabled = !_hasAccess;
         Species.Disabled = !_hasAccess;
         Job.Disabled = !_hasAccess;
+        // Fire added start
+        EmployeeClass.Disabled = !_hasAccess;
+        AccessLevel.Disabled = !_hasAccess;
+        // Fire added end
     }
 
     private void CheckChanges()
@@ -297,6 +341,14 @@ public sealed partial class SunriseGeneralRecord : BoxContainer
 
         DnaLabel.Visible = !_nonHumanoid;
         Dna.Visible = !_nonHumanoid;
+
+        // Fire added start
+        EmployeeClassLabel.Visible = !_nonHumanoid;
+        EmployeeClass.Visible = !_nonHumanoid;
+
+        AccessLevelLabel.Visible = !_nonHumanoid;
+        AccessLevel.Visible = !_nonHumanoid;
+        // Fire added end
     }
 
     private void MakeSaveAvailable()

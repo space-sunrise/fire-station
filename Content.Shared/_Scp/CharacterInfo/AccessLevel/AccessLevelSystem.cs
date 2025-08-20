@@ -5,7 +5,7 @@ public sealed class AccessLevelSystem : EntitySystem
     /// <summary>
     /// Получает локализованное название уровня доступа персонажа
     /// </summary>
-    public string GetName(AccessLevel accessLevel) => accessLevel switch
+    public string GetName(AccessLevel? accessLevel) => accessLevel switch
     {
         AccessLevel.Zero => Loc.GetString("access-level-name-zero"),
         AccessLevel.One => Loc.GetString("access-level-name-one"),
@@ -19,7 +19,7 @@ public sealed class AccessLevelSystem : EntitySystem
     /// <summary>
     /// Получает локализованное описание уровня доступа персонажа
     /// </summary>
-    public string GetDescription(AccessLevel accessLevel) => accessLevel switch
+    public string GetDescription(AccessLevel? accessLevel) => accessLevel switch
     {
         AccessLevel.Zero => Loc.GetString("access-level-description-zero"),
         AccessLevel.One => Loc.GetString("access-level-description-one"),

@@ -5,7 +5,7 @@ public sealed class EmployeeClassSystem : EntitySystem
     /// <summary>
     /// Получает локализованное название класса персонажа
     /// </summary>
-    public string GetName(EmployeeClass employeeClass) => employeeClass switch
+    public string GetName(EmployeeClass? employeeClass) => employeeClass switch
     {
         EmployeeClass.A => Loc.GetString("employee-class-name-a"),
         EmployeeClass.B => Loc.GetString("employee-class-name-b"),
@@ -18,7 +18,7 @@ public sealed class EmployeeClassSystem : EntitySystem
     /// <summary>
     /// Получает локализованное описание класса персонажа
     /// </summary>
-    public string GetDescription(EmployeeClass employeeClass) => employeeClass switch
+    public string GetDescription(EmployeeClass? employeeClass) => employeeClass switch
     {
         EmployeeClass.A => Loc.GetString("employee-class-description-a"),
         EmployeeClass.B => Loc.GetString("employee-class-description-b"),

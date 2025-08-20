@@ -11,6 +11,8 @@
     ​[bullet] [color=#594D4A][bold]Имя:[/bold][/color] [italic]{$name}[/italic]
     ​[bullet] [color=#594D4A][bold]Должность:[/bold][/color] [italic]{$job}[/italic]
     ​[bullet] [color=#594D4A][bold]Отдел:[/bold][/color] [italic]{$department}[/italic]
+    ​[bullet] [color=#594D4A][bold]Класс персонала:[/bold][/color] [italic]{$class}[/italic]
+    ​[bullet] [color=#594D4A][bold]Уровень допуска:[/bold][/color] [italic]{$access}[/italic]
     ​[bullet] [color=#594D4A][bold]Возраст:[/bold][/color] [italic]{$age}[/italic]
     ​[bullet] [color=#594D4A][bold]Пол:[/bold][/color] [italic]{$gender}[/italic]
     ​[bullet] [color=#594D4A][bold]Вид:[/bold][/color] [italic]{$species}[/italic]

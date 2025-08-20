@@ -1,3 +1,5 @@
+using Content.Shared._Scp.CharacterInfo.AccessLevel;
+using Content.Shared._Scp.CharacterInfo.EmployeeClass;
 using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Preferences;
@@ -73,6 +75,14 @@ public sealed record GeneralStationRecord
     /// </summary>
     [DataField]
     public string? DNA;
+
+    // Fire added start
+    [DataField]
+    public AccessLevel? AccessLevel;
+
+    [DataField]
+    public EmployeeClass? EmployeeClass;
+    // Fire added end
 
     // Sunrise added start
     [DataField]

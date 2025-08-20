@@ -34,6 +34,8 @@
                 <Label Name="GenderLabel" Text="{Loc 'station-records-ui-gender'}"/>           <OptionButton Name="Gender"/>
                 <Label Name="SpeciesLabel" Text="{Loc 'station-records-ui-species'}"/>         <OptionButton Name="Species"/>
                 <Label Name="JobLabel" Text="{Loc 'station-records-ui-job'}"/>                 <OptionButton Name="Job"/>
+                <Label Name="EmployeeClassLabel" Text="{Loc 'station-records-ui-employee-class'}"/>       <OptionButton Name="EmployeeClass"/>
+                <Label Name="AccessLevelLabel" Text="{Loc 'station-records-ui-access-level'}"/>         <OptionButton Name="AccessLevel"/>
                 <Label Name="FingerprintLabel" Text="{Loc 'station-records-ui-fingerprint'}"/> <LineEdit Name="Fingerprint" Editable="False"/>
                 <Label Name="DnaLabel" Text="{Loc 'station-records-ui-dna'}"/>                 <LineEdit Name="Dna" Editable="False"/>
             </GridContainer>
