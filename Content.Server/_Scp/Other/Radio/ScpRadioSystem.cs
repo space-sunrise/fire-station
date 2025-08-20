@@ -158,7 +158,8 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         if ((!_powerCell.TryGetBatteryFromSlot(ent, out _, out var battery) || MathHelper.CloseTo(battery.CurrentCharge, 0f))
             && value)
         {
-            _popup.PopupEntity("Недостаточно заряда", ent, user.Value);
+            var failMessage = Loc.GetString("scp-radio-not-enough-charge");
+            _popup.PopupEntity(failMessage, ent, user.Value);
 
             return;
         }
@@ -166,7 +167,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         ent.Comp.Enabled = value;
         Dirty(ent);
 
-        var message = value ? $"{Name(ent)} включается" : $"{Name(ent)} выключается";
+        var message = Loc.GetString("scp-radio-toggle-message", ("name", Name(ent)), ("value", ent.Comp.Enabled));
 
         _popup.PopupEntity(message, ent, user.Value);
         _ambientSound.SetAmbience(ent, value);

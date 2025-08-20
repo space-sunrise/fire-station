@@ -99,7 +99,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
 
         var verb = new Verb
         {
-            Text = "Переключить канал связи",
+            Text = Loc.GetString("scp-radio-cycle-channel"),
             Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/refresh.svg.192dpi.png")),
             Act = () =>
             {
@@ -114,7 +114,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
     {
         var verb = new Verb
         {
-            Text = "Вкл/выкл",
+            Text = Loc.GetString("scp-radio-toggle-radio"),
             Icon = new SpriteSpecifier.Texture(new ResPath("/Textures/Interface/VerbIcons/dot.svg.192dpi.png")),
             Act = () =>
             {
@@ -140,7 +140,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
 
         ent.Comp.ActiveChannel = next;
 
-        var message = $"Текущий канал теперь: {nextPrototype.LocalizedName}";
+        var message = Loc.GetString("scp-radio-current-channel", ("name", nextPrototype.LocalizedName));
         _popup.PopupPredicted(message, ent, user);
         _audio.PlayLocal(ent.Comp.ChannelCycleSound, user, ent);
     }
@@ -152,9 +152,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
 
         ent.Comp.MicrophoneEnabled = !ent.Comp.MicrophoneEnabled;
 
-        var message = ent.Comp.MicrophoneEnabled
-            ? "Микрофон включен"
-            : "Микрофон выключен";
+        var message = Loc.GetString("scp-radio-microphone", ("value", ent.Comp.MicrophoneEnabled));
         _popup.PopupPredicted(message, ent, user);
         _audio.PlayLocal(ent.Comp.ToggleSound, user, ent);
     }
