@@ -1,16 +1,15 @@
-﻿- type: entity
+﻿# TODO: Охранный спрайт, унификация спрайтов
+
+- type: entity
   parent: BaseItem
   id: ScpRadioHandheldCommon
   name: handheld radio
   components:
   - type: Sprite
-    sprite: Objects/Devices/communication.rsi
-    layers:
-    - state: walkietalkie
-    - state: walkietalkie-on
-    state: walkietalkie
+    sprite: _Scp/Objects/Devices/radio.rsi
+    state: common
   - type: Item
-    sprite: Objects/Devices/securityhandy.rsi
+    sprite: _Scp/Objects/Devices/radio.rsi
     heldPrefix: walkietalkie
   - type: ScpRadio
     channels:
@@ -43,14 +42,20 @@
 
 - type: entity
   parent: ScpRadioHandheldCommon
+  id: ScpRadioHandheldEngineering
+  name: engineering handheld radio
+  components:
+  - type: Sprite
+    state: engineering
+  - type: ScpRadio
+    channels:
+    - EngineeringTechnicalService
+
+- type: entity
+  parent: ScpRadioHandheldCommon
   id: ScpRadioHandheldSecurity
   name: security handheld radio
   components:
-  - type: Sprite
-    sprite: Objects/Devices/securityhandy.rsi
-  - type: Item
-    sprite: Objects/Devices/securityhandy.rsi
-    heldPrefix: walkietalkie
   - type: ScpRadio
     channels:
     - Security

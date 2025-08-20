@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "license": "CC BY-NC 4.0(common state), CC BY-SA 3.0(engineering state)",
+  "copyright": "common state taken from https://github.com/tgstation/TerraGov-Marine-Corps/blob/HEAD/icons/obj/items/radio.dmi, engineering state taken from https://github.com/TauCetiStation/TauCetiClassic/blob/HEAD/icons/obj/radio.dmi",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "common",
+      "delays": [
+        [
+          0.2,
+          0.4,
+          0.2
+        ]
+      ]
+    },
+    {
+      "name": "engineering",
+      "delays": [
+        [
+          0.1,
+          1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "walkietalkie-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "walkietalkie-inhand-left",
+      "directions": 4
+    }
+  ]
+}
