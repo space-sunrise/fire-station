@@ -65,6 +65,19 @@
   - type: Wires
     layoutId: AirlockService
 
+# Класс Д
+
+- type: entity
+  parent: ScpWindoor
+  id: ScpWindoorClassDCanteenLocked
+  suffix: Class D canteen, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsClassDCanteen ]
+  - type: Wires
+    layoutId: AirlockService
+
 # ЗАЩИЩЕННЫЕ РАЗДВИЖНЫЕ ДВЕРИ
 
 # Администрация
@@ -322,6 +335,19 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsService ]
+  - type: Wires
+    layoutId: AirlockService
+
+# Класс Д
+
+- type: entity
+  parent: ScpWindoorSecure
+  id: ScpWindoorSecureClassDCanteenLocked
+  suffix: Class D canteen, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsClassDCanteen ]
   - type: Wires
     layoutId: AirlockService
 
