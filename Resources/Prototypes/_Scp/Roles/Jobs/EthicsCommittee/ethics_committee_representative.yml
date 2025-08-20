@@ -31,9 +31,5 @@
     head: ClothingHeadHatCapNtrep
     id: KeyCardEthicsCommitteePass
     ears: ClothingHeadsetAltEthicsCommittee
-    pocket1: FlippoEngravedLighter
-    pocket2: PenCentcom
-  storage:
-    back:
-    - RubberStampEthicsCommittee
-    - BaseFoundationPDA
+    back: ClothingBackpackSatchelLeatherEthicsCommitteeFilled
+    pocket2: BaseFoundationPDA

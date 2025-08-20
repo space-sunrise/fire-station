@@ -34,8 +34,8 @@
     gloves: ClothingHandsGlovesHop
     ears: ClothingHeadsetAltAdministration
     belt: BoxFolderClipboard
+    pocket2: PersonnelOfficerPDA
   storage:
     back:
     - Flash
     - Telebaton
-    - PersonnelOfficerPDA

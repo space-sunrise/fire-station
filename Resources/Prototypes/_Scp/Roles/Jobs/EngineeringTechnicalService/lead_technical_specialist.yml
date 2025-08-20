@@ -27,7 +27,7 @@
     eyes: ClothingEyesGlassesMeson
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineeringTechnicalService
+    pocket2: ScpEngineeringPDA
   storage:
     back:
     - ClothingOuterHardsuitEngineeringCompact
-    - ScpEngineeringPDA

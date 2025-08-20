@@ -55,7 +55,7 @@
     id: KeyCardSecurityCommander
     gloves: ClothingHandsGlovesCombat
     ears: ClothingHeadsetAltSecurityAdministration
+    pocket2: SecurityCommanderPDA
   storage:
     back:
     - Flash
-    - SecurityCommanderPDA

@@ -38,8 +38,8 @@
     back: ClothingBackpackSatchelLeatherDirectorFilled
     id: KeyCardDirector
     ears: ClothingHeadsetAltAdministration
+    pocket2: DirectorPDA
   storage:
     back:
     - Flash
     - Telebaton
-    - DirectorPDA

@@ -26,6 +26,4 @@
     id: KeyCardBotanistPhytogeneticist
     ears: ClothingHeadsetFoodAndSanitation
     belt: ClothingBeltPlantFilled
-  storage:
-    back:
-    - ScpServicePDA
+    pocket2: ScpServicePDA

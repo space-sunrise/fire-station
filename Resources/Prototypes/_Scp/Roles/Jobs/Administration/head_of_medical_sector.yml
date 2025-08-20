@@ -34,8 +34,8 @@
     id: KeyCardHeadOfMedicalSector
     ears: ClothingHeadsetAltMedicalService
     belt: ClothingBeltMedicalFilled
+    pocket2: HeadOfMedicalSectorPDA
   storage:
     back:
     - Flash
     - Telebaton
-    - HeadOfMedicalSectorPDA

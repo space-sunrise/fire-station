@@ -23,6 +23,4 @@
     id: KeyCardServicePersonnel
     ears: ClothingHeadsetFoodAndSanitation
     belt: ClothingBeltJanitorFilled
-  storage:
-    back:
-    - ScpServicePDA
+    pocket2: ScpServicePDA

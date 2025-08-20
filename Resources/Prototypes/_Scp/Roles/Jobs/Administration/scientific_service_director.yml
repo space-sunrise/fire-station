@@ -35,10 +35,9 @@
   equipment:
     id: KeyCardScientificServiceDirector
     pocket1: HandheldRoboAnalyzer
-    pocket2: Nanopaste10
+    pocket2: ScientificServiceDirectorPDA
     ears: ClothingHeadsetAltScientificService
   storage:
     back:
     - Flash
     - Telebaton
-    - ScientificServiceDirectorPDA

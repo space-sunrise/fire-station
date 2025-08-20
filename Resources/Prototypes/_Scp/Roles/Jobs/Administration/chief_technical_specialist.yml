@@ -31,8 +31,8 @@
     eyes: ClothingEyesGlassesMeson
     ears: ClothingHeadsetAltEngineeringTechnicalService
     belt: ClothingBeltUtilityEngineering
+    pocket2: ChiefTechnicalSpecialistPDA
   storage:
     back:
     - Flash
     - Telebaton
-    - ChiefTechnicalSpecialistPDA

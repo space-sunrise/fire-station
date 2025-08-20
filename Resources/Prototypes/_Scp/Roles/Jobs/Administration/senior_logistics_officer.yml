@@ -30,7 +30,7 @@
     id: KeyCardSeniorLogisticsOfficer
     ears: ClothingHeadsetAltLogistics
     pocket1: AppraisalTool
+    pocket2: SeniorLogisticsOfficerPDA
   storage:
     back:
     - Flash
-    - SeniorLogisticsOfficerPDA

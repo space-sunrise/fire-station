@@ -30,8 +30,6 @@
     id: KeyCardPharmaceuticalSpecialist
     ears: ClothingHeadsetMedicalService
     belt: ChemBag
-    pocket1: HandLabeler
     eyes: ClothingEyesGlassesChemical
-  storage:
-    back:
-    - ScpMedicalPDA
+    pocket1: HandLabeler
+    pocket2: ScpMedicalPDA
