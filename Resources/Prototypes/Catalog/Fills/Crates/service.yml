@@ -19,7 +19,7 @@
         amount: 2
       - id: Plunger
         amount: 2
-      - id: BoxCleanerGrenades
+      # - id: BoxCleanerGrenades # Fire Edit
 
 - type: entity
   id: CrateServiceCleanerGrenades

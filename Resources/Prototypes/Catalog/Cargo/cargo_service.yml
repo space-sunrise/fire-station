@@ -8,15 +8,15 @@
   category: cargoproduct-category-name-service
   group: market
 
-- type: cargoProduct
-  id: ServiceCleanerGrenades
-  icon:
-    sprite: Objects/Weapons/Grenades/janitor.rsi
-    state: icon
-  product: CrateServiceCleanerGrenades
-  cost: 400
-  category: cargoproduct-category-name-service
-  group: market
+# - type: cargoProduct # Fire Edit
+#   id: ServiceCleanerGrenades
+#   icon:
+#     sprite: Objects/Weapons/Grenades/janitor.rsi
+#     state: icon
+#   product: CrateServiceCleanerGrenades
+#   cost: 400
+#   category: cargoproduct-category-name-service
+#   group: market
 
 - type: cargoProduct
   id: ServiceLightsReplacement
