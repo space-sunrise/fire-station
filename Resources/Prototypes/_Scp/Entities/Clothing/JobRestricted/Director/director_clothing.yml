@@ -50,6 +50,7 @@
 - type: entity
   parent: ClothingBackpackSatchelLeather
   id: ClothingBackpackSatchelLeatherDirectorFilled
+  categories: [ HideSpawnMenu ]
   components:
   - type: StorageFill
     contents:
