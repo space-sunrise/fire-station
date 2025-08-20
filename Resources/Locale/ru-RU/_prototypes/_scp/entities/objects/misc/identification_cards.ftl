@@ -1,4 +1,4 @@
-ent-ClassDIDCard = ID карта сотрудника класса Д
+ent-ClassDIDCard = ID карта сотрудника класса D
     .desc = Карта, позволяющая записывать на себя доступы в различные отделы комплекса. Позволяет опознать вас среди сотни других сотрудников.
 ent-ClassDCookIDCard = { ent-ClassDIDCard }
     .desc = { ent-ClassDIDCard.desc }

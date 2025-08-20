@@ -1,7 +1,7 @@
 ﻿- type: job
   id: ClassDJanitor
   name: job-name-class-d-janitor
-  description: job-description-class-d
+  description: job-description-class-d-janitor
   playTimeTracker: JobClassDJanitor
   requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
   - !type:OverallPlaytimeRequirement

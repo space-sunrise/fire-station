@@ -24,4 +24,5 @@
     id: KeyCardTechnicalTrainee
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineeringTechnicalService
-    pocket2: BookEngineersHandbook
+    pocket1: BookEngineersHandbook
+    pocket2: ScpEngineeringPDA

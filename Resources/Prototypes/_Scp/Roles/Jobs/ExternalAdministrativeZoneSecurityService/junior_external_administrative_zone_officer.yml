@@ -42,6 +42,7 @@
     id: KeyCardJuniorLightContainmentZoneSecurityOfficer
     ears: ClothingHeadsetExternalAdministrativeZoneSecurityService
     pocket1: HyperLinkBookCorporateLaw
+    pocket2: ScpSecurityPDA
   storage:
     back:
     - Flash

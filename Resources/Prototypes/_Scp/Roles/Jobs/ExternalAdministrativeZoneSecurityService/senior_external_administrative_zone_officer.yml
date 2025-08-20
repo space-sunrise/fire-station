@@ -52,6 +52,4 @@
     head: ClothingHeadHatBeretSecurity
     id: KeyCardSeniorLightContainmentZoneSecurityOfficer
     ears: ClothingHeadsetExternalAdministrativeZoneSecurityService
-  storage:
-    back:
-    - WeaponDisablerSMG
+    pocket2: ScpSecurityPDA

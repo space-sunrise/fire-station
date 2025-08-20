@@ -157,6 +157,13 @@
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: JuniorExternalAdministrativeZoneOfficer
 
+- type: jobIcon
+  parent: JobIcon
+  id: JobAmnesthesiologist
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+    state: Amnesthesiologist
+
 # Научный отдел
 
 - type: jobIcon

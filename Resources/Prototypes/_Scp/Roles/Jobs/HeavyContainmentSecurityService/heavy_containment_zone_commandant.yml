@@ -51,6 +51,7 @@
     eyes: ClothingEyesGlassesSecurity
     id: KeyCardHeavyContainmentZoneCommandant
     ears: ClothingHeadsetAltHeavyContainmentSecurityService
+    pocket2: ScpSecurityPDA
   storage:
     back:
     - Flash

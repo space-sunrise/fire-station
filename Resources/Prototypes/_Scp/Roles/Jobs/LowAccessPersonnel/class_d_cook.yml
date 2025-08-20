@@ -1,7 +1,7 @@
 ﻿- type: job
   id: ClassDCook
   name: job-name-class-d-cook
-  description: job-description-class-d
+  description: job-description-class-d-cook
   playTimeTracker: JobClassDCook
   requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
   - !type:OverallPlaytimeRequirement

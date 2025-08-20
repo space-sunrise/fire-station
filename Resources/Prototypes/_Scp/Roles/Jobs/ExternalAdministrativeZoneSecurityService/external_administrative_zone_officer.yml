@@ -54,7 +54,7 @@
     ears: ClothingHeadsetExternalAdministrativeZoneSecurityService
     head: ClothingHeadHelmetBasic
     gloves: ClothingHandsGlovesColorBlack
+    pocket2: ScpSecurityPDA
   storage:
     back:
     - Flash
-#    - MagazineGlock22

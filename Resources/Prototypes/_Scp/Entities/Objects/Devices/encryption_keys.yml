@@ -26,9 +26,7 @@
     channels:
     - Common
     - Administration
-    - InternalSecurity
     - EthicsCommittee
-    - InternalTribunalService
     - HeavyContainmentSecurityService
     - ExternalAdministrativeZoneSecurityService
     - ScientificService

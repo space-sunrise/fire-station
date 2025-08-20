@@ -11,9 +11,7 @@
     - Common
     # Fire edit start
     - Administration
-    - InternalSecurity
     - EthicsCommittee
-    - InternalTribunalService
     - HeavyContainmentSecurityService
     - ExternalAdministrativeZoneSecurityService
     - ScientificService
@@ -28,9 +26,7 @@
     - Common
     # Fire edit start
     - Administration
-    - InternalSecurity
     - EthicsCommittee
-    - InternalTribunalService
     - HeavyContainmentSecurityService
     - ExternalAdministrativeZoneSecurityService
     - ScientificService

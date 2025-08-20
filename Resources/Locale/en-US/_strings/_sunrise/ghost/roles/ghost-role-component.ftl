@@ -20,7 +20,7 @@ ghost-role-information-foliant-description = Помогайте своему б�
 ghost-role-information-foliant-rules = Вы разумная книга-мимик. Помогайте своему хозяину скрасить жизнь, просвящайте всех на станции.
 ghost-role-information-ert-cyborg-name = Боевой киборг МОГ
 ghost-role-information-ert-cyborg-description = Обезопасить. Удержать. Сохранить.
-ghost-role-information-ert-cyborg-rules = Подчиняйтесь МОГ, Штабу О4 и РАФу.
+ghost-role-information-ert-cyborg-rules = Подчиняйтесь Мобильной оперативной группе, Штабу О4 и Региональному управлению.
 
 ghost-role-information-ntr-lead-name = командир ИСН
 ghost-role-information-ntr-guard-name = оперативник ИСН

@@ -26,6 +26,7 @@
     shoes: ClothingShoesLeather
     id: KeyCardPsychotherapist
     ears: ClothingHeadsetMedicalService
+    pocket2: ScpMedicalPDA
   storage:
     back:
     - RubberStampPsychologist

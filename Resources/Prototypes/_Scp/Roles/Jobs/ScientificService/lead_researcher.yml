@@ -33,6 +33,4 @@
     id: KeyCardLeadResearcher
     ears: ClothingHeadsetScientificService
     outerClothing: ClothingOuterCoatLabSeniorResearcher
-  storage:
-    back:
-    - WeaponPistolCHIMP
+    pocket2: ScpResearchPDA

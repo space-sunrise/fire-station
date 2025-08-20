@@ -14,13 +14,6 @@
   color: "#2a9bbc"
 
 - type: radioChannel
-  id: InternalSecurity
-  name: chat-radio-internal-security
-  keycode: 'б'
-  frequency: 2359
-  color: "#8e4747"
-
-- type: radioChannel
   id: EthicsCommittee
   name: chat-radio-ethics-committee
   keycode: 'э'
@@ -28,24 +21,17 @@
   color: "#8c4669"
 
 - type: radioChannel
-  id: InternalTribunalService
-  name: chat-radio-internal-tribunal-service
-  keycode: 'с'
-  frequency: 2359
-  color: "#c27ba0"
-
-- type: radioChannel
   id: HeavyContainmentSecurityService
   name: chat-radio-heavy-containment-security-service
-  keycode: 'т'
-  frequency: 2359
+  keycode: 'о'
+  frequency: 2360
   color: "#d87777"
 
 - type: radioChannel
   id: ExternalAdministrativeZoneSecurityService
   name: chat-radio-external-administrative-zone-security-service
-  keycode: 'о'
-  frequency: 2359
+  keycode: 'к'
+  frequency: 2361
   color: "#acb5b8"
 
 - type: radioChannel
@@ -79,7 +65,7 @@
 - type: radioChannel
   id: FoodAndSanitationService
   name: chat-radio-food-and-sanitation-service
-  keycode: 'е'
+  keycode: 'с'
   frequency: 2349
   color: "#849b6a"
 
@@ -90,3 +76,17 @@
   frequency: 0251
   color: "#40826d"
   longRange: true
+# Ниже под удаление на будущее.
+- type: radioChannel
+  id: InternalTribunalService
+  name: chat-radio-internal-tribunal-service
+  keycode: 'б'
+  frequency: 2333
+  color: "#c27ba0"
+
+- type: radioChannel
+  id: InternalSecurity
+  name: chat-radio-internal-security
+  keycode: 'ю'
+  frequency: 2334
+  color: "#8e4747"

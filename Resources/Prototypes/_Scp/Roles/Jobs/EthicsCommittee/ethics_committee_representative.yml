@@ -1,8 +1,10 @@
-﻿- type: job
+- type: job
   id: EthicsCommitteeRepresentative
   name: job-name-ethics-committee-representative
   description: job-description-ethics-committee-representative
   playTimeTracker: JobEthicsCommitteeRepresentative
+  requirements:
+    - !type:DiscordRoleRequirement
   weight: 10
   startingGear: EthicsCommitteeRepresentativeGear
   icon: JobEthicsCommitteeRepresentative
@@ -10,7 +12,6 @@
   canBeAntag: true
   radioBold: true
   displayWeight: 50
-  setPreference: false # TODO: После добавления вайт-листа убрать
   accessGroups:
   - EthicsCommittee
   special:
@@ -30,5 +31,5 @@
     head: ClothingHeadHatCapNtrep
     id: KeyCardEthicsCommitteePass
     ears: ClothingHeadsetAltEthicsCommittee
-    pocket1: FlippoEngravedLighter
-    pocket2: PenCentcom
+    back: ClothingBackpackSatchelLeatherEthicsCommitteeFilled
+    pocket2: BaseFoundationPDA

@@ -30,6 +30,7 @@
     id: KeyCardSeniorMedicalSpecialist
     ears: ClothingHeadsetMedical
     eyes: ClothingHeadsetMedicalService
+    pocket2: ScpMedicalPDA
   storage:
     back:
     - MedicatedSuture

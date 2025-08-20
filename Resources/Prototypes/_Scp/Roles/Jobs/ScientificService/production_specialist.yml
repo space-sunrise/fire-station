@@ -31,3 +31,4 @@
   equipment:
     ears: ClothingHeadsetScientificService
     id: KeyCardProductionSpecialist
+    pocket2: ScpResearchPDA

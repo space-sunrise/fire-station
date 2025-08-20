@@ -30,4 +30,5 @@
     shoes: ClothingShoesColorWhite
     id: KeyCardJuniorResearcher
     ears: ClothingHeadsetScientificService
-    pocket2: BookScientistsGuidebook
+    pocket1: BookScientistsGuidebook
+    pocket2: ScpResearchPDA

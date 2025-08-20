@@ -7,7 +7,7 @@
     - !type:OverallPlaytimeRequirement
       time: 90000 # 25 часов
   icon: JobInternalSecurityOperative
-  supervisors: job-supervisors-regional-administration
+  supervisors: job-supervisors-director
   canBeAntag: false
   access:
   - Command

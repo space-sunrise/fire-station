@@ -1,4 +1,4 @@
-﻿- type: job
+﻿- type: job # Удалить. Заменён Научным Сотрудником
   id: AnomabiologyResearcher
   name: job-name-anomabiology-researcher
   description: job-description-anomabiology-researcher
@@ -32,3 +32,6 @@
   equipment:
     ears: ClothingHeadsetScientificService
     id: KeyCardAnomabiologyResearcher
+  storage:
+    back:
+    - ScpResearchPDA
