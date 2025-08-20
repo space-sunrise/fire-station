@@ -1,6 +1,7 @@
 - type: entity
   parent: ClothingBackpackSatchelLeather
   id: ClothingBackpackSatchelLeatherEthicsCommitteeFilled
+  noSpawn: true
   components:
   - type: StorageFill
     contents:
