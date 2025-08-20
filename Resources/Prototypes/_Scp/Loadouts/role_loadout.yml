@@ -14,6 +14,7 @@
   - DirectorKeyCard
   - DirectorBack
   - CommonAdministrationGlasses
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -29,6 +30,7 @@
   - ScientistGloves
   - ResearchDirectorShoes
   - Glasses
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -47,6 +49,8 @@
   - SecurityStar
   - SecurityTrinkets
   - SunriseSecurityGun
+  - SecurityRadio
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -65,6 +69,7 @@
   - ChiefEngineerShoes
   - SurvivalExtended
   - TrinketsEngineering
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -79,6 +84,7 @@
   - HoPBackpack
   - HoPOuterClothing
   - Glasses
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -99,6 +105,7 @@
   - SurvivalMedical
   - GroupSpeciesBreathToolMedical
   - MedicalTrinkets
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -117,6 +124,7 @@
   - QuartermasterShoes
   - Glasses
   - TrinketsCargo
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -130,6 +138,7 @@
   - NanoTrasenRepresentativeOuterClothing
   - CommonBackpack
   - Trinkets
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -150,6 +159,8 @@
   - GroupSpeciesBreathToolSecurity
   - TrinketsHeavyContainmentSecurityService
   - SunriseSecurityGun
+  - SecurityRadio
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -166,6 +177,8 @@
   - TrinketsHeavyContainmentSecurityService
   - GroupSpeciesBreathTool
   - SunriseSecurityGun
+  - SecurityRadio
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -184,6 +197,8 @@
   - GroupSpeciesBreathToolSecurity
   - TrinketsHeavyContainmentSecurityService
   - SunriseSecurityGun
+  - SecurityRadio
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -196,6 +211,8 @@
   - SurvivalSecurity
   - GroupSpeciesBreathToolSecurity
   - TrinketsHeavyContainmentSecurityService
+  - SecurityRadio
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -208,6 +225,8 @@
   - SurvivalSecurity
   - TrinketsHeavyContainmentSecurityService
   - SunriseSecurityGun
+  - SecurityRadio
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -228,6 +247,8 @@
   - SecurityStar
   - TrinketsExternalAdministrativeZoneSecurityService
   - SunriseSecurityGun
+  - SecurityRadio
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -246,6 +267,8 @@
   - TrinketsExternalAdministrativeZoneSecurityService
   - SunriseSecurityGun
   - SecurityStar
+  - SecurityRadio
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -264,6 +287,8 @@
   - TrinketsExternalAdministrativeZoneSecurityService
   - SunriseSecurityGun
   - SecurityStar
+  - SecurityRadio
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -282,6 +307,8 @@
   - TrinketsExternalAdministrativeZoneSecurityService
   - SunriseSecurityGun
   - SecurityStar
+  - SecurityRadio
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -296,6 +323,7 @@
   - ScientistGloves
   - ScientistShoes
   - Glasses
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -311,6 +339,7 @@
   - ScientistGloves
   - ScientistShoes
   - Glasses
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -326,6 +355,7 @@
   - ScientistGloves
   - ScientistShoes
   - Glasses
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -340,6 +370,7 @@
   - ScientistBackpack
   - ScientistShoes
   - GroupSpeciesBreathTool
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -351,6 +382,7 @@
   - ResearchAssistantJumpsuit
   - ScientistBackpack
   - Glasses
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -372,6 +404,7 @@
   - SurvivalMedical
   - MedicalTrinkets
   - Glasses
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -391,6 +424,7 @@
   - SurvivalMedical
   - GroupSpeciesBreathToolMedical
   - MedicalTrinkets
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -411,6 +445,7 @@
   - SurvivalMedical
   - GroupSpeciesBreathToolMedical
   - MedicalTrinkets
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -430,6 +465,7 @@
   - SunrisePsychologistShoes
   - Glasses
   - MedicalTrinkets
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -450,6 +486,7 @@
   - SurvivalMedical
   - GroupSpeciesBreathToolMedical
   - MedicalTrinkets
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -469,6 +506,7 @@
   - SeniorEngineerShoes
   - SurvivalExtended
   - TrinketsEngineering
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -487,6 +525,7 @@
   - StationEngineerShoes
   - SurvivalExtended
   - TrinketsEngineering
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -504,6 +543,7 @@
   - SunriseAtmosNeck
   - AtmosphericTechnicianShoes
   - TrinketsEngineering
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -522,6 +562,7 @@
   - StationEngineerShoes
   - SurvivalExtended
   - TrinketsEngineering
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -542,6 +583,7 @@
   - CargoTechnicianShoes
   - Glasses
   - TrinketsCargo
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -558,6 +600,7 @@
   - CommonBackpack
   - ChefOuterClothing
   - Glasses
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -571,6 +614,7 @@
   - BotanistBackpack
   - BotanistOuterClothing
   - Glasses
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks
@@ -586,6 +630,7 @@
   - JanitorOuterClothing
   - Glasses
   - JanitorPlunger
+  - CommonMiscItems
   - Bra
   - Pants
   - Socks

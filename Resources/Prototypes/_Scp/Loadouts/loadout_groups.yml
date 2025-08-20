@@ -82,11 +82,16 @@
   - SecurityWeaponMeleeNeedle
   # - SecurityHoloprojector # Fire edit
 
+- type: loadoutGroup
+  id: SecurityRadio
+  name: loadout-group-security-radio
+  loadouts:
+  - ScpRadioHandheldSecurity
+
 # Общие
 
 - type: loadoutGroup
   id: CommonMiscItems
   name: loadout-group-common-misc-items
-#  minLimit: 0 Временно, пока игроки не привыкли к карте
   loadouts:
   - PortableStationMap

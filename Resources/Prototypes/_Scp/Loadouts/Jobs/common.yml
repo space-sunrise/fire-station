@@ -48,3 +48,11 @@
   storage:
     back:
     - HandheldStationMap
+
+# СБшная рация
+
+- type: loadout
+  id: ScpRadioHandheldSecurity
+  storage:
+    back:
+    - ScpRadioHandheldSecurity

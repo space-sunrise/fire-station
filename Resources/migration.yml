@@ -831,7 +831,8 @@ SignDirectionalBridge: SignDirectionalScpAdministration
 SignDirectionalSupply: SignDirectionalScpLogisticsService
 SignDirectionalHop: SignDirectionalScpPersonnelOfficer
 
-RadioHandheldSecurity: RadioHandheldExternalAdministrativeZoneSecurityService
+RadioHandheldSecurity: ScpRadioHandheldSecurity
+RadioHandheld: ScpRadioHandheldCommon
 IntercomSecurity: IntercomMasterZoneSecurityService
 
 SignBridge: SignScpAdministration

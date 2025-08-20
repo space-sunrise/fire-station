@@ -1,4 +1,5 @@
 loadout-group-common-misc-items = Другие предметы
+loadout-group-security-radio = Рация
 loadout-group-head = Голова
 loadout-group-hat = { loadout-group-head }
 loadout-group-eyes = Глаза

@@ -1,0 +1,5 @@
+﻿- type: soundCollection
+  id: RadioReceive
+  files:
+  - /Audio/_Scp/Effects/Radio/receive1.ogg
+  - /Audio/_Scp/Effects/Radio/receive2.ogg

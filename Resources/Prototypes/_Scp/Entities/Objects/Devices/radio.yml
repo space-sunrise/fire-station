@@ -1,21 +1,81 @@
-﻿- type: entity
-  parent: RadioHandheldSecurity
-  id: RadioHandheldHeavyContainmentSecurityService
-  components:
-  - type: RadioMicrophone
-    broadcastChannel: HeavyContainmentSecurityService
-    listenRange: 1
-  - type: RadioSpeaker
-    channels:
-    - HeavyContainmentSecurityService
+﻿# TODO: Охранный спрайт, унификация спрайтов
 
 - type: entity
-  parent: RadioHandheldHeavyContainmentSecurityService
-  id: RadioHandheldExternalAdministrativeZoneSecurityService
+  parent: BaseItem
+  id: ScpRadioHandheldCommon
+  name: handheld radio
   components:
-  - type: RadioMicrophone
-    broadcastChannel: ExternalAdministrativeZoneSecurityService
-    listenRange: 1
-  - type: RadioSpeaker
+  - type: Sprite
+    sprite: _Scp/Objects/Devices/radio.rsi
+    state: common
+  - type: Item
+    sprite: _Scp/Objects/Devices/radio.rsi
+    heldPrefix: walkietalkie
+  - type: ScpRadio
+    channels:
+    - Common
+  - type: Speech
+    speechVerb: Robotic
+  - type: AmbientSound
+    range: 1.5
+    volume: -10
+    sound:
+      path: /Audio/_Scp/Effects/Radio/static.ogg
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+  - type: TelecomExempt
+  - type: Appearance
+  - type: Tag
+    tags:
+    - Radio
+
+# Пока общий канал доступен через наушник он не будет в рациях
+# Так как иначе будет попросту жрать заряд у раций на прием сообщений
+
+- type: entity
+  parent: ScpRadioHandheldCommon
+  id: ScpRadioHandheldEngineering
+  name: engineering handheld radio
+  components:
+  - type: Sprite
+    state: engineering
+  - type: ScpRadio
+    channels:
+    - EngineeringTechnicalService
+
+- type: entity
+  parent: ScpRadioHandheldCommon
+  id: ScpRadioHandheldSecurity
+  name: security handheld radio
+  components:
+  - type: ScpRadio
+    channels:
+    - Security
+
+- type: entity
+  parent: ScpRadioHandheldSecurity
+  id: RadioHandheldHeavyContainmentSecurityService
+  name: security handheld radio
+  components:
+  - type: ScpRadio
+    channels:
+    - HeavyContainmentSecurityService
+    - Security
+
+- type: entity
+  parent: ScpRadioHandheldSecurity
+  id: RadioHandheldExternalAdministrativeZoneSecurityService
+  name: security handheld radio
+  components:
+  - type: ScpRadio
     channels:
     - ExternalAdministrativeZoneSecurityService
+    - Security

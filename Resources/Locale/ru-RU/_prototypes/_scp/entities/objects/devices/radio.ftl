@@ -1,4 +1,15 @@
-ent-RadioHandheldHeavyContainmentSecurityService = рация отряда специального назначения
+ent-ScpRadioHandheldCommon = { ent-RadioHandheld }
+    .desc = { ent-RadioHandheld.desc }
+    .suffix = Общий
+ent-ScpRadioHandheldEngineering = { ent-RadioHandheld }
+    .desc = { ent-RadioHandheld.desc }
+    .suffix = Инженерно-технический
+ent-ScpRadioHandheldSecurity = { ent-RadioHandheldSecurity }
     .desc = { ent-RadioHandheldSecurity.desc }
-ent-RadioHandheldExternalAdministrativeZoneSecurityService = рация комендантского отряда
+    .suffix = СБ общий
+ent-RadioHandheldHeavyContainmentSecurityService = { ent-RadioHandheld } отряда специального назначения
     .desc = { ent-RadioHandheldSecurity.desc }
+    .suffix = ОСН
+ent-RadioHandheldExternalAdministrativeZoneSecurityService = { ent-RadioHandheld } комендантского отряда
+    .desc = { ent-RadioHandheldSecurity.desc }
+    .suffix = Комендантский
