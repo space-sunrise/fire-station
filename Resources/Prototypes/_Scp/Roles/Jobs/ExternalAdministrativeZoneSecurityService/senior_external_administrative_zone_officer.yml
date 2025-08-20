@@ -11,21 +11,17 @@
   supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false
   displayWeight: 60
-  access:
-  - Research
-  - Kitchen
-  - Hydroponics
-  - Janitor
-  - Security
-  - Brig
-  - Maintenance
-  - Service
-  - External
+  accessGroups:
+  - SecurityJobCommon
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
     - type: Fear # переопределение компонента страха для СБ
       phobias:
       - Exoremophobia
@@ -54,8 +50,6 @@
   equipment:
     eyes: ClothingEyesGlassesSecurity
     head: ClothingHeadHatBeretSecurity
-    id: SeniorOfficerPDA
+    id: KeyCardSeniorLightContainmentZoneSecurityOfficer
     ears: ClothingHeadsetExternalAdministrativeZoneSecurityService
-  storage:
-    back:
-    - WeaponDisablerSMG
+    pocket2: ScpSecurityPDA

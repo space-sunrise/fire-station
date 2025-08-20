@@ -10,12 +10,15 @@
   icon: JobLeadResearcher
   supervisors: job-supervisors-scientific-service-director
   displayWeight: 35
-  access:
-  - Research
-  - Maintenance
+  accessGroups:
+  - LeadResearcher
   special:
   - !type:AddComponentSpecial
     components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
     - type: Fear
       phobias:
       - Exoremophobia
@@ -27,9 +30,7 @@
   id: LeadResearcherGear
   equipment:
     head: ClothingHeadHatBeretRND
-    id: SeniorResearcherPDA
+    id: KeyCardLeadResearcher
     ears: ClothingHeadsetScientificService
     outerClothing: ClothingOuterCoatLabSeniorResearcher
-  storage:
-    back:
-    - WeaponPistolCHIMP
+    pocket2: ScpResearchPDA

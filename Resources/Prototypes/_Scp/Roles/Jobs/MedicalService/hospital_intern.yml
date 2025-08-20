@@ -8,20 +8,23 @@
   supervisors: job-supervisors-head-of-medical-sector
   canBeAntag: true
   displayWeight: 0
-  access:
-  - Medical
-  - Maintenance
+  accessGroups:
+  - CommonMedicalJob
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Two
   # Интерн исключение из врачей, он пугается трупов, потому что слишком неопытен.
 
 - type: startingGear
   id: HospitalInternGear
   equipment:
-    #    shoes: ClothingShoesColorWhite
-    id: MedicalInternPDA
+    id: KeyCardHospitalIntern
     ears: ClothingHeadsetMedicalService
     belt: ClothingBeltMedicalFilled
-    pocket2: BookMedicalReferenceBook
     eyes: ClothingEyesHudMedical
-    #storage:
-    #back:
-    #- Stuff
+    pocket1: BookMedicalReferenceBook
+    pocket2: ScpMedicalPDA

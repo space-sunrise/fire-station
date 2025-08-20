@@ -1,7 +1,7 @@
 ﻿- type: job
   id: ClassDBotanist
   name: job-name-class-d-botanist
-  description: job-description-class-d
+  description: job-description-class-d-botanist
   playTimeTracker: JobClassDBotanist
   requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
   - !type:OverallPlaytimeRequirement
@@ -10,13 +10,14 @@
   icon: JobClassDBotanist
   supervisors: job-supervisors-security-and-research
   access:
-  - Service
-  - Hydroponics
+  - ClassDCanteen
   alwaysUseSpawner: true
   special:
   - !type:AddComponentSpecial
     components:
     - type: ClassDAppearance
+    - type: EmployeeClass
+      class: D
 
 - type: startingGear
   id: ClassDBotanistGear
@@ -27,5 +28,5 @@
     belt: ClothingBeltPlantFilled
     gloves: ClothingHandsGlovesLeather
     shoes: ClothingShoesClassD
-    id: ClassDBotanistIDCard
+    id: KeyCardClassDBotanist
 

@@ -1,51 +1,28 @@
-﻿# ID КАРТА
-# Командир
+﻿# TODO: Положить ПДА в рюкзак/карман/разгрузку.
+# Ключ карты
+
 - type: entity
-  parent: IDCardMTFStandard
-  id: IDCardHDLeader
-  categories: [ HideSpawnMenu ]
+  parent: KeyCardMtfBase
+  id: KeyCardMtfHDLeader
   components:
+  - type: Sprite
+    state: mtf_commander
   - type: PresetIdCard
     job: HDLeader
-# Специалист
+
 - type: entity
-  parent: IDCardMTFStandard
-  id: IDCardHDSpecialist
-  categories: [ HideSpawnMenu ]
+  parent: KeyCardMtfBase
+  id: KeyCardMtfHDSpecialist
   components:
   - type: PresetIdCard
     job: HDSpecialist
-# Кадет
+
 - type: entity
-  parent: IDCardMTFStandard
-  id: IDCardHDCadet
-  categories: [ HideSpawnMenu ]
+  parent: KeyCardMtfBase
+  id: KeyCardMtfHDCadet
   components:
   - type: PresetIdCard
     job: HDCadet
-
-# КПК
-# Командир
-- type: entity
-  parent: BaseMTFPDA
-  id: HDLeaderPDA
-  components:
-  - type: Pda
-    id: IDCardHDLeader
-# Специалист
-- type: entity
-  parent: BaseMTFPDA
-  id: HDSpecialistPDA
-  components:
-  - type: Pda
-    id: IDCardHDSpecialist
-# Кадет
-- type: entity
-  parent: BaseMTFPDA
-  id: HDCadetPDA
-  components:
-  - type: Pda
-    id: IDCardHDCadet
 
 # ВЕЩИ
 - type: entity
@@ -69,12 +46,10 @@
   - type: HeldSpeedModifier
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingHeadHatSyndieMAA
   id: ClothingHeadHatHDMAA
 
 - type: entity
-  categories: [ HideSpawnMenu ]
   parent: ClothingShoesBootsJackSecFilled
   id: ClothingShoesBootsHDFilled
 
@@ -91,10 +66,9 @@
   supervisors: Штабу О4
   canBeAntag: false
   radioBold: true
+  overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -113,7 +87,7 @@
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHD
-    id: HDLeaderPDA
+    id: KeyCardMtfHDLeader
     ears: ClothingHeadsetAltMTF
     belt: MTFCommanderWebbing
     pocket1: BaseUplinkMTFLeader
@@ -167,10 +141,9 @@
   icon: JobIconHD
   supervisors: ghost-role-information-mtf-specialist-supervisors
   canBeAntag: false
+  overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -189,7 +162,7 @@
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHD
-    id: HDSpecialistPDA
+    id: KeyCardMtfHDSpecialist
     ears: ClothingHeadsetAltMTF
     belt: MTFWebbing
     pocket1: BaseUplinkMTFSpecialist
@@ -239,10 +212,9 @@
   icon: JobIconHD
   supervisors: ghost-role-information-mtf-cadet-supervisors
   canBeAntag: false
+  overrideConsoleVisibility: false
   accessGroups:
-  - AllAccess
-  access:
-  - CentralCommand
+  - AllComplex
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
@@ -261,7 +233,7 @@
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHD
-    id: HDCadetPDA
+    id: KeyCardMtfHDCadet
     ears: ClothingHeadsetAltMTF
     belt: MTFWebbing
     pocket1: BaseUplinkMTFCadet

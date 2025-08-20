@@ -11,7 +11,7 @@
       stationProto: StandardScpStation
       components:
         - type: StationNameSetup
-          mapNameTemplate: 'Зона-{0} тип - Compact'
+          mapNameTemplate: 'Участок-{0} тип - Compact'
           nameGenerator:
             !type:ScpSiteNameGenerator
             prefixCreator: '15'
@@ -38,25 +38,24 @@
             # MentalControlOfficer: [ 1, 1 ]
             #InternalSecurityOperative: [ 1, 1 ] # выводим до лучших времен
             # Комитет по этике
-            # EthicsCommitteeRepresentative: [ 1, 1 ]
+            EthicsCommitteeRepresentative: [ 1, 1 ]
             # Служба внутреннего трибунала
             # JudicialInspector: [ 1, 1 ]
-            TribunalOfficer: [ 1, 1 ]
+            # TribunalOfficer: [ 1, 1 ]
             # Служба безопасности тяжелой зоны
             HeavyContainmentZoneCommandant: [ 1, 1 ]
             SeniorHeavyContainmentZoneOfficer: [ 1, 1 ]
             HeavyContainmentZoneOfficer: [ 5, 5 ]
             JuniorHeavyContainmentZoneOfficer: [ 3, -1 ]
-            FieldMedicalSpecialist: [ 1, 1 ]
             # Служба безопасности внешней-административной зоны
             ExternalAdministrativeZoneCommandant: [ 1, 1 ]
             SeniorExternalAdministrativeZoneOfficer: [ 1, 1 ]
             ExternalAdministrativeZoneOfficer: [ 5, 5 ]
             JuniorExternalAdministrativeZoneOfficer: [ 3, -1 ]
+            FieldMedicalSpecialist: [ 1, 1 ]
             # Научная служба
             LeadResearcher: [ 1, 1 ]
-            AnomabiologyResearcher: [ 5, 5 ]
-            AnomarchologyResearcher: [ 3, 3 ]
+            AnomarchologyResearcher: [ 7, 8 ]
             ProductionSpecialist: [ 1, 1 ]
             JuniorResearcher: [ 3, -1 ]
             # Медицинская служба

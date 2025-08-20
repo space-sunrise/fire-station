@@ -13,48 +13,28 @@
   canBeAntag: false
   radioBold: true
   displayWeight: 90
-  access:
-  - Command
-  - HeadOfPersonnel
-  - Bar
-  - Service
-  - Maintenance
-  - Janitor
-  - Theatre
-  - Kitchen
-  - Chapel
-  - Hydroponics
-  - External
-  - Cryogenics
-  - Chemistry
-  - Engineering
-  - Research
-  - Detective
-  - Salvage
-  - Security
-  - Brig
-  - Lawyer
-  - Cargo
-  - CargoPurchaseAccess
-  - ResearchConsoleAccess
-  - Atmospherics
-  - Medical
-  - Barber
+  accessGroups:
+  - PersonnelOfficer
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
 
 - type: startingGear
   id: PersonnelOfficerGear
   equipment:
     shoes: ClothingShoesColorBrown
-    id: HoPPDA
+    id: KeyCardPersonnelOfficer
     gloves: ClothingHandsGlovesHop
     ears: ClothingHeadsetAltAdministration
     belt: BoxFolderClipboard
+    pocket2: PersonnelOfficerPDA
   storage:
     back:
     - Flash

@@ -8,23 +8,22 @@
   supervisors: job-supervisors-personnel-officer
   access:
   - Service
-  - Maintenance
-  - Hydroponics
-  extendedAccess:
-  - Kitchen
-  - Bar
   special:
   - !type:GiveItemOnHolidaySpecial
     holiday: FourTwenty
     prototype: CannabisSeeds
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: One
 
 - type: startingGear
   id: BotanistPhytogeneticistGear
   equipment:
     shoes: ClothingShoesColorBrown
-    id: BotanistPDA
+    id: KeyCardBotanistPhytogeneticist
     ears: ClothingHeadsetFoodAndSanitation
     belt: ClothingBeltPlantFilled
-    #storage:
-    #back:
-    #- Stuff
+    pocket2: ScpServicePDA

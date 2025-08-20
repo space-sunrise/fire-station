@@ -29,7 +29,8 @@
     ScpEngineeringPDA: 2
     ScpMedicalPDA: 2
     ScpSecurityPDA: 1
-    PassengerIDCard: 5
+    KeyCardEmpty: 5
+    KeyCardPassEmpty: 2
     ClothingHeadsetGrey: 5
     RubberStampApproved: 1
     RubberStampDenied: 1

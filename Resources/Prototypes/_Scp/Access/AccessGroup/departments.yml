@@ -1,0 +1,117 @@
+- type: accessGroup
+  id: Administration
+  groups:
+  - AdministrationHeadless
+  tags:
+  - ComplexDirector
+  - ScientificServiceDirector
+  - SecurityCommander
+  - HeadOfMedicalSector
+  - PersonnelOfficer
+  - ChiefTechnicalSpecialist
+  - SeniorLogisticsOfficer
+
+- type: accessGroup
+  id: RegionalAdministration
+  tags:
+  - MTF
+  - O5
+
+- type: accessGroup
+  id: ScientificService
+  tags:
+  - ScientificServiceDirector
+  groups:
+  - ScientificServiceHeadless
+
+- type: accessGroup
+  id: Logistics
+  tags:
+  - SeniorLogisticsOfficer
+  groups:
+  - LogisticsHeadless
+
+- type: accessGroup
+  id: ClassD
+  tags:
+  - ClassDCanteen
+  - ClassDJanitor
+
+- type: accessGroup
+  id: ScpClasses
+  tags:
+  - Safe
+  - Euclid
+  - Keter
+
+- type: accessGroup
+  id: ScpCommon
+  tags:
+  - AI
+  - NuclearWarhead
+  - Exit
+
+# Отделы без глав
+
+- type: accessGroup
+  id: AdministrationHeadless
+  tags:
+  - Administration
+
+- type: accessGroup
+  id: SecurityHeadless
+  tags:
+  - Security
+  - Armory
+  - Checkpoint
+
+- type: accessGroup
+  id: ScientificServiceHeadless
+  tags:
+  - Research
+  - Laboratory
+  - Safe
+  - Euclid
+  - Keter
+
+- type: accessGroup
+  id: MedicalHeadless
+  tags:
+  - Medical
+  - Laboratory
+
+- type: accessGroup
+  id: EngineeringHeadless
+  tags:
+  - Engineering
+  - LifeSupport
+  - Maintenance
+
+- type: accessGroup
+  id: LogisticsHeadless
+  tags:
+  - Logistics
+
+- type: accessGroup
+  id: ServiceHeadless
+  tags:
+  - Service
+
+- type: accessGroup
+  id: AllComplex
+  groups:
+  - Administration
+  - RegionalAdministration
+  - Security
+  - ScientificService
+  - Medical
+  - Engineering
+  - Logistics
+  - Service
+  - ClassD
+  tags:
+  - AI
+  - NuclearWarhead
+  - Exit
+  - EthicsCommittee
+  - InternalTribunalService

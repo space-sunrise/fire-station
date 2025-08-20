@@ -1,0 +1,227 @@
+﻿- type: accessGroup
+  id: Director
+  groups:
+  - AdministrationJobCommon
+  - Administration
+  - Security
+  - ScientificService
+  - Medical
+  - Engineering
+  - Logistics
+  - Service
+  - ClassD
+  tags:
+  - AI
+
+- type: accessGroup
+  id: ScientificServiceDirector
+  groups:
+  - AdministrationJobCommon
+  - ScientificService
+  - MedicalHeadless
+  - ServiceHeadless
+  tags:
+  - AI
+
+- type: accessGroup
+  id: SecurityCommander
+  groups:
+  - AdministrationJobCommon
+  - Security
+  - ScientificServiceHeadless
+  - MedicalHeadless
+  - EngineeringHeadless
+  - ServiceHeadless
+
+- type: accessGroup
+  id: ChiefTechnicalSpecialist
+  groups:
+  - AdministrationJobCommon
+  - Engineering
+  - MedicalHeadless
+  - ServiceHeadless
+  - ClassD
+  tags:
+  - Safe
+  - AI
+
+- type: accessGroup
+  id: PersonnelOfficer
+  groups:
+  - AdministrationJobCommon
+  - EngineeringHeadless
+  - LogisticsHeadless
+  - ClassD
+  - Service
+  tags:
+  - Medical
+  - Security
+  - Research
+  - AI
+
+- type: accessGroup
+  id: HeadOfMedicalSector
+  groups:
+  - AdministrationJobCommon
+  - Medical
+  - ServiceHeadless
+  - ClassD
+
+- type: accessGroup
+  id: SeniorLogisticsOfficer
+  groups:
+  - AdministrationJobCommon
+  - Logistics
+  - ServiceHeadless
+  - ClassD
+
+- type: accessGroup
+  id: EthicsCommittee
+  groups:
+  - AdministrationHeadless
+  - ScientificServiceHeadless
+  - MedicalHeadless
+  - EngineeringHeadless
+  - LogisticsHeadless
+  - ServiceHeadless
+  - ClassD
+  - ScpCommon
+  tags:
+  - Security
+  - Checkpoint
+  - EthicsCommittee
+
+- type: accessGroup
+  id: InternalTribunalService
+  groups:
+  - AdministrationHeadless
+  - ScientificServiceHeadless
+  - MedicalHeadless
+  - EngineeringHeadless
+  - LogisticsHeadless
+  - ServiceHeadless
+  - ClassD
+  - ScpCommon
+  tags:
+  - Security
+  - Checkpoint
+  - InternalTribunalService
+
+- type: accessGroup
+  id: AdministrationJobCommon
+  groups:
+  - AdministrationHeadless
+  tags:
+  - Checkpoint
+  - Exit
+  - Maintenance
+
+# Служба безопасности
+
+- type: accessGroup
+  id: SecurityCommandant
+  groups:
+  - SecurityJobCommon
+  tags:
+  - Armory
+
+- type: accessGroup
+  id: FieldMedic
+  groups:
+  - SecurityJobCommon
+  tags:
+  - Laboratory
+
+- type: accessGroup
+  id: SecurityJobCommon
+  groups:
+  - ClassD
+  - ScientificServiceHeadless
+  - MedicalHeadless
+  - EngineeringHeadless
+  - ServiceHeadless
+  tags:
+  - Checkpoint
+  - Security
+
+# Научная служба
+
+- type: accessGroup
+  id: LeadResearcher
+  groups:
+  - ScientificServiceHeadless
+  tags:
+  - Maintenance
+  - Checkpoint
+
+- type: accessGroup
+  id: Scientist
+  groups:
+  - ScientificServiceHeadless
+  tags:
+  - Checkpoint
+
+- type: accessGroup
+  id: ProductionSpecialist
+  tags:
+  - Safe
+  - Research
+  - Laboratory
+
+- type: accessGroup
+  id: JuniorResearcher
+  tags:
+  - Research
+
+# Медицинская служба
+
+- type: accessGroup
+  id: SeniorMedicalSpecialist
+  groups:
+  - CommonMedicalJob
+  tags:
+  - Laboratory
+  - Checkpoint
+
+- type: accessGroup
+  id: PharmaceuticalSpecialist
+  groups:
+  - CommonMedicalJob
+  tags:
+  - Laboratory
+
+- type: accessGroup
+  id: CommonMedicalJob
+  tags:
+  - Medical
+
+# Инженерно-техническая служба
+
+- type: accessGroup
+  id: LeadTechnicalSpecialist
+  groups:
+  - EngineeringHeadless
+  - ServiceHeadless
+  tags:
+  - Checkpoint
+
+- type: accessGroup
+  id: ElectricalSpecialist
+  groups:
+  - CommonEngineeringJob
+  tags:
+  - LifeSupport
+
+- type: accessGroup
+  id: CommonEngineeringJob
+  tags:
+  - Engineering
+  - Maintenance
+
+# Логистическая служба
+
+- type: accessGroup
+  id: LogisticsOfficer
+  groups:
+  - LogisticsHeadless
+  - ServiceHeadless

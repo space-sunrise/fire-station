@@ -10,13 +10,15 @@
   icon: JobSeniorMedicalSpecialist
   supervisors: job-supervisors-head-of-medical-sector
   displayWeight: 35
-  access:
-  - Medical
-  - Maintenance
-  - Chemistry
+  accessGroups:
+  - SeniorMedicalSpecialist
   special:
   - !type:AddComponentSpecial
     components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
     - type: Fear
       phobias:
       - Exoremophobia
@@ -25,9 +27,10 @@
 - type: startingGear
   id: SeniorMedicalSpecialistGear
   equipment:
-    id: SeniorPhysicianPDA
+    id: KeyCardSeniorMedicalSpecialist
     ears: ClothingHeadsetMedical
     eyes: ClothingHeadsetMedicalService
+    pocket2: ScpMedicalPDA
   storage:
     back:
     - MedicatedSuture

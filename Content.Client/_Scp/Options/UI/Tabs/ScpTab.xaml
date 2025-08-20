@@ -52,6 +52,14 @@
                           Text="{Loc 'ui-options-scp-audio-muffling-use-high-frequency-update'}"
                           ToolTip="{Loc ui-options-scp-audio-muffling-use-high-frequency-update-tooltip}" />
 
+                <!-- ИГРА -->
+                <Label Text="{Loc 'ui-options-scp-game'}" StyleClasses="LabelKeyText"/>
+
+                <!-- Автооткрытие меню персонажа -->
+                <CheckBox Name="AutoOpenCharacterWindowEnabled"
+                          Text="{Loc 'ui-options-scp-game-auto-open-character-window-enabled'}"
+                          ToolTip="{Loc ui-options-scp-game-auto-open-character-window-enabled-tooltip}" />
+
             </BoxContainer>
         </ScrollContainer>
         <ui:OptionsTabControlRow Name="Control" Access="Public" />

@@ -61,11 +61,11 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - MedTekCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
 
 - type: entity
   parent: ScpBasePDA
@@ -75,17 +75,18 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - NetProbeCartridge
-      - AstroNavCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - NetProbeCartridge
+    - AstroNavCartridge
 
 - type: entity
   parent: ScpBasePDA
   id: BaseFoundationPDA
   name: PDA
+  description: "Universal corporate PDA base model: a standalone terminal for accounting, communication, and information access. Reliable, easy-to-use, with a basic set of modules and upgrade capability."
   components:
   - type: PdaBorderColor
     borderColor: "#636262"
@@ -114,6 +115,7 @@
   parent: ScpBaseEngineerPDA
   id: ScpEngineeringPDA
   name: engineer PDA
+  description: "Modified PDA with a set of engineering utilities: equipment diagnostics, geolocation, and network zone debugger. Ideal for repairing, configuring, and emergency restoring systems."
   components:
   - type: PdaBorderColor
     borderColor: "#959393"
@@ -142,6 +144,7 @@
   parent: ScpBaseMedicalPDA
   id: ScpMedicalPDA
   name: medical PDA
+  description: Medical PDA with a database on anatomy, pharmacology, and first aid protocols. Includes tools for monitoring vital signs and recommendations for patient stabilization.
   components:
   - type: PdaBorderColor
     borderColor: "#C2C0C0"
@@ -173,6 +176,7 @@
   parent: ScpBaseSecurityPDA
   id: ScpSecurityPDA
   name: security PDA
+  description: Security service PDA with access to access logs, wanted lists, and response protocols. Equipped with a reinforced casing and a more durable display.
   components:
   - type: PdaBorderColor
     borderColor: "#636262"
@@ -201,6 +205,7 @@
   parent: ScpBasePDA
   id: ScpResearchPDA
   name: research PDA
+  description: Research PDA with an extensive scientific database, experiment protocols, and the Foundation's library. Supports storage of experimental records.
   components:
   - type: PdaBorderColor
     borderColor: "#C2C0C0"
@@ -229,6 +234,7 @@
   parent: ScpBasePDA
   id: ScpServicePDA
   name: service PDA
+  description: Service PDA for maintenance personnel. Simplifies work coordination and documentation of completed tasks.
   components:
   - type: PdaBorderColor
     borderColor: "#C2C0C0"
@@ -257,6 +263,7 @@
   parent: ScpBasePDA
   id: ScpLogisticsPDA
   name: logistics PDA
+  description: Logistics PDA with modules for warehouse management, delivery routes, and cargo accounting. Allows checking invoices and optimizing supply documentation.
   components:
   - type: PdaBorderColor
     borderColor: "#959393"
@@ -283,8 +290,9 @@
 
 - type: entity
   parent: ScpBasePDA
-  id: DirectorsPDA
+  id: DirectorPDA
   name: director's PDA
+  description: Personal PDA for the director with extended access rights, encrypted mail, and secret archives. Used for decision-making and managing key facility resources.
   components:
   - type: Pda
     penSlot:
@@ -319,16 +327,17 @@
     uiKey: enum.PdaUiKey.Key
     notificationsEnabled: false
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - WantedListCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - WantedListCartridge
 
 - type: entity
   parent: ScpBasePDA
   id: PersonnelOfficerPDA
   name: personnel officer PDA
+  description: The personnel officer's PDA contains employee personal files, shift schedules, hiring and termination protocols, and personnel evaluation tools. Ensures compliance with HR procedures and data confidentiality.
   components:
   - type: Pda
     penSlot:
@@ -363,16 +372,17 @@
     uiKey: enum.PdaUiKey.Key
     notificationsEnabled: false
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - WantedListCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - WantedListCartridge
 
 - type: entity
   parent: ScpBaseEngineerPDA
   id: ChiefTechnicalSpecialistPDA
   name: chief technician specialist PDA
+  description: The Chief Technician's PDA with an infrastructure system map, repair log, and preventive maintenance plan. Designed for strategic control of technical condition and coordination of technician teams.
   components:
   - type: Pda
     penSlot:
@@ -408,6 +418,7 @@
   parent: ScpBasePDA
   id: SeniorLogisticsOfficerPDA
   name: senior logistics officer PDA
+  description: Senior Logistics Officer's PDA for managing warehouse flows, resource allocation, and supply coordination between departments. Includes inventory reports.
   components:
   - type: Pda
     penSlot:
@@ -443,6 +454,7 @@
   parent: ScpBaseMedicalPDA
   id: HeadOfMedicalSectorPDA
   name: head of medical sector PDA
+  description: Head Physician's PDA with extended clinical references, prioritized patient lists, medical staff schedules, and department operating protocols. Serves for operational management of the treatment process.
   components:
   - type: Pda
     penSlot:
@@ -478,6 +490,7 @@
   parent: ScpBasePDA
   id: ScientificServiceDirectorPDA
   name: scientific service director PDA
+  description: The Scientific Director's PDA integrates strategic research plans, access to restricted publications, project budgets, and results reports. A tool for managing scientific activities and distributing research tasks.
   components:
   - type: Pda
     penSlot:
@@ -513,6 +526,7 @@
   parent: ScpBaseSecurityPDA
   id: SecurityCommanderPDA
   name: security commander's PDA
+  description: The Head of Security's PDA with full access to monitoring systems, security deployments, and emergency protocols. Allows for task creation, threat analysis, and issuing on-site commands.
   components:
   - type: Pda
     penSlot:
@@ -546,8 +560,9 @@
 
 - type: entity
   parent: ScpBaseSecurityPDA
-  id: MTFPDA
-  name: MTF PDA
+  id: MobileTaskForcePDA
+  name: mobile task force operative PDA
+  description: "Field PDA for Mobile Task Force operatives: quick access to maps, target data, orders, and action logs. Optimized for autonomous and extreme conditions."
   components:
   - type: PdaBorderColor
     borderColor: "#3D3D3D"
@@ -573,19 +588,26 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - MedTekCartridge
-      - WantedListCartridge
-      - LogProbeCartridge
-      - AstroNavCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
+    - WantedListCartridge
+    - LogProbeCartridge
+    - AstroNavCartridge
+
+- type: entity
+  parent: MobileTaskForcePDA
+  id: ChaosInsurgencyPDA
+  name: chaos insurgency operative PDA
+  description: "Field PDA for Chaos Insurgency operatives: quick access to maps, target data, orders, and action logs. Optimized for autonomous and extreme conditions."
 
 - type: entity
   parent: ScpBaseSecurityPDA
-  id: ManagerPDA
-  name: manager PDA
+  id: RegionalAdministrationPDA
+  name: regional administrator PDA
+  description: High-level administrative PDA with limited but critical access to directives, policy drafts, and secure communication channels. Intended for managing organizational decisions and coordinating leadership.
   components:
   - type: Pda
     penSlot:
@@ -619,21 +641,21 @@
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - MedTekCartridge
-      - WantedListCartridge
-      - LogProbeCartridge
-      - AstroNavCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
+    - WantedListCartridge
+    - LogProbeCartridge
+    - AstroNavCartridge
 
 - type: entity
   parent: ScpBasePDA
   id: ScpAdminPDA
   name: admin PDA
   suffix: Admin
-  description: If you are not an admin please return this PDA to the nearest admin.
+  description: If you found this PDA, please urgently contact the nearest Ahelp point and return it to the Administration.
   components:
   - type: Pda
     penSlot:
@@ -672,14 +694,14 @@
     uiKey: enum.PdaUiKey.Key
     notificationsEnabled: false
     preinstalled:
-      - CrewManifestCartridge
-      - NotekeeperCartridge
-      - NanoTaskCartridge
-      - NewsReaderCartridge
-      - LogProbeCartridge
-      - WantedListCartridge
-      - MedTekCartridge
-      - AstroNavCartridge
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - LogProbeCartridge
+    - WantedListCartridge
+    - MedTekCartridge
+    - AstroNavCartridge
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener

@@ -1,5 +1,5 @@
-ent-FaxMachineRegionalAdministration = факс региональной администрации
-    .suffix = Региональная администрация
+ent-FaxMachineRegionalAdministration = факс регионального управления
+    .suffix = Региональное управление
     .desc = { ent-FaxMachineBase.desc }
 ent-FaxMachineO4HQ = факс штаба О4
     .suffix = Штаб О4

@@ -9,18 +9,22 @@
   weight: 5
   icon: JobDirector
   joinNotifyCrew: true
-  supervisors: job-supervisors-regional-administration
+  supervisors: job-supervisors-O5-command
   canBeAntag: false
   displayWeight: 100
   radioBold: true
   accessGroups:
-  - AllAccess
+  - Director
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: EmployeeClass
+      class: B
+    - type: AccessLevel
+      level: Four
 
 - type: startingGear
   id: DirectorGear
@@ -32,8 +36,9 @@
     gloves: ClothingHandsGlovesDirectorSpecial
     shoes: ClothingShoesBootsLaceup
     back: ClothingBackpackSatchelLeatherDirectorFilled
-    id: DirectorPDA
+    id: KeyCardDirector
     ears: ClothingHeadsetAltAdministration
+    pocket2: DirectorPDA
   storage:
     back:
     - Flash

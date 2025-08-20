@@ -10,19 +10,24 @@
   icon: JobLeadTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
   displayWeight: 30
-  access:
-  - Maintenance
-  - Engineering
-  - External
-  - Atmospherics
+  accessGroups:
+  - LeadTechnicalSpecialist
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
 
 - type: startingGear
   id: LeadTechnicalSpecialistGear
   equipment:
-    id: SeniorEngineerPDA
+    id: KeyCardLeadTechnicalSpecialist
     eyes: ClothingEyesGlassesMeson
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineeringTechnicalService
+    pocket2: ScpEngineeringPDA
   storage:
     back:
     - ClothingOuterHardsuitEngineeringCompact

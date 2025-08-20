@@ -1,11 +1,18 @@
 ﻿- type: loadoutEffectGroup
   id: MasterSecurity
   effects:
+  # Fire edit start
   - !type:JobRequirementLoadoutEffect
     requirement:
-      !type:RoleTimeRequirement
-      role: JobSecurityOfficer
-      time: 72000 #20 hrs
+      !type:DepartmentTimeRequirement
+      department: HeavyContainmentSecurityService
+      time: 36000 #10 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService
+      time: 36000 #10 hrs
+  # Fire edit end
 
 - type: loadout
   id: SecurityBodycam

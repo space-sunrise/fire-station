@@ -11,24 +11,17 @@
   supervisors: job-supervisors-security-commander
   canBeAntag: false
   displayWeight: 70  # Sunrise
-  access:
-  - Research
-  - Kitchen
-  - Hydroponics
-  - Janitor
-  - Security
-  - Brig
-  - Armory
-  #  - Maintenance
-  - Service
-  - External
-  - Detective
-  - Cryogenics
+  accessGroups:
+  - SecurityCommandant
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
     - type: Fear # переопределение компонента страха для СБ
       phobias:
       - Exoremophobia
@@ -56,9 +49,9 @@
   id: HeavyContainmentZoneCommandantGear
   equipment:
     eyes: ClothingEyesGlassesSecurity
-    id: WardenPDA
+    id: KeyCardHeavyContainmentZoneCommandant
     ears: ClothingHeadsetAltHeavyContainmentSecurityService
+    pocket2: ScpSecurityPDA
   storage:
     back:
     - Flash
-#    - MagazineGlock22

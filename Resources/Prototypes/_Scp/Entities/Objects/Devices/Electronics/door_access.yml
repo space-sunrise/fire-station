@@ -1,0 +1,228 @@
+﻿# Администрация комплекса
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsAdministration
+  suffix: Administration, Locked
+  components:
+  - type: AccessReader
+    access: [["Administration"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsComplexDirector
+  suffix: Director, Locked
+  components:
+  - type: AccessReader
+    access: [["ComplexDirector"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsScientificServiceDirector
+  suffix: Scientific director, Locked
+  components:
+  - type: AccessReader
+    access: [["ScientificServiceDirector"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsSecurityCommander
+  suffix: Security commander, Locked
+  components:
+  - type: AccessReader
+    access: [["SecurityCommander"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsChiefTechnicalSpecialist
+  suffix: Chief technical specialist, Locked
+  components:
+  - type: AccessReader
+    access: [["ChiefTechnicalSpecialist"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsPersonnelOfficer
+  suffix: Personnel officer, Locked
+  components:
+  - type: AccessReader
+    access: [["PersonnelOfficer"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsHeadOfMedicalSector
+  suffix: Head of medical sector, Locked
+  components:
+  - type: AccessReader
+    access: [["HeadOfMedicalSector"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsSeniorLogisticsOfficer
+  suffix: Senior logistics officer, Locked
+  components:
+  - type: AccessReader
+    access: [["SeniorLogisticsOfficer"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsEthicsCommittee
+  suffix: Ethics committee, Locked
+  components:
+  - type: AccessReader
+    access: [["EthicsCommittee"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsInternalTribunalService
+  suffix: Internal tribunal service, Locked
+  components:
+  - type: AccessReader
+    access: [["InternalTribunalService"]]
+
+# СБ
+
+#СБ и Арсенал есть в ванильных платах
+
+# Инженерно-технические
+
+#Доступ техов уже есть в ваниле
+#Доступ инженерного уже есть в ваниле
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsLifeSupport
+  suffix: Life support, Locked
+  components:
+  - type: AccessReader
+    access: [["LifeSupport"]]
+
+# Научно-медицинские
+
+# Медицинская есть в ваниле
+
+#Научный уже есть в ванильной игре
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsLaboratory
+  suffix: Laboratory, Locked
+  components:
+  - type: AccessReader
+    access: [["Laboratory"]]
+
+# Общие
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsCheckpoint
+  suffix: Checkpoint, Locked
+  components:
+  - type: AccessReader
+    access: [["Checkpoint"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsExit
+  suffix: Exit, Locked
+  components:
+  - type: AccessReader
+    access: [["Exit"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsNuclearWarhead
+  suffix: Nuclear warhead, Locked
+  components:
+  - type: AccessReader
+    access: [["NuclearWarhead"]]
+
+# Сервис есть в ваниле
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsLogistics
+  suffix: Logistics, Locked
+  components:
+  - type: AccessReader
+    access: [["Logistics"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsAI
+  suffix: AI, Locked
+  components:
+  - type: AccessReader
+    access: [["AI"]]
+
+# SCP
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsSafe
+  suffix: Safe, Locked
+  components:
+  - type: AccessReader
+    access: [["Safe"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsEuclid
+  suffix: Euclid, Locked
+  components:
+  - type: AccessReader
+    access: [["Euclid"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsKeter
+  suffix: Keter, Locked
+  components:
+  - type: AccessReader
+    access: [["Keter"]]
+
+# Класс Д
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsClassDCanteen
+  suffix: Class D canteen, Locked
+  components:
+  - type: AccessReader
+    access: [["ClassDCanteen"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsClassDJanitor
+  suffix: Class D janitor, Locked
+  components:
+  - type: AccessReader
+    access: [["ClassDJanitor"]]
+
+# Сторонние
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsMTF
+  suffix: MTF, Locked
+  components:
+  - type: AccessReader
+    access: [["MTF"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsChaosInsurgency
+  suffix: Chaos insurgency, Locked
+  components:
+  - type: AccessReader
+    access: [["ChaosInsurgency"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsThirdParty
+  suffix: Third party, Locked
+  components:
+  - type: AccessReader
+    access: [["ThirdParty"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsO5
+  suffix: O5, Locked
+  components:
+  - type: AccessReader
+    access: [["O5"]]

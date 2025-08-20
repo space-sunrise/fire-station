@@ -2,6 +2,7 @@
   parent: IDCardStandard
   id: BlueShieldOfficerIDCard
   name: blue shield officer ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -17,6 +18,7 @@
   parent: IDCardStandard
   id: BlueShieldEnsignIDCard
   name: blue shield ensign ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -32,6 +34,7 @@
   parent: IDCardStandard
   id: BlueShieldOperativeIDCard
   name: blue shield operative ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -46,6 +49,7 @@
   parent: IDCardStandard
   id: RoboticistIDCard
   name: roboticist ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -58,6 +62,7 @@
   parent: IDCardStandard
   id: SecurityPilotIDCard
   name: security pilot ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -71,6 +76,7 @@
   parent: IDCardStandard
   id: PrisonEngineeringIDCard
   name: prison engineer ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -83,6 +89,7 @@
   parent: IDCardStandard
   id: IAAIDCard
   name: internal affairs agent ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -95,6 +102,7 @@
   parent: IDCardStandard
   id: MagistratIDCard
   name: magistrate ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -107,6 +115,7 @@
   parent: IDCardStandard
   id: BrigmedicIDCard
   name: brigmedic ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -120,6 +129,7 @@
   parent: IDCardStandard
   id: PlanetPrisonerIDCard
   name: prisoner ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -133,6 +143,7 @@
   parent: IDCardStandard
   id: GuardIDCard
   name: guard ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -146,6 +157,7 @@
   parent: IDCardStandard
   id: PrisonPilotIDCard
   name: prison pilot ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -159,6 +171,7 @@
   parent: IDCardStandard
   id: HeadOfPrisonIDCard
   name: head of prison ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -174,6 +187,7 @@
   parent: IDCardStandard
   id: NanoTrasenRepresentativeIDCard
   name: NanoTrasen representative ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -185,6 +199,7 @@
   parent: IDCardStandard
   id: BarberIDCard
   name: barber ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -199,6 +214,7 @@
   id: AdjutantIDCard
   name: adjutant ID card
   description: Adjutant ID card.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -212,6 +228,7 @@
   parent: IDCardStandard
   id: PathologistIDCard
   name: Pathologist ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -225,6 +242,7 @@
   parent: IDCardStandard
   id: USSPIDCard
   name: USSP ID card
+  categories: [ HideSpawnMenu ] # Fire added
   suffix: Crew
   components:
   - type: Sprite
@@ -242,6 +260,7 @@
   parent: IDCardStandard
   id: USSPOfficerIDCard
   name: USSP ID card
+  categories: [ HideSpawnMenu ] # Fire added
   suffix: Guard
   components:
   - type: Sprite
@@ -261,6 +280,7 @@
   parent: IDCardStandard
   id: USSPSoldierIDCard
   name: USSP ID card
+  categories: [ HideSpawnMenu ] # Fire added
   suffix: Combat
   components:
   - type: Sprite
@@ -279,6 +299,7 @@
   parent: IDCardStandard
   id: USSPSoldierOfficerIDCard
   name: USSP ID card
+  categories: [ HideSpawnMenu ] # Fire added
   suffix: Combat Officer
   components:
   - type: Sprite
@@ -298,6 +319,7 @@
   id: USSPCaptainIDCard
   name: USSP ID card
   suffix: Captain
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -321,6 +343,7 @@
   name: NTR Guard ID card
   description: OwO Squad
   suffix: Officer
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -338,6 +361,7 @@
   name: NTR Lead ID card
   description: Leader OwO Squad
   suffix: Leader
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -353,6 +377,7 @@
   parent: IDCardStandard
   id: MailCarrierIDCard
   name: mail carrier ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -366,6 +391,7 @@
   parent: IDCardStandard
   id: MiningIDCard
   name: mining ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -379,6 +405,7 @@
   parent: [ IDCardStandard ]
   id: AbductorIDCard
   name: abductor ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: Sprite
       sprite: _Sunrise/Objects/Misc/id_cards.rsi

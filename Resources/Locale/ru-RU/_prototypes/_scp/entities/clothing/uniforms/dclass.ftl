@@ -1,3 +1,3 @@
-ent-ClothingUniformClassD = униформа класса Д
-    .desc = От него пахнет дерьмом.. Причем чужим..
+ent-ClothingUniformClassD = униформа класса D
+    .desc = От неё пахнет дерьмом. Причём чужим.
     .suffix = SCP

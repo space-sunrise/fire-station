@@ -13,18 +13,16 @@
   canBeAntag: true
   radioBold: true
   displayWeight: 60
-  access:
-  - Medical
-  - Command
-  - Maintenance
-  - Chemistry
-  - ChiefMedicalOfficer
-  - Brig
-  - Cryogenics
+  accessGroups:
+  - HeadOfMedicalSector
   special:
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
     - type: Fear
       phobias:
       - Exoremophobia
@@ -33,9 +31,10 @@
 - type: startingGear
   id: HeadOfMedicalSectorGear
   equipment:
-    id: CMOPDA
+    id: KeyCardHeadOfMedicalSector
     ears: ClothingHeadsetAltMedicalService
     belt: ClothingBeltMedicalFilled
+    pocket2: HeadOfMedicalSectorPDA
   storage:
     back:
     - Flash

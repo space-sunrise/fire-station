@@ -11,6 +11,7 @@
   supervisors: job-supervisors-medicine
   canBeAntag: true # Sunrise-Edit
   displayWeight: 0  # Sunrise-Edit
+  overrideConsoleVisibility: false
   access:
   - Medical
   - Maintenance

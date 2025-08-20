@@ -1,6 +1,34 @@
 - type: accessGroup
   id: AllAccess
   tags:
+  # Fire added start - новые доступы
+  - Administration
+  - ComplexDirector
+  - ScientificServiceDirector
+  - SecurityCommander
+  - ChiefTechnicalSpecialist
+  - PersonnelOfficer
+  - HeadOfMedicalSector
+  - SeniorLogisticsOfficer
+  - EthicsCommittee
+  - InternalTribunalService
+  - LifeSupport
+  - Laboratory
+  - Checkpoint
+  - Exit
+  - NuclearWarhead
+  - Logistics
+  - AI
+  - Safe
+  - Euclid
+  - Keter
+  - ClassDCanteen
+  - ClassDJanitor
+  - MTF
+  - ChaosInsurgency
+  - ThirdParty
+  - O5
+  # Fire added end
   - EmergencyShuttleRepealAll
   - Captain
   - HeadOfPersonnel

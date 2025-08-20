@@ -3,6 +3,7 @@
   name: job-name-blueshield-officer
   description: job-description-blueshield-officer
   playTimeTracker: JobBlueShield
+  overrideConsoleVisibility: false # Fire added
 #  requirements:
 #    - !type:DepartmentTimeRequirement
 #      department: Security

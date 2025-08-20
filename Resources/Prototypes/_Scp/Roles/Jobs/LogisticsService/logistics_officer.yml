@@ -7,22 +7,23 @@
   icon: JobLogisticsOfficer
   supervisors: job-supervisors-senior-logistics-officer
   displayWeight: 0
-  access:
-  - Cargo
-  - Maintenance
-  extendedAccess:
-  - Salvage
+  accessGroups:
+  - LogisticsOfficer
   special:
   - !type:GiveItemOnHolidaySpecial
     holiday: BoxingDay
     prototype: BoxCardboard
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: One
 
 - type: startingGear
   id: LogisticsOfficerGear
   equipment:
-    id: CargoPDA
+    id: KeyCardLogisticsOfficer
     ears: ClothingHeadsetLogistics
     pocket1: AppraisalTool
-    #storage:
-    #back:
-    #- Stuff
+    pocket2: ScpLogisticsPDA

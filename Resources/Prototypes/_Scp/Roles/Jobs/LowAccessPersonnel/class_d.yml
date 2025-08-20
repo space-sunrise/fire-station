@@ -11,10 +11,11 @@
   - !type:AddComponentSpecial
     components:
     - type: ClassDAppearance
+    - type: EmployeeClass
+      class: D
 
 - type: startingGear
   id: ClassDGear
   equipment:
     jumpsuit: ClothingUniformClassD
     shoes: ClothingShoesClassD
-    id: ClassDIDCard

@@ -1,8 +1,10 @@
-﻿- type: job
+- type: job
   id: EthicsCommitteeRepresentative
   name: job-name-ethics-committee-representative
   description: job-description-ethics-committee-representative
   playTimeTracker: JobEthicsCommitteeRepresentative
+  requirements:
+    - !type:DiscordRoleRequirement
   weight: 10
   startingGear: EthicsCommitteeRepresentativeGear
   icon: JobEthicsCommitteeRepresentative
@@ -10,18 +12,16 @@
   canBeAntag: true
   radioBold: true
   displayWeight: 50
-  setPreference: false # TODO: После добавления вайт-листа убрать
-  access:
-  - Research
-  - Command
-  - Maintenance
-  - ResearchDirector
-  - Brig
-  - Cryogenics
+  accessGroups:
+  - EthicsCommittee
   special:
   - !type:AddComponentSpecial
     components:
     - type: CommandStaff
+    - type: EmployeeClass
+      class: B
+    - type: AccessLevel
+      level: Four
 
 - type: startingGear
   id: EthicsCommitteeRepresentativeGear
@@ -29,11 +29,7 @@
     shoes: ClothingShoesBootsLaceup
     eyes: ClothingEyesSunGlassesHudSkill
     head: ClothingHeadHatCapNtrep
-    id: NanoTrasenRepresentativePDA
+    id: KeyCardEthicsCommitteePass
     ears: ClothingHeadsetAltEthicsCommittee
-    pocket1: FlippoEngravedLighter
-    pocket2: PenCentcom
-  storage:
-    back:
-    - RubberStampNtrep
-    - CaneNT
+    back: ClothingBackpackSatchelLeatherEthicsCommitteeFilled
+    pocket2: BaseFoundationPDA

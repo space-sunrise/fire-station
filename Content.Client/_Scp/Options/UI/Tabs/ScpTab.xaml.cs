@@ -45,6 +45,13 @@ public sealed partial class ScpTab : Control
         Control.AddOptionCheckBox(ScpCCVars.AudioMufflingEnabled, AudioMufflingEnabled);
         Control.AddOptionCheckBox(ScpCCVars.AudioMufflingHighFrequencyUpdate, AudioMufflingHighFrequencyUpdate);
 
+        /*
+         * Игра
+         */
+
+        // Автооткрытие меню персонажа
+        Control.AddOptionCheckBox(ScpCCVars.AutoOpenCharacterMenuClientSideEnabled, AutoOpenCharacterWindowEnabled);
+
         Control.Initialize();
     }
 }

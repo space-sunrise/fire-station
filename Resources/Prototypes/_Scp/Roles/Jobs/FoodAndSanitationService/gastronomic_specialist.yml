@@ -8,19 +8,19 @@
   supervisors: job-supervisors-personnel-officer
   access:
   - Service
-  - Maintenance
-  - Kitchen
-  extendedAccess:
-  - Hydroponics
-  - Bar
+  special:
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: One
 
 - type: startingGear
   id: GastronomicSpecialistGear
   equipment:
     shoes: ClothingShoesColorBlack
-    id: ChefPDA
+    id: KeyCardGastronomicSpecialist
     ears: ClothingHeadsetFoodAndSanitation
     belt: ClothingBeltChefFilled
-    #storage:
-    #back:
-    #- Stuff
+    pocket2: ScpServicePDA

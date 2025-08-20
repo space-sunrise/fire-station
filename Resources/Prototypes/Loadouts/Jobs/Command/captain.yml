@@ -5,7 +5,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobCaptain
+      role: JobDirector # Fire Edit
       time: 72000 #20 hrs
 
 # Jumpsuit

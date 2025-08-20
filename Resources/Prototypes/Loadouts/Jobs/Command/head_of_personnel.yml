@@ -5,7 +5,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobHeadOfPersonnel
+      role: JobPersonnelOfficer # Fire Edit
       time: 72000 #20 hrs
 
 # Professional HoP Time
@@ -15,7 +15,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobHeadOfPersonnel
+      role: JobPersonnelOfficer # Fire Edit
       time: 54000 #15 hrs, special reward for HoP mains
 
 # Jumpsuit

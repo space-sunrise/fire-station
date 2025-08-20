@@ -5,7 +5,7 @@
   playTimeTracker: JobMentalControlOfficer
   startingGear: MentalControlOfficerGear
   icon: JobMentalControlOfficer
-  supervisors: job-supervisors-regional-administration
+  supervisors: job-supervisors-director
   canBeAntag: false
   displayWeight: 40
   setPreference: false # TODO: После добавления вайт-листа убрать
@@ -21,6 +21,10 @@
     implants: [ MindShieldImplant ]
   - !type:AddComponentSpecial
     components:
+    - type: EmployeeClass
+      class: B
+    - type: AccessLevel
+      level: Four
     - type: Fear
       timeToDecreaseFearLevel: 120
       proximityBlockerLevel: None
