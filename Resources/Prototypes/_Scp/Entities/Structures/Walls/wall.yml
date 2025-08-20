@@ -407,7 +407,7 @@
 
 # Ограничители карт
 - type: entity
-  id: SCPFogWallBorder
+  id: ScpFogWallBorder
   name: dense fog
   description: It looks way too dangerous to traverse.
   suffix: Permanent
@@ -441,7 +441,7 @@
 
 - type: entity
   parent: BaseWall
-  id: SCPWallRockBorder
+  id: ScpWallRockBorder
   name: rock wall
   description: A rough wall of hardened rock.
   components:
