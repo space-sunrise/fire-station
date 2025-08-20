@@ -8,7 +8,7 @@
     anchored: false
     noRot: true
   - type: Sprite
-    sprite: Objects/Specific/Security/barrier.rsi
+    sprite: _Scp/Objects/Specific/Security/barrier.rsi # Fire Edit
     layers:
     - state: idle
     - state: locked
