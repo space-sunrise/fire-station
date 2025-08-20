@@ -68,6 +68,7 @@
   - type: ScpRadio
     channels:
     - HeavyContainmentSecurityService
+    - Security
 
 - type: entity
   parent: ScpRadioHandheldSecurity
@@ -77,3 +78,4 @@
   - type: ScpRadio
     channels:
     - ExternalAdministrativeZoneSecurityService
+    - Security
