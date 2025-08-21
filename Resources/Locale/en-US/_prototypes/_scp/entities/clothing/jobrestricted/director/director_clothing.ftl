@@ -14,3 +14,5 @@ ent-ClothingHandsGlovesDirector = { ent-ClothingHandsGlovesCaptain }
     .desc = { ent-ClothingHandsGlovesCaptain.desc }
 ent-ClothingBackpackSatchelLeatherDirectorFilled = { ent-ClothingBackpackSatchelLeather }
     .desc = { ent-ClothingBackpackSatchelLeather.desc }
+ent-ClothingBackpackSatchelLeatherEthicsCommitteeFilled = { ent-ClothingBackpackSatchelLeather }
+    .desc = { ent-ClothingBackpackSatchelLeather.desc }
