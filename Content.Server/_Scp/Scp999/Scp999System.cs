@@ -163,7 +163,7 @@ public sealed class Scp999System : SharedScp999System
             // TODO: РЕАЛЬНЫЙ сон, а не вот это параша
             case Scp999States.Default:
 
-                var toRestAttemptEvent = new Scp999ChangeStateAttemptEvent(Scp999States.Default);
+                var toRestAttemptEvent = new Scp999ChangeStateAttemptEvent(Scp999States.Rest);
                 RaiseLocalEvent(ent, toRestAttemptEvent);
 
                 if (toRestAttemptEvent.Cancelled)
