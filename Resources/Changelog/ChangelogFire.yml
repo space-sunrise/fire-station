@@ -5186,3 +5186,13 @@
   id: 206
   time: '2025-08-20T20:04:22.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/521
+- author: ThereDrD
+  changes:
+  - message: "SCP-999 \u0431\u043E\u043B\u044C\u0448\u0435 \u043D\u0435 \u043C\u043E\
+      \u0436\u0435\u0442 \u043C\u0435\u043D\u044F\u0442\u044C \u0441\u0432\u043E\u0435\
+      \ \u0441\u043E\u0441\u0442\u043E\u044F\u043D\u0438\u0435 \u0431\u0443\u0434\u0443\
+      \u0447\u0438 \u0432 \u0442\u0440\u0443\u0431\u0435"
+    type: Fix
+  id: 207
+  time: '2025-08-21T09:17:34.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/524
