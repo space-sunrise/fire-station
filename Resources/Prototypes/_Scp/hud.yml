@@ -1,0 +1,5 @@
+﻿- type: hudTheme
+  id: ScpTheme
+  name: ui-options-hud-theme-scp
+  path: ScpTheme
+  order: -2
