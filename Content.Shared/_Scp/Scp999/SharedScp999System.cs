@@ -1,6 +1,7 @@
 ﻿using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Item;
 using Content.Shared.Speech;
 
 namespace Content.Shared._Scp.Scp999;
@@ -13,7 +14,9 @@ public abstract class SharedScp999System : EntitySystem
 
         SubscribeLocalEvent<Scp999Component, CanSeeAttemptEvent>(OnCanSee);
         SubscribeLocalEvent<Scp999Component, SpeakAttemptEvent>(OnSpeakAttempt);
+        SubscribeLocalEvent<Scp999Component, GettingPickedUpAttemptEvent>(OnPickupAttempt);
         SubscribeLocalEvent<Scp999Component, ExaminedEvent>(OnExamined);
+
     }
 
     private static void OnCanSee(Entity<Scp999Component> entity, ref CanSeeAttemptEvent args)
@@ -25,6 +28,12 @@ public abstract class SharedScp999System : EntitySystem
     private static void OnSpeakAttempt(Entity<Scp999Component> entity, ref SpeakAttemptEvent args)
     {
         if (entity.Comp.CurrentState == Scp999States.Rest)
+            args.Cancel();
+    }
+
+    private static void OnPickupAttempt(Entity<Scp999Component> ent, ref GettingPickedUpAttemptEvent args)
+    {
+        if (ent.Comp.CurrentState == Scp999States.Wall)
             args.Cancel();
     }
 
