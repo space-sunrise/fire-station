@@ -211,6 +211,9 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
     private void OnPowerCellChanged(Entity<ScpRadioComponent> ent, ref PowerCellChangedEvent args)
     {
+        if (!ent.Comp.Enabled)
+            return;
+
         if (args.Ejected)
             ToggleRadio(ent, false);
     }
