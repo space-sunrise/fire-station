@@ -1,3 +1,3 @@
-ent-ClothingMaskScp939 = { ent-ClothingMaskBase }
+ent-ClothingMaskScp939 = узда молчания
     .suffix = SCP-939
-    .desc = { ent-ClothingMaskBase.desc }
+    .desc = Специальный намордник для особи SCP-939. Не позволяет ей открывать пасть, чтобы укусить.
