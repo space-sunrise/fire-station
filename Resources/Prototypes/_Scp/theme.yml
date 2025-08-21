@@ -1,6 +1,6 @@
 ﻿- type: uiTheme
   id: ScpTheme
-  path: /Textures/_SCP/Interface/Interface/
+  path: /Textures/_Scp/Interface/Interface/
   colors:
     whiteText: "#FFF5EE"
     slotSelectedGold: "#e6b812"
