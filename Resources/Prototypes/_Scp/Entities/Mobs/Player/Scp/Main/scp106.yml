@@ -37,6 +37,8 @@
     baseSprintSpeed: 2
   - type: XenoScreech
   - type: Muted
+    allowed:
+    - Laugh
   - type: MobThresholds
     thresholds:
       0: Alive

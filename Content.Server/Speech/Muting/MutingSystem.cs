@@ -26,6 +26,11 @@ namespace Content.Server.Speech.Muting
             if (args.Handled)
                 return;
 
+            // Fire edit start
+            if (component.Allowed.Contains(args.Emote.ID))
+                return;
+            // Fire edit end
+
             //still leaves the text so it looks like they are pantomiming a laugh
             if (args.Emote.Category.HasFlag(EmoteCategory.Vocal))
                 args.Handled = true;
