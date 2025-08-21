@@ -13,6 +13,7 @@ using Content.Server.Speech.Components;
 using Content.Shared._Scp.Other.Radio;
 using Content.Shared.Chat;
 using Content.Shared.Emp;
+using Content.Shared.PowerCell.Components;
 using Robust.Server.Audio;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -42,6 +43,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         SubscribeLocalEvent<ScpRadioComponent, RadioReceiveEvent>(OnReceive);
         SubscribeLocalEvent<ScpRadioComponent, RadioReceiveAttemptEvent>(OnAttemptReceive);
 
+        SubscribeLocalEvent<ScpRadioComponent, PowerCellChangedEvent>(OnPowerCellChanged);
         SubscribeLocalEvent<ScpRadioComponent, EmpPulseEvent>(OnEmpPulse);
 
         _sawmill = _log.GetSawmill("scp_radio");
@@ -205,6 +207,12 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
             EnsureComp<ActiveRadioComponent>(ent).Channels = ent.Comp.Channels.Select(id => id.ToString()).ToHashSet();
         else
             RemCompDeferred<ActiveRadioComponent>(ent);
+    }
+
+    private void OnPowerCellChanged(Entity<ScpRadioComponent> ent, ref PowerCellChangedEvent args)
+    {
+        if (args.Ejected)
+            ToggleRadio(ent, false);
     }
 
     private void OnEmpPulse(Entity<ScpRadioComponent> ent, ref EmpPulseEvent args)

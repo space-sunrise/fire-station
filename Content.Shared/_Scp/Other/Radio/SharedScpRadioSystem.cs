@@ -41,6 +41,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
     protected virtual void OnStartup(Entity<ScpRadioComponent> ent, ref ComponentStartup args)
     {
         ent.Comp.ActiveChannel = ent.Comp.Channels.First();
+        _ambientSound.SetAmbience(ent, ent.Comp.Enabled);
     }
 
     private void OnActivate(Entity<ScpRadioComponent> ent, ref ActivateInWorldEvent args)
@@ -76,6 +77,10 @@ public abstract class SharedScpRadioSystem : EntitySystem
         {
             args.PushMarkup(Loc.GetString("handheld-radio-component-chennel-examine",
                 ("channel", proto.LocalizedName)));
+            args.PushMarkup(Loc.GetString("scp-radio-radio-status",
+                ("value", ent.Comp.Enabled)));
+            args.PushMarkup(Loc.GetString("scp-radio-microphone-status",
+                ("value", ent.Comp.MicrophoneEnabled)));
         }
     }
 

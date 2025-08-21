@@ -5,6 +5,14 @@ scp-radio-microphone = Микрофон {$value ->
     [true] включен
     *[false] выключен
 }
+scp-radio-radio-status = Рация: {$value ->
+    [true] [bold]включена[/bold]
+    *[false] [bold]выключена[/bold]
+}
+scp-radio-microphone-status = Микрофон: {$value ->
+    [true] [bold]включен[/bold]
+    *[false] [bold]выключен[/bold]
+}
 scp-radio-not-enough-charge = Недостаточно заряда
 scp-radio-toggle-message = {$name} {$value ->
     [true] включается

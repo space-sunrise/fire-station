@@ -12,6 +12,7 @@
     sprite: _Scp/Objects/Devices/radio.rsi
     heldPrefix: walkietalkie
   - type: ScpRadio
+    enabled: false
     channels:
     - Common
   - type: Speech
@@ -52,6 +53,14 @@
     - EngineeringTechnicalService
 
 - type: entity
+  parent: ScpRadioHandheldEngineering
+  id: ScpRadioHandheldEngineeringEnabled
+  suffix: Enabled
+  components:
+  - type: ScpRadio
+    enabled: true
+
+- type: entity
   parent: ScpRadioHandheldCommon
   id: ScpRadioHandheldSecurity
   name: security handheld radio
@@ -59,6 +68,14 @@
   - type: ScpRadio
     channels:
     - Security
+
+- type: entity
+  parent: ScpRadioHandheldSecurity
+  id: ScpRadioHandheldSecurityEnabled
+  suffix: Enabled
+  components:
+  - type: ScpRadio
+    enabled: true
 
 - type: entity
   parent: ScpRadioHandheldSecurity
@@ -71,6 +88,14 @@
     - Security
 
 - type: entity
+  parent: RadioHandheldHeavyContainmentSecurityService
+  id: RadioHandheldHeavyContainmentSecurityServiceEnabled
+  suffix: Enabled
+  components:
+  - type: ScpRadio
+    enabled: true
+
+- type: entity
   parent: ScpRadioHandheldSecurity
   id: RadioHandheldExternalAdministrativeZoneSecurityService
   name: security handheld radio
@@ -79,3 +104,11 @@
     channels:
     - ExternalAdministrativeZoneSecurityService
     - Security
+
+- type: entity
+  parent: RadioHandheldExternalAdministrativeZoneSecurityService
+  id: RadioHandheldExternalAdministrativeZoneSecurityServiceEnabled
+  suffix: Enabled
+  components:
+  - type: ScpRadio
+    enabled: true
