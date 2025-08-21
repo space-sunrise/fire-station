@@ -1,4 +1,7 @@
-﻿using Content.Shared._Scp.Scp999;
+﻿using Content.Server.Disposal.Unit;
+using Content.Server.Popups;
+using Content.Shared._Scp.Scp999;
+using Content.Shared._Sunrise.VentCraw;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Movement.Components;
@@ -20,6 +23,7 @@ public sealed class Scp999System : SharedScp999System
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
     [Dependency] private readonly FixtureSystem _fixture = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly TagSystem _tag = default!;
@@ -214,6 +218,15 @@ public sealed class Scp999System : SharedScp999System
     {
         if (_container.IsEntityInContainer(ent))
             args.Cancel();
+
+        if (HasComp<BeingDisposedComponent>(ent))
+            args.Cancel();
+
+        if (TryComp<VentCrawlerComponent>(ent, out var ventCrawler) && ventCrawler.InTube)
+            args.Cancel();
+
+        if (args.Cancelled)
+            _popup.PopupEntity(Loc.GetString("scp-999-change-state-cancelled"), ent, ent);
     }
 
     #region Feeding
