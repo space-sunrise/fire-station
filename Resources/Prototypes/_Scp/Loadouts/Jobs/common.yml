@@ -55,4 +55,4 @@
   id: ScpRadioHandheldSecurity
   storage:
     back:
-    - ScpRadioHandheldSecurity
+    - ScpRadioHandheldSecurityEnabled
