@@ -5221,3 +5221,11 @@
   id: 209
   time: '2025-08-21T12:06:31.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/525
+- author: Odleer
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u043D\u043E\u0432\u044B\
+      \u0439 HUD  \u0432 \u0441\u0442\u0438\u043B\u0435 SCP"
+    type: Add
+  id: 210
+  time: '2025-08-21T12:07:46.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/520
