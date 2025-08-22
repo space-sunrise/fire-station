@@ -18,9 +18,8 @@
 - type: entity
   parent: ClothingHeadHatCapNtrep
   id: ClothingHeadHatCapEthicsCommittee
-  name: ethics committee representive cap
+  name: ethics committee representative cap
   description: Cap of justice over administration!
-
 - type: entity
   parent: ClothingUniformJumpsuitNtrep
   id: ClothingUniformJumpsuitEthicsCommittee
