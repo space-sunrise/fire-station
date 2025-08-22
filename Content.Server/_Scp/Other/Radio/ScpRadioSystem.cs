@@ -13,8 +13,10 @@ using Content.Server.Speech.Components;
 using Content.Shared._Scp.Other.Radio;
 using Content.Shared.Chat;
 using Content.Shared.Emp;
+using Content.Shared.Mobs.Components;
 using Content.Shared.PowerCell.Components;
 using Robust.Server.Audio;
+using Robust.Server.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 
@@ -31,6 +33,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly BatterySystem _battery = default!;
+    [Dependency] private readonly ContainerSystem _container = default!;
 
     private ISawmill _sawmill = default!;
 
@@ -74,7 +77,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
     private void OnReceive(Entity<ScpRadioComponent> ent, ref RadioReceiveEvent args)
     {
-        var receiverUid = Transform(ent).ParentUid;
+        var receiverUid = GetUser(ent);
 
         if (!TryComp<ActorComponent>(receiverUid, out var actor))
         {
@@ -160,14 +163,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
     {
         base.ToggleRadio(ent, value, user);
 
-        user ??= Transform(ent).ParentUid;
-
-        // Вдруг, по какой-то случайности, ParentUid будет не существовать вообще.
-        if (!Exists(user))
-        {
-            _sawmill.Error("Found non-existing user while toggling radio");
-            return;
-        }
+        user ??= GetUser(ent);
 
         // Если мы включаем(value == true) и недостаточно заряда -> выходим из метода
         // Если выключаем(value == false) -> проверка на заряд не нужна, просто выключаем.
@@ -222,5 +218,21 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
     {
         args.Affected = true;
         args.Disabled = true;
+    }
+
+    private EntityUid GetUser(EntityUid radio)
+    {
+        var user = Transform(radio).ParentUid;
+
+        // Дополнительная проверка для раций, находящихся в сумке/другой вещи
+        // Если первый парент не человек(например сумка), то второй должен быть носитель этой сумки(игрок)
+        if (!HasComp<MobStateComponent>(user) && _container.IsEntityInContainer(radio))
+            user = Transform(user).ParentUid;
+
+        // Вдруг, по какой-то случайности, ParentUid будет не существовать вообще.
+        if (!Exists(user))
+            _sawmill.Error("Found non-existing user while toggling radio");
+
+        return user;
     }
 }
