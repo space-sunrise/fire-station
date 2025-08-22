@@ -47,6 +47,6 @@
 
 - type: entity
   parent: ClothingOuterCoatNtrepOpen
-  id: ClothingOuterCoatBlackFancyOpen #ClothingOuterCoatEthicsCommitteeOpen
+  id: ClothingOuterCoatBlackFancyOpen
   name: open black jacket
   description: A fancy open black jacket.
