@@ -33,7 +33,7 @@
         conditions:
         - !type:ReagentThreshold
           reagent: AmnesiacA
-          min: 20
+          min: 4
     
 - type: reagent
   id: AmnesiacB
@@ -70,7 +70,7 @@
         conditions:
         - !type:ReagentThreshold
           reagent: AmnesiacB
-          min: 10
+          min: 4
         
 - type: reagent
   id: AmnesiacC
@@ -107,7 +107,7 @@
         conditions:
         - !type:ReagentThreshold
           reagent: AmnesiacC
-          min: 5
+          min: 4
     
 - type: reagent
   id: AmnesiacD
@@ -144,7 +144,7 @@
         conditions:
         - !type:ReagentThreshold
           reagent: AmnesiacD
-          min: 1
+          min: 4
         
 - type: reagent
   id: RawAmnesiac
