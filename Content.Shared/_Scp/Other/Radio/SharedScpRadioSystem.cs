@@ -14,7 +14,6 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Scp.Other.Radio;
 
-// TODO: Локализация
 public abstract class SharedScpRadioSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -146,7 +145,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
         ent.Comp.ActiveChannel = next;
 
         var message = Loc.GetString("scp-radio-current-channel", ("name", nextPrototype.LocalizedName));
-        _popup.PopupPredicted(message, ent, user);
+        _popup.PopupClient(message, ent, user);
         _audio.PlayLocal(ent.Comp.ChannelCycleSound, user, ent);
     }
 
@@ -158,7 +157,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
         ent.Comp.MicrophoneEnabled = !ent.Comp.MicrophoneEnabled;
 
         var message = Loc.GetString("scp-radio-microphone", ("value", ent.Comp.MicrophoneEnabled));
-        _popup.PopupPredicted(message, ent, user);
+        _popup.PopupClient(message, ent, user);
         _audio.PlayLocal(ent.Comp.ToggleSound, user, ent);
     }
 
