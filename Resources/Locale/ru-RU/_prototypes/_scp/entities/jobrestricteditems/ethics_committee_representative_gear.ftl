@@ -1,7 +1,7 @@
-﻿ent-PenEthicsCommittee = ручка комитета по этике
-    .desc = Вся сила бюрократии в 1 ручке.
+﻿ent-PenEthicsCommittee = ручка Комитета по этике
+    .desc = Вся сила бюрократии в одной ручке.
 
-ent-ClothingHeadHatCapEthicsCommittee = фуражка представителя комитета по этике
+ent-ClothingHeadHatCapEthicsCommittee = фуражка представителя Комитета по этике
     .desc = Фуражка справедливости над администрацией!
 
 ent-ClothingUniformJumpsuitEthicsCommittee = костюм с белой рубашкой

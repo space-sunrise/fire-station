@@ -215,7 +215,7 @@
 - type: entity
   parent: CrateAdministrationSecure
   id: CrateAdministrationCrateScpCageScp173
-  name: create with «Pandora» cage
+  name: crate with «Pandora» cage
   description: It contains a «Pandora» cage and a screwdriver. The perfect set to return SCP 173 to his cell!
   suffix: Filled
   components:
