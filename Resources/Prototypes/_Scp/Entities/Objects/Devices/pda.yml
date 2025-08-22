@@ -658,11 +658,19 @@
   description: If you found this PDA, please urgently contact the nearest Ahelp point and return it to the Administration.
   components:
   - type: Pda
+    id: UniversalIDCard
     penSlot:
-      startingItem: PenCentcom
+      startingItem: PenRegionalAdministration
       whitelist:
         tags:
         - Write
+    idSlot:
+      name: access-id-card-component-default
+      ejectSound: /Audio/Machines/id_swipe.ogg
+      insertSound: /Audio/Machines/id_insert.ogg
+      whitelist:
+        components:
+        - IdCard
   - type: PdaBorderColor
     borderColor: "#252C4D"
     accentHColor: "#650FB6"
@@ -702,6 +710,10 @@
     - WantedListCartridge
     - MedTekCartridge
     - AstroNavCartridge
+  - type: Clothing
+    quickEquip: false
+    slots:
+    - idcard
   - type: Tag #  Ignore Chameleon tags
     tags:
     - DoorBumpOpener

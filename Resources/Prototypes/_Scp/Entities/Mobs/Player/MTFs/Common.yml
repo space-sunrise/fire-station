@@ -193,6 +193,8 @@
     sprite: _Scp/Structures/Storage/Crates/administration.rsi
   - type: Sprite
     sprite: _Scp/Structures/Storage/Crates/administration.rsi
+  - type: AccessReader
+    access: [ [ "Administration" ] ]
 
 - type: entity
   parent: PowerCageERT
@@ -212,64 +214,15 @@
 
 - type: entity
   parent: CrateAdministrationSecure
-  id: CrateAdministrationRecontainment049
+  id: CrateAdministrationCrateScpCageScp173
+  name: create with «Pandora» cage
+  description: It contains a «Pandora» cage and a screwdriver. The perfect set to return SCP 173 to his cell!
   suffix: Filled
   components:
   - type: StorageFill
     contents:
-    - id: Scp049ProtectionImplanter
-    - id: BookTheBookOfControl
-    - id: BoxSterileMask
-
-- type: entity
-  parent: CrateAdministrationSecure
-  id: CrateAdministrationRecontainment035
-  suffix: Filled
-  components:
-  - type: StorageFill
-    contents:
-    - id: ClothingHeadAwareness
-    - id: SciFlash
-
-- type: entity
-  parent: CrateAdministrationSecure
-  id: CrateAdministrationRecontainment173
-  suffix: Filled
-  components:
-    - type: StorageFill
-      contents:
-        - id: CrateScpCageScp173
-        - id: EyeDroplets
-        - id: Screwdriver
-
-- type: entity
-  parent: CrateAdministrationSecure
-  id: CrateAdministrationRecontainment939
-  suffix: Filled
-  components:
-    - type: StorageFill
-      contents:
-        - id: ClothingShoesSilent
-        - id: ClothingMaskScp939
-
-- type: entity
-  parent: CrateAdministrationSecure
-  id: CrateAdministrationRecontainment106
-  suffix: Filled
-  components:
-    - type: StorageFill
-      contents:
-        - id: ClothingOuterAntiTeleportation
-
-- type: entity
-  parent: CrateAdministrationSecure
-  id: CrateAdministrationRecontainment096
-  suffix: Filled
-  components:
-    - type: StorageFill
-      contents:
-        - id: ClothingHeadBagScp096
-        - id: ClothingHeadHelmetAiPowered
+    - id: CrateScpCageScp173
+    - id: Screwdriver
 
 # РАНДОМ ХУМАНОИДЫ ОБЩИЕ
 # Кадет

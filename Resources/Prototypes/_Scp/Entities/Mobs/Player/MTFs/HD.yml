@@ -1,5 +1,4 @@
-﻿# TODO: Положить ПДА в рюкзак/карман/разгрузку.
-# Ключ карты
+﻿# Ключ карты
 
 - type: entity
   parent: KeyCardMtfBase
@@ -100,6 +99,7 @@
     - HandheldCriminalRecordsMonitorUnpowered
     - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
+    - MobileTaskForcePDA
     belt:
     - Stunbaton
     - Handcuffs
@@ -172,6 +172,7 @@
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
     - BoxMRE
+    - MobileTaskForcePDA
     belt:
     - Stunbaton
     - Handcuffs
@@ -243,6 +244,7 @@
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
     - BoxMRE
+    - MobileTaskForcePDA
     belt:
     - Stunbaton
     - Handcuffs

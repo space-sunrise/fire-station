@@ -30,4 +30,4 @@
   id: LockboxCaptain
   components:
   - type: AccessReader
-    access: [["Captain"]]
+    access: [["ComplexDirector"]] # Fire edit

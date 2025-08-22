@@ -1,0 +1,26 @@
+﻿#Униформа
+- type: loadout
+  id: EthicsCommitteeRepresentativeJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitEthicsCommittee
+
+- type: loadout
+  id: EthicsCommitteeRepresentativeJumpsuitFormal
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitEthicsCommitteeFormal
+
+- type: loadout
+  id: EthicsCommitteeRepresentativeJumpskirt
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtEthicsCommittee
+
+#Внешняя одежда
+- type: loadout
+  id: EthicsCommitteeRepresentativeCoat
+  equipment:
+    outerClothing: ClothingOuterCoatEthicsCommittee
+
+- type: loadout
+  id: EthicsCommitteeRepresentativeCoatOpen
+  equipment:
+    outerClothing: ClothingOuterCoatEthicsCommitteeOpen

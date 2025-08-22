@@ -88,6 +88,26 @@
   loadouts:
   - ScpRadioHandheldSecurity
 
+# Комитет по Этике
+
+- type: loadoutGroup
+  id: EthicsCommitteeRepresentativeJumpsuit
+  name: loadout-group-jumpsuit # Fire
+  minLimit: 1
+  loadouts:
+  - EthicsCommitteeRepresentativeJumpsuit
+  - EthicsCommitteeRepresentativeJumpskirt
+  - EthicsCommitteeRepresentativeJumpsuitFormal
+
+- type: loadoutGroup
+  id: EthicsCommitteeRepresentativeOuterClothing
+  name: loadout-group-outerclothing # Fire edit
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - EthicsCommitteeRepresentativeCoat
+  - EthicsCommitteeRepresentativeCoatOpen
+
 # Общие
 
 - type: loadoutGroup

@@ -1,4 +1,4 @@
-ent-KeyCardMtfBase = { ent-KeyCardBase }
+﻿ent-KeyCardMtfBase = { ent-KeyCardBase }
     .desc = { ent-KeyCardBase.desc }
 ent-ClothingMaskMTF = Противогаз Мобильной Оперативной Группы
     .desc = Не дает унюхать трупный запах мертвых сотрудников фонда.
@@ -51,27 +51,17 @@ ent-CrateAdministrationSecure = ящик администрации
     .desc = { ent-CrateBaseSecure.desc }
 ent-PowerCageMTF = боевая энергоячейка фонда SCP
     .desc = Перезаряжаемая энергетическая ячейка для больших устройств. Увеличенная ёмкость для увеличенного уровня мощности. Имеет встроенную ЭМИ защиту.
+
+
 ent-CrateAdministrationRecontainmentCircuitsBoards = набор плат законов фонда SCP
     .desc = Содержит набор из 2 плат законов для Системы Безопасности Комплекса - "{ ent-ScpMtfCircuitBoard }" и "{ ent-ScpDefaultCircuitBoard }", а так же "{ ent-Intellicard }".
     .suffix = Заполненный
-ent-CrateAdministrationRecontainment049 = набор Восстановления Условий Содержания SCP 049
-    .desc = Содержит набор для Восстановления Условий Содержания SCP 049. Душевные разговоры и регулярная проверка у доктора - ключ к успеху. ВНИМАНИЕ! Имплант "аегис" защищает от превращения в "пациента", но не от прикосновения 049!
+
+ent-CrateAdministrationCrateScpCageScp173 = ящик с ангаром «Пандора»
+    .desc = Содержит ангар «Пандора» и отвертку. Идеальный набор, что бы вернуть SCP 173 в его камеру!
     .suffix = Заполненный
-ent-CrateAdministrationRecontainment035 = набор Восстановления Условий Содержания SCP 035
-    .desc = Содержит набор для Восстановления Условий Содержания SCP 035. Если не хочет по хорошему - будет по плохому.
-    .suffix = Заполненный
-ent-CrateAdministrationRecontainment173 = набор Восстановления Условий Содержания SCP 173
-    .desc = Содержит набор для Восстановления Условий Содержания SCP 173. Не забывайте смотреть на объект и использовать капли только тогда, когда увидите объект.
-    .suffix = Заполненный
-ent-CrateAdministrationRecontainment939 = набор Восстановления Условий Содержания SCP 939
-    .desc = Содержит набор для Восстановления Условий Содержания SCP 939. С этой псиной надо быть тихим, а эти ботинки не позволят вам быть громким.
-    .suffix = Заполненный
-ent-CrateAdministrationRecontainment106 = набор Восстановления Условий Содержания SCP 106
-    .desc = Содержит набор для Восстановления Условий Содержания SCP 106. Ребята из DIRA гордятся этой разработкой!
-    .suffix = Заполненный
-ent-CrateAdministrationRecontainment096 = набор Восстановления Условий Содержания SCP 096
-    .desc = Содержит набор для Восстановления Условий Содержания SCP 096. Шлем, который находиться в наборе, имеет встроенный Искусственный Интеллект, что позволит смотреть на лицо объекта без опасений (9-ть из 9-ти сотрудников рекомендуют, 10-тый умер и не дал оценку)
-    .suffix = Заполненный
+
+
 ent-SpawnerOnTriggerMTFBase = { ent-SpawnPointScpBase }
     .suffix = Base | Spawn On Trigger
     .desc = { ent-SpawnPointScpBase.desc }

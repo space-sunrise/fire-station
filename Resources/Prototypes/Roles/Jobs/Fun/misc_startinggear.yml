@@ -120,7 +120,7 @@
   id: MobAghostGear
   equipment:
     back: ClothingBackpackSatchelHolding
-    id: AdminPDA
+    id: ScpAdminPDA # Fire edit
   storage:
     back:
     - GasAnalyzer

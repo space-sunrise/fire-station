@@ -46,7 +46,7 @@
   name: security commander's locker
   components:
   - type: AccessReader
-    access: [["HeadOfSecurity"]]
+    access: [["SecurityCommander"]]
 
 - type: entity
   id: LockerScientificServiceDirector

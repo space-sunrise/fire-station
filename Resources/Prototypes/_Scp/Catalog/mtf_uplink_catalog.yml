@@ -1203,9 +1203,9 @@
     stock: 1
 
 - type: listing
-  id: ScpUplinkRecontainment173
-  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
-  productEntity: CrateAdministrationRecontainment173
+  id: ScpUplinkCrateAdministrationCrateScpCageScp173
+  icon: { sprite: _Scp/Objects/Misc/scp_cage.rsi, state: base }
+  productEntity: CrateAdministrationCrateScpCageScp173
   categories:
   - ScpRecontainment
   conditions:
@@ -1213,9 +1213,29 @@
     stock: 1
 
 - type: listing
-  id: ScpUplinkRecontainment939
-  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
-  productEntity: CrateAdministrationRecontainment939
+  id: ScpUplinkScp049ProtectionImplanter
+  icon: { sprite: Objects/Specific/Medical/implanter.rsi, state: implanter0 }
+  productEntity: Scp049ProtectionImplanter
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkEyeDroplets
+  icon: { sprite: Objects/Consumable/Drinks/patronbottle.rsi, state: icon_empty, scale: 0.4,0.6 }
+  productEntity: EyeDroplets
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkClothingHeadAwareness
+  icon: { sprite: _Scp/Clothing/Head/Helmets/techno.rsi, state: icon }
+  productEntity: ClothingHeadAwareness
   categories:
   - ScpRecontainment
   conditions:
@@ -1223,9 +1243,9 @@
     stock: 1
 
 - type: listing
-  id: ScpUplinkRecontainment106
-  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
-  productEntity: CrateAdministrationRecontainment106
+  id: ScpUplinkClothingShoesSilent
+  icon: { sprite: _Scp/Clothing/Shoes/Boots/silentboots.rsi, state: icon }
+  productEntity: ClothingShoesSilent
   categories:
   - ScpRecontainment
   conditions:
@@ -1233,9 +1253,19 @@
     stock: 1
 
 - type: listing
-  id: ScpUplinkRecontainment096
-  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
-  productEntity: CrateAdministrationRecontainment096
+  id: ScpUplinkClothingMaskScp939
+  icon: { sprite: Clothing/Mask/muzzle.rsi, state: icon }
+  productEntity: ClothingMaskScp939
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkClothingOuterAntiTeleportation
+  icon: { sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi, state: icon }
+  productEntity: ClothingOuterAntiTeleportation
   categories:
   - ScpRecontainment
   conditions:
@@ -1243,9 +1273,9 @@
     stock: 1
 
 - type: listing
-  id: ScpUplinkRecontainment035
-  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
-  productEntity: CrateAdministrationRecontainment035
+  id: ScpUplinkClothingHeadHelmetAiPowered
+  icon: { sprite: _Scp/Clothing/Head/Helmets/aipowered.rsi, state: icon }
+  productEntity: ClothingHeadHelmetAiPowered
   categories:
   - ScpRecontainment
   conditions:
@@ -1253,11 +1283,11 @@
     stock: 1
 
 - type: listing
-  id: ScpUplinkRecontainment049
-  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
-  productEntity: CrateAdministrationRecontainment049
+  id: ScpUplinkClothingHeadBagScp096
+  icon: { sprite: _Scp/Clothing/Head/Scp096/scp096_bag-icons.rsi, state: icon }
+  productEntity: ClothingHeadBagScp096
   categories:
   - ScpRecontainment
   conditions:
   - !type:ListingLimitedStockCondition
-    stock: 1
+    stock: 2
