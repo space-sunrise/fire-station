@@ -24,7 +24,7 @@ public sealed partial class ScpRadioComponent : Component
     public float WattageReceiveMessage = 4f;
 
     [DataField]
-    public float WattageSendMessage = 30f;
+    public float WattageSendMessage = 20f;
 
     [DataField]
     public float ListenRange = 1f;
