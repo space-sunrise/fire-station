@@ -8,3 +8,5 @@
       contents:
         - id: JugRawAmnesiac
           amount: 1
+    - type: AccessReader
+      access: [ [ "Laboratory" ] ]

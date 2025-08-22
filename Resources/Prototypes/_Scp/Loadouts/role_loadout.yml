@@ -134,8 +134,8 @@
 - type: roleLoadout
   id: JobEthicsCommitteeRepresentative
   groups:
-  - NanoTrasenRepresentativeJumpsuit
-  - NanoTrasenRepresentativeOuterClothing
+  - EthicsCommitteeRepresentativeJumpsuit
+  - EthicsCommitteeRepresentativeOuterClothing
   - Trinkets
   - CommonMiscItems
   - Bra
