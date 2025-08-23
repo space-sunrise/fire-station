@@ -27,3 +27,7 @@
     shoes: ClothingShoesBootsPrisonerGrey
     id: PlanetPrisonerPDA
     ears: ClothingHeadsetGrey
+
+- type: chameleonOutfit
+  id: PlanetPrisonerChameleonOutfit
+  job: PlanetPrisoner

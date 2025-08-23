@@ -1,9 +1,3 @@
-using Content.Shared._Scp.CharacterInfo.AccessLevel;
-using Content.Shared._Scp.CharacterInfo.EmployeeClass;
-using Content.Shared._Sunrise.Helpers;
-using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.Preferences;
-using Content.Shared.Roles;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;

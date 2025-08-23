@@ -16,7 +16,6 @@ public sealed class EyeClosingSystem : EntitySystem
     [Dependency] private readonly SharedActionsSystem _actionsSystem = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly ISharedPlayerManager _playerManager = default!;
-    [Dependency] private readonly IEntityManager _entityManager = default!;
 
     /* Fire edit - вся логика перемещена в BlinkingSystem. Там это тут не нужно
     public override void Initialize()
@@ -123,7 +122,7 @@ public sealed class EyeClosingSystem : EntitySystem
         var ev = new GetBlurEvent(blindable.Comp.EyeDamage);
         RaiseLocalEvent(blindable.Owner, ev);
 
-        if (_entityManager.TryGetComponent<EyeClosingComponent>(blindable, out var eyelids) && !eyelids.NaturallyCreated)
+        if (EntityManager.TryGetComponent<EyeClosingComponent>(blindable, out var eyelids) && !eyelids.NaturallyCreated)
             return;
 
         if (ev.Blur < BlurryVisionComponent.MaxMagnitude || ev.Blur >= blindable.Comp.MaxDamage)
