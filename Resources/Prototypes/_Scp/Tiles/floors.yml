@@ -1233,3 +1233,22 @@
       volume: -7
   itemDrop: ScpFloorTileItemWhite
   heatCapacity: 10000
+
+- type: tile
+  id: ScpFloorFlesh106
+  name: scp-tiles-flesh-106
+  sprite: /Textures/_Scp/Tiles/flesh106.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  isSubfloor: false
+  footstepSounds:
+    collection: FootstepScpFlesh106
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemWhite
+  heatCapacity: 10000
+  indestructible: true

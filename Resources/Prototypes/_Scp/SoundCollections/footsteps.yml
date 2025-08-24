@@ -41,3 +41,10 @@
   - /Audio/_Scp/Effects/Footsteps/Catwalk/step6.ogg
   - /Audio/_Scp/Effects/Footsteps/Catwalk/step7.ogg
   - /Audio/_Scp/Effects/Footsteps/Catwalk/step8.ogg
+
+- type: soundCollection
+  id: FootstepScpFlesh106
+  files:
+  - /Audio/_Scp/Effects/Footsteps/106D/step1.ogg
+  - /Audio/_Scp/Effects/Footsteps/106D/step2.ogg
+  - /Audio/_Scp/Effects/Footsteps/106D/step3.ogg

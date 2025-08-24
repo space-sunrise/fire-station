@@ -11,3 +11,4 @@ scp-tiles-white-mono-floor = [SCP] { ent-ScpFloorTileItemMonoSteelWhite }
 scp-tiles-dark-mono-floor = [SCP] { ent-ScpFloorTileItemMonoSteelDark }
 scp-tiles-checker-steel-floor = [SCP] { ent-ScpFloorTileItemCheckerSteel }
 scp-tiles-checker-dark-floor = [SCP] { ent-ScpFloorTileItemCheckerDark }
+scp-tiles-flesh-106 = [SCP] гнилая плоть
