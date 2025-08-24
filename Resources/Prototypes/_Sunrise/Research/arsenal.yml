@@ -22,7 +22,9 @@
     state: ap
   discipline: Arsenal
   tier: 2
-  cost: 11500
+  cost:
+    Default: 12000
+    Scp: 6000
   recipeUnlocks:
   - SpeedLoaderMagnumAP
   - MagazinePistolAP

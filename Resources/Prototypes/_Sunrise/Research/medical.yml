@@ -50,7 +50,9 @@
     state: med-hypospray
   discipline: Biochemical
   tier: 2
-  cost: 6500
+  cost:
+    Default: 6500
+    Scp: 3250
   recipeUnlocks:
   - HyposprayMedical
 
@@ -141,7 +143,9 @@
     state: open
   discipline: Biochemical
   tier: 3
-  cost: 12500
+  cost:
+    Default: 12000
+    Scp: 6000
   recipeUnlocks:
   - ImplantExtractorMachineCircuitboard
 
@@ -154,7 +158,9 @@
     state: cyber-hand-left
   discipline: Biochemical
   tier: 3
-  cost: 9220
+  cost:
+    Default: 9220
+    Scp: 4610
   recipeUnlocks:
     - LeftArmCyberReaper
     - RightArmCyberReaper
@@ -176,7 +182,9 @@
     state: storage
   discipline: Biochemical
   tier: 3
-  cost: 3500
+  cost:
+    Default: 3500
+    Scp: 1750
   recipeUnlocks:
     - LeftArmCyberGorilla
     - RightArmCyberGorilla
@@ -196,7 +204,9 @@
     state: cybermantisbladesec
   discipline: Biochemical
   tier: 3
-  cost: 4000
+  cost:
+    Default: 4000
+    Scp: 2000
   recipeUnlocks:
     - LeftArmCyberMantisBladeMaxGuard
     - RightArmCyberMantisBladeMaxGuard
@@ -215,7 +225,9 @@
     state: laser_cyborg
   discipline: Biochemical
   tier: 3
-  cost: 4500
+  cost:
+    Default: 4500
+    Scp: 2250
   recipeUnlocks:
     - LeftArmCyberLaserEmitter
     - RightArmCyberLaserEmitter
@@ -236,7 +248,9 @@
     state: eyes_night
   discipline: Biochemical
   tier: 3
-  cost: 7500
+  cost:
+    Default: 7500
+    Scp: 3250
   recipeUnlocks:
     - CyberEyeNightVision
   technologyPrerequisites:
@@ -253,7 +267,9 @@
     state: eyes_thermal
   discipline: Biochemical
   tier: 3
-  cost: 8500
+  cost:
+    Default: 8500
+    Scp: 4250
   recipeUnlocks:
     - CyberEyeThermal
   technologyPrerequisites:
@@ -271,7 +287,9 @@
     state: beakerbluespace
   discipline: Biochemical
   tier: 3
-  cost: 10000
+  cost:
+    Default: 10000
+    Scp: 5000
   recipeUnlocks:
   - BluespaceBeaker
   - SyringeBluespace
@@ -287,7 +305,9 @@
     state: syringe_gun
   discipline: Biochemical
   tier: 3
-  cost: 15000
+  cost:
+    Default: 15000
+    Scp: 7500
   recipeUnlocks:
   - LauncherSyringe
   - MiniSyringe

@@ -160,7 +160,7 @@
   parent: TrackingImplantErt
   id: TrackingImplantMTF
   components:
-    - type: Rattle
+    - type: RattleOnTrigger
       radioChannel: RegionalAdministration
 
 - type: entity

@@ -840,6 +840,11 @@ PrinterDoc: CopyMachineFilled
 PrinterDocFlatpack: CopyMachineFlatpack
 # Sunrise-End
 
+# Санрайз насрал опять
+MagazineP90Extended: null
+CrateArmoryWeaponXM1014: null
+WeaponSubMachineGunP90: null
+
 # Fire added start
 PosterDyshi: PosterBreath
 PosterPeremen: PosterChanges

@@ -4,7 +4,7 @@
   categories: [ HideSpawnMenu ]
   name: adrenaline
   components:
-  - type: IgnoreSlowOnDamageComponent
+  - type: IgnoreSlowOnDamage
 
 - type: entity
   parent: MobStatusEffectDebuff
@@ -12,4 +12,4 @@
   categories: [ HideSpawnMenu ]
   name: stupor
   components:
-  - type: AdminFrozenComponent
+  - type: AdminFrozen
