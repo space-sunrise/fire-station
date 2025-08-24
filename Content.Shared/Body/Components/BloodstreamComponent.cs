@@ -121,7 +121,12 @@ public sealed partial class BloodstreamComponent : Component
     /// The sound to be played when a weapon instantly deals blood loss damage.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public SoundSpecifier InstantBloodSound = new SoundCollectionSpecifier("blood");
+    // Fire edit start - новые звуки кровотечения и т.п.
+    public SoundSpecifier InstantBloodSound = new SoundCollectionSpecifier("BleedingStart");
+
+    [DataField]
+    public SoundSpecifier BloodDrippingSound = new SoundCollectionSpecifier("BloodDripping", AudioParams.Default.WithVolume(-5f));
+    // Fire edit end
 
     /// <summary>
     /// The sound to be played when some damage actually heals bleeding rather than starting it.

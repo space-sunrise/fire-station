@@ -61,17 +61,4 @@ public sealed class PoweredLightSystem : SharedPoweredLightSystem
         if (TryDestroyBulb(uid, component))
             args.Affected = true;
     }
-
-    // Fire edit start
-    public sealed class LightEjectEvent(EntityUid bulb) : EntityEventArgs
-    {
-        public EntityUid Bulb = bulb;
-    }
-
-    public sealed class LightInsertEvent(EntityUid bulb) : EntityEventArgs
-    {
-        public EntityUid Bulb = bulb;
-    }
-    // Fire edit end
-
 }

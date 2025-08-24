@@ -16,6 +16,7 @@ using Content.Shared.Popups;
 using Content.Shared.Random.Helpers;
 using Content.Shared.Rejuvenate;
 using Content.Shared.StatusEffectNew;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
@@ -389,6 +390,10 @@ public abstract class SharedBloodstreamSystem : EntitySystem
 
             tempSolution.RemoveAllSolution();
         }
+
+        // Fire added start - звуки капающей крови
+        _audio.PlayPvs(ent.Comp.BloodDrippingSound, ent);
+        // Fire added end
 
         SolutionContainer.UpdateChemicals(ent.Comp.TemporarySolution.Value);
 

@@ -435,7 +435,7 @@
   parent: BaseStationEventLongDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-clog-start-announcement
+    #startAnnouncement: station-event-vent-clog-start-announcement Fire edit
 #    startAudio: Fire edit
 #      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
     earliestStart: 15

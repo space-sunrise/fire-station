@@ -1,3 +1,4 @@
+using Content.Shared._Scp.Other.Events;
 using Content.Shared.Audio;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
@@ -164,6 +165,10 @@ public abstract class SharedPoweredLightSystem : EntitySystem
             _storage.PlayPickupAnimation(bulbUid, xform.Coordinates, itemXform.Coordinates, itemXform.LocalRotation, user: user);
         }
 
+        // Fire edit start
+        RaiseLocalEvent(uid, new LightInsertEvent(bulbUid));
+        // Fire edit end
+
         return true;
     }
 
@@ -186,6 +191,10 @@ public abstract class SharedPoweredLightSystem : EntitySystem
 
         // try to place bulb in hands
         _handsSystem.PickupOrDrop(userUid, bulb);
+
+        // Fire edit start
+        RaiseLocalEvent(uid, new LightEjectEvent(bulb));
+        // Fire edit end
 
         return bulb;
     }
