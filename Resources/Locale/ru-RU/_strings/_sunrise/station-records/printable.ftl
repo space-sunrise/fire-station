@@ -1,4 +1,4 @@
-﻿printed-station-records-content =
+printed-station-records-content =
     ​
     ​
     ​[head=1]SCP[/head]

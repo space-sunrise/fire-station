@@ -1,4 +1,5 @@
 ﻿using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Fear.Components.Traits;
 
@@ -16,4 +17,6 @@ public sealed partial class FearStuporComponent : Component
 
     [DataField, ViewVariables]
     public TimeSpan StuporTime = TimeSpan.FromSeconds(10f);
+
+    public static readonly EntProtoId StatusEffect = "StatusEffectFearStupor";
 }

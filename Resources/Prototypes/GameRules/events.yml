@@ -2,38 +2,52 @@
   id: BasicCalmEventsTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
-#    - id: AnomalySpawn
+    - id: AnomalySpawn
     - id: BluespaceArtifact
-#    - id: BluespaceLocker
-#    - id: BreakerFlip У нас блекаут
+    - id: BluespaceLocker
+    - id: BreakerFlip
     - id: BureaucraticError
     - id: ClericalError
     - id: CockroachMigration
-#    - id: GasLeak
+    - id: GasLeak
     - id: GreytideVirus
     - id: IonStorm # its calm like 90% of the time smh
-#    - id: KudzuGrowth
+    - id: KudzuGrowth
     - id: MassHallucinations
     - id: MimicVendorRule
     - id: MouseMigration
-#    - id: PowerGridCheck - У нас свой крутой аналог
+    - id: PowerGridCheck
     - id: RandomSentience
-#    - id: SlimesSpawn
-#    - id: SolarFlare
-#    - id: SnakeSpawn
-#    - id: SpiderClownSpawn
-#    - id: SpiderSpawn
+    - id: SlimesSpawn
+    - id: SolarFlare
+    - id: SnakeSpawn
+    - id: SpiderClownSpawn
+    - id: SpiderSpawn
     - id: VentClog
-#    - id: VentFleshWorms # Sunrise-Edit
-#    - id: VentbullMigration # Sunrise-Edit
-
+    - id: VentFleshWorms # Sunrise-Edit
+    - id: VentbullMigration # Sunrise-Edit
 
 - type: entityTable
   id: BasicAntagEventsTable
   table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
     children:
+    - id: ClosetSkeleton
+    - id: KingRatMigration
+    - id: RevenantSpawn
+    - id: DerelictCyborgSpawn
+
+- type: entityTable
+  id: ModerateAntagEventsTable
+  table: !type:AllSelector # we need to pass a list of rules, since rules have further restrictions to consider via StationEventComp
+    children:
+    - id: DragonSpawn
+    - id: NinjaSpawn
     - id: ParadoxCloneSpawn
-    - id: EvilTwinSpawn
+    - id: SleeperAgents
+    - id: ZombieOutbreak
+    - id: LoneOpsSpawn
+    - id: WizardSpawn
+    - id: AbductorsSpawn # Sunrise-Edit
 
 - type: entity
   id: BaseStationEvent
@@ -190,6 +204,8 @@
       pickPlayer: false
       mindRoles:
       - MindRoleDragon
+  - type: DynamicRuleCost
+    cost: 75
 
 - type: entity
   parent: BaseGameRule
@@ -246,6 +262,8 @@
         nameFormat: name-format-ninja
       mindRoles:
       - MindRoleNinja
+  - type: DynamicRuleCost
+    cost: 75
 
 - type: entity
   parent: BaseGameRule
@@ -282,6 +300,8 @@
         sound: /Audio/Misc/paradox_clone_greeting.ogg
       mindRoles:
       - MindRoleParadoxClone
+  - type: DynamicRuleCost
+    cost: 50
 
 - type: entity
   parent: BaseGameRule
@@ -415,7 +435,7 @@
   parent: BaseStationEventLongDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-clog-start-announcement
+    #startAnnouncement: station-event-vent-clog-start-announcement Fire edit
 #    startAudio: Fire edit
 #      path: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-edit
     earliestStart: 15
@@ -533,6 +553,8 @@
       - type: InitialInfected
       mindRoles:
       - MindRoleInitialInfected
+  - type: DynamicRuleCost
+    cost: 200
 
 - type: entity
   parent: BaseNukeopsRule
@@ -574,7 +596,9 @@
         factions:
         - Syndicate
       mindRoles:
-      - MindRoleNukeops
+      - MindRoleLoneops
+  - type: DynamicRuleCost
+    cost: 75
 
 - type: entity
   parent: BaseTraitorRule

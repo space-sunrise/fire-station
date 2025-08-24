@@ -1,5 +1,4 @@
-﻿using Content.Shared.Bed.Sleep;
-using Content.Shared.Damage;
+﻿using Content.Shared.Damage;
 using Content.Shared.Mobs;
 
 namespace Content.Shared._Scp.Scp096;
@@ -23,11 +22,7 @@ public abstract partial class SharedScp096System
         if (ent.Comp.TimesHitted < 4)
             return;
 
-        _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(ent.Owner,
-            SleepStatusEffectKey,
-            TimeSpan.FromSeconds(ent.Comp.SleepTime),
-            true);
-
+        _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, TimeSpan.FromSeconds(ent.Comp.SleepTime));
         RemComp<Scp096TargetComponent>(ent);
     }
 

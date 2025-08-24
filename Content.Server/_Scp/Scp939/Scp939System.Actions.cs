@@ -7,6 +7,7 @@ using Content.Shared.Bed.Sleep;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs.Components;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp939;
@@ -19,7 +20,7 @@ public sealed partial class Scp939System
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    private const string SleepStatusKey = "ForcedSleep";
+    private static readonly EntProtoId StatusEffect = "StatusEffectForcedSleeping";
 
     private void InitializeActions()
     {
@@ -44,7 +45,7 @@ public sealed partial class Scp939System
             return false;
 
         hibernationDuration = hibernationDuration == 0 ? ent.Comp.HibernationDuration : hibernationDuration;
-        _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(ent, SleepStatusKey, TimeSpan.FromSeconds(hibernationDuration), true);
+        _statusEffects.TryAddStatusEffectDuration(ent, StatusEffect, TimeSpan.FromSeconds(hibernationDuration));
 
         return true;
     }

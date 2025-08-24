@@ -1,5 +1,6 @@
 ﻿using Content.Server.Flash;
 using Content.Shared._Scp.Blinking;
+using Content.Shared.Flash;
 
 namespace Content.Server._Scp.Blinking;
 
@@ -23,6 +24,6 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     private static void OnFlash(Entity<BlinkableComponent> ent, ref FlashAttemptEvent args)
     {
         if (ent.Comp.State == EyesState.Closed)
-            args.Cancel();
+            args.Cancelled = true;
     }
 }

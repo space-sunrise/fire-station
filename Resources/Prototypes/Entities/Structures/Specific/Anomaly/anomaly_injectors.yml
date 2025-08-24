@@ -48,6 +48,8 @@
           Default: 100
         corePrototype: AnomalyCorePyroclastic
         coreInertPrototype: AnomalyCorePyroclasticInert
+        supercriticalSoundAtAnimationStart:
+          collection: AnomalyPyroSupercritical
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionPyroclastic
         startMessage: inner-anomaly-start-message-pyro
@@ -79,6 +81,8 @@
           Default: 100
         corePrototype: AnomalyCoreElectricity
         coreInertPrototype: AnomalyCoreElectricityInert
+        supercriticalSoundAtAnimationStart:
+          collection: AnomalyElectricitySupercritical
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionElectric
         startMessage: inner-anomaly-start-message-shock
@@ -110,6 +114,8 @@
           Default: 100
         corePrototype: AnomalyCoreShadow
         coreInertPrototype: AnomalyCoreShadowInert
+        supercriticalSoundAtAnimationStart:
+          collection: AnomalyShadowSupercritical
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionShadow
         startMessage: inner-anomaly-start-message-shadow
@@ -141,6 +147,8 @@
           Default: 100
         corePrototype: AnomalyCoreIce
         coreInertPrototype: AnomalyCoreIceInert
+        supercriticalSoundAtAnimationStart:
+          collection: AnomalyIceSupercritical
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionIce
         startMessage: inner-anomaly-start-message-frost
@@ -172,6 +180,8 @@
           Default: 100
         corePrototype: AnomalyCoreFlora
         coreInertPrototype: AnomalyCoreFloraInert
+        supercriticalSoundAtAnimationStart:
+          collection: AnomalyFloraSupercritical
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionFlora
         startMessage: inner-anomaly-start-message-flora
@@ -203,6 +213,8 @@
           Default: 100
         corePrototype: AnomalyCoreBluespace
         coreInertPrototype: AnomalyCoreBluespaceInert
+        supercriticalSoundAtAnimationStart:
+          collection: AnomalyBluespaceSupercritical
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionBluespace
         startMessage: inner-anomaly-start-message-bluespace
@@ -234,6 +246,8 @@
           Default: 100
         corePrototype: AnomalyCoreFlesh
         coreInertPrototype: AnomalyCoreFleshInert
+        supercriticalSoundAtAnimationStart:
+          collection: AnomalyFleshSupercritical
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionFlesh
         startMessage: inner-anomaly-start-message-flesh
@@ -265,6 +279,9 @@
           Default: 100
         corePrototype: AnomalyCoreGravity
         coreInertPrototype: AnomalyCoreGravityInert
+        supercriticalSoundAtAnimationStart:
+          collection: AnomalyGravitySupercritical
+        supercriticalDuration: 15
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionGravity
         startMessage: inner-anomaly-start-message-grav
@@ -296,6 +313,8 @@
           Default: 100
         corePrototype: AnomalyCoreTech
         coreInertPrototype: AnomalyCoreTechInert
+        supercriticalSoundAtAnimationStart:
+          collection: AnomalyTechSupercritical
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionTech
         startMessage: inner-anomaly-start-message-tech
@@ -328,6 +347,8 @@
           Default: 100
         corePrototype: AnomalyCoreRock
         coreInertPrototype: AnomalyCoreRockInert
+        supercriticalSoundAtAnimationStart:
+          collection: AnomalyRockSupercritical
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionRock
         startMessage: inner-anomaly-start-message-rock
@@ -359,6 +380,8 @@
           Default: 100
         corePrototype: AnomalyCoreSanta
         coreInertPrototype: AnomalyCoreSantaInert
+        supercriticalSoundAtAnimationStart:
+          collection: AnomalyPresentSupercritical
       - type: InnerBodyAnomaly
         injectionProto: AnomalyInjectionSanta
         startMessage: inner-anomaly-start-message-santa

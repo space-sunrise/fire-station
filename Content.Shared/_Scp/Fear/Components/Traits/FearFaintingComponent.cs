@@ -1,5 +1,4 @@
-﻿using Content.Shared.StatusEffect;
-using Robust.Shared.GameStates;
+﻿using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Fear.Components.Traits;
@@ -28,5 +27,5 @@ public sealed partial class FearFaintingComponent : Component
     [DataField, ViewVariables]
     public float Chance = 30f;
 
-    public static readonly ProtoId<StatusEffectPrototype> StatusEffectKey = "ForcedSleep";
+    public static readonly EntProtoId StatusEffect = "StatusEffectForcedSleeping";
 }

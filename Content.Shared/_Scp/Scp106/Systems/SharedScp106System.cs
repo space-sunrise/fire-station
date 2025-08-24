@@ -90,7 +90,7 @@ public abstract partial class SharedScp106System : EntitySystem
         };
         _doAfter.TryStartDoAfter(doAfterEventArgs);
 
-        _stun.TryStun(ent, ent.Comp.TeleportationDuration + TeleportTimeCompensation, true);
+        _stun.TryAddStunDuration(ent, ent.Comp.TeleportationDuration + TeleportTimeCompensation);
         _appearance.SetData(ent, Scp106Visuals.Visuals, Scp106VisualsState.Entering);
 
         args.Handled = true;

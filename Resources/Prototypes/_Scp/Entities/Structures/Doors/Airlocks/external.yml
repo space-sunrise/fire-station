@@ -15,9 +15,6 @@
       path: /Audio/Machines/airlock_deny.ogg
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard/external.rsi
-  - type: PaintableAirlock
-    group: External
-    department: null
   - type: Wires
     layoutId: AirlockExternal
 
@@ -32,8 +29,6 @@
     enabled: false
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Glass/external.rsi
-  - type: PaintableAirlock
-    group: ExternalGlass
   - type: Fixtures
     fixtures:
       fix1:

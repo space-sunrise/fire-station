@@ -1,18 +1,13 @@
-﻿using Content.Server.Administration.Systems;
-using Content.Server.Speech.Components;
+﻿using Content.Server.Speech.Components;
 using Content.Shared._Scp.Fear;
-using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Components.Traits;
-using Content.Shared.Administration;
-using Content.Shared.Bed.Sleep;
-using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Fear;
 
 public sealed partial class FearSystem
 {
-    [Dependency] private readonly AdminFrozenSystem _adminFrozen = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
 
     private void InitializeTraits()
@@ -40,16 +35,7 @@ public sealed partial class FearSystem
         if (!_random.Prob(normalizedChance))
             return;
 
-        AddStupor(ent, ent.Comp.StuporTime);
-    }
-
-    /// <summary>
-    /// Добавляет эффект оцепенения на персонажа на указанное время.
-    /// </summary>
-    private void AddStupor(EntityUid uid, TimeSpan time)
-    {
-        _adminFrozen.FreezeAndMute(uid);
-        RemoveComponentAfter<AdminFrozenComponent>(uid, time);
+        _statusEffects.TryAddStatusEffectDuration(ent, FearStuporComponent.StatusEffect, ent.Comp.StuporTime);
     }
 
     private void OnStutteringFearStateChanged(Entity<FearStutteringComponent> ent, ref FearStateChangedEvent args)
@@ -81,9 +67,6 @@ public sealed partial class FearSystem
         if (!_random.Prob(percentNormalized))
             return;
 
-        _statusEffects.TryAddStatusEffect<ForcedSleepingComponent>(ent,
-            FearFaintingComponent.StatusEffectKey,
-            ent.Comp.Time,
-            false);
+        _statusEffects.TryAddStatusEffectDuration(ent, FearFaintingComponent.StatusEffect, ent.Comp.Time);
     }
 }

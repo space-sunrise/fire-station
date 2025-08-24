@@ -1,11 +1,11 @@
 ﻿using Content.Server.Actions;
-using Content.Server.Body.Components;
 using Content.Server.Fluids.EntitySystems;
 using Content.Shared._Scp.Scp939;
 using Content.Shared.Bed.Sleep;
+using Content.Shared.Body.Components;
 using Content.Shared.Damage;
 using Content.Shared.Mobs;
-using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
@@ -17,7 +17,7 @@ public sealed partial class Scp939System : EntitySystem
     [Dependency] private readonly SmokeSystem _smokeSystem = default!;
     [Dependency] private readonly SleepingSystem _sleepingSystem = default!;
     [Dependency] private readonly ActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
+    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly DamageableSystem _damageableSystem = default!;
     [Dependency] private readonly AppearanceSystem _appearanceSystem = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
@@ -55,6 +55,8 @@ public sealed partial class Scp939System : EntitySystem
                 bloodstreamComponent.BloodRefreshAmount = 20;
             else
                 bloodstreamComponent.BloodRefreshAmount = 1;
+
+            Dirty(ent, bloodstreamComponent);
         }
 
         _appearanceSystem.SetData(ent, Scp939Visuals.Sleeping, args.FellAsleep);

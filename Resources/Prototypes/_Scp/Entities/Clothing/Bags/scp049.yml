@@ -4,12 +4,11 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Item
-    sprite: null
     size: Ginormous
   - type: Unremoveable
   - type: Sprite
     sprite: _Scp/Clothing/Back/Satchels/scp049-satchel.rsi
-    icon: icon
+    state: icon
   - type: Storage
     maxItemSize: Huge
     grid:

@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Content.Server.Light.Components;
 using Content.Server.Light.EntitySystems;
 using Content.Shared._Scp.LightFlicking;
 using Content.Shared._Scp.LightFlicking.MalfunctionLight;
+using Content.Shared._Scp.Other.Events;
 using Content.Shared.Light.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Random;

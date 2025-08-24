@@ -118,25 +118,29 @@
   category: cargoproduct-category-name-livestock
   group: market
 
-- type: cargoProduct
-  id: LivestockMonkeyCube
-  icon:
-    sprite: Objects/Misc/monkeycube.rsi
-    state: box
-  product: CrateNPCMonkeyCube
-  cost: 2000
-  category: cargoproduct-category-name-livestock
-  group: market
+# Fire Edit > start
 
-- type: cargoProduct
-  id: LivestockKoboldCube
-  icon:
-    sprite: Objects/Misc/monkeycube.rsi
-    state: box_kobold
-  product: CrateNPCKoboldCube
-  cost: 2000
-  category: cargoproduct-category-name-livestock
-  group: market
+#- type: cargoProduct
+#  id: LivestockMonkeyCube
+#  icon:
+#    sprite: Objects/Misc/monkeycube.rsi
+#    state: box
+#  product: CrateNPCMonkeyCube
+#  cost: 2000
+#  category: cargoproduct-category-name-livestock
+#  group: market
+
+#- type: cargoProduct
+#  id: LivestockKoboldCube
+#  icon:
+#    sprite: Objects/Misc/monkeycube.rsi
+#    state: box_kobold
+#  product: CrateNPCKoboldCube
+#  cost: 2000
+#  category: cargoproduct-category-name-livestock
+#  group: market
+
+# Fire Edit > end
 
 - type: cargoProduct
   id: LivestockMouse
@@ -151,7 +155,7 @@
 - type: cargoProduct
   id: LivestockParrot
   icon:
-    sprite: Mobs/Animals/parrot.rsi
+    sprite: Mobs/Animals/parrot/parrot.rsi
     state: parrot
   product: CrateNPCParrot
   cost: 3000

@@ -19,3 +19,7 @@
   - Medical
   - Maintenance
   - Chemistry
+
+- type: chameleonOutfit
+  id: PrisonDoctorChameleonOutfit
+  job: PrisonDoctor

@@ -95,29 +95,6 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
-- type: listing
-  id: ScpUplinkClothingBackpackDuffelWeaponShotgunZauer
-  productEntity: ClothingBackpackDuffelWeaponShotgunZauerFilled
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: zauer }
-  cost:
-    Bluecrystal: 15
-  categories:
-  - ScpAutoGun
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 2
-
-- type: listing
-  id: ScpUplinkClothingBackpackDuffelWeaponXM1014
-  productEntity: ClothingBackpackDuffelWeaponXM1014Filled
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: xm1014 }
-  cost:
-    Bluecrystal: 7
-  categories:
-  - ScpAutoGun
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 5
 
 - type: listing
   id: ScpUplinkClothingBackpackDuffelWeaponShotgun12
@@ -354,30 +331,6 @@
     stock: 6
 
 - type: listing
-  id: ScpUplinkSMGIncendiaryAmmoKit
-  productEntity: SMGIncendiaryAmmoKit
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_smg_red }
-  cost:
-    Crystallite: 14
-  categories:
-  - ScpAmmo
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 4
-
-- type: listing
-  id: ScpUplinkSMGUraniumAmmoKit
-  productEntity: SMGUraniumAmmoKit
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_smg_uran }
-  cost:
-    Crystallite: 20
-  categories:
-  - ScpAmmo
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 2
-
-- type: listing
   id: ScpUplinkBoxMagazineShotgun
   productEntity: BoxMagazineShotgun
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shot }
@@ -439,7 +392,7 @@
 
 - type: listing
   id: ScpUplinkMagazineLightRifleBox
-  productEntity: MagazineLightRifleBox
+  productEntity: MagazineLightRifleBoxSP
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: Base_Icon }
   cost:
     Crystallite: 8
