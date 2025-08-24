@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by discord: odlieerr",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "full"
+        },
+        {
+            "name": "flesh0",
+            "directions": 4
+        },
+        {
+            "name": "flesh1",
+            "directions": 4
+        },
+        {
+            "name": "flesh2",
+            "directions": 4
+        },
+        {
+            "name": "flesh3",
+            "directions": 4
+        },
+        {
+            "name": "flesh4",
+            "directions": 4
+        },
+        {
+            "name": "flesh5",
+            "directions": 4
+        },
+        {
+            "name": "flesh6",
+            "directions": 4
+        },
+        {
+            "name": "flesh7",
+            "directions": 4
+        }
+    ]
+}

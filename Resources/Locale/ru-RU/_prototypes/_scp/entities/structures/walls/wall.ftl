@@ -54,3 +54,5 @@ ent-ScpWallRockRedSand = { ent-ScpWallRock }
     .desc = { ent-ScpWallRock.desc }
 ent-ScpWallRockBasalt = { ent-ScpWallRock }
     .desc = { ent-ScpWallRock.desc }
+ent-ScpWallFlesh106 = гнилая плоть
+    .desc = Гнилой кусок мяса. Вонь ужасная. Вы, очевидно, не захотите к этому прикасаться.
