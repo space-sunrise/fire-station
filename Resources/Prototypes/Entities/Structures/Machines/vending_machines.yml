@@ -1010,7 +1010,7 @@
   description: A vending machine containing Security equipment. A label reads SECURITY PERSONNEL ONLY.
   components:
   - type: VendingMachine
-    pack: SecTechInventory
+    pack: ScpSecTechInventory # Fire edit
     offState: off
     brokenState: broken
     normalState: normal-unshaded
@@ -1604,7 +1604,7 @@
   description: A vending machine for security and security-related clothing!
   components:
   - type: VendingMachine
-    pack: SecDrobeInventory
+    pack: ScpSecDrobeInventory # Fire edit
     offState: off
     brokenState: broken
     normalState: normal-unshaded

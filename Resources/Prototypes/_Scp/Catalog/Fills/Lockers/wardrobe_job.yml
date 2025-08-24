@@ -1,0 +1,28 @@
+﻿- type: entityTable
+  id: ScpFillWardrobeSecurity
+  table: !type:AllSelector
+    children:
+    - id: ClothingHeadSecurityBeret
+    - id: ClothingHeadHatSecBlack
+    - id: ClothingHeadHatOutlawHat
+    - id: ClothingHeadHatCowboyBlack
+    - id: ClothingEyesGlassesSecurityGuard
+    - id: ClothingEyesEyepatchHudSecurity
+    - id: ClothingMaskSecurityBandBlack
+    - id: ClothingNeckMantleSecurity
+    - id: ClothingNeckKailoRen
+    - id: ClothingNeckScarfStripedBlack
+    - id: ClothingUniformSecurity
+    - id: ClothingUniformSecurity2
+    - id: ClothingUniformSecurity3
+    - id: ClothingUniformJumpsuitBlackturtleneck
+    - id: ClothingOuterArmorSecurity
+    - id: ClothingBeltSecurityWebbing
+    - id: ClothingHandsGlovesSecurity
+    - id: ClothingHandsGlovesWinterSecurity
+    - id: ClothingBackpackSecurity
+    - id: ClothingBackpackSatchelSecurity
+    - id: ClothingBackpackDuffelSecurity
+    - id: ClothingShoesBootsSecurityGuard
+    - id: ClothingShoesBootsCombat
+    - id: ClothingShoesBootsWinterSecurityGuard

@@ -1,6 +1,6 @@
 - type: vendingMachineInventory
   id: SecDrobeInventory
-  startingInventory:
+  startingInventory: # TODO: Вернуть ванильное
     ClothingBackpackSecurity: 3
     ClothingBackpackSatchelSecurity: 3
     ClothingBackpackDuffelSecurity: 3
