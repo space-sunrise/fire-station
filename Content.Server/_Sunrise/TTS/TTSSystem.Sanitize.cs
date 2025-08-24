@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.RegularExpressions;
+using System.Linq;
 using Content.Server.Chat.Systems;
 
 namespace Content.Server._Sunrise.TTS;
@@ -19,7 +20,9 @@ public sealed partial class TTSSystem
         text = Regex.Replace(text, @"[^a-zA-Zа-яА-ЯёЁ0-9,\-+?!. ]", "");
         text = Regex.Replace(text, @"[a-zA-Z]", ReplaceLat2Cyr, RegexOptions.Multiline | RegexOptions.IgnoreCase);
         text = Regex.Replace(text, @"(?<![a-zA-Zа-яёА-ЯЁ])[a-zA-Zа-яёА-ЯЁ]+?(?![a-zA-Zа-яёА-ЯЁ])", ReplaceMatchedWord, RegexOptions.Multiline | RegexOptions.IgnoreCase);
-        text = Regex.Replace(text, @"(?<=[1-90])(\.|,)(?=[1-90])", " целых ");
+        // fire edit start
+        text = Regex.Replace(text, @"(?<=[0-9])(\.|,)(?=[0-9])", " целых ");
+        // fire edit end
         text = Regex.Replace(text, @"\d+", ReplaceWord2Num);
         text = text.Trim();
         return text;
@@ -39,12 +42,41 @@ public sealed partial class TTSSystem
         return word.Value;
     }
 
-    private string ReplaceWord2Num(Match word)
+    // fire edit start
+    private string DigitToWord(char digitChar)
     {
-        if (!long.TryParse(word.Value, out var number))
-            return word.Value;
-        return NumberConverter.NumberToText(number);
+        switch (digitChar)
+        {
+            case '0': return "ноль";
+            case '1': return "один";
+            case '2': return "два";
+            case '3': return "три";
+            case '4': return "четыре";
+            case '5': return "пять";
+            case '6': return "шесть";
+            case '7': return "семь";
+            case '8': return "восемь";
+            case '9': return "девять";
+            default: return digitChar.ToString();
+        }
     }
+
+    private string ReplaceWord2Num(Match match)
+    {
+        string numberString = match.Value;
+
+        if (numberString.Length > 1 && numberString.StartsWith("0"))
+        {
+            return string.Join(" ", numberString.Select(c => DigitToWord(c)));
+        }
+        else
+        {
+            if (!long.TryParse(numberString, out var number))
+                return numberString;
+            return NumberConverter.NumberToText(number);
+        }
+    }
+    // fire edit end
 
     private static readonly IReadOnlyDictionary<string, string> WordReplacement =
         new Dictionary<string, string>()
@@ -143,8 +175,39 @@ public sealed partial class TTSSystem
             {"сцп", "Эс Си Пи"},
             {"дешка", "дэшка"},
             {"дшник", "дэшник"},
-            {"д", "дэ"}, // Типо ДЭ КЛАСС
+            {"д", "дэ"},
             {"нус", "Эн Оу Эс"},
+            {"вус", "вэ оу эс"},
+            {"ноус", "эн оо оу эс"},
+            {"воус", "вэ оо оу эс"},
+            {"дк", "дэ ка"},
+            {"ду", "дэ у"},
+            {"нсб", "эн эс бэ"},
+            {"нс", "эн эс"},
+            {"сцп106", "эс си пи сто шесть"},
+            {"сцп049", "эс си пи ноль сорок девять"},
+            {"сцп999", "эс си пи девять девять девять"},
+            {"сцп173", "эс си пи сто семьдесят три"},
+            {"сцп096", "эс си пи ноль девять шесть"},
+            {"сцп939", "эс си пи девять три девять"},
+            {"сцп-106", "эс си пи сто шесть"},
+            {"сцп-049", "эс си пи ноль сорок девять"},
+            {"сцп-999", "эс си пи девять девять девять"},
+            {"сцп-173", "эс си пи сто семьдесят три"},
+            {"сцп-096", "эс си пи ноль девять шесть"},
+            {"сцп-939", "эс си пи девять три девять"},
+            {"scp-106", "эс си пи сто шесть"},
+            {"scp-049", "эс си пи ноль сорок девять"},
+            {"scp-999", "эс си пи девять девять девять"},
+            {"scp-173", "эс си пи сто семьдесят три"},
+            {"scp-096", "эс си пи ноль девять шесть"},
+            {"scp-939", "эс си пи девять три девять"},
+            {"scp106", "эс си пи сто шесть"},
+            {"scp049", "эс си пи ноль сорок девять"},
+            {"scp999", "эс си пи девять девять девять"},
+            {"scp173", "эс си пи сто семьдесят три"},
+            {"scp096", "эс си пи ноль девять шесть"},
+            {"scp939", "эс си пи девять три девять"},
             // Fire edit end
         };
 
