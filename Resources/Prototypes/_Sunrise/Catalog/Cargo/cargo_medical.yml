@@ -1,3 +1,5 @@
+#Fire Edit > start
+
 #- type: cargoProduct
 #  id: CrateNPCVariantCubeBoxSunrise
 #  icon:
@@ -7,3 +9,5 @@
 #  cost: 12000
 #  category: cargoproduct-category-name-medical
 #  group: market
+
+# Fire Edit > end

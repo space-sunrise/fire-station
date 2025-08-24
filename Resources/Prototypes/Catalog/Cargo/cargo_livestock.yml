@@ -118,6 +118,8 @@
   category: cargoproduct-category-name-livestock
   group: market
 
+# Fire Edit > start
+
 #- type: cargoProduct
 #  id: LivestockMonkeyCube
 #  icon:
@@ -137,6 +139,8 @@
 #  cost: 2000
 #  category: cargoproduct-category-name-livestock
 #  group: market
+
+# Fire Edit > end
 
 - type: cargoProduct
   id: LivestockMouse
