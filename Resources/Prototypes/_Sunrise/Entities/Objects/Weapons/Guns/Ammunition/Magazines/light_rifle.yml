@@ -382,7 +382,7 @@
     whitelist:
       tags:
       - CartridgeLightRifle  # 762x39
-    proto: CartridgeLightRifle  # 762x39
+    proto: CartridgeLightRifleSP # Fire edit? почему тут ошибка на санрайзе
     capacity: 30
   - type: Item
   - type: Sprite

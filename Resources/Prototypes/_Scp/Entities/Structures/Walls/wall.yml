@@ -202,6 +202,8 @@
     drawdepth: Walls
     sprite: _Scp/Structures/Walls/concrete_diagonal.rsi
     state: state0
+  - type: IconSmooth
+    key: walls
     base: state
   - type: Icon
     sprite: _Scp/Structures/Walls/concrete_diagonal.rsi

@@ -170,7 +170,7 @@
       visible: false
   - type: GuideHelp
     guides:
-    - Medical Doctor
+    - MedicalDoctor
 
 - type: entity
   parent: ScpBaseSecurityPDA
