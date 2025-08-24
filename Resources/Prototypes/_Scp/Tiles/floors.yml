@@ -1249,6 +1249,5 @@
     collection: FootstepScpFlesh106
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemWhite
   heatCapacity: 10000
   indestructible: true

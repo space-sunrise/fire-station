@@ -45,6 +45,6 @@
 - type: soundCollection
   id: FootstepScpFlesh106
   files:
-  - /Audio/_Scp/Effects/Footsteps/106D/step1.ogg
-  - /Audio/_Scp/Effects/Footsteps/106D/step2.ogg
-  - /Audio/_Scp/Effects/Footsteps/106D/step3.ogg
+  - /Audio/_Scp/Effects/Footsteps/Scp106Dimension/step1.ogg
+  - /Audio/_Scp/Effects/Footsteps/Scp106Dimension/step2.ogg
+  - /Audio/_Scp/Effects/Footsteps/Scp106Dimension/step3.ogg
