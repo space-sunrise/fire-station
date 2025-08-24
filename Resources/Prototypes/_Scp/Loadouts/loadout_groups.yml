@@ -92,7 +92,7 @@
 
 - type: loadoutGroup
   id: EthicsCommitteeRepresentativeJumpsuit
-  name: loadout-group-jumpsuit # Fire
+  name: loadout-group-jumpsuit
   minLimit: 1
   loadouts:
   - EthicsCommitteeRepresentativeJumpsuit
@@ -101,7 +101,7 @@
 
 - type: loadoutGroup
   id: EthicsCommitteeRepresentativeOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outerclothing
   minLimit: 1
   maxLimit: 1
   loadouts:

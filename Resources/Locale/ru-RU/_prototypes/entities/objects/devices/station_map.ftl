@@ -1,5 +1,5 @@
-ent-BaseHandheldStationMap = карта станции
-    .desc = Отображает схему текущей станции.
+ent-BaseHandheldStationMap = карта комплекса
+    .desc = Отображает схему текущего комплекса.
 ent-HandheldStationMap = { ent-BaseHandheldStationMap }
     .desc = { ent-BaseHandheldStationMap.desc }
     .suffix = Ручной, Заряжен
