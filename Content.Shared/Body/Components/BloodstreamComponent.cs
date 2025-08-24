@@ -17,7 +17,7 @@ namespace Content.Shared.Body.Components;
 /// </summary>
 [RegisterComponent, NetworkedComponent,]
 [AutoGenerateComponentState(fieldDeltas: true), AutoGenerateComponentPause]
-[Access(typeof(SharedBloodstreamSystem))]
+// [Access(typeof(SharedBloodstreamSystem))] Fire edit
 public sealed partial class BloodstreamComponent : Component
 {
     public const string DefaultChemicalsSolutionName = "chemicals";

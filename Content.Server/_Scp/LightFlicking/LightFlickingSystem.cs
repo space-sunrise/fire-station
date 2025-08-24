@@ -1,5 +1,4 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Content.Server.Light.Components;
 using Content.Server.Light.EntitySystems;
 using Content.Shared._Scp.LightFlicking;
 using Content.Shared._Scp.LightFlicking.MalfunctionLight;
@@ -31,8 +30,8 @@ public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
         SubscribeLocalEvent<LightFlickingComponent, MapInitEvent>(OnMapInit, after: [typeof(PoweredLightSystem)]);
         SubscribeLocalEvent<ActiveLightFlickingComponent, MapInitEvent>(OnActiveMapInit, after: [typeof(PoweredLightSystem)]);
 
-        SubscribeLocalEvent<ActiveLightFlickingComponent, LightEjectEvent>(OnLightEject);
-        SubscribeLocalEvent<LightFlickingComponent, LightInsertEvent>(OnLightInsert);
+        SubscribeLocalEvent<ActiveLightFlickingComponent, PoweredLightSystem.LightEjectEvent>(OnLightEject);
+        SubscribeLocalEvent<LightFlickingComponent, PoweredLightSystem.LightInsertEvent>(OnLightInsert);
     }
 
     #region Event handlers
@@ -59,12 +58,12 @@ public sealed partial class LightFlickingSystem : SharedLightFlickingSystem
         SetNextFlickingTime(ent);
     }
 
-    private void OnLightEject(Entity<ActiveLightFlickingComponent> ent, ref LightEjectEvent args)
+    private void OnLightEject(Entity<ActiveLightFlickingComponent> ent, ref PoweredLightSystem.LightEjectEvent args)
     {
         RemComp<ActiveLightFlickingComponent>(ent);
     }
 
-    private void OnLightInsert(Entity<LightFlickingComponent> ent, ref LightInsertEvent args)
+    private void OnLightInsert(Entity<LightFlickingComponent> ent, ref PoweredLightSystem.LightInsertEvent args)
     {
         if (!HasComp<MalfunctionLightComponent>(args.Bulb))
             return;

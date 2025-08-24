@@ -1,4 +1,4 @@
-﻿using Content.Server.Explosion.EntitySystems;
+﻿using Content.Shared.Trigger;
 
 namespace Content.Server._Scp.Misc.AddComponentsOnTrigger;
 

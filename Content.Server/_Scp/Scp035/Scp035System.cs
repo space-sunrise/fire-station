@@ -2,7 +2,6 @@
 using System.Numerics;
 using Content.Server.Chat.Systems;
 using Content.Server.Ghost;
-using Content.Server.Light.Components;
 using Content.Server.NPC;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
@@ -16,6 +15,7 @@ using Content.Shared.Fluids;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Item;
 using Content.Shared.Item.ItemToggle.Components;
+using Content.Shared.Light.Components;
 using Content.Shared.Maps;
 using Content.Shared.Pointing;
 using Content.Shared.Popups;

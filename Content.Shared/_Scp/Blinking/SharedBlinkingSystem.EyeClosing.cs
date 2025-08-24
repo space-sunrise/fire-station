@@ -280,7 +280,7 @@ public abstract partial class SharedBlinkingSystem
         var newLightness = hsl.Z * 0.85f;
         newLightness = Math.Clamp(newLightness, 0f, 1f);
 
-        var newHsl = new Vector4(hsl.X, hsl.Y, newLightness, hsl.W);
+        var newHsl = hsl with { Z = newLightness };
 
         return Color.FromHsl(newHsl);
     }

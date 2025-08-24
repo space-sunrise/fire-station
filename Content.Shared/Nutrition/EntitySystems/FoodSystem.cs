@@ -135,7 +135,7 @@ public sealed class FoodSystem : EntitySystem
         }
 
         // Fire added start - кормление сцп999
-        RaiseLocalEvent(args.Target.Value, new EntityFedEvent(food: entity));
+        RaiseLocalEvent(args.Target, new EntityFedEvent(food: entity));
         // Fire added end
 
         // BREAK OUR UTENSILS

@@ -75,7 +75,7 @@ public sealed partial class Scp049System
 
         var hasTool = false;
 
-        foreach (var heldUid in _handsSystem.EnumerateHeld(scpEntity))
+        foreach (var heldUid in _handsSystem.EnumerateHeld(scpEntity.Owner))
         {
             var metaData = MetaData(heldUid);
 

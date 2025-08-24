@@ -9,7 +9,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 namespace Content.Server.Body.Components
 {
     // Fire edit - добавил typeof(ChokeOnReadSystem)
-    [RegisterComponent, Access(typeof(RespiratorSystem), AutoGenerateComponentPause, typeof(ChokeOnReadSystem))]
+    [RegisterComponent, AutoGenerateComponentPause, Access(typeof(RespiratorSystem), typeof(ChokeOnReadSystem))]
     public sealed partial class RespiratorComponent : Component
     {
         /// <summary>

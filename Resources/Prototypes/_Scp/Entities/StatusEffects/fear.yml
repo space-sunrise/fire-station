@@ -1,0 +1,15 @@
+﻿- type: entity
+  parent: MobStatusEffectDebuff
+  id: StatusEffectFearAdrenaline
+  categories: [ HideSpawnMenu ]
+  name: adrenaline
+  components:
+  - type: IgnoreSlowOnDamageComponent
+
+- type: entity
+  parent: MobStatusEffectDebuff
+  id: StatusEffectFearStupor
+  categories: [ HideSpawnMenu ]
+  name: stupor
+  components:
+  - type: AdminFrozenComponent

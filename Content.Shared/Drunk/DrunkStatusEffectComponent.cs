@@ -8,4 +8,8 @@ namespace Content.Shared.Drunk;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class DrunkStatusEffectComponent : Component
 {
+    // Fire added start - для уменьшения уровня страха от опьянения
+    [ViewVariables]
+    public float CurrentBoozePower;
+    // Fire added start
 }
