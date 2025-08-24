@@ -11,18 +11,18 @@
     - Lawyer
     - NtrOfficer
 
-#- type: department # Surnise-Blueshield
-#  id: BlueShield
-#  name: department-Blueshield
-#  description: department-Blueshield-description
-#  color: "#0f4e81"
-#  roles:
-#    - BlueShieldEnsign
-#    - BlueShieldOfficer
-#    - BlueShieldOperative
-#  primary: false
-#  editorHidden: true # Fire added
-#  weight: 50
+- type: department # Surnise-Blueshield
+  id: BlueShield
+  name: department-Blueshield
+  description: department-Blueshield-description
+  color: "#0f4e81"
+  roles:
+    - BlueShieldEnsign
+    - BlueShieldOfficer
+    - BlueShieldOperative
+  primary: false
+  editorHidden: true # Fire added
+  weight: 50
 
 - type: department
   id: PlanetPrison

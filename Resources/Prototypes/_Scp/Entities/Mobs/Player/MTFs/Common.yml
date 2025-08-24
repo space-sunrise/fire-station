@@ -160,7 +160,7 @@
   parent: TrackingImplantErt
   id: TrackingImplantMTF
   components:
-    - type: Rattle
+    - type: RattleOnTrigger
       radioChannel: RegionalAdministration
 
 - type: entity
@@ -183,7 +183,7 @@
   - type: StorageFill
     contents:
     - id: WeaponLightMachineGunL6
-    - id: MagazineLightRifleBox
+    - id: MagazineLightRifleBoxSP
 
 - type: entity
   parent: CrateCommandSecure

@@ -33,3 +33,14 @@
     back:
     - MedicatedSuture
     - RegenerativeMesh
+
+- type: chameleonOutfit
+  id: SeniorPhysicianChameleonOutfit
+  job: SeniorPhysician
+  equipment:
+    shoes: ClothingShoesColorWhite
+    head: ClothingHeadHatBeretSeniorPhysician
+    mask: ClothingMaskSterile
+    neck: ClothingNeckStethoscope
+    outerClothing: ClothingOuterCoatLabSeniorPhysician
+    gloves: ClothingHandsGlovesLatex

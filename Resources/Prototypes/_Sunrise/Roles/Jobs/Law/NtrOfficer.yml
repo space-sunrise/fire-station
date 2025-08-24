@@ -62,3 +62,7 @@
     back:
     - CrowbarRed
     - MedkitCombatFilled
+  
+- type: chameleonOutfit
+  id: NtrOfficerChameleonOutfit
+  job: NtrOfficer

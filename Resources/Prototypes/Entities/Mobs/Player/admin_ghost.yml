@@ -4,6 +4,9 @@
   name: admin observer
   categories: [ HideSpawnMenu ]
   components:
+  # Fire start
+  - type: ShowBlinkable
+  # Fire end
   - type: ContentEye
     maxZoom: 8.916104, 8.916104
   - type: Tag
@@ -22,6 +25,14 @@
     canInteract: true
   - type: GhostHearing
   - type: Hands
+    hands:
+      hand_right:
+        location: Right
+      hand_left:
+        location: Left
+    sortedHands:
+    - hand_right
+    - hand_left
   - type: ComplexInteraction
   - type: Puller
     needsHands: false
@@ -29,8 +40,6 @@
   - type: Physics
     ignorePaused: true
     bodyType: Kinematic
-  - type: Body
-    prototype: Aghost
   - type: Access
     groups:
     - AllAccess
@@ -106,9 +115,8 @@
   - type: Loadout
     prototypes: [ MobAghostGear ]
   - type: BypassInteractionChecks
-  # Fire start
-  - type: ShowBlinkable
-  # Fire end
+  - type: ExplosionResistance
+    damageCoefficient: 0
 
 - type: entity
   abstract: true

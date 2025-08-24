@@ -4,7 +4,6 @@ using Content.Server.Examine;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Ghost;
 using Content.Server.Interaction;
-using Content.Server.Light.Components;
 using Content.Server.Popups;
 using Content.Server.Storage.Components;
 using Content.Server.Storage.EntitySystems;
@@ -20,6 +19,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Fluids.Components;
 using Content.Shared.Humanoid;
+using Content.Shared.Light.Components;
 using Content.Shared.Lock;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
@@ -349,8 +349,8 @@ public sealed class Scp173System : SharedScp173System
                 BreakNeck(result.HitEntity, scpEntitiy);
                 previousHitPos = result.HitPos;
 
-                var mobXform = Transform(result.HitEntity);
-                _transform.SetWorldPosition(scpEntitiy, mobXform.WorldPosition);
+                var worldPos = _transform.GetWorldPosition(scpEntitiy);
+                _transform.SetWorldPosition(scpEntitiy, worldPos);
 
                 continue;
             }

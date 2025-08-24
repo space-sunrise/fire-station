@@ -1,9 +1,9 @@
-﻿station-records-gender =
+station-records-gender =
     { $gender ->
         [Male] Мужской
         [Female] Женский
         [Epicene] Двуполый
-        *[Neuter] Бесполый
+       *[Neuter] Бесполый
     }
 
 station-records-ui-name = Имя:

@@ -1,7 +1,7 @@
 ﻿using Content.Server.Chat.Systems;
-using Content.Server.Flash;
 using Content.Server.Popups;
 using Content.Shared._Scp.Scp939;
+using Content.Shared.Flash;
 using Content.Shared.Item;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
@@ -25,11 +25,10 @@ public sealed partial class Scp939System
         SubscribeLocalEvent<Scp939VisibilityComponent, DownedEvent>(OnDown);
         SubscribeLocalEvent<ItemComponent, GunShotEvent>(OnShot);
 
-        SubscribeLocalEvent<Scp939Component, EntityFlashedEvent>(OnFlash);
+        SubscribeLocalEvent<Scp939Component, AfterFlashedEvent>(OnFlash);
     }
 
-
-    private void OnFlash(Entity<Scp939Component> ent, ref EntityFlashedEvent args)
+    private void OnFlash(Entity<Scp939Component> ent, ref AfterFlashedEvent args)
     {
         ent.Comp.PoorEyesight = true;
         ent.Comp.PoorEyesightTimeStart = _timing.CurTime;

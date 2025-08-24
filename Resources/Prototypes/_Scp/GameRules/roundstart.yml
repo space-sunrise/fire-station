@@ -117,7 +117,7 @@
   table: !type:AllSelector
     children:
     - !type:NestedSelector
-      tableId: BasicCalmEventsTable
+      tableId: ScpBasicCalmEventsTable
     - !type:NestedSelector
       tableId: ScpEventsTable
     - !type:NestedSelector
@@ -132,10 +132,28 @@
   table: !type:AllSelector
     children:
     - !type:NestedSelector
-      tableId: BasicCalmEventsTable
+      tableId: ScpBasicCalmEventsTable
     - !type:NestedSelector
       tableId: ScpEventsTable
     - !type:NestedSelector
       tableId: CargoGiftsTable
     - !type:NestedSelector
       tableId: CalmPestEventsTable
+
+- type: entityTable
+  id: ScpBasicCalmEventsTable
+  table: !type:AllSelector
+    children:
+    - id: BluespaceArtifact
+    - id: BureaucraticError
+    - id: ClericalError
+    - id: CockroachMigration
+    - id: GreytideVirus
+    - id: IonStorm
+    - id: MassHallucinations
+    - id: MimicVendorRule
+    - id: MouseMigration
+    - id: RandomSentience
+    - id: VentClog
+    - id: GasLeak
+    - id: SolarFlare

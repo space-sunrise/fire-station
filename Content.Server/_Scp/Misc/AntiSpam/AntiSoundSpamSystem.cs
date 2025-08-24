@@ -1,6 +1,4 @@
-﻿using Content.Server.Advertise.Components;
-using Content.Server.Advertise.EntitySystems;
-using Content.Server.Power.Components;
+﻿using Content.Server.Power.Components;
 using Content.Shared.Advertise.Components;
 
 namespace Content.Server._Scp.Misc.AntiSpam;

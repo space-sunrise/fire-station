@@ -54,7 +54,7 @@ public sealed partial class Scp106System
         else
         {
             EnsureComp<HandsComponent>(ent);
-            _hands.AddHand(ent, "right", HandLocation.Middle);
+            _hands.AddHand(ent.Owner, "right", HandLocation.Middle);
             var sword = Spawn(blade, Transform(ent).Coordinates);
 
             ent.Comp.Sword = sword;
@@ -71,7 +71,7 @@ public sealed partial class Scp106System
 
         Del(ent.Comp.Sword);
         ent.Comp.Sword = null;
-        _hands.RemoveHands(ent);
+        _hands.RemoveHands(ent.Owner);
         ent.Comp.HandTransformed = false;
     }
 }
