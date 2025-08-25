@@ -149,7 +149,8 @@
   - SecurityBelt
   - WardenOuterClothing
   - SecurityShoes
-  - SpecialPurposeSquadWeapon
+  - SpecialPurposeSquadWeaponPrimary
+  - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
   - CommonMiscItems
