@@ -45,11 +45,9 @@
   - SecurityBelt
   - HeadofSecurityOuterClothing
   - SecurityShoes
-  - SurvivalSecurity
-  - SecurityStar
-  - SecurityTrinkets
-  - SunriseSecurityGun
+  - SecurityCommanderWeapon
   - SecurityRadio
+  - CommonSecurityTrinkets
   - CommonMiscItems
   - Bra
   - Pants
@@ -102,8 +100,6 @@
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
   - Glasses
-  - SurvivalMedical
-  - GroupSpeciesBreathToolMedical
   - MedicalTrinkets
   - CommonMiscItems
   - Bra
@@ -142,7 +138,7 @@
   - Pants
   - Socks
 
-# Служба безопасности тяжелой зоны
+# Отряд специального назначения
 
 - type: roleLoadout
   id: JobHeavyContainmentZoneCommandant
@@ -153,12 +149,9 @@
   - SecurityBelt
   - WardenOuterClothing
   - SecurityShoes
-  - SurvivalSecurity
-  - SecurityStar
-  - GroupSpeciesBreathToolSecurity
-  - TrinketsHeavyContainmentSecurityService
-  - SunriseSecurityGun
+  - SpecialPurposeSquadWeapon
   - SecurityRadio
+  - CommonSecurityTrinkets
   - CommonMiscItems
   - Bra
   - Pants
@@ -172,11 +165,10 @@
   - SecurityBelt
   - SecurityOuterClothing
   - SecurityShoes
-  - SurvivalSecurity
-  - TrinketsHeavyContainmentSecurityService
-  - GroupSpeciesBreathTool
-  - SunriseSecurityGun
+  - SpecialPurposeSquadWeaponPrimary
+  - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
+  - CommonSecurityTrinkets
   - CommonMiscItems
   - Bra
   - Pants
@@ -191,12 +183,10 @@
   - SecurityOuterClothing
   - SecurityShoes
   - SecurityBelt
-  - SurvivalSecurity
-  - SecurityStar
-  - GroupSpeciesBreathToolSecurity
-  - TrinketsHeavyContainmentSecurityService
-  - SunriseSecurityGun
+  - SpecialPurposeSquadWeaponPrimary
+  - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
+  - CommonSecurityTrinkets
   - CommonMiscItems
   - Bra
   - Pants
@@ -207,30 +197,15 @@
   groups:
   - SecurityCadetJumpsuit
   - SecurityBackpack
-  - SurvivalSecurity
-  - GroupSpeciesBreathToolSecurity
-  - TrinketsHeavyContainmentSecurityService
+  - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
+  - CommonSecurityTrinkets
   - CommonMiscItems
   - Bra
   - Pants
   - Socks
 
-- type: roleLoadout
-  id: JobFieldMedicalSpecialist
-  groups:
-  - BrigmedicJumpsuit
-  - BrigmedicBackpack
-  - SurvivalSecurity
-  - TrinketsHeavyContainmentSecurityService
-  - SunriseSecurityGun
-  - SecurityRadio
-  - CommonMiscItems
-  - Bra
-  - Pants
-  - Socks
-
-# Служба безопасности внешней административной зоны
+# Комендантский отряд
 
 - type: roleLoadout
   id: JobExternalAdministrativeZoneCommandant
@@ -242,11 +217,10 @@
   - SecurityShoes
   - SecurityBelt
   - SecurityBackpack
-  - SurvivalSecurity
-  - SecurityStar
-  - TrinketsExternalAdministrativeZoneSecurityService
-  - SunriseSecurityGun
+  - SpecialPurposeSquadWeaponPrimary
+  - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
+  - CommonSecurityTrinkets
   - CommonMiscItems
   - Bra
   - Pants
@@ -262,11 +236,10 @@
   - GuardShoes
   - SecurityBelt
   - SecurityBackpack
-  - SurvivalSecurity
-  - TrinketsExternalAdministrativeZoneSecurityService
-  - SunriseSecurityGun
-  - SecurityStar
+  - SpecialPurposeSquadWeaponPrimary
+  - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
+  - CommonSecurityTrinkets
   - CommonMiscItems
   - Bra
   - Pants
@@ -282,11 +255,10 @@
   - GuardShoes
   - SecurityBelt
   - SecurityBackpack
-  - SurvivalSecurity
-  - TrinketsExternalAdministrativeZoneSecurityService
-  - SunriseSecurityGun
-  - SecurityStar
+  - SpecialPurposeSquadWeaponPrimary
+  - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
+  - CommonSecurityTrinkets
   - CommonMiscItems
   - Bra
   - Pants
@@ -302,11 +274,22 @@
   - GuardShoes
   - SecurityBelt
   - SecurityBackpack
-  - SurvivalSecurity
-  - TrinketsExternalAdministrativeZoneSecurityService
-  - SunriseSecurityGun
-  - SecurityStar
+  - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
+  - CommonSecurityTrinkets
+  - CommonMiscItems
+  - Bra
+  - Pants
+  - Socks
+
+- type: roleLoadout
+  id: JobFieldMedicalSpecialist
+  groups:
+  - BrigmedicJumpsuit
+  - BrigmedicBackpack
+  - SpecialPurposeSquadWeaponSecondary
+  - SecurityRadio
+  - CommonSecurityTrinkets
   - CommonMiscItems
   - Bra
   - Pants
@@ -368,7 +351,6 @@
   - RoboticistOuterClothing
   - ScientistBackpack
   - ScientistShoes
-  - GroupSpeciesBreathTool
   - CommonMiscItems
   - Bra
   - Pants
@@ -400,7 +382,6 @@
   - SeniorPhysicianNeck
   - SeniorPhysicianBelt
   - SeniorPhysicianShoes
-  - SurvivalMedical
   - MedicalTrinkets
   - Glasses
   - CommonMiscItems
@@ -420,8 +401,6 @@
   - ChemistOuterClothing
   - SunriseChemistNeck
   - SunriseChemistShoes
-  - SurvivalMedical
-  - GroupSpeciesBreathToolMedical
   - MedicalTrinkets
   - CommonMiscItems
   - Bra
@@ -441,8 +420,6 @@
   - SunriseMedicalDoctorNeck
   - MedicalShoes
   - Glasses
-  - SurvivalMedical
-  - GroupSpeciesBreathToolMedical
   - MedicalTrinkets
   - CommonMiscItems
   - Bra
@@ -482,8 +459,6 @@
   - SunriseMedicalDoctorNeck
   - MedicalShoes
   - Glasses
-  - SurvivalMedical
-  - GroupSpeciesBreathToolMedical
   - MedicalTrinkets
   - CommonMiscItems
   - Bra

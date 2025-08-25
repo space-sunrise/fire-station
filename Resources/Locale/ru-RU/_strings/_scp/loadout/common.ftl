@@ -15,4 +15,6 @@ loadout-group-shoes = Ботинки
 loadout-group-key-card = Доступ
 loadout-group-back = Рюкзак
 loadout-group-storage = C собой
+loadout-group-weapon = Табельное оружие
+loadout-group-weapon-secondary = Дополнительное оружие
 loadout-group-mask = Маска

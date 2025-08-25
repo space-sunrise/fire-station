@@ -1,0 +1,24 @@
+﻿# Рация
+- type: loadout
+  id: RadioHandheldHeavyContainmentSecurityService
+  storage:
+    back:
+    - RadioHandheldHeavyContainmentSecurityService
+
+# Пистолет-пулемет
+- type: loadout
+  id: LoadoutWeaponSubMachineGunMP5
+  equipment:
+    suitstorage: WeaponSubMachineGunMP5
+
+# Дробовик
+- type: loadout
+  id: LoadoutWeaponShotgunSPAS12
+  equipment:
+    suitstorage: WeaponShotgunSPAS12
+
+# Пистолет
+- type: loadout
+  id: LoadoutWeaponPistolG22Auto
+  equipment:
+    pocket1: WeaponPistolG22Auto

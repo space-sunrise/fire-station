@@ -1,9 +1,0 @@
-﻿- type: loadout
-  id: RadioHandheldExternalAdministrativeZoneSecurityService
-  startingGear: RadioHandheldExternalAdministrativeZoneSecurityService
-
-- type: startingGear
-  id: RadioHandheldExternalAdministrativeZoneSecurityService
-  storage:
-    back:
-    - RadioHandheldExternalAdministrativeZoneSecurityService
