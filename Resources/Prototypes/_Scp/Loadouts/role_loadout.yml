@@ -44,7 +44,7 @@
   - SecurityBackpack
   - SecurityBelt
   - HeadofSecurityOuterClothing
-  - SecurityShoes
+  - GuardShoes
   - SecurityCommanderWeapon
   - SecurityRadio
   - CommonSecurityTrinkets
@@ -143,12 +143,18 @@
 - type: roleLoadout
   id: JobHeavyContainmentZoneCommandant
   groups:
-  - WardenHead
-  - WardenJumpsuit
+  - SquadLeaderHead
+  - SpecialPurposeSquadLeaderEars
+  - CommonSecurityEyes
+  - GuardMantle
+  - SquadLeaderJumpsuit
+  - SquadLeaderOuterClothing
+  - SquadLeaderGloves
+  - GuardShoes
+  - SpecialPurposeSquadLeaderKeyCard
+  - CommonSecurityPDA
   - SecurityBackpack
   - SecurityBelt
-  - WardenOuterClothing
-  - SecurityShoes
   - SpecialPurposeSquadWeaponPrimary
   - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
@@ -165,7 +171,7 @@
   - SecurityBackpack
   - SecurityBelt
   - SecurityOuterClothing
-  - SecurityShoes
+  - GuardShoes
   - SpecialPurposeSquadWeaponPrimary
   - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
@@ -182,7 +188,7 @@
   - SecurityJumpsuit
   - SecurityBackpack
   - SecurityOuterClothing
-  - SecurityShoes
+  - GuardShoes
   - SecurityBelt
   - SpecialPurposeSquadWeaponPrimary
   - SpecialPurposeSquadWeaponSecondary
@@ -211,11 +217,16 @@
 - type: roleLoadout
   id: JobExternalAdministrativeZoneCommandant
   groups:
-  - WardenHead
-  - WardenJumpsuit
-  - WardenOuterClothing
-  - GuardGloves
-  - SecurityShoes
+  - SquadLeaderHead
+  - CommandantSquadLeaderEars
+  - CommonSecurityEyes
+  - GuardMantle
+  - SquadLeaderJumpsuit
+  - SquadLeaderOuterClothing
+  - SquadLeaderGloves
+  - GuardShoes
+  - CommandantSquadLeaderKeyCard
+  - CommonSecurityPDA
   - SecurityBelt
   - SecurityBackpack
   - SpecialPurposeSquadWeaponPrimary
@@ -231,6 +242,7 @@
   id: JobSeniorExternalAdministrativeZoneOfficer
   groups:
   - GuardHead
+  - GuardMantle
   - GuardJumpsuit
   - GuardArmorVest
   - GuardGloves
@@ -250,6 +262,7 @@
   id: JobExternalAdministrativeZoneOfficer
   groups:
   - GuardHead
+  - GuardMantle
   - GuardJumpsuit
   - GuardArmorVest
   - GuardGloves

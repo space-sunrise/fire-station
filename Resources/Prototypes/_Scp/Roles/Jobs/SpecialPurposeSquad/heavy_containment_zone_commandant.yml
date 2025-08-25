@@ -1,16 +1,15 @@
 ﻿- type: job
-  id: ExternalAdministrativeZoneCommandant
-  name: job-name-external-administrative-zone-commandant
-  description: job-description-external-administrative-zone-commandant
-  playTimeTracker: JobExternalAdministrativeZoneCommandant
+  id: HeavyContainmentZoneCommandant
+  name: job-name-heavy-containment-zone-commandant
+  description: job-description-heavy-containment-zone-commandant
+  playTimeTracker: JobHeavyContainmentZoneCommandant
   requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
     - !type:OverallPlaytimeRequirement
       time: 90000 # 25 часов
-  startingGear: ExternalAdministrativeZoneCommandantGear
-  icon: JobExternalAdministrativeZoneCommandant
+  icon: JobHeavyContainmentZoneCommandant
   supervisors: job-supervisors-security-commander
   canBeAntag: false
-  displayWeight: 70
+  displayWeight: 70  # Sunrise
   accessGroups:
   - SecurityCommandant
   special:
@@ -46,12 +45,15 @@
       fallOffChance: 1
 
 - type: startingGear
-  id: ExternalAdministrativeZoneCommandantGear
+  id: HeavyContainmentZoneCommandantGear
   equipment:
+    head: ClothingHeadHatCapLeatherSquadLeader
+    ears: ClothingHeadsetAltHeavyContainmentSecurityService
     eyes: ClothingEyesGlassesSecurity
-    id: KeyCardLightContainmentZoneSecurityCommandant
-    ears: ClothingHeadsetAltExternalAdministrativeZoneSecurityService
+    neck: ClothingNeckMantleSecurity
+    jumpsuit: ClothingUniformJumpsuitSquadLeader
+    outerClothing: ClothingOuterArmorSecurity
+    gloves: ClothingHandsGlovesColorBlackAlt
+    shoes: ClothingShoesBootsSecurityGuard
+    id: KeyCardHeavyContainmentZoneCommandant
     pocket2: ScpSecurityPDA
-  storage:
-    back:
-    - Flash
