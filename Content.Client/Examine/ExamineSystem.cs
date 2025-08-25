@@ -160,7 +160,10 @@ namespace Content.Client.Examine
 
             // Fire added start
             if (TerminatingOrDeleted(entity))
+            {
+                CloseTooltip();
                 return;
+            }
             // Fire added end
 
             OpenTooltip(player.Value, entity, ev.CenterAtCursor, ev.OpenAtOldTooltip, ev.KnowTarget);
