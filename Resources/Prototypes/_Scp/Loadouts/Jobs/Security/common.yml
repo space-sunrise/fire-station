@@ -1,0 +1,27 @@
+﻿# Очки
+
+- type: loadout
+  id: LoadoutClothingEyesGlassesSecurityGuard
+  equipment:
+    eyes: ClothingEyesGlassesSecurityGuard
+
+# КПК
+
+- type: loadout
+  id: LoadoutScpSecurityPDA
+  equipment:
+    pocket2: ScpSecurityPDA
+
+# С собой
+
+- type: loadout
+  id: ScpRadioHandheldSecurity
+  storage:
+    back:
+    - ScpRadioHandheldSecurityEnabled
+
+- type: loadout
+  id: LoadoutFlashlightSeclite
+  storage:
+    back:
+    - FlashlightSeclite

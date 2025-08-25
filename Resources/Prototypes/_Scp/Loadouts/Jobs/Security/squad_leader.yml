@@ -1,0 +1,42 @@
+﻿# Голова
+
+- type: loadout
+  id: LoadoutClothingHeadHatCapLeatherSquadLeader
+  equipment:
+    head: ClothingHeadHatCapLeatherSquadLeader
+
+- type: loadout
+  id: LoadoutClothingHeadCapBlackSquadLeader
+  equipment:
+    head: ClothingHeadCapBlackSquadLeader
+
+- type: loadout
+  id: LoadoutClothingHeadHatCapBlackSquadLeader
+  equipment:
+    head: ClothingHeadHatCapBlackSquadLeader
+
+# Униформа
+
+- type: loadout
+  id: LoadoutClothingUniformJumpsuitSquadLeader
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSquadLeader
+
+- type: loadout
+  id: LoadoutClothingUniformJumpsuitSquadLeaderAlt
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSquadLeaderAlt
+
+# Верхняя одежда
+
+- type: loadout
+  id: LoadoutClothingOuterCoatSquadLeader
+  equipment:
+    outerClothing: ClothingOuterCoatSquadLeader
+
+# Перчатки
+
+- type: loadout
+  id: LoadoutClothingHandsGlovesColorBlackAlt
+  equipment:
+    gloves: ClothingHandsGlovesColorBlackAlt

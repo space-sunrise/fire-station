@@ -10,13 +10,25 @@
 # Комендантский отряд
 
 - type: loadoutGroup
+  id: CommandantSquadLeaderEars
+  name: loadout-group-ears
+  loadouts:
+  - LoadoutClothingHeadsetAltExternalAdministrativeZoneSecurityService
+
+- type: loadoutGroup
+  id: CommandantSquadLeaderKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardLightContainmentZoneSecurityCommandant
+
+- type: loadoutGroup
   id: GuardHead
   name: loadout-group-head
   loadouts:
   - GuardHelmet
   - GuardHelmet2
-  - SecurityBeret
-  - SecurityHat
+  - GuardBeret
+  - GuardHat
 
 - type: loadoutGroup
   id: GuardJumpsuit
@@ -77,6 +89,18 @@
 # Отряд специального назначения
 
 - type: loadoutGroup
+  id: SpecialPurposeSquadLeaderEars
+  name: loadout-group-ears
+  loadouts:
+  - LoadoutClothingHeadsetAltHeavyContainmentSecurityService
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadLeaderKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardHeavyContainmentZoneCommandant
+
+- type: loadoutGroup
   id: SpecialPurposeSquadWeaponPrimary
   name: loadout-group-weapon
   loadouts:
@@ -91,6 +115,50 @@
   - LoadoutWeaponTaser
 
 # Общее для СБ
+
+- type: loadoutGroup
+  id: SquadLeaderHead
+  name: loadout-group-head
+  loadouts:
+  - LoadoutClothingHeadHatCapLeatherSquadLeader
+  - LoadoutClothingHeadCapBlackSquadLeader
+  - LoadoutClothingHeadHatCapBlackSquadLeader
+  - GuardBeret
+
+- type: loadoutGroup
+  id: SquadLeaderJumpsuit
+  name: loadout-group-jumpsuit
+  loadouts:
+  - LoadoutClothingUniformJumpsuitSquadLeader
+  - LoadoutClothingUniformJumpsuitSquadLeaderAlt
+
+- type: loadoutGroup
+  id: SquadLeaderOuterClothing
+  name: loadout-group-outer-clothing
+  loadouts:
+  - GuardArmorVest
+  - GuardArmorVest2
+  - LoadoutClothingOuterCoatSquadLeader
+
+- type: loadoutGroup
+  id: SquadLeaderGloves
+  name: loadout-group-gloves
+  loadouts:
+  - GuardGloves
+  - GuardGlovesWinter
+  - LoadoutClothingHandsGlovesColorBlackAlt
+
+- type: loadoutGroup
+  id: CommonSecurityEyes
+  name: loadout-group-eyes
+  loadouts:
+  - LoadoutClothingEyesGlassesSecurityGuard
+
+- type: loadoutGroup
+  id: CommonSecurityPDA
+  name: loadout-group-pda
+  loadouts:
+  - LoadoutScpSecurityPDA
 
 - type: loadoutGroup
   id: CommonSecurityTrinkets
@@ -116,7 +184,6 @@
 - type: loadoutGroup
   id: EthicsCommitteeRepresentativeJumpsuit
   name: loadout-group-jumpsuit
-  minLimit: 1
   loadouts:
   - EthicsCommitteeRepresentativeJumpsuit
   - EthicsCommitteeRepresentativeJumpskirt
@@ -125,8 +192,6 @@
 - type: loadoutGroup
   id: EthicsCommitteeRepresentativeOuterClothing
   name: loadout-group-outerclothing
-  minLimit: 1
-  maxLimit: 1
   loadouts:
   - EthicsCommitteeRepresentativeCoat
   - EthicsCommitteeRepresentativeCoatOpen
