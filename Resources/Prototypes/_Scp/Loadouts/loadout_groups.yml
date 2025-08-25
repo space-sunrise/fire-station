@@ -142,7 +142,7 @@
 
 - type: loadoutGroup
   id: SquadLeaderGloves
-  name: loadout-group-outer-clothing
+  name: loadout-group-gloves
   loadouts:
   - GuardGloves
   - GuardGlovesWinter
