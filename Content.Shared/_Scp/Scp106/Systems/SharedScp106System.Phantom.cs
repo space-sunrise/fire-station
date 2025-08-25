@@ -99,6 +99,9 @@ public abstract partial class SharedScp106System
         if (!_mob.IsAlive(args.Examiner))
             return;
 
+        if (args.Examiner == ent.Owner)
+            return;
+
         // Ликвидируйся
         _mob.ChangeMobState(ent, MobState.Dead, origin: args.Examiner);
     }
