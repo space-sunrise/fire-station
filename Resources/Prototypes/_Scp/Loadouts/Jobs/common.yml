@@ -48,17 +48,3 @@
   storage:
     back:
     - HandheldStationMap
-
-# СБшная рация
-
-- type: loadout
-  id: ScpRadioHandheldSecurity
-  storage:
-    back:
-    - ScpRadioHandheldSecurityEnabled
-
-- type: loadout
-  id: LoadoutFlashlightSeclite
-  storage:
-    back:
-    - FlashlightSeclite

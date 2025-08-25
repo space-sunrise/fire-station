@@ -1,0 +1,13 @@
+﻿# Наушник
+
+- type: loadout
+  id: LoadoutClothingHeadsetAltHeavyContainmentSecurityService
+  equipment:
+    ears: ClothingHeadsetAltHeavyContainmentSecurityService
+
+# Ключ карта
+
+- type: loadout
+  id: LoadoutKeyCardHeavyContainmentZoneCommandant
+  equipment:
+    id: KeyCardHeavyContainmentZoneCommandant

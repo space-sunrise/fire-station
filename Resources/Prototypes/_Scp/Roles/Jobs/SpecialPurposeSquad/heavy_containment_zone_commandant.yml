@@ -6,7 +6,6 @@
   requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
     - !type:OverallPlaytimeRequirement
       time: 90000 # 25 часов
-  startingGear: HeavyContainmentZoneCommandantGear
   icon: JobHeavyContainmentZoneCommandant
   supervisors: job-supervisors-security-commander
   canBeAntag: false
@@ -48,10 +47,13 @@
 - type: startingGear
   id: HeavyContainmentZoneCommandantGear
   equipment:
-    eyes: ClothingEyesGlassesSecurity
-    id: KeyCardHeavyContainmentZoneCommandant
+    head: ClothingHeadHatCapLeatherSquadLeader
     ears: ClothingHeadsetAltHeavyContainmentSecurityService
+    eyes: ClothingEyesGlassesSecurity
+    neck: ClothingNeckMantleSecurity
+    jumpsuit: ClothingUniformJumpsuitSquadLeader
+    outerClothing: ClothingOuterArmorSecurity
+    gloves: ClothingHandsGlovesColorBlackAlt
+    shoes: ClothingShoesBootsSecurityGuard
+    id: KeyCardHeavyContainmentZoneCommandant
     pocket2: ScpSecurityPDA
-  storage:
-    back:
-    - Flash

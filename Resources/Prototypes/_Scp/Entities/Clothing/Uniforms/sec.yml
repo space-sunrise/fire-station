@@ -33,3 +33,17 @@
     sprite: _Scp/Clothing/Uniforms/security_3.rsi
   - type: Clothing
     sprite: _Scp/Clothing/Uniforms/security_3.rsi
+
+- type: entity
+  parent: ClothingUniformJumpsuitSecGrey
+  id: ClothingUniformJumpsuitSquadLeader
+  name: squad leader jumpsuit
+  description: A distinctive uniform tailored for security squad leaders. Reinforced fabric and command markings set it apart from standard issue.
+  suffix: SCP Guard
+
+- type: entity
+  parent: ClothingUniformJumpsuitPrisonerGrey
+  id: ClothingUniformJumpsuitSquadLeaderAlt
+  name: squad leader jumpsuit
+  description: A distinctive uniform tailored for security squad leaders. Reinforced fabric and command markings set it apart from standard issue.
+  suffix: SCP Guard
