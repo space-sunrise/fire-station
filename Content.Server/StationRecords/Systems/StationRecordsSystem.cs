@@ -211,14 +211,16 @@ public sealed class StationRecordsSystem : SharedStationRecordsSystem
     /// </summary>
     public void SetIdKey(EntityUid? uid, StationRecordKey key)
     {
-        if (uid is not {} idUid)
+        // Fire edit start - фикс странной ошибки???
+        if (!Exists(uid))
             return;
 
-        var keyStorageEntity = idUid;
-        if (TryComp<PdaComponent>(idUid, out var pda) && pda.ContainedId is {} id)
+        var keyStorageEntity = uid.Value;
+        if (TryComp<PdaComponent>(uid, out var pda) && pda.ContainedId is {} id)
         {
             keyStorageEntity = id;
         }
+        // Fire edit end
 
         _keyStorage.AssignKey(keyStorageEntity, key);
     }
