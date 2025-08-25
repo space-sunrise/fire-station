@@ -1,0 +1,23 @@
+﻿- type: loadout
+  id: RadioHandheldExternalAdministrativeZoneSecurityService
+  storage:
+    back:
+    - RadioHandheldExternalAdministrativeZoneSecurityService
+
+# Пистолет-пулемет
+- type: loadout
+  id: LoadoutWeaponSubMachineGunMP7
+  equipment:
+    suitstorage: WeaponSubMachineGunMP7
+
+# Дробовик
+- type: loadout
+  id: LoadoutWeaponShotgunRiot
+  equipment:
+    suitstorage: WeaponShotgunRiot
+
+# Тазер
+- type: loadout
+  id: LoadoutWeaponTaser
+  equipment:
+    pocket1: WeaponTaser

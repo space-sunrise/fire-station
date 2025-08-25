@@ -56,3 +56,9 @@
   storage:
     back:
     - ScpRadioHandheldSecurityEnabled
+
+- type: loadout
+  id: LoadoutFlashlightSeclite
+  storage:
+    back:
+    - FlashlightSeclite

@@ -1,0 +1,19 @@
+﻿# Пистолет
+- type: loadout
+  id: LoadoutWeaponPistolACP14
+  startingGear: GearWeaponPistolACP14
+
+- type: startingGear
+  id: GearWeaponPistolACP14
+  equipment:
+    suitstorage: WeaponPistolACP14
+
+# Револьвер
+- type: loadout
+  id: LoadoutWeaponRevolverMatebaNew
+  startingGear: GearWeaponRevolverMatebaNew
+
+- type: startingGear
+  id: GearWeaponRevolverMatebaNew
+  equipment:
+    suitstorage: WeaponRevolverMatebaNew
