@@ -1,4 +1,5 @@
 ﻿using Content.Server.Actions;
+using Content.Server.Popups;
 using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.DoAfter;
@@ -6,6 +7,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
+using Robust.Server.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Scp106.Systems;
@@ -14,6 +16,8 @@ public sealed partial class Scp106System
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
 
     private static readonly EntProtoId PhantomRemains = "Ash";
 
@@ -28,6 +32,20 @@ public sealed partial class Scp106System
     {
         if (!_mobState.IsIncapacitated(ent))
             return;
+
+        if (args.Origin.HasValue)
+        {
+            // Проигрываем звук смерти фантома убийце фантома
+            _audio.PlayGlobal(ent.Comp.DeathSound, args.Origin.Value);
+
+            // Прикольное сообщение
+            var message = Loc.GetString("scp106-phantom-killed");
+            _popup.PopupCoordinates(message, Transform(ent).Coordinates, args.Origin.Value);
+        }
+
+        // И игроку на 106
+        if (_player.TryGetSessionByEntity(ent, out var session))
+            _audio.PlayGlobal(ent.Comp.DeathSound, session);
 
         TryAshAndReturnToBody(ent);
     }
