@@ -1,5 +1,5 @@
 ent-ScpRadioHandheldCommon = handheld radio
-    .desc = { ent-BaseItem.desc }
+    .desc = A portable two-way radio for on-site communication.
 ent-ScpRadioHandheldEngineering = engineering handheld radio
     .desc = { ent-ScpRadioHandheldCommon.desc }
 ent-ScpRadioHandheldEngineeringEnabled = { ent-ScpRadioHandheldEngineering }
