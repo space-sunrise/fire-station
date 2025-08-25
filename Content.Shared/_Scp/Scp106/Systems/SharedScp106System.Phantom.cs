@@ -1,5 +1,6 @@
 ﻿using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.DoAfter;
+using Content.Shared.Examine;
 using Content.Shared.Mobs;
 using Content.Shared.Physics;
 using Robust.Shared.Physics;
@@ -18,6 +19,8 @@ public abstract partial class SharedScp106System
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106PassThroughAction>(OnScp106PassThroughAction);
 
         SubscribeLocalEvent<Scp106PhantomComponent, Scp106PassThroughActionEvent>(OnScp106PassThroughActionEvent);
+
+        SubscribeLocalEvent<Scp106PhantomComponent, ExaminedEvent>(OnExamined);
     }
 
     private void OnScp106ReverseAction(Entity<Scp106PhantomComponent> ent, ref Scp106ReverseAction args)
@@ -87,5 +90,14 @@ public abstract partial class SharedScp106System
         }
 
         args.Handled = true;
+    }
+
+    private void OnExamined(Entity<Scp106PhantomComponent> ent, ref ExaminedEvent args)
+    {
+        if (!_mob.IsAlive(args.Examiner))
+            return;
+
+        // Ликвидируйся
+        _mob.ChangeMobState(ent, MobState.Dead, origin: args.Examiner);
     }
 }
