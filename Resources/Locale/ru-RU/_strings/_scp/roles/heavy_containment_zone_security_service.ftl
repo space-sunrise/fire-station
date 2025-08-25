@@ -1,7 +1,7 @@
 job-name-heavy-containment-zone-commandant = Командир ОСН
 job-description-heavy-containment-zone-commandant = Командир отряда специального назначения. Он отвечает за безопасность объектов и координирует операции по противодействию объектам в сценарии НОУС.
 job-name-senior-heavy-containment-zone-officer = Старший офицер ОСН
-job-description-senior-heavy-containment-zone-officer = Старший офицер отряда специального назначения. Уже не первый день на службе в отряда, разбирается как работать в критических ситуациях как в штатных. 
+job-description-senior-heavy-containment-zone-officer = Старший офицер отряда специального назначения. Уже не первый день на службе в отряда, разбирается как работать в критических ситуациях как в штатных.
 job-name-heavy-containment-zone-officer = Офицер ОСН
 job-description-heavy-containment-zone-officer = Офицер отряда специального назначения. Он обеспечивает безопасность объектов, а также противодействует им в сценарии НОУС.
 job-name-junior-heavy-containment-zone-officer = Младший офицер ОСН

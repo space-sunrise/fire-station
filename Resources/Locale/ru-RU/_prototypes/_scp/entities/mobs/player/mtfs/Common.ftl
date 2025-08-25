@@ -1,4 +1,4 @@
-﻿ent-KeyCardMtfBase = { ent-KeyCardBase }
+ent-KeyCardMtfBase = { ent-KeyCardBase }
     .desc = { ent-KeyCardBase.desc }
 ent-ClothingMaskMTF = Противогаз Мобильной Оперативной Группы
     .desc = Не дает унюхать трупный запах мертвых сотрудников фонда.
@@ -51,17 +51,12 @@ ent-CrateAdministrationSecure = ящик администрации
     .desc = { ent-CrateBaseSecure.desc }
 ent-PowerCageMTF = боевая энергоячейка фонда SCP
     .desc = Перезаряжаемая энергетическая ячейка для больших устройств. Увеличенная ёмкость для увеличенного уровня мощности. Имеет встроенную ЭМИ защиту.
-
-
 ent-CrateAdministrationRecontainmentCircuitsBoards = набор плат законов фонда SCP
     .desc = Содержит набор из 2 плат законов для Системы Безопасности Комплекса - "{ ent-ScpMtfCircuitBoard }" и "{ ent-ScpDefaultCircuitBoard }", а так же "{ ent-Intellicard }".
     .suffix = Заполненный
-
 ent-CrateAdministrationCrateScpCageScp173 = ящик с ангаром «Пандора»
     .desc = Содержит ангар «Пандора» и отвертку. Идеальный набор, чтобы вернуть SCP-173 в его камеру!
     .suffix = Заполненный
-
-
 ent-SpawnerOnTriggerMTFBase = { ent-SpawnPointScpBase }
     .suffix = Base | Spawn On Trigger
     .desc = { ent-SpawnPointScpBase.desc }
