@@ -23,8 +23,9 @@
     sprite: _Scp/Clothing/Hands/winter_black.rsi
 
 - type: entity
-  parent: ClothingHandsGlovesColorBlack
+  parent: [ClothingHandsGlovesColorBlack, BaseRestrictedContraband]
   id: ClothingHandsGlovesColorBlackAlt
+  suffix: SCP Guard
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Hands/glovesPathologist.rsi
