@@ -4,9 +4,9 @@ using Content.Server._Sunrise.Mood;
 using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Components.Fears;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Watching;
 using Content.Shared.FixedPoint;
-using Content.Shared.Fluids.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Mobs;
@@ -19,10 +19,10 @@ public sealed partial class FearSystem
 {
     [Dependency] private readonly HighlightSystem _highlight = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
+    [Dependency] private readonly ScpHelpers _helpers = default!;
     [Dependency] private readonly MobStateSystem _mob = default!;
 
     private const string MoodSomeoneDiedOnMyEyes = "FearSomeoneDiedOnMyEyes";
-
     private const string MoodHemophobicBleeding = "FearHemophobicBleeding";
     private const string MoodHemophobicSeeBlood = "FearHemophobicSeeBlood";
 
@@ -80,7 +80,7 @@ public sealed partial class FearSystem
                 continue;
 
             _hemophobiaBloodList.Clear();
-            var bloodAmount = GetAroundBloodVolume((uid, hemophobia), in _hemophobiaBloodList);
+            var bloodAmount = _helpers.GetAroundSolutionVolume(uid, hemophobia.Reagent, in _hemophobiaBloodList);
             var requiredBloodAmount = hemophobia.BloodRequiredPerState[fear.State];
 
             if (bloodAmount <= requiredBloodAmount)
@@ -96,34 +96,6 @@ public sealed partial class FearSystem
         }
 
         _nextHemophobiaCheck = _timing.CurTime + HemophobiaCheckCooldown;
-    }
-
-    /// <summary>
-    /// Получает суммарное количество крови в зоне видимости персонажа.
-    /// </summary>
-    private FixedPoint2 GetAroundBloodVolume(Entity<HemophobiaComponent> ent, in List<EntityUid> bloodList)
-    {
-        FixedPoint2 total = 0;
-        var blood = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(ent.Owner);
-
-        foreach (var puddle in blood)
-        {
-            if (!puddle.Comp.Solution.HasValue)
-                continue;
-
-            var solution = puddle.Comp.Solution.Value.Comp.Solution;
-
-            foreach (var (reagentId, quantity) in solution.Contents)
-            {
-                if (reagentId.Prototype != ent.Comp.Reagent)
-                    continue;
-
-                bloodList.Add(puddle);
-                total += quantity;
-            }
-        }
-
-        return total;
     }
 
     /// <summary>
@@ -150,11 +122,9 @@ public sealed partial class FearSystem
     /// </summary>
     private void OnCalmDown(Entity<HemophobiaComponent> ent, ref FearCalmDownAttemptEvent args)
     {
-        _hemophobiaBloodList.Clear();
-        var bloodAmount = GetAroundBloodVolume(ent, in _hemophobiaBloodList);
         var requiredBloodToCancel = ent.Comp.BloodRequiredPerState[args.NewState];
 
-        if (bloodAmount > requiredBloodToCancel)
+        if (_helpers.IsAroundSolutionVolumeGreaterThan(ent, ent.Comp.Reagent, requiredBloodToCancel))
             args.Cancel();
     }
 }

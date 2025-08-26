@@ -9,6 +9,9 @@ using Content.Shared.Storage.Components;
 
 namespace Content.Shared._Scp.Watching;
 
+// TODO: Оптимизации Garbage Collector посредством возможности передать заранее готовый список сущностей.
+// Вместо создания каждый раз нового система будет использовать список, который заготовлен заранее и будет очищаться перед повторным использованием.
+
 public sealed partial class EyeWatchingSystem
 {
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;

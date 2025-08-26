@@ -7,17 +7,16 @@ using Content.Server.Interaction;
 using Content.Server.Popups;
 using Content.Server.Storage.Components;
 using Content.Server.Storage.EntitySystems;
+using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp173;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Damage;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Examine;
-using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
-using Content.Shared.Fluids.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Light.Components;
 using Content.Shared.Lock;
@@ -31,7 +30,6 @@ using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp173;
@@ -53,16 +51,14 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly AudioSystem _audio= default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly ExplosionSystem _explosion = default!;
+    [Dependency] private readonly ScpHelpers _helpers = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
 
     private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
     private readonly SoundSpecifier _clogSound = new SoundPathSpecifier("/Audio/_Scp/Scp173/clog.ogg");
 
     public const int MinTotalSolutionVolume = 500;
     public const int ExtraMinTotalSolutionVolume = 800;
-
-    public readonly ProtoId<ReagentPrototype> Reagent = "Scp173Reagent";
 
     private const float ToggleDoorStuffChance = 0.35f;
 
@@ -202,26 +198,12 @@ public sealed class Scp173System : SharedScp173System
         var coords = Transform(ent).Coordinates;
 
         var tempSol = new Solution();
-        tempSol.AddReagent(Reagent, 25);
+        tempSol.AddReagent(Scp173Component.Reagent, 25);
         _puddle.TrySpillAt(coords, tempSol, out _, false);
 
         _audio.PlayPvs(_clogSound, ent);
 
-        FixedPoint2 total = 0;
-        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, ContainmentRoomSearchRadius)
-            .Where(puddle =>
-                _interaction.InRangeUnobstructed(ent.Owner, puddle.Owner, ExamineSystemShared.ExamineRange));
-
-        foreach (var puddle in puddles)
-        {
-            if (!puddle.Comp.Solution.HasValue)
-                continue;
-
-            var allReagents = puddle.Comp.Solution.Value.Comp.Solution.GetReagentPrototypes(_prototype);
-            total = allReagents
-                .Where(reagent => reagent.Key.ID == Reagent)
-                .Aggregate(total, (current, reagent) => current + reagent.Value);
-        }
+        var total = _helpers.GetAroundSolutionVolume(ent, Scp173Component.Reagent, LineOfSightBlockerLevel.None);
 
         if (total >= MinTotalSolutionVolume)
         {
