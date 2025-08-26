@@ -119,6 +119,9 @@
   name: Scp173 cage
   components:
   - type: ScpCage
+    stopReagent: Scp173Reagent
+    stopReagentVolume: 25
+    reason: scp173-cage-cannot-be-closed
     closeStorageBlacklist:
       components:
       - Scp173BlockStructureDamage

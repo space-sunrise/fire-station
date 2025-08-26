@@ -1,6 +1,9 @@
 ﻿using Content.Shared._Scp.Proximity;
+using Content.Shared.Chemistry.Reagent;
+using Content.Shared.FixedPoint;
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Containment.Cage;
 
@@ -18,6 +21,12 @@ public sealed partial class ScpCageComponent : Component
     /// </summary>
     [DataField]
     public EntityWhitelist? OpenStorageBlacklist;
+
+    [DataField]
+    public ProtoId<ReagentPrototype>? StopReagent;
+
+    [DataField]
+    public FixedPoint2 StopReagentVolume;
 
     /// <summary>
     /// Радиус поиска объектов при проверке на блеклист.

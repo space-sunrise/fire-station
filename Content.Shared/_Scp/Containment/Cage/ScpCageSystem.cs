@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Proximity;
 using Content.Shared.Popups;
 using Content.Shared.Storage.Components;
@@ -11,6 +12,7 @@ public sealed class ScpCageSystem : EntitySystem
     [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private readonly ScpHelpers _helpers = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     public override void Initialize()
@@ -26,10 +28,13 @@ public sealed class ScpCageSystem : EntitySystem
         if (args.Cancelled)
             return;
 
-        args.Cancelled = IsRestricted(ent, ent.Comp.OpenStorageBlacklist);
+        if (!IsRestricted(ent, ent.Comp.OpenStorageBlacklist))
+            return;
 
         if (!string.IsNullOrEmpty(ent.Comp.Reason))
             _popup.PopupPredicted(Loc.GetString(ent.Comp.Reason), ent, args.User);
+
+        args.Cancelled = true;
     }
 
     private void OnCloseAttempt(Entity<ScpCageComponent> ent, ref StorageCloseAttemptEvent args)
@@ -37,10 +42,13 @@ public sealed class ScpCageSystem : EntitySystem
         if (args.Cancelled)
             return;
 
-        args.Cancelled = IsRestricted(ent, ent.Comp.CloseStorageBlacklist);
+        if (!IsRestricted(ent, ent.Comp.CloseStorageBlacklist))
+            return;
 
         if (!string.IsNullOrEmpty(ent.Comp.Reason))
             _popup.PopupPredicted(Loc.GetString(ent.Comp.Reason), ent, args.User);
+
+        args.Cancelled = true;
     }
 
     private bool IsRestricted(Entity<ScpCageComponent> ent, EntityWhitelist? blacklist)
@@ -54,9 +62,23 @@ public sealed class ScpCageSystem : EntitySystem
         if (blacklist == null)
             return false;
 
-        if (_whitelist.IsWhitelistPass(blacklist, uid) && _proximity.IsRightType(ent, uid, ent.Comp.LineOfSight, out _))
-            return true;
+        var passesWhitelist = _whitelist.IsWhitelistPass(blacklist, uid);
+        if (!passesWhitelist)
+            return false;
 
-        return false;
+        var correctType = _proximity.IsRightType(ent, uid, ent.Comp.LineOfSight, out _);
+        if (!correctType)
+            return false;
+
+        var reagentOk = ent.Comp.StopReagent == null
+                        || _helpers.IsAroundSolutionVolumeGreaterThan(
+                            ent,
+                            ent.Comp.StopReagent.Value,
+                            ent.Comp.StopReagentVolume);
+
+        if (!reagentOk)
+            return false;
+
+        return true;
     }
 }
