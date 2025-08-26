@@ -1,0 +1,57 @@
+- type: constructionGraph
+  id: ReinforcedSurveillanceCamera
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: assembly
+          steps:
+            - material: Plasteel
+              amount: 2
+              doAfter: 3.5
+
+    - node: assembly
+      entity: ReinforcedSurveillanceCameraAssembly
+      edges:
+        - to: wired
+          steps:
+            - material: Cable
+              amount: 2
+              doAfter: 2
+        - to: start
+          completed:
+            - !type:GivePrototype
+              prototype: SheetPlasteel1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Welding
+              doAfter: 4
+
+    - node: wired
+      entity: ReinforcedSurveillanceCameraAssembly
+      edges:
+        - to: camera
+          steps:
+            - tool: Screwing
+              doAfter: 3
+
+    - node: camera
+      entity: ReinforcedSurveillanceCameraConstructed
+      edges:
+        - to: start
+          conditions:
+            - !type:AllWiresCut {}
+            - !type:WirePanel {}
+          completed:
+            - !type:GivePrototype
+              prototype: SheetPlasteel1
+              amount: 2
+            - !type:GivePrototype
+              prototype: CableApcStack1
+              amount: 2
+            - !type:DeleteEntity {}
+          steps:
+            - tool: Welding
+              doAfter: 4
+
