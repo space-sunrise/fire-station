@@ -25,6 +25,8 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
+    protected static readonly TimeSpan ReagentCheckInterval = TimeSpan.FromSeconds(1);
+
     public const float ContainmentRoomSearchRadius = 8f;
 
     public override void Initialize()
@@ -127,7 +129,7 @@ public abstract class SharedScp173System : EntitySystem
         args.Handled = true;
     }
 
-    protected abstract void BreakNeck(EntityUid target, Scp173Component scp);
+    protected virtual void BreakNeck(EntityUid target, Scp173Component scp) {}
 
     #endregion
 

@@ -12,8 +12,8 @@ public sealed class Scp173UiWidget : UIWidget
         AddChild(_bar);
     }
 
-    public void SetData(float current, float max)
+    public void SetData(float current, float max, float bloatedMax)
     {
-        _bar.UpdateInfo(current, max);
+        _bar.UpdateInfo(current, max, bloatedMax);
     }
 }
