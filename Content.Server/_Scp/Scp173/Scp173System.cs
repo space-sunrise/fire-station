@@ -16,7 +16,6 @@ using Content.Shared.Damage;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Examine;
-using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Humanoid;
 using Content.Shared.Light.Components;
@@ -229,9 +228,8 @@ public sealed partial class Scp173System : SharedScp173System
 
         if (total >= Scp173Component.MinTotalSolutionVolume)
         {
-            var transform = Transform(args.Performer);
-            var lookup = _lookup.GetEntitiesInRange(transform.Coordinates, 5, flags: LookupFlags.Dynamic | LookupFlags.Static)
-                .Where(target => _interaction.InRangeUnobstructed(ent.Owner, target, ExamineSystemShared.ExamineRange));
+            var lookup = _lookup.GetEntitiesInRange(coords, ContainmentRoomSearchRadius, flags: LookupFlags.Dynamic | LookupFlags.Static)
+                .Where(target => _examine.InRangeUnOccluded(ent, target, ContainmentRoomSearchRadius));
 
             foreach (var target in lookup)
             {

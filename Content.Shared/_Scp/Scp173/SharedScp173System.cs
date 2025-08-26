@@ -169,9 +169,8 @@ public abstract class SharedScp173System : EntitySystem
     /// </summary>
     public bool IsContained(EntityUid uid)
     {
-        return _lookup.GetEntitiesInRange(uid, ContainmentRoomSearchRadius)
-            .Any(entity => HasComp<Scp173BlockStructureDamageComponent>(entity) &&
-                           _interaction.InRangeUnobstructed(uid, entity, ContainmentRoomSearchRadius));
+        return _lookup.GetEntitiesInRange<Scp173BlockStructureDamageComponent>(Transform(uid).Coordinates, ContainmentRoomSearchRadius)
+            .Any(entity => _interaction.InRangeUnobstructed(uid, entity.Owner, ContainmentRoomSearchRadius));
     }
 
     #endregion
