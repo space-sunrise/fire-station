@@ -16,9 +16,6 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp173;
 
-// TODO: Создать единую систему/метод для получения всех смотрящих на какого-либо ентити
-// Где будет учитываться, закрыты ли глаза, не моргает ли человек т.п. базовая информация
-
 public abstract class SharedScp173System : EntitySystem
 {
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;

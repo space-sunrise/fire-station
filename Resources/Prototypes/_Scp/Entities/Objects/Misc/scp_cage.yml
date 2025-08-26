@@ -14,7 +14,6 @@
   - type: Icon
     sprite: _Scp/Objects/Misc/scp_cage.rsi
     state: closed
-  - type: SpriteFade
   # Копипаста с CrateGeneric
   - type: Transform
     noRot: true
@@ -119,6 +118,10 @@
   id: CrateScpCageScp173
   name: Scp173 cage
   components:
+  - type: ScpCage
+    closeStorageBlacklist:
+      components:
+      - Scp173BlockStructureDamage
   - type: EntityStorage
     doAfterDelay: 3
     air:
