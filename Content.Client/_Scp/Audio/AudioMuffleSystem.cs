@@ -1,9 +1,7 @@
 ﻿using Content.Shared._Scp.Audio;
 using Content.Shared._Scp.Audio.Components;
+using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.ScpCCVars;
-using Content.Shared.Examine;
-using Content.Shared.Interaction;
-using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
@@ -15,29 +13,15 @@ namespace Content.Client._Scp.Audio;
 
 public sealed class AudioMuffleSystem : EntitySystem
 {
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly ExamineSystemShared _examine = default!;
-    [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     private static readonly ProtoId<AudioPresetPrototype> MufflingEffectPreset = "ScpBehindWalls";
-    private static readonly HashSet<ProtoId<TagPrototype>> SoundproofingTags =
-    [
-        "Wall",
-        "Window",
-        "Airlock",
-        "GlassAirlock",
-        "Windoor",
-        "SecureWindoor",
-        "SecurePlasmaWindoor",
-        "SecureUraniumWindoor",
-    ];
 
     private const float ReducedVolume = -20f;
-    private const float HearRange = 14f;
 
     private bool _isClientSideEnabled;
     // Отвечает за выбор цикла для итерации звуков.
@@ -112,14 +96,14 @@ public sealed class AudioMuffleSystem : EntitySystem
 
         while (query.MoveNext(out var sound, out var audioComp))
         {
-            if (TerminatingOrDeleted(sound) || Paused(sound))
+            if (TerminatingOrDeleted(sound))
                 continue;
 
             // Глобальные звуки(музыка и т.д) не должны поддаваться заглушению
             if (audioComp.Global)
                 continue;
 
-            var inRangeUnOccluded = _examine.InRangeUnOccluded(sound, player, HearRange);
+            var lineOfSight = _proximity.GetLightOfSightBlockerLevel(sound, player);
 
             // В чем прикол этой конструкции снизу:
             // Если что-то находится за каким-то объектом и его НЕ видно через стекла -> 1ый случай.
@@ -128,17 +112,20 @@ public sealed class AudioMuffleSystem : EntitySystem
             // Примеры второго случая: Что-то за стеклом или стеклянным шлюзом
             // Если ничего из этого, значит объект в прямой зоне видимости игрока
             // И никаких эффектов заглушения быть не должно. Поэтому мы снимаем эффекты
-            if (!inRangeUnOccluded)
+            switch (lineOfSight)
             {
-                TryMuffleSound((sound, audioComp));
-            }
-            else if (inRangeUnOccluded && !InRangeUnobstructed(sound, player))
-            {
-                TryMuffleSound((sound, audioComp), false);
-            }
-            else
-            {
-                TryUnMuffleSound((sound, audioComp));
+                case LineOfSightBlockerLevel.Solid:
+                    TryMuffleSound((sound, audioComp));
+                    break;
+                case LineOfSightBlockerLevel.Transparent:
+                    TryMuffleSound((sound, audioComp), false);
+                    break;
+                case LineOfSightBlockerLevel.None:
+                    TryUnMuffleSound((sound, audioComp));
+                    break;
+                default:
+                    TryUnMuffleSound((sound, audioComp));
+                    break;
             }
         }
     }
@@ -201,13 +188,6 @@ public sealed class AudioMuffleSystem : EntitySystem
 
         return true;
     }
-
-    private bool InRangeUnobstructed(Entity<TransformComponent?> first, Entity<TransformComponent?> second)
-    {
-        return _interaction.InRangeUnobstructed(first, second, HearRange, predicate: IsNotSoundproofing);
-    }
-
-    private bool IsNotSoundproofing(EntityUid e) => !_tag.HasAnyTag(e, SoundproofingTags);
 
     private void OnToggled(bool enabled)
     {

@@ -2,6 +2,8 @@
 using Content.Shared.GameTicking;
 using Content.Shared.Interaction;
 using Content.Shared.Storage.Components;
+using Content.Shared.Tag;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Proximity;
@@ -21,6 +23,7 @@ public sealed class ProximitySystem : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly ExamineSystemShared _examine = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly TimeSpan ProximitySearchCooldown = TimeSpan.FromSeconds(0.05f);
@@ -30,6 +33,21 @@ public sealed class ProximitySystem : EntitySystem
     private static readonly HashSet<Entity<ProximityTargetComponent>> Targets = [];
     private static readonly HashSet<EntityUid> PossibleNotInRange = [];
     private static readonly HashSet<EntityUid> AllTargets = [];
+
+    private const float JustUselessNumber = 100f;
+
+    private static readonly HashSet<ProtoId<TagPrototype>> SolidTags =
+    [
+        "Wall",
+        "Window",
+        "Airlock",
+        "GlassAirlock",
+        "HighSecDoor",
+        "Windoor",
+        "SecureWindoor",
+        "SecurePlasmaWindoor",
+        "SecureUraniumWindoor",
+    ];
 
     public override void Initialize()
     {
@@ -132,14 +150,21 @@ public sealed class ProximitySystem : EntitySystem
         if (HasComp<InsideEntityStorageComponent>(receiver))
             return LineOfSightBlockerLevel.Solid;
 
-        var isUnobstructed = _interaction.InRangeUnobstructed(receiver, target, float.MaxValue);
-        var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, float.MaxValue);
+        var isUnobstructed = InRangeUnobstructed(receiver, target);
+        var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, JustUselessNumber);
 
-        if (isUnOccluded && isUnobstructed)
-            return LineOfSightBlockerLevel.None;
-        else if (!isUnobstructed && isUnOccluded)
+        if (!isUnOccluded)
+            return LineOfSightBlockerLevel.Solid;
+        else if (isUnOccluded && !isUnobstructed)
             return LineOfSightBlockerLevel.Transparent;
         else
-            return LineOfSightBlockerLevel.Solid;
+            return LineOfSightBlockerLevel.None;
     }
+
+    private bool InRangeUnobstructed(Entity<TransformComponent?> first, Entity<TransformComponent?> second)
+    {
+        return _interaction.InRangeUnobstructed(first, second, JustUselessNumber, predicate: IsNotSolidObject);
+    }
+
+    private bool IsNotSolidObject(EntityUid e) => !_tag.HasAnyTag(e, SolidTags);
 }
