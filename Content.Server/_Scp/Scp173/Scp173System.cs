@@ -16,6 +16,7 @@ using Content.Shared.Damage;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Examine;
+using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
 using Content.Shared.Humanoid;
 using Content.Shared.Light.Components;
@@ -31,11 +32,13 @@ using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Scp173;
 
-public sealed class Scp173System : SharedScp173System
+public sealed partial class Scp173System : SharedScp173System
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly GhostSystem _ghost = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
@@ -62,15 +65,49 @@ public sealed class Scp173System : SharedScp173System
 
     private const float ToggleDoorStuffChance = 0.35f;
 
+    private TimeSpan _nextReagentCheck;
+    private static readonly TimeSpan ReagentCheckInterval = TimeSpan.FromSeconds(1);
+
     public override void Initialize()
     {
         base.Initialize();
-
+        SubscribeLocalEvent<Scp173Component, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<Scp173Component, Scp173DamageStructureAction>(OnStructureDamage);
         SubscribeLocalEvent<Scp173Component, Scp173ClogAction>(OnClog);
         SubscribeLocalEvent<Scp173Component, Scp173FastMovementAction>(OnFastMovement);
     }
+    private void OnStartup(EntityUid uid, Scp173Component component, ComponentStartup args)
+    {
+        EnsureComp<Scp173ReagentTrackerComponent>(uid);
+    }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (_timing.CurTime < _nextReagentCheck)
+            return;
+
+        _nextReagentCheck = _timing.CurTime + ReagentCheckInterval;
+
+        var query = EntityQueryEnumerator<Scp173Component, Scp173ReagentTrackerComponent>();
+        while (query.MoveNext(out var uid, out _, out var tracker))
+        {
+            var isInContainment = IsContained(uid);
+            tracker.IsInContainment = isInContainment;
+
+            if (isInContainment)
+            {
+                tracker.CurrentReagentAmount = _helpers.GetAroundSolutionVolume(uid, Scp173Component.Reagent);
+            }
+            else
+            {
+                tracker.CurrentReagentAmount = FixedPoint2.Zero;
+            }
+
+            Dirty(uid, tracker);
+        }
+    }
     protected override void BreakNeck(EntityUid target, Scp173Component scp)
     {
         if (!HasComp<MobStateComponent>(target))
