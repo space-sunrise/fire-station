@@ -243,7 +243,7 @@ public sealed partial class Scp173System : SharedScp173System
                     _door.StartOpening(target);
             }
         }
-        else if (total >= Scp173Component.ExtraMinTotalSolutionVolume)
+        if (total >= Scp173Component.ExtraMinTotalSolutionVolume)
         {
             _explosion.QueueExplosion(_transform.GetMapCoordinates(ent), ExplosionSystem.DefaultExplosionPrototypeId, 300f, 0.6f, 50f, ent);
         }
