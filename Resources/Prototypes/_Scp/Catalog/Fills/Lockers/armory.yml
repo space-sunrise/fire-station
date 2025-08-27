@@ -2,7 +2,8 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunLockerM1984
-  name: M1984 gun rack
+  name: M1984 gun locker
+  suffix: M1984 x5
   components:
   - type: EntityTableContainerFill
     containers:
@@ -19,7 +20,8 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunLockerG22Auto
-  name: Glock-22 auto gun rack
+  name: Glock-22 auto gun locker
+  suffix: Glock-22 Auto x5
   components:
   - type: EntityTableContainerFill
     containers:
@@ -36,7 +38,8 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunLockerACP14
-  name: ACP14 gun rack
+  name: ACP14 gun locker
+  suffix: ACP14 x5
   components:
   - type: EntityTableContainerFill
     containers:
@@ -50,11 +53,12 @@
     - id: WeaponPistolACP14
       amount: 5
 
-# ShotGun
+# Shotguns
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunLockerSPAS12
-  name: SPAS12 gun rack
+  name: SPAS12 gun locker
+  suffix: SPAS12 x4
   components:
   - type: EntityTableContainerFill
     containers:
@@ -71,7 +75,8 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunLockerShotgunRiot
-  name: Shotgun Riot gun rack
+  name: Shotgun Riot gun locker
+  suffix: Shotgun Riot x4
   components:
   - type: EntityTableContainerFill
     containers:
@@ -89,7 +94,8 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunLockerP90
-  name: P90 gun rack
+  name: P90 gun locker
+  suffix: P90 x4
   components:
   - type: EntityTableContainerFill
     containers:
@@ -106,7 +112,8 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunLockerMP5
-  name: MP5 gun rack
+  name: MP5 gun locker
+  suffix: MP5 x4
   components:
   - type: EntityTableContainerFill
     containers:
@@ -123,7 +130,8 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunLockerMP7
-  name: MP7 gun rack
+  name: MP7 gun locker
+  suffix: MP7 x4
   components:
   - type: EntityTableContainerFill
     containers:
@@ -141,7 +149,8 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunLockerM16A4
-  name: M16A4 gun rack
+  name: M16A4 gun locker
+  suffix: M16A4 x4
   components:
   - type: EntityTableContainerFill
     containers:
@@ -158,7 +167,8 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunLockerG36
-  name: G36 gun rack
+  name: G36 gun locker
+  suffix: G36 x4
   components:
   - type: EntityTableContainerFill
     containers:
@@ -175,7 +185,8 @@
 - type: entity
   parent: [GunSafeBaseSecure, BaseSecurityContraband]
   id: GunLockerAR18
-  name: AR18 gun rack
+  name: AR18 gun locker
+  suffix: AR18 x4
   components:
   - type: EntityTableContainerFill
     containers:
