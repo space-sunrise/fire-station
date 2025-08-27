@@ -1,0 +1,9 @@
+﻿- type: entity
+  name: ID card box
+  parent: BoxID
+  id: ScpBoxKeyCard
+  components:
+  - type: StorageFill
+    contents:
+    - id: KeyCardEmpty
+      amount: 4
