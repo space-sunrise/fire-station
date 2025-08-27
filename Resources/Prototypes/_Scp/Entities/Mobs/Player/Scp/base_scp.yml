@@ -111,6 +111,7 @@
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
+    examinable: false
   - type: StationRecordKeyStorage
   - type: NpcFactionMember
     factions:
