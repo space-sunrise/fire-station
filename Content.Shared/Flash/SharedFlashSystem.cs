@@ -264,6 +264,11 @@ public abstract class SharedFlashSystem : EntitySystem
 
     private void OnExamine(Entity<FlashImmunityComponent> ent, ref ExaminedEvent args)
     {
+        // Fire added start - чтобы сцп не показывались как "устойчивые к флешкам" в описании.
+        if (!ent.Comp.Examinable)
+            return;
+        // Fire added end
+
         args.PushMarkup(Loc.GetString("flash-protection"));
     }
 }

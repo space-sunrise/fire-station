@@ -23,6 +23,7 @@
     description: ghost-panel-antagonist-scp106-phantom-description
     priority: -5
   - type: FlashImmunity
+    examinable: false
   - type: Scp106Phantom
   - type: ToggleableNightVision
     effect: ScpEffectNightVision

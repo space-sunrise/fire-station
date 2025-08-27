@@ -15,4 +15,9 @@ public sealed partial class FlashImmunityComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public bool Enabled = true;
+
+    // Fire added start - чтобы сцп не показывались как "устойчивые к флешкам" в описании.
+    [DataField]
+    public bool Examinable = true;
+    // Fire added end
 }
