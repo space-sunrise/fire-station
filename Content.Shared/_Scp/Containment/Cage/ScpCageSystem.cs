@@ -53,15 +53,15 @@ public sealed class ScpCageSystem : EntitySystem
 
     private bool IsRestricted(Entity<ScpCageComponent> ent, EntityWhitelist? blacklist)
     {
+        if (blacklist == null)
+            return false;
+
         return _lookup.GetEntitiesInRange(ent, ent.Comp.SearchRadius)
             .Any(uid => IsBadEntity(ent, blacklist, uid));
     }
 
     private bool IsBadEntity(Entity<ScpCageComponent> ent, EntityWhitelist? blacklist, EntityUid uid)
     {
-        if (blacklist == null)
-            return false;
-
         var passesWhitelist = _whitelist.IsWhitelistPass(blacklist, uid);
         if (!passesWhitelist)
             return false;

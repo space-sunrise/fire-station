@@ -156,7 +156,7 @@ public sealed class ProximitySystem : EntitySystem
 
         if (!isUnOccluded)
             return LineOfSightBlockerLevel.Solid;
-        else if (isUnOccluded && !isUnobstructed)
+        else if (!isUnobstructed)
             return LineOfSightBlockerLevel.Transparent;
         else
             return LineOfSightBlockerLevel.None;
