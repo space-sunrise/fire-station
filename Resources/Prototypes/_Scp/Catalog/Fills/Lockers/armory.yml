@@ -1,0 +1,135 @@
+- type: entity
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunRackM16A4
+  name: M16A4 gun rack
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunRackM16A4
+
+- type: entityTable
+  id: FillGunRackM16A4
+  table: !type:AllSelector
+    children:
+    - id: WeaponRifleM16A4
+      amount: 4
+
+- type: entity
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunRackP90
+  name: P90 gun rack
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunRackP90
+
+- type: entityTable
+  id: FillGunRackP90
+  table: !type:AllSelector
+    children:
+    - id: WeaponSubMachineGunP90
+      amount: 4
+
+- type: entity
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunRackG36
+  name: G36 gun rack
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunRackG36
+
+- type: entityTable
+  id: FillGunRackG36
+  table: !type:AllSelector
+    children:
+    - id: WeaponRifleG36
+      amount: 4
+
+- type: entity
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunRackAR18
+  name: AR18 gun rack
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunRackAR18
+
+- type: entityTable
+  id: FillGunRackAR18
+  table: !type:AllSelector
+    children:
+    - id: WeaponRifleAR18
+      amount: 4
+
+- type: entity
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunRackSPAS12
+  name: SPAS12 gun rack
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunRackSPAS12
+
+- type: entityTable
+  id: FillGunRackSPAS12
+  table: !type:AllSelector
+    children:
+    - id: WeaponShotgunSPAS12
+      amount: 4
+
+- type: entity
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunRackShotgunRiot
+  name: Shotgun Riot gun rack
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunRackShotgunRiot
+
+- type: entityTable
+  id: FillGunRackShotgunRiot
+  table: !type:AllSelector
+    children:
+    - id: WeaponShotgunRiot
+      amount: 4
+
+- type: entity
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunRackMP7
+  name: MP7 gun rack
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunRackMP7
+
+- type: entityTable
+  id: FillGunRackMP7
+  table: !type:AllSelector
+    children:
+    - id: WeaponSubMachineGunMP7
+      amount: 4
+
+- type: entity
+  parent: [GunSafeBaseSecure, BaseSecurityContraband]
+  id: GunRackMP5
+  name: MP5 gun rack
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillGunRackMP5
+
+- type: entityTable
+  id: FillGunRackMP5
+  table: !type:AllSelector
+    children:
+    - id: WeaponSubMachineGunMP5
+      amount: 4
