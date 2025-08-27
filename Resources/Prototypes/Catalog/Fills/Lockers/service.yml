@@ -2,6 +2,7 @@
   id: LockerBoozeFilled
   suffix: Filled
   parent: LockerBooze
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: EntityTableContainerFill
     containers:
@@ -99,6 +100,7 @@
   id: ClosetLegalFilled
   suffix: Filled
   parent: ClosetLegal
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: EntityTableContainerFill
     containers:
@@ -117,6 +119,7 @@
   id: LockerBotanistFilled
   suffix: Filled
   parent: LockerBotanist
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: EntityTableContainerFill
     containers:
@@ -146,6 +149,7 @@
   id: LockerBotanistLoot
   suffix: Loot
   parent: LockerBotanist
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: EntityTableContainerFill
     containers:
@@ -170,7 +174,7 @@
   id: ClosetJanitorBombFilled
   parent: ClosetJanitorBomb
   suffix: DO NOT MAP, Filled
-  categories: [ DoNotMap ]
+  categories: [ DoNotMap, HideSpawnMenu] # Fire edit
   components:
   - type: EntityTableContainerFill
     containers:

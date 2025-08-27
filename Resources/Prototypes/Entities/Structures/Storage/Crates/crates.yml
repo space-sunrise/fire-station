@@ -250,7 +250,7 @@
     - type: Sprite
       sprite: Structures/Storage/Crates/chemcrate_secure.rsi
     - type: AccessReader
-      access: [["Chemistry"]]
+      access: [["Laboratory"]] # Fire edit
       # Sunrise-start
       alertAccesses:
         red: RedAlertAccesses
@@ -296,7 +296,7 @@
   - type: Sprite
     sprite: Structures/Storage/Crates/plasma.rsi
   - type: AccessReader
-    access: [["Engineering"], ["Research"], ["Chemistry"]]
+    access: [["Engineering"], ["Research"], ["Laboratory"]] # Fire edit
     # Sunrise-start
     alertAccesses:
       red: RedAlertAccesses
@@ -324,7 +324,7 @@
   - type: Sprite
     sprite: Structures/Storage/Crates/hydro_secure.rsi
   - type: AccessReader
-    access: [["Hydroponics"]]
+    access: [["Service"]] # Fire edit
     # Sunrise-start
     alertAccesses:
       red: RedAlertAccesses
@@ -366,7 +366,7 @@
   - type: Sprite
     sprite: Structures/Storage/Crates/command.rsi
   - type: AccessReader
-    access: [["Command"]]
+    access: [["Administration"]] # Fire edit
     # Sunrise-start
     alertAccesses:
       red: RedAlertAccesses
@@ -918,7 +918,7 @@
       offset: "0.0,0.03125"
       map: ["enum.PaperLabelVisuals.Layer"]
   - type: AccessReader
-    access: [["Janitor"]]
+    access: [["Service"]] # Fire edit
     # Sunrise-start
     alertAccesses:
       red: RedAlertAccesses
