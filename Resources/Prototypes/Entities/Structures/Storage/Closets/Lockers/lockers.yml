@@ -609,6 +609,7 @@
 - type: entity
   id: LockerDetective
   parent: LockerBooze
+  categories: [ HideSpawnMenu ] # Fire added
   name: detective's cabinet
   description: Usually cold and empty... like your heart.
   components:
