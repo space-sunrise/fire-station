@@ -16,9 +16,6 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp173;
 
-// TODO: Создать единую систему/метод для получения всех смотрящих на какого-либо ентити
-// Где будет учитываться, закрыты ли глаза, не моргает ли человек т.п. базовая информация
-
 public abstract class SharedScp173System : EntitySystem
 {
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
@@ -27,6 +24,8 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+
+    protected static readonly TimeSpan ReagentCheckInterval = TimeSpan.FromSeconds(1);
 
     public const float ContainmentRoomSearchRadius = 8f;
 
@@ -130,7 +129,7 @@ public abstract class SharedScp173System : EntitySystem
         args.Handled = true;
     }
 
-    protected abstract void BreakNeck(EntityUid target, Scp173Component scp);
+    protected virtual void BreakNeck(EntityUid target, Scp173Component scp) {}
 
     #endregion
 
@@ -170,9 +169,8 @@ public abstract class SharedScp173System : EntitySystem
     /// </summary>
     public bool IsContained(EntityUid uid)
     {
-        return _lookup.GetEntitiesInRange(uid, ContainmentRoomSearchRadius)
-            .Any(entity => HasComp<Scp173BlockStructureDamageComponent>(entity) &&
-                           _interaction.InRangeUnobstructed(uid, entity, ContainmentRoomSearchRadius));
+        return _lookup.GetEntitiesInRange<Scp173BlockStructureDamageComponent>(Transform(uid).Coordinates, ContainmentRoomSearchRadius)
+            .Any(entity => _interaction.InRangeUnobstructed(uid, entity.Owner, ContainmentRoomSearchRadius));
     }
 
     #endregion

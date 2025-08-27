@@ -3,6 +3,7 @@
   parent: BaseStructure
   name: high security door
   description: Keeps the bad out and keeps the good in.
+  categories: [ HideSpawnMenu ] # Fire added
   placement:
     mode: SnapgridCenter
   components:

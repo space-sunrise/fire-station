@@ -19,7 +19,7 @@
         amount: 2
       - id: Plunger
         amount: 2
-      #- id: BoxCleanerGrenades # Fire Edit
+      - id: BoxCleanerGrenades
       - id: WireBrush
         amount: 2
 
