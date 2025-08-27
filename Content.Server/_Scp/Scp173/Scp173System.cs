@@ -87,7 +87,7 @@ public sealed partial class Scp173System : SharedScp173System
             if (!IsContained(uid))
                 continue;
 
-            scp173.ReagentVolumeAround = _helpers.GetAroundSolutionVolume(uid, Scp173Component.Reagent);
+            scp173.ReagentVolumeAround = _helpers.GetAroundSolutionVolume(uid, Scp173Component.Reagent, LineOfSightBlockerLevel.None);
             Dirty(uid, scp173);
         }
     }

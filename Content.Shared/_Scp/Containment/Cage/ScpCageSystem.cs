@@ -74,7 +74,8 @@ public sealed class ScpCageSystem : EntitySystem
                         || _helpers.IsAroundSolutionVolumeGreaterThan(
                             ent,
                             ent.Comp.StopReagent.Value,
-                            ent.Comp.StopReagentVolume);
+                            ent.Comp.StopReagentVolume,
+                            LineOfSightBlockerLevel.None);
 
         if (!reagentOk)
             return false;

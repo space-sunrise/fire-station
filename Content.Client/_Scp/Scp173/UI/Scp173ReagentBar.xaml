@@ -6,9 +6,9 @@
     <PanelContainer.PanelOverride>
         <graphics:StyleBoxFlat BackgroundColor="#121111CC"/>
     </PanelContainer.PanelOverride>
-    <BoxContainer Orientation="Vertical" Margin="5" SetSize="220, 40">
+    <BoxContainer Orientation="Vertical" Margin="5" MinSize="220, 40">
         <RichTextLabel Name="InfoLabel" Margin="0 0 0 5"/>
-        <ProgressBar Name="ProgressBar" MinValue="0" MaxValue="500">
+        <ProgressBar Name="ProgressBar" MinValue="0">
             <ProgressBar.BackgroundStyleBoxOverride>
                 <graphics:StyleBoxFlat
                     BackgroundColor="{x:Static s:StyleNano.PanelUltraDark}"

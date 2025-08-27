@@ -34,7 +34,7 @@ public sealed class ProximitySystem : EntitySystem
     private static readonly HashSet<EntityUid> PossibleNotInRange = [];
     private static readonly HashSet<EntityUid> AllTargets = [];
 
-    private const float JustUselessNumber = 100f;
+    private const float JustUselessNumber = 30f;
 
     private static readonly HashSet<ProtoId<TagPrototype>> SolidTags =
     [
@@ -44,6 +44,7 @@ public sealed class ProximitySystem : EntitySystem
         "GlassAirlock",
         "HighSecDoor",
         "Windoor",
+        "Directional",
         "SecureWindoor",
         "SecurePlasmaWindoor",
         "SecureUraniumWindoor",

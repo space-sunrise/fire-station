@@ -5,7 +5,6 @@ using Content.Client.Charges;
 using Content.Client.Examine;
 using Content.Client.UserInterface.Systems.Actions;
 using Content.Client.UserInterface.Systems.Gameplay;
-using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp173;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -29,8 +28,6 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly ExamineSystem _examine = default!;
     [Dependency] private readonly ChargesSystem _charges = default!;
-
-    [Dependency] private readonly ScpHelpers _helpers = default!;
 
     private Scp173Overlay _overlay = default!;
     private Scp173UiWidget? _widget;
@@ -60,14 +57,20 @@ public sealed class Scp173System : SharedScp173System
 
     private void OnStartup(Entity<Scp173Component> ent, ref ComponentStartup args)
     {
-        if (_player.LocalSession?.AttachedEntity == ent)
-            _overlayMan.AddOverlay(_overlay);
+        if (_player.LocalEntity != ent)
+            return;
+
+        EnsureWidgetExist();
+        _overlayMan.AddOverlay(_overlay);
     }
 
     private void OnShutdown(Entity<Scp173Component> ent, ref ComponentShutdown args)
     {
-        if (_player.LocalSession?.AttachedEntity == ent)
-            _overlayMan.RemoveOverlay(_overlay);
+        if (_player.LocalEntity != ent)
+            return;
+
+        RemoveWidget();
+        _overlayMan.RemoveOverlay(_overlay);
     }
 
     private void OnPlayerAttached(Entity<Scp173Component> ent, ref LocalPlayerAttachedEvent args)

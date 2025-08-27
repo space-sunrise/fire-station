@@ -19,13 +19,13 @@ public sealed class ScpHelpers : EntitySystem
     /// </summary>
     public FixedPoint2 GetAroundSolutionVolume(EntityUid uid,
         ProtoId<ReagentPrototype> reagent,
-        in List<EntityUid> bloodList,
+        in List<EntityUid> puddleList,
         LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
     {
         FixedPoint2 total = 0;
-        var blood = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(uid, lineOfSight);
+        var puddles = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(uid, lineOfSight);
 
-        foreach (var puddle in blood)
+        foreach (var puddle in puddles)
         {
             if (!puddle.Comp.Solution.HasValue)
                 continue;
@@ -37,7 +37,7 @@ public sealed class ScpHelpers : EntitySystem
                 if (reagentId.Prototype != reagent)
                     continue;
 
-                bloodList.Add(puddle);
+                puddleList.Add(puddle);
                 total += quantity;
             }
         }
@@ -54,9 +54,9 @@ public sealed class ScpHelpers : EntitySystem
         LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
     {
         FixedPoint2 total = 0;
-        var blood = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(uid);
+        var puddles = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(uid, lineOfSight);
 
-        foreach (var puddle in blood)
+        foreach (var puddle in puddles)
         {
             if (!puddle.Comp.Solution.HasValue)
                 continue;
@@ -81,9 +81,9 @@ public sealed class ScpHelpers : EntitySystem
         LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
     {
         FixedPoint2 total = 0;
-        var blood = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(uid);
+        var puddles = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(uid, lineOfSight);
 
-        foreach (var puddle in blood)
+        foreach (var puddle in puddles)
         {
             if (!puddle.Comp.Solution.HasValue)
                 continue;
@@ -95,10 +95,11 @@ public sealed class ScpHelpers : EntitySystem
                 if (reagentId.Prototype != reagent)
                     continue;
 
+                total += quantity;
+
                 if (total >= required)
                     return true;
 
-                total += quantity;
             }
         }
 

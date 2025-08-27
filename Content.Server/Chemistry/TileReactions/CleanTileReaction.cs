@@ -70,6 +70,8 @@ public sealed partial class CleanTileReaction : ITileReaction
                 tempSol.AddReagent(Scp173Component.Reagent, quantity.Quantity);
                 puddleSystem.TrySpillAt(tile, tempSol, out _, false);
 
+                purgeAmount -= quantity.Quantity;
+
                 continue;
             }
             // Fire added start

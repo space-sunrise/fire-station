@@ -11,6 +11,16 @@ public sealed partial class Scp173ReagentBar : PanelContainer
 {
     [Dependency] private readonly ILocalizationManager _loc = default!;
 
+    private static readonly StyleBoxFlat BloatedColor = new()
+    {
+        BackgroundColor = StyleNano.BloodRed,
+    };
+
+    private static readonly StyleBoxFlat NormalColor = new()
+    {
+        BackgroundColor = StyleNano.GoodGreenFore,
+    };
+
     public Scp173ReagentBar()
     {
         IoCManager.InjectDependencies(this);
@@ -24,20 +34,14 @@ public sealed partial class Scp173ReagentBar : PanelContainer
             InfoLabel.Text = _loc.GetString("scp173-reagent-bar-title", ("current", current), ("max", bloatedMax));
 
             ProgressBar.MaxValue = bloatedMax;
-            ProgressBar.ForegroundStyleBoxOverride = new StyleBoxFlat
-            {
-                BackgroundColor = StyleNano.BloodRed,
-            };
+            ProgressBar.ForegroundStyleBoxOverride = BloatedColor;
         }
         else
         {
             InfoLabel.Text = _loc.GetString("scp173-reagent-bar-title", ("current", current), ("max", max));
 
             ProgressBar.MaxValue = max;
-            ProgressBar.ForegroundStyleBoxOverride = new StyleBoxFlat
-            {
-                BackgroundColor = StyleNano.GoodGreenFore,
-            };
+            ProgressBar.ForegroundStyleBoxOverride = NormalColor;
         }
 
         ProgressBar.Value = current;
