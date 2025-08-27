@@ -35,5 +35,10 @@ public sealed class Scp999ChangeStateAttemptEvent(Scp999States state) : Cancella
     public readonly Scp999States TargetState = state;
 }
 
+public sealed class Scp999ChangedStateEvent(Scp999States state) : HandledEntityEventArgs
+{
+    public readonly Scp999States TargetState = state;
+}
+
 
 #endregion
