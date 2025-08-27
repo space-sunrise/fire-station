@@ -609,9 +609,9 @@
 - type: entity
   id: LockerDetective
   parent: LockerBooze
+  categories: [ HideSpawnMenu ] # Fire added
   name: detective's cabinet
   description: Usually cold and empty... like your heart.
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Detective"]]
@@ -621,7 +621,6 @@
   parent: LockerSecurity
   name: evidence locker
   description: To store bags of bullet casings and detainee belongings.
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Security"]]
@@ -632,7 +631,6 @@
   name: armory closet
   parent: LockerBaseSecure
   description: It's a personal storage unit for operative gear.
-  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
