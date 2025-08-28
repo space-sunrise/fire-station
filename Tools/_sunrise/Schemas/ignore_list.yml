@@ -166,6 +166,13 @@ ignore_list:
   - AMH-C227 # Fire added
   - name # Fire added
   - value # Fire added
+  - 6x3 # Fire added
+  - 6x2 # Fire added
+  - 5x3 # Fire added
+  - 5x2 # Fire added
+  - 5x1 # Fire added
+  - 4x3 # Fire added
+  - 3x3 # Fire added
 
 ignore_files:
   - 'italian.ftl'

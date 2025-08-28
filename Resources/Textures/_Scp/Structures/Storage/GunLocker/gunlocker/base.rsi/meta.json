@@ -1,5 +1,7 @@
 {
   "version": 1,
+  "license": "CLA",
+  "copyright": "Redacted by discord: dragondidlo",
   "size": {
     "x": 32,
     "y": 32
