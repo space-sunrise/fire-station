@@ -15,4 +15,3 @@
   components:
   - type: PointLight
     color: "#ff5a5a"
-
