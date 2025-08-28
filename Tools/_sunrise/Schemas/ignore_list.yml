@@ -173,6 +173,9 @@ ignore_list:
   - 5x1 # Fire added
   - 4x3 # Fire added
   - 3x3 # Fire added
+  - G36 # Fire added
+  - AR18 # Fire added
+  - P90 # Fire added
 
 ignore_files:
   - 'italian.ftl'
