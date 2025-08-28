@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "Sprited by discord: dragondidlo",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "gun-0"
+    },
+    {
+      "name": "gun-1"
+    },
+    {
+      "name": "gun-2"
+    },
+    {
+      "name": "gun-3"
+    },
+    {
+      "name": "gun-4"
+    }
+  ]
+}

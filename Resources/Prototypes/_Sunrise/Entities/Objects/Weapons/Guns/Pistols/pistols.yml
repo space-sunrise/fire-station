@@ -20,6 +20,7 @@
   - type: Tag
     tags:
     - Sidearm
+    - LockerPistol # Fire Edit
   - type: Clothing
     sprite: Objects/Weapons/Guns/Pistols/viper.rsi
     quickEquip: false
@@ -112,6 +113,7 @@
     tags:
     - WeaponPistolG22
     - Sidearm
+    - LockerPistol # Fire Edit
   - type: Construction
     graph: Glock22AutoCraft
     node: start

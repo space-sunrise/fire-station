@@ -19,6 +19,9 @@
     graph: ShotgunRiotSawn
     node: start
     deconstructionTarget: null
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun5x1
 
 - type: entity
   name: sawn-off riot shotgun
@@ -72,6 +75,9 @@
   - type: GunRequiresWield
   - type: BallisticAmmoProvider
     capacity: 7
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun5x1
 
 - type: entity
   name: cycler shotgun
@@ -106,6 +112,9 @@
   - type: GunRequiresWield
   - type: BallisticAmmoProvider
     capacity: 14
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun5x1
 
 - type: entity
   name: Tkach Ya-Sui GA 12 revolver
@@ -130,6 +139,7 @@
   - type: Tag
     tags:
     - Sidearm
+    - LockerPistol # Fire edit
   - type: AmmoCounter
   - type: Gun
     spread: 30

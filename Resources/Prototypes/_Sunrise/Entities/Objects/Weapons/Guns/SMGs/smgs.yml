@@ -64,6 +64,9 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: HeldSpeedModifier
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun4x3
 
 - type: entity
   name: MP-38
@@ -180,6 +183,9 @@
   - type: Wieldable
   - type: UseDelay
     delay: 0.5
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun3x3
 
 - type: entity
   name: MP5
@@ -251,6 +257,9 @@
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/_Sunrise/Weapons/Guns/SMGs/mp5/mp5_cocked.ogg
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun4x3
 
 - type: entity
   name: Scorpion VZ-61
@@ -363,6 +372,9 @@
   - type: Wieldable
   - type: UseDelay
     delay: 0.5
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun4x3
 
 - type: entity
   name: PPSH-41
@@ -428,6 +440,9 @@
   - type: SpeedModifiedOnWield
     walkModifier: 0.85
     sprintModifier: 0.85
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun5x3
 
 - type: entity
   name: MS-42
