@@ -1,0 +1,68 @@
+- type: entity
+  id: GunLockerBase
+  parent: BaseStructureDynamic
+  abstract: true
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
+    noRot: true
+    layers:
+    - state: locker
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: gun-0
+      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/m16a4.rsi
+      map: ["enum.StorageFillLayers.Fill"]
+    - state: locker_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+  - type: EntityStorageVisuals
+    stateBaseClosed: locker
+    stateDoorOpen: locker_open
+    stateDoorClosed: locker_door
+  - type: StorageFillVisualizer
+    maxFillLevels: 5
+    fillBaseName: gun
+  - type: Lock
+  - type: LockVisuals
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallic
+  - type: Transform
+    anchored: true
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 120
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: StaticPrice
+    price: 550
+  - type: UserInterface
+    interfaces:
+     enum.StorageUiKey.Key:
+      type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: InteractionOutline
+  - type: Animateable
+  - type: Storage
+    storageOpenSound:
+      path: /Audio/_Sunrise/Structures/Closets/open.ogg
+      params:
+        volume: -1
+    storageCloseSound:
+      path: /Audio/_Sunrise/Structures/Closets/close.ogg
+      params:
+        volume: -1
+    storageInsertSound:
+      collection: RiflesDrop
+    # storageRemoveSound:
+    #   collection: null
+  - type: AccessReader
+    access: [["Armory"]]

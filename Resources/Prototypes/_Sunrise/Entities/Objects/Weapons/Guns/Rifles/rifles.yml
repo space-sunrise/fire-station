@@ -145,6 +145,9 @@
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/_Sunrise/Weapons/Guns/Rifles/AK/ak_cocked.ogg
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun6x3
 
 - type: entity
   name: AKM-U
@@ -204,6 +207,9 @@
   - type: Wieldable
   - type: UseDelay
     delay: 0.5
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun4x3
 
 - type: entity
   name: AK-514
@@ -268,6 +274,9 @@
     autoEject: true
     soundRack:
       path: /Audio/_Sunrise/Weapons/Guns/Rifles/AK/ak_cocked.ogg
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun5x3
 
 - type: entity
   name: Famas
@@ -338,6 +347,9 @@
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/_Sunrise/Weapons/Guns/Rifles/Famas/famas_cocked.ogg
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun5x3
 
 - type: entity
   name: G-36
@@ -403,6 +415,9 @@
   - type: SpeedModifiedOnWield
     walkModifier: 0.85
     sprintModifier: 0.85
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun6x3
 
 - type: entity
   name: M-28
@@ -468,6 +483,9 @@
   - type: SpeedModifiedOnWield
     walkModifier: 0.8
     sprintModifier: 0.8
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun6x3
 
 - type: entity
   name: AR-18
@@ -526,6 +544,9 @@
   - type: Wieldable
   - type: UseDelay
     delay: 0.5
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun5x3
 
 - type: entity
   name: M16A4
@@ -584,6 +605,9 @@
   - type: Wieldable
   - type: UseDelay
     delay: 0.35
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun6x3
 
 - type: entity
   name: STG 44
@@ -757,6 +781,9 @@
   - type: ChamberMagazineAmmoProvider
     soundRack:
       path: /Audio/_Sunrise/Weapons/Guns/SMGs/mp5/mp5_cocked.ogg
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun6x3
 
 - type: entity
   name: Lecter Mk2

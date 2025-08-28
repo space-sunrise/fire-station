@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "locker_door"
+    },
+    {
+      "name": "locker"
+    },
+    {
+      "name": "locker_open"
+    },
+    {
+      "name": "locked"
+    },
+    {
+      "name": "unlocked"
+    },
+    {
+        "name": "sparking",
+        "delays": [
+            [
+                0.1,
+                0.1,
+                0.1,
+                0.1
+            ]
+        ]
+    }
+  ]
+}

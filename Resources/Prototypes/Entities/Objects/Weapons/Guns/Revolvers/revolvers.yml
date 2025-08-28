@@ -16,6 +16,7 @@
   - type: Tag
     tags:
     - Sidearm
+    - LockerPistol # Fire edit
   - type: Clothing
     sprite: Objects/Weapons/Guns/Revolvers/deckard.rsi
     quickEquip: false

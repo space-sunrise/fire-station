@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "gun-0"
+    },
+    {
+      "name": "gun-1"
+    },
+    {
+      "name": "gun-2"
+    },
+    {
+      "name": "gun-3"
+    },
+    {
+      "name": "gun-4"
+    },
+    {
+      "name": "gun-5"
+    },
+    {
+      "name": "gun-6"
+    }
+  ]
+}

@@ -189,6 +189,9 @@
   - type: Gun
     soundGunshot:
       collection: xm1014 # Sunrise-Edit
+  - type: Tag # Fire Edit
+    tags:
+    - LockerGun5x1
 
 - type: entity
   parent: WeaponShotgunEnforcer
