@@ -3,6 +3,7 @@ using Content.Client._Scp.Scp173.UI;
 using Content.Client.Actions;
 using Content.Client.Charges;
 using Content.Client.Examine;
+using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Actions;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Shared._Scp.Scp173;
@@ -53,6 +54,7 @@ public sealed class Scp173System : SharedScp173System
         gameplayStateLoad.OnScreenUnload += RemoveWidget;
 
         _overlay = new(_transform, _ui.GetUIController<ActionUIController>(), _actionsSystem, _physics, _examine, _charges);
+        _ui.OnScreenChanged += _ => RecreateWidget();
     }
 
     private void OnStartup(Entity<Scp173Component> ent, ref ComponentStartup args)
@@ -141,7 +143,12 @@ public sealed class Scp173System : SharedScp173System
         var layoutContainer = _ui.ActiveScreen.FindControl<LayoutContainer>("ViewportContainer");
 
         _widget = new Scp173UiWidget();
-        LayoutContainer.SetAnchorAndMarginPreset(_widget, LayoutContainer.LayoutPreset.TopRight, margin: 50);
+
+        var layout = _ui.ActiveScreen is SeparatedChatGameScreen
+            ? LayoutContainer.LayoutPreset.TopRight
+            : LayoutContainer.LayoutPreset.CenterTop;
+
+        LayoutContainer.SetAnchorAndMarginPreset(_widget, layout, margin: 50);
 
         layoutContainer.AddChild(_widget);
 
@@ -155,5 +162,11 @@ public sealed class Scp173System : SharedScp173System
 
         _widget.Parent?.RemoveChild(_widget);
         _widget = null;
+    }
+
+    private void RecreateWidget()
+    {
+        RemoveWidget();
+        EnsureWidgetExist();
     }
 }
