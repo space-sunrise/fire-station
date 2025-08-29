@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Scp.Scp106.Components;
+using Content.Shared._Scp.Watching;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
 using Content.Shared.Mobs;
@@ -12,6 +13,7 @@ namespace Content.Shared._Scp.Scp106.Systems;
 public abstract partial class SharedScp106System
 {
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
+    [Dependency] private readonly EyeWatchingSystem _watching = default!;
 
     private void InitializePhantom()
     {
@@ -99,7 +101,7 @@ public abstract partial class SharedScp106System
         if (!_mob.IsAlive(args.Examiner))
             return;
 
-        if (args.Examiner == ent.Owner)
+        if (!_watching.SimpleIsWatchedBy(ent.Owner, [args.Examiner]))
             return;
 
         // Ликвидируйся

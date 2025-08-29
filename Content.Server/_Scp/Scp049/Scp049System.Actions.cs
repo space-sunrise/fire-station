@@ -1,9 +1,13 @@
 ﻿using Content.Server.Administration.Systems;
+using Content.Server.DoAfter;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Hands.Systems;
 using Content.Server.NPC.HTN;
+using Content.Server.Popups;
 using Content.Server.Zombies;
+using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Mobs.Components;
+using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp049;
 using Content.Shared._Scp.Scp049.Scp049Protection;
 using Content.Shared.DoAfter;
@@ -13,23 +17,23 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
-using Robust.Shared.Player;
+using Content.Shared.Traits.Assorted;
+using Robust.Server.Player;
 
 namespace Content.Server._Scp.Scp049;
 
 public sealed partial class Scp049System
 {
-    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-    [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
-    [Dependency] private readonly RejuvenateSystem _rejuvenateSystem = default!;
-    [Dependency] private readonly ZombieSystem _zombieSystem = default!;
-    [Dependency] private readonly SharedDoAfterSystem _doAfterSystem = default!;
-    [Dependency] private readonly HandsSystem _handsSystem = default!;
-    [Dependency] private readonly ISharedPlayerManager _player = default!;
+    [Dependency] private readonly MobStateSystem _mob = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
+    [Dependency] private readonly RejuvenateSystem _rejuvenate = default!;
+    [Dependency] private readonly ZombieSystem _zombie = default!;
+    [Dependency] private readonly DoAfterSystem _doAfter = default!;
+    [Dependency] private readonly HandsSystem _hands = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
 
     private void InitializeActions()
     {
-        SubscribeLocalEvent<Scp049Component, Scp049KillLivingBeingAction>(OnKillLeavingBeing);
         SubscribeLocalEvent<Scp049Component, Scp049KillResurrectedAction>(OnKillResurrected);
         SubscribeLocalEvent<Scp049Component, Scp049ResurrectAction>(OnResurrect);
         SubscribeLocalEvent<Scp049Component, Scp049SelfHealAction>(OnSelfHeal);
@@ -61,11 +65,11 @@ public sealed partial class Scp049System
 
     private void Heal(EntityUid target, EntityUid performer)
     {
-        _rejuvenateSystem.PerformRejuvenate(target);
+        _rejuvenate.PerformRejuvenate(target);
 
         var targetName = Identity.Name(target, EntityManager);
         var localeMessage = Loc.GetString("scp049-heal-minion", ("target", targetName));
-        _popupSystem.PopupEntity(localeMessage, performer, PopupType.Medium);
+        _popup.PopupEntity(localeMessage, performer, PopupType.Medium);
     }
 
     private void OnResurrect(Entity<Scp049Component> scpEntity, ref Scp049ResurrectAction args)
@@ -75,14 +79,14 @@ public sealed partial class Scp049System
 
         var hasTool = false;
 
-        foreach (var heldUid in _handsSystem.EnumerateHeld(scpEntity.Owner))
+        foreach (var heldUid in _hands.EnumerateHeld(scpEntity.Owner))
         {
-            var metaData = MetaData(heldUid);
+            var prototype = Prototype(heldUid);
 
-            if (metaData.EntityPrototype == null)
+            if (prototype == null)
                 continue;
 
-            if (metaData.EntityPrototype.ID != scpEntity.Comp.NextTool)
+            if (prototype.ID != scpEntity.Comp.NextTool)
                 continue;
 
             hasTool = true;
@@ -92,7 +96,7 @@ public sealed partial class Scp049System
         if (!hasTool)
         {
             var message = Loc.GetString("scp049-missing-surgery-tool", ("instrument", Loc.GetEntityData(scpEntity.Comp.NextTool).Name));
-            _popupSystem.PopupEntity(message, scpEntity, scpEntity, PopupType.MediumCaution);
+            _popup.PopupEntity(message, scpEntity, scpEntity, PopupType.MediumCaution);
 
             return;
         }
@@ -107,10 +111,10 @@ public sealed partial class Scp049System
             BreakOnMove = true,
             BreakOnDamage = true,
             BreakOnDropItem = true,
-            BreakOnHandChange = true
+            BreakOnHandChange = true,
         };
 
-        args.Handled = _doAfterSystem.TryStartDoAfter(doAfterArgs);
+        args.Handled = _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
     private void OnKillResurrected(Entity<Scp049Component> ent, ref Scp049KillResurrectedAction args)
@@ -118,11 +122,13 @@ public sealed partial class Scp049System
         if (args.Handled)
             return;
 
-        if (!_zombieSystem.UnZombify(args.Target, args.Target, null))
+        if (!_zombie.UnZombify(args.Target, args.Target, null))
             return;
 
-        _mobStateSystem.ChangeMobState(args.Target, MobState.Dead);
+        _mob.ChangeMobState(args.Target, MobState.Dead);
         RemComp<Scp049MinionComponent>(args.Target);
+
+        EnsureComp<UnrevivableComponent>(args.Target);
 
         var targetName = Identity.Name(args.Target, EntityManager);
         var performerName = Identity.Name(args.Target, EntityManager);
@@ -131,43 +137,7 @@ public sealed partial class Scp049System
             ("target", targetName),
             ("performer", performerName));
 
-        _popupSystem.PopupEntity(localeMessage, ent, PopupType.MediumCaution);
-
-        args.Handled = true;
-    }
-
-    private void OnKillLeavingBeing(Entity<Scp049Component> ent, ref Scp049KillLivingBeingAction args)
-    {
-        if (args.Handled)
-            return;
-
-        var target = args.Target;
-
-        if (HasComp<ScpComponent>(target))
-            return;
-
-        if (_mobStateSystem.IsDead(target))
-        {
-            _popupSystem.PopupEntity(Loc.GetString("scp049-kill-action-already-dead"), target, ent, PopupType.MediumCaution);
-            return;
-        }
-
-        if (!_mobStateSystem.HasState(target, MobState.Dead))
-        {
-            _popupSystem.PopupEntity(Loc.GetString("scp049-kill-action-cant-kill"), target, ent, PopupType.MediumCaution);
-            return;
-        }
-
-        _mobStateSystem.ChangeMobState(target, MobState.Dead);
-
-        var targetName = Identity.Name(target, EntityManager);
-        var performerName = Identity.Name(ent, EntityManager);
-
-        var localeMessage = Loc.GetString("scp049-touch-action-success",
-            ("target", targetName),
-            ("performer", performerName));
-
-        _popupSystem.PopupEntity(localeMessage, ent, PopupType.MediumCaution);
+        _popup.PopupEntity(localeMessage, ent, PopupType.MediumCaution);
 
         args.Handled = true;
     }
@@ -199,14 +169,16 @@ public sealed partial class Scp049System
         scpEntity.Comp.Minions.Add(minionEntity);
 
         var zombieComponent = BuildZombieComponent(minionEntity);
-        _zombieSystem.ZombifyEntity(minionEntity, zombieComponentOverride: zombieComponent);
+        _zombie.ZombifyEntity(minionEntity, zombieComponentOverride: zombieComponent);
 
         EnsureComp<NonSpreaderZombieComponent>(minionEntity);
 
-        _rejuvenateSystem.PerformRejuvenate(minionEntity);
-        _mobStateSystem.ChangeMobState(minionEntity, MobState.Alive);
+        _rejuvenate.PerformRejuvenate(minionEntity);
+        _mob.ChangeMobState(minionEntity, MobState.Alive);
 
         RemComp<HTNComponent>(minionEntity);
+        RemComp<FearComponent>(minionEntity);
+        RemComp<ProximityTargetComponent>(minionEntity);
 
         TryMakeAGhostRole(minionEntity);
     }

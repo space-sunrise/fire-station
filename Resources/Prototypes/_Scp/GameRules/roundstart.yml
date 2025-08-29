@@ -1,11 +1,4 @@
-﻿# SCP
-- type: entity
-  id: Scp
-  parent: BaseGameRule
-  components:
-  - type: ScpRule
-
-- type: entity
+﻿- type: entity
   id: ScpModeNeutralized
   parent: BaseGameRule
   components:
@@ -121,7 +114,7 @@
     - !type:NestedSelector
       tableId: ScpEventsTable
     - !type:NestedSelector
-      tableId: BasicAntagEventsTable
+      tableId: ScpAntagEventsTable
     - !type:NestedSelector
       tableId: CargoGiftsTable
     - !type:NestedSelector
@@ -157,3 +150,9 @@
     - id: VentClog
     - id: GasLeak
     - id: SolarFlare
+
+- type: entityTable
+  id: ScpAntagEventsTable
+  table: !type:AllSelector
+    children:
+    - id: Scp2054X

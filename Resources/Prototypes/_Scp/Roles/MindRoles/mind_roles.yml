@@ -1,0 +1,10 @@
+﻿- type: entity
+  parent: BaseMindRoleAntag
+  id: MindRoleScp2054X
+  name: SCP-2054-X
+  components:
+  - type: MindRole
+    antagPrototype: ParadoxClone
+    subtype: role-subtype-scp-2054-x
+  - type: ParadoxCloneRole
+    nameModifier: scp-2054-x-ghost-name-modifier
