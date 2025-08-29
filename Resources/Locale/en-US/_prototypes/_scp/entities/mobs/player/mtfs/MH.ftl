@@ -1,17 +1,3 @@
-ent-KeyCardMtfMHLeader = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfMHSpecialist = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfMHCadet = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-ClothingOuterHardsuitMH = { ent-ClothingOuterHardsuitCBURN }
-    .desc = { ent-ClothingOuterHardsuitCBURN.desc }
-ent-ClothingOuterHardsuitMHLeader = { ent-ClothingOuterHardsuitCBURNLeader }
-    .desc = { ent-ClothingOuterHardsuitCBURNLeader.desc }
-ent-ClothingHeadHelmetMH = { ent-ClothingHeadHelmetCBURN }
-    .desc = { ent-ClothingHeadHelmetCBURN.desc }
-ent-ClothingBeltMilitaryWebbingMH = { ent-ClothingBeltMilitaryWebbingMed }
-    .desc = { ent-ClothingBeltMilitaryWebbingMed.desc }
 ent-RandomHumanoidSpawnerMHLeader = { "" }
     .desc = { "" }
 ent-RandomHumanoidSpawnerMHSpecialist = { "" }

@@ -1,0 +1,16 @@
+ent-MTFVest = { ent-NineTailedFoxVest }
+    .desc = { ent-NineTailedFoxVest.desc }
+ent-ClothingOuterArmorNTF = { ent-MTFVest }
+    .desc = { ent-MTFVest.desc }
+ent-MTFCommanderVest = { ent-NineTailedFoxCommanderVest }
+    .desc = { ent-NineTailedFoxCommanderVest.desc }
+ent-ClothingOuterArmorHD = { ent-ClothingOuterArmorSWAT }
+    .desc = { ent-ClothingOuterArmorSWAT.desc }
+ent-ClothingOuterArmorHeavyLLH = { ent-ClothingOuterArmorHeavy }
+    .desc = { ent-ClothingOuterArmorHeavy.desc }
+ent-ClothingOuterHardsuitMH = { ent-ClothingOuterHardsuitCBURN }
+    .desc = { ent-ClothingOuterHardsuitCBURN.desc }
+ent-ClothingOuterHardsuitMHLeader = { ent-ClothingOuterHardsuitCBURNLeader }
+    .desc = { ent-ClothingOuterHardsuitCBURNLeader.desc }
+ent-ClothingOuterHardsuitRRH = { ent-ClothingOuterHardsuitDeathsquad }
+    .desc = { ent-ClothingOuterHardsuitDeathsquad.desc }

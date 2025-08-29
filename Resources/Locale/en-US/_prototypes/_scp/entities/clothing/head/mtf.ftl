@@ -1,0 +1,12 @@
+ent-ClothingHelmetMTF = { ent-NineTailedFoxHelmet }
+    .desc = { ent-NineTailedFoxHelmet.desc }
+ent-ClothingHelmetNTF = { ent-ClothingHeadHelmetBasic }
+    .desc = { ent-ClothingHeadHelmetBasic.desc }
+ent-ClothingHeadHatHDMAA = { ent-ClothingHeadHatSyndieMAA }
+    .desc = { ent-ClothingHeadHatSyndieMAA.desc }
+ent-ClothingHeadHatCapLeatherLLHLeader = { ent-ClothingHeadHatCapLeatherHoS }
+    .desc = { ent-ClothingHeadHatCapLeatherHoS.desc }
+ent-ClothingHeadHelmetMH = { ent-ClothingHeadHelmetCBURN }
+    .desc = { ent-ClothingHeadHelmetCBURN.desc }
+ent-ClothingHeadHelmetHardsuitRRH = { ent-ClothingHeadHelmetHardsuitDeathsquad }
+    .desc = { ent-ClothingHeadHelmetHardsuitDeathsquad.desc }

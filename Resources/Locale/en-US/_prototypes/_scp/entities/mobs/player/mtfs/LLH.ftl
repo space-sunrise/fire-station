@@ -1,17 +1,3 @@
-ent-KeyCardMtfLLHLeader = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfLLHSpecialist = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfLLHCadet = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-ClothingHeadHatCapLeatherLLHLeader = { ent-ClothingHeadHatCapLeatherHoS }
-    .desc = { ent-ClothingHeadHatCapLeatherHoS.desc }
-ent-ClothingBackpackLLH = { ent-ClothingDeathSquadronBackpack }
-    .desc = { ent-ClothingDeathSquadronBackpack.desc }
-ent-ClothingMaskGasLLH = { ent-ClothingMaskGasSwat }
-    .desc = { ent-ClothingMaskGasSwat.desc }
-ent-ClothingOuterArmorHeavyLLH = { ent-ClothingOuterArmorHeavy }
-    .desc = { ent-ClothingOuterArmorHeavy.desc }
 ent-RandomHumanoidSpawnerLLHLeader = { "" }
     .desc = { "" }
 ent-RandomHumanoidSpawnerLLHSpecialist = { "" }
