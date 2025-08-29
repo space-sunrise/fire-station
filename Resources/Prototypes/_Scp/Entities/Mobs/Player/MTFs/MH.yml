@@ -91,6 +91,7 @@
       - id: RandomHumanoidSpawnerMHCadet # 2
       - id: RandomHumanoidSpawnerMHCadet
     offset: 1
+
 # Спавнер, но юзается по кнопке
 - type: entity
   id: SpawnerMTFSquadMHSpawnOnTrigger
@@ -104,12 +105,3 @@
     - state: green
     - state: MH
       sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-
-# мета
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconMH
-  icon:
-    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-    state: MH
-  jobName: mobile-task-force-MH-name

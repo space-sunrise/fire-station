@@ -97,6 +97,7 @@
       - id: RandomHumanoidSpawnerLLHCadet # 2
       - id: RandomHumanoidSpawnerLLHCadet
     offset: 1
+
 # Спавнер, но юзается по кнопке
 - type: entity
   id: SpawnerMTFSquadLLHSpawnOnTrigger
@@ -110,12 +111,3 @@
     - state: green
     - state: LLH
       sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-
-# мета
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconLLH
-  icon:
-    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-    state: LLH
-  jobName: mobile-task-force-LLH-name

@@ -89,6 +89,7 @@
       - id: RandomHumanoidSpawnerHDCadet # 2
       - id: RandomHumanoidSpawnerHDCadet
     offset: 1
+
 # Спавнер, но юзается по кнопке
 - type: entity
   id: SpawnerMTFSquadHDSpawnOnTrigger
@@ -102,12 +103,3 @@
     - state: green
     - state: HD
       sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-
-# мета
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconHD
-  icon:
-    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-    state: HD
-  jobName: mobile-task-force-HD-name

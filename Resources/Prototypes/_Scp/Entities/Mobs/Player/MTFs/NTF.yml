@@ -91,6 +91,7 @@
       - id: RandomHumanoidSpawnerNTFCadet # 2
       - id: RandomHumanoidSpawnerNTFCadet
     offset: 1
+
 # Спавнер, но юзается по кнопке
 - type: entity
   id: SpawnerMTFSquadNTFSpawnOnTrigger
@@ -104,12 +105,3 @@
     - state: green
     - state: NTF
       sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-
-# мета
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconNTF
-  icon:
-    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-    state: NTF
-  jobName: mobile-task-force-NTF-name
