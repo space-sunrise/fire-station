@@ -275,7 +275,7 @@
       - id: HandLabeler
       - id: GlowstickBase
       - id: Bucket
-      - id: RadioHandheld
+      - id: ScpRadioHandheldCommon # Fire edit
       - id: AppraisalTool
       - id: ModularReceiver
       - id: WeaponFlareGun
