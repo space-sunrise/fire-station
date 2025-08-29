@@ -1,0 +1,16 @@
+ent-MTFVest = Бронежилет Мобильной Оперативной Группы
+    .desc = Не сковывает движения, прост и легок в использовании, при этом обеспечивает неплохую защиту!
+ent-ClothingOuterArmorNTF = { ent-MTFVest }
+    .desc = { ent-MTFVest.desc }
+ent-MTFCommanderVest = Бронежилет командира Мобильной Оперативной Группы
+    .desc = { ent-MTFVest.desc } Выглядит важно.
+ent-ClothingOuterArmorHD = Броня "Ню-7"
+    .desc = Элитная броня отряда "Ню-7"
+ent-ClothingOuterArmorHeavyLLH = Броня "Омега-1"
+    .desc = Защищает силой Кодекса Этики.
+ent-ClothingOuterHardsuitMH = Скафандр "Бета-7"
+    .desc = { ent-ClothingMaskMTF.desc }
+ent-ClothingOuterHardsuitMHLeader = Скафандр командира "Бета-7"
+    .desc = { ent-ClothingOuterHardsuitMH.desc } Выглядит элитнее, чем обычный.
+ent-ClothingOuterHardsuitRRH = скафандр "Альфа-1"
+    .desc = MANKIND IS DEAD, BLOOD IS FUEL, FACILITY IS FULL.

@@ -7,5 +7,3 @@ ent-GunLockerSmallFilledM1984 = { ent-GunLockerSmall }
 ent-GunLockerSmallFilledACP14 = { ent-GunLockerSmall }
     .suffix = Заполненный, ACP-14, ОСН
     .desc = { ent-GunLockerSmall.desc }
-
-    

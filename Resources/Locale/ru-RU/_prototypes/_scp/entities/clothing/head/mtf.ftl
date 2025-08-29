@@ -1,0 +1,12 @@
+ent-ClothingHelmetMTF = Шлем Мобильной Оперативной Группы
+    .desc = Рассчитана на защиту от пуль, порезов, осколков гранат, кислот, аномальных тварей и своих товарищей.
+ent-ClothingHelmetNTF = { ent-ClothingHeadHelmetBasic }
+    .desc = { ent-ClothingHeadHelmetBasic.desc }
+ent-ClothingHeadHatHDMAA = Фуражка командира "Ню-7"
+    .desc = Фуражка. Сшита будто на командира.
+ent-ClothingHeadHatCapLeatherLLHLeader = кожаная фуражка командира "Омега-1"
+    .desc = Довольно старая вещь для этих времён, навевающая старые воспоминания...
+ent-ClothingHeadHelmetMH = Шлем МОГ "Бета-7"
+    .desc = { ent-ClothingHelmetMTF.desc }
+ent-ClothingHeadHelmetHardsuitRRH = шлем скафандра "Альфа-1"
+    .desc = Повинуйся и работай эффективно. Отклонение от протокола приравнивается к дезертирству.

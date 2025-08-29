@@ -1,17 +1,3 @@
-ent-KeyCardMtfLLHLeader = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfLLHSpecialist = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfLLHCadet = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-ClothingHeadHatCapLeatherLLHLeader = кожаная фуражка командира "Омега-1"
-    .desc = Довольно старая вещь для этих времён, навевающая старые воспоминания...
-ent-ClothingBackpackLLH = Рюкзак "Омега-1"
-    .desc = Поговаривают, он не способен вмещать лампочки.
-ent-ClothingMaskGasLLH = Противогаз "Омега-1"
-    .desc = Фильтрует этичность от воздуха.
-ent-ClothingOuterArmorHeavyLLH = Броня "Омега-1"
-    .desc = Защищает силой Кодекса Этики.
 ent-RandomHumanoidSpawnerLLHLeader = { ghost-role-information-mtf-leader-LLH-name }
     .suffix = МОГ | Омега-1
     .desc = { ghost-role-information-mtf-leader-description }

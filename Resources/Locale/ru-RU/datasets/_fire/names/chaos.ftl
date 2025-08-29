@@ -1,4 +1,4 @@
-﻿names-chaos-last-dataset-1 = Альфа
+names-chaos-last-dataset-1 = Альфа
 names-chaos-last-dataset-2 = Браво
 names-chaos-last-dataset-3 = Чарли
 names-chaos-last-dataset-4 = Дельта
@@ -28,9 +28,6 @@ names-chaos-last-dataset-27 = Легенда
 names-chaos-last-dataset-28 = Порвед
 names-chaos-last-dataset-29 = Данцов
 names-chaos-last-dataset-30 = Пэдро
-
 names-chaos-leader-first-dataset-1 = Командир Повстанцев
-
 names-chaos-medic-first-dataset-1 = Медик Повстанцев
-
 names-chaos-first-dataset-1 = Повстанец
