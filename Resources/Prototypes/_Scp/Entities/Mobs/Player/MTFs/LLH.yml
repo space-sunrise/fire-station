@@ -1,6 +1,4 @@
-﻿# ПРОФЕССИИ
-
-- type: entity
+﻿- type: entity
   id: RandomHumanoidSpawnerLLHLeader
   components:
   - type: Sprite
@@ -29,8 +27,6 @@
     - NamesOperativeLeaderLast
     nameFormat: name-format-ert
 
-
-
 - type: entity
   id: RandomHumanoidSpawnerLLHSpecialist
   components:
@@ -54,8 +50,6 @@
     job: LLHSpecialist
   - type: Loadout
     prototypes: [ LLHSpecialistGear ]
-
-
 
 - type: entity
   id: RandomHumanoidSpawnerLLHCadet
@@ -81,8 +75,6 @@
   - type: Loadout
     prototypes: [ LLHCadetGear ]
   - type: NoEmotions
-
-
 
 # Спавнер отряда
 - type: entity
@@ -119,7 +111,6 @@
     - state: LLH
       sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
 
-
 # мета
 - type: jobIcon
   parent: JobIcon
@@ -128,12 +119,3 @@
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: LLH
   jobName: mobile-task-force-LLH-name
-
-- type: playTimeTracker
-  id: JobLLHLeader
-
-- type: playTimeTracker
-  id: JobLLHSpecialist
-
-- type: playTimeTracker
-  id: JobLLHCadet

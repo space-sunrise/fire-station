@@ -1,8 +1,4 @@
-﻿# ПРОФЕССИИ
-
-
-
-- type: entity
+﻿- type: entity
   id: RandomHumanoidSpawnerMHLeader
   components:
   - type: Sprite
@@ -25,8 +21,6 @@
     job: MHLeader
   - type: Loadout
     prototypes: [ MHLeaderGear ]
-
-
 
 - type: entity
   id: RandomHumanoidSpawnerMHSpecialist
@@ -52,8 +46,6 @@
   - type: Loadout
     prototypes: [ MHSpecialistGear ]
 
-
-
 - type: entity
   id: RandomHumanoidSpawnerMHCadet
   components:
@@ -77,8 +69,6 @@
     job: MHCadet
   - type: Loadout
     prototypes: [ MHCadetGear ]
-
-
 
 # Спавнер отряда
 - type: entity
@@ -115,7 +105,6 @@
     - state: MH
       sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
 
-
 # мета
 - type: jobIcon
   parent: JobIcon
@@ -124,12 +113,3 @@
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: MH
   jobName: mobile-task-force-MH-name
-
-- type: playTimeTracker
-  id: JobMHLeader
-
-- type: playTimeTracker
-  id: JobMHSpecialist
-
-- type: playTimeTracker
-  id: JobMHCadet

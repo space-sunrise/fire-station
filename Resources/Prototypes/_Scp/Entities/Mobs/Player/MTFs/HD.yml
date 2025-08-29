@@ -1,7 +1,4 @@
-﻿# ПРОФЕССИИ
-
-
-- type: entity
+﻿- type: entity
   id: RandomHumanoidSpawnerHDLeader
   components:
   - type: Sprite
@@ -24,8 +21,6 @@
     job: HDLeader
   - type: Loadout
     prototypes: [ HDLeaderGear ]
-
-
 
 - type: entity
   id: RandomHumanoidSpawnerHDSpecialist
@@ -50,8 +45,6 @@
   - type: Loadout
     prototypes: [ HDSpecialistGear ]
 
-
-
 - type: entity
   id: RandomHumanoidSpawnerHDCadet
   components:
@@ -74,8 +67,6 @@
     job: HDCadet
   - type: Loadout
     prototypes: [ HDCadetGear ]
-
-
 
 # Спавнер отряда
 - type: entity
@@ -112,7 +103,6 @@
     - state: HD
       sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
 
-
 # мета
 - type: jobIcon
   parent: JobIcon
@@ -121,12 +111,3 @@
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: HD
   jobName: mobile-task-force-HD-name
-
-- type: playTimeTracker
-  id: JobHDLeader
-
-- type: playTimeTracker
-  id: JobHDSpecialist
-
-- type: playTimeTracker
-  id: JobHDCadet

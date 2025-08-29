@@ -46,8 +46,6 @@
   - type: Loadout
     prototypes: [ NTFSpecialistGear ]
 
-
-
 - type: entity
   id: RandomHumanoidSpawnerNTFCadet
   components:
@@ -71,8 +69,6 @@
     job: NTFCadet
   - type: Loadout
     prototypes: [ NTFCadetGear ]
-
-
 
 # Спавнер отряда
 - type: entity
@@ -109,7 +105,6 @@
     - state: NTF
       sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
 
-
 # мета
 - type: jobIcon
   parent: JobIcon
@@ -118,12 +113,3 @@
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: NTF
   jobName: mobile-task-force-NTF-name
-
-- type: playTimeTracker
-  id: JobNTFLeader
-
-- type: playTimeTracker
-  id: JobNTFSpecialist
-
-- type: playTimeTracker
-  id: JobNTFCadet
