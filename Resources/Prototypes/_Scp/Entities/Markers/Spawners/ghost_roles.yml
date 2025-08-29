@@ -1,0 +1,19 @@
+﻿- type: entity
+  categories: [ HideSpawnMenu, Spawner ]
+  parent: BaseAntagSpawner
+  id: SpawnPointGhostScp2054X
+  components:
+  - type: GhostRole
+    name: ghost-role-information-scp-2054-x-name
+    description: ghost-role-information-scp-2054-x-description
+    rules: ghost-role-information-scp-2054-x-rules
+    mindRoles:
+    - MindRoleGhostRoleSoloAntagonist
+    raffle:
+      settings: short
+  - type: Sprite
+    layers:
+    - sprite: Markers/jobs.rsi
+      state: green
+    - sprite: Mobs/Aliens/paradox_clone.rsi
+      state: preview
