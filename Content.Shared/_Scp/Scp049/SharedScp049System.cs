@@ -12,10 +12,10 @@ public abstract class SharedScp049System : EntitySystem
 
     public override void Initialize()
     {
-        SubscribeLocalEvent<Scp049Component, Scp049KillLivingBeingAction>(OnKillLeavingBeing);
+        SubscribeLocalEvent<Scp049Component, Scp049KillLivingBeingAction>(OnKillLivingBeing);
     }
 
-    private void OnKillLeavingBeing(Entity<Scp049Component> ent, ref Scp049KillLivingBeingAction args)
+    private void OnKillLivingBeing(Entity<Scp049Component> ent, ref Scp049KillLivingBeingAction args)
     {
         if (args.Handled)
             return;
