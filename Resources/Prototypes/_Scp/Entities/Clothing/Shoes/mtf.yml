@@ -1,10 +1,16 @@
 ﻿- type: entity
   parent: ClothingShoesBootsJackSecFilled
   id: ClothingShoesBootsHDFilled
+  name: reinforced boots
+  desc: Heavy army boots made of dense leather, featuring metal-reinforced soles and the squad's distinctive insignia.
+  suffix: MTF
 
 - type: entity
   parent: ClothingShoesBootsJackSecFilled
   id: ClothingShoesBootsNTFFilled
+  name: reinforced boots
+  desc: Reinforced dark-colored tactical boots, designed for prolonged use in field conditions.
+  suffix: MTF
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Shoes/Boots/MTF/ntf.rsi

@@ -1,6 +1,9 @@
-ent-ClothingHeadsetAltMTF = { ent-ClothingHeadsetAlt } мобильной оперативной группы
-    .desc = { ent-ClothingHeadsetAlt.desc }
-ent-ClothingHeadsetAltMTFRRH = { ent-ClothingHeadsetAltMTF } "Альфа-1"
-    .desc = { ent-ClothingHeadsetAlt.desc }
-ent-ClothingHeadsetAltMTFLLH = { ent-ClothingHeadsetAltMTF } "Омега-1"
-    .desc = { ent-ClothingHeadsetAlt.desc }
+ent-ClothingHeadsetAltMTF = гарнитура
+    .desc = Компактное коммуникационное устройство с зашифрованным каналом связи. Обеспечивает устойчивую передачу данных в сложных условиях.
+    .suffix = МОГ
+ent-ClothingHeadsetAltMTFRRH = гарнитура
+    .desc = Компактное коммуникационное устройство с зашифрованным каналом связи. Имеет дополнительные модули, происхождение которых в документации не указано.
+    .suffix = МОГ
+ent-ClothingHeadsetAltMTFLLH = гарнитура
+    .desc = Компактное коммуникационное устройство с зашифрованным каналом связи. Корпус оформлен сдержанно, но в конструкции заметны элементы, указывающие на особый статус пользователя.
+    .suffix = МОГ

@@ -1,4 +1,6 @@
-ent-ClothingShoesBootsHDFilled = Подкованные сапоги "Ню-7"
-    .desc = Поговаривают, что внутри них есть подкова.
-ent-ClothingShoesBootsNTFFilled = { ent-ClothingShoesBootsJackSecFilled }
-    .desc = { ent-ClothingShoesBootsJackSecFilled.desc }
+ent-ClothingShoesBootsHDFilled = подкованные сапоги
+    .desc = Тяжёлые армейские сапоги из плотной кожи с металлическим укреплением подошвы и характерной маркировкой отряда.
+    .suffix = МОГ
+ent-ClothingShoesBootsNTFFilled = подкованные сапоги
+    .desc = Усиленные тактические сапоги тёмного цвета, рассчитанные на длительное использование в полевых условиях.
+    .suffix = МОГ

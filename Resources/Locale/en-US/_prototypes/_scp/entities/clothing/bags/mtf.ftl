@@ -1,6 +1,9 @@
-ent-MTFSpecialistBackpack = { ent-NineTailedFoxSpecialistBackpack }
-    .desc = { ent-NineTailedFoxSpecialistBackpack.desc }
-ent-ClothingBackpackLLH = { ent-ClothingDeathSquadronBackpack }
-    .desc = { ent-ClothingDeathSquadronBackpack.desc }
-ent-ClothingBackpackRRH = { ent-ClothingDeathSquadronBackpack }
-    .desc = { ent-ClothingDeathSquadronBackpack.desc }
+ent-MTFSpecialistBackpack = backpack
+    .desc = A spacious tactical container with reinforced seams. The design is intended for prolonged use in field conditions.
+    .suffix = MTF
+ent-ClothingBackpackLLH = backpack
+    .desc = A standard tactical container. For unknown reasons, its internal compartments have limited capacity.
+    .suffix = MTF
+ent-ClothingBackpackRRH = backpack
+    .desc = Documentation on the design of this unit is unavailable. Information about its features has been removed from public archives.
+    .suffix = MTF

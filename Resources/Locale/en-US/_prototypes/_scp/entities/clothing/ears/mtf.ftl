@@ -1,6 +1,9 @@
-ent-ClothingHeadsetAltMTF = { ent-ClothingHeadsetAltRegionalAdministration }
-    .desc = { ent-ClothingHeadsetAltRegionalAdministration.desc }
-ent-ClothingHeadsetAltMTFRRH = { ent-ClothingHeadsetAltMTF }
-    .desc = { ent-ClothingHeadsetAltMTF.desc }
-ent-ClothingHeadsetAltMTFLLH = { ent-ClothingHeadsetAltMTF }
-    .desc = { ent-ClothingHeadsetAltMTF.desc }
+ent-ClothingHeadsetAltMTF = headset
+    .desc = A compact communication device with an encrypted channel. It ensures stable data transmission in difficult conditions.
+    .suffix = MTF
+ent-ClothingHeadsetAltMTFRRH = headset
+    .desc = A compact communication device with an encrypted channel. It has additional modules whose origin is not specified in the documentation.
+    .suffix = MTF
+ent-ClothingHeadsetAltMTFLLH = headset
+    .desc = A compact communication device with an encrypted channel. The casing has a reserved design, but the construction includes elements indicating the user's special status.
+    .suffix = MTF

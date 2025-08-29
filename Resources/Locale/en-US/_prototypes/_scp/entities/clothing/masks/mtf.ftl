@@ -1,6 +1,9 @@
-ent-ClothingMaskMTF = { ent-NineTailedFoxGasmask }
-    .desc = { ent-NineTailedFoxGasmask.desc }
-ent-ClothingMaskGasLLH = { ent-ClothingMaskGasSwat }
-    .desc = { ent-ClothingMaskGasSwat.desc }
-ent-ClothingMaskGasRRH = { ent-ClothingMaskGasDeathSquad }
-    .desc = { ent-ClothingMaskGasDeathSquad.desc }
+ent-ClothingMaskMTF = gas mask
+    .desc = A standard protective mask with dense filtration. The lenses create the impression of an empty, emotionless gaze.
+    .suffix = MTF
+ent-ClothingMaskGasLLH = gas mask
+    .desc = An enhanced model with markings reminiscent of the principles of control and submission. The filters appear excessively powerful.
+    .suffix = MTF
+ent-ClothingMaskGasRRH = gas mask
+    .desc = Traces of erased markings are visible on the surface. Internal documentation for this model is missing.
+    .suffix = MTF
