@@ -34,7 +34,6 @@ public sealed partial class Scp049System
 
     private void InitializeActions()
     {
-        SubscribeLocalEvent<Scp049Component, Scp049KillLivingBeingAction>(OnKillLeavingBeing);
         SubscribeLocalEvent<Scp049Component, Scp049KillResurrectedAction>(OnKillResurrected);
         SubscribeLocalEvent<Scp049Component, Scp049ResurrectAction>(OnResurrect);
         SubscribeLocalEvent<Scp049Component, Scp049SelfHealAction>(OnSelfHeal);
@@ -133,42 +132,6 @@ public sealed partial class Scp049System
 
         var targetName = Identity.Name(args.Target, EntityManager);
         var performerName = Identity.Name(args.Target, EntityManager);
-
-        var localeMessage = Loc.GetString("scp049-touch-action-success",
-            ("target", targetName),
-            ("performer", performerName));
-
-        _popup.PopupEntity(localeMessage, ent, PopupType.MediumCaution);
-
-        args.Handled = true;
-    }
-
-    private void OnKillLeavingBeing(Entity<Scp049Component> ent, ref Scp049KillLivingBeingAction args)
-    {
-        if (args.Handled)
-            return;
-
-        var target = args.Target;
-
-        if (HasComp<ScpComponent>(target))
-            return;
-
-        if (_mob.IsDead(target))
-        {
-            _popup.PopupEntity(Loc.GetString("scp049-kill-action-already-dead"), target, ent, PopupType.MediumCaution);
-            return;
-        }
-
-        if (!_mob.HasState(target, MobState.Dead))
-        {
-            _popup.PopupEntity(Loc.GetString("scp049-kill-action-cant-kill"), target, ent, PopupType.MediumCaution);
-            return;
-        }
-
-        _mob.ChangeMobState(target, MobState.Dead);
-
-        var targetName = Identity.Name(target, EntityManager);
-        var performerName = Identity.Name(ent, EntityManager);
 
         var localeMessage = Loc.GetString("scp049-touch-action-success",
             ("target", targetName),
