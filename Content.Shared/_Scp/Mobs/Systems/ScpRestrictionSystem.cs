@@ -31,7 +31,7 @@ public sealed class ScpRestrictionSystem : EntitySystem
         SubscribeLocalEvent<ScpRestrictionComponent, SlipAttemptEvent>((_, _, args) => args.NoSlip = true);
         SubscribeLocalEvent<ScpRestrictionComponent, BuckleAttemptEvent>((_, _, args) => args.Cancelled = true);
         SubscribeLocalEvent<ScpRestrictionComponent, CanDragEvent>((_, _, args) => args.Handled = false);
-        SubscribeLocalEvent<ScpRestrictionComponent, BeforeStaminaDamageEvent>((_, _, args) => args.Cancelled = true);
+        SubscribeLocalEvent<ScpRestrictionComponent, BeforeStaminaDamageEvent>(OnStaminaDamage);
 
         SubscribeLocalEvent<ScpRestrictionComponent, AttemptMobCollideEvent>(OnCollideAttempt);
 
@@ -52,6 +52,12 @@ public sealed class ScpRestrictionSystem : EntitySystem
 
         if (!canBePulled)
             args.Cancel();
+    }
+
+    private static void OnStaminaDamage(Entity<ScpRestrictionComponent> ent, ref BeforeStaminaDamageEvent args)
+    {
+        if (!ent.Comp.CanTakeStaminaDamage)
+            args.Cancelled = true;
     }
 
     private static void OnCollideAttempt(Entity<ScpRestrictionComponent> ent, ref AttemptMobCollideEvent args)

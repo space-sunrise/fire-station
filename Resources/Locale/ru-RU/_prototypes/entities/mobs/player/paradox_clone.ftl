@@ -1,5 +1,5 @@
-ent-MobParadox = пространственно-временной парадокс
-    .desc = Большой клубок хлипко-вобблого, таймиво-вимового вещества.
+ent-MobParadox = Иллюзия
+    .desc = Существование этого существа было лишь аномальным обманом вашего разума. Теперь все иллюзии рассеялись.
 ent-MobParadoxTimed = { ent-MobParadox }
     .desc = { ent-MobParadox.desc }
 ent-ParadoxCloneDummy = Парадоксальный клон

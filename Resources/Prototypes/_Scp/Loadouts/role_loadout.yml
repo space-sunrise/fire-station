@@ -230,8 +230,8 @@
   - CommonSecurityPDA
   - SecurityBelt
   - SecurityBackpack
-  - SpecialPurposeSquadWeaponPrimary
-  - SpecialPurposeSquadWeaponSecondary
+  - CommandantSquadWeaponPrimary
+  - CommandantSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
   - CommonMiscItems
@@ -250,8 +250,8 @@
   - GuardShoes
   - SecurityBelt
   - SecurityBackpack
-  - SpecialPurposeSquadWeaponPrimary
-  - SpecialPurposeSquadWeaponSecondary
+  - CommandantSquadWeaponPrimary
+  - CommandantSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
   - CommonMiscItems
@@ -270,8 +270,8 @@
   - GuardShoes
   - SecurityBelt
   - SecurityBackpack
-  - SpecialPurposeSquadWeaponPrimary
-  - SpecialPurposeSquadWeaponSecondary
+  - CommandantSquadWeaponPrimary
+  - CommandantSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
   - CommonMiscItems
@@ -289,7 +289,7 @@
   - GuardShoes
   - SecurityBelt
   - SecurityBackpack
-  - SpecialPurposeSquadWeaponSecondary
+  - CommandantSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
   - CommonMiscItems
@@ -302,7 +302,7 @@
   groups:
   - BrigmedicJumpsuit
   - BrigmedicBackpack
-  - SpecialPurposeSquadWeaponSecondary
+  - CommandantSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
   - CommonMiscItems

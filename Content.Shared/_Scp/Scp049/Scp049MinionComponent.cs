@@ -7,8 +7,8 @@ namespace Content.Shared._Scp.Scp049;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp049MinionComponent : Component
 {
-    [DataField]
-    public static ProtoId<FactionIconPrototype> Icon = "Scp049MinionStatusIcon";
+    [ViewVariables]
+    public static readonly ProtoId<FactionIconPrototype> Icon = "Scp049MinionStatusIcon";
 
     [AutoNetworkedField]
     public EntityUid Scp049Owner;
