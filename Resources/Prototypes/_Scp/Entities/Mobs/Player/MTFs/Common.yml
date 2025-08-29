@@ -114,7 +114,7 @@
     - id: Screwdriver
 
 # РАНДОМ ХУМАНОИДЫ ОБЩИЕ
-# Кадет
+
 - type: randomHumanoidSettings
   id: CommonMTFCadet
   speciesBlacklist:
@@ -150,30 +150,29 @@
     - TrackingImplantMTF
     - MindShieldImplant
   - type: TTS
+  - type: NoEmotions
   - type: Fear
     phobias:
     - Exoremophobia
-    - Necrophobia
     proximityBlockerLevel: None
     seenBlockerLevel: None
     fearBasedSpreadAngleModifier:
-      Anxiety: 1.1
-      Fear: 1.4
-      Terror: 4
+      Anxiety: 1
+      Fear: 1.2
+      Terror: 2
     fearBasedGrainStrength:
       None: 0
-      Anxiety: 33
-      Fear: 130
-      Terror: 440
+      Anxiety: 30
+      Fear: 80
+      Terror: 150
     fearBasedVignetteStrength:
       None: 0
-      Anxiety: 30
-      Fear: 35
-      Terror: 330
-    baseJitterTime: 2
-    fallOffChance: 0.5
+      Anxiety: 20
+      Fear: 30
+      Terror: 60
+    baseJitterTime: 0
+    fallOffChance: 0
 
-# специалист
 - type: randomHumanoidSettings
   id: CommonMTFSpecialist
   parent: CommonMTFCadet
@@ -183,30 +182,7 @@
     - NamesSpecialist
     - NamesMilitaryLast
     nameFormat: name-format-ert
-  - type: NoEmotions
-  - type: Fear
-    phobias:
-    - Exoremophobia
-    proximityBlockerLevel: None
-    seenBlockerLevel: None
-    fearBasedSpreadAngleModifier:
-      Anxiety: 1
-      Fear: 1.3
-      Terror: 3
-    fearBasedGrainStrength:
-      None: 0
-      Anxiety: 30
-      Fear: 110
-      Terror: 400
-    fearBasedVignetteStrength:
-      None: 0
-      Anxiety: 20
-      Fear: 30
-      Terror: 230
-    baseJitterTime: 1.5
-    fallOffChance: 0.5
 
-# командир
 - type: randomHumanoidSettings
   id: CommonMTFLeader
   parent: CommonMTFSpecialist
@@ -218,7 +194,6 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert
 
-# Оперативник
 - type: randomHumanoidSettings
   id: CommonMTFOperative
   parent: CommonMTFLeader

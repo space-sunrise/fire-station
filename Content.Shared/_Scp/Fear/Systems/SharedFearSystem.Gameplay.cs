@@ -74,6 +74,9 @@ public abstract partial class SharedFearSystem
         if (_effects.HasStatusEffect(ent, FearFaintingComponent.StatusEffect))
             return;
 
+        if (MathHelper.CloseTo(ent.Comp.BaseJitterTime, 0f))
+            return;
+
         // Значения будут коррелировать с текущем уровнем страха
         var genericModifier = GetGenericFearBasedModifier(ent.Comp.State);
         var alcoholModifier = GetDrunkModifier(ent);
@@ -90,6 +93,9 @@ public abstract partial class SharedFearSystem
     /// </summary>
     private void ManageAdrenaline(Entity<FearComponent> ent)
     {
+        if (MathHelper.CloseTo(ent.Comp.AdrenalineBaseTime, 0f))
+            return;
+
         var modifier = GetGenericFearBasedModifier(ent.Comp.State);
         var time = TimeSpan.FromSeconds(ent.Comp.AdrenalineBaseTime * modifier);
 
