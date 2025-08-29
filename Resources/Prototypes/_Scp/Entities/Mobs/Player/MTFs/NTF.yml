@@ -1,29 +1,4 @@
-﻿# Ключ карты
-
-- type: entity
-  parent: KeyCardMtfBase
-  id: KeyCardMtfNTFLeader
-  components:
-  - type: Sprite
-    state: mtf_commander
-  - type: PresetIdCard
-    job: NTFLeader
-
-- type: entity
-  parent: KeyCardMtfBase
-  id: KeyCardMtfNTFSpecialist
-  components:
-  - type: PresetIdCard
-    job: NTFSpecialist
-
-- type: entity
-  parent: KeyCardMtfBase
-  id: KeyCardMtfNTFCadet
-  components:
-  - type: PresetIdCard
-    job: NTFCadet
-
-# ПРОФЕССИИ
+﻿# ПРОФЕССИИ
 # Командир
 - type: job
   id: NTFLeader

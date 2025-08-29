@@ -1,0 +1,38 @@
+﻿- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHelmetMTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mtf.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mtf.rsi
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHelmetNTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/MTF/ntf.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/Helmets/MTF/ntf.rsi
+
+- type: entity
+  parent: ClothingHeadHatSyndieMAA
+  id: ClothingHeadHatHDMAA
+
+- type: entity
+  parent: ClothingHeadHatCapLeatherHoS
+  id: ClothingHeadHatCapLeatherLLHLeader
+
+- type: entity
+  parent: ClothingHeadHelmetCBURN
+  id: ClothingHeadHelmetMH
+
+- type: entity
+  parent: ClothingHeadHelmetHardsuitDeathsquad
+  id: ClothingHeadHelmetHardsuitRRH
+  components:
+  - type: ClothingAddComponents
+    components:
+    - type: Scp096Protection
+      problemChance: 0.002 # 0,2% каждый тик проебаться

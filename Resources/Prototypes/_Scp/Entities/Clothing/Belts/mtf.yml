@@ -1,0 +1,15 @@
+﻿- type: entity
+  parent: ClothingBeltSecurityWebbing
+  id: MTFWebbing
+
+- type: entity
+  parent: ClothingBeltSecurityWebbing
+  id: MTFCommanderWebbing
+
+- type: entity
+  parent: ClothingBeltSecurityWebbing
+  id: MTFSpecialistWebbing
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbingMed
+  id: ClothingBeltMilitaryWebbingMH

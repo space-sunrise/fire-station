@@ -1,0 +1,16 @@
+﻿- type: entity
+  parent: ClothingMaskGasERT
+  id: ClothingMaskMTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Mask/MTF/mtf.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Mask/MTF/mtf.rsi
+
+- type: entity
+  parent: ClothingMaskGasSwat
+  id: ClothingMaskGasLLH
+
+- type: entity
+  parent: ClothingMaskGasDeathSquad
+  id: ClothingMaskGasRRH

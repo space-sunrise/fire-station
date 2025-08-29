@@ -1,0 +1,49 @@
+﻿- type: entity
+  id: ClothingUniformNTF
+  parent: ClothingUniformBase
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/MTF/ntf.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/MTF/ntf.rsi
+
+- type: entity
+  id: ClothingUniformRRH
+  parent: ClothingUniformBase
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/MTF/rrh.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/MTF/rrh.rsi
+
+- type: entity
+  id: ClothingUniformLLH
+  parent: ClothingUniformBase
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/MTF/llh.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/MTF/llh.rsi
+
+- type: entity
+  id: ClothingUniformMH
+  parent: ClothingUniformBase
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/MTF/mh.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/MTF/mh.rsi
+
+- type: entity
+  id: ClothingUniformHD
+  parent: ClothingUniformBase
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/MTF/hd.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/MTF/hd.rsi

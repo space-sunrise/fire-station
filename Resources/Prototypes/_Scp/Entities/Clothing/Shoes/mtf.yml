@@ -1,0 +1,12 @@
+﻿- type: entity
+  parent: ClothingShoesBootsJackSecFilled
+  id: ClothingShoesBootsHDFilled
+
+- type: entity
+  parent: ClothingShoesBootsJackSecFilled
+  id: ClothingShoesBootsNTFFilled
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Shoes/Boots/MTF/ntf.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Shoes/Boots/MTF/ntf.rsi
