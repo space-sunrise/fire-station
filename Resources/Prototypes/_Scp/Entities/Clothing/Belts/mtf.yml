@@ -12,7 +12,6 @@
   desc: A modular vest with attachments and pockets for carrying equipment. It features a neater finish, emphasizing the owner's status.
   suffix: MTF
 
-
 - type: entity
   parent: ClothingBeltSecurityWebbing
   id: MTFSpecialistWebbing
