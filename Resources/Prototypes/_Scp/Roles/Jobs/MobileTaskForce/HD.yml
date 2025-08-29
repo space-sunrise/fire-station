@@ -1,0 +1,141 @@
+﻿# Командир
+- type: job
+  id: HDLeader
+  name: ghost-role-information-mtf-leader-HD-name
+  description: ghost-role-information-mtf-leader-description
+  playTimeTracker: JobHDLeader
+  setPreference: false
+  startingGear: HDLeaderGear
+  icon: JobIconHD
+  supervisors: ghost-role-information-mtf-leader-supervisors
+  canBeAntag: false
+  radioBold: true
+  overrideConsoleVisibility: false
+  accessGroups:
+  - AllComplex
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: HDLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformHD
+    back: MTFSpecialistBackpack
+    shoes: ClothingShoesBootsHDFilled
+    head: ClothingHeadHatHDMAA
+    mask: ClothingMaskMTF
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorHD
+    id: KeyCardMtfHDLeader
+    ears: ClothingHeadsetAltMTF
+    belt: MTFCommanderWebbing
+    pocket1: BaseUplinkMTFLeader
+    pocket2: PinpointerNuclear
+  storage:
+    back:
+    - BoxMRE
+    - Crowbar
+    - CombatKnife
+    - HandheldCriminalRecordsMonitorUnpowered
+    - DoubleEmergencyOxygenTankFilled
+    - HandheldCrewMonitor
+    - MobileTaskForcePDA
+    belt:
+    - Stunbaton
+    - Handcuffs
+    - Handcuffs
+    - Handcuffs
+
+# Специалист
+- type: job
+  id: HDSpecialist
+  name: ghost-role-information-mtf-specialist-HD-name
+  description: ghost-role-information-mtf-specialist-description
+  playTimeTracker: JobHDSpecialist
+  setPreference: false
+  startingGear: HDSpecialistGear
+  icon: JobIconHD
+  supervisors: ghost-role-information-mtf-specialist-supervisors
+  canBeAntag: false
+  overrideConsoleVisibility: false
+  accessGroups:
+  - AllComplex
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: HDSpecialistGear
+  equipment:
+    jumpsuit: ClothingUniformHD
+    back: MTFSpecialistBackpack
+    shoes: ClothingShoesBootsHDFilled
+    head: ClothingHelmetMTF
+    mask: ClothingMaskMTF
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorHD
+    id: KeyCardMtfHDSpecialist
+    ears: ClothingHeadsetAltMTF
+    belt: MTFWebbing
+    pocket1: BaseUplinkMTFSpecialist
+    pocket2: CombatKnife
+  storage:
+    back:
+    - Crowbar
+    - DoubleEmergencyOxygenTankFilled
+    - BoxMRE
+    - MobileTaskForcePDA
+    belt:
+    - Stunbaton
+    - Handcuffs
+    - Handcuffs
+    - Handcuffs
+
+# Кадет
+- type: job
+  id: HDCadet
+  name: ghost-role-information-mtf-cadet-HD-name
+  description: ghost-role-information-mtf-cadet-description
+  playTimeTracker: JobHDCadet
+  setPreference: false
+  startingGear: HDCadetGear
+  icon: JobIconHD
+  supervisors: ghost-role-information-mtf-cadet-supervisors
+  canBeAntag: false
+  overrideConsoleVisibility: false
+  accessGroups:
+  - AllComplex
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: HDCadetGear
+  equipment:
+    jumpsuit: ClothingUniformHD
+    back: MTFSpecialistBackpack
+    shoes: ClothingShoesBootsHDFilled
+    head: ClothingHelmetMTF
+    mask: ClothingMaskMTF
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorHD
+    id: KeyCardMtfHDCadet
+    ears: ClothingHeadsetAltMTF
+    belt: MTFWebbing
+    pocket1: BaseUplinkMTFCadet
+    pocket2: CombatKnife
+  storage:
+    back:
+    - Crowbar
+    - DoubleEmergencyOxygenTankFilled
+    - BoxMRE
+    - MobileTaskForcePDA
+    belt:
+    - Stunbaton
+    - Handcuffs
+    - Handcuffs
+    - Handcuffs

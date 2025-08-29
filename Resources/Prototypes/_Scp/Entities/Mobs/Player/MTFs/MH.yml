@@ -1,60 +1,6 @@
 ﻿# ПРОФЕССИИ
-# Командир
-- type: job
-  id: MHLeader
-  name: ghost-role-information-mtf-leader-MH-name
-  description: ghost-role-information-mtf-leader-description
-  playTimeTracker: JobMHLeader
-  setPreference: false
-  startingGear: MHLeaderGear
-  icon: JobIconMH
-  supervisors: ghost-role-information-mtf-leader-supervisors
-  canBeAntag: false
-  radioBold: true
-  overrideConsoleVisibility: false
-  accessGroups:
-  - AllComplex
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:AddComponentSpecial
-    components:
-    - type: CommandStaff
 
-- type: startingGear
-  id: MHLeaderGear
-  equipment:
-    jumpsuit: ClothingUniformMH
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsMagCombat
-    mask: ClothingMaskMTF
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitMHLeader
-    id: KeyCardMtfMHLeader
-    ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMilitaryWebbingMH
-    pocket1: BaseUplinkMTFLeader
-    pocket2: PinpointerNuclear
-  storage:
-    back:
-    - BoxMRE
-    - Crowbar
-    - CombatKnife
-    - HandheldCriminalRecordsMonitorUnpowered
-    - DoubleEmergencyOxygenTankFilled
-    - HandheldCrewMonitor
-    - MobileTaskForcePDA
-    belt:
-    - MedkitCombatFilled
-    - ChemistryBottleEpinephrine
-    - ChemistryBottleEpinephrine
-    - PrefilledSyringe
-    - PillAmbuzolPlus
-    - PillAmbuzolPlus
-    - PillAmbuzol
-    - PillAmbuzol
-    - Handcuffs
+
 
 - type: entity
   id: RandomHumanoidSpawnerMHLeader
@@ -80,58 +26,7 @@
   - type: Loadout
     prototypes: [ MHLeaderGear ]
 
-# специалист
-- type: job
-  id: MHSpecialist
-  name: ghost-role-information-mtf-specialist-MH-name
-  description: ghost-role-information-mtf-specialist-description
-  playTimeTracker: JobMHSpecialist
-  setPreference: false
-  startingGear: MHSpecialistGear
-  icon: JobIconMH
-  supervisors: ghost-role-information-mtf-specialist-supervisors
-  canBeAntag: false
-  overrideConsoleVisibility: false
-  accessGroups:
-  - AllComplex
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:AddComponentSpecial
-    components:
-    - type: CommandStaff
 
-- type: startingGear
-  id: MHSpecialistGear
-  equipment:
-    jumpsuit: ClothingUniformMH
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsMagCombat
-    mask: ClothingMaskMTF
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitMH
-    id: KeyCardMtfMHSpecialist
-    ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMilitaryWebbingMH
-    pocket1: BaseUplinkMTFSpecialist
-    pocket2: CombatKnife
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    belt:
-    - MedkitCombatFilled
-    - ChemistryBottleEpinephrine
-    - ChemistryBottleEpinephrine
-    - PrefilledSyringe
-    - PillAmbuzolPlus
-    - PillAmbuzolPlus
-    - PillAmbuzol
-    - PillAmbuzol
-    - Handcuffs
 
 - type: entity
   id: RandomHumanoidSpawnerMHSpecialist
@@ -157,58 +52,7 @@
   - type: Loadout
     prototypes: [ MHSpecialistGear ]
 
-# кадет
-- type: job
-  id: MHCadet
-  name: ghost-role-information-mtf-cadet-MH-name
-  description: ghost-role-information-mtf-cadet-description
-  playTimeTracker: JobMHCadet
-  setPreference: false
-  startingGear: MHCadetGear
-  icon: JobIconMH
-  supervisors: ghost-role-information-mtf-cadet-supervisors
-  canBeAntag: false
-  overrideConsoleVisibility: false
-  accessGroups:
-  - AllComplex
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:AddComponentSpecial
-    components:
-    - type: CommandStaff
 
-- type: startingGear
-  id: MHCadetGear
-  equipment:
-    jumpsuit: ClothingUniformMH
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsMagCombat
-    mask: ClothingMaskMTF
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitMH
-    id: KeyCardMtfMHCadet
-    ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMilitaryWebbingMH
-    pocket1: BaseUplinkMTFCadet
-    pocket2: CombatKnife
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    belt:
-    - MedkitCombatFilled
-    - ChemistryBottleEpinephrine
-    - ChemistryBottleEpinephrine
-    - PrefilledSyringe
-    - PillAmbuzolPlus
-    - PillAmbuzolPlus
-    - PillAmbuzol
-    - PillAmbuzol
-    - Handcuffs
 
 - type: entity
   id: RandomHumanoidSpawnerMHCadet
