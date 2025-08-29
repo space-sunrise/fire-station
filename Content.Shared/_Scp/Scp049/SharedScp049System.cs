@@ -2,13 +2,5 @@
 
 public abstract class SharedScp049System : EntitySystem
 {
-    public override void Initialize()
-    {
-        base.Initialize();
-    }
 
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-    }
 }

@@ -10,8 +10,8 @@ namespace Content.Server._Scp.Scp049;
 
 public sealed partial class Scp049System : SharedScp049System
 {
-    [Dependency] private readonly ActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly InventorySystem _inventorySystem = default!;
+    [Dependency] private readonly ActionsSystem _actions = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
@@ -35,7 +35,7 @@ public sealed partial class Scp049System : SharedScp049System
         if (!TryComp<MobStateComponent>(args.Target, out var mobStateComponent))
             return;
 
-        var mobStateEntity = new Entity<MobStateComponent>(args.Target.Value, mobStateComponent);
+        var mobStateEntity = (args.Target.Value, mobStateComponent);
 
         scpEntity.Comp.NextTool = _random.Pick(scpEntity.Comp.SurgeryTools);
         Dirty(scpEntity);
@@ -43,7 +43,7 @@ public sealed partial class Scp049System : SharedScp049System
         if (!TryMakeMinion(mobStateEntity, scpEntity))
         {
             var message = Loc.GetString("scp049-cannot-zombify-entity", ("target", mobStateEntity));
-            _popupSystem.PopupEntity(message, mobStateEntity, scpEntity);
+            _popup.PopupEntity(message, mobStateEntity.Value, scpEntity);
         }
 
         args.Handled = true;
@@ -54,11 +54,11 @@ public sealed partial class Scp049System : SharedScp049System
     {
         foreach (var action in ent.Comp.Actions)
         {
-            _actionsSystem.AddAction(ent, action);
+            _actions.AddAction(ent, action);
         }
 
         var backPack = Spawn("ClothingBackpackScp049");
-        _inventorySystem.TryEquip(ent, backPack, "back", true, true);
+        _inventory.TryEquip(ent, backPack, "back", true, true);
 
         ent.Comp.NextTool = _random.Pick(ent.Comp.SurgeryTools);
         Dirty(ent);
