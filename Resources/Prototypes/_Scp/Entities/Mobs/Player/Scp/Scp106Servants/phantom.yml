@@ -27,6 +27,7 @@
   - type: FlashImmunity
     examinable: false
   - type: Scp106Phantom
+  - type: ScpRestriction
   - type: ToggleableNightVision
     effect: ScpEffectNightVision
 
