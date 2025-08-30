@@ -1,106 +1,4 @@
-﻿# Ключ карты
-
-- type: entity
-  parent: KeyCardMtfBase
-  id:  KeyCardMtfLLHLeader
-  components:
-  - type: Sprite
-    state: mtf_commander
-  - type: PresetIdCard
-    job: LLHLeader
-
-- type: entity
-  parent: KeyCardMtfBase
-  id: KeyCardMtfLLHSpecialist
-  components:
-  - type: PresetIdCard
-    job: LLHSpecialist
-
-- type: entity
-  parent: KeyCardMtfBase
-  id: KeyCardMtfLLHCadet
-  components:
-  - type: PresetIdCard
-    job: LLHCadet
-
-# кастом вещи группы
-- type: entity
-  parent: ClothingHeadHatCapLeatherHoS
-  id: ClothingHeadHatCapLeatherLLHLeader
-
-- type: entity
-  parent: ClothingDeathSquadronBackpack
-  id: ClothingBackpackLLH
-
-- type: entity
-  parent: ClothingMaskGasSwat
-  id: ClothingMaskGasLLH
-
-- type: entity
-  parent: ClothingOuterArmorHeavy
-  id: ClothingOuterArmorHeavyLLH
-
-
-
-
-
-
-
-
-
-# ПРОФЕССИИ
-# Командир
-- type: job
-  id: LLHLeader
-  name: ghost-role-information-mtf-leader-LLH-name
-  description: ghost-role-information-mtf-leader-description
-  playTimeTracker: JobLLHLeader
-  setPreference: false
-  startingGear: LLHLeaderGear
-  icon: JobIconLLH
-  supervisors: ghost-role-information-mtf-LLH-leader-supervisors
-  canBeAntag: false
-  radioBold: true
-  overrideConsoleVisibility: false
-  accessGroups:
-  - AllComplex
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:AddComponentSpecial
-    components:
-    - type: CommandStaff
-
-- type: startingGear
-  id: LLHLeaderGear
-  equipment:
-    jumpsuit: ClothingUniformLLH
-    back: ClothingBackpackLLH
-    shoes: ClothingShoesBootsMagAdv
-    head: ClothingHeadHatCapLeatherLLHLeader
-    mask: ClothingMaskGasLLH
-    eyes: ClothingEyesNVDSec
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorHeavyLLH
-    id: KeyCardMtfLLHLeader
-    ears: ClothingHeadsetAltMTFLLH
-    belt: MTFCommanderWebbing
-    pocket1: BaseUplinkLLHLeader
-    pocket2: PinpointerNuclear
-  storage:
-    back:
-    - BoxMRE
-    - Crowbar
-    - CombatKnife
-    - HandheldCriminalRecordsMonitorUnpowered
-    - DoubleEmergencyOxygenTankFilled
-    - HandheldCrewMonitor
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-
-- type: entity
+﻿- type: entity
   id: RandomHumanoidSpawnerLLHLeader
   components:
   - type: Sprite
@@ -129,53 +27,6 @@
     - NamesOperativeLeaderLast
     nameFormat: name-format-ert
 
-# специалист
-- type: job
-  id: LLHSpecialist
-  name: ghost-role-information-mtf-specialist-LLH-name
-  description: ghost-role-information-mtf-specialist-description
-  playTimeTracker: JobLLHSpecialist
-  setPreference: false
-  startingGear: LLHSpecialistGear
-  icon: JobIconLLH
-  supervisors: ghost-role-information-mtf-LLH-specialist-supervisors
-  canBeAntag: false
-  overrideConsoleVisibility: false
-  accessGroups:
-  - AllComplex
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:AddComponentSpecial
-    components:
-    - type: CommandStaff
-
-- type: startingGear
-  id: LLHSpecialistGear
-  equipment:
-    jumpsuit: ClothingUniformLLH
-    back: ClothingBackpackLLH
-    shoes: ClothingShoesBootsMagAdv
-    head: ClothingHelmetMTF
-    mask: ClothingMaskGasLLH
-    eyes: ClothingEyesNVDSec
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorHeavyLLH
-    id: KeyCardMtfLLHSpecialist
-    ears: ClothingHeadsetAltMTFLLH
-    belt: MTFWebbing
-    pocket1: BaseUplinkLLHSpecialist
-    pocket2: CombatKnife
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-
 - type: entity
   id: RandomHumanoidSpawnerLLHSpecialist
   components:
@@ -199,53 +50,6 @@
     job: LLHSpecialist
   - type: Loadout
     prototypes: [ LLHSpecialistGear ]
-
-# кадет
-- type: job
-  id: LLHCadet
-  name: ghost-role-information-mtf-cadet-LLH-name
-  description: ghost-role-information-mtf-cadet-description
-  playTimeTracker: JobLLHCadet
-  setPreference: false
-  startingGear: LLHCadetGear
-  icon: JobIconLLH
-  supervisors: ghost-role-information-mtf-LLH-cadet-supervisors
-  canBeAntag: false
-  overrideConsoleVisibility: false
-  accessGroups:
-  - AllComplex
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:AddComponentSpecial
-    components:
-    - type: CommandStaff
-
-- type: startingGear
-  id: LLHCadetGear
-  equipment:
-    jumpsuit: ClothingUniformLLH
-    back: ClothingBackpackLLH
-    shoes: ClothingShoesBootsMagAdv
-    head: ClothingHelmetMTF
-    mask: ClothingMaskGasLLH
-    eyes: ClothingEyesNVDSec
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorHeavyLLH
-    id: KeyCardMtfLLHCadet
-    ears: ClothingHeadsetAltMTFLLH
-    belt: MTFWebbing
-    pocket1: BaseUplinkLLH
-    pocket2: CombatKnife
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
 
 - type: entity
   id: RandomHumanoidSpawnerLLHCadet
@@ -272,8 +76,6 @@
     prototypes: [ LLHCadetGear ]
   - type: NoEmotions
 
-
-
 # Спавнер отряда
 - type: entity
   id: SpawnerMTFSquadLLH
@@ -295,6 +97,7 @@
       - id: RandomHumanoidSpawnerLLHCadet # 2
       - id: RandomHumanoidSpawnerLLHCadet
     offset: 1
+
 # Спавнер, но юзается по кнопке
 - type: entity
   id: SpawnerMTFSquadLLHSpawnOnTrigger
@@ -308,22 +111,3 @@
     - state: green
     - state: LLH
       sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-
-
-# мета
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconLLH
-  icon:
-    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-    state: LLH
-  jobName: mobile-task-force-LLH-name
-
-- type: playTimeTracker
-  id: JobLLHLeader
-
-- type: playTimeTracker
-  id: JobLLHSpecialist
-
-- type: playTimeTracker
-  id: JobLLHCadet

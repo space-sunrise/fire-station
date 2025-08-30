@@ -12,19 +12,19 @@ namespace Content.Shared._Scp.Fear.Components;
 public sealed partial class FearComponent : Component
 {
     /// <inheritdoc cref="FearState"/>
-    [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
+    [AutoNetworkedField, ViewVariables]
     public FearState State = FearState.None;
 
     /// <summary>
     /// Список, содержащий информацию о фобиях персонажа
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public HashSet<ProtoId<PhobiaPrototype>> Phobias = [];
 
     /// <summary>
     /// Время, через которое уровень страха понизится.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public TimeSpan TimeToDecreaseFearLevel = TimeSpan.FromSeconds(180); // 3 минуты
 
     /// <summary>
@@ -39,7 +39,7 @@ public sealed partial class FearComponent : Component
     /// Этот словарь описывает зависимость силы шейдера зернистости от уровня страха у владельца компонента.
     /// Эти значения будут суммироваться с другими при добавлении.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public Dictionary<FearState, float> FearBasedGrainStrength = new ()
     {
         { FearState.None , 0f },
@@ -52,7 +52,7 @@ public sealed partial class FearComponent : Component
     /// Этот словарь описывает зависимость силы шейдера виньетки от уровня страха у владельца компонента.
     /// Эти значения будут суммироваться с другими при добавлении.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public Dictionary<FearState, float> FearBasedVignetteStrength = new ()
     {
         { FearState.None , 0f },
@@ -80,7 +80,7 @@ public sealed partial class FearComponent : Component
     /// Через прозрачные объекты приближаться к чем-тому не так страшно.
     /// Рассчитанная сила делится на этот модификатор, НЕ умножается.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public float TransparentStrengthDecreaseFactor = 2f;
 
     /// <summary>
@@ -88,7 +88,7 @@ public sealed partial class FearComponent : Component
     /// Если итоговый уровень будет выше, то не будет и эффекта.
     /// А если ниже, то будет.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public LineOfSightBlockerLevel ProximityBlockerLevel = LineOfSightBlockerLevel.Transparent;
 
     #endregion
@@ -100,13 +100,13 @@ public sealed partial class FearComponent : Component
     /// Если итоговый уровень будет выше, то не будет и эффекта.
     /// А если ниже, то будет.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public LineOfSightBlockerLevel SeenBlockerLevel = LineOfSightBlockerLevel.Transparent;
 
     /// <summary>
     /// Время, через которое игрок снова сможет испугаться источника страха, когда увидит его.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public TimeSpan TimeToGetScaredAgainOnLookAt = TimeSpan.FromMinutes(2); // 2 минуты
 
     #endregion
@@ -119,7 +119,7 @@ public sealed partial class FearComponent : Component
     /// </summary>
     /// TODO: Заменить высокие значения при появлении системы навыков
     /// или другой системы, которая сделает не-боевые роли слабыми в бою
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public Dictionary<FearState, float> FearBasedSpreadAngleModifier = new ()
     {
         { FearState.Anxiety, 2f },
@@ -130,19 +130,19 @@ public sealed partial class FearComponent : Component
     /// <summary>
     /// Базовый модификатор трясучки, которая будет возникать при повышении уровня страха.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public float BaseJitterTime = 10f;
+    [DataField, AutoNetworkedField]
+    public float BaseJitterTime = 4f;
 
     /// <summary>
     /// Необходимый уровень страха, чтобы начать падать при хождении.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public FearState FallOffRequiredState = FearState.Terror;
 
     /// <summary>
     /// Шанс упасть при хождении во время страха постигшего <see cref="FallOffRequiredState"/>
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public float FallOffChance = 3f; // 3%
 
     /// <summary>
@@ -154,26 +154,26 @@ public sealed partial class FearComponent : Component
     /// <summary>
     /// Время между проверками на возможность запнуться.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public TimeSpan FallOffCheckInterval = TimeSpan.FromSeconds(0.3f);
 
     /// <summary>
     /// Какой уровень страха нужен, чтобы у человека появился адреналин.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public FearState AdrenalineRequiredState = FearState.Fear;
 
     /// <summary>
     /// Базовое количество времени действий адреналина при повышении уровня страха.
     /// На него умножается модификатор от текущего уровня страха.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public float AdrenalineBaseTime = 5f;
 
     /// <summary>
     /// Какой уровень страха требуется, чтобы закричать при поднятии до этого уровня.
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public FearState ScreamRequiredState = FearState.Terror;
 
     #endregion

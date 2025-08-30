@@ -1,9 +1,3 @@
-ent-KeyCardMtfNTFLeader = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfNTFSpecialist = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfNTFCadet = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
 ent-RandomHumanoidSpawnerNTFLeader = { "" }
     .desc = { "" }
 ent-RandomHumanoidSpawnerNTFSpecialist = { "" }

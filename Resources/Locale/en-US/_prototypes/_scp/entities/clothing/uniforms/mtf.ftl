@@ -1,0 +1,15 @@
+ent-ClothingUniformNTF = mobile task force uniform
+    .desc = A standard dark blue tactical uniform with armor inserts and the unit's insignia.
+    .suffix = MTF
+ent-ClothingUniformRRH = mobile task force uniform
+    .desc = A deep scarlet uniform made of dense fabric and reinforced with protective elements.
+    .suffix = MTF
+ent-ClothingUniformLLH = mobile task force uniform
+    .desc = A formal black uniform, complemented by Ethics Committee symbolism and security insignia.
+    .suffix = MTF
+ent-ClothingUniformMH = mobile task force uniform
+    .desc = A drab grey-green uniform that shows signs of heavy chemical treatment.
+    .suffix = MTF
+ent-ClothingUniformHD = mobile task force uniform
+    .desc = A heavy, dark-colored uniform with reinforced armor elements and the squad's distinctive insignia.
+    .suffix = MTF

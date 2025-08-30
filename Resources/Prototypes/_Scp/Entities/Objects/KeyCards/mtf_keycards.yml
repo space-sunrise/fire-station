@@ -1,0 +1,132 @@
+﻿# Базовая карта
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardMtfBase
+  categories: [ HideSpawnMenu ]
+  abstract: true
+  components:
+  - type: Sprite
+    state: mtf_operative
+  - type: Access
+    groups:
+    - AllComplex
+  - type: Item
+    heldPrefix: blue
+
+# Мобильные оперативные группы
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfHDLeader
+  components:
+  - type: Sprite
+    state: mtf_commander
+  - type: PresetIdCard
+    job: HDLeader
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfHDSpecialist
+  components:
+  - type: PresetIdCard
+    job: HDSpecialist
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfHDCadet
+  components:
+  - type: PresetIdCard
+    job: HDCadet
+
+- type: entity
+  parent: KeyCardMtfBase
+  id:  KeyCardMtfLLHLeader
+  components:
+  - type: Sprite
+    state: mtf_commander
+  - type: PresetIdCard
+    job: LLHLeader
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfLLHSpecialist
+  components:
+  - type: PresetIdCard
+    job: LLHSpecialist
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfLLHCadet
+  components:
+  - type: PresetIdCard
+    job: LLHCadet
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfMHLeader
+  components:
+  - type: Sprite
+    state: mtf_commander
+  - type: PresetIdCard
+    job: MHLeader
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfMHSpecialist
+  components:
+  - type: PresetIdCard
+    job: MHSpecialist
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfMHCadet
+  components:
+  - type: PresetIdCard
+    job: MHCadet
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfNTFLeader
+  components:
+  - type: Sprite
+    state: mtf_commander
+  - type: PresetIdCard
+    job: NTFLeader
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfNTFSpecialist
+  components:
+  - type: PresetIdCard
+    job: NTFSpecialist
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfNTFCadet
+  components:
+  - type: PresetIdCard
+    job: NTFCadet
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfRRHLeader
+  components:
+  - type: Sprite
+    state: mtf_commander
+  - type: PresetIdCard
+    job: RRHLeader
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfRRHSpecialist
+  components:
+  - type: PresetIdCard
+    job: RRHSpecialist
+
+- type: entity
+  parent: KeyCardMtfBase
+  id: KeyCardMtfRRHCadet
+  components:
+  - type: PresetIdCard
+    job: RRHCadet

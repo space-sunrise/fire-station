@@ -1,11 +1,7 @@
-﻿names-mtf-leader-first-dataset-1 = Командир
-
+names-mtf-leader-first-dataset-1 = Командир
 names-mtf-specialist-first-dataset-1 = Специалист
-
 names-mtf-cadet-first-dataset-1 = Кадет
-
 names-mtf-operative-first-dataset-1 = Оперативник
-
 names-mtf-operative-last-dataset-1 = Дядя
 names-mtf-operative-last-dataset-2 = Дракон
 names-mtf-operative-last-dataset-3 = Борода
@@ -30,7 +26,6 @@ names-mtf-operative-last-dataset-21 = Танк
 names-mtf-operative-last-dataset-22 = Ящер
 names-mtf-operative-last-dataset-23 = Бласковиц
 names-mtf-operative-last-dataset-24 = Ковчег
-
 names-mtf-operative-leader-last-dataset-1 = Гост
 names-mtf-operative-leader-last-dataset-2 = Пейн
 names-mtf-operative-leader-last-dataset-3 = Шепард

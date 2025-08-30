@@ -1,17 +1,3 @@
-ent-KeyCardMtfRRHLeader = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfRRHSpecialist = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfRRHCadet = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-ClothingMaskGasRRH = противогаз "Альфа-1"
-    .desc = [ДАННЫЕ УДАЛЕНЫ]
-ent-ClothingBackpackRRH = рюкзак "Альфа-1"
-    .desc = [РЕДАКТИРОВАННО]
-ent-ClothingHeadHelmetHardsuitRRH = шлем скафандра "Альфа-1"
-    .desc = Повинуйся и работай эффективно. Отклонение от протокола приравнивается к дезертирству.
-ent-ClothingOuterHardsuitRRH = скафандр "Альфа-1"
-    .desc = MANKIND IS DEAD, BLOOD IS FUEL, FACILITY IS FULL.
 ent-RandomHumanoidSpawnerRRHLeader = { ghost-role-information-mtf-leader-RRH-name }
     .suffix = МОГ | Альфа-1
     .desc = { ghost-role-information-mtf-leader-description }

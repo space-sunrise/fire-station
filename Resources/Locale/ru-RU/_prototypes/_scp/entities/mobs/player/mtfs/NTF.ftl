@@ -1,9 +1,3 @@
-ent-KeyCardMtfNTFLeader = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfNTFSpecialist = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfNTFCadet = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
 ent-RandomHumanoidSpawnerNTFLeader = { ghost-role-information-mtf-leader-NTF-name }
     .suffix = МОГ | Эпсилон-11
     .desc = { ghost-role-information-mtf-leader-description }

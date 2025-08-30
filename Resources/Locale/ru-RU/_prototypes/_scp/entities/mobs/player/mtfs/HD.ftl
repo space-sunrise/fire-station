@@ -1,15 +1,3 @@
-ent-KeyCardMtfHDLeader = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfHDSpecialist = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfHDCadet = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-ClothingOuterArmorHD = Броня "Ню-7"
-    .desc = Элитная броня отряда "Ню-7"
-ent-ClothingHeadHatHDMAA = Фуражка командира "Ню-7"
-    .desc = Фуражка. Сшита будто на командира.
-ent-ClothingShoesBootsHDFilled = Подкованные сапоги "Ню-7"
-    .desc = Поговаривают, что внутри них есть подкова.
 ent-RandomHumanoidSpawnerHDLeader = { ghost-role-information-mtf-leader-HD-name }
     .suffix = МОГ | Ню-7
     .desc = { ghost-role-information-mtf-leader-description }

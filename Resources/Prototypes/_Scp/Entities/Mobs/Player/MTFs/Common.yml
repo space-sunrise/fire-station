@@ -1,115 +1,4 @@
-﻿#базовая ID карта
-- type: entity
-  parent: KeyCardBase
-  id: KeyCardMtfBase
-  categories: [ HideSpawnMenu ]
-  abstract: true
-  components:
-  - type: Sprite
-    state: mtf_operative
-  - type: Access
-    groups:
-    - AllComplex
-  - type: Item
-    heldPrefix: blue
-
-# ВЕЩИ
-- type: entity
-  parent: [NineTailedFoxGasmask, BaseCentcommContraband]
-  id: ClothingMaskMTF
-  components:
-  - type: Sprite
-    sprite: _Scp/Clothing/Mask/mtfGasMask.rsi
-  - type: Clothing
-    sprite: _Scp/Clothing/Mask/mtfGasMask.rsi
-
-- type: entity
-  parent: [NineTailedFoxHelmet, BaseCentcommContraband]
-  id: ClothingHelmetMTF
-  components:
-  - sprite: _Scp/Clothing/Head/Helmets/mtfHelmet.rsi
-    type: Sprite
-  - sprite: _Scp/Clothing/Head/Helmets/mtfHelmet.rsi
-    type: Clothing
-
-- type: entity
-  parent: [NineTailedFoxVest, BaseCentcommContraband]
-  id: MTFVest
-  components:
-  - type: ExplosionResistance
-    damageCoefficient: 0.8
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.5
-        Slash: 0.5
-        Piercing: 0.5
-
-- type: entity
-  parent: [NineTailedFoxCommanderVest, BaseCentcommContraband]
-  id: MTFCommanderVest
-  components:
-  - type: ExplosionResistance
-    damageCoefficient: 0.8
-  - type: Armor
-    modifiers:
-      coefficients:
-        Blunt: 0.4
-        Slash: 0.4
-        Piercing: 0.4
-
-- type: entity
-  parent: [NineTailedFoxWebbing, BaseCentcommContraband]
-  id: MTFWebbing
-
-- type: entity
-  parent: [NineTailedFoxCommanderWebbing, BaseCentcommContraband]
-  id: MTFCommanderWebbing
-
-- type: entity
-  parent: [NineTailedFoxSpecialistWebbing, BaseCentcommContraband]
-  id: MTFSpecialistWebbing
-
-- type: entity
-  parent: [NineTailedFoxSpecialistBackpack, BaseCentcommContraband]
-  id: MTFSpecialistBackpack
-
-# гарнитуры для разных МОГ
-- type: entity
-  parent: [ClothingHeadsetAltRegionalAdministration, BaseCentcommContraband]
-  id: ClothingHeadsetAltMTF
-  components:
-  - type: ContainerFill
-    containers:
-      key_slots:
-      - EncryptionKeyMTFMaster
-
-- type: entity
-  parent: ClothingHeadsetAltMTF
-  id: ClothingHeadsetAltMTFRRH
-  components:
-  - type: ContainerFill
-    containers:
-      key_slots:
-      - EncryptionKeyMTFMaster
-      - EncryptionKeyInternalSecurity
-      - EncryptionKeyInternalTribunalService
-
-- type: entity
-  parent: ClothingHeadsetAltMTF
-  id: ClothingHeadsetAltMTFLLH
-  components:
-  - type: ContainerFill
-    containers:
-      key_slots:
-      - EncryptionKeyMTFMaster
-      - EncryptionKeyEthicsCommittee
-
-
-
-
-
-# ВЕЩИ АПЛИНКА
+﻿# ВЕЩИ АПЛИНКА
 - type: entity
   parent: WeaponPulseCarbine
   id: WeaponPulseCarbineScp
@@ -225,7 +114,7 @@
     - id: Screwdriver
 
 # РАНДОМ ХУМАНОИДЫ ОБЩИЕ
-# Кадет
+
 - type: randomHumanoidSettings
   id: CommonMTFCadet
   speciesBlacklist:
@@ -261,30 +150,29 @@
     - TrackingImplantMTF
     - MindShieldImplant
   - type: TTS
+  - type: NoEmotions
   - type: Fear
     phobias:
     - Exoremophobia
-    - Necrophobia
     proximityBlockerLevel: None
     seenBlockerLevel: None
     fearBasedSpreadAngleModifier:
-      Anxiety: 1.1
-      Fear: 1.4
-      Terror: 4
+      Anxiety: 1
+      Fear: 1.2
+      Terror: 2
     fearBasedGrainStrength:
       None: 0
-      Anxiety: 33
-      Fear: 130
-      Terror: 440
+      Anxiety: 30
+      Fear: 80
+      Terror: 150
     fearBasedVignetteStrength:
       None: 0
-      Anxiety: 30
-      Fear: 35
-      Terror: 330
-    baseJitterTime: 2
-    fallOffChance: 0.5
+      Anxiety: 20
+      Fear: 30
+      Terror: 60
+    baseJitterTime: 0
+    fallOffChance: 0
 
-# специалист
 - type: randomHumanoidSettings
   id: CommonMTFSpecialist
   parent: CommonMTFCadet
@@ -294,30 +182,7 @@
     - NamesSpecialist
     - NamesMilitaryLast
     nameFormat: name-format-ert
-  - type: NoEmotions
-  - type: Fear
-    phobias:
-    - Exoremophobia
-    proximityBlockerLevel: None
-    seenBlockerLevel: None
-    fearBasedSpreadAngleModifier:
-      Anxiety: 1
-      Fear: 1.3
-      Terror: 3
-    fearBasedGrainStrength:
-      None: 0
-      Anxiety: 30
-      Fear: 110
-      Terror: 400
-    fearBasedVignetteStrength:
-      None: 0
-      Anxiety: 20
-      Fear: 30
-      Terror: 230
-    baseJitterTime: 1.5
-    fallOffChance: 0.5
 
-# командир
 - type: randomHumanoidSettings
   id: CommonMTFLeader
   parent: CommonMTFSpecialist
@@ -329,7 +194,6 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert
 
-# Оперативник
 - type: randomHumanoidSettings
   id: CommonMTFOperative
   parent: CommonMTFLeader
@@ -377,7 +241,6 @@
   values:
     prefix: names-mtf-operative-leader-last-dataset-
     count: 7
-
 
 # ПРОЧЕЕ
 - type: entity

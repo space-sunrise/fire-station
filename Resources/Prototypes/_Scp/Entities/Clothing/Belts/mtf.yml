@@ -1,0 +1,27 @@
+﻿- type: entity
+  parent: ClothingBeltSecurityWebbing
+  id: MTFWebbing
+  name: webbing
+  description: A modular vest with attachments and pockets for carrying equipment. The design conveys a sense of strict functionality.
+  suffix: MTF
+
+- type: entity
+  parent: ClothingBeltSecurityWebbing
+  id: MTFCommanderWebbing
+  name: commander's webbing
+  description: A modular vest with attachments and pockets for carrying equipment. It features a neater finish, emphasizing the owner's status.
+  suffix: MTF
+
+- type: entity
+  parent: ClothingBeltSecurityWebbing
+  id: MTFSpecialistWebbing
+  name: specialist's webbing
+  description: A modular vest with attachments and pockets for carrying specialized equipment. It indicates the owner's highly specialized role.
+  suffix: MTF
+
+- type: entity
+  parent: ClothingBeltMilitaryWebbingMed
+  id: ClothingBeltMilitaryWebbingMH
+  name: webbing
+  description: A modular vest with attachments and pockets for carrying equipment. The materials are noted for their increased resistance to hostile environments.
+  suffix: MTF
