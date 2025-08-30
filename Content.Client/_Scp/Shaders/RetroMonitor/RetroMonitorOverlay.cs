@@ -9,7 +9,7 @@ public sealed class RetroMonitorOverlay : Overlay
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
-    public override bool RequestScreenTexture => true; // Запрашиваем ScreenTexture
+    public override bool RequestScreenTexture => true;
 
     private readonly ShaderInstance _retroShader;
 
@@ -17,6 +17,8 @@ public sealed class RetroMonitorOverlay : Overlay
     {
         IoCManager.InjectDependencies(this);
         _retroShader = _prototypeManager.Index<ShaderPrototype>("CRT_VHS").InstanceUnique();
+
+        ZIndex = 20;
     }
 
     protected override void Draw(in OverlayDrawArgs args)

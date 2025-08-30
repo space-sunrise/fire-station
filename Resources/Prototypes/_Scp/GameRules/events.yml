@@ -76,7 +76,6 @@
   id: ScpVanillaEventsTable
   table: !type:AllSelector
     children:
-    - id: BluespaceArtifact
     - id: BureaucraticError
     - id: ClericalError
     - id: CockroachMigration
