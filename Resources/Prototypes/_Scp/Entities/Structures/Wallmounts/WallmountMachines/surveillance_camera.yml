@@ -1,91 +1,29 @@
 - type: entity
   abstract: true
-  id: SurveillanceCameraBase
-  name: camera
-  description: A surveillance camera. It's watching you. Kinda.
+  parent: SurveillanceCameraBase
+  id: ReinforcedSurveillanceCameraBase
+  name: reinforced camera
+  description: A reinforced surveillance camera. It's watching you intensely. Kinda.
   components:
-  - type: Physics
-    bodyType: Static
-  - type: Fixtures
-    fixtures:
-      light:
-        shape:
-          !type:PhysShapeCircle
-          radius: 5
-        hard: false
-        mask:
-        - GhostImpassable
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,-0.2,-0.15"
-        density: 190
-        mask:
-        - None
-        layer:
-        - TabletopMachineLayer
-  - type: LightOnCollide
-  - type: PointLight
-    enabled: false
-    radius: 5
-  - type: SlimPoweredLight
-    enabled: false
-  - type: StationAiVision
-  - type: Clickable
-  - type: InteractionOutline
-  - type: Construction
-    graph: SurveillanceCamera
-    node: camera
-  - type: Electrified
-    enabled: false
-    usesApcPower: true
-  - type: WallMount
-  - type: ApcPowerReceiver
-  - type: ExtensionCableReceiver
-  - type: Eye
-  - type: WiredNetworkConnection
-  - type: DeviceNetworkRequiresPower
-  - type: Transform
-    anchored: true
-  - type: WiresPanel
-  - type: Wires
-    alwaysRandomize: true
-    layoutId: SurveillanceCamera
+  - type: Sprite
+    sprite: Structures/Wallmounts/camera.rsi
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: Metallic
-  - type: Sprite
-    drawdepth: WallMountedItems
-    sprite: _Scp/Structures/Wallmounts/camera.rsi # Fire Edit
-    layers:
-      - map: [ "enum.SurveillanceCameraVisualsKey.Layer" ]
-        state: camera
-        cycle: true
-  - type: Appearance
-  - type: SurveillanceCameraVisuals
-    sprites:
-      Active: camera
-      Disabled: camera_off
-      InUse: camera_in_use
-  - type: UserInterface
-    interfaces:
-      enum.SurveillanceCameraSetupUiKey.Camera:
-        type: SurveillanceCameraSetupBoundUi
-      enum.WiresUiKey.Key:
-        type: WiresBoundUserInterface
-  - type: StaticPrice
-    price: 200
+    damageModifierSet: StrongMetallic
+  - type: Construction
+    graph: ReinforcedSurveillanceCamera
+    node: camera
   - type: Destructible
     thresholds:
       - trigger:
           !type:DamageTrigger
-          damage: 200
+          damage: 500
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
       - trigger:
           !type:DamageTrigger
-          damage: 100
+          damage: 400
         behaviors:
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
@@ -94,15 +32,11 @@
               collection: MetalBreak
               params:
                 volume: -8
-  placement:
-    mode: SnapgridCenter
-    snap:
-      - Wallmount
 
 - type: entity
-  parent: SurveillanceCameraBase
-  id: SurveillanceCameraConstructed
-  name: camera
+  parent: ReinforcedSurveillanceCameraBase
+  id: ReinforcedSurveillanceCameraConstructed
+  name: reinforced camera
   suffix: Constructed
   components:
     - type: DeviceNetwork
@@ -120,9 +54,9 @@
         - SurveillanceCameraCommand
 
 - type: entity
-  parent: SurveillanceCameraBase
-  id: SurveillanceCameraEngineering
-  name: camera
+  parent: ReinforcedSurveillanceCameraBase
+  id: ReinforcedSurveillanceCameraEngineering
+  name: reinforced camera
   suffix: Engineering
   components:
   - type: DeviceNetwork
@@ -133,9 +67,9 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
-  id: SurveillanceCameraSecurity
-  name: camera
+  parent: ReinforcedSurveillanceCameraBase
+  id: ReinforcedSurveillanceCameraSecurity
+  name: reinforced camera
   suffix: Security
   components:
   - type: DeviceNetwork
@@ -146,9 +80,9 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
-  id: SurveillanceCameraScience
-  name: camera
+  parent: ReinforcedSurveillanceCameraBase
+  id: ReinforcedSurveillanceCameraScience
+  name: reinforced camera
   suffix: Science
   components:
   - type: DeviceNetwork
@@ -159,9 +93,9 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
-  id: SurveillanceCameraSupply
-  name: camera
+  parent: ReinforcedSurveillanceCameraBase
+  id: ReinforcedSurveillanceCameraSupply
+  name: reinforced camera
   suffix: Supply
   components:
   - type: DeviceNetwork
@@ -172,9 +106,9 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
-  id: SurveillanceCameraCommand
-  name: camera
+  parent: ReinforcedSurveillanceCameraBase
+  id: ReinforcedSurveillanceCameraCommand
+  name: reinforced camera
   suffix: Command
   components:
   - type: DeviceNetwork
@@ -185,9 +119,9 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
-  id: SurveillanceCameraService
-  name: camera
+  parent: ReinforcedSurveillanceCameraBase
+  id: ReinforcedSurveillanceCameraService
+  name: reinforced camera
   suffix: Service
   components:
   - type: DeviceNetwork
@@ -198,9 +132,9 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
-  id: SurveillanceCameraMedical
-  name: camera
+  parent: ReinforcedSurveillanceCameraBase
+  id: ReinforcedSurveillanceCameraMedical
+  name: reinforced camera
   suffix: Medical
   components:
   - type: DeviceNetwork
@@ -211,9 +145,9 @@
     networkSet: true
 
 - type: entity
-  parent: SurveillanceCameraBase
-  id: SurveillanceCameraGeneral
-  name: camera
+  parent: ReinforcedSurveillanceCameraBase
+  id: ReinforcedSurveillanceCameraGeneral
+  name: reinforced camera
   suffix: General
   components:
   - type: DeviceNetwork
@@ -224,27 +158,19 @@
     networkSet: true
 
 - type: entity
-  id: SurveillanceCameraAssembly
-  name: camera
-  description: A surveillance camera. Doesn't seem to be watching anybody any time soon. Probably.
+  parent: SurveillanceCameraAssembly
+  id: ReinforcedSurveillanceCameraAssembly
+  name: reinforced camera
+  description: A reinforced surveillance camera. Doesn't seem to be watching anybody any time soon. Probably.
   components:
-    - type: Clickable
-    - type: InteractionOutline
     - type: Construction
-      graph: SurveillanceCamera
+      graph: ReinforcedSurveillanceCamera
       node: assembly
-    - type: WallMount
-    - type: Transform
-      anchored: true
     - type: Damageable
       damageContainer: StructuralInorganic
-      damageModifierSet: Metallic
+      damageModifierSet: StrongMetallic
     - type: Sprite
       drawdepth: WallMountedItems
-      sprite: _Scp/Structures/Wallmounts/camera.rsi # Fire Edit
+      sprite: Structures/Wallmounts/camera.rsi
       layers:
         - state: camera_off
-  placement:
-    mode: SnapgridCenter
-    snap:
-      - Wallmount
