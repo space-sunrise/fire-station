@@ -45,4 +45,22 @@ public sealed partial class ScpCCVars
     public static readonly CVarDef<float> FieldOfViewOpacity =
         CVarDef.Create("shader.field_of_view_opacity", 0.7f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
+    /*
+     * Режим совместимости
+     */
+
+    /// <summary>
+    /// Будет ли игроку показываться окно с предупреждением о включенном режиме совместимости?
+    /// Настраивается, потому что не у всех игроков может ВООБЩЕ работать игра без режима совместимости.
+    /// </summary>
+    public static readonly CVarDef<bool> CompabilityModeShowWarning =
+        CVarDef.Create("scp.compability_mode_show_warning", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Будут ли использоваться пораженные шейдеры, если включен режим совместимости?
+    /// В случае, если игрок не может выключить режим совместимости, то лучше дать ему выбор. Использовать шейдеры или нет.
+    /// </summary>
+    public static readonly CVarDef<bool> CompabilityModeUseShaders =
+        CVarDef.Create("scp.compability_mode_use_shaders", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
 }
