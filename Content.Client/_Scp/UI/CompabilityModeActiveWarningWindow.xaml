@@ -1,0 +1,21 @@
+﻿<ui:CompabilityModeActiveWarningWindow
+    xmlns="https://spacestation14.io"
+    xmlns:ui="clr-namespace:Content.Client._Scp.UI"
+    xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+    Title="ПРЕДУПРЕЖДЕНИЕ О РЕЖИМЕ СОВМЕСТИМОСТИ">
+    <BoxContainer VerticalExpand="True" HorizontalExpand="True" MinSize="300 300">
+        <controls:StripeBack>
+            <BoxContainer Orientation="Vertical"
+                          HorizontalAlignment="Center"
+                          Margin="10 15">
+                <Label Text="Режим совместимости"
+                       StyleClasses="LabelHeadingTheBiggest"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="10 15"/>
+                <Label Text="У вас включен режим совместимости, пожалуйста, прочитайте текст ниже!" StyleClasses="LabelBig" Margin="10 15"/>
+                <RichTextLabel Margin="10 15" HorizontalAlignment="Stretch" MaxWidth="700" Text="На сервере используются множество шейдеров и эффектов, которые не работают в режим совместимости. Поэтому они были автоматически отключены, отчего игра может выглядеть странно и неправильно. Пожалуйста, выключите режим совместимости в настройках лаунчера Space Station 14, убрав галочку с пункта Режим Совместимости. После закрой игру и перезайдите на сервер. Если вы не можете выключить режим совместимости - ECS -> Настройки -> Настройки SCP -> Выключить предупреждение о режиме совместимости. "/>
+            </BoxContainer>
+        </controls:StripeBack>
+    </BoxContainer>
+</ui:CompabilityModeActiveWarningWindow>
