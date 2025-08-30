@@ -15,7 +15,7 @@ scp106-dimension-shift-alarm-announcement =
 scp106-many-humans-in-backrooms-alarm-announcement =
     ОБРАТНЫЙ ОТСЧЁТ НАЧАТ!!
 
-    { $time } до фазового обрушения
+    До фазового обрушения: { $time }
 
     SCP-106 нарушает границы известного. Реальность теряет сцепление
 
