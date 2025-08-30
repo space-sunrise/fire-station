@@ -8,7 +8,7 @@ const lowp float NOISE_OPACITY = 0.4;
 const lowp float NOISE_SPEED = 5.0;
 const lowp float STATIC_NOISE_INTENSITY = 0.02;
 const lowp float ABERRATION = 0.02;
-const lowp float BRIGHTNESS = 0.4;
+const lowp float BRIGHTNESS = 1;
 
 const lowp float WARP_AMOUNT = 1.0;
 const lowp float VIGNETTE_INTENSITY = 0.2;
@@ -49,7 +49,6 @@ void fragment() {
     lowp vec2 uv = warp(UV);
     lowp vec2 text_uv = PIXELATE ? ceil(uv * RESOLUTION) / RESOLUTION : uv;
 
-    const lowp float FINAL_BRIGHTNESS = BRIGHTNESS * 2.5;
     lowp vec2 aberration_offset = vec2(ABERRATION * 0.1, 0.0);
 
     lowp vec4 color_center = texture(SCREEN_TEXTURE, text_uv);
@@ -68,7 +67,7 @@ void fragment() {
     text.rgb *= scanlines(uv);
     text.rgb *= grille(uv);
     text.rgb *= vignette(uv);
-    text.rgb *= FINAL_BRIGHTNESS;
+    text.rgb *= BRIGHTNESS;
 
     COLOR = text;
 }
