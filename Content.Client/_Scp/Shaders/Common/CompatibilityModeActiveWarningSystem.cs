@@ -14,7 +14,9 @@ public sealed class CompatibilityModeActiveWarningSystem : EntitySystem
     [Dependency] private readonly IConfigurationManager _configuration = default!;
 
     private CompatibilityModeActiveWarningWindow? _window;
-    public bool IsCompatibilityModeEnabled;
+
+    public bool IsCompatibilityModeEnabled { get; private set; }
+    public bool CompabilityUseShaders { get; private set; }
 
     public override void Initialize()
     {
@@ -54,11 +56,14 @@ public sealed class CompatibilityModeActiveWarningSystem : EntitySystem
             return;
 
         _window = new CompatibilityModeActiveWarningWindow();
+        _window.OnClose += () => _window = null;
         _window.OpenCentered();
     }
 
     private void ToggleShaders(bool value)
     {
+        CompabilityUseShaders = value;
+
         if (!IsCompatibilityModeEnabled)
             return;
 

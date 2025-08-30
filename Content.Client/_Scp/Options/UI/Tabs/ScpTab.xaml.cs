@@ -69,10 +69,7 @@ public sealed partial class ScpTab : Control
     {
         var isInCompatibilityMode = _configuration.GetCVar(CVars.DisplayCompat);
 
-        if (!isInCompatibilityMode)
-            return;
-
-        CompatibilityModeShowWarning.Visible = true;
-        CompatibilityModeUseShaders.Visible = true;
+        CompatibilityModeShowWarning.Visible = isInCompatibilityMode;
+        CompatibilityModeUseShaders.Visible = isInCompatibilityMode;
     }
 }
