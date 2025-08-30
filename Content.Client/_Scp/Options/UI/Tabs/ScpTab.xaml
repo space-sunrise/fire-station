@@ -35,12 +35,12 @@
                 <!-- Режим совместимости -->
                 <CheckBox Name="CompatibilityModeShowWarning"
                           Visible="False"
-                          Text="{Loc ui-options-Compatibility-mode-show-warning}"
-                          ToolTip="{Loc ui-options-Compatibility-mode-show-warning-tooltip}"/>
+                          Text="{Loc ui-options-compatibility-mode-show-warning}"
+                          ToolTip="{Loc ui-options-compatibility-mode-show-warning-tooltip}"/>
                 <CheckBox Name="CompatibilityModeUseShaders"
                           Visible="False"
-                          Text="{Loc ui-options-Compatibility-mode-use-shaders}"
-                          ToolTip="{Loc ui-options-Compatibility-mode-use-shaders-tooltip}"/>
+                          Text="{Loc ui-options-compatibility-mode-use-shaders}"
+                          ToolTip="{Loc ui-options-compatibility-mode-use-shaders-tooltip}"/>
 
                 <!-- АУДИО -->
                 <Label Text="{Loc 'ui-options-scp-audio'}" StyleClasses="LabelKeyText"/>
