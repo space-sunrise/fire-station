@@ -19,7 +19,7 @@ public sealed partial class ScpTab : Control
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
 
-        CheckCompabilityMode();
+        CheckCompatibilityMode();
 
         /*
          * Графика
@@ -40,8 +40,8 @@ public sealed partial class ScpTab : Control
             FieldOfViewComponent.MinCooldownCheck, FieldOfViewComponent.MaxCooldownCheck);
 
         // Режим совместимости
-        Control.AddOptionCheckBox(ScpCCVars.CompabilityModeShowWarning, CompabilityModeShowWarning);
-        Control.AddOptionCheckBox(ScpCCVars.CompabilityModeUseShaders, CompabilityModeUseShaders);
+        Control.AddOptionCheckBox(ScpCCVars.CompatibilityModeShowWarning, CompatibilityModeShowWarning);
+        Control.AddOptionCheckBox(ScpCCVars.CompatibilityModeUseShaders, CompatibilityModeUseShaders);
 
         /*
          * Аудио
@@ -65,14 +65,14 @@ public sealed partial class ScpTab : Control
         Control.Initialize();
     }
 
-    private void CheckCompabilityMode()
+    private void CheckCompatibilityMode()
     {
-        var isInCompabilityMode = _configuration.GetCVar(CVars.DisplayCompat);
+        var isInCompatibilityMode = _configuration.GetCVar(CVars.DisplayCompat);
 
-        if (!isInCompabilityMode)
+        if (!isInCompatibilityMode)
             return;
 
-        CompabilityModeShowWarning.Visible = true;
-        CompabilityModeUseShaders.Visible = true;
+        CompatibilityModeShowWarning.Visible = true;
+        CompatibilityModeUseShaders.Visible = true;
     }
 }

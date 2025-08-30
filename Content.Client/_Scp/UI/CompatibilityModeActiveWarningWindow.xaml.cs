@@ -5,9 +5,9 @@ using Robust.Client.UserInterface.XAML;
 namespace Content.Client._Scp.UI;
 
 [GenerateTypedNameReferences]
-public sealed partial class CompabilityModeActiveWarningWindow : FancyWindow
+public sealed partial class CompatibilityModeActiveWarningWindow : FancyWindow
 {
-    public CompabilityModeActiveWarningWindow()
+    public CompatibilityModeActiveWarningWindow()
     {
         RobustXamlLoader.Load(this);
     }

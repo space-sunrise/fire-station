@@ -53,14 +53,14 @@ public sealed partial class ScpCCVars
     /// Будет ли игроку показываться окно с предупреждением о включенном режиме совместимости?
     /// Настраивается, потому что не у всех игроков может ВООБЩЕ работать игра без режима совместимости.
     /// </summary>
-    public static readonly CVarDef<bool> CompabilityModeShowWarning =
-        CVarDef.Create("scp.compability_mode_show_warning", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+    public static readonly CVarDef<bool> CompatibilityModeShowWarning =
+        CVarDef.Create("scp.Compatibility_mode_show_warning", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
     /// Будут ли использоваться пораженные шейдеры, если включен режим совместимости?
     /// В случае, если игрок не может выключить режим совместимости, то лучше дать ему выбор. Использовать шейдеры или нет.
     /// </summary>
-    public static readonly CVarDef<bool> CompabilityModeUseShaders =
-        CVarDef.Create("scp.compability_mode_use_shaders", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+    public static readonly CVarDef<bool> CompatibilityModeUseShaders =
+        CVarDef.Create("scp.Compatibility_mode_use_shaders", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 
 }

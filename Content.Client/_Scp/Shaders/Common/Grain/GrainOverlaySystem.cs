@@ -10,7 +10,7 @@ namespace Content.Client._Scp.Shaders.Common.Grain;
 public sealed class GrainOverlaySystem : ComponentOverlaySystem<GrainOverlay, GrainOverlayComponent>
 {
     [Dependency] private readonly SharedShaderStrengthSystem _shaderStrength = default!;
-    [Dependency] private readonly CompabilityModeActiveWarningSystem _compability = default!;
+    [Dependency] private readonly CompatibilityModeActiveWarningSystem _Compatibility = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
 
@@ -52,7 +52,7 @@ public sealed class GrainOverlaySystem : ComponentOverlaySystem<GrainOverlay, Gr
 
     private void ToggleGrainOverlay(bool option)
     {
-        if (_compability.IsCompabilityModeEnabled)
+        if (_Compatibility.IsCompatibilityModeEnabled)
             return;
 
         Enabled = option;

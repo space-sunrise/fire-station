@@ -1,7 +1,7 @@
-﻿compability-mode-warning-title = ПРЕДУПРЕЖДЕНИЕ О РЕЖИМЕ СОВМЕСТИМОСТИ
-compability-mode-warning-label = Режим совместимости
-compability-mode-warning-attention-label = У вас включен режим совместимости, пожалуйста, прочитайте текст ниже!
-compability-mode-warning-text =
+﻿Compatibility-mode-warning-title = ПРЕДУПРЕЖДЕНИЕ О РЕЖИМЕ СОВМЕСТИМОСТИ
+Compatibility-mode-warning-label = Режим совместимости
+Compatibility-mode-warning-attention-label = У вас включен режим совместимости, пожалуйста, прочитайте текст ниже!
+Compatibility-mode-warning-text =
     ​[bold]На сервере используются множество шейдеров и эффектов, которые не работают в режим совместимости. Поэтому они были автоматически отключены, отчего игра может выглядеть странно и неправильно.[/bold]
     Пожалуйста, выключите режим совместимости в [bold]настройках лаунчера Space Station 14[/bold], убрав галочку с пункта Режим Совместимости. После закройте игру и перезайдите на сервер.
     ​

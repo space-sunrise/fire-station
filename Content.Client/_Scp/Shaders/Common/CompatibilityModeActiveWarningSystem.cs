@@ -7,32 +7,32 @@ using Robust.Shared.Configuration;
 
 namespace Content.Client._Scp.Shaders.Common;
 
-public sealed class CompabilityModeActiveWarningSystem : EntitySystem
+public sealed class CompatibilityModeActiveWarningSystem : EntitySystem
 {
     [Dependency] private readonly GrainOverlaySystem _grain = default!;
     [Dependency] private readonly FieldOfViewOverlaySystem _fov = default!;
     [Dependency] private readonly IConfigurationManager _configuration = default!;
 
-    private CompabilityModeActiveWarningWindow? _window;
-    public bool IsCompabilityModeEnabled;
+    private CompatibilityModeActiveWarningWindow? _window;
+    public bool IsCompatibilityModeEnabled;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        CheckCompabilityMode();
-        _configuration.OnValueChanged(ScpCCVars.CompabilityModeUseShaders, ToggleShaders);
+        CheckCompatibilityMode();
+        _configuration.OnValueChanged(ScpCCVars.CompatibilityModeUseShaders, ToggleShaders);
     }
 
-    private void CheckCompabilityMode()
+    private void CheckCompatibilityMode()
     {
-        IsCompabilityModeEnabled = _configuration.GetCVar(CVars.DisplayCompat);
+        IsCompatibilityModeEnabled = _configuration.GetCVar(CVars.DisplayCompat);
 
-        if (!IsCompabilityModeEnabled)
+        if (!IsCompatibilityModeEnabled)
             return;
 
-        var showWarning = _configuration.GetCVar(ScpCCVars.CompabilityModeShowWarning);
-        var useShaders = _configuration.GetCVar(ScpCCVars.CompabilityModeUseShaders);
+        var showWarning = _configuration.GetCVar(ScpCCVars.CompatibilityModeShowWarning);
+        var useShaders = _configuration.GetCVar(ScpCCVars.CompatibilityModeUseShaders);
 
         if (showWarning)
             ShowWindow();
@@ -46,13 +46,13 @@ public sealed class CompabilityModeActiveWarningSystem : EntitySystem
         if (_window != null)
             return;
 
-        _window = new CompabilityModeActiveWarningWindow();
+        _window = new CompatibilityModeActiveWarningWindow();
         _window.OpenCentered();
     }
 
     private void ToggleShaders(bool value)
     {
-        if (!IsCompabilityModeEnabled)
+        if (!IsCompatibilityModeEnabled)
             return;
 
         _grain.Enabled = value;

@@ -1,21 +1,21 @@
-﻿<ui:CompabilityModeActiveWarningWindow
+﻿<ui:CompatibilityModeActiveWarningWindow
     xmlns="https://spacestation14.io"
     xmlns:ui="clr-namespace:Content.Client._Scp.UI"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-    Title="{Loc 'compability-mode-warning-title'}">
+    Title="{Loc 'Compatibility-mode-warning-title'}">
     <BoxContainer VerticalExpand="True" HorizontalExpand="True" MinSize="300 300">
         <controls:StripeBack>
             <BoxContainer Orientation="Vertical"
                           HorizontalAlignment="Center"
                           Margin="10 15">
-                <Label Text="{Loc 'compability-mode-warning-label'}"
+                <Label Text="{Loc 'Compatibility-mode-warning-label'}"
                        StyleClasses="LabelHeadingTheBiggest"
                        HorizontalAlignment="Center"
                        VerticalAlignment="Center"
                        Margin="10 15"/>
-                <Label Text="{Loc 'compability-mode-warning-attention-label'}" StyleClasses="LabelBig" Margin="10 15"/>
-                <RichTextLabel Margin="10 15" HorizontalAlignment="Stretch" MaxWidth="700" Text="{Loc 'compability-mode-warning-text'}"/>
+                <Label Text="{Loc 'Compatibility-mode-warning-attention-label'}" StyleClasses="LabelBig" Margin="10 15"/>
+                <RichTextLabel Margin="10 15" HorizontalAlignment="Stretch" MaxWidth="700" Text="{Loc 'Compatibility-mode-warning-text'}"/>
             </BoxContainer>
         </controls:StripeBack>
     </BoxContainer>
-</ui:CompabilityModeActiveWarningWindow>
+</ui:CompatibilityModeActiveWarningWindow>
