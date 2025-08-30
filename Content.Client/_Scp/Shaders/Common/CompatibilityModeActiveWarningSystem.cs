@@ -24,6 +24,13 @@ public sealed class CompatibilityModeActiveWarningSystem : EntitySystem
         _configuration.OnValueChanged(ScpCCVars.CompatibilityModeUseShaders, ToggleShaders);
     }
 
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _configuration.UnsubValueChanged(ScpCCVars.CompatibilityModeUseShaders, ToggleShaders);
+    }
+
     private void CheckCompatibilityMode()
     {
         IsCompatibilityModeEnabled = _configuration.GetCVar(CVars.DisplayCompat);
