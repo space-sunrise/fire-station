@@ -7,7 +7,7 @@ public abstract class BaseOverlaySystem<T> : EntitySystem where T : Overlay
     [Dependency] protected readonly IOverlayManager OverlayManager = default!;
 
     protected T Overlay = default!;
-    protected bool Enabled = true;
+    public bool Enabled = true;
 
     #region Public API
 
