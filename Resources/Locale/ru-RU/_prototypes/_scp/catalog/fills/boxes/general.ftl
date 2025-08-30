@@ -1,2 +1,2 @@
 ent-ScpBoxKeyCard = Коробка ключ-карт
-    .desc = { ent-BoxID.desc }
+    .desc = Коробка запасных чистых ключ-карт.

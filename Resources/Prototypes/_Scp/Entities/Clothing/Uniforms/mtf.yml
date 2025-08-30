@@ -2,7 +2,7 @@
   id: ClothingUniformNTF
   parent: ClothingUniformBase
   name: mobile task force uniform
-  desc: A standard dark blue tactical uniform with armor inserts and the unit's insignia.
+  description: A standard dark blue tactical uniform with armor inserts and the unit's insignia.
   suffix: MTF
   components:
   - type: Sprite
@@ -14,7 +14,7 @@
   id: ClothingUniformRRH
   parent: ClothingUniformBase
   name: mobile task force uniform
-  desc: A deep scarlet uniform made of dense fabric and reinforced with protective elements.
+  description: A deep scarlet uniform made of dense fabric and reinforced with protective elements.
   suffix: MTF
   components:
   - type: Sprite
@@ -26,7 +26,7 @@
   id: ClothingUniformLLH
   parent: ClothingUniformBase
   name: mobile task force uniform
-  desc: A formal black uniform, complemented by Ethics Committee symbolism and security insignia.
+  description: A formal black uniform, complemented by Ethics Committee symbolism and security insignia.
   suffix: MTF
   components:
   - type: Sprite
@@ -38,7 +38,7 @@
   id: ClothingUniformMH
   parent: ClothingUniformBase
   name: mobile task force uniform
-  desc: A drab grey-green uniform that shows signs of heavy chemical treatment.
+  description: A drab grey-green uniform that shows signs of heavy chemical treatment.
   suffix: MTF
   components:
   - type: Sprite
@@ -50,7 +50,7 @@
   id: ClothingUniformHD
   parent: ClothingUniformBase
   name: mobile task force uniform
-  desc: A heavy, dark-colored uniform with reinforced armor elements and the squad's distinctive insignia.
+  description: A heavy, dark-colored uniform with reinforced armor elements and the squad's distinctive insignia.
   suffix: MTF
   components:
   - type: Sprite

@@ -53,7 +53,7 @@
 - type: job
   id: RRHSpecialist
   name: ghost-role-information-mtf-specialist-RRH-name
-  description: ghost-role-information-mtf-leader-description
+  description: ghost-role-information-mtf-specialist-description
   playTimeTracker: JobRRHSpecialist
   setPreference: false
   startingGear: RRHSpecialistGear
