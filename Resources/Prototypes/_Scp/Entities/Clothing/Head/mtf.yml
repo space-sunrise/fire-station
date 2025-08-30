@@ -2,7 +2,7 @@
   parent: ClothingHeadHelmetBasic
   id: ClothingHelmetMTF
   name: helmet
-  desc: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
+  description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
   suffix: MTF
   components:
   - type: Sprite
@@ -14,7 +14,7 @@
   parent: ClothingHeadHelmetBasic
   id: ClothingHelmetNTF
   name: helmet
-  desc: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
+  description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
   suffix: MTF
   components:
   - type: Sprite
@@ -26,28 +26,28 @@
   parent: ClothingHeadHatSyndieMAA
   id: ClothingHeadHatHDMAA
   name: commander's cap
-  desc: A neatly tailored cap with clear indicators of a command position.
+  description: A neatly tailored cap with clear indicators of a command position.
   suffix: MTF
 
 - type: entity
   parent: ClothingHeadHatCapLeatherHoS
   id: ClothingHeadHatCapLeatherLLHLeader
   name: commander's leather cap
-  desc: The worn appearance of the item suggests long-term use. It evokes a sense of discipline and control.
+  description: The worn appearance of the item suggests long-term use. It evokes a sense of discipline and control.
   suffix: MTF
 
 - type: entity
   parent: ClothingHeadHelmetCBURN
   id: ClothingHeadHelmetMH
   name: helmet
-  desc: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
+  description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
   suffix: MTF
 
 - type: entity
   parent: ClothingHeadHelmetHardsuitDeathsquad
   id: ClothingHeadHelmetHardsuitRRH
   name: hardsuit helmet
-  desc: A sealed protective module with a rigid locking mechanism. Prolonged observation induces a feeling of being covertly watched.
+  description: A sealed protective module with a rigid locking mechanism. Prolonged observation induces a feeling of being covertly watched.
   suffix: MTF
   components:
   - type: ClothingAddComponents

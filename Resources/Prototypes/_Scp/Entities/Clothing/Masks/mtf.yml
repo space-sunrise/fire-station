@@ -2,7 +2,7 @@
   parent: ClothingMaskGasERT
   id: ClothingMaskMTF
   name: gas mask
-  desc: A standard protective mask with dense filtration. The lenses create the impression of an empty, emotionless gaze.
+  description: A standard protective mask with dense filtration. The lenses create the impression of an empty, emotionless gaze.
   suffix: MTF
   components:
   - type: Sprite
@@ -14,12 +14,12 @@
   parent: ClothingMaskGasSwat
   id: ClothingMaskGasLLH
   name: gas mask
-  desc: An enhanced model with markings reminiscent of the principles of control and submission. The filters appear excessively powerful.
+  description: An enhanced model with markings reminiscent of the principles of control and submission. The filters appear excessively powerful.
   suffix: MTF
 
 - type: entity
   parent: ClothingMaskGasDeathSquad
   id: ClothingMaskGasRRH
   name: gas mask
-  desc: Traces of erased markings are visible on the surface. Internal documentation for this model is missing.
+  description: Traces of erased markings are visible on the surface. Internal documentation for this model is missing.
   suffix: MTF

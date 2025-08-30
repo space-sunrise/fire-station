@@ -2,7 +2,7 @@
   parent: [AllowSuitStorageClothing, ClothingOuterStorageBase]
   id: MTFVest
   name: armor vest
-  desc: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
   suffix: MTF
   components:
   - type: Sprite
@@ -21,7 +21,7 @@
   parent: MTFVest
   id: ClothingOuterArmorNTF
   name: armor vest
-  desc: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
   suffix: MTF
   components:
   - type: Sprite
@@ -33,7 +33,7 @@
   parent: [AllowSuitStorageClothing, ClothingOuterStorageBase]
   id: MTFCommanderVest
   name: commander's armor vest
-  desc: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability. It features more formal trim and has an authoritative appearance.
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability. It features more formal trim and has an authoritative appearance.
   suffix: MTF
   components:
   - type: Sprite
@@ -52,7 +52,7 @@
   parent: ClothingOuterArmorSWAT
   id: ClothingOuterArmorHD
   name: heavy armor
-  desc: A massive armor set with thickened plates and signs of regular combat use.
+  description: A massive armor set with thickened plates and signs of regular combat use.
   suffix: MTF
   components:
   - type: ExplosionResistance
@@ -75,28 +75,28 @@
   parent: ClothingOuterArmorHeavy
   id: ClothingOuterArmorHeavyLLH
   name: heavy armor
-  desc: A smooth black surface, complemented by symbols that evoke associations of control and order.
+  description: A smooth black surface, complemented by symbols that evoke associations of control and order.
   suffix: MTF
 
 - type: entity
   parent: ClothingOuterHardsuitCBURN
   id: ClothingOuterHardsuitMH
   name: hardsuit
-  desc: A sealed protective gear set with massive connection nodes. The materials are resistant to hostile environments.
+  description: A sealed protective gear set with massive connection nodes. The materials are resistant to hostile environments.
   suffix: MTF
 
 - type: entity
   parent: ClothingOuterHardsuitCBURNLeader
   id: ClothingOuterHardsuitMHLeader
   name: commander's hardsuit
-  desc: A sealed protective gear set with massive connection nodes. The materials are resistant to hostile environments. It is distinguished by more expressive trim elements.
+  description: A sealed protective gear set with massive connection nodes. The materials are resistant to hostile environments. It is distinguished by more expressive trim elements.
   suffix: MTF
 
 - type: entity
   parent: ClothingOuterHardsuitDeathsquad
   id: ClothingOuterHardsuitRRH
   name: hardsuit
-  desc: A charcoal-black sealed suit, its surface seems to absorb light. Its appearance evokes a vague sense of unease.
+  description: A charcoal-black sealed suit, its surface seems to absorb light. Its appearance evokes a vague sense of unease.
   suffix: MTF
   components:
   - type: ToggleableClothing
