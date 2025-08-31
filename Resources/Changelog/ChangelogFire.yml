@@ -5791,3 +5791,15 @@
   id: 234
   time: '2025-08-31T17:36:24.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/563
+- author: ThereDrD
+  changes:
+  - message: "\u0423 \u0438\u0433\u0440\u043E\u043A\u043E\u0432 \u0441 \u0440\u0435\
+      \u0436\u0438\u043C\u043E\u043C \u0441\u043E\u0432\u043C\u0435\u0441\u0442\u0438\
+      \u043C\u043E\u0441\u0442\u0438 \u0438\u0433\u0440\u0430 \u0431\u043E\u043B\u044C\
+      \u0448\u0435 \u043D\u0435 \u0432\u044B\u043B\u0435\u0442\u0430\u0435\u0442 \u043F\
+      \u043E\u0441\u043B\u0435 \u043F\u043E\u043A\u0430\u0437\u0430 \u043B\u043E\u0433\
+      \u043E\u0442\u0438\u043F\u0430"
+    type: Fix
+  id: 235
+  time: '2025-08-31T17:42:54.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/564
