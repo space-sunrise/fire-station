@@ -8,7 +8,7 @@ const lowp float NOISE_OPACITY = 0.4;
 const lowp float NOISE_SPEED = 5.0;
 const lowp float STATIC_NOISE_INTENSITY = 0.02;
 const lowp float ABERRATION = 0.02;
-const lowp float BRIGHTNESS = 1;
+const lowp float BRIGHTNESS = 1.0;
 
 const lowp float WARP_AMOUNT = 1.0;
 const lowp float VIGNETTE_INTENSITY = 0.2;
@@ -55,11 +55,7 @@ void fragment() {
     lowp vec4 color_left = texture(SCREEN_TEXTURE, text_uv - aberration_offset);
     lowp vec4 color_right = texture(SCREEN_TEXTURE, text_uv + aberration_offset);
 
-    lowp float r = color_right.r;
-    lowp float g = color_left.g;
-    lowp float b = color_center.b;
-
-    lowp vec4 text = vec4(r, g, b, color_center.a);
+    lowp vec4 text = vec4(color_right.r, color_left.g, color_center.b, color_center.a);
 
     lowp float static_noise = rand(uv + vec2(TIME * NOISE_SPEED, 0.0)) * STATIC_NOISE_INTENSITY;
     text.rgb += vec3(static_noise) * NOISE_OPACITY;
