@@ -1,0 +1,49 @@
+- type: entity
+  id: CrateVendingMachineRestockSeedsScpClassDFilled
+  parent: CrateHydroponics
+  name: MegaSeed restock crate
+  description: Contains a restock box for the MegaSeed vending machine.
+  components:
+  - type: StorageFill
+    contents:
+      - id: VendingMachineRestockSeedsScpClassD
+
+- type: entity
+  id: CrateVendingMachineRestockNutriMaxScpClassDFilled
+  parent: CrateHydroponics
+  name: NutriMax restock crate
+  description: Contains a restock box for the NutriMax vending machine.
+  components:
+  - type: StorageFill
+    contents:
+      - id: VendingMachineRestockNutriMaxScpClassD
+
+- type: entity
+  id: CrateVendingMachineRestockChefvendScpClassDFilled
+  parent: CratePlastic
+  name: ChefVend restock crate
+  description: Contains a restock box for the ChefVend.
+  components:
+  - type: StorageFill
+    contents:
+      - id: VendingMachineRestockChefvendScpClassD
+
+- type: entity
+  id: CrateVendingMachineRestockDinnerwareScpClassDFilled
+  parent: CratePlastic
+  name: Plasteel Chef restock crate
+  description: Contains a restock box for the Plasteel Chef vending machine.
+  components:
+  - type: StorageFill
+    contents:
+      - id: VendingMachineRestockDinnerwareScpClassD
+
+- type: entity
+  id: CrateVendingMachineRestockBoozeScpClassDFilled
+  parent: CratePlastic
+  name: Booze-O-Mat restock crate
+  description: Contains a restock box for the Booze-O-Mat.
+  components:
+  - type: StorageFill
+    contents:
+      - id: VendingMachineRestockBoozeScpClassD

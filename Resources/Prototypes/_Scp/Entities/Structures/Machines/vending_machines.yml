@@ -163,25 +163,11 @@
     access: [["Service"]]
 
 - type: entity
-  parent: VendingMachineDinnerware
-  id: ScpVendingMachineDinnerwareClassD
-  components:
-  - type: AccessReader
-    access: [["ClassDCanteen"]]
-
-- type: entity
   parent: VendingMachineNutri
   id: ScpVendingMachineNutri
   components:
   - type: AccessReader
     access: [["Service"]]
-
-- type: entity
-  parent: VendingMachineNutri
-  id: ScpVendingMachineNutriClassD
-  components:
-  - type: AccessReader
-    access: [["ClassDCanteen"]]
 
 - type: entity
   parent: VendingMachineSeeds
@@ -191,25 +177,11 @@
     access: [["Service"]]
 
 - type: entity
-  parent: VendingMachineSeeds
-  id: ScpVendingMachineSeedsClassD
-  components:
-  - type: AccessReader
-    access: [["ClassDCanteen"]]
-
-- type: entity
   parent: VendingMachineHydrobe
   id: ScpVendingMachineHydrobe
   components:
   - type: AccessReader
     access: [["Service"]]
-
-- type: entity
-  parent: VendingMachineHydrobe
-  id: ScpVendingMachineHydrobeClassD
-  components:
-  - type: AccessReader
-    access: [["ClassDCanteen"]]
 
 - type: entity
   parent: VendingMachineLawDrobe
@@ -246,13 +218,6 @@
   components:
   - type: AccessReader
     access: [["Service"]]
-
-- type: entity
-  parent: VendingMachineChefDrobe
-  id: ScpVendingMachineChefDrobeClassD
-  components:
-  - type: AccessReader
-    access: [["ClassDCanteen"]]
 
 - type: entity
   parent: VendingMachineJaniDrobe

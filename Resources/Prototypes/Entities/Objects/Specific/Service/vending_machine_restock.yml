@@ -135,6 +135,7 @@
     - ViroDrobeInventory
     - WinterDrobeInventory
     - CuraDrobeInventory
+    - ChefDrobeInventoryDClass # Fire Edit
   - type: Sprite
     layers:
     - state: base
