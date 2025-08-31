@@ -23,6 +23,16 @@ public sealed partial class Scp173Component : Component
 
     #endregion
 
+    #region Blind action
+
+    [DataField]
+    public TimeSpan StartBlindTime = TimeSpan.FromSeconds(7);
+
+    [DataField]
+    public TimeSpan BlindnessTime = TimeSpan.FromSeconds(7);
+
+    #endregion
+
     [DataField]
     public SoundSpecifier NeckSnapSound = new SoundCollectionSpecifier("Scp173NeckSnap");
 

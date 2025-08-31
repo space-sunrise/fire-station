@@ -47,7 +47,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         var duration = args.CustomBlinkDuration ?? BlinkingDuration;
         ent.Comp.BlinkEndTime = _timing.CurTime + duration;
 
-        _actions.SetUseDelay(ent.Comp.EyeToggleActionEntity, duration);
+        _actions.SetCooldown(ent.Comp.EyeToggleActionEntity, duration);
 
         // Если глаза были закрыты вручную игроком, то нам не нужно, чтобы они были автоматически открыты
         // Поэтому время, когда глаза будут открыты устанавливается максимальное
