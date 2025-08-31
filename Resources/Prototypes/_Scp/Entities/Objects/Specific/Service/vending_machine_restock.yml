@@ -1,0 +1,50 @@
+
+- type: entity
+  parent: VendingMachineRestockSeeds
+  id: VendingMachineRestockSeedsScpClassD
+  name: Seed restock box
+  description: A label says they're heirloom seeds, passed down from our ancestors. Pack it into the Seed Servitor!
+  components:
+  - type: VendingMachineRestock
+    canRestock:
+    - MegaSeedServitorInventoryDClass
+
+- type: entity
+  parent: VendingMachineRestockNutriMax
+  id: VendingMachineRestockNutriMaxScpClassD
+  name: NutriMax restock box
+  description: We'll make your thumbs green with our tools. Let's get to harvesting! Load into a NutriMax vending machine.
+  components:
+  - type: VendingMachineRestock
+    canRestock:
+    - NutriMaxInventoryDClass
+
+- type: entity
+  parent: VendingMachineRestockChefvend
+  id: VendingMachineRestockChefvendScpClassD
+  name: ChefVend restock box
+  description: Refill the ChefVend. Just don't break any more of the eggs.
+  components:
+  - type: VendingMachineRestock
+    canRestock:
+    - ChefvendInventoryDClass
+
+- type: entity
+  parent: VendingMachineRestockDinnerware
+  id: VendingMachineRestockDinnerwareScpClassD
+  name: Plasteel Chef's restock box
+  description: It's never raw in this kitchen! Drop into the restock slot on the Plasteel Chef to begin.
+  components:
+  - type: VendingMachineRestock
+    canRestock:
+    - DinnerwareInventoryDClass
+
+- type: entity
+  parent: VendingMachineRestockBooze
+  id: VendingMachineRestockBoozeScpClassD
+  name: Booze-O-Mat restock box
+  description: Slot into your Booze-O-Mat! Not for sale.
+  components:
+  - type: VendingMachineRestock
+    canRestock:
+    - BoozeOMatInventoryDClass

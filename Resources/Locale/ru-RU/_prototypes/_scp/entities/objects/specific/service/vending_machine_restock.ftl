@@ -1,0 +1,10 @@
+ent-VendingMachineRestockSeedsScpClassD = набор пополнения { ent-VendingMachineSeedsDClass } D класса
+    .desc = На этикетке написано, что этими семенами пользовались и передавали по наследству ещё наши предки. Загрузите их в { ent-VendingMachineSeedsDClass }!
+ent-VendingMachineRestockNutriMaxScpClassD = набор пополнения { ent-VendingMachineNutriDClass } D класса
+    .desc = С нашими удобрениями ваши золотые руки станут зелёными! Пора пожинать плоды! Загрузите в автомат { ent-VendingMachineNutriDClass }.
+ent-VendingMachineRestockChefvendScpClassD = набор пополнения { ent-VendingMachineChefvendDClass } D класса
+    .desc = Пополняет { ent-VendingMachineChefvendDClass }. Главное, берегите яйца.
+ent-VendingMachineRestockDinnerwareScpClassD = набор пополнения { ent-VendingMachineDinnerwareDClass } D класса
+    .desc = На этой кухне всегда жарко! Поместите в слот для пополнения { ent-VendingMachineDinnerwareDClass }, чтобы начать.
+ent-VendingMachineRestockBoozeScpClassD = набор пополнения { ent-VendingMachineBoozeDClass } D класса
+    .desc = Поместите в { ent-VendingMachineBoozeDClass } чтобы напоить жаждущих! Не для продажи персоналу.
