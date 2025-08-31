@@ -56,7 +56,7 @@
     damageModifierSet: Metallic
   - type: Sprite
     drawdepth: WallMountedItems
-    sprite: _Scp/Structures/Wallmounts/camera.rsi # Fire Edit
+    sprite: Structures/Wallmounts/camera.rsi
     layers:
       - map: [ "enum.SurveillanceCameraVisualsKey.Layer" ]
         state: camera
@@ -241,7 +241,7 @@
       damageModifierSet: Metallic
     - type: Sprite
       drawdepth: WallMountedItems
-      sprite: _Scp/Structures/Wallmounts/camera.rsi # Fire Edit
+      sprite: Structures/Wallmounts/camera.rsi
       layers:
         - state: camera_off
   placement:
