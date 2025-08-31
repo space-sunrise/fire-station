@@ -844,6 +844,7 @@ PrinterDocFlatpack: CopyMachineFlatpack
 MagazineP90Extended: null
 CrateArmoryWeaponXM1014: null
 MagazineBoxHeavyRifle: null
+SunriseMagazineRifle: null
 
 # Fire added start
 PosterDyshi: PosterBreath
@@ -1647,6 +1648,9 @@ AbductorIDCard: null
 TribunalOfficerIDCard: null
 InternalSecurityOperativeIDCard: null
 ChaosAgentIDCard: null
+ClassDBotanistIDCard: KeyCardClassDBotanist
+ClassDCookIDCard: KeyCardClassDCock
+ClassDJanitorIDCard: KeyCardClassDJanitor
 
 # ПДА
 TechnicalAssistantPDA: null
