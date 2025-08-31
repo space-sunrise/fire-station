@@ -6,7 +6,7 @@
   description: A reinforced surveillance camera. It's watching you intensely. Kinda.
   components:
   - type: Sprite
-    sprite: Structures/Wallmounts/camera.rsi
+    sprite: _Scp/Structures/Wallmounts/camera.rsi
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StrongMetallic
@@ -171,6 +171,6 @@
       damageModifierSet: StrongMetallic
     - type: Sprite
       drawdepth: WallMountedItems
-      sprite: Structures/Wallmounts/camera.rsi
+      sprite: _Scp/Structures/Wallmounts/camera.rsi
       layers:
         - state: camera_off
