@@ -1,12 +1,11 @@
 ﻿using Content.Shared._Scp.Blinking;
-using Content.Shared._Scp.Scp173;
-using Content.Shared._Scp.Watching;
 using Content.Shared.Mind.Components;
 using Robust.Client.Audio;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Blinking;
 
@@ -15,6 +14,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly SoundSpecifier EyeOpenSound = new SoundCollectionSpecifier("EyeOpen");
     private static readonly SoundSpecifier EyeCloseSound = new SoundCollectionSpecifier("EyeClose");
@@ -29,47 +29,31 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
         // Приходится использовать MindContainerComponent, потому что в шареде уже запривачено EntityOpenedEyesEvent для Blinkable
         // И самый подходящий вариант подписки на включение/выключение оверлея моргания игроку это MindComponent
-        SubscribeLocalEvent<MindContainerComponent, EntityOpenedEyesEvent>(OnEntityOpenedEyes);
-        SubscribeLocalEvent<MindContainerComponent, EntityClosedEyesEvent>(OnEntityClosedEyes);
+        SubscribeLocalEvent<MindContainerComponent, EntityOpenedEyesEvent>(OnOpenedEyes);
+        SubscribeLocalEvent<MindContainerComponent, EntityClosedEyesEvent>(OnClosedEyes);
 
         SubscribeLocalEvent<BlinkableComponent, LocalPlayerAttachedEvent>(OnAttached);
         SubscribeLocalEvent<BlinkableComponent, LocalPlayerDetachedEvent>(OnDetached);
 
-        SubscribeLocalEvent<Scp173Component, SimpleEntitySeenEvent>(OnScp173Seen);
-
         _overlay = new BlinkingOverlay();
     }
 
-    private void OnEntityOpenedEyes(Entity<MindContainerComponent> ent, ref EntityOpenedEyesEvent args)
+    private void OnOpenedEyes(Entity<MindContainerComponent> ent, ref EntityOpenedEyesEvent args)
     {
-        if (_player.LocalEntity != ent)
-            return;
-
-        if (!_overlayMan.HasOverlay<BlinkingOverlay>())
-            return;
-
-        _overlayMan.RemoveOverlay(_overlay);
-        _audio.PlayGlobal(EyeOpenSound, ent);
+        OpenEyes(ent, args.Manual);
     }
 
-    private void OnEntityClosedEyes(Entity<MindContainerComponent> ent, ref EntityClosedEyesEvent args)
+    private void OnClosedEyes(Entity<MindContainerComponent> ent, ref EntityClosedEyesEvent args)
     {
-        if (_player.LocalEntity != ent)
-            return;
-
-        if (!args.Manual && !IsScpNearby(ent))
-            return;
-
-        if (_overlayMan.HasOverlay<BlinkingOverlay>())
-            return;
-
-        _overlayMan.AddOverlay(_overlay);
-        _audio.PlayGlobal(EyeCloseSound, ent);
+        CloseEyes(ent, args.Manual);
     }
 
     private void OnAttached(Entity<BlinkableComponent> ent, ref LocalPlayerAttachedEvent args)
     {
-        TryAddOverlay(ent);
+        if (_overlayMan.HasOverlay<BlinkingOverlay>())
+            return;
+
+        _overlayMan.AddOverlay(_overlay);
     }
 
     private void OnDetached(Entity<BlinkableComponent> ent, ref LocalPlayerDetachedEvent args)
@@ -80,24 +64,33 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         _overlayMan.RemoveOverlay(_overlay);
     }
 
-    private void OnScp173Seen(Entity<Scp173Component> ent, ref SimpleEntitySeenEvent args)
+    private void OpenEyes(EntityUid ent, bool manual)
     {
-        if (_player.LocalEntity != args.Viewer)
+        if (!_timing.IsFirstTimePredicted)
             return;
 
-        TryAddOverlay(args.Viewer);
+        if (_player.LocalEntity != ent)
+            return;
+
+        if (!manual && !IsScpNearby(ent))
+            return;
+
+        _overlay.OpenEyes();
+        _audio.PlayGlobal(EyeOpenSound, ent);
     }
 
-    private bool TryAddOverlay(EntityUid ent)
+    private void CloseEyes(EntityUid ent, bool manual)
     {
-        if (!AreEyesClosedManually(ent))
-            return false;
+        if (!_timing.IsFirstTimePredicted)
+            return;
 
-        if (_overlayMan.HasOverlay<BlinkingOverlay>())
-            return false;
+        if (_player.LocalEntity != ent)
+            return;
 
-        _overlayMan.AddOverlay(_overlay);
+        if (!manual && !IsScpNearby(ent))
+            return;
 
-        return true;
+        _overlay.CloseEyes();
+        _audio.PlayGlobal(EyeCloseSound, ent);
     }
 }

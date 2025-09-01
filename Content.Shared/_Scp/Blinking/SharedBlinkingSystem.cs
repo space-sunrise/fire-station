@@ -6,7 +6,6 @@ using Content.Shared.Alert;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Random;
-using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Blinking;
@@ -42,8 +41,11 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     /// Происходит при закрытии глаз.
     /// Устанавливает время, когда глаза будут открыты
     /// </summary>
-    private void OnClosedEyes(Entity<BlinkableComponent> ent, ref EntityClosedEyesEvent args)
+    protected virtual void OnClosedEyes(Entity<BlinkableComponent> ent, ref EntityClosedEyesEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         var duration = args.CustomBlinkDuration ?? BlinkingDuration;
         ent.Comp.BlinkEndTime = _timing.CurTime + duration;
 
@@ -63,8 +65,11 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         Dirty(ent);
     }
 
-    private void OnOpenedEyes(Entity<BlinkableComponent> ent, ref EntityOpenedEyesEvent args)
+    protected virtual void OnOpenedEyes(Entity<BlinkableComponent> ent, ref EntityOpenedEyesEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         // Если мы закрывали глаза вручную, то после открытия у нас до следующего автоматического моргания будет сломан алерт
         // Потому что BlinkEndTime равняется 9999999999. И поэтому после открытия глаз я записываю его сюда
         ent.Comp.BlinkEndTime = _timing.CurTime;
@@ -72,7 +77,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
 
         // Задаем время следующего моргания
         var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
-        SetNextBlink((ent.Owner, ent.Comp), args.CustomNextTimeBlinkInterval ?? BlinkingInterval, variance);
+        SetNextBlink(ent.AsNullable(), args.CustomNextTimeBlinkInterval ?? BlinkingInterval, variance);
 
         // Как только глаза открыты, мы проверяем, слепы ли мы
         // Если мы ранее были слепы из-за наличия эффектов, то здесь они уберутся
@@ -89,6 +94,9 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+
+        if (!_timing.IsFirstTimePredicted)
+            return;
 
         var query = EntityQueryEnumerator<BlinkableComponent>();
         while (query.MoveNext(out var uid, out var blinkableComponent))
@@ -137,7 +145,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         ent.Comp.NextBlink = _timing.CurTime + interval + TimeSpan.FromSeconds(variance) + TimeSpan.FromSeconds(ent.Comp.AdditionalBlinkingTime);
         ent.Comp.AdditionalBlinkingTime = 0f;
 
-        Dirty(ent);
+        DirtyFields(ent.AsNullable(), null, nameof(BlinkableComponent.NextBlink), nameof(BlinkableComponent.AdditionalBlinkingTime));
     }
 
     public void ResetBlink(Entity<BlinkableComponent?> ent, bool useVariance = true)
@@ -225,15 +233,20 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     }
 }
 
-[Serializable, NetSerializable]
-public sealed class EntityOpenedEyesEvent(TimeSpan? customNextTimeBlinkInterval = null) : EntityEventArgs
+public sealed class EntityOpenedEyesEvent(bool manual, TimeSpan? customNextTimeBlinkInterval = null) : EntityEventArgs
 {
-    public TimeSpan? CustomNextTimeBlinkInterval = customNextTimeBlinkInterval;
+    public readonly bool Manual = manual;
+    public readonly TimeSpan? CustomNextTimeBlinkInterval = customNextTimeBlinkInterval;
 }
 
-[Serializable, NetSerializable]
 public sealed class EntityClosedEyesEvent(bool manual, TimeSpan? customBlinkDuration = null) : EntityEventArgs
 {
-    public bool Manual = manual;
-    public TimeSpan? CustomBlinkDuration = customBlinkDuration;
-};
+    public readonly bool Manual = manual;
+    public readonly TimeSpan? CustomBlinkDuration = customBlinkDuration;
+}
+
+public sealed class EntityEyesStateChanged(EyesState oldState, EyesState newState) : EntityEventArgs
+{
+    public readonly EyesState OldState = oldState;
+    public readonly EyesState NewState = newState;
+}

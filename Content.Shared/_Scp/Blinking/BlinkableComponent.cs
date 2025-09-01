@@ -4,7 +4,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Blinking;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class BlinkableComponent : Component
 {
     [ViewVariables, AutoNetworkedField]
@@ -68,6 +68,4 @@ public enum EyesState : byte
 }
 
 [RegisterComponent, NetworkedComponent]
-public sealed partial class ShowBlinkableComponent : Component
-{
-}
+public sealed partial class ShowBlinkableComponent : Component;

@@ -235,6 +235,7 @@ public abstract partial class SharedBlinkingSystem
     /// </remarks>
     private void SetEyelids(Entity<BlinkableComponent> ent, EyesState newState, bool manual = false, TimeSpan? customBlinkDuration = null)
     {
+        var oldState = ent.Comp.State;
         ent.Comp.State = newState;
         ent.Comp.ManuallyClosed = manual && newState == EyesState.Closed;
         Dirty(ent);
@@ -242,7 +243,9 @@ public abstract partial class SharedBlinkingSystem
         if (newState == EyesState.Closed)
             RaiseLocalEvent(ent, new EntityClosedEyesEvent(manual, customBlinkDuration));
         else
-            RaiseLocalEvent(ent, new EntityOpenedEyesEvent(customBlinkDuration));
+            RaiseLocalEvent(ent, new EntityOpenedEyesEvent(manual, customBlinkDuration));
+
+        RaiseLocalEvent(ent, new EntityEyesStateChanged(oldState, newState));
 
         if (ent.Comp.EyeToggleActionEntity != null)
         {
