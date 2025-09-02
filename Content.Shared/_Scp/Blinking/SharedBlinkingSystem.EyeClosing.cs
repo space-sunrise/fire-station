@@ -218,8 +218,7 @@ public abstract partial class SharedBlinkingSystem
         if (_timing.CurTime < ent.Comp.BlinkEndTime)
             return false;
 
-        TrySetEyelids(ent.Owner, EyesState.Opened);
-        return true;
+        return TrySetEyelids(ent.Owner, EyesState.Opened);
     }
 
     /// <summary>
@@ -235,6 +234,9 @@ public abstract partial class SharedBlinkingSystem
     /// </remarks>
     private void SetEyelids(Entity<BlinkableComponent> ent, EyesState newState, bool manual = false, TimeSpan? customBlinkDuration = null)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         var oldState = ent.Comp.State;
         ent.Comp.State = newState;
         ent.Comp.ManuallyClosed = manual && newState == EyesState.Closed;
@@ -246,6 +248,8 @@ public abstract partial class SharedBlinkingSystem
             RaiseLocalEvent(ent, new EntityOpenedEyesEvent(manual, customBlinkDuration));
 
         RaiseLocalEvent(ent, new EntityEyesStateChanged(oldState, newState));
+
+        Logger.Debug($"Event started, {_timing.IsFirstTimePredicted}, {_timing.CurTick}");
 
         if (ent.Comp.EyeToggleActionEntity != null)
         {

@@ -1,5 +1,4 @@
 ﻿using Content.Shared._Scp.Blinking;
-using Content.Shared.Mind.Components;
 using Robust.Client.Audio;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -27,24 +26,23 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     {
         base.Initialize();
 
-        // Приходится использовать MindContainerComponent, потому что в шареде уже запривачено EntityOpenedEyesEvent для Blinkable
-        // И самый подходящий вариант подписки на включение/выключение оверлея моргания игроку это MindComponent
-        SubscribeLocalEvent<MindContainerComponent, EntityOpenedEyesEvent>(OnOpenedEyes);
-        SubscribeLocalEvent<MindContainerComponent, EntityClosedEyesEvent>(OnClosedEyes);
-
         SubscribeLocalEvent<BlinkableComponent, LocalPlayerAttachedEvent>(OnAttached);
         SubscribeLocalEvent<BlinkableComponent, LocalPlayerDetachedEvent>(OnDetached);
 
         _overlay = new BlinkingOverlay();
     }
 
-    private void OnOpenedEyes(Entity<MindContainerComponent> ent, ref EntityOpenedEyesEvent args)
+    protected override void OnOpenedEyes(Entity<BlinkableComponent> ent, ref EntityOpenedEyesEvent args)
     {
+        base.OnOpenedEyes(ent, ref args);
+
         OpenEyes(ent, args.Manual);
     }
 
-    private void OnClosedEyes(Entity<MindContainerComponent> ent, ref EntityClosedEyesEvent args)
+    protected override void OnClosedEyes(Entity<BlinkableComponent> ent, ref EntityClosedEyesEvent args)
     {
+        base.OnClosedEyes(ent, ref args);
+
         CloseEyes(ent, args.Manual);
     }
 
@@ -75,6 +73,8 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         if (!manual && !IsScpNearby(ent))
             return;
 
+        Logger.Debug($"Opened, {_timing.IsFirstTimePredicted}, {_timing.CurTick}");
+
         _overlay.OpenEyes();
         _audio.PlayGlobal(EyeOpenSound, ent);
     }
@@ -89,6 +89,8 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
         if (!manual && !IsScpNearby(ent))
             return;
+
+        Logger.Debug($"Closed, {_timing.IsFirstTimePredicted}, {_timing.CurTick}");
 
         _overlay.CloseEyes();
         _audio.PlayGlobal(EyeCloseSound, ent);
