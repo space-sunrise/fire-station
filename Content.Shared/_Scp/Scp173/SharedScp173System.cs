@@ -6,9 +6,11 @@ using Content.Shared._Scp.Watching;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
+using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Events;
+using Content.Shared.Popups;
 using Content.Shared.Storage.Components;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
@@ -23,6 +25,8 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] protected readonly EyeWatchingSystem Watching = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
+    [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     protected static readonly TimeSpan ReagentCheckInterval = TimeSpan.FromSeconds(1);
@@ -35,32 +39,21 @@ public abstract class SharedScp173System : EntitySystem
 
         SubscribeLocalEvent<Scp173Component, ComponentInit>(OnInit);
 
-        #region Blocker
-
         SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, _, args) =>
         {
             if (Watching.IsWatched(uid))
                 args.Cancel();
         });
 
-        #endregion
-
-        #region Movement
-
         SubscribeLocalEvent<Scp173Component, ChangeDirectionAttemptEvent>(OnDirectionAttempt);
         SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
         SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnMoveInput);
         SubscribeLocalEvent<Scp173Component, MoveEvent>(OnMove);
 
-        #endregion
-
-        #region Abillities
-
         SubscribeLocalEvent<Scp173Component, StartCollideEvent>(OnCollide);
 
-        SubscribeLocalEvent<Scp173Component, Scp173BlindAction>(OnBlind);
-
-        #endregion
+        SubscribeLocalEvent<Scp173Component, Scp173BlindAction>(OnStartedBlind);
+        SubscribeLocalEvent<Scp173Component, Scp173StartBlind>(OnBlind);
     }
 
     private void OnInit(Entity<Scp173Component> ent, ref ComponentInit args)
@@ -119,13 +112,35 @@ public abstract class SharedScp173System : EntitySystem
         BreakNeck(target, ent.Comp);
     }
 
-    private void OnBlind(Entity<Scp173Component> ent, ref Scp173BlindAction args)
+    private void OnStartedBlind(Entity<Scp173Component> ent, ref Scp173BlindAction args)
     {
         if (args.Handled)
             return;
 
-        BlindEveryoneInRange(ent);
+        if (!CanBlind(ent))
+            return;
 
+        var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, ent.Comp.StartBlindTime, new Scp173StartBlind(), args.Performer)
+        {
+            NeedHand = false,
+            BreakOnMove = false,
+            BreakOnHandChange = false,
+            BreakOnDamage = false,
+            RequireCanInteract = false,
+        };
+
+        args.Handled = _doAfter.TryStartDoAfter(doAfterEventArgs);
+    }
+
+    private void OnBlind(Entity<Scp173Component> ent, ref Scp173StartBlind args)
+    {
+        if (args.Handled || args.Cancelled)
+            return;
+
+        if (!CanBlind(ent))
+            return;
+
+        BlindEveryoneInRange(ent, ent.Comp.BlindnessTime);
         args.Handled = true;
     }
 
@@ -135,13 +150,13 @@ public abstract class SharedScp173System : EntitySystem
 
     #region Public API
 
-    public void BlindEveryoneInRange(EntityUid scp, float range = 16f, float time = 6f)
+    public void BlindEveryoneInRange(EntityUid scp, TimeSpan time)
     {
         var eyes = Watching.GetWatchers(scp);
 
         foreach (var eye in eyes)
         {
-            _blinking.ForceBlind(eye, TimeSpan.FromSeconds(time));
+            _blinking.ForceBlind(eye, time);
         }
 
         // TODO: Add sound.
@@ -171,6 +186,53 @@ public abstract class SharedScp173System : EntitySystem
     {
         return _lookup.GetEntitiesInRange<Scp173BlockStructureDamageComponent>(Transform(uid).Coordinates, ContainmentRoomSearchRadius)
             .Any(entity => _interaction.InRangeUnobstructed(uid, entity.Owner, ContainmentRoomSearchRadius));
+    }
+
+    private bool CanBlind(EntityUid uid, bool showPopups = true)
+    {
+        if (!IsContained(uid))
+        {
+            if (showPopups)
+                _popup.PopupClient(Loc.GetString("scp173-blind-failed-not-in-chamber"), uid, uid);
+
+            return false;
+        }
+
+        if (IsInScpCage(uid, out var cage))
+        {
+            if (showPopups)
+                _popup.PopupClient(Loc.GetString("scp173-blind-failed-in-cage", ("name", Name(cage.Value))), uid, uid);
+
+            return false;
+        }
+
+        if (!IsWatched(uid, out var watchers))
+        {
+            if (showPopups)
+                _popup.PopupClient(Loc.GetString("scp173-blind-failed-too-few-watchers"), uid, uid);
+
+            return false;
+        }
+
+        if (watchers.Count() <= 3)
+        {
+            if (showPopups)
+                _popup.PopupClient(Loc.GetString("scp173-blind-failed-too-few-watchers"), uid, uid);
+
+            return false;
+        }
+
+        return true;
+    }
+
+    public bool IsWatched(EntityUid target, out IEnumerable<EntityUid> viewers)
+    {
+        var watchers = Watching.GetWatchers(target);
+
+        viewers = watchers
+            .Where(eye => Watching.CanBeWatched(eye, target));
+
+        return viewers.Any();
     }
 
     #endregion

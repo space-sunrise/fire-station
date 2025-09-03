@@ -1,4 +1,5 @@
 using Content.Client.Movement.Systems;
+using Content.Shared._Scp.Blinking;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
@@ -50,6 +51,12 @@ namespace Content.Client.Eye.Blinding
                 return false;
 
             _blindableComponent = blindComp;
+
+            if (!_entityManager.TryGetComponent<BlinkableComponent>(_playerManager.LocalEntity, out var blinkable))
+                return false;
+
+            if (blinkable.State == EyesState.Closed)
+                return false;
 
             var blind = _blindableComponent.IsBlind;
 

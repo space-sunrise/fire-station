@@ -3,6 +3,5 @@
 [RegisterComponent]
 public sealed partial class ArtifactScp173BlindEveryoneInRangeComponent : Component
 {
-    [DataField] public float Radius = 12f;
-    [DataField] public float Time = 8f;
+    [DataField] public TimeSpan Time = TimeSpan.FromSeconds(8);
 }
