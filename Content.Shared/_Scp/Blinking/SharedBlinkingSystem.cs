@@ -1,11 +1,11 @@
 ﻿using System.Linq;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp096;
 using Content.Shared._Scp.Scp173;
 using Content.Shared._Scp.Watching;
 using Content.Shared.Alert;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.Random.Helpers;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Blinking;
@@ -15,6 +15,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
+    [Dependency] private readonly PredictedRandomSystem _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly TimeSpan BlinkingInterval = TimeSpan.FromSeconds(8f);
@@ -75,7 +76,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         Dirty(ent);
 
         // Задаем время следующего моргания
-        var variance = GetNextDouble(ent) * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
+        var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
         SetNextBlink(ent.AsNullable(), args.CustomNextTimeBlinkInterval ?? BlinkingInterval, variance);
 
         // Как только глаза открыты, мы проверяем, слепы ли мы
@@ -148,7 +149,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
             return;
 
         // Если useVariance == false, то variance = 0
-        var variance = useVariance ? GetNextDouble(ent) * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds : 0;
+        var variance = useVariance ? _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds : 0;
         SetNextBlink(ent, BlinkingInterval, variance);
     }
 
@@ -224,13 +225,6 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
 
         return allScp173InView.Any(e => _watching.CanBeWatched(player, e))
                || allScp096InView.Any(e => _watching.CanBeWatched(player, e));
-    }
-
-    private double GetNextDouble(EntityUid uid)
-    {
-        var seed = SharedRandomExtensions.HashCodeCombine(new() { (int)_timing.CurTick.Value, GetNetEntity(uid).Id });
-        var rand = new System.Random(seed);
-        return rand.NextDouble();
     }
 }
 
