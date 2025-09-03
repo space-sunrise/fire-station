@@ -62,12 +62,9 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         _overlayMan.RemoveOverlay(_overlay);
     }
 
-    private void OpenEyes(EntityUid ent, bool manual)
+    private void OpenEyes(Entity<BlinkableComponent> ent, bool manual)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        if (_player.LocalEntity != ent)
+        if (!TryEyes(ent))
             return;
 
         if (!manual && !IsScpNearby(ent))
@@ -79,12 +76,9 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         _audio.PlayGlobal(EyeOpenSound, ent);
     }
 
-    private void CloseEyes(EntityUid ent, bool manual)
+    private void CloseEyes(Entity<BlinkableComponent> ent, bool manual)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        if (_player.LocalEntity != ent)
+        if (!TryEyes(ent))
             return;
 
         if (!manual && !IsScpNearby(ent))
@@ -94,5 +88,25 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
         _overlay.CloseEyes();
         _audio.PlayGlobal(EyeCloseSound, ent);
+    }
+
+    private bool TryEyes(Entity<BlinkableComponent> ent)
+    {
+        if (!_timing.IsFirstTimePredicted)
+            return false;
+
+        if (_player.LocalEntity != ent)
+            return false;
+
+        if (ent.Comp.LastClientSideVisualsAttemptTick == _timing.CurTick
+            || ent.Comp.LastClientSideVisualsAttemptTick == _timing.CurTick - 1)
+        {
+            ent.Comp.LastClientSideVisualsAttemptTick = _timing.CurTick;
+            return false;
+        }
+
+        ent.Comp.LastClientSideVisualsAttemptTick = _timing.CurTick;
+
+        return true;
     }
 }
