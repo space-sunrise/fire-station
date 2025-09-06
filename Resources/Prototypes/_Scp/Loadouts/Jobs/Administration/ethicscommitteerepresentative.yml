@@ -2,25 +2,25 @@
 - type: loadout
   id: EthicsCommitteeRepresentativeJumpsuit
   equipment:
-    jumpsuit: ClothingUniformJumpsuitEthicsCommittee
+    jumpsuit: ClothingUniformJumpsuitWithWhiteShirt
 
 - type: loadout
   id: EthicsCommitteeRepresentativeJumpsuitFormal
   equipment:
-    jumpsuit: ClothingUniformJumpsuitEthicsCommitteeFormal
+    jumpsuit: ClothingUniformJumpsuitBlackFormal
 
 - type: loadout
   id: EthicsCommitteeRepresentativeJumpskirt
   equipment:
-    jumpsuit: ClothingUniformJumpskirtEthicsCommittee
+    jumpsuit: ClothingUniformJumpskirtWithWhiteShirt
 
 #Внешняя одежда
 - type: loadout
   id: EthicsCommitteeRepresentativeCoat
   equipment:
-    outerClothing: ClothingOuterCoatEthicsCommittee
+    outerClothing: ClothingOuterCoatBlackFancy
 
 - type: loadout
   id: EthicsCommitteeRepresentativeCoatOpen
   equipment:
-    outerClothing: ClothingOuterCoatEthicsCommitteeOpen
+    outerClothing: ClothingOuterCoatBlackFancyOpen
