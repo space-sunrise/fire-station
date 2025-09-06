@@ -1,0 +1,21 @@
+﻿<PanelContainer xmlns="https://spacestation14.io"
+                xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                xmlns:s="clr-namespace:Content.Client.Stylesheets"
+                StyleClasses="AngleRect">
+    <PanelContainer.PanelOverride>
+        <graphics:StyleBoxFlat BackgroundColor="#121111CC"/>
+    </PanelContainer.PanelOverride>
+    <BoxContainer Orientation="Vertical" Margin="5" MinSize="220, 40">
+        <RichTextLabel Name="InfoLabel" Margin="0 0 0 5"/>
+        <ProgressBar Name="ProgressBar" MinValue="0">
+            <ProgressBar.BackgroundStyleBoxOverride>
+                <graphics:StyleBoxFlat
+                    BackgroundColor="{x:Static s:StyleNano.PanelUltraDark}"
+                    BorderColor="{x:Static s:StyleNano.SCPWhite}"
+                    BorderThickness="2"/>
+            </ProgressBar.BackgroundStyleBoxOverride>
+            <Label Name="ProgressLabel" Align="Center" />
+        </ProgressBar>
+    </BoxContainer>
+</PanelContainer>

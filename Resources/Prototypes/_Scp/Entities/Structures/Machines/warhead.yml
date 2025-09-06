@@ -34,13 +34,9 @@
     fixtures:
       fix1:
         shape:
-          !type:PolygonShape
-            vertices:
-            - "0.0,-0.5"
-            - "1.0,0.0"
-            - "0.0,0.5"
-            - "-1.0,0.0"
-        density: 255
+          !type:PhysShapeAabb
+          bounds: "-1.5,-1.5,1.5,1.5"
+        density: 50
         mask:
         - MachineMask
         layer:

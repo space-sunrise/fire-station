@@ -72,19 +72,18 @@
     - id: AccessConfigurator
     - id: BoxEncryptionKeyPassenger
     - id: BoxHeadset
-    - id: BoxID
+    - id: ScpBoxKeyCard
     - id: BoxPDA
     - id: CigarGoldCase
       prob: 0.25
     - id: ClothingHeadsetAltAdministration
     - id: ClothingNeckGoldmedal
     - id: DoorRemoteService
-    - id: HoPIDCard
+    - id: KeyCardPersonnelOfficer
     - id: IDComputerCircuitboard
     - id: RubberStampApproved
     - id: RubberStampDenied
     - id: RubberStampPersonnelOfficer
-    - id: WeaponDisabler
     - id: ClothingEyesHudCommand
     - id: FlippoLighterSunriseHop
 
@@ -192,8 +191,8 @@
   table: !type:AllSelector
     children:
     - id: WeaponRifleAKM
-    - id: MagazineLightRifle
-    - id: MagazineLightRifle
+    - id: MagazineLightRifleSP
+    - id: MagazineLightRifleSP
     - id: BookSpaceLaw
     - id: CigarGoldCase
       prob: 0.50

@@ -104,3 +104,64 @@
     DrinkJuiceOrangeCarton: 3
     DrinkJuiceTomatoCarton: 3
     DrinkSodaWaterCan: 5
+
+- type: vendingMachineInventory
+  id: ScpSecDrobeInventory
+  startingInventory:
+    ClothingHeadSecurityBeret: 3
+    ClothingHeadHatSecBlack: 3
+    ClothingHeadHatOutlawHat: 1
+    ClothingHeadHatCowboyBlack: 1
+    ClothingEyesGlassesSecurityGuard: 3
+    ClothingEyesEyepatchHudSecurity: 2
+    ClothingMaskSecurityBandBlack: 3
+    ClothingNeckMantleSecurity: 3
+    ClothingNeckKailoRen: 2
+    ClothingNeckScarfStripedBlack: 2
+    ClothingUniformSecurity: 3
+    ClothingUniformSecurity2: 3
+    ClothingUniformSecurity3: 3
+    ClothingUniformJumpsuitBlackturtleneck: 2
+    ClothingOuterArmorSecurity: 3
+    ClothingBeltSecurityWebbing: 5
+    ClothingHandsGlovesSecurity: 3
+    ClothingHandsGlovesWinterSecurity: 3
+    ClothingBackpackSecurity: 3
+    ClothingBackpackSatchelSecurity: 3
+    ClothingBackpackDuffelSecurity: 3
+    ClothingShoesBootsSecurityGuard: 3
+    ClothingShoesBootsCombat: 1
+    ClothingShoesBootsWinterSecurityGuard: 2
+  contrabandInventory:
+    ClothingHeadHatWithPaces: 1  # ))
+
+- type: vendingMachineInventory
+  id: ScpSecTechInventory
+  startingInventory:
+    SecurityWhistle: 5
+    Handcuffs: 8
+    Zipties: 12
+    GrenadeFlashBang: 5
+    TearGasGrenade: 5
+    SmokeGrenade: 5
+    ClusterBangFull: 5
+    GrenadeStinger: 5
+    Flash: 5
+    Tourniquet: 5
+    FlashlightSeclite: 5
+    RiotShield: 2
+    RiotLaserShield: 2
+    RiotBulletShield: 2
+    CombatKnife: 3
+    Bola: 6
+    RadioHandheldExternalAdministrativeZoneSecurityService: 5
+    RadioHandheldHeavyContainmentSecurityService: 5
+    HandheldCamera: 6
+    PepperSprayBottleBlue: 2
+  contrabandInventory:
+    WeaponMeleeNeedle: 2
+    FoodDonutHomer: 12
+    FoodBoxDonut: 2
+    ModularReceiverAuto: 1
+  emaggedInventory:
+    ClothingEyesGlassesNVG: 1

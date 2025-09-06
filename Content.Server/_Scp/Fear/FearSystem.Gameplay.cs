@@ -1,8 +1,8 @@
 ﻿using Content.Server.Chat.Systems;
-using Content.Server.Standing;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Movement.Events;
+using Content.Shared.Standing;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -40,7 +40,7 @@ public sealed partial class FearSystem
         if (!_random.Prob(percentNormalized))
             return;
 
-        _standing.Fall(ent);
+        _standing.Down(ent, force: true);
     }
 
     /// <summary>

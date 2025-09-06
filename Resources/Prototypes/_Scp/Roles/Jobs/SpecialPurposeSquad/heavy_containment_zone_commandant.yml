@@ -1,0 +1,59 @@
+﻿- type: job
+  id: HeavyContainmentZoneCommandant
+  name: job-name-heavy-containment-zone-commandant
+  description: job-description-heavy-containment-zone-commandant
+  playTimeTracker: JobHeavyContainmentZoneCommandant
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+    - !type:OverallPlaytimeRequirement
+      time: 90000 # 25 часов
+  icon: JobHeavyContainmentZoneCommandant
+  supervisors: job-supervisors-security-commander
+  canBeAntag: false
+  displayWeight: 70  # Sunrise
+  accessGroups:
+  - SecurityCommandant
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
+    - type: Fear # переопределение компонента страха для СБ
+      phobias:
+      - Exoremophobia
+      - Necrophobia
+      proximityBlockerLevel: None
+      seenBlockerLevel: None
+      fearBasedSpreadAngleModifier:
+        Anxiety: 1.2
+        Fear: 2
+        Terror: 5
+      fearBasedGrainStrength:
+        None: 0
+        Anxiety: 70
+        Fear: 230
+        Terror: 550
+      fearBasedVignetteStrength:
+        None: 0
+        Anxiety: 30
+        Fear: 60
+        Terror: 350
+      baseJitterTime: 2
+      fallOffChance: 1
+
+- type: startingGear
+  id: HeavyContainmentZoneCommandantGear
+  equipment:
+    head: ClothingHeadHatCapLeatherSquadLeader
+    ears: ClothingHeadsetAltHeavyContainmentSecurityService
+    eyes: ClothingEyesGlassesSecurity
+    neck: ClothingNeckMantleSecurity
+    jumpsuit: ClothingUniformJumpsuitSquadLeader
+    outerClothing: ClothingOuterArmorSecurity
+    gloves: ClothingHandsGlovesColorBlackAlt
+    shoes: ClothingShoesBootsSecurityGuard
+    id: KeyCardHeavyContainmentZoneCommandant
+    pocket2: ScpSecurityPDA

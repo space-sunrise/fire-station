@@ -1,11 +1,16 @@
 ﻿using Content.Shared.Clothing;
 using Content.Shared.Drunk;
+using Content.Shared.StatusEffectNew;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Backrooms.AddDrunkClothing;
 
 public sealed class AddDrunkClothingSystem : EntitySystem
 {
     [Dependency] private readonly SharedDrunkSystem _drunkSystem = default!;
+    [Dependency] private readonly StatusEffectsSystem _effects = default!;
+
+    private static readonly EntProtoId DrunkEffect = "StatusEffectDrunk";
 
     public override void Initialize()
     {
@@ -16,10 +21,10 @@ public sealed class AddDrunkClothingSystem : EntitySystem
 
     private void OnGotEquipped(Entity<AddDrunkClothingComponent> entity, ref ClothingGotEquippedEvent args)
     {
-        if (HasComp<DrunkComponent>(args.Wearer))
+        if (_effects.HasStatusEffect(args.Wearer, DrunkEffect))
             return;
 
-        _drunkSystem.TryApplyDrunkenness(args.Wearer, int.MaxValue);
+        _drunkSystem.TryApplyDrunkenness(args.Wearer, TimeSpan.FromDays(1));
 
         entity.Comp.IsActive = true;
     }

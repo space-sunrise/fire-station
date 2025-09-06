@@ -1,0 +1,135 @@
+﻿# Командир
+- type: job
+  id: LLHLeader
+  name: ghost-role-information-mtf-leader-LLH-name
+  description: ghost-role-information-mtf-leader-description
+  playTimeTracker: JobLLHLeader
+  setPreference: false
+  startingGear: LLHLeaderGear
+  icon: JobIconLLH
+  supervisors: ghost-role-information-mtf-LLH-leader-supervisors
+  canBeAntag: false
+  radioBold: true
+  overrideConsoleVisibility: false
+  accessGroups:
+  - AllComplex
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: LLHLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformLLH
+    back: ClothingBackpackLLH
+    shoes: ClothingShoesBootsMagAdv
+    head: ClothingHeadHatCapLeatherLLHLeader
+    mask: ClothingMaskGasLLH
+    eyes: ClothingEyesNVDSec
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorHeavyLLH
+    id: KeyCardMtfLLHLeader
+    ears: ClothingHeadsetAltMTFLLH
+    belt: MTFCommanderWebbing
+    pocket1: BaseUplinkLLHLeader
+    pocket2: PinpointerNuclear
+  storage:
+    back:
+    - BoxMRE
+    - Crowbar
+    - CombatKnife
+    - HandheldCriminalRecordsMonitorUnpowered
+    - DoubleEmergencyOxygenTankFilled
+    - HandheldCrewMonitor
+    - MobileTaskForcePDA
+    belt:
+    - Stunbaton
+    - Handcuffs
+
+# Специалист
+- type: job
+  id: LLHSpecialist
+  name: ghost-role-information-mtf-specialist-LLH-name
+  description: ghost-role-information-mtf-specialist-description
+  playTimeTracker: JobLLHSpecialist
+  setPreference: false
+  startingGear: LLHSpecialistGear
+  icon: JobIconLLH
+  supervisors: ghost-role-information-mtf-LLH-specialist-supervisors
+  canBeAntag: false
+  overrideConsoleVisibility: false
+  accessGroups:
+  - AllComplex
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: LLHSpecialistGear
+  equipment:
+    jumpsuit: ClothingUniformLLH
+    back: ClothingBackpackLLH
+    shoes: ClothingShoesBootsMagAdv
+    head: ClothingHelmetMTF
+    mask: ClothingMaskGasLLH
+    eyes: ClothingEyesNVDSec
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorHeavyLLH
+    id: KeyCardMtfLLHSpecialist
+    ears: ClothingHeadsetAltMTFLLH
+    belt: MTFWebbing
+    pocket1: BaseUplinkLLHSpecialist
+    pocket2: CombatKnife
+  storage:
+    back:
+    - Crowbar
+    - DoubleEmergencyOxygenTankFilled
+    - BoxMRE
+    - MobileTaskForcePDA
+    belt:
+    - Stunbaton
+    - Handcuffs
+
+# Кадет
+- type: job
+  id: LLHCadet
+  name: ghost-role-information-mtf-cadet-LLH-name
+  description: ghost-role-information-mtf-cadet-description
+  playTimeTracker: JobLLHCadet
+  setPreference: false
+  startingGear: LLHCadetGear
+  icon: JobIconLLH
+  supervisors: ghost-role-information-mtf-LLH-cadet-supervisors
+  canBeAntag: false
+  overrideConsoleVisibility: false
+  accessGroups:
+  - AllComplex
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: LLHCadetGear
+  equipment:
+    jumpsuit: ClothingUniformLLH
+    back: ClothingBackpackLLH
+    shoes: ClothingShoesBootsMagAdv
+    head: ClothingHelmetMTF
+    mask: ClothingMaskGasLLH
+    eyes: ClothingEyesNVDSec
+    gloves: ClothingHandsGlovesCombat
+    outerClothing: ClothingOuterArmorHeavyLLH
+    id: KeyCardMtfLLHCadet
+    ears: ClothingHeadsetAltMTFLLH
+    belt: MTFWebbing
+    pocket1: BaseUplinkLLH
+    pocket2: CombatKnife
+  storage:
+    back:
+    - Crowbar
+    - DoubleEmergencyOxygenTankFilled
+    - BoxMRE
+    - MobileTaskForcePDA
+    belt:
+    - Stunbaton
+    - Handcuffs

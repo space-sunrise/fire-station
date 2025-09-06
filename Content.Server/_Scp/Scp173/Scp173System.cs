@@ -4,22 +4,21 @@ using Content.Server.Examine;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Ghost;
 using Content.Server.Interaction;
-using Content.Server.Light.Components;
 using Content.Server.Popups;
 using Content.Server.Storage.Components;
 using Content.Server.Storage.EntitySystems;
+using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp173;
 using Content.Shared.Chemistry.Components;
-using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Damage;
 using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Examine;
-using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
-using Content.Shared.Fluids.Components;
 using Content.Shared.Humanoid;
+using Content.Shared.Light.Components;
 using Content.Shared.Lock;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
@@ -31,13 +30,15 @@ using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Scp173;
 
-public sealed class Scp173System : SharedScp173System
+public sealed partial class Scp173System : SharedScp173System
 {
+    [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly GhostSystem _ghost = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
@@ -53,18 +54,14 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly AudioSystem _audio= default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly ExplosionSystem _explosion = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly ScpHelpers _helpers = default!;
 
     private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
     private readonly SoundSpecifier _clogSound = new SoundPathSpecifier("/Audio/_Scp/Scp173/clog.ogg");
 
-    public const int MinTotalSolutionVolume = 500;
-    public const int ExtraMinTotalSolutionVolume = 800;
-
-    public readonly ProtoId<ReagentPrototype> Reagent = "Scp173Reagent";
-
     private const float ToggleDoorStuffChance = 0.35f;
+
+    private TimeSpan _nextReagentCheck;
 
     public override void Initialize()
     {
@@ -73,6 +70,26 @@ public sealed class Scp173System : SharedScp173System
         SubscribeLocalEvent<Scp173Component, Scp173DamageStructureAction>(OnStructureDamage);
         SubscribeLocalEvent<Scp173Component, Scp173ClogAction>(OnClog);
         SubscribeLocalEvent<Scp173Component, Scp173FastMovementAction>(OnFastMovement);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (_timing.CurTime < _nextReagentCheck)
+            return;
+
+        _nextReagentCheck = _timing.CurTime + ReagentCheckInterval;
+
+        var query = EntityQueryEnumerator<Scp173Component>();
+        while (query.MoveNext(out var uid, out var scp173))
+        {
+            if (!IsContained(uid))
+                continue;
+
+            scp173.ReagentVolumeAround = _helpers.GetAroundSolutionVolume(uid, Scp173Component.Reagent, LineOfSightBlockerLevel.None);
+            Dirty(uid, scp173);
+        }
     }
 
     protected override void BreakNeck(EntityUid target, Scp173Component scp)
@@ -202,32 +219,17 @@ public sealed class Scp173System : SharedScp173System
         var coords = Transform(ent).Coordinates;
 
         var tempSol = new Solution();
-        tempSol.AddReagent(Reagent, 25);
+        tempSol.AddReagent(Scp173Component.Reagent, 25);
         _puddle.TrySpillAt(coords, tempSol, out _, false);
 
         _audio.PlayPvs(_clogSound, ent);
 
-        FixedPoint2 total = 0;
-        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, ContainmentRoomSearchRadius)
-            .Where(puddle =>
-                _interaction.InRangeUnobstructed(ent.Owner, puddle.Owner, ExamineSystemShared.ExamineRange));
+        var total = _helpers.GetAroundSolutionVolume(ent, Scp173Component.Reagent, LineOfSightBlockerLevel.None);
 
-        foreach (var puddle in puddles)
+        if (total >= Scp173Component.MinTotalSolutionVolume)
         {
-            if (!puddle.Comp.Solution.HasValue)
-                continue;
-
-            var allReagents = puddle.Comp.Solution.Value.Comp.Solution.GetReagentPrototypes(_prototype);
-            total = allReagents
-                .Where(reagent => reagent.Key.ID == Reagent)
-                .Aggregate(total, (current, reagent) => current + reagent.Value);
-        }
-
-        if (total >= MinTotalSolutionVolume)
-        {
-            var transform = Transform(args.Performer);
-            var lookup = _lookup.GetEntitiesInRange(transform.Coordinates, 5, flags: LookupFlags.Dynamic | LookupFlags.Static)
-                .Where(target => _interaction.InRangeUnobstructed(ent.Owner, target, ExamineSystemShared.ExamineRange));
+            var lookup = _lookup.GetEntitiesInRange(coords, ContainmentRoomSearchRadius, flags: LookupFlags.Dynamic | LookupFlags.Static)
+                .Where(target => _examine.InRangeUnOccluded(ent, target, ContainmentRoomSearchRadius));
 
             foreach (var target in lookup)
             {
@@ -241,7 +243,7 @@ public sealed class Scp173System : SharedScp173System
                     _door.StartOpening(target);
             }
         }
-        else if (total >= ExtraMinTotalSolutionVolume)
+        if (total >= Scp173Component.ExtraMinTotalSolutionVolume)
         {
             _explosion.QueueExplosion(_transform.GetMapCoordinates(ent), ExplosionSystem.DefaultExplosionPrototypeId, 300f, 0.6f, 50f, ent);
         }
@@ -349,8 +351,8 @@ public sealed class Scp173System : SharedScp173System
                 BreakNeck(result.HitEntity, scpEntitiy);
                 previousHitPos = result.HitPos;
 
-                var mobXform = Transform(result.HitEntity);
-                _transform.SetWorldPosition(scpEntitiy, mobXform.WorldPosition);
+                var worldPos = _transform.GetWorldPosition(scpEntitiy);
+                _transform.SetWorldPosition(scpEntitiy, worldPos);
 
                 continue;
             }

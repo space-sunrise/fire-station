@@ -173,3 +173,50 @@
 
 - type: playTimeTracker
   id: JobScp999
+
+# Отряды МОГ
+
+- type: playTimeTracker
+  id: JobHDLeader
+
+- type: playTimeTracker
+  id: JobHDSpecialist
+
+- type: playTimeTracker
+  id: JobHDCadet
+
+- type: playTimeTracker
+  id: JobLLHLeader
+
+- type: playTimeTracker
+  id: JobLLHSpecialist
+
+- type: playTimeTracker
+  id: JobLLHCadet
+
+- type: playTimeTracker
+  id: JobMHLeader
+
+- type: playTimeTracker
+  id: JobMHSpecialist
+
+- type: playTimeTracker
+  id: JobMHCadet
+
+- type: playTimeTracker
+  id: JobRRHLeader
+
+- type: playTimeTracker
+  id: JobRRHSpecialist
+
+- type: playTimeTracker
+  id: JobRRHCadet
+
+- type: playTimeTracker
+  id: JobNTFLeader
+
+- type: playTimeTracker
+  id: JobNTFSpecialist
+
+- type: playTimeTracker
+  id: JobNTFCadet

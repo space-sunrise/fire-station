@@ -311,7 +311,7 @@ public abstract class SharedPettingSystem : EntitySystem
 
     #endregion
 
-    #region Pets compability
+    #region Pets Compatibility
 
     /// <summary>
     /// Метод, работающий с логикой передачи всех питомцев от одного хозяина к другому.

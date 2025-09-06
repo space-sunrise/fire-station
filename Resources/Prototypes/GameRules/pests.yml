@@ -22,7 +22,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    #startAnnouncement: station-event-vent-creatures-start-announcement Fire edit
 #    startAudio: Fire edit
 #      path: /Audio/Announcements/attention.ogg
     earliestStart: 15
@@ -71,7 +71,7 @@
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    #startAnnouncement: station-event-vent-creatures-start-announcement Fire edit
 #    startAudio: Fire edit
 #      path: /Audio/Announcements/attention.ogg
     weight: 6
@@ -82,13 +82,15 @@
       prob: 0.03
     - id: MobMothroach
       prob: 0.008
+    - id: MobMoproach
+      prob: 0.004
 
 - type: entity
   id: SnailMigrationLowPop
   parent: BaseStationEventShortDelay
   components:
   - type: StationEvent
-    startAnnouncement: station-event-vent-creatures-start-announcement
+    #startAnnouncement: station-event-vent-creatures-start-announcement Fire edit
 #    startAudio:
 #      path: /Audio/Announcements/attention.ogg
     weight: 6

@@ -1,5 +1,5 @@
-﻿using Content.Server.Explosion.EntitySystems;
-using Content.Shared.Item;
+﻿using Content.Shared.Item;
+using Content.Shared.Trigger.Systems;
 
 namespace Content.Server._Scp.Backrooms.TriggerOnPickup;
 

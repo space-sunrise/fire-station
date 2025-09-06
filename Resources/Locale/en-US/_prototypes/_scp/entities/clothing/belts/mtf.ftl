@@ -1,0 +1,12 @@
+ent-MTFWebbing = webbing
+    .desc = A modular vest with attachments and pockets for carrying equipment. The design conveys a sense of strict functionality.
+    .suffix = MTF
+ent-MTFCommanderWebbing = commander's webbing
+    .desc = A modular vest with attachments and pockets for carrying equipment. It features a neater finish, emphasizing the owner's status.
+    .suffix = MTF
+ent-MTFSpecialistWebbing = specialist's webbing
+    .desc = A modular vest with attachments and pockets for carrying specialized equipment. It indicates the owner's highly specialized role.
+    .suffix = MTF
+ent-ClothingBeltMilitaryWebbingMH = webbing
+    .desc = A modular vest with attachments and pockets for carrying equipment. The materials are noted for their increased resistance to hostile environments.
+    .suffix = MTF

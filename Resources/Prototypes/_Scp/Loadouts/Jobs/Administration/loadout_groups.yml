@@ -44,6 +44,12 @@
   - DirectorKeyCard
 
 - type: loadoutGroup
+  id: DirectorPDA
+  name: loadout-group-pda
+  loadouts:
+  - LoadoutDirectorPDA
+
+- type: loadoutGroup
   id: DirectorBack
   name: loadout-group-back
   loadouts:

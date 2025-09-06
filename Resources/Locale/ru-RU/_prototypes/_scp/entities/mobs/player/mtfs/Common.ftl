@@ -1,27 +1,3 @@
-﻿ent-KeyCardMtfBase = { ent-KeyCardBase }
-    .desc = { ent-KeyCardBase.desc }
-ent-ClothingMaskMTF = Противогаз Мобильной Оперативной Группы
-    .desc = Не дает унюхать трупный запах мертвых сотрудников фонда.
-ent-ClothingHelmetMTF = Шлем Мобильной Оперативной Группы
-    .desc = Рассчитана на защиту от пуль, порезов, осколков гранат, кислот, аномальных тварей и своих товарищей.
-ent-MTFVest = Бронежилет Мобильной Оперативной Группы
-    .desc = Не сковывает движения, прост и легок в использовании, при этом обеспечивает неплохую защиту!
-ent-MTFCommanderVest = Бронежилет командира Мобильной Оперативной Группы
-    .desc = { ent-MTFVest.desc } Выглядит важно.
-ent-MTFWebbing = Разгрузка Мобильной Оперативной Группы
-    .desc = Нам приказывают, а мы исполняем. Мы разгружаем сюда вещи, а разгрузка их держит.
-ent-MTFCommanderWebbing = Разгрузка командира Мобильной Оперативной Группы
-    .desc = { ent-MTFWebbing.desc } Выглядит важно, будто для командира.
-ent-MTFSpecialistWebbing = Разгрузка специалиста Мобильной Оперативной Группы
-    .desc = { ent-MTFWebbing.desc }
-ent-MTFSpecialistBackpack = Рюкзак Мобильной Оперативной Группы
-    .desc = Создан для того, что бы быть верным тому, кто верен фонду SCP.
-ent-ClothingHeadsetAltMTF = { ent-ClothingHeadsetAlt } мобильной оперативной группы
-    .desc = { ent-ClothingHeadsetAlt.desc }
-ent-ClothingHeadsetAltMTFRRH = { ent-ClothingHeadsetAltMTF } "Альфа-1"
-    .desc = { ent-ClothingHeadsetAlt.desc }
-ent-ClothingHeadsetAltMTFLLH = { ent-ClothingHeadsetAltMTF } "Омега-1"
-    .desc = { ent-ClothingHeadsetAlt.desc }
 ent-WeaponPulseCarbineScp = импульсный карабин
     .desc = Высокотехнологичный энергетический карабин, который предпочитают бойцы МОГ.
     .suffix = Винтовка
@@ -51,17 +27,12 @@ ent-CrateAdministrationSecure = ящик администрации
     .desc = { ent-CrateBaseSecure.desc }
 ent-PowerCageMTF = боевая энергоячейка фонда SCP
     .desc = Перезаряжаемая энергетическая ячейка для больших устройств. Увеличенная ёмкость для увеличенного уровня мощности. Имеет встроенную ЭМИ защиту.
-
-
 ent-CrateAdministrationRecontainmentCircuitsBoards = набор плат законов фонда SCP
     .desc = Содержит набор из 2 плат законов для Системы Безопасности Комплекса - "{ ent-ScpMtfCircuitBoard }" и "{ ent-ScpDefaultCircuitBoard }", а так же "{ ent-Intellicard }".
     .suffix = Заполненный
-
 ent-CrateAdministrationCrateScpCageScp173 = ящик с ангаром «Пандора»
     .desc = Содержит ангар «Пандора» и отвертку. Идеальный набор, чтобы вернуть SCP-173 в его камеру!
     .suffix = Заполненный
-
-
 ent-SpawnerOnTriggerMTFBase = { ent-SpawnPointScpBase }
     .suffix = Base | Spawn On Trigger
     .desc = { ent-SpawnPointScpBase.desc }

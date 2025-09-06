@@ -1,0 +1,199 @@
+- type: entity
+  id: GunLockerFilledSPAS12
+  parent: GunLocker5x2
+  name: gun safe SPAS12
+  suffix: Armory, SPAS12
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
+    noRot: true
+    layers:
+    - state: locker
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: gun-0
+      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/spas12.rsi
+      map: ["enum.StorageFillLayers.Fill"]
+    - state: locker_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+  - type: StorageFill
+    contents:
+      - id: WeaponShotgunSPAS12
+        amount: 4
+
+- type: entity
+  id: GunLockerFilledShotgunRiot
+  parent: GunLocker5x1
+  name: gun safe shotgun riot
+  suffix: Armory, Shotgun Riot
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
+    noRot: true
+    layers:
+    - state: locker
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: gun-0
+      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/riot.rsi
+      map: ["enum.StorageFillLayers.Fill"]
+    - state: locker_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+  - type: StorageFill
+    contents:
+      - id: WeaponShotgunRiot
+        amount: 4
+
+- type: entity
+  id: GunLockerFilledP90
+  parent: GunLocker4x3
+  name: gun safe P90
+  suffix: Armory, P90
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
+    noRot: true
+    layers:
+    - state: locker
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: gun-0
+      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/p90.rsi
+      map: ["enum.StorageFillLayers.Fill"]
+    - state: locker_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+  - type: StorageFill
+    contents:
+      - id: WeaponSubMachineGunP90
+        amount: 4
+
+- type: entity
+  id: GunLockerFilledMP5
+  parent: GunLocker4x3
+  name: gun safe MP5
+  suffix: Armory, MP5
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
+    noRot: true
+    layers:
+    - state: locker
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: gun-0
+      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/mp5.rsi
+      map: ["enum.StorageFillLayers.Fill"]
+    - state: locker_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+  - type: StorageFill
+    contents:
+      - id: WeaponSubMachineGunMP5
+        amount: 4
+
+- type: entity
+  id: GunLockerFilledMP7
+  parent: GunLocker3x3
+  name: gun safe MP7
+  suffix: Armory, MP7
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
+    noRot: true
+    layers:
+    - state: locker
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: gun-0
+      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/mp7.rsi
+      map: ["enum.StorageFillLayers.Fill"]
+    - state: locker_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+  - type: StorageFill
+    contents:
+      - id: WeaponSubMachineGunMP7
+        amount: 4
+
+- type: entity
+  id: GunLockerFilledM16A4
+  parent: GunLocker6x3
+  name: gun safe M16A4
+  suffix: Armory, M16A4
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
+    noRot: true
+    layers:
+    - state: locker
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: gun-0
+      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/m16a4.rsi
+      map: ["enum.StorageFillLayers.Fill"]
+    - state: locker_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+  - type: StorageFill
+    contents:
+      - id: WeaponRifleM16A4
+        amount: 4
+
+- type: entity
+  id: GunLockerFilledG36
+  parent: GunLocker6x3
+  name: gun safe G36
+  suffix: Armory, G36
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
+    noRot: true
+    layers:
+    - state: locker
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: gun-0
+      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/g36.rsi
+      map: ["enum.StorageFillLayers.Fill"]
+    - state: locker_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+  - type: StorageFill
+    contents:
+      - id: WeaponRifleG36
+        amount: 4
+
+- type: entity
+  id: GunLockerFilledAR18
+  parent: GunLocker5x3
+  name: gun safe AR18
+  suffix: Armory, AR18
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/GunLocker/gunlocker/base.rsi
+    noRot: true
+    layers:
+    - state: locker
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: gun-0
+      sprite: _Scp/Structures/Storage/GunLocker/gunlocker/ar18.rsi
+      map: ["enum.StorageFillLayers.Fill"]
+    - state: locker_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+  - type: StorageFill
+    contents:
+      - id: WeaponRifleAR18
+        amount: 4

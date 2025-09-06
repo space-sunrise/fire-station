@@ -1,0 +1,12 @@
+ent-BaseAutoMender = автопочинщик
+    .desc = Устройство, используемое для лечения пациентов от тупого, термического или обоих типов урона.
+ent-AutoMenderBrute = автопочинщик для тупого урона
+    .desc = Устройство, используемое для лечения пациентов от тупого, термического или обоих типов урона. Для работы использует бикаридин.
+ent-AutoMenderBruteFilled = { ent-AutoMenderBrute }
+    .suffix = Заполненный
+    .desc = { ent-AutoMenderBrute.desc }
+ent-AutoMenderBurn = автопочинщик для термического урона
+    .desc = Устройство, используемое для лечения пациентов от тупого, термического или обоих типов урона. Для работы использует дермалин.
+ent-AutoMenderBurnFilled = { ent-AutoMenderBurn }
+    .suffix = Заполненный
+    .desc = { ent-AutoMenderBurn.desc }

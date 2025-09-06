@@ -1,0 +1,10 @@
+ent-CrateVendingMachineRestockSeedsScpClassDFilled = ящик пополнения { ent-VendingMachineSeedsDClass } D класса
+    .desc = Содержит набор пополнения торгомата { ent-VendingMachineSeedsDClass }.
+ent-CrateVendingMachineRestockNutriMaxScpClassDFilled = ящик пополнения { ent-VendingMachineNutriDClass } D класса
+    .desc = Содержит набор пополнения торгомата { ent-VendingMachineNutriDClass }.
+ent-CrateVendingMachineRestockChefvendScpClassDFilled = ящик пополнения { ent-VendingMachineChefvendDClass } D класса
+    .desc = Содержит набор пополнения торгомата { ent-VendingMachineChefvendDClass }.
+ent-CrateVendingMachineRestockDinnerwareScpClassDFilled = ящик пополнения { ent-VendingMachineDinnerwareDClass } D класса
+    .desc = Содержит набор пополнения торгомата { ent-VendingMachineDinnerwareDClass }.
+ent-CrateVendingMachineRestockBoozeScpClassDFilled = ящик пополнения { ent-VendingMachineBoozeDClass } D класса
+    .desc = Содержит набор пополнения торгомата { ent-VendingMachineBoozeDClass }.

@@ -202,6 +202,8 @@
     drawdepth: Walls
     sprite: _Scp/Structures/Walls/concrete_diagonal.rsi
     state: state0
+  - type: IconSmooth
+    key: walls
     base: state
   - type: Icon
     sprite: _Scp/Structures/Walls/concrete_diagonal.rsi
@@ -561,3 +563,21 @@
   components:
   - type: Sprite
     color: "#3b3b3b"
+
+# Измерение Деда (SCP-106)
+- type: entity
+  parent: BaseWall
+  id: ScpWallFlesh106
+  name: rotting flesh
+  description: A rotten piece of meat. The stench is terrible. You obviously don't want to touch it.
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/flesh106.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/flesh106.rsi
+  - type: IconSmooth
+    key: walls
+    base: flesh
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrongScp

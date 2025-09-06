@@ -19,7 +19,6 @@
                                  ToolTip="{Loc ui-options-grain-strength-tooltip}"/>
 
                 <!-- Поле зрения -->
-
                 <CheckBox Name="FieldOfViewUseAltMethod"
                           Text="{Loc 'ui-options-field-of-view-use-alt-method'}"
                           ToolTip="{Loc ui-options-field-of-view-use-alt-method-tooltip}"/>
@@ -32,6 +31,16 @@
                 <ui:OptionSlider Name="FieldOfViewOpacitySlider"
                                  Title="{Loc 'ui-options-field-of-view-opacity'}"
                                  ToolTip="{Loc ui-options-field-of-view-opacity-tooltip}"/>
+
+                <!-- Режим совместимости -->
+                <CheckBox Name="CompatibilityModeShowWarning"
+                          Visible="False"
+                          Text="{Loc ui-options-compatibility-mode-show-warning}"
+                          ToolTip="{Loc ui-options-compatibility-mode-show-warning-tooltip}"/>
+                <CheckBox Name="CompatibilityModeUseShaders"
+                          Visible="False"
+                          Text="{Loc ui-options-compatibility-mode-use-shaders}"
+                          ToolTip="{Loc ui-options-compatibility-mode-use-shaders-tooltip}"/>
 
                 <!-- АУДИО -->
                 <Label Text="{Loc 'ui-options-scp-audio'}" StyleClasses="LabelKeyText"/>

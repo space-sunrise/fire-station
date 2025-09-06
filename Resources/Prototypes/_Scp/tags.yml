@@ -12,3 +12,27 @@
 
 - type: Tag
   id: Windoor
+
+- type: Tag
+  id: LockerPistol
+
+- type: Tag
+  id: LockerGun6x3
+
+- type: Tag
+  id: LockerGun6x2
+
+- type: Tag
+  id: LockerGun5x3
+
+- type: Tag
+  id: LockerGun5x2
+
+- type: Tag
+  id: LockerGun5x1
+
+- type: Tag
+  id: LockerGun4x3
+
+- type: Tag
+  id: LockerGun3x3

@@ -135,7 +135,7 @@ public sealed partial class Scp106System : SharedScp106System
 
         await TeleportToBackroomsInternal(target);
 
-        _stun.TryParalyze(target, _defaultOnBackroomsStunTime, true);
+        _stun.TryAddParalyzeDuration(target, _defaultOnBackroomsStunTime);
         _fear.TrySetFearLevel(target, FearState.Terror);
 
         _audio.PlayGlobal(SendBackroomsSound, target);
@@ -177,7 +177,7 @@ public sealed partial class Scp106System : SharedScp106System
 
     private void Scp106FinishTeleportation(EntityUid uid, TimeSpan teleportationDelay)
     {
-        _stun.TryStun(uid, teleportationDelay + TeleportTimeCompensation, true);
+        _stun.TryAddStunDuration(uid, teleportationDelay + TeleportTimeCompensation);
         _appearance.SetData(uid, Scp106Visuals.Visuals, Scp106VisualsState.Exiting);
 
         var doAfterEventArgs = new DoAfterArgs(EntityManager, uid, teleportationDelay, new Scp106TeleportationDelayActionEvent(), uid)

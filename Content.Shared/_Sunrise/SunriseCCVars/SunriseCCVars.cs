@@ -255,14 +255,17 @@ public sealed partial class SunriseCCVars : CVars
      * Damage
      */
 
-    public static readonly CVarDef<float> DamageVariance =
-        CVarDef.Create("damage.variance", 0.15f, CVar.SERVER | CVar.REPLICATED);
+    public static readonly CVarDef<float> DamagePositiveVariance =
+        CVarDef.Create("damage.positive_variance", 0f, CVar.SERVER | CVar.REPLICATED);
+
+    public static readonly CVarDef<float> DamageNegativeVariance =
+        CVarDef.Create("damage.negative_variance", 0.3f, CVar.SERVER | CVar.REPLICATED);
 
     public static readonly CVarDef<float> DamageModifier =
         CVarDef.Create("damage.damage_modifier", 1f, CVar.SERVER | CVar.REPLICATED);
 
     public static readonly CVarDef<float> HealModifier =
-        CVarDef.Create("damage.heal_modifier", 1.2f, CVar.SERVER | CVar.REPLICATED);
+        CVarDef.Create("damage.heal_modifier", 1f, CVar.SERVER | CVar.REPLICATED);
 
     /*
      * NPCs
@@ -299,7 +302,7 @@ public sealed partial class SunriseCCVars : CVars
     public static readonly CVarDef<bool> VotePause =
         CVarDef.Create("vote.pause", true, CVar.SERVERONLY);
 
-    public static readonly CVarDef<bool> ExcludeMaps = CVarDef.Create("vote.exclude_maps", false, CVar.SERVERONLY);
+    public static readonly CVarDef<bool> ExcludeMaps = CVarDef.Create("vote.exclude_maps", true, CVar.SERVERONLY);
 
     public static readonly CVarDef<bool> ExcludePresets =
         CVarDef.Create("vote.exclude_presets", true, CVar.SERVERONLY);
@@ -524,13 +527,26 @@ public sealed partial class SunriseCCVars : CVars
     public static readonly CVarDef<bool> ChatSanitizationAggressive =
         CVarDef.Create("chatsan.aggressive", true, CVar.SERVER | CVar.ARCHIVE);
 
+    public static readonly CVarDef<bool> TracesEnabled =
+        CVarDef.Create("opt.traces_enabled", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
     /// <summary>
-    /// Смена даты на документах от принтера
+    /// Определяет, какие шаблоны будут доступны. (например, "sunrise" или "lust")
     /// </summary>
-    public static readonly CVarDef<int> PrinterDocTimeOffsetHours =
-        CVarDef.Create("printerdoc.time_offset_hours", 3, CVar.SERVERONLY);
-    public static readonly CVarDef<int> PrinterDocYearOffset =
-        CVarDef.Create("printerdoc.year_offset", 1000, CVar.SERVERONLY);
+    public static readonly CVarDef<string> CopyMachineTemplatePool =
+        CVarDef.Create("copy_machine.template_pool", "Sunrise", CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Смещение автозаполнения времени (в часах)
+    /// </summary>
+    public static readonly CVarDef<int> CopyMachineTimeOffsetHours =
+        CVarDef.Create("copy_machine.time_offset_hours", 3, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Смещение автозаполнения времени (в годах)
+    /// </summary>
+    public static readonly CVarDef<int> CopyMachineYearOffset =
+        CVarDef.Create("copy_machine.year_offset", 1000, CVar.SERVERONLY | CVar.ARCHIVE);
 
     public static readonly CVarDef<bool> HoldLookUp =
         CVarDef.Create("scope.hold_look_up", true, CVar.CLIENT | CVar.ARCHIVE);

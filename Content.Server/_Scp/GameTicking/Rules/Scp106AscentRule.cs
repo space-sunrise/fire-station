@@ -21,6 +21,7 @@ using Content.Shared.Audio;
 using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Humanoid;
+using Content.Shared.Light.Components;
 using Content.Shared.StatusEffect;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
@@ -182,7 +183,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         var statusEffectQuery = EntityQueryEnumerator<HumanoidAppearanceComponent, StatusEffectsComponent>();
         while (statusEffectQuery.MoveNext(out var human, out _, out _))
         {
-            _stun.TryParalyze(human, AscentStunTime, true);
+            _stun.TryAddParalyzeDuration(human, AscentStunTime);
             _jittering.DoJitter(human, AscentJitterTime, true, 30f, 300f);
             _stuttering.DoStutter(human, AscentStutterTime, true);
 

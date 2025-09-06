@@ -1,0 +1,49 @@
+- type: cargoProduct
+  id: CrateVendingMachineRestockSeedsScpClassD
+  icon:
+    sprite: Objects/Specific/Service/vending_machine_restock.rsi
+    state: base
+  product: CrateVendingMachineRestockSeedsScpClassDFilled
+  cost: 1000
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: CrateVendingMachineRestockNutriMaxScpClassD
+  icon:
+    sprite: Objects/Specific/Service/vending_machine_restock.rsi
+    state: base
+  product: CrateVendingMachineRestockNutriMaxScpClassDFilled
+  cost: 600
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: CrateVendingMachineRestockChefvendScpClassD
+  icon:
+    sprite: Objects/Specific/Service/vending_machine_restock.rsi
+    state: base
+  product: CrateVendingMachineRestockChefvendScpClassDFilled
+  cost: 800
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: CrateVendingMachineRestockDinnerwareScpClassD
+  icon:
+    sprite: Objects/Specific/Service/vending_machine_restock.rsi
+    state: base
+  product: CrateVendingMachineRestockDinnerwareScpClassDFilled
+  cost: 400
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: CrateVendingMachineRestockBoozeScpClassD
+  icon:
+    sprite: Objects/Specific/Service/vending_machine_restock.rsi
+    state: base
+  product: CrateVendingMachineRestockBoozeScpClassDFilled
+  cost: 600
+  category: cargoproduct-category-name-service
+  group: market

@@ -1,0 +1,48 @@
+﻿- type: job
+  id: JuniorHeavyContainmentZoneOfficer
+  name: job-name-junior-heavy-containment-zone-officer
+  description: job-description-junior-heavy-containment-zone-officer
+  playTimeTracker: JobJuniorHeavyContainmentZoneOfficer
+  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  - !type:OverallPlaytimeRequirement
+    time: 18000 # 5 часов
+  startingGear: JuniorHeavyContainmentZoneOfficerGear
+  icon: JobJuniorHeavyContainmentZoneOfficer
+  supervisors: job-supervisors-heavy-containment-zone-commandant
+  canBeAntag: false
+  displayWeight: 0
+  accessGroups:
+  - SecurityJobCommon
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+  - !type:AddComponentSpecial
+    components:
+    - type: EmployeeClass
+      class: C
+    - type: AccessLevel
+      level: Three
+    - type: Fear  # переопределение компонента страха для СБ
+      phobias:
+      - Exoremophobia
+      - Necrophobia
+      proximityBlockerLevel: None
+      seenBlockerLevel: None
+      fearBasedSpreadAngleModifier:
+        Anxiety: 1.5
+        Fear: 2.2
+        Terror: 5
+      baseJitterTime: 3
+      fallOffChance: 2
+
+- type: startingGear
+  id: JuniorHeavyContainmentZoneOfficerGear
+  equipment:
+    mask: ClothingMaskSecurityBandBlack
+    id: KeyCardJuniorHeavyContainmentZoneOfficer
+    ears: ClothingHeadsetHeavyContainmentSecurityService
+    pocket1: HyperLinkBookCorporateLaw
+    pocket2: ScpSecurityPDA
+  storage:
+    back:
+    - Flash

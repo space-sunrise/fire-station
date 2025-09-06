@@ -22,8 +22,12 @@
     name: ghost-panel-antagonist-scp106-phantom-name
     description: ghost-panel-antagonist-scp106-phantom-description
     priority: -5
+  - type: Eye
+    drawFov: false
   - type: FlashImmunity
+    examinable: false
   - type: Scp106Phantom
+  - type: ScpRestriction
   - type: ToggleableNightVision
     effect: ScpEffectNightVision
 
@@ -71,8 +75,6 @@
   parent: BaseScp106Phantom
   name: SCP-106 Phantom
   components:
-  - type: Eye
-    drawFov: false
   - type: Visibility
     layer: 2 #ghost vis layer
   - type: Fixtures

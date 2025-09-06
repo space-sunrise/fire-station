@@ -29,13 +29,15 @@ namespace Content.Server.Research.Disk
             if (!TryComp<ResearchServerComponent>(args.Target, out var server))
                 return;
 
+            // Fire edit start - поддержка разных поинтов рнд
             foreach (var (pointPrototype, value) in component.Points)
             {
                 _research.ModifyServerPoints(args.Target.Value, pointPrototype, value, server);
                 _popupSystem.PopupEntity(Loc.GetString("research-disk-inserted", ("points", component.Points)), args.Target.Value, args.User);
             }
+            // Fire edit end
 
-            EntityManager.QueueDeleteEntity(uid);
+            QueueDel(uid);
             args.Handled = true;
         }
 

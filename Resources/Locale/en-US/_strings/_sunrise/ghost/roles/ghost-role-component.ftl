@@ -1,13 +1,13 @@
 ghost-role-information-fugitive-name = Беглец
 ghost-role-information-fugitive-description = Вы сбежавший заключённый. Ваша цель - выжить.
 ghost-role-information-syndicate-medical-cyborg-name = Медицинский борг синдиката
-ghost-role-information-syndicate-medical-cyborg-description = Смерть НТ.
+ghost-role-information-syndicate-medical-cyborg-description = Смерть NT.
 ghost-role-information-syndicate-reaper-cyborg-name = Борг синдиката "Жнец"
-ghost-role-information-syndicate-reaper-cyborg-description = Смерть НТ.
+ghost-role-information-syndicate-reaper-cyborg-description = Смерть NT.
 ghost-role-information-syndicate-heavy-cyborg-name = Тяжелый боевой борг синдиката
-ghost-role-information-syndicate-heavy-cyborg-description = Смерть НТ.
+ghost-role-information-syndicate-heavy-cyborg-description = Смерть NT.
 ghost-role-information-syndicate-spider-cyborg-name = Диверсионный борг синдиката
-ghost-role-information-syndicate-spider-cyborg-description = Смерть НТ.
+ghost-role-information-syndicate-spider-cyborg-description = Смерть NT.
 ghost-role-information-clown-goblin-name = клоун гоблин
 ghost-role-information-clown-goblin-description = Ужасное создание, которое поклоняется творцу...
 ghost-role-information-evil-twin-name = SCP-2054-X, двойник

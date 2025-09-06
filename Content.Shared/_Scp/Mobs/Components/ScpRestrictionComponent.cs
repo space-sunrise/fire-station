@@ -18,5 +18,8 @@ public sealed partial class ScpRestrictionComponent : Component
     public bool CanBePulled;
 
     [DataField, AutoNetworkedField]
+    public bool CanTakeStaminaDamage;
+
+    [DataField, AutoNetworkedField]
     public bool CanMobCollide;
 }

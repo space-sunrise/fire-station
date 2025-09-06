@@ -37,11 +37,17 @@
   equipment:
     gloves: ClothingHandsGlovesDirectorSpecial
 
-# ПДА
+# Ключ карта
 - type: loadout
   id: DirectorKeyCard
   equipment:
     id: KeyCardDirector
+
+# КПК
+- type: loadout
+  id: LoadoutDirectorPDA
+  equipment:
+    pocket2: DirectorPDA
 
 # Сумка
 - type: loadout

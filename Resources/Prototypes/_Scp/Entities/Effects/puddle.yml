@@ -1,0 +1,25 @@
+﻿- type: entity
+  parent: PuddleTemporary
+  id: PuddleScp173Reagent25
+  suffix: Scp173Reagent (25u)
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      puddle:
+        maxVol: 1000
+        reagents:
+        - ReagentId: Scp173Reagent
+          Quantity: 25
+
+- type: entity
+  parent: PuddleTemporary
+  id: PuddleScp173Reagent50
+  suffix: Scp173Reagent (50u)
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      puddle:
+        maxVol: 1000
+        reagents:
+        - ReagentId: Scp173Reagent
+          Quantity: 50

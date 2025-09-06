@@ -1,0 +1,25 @@
+﻿- type: entity
+  parent: ClothingBackpack
+  id: MTFSpecialistBackpack
+  name: backpack
+  description: A spacious tactical container with reinforced seams. The design is intended for prolonged use in field conditions.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/NineTailedFox/Specialist/backpack.rsi
+  - type: Clothing
+    sprite: _Scp/NineTailedFox/Specialist/backpack.rsi
+
+- type: entity
+  parent: ClothingDeathSquadronBackpack
+  id: ClothingBackpackLLH
+  name: backpack
+  description: A standard tactical container. For unknown reasons, its internal compartments have limited capacity.
+  suffix: MTF
+
+- type: entity
+  parent: ClothingDeathSquadronBackpack
+  id: ClothingBackpackRRH
+  name: backpack
+  description: Documentation on the design of this unit is unavailable. Information about its features has been removed from public archives.
+  suffix: MTF

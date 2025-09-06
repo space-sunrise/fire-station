@@ -110,7 +110,7 @@ namespace Content.Client.Examine
         {
             var entity = args.EntityUid;
 
-            if (!args.EntityUid.IsValid() || !EntityManager.EntityExists(entity))
+            if (!args.EntityUid.IsValid() || !Exists(entity))
             {
                 return false;
             }
@@ -157,6 +157,14 @@ namespace Content.Client.Examine
             // opening at the old tooltip rather than the cursor/another entity,
             // since there's probably one open already if it's coming in from the server.
             var entity = GetEntity(ev.EntityUid);
+
+            // Fire added start
+            if (TerminatingOrDeleted(entity))
+            {
+                CloseTooltip();
+                return;
+            }
+            // Fire added end
 
             OpenTooltip(player.Value, entity, ev.CenterAtCursor, ev.OpenAtOldTooltip, ev.KnowTarget);
             UpdateTooltipInfo(player.Value, entity, ev.Message, ev.Verbs, getVerbs: false);
@@ -225,7 +233,7 @@ namespace Content.Client.Examine
 
             vBox.AddChild(hBox);
 
-            if (EntityManager.HasComponent<SpriteComponent>(target))
+            if (HasComp<SpriteComponent>(target))
             {
                 var spriteView = new SpriteView
                 {

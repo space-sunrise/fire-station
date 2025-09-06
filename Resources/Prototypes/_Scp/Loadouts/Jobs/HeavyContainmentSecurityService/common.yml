@@ -1,8 +1,0 @@
-﻿- type: loadout
-  id: RadioHandheldHeavyContainmentSecurityService
-  startingGear: RadioHandheldHeavyContainmentSecurityService
-- type: startingGear
-  id: RadioHandheldHeavyContainmentSecurityService
-  storage:
-    back:
-    - RadioHandheldHeavyContainmentSecurityService

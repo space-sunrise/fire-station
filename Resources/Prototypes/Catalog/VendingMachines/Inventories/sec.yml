@@ -20,6 +20,7 @@
     RiotShield: 2
     RiotLaserShield: 2
     RiotBulletShield: 2
+    Bola: 6
     RadioHandheldExternalAdministrativeZoneSecurityService: 5 # Fire added
     RadioHandheldHeavyContainmentSecurityService: 5 # Fire added
   # security officers need to follow a diet regimen!

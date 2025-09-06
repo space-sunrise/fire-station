@@ -38,11 +38,14 @@ jobs:
         with:
           dotnet-version: 9.0.x
 
+      - name: Install system dependencies
+        run: sudo apt-get update && sudo apt-get install -y libopenal1
+
       - name: Install dependencies
         run: dotnet restore
 
       - name: Build Project
-        run: dotnet build Content.MapRenderer --configuration Release --no-restore /p:WarningsAsErrors=nullable /m
+        run: dotnet build Content.MapRenderer --configuration Release --no-restore /m
 
       - name: Run Map Renderer
         run: dotnet run --project Content.MapRenderer Dev

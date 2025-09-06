@@ -6,6 +6,7 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Pulling.Components;
+using Content.Shared.Movement.Pulling.Systems;
 using Content.Shared.Tag;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
@@ -27,6 +28,7 @@ public sealed class Scp999System : SharedScp999System
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private const string WallFixtureId = "fix2";
@@ -43,6 +45,7 @@ public sealed class Scp999System : SharedScp999System
         SubscribeLocalEvent<Scp999Component, MobStateChangedEvent>(OnMobStateChanged);
 
         SubscribeLocalEvent<Scp999Component, Scp999ChangeStateAttemptEvent>(OnChangeStateAttempt);
+        SubscribeLocalEvent<Scp999Component, Scp999ChangedStateEvent>(OnChangedState);
 
         SubscribeLocalEvent<Scp999Component, EntityFedEvent>(OnFeed);
     }
@@ -105,9 +108,10 @@ public sealed class Scp999System : SharedScp999System
                 EnsureComp<NoRotateOnInteractComponent>(ent);
                 EnsureComp<NoRotateOnMoveComponent>(ent);
 
-                RemComp<PullableComponent>(ent);
-
                 _audio.PlayPvs(_wallSound, ent);
+
+                var toWallChangedEvent = new Scp999ChangedStateEvent(Scp999States.Wall);
+                RaiseLocalEvent(ent, toWallChangedEvent);
 
                 break;
 
@@ -135,7 +139,8 @@ public sealed class Scp999System : SharedScp999System
                 RemComp<NoRotateOnMoveComponent>(ent);
                 RemComp<NoRotateOnInteractComponent>(ent);
 
-                EnsureComp<PullableComponent>(ent);
+                var toDefaultChangedEvent = new Scp999ChangedStateEvent(Scp999States.Default);
+                RaiseLocalEvent(ent, toDefaultChangedEvent);
 
                 break;
 
@@ -180,6 +185,9 @@ public sealed class Scp999System : SharedScp999System
 
                 _audio.PlayPvs(_sleepSound, ent);
 
+                var toRestChangedEvent = new Scp999ChangedStateEvent(Scp999States.Rest);
+                RaiseLocalEvent(ent, toRestChangedEvent);
+
                 break;
 
             // remove buffs
@@ -199,6 +207,9 @@ public sealed class Scp999System : SharedScp999System
                 RemComp<NoRotateOnMoveComponent>(ent);
                 RemComp<NoRotateOnInteractComponent>(ent);
                 RemComp<BlockMovementComponent>(ent);
+
+                var toDefaultChangedEvent = new Scp999ChangedStateEvent(Scp999States.Default);
+                RaiseLocalEvent(ent, toDefaultChangedEvent);
 
                 break;
 
@@ -229,7 +240,16 @@ public sealed class Scp999System : SharedScp999System
             _popup.PopupEntity(Loc.GetString("scp-999-change-state-cancelled"), ent, ent);
     }
 
-    #region Feeding
+    private void OnChangedState(Entity<Scp999Component> ent, ref Scp999ChangedStateEvent _)
+    {
+        // Чтобы в момент превращения прекращать тащить и быть таскаемым.
+
+        if (TryComp<PullableComponent>(ent, out var pullable))
+            _pulling.TryStopPull(ent, pullable);
+
+        if (TryComp<PullerComponent>(ent, out var puller) && puller.Pulling.HasValue && TryComp<PullableComponent>(puller.Pulling, out var pullable2))
+            _pulling.TryStopPull(puller.Pulling.Value, pullable2, ent);
+    }
 
     private void OnFeed(Entity<Scp999Component> scp, ref EntityFedEvent args)
     {
@@ -244,6 +264,4 @@ public sealed class Scp999System : SharedScp999System
         if (scp.Comp.CreateJellySound != null)
             _audio.PlayPvs(scp.Comp.CreateJellySound, scp);
     }
-
-    #endregion
 }

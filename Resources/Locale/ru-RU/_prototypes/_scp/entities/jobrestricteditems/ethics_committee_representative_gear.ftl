@@ -1,20 +1,20 @@
-﻿ent-PenEthicsCommittee = ручка Комитета по этике
+ent-PenEthicsCommittee = ручка Комитета по этике
     .desc = Вся сила бюрократии в одной ручке.
 
 ent-ClothingHeadHatCapEthicsCommittee = фуражка представителя Комитета по этике
     .desc = Фуражка справедливости над администрацией!
 
-ent-ClothingUniformJumpsuitWithWhiteShirt = костюм с белой рубашкой
+ent-ClothingUniformJumpsuitEthicsCommittee = костюм с белой рубашкой
     .desc = Выглядит строго и официально.
 
-ent-ClothingUniformJumpsuitBlackFormal = торжественный черный костюм
+ent-ClothingUniformJumpsuitEthicsCommitteeFormal = торжественный черный костюм
     .desc = Выглядит торжественно, строго и официально.
 
-ent-ClothingUniformJumpskirtWithWhiteShirt = юбка-костюм с белой рубашкой
+ent-ClothingUniformJumpskirtEthicsCommittee = юбка-костюм с белой рубашкой
     .desc = Выглядит строго и официально.
 
-ent-ClothingOuterCoatBlackFancy = черный пиджак
+ent-ClothingOuterCoatEthicsCommittee = черный пиджак
     .desc = Элегантный черный пиджак.
 
-ent-ClothingOuterCoatBlackFancyOpen = расстёгнутый черный пиджак
+ent-ClothingOuterCoatEthicsCommitteeOpen = расстёгнутый черный пиджак
     .desc = Элегантный расстёгнутый пиджак.

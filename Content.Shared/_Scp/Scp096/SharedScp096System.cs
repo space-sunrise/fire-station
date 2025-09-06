@@ -11,17 +11,15 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
-using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp096;
-
-// TODO: Создать единую систему/метод для получения всех смотрящих на какого-либо ентити
-// Где будет учитываться, закрыты ли глаза, не моргает ли человек т.п. базовая информация
 
 public abstract partial class SharedScp096System : EntitySystem
 {
@@ -29,7 +27,7 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifierSystem = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSoundSystem = default!;
     [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
+    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly SharedSunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
@@ -38,7 +36,7 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly IGameTiming _gameTiming = default!;
 
     private ISawmill _sawmill = Logger.GetSawmill("scp096");
-    private const string SleepStatusEffectKey = "ForcedSleep";
+    private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
 
     public override void Initialize()
     {
@@ -303,7 +301,7 @@ public abstract partial class SharedScp096System : EntitySystem
         RaiseLocalEvent(scpEntity, new Scp096RageEvent(false));
 
         _ambientSoundSystem.SetSound(scpEntity, scpEntity.Comp.CrySound);
-        _statusEffectsSystem.TryAddStatusEffect<ForcedSleepingComponent>(scpEntity, SleepStatusEffectKey, TimeSpan.FromSeconds(scpEntity.Comp.PacifiedTime), true);
+        _statusEffects.TryAddStatusEffectDuration(scpEntity, StatusEffectSleep, TimeSpan.FromSeconds(scpEntity.Comp.PacifiedTime));
 
         RefreshSpeedModifiers(scpEntity);
     }
@@ -369,12 +367,7 @@ public abstract partial class SharedScp096System : EntitySystem
 }
 
 [Serializable, NetSerializable]
-public sealed class Scp096RageEvent : EntityEventArgs
+public sealed class Scp096RageEvent(bool inRage) : EntityEventArgs
 {
-    public bool InRage;
-
-    public Scp096RageEvent(bool inRage)
-    {
-        InRage = inRage;
-    }
+    public bool InRage = inRage;
 }

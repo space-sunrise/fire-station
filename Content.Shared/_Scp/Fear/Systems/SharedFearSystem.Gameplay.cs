@@ -1,12 +1,11 @@
 ﻿using Content.Shared._Scp.Fear.Components;
+using Content.Shared._Scp.Fear.Components.Traits;
 using Content.Shared._Scp.Weapons.Ranged;
 using Content.Shared._Sunrise.Mood;
-using Content.Shared.Administration;
-using Content.Shared.Bed.Sleep;
-using Content.Shared.Damage.Components;
 using Content.Shared.Drunk;
 using Content.Shared.Jittering;
-using Content.Shared.StatusEffect;
+using Content.Shared.StatusEffectNew;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Fear.Systems;
 
@@ -21,7 +20,8 @@ public abstract partial class SharedFearSystem
     private const float MinimumAlcoholModifier = 1f;
     private const float MaximumAlcoholModifier = 4f;
 
-    private const string AdrenalineEffectKey = "Adrenaline";
+    private static readonly EntProtoId DrunkStatusEffect = "StatusEffectDrunk";
+    private static readonly EntProtoId AdrenalineStatusEffect = "StatusEffectFearAdrenaline";
 
     private static readonly Dictionary<FearState, string> FearMoodStates = new()
     {
@@ -30,11 +30,11 @@ public abstract partial class SharedFearSystem
         { FearState.Terror, "FearStateTerror" },
     };
 
-    private EntityQuery<DrunkComponent> _drunkQuery;
+    private EntityQuery<DrunkStatusEffectComponent> _drunkQuery;
 
     private void InitializeGameplay()
     {
-        _drunkQuery = GetEntityQuery<DrunkComponent>();
+        _drunkQuery = GetEntityQuery<DrunkStatusEffectComponent>();
     }
 
     /// <summary>
@@ -67,12 +67,14 @@ public abstract partial class SharedFearSystem
     /// </summary>
     private void ManageJitter(Entity<FearComponent> ent)
     {
-        // Компонент, выдающийся при ступоре
-        if (HasComp<AdminFrozenComponent>(ent))
+        // При ступоре и обмороке персонаж не должен трястись
+        if (_effects.HasStatusEffect(ent, FearStuporComponent.StatusEffect))
             return;
 
-        // Компонент, выдающийся при обмороке
-        if (HasComp<ForcedSleepingComponent>(ent))
+        if (_effects.HasStatusEffect(ent, FearFaintingComponent.StatusEffect))
+            return;
+
+        if (MathHelper.CloseTo(ent.Comp.BaseJitterTime, 0f))
             return;
 
         // Значения будут коррелировать с текущем уровнем страха
@@ -91,10 +93,13 @@ public abstract partial class SharedFearSystem
     /// </summary>
     private void ManageAdrenaline(Entity<FearComponent> ent)
     {
+        if (MathHelper.CloseTo(ent.Comp.AdrenalineBaseTime, 0f))
+            return;
+
         var modifier = GetGenericFearBasedModifier(ent.Comp.State);
         var time = TimeSpan.FromSeconds(ent.Comp.AdrenalineBaseTime * modifier);
 
-        _effects.TryAddStatusEffect<IgnoreSlowOnDamageComponent>(ent, AdrenalineEffectKey, time, true);
+        _effects.TryAddStatusEffectDuration(ent, AdrenalineStatusEffect, time);
     }
 
     /// <summary>
@@ -138,7 +143,10 @@ public abstract partial class SharedFearSystem
     /// </summary>
     private float GetDrunkModifier(EntityUid uid)
     {
-        if (!_drunkQuery.TryComp(uid, out var drunk))
+        if (!_effects.TryGetStatusEffect(uid, DrunkStatusEffect, out var drunkEffect))
+            return 1f;
+
+        if (!_drunkQuery.TryComp(drunkEffect, out var drunk))
             return 1f;
 
         var normalized = Math.Clamp(drunk.CurrentBoozePower / 50f, MinimumAlcoholModifier, MaximumAlcoholModifier);

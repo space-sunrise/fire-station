@@ -1,0 +1,66 @@
+- type: entity
+  id: GunLockerSmallBase
+  parent: GunLockerBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/GunLocker/gunlocker_small/base.rsi
+    noRot: true
+    layers:
+    - state: locker
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: gun-0
+      sprite: _Scp/Structures/Storage/GunLocker/gunlocker_small/pistol_standart.rsi
+      map: ["enum.StorageFillLayers.Fill"]
+    - state: locker_door
+      map: ["enum.StorageVisualLayers.Door"]
+    - state: locked
+      map: ["enum.LockVisualLayers.Lock"]
+      shader: unshaded
+  - type: StorageFillVisualizer
+    maxFillLevels: 7
+    fillBaseName: gun
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: StaticPrice
+    price: 400
+  - type: Storage
+    storageOpenSound:
+      path: /Audio/_Sunrise/Structures/Closets/open.ogg
+      params:
+        volume: -1
+    storageCloseSound:
+      path: /Audio/_Sunrise/Structures/Closets/close.ogg
+      params:
+        volume: -1
+    storageInsertSound:
+      collection: PistolsDrop
+    grid:
+    - 0,0,0,1
+    - 0,0,1,0
+    - 3,0,3,1
+    - 3,0,4,0
+    - 6,0,6,1
+    - 6,0,7,0
+    - 0,3,0,4
+    - 0,3,1,3
+    - 3,3,3,4
+    - 3,3,4,3
+    - 6,3,6,4
+    - 6,3,7,3
+    whitelist:
+      tags:
+        - LockerPistol
+    maxItemSize: Huge
+
+- type: entity
+  parent: GunLockerSmallBase
+  id: GunLockerSmall
+  name: pistol safe
+  suffix: Armory, Locked

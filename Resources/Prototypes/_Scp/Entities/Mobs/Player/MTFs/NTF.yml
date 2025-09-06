@@ -1,83 +1,4 @@
-﻿# Ключ карты
-
-- type: entity
-  parent: KeyCardMtfBase
-  id: KeyCardMtfNTFLeader
-  components:
-  - type: Sprite
-    state: mtf_commander
-  - type: PresetIdCard
-    job: NTFLeader
-
-- type: entity
-  parent: KeyCardMtfBase
-  id: KeyCardMtfNTFSpecialist
-  components:
-  - type: PresetIdCard
-    job: NTFSpecialist
-
-- type: entity
-  parent: KeyCardMtfBase
-  id: KeyCardMtfNTFCadet
-  components:
-  - type: PresetIdCard
-    job: NTFCadet
-
-# ПРОФЕССИИ
-# Командир
-- type: job
-  id: NTFLeader
-  name: ghost-role-information-mtf-leader-NTF-name
-  description: ghost-role-information-mtf-leader-description
-  playTimeTracker: JobNTFLeader
-  setPreference: false
-  startingGear: NTFLeaderGear
-  icon: JobIconNTF
-  supervisors: ghost-role-information-mtf-leader-supervisors
-  canBeAntag: false
-  radioBold: true
-  overrideConsoleVisibility: false
-  accessGroups:
-  - AllComplex
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:AddComponentSpecial
-    components:
-    - type: CommandStaff
-
-- type: startingGear
-  id: NTFLeaderGear
-  equipment:
-    jumpsuit: ClothingUniformNTF
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsMagCombat
-    head: NineTailedFoxHelmet
-    mask: ClothingMaskMTF
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: MTFCommanderVest
-    id: KeyCardMtfNTFLeader
-    ears: ClothingHeadsetAltMTF
-    belt: MTFCommanderWebbing
-    pocket1: BaseUplinkMTFLeader
-    pocket2: PinpointerNuclear
-  storage:
-    back:
-    - BoxMRE
-    - Crowbar
-    - CombatKnife
-    - HandheldCriminalRecordsMonitorUnpowered
-    - DoubleEmergencyOxygenTankFilled
-    - HandheldCrewMonitor
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - Handcuffs
-    - Handcuffs
-
-- type: entity
+﻿- type: entity
   id: RandomHumanoidSpawnerNTFLeader
   components:
   - type: Sprite
@@ -100,55 +21,6 @@
     job: NTFLeader
   - type: Loadout
     prototypes: [ NTFLeaderGear ]
-
-# специалист
-- type: job
-  id: NTFSpecialist
-  name: ghost-role-information-mtf-specialist-NTF-name
-  description: ghost-role-information-mtf-specialist-description
-  playTimeTracker: JobNTFSpecialist
-  setPreference: false
-  startingGear: NTFSpecialistGear
-  icon: JobIconNTF
-  supervisors: ghost-role-information-mtf-specialist-supervisors
-  canBeAntag: false
-  overrideConsoleVisibility: false
-  accessGroups:
-  - AllComplex
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:AddComponentSpecial
-    components:
-    - type: CommandStaff
-
-- type: startingGear
-  id: NTFSpecialistGear
-  equipment:
-    jumpsuit: ClothingUniformNTF
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsMagCombat
-    head: ClothingHelmetMTF
-    mask: ClothingMaskMTF
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: MTFVest
-    id: KeyCardMtfNTFSpecialist
-    ears: ClothingHeadsetAltMTF
-    belt: MTFWebbing
-    pocket1: BaseUplinkMTFSpecialist
-    pocket2: CombatKnife
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - Handcuffs
-    - Handcuffs
 
 - type: entity
   id: RandomHumanoidSpawnerNTFSpecialist
@@ -174,55 +46,6 @@
   - type: Loadout
     prototypes: [ NTFSpecialistGear ]
 
-# кадет
-- type: job
-  id: NTFCadet
-  name: ghost-role-information-mtf-cadet-NTF-name
-  description: ghost-role-information-mtf-cadet-description
-  playTimeTracker: JobNTFCadet
-  setPreference: false
-  startingGear: NTFCadetGear
-  icon: JobIconNTF
-  supervisors: ghost-role-information-mtf-cadet-supervisors
-  canBeAntag: false
-  overrideConsoleVisibility: false
-  accessGroups:
-  - AllComplex
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
-  - !type:AddComponentSpecial
-    components:
-    - type: CommandStaff
-
-- type: startingGear
-  id: NTFCadetGear
-  equipment:
-    jumpsuit: ClothingUniformNTF
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsMagCombat
-    head: ClothingHelmetMTF
-    mask: ClothingMaskMTF
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: MTFVest
-    id: KeyCardMtfNTFCadet
-    ears: ClothingHeadsetAltMTF
-    belt: MTFWebbing
-    pocket1: BaseUplinkMTFCadet
-    pocket2: CombatKnife
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - Handcuffs
-    - Handcuffs
-
 - type: entity
   id: RandomHumanoidSpawnerNTFCadet
   components:
@@ -247,8 +70,6 @@
   - type: Loadout
     prototypes: [ NTFCadetGear ]
 
-
-
 # Спавнер отряда
 - type: entity
   id: SpawnerMTFSquadNTF
@@ -270,6 +91,7 @@
       - id: RandomHumanoidSpawnerNTFCadet # 2
       - id: RandomHumanoidSpawnerNTFCadet
     offset: 1
+
 # Спавнер, но юзается по кнопке
 - type: entity
   id: SpawnerMTFSquadNTFSpawnOnTrigger
@@ -283,22 +105,3 @@
     - state: green
     - state: NTF
       sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-
-
-# мета
-- type: jobIcon
-  parent: JobIcon
-  id: JobIconNTF
-  icon:
-    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-    state: NTF
-  jobName: mobile-task-force-NTF-name
-
-- type: playTimeTracker
-  id: JobNTFLeader
-
-- type: playTimeTracker
-  id: JobNTFSpecialist
-
-- type: playTimeTracker
-  id: JobNTFCadet

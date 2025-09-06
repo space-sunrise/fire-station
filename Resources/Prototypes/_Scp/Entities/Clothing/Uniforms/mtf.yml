@@ -1,0 +1,59 @@
+﻿- type: entity
+  id: ClothingUniformNTF
+  parent: ClothingUniformBase
+  name: mobile task force uniform
+  description: A standard dark blue tactical uniform with armor inserts and the unit's insignia.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/MTF/ntf.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/MTF/ntf.rsi
+
+- type: entity
+  id: ClothingUniformRRH
+  parent: ClothingUniformBase
+  name: mobile task force uniform
+  description: A deep scarlet uniform made of dense fabric and reinforced with protective elements.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/MTF/rrh.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/MTF/rrh.rsi
+
+- type: entity
+  id: ClothingUniformLLH
+  parent: ClothingUniformBase
+  name: mobile task force uniform
+  description: A formal black uniform, complemented by Ethics Committee symbolism and security insignia.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/MTF/llh.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/MTF/llh.rsi
+
+- type: entity
+  id: ClothingUniformMH
+  parent: ClothingUniformBase
+  name: mobile task force uniform
+  description: A drab grey-green uniform that shows signs of heavy chemical treatment.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/MTF/mh.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/MTF/mh.rsi
+
+- type: entity
+  id: ClothingUniformHD
+  parent: ClothingUniformBase
+  name: mobile task force uniform
+  description: A heavy, dark-colored uniform with reinforced armor elements and the squad's distinctive insignia.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/MTF/hd.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/MTF/hd.rsi

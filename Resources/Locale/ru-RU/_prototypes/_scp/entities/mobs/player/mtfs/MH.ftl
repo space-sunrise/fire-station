@@ -1,17 +1,3 @@
-ent-KeyCardMtfMHLeader = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfMHSpecialist = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-KeyCardMtfMHCadet = { ent-KeyCardMtfBase }
-    .desc = { ent-KeyCardMtfBase.desc }
-ent-ClothingOuterHardsuitMH = Скафандр "Бета-7"
-    .desc = { ent-ClothingMaskMTF.desc }
-ent-ClothingOuterHardsuitMHLeader = Скафандр командира "Бета-7"
-    .desc = { ent-ClothingOuterHardsuitMH.desc } Выглядит элитнее, чем обычный.
-ent-ClothingHeadHelmetMH = Шлем МОГ "Бета-7"
-    .desc = { ent-ClothingHelmetMTF.desc }
-ent-ClothingBeltMilitaryWebbingMH = Разгрузка Мобильной Оперативной Группы "Бета-7"
-    .desc = { ent-MTFWebbing.desc }
 ent-RandomHumanoidSpawnerMHLeader = { ghost-role-information-mtf-leader-MH-name }
     .suffix = МОГ | Бета-7
     .desc = { ghost-role-information-mtf-leader-description }
