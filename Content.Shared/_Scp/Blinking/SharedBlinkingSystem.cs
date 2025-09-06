@@ -11,6 +11,9 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Blinking;
 
+// TODO: Избавиться от членения на EyeClosing и Blinking.
+// Они слишком сильно переплетаются, чтобы их так разделять.
+// Вместо этого разделить систему на апдейт + обработку ивентов | API + хелперы + ивенты
 public abstract partial class SharedBlinkingSystem : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
@@ -19,10 +22,10 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly PredictedRandomSystem _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private static readonly TimeSpan BlinkingInterval = TimeSpan.FromSeconds(8f);
-    private static readonly TimeSpan BlinkingDuration = TimeSpan.FromSeconds(2.4f);
+    public static readonly TimeSpan BlinkingInterval = TimeSpan.FromSeconds(8f);
+    public static readonly TimeSpan BlinkingDuration = TimeSpan.FromSeconds(2.4f);
 
-    private static readonly TimeSpan BlinkingIntervalVariance = TimeSpan.FromSeconds(4f);
+    public static readonly TimeSpan BlinkingIntervalVariance = TimeSpan.FromSeconds(4f);
 
     public override void Initialize()
     {

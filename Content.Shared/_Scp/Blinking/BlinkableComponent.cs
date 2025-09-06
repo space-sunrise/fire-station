@@ -51,6 +51,7 @@ public sealed partial class BlinkableComponent : Component
     /// Закрыты ли глаза вручную?
     /// Обозначает, что следующее открытие глаз требуется сделать так же вручную.
     /// </summary>
+    /// TODO: Переименовать в ManuallyStateChanged
     [ViewVariables, AutoNetworkedField]
     public bool ManuallyClosed;
 
@@ -58,6 +59,7 @@ public sealed partial class BlinkableComponent : Component
     /// Нужно ли показывать игроку эффекты при следующем открытии глаз.
     /// Используется, когда глаза игрока были закрыты через код
     /// </summary>
+    /// TODO: Переименовать в ForceStateChanged
     [ViewVariables, AutoNetworkedField]
     public bool NextOpenEyesRequiresEffects;
 

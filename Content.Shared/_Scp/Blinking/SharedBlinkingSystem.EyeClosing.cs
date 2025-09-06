@@ -1,6 +1,7 @@
 ﻿using Content.Shared.Actions;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Eye.Blinding.Systems;
+using Content.Shared.Flash;
 using Content.Shared.Flash.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
@@ -14,7 +15,6 @@ public abstract partial class SharedBlinkingSystem
 
     private void InitializeEyeClosing()
     {
-        SubscribeLocalEvent<BlinkableComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<BlinkableComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<BlinkableComponent, ToggleEyesActionEvent>(OnToggleAction);
         SubscribeLocalEvent<BlinkableComponent, CanSeeAttemptEvent>(OnTrySee);
@@ -24,18 +24,11 @@ public abstract partial class SharedBlinkingSystem
 
         SubscribeLocalEvent<BlinkableComponent, SleepStateChangedEvent>(OnWakeUp);
         SubscribeLocalEvent<BlinkableComponent, TryingToSleepEvent>(OnTryingSleep);
+
+        SubscribeLocalEvent<BlinkableComponent, FlashAttemptEvent>(OnFlashAttempt);
     }
 
     #region Event handlers
-
-    private void OnMapInit(Entity<BlinkableComponent> ent, ref MapInitEvent _)
-    {
-        _actions.AddAction(ent, ref ent.Comp.EyeToggleActionEntity, ent.Comp.EyeToggleAction);
-        _actions.SetUseDelay(ent.Comp.EyeToggleActionEntity, BlinkingDuration);
-        Dirty(ent);
-
-        ResetBlink(ent.AsNullable(), predicted: false);
-    }
 
     private void OnShutdown(Entity<BlinkableComponent> ent, ref ComponentShutdown _)
     {
@@ -129,6 +122,17 @@ public abstract partial class SharedBlinkingSystem
 
         ent.Comp.EyeColor = blinkableComponent.CachedEyesColor.Value;
         Dirty(ent);
+    }
+
+    private static void OnFlashAttempt(Entity<BlinkableComponent> ent, ref FlashAttemptEvent args)
+    {
+        if (ent.Comp.State == EyesState.Opened)
+            return;
+
+        if (!ent.Comp.ManuallyClosed && !ent.Comp.NextOpenEyesRequiresEffects)
+            return;
+
+        args.Cancelled = true;
     }
 
     #endregion
@@ -265,8 +269,6 @@ public abstract partial class SharedBlinkingSystem
                 nameof(BlinkableComponent.ManuallyClosed),
                 nameof(BlinkableComponent.NextOpenEyesRequiresEffects));
         }
-
-        Log.Debug($"Changed eyes state from {oldState} to {newState} for {Name(ent)}. Tick: {_timing.CurTick}");
 
         if (newState == EyesState.Closed)
             RaiseLocalEvent(ent, new EntityClosedEyesEvent(manual, useEffects, customBlinkDuration));

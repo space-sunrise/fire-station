@@ -1,29 +1,32 @@
-﻿using Content.Server.Flash;
+﻿using Content.Server.Actions;
 using Content.Shared._Scp.Blinking;
-using Content.Shared.Flash;
 
 namespace Content.Server._Scp.Blinking;
 
 public sealed class BlinkingSystem : SharedBlinkingSystem
 {
+    [Dependency] private readonly ActionsSystem _actions = default!;
+
     public override void Initialize()
     {
         base.Initialize();
 
+        SubscribeLocalEvent<BlinkableComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<BlinkableComponent, EntityUnpausedEvent>(OnUnpaused);
+    }
 
-        SubscribeLocalEvent<BlinkableComponent, FlashAttemptEvent>(OnFlash);
+    private void OnMapInit(Entity<BlinkableComponent> ent, ref MapInitEvent _)
+    {
+        _actions.AddAction(ent, ref ent.Comp.EyeToggleActionEntity, ent.Comp.EyeToggleAction);
+        _actions.SetUseDelay(ent.Comp.EyeToggleActionEntity, BlinkingDuration);
+        Dirty(ent);
+
+        ResetBlink(ent.AsNullable(), predicted: false);
     }
 
     private void OnUnpaused(Entity<BlinkableComponent> ent, ref EntityUnpausedEvent args)
     {
         ent.Comp.NextBlink += args.PausedTime;
         Dirty(ent);
-    }
-
-    private static void OnFlash(Entity<BlinkableComponent> ent, ref FlashAttemptEvent args)
-    {
-        if (ent.Comp.State == EyesState.Closed)
-            args.Cancelled = true;
     }
 }
