@@ -1,14 +1,34 @@
-# Служба безопасности внешней административной зоны
+# Руководство
+
+- type: loadoutGroup
+  id: SecurityCommanderWeapon
+  name: loadout-group-weapon
+  loadouts:
+  - LoadoutWeaponPistolACP14
+  - LoadoutWeaponRevolverMatebaNew
+
+# Комендантский отряд
+
+- type: loadoutGroup
+  id: CommandantSquadLeaderEars
+  name: loadout-group-ears
+  loadouts:
+  - LoadoutClothingHeadsetAltExternalAdministrativeZoneSecurityService
+
+- type: loadoutGroup
+  id: CommandantSquadLeaderKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardLightContainmentZoneSecurityCommandant
 
 - type: loadoutGroup
   id: GuardHead
   name: loadout-group-head
-  minLimit: 0
   loadouts:
   - GuardHelmet
   - GuardHelmet2
-  - SecurityBeret
-  - SecurityHat
+  - GuardBeret
+  - GuardHat
 
 - type: loadoutGroup
   id: GuardJumpsuit
@@ -49,38 +69,109 @@
 - type: loadoutGroup
   id: GuardCadetHead
   name: loadout-group-head
-  minLimit: 0
   loadouts:
   - GuardHelmet
   - GuardHelmet2
 
 - type: loadoutGroup
-  id: TrinketsHeavyContainmentSecurityService
-  name: loadout-group-trinkets
-  minLimit: 0
-  maxLimit: 3
+  id: CommandantSquadWeaponPrimary
+  name: loadout-group-weapon
   loadouts:
-  - RadioHandheldHeavyContainmentSecurityService
-  - SecurityBodycam
-  - SecurityPepperspray
-  - SecurityWhistle
-  - SecurityTourniquet
-  - SecurityWeaponMeleeNeedle
-  # - SecurityHoloprojector # Fire edit
+  - LoadoutWeaponSubMachineGunMP7
+  - LoadoutWeaponShotgunRiot
 
 - type: loadoutGroup
-  id: TrinketsExternalAdministrativeZoneSecurityService
+  id: CommandantSquadWeaponSecondary
+  name: loadout-group-weapon-secondary
+  loadouts:
+  - LoadoutWeaponTaser
+
+# Отряд специального назначения
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadLeaderEars
+  name: loadout-group-ears
+  loadouts:
+  - LoadoutClothingHeadsetAltHeavyContainmentSecurityService
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadLeaderKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardHeavyContainmentZoneCommandant
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadWeaponPrimary
+  name: loadout-group-weapon
+  loadouts:
+  - LoadoutWeaponSubMachineGunMP5
+  - LoadoutWeaponShotgunSPAS12
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadWeaponSecondary
+  name: loadout-group-weapon-secondary
+  loadouts:
+  - LoadoutWeaponPistolG22Auto
+  - LoadoutWeaponTaser
+
+# Общее для СБ
+
+- type: loadoutGroup
+  id: SquadLeaderHead
+  name: loadout-group-head
+  loadouts:
+  - LoadoutClothingHeadHatCapLeatherSquadLeader
+  - LoadoutClothingHeadCapBlackSquadLeader
+  - LoadoutClothingHeadHatCapBlackSquadLeader
+  - GuardBeret
+
+- type: loadoutGroup
+  id: SquadLeaderJumpsuit
+  name: loadout-group-jumpsuit
+  loadouts:
+  - LoadoutClothingUniformJumpsuitSquadLeader
+  - LoadoutClothingUniformJumpsuitSquadLeaderAlt
+
+- type: loadoutGroup
+  id: SquadLeaderOuterClothing
+  name: loadout-group-outer-clothing
+  loadouts:
+  - GuardArmorVest
+  - GuardArmorVest2
+  - LoadoutClothingOuterCoatSquadLeader
+
+- type: loadoutGroup
+  id: SquadLeaderGloves
+  name: loadout-group-gloves
+  loadouts:
+  - GuardGloves
+  - GuardGlovesWinter
+  - LoadoutClothingHandsGlovesColorBlackAlt
+
+- type: loadoutGroup
+  id: CommonSecurityEyes
+  name: loadout-group-eyes
+  loadouts:
+  - LoadoutClothingEyesGlassesSecurityGuard
+
+- type: loadoutGroup
+  id: CommonSecurityPDA
+  name: loadout-group-pda
+  loadouts:
+  - LoadoutScpSecurityPDA
+
+- type: loadoutGroup
+  id: CommonSecurityTrinkets
   name: loadout-group-trinkets
   minLimit: 0
   maxLimit: 3
   loadouts:
-  - RadioHandheldExternalAdministrativeZoneSecurityService
   - SecurityBodycam
   - SecurityPepperspray
   - SecurityWhistle
   - SecurityTourniquet
-  - SecurityWeaponMeleeNeedle
-  # - SecurityHoloprojector # Fire edit
+  - LoadoutFlashlightSeclite
+  - SecStar
 
 - type: loadoutGroup
   id: SecurityRadio
@@ -92,8 +183,7 @@
 
 - type: loadoutGroup
   id: EthicsCommitteeRepresentativeJumpsuit
-  name: loadout-group-jumpsuit # Fire
-  minLimit: 1
+  name: loadout-group-jumpsuit
   loadouts:
   - EthicsCommitteeRepresentativeJumpsuit
   - EthicsCommitteeRepresentativeJumpskirt
@@ -101,9 +191,7 @@
 
 - type: loadoutGroup
   id: EthicsCommitteeRepresentativeOuterClothing
-  name: loadout-group-outerclothing # Fire edit
-  minLimit: 1
-  maxLimit: 1
+  name: loadout-group-outerclothing
   loadouts:
   - EthicsCommitteeRepresentativeCoat
   - EthicsCommitteeRepresentativeCoatOpen
