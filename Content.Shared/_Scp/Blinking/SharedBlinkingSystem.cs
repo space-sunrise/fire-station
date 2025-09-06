@@ -6,6 +6,7 @@ using Content.Shared._Scp.Watching;
 using Content.Shared.Alert;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
+using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Blinking;
@@ -178,12 +179,12 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         return _timing.CurTime < ent.Comp.BlinkEndTime;
     }
 
-    public void ForceBlind(Entity<BlinkableComponent?> ent, TimeSpan duration)
+    public void ForceBlind(Entity<BlinkableComponent?> ent, TimeSpan duration, bool predicted = true)
     {
         if (_mobState.IsIncapacitated(ent))
             return;
 
-        TrySetEyelids(ent.Owner, EyesState.Closed, customBlinkDuration: duration);
+        TrySetEyelids(ent.Owner, EyesState.Closed, false, predicted, true, duration);
     }
 
     #endregion
@@ -228,20 +229,26 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     }
 }
 
-public sealed class EntityOpenedEyesEvent(bool manual, TimeSpan? customNextTimeBlinkInterval = null) : EntityEventArgs
+public sealed class EntityOpenedEyesEvent(bool manual = false, bool useEffects = false, TimeSpan? customNextTimeBlinkInterval = null) : EntityEventArgs
 {
     public readonly bool Manual = manual;
+    public readonly bool UseEffects = useEffects;
     public readonly TimeSpan? CustomNextTimeBlinkInterval = customNextTimeBlinkInterval;
 }
 
-public sealed class EntityClosedEyesEvent(bool manual, TimeSpan? customBlinkDuration = null) : EntityEventArgs
+public sealed class EntityClosedEyesEvent(bool manual = false, bool useEffects = false, TimeSpan? customBlinkDuration = null) : EntityEventArgs
 {
     public readonly bool Manual = manual;
+    public readonly bool UseEffects = useEffects;
     public readonly TimeSpan? CustomBlinkDuration = customBlinkDuration;
 }
 
-public sealed class EntityEyesStateChanged(EyesState oldState, EyesState newState) : EntityEventArgs
+[Serializable, NetSerializable]
+public sealed class EntityEyesStateChanged(EyesState oldState, EyesState newState, bool manual = false, bool useEffects = false, NetEntity? netEntity = null) : EntityEventArgs
 {
     public readonly EyesState OldState = oldState;
     public readonly EyesState NewState = newState;
+    public readonly bool Manual = manual;
+    public readonly bool UseEffects = useEffects;
+    public readonly NetEntity? NetEntity = netEntity;
 }

@@ -29,6 +29,8 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         SubscribeLocalEvent<BlinkableComponent, LocalPlayerAttachedEvent>(OnAttached);
         SubscribeLocalEvent<BlinkableComponent, LocalPlayerDetachedEvent>(OnDetached);
 
+        SubscribeNetworkEvent<EntityEyesStateChanged>(OnEyesStateChanged);
+
         _overlay = new BlinkingOverlay();
     }
 
@@ -36,14 +38,14 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     {
         base.OnOpenedEyes(ent, ref args);
 
-        OpenEyes(ent, args.Manual);
+        OpenEyes(ent, args.Manual, args.UseEffects);
     }
 
     protected override void OnClosedEyes(Entity<BlinkableComponent> ent, ref EntityClosedEyesEvent args)
     {
         base.OnClosedEyes(ent, ref args);
 
-        CloseEyes(ent, args.Manual);
+        CloseEyes(ent, args.Manual, args.UseEffects);
     }
 
     private void OnAttached(Entity<BlinkableComponent> ent, ref LocalPlayerAttachedEvent args)
@@ -62,35 +64,68 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         _overlayMan.RemoveOverlay(_overlay);
     }
 
-    private void OpenEyes(Entity<BlinkableComponent> ent, bool manual)
+    /// <summary>
+    /// Метод, обрабатывающий сетевой ивент смены состояния глаз.
+    /// Используется для не предугадываемых со стороны клиента изменений состояний глаз, требующих эффектов.
+    /// Закрывает или открывает глаза на экране в зависимости от содержимого ивента.
+    /// </summary>
+    private void OnEyesStateChanged(EntityEyesStateChanged ev)
     {
-        if (!TryEyes(ent))
+        if (!ev.NetEntity.HasValue)
             return;
 
-        if (!manual && !IsScpNearby(ent))
+        var ent = GetEntity(ev.NetEntity);
+
+        if (!TryComp<BlinkableComponent>(ent, out var blinkable))
             return;
 
-        Logger.Debug($"Opened, {_timing.IsFirstTimePredicted}, {_timing.CurTick}");
+        if (ev.NewState == EyesState.Closed)
+            CloseEyes((ent.Value, blinkable), ev.Manual, ev.UseEffects);
+        else
+            OpenEyes((ent.Value, blinkable), ev.Manual, ev.UseEffects);
+    }
+
+    /// <summary>
+    /// Открывает глаза персонажа, проигрывает специфичный звук открытия глаз.
+    /// Сама анимация открытия происходит в оверлее.
+    /// </summary>
+    /// <param name="ent">Сущность, которой будут открыты глаза</param>
+    /// <param name="manual">Глаза открыты вручную?</param>
+    /// <param name="useEffects">Требуется ли использовать эффекты?</param>
+    private void OpenEyes(Entity<BlinkableComponent> ent, bool manual = false, bool useEffects = false)
+    {
+        if (!TryEyes(ent, manual, useEffects))
+            return;
 
         _overlay.OpenEyes();
         _audio.PlayGlobal(EyeOpenSound, ent);
     }
 
-    private void CloseEyes(Entity<BlinkableComponent> ent, bool manual)
+    /// <summary>
+    /// Закрывает глаза персонажа, проигрывает специфичный звук закрытия глаз.
+    /// Сама анимация закрытия происходит в оверлее.
+    /// </summary>
+    /// <param name="ent">Сущность, которой будут закрыты глаза</param>
+    /// <param name="manual">Глаза закрыты вручную?</param>
+    /// <param name="useEffects">Требуется ли использовать эффекты?</param>
+    private void CloseEyes(Entity<BlinkableComponent> ent, bool manual = false, bool useEffects = false)
     {
-        if (!TryEyes(ent))
+        if (!TryEyes(ent, manual, useEffects))
             return;
-
-        if (!manual && !IsScpNearby(ent))
-            return;
-
-        Logger.Debug($"Closed, {_timing.IsFirstTimePredicted}, {_timing.CurTick}");
 
         _overlay.CloseEyes();
         _audio.PlayGlobal(EyeCloseSound, ent);
     }
 
-    private bool TryEyes(Entity<BlinkableComponent> ent)
+    /// <summary>
+    /// Клиентский метод проверки на возможность включить эффекты смены закрытия или открытия глаз.
+    /// Содержит общие одинаковые проверки для закрытия и открытия глаз.
+    /// </summary>
+    /// <param name="ent">Сущность, для которой делается проверка.</param>
+    /// <param name="manual">Глаза открыты/закрыты вручную?</param>
+    /// <param name="useEffects">Требуется ли использовать эффекты?</param>
+    /// <returns></returns>
+    private bool TryEyes(Entity<BlinkableComponent> ent, bool manual = false, bool useEffects = false)
     {
         if (!_timing.IsFirstTimePredicted)
             return false;
@@ -98,6 +133,17 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         if (_player.LocalEntity != ent)
             return false;
 
+        // Основная проверка, которая определяет наличие эффектов.
+        // Если ничего из этого не выполняется, значит эффекты не нужны
+        if (!manual && !IsScpNearby(ent) && !useEffects)
+            return false;
+
+        // Странная конструкция, которая исправляет странную проблему.
+        // Почему-то ивенты смены состояния глаз, закрытия, открытия на одного ентити вызываются несколько раз несколько тиков подряд.
+        // Это не перекрывается IsFirstTimePredicted, так как все происходит в разных тиках. Как на сервере, так и на клиенте.
+        // Причины этого я понять не смог, поэтому сделал этот костыль.
+        // Он предотвращает спам звуками и анимацией при смене состояния глаз. Эта логика(пока) используется только на клиенте.
+        // В других местах проблем с этим не возникает.
         if (ent.Comp.LastClientSideVisualsAttemptTick == _timing.CurTick
             || ent.Comp.LastClientSideVisualsAttemptTick == _timing.CurTick - 1)
         {

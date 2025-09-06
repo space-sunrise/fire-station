@@ -5,22 +5,60 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Blinking;
 
+/// <summary>
+/// Компонент, отвечающий за возможность моргать, закрыть и открывать глаза.
+/// Позволяет систем некоторых SCP объектов взаимодействовать с ними.
+/// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class BlinkableComponent : Component
 {
+    /// <summary>
+    /// Время следующего моргания.
+    /// </summary>
     [ViewVariables, AutoNetworkedField]
     public TimeSpan NextBlink;
 
+    /// <summary>
+    /// Время окончания моргания.
+    /// То есть момент открытия глаз после их закрытия из-за моргания.
+    /// </summary>
     [ViewVariables, AutoNetworkedField]
     public TimeSpan BlinkEndTime;
 
+    /// <summary>
+    /// Дополнительное время между морганиями.
+    /// Может быть установлено какой-нибудь системой в качестве усиления персонажа
+    /// </summary>
     [ViewVariables, AutoNetworkedField]
     public float AdditionalBlinkingTime;
 
+    /// <summary>
+    /// Прототип алерта слева от чата.
+    /// </summary>
     [DataField]
     public ProtoId<AlertPrototype> BlinkingAlert = "Blinking";
 
     #region Eye closing
+
+    /// <summary>
+    /// Закрыты ли глаза
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public EyesState State = EyesState.Opened;
+
+    /// <summary>
+    /// Закрыты ли глаза вручную?
+    /// Обозначает, что следующее открытие глаз требуется сделать так же вручную.
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public bool ManuallyClosed;
+
+    /// <summary>
+    /// Нужно ли показывать игроку эффекты при следующем открытии глаз.
+    /// Используется, когда глаза игрока были закрыты через код
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public bool NextOpenEyesRequiresEffects;
 
     /// <summary>
     /// Айди прототипа способности закрыть глаза
@@ -32,15 +70,6 @@ public sealed partial class BlinkableComponent : Component
     /// Сущность способности закрыть глаза вручную
     /// </summary>
     public EntityUid? EyeToggleActionEntity;
-
-    /// <summary>
-    /// Закрыты ли глаза
-    /// </summary>
-    [ViewVariables, AutoNetworkedField]
-    public EyesState State = EyesState.Opened;
-
-    [ViewVariables, AutoNetworkedField]
-    public bool ManuallyClosed;
 
     /// <summary>
     /// Сохраненный цвет глаз персонажа.
@@ -71,5 +100,8 @@ public enum EyesState : byte
     Opened,
 }
 
+/// <summary>
+/// Компонент, позволяющий видеть иконки рядом с персонажами, если у них закрыты глаза.
+/// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class ShowBlinkableComponent : Component;

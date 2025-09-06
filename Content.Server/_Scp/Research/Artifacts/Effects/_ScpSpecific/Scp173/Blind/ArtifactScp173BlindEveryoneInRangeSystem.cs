@@ -10,6 +10,6 @@ public sealed class ArtifactScp173BlindEveryoneInRangeSystem : BaseXAESystem<Art
 
     protected override void OnActivated(Entity<ArtifactScp173BlindEveryoneInRangeComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
-        _scp173.BlindEveryoneInRange(ent, ent.Comp.Time);
+        _scp173.BlindEveryoneInRange(ent, ent.Comp.Time, false);
     }
 }

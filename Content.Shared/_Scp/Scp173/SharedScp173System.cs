@@ -122,10 +122,7 @@ public abstract class SharedScp173System : EntitySystem
 
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Performer, ent.Comp.StartBlindTime, new Scp173StartBlind(), args.Performer)
         {
-            NeedHand = false,
-            BreakOnMove = false,
-            BreakOnHandChange = false,
-            BreakOnDamage = false,
+            Hidden = true,
             RequireCanInteract = false,
         };
 
@@ -140,7 +137,9 @@ public abstract class SharedScp173System : EntitySystem
         if (!CanBlind(ent))
             return;
 
-        BlindEveryoneInRange(ent, ent.Comp.BlindnessTime);
+        // По причине акшена это не предиктится.
+        // Активация акшена у игрока не предугадывается другими игроками. Параша
+        BlindEveryoneInRange(ent, ent.Comp.BlindnessTime, false);
         args.Handled = true;
     }
 
@@ -150,13 +149,13 @@ public abstract class SharedScp173System : EntitySystem
 
     #region Public API
 
-    public void BlindEveryoneInRange(EntityUid scp, TimeSpan time)
+    public void BlindEveryoneInRange(EntityUid scp, TimeSpan time, bool predicted = true)
     {
         var eyes = Watching.GetWatchers(scp);
 
         foreach (var eye in eyes)
         {
-            _blinking.ForceBlind(eye, time);
+            _blinking.ForceBlind(eye, time, predicted);
         }
 
         // TODO: Add sound.

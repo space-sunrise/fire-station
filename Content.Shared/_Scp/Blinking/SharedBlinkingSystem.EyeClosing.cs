@@ -141,8 +141,15 @@ public abstract partial class SharedBlinkingSystem
     /// <param name="ent">Сущность, способная моргать</param>
     /// <param name="newState">Устанавливаемое состояние глаз. Закрыть/открыть</param>
     /// <param name="manual">Закрыли ли глаза вручную?</param>
+    /// <param name="predicted">Будет ли ивент смены состояния глаз вызван локально(при true) или как network event(при false)</param>
+    /// <param name="useEffects">Будут ли использованы эффекты: черный оверлей, звуки?</param>
     /// <param name="customBlinkDuration">Если нужно вручную задать время, которое игрок проведет с закрытыми глазами</param>
-    public bool TrySetEyelids(Entity<BlinkableComponent?> ent, EyesState newState, bool manual = false, TimeSpan? customBlinkDuration = null)
+    public bool TrySetEyelids(Entity<BlinkableComponent?> ent,
+        EyesState newState,
+        bool manual = false,
+        bool predicted = true,
+        bool useEffects = false,
+        TimeSpan? customBlinkDuration = null)
     {
         if (!Resolve(ent, ref ent.Comp))
             return false;
@@ -153,7 +160,7 @@ public abstract partial class SharedBlinkingSystem
         if (!CanToggleEyes((ent.Owner, ent.Comp), newState))
             return false;
 
-        SetEyelids((ent.Owner, ent.Comp), newState, manual, customBlinkDuration);
+        SetEyelids((ent.Owner, ent.Comp), newState, manual, predicted, useEffects, customBlinkDuration);
 
         return true;
     }
@@ -227,29 +234,40 @@ public abstract partial class SharedBlinkingSystem
     /// <param name="ent">Сущность, которой будет установлено состояние</param>
     /// <param name="newState">Новое состояние глаз, которое мы хотим установить</param>
     /// <param name="manual">Устанавливается вручную(игрок нажал на кнопку закрытия глаз)?</param>
+    /// <param name="predicted">Будет ли ивент смены состояния глаз вызван локально(при true) или как network event(при false)</param>
+    /// <param name="useEffects">Будут ли использованы эффекты: черный оверлей, звуки?</param>
     /// <param name="customBlinkDuration">Если нужно использовать какое-то отличное от стандарта время, которое игрок проведет с закрытыми глазами</param>
     /// <remarks>
     /// Поле manual влияет на то, будут ли глаза автоматически открыты после КД.
     /// Если глаза закрыты вручную, то их нужно будет и открывать вручную
     /// </remarks>
-    private void SetEyelids(Entity<BlinkableComponent> ent, EyesState newState, bool manual = false, TimeSpan? customBlinkDuration = null)
+    private void SetEyelids(Entity<BlinkableComponent> ent,
+        EyesState newState,
+        bool manual = false,
+        bool predicted = true,
+        bool useEffects = false,
+        TimeSpan? customBlinkDuration = null)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
         var oldState = ent.Comp.State;
+        var openEyesRequiresEffects = ent.Comp.NextOpenEyesRequiresEffects;
         ent.Comp.State = newState;
-        ent.Comp.ManuallyClosed = manual && newState == EyesState.Closed;
-        Dirty(ent);
+        ent.Comp.ManuallyClosed = manual;
+        ent.Comp.NextOpenEyesRequiresEffects = useEffects && newState == EyesState.Closed;
+        DirtyFields(ent.AsNullable(),
+            null,
+            nameof(BlinkableComponent.State),
+            nameof(BlinkableComponent.ManuallyClosed),
+            nameof(BlinkableComponent.NextOpenEyesRequiresEffects));
 
         if (newState == EyesState.Closed)
-            RaiseLocalEvent(ent, new EntityClosedEyesEvent(manual, customBlinkDuration));
+            RaiseLocalEvent(ent, new EntityClosedEyesEvent(manual, useEffects, customBlinkDuration));
         else
-            RaiseLocalEvent(ent, new EntityOpenedEyesEvent(manual, customBlinkDuration));
+            RaiseLocalEvent(ent, new EntityOpenedEyesEvent(manual, useEffects || openEyesRequiresEffects, customBlinkDuration));
 
-        RaiseLocalEvent(ent, new EntityEyesStateChanged(oldState, newState));
-
-        Logger.Debug($"Event started, {_timing.IsFirstTimePredicted}, {_timing.CurTick}");
+        if (predicted)
+            RaiseLocalEvent(ent, new EntityEyesStateChanged(oldState, newState, manual));
+        else
+            RaiseNetworkEvent(new EntityEyesStateChanged(oldState, newState, manual, useEffects, GetNetEntity(ent)));
 
         if (ent.Comp.EyeToggleActionEntity != null)
         {

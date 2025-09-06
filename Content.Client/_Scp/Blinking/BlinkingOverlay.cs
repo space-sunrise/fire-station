@@ -6,6 +6,9 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Blinking;
 
+/// <summary>
+/// Оверлей, отвечающий за графику и анимации моргания персонажа.
+/// </summary>
 public sealed class BlinkingOverlay : Overlay
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
@@ -15,12 +18,18 @@ public sealed class BlinkingOverlay : Overlay
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
     private readonly ShaderInstance _shader;
+    private static readonly ProtoId<ShaderPrototype> ShaderProtoId = "BlinkingEffect";
 
     private bool _isAnimating;
 
     private float _blinkingProgress;
     private float _targetProgress;
-    private float _animationDuration = 5f; // 0.5 секунды, чтобы не было слишком долго
+
+    /// <summary>
+    /// Длина анимации моргания.
+    /// Влияет как на открытие, так и на закрытие глаз.
+    /// </summary>
+    public float AnimationDuration = 5f;
 
     private float _timer;
 
@@ -29,7 +38,7 @@ public sealed class BlinkingOverlay : Overlay
         IoCManager.InjectDependencies(this);
 
         ZIndex = 999;
-        _shader = _prototype.Index<ShaderPrototype>("BlinkingEffect").InstanceUnique();
+        _shader = _prototype.Index(ShaderProtoId).InstanceUnique();
     }
 
     protected override void FrameUpdate(FrameEventArgs args)
@@ -40,7 +49,7 @@ public sealed class BlinkingOverlay : Overlay
             return;
 
         _timer += args.DeltaSeconds;
-        var t = Math.Clamp(_timer / _animationDuration, 0f, 1f);
+        var t = Math.Clamp(_timer / AnimationDuration, 0f, 1f);
 
         // Линейная интерполяция между стартовым и целевым значением
         _blinkingProgress = MathHelper.Lerp(_blinkingProgress, _targetProgress, t);
@@ -74,6 +83,9 @@ public sealed class BlinkingOverlay : Overlay
         worldHandle.UseShader(null);
     }
 
+    /// <summary>
+    /// Открывает глаза в оверлее.
+    /// </summary>
     public void OpenEyes()
     {
         _targetProgress = 0f;
@@ -81,6 +93,9 @@ public sealed class BlinkingOverlay : Overlay
         _isAnimating = true;
     }
 
+    /// <summary>
+    /// Закрывает глаза в оверлее.
+    /// </summary>
     public void CloseEyes()
     {
         _targetProgress = 1f;
@@ -88,6 +103,9 @@ public sealed class BlinkingOverlay : Overlay
         _isAnimating = true;
     }
 
+    /// <summary>
+    /// Проверяет, закрыты ли глаза персонажа в оверлее.
+    /// </summary>
     public bool AreEyesClosed()
     {
         return MathHelper.CloseTo(_blinkingProgress, 1f);
