@@ -84,7 +84,7 @@ namespace Content.Client.Eye.Blinding
             if (!_blindableComponent.GraceFrame)
             {
                 _blindableComponent.LightSetup = true; // Ok we touched the lights
-                _lightManager.Enabled = false;
+                //_lightManager.Enabled = false;
             } else
             {
                 _blindableComponent.GraceFrame = false;

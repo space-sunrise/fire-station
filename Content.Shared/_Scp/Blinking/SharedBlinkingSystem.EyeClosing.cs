@@ -28,17 +28,16 @@ public abstract partial class SharedBlinkingSystem
 
     #region Event handlers
 
-    private void OnMapInit(Entity<BlinkableComponent> ent, ref MapInitEvent args)
+    private void OnMapInit(Entity<BlinkableComponent> ent, ref MapInitEvent _)
     {
         _actions.AddAction(ent, ref ent.Comp.EyeToggleActionEntity, ent.Comp.EyeToggleAction);
+        _actions.SetUseDelay(ent.Comp.EyeToggleActionEntity, BlinkingDuration);
         Dirty(ent);
 
-        _actions.SetUseDelay(ent.Comp.EyeToggleActionEntity, BlinkingDuration);
-
-        ResetBlink(ent.Owner);
+        ResetBlink(ent.AsNullable(), predicted: false);
     }
 
-    private void OnShutdown(Entity<BlinkableComponent> ent, ref ComponentShutdown args)
+    private void OnShutdown(Entity<BlinkableComponent> ent, ref ComponentShutdown _)
     {
         _actions.RemoveAction(ent.Owner, ent.Comp.EyeToggleActionEntity);
 
@@ -61,6 +60,9 @@ public abstract partial class SharedBlinkingSystem
         if (args.Handled)
             return;
 
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         // Нельзя закрыть глаза, если нас ослепили.
         // Потому что это приведет к странному багу
         if (HasComp<FlashedComponent>(ent))
@@ -76,7 +78,7 @@ public abstract partial class SharedBlinkingSystem
 
     private void OnTrySee(Entity<BlinkableComponent> ent, ref CanSeeAttemptEvent args)
     {
-        if (ent.Comp.State != EyesState.Closed)
+        if (ent.Comp.State == EyesState.Opened)
             return;
 
         if (!ent.Comp.ManuallyClosed && !IsScpNearby(ent))
@@ -111,7 +113,6 @@ public abstract partial class SharedBlinkingSystem
 
         blinkableComponent.CachedEyesColor = ent.Comp.EyeColor;
         ent.Comp.EyeColor = DarkenSkinColor(ent.Comp.SkinColor);
-
         Dirty(ent);
     }
 
@@ -127,7 +128,6 @@ public abstract partial class SharedBlinkingSystem
             return;
 
         ent.Comp.EyeColor = blinkableComponent.CachedEyesColor.Value;
-
         Dirty(ent);
     }
 
@@ -225,7 +225,10 @@ public abstract partial class SharedBlinkingSystem
         if (_timing.CurTime < ent.Comp.BlinkEndTime)
             return false;
 
-        return TrySetEyelids(ent.Owner, EyesState.Opened);
+        if (!TrySetEyelids(ent.Owner, EyesState.Opened))
+            return false;
+
+        return true;
     }
 
     /// <summary>
@@ -253,11 +256,17 @@ public abstract partial class SharedBlinkingSystem
         ent.Comp.State = newState;
         ent.Comp.ManuallyClosed = manual;
         ent.Comp.NextOpenEyesRequiresEffects = useEffects && newState == EyesState.Closed;
-        DirtyFields(ent.AsNullable(),
-            null,
-            nameof(BlinkableComponent.State),
-            nameof(BlinkableComponent.ManuallyClosed),
-            nameof(BlinkableComponent.NextOpenEyesRequiresEffects));
+
+        if (!predicted)
+        {
+            DirtyFields(ent.AsNullable(),
+                null,
+                nameof(BlinkableComponent.State),
+                nameof(BlinkableComponent.ManuallyClosed),
+                nameof(BlinkableComponent.NextOpenEyesRequiresEffects));
+        }
+
+        Log.Debug($"Changed eyes state from {oldState} to {newState} for {Name(ent)}. Tick: {_timing.CurTick}");
 
         if (newState == EyesState.Closed)
             RaiseLocalEvent(ent, new EntityClosedEyesEvent(manual, useEffects, customBlinkDuration));

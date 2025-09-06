@@ -52,9 +52,33 @@ public sealed class PredictedRandomSystem : EntitySystem
         return _random.NextDouble();
     }
 
+    public double NextDouble(EntityUid uid)
+    {
+        SetSeed(uid.Id);
+        return _random.NextDouble();
+    }
+
+    public double NextDouble(EntityUid uid, float minValue, float maxValue)
+    {
+        SetSeed(GetNetEntity(uid).Id);
+        return _random.NextDouble() * (maxValue - minValue) + minValue;
+    }
+
+    public float NextFloat(EntityUid uid)
+    {
+        SetSeed(GetNetEntity(uid).Id);
+        return _random.NextFloat();
+    }
+
     public float NextFloat(float minValue, float maxValue)
     {
         SetSeed();
+        return _random.NextFloat() * (maxValue - minValue) + minValue;
+    }
+
+    public float NextFloat(EntityUid uid, float minValue, float maxValue)
+    {
+        SetSeed(GetNetEntity(uid).Id);
         return _random.NextFloat() * (maxValue - minValue) + minValue;
     }
 

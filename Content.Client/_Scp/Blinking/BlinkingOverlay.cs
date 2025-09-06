@@ -29,7 +29,7 @@ public sealed class BlinkingOverlay : Overlay
     /// Длина анимации моргания.
     /// Влияет как на открытие, так и на закрытие глаз.
     /// </summary>
-    public float AnimationDuration = 5f;
+    public float AnimationDuration = 2f;
 
     private float _timer;
 

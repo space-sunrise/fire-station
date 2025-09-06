@@ -1,6 +1,7 @@
 ﻿using Content.Shared.Alert;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Blinking;
@@ -94,10 +95,11 @@ public sealed partial class BlinkableComponent : Component
 /// В разных методах можно случайно использовать разные варианты комбинаций true/false к закрытым/открытым что приводит к непонятностям
 /// Enum намного более прост в понимании и такой код будет легко читаем
 /// </remarks>
+[Serializable, NetSerializable]
 public enum EyesState : byte
 {
-    Closed,
-    Opened,
+    Closed = 0,
+    Opened = 1,
 }
 
 /// <summary>

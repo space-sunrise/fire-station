@@ -77,7 +77,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         Dirty(ent);
 
         // Задаем время следующего моргания
-        var variance = _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds;
+        var variance = GetBlinkVariance(ent);
         SetNextBlink(ent.AsNullable(), args.CustomNextTimeBlinkInterval ?? BlinkingInterval, variance);
 
         // Как только глаза открыты, мы проверяем, слепы ли мы
@@ -123,7 +123,10 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         if (_timing.CurTime < ent.Comp.NextBlink)
             return false;
 
-        return TrySetEyelids(ent.Owner, EyesState.Closed, customBlinkDuration: customDuration);
+        if (!TrySetEyelids(ent, EyesState.Closed, customBlinkDuration: customDuration))
+            return false;
+
+        return true;
     }
 
     /// <summary>
@@ -133,7 +136,8 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     /// <param name="ent">Моргающий</param>
     /// <param name="interval">Через сколько будет следующее моргание</param>
     /// <param name="variance">Плюс-минус время следующего моргания, чтобы вся станция не моргала в один такт</param>
-    public void SetNextBlink(Entity<BlinkableComponent?> ent, TimeSpan interval, double variance = 0)
+    /// <param name="predicted">Предугадывается ли клиентом этот вызов метода? Если нет, отправляет клиенту стейт с сервера.</param>
+    public void SetNextBlink(Entity<BlinkableComponent?> ent, TimeSpan interval, float variance = 0, bool predicted = true)
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
@@ -141,17 +145,18 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         ent.Comp.NextBlink = _timing.CurTime + interval + TimeSpan.FromSeconds(variance) + TimeSpan.FromSeconds(ent.Comp.AdditionalBlinkingTime);
         ent.Comp.AdditionalBlinkingTime = 0f;
 
-        DirtyFields(ent.AsNullable(), null, nameof(BlinkableComponent.NextBlink), nameof(BlinkableComponent.AdditionalBlinkingTime));
+        if (!predicted)
+            DirtyFields(ent, null, nameof(BlinkableComponent.NextBlink), nameof(BlinkableComponent.AdditionalBlinkingTime));
     }
 
-    public void ResetBlink(Entity<BlinkableComponent?> ent, bool useVariance = true)
+    public void ResetBlink(Entity<BlinkableComponent?> ent, bool useVariance = true, bool predicted = true)
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
 
         // Если useVariance == false, то variance = 0
-        var variance = useVariance ? _random.NextDouble() * BlinkingIntervalVariance.TotalSeconds * 2 - BlinkingIntervalVariance.TotalSeconds : 0;
-        SetNextBlink(ent, BlinkingInterval, variance);
+        var variance = useVariance ? GetBlinkVariance(ent) : 0;
+        SetNextBlink(ent, BlinkingInterval, variance, predicted);
     }
 
     #endregion
@@ -185,6 +190,11 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
             return;
 
         TrySetEyelids(ent.Owner, EyesState.Closed, false, predicted, true, duration);
+    }
+
+    private float GetBlinkVariance(EntityUid ent)
+    {
+        return _random.NextFloat(ent, 0, (float)BlinkingIntervalVariance.TotalSeconds);
     }
 
     #endregion
