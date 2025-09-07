@@ -95,7 +95,6 @@ public sealed class BlinkingOverlay : Overlay
     /// </summary>
     public void OpenEyes()
     {
-        _blinkingProgress = 1f;
         _startProgress = _blinkingProgress;
         _targetProgress = 0f;
         _timer = 0f;
@@ -107,7 +106,6 @@ public sealed class BlinkingOverlay : Overlay
     /// </summary>
     public void CloseEyes()
     {
-        _blinkingProgress = 0f;
         _startProgress = _blinkingProgress;
         _targetProgress = 1f;
         _timer = 0f;

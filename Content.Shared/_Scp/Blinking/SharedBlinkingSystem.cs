@@ -8,6 +8,7 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Shared._Scp.Blinking;
 
@@ -142,6 +143,11 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
 
         if (!variance.HasValue)
             variance = TimeSpan.Zero;
+
+        DebugTools.Assert(interval >= TimeSpan.Zero, $"Blink interval must be >= 0, got {interval}");
+
+        if (interval < TimeSpan.Zero)
+            interval = TimeSpan.Zero;
 
         ent.Comp.NextBlink = _timing.CurTime + interval + variance.Value + ent.Comp.AdditionalBlinkingTime;
         ent.Comp.AdditionalBlinkingTime = TimeSpan.Zero;

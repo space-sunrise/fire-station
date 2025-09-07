@@ -1,6 +1,7 @@
 ﻿using Content.Server.Actions;
 using Content.Shared._Scp.Blinking;
 using Content.Shared.GameTicking;
+using Robust.Shared.Player;
 
 namespace Content.Server._Scp.Blinking;
 
@@ -35,6 +36,6 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
     private void OnPlayerSpawn(Entity<BlinkableComponent> ent, ref PlayerSpawnCompleteEvent args)
     {
-        RaiseNetworkEvent(new PlayerOpenEyesAnimation(GetNetEntity(ent)));
+        RaiseNetworkEvent(new PlayerOpenEyesAnimation(GetNetEntity(ent)), Filter.SinglePlayer(args.Player));
     }
 }

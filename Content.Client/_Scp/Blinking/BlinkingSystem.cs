@@ -98,7 +98,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         if (_player.LocalEntity != ent)
             return;
 
-        _overlay.AnimationDuration = 0.2f;
+        _overlay.AnimationDuration = 0.01f;
         _overlay.OnAnimationFinished += AnimationOpenEyes;
         _overlay.CloseEyes();
     }
