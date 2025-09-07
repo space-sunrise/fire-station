@@ -101,7 +101,7 @@
   id: ClothingUniformJumpsuitRegionalAdministration
 
 - type: entity
-  parent: IDCardMTFStandard
+  parent: KeyCardMtfBase
   id: RegionalAdministrationIDCard
   components:
   - type: Sprite
