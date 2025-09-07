@@ -18,6 +18,7 @@ public sealed partial class AdminFaxWindow : DefaultWindow
     public Action<NetEntity>? OnFollowFax;
 
     [Dependency] private readonly IResourceCache _resCache = default!;
+    [Dependency] private readonly ILocalizationManager _loc = default!; // Fire added
 
     public AdminFaxWindow()
     {
@@ -44,7 +45,7 @@ public sealed partial class AdminFaxWindow : DefaultWindow
         for (var i = 0; i < faxes.Count; i++)
         {
             var fax = faxes[i];
-            FaxSelector.AddItem($"{fax.Name} ({fax.Address})", i);
+            FaxSelector.AddItem($"{_loc.GetString(fax.Name)} ({fax.Address})", i); // Fire edit
             FaxSelector.SetItemMetadata(i, fax.Uid);
         }
     }
@@ -62,7 +63,7 @@ public sealed partial class AdminFaxWindow : DefaultWindow
                 if (!stateName.StartsWith("paper_stamp-"))
                     continue;
 
-                StampSelector.AddItem(stateName, i);
+                StampSelector.AddItem(_loc.GetString(stateName), i); // Fire edit
                 StampSelector.SetItemMetadata(i, stateName);
                 i++;
             }

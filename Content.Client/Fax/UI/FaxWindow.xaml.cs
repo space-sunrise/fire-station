@@ -51,7 +51,7 @@ public sealed partial class FaxWindow : DefaultWindow
         var Localekey = $"fax-label-{Regex.Replace(state.DeviceName, @"[*?!'%\s]", string.Empty).ToLower()}";
         if (Loc.GetString($"fax-label-{Regex.Replace(state.DeviceName, @"[*?!'%\s]", string.Empty).ToLower()}") == Localekey)
         {
-            FromLabel.Text = state.DeviceName;
+            FromLabel.Text = Loc.GetString(state.DeviceName); // Fire edit
         }
         else
         {
@@ -111,7 +111,7 @@ public sealed partial class FaxWindow : DefaultWindow
         {
             loc = Loc.GetString($"fax-label-{Regex.Replace(name, @"[*?!'%\s]", string.Empty).ToLower()}");
         }
-        PeerSelector.AddItem(loc);
+        PeerSelector.AddItem(Loc.GetString(name)); // Fire edit
         //Sunrise-End
         PeerSelector.SetItemMetadata(PeerSelector.ItemCount - 1, address);
         return PeerSelector.ItemCount - 1;
