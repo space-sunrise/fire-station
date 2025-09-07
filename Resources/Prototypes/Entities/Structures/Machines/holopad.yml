@@ -75,7 +75,7 @@
     listeningRange: 2.5
     speakerVolume: Speak
   - type: AccessReader
-    access: [[ "Command" ]]
+    access: [[ "Administration" ]] # Fire edit
   - type: ActivatableUI
     key: enum.HolopadUiKey.InteractionWindow
   - type: ActivatableUIRequiresPower

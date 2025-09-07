@@ -14,6 +14,8 @@
   - type: Clothing
     sprite: Clothing/Ears/Headsets/security.rsi
 
+# Служба безопасности внешней административной зоны
+
 - type: entity
   parent: [ClothingHeadset, BaseSecurityContraband]
   id: ClothingHeadsetFieldMedicalSpecialist
@@ -22,14 +24,12 @@
     containers:
       key_slots:
       - EncryptionKeyMedicalService
-      - EncryptionKeyHeavyContainmentSecurityService
+      - EncryptionKeyExternalAdministrativeZoneSecurityService
       - EncryptionKeyCommon
   - type: Sprite
     sprite: Clothing/Ears/Headsets/brigmedic.rsi
   - type: Clothing
     sprite: Clothing/Ears/Headsets/brigmedic.rsi
-
-# Служба безопасности внешней административной зоны
 
 - type: entity
   parent: [ClothingHeadset, BaseSecurityLawyerContraband]
