@@ -200,7 +200,7 @@ public abstract class SharedScp173System : EntitySystem
         if (IsInScpCage(uid, out var cage))
         {
             if (showPopups)
-                _popup.PopupClient(Loc.GetString("scp173-blind-failed-in-cage", ("name", Name(cage.Value))), uid, uid);
+                _popup.PopupClient(Loc.GetString("scp-cage-suppress-ability", ("container", Name(cage.Value))), uid, uid);
 
             return false;
         }

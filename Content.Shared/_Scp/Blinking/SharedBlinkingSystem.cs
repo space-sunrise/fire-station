@@ -55,7 +55,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         // Поэтому время, когда глаза будут открыты устанавливается максимальное
         // И игрок должен будет сам вручную их открыть.
         if (ent.Comp.ManuallyClosed)
-            ent.Comp.BlinkEndTime = TimeSpan.MaxValue;
+            ent.Comp.BlinkEndTime = TimeSpan.FromDays(1);
 
         // Так как персонажи моргают на протяжении всего времени, то для удобства игрока мы
         // Не добавляем никакие эффекты, если рядом нет SCP использующего механику зрения
@@ -195,6 +195,22 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     {
         if (_mobState.IsIncapacitated(ent))
             return;
+
+        if (!Resolve(ent, ref ent.Comp))
+            return;
+
+        // Если у персонажа уже закрыты глаза, то обновляем время
+        if (ent.Comp.State == EyesState.Closed)
+        {
+            ent.Comp.BlinkEndTime = _timing.CurTime + duration;
+
+            if (!predicted)
+                DirtyField(ent, nameof(BlinkableComponent.BlinkEndTime));
+
+            _actions.SetCooldown(ent.Comp.EyeToggleActionEntity, duration);
+
+            return;
+        }
 
         TrySetEyelids(ent.Owner, EyesState.Closed, false, predicted, true, duration);
     }

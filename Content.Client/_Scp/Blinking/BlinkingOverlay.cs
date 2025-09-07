@@ -20,7 +20,7 @@ public sealed class BlinkingOverlay : Overlay
     private readonly ShaderInstance _shader;
     private static readonly ProtoId<ShaderPrototype> ShaderProtoId = "BlinkingEffect";
 
-    private bool _isAnimating;
+    public bool IsAnimating { get; private set; }
 
     private float _blinkingProgress;
     private float _targetProgress;
@@ -51,7 +51,7 @@ public sealed class BlinkingOverlay : Overlay
     {
         base.FrameUpdate(args);
 
-        if (!_isAnimating)
+        if (!IsAnimating)
             return;
 
         _timer += args.DeltaSeconds;
@@ -62,7 +62,7 @@ public sealed class BlinkingOverlay : Overlay
         {
             _blinkingProgress = _targetProgress;
             _timer = 0f;
-            _isAnimating = false;
+            IsAnimating = false;
 
             OnAnimationFinished?.Invoke();
         }
@@ -98,7 +98,7 @@ public sealed class BlinkingOverlay : Overlay
         _startProgress = _blinkingProgress;
         _targetProgress = 0f;
         _timer = 0f;
-        _isAnimating = true;
+        IsAnimating = true;
     }
 
     /// <summary>
@@ -109,7 +109,7 @@ public sealed class BlinkingOverlay : Overlay
         _startProgress = _blinkingProgress;
         _targetProgress = 1f;
         _timer = 0f;
-        _isAnimating = true;
+        IsAnimating = true;
     }
 
     /// <summary>
