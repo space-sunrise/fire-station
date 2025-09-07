@@ -592,7 +592,7 @@ public sealed class FaxSystem : EntitySystem
 
         var faxName = Loc.GetString("fax-machine-popup-source-unknown");
         if (fromAddress != null && component.KnownFaxes.TryGetValue(fromAddress, out var fax)) // If message received from unknown fax address
-            faxName = fax;
+            faxName = Loc.GetString(fax); // Fire edit
 
         _popupSystem.PopupEntity(Loc.GetString("fax-machine-popup-received", ("from", faxName)), uid);
         _appearanceSystem.SetData(uid, FaxMachineVisuals.VisualState, FaxMachineVisualState.Printing);

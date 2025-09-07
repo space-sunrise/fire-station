@@ -54,14 +54,65 @@
   name: director fax machine
   suffix: NukeCodes
   components:
-  - type: Sprite
-    layers:
-      - state: icon
-        map: [ "base" ]
-        color: "#dbdbdb"
   - type: FaxMachine
     name: fax-name-complex-director-office
     receiveNukeCodes: true
     receiveStationGoal: true
   - type: StealTarget
     stealGroup: FaxMachineCaptain
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineChiefResearcher
+  name: chief researcher fax machine
+  components:
+  - type: FaxMachine
+    name: fax-name-chief-researcher-office
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineSecurityCommander
+  name: security commander fax machine
+  components:
+  - type: FaxMachine
+    name: fax-name-security-commander-office
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineChiefEngineer
+  name: chief engineer fax machine
+  components:
+  - type: FaxMachine
+    name: fax-name-chief-engineer-office
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachinePersonnelManager
+  name: personnel manager fax machine
+  components:
+  - type: FaxMachine
+    name: fax-name-personnel-manager-office
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineChiefMedicalOfficer
+  name: chief medical officer fax machine
+  components:
+  - type: FaxMachine
+    name: fax-name-chief-medical-officer-office
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineQuartermaster
+  name: quartermaster fax machine
+  components:
+  - type: FaxMachine
+    name: fax-name-quartermaster-office
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineEthicsCommitteeRep
+  name: ethics committee representative fax machine
+  components:
+  - type: FaxMachine
+    name: fax-name-ethics-committee-office
