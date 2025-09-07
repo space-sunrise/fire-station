@@ -6,6 +6,7 @@
   - type: Transform
   - type: TriggerOnSpawn
   - type: BlindOnTrigger
+    time: 7
   - type: SpawnOnTrigger
     proto: GrenadeFlashEffect
     predicted: true

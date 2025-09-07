@@ -144,8 +144,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         // Причины этого я понять не смог, поэтому сделал этот костыль.
         // Он предотвращает спам звуками и анимацией при смене состояния глаз. Эта логика(пока) используется только на клиенте.
         // В других местах проблем с этим не возникает.
-        if (ent.Comp.LastClientSideVisualsAttemptTick == _timing.CurTick
-            || ent.Comp.LastClientSideVisualsAttemptTick == _timing.CurTick - 1)
+        if (ent.Comp.LastClientSideVisualsAttemptTick >= _timing.CurTick - 1)
         {
             ent.Comp.LastClientSideVisualsAttemptTick = _timing.CurTick;
             return false;

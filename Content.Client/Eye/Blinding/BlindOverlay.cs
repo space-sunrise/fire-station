@@ -52,10 +52,8 @@ namespace Content.Client.Eye.Blinding
 
             _blindableComponent = blindComp;
 
-            if (!_entityManager.TryGetComponent<BlinkableComponent>(_playerManager.LocalEntity, out var blinkable))
-                return false;
-
-            if (blinkable.State == EyesState.Closed)
+            if (_entityManager.TryGetComponent<BlinkableComponent>(playerEntity.Value, out var blinkable) &&
+                blinkable.State == EyesState.Closed && (blinkable.ManuallyClosed || blinkable.NextOpenEyesRequiresEffects))
                 return false;
 
             var blind = _blindableComponent.IsBlind;

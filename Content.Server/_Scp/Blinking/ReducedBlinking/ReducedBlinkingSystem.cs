@@ -45,9 +45,18 @@ public sealed class ReducedBlinkingSystem : SharedReducedBlinkingSystem
         _popup.PopupEntity(Loc.GetString("eye-droplets-end"), ent, ent);
     }
 
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _token.Cancel();
+        _token.Dispose();
+    }
+
     private void RecreateToken()
     {
         _token.Cancel();
+        _token.Dispose();
         _token = new();
     }
 }

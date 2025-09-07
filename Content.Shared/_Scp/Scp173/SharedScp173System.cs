@@ -213,7 +213,7 @@ public abstract class SharedScp173System : EntitySystem
             return false;
         }
 
-        if (watchers.Count() <= 3)
+        if (watchers.Count <= 3)
         {
             if (showPopups)
                 _popup.PopupClient(Loc.GetString("scp173-blind-failed-too-few-watchers"), uid, uid);
@@ -224,14 +224,15 @@ public abstract class SharedScp173System : EntitySystem
         return true;
     }
 
-    public bool IsWatched(EntityUid target, out IEnumerable<EntityUid> viewers)
+    public bool IsWatched(EntityUid target, out HashSet<EntityUid> viewers)
     {
         var watchers = Watching.GetWatchers(target);
 
         viewers = watchers
-            .Where(eye => Watching.CanBeWatched(eye, target));
+            .Where(eye => Watching.CanBeWatched(eye, target))
+            .ToHashSet();
 
-        return viewers.Any();
+        return viewers.Count != 0;
     }
 
     #endregion

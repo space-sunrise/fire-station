@@ -19,7 +19,7 @@ public sealed class PredictedRandomSystem : EntitySystem
 
     public int RollWith(int sides, int numberOfDice)
     {
-        SetSeed();
+        SetSeed(sides);
 
         var total = 0;
         for (var i = 0; i < numberOfDice; i++)
@@ -36,13 +36,21 @@ public sealed class PredictedRandomSystem : EntitySystem
 
     public int Next(int minValue, int maxValue)
     {
-        SetSeed();
+        SetSeed(minValue);
+
+        if (minValue > maxValue)
+            (minValue, maxValue) = (maxValue, minValue);
+
         return _random.Next(minValue, maxValue);
     }
 
     public int Next(int minValue, int maxValue, int value)
     {
         SetSeed(value);
+
+        if (minValue > maxValue)
+            (minValue, maxValue) = (maxValue, minValue);
+
         return _random.Next(minValue, maxValue);
     }
 
@@ -54,14 +62,34 @@ public sealed class PredictedRandomSystem : EntitySystem
 
     public double NextDouble(EntityUid uid)
     {
-        SetSeed(uid.Id);
+        SetSeed(GetNetEntity(uid).Id);
         return _random.NextDouble();
+    }
+
+    public double NextDouble(double minValue, double maxValue)
+    {
+        SetSeed(minValue.GetHashCode());
+
+        if (minValue > maxValue)
+            (minValue, maxValue) = (maxValue, minValue);
+
+        return _random.NextDouble() * (maxValue - minValue) + minValue;
     }
 
     public double NextDouble(EntityUid uid, float minValue, float maxValue)
     {
         SetSeed(GetNetEntity(uid).Id);
+
+        if (minValue > maxValue)
+            (minValue, maxValue) = (maxValue, minValue);
+
         return _random.NextDouble() * (maxValue - minValue) + minValue;
+    }
+
+    public float NextFloat()
+    {
+        SetSeed();
+        return _random.NextFloat();
     }
 
     public float NextFloat(EntityUid uid)
@@ -72,13 +100,21 @@ public sealed class PredictedRandomSystem : EntitySystem
 
     public float NextFloat(float minValue, float maxValue)
     {
-        SetSeed();
+        SetSeed(minValue.GetHashCode());
+
+        if (minValue > maxValue)
+            (minValue, maxValue) = (maxValue, minValue);
+
         return _random.NextFloat() * (maxValue - minValue) + minValue;
     }
 
     public float NextFloat(EntityUid uid, float minValue, float maxValue)
     {
         SetSeed(GetNetEntity(uid).Id);
+
+        if (minValue > maxValue)
+            (minValue, maxValue) = (maxValue, minValue);
+
         return _random.NextFloat() * (maxValue - minValue) + minValue;
     }
 
@@ -90,8 +126,9 @@ public sealed class PredictedRandomSystem : EntitySystem
     {
         DebugTools.Assert(chance <= 1 && chance >= 0, $"Chance must be in the range 0-1. It was {chance}.");
 
-        SetSeed();
-        return _random.NextDouble() < chance;
+        SetSeed(chance.GetHashCode());
+        var c = Math.Clamp(chance, 0f, 1f);
+        return _random.NextDouble() < c;
     }
 
     #endregion
@@ -100,7 +137,12 @@ public sealed class PredictedRandomSystem : EntitySystem
 
     public T Pick<T>(IReadOnlyList<T> list)
     {
-        SetSeed();
+        DebugTools.Assert(list.Count > 0, "Pick called with empty list");
+
+        if (list.Count == 0)
+            return default!;
+
+        SetSeed(list[0]!.GetHashCode());
 
         var index = _random.Next(list.Count);
         return list[index];

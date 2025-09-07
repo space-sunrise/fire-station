@@ -214,7 +214,8 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         }
 
         var timeToNextBlink = ent.Comp.NextBlink - _timing.CurTime;
-        var severity = (short) Math.Clamp(4 - timeToNextBlink.TotalSeconds / (float)(ent.Comp.BlinkingInterval.TotalSeconds - ent.Comp.BlinkingDuration.TotalSeconds) * 4, 0, 4);
+        var denom = MathF.Max(0.001f, (float)(ent.Comp.BlinkingInterval.TotalSeconds - ent.Comp.BlinkingDuration.TotalSeconds));
+        var severity = (short) Math.Clamp(4 - (float) timeToNextBlink.TotalSeconds / denom * 4, 0, 4);
 
         _alerts.ShowAlert(ent, ent.Comp.BlinkingAlert, severity);
     }
