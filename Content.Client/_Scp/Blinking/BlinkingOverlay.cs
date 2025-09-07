@@ -24,12 +24,13 @@ public sealed class BlinkingOverlay : Overlay
 
     private float _blinkingProgress;
     private float _targetProgress;
+    private float _startProgress;
 
     /// <summary>
     /// Длина анимации моргания.
     /// Влияет как на открытие, так и на закрытие глаз.
     /// </summary>
-    public float AnimationDuration = 2f;
+    public float AnimationDuration = 0.4f;
 
     private float _timer;
 
@@ -50,12 +51,11 @@ public sealed class BlinkingOverlay : Overlay
 
         _timer += args.DeltaSeconds;
         var t = Math.Clamp(_timer / AnimationDuration, 0f, 1f);
-
-        // Линейная интерполяция между стартовым и целевым значением
-        _blinkingProgress = MathHelper.Lerp(_blinkingProgress, _targetProgress, t);
+        _blinkingProgress = MathHelper.Lerp(_startProgress, _targetProgress, t);
 
         if (t >= 1f)
         {
+            _blinkingProgress = _targetProgress;
             _timer = 0f;
             _isAnimating = false;
         }
@@ -88,6 +88,7 @@ public sealed class BlinkingOverlay : Overlay
     /// </summary>
     public void OpenEyes()
     {
+        _startProgress = _blinkingProgress;
         _targetProgress = 0f;
         _timer = 0f;
         _isAnimating = true;
@@ -98,6 +99,7 @@ public sealed class BlinkingOverlay : Overlay
     /// </summary>
     public void CloseEyes()
     {
+        _startProgress = _blinkingProgress;
         _targetProgress = 1f;
         _timer = 0f;
         _isAnimating = true;
