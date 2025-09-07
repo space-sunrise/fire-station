@@ -1,28 +1,35 @@
 ﻿using Robust.Shared.Audio;
+using Robust.Shared.GameStates;
 
-namespace Content.Server._Scp.Misc.ReducedBlinking;
+namespace Content.Shared._Scp.Blinking.ReducedBlinking;
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class ReducedBlinkingComponent : Component
 {
     /// <summary>
     /// Сколько времени будет добавляться к следующему времени моргания
     /// </summary>
-    [DataField(required:true), ViewVariables(VVAccess.ReadWrite)]
-    public float BonusTime;
+    [DataField(required:true)]
+    public TimeSpan FirstBlinkingBonusTime;
+
+    [DataField(required:true)]
+    public TimeSpan OtherBlinkingBonusTime;
+
+    [DataField(required:true)]
+    public TimeSpan OtherBlinkingBonusDuration;
 
     /// <summary>
     /// Время применения(дуафтера) предмета
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float ApplicationTime = 2f;
+    [DataField]
+    public TimeSpan ApplicationTime = TimeSpan.FromSeconds(2);
 
     /// <summary>
     /// Количество использований предмета
     /// </summary>
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public int UsageCount = 3;
 
-    [DataField, ViewVariables]
+    [DataField]
     public SoundSpecifier? UseSound;
 }

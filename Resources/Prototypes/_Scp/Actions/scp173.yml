@@ -1,7 +1,7 @@
 ﻿- type: entity
   id: Scp173Blind
   name: Blind
-  description: Blinds everyone within line of sight for 6 seconds.
+  description: Blinds everyone within line of sight for 8 seconds.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action

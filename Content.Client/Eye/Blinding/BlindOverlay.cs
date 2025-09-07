@@ -1,3 +1,4 @@
+using Content.Client._Scp.Blinking;
 using Content.Client.Movement.Systems;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -51,6 +52,9 @@ namespace Content.Client.Eye.Blinding
 
             _blindableComponent = blindComp;
 
+            if (OverlayManager.TryGetOverlay<BlinkingOverlay>(out var overlay) && overlay.IsAnimating)
+                return false;
+
             var blind = _blindableComponent.IsBlind;
 
             if (!blind && _blindableComponent.LightSetup) // Turn FOV back on if we can see again
@@ -77,7 +81,7 @@ namespace Content.Client.Eye.Blinding
             if (!_blindableComponent.GraceFrame)
             {
                 _blindableComponent.LightSetup = true; // Ok we touched the lights
-                _lightManager.Enabled = false;
+                //_lightManager.Enabled = false;
             } else
             {
                 _blindableComponent.GraceFrame = false;

@@ -1,6 +1,7 @@
 ﻿using Content.Shared.Actions;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Eye.Blinding.Systems;
+using Content.Shared.Flash;
 using Content.Shared.Flash.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
@@ -14,7 +15,6 @@ public abstract partial class SharedBlinkingSystem
 
     private void InitializeEyeClosing()
     {
-        SubscribeLocalEvent<BlinkableComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<BlinkableComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<BlinkableComponent, ToggleEyesActionEvent>(OnToggleAction);
         SubscribeLocalEvent<BlinkableComponent, CanSeeAttemptEvent>(OnTrySee);
@@ -24,21 +24,13 @@ public abstract partial class SharedBlinkingSystem
 
         SubscribeLocalEvent<BlinkableComponent, SleepStateChangedEvent>(OnWakeUp);
         SubscribeLocalEvent<BlinkableComponent, TryingToSleepEvent>(OnTryingSleep);
+
+        SubscribeLocalEvent<BlinkableComponent, FlashAttemptEvent>(OnFlashAttempt);
     }
 
     #region Event handlers
 
-    private void OnMapInit(Entity<BlinkableComponent> ent, ref MapInitEvent args)
-    {
-        _actions.AddAction(ent, ref ent.Comp.EyeToggleActionEntity, ent.Comp.EyeToggleAction);
-        Dirty(ent);
-
-        _actions.SetUseDelay(ent.Comp.EyeToggleActionEntity, BlinkingDuration);
-
-        ResetBlink(ent.Owner);
-    }
-
-    private void OnShutdown(Entity<BlinkableComponent> ent, ref ComponentShutdown args)
+    private void OnShutdown(Entity<BlinkableComponent> ent, ref ComponentShutdown _)
     {
         _actions.RemoveAction(ent.Owner, ent.Comp.EyeToggleActionEntity);
 
@@ -61,6 +53,9 @@ public abstract partial class SharedBlinkingSystem
         if (args.Handled)
             return;
 
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         // Нельзя закрыть глаза, если нас ослепили.
         // Потому что это приведет к странному багу
         if (HasComp<FlashedComponent>(ent))
@@ -76,7 +71,7 @@ public abstract partial class SharedBlinkingSystem
 
     private void OnTrySee(Entity<BlinkableComponent> ent, ref CanSeeAttemptEvent args)
     {
-        if (ent.Comp.State != EyesState.Closed)
+        if (ent.Comp.State == EyesState.Opened)
             return;
 
         if (!ent.Comp.ManuallyClosed && !IsScpNearby(ent))
@@ -111,7 +106,6 @@ public abstract partial class SharedBlinkingSystem
 
         blinkableComponent.CachedEyesColor = ent.Comp.EyeColor;
         ent.Comp.EyeColor = DarkenSkinColor(ent.Comp.SkinColor);
-
         Dirty(ent);
     }
 
@@ -127,8 +121,15 @@ public abstract partial class SharedBlinkingSystem
             return;
 
         ent.Comp.EyeColor = blinkableComponent.CachedEyesColor.Value;
-
         Dirty(ent);
+    }
+
+    private void OnFlashAttempt(Entity<BlinkableComponent> ent, ref FlashAttemptEvent args)
+    {
+        if (!AreEyesClosedManually(ent.AsNullable()))
+            return;
+
+        args.Cancelled = true;
     }
 
     #endregion
@@ -141,8 +142,15 @@ public abstract partial class SharedBlinkingSystem
     /// <param name="ent">Сущность, способная моргать</param>
     /// <param name="newState">Устанавливаемое состояние глаз. Закрыть/открыть</param>
     /// <param name="manual">Закрыли ли глаза вручную?</param>
+    /// <param name="predicted">Будет ли ивент смены состояния глаз вызван локально(при true) или как network event(при false)</param>
+    /// <param name="useEffects">Будут ли использованы эффекты: черный оверлей, звуки?</param>
     /// <param name="customBlinkDuration">Если нужно вручную задать время, которое игрок проведет с закрытыми глазами</param>
-    public bool TrySetEyelids(Entity<BlinkableComponent?> ent, EyesState newState, bool manual = false, TimeSpan? customBlinkDuration = null)
+    public bool TrySetEyelids(Entity<BlinkableComponent?> ent,
+        EyesState newState,
+        bool manual = false,
+        bool predicted = true,
+        bool useEffects = false,
+        TimeSpan? customBlinkDuration = null)
     {
         if (!Resolve(ent, ref ent.Comp))
             return false;
@@ -153,7 +161,7 @@ public abstract partial class SharedBlinkingSystem
         if (!CanToggleEyes((ent.Owner, ent.Comp), newState))
             return false;
 
-        SetEyelids((ent.Owner, ent.Comp), newState, manual, customBlinkDuration);
+        SetEyelids((ent.Owner, ent.Comp), newState, manual, predicted, useEffects, customBlinkDuration);
 
         return true;
     }
@@ -195,17 +203,17 @@ public abstract partial class SharedBlinkingSystem
     }
 
     /// <summary>
-    /// Проверяет, закрыты ли у сущности глаза вручную.
+    /// Проверяет, закрыты ли у сущности глаза вручную или форсированно.
     /// </summary>
     public bool AreEyesClosedManually(Entity<BlinkableComponent?> ent)
     {
         if (!Resolve(ent.Owner, ref ent.Comp, false))
             return false;
 
-        if (ent.Comp.State != EyesState.Closed)
+        if (ent.Comp.State == EyesState.Opened)
             return false;
 
-        if (!ent.Comp.ManuallyClosed)
+        if (!ent.Comp.ManuallyClosed && !ent.Comp.NextOpenEyesRequiresEffects)
             return false;
 
         return true;
@@ -218,7 +226,9 @@ public abstract partial class SharedBlinkingSystem
         if (_timing.CurTime < ent.Comp.BlinkEndTime)
             return false;
 
-        TrySetEyelids(ent.Owner, EyesState.Opened);
+        if (!TrySetEyelids(ent.Owner, EyesState.Opened))
+            return false;
+
         return true;
     }
 
@@ -228,21 +238,44 @@ public abstract partial class SharedBlinkingSystem
     /// <param name="ent">Сущность, которой будет установлено состояние</param>
     /// <param name="newState">Новое состояние глаз, которое мы хотим установить</param>
     /// <param name="manual">Устанавливается вручную(игрок нажал на кнопку закрытия глаз)?</param>
+    /// <param name="predicted">Будет ли ивент смены состояния глаз вызван локально(при true) или как network event(при false)</param>
+    /// <param name="useEffects">Будут ли использованы эффекты: черный оверлей, звуки?</param>
     /// <param name="customBlinkDuration">Если нужно использовать какое-то отличное от стандарта время, которое игрок проведет с закрытыми глазами</param>
     /// <remarks>
     /// Поле manual влияет на то, будут ли глаза автоматически открыты после КД.
     /// Если глаза закрыты вручную, то их нужно будет и открывать вручную
     /// </remarks>
-    private void SetEyelids(Entity<BlinkableComponent> ent, EyesState newState, bool manual = false, TimeSpan? customBlinkDuration = null)
+    private void SetEyelids(Entity<BlinkableComponent> ent,
+        EyesState newState,
+        bool manual = false,
+        bool predicted = true,
+        bool useEffects = false,
+        TimeSpan? customBlinkDuration = null)
     {
+        var oldState = ent.Comp.State;
+        var openEyesRequiresEffects = ent.Comp.NextOpenEyesRequiresEffects;
         ent.Comp.State = newState;
-        ent.Comp.ManuallyClosed = manual && newState == EyesState.Closed;
-        Dirty(ent);
+        ent.Comp.ManuallyClosed = manual;
+        ent.Comp.NextOpenEyesRequiresEffects = useEffects && newState == EyesState.Closed;
+
+        if (!predicted)
+        {
+            DirtyFields(ent.AsNullable(),
+                null,
+                nameof(BlinkableComponent.State),
+                nameof(BlinkableComponent.ManuallyClosed),
+                nameof(BlinkableComponent.NextOpenEyesRequiresEffects));
+        }
 
         if (newState == EyesState.Closed)
-            RaiseLocalEvent(ent, new EntityClosedEyesEvent(manual, customBlinkDuration));
+            RaiseLocalEvent(ent, new EntityClosedEyesEvent(manual, useEffects, customBlinkDuration));
         else
-            RaiseLocalEvent(ent, new EntityOpenedEyesEvent(customBlinkDuration));
+            RaiseLocalEvent(ent, new EntityOpenedEyesEvent(manual, useEffects || openEyesRequiresEffects, customBlinkDuration));
+
+        if (predicted)
+            RaiseLocalEvent(ent, new EntityEyesStateChanged(oldState, newState, manual));
+        else
+            RaiseNetworkEvent(new EntityEyesStateChanged(oldState, newState, manual, useEffects, GetNetEntity(ent)));
 
         if (ent.Comp.EyeToggleActionEntity != null)
         {
