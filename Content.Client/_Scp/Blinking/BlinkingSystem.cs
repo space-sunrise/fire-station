@@ -98,6 +98,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         if (_player.LocalEntity != ent)
             return;
 
+        _overlay.AnimationDuration = 0.2f;
         _overlay.OnAnimationFinished += AnimationOpenEyes;
         _overlay.CloseEyes();
     }
@@ -179,7 +180,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         if (_player.LocalSession == null)
             return;
 
-        _overlay.AnimationDuration = 5f;
+        _overlay.AnimationDuration = 4f;
         _overlay.OpenEyes();
 
         _audio.PlayGlobal(SpawnBlindSound, _player.LocalSession);
