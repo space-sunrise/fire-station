@@ -79,8 +79,9 @@
     state: std_mod
   - type: SiliconLawProvider
     laws: ScpMtf
+    lawUploadSound: /Audio/Ambience/Antag/silicon_lawboard_antimov.ogg
 
-# Chaos
+# Chaos laws
 - type: siliconLaw
   id: Chaos1
   order: 1
@@ -109,3 +110,15 @@
   - Chaos3
   - Chaos4
   obeysTo: laws-owner-chaos
+
+- type: entity
+  id: ScpChaosCircuitBoard
+  parent: [BaseElectronics, BaseChaosContraband]
+  name: law board (Chaos laws)
+  description: An electronics board containing the lawset of Chaos. Pure Chaos.
+  components:
+  - type: Sprite
+    sprite: Objects/Misc/module.rsi
+    state: std_mod
+  - type: SiliconLawProvider
+    laws: ChaosStatic
