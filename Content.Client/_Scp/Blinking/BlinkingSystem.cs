@@ -19,8 +19,10 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     private static readonly SoundSpecifier EyeCloseSound = new SoundCollectionSpecifier("EyeClose");
 
     private static readonly SoundSpecifier BlinkSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Blinking/blink.ogg");
+    private static readonly SoundSpecifier SpawnBlindSound = new SoundCollectionSpecifier("BlinkingSpawnSound", AudioParams.Default.WithVolume(-5));
 
     private BlinkingOverlay _overlay = default!;
+    private const float DefaultAnimationDuration = 0.4f;
 
     public override void Initialize()
     {
@@ -30,8 +32,12 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         SubscribeLocalEvent<BlinkableComponent, LocalPlayerDetachedEvent>(OnDetached);
 
         SubscribeNetworkEvent<EntityEyesStateChanged>(OnEyesStateChanged);
+        SubscribeNetworkEvent<PlayerOpenEyesAnimation>(OnOpenEyesAnimation);
 
         _overlay = new BlinkingOverlay();
+
+        SetDefaultAnimationDuration();
+        _overlay.OnAnimationFinished += SetDefaultAnimationDuration;
     }
 
     protected override void OnOpenedEyes(Entity<BlinkableComponent> ent, ref EntityOpenedEyesEvent args)
@@ -83,6 +89,17 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
             CloseEyes((ent.Value, blinkable), ev.Manual, ev.UseEffects);
         else
             OpenEyes((ent.Value, blinkable), ev.Manual, ev.UseEffects);
+    }
+
+    private void OnOpenEyesAnimation(PlayerOpenEyesAnimation ev)
+    {
+        var ent = GetEntity(ev.NetEntity);
+
+        if (_player.LocalEntity != ent)
+            return;
+
+        _overlay.OnAnimationFinished += AnimationOpenEyes;
+        _overlay.CloseEyes();
     }
 
     /// <summary>
@@ -153,5 +170,23 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         ent.Comp.LastClientSideVisualsAttemptTick = _timing.CurTick;
 
         return true;
+    }
+
+    private void AnimationOpenEyes()
+    {
+        _overlay.OnAnimationFinished -= AnimationOpenEyes;
+
+        if (_player.LocalSession == null)
+            return;
+
+        _overlay.AnimationDuration = 5f;
+        _overlay.OpenEyes();
+
+        _audio.PlayGlobal(SpawnBlindSound, _player.LocalSession);
+    }
+
+    private void SetDefaultAnimationDuration()
+    {
+        _overlay.AnimationDuration = DefaultAnimationDuration;
     }
 }

@@ -6,3 +6,9 @@
   - /Audio/_Scp/Effects/Spawn/sound3.ogg
   - /Audio/_Scp/Effects/Spawn/sound4.ogg
   - /Audio/_Scp/Effects/Spawn/sound5.ogg
+
+- type: soundCollection
+  id: BlinkingSpawnSound
+  files:
+  - /Audio/_Scp/Effects/Blinking/Spawn/sound1.ogg
+  - /Audio/_Scp/Effects/Blinking/Spawn/sound2.ogg

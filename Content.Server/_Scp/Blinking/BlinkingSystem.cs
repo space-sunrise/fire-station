@@ -1,5 +1,6 @@
 ﻿using Content.Server.Actions;
 using Content.Shared._Scp.Blinking;
+using Content.Shared.GameTicking;
 
 namespace Content.Server._Scp.Blinking;
 
@@ -13,6 +14,8 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
         SubscribeLocalEvent<BlinkableComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<BlinkableComponent, EntityUnpausedEvent>(OnUnpaused);
+
+        SubscribeLocalEvent<BlinkableComponent, PlayerSpawnCompleteEvent>(OnPlayerSpawn);
     }
 
     private void OnMapInit(Entity<BlinkableComponent> ent, ref MapInitEvent _)
@@ -28,5 +31,10 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     {
         ent.Comp.NextBlink += args.PausedTime;
         Dirty(ent);
+    }
+
+    private void OnPlayerSpawn(Entity<BlinkableComponent> ent, ref PlayerSpawnCompleteEvent args)
+    {
+        RaiseNetworkEvent(new PlayerOpenEyesAnimation(GetNetEntity(ent)));
     }
 }

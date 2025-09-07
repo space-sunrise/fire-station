@@ -261,3 +261,9 @@ public sealed class EntityEyesStateChanged(EyesState oldState, EyesState newStat
     public readonly bool UseEffects = useEffects;
     public readonly NetEntity? NetEntity = netEntity;
 }
+
+[Serializable, NetSerializable]
+public sealed class PlayerOpenEyesAnimation(NetEntity netEntity) : EntityEventArgs
+{
+    public readonly NetEntity NetEntity = netEntity;
+}

@@ -1,4 +1,5 @@
-﻿using Content.Shared.GameTicking;
+﻿using Content.Shared._Scp.Blinking;
+using Content.Shared.GameTicking;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 
@@ -19,6 +20,10 @@ public sealed class PlayerSpawnSoundSystem : EntitySystem
 
     private void OnPlayerSpawned(PlayerSpawnCompleteEvent ev)
     {
+        // У моргания свое "приветствие" игрока со своим звуком.
+        if (HasComp<BlinkableComponent>(ev.Player.AttachedEntity))
+            return;
+
         _audio.PlayGlobal(SpawnSound, ev.Player, AudioParams.Default.WithVolume(-3f));
     }
 }
