@@ -14,6 +14,25 @@ namespace Content.Shared._Scp.Blinking;
 public sealed partial class BlinkableComponent : Component
 {
     /// <summary>
+    /// Время, между морганием. Сколько потребуется времени, чтобы глаза снова закрылись.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public TimeSpan BlinkingInterval = TimeSpan.FromSeconds(8f);
+
+    /// <summary>
+    /// Длительность моргания. Сколько игрок проведет с закрытыми глазами во время моргания
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public TimeSpan BlinkingDuration = TimeSpan.FromSeconds(2.4f);
+
+    /// <summary>
+    /// Вариативность интервала между морганием.
+    /// Добавляется к интервалу моргания как случайное число от 0 до этого.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public TimeSpan BlinkingIntervalVariance = TimeSpan.FromSeconds(4f);
+
+    /// <summary>
     /// Время следующего моргания.
     /// </summary>
     [ViewVariables, AutoNetworkedField]
@@ -31,7 +50,7 @@ public sealed partial class BlinkableComponent : Component
     /// Может быть установлено какой-нибудь системой в качестве усиления персонажа
     /// </summary>
     [ViewVariables, AutoNetworkedField]
-    public float AdditionalBlinkingTime;
+    public TimeSpan AdditionalBlinkingTime;
 
     /// <summary>
     /// Прототип алерта слева от чата.

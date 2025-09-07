@@ -124,12 +124,9 @@ public abstract partial class SharedBlinkingSystem
         Dirty(ent);
     }
 
-    private static void OnFlashAttempt(Entity<BlinkableComponent> ent, ref FlashAttemptEvent args)
+    private void OnFlashAttempt(Entity<BlinkableComponent> ent, ref FlashAttemptEvent args)
     {
-        if (ent.Comp.State == EyesState.Opened)
-            return;
-
-        if (!ent.Comp.ManuallyClosed && !ent.Comp.NextOpenEyesRequiresEffects)
+        if (!AreEyesClosedManually(ent.AsNullable()))
             return;
 
         args.Cancelled = true;
@@ -206,17 +203,17 @@ public abstract partial class SharedBlinkingSystem
     }
 
     /// <summary>
-    /// Проверяет, закрыты ли у сущности глаза вручную.
+    /// Проверяет, закрыты ли у сущности глаза вручную или форсированно.
     /// </summary>
     public bool AreEyesClosedManually(Entity<BlinkableComponent?> ent)
     {
         if (!Resolve(ent.Owner, ref ent.Comp, false))
             return false;
 
-        if (ent.Comp.State != EyesState.Closed)
+        if (ent.Comp.State == EyesState.Opened)
             return false;
 
-        if (!ent.Comp.ManuallyClosed)
+        if (!ent.Comp.ManuallyClosed && !ent.Comp.NextOpenEyesRequiresEffects)
             return false;
 
         return true;

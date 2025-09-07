@@ -18,7 +18,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     private void OnMapInit(Entity<BlinkableComponent> ent, ref MapInitEvent _)
     {
         _actions.AddAction(ent, ref ent.Comp.EyeToggleActionEntity, ent.Comp.EyeToggleAction);
-        _actions.SetUseDelay(ent.Comp.EyeToggleActionEntity, BlinkingDuration);
+        _actions.SetUseDelay(ent.Comp.EyeToggleActionEntity, ent.Comp.BlinkingDuration);
         Dirty(ent);
 
         ResetBlink(ent.AsNullable(), predicted: false);

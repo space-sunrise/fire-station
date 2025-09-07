@@ -22,11 +22,6 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly PredictedRandomSystem _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    public static readonly TimeSpan BlinkingInterval = TimeSpan.FromSeconds(8f);
-    public static readonly TimeSpan BlinkingDuration = TimeSpan.FromSeconds(2.4f);
-
-    public static readonly TimeSpan BlinkingIntervalVariance = TimeSpan.FromSeconds(4f);
-
     public override void Initialize()
     {
         base.Initialize();
@@ -50,7 +45,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        var duration = args.CustomBlinkDuration ?? BlinkingDuration;
+        var duration = args.CustomBlinkDuration ?? ent.Comp.BlinkingDuration;
         ent.Comp.BlinkEndTime = _timing.CurTime + duration;
 
         _actions.SetCooldown(ent.Comp.EyeToggleActionEntity, duration);
@@ -81,7 +76,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
 
         // Задаем время следующего моргания
         var variance = GetBlinkVariance(ent);
-        SetNextBlink(ent.AsNullable(), args.CustomNextTimeBlinkInterval ?? BlinkingInterval, variance);
+        SetNextBlink(ent.AsNullable(), args.CustomNextTimeBlinkInterval ?? ent.Comp.BlinkingInterval, variance);
 
         // Как только глаза открыты, мы проверяем, слепы ли мы
         // Если мы ранее были слепы из-за наличия эффектов, то здесь они уберутся
@@ -140,13 +135,16 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     /// <param name="interval">Через сколько будет следующее моргание</param>
     /// <param name="variance">Плюс-минус время следующего моргания, чтобы вся станция не моргала в один такт</param>
     /// <param name="predicted">Предугадывается ли клиентом этот вызов метода? Если нет, отправляет клиенту стейт с сервера.</param>
-    public void SetNextBlink(Entity<BlinkableComponent?> ent, TimeSpan interval, float variance = 0, bool predicted = true)
+    public void SetNextBlink(Entity<BlinkableComponent?> ent, TimeSpan interval, TimeSpan? variance = null, bool predicted = true)
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
 
-        ent.Comp.NextBlink = _timing.CurTime + interval + TimeSpan.FromSeconds(variance) + TimeSpan.FromSeconds(ent.Comp.AdditionalBlinkingTime);
-        ent.Comp.AdditionalBlinkingTime = 0f;
+        if (!variance.HasValue)
+            variance = TimeSpan.Zero;
+
+        ent.Comp.NextBlink = _timing.CurTime + interval + variance.Value + ent.Comp.AdditionalBlinkingTime;
+        ent.Comp.AdditionalBlinkingTime = TimeSpan.Zero;
 
         if (!predicted)
             DirtyFields(ent, null, nameof(BlinkableComponent.NextBlink), nameof(BlinkableComponent.AdditionalBlinkingTime));
@@ -158,8 +156,8 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
             return;
 
         // Если useVariance == false, то variance = 0
-        var variance = useVariance ? GetBlinkVariance(ent) : 0;
-        SetNextBlink(ent, BlinkingInterval, variance, predicted);
+        var variance = useVariance ? GetBlinkVariance((ent.Owner, ent.Comp)) : TimeSpan.Zero;
+        SetNextBlink(ent, ent.Comp.BlinkingInterval, variance, predicted);
     }
 
     #endregion
@@ -195,9 +193,10 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         TrySetEyelids(ent.Owner, EyesState.Closed, false, predicted, true, duration);
     }
 
-    private float GetBlinkVariance(EntityUid ent)
+    private TimeSpan GetBlinkVariance(Entity<BlinkableComponent> ent)
     {
-        return _random.NextFloat(ent, 0, (float)BlinkingIntervalVariance.TotalSeconds);
+        var time = _random.NextFloat(ent, 0, (float)ent.Comp.BlinkingIntervalVariance.TotalSeconds);
+        return TimeSpan.FromSeconds(time);
     }
 
     #endregion
@@ -205,20 +204,17 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     /// <summary>
     /// Актуализирует иконку моргания справа у панели чата игрока
     /// </summary>
-    protected void UpdateAlert(Entity<BlinkableComponent?> ent)
+    protected void UpdateAlert(Entity<BlinkableComponent> ent)
     {
-        if (!Resolve(ent, ref ent.Comp))
-            return;
-
         // Если в данный момент глаза закрыты, то выставляем иконку с закрытым глазом
-        if (IsBlind(ent))
+        if (IsBlind(ent.AsNullable()))
         {
             _alerts.ShowAlert(ent, ent.Comp.BlinkingAlert, 4);
             return;
         }
 
         var timeToNextBlink = ent.Comp.NextBlink - _timing.CurTime;
-        var severity = (short)Math.Clamp(4 - timeToNextBlink.TotalSeconds / (float)(BlinkingInterval.TotalSeconds - BlinkingDuration.TotalSeconds) * 4, 0, 4);
+        var severity = (short) Math.Clamp(4 - timeToNextBlink.TotalSeconds / (float)(ent.Comp.BlinkingInterval.TotalSeconds - ent.Comp.BlinkingDuration.TotalSeconds) * 4, 0, 4);
 
         _alerts.ShowAlert(ent, ent.Comp.BlinkingAlert, severity);
     }
@@ -230,7 +226,6 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     /// </remarks>
     /// </summary>
     /// <param name="player">Игрок, которого мы проверяем</param>
-    /// <returns></returns>
     protected bool IsScpNearby(EntityUid player)
     {
         // Получаем всех Scp с механиками зрения, которые видят игрока
