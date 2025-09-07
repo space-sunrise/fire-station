@@ -1,0 +1,622 @@
+﻿#====================================================================
+# SCP Facility Beacons
+#====================================================================
+
+- type: entity
+  parent: BaseItem
+  id: ScpFacilityBeacon
+  name: facility beacon
+  description: A small device that transmits information to facility maps. Can be configured.
+  placement:
+    mode: SnapgridCenter
+  suffix: General
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/station_beacon.rsi
+    drawdepth: BelowFloor
+    layers:
+    - state: blink
+      map: ["base"]
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.NavMapBeaconVisuals.Enabled:
+        base:
+          True: {state: blink}
+          False: {state: icon}
+  - type: ConfigurableNavMapBeacon
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-general
+    color: "#D4D4D496"
+  - type: WarpPoint
+  - type: ActivatableUI
+    key: enum.NavMapBeaconUiKey.Key
+    singleUser: true
+  - type: UserInterface
+    interfaces:
+      enum.NavMapBeaconUiKey.Key:
+        type: NavMapBeaconBoundUserInterface
+  - type: Item
+    size: Small
+  - type: Visibility
+    layer: 1
+  - type: SubFloorHide
+  - type: Anchorable
+  - type: Construction
+    graph: StationBeaconPart
+    node: complete
+  - type: CollideOnAnchor
+  - type: Physics
+    canCollide: false
+    bodyType: static
+  - type: Transform
+    anchored: true
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Metallic
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -8
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetSteel1:
+            min: 1
+            max: 1
+        offset: 0
+      - !type:DoActsBehavior
+        acts: ["Breakage"]
+  - type: StaticPrice
+    price: 25
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconUnanchored
+  suffix: General, Unanchored
+  placement:
+    mode: PlaceFree
+  components:
+  - type: Sprite
+    sprite: Objects/Devices/station_beacon.rsi
+    layers:
+    - state: icon
+      map: ["base"]
+  - type: Physics
+    canCollide: true
+    bodyType: dynamic
+  - type: Transform
+    anchored: false
+
+# Parent prototypes for departments with new colors
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconAdministration
+  suffix: Administration Department
+  components:
+  - type: NavMapBeacon
+    color: "#065290" # Administration
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconSecurity
+  suffix: Security Department
+  components:
+  - type: NavMapBeacon
+    color: "#770101" # Heavy Containment Security Service
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconScientificService
+  suffix: Scientific Service
+  components:
+  - type: NavMapBeacon
+    color: "#43356d" # Scientific Service
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconMedicalService
+  suffix: Medical Service
+  components:
+  - type: NavMapBeacon
+    color: "#3b627a" # Medical Service
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconEngineeringTechnicalService
+  suffix: Engineering-Technical Service
+  components:
+  - type: NavMapBeacon
+    color: "#c07d1e" # Engineering-Technical Service
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconLogisticsService
+  suffix: Logistics Service
+  components:
+  - type: NavMapBeacon
+    color: "#9E6A34" # Logistics Service
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconFoodAndSanitationService
+  suffix: Food and Sanitation Service
+  components:
+  - type: NavMapBeacon
+    color: "#4e7c22" # Food and Sanitation Service
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconLowAccessPersonnel
+  suffix: Low Access Personnel
+  components:
+  - type: NavMapBeacon
+    color: "#91381e" # Class D
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconScpContainment
+  suffix: SCP Containment
+  components:
+  - type: NavMapBeacon
+    color: "#7a7070" # SCP
+
+# --- Кабинеты / Offices ---
+
+- type: entity
+  parent: ScpFacilityBeaconAdministration
+  id: ScpFacilityBeaconFacilityDirectorOffice
+  suffix: Facility Director Office
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-facility-director-office
+
+- type: entity
+  parent: ScpFacilityBeaconScientificService
+  id: ScpFacilityBeaconChiefResearcherOffice
+  suffix: Chief Researcher Office
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-chief-researcher-office
+
+- type: entity
+  parent: ScpFacilityBeaconSecurity
+  id: ScpFacilityBeaconSecurityCommanderOffice
+  suffix: Security Commander Office
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-security-commander-office
+
+- type: entity
+  parent: ScpFacilityBeaconEngineeringTechnicalService
+  id: ScpFacilityBeaconChiefEngineerOffice
+  suffix: Chief Engineer Office
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-chief-engineer-office
+
+- type: entity
+  parent: ScpFacilityBeaconAdministration
+  id: ScpFacilityBeaconPersonnelManagerOffice
+  suffix: Personnel Manager Office
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-personnel-manager-office
+
+- type: entity
+  parent: ScpFacilityBeaconMedicalService
+  id: ScpFacilityBeaconChiefMedicalOfficerOffice
+  suffix: Chief Medical Officer Office
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-chief-medical-officer-office
+
+- type: entity
+  parent: ScpFacilityBeaconLogisticsService
+  id: ScpFacilityBeaconQuartermasterOffice
+  suffix: Quartermaster Office
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-quartermaster-office
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconEthicsCommitteeRepresentativeOffice
+  suffix: Ethics Committee Representative Office
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-ethics-committee-representative-office
+    color: "#741b47" # Ethics Committee
+
+- type: entity
+  parent: ScpFacilityBeaconSecurity
+  id: ScpFacilityBeaconHeadCommandantOffice
+  suffix: Head Commandant Office
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-head-commandant-office
+
+- type: entity
+  parent: ScpFacilityBeaconSecurity
+  id: ScpFacilityBeaconSpecialPurposeUnitCommanderOffice
+  suffix: Special Purpose Unit Commander Office
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-special-purpose-unit-commander-office
+
+- type: entity
+  parent: ScpFacilityBeaconMedicalService
+  id: ScpFacilityBeaconAmnesticologistOffice
+  suffix: Amnesticologist Office
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-amnesticologist-office
+
+- type: entity
+  parent: ScpFacilityBeaconScientificService
+  id: ScpFacilityBeaconParapsychologistOffice
+  suffix: Parapsychologist Office
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-parapsychologist-office
+
+# --- Камеры SCP / SCP Containment ---
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScp173Containment
+  suffix: SCP-173 Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-173-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScp939Containment
+  suffix: SCP-939 Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-939-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScp106Containment
+  suffix: SCP-106 Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-106-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScp999Containment
+  suffix: SCP-999 Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-999-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScp131Containment
+  suffix: SCP-131 Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-131-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScp049Containment
+  suffix: SCP-049 Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-049-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScp096Containment
+  suffix: SCP-096 Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-096-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScp082Containment
+  suffix: SCP-082 Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-082-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScp457Containment
+  suffix: SCP-457 Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-457-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScp035Containment
+  suffix: SCP-035 Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-035-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScp079Containment
+  suffix: SCP-079 Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-079-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScpItemContainment
+  suffix: SCP Item Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-item-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScpHumanoidContainment
+  suffix: SCP Humanoid Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-humanoid-containment
+
+# --- Отделы / Departments ---
+
+- type: entity
+  parent: ScpFacilityBeaconSecurity
+  id: ScpFacilityBeaconCommandantSquad
+  suffix: Commandant Squad
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-commandant-squad
+
+- type: entity
+  parent: ScpFacilityBeaconSecurity
+  id: ScpFacilityBeaconSpecialPurposeSquad
+  suffix: Special Purpose Squad
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-special-purpose-squad
+
+- type: entity
+  parent: ScpFacilityBeaconFoodAndSanitationService
+  id: ScpFacilityBeaconCafeteria
+  suffix: Cafeteria
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-cafeteria
+
+- type: entity
+  parent: ScpFacilityBeaconLowAccessPersonnel
+  id: ScpFacilityBeaconClassDContainmentZone
+  suffix: Class D Containment Zone
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-class-d-containment-zone
+
+- type: entity
+  parent: ScpFacilityBeaconEngineeringTechnicalService
+  id: ScpFacilityBeaconLifeSupport
+  suffix: Life Support
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-life-support
+
+# --- Специальное / Special ---
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconCheckpointEntranceToLightA
+  suffix: Checkpoint EZ-LCZ A
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-checkpoint-entrance-to-light-a
+    color: "#999999" # External Administrative Zone Security Service
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconCheckpointEntranceToLightB
+  suffix: Checkpoint EZ-LCZ B
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-checkpoint-entrance-to-light-b
+    color: "#999999" # External Administrative Zone Security Service
+
+- type: entity
+  parent: ScpFacilityBeaconSecurity
+  id: ScpFacilityBeaconCheckpointLightToHeavyA
+  suffix: Checkpoint LCZ-HCZ A
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-checkpoint-light-to-heavy-a
+
+- type: entity
+  parent: ScpFacilityBeaconSecurity
+  id: ScpFacilityBeaconCheckpointLightToHeavyB
+  suffix: Checkpoint LCZ-HCZ B
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-checkpoint-light-to-heavy-b
+
+- type: entity
+  parent: ScpFacilityBeaconSecurity
+  id: ScpFacilityBeaconAlphaWarheadStorage
+  suffix: Alpha Warhead Storage
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-alpha-warhead-storage
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconShelter
+  suffix: Shelter
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-shelter
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconLightContainmentArmory
+  suffix: Light Containment Armory
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-light-containment-armory
+    color: "#999999" # External Administrative Zone Security Service
+
+- type: entity
+  parent: ScpFacilityBeaconSecurity
+  id: ScpFacilityBeaconHeavyContainmentArmory
+  suffix: Heavy Containment Armory
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-heavy-containment-armory
+
+- type: entity
+  parent: ScpFacilityBeaconMedicalService
+  id: ScpFacilityBeaconWardenMedicalBay
+  suffix: Warden Medical Bay
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-warden-medical-bay
+
+- type: entity
+  parent: ScpFacilityBeaconMedicalService
+  id: ScpFacilityBeaconSpecialTaskForceMedicalBay
+  suffix: STF Medical Bay
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-special-task-force-medical-bay
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconExitGateA
+  suffix: Exit Gate A
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-exit-gate-a
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconExitGateB
+  suffix: Exit Gate B
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-exit-gate-b
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconAccessRoad
+  suffix: Access Road
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-access-road
+    color: "#808080" # Mobile Task Force
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconHelipad
+  suffix: Helipad
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-helipad
+    color: "#808080" # Mobile Task Force
+
+- type: entity
+  parent: ScpFacilityBeacon
+  id: ScpFacilityBeaconEvacuationSite
+  suffix: Evacuation Site
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-evacuation-site
+    color: "#808080" # Mobile Task Force
+
+- type: entity
+  parent: ScpFacilityBeaconEngineeringTechnicalService
+  id: ScpFacilityBeaconEntranceZoneDisposals
+  suffix: Entrance Zone Disposals
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-entrance-zone-disposals
+
+- type: entity
+  parent: ScpFacilityBeaconEngineeringTechnicalService
+  id: ScpFacilityBeaconLightContainmentDisposals
+  suffix: Light Containment Disposals
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-light-containment-disposals
+
+- type: entity
+  parent: ScpFacilityBeaconEngineeringTechnicalService
+  id: ScpFacilityBeaconHeavyContainmentDisposals
+  suffix: Heavy Containment Disposals
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-heavy-containment-disposals
+
+- type: entity
+  parent: ScpFacilityBeaconEngineeringTechnicalService
+  id: ScpFacilityBeaconServerRoom
+  suffix: Server Room
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-server-room
+
+- type: entity
+  parent: ScpFacilityBeaconSecurity
+  id: ScpFacilityBeaconRecruitAiChamber
+  suffix: Recruit AI Chamber
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-recruit-ai-chamber
+
+- type: entity
+  parent: ScpFacilityBeaconLogisticsService
+  id: ScpFacilityBeaconWarehouse
+  suffix: Warehouse
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-warehouse
+
+- type: entity
+  parent: ScpFacilityBeaconEngineeringTechnicalService
+  id: ScpFacilityBeaconElectricalPanel
+  suffix: Electrical Panel
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-electrical-panel
+
+- type: entity
+  parent: ScpFacilityBeaconEngineeringTechnicalService
+  id: ScpFacilityBeaconReactor
+  suffix: Reactor
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-reactor
+
+- type: entity
+  parent: ScpFacilityBeaconFoodAndSanitationService
+  id: ScpFacilityBeaconJanitorCloset
+  suffix: Janitor Closet
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-janitor-closet
