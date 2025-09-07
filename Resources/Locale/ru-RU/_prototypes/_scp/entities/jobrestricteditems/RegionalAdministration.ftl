@@ -1,5 +1,5 @@
 ent-RubberStampAdministrator = печать Кабинета Администратора
-    .desc = Печать из высококачественной резины, для проставления красивых печатей на очень важных документах.
+    .desc = Печать из высококачественной резины для проставления красивых печатей на очень важных документах.
 ent-RubberStampOverseerCouncil = печать совета смотрителей
     .desc = { ent-RubberStampBase.desc }
 ent-RubberStampEthicsCommittee = печать комитета по этике
