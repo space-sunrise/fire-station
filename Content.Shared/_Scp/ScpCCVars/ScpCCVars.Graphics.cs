@@ -63,4 +63,11 @@ public sealed partial class ScpCCVars
     public static readonly CVarDef<bool> CompatibilityModeUseShaders =
         CVarDef.Create("scp.Compatibility_mode_use_shaders", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 
+    /*
+     * Свечение лампочек
+     */
+
+    public static readonly CVarDef<bool> EnableLightsGlowing =
+        CVarDef.Create("light.enable_lights_glowing", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
 }

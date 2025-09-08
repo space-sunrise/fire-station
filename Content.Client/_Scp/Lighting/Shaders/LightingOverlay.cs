@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
-using Content.Shared._Europa.Lighting.Shaders;
-using Content.Shared.CCVar;
+using Content.Shared._Scp.Lighting.Shaders;
+using Content.Shared._Scp.ScpCCVars;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Configuration;
@@ -8,24 +8,21 @@ using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
 
-namespace Content.Client._Europa.Lighting.Shaders;
-
-//
-// License-Identifier: AGPL-3.0-or-later
-//
+namespace Content.Client._Scp.Lighting.Shaders;
 
 public sealed class LightingOverlay : Overlay
 {
-    private readonly IPrototypeManager _prototypeManager;
     private readonly EntityManager _entityManager;
     private readonly SpriteSystem _spriteSystem;
     private readonly TransformSystem _transformSystem;
     private readonly IConfigurationManager _cfg;
+    private readonly IPrototypeManager _prototypeManager;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceEntities;
     public override bool RequestScreenTexture => true;
 
     private readonly ShaderInstance _shader;
+    private static readonly ProtoId<ShaderPrototype> Shader = "LightingOverlay";
     private bool _enableGlowing;
 
     public LightingOverlay(EntityManager entityManager, IPrototypeManager prototypeManager)
@@ -35,12 +32,12 @@ public sealed class LightingOverlay : Overlay
         _prototypeManager = prototypeManager;
         _transformSystem = entityManager.EntitySysManager.GetEntitySystem<TransformSystem>();
         _cfg = IoCManager.Resolve<IConfigurationManager>();
-        _cfg.OnValueChanged(CCVars.EnableLightsGlowing, val => _enableGlowing = val, true);
+        _cfg.OnValueChanged(ScpCCVars.EnableLightsGlowing, val => _enableGlowing = val, true);
 
         IoCManager.InjectDependencies(this);
 
-        _shader = _prototypeManager.Index<ShaderPrototype>("LightingOverlay").InstanceUnique();
-        ZIndex = (int) DrawDepth.Overdoors;
+        _shader = _prototypeManager.Index(Shader).InstanceUnique();
+        ZIndex = (int) DrawDepth.Effects;
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -64,7 +61,7 @@ public sealed class LightingOverlay : Overlay
             if (xform.MapID != args.MapId)
                 continue;
 
-            if (component.Enabled is false || !pointLight.Enabled)
+            if (!pointLight.Enabled)
                 continue;
 
             var worldPos = _transformSystem.GetWorldPosition(xform, xformCompQuery);
@@ -73,7 +70,7 @@ public sealed class LightingOverlay : Overlay
                 continue;
 
             var color = component.Color ?? pointLight.Color;
-            var (_, _, worldMatrix) = xform.GetWorldPositionRotationMatrix(xformCompQuery);
+            var (_, _, worldMatrix) = _transformSystem.GetWorldPositionRotationMatrix(xform, xformCompQuery);
             handle.SetTransform(worldMatrix);
 
             var mask = _spriteSystem.Frame0(component.Sprite); // mask

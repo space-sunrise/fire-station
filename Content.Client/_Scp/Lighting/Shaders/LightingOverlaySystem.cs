@@ -1,11 +1,7 @@
 ﻿using Robust.Client.Graphics;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client._Europa.Lighting.Shaders;
-
-//
-// License-Identifier: AGPL-3.0-or-later
-//
+namespace Content.Client._Scp.Lighting.Shaders;
 
 public sealed class LightingOverlaySystem : EntitySystem
 {
