@@ -49,3 +49,14 @@
   id: LightingOverlay
   kind: source
   path: "/Textures/_Scp/Shaders/light.swsl"
+  params:
+    base_haze: 0.4
+    hueta_divisor: 0.225
+
+- type: shader
+  id: LightingOverlayStrong
+  kind: source
+  path: "/Textures/_Scp/Shaders/light.swsl"
+  params:
+    base_haze: 0.8
+    hueta_divisor: 0.05

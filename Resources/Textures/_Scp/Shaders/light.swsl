@@ -1,4 +1,6 @@
 uniform sampler2D SCREEN_TEXTURE;
+uniform lowp float base_haze;
+uniform lowp float hueta_divisor;
 
 const lowp float[3] weights = float[](0.2, 0.0625, 0.0375);
 
@@ -6,7 +8,7 @@ const lowp float[3] weights = float[](0.2, 0.0625, 0.0375);
 lowp float adjustAlpha(lowp vec4 background) {
     lowp float avgColor = dot(background.rgb, vec3(0.3333));
     lowp float boost = (1.0 - (1.0 - avgColor) / 1.15);
-    lowp float transition = clamp((avgColor - 0.035) / 0.225, 0.0, 2.0);
+    lowp float transition = clamp((avgColor - 0.035) / hueta_divisor, 0.0, 2.0);
     return boost * (1.0 - transition) + transition;
 }
 
@@ -19,7 +21,7 @@ lowp vec4 addHaze(lowp vec4 color, lowp float intensity) {
 // Function to perform enhanced blur calculation
 lowp vec4 enhancedBlur(lowp vec2 offset, lowp vec2 uv, lowp vec2 frag, lowp int step) {
     lowp vec4 bsample = texture2D(TEXTURE, uv + offset * TEXTURE_PIXEL_SIZE) * weights[step];
-    bsample = addHaze(bsample, 0.4);
+    bsample = addHaze(bsample, base_haze);
     bsample.a *= adjustAlpha(zTextureSpec(SCREEN_TEXTURE, (frag + offset) * SCREEN_PIXEL_SIZE));
     return bsample;
 }
