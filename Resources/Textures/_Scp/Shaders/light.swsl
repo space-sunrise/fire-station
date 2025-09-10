@@ -5,15 +5,9 @@ const highp float[3] weights = float[](0.2, 0.0625, 0.0375);
 // Function to adjust alpha
 highp float adjustAlpha(highp vec4 background) {
     highp float avgColor = dot(background.rgb, vec3(0.3333));
-    highp float boost = (1.0 - (1.0 - avgColor) / 1.25);
-    highp float transition = clamp((avgColor - 0.035) / 0.125, 0.0, 2.0);
+    highp float boost = (1.0 - (1.0 - avgColor) / 1.15);
+    highp float transition = clamp((avgColor - 0.035) / 0.225, 0.0, 2.0);
     return boost * (1.0 - transition) + transition;
-}
-
-// Function to warm up the color
-highp vec3 warmColor(highp vec3 color) {
-    highp vec3 warmTint = vec3(1.0, 0.8, 0.6);
-    return color * warmTint;
 }
 
 // Function to adjust saturation
@@ -31,9 +25,8 @@ highp vec4 addHaze(highp vec4 color, highp float intensity) {
 // Function to perform enhanced blur calculation
 highp vec4 enhancedBlur(highp vec2 offset, highp vec2 uv, highp vec2 frag, lowp int step) {
     highp vec4 bsample = texture2D(TEXTURE, uv + offset * TEXTURE_PIXEL_SIZE) * weights[step];
-    bsample.rgb = warmColor(bsample.rgb);
     bsample.rgb = adjustSaturation(bsample.rgb, 1.2);
-    bsample = addHaze(bsample, 0.1);
+    bsample = addHaze(bsample, 0.3);
     bsample.a *= adjustAlpha(zTextureSpec(SCREEN_TEXTURE, (frag + offset) * SCREEN_PIXEL_SIZE));
     return bsample;
 }
@@ -77,7 +70,6 @@ void fragment() {
         }
     }
 
-    sum.rgb = warmColor(sum.rgb);
     sum.rgb = adjustSaturation(sum.rgb, 1.1);
     sum = addHaze(sum, 0.05);
 

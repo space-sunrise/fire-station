@@ -11,13 +11,13 @@ namespace Content.Shared._Scp.Lighting.Shaders;
 public sealed partial class LightingOverlayComponent : Component
 {
     [DataField]
-    public SpriteSpecifier Sprite = new Texture(new ResPath("_Scp/Effects/LightMasks/lightmask_lamp.png"));
+    public SpriteSpecifier Sprite = new Texture(new ResPath("_Scp/Effects/LightMasks/light_half_oval.png"));
 
     [DataField]
-    public float Offsetx = -0.5f;
+    public float Offsetx = 0f;
 
     [DataField]
-    public float Offsety = 0.5f;
+    public float Offsety = -0.2f;
 
     [DataField]
     public Color? Color;
