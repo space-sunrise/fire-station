@@ -1,7 +1,9 @@
 ﻿using System.Numerics;
 using Content.Shared._Scp.Lighting.Shaders;
+using Content.Shared._Scp.Proximity;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
+using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
@@ -10,11 +12,15 @@ namespace Content.Client._Scp.Lighting.Shaders;
 
 public sealed class LightingOverlay : Overlay
 {
+    [Dependency] private readonly IPlayerManager _player = default!;
+
     private readonly EntityManager _entityManager;
     private readonly SpriteSystem _spriteSystem;
     private readonly TransformSystem _transformSystem;
+    private readonly ProximitySystem _proximity;
 
     private readonly EntityQuery<TransformComponent> _transformQuery;
+    private readonly EntityQuery<EyeComponent> _eyeQuery;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceEntities;
     public override bool RequestScreenTexture => true;
@@ -30,8 +36,9 @@ public sealed class LightingOverlay : Overlay
     public LightingOverlay(EntityManager entityManager, IPrototypeManager prototypeManager)
     {
         _entityManager = entityManager;
-        _spriteSystem = entityManager.EntitySysManager.GetEntitySystem<SpriteSystem>();
-        _transformSystem = entityManager.EntitySysManager.GetEntitySystem<TransformSystem>();
+        _spriteSystem = entityManager.System<SpriteSystem>();
+        _transformSystem = entityManager.System<TransformSystem>();
+        _proximity = entityManager.System<ProximitySystem>();
 
         IoCManager.InjectDependencies(this);
 
@@ -45,6 +52,7 @@ public sealed class LightingOverlay : Overlay
         _maskOffset = new Vector2(xOffset, yOffset);
 
         _transformQuery = _entityManager.GetEntityQuery<TransformComponent>();
+        _eyeQuery = _entityManager.GetEntityQuery<EyeComponent>();
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -55,6 +63,10 @@ public sealed class LightingOverlay : Overlay
         if (ScreenTexture == null)
             return;
 
+        if (_player.LocalEntity == null)
+            return;
+
+        var drawFov = _eyeQuery.TryComp(_player.LocalEntity.Value, out var eye) && eye.DrawFov;
         var handle = args.WorldHandle;
         var bounds = args.WorldAABB.Enlarged(5f);
 
@@ -62,12 +74,16 @@ public sealed class LightingOverlay : Overlay
         handle.UseShader(_shader);
 
         var query = _entityManager.AllEntityQueryEnumerator<LightingOverlayComponent, PointLightComponent, TransformComponent>();
-        while (query.MoveNext(out _, out _, out var pointLight, out var xform))
+        while (query.MoveNext(out var light, out _, out var pointLight, out var xform))
         {
             if (xform.MapID != args.MapId)
                 continue;
 
             if (!pointLight.Enabled)
+                continue;
+
+            // TODO: Сделать настраиваемым
+            if (drawFov && !_proximity.IsRightType(_player.LocalEntity.Value, light, LineOfSightBlockerLevel.Transparent, out _))
                 continue;
 
             var worldPos = _transformSystem.GetWorldPosition(xform, _transformQuery);
@@ -76,8 +92,8 @@ public sealed class LightingOverlay : Overlay
                 continue;
 
             var (_, _, worldMatrix) = _transformSystem.GetWorldPositionRotationMatrix(xform, _transformQuery);
-            handle.SetTransform(worldMatrix);
 
+            handle.SetTransform(worldMatrix);
             handle.DrawTexture(_maskTexture, _maskOffset, pointLight.Color);
         }
 
