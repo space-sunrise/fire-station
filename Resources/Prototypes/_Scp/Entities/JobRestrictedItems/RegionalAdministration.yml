@@ -1,6 +1,8 @@
 ﻿- type: entity
   parent: RubberStampBase
   id: RubberStampAdministrator
+  name: stamp of the Administrator's Office
+  description: "High-quality rubber stamp, for affixing beautiful stamps on very important documents."
   components:
   - type: Stamp
     stampedName: stamp-component-stamped-name-administrator
@@ -13,6 +15,8 @@
 - type: entity
   parent: RubberStampBase
   id: RubberStampOverseerCouncil
+  name: stamp of Council of Supervisors
+  description: "A rubber stamp for stamping important documents."
   components:
   - type: Stamp
     stampedName: stamp-component-stamped-name-overseer-council
@@ -25,6 +29,8 @@
 - type: entity
   parent: RubberStampBase
   id: RubberStampEthicsCommittee
+  name: stamp of the Ethics Committee
+  description: "A rubber stamp for stamping important documents."
   components:
   - type: Stamp
     stampedName: stamp-component-stamped-name-ethics-committee
@@ -37,6 +43,8 @@
 - type: entity
   parent: RubberStampBase
   id: RubberStampLesserCouncil
+  name: stamp of Council O4
+  description: "A rubber stamp for stamping important documents."
   components:
   - type: Stamp
     stampedName: stamp-component-stamped-name-lesser-council
@@ -49,6 +57,8 @@
 - type: entity
   parent: RubberStampBase
   id: RubberStampRegionalCommand
+  name: stamp of Regional Command
+  description: "A rubber stamp for stamping important documents."
   components:
   - type: Stamp
     stampedName: stamp-component-stamped-name-regional-command
@@ -60,6 +70,8 @@
 - type: entity
   parent: RubberStampBase
   id: RubberStampO4Command
+  name: stamp of O4 Headquarters
+  description: "A rubber stamp for stamping important documents."
   components:
   - type: Stamp
     stampedName: stamp-component-stamped-name-o4-command
@@ -89,13 +101,14 @@
   id: ClothingUniformJumpsuitRegionalAdministration
 
 - type: entity
-  parent: CentcomOperatorIDCard
+  parent: KeyCardMtfBase
   id: RegionalAdministrationIDCard
   components:
   - type: Sprite
-    layers:
-    - state: centcom
-    - state: idcentcom
+    state: mtf_operative
+  - type: Access
+    groups:
+    - AllComplex
   - type: Item
     heldPrefix: blue
   - type: PresetIdCard
