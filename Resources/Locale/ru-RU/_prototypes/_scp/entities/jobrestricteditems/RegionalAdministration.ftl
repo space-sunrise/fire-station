@@ -11,9 +11,9 @@ ent-RubberStampRegionalCommand = печать регионального упр�
 ent-RubberStampO4Command = печать штаба О4
     .desc = { ent-RubberStampBase.desc }
 
-ent-ClothingUniformJumpsuitRegionalAdministration = комбинезон Региональной Администрации
-    .desc = Костюм, который носят опытные администраторы. Пахнет подгоревшим кофе.
+ent-ClothingUniformJumpsuitRegionalAdministration = комбинезон Регионального Управления
+    .desc = Костюм, который носят опытные управленцы. Пахнет подгоревшим кофе.
 ent-RegionalAdministrationIDCard = { ent-IDCardStandard }
     .desc = { ent-IDCardStandard.desc }
-ent-PenRegionalAdministration = ручка Региональной Администрации
+ent-PenRegionalAdministration = ручка Регионального Управления
     .desc = Вся сила бюрократии фонда SCP в одном предмете!
