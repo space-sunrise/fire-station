@@ -20,6 +20,7 @@ public sealed partial class ScpTab : Control
         IoCManager.InjectDependencies(this);
 
         CheckCompatibilityMode();
+        HideSomeButtons();
 
         /*
          * Графика
@@ -38,6 +39,12 @@ public sealed partial class ScpTab : Control
             FieldOfViewComponent.MinBlurScale, FieldOfViewComponent.MaxBlurScale);
         Control.AddOptionPercentSlider(ScpCCVars.FieldOfViewCheckCooldown, FieldOfViewCheckCooldown,
             FieldOfViewComponent.MinCooldownCheck, FieldOfViewComponent.MaxCooldownCheck);
+
+        // Эффект свечения
+        Control.AddOptionCheckBox(ScpCCVars.LightBloomEnable, LightBloomEnable);
+        Control.AddOptionCheckBox(ScpCCVars.LightBloomConeEnable, LightBloomConeEnable);
+        Control.AddOptionCheckBox(ScpCCVars.LightBloomOptimizations, LightBloomOptimizations);
+        Control.AddOptionPercentSlider(ScpCCVars.LightBloomStrength, LightBloomStrength);
 
         // Режим совместимости
         Control.AddOptionCheckBox(ScpCCVars.CompatibilityModeShowWarning, CompatibilityModeShowWarning);
@@ -71,5 +78,31 @@ public sealed partial class ScpTab : Control
 
         CompatibilityModeShowWarning.Visible = isInCompatibilityMode;
         CompatibilityModeUseShaders.Visible = isInCompatibilityMode;
+    }
+
+    private void HideSomeButtons()
+    {
+        GrainToggleOverlayCheckBox.OnToggled += _ =>
+        {
+            GrainStrengthSlider.Visible = GrainToggleOverlayCheckBox.Pressed;
+        };
+
+        LightBloomEnable.OnToggled += _ =>
+        {
+            var enabled = LightBloomEnable.Pressed;
+            LightBloomConeEnable.Visible = enabled;
+            LightBloomOptimizations.Visible = enabled;
+            LightBloomStrength.Visible = enabled;
+        };
+
+        EchoEnabled.OnToggled += _ =>
+        {
+            EchoStrongPresetPreferred.Visible = EchoEnabled.Pressed;
+        };
+
+        AudioMufflingEnabled.OnToggled += _ =>
+        {
+            AudioMufflingHighFrequencyUpdate.Visible = AudioMufflingEnabled.Pressed;
+        };
     }
 }

@@ -54,13 +54,43 @@ public sealed partial class ScpCCVars
     /// Настраивается, потому что не у всех игроков может ВООБЩЕ работать игра без режима совместимости.
     /// </summary>
     public static readonly CVarDef<bool> CompatibilityModeShowWarning =
-        CVarDef.Create("scp.Compatibility_mode_show_warning", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("scp.compatibility_mode_show_warning", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
     /// Будут ли использоваться пораженные шейдеры, если включен режим совместимости?
     /// В случае, если игрок не может выключить режим совместимости, то лучше дать ему выбор. Использовать шейдеры или нет.
     /// </summary>
     public static readonly CVarDef<bool> CompatibilityModeUseShaders =
-        CVarDef.Create("scp.Compatibility_mode_use_shaders", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("scp.compatibility_mode_use_shaders", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 
+    /*
+     * Свечение лампочек
+     */
+
+    /// <summary>
+    /// Будет ли использоваться эффект свечения у лампочек?
+    /// Отвечает за главный рубильник для двух опций настройки.
+    /// </summary>
+    public static readonly CVarDef<bool> LightBloomEnable =
+        CVarDef.Create("scp.light_bloom_enable", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Будет ли отображаться конус у эффекта свечения лампочек?
+    /// </summary>
+    public static readonly CVarDef<bool> LightBloomConeEnable =
+        CVarDef.Create("scp.light_bloom_cone_enable", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// При включении не рисуется на невидимых для игрока позициях эффект, что увеличивает производительность ТОЛЬКО на слабых видеокартах.
+    /// В остальных случаях снижает FPS из-за проверок на видимость. Поэтому это опционально.
+    /// </summary>
+    public static readonly CVarDef<bool> LightBloomOptimizations =
+        CVarDef.Create("scp.light_bloom_optimizations", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Определяет силу эффекта свечения.
+    /// Чем выше сила, тем сильнее эффект. Отображается в процентах от 0% до 100%
+    /// </summary>
+    public static readonly CVarDef<float> LightBloomStrength =
+        CVarDef.Create("scp.light_bloom_strength", 1f, CVar.CLIENTONLY | CVar.ARCHIVE);
 }
