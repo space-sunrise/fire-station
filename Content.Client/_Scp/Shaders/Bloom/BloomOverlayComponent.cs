@@ -5,7 +5,7 @@ using static Robust.Shared.Utility.SpriteSpecifier;
 namespace Content.Client._Scp.Shaders.Bloom;
 
 /// <summary>
-/// Компонент, отвечающий за отрисовку эффект свечения у лампочек.
+/// Компонент, отвечающий за отрисовку эффекта свечения у лампочек.
 /// </summary>
 /// TODO: Фонарики с шейдерами.
 /// Нужно сделать:
