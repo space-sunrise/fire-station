@@ -1,41 +1,36 @@
 ﻿using System.Numerics;
-using Content.Shared._Scp.Lighting.Shaders;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
 
-namespace Content.Client._Scp.Lighting.Shaders;
+namespace Content.Client._Scp.Shaders.Bloom;
 
-public sealed class MaskLightingOverlay : Overlay
+public sealed class PointLightingOverlay : Overlay
 {
     public override OverlaySpace Space => OverlaySpace.WorldSpaceEntities;
     public override bool RequestScreenTexture => true;
 
     private readonly ShaderInstance _shader;
-    private static readonly ProtoId<ShaderPrototype> Shader = "LightingOverlay";
+    private static readonly ProtoId<ShaderPrototype> Shader = "LightingOverlayStrong";
 
-    private readonly Texture _maskTexture;
-    private readonly Vector2 _maskOffset;
+    private readonly Texture _pointTexture;
+    private readonly Vector2 _pointOffset;
 
     public List<(TransformComponent xform, Matrix3x2 matrix, Vector2 worldPos, Color color)> Entities = [];
     public bool Enabled = true;
 
-    public MaskLightingOverlay(EntityManager entityManager, IPrototypeManager prototypeManager)
+    public PointLightingOverlay(IPrototypeManager prototypeManager, SpriteSystem spriteSystem)
     {
-        var spriteSystem = entityManager.System<SpriteSystem>();
-
-        IoCManager.InjectDependencies(this);
-
         _shader = prototypeManager.Index(Shader).InstanceUnique();
         ZIndex = (int) DrawDepth.Effects;
 
-        _maskTexture = spriteSystem.Frame0(LightingOverlayComponent.Mask);
+        _pointTexture = spriteSystem.Frame0(BloomOverlayVisualsComponent.Point);
 
-        var xOffset = LightingOverlayComponent.MaskOffset.X - (_maskTexture.Width / 2f) / EyeManager.PixelsPerMeter;
-        var yOffset = LightingOverlayComponent.MaskOffset.Y - (_maskTexture.Height / 2f) / EyeManager.PixelsPerMeter;
-        _maskOffset = new Vector2(xOffset, yOffset);
+        var xOffset = BloomOverlayVisualsComponent.PointOffset.X - (_pointTexture.Width / 2f) / EyeManager.PixelsPerMeter;
+        var yOffset = BloomOverlayVisualsComponent.PointOffset.Y - (_pointTexture.Height / 2f) / EyeManager.PixelsPerMeter;
+        _pointOffset = new Vector2(xOffset, yOffset);
     }
 
     protected override void Draw(in OverlayDrawArgs args)
@@ -61,7 +56,7 @@ public sealed class MaskLightingOverlay : Overlay
                 continue;
 
             handle.SetTransform(matrix);
-            handle.DrawTexture(_maskTexture, _maskOffset, color);
+            handle.DrawTexture(_pointTexture, _pointOffset, color);
         }
 
         handle.UseShader(null);

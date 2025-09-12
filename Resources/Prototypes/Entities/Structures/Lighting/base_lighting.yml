@@ -15,6 +15,10 @@
     damagePopupType: SmallFloating
     isStructure: true
   # Sunrise end
+  # Fire added start
+  - type: LightFlicking
+  - type: BloomOverlayVisuals
+  # Fire added end
   - type: MeleeSound
     soundGroups:
       Brute:
@@ -88,8 +92,6 @@
       - !type:PlaySoundBehavior
         sound:
           collection: GlassBreak
-  - type: LightFlicking
-  - type: LightingOverlay
   placement:
     mode: SnapgridCenter
     snap:
