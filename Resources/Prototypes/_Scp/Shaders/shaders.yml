@@ -49,8 +49,3 @@
   id: LightingOverlay
   kind: source
   path: "/Textures/_Scp/Shaders/light.swsl"
-
-- type: shader
-  id: LightingOverlay2
-  kind: source
-  path: "/Textures/_Scp/Shaders/light.swsl"

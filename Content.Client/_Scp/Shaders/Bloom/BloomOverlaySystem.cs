@@ -50,10 +50,7 @@ public sealed class LightingOverlaySystem : EntitySystem
         base.Initialize();
 
         _cone = new ConeLightingOverlay(_prototypeManager, _sprite, Shader);
-        _overlayManager.AddOverlay(_cone);
-
         _point = new PointLightingOverlay(_prototypeManager, _sprite, Shader);
-        _overlayManager.AddOverlay(_point);
 
         _transformQuery = GetEntityQuery<TransformComponent>();
         _eyeQuery = GetEntityQuery<EyeComponent>();
@@ -82,7 +79,7 @@ public sealed class LightingOverlaySystem : EntitySystem
         // Просчитываем, какие сущности будут иметь эффект свечения и будет ли это видно игроку.
         // Если сущность проходит проверки -> добавляем ее в список и отправляем список в оверлеи.
         var query = EntityQueryEnumerator<BloomOverlayVisualsComponent, PointLightComponent, TransformComponent>();
-        while (query.MoveNext(out var light, out _, out var pointLight, out var xform))
+        while (query.MoveNext(out var uid, out _, out var pointLight, out var xform))
         {
             if (!pointLight.Enabled)
                 continue;
@@ -91,7 +88,7 @@ public sealed class LightingOverlaySystem : EntitySystem
             // Опционально, так как приводит к резкому падению FPS из-за сложности проверок на видимость.
             if (_optimizationsEnabled
                 && drawFov
-                && !_proximity.IsRightType(_player.LocalEntity.Value, light, LineOfSightBlockerLevel.Transparent, out _))
+                && !_proximity.IsRightType(_player.LocalEntity.Value, uid, LineOfSightBlockerLevel.Transparent, out _))
                 continue;
 
             var (worldPos, _, worldMatrix) = _transform.GetWorldPositionRotationMatrix(xform, _transformQuery);

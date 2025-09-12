@@ -16,7 +16,7 @@ namespace Content.Client._Scp.Shaders.Bloom;
 public sealed partial class BloomOverlayVisualsComponent : Component
 {
     [ViewVariables]
-    public static readonly SpriteSpecifier Cone = new Texture(new ResPath("_Scp/Effects/LightMasks/128.rsi/light_cone.png"));
+    public static readonly SpriteSpecifier Cone = new Rsi(new ResPath("_Scp/Effects/LightMasks/128.rsi"), "light_cone");
     [ViewVariables]
     public static readonly Vector2 ConeOffset = new (0f, -0.2f);
 
@@ -26,7 +26,7 @@ public sealed partial class BloomOverlayVisualsComponent : Component
     public const float DefaultConeHuetaDivisor = 0.225f;
 
     [ViewVariables]
-    public static readonly SpriteSpecifier Point = new Texture(new ResPath("_Scp/Effects/LightMasks/64.rsi/light_point.png"));
+    public static readonly SpriteSpecifier Point = new Rsi(new ResPath("_Scp/Effects/LightMasks/64.rsi"), "light_point");
     [ViewVariables]
     public static readonly Vector2 PointOffset = new (0f, 0.45f);
 

@@ -20,6 +20,7 @@ public sealed partial class ScpTab : Control
         IoCManager.InjectDependencies(this);
 
         CheckCompatibilityMode();
+        HideSomeButtons();
 
         /*
          * Графика
@@ -77,5 +78,31 @@ public sealed partial class ScpTab : Control
 
         CompatibilityModeShowWarning.Visible = isInCompatibilityMode;
         CompatibilityModeUseShaders.Visible = isInCompatibilityMode;
+    }
+
+    private void HideSomeButtons()
+    {
+        GrainToggleOverlayCheckBox.OnToggled += _ =>
+        {
+            GrainStrengthSlider.Visible = GrainToggleOverlayCheckBox.Pressed;
+        };
+
+        LightBloomEnable.OnToggled += _ =>
+        {
+            var enabled = LightBloomEnable.Pressed;
+            LightBloomConeEnable.Visible = enabled;
+            LightBloomOptimizations.Visible = enabled;
+            LightBloomStrength.Visible = enabled;
+        };
+
+        EchoEnabled.OnToggled += _ =>
+        {
+            EchoStrongPresetPreferred.Visible = EchoEnabled.Pressed;
+        };
+
+        AudioMufflingEnabled.OnToggled += _ =>
+        {
+            AudioMufflingHighFrequencyUpdate.Visible = AudioMufflingEnabled.Pressed;
+        };
     }
 }

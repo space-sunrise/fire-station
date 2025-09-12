@@ -23,8 +23,6 @@ public sealed class ConeLightingOverlay : Overlay
 
     public ConeLightingOverlay(IPrototypeManager prototypeManager, SpriteSystem spriteSystem, ProtoId<ShaderPrototype> shader)
     {
-        IoCManager.InjectDependencies(this);
-
         _shader = prototypeManager.Index(shader).InstanceUnique();
         ZIndex = (int) DrawDepth.Effects;
 
