@@ -19,7 +19,7 @@ public sealed partial class ScpCCVars
     /// Сила шейдера зернистости
     /// </summary>
     public static readonly CVarDef<int> GrainStrength =
-        CVarDef.Create("shader.grain_strength", 140, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("shader.grain_strength", 70, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
     /// Будет ли использовать альтернативный метод просчета сущностей для поля зрения

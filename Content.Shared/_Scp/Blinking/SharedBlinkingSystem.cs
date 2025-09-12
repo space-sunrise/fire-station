@@ -6,6 +6,7 @@ using Content.Shared._Scp.Watching;
 using Content.Shared.Alert;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
+using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -22,6 +23,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly PredictedRandomSystem _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     public override void Initialize()
     {
@@ -55,14 +57,15 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         // Поэтому время, когда глаза будут открыты устанавливается максимальное
         // И игрок должен будет сам вручную их открыть.
         if (ent.Comp.ManuallyClosed)
-            ent.Comp.BlinkEndTime = TimeSpan.FromDays(1);
+            ent.Comp.BlinkEndTime = _timing.CurTime + TimeSpan.FromDays(3);
 
         // Так как персонажи моргают на протяжении всего времени, то для удобства игрока мы
         // Не добавляем никакие эффекты, если рядом нет SCP использующего механику зрения
         if (ent.Comp.ManuallyClosed || IsScpNearby(ent))
             _blindable.UpdateIsBlind(ent.Owner);
 
-        Dirty(ent);
+        if (_net.IsServer)
+            DirtyField(ent.AsNullable(), nameof(BlinkableComponent.BlinkEndTime));
     }
 
     protected virtual void OnOpenedEyes(Entity<BlinkableComponent> ent, ref EntityOpenedEyesEvent args)
@@ -73,7 +76,8 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         // Если мы закрывали глаза вручную, то после открытия у нас до следующего автоматического моргания будет сломан алерт
         // Потому что BlinkEndTime равняется 9999999999. И поэтому после открытия глаз я записываю его сюда
         ent.Comp.BlinkEndTime = _timing.CurTime;
-        Dirty(ent);
+        if (_net.IsServer)
+            DirtyField(ent.AsNullable(), nameof(BlinkableComponent.BlinkEndTime));
 
         // Задаем время следующего моргания
         var variance = GetBlinkVariance(ent);
@@ -204,8 +208,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         {
             ent.Comp.BlinkEndTime = _timing.CurTime + duration;
 
-            if (!predicted)
-                DirtyField(ent, nameof(BlinkableComponent.BlinkEndTime));
+            DirtyField(ent, nameof(BlinkableComponent.BlinkEndTime));
 
             _actions.SetCooldown(ent.Comp.EyeToggleActionEntity, duration);
 

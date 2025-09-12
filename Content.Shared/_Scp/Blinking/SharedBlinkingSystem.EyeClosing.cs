@@ -258,14 +258,11 @@ public abstract partial class SharedBlinkingSystem
         ent.Comp.ManuallyClosed = manual;
         ent.Comp.NextOpenEyesRequiresEffects = useEffects && newState == EyesState.Closed;
 
-        if (!predicted)
-        {
-            DirtyFields(ent.AsNullable(),
-                null,
-                nameof(BlinkableComponent.State),
-                nameof(BlinkableComponent.ManuallyClosed),
-                nameof(BlinkableComponent.NextOpenEyesRequiresEffects));
-        }
+        DirtyFields(ent.AsNullable(),
+            null,
+            nameof(BlinkableComponent.State),
+            nameof(BlinkableComponent.ManuallyClosed),
+            nameof(BlinkableComponent.NextOpenEyesRequiresEffects));
 
         if (newState == EyesState.Closed)
             RaiseLocalEvent(ent, new EntityClosedEyesEvent(manual, useEffects, customBlinkDuration));
