@@ -6,6 +6,7 @@ using Content.Shared._Scp.Watching;
 using Content.Shared.Alert;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
+using Robust.Shared.Network;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -22,6 +23,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly PredictedRandomSystem _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     public override void Initialize()
     {
@@ -62,7 +64,8 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         if (ent.Comp.ManuallyClosed || IsScpNearby(ent))
             _blindable.UpdateIsBlind(ent.Owner);
 
-        Dirty(ent);
+        if (_net.IsServer)
+            DirtyField(ent.AsNullable(), nameof(BlinkableComponent.BlinkEndTime));
     }
 
     protected virtual void OnOpenedEyes(Entity<BlinkableComponent> ent, ref EntityOpenedEyesEvent args)
@@ -73,7 +76,8 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         // Если мы закрывали глаза вручную, то после открытия у нас до следующего автоматического моргания будет сломан алерт
         // Потому что BlinkEndTime равняется 9999999999. И поэтому после открытия глаз я записываю его сюда
         ent.Comp.BlinkEndTime = _timing.CurTime;
-        Dirty(ent);
+        if (_net.IsServer)
+            DirtyField(ent.AsNullable(), nameof(BlinkableComponent.BlinkEndTime));
 
         // Задаем время следующего моргания
         var variance = GetBlinkVariance(ent);
@@ -135,7 +139,8 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     /// <param name="ent">Моргающий</param>
     /// <param name="interval">Через сколько будет следующее моргание</param>
     /// <param name="variance">Плюс-минус время следующего моргания, чтобы вся станция не моргала в один такт</param>
-    public void SetNextBlink(Entity<BlinkableComponent?> ent, TimeSpan interval, TimeSpan? variance = null)
+    /// <param name="predicted">Предугадывается ли клиентом этот вызов метода? Если нет, отправляет клиенту стейт с сервера.</param>
+    public void SetNextBlink(Entity<BlinkableComponent?> ent, TimeSpan interval, TimeSpan? variance = null, bool predicted = true)
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
@@ -151,17 +156,18 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         ent.Comp.NextBlink = _timing.CurTime + interval + variance.Value + ent.Comp.AdditionalBlinkingTime;
         ent.Comp.AdditionalBlinkingTime = TimeSpan.Zero;
 
-        DirtyFields(ent, null, nameof(BlinkableComponent.NextBlink), nameof(BlinkableComponent.AdditionalBlinkingTime));
+        if (!predicted)
+            DirtyFields(ent, null, nameof(BlinkableComponent.NextBlink), nameof(BlinkableComponent.AdditionalBlinkingTime));
     }
 
-    public void ResetBlink(Entity<BlinkableComponent?> ent, bool useVariance = true)
+    public void ResetBlink(Entity<BlinkableComponent?> ent, bool useVariance = true, bool predicted = true)
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
 
         // Если useVariance == false, то variance = 0
         var variance = useVariance ? GetBlinkVariance((ent.Owner, ent.Comp)) : TimeSpan.Zero;
-        SetNextBlink(ent, ent.Comp.BlinkingInterval, variance);
+        SetNextBlink(ent, ent.Comp.BlinkingInterval, variance, predicted);
     }
 
     #endregion
