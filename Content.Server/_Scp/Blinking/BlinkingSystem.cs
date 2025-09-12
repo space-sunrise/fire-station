@@ -25,7 +25,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         _actions.SetUseDelay(ent.Comp.EyeToggleActionEntity, ent.Comp.BlinkingDuration);
         Dirty(ent);
 
-        ResetBlink(ent.AsNullable(), predicted: false);
+        ResetBlink(ent.AsNullable());
     }
 
     private void OnUnpaused(Entity<BlinkableComponent> ent, ref EntityUnpausedEvent args)

@@ -2,6 +2,7 @@
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Blinking;
@@ -16,20 +17,20 @@ public sealed partial class BlinkableComponent : Component
     /// <summary>
     /// Время, между морганием. Сколько потребуется времени, чтобы глаза снова закрылись.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
     public TimeSpan BlinkingInterval = TimeSpan.FromSeconds(8f);
 
     /// <summary>
     /// Длительность моргания. Сколько игрок проведет с закрытыми глазами во время моргания
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
     public TimeSpan BlinkingDuration = TimeSpan.FromSeconds(2.4f);
 
     /// <summary>
     /// Вариативность интервала между морганием.
     /// Добавляется к интервалу моргания как случайное число от 0 до этого.
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
     public TimeSpan BlinkingIntervalVariance = TimeSpan.FromSeconds(4f);
 
     /// <summary>
@@ -91,6 +92,7 @@ public sealed partial class BlinkableComponent : Component
     /// <summary>
     /// Сущность способности закрыть глаза вручную
     /// </summary>
+    [NonSerialized]
     public EntityUid? EyeToggleActionEntity;
 
     /// <summary>
@@ -98,9 +100,10 @@ public sealed partial class BlinkableComponent : Component
     /// Используется, чтобы вернуть изначальный цвет глаз после открытия глаз.
     /// Так как во время закрытия цвет глаз меняется на цвет кожи.
     /// </summary>
+    [ViewVariables]
     public Color? CachedEyesColor;
 
-    [ViewVariables]
+    [NonSerialized, ViewVariables]
     public GameTick? LastClientSideVisualsAttemptTick;
 
     #endregion

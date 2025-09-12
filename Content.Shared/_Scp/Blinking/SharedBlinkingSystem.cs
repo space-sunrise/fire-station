@@ -55,7 +55,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         // Поэтому время, когда глаза будут открыты устанавливается максимальное
         // И игрок должен будет сам вручную их открыть.
         if (ent.Comp.ManuallyClosed)
-            ent.Comp.BlinkEndTime = TimeSpan.FromDays(1);
+            ent.Comp.BlinkEndTime = _timing.CurTime + TimeSpan.FromDays(3);
 
         // Так как персонажи моргают на протяжении всего времени, то для удобства игрока мы
         // Не добавляем никакие эффекты, если рядом нет SCP использующего механику зрения
@@ -135,8 +135,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     /// <param name="ent">Моргающий</param>
     /// <param name="interval">Через сколько будет следующее моргание</param>
     /// <param name="variance">Плюс-минус время следующего моргания, чтобы вся станция не моргала в один такт</param>
-    /// <param name="predicted">Предугадывается ли клиентом этот вызов метода? Если нет, отправляет клиенту стейт с сервера.</param>
-    public void SetNextBlink(Entity<BlinkableComponent?> ent, TimeSpan interval, TimeSpan? variance = null, bool predicted = true)
+    public void SetNextBlink(Entity<BlinkableComponent?> ent, TimeSpan interval, TimeSpan? variance = null)
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
@@ -152,18 +151,17 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         ent.Comp.NextBlink = _timing.CurTime + interval + variance.Value + ent.Comp.AdditionalBlinkingTime;
         ent.Comp.AdditionalBlinkingTime = TimeSpan.Zero;
 
-        if (!predicted)
-            DirtyFields(ent, null, nameof(BlinkableComponent.NextBlink), nameof(BlinkableComponent.AdditionalBlinkingTime));
+        DirtyFields(ent, null, nameof(BlinkableComponent.NextBlink), nameof(BlinkableComponent.AdditionalBlinkingTime));
     }
 
-    public void ResetBlink(Entity<BlinkableComponent?> ent, bool useVariance = true, bool predicted = true)
+    public void ResetBlink(Entity<BlinkableComponent?> ent, bool useVariance = true)
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
 
         // Если useVariance == false, то variance = 0
         var variance = useVariance ? GetBlinkVariance((ent.Owner, ent.Comp)) : TimeSpan.Zero;
-        SetNextBlink(ent, ent.Comp.BlinkingInterval, variance, predicted);
+        SetNextBlink(ent, ent.Comp.BlinkingInterval, variance);
     }
 
     #endregion
@@ -204,8 +202,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         {
             ent.Comp.BlinkEndTime = _timing.CurTime + duration;
 
-            if (!predicted)
-                DirtyField(ent, nameof(BlinkableComponent.BlinkEndTime));
+            DirtyField(ent, nameof(BlinkableComponent.BlinkEndTime));
 
             _actions.SetCooldown(ent.Comp.EyeToggleActionEntity, duration);
 
