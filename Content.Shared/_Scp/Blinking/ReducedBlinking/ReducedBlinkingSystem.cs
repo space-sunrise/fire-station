@@ -66,7 +66,7 @@ public abstract class SharedReducedBlinkingSystem : EntitySystem
 
         blinkable.AdditionalBlinkingTime = ent.Comp.FirstBlinkingBonusTime;
         DirtyField(target, blinkable, nameof(BlinkableComponent.AdditionalBlinkingTime));
-        _blinking.ResetBlink(target, false);
+        _blinking.ResetBlink(target, predicted: false);
         _useDelay.TryResetDelay(ent);
 
         var comp = new ActiveReducedBlinkingUserComponent()
