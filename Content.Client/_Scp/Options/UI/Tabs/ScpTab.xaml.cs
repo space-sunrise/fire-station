@@ -39,6 +39,12 @@ public sealed partial class ScpTab : Control
         Control.AddOptionPercentSlider(ScpCCVars.FieldOfViewCheckCooldown, FieldOfViewCheckCooldown,
             FieldOfViewComponent.MinCooldownCheck, FieldOfViewComponent.MaxCooldownCheck);
 
+        // Эффект свечения
+        Control.AddOptionCheckBox(ScpCCVars.LightBloomEnable, LightBloomEnable);
+        Control.AddOptionCheckBox(ScpCCVars.LightBloomConeEnable, LightBloomConeEnable);
+        Control.AddOptionCheckBox(ScpCCVars.LightBloomOptimizations, LightBloomOptimizations);
+        Control.AddOptionPercentSlider(ScpCCVars.LightBloomStrength, LightBloomStrength);
+
         // Режим совместимости
         Control.AddOptionCheckBox(ScpCCVars.CompatibilityModeShowWarning, CompatibilityModeShowWarning);
         Control.AddOptionCheckBox(ScpCCVars.CompatibilityModeUseShaders, CompatibilityModeUseShaders);

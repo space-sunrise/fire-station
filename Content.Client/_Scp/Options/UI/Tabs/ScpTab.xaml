@@ -5,32 +5,46 @@
         <ScrollContainer VerticalExpand="True">
             <BoxContainer Orientation="Vertical" Margin="8 8 8 8">
 
-                <Label Text="{Loc 'ui-options-tab-hover-to-see-details'}" StyleClasses="LabelSecondaryColor"/>
+                <Label Text="{Loc ui-options-tab-hover-to-see-details}" StyleClasses="LabelSecondaryColor"/>
 
                 <!-- ГРАФИКА -->
-                <Label Text="{Loc 'ui-options-scp-graphics'}" StyleClasses="LabelKeyText"/>
+                <Label Text="{Loc ui-options-scp-graphics}" StyleClasses="LabelKeyText"/>
 
                 <!-- Зернистость -->
                 <CheckBox Name="GrainToggleOverlayCheckBox"
-                          Text="{Loc 'ui-options-grain-toggle-overlay'}"
+                          Text="{Loc ui-options-grain-toggle-overlay}"
                           ToolTip="{Loc ui-options-grain-toggle-overlay-tooltip}"/>
                 <ui:OptionSlider Name="GrainStrengthSlider"
-                                 Title="{Loc 'ui-options-grain-strength'}"
+                                 Title="{Loc ui-options-grain-strength}"
                                  ToolTip="{Loc ui-options-grain-strength-tooltip}"/>
 
                 <!-- Поле зрения -->
                 <CheckBox Name="FieldOfViewUseAltMethod"
-                          Text="{Loc 'ui-options-field-of-view-use-alt-method'}"
+                          Text="{Loc ui-options-field-of-view-use-alt-method}"
                           ToolTip="{Loc ui-options-field-of-view-use-alt-method-tooltip}"/>
                 <ui:OptionSlider Name="FieldOfViewBlurScale"
-                                 Title="{Loc 'ui-options-field-of-view-blur-scale'}"
+                                 Title="{Loc ui-options-field-of-view-blur-scale}"
                                  ToolTip="{Loc ui-options-field-of-view-blur-scale-tooltip}"/>
                 <ui:OptionSlider Name="FieldOfViewCheckCooldown"
-                                 Title="{Loc 'ui-options-field-of-view-check-cooldown'}"
+                                 Title="{Loc ui-options-field-of-view-check-cooldown}"
                                  ToolTip="{Loc ui-options-field-of-view-check-cooldown-tooltip}"/>
                 <ui:OptionSlider Name="FieldOfViewOpacitySlider"
-                                 Title="{Loc 'ui-options-field-of-view-opacity'}"
+                                 Title="{Loc ui-options-field-of-view-opacity}"
                                  ToolTip="{Loc ui-options-field-of-view-opacity-tooltip}"/>
+
+                <!-- Эффект свечения -->
+                <CheckBox Name="LightBloomEnable"
+                          Text="{Loc ui-options-light-bloom-enable}"
+                          ToolTip="{Loc ui-options-light-bloom-enable-tooltip}"/>
+                <CheckBox Name="LightBloomConeEnable"
+                          Text="{Loc ui-options-light-bloom-cone-enable}"
+                          ToolTip="{Loc ui-options-light-bloom-cone-enable-tooltip}"/>
+                <CheckBox Name="LightBloomOptimizations"
+                          Text="{Loc ui-options-light-bloom-optimizations}"
+                          ToolTip="{Loc ui-options-light-bloom-optimizations-tooltip}"/>
+                <ui:OptionSlider Name="LightBloomStrength"
+                                 Title="{Loc ui-options-light-bloom-strength}"
+                                 ToolTip="{Loc ui-options-light-bloom-strength-tooltip}"/>
 
                 <!-- Режим совместимости -->
                 <CheckBox Name="CompatibilityModeShowWarning"
@@ -43,30 +57,30 @@
                           ToolTip="{Loc ui-options-compatibility-mode-use-shaders-tooltip}"/>
 
                 <!-- АУДИО -->
-                <Label Text="{Loc 'ui-options-scp-audio'}" StyleClasses="LabelKeyText"/>
+                <Label Text="{Loc ui-options-scp-audio}" StyleClasses="LabelKeyText"/>
 
                 <!-- Эхо -->
                 <CheckBox Name="EchoEnabled"
-                          Text="{Loc 'ui-options-scp-echo-enabled'}"
+                          Text="{Loc ui-options-scp-echo-enabled}"
                           ToolTip="{Loc ui-options-scp-echo-enabled-tooltip}" />
                 <CheckBox Name="EchoStrongPresetPreferred"
-                          Text="{Loc 'ui-options-scp-echo-strong-preset-preferred'}"
+                          Text="{Loc ui-options-scp-echo-strong-preset-preferred}"
                           ToolTip="{Loc ui-options-scp-echo-strong-preset-preferred-tooltip}" />
 
                 <!-- Подавление звуков -->
                 <CheckBox Name="AudioMufflingEnabled"
-                          Text="{Loc 'ui-options-scp-audio-muffling-enabled'}"
+                          Text="{Loc ui-options-scp-audio-muffling-enabled}"
                           ToolTip="{Loc ui-options-scp-audio-muffling-enabled-tooltip}" />
                 <CheckBox Name="AudioMufflingHighFrequencyUpdate"
-                          Text="{Loc 'ui-options-scp-audio-muffling-use-high-frequency-update'}"
+                          Text="{Loc ui-options-scp-audio-muffling-use-high-frequency-update}"
                           ToolTip="{Loc ui-options-scp-audio-muffling-use-high-frequency-update-tooltip}" />
 
                 <!-- ИГРА -->
-                <Label Text="{Loc 'ui-options-scp-game'}" StyleClasses="LabelKeyText"/>
+                <Label Text="{Loc ui-options-scp-game}" StyleClasses="LabelKeyText"/>
 
                 <!-- Автооткрытие меню персонажа -->
                 <CheckBox Name="AutoOpenCharacterWindowEnabled"
-                          Text="{Loc 'ui-options-scp-game-auto-open-character-window-enabled'}"
+                          Text="{Loc ui-options-scp-game-auto-open-character-window-enabled}"
                           ToolTip="{Loc ui-options-scp-game-auto-open-character-window-enabled-tooltip}" />
 
             </BoxContainer>

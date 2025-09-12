@@ -7,39 +7,43 @@ using DrawDepth = Content.Shared.DrawDepth.DrawDepth;
 
 namespace Content.Client._Scp.Shaders.Bloom;
 
-public sealed class MaskLightingOverlay : Overlay
+public sealed class ConeLightingOverlay : Overlay
 {
     public override OverlaySpace Space => OverlaySpace.WorldSpaceEntities;
     public override bool RequestScreenTexture => true;
 
     private readonly ShaderInstance _shader;
-    private static readonly ProtoId<ShaderPrototype> Shader = "LightingOverlay";
 
     private readonly Texture _maskTexture;
     private readonly Vector2 _maskOffset;
 
     public List<(TransformComponent xform, Matrix3x2 matrix, Vector2 worldPos, Color color)> Entities = [];
-    public bool Enabled = true;
+    public bool Enabled;
+    public float Strength = 1f;
 
-    public MaskLightingOverlay(IPrototypeManager prototypeManager, SpriteSystem spriteSystem)
+    public ConeLightingOverlay(IPrototypeManager prototypeManager, SpriteSystem spriteSystem, ProtoId<ShaderPrototype> shader)
     {
         IoCManager.InjectDependencies(this);
 
-        _shader = prototypeManager.Index(Shader).InstanceUnique();
+        _shader = prototypeManager.Index(shader).InstanceUnique();
         ZIndex = (int) DrawDepth.Effects;
 
-        _maskTexture = spriteSystem.Frame0(BloomOverlayVisualsComponent.Mask);
+        _maskTexture = spriteSystem.Frame0(BloomOverlayVisualsComponent.Cone);
 
-        var xOffset = BloomOverlayVisualsComponent.MaskOffset.X - (_maskTexture.Width / 2f) / EyeManager.PixelsPerMeter;
-        var yOffset = BloomOverlayVisualsComponent.MaskOffset.Y - (_maskTexture.Height / 2f) / EyeManager.PixelsPerMeter;
+        var xOffset = BloomOverlayVisualsComponent.ConeOffset.X - (_maskTexture.Width / 2f) / EyeManager.PixelsPerMeter;
+        var yOffset = BloomOverlayVisualsComponent.ConeOffset.Y - (_maskTexture.Height / 2f) / EyeManager.PixelsPerMeter;
         _maskOffset = new Vector2(xOffset, yOffset);
+    }
+
+    protected override bool BeforeDraw(in OverlayDrawArgs args)
+    {
+        base.BeforeDraw(in args);
+
+        return Enabled;
     }
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        if (!Enabled)
-            return;
-
         if (ScreenTexture == null)
             return;
 
@@ -47,6 +51,8 @@ public sealed class MaskLightingOverlay : Overlay
         var bounds = args.WorldAABB.Enlarged(5f);
 
         _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+        _shader.SetParameter("base_haze", BloomOverlayVisualsComponent.DefaultConeBaseHaze);
+        _shader.SetParameter("hueta_divisor", BloomOverlayVisualsComponent.DefaultConeHuetaDivisor / Strength);
         handle.UseShader(_shader);
 
         foreach (var (xform, matrix, worldPos, color) in Entities)
