@@ -7,6 +7,7 @@
 # This is acceptable under the GDPR as a "legitimate interest" to prevent GDPR erasure being used to avoid moderation/bans.
 # You would need to do this *before* running this script, to avoid losing the IP/HWID of the user entirely.
 
+
 import argparse
 import os
 import psycopg2
