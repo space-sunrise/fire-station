@@ -117,6 +117,6 @@ public sealed class BlinkingOverlay : Overlay
     /// </summary>
     public bool AreEyesClosed()
     {
-        return MathHelper.CloseTo(_blinkingProgress, 1f);
+        return _blinkingProgress >= 0.01f;
     }
 }

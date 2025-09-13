@@ -115,6 +115,9 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         if (!TryEyes(ent, manual, useEffects))
             return;
 
+        if (!_overlay.AreEyesClosed())
+            return;
+
         _overlay.OpenEyes();
         _audio.PlayGlobal(EyeOpenSound, ent);
     }
@@ -129,6 +132,11 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     private void CloseEyes(Entity<BlinkableComponent> ent, bool manual = false, bool useEffects = false)
     {
         if (!TryEyes(ent, manual, useEffects))
+            return;
+
+        // Основная проверка, которая определяет наличие эффектов.
+        // Если ничего из этого не выполняется, значит эффекты не нужны
+        if (!manual && !IsScpNearby(ent) && !useEffects)
             return;
 
         _overlay.CloseEyes();
@@ -149,11 +157,6 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
             return false;
 
         if (_player.LocalEntity != ent)
-            return false;
-
-        // Основная проверка, которая определяет наличие эффектов.
-        // Если ничего из этого не выполняется, значит эффекты не нужны
-        if (!manual && !IsScpNearby(ent) && !useEffects)
             return false;
 
         // Странная конструкция, которая исправляет странную проблему.
