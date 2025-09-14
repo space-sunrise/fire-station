@@ -68,4 +68,11 @@ public sealed class PointLightingOverlay : Overlay
         handle.UseShader(null);
         handle.SetTransform(Matrix3x2.Identity);
     }
+
+    protected override void DisposeBehavior()
+    {
+        base.DisposeBehavior();
+
+        _shader.Dispose();
+    }
 }
