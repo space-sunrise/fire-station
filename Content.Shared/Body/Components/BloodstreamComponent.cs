@@ -125,7 +125,7 @@ public sealed partial class BloodstreamComponent : Component
     public SoundSpecifier InstantBloodSound = new SoundCollectionSpecifier("BleedingStart");
 
     [DataField]
-    public SoundSpecifier BloodDrippingSound = new SoundCollectionSpecifier("BloodDripping", AudioParams.Default.WithVolume(-5f));
+    public SoundSpecifier BloodDrippingSound = new SoundCollectionSpecifier("BloodDripping", AudioParams.Default.AddVolume(-7f).WithMaxDistance(3f).WithVariation(0.125f));
     // Fire edit end
 
     /// <summary>
