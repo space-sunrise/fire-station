@@ -43,6 +43,7 @@ public sealed partial class ScpTab : Control
         // Эффект свечения
         Control.AddOptionCheckBox(ScpCCVars.LightBloomEnable, LightBloomEnable);
         Control.AddOptionCheckBox(ScpCCVars.LightBloomConeEnable, LightBloomConeEnable);
+        Control.AddOptionPercentSlider(ScpCCVars.LightBloomConeOpacity, LightBloomConeOpacity);
         Control.AddOptionCheckBox(ScpCCVars.LightBloomOptimizations, LightBloomOptimizations);
         Control.AddOptionPercentSlider(ScpCCVars.LightBloomStrength, LightBloomStrength);
 
@@ -93,6 +94,11 @@ public sealed partial class ScpTab : Control
             LightBloomConeEnable.Visible = enabled;
             LightBloomOptimizations.Visible = enabled;
             LightBloomStrength.Visible = enabled;
+        };
+
+        LightBloomConeEnable.OnToggled += _ =>
+        {
+            LightBloomConeOpacity.Visible = LightBloomConeEnable.Pressed;
         };
 
         EchoEnabled.OnToggled += _ =>

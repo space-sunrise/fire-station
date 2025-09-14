@@ -39,6 +39,9 @@
                 <CheckBox Name="LightBloomConeEnable"
                           Text="{Loc ui-options-light-bloom-cone-enable}"
                           ToolTip="{Loc ui-options-light-bloom-cone-enable-tooltip}"/>
+                <ui:OptionSlider Name="LightBloomConeOpacity"
+                                 Title="{Loc ui-options-light-bloom-cone-opacity}"
+                                 ToolTip="{Loc ui-options-light-bloom-cone-opacity-tooltip}"/>
                 <CheckBox Name="LightBloomOptimizations"
                           Text="{Loc ui-options-light-bloom-optimizations}"
                           ToolTip="{Loc ui-options-light-bloom-optimizations-tooltip}"/>

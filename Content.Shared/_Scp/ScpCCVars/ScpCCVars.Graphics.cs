@@ -81,6 +81,13 @@ public sealed partial class ScpCCVars
         CVarDef.Create("scp.light_bloom_cone_enable", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
+    /// Определяет прозрачность конуса свечения.
+    /// Определяется в процентах от 0% до 100%
+    /// </summary>
+    public static readonly CVarDef<float> LightBloomConeOpacity =
+        CVarDef.Create("scp.light_bloom_cone_opacity", 0.4f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
     /// При включении не рисуется на невидимых для игрока позициях эффект, что увеличивает производительность ТОЛЬКО на слабых видеокартах.
     /// В остальных случаях снижает FPS из-за проверок на видимость. Поэтому это опционально.
     /// </summary>

@@ -17,7 +17,11 @@ public sealed class PointLightingOverlay : Overlay
     private readonly Texture _pointTexture;
     private readonly Vector2 _pointOffset;
 
-    public List<(TransformComponent xform, Matrix3x2 matrix, Vector2 worldPos, Color color)> Entities = [];
+    /// <summary>
+    /// Главный список для хранения сущностей для рендеринга эффекта.
+    /// Создается в системе и передается сюда
+    /// </summary>
+    public readonly List<(TransformComponent xform, Matrix3x2 matrix, Vector2 worldPos, Color color)> Entities = [];
     public bool Enabled;
     public float Strength = 1f;
 

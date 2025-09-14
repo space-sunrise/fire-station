@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using Content.Shared._Scp.Proximity;
+﻿using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.ScpCCVars;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -35,15 +34,10 @@ public sealed class LightingOverlaySystem : EntitySystem
     private bool _coneEnabled;
     private bool _optimizationsEnabled;
 
+    private float _coneOpacity;
     private float _strength;
 
     private ConfigurationMultiSubscriptionBuilder _configSub = default!;
-
-    /// <summary>
-    /// Главный список для хранения сущностей для рендеринга эффекта.
-    /// Создается в системе и передается в оба оверлея.
-    /// </summary>
-    private readonly List<(TransformComponent xform, Matrix3x2 matrix, Vector2 worldPos, Color color)> _entities = [];
 
     public override void Initialize()
     {
@@ -58,6 +52,7 @@ public sealed class LightingOverlaySystem : EntitySystem
         _configSub = _cfg.SubscribeMultiple()
             .OnValueChanged(ScpCCVars.LightBloomEnable, OnAllEnabledChanged, true)
             .OnValueChanged(ScpCCVars.LightBloomConeEnable, OnConeEnabledChanged, true)
+            .OnValueChanged(ScpCCVars.LightBloomConeOpacity, x => _coneOpacity = x, true)
             .OnValueChanged(ScpCCVars.LightBloomOptimizations, b => _optimizationsEnabled = b, true)
             .OnValueChanged(ScpCCVars.LightBloomStrength, OnStrengthChanged, true);
     }
@@ -72,7 +67,8 @@ public sealed class LightingOverlaySystem : EntitySystem
         if (!_allEnabled)
             return;
 
-        _entities.Clear();
+        _cone.Entities.Clear();
+        _point.Entities.Clear();
 
         var drawFov = _eyeQuery.TryComp(_player.LocalEntity.Value, out var eye) && eye.DrawFov;
 
@@ -93,11 +89,10 @@ public sealed class LightingOverlaySystem : EntitySystem
 
             var (worldPos, _, worldMatrix) = _transform.GetWorldPositionRotationMatrix(xform, _transformQuery);
 
-            _entities.Add((xform, worldMatrix, worldPos, pointLight.Color));
+            var color = pointLight.Color;
+            _cone.Entities.Add((xform, worldMatrix, worldPos, color.WithAlpha(color.A * _coneOpacity)));
+            _point.Entities.Add((xform, worldMatrix, worldPos, pointLight.Color));
         }
-
-        _cone.Entities = _entities;
-        _point.Entities = _entities;
     }
 
     public override void Shutdown()
