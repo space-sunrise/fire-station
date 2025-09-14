@@ -124,7 +124,10 @@ public abstract partial class SharedScp106System
 
     private void OnScp106BareBladeAction(Entity<Scp106Component> ent, ref Scp106BareBladeAction args)
     {
-        TryToggleBlade(ent, ref args);
+        if (args.Handled)
+            return;
+
+        args.Handled = TryToggleBlade(ent, ref args);
     }
 
     public bool TryToggleBlade(Entity<Scp106Component> ent, ref Scp106BareBladeAction args, bool force = false)

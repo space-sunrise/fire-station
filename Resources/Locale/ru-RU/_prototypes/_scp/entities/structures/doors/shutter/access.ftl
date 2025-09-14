@@ -1,11 +1,11 @@
 ent-ScpBlastDoorRegionalAdministration = { ent-ScpBlastDoor }
-    .suffix = Региональное Управление, Закрыт
+    .suffix = Региональное управление, Закрыт
     .desc = { ent-ScpBlastDoor.desc }
 ent-ScpBlastDoorExit = { ent-ScpBlastDoor }
     .suffix = Выход, Закрыт
     .desc = { ent-ScpBlastDoor.desc }
 ent-ScpShuttersWindowRegionalAdministration = { ent-ScpShuttersWindow }
-    .suffix = Региональное Управление, Закрыт
+    .suffix = Региональное управление, Закрыт
     .desc = { ent-ScpShuttersWindow.desc }
 ent-ScpShuttersWindowExit = { ent-ScpShuttersWindow }
     .suffix = Выход, Закрыт
