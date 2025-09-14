@@ -8,20 +8,17 @@ public sealed class HighlightSystem : SharedHighlightSystem
     /// <summary>
     /// <inheritdoc cref="SharedHighlightSystem.Highlight"/>
     /// </summary>
-    public void NetHighlight(EntityUid target, EntityUid? recipient = null, int highlightTimes = 3)
+    public void NetHighlight(EntityUid target, EntityUid recipient, int highlightTimes = 3)
     {
         var comp = EnsureComp<HighlightedComponent>(target);
 
-        if (recipient.HasValue)
-        {
-            comp.Recipient = recipient;
-            Dirty(target, comp);
-        }
+        comp.Recipient = recipient;
+        Dirty(target, comp);
 
         var entity = GetNetEntity(target);
 
         var ev = new HighLightStartEvent(entity);
-        RaiseNetworkEvent(ev);
+        RaiseNetworkEvent(ev, recipient);
 
         if (highlightTimes == -1)
             return;
@@ -35,7 +32,7 @@ public sealed class HighlightSystem : SharedHighlightSystem
                     return;
 
                 var endEvent = new HighLightEndEvent(entity);
-                RaiseNetworkEvent(endEvent);
+                RaiseNetworkEvent(endEvent, recipient);
 
                 RemCompDeferred<HighlightedComponent>(target);
             },
@@ -45,7 +42,7 @@ public sealed class HighlightSystem : SharedHighlightSystem
     /// <summary>
     /// <inheritdoc cref="SharedHighlightSystem.HighLightAll"/>
     /// </summary>
-    public void NetHighlightAll(IEnumerable<EntityUid> list, EntityUid? recipient = null)
+    public void NetHighlightAll(IEnumerable<EntityUid> list, EntityUid recipient)
     {
         foreach (var uid in list)
         {
@@ -56,7 +53,7 @@ public sealed class HighlightSystem : SharedHighlightSystem
     /// <summary>
     /// <inheritdoc cref="SharedHighlightSystem.HighLightAll"/>
     /// </summary>
-    public void NetHighlightAll(ReadOnlySpan<EntityUid> list, EntityUid? recipient = null)
+    public void NetHighlightAll(ReadOnlySpan<EntityUid> list, EntityUid recipient)
     {
         foreach (var uid in list)
         {
