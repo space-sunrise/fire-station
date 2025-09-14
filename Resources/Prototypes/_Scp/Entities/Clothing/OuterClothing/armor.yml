@@ -23,7 +23,7 @@
   - type: GroupExamine
 
 - type: entity
-  parent: ClothingOuterCoatPilot
+  parent: [ClothingOuterCoatPilot, AllowSuitStorageClothing]
   id: ClothingOuterCoatSquadLeader
   name: squad leader coat
   description: A heavy-duty coat issued to squad leaders. Reinforced fabric offers additional protection while maintaining an authoritative appearance.
