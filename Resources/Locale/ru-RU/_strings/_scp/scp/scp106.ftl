@@ -1,7 +1,9 @@
+scp106-already-in-dimension = Вы уже в своем измерении
 scp106-return-to-containment = Внимание персоналу! Особые условия содержания SCP-106 успешно восстановлены.
 scp106-abilities-suppressed = Ваши способности подавлены
 not-enough-essence = Недостаточно эссенции { $count }
 scp106-phantom-killed = Кажется, это была всего лишь иллюзия...
+scp106-not-enough-power = Ваше влияние здесь еще слишком мало, чтобы сделать это.
 scp106-dimension-shift-alarm-announcement =
     ЭКСТРЕННОЕ СООБЩЕНИЕ ПЕРСОНАЛУ КОМПЛЕКСА!
 

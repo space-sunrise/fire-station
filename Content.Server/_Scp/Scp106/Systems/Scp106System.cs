@@ -68,6 +68,7 @@ public sealed partial class Scp106System : SharedScp106System
         SubscribeLocalEvent<Scp106Component, Scp106TeleportationDelayActionEvent>(OnTeleportationDelay);
         SubscribeLocalEvent<HumanoidAppearanceComponent, FearCalmDownAttemptEvent>(OnFearCalmDownAttempt);
 
+        InitializeAbilities();
         InitializeStore();
         InitializePhantom();
         InitializePortals();

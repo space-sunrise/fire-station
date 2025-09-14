@@ -40,8 +40,7 @@ public sealed partial class Scp106Component : Component
     public TimeSpan PhantomCoolDown = TimeSpan.FromSeconds(300);
 
     [ViewVariables]
-    public bool HandTransformed = false;
-    public EntityUid? Sword;
+    public EntityUid? BladeEntity;
 
     #endregion
 }
