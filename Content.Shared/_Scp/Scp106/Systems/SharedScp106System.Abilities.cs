@@ -5,6 +5,7 @@ using Content.Shared._Scp.Fear.Systems;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.Coordinates;
 using Content.Shared.Popups;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp106.Systems;
 
@@ -22,6 +23,7 @@ public abstract partial class SharedScp106System
         SubscribeLocalEvent<Scp106Component, Scp106BecomePhantomAction>(OnScp106BecomePhantomAction);
         SubscribeLocalEvent<Scp106Component, Scp106BecomeTeleportPhantomAction>(OnBecomeTeleportPhantomAction);
         SubscribeLocalEvent<Scp106Component, Scp106TerrifyNearbyActionEvent>(OnTerrify);
+        SubscribeLocalEvent<Scp106Component, Scp106BareBladeAction>(OnScp106BareBladeAction);
 
         SubscribeLocalEvent<Scp106Component, Scp106BackroomsActionEvent>(OnBackroomsDoAfter);
         SubscribeLocalEvent<Scp106Component, Scp106RandomTeleportActionEvent>(OnTeleportDoAfter);
@@ -31,7 +33,8 @@ public abstract partial class SharedScp106System
     {
         if (IsInDimension(ent))
         {
-            _popup.PopupEntity("Вы уже в своем измерении", ent, ent, PopupType.SmallCaution);
+            var message = Loc.GetString("scp106-already-in-dimension");
+            _popup.PopupEntity(message, ent, ent, PopupType.SmallCaution);
             return;
         }
 
@@ -119,6 +122,34 @@ public abstract partial class SharedScp106System
         args.Handled = true;
     }
 
+    private void OnScp106BareBladeAction(Entity<Scp106Component> ent, ref Scp106BareBladeAction args)
+    {
+        if (args.Handled)
+            return;
+
+        args.Handled = TryToggleBlade(ent, ref args);
+    }
+
+    public bool TryToggleBlade(Entity<Scp106Component> ent, ref Scp106BareBladeAction args, bool force = false)
+    {
+        if (args.Handled)
+            return false;
+
+        // Клинок можно использовать только в карманном измерении или форсированно через код
+        if (!IsInDimension(ent) && !force)
+        {
+            var message = Loc.GetString("scp106-not-enough-power");
+            _popup.PopupClient(message, ent, ent);
+
+            return false;
+        }
+
+        ToggleBlade(ent, args.Prototype);
+
+        args.Handled = true;
+        return true;
+    }
+
     private void StartScreech(Entity<XenoScreechComponent?> ent, bool playSound = true)
     {
         if (!Resolve(ent, ref ent.Comp))
@@ -129,4 +160,6 @@ public abstract partial class SharedScp106System
 
         SpawnAttachedTo(ent.Comp.Effect, ent.Owner.ToCoordinates());
     }
+
+    protected virtual void ToggleBlade(Entity<Scp106Component> ent, EntProtoId blade) { }
 }

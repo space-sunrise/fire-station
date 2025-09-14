@@ -161,6 +161,7 @@ public sealed class Scp173System : SharedScp173System
             return;
 
         _widget.Parent?.RemoveChild(_widget);
+        _widget.RemoveAllChildren();
         _widget = null;
     }
 

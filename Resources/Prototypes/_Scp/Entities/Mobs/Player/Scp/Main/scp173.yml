@@ -47,6 +47,16 @@
       groups:
         Brute: 10
   - type: Muted
+  - type: DamageOnHighSpeedImpact
+    stunChance: 0
+    speedDamageFactor: 0
+    useColor: false
+    damageCooldown: 0.5
+    soundHit:
+      path: /Audio/_Scp/Scp173/smash.ogg
+      params:
+        volume: -5
+        maxDistance: 5
   - type: ActionGrant
     actions:
     - Scp173Blind

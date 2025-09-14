@@ -14,6 +14,8 @@ public sealed class HighlightSystem : SharedHighlightSystem
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
 
+    private static readonly ProtoId<ShaderPrototype> ShaderProtoId = "HighlightWave";
+
     /// <summary>
     /// Шейдер подсвечивания.
     /// Будет накладываться на текстуры используя внутренние методы спрайта.
@@ -24,7 +26,7 @@ public sealed class HighlightSystem : SharedHighlightSystem
     {
         base.Initialize();
 
-        _highlightShader = _prototype.Index<ShaderPrototype>("HighlightWave").Instance();
+        _highlightShader = _prototype.Index(ShaderProtoId).Instance();
 
         SubscribeLocalEvent<HighlightedComponent, HighLightStartEvent>(OnHighlightStarted);
         SubscribeLocalEvent<SpriteComponent, HighLightEndEvent>(OnHighlightEnded);

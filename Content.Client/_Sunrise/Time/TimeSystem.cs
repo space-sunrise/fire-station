@@ -9,6 +9,6 @@ public sealed class TimeSystem : EntitySystem
 
     public string GetDate()
     {
-        return (DateTime.UtcNow + TimeSpan.FromHours(3)).AddYears(1000).ToString("dd.MM.yyyy");
+        return (DateTime.UtcNow + TimeSpan.FromHours(3)).AddYears(0).ToString("dd.MM.yyyy"); // Fire edit
     }
 }

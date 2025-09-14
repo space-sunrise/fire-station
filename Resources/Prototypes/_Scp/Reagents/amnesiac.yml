@@ -25,16 +25,15 @@
           min: 5
     Narcotic:
       effects:
-      - !type:GenericStatusEffect
-        key: ForcedSleep
-        component: ForcedSleeping
-        refresh: false
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectForcedSleeping
+        time: 5
         type: Add
         conditions:
         - !type:ReagentThreshold
           reagent: AmnesiacA
           min: 4
-    
+
 - type: reagent
   id: AmnesiacB
   name: reagent-amnesiac-b-name
@@ -62,16 +61,15 @@
           min: 5
     Narcotic:
       effects:
-      - !type:GenericStatusEffect
-        key: ForcedSleep
-        component: ForcedSleeping
-        refresh: false
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectForcedSleeping
+        time: 7
         type: Add
         conditions:
         - !type:ReagentThreshold
           reagent: AmnesiacB
           min: 4
-        
+
 - type: reagent
   id: AmnesiacC
   name: reagent-amnesiac-c-name
@@ -99,16 +97,15 @@
           min: 5
     Narcotic:
       effects:
-      - !type:GenericStatusEffect
-        key: ForcedSleep
-        component: ForcedSleeping
-        refresh: false
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectForcedSleeping
+        time: 9
         type: Add
         conditions:
         - !type:ReagentThreshold
           reagent: AmnesiacC
           min: 4
-    
+
 - type: reagent
   id: AmnesiacD
   name: reagent-amnesiac-d-name
@@ -136,16 +133,15 @@
           min: 5
     Narcotic:
       effects:
-      - !type:GenericStatusEffect
-        key: ForcedSleep
-        component: ForcedSleeping
-        refresh: false
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectForcedSleeping
+        time: 12
         type: Add
         conditions:
         - !type:ReagentThreshold
           reagent: AmnesiacD
           min: 4
-        
+
 - type: reagent
   id: RawAmnesiac
   name: reagent-amnesiac-raw-name
@@ -157,12 +153,11 @@
   metabolisms:
     Narcotic:
       effects:
-      - !type:GenericStatusEffect
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectForcedSleeping
+        time: 2
+        type: Add
         conditions:
         - !type:ReagentThreshold
           reagent: RawAmnesiac
           min: 5
-        key: ForcedSleep
-        component: ForcedSleeping
-        refresh: false
-        type: Add

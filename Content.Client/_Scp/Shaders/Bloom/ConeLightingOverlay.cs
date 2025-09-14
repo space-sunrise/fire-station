@@ -17,7 +17,11 @@ public sealed class ConeLightingOverlay : Overlay
     private readonly Texture _maskTexture;
     private readonly Vector2 _maskOffset;
 
-    public List<(TransformComponent xform, Matrix3x2 matrix, Vector2 worldPos, Color color)> Entities = [];
+    /// <summary>
+    /// Главный список для хранения сущностей для рендеринга эффекта.
+    /// Создается в системе и передается сюда
+    /// </summary>
+    public readonly List<(TransformComponent xform, Matrix3x2 matrix, Vector2 worldPos, Color color)> Entities = [];
     public bool Enabled;
     public float Strength = 1f;
 
@@ -67,5 +71,12 @@ public sealed class ConeLightingOverlay : Overlay
 
         handle.UseShader(null);
         handle.SetTransform(Matrix3x2.Identity);
+    }
+
+    protected override void DisposeBehavior()
+    {
+        base.DisposeBehavior();
+
+        _shader.Dispose();
     }
 }

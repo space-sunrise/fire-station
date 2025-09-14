@@ -392,7 +392,8 @@ public abstract class SharedBloodstreamSystem : EntitySystem
         }
 
         // Fire added start - звуки капающей крови
-        _audio.PlayPvs(ent.Comp.BloodDrippingSound, ent);
+        if (_timing.IsFirstTimePredicted)
+            _audio.PlayLocal(ent.Comp.BloodDrippingSound, ent, ent);
         // Fire added end
 
         SolutionContainer.UpdateChemicals(ent.Comp.TemporarySolution.Value);

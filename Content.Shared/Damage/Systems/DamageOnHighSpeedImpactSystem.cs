@@ -52,9 +52,13 @@ public sealed class DamageOnHighSpeedImpactSystem : EntitySystem
 
         _damageable.TryChangeDamage(uid, component.Damage * damageScale);
 
+        // Fire edit start
         if (_gameTiming.IsFirstTimePredicted)
-            _audio.PlayPvs(component.SoundHit, uid, AudioParams.Default.WithVariation(0.125f).WithVolume(-0.125f));
-        _color.RaiseEffect(Color.Red, new List<EntityUid>() { uid }, Filter.Pvs(uid, entityManager: EntityManager));
+            _audio.PlayPredicted(component.SoundHit, uid, uid, component.SoundHit.Params.WithVariation(0.125f).AddVolume(-0.125f));
+
+        if (component.UseColor)
+            _color.RaiseEffect(Color.Red, new List<EntityUid>() { uid }, Filter.Pvs(uid, entityManager: EntityManager));
+        // Fire edit end
     }
 
     public void ChangeCollide(EntityUid uid, float minimumSpeed, float stunSeconds, float damageCooldown, float speedDamage, DamageOnHighSpeedImpactComponent? collide = null)

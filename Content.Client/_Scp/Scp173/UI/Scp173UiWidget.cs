@@ -16,4 +16,11 @@ public sealed class Scp173UiWidget : UIWidget
     {
         _bar.UpdateInfo(current, max, bloatedMax);
     }
+
+    protected override void ExitedTree()
+    {
+        base.ExitedTree();
+
+        RemoveAllChildren();
+    }
 }
