@@ -20,10 +20,12 @@
       - TapePlayer # бумбокс
       - MusicTape # Касеты бумбокса
       - Pill
+      - Paper
       tags:
       - Syringe
       - SunriseUplink # рыбаплинк
       - PillCanister
+      - Pen
   - type: StorageFill
     contents:
     - id: Hemostat
