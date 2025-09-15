@@ -1943,6 +1943,7 @@ PassengerPDA: BaseFoundationPDA
 
 ClothingOuterHardsuitMH: ClothingOuterArmorMobileTaskForceMH
 ClothingOuterHardsuitMHLeader: ClothingOuterArmorMobileTaskForceMH
+ClothingHeadHelmetMHL: ClothingHelmetMobileTaskForceMH
 
 GunSafeInternalSecurityOperative: null
 BriefcaseTribunalOfficerFilled: null

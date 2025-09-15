@@ -37,13 +37,6 @@
   suffix: MTF
 
 - type: entity
-  parent: ClothingHeadHelmetCBURN
-  id: ClothingHeadHelmetMH
-  name: helmet
-  description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
-  suffix: MTF
-
-- type: entity
   parent: ClothingHeadHelmetHardsuitDeathsquad
   id: ClothingHeadHelmetHardsuitRRH
   name: hardsuit helmet
