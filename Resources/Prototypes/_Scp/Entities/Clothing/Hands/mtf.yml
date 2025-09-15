@@ -1,0 +1,14 @@
+﻿- type: entity
+  parent: ClothingHandsGlovesSyntheticBase
+  id: ClothingHandsGlovesMobileTaskForceMH
+  name: insulated tactical gloves
+  description: Heavy-duty gloves lined with insulating fibers. Designed to protect the wearer from hazardous materials and electrical discharge.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Hands/Gloves/MTF/mh.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Hands/Gloves/MTF/mh.rsi
+  - type: Insulated
+  - type: Fiber
+    fiberMaterial: fibers-insulative

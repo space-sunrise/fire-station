@@ -54,3 +54,22 @@
     components:
     - type: Scp096Protection
       problemChance: 0.002 # 0,2% каждый тик проебаться
+
+- type: entity
+  parent: ClothingHeadHatHoodRad
+  id: ClothingHelmetMobileTaskForceMH
+  name: protective field helmet
+  description: A helmet with sealed filtration systems and reinforced plating. Provides resistance to heat, radiation, and impact.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mh.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mh.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Heat: 0.95
+        Radiation: 0.65
+        Blunt: 0.95
+        Slash: 0.95
