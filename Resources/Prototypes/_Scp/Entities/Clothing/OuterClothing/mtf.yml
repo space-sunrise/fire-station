@@ -79,18 +79,30 @@
   suffix: MTF
 
 - type: entity
-  parent: ClothingOuterHardsuitCBURN
-  id: ClothingOuterHardsuitMH
-  name: hardsuit
-  description: A sealed protective gear set with massive connection nodes. The materials are resistant to hostile environments.
+  parent: [ClothingOuterBaseLarge, GeigerCounterClothing, AllowSuitStorageClothing]
+  id: ClothingOuterArmorMobileTaskForceMH
+  name: reinforced biohazard armor
+  description: A sealed protective suit reinforced against corrosive agents and radiation exposure. Designed for extended field deployment in hostile environments.
   suffix: MTF
-
-- type: entity
-  parent: ClothingOuterHardsuitCBURNLeader
-  id: ClothingOuterHardsuitMHLeader
-  name: commander's hardsuit
-  description: A sealed protective gear set with massive connection nodes. The materials are resistant to hostile environments. It is distinguished by more expressive trim elements.
-  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mh.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mh.rsi
+  - type: Pierceable
+    level: Metal
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 0.85
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.8
+        Heat: 0.2
+        Radiation: 0.01
+        Caustic: 0.1
 
 - type: entity
   parent: ClothingOuterHardsuitDeathsquad

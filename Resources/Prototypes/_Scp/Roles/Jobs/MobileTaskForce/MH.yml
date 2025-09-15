@@ -22,21 +22,21 @@
   equipment:
     jumpsuit: ClothingUniformMH
     back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsMagCombat
+    shoes: ClothingShoesBootsNTFFilled
     mask: ClothingMaskMTF
     eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitMHLeader
+    head: ClothingHelmetMobileTaskForceMH
+    gloves: ClothingHandsGlovesMobileTaskForceMH
+    outerClothing: ClothingOuterArmorMobileTaskForceMH
     id: KeyCardMtfMHLeader
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMilitaryWebbingMH
     pocket1: BaseUplinkMTFLeader
-    pocket2: PinpointerNuclear
+    pocket2: CombatKnife
   storage:
     back:
     - BoxMRE
     - Crowbar
-    - CombatKnife
     - HandheldCriminalRecordsMonitorUnpowered
     - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
@@ -75,11 +75,12 @@
   equipment:
     jumpsuit: ClothingUniformMH
     back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsMagCombat
+    shoes: ClothingShoesBootsNTFFilled
     mask: ClothingMaskMTF
     eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitMH
+    head: ClothingHelmetMobileTaskForceMH
+    gloves: ClothingHandsGlovesMobileTaskForceMH
+    outerClothing: ClothingOuterArmorMobileTaskForceMH
     id: KeyCardMtfMHSpecialist
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMilitaryWebbingMH
@@ -125,11 +126,12 @@
   equipment:
     jumpsuit: ClothingUniformMH
     back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsMagCombat
+    shoes: ClothingShoesBootsNTFFilled
     mask: ClothingMaskMTF
     eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitMH
+    head: ClothingHelmetMobileTaskForceMH
+    gloves: ClothingHandsGlovesMobileTaskForceMH
+    outerClothing: ClothingOuterArmorMobileTaskForceMH
     id: KeyCardMtfMHCadet
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMilitaryWebbingMH

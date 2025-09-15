@@ -108,10 +108,10 @@ public sealed partial class ScpTab : Control
         base.ExitedTree();
 
         GrainToggleOverlayCheckBox.OnToggled -= ToggleGrain;
-        LightBloomEnable.OnToggled += ToggleBloom;
-        LightBloomConeEnable.OnToggled += ToggleBloomCone;
-        EchoEnabled.OnToggled += ToggleEcho;
-        AudioMufflingEnabled.OnToggled += ToggleAudioMuffling;
+        LightBloomEnable.OnToggled -= ToggleBloom;
+        LightBloomConeEnable.OnToggled -= ToggleBloomCone;
+        EchoEnabled.OnToggled -= ToggleEcho;
+        AudioMufflingEnabled.OnToggled -= ToggleAudioMuffling;
     }
 
     private void ToggleGrain(BaseButton.ButtonToggledEventArgs value = default!)

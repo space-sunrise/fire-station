@@ -1941,6 +1941,10 @@ FoodBoxDonkpocketMoth: null
 ClearPDA: BaseFoundationPDA
 PassengerPDA: BaseFoundationPDA
 
+ClothingOuterHardsuitMH: ClothingOuterArmorMobileTaskForceMH
+ClothingOuterHardsuitMHLeader: ClothingOuterArmorMobileTaskForceMH
+ClothingHeadHelmetMHL: ClothingHelmetMobileTaskForceMH
+
 GunSafeInternalSecurityOperative: null
 BriefcaseTribunalOfficerFilled: null
 RubberStampTribunalOfficer: null
@@ -2218,6 +2222,5 @@ HappyHonkCluwne: null
 FoodMealHappyHonkClown: null
 FoodMealHappyHonkBigBite: null
 VendingMachineHappyHonk: null
-
 
 # Fire added end
