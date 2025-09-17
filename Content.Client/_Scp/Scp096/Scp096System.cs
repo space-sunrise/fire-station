@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Scp.Scp096;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Player;
@@ -9,7 +10,7 @@ public sealed class Scp096System : SharedScp096System
 {
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
 
     private Scp096Overlay? _overlay;
 

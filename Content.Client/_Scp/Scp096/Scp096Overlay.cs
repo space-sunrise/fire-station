@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Enums;
@@ -7,18 +8,15 @@ namespace Content.Client._Scp.Scp096;
 
 public sealed class Scp096Overlay : Overlay
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
 
-    private readonly SharedTransformSystem _transform;
+    private readonly TransformSystem _transform;
     private readonly HashSet<EntityUid> _targets;
 
-    // TODO: Исправить проеб навигатора, когда EntityUid из списка сверху перестает существовать в пвс рейнже клиента
-    // Это приводит к тому, что линия тупо улетает в ебеня, пока ентити снова не появится в пвс рейнже
-
-    public Scp096Overlay(SharedTransformSystem transform,
-        HashSet<EntityUid> targets)
+    public Scp096Overlay(TransformSystem transform, HashSet<EntityUid> targets)
     {
         IoCManager.InjectDependencies(this);
+
         _transform = transform;
         _targets = targets;
     }
@@ -27,11 +25,10 @@ public sealed class Scp096Overlay : Overlay
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        var playerEntity = _playerManager.LocalEntity;
-        if (playerEntity == null)
+        if (_player.LocalEntity == null)
             return;
 
-        var playerPos = _transform.GetWorldPosition(playerEntity.Value);
+        var playerPos = _transform.GetWorldPosition(_player.LocalEntity.Value);
         var nearestTargetPos = FindClosestEntity(playerPos, _targets);
 
         if (nearestTargetPos == null)

@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Scp096.Protection;
+﻿using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Scp.Watching.FOV;
@@ -15,7 +16,6 @@ using Content.Shared.StatusEffectNew;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
@@ -23,19 +23,18 @@ namespace Content.Shared._Scp.Scp096;
 
 public abstract partial class SharedScp096System : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _speedModifierSystem = default!;
-    [Dependency] private readonly SharedAmbientSoundSystem _ambientSoundSystem = default!;
-    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
+    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = default!;
+    [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly SharedSunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly PredictedRandomSystem _random = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
-    private ISawmill _sawmill = Logger.GetSawmill("scp096");
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
 
     public override void Initialize()
@@ -80,7 +79,7 @@ public abstract partial class SharedScp096System : EntitySystem
         if (!scpEntity.Comp.RageStartTime.HasValue)
             return;
 
-        var currentTime = _gameTiming.CurTime;
+        var currentTime = _timing.CurTime;
         var elapsedTime = currentTime - scpEntity.Comp.RageStartTime.Value;
 
         if (elapsedTime.TotalSeconds > scpEntity.Comp.RageDuration)
@@ -252,7 +251,7 @@ public abstract partial class SharedScp096System : EntitySystem
         if (HasComp<SleepingComponent>(entity))
             return false;
 
-        if (_mobStateSystem.IsIncapacitated(entity))
+        if (_mobState.IsIncapacitated(entity))
             return false;
 
         // В маске мы мирные
@@ -265,7 +264,7 @@ public abstract partial class SharedScp096System : EntitySystem
     private void RefreshSpeedModifiers(Entity<Scp096Component> scpEntity)
     {
         var newSpeed = scpEntity.Comp.InRageMode ? scpEntity.Comp.RageSpeed : scpEntity.Comp.BaseSpeed;
-        _speedModifierSystem.ChangeBaseSpeed(scpEntity, newSpeed, newSpeed, 20.0f);
+        _speedModifier.ChangeBaseSpeed(scpEntity, newSpeed, newSpeed, 20.0f);
     }
 
     private bool IsTargetSeeScp096(EntityUid viewer, Entity<Scp096Component> scp, bool ignoreAngle)
@@ -300,7 +299,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
         RaiseLocalEvent(scpEntity, new Scp096RageEvent(false));
 
-        _ambientSoundSystem.SetSound(scpEntity, scpEntity.Comp.CrySound);
+        _ambientSound.SetSound(scpEntity, scpEntity.Comp.CrySound);
         _statusEffects.TryAddStatusEffectDuration(scpEntity, StatusEffectSleep, TimeSpan.FromSeconds(scpEntity.Comp.PacifiedTime));
 
         RefreshSpeedModifiers(scpEntity);
@@ -311,12 +310,12 @@ public abstract partial class SharedScp096System : EntitySystem
         RemComp<PacifiedComponent>(scpEntity);
 
         scpEntity.Comp.InRageMode = true;
-        scpEntity.Comp.RageStartTime = _gameTiming.CurTime;
+        scpEntity.Comp.RageStartTime = _timing.CurTime;
         Dirty(scpEntity);
 
         RaiseNetworkEvent(new Scp096RageEvent(true));
 
-        _ambientSoundSystem.SetSound(scpEntity, scpEntity.Comp.RageSound);
+        _ambientSound.SetSound(scpEntity, scpEntity.Comp.RageSound);
 
         RefreshSpeedModifiers(scpEntity);
     }
@@ -341,14 +340,14 @@ public abstract partial class SharedScp096System : EntitySystem
     // Это же буквально то, что делает уже существующий компонент спрайта в движении, зачем это тут, тем более в апдейте
     private void UpdateVisualState(Entity<Scp096Component> scpEntity)
     {
-        if (!_gameTiming.IsFirstTimePredicted)
+        if (!_timing.IsFirstTimePredicted)
             return;
 
         Scp096VisualsState state;
         var physicsComponent = Comp<PhysicsComponent>(scpEntity);
         var moving = physicsComponent.LinearVelocity.Length() > 0;
 
-        if (_mobStateSystem.IsCritical(scpEntity) || HasComp<SleepingComponent>(scpEntity))
+        if (_mobState.IsCritical(scpEntity) || HasComp<SleepingComponent>(scpEntity))
         {
             state = Scp096VisualsState.Dead;
         }
@@ -361,7 +360,7 @@ public abstract partial class SharedScp096System : EntitySystem
             state = moving ? Scp096VisualsState.Walking : Scp096VisualsState.Idle;
         }
 
-        _appearanceSystem.SetData(scpEntity, Scp096Visuals.Visuals, state);
+        _appearance.SetData(scpEntity, Scp096Visuals.Visuals, state);
     }
 
 }

@@ -8,18 +8,18 @@ namespace Content.Shared._Scp.Scp096;
 public sealed partial class Scp096TargetComponent : Component
 {
     // Multiple SCP096 Handler
-    [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
-    public HashSet<EntityUid> TargetedBy = new();
+    [AutoNetworkedField, ViewVariables]
+    public readonly HashSet<EntityUid> TargetedBy = [];
 
-    [ViewVariables(VVAccess.ReadWrite)]
+    [ViewVariables]
     public int TimesHitted = 0;
 
     public float HitTimeAcc = 0f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public float HitWindow = 4f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public float SleepTime = 30f;
 
     [DataField]

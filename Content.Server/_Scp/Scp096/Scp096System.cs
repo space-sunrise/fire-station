@@ -20,15 +20,15 @@ namespace Content.Server._Scp.Scp096;
 
 public sealed partial class Scp096System : SharedScp096System
 {
-    [Dependency] private readonly SharedWiresSystem _wiresSystem = default!;
-    [Dependency] private readonly DoorSystem _doorSystem = default!;
-    [Dependency] private readonly AudioSystem _audioSystem = default!;
+    [Dependency] private readonly WiresSystem _wires = default!;
+    [Dependency] private readonly DoorSystem _door = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly LockSystem _lock = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly PvsOverrideSystem _pvsOverride = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
-    private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
+    private static readonly SoundSpecifier StorageOpenSound = new SoundCollectionSpecifier("MetalBreak");
 
     public override void Initialize()
     {
@@ -59,7 +59,7 @@ public sealed partial class Scp096System : SharedScp096System
         {
             _lock.TryUnlock(target, ent);
             _entityStorage.OpenStorage(target, entityStorageComponent);
-            _audioSystem.PlayPvs(_storageOpenSound, ent);
+            _audio.PlayPvs(StorageOpenSound, ent);
         }
     }
 
@@ -71,11 +71,11 @@ public sealed partial class Scp096System : SharedScp096System
         if (!scpEntity.Comp.InRageMode)
             return;
 
-        _doorSystem.StartOpening(doorEntity);
+        _door.StartOpening(doorEntity);
 
         if (TryComp<DoorBoltComponent>(doorEntity, out var doorBoltComponent))
         {
-            _doorSystem.SetBoltsDown(new(doorEntity, doorBoltComponent), true);
+            _door.SetBoltsDown((doorEntity, doorBoltComponent), true);
         }
 
         if (!TryComp<WiresComponent>(doorEntity, out var wiresComponent))
@@ -83,7 +83,7 @@ public sealed partial class Scp096System : SharedScp096System
 
         if (TryComp<WiresPanelComponent>(doorEntity, out var wiresPanelComponent))
         {
-            _wiresSystem.TogglePanel(doorEntity, wiresPanelComponent, true);
+            _wires.TogglePanel(doorEntity, wiresPanelComponent, true);
         }
 
         foreach (var x in wiresComponent.WiresList)
@@ -98,7 +98,7 @@ public sealed partial class Scp096System : SharedScp096System
             }
         }
 
-        _audioSystem.PlayPvs(scpEntity.Comp.DoorSmashSoundCollection, doorEntity);
+        _audio.PlayPvs(scpEntity.Comp.DoorSmashSoundCollection, doorEntity);
     }
 
     protected override void AddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid)
@@ -114,6 +114,4 @@ public sealed partial class Scp096System : SharedScp096System
 
         _pvsOverride.RemoveGlobalOverride(targetEntity);
     }
-
-
 }

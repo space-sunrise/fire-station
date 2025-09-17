@@ -54,7 +54,7 @@ public abstract partial class SharedScp096System
 
     private void OnTargetStateChanged(Entity<Scp096TargetComponent> ent, ref MobStateChangedEvent args)
     {
-        if (!_mobStateSystem.IsDead(args.Target))
+        if (!_mobState.IsDead(args.Target))
             return;
 
         RemComp<Scp096TargetComponent>(ent.Owner);
