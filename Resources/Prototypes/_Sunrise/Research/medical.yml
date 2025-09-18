@@ -81,7 +81,9 @@
     state: scanner
   discipline: Biochemical
   tier: 2
-  cost: 9000
+  cost:
+    Default: 9000
+    Scp: 4500
   recipeUnlocks:
     - HandheldCrewMonitor
   technologyPrerequisites:
@@ -171,7 +173,9 @@
     state: mender
   discipline: Biochemical
   tier: 3
-  cost: 7500
+  cost:
+    Default: 7500
+    Scp: 3250
   recipeUnlocks:
   - AutoMenderBrute
   - AutoMenderBurn

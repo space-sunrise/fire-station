@@ -844,8 +844,6 @@ WeaponEnergyGunMultiphase: WeaponMultiphaseGun
 # Sunrise-End
 
 # Санрайз насрал опять
-MagazineP90Extended: null
-CrateArmoryWeaponXM1014: null
 MagazineBoxHeavyRifle: null
 SunriseMagazineRifle: null
 
