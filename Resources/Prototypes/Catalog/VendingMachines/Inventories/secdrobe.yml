@@ -4,18 +4,24 @@
     ClothingBackpackSecurity: 3
     ClothingBackpackSatchelSecurity: 3
     ClothingBackpackDuffelSecurity: 3
-    ClothingUniformSecurity: 2 # Fire-Station
-    ClothingUniformSecurity2: 3 # Fire-Station
-    ClothingUniformSecurity3: 2 # Fire-Station
-    ClothingShoesBootsSecurityGuard: 3 # Fire-Station
-    ClothingHeadSecurityBeret: 3 # Fire-Station
-    ClothingHeadHatSecBlack: 3 # Fire-Station
-    ClothingMaskSecurityBandBlack: 3 # Fire-Station
-    ClothingHandsGlovesSecurity: 3 # Fire-Station
-    ClothingHandsGlovesWinterSecurity: 3 # Fire-Station
-    ClothingHeadsetExternalAdministrativeZoneSecurityService: 3 # Fire-Station
-    ClothingHeadsetHeavyContainmentSecurityService: 3 # Fire-Station
-    ClothingOuterArmorSecurity: 3 # Fire-Station
+    ClothingUniformJumpsuitSec: 3
+    ClothingShoesBootsJack: 3
+    ClothingHeadHatBeretSecurity: 3
+    ClothingHeadHatSecsoft: 3
+    ClothingHeadBandRed: 3
+    ClothingMaskNeckGaiterRed: 3
+    ClothingHandsGlovesColorBlack: 3
+    ClothingHandsGlovesFingerless: 3
+    ClothingUniformJumpskirtSec: 3
+    ClothingUniformJumpsuitSecGrey: 3
+    ClothingUniformJumpskirtSecGrey: 3
+    ClothingUniformJumpsuitSecBlue: 3
+    ClothingHeadsetSecurity: 3
+    ClothingOuterWinterSec: 2
+    ClothingOuterArmorBasic: 2
+    ClothingNeckScarfStripedRed: 3
+    ClothingOuterArmorBasicSlim: 2
+    ClothingOuterVestArmorSec : 1 # Sunrise-Edit
     ClothingEyesBlindfold: 1
     ClothingShoesBootsCombat: 1
     ClothingShoesBootsWinterSecurityGuard: 2 # Fire-Station

@@ -19,6 +19,7 @@ using Content.Shared.Light.Components;
 using Content.Shared.Maps;
 using Content.Shared.Pointing;
 using Content.Shared.Popups;
+using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Robust.Shared.Map;
