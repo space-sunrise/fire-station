@@ -96,7 +96,10 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void OnMobStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
     {
-        UpdateVisualState(ent);
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
 
         if (args.NewMobState == MobState.Alive)
             return;
@@ -106,7 +109,10 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void OnSleepStateChanged(Entity<Scp096Component> ent, ref SleepStateChangedEvent args)
     {
-        UpdateVisualState(ent);
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
     }
 
     protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
@@ -167,16 +173,10 @@ public abstract partial class SharedScp096System : EntitySystem
     public bool TryAddTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false, bool ignoreMask = false)
     {
         if (!CanBeAggro(scp, ignoreMask))
-        {
-            Logger.Debug($"CanBeAggro: {CanBeAggro(scp, ignoreMask)}");
             return false;
-        }
 
         if (!IsValidTarget(scp, target, ignoreAngle))
-        {
-            Logger.Debug($"IsValidTarget: {IsValidTarget(scp, target, ignoreAngle)}");
             return false;
-        }
 
         AddTarget(scp, target);
 
@@ -190,21 +190,11 @@ public abstract partial class SharedScp096System : EntitySystem
         var scpTarget = EnsureComp<Scp096TargetComponent>(target);
         scpTarget.TargetedBy.Add(scp);
 
-        foreach (var uid in scp.Comp.Targets)
-        {
-            Logger.Debug($"{Name(uid)}");
-        }
-
         Dirty(target, scpTarget);
         Dirty(scp);
 
         if (!scp.Comp.InRageMode)
             MakeAngry(scp);
-
-        foreach (var uid in scp.Comp.Targets)
-        {
-            Logger.Debug($"{Name(uid)}");
-        }
     }
 
     protected virtual void RemoveTarget(Entity<Scp096Component> scp, Entity<Scp096TargetComponent?> target, bool removeComponent = true)
@@ -238,31 +228,19 @@ public abstract partial class SharedScp096System : EntitySystem
     private bool IsValidTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false)
     {
         if (scp.Comp.Targets.Contains(target))
-        {
-            Logger.Debug($"IsValidTarget 1: {scp.Comp.Targets.Contains(target)}");
             return false;
-        }
 
         // Проверяем, может ли цель видеть 096. Без учета поля зрения
         if (!_watching.IsWatchedBy(scp, [target], viewers: out _, false))
-        {
-            Logger.Debug($"IsValidTarget 2: {_watching.IsWatchedBy(scp, [target], viewers: out _, false)}");
             return false;
-        }
 
         // Проверяем, есть ли у цели защита от 096
         if (TryComp<Scp096ProtectionComponent>(target, out var protection) && !_random.Prob(protection.ProblemChance))
-        {
-            Logger.Debug($"IsValidTarget 3: false");
             return false;
-        }
 
         // Проверяем, смотрит ли 096 на цель и цель на 096
         if (!IsTargetSeeScp096(target, scp, ignoreAngle))
-        {
-            Logger.Debug($"IsValidTarget 4: {IsTargetSeeScp096(target, scp, ignoreAngle)}");
             return false;
-        }
 
         // Если все условия выполнены, то цель валидна
         return true;
@@ -280,23 +258,14 @@ public abstract partial class SharedScp096System : EntitySystem
     private bool CanBeAggro(Entity<Scp096Component> ent, bool ignoreMask = false)
     {
         if (HasComp<SleepingComponent>(ent))
-        {
-            Logger.Debug($"CanBeAggro 1: {HasComp<SleepingComponent>(ent)}");
             return false;
-        }
 
         if (_mobState.IsIncapacitated(ent))
-        {
-            Logger.Debug($"CanBeAggro 2: {_mobState.IsIncapacitated(ent)}");
             return false;
-        }
 
         // В маске мы мирные
         if (_scpMask.HasScpMask(ent) && !ignoreMask)
-        {
-            Logger.Debug($"CanBeAggro 3: {_scpMask.HasScpMask(ent) && !ignoreMask}");
             return false;
-        }
 
         return true;
     }
@@ -337,10 +306,10 @@ public abstract partial class SharedScp096System : EntitySystem
         ent.Comp.RageStartTime = null;
         Dirty(ent);
 
-        RaiseLocalEvent(ent, new Scp096RageChangedEvent(false));
-
         _ambientSound.SetSound(ent, ent.Comp.CrySound);
         _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, TimeSpan.FromSeconds(ent.Comp.PacifiedTime));
+
+        RaiseLocalEvent(ent, new Scp096RageChangedEvent(false));
 
         RefreshSpeedModifiers(ent);
     }
@@ -375,12 +344,11 @@ public abstract partial class SharedScp096System : EntitySystem
     protected virtual void HandleDoorCollision(Entity<Scp096Component> scpEntity, Entity<DoorComponent> doorEntity) {}
 
     #endregion
-
-    protected virtual void UpdateVisualState(Entity<Scp096Component> ent) {}
-
 }
 
 public sealed class Scp096RageChangedEvent(bool inRage) : EntityEventArgs
 {
     public readonly bool InRage = inRage;
 }
+
+public sealed class Scp096RequireUpdateVisualsEvent : EntityEventArgs;

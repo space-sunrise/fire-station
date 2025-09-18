@@ -27,11 +27,18 @@ public sealed class Scp096System : SharedScp096System
         SubscribeLocalEvent<Scp096Component, Scp096RageChangedEvent>(OnRage);
         SubscribeLocalEvent<Scp096Component, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<Scp096Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
+
+        SubscribeLocalEvent<Scp096Component, Scp096RequireUpdateVisualsEvent>(OnUpdateStateRequest);
+    }
+
+    private void OnUpdateStateRequest(Entity<Scp096Component> ent, ref Scp096RequireUpdateVisualsEvent args)
+    {
+        UpdateVisualState(ent);
     }
 
     // TODO: Починить, что комбат мод блокирует анимации движения
     // TODO: Починить тройное срабатывание
-    protected override void UpdateVisualState(Entity<Scp096Component> ent)
+    private void UpdateVisualState(Entity<Scp096Component> ent)
     {
         if (!_timing.IsFirstTimePredicted)
             return;
