@@ -9,15 +9,7 @@ public sealed partial class Scp096TargetComponent : Component
 {
     // Multiple SCP096 Handler
     [AutoNetworkedField, ViewVariables]
-    public readonly HashSet<EntityUid> TargetedBy = [];
-
-    [ViewVariables]
-    public int TimesHitted = 0;
-
-    public float HitTimeAcc = 0f;
-
-    [DataField]
-    public float HitWindow = 4f;
+    public HashSet<EntityUid> TargetedBy = [];
 
     [DataField]
     public float SleepTime = 30f;

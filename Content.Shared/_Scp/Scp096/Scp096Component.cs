@@ -9,8 +9,8 @@ public sealed partial class Scp096Component : Component
     [AutoNetworkedField]
     public bool InRageMode;
 
-    [AutoNetworkedField, ViewVariables]
-    public readonly HashSet<EntityUid> Targets = [];
+    [ViewVariables]
+    public HashSet<EntityUid> Targets = [];
 
     [DataField]
     public float AgroDistance = 10f;

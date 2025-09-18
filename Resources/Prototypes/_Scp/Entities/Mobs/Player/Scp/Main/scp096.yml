@@ -11,7 +11,24 @@
     sprite: _Scp/Mobs/Scp/scp-096.rsi
     layers:
     - state: idle
-      map: [ "base" ]
+      map: [ "enum.Scp096VisualsState.Idle", "idle" ]
+    - state: idle_agro
+      map: [ "enum.Scp096VisualsState.Agro", "agro" ]
+      visible: false
+    - state: dead
+      map: [ "enum.Scp096VisualsState.Dead", "dead" ]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      idle:
+        state: walking
+      agro:
+        state: running
+    noMovementLayers:
+      idle:
+        state: idle
+      agro:
+        state: idle_agro
   - type: Scp
     class: Euclid
   - type: Scp096
@@ -82,12 +99,7 @@
     visuals:
       enum.Scp096Visuals.Visuals:
         base:
-          Idle: { state: idle}
-          IdleAgro: { state: idle_alt}
-          Argo: { state: agro}
           Dead: { state: dead}
-          Walking: { state: walking}
-          Running: {state: running}
   - type: StatusEffects
     allowed:
     - SlowedDown

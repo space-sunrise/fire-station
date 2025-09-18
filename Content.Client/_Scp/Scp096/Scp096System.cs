@@ -1,8 +1,11 @@
 ﻿using Content.Shared._Scp.Scp096;
+using Content.Shared.Bed.Sleep;
+using Content.Shared.Mobs.Systems;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Player;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Scp096;
 
@@ -10,7 +13,10 @@ public sealed class Scp096System : SharedScp096System
 {
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private readonly MobStateSystem _mob = default!;
 
     private Scp096Overlay? _overlay;
 
@@ -18,31 +24,36 @@ public sealed class Scp096System : SharedScp096System
     {
         base.Initialize();
 
-        SubscribeNetworkEvent<Scp096RageEvent>(OnRage);
+        SubscribeLocalEvent<Scp096Component, Scp096RageChangedEvent>(OnRage);
         SubscribeLocalEvent<Scp096Component, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<Scp096Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
     }
 
-    private void OnRage(Scp096RageEvent args)
+    // TODO: Починить, что комбат мод блокирует анимации движения
+    // TODO: Починить тройное срабатывание
+    protected override void UpdateVisualState(Entity<Scp096Component> ent)
     {
-        // Здесь происходит ваще хз че, поэтому распишу для понятности
-
-        // Так как ивент вызывающий этот метод вызывается каждый раз, когда 096 видит новый таргет
-        // То нужно очищать оверлей, чтобы клиенту не засрать 999 оверлеями лишними
-        RemoveOverlay();
-
-        // Если мы не в рейдж моде, то мы вышли из него
-        // Значит все нужные действия (убрать оверлей) мы уже сделали и можно выходить с метода
-        if (!args.InRage)
+        if (!_timing.IsFirstTimePredicted)
             return;
 
-        // Если игрок это не 096, то ему не нужен оверлей
-        if (!TryComp<Scp096Component>(_player.LocalEntity, out var scp096Component))
+        var isDead = _mob.IsIncapacitated(ent) || HasComp<SleepingComponent>(ent);
+
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Dead, isDead);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Idle, !ent.Comp.InRageMode && !isDead);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Agro, ent.Comp.InRageMode && !isDead);
+    }
+
+    private void OnRage(Entity<Scp096Component> ent, ref Scp096RageChangedEvent args)
+    {
+        UpdateVisualState(ent);
+
+        if (ent != _player.LocalEntity)
             return;
 
-        _overlay = new(_transform, scp096Component.Targets);
+        if (_overlay == null)
+            return;
 
-        _overlayMan.AddOverlay(_overlay);
+        _overlay.Targets = ent.Comp.Targets;
     }
 
     /// <summary>
@@ -50,8 +61,10 @@ public sealed class Scp096System : SharedScp096System
     /// </summary>
     private void OnPlayerAttached(EntityUid uid, Scp096Component component, LocalPlayerAttachedEvent args)
     {
-        if (_overlay != null)
-            _overlayMan.AddOverlay(_overlay);
+        if (_overlay == null)
+            _overlay = new(_transform);
+
+        _overlayMan.AddOverlay(_overlay);
     }
 
     private void OnPlayerDetached(EntityUid uid, Scp096Component component, LocalPlayerDetachedEvent args)
@@ -72,5 +85,6 @@ public sealed class Scp096System : SharedScp096System
             return;
 
         _overlayMan.RemoveOverlay(_overlay);
+        _overlay = null;
     }
 }

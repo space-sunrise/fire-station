@@ -11,17 +11,26 @@ public sealed class Scp096Overlay : Overlay
     [Dependency] private readonly IPlayerManager _player = default!;
 
     private readonly TransformSystem _transform;
-    private readonly HashSet<EntityUid> _targets;
+    public HashSet<EntityUid> Targets = [];
 
-    public Scp096Overlay(TransformSystem transform, HashSet<EntityUid> targets)
+    public Scp096Overlay(TransformSystem transform)
     {
         IoCManager.InjectDependencies(this);
 
         _transform = transform;
-        _targets = targets;
     }
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
+
+    protected override bool BeforeDraw(in OverlayDrawArgs args)
+    {
+        base.BeforeDraw(in args);
+
+        if (Targets.Count == 0)
+            return false;
+
+        return true;
+    }
 
     protected override void Draw(in OverlayDrawArgs args)
     {
@@ -29,7 +38,7 @@ public sealed class Scp096Overlay : Overlay
             return;
 
         var playerPos = _transform.GetWorldPosition(_player.LocalEntity.Value);
-        var nearestTargetPos = FindClosestEntity(playerPos, _targets);
+        var nearestTargetPos = FindClosestEntity(playerPos);
 
         if (nearestTargetPos == null)
             return;
@@ -38,15 +47,12 @@ public sealed class Scp096Overlay : Overlay
         args.WorldHandle.DrawCircle(nearestTargetPos.Value, 0.4f, Color.Red, false);
     }
 
-    private Vector2? FindClosestEntity(Vector2 playerPos, HashSet<EntityUid> entities)
+    private Vector2? FindClosestEntity(Vector2 playerPos)
     {
-        if (entities.Count == 0)
-            return null;
-
         Vector2? closestEntityPos = null;
         var closestDistance = float.MaxValue;
 
-        foreach (var entity in entities)
+        foreach (var entity in Targets)
         {
             var entityPosition = _transform.GetWorldPosition(entity);
 

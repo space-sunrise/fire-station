@@ -35,8 +35,6 @@ public sealed partial class Scp096System : SharedScp096System
         base.Initialize();
 
         SubscribeLocalEvent<Scp096Component, BeforeRandomlyEmittingSoundEvent>(OnEmitSoundRandomly);
-
-        InitTargets();
     }
 
     private void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
@@ -64,26 +62,26 @@ public sealed partial class Scp096System : SharedScp096System
     }
 
     // TODO: Переделать это под отдельный компонент, который будет выдаваться и убираться
-    protected override void HandleDoorCollision(Entity<Scp096Component> scpEntity, Entity<DoorComponent> doorEntity)
+    protected override void HandleDoorCollision(Entity<Scp096Component> scp, Entity<DoorComponent> door)
     {
-        base.HandleDoorCollision(scpEntity, doorEntity);
+        base.HandleDoorCollision(scp, door);
 
-        if (!scpEntity.Comp.InRageMode)
+        if (!scp.Comp.InRageMode)
             return;
 
-        _door.StartOpening(doorEntity);
+        _door.StartOpening(door);
 
-        if (TryComp<DoorBoltComponent>(doorEntity, out var doorBoltComponent))
+        if (TryComp<DoorBoltComponent>(door, out var doorBoltComponent))
         {
-            _door.SetBoltsDown((doorEntity, doorBoltComponent), true);
+            _door.SetBoltsDown((door, doorBoltComponent), true);
         }
 
-        if (!TryComp<WiresComponent>(doorEntity, out var wiresComponent))
+        if (!TryComp<WiresComponent>(door, out var wiresComponent))
             return;
 
-        if (TryComp<WiresPanelComponent>(doorEntity, out var wiresPanelComponent))
+        if (TryComp<WiresPanelComponent>(door, out var wiresPanelComponent))
         {
-            _wires.TogglePanel(doorEntity, wiresPanelComponent, true);
+            _wires.TogglePanel(door, wiresPanelComponent, true);
         }
 
         foreach (var x in wiresComponent.WiresList)
@@ -92,26 +90,26 @@ public sealed partial class Scp096System : SharedScp096System
             {
                 x.Action?.Cut(EntityUid.Invalid, x);
             }
-            else if (_random.Prob(scpEntity.Comp.WireCutChance)) // randomly cut other wires
+            else if (_random.Prob(scp.Comp.WireCutChance)) // randomly cut other wires
             {
                 x.Action?.Cut(EntityUid.Invalid, x);
             }
         }
 
-        _audio.PlayPvs(scpEntity.Comp.DoorSmashSoundCollection, doorEntity);
+        _audio.PlayPvs(scp.Comp.DoorSmashSoundCollection, door);
     }
 
-    protected override void AddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid)
+    protected override void AddTarget(Entity<Scp096Component> scp, EntityUid target)
     {
-        base.AddTarget(scpEntity, targetUid);
+        base.AddTarget(scp, target);
 
-        _pvsOverride.AddGlobalOverride(targetUid);
+        _pvsOverride.AddGlobalOverride(target);
     }
 
-    protected override void RemoveTarget(Entity<Scp096Component> scpEntity, Entity<Scp096TargetComponent?> targetEntity, bool removeComponent = true)
+    protected override void RemoveTarget(Entity<Scp096Component> scp, Entity<Scp096TargetComponent?> target, bool removeComponent = true)
     {
-        base.RemoveTarget(scpEntity, targetEntity, removeComponent);
+        base.RemoveTarget(scp, target, removeComponent);
 
-        _pvsOverride.RemoveGlobalOverride(targetEntity);
+        _pvsOverride.RemoveGlobalOverride(target);
     }
 }

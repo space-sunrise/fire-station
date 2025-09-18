@@ -13,8 +13,5 @@ public enum Scp096VisualsState : byte
 {
     Agro = 0,
     Idle = 1,
-    IdleAgro = 2,
-    Walking = 4,
-    Dead = 8,
-    Running = 16,
+    Dead = 2,
 }
