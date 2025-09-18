@@ -33,13 +33,9 @@
     Scp: 2000
   recipeUnlocks:
     - LeftArmCyber
-    - RightArmCyber
     - LeftHandCyber
-    - RightHandCyber
     - LeftLegCyber
-    - RightLegCyber
     - LeftFootCyber
-    - RightFootCyber
 
 # Tier 2
 - type: technology
@@ -78,6 +74,20 @@
     - SurgeryTech
 
 - type: technology
+  id: HandheldCrewMonitorTech
+  name: research-technology-hanheld-crew-monitor
+  icon:
+    sprite: Objects/Specific/Medical/handheldcrewmonitor.rsi
+    state: scanner
+  discipline: Biochemical
+  tier: 2
+  cost: 9000
+  recipeUnlocks:
+    - HandheldCrewMonitor
+  technologyPrerequisites:
+    - SurgeryTech
+
+- type: technology
   id: CyberImplantsTech
   name: research-technology-basic-eye-implants
   icon:
@@ -89,10 +99,10 @@
     Default: 10000
     Scp: 5000
   recipeUnlocks:
-    - EyeImplantWelding
-    - EyeImplantMedical
-    - EyeImplantChemical
-    - EyeImplantSecurity
+    - ImplantCaseImplantWelding
+    - ImplantCaseImplantMedical
+    - ImplantCaseImplantChemical
+    - ImplantCaseImplantSecurity
   technologyPrerequisites:
     - CyberLimbsTech
   radioChannels:
@@ -133,6 +143,10 @@
     Scp: 2500
   recipeUnlocks:
   - BorgModuleAdvancedChemical
+  - AutoMenderBurn
+  - AutoMenderBrute
+  radioChannels:
+  - Medical
 
 # Tier 3
 - type: technology
@@ -149,6 +163,22 @@
   recipeUnlocks:
   - ImplantExtractorMachineCircuitboard
 
+- type: technology
+  id: AutoMenders
+  name: research-technology-autoMenders
+  icon:
+    sprite: _Starlight/Objects/Specific/Medical/medical.rsi
+    state: mender
+  discipline: Biochemical
+  tier: 3
+  cost: 7500
+  recipeUnlocks:
+  - AutoMenderBrute
+  - AutoMenderBurn
+  technologyPrerequisites:
+  - MedicalHyposprays
+  radioChannels:
+  - Medical
 
 - type: technology
   id: FunctionalCyberLimbsTech
@@ -162,12 +192,8 @@
     Default: 9220
     Scp: 4610
   recipeUnlocks:
-    - LeftArmCyberReaper
-    - RightArmCyberReaper
-    - LeftArmCyberMechwright
-    - RightArmCyberMechwright
-    - LeftArmCyberBulwark
-    - RightArmCyberBulwark
+    - ImplantCaseReaper
+    - ImplantCaseMechwright
   technologyPrerequisites:
     - CyberLimbsTech
   radioChannels:
@@ -186,8 +212,8 @@
     Default: 3500
     Scp: 1750
   recipeUnlocks:
-    - LeftArmCyberGorilla
-    - RightArmCyberGorilla
+    - ImplantCaseGorillaL
+    - ImplantCaseGorillaR
   technologyPrerequisites:
     - FunctionalCyberLimbsTech
     - AnomalyCoreHarnessing
@@ -205,11 +231,12 @@
   discipline: Biochemical
   tier: 3
   cost:
-    Default: 4000
-    Scp: 2000
+    Default: 8000
+    Scp: 4000
   recipeUnlocks:
-    - LeftArmCyberMantisBladeMaxGuard
-    - RightArmCyberMantisBladeMaxGuard
+    - ImplantCaseMantisBladeMaxGuard
+    - ImplantCaseBulwark
+    - ImplantCaseBonesaw
   technologyPrerequisites:
     - FunctionalCyberLimbsTech
     - CombatEquipment
@@ -226,13 +253,11 @@
   discipline: Biochemical
   tier: 3
   cost:
-    Default: 4500
-    Scp: 2250
+    Default: 7500
+    Scp: 3250
   recipeUnlocks:
-    - LeftArmCyberLaserEmitter
-    - RightArmCyberLaserEmitter
-    - LeftArmCyberGrenadeThrower
-    - RightArmCyberGrenadeThrower
+    - ImplantCaseLaserEmitter
+    - ImplantCaseGrenadeThrower
   technologyPrerequisites:
     - FunctionalCyberLimbsTech
     - WeaponizedLaserManipulation
@@ -252,7 +277,7 @@
     Default: 7500
     Scp: 3250
   recipeUnlocks:
-    - CyberEyeNightVision
+    - ImplantCaseNightVision
   technologyPrerequisites:
     - CyberImplantsTech
   radioChannels:
@@ -271,7 +296,7 @@
     Default: 8500
     Scp: 4250
   recipeUnlocks:
-    - CyberEyeThermal
+    - ImplantCaseThermal
   technologyPrerequisites:
     - CyberEyeNightVision
   radioChannels:

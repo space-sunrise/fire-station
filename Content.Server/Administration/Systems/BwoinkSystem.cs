@@ -396,7 +396,7 @@ namespace Content.Server.Administration.Systems
 
             if (senderAdmin is not null &&
                 senderAdmin.Value.dat.Flags ==
-                AdminFlags.Adminhelp) // Mentor. Not full admin. That's why it's colored differently.
+                AdminFlags.Mentor) // Mentor. Not full admin. That's why it's colored differently.
             {
                 bwoinkText = $"[color=purple]{adminPrefix}{username}[/color]";
             }
@@ -746,6 +746,23 @@ namespace Content.Server.Administration.Systems
                 return;
             }
 
+            // Sunrise-Ahelp-Antispam-Start
+            // Based on Starlight Build: https://github.com/ss14Starlight/space-station-14/pull/85
+            var currentTime = _timing.RealTime;
+
+            if (IsOnCooldown(message.UserId, currentTime, out var remainingCooldown))
+            {
+                // Send cooldown feedback to the client
+                RaiseNetworkEvent(new BwoinkCooldownMessage(remainingCooldown), senderSession.Channel);
+                return;
+            }
+
+            if (IsSpam(message.UserId, message.Text))
+                _banManager.CreateServerBan(senderSession.UserId, senderSession.Name, null, null, null, 180, NoteSeverity.High, Loc.GetString("ahelp-antispam-ban-reason"));
+
+            AddToRecentMessages(message.UserId, message.Text, currentTime);
+            // Sunrise-Ahelp-Antispam-End
+
             if (_rateLimit.CountAction(eventArgs.SenderSession, RateLimitKey) != RateLimitStatus.Allowed)
                 return;
 
@@ -981,6 +998,61 @@ namespace Content.Server.Administration.Systems
             /// </summary>
             public bool OnCall;
         }
+
+        // Sunrise-Ahelp-Antispam-Start
+        // Based on Starlight Build: https://github.com/ss14Starlight/space-station-14/pull/85
+        private void AddToRecentMessages(NetUserId channelId, string text, TimeSpan timestamp)
+        {
+            _recentMessages.Enqueue((channelId, text, timestamp));
+
+            if (_recentMessages.Count > MaxRecentMessages)
+            {
+                _recentMessages.Dequeue();
+            }
+        }
+
+        private bool IsOnCooldown(NetUserId channelId, TimeSpan currentTime, out TimeSpan remainingCooldown)
+        {
+            remainingCooldown = TimeSpan.Zero;
+
+            var lastMessage = _recentMessages
+                .Where(msg => msg.Channel == channelId)
+                .OrderByDescending(msg => msg.Timestamp)
+                .FirstOrDefault();
+
+            if (lastMessage == default)
+                return false;
+
+            var timeSinceLastMessage = currentTime - lastMessage.Timestamp;
+            if (timeSinceLastMessage < _messageCooldown)
+            {
+                remainingCooldown = _messageCooldown - timeSinceLastMessage;
+                return true;
+            }
+
+            return false;
+        }
+
+        private bool IsOnCooldown(NetUserId channelId, TimeSpan currentTime)
+        {
+            return IsOnCooldown(channelId, currentTime, out _);
+        }
+
+        private bool IsSpam(NetUserId channelId, string text)
+        {
+            var recentMessages = _recentMessages
+                .Where(msg => msg.Channel == channelId)
+                .OrderByDescending(msg => msg.Timestamp)
+                .Take(10);
+
+            return recentMessages.All(msg => msg.Text == text) && recentMessages.Count() >= 5;
+        }
+
+        public IEnumerable<(NetUserId Channel, string Text, TimeSpan Timestamp)> GetRecentMessages()
+        {
+            return _recentMessages;
+        }
+        // Sunrise-Ahelp-Antispam-End
     }
 
     public sealed class AHelpMessageParams

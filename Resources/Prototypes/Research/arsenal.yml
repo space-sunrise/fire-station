@@ -42,6 +42,8 @@
   - MagazineBoxRifleIncendiary
   - MagazinePistolSubMachineGunTopMountedIncendiary #Sunrise-Add
   - MagazinePistolHighCapacityIncendiary # Sunrise-Add
+  - MagazineRifleHeavyIncendiary # Sunrise-Add
+  - MagazineBoxHeavyRifleIncendiary # Sunrise-Add
 
 - type: technology
   id: WeaponizedLaserManipulation
@@ -108,6 +110,8 @@
   - BoxShotgunUranium
   - MagazinePistolSubMachineGunTopMountedUranium #Sunrise-Add
   - MagazinePistolHighCapacityUranium # Sunrise-Add
+  - MagazineRifleHeavyUranium # Sunrise-Add
+  - MagazineBoxHeavyRifleUranium # Sunrise-Add
 
 - type: technology
   id: AdvancedRiotControl
