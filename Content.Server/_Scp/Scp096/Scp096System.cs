@@ -10,6 +10,7 @@ using Content.Shared.Bed.Sleep;
 using Content.Shared.Doors.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lock;
+using Content.Shared.Storage.Components;
 using Content.Shared.Wires;
 using Robust.Server.Audio;
 using Robust.Server.GameStates;

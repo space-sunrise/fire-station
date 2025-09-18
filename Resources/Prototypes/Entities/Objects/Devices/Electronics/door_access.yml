@@ -383,3 +383,12 @@
   components:
   - type: AccessReader
     access: [["Security"], ["Command"]]
+
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsXenoborg
+  suffix: Xenoborg, Locked
+  categories: [ HideSpawnMenu ] # Fire added
+  components:
+  - type: AccessReader
+    access: [["Xenoborg"]]

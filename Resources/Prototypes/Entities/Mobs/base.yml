@@ -13,6 +13,7 @@
     noRot: true
     drawdepth: Mobs
   - type: MobCollision
+  - type: GravityAffected
   - type: Physics
     bodyType: KinematicController
   - type: Fixtures
@@ -162,6 +163,7 @@
     - Caustic
     - Asphyxiation
     - Radiation
+    - Mangleness # Sunrise-Edit
   - type: DamageOnHighSpeedImpact
     damage:
       types:

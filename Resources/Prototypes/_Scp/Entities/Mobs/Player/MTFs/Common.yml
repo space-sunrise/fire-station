@@ -38,7 +38,7 @@
           amount: 4
 
 - type: entity
-  parent: TrackingImplanterERT
+  parent: TrackingImplanter
   id: TrackingImplanterMTF
   suffix: tracking
   components:
@@ -46,7 +46,7 @@
       implant: TrackingImplantMTF
 
 - type: entity
-  parent: TrackingImplantErt
+  parent: TrackingImplant
   id: TrackingImplantMTF
   components:
     - type: RattleOnTrigger
