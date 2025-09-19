@@ -220,7 +220,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
 
     private TimeSpan GetBlinkVariance(Entity<BlinkableComponent> ent)
     {
-        var time = _random.NextFloat(ent, 0, (float)ent.Comp.BlinkingIntervalVariance.TotalSeconds);
+        var time = _random.NextFloatForEntity(ent, 0, (float)ent.Comp.BlinkingIntervalVariance.TotalSeconds);
         return TimeSpan.FromSeconds(time);
     }
 

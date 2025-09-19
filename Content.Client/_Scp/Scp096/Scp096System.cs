@@ -55,11 +55,6 @@ public sealed class Scp096System : SharedScp096System
         _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Dead, isDead);
         _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Idle, !ent.Comp.InRageMode && !isDead);
         _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Agro, ent.Comp.InRageMode && !isDead);
-
-        Logger.Debug($"{isDead} + {ent.Comp.InRageMode}");
-        Logger.Debug($"1. {isDead}");
-        Logger.Debug($"2. {!ent.Comp.InRageMode && !isDead}");
-        Logger.Debug($"3. {ent.Comp.InRageMode && !isDead}");
     }
 
     private void OnPlayerAttached(Entity<Scp096Component> ent, ref LocalPlayerAttachedEvent args)

@@ -247,7 +247,7 @@ public abstract partial class SharedScp096System : EntitySystem
             return false;
 
         // Проверяем, есть ли у цели защита от 096
-        if (TryComp<Scp096ProtectionComponent>(target, out var protection) && !_random.Prob(protection.ProblemChance))
+        if (TryComp<Scp096ProtectionComponent>(target, out var protection) && !_random.ProbForEntity(scp, protection.ProblemChance))
             return false;
 
         // Проверяем, смотрит ли 096 на цель и цель на 096
