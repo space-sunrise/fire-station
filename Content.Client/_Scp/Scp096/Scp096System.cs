@@ -36,8 +36,6 @@ public sealed class Scp096System : SharedScp096System
         UpdateVisualState(ent);
     }
 
-    // TODO: Починить, что комбат мод блокирует анимации движения
-    // TODO: Починить тройное срабатывание
     private void UpdateVisualState(Entity<Scp096Component> ent)
     {
         if (!_timing.IsFirstTimePredicted)

@@ -19,9 +19,6 @@ public abstract class SharedSpriteMovementSystem : EntitySystem
             return;
 
         // Fire added start
-        if (HasComp<NoRotateOnMoveComponent>(ent))
-            return;
-
         if (HasComp<BlockMovementComponent>(ent))
             return;
         // Fire added end
