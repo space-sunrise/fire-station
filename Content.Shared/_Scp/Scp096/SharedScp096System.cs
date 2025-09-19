@@ -48,6 +48,8 @@ public abstract partial class SharedScp096System : EntitySystem
 
         SubscribeLocalEvent<Scp096Component, ScpMaskTargetEquipAttempt>(OnMaskAttempt);
 
+        SubscribeLocalEvent<Scp096Component, AfterAutoHandleStateEvent>(OnHandleState);
+        SubscribeLocalEvent<Scp096Component, ComponentInit>(OnInit);
         SubscribeLocalEvent<Scp096Component, ComponentShutdown>(OnShutdown);
 
         InitTargets();
@@ -79,7 +81,7 @@ public abstract partial class SharedScp096System : EntitySystem
         var currentTime = _timing.CurTime;
         var elapsedTime = currentTime - ent.Comp.RageStartTime.Value;
 
-        if (elapsedTime.TotalSeconds > ent.Comp.RageDuration)
+        if (elapsedTime > ent.Comp.RageDuration)
         {
             OnRageTimeExceeded(ent);
         }
@@ -113,6 +115,16 @@ public abstract partial class SharedScp096System : EntitySystem
             return;
 
         RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
+    }
+
+    protected virtual void OnHandleState(Entity<Scp096Component> ent, ref AfterAutoHandleStateEvent args)
+    {
+
+    }
+
+    protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
+    {
+
     }
 
     protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
@@ -307,9 +319,10 @@ public abstract partial class SharedScp096System : EntitySystem
         Dirty(ent);
 
         _ambientSound.SetSound(ent, ent.Comp.CrySound);
-        _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, TimeSpan.FromSeconds(ent.Comp.PacifiedTime));
+        _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, ent.Comp.PacifiedTime);
 
         RaiseLocalEvent(ent, new Scp096RageChangedEvent(false));
+        RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
 
         RefreshSpeedModifiers(ent);
     }
@@ -323,6 +336,7 @@ public abstract partial class SharedScp096System : EntitySystem
         Dirty(ent);
 
         RaiseLocalEvent(ent, new Scp096RageChangedEvent(true));
+        RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
 
         _ambientSound.SetSound(ent, ent.Comp.RageSound);
 

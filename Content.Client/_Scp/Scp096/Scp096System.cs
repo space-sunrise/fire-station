@@ -11,8 +11,8 @@ namespace Content.Client._Scp.Scp096;
 
 public sealed class Scp096System : SharedScp096System
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
@@ -24,7 +24,6 @@ public sealed class Scp096System : SharedScp096System
     {
         base.Initialize();
 
-        SubscribeLocalEvent<Scp096Component, Scp096RageChangedEvent>(OnRage);
         SubscribeLocalEvent<Scp096Component, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<Scp096Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
@@ -33,6 +32,16 @@ public sealed class Scp096System : SharedScp096System
 
     private void OnUpdateStateRequest(Entity<Scp096Component> ent, ref Scp096RequireUpdateVisualsEvent args)
     {
+        UpdateVisualState(ent);
+    }
+
+    // Ебанный предикшен
+    // Это существует тут, так как иногда значения установленные из shared кода могут не успеть установиться на клиенте(я хз как так)
+    // И происходит миспредикт -> скромник иногда мог ходить с обычным спрайтом в ярости. Поэтому для точности после установки стейта с сервера он еще раз перепроверяет внешку скромника.
+    protected override void OnHandleState(Entity<Scp096Component> ent, ref AfterAutoHandleStateEvent args)
+    {
+        base.OnHandleState(ent, ref args);
+
         UpdateVisualState(ent);
     }
 
@@ -46,35 +55,31 @@ public sealed class Scp096System : SharedScp096System
         _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Dead, isDead);
         _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Idle, !ent.Comp.InRageMode && !isDead);
         _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Agro, ent.Comp.InRageMode && !isDead);
+
+        Logger.Debug($"{isDead} + {ent.Comp.InRageMode}");
+        Logger.Debug($"1. {isDead}");
+        Logger.Debug($"2. {!ent.Comp.InRageMode && !isDead}");
+        Logger.Debug($"3. {ent.Comp.InRageMode && !isDead}");
     }
 
-    private void OnRage(Entity<Scp096Component> ent, ref Scp096RageChangedEvent args)
+    private void OnPlayerAttached(Entity<Scp096Component> ent, ref LocalPlayerAttachedEvent args)
     {
-        UpdateVisualState(ent);
-
-        if (ent != _player.LocalEntity)
-            return;
-
-        if (_overlay == null)
-            return;
-
-        _overlay.Targets = ent.Comp.Targets;
+        AddOverlay(ent);
     }
 
-    /// <summary>
-    /// Сделал так же этот метод добавочно к OnRage, чтобы улучшить выдачу оверлея, когда агр начался без игрока в ентити скромника
-    /// </summary>
-    private void OnPlayerAttached(EntityUid uid, Scp096Component component, LocalPlayerAttachedEvent args)
-    {
-        if (_overlay == null)
-            _overlay = new(_transform);
-
-        _overlayMan.AddOverlay(_overlay);
-    }
-
-    private void OnPlayerDetached(EntityUid uid, Scp096Component component, LocalPlayerDetachedEvent args)
+    private void OnPlayerDetached(Entity<Scp096Component> ent, ref LocalPlayerDetachedEvent args)
     {
         RemoveOverlay();
+    }
+
+    protected override void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
+    {
+        base.OnInit(ent, ref args);
+
+        if (_player.LocalEntity != ent)
+            return;
+
+        AddOverlay(ent);
     }
 
     protected override void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
@@ -82,6 +87,15 @@ public sealed class Scp096System : SharedScp096System
         base.OnShutdown(ent, ref args);
 
         RemoveOverlay();
+    }
+
+    private void AddOverlay(Entity<Scp096Component> ent)
+    {
+        if (_overlay != null)
+            return;
+
+        _overlay = new(ent, _transform);
+        _overlayMan.AddOverlay(_overlay);
     }
 
     private void RemoveOverlay()

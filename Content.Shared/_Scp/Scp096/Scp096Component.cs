@@ -3,13 +3,13 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Scp096;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class Scp096Component : Component
 {
-    [AutoNetworkedField]
+    [AutoNetworkedField, ViewVariables]
     public bool InRageMode;
 
-    [ViewVariables]
+    [AutoNetworkedField, ViewVariables]
     public HashSet<EntityUid> Targets = [];
 
     [DataField]
@@ -22,10 +22,10 @@ public sealed partial class Scp096Component : Component
     public TimeSpan? RageStartTime;
 
     [DataField, AutoNetworkedField]
-    public float RageDuration = 180f;
+    public TimeSpan RageDuration = TimeSpan.FromSeconds(180f);
 
     [DataField]
-    public float PacifiedTime = 60f;
+    public TimeSpan PacifiedTime = TimeSpan.FromSeconds(60f);
 
     [DataField]
     public float WireCutChance = 0.4f;

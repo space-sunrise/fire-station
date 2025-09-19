@@ -1,22 +1,21 @@
 ﻿using System.Numerics;
+using Content.Shared._Scp.Scp096;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
-using Robust.Client.Player;
 using Robust.Shared.Enums;
 
 namespace Content.Client._Scp.Scp096;
 
 public sealed class Scp096Overlay : Overlay
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
-
     private readonly TransformSystem _transform;
-    public HashSet<EntityUid> Targets = [];
+    private readonly Entity<Scp096Component> _entity;
 
-    public Scp096Overlay(TransformSystem transform)
+    public Scp096Overlay(Entity<Scp096Component> entity, TransformSystem transform)
     {
         IoCManager.InjectDependencies(this);
 
+        _entity = entity;
         _transform = transform;
     }
 
@@ -26,7 +25,7 @@ public sealed class Scp096Overlay : Overlay
     {
         base.BeforeDraw(in args);
 
-        if (Targets.Count == 0)
+        if (_entity.Comp.Targets.Count == 0)
             return false;
 
         return true;
@@ -34,10 +33,7 @@ public sealed class Scp096Overlay : Overlay
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        if (_player.LocalEntity == null)
-            return;
-
-        var playerPos = _transform.GetWorldPosition(_player.LocalEntity.Value);
+        var playerPos = _transform.GetWorldPosition(_entity);
         var nearestTargetPos = FindClosestEntity(playerPos);
 
         if (nearestTargetPos == null)
@@ -52,7 +48,7 @@ public sealed class Scp096Overlay : Overlay
         Vector2? closestEntityPos = null;
         var closestDistance = float.MaxValue;
 
-        foreach (var entity in Targets)
+        foreach (var entity in _entity.Comp.Targets)
         {
             var entityPosition = _transform.GetWorldPosition(entity);
 
