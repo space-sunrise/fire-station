@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Scp096.Protection;
+﻿using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Scp.Watching.FOV;
@@ -12,30 +13,25 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.StatusEffectNew;
-using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Random;
-using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp096;
 
 public abstract partial class SharedScp096System : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
-    [Dependency] private readonly MovementSpeedModifierSystem _speedModifierSystem = default!;
-    [Dependency] private readonly SharedAmbientSoundSystem _ambientSoundSystem = default!;
-    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = default!;
+    [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly SharedSunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly PredictedRandomSystem _random = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
-    private ISawmill _sawmill = Logger.GetSawmill("scp096");
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
 
     public override void Initialize()
@@ -47,11 +43,16 @@ public abstract partial class SharedScp096System : EntitySystem
         SubscribeLocalEvent<Scp096Component, AttackAttemptEvent>(OnAttackAttempt);
         SubscribeLocalEvent<Scp096Component, AttemptPacifiedAttackEvent>(OnPacifiedAttackAttempt);
         SubscribeLocalEvent<Scp096Component, StartCollideEvent>(OnCollide);
-        SubscribeLocalEvent<Scp096Component, MobStateChangedEvent>(OnSpcStateChanged);
+        SubscribeLocalEvent<Scp096Component, MobStateChangedEvent>(OnMobStateChanged);
+        SubscribeLocalEvent<Scp096Component, SleepStateChangedEvent>(OnSleepStateChanged);
 
         SubscribeLocalEvent<Scp096Component, ScpMaskTargetEquipAttempt>(OnMaskAttempt);
 
+        SubscribeLocalEvent<Scp096Component, AfterAutoHandleStateEvent>(OnHandleState);
+        SubscribeLocalEvent<Scp096Component, ComponentInit>(OnInit);
         SubscribeLocalEvent<Scp096Component, ComponentShutdown>(OnShutdown);
+
+        InitTargets();
     }
 
     #region Updater
@@ -62,30 +63,27 @@ public abstract partial class SharedScp096System : EntitySystem
 
         var query = EntityQueryEnumerator<Scp096Component>();
 
-        while (query.MoveNext(out var scpUid, out var scp096Component))
+        while (query.MoveNext(out var uid, out var comp))
         {
-            var scpEntity = (scpUid, scp096Component);
-            UpdateScp096(scpEntity);
-            UpdateVisualState(scpEntity);
+            var ent = (uid, comp);
+            UpdateScp096(ent);
         }
-
-        UpdateTargets(frameTime);
     }
 
-    private void UpdateScp096(Entity<Scp096Component> scpEntity)
+    private void UpdateScp096(Entity<Scp096Component> ent)
     {
-        if (!scpEntity.Comp.InRageMode)
+        if (!ent.Comp.InRageMode)
             return;
 
-        if (!scpEntity.Comp.RageStartTime.HasValue)
+        if (!ent.Comp.RageStartTime.HasValue)
             return;
 
-        var currentTime = _gameTiming.CurTime;
-        var elapsedTime = currentTime - scpEntity.Comp.RageStartTime.Value;
+        var currentTime = _timing.CurTime;
+        var elapsedTime = currentTime - ent.Comp.RageStartTime.Value;
 
-        if (elapsedTime.TotalSeconds > scpEntity.Comp.RageDuration)
+        if (elapsedTime > ent.Comp.RageDuration)
         {
-            OnRageTimeExceeded(scpEntity);
+            OnRageTimeExceeded(ent);
         }
     }
 
@@ -98,12 +96,35 @@ public abstract partial class SharedScp096System : EntitySystem
         TryAddTarget(ent, args.Viewer);
     }
 
-    private void OnSpcStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
+    private void OnMobStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
+
         if (args.NewMobState == MobState.Alive)
             return;
 
         RemoveAllTargets(ent);
+    }
+
+    private void OnSleepStateChanged(Entity<Scp096Component> ent, ref SleepStateChangedEvent args)
+    {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
+    }
+
+    protected virtual void OnHandleState(Entity<Scp096Component> ent, ref AfterAutoHandleStateEvent args)
+    {
+
+    }
+
+    protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
+    {
+
     }
 
     protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
@@ -150,88 +171,87 @@ public abstract partial class SharedScp096System : EntitySystem
 
     #region Targets
 
-    public bool TryAddTarget(EntityUid targetUid, bool ignoreAngle = false, bool ignoreMask = false)
+    public bool TryAddTarget(EntityUid target, bool ignoreAngle = false, bool ignoreMask = false)
     {
-        if (!_helpers.TryGetFirst<Scp096Component>(out var scpEntity))
+        if (!_helpers.TryGetFirst<Scp096Component>(out var scp))
             return false;
 
-        if (!TryAddTarget(scpEntity.Value, targetUid, ignoreAngle, ignoreMask))
+        if (!TryAddTarget(scp.Value, target, ignoreAngle, ignoreMask))
             return false;
 
         return true;
     }
 
-    public bool TryAddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid, bool ignoreAngle = false, bool ignoreMask = false)
+    public bool TryAddTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false, bool ignoreMask = false)
     {
-        if (!CanBeAggro(scpEntity, ignoreMask))
+        if (!CanBeAggro(scp, ignoreMask))
             return false;
 
-        if (!IsValidTarget(scpEntity, targetUid, ignoreAngle))
+        if (!IsValidTarget(scp, target, ignoreAngle))
             return false;
 
-        AddTarget(scpEntity, targetUid);
+        AddTarget(scp, target);
 
         return true;
     }
 
-    protected virtual void AddTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid)
+    protected virtual void AddTarget(Entity<Scp096Component> scp, EntityUid target)
     {
-        scpEntity.Comp.Targets.Add(targetUid);
+        scp.Comp.Targets.Add(target);
 
-        var scpTarget = EnsureComp<Scp096TargetComponent>(targetUid);
-        scpTarget.TargetedBy.Add(scpEntity);
+        var scpTarget = EnsureComp<Scp096TargetComponent>(target);
+        scpTarget.TargetedBy.Add(scp);
 
-        if (!scpEntity.Comp.InRageMode)
-            MakeAngry(scpEntity);
+        Dirty(target, scpTarget);
+        Dirty(scp);
 
-        Dirty(targetUid, scpTarget);
-        Dirty(scpEntity);
+        if (!scp.Comp.InRageMode)
+            MakeAngry(scp);
     }
 
-    protected virtual void RemoveTarget(Entity<Scp096Component> scpEntity, Entity<Scp096TargetComponent?> targetEntity, bool removeComponent = true)
+    protected virtual void RemoveTarget(Entity<Scp096Component> scp, Entity<Scp096TargetComponent?> target, bool removeComponent = true)
     {
-        if (!Resolve(targetEntity, ref targetEntity.Comp))
+        if (!Resolve(target, ref target.Comp))
             return;
 
-        scpEntity.Comp.Targets.Remove(targetEntity);
-        targetEntity.Comp.TargetedBy.Remove(scpEntity);
+        scp.Comp.Targets.Remove(target);
+        target.Comp.TargetedBy.Remove(scp);
 
-        if (targetEntity.Comp.TargetedBy.Count == 0 && removeComponent)
-        {
-            RemComp<Scp096TargetComponent>(targetEntity);
-        }
+        Dirty(target);
+        Dirty(scp);
 
-        if (scpEntity.Comp.Targets.Count == 0)
-        {
-            Pacify(scpEntity);
-        }
+        if (target.Comp.TargetedBy.Count == 0 && removeComponent)
+            RemComp<Scp096TargetComponent>(target);
 
-        Dirty(targetEntity);
-        Dirty(scpEntity);
+        if (scp.Comp.Targets.Count == 0)
+            Pacify(scp);
     }
 
-    private void RemoveAllTargets(Entity<Scp096Component> scpEntity)
+    private void RemoveAllTargets(Entity<Scp096Component> ent)
     {
         var query = EntityQueryEnumerator<Scp096TargetComponent>();
 
         while (query.MoveNext(out var targetUid, out _))
         {
-            RemoveTarget(scpEntity, targetUid);
+            RemoveTarget(ent, targetUid);
         }
     }
 
-    private bool IsValidTarget(Entity<Scp096Component> scpEntity, EntityUid targetUid, bool ignoreAngle = false)
+    private bool IsValidTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false)
     {
+        if (scp.Comp.Targets.Contains(target))
+            return false;
+
         // Проверяем, может ли цель видеть 096. Без учета поля зрения
-        if (!_watching.IsWatchedBy(scpEntity, [targetUid], viewers: out _ , false))
+        if (!_watching.IsWatchedBy(scp, [target], viewers: out _, false))
             return false;
 
         // Проверяем, есть ли у цели защита от 096
-        if (TryComp<Scp096ProtectionComponent>(targetUid, out var protection) && !_random.Prob(protection.ProblemChance))
+        if (TryComp<Scp096ProtectionComponent>(target, out var protection) && !_random.ProbForEntity(scp, protection.ProblemChance))
             return false;
 
         // Проверяем, смотрит ли 096 на цель и цель на 096
-        if (!IsTargetSeeScp096(targetUid, scpEntity, ignoreAngle))
+        if (!IsTargetSeeScp096(target, scp, ignoreAngle))
             return false;
 
         // Если все условия выполнены, то цель валидна
@@ -240,32 +260,32 @@ public abstract partial class SharedScp096System : EntitySystem
 
     #endregion
 
-    private void OnRageTimeExceeded(Entity<Scp096Component> scpEntity)
+    private void OnRageTimeExceeded(Entity<Scp096Component> ent)
     {
-        RemoveAllTargets(scpEntity);
+        RemoveAllTargets(ent);
     }
 
     #region Helpers
 
-    private bool CanBeAggro(Entity<Scp096Component> entity, bool ignoreMask = false)
+    private bool CanBeAggro(Entity<Scp096Component> ent, bool ignoreMask = false)
     {
-        if (HasComp<SleepingComponent>(entity))
+        if (HasComp<SleepingComponent>(ent))
             return false;
 
-        if (_mobStateSystem.IsIncapacitated(entity))
+        if (_mobState.IsIncapacitated(ent))
             return false;
 
         // В маске мы мирные
-        if (_scpMask.HasScpMask(entity) && !ignoreMask)
+        if (_scpMask.HasScpMask(ent) && !ignoreMask)
             return false;
 
         return true;
     }
 
-    private void RefreshSpeedModifiers(Entity<Scp096Component> scpEntity)
+    private void RefreshSpeedModifiers(Entity<Scp096Component> ent)
     {
-        var newSpeed = scpEntity.Comp.InRageMode ? scpEntity.Comp.RageSpeed : scpEntity.Comp.BaseSpeed;
-        _speedModifierSystem.ChangeBaseSpeed(scpEntity, newSpeed, newSpeed, 20.0f);
+        var newSpeed = ent.Comp.InRageMode ? ent.Comp.RageSpeed : ent.Comp.BaseSpeed;
+        _speedModifier.ChangeBaseSpeed(ent, newSpeed, newSpeed, 20.0f);
     }
 
     private bool IsTargetSeeScp096(EntityUid viewer, Entity<Scp096Component> scp, bool ignoreAngle)
@@ -290,35 +310,37 @@ public abstract partial class SharedScp096System : EntitySystem
 
     #region Rage handlers
 
-    private void Pacify(Entity<Scp096Component> scpEntity)
+    private void Pacify(Entity<Scp096Component> ent)
     {
-        EnsureComp<PacifiedComponent>(scpEntity);
+        EnsureComp<PacifiedComponent>(ent);
 
-        scpEntity.Comp.InRageMode = false;
-        scpEntity.Comp.RageStartTime = null;
-        Dirty(scpEntity);
+        ent.Comp.InRageMode = false;
+        ent.Comp.RageStartTime = null;
+        Dirty(ent);
 
-        RaiseLocalEvent(scpEntity, new Scp096RageEvent(false));
+        _ambientSound.SetSound(ent, ent.Comp.CrySound);
+        _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, ent.Comp.PacifiedTime);
 
-        _ambientSoundSystem.SetSound(scpEntity, scpEntity.Comp.CrySound);
-        _statusEffects.TryAddStatusEffectDuration(scpEntity, StatusEffectSleep, TimeSpan.FromSeconds(scpEntity.Comp.PacifiedTime));
+        RaiseLocalEvent(ent, new Scp096RageChangedEvent(false));
+        RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
 
-        RefreshSpeedModifiers(scpEntity);
+        RefreshSpeedModifiers(ent);
     }
 
-    private void MakeAngry(Entity<Scp096Component> scpEntity)
+    private void MakeAngry(Entity<Scp096Component> ent)
     {
-        RemComp<PacifiedComponent>(scpEntity);
+        RemComp<PacifiedComponent>(ent);
 
-        scpEntity.Comp.InRageMode = true;
-        scpEntity.Comp.RageStartTime = _gameTiming.CurTime;
-        Dirty(scpEntity);
+        ent.Comp.InRageMode = true;
+        ent.Comp.RageStartTime = _timing.CurTime;
+        Dirty(ent);
 
-        RaiseNetworkEvent(new Scp096RageEvent(true));
+        RaiseLocalEvent(ent, new Scp096RageChangedEvent(true));
+        RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
 
-        _ambientSoundSystem.SetSound(scpEntity, scpEntity.Comp.RageSound);
+        _ambientSound.SetSound(ent, ent.Comp.RageSound);
 
-        RefreshSpeedModifiers(scpEntity);
+        RefreshSpeedModifiers(ent);
     }
 
     #endregion
@@ -336,38 +358,11 @@ public abstract partial class SharedScp096System : EntitySystem
     protected virtual void HandleDoorCollision(Entity<Scp096Component> scpEntity, Entity<DoorComponent> doorEntity) {}
 
     #endregion
-
-    // TODO: Переработать это, вынести куда-либо
-    // Это же буквально то, что делает уже существующий компонент спрайта в движении, зачем это тут, тем более в апдейте
-    private void UpdateVisualState(Entity<Scp096Component> scpEntity)
-    {
-        if (!_gameTiming.IsFirstTimePredicted)
-            return;
-
-        Scp096VisualsState state;
-        var physicsComponent = Comp<PhysicsComponent>(scpEntity);
-        var moving = physicsComponent.LinearVelocity.Length() > 0;
-
-        if (_mobStateSystem.IsCritical(scpEntity) || HasComp<SleepingComponent>(scpEntity))
-        {
-            state = Scp096VisualsState.Dead;
-        }
-        else if (scpEntity.Comp.InRageMode)
-        {
-            state = moving ? Scp096VisualsState.Running : Scp096VisualsState.IdleAgro;
-        }
-        else
-        {
-            state = moving ? Scp096VisualsState.Walking : Scp096VisualsState.Idle;
-        }
-
-        _appearanceSystem.SetData(scpEntity, Scp096Visuals.Visuals, state);
-    }
-
 }
 
-[Serializable, NetSerializable]
-public sealed class Scp096RageEvent(bool inRage) : EntityEventArgs
+public sealed class Scp096RageChangedEvent(bool inRage) : EntityEventArgs
 {
-    public bool InRage = inRage;
+    public readonly bool InRage = inRage;
 }
+
+public sealed class Scp096RequireUpdateVisualsEvent : EntityEventArgs;

@@ -3,6 +3,7 @@ using Content.Client._Scp.Scp096.Ui;
 using Content.Client.Overlays;
 using Content.Client.UserInterface.Systems.Gameplay;
 using Content.Shared._Scp.Scp096;
+using Content.Shared.Inventory.Events;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
@@ -34,10 +35,11 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
 
     private void EnsureWidgetExist()
     {
-        if (_uiManager.ActiveScreen == null)
-        {
+        if (_widget != null)
             return;
-        }
+
+        if (_uiManager.ActiveScreen == null)
+            return;
 
         var layoutContainer = _uiManager.ActiveScreen.FindControl<LayoutContainer>("ViewportContainer");
 
@@ -52,14 +54,10 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
         base.Update(frameTime);
 
         if (!IsActive)
-        {
             return;
-        }
 
         if (_widget == null)
-        {
             return;
-        }
 
         if (!TryGetPlayerEntity(out var scpEntity) || !scpEntity.Value.Comp.RageStartTime.HasValue)
         {
@@ -70,25 +68,31 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
         _widget.Visible = true;
 
         var elapsedTime = _gameTiming.CurTime - scpEntity.Value.Comp.RageStartTime;
-        var remainingTime = scpEntity.Value.Comp.RageDuration - elapsedTime.Value.TotalSeconds;
+        var remainingTime = scpEntity.Value.Comp.RageDuration - elapsedTime.Value;
 
-        _widget.SetData(remainingTime, scpEntity.Value.Comp.Targets.Count);
+        _widget.SetData(remainingTime.TotalSeconds, scpEntity.Value.Comp.Targets.Count);
     }
 
     protected override void DeactivateInternal()
     {
         base.DeactivateInternal();
+
         RemoveWidget();
+    }
+
+    protected override void UpdateInternal(RefreshEquipmentHudEvent<Scp096Component> args)
+    {
+        base.UpdateInternal(args);
+
+        EnsureWidgetExist();
     }
 
     private void OnGetStatusIcon(Entity<Scp096TargetComponent> ent, ref GetStatusIconsEvent args)
     {
-        var playerEntity = _playerManager.LocalSession?.AttachedEntity;
+        var playerEntity = _playerManager.LocalEntity;
 
         if (!Validate(playerEntity))
-        {
             return;
-        }
 
         if (ent.Comp.TargetedBy.Contains(playerEntity.Value)
             && _prototypeManager.TryIndex(ent.Comp.KillIconPrototype, out var killIconPrototype))
@@ -111,20 +115,20 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
         scpEntity = null;
 
         if (!TryComp<Scp096Component>(playerEntity, out var scp096Component))
-        {
             return false;
-        }
 
-        scpEntity = new Entity<Scp096Component>(playerEntity.Value, scp096Component);
+        scpEntity = (playerEntity.Value, scp096Component);
 
         return true;
     }
 
     private void RemoveWidget()
     {
-        if (_widget == null) return;
+        if (_widget == null)
+            return;
 
         _widget.Parent?.RemoveChild(_widget);
+        _widget.RemoveAllChildren();
         _widget = null;
     }
 }
