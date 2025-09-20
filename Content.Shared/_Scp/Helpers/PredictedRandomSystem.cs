@@ -1,4 +1,5 @@
 ﻿using Content.Shared.GameTicking;
+using Content.Shared.Random.Helpers;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Helpers;
@@ -50,10 +51,11 @@ public sealed class PredictedRandomSystem : EntitySystem
         var ent = GetNetEntity(entity);
         if (!_entityRandoms.TryGetValue(ent, out var random))
         {
-            var seed = HashCode.Combine(entity.GetHashCode());
+            var seed = SharedRandomExtensions.HashCodeCombine(new (ent.Id));
             random = new System.Random(seed);
             _entityRandoms[ent] = random;
         }
+
         return random;
     }
 
