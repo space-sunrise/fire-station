@@ -50,7 +50,7 @@ public sealed class PredictedRandomSystem : EntitySystem
         var ent = GetNetEntity(entity);
         if (!_entityRandoms.TryGetValue(ent, out var random))
         {
-            var seed = HashCode.Combine(entity.GetHashCode(), (int)(_timing.CurTick.Value & 0x7FFFFFFF));
+            var seed = HashCode.Combine(entity.GetHashCode());
             random = new System.Random(seed);
             _entityRandoms[ent] = random;
         }
