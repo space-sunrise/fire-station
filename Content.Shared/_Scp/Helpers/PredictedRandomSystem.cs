@@ -8,8 +8,6 @@ public sealed class PredictedRandomSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private readonly Dictionary<NetEntity, System.Random> _entityRandoms = new();
-
     private System.Random? _tickRandom;
     private GameTick _lastTick;
 
@@ -21,7 +19,6 @@ public sealed class PredictedRandomSystem : EntitySystem
 
     private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
     {
-        _entityRandoms.Clear();
         _tickRandom = null;
         _lastTick = GameTick.Zero;
     }
@@ -49,12 +46,8 @@ public sealed class PredictedRandomSystem : EntitySystem
     private System.Random GetOrCreateEntityRandom(EntityUid entity)
     {
         var ent = GetNetEntity(entity);
-        if (!_entityRandoms.TryGetValue(ent, out var random))
-        {
-            var seed = SharedRandomExtensions.HashCodeCombine(new (ent.Id));
-            random = new System.Random(seed);
-            _entityRandoms[ent] = random;
-        }
+        var seed = SharedRandomExtensions.HashCodeCombine(new List<int> { (int) _timing.CurTick.Value, ent.Id });
+        var random = new System.Random(seed);
 
         return random;
     }
