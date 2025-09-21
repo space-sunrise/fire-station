@@ -2,19 +2,13 @@
 using Content.Server.Defusable.WireActions;
 using Content.Server.Doors.Systems;
 using Content.Server.Power;
-using Content.Server.Storage.Components;
-using Content.Server.Storage.EntitySystems;
 using Content.Server.Wires;
 using Content.Shared._Scp.Scp096;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Doors.Components;
-using Content.Shared.Interaction.Events;
-using Content.Shared.Lock;
-using Content.Shared.Storage.Components;
 using Content.Shared.Wires;
 using Robust.Server.Audio;
 using Robust.Server.GameStates;
-using Robust.Shared.Audio;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp096;
@@ -24,12 +18,8 @@ public sealed partial class Scp096System : SharedScp096System
     [Dependency] private readonly WiresSystem _wires = default!;
     [Dependency] private readonly DoorSystem _door = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
-    [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly PvsOverrideSystem _pvsOverride = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-
-    private static readonly SoundSpecifier StorageOpenSound = new SoundCollectionSpecifier("MetalBreak");
 
     public override void Initialize()
     {
@@ -42,24 +32,6 @@ public sealed partial class Scp096System : SharedScp096System
     {
         if (ent.Comp.InRageMode || HasComp<SleepingComponent>(ent))
             args.Cancel();
-    }
-
-    protected override void OnAttackAttempt(Entity<Scp096Component> ent, ref AttackAttemptEvent args)
-    {
-        base.OnAttackAttempt(ent, ref args);
-
-        if (!args.Target.HasValue)
-            return;
-
-        var target = args.Target.Value;
-
-        // randomly opens some lockers and such.
-        if (TryComp<EntityStorageComponent>(target, out var entityStorageComponent) && !entityStorageComponent.Open)
-        {
-            _lock.TryUnlock(target, ent);
-            _entityStorage.OpenStorage(target, entityStorageComponent);
-            _audio.PlayPvs(StorageOpenSound, ent);
-        }
     }
 
     // TODO: Переделать это под отдельный компонент, который будет выдаваться и убираться

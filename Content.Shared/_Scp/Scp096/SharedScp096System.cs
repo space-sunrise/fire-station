@@ -1,4 +1,6 @@
-﻿using Content.Shared._Scp.Helpers;
+﻿using Content.Shared._Scp.Blinking;
+using Content.Shared._Scp.Blood;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
@@ -9,10 +11,15 @@ using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Doors.Components;
 using Content.Shared.Interaction.Events;
+using Content.Shared.Lock;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.StatusEffectNew;
+using Content.Shared.Storage.Components;
+using Content.Shared.Storage.EntitySystems;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -21,18 +28,23 @@ namespace Content.Shared._Scp.Scp096;
 
 public abstract partial class SharedScp096System : EntitySystem
 {
-    [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = default!;
+    [Dependency] private readonly PredictedRandomSystem _random = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly SharedSunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
+    [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = default!;
+    [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
-    [Dependency] private readonly PredictedRandomSystem _random = default!;
+    [Dependency] private readonly SharedEntityStorageSystem _entityStorage = default!;
+    [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
+
+    private static readonly SoundSpecifier StorageOpenSound = new SoundCollectionSpecifier("MetalBreak");
 
     public override void Initialize()
     {
@@ -149,15 +161,25 @@ public abstract partial class SharedScp096System : EntitySystem
         args.Cancelled = true;
     }
 
-    protected virtual void OnAttackAttempt(Entity<Scp096Component> ent, ref AttackAttemptEvent args)
+    private void OnAttackAttempt(Entity<Scp096Component> ent, ref AttackAttemptEvent args)
     {
         if (!args.Target.HasValue)
             return;
 
-        if (!TryComp<Scp096TargetComponent>(args.Target.Value, out var targetComponent)
-            || !targetComponent.TargetedBy.Contains(ent.Owner))
+        var target = args.Target.Value;
+
+        if (!CanAttack(ent, target))
         {
             args.Cancel();
+            return;
+        }
+
+        // Открываем ударом шкафчики и хранилища
+        if (TryComp<EntityStorageComponent>(target, out var entityStorageComponent) && !entityStorageComponent.Open)
+        {
+            _lock.TryUnlock(target, ent);
+            _entityStorage.OpenStorage(target, entityStorageComponent);
+            _audio.PlayLocal(StorageOpenSound, ent, ent);
         }
     }
 
@@ -237,27 +259,6 @@ public abstract partial class SharedScp096System : EntitySystem
         }
     }
 
-    private bool IsValidTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false)
-    {
-        if (scp.Comp.Targets.Contains(target))
-            return false;
-
-        // Проверяем, может ли цель видеть 096. Без учета поля зрения
-        if (!_watching.IsWatchedBy(scp, [target], viewers: out _, false))
-            return false;
-
-        // Проверяем, есть ли у цели защита от 096
-        if (TryComp<Scp096ProtectionComponent>(target, out var protection) && !_random.ProbForEntity(scp, protection.ProblemChance))
-            return false;
-
-        // Проверяем, смотрит ли 096 на цель и цель на 096
-        if (!IsTargetSeeScp096(target, scp, ignoreAngle))
-            return false;
-
-        // Если все условия выполнены, то цель валидна
-        return true;
-    }
-
     #endregion
 
     private void OnRageTimeExceeded(Entity<Scp096Component> ent)
@@ -282,6 +283,27 @@ public abstract partial class SharedScp096System : EntitySystem
         return true;
     }
 
+    private bool IsValidTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false)
+    {
+        if (scp.Comp.Targets.Contains(target))
+            return false;
+
+        // Проверяем, может ли цель видеть 096. Без учета поля зрения
+        if (!_watching.IsWatchedBy(scp, [target], viewers: out _, false))
+            return false;
+
+        // Проверяем, есть ли у цели защита от 096
+        if (TryComp<Scp096ProtectionComponent>(target, out var protection) && !_random.ProbForEntity(scp, protection.ProblemChance))
+            return false;
+
+        // Проверяем, смотрит ли 096 на цель и цель на 096
+        if (!IsTargetSeeScp096(target, scp, ignoreAngle))
+            return false;
+
+        // Если все условия выполнены, то цель валидна
+        return true;
+    }
+
     private void RefreshSpeedModifiers(Entity<Scp096Component> ent)
     {
         var newSpeed = ent.Comp.InRageMode ? ent.Comp.RageSpeed : ent.Comp.BaseSpeed;
@@ -303,6 +325,29 @@ public abstract partial class SharedScp096System : EntitySystem
             return false;
 
         // Соответственно если обе проверки прошли, то цель видит 096
+        return true;
+    }
+
+    /// <summary>
+    /// Проверяет, может ли скромник ударить эту сущность.
+    /// Можно ударить свою цель, структуру, борга или животного.
+    /// </summary>
+    private bool CanAttack(Entity<Scp096Component> scp, EntityUid target)
+    {
+        if (!scp.Comp.InRageMode)
+            return false;
+
+        // Если цель не имеет компонента моргания, значит это 99% не игрок
+        // И скромник имеет право это расхуярить(это структура, борг или животное)
+        if (!HasComp<BlinkableComponent>(target))
+            return true;
+
+        if (!TryComp<Scp096TargetComponent>(target, out var targetComp))
+            return false;
+
+        if (!targetComp.TargetedBy.Contains(scp))
+            return false;
+
         return true;
     }
 

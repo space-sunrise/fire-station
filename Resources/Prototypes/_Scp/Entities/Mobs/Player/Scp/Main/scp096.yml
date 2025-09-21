@@ -35,6 +35,14 @@
   - type: FearSource
     uponSeenState: Fear
   - type: ShowBlinkable
+  - type: BloodSplatterer
+    particles:
+    - BloodSplatter1
+    - BloodSplatter2
+    - BloodSplatter3
+    - BloodSplatter4
+    - BloodSplatter5
+    - BloodSplatter6
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name
     description: ghost-panel-antagonist-scp-description
@@ -46,11 +54,13 @@
     soundHit:
       path: /Audio/Weapons/punch3.ogg
     angle: 0
-    animation: WeaponArcPunch
+    animation: WeaponArcClaw
+    wideAnimation: WeaponArcClaw
+    attackRate: 4
     damage:
       types:
-        Blunt: 60
-        Bloodloss: 10
+        Blunt: 15
+        Bloodloss: 21
   - type: Body
     prototype: Human # TODO: Кастомное тело
   - type: Inventory

@@ -1,0 +1,87 @@
+﻿- type: entity
+  id: BaseBloodSplatter
+  abstract: true
+  name: blood splatter
+  components:
+  - type: Sprite
+    drawdepth: Puddles
+    sprite: _Scp/Effects/blood.rsi
+  - type: BloodSplatter
+  - type: Footprint
+    spritePath: /Textures/_Scp/Effects/blood.rsi
+    containerName: blood
+  - type: Appearance
+  - type: Clickable
+  - type: Transform
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: false
+    friction: 0.1
+    restitution: 0.7
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.1
+        hard: false
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Puddle
+    solution: blood
+    canSlow: false
+    canSlip: false
+  - type: SolutionContainerManager
+    solutions:
+      blood:
+        maxVol: 10
+
+- type: entity
+  id: BloodSplatter1
+  parent: BaseBloodSplatter
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: blood1
+
+- type: entity
+  id: BloodSplatter2
+  parent: BaseBloodSplatter
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: blood2
+
+- type: entity
+  id: BloodSplatter3
+  parent: BaseBloodSplatter
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: blood3
+
+- type: entity
+  id: BloodSplatter4
+  parent: BaseBloodSplatter
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: blood4
+
+- type: entity
+  id: BloodSplatter5
+  parent: BaseBloodSplatter
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: blood5
+
+- type: entity
+  id: BloodSplatter6
+  parent: BaseBloodSplatter
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    state: blood6
