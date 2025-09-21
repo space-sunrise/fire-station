@@ -27,12 +27,17 @@ public sealed class Scp096System : SharedScp096System
         SubscribeLocalEvent<Scp096Component, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<Scp096Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
-        SubscribeLocalEvent<Scp096Component, Scp096RequireUpdateVisualsEvent>(OnUpdateStateRequest);
+        SubscribeNetworkEvent<Scp096RequireUpdateVisualsEvent>(OnUpdateStateRequest);
     }
 
-    private void OnUpdateStateRequest(Entity<Scp096Component> ent, ref Scp096RequireUpdateVisualsEvent args)
+    private void OnUpdateStateRequest(Scp096RequireUpdateVisualsEvent args)
     {
-        UpdateVisualState(ent);
+        var uid = GetEntity(args.NetEntity);
+
+        if (!TryComp<Scp096Component>(uid, out var scp096Component))
+            return;
+
+        UpdateVisualState((uid, scp096Component));
     }
 
     // Ебанный предикшен

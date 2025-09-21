@@ -7,6 +7,7 @@ using Content.Shared._Scp.Watching.FOV;
 using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Audio;
 using Content.Shared.Bed.Sleep;
+using Content.Shared.CombatMode;
 using Content.Shared.Doors.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lock;
@@ -14,14 +15,18 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Projectiles;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
+using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp096;
@@ -53,6 +58,10 @@ public abstract partial class SharedScp096System : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<Scp096Component, SimpleEntitySeenEvent>(OnSeen);
+        SubscribeLocalEvent<ProjectileHitEvent>(OnProjectileHit);
+        SubscribeLocalEvent<Scp096Component, HitScanAttackedEvent>(OnHitScanHit);
+        SubscribeLocalEvent<Scp096Component, AttackedEvent>(OnAttacked);
+        SubscribeLocalEvent<Scp096Component, DisarmedEvent>(OnDisarmed);
 
         SubscribeLocalEvent<Scp096Component, AttackAttemptEvent>(OnAttackAttempt);
         SubscribeLocalEvent<Scp096Component, StartCollideEvent>(OnCollide);
@@ -109,12 +118,51 @@ public abstract partial class SharedScp096System : EntitySystem
         TryAddTarget(ent, args.Viewer);
     }
 
+    private void OnProjectileHit(ref ProjectileHitEvent args)
+    {
+        CheckRandomTargetByDamage(args.Target, args.Shooter, 1f);
+    }
+
+    private void OnHitScanHit(Entity<Scp096Component> ent, ref HitScanAttackedEvent args)
+    {
+        CheckRandomTargetByDamage(ent, args.User, 1f);
+    }
+
+    private void OnAttacked(Entity<Scp096Component> ent, ref AttackedEvent args)
+    {
+        var chance = _random.NextFloatForEntity(ent, 0.4f, 0.7f);
+        CheckRandomTargetByDamage(ent, args.User, chance);
+    }
+
+    private void OnDisarmed(Entity<Scp096Component> ent, ref DisarmedEvent args)
+    {
+        CheckRandomTargetByDamage(ent, args.Source, 0.1f);
+    }
+
+    /// <summary>
+    /// Отвечает за логику агрессии после удара по скромнику.
+    /// В случае успешного прохождения проверок записывает нападающего в цели scp-096
+    /// </summary>
+    private void CheckRandomTargetByDamage(EntityUid target, EntityUid? attacker, float chance)
+    {
+        if (!attacker.HasValue)
+            return;
+
+        if (!TryComp<Scp096Component>(target, out var scp))
+            return;
+
+        if (!_random.ProbForEntity(attacker.Value, chance))
+            return;
+
+        TryAddTarget((target, scp), attacker.Value, true);
+    }
+
     private void OnMobStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
     {
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
+        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
 
         if (args.NewMobState == MobState.Alive)
             return;
@@ -127,7 +175,7 @@ public abstract partial class SharedScp096System : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
+        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
     }
 
     protected virtual void OnHandleState(Entity<Scp096Component> ent, ref AfterAutoHandleStateEvent args)
@@ -365,7 +413,7 @@ public abstract partial class SharedScp096System : EntitySystem
         _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, ent.Comp.PacifiedTime);
 
         RaiseLocalEvent(ent, new Scp096RageChangedEvent(false));
-        RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
+        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
 
         RefreshSpeedModifiers(ent);
     }
@@ -377,7 +425,7 @@ public abstract partial class SharedScp096System : EntitySystem
         Dirty(ent);
 
         RaiseLocalEvent(ent, new Scp096RageChangedEvent(true));
-        RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
+        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
 
         _ambientSound.SetSound(ent, ent.Comp.RageSound);
         _ambientSound.SetRange(ent, 20f);
@@ -408,4 +456,8 @@ public sealed class Scp096RageChangedEvent(bool inRage) : EntityEventArgs
     public readonly bool InRage = inRage;
 }
 
-public sealed class Scp096RequireUpdateVisualsEvent : EntityEventArgs;
+[Serializable, NetSerializable]
+public sealed class Scp096RequireUpdateVisualsEvent(NetEntity netEntity) : EntityEventArgs
+{
+    public NetEntity NetEntity = netEntity;
+}
