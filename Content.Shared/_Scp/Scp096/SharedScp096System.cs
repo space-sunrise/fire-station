@@ -19,6 +19,7 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Network;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -41,6 +42,7 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly SharedEntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly INetManager _net = default!;
 
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
 
@@ -220,6 +222,9 @@ public abstract partial class SharedScp096System : EntitySystem
         Dirty(target, scpTarget);
         Dirty(scp);
 
+        if (_net.IsServer)
+            _audio.PlayGlobal(scp.Comp.SeenSound, target);
+
         if (!scp.Comp.InRageMode)
             MakeAngry(scp);
     }
@@ -355,6 +360,8 @@ public abstract partial class SharedScp096System : EntitySystem
         Dirty(ent);
 
         _ambientSound.SetSound(ent, ent.Comp.CrySound);
+        _ambientSound.SetRange(ent, 4f);
+        _ambientSound.SetVolume(ent, -14f);
         _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, ent.Comp.PacifiedTime);
 
         RaiseLocalEvent(ent, new Scp096RageChangedEvent(false));
@@ -373,6 +380,8 @@ public abstract partial class SharedScp096System : EntitySystem
         RaiseLocalEvent(ent, new Scp096RequireUpdateVisualsEvent());
 
         _ambientSound.SetSound(ent, ent.Comp.RageSound);
+        _ambientSound.SetRange(ent, 20f);
+        _ambientSound.SetVolume(ent, 10f);
 
         RefreshSpeedModifiers(ent);
     }

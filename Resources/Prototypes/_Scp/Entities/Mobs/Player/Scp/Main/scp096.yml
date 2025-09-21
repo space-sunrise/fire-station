@@ -69,8 +69,8 @@
     templateId: scp096
   - type: AmbientSound
     enabled: true
-    volume: -4
-    range: 5
+    volume: -14
+    range: 4
     sound:
       path: /Audio/_Scp/Scp096/scp-096-crying.ogg
   - type: EmitSoundRandomly

@@ -42,6 +42,9 @@ public sealed partial class Scp096Component : Component
     [DataField]
     public SoundSpecifier RageSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/scp-096-scream.ogg");
 
+    [DataField]
+    public SoundSpecifier SeenSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/seen.ogg");
+
     #endregion
 
     #region Speed
