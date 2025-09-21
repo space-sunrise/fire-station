@@ -1,11 +1,8 @@
 ﻿using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Helpers;
-using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Scp.Watching.FOV;
-using Content.Shared._Sunrise.Helpers;
-using Content.Shared.Audio;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode;
 using Content.Shared.Doors.Components;
@@ -14,16 +11,13 @@ using Content.Shared.Lock;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
-using Content.Shared.Popups;
 using Content.Shared.Projectiles;
-using Content.Shared.StatusEffectNew;
 using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Network;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -35,10 +29,6 @@ public abstract partial class SharedScp096System : EntitySystem
 {
     [Dependency] private readonly PredictedRandomSystem _random = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
-    [Dependency] private readonly SharedSunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = default!;
@@ -47,7 +37,6 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly SharedEntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly LockSystem _lock = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly INetManager _net = default!;
 
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
 
@@ -178,16 +167,6 @@ public abstract partial class SharedScp096System : EntitySystem
         RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
     }
 
-    protected virtual void OnHandleState(Entity<Scp096Component> ent, ref AfterAutoHandleStateEvent args)
-    {
-
-    }
-
-    protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
-    {
-
-    }
-
     protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
     {
         var query = EntityQueryEnumerator<Scp096TargetComponent>();
@@ -232,88 +211,22 @@ public abstract partial class SharedScp096System : EntitySystem
             args.Cancel();
     }
 
-    #endregion
-
-    #region Targets
-
-    public bool TryAddTarget(EntityUid target, bool ignoreAngle = false, bool ignoreMask = false)
+    private void OnCollide(Entity<Scp096Component> ent, ref StartCollideEvent args)
     {
-        if (!_helpers.TryGetFirst<Scp096Component>(out var scp))
-            return false;
-
-        if (!TryAddTarget(scp.Value, target, ignoreAngle, ignoreMask))
-            return false;
-
-        return true;
-    }
-
-    public bool TryAddTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false, bool ignoreMask = false)
-    {
-        if (!CanBeAggro(scp, ignoreMask))
-            return false;
-
-        if (!IsValidTarget(scp, target, ignoreAngle))
-            return false;
-
-        AddTarget(scp, target);
-
-        return true;
-    }
-
-    protected virtual void AddTarget(Entity<Scp096Component> scp, EntityUid target)
-    {
-        scp.Comp.Targets.Add(target);
-
-        var scpTarget = EnsureComp<Scp096TargetComponent>(target);
-        scpTarget.TargetedBy.Add(scp);
-
-        Dirty(target, scpTarget);
-        Dirty(scp);
-
-        if (_net.IsServer)
-            _audio.PlayGlobal(scp.Comp.SeenSound, target);
-
-        if (!scp.Comp.InRageMode)
-            MakeAngry(scp);
-    }
-
-    protected virtual void RemoveTarget(Entity<Scp096Component> scp, Entity<Scp096TargetComponent?> target, bool removeComponent = true)
-    {
-        if (!Resolve(target, ref target.Comp))
+        if (!TryComp<DoorComponent>(args.OtherEntity, out var doorComponent))
             return;
 
-        scp.Comp.Targets.Remove(target);
-        target.Comp.TargetedBy.Remove(scp);
-
-        Dirty(target);
-        Dirty(scp);
-
-        if (target.Comp.TargetedBy.Count == 0 && removeComponent)
-            RemComp<Scp096TargetComponent>(target);
-
-        if (scp.Comp.Targets.Count == 0)
-            Pacify(scp);
-    }
-
-    private void RemoveAllTargets(Entity<Scp096Component> ent)
-    {
-        var query = EntityQueryEnumerator<Scp096TargetComponent>();
-
-        while (query.MoveNext(out var targetUid, out _))
-        {
-            RemoveTarget(ent, targetUid);
-        }
+        HandleDoorCollision(ent, (args.OtherEntity, doorComponent));
     }
 
     #endregion
-
-    private void OnRageTimeExceeded(Entity<Scp096Component> ent)
-    {
-        RemoveAllTargets(ent);
-    }
 
     #region Helpers
 
+    /// <summary>
+    /// Проверяет, может ли scp-096 перейти в состояние ярости.
+    /// Не включает проверку, что скромник уже в состоянии ярости. Так и задуманно
+    /// </summary>
     private bool CanBeAggro(Entity<Scp096Component> ent, bool ignoreMask = false)
     {
         if (HasComp<SleepingComponent>(ent))
@@ -329,49 +242,14 @@ public abstract partial class SharedScp096System : EntitySystem
         return true;
     }
 
-    private bool IsValidTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false)
-    {
-        if (scp.Comp.Targets.Contains(target))
-            return false;
-
-        // Проверяем, может ли цель видеть 096. Без учета поля зрения
-        if (!_watching.IsWatchedBy(scp, [target], viewers: out _, false))
-            return false;
-
-        // Проверяем, есть ли у цели защита от 096
-        if (TryComp<Scp096ProtectionComponent>(target, out var protection) && !_random.ProbForEntity(scp, protection.ProblemChance))
-            return false;
-
-        // Проверяем, смотрит ли 096 на цель и цель на 096
-        if (!IsTargetSeeScp096(target, scp, ignoreAngle))
-            return false;
-
-        // Если все условия выполнены, то цель валидна
-        return true;
-    }
-
+    /// <summary>
+    /// Обновляет модификаторы скорости передвижения scp-096 в зависимости от текущего состояния.
+    /// В режиме ярости скорость большая, в обычном состоянии маленькая.
+    /// </summary>
     private void RefreshSpeedModifiers(Entity<Scp096Component> ent)
     {
         var newSpeed = ent.Comp.InRageMode ? ent.Comp.RageSpeed : ent.Comp.BaseSpeed;
         _speedModifier.ChangeBaseSpeed(ent, newSpeed, newSpeed, 20.0f);
-    }
-
-    private bool IsTargetSeeScp096(EntityUid viewer, Entity<Scp096Component> scp, bool ignoreAngle)
-    {
-        // Если игнорируем угол, то считаем, что смотрящий видит 096
-        if (ignoreAngle)
-            return true;
-
-        // Проверяем, смотрит ли 096 в лицо цели
-        if (!_fov.IsInViewAngle(scp.Owner, scp.Comp.ArgoAngle, Angle.Zero, viewer))
-            return false;
-
-        // Проверяем, смотри ли цель в лицо 096
-        if (!_fov.IsInViewAngle(viewer, scp.Comp.ArgoAngle, Angle.Zero, scp.Owner))
-            return false;
-
-        // Соответственно если обе проверки прошли, то цель видит 096
-        return true;
     }
 
     /// <summary>
@@ -399,63 +277,28 @@ public abstract partial class SharedScp096System : EntitySystem
 
     #endregion
 
-    #region Rage handlers
-
-    private void Pacify(Entity<Scp096Component> ent)
-    {
-        ent.Comp.InRageMode = false;
-        ent.Comp.RageStartTime = null;
-        Dirty(ent);
-
-        _ambientSound.SetSound(ent, ent.Comp.CrySound);
-        _ambientSound.SetRange(ent, 4f);
-        _ambientSound.SetVolume(ent, -14f);
-        _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, ent.Comp.PacifiedTime);
-
-        RaiseLocalEvent(ent, new Scp096RageChangedEvent(false));
-        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
-
-        RefreshSpeedModifiers(ent);
-    }
-
-    private void MakeAngry(Entity<Scp096Component> ent)
-    {
-        ent.Comp.InRageMode = true;
-        ent.Comp.RageStartTime = _timing.CurTime;
-        Dirty(ent);
-
-        RaiseLocalEvent(ent, new Scp096RageChangedEvent(true));
-        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
-
-        _ambientSound.SetSound(ent, ent.Comp.RageSound);
-        _ambientSound.SetRange(ent, 20f);
-        _ambientSound.SetVolume(ent, 10f);
-
-        RefreshSpeedModifiers(ent);
-    }
-
-    #endregion
-
-    #region Rage-mode door handling
-
-    private void OnCollide(Entity<Scp096Component> ent, ref StartCollideEvent args)
-    {
-        if (!TryComp<DoorComponent>(args.OtherEntity, out var doorComponent))
-            return;
-
-        HandleDoorCollision(ent, new Entity<DoorComponent>(args.OtherEntity, doorComponent));
-    }
+    #region Virtuals
 
     protected virtual void HandleDoorCollision(Entity<Scp096Component> scpEntity, Entity<DoorComponent> doorEntity) {}
+    protected virtual void OnHandleState(Entity<Scp096Component> ent, ref AfterAutoHandleStateEvent args) {}
+    protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args) {}
 
     #endregion
 }
 
+/// <summary>
+/// Ивент, вызываемый при смене состояния скромника.
+/// </summary>
+/// <param name="inRage">Вошел или вышел из режима ярости</param>
 public sealed class Scp096RageChangedEvent(bool inRage) : EntityEventArgs
 {
     public readonly bool InRage = inRage;
 }
 
+/// <summary>
+/// Ивент, информирующий клиент, что требуется перепроверять внешний вид scp-096.
+/// </summary>
+/// <param name="netEntity"><see cref="NetEntity"/> scp-096</param>
 [Serializable, NetSerializable]
 public sealed class Scp096RequireUpdateVisualsEvent(NetEntity netEntity) : EntityEventArgs
 {
