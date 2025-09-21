@@ -36,6 +36,8 @@
     uponSeenState: Fear
   - type: ShowBlinkable
   - type: BloodSplatterer
+    sound:
+      collection: GibCollection
     particles:
     - BloodSplatter1
     - BloodSplatter2
@@ -51,16 +53,16 @@
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
     altDisarm: false
-    soundHit:
-      path: /Audio/Weapons/punch3.ogg
+    soundHit: null
     angle: 0
     animation: WeaponArcClaw
     wideAnimation: WeaponArcClaw
-    attackRate: 4
+    attackRate: 2.5
     damage:
       types:
-        Blunt: 15
-        Bloodloss: 21
+        Slash: 27
+        Structural: 70
+        Bloodloss: 5
   - type: Body
     prototype: Human # TODO: Кастомное тело
   - type: Inventory
@@ -81,7 +83,6 @@
       path: /Audio/Effects/Footsteps/slime1.ogg
       params:
         volume: 3
-  - type: Pacified
   - type: Blindable
   - type: Climbing
   - type: Muted

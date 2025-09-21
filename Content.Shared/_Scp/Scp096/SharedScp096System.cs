@@ -1,5 +1,4 @@
 ﻿using Content.Shared._Scp.Blinking;
-using Content.Shared._Scp.Blood;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.ScpMask;
@@ -8,13 +7,13 @@ using Content.Shared._Scp.Watching.FOV;
 using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Audio;
 using Content.Shared.Bed.Sleep;
-using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Doors.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lock;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
+using Content.Shared.Popups;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
@@ -31,6 +30,7 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly PredictedRandomSystem _random = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly SharedSunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
@@ -53,7 +53,6 @@ public abstract partial class SharedScp096System : EntitySystem
         SubscribeLocalEvent<Scp096Component, SimpleEntitySeenEvent>(OnSeen);
 
         SubscribeLocalEvent<Scp096Component, AttackAttemptEvent>(OnAttackAttempt);
-        SubscribeLocalEvent<Scp096Component, AttemptPacifiedAttackEvent>(OnPacifiedAttackAttempt);
         SubscribeLocalEvent<Scp096Component, StartCollideEvent>(OnCollide);
         SubscribeLocalEvent<Scp096Component, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<Scp096Component, SleepStateChangedEvent>(OnSleepStateChanged);
@@ -153,12 +152,6 @@ public abstract partial class SharedScp096System : EntitySystem
                 RemComp<Scp096TargetComponent>(entityUid);
             }
         }
-    }
-
-    private void OnPacifiedAttackAttempt(Entity<Scp096Component> ent, ref AttemptPacifiedAttackEvent args)
-    {
-        args.Reason = Loc.GetString("scp096-non-agro-attack-attempt");
-        args.Cancelled = true;
     }
 
     private void OnAttackAttempt(Entity<Scp096Component> ent, ref AttackAttemptEvent args)
@@ -357,8 +350,6 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void Pacify(Entity<Scp096Component> ent)
     {
-        EnsureComp<PacifiedComponent>(ent);
-
         ent.Comp.InRageMode = false;
         ent.Comp.RageStartTime = null;
         Dirty(ent);
@@ -374,8 +365,6 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void MakeAngry(Entity<Scp096Component> ent)
     {
-        RemComp<PacifiedComponent>(ent);
-
         ent.Comp.InRageMode = true;
         ent.Comp.RageStartTime = _timing.CurTime;
         Dirty(ent);

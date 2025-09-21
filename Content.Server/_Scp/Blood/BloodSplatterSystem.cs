@@ -80,6 +80,8 @@ public sealed class BloodSplatterSystem : EntitySystem
         if (count == 0)
             return false;
 
+        _audio.PlayPvs(ent.Comp.Sound, target);
+
         // Вычисляем базовое направление от атакующего к жертве
         var baseDirection = (victimPosition - attackerPosition).Normalized();
         var baseAngle = MathF.Atan2(baseDirection.Y, baseDirection.X);

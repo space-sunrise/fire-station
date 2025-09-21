@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Starlight.Medical.Damage;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry;
@@ -30,7 +31,7 @@ namespace Content.Shared.Damage
         [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
         [Dependency] private readonly IConfigurationManager _config = default!;
         [Dependency] private readonly SharedChemistryGuideDataSystem _chemistryGuideData = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
+        [Dependency] private readonly PredictedRandomSystem _random = default!;
 
         private EntityQuery<AppearanceComponent> _appearanceQuery;
         private EntityQuery<DamageableComponent> _damageableQuery;
@@ -226,7 +227,7 @@ namespace Content.Shared.Damage
                 {
                     var min = 1f - NegativeVariance;
                     var max = 1f + PositiveVariance;
-                    varianceMultiplier = _random.NextFloat(min, max);
+                    varianceMultiplier = _random.NextFloatForEntity(uid.Value, min, max); // Fire edit - фикс миспредикта
                 }
                 damage *= varianceMultiplier;
             }

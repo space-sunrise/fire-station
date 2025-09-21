@@ -1,4 +1,5 @@
-﻿using Content.Shared.StatusIcon;
+﻿using Content.Shared.FixedPoint;
+using Content.Shared.StatusIcon;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -16,4 +17,10 @@ public sealed partial class Scp096TargetComponent : Component
 
     [DataField]
     public ProtoId<FactionIconPrototype> KillIconPrototype = "Scp096TargetIcon";
+
+    [DataField]
+    public FixedPoint2 TotalDamageToStop = FixedPoint2.New(500);
+
+    [DataField, AutoNetworkedField]
+    public FixedPoint2 AlreadyAppliedDamage = FixedPoint2.Zero;
 }

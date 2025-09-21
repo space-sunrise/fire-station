@@ -1,0 +1,6 @@
+﻿- type: soundCollection
+  id: GibCollection
+  files:
+  - /Audio/_Scp/Effects/Gore/Gib/sound1.ogg
+  - /Audio/_Scp/Effects/Gore/Gib/sound2.ogg
+  - /Audio/_Scp/Effects/Gore/Gib/sound3.ogg
