@@ -125,7 +125,8 @@
 
 - type: startingGear
   id: FireStationSponsorTier1
-  inhand:
+  storage:
+    back:
     - FireStationUplink20
 
 # 2 level SCP Specialist
@@ -135,7 +136,8 @@
 
 - type: startingGear
   id: FireStationSponsorTier2
-  inhand:
+  storage:
+    back:
     - FireStationUplink40
 
 # 3 level Complex Director
@@ -145,7 +147,8 @@
 
 - type: startingGear
   id: FireStationSponsorTier3
-  inhand:
+  storage:
+    back:
     - FireStationUplink60
 
 # 4 level O5 Council
@@ -155,7 +158,8 @@
 
 - type: startingGear
   id: FireStationSponsorTier4
-  inhand:
+  storage:
+    back:
     - FireStationUplink80
 
 # 5 level Sponsor Foundation
@@ -165,5 +169,6 @@
 
 - type: startingGear
   id: FireStationSponsorTier5
-  inhand:
+  storage:
+    back:
     - FireStationUplink100

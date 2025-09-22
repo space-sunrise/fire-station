@@ -113,7 +113,7 @@
   description: A briefcase with the employee's personal belongings. Password protected. I wonder what this suitcase holds?
   components:
   - type: Item
-    size: Ginormous
+    size: Normal
     sprite: _Scp/Objects/Devices/fire_uplink.rsi
   - type: Sprite
     sprite: _Scp/Objects/Devices/fire_uplink.rsi
