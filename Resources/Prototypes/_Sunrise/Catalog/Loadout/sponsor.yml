@@ -115,3 +115,55 @@
     back:
     - NeweraStationUplink
     - Suntick100
+
+# FIRE STATION
+
+# 1 level class D
+- type: sponsorLoadout
+  id: FireStationSponsorTier1
+  equipment: FireStationSponsorTier1
+
+- type: startingGear
+  id: FireStationSponsorTier1
+  inhand:
+    - FireStationUplink20
+
+# 2 level SCP Specialist
+- type: sponsorLoadout
+  id: FireStationSponsorTier2
+  equipment: FireStationSponsorTier2
+
+- type: startingGear
+  id: FireStationSponsorTier2
+  inhand:
+    - FireStationUplink40
+
+# 3 level Complex Director
+- type: sponsorLoadout
+  id: FireStationSponsorTier3
+  equipment: FireStationSponsorTier3
+
+- type: startingGear
+  id: FireStationSponsorTier3
+  inhand:
+    - FireStationUplink60
+
+# 4 level O5 Council
+- type: sponsorLoadout
+  id: FireStationSponsorTier4
+  equipment: FireStationSponsorTier4
+
+- type: startingGear
+  id: FireStationSponsorTier4
+  inhand:
+    - FireStationUplink80
+
+# 5 level Sponsor Foundation
+- type: sponsorLoadout
+  id: FireStationSponsorTier5
+  equipment: FireStationSponsorTier5
+
+- type: startingGear
+  id: FireStationSponsorTier5
+  inhand:
+    - FireStationUplink100
