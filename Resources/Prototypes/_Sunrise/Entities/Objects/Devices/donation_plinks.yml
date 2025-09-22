@@ -145,8 +145,6 @@
 - type: entity
   parent: FireStationUplink20
   id: FireStationUplink40
-  name: suitcase with personal belongings  #/"FireStation/" portable Shop
-  description: A briefcase with the employee's personal belongings. Password protected. I wonder what this suitcase holds?
   components:
   - type: Store
     balance:
@@ -155,8 +153,6 @@
 - type: entity
   parent: FireStationUplink20
   id: FireStationUplink60
-  name: suitcase with personal belongings  #/"FireStation/" portable Shop
-  description: A briefcase with the employee's personal belongings. Password protected. I wonder what this suitcase holds?
   components:
   - type: Store
     balance:
@@ -165,8 +161,6 @@
 - type: entity
   parent: FireStationUplink20
   id: FireStationUplink80
-  name: suitcase with personal belongings  #/"FireStation/" portable Shop
-  description: A briefcase with the employee's personal belongings. Password protected. I wonder what this suitcase holds?
   components:
   - type: Store
     balance:
@@ -175,8 +169,6 @@
 - type: entity
   parent: FireStationUplink20
   id: FireStationUplink100
-  name: suitcase with personal belongings  #/"FireStation/" portable Shop
-  description: A briefcase with the employee's personal belongings. Password protected. I wonder what this suitcase holds?
   components:
   - type: Store
     balance:
