@@ -12,12 +12,10 @@ public abstract partial class SharedSunriseHelpersSystem : EntitySystem
     /// </summary>
     /// <param name="sourceList">Исходный список</param>
     /// <param name="percentage">Процент от 0 до 100</param>
-    /// <typeparam name="T">Компонент</typeparam>
-    [Obsolete]
-    public IEnumerable<T> GetPercentageOfHashSet<T>(IReadOnlyCollection<T> sourceList, float percentage) where T : IComponent
+    public IEnumerable<T> GetPercentageOfHashSet<T>(IReadOnlyCollection<T> sourceList, float percentage)
     {
         var countToAdd = (int) Math.Round((double) sourceList.Count * percentage / 100);
-        return sourceList.Where(t => !Transform(t.Owner).Anchored).Take(countToAdd).ToHashSet();
+        return sourceList.Take(countToAdd);
     }
 
     /// <summary>
