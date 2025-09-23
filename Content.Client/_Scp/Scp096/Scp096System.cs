@@ -1,6 +1,8 @@
 ﻿using Content.Shared._Scp.Scp096;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Standing;
+using Content.Shared.Stunnable;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -55,11 +57,23 @@ public sealed class Scp096System : SharedScp096System
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        var isDead = _mob.IsIncapacitated(ent) || HasComp<SleepingComponent>(ent);
+        var useDownState = UseDownState(ent);
 
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Dead, isDead);
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Idle, !ent.Comp.InRageMode && !isDead);
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Agro, ent.Comp.InRageMode && !isDead);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Dead, useDownState);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Idle, !ent.Comp.InRageMode && !useDownState);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Agro, ent.Comp.InRageMode && !useDownState);
+    }
+
+    /// <summary>
+    /// Проверяет, должен ли скромник находиться в лежачем состоянии.
+    /// </summary>
+    private bool UseDownState(EntityUid uid)
+    {
+        return _mob.IsIncapacitated(uid)
+               || HasComp<SleepingComponent>(uid)
+               || HasComp<StunnedComponent>(uid)
+               || HasComp<KnockedDownComponent>(uid)
+               || TryComp<StandingStateComponent>(uid, out var standing) && !standing.Standing;
     }
 
     private void OnPlayerAttached(Entity<Scp096Component> ent, ref LocalPlayerAttachedEvent args)

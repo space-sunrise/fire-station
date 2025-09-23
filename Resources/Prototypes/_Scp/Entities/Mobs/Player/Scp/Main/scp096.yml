@@ -32,6 +32,10 @@
   - type: Scp
     class: Euclid
   - type: Scp096
+  - type: ScpRestriction
+    canBeDisarmed: true
+    canTakeStaminaDamage: true
+    canStandingState: true
   - type: FearSource
     uponSeenState: Fear
   - type: ShowBlinkable
@@ -50,6 +54,7 @@
     description: ghost-panel-antagonist-scp-description
     priority: -10
   - type: Pullable
+  - type: StandingState
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
     altDisarm: false

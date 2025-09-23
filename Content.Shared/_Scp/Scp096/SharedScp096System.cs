@@ -12,8 +12,10 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Projectiles;
+using Content.Shared.Standing;
 using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
+using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Audio;
@@ -51,6 +53,10 @@ public abstract partial class SharedScp096System : EntitySystem
         SubscribeLocalEvent<Scp096Component, HitScanAttackedEvent>(OnHitScanHit);
         SubscribeLocalEvent<Scp096Component, AttackedEvent>(OnAttacked);
         SubscribeLocalEvent<Scp096Component, DisarmedEvent>(OnDisarmed);
+
+        SubscribeLocalEvent<Scp096Component, StunnedEvent>(UpdateAppearance);
+        SubscribeLocalEvent<Scp096Component, StoodEvent>(UpdateAppearance);
+        SubscribeLocalEvent<Scp096Component, DownedEvent>(UpdateAppearance);
 
         SubscribeLocalEvent<Scp096Component, AttackAttemptEvent>(OnAttackAttempt);
         SubscribeLocalEvent<Scp096Component, StartCollideEvent>(OnCollide);
@@ -148,6 +154,11 @@ public abstract partial class SharedScp096System : EntitySystem
         TryAddTarget((target, scp), attacker.Value, true);
     }
 
+    private void UpdateAppearance<T>(Entity<Scp096Component> ent, ref T args)
+    {
+        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
+    }
+
     private void OnMobStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
     {
         if (!_timing.IsFirstTimePredicted)
@@ -209,7 +220,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void OnMaskAttempt(Entity<Scp096Component> ent, ref ScpMaskTargetEquipAttempt args)
     {
-        if (ent.Comp.InRageMode)
+        if (ent.Comp.InRageMode || HasComp<ActiveScp096HeatingUpComponent>(ent))
             args.Cancel();
     }
 

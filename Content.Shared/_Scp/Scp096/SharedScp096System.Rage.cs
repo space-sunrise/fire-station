@@ -1,7 +1,10 @@
-﻿using Content.Shared.ActionBlocker;
+﻿using Content.Shared._Scp.Mobs.Components;
+using Content.Shared.ActionBlocker;
 using Content.Shared.Audio;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction.Components;
 using Content.Shared.StatusEffectNew;
+using Content.Shared.Stunnable;
 
 namespace Content.Shared._Scp.Scp096;
 
@@ -10,6 +13,8 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
+    [Dependency] private readonly SharedStaminaSystem _stamina = default!;
+    [Dependency] private readonly SharedStunSystem _stun = default!;
 
     private void UpdateRage()
     {
@@ -51,6 +56,14 @@ public abstract partial class SharedScp096System
         _ambientSound.SetVolume(ent, -14f);
         _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, ent.Comp.PacifiedTime);
 
+        if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
+        {
+            restriction.CanTakeStaminaDamage = true;
+            restriction.CanBeDisarmed = true;
+            restriction.CanStandingState = true;
+            Dirty(ent.Owner, restriction);
+        }
+
         RaiseLocalEvent(ent, new Scp096RageChangedEvent(false));
         RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
 
@@ -68,6 +81,17 @@ public abstract partial class SharedScp096System
         _ambientSound.SetSound(ent, ent.Comp.TriggerSound);
         _ambientSound.SetRange(ent, 30f);
         _ambientSound.SetVolume(ent, 20f);
+
+        _stamina.TryTakeStamina(ent, -100);
+        _stun.TryUnstun(ent.Owner);
+
+        if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
+        {
+            restriction.CanTakeStaminaDamage = false;
+            restriction.CanBeDisarmed = false;
+            restriction.CanStandingState = false;
+            Dirty(ent.Owner, restriction);
+        }
 
         EnsureComp<BlockMovementComponent>(ent);
         EnsureComp<NoRotateOnInteractComponent>(ent);

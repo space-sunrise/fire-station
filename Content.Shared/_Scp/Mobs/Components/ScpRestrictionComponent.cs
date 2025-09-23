@@ -12,6 +12,12 @@ namespace Content.Shared._Scp.Mobs.Components;
 public sealed partial class ScpRestrictionComponent : Component
 {
     [DataField, AutoNetworkedField]
+    public bool CanBeDisarmed;
+
+    [DataField, AutoNetworkedField]
+    public bool CanStandingState;
+
+    [DataField, AutoNetworkedField]
     public bool CanPull;
 
     [DataField, AutoNetworkedField]
