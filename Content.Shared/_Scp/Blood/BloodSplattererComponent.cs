@@ -48,7 +48,7 @@ public sealed partial class BloodSplattererComponent : Component
     /// Угол разброса партиклов крови в градусах (например, 200 означает разброс в 200 градусов).
     /// </summary>
     [DataField]
-    public float SpreadAngle = 200f;
+    public float SpreadAngle = 250f;
 
     /// <summary>
     /// Звук, проигрывающийся при успешной атаке.

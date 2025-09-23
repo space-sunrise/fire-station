@@ -91,8 +91,7 @@ public abstract partial class SharedScp096System
         if (_net.IsServer)
             _audio.PlayGlobal(scp.Comp.SeenSound, target);
 
-        if (!scp.Comp.InRageMode)
-            MakeAngry(scp);
+        TryMakeAngry(scp);
     }
 
     /// <summary>

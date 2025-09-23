@@ -28,7 +28,16 @@ public sealed partial class Scp096Component : Component
     public TimeSpan PacifiedTime = TimeSpan.FromSeconds(60f);
 
     [DataField]
+    public TimeSpan RageHeatUp = TimeSpan.FromSeconds(30f);
+
+    [DataField]
     public float WireCutChance = 0.4f;
+
+    [DataField]
+    public float BaseSpeed = 1.5f;
+
+    [DataField]
+    public float RageSpeed = 8f;
 
     #region Sounds
 
@@ -37,23 +46,16 @@ public sealed partial class Scp096Component : Component
         new SoundCollectionSpecifier("MetalSlam", AudioParams.Default.WithVolume(-2f).WithVariation(0.2f));
 
     [DataField]
-    public SoundSpecifier CrySound = new SoundPathSpecifier("/Audio/_Scp/Scp096/scp-096-crying.ogg");
+    public SoundSpecifier CrySound = new SoundPathSpecifier("/Audio/_Scp/Scp096/crying.ogg");
 
     [DataField]
-    public SoundSpecifier RageSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/scp-096-scream.ogg");
+    public SoundSpecifier RageSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/scream.ogg");
 
     [DataField]
     public SoundSpecifier SeenSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/seen.ogg");
 
-    #endregion
-
-    #region Speed
-
     [DataField]
-    public float BaseSpeed = 1.5f;
-
-    [DataField]
-    public float RageSpeed = 8f;
+    public SoundSpecifier TriggerSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/triggered.ogg");
 
     #endregion
 }

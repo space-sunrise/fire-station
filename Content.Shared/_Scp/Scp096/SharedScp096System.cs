@@ -79,6 +79,8 @@ public abstract partial class SharedScp096System : EntitySystem
             var ent = (uid, comp);
             UpdateScp096(ent);
         }
+
+        UpdateRage();
     }
 
     private void UpdateScp096(Entity<Scp096Component> ent)

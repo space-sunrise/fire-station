@@ -1,4 +1,6 @@
-﻿using Content.Shared.Audio;
+﻿using Content.Shared.ActionBlocker;
+using Content.Shared.Audio;
+using Content.Shared.Interaction.Components;
 using Content.Shared.StatusEffectNew;
 
 namespace Content.Shared._Scp.Scp096;
@@ -7,6 +9,23 @@ public abstract partial class SharedScp096System
 {
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
+    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
+
+    private void UpdateRage()
+    {
+        var query = EntityQueryEnumerator<ActiveScp096HeatingUpComponent, Scp096Component>();
+
+        while (query.MoveNext(out var uid, out var component, out var scp096))
+        {
+            if (!component.RageHeatUpEnd.HasValue)
+                continue;
+
+            if (_timing.CurTime < component.RageHeatUpEnd.Value)
+                continue;
+
+            Rage((uid, scp096));
+        }
+    }
 
     /// <summary>
     /// Вызывается при окончании времени на поиск и уничтожение целей.
@@ -41,8 +60,38 @@ public abstract partial class SharedScp096System
     /// <summary>
     /// Переводит скромника в состояние ярости.
     /// </summary>
-    private void MakeAngry(Entity<Scp096Component> ent)
+    private bool TryMakeAngry(Entity<Scp096Component> ent)
     {
+        if (ent.Comp.InRageMode || HasComp<ActiveScp096HeatingUpComponent>(ent))
+            return false;
+
+        _ambientSound.SetSound(ent, ent.Comp.TriggerSound);
+        _ambientSound.SetRange(ent, 30f);
+        _ambientSound.SetVolume(ent, 20f);
+
+        EnsureComp<BlockMovementComponent>(ent);
+        EnsureComp<NoRotateOnInteractComponent>(ent);
+        var comp = EnsureComp<ActiveScp096HeatingUpComponent>(ent);
+        comp.RageHeatUpEnd = _timing.CurTime + ent.Comp.RageHeatUp;
+
+        // TODO: Смена спрайта(ждем спрайтеров)
+
+        _actionBlocker.UpdateCanMove(ent);
+
+        Dirty(ent);
+        Dirty(ent.Owner, comp);
+
+        return true;
+    }
+
+    private void Rage(Entity<Scp096Component> ent)
+    {
+        RemComp<BlockMovementComponent>(ent);
+        RemComp<NoRotateOnInteractComponent>(ent);
+        RemComp<ActiveScp096HeatingUpComponent>(ent);
+
+        _actionBlocker.UpdateCanMove(ent);
+
         ent.Comp.InRageMode = true;
         ent.Comp.RageStartTime = _timing.CurTime;
         Dirty(ent);

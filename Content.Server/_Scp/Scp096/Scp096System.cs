@@ -30,7 +30,7 @@ public sealed partial class Scp096System : SharedScp096System
 
     private void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
     {
-        if (ent.Comp.InRageMode || HasComp<SleepingComponent>(ent))
+        if (ent.Comp.InRageMode || HasComp<SleepingComponent>(ent) || HasComp<ActiveScp096HeatingUpComponent>(ent))
             args.Cancel();
     }
 

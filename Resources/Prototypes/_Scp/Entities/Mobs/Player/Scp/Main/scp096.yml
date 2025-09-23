@@ -72,7 +72,7 @@
     volume: -14
     range: 4
     sound:
-      path: /Audio/_Scp/Scp096/scp-096-crying.ogg
+      path: /Audio/_Scp/Scp096/crying.ogg
   - type: EmitSoundRandomly
     sound:
       collection: IdleScp096
@@ -105,12 +105,6 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.5
     baseSprintSpeed: 1.5
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.Scp096Visuals.Visuals:
-        base:
-          Dead: { state: dead}
   - type: StatusEffects
     allowed:
     - SlowedDown
