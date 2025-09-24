@@ -1,0 +1,62 @@
+- type: decal
+  id: scp1
+  tags: ["station", "overlay"]
+  sprite:
+    sprite: _Scp/Decals/fond_logo.rsi
+    state: scp1
+
+- type: decal
+  id: scp2
+  tags: ["station", "overlay"]
+  sprite:
+    sprite: _Scp/Decals/fond_logo.rsi
+    state: scp2
+
+- type: decal
+  id: scp3
+  tags: ["station", "overlay"]
+  sprite:
+    sprite: _Scp/Decals/fond_logo.rsi
+    state: scp3
+
+- type: decal
+  id: scp4
+  tags: ["station", "overlay"]
+  sprite:
+    sprite: _Scp/Decals/fond_logo.rsi
+    state: scp4
+
+- type: decal
+  id: scp5
+  tags: ["station", "overlay"]
+  sprite:
+    sprite: _Scp/Decals/fond_logo.rsi
+    state: scp5
+
+- type: decal
+  id: scp6
+  tags: ["station", "overlay"]
+  sprite:
+    sprite: _Scp/Decals/fond_logo.rsi
+    state: scp6
+
+- type: decal
+  id: scp7
+  tags: ["station", "overlay"]
+  sprite:
+    sprite: _Scp/Decals/fond_logo.rsi
+    state: scp7
+
+- type: decal
+  id: scp8
+  tags: ["station", "overlay"]
+  sprite:
+    sprite: _Scp/Decals/fond_logo.rsi
+    state: scp8
+
+- type: decal
+  id: scp9
+  tags: ["station", "overlay"]
+  sprite:
+    sprite: _Scp/Decals/fond_logo.rsi
+    state: scp9
