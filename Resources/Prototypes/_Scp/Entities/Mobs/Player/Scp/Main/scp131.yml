@@ -64,6 +64,9 @@
     description: ghost-role-information-scp131-description
     raffle:
       settings: short
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 36000 # 10 часов
   - type: GhostTakeoverAvailable
   - type: Tag # перезаписываем родительский список тегов, без DoorBumpOpener
     tags:
