@@ -11,6 +11,9 @@
     - MindRoleGhostRoleSoloAntagonist
     raffle:
       settings: short
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 18000 # 5 часов
   - type: Sprite
     layers:
     - sprite: Markers/jobs.rsi
