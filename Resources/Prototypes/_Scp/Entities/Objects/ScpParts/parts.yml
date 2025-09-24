@@ -78,6 +78,15 @@
   parent: BaseScpMaterial
   name: strange photo
   components:
+  - type: Flammable
+    fireSpread: true
+    alwaysCombustible: true
+    damage:
+      types:
+        Heat: 1
+  - type: FireVisuals
+    sprite: Effects/fire.rsi
+    normalState: fire
   - type: Sprite
     layers:
     - state: scp096-photo-undeveloped
@@ -90,7 +99,27 @@
         damage: 3
       behaviors:
       - !type:TriggerBehavior
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTypeTrigger
+        damageType: Heat
+        damage: 15
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: Damageable
+    damageModifierSet: Wood
   - type: Barotrauma
     damage:
       types:
@@ -105,6 +134,21 @@
         base:
           True: { state: scp096-photo }
           False: { state: scp096-photo-undeveloped }
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_drop.ogg
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_use.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_drop.ogg
+  - type: EmitSoundOnThrow
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_throw.ogg
 
 
 - type: entity # Для спавнов
@@ -117,3 +161,48 @@
     layers:
     - state: scp096-photo
   - type: Scp096Photo
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Flammable
+    fireSpread: true
+    alwaysCombustible: true
+    damage:
+      types:
+        Heat: 1
+  - type: FireVisuals
+    sprite: Effects/fire.rsi
+    normalState: fire
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_drop.ogg
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_use.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_drop.ogg
+  - type: EmitSoundOnThrow
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_throw.ogg

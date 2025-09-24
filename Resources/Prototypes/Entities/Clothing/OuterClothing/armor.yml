@@ -354,9 +354,9 @@
   description: A suit of semi-flexible polycarbonate body armor with heavy padding to protect against melee attacks. Perfect for fighting delinquents around the station.
   components:
   - type: Sprite
-    sprite: Clothing/OuterClothing/Armor/riot.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/scp_riot.rsi # Fire Edit
   - type: Clothing
-    sprite: Clothing/OuterClothing/Armor/riot.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/scp_riot.rsi # Fire Edit
   - type: Pierceable
     level: Metal
   - type: Armor
