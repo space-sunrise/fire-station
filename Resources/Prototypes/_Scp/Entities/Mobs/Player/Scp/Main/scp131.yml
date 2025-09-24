@@ -74,6 +74,7 @@
     - CannotSuicide
 #  - type: Blinkable мейби в другой жизни, когда будет не криво работать и балансно
 #  - type: EyeClosing
+  - type: VentCrawler
 
 - type: entity
   id: Scp131B
