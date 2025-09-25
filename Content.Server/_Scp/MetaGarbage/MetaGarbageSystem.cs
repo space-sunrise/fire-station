@@ -10,14 +10,13 @@ using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Random;
 
 namespace Content.Server._Scp.MetaGarbage;
 
 /// <summary>
 /// Система сохранения мусора между раундами.
 /// В конце раунда сохраняет мусор, который был в комплексе и спавнит его в начале следующего раунда.
-/// TODO: Исправить дублирование предметов из-за замапленного мусора
-/// TODO: Рандомизация списка мусора перед чисткой
 /// TODO: Сохранение луж вместе с реагентами внутри.
 /// TODO: Сохранение ржавых стен, битых лампочек
 /// TODO: Блеклист реагентов в лужах(кровь, реагент 173) или сильное их сокращение, чтобы 173 не сбегал раундстартом
@@ -29,6 +28,8 @@ public sealed class MetaGarbageSystem : EntitySystem
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly SunriseHelpersSystem _helpers = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     private static readonly HashSet<ProtoId<TagPrototype>> GarbageTags = ["Trash"];
 
@@ -37,18 +38,25 @@ public sealed class MetaGarbageSystem : EntitySystem
     /// </summary>
     public readonly Dictionary<EntProtoId, List<StationMetaGarbageData>> CachedGarbage = [];
 
+    private const float AlreadySpawnedItemsSearchRadius = 0.2f;
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<MetaGarbageTargetComponent, StationPostInitEvent>(OnMapInit);
         SubscribeLocalEvent<RealRoundEndedMessage>(OnRoundEnded);
+
+#if DEBUG
+        Log.Level = LogLevel.Debug;
+#else
+        Log.Level = LogLevel.Info;
+#endif
     }
 
     private void OnMapInit(Entity<MetaGarbageTargetComponent> ent, ref StationPostInitEvent args)
     {
         var mapPrototype = Prototype(ent);
-
         if (mapPrototype == null)
             return;
 
@@ -56,17 +64,22 @@ public sealed class MetaGarbageSystem : EntitySystem
             return;
 
         var mapId = GetStationMapId(args.Station);
-        var reducedGarbage = _helpers.GetPercentageOfHashSet(list, ent.Comp.SpawnPercent);
+        _random.Shuffle(list);
+        var reducedGarbage = _helpers.GetPercentageOfHashSet(list, ent.Comp.SpawnPercent).ToList();
 
         foreach (var data in reducedGarbage)
         {
             var coords = new MapCoordinates(data.Position, mapId);
+
+            if (IsItemAlreadySpawned(data.Prototype, coords))
+                continue;
+
             var item = Spawn(data.Prototype, coords, rotation: data.Rotation);
 
-            Logger.Debug($"Spawned {data.Prototype}|{item} at {data.Position} on map {mapId}|{Name(ent)}");
+            Log.Debug($"Spawned {data.Prototype}|{item} at {data.Position} on map {mapId}|{Name(ent)}");
         }
 
-        Logger.Debug($"Spawned {reducedGarbage.Count()}/{list.Count} item");
+        Log.Info($"Spawned {reducedGarbage.Count}/{list.Count} items");
     }
 
     private void OnRoundEnded(RealRoundEndedMessage args)
@@ -120,7 +133,7 @@ public sealed class MetaGarbageSystem : EntitySystem
             debugCount++;
         }
 
-        Logger.Debug($"Saved {debugCount} trash items");
+        Log.Info($"Saved {debugCount} trash items");
     }
 
     private bool IsValidEntityToSave(EntityUid uid, TagComponent tag)
@@ -149,6 +162,19 @@ public sealed class MetaGarbageSystem : EntitySystem
         }
 
         // Сюда доходить не должно
-        return Transform(ent).MapID;
+        var fallback = Transform(ent).MapID;
+        Log.Error($"Cannot find station map id, using fallback id: {fallback}");
+        return fallback;
+    }
+
+    /// <summary>
+    /// Проверяет, присутствует ли данный предмет на заданных координатах.
+    /// Помогает избежать дублирования замапленных предметов.
+    /// </summary>
+    private bool IsItemAlreadySpawned(EntProtoId proto, MapCoordinates coords)
+    {
+        return _lookup.GetEntitiesInRange(coords, AlreadySpawnedItemsSearchRadius)
+            .Select(e => Prototype(e))
+            .Any(e => e != null && e.ID == proto);
     }
 }
