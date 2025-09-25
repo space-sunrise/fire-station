@@ -20,6 +20,9 @@
   components:
   - type: Transform
   - type: MetaGarbageTarget
+    reagentSaveModifiers:
+      Scp173Reagent: 0.1
+      Blood: 0.1
 
 - type: entity
   id: ScpComplexCompact
