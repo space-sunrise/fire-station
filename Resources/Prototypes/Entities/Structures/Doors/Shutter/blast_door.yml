@@ -46,7 +46,7 @@
     resistance: 8
   - type: Damageable
     damageContainer: StructuralInorganic
-    damageModifierSet: StrongMetallic
+    damageModifierSet: StructuralMetallicStrongScp
   - type: ContainerFill
     containers:
       board: [ DoorElectronics ]
