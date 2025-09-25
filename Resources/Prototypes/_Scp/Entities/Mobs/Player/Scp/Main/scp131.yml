@@ -66,7 +66,7 @@
       settings: short
     requirements:
     - !type:OverallPlaytimeRequirement
-      time: 36000 # 10 часов
+      time: 18000 # 5 часов
   - type: GhostTakeoverAvailable
   - type: Tag # перезаписываем родительский список тегов, без DoorBumpOpener
     tags:
