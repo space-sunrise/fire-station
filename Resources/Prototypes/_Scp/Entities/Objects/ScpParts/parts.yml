@@ -149,6 +149,9 @@
   - type: EmitSoundOnThrow
     sound:
       path: /Audio/_Sunrise/Items/Handling/paper_throw.ogg
+  - type: Tag
+    tags:
+      - Trash
 
 
 - type: entity # Для спавнов
@@ -206,3 +209,6 @@
   - type: EmitSoundOnThrow
     sound:
       path: /Audio/_Sunrise/Items/Handling/paper_throw.ogg
+  - type: Tag
+    tags:
+      - Trash
