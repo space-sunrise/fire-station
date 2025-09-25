@@ -64,6 +64,9 @@
     description: ghost-role-information-scp131-description
     raffle:
       settings: short
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 18000 # 5 часов
   - type: GhostTakeoverAvailable
   - type: Tag # перезаписываем родительский список тегов, без DoorBumpOpener
     tags:
@@ -71,6 +74,7 @@
     - CannotSuicide
 #  - type: Blinkable мейби в другой жизни, когда будет не криво работать и балансно
 #  - type: EyeClosing
+  - type: VentCrawler
 
 - type: entity
   id: Scp131B
