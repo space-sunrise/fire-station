@@ -6,7 +6,7 @@
   playTimeTracker: JobLLHLeader
   setPreference: false
   startingGear: LLHLeaderGear
-  icon: JobIconLLH
+  icon: JobIconLLHleader
   supervisors: ghost-role-information-mtf-LLH-leader-supervisors
   canBeAntag: false
   radioBold: true

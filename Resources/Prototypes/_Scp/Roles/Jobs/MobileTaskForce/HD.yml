@@ -6,7 +6,7 @@
   playTimeTracker: JobHDLeader
   setPreference: false
   startingGear: HDLeaderGear
-  icon: JobIconHD
+  icon: JobIconHDleader
   supervisors: ghost-role-information-mtf-leader-supervisors
   canBeAntag: false
   radioBold: true

@@ -6,7 +6,7 @@
   playTimeTracker: JobNTFLeader
   setPreference: false
   startingGear: NTFLeaderGear
-  icon: JobIconNTF
+  icon: JobIconNTFleader
   supervisors: ghost-role-information-mtf-leader-supervisors
   canBeAntag: false
   radioBold: true

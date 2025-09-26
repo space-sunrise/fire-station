@@ -6,7 +6,7 @@
   playTimeTracker: JobRRHLeader
   setPreference: false
   startingGear: RRHLeaderGear
-  icon: JobIconRRH
+  icon: JobIconRRHleader
   supervisors: ghost-role-information-mtf-leader-supervisors
   canBeAntag: false
   radioBold: true
