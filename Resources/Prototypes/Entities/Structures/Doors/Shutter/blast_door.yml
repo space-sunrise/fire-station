@@ -62,6 +62,9 @@
     messagePerceivedByOthers: comp-window-knock
     interactSuccessSound:
       path: /Audio/Effects/glass_knock.ogg
+  - type: IconSmooth # Fire edit
+    key: walls
+    mode: NoSprite
 
 - type: entity
   id: BlastDoorOpen
