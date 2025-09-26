@@ -31,7 +31,7 @@
     ears: ClothingHeadsetAltMTFRRH
     belt: MTFCommanderWebbing
     pocket1: BaseUplinkRRHLeader
-    pocket2: PinpointerNuclear
+    pocket2: PouchAmmo
   storage:
     back:
     - BoxMRE
@@ -81,13 +81,14 @@
     ears: ClothingHeadsetAltMTFRRH
     belt: MTFWebbing
     pocket1: BaseUplinkRRHSpecialist
-    pocket2: EnergyDaggerLoud
+    pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
     - BoxMRE
     - MobileTaskForcePDA
+    - EnergyDaggerLoud
     belt:
     - Stunbaton
     - Handcuffs
@@ -128,13 +129,14 @@
     ears: ClothingHeadsetAltMTFRRH
     belt: MTFWebbing
     pocket1: BaseUplinkRRH
-    pocket2: EnergyDaggerLoud
+    pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
     - BoxMRE
     - MobileTaskForcePDA
+    - EnergyDaggerLoud
     belt:
     - Stunbaton
     - Handcuffs
