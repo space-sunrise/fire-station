@@ -93,6 +93,7 @@
     followEntity: true
   - type: CargoOrderConsole
   - type: CrewMonitoringConsole
+    doCorpseAlert: false
   - type: GeneralStationRecordConsole
     canDeleteEntries: true
   - type: DeviceNetwork
