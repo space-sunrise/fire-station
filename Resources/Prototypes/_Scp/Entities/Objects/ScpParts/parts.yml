@@ -194,6 +194,7 @@
   - type: FireVisuals
     sprite: Effects/fire.rsi
     normalState: fire
+  - type: Appearance
   - type: EmitSoundOnPickup
     sound:
       path: /Audio/_Sunrise/Items/Handling/paper_pickup.ogg

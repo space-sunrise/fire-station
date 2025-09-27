@@ -90,6 +90,13 @@
     graph: DisposalMachine
     node: disposal_unit
   - type: DisposalUnit
+    blacklist:
+      components:
+      - Scp173
+      - Scp096
+      - Scp082
+      - Scp106
+      - Scp939
   - type: ThrowInsertContainer
     containerId: disposals
     probability: 0.67
