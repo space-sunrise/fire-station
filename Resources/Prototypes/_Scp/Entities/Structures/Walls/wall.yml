@@ -264,7 +264,7 @@
 
 # Стена Лёгкой Зоны Содержания
 - type: entity
-  parent: BaseWall
+  parent: ScpWallConcrete
   id: ScpWallConcreteLightContaiment
   name: concrete wall low contaiment
   components:
@@ -275,49 +275,13 @@
   - type: IconSmooth
     key: walls
     base: concrete_low_contaiment
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicScp
   - type: Construction
     graph: concreteWallLightContaiment
     node: concreteWallLightContaimentEnd
-  - type: RCDDeconstructable
-    cost: 6
-    delay: 10
-    fx: EffectRCDDeconstruct8
-  - type: Destructible
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 1300
-        behaviors:
-        - !type:DoActsBehavior
-          acts: ["Destruction"]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
-      - trigger:
-          !type:DamageTrigger
-          damage: 1000
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            PartRodMetal1:
-              min: 1
-              max: 3
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
 
 # Стена Административной Зоны / Научной
 - type: entity
-  parent: BaseWall
+  parent: ScpWallConcrete
   id: ScpWallConcreteScience
   name: concrete wall science sector
   components:
@@ -328,49 +292,13 @@
   - type: IconSmooth
     key: walls
     base: concrete_science
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicScp
   - type: Construction
     graph: concreteWallScience
     node: concreteWallScienceEnd
-  - type: RCDDeconstructable
-    cost: 6
-    delay: 10
-    fx: EffectRCDDeconstruct8
-  - type: Destructible
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 1300
-        behaviors:
-        - !type:DoActsBehavior
-          acts: ["Destruction"]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
-      - trigger:
-          !type:DamageTrigger
-          damage: 1000
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            PartRodMetal1:
-              min: 1
-              max: 3
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
 
 # Стена Инженерии
 - type: entity
-  parent: BaseWall
+  parent: ScpWallConcrete
   id: ScpWallConcreteEngineer
   name: concrete wall engineer sector
   components:
@@ -381,49 +309,13 @@
   - type: IconSmooth
     key: walls
     base: engineer
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicScp
   - type: Construction
     graph: concreteWallEngineer
     node: concreteWallEngineerEnd
-  - type: RCDDeconstructable
-    cost: 6
-    delay: 10
-    fx: EffectRCDDeconstruct8
-  - type: Destructible
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 1300
-        behaviors:
-        - !type:DoActsBehavior
-          acts: ["Destruction"]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
-      - trigger:
-          !type:DamageTrigger
-          damage: 1000
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            PartRodMetal1:
-              min: 1
-              max: 3
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
 
 # Стена Мед отдела
 - type: entity
-  parent: BaseWall
+  parent: ScpWallConcrete
   id: ScpWallConcreteMedical
   name: concrete wall medical sector
   components:
@@ -434,45 +326,9 @@
   - type: IconSmooth
     key: walls
     base: medical
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicScp
   - type: Construction
     graph: concreteWallMedical
     node: concreteWallMedicalEnd
-  - type: RCDDeconstructable
-    cost: 6
-    delay: 10
-    fx: EffectRCDDeconstruct8
-  - type: Destructible
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 1300
-        behaviors:
-        - !type:DoActsBehavior
-          acts: ["Destruction"]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
-      - trigger:
-          !type:DamageTrigger
-          damage: 1000
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            PartRodMetal1:
-              min: 1
-              max: 3
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
 
 # Стена Сдерживания
 - type: entity
