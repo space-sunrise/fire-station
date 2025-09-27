@@ -83,3 +83,49 @@
               doAfter: 9
     - node: concreteWallScienceEnd
       entity: ScpWallConcreteScience
+
+- type: constructionGraph
+  id: concreteWallEngineer
+  start: start
+  graph:
+    - node: start
+      entity: ScpWallConcreteEngineer
+      edges:
+        - to: concreteWallEngineerEnd
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: MetalRod
+              amount: 4
+              doAfter: 0
+            - material: Concrete
+              amount: 3
+              doAfter: 9
+    - node: concreteWallEngineerEnd
+      entity: ScpWallConcreteEngineer
+
+- type: constructionGraph
+  id: concreteWallMedical
+  start: start
+  graph:
+    - node: start
+      entity: ScpWallConcreteMedical
+      edges:
+        - to: concreteWallMedicalEnd
+          completed:
+            - !type:SnapToGrid
+              southRotation: true
+          conditions:
+            - !type:EntityAnchored {}
+          steps:
+            - material: MetalRod
+              amount: 4
+              doAfter: 0
+            - material: Concrete
+              amount: 3
+              doAfter: 9
+    - node: concreteWallMedicalEnd
+      entity: ScpWallConcreteMedical

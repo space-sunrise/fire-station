@@ -49,3 +49,29 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  id: ScpWallConcreteEngineer
+  graph: concreteWallEngineer
+  startNode: start
+  targetNode: concreteWallEngineerEnd
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpWallConcreteMedical
+  graph: concreteWallMedical
+  startNode: start
+  targetNode: concreteWallMedicalEnd
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
