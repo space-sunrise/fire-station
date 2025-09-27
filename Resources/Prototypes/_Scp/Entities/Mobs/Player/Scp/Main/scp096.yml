@@ -11,39 +11,73 @@
     sprite: _Scp/Mobs/Scp/scp-096.rsi
     layers:
     - state: idle
-      map: [ "base" ]
+      map: [ "enum.Scp096VisualsState.Idle", "idle" ]
+    - state: idle_agro
+      map: [ "enum.Scp096VisualsState.Agro", "agro" ]
+      visible: false
+    - state: dead
+      map: [ "enum.Scp096VisualsState.Dead", "dead" ]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      idle:
+        state: walking
+      agro:
+        state: running
+    noMovementLayers:
+      idle:
+        state: idle
+      agro:
+        state: idle_agro
   - type: Scp
     class: Euclid
   - type: Scp096
+  - type: ScpRestriction
+    canBeDisarmed: true
+    canTakeStaminaDamage: true
+    canStandingState: true
   - type: FearSource
     uponSeenState: Fear
   - type: ShowBlinkable
+  - type: BloodSplatterer
+    sound:
+      collection: GibCollection
+    particles:
+    - BloodSplatter1
+    - BloodSplatter2
+    - BloodSplatter3
+    - BloodSplatter4
+    - BloodSplatter5
+    - BloodSplatter6
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name
     description: ghost-panel-antagonist-scp-description
     priority: -10
   - type: Pullable
+  - type: StandingState
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
     altDisarm: false
-    soundHit:
-      path: /Audio/Weapons/punch3.ogg
+    soundHit: null
     angle: 0
-    animation: WeaponArcPunch
+    animation: WeaponArcClaw
+    wideAnimation: WeaponArcClaw
+    attackRate: 2.5
     damage:
       types:
-        Blunt: 60
-        Bloodloss: 10
+        Slash: 27
+        Structural: 70
+        Bloodloss: 5
   - type: Body
     prototype: Human # TODO: Кастомное тело
   - type: Inventory
     templateId: scp096
   - type: AmbientSound
     enabled: true
-    volume: -4
-    range: 5
+    volume: -14
+    range: 4
     sound:
-      path: /Audio/_Scp/Scp096/scp-096-crying.ogg
+      path: /Audio/_Scp/Scp096/crying.ogg
   - type: EmitSoundRandomly
     sound:
       collection: IdleScp096
@@ -54,7 +88,6 @@
       path: /Audio/Effects/Footsteps/slime1.ogg
       params:
         volume: 3
-  - type: Pacified
   - type: Blindable
   - type: Climbing
   - type: Muted
@@ -77,17 +110,6 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.5
     baseSprintSpeed: 1.5
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.Scp096Visuals.Visuals:
-        base:
-          Idle: { state: idle}
-          IdleAgro: { state: idle_alt}
-          Argo: { state: agro}
-          Dead: { state: dead}
-          Walking: { state: walking}
-          Running: {state: running}
   - type: StatusEffects
     allowed:
     - SlowedDown

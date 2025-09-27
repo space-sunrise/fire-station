@@ -1,38 +1,40 @@
 ﻿using System.Numerics;
+using Content.Shared._Scp.Scp096;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
-using Robust.Client.Player;
 using Robust.Shared.Enums;
 
 namespace Content.Client._Scp.Scp096;
 
 public sealed class Scp096Overlay : Overlay
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    private readonly TransformSystem _transform;
+    private readonly Entity<Scp096Component> _entity;
 
-    private readonly SharedTransformSystem _transform;
-    private readonly HashSet<EntityUid> _targets;
-
-    // TODO: Исправить проеб навигатора, когда EntityUid из списка сверху перестает существовать в пвс рейнже клиента
-    // Это приводит к тому, что линия тупо улетает в ебеня, пока ентити снова не появится в пвс рейнже
-
-    public Scp096Overlay(SharedTransformSystem transform,
-        HashSet<EntityUid> targets)
+    public Scp096Overlay(Entity<Scp096Component> entity, TransformSystem transform)
     {
         IoCManager.InjectDependencies(this);
+
+        _entity = entity;
         _transform = transform;
-        _targets = targets;
     }
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
+    protected override bool BeforeDraw(in OverlayDrawArgs args)
+    {
+        base.BeforeDraw(in args);
+
+        if (_entity.Comp.Targets.Count == 0)
+            return false;
+
+        return true;
+    }
+
     protected override void Draw(in OverlayDrawArgs args)
     {
-        var playerEntity = _playerManager.LocalEntity;
-        if (playerEntity == null)
-            return;
-
-        var playerPos = _transform.GetWorldPosition(playerEntity.Value);
-        var nearestTargetPos = FindClosestEntity(playerPos, _targets);
+        var playerPos = _transform.GetWorldPosition(_entity);
+        var nearestTargetPos = FindClosestEntity(playerPos);
 
         if (nearestTargetPos == null)
             return;
@@ -41,15 +43,12 @@ public sealed class Scp096Overlay : Overlay
         args.WorldHandle.DrawCircle(nearestTargetPos.Value, 0.4f, Color.Red, false);
     }
 
-    private Vector2? FindClosestEntity(Vector2 playerPos, HashSet<EntityUid> entities)
+    private Vector2? FindClosestEntity(Vector2 playerPos)
     {
-        if (entities.Count == 0)
-            return null;
-
         Vector2? closestEntityPos = null;
         var closestDistance = float.MaxValue;
 
-        foreach (var entity in entities)
+        foreach (var entity in _entity.Comp.Targets)
         {
             var entityPosition = _transform.GetWorldPosition(entity);
 

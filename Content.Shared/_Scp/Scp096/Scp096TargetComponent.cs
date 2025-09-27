@@ -1,4 +1,5 @@
-﻿using Content.Shared.StatusIcon;
+﻿using Content.Shared.FixedPoint;
+using Content.Shared.StatusIcon;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -8,20 +9,18 @@ namespace Content.Shared._Scp.Scp096;
 public sealed partial class Scp096TargetComponent : Component
 {
     // Multiple SCP096 Handler
-    [AutoNetworkedField, ViewVariables(VVAccess.ReadWrite)]
-    public HashSet<EntityUid> TargetedBy = new();
+    [AutoNetworkedField, ViewVariables]
+    public HashSet<EntityUid> TargetedBy = [];
 
-    [ViewVariables(VVAccess.ReadWrite)]
-    public int TimesHitted = 0;
-
-    public float HitTimeAcc = 0f;
-
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float HitWindow = 4f;
-
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public float SleepTime = 30f;
 
     [DataField]
     public ProtoId<FactionIconPrototype> KillIconPrototype = "Scp096TargetIcon";
+
+    [DataField]
+    public FixedPoint2 TotalDamageToStop = FixedPoint2.New(500);
+
+    [DataField, AutoNetworkedField]
+    public FixedPoint2 AlreadyAppliedDamage = FixedPoint2.Zero;
 }
