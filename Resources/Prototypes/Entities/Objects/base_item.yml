@@ -3,6 +3,9 @@
   id: BaseItem
   abstract: true
   components:
+  # Fire added start
+  - type: ESViewconeOccludable
+  # Fire added end
   - type: Item
     size: Small
   - type: Animateable
