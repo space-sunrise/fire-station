@@ -15,7 +15,7 @@ public sealed partial class RandomPlanetComponent : Component
     public List<StationPlanetData> Data = [];
 }
 
-[DataDefinition, Serializable, NetSerializable]
+[DataDefinition, Serializable]
 public sealed partial class StationPlanetData
 {
     [DataField] public ProtoId<BiomeTemplatePrototype> Biome;
