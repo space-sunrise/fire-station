@@ -146,7 +146,8 @@ public sealed class ScpHelpers : EntitySystem
         var targetDb = MathHelper.Lerp(nearDb, farDb, shaped);
 
         // --- Плавное сглаживание ---
-        previousDb = MathHelper.Lerp(previousDb, targetDb, smoothing * deltaTime);
+        var lerpFactor = MathHelper.Clamp(smoothing * deltaTime, 0f, 1f);
+        previousDb = MathHelper.Lerp(previousDb, targetDb, lerpFactor);
 
         return previousDb;
     }
