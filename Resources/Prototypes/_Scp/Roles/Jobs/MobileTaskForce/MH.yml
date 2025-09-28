@@ -6,7 +6,7 @@
   playTimeTracker: JobMHLeader
   setPreference: false
   startingGear: MHLeaderGear
-  icon: JobIconMH
+  icon: JobIconMHleader
   supervisors: ghost-role-information-mtf-leader-supervisors
   canBeAntag: false
   radioBold: true
@@ -32,7 +32,7 @@
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMilitaryWebbingMH
     pocket1: BaseUplinkMTFLeader
-    pocket2: CombatKnife
+    pocket2: PouchAmmo
   storage:
     back:
     - BoxMRE
@@ -85,7 +85,7 @@
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMilitaryWebbingMH
     pocket1: BaseUplinkMTFSpecialist
-    pocket2: CombatKnife
+    pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
@@ -136,7 +136,7 @@
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMilitaryWebbingMH
     pocket1: BaseUplinkMTFCadet
-    pocket2: CombatKnife
+    pocket2: PouchAmmo
   storage:
     back:
     - Crowbar

@@ -91,6 +91,12 @@
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
   components:
+  - type: XenoArtifactNode
+    maxDurability: 1
+    maxDurabilityCanDecreaseBy:
+      min: 0
+      max: 0
+    triggerDecreasesDurability: true
   - type: ArtifactStartGameRule
     rules:
       EvilTwinSpawn: 2

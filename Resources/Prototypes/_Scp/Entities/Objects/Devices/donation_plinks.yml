@@ -1,0 +1,67 @@
+- type: entity
+  parent: BaseDonationPlink
+  id: FireStationUplink20
+  name: suitcase with personal belongings  #/"FireStation/" portable Shop
+  description: A briefcase with the employee's personal belongings. Password protected. I wonder what this suitcase holds?
+  components:
+  - type: Item
+    size: Normal
+    sprite: _Scp/Objects/Devices/fire_uplink.rsi
+  - type: Sprite
+    sprite: _Scp/Objects/Devices/fire_uplink.rsi
+    layers:
+    - state: icon
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 5
+  - type: Store
+    refundAllowed: false
+    ownerOnly: true
+    categories:
+      - General
+      - SecurityThings
+      - CargoThings
+      - EngineeringThings
+      - SpecialThings
+      - Friends
+      - Cloaks
+      - Music
+    currencyWhitelist:
+      - Suntick
+    balance:
+      Suntick: 20
+    buySuccessSound:
+      path: /Audio/_Sunrise/Items/Handling/Backpacks/pickup.ogg
+
+- type: entity
+  parent: FireStationUplink20
+  id: FireStationUplink40
+  components:
+  - type: Store
+    balance:
+      Suntick: 40
+
+- type: entity
+  parent: FireStationUplink20
+  id: FireStationUplink60
+  components:
+  - type: Store
+    balance:
+      Suntick: 60
+
+- type: entity
+  parent: FireStationUplink20
+  id: FireStationUplink80
+  components:
+  - type: Store
+    balance:
+      Suntick: 80
+
+- type: entity
+  parent: FireStationUplink20
+  id: FireStationUplink100
+  components:
+  - type: Store
+    balance:
+      Suntick: 100
