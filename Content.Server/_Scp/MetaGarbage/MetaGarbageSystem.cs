@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Linq;
+﻿using System.Linq;
 using Content.Server._Scp.Misc;
 using Content.Server._Sunrise.Helpers;
 using Content.Server.Station.Events;
@@ -39,7 +38,8 @@ public sealed partial class MetaGarbageSystem : EntitySystem
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    private static readonly HashSet<ProtoId<TagPrototype>> GarbageTags = ["Trash"];
+    private static readonly HashSet<ProtoId<TagPrototype>> AllowedTags = [ "Trash", "MetaGarbageSavable" ];
+    private static readonly HashSet<ProtoId<TagPrototype>> ForbiddenTags = [ "MetaGarbagePreventSaving" ];
 
     /// <summary>
     /// Сохраненный мусор, который будет передаваться из раунда в раунд.
@@ -141,7 +141,10 @@ public sealed partial class MetaGarbageSystem : EntitySystem
 
     private bool IsValidEntityToSave(EntityUid uid, TagComponent tag)
     {
-        if (!_tag.HasAnyTag(tag, GarbageTags))
+        if (!_tag.HasAnyTag(tag, AllowedTags))
+            return false;
+
+        if (_tag.HasAnyTag(tag, ForbiddenTags))
             return false;
 
         if (HasComp<InsideEntityStorageComponent>(uid))

@@ -7,7 +7,7 @@
   # Fire added start
   - type: Tag
     tags:
-    - Trash
+    - MetaGarbageSavable
   # Fire added end
   - type: Clickable
   - type: Transform
