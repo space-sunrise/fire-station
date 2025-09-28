@@ -1,6 +1,7 @@
 ﻿using Content.Server.Parallax;
 using Content.Server.Station.Events;
 using Content.Server.Weather;
+using Content.Shared.Light.Components;
 using Content.Shared.Station.Components;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -34,6 +35,7 @@ public sealed class RandomPlanetSystem : EntitySystem
         int? seed = data.Seed != null ? _random.Pick(data.Seed) : null;
 
         _biome.EnsurePlanet(mapUid, biome, seed);
+        BuildRoof(args.Station);
         TrySetWeather(mapId, data);
     }
 
@@ -65,5 +67,13 @@ public sealed class RandomPlanetSystem : EntitySystem
         // Сюда доходить не должно
         Log.Error("Cannot find station`s MapId and MapUid");
         return (EntityUid.Invalid, MapId.Nullspace);
+    }
+
+    private void BuildRoof(Entity<StationDataComponent> ent)
+    {
+        foreach (var grid in ent.Comp.Grids)
+        {
+            EnsureComp<RoofComponent>(grid);
+        }
     }
 }

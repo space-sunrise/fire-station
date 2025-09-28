@@ -19,3 +19,12 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Transform
+  - type: RandomPlanet
+    data:
+    - biome: Snow
+      weather:
+      - SnowfallHeavy
+      - SnowfallLight
+    - biome: Continental
+      weather:
+      - AshfallHeavy

@@ -1,4 +1,5 @@
 using System.Numerics;
+using Content.Shared._Scp.Helpers;
 using Content.Shared.Light.Components;
 using Content.Shared.Weather;
 using Robust.Client.Audio;
@@ -20,6 +21,10 @@ public sealed class WeatherSystem : SharedWeatherSystem
     [Dependency] private readonly MapSystem _mapSystem = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
+    // Fire added start - чтобы погода не шумела в комплексе
+    private float _currentWeatherDb = 10f;
+    // Fire added end
+
     public override void Initialize()
     {
         base.Initialize();
@@ -32,8 +37,13 @@ public sealed class WeatherSystem : SharedWeatherSystem
 
         var ent = _playerManager.LocalEntity;
 
+        // Fire edit start - чтобы в лобби не играла амбиент погоды
         if (ent == null)
+        {
+            weather.Stream = _audio.Stop(weather.Stream);
             return;
+        }
+        // Fire edit end
 
         var mapUid = Transform(uid).MapUid;
         var entXform = Transform(ent.Value);
@@ -54,6 +64,9 @@ public sealed class WeatherSystem : SharedWeatherSystem
             return;
 
         var occlusion = 0f;
+        // Fire added start - чтобы погода не шумела в комплексе
+        var additionalVolume = 0f;
+        // Fire added end
 
         // Work out tiles nearby to determine volume.
         if (TryComp<MapGridComponent>(entXform.GridUid, out var grid))
@@ -109,15 +122,24 @@ public sealed class WeatherSystem : SharedWeatherSystem
                 var delta = nodePosition - entPos.Position;
                 var distance = delta.Length();
                 occlusion = _audio.GetOcclusion(entPos, delta, distance);
+
+                // Fire added start - чтобы погода не шумела в комплексе
+                additionalVolume = ScpHelpers.SmoothVolumeDb(distance, 0f, 10f, 10f, -30f, ref _currentWeatherDb, frameTime, 30f);
+                // Fire added end
             }
             else
             {
                 occlusion = 3f;
+                // Fire added start - чтобы погода не шумела в комплексе
+                additionalVolume = -30f;
+                // Fire added end
             }
         }
 
         var alpha = GetPercent(weather, uid);
-        alpha *= SharedAudioSystem.VolumeToGain(weatherProto.Sound.Params.Volume);
+        // Fire edit start - чтобы погода не шумела в комплексе
+        alpha *= SharedAudioSystem.VolumeToGain(weatherProto.Sound.Params.Volume + additionalVolume);
+        // Fire edit end
         _audio.SetGain(weather.Stream, alpha, comp);
         comp.Occlusion = occlusion;
     }
