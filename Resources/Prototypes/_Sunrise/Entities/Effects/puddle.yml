@@ -4,11 +4,6 @@
   save: false
   description: Trace of liquid
   components:
-  # Fire added start
-  - type: Tag
-    tags:
-    - MetaGarbageSavable
-  # Fire added end
   - type: Clickable
   - type: Transform
     noRot: false
