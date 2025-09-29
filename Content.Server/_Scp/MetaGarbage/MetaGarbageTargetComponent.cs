@@ -38,13 +38,15 @@ public record struct StationMetaGarbageData(
     EntProtoId Prototype,
     Vector2 Position,
     Angle Rotation,
-    Dictionary<string, MetaGarbageSolutionProxy>? LiquidData
+    Dictionary<string, MetaGarbageSolutionProxy>? LiquidData,
+    bool Replace = false
     )
 {
     public readonly EntProtoId Prototype = Prototype;
     public readonly Vector2 Position = Position;
     public readonly Angle Rotation = Rotation;
     public readonly Dictionary<string, MetaGarbageSolutionProxy>? LiquidData = LiquidData;
+    public readonly bool Replace = Replace;
 }
 
 // Все что находится ниже существует потому, что блядская система реагентов такая блядская

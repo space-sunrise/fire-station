@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Content.Server._Scp.Misc;
 using Content.Server._Sunrise.Helpers;
 using Content.Server.Station.Events;
@@ -75,13 +76,14 @@ public sealed partial class MetaGarbageSystem : EntitySystem
         {
             var coords = new MapCoordinates(data.Position, mapId);
 
-            if (IsItemAlreadySpawned(data.Prototype, coords))
+            if (IsItemAlreadySpawned(data.Prototype, coords, out var found) && !data.Replace)
                 continue;
 
-            var item = EntityManager.CreateEntityUninitialized(data.Prototype, coords, rotation: data.Rotation);
-            TryAddLiquid(item, data.LiquidData);
+            if (data.Replace)
+                Del(found);
 
-            EntityManager.InitializeAndStartEntity(item, mapId);
+            var item = Spawn(data.Prototype, coords, rotation: data.Rotation);
+            TryAddLiquid(item, data.LiquidData);
 
             Log.Info($"Spawned {data.Prototype}|{item} at {data.Position} on map {mapId}|{Name(ent)}");
         }
@@ -244,7 +246,7 @@ public sealed partial class MetaGarbageSystem : EntitySystem
             _solution.RemoveAllSolution(solutionEntity.Value);
             _solution.AddSolution(solutionEntity.Value, solution);
 
-            var ev = new SolutionContainerChangedEvent(solution, container);
+            var ev = new SolutionChangedEvent(solutionEntity.Value);
             RaiseLocalEvent(uid, ref ev);
         }
 
@@ -274,11 +276,23 @@ public sealed partial class MetaGarbageSystem : EntitySystem
     /// Проверяет, присутствует ли данный предмет на заданных координатах.
     /// Помогает избежать дублирования замапленных предметов.
     /// </summary>
-    private bool IsItemAlreadySpawned(EntProtoId proto, MapCoordinates coords)
+    private bool IsItemAlreadySpawned(EntProtoId proto, MapCoordinates coords, [NotNullWhen(true)] out EntityUid? found)
     {
-        return _lookup.GetEntitiesInRange(coords, AlreadySpawnedItemsSearchRadius)
-            .Select(e => Prototype(e))
-            .Any(e => e != null && e.ID == proto);
+        found = null;
+        foreach (var ent in _lookup.GetEntitiesInRange(coords, AlreadySpawnedItemsSearchRadius))
+        {
+            var prototype = Prototype(ent);
+            if (prototype == null)
+                continue;
+
+            if (prototype == proto)
+            {
+                found = ent;
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /// <summary>
