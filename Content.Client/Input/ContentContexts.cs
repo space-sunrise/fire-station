@@ -12,6 +12,11 @@ namespace Content.Client.Input
         public static void SetupContexts(IInputContextContainer contexts)
         {
             var common = contexts.GetContext("common");
+
+            // Fire added start
+            common.AddFunction(ContentKeyFunctions.ESHoldToFace);
+            // Fire added end
+
             common.AddFunction(ContentKeyFunctions.FocusChat);
             common.AddFunction(ContentKeyFunctions.FocusLocalChat);
             common.AddFunction(ContentKeyFunctions.FocusEmote);
