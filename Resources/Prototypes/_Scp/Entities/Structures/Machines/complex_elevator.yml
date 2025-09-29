@@ -1,9 +1,9 @@
 - type: entity
   parent: BaseMachine
   id: ComplexElevator
-  name: Лифт
-  suffix: "Лифт комплекса"
-  description: Ездит вверх и вниз. Главное не прыгать, когда он едет.
+  name: Elevator
+  suffix: "Elevator of the complex"
+  description: It goes up and down. The main thing is not to jump when it goes down.
   placement:
     mode: SnapgridCenter
   components:
@@ -45,10 +45,10 @@
   - type: DeviceLinkSource
     unlimitedRange: true
     ports:
-      - arrival-first
-      - arrival-second
-      - departure-first
-      - departure-second
+      - ArrivalFirst
+      - ArrivalSecond
+      - DepartureFirst
+      - DepartureSecond
   - type: ContainerContainer
     containers:
       ElevatorContents: !type:Container
@@ -59,9 +59,9 @@
 - type: entity
   parent: ComplexElevator
   id: Elevator
-  name: Лифт
-  suffix: "Запасной лифт"
-  description: Ездит вверх и вниз. Главное не прыгать, когда он едет.
+  name: Elevator
+  suffix: "Backup elevator"
+  description: It goes up and down. The main thing is not to jump when it goes down.
   placement:
     mode: SnapgridCenter
   components:
@@ -75,9 +75,9 @@
 - type: entity
   id: SignalButtonElevator1
   parent: SignalButton
-  name: кнопка лифта
-  description: Кнопка для вызова и отправления лифта.
-  suffix: Автолинк, Лифт1
+  name: elevator button
+  description: Button for calling and sending the elevator.
+  suffix: Autolink, Lift1
   components:
     - type: AutoLinkTransmitter
       channel: Lift1

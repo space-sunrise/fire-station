@@ -37,11 +37,13 @@ public sealed class ComplexElevatorSystem : EntitySystem
                 break;
             }
         }
+        if (component.CurrentFloor == component.IntermediateFloorId)
+            return;
 
         if (!currentFloorExists)
             return;
 
-        var arrivalPort = component.CurrentFloor == component.FirstPointId ? "arrival-first" : "arrival-second";
+        var arrivalPort = component.CurrentFloor == component.FirstPointId ? "ArrivalFirst" : "ArrivalSecond";
         _deviceLinkSystem.SendSignal(uid, arrivalPort, true);
     }
 
@@ -74,11 +76,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         Timer.Spawn(component.SendDelay, () =>
         {
             if (!Exists(uid))
-            {
-                if (TryComp<ComplexElevatorComponent>(uid, out var tempComp))
-                    tempComp.IsMoving = false;
                 return;
-            }
 
             if (!TryComp<ComplexElevatorComponent>(uid, out var comp))
                 return;
@@ -125,10 +123,8 @@ public sealed class ComplexElevatorSystem : EntitySystem
             return;
         }
 
-        var departurePort = component.CurrentFloor == component.FirstPointId ? "departure-first" : "departure-second";
+        var departurePort = component.CurrentFloor == component.FirstPointId ? "DepartureFirst" : "DepartureSecond";
         _deviceLinkSystem.SendSignal(uid, departurePort, true);
-
-        var startFloor = component.CurrentFloor;
 
         component.CurrentFloor = component.IntermediateFloorId;
         TeleportToFloor(uid, component.IntermediateFloorId);
@@ -144,7 +140,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
             comp.CurrentFloor = targetFloor;
             TeleportToFloor(uid, targetFloor);
 
-            var arrivalPort = targetFloor == comp.FirstPointId ? "arrival-first" : "arrival-second";
+            var arrivalPort = targetFloor == comp.FirstPointId ? "ArrivalFirst" : "ArrivalSecond";
             _deviceLinkSystem.SendSignal(uid, arrivalPort, true);
 
             comp.IsMoving = false;

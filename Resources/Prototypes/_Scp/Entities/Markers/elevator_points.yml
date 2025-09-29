@@ -1,8 +1,8 @@
 - type: entity
   parent: MarkerBase
   id: ElevatorPoint
-  name: Точка лифта
-  suffix: "Пустая точка"
+  name: Elevator point
+  suffix: "Empty"
   components:
   - type: ElevatorPoint
   - type: Sprite
@@ -16,24 +16,24 @@
 - type: entity
   parent: ElevatorPoint
   id: ElevatorPointComplex
-  name: Точка лифта
-  suffix: "Комплекс"
+  name: Elevator point
+  suffix: "Complex"
   components:
   - type: ElevatorPoint
     floorId: ComplexFloor
 - type: entity
   parent: ElevatorPoint
   id: ElevatorPointIntermediate
-  name: Точка лифта
-  suffix: "Промежуточный"
+  name: Elevator point
+  suffix: "Intermediate"
   components:
   - type: ElevatorPoint
     floorId: IntermediateFloor
 - type: entity
   parent: ElevatorPoint
   id: ElevatorPointSurface
-  name: Точка лифта
-  suffix: "Поверхность"
+  name: Elevator point
+  suffix: "Surface"
   components:
   - type: ElevatorPoint
     floorId: SurfaceFloor

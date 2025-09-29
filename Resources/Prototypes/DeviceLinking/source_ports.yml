@@ -176,21 +176,21 @@
   defaultLinks: [ Send, Pressed ]
 
 - type: sourcePort
-  id: arrival-first
+  id: ArrivalFirst
   name: elevator-arrival-first
   description: elevator-arrival-first-description
 
 - type: sourcePort
-  id: arrival-second
+  id: ArrivalSecond
   name: elevator-arrival-second
   description: elevator-arrival-second-description
 
 - type: sourcePort
-  id: departure-first
+  id: DepartureFirst
   name: elevator-departure-first
   description: elevator-departure-first-description
 
 - type: sourcePort
-  id: departure-second
+  id: DepartureSecond
   name: elevator-departure-second
   description: elevator-departure-second-description

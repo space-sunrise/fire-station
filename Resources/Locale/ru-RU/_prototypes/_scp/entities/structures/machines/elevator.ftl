@@ -1,0 +1,9 @@
+ent-ComplexElevator = Лифт
+    .desc = Он поднимается и опускается. Главное — не подпрыгнуть, когда он едет.
+    .suffix = Лифт комплекса
+ent-Elevator = { ent-ComplexElevator }
+    .desc = { ent-ComplexElevator.desc }
+    .suffix = Запасной лифт
+ent-SignalButtonElevator1 = Кнопка лифта
+    .desc = Кнопка для вызова и отправления лифта.
+    .suffix = Автолинк, Лифт1
