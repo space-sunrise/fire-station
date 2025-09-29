@@ -15,7 +15,6 @@ cargo-console-menu-permissions-button = Доступы
 cargo-console-menu-categories-label = Категории:{ " " }
 cargo-console-menu-search-bar-placeholder = Поиск
 cargo-console-menu-requests-label = Запросы
-cargo-console-menu-orders-label = Заказы
 cargo-console-menu-order-reason-description = Причина: { $reason }
 cargo-console-menu-populate-categories-all-text = Все
 cargo-console-menu-populate-orders-cargo-order-row-product-name-text = { $productName } (x{ $orderAmount }) от { $orderRequester }
@@ -45,3 +44,31 @@ cargo-shuttle-console-station-unknown = Неизвестно
 cargo-shuttle-console-shuttle-not-found = Не найден
 cargo-no-shuttle = Грузовой шаттл не найден!
 cargo-shuttle-console-organics = На шаттле обнаружены органические формы жизни
+cargo-console-menu-orders-label = Заказы
+cargo-console-menu-tab-title-orders = Заказы
+cargo-console-menu-tab-title-funds = Переводы
+cargo-console-menu-account-action-transfer-limit = [bold]Лимит перевода:[/bold] ${$limit}
+cargo-console-menu-account-action-transfer-limit-unlimited-notifier = [color=gold](Неограничено)[/color]
+cargo-console-menu-account-action-select = [bold]Действие:[/bold]
+cargo-console-menu-account-action-amount = [bold]Количество:[/bold] $
+cargo-console-menu-account-action-button = Перевести
+cargo-console-menu-toggle-account-lock-button = Переключить лимит перевода
+cargo-console-menu-account-action-option-withdraw = Вывести наличными
+cargo-console-menu-account-action-option-transfer = Перевести на {$code}
+
+cargo-funding-alloc-console-menu-title = Консоль управления финансами
+cargo-funding-alloc-console-label-account = [bold]Аккаунт[/bold]
+cargo-funding-alloc-console-label-code = [bold] Код [/bold]
+cargo-funding-alloc-console-label-balance = [bold] Баланс [/bold]
+cargo-funding-alloc-console-label-cut = [bold] Доход отделов (%) [/bold]
+
+cargo-funding-alloc-console-label-primary-cut = Сокращение доходов Логистичиской службы из источников, не связанных с сейфами (%):
+cargo-funding-alloc-console-label-lockbox-cut = Доля Логистической службы в доходах от продажи сейфов(%):
+
+cargo-funding-alloc-console-label-help-non-adjustible = Логистическая служба получает {$percent}% прибыли от продажи не ящиков. Остальное делится между службами:
+cargo-funding-alloc-console-label-help-adjustible = Remaining funds from non-lockbox sources are distributed as specified below:
+cargo-funding-alloc-console-button-save = Сохранить изменения
+cargo-funding-alloc-console-label-save-fail = [bold]Доходы служб неверны![/bold] [color=red]({$pos ->
+    [1] +
+    *[-1] -
+}{$val}%)[/color]
