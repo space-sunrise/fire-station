@@ -8,13 +8,12 @@
     mode: SnapgridCenter
   components:
   - type: Sprite
-    sprite: _Scp/Structures/catwalk-steel.rsi
-    state: catwalk_preview
+    sprite: _Scp/Structures/elevator.rsi
+    state: steel
     drawdepth: FloorTiles
-    scale: 3, 3
   - type: Icon
-    sprite: _Scp/Structures/catwalk-steel.rsi
-    state: catwalk_preview
+    sprite: _Scp/Structures/elevator.rsi
+    state: steel
   - type: Transform
     anchored: true
   - type: Clickable
@@ -67,10 +66,88 @@
   components:
   - type: ComplexElevator
     elevatorId: "SCP_Elevator_2"
-    currentFloor: "First"
-    firstPointId: "First"
-    intermediateFloorId: "Intermediate"
-    secondPointId: "Second"
+    currentFloor: "ComplexFloor2"
+    firstPointId: "ComplexFloor2"
+    intermediateFloorId: "IntermediateFloor2"
+    secondPointId: "SurfaceFloor2"
+
+- type: entity
+  parent: ComplexElevator
+  id: Elevator_white
+  name: Elevator
+  suffix: Elevator of the complex, White
+  description: It goes up and down. The main thing is not to jump when it goes down.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/elevator.rsi
+    state: white
+    drawdepth: FloorTiles
+  - type: Icon
+    sprite: _Scp/Structures/elevator.rsi
+    state: white
+  - type: ComplexElevator
+    elevatorId: "SCP_Elevator_3"
+    currentFloor: "ComplexFloor"
+    firstPointId: "ComplexFloor"
+    intermediateFloorId: "IntermediateFloor"
+    secondPointId: "SurfaceFloor"
+
+- type: entity
+  parent: Elevator_white
+  id: Elevator_white_backup
+  name: Elevator
+  suffix: Backup elevator, White
+  description: It goes up and down. The main thing is not to jump when it goes down.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: ComplexElevator
+    elevatorId: "SCP_Elevator_4"
+    currentFloor: "ComplexFloor2"
+    firstPointId: "ComplexFloor2"
+    intermediateFloorId: "IntermediateFloor2"
+    secondPointId: "SurfaceFloor2"
+
+- type: entity
+  parent: ComplexElevator
+  id: Elevator_catwalk
+  name: Elevator
+  suffix: Elevator of the complex, Catwalk
+  description: It goes up and down. The main thing is not to jump when it goes down.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/elevator.rsi
+    state: catwalk
+    drawdepth: FloorTiles
+  - type: Icon
+    sprite: _Scp/Structures/elevator.rsi
+    state: catwalk
+  - type: ComplexElevator
+    elevatorId: "SCP_Elevator_5"
+    currentFloor: "ComplexFloor"
+    firstPointId: "ComplexFloor"
+    intermediateFloorId: "IntermediateFloor"
+    secondPointId: "SurfaceFloor"
+
+- type: entity
+  parent: Elevator_white
+  id: Elevator_catwalk_backup
+  name: Elevator
+  suffix: Backup elevator, Catwalk
+  description: It goes up and down. The main thing is not to jump when it goes down.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: ComplexElevator
+    elevatorId: "SCP_Elevator_6"
+    currentFloor: "ComplexFloor3"
+    firstPointId: "ComplexFloor3"
+    intermediateFloorId: "IntermediateFloor3"
+    secondPointId: "SurfaceFloor3"
 
 - type: entity
   id: SignalButtonElevator1

@@ -43,6 +43,9 @@ public sealed class ComplexElevatorSystem : EntitySystem
         if (!currentFloorExists)
             return;
 
+        if (component.CurrentFloor != component.FirstPointId && component.CurrentFloor != component.SecondPointId)
+           return;
+
         var arrivalPort = component.CurrentFloor == component.FirstPointId ? "ArrivalFirst" : "ArrivalSecond";
         _deviceLinkSystem.SendSignal(uid, arrivalPort, true);
     }
