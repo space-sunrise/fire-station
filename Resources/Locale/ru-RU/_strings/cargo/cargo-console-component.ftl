@@ -62,8 +62,8 @@ cargo-funding-alloc-console-label-code = [bold] Код [/bold]
 cargo-funding-alloc-console-label-balance = [bold] Баланс [/bold]
 cargo-funding-alloc-console-label-cut = [bold] Доход отделов (%) [/bold]
 
-cargo-funding-alloc-console-label-primary-cut = Сокращение доходов Логистичиской службы из источников, не связанных с сейфами (%):
-cargo-funding-alloc-console-label-lockbox-cut = Доля Логистической службы в доходах от продажи сейфов(%):
+cargo-funding-alloc-console-label-primary-cut = Сокращение доходов Логистической службы из источников, не связанных с сейфами (%):
+cargo-funding-alloc-console-label-lockbox-cut = Доля Логистической службы в доходах от продажи сейфов (%):
 
 cargo-funding-alloc-console-label-help-non-adjustible = Логистическая служба получает {$percent}% прибыли от продажи не ящиков. Остальное делится между службами:
 cargo-funding-alloc-console-label-help-adjustible = Оставшиеся доходы из источников, не связанных с сейфами, распределяются следующим образом:
