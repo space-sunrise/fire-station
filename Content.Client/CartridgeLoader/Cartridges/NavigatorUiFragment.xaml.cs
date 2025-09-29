@@ -114,4 +114,10 @@ public sealed partial class NavigatorUiFragment : BoxContainer
         foreach (var button in _buttons)
             BeaconButtons.AddChild(button);
     }
+
+    public void Dispose()
+    {
+        if (FilterBar != null)
+            FilterBar.OnTextChanged -= (bar) => OnFilterChanged(bar.Text);
+    }
 }
