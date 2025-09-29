@@ -66,12 +66,12 @@
     mode: SnapgridCenter
   components:
   - type: ComplexElevator
-    elevatorId: "SCP_Elevator_1"
+    elevatorId: "SCP_Elevator_2"
     currentFloor: "First"
     firstPointId: "First"
     intermediateFloorId: "Intermediate"
     secondPointId: "Second"
-    
+
 - type: entity
   id: SignalButtonElevator1
   parent: SignalButton

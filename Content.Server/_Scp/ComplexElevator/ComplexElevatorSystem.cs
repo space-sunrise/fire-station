@@ -67,7 +67,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
     private void OnStartCollide(EntityUid uid, ComplexElevatorComponent component, ref StartCollideEvent args)
     {
         var other = args.OtherEntity;
-        if (HasComp<TransformComponent>(other) && !component.EntitiesOnElevator.Contains(other))
+        if (!component.EntitiesOnElevator.Contains(other))
         {
             component.EntitiesOnElevator.Add(other);
         }
@@ -82,18 +82,22 @@ public sealed class ComplexElevatorSystem : EntitySystem
     private void StartMovement(EntityUid uid, ComplexElevatorComponent component, string targetFloor)
     {
         // Check if intermediate and target points exist
-        var intermediateExists = false;
-        var targetExists = false;
+        EntityUid? intermediatePoint = null;
+        EntityUid? targetPoint = null;
+
         var query = EntityQueryEnumerator<ElevatorPointComponent>();
         while (query.MoveNext(out var pointUid, out var pointComp))
         {
             if (pointComp.FloorId == component.IntermediateFloorId)
-                intermediateExists = true;
+                intermediatePoint = pointUid;
             if (pointComp.FloorId == targetFloor)
-                targetExists = true;
+                targetPoint = pointUid;
+
+            if (intermediatePoint != null && targetPoint != null)
+                break; // Early exit when both found
         }
 
-        if (!intermediateExists || !targetExists)
+        if (intermediatePoint == null || targetPoint == null)
             return; // Missing points, don't move
 
         component.IsMoving = true;
@@ -159,22 +163,4 @@ public sealed class ComplexElevatorSystem : EntitySystem
         }
     }
 
-    private void TeleportEntitiesOnElevator(EntityUid elevatorUid, EntityCoordinates targetCoordinates)
-    {
-        var elevatorTransform = Transform(elevatorUid);
-        var elevatorPos = elevatorTransform.Coordinates;
-
-        var entities = _lookup.GetEntitiesInRange(elevatorPos, 4.5f);
-
-        foreach (var entUid in entities)
-        {
-            if (entUid == elevatorUid)
-                continue;
-
-            var entTransform = Transform(entUid);
-            var relativePos = entTransform.LocalPosition - elevatorTransform.LocalPosition;
-            var newCoordinates = new EntityCoordinates(targetCoordinates.EntityId, targetCoordinates.Position + relativePos);
-            _transform.SetCoordinates(entUid, newCoordinates);
-        }
-    }
 }
