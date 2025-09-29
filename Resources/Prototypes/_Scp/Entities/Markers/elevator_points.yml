@@ -1,0 +1,63 @@
+- type: entity
+  parent: MarkerBase
+  id: ElevatorPoint
+  name: Точка лифта
+  suffix: "Пустая точка"
+  components:
+  - type: ElevatorPoint
+  - type: Sprite
+    layers:
+      - sprite: _Scp/Objects/Markers/environment.rsi
+        state: base-red
+        shader: unshaded
+      - sprite: _Scp/Objects/Markers/environment.rsi
+        shader: unshaded
+        state: portal
+- type: entity
+  parent: MarkerBase
+  id: ElevatorPointComplex
+  name: Точка лифта
+  suffix: "Комплекс"
+  components:
+  - type: ElevatorPoint
+    floorId: ComplexFloor
+  - type: Sprite
+    layers:
+      - sprite: _Scp/Objects/Markers/environment.rsi
+        state: base-red
+        shader: unshaded
+      - sprite: _Scp/Objects/Markers/environment.rsi
+        shader: unshaded
+        state: portal
+- type: entity
+  parent: MarkerBase
+  id: ElevatorPointIntermediate
+  name: Точка лифта
+  suffix: "Промежуточный"
+  components:
+  - type: ElevatorPoint
+    floorId: IntermediateFloor
+  - type: Sprite
+    layers:
+      - sprite: _Scp/Objects/Markers/environment.rsi
+        state: base-red
+        shader: unshaded
+      - sprite: _Scp/Objects/Markers/environment.rsi
+        shader: unshaded
+        state: portal
+- type: entity
+  parent: MarkerBase
+  id: ElevatorPointSurface
+  name: Точка лифта
+  suffix: "Поверхность"
+  components:
+  - type: ElevatorPoint
+    floorId: SurfaceFloor
+  - type: Sprite
+    layers:
+      - sprite: _Scp/Objects/Markers/environment.rsi
+        state: base-red
+        shader: unshaded
+      - sprite: _Scp/Objects/Markers/environment.rsi
+        shader: unshaded
+        state: portal

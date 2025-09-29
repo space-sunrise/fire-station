@@ -2,7 +2,7 @@
   id: Pressed
   name: signal-port-name-pressed
   description: signal-port-description-pressed
-  defaultLinks: [ Toggle, Trigger, Timer ]
+  defaultLinks: [ Toggle, Trigger, Timer, Send]
 
 - type: sourcePort
   id: On
@@ -168,3 +168,29 @@
   name: signal-port-name-item-detected
   description: signal-port-description-item-detected
   defaultLinks: [ Toggle, Trigger, Timer ]
+
+- type: sourcePort
+  id: Send
+  name: elevator-send
+  description: elevator-send-description
+  defaultLinks: [ Send, Pressed ]
+
+- type: sourcePort
+  id: arrival-first
+  name: elevator-arrival-first
+  description: elevator-arrival-first-description
+
+- type: sourcePort
+  id: arrival-second
+  name: elevator-arrival-second
+  description: elevator-arrival-second-description
+
+- type: sourcePort
+  id: departure-first
+  name: elevator-departure-first
+  description: elevator-departure-first-description
+
+- type: sourcePort
+  id: departure-second
+  name: elevator-departure-second
+  description: elevator-departure-second-description

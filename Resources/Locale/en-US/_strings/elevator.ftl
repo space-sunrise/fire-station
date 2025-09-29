@@ -1,0 +1,10 @@
+elevator-send = Send Elevator
+elevator-send-description = Sends the elevator to the opposite floor with an intermediate stop
+elevator-arrival-first = Elevator Arrival at First Floor
+elevator-arrival-first-description = Signal when the elevator arrives at the first floor
+elevator-arrival-second = Elevator Arrival at Second Floor
+elevator-arrival-second-description = Signal when the elevator arrives at the second floor
+elevator-departure-first = Elevator Departure from First Floor
+elevator-departure-first-description = Signal when the elevator departs from the first floor
+elevator-departure-second = Elevator Departure from Second Floor
+elevator-departure-second-description = Signal when the elevator departs from the second floor
