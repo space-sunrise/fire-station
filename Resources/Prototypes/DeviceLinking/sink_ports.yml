@@ -129,6 +129,6 @@
   description: signal-port-description-set-particle-sigma
 
 - type: sinkPort
-  id: Send
+  id: ElevatorSend
   name: elevator-send
   description: elevator-send-description

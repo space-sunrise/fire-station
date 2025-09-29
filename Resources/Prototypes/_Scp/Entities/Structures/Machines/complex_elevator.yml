@@ -41,7 +41,7 @@
     secondPointId: "SurfaceFloor"
   - type: DeviceLinkSink
     ports:
-      - Send
+      - ElevatorSend
   - type: DeviceLinkSource
     unlimitedRange: true
     ports:

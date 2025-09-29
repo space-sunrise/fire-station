@@ -170,7 +170,7 @@
   defaultLinks: [ Toggle, Trigger, Timer ]
 
 - type: sourcePort
-  id: Send
+  id: ElevatorSend
   name: elevator-send
   description: elevator-send-description
   defaultLinks: [ Send, Pressed ]

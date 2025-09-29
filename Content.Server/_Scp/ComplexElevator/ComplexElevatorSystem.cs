@@ -27,7 +27,20 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void OnComponentStartup(EntityUid uid, ComplexElevatorComponent component, ComponentStartup args)
     {
-        // Send initial arrival signal based on current floor
+        var currentFloorExists = false;
+        var query = EntityQueryEnumerator<ElevatorPointComponent>();
+        while (query.MoveNext(out var pointUid, out var pointComp))
+        {
+            if (pointComp.FloorId == component.CurrentFloor)
+            {
+                currentFloorExists = true;
+                break;
+            }
+        }
+
+        if (!currentFloorExists)
+            return;
+
         var arrivalPort = component.CurrentFloor == component.FirstPointId ? "arrival-first" : "arrival-second";
         _deviceLinkSystem.SendSignal(uid, arrivalPort, true);
     }
@@ -38,8 +51,10 @@ public sealed class ComplexElevatorSystem : EntitySystem
             return;
 
         var port = args.Port;
-        if (port != "Send")
+        if (port != "ElevatorSend")
             return;
+
+        component.IsMoving = true;
 
         string targetFloor = "";
         if (component.CurrentFloor == component.FirstPointId)
@@ -52,11 +67,19 @@ public sealed class ComplexElevatorSystem : EntitySystem
         }
         else
         {
+            component.IsMoving = false;
             return;
         }
 
         Timer.Spawn(component.SendDelay, () =>
         {
+            if (!Exists(uid))
+            {
+                if (TryComp<ComplexElevatorComponent>(uid, out var tempComp))
+                    tempComp.IsMoving = false;
+                return;
+            }
+
             if (!TryComp<ComplexElevatorComponent>(uid, out var comp))
                 return;
 
@@ -81,7 +104,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void StartMovement(EntityUid uid, ComplexElevatorComponent component, string targetFloor)
     {
-        // Check if intermediate and target points exist
         EntityUid? intermediatePoint = null;
         EntityUid? targetPoint = null;
 
@@ -94,15 +116,15 @@ public sealed class ComplexElevatorSystem : EntitySystem
                 targetPoint = pointUid;
 
             if (intermediatePoint != null && targetPoint != null)
-                break; // Early exit when both found
+                break;
         }
 
         if (intermediatePoint == null || targetPoint == null)
-            return; // Missing points, don't move
+        {
+            component.IsMoving = false;
+            return;
+        }
 
-        component.IsMoving = true;
-
-        // Send departure signal based on current floor
         var departurePort = component.CurrentFloor == component.FirstPointId ? "departure-first" : "departure-second";
         _deviceLinkSystem.SendSignal(uid, departurePort, true);
 
@@ -113,13 +135,15 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
         Timer.Spawn(component.IntermediateDelay, () =>
         {
+            if (!Exists(uid))
+                return;
+
             if (!TryComp(uid, out ComplexElevatorComponent? comp))
                 return;
 
             comp.CurrentFloor = targetFloor;
             TeleportToFloor(uid, targetFloor);
 
-            // Send arrival signal based on target floor
             var arrivalPort = targetFloor == comp.FirstPointId ? "arrival-first" : "arrival-second";
             _deviceLinkSystem.SendSignal(uid, arrivalPort, true);
 
@@ -152,9 +176,11 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
                 _transform.SetCoordinates(uid, pointTransform.Coordinates);
 
+                var newElevatorTransform = Transform(uid);
+
                 foreach (var (entUid, relativePos) in entitiesToTeleport)
                 {
-                    var newCoordinates = new EntityCoordinates(pointTransform.ParentUid, pointTransform.LocalPosition + relativePos);
+                    var newCoordinates = new EntityCoordinates(newElevatorTransform.ParentUid, newElevatorTransform.LocalPosition + relativePos);
                     _transform.SetCoordinates(entUid, newCoordinates);
                 }
 
