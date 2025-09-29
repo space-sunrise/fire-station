@@ -2,17 +2,20 @@
 using System.Linq;
 using Content.Server._Scp.Misc;
 using Content.Server._Sunrise.Helpers;
+using Content.Server.Light.EntitySystems;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Light.Components;
 using Content.Shared.Station.Components;
 using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
+using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -22,7 +25,7 @@ namespace Content.Server._Scp.MetaGarbage;
 /// <summary>
 /// Система сохранения мусора между раундами.
 /// В конце раунда сохраняет мусор, который был в комплексе и спавнит его в начале следующего раунда.
-/// TODO: Сохранение ржавых стен, битых лампочек
+/// TODO: Сохранение битых лампочек
 /// TODO: Статистика сохраненного говна в конце раунда
 /// TODO: Переделать спавн мусора в геймрул
 /// TODO: Сивар на отключение
@@ -37,17 +40,20 @@ public sealed partial class MetaGarbageSystem : EntitySystem
     [Dependency] private readonly SunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
+    [Dependency] private readonly LightBulbSystem _bulb = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private static readonly HashSet<ProtoId<TagPrototype>> AllowedTags = [ "Trash", "MetaGarbageSavable" ];
     private static readonly HashSet<ProtoId<TagPrototype>> ForbiddenTags = [ "MetaGarbagePreventSaving" ];
+    private static readonly ProtoId<TagPrototype> ReplaceTag = "MetaGarbageReplace";
+    private static readonly ProtoId<TagPrototype> ContainerAllowedTag = "MetaGarbageCanBeSpawnedInContainer";
 
     /// <summary>
     /// Сохраненный мусор, который будет передаваться из раунда в раунд.
     /// </summary>
     public readonly Dictionary<EntProtoId, List<StationMetaGarbageData>> CachedGarbage = [];
 
-    private const float AlreadySpawnedItemsSearchRadius = 0.1f;
+    private const float AlreadySpawnedItemsSearchRadius = 0.2f;
 
     public override void Initialize()
     {
@@ -84,6 +90,8 @@ public sealed partial class MetaGarbageSystem : EntitySystem
 
             var item = Spawn(data.Prototype, coords, rotation: data.Rotation);
             TryAddLiquid(item, data.LiquidData);
+            TrySetBulbState(item, data.BulbState);
+            TryInsertIntoContainer(item, coords, data.ContainerName);
 
             Log.Info($"Spawned {data.Prototype}|{item} at {data.Position} on map {mapId}|{Name(ent)}");
         }
@@ -134,7 +142,7 @@ public sealed partial class MetaGarbageSystem : EntitySystem
             if (!TryCheckSolution(station, uid, out var solution))
                 continue;
 
-            SaveEntity(xform, stationPrototype, proto, solution);
+            SaveEntity((uid, xform), stationPrototype, proto, solution);
             debugCount++;
         }
 
@@ -149,6 +157,12 @@ public sealed partial class MetaGarbageSystem : EntitySystem
         if (_tag.HasAnyTag(tag, ForbiddenTags))
             return false;
 
+        // Если сохранение в контейнерах разрешено - считаем сущность доступной для сохранения
+        // так как ниже будут только проверки на контейнеры. Остальные проверки стоит размещать выше.
+        if (_tag.HasTag(tag, ContainerAllowedTag))
+            return true;
+
+        // Проверка на контейнеры.
         if (HasComp<InsideEntityStorageComponent>(uid))
             return false;
 
@@ -204,19 +218,24 @@ public sealed partial class MetaGarbageSystem : EntitySystem
     /// <summary>
     /// Сохраняет сущность в словарь для последующего спавна
     /// </summary>
-    private void SaveEntity(TransformComponent xform, EntProtoId stationPrototype, EntProtoId targetProto, Dictionary<string, MetaGarbageSolutionProxy>? liquid = null)
+    private void SaveEntity(Entity<TransformComponent> ent, EntProtoId stationPrototype, EntProtoId targetProto, Dictionary<string, MetaGarbageSolutionProxy>? liquid = null)
     {
         // Сохраняем данные о мусоре в список для спавна в следующем раунде.
-        var position = _transform.GetWorldPosition(xform);
-        var rotation = _transform.GetWorldRotation(xform);
+        var position = _transform.GetWorldPosition(ent.Comp);
+        var rotation = _transform.GetWorldRotation(ent.Comp);
+        var replace = _tag.HasTag(ent, ReplaceTag);
+        var containerName = _container.TryGetOuterContainer(ent, ent.Comp, out var container) ? container.ID : null;
+        LightBulbState? bulbState = TryComp<LightBulbComponent>(ent, out var bulb) ? bulb.State : null;
+
+        var data = new StationMetaGarbageData(targetProto, position, rotation, liquid, replace, containerName, bulbState);
 
         // Добавляем в словарь данные.
         // Ключ - айди прототипа карты, чтобы разные карты имели разный набор мусора с прошлых смен
         // Значение - список мусора, который сохранен для данной карты.
         if (CachedGarbage.TryGetValue(stationPrototype, out var list))
-            list.Add(new StationMetaGarbageData(targetProto, position, rotation, liquid));
+            list.Add(data);
         else
-            CachedGarbage[stationPrototype] = [new StationMetaGarbageData(targetProto, position, rotation, liquid)];
+            CachedGarbage[stationPrototype] = [data];
     }
 
     /// <summary>
@@ -323,5 +342,69 @@ public sealed partial class MetaGarbageSystem : EntitySystem
         }
 
         return toReturn;
+    }
+
+    private bool TrySetBulbState(EntityUid uid, LightBulbState? state)
+    {
+        if (state == null)
+            return false;
+
+        _bulb.SetState(uid, state.Value);
+
+        Log.Info($"Bulb`s({Name(uid)}) state changed to {state.ToString()}");
+        return true;
+    }
+
+    private bool TryInsertIntoContainer(EntityUid uid, MapCoordinates coords, string? container)
+    {
+        if (string.IsNullOrEmpty(container))
+            return false;
+
+        var lookup = _lookup.GetEntitiesInRange<ContainerManagerComponent>(coords, 1f);
+        foreach (var ent in lookup)
+        {
+            foreach (var (name, comp) in ent.Comp.Containers)
+            {
+                if (name != container)
+                    continue;
+
+                if (comp.ContainedEntities.Count != 0)
+                {
+                    var item = EntityUid.Invalid;
+                    foreach (var contained in comp.ContainedEntities)
+                    {
+                        if (!IsSameItem(uid, contained))
+                            continue;
+
+                        item = contained;
+                        break;
+                    }
+
+                    if (item == EntityUid.Invalid)
+                        continue;
+
+                    if (_tag.HasTag(uid, ReplaceTag))
+                    {
+                        _container.RemoveEntity(ent, item, ent.Comp, force: true);
+                        Del(item);
+                    }
+                }
+
+                _container.Insert(uid, comp, force: true);
+
+                Log.Info($"{Name(uid)} inserted into container {container} in {Name(ent)}");
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool IsSameItem(EntityUid uid, EntityUid other)
+    {
+        var uidProto = Prototype(uid);
+        var otherProto = Prototype(other);
+
+        return uidProto == otherProto;
     }
 }

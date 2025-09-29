@@ -1,7 +1,9 @@
 using Content.Shared.Destructible;
 using Content.Shared.Light.Components;
+using Content.Shared.Tag;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared.Light.EntitySystems;
 
@@ -9,6 +11,13 @@ public abstract class SharedLightBulbSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
+
+    // Fire added start
+    [Dependency] private readonly TagSystem _tag = default!;
+    private static readonly ProtoId<TagPrototype> SavableTag = "MetaGarbageSavable";
+    private static readonly ProtoId<TagPrototype> ContainerTag = "MetaGarbageCanBeSpawnedInContainer";
+    private static readonly ProtoId<TagPrototype> ReplaceTag = "MetaGarbageReplace";
+    // Fire added end
 
     public override void Initialize()
     {
@@ -56,6 +65,13 @@ public abstract class SharedLightBulbSystem : EntitySystem
     {
         if (!Resolve(uid, ref bulb) || bulb.State == state)
             return;
+
+        if (state != LightBulbState.Normal)
+        {
+            // Fire added start - для сохранения между раундами битых лампочек
+            _tag.AddTags(uid, ReplaceTag, ContainerTag, SavableTag);
+            // Fire added end
+        }
 
         bulb.State = state;
         Dirty(uid, bulb);

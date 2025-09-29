@@ -49,8 +49,16 @@ public sealed class PoweredLightSystem : SharedPoweredLightSystem
         // TODO: Use ContainerFill dog
         if (light.HasLampOnSpawn != null)
         {
+            // Fire edit start - для того, чтобы при переносе сломанных лампочек из раунда в раунд стандартные лампочкине валялась на полу
             var entity = EntityManager.SpawnEntity(light.HasLampOnSpawn, EntityManager.GetComponent<TransformComponent>(uid).Coordinates);
-            ContainerSystem.Insert(entity, light.LightBulbContainer);
+            var canInsert = ContainerSystem.Insert(entity, light.LightBulbContainer);
+
+            if (!canInsert)
+            {
+                QueueDel(entity);
+                return;
+            }
+            // Fire edit end
         }
         // need this to update visualizers
         UpdateLight(uid, light);

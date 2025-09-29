@@ -29,10 +29,7 @@ public sealed partial class MetaGarbageSystem
 
             foreach (var data in dataList)
             {
-                if (data.LiquidData == null)
-                    continue;
-
-                Log.Info($"{data.Prototype} - {GetDebugLiquidInfo(data.LiquidData)}");
+                Log.Info($"{data.Prototype} - Liquid: {GetDebugLiquidInfo(data.LiquidData)} | Replace: {data.Replace} Container: {data.ContainerName} BulbState: {data.BulbState}");
             }
         }
     }
@@ -41,8 +38,11 @@ public sealed partial class MetaGarbageSystem
     /// Собирает в единую строку данные о жидкости внутри мусора, с которым работает система.
     /// Позволяет удобно выводить информацию о жидкости.
     /// </summary>
-    private static string GetDebugLiquidInfo(Dictionary<string, MetaGarbageSolutionProxy> data)
+    private static string GetDebugLiquidInfo(Dictionary<string, MetaGarbageSolutionProxy>? data)
     {
+        if (data == null)
+            return string.Empty;
+
         StringBuilder debugInfo = new();
 
         foreach (var (container, solution) in data)

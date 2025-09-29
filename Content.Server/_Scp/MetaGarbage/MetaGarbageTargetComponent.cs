@@ -2,6 +2,7 @@
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.FixedPoint;
+using Content.Shared.Light.Components;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.MetaGarbage;
@@ -16,7 +17,7 @@ public sealed partial class MetaGarbageTargetComponent : Component
     /// Какое процентное соотношение от общего числа собранного в прошлом раунде мусора вернется в новом раунде?
     /// </summary>
     [DataField]
-    public float SpawnPercent = 70f;
+    public float SpawnPercent = 100f;
 
     /// <summary>
     /// Модификаторы количества луж/следов с заданными реагентами.
@@ -39,7 +40,9 @@ public record struct StationMetaGarbageData(
     Vector2 Position,
     Angle Rotation,
     Dictionary<string, MetaGarbageSolutionProxy>? LiquidData,
-    bool Replace = false
+    bool Replace = false,
+    string? ContainerName = null,
+    LightBulbState? BulbState = null
     )
 {
     public readonly EntProtoId Prototype = Prototype;
@@ -47,6 +50,8 @@ public record struct StationMetaGarbageData(
     public readonly Angle Rotation = Rotation;
     public readonly Dictionary<string, MetaGarbageSolutionProxy>? LiquidData = LiquidData;
     public readonly bool Replace = Replace;
+    public readonly string? ContainerName = ContainerName;
+    public readonly LightBulbState? BulbState = BulbState;
 }
 
 // Все что находится ниже существует потому, что блядская система реагентов такая блядская

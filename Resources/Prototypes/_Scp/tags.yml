@@ -42,3 +42,9 @@
 
 - type: Tag
   id: MetaGarbagePreventSaving
+
+- type: Tag
+  id: MetaGarbageReplace
+
+- type: Tag
+  id: MetaGarbageCanBeSpawnedInContainer
