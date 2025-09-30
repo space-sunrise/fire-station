@@ -141,6 +141,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         if (elevator == null)
             return;
 
+        args.Handled = true;
         switch (ent.Comp.ButtonType)
         {
             case ElevatorButtonType.CallButton:
