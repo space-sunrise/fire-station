@@ -157,3 +157,13 @@
   components:
     - type: AutoLinkTransmitter
       channel: Lift1
+    - type: WirelessNetworkConnection
+      range: 1000
+- type: entity
+  id: SignalButtonElevator
+  parent: SignalButton
+  name: elevator button
+  description: Button for calling and sending the elevator.
+  components:
+    - type: WirelessNetworkConnection
+      range: 1000
