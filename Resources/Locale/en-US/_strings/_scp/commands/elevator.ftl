@@ -1,0 +1,17 @@
+elevator-manage-floors-desc = Manages floors of the specified elevator: add, remove, move, or list.
+elevator-manage-floors-help = Usage: { $command } <elevator_id> <action> [floor_name] [direction]\nActions: add <floor_name>, remove <floor_name>, move <floor_name> <direction>, list\nDirections for move: up, down, or index number
+elevator-manage-floors-not-found = Elevator with ID '{ $elevatorId }' not found.
+elevator-manage-floors-floor-exists = Floor '{ $floorName }' already exists in elevator '{ $elevatorId }'.
+elevator-manage-floors-added = Added floor '{ $floorName }' to elevator '{ $elevatorId }'. Current floors: { $floors }
+elevator-manage-floors-floor-not-exists = Floor '{ $floorName }' does not exist in elevator '{ $elevatorId }'.
+elevator-manage-floors-cannot-remove-current = Cannot remove current floor '{ $floorName }' from elevator '{ $elevatorId }'.
+elevator-manage-floors-removed = Removed floor '{ $floorName }' from elevator '{ $elevatorId }'. Current floors: { $floors }
+elevator-manage-floors-list = Floors for elevator '{ $elevatorId }': { $floors }\nCurrent floor: { $currentFloor }
+elevator-manage-floors-move-help = For 'move' action, provide floor_name and direction: { $command } <elevator_id> move <floor_name> <direction>\nDirections: up, down, or index number (0-based)
+elevator-manage-floors-already-top = Floor '{ $floorName }' is already at the top.
+elevator-manage-floors-already-bottom = Floor '{ $floorName }' is already at the bottom.
+elevator-manage-floors-invalid-index = Invalid index '{ $index }'. Must be between 0 and { $maxIndex }.
+elevator-manage-floors-unknown-direction = Unknown direction '{ $direction }'. Use 'up', 'down', or a valid index number.
+elevator-manage-floors-moved = Moved floor '{ $floorName }' to position { $newIndex }. Current floors: { $floors }
+elevator-manage-floors-unknown-action = Unknown action '{ $action }'. Valid actions: add, remove, move, list.
+elevator-manage-floors-args-error = Expected at least 2 arguments: elevator_id and action.
