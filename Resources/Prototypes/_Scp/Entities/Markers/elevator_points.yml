@@ -13,6 +13,7 @@
       - sprite: _Scp/Objects/Markers/environment.rsi
         shader: unshaded
         state: portal
+
 - type: entity
   parent: ElevatorPoint
   id: ElevatorPointComplex
@@ -21,6 +22,7 @@
   components:
   - type: ElevatorPoint
     floorId: Complex
+
 - type: entity
   parent: ElevatorPoint
   id: ElevatorPointIntermediate
@@ -29,6 +31,7 @@
   components:
   - type: ElevatorPoint
     floorId: IntermediateFloor
+
 - type: entity
   parent: ElevatorPoint
   id: ElevatorPointSurface

@@ -17,5 +17,5 @@ public enum ElevatorButtonType
 {
     CallButton,
     SendElevatorDown,
-    SendElevatorUp
+    SendElevatorUp,
 }
