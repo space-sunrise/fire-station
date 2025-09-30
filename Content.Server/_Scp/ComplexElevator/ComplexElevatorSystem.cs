@@ -62,7 +62,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         if (component.IsMoving)
             return;
 
-        if (args.Port!= "ElevatorSend")
+        if (args.Port != "ElevatorSend")
             return;
 
         component.IsMoving = true;
