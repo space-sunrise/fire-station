@@ -23,7 +23,7 @@ namespace Content.Server.Administration.Commands
             if (!ValidateArgs(args, 2, shell)) return;
 
             var elevatorId = args[0];
-            var action = args[1].ToLower();
+            var action = args[1].ToLowerInvariant();
 
             var elevator = GetElevator(elevatorId);
             if (elevator == null)
@@ -125,7 +125,7 @@ namespace Content.Server.Administration.Commands
                 return;
             }
             var floorToMove = args[2];
-            var direction = args[3];
+            var direction = args[3].ToLowerInvariant();
             var floors = elevator.Comp.Floors;
             var currentIndex = floors.IndexOf(floorToMove);
             if (currentIndex == -1)
