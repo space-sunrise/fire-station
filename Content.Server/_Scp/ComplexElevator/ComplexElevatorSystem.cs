@@ -174,32 +174,40 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     public void MoveUp(Entity<ComplexElevatorComponent> ent)
     {
-        if (ent.Comp.IsMoving || ent.Comp.Floors.Count == 0)
-            return;
-
-        var currentIndex = ent.Comp.Floors.IndexOf(ent.Comp.CurrentFloor);
-        if (currentIndex == -1 || currentIndex <= 0)
-            return;
-
-        var targetIndex = currentIndex - 1;
-        var targetFloor = ent.Comp.Floors[targetIndex];
-
-        MoveToFloor(ent, targetFloor);
+        var nextFloor = GetNextFloorUp(ent);
+        if (nextFloor != null)
+            MoveToFloor(ent, nextFloor);
     }
 
     public void MoveDown(Entity<ComplexElevatorComponent> ent)
     {
+        var nextFloor = GetNextFloorDown(ent);
+        if (nextFloor != null)
+            MoveToFloor(ent, nextFloor);
+    }
+
+    private string? GetNextFloorUp(Entity<ComplexElevatorComponent> ent)
+    {
         if (ent.Comp.IsMoving || ent.Comp.Floors.Count == 0)
-            return;
+            return null;
+
+        var currentIndex = ent.Comp.Floors.IndexOf(ent.Comp.CurrentFloor);
+        if (currentIndex == -1 || currentIndex <= 0)
+            return null;
+
+        return ent.Comp.Floors[currentIndex - 1];
+    }
+
+    private string? GetNextFloorDown(Entity<ComplexElevatorComponent> ent)
+    {
+        if (ent.Comp.IsMoving || ent.Comp.Floors.Count == 0)
+            return null;
 
         var currentIndex = ent.Comp.Floors.IndexOf(ent.Comp.CurrentFloor);
         if (currentIndex == -1 || currentIndex >= ent.Comp.Floors.Count - 1)
-            return;
+            return null;
 
-        var targetIndex = currentIndex + 1;
-        var targetFloor = ent.Comp.Floors[targetIndex];
-
-        MoveToFloor(ent, targetFloor);
+        return ent.Comp.Floors[currentIndex + 1];
     }
 
 }
