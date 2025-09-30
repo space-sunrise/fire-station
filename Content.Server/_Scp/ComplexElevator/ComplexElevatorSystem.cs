@@ -165,7 +165,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     public void MoveToFloor(Entity<ComplexElevatorComponent> ent, string targetFloor)
     {
-        if (ent.Comp.IsMoving || !ent.Comp.Floors.Contains(targetFloor))
+        if (ent.Comp.IsMoving || !ent.Comp.Floors.Contains(targetFloor) || ent.Comp.CurrentFloor == targetFloor)
             return;
 
         ent.Comp.IsMoving = true;
