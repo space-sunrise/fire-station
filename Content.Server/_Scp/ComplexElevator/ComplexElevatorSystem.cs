@@ -157,12 +157,11 @@ public sealed class ComplexElevatorSystem : EntitySystem
                 var pointTransform = Transform(pointUid);
                 var elevatorTransform = Transform(uid);
 
-                var elevatorBounds = elevatorTransform.LocalPosition - new Vector2(1.4f, 1.4f);
-                var elevatorBoundsEnd = elevatorTransform.LocalPosition + new Vector2(1.4f, 1.4f);
-                var intersectingEntities = _lookup.GetEntitiesIntersecting(elevatorTransform.MapID, new Box2(elevatorBounds, elevatorBoundsEnd), LookupFlags.Dynamic | LookupFlags.Sensors);
+                var aabb = _lookup.GetWorldAABB(uid, elevatorTransform);
+                var intersectingEntities = _lookup.GetEntitiesIntersecting(elevatorTransform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sensors);
 
                 var entitiesToTeleport = new List<(EntityUid, Vector2)>();
-                foreach (var entUid in intersectingEntities)
+                foreach (EntityUid entUid in intersectingEntities)
                 {
                     if (entUid == uid)
                         continue;
