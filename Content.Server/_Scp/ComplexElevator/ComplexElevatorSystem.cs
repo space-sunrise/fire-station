@@ -92,9 +92,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
             if (!Exists(uid))
                 return;
 
-            if (!TryComp<ComplexElevatorComponent>(uid, out var comp))
-                return;
-
             StartMovement(uid, comp, targetFloor);
         });
     }
