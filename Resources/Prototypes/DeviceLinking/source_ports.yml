@@ -2,7 +2,7 @@
   id: Pressed
   name: signal-port-name-pressed
   description: signal-port-description-pressed
-  defaultLinks: [ Toggle, Trigger, Timer]
+  defaultLinks: [ Toggle, Trigger, Timer ]
 
 - type: sourcePort
   id: On
