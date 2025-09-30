@@ -42,7 +42,6 @@
     ports:
       - ElevatorSend
   - type: DeviceLinkSource
-    unlimitedRange: true
     ports:
       - ArrivalFirst
       - ArrivalSecond

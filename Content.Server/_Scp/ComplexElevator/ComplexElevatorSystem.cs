@@ -1,6 +1,5 @@
 using System.Numerics;
 using Content.Server.DeviceLinking.Systems;
-using Content.Shared._Scp.ComplexElevator;
 using Content.Shared.DeviceLinking.Events;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
@@ -90,14 +89,11 @@ public sealed class ComplexElevatorSystem : EntitySystem
             if (!Exists(ent.Owner))
                 return;
 
-            if (!TryComp(ent.Owner, out ComplexElevatorComponent? comp))
-                return;
-
-            StartMovement(ent.Owner, comp, targetFloor);
+            StartMovement(ent, targetFloor);
         });
     }
 
-    private void StartMovement(EntityUid uid, ComplexElevatorComponent component, string targetFloor)
+    private void StartMovement(Entity<ComplexElevatorComponent> ent, string targetFloor)
     {
         EntityUid? intermediatePoint = null;
         EntityUid? targetPoint = null;
@@ -105,7 +101,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         var query = EntityQueryEnumerator<ElevatorPointComponent>();
         while (query.MoveNext(out var pointUid, out var pointComp))
         {
-            if (pointComp.FloorId == component.IntermediateFloorId)
+            if (pointComp.FloorId == ent.Comp.IntermediateFloorId)
                 intermediatePoint = pointUid;
             if (pointComp.FloorId == targetFloor)
                 targetPoint = pointUid;
@@ -116,31 +112,28 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
         if (intermediatePoint == null || targetPoint == null)
         {
-            component.IsMoving = false;
+            ent.Comp.IsMoving = false;
             return;
         }
 
-        var departurePort = component.CurrentFloor == component.FirstPointId ? DepartureFirst : DepartureSecond;
-        _deviceLink.SendSignal(uid, departurePort, true);
+        var departurePort = ent.Comp.CurrentFloor == ent.Comp.FirstPointId ? DepartureFirst : DepartureSecond;
+        _deviceLink.SendSignal(ent.Owner, departurePort, true);
 
-        component.CurrentFloor = component.IntermediateFloorId;
-        TeleportToFloor(uid, component.IntermediateFloorId);
+        ent.Comp.CurrentFloor = ent.Comp.IntermediateFloorId;
+        TeleportToFloor(ent.Owner, ent.Comp.IntermediateFloorId);
 
-        Timer.Spawn(component.IntermediateDelay, () =>
+        Timer.Spawn(ent.Comp.IntermediateDelay, () =>
         {
-            if (!Exists(uid))
+            if (!Exists(ent.Owner))
                 return;
 
-            if (!TryComp(uid, out ComplexElevatorComponent? comp))
-                return;
+            ent.Comp.CurrentFloor = targetFloor;
+            TeleportToFloor(ent.Owner, targetFloor);
 
-            comp.CurrentFloor = targetFloor;
-            TeleportToFloor(uid, targetFloor);
+            var arrivalPort = targetFloor == ent.Comp.FirstPointId ? ArrivalFirst : ArrivalSecond;
+            _deviceLink.SendSignal(ent.Owner, arrivalPort, true);
 
-            var arrivalPort = targetFloor == comp.FirstPointId ? ArrivalFirst : ArrivalSecond;
-            _deviceLink.SendSignal(uid, arrivalPort, true);
-
-            comp.IsMoving = false;
+            ent.Comp.IsMoving = false;
         });
     }
 

@@ -1,10 +1,10 @@
 using Robust.Shared.GameStates;
 
-namespace Content.Shared._Scp.ComplexElevator;
+namespace Content.Server._Scp.ComplexElevator;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class ElevatorPointComponent : Component
 {
-    [DataField]
+    [DataField(serverOnly: true)]
     public string FloorId = "";
 }
