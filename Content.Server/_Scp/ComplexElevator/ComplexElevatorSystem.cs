@@ -156,7 +156,9 @@ public sealed class ComplexElevatorSystem : EntitySystem
             {
                 if (entUid == uid)
                     continue;
-
+                
+                if (!Exists(entUid))
+                    continue;
                 var entTransform = Transform(entUid);
                 var relativePos = entTransform.LocalPosition - elevatorTransform.LocalPosition;
                 entitiesToTeleport.Add((entUid, relativePos));
