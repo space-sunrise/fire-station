@@ -152,9 +152,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void TeleportToFloor(EntityUid uid, string floorId)
     {
-        if (!TryComp<ComplexElevatorComponent>(uid, out var component))
-            return;
-
         var query = EntityQueryEnumerator<ElevatorPointComponent>();
         while (query.MoveNext(out var pointUid, out var pointComp))
         {

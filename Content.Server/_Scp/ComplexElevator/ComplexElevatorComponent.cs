@@ -1,15 +1,13 @@
-using Robust.Shared.GameStates;
+namespace Content.Server._Scp.ComplexElevator;
 
-namespace Content.Shared._Scp.ComplexElevator;
-
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class ComplexElevatorComponent : Component
 {
     [DataField]
     public string ElevatorId = "";
 
     [DataField]
-    public string CurrentFloor = "SurfaceFloor";
+    public string CurrentFloor = "IntermediateFloor";
 
     [DataField]
     public string FirstPointId = "ComplexFloor";
@@ -21,14 +19,13 @@ public sealed partial class ComplexElevatorComponent : Component
     public string SecondPointId = "SurfaceFloor";
 
     [DataField]
-    public bool IsMoving = false;
-
-    [DataField]
-    public TimeSpan SendDelay = TimeSpan.FromSeconds(1.5);
+    public TimeSpan SendDelay = TimeSpan.FromSeconds(1);
 
     [DataField]
     public TimeSpan IntermediateDelay = TimeSpan.FromSeconds(5);
 
     [DataField]
+    public bool IsMoving = false;
+
     public HashSet<EntityUid> EntitiesOnElevator = new();
 }
