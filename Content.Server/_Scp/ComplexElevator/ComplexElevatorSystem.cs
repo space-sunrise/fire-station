@@ -150,7 +150,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         });
     }
 
-    private void TeleportToFloor(EntityUid uid, string floorId)
+    private void TeleportToFloor(Entity<ComplexElevatorComponent> ent, string floorId)
     {
         var query = EntityQueryEnumerator<ElevatorPointComponent>();
         while (query.MoveNext(out var pointUid, out var pointComp))
