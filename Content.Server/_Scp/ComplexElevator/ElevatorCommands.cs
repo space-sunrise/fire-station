@@ -51,6 +51,7 @@ namespace Content.Server.Administration.Commands
                         return;
                     }
                     elevator.Comp.Floors.Add(floorToAdd);
+                    _entManager.Dirty(elevator.Owner, elevator.Comp);
                     shell.WriteLine(Loc.GetString("elevator-manage-floors-added", ("floorName", floorToAdd), ("elevatorId", elevatorId), ("floors", string.Join(", ", elevator.Comp.Floors))));
                     break;
 
@@ -72,6 +73,7 @@ namespace Content.Server.Administration.Commands
                         return;
                     }
                     elevator.Comp.Floors.Remove(floorToRemove);
+                    _entManager.Dirty(elevator.Owner, elevator.Comp);
                     shell.WriteLine(Loc.GetString("elevator-manage-floors-removed", ("floorName", floorToRemove), ("elevatorId", elevatorId), ("floors", string.Join(", ", elevator.Comp.Floors))));
                     break;
 
@@ -133,6 +135,7 @@ namespace Content.Server.Administration.Commands
                     }
                     floors.RemoveAt(currentIndex);
                     floors.Insert(newIndex, floorToMove);
+                    _entManager.Dirty(elevator.Owner, elevator.Comp);
                     shell.WriteLine(Loc.GetString("elevator-manage-floors-moved", ("floorName", floorToMove), ("newIndex", newIndex), ("floors", string.Join(", ", floors))));
                     break;
 
