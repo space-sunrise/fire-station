@@ -11,20 +11,21 @@ using System.Numerics;
 namespace Content.Client.CartridgeLoader.Cartridges;
 
 [GenerateTypedNameReferences]
-public sealed partial class NavigatorUiFragment : BoxContainer
+public sealed partial class NavigatorUiFragment : BoxContainer, IDisposable
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
 
     public NavMapControl? NavMap;
     private EntityUid? _owner;
     private readonly List<StationMapBeaconControl> _buttons = new();
+    private Action<LineEdit.LineEditEventArgs>? _filterHandler;
+    private bool _disposed;
 
     public NavigatorUiFragment()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
     }
-
     public void Setup(EntityUid? owner)
     {
         _owner = owner;
@@ -35,7 +36,8 @@ public sealed partial class NavigatorUiFragment : BoxContainer
 
         NavMapContainer.AddChild(NavMap);
 
-        FilterBar.OnTextChanged += (bar) => OnFilterChanged(bar.Text);
+        _filterHandler = (bar) => OnFilterChanged(bar.Text);
+        FilterBar.OnTextChanged += _filterHandler;
     }
 
     public void UpdateState(EntityUid? mapUid, string stationName)
@@ -117,7 +119,21 @@ public sealed partial class NavigatorUiFragment : BoxContainer
 
     public void Dispose()
     {
-        if (FilterBar != null)
-            FilterBar.OnTextChanged -= (bar) => OnFilterChanged(bar.Text);
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    private void Dispose(bool disposing)
+    {
+        if (_disposed) return;
+        if (disposing)
+        {
+            if (FilterBar != null && _filterHandler != null)
+            {
+                FilterBar.OnTextChanged -= _filterHandler;
+                _filterHandler = null;
+            }
+        }
+        _disposed = true;
     }
 }
