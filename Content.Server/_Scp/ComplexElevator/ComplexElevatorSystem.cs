@@ -62,13 +62,12 @@ public sealed class ComplexElevatorSystem : EntitySystem
         if (component.IsMoving)
             return;
 
-        var port = args.Port;
-        if (port != "ElevatorSend")
+        if (args.Port!= "ElevatorSend")
             return;
 
         component.IsMoving = true;
 
-        string targetFloor = "";
+        var targetFloor = string.Empty;
         if (component.CurrentFloor == component.FirstPointId)
         {
             targetFloor = component.SecondPointId;
