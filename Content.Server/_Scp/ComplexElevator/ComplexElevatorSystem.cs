@@ -11,15 +11,15 @@ namespace Content.Server._Scp.ComplexElevator;
 
 public sealed class ComplexElevatorSystem : EntitySystem
 {
-    private const string ArrivalFirst = "ArrivalFirst";
-    private const string ArrivalSecond = "ArrivalSecond";
-    private const string DepartureFirst = "DepartureFirst";
-    private const string DepartureSecond = "DepartureSecond";
-
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly DeviceLinkSystem _deviceLinkSystem = default!;
+
+    private const string ArrivalFirst = "ArrivalFirst";
+    private const string ArrivalSecond = "ArrivalSecond";
+    private const string DepartureFirst = "DepartureFirst";
+    private const string DepartureSecond = "DepartureSecond";
 
     public override void Initialize()
     {
@@ -31,15 +31,14 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void OnComponentStartup(Entity<ComplexElevatorComponent> ent, ref ComponentStartup args)
     {
-        var (uid, component) = ent;
-        if (component.CurrentFloor == component.IntermediateFloorId)
+        if (ent.Comp.CurrentFloor == ent.Comp.IntermediateFloorId)
             return;
 
         var currentFloorExists = false;
         var query = EntityQueryEnumerator<ElevatorPointComponent>();
         while (query.MoveNext(out var pointUid, out var pointComp))
         {
-            if (pointComp.FloorId == component.CurrentFloor)
+            if (pointComp.FloorId == ent.Comp.CurrentFloor)
             {
                 currentFloorExists = true;
                 break;
@@ -49,40 +48,39 @@ public sealed class ComplexElevatorSystem : EntitySystem
         if (!currentFloorExists)
             return;
 
-        if (component.CurrentFloor != component.FirstPointId && component.CurrentFloor != component.SecondPointId)
+        if (ent.Comp.CurrentFloor != ent.Comp.FirstPointId && ent.Comp.CurrentFloor != ent.Comp.SecondPointId)
            return;
 
-        var arrivalPort = component.CurrentFloor == component.FirstPointId ? ArrivalFirst : ArrivalSecond;
-        _deviceLinkSystem.SendSignal(uid, arrivalPort, true);
+        var arrivalPort = ent.Comp.CurrentFloor == ent.Comp.FirstPointId ? ArrivalFirst : ArrivalSecond;
+        _deviceLinkSystem.SendSignal(ent.Owner, arrivalPort, true);
     }
 
     private void OnSignalReceived(Entity<ComplexElevatorComponent> ent, ref SignalReceivedEvent args)
     {
-        var (uid, component) = ent;
-        if (component.IsMoving)
+        if (ent.Comp.IsMoving)
             return;
 
-        if (args.Port!= "ElevatorSend")
+        if (args.Port != "ElevatorSend")
             return;
 
-        component.IsMoving = true;
+        ent.Comp.IsMoving = true;
 
         var targetFloor = string.Empty;
-        if (component.CurrentFloor == component.FirstPointId)
+        if (ent.Comp.CurrentFloor == ent.Comp.FirstPointId)
         {
-            targetFloor = component.SecondPointId;
+            targetFloor = ent.Comp.SecondPointId;
         }
-        else if (component.CurrentFloor == component.SecondPointId)
+        else if (ent.Comp.CurrentFloor == ent.Comp.SecondPointId)
         {
-            targetFloor = component.FirstPointId;
+            targetFloor = ent.Comp.FirstPointId;
         }
         else
         {
-            component.IsMoving = false;
+            ent.Comp.IsMoving = false;
             return;
         }
 
-        TryMoveElevator(uid, component, targetFloor);
+        TryMoveElevator(ent.Owner, ent.Comp, targetFloor);
     }
 
     private void TryMoveElevator(EntityUid uid, ComplexElevatorComponent component, string targetFloor)
@@ -151,39 +149,37 @@ public sealed class ComplexElevatorSystem : EntitySystem
         var query = EntityQueryEnumerator<ElevatorPointComponent>();
         while (query.MoveNext(out var pointUid, out var pointComp))
         {
-            if (pointComp.FloorId == floorId)
+            if (pointComp.FloorId != floorId)
+                continue;
+
+            var pointTransform = Transform(pointUid);
+            var elevatorTransform = Transform(uid);
+
+            var aabb = _lookup.GetWorldAABB(uid, elevatorTransform);
+            var intersectingEntities = _lookup.GetEntitiesIntersecting(elevatorTransform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sensors);
+
+            var entitiesToTeleport = new List<(EntityUid, Vector2)>();
+            foreach (EntityUid entUid in intersectingEntities)
             {
-                var pointTransform = Transform(pointUid);
-                var elevatorTransform = Transform(uid);
+                if (entUid == uid)
+                    continue;
 
-                var aabb = _lookup.GetWorldAABB(uid, elevatorTransform);
-                var intersectingEntities = _lookup.GetEntitiesIntersecting(elevatorTransform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sensors);
-
-                var entitiesToTeleport = new List<(EntityUid, Vector2)>();
-                foreach (EntityUid entUid in intersectingEntities)
-                {
-                    if (entUid == uid)
-                        continue;
-
-                    if (!TryComp<TransformComponent>(entUid, out var entTransform))
-                        continue;
-
-                    var relativePos = entTransform.LocalPosition - elevatorTransform.LocalPosition;
-                    entitiesToTeleport.Add((entUid, relativePos));
-                }
-
-                _transform.SetCoordinates(uid, pointTransform.Coordinates);
-
-                var newElevatorTransform = Transform(uid);
-
-                foreach (var (entUid, relativePos) in entitiesToTeleport)
-                {
-                    var newCoordinates = new EntityCoordinates(newElevatorTransform.ParentUid, newElevatorTransform.LocalPosition + relativePos);
-                    _transform.SetCoordinates(entUid, newCoordinates);
-                }
-
-                break;
+                var entTransform = Transform(entUid);
+                var relativePos = entTransform.LocalPosition - elevatorTransform.LocalPosition;
+                entitiesToTeleport.Add((entUid, relativePos));
             }
+
+            _transform.SetCoordinates(uid, pointTransform.Coordinates);
+
+            var newElevatorTransform = Transform(uid);
+
+            foreach (var (entUid, relativePos) in entitiesToTeleport)
+            {
+                var newCoordinates = new EntityCoordinates(newElevatorTransform.ParentUid, newElevatorTransform.LocalPosition + relativePos);
+                _transform.SetCoordinates(entUid, newCoordinates);
+            }
+
+            break;
         }
     }
 
