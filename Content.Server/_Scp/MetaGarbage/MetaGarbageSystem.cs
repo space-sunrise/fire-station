@@ -50,7 +50,7 @@ public sealed partial class MetaGarbageSystem : EntitySystem
     /// <summary>
     /// Сохраненный мусор, который будет передаваться из раунда в раунд.
     /// </summary>
-    public readonly Dictionary<EntProtoId, List<StationMetaGarbageData>> CachedGarbage = [];
+    public Dictionary<EntProtoId, List<StationMetaGarbageData>> CachedGarbage { get; private set; } = [];
 
     private const float AlreadySpawnedItemsSearchRadius = 0.2f;
 
