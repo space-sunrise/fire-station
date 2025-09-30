@@ -20,7 +20,7 @@
   suffix: "Complex"
   components:
   - type: ElevatorPoint
-    floorId: ComplexFloor
+    floorId: Complex
 - type: entity
   parent: ElevatorPoint
   id: ElevatorPointIntermediate
@@ -36,4 +36,4 @@
   suffix: "Surface"
   components:
   - type: ElevatorPoint
-    floorId: SurfaceFloor
+    floorId: Surface

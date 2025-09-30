@@ -34,25 +34,15 @@
         - MidImpassable
   - type: ComplexElevator
     elevatorId: "SCP_Elevator_1"
-    currentFloor: "ComplexFloor"
-    firstPointId: "ComplexFloor"
+    currentFloor: "Complex"
     intermediateFloorId: "IntermediateFloor"
-    secondPointId: "SurfaceFloor"
-  - type: DeviceLinkSink
-    ports:
-      - ElevatorSend
-  - type: DeviceLinkSource
-    ports:
-      - ArrivalFirst
-      - ArrivalSecond
-      - DepartureFirst
-      - DepartureSecond
+    floors:
+      - Surface
+      - Complex
   - type: ContainerContainer
     containers:
       ElevatorContents: !type:Container
   - type: ItemSlots
-  - type: AutoLinkReceiver
-    channel: Lift1
 
 - type: entity
   parent: ComplexElevator
@@ -66,9 +56,10 @@
   - type: ComplexElevator
     elevatorId: "SCP_Elevator_2"
     currentFloor: "ComplexFloor2"
-    firstPointId: "ComplexFloor2"
     intermediateFloorId: "IntermediateFloor2"
-    secondPointId: "SurfaceFloor2"
+    floors:
+      - SurfaceFloor2
+      - ComplexFloor2
 
 - type: entity
   parent: ComplexElevator
@@ -88,10 +79,11 @@
     state: white
   - type: ComplexElevator
     elevatorId: "SCP_Elevator_3"
-    currentFloor: "ComplexFloor"
-    firstPointId: "ComplexFloor"
+    currentFloor: "Complex"
     intermediateFloorId: "IntermediateFloor"
-    secondPointId: "SurfaceFloor"
+    floors:
+      - Surface
+      - Complex
 
 - type: entity
   parent: Elevator_white
@@ -105,9 +97,10 @@
   - type: ComplexElevator
     elevatorId: "SCP_Elevator_4"
     currentFloor: "ComplexFloor2"
-    firstPointId: "ComplexFloor2"
     intermediateFloorId: "IntermediateFloor2"
-    secondPointId: "SurfaceFloor2"
+    floors:
+      - SurfaceFloor2
+      - ComplexFloor2
 
 - type: entity
   parent: ComplexElevator
@@ -127,10 +120,11 @@
     state: catwalk
   - type: ComplexElevator
     elevatorId: "SCP_Elevator_5"
-    currentFloor: "ComplexFloor"
-    firstPointId: "ComplexFloor"
+    currentFloor: "Complex"
     intermediateFloorId: "IntermediateFloor"
-    secondPointId: "SurfaceFloor"
+    floors:
+      - Surface
+      - Complex
 
 - type: entity
   parent: Elevator_white
@@ -144,26 +138,36 @@
   - type: ComplexElevator
     elevatorId: "SCP_Elevator_6"
     currentFloor: "ComplexFloor3"
-    firstPointId: "ComplexFloor3"
     intermediateFloorId: "IntermediateFloor3"
-    secondPointId: "SurfaceFloor3"
+    floors:
+      - SurfaceFloor3
+      - ComplexFloor3
 
 - type: entity
-  id: SignalButtonElevator1
   parent: SignalButton
-  name: elevator button
-  description: Button for calling and sending the elevator.
-  suffix: Autolink, Lift1
+  id: ElevatorButton
+  name: Elevator button
+  description: Button for controlling the elevator.
+  suffix: "Call button"
   components:
-    - type: AutoLinkTransmitter
-      channel: Lift1
-    - type: WirelessNetworkConnection
-      range: 1000
+  - type: InteractionOutline
+  - type: ElevatorButton
+    elevatorId: "SCP_Elevator_1"
+    buttonType: CallButton
+    floor: "Complex"
+
 - type: entity
-  id: SignalButtonElevator
-  parent: SignalButton
-  name: elevator button
-  description: Button for calling and sending the elevator.
+  parent: ElevatorButton
+  id: ElevatorButtonUp
+  name: Elevator up button
   components:
-    - type: WirelessNetworkConnection
-      range: 1000
+  - type: ElevatorButton
+    buttonType: SendElevatorUp
+
+- type: entity
+  parent: ElevatorButton
+  id: ElevatorButtonDown
+  name: Elevator down button
+  components:
+  - type: ElevatorButton
+    buttonType: SendElevatorDown

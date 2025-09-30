@@ -1,6 +1,5 @@
 using System.Numerics;
-using Content.Server.DeviceLinking.Systems;
-using Content.Shared.DeviceLinking.Events;
+using Content.Shared.Interaction;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
@@ -13,26 +12,17 @@ public sealed class ComplexElevatorSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly DeviceLinkSystem _deviceLink = default!;
-    
-    private const string ArrivalFirst = "ArrivalFirst";
-    private const string ArrivalSecond = "ArrivalSecond";
-    private const string DepartureFirst = "DepartureFirst";
-    private const string DepartureSecond = "DepartureSecond";
 
     public override void Initialize()
     {
         base.Initialize();
-        
-        SubscribeLocalEvent<ComplexElevatorComponent, SignalReceivedEvent>(OnSignalReceived);
+
         SubscribeLocalEvent<ComplexElevatorComponent, ComponentStartup>(OnComponentStartup);
+        SubscribeLocalEvent<ElevatorButtonComponent, InteractHandEvent>(OnButtonInteract);
     }
 
     private void OnComponentStartup(Entity<ComplexElevatorComponent> ent, ref ComponentStartup args)
     {
-        if (ent.Comp.CurrentFloor == ent.Comp.IntermediateFloorId)
-            return;
-
         var currentFloorExists = false;
         var query = EntityQueryEnumerator<ElevatorPointComponent>();
         while (query.MoveNext(out var pointUid, out var pointComp))
@@ -47,40 +37,10 @@ public sealed class ComplexElevatorSystem : EntitySystem
         if (!currentFloorExists)
             return;
 
-        if (ent.Comp.CurrentFloor != ent.Comp.FirstPointId && ent.Comp.CurrentFloor != ent.Comp.SecondPointId)
-           return;
-
-        var arrivalPort = ent.Comp.CurrentFloor == ent.Comp.FirstPointId ? ArrivalFirst : ArrivalSecond;
-        _deviceLink.SendSignal(ent.Owner, arrivalPort, true);
+        if (!ent.Comp.Floors.Contains(ent.Comp.CurrentFloor))
+            return;
     }
 
-    private void OnSignalReceived(Entity<ComplexElevatorComponent> ent, ref SignalReceivedEvent args)
-    {
-        if (ent.Comp.IsMoving)
-            return;
-
-        if (args.Port != "ElevatorSend")
-            return;
-
-        ent.Comp.IsMoving = true;
-
-        var targetFloor = string.Empty;
-        if (ent.Comp.CurrentFloor == ent.Comp.FirstPointId)
-        {
-            targetFloor = ent.Comp.SecondPointId;
-        }
-        else if (ent.Comp.CurrentFloor == ent.Comp.SecondPointId)
-        {
-            targetFloor = ent.Comp.FirstPointId;
-        }
-        else
-        {
-            ent.Comp.IsMoving = false;
-            return;
-        }
-
-        TryMoveElevator(ent, targetFloor);
-    }
 
     private void TryMoveElevator(Entity<ComplexElevatorComponent> ent, string targetFloor)
     {
@@ -116,22 +76,18 @@ public sealed class ComplexElevatorSystem : EntitySystem
             return;
         }
 
-        var departurePort = ent.Comp.CurrentFloor == ent.Comp.FirstPointId ? DepartureFirst : DepartureSecond;
-        _deviceLink.SendSignal(ent.Owner, departurePort, true);
-
         ent.Comp.CurrentFloor = ent.Comp.IntermediateFloorId;
         TeleportToFloor(ent.Owner, ent.Comp.IntermediateFloorId);
 
-        Timer.Spawn(ent.Comp.IntermediateDelay, () =>
+        var travelTime = ent.Comp.IntermediateDelay;
+
+        Timer.Spawn(travelTime, () =>
         {
             if (!Exists(ent.Owner))
                 return;
 
             ent.Comp.CurrentFloor = targetFloor;
             TeleportToFloor(ent.Owner, targetFloor);
-
-            var arrivalPort = targetFloor == ent.Comp.FirstPointId ? ArrivalFirst : ArrivalSecond;
-            _deviceLink.SendSignal(ent.Owner, arrivalPort, true);
 
             ent.Comp.IsMoving = false;
         });
@@ -156,9 +112,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
             {
                 if (entUid == uid)
                     continue;
-                
-                if (!Exists(entUid))
-                    continue;
+
                 var entTransform = Transform(entUid);
                 var relativePos = entTransform.LocalPosition - elevatorTransform.LocalPosition;
                 entitiesToTeleport.Add((entUid, relativePos));
@@ -176,6 +130,76 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
             break;
         }
+    }
+
+    private void OnButtonInteract(Entity<ElevatorButtonComponent> ent, ref InteractHandEvent args)
+    {
+        var elevator = FindElevator(ent.Comp.ElevatorId);
+        if (elevator == null)
+            return;
+
+        switch (ent.Comp.ButtonType)
+        {
+            case ElevatorButtonType.CallButton:
+                MoveToFloor(elevator.Value, ent.Comp.Floor);
+                break;
+            case ElevatorButtonType.SendElevatorUp:
+                MoveUp(elevator.Value);
+                break;
+            case ElevatorButtonType.SendElevatorDown:
+                MoveDown(elevator.Value);
+                break;
+        }
+    }
+
+    private Entity<ComplexElevatorComponent>? FindElevator(string elevatorId)
+    {
+        var query = EntityQueryEnumerator<ComplexElevatorComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (comp.ElevatorId == elevatorId)
+                return (uid, comp);
+        }
+        return null;
+    }
+
+    public void MoveToFloor(Entity<ComplexElevatorComponent> ent, string targetFloor)
+    {
+        if (ent.Comp.IsMoving || !ent.Comp.Floors.Contains(targetFloor))
+            return;
+
+        ent.Comp.IsMoving = true;
+        TryMoveElevator(ent, targetFloor);
+    }
+
+    public void MoveUp(Entity<ComplexElevatorComponent> ent)
+    {
+        if (ent.Comp.IsMoving || ent.Comp.Floors.Count == 0)
+            return;
+
+        var currentIndex = ent.Comp.Floors.IndexOf(ent.Comp.CurrentFloor);
+        if (currentIndex == -1 || currentIndex <= 0)
+            return;
+
+        var targetIndex = currentIndex - 1;
+        var targetFloor = ent.Comp.Floors[targetIndex];
+
+        MoveToFloor(ent, targetFloor);
+    }
+
+    public void MoveDown(Entity<ComplexElevatorComponent> ent)
+    {
+        if (ent.Comp.IsMoving || ent.Comp.Floors.Count == 0)
+            return;
+
+        var currentIndex = ent.Comp.Floors.IndexOf(ent.Comp.CurrentFloor);
+        if (currentIndex == -1 || currentIndex >= ent.Comp.Floors.Count - 1)
+            return;
+
+        var targetIndex = currentIndex + 1;
+        var targetFloor = ent.Comp.Floors[targetIndex];
+
+        MoveToFloor(ent, targetFloor);
     }
 
 }

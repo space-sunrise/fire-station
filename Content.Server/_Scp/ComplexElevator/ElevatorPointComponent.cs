@@ -1,3 +1,5 @@
+using Robust.Shared.GameStates;
+
 namespace Content.Server._Scp.ComplexElevator;
 
 [RegisterComponent]

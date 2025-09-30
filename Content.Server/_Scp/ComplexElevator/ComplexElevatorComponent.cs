@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace Content.Server._Scp.ComplexElevator;
 
 [RegisterComponent]
@@ -10,13 +12,10 @@ public sealed partial class ComplexElevatorComponent : Component
     public string CurrentFloor = "IntermediateFloor";
 
     [DataField]
-    public string FirstPointId = "ComplexFloor";
+    public List<string> Floors = new();
 
     [DataField]
     public string IntermediateFloorId = "IntermediateFloor";
-
-    [DataField]
-    public string SecondPointId = "SurfaceFloor";
 
     [DataField]
     public TimeSpan SendDelay = TimeSpan.FromSeconds(1);
