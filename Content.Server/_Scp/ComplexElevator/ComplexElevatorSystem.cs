@@ -80,17 +80,20 @@ public sealed class ComplexElevatorSystem : EntitySystem
             return;
         }
 
-        TryMoveElevator(ent.Owner, ent.Comp, targetFloor);
+        TryMoveElevator(ent, targetFloor);
     }
 
-    private void TryMoveElevator(EntityUid uid, ComplexElevatorComponent component, string targetFloor)
+    private void TryMoveElevator(Entity<ComplexElevatorComponent> ent, string targetFloor)
     {
-        Timer.Spawn(component.SendDelay, () =>
+        Timer.Spawn(ent.Comp.SendDelay, () =>
         {
-            if (!Exists(uid))
+            if (!Exists(ent.Owner))
                 return;
 
-            StartMovement(uid, comp, targetFloor);
+            if (!TryComp(ent.Owner, out ComplexElevatorComponent? comp))
+                return;
+
+            StartMovement(ent.Owner, comp, targetFloor);
         });
     }
 
