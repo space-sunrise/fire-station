@@ -25,6 +25,4 @@ public sealed partial class ComplexElevatorComponent : Component
     public TimeSpan IntermediateDelay = TimeSpan.FromSeconds(5);
 
     public bool IsMoving = false;
-
-    public HashSet<EntityUid> EntitiesOnElevator = new();
 }

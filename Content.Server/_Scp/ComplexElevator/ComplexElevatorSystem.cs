@@ -5,28 +5,36 @@ using Content.Shared.DeviceLinking.Events;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
-using Robust.Shared.Physics.Events;
 using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.ComplexElevator;
 
 public sealed class ComplexElevatorSystem : EntitySystem
 {
+    private const string ArrivalFirst = "ArrivalFirst";
+    private const string ArrivalSecond = "ArrivalSecond";
+    private const string DepartureFirst = "DepartureFirst";
+    private const string DepartureSecond = "DepartureSecond";
+
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly DeviceLinkSystem _deviceLinkSystem = default!;
 
     public override void Initialize()
     {
+        base.Initialize();
+        
         SubscribeLocalEvent<ComplexElevatorComponent, SignalReceivedEvent>(OnSignalReceived);
-        SubscribeLocalEvent<ComplexElevatorComponent, StartCollideEvent>(OnStartCollide);
-        SubscribeLocalEvent<ComplexElevatorComponent, EndCollideEvent>(OnEndCollide);
         SubscribeLocalEvent<ComplexElevatorComponent, ComponentStartup>(OnComponentStartup);
     }
 
-    private void OnComponentStartup(EntityUid uid, ComplexElevatorComponent component, ComponentStartup args)
+    private void OnComponentStartup(Entity<ComplexElevatorComponent> ent, ref ComponentStartup args)
     {
+        var (uid, component) = ent;
+        if (component.CurrentFloor == component.IntermediateFloorId)
+            return;
+
         var currentFloorExists = false;
         var query = EntityQueryEnumerator<ElevatorPointComponent>();
         while (query.MoveNext(out var pointUid, out var pointComp))
@@ -37,8 +45,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
                 break;
             }
         }
-        if (component.CurrentFloor == component.IntermediateFloorId)
-            return;
 
         if (!currentFloorExists)
             return;
@@ -46,7 +52,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         if (component.CurrentFloor != component.FirstPointId && component.CurrentFloor != component.SecondPointId)
            return;
 
-        var arrivalPort = component.CurrentFloor == component.FirstPointId ? "ArrivalFirst" : "ArrivalSecond";
+        var arrivalPort = component.CurrentFloor == component.FirstPointId ? ArrivalFirst : ArrivalSecond;
         _deviceLinkSystem.SendSignal(uid, arrivalPort, true);
     }
 
@@ -77,6 +83,11 @@ public sealed class ComplexElevatorSystem : EntitySystem
             return;
         }
 
+        TryMoveElevator(uid, component, targetFloor);
+    }
+
+    private void TryMoveElevator(EntityUid uid, ComplexElevatorComponent component, string targetFloor)
+    {
         Timer.Spawn(component.SendDelay, () =>
         {
             if (!Exists(uid))
@@ -87,21 +98,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
             StartMovement(uid, comp, targetFloor);
         });
-    }
-
-    private void OnStartCollide(EntityUid uid, ComplexElevatorComponent component, ref StartCollideEvent args)
-    {
-        var other = args.OtherEntity;
-        if (!component.EntitiesOnElevator.Contains(other))
-        {
-            component.EntitiesOnElevator.Add(other);
-        }
-    }
-
-    private void OnEndCollide(EntityUid uid, ComplexElevatorComponent component, ref EndCollideEvent args)
-    {
-        var other = args.OtherEntity;
-        component.EntitiesOnElevator.Remove(other);
     }
 
     private void StartMovement(EntityUid uid, ComplexElevatorComponent component, string targetFloor)
@@ -127,7 +123,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
             return;
         }
 
-        var departurePort = component.CurrentFloor == component.FirstPointId ? "DepartureFirst" : "DepartureSecond";
+        var departurePort = component.CurrentFloor == component.FirstPointId ? DepartureFirst : DepartureSecond;
         _deviceLinkSystem.SendSignal(uid, departurePort, true);
 
         component.CurrentFloor = component.IntermediateFloorId;
@@ -144,7 +140,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
             comp.CurrentFloor = targetFloor;
             TeleportToFloor(uid, targetFloor);
 
-            var arrivalPort = targetFloor == comp.FirstPointId ? "ArrivalFirst" : "ArrivalSecond";
+            var arrivalPort = targetFloor == comp.FirstPointId ? ArrivalFirst : ArrivalSecond;
             _deviceLinkSystem.SendSignal(uid, arrivalPort, true);
 
             comp.IsMoving = false;
@@ -153,9 +149,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void TeleportToFloor(EntityUid uid, string floorId)
     {
-        if (!TryComp<ComplexElevatorComponent>(uid, out var component))
-            return;
-
         var query = EntityQueryEnumerator<ElevatorPointComponent>();
         while (query.MoveNext(out var pointUid, out var pointComp))
         {
@@ -164,9 +157,16 @@ public sealed class ComplexElevatorSystem : EntitySystem
                 var pointTransform = Transform(pointUid);
                 var elevatorTransform = Transform(uid);
 
+                var elevatorBounds = elevatorTransform.LocalPosition - new Vector2(1.4f, 1.4f);
+                var elevatorBoundsEnd = elevatorTransform.LocalPosition + new Vector2(1.4f, 1.4f);
+                var intersectingEntities = _lookup.GetEntitiesIntersecting(elevatorTransform.MapID, new Box2(elevatorBounds, elevatorBoundsEnd), LookupFlags.Dynamic | LookupFlags.Sensors);
+
                 var entitiesToTeleport = new List<(EntityUid, Vector2)>();
-                foreach (EntityUid entUid in component.EntitiesOnElevator)
+                foreach (var entUid in intersectingEntities)
                 {
+                    if (entUid == uid)
+                        continue;
+
                     if (!TryComp<TransformComponent>(entUid, out var entTransform))
                         continue;
 
