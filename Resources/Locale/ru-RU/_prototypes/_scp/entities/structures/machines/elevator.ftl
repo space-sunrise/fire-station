@@ -25,3 +25,5 @@ ent-ElevatorButtonUp = { ent-ElevatorButton }
 ent-ElevatorButtonDown = { ent-ElevatorButton }
     .desc = Кнопка для отправления лифта вниз.
     .suffix = Вниз
+ent-ElevatorBlastDoor = Гермозатвор лифта
+    .desc = Закрывает проход в лифт если его нет.

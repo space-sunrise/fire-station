@@ -4,6 +4,7 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
 using Robust.Shared.Timing;
+using Content.Server.Doors.Systems;
 
 namespace Content.Server._Scp.ComplexElevator;
 
@@ -12,6 +13,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly DoorSystem _doorSystem = default!;
 
     public override void Initialize()
     {
@@ -40,7 +42,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
         if (!ent.Comp.Floors.Contains(ent.Comp.CurrentFloor))
             return;
     }
-
 
     private void TryMoveElevator(Entity<ComplexElevatorComponent> ent, string targetFloor)
     {
@@ -76,6 +77,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
             return;
         }
 
+        CloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor);
         ent.Comp.CurrentFloor = ent.Comp.IntermediateFloorId;
         TeleportToFloor(ent.Owner, ent.Comp.IntermediateFloorId);
 
@@ -88,6 +90,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
             ent.Comp.CurrentFloor = targetFloor;
             TeleportToFloor(ent.Owner, targetFloor);
+            OpenDoorsForFloor(ent.Comp.ElevatorId, targetFloor);
 
             ent.Comp.IsMoving = false;
         });
@@ -208,6 +211,30 @@ public sealed class ComplexElevatorSystem : EntitySystem
             return null;
 
         return ent.Comp.Floors[currentIndex + 1];
+    }
+
+    private void OpenDoorsForFloor(string elevatorId, string floor)
+    {
+        var query = EntityQueryEnumerator<ElevatorDoorComponent>();
+        while (query.MoveNext(out var doorUid, out var doorComp))
+        {
+            if (doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)
+            {
+                _doorSystem.TryOpen(doorUid);
+            }
+        }
+    }
+
+    private void CloseDoorsForFloor(string elevatorId, string floor)
+    {
+        var query = EntityQueryEnumerator<ElevatorDoorComponent>();
+        while (query.MoveNext(out var doorUid, out var doorComp))
+        {
+            if (doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)
+            {
+                _doorSystem.TryClose(doorUid);
+            }
+        }
     }
 
 }

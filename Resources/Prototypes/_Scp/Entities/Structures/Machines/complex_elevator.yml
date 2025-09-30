@@ -171,3 +171,13 @@
   components:
   - type: ElevatorButton
     buttonType: SendElevatorDown
+
+- type: entity
+  parent: ScpBlastDoor
+  id: ElevatorBlastDoor
+  name: Elevator door
+  description: Door that opens when the elevator arrives at the floor.
+  components:
+  - type: ElevatorDoor
+    elevatorId: "SCP_Elevator_1"
+    floor: ""
