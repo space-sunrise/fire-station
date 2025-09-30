@@ -14,8 +14,8 @@ public sealed class ComplexElevatorSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly DeviceLinkSystem _deviceLinkSystem = default!;
-
+    [Dependency] private readonly DeviceLinkSystem _deviceLink = default!;
+    
     private const string ArrivalFirst = "ArrivalFirst";
     private const string ArrivalSecond = "ArrivalSecond";
     private const string DepartureFirst = "DepartureFirst";
@@ -52,7 +52,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
            return;
 
         var arrivalPort = ent.Comp.CurrentFloor == ent.Comp.FirstPointId ? ArrivalFirst : ArrivalSecond;
-        _deviceLinkSystem.SendSignal(ent.Owner, arrivalPort, true);
+        _deviceLink.SendSignal(ent.Owner, arrivalPort, true);
     }
 
     private void OnSignalReceived(Entity<ComplexElevatorComponent> ent, ref SignalReceivedEvent args)
@@ -90,9 +90,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
             if (!Exists(uid))
                 return;
 
-            if (!TryComp<ComplexElevatorComponent>(uid, out var comp))
-                return;
-
             StartMovement(uid, comp, targetFloor);
         });
     }
@@ -121,7 +118,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         }
 
         var departurePort = component.CurrentFloor == component.FirstPointId ? DepartureFirst : DepartureSecond;
-        _deviceLinkSystem.SendSignal(uid, departurePort, true);
+        _deviceLink.SendSignal(uid, departurePort, true);
 
         component.CurrentFloor = component.IntermediateFloorId;
         TeleportToFloor(uid, component.IntermediateFloorId);
@@ -138,7 +135,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
             TeleportToFloor(uid, targetFloor);
 
             var arrivalPort = targetFloor == comp.FirstPointId ? ArrivalFirst : ArrivalSecond;
-            _deviceLinkSystem.SendSignal(uid, arrivalPort, true);
+            _deviceLink.SendSignal(uid, arrivalPort, true);
 
             comp.IsMoving = false;
         });
