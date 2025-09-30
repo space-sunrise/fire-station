@@ -50,8 +50,9 @@ public sealed class ComplexElevatorSystem : EntitySystem
         _deviceLinkSystem.SendSignal(uid, arrivalPort, true);
     }
 
-    private void OnSignalReceived(EntityUid uid, ComplexElevatorComponent component, SignalReceivedEvent args)
+    private void OnSignalReceived(Entity<ComplexElevatorComponent> ent, ref SignalReceivedEvent args)
     {
+        var (uid, component) = ent;
         if (component.IsMoving)
             return;
 
@@ -150,8 +151,11 @@ public sealed class ComplexElevatorSystem : EntitySystem
         });
     }
 
-    private void TeleportToFloor(Entity<ComplexElevatorComponent> ent, string floorId)
+    private void TeleportToFloor(EntityUid uid, string floorId)
     {
+        if (!TryComp<ComplexElevatorComponent>(uid, out var component))
+            return;
+
         var query = EntityQueryEnumerator<ElevatorPointComponent>();
         while (query.MoveNext(out var pointUid, out var pointComp))
         {
@@ -161,7 +165,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
                 var elevatorTransform = Transform(uid);
 
                 var entitiesToTeleport = new List<(EntityUid, Vector2)>();
-                foreach (var entUid in component.EntitiesOnElevator)
+                foreach (EntityUid entUid in component.EntitiesOnElevator)
                 {
                     if (!TryComp<TransformComponent>(entUid, out var entTransform))
                         continue;

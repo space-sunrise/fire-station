@@ -4,7 +4,7 @@ namespace Content.Server._Scp.ComplexElevator;
 public sealed partial class ComplexElevatorComponent : Component
 {
     [DataField]
-    public string ElevatorId = "";
+    public string ElevatorId = string.Empty;
 
     [DataField]
     public string CurrentFloor = "IntermediateFloor";
@@ -24,7 +24,6 @@ public sealed partial class ComplexElevatorComponent : Component
     [DataField]
     public TimeSpan IntermediateDelay = TimeSpan.FromSeconds(5);
 
-    [DataField]
     public bool IsMoving = false;
 
     public HashSet<EntityUid> EntitiesOnElevator = new();
