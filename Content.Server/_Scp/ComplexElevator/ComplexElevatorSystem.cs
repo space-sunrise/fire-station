@@ -11,15 +11,15 @@ namespace Content.Server._Scp.ComplexElevator;
 
 public sealed class ComplexElevatorSystem : EntitySystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly DeviceLinkSystem _deviceLink = default!;
+    
     private const string ArrivalFirst = "ArrivalFirst";
     private const string ArrivalSecond = "ArrivalSecond";
     private const string DepartureFirst = "DepartureFirst";
     private const string DepartureSecond = "DepartureSecond";
-
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly EntityLookupSystem _lookup = default!;
-    [Dependency] private readonly DeviceLinkSystem _deviceLinkSystem = default!;
 
     public override void Initialize()
     {
