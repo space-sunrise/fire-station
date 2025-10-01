@@ -445,7 +445,7 @@
     collection: FootstepScpTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemDark
+  itemDrop: ScpFloorTileItemDarkDiagonal
   heatCapacity: 10000
 
 - type: tile
@@ -473,7 +473,7 @@
     collection: FootstepScpTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemDark
+  itemDrop: ScpFloorTileItemDarkHalfMono
   heatCapacity: 10000
 
 - type: tile
@@ -501,7 +501,7 @@
     collection: FootstepScpTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemDark
+  itemDrop: ScpFloorTileItemDarkHalfMonoVertical
   heatCapacity: 10000
 
 - type: tile
@@ -531,7 +531,7 @@
     collection: FootstepScpTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemDark
+  itemDrop: ScpFloorTileItemDarkHerringbone
   heatCapacity: 10000
 
 - type: tile
@@ -561,7 +561,7 @@
     collection: FootstepScpTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemDark
+  itemDrop: ScpFloorTileItemDarkMini
   heatCapacity: 10000
 
 - type: tile
@@ -587,7 +587,7 @@
     collection: FootstepScpTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemDark
+  itemDrop: ScpFloorTileItemDarkMono
   heatCapacity: 10000
 
 - type: tile
@@ -607,7 +607,7 @@
     collection: FootstepScpTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemDark
+  itemDrop: ScpFloorTileItemDarkoffset
   heatCapacity: 10000
 
 - type: tile
@@ -637,7 +637,7 @@
     collection: FootstepScpTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemDark
+  itemDrop: ScpFloorTileItemDarkPavement
   heatCapacity: 10000
 
 - type: tile
@@ -667,7 +667,7 @@
     collection: FootstepScpTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemDark
+  itemDrop: ScpFloorTileItemDarkPavementVertical
   heatCapacity: 10000
 
 - type: tile
@@ -727,7 +727,7 @@
     collection: FootstepScpSteel
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemSteel
+  itemDrop: ScpFloorTileItemSteelDiagonal
   heatCapacity: 10000
 
 - type: tile
@@ -755,7 +755,7 @@
     collection: FootstepScpSteel
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemSteel
+  itemDrop: ScpFloorTileItemSteelHalfMono
   heatCapacity: 10000
 
 - type: tile
@@ -783,7 +783,7 @@
     collection: FootstepScpSteel
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemSteel
+  itemDrop: ScpFloorTileItemSteelHalfMonoVertical
   heatCapacity: 10000
 
 - type: tile
@@ -813,7 +813,7 @@
     collection: FootstepScpSteel
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemSteel
+  itemDrop: ScpFloorTileItemSteelHerringbone
   heatCapacity: 10000
 
 - type: tile
@@ -843,7 +843,7 @@
     collection: FootstepScpSteel
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemSteel
+  itemDrop: ScpFloorTileItemSteelMini
   heatCapacity: 10000
 
 - type: tile
@@ -869,7 +869,7 @@
     collection: FootstepScpSteel
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemSteel
+  itemDrop: ScpFloorTileItemSteelMono
   heatCapacity: 10000
 
 - type: tile
@@ -889,7 +889,7 @@
     collection: FootstepScpSteel
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemSteel
+  itemDrop: ScpFloorTileItemSteeloffset
   heatCapacity: 10000
 
 - type: tile
@@ -919,7 +919,7 @@
     collection: FootstepScpSteel
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemSteel
+  itemDrop: ScpFloorTileItemSteelPavement
   heatCapacity: 10000
 
 - type: tile
@@ -949,7 +949,7 @@
     collection: FootstepScpSteel
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemSteel
+  itemDrop: ScpFloorTileItemSteelPavementVertical
   heatCapacity: 10000
 
 - type: tile
@@ -1009,7 +1009,7 @@
     collection: FootstepTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemWhite
+  itemDrop: ScpFloorTileItemWhiteDiagonal
   heatCapacity: 10000
 
 - type: tile
@@ -1037,7 +1037,7 @@
     collection: FootstepTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemWhite
+  itemDrop: ScpFloorTileItemWhiteHalfMono
   heatCapacity: 10000
 
 - type: tile
@@ -1065,7 +1065,7 @@
     collection: FootstepTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemWhite
+  itemDrop: ScpFloorTileItemWhiteHalfMonoVertical
   heatCapacity: 10000
 
 - type: tile
@@ -1095,7 +1095,7 @@
     collection: FootstepTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemWhite
+  itemDrop: ScpFloorTileItemWhiteHerringbone
   heatCapacity: 10000
 
 - type: tile
@@ -1125,7 +1125,7 @@
     collection: FootstepTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemWhite
+  itemDrop: ScpFloorTileItemWhiteMini
   heatCapacity: 10000
 
 - type: tile
@@ -1151,7 +1151,7 @@
     collection: FootstepTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemWhite
+  itemDrop: ScpFloorTileItemWhiteMono
   heatCapacity: 10000
 
 - type: tile
@@ -1171,7 +1171,7 @@
     collection: FootstepTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemWhite
+  itemDrop: ScpFloorTileItemWhiteoffset
   heatCapacity: 10000
 
 - type: tile
@@ -1201,7 +1201,7 @@
     collection: FootstepTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemWhite
+  itemDrop: ScpFloorTileItemWhitePavement
   heatCapacity: 10000
 
 - type: tile
@@ -1231,7 +1231,7 @@
     collection: FootstepTile
     params:
       volume: -7
-  itemDrop: ScpFloorTileItemWhite
+  itemDrop: ScpFloorTileItemWhitePavementVertical
   heatCapacity: 10000
 
 - type: tile
