@@ -12,10 +12,6 @@ public sealed partial class ElevatorButtonComponent : Component
     [DataField]
     public string Floor = string.Empty;
 
-    [DataField]
-    public TimeSpan BaseDelay = TimeSpan.FromSeconds(1);
-
-    public TimeSpan? LastUsed;
 }
 
 public enum ElevatorButtonType

@@ -151,6 +151,8 @@
   suffix: "Call button"
   components:
   - type: InteractionOutline
+  - type: UseDelay
+    delay: 7
   - type: ElevatorButton
     elevatorId: "SCP_Elevator_1"
     buttonType: CallButton

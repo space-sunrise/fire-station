@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Shared.Timing;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
@@ -18,6 +19,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly DoorSystem _doorSystem = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
+    [Dependency] private readonly UseDelaySystem _useDelay = default!;
 
     public override void Initialize()
     {
@@ -25,6 +27,20 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
         SubscribeLocalEvent<ElevatorButtonComponent, InteractHandEvent>(OnButtonInteract);
     }
+
+    private TimeSpan GetButtonUseDelay(Entity<ComplexElevatorComponent> elevator, ElevatorButtonComponent button)
+    {
+        return elevator.Comp.SendDelay + elevator.Comp.IntermediateDelay + TimeSpan.FromSeconds(1);
+    }
+
+    private void SetButtonDelay(EntityUid button, Entity<ComplexElevatorComponent> elevator)
+    {
+        if (TryComp<UseDelayComponent>(button, out var useDelay))
+        {
+            _useDelay.SetLength((button, useDelay), GetButtonUseDelay(elevator, Comp<ElevatorButtonComponent>(button)));
+        }
+    }
+
     private void TryMoveElevator(Entity<ComplexElevatorComponent> ent, string targetFloor)
     {
         Timer.Spawn(ent.Comp.SendDelay, () =>
@@ -123,28 +139,23 @@ public sealed class ComplexElevatorSystem : EntitySystem
     {
         if (TryFindElevator(ent.Comp.ElevatorId, out var elevator))
         {
-            // Prevent interaction while elevator is moving
             if (elevator.Value.Comp.IsMoving)
                 return;
 
-            // Check use delay
-            var delay = elevator.Value.Comp.SendDelay + elevator.Value.Comp.IntermediateDelay + ent.Comp.BaseDelay;
-            if (ent.Comp.LastUsed.HasValue && _timing.CurTime < ent.Comp.LastUsed.Value + delay)
-                return;
 
             switch (ent.Comp.ButtonType)
             {
                 case ElevatorButtonType.CallButton:
                     MoveToFloor(elevator.Value, ent.Comp.Floor);
-                    ent.Comp.LastUsed = _timing.CurTime;
+                    SetButtonDelay(ent, elevator.Value);
                     break;
                 case ElevatorButtonType.SendElevatorUp:
                     MoveUp(elevator.Value);
-                    ent.Comp.LastUsed = _timing.CurTime;
+                    SetButtonDelay(ent, elevator.Value);
                     break;
                 case ElevatorButtonType.SendElevatorDown:
                     MoveDown(elevator.Value);
-                    ent.Comp.LastUsed = _timing.CurTime;
+                    SetButtonDelay(ent, elevator.Value);
                     break;
             }
         }

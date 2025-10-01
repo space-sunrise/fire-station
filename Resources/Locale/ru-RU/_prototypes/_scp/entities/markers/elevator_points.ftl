@@ -1,8 +1,12 @@
 ent-ElevatorPoint = Точка лифта
+    .desc = Точка, куда телепортируется лифт.
     .suffix = Пустая
 ent-ElevatorPointComplex = { ent-ElevatorPoint }
+    .desc = { ent-ElevatorPoint.desc }
     .suffix = Комплекс
 ent-ElevatorPointIntermediate = { ent-ElevatorPoint }
+    .desc = { ent-ElevatorPoint.desc }
     .suffix = Промежуточный
 ent-ElevatorPointSurface = { ent-ElevatorPoint }
+    .desc = { ent-ElevatorPoint.desc }
     .suffix = Поверхность
