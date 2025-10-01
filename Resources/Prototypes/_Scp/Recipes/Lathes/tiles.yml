@@ -1,3 +1,12 @@
+# Base prototypes
+
+- type: latheRecipe
+  abstract: true
+  parent: BaseSteelTileRecipe
+  id: BaseDepColorsTileRecipe
+  categories:
+  - DepColors
+
 ## Recipes
 # Steel tiles (Стальные)
 # - type: latheRecipe
@@ -16,6 +25,12 @@
 #   parent: BaseWhiteTileRecipe
 #   id: FloorTileItemWhite
 #   result: FloorTileItemWhite
+
+# Departament colors steel tiles (Стальная плитка с цветами департаментов)
+# - type: latheRecipe
+#   parent: BaseDepColorsTileRecipe
+#   id: 123123
+#   result: 123123
 
 # Other steel (Техи)
 # - type: latheRecipe
