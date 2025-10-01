@@ -15,8 +15,8 @@
   - type: Stack
     stackType: FloorTileSteel
   - type: Construction
-    graph: TileSteel
-    node: steeltile
+    graph: ScpTileSteel
+    node: scpsteeltile
 
 - type: entity
   name: dark tile
@@ -30,6 +30,9 @@
     outputs:
     - ScpPlating
     - ScpFloorDark
+  - type: Construction
+    graph: ScpTileDark
+    node: scpdarktile
 
 - type: entity
   name: white tile
@@ -43,6 +46,9 @@
     outputs:
       - ScpPlating
       - ScpFloorWhite
+  - type: Construction
+    graph: ScpTileWhite
+    node: scpwhitetile
 
 - type: entity
   name: blue tile
@@ -472,3 +478,6 @@
     outputs:
       - ScpPlating
       - ScpFloorConcreteMono
+  - type: Construction
+    graph: ScpTileConcrete
+    node: scpconcretetile

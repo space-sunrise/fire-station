@@ -1477,6 +1477,7 @@
   itemDrop: ScpFloorTileItemConcrete
   heatCapacity: 10000
 
+- type: tile
   id: ScpFloorConcreteMono
   name: scp-tiles-concrete-mono
   sprite: /Textures/_Scp/Tiles/Concrete/concrete_mono.png

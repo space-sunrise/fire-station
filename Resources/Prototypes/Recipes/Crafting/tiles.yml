@@ -1,12 +1,12 @@
 # These should be lathe recipes but lathe code sucks so hard rn so they'll be crafted by hand.
 
-- type: construction
-  id: TileSteel
-  graph: TileSteel
-  startNode: start
-  targetNode: steeltile
-  category: construction-category-tiles
-  objectType: Item
+# - type: construction # Fire Edit
+#   id: TileSteel
+#   graph: TileSteel
+#   startNode: start
+#   targetNode: steeltile
+#   category: construction-category-tiles
+#   objectType: Item
 
 - type: construction
   id: TileWood
@@ -32,21 +32,21 @@
   category: construction-category-tiles
   objectType: Item
 
-- type: construction
-  id: TileWhite
-  graph: TileWhite
-  startNode: start
-  targetNode: whitetile
-  category: construction-category-tiles
-  objectType: Item
+# - type: construction # Fire Edit
+#   id: TileWhite
+#   graph: TileWhite
+#   startNode: start
+#   targetNode: whitetile
+#   category: construction-category-tiles
+#   objectType: Item
 
-- type: construction
-  id: TileDark
-  graph: TileDark
-  startNode: start
-  targetNode: darktile
-  category: construction-category-tiles
-  objectType: Item
+# - type: construction # Fire Edit
+#   id: TileDark
+#   graph: TileDark
+#   startNode: start
+#   targetNode: darktile
+#   category: construction-category-tiles
+#   objectType: Item
 
 - type: construction
   id: TileFlesh
