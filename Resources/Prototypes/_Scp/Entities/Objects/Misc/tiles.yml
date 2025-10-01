@@ -10,7 +10,7 @@
     size: Normal
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorSteel
   - type: Stack
     stackType: FloorTileSteel
@@ -28,7 +28,7 @@
     state: dark
   - type: FloorTile
     outputs:
-    - Plating
+    - ScpPlating
     - ScpFloorDark
 
 - type: entity
@@ -41,7 +41,7 @@
     state: white
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorWhite
 
 - type: entity
@@ -54,7 +54,7 @@
     state: blue
   - type: FloorTile
     outputs:
-    - Plating
+    - ScpPlating
     - ScpFloorBlue
 
 - type: entity
@@ -67,7 +67,7 @@
     state: green
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorGreen
 
 - type: entity
@@ -80,7 +80,7 @@
     state: steel
   - type: FloorTile
     outputs:
-    - Plating
+    - ScpPlating
     - ScpFloorSteelMini
 
 - type: entity
@@ -93,7 +93,7 @@
     state: dark
   - type: FloorTile
     outputs:
-    - Plating
+    - ScpPlating
     - ScpFloorDarkMini
 
 - type: entity
@@ -106,7 +106,7 @@
     state: white
   - type: FloorTile
     outputs:
-    - Plating
+    - ScpPlating
     - ScpFloorWhiteMini
 
 - type: entity
@@ -119,7 +119,7 @@
     state: steel
   - type: FloorTile
     outputs:
-    - Plating
+    - ScpPlating
     - ScpFloorSteelMono
 
 - type: entity
@@ -132,7 +132,7 @@
     state: white
   - type: FloorTile
     outputs:
-    - Plating
+    - ScpPlating
     - ScpFloorWhiteMono
 
 - type: entity
@@ -145,7 +145,7 @@
     state: dark
   - type: FloorTile
     outputs:
-    - Plating
+    - ScpPlating
     - ScpFloorDarkMono
 
 - type: entity
@@ -158,7 +158,7 @@
     state: checker_white
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorCheckerWhite
 
 - type: entity
@@ -171,7 +171,7 @@
     state: checker_steel
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorCheckerSteel
 
 - type: entity
@@ -184,7 +184,7 @@
     state: checker_dark
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorCheckerDark
 
 - type: entity
@@ -197,7 +197,7 @@
     state: department_atmos
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorDepartmentAtmos
 
 - type: entity
@@ -210,7 +210,7 @@
     state: department_cargo
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorDepartmentCargo
 
 - type: entity
@@ -223,7 +223,7 @@
     state: department_com
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorDepartmentCom
 
 - type: entity
@@ -236,7 +236,7 @@
     state: department_eng
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorDepartmentEng
 
 - type: entity
@@ -249,7 +249,7 @@
     state: department_med
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorDepartmentMed
 
 - type: entity
@@ -262,7 +262,7 @@
     state: department_rnd
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorDepartmentRnd
 
 - type: entity
@@ -275,7 +275,7 @@
     state: department_sec
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorDepartmentSec
 
 - type: entity
@@ -288,5 +288,161 @@
     state: department_ser
   - type: FloorTile
     outputs:
-      - Plating
+      - ScpPlating
       - ScpFloorDepartmentSer
+
+- type: entity
+  name: steel grille
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelGrille1
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel_1
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorSteelGrille1
+
+- type: entity
+  name: steel grille
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelGrille2
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel_2
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorSteelGrille2
+
+- type: entity
+  name: steel grille
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelGrille3
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel_3
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorSteelGrille3
+
+- type: entity
+  name: steel grille
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelGrille4
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel_4
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorSteelGrille4
+
+- type: entity
+  name: steel grille mono
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelGrilleMono1
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel_1 # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorSteelGrilleMono1
+
+- type: entity
+  name: steel grille mono
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelGrilleMono2
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel_2 # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorSteelGrilleMono2
+
+- type: entity
+  name: steel grille mono
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelGrilleMono3
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel_3 # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorSteelGrilleMono3
+
+- type: entity
+  name: steel grille mono
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelGrilleMono4
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel_4 # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorSteelGrilleMono4
+
+- type: entity
+  name: steel grille offset
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelGrilleOffset1
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel_1 # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorSteelGrilleOffset1
+
+- type: entity
+  name: steel grille offset
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelGrilleOffset2
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel_2 # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorSteelGrilleOffset2
+
+- type: entity
+  name: steel grille offset
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelGrilleOffset3
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel_3 # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorSteelGrilleOffset3
+
+- type: entity
+  name: steel grille offset
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelGrilleOffset4
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel_4 # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorSteelGrilleOffset4

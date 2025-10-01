@@ -1251,3 +1251,207 @@
       volume: -7
   heatCapacity: 10000
   indestructible: true
+
+- type: tile
+  id: ScpFloorSteelGrille1
+  name: scp-tiles-steel-grille-1
+  sprite: /Textures/_Scp/Tiles/Steel/steel_1.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemSteelGrille1
+  heatCapacity: 10000
+
+- type: tile
+  id: ScpFloorSteelGrille2
+  name: scp-tiles-steel-grille-2
+  sprite: /Textures/_Scp/Tiles/Steel/steel_2.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemSteelGrille2
+  heatCapacity: 10000
+
+- type: tile
+  id: ScpFloorSteelGrille3
+  name: scp-tiles-steel-grille-3
+  sprite: /Textures/_Scp/Tiles/Steel/steel_3.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemSteelGrille3
+  heatCapacity: 10000
+
+- type: tile
+  id: ScpFloorSteelGrille4
+  name: scp-tiles-steel-grille-4
+  sprite: /Textures/_Scp/Tiles/Steel/steel_4.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemSteelGrille4
+  heatCapacity: 10000
+
+- type: tile
+  id: ScpFloorSteelGrilleMono1
+  name: scp-tiles-steel-grille-mono-1
+  sprite: /Textures/_Scp/Tiles/Steel/steel_mono_1.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemSteelGrilleMono1
+  heatCapacity: 10000
+
+- type: tile
+  id: ScpFloorSteelGrilleMono2
+  name: scp-tiles-steel-grille-mono-2
+  sprite: /Textures/_Scp/Tiles/Steel/steel_mono_2.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemSteelGrilleMono2
+  heatCapacity: 10000
+
+- type: tile
+  id: ScpFloorSteelGrilleMono3
+  name: scp-tiles-steel-grille-mono-3
+  sprite: /Textures/_Scp/Tiles/Steel/steel_mono_3.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemSteelGrilleMono3
+  heatCapacity: 10000
+
+- type: tile
+  id: ScpFloorSteelGrilleMono4
+  name: scp-tiles-steel-grille-mono-4
+  sprite: /Textures/_Scp/Tiles/Steel/steel_mono_4.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemSteelGrilleMono4
+  heatCapacity: 10000
+
+- type: tile
+  id: ScpFloorSteelGrilleOffset1
+  name: scp-tiles-steel-grille-offset-1
+  sprite: /Textures/_Scp/Tiles/Steel/steel_offset_1.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemSteelGrilleOffset1
+  heatCapacity: 10000
+
+- type: tile
+  id: ScpFloorSteelGrilleOffset2
+  name: scp-tiles-steel-grille-offset-2
+  sprite: /Textures/_Scp/Tiles/Steel/steel_offset_mono_2.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemSteelGrilleOffset2
+  heatCapacity: 10000
+
+- type: tile
+  id: ScpFloorSteelGrilleOffset3
+  name: scp-tiles-steel-grille-offset-3
+  sprite: /Textures/_Scp/Tiles/Steel/steel_offset_mono_3.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemSteelGrilleOffset3
+  heatCapacity: 10000
+
+- type: tile
+  id: ScpFloorSteelGrilleOffset4
+  name: scp-tiles-steel-grille-offset-4
+  sprite: /Textures/_Scp/Tiles/Steel/steel_offset_mono_4.png
+  variants: 1
+  placementVariants:
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpSteel
+    params:
+      volume: -7
+  itemDrop: ScpFloorTileItemSteelGrilleOffset4
+  heatCapacity: 10000
