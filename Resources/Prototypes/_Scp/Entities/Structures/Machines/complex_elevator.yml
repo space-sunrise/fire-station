@@ -1,0 +1,240 @@
+- type: entity
+  parent: BaseMachine
+  id: ComplexElevator
+  name: Elevator
+  suffix: "Elevator of the complex"
+  description: It goes up and down. The main thing is not to jump when it goes down.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/elevator.rsi
+    state: steel
+    drawdepth: FloorTiles
+  - type: Icon
+    sprite: _Scp/Structures/elevator.rsi
+    state: steel
+  - type: Transform
+    anchored: true
+  - type: Clickable
+  - type: Physics
+    bodyType: Static
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1.4,-1.4,1.4,1.4"
+        density: 0
+        friction: 0
+        hard: false
+        mask: []
+        layer:
+        - MidImpassable
+  - type: ComplexElevator
+    elevatorId: "SCP_Elevator_1"
+    currentFloor: "Complex"
+    intermediateFloorId: "IntermediateFloor"
+    floors:
+      - Surface
+      - Complex
+  - type: ContainerContainer
+    containers:
+      ElevatorContents: !type:Container
+  - type: ItemSlots
+
+- type: entity
+  parent: ComplexElevator
+  id: Elevator
+  name: Elevator
+  suffix: "Backup elevator"
+  description: It goes up and down. The main thing is not to jump when it goes down.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: ComplexElevator
+    elevatorId: "SCP_Elevator_2"
+    currentFloor: "ComplexFloor2"
+    intermediateFloorId: "IntermediateFloor2"
+    floors:
+      - SurfaceFloor2
+      - ComplexFloor2
+
+- type: entity
+  parent: ComplexElevator
+  id: Elevator_white
+  name: Elevator
+  suffix: Elevator of the complex, White
+  description: It goes up and down. The main thing is not to jump when it goes down.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/elevator.rsi
+    state: white
+    drawdepth: FloorTiles
+  - type: Icon
+    sprite: _Scp/Structures/elevator.rsi
+    state: white
+  - type: ComplexElevator
+    elevatorId: "SCP_Elevator_3"
+    currentFloor: "Complex"
+    intermediateFloorId: "IntermediateFloor"
+    floors:
+      - Surface
+      - Complex
+
+- type: entity
+  parent: Elevator_white
+  id: Elevator_white_backup
+  name: Elevator
+  suffix: Backup elevator, White
+  description: It goes up and down. The main thing is not to jump when it goes down.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: ComplexElevator
+    elevatorId: "SCP_Elevator_4"
+    currentFloor: "ComplexFloor2"
+    intermediateFloorId: "IntermediateFloor2"
+    floors:
+      - SurfaceFloor2
+      - ComplexFloor2
+
+- type: entity
+  parent: ComplexElevator
+  id: Elevator_catwalk
+  name: Elevator
+  suffix: Elevator of the complex, Catwalk
+  description: It goes up and down. The main thing is not to jump when it goes down.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/elevator.rsi
+    state: catwalk
+    drawdepth: FloorTiles
+  - type: Icon
+    sprite: _Scp/Structures/elevator.rsi
+    state: catwalk
+  - type: ComplexElevator
+    elevatorId: "SCP_Elevator_5"
+    currentFloor: "Complex"
+    intermediateFloorId: "IntermediateFloor"
+    floors:
+      - Surface
+      - Complex
+
+- type: entity
+  parent: Elevator_white
+  id: Elevator_catwalk_backup
+  name: Elevator
+  suffix: Backup elevator, Catwalk
+  description: It goes up and down. The main thing is not to jump when it goes down.
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: ComplexElevator
+    elevatorId: "SCP_Elevator_6"
+    currentFloor: "ComplexFloor3"
+    intermediateFloorId: "IntermediateFloor3"
+    floors:
+      - SurfaceFloor3
+      - ComplexFloor3
+
+- type: entity
+  parent: SignalButton
+  id: ElevatorButton
+  name: Elevator button
+  description: Button for controlling the elevator.
+  suffix: "Call button"
+  components:
+  - type: InteractionOutline
+  - type: UseDelay
+    delay: 7
+  - type: ElevatorButton
+    elevatorId: "SCP_Elevator_1"
+    buttonType: CallButton
+    floor: "Complex"
+
+- type: entity
+  parent: ElevatorButton
+  id: ElevatorButtonUp
+  name: Elevator up button
+  components:
+  - type: ElevatorButton
+    buttonType: SendElevatorUp
+
+- type: entity
+  parent: ElevatorButton
+  id: ElevatorButtonDown
+  name: Elevator down button
+  components:
+  - type: ElevatorButton
+    buttonType: SendElevatorDown
+
+- type: entity
+  parent: ScpBlastDoor
+  id: ElevatorBlastDoor
+  name: Elevator door
+  description: Door that opens when the elevator arrives at the floor.
+  components:
+  - type: ElevatorDoor
+    elevatorId: ""
+    floor: ""
+
+- type: entity
+  parent: ScpBlastDoorOpen
+  id: ElevatorBlastDoorOpen
+  name: Elevator door
+  description: Door that opens when the elevator arrives at the floor.
+  suffix: Open
+  components:
+  - type: ElevatorDoor
+    elevatorId: ""
+    floor: ""
+
+- type: entity
+  parent: ElevatorBlastDoor
+  id: ElevatorBlastDoor_Complex
+  name: Elevator door
+  description: Door that opens when the elevator arrives at the floor.
+  suffix: Complex floor
+  components:
+  - type: ElevatorDoor
+    elevatorId: "SCP_Elevator_1"
+    floor: "Complex"
+
+- type: entity
+  parent: ElevatorBlastDoorOpen
+  id: ElevatorBlastDoorOpen_Complex
+  name: Elevator door
+  description: Door that opens when the elevator arrives at the floor.
+  suffix: Open, Complex floor
+  components:
+  - type: ElevatorDoor
+    elevatorId: "SCP_Elevator_1"
+    floor: "Complex"
+
+- type: entity
+  parent: ElevatorBlastDoor
+  id: ElevatorBlastDoor_Surface
+  name: Elevator door
+  description: Door that opens when the elevator arrives at the floor.
+  suffix: Surface floor
+  components:
+  - type: ElevatorDoor
+    elevatorId: "SCP_Elevator_1"
+    floor: "Surface"
+
+- type: entity
+  parent: ElevatorBlastDoorOpen
+  id: ElevatorBlastDoorOpen_Surface
+  name: Elevator door
+  description: Door that opens when the elevator arrives at the floor.
+  suffix: Open, Surface floor
+  components:
+  - type: ElevatorDoor
+    elevatorId: "SCP_Elevator_1"
+    floor: "Surface"

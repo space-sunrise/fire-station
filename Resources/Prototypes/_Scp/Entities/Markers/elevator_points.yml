@@ -1,0 +1,42 @@
+- type: entity
+  parent: MarkerBase
+  id: ElevatorPoint
+  name: Elevator point
+  suffix: "Empty"
+  components:
+  - type: ElevatorPoint
+  - type: Sprite
+    layers:
+      - sprite: _Scp/Objects/Markers/environment.rsi
+        state: base-red
+        shader: unshaded
+      - sprite: _Scp/Objects/Markers/environment.rsi
+        shader: unshaded
+        state: portal
+
+- type: entity
+  parent: ElevatorPoint
+  id: ElevatorPointComplex
+  name: Elevator point
+  suffix: "Complex"
+  components:
+  - type: ElevatorPoint
+    floorId: Complex
+
+- type: entity
+  parent: ElevatorPoint
+  id: ElevatorPointIntermediate
+  name: Elevator point
+  suffix: "Intermediate"
+  components:
+  - type: ElevatorPoint
+    floorId: IntermediateFloor
+
+- type: entity
+  parent: ElevatorPoint
+  id: ElevatorPointSurface
+  name: Elevator point
+  suffix: "Surface"
+  components:
+  - type: ElevatorPoint
+    floorId: Surface
