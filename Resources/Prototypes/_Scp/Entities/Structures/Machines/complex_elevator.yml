@@ -179,5 +179,60 @@
   description: Door that opens when the elevator arrives at the floor.
   components:
   - type: ElevatorDoor
-    elevatorId: "SCP_Elevator_1"
+    elevatorId: ""
     floor: ""
+
+- type: entity
+  parent: ScpBlastDoorOpen
+  id: ElevatorBlastDoorOpen
+  name: Elevator door
+  description: Door that opens when the elevator arrives at the floor.
+  suffix: Open
+  components:
+  - type: ElevatorDoor
+    elevatorId: ""
+    floor: ""
+
+- type: entity
+  parent: ElevatorBlastDoor
+  id: ElevatorBlastDoor_Complex
+  name: Elevator door
+  description: Door that opens when the elevator arrives at the floor.
+  suffix: Complext floor
+  components:
+  - type: ElevatorDoor
+    elevatorId: "SCP_Elevator_1"
+    floor: "Complext"
+
+- type: entity
+  parent: ElevatorBlastDoorOpen
+  id: ElevatorBlastDoorOpen_Complex
+  name: Elevator door
+  description: Door that opens when the elevator arrives at the floor.
+  suffix: Open, Complext floor
+  components:
+  - type: ElevatorDoor
+    elevatorId: "SCP_Elevator_1"
+    floor: "Complext"
+
+- type: entity
+  parent: ElevatorBlastDoor
+  id: ElevatorBlastDoor_Surface
+  name: Elevator door
+  description: Door that opens when the elevator arrives at the floor.
+  suffix: Surface floor
+  components:
+  - type: ElevatorDoor
+    elevatorId: "SCP_Elevator_1"
+    floor: "Surface"
+
+- type: entity
+  parent: ElevatorBlastDoorOpen
+  id: ElevatorBlastDoorOpen_Surface
+  name: Elevator door
+  description: Door that opens when the elevator arrives at the floor.
+  suffix: Open, Surface floor
+  components:
+  - type: ElevatorDoor
+    elevatorId: "SCP_Elevator_1"
+    floor: "Surface"
