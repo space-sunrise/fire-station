@@ -147,17 +147,15 @@ public sealed class ComplexElevatorSystem : EntitySystem
             {
                 case ElevatorButtonType.CallButton:
                     MoveToFloor(elevator.Value, ent.Comp.Floor);
-                    SetButtonDelay(ent, elevator.Value);
                     break;
                 case ElevatorButtonType.SendElevatorUp:
                     MoveUp(elevator.Value);
-                    SetButtonDelay(ent, elevator.Value);
                     break;
                 case ElevatorButtonType.SendElevatorDown:
                     MoveDown(elevator.Value);
-                    SetButtonDelay(ent, elevator.Value);
                     break;
             }
+            SetButtonDelay(ent, elevator.Value);
         }
         args.Handled = true;
     }
