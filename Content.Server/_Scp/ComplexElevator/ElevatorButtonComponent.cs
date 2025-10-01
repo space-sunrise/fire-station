@@ -3,7 +3,6 @@ using Robust.Shared.GameStates;
 namespace Content.Server._Scp.ComplexElevator;
 
 [RegisterComponent]
-[NetworkedComponent]
 public sealed partial class ElevatorButtonComponent : Component
 {
     [DataField]
