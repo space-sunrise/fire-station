@@ -1,5 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
@@ -57,6 +59,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         }
 
         CloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor);
+        KillEntitiesInTargetArea(ent, ent.Comp.IntermediateFloorId);
         ent.Comp.CurrentFloor = ent.Comp.IntermediateFloorId;
         TeleportToFloor(ent, ent.Comp.IntermediateFloorId);
 
@@ -67,6 +70,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
             if (!Exists(ent))
                 return;
 
+            KillEntitiesInTargetArea(ent, targetFloor);
             ent.Comp.CurrentFloor = targetFloor;
             TeleportToFloor(ent, targetFloor);
             OpenDoorsForFloor(ent.Comp.ElevatorId, targetFloor);
@@ -217,6 +221,33 @@ public sealed class ComplexElevatorSystem : EntitySystem
             {
                 _doorSystem.TryClose(doorUid);
             }
+        }
+    }
+
+    private void KillEntitiesInTargetArea(Entity<ComplexElevatorComponent> elevator, string floorId)
+    {
+        var query = EntityQueryEnumerator<ElevatorPointComponent>();
+        while (query.MoveNext(out var pointUid, out var pointComp))
+        {
+            if (pointComp.FloorId != floorId)
+                continue;
+
+            var pointTransform = Transform(pointUid);
+
+            var aabb = _lookup.GetWorldAABB(elevator.Owner, pointTransform);
+            var intersectingEntities = _lookup.GetEntitiesIntersecting(pointTransform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sensors);
+
+            foreach (var entUid in intersectingEntities)
+            {
+                if (entUid == elevator.Owner)
+                    continue;
+
+                var damage = new DamageSpecifier();
+                damage.DamageDict["Blunt"] = 2000;
+                EntityManager.System<DamageableSystem>().TryChangeDamage(entUid, damage, true);
+            }
+
+            break;
         }
     }
 

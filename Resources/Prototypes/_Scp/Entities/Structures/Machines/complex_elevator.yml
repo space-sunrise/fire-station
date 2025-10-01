@@ -198,22 +198,22 @@
   id: ElevatorBlastDoor_Complex
   name: Elevator door
   description: Door that opens when the elevator arrives at the floor.
-  suffix: Complext floor
+  suffix: Complex floor
   components:
   - type: ElevatorDoor
     elevatorId: "SCP_Elevator_1"
-    floor: "Complext"
+    floor: "Complex"
 
 - type: entity
   parent: ElevatorBlastDoorOpen
   id: ElevatorBlastDoorOpen_Complex
   name: Elevator door
   description: Door that opens when the elevator arrives at the floor.
-  suffix: Open, Complext floor
+  suffix: Open, Complex floor
   components:
   - type: ElevatorDoor
     elevatorId: "SCP_Elevator_1"
-    floor: "Complext"
+    floor: "Complex"
 
 - type: entity
   parent: ElevatorBlastDoor
