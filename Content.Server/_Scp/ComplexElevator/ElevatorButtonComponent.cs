@@ -1,6 +1,9 @@
+using Robust.Shared.GameStates;
+
 namespace Content.Server._Scp.ComplexElevator;
 
 [RegisterComponent]
+[NetworkedComponent]
 public sealed partial class ElevatorButtonComponent : Component
 {
     [DataField]
@@ -11,6 +14,11 @@ public sealed partial class ElevatorButtonComponent : Component
 
     [DataField]
     public string Floor = string.Empty;
+
+    [DataField]
+    public TimeSpan BaseDelay = TimeSpan.FromSeconds(1);
+
+    public TimeSpan? LastUsed;
 }
 
 public enum ElevatorButtonType
