@@ -1,4 +1,4 @@
-# Base prototypes
+## Base prototypes
 
 - type: latheRecipe
   abstract: true
@@ -8,46 +8,294 @@
   - DepColors
 
 ## Recipes
+
 # Steel tiles (Стальные)
-# - type: latheRecipe
-#   parent: BaseSteelTileRecipe
-#   id: FloorTileItemSteelCheckerDark
-#   result: FloorTileItemSteelCheckerDark
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: ScpFloorTileItemSteel
+  result: ScpFloorTileItemSteel
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: ScpFloorTileItemSteelDiagonal
+  result: ScpFloorTileItemSteelDiagonal
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: ScpFloorTileItemSteelHalfMono
+  result: ScpFloorTileItemSteelHalfMono
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: ScpFloorTileItemSteelHalfMonoVertical
+  result: ScpFloorTileItemSteelHalfMonoVertical
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: ScpFloorTileItemSteelHerringbone
+  result: ScpFloorTileItemSteelHerringbone
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: ScpFloorTileItemSteelMini
+  result: ScpFloorTileItemSteelMini
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: ScpFloorTileItemSteelMono
+  result: ScpFloorTileItemSteelMono
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: ScpFloorTileItemSteeloffset
+  result: ScpFloorTileItemSteeloffset
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: ScpFloorTileItemSteelPavement
+  result: ScpFloorTileItemSteelPavement
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: ScpFloorTileItemSteelPavementVertical
+  result: ScpFloorTileItemSteelPavementVertical
+
+- type: latheRecipe
+  parent: BaseSteelTileRecipe
+  id: ScpFloorTileItemCheckerSteel
+  result: ScpFloorTileItemCheckerSteel
 
 # Dark tiles (Тёмные стальные)
-# - type: latheRecipe
-#   parent: BaseDarkTileRecipe
-#   id: FloorTileItemDark
-#   result: FloorTileItemDark
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: ScpFloorTileItemDark
+  result: ScpFloorTileItemDark
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: ScpFloorTileItemDarkDiagonal
+  result: ScpFloorTileItemDarkDiagonal
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: ScpFloorTileItemDarkHalfMono
+  result: ScpFloorTileItemDarkHalfMono
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: ScpFloorTileItemDarkHalfMonoVertical
+  result: ScpFloorTileItemDarkHalfMonoVertical
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: ScpFloorTileItemDarkHerringbone
+  result: ScpFloorTileItemDarkHerringbone
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: ScpFloorTileItemDarkMini
+  result: ScpFloorTileItemDarkMini
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: ScpFloorTileItemDarkMono
+  result: ScpFloorTileItemDarkMono
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: ScpFloorTileItemDarkoffset
+  result: ScpFloorTileItemDarkoffset
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: ScpFloorTileItemDarkPavement
+  result: ScpFloorTileItemDarkPavement
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: ScpFloorTileItemDarkPavementVertical
+  result: ScpFloorTileItemDarkPavementVertical
+
+- type: latheRecipe
+  parent: BaseDarkTileRecipe
+  id: ScpFloorTileItemCheckerDark
+  result: ScpFloorTileItemCheckerDark
 
 # White steel tiles (Белые стальные)
-# - type: latheRecipe
-#   parent: BaseWhiteTileRecipe
-#   id: FloorTileItemWhite
-#   result: FloorTileItemWhite
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: ScpFloorTileItemWhite
+  result: ScpFloorTileItemWhite
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: ScpFloorTileItemWhiteDiagonal
+  result: ScpFloorTileItemWhiteDiagonal
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: ScpFloorTileItemWhiteHalfMono
+  result: ScpFloorTileItemWhiteHalfMono
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: ScpFloorTileItemWhiteHalfMonoVertical
+  result: ScpFloorTileItemWhiteHalfMonoVertical
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: ScpFloorTileItemWhiteHerringbone
+  result: ScpFloorTileItemWhiteHerringbone
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: ScpFloorTileItemWhiteMini
+  result: ScpFloorTileItemWhiteMini
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: ScpFloorTileItemWhiteMono
+  result: ScpFloorTileItemWhiteMono
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: ScpFloorTileItemWhiteoffset
+  result: ScpFloorTileItemWhiteoffset
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: ScpFloorTileItemWhitePavement
+  result: ScpFloorTileItemWhitePavement
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: ScpFloorTileItemWhitePavementVertical
+  result: ScpFloorTileItemWhitePavementVertical
+
+- type: latheRecipe
+  parent: BaseWhiteTileRecipe
+  id: ScpFloorTileItemCheckerWhite
+  result: ScpFloorTileItemCheckerWhite
 
 # Departament colors steel tiles (Стальная плитка с цветами департаментов)
-# - type: latheRecipe
-#   parent: BaseDepColorsTileRecipe
-#   id: 123123
-#   result: 123123
+- type: latheRecipe
+  parent: BaseDepColorsTileRecipe
+  id: ScpFloorTileItemBlue
+  result: ScpFloorTileItemBlue
+
+- type: latheRecipe
+  parent: BaseDepColorsTileRecipe
+  id: ScpFloorTileItemGreen
+  result: ScpFloorTileItemGreen
+
+- type: latheRecipe
+  parent: BaseDepColorsTileRecipe
+  id: ScpFloorTileItemDepartmentCargo
+  result: ScpFloorTileItemDepartmentCargo
+
+- type: latheRecipe
+  parent: BaseDepColorsTileRecipe
+  id: ScpFloorTileItemDepartmentCom
+  result: ScpFloorTileItemDepartmentCom
+
+- type: latheRecipe
+  parent: BaseDepColorsTileRecipe
+  id: ScpFloorTileItemDepartmentEng
+  result: ScpFloorTileItemDepartmentEng
+
+- type: latheRecipe
+  parent: BaseDepColorsTileRecipe
+  id: ScpFloorTileItemDepartmentAtmos
+  result: ScpFloorTileItemDepartmentAtmos
+
+- type: latheRecipe
+  parent: BaseDepColorsTileRecipe
+  id: ScpFloorTileItemDepartmentMed
+  result: ScpFloorTileItemDepartmentMed
+
+- type: latheRecipe
+  parent: BaseDepColorsTileRecipe
+  id: ScpFloorTileItemDepartmentRnd
+  result: ScpFloorTileItemDepartmentRnd
+
+- type: latheRecipe
+  parent: BaseDepColorsTileRecipe
+  id: ScpFloorTileItemDepartmentSec
+  result: ScpFloorTileItemDepartmentSec
+
+- type: latheRecipe
+  parent: BaseDepColorsTileRecipe
+  id: ScpFloorTileItemDepartmentSer
+  result: ScpFloorTileItemDepartmentSer
 
 # Other steel (Техи)
-# - type: latheRecipe
-#   parent: BaseMaintTileRecipe
-#   id: FloorTileItemGratingMaint
-#   result: FloorTileItemGratingMaint
+- type: latheRecipe
+  parent: BaseMaintTileRecipe
+  id: ScpFloorTileItemSteelGrille1
+  result: ScpFloorTileItemSteelGrille1
 
-# Wood (Дерево)
-# - type: latheRecipe
-#   parent: BaseWoodTileRecipe
-#   id: FloorTileItemWood
-#   result: FloorTileItemWood
+- type: latheRecipe
+  parent: BaseMaintTileRecipe
+  id: ScpFloorTileItemSteelGrille2
+  result: ScpFloorTileItemSteelGrille2
+
+- type: latheRecipe
+  parent: BaseMaintTileRecipe
+  id: ScpFloorTileItemSteelGrille3
+  result: ScpFloorTileItemSteelGrille3
+
+- type: latheRecipe
+  parent: BaseMaintTileRecipe
+  id: ScpFloorTileItemSteelGrille4
+  result: ScpFloorTileItemSteelGrille4
+
+- type: latheRecipe
+  parent: BaseMaintTileRecipe
+  id: ScpFloorTileItemSteelGrilleMono1
+  result: ScpFloorTileItemSteelGrilleMono1
+
+- type: latheRecipe
+  parent: BaseMaintTileRecipe
+  id: ScpFloorTileItemSteelGrilleMono2
+  result: ScpFloorTileItemSteelGrilleMono2
+
+- type: latheRecipe
+  parent: BaseMaintTileRecipe
+  id: ScpFloorTileItemSteelGrilleMono3
+  result: ScpFloorTileItemSteelGrilleMono3
+
+- type: latheRecipe
+  parent: BaseMaintTileRecipe
+  id: ScpFloorTileItemSteelGrilleMono4
+  result: ScpFloorTileItemSteelGrilleMono4
+
+- type: latheRecipe
+  parent: BaseMaintTileRecipe
+  id: ScpFloorTileItemSteelGrilleOffset1
+  result: ScpFloorTileItemSteelGrilleOffset1
+
+- type: latheRecipe
+  parent: BaseMaintTileRecipe
+  id: ScpFloorTileItemSteelGrilleOffset2
+  result: ScpFloorTileItemSteelGrilleOffset2
+
+- type: latheRecipe
+  parent: BaseMaintTileRecipe
+  id: ScpFloorTileItemSteelGrilleOffset3
+  result: ScpFloorTileItemSteelGrilleOffset3
+
+- type: latheRecipe
+  parent: BaseMaintTileRecipe
+  id: ScpFloorTileItemSteelGrilleOffset4
+  result: ScpFloorTileItemSteelGrilleOffset4
 
 # Concrete
-# - type: latheRecipe
-#   parent: BaseConcreteTileRecipe
-#   id: FloorTileItemConcrete
-#   result: FloorTileItemConcrete
+- type: latheRecipe
+  parent: BaseConcreteTileRecipe
+  id: ScpFloorTileItemConcrete
+  result: ScpFloorTileItemConcrete
 
-# Marble
+- type: latheRecipe
+  parent: BaseConcreteTileRecipe
+  id: ScpFloorTileItemConcreteMono
+  result: ScpFloorTileItemConcreteMono

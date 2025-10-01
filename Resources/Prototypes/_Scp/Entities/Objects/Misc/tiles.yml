@@ -19,6 +19,123 @@
     node: scpsteeltile
 
 - type: entity
+  name: steel tile
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelDiagonal
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorSteelDiagonal
+
+- type: entity
+  name: steel tile
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelHalfMono
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorSteelHalfMono
+
+- type: entity
+  name: steel tile
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelHalfMonoVertical
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorSteelHalfMonoVertical
+
+- type: entity
+  name: steel tile
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelHerringbone
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorSteelHerringbone
+
+- type: entity
+  name: steel tile
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelMini
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorSteelMini
+
+- type: entity
+  name: steel tile
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelMono
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorSteelMono
+
+- type: entity
+  name: steel tile
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteeloffset
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorSteeloffset
+
+- type: entity
+  name: steel tile
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelPavement
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorSteelPavement
+
+- type: entity
+  name: steel tile
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemSteelPavementVertical
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: steel # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorSteelPavementVertical
+
+- type: entity
   name: dark tile
   parent: ScpFloorTileItemSteel
   id: ScpFloorTileItemDark
@@ -35,6 +152,123 @@
     node: scpdarktile
 
 - type: entity
+  name: dark tile
+  parent: ScpFloorTileItemDark
+  id: ScpFloorTileItemDarkDiagonal
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: dark # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorDarkDiagonal
+
+- type: entity
+  name: dark tile
+  parent: ScpFloorTileItemDark
+  id: ScpFloorTileItemDarkHalfMono
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: dark # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorDarkHalfMono
+
+- type: entity
+  name: dark tile
+  parent: ScpFloorTileItemDark
+  id: ScpFloorTileItemDarkHalfMonoVertical
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: dark # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorDarkHalfMonoVertical
+
+- type: entity
+  name: dark tile
+  parent: ScpFloorTileItemDark
+  id: ScpFloorTileItemDarkHerringbone
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: dark # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorDarkHerringbone
+
+- type: entity
+  name: dark tile
+  parent: ScpFloorTileItemDark
+  id: ScpFloorTileItemDarkMini
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: dark # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorDarkMini
+
+- type: entity
+  name: dark tile
+  parent: ScpFloorTileItemDark
+  id: ScpFloorTileItemDarkMono
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: dark # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorDarkMono
+
+- type: entity
+  name: dark tile
+  parent: ScpFloorTileItemDark
+  id: ScpFloorTileItemDarkoffset
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: dark # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorDarkoffset
+
+- type: entity
+  name: dark tile
+  parent: ScpFloorTileItemDark
+  id: ScpFloorTileItemDarkPavement
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: dark # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorDarkPavement
+
+- type: entity
+  name: dark tile
+  parent: ScpFloorTileItemDark
+  id: ScpFloorTileItemDarkPavementVertical
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: dark # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorDarkPavementVertical
+
+- type: entity
   name: white tile
   parent: ScpFloorTileItemSteel
   id: ScpFloorTileItemWhite
@@ -49,6 +283,123 @@
   - type: Construction
     graph: ScpTileWhite
     node: scpwhitetile
+
+- type: entity
+  name: white tile
+  parent: ScpFloorTileItemWhite
+  id: ScpFloorTileItemWhiteDiagonal
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: white # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorWhiteDiagonal
+
+- type: entity
+  name: white tile
+  parent: ScpFloorTileItemWhite
+  id: ScpFloorTileItemWhiteHalfMono
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: white # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorWhiteHalfMono
+
+- type: entity
+  name: white tile
+  parent: ScpFloorTileItemWhite
+  id: ScpFloorTileItemWhiteHalfMonoVertical
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: white # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorWhiteHalfMonoVertical
+
+- type: entity
+  name: white tile
+  parent: ScpFloorTileItemWhite
+  id: ScpFloorTileItemWhiteHerringbone
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: white # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorWhiteHerringbone
+
+- type: entity
+  name: white tile
+  parent: ScpFloorTileItemWhite
+  id: ScpFloorTileItemWhiteMini
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: white # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorWhiteMini
+
+- type: entity
+  name: white tile
+  parent: ScpFloorTileItemWhite
+  id: ScpFloorTileItemWhiteMono
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: white # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorWhiteMono
+
+- type: entity
+  name: white tile
+  parent: ScpFloorTileItemWhite
+  id: ScpFloorTileItemWhiteoffset
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: white # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorWhiteoffset
+
+- type: entity
+  name: white tile
+  parent: ScpFloorTileItemWhite
+  id: ScpFloorTileItemWhitePavement
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: white # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorWhitePavement
+
+- type: entity
+  name: white tile
+  parent: ScpFloorTileItemWhite
+  id: ScpFloorTileItemWhitePavementVertical
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: white # Нужен новый спрайт
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorWhitePavementVertical
 
 - type: entity
   name: blue tile

@@ -4,36 +4,6 @@
   id: ScpFloorTilesStatic
   recipes:
   # Vanilla
-  # - FloorTileItemDark
-  # - FloorTileItemDarkDiagonalMini
-  # - FloorTileItemDarkDiagonal
-  # - FloorTileItemDarkHerringbone
-  # - FloorTileItemDarkMini
-  # - FloorTileItemDarkMono
-  # - FloorTileItemDarkPavement
-  # - FloorTileItemDarkPavementVertical
-  # - FloorTileItemDarkOffset
-  # - FloorTileItemDarkSquiggly
-  # - FloorTileItemSteelCheckerDark
-  # - FloorTileItemSteel
-  # - FloorTileItemSteelOffset
-  # - FloorTileItemSteelDiagonalMini
-  # - FloorTileItemSteelDiagonal
-  # - FloorTileItemSteelHerringbone
-  # - FloorTileItemSteelMini
-  # - FloorTileItemSteelMono
-  # - FloorTileItemSteelPavement
-  # - FloorTileItemSteelPavementVertical
-  # - FloorTileItemWhite
-  # - FloorTileItemWhiteOffset
-  # - FloorTileItemWhiteDiagonalMini
-  # - FloorTileItemWhiteDiagonal
-  # - FloorTileItemWhiteHerringbone
-  # - FloorTileItemWhiteMini
-  # - FloorTileItemWhiteMono
-  # - FloorTileItemWhitePavement
-  # - FloorTileItemWhitePavementVertical
-  # - FloorTileItemSteelCheckerLight
   - FloorTileItemGratingMaint
   - FloorTileItemTechmaint
   - FloorTileItemSteelMaint
@@ -53,3 +23,60 @@
   - FloorTileItemWhiteMarble
   - FloorTileItemDarkMarble
   # Scp
+  - ScpFloorTileItemSteel
+  - ScpFloorTileItemSteelDiagonal
+  - ScpFloorTileItemSteelHalfMono
+  - ScpFloorTileItemSteelHalfMonoVertical
+  - ScpFloorTileItemSteelHerringbone
+  - ScpFloorTileItemSteelMini
+  - ScpFloorTileItemSteelMono
+  - ScpFloorTileItemSteeloffset
+  - ScpFloorTileItemSteelPavement
+  - ScpFloorTileItemSteelPavementVertical
+  - ScpFloorTileItemCheckerSteel
+  - ScpFloorTileItemDark
+  - ScpFloorTileItemDarkDiagonal
+  - ScpFloorTileItemDarkHalfMono
+  - ScpFloorTileItemDarkHalfMonoVertical
+  - ScpFloorTileItemDarkHerringbone
+  - ScpFloorTileItemDarkMini
+  - ScpFloorTileItemDarkMono
+  - ScpFloorTileItemDarkoffset
+  - ScpFloorTileItemDarkPavement
+  - ScpFloorTileItemDarkPavementVertical
+  - ScpFloorTileItemCheckerDark
+  - ScpFloorTileItemWhite
+  - ScpFloorTileItemWhiteDiagonal
+  - ScpFloorTileItemWhiteHalfMono
+  - ScpFloorTileItemWhiteHalfMonoVertical
+  - ScpFloorTileItemWhiteHerringbone
+  - ScpFloorTileItemWhiteMini
+  - ScpFloorTileItemWhiteMono
+  - ScpFloorTileItemWhiteoffset
+  - ScpFloorTileItemWhitePavement
+  - ScpFloorTileItemWhitePavementVertical
+  - ScpFloorTileItemCheckerWhite
+  - ScpFloorTileItemBlue
+  - ScpFloorTileItemGreen
+  - ScpFloorTileItemDepartmentCargo
+  - ScpFloorTileItemDepartmentCom
+  - ScpFloorTileItemDepartmentEng
+  - ScpFloorTileItemDepartmentAtmos
+  - ScpFloorTileItemDepartmentMed
+  - ScpFloorTileItemDepartmentRnd
+  - ScpFloorTileItemDepartmentSec
+  - ScpFloorTileItemDepartmentSer
+  - ScpFloorTileItemSteelGrille1
+  - ScpFloorTileItemSteelGrille2
+  - ScpFloorTileItemSteelGrille3
+  - ScpFloorTileItemSteelGrille4
+  - ScpFloorTileItemSteelGrilleMono1
+  - ScpFloorTileItemSteelGrilleMono2
+  - ScpFloorTileItemSteelGrilleMono3
+  - ScpFloorTileItemSteelGrilleMono4
+  - ScpFloorTileItemSteelGrilleOffset1
+  - ScpFloorTileItemSteelGrilleOffset2
+  - ScpFloorTileItemSteelGrilleOffset3
+  - ScpFloorTileItemSteelGrilleOffset4
+  - ScpFloorTileItemConcrete
+  - ScpFloorTileItemConcreteMono
