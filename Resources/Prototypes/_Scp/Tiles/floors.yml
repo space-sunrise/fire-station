@@ -387,7 +387,7 @@
       volume: -7
   itemDrop: ScpFloorTileItemCheckerWhite
   heatCapacity: 10000
-
+  
 - type: tile
   id: ScpFloorDark
   name: scp-tiles-dark-floor
@@ -420,7 +420,7 @@
 
 - type: tile
   id: ScpFloorDarkDiagonal
-  name: scp-tiles-dark-floor
+  name: scp-tiles-dark-diagonal-floor
   sprite: /Textures/_Scp/Tiles/dark_diagonal.png
   variants: 14
   placementVariants:
@@ -450,7 +450,7 @@
 
 - type: tile
   id: ScpFloorDarkHalfMono
-  name: scp-tiles-dark-floor
+  name: scp-tiles-dark-half-mono-floor
   sprite: /Textures/_Scp/Tiles/dark_half_mono.png
   variants: 12
   placementVariants:
@@ -478,7 +478,7 @@
 
 - type: tile
   id: ScpFloorDarkHalfMonoVertical
-  name: scp-tiles-dark-floor
+  name: scp-tiles-dark-half-mono-vertical-floor
   sprite: /Textures/_Scp/Tiles/dark_half_mono_vertical.png
   variants: 12
   placementVariants:
@@ -506,7 +506,7 @@
 
 - type: tile
   id: ScpFloorDarkHerringbone
-  name: scp-tiles-dark-floor
+  name: scp-tiles-dark-herringbone-floor
   sprite: /Textures/_Scp/Tiles/dark_herringbone.png
   variants: 14
   placementVariants:
@@ -536,7 +536,7 @@
 
 - type: tile
   id: ScpFloorDarkMini
-  name: scp-tiles-dark-floor
+  name: scp-tiles-dark-mini-floor
   sprite: /Textures/_Scp/Tiles/dark_mini.png
   variants: 14
   placementVariants:
@@ -566,7 +566,7 @@
 
 - type: tile
   id: ScpFloorDarkMono
-  name: scp-tiles-dark-floor
+  name: scp-tiles-dark-mono-floor
   sprite: /Textures/_Scp/Tiles/dark_mono.png
   variants: 10
   placementVariants:
@@ -592,7 +592,7 @@
 
 - type: tile
   id: ScpFloorDarkoffset
-  name: scp-tiles-dark-floor
+  name: scp-tiles-dark-offset-floor
   sprite: /Textures/_Scp/Tiles/dark_offset.png
   variants: 4
   placementVariants:
@@ -612,7 +612,7 @@
 
 - type: tile
   id: ScpFloorDarkPavement
-  name: scp-tiles-dark-floor
+  name: scp-tiles-dark-pavement-floor
   sprite: /Textures/_Scp/Tiles/dark_pavement.png
   variants: 14
   placementVariants:
@@ -642,7 +642,7 @@
 
 - type: tile
   id: ScpFloorDarkPavementVertical
-  name: scp-tiles-dark-floor
+  name: scp-tiles-dark-pavement-vertical-floor
   sprite: /Textures/_Scp/Tiles/dark_pavement_vertical.png
   variants: 14
   placementVariants:
@@ -702,7 +702,7 @@
 
 - type: tile
   id: ScpFloorSteelDiagonal
-  name: scp-tiles-steel-floor
+  name: scp-tiles-steel-diagonal-floor
   sprite: /Textures/_Scp/Tiles/steel_diagonal.png
   variants: 14
   placementVariants:
@@ -732,7 +732,7 @@
 
 - type: tile
   id: ScpFloorSteelHalfMono
-  name: scp-tiles-steel-floor
+  name: scp-tiles-steel-half-mono-floor
   sprite: /Textures/_Scp/Tiles/steel_half_mono.png
   variants: 12
   placementVariants:
@@ -760,7 +760,7 @@
 
 - type: tile
   id: ScpFloorSteelHalfMonoVertical
-  name: scp-tiles-steel-floor
+  name: scp-tiles-steel-half-mono-vertical-floor
   sprite: /Textures/_Scp/Tiles/steel_half_mono_vertical.png
   variants: 12
   placementVariants:
@@ -788,7 +788,7 @@
 
 - type: tile
   id: ScpFloorSteelHerringbone
-  name: scp-tiles-steel-floor
+  name: scp-tiles-steel-herringbone-floor
   sprite: /Textures/_Scp/Tiles/steel_herringbone.png
   variants: 14
   placementVariants:
@@ -818,7 +818,7 @@
 
 - type: tile
   id: ScpFloorSteelMini
-  name: scp-tiles-steel-floor
+  name: scp-tiles-steel-mini-floor
   sprite: /Textures/_Scp/Tiles/steel_mini.png
   variants: 14
   placementVariants:
@@ -848,7 +848,7 @@
 
 - type: tile
   id: ScpFloorSteelMono
-  name: scp-tiles-steel-floor
+  name: scp-tiles-steel-mono-floor
   sprite: /Textures/_Scp/Tiles/steel_mono.png
   variants: 10
   placementVariants:
@@ -874,7 +874,7 @@
 
 - type: tile
   id: ScpFloorSteeloffset
-  name: scp-tiles-steel-floor
+  name: scp-tiles-steel-offset-floor
   sprite: /Textures/_Scp/Tiles/steel_offset.png
   variants: 4
   placementVariants:
@@ -894,7 +894,7 @@
 
 - type: tile
   id: ScpFloorSteelPavement
-  name: scp-tiles-steel-floor
+  name: scp-tiles-steel-pavement-floor
   sprite: /Textures/_Scp/Tiles/steel_pavement.png
   variants: 14
   placementVariants:
@@ -924,7 +924,7 @@
 
 - type: tile
   id: ScpFloorSteelPavementVertical
-  name: scp-tiles-steel-floor
+  name: scp-tiles-steel-pavement-vertical-floor
   sprite: /Textures/_Scp/Tiles/steel_pavement_vertical.png
   variants: 14
   placementVariants:
@@ -984,7 +984,7 @@
 
 - type: tile
   id: ScpFloorWhiteDiagonal
-  name: scp-tiles-white-floor
+  name: scp-tiles-white-diagonal-floor
   sprite: /Textures/_Scp/Tiles/white_diagonal.png
   variants: 14
   placementVariants:
@@ -1014,7 +1014,7 @@
 
 - type: tile
   id: ScpFloorWhiteHalfMono
-  name: scp-tiles-white-floor
+  name: scp-tiles-white-half-mono-floor
   sprite: /Textures/_Scp/Tiles/white_half_mono.png
   variants: 12
   placementVariants:
@@ -1042,7 +1042,7 @@
 
 - type: tile
   id: ScpFloorWhiteHalfMonoVertical
-  name: scp-tiles-white-floor
+  name: scp-tiles-white-half-mono-vertical-floor
   sprite: /Textures/_Scp/Tiles/white_half_mono_vertical.png
   variants: 12
   placementVariants:
@@ -1070,7 +1070,7 @@
 
 - type: tile
   id: ScpFloorWhiteHerringbone
-  name: scp-tiles-white-floor
+  name: scp-tiles-white-herringbone-floor
   sprite: /Textures/_Scp/Tiles/white_herringbone.png
   variants: 14
   placementVariants:
@@ -1100,7 +1100,7 @@
 
 - type: tile
   id: ScpFloorWhiteMini
-  name: scp-tiles-white-floor
+  name: scp-tiles-white-mini-floor
   sprite: /Textures/_Scp/Tiles/white_mini.png
   variants: 14
   placementVariants:
@@ -1130,7 +1130,7 @@
 
 - type: tile
   id: ScpFloorWhiteMono
-  name: scp-tiles-white-floor
+  name: scp-tiles-white-mono-floor
   sprite: /Textures/_Scp/Tiles/white_mono.png
   variants: 10
   placementVariants:
@@ -1156,7 +1156,7 @@
 
 - type: tile
   id: ScpFloorWhiteoffset
-  name: scp-tiles-white-floor
+  name: scp-tiles-white-offset-floor
   sprite: /Textures/_Scp/Tiles/white_offset.png
   variants: 4
   placementVariants:
@@ -1176,7 +1176,7 @@
 
 - type: tile
   id: ScpFloorWhitePavement
-  name: scp-tiles-white-floor
+  name: scp-tiles-white-pavement-floor
   sprite: /Textures/_Scp/Tiles/white_pavement.png
   variants: 14
   placementVariants:
@@ -1206,7 +1206,7 @@
 
 - type: tile
   id: ScpFloorWhitePavementVertical
-  name: scp-tiles-white-floor
+  name: scp-tiles-white-pavement-vertical-floor
   sprite: /Textures/_Scp/Tiles/white_pavement_vertical.png
   variants: 14
   placementVariants:

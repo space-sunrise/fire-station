@@ -2224,4 +2224,12 @@ FoodMealHappyHonkClown: null
 FoodMealHappyHonkBigBite: null
 VendingMachineHappyHonk: null
 
+# Плитка
+ScpFloorTileItemMiniSteel: ScpFloorTileItemSteelMini
+ScpFloorTileItemMiniSteelDark: ScpFloorTileItemDarkMini
+ScpFloorTileItemMiniSteelWhite: ScpFloorTileItemWhiteMini
+ScpFloorTileItemMonoSteel: ScpFloorTileItemSteelMono
+ScpFloorTileItemMonoSteelWhite: ScpFloorTileItemWhiteMono
+ScpFloorTileItemMonoSteelDark: ScpFloorTileItemDarkMono
+
 # Fire added end
