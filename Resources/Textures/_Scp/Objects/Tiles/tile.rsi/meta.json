@@ -66,6 +66,12 @@
     },
     {
       "name": "steel_4"
+    },
+    {
+      "name": "concrete"
+    },
+    {
+      "name": "concrete_mono"
     }
   ]
 }

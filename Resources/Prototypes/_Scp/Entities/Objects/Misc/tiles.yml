@@ -446,3 +446,29 @@
     outputs:
       - ScpPlating
       - ScpFloorSteelGrilleOffset4
+
+- type: entity
+  name: concrete tile
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemConcrete
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: concrete
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorConcrete
+
+- type: entity
+  name: concrete mono tile
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemConcreteMono
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: concrete_mono
+  - type: FloorTile
+    outputs:
+      - ScpPlating
+      - ScpFloorConcreteMono

@@ -66,3 +66,7 @@ ent-ScpFloorTileItemSteelGrilleOffset3 = шахматная стальная п�
     .desc = { ent-ScpFloorTileItemSteel.desc }
 ent-ScpFloorTileItemSteelGrilleOffset4 = шахматная стальная плитка
     .desc = { ent-ScpFloorTileItemSteel.desc }
+ent-ScpFloorTileItemConcrete = бетонная плитка
+    .desc = { ent-FloorTileItemConcrete.desc }
+ent-ScpFloorTileItemConcreteMono = бетонная плита
+    .desc = { ent-FloorTileItemConcrete.desc }

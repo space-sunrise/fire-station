@@ -1408,7 +1408,7 @@
 - type: tile
   id: ScpFloorSteelGrilleOffset2
   name: scp-tiles-steel-grille-offset-2
-  sprite: /Textures/_Scp/Tiles/Steel/steel_offset_mono_2.png
+  sprite: /Textures/_Scp/Tiles/Steel/steel_offset_2.png
   variants: 1
   placementVariants:
   - 1.0
@@ -1425,7 +1425,7 @@
 - type: tile
   id: ScpFloorSteelGrilleOffset3
   name: scp-tiles-steel-grille-offset-3
-  sprite: /Textures/_Scp/Tiles/Steel/steel_offset_mono_3.png
+  sprite: /Textures/_Scp/Tiles/Steel/steel_offset_3.png
   variants: 1
   placementVariants:
   - 1.0
@@ -1442,7 +1442,7 @@
 - type: tile
   id: ScpFloorSteelGrilleOffset4
   name: scp-tiles-steel-grille-offset-4
-  sprite: /Textures/_Scp/Tiles/Steel/steel_offset_mono_4.png
+  sprite: /Textures/_Scp/Tiles/Steel/steel_offset_4.png
   variants: 1
   placementVariants:
   - 1.0
@@ -1454,4 +1454,44 @@
     params:
       volume: -7
   itemDrop: ScpFloorTileItemSteelGrilleOffset4
+  heatCapacity: 10000
+
+# Concrete
+- type: tile
+  id: ScpFloorConcrete
+  name: scp-tiles-concrete-tile
+  sprite: /Textures/_Scp/Tiles/Concrete/concrete.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: ScpPlating
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpStone
+    params:
+      volume: -10
+  itemDrop: ScpFloorTileItemConcrete
+  heatCapacity: 10000
+
+  id: ScpFloorConcreteMono
+  name: scp-tiles-concrete-mono
+  sprite: /Textures/_Scp/Tiles/Concrete/concrete_mono.png
+  variants: 4
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  baseTurf: ScpPlating # Fire edit
+  isSubfloor: false
+  deconstructTools: [ Prying ]
+  footstepSounds:
+    collection: FootstepScpStone # Fire
+    params:
+      volume: -10
+  itemDrop: ScpFloorTileItemConcreteMono
   heatCapacity: 10000

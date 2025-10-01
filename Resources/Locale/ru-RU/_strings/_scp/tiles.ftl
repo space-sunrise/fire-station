@@ -24,3 +24,5 @@ scp-tiles-steel-grille-offset-1 = [SCP] шахматная стальная пл
 scp-tiles-steel-grille-offset-2 = [SCP] шахматная стальная плитка
 scp-tiles-steel-grille-offset-3 = [SCP] шахматная стальная плитка
 scp-tiles-steel-grille-offset-4 = [SCP] шахматная стальная плитка
+scp-tiles-concrete-tile = [SCP] бетонная плитка
+scp-tiles-concrete-mono = [SCP] бетонная плита
