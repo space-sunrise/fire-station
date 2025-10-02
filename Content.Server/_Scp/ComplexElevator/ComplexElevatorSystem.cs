@@ -22,7 +22,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
     [Dependency] private readonly DoorSystem _doorSystem = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     public override void Initialize()
     {
