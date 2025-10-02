@@ -1,4 +1,4 @@
-ui-lobby-mhelp-button = MHelp
+ui-lobby-mhelp-button = МHelp
 ui-options-function-open-mentor-help = Открыть ментор помощь
 ui-options-function-open-help-choice = Открыть выбор помощи
 
