@@ -16,7 +16,10 @@ public sealed class MetaGarbageSpawnRule : GameRuleSystem<MetaGarbageSpawnRuleCo
         base.Started(uid, component, gameRule, args);
 
         if (!TryGetRandomStation(out var targetStation))
+        {
+            ForceEndSelf(uid, gameRule);
             return;
+        }
 
         if (_metaGarbage.TrySpawnGarbage(targetStation.Value))
             GameTicker.StartGameRule(component.SuccessfullySpawnedDocumentRule);

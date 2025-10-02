@@ -66,12 +66,12 @@ public abstract class SharedLightBulbSystem : EntitySystem
         if (!Resolve(uid, ref bulb) || bulb.State == state)
             return;
 
+        // Fire added start - для сохранения между раундами битых лампочек
         if (state != LightBulbState.Normal)
-        {
-            // Fire added start - для сохранения между раундами битых лампочек
             _tag.AddTags(uid, ReplaceTag, ContainerTag, SavableTag);
-            // Fire added end
-        }
+        else
+            _tag.RemoveTags(uid, ReplaceTag, ContainerTag, SavableTag);
+        // Fire added end
 
         bulb.State = state;
         Dirty(uid, bulb);

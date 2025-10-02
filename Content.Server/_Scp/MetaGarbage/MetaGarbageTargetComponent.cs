@@ -25,7 +25,7 @@ public sealed partial class MetaGarbageTargetComponent : Component
     /// Значение - шанс, что сущность с этим реагентом будет заспавнена.
     /// </summary>
     [DataField]
-    public Dictionary<ProtoId<ReagentPrototype>, float> ReagentSaveModifiers;
+    public Dictionary<ProtoId<ReagentPrototype>, float> ReagentSaveModifiers = new ();
 }
 
 /// <summary>
@@ -35,24 +35,14 @@ public sealed partial class MetaGarbageTargetComponent : Component
 /// <param name="Position">Позиция в мире</param>
 /// <param name="Rotation">Угол поворота</param>
 /// <param name="LiquidData">Реагенты, хранящиеся в предметы(для луж)</param>
-public record struct StationMetaGarbageData(
+public readonly record struct StationMetaGarbageData(
     EntProtoId Prototype,
     Vector2 Position,
     Angle Rotation,
     Dictionary<string, MetaGarbageSolutionProxy>? LiquidData,
     bool Replace = false,
     string? ContainerName = null,
-    LightBulbState? BulbState = null
-    )
-{
-    public readonly EntProtoId Prototype = Prototype;
-    public readonly Vector2 Position = Position;
-    public readonly Angle Rotation = Rotation;
-    public readonly Dictionary<string, MetaGarbageSolutionProxy>? LiquidData = LiquidData;
-    public readonly bool Replace = Replace;
-    public readonly string? ContainerName = ContainerName;
-    public readonly LightBulbState? BulbState = BulbState;
-}
+    LightBulbState? BulbState = null);
 
 // Все что находится ниже существует потому, что блядская система реагентов такая блядская
 // Неким образом после рестарта раунда стандартные структуры содержащие информацию о реагентах теряют все знания об объеме жидкостей
@@ -62,16 +52,9 @@ public record struct StationMetaGarbageData(
 /// <summary>
 /// Структура воссоздающая данные для создания <seealso cref="Solution"/>
 /// </summary>
-public record struct MetaGarbageSolutionProxy(List<MetaGarbageReagentQuantityProxy> Contents)
-{
-    public readonly List<MetaGarbageReagentQuantityProxy> Contents = Contents;
-}
+public readonly record struct MetaGarbageSolutionProxy(List<MetaGarbageReagentQuantityProxy> Contents);
 
 /// <summary>
 /// Структура воссоздающая данные для создания <seealso cref="ReagentQuantity"/>
 /// </summary>
-public record struct MetaGarbageReagentQuantityProxy(ReagentId Reagent, FixedPoint2 Quantity)
-{
-    public readonly ReagentId Reagent = Reagent;
-    public readonly FixedPoint2 Quantity = Quantity;
-}
+public readonly record struct MetaGarbageReagentQuantityProxy(ReagentId Reagent, FixedPoint2 Quantity);
