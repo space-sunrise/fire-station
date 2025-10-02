@@ -5,6 +5,8 @@ namespace Content.Server._Scp.MetaGarbage;
 
 public sealed partial class MetaGarbageSystem
 {
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
+
     private ConfigurationMultiSubscriptionBuilder _configSub = default!;
 
     private bool _enableSaving;

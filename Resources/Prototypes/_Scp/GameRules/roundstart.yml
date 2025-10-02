@@ -82,6 +82,12 @@
         max: -1
 
 - type: entity
+  id: ScpMetaGarbageSpawn
+  parent: BaseGameRule
+  components:
+  - type: MetaGarbageSpawnRule
+
+- type: entity
   id: BasicFoundationEventScheduler
   parent: BaseGameRule
   components:

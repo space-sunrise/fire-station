@@ -10,6 +10,7 @@
   - SendDocumentNeutralizedMode
   - BasicFoundationChillEventScheduler
   - BasicRoundstartVariation
+  - ScpMetaGarbageSpawn
 
 - type: gamePreset
   id: Safe
@@ -23,6 +24,7 @@
   - SendDocumentSafeMode
   - BasicFoundationEventScheduler
   - BasicRoundstartVariation
+  - ScpMetaGarbageSpawn
 
 - type: gamePreset
   id: Euclid
@@ -37,6 +39,7 @@
   - SendDocumentEuclidMode
   - BasicFoundationEventScheduler
   - BasicRoundstartVariation
+  - ScpMetaGarbageSpawn
 
 - type: gamePreset
   id: Keter
@@ -51,6 +54,7 @@
   - SendDocumentKeterMode
   - BasicFoundationEventScheduler
   - BasicRoundstartVariation
+  - ScpMetaGarbageSpawn
 
 - type: gamePreset
   id: Thaumiel
@@ -65,3 +69,4 @@
   - SendDocumentThaumielMode
   - BasicFoundationEventScheduler
   - BasicRoundstartVariation
+  - ScpMetaGarbageSpawn

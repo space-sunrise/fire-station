@@ -43,5 +43,5 @@ public sealed partial class ScpCCVars
     /// Будет ли мусор спавниться при загрузке станции без запуска геймрула?
     /// </summary>
     public static readonly CVarDef<bool> MetaGarbageEnableSpawningWithoutRule =
-        CVarDef.Create("scp.meta_garbage_enable_spawning_without_rule", true, CVar.SERVERONLY | CVar.ARCHIVE);
+        CVarDef.Create("scp.meta_garbage_enable_spawning_without_rule", false, CVar.SERVERONLY | CVar.ARCHIVE);
 }

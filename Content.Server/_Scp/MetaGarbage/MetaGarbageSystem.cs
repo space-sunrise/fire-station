@@ -5,7 +5,6 @@ using Content.Server._Sunrise.Helpers;
 using Content.Server.Light.EntitySystems;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
-using Content.Shared._Scp.ScpCCVars;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
@@ -16,7 +15,6 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
-using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -27,8 +25,6 @@ namespace Content.Server._Scp.MetaGarbage;
 /// <summary>
 /// Система сохранения мусора между раундами.
 /// В конце раунда сохраняет мусор, который был в комплексе и спавнит его в начале следующего раунда.
-/// TODO: Переделать спавн мусора в геймрул
-/// TODO: Документ директору комплекса, что прошлая смена насрала(или нет)
 /// </summary>
 public sealed partial class MetaGarbageSystem : EntitySystem
 {
@@ -41,7 +37,6 @@ public sealed partial class MetaGarbageSystem : EntitySystem
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
     [Dependency] private readonly LightBulbSystem _bulb = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     private static readonly HashSet<ProtoId<TagPrototype>> AllowedTags = [ "Trash", "MetaGarbageSavable" ];
     private static readonly HashSet<ProtoId<TagPrototype>> ForbiddenTags = [ "MetaGarbagePreventSaving" ];
