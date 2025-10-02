@@ -144,7 +144,7 @@ public sealed partial class MetaGarbageSystem : EntitySystem
             TrySetBulbState(item, data.BulbState);
             TryInsertIntoContainer(item, coords, data.ContainerName);
 
-            Log.Info($"Spawned {data.Prototype}|{item} at {data.Position} on map {mapId}|{Name(ent)}");
+            Log.Debug($"Spawned {data.Prototype}|{item} at {data.Position} on map {mapId}|{Name(ent)}");
         }
 
         Log.Info($"Spawned {reducedGarbage.Count}/{list.Count} items");
@@ -388,7 +388,7 @@ public sealed partial class MetaGarbageSystem : EntitySystem
 
         _bulb.SetState(uid, state.Value);
 
-        Log.Info($"Bulb`s({Name(uid)}) state changed to {state.ToString()}");
+        Log.Debug($"Bulb`s({Name(uid)}) state changed to {state.ToString()}");
         return true;
     }
 
@@ -440,7 +440,7 @@ public sealed partial class MetaGarbageSystem : EntitySystem
 
                 _container.Insert(uid, comp, force: true);
 
-                Log.Info($"{Name(uid)} inserted into container {container} in {Name(ent)}");
+                Log.Debug($"{Name(uid)} inserted into container {container} in {Name(ent)}");
                 return true;
             }
         }
