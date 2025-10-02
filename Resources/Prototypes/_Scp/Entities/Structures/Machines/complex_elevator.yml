@@ -36,9 +36,16 @@
     elevatorId: "SCP_Elevator_1"
     currentFloor: "Complex"
     intermediateFloorId: "IntermediateFloor"
+    intermediateDelay: 6
     floors:
       - Surface
       - Complex
+    travelSound:
+      path: /Audio/_Scp/Machines/Elevator/Moving.ogg
+    startSound:
+      path: /Audio/_Scp/Machines/Elevator/ElevatorClose.ogg
+    arrivalSound:
+      path: /Audio/_Scp/Machines/Elevator/Beep-elevator.ogg
   - type: ContainerContainer
     containers:
       ElevatorContents: !type:Container
@@ -153,6 +160,12 @@
   - type: InteractionOutline
   - type: UseDelay
     delay: 7
+  - type: Sprite
+    drawdepth: SmallObjects
+    sprite: Structures/Wallmounts/switch.rsi
+    state: on
+  - type: WallMount
+    arc: 180
   - type: ElevatorButton
     elevatorId: "SCP_Elevator_1"
     buttonType: CallButton
