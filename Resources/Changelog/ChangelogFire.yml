@@ -6399,3 +6399,13 @@
   id: 259
   time: '2025-10-02T08:50:47.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/598
+- author: Neyran
+  changes:
+  - message: "\u041F\u043E\u043B\u0435 \u0434\u043B\u044F \u0437\u0432\u0443\u043A\
+      \u043E\u0432 \u043B\u0438\u0444\u0442\u0430 \u0438 \u0441\u0430\u043C\u0438\
+      \ \u0437\u0432\u0443\u043A\u0438 \u0434\u043B\u044F \u043B\u0438\u0444\u0442\
+      \u0430."
+    type: Add
+  id: 260
+  time: '2025-10-02T17:14:05.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/600
