@@ -40,12 +40,6 @@
     floors:
       - Surface
       - Complex
-    travelSound:
-      path: /Audio/_Scp/Machines/Elevator/Moving.ogg
-    startSound:
-      path: /Audio/_Scp/Machines/Elevator/ElevatorClose.ogg
-    arrivalSound:
-      path: /Audio/_Scp/Machines/Elevator/Beep-elevator.ogg
   - type: ContainerContainer
     containers:
       ElevatorContents: !type:Container

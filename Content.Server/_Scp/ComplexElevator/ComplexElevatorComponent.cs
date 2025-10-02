@@ -25,13 +25,13 @@ public sealed partial class ComplexElevatorComponent : Component
     public TimeSpan IntermediateDelay = TimeSpan.FromSeconds(6);
 
     [DataField]
-    public SoundSpecifier? StartSound;
+    public SoundSpecifier StartSound = new SoundPathSpecifier("/Audio/_Scp/Machines/Elevator/ElevatorClose.ogg");
 
     [DataField]
-    public SoundSpecifier? TravelSound;
+    public SoundSpecifier TravelSound = new SoundPathSpecifier("/Audio/_Scp/Machines/Elevator/Moving.ogg");
 
     [DataField]
-    public SoundSpecifier? ArrivalSound;
+    public SoundSpecifier ArrivalSound = new SoundPathSpecifier("/Audio/_Scp/Machines/Elevator/Beep-elevator.ogg");
 
     public bool IsMoving = false;
 }
