@@ -1,7 +1,7 @@
 {
     "version": 1,
-    "license": "CLA",
-    "copyright": "SUNRISE",
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Fire Station",
     "size": {
         "x": 8,
         "y": 8
@@ -135,21 +135,6 @@
         },
         {
             "name": "ClassD"
-        },
-        {
-            "name": "RRH"
-        },
-        {
-            "name": "LLH"
-        },
-        {
-            "name": "HD"
-        },
-        {
-            "name": "MH"
-        },
-        {
-            "name": "NTF"
         },
         {
             "name": "Amnesthesiologist"

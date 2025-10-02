@@ -6,7 +6,7 @@ namespace Content.Shared._Scp.ScpCCVars;
 public sealed partial class ScpCCVars
 {
     /**
-     * Shader
+     * Шейдеры
      */
 
     /// <summary>

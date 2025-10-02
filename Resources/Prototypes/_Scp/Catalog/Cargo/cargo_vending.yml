@@ -4,7 +4,7 @@
     sprite: Objects/Specific/Service/vending_machine_restock.rsi
     state: base
   product: CrateVendingMachineRestockSeedsScpClassDFilled
-  cost: 1000
+  cost: 950
   category: cargoproduct-category-name-service
   group: market
 
@@ -14,7 +14,7 @@
     sprite: Objects/Specific/Service/vending_machine_restock.rsi
     state: base
   product: CrateVendingMachineRestockNutriMaxScpClassDFilled
-  cost: 600
+  cost: 250
   category: cargoproduct-category-name-service
   group: market
 
@@ -24,7 +24,7 @@
     sprite: Objects/Specific/Service/vending_machine_restock.rsi
     state: base
   product: CrateVendingMachineRestockChefvendScpClassDFilled
-  cost: 800
+  cost: 200
   category: cargoproduct-category-name-service
   group: market
 
@@ -34,7 +34,7 @@
     sprite: Objects/Specific/Service/vending_machine_restock.rsi
     state: base
   product: CrateVendingMachineRestockDinnerwareScpClassDFilled
-  cost: 400
+  cost: 350
   category: cargoproduct-category-name-service
   group: market
 
@@ -44,6 +44,6 @@
     sprite: Objects/Specific/Service/vending_machine_restock.rsi
     state: base
   product: CrateVendingMachineRestockBoozeScpClassDFilled
-  cost: 600
+  cost: 300
   category: cargoproduct-category-name-service
   group: market

@@ -24,6 +24,11 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: Tag
+    tags:
+    - Wall
+    - MetaGarbageSavable
+    - MetaGarbageReplace
 
 - type: entity
   parent: WallShuttleDiagonal
@@ -67,6 +72,12 @@
     thresholds:
       - trigger:
           !type:DamageTrigger
+          damage: 1800
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
           damage: 1500
         behaviors:
           - !type:SpawnEntitiesBehavior
@@ -89,8 +100,19 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrongScp
+  - type: Tag
+    tags:
+    - Wall
+    - MetaGarbageSavable
+    - MetaGarbageReplace
   - type: Destructible
     thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 1400
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
       - trigger:
           !type:DamageTrigger
           damage: 1100
@@ -132,6 +154,12 @@
     damageModifierSet: StructuralMetallicStrongScp
   - type: Destructible
     thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 1800
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
       - trigger:
           !type:DamageTrigger
           damage: 1500
@@ -246,7 +274,7 @@
 
 # Стена Лёгкой Зоны Содержания
 - type: entity
-  parent: BaseWall
+  parent: ScpWallConcrete
   id: ScpWallConcreteLightContaiment
   name: concrete wall low contaiment
   components:
@@ -257,49 +285,13 @@
   - type: IconSmooth
     key: walls
     base: concrete_low_contaiment
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicScp
   - type: Construction
     graph: concreteWallLightContaiment
     node: concreteWallLightContaimentEnd
-  - type: RCDDeconstructable
-    cost: 6
-    delay: 10
-    fx: EffectRCDDeconstruct8
-  - type: Destructible
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 1300
-        behaviors:
-        - !type:DoActsBehavior
-          acts: ["Destruction"]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
-      - trigger:
-          !type:DamageTrigger
-          damage: 1000
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            PartRodMetal1:
-              min: 1
-              max: 3
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
 
 # Стена Административной Зоны / Научной
 - type: entity
-  parent: BaseWall
+  parent: ScpWallConcrete
   id: ScpWallConcreteScience
   name: concrete wall science sector
   components:
@@ -310,45 +302,43 @@
   - type: IconSmooth
     key: walls
     base: concrete_science
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallicScp
   - type: Construction
     graph: concreteWallScience
     node: concreteWallScienceEnd
-  - type: RCDDeconstructable
-    cost: 6
-    delay: 10
-    fx: EffectRCDDeconstruct8
-  - type: Destructible
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 1300
-        behaviors:
-        - !type:DoActsBehavior
-          acts: ["Destruction"]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
-      - trigger:
-          !type:DamageTrigger
-          damage: 1000
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            PartRodMetal1:
-              min: 1
-              max: 3
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
+
+# Стена Инженерии
+- type: entity
+  parent: ScpWallConcrete
+  id: ScpWallConcreteEngineer
+  name: concrete wall engineer sector
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/concrete_engineer.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/concrete_engineer.rsi
+  - type: IconSmooth
+    key: walls
+    base: engineer
+  - type: Construction
+    graph: concreteWallEngineer
+    node: concreteWallEngineerEnd
+
+# Стена Мед отдела
+- type: entity
+  parent: ScpWallConcrete
+  id: ScpWallConcreteMedical
+  name: concrete wall medical sector
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/concrete_medical.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/concrete_medical.rsi
+  - type: IconSmooth
+    key: walls
+    base: medical
+  - type: Construction
+    graph: concreteWallMedical
+    node: concreteWallMedicalEnd
 
 # Стена Сдерживания
 - type: entity
@@ -368,6 +358,57 @@
     damageModifierSet: StructuralMetallicHardCellsScp
   - type: Destructible
     thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 2700
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 2500
+        behaviors:
+          - !type:SpawnEntitiesBehavior
+            spawn:
+              ReinforcedGirder:
+                min: 1
+                max: 1
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+
+- type: entity
+  parent: WallShuttleDiagonal
+  id: ScpWallConcreteMetallHardContaimentDiagonal
+  name: metall wall hard contaiment
+  placement:
+    mode: SnapgridCenter
+    snap:
+    - Wall
+  components:
+  - type: Tag
+    tags:
+    - Diagonal
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/metall_hard_contaiment_diagonal.rsi
+    state: state0
+  - type: Icon
+    sprite: _Scp/Structures/Walls/metall_hard_contaiment_diagonal.rsi
+    state: state0
+  - type: IconSmooth
+    mode: Diagonal
+    key: walls
+    base: state
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicHardCellsScp
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 2700
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
       - trigger:
           !type:DamageTrigger
           damage: 2500
@@ -395,6 +436,12 @@
     base: fire_brick
   - type: Destructible
     thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 700
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
       - trigger:
           !type:DamageTrigger
           damage: 500

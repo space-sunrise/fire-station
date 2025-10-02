@@ -12,6 +12,9 @@
       settings: default
     mindRoles:
     - MindRoleGhostRoleSoloAntagonist
+    requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 18000 # 5 часов
   - type: GhostTakeoverAvailable
   - type: Sprite
     sprite: Markers/jobs.rsi

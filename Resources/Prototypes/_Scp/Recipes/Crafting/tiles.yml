@@ -1,0 +1,31 @@
+- type: construction
+  id: ScpTileSteelCraft
+  graph: ScpTileSteel
+  startNode: start
+  targetNode: scpsteeltile
+  category: construction-category-tiles
+  objectType: Item
+
+- type: construction
+  id: ScpTileWhiteCraft
+  graph: ScpTileWhite
+  startNode: start
+  targetNode: scpwhitetile
+  category: construction-category-tiles
+  objectType: Item
+
+- type: construction
+  id: ScpTileDarkCraft
+  graph: ScpTileDark
+  startNode: start
+  targetNode: scpdarktile
+  category: construction-category-tiles
+  objectType: Item
+
+- type: construction
+  id: ScpTileConcreteCraft
+  graph: ScpTileConcrete
+  startNode: start
+  targetNode: scpconcretetile
+  category: construction-category-tiles
+  objectType: Item

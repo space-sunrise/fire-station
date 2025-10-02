@@ -21,6 +21,21 @@
         },
         {
             "name": "reverse"
+        },
+        {
+            "name": "teleport_facility"
+        },
+        {
+            "name": "teleport_dimension"
+        },
+        {
+            "name": "blade"
+        },
+        {
+            "name": "blade_active"
+        },
+        {
+            "name": "terrify"
         }
     ]
 }

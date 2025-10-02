@@ -1,0 +1,17 @@
+elevator-manage-floors-desc = Управляет этажами указанного лифта: добавление, удаление, перемещение или список.
+elevator-manage-floors-help = Использование: { $command } <elevator_id> <action> [floor_name] [direction]\nДействия: add <floor_name>, remove <floor_name>, move <floor_name> <direction>, list\nНаправления для move: up, down, или номер индекса
+elevator-manage-floors-not-found = Лифт с ID '{ $elevatorId }' не найден.
+elevator-manage-floors-floor-exists = Этаж '{ $floorName }' уже существует в лифте '{ $elevatorId }'.
+elevator-manage-floors-added = Добавлен этаж '{ $floorName }' в лифт '{ $elevatorId }'. Текущие этажи: { $floors }
+elevator-manage-floors-floor-not-exists = Этаж '{ $floorName }' не существует в лифте '{ $elevatorId }'.
+elevator-manage-floors-cannot-remove-current = Невозможно удалить текущий этаж '{ $floorName }' из лифта '{ $elevatorId }'.
+elevator-manage-floors-removed = Удалён этаж '{ $floorName }' из лифта '{ $elevatorId }'. Текущие этажи: { $floors }
+elevator-manage-floors-list = Этажи лифта '{ $elevatorId }': { $floors }. Текущий этаж: { $currentFloor }
+elevator-manage-floors-move-help = Для действия 'move' укажите имя этажа и направление: { $command } <elevator_id> move <floor_name> <direction>\nНаправления: up, down, или номер индекса (0-based)
+elevator-manage-floors-already-top = Этаж '{ $floorName }' уже наверху.
+elevator-manage-floors-already-bottom = Этаж '{ $floorName }' уже внизу.
+elevator-manage-floors-invalid-index = Неверный индекс '{ $index }'. Должен быть между 0 и { $maxIndex }.
+elevator-manage-floors-unknown-direction = Неизвестное направление '{ $direction }'. Используйте 'up', 'down', или допустимый номер индекса.
+elevator-manage-floors-moved = Перемещён этаж '{ $floorName }' на позицию { $newIndex }. Текущие этажи: { $floors }
+elevator-manage-floors-unknown-action = Неизвестное действие '{ $action }'. Допустимые действия: add, remove, move, list.
+elevator-manage-floors-args-error = Ожидается как минимум 2 аргумента: elevator_id и action.

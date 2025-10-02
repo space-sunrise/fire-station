@@ -73,40 +73,6 @@
 
 # Scp096
 
-- type: entity
-  id: Scp096Photo
-  parent: BaseScpMaterial
-  name: strange photo
-  components:
-  - type: Sprite
-    layers:
-    - state: scp096-photo-undeveloped
-      map: [ "enum.Scp096PhotoVisualLayers.Base" ]
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTypeTrigger
-        damageType: Bloodloss
-        damage: 3
-      behaviors:
-      - !type:TriggerBehavior
-  - type: Damageable
-  - type: Barotrauma
-    damage:
-      types:
-        Bloodloss: 1
-  - type: AddComponentsOnTrigger
-    components:
-    - type: Scp096Photo
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.Scp096PhotoVisualLayers.Base:
-        base:
-          True: { state: scp096-photo }
-          False: { state: scp096-photo-undeveloped }
-
-
 - type: entity # Для спавнов
   id: Scp096PhotoDeveloped
   parent: BaseScpMaterial
@@ -117,3 +83,53 @@
     layers:
     - state: scp096-photo
   - type: Scp096Photo
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Flammable
+    fireSpread: true
+    alwaysCombustible: true
+    damage:
+      types:
+        Heat: 1
+  - type: FireVisuals
+    sprite: Effects/fire.rsi
+    normalState: fire
+  - type: Appearance
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_pickup.ogg
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_drop.ogg
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_use.ogg
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_drop.ogg
+  - type: EmitSoundOnThrow
+    sound:
+      path: /Audio/_Sunrise/Items/Handling/paper_throw.ogg
+  - type: Tag
+    tags:
+      - Trash
+      - MetaGarbagePreventSaving

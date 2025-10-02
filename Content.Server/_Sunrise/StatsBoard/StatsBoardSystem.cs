@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Server._Scp.MetaGarbage;
 using Content.Server.Cargo.Components;
 using Content.Server.GameTicking;
 using Content.Server.Mind;
@@ -34,6 +35,7 @@ namespace Content.Server.StatsBoard;
 
 public sealed class StatsBoardSystem : EntitySystem
 {
+    [Dependency] private readonly MetaGarbageSystem _metaGarbage = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
     [Dependency] private readonly StationSystem _station = default!;
@@ -507,6 +509,8 @@ public sealed class StatsBoardSystem : EntitySystem
                 playerWithMostPuddleAbsorb = uid;
             }
         }
+
+        result += _metaGarbage.GetStatistics();
 
         result += Loc.GetString("statsentry-species-entry-name") + "\n";
         foreach (var speciesEntry in roundSpecies)

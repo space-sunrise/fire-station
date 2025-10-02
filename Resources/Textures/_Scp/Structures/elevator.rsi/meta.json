@@ -1,0 +1,26 @@
+{
+	"version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by discord: odlieerr",
+	"size": {
+		"x": 96,
+		"y": 96
+	},
+	"states": [
+		{
+			"name": "catwalk"
+		},
+		{
+			"name": "steel"
+		},
+		{
+			"name": "steel_mono"
+		},
+		{
+			"name": "white"
+		},
+		{
+			"name": "white_mono"
+		}
+	]
+}

@@ -2,38 +2,78 @@
   parent: JobIcon
   id: JobIconHD
   icon:
-    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_Scp/Interface/Misc/mtf_icons.rsi
     state: HD
+  jobName: mobile-task-force-HD-name
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconHDleader
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/mtf_icons.rsi
+    state: HD_leader
   jobName: mobile-task-force-HD-name
 
 - type: jobIcon
   parent: JobIcon
   id: JobIconLLH
   icon:
-    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_Scp/Interface/Misc/mtf_icons.rsi
     state: LLH
+  jobName: mobile-task-force-LLH-name
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconLLHleader
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/mtf_icons.rsi
+    state: LLH_leader
   jobName: mobile-task-force-LLH-name
 
 - type: jobIcon
   parent: JobIcon
   id: JobIconMH
   icon:
-    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_Scp/Interface/Misc/mtf_icons.rsi
     state: MH
+  jobName: mobile-task-force-MH-name
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconMHleader
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/mtf_icons.rsi
+    state: MH_leader
   jobName: mobile-task-force-MH-name
 
 - type: jobIcon
   parent: JobIcon
   id: JobIconNTF
   icon:
-    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_Scp/Interface/Misc/mtf_icons.rsi
     state: NTF
+  jobName: mobile-task-force-NTF-name
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconNTFleader
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/mtf_icons.rsi
+    state: NTF_leader
   jobName: mobile-task-force-NTF-name
 
 - type: jobIcon
   parent: JobIcon
   id: JobIconRRH
   icon:
-    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+    sprite: /Textures/_Scp/Interface/Misc/mtf_icons.rsi
     state: RRH
+  jobName: mobile-task-force-RRH-name
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconRRHleader
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/mtf_icons.rsi
+    state: RRH_leader
   jobName: mobile-task-force-RRH-name

@@ -1,0 +1,63 @@
+- type: constructionGraph
+  id: ScpTileSteel
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: scpsteeltile
+          completed:
+            - !type:SetStackCount
+              amount: 4
+          steps:
+            - material: Steel
+              amount: 1
+    - node: scpsteeltile
+      entity: ScpFloorTileItemSteel
+
+- type: constructionGraph
+  id: ScpTileWhite
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: scpwhitetile
+          completed:
+            - !type:SetStackCount
+              amount: 4
+          steps:
+            - material: Steel
+              amount: 1
+    - node: scpwhitetile
+      entity: ScpFloorTileItemWhite
+
+- type: constructionGraph
+  id: ScpTileDark
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: scpdarktile
+          completed:
+            - !type:SetStackCount
+              amount: 4
+          steps:
+            - material: Steel
+              amount: 1
+    - node: scpdarktile
+      entity: ScpFloorTileItemDark
+
+- type: constructionGraph
+  id: ScpTileConcrete
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: scpconcretetile
+          completed:
+            - !type:SetStackCount
+              amount: 4
+          steps:
+            - material: Concrete
+              amount: 1
+    - node: scpconcretetile
+      entity: ScpFloorTileItemConcreteMono

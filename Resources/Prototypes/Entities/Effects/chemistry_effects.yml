@@ -193,7 +193,7 @@
   - type: Airtight
   - type: ReplaceFloorOnSpawn
     replaceableTiles:
-    - Plating
+    - ScpPlating # Fire Edit
     - Lattice
     - TrainLattice
     replacementTiles:

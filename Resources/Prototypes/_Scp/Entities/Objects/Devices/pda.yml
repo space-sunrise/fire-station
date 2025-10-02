@@ -52,6 +52,7 @@
     - NewsReaderCartridge
     - WantedListCartridge
     - LogProbeCartridge
+    - NavigatorCartridge
 
 - type: entity
   parent: ScpBasePDA
@@ -66,6 +67,7 @@
     - NanoTaskCartridge
     - NewsReaderCartridge
     - MedTekCartridge
+    - NavigatorCartridge
 
 - type: entity
   parent: ScpBasePDA
@@ -81,6 +83,7 @@
     - NewsReaderCartridge
     - NetProbeCartridge
     - AstroNavCartridge
+    - NavigatorCartridge
 
 - type: entity
   parent: ScpBasePDA
@@ -332,6 +335,7 @@
     - NanoTaskCartridge
     - NewsReaderCartridge
     - WantedListCartridge
+    - NavigatorCartridge
 
 - type: entity
   parent: ScpBasePDA
@@ -377,6 +381,7 @@
     - NanoTaskCartridge
     - NewsReaderCartridge
     - WantedListCartridge
+    - NavigatorCartridge
 
 - type: entity
   parent: ScpBaseEngineerPDA
@@ -596,6 +601,7 @@
     - WantedListCartridge
     - LogProbeCartridge
     - AstroNavCartridge
+    - NavigatorCartridge
 
 - type: entity
   parent: MobileTaskForcePDA
@@ -649,6 +655,8 @@
     - WantedListCartridge
     - LogProbeCartridge
     - AstroNavCartridge
+    - NavigatorCartridge
+    - PlantAnalyzerCartridge
 
 - type: entity
   parent: ScpBasePDA
@@ -710,6 +718,8 @@
     - WantedListCartridge
     - MedTekCartridge
     - AstroNavCartridge
+    - NavigatorCartridge
+    - PlantAnalyzerCartridge
   - type: Clothing
     quickEquip: false
     slots:

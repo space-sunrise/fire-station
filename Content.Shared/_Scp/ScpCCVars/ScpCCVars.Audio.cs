@@ -5,7 +5,7 @@ namespace Content.Shared._Scp.ScpCCVars;
 public sealed partial class ScpCCVars
 {
     /**
-     * Echo
+     * Эхо
      */
 
     /// <summary>
@@ -21,7 +21,7 @@ public sealed partial class ScpCCVars
         CVarDef.Create("scp.echo_strong_preset_preferred", false, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /**
-     * Audio muffling
+     * Подавление звуков
      */
 
     /// <summary>
