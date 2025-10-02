@@ -17,7 +17,7 @@ public sealed partial class MetaGarbageTargetComponent : Component
     /// Какое процентное соотношение от общего числа собранного в прошлом раунде мусора вернется в новом раунде?
     /// </summary>
     [DataField]
-    public float SpawnPercent = 100f;
+    public float SpawnPercent = 70f;
 
     /// <summary>
     /// Модификаторы количества луж/следов с заданными реагентами.
