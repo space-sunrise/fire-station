@@ -1,0 +1,118 @@
+- type: decal
+  id: ScpConcreteTileGraybox
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: box
+
+- type: decal
+  id: ScpConcreteTileGraycorner_ne
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: corner_ne
+
+- type: decal
+  id: ScpConcreteTileGraycorner_nw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: corner_nw
+
+- type: decal
+  id: ScpConcreteTileGraycorner_se
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: corner_se
+
+- type: decal
+  id: ScpConcreteTileGraycorner_sw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: corner_sw
+
+- type: decal
+  id: ScpConcreteTileGrayend_e
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: end_e
+
+- type: decal
+  id: ScpConcreteTileGrayend_n
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: end_n
+
+- type: decal
+  id: ScpConcreteTileGrayend_s
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: end_s
+
+- type: decal
+  id: ScpConcreteTileGrayend_w
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: end_w
+
+- type: decal
+  id: ScpConcreteTileGrayinner_ne
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: inner_ne
+
+- type: decal
+  id: ScpConcreteTileGrayinner_nw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: inner_nw
+
+- type: decal
+  id: ScpConcreteTileGrayinner_se
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: inner_se
+
+- type: decal
+  id: ScpConcreteTileGrayinner_sw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: inner_sw
+
+- type: decal
+  id: ScpConcreteTileGrayline_e
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: line_e
+
+- type: decal
+  id: ScpConcreteTileGrayline_n
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: line_n
+
+- type: decal
+  id: ScpConcreteTileGrayline_s
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: line_s
+
+- type: decal
+  id: ScpConcreteTileGrayline_w
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/concrete.rsi
+    state: line_w

@@ -1,18 +1,18 @@
-- type: constructionGraph
-  id: TileSteel
-  start: start
-  graph:
-    - node: start
-      edges:
-        - to: steeltile
-          completed:
-            - !type:SetStackCount
-              amount: 4
-          steps:
-            - material: Steel
-              amount: 1
-    - node: steeltile
-      entity: FloorTileItemSteel
+# - type: constructionGraph # Fire Edit
+#   id: TileSteel
+#   start: start
+#   graph:
+#     - node: start
+#       edges:
+#         - to: steeltile
+#           completed:
+#             - !type:SetStackCount
+#               amount: 4
+#           steps:
+#             - material: Steel
+#               amount: 1
+#     - node: steeltile
+#       entity: FloorTileItemSteel
 
 - type: constructionGraph
   id: TileWood
@@ -58,37 +58,37 @@
     - node: reebe
       entity: FloorTileItemBrassReebe
 
-- type: constructionGraph
-  id: TileWhite
-  start: start
-  graph:
-    - node: start
-      edges:
-        - to: whitetile
-          completed:
-            - !type:SetStackCount
-              amount: 4
-          steps:
-            - material: Steel
-              amount: 1
-    - node: whitetile
-      entity: FloorTileItemWhite
+# - type: constructionGraph # Fire Edit
+#   id: TileWhite
+#   start: start
+#   graph:
+#     - node: start
+#       edges:
+#         - to: whitetile
+#           completed:
+#             - !type:SetStackCount
+#               amount: 4
+#           steps:
+#             - material: Steel
+#               amount: 1
+#     - node: whitetile
+#       entity: FloorTileItemWhite
 
-- type: constructionGraph
-  id: TileDark
-  start: start
-  graph:
-    - node: start
-      edges:
-        - to: darktile
-          completed:
-            - !type:SetStackCount
-              amount: 4
-          steps:
-            - material: Steel
-              amount: 1
-    - node: darktile
-      entity: FloorTileItemDark
+# - type: constructionGraph # Fire Edit
+#   id: TileDark
+#   start: start
+#   graph:
+#     - node: start
+#       edges:
+#         - to: darktile
+#           completed:
+#             - !type:SetStackCount
+#               amount: 4
+#           steps:
+#             - material: Steel
+#               amount: 1
+#     - node: darktile
+#       entity: FloorTileItemDark
 
 - type: constructionGraph
   id: TileFlesh

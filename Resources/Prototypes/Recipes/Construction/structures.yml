@@ -675,7 +675,7 @@
       failIfSpace: false
     - !type:TileType
       targets:
-        - Plating
+        - ScpPlating # Fire Edit
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false

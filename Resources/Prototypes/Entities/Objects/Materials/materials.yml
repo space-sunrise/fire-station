@@ -59,7 +59,7 @@
     heldPrefix: cardboard
   - type: FloorTile
     outputs:
-    - Plating
+    - ScpPlating # Fire Edit
   - type: SpawnAfterInteract #Nuke after convert to FloorTile
     prototype: CarpetCard
     doAfter: 0.5
