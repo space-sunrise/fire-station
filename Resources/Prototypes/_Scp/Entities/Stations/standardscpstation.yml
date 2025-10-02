@@ -1,5 +1,6 @@
 ﻿- type: entity
   id: StandardScpStation
+  abstract: true
   parent:
   - BaseStation
   - BaseStationNews  # Новости
@@ -16,6 +17,24 @@
   - BaseComplexTransitHub
   - BaseStationCargo
   - BaseStationAllEventsEligible
-  categories: [ HideSpawnMenu ]
   components:
   - type: Transform
+  - type: MetaGarbageTarget
+    reagentSaveModifiers:
+      Scp173Reagent: 0.1
+      Blood: 0.1
+
+- type: entity
+  id: ScpComplexCompact
+  parent: StandardScpStation
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  id: ScpComplexStandard
+  parent: StandardScpStation
+  categories: [ HideSpawnMenu ]
+
+- type: entity
+  id: ScpComplexModular
+  parent: StandardScpStation
+  categories: [ HideSpawnMenu ]

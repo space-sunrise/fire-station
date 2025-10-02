@@ -24,6 +24,11 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: Tag
+    tags:
+    - Wall
+    - MetaGarbageSavable
+    - MetaGarbageReplace
 
 - type: entity
   parent: WallShuttleDiagonal
@@ -95,6 +100,11 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrongScp
+  - type: Tag
+    tags:
+    - Wall
+    - MetaGarbageSavable
+    - MetaGarbageReplace
   - type: Destructible
     thresholds:
       - trigger:

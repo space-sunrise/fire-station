@@ -72,3 +72,39 @@
     - paper-thaumiel-mode-info
     - paper-generic-scp-bottom
     stampProtoId: RubberStampRegionalCommand
+
+# Документы для сохраненного межраундового мусора
+
+- type: entity
+  id: SendDocumentMetaGarbageSuccessful
+  parent: BaseGameRuleShortDelay
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SendDocumentRule
+    documentName: document-meta-garbage-summary
+    textParts:
+    - paper-generic-scp-header
+    - paper-meta-garbage-successful-info
+    - paper-generic-scp-bottom
+    stampProtoId: RubberStampRegionalCommand
+  - type: GameRule
+    delay:
+      min: 25
+      max: 30
+
+- type: entity
+  id: SendDocumentMetaGarbageFailed
+  parent: BaseGameRuleShortDelay
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SendDocumentRule
+    documentName: document-meta-garbage-summary
+    textParts:
+    - paper-generic-scp-header
+    - paper-meta-garbage-failed-info
+    - paper-generic-scp-bottom
+    stampProtoId: RubberStampRegionalCommand
+  - type: GameRule
+    delay:
+      min: 25
+      max: 30

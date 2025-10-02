@@ -219,3 +219,4 @@
   - type: Tag
     tags:
     - DNASolutionScannable
+    - MetaGarbageSavable # Fire added
