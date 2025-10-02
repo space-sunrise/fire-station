@@ -7,7 +7,7 @@
     useDelay: 4
     icon:
       sprite: _Scp/Actions/scp-106.rsi
-      state: teleport
+      state: teleport_dimension
   - type: InstantAction
     event: !type:Scp106BackroomsAction
       cost: 30
@@ -21,7 +21,7 @@
     useDelay: 4
     icon:
       sprite: _Scp/Actions/scp-106.rsi
-      state: teleport
+      state: teleport_facility
   - type: InstantAction
     event: !type:Scp106RandomTeleportAction
       cost: 30
@@ -108,7 +108,10 @@
     useDelay: 300
     icon:
       sprite: _Scp/Actions/scp-106.rsi
-      state: become_phantom
+      state: blade
+    iconOn:
+      sprite: _Scp/Actions/scp-106.rsi
+      state: blade_active
   - type: InstantAction
     event: !type:Scp106BareBladeAction
       prototype: Scp106ArmBlade
@@ -122,7 +125,7 @@
     useDelay: 300
     icon:
       sprite: _Scp/Actions/scp-106.rsi
-      state: leave_phantom
+      state: terrify
   - type: InstantAction
     event: !type:Scp106TerrifyNearbyActionEvent
       cost: 30
@@ -145,4 +148,3 @@
     event: !type:Scp106BecomePhantomAction
       phantomPrototype: Scp106Phantom
       cost: 30
-### 3 TIRES OF PHANTOM ABILITY END

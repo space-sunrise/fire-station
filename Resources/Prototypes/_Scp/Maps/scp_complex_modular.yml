@@ -7,7 +7,7 @@
   minPlayers: 40
   stations:
     ScpComplexModular:
-      stationProto: StandardScpStation
+      stationProto: ScpComplexModular
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Участок-{0} тип - Modular'

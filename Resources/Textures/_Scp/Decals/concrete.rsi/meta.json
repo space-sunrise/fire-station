@@ -1,0 +1,62 @@
+{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Сreated by odlieerr(Discord) | Odleer(Space Station 14)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "box"
+        },
+        {
+            "name": "corner_ne"
+        },
+        {
+            "name": "corner_se"
+        },
+        {
+            "name": "corner_nw"
+        },
+        {
+            "name": "corner_sw"
+        },
+        {
+            "name": "end_n"
+        },
+        {
+            "name": "end_e"
+        },
+        {
+            "name": "end_s"
+        },
+        {
+            "name": "end_w"
+        },
+        {
+            "name": "line_n"
+        },
+        {
+            "name": "line_e"
+        },
+        {
+            "name": "line_s"
+        },
+        {
+            "name": "line_w"
+        },
+        {
+            "name": "inner_ne"
+        },
+        {
+            "name": "inner_se"
+        },
+        {
+            "name": "inner_nw"
+        },
+        {
+            "name": "inner_sw"
+        }
+    ]
+}

@@ -36,3 +36,15 @@
 
 - type: Tag
   id: LockerGun3x3
+
+- type: Tag
+  id: MetaGarbageSavable
+
+- type: Tag
+  id: MetaGarbagePreventSaving
+
+- type: Tag
+  id: MetaGarbageReplace
+
+- type: Tag
+  id: MetaGarbageCanBeSpawnedInContainer

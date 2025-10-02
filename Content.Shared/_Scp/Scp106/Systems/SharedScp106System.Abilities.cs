@@ -127,14 +127,15 @@ public abstract partial class SharedScp106System
         if (args.Handled)
             return;
 
-        args.Handled = TryToggleBlade(ent, ref args);
+        if (!TryToggleBlade(ent, args.Prototype))
+            return;
+
+        _actions.SetToggled(args.Action.AsNullable(), !args.Action.Comp.Toggled);
+        args.Handled = true;
     }
 
-    public bool TryToggleBlade(Entity<Scp106Component> ent, ref Scp106BareBladeAction args, bool force = false)
+    public bool TryToggleBlade(Entity<Scp106Component> ent, EntProtoId proto, bool force = false)
     {
-        if (args.Handled)
-            return false;
-
         // Клинок можно использовать только в карманном измерении или форсированно через код
         if (!IsInDimension(ent) && !force)
         {
@@ -144,9 +145,7 @@ public abstract partial class SharedScp106System
             return false;
         }
 
-        ToggleBlade(ent, args.Prototype);
-
-        args.Handled = true;
+        ToggleBlade(ent, proto);
         return true;
     }
 

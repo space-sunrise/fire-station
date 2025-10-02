@@ -8,7 +8,7 @@
   maxPlayers: 50
   stations:
     ScpComplexStandard:
-      stationProto: StandardScpStation
+      stationProto: ScpComplexStandard
       components:
         - type: StationNameSetup
           mapNameTemplate: 'Участок-{0} тип - Standard'

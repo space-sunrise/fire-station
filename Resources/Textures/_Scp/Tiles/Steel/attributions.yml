@@ -1,0 +1,4 @@
+- files: ["steel_1", "steel_2", "steel_3", "steel_4", "steel_mono_1", "steel_mono_2", "steel_mono_3", "steel_mono_4", "steel_offset_1", "steel_offset_2", "steel_offset_3", "steel_offset_4"]
+  license: "CLA"
+  copyright: "Sprited by discord: odlieerr"
+  source: "https://github.com/space-sunrise/fire-station"

@@ -50,7 +50,7 @@
   raiseProductEventOnUser: true
   icon:
     sprite: _Scp/Actions/scp-106.rsi
-    state: become_phantom
+    state: blade
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
@@ -68,7 +68,7 @@
   raiseProductEventOnUser: true
   icon:
     sprite: _Scp/Actions/scp-106.rsi
-    state: leave_phantom
+    state: terrify
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1

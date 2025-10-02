@@ -231,7 +231,7 @@
       ignoreAnchored: true
       percent: 0.25
       tiles:
-        - Plating
+        - ScpPlating # Fire Edit
       range: 2
 
 - type: rules

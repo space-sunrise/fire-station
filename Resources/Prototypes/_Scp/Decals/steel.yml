@@ -1,0 +1,118 @@
+- type: decal
+  id: ScpSteelGrilleDiagonalTilebox
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: box
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTilecorner_ne
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: corner_ne
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTilecorner_nw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: corner_nw
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTilecorner_se
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: corner_se
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTilecorner_sw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: corner_sw
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTileend_e
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: end_e
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTileend_n
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: end_n
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTileend_s
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: end_s
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTileend_w
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: end_w
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTileinner_ne
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: inner_ne
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTileinner_nw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: inner_nw
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTileinner_se
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: inner_se
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTileinner_sw
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: inner_sw
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTileline_e
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: line_e
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTileline_n
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: line_n
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTileline_s
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: line_s
+
+- type: decal
+  id: ScpSteelGrilleDiagonalTileline_w
+  tags: ["station", "markings"]
+  sprite:
+    sprite: _Scp/Decals/steel.rsi
+    state: line_w
