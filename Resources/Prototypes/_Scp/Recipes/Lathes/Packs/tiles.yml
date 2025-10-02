@@ -24,37 +24,37 @@
   - FloorTileItemDarkMarble
   # Scp
   - ScpFloorTileItemSteel
-  # - ScpFloorTileItemSteelDiagonal # Пока одлер не нарисует отдельный спрайт
-  # - ScpFloorTileItemSteelHalfMono
-  # - ScpFloorTileItemSteelHalfMonoVertical
-  # - ScpFloorTileItemSteelHerringbone
-  # - ScpFloorTileItemSteelMini
-  # - ScpFloorTileItemSteelMono
-  # - ScpFloorTileItemSteeloffset
-  # - ScpFloorTileItemSteelPavement
-  # - ScpFloorTileItemSteelPavementVertical
+  - ScpFloorTileItemSteelDiagonal
+  - ScpFloorTileItemSteelHalfMono
+  - ScpFloorTileItemSteelHalfMonoVertical
+  - ScpFloorTileItemSteelHerringbone
+  - ScpFloorTileItemSteelMini
+  - ScpFloorTileItemSteelMono
+  - ScpFloorTileItemSteeloffset
+  - ScpFloorTileItemSteelPavement
+  - ScpFloorTileItemSteelPavementVertical
   - ScpFloorTileItemCheckerSteel
   - ScpFloorTileItemDark
-  # - ScpFloorTileItemDarkDiagonal # Пока одлер не нарисует отдельный спрайт
-  # - ScpFloorTileItemDarkHalfMono
-  # - ScpFloorTileItemDarkHalfMonoVertical
-  # - ScpFloorTileItemDarkHerringbone
-  # - ScpFloorTileItemDarkMini
-  # - ScpFloorTileItemDarkMono
-  # - ScpFloorTileItemDarkoffset
-  # - ScpFloorTileItemDarkPavement
-  # - ScpFloorTileItemDarkPavementVertical
+  - ScpFloorTileItemDarkDiagonal
+  - ScpFloorTileItemDarkHalfMono
+  - ScpFloorTileItemDarkHalfMonoVertical
+  - ScpFloorTileItemDarkHerringbone
+  - ScpFloorTileItemDarkMini
+  - ScpFloorTileItemDarkMono
+  - ScpFloorTileItemDarkoffset
+  - ScpFloorTileItemDarkPavement
+  - ScpFloorTileItemDarkPavementVertical
   - ScpFloorTileItemCheckerDark
   - ScpFloorTileItemWhite
-  # - ScpFloorTileItemWhiteDiagonal # Пока одлер не нарисует отдельный спрайт
-  # - ScpFloorTileItemWhiteHalfMono
-  # - ScpFloorTileItemWhiteHalfMonoVertical
-  # - ScpFloorTileItemWhiteHerringbone
-  # - ScpFloorTileItemWhiteMini
-  # - ScpFloorTileItemWhiteMono
-  # - ScpFloorTileItemWhiteoffset
-  # - ScpFloorTileItemWhitePavement
-  # - ScpFloorTileItemWhitePavementVertical
+  - ScpFloorTileItemWhiteDiagonal
+  - ScpFloorTileItemWhiteHalfMono
+  - ScpFloorTileItemWhiteHalfMonoVertical
+  - ScpFloorTileItemWhiteHerringbone
+  - ScpFloorTileItemWhiteMini
+  - ScpFloorTileItemWhiteMono
+  - ScpFloorTileItemWhiteoffset
+  - ScpFloorTileItemWhitePavement
+  - ScpFloorTileItemWhitePavementVertical
   - ScpFloorTileItemCheckerWhite
   - ScpFloorTileItemBlue
   - ScpFloorTileItemGreen
