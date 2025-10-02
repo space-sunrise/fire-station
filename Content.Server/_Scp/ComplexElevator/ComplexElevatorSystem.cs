@@ -4,7 +4,9 @@ using Content.Shared.Timing;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
+using Robust.Server.Audio;
 using Robust.Server.GameObjects;
+using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Maths;
 using Robust.Shared.Timing;
@@ -20,6 +22,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
     [Dependency] private readonly DoorSystem _doorSystem = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     public override void Initialize()
     {
@@ -75,6 +78,8 @@ public sealed class ComplexElevatorSystem : EntitySystem
             return;
         }
 
+        _audio.PlayPvs(ent.Comp.TravelSound, ent);
+
         CloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor);
         KillEntitiesInTargetArea(ent, ent.Comp.IntermediateFloorId);
         ent.Comp.CurrentFloor = ent.Comp.IntermediateFloorId;
@@ -91,6 +96,8 @@ public sealed class ComplexElevatorSystem : EntitySystem
             ent.Comp.CurrentFloor = targetFloor;
             TeleportToFloor(ent, targetFloor);
             OpenDoorsForFloor(ent.Comp.ElevatorId, targetFloor);
+
+            _audio.PlayPvs(ent.Comp.ArrivalSound, ent);
 
             ent.Comp.IsMoving = false;
         });
@@ -142,6 +149,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
             if (elevator.Value.Comp.IsMoving)
                 return;
 
+            _audio.PlayPvs(elevator.Value.Comp.StartSound, elevator.Value);
 
             switch (ent.Comp.ButtonType)
             {
