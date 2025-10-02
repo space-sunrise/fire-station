@@ -5,6 +5,7 @@ using Content.Server._Sunrise.Helpers;
 using Content.Server.Light.EntitySystems;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
+using Content.Shared._Scp.ScpCCVars;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
@@ -15,6 +16,7 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
+using Robust.Shared.Configuration;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -25,9 +27,7 @@ namespace Content.Server._Scp.MetaGarbage;
 /// <summary>
 /// Система сохранения мусора между раундами.
 /// В конце раунда сохраняет мусор, который был в комплексе и спавнит его в начале следующего раунда.
-/// TODO: Статистика сохраненного говна в конце раунда
 /// TODO: Переделать спавн мусора в геймрул
-/// TODO: Сивар на отключение
 /// TODO: Документ директору комплекса, что прошлая смена насрала(или нет)
 /// </summary>
 public sealed partial class MetaGarbageSystem : EntitySystem
@@ -41,6 +41,7 @@ public sealed partial class MetaGarbageSystem : EntitySystem
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
     [Dependency] private readonly LightBulbSystem _bulb = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     private static readonly HashSet<ProtoId<TagPrototype>> AllowedTags = [ "Trash", "MetaGarbageSavable" ];
     private static readonly HashSet<ProtoId<TagPrototype>> ForbiddenTags = [ "MetaGarbagePreventSaving" ];
@@ -49,9 +50,15 @@ public sealed partial class MetaGarbageSystem : EntitySystem
 
     /// <summary>
     /// Сохраненный мусор, который будет передаваться из раунда в раунд.
+    /// Ключ - прототип комплекса, к которому привязан мусор.
+    /// Значение - список данных о мусоре, который был сохранен.
     /// </summary>
     public Dictionary<EntProtoId, List<StationMetaGarbageData>> CachedGarbage { get; private set; } = [];
 
+    /// <summary>
+    /// Радиус поиска аналогичных сущностей, который используется для поиска аналогичных предметов на месте спавна.
+    /// Нужен, чтобы не спавнить замапленный на карте мусор, дублируя его.
+    /// </summary>
     private const float AlreadySpawnedItemsSearchRadius = 0.2f;
 
     public override void Initialize()
@@ -61,21 +68,71 @@ public sealed partial class MetaGarbageSystem : EntitySystem
         SubscribeLocalEvent<MetaGarbageTargetComponent, StationPostInitEvent>(OnMapInit, after:[typeof(SharedSolutionContainerSystem)]);
         SubscribeLocalEvent<RealRoundEndedMessage>(OnRoundEnded);
 
+        InitializeCCVars();
         InitializeDebug();
     }
 
     private void OnMapInit(Entity<MetaGarbageTargetComponent> ent, ref StationPostInitEvent args)
     {
+        if (!_enableSpawningWithoutRule)
+            return;
+
+        TrySpawnGarbage((ent, ent.Comp, args.Station.Comp));
+    }
+
+    private void OnRoundEnded(RealRoundEndedMessage args)
+    {
+        TrySaveGarbage();
+    }
+
+    /// <summary>
+    /// Сохраняет мусор для всех станций
+    /// </summary>
+    public bool TrySaveGarbage()
+    {
+        if (!_enableSaving)
+            return false;
+
+        var query = EntityQueryEnumerator<MetaGarbageTargetComponent, StationDataComponent>();
+
+        while (query.MoveNext(out var uid, out var metaGarbage, out _))
+        {
+            var stationPrototype = Prototype(uid);
+            if (stationPrototype == null)
+                continue;
+
+            // Вычищаем прошлые данные о мусоре на данной карте и собираем их заново
+            CachedGarbage.Remove(stationPrototype);
+
+            // Сохраняем новые данные
+            CollectGarbage((uid, metaGarbage), stationPrototype);
+            PrintDebugInfo(uid);
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Спавнит сохраненный для переданной станции мусор.
+    /// </summary>
+    public bool TrySpawnGarbage(Entity<MetaGarbageTargetComponent?, StationDataComponent?> ent)
+    {
+        if (!_enableSpawning)
+            return false;
+
+        if (!Resolve(ent, ref ent.Comp1, ref ent.Comp2))
+            return false;
+
         var mapPrototype = Prototype(ent);
         if (mapPrototype == null)
-            return;
+            return false;
 
         if (!CachedGarbage.TryGetValue(mapPrototype, out var list))
-            return;
+            return false;
 
-        var mapId = GetStationMapId(args.Station);
+        var mapId = GetStationMapId((ent, ent.Comp2));
         _random.Shuffle(list);
-        var reducedGarbage = _helpers.GetPercentageOfHashSet(list, ent.Comp.SpawnPercent).ToList();
+        var reducedGarbage = _helpers.GetPercentageOfHashSet(list, ent.Comp1.SpawnPercent).ToList();
 
         foreach (var data in reducedGarbage)
         {
@@ -97,26 +154,8 @@ public sealed partial class MetaGarbageSystem : EntitySystem
 
         Log.Info($"Spawned {reducedGarbage.Count}/{list.Count} items");
         PrintDebugInfo(ent);
-    }
 
-    private void OnRoundEnded(RealRoundEndedMessage args)
-    {
-        var query = EntityQueryEnumerator<MetaGarbageTargetComponent, StationDataComponent>();
-
-        while (query.MoveNext(out var uid, out var metaGarbage, out _))
-        {
-            var stationPrototype = Prototype(uid);
-
-            if (stationPrototype == null)
-                return;
-
-            // Вычищаем прошлые данные о мусоре на данной карте и собираем их заново
-            CachedGarbage.Remove(stationPrototype);
-
-            // Сохраняем новые данные
-            CollectGarbage((uid, metaGarbage), stationPrototype);
-            PrintDebugInfo(uid);
-        }
+        return true;
     }
 
     private void CollectGarbage(Entity<MetaGarbageTargetComponent> station, EntProtoId stationPrototype)
@@ -343,6 +382,10 @@ public sealed partial class MetaGarbageSystem : EntitySystem
         return toReturn;
     }
 
+    /// <summary>
+    /// Пытается задать состояние лампочки.
+    /// Например, разбитое или сожженое состояние.
+    /// </summary>
     private bool TrySetBulbState(EntityUid uid, LightBulbState? state)
     {
         if (state == null)
@@ -354,11 +397,20 @@ public sealed partial class MetaGarbageSystem : EntitySystem
         return true;
     }
 
+    /// <summary>
+    /// Пытается найти рядом нужный контейнер и положить внутрь сущность.
+    /// </summary>
+    /// <param name="uid">Сущность, которую мы хотим положить</param>
+    /// <param name="coords">Координаты, где искать контейнер</param>
+    /// <param name="container">Название контейнера, по которому мы будем его искать</param>
+    /// <returns>Получилось ли вставить сущность или нет</returns>
     private bool TryInsertIntoContainer(EntityUid uid, MapCoordinates coords, string? container)
     {
         if (string.IsNullOrEmpty(container))
             return false;
 
+        // Проходимся по всей контейнерам близким к данным координатам.
+        // И проверяем, что этот контейнер имеет нужное нам название.
         var lookup = _lookup.GetEntitiesInRange<ContainerManagerComponent>(coords, 1f);
         foreach (var ent in lookup)
         {
@@ -367,6 +419,8 @@ public sealed partial class MetaGarbageSystem : EntitySystem
                 if (name != container)
                     continue;
 
+                // Проверяем, есть ли в контейнере подобная нашей сущность
+                // Если есть - вытаскиваем ее, удаляем и помещаем нашу.
                 if (comp.ContainedEntities.Count != 0)
                 {
                     var item = EntityUid.Invalid;
@@ -399,6 +453,9 @@ public sealed partial class MetaGarbageSystem : EntitySystem
         return false;
     }
 
+    /// <summary>
+    /// Проверяет, равен ли айди прототипа у двух сущностей.
+    /// </summary>
     private bool IsSameItem(EntityUid uid, EntityUid other)
     {
         var uidProto = Prototype(uid);

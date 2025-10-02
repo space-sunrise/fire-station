@@ -5,7 +5,7 @@ namespace Content.Shared._Scp.ScpCCVars;
 public sealed partial class ScpCCVars
 {
     /**
-     * Auto open character window
+     * Авто-открытие меню персонажа при спавне
      */
 
     /// <summary>
@@ -22,4 +22,26 @@ public sealed partial class ScpCCVars
     /// </summary>
     public static readonly CVarDef<bool> AutoOpenCharacterMenuServerSideEnabled =
         CVarDef.Create("scp.server_auto_open_character_menu", true, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /*
+     * Сохранение мусора между раундами
+     */
+
+    /// <summary>
+    /// Включено ли сохранение мусора между раундами?
+    /// </summary>
+    public static readonly CVarDef<bool> MetaGarbageEnableSaving =
+        CVarDef.Create("scp.meta_garbage_enable_saving", true, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Включен ли спавн сохраненного между раундами мусора?
+    /// </summary>
+    public static readonly CVarDef<bool> MetaGarbageEnableSpawning =
+        CVarDef.Create("scp.meta_garbage_enable_spawning", true, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Будет ли мусор спавниться при загрузке станции без запуска геймрула?
+    /// </summary>
+    public static readonly CVarDef<bool> MetaGarbageEnableSpawningWithoutRule =
+        CVarDef.Create("scp.meta_garbage_enable_spawning_without_rule", true, CVar.SERVERONLY | CVar.ARCHIVE);
 }
