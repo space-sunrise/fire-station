@@ -32,6 +32,14 @@
   - type: Scp
     class: Euclid
   - type: Scp096
+    pickupBlacklist:
+      components:
+      - Gun
+      - MeleeWeapon
+      - Ensnaring # Болы
+      - Handcuff
+      - EmbeddableProjectile
+      - DamageOtherOnHit
   - type: ScpRestriction
     canBeDisarmed: true
     canTakeStaminaDamage: true
@@ -49,6 +57,10 @@
     - BloodSplatter4
     - BloodSplatter5
     - BloodSplatter6
+  - type: ComplexInteraction
+  - type: Hands
+    showInHands: false
+    disableExplosionRecursion: true
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name
     description: ghost-panel-antagonist-scp-description

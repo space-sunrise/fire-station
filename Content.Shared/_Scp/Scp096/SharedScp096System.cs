@@ -70,6 +70,7 @@ public abstract partial class SharedScp096System : EntitySystem
         SubscribeLocalEvent<Scp096Component, ComponentShutdown>(OnShutdown);
 
         InitTargets();
+        InitializeHands();
     }
 
     #region Updater

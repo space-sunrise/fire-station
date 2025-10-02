@@ -1,4 +1,5 @@
-﻿using Robust.Shared.Audio;
+﻿using Content.Shared.Whitelist;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Scp096;
@@ -38,6 +39,18 @@ public sealed partial class Scp096Component : Component
 
     [DataField]
     public float RageSpeed = 8f;
+
+    /// <summary>
+    /// Какие предметы скромник сможет поднимать?
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? PickupWhitelist;
+
+    /// <summary>
+    /// Какие предметы скромник НЕ сможет поднимать?
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? PickupBlacklist;
 
     #region Sounds
 
