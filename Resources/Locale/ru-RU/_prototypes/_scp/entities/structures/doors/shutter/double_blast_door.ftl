@@ -1,0 +1,11 @@
+ent-ScpDoubleBlastDoor = гермоворота
+    .desc = Тяжеленная дверь гермоворот. Лучше бы вам не стоять между ними во время их работы.
+ent-ScpDoubleBlastDoorOpen = { ent-ScpDoubleBlastDoor }
+    .suffix = Открытый
+    .desc = { ent-ScpDoubleBlastDoor.desc }
+ent-ScpDoubleBlastDoorNoSound = { ent-ScpDoubleBlastDoor }
+    .suffix = Беззвука
+    .desc = { ent-ScpDoubleBlastDoor.desc }
+ent-ScpDoubleBlastDoorOpenNoSound = { ent-ScpDoubleBlastDoor }
+    .suffix = Открытый | Беззвука
+    .desc = { ent-ScpDoubleBlastDoor.desc }
