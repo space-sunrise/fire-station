@@ -1,0 +1,9 @@
+ent-EnergyTransferDevice = подстанция передачи энергии
+    .desc = Передает энергию между двумя точками.
+    .suffix = Режим баланса
+ent-EnergyTransferDevice_Send = { ent-EnergyTransferDevice }
+    .desc = { ent-EnergyTransferDevice.desc }
+    .suffix = Режим передачи
+ent-EnergyTransferDevice_Receive = { ent-EnergyTransferDevice }
+    .desc = { ent-EnergyTransferDevice.desc }
+    .suffix = Режим приема
