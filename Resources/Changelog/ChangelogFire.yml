@@ -6409,3 +6409,17 @@
   id: 260
   time: '2025-10-02T17:14:05.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/600
+- author: Neyran
+  changes:
+  - message: "\u0418\u0441\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u0430 \u043F\u0440\
+      \u043E\u0431\u043B\u0435\u043C\u0430 \u0447\u0442\u043E \u043B\u0438\u0444\u0442\
+      \u044B \u043C\u043E\u0436\u043D\u043E \u0434\u0432\u0438\u0433\u0430\u0442\u044C\
+      \u0441\u044F \u043F\u0435\u0440\u0435\u0442\u044F\u0433\u0438\u0432\u0430\u044F\
+      \ \u0435\u0433\u043E \u043A\u0430\u043A \u043E\u0431\u044B\u0447\u043D\u044B\
+      \u0439 \u043F\u0440\u0435\u0434\u043C\u0435\u0442 \u0438\u043B\u0438 \u043E\u0442\
+      \u043A\u0440\u0435\u043F\u043B\u0435\u043D\u043D\u0443\u044E \u0441\u0442\u0440\
+      \u0443\u043A\u0442\u0443\u0440\u0443."
+    type: Fix
+  id: 261
+  time: '2025-10-03T14:28:00.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/601
