@@ -6423,3 +6423,11 @@
   id: 261
   time: '2025-10-03T14:28:00.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/601
+- author: Odleer
+  changes:
+  - message: "\u0420\u0435\u0441\u043F\u0440\u0430\u0439\u0442 \u0438\u043D\u0436\u0435\
+      \u043D\u0435\u0440\u043D\u044B\u0445 \u0441\u0442\u0435\u043D."
+    type: Tweak
+  id: 262
+  time: '2025-10-03T16:49:39.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/602
