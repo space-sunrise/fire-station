@@ -23,6 +23,13 @@
     reagentSaveModifiers:
       Scp173Reagent: 0.1
       Blood: 0.1
+  - type: RandomPlanet
+    data:
+    - biome: ScpComplexSnow
+      weather:
+      - SnowfallHeavy
+      - SnowfallMedium
+      - SnowfallLight
 
 - type: entity
   id: ScpComplexCompact
