@@ -1,0 +1,62 @@
+- type: entity
+  parent: GasPipeBase
+  id: GasTransferDevice
+  name: gas transmission substation
+  description: Transfers gas between two points.
+  suffix: Balance mode
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/gascanisterport.rsi
+    layers:
+      - sprite: Structures/Piping/Atmospherics/pipe.rsi
+        state: pipeUnaryConnectors
+        map: [ "enum.PipeVisualLayers.Pipe" ]
+      - state: gasCanisterPort
+  - type: GasTransfer
+    inletName: inlet
+    transferRate: 100
+  - type: AtmosPipeLayers
+    alternativePrototypes:
+      Primary: GasTransferDevice
+      Secondary: GasTransferDevice
+      Tertiary: GasTransferDevice
+  - type: NodeContainer
+    nodes:
+      inlet:
+        !type:PipeNode
+        nodeGroupID: Pipe
+        pipeDirection: Longitudinal
+  - type: AtmosDevice
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrongScp
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50000
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDevice_Send
+  name: gas transmission substation
+  description: Transfers gas between two points.
+  suffix: Send mode
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDevice_Receive
+  name: gas transmission substation
+  description: Transfers gas between two points.
+  suffix: Receive mode
+  components:
+  - type: GasTransfer
+    mode: Receive
