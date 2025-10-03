@@ -9,7 +9,7 @@
     sprite: Structures/Machines/server.rsi
     state: server
   - type: EnergyTransfer
-    transferRate: 150000
+    transferRate: 10000
     isActive: true
   - type: NodeContainer
     examinable: true
@@ -21,7 +21,7 @@
         !type:CableDeviceNode
         nodeGroupID: HVPower
   - type: Battery
-    maxCharge: 2500000
+    maxCharge: 250000
     startingCharge: 0
   - type: ExaminableBattery
   - type: BatteryDischarger
@@ -63,8 +63,6 @@
   suffix: Send mode
   components:
   - type: EnergyTransfer
-    transferRate: 150000
-    isActive: true
     mode: Send
 
 - type: entity
@@ -75,6 +73,4 @@
   suffix: Receive mode
   components:
   - type: EnergyTransfer
-    transferRate: 150000
-    isActive: true
     mode: Receive
