@@ -38,6 +38,22 @@
     Structural: 20
 
 - type: damageModifierSet
+  id: StructuralMetallicMediumScp # Для ScpHighSecDoor
+  coefficients:
+    Blunt: 0.8
+    Slash: 0.8
+    Piercing: 0.8
+    Shock: 1.2
+    Heat: 1.2
+    Structural: 0.5
+  flatReductions:
+    Blunt: 20
+    Slash: 20
+    Piercing: 20
+    Heat: 15
+    Structural: 15
+
+- type: damageModifierSet
   id: StructuralMetallicStrongScp
   coefficients:
     Blunt: 0.3
