@@ -1,5 +1,4 @@
 - type: entity
-  parent: BaseMachine
   id: ComplexElevator
   name: Elevator
   suffix: "Elevator of the complex"
@@ -14,8 +13,6 @@
   - type: Icon
     sprite: _Scp/Structures/elevator.rsi
     state: steel
-  - type: Transform
-    anchored: true
   - type: Clickable
   - type: Physics
     bodyType: Static
