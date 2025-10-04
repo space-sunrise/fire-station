@@ -6,8 +6,6 @@
   components:
   - type: Paper
     content: paper-text-scp049-contract
-    stampedName: stamp-component-stamped-name-regional-command
-    stampedColor: "#cc0000"
     stampState: "paper_stamp-hos"
     stampedBy:
     - stampedColor: '#cc0000'
