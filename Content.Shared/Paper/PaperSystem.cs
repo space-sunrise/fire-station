@@ -318,6 +318,11 @@ public sealed class PaperSystem : EntitySystem
 
     private void UpdateUserInterface(Entity<PaperComponent> entity)
     {
+        // Fire added start - для визуала дневника
+        var ev = new PaperWrittenEvent();
+        RaiseLocalEvent(entity, ref ev);
+        // Fire added end
+
         _uiSystem.SetUiState(entity.Owner, PaperUiKey.Key, new PaperBoundUserInterfaceState(entity.Comp.Content, entity.Comp.DefaultColor, entity.Comp.StampedBy, entity.Comp.Mode, entity.Comp.ImageContent, entity.Comp.ImageScale)); // Sunrise-edit
     }
 }
@@ -334,3 +339,8 @@ public record struct PaperWriteEvent(EntityUid User, EntityUid Paper);
 /// <param name="paper">The paper that the writing will take place on.</param>
 [ByRefEvent]
 public record struct PaperWriteAttemptEvent(EntityUid Paper, string? FailReason = null, bool Cancelled = false);
+
+// Fire added start - для визуала дневника
+[ByRefEvent]
+public record struct PaperWrittenEvent;
+// Fire added end
