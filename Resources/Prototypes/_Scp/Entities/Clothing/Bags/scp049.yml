@@ -28,6 +28,8 @@
       - Pen
   - type: StorageFill
     contents:
+    - id: BookScp049Diary
+    - id: LuxuryPen
     - id: Hemostat
     - id: Saw
     - id: Drill

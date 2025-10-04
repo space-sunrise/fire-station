@@ -1,0 +1,53 @@
+﻿- type: entity
+  parent: BasePlushie
+  id: PlushieScp999
+  name: SCP-999 plushie
+  description: A soft orange toy, resembling a slightly melted lump of jelly, exudes a warm, soothing glow. When touched, it emits a barely audible squeak of satisfaction, as if it is happy to be hugged.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Fun/Plushies/scp999.rsi
+    state: icon
+  - type: Item
+    sprite: _Scp/Objects/Fun/Plushies/scp999.rsi
+    size: Normal
+  - type: MultiHandedItem
+  - type: EmitSoundOnUse
+    sound: &PlushieScp999Sound
+      collection: HappyScp999
+  - type: EmitSoundOnLand
+    sound: *PlushieScp999Sound
+  - type: EmitSoundOnActivate
+    sound: *PlushieScp999Sound
+  - type: EmitSoundOnTrigger
+    sound: *PlushieScp999Sound
+  - type: EmitSoundOnCollide
+    sound: *PlushieScp999Sound
+  - type: Food
+    requiresSpecialDigestion: true
+    useSound: *PlushieScp999Sound
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit: *PlushieScp999Sound
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Fiber
+        Quantity: 10
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Fiber
+          Quantity: 10
+        - ReagentId: JuiceThatMakesYouWeh
+          Quantity: 10
+  - type: Clothing
+    quickEquip: false
+    sprite: _Scp/Objects/Fun/Plushies/scp999.rsi
+    slots:
+    - HEAD
+  - type: Tag
+    tags:
+    - Payload
+    - ClothMade

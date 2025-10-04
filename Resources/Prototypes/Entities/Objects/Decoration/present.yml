@@ -47,6 +47,9 @@
   components:
   - type: SpawnItemsOnUse
     items:
+      # Fire added start
+      - id: PlushieScp999
+      # Fire added end
       - id: PresentTrash
       - id: Bucket
         orGroup: GiftPool

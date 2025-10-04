@@ -280,6 +280,11 @@
       prob: 0.01
       orGroup: Swag
     #plushies
+    # Fire added start
+    - id: PlushieScp999
+      prob: 0.01
+      orGroup: Plushies
+    # Fire added end
     - id: PlushieRGBee
       prob: 0.01
       orGroup: Plushies
