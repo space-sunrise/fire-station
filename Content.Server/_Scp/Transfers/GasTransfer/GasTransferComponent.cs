@@ -1,3 +1,5 @@
+using Content.Server.NodeContainer.Nodes;
+
 namespace Content.Server._Scp.Transfers.GasTransfer;
 
 [RegisterComponent]
@@ -22,7 +24,7 @@ public sealed partial class GasTransferComponent : Component
     public EntityUid? Partner;
 
     [ViewVariables]
-    public Content.Server.NodeContainer.Nodes.PipeNode? PartnerPipe;
+    public PipeNode? PartnerPipe;
 
     [ViewVariables]
     public GasTransferComponent? PartnerTransferComp;

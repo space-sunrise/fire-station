@@ -82,16 +82,16 @@ public sealed class EnergyTransferSystem : EntitySystem
         }
 
         if (!TryComp<BatteryComponent>(partnerUid, out partnerBattery!) ||
-            !TryComp<EnergyTransferComponent>(partnerUid, out var transferComp))
+            !TryComp<EnergyTransferComponent>(partnerUid, out var partnerTransferComp))
         {
             InvalidatePartner(ent.Comp);
             return false;
         }
 
         ent.Comp.PartnerBattery = partnerBattery;
-        ent.Comp.PartnerTransferComp = transferComp;
+        ent.Comp.PartnerTransferComp = partnerTransferComp;
 
-        if (!transferComp.Partner.HasValue || transferComp.Partner.Value != ent.Owner)
+        if (!partnerTransferComp.Partner.HasValue || partnerTransferComp.Partner.Value != ent.Owner)
         {
             InvalidatePartner(ent.Comp);
             if (!FindPartner(ent))
@@ -99,7 +99,7 @@ public sealed class EnergyTransferSystem : EntitySystem
             return ValidatePartner(ent, out partnerBattery, out partnerUid);
         }
 
-        if (!transferComp.IsActive)
+        if (!partnerTransferComp.IsActive)
             return false;
 
         return true;

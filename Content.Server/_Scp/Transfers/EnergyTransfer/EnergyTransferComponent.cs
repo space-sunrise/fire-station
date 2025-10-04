@@ -1,3 +1,5 @@
+using Content.Server.Power.Components;
+
 namespace Content.Server._Scp.Transfers.EnergyTransfer;
 
 [RegisterComponent]
