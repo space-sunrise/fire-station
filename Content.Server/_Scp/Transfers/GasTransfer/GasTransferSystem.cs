@@ -39,6 +39,10 @@ public sealed class GasTransferSystem : EntitySystem
         if (!ValidatePartner(ent, out var partnerPipe))
             return;
 
+        // Only the device with the smaller EntityUid performs the transfer to avoid double processing
+        if (ent.Owner > partnerPipe.Owner)
+            return;
+
         TransferGas(ent, partnerPipe, args.dt);
     }
 
@@ -61,7 +65,7 @@ public sealed class GasTransferSystem : EntitySystem
         }
 
         if (!TryComp<GasTransferComponent>(partnerUid, out var transferComp) ||
-            !_nodeContainer.TryGetNode<PipeNode>(partnerUid, ent.Comp.InletName, out partnerPipe!))
+            !_nodeContainer.TryGetNode<PipeNode>(partnerUid, transferComp.InletName, out partnerPipe!))
         {
             ent.Comp.Partner = null;
             return false;

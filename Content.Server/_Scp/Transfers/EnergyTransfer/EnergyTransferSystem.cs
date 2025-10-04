@@ -38,6 +38,9 @@ public sealed class EnergyTransferSystem : EntitySystem
             if (!ValidatePartner((uid, comp), out var partnerBattery, out var partnerUid))
                 continue;
 
+            if (uid > partnerUid)
+                continue;
+
             var sourceEnt = (uid, battery, comp);
             TransferEnergy(sourceEnt, (partnerUid, partnerBattery), frameTime);
         }
@@ -100,6 +103,8 @@ public sealed class EnergyTransferSystem : EntitySystem
     private void TransferEnergy(Entity<BatteryComponent, EnergyTransferComponent> sourceEnt, Entity<BatteryComponent> targetEnt, float frameTime)
     {
         var maxTransfer = sourceEnt.Comp2.TransferRate * frameTime;
+        if (float.IsNaN(maxTransfer) || float.IsInfinity(maxTransfer) || maxTransfer <= 0f)
+            return;
 
         switch (sourceEnt.Comp2.Mode)
         {
