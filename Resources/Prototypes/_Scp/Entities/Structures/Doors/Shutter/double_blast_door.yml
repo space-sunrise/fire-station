@@ -1,0 +1,78 @@
+﻿- type: entity
+  id: ScpDoubleBlastDoor
+  parent: BlastDoor
+  name: double blast door
+  description: The heavy door of the hermetic gate. You'd better not stand between them while they're working.
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Shutters/double_blastdoor.rsi
+    layers:
+    - state: closed
+      map: ["enum.DoorVisualLayers.Base"]
+  - type: Door
+    closeTimeOne: 1.0
+    closeTimeTwo: 1.0
+    openTimeOne: 1.0
+    openTimeTwo: 1.0
+    openingAnimationTime: 2
+    closingAnimationTime: 2
+    openSound:
+      path: /Audio/_Scp/Machines/bigdooropen.ogg
+    closeSound:
+      path: /Audio/_Scp/Machines/bigdoorclose.ogg
+  - type: Destructible
+    thresholds:
+      - trigger:
+          !type:DamageTrigger
+          damage: 1800
+        behaviors:
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+      - trigger:
+          !type:DamageTrigger
+          damage: 1500
+        behaviors:
+          - !type:SpawnEntitiesBehavior
+            spawn:
+              SheetPlasteel1:
+                min: 2
+                max: 6
+              PartRodMetal1:
+                min: 3
+                max: 6
+          - !type:DoActsBehavior
+            acts: [ "Destruction" ]
+
+- type: entity
+  id: ScpDoubleBlastDoorOpen
+  parent: ScpDoubleBlastDoor
+  suffix: Open
+  components:
+  - type: Door
+    state: Open
+  - type: Occluder
+    enabled: false
+  - type: Physics
+    canCollide: false
+  - type: Airtight
+    airBlocked: false
+  - type: RadiationBlocker
+    enabled: false
+
+- type: entity
+  id: ScpDoubleBlastDoorNoSound
+  parent: ScpDoubleBlastDoor
+  suffix: NoSound
+  components:
+  - type: Door
+    openSound:
+    closeSound:
+
+- type: entity
+  id: ScpDoubleBlastDoorOpenNoSound
+  parent: ScpDoubleBlastDoorOpen
+  suffix: Open | NoSound
+  components:
+  - type: Door
+    openSound:
+    closeSound:
