@@ -10,7 +10,6 @@
     state: server
   - type: EnergyTransfer
     transferRate: 10000
-    isActive: true
   - type: NodeContainer
     examinable: true
     nodes:
