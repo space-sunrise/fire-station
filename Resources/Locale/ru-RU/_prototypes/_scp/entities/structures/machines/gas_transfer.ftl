@@ -1,9 +1,9 @@
 ent-GasTransferDevice = порт передачи газа
     .desc = Передает газ между двумя точками.
-    .suffix = Режим баланса
+    .suffix = Баланс
 ent-GasTransferDevice_Send = { ent-GasTransferDevice }
     .desc = { ent-GasTransferDevice.desc }
-    .suffix = Режим передачи
+    .suffix = Передача
 ent-GasTransferDevice_Receive = { ent-GasTransferDevice }
     .desc = { ent-GasTransferDevice.desc }
-    .suffix = Режим приема
+    .suffix = Прием
