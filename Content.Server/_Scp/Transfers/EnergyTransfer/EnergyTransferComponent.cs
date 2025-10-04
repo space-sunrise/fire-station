@@ -21,10 +21,7 @@ public sealed partial class EnergyTransferComponent : Component
     public EntityUid? Partner;
 
     [ViewVariables]
-    public BatteryComponent? PartnerBattery;
-
-    [ViewVariables]
-    public EnergyTransferComponent? PartnerTransferComp;
+    public Entity<BatteryComponent?, EnergyTransferComponent?>? PartnerEntity;
 }
 
 public enum EnergyTransferMode
