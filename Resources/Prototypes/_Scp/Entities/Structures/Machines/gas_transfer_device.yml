@@ -64,7 +64,7 @@
 - type: entity
   parent: GasTransferDevice
   id: GasTransferDeviceAdministration
-  name: administration gas transmission substation
+  name: gas transmission substation
   suffix: Administration
   components:
   - type: GasTransfer
@@ -73,7 +73,7 @@
 - type: entity
   parent: GasTransferDevice
   id: GasTransferDeviceTechnical
-  name: technical service gas transmission substation
+  name: gas transmission substation
   suffix: Technical Service
   components:
   - type: GasTransfer
@@ -82,7 +82,7 @@
 - type: entity
   parent: GasTransferDevice
   id: GasTransferDeviceScientific
-  name: scientific service gas transmission substation
+  name: gas transmission substation
   suffix: Scientific Service
   components:
   - type: GasTransfer
@@ -91,7 +91,7 @@
 - type: entity
   parent: GasTransferDevice
   id: GasTransferDeviceMedical
-  name: medical service gas transmission substation
+  name: gas transmission substation
   suffix: Medical Service
   components:
   - type: GasTransfer
@@ -100,7 +100,7 @@
 - type: entity
   parent: GasTransferDevice
   id: GasTransferDeviceService
-  name: service gas transmission substation
+  name: gas transmission substation
   suffix: Service
   components:
   - type: GasTransfer
@@ -109,7 +109,7 @@
 - type: entity
   parent: GasTransferDevice
   id: GasTransferDeviceLogistics
-  name: logistics service gas transmission substation
+  name: gas transmission substation
   suffix: Logistics Service
   components:
   - type: GasTransfer
@@ -118,25 +118,25 @@
 - type: entity
   parent: GasTransferDevice
   id: GasTransferDeviceCommandant
-  name: commandant's office gas transmission substation
+  name: gas transmission substation
   suffix: Commandant's Office
   components:
   - type: GasTransfer
-    linkId: commandant
+    linkId: adm
 
 - type: entity
   parent: GasTransferDevice
-  id: GasTransferDeviceOSN
-  name: osn gas transmission substation
-  suffix: OSN
+  id: GasTransferDeviceSPS
+  name: gas transmission substation
+  suffix: SPS
   components:
   - type: GasTransfer
-    linkId: osn
+    linkId: sps
 
 - type: entity
   parent: GasTransferDevice
   id: GasTransferDeviceSpare1
-  name: auxiliary gas transmission substation
+  name: gas transmission substation
   suffix: Auxiliary 1
   components:
   - type: GasTransfer
@@ -145,7 +145,7 @@
 - type: entity
   parent: GasTransferDevice
   id: GasTransferDeviceSpare2
-  name: auxiliary gas transmission substation
+  name: gas transmission substation
   suffix: Auxiliary 2
   components:
   - type: GasTransfer
@@ -154,7 +154,7 @@
 - type: entity
   parent: GasTransferDevice
   id: GasTransferDeviceSpare3
-  name: auxiliary gas transmission substation
+  name: gas transmission substation
   suffix: Auxiliary 3
   components:
   - type: GasTransfer
@@ -273,17 +273,17 @@
     mode: Receive
 
 - type: entity
-  parent: GasTransferDeviceOSN
-  id: GasTransferDeviceOSNSend
-  suffix: OSN Send
+  parent: GasTransferDeviceSPS
+  id: GasTransferDeviceSPSSend
+  suffix: SPS Send
   components:
   - type: GasTransfer
     mode: Send
 
 - type: entity
-  parent: GasTransferDeviceOSN
-  id: GasTransferDeviceOSNReceive
-  suffix: OSN Receive
+  parent: GasTransferDeviceSPS
+  id: GasTransferDeviceSPSReceive
+  suffix: SPS Receive
   components:
   - type: GasTransfer
     mode: Receive
