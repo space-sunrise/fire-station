@@ -146,7 +146,7 @@
   suffix: Special Purpose Squad 
   components:
   - type: EnergyTransfer
-    linkId: osn
+    linkId: sps
 
 - type: entity
   parent: EnergyTransferDevice
