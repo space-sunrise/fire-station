@@ -75,6 +75,9 @@
     rewardMinAmount: 0
     rewardMaxAmount: 0
     possibleRewards:
+    # Fire added start
+    - PlushieScp999
+    # Fire added end
     - Basketball
     - BalloonNT
     - BalloonCorgi

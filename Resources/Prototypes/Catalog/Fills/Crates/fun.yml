@@ -2,6 +2,9 @@
   id: AllPlushiesTable
   table: !type:GroupSelector
     children:
+    # Fire added start
+    - id: PlushieScp999
+    # Fire added end
     - id: PlushieBee
     - id: PlushieNar
       weight: 0.5
