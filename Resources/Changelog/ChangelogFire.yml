@@ -6473,3 +6473,19 @@
   id: 264
   time: '2025-10-04T12:58:18.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/606
+- author: ThereDrD
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u0434\u043D\u0435\u0432\
+      \u043D\u0438\u043A SCP-049, \u0432 \u043A\u043E\u0442\u043E\u0440\u043E\u043C\
+      \ \u043E\u043D \u043C\u043E\u0436\u0435\u0442 \u0434\u0435\u043B\u0430\u0442\
+      \u044C \u0441\u0432\u043E\u0438 \u0437\u0430\u043F\u0438\u0441\u0438. \u041D\
+      \u0430\u0445\u043E\u0434\u0438\u0442\u0441\u044F \u0432 \u0441\u0443\u043C\u043A\
+      \u0435 \u0443 \u0434\u043E\u043A\u0442\u043E\u0440\u0430 \u0432\u043C\u0435\u0441\
+      \u0442\u0435 \u0441 \u0440\u0443\u0447\u043A\u043E\u0439"
+    type: Add
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430 \u043F\u043B\u044E\
+      \u0448\u0435\u0432\u0430\u044F \u0438\u0433\u0440\u0443\u0448\u043A\u0430 SCP-999"
+    type: Add
+  id: 265
+  time: '2025-10-04T13:13:14.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/608
