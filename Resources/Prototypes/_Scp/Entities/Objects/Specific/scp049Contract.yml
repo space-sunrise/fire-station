@@ -1,0 +1,12 @@
+- type: entity
+  id: Scp049Contract
+  name: contract SCP-049
+  description: A contract outlining the rights and obligations of interaction between SCP-049 and the Foundation
+  parent: Paper
+  components:
+  - type: Paper
+    content: paper-text-scp049-contract
+    stampState: "paper_stamp-hos"
+    stampedBy:
+    - stampedColor: '#cc0000'
+      stampedName: stamp-component-stamped-name-regional-command
