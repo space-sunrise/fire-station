@@ -141,7 +141,7 @@
 
 - type: entity
   parent: EnergyTransferDevice
-  id: EnergyTransferDeviceOSN
+  id: EnergyTransferDeviceSpecialPurposeSquad 
   name: osn power transmission substation
   suffix: Special Purpose Squad 
   components:
