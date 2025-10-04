@@ -60,3 +60,253 @@
   components:
   - type: GasTransfer
     mode: Receive
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDevice_Command
+  name: command gas transmission substation
+  suffix: Command
+  components:
+  - type: GasTransfer
+    linkId: command
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDevice_Security
+  name: security gas transmission substation
+  suffix: Security
+  components:
+  - type: GasTransfer
+    linkId: security
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDevice_Engineering
+  name: engineering gas transmission substation
+  suffix: Engineering
+  components:
+  - type: GasTransfer
+    linkId: engineering
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDevice_Medical
+  name: medical gas transmission substation
+  suffix: Medical
+  components:
+  - type: GasTransfer
+    linkId: medical
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDevice_Science
+  name: science gas transmission substation
+  suffix: Science
+  components:
+  - type: GasTransfer
+    linkId: science
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDevice_Cargo
+  name: cargo gas transmission substation
+  suffix: Cargo
+  components:
+  - type: GasTransfer
+    linkId: cargo
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDevice_Service
+  name: service gas transmission substation
+  suffix: Service
+  components:
+  - type: GasTransfer
+    linkId: service
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDevice_Spare1
+  name: auxiliary gas transmission substation
+  suffix: Auxiliary 1
+  components:
+  - type: GasTransfer
+    linkId: aux1
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDevice_Spare2
+  name: auxiliary gas transmission substation
+  suffix: Auxiliary 2
+  components:
+  - type: GasTransfer
+    linkId: aux2
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDevice_Spare3
+  name: auxiliary gas transmission substation
+  suffix: Auxiliary 3
+  components:
+  - type: GasTransfer
+    linkId: aux3
+
+- type: entity
+  parent: GasTransferDevice_Command
+  id: GasTransferDevice_Command_Send
+  suffix: Command Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDevice_Command
+  id: GasTransferDevice_Command_Receive
+  suffix: Command Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDevice_Security
+  id: GasTransferDevice_Security_Send
+  suffix: Security Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDevice_Security
+  id: GasTransferDevice_Security_Receive
+  suffix: Security Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDevice_Engineering
+  id: GasTransferDevice_Engineering_Send
+  suffix: Engineering Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDevice_Engineering
+  id: GasTransferDevice_Engineering_Receive
+  suffix: Engineering Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDevice_Medical
+  id: GasTransferDevice_Medical_Send
+  suffix: Medical Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDevice_Medical
+  id: GasTransferDevice_Medical_Receive
+  suffix: Medical Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDevice_Science
+  id: GasTransferDevice_Science_Send
+  suffix: Science Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDevice_Science
+  id: GasTransferDevice_Science_Receive
+  suffix: Science Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDevice_Cargo
+  id: GasTransferDevice_Cargo_Send
+  suffix: Cargo Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDevice_Cargo
+  id: GasTransferDevice_Cargo_Receive
+  suffix: Cargo Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDevice_Service
+  id: GasTransferDevice_Service_Send
+  suffix: Service Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDevice_Service
+  id: GasTransferDevice_Service_Receive
+  suffix: Service Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDevice_Spare1
+  id: GasTransferDevice_Spare1_Send
+  suffix: Auxiliary 1 Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDevice_Spare1
+  id: GasTransferDevice_Spare1_Receive
+  suffix: Auxiliary 1 Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDevice_Spare2
+  id: GasTransferDevice_Spare2_Send
+  suffix: Auxiliary 2 Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDevice_Spare2
+  id: GasTransferDevice_Spare2_Receive
+  suffix: Auxiliary 2 Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDevice_Spare3
+  id: GasTransferDevice_Spare3_Send
+  suffix: Auxiliary 3 Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDevice_Spare3
+  id: GasTransferDevice_Spare3_Receive
+  suffix: Auxiliary 3 Receive
+  components:
+  - type: GasTransfer
+    mode: Receive

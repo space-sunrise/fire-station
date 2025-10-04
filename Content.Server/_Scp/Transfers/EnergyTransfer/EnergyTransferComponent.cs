@@ -1,13 +1,10 @@
-namespace Content.Server._Scp.EnergyTransfer;
+namespace Content.Server._Scp.Transfers.EnergyTransfer;
 
 [RegisterComponent]
 public sealed partial class EnergyTransferComponent : Component
 {
     [DataField]
-    public string SourceStructureId = "";
-
-    [DataField]
-    public string TargetStructureId = "";
+    public string LinkId = "";
 
     [DataField]
     public float TransferRate = 150000f;
@@ -17,6 +14,9 @@ public sealed partial class EnergyTransferComponent : Component
 
     [DataField]
     public EnergyTransferMode Mode = EnergyTransferMode.Balance;
+
+    [ViewVariables]
+    public EntityUid? Partner;
 }
 
 public enum EnergyTransferMode

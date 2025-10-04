@@ -1,13 +1,10 @@
-namespace Content.Server._Scp.GasTransfer;
+namespace Content.Server._Scp.Transfers.GasTransfer;
 
 [RegisterComponent]
 public sealed partial class GasTransferComponent : Component
 {
     [DataField]
-    public string SourceStructureId = "";
-
-    [DataField]
-    public string TargetStructureId = "";
+    public string LinkId = "";
 
     [DataField]
     public string InletName = "inlet";
@@ -20,6 +17,9 @@ public sealed partial class GasTransferComponent : Component
 
     [DataField]
     public GasTransferMode Mode = GasTransferMode.Balance;
+
+    [ViewVariables]
+    public EntityUid? Partner;
 }
 
 public enum GasTransferMode

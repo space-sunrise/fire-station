@@ -3,8 +3,9 @@ using Content.Server.Atmos.Piping.Components;
 using Content.Server.NodeContainer.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
 using Content.Shared.Atmos;
+using Robust.Shared.Map;
 
-namespace Content.Server._Scp.GasTransfer;
+namespace Content.Server._Scp.Transfers.GasTransfer;
 
 public sealed class GasTransferSystem : EntitySystem
 {
@@ -18,76 +19,105 @@ public sealed class GasTransferSystem : EntitySystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<GasTransferComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<GasTransferComponent, AtmosDeviceUpdateEvent>(OnGasTransferUpdated);
+    }
+
+    private void OnMapInit(Entity<GasTransferComponent> ent, ref MapInitEvent args)
+    {
+        FindPartner(ent);
     }
 
     private void OnGasTransferUpdated(Entity<GasTransferComponent> ent, ref AtmosDeviceUpdateEvent args)
     {
-        if (!ent.Comp.IsActive || string.IsNullOrEmpty(ent.Comp.SourceStructureId) || string.IsNullOrEmpty(ent.Comp.TargetStructureId))
+        if (!ent.Comp.IsActive)
             return;
 
-        if (!TryFindPairedDevices(ent.Comp, out var sourceUid, out var targetUid))
+        if (string.IsNullOrEmpty(ent.Comp.LinkId))
             return;
 
-        if (!TryGetPipeNodes(sourceUid!.Value, targetUid!.Value, ent.Comp.InletName, out var sourcePipe, out var targetPipe))
+        if (!ValidatePartner(ent, out var partnerPipe))
             return;
 
-        TransferGas(ent.Comp, sourcePipe!, targetPipe!, args.dt);
+        TransferGas(ent, partnerPipe, args.dt);
     }
 
-    private bool TryFindPairedDevices(GasTransferComponent comp, out EntityUid? sourceUid, out EntityUid? targetUid)
+    private bool ValidatePartner(Entity<GasTransferComponent> ent, out PipeNode partnerPipe)
     {
-        sourceUid = null;
-        targetUid = null;
+        partnerPipe = default!;
 
-        var transferQuery = EntityQueryEnumerator<GasTransferComponent>();
-        while (transferQuery.MoveNext(out var uid, out var transferComp))
+        if (!ent.Comp.Partner.HasValue)
         {
-            if (transferComp.SourceStructureId == comp.SourceStructureId)
-                sourceUid = uid;
-            if (transferComp.SourceStructureId == comp.TargetStructureId)
-                targetUid = uid;
-
-            if (sourceUid.HasValue && targetUid.HasValue)
-                break;
+            if (!FindPartner(ent))
+                return false;
         }
 
-        return sourceUid.HasValue && targetUid.HasValue;
-    }
+        var partnerUid = ent.Comp.Partner!.Value;
 
-    private bool TryGetPipeNodes(EntityUid sourceUid, EntityUid targetUid, string inletName, out PipeNode? sourcePipe, out PipeNode? targetPipe)
-    {
-        sourcePipe = null;
-        targetPipe = null;
-
-        if (!_nodeContainer.TryGetNode(sourceUid, inletName, out sourcePipe))
+        if (!Exists(partnerUid))
+        {
+            ent.Comp.Partner = null;
             return false;
+        }
 
-        if (!_nodeContainer.TryGetNode(targetUid, inletName, out targetPipe))
+        if (!TryComp<GasTransferComponent>(partnerUid, out var transferComp) ||
+            !_nodeContainer.TryGetNode<PipeNode>(partnerUid, ent.Comp.InletName, out partnerPipe!))
+        {
+            ent.Comp.Partner = null;
             return false;
+        }
+
+        if (!transferComp.Partner.HasValue || transferComp.Partner.Value != ent.Owner)
+        {
+            if (!FindPartner(ent))
+                return false;
+        }
 
         return true;
     }
 
-    private void TransferGas(GasTransferComponent comp, PipeNode inlet, PipeNode outlet, float dt)
+    private bool FindPartner(Entity<GasTransferComponent> ent)
     {
-        var maxTransfer = comp.TransferRate * dt;
+        var transferQuery = EntityQueryEnumerator<GasTransferComponent>();
+        while (transferQuery.MoveNext(out var otherUid, out var otherComp))
+        {
+            if (otherUid == ent.Owner)
+                continue;
+
+            if (otherComp.LinkId == ent.Comp.LinkId)
+            {
+                ent.Comp.Partner = otherUid;
+                otherComp.Partner = ent.Owner;
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+    private void TransferGas(Entity<GasTransferComponent> ent, PipeNode partnerPipe, float dt)
+    {
+        if (!_nodeContainer.TryGetNode<PipeNode>(ent.Owner, ent.Comp.InletName, out var ourPipe))
+            return;
+
+        var maxTransfer = ent.Comp.TransferRate * dt;
 
         if (float.IsNaN(maxTransfer) || float.IsInfinity(maxTransfer) || maxTransfer < 0)
             return;
 
-        switch (comp.Mode)
+        switch (ent.Comp.Mode)
         {
             case GasTransferMode.Balance:
-                BalanceGas(inlet, outlet, maxTransfer);
+                BalanceGas(ourPipe, partnerPipe, maxTransfer);
                 break;
 
             case GasTransferMode.Send:
-                SendGas(inlet, outlet, maxTransfer);
+                SendGas(ourPipe, partnerPipe, maxTransfer);
                 break;
 
             case GasTransferMode.Receive:
-                ReceiveGas(inlet, outlet, maxTransfer);
+                ReceiveGas(ourPipe, partnerPipe, maxTransfer);
                 break;
         }
     }
@@ -101,10 +131,11 @@ public sealed class GasTransferSystem : EntitySystem
             return;
 
         var diff = totalMolesA - totalMolesB;
-        if (Math.Abs(diff) < BalanceThreshold)
+        var absDiff = Math.Abs(diff);
+        if (absDiff < BalanceThreshold)
             return;
 
-        var requiredTransfer = Math.Abs(diff) / 2f;
+        var requiredTransfer = absDiff / 2f;
         if (float.IsNaN(requiredTransfer) || float.IsInfinity(requiredTransfer))
             return;
 

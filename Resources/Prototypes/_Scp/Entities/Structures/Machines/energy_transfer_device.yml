@@ -74,3 +74,256 @@
   components:
   - type: EnergyTransfer
     mode: Receive
+
+# Department-specific variants
+- type: entity
+  parent: EnergyTransferDevice
+  id: EnergyTransferDevice_Command
+  name: command power transmission substation
+  suffix: Command
+  components:
+  - type: EnergyTransfer
+    linkId: command
+
+- type: entity
+  parent: EnergyTransferDevice
+  id: EnergyTransferDevice_Security
+  name: security power transmission substation
+  suffix: Security
+  components:
+  - type: EnergyTransfer
+    linkId: security
+
+- type: entity
+  parent: EnergyTransferDevice
+  id: EnergyTransferDevice_Engineering
+  name: engineering power transmission substation
+  suffix: Engineering
+  components:
+  - type: EnergyTransfer
+    linkId: engineering
+
+- type: entity
+  parent: EnergyTransferDevice
+  id: EnergyTransferDevice_Medical
+  name: medical power transmission substation
+  suffix: Medical
+  components:
+  - type: EnergyTransfer
+    linkId: medical
+
+- type: entity
+  parent: EnergyTransferDevice
+  id: EnergyTransferDevice_Science
+  name: science power transmission substation
+  suffix: Science
+  components:
+  - type: EnergyTransfer
+    linkId: science
+
+- type: entity
+  parent: EnergyTransferDevice
+  id: EnergyTransferDevice_Cargo
+  name: cargo power transmission substation
+  suffix: Cargo
+  components:
+  - type: EnergyTransfer
+    linkId: cargo
+
+- type: entity
+  parent: EnergyTransferDevice
+  id: EnergyTransferDevice_Service
+  name: service power transmission substation
+  suffix: Service
+  components:
+  - type: EnergyTransfer
+    linkId: service
+
+# Spare variants
+- type: entity
+  parent: EnergyTransferDevice
+  id: EnergyTransferDevice_Spare1
+  name: auxiliary power transmission substation
+  suffix: Auxiliary 1
+  components:
+  - type: EnergyTransfer
+    linkId: aux1
+
+- type: entity
+  parent: EnergyTransferDevice
+  id: EnergyTransferDevice_Spare2
+  name: auxiliary power transmission substation
+  suffix: Auxiliary 2
+  components:
+  - type: EnergyTransfer
+    linkId: aux2
+
+- type: entity
+  parent: EnergyTransferDevice
+  id: EnergyTransferDevice_Spare3
+  name: auxiliary power transmission substation
+  suffix: Auxiliary 3
+  components:
+  - type: EnergyTransfer
+    linkId: aux3
+
+# Send/Receive variants for departments
+- type: entity
+  parent: EnergyTransferDevice_Command
+  id: EnergyTransferDevice_Command_Send
+  suffix: Command Send
+  components:
+  - type: EnergyTransfer
+    mode: Send
+
+- type: entity
+  parent: EnergyTransferDevice_Command
+  id: EnergyTransferDevice_Command_Receive
+  suffix: Command Receive
+  components:
+  - type: EnergyTransfer
+    mode: Receive
+
+- type: entity
+  parent: EnergyTransferDevice_Security
+  id: EnergyTransferDevice_Security_Send
+  suffix: Security Send
+  components:
+  - type: EnergyTransfer
+    mode: Send
+
+- type: entity
+  parent: EnergyTransferDevice_Security
+  id: EnergyTransferDevice_Security_Receive
+  suffix: Security Receive
+  components:
+  - type: EnergyTransfer
+    mode: Receive
+
+- type: entity
+  parent: EnergyTransferDevice_Engineering
+  id: EnergyTransferDevice_Engineering_Send
+  suffix: Engineering Send
+  components:
+  - type: EnergyTransfer
+    mode: Send
+
+- type: entity
+  parent: EnergyTransferDevice_Engineering
+  id: EnergyTransferDevice_Engineering_Receive
+  suffix: Engineering Receive
+  components:
+  - type: EnergyTransfer
+    mode: Receive
+
+- type: entity
+  parent: EnergyTransferDevice_Medical
+  id: EnergyTransferDevice_Medical_Send
+  suffix: Medical Send
+  components:
+  - type: EnergyTransfer
+    mode: Send
+
+- type: entity
+  parent: EnergyTransferDevice_Medical
+  id: EnergyTransferDevice_Medical_Receive
+  suffix: Medical Receive
+  components:
+  - type: EnergyTransfer
+    mode: Receive
+
+- type: entity
+  parent: EnergyTransferDevice_Science
+  id: EnergyTransferDevice_Science_Send
+  suffix: Science Send
+  components:
+  - type: EnergyTransfer
+    mode: Send
+
+- type: entity
+  parent: EnergyTransferDevice_Science
+  id: EnergyTransferDevice_Science_Receive
+  suffix: Science Receive
+  components:
+  - type: EnergyTransfer
+    mode: Receive
+
+- type: entity
+  parent: EnergyTransferDevice_Cargo
+  id: EnergyTransferDevice_Cargo_Send
+  suffix: Cargo Send
+  components:
+  - type: EnergyTransfer
+    mode: Send
+
+- type: entity
+  parent: EnergyTransferDevice_Cargo
+  id: EnergyTransferDevice_Cargo_Receive
+  suffix: Cargo Receive
+  components:
+  - type: EnergyTransfer
+    mode: Receive
+
+- type: entity
+  parent: EnergyTransferDevice_Service
+  id: EnergyTransferDevice_Service_Send
+  suffix: Service Send
+  components:
+  - type: EnergyTransfer
+    mode: Send
+
+- type: entity
+  parent: EnergyTransferDevice_Service
+  id: EnergyTransferDevice_Service_Receive
+  suffix: Service Receive
+  components:
+  - type: EnergyTransfer
+    mode: Receive
+
+- type: entity
+  parent: EnergyTransferDevice_Spare1
+  id: EnergyTransferDevice_Spare1_Send
+  suffix: Auxiliary 1 Send
+  components:
+  - type: EnergyTransfer
+    mode: Send
+
+- type: entity
+  parent: EnergyTransferDevice_Spare1
+  id: EnergyTransferDevice_Spare1_Receive
+  suffix: Auxiliary 1 Receive
+  components:
+  - type: EnergyTransfer
+    mode: Receive
+
+- type: entity
+  parent: EnergyTransferDevice_Spare2
+  id: EnergyTransferDevice_Spare2_Send
+  suffix: Auxiliary 2 Send
+  components:
+  - type: EnergyTransfer
+    mode: Send
+
+- type: entity
+  parent: EnergyTransferDevice_Spare2
+  id: EnergyTransferDevice_Spare2_Receive
+  suffix: Auxiliary 2 Receive
+  components:
+  - type: EnergyTransfer
+    mode: Receive
+
+- type: entity
+  parent: EnergyTransferDevice_Spare3
+  id: EnergyTransferDevice_Spare3_Send
+  suffix: Auxiliary 3 Send
+  components:
+  - type: EnergyTransfer
+    mode: Send
+
+- type: entity
+  parent: EnergyTransferDevice_Spare3
+  id: EnergyTransferDevice_Spare3_Receive
+  suffix: Auxiliary 3 Receive
+  components:
+  - type: EnergyTransfer
+    mode: Receive
