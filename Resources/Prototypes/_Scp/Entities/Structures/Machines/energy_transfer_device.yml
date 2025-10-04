@@ -141,7 +141,7 @@
   parent: EnergyTransferDevice
   id: EnergyTransferDeviceSPS
   name: power transmission substation
-  suffix: Special Purpose Squad 
+  suffix: SPS
   components:
   - type: EnergyTransfer
     linkId: sps
@@ -288,7 +288,7 @@
 - type: entity
   parent: EnergyTransferDeviceSPS
   id: EnergyTransferDeviceSPSSend
-  suffix: Special Purpose Squad  Send
+  suffix: SPS Send
   components:
   - type: EnergyTransfer
     mode: Send
@@ -296,7 +296,7 @@
 - type: entity
   parent: EnergyTransferDeviceSPS
   id: EnergyTransferDeviceSPSReceive
-  suffix: Special Purpose Squad Receive
+  suffix: SPS Receive
   components:
   - type: EnergyTransfer
     mode: Receive
