@@ -30,10 +30,10 @@ public sealed class GasTransferSystem : EntitySystem
 
     private void OnGasTransferUpdated(Entity<GasTransferComponent> ent, ref AtmosDeviceUpdateEvent args)
     {
-        if (!ent.Comp.IsActive)
-            return;
-
         if (string.IsNullOrEmpty(ent.Comp.LinkId))
+            return;
+            
+        if (!ent.Comp.IsActive)
             return;
 
         if (!ValidatePartner(ent, out var partnerPipe))

@@ -29,10 +29,9 @@ public sealed class EnergyTransferSystem : EntitySystem
         var query = EntityQueryEnumerator<EnergyTransferComponent, BatteryComponent>();
         while (query.MoveNext(out var uid, out var comp, out var battery))
         {
-            if (!comp.IsActive)
-                continue;
-
             if (string.IsNullOrEmpty(comp.LinkId))
+                continue;
+            if (!comp.IsActive)
                 continue;
 
             if (!ValidatePartner((uid, comp), out var partnerBattery, out var partnerUid))
@@ -125,9 +124,12 @@ public sealed class EnergyTransferSystem : EntitySystem
     private void TransferEnergy(Entity<BatteryComponent, EnergyTransferComponent> sourceEnt, Entity<BatteryComponent> targetEnt, float frameTime)
     {
         var maxTransfer = sourceEnt.Comp2.TransferRate * frameTime;
-        if (float.IsNaN(maxTransfer) || float.IsInfinity(maxTransfer) || maxTransfer <= 0f)
+        if (float.IsNaN(maxTransfer) || float.IsInfinity(maxTransfer))
             return;
 
+        if (maxTransfer < 0)
+            return;
+            
         switch (sourceEnt.Comp2.Mode)
         {
             case EnergyTransferMode.Balance:
