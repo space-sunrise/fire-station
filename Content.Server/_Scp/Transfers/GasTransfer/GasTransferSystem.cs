@@ -32,11 +32,14 @@ public sealed class GasTransferSystem : EntitySystem
     {
         if (string.IsNullOrEmpty(ent.Comp.LinkId))
             return;
-            
+
         if (!ent.Comp.IsActive)
             return;
 
         if (!ValidatePartner(ent, out var partnerPipe))
+            return;
+
+        if (ent.Owner.CompareTo(partnerPipe.Owner) > 0)
             return;
 
         if (!Exists(partnerPipe.Owner))
