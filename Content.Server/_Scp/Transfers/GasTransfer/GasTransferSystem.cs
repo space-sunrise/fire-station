@@ -112,10 +112,16 @@ public sealed class GasTransferSystem : EntitySystem
 
     private bool FindPartner(Entity<GasTransferComponent> ent)
     {
+        if (string.IsNullOrEmpty(ent.Comp.LinkId))
+            return false;
+
         var transferQuery = EntityQueryEnumerator<GasTransferComponent>();
         while (transferQuery.MoveNext(out var otherUid, out var otherComp))
         {
             if (otherUid == ent.Owner)
+                continue;
+
+            if (string.IsNullOrEmpty(otherComp.LinkId))
                 continue;
 
             if (otherComp.LinkId == ent.Comp.LinkId)

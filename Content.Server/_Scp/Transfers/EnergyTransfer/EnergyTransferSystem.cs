@@ -114,10 +114,16 @@ public sealed class EnergyTransferSystem : EntitySystem
 
     private bool FindPartner(Entity<EnergyTransferComponent> ent)
     {
+        if (string.IsNullOrEmpty(ent.Comp.LinkId))
+            return false;
+
         var transferQuery = EntityQueryEnumerator<EnergyTransferComponent>();
         while (transferQuery.MoveNext(out var otherUid, out var otherComp))
         {
             if (otherUid == ent.Owner)
+                continue;
+
+            if (string.IsNullOrEmpty(otherComp.LinkId))
                 continue;
 
             if (otherComp.LinkId == ent.Comp.LinkId)
