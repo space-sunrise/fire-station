@@ -39,7 +39,7 @@ public sealed class GasTransferSystem : EntitySystem
         if (!ValidatePartner(ent, out var partnerPipe))
             return;
 
-        if (ent.Owner.Id > partnerPipe.Owner.Id)
+        if (!Exists(partnerPipe.Owner))
             return;
 
         TransferGas(ent, partnerPipe, args.dt);
@@ -56,12 +56,6 @@ public sealed class GasTransferSystem : EntitySystem
         }
 
         var partnerUid = ent.Comp.Partner!.Value;
-
-        if (!Exists(partnerUid))
-        {
-            InvalidatePartner(ent.Comp);
-            return false;
-        }
 
         if (ent.Comp.PartnerPipe != null && ent.Comp.PartnerTransferComp != null)
         {
@@ -89,16 +83,11 @@ public sealed class GasTransferSystem : EntitySystem
         ent.Comp.PartnerPipe = partnerPipe;
         ent.Comp.PartnerTransferComp = partnerTransferComp;
 
-        if (!partnerTransferComp.Partner.HasValue || partnerTransferComp.Partner.Value != ent.Owner)
+        if (!partnerTransferComp.Partner.HasValue || partnerTransferComp.Partner.Value != ent.Owner || !partnerTransferComp.IsActive)
         {
             InvalidatePartner(ent.Comp);
-            if (!FindPartner(ent))
-                return false;
-            return ValidatePartner(ent, out partnerPipe);
-        }
-
-        if (!partnerTransferComp.IsActive)
             return false;
+        }
 
         return true;
     }
@@ -170,7 +159,10 @@ public sealed class GasTransferSystem : EntitySystem
         var totalMolesA = inlet.Air.TotalMoles;
         var totalMolesB = outlet.Air.TotalMoles;
 
-        if (float.IsNaN(totalMolesA) || float.IsNaN(totalMolesB) || float.IsNegative(totalMolesA) || float.IsNegative(totalMolesB))
+        if (float.IsNaN(totalMolesA) || float.IsNaN(totalMolesB))
+            return;
+
+        if (float.IsNegative(totalMolesA) || float.IsNegative(totalMolesB))
             return;
 
         var diff = totalMolesA - totalMolesB;
@@ -179,8 +171,6 @@ public sealed class GasTransferSystem : EntitySystem
             return;
 
         var requiredTransfer = absDiff / 2f;
-        if (float.IsNaN(requiredTransfer) || float.IsInfinity(requiredTransfer))
-            return;
 
         var transferAmount = Math.Min(requiredTransfer, maxTransfer);
 
@@ -230,7 +220,7 @@ public sealed class GasTransferSystem : EntitySystem
 
     private void TransferGasMixture(PipeNode fromNode, PipeNode toNode, float moles)
     {
-        if (moles <= 0 || fromNode.Air.TotalMoles <= 0 || float.IsNaN(moles) || float.IsInfinity(moles))
+        if (fromNode.Air.TotalMoles <= 0)
             return;
 
         var removed = fromNode.Air.Remove(moles);
