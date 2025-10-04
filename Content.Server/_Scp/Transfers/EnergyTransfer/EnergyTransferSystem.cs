@@ -58,17 +58,6 @@ public sealed class EnergyTransferSystem : EntitySystem
 
         partnerUid = ent.Comp.Partner!.Value;
 
-        if (ent.Comp.PartnerEntity is { } cachedEntity &&
-            cachedEntity.Comp1 != null &&
-            cachedEntity.Comp2 != null &&
-            cachedEntity.Comp2.Partner.HasValue &&
-            cachedEntity.Comp2.Partner.Value == ent.Owner &&
-            cachedEntity.Comp2.IsActive)
-        {
-            partnerBattery = cachedEntity.Comp1;
-            return true;
-        }
-
         if (!TryComp<BatteryComponent>(partnerUid, out partnerBattery!) ||
             !TryComp<EnergyTransferComponent>(partnerUid, out var partnerTransferComp))
         {
@@ -76,13 +65,13 @@ public sealed class EnergyTransferSystem : EntitySystem
             return false;
         }
 
-        ent.Comp.PartnerEntity = (partnerUid, partnerBattery, partnerTransferComp);
-
         if (!partnerTransferComp.Partner.HasValue || partnerTransferComp.Partner.Value != ent.Owner || !partnerTransferComp.IsActive)
         {
             InvalidatePartner(ent.Comp);
             return false;
         }
+
+        ent.Comp.PartnerEntity = (partnerUid, partnerBattery, partnerTransferComp);
 
         return true;
     }

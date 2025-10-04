@@ -60,26 +60,16 @@ public sealed class GasTransferSystem : EntitySystem
 
         var partnerUid = ent.Comp.Partner!.Value;
 
-        if (ent.Comp.PartnerTransferComp != null &&
-            ent.Comp.PartnerTransferComp.Partner.HasValue &&
-            ent.Comp.PartnerTransferComp.Partner.Value == ent.Owner &&
-            ent.Comp.PartnerTransferComp.IsActive &&
-            ent.Comp.PartnerPipe != null)
-        {
-            partnerPipe = ent.Comp.PartnerPipe;
-            return true;
-        }
-
-        InvalidatePartner(ent.Comp);
-
         if (!TryComp<GasTransferComponent>(partnerUid, out var partnerTransferComp) ||
             !_nodeContainer.TryGetNode<PipeNode>(partnerUid, partnerTransferComp.InletName, out partnerPipe!))
         {
+            InvalidatePartner(ent.Comp);
             return false;
         }
 
         if (!partnerTransferComp.Partner.HasValue || partnerTransferComp.Partner.Value != ent.Owner || !partnerTransferComp.IsActive)
         {
+            InvalidatePartner(ent.Comp);
             return false;
         }
 
