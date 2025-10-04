@@ -39,8 +39,7 @@ public sealed class GasTransferSystem : EntitySystem
         if (!ValidatePartner(ent, out var partnerPipe))
             return;
 
-        // Only the device with the smaller EntityUid performs the transfer to avoid double processing
-        if (ent.Owner > partnerPipe.Owner)
+        if (ent.Owner.CompareTo(partnerPipe.Owner) > 0)
             return;
 
         TransferGas(ent, partnerPipe, args.dt);

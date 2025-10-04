@@ -38,7 +38,7 @@ public sealed class EnergyTransferSystem : EntitySystem
             if (!ValidatePartner((uid, comp), out var partnerBattery, out var partnerUid))
                 continue;
 
-            if (uid > partnerUid)
+            if (uid.CompareTo(partnerUid) > 0)
                 continue;
 
             var sourceEnt = (uid, battery, comp);
