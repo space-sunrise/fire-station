@@ -122,7 +122,7 @@
   suffix: Commandant's Office
   components:
   - type: GasTransfer
-    linkId: adm
+    linkId: commandant
 
 - type: entity
   parent: GasTransferDevice
