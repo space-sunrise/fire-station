@@ -39,7 +39,7 @@ public sealed class GasTransferSystem : EntitySystem
         if (!ValidatePartner(ent, out var partnerPipe))
             return;
 
-        if (ent.Owner.CompareTo(partnerPipe.Owner) > 0)
+        if (ent.Owner.Id > partnerPipe.Owner.Id)
             return;
 
         TransferGas(ent, partnerPipe, args.dt);
@@ -59,27 +59,55 @@ public sealed class GasTransferSystem : EntitySystem
 
         if (!Exists(partnerUid))
         {
-            ent.Comp.Partner = null;
+            InvalidatePartner(ent.Comp);
             return false;
+        }
+
+        if (ent.Comp.PartnerPipe != null && ent.Comp.PartnerTransferComp != null)
+        {
+            partnerPipe = ent.Comp.PartnerPipe;
+            var transferComp = ent.Comp.PartnerTransferComp;
+
+            if (!transferComp.Partner.HasValue || transferComp.Partner.Value != ent.Owner || !transferComp.IsActive)
+            {
+                InvalidatePartner(ent.Comp);
+                if (!FindPartner(ent))
+                    return false;
+                return ValidatePartner(ent, out partnerPipe);
+            }
+
+            return true;
         }
 
         if (!TryComp<GasTransferComponent>(partnerUid, out var transferComp) ||
             !_nodeContainer.TryGetNode<PipeNode>(partnerUid, transferComp.InletName, out partnerPipe!))
         {
-            ent.Comp.Partner = null;
+            InvalidatePartner(ent.Comp);
             return false;
         }
 
+        ent.Comp.PartnerPipe = partnerPipe;
+        ent.Comp.PartnerTransferComp = transferComp;
+
         if (!transferComp.Partner.HasValue || transferComp.Partner.Value != ent.Owner)
         {
+            InvalidatePartner(ent.Comp);
             if (!FindPartner(ent))
                 return false;
+            return ValidatePartner(ent, out partnerPipe);
         }
 
         if (!transferComp.IsActive)
             return false;
 
         return true;
+    }
+
+    private void InvalidatePartner(GasTransferComponent comp)
+    {
+        comp.Partner = null;
+        comp.PartnerPipe = null;
+        comp.PartnerTransferComp = null;
     }
 
     private bool FindPartner(Entity<GasTransferComponent> ent)
@@ -92,6 +120,9 @@ public sealed class GasTransferSystem : EntitySystem
 
             if (otherComp.LinkId == ent.Comp.LinkId)
             {
+                InvalidatePartner(ent.Comp);
+                InvalidatePartner(otherComp);
+
                 ent.Comp.Partner = otherUid;
                 otherComp.Partner = ent.Owner;
                 return true;
@@ -177,7 +208,10 @@ public sealed class GasTransferSystem : EntitySystem
 
     private float CalculateTransferAmount(float availableMoles, float maxTransfer)
     {
-        if (float.IsNaN(availableMoles) || float.IsNaN(maxTransfer) || float.IsNegative(availableMoles) || float.IsNegative(maxTransfer))
+        if (float.IsNaN(availableMoles) || float.IsNaN(maxTransfer))
+            return 0f;
+
+        if (float.IsNegative(availableMoles) || float.IsNegative(maxTransfer))
             return 0f;
 
         var transferAmount = Math.Min(maxTransfer, availableMoles);

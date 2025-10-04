@@ -38,7 +38,7 @@ public sealed class EnergyTransferSystem : EntitySystem
             if (!ValidatePartner((uid, comp), out var partnerBattery, out var partnerUid))
                 continue;
 
-            if (uid.CompareTo(partnerUid) > 0)
+            if (uid.Id > partnerUid.Id)
                 continue;
 
             var sourceEnt = (uid, battery, comp);
@@ -61,27 +61,55 @@ public sealed class EnergyTransferSystem : EntitySystem
 
         if (!Exists(partnerUid))
         {
-            ent.Comp.Partner = null;
+            InvalidatePartner(ent.Comp);
             return false;
+        }
+
+        if (ent.Comp.PartnerBattery != null && ent.Comp.PartnerTransferComp != null)
+        {
+            partnerBattery = ent.Comp.PartnerBattery;
+            var transferComp = ent.Comp.PartnerTransferComp;
+
+            if (!transferComp.Partner.HasValue || transferComp.Partner.Value != ent.Owner || !transferComp.IsActive)
+            {
+                InvalidatePartner(ent.Comp);
+                if (!FindPartner(ent))
+                    return false;
+                return ValidatePartner(ent, out partnerBattery, out partnerUid);
+            }
+
+            return true;
         }
 
         if (!TryComp<BatteryComponent>(partnerUid, out partnerBattery!) ||
             !TryComp<EnergyTransferComponent>(partnerUid, out var transferComp))
         {
-            ent.Comp.Partner = null;
+            InvalidatePartner(ent.Comp);
             return false;
         }
 
+        ent.Comp.PartnerBattery = partnerBattery;
+        ent.Comp.PartnerTransferComp = transferComp;
+
         if (!transferComp.Partner.HasValue || transferComp.Partner.Value != ent.Owner)
         {
+            InvalidatePartner(ent.Comp);
             if (!FindPartner(ent))
                 return false;
+            return ValidatePartner(ent, out partnerBattery, out partnerUid);
         }
 
         if (!transferComp.IsActive)
             return false;
 
         return true;
+    }
+
+    private void InvalidatePartner(EnergyTransferComponent comp)
+    {
+        comp.Partner = null;
+        comp.PartnerBattery = null;
+        comp.PartnerTransferComp = null;
     }
 
     private bool FindPartner(Entity<EnergyTransferComponent> ent)
@@ -94,6 +122,9 @@ public sealed class EnergyTransferSystem : EntitySystem
 
             if (otherComp.LinkId == ent.Comp.LinkId)
             {
+                InvalidatePartner(ent.Comp);
+                InvalidatePartner(otherComp);
+
                 ent.Comp.Partner = otherUid;
                 otherComp.Partner = ent.Owner;
                 return true;
@@ -112,22 +143,22 @@ public sealed class EnergyTransferSystem : EntitySystem
         switch (sourceEnt.Comp2.Mode)
         {
             case EnergyTransferMode.Balance:
-                BalanceEnergy(sourceEnt.Comp1, targetEnt.Comp, sourceEnt.Owner, targetEnt.Owner, maxTransfer);
+                BalanceEnergy(sourceEnt, targetEnt, maxTransfer);
                 break;
 
             case EnergyTransferMode.Send:
-                SendEnergy(sourceEnt.Comp1, targetEnt.Comp, sourceEnt.Owner, targetEnt.Owner, maxTransfer);
+                SendEnergy(sourceEnt, targetEnt, maxTransfer);
                 break;
 
             case EnergyTransferMode.Receive:
-                ReceiveEnergy(sourceEnt.Comp1, targetEnt.Comp, sourceEnt.Owner, targetEnt.Owner, maxTransfer);
+                ReceiveEnergy(sourceEnt, targetEnt, maxTransfer);
                 break;
         }
     }
 
-    private void BalanceEnergy(BatteryComponent batteryA, BatteryComponent batteryB, EntityUid sourceUid, EntityUid targetUid, float maxTransfer)
+    private void BalanceEnergy(Entity<BatteryComponent> sourceEnt, Entity<BatteryComponent> targetEnt, float maxTransfer)
     {
-        var chargeDiff = batteryA.CurrentCharge - batteryB.CurrentCharge;
+        var chargeDiff = sourceEnt.Comp.CurrentCharge - targetEnt.Comp.CurrentCharge;
         var absChargeDiff = Math.Abs(chargeDiff);
         if (absChargeDiff < BalanceThreshold)
             return;
@@ -136,64 +167,64 @@ public sealed class EnergyTransferSystem : EntitySystem
 
         if (chargeDiff > 0)
         {
-            var availableCapacity = batteryB.MaxCharge - batteryB.CurrentCharge;
+            var availableCapacity = targetEnt.Comp.MaxCharge - targetEnt.Comp.CurrentCharge;
             transferAmount = Math.Min(transferAmount, availableCapacity);
 
             if (transferAmount > 0)
             {
-                TransferCharge(sourceUid, batteryA, -transferAmount);
-                TransferCharge(targetUid, batteryB, transferAmount);
+                TransferCharge(sourceEnt, -transferAmount);
+                TransferCharge(targetEnt, transferAmount);
             }
         }
         else
         {
-            var availableCapacity = batteryA.MaxCharge - batteryA.CurrentCharge;
+            var availableCapacity = sourceEnt.Comp.MaxCharge - sourceEnt.Comp.CurrentCharge;
             transferAmount = Math.Min(transferAmount, availableCapacity);
 
             if (transferAmount > 0)
             {
-                TransferCharge(targetUid, batteryB, -transferAmount);
-                TransferCharge(sourceUid, batteryA, transferAmount);
+                TransferCharge(targetEnt, -transferAmount);
+                TransferCharge(sourceEnt, transferAmount);
             }
         }
     }
 
-    private void SendEnergy(BatteryComponent batteryA, BatteryComponent batteryB, EntityUid sourceUid, EntityUid targetUid, float maxTransfer)
+    private void SendEnergy(Entity<BatteryComponent> sourceEnt, Entity<BatteryComponent> targetEnt, float maxTransfer)
     {
-        if (batteryA.CurrentCharge <= 0)
+        if (sourceEnt.Comp.CurrentCharge <= 0)
             return;
 
-        var availableCapacity = batteryB.MaxCharge - batteryB.CurrentCharge;
+        var availableCapacity = targetEnt.Comp.MaxCharge - targetEnt.Comp.CurrentCharge;
         if (availableCapacity <= 0)
             return;
 
-        var transferAmount = Math.Min(Math.Min(maxTransfer, batteryA.CurrentCharge), availableCapacity);
+        var transferAmount = Math.Min(Math.Min(maxTransfer, sourceEnt.Comp.CurrentCharge), availableCapacity);
         if (transferAmount > 0)
         {
-            TransferCharge(sourceUid, batteryA, -transferAmount);
-            TransferCharge(targetUid, batteryB, transferAmount);
+            TransferCharge(sourceEnt, -transferAmount);
+            TransferCharge(targetEnt, transferAmount);
         }
     }
 
-    private void ReceiveEnergy(BatteryComponent batteryA, BatteryComponent batteryB, EntityUid sourceUid, EntityUid targetUid, float maxTransfer)
+    private void ReceiveEnergy(Entity<BatteryComponent> sourceEnt, Entity<BatteryComponent> targetEnt, float maxTransfer)
     {
-        if (batteryB.CurrentCharge <= 0)
+        if (targetEnt.Comp.CurrentCharge <= 0)
             return;
 
-        var availableCapacity = batteryA.MaxCharge - batteryA.CurrentCharge;
+        var availableCapacity = sourceEnt.Comp.MaxCharge - sourceEnt.Comp.CurrentCharge;
         if (availableCapacity <= 0)
             return;
 
-        var transferAmount = Math.Min(Math.Min(maxTransfer, batteryB.CurrentCharge), availableCapacity);
+        var transferAmount = Math.Min(Math.Min(maxTransfer, targetEnt.Comp.CurrentCharge), availableCapacity);
         if (transferAmount > 0)
         {
-            TransferCharge(targetUid, batteryB, -transferAmount);
-            TransferCharge(sourceUid, batteryA, transferAmount);
+            TransferCharge(targetEnt, -transferAmount);
+            TransferCharge(sourceEnt, transferAmount);
         }
     }
 
-    private void TransferCharge(EntityUid uid, BatteryComponent battery, float amount)
+    private void TransferCharge(Entity<BatteryComponent> entity, float amount)
     {
-        _battery.SetCharge(uid, battery.CurrentCharge + amount, battery);
+        _battery.SetCharge(entity.Owner, entity.Comp.CurrentCharge + amount, entity.Comp);
     }
 }
