@@ -139,7 +139,7 @@
 
 - type: entity
   parent: EnergyTransferDevice
-  id: EnergyTransferDeviceSpecialPurposeSquad 
+  id: EnergyTransferDeviceSPS
   name: power transmission substation
   suffix: Special Purpose Squad 
   components:
@@ -286,7 +286,7 @@
     mode: Receive
 
 - type: entity
-  parent: EnergyTransferDeviceSpecialPurposeSquad
+  parent: EnergyTransferDeviceSPS
   id: EnergyTransferDeviceSPSSend
   suffix: Special Purpose Squad  Send
   components:
@@ -294,7 +294,7 @@
     mode: Send
 
 - type: entity
-  parent: EnergyTransferDeviceSpecialPurposeSquad
+  parent: EnergyTransferDeviceSPS
   id: EnergyTransferDeviceSPSReceive
   suffix: Special Purpose Squad Receive
   components:
