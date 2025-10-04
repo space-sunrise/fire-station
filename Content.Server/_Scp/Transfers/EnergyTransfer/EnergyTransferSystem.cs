@@ -78,6 +78,9 @@ public sealed class EnergyTransferSystem : EntitySystem
                 return false;
         }
 
+        if (!transferComp.IsActive)
+            return false;
+
         return true;
     }
 
@@ -133,13 +136,25 @@ public sealed class EnergyTransferSystem : EntitySystem
 
         if (chargeDiff > 0)
         {
-            TransferCharge(sourceUid, batteryA, -transferAmount);
-            TransferCharge(targetUid, batteryB, transferAmount);
+            var availableCapacity = batteryB.MaxCharge - batteryB.CurrentCharge;
+            transferAmount = Math.Min(transferAmount, availableCapacity);
+
+            if (transferAmount > 0)
+            {
+                TransferCharge(sourceUid, batteryA, -transferAmount);
+                TransferCharge(targetUid, batteryB, transferAmount);
+            }
         }
         else
         {
-            TransferCharge(targetUid, batteryB, -transferAmount);
-            TransferCharge(sourceUid, batteryA, transferAmount);
+            var availableCapacity = batteryA.MaxCharge - batteryA.CurrentCharge;
+            transferAmount = Math.Min(transferAmount, availableCapacity);
+
+            if (transferAmount > 0)
+            {
+                TransferCharge(targetUid, batteryB, -transferAmount);
+                TransferCharge(sourceUid, batteryA, transferAmount);
+            }
         }
     }
 
@@ -148,9 +163,16 @@ public sealed class EnergyTransferSystem : EntitySystem
         if (batteryA.CurrentCharge <= 0)
             return;
 
-        var transferAmount = Math.Min(maxTransfer, batteryA.CurrentCharge);
-        TransferCharge(sourceUid, batteryA, -transferAmount);
-        TransferCharge(targetUid, batteryB, transferAmount);
+        var availableCapacity = batteryB.MaxCharge - batteryB.CurrentCharge;
+        if (availableCapacity <= 0)
+            return;
+
+        var transferAmount = Math.Min(Math.Min(maxTransfer, batteryA.CurrentCharge), availableCapacity);
+        if (transferAmount > 0)
+        {
+            TransferCharge(sourceUid, batteryA, -transferAmount);
+            TransferCharge(targetUid, batteryB, transferAmount);
+        }
     }
 
     private void ReceiveEnergy(BatteryComponent batteryA, BatteryComponent batteryB, EntityUid sourceUid, EntityUid targetUid, float maxTransfer)
@@ -158,9 +180,16 @@ public sealed class EnergyTransferSystem : EntitySystem
         if (batteryB.CurrentCharge <= 0)
             return;
 
-        var transferAmount = Math.Min(maxTransfer, batteryB.CurrentCharge);
-        TransferCharge(targetUid, batteryB, -transferAmount);
-        TransferCharge(sourceUid, batteryA, transferAmount);
+        var availableCapacity = batteryA.MaxCharge - batteryA.CurrentCharge;
+        if (availableCapacity <= 0)
+            return;
+
+        var transferAmount = Math.Min(Math.Min(maxTransfer, batteryB.CurrentCharge), availableCapacity);
+        if (transferAmount > 0)
+        {
+            TransferCharge(targetUid, batteryB, -transferAmount);
+            TransferCharge(sourceUid, batteryA, transferAmount);
+        }
     }
 
     private void TransferCharge(EntityUid uid, BatteryComponent battery, float amount)

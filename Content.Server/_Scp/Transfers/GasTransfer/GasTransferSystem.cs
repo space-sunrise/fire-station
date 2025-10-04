@@ -76,6 +76,9 @@ public sealed class GasTransferSystem : EntitySystem
                 return false;
         }
 
+        if (!transferComp.IsActive)
+            return false;
+
         return true;
     }
 
