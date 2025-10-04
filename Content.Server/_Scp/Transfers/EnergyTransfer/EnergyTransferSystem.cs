@@ -70,7 +70,7 @@ public sealed class EnergyTransferSystem : EntitySystem
             partnerBattery = ent.Comp.PartnerBattery;
             var transferComp = ent.Comp.PartnerTransferComp;
 
-            if (!transferComp.Partner.HasValue || transferComp.Partner.Value != ent.Owner || !transferComp.IsActive)
+            if (!transferComp.Partner.HasValue || transferComp.Partner.Value != ent || !transferComp.IsActive)
             {
                 InvalidatePartner(ent.Comp);
                 if (!FindPartner(ent))
@@ -91,7 +91,7 @@ public sealed class EnergyTransferSystem : EntitySystem
         ent.Comp.PartnerBattery = partnerBattery;
         ent.Comp.PartnerTransferComp = partnerTransferComp;
 
-        if (!partnerTransferComp.Partner.HasValue || partnerTransferComp.Partner.Value != ent.Owner)
+        if (!partnerTransferComp.Partner.HasValue || partnerTransferComp.Partner.Value != ent)
         {
             InvalidatePartner(ent.Comp);
             if (!FindPartner(ent))
@@ -120,7 +120,7 @@ public sealed class EnergyTransferSystem : EntitySystem
         var transferQuery = EntityQueryEnumerator<EnergyTransferComponent>();
         while (transferQuery.MoveNext(out var otherUid, out var otherComp))
         {
-            if (otherUid == ent.Owner)
+            if (otherUid == ent)
                 continue;
 
             if (string.IsNullOrEmpty(otherComp.LinkId))
@@ -132,7 +132,7 @@ public sealed class EnergyTransferSystem : EntitySystem
                 InvalidatePartner(otherComp);
 
                 ent.Comp.Partner = otherUid;
-                otherComp.Partner = ent.Owner;
+                otherComp.Partner = ent;
                 return true;
             }
         }
