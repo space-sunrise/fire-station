@@ -39,7 +39,7 @@ public sealed class GasTransferSystem : EntitySystem
         if (!ValidatePartner(ent, out var partnerPipe))
             return;
 
-        if (ent.Id > partnerPipe.Owner.Id)
+        if (ent.Owner.Id > partnerPipe.Owner.Id)
             return;
 
         TransferGas(ent, partnerPipe, args.dt);
@@ -68,7 +68,7 @@ public sealed class GasTransferSystem : EntitySystem
             partnerPipe = ent.Comp.PartnerPipe;
             var transferComp = ent.Comp.PartnerTransferComp;
 
-            if (!transferComp.Partner.HasValue || transferComp.Partner.Value != ent || !transferComp.IsActive)
+            if (!transferComp.Partner.HasValue || transferComp.Partner.Value != ent.Owner || !transferComp.IsActive)
             {
                 InvalidatePartner(ent.Comp);
                 if (!FindPartner(ent))
@@ -89,7 +89,7 @@ public sealed class GasTransferSystem : EntitySystem
         ent.Comp.PartnerPipe = partnerPipe;
         ent.Comp.PartnerTransferComp = partnerTransferComp;
 
-        if (!partnerTransferComp.Partner.HasValue || partnerTransferComp.Partner.Value != ent)
+        if (!partnerTransferComp.Partner.HasValue || partnerTransferComp.Partner.Value != ent.Owner)
         {
             InvalidatePartner(ent.Comp);
             if (!FindPartner(ent))
@@ -118,7 +118,7 @@ public sealed class GasTransferSystem : EntitySystem
         var transferQuery = EntityQueryEnumerator<GasTransferComponent>();
         while (transferQuery.MoveNext(out var otherUid, out var otherComp))
         {
-            if (otherUid == ent)
+            if (otherUid == ent.Owner)
                 continue;
 
             if (string.IsNullOrEmpty(otherComp.LinkId))
@@ -130,7 +130,7 @@ public sealed class GasTransferSystem : EntitySystem
                 InvalidatePartner(otherComp);
 
                 ent.Comp.Partner = otherUid;
-                otherComp.Partner = ent;
+                otherComp.Partner = ent.Owner;
                 return true;
             }
         }
@@ -141,7 +141,7 @@ public sealed class GasTransferSystem : EntitySystem
 
     private void TransferGas(Entity<GasTransferComponent> ent, PipeNode partnerPipe, float dt)
     {
-        if (!_nodeContainer.TryGetNode<PipeNode>(ent, ent.Comp.InletName, out var ourPipe))
+        if (!_nodeContainer.TryGetNode<PipeNode>(ent.Owner, ent.Comp.InletName, out var ourPipe))
             return;
 
         var maxTransfer = ent.Comp.TransferRate * dt;
