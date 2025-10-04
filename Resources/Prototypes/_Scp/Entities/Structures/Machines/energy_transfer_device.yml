@@ -143,7 +143,7 @@
   parent: EnergyTransferDevice
   id: EnergyTransferDeviceOSN
   name: osn power transmission substation
-  suffix: OSN
+  suffix: Special Purpose Squad 
   components:
   - type: EnergyTransfer
     linkId: osn
