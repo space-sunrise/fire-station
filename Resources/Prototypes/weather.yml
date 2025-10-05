@@ -98,11 +98,11 @@
   sprite:
     sprite: /Textures/Effects/weather.rsi
     state: snowfall_light
-  sound:
-    path: /Audio/Effects/Weather/snowstorm_weak.ogg
-    params:
-      loop: true
-      volume: -6
+  # sound: # Fire Edit
+  #   path: /Audio/Effects/Weather/snowstorm_weak.ogg
+  #   params:
+  #     loop: true
+  #     volume: -6
 
 - type: weather
   id: SnowfallMedium
@@ -113,7 +113,7 @@
     path: /Audio/Effects/Weather/snowstorm_weak.ogg
     params:
       loop: true
-      volume: -6
+      volume: -12 # Fire Edit
 
 - type: weather
   id: SnowfallHeavy
