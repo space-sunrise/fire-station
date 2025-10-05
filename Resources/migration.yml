@@ -846,6 +846,8 @@ WeaponEnergyGunMultiphase: WeaponMultiphaseGun
 # Санрайз насрал опять
 MagazineBoxHeavyRifle: null
 SunriseMagazineRifle: null
+CrateServicePrinterDoc: null
+CrateServicePrinterDocRestock: null
 
 # Fire added start
 PosterDyshi: PosterBreath
