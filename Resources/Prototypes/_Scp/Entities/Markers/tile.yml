@@ -1,0 +1,11 @@
+﻿- type: entity
+  id: AutoRoofMarker
+  name: Auto roof
+  suffix: AUTO
+  parent: MarkerBase
+  components:
+  - type: AutoRoof
+  - type: Sprite
+    layers:
+    - state: green
+      shader: unshaded
