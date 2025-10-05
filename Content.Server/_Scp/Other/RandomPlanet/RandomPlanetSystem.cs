@@ -1,12 +1,10 @@
-﻿using Content.Server.Light.EntitySystems;
+﻿using Content.Server._Scp.Other.AutoRoof;
 using Content.Server.Parallax;
 using Content.Server.Station.Events;
 using Content.Server.Weather;
 using Content.Shared.Light.Components;
 using Content.Shared.Station.Components;
-using Robust.Server.GameObjects;
 using Robust.Shared.Map;
-using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -19,8 +17,7 @@ public sealed class RandomPlanetSystem : EntitySystem
 {
     [Dependency] private readonly BiomeSystem _biome = default!;
     [Dependency] private readonly WeatherSystem _weather = default!;
-    [Dependency] private readonly RoofSystem _roof = default!;
-    [Dependency] private readonly MapSystem _map = default!;
+    [Dependency] private readonly AutoRoofSystem _autoRoof = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
 
@@ -40,7 +37,10 @@ public sealed class RandomPlanetSystem : EntitySystem
         int? seed = data.Seed != null ? _random.Pick(data.Seed) : null;
 
         _biome.EnsurePlanet(mapUid, biome, seed);
-        BuildRoof(args.Station);
+
+        if (ent.Comp.BuildRoof)
+            BuildRoof(args.Station);
+
         TrySetWeather(mapId, data);
     }
 
@@ -78,14 +78,10 @@ public sealed class RandomPlanetSystem : EntitySystem
     {
         foreach (var grid in ent.Comp.Grids)
         {
-            RemComp<ImplicitRoofComponent>(grid);
-            EnsureComp<RoofComponent>(grid);
+            if (HasComp<RoofComponent>(grid))
+                continue;
 
-            var mapGrid = Comp<MapGridComponent>(grid);
-            foreach (var tile in _map.GetAllTiles(grid, mapGrid))
-            {
-                _roof.SetRoof(grid, tile.GridIndices, true);
-            }
+            _autoRoof.BuildRoof(grid);
         }
     }
 }
