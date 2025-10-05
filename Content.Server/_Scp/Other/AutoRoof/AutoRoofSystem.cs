@@ -5,6 +5,9 @@ using Robust.Shared.Map.Components;
 
 namespace Content.Server._Scp.Other.AutoRoof;
 
+/// <summary>
+/// Система, автоматически покрывающая станцию крышей при инициализации на ней специальной сущности
+/// </summary>
 public sealed class AutoRoofSystem : EntitySystem
 {
     [Dependency] private readonly RoofSystem _roof = default!;
@@ -14,10 +17,10 @@ public sealed class AutoRoofSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<AutoRoofComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<AutoRoofComponent, MapInitEvent>(OnInit, before: [typeof(RoofSystem)]);
     }
 
-    private void OnInit(Entity<AutoRoofComponent> ent, ref ComponentInit args)
+    private void OnInit(Entity<AutoRoofComponent> ent, ref MapInitEvent args)
     {
         var grid = Transform(ent).GridUid;
         if (!grid.HasValue)
@@ -27,7 +30,10 @@ public sealed class AutoRoofSystem : EntitySystem
         QueueDel(ent);
     }
 
-    private void BuildRoof(Entity<MapGridComponent?> grid)
+    /// <summary>
+    /// Строит крышу над станцией
+    /// </summary>
+    public void BuildRoof(Entity<MapGridComponent?> grid)
     {
         if (!Resolve(grid, ref grid.Comp))
             return;

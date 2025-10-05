@@ -15,10 +15,13 @@ public sealed class RoofSystem : SharedRoofSystem
     {
         base.Initialize();
         _gridQuery = GetEntityQuery<MapGridComponent>();
-        SubscribeLocalEvent<SetRoofComponent, ComponentStartup>(OnFlagStartup);
+        // Fire edit start - для маппинга отключенной крыши
+        SubscribeLocalEvent<SetRoofComponent, MapInitEvent>(OnFlagStartup);
+        // Fire edit end
     }
 
-    private void OnFlagStartup(Entity<SetRoofComponent> ent, ref ComponentStartup args)
+    // Fire edit - для маппинга отключенной крыши
+    private void OnFlagStartup(Entity<SetRoofComponent> ent, ref MapInitEvent args)
     {
         var xform = Transform(ent.Owner);
 

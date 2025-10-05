@@ -15,6 +15,12 @@ public sealed partial class RandomPlanetComponent : Component
     /// </summary>
     [DataField(required: true)]
     public List<StationPlanetData> Data = [];
+
+    /// <summary>
+    /// Требуется ли строить крышу над станцией?
+    /// </summary>
+    [DataField]
+    public bool BuildRoof = true;
 }
 
 /// <summary>
