@@ -387,7 +387,7 @@
       volume: -7
   itemDrop: ScpFloorTileItemCheckerWhite
   heatCapacity: 10000
-  
+
 - type: tile
   id: ScpFloorDark
   name: scp-tiles-dark-floor
@@ -1262,10 +1262,10 @@
   baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepScpSteel
+  footstepSounds: &SteelGrilleFootStepSounds
+    collection: FootstepScpCatwalk
     params:
-      volume: -7
+      volume: -6
   itemDrop: ScpFloorTileItemSteelGrille1
   heatCapacity: 10000
 
@@ -1279,10 +1279,7 @@
   baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepScpSteel
-    params:
-      volume: -7
+  footstepSounds: *SteelGrilleFootStepSounds
   itemDrop: ScpFloorTileItemSteelGrille2
   heatCapacity: 10000
 
@@ -1296,10 +1293,7 @@
   baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepScpSteel
-    params:
-      volume: -7
+  footstepSounds: *SteelGrilleFootStepSounds
   itemDrop: ScpFloorTileItemSteelGrille3
   heatCapacity: 10000
 
@@ -1313,10 +1307,7 @@
   baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepScpSteel
-    params:
-      volume: -7
+  footstepSounds: *SteelGrilleFootStepSounds
   itemDrop: ScpFloorTileItemSteelGrille4
   heatCapacity: 10000
 
@@ -1330,10 +1321,7 @@
   baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepScpSteel
-    params:
-      volume: -7
+  footstepSounds: *SteelGrilleFootStepSounds
   itemDrop: ScpFloorTileItemSteelGrilleMono1
   heatCapacity: 10000
 
@@ -1347,10 +1335,7 @@
   baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepScpSteel
-    params:
-      volume: -7
+  footstepSounds: *SteelGrilleFootStepSounds
   itemDrop: ScpFloorTileItemSteelGrilleMono2
   heatCapacity: 10000
 
@@ -1364,10 +1349,7 @@
   baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepScpSteel
-    params:
-      volume: -7
+  footstepSounds: *SteelGrilleFootStepSounds
   itemDrop: ScpFloorTileItemSteelGrilleMono3
   heatCapacity: 10000
 
@@ -1381,10 +1363,7 @@
   baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepScpSteel
-    params:
-      volume: -7
+  footstepSounds: *SteelGrilleFootStepSounds
   itemDrop: ScpFloorTileItemSteelGrilleMono4
   heatCapacity: 10000
 
@@ -1398,10 +1377,7 @@
   baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepScpSteel
-    params:
-      volume: -7
+  footstepSounds: *SteelGrilleFootStepSounds
   itemDrop: ScpFloorTileItemSteelGrilleOffset1
   heatCapacity: 10000
 
@@ -1415,10 +1391,7 @@
   baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepScpSteel
-    params:
-      volume: -7
+  footstepSounds: *SteelGrilleFootStepSounds
   itemDrop: ScpFloorTileItemSteelGrilleOffset2
   heatCapacity: 10000
 
@@ -1432,10 +1405,7 @@
   baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepScpSteel
-    params:
-      volume: -7
+  footstepSounds: *SteelGrilleFootStepSounds
   itemDrop: ScpFloorTileItemSteelGrilleOffset3
   heatCapacity: 10000
 
@@ -1449,10 +1419,7 @@
   baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
-  footstepSounds:
-    collection: FootstepScpSteel
-    params:
-      volume: -7
+  footstepSounds: *SteelGrilleFootStepSounds
   itemDrop: ScpFloorTileItemSteelGrilleOffset4
   heatCapacity: 10000
 
@@ -1487,11 +1454,11 @@
   - 1.0
   - 1.0
   - 1.0
-  baseTurf: ScpPlating # Fire edit
+  baseTurf: ScpPlating
   isSubfloor: false
   deconstructTools: [ Prying ]
   footstepSounds:
-    collection: FootstepScpStone # Fire
+    collection: FootstepScpStone
     params:
       volume: -10
   itemDrop: ScpFloorTileItemConcreteMono
