@@ -42,9 +42,6 @@ public sealed class GasTransferSystem : EntitySystem
         if (ent.Owner.CompareTo(partnerPipe.Owner) > 0)
             return;
 
-        if (!Exists(partnerPipe.Owner))
-            return;
-
         TransferGas(ent, partnerPipe, args.dt);
     }
 
