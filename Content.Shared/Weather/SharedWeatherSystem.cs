@@ -46,8 +46,10 @@ public abstract class SharedWeatherSystem : EntitySystem
         if (Resolve(uid, ref roofComp, false) && _roof.IsWeatherOccluding((uid, grid, roofComp), tileRef.GridIndices))
             return false;
 
+        // Fire edit start - мерж ПРа из апстрима
         if (HasComp<ImplicitRoofComponent>(uid))
             return false;
+        // Fire edit end
 
         var anchoredEntities = _mapSystem.GetAnchoredEntitiesEnumerator(uid, grid, tileRef.GridIndices);
 

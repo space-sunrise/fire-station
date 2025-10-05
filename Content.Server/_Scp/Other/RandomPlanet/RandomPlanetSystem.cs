@@ -84,7 +84,7 @@ public sealed class RandomPlanetSystem : EntitySystem
             var mapGrid = Comp<MapGridComponent>(grid);
             foreach (var tile in _map.GetAllTiles(grid, mapGrid))
             {
-                _roof.SetRoof(grid, tile.GridIndices, true);
+                _roof.SetRoof(grid, tile.GridIndices, true, true);
             }
         }
     }
