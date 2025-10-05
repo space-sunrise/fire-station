@@ -8,8 +8,10 @@
     value: true
     blockWeather: true
   - type: Sprite
+    sprite: _Scp/Markers/roof.rsi
     layers:
-    - state: green
+    - state: roof_on
+      color: "#FFFFFF4D"
       shader: unshaded
 
 - type: entity
@@ -22,8 +24,10 @@
     value: false
     blockWeather: false
   - type: Sprite
+    sprite: _Scp/Markers/roof.rsi
     layers:
-    - state: red
+    - state: roof_off
+      color: "#FFFFFF4D"
       shader: unshaded
 
 - type: entity
@@ -36,8 +40,10 @@
     value: false
     blockWeather: true
   - type: Sprite
+    sprite: _Scp/Markers/roof.rsi
     layers:
-    - state: red
+    - state: roof_off
+      color: "#FFFFFF4D"
       shader: unshaded
 
 - type: entity
@@ -50,6 +56,8 @@
     value: true
     blockWeather: false
   - type: Sprite
+    sprite: _Scp/Markers/roof.rsi
     layers:
-    - state: green
+    - state: roof_on
+      color: "#FFFFFF4D"
       shader: unshaded
