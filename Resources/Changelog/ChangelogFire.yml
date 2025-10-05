@@ -6539,3 +6539,12 @@
     type: Fix
   id: 267
   time: '2025-10-05T18:42:05.616319+00:00'
+- author: ThereDrD
+  changes:
+  - message: "\u0422\u0422\u0421 \u0442\u0435\u043F\u0435\u0440\u044C \u0447\u0438\
+      \u0442\u0430\u0435\u0442 \u041A\u0421 \u0431\u043E\u043B\u0435\u0435 \u0447\u0435\
+      \u0442\u043A\u043E \u0438 \u0432\u043D\u044F\u0442\u043D\u043E."
+    type: Tweak
+  id: 268
+  time: '2025-10-05T18:57:35.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/613
