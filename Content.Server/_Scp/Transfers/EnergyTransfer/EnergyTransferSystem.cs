@@ -34,7 +34,7 @@ public sealed class EnergyTransferSystem : EntitySystem
             if (!comp.IsActive)
                 continue;
 
-            if (!ValidatePartner((uid, comp), out var partnerBattery, out var partnerUid))
+            if (!ValidatePartner((uid, comp, battery), out var partnerBattery, out var partnerUid))
                 continue;
 
             if (!Exists(partnerUid))
@@ -45,33 +45,36 @@ public sealed class EnergyTransferSystem : EntitySystem
         }
     }
 
-    private bool ValidatePartner(Entity<EnergyTransferComponent> ent, out BatteryComponent partnerBattery, out EntityUid partnerUid)
+    private bool ValidatePartner(Entity<EnergyTransferComponent, BatteryComponent> ent, out BatteryComponent partnerBattery, out EntityUid partnerUid)
     {
         partnerBattery = default!;
         partnerUid = default;
 
-        if (!ent.Comp.Partner.HasValue)
+        if (!ent.Comp1.Partner.HasValue)
         {
             if (!FindPartner(ent))
                 return false;
         }
 
-        partnerUid = ent.Comp.Partner!.Value;
+        partnerUid = ent.Comp1.Partner!.Value;
 
-        if (!TryComp<BatteryComponent>(partnerUid, out partnerBattery!) ||
-            !TryComp<EnergyTransferComponent>(partnerUid, out var partnerTransferComp))
+        if (ent.Comp1.PartnerEntity == null)
         {
-            InvalidatePartner(ent.Comp);
-            return false;
-        }
+            var partnerTransferComp = EntityManager.EnsureComponent<EnergyTransferComponent>(partnerUid);
+            partnerBattery = EntityManager.EnsureComponent<BatteryComponent>(partnerUid);
 
-        if (!partnerTransferComp.Partner.HasValue || partnerTransferComp.Partner.Value != ent.Owner || !partnerTransferComp.IsActive)
+            if (!partnerTransferComp.Partner.HasValue || partnerTransferComp.Partner.Value != ent.Owner || !partnerTransferComp.IsActive)
+            {
+                InvalidatePartner(ent.Comp1);
+                return false;
+            }
+
+            ent.Comp1.PartnerEntity = (partnerUid, partnerBattery, partnerTransferComp);
+        }
+        else
         {
-            InvalidatePartner(ent.Comp);
-            return false;
+            partnerBattery = ent.Comp1.PartnerEntity.Value.Comp1;
         }
-
-        ent.Comp.PartnerEntity = (partnerUid, partnerBattery, partnerTransferComp);
 
         return true;
     }
