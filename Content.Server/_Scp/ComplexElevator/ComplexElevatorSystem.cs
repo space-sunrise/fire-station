@@ -122,12 +122,8 @@ public sealed class ComplexElevatorSystem : EntitySystem
             var pointTransform = Transform(pointUid);
             var elevatorTransform = Transform(uid);
 
-            _transform.SetCoordinates(uid, pointTransform.Coordinates);
-
-            var newElevatorTransform = Transform(uid);
-
-            var aabb = _lookup.GetWorldAABB(uid, newElevatorTransform);
-            var intersectingEntities = _lookup.GetEntitiesIntersecting(newElevatorTransform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sensors);
+            var aabb = _lookup.GetWorldAABB(uid, elevatorTransform);
+            var intersectingEntities = _lookup.GetEntitiesIntersecting(elevatorTransform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sensors);
 
             var entitiesToTeleport = new List<(EntityUid, Vector2)>();
             foreach (var entUid in intersectingEntities)
@@ -136,9 +132,13 @@ public sealed class ComplexElevatorSystem : EntitySystem
                     continue;
 
                 var entTransform = Transform(entUid);
-                var relativePos = entTransform.LocalPosition - newElevatorTransform.LocalPosition;
+                var relativePos = entTransform.LocalPosition - elevatorTransform.LocalPosition;
                 entitiesToTeleport.Add((entUid, relativePos));
             }
+
+            _transform.SetCoordinates(uid, pointTransform.Coordinates);
+
+            var newElevatorTransform = Transform(uid);
 
             foreach (var (entUid, relativePos) in entitiesToTeleport)
             {
@@ -204,8 +204,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
         {
             if (!Exists(ent) || !ent.Comp.IsMoving)
                 return;
-
-            _audio.PlayPvs(ent.Comp.StartSound, ent);
 
             TryCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor);
         });
@@ -297,15 +295,17 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private bool TryCloseDoorsForFloor(string elevatorId, string floor)
     {
+        var allClosed = true;
         var query = EntityQueryEnumerator<ElevatorDoorComponent>();
         while (query.MoveNext(out var doorUid, out var doorComp))
         {
             if (doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)
             {
-                _doorSystem.TryClose(doorUid);
+                if (!_doorSystem.TryClose(doorUid))
+                    allClosed = false;
             }
         }
-        return true;
+        return allClosed;
     }
 
     private bool IsDoorBlocked(EntityUid doorUid)
@@ -320,22 +320,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
             }
         }
         return false;
-    }
-
-    private List<(EntityUid, Vector2)> CollectEntitiesInAABB(Box2 aabb, MapId mapId, Vector2 referencePos, EntityUid exclude = default)
-    {
-        var entities = new List<(EntityUid, Vector2)>();
-        var intersectingEntities = _lookup.GetEntitiesIntersecting(mapId, aabb, LookupFlags.Dynamic | LookupFlags.Sensors);
-        foreach (var entUid in intersectingEntities)
-        {
-            if (entUid == exclude || HasComp<ElevatorDoorComponent>(entUid))
-                continue;
-
-            var entTransform = Transform(entUid);
-            var relativePos = entTransform.LocalPosition - referencePos;
-            entities.Add((entUid, relativePos));
-        }
-        return entities;
     }
 
     private void KillEntitiesInTargetArea(Entity<ComplexElevatorComponent> elevator, string floorId)
