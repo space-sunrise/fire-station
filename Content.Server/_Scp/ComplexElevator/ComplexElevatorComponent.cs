@@ -25,6 +25,9 @@ public sealed partial class ComplexElevatorComponent : Component
     public TimeSpan IntermediateDelay = TimeSpan.FromSeconds(6);
 
     [DataField]
+    public TimeSpan DoorCloseDelay = TimeSpan.FromSeconds(0.5);
+
+    [DataField]
     public SoundSpecifier StartSound = new SoundPathSpecifier("/Audio/_Scp/Machines/Elevator/ElevatorClose.ogg");
 
     [DataField]
