@@ -10,10 +10,10 @@
     - state: closed
       map: ["enum.DoorVisualLayers.Base"]
   - type: Door
-    closeTimeOne: 1.0
-    closeTimeTwo: 1.0
-    openTimeOne: 1.0
-    openTimeTwo: 1.0
+    closeTimeOne: 1.2
+    closeTimeTwo: 1.2
+    openTimeOne: 1.2
+    openTimeTwo: 1.2
     openingAnimationTime: 2
     closingAnimationTime: 2
     openSound:
