@@ -548,7 +548,7 @@
   - type: DeviceNetwork
     deviceNetId: Wired
   - type: DeviceLinkSource
-    range: 5
+    range: 25 # Fire Edit
     ports:
       - ArtifactAnalyzerSender
   - type: ActivatableUI
