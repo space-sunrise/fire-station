@@ -32,6 +32,7 @@
   - MedicalHeadless
   - EngineeringHeadless
   - ServiceHeadless
+  - ClassD
 
 - type: accessGroup
   id: ChiefTechnicalSpecialist
