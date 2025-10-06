@@ -70,13 +70,11 @@ public sealed class ComplexElevatorSystem : EntitySystem
             return;
         }
 
-        _audio.PlayPvs(ent.Comp.TravelSound, ent);
-
         var travelTime = ent.Comp.IntermediateDelay;
 
         Timer.Spawn(ent.Comp.DoorCloseDelay, () =>
         {
-            if (!Exists(ent))
+            if (!Exists(ent) || !ent.Comp.IsMoving)
                 return;
 
             if (!CanCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor))
@@ -87,6 +85,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
             }
 
             _audio.PlayPvs(ent.Comp.StartSound, ent);
+            _audio.PlayPvs(ent.Comp.TravelSound, ent);
 
             TryCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor);
             KillEntitiesInTargetArea(ent, ent.Comp.IntermediateFloorId);
@@ -199,14 +198,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
         ent.Comp.IsMoving = true;
         UpdateButtonLights(ent.Comp.ElevatorId);
-
-        Timer.Spawn(ent.Comp.DoorCloseDelay, () =>
-        {
-            if (!Exists(ent) || !ent.Comp.IsMoving)
-                return;
-
-            TryCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor);
-        });
 
         Timer.Spawn(ent.Comp.SendDelay, () =>
         {
