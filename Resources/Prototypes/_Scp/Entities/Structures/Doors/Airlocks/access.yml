@@ -1037,6 +1037,20 @@
     containers:
       board: [ DoorElectronicsExit ]
 
+- type: entity
+  parent: ScpAirlockGlassShuttle
+  id: ScpAirlockExitGlassShuttleEscapeLocked
+  suffix: Exit, Escape 3x4, Glass, Docking, Locked
+  components:
+  - type: GridFill
+    addComponents:
+    - type: IFF
+      flags:
+      - HideLabel
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsExit ]
+  
 # Сторонние
 
 - type: entity
