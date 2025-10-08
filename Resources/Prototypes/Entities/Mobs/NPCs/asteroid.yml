@@ -2,7 +2,6 @@
   id: BaseMobAsteroid
   parent:
   - BaseMob
-  - ESBaseMob # ES START
   - MobDamageable
   - MobAtmosExposed
   - MobCombat

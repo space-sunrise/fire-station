@@ -4,7 +4,7 @@
   abstract: true
   components:
   # Fire added start
-  - type: ESViewconeOccludable
+  - type: FieldOfViewOccludable
   # Fire added end
   - type: Item
     size: Small

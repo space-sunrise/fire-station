@@ -31,7 +31,7 @@ public sealed partial class FieldOfViewComponent : Component
     public EntityUid? RelayEntity;
 
     [DataField, AutoNetworkedField]
-    public float ConeIgnoreRadius = 0.85f;
+    public float ConeIgnoreRadius = 0.6f;
 
     [DataField, AutoNetworkedField]
     public float ConeIgnoreFeather = 0.25f;
