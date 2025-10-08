@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-using Content.Shared._ES.Viewcone;
+using Content.Shared._Scp.Watching.FOV;
 using Content.Shared.ActionBlocker;
 using Content.Shared.CCVar;
 using Content.Shared.Friction;
@@ -33,6 +33,10 @@ namespace Content.Shared.Movement.Systems;
 /// </summary>
 public abstract partial class SharedMoverController : VirtualController
 {
+    // Fire added start
+    [Dependency] private   readonly FieldOfViewSystem _fov = default!;
+    // Fire added end
+
     [Dependency] private   readonly IConfigurationManager _configManager = default!;
     [Dependency] protected readonly IGameTiming Timing = default!;
     [Dependency] private   readonly ITileDefinitionManager _tileDefinitionManager = default!;
@@ -46,9 +50,6 @@ public abstract partial class SharedMoverController : VirtualController
     [Dependency] private   readonly SharedGravitySystem _gravity = default!;
     [Dependency] private   readonly SharedTransformSystem _transform = default!;
     [Dependency] private   readonly TagSystem _tags = default!;
-    // ES START
-    [Dependency] private   readonly ESViewconeEffectSystem _viewconeEffect = default!;
-    // ES END
 
     protected EntityQuery<CanMoveInAirComponent> CanMoveInAirQuery;
     protected EntityQuery<FootstepModifierComponent> FootstepModifierQuery;
@@ -355,9 +356,9 @@ public abstract partial class SharedMoverController : VirtualController
                     _audio.PlayPredicted(sound, uid, uid, audioParams);
                 }
 
-                // ES START
-                _viewconeEffect.SpawnEffect(uid, ESFootstepViewconeEffect, wishDir.ToWorldAngle());
-                // ES END
+                // Fire added start
+                _fov.SpawnEffect(uid, ESFootstepViewconeEffect, wishDir.ToWorldAngle());
+                // Fire added end
             }
         }
     }

@@ -1,9 +1,8 @@
 using Content.Client._ES.Viewcone.Overlays;
-using Content.Shared._ES.Viewcone;
+using Content.Shared._Scp.Watching.FOV;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
-using Robust.Shared.Physics;
 using Robust.Shared.Player;
 
 namespace Content.Client._ES.Viewcone;
@@ -32,39 +31,37 @@ public sealed class ESViewconeOverlayManagementSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ESViewconeComponent, ComponentInit>(OnConeManInit);
-        SubscribeLocalEvent<ESViewconeComponent, ComponentShutdown>(OnConeManShutdown);
+        SubscribeLocalEvent<FieldOfViewComponent, ComponentInit>(OnConeManInit);
+        SubscribeLocalEvent<FieldOfViewComponent, ComponentShutdown>(OnConeManShutdown);
 
-        SubscribeLocalEvent<ESViewconeComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<ESViewconeComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
+        SubscribeLocalEvent<FieldOfViewComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<FieldOfViewComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
         _coneOverlay = new();
         _setAlphaOverlay = new();
         _resetAlphaOverlay = new();
     }
 
-    private void OnPlayerAttached(Entity<ESViewconeComponent> entity, ref LocalPlayerAttachedEvent args)
+    private void OnPlayerAttached(Entity<FieldOfViewComponent> ent, ref LocalPlayerAttachedEvent args)
     {
         AddOverlays();
     }
 
-    private void OnPlayerDetached(Entity<ESViewconeComponent> entity, ref LocalPlayerDetachedEvent args)
+    private void OnPlayerDetached(Entity<FieldOfViewComponent> ent, ref LocalPlayerDetachedEvent args)
     {
         RemoveOverlays();
     }
 
-    private void OnConeManInit(Entity<ESViewconeComponent> entity, ref ComponentInit args)
+    private void OnConeManInit(Entity<FieldOfViewComponent> ent, ref ComponentInit args)
     {
-        if (_playerManager.LocalSession?.AttachedEntity == entity.Owner)
+        if (_playerManager.LocalEntity == ent)
             AddOverlays();
     }
 
-    private void OnConeManShutdown(Entity<ESViewconeComponent> entity, ref ComponentShutdown args)
+    private void OnConeManShutdown(Entity<FieldOfViewComponent> ent, ref ComponentShutdown args)
     {
-        if (_playerManager.LocalSession?.AttachedEntity == entity.Owner)
-        {
+        if (_playerManager.LocalEntity == ent)
             RemoveOverlays();
-        }
     }
 
     private void AddOverlays()

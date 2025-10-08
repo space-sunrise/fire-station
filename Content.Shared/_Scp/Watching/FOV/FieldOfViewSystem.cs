@@ -6,7 +6,7 @@ using Robust.Shared.Map;
 
 namespace Content.Shared._Scp.Watching.FOV;
 
-public sealed class FieldOfViewSystem : EntitySystem
+public sealed partial class FieldOfViewSystem : EntitySystem
 {
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 

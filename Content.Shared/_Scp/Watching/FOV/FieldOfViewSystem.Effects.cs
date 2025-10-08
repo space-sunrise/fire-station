@@ -1,19 +1,12 @@
-using JetBrains.Annotations;
-using Robust.Shared.Network;
+﻿using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Spawners;
 
-namespace Content.Shared._ES.Viewcone;
+namespace Content.Shared._Scp.Watching.FOV;
 
-/// <summary>
-///     API for spawning viewcone effects and making sure source gets set correctly +
-///     it spawns in the correct pos and shit
-/// </summary>
-[PublicAPI]
-public sealed class ESViewconeEffectSystem : EntitySystem
+public sealed partial class FieldOfViewSystem
 {
     [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedTransformSystem _xform = default!;
 
     /// <summary>
     ///     Spawns the given effect entity at the player source, and sets relevant variables
@@ -30,13 +23,13 @@ public sealed class ESViewconeEffectSystem : EntitySystem
             return;
 
         var ent = SpawnNextToOrDrop(effect, source);
-        var viewconeEffect = EnsureComp<ESViewconeOccludableComponent>(ent);
+        var viewconeEffect = EnsureComp<FieldOfViewOccludableComponent>(ent);
         viewconeEffect.Inverted = true;
         viewconeEffect.Source = source;
         Dirty(ent, viewconeEffect);
 
         // set rotation
-        _xform.SetLocalRotation(ent, angleOverride ?? Transform(source).LocalRotation);
+        _transform.SetLocalRotation(ent, angleOverride ?? Transform(source).LocalRotation);
 
         // also ensure this in case somehow something without it gets here.
         EnsureComp<TimedDespawnComponent>(ent);

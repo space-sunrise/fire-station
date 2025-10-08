@@ -2,7 +2,6 @@ using System.Linq;
 using Content.Server.DeviceNetwork;
 using Content.Server.DeviceNetwork.Systems;
 using Content.Server.Power.Components;
-using Content.Shared._Scp.Watching.FOV;
 using Content.Shared.DeviceNetwork;
 using Content.Shared.DeviceNetwork.Events;
 using Content.Shared.Power;
@@ -222,9 +221,6 @@ public sealed class SurveillanceCameraMonitorSystem : EntitySystem
 
     private void OnSwitchMessage(EntityUid uid, SurveillanceCameraMonitorComponent component, SurveillanceCameraMonitorSwitchMessage message)
     {
-        // Fire edit - для фикса камер с FOV
-        RaiseNetworkEvent(new CameraSwitchedEvent(GetNetEntity(message.Actor)));
-
         // there would be a null check here, but honestly
         // whichever one is the "latest" switch message gets to
         // do the switch

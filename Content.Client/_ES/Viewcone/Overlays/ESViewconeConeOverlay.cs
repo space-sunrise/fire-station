@@ -1,8 +1,7 @@
-using Content.Shared._ES.Viewcone;
+using Content.Shared._Scp.Watching.FOV;
 using Content.Shared.MouseRotator;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
-using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
@@ -23,7 +22,7 @@ public sealed class ESViewconeConeOverlay : Overlay
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     public override bool RequestScreenTexture => true;
 
-    public static ProtoId<ShaderPrototype> ShaderPrototype = "Viewcone";
+    private static readonly ProtoId<ShaderPrototype> ShaderPrototype = "Viewcone";
     private readonly ShaderInstance _viewconeShader;
 
     private Entity<EyeComponent, TransformComponent>? _eyeEntity;
@@ -45,14 +44,14 @@ public sealed class ESViewconeConeOverlay : Overlay
 
         // This is really stupid but there isn't another way to reverse an eye entity from just an IEye afaict
         // It's not really inefficient though. theres barely any of those fuckin things anyway (? verify that) (maybe this scales with players in view) (shit)
-        var enumerator = _ent.AllEntityQueryEnumerator<EyeComponent, ESViewconeComponent, TransformComponent>();
+        var enumerator = _ent.AllEntityQueryEnumerator<EyeComponent, FieldOfViewComponent, TransformComponent>();
         while (enumerator.MoveNext(out var uid, out var eye, out var viewcone, out var xform))
         {
             if (args.Viewport.Eye != eye.Eye)
                 continue;
 
-            _coneAngle = viewcone.ConeAngle;
-            _coneFeather = viewcone.ConeFeather;
+            _coneAngle = viewcone.Angle;
+            _coneFeather = viewcone.AngleTolerance;
             _coneIgnoreRadius = (viewcone.ConeIgnoreRadius - viewcone.ConeIgnoreFeather) * 50f;
             _coneIgnoreFeather = Math.Max(viewcone.ConeIgnoreFeather * 200f, 8f);
             _eyeEntity = (uid, eye, xform);

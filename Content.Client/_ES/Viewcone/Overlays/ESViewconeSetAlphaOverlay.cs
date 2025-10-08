@@ -1,11 +1,10 @@
 using Content.Client._ES.Viewcone.ComponentTree;
-using Content.Shared._ES.Viewcone;
+using Content.Shared._Scp.Watching.FOV;
 using Content.Shared.MouseRotator;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Shared.Enums;
-using Robust.Shared.Map.Components;
 
 namespace Content.Client._ES.Viewcone.Overlays;
 
@@ -28,7 +27,7 @@ public sealed class ESViewconeSetAlphaOverlay : Overlay
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowEntities;
 
     // slightly sus but cached from beforedraw to use in draw.
-    private Entity<EyeComponent, ESViewconeComponent>? _nextEye;
+    private Entity<EyeComponent, FieldOfViewComponent>? _nextEye;
 
     public ESViewconeSetAlphaOverlay()
     {
@@ -49,7 +48,7 @@ public sealed class ESViewconeSetAlphaOverlay : Overlay
 
         // This is really stupid but there isn't another way to reverse an eye entity from just an IEye afaict
         // It's not really inefficient though. theres barely any of those fuckin things anyway (? verify that) (maybe this scales with players in view) (shit)
-        var enumerator = _ent.AllEntityQueryEnumerator<EyeComponent, ESViewconeComponent>();
+        var enumerator = _ent.AllEntityQueryEnumerator<EyeComponent, FieldOfViewComponent>();
         while (enumerator.MoveNext(out var uid, out var eye, out var viewcone))
         {
             if (args.Viewport.Eye != eye.Eye)
@@ -90,8 +89,8 @@ public sealed class ESViewconeSetAlphaOverlay : Overlay
                 eyeRot = (mousePos.Position - _xform.GetMapCoordinates(eyeTransform).Position).ToWorldAngle();
         }
 
-        var radConeAngle = MathHelper.DegreesToRadians(cone.ConeAngle);
-        var radConeFeather = MathHelper.DegreesToRadians(cone.ConeFeather);
+        var radConeAngle = MathHelper.DegreesToRadians(cone.Angle);
+        var radConeFeather = MathHelper.DegreesToRadians(cone.AngleTolerance);
 
         _cone.CachedBaseAlphas.Clear();
         var occludables = _tree.QueryAabb(args.MapId, args.WorldBounds);

@@ -15,18 +15,24 @@ public sealed partial class FieldOfViewComponent : Component
     public const float MaxCooldownCheck = 0.3f;
     public const float MinCooldownCheck = 0.05f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public float Angle = 180f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public float AngleTolerance = 14f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public float ConeOpacity = 0.85f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public Vector2 Offset = new(0, 0.5f);
 
     [ViewVariables, AutoNetworkedField]
     public EntityUid? RelayEntity;
+
+    [DataField, AutoNetworkedField]
+    public float ConeIgnoreRadius = 0.85f;
+
+    [DataField, AutoNetworkedField]
+    public float ConeIgnoreFeather = 0.25f;
 }
