@@ -144,7 +144,7 @@
 - type: entity
   parent: SignalButton
   id: ElevatorButtonAbstract
-  absctract: true
+  abstract: true
   name: Elevator button
   description: Button for controlling the elevator.
   suffix: "Call button"
