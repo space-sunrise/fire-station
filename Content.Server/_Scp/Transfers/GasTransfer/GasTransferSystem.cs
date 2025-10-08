@@ -25,7 +25,7 @@ public sealed class GasTransferSystem : EntitySystem
 
     private void OnMapInit(Entity<GasTransferComponent> ent, ref MapInitEvent args)
     {
-        FindPartner(ent);
+        TryFindPartner(ent.AsNullable());
     }
 
     private void OnGasTransferUpdated(Entity<GasTransferComponent> ent, ref AtmosDeviceUpdateEvent args)
@@ -39,9 +39,6 @@ public sealed class GasTransferSystem : EntitySystem
         if (!ValidatePartner(ent, out var partnerPipe))
             return;
 
-        if (ent.Owner.CompareTo(partnerPipe.Owner) > 0)
-            return;
-
         TransferGas(ent, partnerPipe, args.dt);
     }
 
@@ -49,24 +46,25 @@ public sealed class GasTransferSystem : EntitySystem
     {
         partnerPipe = default!;
 
-        if (!ent.Comp.Partner.HasValue)
+        if (!Exists(ent.Comp.Partner) || !ent.Comp.Partner.HasValue)
         {
-            if (!FindPartner(ent))
+            if (!TryFindPartner(ent.AsNullable()))
                 return false;
         }
 
-        var partnerUid = ent.Comp.Partner!.Value;
-
-        if (ent.Comp.PartnerTransferComp == null)
+        if (ent.Comp.Partner!.Value.Comp.Deleted)
         {
-            ent.Comp.PartnerTransferComp = EntityManager.EnsureComponent<GasTransferComponent>(partnerUid);
+            if (!TryFindPartner(ent.AsNullable()))
+                return false;
         }
+
+        var partnerUid = ent.Comp.Partner!.Value.Owner;
 
         if (ent.Comp.PartnerPipe == null)
         {
-            if (!_nodeContainer.TryGetNode<PipeNode>(partnerUid, ent.Comp.PartnerTransferComp.InletName, out partnerPipe!))
+            if (!_nodeContainer.TryGetNode<PipeNode>(partnerUid, ent.Comp.Partner.Value.Comp.InletName, out partnerPipe!))
             {
-                InvalidatePartner(ent.Comp);
+                ent.Comp.PartnerPipe = null;
                 return false;
             }
             ent.Comp.PartnerPipe = partnerPipe;
@@ -76,24 +74,14 @@ public sealed class GasTransferSystem : EntitySystem
             partnerPipe = ent.Comp.PartnerPipe;
         }
 
-        if (!ent.Comp.PartnerTransferComp.Partner.HasValue || ent.Comp.PartnerTransferComp.Partner.Value != ent.Owner || !ent.Comp.PartnerTransferComp.IsActive)
-        {
-            InvalidatePartner(ent.Comp);
-            return false;
-        }
-
         return true;
     }
 
-    private void InvalidatePartner(GasTransferComponent comp)
+    private bool TryFindPartner(Entity<GasTransferComponent?> ent)
     {
-        comp.Partner = null;
-        comp.PartnerPipe = null;
-        comp.PartnerTransferComp = null;
-    }
+        if (!Resolve(ent, ref ent.Comp))
+            return false;
 
-    private bool FindPartner(Entity<GasTransferComponent> ent)
-    {
         if (string.IsNullOrEmpty(ent.Comp.LinkId))
             return false;
 
@@ -108,18 +96,13 @@ public sealed class GasTransferSystem : EntitySystem
 
             if (otherComp.LinkId == ent.Comp.LinkId)
             {
-                InvalidatePartner(ent.Comp);
-                InvalidatePartner(otherComp);
-
-                ent.Comp.Partner = otherUid;
-                otherComp.Partner = ent.Owner;
+                ent.Comp.Partner = (otherUid, otherComp);
+                otherComp.Partner = (ent.Owner, ent.Comp);
                 return true;
             }
         }
-
         return false;
     }
-
 
     private void TransferGas(Entity<GasTransferComponent> ent, PipeNode partnerPipe, float dt)
     {
@@ -128,7 +111,10 @@ public sealed class GasTransferSystem : EntitySystem
 
         var maxTransfer = ent.Comp.TransferRate * dt;
 
-        if (float.IsNaN(maxTransfer) || float.IsInfinity(maxTransfer) || maxTransfer < 0)
+        if (float.IsNaN(maxTransfer) || float.IsInfinity(maxTransfer))
+            return;
+
+        if (maxTransfer < 0)
             return;
 
         switch (ent.Comp.Mode)
@@ -152,23 +138,12 @@ public sealed class GasTransferSystem : EntitySystem
         var totalMolesA = inlet.Air.TotalMoles;
         var totalMolesB = outlet.Air.TotalMoles;
 
-        if (float.IsNaN(totalMolesA) || float.IsNaN(totalMolesB))
-            return;
-
-        if (float.IsNegative(totalMolesA) || float.IsNegative(totalMolesB))
-            return;
-
         var diff = totalMolesA - totalMolesB;
         var absDiff = Math.Abs(diff);
         if (absDiff < BalanceThreshold)
             return;
 
-        var requiredTransfer = absDiff / 2f;
-
-        var transferAmount = Math.Min(requiredTransfer, maxTransfer);
-
-        if (requiredTransfer < maxTransfer * SmallTransferThreshold)
-            transferAmount = requiredTransfer;
+        var transferAmount = Math.Min(absDiff / 2f, maxTransfer);
 
         var fromNode = diff > 0 ? inlet : outlet;
         var toNode = diff > 0 ? outlet : inlet;
@@ -197,18 +172,7 @@ public sealed class GasTransferSystem : EntitySystem
 
     private float CalculateTransferAmount(float availableMoles, float maxTransfer)
     {
-        if (float.IsNaN(availableMoles) || float.IsNaN(maxTransfer))
-            return 0f;
-
-        if (float.IsNegative(availableMoles) || float.IsNegative(maxTransfer))
-            return 0f;
-
-        var transferAmount = Math.Min(maxTransfer, availableMoles);
-
-        if (transferAmount < maxTransfer * SmallTransferThreshold)
-            transferAmount = availableMoles;
-
-        return Math.Max(0f, transferAmount);
+        return Math.Min(maxTransfer, availableMoles);
     }
 
     private void TransferGasMixture(PipeNode fromNode, PipeNode toNode, float moles)

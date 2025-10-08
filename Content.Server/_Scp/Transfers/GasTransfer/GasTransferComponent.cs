@@ -21,13 +21,10 @@ public sealed partial class GasTransferComponent : Component
     public GasTransferMode Mode = GasTransferMode.Balance;
 
     [ViewVariables]
-    public EntityUid? Partner;
+    public Entity<GasTransferComponent>? Partner;
 
     [ViewVariables]
-    public PipeNode? PartnerPipe;
-
-    [ViewVariables]
-    public GasTransferComponent? PartnerTransferComp;
+    public NodeContainer.Nodes.PipeNode? PartnerPipe;
 }
 
 public enum GasTransferMode
