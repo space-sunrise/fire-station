@@ -14,7 +14,7 @@ namespace Content.Client.Input
             var common = contexts.GetContext("common");
 
             // Fire added start
-            common.AddFunction(ContentKeyFunctions.ESHoldToFace);
+            common.AddFunction(ContentKeyFunctions.HoldToFace);
             // Fire added end
 
             common.AddFunction(ContentKeyFunctions.FocusChat);

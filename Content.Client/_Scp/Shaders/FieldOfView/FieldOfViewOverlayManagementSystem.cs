@@ -1,6 +1,5 @@
-using Content.Client._ES.Viewcone.Overlays;
+using Content.Client._Scp.Shaders.FieldOfView.Overlays;
 using Content.Client.Eye;
-using Content.Shared._ES.Viewcone;
 using Content.Shared._Scp.Watching.FOV;
 using Content.Shared.MouseRotator;
 using Robust.Client.GameObjects;
@@ -8,25 +7,25 @@ using Robust.Client.Graphics;
 using Robust.Client.Input;
 using Robust.Client.Player;
 using Robust.Shared.Map;
-using Robust.Shared.Physics;
 using Robust.Shared.Player;
 
-namespace Content.Client._ES.Viewcone;
+namespace Content.Client._Scp.Shaders.FieldOfView;
 
 /// <summary>
 ///     Handles adding and removing the viewcone overlays, as well as ferrying data between them
 ///     Also handles calculating desired view angle for active viewcones so overlays can use it
 /// </summary>
-public sealed class ESViewconeOverlayManagementSystem : EntitySystem
+public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
 {
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly IInputManager _input = default!;
     [Dependency] private readonly IEyeManager _eye = default!;
     [Dependency] private readonly SharedTransformSystem _xform = default!;
-    private ESViewconeConeOverlay _coneOverlay = default!;
-    private ESViewconeSetAlphaOverlay _setAlphaOverlay = default!;
-    private ESViewconeResetAlphaOverlay _resetAlphaOverlay = default!;
+
+    private FieldOfViewConeOverlay _coneOverlay = default!;
+    private FieldOfViewSetAlphaOverlay _setAlphaOverlay = default!;
+    private FieldOfViewResetAlphaOverlay _resetAlphaOverlay = default!;
 
     private const float LerpHalfLife = 0.05f;
 
@@ -36,7 +35,7 @@ public sealed class ESViewconeOverlayManagementSystem : EntitySystem
     // it is the least thread safe code of all time obviously. but rendering not threaded. so
     // we can abuse the fact that the overlays will always draw sequentially in the order we expect, and
     // one wont start rendering in the middle of rendering another
-    [Access(typeof(ESViewconeSetAlphaOverlay), typeof(ESViewconeResetAlphaOverlay))]
+    [Access(typeof(FieldOfViewSetAlphaOverlay), typeof(FieldOfViewResetAlphaOverlay))]
     public List<(Entity<SpriteComponent> ent, float baseAlpha)> CachedBaseAlphas = new(128);
 
     public override void Initialize()
@@ -112,7 +111,7 @@ public sealed class ESViewconeOverlayManagementSystem : EntitySystem
         }
     }
 
-    private void OnPlayerAttached(Entity<ESViewconeComponent> entity, ref LocalPlayerAttachedEvent args)
+    private void OnPlayerAttached(Entity<FieldOfViewComponent> entity, ref LocalPlayerAttachedEvent args)
     {
         AddOverlays();
     }

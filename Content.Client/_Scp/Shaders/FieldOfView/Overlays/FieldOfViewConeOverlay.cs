@@ -1,20 +1,15 @@
 using Content.Client.Eye;
-using Content.Shared._ES.Viewcone;
 using Content.Shared._Scp.Watching.FOV;
-using Content.Shared.MouseRotator;
 using Robust.Client.Graphics;
-using Robust.Client.Input;
 using Robust.Shared.Enums;
-using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
-namespace Content.Client._ES.Viewcone.Overlays;
+namespace Content.Client._Scp.Shaders.FieldOfView.Overlays;
 
 /// <summary>
 ///     Renders the actual "cone" part of the viewcone, no alpha modulation
 /// </summary>
-public sealed class ESViewconeConeOverlay : Overlay
+public sealed class FieldOfViewConeOverlay : Overlay
 {
     [Dependency] private readonly IEntityManager _ent = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
@@ -31,7 +26,7 @@ public sealed class ESViewconeConeOverlay : Overlay
     private float _coneIgnoreRadius;
     private float _coneIgnoreFeather;
 
-    public ESViewconeConeOverlay()
+    public FieldOfViewConeOverlay()
     {
         IoCManager.InjectDependencies(this);
         _viewconeShader = _proto.Index(ShaderPrototype).InstanceUnique();

@@ -3,9 +3,9 @@ using Content.Shared.Input;
 using Robust.Shared.Input.Binding;
 using Robust.Shared.Player;
 
-namespace Content.Shared._ES.Interaction.HoldToFace;
+namespace Content.Shared._Scp.Interaction.HoldToFace;
 
-public sealed class ESHoldToFaceSystem : EntitySystem
+public sealed class HoldToFaceSystem : EntitySystem
 {
     [Dependency] private readonly SharedCombatModeSystem _combat = default!;
 
@@ -14,14 +14,14 @@ public sealed class ESHoldToFaceSystem : EntitySystem
         base.Initialize();
 
         CommandBinds.Builder
-            .Bind(ContentKeyFunctions.ESHoldToFace,
+            .Bind(ContentKeyFunctions.HoldToFace,
                 InputCmdHandler.FromDelegate(args => ToggleRotator(args, true), args => ToggleRotator(args, false), false, false))
-            .Register<ESHoldToFaceSystem>();
+            .Register<HoldToFaceSystem>();
     }
 
     private void ToggleRotator(ICommonSession? session, bool value)
     {
-        if (session?.AttachedEntity is not { } ent || !HasComp<ESHoldToFaceComponent>(ent))
+        if (session?.AttachedEntity is not { } ent || !HasComp<HoldToFaceComponent>(ent))
             return;
 
         // Don't try and override combat mode doing the same thing

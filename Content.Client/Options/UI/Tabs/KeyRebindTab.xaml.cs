@@ -185,9 +185,9 @@ namespace Content.Client.Options.UI.Tabs
             AddButton(EngineKeyFunctions.Walk);
             AddCheckBox("ui-options-hotkey-toggle-walk", _cfg.GetCVar(CCVars.ToggleWalk), HandleToggleWalk);
             InitToggleWalk();
-            // ES START
-            AddButton(ContentKeyFunctions.ESHoldToFace);
-            // ES END
+            // Fire added start
+            AddButton(ContentKeyFunctions.HoldToFace);
+            // Fire added end
             AddButton(ContentKeyFunctions.ToggleKnockdown);
 
             AddHeader("ui-options-header-camera");

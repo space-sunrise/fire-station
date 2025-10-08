@@ -1,30 +1,27 @@
-using Content.Shared._ES.Viewcone;
-using Content.Shared.Clothing.Components;
-using Content.Shared.Item;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
-using Robust.Shared.Graphics;
 
-namespace Content.Client._ES.Viewcone.Overlays;
+namespace Content.Client._Scp.Shaders.FieldOfView.Overlays;
 
 /// <summary>
-///     After <see cref="ESViewconeSetAlphaOverlay"/> has run, resets the alpha of affected entities
+///     After <see cref="FieldOfViewSetAlphaOverlay"/> has run, resets the alpha of affected entities
 ///     back to normal.
 /// </summary>
-public sealed class ESViewconeResetAlphaOverlay : Overlay
+public sealed class FieldOfViewResetAlphaOverlay : Overlay
 {
     [Dependency] private readonly IEntityManager _ent = default!;
-    private readonly ESViewconeOverlayManagementSystem _cone;
+
+    private readonly FieldOfViewOverlayManagementSystem _cone;
     private readonly SpriteSystem _sprite;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
-    public ESViewconeResetAlphaOverlay()
+    public FieldOfViewResetAlphaOverlay()
     {
         IoCManager.InjectDependencies(this);
 
-        _cone = _ent.EntitySysManager.GetEntitySystem<ESViewconeOverlayManagementSystem>();
+        _cone = _ent.EntitySysManager.GetEntitySystem<FieldOfViewOverlayManagementSystem>();
         _sprite = _ent.EntitySysManager.GetEntitySystem<SpriteSystem>();
     }
 

@@ -41,9 +41,9 @@
   path: "/Textures/_Scp/Shaders/highlight_wave.swsl"
 
 - type: shader
-  id: FieldOfView
+  id: Viewcone
   kind: source
-  path: "/Textures/_Scp/Shaders/field_of_view.swsl"
+  path: "/Textures/_Scp/Shaders/viewcone.swsl"
 
 - type: shader
   id: LightingOverlay

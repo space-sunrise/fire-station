@@ -4,12 +4,12 @@ using Robust.Client.GameObjects;
 using Robust.Shared.ComponentTrees;
 using Robust.Shared.Physics;
 
-namespace Content.Client._ES.Viewcone.ComponentTree;
+namespace Content.Client._Scp.Shaders.FieldOfView.ComponentTree;
 
 /// <summary>
 ///     Handles gathering sprites to modify alpha in the viewcone overlays
 /// </summary>
-public sealed class ESViewconeOccludableTreeSystem : ComponentTreeSystem<ESViewconeOccludableTreeComponent, FieldOfViewOccludableComponent>
+public sealed class FieldOfViewOccludableTreeSystem : ComponentTreeSystem<FieldOfViewOccludableTreeComponent, FieldOfViewOccludableComponent>
 {
     [Dependency] private readonly SpriteSystem _sprite = default!;
 

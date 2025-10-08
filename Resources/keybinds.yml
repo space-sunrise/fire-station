@@ -1,10 +1,10 @@
 ﻿version: 1 # Not used right now, whatever.
 binds:
-# ES START
-- function: ESHoldToFace
+# Fire added start
+- function: HoldToFace
   type: State
-  key: Shift
-# ES END
+  key: Control
+# Fire added end
 - function: UIClick
   type: State
   key: MouseLeft

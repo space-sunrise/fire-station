@@ -67,9 +67,9 @@ public abstract partial class SharedMoverController : VirtualController
 
     private static readonly ProtoId<TagPrototype> FootstepSoundTag = "FootstepSound";
 
-    // ES START
-    private static readonly EntProtoId ESFootstepViewconeEffect = "ESViewconeEffectFootstep";
-    // ES END
+    // Fire added start
+    private static readonly EntProtoId FootstepViewconeEffect = "ScpViewconeEffectFootstep";
+    // Fire added end
 
     private bool _relativeMovement;
     private float _minDamping;
@@ -357,7 +357,7 @@ public abstract partial class SharedMoverController : VirtualController
                 }
 
                 // Fire added start
-                _fov.SpawnEffect(uid, ESFootstepViewconeEffect, wishDir.ToWorldAngle());
+                _fov.SpawnEffect(uid, FootstepViewconeEffect, wishDir.ToWorldAngle());
                 // Fire added end
             }
         }
