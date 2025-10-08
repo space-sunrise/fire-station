@@ -11,7 +11,6 @@ using Robust.Shared.Map;
 using Robust.Shared.Maths;
 using Robust.Shared.Timing;
 using Content.Server.Doors.Systems;
-using Robust.Shared.GameObjects;
 
 namespace Content.Server._Scp.ComplexElevator;
 
@@ -24,7 +23,11 @@ public sealed class ComplexElevatorSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly SharedPointLightSystem _pointLightSystem = default!;
+    [Dependency] private readonly PointLightSystem _pointLightSystem = default!;
+
+    private static readonly Color ElevatorButtonGreen = Color.FromHex("#00FF00");
+    private static readonly Color ElevatorButtonYellow = Color.FromHex("#FFFF00");
+    private static readonly Color ElevatorButtonRed = Color.FromHex("#FF0000");
 
     public override void Initialize()
     {
@@ -48,65 +51,25 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void StartMovement(Entity<ComplexElevatorComponent> ent, string targetFloor)
     {
-        EntityUid? intermediatePoint = null;
-        EntityUid? targetPoint = null;
+        KillEntitiesInTargetArea(ent, ent.Comp.IntermediateFloorId);
+        ent.Comp.CurrentFloor = ent.Comp.IntermediateFloorId;
+        TeleportToFloor(ent, ent.Comp.IntermediateFloorId);
 
-        var query = EntityQueryEnumerator<ElevatorPointComponent>();
-        while (query.MoveNext(out var pointUid, out var pointComp))
+        _audio.PlayPvs(ent.Comp.TravelSound, ent);
+        Timer.Spawn(ent.Comp.IntermediateDelay, () =>
         {
-            if (pointComp.FloorId == ent.Comp.IntermediateFloorId)
-                intermediatePoint = pointUid;
-            if (pointComp.FloorId == targetFloor)
-                targetPoint = pointUid;
+            if (!Exists(ent))
+                return;
 
-            if (intermediatePoint != null && targetPoint != null)
-                break;
-        }
+            KillEntitiesInTargetArea(ent, targetFloor);
+            ent.Comp.CurrentFloor = targetFloor;
+            TeleportToFloor(ent, targetFloor);
+            OpenDoorsForFloor(ent.Comp.ElevatorId, targetFloor);
 
-        if (intermediatePoint == null || targetPoint == null)
-        {
+            _audio.PlayPvs(ent.Comp.ArrivalSound, ent);
+
             ent.Comp.IsMoving = false;
-            UpdateButtonLights(ent.Comp.ElevatorId);
-            return;
-        }
-
-        var travelTime = ent.Comp.IntermediateDelay;
-
-        Timer.Spawn(ent.Comp.DoorCloseDelay, () =>
-        {
-            if (!Exists(ent) || !ent.Comp.IsMoving)
-                return;
-
-            if (!CanCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor))
-            {
-                ent.Comp.IsMoving = false;
-                UpdateButtonLights(ent.Comp.ElevatorId);
-                return;
-            }
-
-            _audio.PlayPvs(ent.Comp.StartSound, ent);
-            _audio.PlayPvs(ent.Comp.TravelSound, ent);
-
-            TryCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor);
-            KillEntitiesInTargetArea(ent, ent.Comp.IntermediateFloorId);
-            ent.Comp.CurrentFloor = ent.Comp.IntermediateFloorId;
-            TeleportToFloor(ent, ent.Comp.IntermediateFloorId);
-
-            Timer.Spawn(travelTime, () =>
-            {
-                if (!Exists(ent))
-                    return;
-
-                KillEntitiesInTargetArea(ent, targetFloor);
-                ent.Comp.CurrentFloor = targetFloor;
-                TeleportToFloor(ent, targetFloor);
-                OpenDoorsForFloor(ent.Comp.ElevatorId, targetFloor);
-
-                _audio.PlayPvs(ent.Comp.ArrivalSound, ent);
-
-                ent.Comp.IsMoving = false;
-                UpdateButtonLights(ent.Comp.ElevatorId);
-            });
+            UpdateButtonLights(ent);
         });
     }
 
@@ -197,7 +160,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
             return;
 
         ent.Comp.IsMoving = true;
-        UpdateButtonLights(ent.Comp.ElevatorId);
+        UpdateButtonLights(ent);
 
         Timer.Spawn(ent.Comp.SendDelay, () =>
         {
@@ -205,6 +168,22 @@ public sealed class ComplexElevatorSystem : EntitySystem
                 return;
 
             StartMovement(ent, targetFloor);
+        });
+
+        Timer.Spawn(ent.Comp.DoorCloseDelay, () =>
+        {
+            if (!Exists(ent) || !ent.Comp.IsMoving)
+                return;
+
+            if (!CanCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor))
+            {
+                ent.Comp.IsMoving = false;
+                UpdateButtonLights(ent);
+            }
+            else
+            {
+                TryCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor);
+            }
         });
     }
 
@@ -222,40 +201,53 @@ public sealed class ComplexElevatorSystem : EntitySystem
             MoveToFloor(ent, nextFloor);
     }
 
-    private string? GetNextFloorUp(Entity<ComplexElevatorComponent> ent)
+    private string? GetNextFloor(Entity<ComplexElevatorComponent> ent, bool up)
     {
         if (ent.Comp.IsMoving || ent.Comp.Floors.Count == 0)
             return null;
 
         var currentIndex = ent.Comp.Floors.IndexOf(ent.Comp.CurrentFloor);
-        if (currentIndex == -1 || currentIndex <= 0)
+        if (currentIndex == -1)
             return null;
 
-        return ent.Comp.Floors[currentIndex - 1];
+        if (up)
+        {
+            if (currentIndex <= 0)
+                return null;
+            return ent.Comp.Floors[currentIndex - 1];
+        }
+        else
+        {
+            if (currentIndex >= ent.Comp.Floors.Count - 1)
+                return null;
+            return ent.Comp.Floors[currentIndex + 1];
+        }
+    }
+
+    private string? GetNextFloorUp(Entity<ComplexElevatorComponent> ent)
+    {
+        return GetNextFloor(ent, true);
     }
 
     private string? GetNextFloorDown(Entity<ComplexElevatorComponent> ent)
     {
-        if (ent.Comp.IsMoving || ent.Comp.Floors.Count == 0)
-            return null;
-
-        var currentIndex = ent.Comp.Floors.IndexOf(ent.Comp.CurrentFloor);
-        if (currentIndex == -1 || currentIndex >= ent.Comp.Floors.Count - 1)
-            return null;
-
-        return ent.Comp.Floors[currentIndex + 1];
+        return GetNextFloor(ent, false);
     }
+
 
     private void OpenDoorsForFloor(string elevatorId, string floor)
     {
         var query = EntityQueryEnumerator<ElevatorDoorComponent>();
         while (query.MoveNext(out var doorUid, out var doorComp))
         {
-            if (doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)
-            {
-                _doorSystem.TryOpen(doorUid);
-            }
+            if (!(doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)) continue;
+            _doorSystem.TryOpen(doorUid);
         }
+    }
+
+    private void CloseDoors(Entity<ComplexElevatorComponent> ent)
+    {
+        TryCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor);
     }
 
     private void CloseDoorsForFloor(string elevatorId, string floor)
@@ -263,10 +255,8 @@ public sealed class ComplexElevatorSystem : EntitySystem
         var query = EntityQueryEnumerator<ElevatorDoorComponent>();
         while (query.MoveNext(out var doorUid, out var doorComp))
         {
-            if (doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)
-            {
-                _doorSystem.TryClose(doorUid);
-            }
+            if (!(doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)) continue;
+            _doorSystem.TryClose(doorUid);
         }
     }
 
@@ -275,34 +265,39 @@ public sealed class ComplexElevatorSystem : EntitySystem
         var query = EntityQueryEnumerator<ElevatorDoorComponent>();
         while (query.MoveNext(out var doorUid, out var doorComp))
         {
-            if (doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)
-            {
-                if (IsDoorBlocked(doorUid))
-                    return false;
-            }
+            if (!(doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)) continue;
+            if (IsDoorBlocked(doorUid))
+                return false;
         }
         return true;
     }
 
     private bool TryCloseDoorsForFloor(string elevatorId, string floor)
     {
+        if (!TryFindElevator(elevatorId, out var elevator))
+            return false;
+
         var allClosed = true;
         var query = EntityQueryEnumerator<ElevatorDoorComponent>();
         while (query.MoveNext(out var doorUid, out var doorComp))
         {
-            if (doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)
-            {
-                if (!_doorSystem.TryClose(doorUid))
-                    allClosed = false;
-            }
+            if (!(doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)) continue;
+            if (!_doorSystem.TryClose(doorUid))
+                allClosed = false;
+            else
+                _audio.PlayPvs(elevator.Value.Comp.StartSound, doorUid);
         }
         return allClosed;
     }
 
     private bool IsDoorBlocked(EntityUid doorUid)
     {
-        var aabb = _lookup.GetWorldAABB(doorUid, Transform(doorUid)).Enlarged(-0.1f);
-        var intersectingEntities = _lookup.GetEntitiesIntersecting(Transform(doorUid).MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sensors);
+        if (Deleted(doorUid))
+            return false;
+
+        var transform = Transform(doorUid);
+        var aabb = _lookup.GetWorldAABB(doorUid, transform).Enlarged(-0.1f);
+        var intersectingEntities = _lookup.GetEntitiesIntersecting(transform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sensors);
         foreach (var ent in intersectingEntities)
         {
             if (ent != doorUid && !HasComp<ElevatorDoorComponent>(ent))
@@ -339,33 +334,32 @@ public sealed class ComplexElevatorSystem : EntitySystem
         }
     }
 
-    private void UpdateButtonLights(string elevatorId)
+    private void UpdateButtonLights(Entity<ComplexElevatorComponent> elevator)
     {
-        if (!TryFindElevator(elevatorId, out var elevator))
-            return;
-
         var query = EntityQueryEnumerator<ElevatorButtonComponent>();
         while (query.MoveNext(out var buttonUid, out var buttonComp))
         {
-            if (buttonComp.ElevatorId != elevatorId)
+            if (buttonComp.ElevatorId != elevator.Comp.ElevatorId)
                 continue;
 
-            Color color = Color.FromHex("#FF0000");
+            Color color = ElevatorButtonRed;
             if (buttonComp.ButtonType == ElevatorButtonType.CallButton)
             {
-                if (buttonComp.Floor == elevator.Value.Comp.CurrentFloor)
-                    color = Color.FromHex("#00FF00");
-                else if (elevator.Value.Comp.IsMoving)
-                    color = Color.FromHex("#FFFF00");
-                else if (buttonComp.Floor != elevator.Value.Comp.CurrentFloor)
-                    color = Color.FromHex("#FF0000");
+                if (elevator.Comp.IsMoving)
+                    color = ElevatorButtonYellow;
+                else if (buttonComp.Floor == elevator.Comp.CurrentFloor)
+                    color = ElevatorButtonGreen;
+                else
+                    color = ElevatorButtonRed;
             }
 
             if (TryComp<PointLightComponent>(buttonUid, out var light))
             {
                 _pointLightSystem.SetColor(buttonUid, color, light);
+                Dirty(buttonUid, light);
             }
         }
     }
-
 }
+
+

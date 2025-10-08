@@ -143,7 +143,8 @@
 
 - type: entity
   parent: SignalButton
-  id: ElevatorButton
+  id: ElevatorButtonAbstract
+  absctract: true
   name: Elevator button
   description: Button for controlling the elevator.
   suffix: "Call button"
@@ -157,33 +158,41 @@
     state: on
   - type: WallMount
     arc: 180
+  - type: ElevatorButton
+    elevatorId: "SCP_Elevator_1"
+    buttonType: CallButton
+
+- type: entity
+  parent: ElevatorButtonAbstract
+  id: ElevatorButton
+  name: Elevator button
+  description: Button for controlling the elevator.
+  suffix: "Call button"
+  components:
   - type: PointLight
-    color: "#FFFF00"
-    radius: 1.3
-    energy: 4
+    color: "#FF0000"
+    radius: 1.4
+    energy: 5
   - type: ElevatorButton
     elevatorId: "SCP_Elevator_1"
     buttonType: CallButton
     floor: "Complex"
 
 - type: entity
-  parent: ElevatorButton
+  parent: ElevatorButtonAbstract
   id: ElevatorButtonUp
   name: Elevator up button
   components:
   - type: ElevatorButton
     buttonType: SendElevatorUp
-  - type: PointLight
-    radius: 0
+
 - type: entity
-  parent: ElevatorButton
+  parent: ElevatorButtonAbstract
   id: ElevatorButtonDown
   name: Elevator down button
   components:
   - type: ElevatorButton
     buttonType: SendElevatorDown
-  - type: PointLight
-    radius: 0
 
 - type: entity
   parent: ScpBlastDoor

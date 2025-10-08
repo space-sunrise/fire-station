@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Robust.Shared.Audio;
+using Robust.Shared.GameObjects;
+using Robust.Shared.Maths;
 
 namespace Content.Server._Scp.ComplexElevator;
 
@@ -25,7 +27,7 @@ public sealed partial class ComplexElevatorComponent : Component
     public TimeSpan IntermediateDelay = TimeSpan.FromSeconds(6);
 
     [DataField]
-    public TimeSpan DoorCloseDelay = TimeSpan.FromSeconds(0.5);
+    public TimeSpan DoorCloseDelay = TimeSpan.FromSeconds(0.3);
 
     [DataField]
     public SoundSpecifier StartSound = new SoundPathSpecifier("/Audio/_Scp/Machines/Elevator/ElevatorClose.ogg");
