@@ -18,10 +18,7 @@ public sealed partial class EnergyTransferComponent : Component
     public EnergyTransferMode Mode = EnergyTransferMode.Balance;
 
     [ViewVariables]
-    public EntityUid? Partner;
-
-    [ViewVariables]
-    public Entity<BatteryComponent, EnergyTransferComponent>? PartnerEntity;
+    public Entity<EnergyTransferComponent, BatteryComponent>? Partner;
 }
 
 public enum EnergyTransferMode

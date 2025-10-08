@@ -1,6 +1,6 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Server.Power.EntitySystems;
 using Content.Server.Power.Components;
-using Robust.Shared.Map;
 
 namespace Content.Server._Scp.Transfers.EnergyTransfer;
 
@@ -19,7 +19,7 @@ public sealed class EnergyTransferSystem : EntitySystem
 
     private void OnMapInit(Entity<EnergyTransferComponent> ent, ref MapInitEvent args)
     {
-        FindPartner(ent);
+        TryFindPartner(ent.AsNullable());
     }
 
     public override void Update(float frameTime)
@@ -31,67 +31,49 @@ public sealed class EnergyTransferSystem : EntitySystem
         {
             if (string.IsNullOrEmpty(comp.LinkId))
                 continue;
+
             if (!comp.IsActive)
                 continue;
 
-            if (!ValidatePartner((uid, comp, battery), out var partnerBattery, out var partnerUid))
-                continue;
-
-            if (!Exists(partnerUid))
+            if (!ValidatePartner((uid, comp, battery), out var partner))
                 continue;
 
             var sourceEnt = (uid, battery, comp);
-            TransferEnergy(sourceEnt, (partnerUid, partnerBattery), frameTime);
+            TransferEnergy(sourceEnt, (partner.Value, partner.Value.Comp2), frameTime);
         }
     }
 
-    private bool ValidatePartner(Entity<EnergyTransferComponent, BatteryComponent> ent, out BatteryComponent partnerBattery, out EntityUid partnerUid)
+    private bool ValidatePartner(Entity<EnergyTransferComponent, BatteryComponent> ent, [NotNullWhen(true)] out Entity<EnergyTransferComponent, BatteryComponent>? partner)
     {
-        partnerBattery = default!;
-        partnerUid = default;
+        partner = null;
 
-        if (!ent.Comp1.Partner.HasValue)
+        if (!Exists(ent.Comp1.Partner) || !ent.Comp1.Partner.HasValue)
         {
-            if (!FindPartner(ent))
+            if (!TryFindPartner(ent.AsNullable()))
                 return false;
         }
 
-        partnerUid = ent.Comp1.Partner!.Value;
-
-        if (ent.Comp1.PartnerEntity == null)
+        if (ent.Comp1.Partner!.Value.Comp1.Deleted || ent.Comp1.Partner!.Value.Comp2.Deleted)
         {
-            var partnerTransferComp = EntityManager.EnsureComponent<EnergyTransferComponent>(partnerUid);
-            partnerBattery = EntityManager.EnsureComponent<BatteryComponent>(partnerUid);
-
-            if (!partnerTransferComp.Partner.HasValue || partnerTransferComp.Partner.Value != ent.Owner || !partnerTransferComp.IsActive)
-            {
-                InvalidatePartner(ent.Comp1);
+            if (!TryFindPartner(ent.AsNullable()))
                 return false;
-            }
+        }
 
-            ent.Comp1.PartnerEntity = (partnerUid, partnerBattery, partnerTransferComp);
-        }
-        else
-        {
-            partnerBattery = ent.Comp1.PartnerEntity.Value.Comp1;
-        }
+        partner = ent.Comp1.Partner;
 
         return true;
     }
 
-    private void InvalidatePartner(EnergyTransferComponent comp)
+    private bool TryFindPartner(Entity<EnergyTransferComponent?, BatteryComponent?> ent)
     {
-        comp.Partner = null;
-        comp.PartnerEntity = null;
-    }
-
-    private bool FindPartner(Entity<EnergyTransferComponent> ent)
-    {
-        if (string.IsNullOrEmpty(ent.Comp.LinkId))
+        if (!Resolve(ent, ref ent.Comp1, ref ent.Comp2))
             return false;
 
-        var transferQuery = EntityQueryEnumerator<EnergyTransferComponent>();
-        while (transferQuery.MoveNext(out var otherUid, out var otherComp))
+        if (string.IsNullOrEmpty(ent.Comp1.LinkId))
+            return false;
+
+        var transferQuery = EntityQueryEnumerator<EnergyTransferComponent, BatteryComponent>();
+        while (transferQuery.MoveNext(out var otherUid, out var otherComp, out var batteryOther))
         {
             if (otherUid == ent.Owner)
                 continue;
@@ -99,15 +81,13 @@ public sealed class EnergyTransferSystem : EntitySystem
             if (string.IsNullOrEmpty(otherComp.LinkId))
                 continue;
 
-            if (otherComp.LinkId == ent.Comp.LinkId)
-            {
-                InvalidatePartner(ent.Comp);
-                InvalidatePartner(otherComp);
+            if (otherComp.LinkId != ent.Comp1.LinkId)
+                continue;
 
-                ent.Comp.Partner = otherUid;
-                otherComp.Partner = ent.Owner;
-                return true;
-            }
+            ent.Comp1.Partner = (otherUid, otherComp, batteryOther);
+            otherComp.Partner = (ent, ent.Comp1, ent.Comp2);
+
+            return true;
         }
 
         return false;
@@ -121,7 +101,7 @@ public sealed class EnergyTransferSystem : EntitySystem
 
         if (maxTransfer < 0)
             return;
-            
+
         switch (sourceEnt.Comp2.Mode)
         {
             case EnergyTransferMode.Balance:
@@ -147,19 +127,10 @@ public sealed class EnergyTransferSystem : EntitySystem
 
         var transferAmount = Math.Min(absChargeDiff / 2f, maxTransfer);
 
-        Entity<BatteryComponent> fromEntity, toEntity;
         if (chargeDiff > 0)
-        {
-            fromEntity = sourceEnt;
-            toEntity = targetEnt;
-        }
+            TransferEnergyBetween(sourceEnt, targetEnt, transferAmount);
         else
-        {
-            fromEntity = targetEnt;
-            toEntity = sourceEnt;
-        }
-
-        TransferEnergyBetween(fromEntity, toEntity, transferAmount);
+            TransferEnergyBetween(targetEnt, sourceEnt, transferAmount);
     }
 
     private void TransferEnergyBetween(Entity<BatteryComponent> fromEntity, Entity<BatteryComponent> toEntity, float transferAmount)
