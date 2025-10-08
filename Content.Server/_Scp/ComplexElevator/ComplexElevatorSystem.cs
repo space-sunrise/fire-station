@@ -297,7 +297,10 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
         var transform = Transform(doorUid);
         var aabb = _lookup.GetWorldAABB(doorUid, transform).Enlarged(-0.1f);
-        var intersectingEntities = _lookup.GetEntitiesIntersecting(transform.MapID, aabb, LookupFlags.Dynamic | LookupFlags.Sensors);
+        var center = aabb.Center;
+        var size = aabb.Size;
+        var range = Math.Max(size.X, size.Y) / 2f;
+        var intersectingEntities = _lookup.GetEntitiesInRange(transform.MapID, center, range, LookupFlags.Dynamic | LookupFlags.Sensors);
         foreach (var ent in intersectingEntities)
         {
             if (ent != doorUid && !HasComp<ElevatorDoorComponent>(ent))
