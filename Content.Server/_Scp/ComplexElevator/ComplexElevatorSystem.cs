@@ -279,7 +279,8 @@ public sealed class ComplexElevatorSystem : EntitySystem
         var query = EntityQueryEnumerator<ElevatorDoorComponent>();
         while (query.MoveNext(out var doorUid, out var doorComp))
         {
-            if (!(doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)) continue;
+            if (doorComp.ElevatorId != elevatorId || doorComp.Floor != floor)
+                continue;
             if (IsDoorBlocked(doorUid))
                 return false;
         }
