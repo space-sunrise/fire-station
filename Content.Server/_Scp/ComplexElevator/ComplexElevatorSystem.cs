@@ -350,8 +350,8 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void UpdateButtonLights(Entity<ComplexElevatorComponent> elevator)
     {
-        var query = EntityQueryEnumerator<ElevatorButtonComponent>();
-        while (query.MoveNext(out var buttonUid, out var buttonComp))
+        var query = EntityQueryEnumerator<ElevatorButtonComponent, PointLightComponent>();
+        while (query.MoveNext(out var buttonUid, out var buttonComp, out var light))
         {
             if (buttonComp.ElevatorId != elevator.Comp.ElevatorId)
                 continue;
@@ -367,11 +367,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
                     color = ElevatorButtonRed;
             }
 
-            if (TryComp<PointLightComponent>(buttonUid, out var light))
-            {
-                _pointLightSystem.SetColor(buttonUid, color, light);
-                Dirty(buttonUid, light);
-            }
+            _pointLightSystem.SetColor(buttonUid, color, light);
         }
     }
 }
