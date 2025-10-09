@@ -5,6 +5,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
+using Robust.Shared.Physics.Components;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
@@ -117,7 +118,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
     private void HandleButtonPress(Entity<ElevatorButtonComponent> button, Entity<ComplexElevatorComponent> elevator)
     {
         if (elevator.Comp.IsMoving)
-            return
+            return;
         {
             switch (button.Comp.ButtonType)
             {
@@ -146,10 +147,10 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void OnButtonActivate(Entity<ElevatorButtonComponent> ent, ref ActivateInWorldEvent args)
     {
-        if (TryFindElevator(ent.Comp.ElevatorId, out var elevator))
-        {
-            HandleButtonPress(ent, elevator.Value);
-        }
+        if (!TryFindElevator(ent.Comp.ElevatorId, out var elevator))
+            return;
+
+        HandleButtonPress(ent, elevator.Value);
         args.Handled = true;
     }
 
@@ -262,26 +263,17 @@ public sealed class ComplexElevatorSystem : EntitySystem
         }
     }
 
-
-    private void CloseDoorsForFloor(string elevatorId, string floor)
-    {
-        var query = EntityQueryEnumerator<ElevatorDoorComponent>();
-        while (query.MoveNext(out var doorUid, out var doorComp))
-        {
-            if (doorComp.ElevatorId != elevatorId || doorComp.Floor != floor)
-                continue;
-            _doorSystem.TryClose(doorUid);
-        }
-    }
-
     private bool CanCloseDoorsForFloor(string elevatorId, string floor)
     {
+        if (!TryFindElevator(elevatorId, out var elevator))
+            return true;
+
         var query = EntityQueryEnumerator<ElevatorDoorComponent>();
         while (query.MoveNext(out var doorUid, out var doorComp))
         {
             if (doorComp.ElevatorId != elevatorId || doorComp.Floor != floor)
                 continue;
-            if (IsDoorBlocked(doorUid))
+            if (IsDoorBlocked(doorUid, elevator.Value.Comp.DoorBlockCheckRange))
                 return false;
         }
         return true;
@@ -292,37 +284,40 @@ public sealed class ComplexElevatorSystem : EntitySystem
         if (!TryFindElevator(elevatorId, out var elevator))
             return false;
 
-        var allClosed = true;
+        var doors = new List<EntityUid>();
         var query = EntityQueryEnumerator<ElevatorDoorComponent>();
         while (query.MoveNext(out var doorUid, out var doorComp))
         {
             if (doorComp.ElevatorId != elevatorId || doorComp.Floor != floor)
                 continue;
-            if (!_doorSystem.TryClose(doorUid))
-                return false;
-            else
-                _audio.PlayPvs(elevator.Value.Comp.StartSound, doorUid);
+            doors.Add(doorUid);
         }
+
+        var allClosed = true;
+        foreach (var doorUid in doors)
+        {
+            if (!_doorSystem.TryClose(doorUid))
+                allClosed = false;
+        }
+
+        if (allClosed && doors.Count > 0)
+        {
+            _audio.PlayPvs(elevator.Value.Comp.StartSound, doors[^1]);
+        }
+
         return allClosed;
     }
 
-    private bool IsDoorBlocked(EntityUid doorUid)
+    private bool IsDoorBlocked(EntityUid doorUid, float range)
     {
         if (Deleted(doorUid))
             return false;
 
-        var transform = Transform(doorUid);
-        var aabb = _lookup.GetWorldAABB(doorUid, transform).Enlarged(-0.1f);
-        var center = aabb.Center;
-        var size = aabb.Size;
-        var range = Math.Max(size.X, size.Y) / 2f;
-        var intersectingEntities = _lookup.GetEntitiesInRange(transform.MapID, center, range, LookupFlags.Dynamic | LookupFlags.Sensors);
+        var intersectingEntities = _lookup.GetEntitiesInRange<PhysicsComponent>(Transform(doorUid).Coordinates, range, LookupFlags.Dynamic | LookupFlags.Sensors);
         foreach (var ent in intersectingEntities)
         {
-            if (ent != doorUid && !HasComp<ElevatorDoorComponent>(ent))
-            {
+            if (ent.Owner != doorUid && !HasComp<ElevatorDoorComponent>(ent.Owner))
                 return true;
-            }
         }
         return false;
     }
@@ -372,7 +367,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
                     color = ElevatorButtonRed;
             }
 
-            _pointLightSystem.SetColor(buttonUid, color, light);
+            _pointLight.SetColor(buttonUid, color, light);
         }
     }
 }
