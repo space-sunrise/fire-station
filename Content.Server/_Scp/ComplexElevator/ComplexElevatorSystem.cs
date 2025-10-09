@@ -136,10 +136,10 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void OnButtonInteract(Entity<ElevatorButtonComponent> ent, ref InteractHandEvent args)
     {
-        if (TryFindElevator(ent.Comp.ElevatorId, out var elevator))
-        {
-            HandleButtonPress(ent, elevator.Value);
-        }
+        if (!TryFindElevator(ent.Comp.ElevatorId, out var elevator))
+            return;
+            
+        HandleButtonPress(ent, elevator.Value);
         args.Handled = true;
     }
 
