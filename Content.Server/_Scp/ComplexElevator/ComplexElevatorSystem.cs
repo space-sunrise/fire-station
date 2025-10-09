@@ -4,6 +4,7 @@ using Content.Shared.Timing;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
+using Content.Shared.Interaction.Events;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
@@ -34,6 +35,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ElevatorButtonComponent, InteractHandEvent>(OnButtonInteract);
+        SubscribeLocalEvent<ElevatorButtonComponent, ActivateInWorldEvent>(OnButtonActivate);
     }
 
     private TimeSpan GetButtonUseDelay(Entity<ComplexElevatorComponent> elevator, ElevatorButtonComponent button)
@@ -116,22 +118,46 @@ public sealed class ComplexElevatorSystem : EntitySystem
     {
         if (TryFindElevator(ent.Comp.ElevatorId, out var elevator))
         {
-            if (elevator.Value.Comp.IsMoving)
-                return;
-
-            switch (ent.Comp.ButtonType)
+            if (!elevator.Value.Comp.IsMoving)
             {
-                case ElevatorButtonType.CallButton:
-                    MoveToFloor(elevator.Value, ent.Comp.Floor);
-                    break;
-                case ElevatorButtonType.SendElevatorUp:
-                    MoveUp(elevator.Value);
-                    break;
-                case ElevatorButtonType.SendElevatorDown:
-                    MoveDown(elevator.Value);
-                    break;
+                switch (ent.Comp.ButtonType)
+                {
+                    case ElevatorButtonType.CallButton:
+                        MoveToFloor(elevator.Value, ent.Comp.Floor);
+                        break;
+                    case ElevatorButtonType.SendElevatorUp:
+                        MoveUp(elevator.Value);
+                        break;
+                    case ElevatorButtonType.SendElevatorDown:
+                        MoveDown(elevator.Value);
+                        break;
+                }
+                SetButtonDelay(ent, elevator.Value);
             }
-            SetButtonDelay(ent, elevator.Value);
+        }
+        args.Handled = true;
+    }
+
+    private void OnButtonActivate(Entity<ElevatorButtonComponent> ent, ref ActivateInWorldEvent args)
+    {
+        if (TryFindElevator(ent.Comp.ElevatorId, out var elevator))
+        {
+            if (!elevator.Value.Comp.IsMoving)
+            {
+                switch (ent.Comp.ButtonType)
+                {
+                    case ElevatorButtonType.CallButton:
+                        MoveToFloor(elevator.Value, ent.Comp.Floor);
+                        break;
+                    case ElevatorButtonType.SendElevatorUp:
+                        MoveUp(elevator.Value);
+                        break;
+                    case ElevatorButtonType.SendElevatorDown:
+                        MoveDown(elevator.Value);
+                        break;
+                }
+                SetButtonDelay(ent, elevator.Value);
+            }
         }
         args.Handled = true;
     }
