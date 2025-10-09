@@ -294,7 +294,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         {
             if (!(doorComp.ElevatorId == elevatorId && doorComp.Floor == floor)) continue;
             if (!_doorSystem.TryClose(doorUid))
-                allClosed = false;
+                return false;
             else
                 _audio.PlayPvs(elevator.Value.Comp.StartSound, doorUid);
         }
