@@ -260,7 +260,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
         return GetNextFloor(ent, false);
     }
 
-
     private void OpenDoorsForFloor(string elevatorId, string floor)
     {
         var query = EntityQueryEnumerator<ElevatorDoorComponent>();
@@ -271,10 +270,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
         }
     }
 
-    private void CloseDoors(Entity<ComplexElevatorComponent> ent)
-    {
-        TryCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor);
-    }
 
     private void CloseDoorsForFloor(string elevatorId, string floor)
     {
