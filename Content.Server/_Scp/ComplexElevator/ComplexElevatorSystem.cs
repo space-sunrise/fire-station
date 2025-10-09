@@ -116,7 +116,8 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void HandleButtonPress(Entity<ElevatorButtonComponent> button, Entity<ComplexElevatorComponent> elevator)
     {
-        if (!elevator.Comp.IsMoving)
+        if (elevator.Comp.IsMoving)
+            return
         {
             switch (button.Comp.ButtonType)
             {
