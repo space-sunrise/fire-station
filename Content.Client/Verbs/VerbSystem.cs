@@ -3,6 +3,7 @@ using System.Numerics;
 using Content.Client.Examine;
 using Content.Client.Gameplay;
 using Content.Client.Popups;
+using Content.Shared._Scp.Watching.FOV;
 using Content.Shared.CCVar;
 using Content.Shared.Examine;
 using Content.Shared.Tag;
@@ -24,6 +25,7 @@ namespace Content.Client.Verbs
     [UsedImplicitly]
     public sealed class VerbSystem : SharedVerbSystem
     {
+        [Dependency] private readonly FieldOfViewSystem _fov = default!;
         [Dependency] private readonly PopupSystem _popupSystem = default!;
         [Dependency] private readonly ExamineSystem _examine = default!;
         [Dependency] private readonly SpriteTreeSystem _tree = default!;
@@ -151,6 +153,12 @@ namespace Content.Client.Verbs
             for (var i = entities.Count - 1; i >= 0; i--)
             {
                 if (_tagSystem.HasTag(entities[i], HideContextMenuTag))
+                    entities.RemoveSwap(i);
+            }
+
+            for (var i = entities.Count - 1; i >= 0; i--)
+            {
+                if (!_fov.IsInViewAngle(player, entities[i]))
                     entities.RemoveSwap(i);
             }
 
