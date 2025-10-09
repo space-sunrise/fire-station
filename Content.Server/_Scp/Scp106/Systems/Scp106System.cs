@@ -148,7 +148,7 @@ public sealed partial class Scp106System : SharedScp106System
 
         if (scp106 != null)
         {
-            if (TryComp<SSDIndicatorComponent>(target, out var ssd) && ssd.IsSSD)
+            if (TryComp<SSDIndicatorComponent>(target, out var ssd) && !ssd.IsSSD)
                 AddCurrencyInStore(scp106.Value);
 
             CheckHumansInBackrooms();
@@ -241,7 +241,7 @@ public sealed partial class Scp106System : SharedScp106System
             if (mobStateComponent.CurrentState != MobState.Alive)
                 continue;
 
-            if (TryComp<SSDIndicatorComponent>(humanUid, out var ssd) && ssd.IsSSD)
+            if (TryComp<SSDIndicatorComponent>(humanUid, out var ssd) && !ssd.IsSSD)
                 continue;
 
             humansInBackrooms += 1;
