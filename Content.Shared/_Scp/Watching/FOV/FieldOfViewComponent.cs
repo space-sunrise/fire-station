@@ -38,8 +38,9 @@ public sealed partial class FieldOfViewComponent : Component
 
     // Clientside, used for lerping view angle
     // and keeping it consistent across all overlays
+    [ViewVariables]
     public Angle ViewAngle;
+
+    [ViewVariables]
     public Angle? DesiredViewAngle = null;
-    public Angle LastMouseRotationAngle;
-    public Angle LastWorldRotationAngle;
 }

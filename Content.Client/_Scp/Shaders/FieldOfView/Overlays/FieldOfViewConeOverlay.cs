@@ -1,5 +1,3 @@
-using Content.Client.Eye;
-using Content.Shared._Scp.Watching.FOV;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
@@ -14,13 +12,14 @@ public sealed class FieldOfViewConeOverlay : Overlay
     [Dependency] private readonly IEntityManager _ent = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
 
+    private readonly FieldOfViewOverlayManagementSystem _fovManagement;
+
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     public override bool RequestScreenTexture => true;
 
     private static readonly ProtoId<ShaderPrototype> ShaderPrototype = "Viewcone";
-    private readonly ShaderInstance _viewconeShader;
+    private readonly ShaderInstance _shader;
 
-    private Entity<EyeComponent, FieldOfViewComponent, TransformComponent>? _eyeEntity;
     private float _coneAngle;
     private float _coneFeather;
     private float _coneIgnoreRadius;
@@ -29,53 +28,47 @@ public sealed class FieldOfViewConeOverlay : Overlay
     public FieldOfViewConeOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _viewconeShader = _proto.Index(ShaderPrototype).InstanceUnique();
+        _shader = _proto.Index(ShaderPrototype).InstanceUnique();
+
+        _fovManagement = _ent.System<FieldOfViewOverlayManagementSystem>();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        _eyeEntity = null;
+        if (!_fovManagement.PlayerEntity.HasValue)
+            return false;
 
-        // This is really stupid but there isn't another way to reverse an eye entity from just an IEye afaict
-        // It's not really inefficient though. theres barely any of those fuckin things anyway
-        // lerpingeye used because that system already does the busywork of figuring out which eyes are 'rendering' sort of
-        // so we dont have to query other players eyes (probably barely makes a difference anyway)
-        var enumerator = _ent.AllEntityQueryEnumerator<LerpingEyeComponent, EyeComponent, FieldOfViewComponent, TransformComponent>();
-        while (enumerator.MoveNext(out var uid, out var _, out var eye, out var viewcone, out var xform))
-        {
-            if (args.Viewport.Eye != eye.Eye)
-                continue;
+        var player = _fovManagement.PlayerEntity.Value;
 
-            _coneAngle = viewcone.Angle;
-            _coneFeather = viewcone.AngleTolerance;
-            _coneIgnoreRadius = (viewcone.ConeIgnoreRadius - viewcone.ConeIgnoreFeather) * 50f;
-            _coneIgnoreFeather = Math.Max(viewcone.ConeIgnoreFeather * 200f, 8f);
-            _eyeEntity = (uid, eye, viewcone, xform);
-            break;
-        }
+        if (args.Viewport.Eye != player.Comp1.Eye)
+            return false;
 
-        return _eyeEntity != null;
+        _coneAngle = player.Comp2.Angle;
+        _coneFeather = player.Comp2.AngleTolerance;
+        _coneIgnoreRadius = (player.Comp2.ConeIgnoreRadius - player.Comp2.ConeIgnoreFeather) * 50f;
+        _coneIgnoreFeather = Math.Max(player.Comp2.ConeIgnoreFeather * 200f, 8f);
+
+        return true;
     }
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        if (ScreenTexture == null || _eyeEntity == null)
+        if (ScreenTexture == null || !_fovManagement.PlayerEntity.HasValue)
             return;
 
         var worldHandle = args.WorldHandle;
         var viewport = args.WorldBounds;
 
-        _viewconeShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
-        _viewconeShader.SetParameter("Zoom", _eyeEntity.Value.Comp1.Zoom.X);
-        _viewconeShader.SetParameter("ViewAngle", (float) _eyeEntity.Value.Comp2.ViewAngle.Theta);
-        _viewconeShader.SetParameter("ConeAngle", _coneAngle);
-        _viewconeShader.SetParameter("ConeFeather", _coneFeather);
-        _viewconeShader.SetParameter("ConeIgnoreRadius", _coneIgnoreRadius);
-        _viewconeShader.SetParameter("ConeIgnoreFeather", _coneIgnoreFeather);
+        _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+        _shader.SetParameter("Zoom", _fovManagement.PlayerEntity.Value.Comp1.Zoom.X);
+        _shader.SetParameter("ViewAngle", (float) _fovManagement.PlayerEntity.Value.Comp2.ViewAngle.Theta);
+        _shader.SetParameter("ConeAngle", _coneAngle);
+        _shader.SetParameter("ConeFeather", _coneFeather);
+        _shader.SetParameter("ConeIgnoreRadius", _coneIgnoreRadius);
+        _shader.SetParameter("ConeIgnoreFeather", _coneIgnoreFeather);
 
-        worldHandle.UseShader(_viewconeShader);
+        worldHandle.UseShader(_shader);
         worldHandle.DrawRect(viewport, Color.White);
         worldHandle.UseShader(null);
-        _eyeEntity = null;
     }
 }

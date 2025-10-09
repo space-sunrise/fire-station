@@ -15,56 +15,51 @@ namespace Content.Client._Scp.Shaders.FieldOfView.Overlays;
 public sealed class FieldOfViewSetAlphaOverlay : Overlay
 {
     [Dependency] private readonly IEntityManager _ent = default!;
-    private readonly FieldOfViewOverlayManagementSystem _cone;
+
+    private readonly FieldOfViewOverlayManagementSystem _fovManagement;
     private readonly FieldOfViewOccludableTreeSystem _tree;
     private readonly TransformSystem _xform;
     private readonly SpriteSystem _sprite;
 
-    public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowEntities;
+    private EntityQuery<SpriteComponent> _spriteQuery;
 
-    // slightly sus but cached from beforedraw to use in draw.
-    private Entity<EyeComponent, FieldOfViewComponent>? _nextEye;
+    public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowEntities;
 
     public FieldOfViewSetAlphaOverlay()
     {
         IoCManager.InjectDependencies(this);
 
-        _cone = _ent.EntitySysManager.GetEntitySystem<FieldOfViewOverlayManagementSystem>();
-        _tree = _ent.EntitySysManager.GetEntitySystem<FieldOfViewOccludableTreeSystem>();
-        _xform  = _ent.EntitySysManager.GetEntitySystem<TransformSystem>();
-        _sprite = _ent.EntitySysManager.GetEntitySystem<SpriteSystem>();
+        _fovManagement = _ent.System<FieldOfViewOverlayManagementSystem>();
+        _tree = _ent.System<FieldOfViewOccludableTreeSystem>();
+        _xform  = _ent.System<TransformSystem>();
+        _sprite = _ent.System<SpriteSystem>();
+
+        _spriteQuery = _ent.GetEntityQuery<SpriteComponent>();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        _nextEye = null;
-
         if (args.Viewport.Eye == null)
             return false;
 
-        // This is really stupid but there isn't another way to reverse an eye entity from just an IEye afaict
-        // It's not really inefficient though. theres barely any of those fuckin things anyway (? verify that) (maybe this scales with players in view) (shit)
-        var enumerator = _ent.AllEntityQueryEnumerator<EyeComponent, FieldOfViewComponent>();
-        while (enumerator.MoveNext(out var uid, out var eye, out var viewcone))
-        {
-            if (args.Viewport.Eye != eye.Eye)
-                continue;
+        if (!_fovManagement.PlayerEntity.HasValue)
+            return false;
 
-            _nextEye = (uid, eye, viewcone);
-            break;
-        }
+        var player = _fovManagement.PlayerEntity;
 
-        return _nextEye != null;
+        if (args.Viewport.Eye != player.Value.Comp1.Eye)
+            return false;
+
+        return true;
     }
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        if (_nextEye == null)
+        if (!_fovManagement.PlayerEntity.HasValue)
             return;
 
-        var (ent, eye, cone) = _nextEye.Value;
+        var (ent, eye, cone, eyeTransform) = _fovManagement.PlayerEntity.Value;
 
-        var eyeTransform = _ent.GetComponent<TransformComponent>(ent);
         var eyePos = _xform.GetWorldPosition(eyeTransform);
         var eyeRot = cone.ViewAngle - eye.Rotation; // subtract rotation cuz idk. the lerp adds it but this doesnt want it for some reason idk.
 
@@ -74,14 +69,14 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
         var radConeAngle = MathHelper.DegreesToRadians(cone.Angle);
         var radConeFeather = MathHelper.DegreesToRadians(cone.AngleTolerance);
 
-        _cone.CachedBaseAlphas.Clear();
+        _fovManagement.CachedBaseAlphas.Clear();
         var occludables = _tree.QueryAabb(args.MapId, args.WorldBounds);
         foreach (var entry in occludables)
         {
             var (comp, xform) = entry;
             var uid = entry.Uid; // this uses component.Owner.. oh well
 
-            if (!_ent.TryGetComponent<SpriteComponent>(uid, out var sprite))
+            if (!_spriteQuery.TryComp(uid, out var sprite))
                 continue;
 
             if (comp.Source == ent)
@@ -101,7 +96,7 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
             var targetAlpha = Math.Max(1f - angleAlpha, 1f - distAlpha);
 
             // save the results so we can use it in resetalpha overlay
-            _cone.CachedBaseAlphas.Add(((uid, sprite), sprite.Color.A));
+            _fovManagement.CachedBaseAlphas.Add(((uid, sprite), sprite.Color.A));
 
             var alpha = comp.Inverted ? 1f - targetAlpha : targetAlpha;
             _sprite.SetColor((uid, sprite), sprite.Color.WithAlpha(alpha));

@@ -1,12 +1,9 @@
 using Content.Client._Scp.Shaders.FieldOfView.Overlays;
 using Content.Client.Eye;
 using Content.Shared._Scp.Watching.FOV;
-using Content.Shared.MouseRotator;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
-using Robust.Client.Input;
 using Robust.Client.Player;
-using Robust.Shared.Map;
 using Robust.Shared.Player;
 
 namespace Content.Client._Scp.Shaders.FieldOfView;
@@ -17,17 +14,22 @@ namespace Content.Client._Scp.Shaders.FieldOfView;
 /// </summary>
 public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
-    [Dependency] private readonly IInputManager _input = default!;
-    [Dependency] private readonly IEyeManager _eye = default!;
-    [Dependency] private readonly SharedTransformSystem _xform = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly IOverlayManager _overlay = default!;
+    [Dependency] private readonly TransformSystem _xform = default!;
 
     private FieldOfViewConeOverlay _coneOverlay = default!;
     private FieldOfViewSetAlphaOverlay _setAlphaOverlay = default!;
     private FieldOfViewResetAlphaOverlay _resetAlphaOverlay = default!;
 
     private const float LerpHalfLife = 0.05f;
+
+    private EntityQuery<FieldOfViewComponent> _fovQuery;
+    private EntityQuery<LerpingEyeComponent> _lerpingEyeQuery;
+    private EntityQuery<EyeComponent> _eyeQuery;
+    private EntityQuery<TransformComponent> _xformQuery;
+
+    public Entity<EyeComponent, FieldOfViewComponent, TransformComponent>? PlayerEntity;
 
     // slightly balls state management, but
     // done so we don't have to requery within the same frame
@@ -36,7 +38,7 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
     // we can abuse the fact that the overlays will always draw sequentially in the order we expect, and
     // one wont start rendering in the middle of rendering another
     [Access(typeof(FieldOfViewSetAlphaOverlay), typeof(FieldOfViewResetAlphaOverlay))]
-    public List<(Entity<SpriteComponent> ent, float baseAlpha)> CachedBaseAlphas = new(128);
+    public readonly List<(Entity<SpriteComponent> ent, float baseAlpha)> CachedBaseAlphas = new(128);
 
     public override void Initialize()
     {
@@ -48,67 +50,97 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
         SubscribeLocalEvent<FieldOfViewComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<FieldOfViewComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
+        _fovQuery = GetEntityQuery<FieldOfViewComponent>();
+        _lerpingEyeQuery = GetEntityQuery<LerpingEyeComponent>();
+        _eyeQuery = GetEntityQuery<EyeComponent>();
+        _xformQuery = GetEntityQuery<TransformComponent>();
+
         _coneOverlay = new();
         _setAlphaOverlay = new();
         _resetAlphaOverlay = new();
     }
 
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (!PlayerEntity.HasValue)
+        {
+            ValidateEntity();
+            return;
+        }
+
+        if (PlayerEntity.Value.Comp1.Deleted)
+        {
+            ValidateEntity();
+            return;
+        }
+
+        if (PlayerEntity.Value.Comp2.Deleted)
+        {
+            ValidateEntity();
+            return;
+        }
+
+        if (PlayerEntity.Value.Comp3.Deleted)
+        {
+            ValidateEntity();
+            return;
+        }
+    }
 
     public override void FrameUpdate(float frameTime)
     {
         base.FrameUpdate(frameTime);
 
-        // the reason we use lerpingeye here in the query first is to
-        // specifically check for eyes that we are actually rendering (lerpingeye already handles this sort of
-        // its like jank as fuck in that system but whatever thats like not my problem )
-        var enumerator = AllEntityQuery<LerpingEyeComponent, EyeComponent, FieldOfViewComponent, TransformComponent>();
-        while (enumerator.MoveNext(out var uid, out _, out var eye, out var viewcone, out var xform))
+        if (!PlayerEntity.HasValue)
+            return;
+
+        var player = PlayerEntity.Value;
+
+        var eyeAngle = player.Comp1.Rotation;
+        var rotation = _xform.GetWorldRotation(player.Comp3);
+        var desiredWasNull = player.Comp2.DesiredViewAngle == null;
+
+        player.Comp2.DesiredViewAngle = rotation + eyeAngle;
+
+        // if desired angle was null before we set it
+        // then just set viewangle to it immediately
+        // (assume it was first frame)
+        if (desiredWasNull)
         {
-            var eyeAngle = eye.Rotation;
-            var rotation = _xform.GetWorldRotation(xform);
-            var playerAngle = rotation;
-            var desiredWasNull = viewcone.DesiredViewAngle == null;
-
-            if (HasComp<MouseRotatorComponent>(uid))
-            {
-                var mousePos = _eye.PixelToMap(_input.MouseScreenPosition);
-                if (mousePos.MapId != MapId.Nullspace)
-                    playerAngle = (mousePos.Position - _xform.GetMapCoordinates(xform).Position).ToAngle() + Angle.FromDegrees(90);
-
-                viewcone.LastMouseRotationAngle = playerAngle;
-            }
-            else if (viewcone.LastMouseRotationAngle != 0f)
-            {
-                // if last frame we had a mouse rotation angle, but now we dont,
-                // that means it was disabled
-                // but, we should keep the old mouse angle for viewcone, at least until the real angle actually changes
-                if (MathHelper.CloseToPercent(viewcone.LastWorldRotationAngle, playerAngle, .000001d))
-                {
-                    playerAngle = viewcone.LastMouseRotationAngle;
-                }
-                else
-                {
-                    viewcone.LastMouseRotationAngle = 0f;
-                }
-            }
-
-            viewcone.LastWorldRotationAngle = rotation;
-            viewcone.DesiredViewAngle = playerAngle + eyeAngle;
-
-            // if desired angle was null before we set it
-            // then just set viewangle to it immediately
-            // (assume it was first frame)
-            if (desiredWasNull)
-            {
-                viewcone.ViewAngle = viewcone.DesiredViewAngle.Value;
-                continue;
-            }
-
-            // framerate-independent lerp
-            // https://twitter.com/FreyaHolmer/status/1757836988495847568
-            // convert to angle first so we lerp thru shortestdistance
-            viewcone.ViewAngle = Angle.Lerp(viewcone.ViewAngle, viewcone.DesiredViewAngle.Value, 1f - MathF.Pow(2f, -(frameTime / LerpHalfLife)));
+            player.Comp2.ViewAngle = player.Comp2.DesiredViewAngle.Value;
+            return;
         }
+
+        // framerate-independent lerp
+        // https://twitter.com/FreyaHolmer/status/1757836988495847568
+        // convert to angle first so we lerp thru shortestdistance
+        player.Comp2.ViewAngle = Angle.Lerp(player.Comp2.ViewAngle, player.Comp2.DesiredViewAngle.Value, 1f - MathF.Pow(2f, -(frameTime / LerpHalfLife)));
+    }
+
+    private void ValidateEntity()
+    {
+        PlayerEntity = null;
+
+        if (!_player.LocalEntity.HasValue)
+            return;
+
+        var player = _player.LocalEntity.Value;
+
+        if (!_fovQuery.TryComp(player, out var fov))
+            return;
+
+        if (!_lerpingEyeQuery.HasComp(player))
+            return;
+
+        if (!_eyeQuery.TryComp(player, out var eye))
+            return;
+
+        if (!_xformQuery.TryComp(player, out var xform))
+            return;
+
+        PlayerEntity = (player, eye, fov, xform);
     }
 
     private void OnPlayerAttached(Entity<FieldOfViewComponent> entity, ref LocalPlayerAttachedEvent args)
@@ -123,27 +155,27 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
 
     private void OnConeManInit(Entity<FieldOfViewComponent> ent, ref ComponentInit args)
     {
-        if (_playerManager.LocalEntity == ent)
+        if (_player.LocalEntity == ent)
             AddOverlays();
     }
 
     private void OnConeManShutdown(Entity<FieldOfViewComponent> ent, ref ComponentShutdown args)
     {
-        if (_playerManager.LocalEntity == ent)
+        if (_player.LocalEntity == ent)
             RemoveOverlays();
     }
 
     private void AddOverlays()
     {
-        _overlayMan.AddOverlay(_coneOverlay);
-        _overlayMan.AddOverlay(_setAlphaOverlay);
-        _overlayMan.AddOverlay(_resetAlphaOverlay);
+        _overlay.AddOverlay(_coneOverlay);
+        _overlay.AddOverlay(_setAlphaOverlay);
+        _overlay.AddOverlay(_resetAlphaOverlay);
     }
 
     private void RemoveOverlays()
     {
-        _overlayMan.RemoveOverlay(_coneOverlay);
-        _overlayMan.RemoveOverlay(_setAlphaOverlay);
-        _overlayMan.RemoveOverlay(_resetAlphaOverlay);
+        _overlay.RemoveOverlay(_coneOverlay);
+        _overlay.RemoveOverlay(_setAlphaOverlay);
+        _overlay.RemoveOverlay(_resetAlphaOverlay);
     }
 }

@@ -21,8 +21,8 @@ public sealed class FieldOfViewResetAlphaOverlay : Overlay
     {
         IoCManager.InjectDependencies(this);
 
-        _cone = _ent.EntitySysManager.GetEntitySystem<FieldOfViewOverlayManagementSystem>();
-        _sprite = _ent.EntitySysManager.GetEntitySystem<SpriteSystem>();
+        _cone = _ent.System<FieldOfViewOverlayManagementSystem>();
+        _sprite = _ent.System<SpriteSystem>();
     }
 
     protected override void Draw(in OverlayDrawArgs args)
