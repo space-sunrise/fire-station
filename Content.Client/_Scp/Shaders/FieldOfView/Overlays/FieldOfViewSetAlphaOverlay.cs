@@ -75,11 +75,13 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
         if (Math.Abs(sprite.Color.A - newAlpha) <= 0.001f)
             return true;
 
+        var ent = (uid, sprite);
+
         // сохраняем старую альфу для восстановления
-        state.FovManagement.CachedBaseAlphas.Add(((uid, sprite), sprite.Color.A));
+        state.FovManagement.CachedBaseAlphas.Add((ent, sprite.Color.A));
 
         // применяем новую цвет/альфу
-        state.SpriteSys.SetColor((uid, sprite), sprite.Color.WithAlpha(newAlpha));
+        state.SpriteSys.SetColor(ent, sprite.Color.WithAlpha(newAlpha));
 
         return true;
     }
