@@ -28,8 +28,8 @@ public sealed class FieldOfViewConeOverlay : Overlay
     public FieldOfViewConeOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _shader = _proto.Index(ShaderPrototype).InstanceUnique();
 
+        _shader = _proto.Index(ShaderPrototype).InstanceUnique();
         _fovManagement = _ent.System<FieldOfViewOverlayManagementSystem>();
     }
 
@@ -61,7 +61,7 @@ public sealed class FieldOfViewConeOverlay : Overlay
 
         _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
         _shader.SetParameter("Zoom", _fovManagement.PlayerEntity.Value.Comp1.Zoom.X);
-        _shader.SetParameter("ViewAngle", (float) _fovManagement.PlayerEntity.Value.Comp2.ViewAngle.Theta);
+        _shader.SetParameter("ViewAngle", (float) _fovManagement.PlayerEntity.Value.Comp2.CurrentAngle.Theta);
         _shader.SetParameter("ConeAngle", _coneAngle);
         _shader.SetParameter("ConeFeather", _coneFeather);
         _shader.SetParameter("ConeIgnoreRadius", _coneIgnoreRadius);

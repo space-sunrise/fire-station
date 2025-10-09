@@ -25,6 +25,16 @@ public sealed class FieldOfViewResetAlphaOverlay : Overlay
         _sprite = _ent.System<SpriteSystem>();
     }
 
+    protected override bool BeforeDraw(in OverlayDrawArgs args)
+    {
+        base.BeforeDraw(in args);
+
+        if (_cone.CachedBaseAlphas.Count == 0)
+            return false;
+
+        return true;
+    }
+
     protected override void Draw(in OverlayDrawArgs args)
     {
         foreach (var (ent, baseAlpha) in _cone.CachedBaseAlphas)

@@ -1,8 +1,10 @@
+using System.Numerics;
 using Content.Client._Scp.Shaders.FieldOfView.ComponentTree;
 using Content.Shared._Scp.Watching.FOV;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
+using Robust.Shared.Physics;
 
 namespace Content.Client._Scp.Shaders.FieldOfView.Overlays;
 
@@ -21,7 +23,66 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
     private readonly TransformSystem _xform;
     private readonly SpriteSystem _sprite;
 
-    private EntityQuery<SpriteComponent> _spriteQuery;
+    private readonly EntityQuery<SpriteComponent> _spriteQuery;
+
+    private readonly HashSet<EntityUid> _seen = [];
+
+    private struct QueryState
+    {
+        public HashSet<EntityUid> Seen;
+        public EntityQuery<SpriteComponent> SpriteQuery;
+        public SpriteSystem SpriteSys;
+        public TransformSystem Xform;
+        public FieldOfViewOverlayManagementSystem FovManagement;
+
+        public Vector2 EyePos;
+        public Angle EyeRot;
+        public float RadConeAngle;
+        public float RadConeFeather;
+        public float ConeIgnoreRadius;
+        public float ConeIgnoreFeather;
+        public EntityUid PlayerEntityUid;
+    }
+
+    private static bool QueryCallback(ref QueryState state, in ComponentTreeEntry<FieldOfViewOccludableComponent> entry)
+    {
+        var comp = entry.Component;
+        var uid = entry.Uid;
+
+        if (!state.Seen.Add(uid))
+            return true;
+
+        if (!state.SpriteQuery.TryComp(uid, out var sprite))
+            return true;
+
+        if (comp.Source == state.PlayerEntityUid)
+            return true;
+
+        if (!comp.OccludeIfAnchored && entry.Transform.Anchored)
+            return true;
+
+        var entPos = state.Xform.GetWorldPosition(entry.Transform);
+        var dist = entPos - state.EyePos;
+        var distLength = dist.Length();
+        var angleDist = Angle.ShortestDistance(dist.ToWorldAngle(), state.EyeRot);
+
+        var angleAlpha = (float)Math.Clamp((Math.Abs(angleDist.Theta) - (state.RadConeAngle * 0.5f)) + (state.RadConeFeather * 0.5f), 0f, state.RadConeFeather) / state.RadConeFeather;
+        var distAlpha = Math.Clamp((distLength - state.ConeIgnoreRadius) + (state.ConeIgnoreFeather * 0.5f), 0f, state.ConeIgnoreFeather) / state.ConeIgnoreFeather;
+        var targetAlpha = Math.Max(1f - angleAlpha, 1f - distAlpha);
+
+        // микро-оптимизация - не трогать, если альфа почти не изменилась
+        var newAlpha = comp.Inverted ? 1f - targetAlpha : targetAlpha;
+        if (Math.Abs(sprite.Color.A - newAlpha) <= 0.001f)
+            return true;
+
+        // сохраняем старую альфу для восстановления
+        state.FovManagement.CachedBaseAlphas.Add(((uid, sprite), sprite.Color.A));
+
+        // применяем новую цвет/альфу
+        state.SpriteSys.SetColor((uid, sprite), sprite.Color.WithAlpha(newAlpha));
+
+        return true;
+    }
 
     public override OverlaySpace Space => OverlaySpace.WorldSpaceBelowEntities;
 
@@ -39,9 +100,6 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
     {
-        if (args.Viewport.Eye == null)
-            return false;
-
         if (!_fovManagement.PlayerEntity.HasValue)
             return false;
 
@@ -59,47 +117,42 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
             return;
 
         var (ent, eye, cone, eyeTransform) = _fovManagement.PlayerEntity.Value;
-
         var eyePos = _xform.GetWorldPosition(eyeTransform);
-        var eyeRot = cone.ViewAngle - eye.Rotation; // subtract rotation cuz idk. the lerp adds it but this doesnt want it for some reason idk.
+        var eyeRot = cone.CurrentAngle - eye.Rotation;
 
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // !! Thank You Bhijn God (TYBG) for 95% of the rest of this methods code !!
-        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         var radConeAngle = MathHelper.DegreesToRadians(cone.Angle);
         var radConeFeather = MathHelper.DegreesToRadians(cone.AngleTolerance);
 
         _fovManagement.CachedBaseAlphas.Clear();
-        var occludables = _tree.QueryAabb(args.MapId, args.WorldBounds);
-        foreach (var entry in occludables)
+        _seen.Clear();
+
+        var worldBounds = args.WorldBounds;
+        foreach (var (treeUid, treeComp) in _tree.GetIntersectingTrees(args.MapId, worldBounds))
         {
-            var (comp, xform) = entry;
-            var uid = entry.Uid; // this uses component.Owner.. oh well
+            var bounds = _xform.GetInvWorldMatrix(treeUid).TransformBox(worldBounds);
 
-            if (!_spriteQuery.TryComp(uid, out var sprite))
-                continue;
+            // Чтобы избежать больших нагрузок на GC, пришлось изобретать велосипед, так как деревья не поддерживают передачу готового списка.
+            // Создаем вручную стейты и обрабатываем их, используя заранее заготовленный HashSet().
+            // Это выигрывает ~3 FPS на dev карте. В реальной игре при большом количестве скрывающихся элементов это будет ценнее.
 
-            if (comp.Source == ent)
-                continue;
+            var state = new QueryState
+            {
+                Seen = _seen,
+                SpriteQuery = _spriteQuery,
+                SpriteSys = _sprite,
+                Xform = _xform,
+                FovManagement = _fovManagement,
 
-            if (!comp.OccludeIfAnchored && xform.Anchored)
-                continue;
+                EyePos = eyePos,
+                EyeRot = eyeRot,
+                RadConeAngle = radConeAngle,
+                RadConeFeather = radConeFeather,
+                ConeIgnoreRadius = cone.ConeIgnoreRadius,
+                ConeIgnoreFeather = cone.ConeIgnoreFeather,
+                PlayerEntityUid = ent,
+            };
 
-            var entPos = _xform.GetWorldPosition(xform);
-
-            var dist = entPos - eyePos;
-            var distLength = dist.Length();
-            var angleDist = Angle.ShortestDistance(dist.ToWorldAngle(), eyeRot);
-
-            var angleAlpha = (float) Math.Clamp((Math.Abs(angleDist.Theta) - (radConeAngle * 0.5f)) + (radConeFeather * 0.5f), 0f, radConeFeather) / radConeFeather;
-            var distAlpha = Math.Clamp((distLength - cone.ConeIgnoreRadius) + (cone.ConeIgnoreFeather * 0.5f), 0f, cone.ConeIgnoreFeather) / cone.ConeIgnoreFeather;
-            var targetAlpha = Math.Max(1f - angleAlpha, 1f - distAlpha);
-
-            // save the results so we can use it in resetalpha overlay
-            _fovManagement.CachedBaseAlphas.Add(((uid, sprite), sprite.Color.A));
-
-            var alpha = comp.Inverted ? 1f - targetAlpha : targetAlpha;
-            _sprite.SetColor((uid, sprite), sprite.Color.WithAlpha(alpha));
+            treeComp.Tree.QueryAabb(ref state, QueryCallback, bounds, true);
         }
     }
 }

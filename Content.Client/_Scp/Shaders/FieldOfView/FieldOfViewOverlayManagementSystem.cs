@@ -60,41 +60,6 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
         _resetAlphaOverlay = new();
     }
 
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        if (!PlayerEntity.HasValue || !Exists(_player.LocalEntity))
-        {
-            ValidateEntity();
-            return;
-        }
-
-        if (_player.LocalEntity != PlayerEntity.Value)
-        {
-            ValidateEntity();
-            return;
-        }
-
-        if (PlayerEntity.Value.Comp1.Deleted)
-        {
-            ValidateEntity();
-            return;
-        }
-
-        if (PlayerEntity.Value.Comp2.Deleted)
-        {
-            ValidateEntity();
-            return;
-        }
-
-        if (PlayerEntity.Value.Comp3.Deleted)
-        {
-            ValidateEntity();
-            return;
-        }
-    }
-
     public override void FrameUpdate(float frameTime)
     {
         base.FrameUpdate(frameTime);
@@ -115,14 +80,14 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
         // (assume it was first frame)
         if (desiredWasNull)
         {
-            player.Comp2.ViewAngle = player.Comp2.DesiredViewAngle.Value;
+            player.Comp2.CurrentAngle = player.Comp2.DesiredViewAngle.Value;
             return;
         }
 
         // framerate-independent lerp
         // https://twitter.com/FreyaHolmer/status/1757836988495847568
         // convert to angle first so we lerp thru shortestdistance
-        player.Comp2.ViewAngle = Angle.Lerp(player.Comp2.ViewAngle, player.Comp2.DesiredViewAngle.Value, 1f - MathF.Pow(2f, -(frameTime / LerpHalfLife)));
+        player.Comp2.CurrentAngle = Angle.Lerp(player.Comp2.CurrentAngle, player.Comp2.DesiredViewAngle.Value, 1f - MathF.Pow(2f, -(frameTime / LerpHalfLife)));
     }
 
     private void ValidateEntity()
@@ -152,23 +117,31 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
     private void OnPlayerAttached(Entity<FieldOfViewComponent> entity, ref LocalPlayerAttachedEvent args)
     {
         AddOverlays();
+        ValidateEntity();
     }
 
     private void OnPlayerDetached(Entity<FieldOfViewComponent> ent, ref LocalPlayerDetachedEvent args)
     {
         RemoveOverlays();
+        PlayerEntity = null;
     }
 
     private void OnConeManInit(Entity<FieldOfViewComponent> ent, ref ComponentInit args)
     {
-        if (_player.LocalEntity == ent)
-            AddOverlays();
+        if (_player.LocalEntity != ent)
+            return;
+
+        AddOverlays();
+        ValidateEntity();
     }
 
     private void OnConeManShutdown(Entity<FieldOfViewComponent> ent, ref ComponentShutdown args)
     {
-        if (_player.LocalEntity == ent)
-            RemoveOverlays();
+        if (_player.LocalEntity != ent)
+            return;
+
+        RemoveOverlays();
+        PlayerEntity = null;
     }
 
     private void AddOverlays()
