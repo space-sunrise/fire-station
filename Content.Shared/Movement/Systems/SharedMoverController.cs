@@ -69,6 +69,7 @@ public abstract partial class SharedMoverController : VirtualController
 
     // Fire added start
     private static readonly EntProtoId FootstepViewconeEffect = "ScpViewconeEffectFootstep";
+    private static readonly Angle AngleNormalization = Angle.FromDegrees(-180);
     // Fire added end
 
     private bool _relativeMovement;
@@ -357,7 +358,8 @@ public abstract partial class SharedMoverController : VirtualController
                 }
 
                 // Fire added start
-                _fov.SpawnEffect(uid, FootstepViewconeEffect, wishDir.ToWorldAngle());
+                var worldRot = _transform.GetWorldRotation(xform);
+                _fov.SpawnEffect(uid, FootstepViewconeEffect, xform.LocalRotation + wishDir.ToWorldAngle() - worldRot);
                 // Fire added end
             }
         }

@@ -64,7 +64,13 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        if (!PlayerEntity.HasValue)
+        if (!PlayerEntity.HasValue || !Exists(_player.LocalEntity))
+        {
+            ValidateEntity();
+            return;
+        }
+
+        if (_player.LocalEntity != PlayerEntity.Value)
         {
             ValidateEntity();
             return;
