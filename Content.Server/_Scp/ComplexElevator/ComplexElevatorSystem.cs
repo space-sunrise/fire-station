@@ -114,26 +114,31 @@ public sealed class ComplexElevatorSystem : EntitySystem
         }
     }
 
+    private void HandleButtonPress(Entity<ElevatorButtonComponent> button, Entity<ComplexElevatorComponent> elevator)
+    {
+        if (!elevator.Comp.IsMoving)
+        {
+            switch (button.Comp.ButtonType)
+            {
+                case ElevatorButtonType.CallButton:
+                    MoveToFloor(elevator, button.Comp.Floor);
+                    break;
+                case ElevatorButtonType.SendElevatorUp:
+                    MoveUp(elevator);
+                    break;
+                case ElevatorButtonType.SendElevatorDown:
+                    MoveDown(elevator);
+                    break;
+            }
+            SetButtonDelay(button, elevator);
+        }
+    }
+
     private void OnButtonInteract(Entity<ElevatorButtonComponent> ent, ref InteractHandEvent args)
     {
         if (TryFindElevator(ent.Comp.ElevatorId, out var elevator))
         {
-            if (!elevator.Value.Comp.IsMoving)
-            {
-                switch (ent.Comp.ButtonType)
-                {
-                    case ElevatorButtonType.CallButton:
-                        MoveToFloor(elevator.Value, ent.Comp.Floor);
-                        break;
-                    case ElevatorButtonType.SendElevatorUp:
-                        MoveUp(elevator.Value);
-                        break;
-                    case ElevatorButtonType.SendElevatorDown:
-                        MoveDown(elevator.Value);
-                        break;
-                }
-                SetButtonDelay(ent, elevator.Value);
-            }
+            HandleButtonPress(ent, elevator.Value);
         }
         args.Handled = true;
     }
@@ -142,22 +147,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
     {
         if (TryFindElevator(ent.Comp.ElevatorId, out var elevator))
         {
-            if (!elevator.Value.Comp.IsMoving)
-            {
-                switch (ent.Comp.ButtonType)
-                {
-                    case ElevatorButtonType.CallButton:
-                        MoveToFloor(elevator.Value, ent.Comp.Floor);
-                        break;
-                    case ElevatorButtonType.SendElevatorUp:
-                        MoveUp(elevator.Value);
-                        break;
-                    case ElevatorButtonType.SendElevatorDown:
-                        MoveDown(elevator.Value);
-                        break;
-                }
-                SetButtonDelay(ent, elevator.Value);
-            }
+            HandleButtonPress(ent, elevator.Value);
         }
         args.Handled = true;
     }
