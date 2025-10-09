@@ -44,7 +44,6 @@ public sealed partial class Scp106System : SharedScp106System
     [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly EntityManager _entityManager = default!;
 
     private static readonly FixedPoint2 EssenceRate = 1f;
     private static readonly TimeSpan AddEssenceCooldown = TimeSpan.FromSeconds(1);
@@ -149,8 +148,9 @@ public sealed partial class Scp106System : SharedScp106System
 
         if (scp106 != null)
         {
-            if (!_entityManager.GetComponent<SSDIndicatorComponent>(target).IsSSD)
+            if (TryComp<SSDIndicatorComponent>(target, out var ssd) && ssd.IsSSD)
                 AddCurrencyInStore(scp106.Value);
+
             CheckHumansInBackrooms();
         }
     }
@@ -241,7 +241,7 @@ public sealed partial class Scp106System : SharedScp106System
             if (mobStateComponent.CurrentState != MobState.Alive)
                 continue;
 
-            if (!_entityManager.GetComponent<SSDIndicatorComponent>(humanUid).IsSSD)
+            if (TryComp<SSDIndicatorComponent>(humanUid, out var ssd) && ssd.IsSSD)
                 continue;
 
             humansInBackrooms += 1;
