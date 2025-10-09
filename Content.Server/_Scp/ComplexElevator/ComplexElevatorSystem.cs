@@ -24,7 +24,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly PointLightSystem _pointLightSystem = default!;
+    [Dependency] private readonly PointLightSystem _pointLight = default!;
 
     private static readonly Color ElevatorButtonGreen = Color.FromHex("#00FF00");
     private static readonly Color ElevatorButtonYellow = Color.FromHex("#FFFF00");
