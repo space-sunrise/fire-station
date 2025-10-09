@@ -1,0 +1,337 @@
+- type: entity
+  parent: GasPipeBase
+  id: GasTransferDevice
+  name: gas transmission substation
+  description: Transfers gas between two points.
+  suffix: Balance mode
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    sprite: Structures/Piping/Atmospherics/gascanisterport.rsi
+    layers:
+      - sprite: Structures/Piping/Atmospherics/pipe.rsi
+        state: pipeUnaryConnectors
+        map: [ "enum.PipeVisualLayers.Pipe" ]
+      - state: gasCanisterPort
+  - type: GasTransfer
+    inletName: inlet
+    transferRate: 100
+  - type: AtmosPipeLayers
+    alternativePrototypes:
+      Primary: GasTransferDevice
+      Secondary: GasTransferDevice
+      Tertiary: GasTransferDevice
+  - type: NodeContainer
+    nodes:
+      inlet:
+        !type:PipeNode
+        nodeGroupID: Pipe
+        pipeDirection: Longitudinal
+  - type: AtmosDevice
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicStrongScp
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 50000
+      behaviors:
+        - !type:DoActsBehavior
+          acts: [ "Destruction" ]
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceSend
+  name: gas transmission substation
+  description: Transfers gas between two points.
+  suffix: Send mode
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceReceive
+  name: gas transmission substation
+  description: Transfers gas between two points.
+  suffix: Receive mode
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceAdministration
+  name: gas transmission substation
+  suffix: Administration
+  components:
+  - type: GasTransfer
+    linkId: administration
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceTechnical
+  name: gas transmission substation
+  suffix: Technical Service
+  components:
+  - type: GasTransfer
+    linkId: technical
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceScientific
+  name: gas transmission substation
+  suffix: Scientific Service
+  components:
+  - type: GasTransfer
+    linkId: scientific
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceMedical
+  name: gas transmission substation
+  suffix: Medical Service
+  components:
+  - type: GasTransfer
+    linkId: medical
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceService
+  name: gas transmission substation
+  suffix: Service
+  components:
+  - type: GasTransfer
+    linkId: service
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceLogistics
+  name: gas transmission substation
+  suffix: Logistics Service
+  components:
+  - type: GasTransfer
+    linkId: logistics
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceCommandant
+  name: gas transmission substation
+  suffix: Commandant's Office
+  components:
+  - type: GasTransfer
+    linkId: commandant
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceSPS
+  name: gas transmission substation
+  suffix: SPS
+  components:
+  - type: GasTransfer
+    linkId: sps
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceSpare1
+  name: gas transmission substation
+  suffix: Auxiliary 1
+  components:
+  - type: GasTransfer
+    linkId: aux1
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceSpare2
+  name: gas transmission substation
+  suffix: Auxiliary 2
+  components:
+  - type: GasTransfer
+    linkId: aux2
+
+- type: entity
+  parent: GasTransferDevice
+  id: GasTransferDeviceSpare3
+  name: gas transmission substation
+  suffix: Auxiliary 3
+  components:
+  - type: GasTransfer
+    linkId: aux3
+
+- type: entity
+  parent: GasTransferDeviceAdministration
+  id: GasTransferDeviceAdministrationSend
+  suffix: Administration Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDeviceAdministration
+  id: GasTransferDeviceAdministrationReceive
+  suffix: Administration Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDeviceTechnical
+  id: GasTransferDeviceTechnicalSend
+  suffix: Technical Service Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDeviceTechnical
+  id: GasTransferDeviceTechnicalReceive
+  suffix: Technical Service Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDeviceScientific
+  id: GasTransferDeviceScientificSend
+  suffix: Scientific Service Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDeviceScientific
+  id: GasTransferDeviceScientificReceive
+  suffix: Scientific Service Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDeviceMedical
+  id: GasTransferDeviceMedicalSend
+  suffix: Medical Service Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDeviceMedical
+  id: GasTransferDeviceMedicalReceive
+  suffix: Medical Service Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDeviceService
+  id: GasTransferDeviceServiceSend
+  suffix: Service Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDeviceService
+  id: GasTransferDeviceServiceReceive
+  suffix: Service Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDeviceLogistics
+  id: GasTransferDeviceLogisticsSend
+  suffix: Logistics Service Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDeviceLogistics
+  id: GasTransferDeviceLogisticsReceive
+  suffix: Logistics Service Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDeviceCommandant
+  id: GasTransferDeviceCommandantSend
+  suffix: Commandant's Office Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDeviceCommandant
+  id: GasTransferDeviceCommandantReceive
+  suffix: Commandant's Office Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDeviceSPS
+  id: GasTransferDeviceSPSSend
+  suffix: SPS Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDeviceSPS
+  id: GasTransferDeviceSPSReceive
+  suffix: SPS Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDeviceSpare1
+  id: GasTransferDeviceSpare1Send
+  suffix: Auxiliary 1 Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDeviceSpare1
+  id: GasTransferDeviceSpare1Receive
+  suffix: Auxiliary 1 Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDeviceSpare2
+  id: GasTransferDeviceSpare2Send
+  suffix: Auxiliary 2 Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDeviceSpare2
+  id: GasTransferDeviceSpare2Receive
+  suffix: Auxiliary 2 Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
+
+- type: entity
+  parent: GasTransferDeviceSpare3
+  id: GasTransferDeviceSpare3Send
+  suffix: Auxiliary 3 Send
+  components:
+  - type: GasTransfer
+    mode: Send
+
+- type: entity
+  parent: GasTransferDeviceSpare3
+  id: GasTransferDeviceSpare3Receive
+  suffix: Auxiliary 3 Receive
+  components:
+  - type: GasTransfer
+    mode: Receive
