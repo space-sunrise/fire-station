@@ -32,7 +32,7 @@ public sealed partial class FieldOfViewComponent : Component
     /// Shared-система не будет учитывать это, иначе SCP-173 никогда не сможет подойти к персонажу
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float ConeIgnoreRadius = 0.5f;
+    public float ConeIgnoreRadius = 0.4f;
 
     /// <summary>
     /// Пограничные значения кружочка. Аналогично <see cref="AngleFeather"/>

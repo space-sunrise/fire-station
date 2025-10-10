@@ -69,7 +69,6 @@ public abstract partial class SharedMoverController : VirtualController
 
     // Fire added start
     private static readonly EntProtoId FootstepViewconeEffect = "ScpViewconeEffectFootstep";
-    private static readonly Angle AngleNormalization = Angle.FromDegrees(-180);
     // Fire added end
 
     private bool _relativeMovement;

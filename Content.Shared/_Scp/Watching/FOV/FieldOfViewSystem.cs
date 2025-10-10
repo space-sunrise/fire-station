@@ -11,6 +11,8 @@ public sealed partial class FieldOfViewSystem : EntitySystem
     private EntityQuery<FieldOfViewComponent> _fovQuery;
     private EntityQuery<TransformComponent> _xformQuery;
 
+    private const float DefaultAngleToleranceForOverride = 2f;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -89,9 +91,22 @@ public sealed partial class FieldOfViewSystem : EntitySystem
         var radConeAngle = MathHelper.DegreesToRadians(angle);
         var radConeFeather = MathHelper.DegreesToRadians(angleTolerance);
 
-        // Вычисляем "коэффициент невидимости" по углу.
-        // 0 = в центре конуса, 1 = за пределами конуса + допуска.
-        var angleInvisibility = (float) Math.Clamp((Math.Abs(angleDist.Theta) - (radConeAngle * 0.5f)) + (radConeFeather * 0.5f), 0f, radConeFeather) / radConeFeather;
+        var angleInvisibility = 0f;
+        // Если вдруг angleTolerance будет 0, то нам нужно применять другую логику, чтобы не выйти на деление на 0.
+        if (radConeFeather > 0f)
+        {
+            // Вычисляем "коэффициент невидимости" по углу.
+            // 0 = в центре конуса, 1 = за пределами конуса + допуска.
+            var halfCone = radConeAngle * 0.5f;
+            var halfFeather = radConeFeather * 0.5f;
+            var angleDeviation = Math.Abs(angleDist.Theta) - halfCone + halfFeather;
+            angleInvisibility = (float) Math.Clamp(angleDeviation, 0f, radConeFeather) / radConeFeather;
+        }
+        else
+        {
+            var halfCone = radConeAngle * 0.5f;
+            angleInvisibility = Math.Abs(angleDist.Theta) > halfCone ? 1f : 0f;
+        }
 
         // Вычисляем "коэффициент невидимости" по дистанции (для круга).
         var distInvisibility = 1f; // По умолчанию не влияет (считаем, что цель видима)
@@ -176,7 +191,7 @@ public sealed partial class FieldOfViewSystem : EntitySystem
             (viewer, viewer.Comp),
             (target, target.Comp),
             fovAngleOverride,
-            2f
+            DefaultAngleToleranceForOverride
         );
 
         return alpha > epsilon; // Проверка с небольшим эпсилоном

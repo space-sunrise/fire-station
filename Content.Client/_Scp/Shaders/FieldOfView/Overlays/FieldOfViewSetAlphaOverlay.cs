@@ -69,7 +69,7 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
 
         // микро-оптимизация - не трогать, если альфа почти не изменилась
         var newAlpha = comp.Inverted ? 1f - targetAlpha : targetAlpha;
-        if (Math.Abs(sprite.Color.A - newAlpha) <= 0.001f)
+        if (MathF.Abs(sprite.Color.A - newAlpha) <= 0.001f)
             return true;
 
         var ent = (uid, sprite);

@@ -25,6 +25,8 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
     private FieldOfViewSetAlphaOverlay _setAlphaOverlay = default!;
     private FieldOfViewResetAlphaOverlay _resetAlphaOverlay = default!;
 
+    private bool _overlaysPresented;
+
     private const float LerpHalfLife = 0.05f;
 
     private EntityQuery<FieldOfViewComponent> _fovQuery;
@@ -37,7 +39,7 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
     /// <summary>
     /// Количество кадров в секунду, которые будут использоваться для обработки некоторых эффектов.
     /// </summary>
-    public TimeSpan UpdateInterval { get; private set; } = TimeSpan.FromSeconds(1 / 100);
+    public TimeSpan UpdateInterval { get; private set; } = TimeSpan.FromSeconds(1f / 100f);
 
     // slightly balls state management, but
     // done so we don't have to requery within the same frame
@@ -170,15 +172,25 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
 
     private void AddOverlays()
     {
+        if (_overlaysPresented)
+            return;
+
         _overlay.AddOverlay(_coneOverlay);
         _overlay.AddOverlay(_setAlphaOverlay);
         _overlay.AddOverlay(_resetAlphaOverlay);
+
+        _overlaysPresented = true;
     }
 
     private void RemoveOverlays()
     {
+        if (!_overlaysPresented)
+            return;
+
         _overlay.RemoveOverlay(_coneOverlay);
         _overlay.RemoveOverlay(_setAlphaOverlay);
         _overlay.RemoveOverlay(_resetAlphaOverlay);
+
+        _overlaysPresented = false;
     }
 }
