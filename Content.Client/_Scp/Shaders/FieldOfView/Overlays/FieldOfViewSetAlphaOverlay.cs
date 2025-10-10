@@ -22,6 +22,7 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
     private readonly FieldOfViewOccludableTreeSystem _tree;
     private readonly TransformSystem _xform;
     private readonly SpriteSystem _sprite;
+    private readonly FieldOfViewSystem _fovSystem;
 
     private readonly EntityQuery<SpriteComponent> _spriteQuery;
 
@@ -32,16 +33,10 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
         public HashSet<EntityUid> Seen;
         public EntityQuery<SpriteComponent> SpriteQuery;
         public SpriteSystem SpriteSys;
-        public TransformSystem Xform;
         public FieldOfViewOverlayManagementSystem FovManagement;
+        public FieldOfViewSystem FovSystem;
 
-        public Vector2 EyePos;
-        public Angle EyeRot;
-        public float RadConeAngle;
-        public float RadConeFeather;
-        public float ConeIgnoreRadius;
-        public float ConeIgnoreFeather;
-        public EntityUid PlayerEntityUid;
+        public Entity<FieldOfViewComponent> Player;
     }
 
     private static bool QueryCallback(ref QueryState state, in ComponentTreeEntry<FieldOfViewOccludableComponent> entry)
@@ -55,20 +50,22 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
         if (!state.SpriteQuery.TryComp(uid, out var sprite))
             return true;
 
-        if (comp.Source == state.PlayerEntityUid)
+        if (comp.Source == state.Player)
             return true;
 
         if (!comp.OccludeIfAnchored && entry.Transform.Anchored)
             return true;
 
-        var entPos = state.Xform.GetWorldPosition(entry.Transform);
-        var dist = entPos - state.EyePos;
-        var distLength = dist.Length();
-        var angleDist = Angle.ShortestDistance(dist.ToWorldAngle(), state.EyeRot);
+        var player = state.Player;
 
-        var angleAlpha = (float)Math.Clamp((Math.Abs(angleDist.Theta) - (state.RadConeAngle * 0.5f)) + (state.RadConeFeather * 0.5f), 0f, state.RadConeFeather) / state.RadConeFeather;
-        var distAlpha = Math.Clamp((distLength - state.ConeIgnoreRadius) + (state.ConeIgnoreFeather * 0.5f), 0f, state.ConeIgnoreFeather) / state.ConeIgnoreFeather;
-        var targetAlpha = Math.Max(1f - angleAlpha, 1f - distAlpha);
+        var targetAlpha = state.FovSystem.GetVisibilityAlpha(
+            player,
+            uid,
+            player.Comp.Angle,
+            player.Comp.AngleTolerance,
+            true,
+            player.Comp.ConeIgnoreRadius,
+            player.Comp.ConeIgnoreFeather);
 
         // микро-оптимизация - не трогать, если альфа почти не изменилась
         var newAlpha = comp.Inverted ? 1f - targetAlpha : targetAlpha;
@@ -96,6 +93,7 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
         _tree = _ent.System<FieldOfViewOccludableTreeSystem>();
         _xform  = _ent.System<TransformSystem>();
         _sprite = _ent.System<SpriteSystem>();
+        _fovSystem = _ent.System<FieldOfViewSystem>();
 
         _spriteQuery = _ent.GetEntityQuery<SpriteComponent>();
     }
@@ -118,12 +116,8 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
         if (!_fovManagement.PlayerEntity.HasValue)
             return;
 
-        var (ent, eye, cone, eyeTransform) = _fovManagement.PlayerEntity.Value;
-        var eyePos = _xform.GetWorldPosition(eyeTransform);
-        var eyeRot = cone.CurrentAngle - eye.Rotation;
-
-        var radConeAngle = MathHelper.DegreesToRadians(cone.Angle);
-        var radConeFeather = MathHelper.DegreesToRadians(cone.AngleTolerance);
+        var (ent, _, fov, _) = _fovManagement.PlayerEntity.Value;
+        var player = (ent, fov);
 
         _fovManagement.CachedBaseAlphas.Clear();
         _seen.Clear();
@@ -142,16 +136,10 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
                 Seen = _seen,
                 SpriteQuery = _spriteQuery,
                 SpriteSys = _sprite,
-                Xform = _xform,
                 FovManagement = _fovManagement,
+                FovSystem = _fovSystem,
 
-                EyePos = eyePos,
-                EyeRot = eyeRot,
-                RadConeAngle = radConeAngle,
-                RadConeFeather = radConeFeather,
-                ConeIgnoreRadius = cone.ConeIgnoreRadius,
-                ConeIgnoreFeather = cone.ConeIgnoreFeather,
-                PlayerEntityUid = ent,
+                Player = player,
             };
 
             treeComp.Tree.QueryAabb(ref state, QueryCallback, bounds, true);

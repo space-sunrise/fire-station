@@ -158,7 +158,7 @@ namespace Content.Client.Verbs
 
             for (var i = entities.Count - 1; i >= 0; i--)
             {
-                if (!_fov.IsInViewAngle(player, entities[i]))
+                if (!_fov.IsInFov(player, entities[i], true))
                     entities.RemoveSwap(i);
             }
 
