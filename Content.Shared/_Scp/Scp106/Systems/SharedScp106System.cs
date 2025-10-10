@@ -133,6 +133,9 @@ public abstract partial class SharedScp106System : EntitySystem
 
     public bool TryDeductEssence(Entity<Scp106Component> ent, FixedPoint2 cost)
     {
+        if (IsInDimension(ent))
+            return true;
+
         if (ent.Comp.Essence < cost)
         {
             var message = Loc.GetString("not-enough-essence", ("count", cost - ent.Comp.Essence));
