@@ -172,7 +172,7 @@
   - type: PointLight
     color: "#FF0000"
     radius: 1.4
-    energy: 5
+    energy: 10
   - type: ElevatorButton
     elevatorId: "SCP_Elevator_1"
     buttonType: CallButton
