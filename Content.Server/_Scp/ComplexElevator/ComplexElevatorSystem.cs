@@ -316,7 +316,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         var intersectingEntities = _lookup.GetEntitiesInRange<PhysicsComponent>(Transform(doorUid).Coordinates, range, LookupFlags.Dynamic | LookupFlags.Sensors);
         foreach (var ent in intersectingEntities)
         {
-            if (ent.Owner != doorUid && !HasComp<ElevatorDoorComponent>(ent.Owner))
+            if (ent.Owner != doorUid)
                 return true;
         }
         return false;
