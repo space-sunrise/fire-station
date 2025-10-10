@@ -146,7 +146,7 @@ public sealed partial class FieldOfViewSystem : EntitySystem
             (viewer, viewer.Comp2),
             (target, target.Comp),
             viewer.Comp1.Angle,
-            viewer.Comp1.AngleTolerance,
+            viewer.Comp1.AngleFeather,
             checkCircle,
             viewer.Comp1.ConeIgnoreRadius,
             viewer.Comp1.ConeIgnoreFeather

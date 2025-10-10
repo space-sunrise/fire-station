@@ -25,17 +25,17 @@ public sealed partial class FieldOfViewComponent : Component
     /// Влияет только на скрытие предметов. Визуальный конус не использует это.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float AngleTolerance = 14f;
+    public float AngleFeather = 14f;
 
     /// <summary>
     /// Радиус кружочка вокруг персонажа для игнорирования этой области.
     /// Shared-система не будет учитывать это, иначе SCP-173 никогда не сможет подойти к персонажу
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float ConeIgnoreRadius = 0.6f;
+    public float ConeIgnoreRadius = 0.5f;
 
     /// <summary>
-    /// Пограничные значения кружочка. Аналогично <see cref="AngleTolerance"/>
+    /// Пограничные значения кружочка. Аналогично <see cref="AngleFeather"/>
     /// </summary>
     [DataField, AutoNetworkedField]
     public float ConeIgnoreFeather = 0.25f;

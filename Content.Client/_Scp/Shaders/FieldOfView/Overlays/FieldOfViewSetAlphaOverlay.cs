@@ -62,7 +62,7 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
             player,
             uid,
             player.Comp.Angle,
-            player.Comp.AngleTolerance,
+            player.Comp.AngleFeather,
             true,
             player.Comp.ConeIgnoreRadius,
             player.Comp.ConeIgnoreFeather);

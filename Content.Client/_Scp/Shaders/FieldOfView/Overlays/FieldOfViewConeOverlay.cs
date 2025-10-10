@@ -129,7 +129,7 @@ public sealed class FieldOfViewConeOverlay : Overlay
         _shader.SetParameter("Zoom", eye.Zoom.X);
         _shader.SetParameter("ViewAngle", (float) fov.CurrentAngle.Theta);
         _shader.SetParameter("ConeAngle", fov.Angle);
-        _shader.SetParameter("ConeFeather", fov.AngleTolerance);
+        _shader.SetParameter("ConeFeather", fov.AngleFeather);
         _shader.SetParameter("ConeIgnoreRadius", (fov.ConeIgnoreRadius - fov.ConeIgnoreFeather) * 50f);
         _shader.SetParameter("ConeIgnoreFeather", Math.Max(fov.ConeIgnoreFeather * 200f, 8f));
 
