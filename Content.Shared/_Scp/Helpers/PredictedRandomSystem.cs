@@ -1,6 +1,6 @@
-﻿using Robust.Shared.Random;
+﻿using Content.Shared.GameTicking;
+using Content.Shared.Random.Helpers;
 using Robust.Shared.Timing;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._Scp.Helpers;
 
@@ -8,165 +8,159 @@ public sealed class PredictedRandomSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private System.Random _random = new();
+    private System.Random? _tickRandom;
+    private GameTick _lastTick;
 
-    #region Roll
-
-    private int Roll(int sides)
+    public override void Initialize()
     {
-        return _random.Next(1, sides + 1);
+        base.Initialize();
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
     }
 
-    public int RollWith(int sides, int numberOfDice)
+    private void OnRoundRestartCleanup(RoundRestartCleanupEvent ev)
     {
-        SetSeed(sides);
+        _tickRandom = null;
+        _lastTick = GameTick.Zero;
+    }
 
-        var total = 0;
-        for (var i = 0; i < numberOfDice; i++)
-        {
-            total += Roll(sides);
-        }
+    #region Entity-Based Random
 
-        return total;
+    public int NextForEntity(EntityUid entity, int minValue, int maxValue)
+    {
+        var random = GetOrCreateEntityRandom(entity);
+        return random.Next(minValue, maxValue);
+    }
+
+    public float NextFloatForEntity(EntityUid entity, float minValue = 0f, float maxValue = 1f)
+    {
+        var random = GetOrCreateEntityRandom(entity);
+        return (float)(random.NextDouble() * (maxValue - minValue) + minValue);
+    }
+
+    public bool ProbForEntity(EntityUid entity, float chance)
+    {
+        var random = GetOrCreateEntityRandom(entity);
+        return random.NextDouble() < chance;
+    }
+
+    private System.Random GetOrCreateEntityRandom(EntityUid entity)
+    {
+        var ent = GetNetEntity(entity);
+        var seed = SharedRandomExtensions.HashCodeCombine(new List<int> { (int) _timing.CurTick.Value, ent.Id });
+        var random = new System.Random(seed);
+
+        return random;
     }
 
     #endregion
 
-    #region Next
+    #region Tick-Based Random
+
+    public int NextByTick(int minValue, int maxValue)
+    {
+        UpdateTickRandom();
+        return _tickRandom!.Next(minValue, maxValue);
+    }
+
+    public float NextFloatByTick(float minValue = 0f, float maxValue = 1f)
+    {
+        UpdateTickRandom();
+        return (float)(_tickRandom!.NextDouble() * (maxValue - minValue) + minValue);
+    }
+
+    public bool ProbByTick(float chance)
+    {
+        UpdateTickRandom();
+        return _tickRandom!.NextDouble() < chance;
+    }
+
+    private void UpdateTickRandom()
+    {
+        var currentTick = _timing.CurTick;
+        if (_lastTick != currentTick)
+        {
+            _lastTick = currentTick;
+            _tickRandom = new System.Random((int)(currentTick.Value & 0x7FFFFFFF));
+        }
+    }
+
+    #endregion
+
+    #region Sequence-Based Random
+
+    public PredictedRandomSequence CreateSequence(int baseSeed)
+    {
+        return new PredictedRandomSequence(baseSeed, (int)(_timing.CurTick.Value & 0x7FFFFFFF));
+    }
+
+    #endregion
+
+    #region Legacy Support
 
     public int Next(int minValue, int maxValue)
     {
-        SetSeed(minValue);
-
-        if (minValue > maxValue)
-            (minValue, maxValue) = (maxValue, minValue);
-
-        return _random.Next(minValue, maxValue);
-    }
-
-    public int Next(int minValue, int maxValue, int value)
-    {
-        SetSeed(value);
-
-        if (minValue > maxValue)
-            (minValue, maxValue) = (maxValue, minValue);
-
-        return _random.Next(minValue, maxValue);
-    }
-
-    public double NextDouble()
-    {
-        SetSeed();
-        return _random.NextDouble();
-    }
-
-    public double NextDouble(EntityUid uid)
-    {
-        SetSeed(GetNetEntity(uid).Id);
-        return _random.NextDouble();
-    }
-
-    public double NextDouble(double minValue, double maxValue)
-    {
-        SetSeed(minValue.GetHashCode());
-
-        if (minValue > maxValue)
-            (minValue, maxValue) = (maxValue, minValue);
-
-        return _random.NextDouble() * (maxValue - minValue) + minValue;
-    }
-
-    public double NextDouble(EntityUid uid, float minValue, float maxValue)
-    {
-        SetSeed(GetNetEntity(uid).Id);
-
-        if (minValue > maxValue)
-            (minValue, maxValue) = (maxValue, minValue);
-
-        return _random.NextDouble() * (maxValue - minValue) + minValue;
-    }
-
-    public float NextFloat()
-    {
-        SetSeed();
-        return _random.NextFloat();
-    }
-
-    public float NextFloat(EntityUid uid)
-    {
-        SetSeed(GetNetEntity(uid).Id);
-        return _random.NextFloat();
+        return NextByTick(minValue, maxValue);
     }
 
     public float NextFloat(float minValue, float maxValue)
     {
-        SetSeed(minValue.GetHashCode());
-
-        if (minValue > maxValue)
-            (minValue, maxValue) = (maxValue, minValue);
-
-        return _random.NextFloat() * (maxValue - minValue) + minValue;
+        return NextFloatByTick(minValue, maxValue);
     }
-
-    public float NextFloat(EntityUid uid, float minValue, float maxValue)
-    {
-        SetSeed(GetNetEntity(uid).Id);
-
-        if (minValue > maxValue)
-            (minValue, maxValue) = (maxValue, minValue);
-
-        return _random.NextFloat() * (maxValue - minValue) + minValue;
-    }
-
-    #endregion
-
-    #region Prob
 
     public bool Prob(float chance)
     {
-        DebugTools.Assert(chance <= 1 && chance >= 0, $"Chance must be in the range 0-1. It was {chance}.");
-
-        SetSeed(chance.GetHashCode());
-        var c = Math.Clamp(chance, 0f, 1f);
-        return _random.NextDouble() < c;
+        return ProbByTick(chance);
     }
-
-    #endregion
-
-    #region Pick
 
     public T Pick<T>(IReadOnlyList<T> list)
     {
-        DebugTools.Assert(list.Count > 0, "Pick called with empty list");
-
-        if (list.Count == 0)
-            return default!;
-
-        SetSeed(list[0]!.GetHashCode());
-
-        var index = _random.Next(list.Count);
+        UpdateTickRandom();
+        var index = _tickRandom!.Next(list.Count);
         return list[index];
     }
 
     #endregion
-
-    #region Private
-
-    private void SetSeed()
-    {
-        var currentTick = _timing.CurTime.Milliseconds.GetHashCode();
-        _random = new System.Random(currentTick);
-    }
-
-    private void SetSeed(int value)
-    {
-        var currentTick = _timing.CurTime.Milliseconds.GetHashCode();
-        var valueHash = value.GetHashCode();
-
-        var hash = HashCode.Combine(currentTick, valueHash);
-
-        _random = new System.Random(hash);
-    }
-
-    #endregion
 }
+
+public sealed class PredictedRandomSequence
+{
+    private readonly System.Random _random;
+    private int _callCount;
+
+    public PredictedRandomSequence(int baseSeed, int tickSeed)
+    {
+        var combinedSeed = HashCode.Combine(baseSeed, tickSeed);
+        _random = new System.Random(combinedSeed);
+        _callCount = 0;
+    }
+
+    public int Next(int minValue, int maxValue)
+    {
+        _callCount++;
+        return _random.Next(minValue, maxValue);
+    }
+
+    public float NextFloat(float minValue = 0f, float maxValue = 1f)
+    {
+        _callCount++;
+        return (float)(_random.NextDouble() * (maxValue - minValue) + minValue);
+    }
+
+    public bool Prob(float chance)
+    {
+        _callCount++;
+        return _random.NextDouble() < chance;
+    }
+
+    public void Skip(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            _random.Next();
+            _callCount++;
+        }
+    }
+
+    public int CallCount => _callCount;
+}
+

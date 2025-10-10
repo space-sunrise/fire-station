@@ -588,6 +588,10 @@ public sealed partial class GunSystem : SharedGunSystem
                         Logs.Add(LogType.HitScanHit,
                             $"{hitName:target} hit by hitscan dealing {dmg.GetTotal():damage} damage");
                     }
+
+                    // Fire added start - для обнаружения стрельбы по персонажу ради скромника
+                    RaiseLocalEvent(hitEntity, new HitScanAttackedEvent(user));
+                    // Fire added end
                 }
             }
         }
