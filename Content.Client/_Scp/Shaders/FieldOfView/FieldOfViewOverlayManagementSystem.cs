@@ -81,6 +81,8 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
         base.Shutdown();
 
         _configSub.Dispose();
+        RemoveOverlays();
+
         _coneOverlay.Dispose();
         _setAlphaOverlay.Dispose();
         _resetAlphaOverlay.Dispose();
@@ -191,6 +193,7 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
         _overlay.RemoveOverlay(_setAlphaOverlay);
         _overlay.RemoveOverlay(_resetAlphaOverlay);
 
+        CachedBaseAlphas.Clear();
         _overlaysPresented = false;
     }
 }
