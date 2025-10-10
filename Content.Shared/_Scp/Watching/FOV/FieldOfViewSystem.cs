@@ -1,8 +1,6 @@
-﻿using System.Numerics;
-using Content.Shared.Buckle.Components;
+﻿using Content.Shared.Buckle.Components;
 using Content.Shared.CombatMode;
 using Content.Shared.MouseRotator;
-using Robust.Shared.Map;
 
 namespace Content.Shared._Scp.Watching.FOV;
 
@@ -184,48 +182,6 @@ public sealed partial class FieldOfViewSystem : EntitySystem
         return alpha > epsilon; // Проверка с небольшим эпсилоном
     }
 
-    public float FindAngleBetween(Entity<TransformComponent?> viewer, Entity<TransformComponent?> target)
-    {
-        if (!Resolve(target, ref target.Comp) || !Resolve(viewer, ref viewer.Comp))
-            return float.NaN;
-
-        var viewerOriginCoords = GetFovOrigin(viewer);
-        var targetCoords = new EntityCoordinates(target.Owner, Vector2.Zero);
-
-        var viewerWorldPos = _transform.GetMoverCoordinates(viewerOriginCoords, _xformQuery);
-        var targetWorldPos = _transform.GetMoverCoordinates(targetCoords, _xformQuery);
-
-        var toTargetVector = (targetWorldPos.Position - viewerWorldPos.Position).Normalized();
-
-        var viewerForward = viewer.Comp.GridUid.HasValue
-            ? _transform.GetRelativePositionRotation(viewer.Comp, viewer.Comp.GridUid.Value, _xformQuery).Rotation.ToWorldVec()
-            : viewer.Comp.LocalRotation.ToWorldVec();
-
-        var dotProduct = Vector2.Dot(viewerForward, toTargetVector);
-        dotProduct = Math.Clamp(dotProduct, -1.0f, 1.0f);
-
-        var angle = MathF.Acos(dotProduct) * (180f / MathF.PI);
-
-        return angle;
-    }
-
-    /// <summary>
-    /// Вычисляет координаты, из которых исходит поле зрения (голова), с учетом смещения.
-    /// Возвращает координаты относительно родителя сущности.
-    /// </summary>
-    public EntityCoordinates GetFovOrigin(Entity<TransformComponent?> viewer)
-    {
-        if (!Resolve(viewer, ref viewer.Comp))
-            return default;
-
-        // Если у сущности нет компонента FOV, просто возвращаем ее центр.
-        if (!_fovQuery.TryComp(viewer, out var fov))
-            return new EntityCoordinates(viewer.Owner, Vector2.Zero);
-
-        // Смещение уже находится в локальных координатах, поэтому просто добавляем его.
-        return new EntityCoordinates(viewer.Owner, fov.Offset);
-    }
-
     public void SetRelay(Entity<FieldOfViewComponent?> ent, EntityUid? relay)
     {
         if (!Resolve(ent, ref ent.Comp, false))
@@ -233,14 +189,5 @@ public sealed partial class FieldOfViewSystem : EntitySystem
 
         ent.Comp.RelayEntity = relay;
         DirtyField(ent, nameof(FieldOfViewComponent.RelayEntity));
-    }
-
-    /// <summary>
-    /// Возвращает косинус половины угла обзора. Оптимизировано для использования в шейдерах.
-    /// </summary>
-    public static float GetFovCosine(float fovAngle)
-    {
-        var halfAngleRad = MathHelper.DegreesToRadians(fovAngle / 2f);
-        return MathF.Cos(halfAngleRad);
     }
 }
