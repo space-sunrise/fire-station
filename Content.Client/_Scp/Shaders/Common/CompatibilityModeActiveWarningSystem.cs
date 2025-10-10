@@ -1,5 +1,4 @@
 ﻿using Content.Client._Scp.Shaders.Common.Grain;
-using Content.Client._Scp.Shaders.FieldOfView;
 using Content.Client._Scp.UI;
 using Content.Shared._Scp.ScpCCVars;
 using Robust.Shared;
@@ -10,7 +9,6 @@ namespace Content.Client._Scp.Shaders.Common;
 public sealed class CompatibilityModeActiveWarningSystem : EntitySystem
 {
     [Dependency] private readonly GrainOverlaySystem _grain = default!;
-    [Dependency] private readonly FieldOfViewOverlaySystem _fov = default!;
     [Dependency] private readonly IConfigurationManager _configuration = default!;
 
     private CompatibilityModeActiveWarningWindow? _window;
@@ -69,8 +67,5 @@ public sealed class CompatibilityModeActiveWarningSystem : EntitySystem
 
         _grain.Enabled = value;
         _grain.ToggleOverlay(value);
-
-        _fov.Enabled = value;
-        _fov.ToggleOverlay(value);
     }
 }

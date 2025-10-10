@@ -60,6 +60,9 @@
   save: false
   abstract: true
   components:
+  # Fire added start
+  - type: FieldOfViewOccludable
+  # Fire added end
   - type: MobMover
   - type: Mech
   - type: MechAir

@@ -1,8 +1,10 @@
-﻿using System.Numerics;
-using Robust.Shared.GameStates;
+﻿using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Watching.FOV;
 
+/// <summary>
+/// Компонент, отвечающий за поле зрения
+/// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true, true)]
 public sealed partial class FieldOfViewComponent : Component
 {
@@ -12,21 +14,41 @@ public sealed partial class FieldOfViewComponent : Component
     public const float MaxBlurScale = 1f;
     public const float MinBlurScale = 0.25f;
 
-    public const float MaxCooldownCheck = 0.3f;
-    public const float MinCooldownCheck = 0.05f;
-
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
+    /// <summary>
+    /// Угол обзора персонажа
+    /// </summary>
+    [DataField, AutoNetworkedField]
     public float Angle = 180f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public float AngleTolerance = 14f;
+    /// <summary>
+    /// "Дополнительный" угол обзора, при котором предметы начинают исчезать из поля зрения, но все еще видны.
+    /// Влияет только на скрытие предметов. Визуальный конус не использует это.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float AngleFeather = 14f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public float ConeOpacity = 0.85f;
+    /// <summary>
+    /// Радиус кружочка вокруг персонажа для игнорирования этой области.
+    /// Shared-система не будет учитывать это, иначе SCP-173 никогда не сможет подойти к персонажу
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float ConeIgnoreRadius = 0.4f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public Vector2 Offset = new(0, 0.5f);
+    /// <summary>
+    /// Пограничные значения кружочка. Аналогично <see cref="AngleFeather"/>
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float ConeIgnoreFeather = 0.25f;
 
-    [ViewVariables, AutoNetworkedField]
-    public EntityUid? RelayEntity;
+    /// <summary>
+    /// Клиентский параметр, отображающий текущий угол поворота поля зрения.
+    /// </summary>
+    [ViewVariables]
+    public Angle CurrentAngle;
+
+    /// <summary>
+    /// Клиентский параметр, отображающий требуемый угол поля зрения, к которому будет стремиться текущий <see cref="CurrentAngle"/> угол при повороте
+    /// </summary>
+    [ViewVariables]
+    public Angle? DesiredViewAngle = null;
 }

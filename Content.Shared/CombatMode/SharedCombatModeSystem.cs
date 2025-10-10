@@ -100,7 +100,9 @@ public abstract class SharedCombatModeSystem : EntitySystem
         SetMouseRotatorComponents(entity, value);
     }
 
-    private void SetMouseRotatorComponents(EntityUid uid, bool value)
+    // Fire edit start
+    public void SetMouseRotatorComponents(EntityUid uid, bool value)
+    // Fire edit end
     {
         if (value)
         {

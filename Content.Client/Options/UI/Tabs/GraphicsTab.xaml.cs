@@ -145,7 +145,6 @@ public sealed partial class GraphicsTab : Control
                     // Fire added start
                     _cfg.SetCVar(ScpCCVars.LightBloomEnable, false);
                     _cfg.SetCVar(ScpCCVars.FieldOfViewBlurScale, 0.25f);
-                    _cfg.SetCVar(ScpCCVars.FieldOfViewCheckCooldown, 0.3f);
                     _cfg.SetCVar(ScpCCVars.AudioMufflingHighFrequencyUpdate, false);
                     // Fire added end
                     break;
@@ -156,7 +155,6 @@ public sealed partial class GraphicsTab : Control
                     // Fire added start
                     _cfg.SetCVar(ScpCCVars.LightBloomEnable, false);
                     _cfg.SetCVar(ScpCCVars.FieldOfViewBlurScale, 0.4f);
-                    _cfg.SetCVar(ScpCCVars.FieldOfViewCheckCooldown, 0.2f);
                     _cfg.SetCVar(ScpCCVars.AudioMufflingHighFrequencyUpdate, false);
                     // Fire added end
                     break;
@@ -167,7 +165,6 @@ public sealed partial class GraphicsTab : Control
                     // Fire added start
                     _cfg.SetCVar(ScpCCVars.LightBloomEnable, true);
                     _cfg.SetCVar(ScpCCVars.FieldOfViewBlurScale, 0.7f);
-                    _cfg.SetCVar(ScpCCVars.FieldOfViewCheckCooldown, 0.1f);
                     _cfg.SetCVar(ScpCCVars.AudioMufflingHighFrequencyUpdate, false);
                     // Fire added end
                     break;
@@ -178,7 +175,6 @@ public sealed partial class GraphicsTab : Control
                     // Fire added start
                     _cfg.SetCVar(ScpCCVars.LightBloomEnable, true);
                     _cfg.SetCVar(ScpCCVars.FieldOfViewBlurScale, 0.9f);
-                    _cfg.SetCVar(ScpCCVars.FieldOfViewCheckCooldown, 0.1f);
                     // Fire added end
                     break;
             }
