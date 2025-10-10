@@ -11,15 +11,16 @@ using System.Numerics;
 namespace Content.Client.CartridgeLoader.Cartridges;
 
 [GenerateTypedNameReferences]
-public sealed partial class NavigatorUiFragment : BoxContainer, IDisposable
+public sealed partial class NavigatorUiFragment : BoxContainer
 {
     [Dependency] private readonly IEntityManager _entManager = default!;
 
     public NavMapControl? NavMap;
     private EntityUid? _owner;
+    //fire added
     private readonly List<StationMapBeaconControl> _buttons = new();
     private Action<LineEdit.LineEditEventArgs>? _filterHandler;
-    private bool _disposed;
+    //fire end
 
     public NavigatorUiFragment()
     {
@@ -35,9 +36,10 @@ public sealed partial class NavigatorUiFragment : BoxContainer, IDisposable
         NavMap.VerticalExpand = true;
 
         NavMapContainer.AddChild(NavMap);
-
+        //fire added
         _filterHandler = (bar) => OnFilterChanged(bar.Text);
         FilterBar.OnTextChanged += _filterHandler;
+        //fire end
     }
 
     public void UpdateState(EntityUid? mapUid, string stationName)
@@ -51,8 +53,9 @@ public sealed partial class NavigatorUiFragment : BoxContainer, IDisposable
 
         // Track owner position on the map
         UpdateOwnerPosition();
-
+        //fire added
         UpdateBeaconList(mapUid);
+        //fire end
     }
 
     private void UpdateOwnerPosition()
@@ -79,7 +82,7 @@ public sealed partial class NavigatorUiFragment : BoxContainer, IDisposable
         // Periodically update owner position
         UpdateOwnerPosition();
     }
-
+    //fire added
     public void OnFilterChanged(string newFilter)
     {
         foreach (var button in _buttons)
@@ -117,23 +120,5 @@ public sealed partial class NavigatorUiFragment : BoxContainer, IDisposable
             BeaconButtons.AddChild(button);
     }
 
-    public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    private void Dispose(bool disposing)
-    {
-        if (_disposed) return;
-        if (disposing)
-        {
-            if (FilterBar != null && _filterHandler != null)
-            {
-                FilterBar.OnTextChanged -= _filterHandler;
-                _filterHandler = null;
-            }
-        }
-        _disposed = true;
-    }
+    //fire end
 }

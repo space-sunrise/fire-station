@@ -11,11 +11,13 @@
         </controls:StripeBack>
         <PanelContainer Name="NavMapContainer" HorizontalExpand="True" VerticalExpand="True" Margin="4">
         </PanelContainer>
+        <!-- //fire add -->
         <BoxContainer Orientation="Vertical" HorizontalExpand="True" Margin="4 0 4 4">
             <LineEdit Name="FilterBar" PlaceHolder="{Loc 'station-map-filter-placeholder'}" HorizontalExpand="True" Margin="0 0 0 4"/>
             <ScrollContainer HorizontalExpand="True" VerticalExpand="True" MinHeight="70">
                 <BoxContainer Name="BeaconButtons" Orientation="Vertical" HorizontalExpand="True" />
             </ScrollContainer>
         </BoxContainer>
+        <!-- //fire end -->
     </BoxContainer>
 </cartridges:NavigatorUiFragment>
