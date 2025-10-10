@@ -1,21 +1,24 @@
 using Content.Client._Scp.Shaders.FieldOfView.Overlays;
 using Content.Client.Eye;
+using Content.Shared._Scp.ScpCCVars;
 using Content.Shared._Scp.Watching.FOV;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
+using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 
 namespace Content.Client._Scp.Shaders.FieldOfView;
 
 /// <summary>
-///     Handles adding and removing the viewcone overlays, as well as ferrying data between them
-///     Also handles calculating desired view angle for active viewcones so overlays can use it
+/// Система для контроля всеми оверлеями поля зрения.
+/// Контролирует жизненный цикл оверлеев, держит кешированные значения прозрачности сущностей и т.п.
 /// </summary>
 public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
 {
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlay = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly TransformSystem _xform = default!;
 
     private FieldOfViewConeOverlay _coneOverlay = default!;
@@ -40,6 +43,8 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
     [Access(typeof(FieldOfViewSetAlphaOverlay), typeof(FieldOfViewResetAlphaOverlay))]
     public readonly List<(Entity<SpriteComponent> ent, float baseAlpha)> CachedBaseAlphas = new(128);
 
+    private ConfigurationMultiSubscriptionBuilder _configSub = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -58,6 +63,20 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
         _coneOverlay = new();
         _setAlphaOverlay = new();
         _resetAlphaOverlay = new();
+
+        _configSub = _cfg.SubscribeMultiple()
+            .OnValueChanged(ScpCCVars.FieldOfViewBlurScale, x => _coneOverlay.BlurScale = x, true)
+            .OnValueChanged(ScpCCVars.FieldOfViewOpacity, x => _coneOverlay.Opacity = x, true);
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _configSub.Dispose();
+        _coneOverlay.Dispose();
+        _setAlphaOverlay.Dispose();
+        _resetAlphaOverlay.Dispose();
     }
 
     public override void FrameUpdate(float frameTime)

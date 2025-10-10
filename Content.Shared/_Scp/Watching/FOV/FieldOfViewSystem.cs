@@ -181,13 +181,4 @@ public sealed partial class FieldOfViewSystem : EntitySystem
 
         return alpha > epsilon; // Проверка с небольшим эпсилоном
     }
-
-    public void SetRelay(Entity<FieldOfViewComponent?> ent, EntityUid? relay)
-    {
-        if (!Resolve(ent, ref ent.Comp, false))
-            return;
-
-        ent.Comp.RelayEntity = relay;
-        DirtyField(ent, nameof(FieldOfViewComponent.RelayEntity));
-    }
 }

@@ -31,19 +31,6 @@ public sealed partial class FieldOfViewComponent : Component
     [DataField, AutoNetworkedField]
     public float AngleTolerance = 14f;
 
-    [DataField]
-    public float ConeOpacity = 0.85f;
-
-    /// <summary>
-    /// Определяет сдвиг точки центра поля зрения при запросе "видит ли цель этот предмет".
-    /// Сдвиг нужен, чтобы центр поля зрения находился в голове персонажа, а не в туловище.
-    /// </summary>
-    [DataField, AutoNetworkedField]
-    public Vector2 Offset = new(0, 0.5f);
-
-    [ViewVariables, AutoNetworkedField]
-    public EntityUid? RelayEntity;
-
     /// <summary>
     /// Радиус кружочка вокруг персонажа для игнорирования этой области.
     /// Shared-система не будет учитывать это, иначе SCP-173 никогда не сможет подойти к персонажу
@@ -57,11 +44,15 @@ public sealed partial class FieldOfViewComponent : Component
     [DataField, AutoNetworkedField]
     public float ConeIgnoreFeather = 0.25f;
 
-    // Clientside, used for lerping view angle
-    // and keeping it consistent across all overlays
+    /// <summary>
+    /// Клиентский параметр, отображающий текущий угол поворота поля зрения.
+    /// </summary>
     [ViewVariables]
     public Angle CurrentAngle;
 
+    /// <summary>
+    /// Клиентский параметр, отображающий требуемый угол поля зрения, к которому будет стремиться текущий <see cref="CurrentAngle"/> угол при повороте
+    /// </summary>
     [ViewVariables]
     public Angle? DesiredViewAngle = null;
 }
