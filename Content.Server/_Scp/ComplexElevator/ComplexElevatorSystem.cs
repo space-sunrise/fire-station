@@ -284,28 +284,23 @@ public sealed class ComplexElevatorSystem : EntitySystem
         if (!TryFindElevator(elevatorId, out var elevator))
             return false;
 
-        var doors = new List<EntityUid>();
+        EntityUid? lastDoor = null;
         var query = EntityQueryEnumerator<ElevatorDoorComponent>();
         while (query.MoveNext(out var doorUid, out var doorComp))
         {
             if (doorComp.ElevatorId != elevatorId || doorComp.Floor != floor)
                 continue;
-            doors.Add(doorUid);
-        }
-
-        var allClosed = true;
-        foreach (var doorUid in doors)
-        {
             if (!_doorSystem.TryClose(doorUid))
-                allClosed = false;
+                return false;
+            lastDoor = doorUid;
         }
 
-        if (allClosed && doors.Count > 0)
+        if (lastDoor.HasValue)
         {
-            _audio.PlayPvs(elevator.Value.Comp.StartSound, doors[^1]);
+            _audio.PlayPvs(elevator.Value.Comp.StartSound, lastDoor.Value);
         }
 
-        return allClosed;
+        return true;
     }
 
     private bool IsDoorBlocked(EntityUid doorUid, float range)
@@ -313,10 +308,10 @@ public sealed class ComplexElevatorSystem : EntitySystem
         if (Deleted(doorUid))
             return false;
 
-        var intersectingEntities = _lookup.GetEntitiesInRange<PhysicsComponent>(Transform(doorUid).Coordinates, range, LookupFlags.Dynamic | LookupFlags.Sensors);
+        var intersectingEntities = _lookup.GetEntitiesInRange<PhysicsComponent>(Transform(doorUid).Coordinates, range, LookupFlags.Dynamic);
         foreach (var ent in intersectingEntities)
         {
-            if (ent.Owner != doorUid)
+            if (ent.Owner != doorUid && !HasComp<ElevatorDoorComponent>(ent.Owner))
                 return true;
         }
         return false;
