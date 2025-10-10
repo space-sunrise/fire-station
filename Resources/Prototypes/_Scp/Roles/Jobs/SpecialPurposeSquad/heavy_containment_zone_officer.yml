@@ -52,8 +52,6 @@
     eyes: ClothingEyesGlassesSecurityGuard
     id: KeyCardHeavyContainmentZoneOfficer
     ears: ClothingHeadsetHeavyContainmentSecurityService
-    head: ClothingHeadHelmetBasic
-    gloves: ClothingHandsGlovesColorBlack
     pocket2: ScpSecurityPDA
   storage:
     back:
