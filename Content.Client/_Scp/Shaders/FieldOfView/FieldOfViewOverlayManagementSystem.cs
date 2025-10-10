@@ -32,7 +32,12 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
     private EntityQuery<EyeComponent> _eyeQuery;
     private EntityQuery<TransformComponent> _xformQuery;
 
-    public Entity<EyeComponent, FieldOfViewComponent, TransformComponent>? PlayerEntity;
+    public Entity<EyeComponent, FieldOfViewComponent, TransformComponent>? PlayerEntity { get; private set; }
+
+    /// <summary>
+    /// Количество кадров в секунду, которые будут использоваться для обработки некоторых эффектов.
+    /// </summary>
+    public TimeSpan UpdateInterval { get; private set; } = TimeSpan.FromSeconds(1 / 100);
 
     // slightly balls state management, but
     // done so we don't have to requery within the same frame

@@ -2,6 +2,7 @@ using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using System.Numerics;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Shaders.FieldOfView.Overlays;
 
@@ -13,6 +14,7 @@ public sealed class FieldOfViewConeOverlay : Overlay
     [Dependency] private readonly IEntityManager _ent = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IClyde _clyde = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     private readonly FieldOfViewOverlayManagementSystem _fovManagement;
 
@@ -29,6 +31,8 @@ public sealed class FieldOfViewConeOverlay : Overlay
 
     private IRenderTexture? _blurPass;
     private IRenderTexture? _backBuffer;
+
+    private TimeSpan _nextUpdate = TimeSpan.Zero;
 
     /// <summary>
     /// Размер текстуры размытия.
@@ -96,19 +100,24 @@ public sealed class FieldOfViewConeOverlay : Overlay
         var handle = args.WorldHandle;
         var viewportBounds = new Box2(Vector2.Zero, _blurPass.Size);
 
-        handle.RenderInRenderTarget(_blurPass, () =>
+        if (_timing.CurTime >= _nextUpdate)
         {
-            _blurXShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
-            handle.UseShader(_blurXShader);
-            handle.DrawRect(viewportBounds, Color.White);
-        }, Color.Transparent);
+            handle.RenderInRenderTarget(_blurPass, () =>
+            {
+                _blurXShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+                handle.UseShader(_blurXShader);
+                handle.DrawRect(viewportBounds, Color.White);
+            }, Color.Transparent);
 
-        handle.RenderInRenderTarget(_backBuffer, () =>
-        {
-            _blurYShader.SetParameter("SCREEN_TEXTURE", _blurPass.Texture);
-            handle.UseShader(_blurYShader);
-            handle.DrawRect(viewportBounds, Color.White);
-        }, Color.Transparent);
+            handle.RenderInRenderTarget(_backBuffer, () =>
+            {
+                _blurYShader.SetParameter("SCREEN_TEXTURE", _blurPass.Texture);
+                handle.UseShader(_blurYShader);
+                handle.DrawRect(viewportBounds, Color.White);
+            }, Color.Transparent);
+
+            _nextUpdate = _timing.CurTime + _fovManagement.UpdateInterval;
+        }
 
         var worldHandle = args.WorldHandle;
         var viewport = args.WorldBounds;

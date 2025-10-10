@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using Robust.Shared.GameStates;
+﻿using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Watching.FOV;
 
@@ -14,9 +13,6 @@ public sealed partial class FieldOfViewComponent : Component
 
     public const float MaxBlurScale = 1f;
     public const float MinBlurScale = 0.25f;
-
-    public const float MaxCooldownCheck = 0.3f;
-    public const float MinCooldownCheck = 0.05f;
 
     /// <summary>
     /// Угол обзора персонажа

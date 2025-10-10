@@ -19,15 +19,9 @@
                                  ToolTip="{Loc ui-options-grain-strength-tooltip}"/>
 
                 <!-- Поле зрения -->
-                <CheckBox Name="FieldOfViewUseAltMethod"
-                          Text="{Loc ui-options-field-of-view-use-alt-method}"
-                          ToolTip="{Loc ui-options-field-of-view-use-alt-method-tooltip}"/>
                 <ui:OptionSlider Name="FieldOfViewBlurScale"
                                  Title="{Loc ui-options-field-of-view-blur-scale}"
                                  ToolTip="{Loc ui-options-field-of-view-blur-scale-tooltip}"/>
-                <ui:OptionSlider Name="FieldOfViewCheckCooldown"
-                                 Title="{Loc ui-options-field-of-view-check-cooldown}"
-                                 ToolTip="{Loc ui-options-field-of-view-check-cooldown-tooltip}"/>
                 <ui:OptionSlider Name="FieldOfViewOpacitySlider"
                                  Title="{Loc ui-options-field-of-view-opacity}"
                                  ToolTip="{Loc ui-options-field-of-view-opacity-tooltip}"/>
