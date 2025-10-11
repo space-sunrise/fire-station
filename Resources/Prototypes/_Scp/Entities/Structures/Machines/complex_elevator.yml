@@ -125,7 +125,7 @@
       - Complex
 
 - type: entity
-  parent: Elevator_white
+  parent: Elevator_catwalk
   id: Elevator_catwalk_backup
   name: Elevator
   suffix: Backup elevator, Catwalk
@@ -149,6 +149,7 @@
   description: Button for controlling the elevator.
   suffix: "Call button"
   components:
+  - type: Godmode
   - type: InteractionOutline
   - type: UseDelay
     delay: 7
@@ -200,6 +201,7 @@
   name: Elevator door
   description: Door that opens when the elevator arrives at the floor.
   components:
+  - type: Godmode
   - type: ElevatorDoor
     elevatorId: ""
     floor: ""
