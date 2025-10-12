@@ -159,7 +159,9 @@ namespace Content.Client.Verbs
             // Fire added start - убираем из контекстного меню сущности, которые не видим.
             for (var i = entities.Count - 1; i >= 0; i--)
             {
-                if (!_fov.IsInFov(player, entities[i], true, logIfMissingComponent: false))
+                var ent = entities[i];
+
+                if (HasComp<FieldOfViewOccludableComponent>(ent) && !_fov.IsInFov(player, ent, true, logIfMissingComponent: false))
                     entities.RemoveSwap(i);
             }
             // Fire added end
