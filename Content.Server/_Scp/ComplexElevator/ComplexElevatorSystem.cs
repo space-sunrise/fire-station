@@ -178,16 +178,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private bool CanMoveWithEntities(Entity<ComplexElevatorComponent> ent)
     {
-        var elevatorTransform = Transform(ent.Owner);
-        var aabb = _lookup.GetWorldAABB(ent.Owner, elevatorTransform);
-        var intersectingEntities = _lookup.GetEntitiesIntersecting(elevatorTransform.MapID, aabb, LookupFlags.Uncontained);
-
-        foreach (var entUid in intersectingEntities)
-        {
-            if (entUid == ent.Owner || HasComp<ElevatorDoorComponent>(entUid))
-                continue;
-        }
-
         return GetEntitiesInElevator(ent.Owner).Count(e => !HasComp<GhostComponent>(e)) <= ent.Comp.MaxEntitiesToTeleport;
     }
 
@@ -481,7 +471,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
             foreach (var entUid in intersectingEntities)
             {
-                if (IsEntityValidForTeleport(entUid, elevator.Owner))
+                if (IsEntityValidForTeleport(entUid, elevator.Owner) && !HasComp<GhostComponent>(entUid))
                 {
                     var damage = new DamageSpecifier();
                     damage.DamageDict["Blunt"] = 1000;
