@@ -74,10 +74,13 @@ public sealed class ComplexElevatorSystem : EntitySystem
         var mixture = new GasMixture(Atmospherics.CellVolume);
         if (isIntermediate)
         {
-            int[] gasesToRemove = { 3, 4, 8, 9, 10, 11, 7, 2 };
-            foreach (var gasId in gasesToRemove)
+            var gasesToRemove = new[] {
+                Gas.Plasma, Gas.Tritium, Gas.Frezon, Gas.BZ,
+                Gas.Healium, Gas.Nitrium, Gas.NitrousOxide, Gas.CarbonDioxide
+            };
+            foreach (var gas in gasesToRemove)
             {
-                mixture.Moles[gasId] = 0;
+                mixture.Moles[(int)gas] = 0;
             }
             mixture.Moles[(int)Gas.Nitrogen] = 82;
             mixture.Moles[(int)Gas.Oxygen] = 22;
@@ -151,18 +154,19 @@ public sealed class ComplexElevatorSystem : EntitySystem
         var entitiesInElevator = new List<EntityUid>();
         foreach (var entUid in intersectingEntities)
         {
-            if (IsEntityValidForTeleport(entUid, elevatorUid))
+            var entTransform = Transform(entUid);
+            if (IsEntityValidForTeleport(entUid, elevatorUid, entTransform))
                 entitiesInElevator.Add(entUid);
         }
         return entitiesInElevator;
     }
 
-    private bool IsEntityValidForTeleport(EntityUid entUid, EntityUid elevatorUid)
+    private bool IsEntityValidForTeleport(EntityUid entUid, EntityUid elevatorUid, TransformComponent? entTransform = null)
     {
         if (entUid == elevatorUid || HasComp<ElevatorDoorComponent>(entUid))
             return false;
 
-        var entTransform = Transform(entUid);
+        entTransform ??= Transform(entUid);
         if (entTransform.Anchored)
             return false;
 
@@ -239,11 +243,11 @@ public sealed class ComplexElevatorSystem : EntitySystem
                                 {
                                     var replacementMixture = CreateReplacementMixture(elevatorComp.CurrentFloor == elevatorComp.IntermediateFloorId);
                                     _atmosphere.SetTileMixture(gridEntity, null, sourcePos, replacementMixture);
-                                }
-                                if (floorId == elevatorComp.IntermediateFloorId && elevatorComp.ClearGases)
-                                {
-                                    var targetMixture = CreateReplacementMixture(true);
-                                    _atmosphere.SetTileMixture(gridEntity, null, targetPos, targetMixture);
+                                    if (floorId == elevatorComp.IntermediateFloorId)
+                                    {
+                                        var targetMixture = CreateReplacementMixture(true);
+                                        _atmosphere.SetTileMixture(gridEntity, null, targetPos, targetMixture);
+                                    }
                                 }
                             }
                         }
