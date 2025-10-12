@@ -45,7 +45,7 @@ public sealed partial class ComplexElevatorComponent : Component
     public float DoorBlockCheckRange = 0.59f;
 
     [DataField]
-    public int MaxEntitiesToTeleport = 150;
+    public int MaxEntitiesToTeleport = 60;
 
     public bool IsMoving = false;
 }

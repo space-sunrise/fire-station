@@ -1,11 +1,15 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Numerics;
 using Content.Shared.Timing;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
+using Content.Shared._Scp.ComplexElevator;
+using Content.Server.Ghost;
 using Robust.Shared.Physics.Components;
+using Content.Shared.Ghost;
 using Robust.Shared.Physics;
 using Robust.Server.Audio;
 using Robust.Shared.Map;
@@ -27,11 +31,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly PointLightSystem _pointLight = default!;
-
-    private static readonly Color ElevatorButtonGreen = Color.FromHex("#00FF00");
-    private static readonly Color ElevatorButtonYellow = Color.FromHex("#FFFF00");
-    private static readonly Color ElevatorButtonRed = Color.FromHex("#FF0000");
+    [Dependency] private readonly AppearanceSystem _appearance = default!;
 
     public override void Initialize()
     {
@@ -56,14 +56,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void StartMovement(Entity<ComplexElevatorComponent> ent, string targetFloor)
     {
-        if (!CanMoveWithEntities(ent))
-        {
-            _audio.PlayPvs(ent.Comp.AlarmSound, ent);
-            ent.Comp.IsMoving = false;
-            UpdateButtonLights(ent);
-            return;
-        }
-
         MoveToFloorImmediate(ent, ent.Comp.IntermediateFloorId, false);
         ent.Comp.CurrentFloor = ent.Comp.IntermediateFloorId;
 
@@ -72,6 +64,14 @@ public sealed class ComplexElevatorSystem : EntitySystem
         {
             if (!Exists(ent))
                 return;
+
+            if (!CanMoveWithEntities(ent))
+            {
+                _audio.PlayPvs(ent.Comp.AlarmSound, ent);
+                ent.Comp.IsMoving = false;
+                UpdateButtonLights(ent);
+                return;
+            }
 
             MoveToFloorImmediate(ent, targetFloor);
             ent.Comp.CurrentFloor = targetFloor;
@@ -86,7 +86,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void MoveToFloorImmediate(Entity<ComplexElevatorComponent> ent, string floorId, bool shouldKill = true)
     {
-        KillEntitiesInTargetArea(ent, floorId, shouldKill);
+        KillEntitiesInTargetArea(ent, floorId);
         TeleportToFloor(ent, floorId);
     }
 
@@ -122,7 +122,17 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private bool CanMoveWithEntities(Entity<ComplexElevatorComponent> ent)
     {
-        return GetEntitiesInElevator(ent.Owner).Count <= ent.Comp.MaxEntitiesToTeleport;
+        var elevatorTransform = Transform(ent.Owner);
+        var aabb = _lookup.GetWorldAABB(ent.Owner, elevatorTransform);
+        var intersectingEntities = _lookup.GetEntitiesIntersecting(elevatorTransform.MapID, aabb, LookupFlags.Uncontained);
+
+        foreach (var entUid in intersectingEntities)
+        {
+            if (entUid == ent.Owner || HasComp<ElevatorDoorComponent>(entUid))
+                continue;
+        }
+
+        return GetEntitiesInElevator(ent.Owner).Count(e => !HasComp<GhostComponent>(e)) < ent.Comp.MaxEntitiesToTeleport;
     }
 
     private void TeleportToFloor(EntityUid uid, string floorId)
@@ -220,12 +230,6 @@ public sealed class ComplexElevatorSystem : EntitySystem
             return;
 
         if (!CanCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor))
-        {
-            _audio.PlayPvs(ent.Comp.AlarmSound, ent);
-            return;
-        }
-
-        if (!CanMoveWithEntities(ent))
         {
             _audio.PlayPvs(ent.Comp.AlarmSound, ent);
             return;
@@ -373,7 +377,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         }
     }
 
-    private void KillEntitiesInTargetArea(Entity<ComplexElevatorComponent> elevator, string floorId, bool shouldKill = true)
+    private void KillEntitiesInTargetArea(Entity<ComplexElevatorComponent> elevator, string floorId)
     {
         var query = EntityQueryEnumerator<ElevatorPointComponent>();
         while (query.MoveNext(out var pointUid, out var pointComp))
@@ -390,16 +394,9 @@ public sealed class ComplexElevatorSystem : EntitySystem
             {
                 if (IsEntityValidForTeleport(entUid, elevator.Owner))
                 {
-                    if (shouldKill)
-                    {
-                        var damage = new DamageSpecifier();
-                        damage.DamageDict["Blunt"] = 1000;
-                        _damageable.TryChangeDamage(entUid, damage, true);
-                    }
-                    else
-                    {
-                        Del(entUid);
-                    }
+                    var damage = new DamageSpecifier();
+                    damage.DamageDict["Blunt"] = 1000;
+                    _damageable.TryChangeDamage(entUid, damage, true);
                 }
             }
             break;
@@ -408,24 +405,24 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void UpdateButtonLights(Entity<ComplexElevatorComponent> elevator)
     {
-        var query = EntityQueryEnumerator<ElevatorButtonComponent, PointLightComponent>();
-        while (query.MoveNext(out var buttonUid, out var buttonComp, out var light))
+        var query = EntityQueryEnumerator<ElevatorButtonComponent>();
+        while (query.MoveNext(out var buttonUid, out var buttonComp))
         {
             if (buttonComp.ElevatorId != elevator.Comp.ElevatorId)
                 continue;
 
-            Color color = ElevatorButtonRed;
+            ElevatorButtonState state = ElevatorButtonState.ElevatorElsewhere;
             if (buttonComp.ButtonType == ElevatorButtonType.CallButton)
             {
                 if (elevator.Comp.IsMoving)
-                    color = ElevatorButtonYellow;
+                    state = ElevatorButtonState.ElevatorMoving;
                 else if (buttonComp.Floor == elevator.Comp.CurrentFloor)
-                    color = ElevatorButtonGreen;
+                    state = ElevatorButtonState.ElevatorHere;
                 else
-                    color = ElevatorButtonRed;
+                    state = ElevatorButtonState.ElevatorElsewhere;
             }
 
-            _pointLight.SetColor(buttonUid, color, light);
+            _appearance.SetData(buttonUid, ElevatorButtonVisuals.ButtonState, state);
         }
     }
 }
