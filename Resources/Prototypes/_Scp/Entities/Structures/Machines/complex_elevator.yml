@@ -177,7 +177,7 @@
     sprite: _Scp/Structures/Wallmounts/elevator_buttons.rsi
     layers:
     - state: base
-    - state: elevator_moving
+    - state: elevator_here
       map: ["enum.ElevatorButtonLayers.Base"]
   - type: ElevatorButton
     elevatorId: "SCP_Elevator_1"

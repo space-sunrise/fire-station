@@ -41,6 +41,29 @@ public sealed class ComplexElevatorSystem : EntitySystem
         SubscribeLocalEvent<ElevatorButtonComponent, ActivateInWorldEvent>(OnButtonActivate);
     }
 
+    private void SpawnCheckedTimer(Entity<ComplexElevatorComponent> ent, TimeSpan delay, Action action)
+    {
+        Timer.Spawn(delay, () =>
+        {
+            if (!Exists(ent) || !ent.Comp.IsMoving)
+                return;
+            action();
+        });
+    }
+
+    private void FailMovement(Entity<ComplexElevatorComponent> ent)
+    {
+        _audio.PlayPvs(ent.Comp.AlarmSound, ent);
+        ent.Comp.IsMoving = false;
+        UpdateButtonLights(ent);
+    }
+
+    private void StopMovement(Entity<ComplexElevatorComponent> ent)
+    {
+        ent.Comp.IsMoving = false;
+        UpdateButtonLights(ent);
+    }
+
     private TimeSpan GetButtonUseDelay(Entity<ComplexElevatorComponent> elevator, ElevatorButtonComponent button)
     {
         return elevator.Comp.SendDelay + elevator.Comp.IntermediateDelay + TimeSpan.FromSeconds(1);
@@ -60,6 +83,11 @@ public sealed class ComplexElevatorSystem : EntitySystem
         ent.Comp.CurrentFloor = ent.Comp.IntermediateFloorId;
 
         _audio.PlayPvs(ent.Comp.TravelSound, ent);
+        PerformIntermediateMovementCheck(ent, targetFloor);
+    }
+
+    private void PerformIntermediateMovementCheck(Entity<ComplexElevatorComponent> ent, string targetFloor)
+    {
         Timer.Spawn(ent.Comp.IntermediateDelay, () =>
         {
             if (!Exists(ent))
@@ -67,9 +95,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
             if (!CanMoveWithEntities(ent))
             {
-                _audio.PlayPvs(ent.Comp.AlarmSound, ent);
-                ent.Comp.IsMoving = false;
-                UpdateButtonLights(ent);
+                FailMovement(ent);
                 return;
             }
 
@@ -79,8 +105,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
             _audio.PlayPvs(ent.Comp.ArrivalSound, ent);
 
-            ent.Comp.IsMoving = false;
-            UpdateButtonLights(ent);
+            StopMovement(ent);
         });
     }
 
@@ -238,24 +263,13 @@ public sealed class ComplexElevatorSystem : EntitySystem
         ent.Comp.IsMoving = true;
         UpdateButtonLights(ent);
 
-        Timer.Spawn(ent.Comp.SendDelay, () =>
+        SpawnCheckedTimer(ent, ent.Comp.SendDelay, () => StartMovement(ent, targetFloor));
+
+        SpawnCheckedTimer(ent, ent.Comp.DoorCloseDelay, () =>
         {
-            if (!Exists(ent) || !ent.Comp.IsMoving)
-                return;
-
-            StartMovement(ent, targetFloor);
-        });
-
-        Timer.Spawn(ent.Comp.DoorCloseDelay, () =>
-        {
-            if (!Exists(ent) || !ent.Comp.IsMoving)
-                return;
-
             if (!CanCloseDoorsForFloor(ent.Comp.ElevatorId, ent.Comp.CurrentFloor))
             {
-                _audio.PlayPvs(ent.Comp.AlarmSound, ent);
-                ent.Comp.IsMoving = false;
-                UpdateButtonLights(ent);
+                FailMovement(ent);
             }
             else
             {
