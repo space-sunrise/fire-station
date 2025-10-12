@@ -1,0 +1,14 @@
+- type: entity
+  parent: MarkerBase
+  id: BuildBlocker
+  name: Build blocker
+  components:
+  - type: ConstructionBlocker
+  - type: Sprite
+    layers:
+      - sprite: _Scp/Objects/Markers/environment.rsi
+        state: base-blue
+        shader: unshaded
+      - sprite: _Scp/Objects/Markers/environment.rsi
+        shader: unshaded
+        state: wall

@@ -1,3 +1,4 @@
+using Content.Shared._Scp.Construction;
 using System.Linq;
 using Content.Shared.Construction.Components;
 using Robust.Shared.Map;
@@ -9,10 +10,11 @@ namespace Content.Shared.Construction
     public abstract class SharedConstructionSystem : EntitySystem
     {
         [Dependency] private readonly IMapManager _mapManager = default!;
-        [Dependency] private readonly SharedMapSystem _map = default!;
+        // fire added
+        [Dependency] protected readonly SharedMapSystem _map = default!;
+        // fire end
         [Dependency] protected readonly IPrototypeManager PrototypeManager = default!;
         [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
-
         /// <summary>
         ///     Get predicate for construction obstruction checks.
         /// </summary>
@@ -23,8 +25,10 @@ namespace Content.Shared.Construction
 
             if (!_mapManager.TryFindGridAt(coords, out var gridUid, out var grid))
                 return null;
-
-            var ignored = _map.GetAnchoredEntities((gridUid, grid), coords).ToHashSet();
+            // fire edited
+            var anchored = _map.GetAnchoredEntities((gridUid, grid), coords);
+            var ignored = anchored.Where(e => !HasComp<ConstructionBlockerComponent>(e)).ToHashSet();
+            // fire end
             return e => ignored.Contains(e);
         }
 

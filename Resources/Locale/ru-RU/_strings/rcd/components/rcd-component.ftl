@@ -23,6 +23,7 @@ rcd-component-cannot-build-on-empty-tile-message = Это не может быт
 rcd-component-must-build-on-subfloor-message = Это может быть построено только на покрытии!
 rcd-component-cannot-build-on-subfloor-message = Это не может быть построено на покрытии!
 rcd-component-cannot-build-on-occupied-tile-message = Здесь нельзя строить, место уже занято!
+rcd-component-cannot-build-message = Что-то не делает здесь строить!
 rcd-component-cannot-build-identical-tile = Эта клетка уже тут имеется!
 
 ### Category names
