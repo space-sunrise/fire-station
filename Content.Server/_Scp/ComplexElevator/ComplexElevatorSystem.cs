@@ -7,18 +7,22 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared._Scp.ComplexElevator;
-using Content.Server.Ghost;
 using Robust.Shared.Physics.Components;
 using Content.Shared.Ghost;
 using Robust.Shared.Physics;
 using Robust.Server.Audio;
 using Robust.Shared.Map;
+using Robust.Shared.Audio;
 using Robust.Shared.Map.Components;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Maths;
 using Robust.Shared.Timing;
 using Content.Server.Doors.Systems;
+using Content.Server.Atmos.EntitySystems;
+using Content.Server.Atmos.Components;
+using Content.Shared.Atmos;
+using Content.Shared.Atmos.Components;
 
 namespace Content.Server._Scp.ComplexElevator;
 
@@ -32,6 +36,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
+    [Dependency] private readonly AtmosphereSystem _atmosphere = default!;
 
     public override void Initialize()
     {
@@ -62,6 +67,28 @@ public sealed class ComplexElevatorSystem : EntitySystem
     {
         ent.Comp.IsMoving = false;
         UpdateButtonLights(ent);
+    }
+
+    private GasMixture CreateReplacementMixture(bool isIntermediate)
+    {
+        var mixture = new GasMixture(Atmospherics.CellVolume);
+        if (isIntermediate)
+        {
+            int[] gasesToRemove = { 3, 4, 8, 9, 10, 11, 7, 2 };
+            foreach (var gasId in gasesToRemove)
+            {
+                mixture.Moles[gasId] = 0;
+            }
+            mixture.Moles[(int)Gas.Nitrogen] = 82;
+            mixture.Moles[(int)Gas.Oxygen] = 22;
+        }
+        else
+        {
+            mixture.Moles[(int)Gas.Oxygen] = 1;
+            mixture.Moles[(int)Gas.Nitrogen] = 1;
+        }
+        mixture.Temperature = 293;
+        return mixture;
     }
 
     private TimeSpan GetButtonUseDelay(Entity<ComplexElevatorComponent> elevator, ElevatorButtonComponent button)
@@ -181,9 +208,53 @@ public sealed class ComplexElevatorSystem : EntitySystem
                 entitiesWithPositions.Add((entUid, relativePos));
             }
 
+            if (TryComp<ComplexElevatorComponent>(uid, out var elevatorComp) && (elevatorComp.TransferGases || elevatorComp.ClearGases))
+            {
+                var oldElevatorTransform = Transform(uid);
+                var oldPos = oldElevatorTransform.LocalPosition;
+                var offset = pointTransform.LocalPosition - oldPos;
+
+                var gridUid = oldElevatorTransform.GridUid;
+                if (gridUid != null && TryComp<GridAtmosphereComponent>(gridUid.Value, out var gridAtmos) && TryComp<GasTileOverlayComponent>(gridUid.Value, out var gasOverlay))
+                {
+                    var gridEntity = new Entity<GridAtmosphereComponent?, GasTileOverlayComponent?>(gridUid.Value, gridAtmos, gasOverlay);
+                    var aabb = _lookup.GetWorldAABB(uid, oldElevatorTransform);
+                    var minX = (int)Math.Floor(aabb.Left);
+                    var maxX = (int)Math.Ceiling(aabb.Right);
+                    var minY = (int)Math.Floor(aabb.Bottom);
+                    var maxY = (int)Math.Ceiling(aabb.Top);
+
+                    for (var x = minX; x < maxX; x++)
+                    {
+                        for (var y = minY; y < maxY; y++)
+                        {
+                            var sourcePos = new Vector2i(x, y);
+                            var targetPos = new Vector2i((int)(x + offset.X), (int)(y + offset.Y));
+                            var mixture = _atmosphere.GetTileMixture(gridEntity, null, sourcePos);
+                            if (mixture != null)
+                            {
+                                if (elevatorComp.TransferGases)
+                                    _atmosphere.SetTileMixture(gridEntity, null, targetPos, mixture.Clone());
+                                if (elevatorComp.ClearGases)
+                                {
+                                    var replacementMixture = CreateReplacementMixture(elevatorComp.CurrentFloor == elevatorComp.IntermediateFloorId);
+                                    _atmosphere.SetTileMixture(gridEntity, null, sourcePos, replacementMixture);
+                                }
+                                if (floorId == elevatorComp.IntermediateFloorId && elevatorComp.ClearGases)
+                                {
+                                    var targetMixture = CreateReplacementMixture(true);
+                                    _atmosphere.SetTileMixture(gridEntity, null, targetPos, targetMixture);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             _transform.SetCoordinates(uid, pointTransform.Coordinates);
 
             var newElevatorTransform = Transform(uid);
+            var newPos = newElevatorTransform.LocalPosition;
 
             foreach (var (entUid, relativePos) in entitiesWithPositions)
             {
