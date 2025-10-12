@@ -184,7 +184,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
                 continue;
         }
 
-        return GetEntitiesInElevator(ent.Owner).Count(e => !HasComp<GhostComponent>(e)) < ent.Comp.MaxEntitiesToTeleport;
+        return GetEntitiesInElevator(ent.Owner).Count(e => !HasComp<GhostComponent>(e)) <= ent.Comp.MaxEntitiesToTeleport;
     }
 
     private void TeleportToFloor(EntityUid uid, string floorId)
