@@ -156,11 +156,13 @@ namespace Content.Client.Verbs
                     entities.RemoveSwap(i);
             }
 
+            // Fire added start - убираем из контекстного меню сущности, которые не видим.
             for (var i = entities.Count - 1; i >= 0; i--)
             {
-                if (!_fov.IsInFov(player, entities[i], true))
+                if (!_fov.IsInFov(player, entities[i], true, logIfMissingComponent: false))
                     entities.RemoveSwap(i);
             }
+            // Fire added end
 
             // Unless we added entities in containers, every entity should already have a visible sprite due to
             // the fact that we used the sprite tree query.
