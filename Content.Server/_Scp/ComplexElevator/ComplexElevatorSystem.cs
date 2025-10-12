@@ -136,7 +136,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
         });
     }
 
-    private void MoveToFloorImmediate(Entity<ComplexElevatorComponent> ent, string floorId, bool shouldKill = true)
+    private void MoveToFloorImmediate(Entity<ComplexElevatorComponent> ent, string floorId)
     {
         KillEntitiesInTargetArea(ent, floorId);
         TeleportToFloor(ent, floorId);
