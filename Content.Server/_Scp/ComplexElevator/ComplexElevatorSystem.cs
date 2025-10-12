@@ -106,7 +106,7 @@ public sealed class ComplexElevatorSystem : EntitySystem
 
     private void StartMovement(Entity<ComplexElevatorComponent> ent, string targetFloor)
     {
-        MoveToFloorImmediate(ent, ent.Comp.IntermediateFloorId, false);
+        MoveToFloorImmediate(ent, ent.Comp.IntermediateFloorId);
         ent.Comp.CurrentFloor = ent.Comp.IntermediateFloorId;
 
         _audio.PlayPvs(ent.Comp.TravelSound, ent);
