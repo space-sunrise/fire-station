@@ -40,12 +40,12 @@ ui-options-light-bloom-strength = Яркость свечения
 ui-options-light-bloom-strength-tooltip =
     Регулирует яркость эффекта свечения. Чем выше значение, тем ярче свечение.
     Позволяет настроить эффект под свои предпочтения.
-ui-options-compability-mode-show-warning = Предупреждение о режиме совместимости
-ui-options-compability-mode-show-warning-tooltip =
+ui-options-compatibility-mode-show-warning = Предупреждение о режиме совместимости
+ui-options-compatibility-mode-show-warning-tooltip =
     Определяет, будете ли вы получать предупреждение о включённом режиме совместимости при каждом заходе в игру.
     Внимание: Для большинства игроков рекомендуется следовать инструкциям из предупреждения и выключить режим совместимости.
-ui-options-compability-mode-use-shaders = Использовать шейдеры в режиме совместимости
-ui-options-compability-mode-use-shaders-tooltip =
+ui-options-compatibility-mode-use-shaders = Использовать шейдеры в режиме совместимости
+ui-options-compatibility-mode-use-shaders-tooltip =
     Позволяет шейдерам работать в режиме совместимости, несмотря на графические артефакты.
     Включите, если хотите попробовать играть так.
 ui-options-scp-echo-enabled = Эффект эха
