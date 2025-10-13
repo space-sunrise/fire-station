@@ -1,3 +1,4 @@
+using Content.Client._Scp.Shaders.Common;
 using Content.Client._Scp.Shaders.FieldOfView.Overlays;
 using Content.Client.Eye;
 using Content.Shared._Scp.ScpCCVars;
@@ -20,12 +21,13 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
     [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly TransformSystem _xform = default!;
+    [Dependency] private readonly CompatibilityModeActiveWarningSystem _compatibilityMode = default!;
 
     private FieldOfViewConeOverlay _coneOverlay = default!;
     private FieldOfViewSetAlphaOverlay _setAlphaOverlay = default!;
     private FieldOfViewResetAlphaOverlay _resetAlphaOverlay = default!;
 
-    private bool _overlaysPresented;
+    public bool OverlaysPresented;
 
     private const float LerpHalfLife = 0.05f;
 
@@ -174,26 +176,42 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
 
     private void AddOverlays()
     {
-        if (_overlaysPresented)
+        if (OverlaysPresented)
             return;
 
-        _overlay.AddOverlay(_coneOverlay);
+        AddConeOverlay();
         _overlay.AddOverlay(_setAlphaOverlay);
         _overlay.AddOverlay(_resetAlphaOverlay);
 
-        _overlaysPresented = true;
+        OverlaysPresented = true;
+    }
+
+    public void AddConeOverlay()
+    {
+        if (!_compatibilityMode.ShouldUseShaders)
+            return;
+
+        _overlay.AddOverlay(_coneOverlay);
     }
 
     private void RemoveOverlays()
     {
-        if (!_overlaysPresented)
+        if (!OverlaysPresented)
             return;
 
-        _overlay.RemoveOverlay(_coneOverlay);
+        RemoveConeOverlay();
         _overlay.RemoveOverlay(_setAlphaOverlay);
         _overlay.RemoveOverlay(_resetAlphaOverlay);
 
         CachedBaseAlphas.Clear();
-        _overlaysPresented = false;
+        OverlaysPresented = false;
+    }
+
+    public void RemoveConeOverlay()
+    {
+        if (!_overlay.HasOverlay(_coneOverlay.GetType()))
+            return;
+
+        _overlay.RemoveOverlay(_coneOverlay);
     }
 }

@@ -148,13 +148,14 @@ public sealed partial class FieldOfViewSystem : EntitySystem
     /// <param name="target">Сущность, которую проверяют.</param>
     /// <param name="checkCircle">Если true, будет произведена проверка нахождения в круге вокруг персонажа.</param>
     /// <param name="epsilon">Какой процент видимости должен быть, чтобы мы засчитали сущность как видимую. По умолчанию любой больше 0</param>
+    /// <param name="logIfMissingComponent">Будут ли логгироваться ошибки при отсутствии компонентов у переданных сущностей?</param>
     /// <returns>True, если цель хотя бы частично видна.</returns>
-    public bool IsInFov(Entity<FieldOfViewComponent?, TransformComponent?> viewer, Entity<TransformComponent?> target, bool checkCircle = false, float epsilon = 0.05f)
+    public bool IsInFov(Entity<FieldOfViewComponent?, TransformComponent?> viewer, Entity<TransformComponent?> target, bool checkCircle = false, float epsilon = 0.05f, bool logIfMissingComponent = true)
     {
-        if (!Resolve(viewer, ref viewer.Comp1, ref viewer.Comp2))
+        if (!Resolve(viewer, ref viewer.Comp1, ref viewer.Comp2, logIfMissingComponent))
             return true;
 
-        if (!Resolve(target, ref target.Comp))
+        if (!Resolve(target, ref target.Comp, logIfMissingComponent))
             return true;
 
         var alpha = GetVisibilityAlpha(
