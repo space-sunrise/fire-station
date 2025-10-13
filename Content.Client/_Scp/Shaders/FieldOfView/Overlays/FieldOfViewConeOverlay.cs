@@ -2,6 +2,8 @@ using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using System.Numerics;
+using Robust.Client.GameObjects;
+using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Shaders.FieldOfView.Overlays;
@@ -14,9 +16,11 @@ public sealed class FieldOfViewConeOverlay : Overlay
     [Dependency] private readonly IEntityManager _ent = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly IClyde _clyde = default!;
+    [Dependency] private readonly IEyeManager _eye = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private readonly FieldOfViewOverlayManagementSystem _fovManagement;
+    private readonly TransformSystem _transform;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     public override bool RequestScreenTexture => true;
@@ -53,6 +57,7 @@ public sealed class FieldOfViewConeOverlay : Overlay
         _blurYShader = _proto.Index(BlurryYShaderProtoId).InstanceUnique();
 
         _fovManagement = _ent.System<FieldOfViewOverlayManagementSystem>();
+        _transform = _ent.System<TransformSystem>();
     }
 
     protected override void DisposeBehavior()
@@ -95,9 +100,10 @@ public sealed class FieldOfViewConeOverlay : Overlay
         if (ScreenTexture == null || _backBuffer == null || _blurPass == null || !_fovManagement.PlayerEntity.HasValue)
             return;
 
-        var (_, eye, fov, _) = _fovManagement.PlayerEntity.Value;
+        var (uid, eye, fov, xform) = _fovManagement.PlayerEntity.Value;
 
         var handle = args.WorldHandle;
+        var viewport = args.WorldBounds;
         var viewportBounds = new Box2(Vector2.Zero, _blurPass.Size);
 
         if (_timing.CurTime >= _nextUpdate)
@@ -119,8 +125,7 @@ public sealed class FieldOfViewConeOverlay : Overlay
             _nextUpdate = _timing.CurTime + _fovManagement.UpdateInterval;
         }
 
-        var worldHandle = args.WorldHandle;
-        var viewport = args.WorldBounds;
+        var offset = GetOffset(uid, xform, eye);
 
         _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
         _shader.SetParameter("BLURRED_TEXTURE", _backBuffer.Texture);
@@ -132,9 +137,31 @@ public sealed class FieldOfViewConeOverlay : Overlay
         _shader.SetParameter("ConeFeather", fov.AngleFeather);
         _shader.SetParameter("ConeIgnoreRadius", (fov.ConeIgnoreRadius - fov.ConeIgnoreFeather) * 50f);
         _shader.SetParameter("ConeIgnoreFeather", Math.Max(fov.ConeIgnoreFeather * 200f, 8f));
+        _shader.SetParameter("Offset", offset);
 
-        worldHandle.UseShader(_shader);
-        worldHandle.DrawRect(viewport, Color.White);
-        worldHandle.UseShader(null);
+        handle.UseShader(_shader);
+        handle.DrawRect(viewport, Color.White);
+        handle.UseShader(null);
+    }
+
+    private Vector2 GetOffset(EntityUid uid, TransformComponent xform, EyeComponent eye)
+    {
+        // Так как смещение задано в координатах карты, а нам нужны экранные
+        // то мы должны сделать обратную операцию и вернуться к координатам персонажа
+        // переконвертировать их в экранные координаты и снова высчитать смещение
+
+        var playerCoords = _transform.GetMapCoordinates(uid, xform);
+        var playerCoordsWithOffset = new MapCoordinates(playerCoords.Position + eye.Offset, playerCoords.MapId);
+
+        var localCoords = _eye.MapToScreen(playerCoords);
+        var localWithOffset = _eye.MapToScreen(playerCoordsWithOffset);
+
+        var offset = localCoords.Position - localWithOffset.Position;
+
+        // внутри преображения мировых координат в локальные зачем-то есть это умножение и оно ломает Y координату
+        // Отменяем это говно повторным умножением.
+        offset *= new Vector2(1, -1);
+
+        return offset;
     }
 }
