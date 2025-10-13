@@ -48,6 +48,8 @@ public sealed class FieldOfViewConeOverlay : Overlay
     /// </summary>
     public float Opacity = 0.85f;
 
+    private static readonly Vector2 OffsetVectorFix = new (1, -1);
+
     public FieldOfViewConeOverlay()
     {
         IoCManager.InjectDependencies(this);
@@ -146,6 +148,9 @@ public sealed class FieldOfViewConeOverlay : Overlay
 
     private Vector2 GetOffset(EntityUid uid, TransformComponent xform, EyeComponent eye)
     {
+        if (eye.Offset == Vector2.Zero)
+            return Vector2.Zero;
+
         // Так как смещение задано в координатах карты, а нам нужны экранные
         // то мы должны сделать обратную операцию и вернуться к координатам персонажа
         // переконвертировать их в экранные координаты и снова высчитать смещение
@@ -160,7 +165,7 @@ public sealed class FieldOfViewConeOverlay : Overlay
 
         // внутри преображения мировых координат в локальные зачем-то есть это умножение и оно ломает Y координату
         // Отменяем это говно повторным умножением.
-        offset *= new Vector2(1, -1);
+        offset *= OffsetVectorFix;
 
         return offset;
     }
