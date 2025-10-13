@@ -148,9 +148,10 @@ public sealed partial class Scp106System : SharedScp106System
 
         if (scp106 != null)
         {
-            if (TryComp<SSDIndicatorComponent>(target, out var ssd) && !ssd.IsSSD)
-                AddCurrencyInStore(scp106.Value);
+            if (TryComp<SSDIndicatorComponent>(target, out var ssd) && ssd.IsSSD)
+                return;
 
+            AddCurrencyInStore(scp106.Value);
             CheckHumansInBackrooms();
         }
     }
