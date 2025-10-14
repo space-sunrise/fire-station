@@ -1,10 +1,8 @@
-﻿using Content.Server._Scp.Misc.EmitSoundRandomly;
-using Content.Server.Defusable.WireActions;
+﻿using Content.Server.Defusable.WireActions;
 using Content.Server.Doors.Systems;
 using Content.Server.Power;
 using Content.Server.Wires;
 using Content.Shared._Scp.Scp096;
-using Content.Shared.Bed.Sleep;
 using Content.Shared.Doors.Components;
 using Content.Shared.Wires;
 using Robust.Server.Audio;
@@ -20,19 +18,6 @@ public sealed partial class Scp096System : SharedScp096System
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly PvsOverrideSystem _pvsOverride = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-
-    public override void Initialize()
-    {
-        base.Initialize();
-
-        SubscribeLocalEvent<Scp096Component, BeforeRandomlyEmittingSoundEvent>(OnEmitSoundRandomly);
-    }
-
-    private void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
-    {
-        if (ent.Comp.InRageMode || HasComp<SleepingComponent>(ent) || HasComp<ActiveScp096HeatingUpComponent>(ent))
-            args.Cancel();
-    }
 
     // TODO: Переделать это под отдельный компонент, который будет выдаваться и убираться
     protected override void HandleDoorCollision(Entity<Scp096Component> scp, Entity<DoorComponent> door)

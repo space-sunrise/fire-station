@@ -1,23 +1,23 @@
-﻿using Robust.Server.Audio;
-using Robust.Shared.Random;
+﻿using Content.Shared._Scp.Helpers;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Timing;
 
-namespace Content.Server._Scp.Misc.EmitSoundRandomly;
+namespace Content.Shared._Scp.Other.EmitSoundRandomly;
 
 public sealed class EmitSoundRandomlySystem : EntitySystem
 {
-    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly PredictedRandomSystem _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<EmitSoundRandomlyComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<EmitSoundRandomlyComponent, ComponentStartup>(OnStartup);
     }
 
-    private void OnMapInit(Entity<EmitSoundRandomlyComponent> ent, ref MapInitEvent args)
+    private void OnStartup(Entity<EmitSoundRandomlyComponent> ent, ref ComponentStartup args)
     {
         SetNextSoundTime(ent);
     }
@@ -26,7 +26,7 @@ public sealed class EmitSoundRandomlySystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = AllEntityQuery<EmitSoundRandomlyComponent>();
+        var query = EntityQueryEnumerator<EmitSoundRandomlyComponent>();
 
         while (query.MoveNext(out var uid, out var component))
         {
@@ -37,7 +37,7 @@ public sealed class EmitSoundRandomlySystem : EntitySystem
             RaiseLocalEvent(uid, ev);
 
             if (!ev.Cancelled)
-                _audio.PlayPvs(component.Sound, uid);
+                _audio.PlayPredicted(component.Sound, uid, uid);
 
             SetNextSoundTime((uid, component));
         }
@@ -45,8 +45,10 @@ public sealed class EmitSoundRandomlySystem : EntitySystem
 
     private void SetNextSoundTime(Entity<EmitSoundRandomlyComponent> ent)
     {
-        var cooldown = ent.Comp.SoundCooldown + _random.Next(ent.Comp.CooldownVariation);
-        ent.Comp.NextSoundTime = _timing.CurTime + TimeSpan.FromSeconds(cooldown);
+        var variance = _random.NextFloatForEntity(ent, 0f, (float)ent.Comp.CooldownVariation.TotalSeconds);
+        var cooldown = ent.Comp.SoundCooldown + TimeSpan.FromSeconds(variance);
+
+        ent.Comp.NextSoundTime = _timing.CurTime + cooldown;
     }
 }
 

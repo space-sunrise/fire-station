@@ -1,5 +1,6 @@
 ﻿using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Other.EmitSoundRandomly;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Scp.Watching.FOV;
@@ -68,6 +69,8 @@ public abstract partial class SharedScp096System : EntitySystem
         SubscribeLocalEvent<Scp096Component, AfterAutoHandleStateEvent>(OnHandleState);
         SubscribeLocalEvent<Scp096Component, ComponentInit>(OnInit);
         SubscribeLocalEvent<Scp096Component, ComponentShutdown>(OnShutdown);
+
+        SubscribeLocalEvent<Scp096Component, BeforeRandomlyEmittingSoundEvent>(OnEmitSoundRandomly);
 
         InitTargets();
         InitializeHands();
@@ -231,6 +234,12 @@ public abstract partial class SharedScp096System : EntitySystem
             return;
 
         HandleDoorCollision(ent, (args.OtherEntity, doorComponent));
+    }
+
+    private void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
+    {
+        if (ent.Comp.InRageMode || HasComp<SleepingComponent>(ent) || HasComp<ActiveScp096HeatingUpComponent>(ent))
+            args.Cancel();
     }
 
     #endregion
