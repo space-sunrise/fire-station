@@ -9,6 +9,10 @@
   id: BaseMobSpecies
   abstract: true
   components:
+  # Fire added start
+  - type: FieldOfView
+  - type: HoldToFace
+  # Fire added end
   - type: SurgeryTarget
   - type: Sprite
     layers:

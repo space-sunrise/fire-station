@@ -11,18 +11,10 @@ ui-options-grain-strength = Сила шейдера зернистости
 ui-options-grain-strength-tooltip =
     Определяет интенсивность эффектов шейдера зернистости.
     Чем больше, тем больше будет "шуршания" на экране
-ui-options-field-of-view-use-alt-method = Использовать альтернативный метод просчета поля зрения
-ui-options-field-of-view-use-alt-method-tooltip =
-    Использует другой механизм просчета спрайтов для скрытия вне поля зрения.
-    Может повысить FPS или наоборот понизить, попробуйте, если все очень плохо.
 ui-options-field-of-view-blur-scale = Качество текстуры размытия
 ui-options-field-of-view-blur-scale-tooltip =
     Определяет качество текстуры размытия. Чем больше, тем более ресурсозатратная текстура
     ВНИМАНИЕ: Вызывает проблемы с производительностью на слабых видеокартах
-ui-options-field-of-view-check-cooldown = Время обновления скрытия спрайтов
-ui-options-field-of-view-check-cooldown-tooltip =
-    Определяет, через какой интервал будут проводиться проверки на скрытие спрайтов.
-    Чем меньше значения, тем чаще будут проводиться проверки и картинка будет меньше "отставать"
 ui-options-field-of-view-opacity = Прозрачность поля зрения
 ui-options-field-of-view-opacity-tooltip =
     Определяет прозрачность (темноту) пространства за спиной персонажа
@@ -48,12 +40,12 @@ ui-options-light-bloom-strength = Яркость свечения
 ui-options-light-bloom-strength-tooltip =
     Регулирует яркость эффекта свечения. Чем выше значение, тем ярче свечение.
     Позволяет настроить эффект под свои предпочтения.
-ui-options-compability-mode-show-warning = Предупреждение о режиме совместимости
-ui-options-compability-mode-show-warning-tooltip =
+ui-options-compatibility-mode-show-warning = Предупреждение о режиме совместимости
+ui-options-compatibility-mode-show-warning-tooltip =
     Определяет, будете ли вы получать предупреждение о включённом режиме совместимости при каждом заходе в игру.
     Внимание: Для большинства игроков рекомендуется следовать инструкциям из предупреждения и выключить режим совместимости.
-ui-options-compability-mode-use-shaders = Использовать шейдеры в режиме совместимости
-ui-options-compability-mode-use-shaders-tooltip =
+ui-options-compatibility-mode-use-shaders = Использовать шейдеры в режиме совместимости
+ui-options-compatibility-mode-use-shaders-tooltip =
     Позволяет шейдерам работать в режиме совместимости, несмотря на графические артефакты.
     Включите, если хотите попробовать играть так.
 ui-options-scp-echo-enabled = Эффект эха

@@ -95,8 +95,10 @@ public sealed class StatusIconSystem : SharedStatusIconSystem
         if (data.HideOnStealth && TryComp<StealthComponent>(ent, out var stealth) && stealth.Enabled)
             return false;
 
-        if (TryComp<SpriteComponent>(ent, out var sprite) && !sprite.Visible)
+        // Fire edit start - чтобы статус иконки не были видны у невидимых в FOV сущностях
+        if (TryComp<SpriteComponent>(ent, out var sprite) && (!sprite.Visible || MathHelper.CloseTo(sprite.Color.A, 0f)))
             return false;
+        // Fire edit end
 
         if (data.ShowTo != null && !_entityWhitelist.IsValid(data.ShowTo, viewer))
             return false;

@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Shared._Scp.Watching.FOV;
 using Content.Shared.ActionBlocker;
 using Content.Shared.CCVar;
 using Content.Shared.Friction;
@@ -32,6 +33,10 @@ namespace Content.Shared.Movement.Systems;
 /// </summary>
 public abstract partial class SharedMoverController : VirtualController
 {
+    // Fire added start
+    [Dependency] private   readonly FieldOfViewSystem _fov = default!;
+    // Fire added end
+
     [Dependency] private   readonly IConfigurationManager _configManager = default!;
     [Dependency] protected readonly IGameTiming Timing = default!;
     [Dependency] private   readonly ITileDefinitionManager _tileDefinitionManager = default!;
@@ -61,6 +66,10 @@ public abstract partial class SharedMoverController : VirtualController
     protected EntityQuery<TransformComponent> XformQuery;
 
     private static readonly ProtoId<TagPrototype> FootstepSoundTag = "FootstepSound";
+
+    // Fire added start
+    private static readonly EntProtoId FootstepViewconeEffect = "ScpViewconeEffectFootstep";
+    // Fire added end
 
     private bool _relativeMovement;
     private float _minDamping;
@@ -346,6 +355,11 @@ public abstract partial class SharedMoverController : VirtualController
                 {
                     _audio.PlayPredicted(sound, uid, uid, audioParams);
                 }
+
+                // Fire added start
+                var worldRot = _transform.GetWorldRotation(xform);
+                _fov.SpawnEffect(uid, FootstepViewconeEffect, xform.LocalRotation + wishDir.ToWorldAngle() - worldRot);
+                // Fire added end
             }
         }
     }

@@ -1,0 +1,77 @@
+﻿- type: entity
+  parent: BookBase
+  id: ScpBookBase
+  abstract: true
+  components:
+  - type: ScpBookVisuals
+  - type: Appearance
+  - type: Flammable
+    fireSpread: true
+    alwaysCombustible: true
+    damage:
+      types:
+        Heat: 1
+  - type: FireVisuals
+    sprite: Effects/fire.rsi
+    normalState: fire
+  - type: Damageable
+    damageModifierSet: Wood
+  - type: Destructible
+    thresholds:
+    - trigger: # Excess damage, don't spawn entities
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 15
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          Ash:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: EmitSoundOnPickup
+    sound:
+      path: /Audio/_Scp/Items/Handling/Book/pickup.ogg
+      params:
+        volume: -5
+  - type: EmitSoundOnDrop
+    sound:
+      path: /Audio/_Scp/Items/Handling/Book/drop.ogg
+      params:
+        volume: -8
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/_Scp/Items/Handling/Book/use.ogg
+      params:
+        volume: -5
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/_Scp/Items/Handling/Book/drop.ogg
+      params:
+        volume: -5
+
+- type: entity
+  parent: ScpBookBase
+  id: BookScp049Diary
+  name: diary
+  description: A hardcover leather diary.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Items/diary.rsi
+    layers:
+    - state: icon
+      map: [ "enum.ScpBookVisuals.Base" ]
+  - type: GenericVisualizer
+    visuals:
+      enum.ScpBookVisualLayers.ScpBookVisualState:
+        ScpBookVisuals.Base:
+          Closed: { state: icon }
+          Open: { state: open }
+          OpenWritten: { state: fill }
+

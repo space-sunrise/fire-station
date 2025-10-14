@@ -12,5 +12,5 @@ ent-ActionAGhostShowCargo = Интерфейс заказа товаров
     .desc = Просмотр интерфейса заказа товаров.
 ent-ActionAGhostShowCrewMonitoring = Интерфейс мониторинга экипажа
     .desc = Просмотр интерфейса мониторинга экипажа.
-ent-ActionAGhostShowStationRecords = Интерфейс станционного учёта
-    .desc = Просмотр интерфейса станционного учёта.
+ent-ActionAGhostShowStationRecords = Интерфейс реестра персонала
+    .desc = Просмотр интерфейса реестра персонала.

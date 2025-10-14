@@ -1,5 +1,4 @@
 - type: entity
-  parent: BaseMachine
   id: ComplexElevator
   name: Elevator
   suffix: "Elevator of the complex"
@@ -14,8 +13,6 @@
   - type: Icon
     sprite: _Scp/Structures/elevator.rsi
     state: steel
-  - type: Transform
-    anchored: true
   - type: Clickable
   - type: Physics
     bodyType: Static
@@ -146,7 +143,8 @@
 
 - type: entity
   parent: SignalButton
-  id: ElevatorButton
+  id: ElevatorButtonAbstract
+  abstract: true
   name: Elevator button
   description: Button for controlling the elevator.
   suffix: "Call button"
@@ -163,10 +161,25 @@
   - type: ElevatorButton
     elevatorId: "SCP_Elevator_1"
     buttonType: CallButton
+
+- type: entity
+  parent: ElevatorButtonAbstract
+  id: ElevatorButton
+  name: Elevator button
+  description: Button for controlling the elevator.
+  suffix: "Call button"
+  components:
+  - type: PointLight
+    color: "#FF0000"
+    radius: 1.4
+    energy: 10
+  - type: ElevatorButton
+    elevatorId: "SCP_Elevator_1"
+    buttonType: CallButton
     floor: "Complex"
 
 - type: entity
-  parent: ElevatorButton
+  parent: ElevatorButtonAbstract
   id: ElevatorButtonUp
   name: Elevator up button
   components:
@@ -174,7 +187,7 @@
     buttonType: SendElevatorUp
 
 - type: entity
-  parent: ElevatorButton
+  parent: ElevatorButtonAbstract
   id: ElevatorButtonDown
   name: Elevator down button
   components:

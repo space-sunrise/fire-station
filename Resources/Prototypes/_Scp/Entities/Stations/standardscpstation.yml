@@ -3,17 +3,17 @@
   abstract: true
   parent:
   - BaseStation
-  - BaseStationNews  # Новости
+  - BaseStationNews # Новости
   - BaseStationJobsSpawning
   - BaseStationRecords
-  - BaseStationEvacuation  # базовый эвак.. а нужен ли он?
+  - BaseStationEvacuation # базовый эвак.. а нужен ли он?
   - BaseFacilityAlertLevels
   - BaseFacilitySiliconLawScpDefault
-  - BaseStationNanotrasen  # Дает фракцию
+  - BaseStationNanotrasen # Дает фракцию
   - ScpComplexGoal # Цели комплекса по изучению SCP
-  - BaseStationAntagsTargets  # Для предателей
-  # - BaseStationCryoTeleport  # Телепорт в крио. Я в нем уверен на 99%. А я не уверен
-  - BaseStationRegionalAdministration  # Добавляет неиспользуемое(игровое) ЦК. Настоящее ЦК через BaseComplexTransitHub
+  - BaseStationAntagsTargets # Для предателей
+  # - BaseStationCryoTeleport # Телепорт в крио. Я в нем уверен на 99%. А я не уверен
+  - BaseStationRegionalAdministration # Добавляет неиспользуемое(игровое) ЦК. Настоящее ЦК через BaseComplexTransitHub
   - BaseComplexTransitHub
   - BaseStationCargo
   - BaseStationAllEventsEligible
@@ -23,6 +23,12 @@
     reagentSaveModifiers:
       Scp173Reagent: 0.1
       Blood: 0.1
+  - type: RandomPlanet
+    data:
+    - biome: ScpComplexSnow
+      weather:
+      - SnowfallMedium
+      - SnowfallLight
 
 - type: entity
   id: ScpComplexCompact

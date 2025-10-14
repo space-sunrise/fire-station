@@ -8,6 +8,9 @@
     - PlushieGhost
     rareChance: 0.03
     prototypes:
+    # Fire added start
+    - PlushieScp999
+    # Fire added end
     - PlushieBee
     - PlushieAtmosian
     - PlushieLizard

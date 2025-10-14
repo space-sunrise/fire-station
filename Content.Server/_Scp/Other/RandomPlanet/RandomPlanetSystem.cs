@@ -1,4 +1,5 @@
-﻿using Content.Server.Parallax;
+﻿using Content.Server._Scp.Other.AutoRoof;
+using Content.Server.Parallax;
 using Content.Server.Station.Events;
 using Content.Server.Weather;
 using Content.Shared.Light.Components;
@@ -16,6 +17,7 @@ public sealed class RandomPlanetSystem : EntitySystem
 {
     [Dependency] private readonly BiomeSystem _biome = default!;
     [Dependency] private readonly WeatherSystem _weather = default!;
+    [Dependency] private readonly AutoRoofSystem _autoRoof = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
 
@@ -35,7 +37,10 @@ public sealed class RandomPlanetSystem : EntitySystem
         int? seed = data.Seed != null ? _random.Pick(data.Seed) : null;
 
         _biome.EnsurePlanet(mapUid, biome, seed);
-        BuildRoof(args.Station);
+
+        if (ent.Comp.BuildRoof)
+            BuildRoof(args.Station);
+
         TrySetWeather(mapId, data);
     }
 
@@ -73,7 +78,10 @@ public sealed class RandomPlanetSystem : EntitySystem
     {
         foreach (var grid in ent.Comp.Grids)
         {
-            EnsureComp<RoofComponent>(grid);
+            if (HasComp<RoofComponent>(grid))
+                continue;
+
+            _autoRoof.BuildRoof(grid);
         }
     }
 }

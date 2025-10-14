@@ -10,18 +10,10 @@ ui-options-grain-strength = Grain shader strength
 ui-options-grain-strength-tooltip =
     Determines the intensity of the grain shader effects.
     The higher the value, the more "noise" there will be on the screen
-ui-options-field-of-view-use-alt-method = Use alternative field of view calculation method
-ui-options-field-of-view-use-alt-method-tooltip =
-    Uses a different sprite calculation mechanism to hide objects outside the field of view.
-    May increase or decrease FPS, try it if things are very bad.
 ui-options-field-of-view-blur-scale = Blur texture quality
 ui-options-field-of-view-blur-scale-tooltip =
     Determines the quality of the blur texture. The larger, the more resource-intensive the texture
     WARNING: Causes performance issues on weak video cards
-ui-options-field-of-view-check-cooldown = Sprite hiding update time
-ui-options-field-of-view-check-cooldown-tooltip =
-    Determines the interval at which sprite hiding checks will be performed.
-    The smaller the value, the more often checks will be performed and the less the image will "lag"
 ui-options-field-of-view-opacity = Field of view opacity
 ui-options-field-of-view-opacity-tooltip =
     Determines the transparency (darkness) of the space behind the character

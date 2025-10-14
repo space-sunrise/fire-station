@@ -8,6 +8,7 @@
   # Fire edit start
   - type: GrainOverlay
   - type: VignetteOverlay
+  - type: FieldOfViewOccludable
   # Fire edit end
   - type: Sprite
     noRot: true

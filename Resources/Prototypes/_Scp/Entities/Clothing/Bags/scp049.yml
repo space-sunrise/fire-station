@@ -28,9 +28,12 @@
       - Pen
   - type: StorageFill
     contents:
+    - id: BookScp049Diary
+    - id: LuxuryPen
     - id: Hemostat
     - id: Saw
     - id: Drill
     - id: Cautery
     - id: Retractor
     - id: Scalpel
+    - id: Scp049Contract

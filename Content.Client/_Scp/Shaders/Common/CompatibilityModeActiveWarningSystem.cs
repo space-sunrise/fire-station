@@ -10,13 +10,18 @@ namespace Content.Client._Scp.Shaders.Common;
 public sealed class CompatibilityModeActiveWarningSystem : EntitySystem
 {
     [Dependency] private readonly GrainOverlaySystem _grain = default!;
-    [Dependency] private readonly FieldOfViewOverlaySystem _fov = default!;
+    [Dependency] private readonly FieldOfViewOverlayManagementSystem _fovManagement = default!;
     [Dependency] private readonly IConfigurationManager _configuration = default!;
 
     private CompatibilityModeActiveWarningWindow? _window;
 
     public bool IsCompatibilityModeEnabled { get; private set; }
     public bool CompabilityUseShaders { get; private set; }
+
+    /// <summary>
+    /// Должен ли клиент использовать шейдеры?
+    /// </summary>
+    public bool ShouldUseShaders => !IsCompatibilityModeEnabled || CompabilityUseShaders;
 
     public override void Initialize()
     {
@@ -70,7 +75,9 @@ public sealed class CompatibilityModeActiveWarningSystem : EntitySystem
         _grain.Enabled = value;
         _grain.ToggleOverlay(value);
 
-        _fov.Enabled = value;
-        _fov.ToggleOverlay(value);
+        if (_fovManagement.OverlaysPresented && value)
+            _fovManagement.AddConeOverlay();
+        else if (!value)
+            _fovManagement.RemoveConeOverlay();
     }
 }
