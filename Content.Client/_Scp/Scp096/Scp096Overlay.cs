@@ -1,5 +1,7 @@
 ﻿using System.Numerics;
+using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Scp096;
+using Content.Shared.Mobs.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
@@ -8,8 +10,14 @@ namespace Content.Client._Scp.Scp096;
 
 public sealed class Scp096Overlay : Overlay
 {
+    [Dependency] private readonly IEntityManager _ent = default!;
+
     private readonly TransformSystem _transform;
+    private readonly SpriteSystem _sprite;
     private readonly Entity<Scp096Component> _entity;
+
+    private readonly EntityQuery<Scp096TargetComponent> _targetQuery;
+    private readonly HashSet<(Entity<SpriteComponent> ent, float alpha)> _cachedAlphas = new(128);
 
     public Scp096Overlay(Entity<Scp096Component> entity, TransformSystem transform)
     {
@@ -17,21 +25,51 @@ public sealed class Scp096Overlay : Overlay
 
         _entity = entity;
         _transform = transform;
+        _sprite = _ent.System<SpriteSystem>();
+
+        _targetQuery = _ent.GetEntityQuery<Scp096TargetComponent>();
     }
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
-    protected override bool BeforeDraw(in OverlayDrawArgs args)
+    protected override void Draw(in OverlayDrawArgs args)
     {
-        base.BeforeDraw(in args);
+        // Рисуем указатель к ближайшей цели
+        DrawLineToTarget(in args);
 
-        if (_entity.Comp.Targets.Count == 0)
-            return false;
-
-        return true;
+        // Показываем ранее скрытые сущности
+        ShowAllHiddenEntities();
+        // Скрываем все сущности, которые не являются целями
+        HideNonTargetEntities();
     }
 
-    protected override void Draw(in OverlayDrawArgs args)
+    private void HideNonTargetEntities()
+    {
+        if (_entity.Comp.Targets.Count == 0 || !_entity.Comp.InRageMode)
+            return;
+
+        var query = _ent.EntityQueryEnumerator<BlinkableComponent, MobStateComponent, SpriteComponent>();
+
+        while (query.MoveNext(out var uid, out _ , out _, out var sprite))
+        {
+            if (_ent.IsClientSide(uid))
+                continue;
+
+            if (MathHelper.CloseTo(sprite.Color.A, 0f))
+                continue;
+
+            // Не скрываем целей скромника
+            if (_targetQuery.TryComp(uid, out var target) && target.TargetedBy.Contains(_entity))
+                continue;
+
+            var entity = (uid, sprite);
+
+            _cachedAlphas.Add((entity, sprite.Color.A));
+            _sprite.SetColor(entity, sprite.Color.WithAlpha(0f));
+        }
+    }
+
+    private void DrawLineToTarget(in OverlayDrawArgs args)
     {
         var playerPos = _transform.GetWorldPosition(_entity);
         var nearestTargetPos = FindClosestEntity(playerPos);
@@ -62,6 +100,19 @@ public sealed class Scp096Overlay : Overlay
         }
 
         return closestEntityPos;
+    }
+
+    public void ShowAllHiddenEntities()
+    {
+        if (_cachedAlphas.Count == 0)
+            return;
+
+        foreach (var (ent, alpha) in _cachedAlphas)
+        {
+            _sprite.SetColor(ent.AsNullable(), ent.Comp.Color.WithAlpha(alpha));
+        }
+
+        _cachedAlphas.Clear();
     }
 }
 
