@@ -4,9 +4,7 @@ using Content.Shared._Scp.Mobs.Components;
 using Content.Shared.Actions;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
-using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
-using Content.Shared.Inventory.Events;
 using Content.Shared.Popups;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Whitelist;
@@ -22,7 +20,7 @@ namespace Content.Shared._Scp.ScpMask;
 /// Позволяет контролировать будет ли надета маска, дает способность разорвать маску.
 /// Имеет два метода для работы извне для получения Entity c маской и ее разрыва
 /// </summary>
-public sealed class ScpMaskSystem : EntitySystem
+public sealed partial class ScpMaskSystem : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -37,61 +35,15 @@ public sealed class ScpMaskSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ScpMaskComponent, BeingEquippedAttemptEvent>(OnEquip);
-
         SubscribeLocalEvent<ScpComponent, AttemptStopPullingEvent>(OnStopPullingAttempt);
         SubscribeLocalEvent<ScpComponent, ScpTearMaskEvent>(OnTear);
         SubscribeLocalEvent<ScpComponent, ScpTearMaskDoAfterEvent>(OnTearSuccess);
 
         SubscribeLocalEvent<ScpComponent, DamageChangedEvent>(OnDamage);
-    }
 
-    private void OnEquip(Entity<ScpMaskComponent> ent, ref BeingEquippedAttemptEvent args)
-    {
-        var target = args.EquipTarget;
+        InitializeEquipment();
 
-        // Маска должна надеваться только на те сущности, что находятся в вайтлисте
-        if (_whitelist.IsWhitelistFailOrNull(ent.Comp.TargetWhitelist, target))
-        {
-            if (_net.IsClient) // Да пососи уже, почему так
-            {
-                var message = Loc.GetString("scp-mask-cannot-equip", ("name", Identity.Name(args.EquipTarget, EntityManager)));
-                _popup.PopupCursor(message, args.Equipee);
-            }
-
-            args.Cancel();
-            return;
-        }
-
-        // Уже есть маска?
-        if (HasScpMask(target))
-        {
-            args.Cancel();
-            return;
-        }
-
-        // Возможно отменить надевание маски в определенных ситуациях
-        // Пример: Маска 096 не должна надеваться, пока тот в агре
-
-        var maskEvent = new ScpMaskEquipAttempt();
-        var targetEvent = new ScpMaskTargetEquipAttempt();
-
-        RaiseLocalEvent(ent, maskEvent);
-        RaiseLocalEvent(target, targetEvent);
-
-        if (maskEvent.Cancelled || targetEvent.Cancelled)
-        {
-            args.Cancel();
-            return;
-        }
-
-        // Проигрывание звука надевания
-        if (ent.Comp.EquipSound != null)
-            _audio.PlayPvs(ent.Comp.EquipSound, target);
-
-        // Задаем сейвтайм, в течение которого игрок не может снять маску
-        ent.Comp.SafeTimeEnd = _timing.CurTime + TimeSpan.FromSeconds(ent.Comp.SafeTime);
-        Dirty(ent);
+        Log.Level = LogLevel.Info;
     }
 
     private void OnStopPullingAttempt(Entity<ScpComponent> ent, ref AttemptStopPullingEvent args)
@@ -244,12 +196,6 @@ public sealed class ScpMaskSystem : EntitySystem
 #region Events
 
 public sealed partial class ScpTearMaskEvent : InstantActionEvent;
-
-[Serializable, NetSerializable]
-public sealed partial class ScpMaskEquipAttempt : CancellableEntityEventArgs;
-
-[Serializable, NetSerializable]
-public sealed partial class ScpMaskTargetEquipAttempt : CancellableEntityEventArgs;
 
 [Serializable, NetSerializable]
 public sealed partial class ScpTearMaskDoAfterEvent : SimpleDoAfterEvent;
