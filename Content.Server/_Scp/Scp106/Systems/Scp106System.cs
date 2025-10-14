@@ -18,6 +18,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.SSDIndicator;
 using Robust.Server.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
@@ -134,6 +135,10 @@ public sealed partial class Scp106System : SharedScp106System
         if (!HasComp<HumanoidAppearanceComponent>(target))
             return;
 
+        // Не телепортировать трупы
+        if (_mobState.IsDead(target))
+            return;
+
         await TeleportToBackroomsInternal(target);
 
         _stun.TryAddParalyzeDuration(target, _defaultOnBackroomsStunTime);
@@ -143,6 +148,9 @@ public sealed partial class Scp106System : SharedScp106System
 
         if (scp106 != null)
         {
+            if (TryComp<SSDIndicatorComponent>(target, out var ssd) && ssd.IsSSD)
+                return;
+
             AddCurrencyInStore(scp106.Value);
             CheckHumansInBackrooms();
         }
@@ -232,6 +240,9 @@ public sealed partial class Scp106System : SharedScp106System
                 continue;
 
             if (mobStateComponent.CurrentState != MobState.Alive)
+                continue;
+
+            if (TryComp<SSDIndicatorComponent>(humanUid, out var ssd) && !ssd.IsSSD)
                 continue;
 
             humansInBackrooms += 1;
