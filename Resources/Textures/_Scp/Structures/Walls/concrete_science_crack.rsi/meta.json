@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by discord: odlieerr",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "full"
+        },
+        {
+            "name": "concrete_science0",
+            "directions": 4
+        },
+        {
+            "name": "concrete_science1",
+            "directions": 4
+        },
+        {
+            "name": "concrete_science2",
+            "directions": 4
+        },
+        {
+            "name": "concrete_science3",
+            "directions": 4
+        },
+        {
+            "name": "concrete_science4",
+            "directions": 4
+        },
+        {
+            "name": "concrete_science5",
+            "directions": 4
+        },
+        {
+            "name": "concrete_science6",
+            "directions": 4
+        },
+        {
+            "name": "concrete_science7",
+            "directions": 4
+        }
+    ]
+}
