@@ -1,4 +1,6 @@
-﻿using Content.Shared._Scp.Scp096;
+﻿using Content.Shared._Scp.Other.EmitSoundRandomly;
+using Content.Shared._Scp.Scp096;
+using Content.Shared.Audio;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Standing;
@@ -16,6 +18,7 @@ public sealed class Scp096System : SharedScp096System
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IClyde _clyde = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
     [Dependency] private readonly MobStateSystem _mob = default!;
@@ -30,6 +33,15 @@ public sealed class Scp096System : SharedScp096System
         SubscribeLocalEvent<Scp096Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
         SubscribeNetworkEvent<Scp096RequireUpdateVisualsEvent>(OnUpdateStateRequest);
+
+        _clyde.OnWindowFocused += OnFocusChanged;
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _clyde.OnWindowFocused -= OnFocusChanged;
     }
 
     private void OnUpdateStateRequest(Scp096RequireUpdateVisualsEvent args)
@@ -119,5 +131,35 @@ public sealed class Scp096System : SharedScp096System
 
         _overlayMan.RemoveOverlay(_overlay);
         _overlay = null;
+    }
+
+    protected override void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
+    {
+        base.OnEmitSoundRandomly(ent, ref args);
+
+        if (_player.LocalEntity != ent)
+            return;
+
+        if (!_clyde.IsFocused)
+            args.Cancel();
+    }
+
+    private void OnFocusChanged(WindowFocusedEventArgs args)
+    {
+        if (args.Window != _clyde.MainWindow)
+            return;
+
+        if (!_player.LocalEntity.HasValue)
+            return;
+
+        var player = _player.LocalEntity.Value;
+
+        if (!TryComp<Scp096Component>(player, out var scp096) || !TryComp<AmbientSoundComponent>(player, out var ambientSound))
+            return;
+
+        var ambienceEnabled = args.Focused || scp096.InRageMode;
+
+        // работает через раз и через жопу, но другого пути нет.
+        ambientSound.Enabled = ambienceEnabled;
     }
 }

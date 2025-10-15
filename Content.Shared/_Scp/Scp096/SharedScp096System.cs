@@ -236,7 +236,7 @@ public abstract partial class SharedScp096System : EntitySystem
         HandleDoorCollision(ent, (args.OtherEntity, doorComponent));
     }
 
-    private void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
+    protected virtual void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
     {
         if (ent.Comp.InRageMode || HasComp<SleepingComponent>(ent) || HasComp<ActiveScp096HeatingUpComponent>(ent))
             args.Cancel();
