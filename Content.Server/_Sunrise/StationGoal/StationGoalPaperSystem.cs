@@ -73,7 +73,7 @@ namespace Content.Server._Sunrise.StationGoal
 
             var wasSent = false;
 
-            var ntHeader = new SpriteSpecifier.Rsi(new ResPath("/Textures/_Sunrise/CopyMachine/paper_headers.rsi"), "nanotrasen_form_header_centcom");
+            var ntHeader = new SpriteSpecifier.Rsi(new ResPath("/Textures/_Scp/CopyMachine/paper_headers.rsi"), "scp_form_header");
 
             var printout = new FaxPrintout(
                 Loc.GetString(goal.Text, ("station", MetaData(ent.Value).EntityName)),
@@ -83,7 +83,7 @@ namespace Content.Server._Sunrise.StationGoal
                 "paper_stamp-centcom",
                 new List<StampDisplayInfo>
                 {
-                    new() { StampedName = Loc.GetString("stamp-component-stamped-name-centcom"), StampedColor = Color.Green },
+                    new() { StampedName = Loc.GetString("stamp-component-stamped-name-regional-administration"), StampedColor = Color.Green },
                 },
                 imageContent: ntHeader);
 
