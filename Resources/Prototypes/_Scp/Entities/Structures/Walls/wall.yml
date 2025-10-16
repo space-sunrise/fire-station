@@ -172,25 +172,16 @@
           - !type:DoActsBehavior
             acts: [ "Destruction" ]
 
-# Бетонная стена
+# База бетона
 - type: entity
   parent: WallBrick
-  id: ScpWallConcrete
+  id: ScpWallConcreteBase
   name: concrete wall
+  abstract: true
   components:
-  - type: Sprite
-    sprite: _Scp/Structures/Walls/concrete.rsi
-  - type: Icon
-    sprite: _Scp/Structures/Walls/concrete.rsi
-  - type: IconSmooth
-    key: walls
-    base: concrete
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
-  - type: Construction
-    graph: concreteWall
-    node: concreteWallEnd
   - type: Destructible
     thresholds:
       - trigger:
@@ -220,6 +211,24 @@
             path: /Audio/Effects/break_stone.ogg
             params:
               volume: -6
+
+# Бетонная стена
+- type: entity
+  parent: ScpWallConcreteBase
+  id: ScpWallConcrete
+  name: concrete wall
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/concrete.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/concrete.rsi
+  - type: IconSmooth
+    key: walls
+    base: concrete
+  - type: Construction
+    graph: concreteWall
+    node: concreteWallEnd
+  - type: WallConcreteReplacementMarker
 
 - type: entity
   parent: ScpWallSolidDiagonal
@@ -274,7 +283,7 @@
 
 # Стена Лёгкой Зоны Содержания
 - type: entity
-  parent: ScpWallConcrete
+  parent: ScpWallConcreteBase
   id: ScpWallConcreteLightContaiment
   name: concrete wall low contaiment
   components:
@@ -288,10 +297,11 @@
   - type: Construction
     graph: concreteWallLightContaiment
     node: concreteWallLightContaimentEnd
+  - type: WallConcreteLightContaimentReplacementMarker
 
 # Стена Административной Зоны / Научной
 - type: entity
-  parent: ScpWallConcrete
+  parent: ScpWallConcreteBase
   id: ScpWallConcreteScience
   name: concrete wall science sector
   components:
@@ -305,10 +315,11 @@
   - type: Construction
     graph: concreteWallScience
     node: concreteWallScienceEnd
+  - type: WallConcreteScienceReplacementMarker
 
 # Стена Инженерии
 - type: entity
-  parent: ScpWallConcrete
+  parent: ScpWallConcreteBase
   id: ScpWallConcreteEngineer
   name: concrete wall engineer sector
   components:
@@ -322,10 +333,11 @@
   - type: Construction
     graph: concreteWallEngineer
     node: concreteWallEngineerEnd
+  - type: WallConcreteEngineerReplacementMarker
 
 # Стена Мед отдела
 - type: entity
-  parent: ScpWallConcrete
+  parent: ScpWallConcreteBase
   id: ScpWallConcreteMedical
   name: concrete wall medical sector
   components:
@@ -339,10 +351,11 @@
   - type: Construction
     graph: concreteWallMedical
     node: concreteWallMedicalEnd
+  - type: WallConcreteMedicalReplacementMarker
 
 # Треснутая Бетонная стена
 - type: entity
-  parent: ScpWallConcrete
+  parent: ScpWallConcreteBase
   id: ScpWallConcreteCrack
   name: crack concrete wall
   components:
