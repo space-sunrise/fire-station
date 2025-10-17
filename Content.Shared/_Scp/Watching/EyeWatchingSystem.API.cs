@@ -4,6 +4,7 @@ using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Watching.FOV;
 using Content.Shared.Eye.Blinding.Systems;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Storage.Components;
 
@@ -18,6 +19,9 @@ public sealed partial class EyeWatchingSystem
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
+
+    private EntityQuery<MobStateComponent> _mobStateQuery;
+    private EntityQuery<InsideEntityStorageComponent> _insideStorageQuery;
 
     /// <summary>
     /// Проверяет, смотрит ли кто-то на указанную цель
@@ -169,7 +173,10 @@ public sealed partial class EyeWatchingSystem
         if (viewer.Owner == target)
             return false;
 
-        if (HasComp<InsideEntityStorageComponent>(target))
+        if (_insideStorageQuery.HasComp(viewer))
+            return false;
+
+        if (_mobStateQuery.TryComp(viewer, out var mobState) && _mobState.IsIncapacitated(viewer, mobState))
             return false;
 
         return true;
