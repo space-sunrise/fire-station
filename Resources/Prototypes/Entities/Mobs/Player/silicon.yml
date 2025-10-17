@@ -123,6 +123,10 @@
   abstract: true
   description: Handles AI interactions across holocards + AI cores
   components:
+  # Fire added start
+  - type: TTS
+    voice: SCP079
+  # Fire added end
   - type: ItemSlots
   - type: Tag
     tags:
@@ -278,6 +282,8 @@
     laws: ScpDefault # Fire edit
   # Fire added start
   - type: RetroMonitorView
+  - type: TTS
+    voice: SCP079
   # Fire added end
   - type: SiliconLawBound
   - type: ActionGrant
