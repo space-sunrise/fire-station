@@ -83,7 +83,7 @@ namespace Content.Server._Sunrise.StationGoal
                 "paper_stamp-centcom",
                 new List<StampDisplayInfo>
                 {
-                    new() { StampedName = Loc.GetString("stamp-component-stamped-name-regional-administration"), StampedColor = Color.Green },
+                    new() { StampedName = Loc.GetString("stamp-component-stamped-name-regional-administration"), StampedColor = Color.Green }, //  Fire edit
                 },
                 imageContent: ntHeader);
 
