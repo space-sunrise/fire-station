@@ -73,7 +73,9 @@ namespace Content.Server._Sunrise.StationGoal
 
             var wasSent = false;
 
+            // Fire edit start
             var ntHeader = new SpriteSpecifier.Rsi(new ResPath("/Textures/_Scp/CopyMachine/paper_headers.rsi"), "scp_form_header");
+            // Fire edit end 
 
             var printout = new FaxPrintout(
                 Loc.GetString(goal.Text, ("station", MetaData(ent.Value).EntityName)),
