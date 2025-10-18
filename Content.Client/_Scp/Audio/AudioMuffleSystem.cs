@@ -2,9 +2,10 @@
 using Content.Shared._Scp.Audio.Components;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.ScpCCVars;
+using Content.Shared.Silicons.StationAi;
+using Robust.Client.Audio;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
@@ -13,7 +14,7 @@ namespace Content.Client._Scp.Audio;
 
 public sealed class AudioMuffleSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
@@ -30,6 +31,8 @@ public sealed class AudioMuffleSystem : EntitySystem
     // При true будет использовать FrameUpdate. При false стандартный завязанный на тиках Update
     private bool _useHighFrequencyUpdate;
 
+    private EntityQuery<StationAiHeldComponent> _aiQuery;
+
     #region CCvar events
 
     public override void Initialize()
@@ -40,6 +43,8 @@ public sealed class AudioMuffleSystem : EntitySystem
 
         _cfg.OnValueChanged(ScpCCVars.AudioMufflingEnabled, OnToggled);
         _cfg.OnValueChanged(ScpCCVars.AudioMufflingHighFrequencyUpdate, b => _useHighFrequencyUpdate = b);
+
+        _aiQuery = GetEntityQuery<StationAiHeldComponent>();
     }
 
     public override void Shutdown()
@@ -91,8 +96,12 @@ public sealed class AudioMuffleSystem : EntitySystem
         if (!Exists(_player.LocalEntity))
             return;
 
+        // Для ИИ не нужно подавлять звуки, иначе он ничего не слышит. Да и не логично.
+        if (_aiQuery.HasComp(_player.LocalEntity))
+            return;
+
         var player = _player.LocalEntity.Value;
-        var query = AllEntityQuery<AudioComponent>();
+        var query = EntityQueryEnumerator<AudioComponent>();
 
         while (query.MoveNext(out var sound, out var audioComp))
         {

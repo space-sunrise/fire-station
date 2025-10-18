@@ -204,6 +204,14 @@ namespace Content.Server._Sunrise.VentCraw
             if (!TryComp<VentCrawlerComponent>(entity, out var ventCrawlerComponent))
                 return false;
 
+            // Fire added start - возможность не залезать в вентиляции
+            var ev = new VentCrawlAttemptEvent();
+            RaiseLocalEvent(entity, ev);
+
+            if (ev.Cancelled)
+                return false;
+            // Fire added end
+
             var holder = Spawn(VentCrawEntryComponent.HolderPrototypeId, _transform.GetMapCoordinates(uid));
             var holderComponent = Comp<VentCrawHolderComponent>(holder);
 
@@ -216,4 +224,6 @@ namespace Content.Server._Sunrise.VentCraw
             return EnterTube(holder, uid, holderComponent);
         }
     }
+
+    public sealed class VentCrawlAttemptEvent : CancellableEntityEventArgs;
 }

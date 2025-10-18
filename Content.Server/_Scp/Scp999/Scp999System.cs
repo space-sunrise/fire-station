@@ -1,4 +1,5 @@
-﻿using Content.Server.Disposal.Unit;
+﻿using Content.Server._Sunrise.VentCraw;
+using Content.Server.Disposal.Unit;
 using Content.Server.Popups;
 using Content.Shared._Scp.Scp999;
 using Content.Shared._Sunrise.VentCraw;
@@ -46,6 +47,8 @@ public sealed class Scp999System : SharedScp999System
 
         SubscribeLocalEvent<Scp999Component, Scp999ChangeStateAttemptEvent>(OnChangeStateAttempt);
         SubscribeLocalEvent<Scp999Component, Scp999ChangedStateEvent>(OnChangedState);
+
+        SubscribeLocalEvent<Scp999Component, VentCrawlAttemptEvent>(OnEnterVent);
 
         SubscribeLocalEvent<Scp999Component, EntityFedEvent>(OnFeed);
     }
@@ -249,6 +252,14 @@ public sealed class Scp999System : SharedScp999System
 
         if (TryComp<PullerComponent>(ent, out var puller) && puller.Pulling.HasValue && TryComp<PullableComponent>(puller.Pulling, out var pullable2))
             _pulling.TryStopPull(puller.Pulling.Value, pullable2, ent);
+    }
+
+    private void OnEnterVent(Entity<Scp999Component> ent, ref VentCrawlAttemptEvent args)
+    {
+        if (ent.Comp.CurrentState == Scp999States.Default)
+            return;
+
+        args.Cancel();
     }
 
     private void OnFeed(Entity<Scp999Component> scp, ref EntityFedEvent args)
