@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "input"
+    },
+    {
+      "name": "output"
+    },
+    {
+      "name": "door"
+    },
+    {
+      "name": "left"
+    },
+    {
+      "name": "left-door"
+    },
+    {
+      "name": "right-door"
+    },
+    {
+      "name": "right"
+    }
+  ]
+}

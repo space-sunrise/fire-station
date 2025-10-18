@@ -325,6 +325,19 @@
     - state: idjanitor
   - type: PresetIdCard
     job: Janitor
+  - type: Scp914Upgradable
+    upgradeOptions:
+      Rough:
+      - item: null
+      Coarse:
+      - item: null
+      Fine:
+      - item: ResearchIDCard
+      VeryFine:
+      - item: ResearchIDCard
+        chance: 0.5
+      - item: RDIDCard
+        chance: 0.5
 
 - type: entity
   parent: IDCardStandard

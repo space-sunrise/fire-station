@@ -1,0 +1,34 @@
+﻿- type: entity
+  parent: BaseGameRule
+  id: ScpSlGameRule
+  components:
+  - type: GameRule
+    minPlayers: 2
+  - type: LoadMapRule
+    mapPath: /Maps/_Fire/sl_scp_test.yml
+  - type: ScpSlGameRule
+    humanoidPresets:
+      ClassD:
+      - ClassDHumanoidSettings
+      Scientist:
+      - ScientistHumanoidSettings
+      Security:
+      - SecurityHumanoidSettings
+      Mog:
+      - MogHumanoidSettings
+      Chaos:
+      - ChaosHumanoidSettings
+    mogCaptainPrototype: MogCaptainSettings
+    waveSpawnCooldown: 300
+
+- type: gamePreset
+  id: ScpSl
+  alias:
+  - ScpSl
+  - scpsl
+  name: scpsl-title
+  description: scpsl-description
+  showInVote: false
+  hide: false
+  rules:
+  - ScpSlGameRule
