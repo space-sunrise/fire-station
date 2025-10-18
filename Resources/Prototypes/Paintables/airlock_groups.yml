@@ -4,20 +4,22 @@
   cost: 3
   defaultStyle: basic
   styles:
-    atmospherics: AirlockAtmospherics
-    basic: Airlock
-    cargo: AirlockCargo
-    chemistry: AirlockChemistry
-    command: AirlockCommand
-    engineering: AirlockEngineering
-    freezer: AirlockFreezer
-    hydroponics: AirlockHydroponics
-    maintenance: AirlockMaint
-    medical: AirlockMedical
-    salvage: AirlockSalvage
-    science: AirlockScience
-    security: AirlockSecurity
-    virology: AirlockVirology
+  # Fire Edit Start
+    atmospherics: ScpAirlockLifeSupport
+    basic: ScpAirlock
+    cargo: ScpAirlockLogistics
+    chemistry: ScpAirlockLaboratory
+    command: ScpAirlockAdministration
+    engineering: ScpAirlockEngineering
+    freezer: ScpAirlockFreezer
+    hydroponics: ScpAirlockHydroponics
+    maintenance: ScpAirlockMaint
+    medical: ScpAirlockMedical
+    # salvage: AirlockSalvage
+    science: ScpAirlockScience
+    security: ScpAirlockSecurity
+    virology: ScpAirlockVirology
+  # Fire Edit End
 
 - type: paintableGroup
   id: AirlockGlass
@@ -25,16 +27,18 @@
   cost: 3
   defaultStyle: basic
   styles:
-    atmospherics: AirlockAtmosphericsGlass
-    basic: AirlockGlass
-    cargo: AirlockCargoGlass
-    chemistry: AirlockChemistryGlass
-    command: AirlockCommandGlass
-    engineering: AirlockEngineeringGlass
-    hydroponics: AirlockHydroponicsGlass
-    maintenance: AirlockMaintGlass
-    medical: AirlockMedicalGlass
-    salvage: AirlockSalvageGlass
-    science: AirlockScienceGlass
-    security: AirlockSecurityGlass
-    virology: AirlockVirologyGlass
+  # Fire Edit Start
+    atmospherics: ScpAirlockLifeSupportGlass
+    basic: ScpAirlockGlass
+    cargo: ScpAirlockLogisticsGlass
+    chemistry: ScpAirlockLaboratoryGlass
+    command: ScpAirlockAdministrationGlass
+    engineering: ScpAirlockEngineeringGlass
+    hydroponics: ScpAirlockHydroponicsGlass
+    maintenance: ScpAirlockMaintGlass
+    medical: ScpAirlockMedicalGlass
+    # salvage: AirlockSalvageGlass
+    science: ScpAirlockScienceGlass
+    security: ScpAirlockSecurityGlass
+    virology: ScpAirlockVirologyGlass
+  # Fire Edit End
