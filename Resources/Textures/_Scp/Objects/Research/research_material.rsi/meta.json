@@ -23,7 +23,23 @@
       "name": "scp096-photo-undeveloped"
     },
     {
-      "name": "scp999-jelly"
+        "name": "scp999-jelly",
+        "delays": [
+        [
+            4,
+            0.5,
+            0.5,
+            0.5,
+            4,
+            0.5,
+            0.5,
+            0.5,
+            4,
+            0.5,
+            0.5,
+            0.5
+        ]
+        ]
     }
   ]
 }
