@@ -47,13 +47,11 @@
 - type: startingGear
   id: HeavyContainmentZoneCommandantGear
   equipment:
-    head: ClothingHeadHatCapLeatherSquadLeader
     ears: ClothingHeadsetAltHeavyContainmentSecurityService
     eyes: ClothingEyesGlassesSecurity
     neck: ClothingNeckMantleSecurity
     jumpsuit: ClothingUniformJumpsuitSquadLeader
     outerClothing: ClothingOuterArmorSecurity
-    gloves: ClothingHandsGlovesColorBlackAlt
     shoes: ClothingShoesBootsSecurityGuard
     id: KeyCardHeavyContainmentZoneCommandant
     pocket2: ScpSecurityPDA
