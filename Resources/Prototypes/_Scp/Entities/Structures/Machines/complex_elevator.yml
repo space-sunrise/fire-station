@@ -125,7 +125,7 @@
       - Complex
 
 - type: entity
-  parent: Elevator_white
+  parent: Elevator_catwalk
   id: Elevator_catwalk_backup
   name: Elevator
   suffix: Backup elevator, Catwalk
@@ -149,13 +149,14 @@
   description: Button for controlling the elevator.
   suffix: "Call button"
   components:
+  - type: Godmode
+  - type: Sprite
+    drawdepth: SmallObjects
+    sprite: _Scp/Structures/Wallmounts/elevator_buttons.rsi
+    state: off
   - type: InteractionOutline
   - type: UseDelay
     delay: 7
-  - type: Sprite
-    drawdepth: SmallObjects
-    sprite: Structures/Wallmounts/switch.rsi
-    state: on
   - type: WallMount
     arc: 180
   - type: ElevatorButton
@@ -169,10 +170,15 @@
   description: Button for controlling the elevator.
   suffix: "Call button"
   components:
-  - type: PointLight
-    color: "#FF0000"
-    radius: 1.4
-    energy: 10
+  - type: Appearance
+  - type: ElevatorButtonVisuals
+  - type: Sprite
+    drawdepth: SmallObjects
+    sprite: _Scp/Structures/Wallmounts/elevator_buttons.rsi
+    layers:
+    - state: base
+    - state: elevator_here
+      map: ["enum.ElevatorButtonLayers.Base"]
   - type: ElevatorButton
     elevatorId: "SCP_Elevator_1"
     buttonType: CallButton
@@ -200,6 +206,7 @@
   name: Elevator door
   description: Door that opens when the elevator arrives at the floor.
   components:
+  - type: Godmode
   - type: ElevatorDoor
     elevatorId: ""
     floor: ""
