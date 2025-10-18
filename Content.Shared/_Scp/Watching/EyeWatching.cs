@@ -16,7 +16,7 @@ public sealed partial class EyeWatchingSystem : EntitySystem
 
     private static readonly TimeSpan WatchingCheckInterval = TimeSpan.FromSeconds(0.3f);
 
-    public const float SeeRange = 14f;
+    public const float SeeRange = 16f;
 
     public override void Initialize()
     {
