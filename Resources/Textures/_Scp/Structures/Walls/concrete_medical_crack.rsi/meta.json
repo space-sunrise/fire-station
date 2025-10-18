@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by discord: odlieerr | Redacted by discord: miduzka",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "full"
+        },
+        {
+            "name": "medical0",
+            "directions": 4
+        },
+        {
+            "name": "medical1",
+            "directions": 4
+        },
+        {
+            "name": "medical2",
+            "directions": 4
+        },
+        {
+            "name": "medical3",
+            "directions": 4
+        },
+        {
+            "name": "medical4",
+            "directions": 4
+        },
+        {
+            "name": "medical5",
+            "directions": 4
+        },
+        {
+            "name": "medical6",
+            "directions": 4
+        },
+        {
+            "name": "medical7",
+            "directions": 4
+        }
+    ]
+}

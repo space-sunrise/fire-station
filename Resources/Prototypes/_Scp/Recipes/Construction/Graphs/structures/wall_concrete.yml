@@ -17,6 +17,16 @@
             - material: Concrete
               amount: 3
               doAfter: 9
+              
+    - node: concreteWallCrack
+      entity: ScpWallConcreteCrack
+      edges:
+        - to: concreteWallEnd
+          steps:
+            - material: Concrete
+              amount: 1
+              doAfter: 4
+
     - node: concreteWallEnd
       entity: ScpWallConcrete
 
@@ -58,6 +68,16 @@
             - material: Concrete
               amount: 3
               doAfter: 9
+              
+    - node: concreteWallLightContaimentCrack
+      entity: ScpWallConcreteLightContaimentCrack
+      edges:
+        - to: concreteWallLightContaimentEnd
+          steps:
+            - material: Concrete
+              amount: 1
+              doAfter: 4
+
     - node: concreteWallLightContaimentEnd
       entity: ScpWallConcreteLightContaiment
 
@@ -81,6 +101,16 @@
             - material: Concrete
               amount: 3
               doAfter: 9
+              
+    - node: concreteWallScienceCrack
+      entity: ScpWallConcreteScienceCrack
+      edges:
+        - to: concreteWallScienceEnd
+          steps:
+            - material: Concrete
+              amount: 1
+              doAfter: 4
+
     - node: concreteWallScienceEnd
       entity: ScpWallConcreteScience
 
@@ -104,6 +134,16 @@
             - material: Concrete
               amount: 3
               doAfter: 9
+              
+    - node: concreteWallEngineerCrack
+      entity: ScpWallConcreteEngineerCrack
+      edges:
+        - to: concreteWallEngineerEnd
+          steps:
+            - material: Concrete
+              amount: 1
+              doAfter: 4
+
     - node: concreteWallEngineerEnd
       entity: ScpWallConcreteEngineer
 
@@ -127,5 +167,15 @@
             - material: Concrete
               amount: 3
               doAfter: 9
+              
+    - node: concreteWallMedicalCrack
+      entity: ScpWallConcreteMedicalCrack
+      edges:
+        - to: concreteWallMedicalEnd
+          steps:
+            - material: Concrete
+              amount: 1
+              doAfter: 4
+
     - node: concreteWallMedicalEnd
       entity: ScpWallConcreteMedical

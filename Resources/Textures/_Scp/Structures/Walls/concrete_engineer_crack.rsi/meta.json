@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by discord: odlieerr | Redacted by discord: miduzka",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "full"
+        },
+        {
+            "name": "engineer0",
+            "directions": 4
+        },
+        {
+            "name": "engineer1",
+            "directions": 4
+        },
+        {
+            "name": "engineer2",
+            "directions": 4
+        },
+        {
+            "name": "engineer3",
+            "directions": 4
+        },
+        {
+            "name": "engineer4",
+            "directions": 4
+        },
+        {
+            "name": "engineer5",
+            "directions": 4
+        },
+        {
+            "name": "engineer6",
+            "directions": 4
+        },
+        {
+            "name": "engineer7",
+            "directions": 4
+        }
+    ]
+}
