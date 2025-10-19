@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingUniformBase, BaseRestrictedContraband]
+  parent: [ ClothingUniformBase, BaseRestrictedContraband ]
   id: ClothingUniformSecurity
   name: security jumpsuit
   description: A jumpsuit made of strong material, providing robust protection.
@@ -11,11 +11,8 @@
     sprite: _Scp/Clothing/Uniforms/security_1.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, BaseRestrictedContraband]
+  parent: ClothingUniformSecurity
   id: ClothingUniformSecurity2
-  name: security jumpsuit
-  description: A jumpsuit made of strong material, providing robust protection.
-  suffix: SCP Guard
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Uniforms/security_2.rsi
@@ -23,27 +20,42 @@
     sprite: _Scp/Clothing/Uniforms/security_2.rsi
 
 - type: entity
-  parent: [ClothingUniformBase, BaseRestrictedContraband]
+  parent: ClothingUniformSecurity
   id: ClothingUniformSecurity3
-  name: security jumpsuit
-  description: A jumpsuit made of strong material, providing robust protection.
-  suffix: SCP Guard
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Uniforms/security_3.rsi
   - type: Clothing
     sprite: _Scp/Clothing/Uniforms/security_3.rsi
+
+- type: entity
+  parent: ClothingUniformSecurity
+  id: ClothingUniformSecurityWhite
+  name: white security jumpsuit
+  description: A jumpsuit made of strong material, providing robust protection. The color palette of this form makes you remember something.
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/security_3.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/security_3.rsi
+
+- type: entity
+  parent: ClothingUniformSecurityWhite
+  id: ClothingUniformSecurityWhiteAlternative
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/security_white.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/security_white_alternative.rsi
 
 - type: entity
   parent: ClothingUniformJumpsuitSecGrey
   id: ClothingUniformJumpsuitSquadLeader
   name: squad leader jumpsuit
   description: A distinctive uniform tailored for security squad leaders. Reinforced fabric and command markings set it apart from standard issue.
-  suffix: SCP Guard
 
 - type: entity
   parent: ClothingUniformJumpsuitPrisonerGrey
   id: ClothingUniformJumpsuitSquadLeaderAlt
   name: squad leader jumpsuit
   description: A distinctive uniform tailored for security squad leaders. Reinforced fabric and command markings set it apart from standard issue.
-  suffix: SCP Guard
