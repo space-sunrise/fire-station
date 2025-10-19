@@ -45,16 +45,16 @@
   description: A jumpsuit made of strong material, providing robust protection. The color palette of this form makes you remember something.
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Uniforms/security_3.rsi
+    sprite: _Scp/Clothing/Uniforms/security_white.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/Uniforms/security_3.rsi
+    sprite: _Scp/Clothing/Uniforms/security_white.rsi
 
 - type: entity
   parent: ClothingUniformSecurityWhite
   id: ClothingUniformSecurityWhiteAlternative
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Uniforms/security_white.rsi
+    sprite: _Scp/Clothing/Uniforms/security_white_alternative.rsi
   - type: Clothing
     sprite: _Scp/Clothing/Uniforms/security_white_alternative.rsi
 
