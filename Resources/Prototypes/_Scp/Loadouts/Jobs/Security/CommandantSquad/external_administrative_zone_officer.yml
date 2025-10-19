@@ -61,7 +61,7 @@
 - type: loadout
   id: GuardArmorVest2
   equipment:
-    outerClothing: ClothingOuterArmorSecurity2
+    outerClothing: ClothingOuterArmorSecurityBulletproof
 
 # Shoes
 - type: loadout
