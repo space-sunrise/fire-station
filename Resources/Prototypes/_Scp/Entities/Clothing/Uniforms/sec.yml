@@ -30,6 +30,16 @@
 
 - type: entity
   parent: ClothingUniformSecurity
+  id: ClothingUniformSecurityBlack
+  name: black security jumpsuit
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Uniforms/security_black.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Uniforms/security_black.rsi
+
+- type: entity
+  parent: ClothingUniformSecurity
   id: ClothingUniformSecurityWhite
   name: white security jumpsuit
   description: A jumpsuit made of strong material, providing robust protection. The color palette of this form makes you remember something.
