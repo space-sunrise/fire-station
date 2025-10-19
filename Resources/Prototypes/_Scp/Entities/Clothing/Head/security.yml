@@ -6,21 +6,31 @@
   suffix: SCP Guard
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Head/security.rsi
+    sprite: _Scp/Clothing/Head/Helmets/security.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/Head/security.rsi
+    sprite: _Scp/Clothing/Head/Helmets/security.rsi
 
 - type: entity
-  parent: ClothingHeadHelmetBasic
+  parent: ClothingHeadHelmetSecurity
   id: ClothingHeadClosedHelmetSecurity
   name: closed black security helmet
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/security_2.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/Helmets/security_2.rsi
+
+- type: entity
+  parent: ClothingHeadHelmetRiot
+  id: ClothingHeadHelmetSecurityRiot
+  name: riot helmet
   description: Standard black security gear. Protects the head from impacts.
   suffix: SCP Guard
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Head/security_2.rsi
+    sprite: _Scp/Clothing/Head/Helmets/security_riot.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/Head/security_2.rsi
+    sprite: _Scp/Clothing/Head/Helmets/security_riot.rsi
 
 - type: entity
   parent: ClothingHeadHeadHatBaseFlippable
