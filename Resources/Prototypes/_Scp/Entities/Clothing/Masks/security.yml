@@ -1,0 +1,23 @@
+﻿- type: entity
+  parent: [ClothingMaskBase, BaseRestrictedContraband]
+  id: ClothingMaskSecurityBandBlack
+  name: black security bandana
+  description: A black sec bandana to make you look cool.
+  suffix: SCP Guard
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Mask/black_bandana.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Mask/black_bandana.rsi
+
+- type: entity
+  parent: [ClothingMaskBase, BaseRestrictedContraband]
+  id: ClothingMaskSecurityBalaklava
+  name: black balaklava
+  description: A black security balaclava that reflects no light and appears slightly different each time it’s seen.
+  suffix: SCP Guard
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Mask/security_balaklava.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Mask/security_balaklava.rsi
