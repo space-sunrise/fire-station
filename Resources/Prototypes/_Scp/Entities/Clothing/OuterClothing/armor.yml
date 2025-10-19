@@ -61,3 +61,11 @@
   - type: Clothing
     sprite: _Scp/Clothing/OuterClothing/Armor/security_2.rsi
 
+- type: entity
+  parent: ClothingOuterArmorSecurityBulletproof
+  id: ClothingOuterArmorSecurityBulletproofAlt
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/bulletproof_vest_alt.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/bulletproof_vest_alt.rsi
