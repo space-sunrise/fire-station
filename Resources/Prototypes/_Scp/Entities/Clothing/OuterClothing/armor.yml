@@ -37,3 +37,27 @@
         Piercing: 0.9
   - type: GroupExamine
 
+- type: entity
+  parent: ClothingOuterArmorBasic
+  id: ClothingOuterArmorSecurity
+  name: armor vest
+  description: A slim Type I armored vest that provides decent protection against most types of damage.
+  suffix: SCP Guard
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/security.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/security.rsi
+
+- type: entity
+  parent: ClothingOuterArmorBulletproof
+  id: ClothingOuterArmorSecurity2
+  name: bulletproof vest
+  description: A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent.
+  suffix: SCP Guard
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/security_2.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/security_2.rsi
+
