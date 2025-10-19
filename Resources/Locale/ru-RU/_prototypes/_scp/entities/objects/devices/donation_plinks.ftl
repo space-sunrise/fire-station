@@ -1,0 +1,15 @@
+ent-FireStationUplink20 = чемодан с личными вещами
+    .desc = Чемоданчик с личными вещами сотрудника. Запаролен. Интересно, что он хранит в себе?
+    .suffix = 20
+ent-FireStationUplink40 = { ent-FireStationUplink20 }
+    .desc = { ent-FireStationUplink20.desc }
+    .suffix = 40
+ent-FireStationUplink60 = { ent-FireStationUplink20 }
+    .desc = { ent-FireStationUplink20.desc }
+    .suffix = 60
+ent-FireStationUplink80 = { ent-FireStationUplink20 }
+    .desc = { ent-FireStationUplink20.desc }
+    .suffix = 80
+ent-FireStationUplink100 = { ent-FireStationUplink20 }
+    .desc = { ent-FireStationUplink20.desc }
+    .suffix = 100

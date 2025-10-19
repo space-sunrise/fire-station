@@ -1,3 +1,3 @@
-﻿ent-ClothingHandsGlovesMobileTaskForceMH = изолированные тактические перчатки
+ent-ClothingHandsGlovesMobileTaskForceMH = изолированные тактические перчатки
     .desc = Плотные перчатки с изолирующим покрытием. Предназначены для работы с опасными материалами и защиты от электрических разрядов.
     .suffix = МОГ
