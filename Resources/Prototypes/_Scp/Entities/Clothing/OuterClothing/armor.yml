@@ -50,6 +50,21 @@
     sprite: _Scp/Clothing/OuterClothing/Armor/security.rsi
 
 - type: entity
+  parent: ClothingOuterArmorSecurity
+  id: ClothingOuterArmorSecurityWinter
+  name: winter armor vest
+  description: A reinforced winter vest designed for prolonged exposure to low temperatures; the inner lining retains heat unnaturally well.
+  suffix: SCP Guard
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/security_winter.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/security_winter.rsi
+  - type: TemperatureProtection
+    heatingCoefficient: 1.15
+    coolingCoefficient: 0.7
+
+- type: entity
   parent: ClothingOuterArmorBulletproof
   id: ClothingOuterArmorSecurityBulletproof
   name: bulletproof vest
