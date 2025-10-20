@@ -5,6 +5,13 @@
   equipment:
     eyes: ClothingEyesGlassesSecurityGuard
 
+# Маска
+
+- type: loadout
+  id: LoadoutClothingMaskSecurityBandBlack
+  equipment:
+    mask: ClothingMaskSecurityBandBlack
+
 # КПК
 
 - type: loadout

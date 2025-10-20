@@ -243,11 +243,15 @@
   id: JobSeniorExternalAdministrativeZoneOfficer
   groups:
   - GuardHead
+  - CommandantSquadEars
+  - CommonSecurityEyes
   - GuardMantle
   - GuardJumpsuit
   - GuardArmorVest
   - GuardGloves
   - GuardShoes
+  - CommandantSquadSeniorLightContainmentZoneSecurityOfficerKeyCard
+  - CommonSecurityPDA
   - SecurityBelt
   - SecurityBackpack
   - CommandantSquadWeaponPrimary
@@ -263,11 +267,15 @@
   id: JobExternalAdministrativeZoneOfficer
   groups:
   - GuardHead
+  - CommandantSquadEars
+  - CommonSecurityEyes
   - GuardMantle
   - GuardJumpsuit
   - GuardArmorVest
   - GuardGloves
   - GuardShoes
+  - CommandantSquadLightContainmentZoneSecurityOfficerKeyCard
+  - CommonSecurityPDA
   - SecurityBelt
   - SecurityBackpack
   - CommandantSquadWeaponPrimary
@@ -282,11 +290,15 @@
 - type: roleLoadout
   id: JobJuniorExternalAdministrativeZoneOfficer
   groups:
-  - GuardCadetHead
+  - GuardHead
+  - CommandantSquadEars
+  - CommonSecurityEyes
   - GuardJumpsuit
   - GuardArmorVest
   - GuardGloves
   - GuardShoes
+  - CommandantSquadJuniorLightContainmentZoneSecurityOfficerKeyCard
+  - CommonSecurityPDA
   - SecurityBelt
   - SecurityBackpack
   - CommandantSquadWeaponSecondary
