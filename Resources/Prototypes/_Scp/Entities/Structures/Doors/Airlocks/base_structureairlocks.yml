@@ -177,7 +177,7 @@
     - WirePanels
     - Networking
   - type: Paintable
-    group: AirlockStandard
+    group: ScpAirlockStandard
   placement:
     mode: SnapgridCenter
 
@@ -229,4 +229,4 @@
       - GlassAirlock
       # This tag is used to nagivate the Airlock construction graph. It's needed because the construction graph is shared between Airlock, AirlockGlass, and HighSecDoor
   - type: Paintable
-    group: AirlockGlass
+    group: ScpAirlockGlass

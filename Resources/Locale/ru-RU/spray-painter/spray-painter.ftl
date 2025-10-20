@@ -91,6 +91,39 @@ spray-painter-style-airlockglass-science = Научный
 spray-painter-style-airlockglass-security = Охрана
 spray-painter-style-airlockglass-virology = Вирусология
 
+# ScpAirlocks
+spray-painter-tab-group-scpairlockstandard = Стандартные
+spray-painter-tab-group-scpairlockglass = Стеклянные
+
+spray-painter-style-scpairlockstandard-atmospherics = Атмосферный
+spray-painter-style-scpairlockstandard-basic = Обычный
+spray-painter-style-scpairlockstandard-cargo = Карго
+spray-painter-style-scpairlockstandard-chemistry = Химия
+spray-painter-style-scpairlockstandard-command = Командный
+spray-painter-style-scpairlockstandard-engineering = Инженерный
+spray-painter-style-scpairlockstandard-freezer = Морозильник
+spray-painter-style-scpairlockstandard-hydroponics = Гидропоника
+spray-painter-style-scpairlockstandard-maintenance = Технический
+spray-painter-style-scpairlockstandard-medical = Медицинский
+spray-painter-style-scpairlockstandard-salvage = Утилизация
+spray-painter-style-scpairlockstandard-science = Научный
+spray-painter-style-scpairlockstandard-security = Охрана
+spray-painter-style-scpairlockstandard-virology = Вирусология
+
+spray-painter-style-scpairlockglass-atmospherics = Атмосферный
+spray-painter-style-scpairlockglass-basic = Обычный
+spray-painter-style-scpairlockglass-cargo = Карго
+spray-painter-style-scpairlockglass-chemistry = Химия
+spray-painter-style-scpairlockglass-command = Командный
+spray-painter-style-scpairlockglass-engineering = Инженерный
+spray-painter-style-scpairlockglass-hydroponics = Гидропоника
+spray-painter-style-scpairlockglass-maintenance = Технический
+spray-painter-style-scpairlockglass-medical = Медицинский
+spray-painter-style-scpairlockglass-salvage = Утилизация
+spray-painter-style-scpairlockglass-science = Научный
+spray-painter-style-scpairlockglass-security = Охрана
+spray-painter-style-scpairlockglass-virology = Вирусология
+
 # Lockers
 spray-painter-style-locker-atmospherics = Атмосферный
 spray-painter-style-locker-basic = Обычный
