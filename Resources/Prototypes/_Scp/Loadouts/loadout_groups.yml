@@ -129,6 +129,53 @@
   - LoadoutKeyCardHeavyContainmentZoneCommandant
 
 - type: loadoutGroup
+  id: SpecialPurposeSquadHead
+  name: loadout-group-head
+  loadouts:
+  - LoadoutClothingHeadHelmetBasic
+  - GuardBeret
+  - GuardHat
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadEars
+  name: loadout-group-ears
+  loadouts:
+  - LoadoutClothingHeadsetHeavyContainmentSecurityService
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadEyes
+  name: loadout-group-eyes
+  loadouts:
+  - LoadoutClothingEyesGlassesSecurity
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadJumpsuit
+  name: loadout-group-jumpsuit
+  loadouts:
+  - LoadoutClothingUniformSecurityBlack
+  - LoadoutClothingUniformTurleneckBlack
+  - LoadoutClothingUniformTurleneckBlackSleeveless
+  - LoadoutClothingUniformSecurityBlackCamouflage
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadSeniorSeniorHeavyContainmentZoneOfficerKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardSeniorHeavyContainmentZoneOfficer
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadHeavyContainmentZoneOfficerKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardHeavyContainmentZoneOfficer
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadJuniorHeavyContainmentZoneOfficerKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardJuniorHeavyContainmentZoneOfficer
+
+- type: loadoutGroup
   id: SpecialPurposeSquadWeaponPrimary
   name: loadout-group-weapon
   loadouts:
@@ -159,6 +206,8 @@
   loadouts:
   - LoadoutClothingUniformJumpsuitSquadLeader
   - LoadoutClothingUniformJumpsuitSquadLeaderAlt
+  - LoadoutClothingUniformSecurityWhiteAlternativeSquadLeader
+  - LoadoutClothingUniformSecurityBlackDresscoat
 
 - type: loadoutGroup
   id: SquadLeaderOuterClothing

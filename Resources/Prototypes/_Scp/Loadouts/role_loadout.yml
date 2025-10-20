@@ -168,11 +168,18 @@
 - type: roleLoadout
   id: JobSeniorHeavyContainmentZoneOfficer
   groups:
-  - SeniorOfficerJumpsuit
+  - SpecialPurposeSquadHead
+  - SpecialPurposeSquadEars
+  - SpecialPurposeSquadEyes
+  - GuardMantle
+  - SpecialPurposeSquadJumpsuit
+  - GuardArmorVest
+  - GuardGloves
+  - GuardShoes
+  - SpecialPurposeSquadSeniorSeniorHeavyContainmentZoneOfficerKeyCard
+  - CommonSecurityPDA
   - SecurityBackpack
   - SecurityBelt
-  - SecurityOuterClothing
-  - GuardShoes
   - SpecialPurposeSquadWeaponPrimary
   - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
@@ -185,11 +192,17 @@
 - type: roleLoadout
   id: JobHeavyContainmentZoneOfficer
   groups:
-  - SecurityHead
-  - SecurityJumpsuit
-  - SecurityBackpack
-  - SecurityOuterClothing
+  - SpecialPurposeSquadHead
+  - SpecialPurposeSquadEars
+  - SpecialPurposeSquadEyes
+  - GuardMantle
+  - SpecialPurposeSquadJumpsuit
+  - GuardArmorVest
+  - GuardGloves
   - GuardShoes
+  - SpecialPurposeSquadHeavyContainmentZoneOfficerKeyCard
+  - CommonSecurityPDA
+  - SecurityBackpack
   - SecurityBelt
   - SpecialPurposeSquadWeaponPrimary
   - SpecialPurposeSquadWeaponSecondary
@@ -203,8 +216,17 @@
 - type: roleLoadout
   id: JobJuniorHeavyContainmentZoneOfficer
   groups:
-  - SecurityCadetJumpsuit
+  - SpecialPurposeSquadHead
+  - SpecialPurposeSquadEars
+  - SpecialPurposeSquadEyes
+  - SpecialPurposeSquadJumpsuit
+  - GuardArmorVest
+  - GuardGloves
+  - GuardShoes
+  - SpecialPurposeSquadJuniorHeavyContainmentZoneOfficerKeyCard
+  - CommonSecurityPDA
   - SecurityBackpack
+  - SecurityBelt
   - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets

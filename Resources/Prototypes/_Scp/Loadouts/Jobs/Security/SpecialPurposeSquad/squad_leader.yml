@@ -1,12 +1,19 @@
-﻿# Наушник
+﻿# Униформа
+- type: loadout
+  id: LoadoutClothingUniformSecurityBlackDresscoat
+  equipment:
+    jumpsuit: ClothingUniformSecurityBlackDresscoat
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: SpecialPurposeSquadLeaderFancyUniformTimer
 
+# Наушник
 - type: loadout
   id: LoadoutClothingHeadsetAltHeavyContainmentSecurityService
   equipment:
     ears: ClothingHeadsetAltHeavyContainmentSecurityService
 
 # Ключ карта
-
 - type: loadout
   id: LoadoutKeyCardHeavyContainmentZoneCommandant
   equipment:

@@ -39,6 +39,27 @@
     sprite: _Scp/Clothing/Uniforms/security_black.rsi
 
 - type: entity
+  parent: ClothingUniformSecurityBlack
+  id: ClothingUniformSecurityBlackCamouflage
+  name: camouflage security jumpsuit
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Clothing/Uniforms/Jumpsuit/centcom_officer_black.rsi
+  - type: Clothing
+    sprite: _Sunrise/Clothing/Uniforms/Jumpsuit/centcom_officer_black.rsi
+
+- type: entity
+  parent: ClothingUniformSecurityBlack
+  id: ClothingUniformSecurityBlackDresscoat
+  name: black formal dress coat
+  description: A formal black coat tailored for security command personnel. The fabric remains immaculate regardless of wear or damage.
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Clothing/Uniforms/Costume/gakuran.rsi
+  - type: Clothing
+    sprite: _Sunrise/Clothing/Uniforms/Costume/gakuran.rsi
+
+- type: entity
   parent: ClothingUniformSecurity
   id: ClothingUniformSecurityWhite
   name: white security jumpsuit

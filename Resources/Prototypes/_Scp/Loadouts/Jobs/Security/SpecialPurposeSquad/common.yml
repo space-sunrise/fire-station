@@ -1,4 +1,49 @@
-﻿# Рация
+﻿# Голова
+- type: loadout
+  id: LoadoutClothingHeadHelmetBasic
+  equipment:
+    head: ClothingHeadHelmetBasic
+
+# Уши
+- type: loadout
+  id: LoadoutClothingHeadsetHeavyContainmentSecurityService
+  equipment:
+    ears: ClothingHeadsetHeavyContainmentSecurityService
+
+# Глаза
+- type: loadout
+  id: LoadoutClothingEyesGlassesSecurity
+  equipment:
+    eyes: ClothingEyesGlassesSecurity
+
+# Униформа
+- type: loadout
+  id: LoadoutClothingUniformSecurityBlack
+  equipment:
+    jumpsuit: ClothingUniformSecurityBlack
+
+- type: loadout
+  id: LoadoutClothingUniformTurleneckBlack
+  equipment:
+    jumpsuit: ClothingUniformTurleneckBlack
+
+- type: loadout
+  id: LoadoutClothingUniformTurleneckBlackSleeveless
+  equipment:
+    jumpsuit: ClothingUniformTurleneckBlackSleeveless
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: CommandantSquadFancyUniformTimer
+
+- type: loadout
+  id: LoadoutClothingUniformSecurityBlackCamouflage
+  equipment:
+    jumpsuit: ClothingUniformSecurityBlackCamouflage
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: CommandantSquadFancyUniformTimer
+
+# Рация
 - type: loadout
   id: RadioHandheldHeavyContainmentSecurityService
   storage:
