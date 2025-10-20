@@ -158,6 +158,12 @@
   - LoadoutClothingUniformSecurityBlackCamouflage
 
 - type: loadoutGroup
+  id: SpecialPurposeSquadJumpsuitJunior
+  name: loadout-group-jumpsuit
+  loadouts:
+  - LoadoutClothingUniformSecurityBlack
+
+- type: loadoutGroup
   id: SpecialPurposeSquadSeniorSeniorHeavyContainmentZoneOfficerKeyCard
   name: loadout-group-key-card
   loadouts:
