@@ -1,7 +1,9 @@
 ent-ClothingHandsGlovesSecurity = чёрные перчатки охраны
     .desc = Обычные чёрные перчатки, которые не спасут вас от поджаривания.
+    .suffix = SCP Охрана
 ent-ClothingHandsGlovesWinterSecurity = зимние перчатки охраны
     .desc = Зимние чёрные перчатки, которые не спасут вас от поджаривания.
-ent-ClothingHandsGlovesColorBlackAlt = { ent-ClothingHandsGlovesColorBlack }
     .suffix = SCP Охрана
+ent-ClothingHandsGlovesColorBlackAlt = { ent-ClothingHandsGlovesColorBlack }
     .desc = { ent-ClothingHandsGlovesColorBlack.desc }
+    .suffix = SCP Охрана
