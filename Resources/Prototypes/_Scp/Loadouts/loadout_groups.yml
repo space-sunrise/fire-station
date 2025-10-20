@@ -43,6 +43,8 @@
   - GuardJumpsuit
   - GuardJumpsuit2
   - GuardJumpsuit3
+  - LoadoutClothingUniformSecurityWhite
+  - LoadoutClothingUniformSecurityWhiteAlternative
 
 - type: loadoutGroup
   id: GuardGloves
@@ -60,6 +62,15 @@
 
 - type: loadoutGroup
   id: GuardArmorVest
+  name: loadout-group-outer-clothing
+  loadouts:
+  - GuardArmorVest
+  - GuardArmorVest2
+  - LoadoutClothingOuterArmorSecurityWinter
+  - LoadoutClothingOuterArmorSecurityBulletproofAlternative
+
+- type: loadoutGroup
+  id: CommandantSquadArmorVestJunior
   name: loadout-group-outer-clothing
   loadouts:
   - GuardArmorVest
@@ -155,6 +166,8 @@
   loadouts:
   - GuardArmorVest
   - GuardArmorVest2
+  - LoadoutClothingOuterArmorSecurityBulletproofAlternative
+  - LoadoutClothingOuterArmorSecurityWinter
   - LoadoutClothingOuterCoatSquadLeader
 
 - type: loadoutGroup

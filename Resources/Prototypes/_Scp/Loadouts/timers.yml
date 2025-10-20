@@ -1,0 +1,22 @@
+﻿- type: loadoutEffectGroup
+  id: ArmorVestBulletproofAlternativeTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: HeavyContainmentSecurityService
+      time: 36000 # 10 часов
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService
+      time: 36000 # 10 часов
+
+- type: loadoutEffectGroup
+  id: CommandantSquadWhiteUniformTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService
+      time: 90000 # 25 часов

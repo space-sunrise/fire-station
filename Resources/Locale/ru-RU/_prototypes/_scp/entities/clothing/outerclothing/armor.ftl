@@ -12,6 +12,6 @@ ent-ClothingOuterArmorSecurityWinter = зимний бронежилет охр�
 ent-ClothingOuterArmorSecurityBulletproof = пуленепробиваемый жилет охраны
     .desc = Тяжёлый бронежилет типа III, способный защитить владельца от традиционного метательного оружия и взрывчатки в незначительной степени.
     .suffix = { ent-ClothingOuterArmorSecurity.suffix }
-ent-ClothingOuterArmorSecurityBulletproofAlt = { ent-ClothingOuterArmorSecurityBulletproof }
+ent-ClothingOuterArmorSecurityBulletproofAlternative = { ent-ClothingOuterArmorSecurityBulletproof }
     .desc = { ent-ClothingOuterArmorSecurityBulletproof.desc }
     .suffix = { ent-ClothingOuterArmorSecurity.suffix }

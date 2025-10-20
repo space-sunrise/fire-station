@@ -58,6 +58,22 @@
   equipment:
     jumpsuit: ClothingUniformSecurity3
 
+- type: loadout
+  id: LoadoutClothingUniformSecurityWhite
+  equipment:
+    jumpsuit: ClothingUniformSecurityWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: CommandantSquadWhiteUniformTimer
+
+- type: loadout
+  id: LoadoutClothingUniformSecurityWhiteAlternative
+  equipment:
+    jumpsuit: ClothingUniformSecurityWhiteAlternative
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: CommandantSquadWhiteUniformTimer
+
 # Верхняя одежда
 - type: loadout
   id: GuardArmorVest
@@ -68,6 +84,19 @@
   id: GuardArmorVest2
   equipment:
     outerClothing: ClothingOuterArmorSecurityBulletproof
+
+- type: loadout
+  id: LoadoutClothingOuterArmorSecurityWinter
+  equipment:
+    outerClothing: ClothingOuterArmorSecurityWinter
+
+- type: loadout
+  id: LoadoutClothingOuterArmorSecurityBulletproofAlternative
+  equipment:
+    outerClothing: ClothingOuterArmorSecurityBulletproofAlternative
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: ArmorVestBulletproofAlternativeTimer
 
 # Ботинки
 - type: loadout
