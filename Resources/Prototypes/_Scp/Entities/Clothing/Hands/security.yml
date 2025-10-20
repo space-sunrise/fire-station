@@ -21,6 +21,9 @@
     sprite: _Scp/Clothing/Hands/winter_black.rsi
   - type: Clothing
     sprite: _Scp/Clothing/Hands/winter_black.rsi
+  - type: TemperatureProtection
+    heatingCoefficient: 1.05
+    coolingCoefficient: 0.85
 
 - type: entity
   parent: [ClothingHandsGlovesColorBlack, BaseRestrictedContraband]
