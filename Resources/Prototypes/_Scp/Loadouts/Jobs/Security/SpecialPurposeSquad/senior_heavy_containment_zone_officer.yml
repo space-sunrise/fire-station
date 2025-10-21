@@ -1,0 +1,5 @@
+﻿# Ключ-карта
+- type: loadout
+  id: LoadoutKeyCardSeniorHeavyContainmentZoneOfficer
+  equipment:
+    id: KeyCardSeniorHeavyContainmentZoneOfficer

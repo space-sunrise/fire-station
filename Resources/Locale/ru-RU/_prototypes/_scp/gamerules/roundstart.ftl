@@ -1,5 +1,3 @@
-ent-Scp = { ent-BaseGameRule }
-    .desc = { ent-BaseGameRule.desc }
 ent-ScpModeNeutralized = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }
 ent-ScpModeSafe = { ent-BaseGameRule }
@@ -10,7 +8,11 @@ ent-ScpModeKeter = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }
 ent-ScpModeThaumiel = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }
+ent-ScpMetaGarbageSpawn = { ent-BaseGameRule }
+    .desc = { ent-BaseGameRule.desc }
 ent-BasicFoundationEventScheduler = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }
 ent-BasicFoundationChillEventScheduler = { ent-BaseGameRule }
+    .desc = { ent-BaseGameRule.desc }
+ent-Scp = { ent-BaseGameRule }
     .desc = { ent-BaseGameRule.desc }

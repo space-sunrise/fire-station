@@ -1,0 +1,12 @@
+ent-ElevatorPoint = Elevator point
+    .suffix = Empty
+    .desc = { ent-MarkerBase.desc }
+ent-ElevatorPointComplex = Elevator point
+    .suffix = Complex
+    .desc = { ent-ElevatorPoint.desc }
+ent-ElevatorPointIntermediate = Elevator point
+    .suffix = Intermediate
+    .desc = { ent-ElevatorPoint.desc }
+ent-ElevatorPointSurface = Elevator point
+    .suffix = Surface
+    .desc = { ent-ElevatorPoint.desc }

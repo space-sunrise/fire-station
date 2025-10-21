@@ -9,7 +9,7 @@
   icon: JobHeavyContainmentZoneCommandant
   supervisors: job-supervisors-security-commander
   canBeAntag: false
-  displayWeight: 70  # Sunrise
+  displayWeight: 70
   accessGroups:
   - SecurityCommandant
   special:

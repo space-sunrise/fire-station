@@ -77,6 +77,10 @@
         color: "#FF0000"
       Burn:
         sprite: Mobs/Effects/burn_damage.rsi
+      # Fire added start - генетический урон
+      Genetic:
+        sprite: _Scp/Mobs/Effects/genetic_damage.rsi
+      # Fire added end
   - type: GenericVisualizer
     visuals:
       enum.CreamPiedVisuals.Creamed:

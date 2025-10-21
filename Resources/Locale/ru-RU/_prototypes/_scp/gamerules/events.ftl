@@ -6,3 +6,5 @@ ent-SpawnScp096Photo = { ent-BaseStationEventShortDelay }
     .desc = { ent-BaseStationEventShortDelay.desc }
 ent-AirlockManEater = { ent-BaseStationEventZeroDelay }
     .desc = { ent-BaseStationEventZeroDelay.desc }
+ent-Scp2054X = { ent-BaseGameRule }
+    .desc = { ent-BaseGameRule.desc }

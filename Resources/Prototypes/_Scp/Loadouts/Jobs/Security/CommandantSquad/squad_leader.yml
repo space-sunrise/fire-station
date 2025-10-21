@@ -1,4 +1,12 @@
-﻿# Наушник
+﻿- type: loadout
+  id: LoadoutClothingUniformSecurityWhiteAlternativeSquadLeader
+  equipment:
+    jumpsuit: ClothingUniformSecurityWhiteAlternative
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: CommandantSquadLeaderFancyUniformTimer
+
+# Наушник
 
 - type: loadout
   id: LoadoutClothingHeadsetAltExternalAdministrativeZoneSecurityService

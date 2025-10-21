@@ -28,8 +28,7 @@ ui-options-light-bloom-cone-enable-tooltip =
     Определяет, будет ли рисоваться конус от источника света?
     При выключении источник света продолжит иметь небольшое свечение вокруг себя.
 ui-options-light-bloom-cone-opacity = Прозрачность конуса свечения
-ui-options-light-bloom-cone-opacity-tooltip =
-    Определяет прозрачность, с которой будет рисоваться конус свечения
+ui-options-light-bloom-cone-opacity-tooltip = Определяет прозрачность, с которой будет рисоваться конус свечения
 ui-options-light-bloom-optimizations = Сниженная нагрузка на видеокарту
 ui-options-light-bloom-optimizations-tooltip =
     При включении источники света, которые не видны персонажу, не будут создавать эффект.

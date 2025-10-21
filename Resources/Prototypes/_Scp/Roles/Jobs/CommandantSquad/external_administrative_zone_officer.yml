@@ -6,7 +6,6 @@
   requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
     - !type:OverallPlaytimeRequirement
       time: 36000 # 10 часов
-  startingGear: ExternalAdministrativeZoneOfficerGear
   icon: JobExternalAdministrativeZoneOfficer
   supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false

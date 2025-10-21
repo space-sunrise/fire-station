@@ -1,10 +1,5 @@
-# Head
+# Ключ-карта
 - type: loadout
-  id: GuardSecurityHelmet
+  id: LoadoutKeyCardJuniorLightContainmentZoneSecurityOfficer
   equipment:
-    head: ClothingHeadHelmetSecurity
-
-- type: loadout
-  id: GuardSecurityHelmet2
-  equipment:
-    head: ClothingHeadClosedHelmetSecurity
+    id: KeyCardJuniorLightContainmentZoneSecurityOfficer

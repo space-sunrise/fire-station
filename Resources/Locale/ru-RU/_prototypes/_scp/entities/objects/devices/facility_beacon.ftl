@@ -1,10 +1,9 @@
-﻿ent-ScpFacilityBeacon = маяк учреждения
+ent-ScpFacilityBeacon = маяк учреждения
     .desc = Небольшое устройство, передающее информацию на карты учреждения. Может быть сконфигурировано.
     .suffix = общий
 ent-ScpFacilityBeaconUnanchored = { ent-ScpFacilityBeacon }
     .suffix = общий, незакреплённый
     .desc = { ent-ScpFacilityBeacon.desc }
-
 # Родительские
 ent-ScpFacilityBeaconAdministration = { ent-ScpFacilityBeacon }
     .suffix = руководство
@@ -33,7 +32,6 @@ ent-ScpFacilityBeaconLowAccessPersonnel = { ent-ScpFacilityBeacon }
 ent-ScpFacilityBeaconScpContainment = { ent-ScpFacilityBeacon }
     .suffix = содержание SCP
     .desc = { ent-ScpFacilityBeacon.desc }
-
 # Кабинеты
 ent-ScpFacilityBeaconFacilityDirectorOffice = { ent-ScpFacilityBeaconAdministration }
     .suffix = кабинет Директора
@@ -71,7 +69,6 @@ ent-ScpFacilityBeaconAmnesticologistOffice = { ent-ScpFacilityBeaconMedicalServi
 ent-ScpFacilityBeaconParapsychologistOffice = { ent-ScpFacilityBeaconScientificService }
     .suffix = кабинет Парапсихолога
     .desc = { ent-ScpFacilityBeaconScientificService.desc }
-
 # Камеры SCP
 ent-ScpFacilityBeaconScp173Containment = { ent-ScpFacilityBeaconScpContainment }
     .suffix = содержание SCP-173
@@ -112,7 +109,6 @@ ent-ScpFacilityBeaconScpItemContainment = { ent-ScpFacilityBeaconScpContainment 
 ent-ScpFacilityBeaconScpHumanoidContainment = { ent-ScpFacilityBeaconScpContainment }
     .suffix = содержание гуманоидов
     .desc = { ent-ScpFacilityBeaconScpContainment.desc }
-
 # Отделы
 ent-ScpFacilityBeaconCommandantSquad = { ent-ScpFacilityBeaconSecurity }
     .suffix = комендантский отряд
@@ -129,7 +125,6 @@ ent-ScpFacilityBeaconClassDContainmentZone = { ent-ScpFacilityBeaconLowAccessPer
 ent-ScpFacilityBeaconLifeSupport = { ent-ScpFacilityBeaconEngineeringTechnicalService }
     .suffix = жизнеобеспечение
     .desc = { ent-ScpFacilityBeaconEngineeringTechnicalService.desc }
-
 # Специальное
 ent-ScpFacilityBeaconCheckpointEntranceToLightA = { ent-ScpFacilityBeacon }
     .suffix = КПП АЗ-ЛЗС А
