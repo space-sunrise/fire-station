@@ -3,6 +3,16 @@
   id: ScpClothingBeltSecurityWebbing
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Belt/security_webbing.rsi
+    sprite: _Scp/Clothing/Belts/security_webbing.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/Belt/security_webbing.rsi
+    sprite: _Scp/Clothing/Belts/security_webbing.rsi
+
+- type: entity
+  id: ScpClothingBeltSecurityWebbingFilled
+  parent: ScpClothingBeltSecurityWebbing
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:NestedSelector
+        tableId: BeltSecurityEntityTable

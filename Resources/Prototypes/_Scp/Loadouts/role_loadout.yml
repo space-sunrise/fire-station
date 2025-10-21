@@ -43,7 +43,7 @@
   - HeadofSecurityNeck
   - HeadofSecurityJumpsuit
   - SecurityBackpack
-  - SecurityBelt
+  - CommonSecurityBelt
   - HeadofSecurityOuterClothing
   - GuardShoes
   - SecurityCommanderWeapon
@@ -155,7 +155,7 @@
   - SpecialPurposeSquadLeaderKeyCard
   - CommonSecurityPDA
   - SecurityBackpack
-  - SecurityBelt
+  - CommonSecurityBelt
   - SpecialPurposeSquadWeaponPrimary
   - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
@@ -179,7 +179,7 @@
   - SpecialPurposeSquadSeniorSeniorHeavyContainmentZoneOfficerKeyCard
   - CommonSecurityPDA
   - SecurityBackpack
-  - SecurityBelt
+  - CommonSecurityBelt
   - SpecialPurposeSquadWeaponPrimary
   - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
@@ -203,7 +203,7 @@
   - SpecialPurposeSquadHeavyContainmentZoneOfficerKeyCard
   - CommonSecurityPDA
   - SecurityBackpack
-  - SecurityBelt
+  - CommonSecurityBelt
   - SpecialPurposeSquadWeaponPrimary
   - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
@@ -226,7 +226,7 @@
   - SpecialPurposeSquadJuniorHeavyContainmentZoneOfficerKeyCard
   - CommonSecurityPDA
   - SecurityBackpack
-  - SecurityBelt
+  - CommonSecurityBelt
   - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
@@ -250,7 +250,7 @@
   - GuardShoes
   - CommandantSquadLeaderKeyCard
   - CommonSecurityPDA
-  - SecurityBelt
+  - CommonSecurityBelt
   - SecurityBackpack
   - CommandantSquadWeaponPrimary
   - CommandantSquadWeaponSecondary
@@ -274,7 +274,7 @@
   - GuardShoes
   - CommandantSquadSeniorLightContainmentZoneSecurityOfficerKeyCard
   - CommonSecurityPDA
-  - SecurityBelt
+  - CommonSecurityBelt
   - SecurityBackpack
   - CommandantSquadWeaponPrimary
   - CommandantSquadWeaponSecondary
@@ -298,7 +298,7 @@
   - GuardShoes
   - CommandantSquadLightContainmentZoneSecurityOfficerKeyCard
   - CommonSecurityPDA
-  - SecurityBelt
+  - CommonSecurityBelt
   - SecurityBackpack
   - CommandantSquadWeaponPrimary
   - CommandantSquadWeaponSecondary
@@ -321,7 +321,7 @@
   - GuardShoes
   - CommandantSquadJuniorLightContainmentZoneSecurityOfficerKeyCard
   - CommonSecurityPDA
-  - SecurityBelt
+  - CommonSecurityBelt
   - SecurityBackpack
   - CommandantSquadWeaponSecondary
   - SecurityRadio

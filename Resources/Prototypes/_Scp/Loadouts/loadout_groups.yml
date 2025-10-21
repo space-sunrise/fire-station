@@ -241,6 +241,13 @@
   - LoadoutClothingEyesGlassesSecurityGuard
 
 - type: loadoutGroup
+  id: CommonSecurityBelt
+  name: loadout-group-belt
+  loadouts:
+  - LoadoutScpClothingBeltSecurityWebbingFilled
+  - SecurityBelt
+
+- type: loadoutGroup
   id: CommonSecurityPDA
   name: loadout-group-pda
   loadouts:
