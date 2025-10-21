@@ -23,7 +23,7 @@
     sprite: _Scp/Clothing/Mask/security_balaklava.rsi
   - type: HideLayerClothing
     layers:
-      Hair: HEAD
+      Hair: MASK
   - type: Tag
     tags:
     - TopCovered
