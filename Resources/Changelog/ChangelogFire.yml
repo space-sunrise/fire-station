@@ -6936,3 +6936,13 @@
   id: 281
   time: '2025-10-21T01:04:29.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/631
+- author: ThereDrD
+  changes:
+  - message: "\u0420\u0430\u0446\u0438\u0438 \u0431\u043E\u043B\u044C\u0448\u0435\
+      \ \u043D\u0435 \u043C\u0443\u0442\u044F\u0442 \u043F\u0435\u0440\u0441\u043E\
+      \u043D\u0430\u0436\u0430 \u0437\u0430 \u0440\u0430\u0437\u0433\u043E\u0432\u043E\
+      \u0440 \u0432 \u043D\u0438\u0445."
+    type: Fix
+  id: 282
+  time: '2025-10-21T21:54:59.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/638
