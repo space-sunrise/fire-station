@@ -66,4 +66,4 @@
 - type: loadout
   id: LoadoutWeaponPistolG22Auto
   equipment:
-    pocket1: WeaponPistolG22Auto
+    pocket1: WeaponPistolG22
