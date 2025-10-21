@@ -1,11 +1,6 @@
 ﻿- type: loadoutEffectGroup
-  id: ArmorVestBulletproofAlternativeTimer
+  id: LightweightRiotArmorTimer
   effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:DepartmentTimeRequirement
-      department: HeavyContainmentSecurityService
-      time: 36000 # 10 часов
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement

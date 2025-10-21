@@ -19,6 +19,14 @@
   equipment:
     head: ClothingHeadSecurityBeret
 
+- type: loadout
+  id: LoadoutClothingHeadHelmetSecurityRiot
+  equipment:
+    head: ClothingHeadHelmetSecurityRiot
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: LightweightRiotArmorTimer
+
 # Уши
 - type: loadout
   id: LoadoutClothingHeadsetExternalAdministrativeZoneSecurityService
@@ -91,12 +99,12 @@
     outerClothing: ClothingOuterArmorSecurityWinter
 
 - type: loadout
-  id: LoadoutClothingOuterArmorSecurityBulletproofAlternative
+  id: LoadoutClothingOuterArmorSecurityRiotLight
   equipment:
-    outerClothing: ClothingOuterArmorSecurityBulletproofAlternative
+    outerClothing: ClothingOuterArmorSecurityRiotLight
   effects:
   - !type:GroupLoadoutEffect
-    proto: ArmorVestBulletproofAlternativeTimer
+    proto: LightweightRiotArmorTimer
 
 # Ботинки
 - type: loadout
