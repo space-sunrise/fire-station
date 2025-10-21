@@ -60,6 +60,8 @@
   minLimit: 0
   loadouts:
   - GuardMantle
+  - LoadoutClothingMaskSecurityBandBlack
+  - LoadoutClothingMaskSecurityBalaklava
 
 - type: loadoutGroup
   id: GuardArmorVest

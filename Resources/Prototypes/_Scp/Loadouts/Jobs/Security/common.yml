@@ -10,6 +10,11 @@
   equipment:
     mask: ClothingMaskSecurityBandBlack
 
+- type: loadout
+  id: LoadoutClothingMaskSecurityBalaklava
+  equipment:
+    mask: ClothingMaskSecurityBalaklava
+
 # Пояс
 - type: loadout
   id: LoadoutScpClothingBeltSecurityWebbingFilled
