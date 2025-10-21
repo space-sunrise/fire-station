@@ -499,14 +499,16 @@ public sealed partial class SunriseCCVars : CVars
     /*
      * AntiSpam params
      */
-    public static readonly CVarDef<bool> AntiSpamEnable = // Fire edit
+    // Fire edit start - включаем антиспам
+    public static readonly CVarDef<bool> AntiSpamEnable =
         CVarDef.Create("anti_spam.enable", true, CVar.SERVER | CVar.ARCHIVE);
     public static readonly CVarDef<int> AntiSpamCounterShort =
-        CVarDef.Create("anti_spam.counter_short", 1, CVar.SERVER | CVar.ARCHIVE);
+        CVarDef.Create("anti_spam.counter_short", 2, CVar.SERVER | CVar.ARCHIVE);
     public static readonly CVarDef<int> AntiSpamCounterLong =
-        CVarDef.Create("anti_spam.counter_long", 2, CVar.SERVER | CVar.ARCHIVE);
-    public static readonly CVarDef<float> AntiSpamMuteDuration = // Fire edit
+        CVarDef.Create("anti_spam.counter_long", 3, CVar.SERVER | CVar.ARCHIVE);
+    public static readonly CVarDef<float> AntiSpamMuteDuration =
         CVarDef.Create("anti_spam.mute_duration", 30f, CVar.SERVER | CVar.ARCHIVE);
+    // Fire edit end
     public static readonly CVarDef<float> AntiSpamTimeShort =
         CVarDef.Create("anti_spam.time_short", 1.5f, CVar.SERVER | CVar.ARCHIVE);
     public static readonly CVarDef<float> AntiSpamTimeLong =
