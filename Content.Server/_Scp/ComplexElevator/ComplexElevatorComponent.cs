@@ -39,7 +39,19 @@ public sealed partial class ComplexElevatorComponent : Component
     public SoundSpecifier ArrivalSound = new SoundPathSpecifier("/Audio/_Scp/Machines/Elevator/Beep-elevator.ogg");
 
     [DataField]
-    public float DoorBlockCheckRange = 0.6f;
+    public SoundSpecifier AlarmSound = new SoundPathSpecifier("/Audio/_Scp/Effects/announcement.ogg");
+
+    [DataField]
+    public float DoorBlockCheckRange = 0.59f;
+
+    [DataField]
+    public int MaxEntitiesToTeleport = 60;
+
+    [DataField]
+    public bool TransferGases = false;
+
+    [DataField]
+    public bool ClearGases = true;
 
     public bool IsMoving = false;
 }

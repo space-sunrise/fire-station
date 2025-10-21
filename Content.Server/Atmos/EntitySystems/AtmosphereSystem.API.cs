@@ -226,6 +226,19 @@ public partial class AtmosphereSystem
     {
         return GetHeatCapacity(GetTileMixture(grid, map, tile) ?? GasMixture.SpaceGas);
     }
+    // fire added
+    public void SetTileMixture(Entity<GridAtmosphereComponent?, GasTileOverlayComponent?>? grid, Entity<MapAtmosphereComponent?>? map, Vector2i gridTile, GasMixture mixture)
+    {
+        if (grid is {} gridEnt
+            && Resolve(gridEnt, ref gridEnt.Comp1, false)
+            && gridEnt.Comp1.Tiles.TryGetValue(gridTile, out var tile))
+        {
+            tile.Air = mixture;
+            AddActiveTile(gridEnt.Comp1, tile);
+            InvalidateVisuals((gridEnt.Owner, gridEnt.Comp2), gridTile);
+        }
+    }
+    // fire end
 
     public TileMixtureEnumerator GetAdjacentTileMixtures(Entity<GridAtmosphereComponent?> grid, Vector2i tile, bool includeBlocked = false, bool excite = false)
     {
