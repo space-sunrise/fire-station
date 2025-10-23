@@ -1,4 +1,5 @@
-﻿using System.Numerics;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 using System.Threading;
 using Content.Shared._Scp.Blood;
 using Content.Shared._Starlight.Combat.Ranged.Pierce;
@@ -43,10 +44,10 @@ public sealed class BloodSplatterSystem : EntitySystem
 
     private void OnAttacked(Entity<BloodstreamComponent> ent, ref AttackedEvent args)
     {
-        if (!TryComp<BloodSplattererComponent>(args.User, out var splatterer))
+        if (!TryGetSource(args.User, args.Used, out var source))
             return;
 
-        TrySplat((args.User, splatterer), ent);
+        TrySplat(source.Value, ent);
     }
 
     /// <summary>
@@ -57,34 +58,35 @@ public sealed class BloodSplatterSystem : EntitySystem
     /// </remarks>
     /// <param name="ent">Сущность, которая атакует персонажа и поддерживает брызги при ударе</param>
     /// <param name="target">Цель, которую атакуют</param>
-    public bool TrySplat(Entity<BloodSplattererComponent> ent, EntityUid target)
+    public bool TrySplat(Entity<BloodSplattererComponent> ent, Entity<BloodstreamComponent> target)
     {
-        if (!TryComp<BloodstreamComponent>(target, out var bloodstream))
+        var count = _random.Next(ent.Comp.Amount.X, ent.Comp.Amount.Y);
+        if (count == 0)
             return false;
 
         // Броня не пробита
         if (TryComp<PierceableComponent>(target, out var pierceable) && pierceable.Level > ent.Comp.PierceLevel)
             return false;
 
-        if (!_solution.ResolveSolution(target, bloodstream.BloodSolutionName, ref bloodstream.BloodSolution, out var victimBloodSolution)
+        if (!_solution.ResolveSolution(target.Owner, target.Comp.BloodSolutionName, ref target.Comp.BloodSolution, out var victimBloodSolution)
             || victimBloodSolution.Volume == FixedPoint2.Zero)
             return false;
 
         var amountToTake = FixedPoint2.Min(ent.Comp.BloodToTake, victimBloodSolution.Volume);
-        var split = _solution.SplitSolution(bloodstream.BloodSolution.Value, amountToTake);
+        var split = _solution.SplitSolution(target.Comp.BloodSolution.Value, amountToTake);
+
         var victimPosition = _transform.GetWorldPosition(target);
         var victimCoords = _transform.GetMoverCoordinates(target);
         var attackerPosition = _transform.GetWorldPosition(ent);
-        var count = _random.Next(ent.Comp.Amount.X, ent.Comp.Amount.Y);
-
-        if (count == 0)
-            return false;
 
         _audio.PlayPvs(ent.Comp.Sound, target);
 
         // Вычисляем базовое направление от атакующего к жертве
         var baseDirection = (victimPosition - attackerPosition).Normalized();
         var baseAngle = MathF.Atan2(baseDirection.Y, baseDirection.X);
+
+        // Вычисляем случайный угол в пределах заданного разброса
+        var spreadRadians = MathF.PI * ent.Comp.SpreadAngle / 180f; // Конвертируем градусы в радианы
 
         for (var i = 0; i < count; i++)
         {
@@ -102,8 +104,6 @@ public sealed class BloodSplatterSystem : EntitySystem
 
             _solution.TryAddSolution(solutionEntity.Value, split.SplitSolution(split.Volume / (count - i)));
 
-            // Вычисляем случайный угол в пределах заданного разброса
-            var spreadRadians = MathF.PI * ent.Comp.SpreadAngle / 180f; // Конвертируем градусы в радианы
             var randomOffset = _random.NextFloat(-spreadRadians / 2f, spreadRadians / 2f);
             var angle = baseAngle + randomOffset;
 
@@ -136,6 +136,27 @@ public sealed class BloodSplatterSystem : EntitySystem
     {
         // TODO: Исправить спам варнингами на клиенте
         RemCompDeferred<PhysicsComponent>(uid);
+    }
+
+    private bool TryGetSource(Entity<BloodSplattererComponent?> user,
+        Entity<BloodSplattererComponent?> used,
+        [NotNullWhen(true)] out Entity<BloodSplattererComponent>? splatterer)
+    {
+        splatterer = null;
+
+        if (Resolve(user, ref user.Comp, false))
+        {
+            splatterer = (user, user.Comp);
+            return true;
+        }
+
+        if (Resolve(used, ref used.Comp, false))
+        {
+            splatterer = (used, used.Comp);
+            return true;
+        }
+
+        return false;
     }
 
     private void OnRestart(RoundRestartCleanupEvent _)

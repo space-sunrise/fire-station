@@ -48,15 +48,9 @@
     uponSeenState: Fear
   - type: ShowBlinkable
   - type: BloodSplatterer
+    amount: 5, 30
     sound:
       collection: GibCollection
-    particles:
-    - BloodSplatter1
-    - BloodSplatter2
-    - BloodSplatter3
-    - BloodSplatter4
-    - BloodSplatter5
-    - BloodSplatter6
   - type: ComplexInteraction
   - type: Hands
     showInHands: false

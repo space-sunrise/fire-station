@@ -17,14 +17,22 @@ public sealed partial class BloodSplattererComponent : Component
     /// <summary>
     /// Прототипы партиклов для спавна
     /// </summary>
-    [DataField(required: true)]
-    public HashSet<EntProtoId> Particles = [];
+    [DataField]
+    public HashSet<EntProtoId> Particles =
+    [
+        "BloodSplatter1",
+        "BloodSplatter2",
+        "BloodSplatter3",
+        "BloodSplatter4",
+        "BloodSplatter5",
+        "BloodSplatter6",
+    ];
 
     /// <summary>
     /// Количество создаваемых частиц крови (min, max).
     /// </summary>
     [DataField]
-    public Vector2i Amount = new(5, 30);
+    public Vector2i Amount = new(1, 2);
 
     /// <summary>
     /// Скорость полета частиц (min, max).
