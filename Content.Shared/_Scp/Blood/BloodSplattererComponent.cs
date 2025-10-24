@@ -50,14 +50,19 @@ public sealed partial class BloodSplattererComponent : Component
     /// Шанс, что удар линию крови.
     /// </summary>
     [DataField]
-    public float BloodLineProbability = 0.3f;
+    public float BloodLineProbability = 0.2f;
 
     /// <summary>
     /// Количество крови, которое каждая капля заберет из тела персонажа.
-    /// TODO: Рандомизировать.
     /// </summary>
     [DataField]
-    public FixedPoint2 BloodToTake = FixedPoint2.New(5);
+    public Vector2 BloodToTakePerParticle = new (0.5f, 3f);
+
+    /// <summary>
+    /// Количество крови, которое каждая линия из тела персонажа.
+    /// </summary>
+    [DataField]
+    public Vector2 BloodToTakeToPerLine = new (1f, 3f);
 
     /// <summary>
     /// Уровень пробития брони для срабатывания эффекта.

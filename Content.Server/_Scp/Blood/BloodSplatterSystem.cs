@@ -45,9 +45,6 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
         if (!TryGetSource(args.User, args.Used, out var source))
             return;
 
-        if (!_random.Prob(source.Value.Comp.Probability))
-            return;
-
         TrySplat(source.Value, ent);
     }
 
@@ -68,7 +65,6 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
         if (!_solution.ResolveSolution(target.Owner, target.Comp.BloodSolutionName, ref target.Comp.BloodSolution, out var bloodSolution)
             || bloodSolution.Volume == FixedPoint2.Zero)
             return false;
-
 
         Splat(ent, target, ref target.Comp.BloodSolution, bloodSolution);
 
@@ -100,8 +96,11 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
         // Вычисляем случайный угол в пределах заданного разброса
         var spreadRadians = MathF.PI * ent.Comp.SpreadAngle / 180f; // Конвертируем градусы в радианы
 
-        CreateBloodLine(ent, target, ref bloodSolutionEntity, bloodSolution);
-        SpawnBloodParticles(ent, victimCoords, ref bloodSolutionEntity, bloodSolution, baseAngle, spreadRadians);
+        if (_random.Prob(ent.Comp.Probability))
+            CreateBloodLine(ent, target, ref bloodSolutionEntity, bloodSolution);
+
+        if (_random.Prob(ent.Comp.BloodLineProbability))
+            SpawnBloodParticles(ent, victimCoords, ref bloodSolutionEntity, bloodSolution, baseAngle, spreadRadians);
     }
 
     /// <summary>

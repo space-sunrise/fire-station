@@ -1,5 +1,4 @@
-﻿using System.Numerics;
-using Content.Shared._Scp.Blood;
+﻿using Content.Shared._Scp.Blood;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Map;
@@ -18,7 +17,7 @@ public sealed partial class BloodSplatterSystem
         var angle = _random.NextAngle(0, 360);
         var coords = _transform.GetMapCoordinates(target).Offset(angle.ToWorldVec());
 
-        SpawnBloodLines(ent, coords, ent.Comp.BloodLineProto, angle, ref bloodSolutionEntity, bloodSolution, _random.Next(1, 4));
+        SpawnBloodLines(ent, coords, ent.Comp.BloodLineProto, angle, ref bloodSolutionEntity, bloodSolution, _random.Next(1, 3));
     }
 
     private void SpawnBloodLines(Entity<BloodSplattererComponent> ent,
@@ -39,7 +38,10 @@ public sealed partial class BloodSplatterSystem
 
         for (var i = 0; i <= count; i++)
         {
-            var amountToTake = FixedPoint2.Min(ent.Comp.BloodToTake, bloodSolution.Volume);
+            var randomizedBlood =
+                _random.NextFloat(ent.Comp.BloodToTakeToPerLine.X, ent.Comp.BloodToTakeToPerLine.Y);
+
+            var amountToTake = FixedPoint2.Min(randomizedBlood, bloodSolution.Volume);
             var solution = _solution.SplitSolution(bloodSolutionEntity.Value, amountToTake);
 
             // Если в человеке закончилась кровь - больше не спавним.

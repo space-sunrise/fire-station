@@ -68,7 +68,10 @@ public sealed partial class BloodSplatterSystem
 
         for (var i = 0; i <= count; i++)
         {
-            var amountToTake = FixedPoint2.Min(ent.Comp.BloodToTake, bloodSolution.Volume);
+            var randomizedBlood =
+                _random.NextFloat(ent.Comp.BloodToTakePerParticle.X, ent.Comp.BloodToTakePerParticle.Y);
+
+            var amountToTake = FixedPoint2.Min(randomizedBlood, bloodSolution.Volume);
             var solution = _solution.SplitSolution(bloodSolutionEntity.Value, amountToTake);
 
             // Если в человеке закончилась кровь - больше не спавним.
