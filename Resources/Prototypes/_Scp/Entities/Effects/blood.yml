@@ -27,7 +27,7 @@
   components:
   - type: Sprite
     drawdepth: Effects
-    sprite: _Scp/Effects/blood.rsi
+    sprite: _Scp/Effects/blood_particles.rsi
   - type: BloodParticle
   - type: FieldOfViewOccludable
   - type: AnimationPlayer
@@ -36,6 +36,18 @@
     fixedRotation: false
     friction: 0.1
     restitution: 0.7
+  - type: Footprint
+    spritePath: /Textures/_Scp/Effects/blood.rsi
+    containerName: blood
+  - type: Appearance
+  - type: Puddle
+    solution: blood
+    canSlow: false
+    canSlip: false
+  - type: SolutionContainerManager
+    solutions:
+      blood:
+        maxVol: 5
   - type: Fixtures
     fixtures:
       fix1:
@@ -107,7 +119,7 @@
   save: false
   components:
   - type: Sprite
-    state: blood1
+    state: particle1
 
 - type: entity
   id: BloodParticle2
@@ -116,7 +128,7 @@
   save: false
   components:
   - type: Sprite
-    state: blood2
+    state: particle2
 
 - type: entity
   id: BloodParticle3
@@ -125,4 +137,4 @@
   save: false
   components:
   - type: Sprite
-    state: blood3
+    state: particle3

@@ -118,9 +118,17 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
 
             if (!TryComp<BloodParticleComponent>(particle, out var particleComponent))
             {
-                Log.Error($"Found blood particle without {nameof(BloodParticleComponent)}, prototype: {proto}");
+                Log.Error($"Found blood PARTICLE without {nameof(BloodParticleComponent)}, prototype: {proto}");
                 continue;
             }
+
+            // Временно передает solution сюда, чтобы частичка крови окрасилась в нужный цвет
+            if (!_solution.TryGetSolution(particle, particleComponent.SolutionName, out var solutionEntity, out _))
+            {
+                Log.Error($"Found blood PARTICLE without any solution, prototype: {proto}");
+                return;
+            }
+            _solution.TryAddSolution(solutionEntity.Value, solution);
 
             CalculateMove((particle, particleComponent), ent.Comp.Distance, baseAngle, spreadRadians);
 
