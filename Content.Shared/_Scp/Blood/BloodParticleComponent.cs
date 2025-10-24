@@ -44,12 +44,6 @@ public sealed partial class BloodParticleComponent : Component
     [DataField]
     public float SoundProbability = 0.4f;
 
-    /// <summary>
-    /// Скорость полета частиц (min, max).
-    /// </summary>
-    [DataField]
-    public Vector2 Distance = new(5f, 20f);
-
     [DataField]
     public TimeSpan FlyTime = TimeSpan.FromSeconds(1f);
 

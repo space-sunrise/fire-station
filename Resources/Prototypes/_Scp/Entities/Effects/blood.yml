@@ -29,6 +29,7 @@
     drawdepth: Effects
     sprite: _Scp/Effects/blood.rsi
   - type: BloodParticle
+  - type: FieldOfViewOccludable
   - type: AnimationPlayer
   - type: Physics
     bodyType: Dynamic

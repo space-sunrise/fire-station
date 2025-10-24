@@ -29,10 +29,23 @@ public sealed partial class BloodSplattererComponent : Component
     /// Количество создаваемых частиц крови (min, max).
     /// </summary>
     [DataField]
-    public Vector2i Amount = new(1, 3);
+    public Vector2i Amount = new(1, 2);
 
     /// <summary>
-    /// Общее количество крови, забираемое у жертвы для всех частиц.
+    /// Расстояние, которое пролетит частица крови до падения.
+    /// </summary>
+    [DataField]
+    public Vector2 Distance = new(5f, 20f);
+
+    /// <summary>
+    /// Шанс, что удар вызовет разбрызгивание крови.
+    /// </summary>
+    [DataField]
+    public float Probability = 0.5f;
+
+    /// <summary>
+    /// Количество крови, которое каждая капля заберет из тела персонажа.
+    /// TODO: Рандомизировать.
     /// </summary>
     [DataField]
     public FixedPoint2 BloodToTake = FixedPoint2.New(5);
