@@ -1,17 +1,21 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using System.Threading;
 using Content.Shared._Scp.Blood;
 using Content.Shared._Starlight.Combat.Ranged.Pierce;
 using Content.Shared.Body.Components;
+using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
+using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Server._Scp.Blood;
@@ -20,8 +24,9 @@ namespace Content.Server._Scp.Blood;
 /// Система, управляющая брызгами крови.
 /// Позволяет создавать красивые партиклы крови, которые некоторое время разлетаются в разные стороны.
 /// </summary>
-public sealed class BloodSplatterSystem : EntitySystem
+public sealed class BloodSplatterSystem : SharedBloodSplatterSystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
@@ -37,9 +42,29 @@ public sealed class BloodSplatterSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<BloodstreamComponent, AttackedEvent>(OnAttacked);
-        SubscribeLocalEvent<BloodSplatterComponent, ComponentStartup>(OnSplatterStartup);
+        SubscribeLocalEvent<BloodParticleComponent, ComponentInit>(OnStartup);
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRestart);
+
+        Log.Level = LogLevel.Info;
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<BloodParticleComponent, FixturesComponent, PhysicsComponent>();
+        while (query.MoveNext(out var uid, out var particle, out var fixtures, out var physics))
+        {
+            if (!particle.Velocity.HasValue)
+                continue;
+
+            if (_timing.CurTime < particle.NextMoveTime)
+                continue;
+
+            _physics.ApplyLinearImpulse(uid, particle.Velocity.Value, fixtures, physics);
+            particle.NextMoveTime = _timing.CurTime + particle.MoveCooldown;
+        }
     }
 
     private void OnAttacked(Entity<BloodstreamComponent> ent, ref AttackedEvent args)
@@ -92,35 +117,43 @@ public sealed class BloodSplatterSystem : EntitySystem
         {
             var proto = _random.Pick(ent.Comp.Particles);
             var particle = Spawn(proto, victimCoords);
+            var solution = split.SplitSolution(split.Volume / (count - i));
 
-            if (!TryComp<BloodSplatterComponent>(particle, out var splatter))
+            if (!TryComp<BloodParticleComponent>(particle, out var particleComponent))
+            {
+                Log.Error($"Found blood particle without {nameof(BloodParticleComponent)}, prototype: {proto}");
                 continue;
+            }
 
-            if (!TryComp<PhysicsComponent>(particle, out var physics))
-                continue;
-
-            if (!_solution.TryGetSolution(particle, splatter.SolutionName, out var solutionEntity, out _))
-                continue;
-
-            _solution.TryAddSolution(solutionEntity.Value, split.SplitSolution(split.Volume / (count - i)));
+            // Спавним лужицу на месте, где будет капля, когда время полета закончится.
+            Timer.Spawn(particleComponent.FlyTime, () => SpawnBloodEntity((particle, particleComponent), solution), _token.Token);
 
             var randomOffset = _random.NextFloat(-spreadRadians / 2f, spreadRadians / 2f);
             var angle = baseAngle + randomOffset;
 
-            var speed = _random.NextFloat(ent.Comp.Speed.X, ent.Comp.Speed.Y);
+            Debug.Assert(particleComponent.Speed == Vector2.Zero);
+
+            var speed = _random.NextFloat(particleComponent.Speed.X, particleComponent.Speed.Y);
             var direction = new Vector2(MathF.Cos(angle), MathF.Sin(angle));
 
-            _physics.SetLinearVelocity(particle, direction * speed, body: physics);
-            _transform.SetWorldRotation(particle, angle + NormalizedRotationAngle);
-
-            Timer.Spawn(splatter.LifeTime, () => CleanupEntity(particle), _token.Token);
+            particleComponent.Velocity = direction * speed;
+            Log.Info($"{speed} | {particleComponent.Velocity}");
+            //_transform.SetWorldRotation(particle, angle + NormalizedRotationAngle);
         }
 
         return true;
     }
 
-    private void OnSplatterStartup(Entity<BloodSplatterComponent> ent, ref ComponentStartup args)
+    private void OnStartup(Entity<BloodParticleComponent> ent, ref ComponentInit args)
     {
+        // Задаем количество раз, когда частику крови будет толкать физика.
+        // Это количество зависит от времени полета и указанного числа промежутков.
+        ent.Comp.MoveCooldown = ent.Comp.FlyTime / ent.Comp.MoveTimes;
+
+        // Рассчитываем нужную скорость движения исходя из расстояния, которое нужно пройти,
+        // И количества промежутков, которые у нас будут.
+        ent.Comp.Speed = ent.Comp.Distance / ent.Comp.MoveTimes;
+
         // Вероятность проигрывания звука.
         // Предотвращает переполненность буфера звуковой библиотеки, когда множество брызгов создаются
         if (!_random.Prob(ent.Comp.SoundProbability))
@@ -130,12 +163,22 @@ public sealed class BloodSplatterSystem : EntitySystem
     }
 
     /// <summary>
-    /// Убирает лишние компоненты, после того как сущность точно прекратила движение.
+    /// Спавнит лужицу крови на месте, куда упала капля по истечению времени полета.
     /// </summary>
-    private void CleanupEntity(EntityUid uid)
+    private void SpawnBloodEntity(Entity<BloodParticleComponent> ent, Solution solution)
     {
-        // TODO: Исправить спам варнингами на клиенте
-        RemCompDeferred<PhysicsComponent>(uid);
+        var proto = _random.Pick(ent.Comp.BloodEntities);
+        var uid = Spawn(proto, Transform(ent).Coordinates);
+
+        if (!_solution.TryGetSolution(uid, ent.Comp.SolutionName, out var solutionEntity, out _))
+        {
+            Log.Error($"Found blood puddle without any solution, prototype: {proto}");
+            return;
+        }
+
+        _solution.TryAddSolution(solutionEntity.Value, solution);
+
+        QueueDel(ent);
     }
 
     private bool TryGetSource(Entity<BloodSplattererComponent?> user,

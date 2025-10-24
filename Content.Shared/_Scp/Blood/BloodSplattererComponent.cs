@@ -15,36 +15,27 @@ namespace Content.Shared._Scp.Blood;
 public sealed partial class BloodSplattererComponent : Component
 {
     /// <summary>
-    /// Прототипы партиклов для спавна
+    /// Прототипы партиклов, которые будут разлетаться от удара по сущности.
     /// </summary>
     [DataField]
     public HashSet<EntProtoId> Particles =
     [
-        "BloodSplatter1",
-        "BloodSplatter2",
-        "BloodSplatter3",
-        "BloodSplatter4",
-        "BloodSplatter5",
-        "BloodSplatter6",
+        "BloodParticle1",
+        "BloodParticle2",
+        "BloodParticle3",
     ];
 
     /// <summary>
     /// Количество создаваемых частиц крови (min, max).
     /// </summary>
     [DataField]
-    public Vector2i Amount = new(1, 2);
-
-    /// <summary>
-    /// Скорость полета частиц (min, max).
-    /// </summary>
-    [DataField]
-    public Vector2 Speed = new(3f, 40f);
+    public Vector2i Amount = new(1, 3);
 
     /// <summary>
     /// Общее количество крови, забираемое у жертвы для всех частиц.
     /// </summary>
     [DataField]
-    public FixedPoint2 BloodToTake = FixedPoint2.New(10);
+    public FixedPoint2 BloodToTake = FixedPoint2.New(5);
 
     /// <summary>
     /// Уровень пробития брони для срабатывания эффекта.
