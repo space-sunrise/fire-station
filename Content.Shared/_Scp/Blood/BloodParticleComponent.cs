@@ -13,12 +13,6 @@ namespace Content.Shared._Scp.Blood;
 public sealed partial class BloodParticleComponent : Component
 {
     /// <summary>
-    /// Название контейнера с реагентами внутри частицы и лужи.
-    /// </summary>
-    [DataField]
-    public string SolutionName = "blood";
-
-    /// <summary>
     /// Лужицы крови, которые будут оставаться на месте падения частички.
     /// </summary>
     [DataField]

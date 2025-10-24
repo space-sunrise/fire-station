@@ -25,6 +25,9 @@ public sealed partial class BloodSplattererComponent : Component
         "BloodParticle3",
     ];
 
+    [DataField]
+    public EntProtoId BloodLineProto = "BloodLine";
+
     /// <summary>
     /// Количество создаваемых частиц крови (min, max).
     /// </summary>
@@ -42,6 +45,12 @@ public sealed partial class BloodSplattererComponent : Component
     /// </summary>
     [DataField]
     public float Probability = 0.5f;
+
+    /// <summary>
+    /// Шанс, что удар линию крови.
+    /// </summary>
+    [DataField]
+    public float BloodLineProbability = 0.3f;
 
     /// <summary>
     /// Количество крови, которое каждая капля заберет из тела персонажа.

@@ -37,7 +37,7 @@
     friction: 0.1
     restitution: 0.7
   - type: Footprint
-    spritePath: /Textures/_Scp/Effects/blood.rsi
+    spritePath: /Textures/_Scp/Effects/blood_particles.rsi
     containerName: blood
   - type: Appearance
   - type: Puddle
@@ -138,3 +138,14 @@
   components:
   - type: Sprite
     state: particle3
+
+- type: entity
+  id: BloodLine
+  parent: BaseBloodSplatter
+  name: blood line
+  components:
+  - type: Sprite
+    drawdepth: Puddles
+    sprite: _Scp/Effects/blood_line.rsi
+    state: icon
+  - type: BloodLineAnimated
