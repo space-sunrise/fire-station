@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Content.Shared._Scp.Blood;
 using Content.Shared._Starlight.Combat.Ranged.Pierce;
@@ -18,7 +17,7 @@ namespace Content.Server._Scp.Blood;
 
 /// <summary>
 /// Система, управляющая брызгами крови.
-/// Позволяет создавать красивые партиклы крови, которые некоторое время разлетаются в разные стороны.
+/// Позволяет создавать красивые частички крови, которые некоторое время разлетаются в разные стороны.
 /// </summary>
 public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
 {
