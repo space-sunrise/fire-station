@@ -4,6 +4,7 @@
   id: BaseCrowbar
   abstract: true
   components:
+  - type: BloodSplatterer
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/crowbar_drop.ogg
