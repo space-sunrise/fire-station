@@ -4,11 +4,11 @@
   cost: 3
   defaultStyle: basic
   styles:
-    atmospherics: ScpAirlockLifeSupport
+    lifesupport: ScpAirlockLifeSupport
     basic: ScpAirlock
-    cargo: ScpAirlockLogistics
-    chemistry: ScpAirlockLaboratory
-    command: ScpAirlockAdministration
+    logistics: ScpAirlockLogistics
+    laboratory: ScpAirlockLaboratory
+    administration: ScpAirlockAdministration
     engineering: ScpAirlockEngineering
     freezer: ScpAirlockFreezer
     hydroponics: ScpAirlockHydroponics
@@ -24,11 +24,11 @@
   cost: 3
   defaultStyle: basic
   styles:
-    atmospherics: ScpAirlockLifeSupportGlass
+    lifesupport: ScpAirlockLifeSupportGlass
     basic: ScpAirlockGlass
-    cargo: ScpAirlockLogisticsGlass
-    chemistry: ScpAirlockLaboratoryGlass
-    command: ScpAirlockAdministrationGlass
+    logistics: ScpAirlockLogisticsGlass
+    laboratory: ScpAirlockLaboratoryGlass
+    administration: ScpAirlockAdministrationGlass
     engineering: ScpAirlockEngineeringGlass
     hydroponics: ScpAirlockHydroponicsGlass
     maintenance: ScpAirlockMaintGlass
