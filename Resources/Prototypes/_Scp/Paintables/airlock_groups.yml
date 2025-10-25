@@ -1,0 +1,38 @@
+- type: paintableGroup
+  id: ScpAirlockStandard
+  time: 3
+  cost: 3
+  defaultStyle: basic
+  styles:
+    lifesupport: ScpAirlockLifeSupport
+    basic: ScpAirlock
+    logistics: ScpAirlockLogistics
+    laboratory: ScpAirlockLaboratory
+    administration: ScpAirlockAdministration
+    engineering: ScpAirlockEngineering
+    freezer: ScpAirlockFreezer
+    hydroponics: ScpAirlockHydroponics
+    maintenance: ScpAirlockMaint
+    medical: ScpAirlockMedical
+    science: ScpAirlockScience
+    security: ScpAirlockSecurity
+    virology: ScpAirlockVirology
+
+- type: paintableGroup
+  id: ScpAirlockGlass
+  time: 3
+  cost: 3
+  defaultStyle: basic
+  styles:
+    lifesupport: ScpAirlockLifeSupportGlass
+    basic: ScpAirlockGlass
+    logistics: ScpAirlockLogisticsGlass
+    laboratory: ScpAirlockLaboratoryGlass
+    administration: ScpAirlockAdministrationGlass
+    engineering: ScpAirlockEngineeringGlass
+    hydroponics: ScpAirlockHydroponicsGlass
+    maintenance: ScpAirlockMaintGlass
+    medical: ScpAirlockMedicalGlass
+    science: ScpAirlockScienceGlass
+    security: ScpAirlockSecurityGlass
+    virology: ScpAirlockVirologyGlass

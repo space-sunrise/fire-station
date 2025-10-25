@@ -1,8 +1,10 @@
 - type: paintableGroupCategory
   id: Airlocks
   groups:
-  - AirlockStandard
-  - AirlockGlass
+  # Fire edit start
+  - ScpAirlockStandard
+  - ScpAirlockGlass
+  # Fire edit end
 
 - type: paintableGroupCategory
   id: Canisters

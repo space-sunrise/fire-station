@@ -37,6 +37,8 @@
       collection: AirlockLargeClose
     denySound:
       path: /Audio/_Scp/Objects/Machines/Airlocks/deny.ogg
+  - type: Paintable
+    group: null
 
 - type: entity
   id: ScpDoubleAirlock
@@ -76,6 +78,8 @@
       collection: AirlockLargeClose
     denySound:
       path: /Audio/_Scp/Objects/Machines/Airlocks/deny.ogg
+  - type: Paintable
+    group: null
 
 # ДВОЙНЫЕ ОБЫЧНЫЕ ШЛЮЗЫ
 
