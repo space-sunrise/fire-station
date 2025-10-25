@@ -1,4 +1,5 @@
-﻿using Content.Server._Scp.GameTicking.Rules.VariationPass.Components;
+﻿using Content.Server.GameTicking.Rules.VariationPass;
+using Content.Server._Scp.GameTicking.Rules.VariationPass.Components;
 using Content.Server._Scp.GameTicking.Rules.VariationPass.Components.ReplacementMarkers;
 
 namespace Content.Server._Scp.GameTicking.Rules.VariationPass;
