@@ -12,15 +12,10 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
 
     private const string ParticleAnimationKey = "blood_particle_key";
 
-    public override void Initialize()
+    protected override void OnInit(Entity<BloodParticleComponent> ent, ref ComponentInit args)
     {
-        base.Initialize();
+        base.OnInit(ent, ref args);
 
-        SubscribeLocalEvent<BloodParticleComponent, ComponentInit>(OnInit);
-    }
-
-    private void OnInit(Entity<BloodParticleComponent> ent, ref ComponentInit args)
-    {
         if (_animation.HasRunningAnimation(ent, ParticleAnimationKey))
             return;
 
@@ -43,7 +38,7 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
                     KeyFrames =
                     {
                         new AnimationTrackProperty.KeyFrame(Vector2.Zero, 0f),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(0, 1), 0.225f),
+                        new AnimationTrackProperty.KeyFrame(new Vector2(0f, 1f), 0.225f),
                         new AnimationTrackProperty.KeyFrame(Vector2.Zero, length.Seconds),
                     },
                 },

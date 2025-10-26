@@ -9,7 +9,7 @@ namespace Content.Shared._Scp.Blood;
 /// Компонент партикла крови, который разлетается от удара по персонажу.
 /// Выдается самому партиклу
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class BloodParticleComponent : Component
 {
     /// <summary>
@@ -31,13 +31,13 @@ public sealed partial class BloodParticleComponent : Component
     /// </summary>
     [DataField]
     public SoundSpecifier LandSound = new SoundCollectionSpecifier("BloodDripping",
-        AudioParams.Default.AddVolume(-7f).WithMaxDistance(3f).WithVariation(0.125f));
+        AudioParams.Default.AddVolume(-7f).WithMaxDistance(3f).WithVariation(0.25f));
 
     /// <summary>
     /// Время полета частички крови.
     /// </summary>
-    [DataField, AutoNetworkedField]
-    public TimeSpan FlyTime = TimeSpan.FromSeconds(1f);
+    [DataField]
+    public TimeSpan FlyTime = TimeSpan.FromSeconds(0.5f);
 
     /// <summary>
     /// Процентный показатель рандомизации времени полета <see cref="FlyTime"/>.

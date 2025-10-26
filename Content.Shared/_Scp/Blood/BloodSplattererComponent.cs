@@ -67,7 +67,7 @@ public sealed partial class BloodSplattererComponent : Component
     /// Уровень пробития брони для срабатывания эффекта.
     /// </summary>
     [DataField]
-    public PierceLevel PierceLevel = PierceLevel.Wood;
+    public PierceLevel PierceLevel = PierceLevel.Flesh;
 
     /// <summary>
     /// Угол разброса партиклов крови в градусах (например, 200 означает разброс в 200 градусов).
@@ -79,11 +79,13 @@ public sealed partial class BloodSplattererComponent : Component
     /// Звук, проигрывающийся при успешном спавне частичек крови
     /// </summary>
     [DataField]
-    public SoundSpecifier ParticleSpawnedSound = new SoundCollectionSpecifier("BleedingStart", AudioParams.Default);
+    public SoundSpecifier ParticleSpawnedSound = new SoundCollectionSpecifier("BleedingStart",
+        AudioParams.Default.WithVariation(0.25f).WithMaxDistance(6f));
 
     /// <summary>
     /// Звук, проигрывающийся при успешном спавне линии крови
     /// </summary>
     [DataField]
-    public SoundSpecifier BloodLineSpawnedSound = new SoundCollectionSpecifier("BleedingStart");
+    public SoundSpecifier BloodLineSpawnedSound = new SoundCollectionSpecifier("BleedingStart",
+            AudioParams.Default.WithVariation(0.25f).WithMaxDistance(6f));
 }

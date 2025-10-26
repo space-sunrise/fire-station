@@ -35,8 +35,6 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
         SubscribeLocalEvent<BloodstreamComponent, AttackedEvent>(OnAttacked);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRestart);
 
-        InitializeParticles();
-
         Log.Level = LogLevel.Info;
     }
 

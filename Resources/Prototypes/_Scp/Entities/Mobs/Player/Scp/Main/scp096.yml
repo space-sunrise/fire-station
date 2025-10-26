@@ -48,7 +48,11 @@
     uponSeenState: Fear
   - type: ShowBlinkable
   - type: BloodSplatterer
-    amount: 5, 30
+    amount: 5, 10
+    distance: 5, 40
+    probability: 1
+    bloodLineProbability: 0.7
+    pierceLevel: HardenedMetal
     sound:
       collection: GibCollection
   - type: ComplexInteraction
@@ -64,7 +68,8 @@
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
     altDisarm: false
-    soundHit: null
+    soundHit:
+      collection: GibCollection
     angle: 0
     animation: WeaponArcClaw
     wideAnimation: WeaponArcClaw

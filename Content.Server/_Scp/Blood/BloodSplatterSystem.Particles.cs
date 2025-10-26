@@ -1,9 +1,5 @@
-﻿using System.Diagnostics;
-using System.Numerics;
+﻿using System.Numerics;
 using Content.Shared._Scp.Blood;
-using Robust.Server.GameObjects;
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -11,41 +7,6 @@ namespace Content.Server._Scp.Blood;
 
 public sealed partial class BloodSplatterSystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly PhysicsSystem _physics = default!;
-
-    private void InitializeParticles()
-    {
-        SubscribeLocalEvent<BloodParticleComponent, ComponentInit>(OnAdd);
-    }
-
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        // Проходимся по всем частичкам крови и двигаем их
-        var query = EntityQueryEnumerator<BloodParticleComponent, FixturesComponent, PhysicsComponent>();
-        while (query.MoveNext(out var uid, out var particle, out var fixtures, out var physics))
-        {
-            if (!particle.Velocity.HasValue)
-                continue;
-
-            if (_timing.CurTime < particle.NextMoveTime)
-                continue;
-
-            _physics.ApplyLinearImpulse(uid, particle.Velocity.Value, fixtures, physics);
-            particle.NextMoveTime = _timing.CurTime + particle.MoveCooldown;
-        }
-    }
-
-    private void OnAdd(Entity<BloodParticleComponent> ent, ref ComponentInit args)
-    {
-        Debug.Assert(ent.Comp.MoveTimes == 0);
-
-        ent.Comp.FlyTime += ent.Comp.FlyTime * _random.NextFloat(0f, ent.Comp.FlyTimeVariation);
-        Dirty(ent);
-    }
-
     private void SpawnBloodParticles(Entity<BloodSplattererComponent> ent, EntityUid target, float baseAngle, float spreadRadians)
     {
         var count = _random.Next(ent.Comp.Amount.X, ent.Comp.Amount.Y);
@@ -68,7 +29,7 @@ public sealed partial class BloodSplatterSystem
             }
 
             // Если кровь закончилась
-            if (!TryTakeBlood(target, ent.Comp.Amount, particle))
+            if (!TryTakeBlood(target, ent.Comp.BloodToTakePerParticle, particle))
             {
                 QueueDel(particle);
                 return;
