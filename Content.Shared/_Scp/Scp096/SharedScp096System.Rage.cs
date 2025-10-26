@@ -51,6 +51,11 @@ public abstract partial class SharedScp096System
         ent.Comp.RageStartTime = null;
         Dirty(ent);
 
+        // Если сменять звук, не делая так, то проигрывание начнется с того же временного отрезка, где играл старый звук
+        // Бредятина и баг, но как есть.
+        _ambientSound.SetAmbience(ent, false);
+        _ambientSound.SetAmbience(ent, true);
+
         _ambientSound.SetSound(ent, ent.Comp.CrySound);
         _ambientSound.SetRange(ent, 4f);
         _ambientSound.SetVolume(ent, -14f);
@@ -77,6 +82,11 @@ public abstract partial class SharedScp096System
     {
         if (ent.Comp.InRageMode || HasComp<ActiveScp096HeatingUpComponent>(ent))
             return false;
+
+        // Если сменять звук, не делая так, то проигрывание начнется с того же временного отрезка, где играл старый звук
+        // Бредятина и баг, но как есть.
+        _ambientSound.SetAmbience(ent, false);
+        _ambientSound.SetAmbience(ent, true);
 
         _ambientSound.SetSound(ent, ent.Comp.TriggerSound);
         _ambientSound.SetRange(ent, 30f);
@@ -122,6 +132,11 @@ public abstract partial class SharedScp096System
 
         RaiseLocalEvent(ent, new Scp096RageChangedEvent(true));
         RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
+
+        // Если сменять звук, не делая так, то проигрывание начнется с того же временного отрезка, где играл старый звук
+        // Бредятина и баг, но как есть.
+        _ambientSound.SetAmbience(ent, false);
+        _ambientSound.SetAmbience(ent, true);
 
         _ambientSound.SetSound(ent, ent.Comp.RageSound);
         _ambientSound.SetRange(ent, 20f);
