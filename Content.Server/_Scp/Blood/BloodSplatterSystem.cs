@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
 using System.Threading;
 using Content.Shared._Scp.Blood;
 using Content.Shared._Starlight.Combat.Ranged.Pierce;
 using Content.Shared.Body.Components;
-using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
 using Content.Shared.GameTicking;
@@ -26,8 +26,8 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
     [Dependency] private readonly TransformSystem _transform = default!;
 
     private const string SolutionName = "blood";
-
     private CancellationTokenSource _token = new();
+
     public override void Initialize()
     {
         base.Initialize();
@@ -62,11 +62,12 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
         if (TryComp<PierceableComponent>(target, out var pierceable) && pierceable.Level > ent.Comp.PierceLevel)
             return false;
 
+        // Ранний выход, если у персонажа не осталось крови.
         if (!_solution.ResolveSolution(target.Owner, target.Comp.BloodSolutionName, ref target.Comp.BloodSolution, out var bloodSolution)
             || bloodSolution.Volume == FixedPoint2.Zero)
             return false;
 
-        Splat(ent, target, ref target.Comp.BloodSolution, bloodSolution);
+        Splat(ent, target);
 
         return true;
     }
@@ -78,16 +79,10 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
     /// <param name="target">Цель, которая будет терять кровь и испускать частички</param>
     /// <param name="bloodSolutionEntity">Сущность с реагентом крови цели</param>
     /// <param name="bloodSolution">Реагенты крови цели</param>
-    private void Splat(Entity<BloodSplattererComponent> ent,
-        Entity<BloodstreamComponent> target,
-        ref Entity<SolutionComponent>? bloodSolutionEntity,
-        Solution bloodSolution)
+    public void Splat(Entity<BloodSplattererComponent> ent, Entity<BloodstreamComponent> target)
     {
         var victimPosition = _transform.GetWorldPosition(target);
-        var victimCoords = _transform.GetMoverCoordinates(target);
         var attackerPosition = _transform.GetWorldPosition(ent);
-
-        _audio.PlayPvs(ent.Comp.Sound, target);
 
         // Вычисляем базовое направление от атакующего к жертве
         var baseDirection = (victimPosition - attackerPosition).Normalized();
@@ -96,11 +91,11 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
         // Вычисляем случайный угол в пределах заданного разброса
         var spreadRadians = MathF.PI * ent.Comp.SpreadAngle / 180f; // Конвертируем градусы в радианы
 
-        if (_random.Prob(ent.Comp.Probability))
-            CreateBloodLine(ent, target, ref bloodSolutionEntity, bloodSolution);
-
         if (_random.Prob(ent.Comp.BloodLineProbability))
-            SpawnBloodParticles(ent, victimCoords, ref bloodSolutionEntity, bloodSolution, baseAngle, spreadRadians);
+            CreateBloodLine(ent, target);
+
+        if (_random.Prob(ent.Comp.Probability))
+            SpawnBloodParticles(ent, target, baseAngle, spreadRadians);
     }
 
     /// <summary>
@@ -130,6 +125,45 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Пытается рассчитать необходимое количество крови, которое нужно взять у персонажа.
+    /// После пытается переместить нужное количество крови в частичку <see cref="transferTo"/>
+    /// </summary>
+    /// <param name="target">Цель, из которой будет черпаться кровь.</param>
+    /// <param name="amount">Минимальное и максимальное значение, из которого будет рандомиться количество крови для передачи</param>
+    /// <param name="transferTo">Сущность, в которую будет передана кровь из персонажа</param>
+    /// <returns>Удалось передать кровь или нет</returns>
+    private bool TryTakeBlood(Entity<BloodstreamComponent?> target, Vector2 amount, EntityUid transferTo)
+    {
+        if (!Resolve(target, ref target.Comp))
+            return false;
+
+        // Получаем кровь персонажа
+        if (!_solution.ResolveSolution(target.Owner, target.Comp.BloodSolutionName, ref target.Comp.BloodSolution, out var bloodSolution)
+            || bloodSolution.Volume == FixedPoint2.Zero)
+            return false;
+
+        // Рассчитываем количество крови, которое нужно взять у персонажа и переместить в частичку
+        var randomizedBlood = _random.NextFloat(amount.X, amount.Y);
+        var amountToTake = FixedPoint2.Min(randomizedBlood, bloodSolution.Volume);
+        var solution = _solution.SplitSolution(target.Comp.BloodSolution.Value, amountToTake);
+
+        // Если в человеке закончилась кровь.
+        if (solution.Volume == FixedPoint2.Zero)
+            return false;
+
+        if (!_solution.TryGetSolution(transferTo, SolutionName, out var solutionEntity, out _))
+        {
+            Log.Error($"Found blood splatter without any solution, prototype: {Prototype(transferTo)}");
+            return false;
+        }
+
+        if (!_solution.TryAddSolution(solutionEntity.Value, solution))
+            return false;
+
+        return true;
     }
 
     private void OnRestart(RoundRestartCleanupEvent _)

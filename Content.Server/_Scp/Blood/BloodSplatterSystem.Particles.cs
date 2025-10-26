@@ -1,10 +1,7 @@
 ﻿using System.Diagnostics;
 using System.Numerics;
 using Content.Shared._Scp.Blood;
-using Content.Shared.Chemistry.Components;
-using Content.Shared.FixedPoint;
 using Robust.Server.GameObjects;
-using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
@@ -19,7 +16,7 @@ public sealed partial class BloodSplatterSystem
 
     private void InitializeParticles()
     {
-        SubscribeLocalEvent<BloodParticleComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<BloodParticleComponent, ComponentInit>(OnAdd);
     }
 
     public override void Update(float frameTime)
@@ -41,45 +38,28 @@ public sealed partial class BloodSplatterSystem
         }
     }
 
-    private void OnInit(Entity<BloodParticleComponent> ent, ref ComponentInit args)
+    private void OnAdd(Entity<BloodParticleComponent> ent, ref ComponentInit args)
     {
-        // Вероятность проигрывания звука.
-        // Предотвращает переполненность буфера звуковой библиотеки, когда множество брызгов создаются
-        if (!_random.Prob(ent.Comp.SoundProbability))
-            return;
+        Debug.Assert(ent.Comp.MoveTimes == 0);
 
-        _audio.PlayPvs(ent.Comp.Sound, ent);
+        ent.Comp.FlyTime += ent.Comp.FlyTime * _random.NextFloat(0f, ent.Comp.FlyTimeVariation);
+        Dirty(ent);
     }
 
-    private void SpawnBloodParticles(Entity<BloodSplattererComponent> ent,
-        EntityCoordinates victimCoords,
-        ref Entity<SolutionComponent>? bloodSolutionEntity,
-        Solution bloodSolution,
-        float baseAngle,
-        float spreadRadians)
+    private void SpawnBloodParticles(Entity<BloodSplattererComponent> ent, EntityUid target, float baseAngle, float spreadRadians)
     {
-        if (!bloodSolutionEntity.HasValue)
-        {
-            Log.Error("Found blood PARTICLE with null blood Solution Entity");
-            return;
-        }
-
         var count = _random.Next(ent.Comp.Amount.X, ent.Comp.Amount.Y);
+        if (count <= 0)
+            return;
+
+        _audio.PlayPvs(ent.Comp.ParticleSpawnedSound, target);
+
+        var coords = _transform.GetMoverCoordinates(target);
 
         for (var i = 0; i <= count; i++)
         {
-            var randomizedBlood =
-                _random.NextFloat(ent.Comp.BloodToTakePerParticle.X, ent.Comp.BloodToTakePerParticle.Y);
-
-            var amountToTake = FixedPoint2.Min(randomizedBlood, bloodSolution.Volume);
-            var solution = _solution.SplitSolution(bloodSolutionEntity.Value, amountToTake);
-
-            // Если в человеке закончилась кровь - больше не спавним.
-            if (solution.Volume == FixedPoint2.Zero)
-                continue;
-
             var proto = _random.Pick(ent.Comp.Particles);
-            var particle = Spawn(proto, victimCoords);
+            var particle = Spawn(proto, coords);
 
             if (!TryComp<BloodParticleComponent>(particle, out var particleComponent))
             {
@@ -87,37 +67,43 @@ public sealed partial class BloodSplatterSystem
                 continue;
             }
 
-            // Временно передает solution сюда, чтобы частичка крови окрасилась в нужный цвет
-            if (!_solution.TryGetSolution(particle, SolutionName, out var solutionEntity, out _))
+            // Если кровь закончилась
+            if (!TryTakeBlood(target, ent.Comp.Amount, particle))
             {
-                Log.Error($"Found blood PARTICLE without any solution, prototype: {proto}");
+                QueueDel(particle);
                 return;
             }
-            _solution.TryAddSolution(solutionEntity.Value, solution);
 
             CalculateMove((particle, particleComponent), ent.Comp.Distance, baseAngle, spreadRadians);
 
             // Спавним лужицу на месте, где будет капля, когда время полета закончится.
-            Timer.Spawn(particleComponent.FlyTime, () => SpawnBloodEntity((particle, particleComponent), solution), _token.Token);
+            Timer.Spawn(particleComponent.FlyTime, () => SpawnBloodEntity((particle, particleComponent)), _token.Token);
         }
     }
 
     /// <summary>
     /// Спавнит лужицу крови на месте, куда упала капля по истечению времени полета.
     /// </summary>
-    private void SpawnBloodEntity(Entity<BloodParticleComponent> ent, Solution solution)
+    private void SpawnBloodEntity(Entity<BloodParticleComponent> ent)
     {
         var proto = _random.Pick(ent.Comp.BloodEntities);
         var uid = Spawn(proto, Transform(ent).Coordinates);
 
         if (!_solution.TryGetSolution(uid, SolutionName, out var solutionEntity, out _))
         {
-            Log.Error($"Found blood puddle without any solution, prototype: {proto}");
+            Log.Error($"Found blood PUDDLE without any solution, prototype: {proto}");
             return;
         }
 
-        _solution.TryAddSolution(solutionEntity.Value, solution);
+        if (!_solution.TryGetSolution(ent.Owner, SolutionName, out _, out var particleSolution))
+        {
+            Log.Error($"Found blood PARTICLE without any solution, prototype: {proto}");
+            return;
+        }
 
+        _audio.PlayPvs(ent.Comp.LandSound, uid);
+
+        _solution.TryAddSolution(solutionEntity.Value, particleSolution);
         QueueDel(ent);
     }
 
@@ -138,12 +124,12 @@ public sealed partial class BloodSplatterSystem
         var randomOffset = _random.NextFloat(-spreadRadians / 2f, spreadRadians / 2f);
         var angle = baseAngle + randomOffset;
 
-        Debug.Assert(ent.Comp.Speed == Vector2.Zero);
+        if (ent.Comp.Speed == Vector2.Zero)
+            Log.Error($"Found blood PARTICLE with zero speed {ToPrettyString(ent)}");
 
         var speed = _random.NextFloat(ent.Comp.Speed.X, ent.Comp.Speed.Y);
         var direction = new Vector2(MathF.Cos(angle), MathF.Sin(angle));
 
         ent.Comp.Velocity = direction * speed;
-        Log.Info($"{speed} | {ent.Comp.Velocity}");
     }
 }

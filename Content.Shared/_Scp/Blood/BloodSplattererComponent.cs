@@ -1,6 +1,5 @@
 ﻿using System.Numerics;
 using Content.Shared._Starlight.Combat.Ranged.Pierce;
-using Content.Shared.FixedPoint;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -47,10 +46,10 @@ public sealed partial class BloodSplattererComponent : Component
     public float Probability = 0.5f;
 
     /// <summary>
-    /// Шанс, что удар линию крови.
+    /// Шанс, что удар создаст линию крови.
     /// </summary>
     [DataField]
-    public float BloodLineProbability = 0.2f;
+    public float BloodLineProbability = 0.1f;
 
     /// <summary>
     /// Количество крови, которое каждая капля заберет из тела персонажа.
@@ -68,7 +67,7 @@ public sealed partial class BloodSplattererComponent : Component
     /// Уровень пробития брони для срабатывания эффекта.
     /// </summary>
     [DataField]
-    public PierceLevel PierceLevel = PierceLevel.HardenedMetal;
+    public PierceLevel PierceLevel = PierceLevel.Wood;
 
     /// <summary>
     /// Угол разброса партиклов крови в градусах (например, 200 означает разброс в 200 градусов).
@@ -77,8 +76,14 @@ public sealed partial class BloodSplattererComponent : Component
     public float SpreadAngle = 250f;
 
     /// <summary>
-    /// Звук, проигрывающийся при успешной атаке.
+    /// Звук, проигрывающийся при успешном спавне частичек крови
     /// </summary>
     [DataField]
-    public SoundSpecifier? Sound;
+    public SoundSpecifier ParticleSpawnedSound = new SoundCollectionSpecifier("BleedingStart", AudioParams.Default);
+
+    /// <summary>
+    /// Звук, проигрывающийся при успешном спавне линии крови
+    /// </summary>
+    [DataField]
+    public SoundSpecifier BloodLineSpawnedSound = new SoundCollectionSpecifier("BleedingStart");
 }
