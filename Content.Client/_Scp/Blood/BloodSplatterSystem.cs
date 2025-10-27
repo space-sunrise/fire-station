@@ -12,10 +12,15 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
 
     private const string ParticleAnimationKey = "blood_particle_key";
 
-    protected override void OnInit(Entity<BloodParticleComponent> ent, ref ComponentInit args)
+    public override void Initialize()
     {
-        base.OnInit(ent, ref args);
+        base.Initialize();
 
+        SubscribeLocalEvent<BloodParticleComponent, ComponentInit>(OnInit);
+    }
+
+    private void OnInit(Entity<BloodParticleComponent> ent, ref ComponentInit args)
+    {
         if (_animation.HasRunningAnimation(ent, ParticleAnimationKey))
             return;
 

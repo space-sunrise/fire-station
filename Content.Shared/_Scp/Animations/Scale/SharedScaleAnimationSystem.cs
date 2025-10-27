@@ -22,6 +22,7 @@ public abstract class SharedScaleAnimationSystem : EntitySystem
         base.Update(frameTime);
 
         // Убираем компонент с тех сущностей, что уже проиграли свою анимацию.
+        // TODO: ActiveComponent версия, чтобы улучшить производительность.
         var query = EntityQueryEnumerator<ScaleAnimationComponent>();
         while (query.MoveNext(out var uid, out var animation))
         {

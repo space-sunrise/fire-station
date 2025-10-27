@@ -35,7 +35,17 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
         SubscribeLocalEvent<BloodstreamComponent, AttackedEvent>(OnAttacked);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRestart);
 
+        InitializeParticles();
+
         Log.Level = LogLevel.Info;
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        // Проходимся по всем частичкам крови и двигаем их
+        UpdateParticles();
     }
 
     private void OnAttacked(Entity<BloodstreamComponent> ent, ref AttackedEvent args)
@@ -75,8 +85,6 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
     /// </summary>
     /// <param name="ent">Сущность, которая инициировала выделение частичек крови(оружие, персонаж)</param>
     /// <param name="target">Цель, которая будет терять кровь и испускать частички</param>
-    /// <param name="bloodSolutionEntity">Сущность с реагентом крови цели</param>
-    /// <param name="bloodSolution">Реагенты крови цели</param>
     public void Splat(Entity<BloodSplattererComponent> ent, Entity<BloodstreamComponent> target)
     {
         var victimPosition = _transform.GetWorldPosition(target);

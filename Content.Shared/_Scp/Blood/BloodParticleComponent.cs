@@ -6,8 +6,8 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared._Scp.Blood;
 
 /// <summary>
-/// Компонент партикла крови, который разлетается от удара по персонажу.
-/// Выдается самому партиклу
+/// Компонент частички крови, который разлетается от удара по персонажу.
+/// Выдается самой частике
 /// </summary>
 [RegisterComponent, NetworkedComponent]
 public sealed partial class BloodParticleComponent : Component
@@ -38,6 +38,12 @@ public sealed partial class BloodParticleComponent : Component
     /// </summary>
     [DataField]
     public TimeSpan FlyTime = TimeSpan.FromSeconds(0.5f);
+
+    /// <summary>
+    /// Время, к которому частичка должна приземлиться
+    /// </summary>
+    [DataField]
+    public TimeSpan? FlyTimeEnd;
 
     /// <summary>
     /// Процентный показатель рандомизации времени полета <see cref="FlyTime"/>.

@@ -1,5 +1,9 @@
-﻿using System.Numerics;
+﻿using System.Diagnostics;
+using System.Numerics;
 using Content.Shared._Scp.Blood;
+using Robust.Server.GameObjects;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -7,6 +11,65 @@ namespace Content.Server._Scp.Blood;
 
 public sealed partial class BloodSplatterSystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly PhysicsSystem _physics = default!;
+
+    private void InitializeParticles()
+    {
+        SubscribeLocalEvent<BloodParticleComponent, ComponentInit>(OnInit);
+    }
+
+    private void OnInit(Entity<BloodParticleComponent> ent, ref ComponentInit args)
+    {
+        Debug.Assert(ent.Comp.MoveTimes == 0);
+
+        ent.Comp.FlyTime += ent.Comp.FlyTime * _random.NextFloat(0f, ent.Comp.FlyTimeVariation);
+        ent.Comp.FlyTimeEnd = _timing.CurTime + ent.Comp.FlyTime;
+    }
+
+    private void UpdateParticles()
+    {
+        var query = EntityQueryEnumerator<BloodParticleComponent, FixturesComponent, PhysicsComponent>();
+        while (query.MoveNext(out var uid, out var particle, out var fixtures, out var physics))
+        {
+            UpdateParticlesMoving(uid, particle, fixtures, physics);
+            UpdateParticlesLanding(uid, particle);
+        }
+    }
+
+    /// <summary>
+    /// Двигаем частичку в нужном направлении и с нужной скорость, используя метод интервального движения.
+    /// </summary>
+    private void UpdateParticlesMoving(EntityUid uid,
+        BloodParticleComponent particle,
+        FixturesComponent fixtures,
+        PhysicsComponent physics)
+    {
+        if (!particle.Velocity.HasValue)
+            return;
+
+        if (_timing.CurTime < particle.NextMoveTime)
+            return;
+
+        _physics.ApplyLinearImpulse(uid, particle.Velocity.Value, fixtures, physics);
+        particle.NextMoveTime = _timing.CurTime + particle.MoveCooldown;
+    }
+
+    /// <summary>
+    /// Проверяем, достигла ли частичка конца своего полета.
+    /// Если да - спавним маленькую лужицу крови и удаляем частичку.
+    /// </summary>
+    private void UpdateParticlesLanding(EntityUid uid, BloodParticleComponent particle)
+    {
+        if (!particle.FlyTimeEnd.HasValue)
+            return;
+
+        if (_timing.CurTime < particle.FlyTimeEnd)
+            return;
+
+        SpawnBloodEntity((uid, particle));
+    }
+
     private void SpawnBloodParticles(Entity<BloodSplattererComponent> ent, EntityUid target, float baseAngle, float spreadRadians)
     {
         var count = _random.Next(ent.Comp.Amount.X, ent.Comp.Amount.Y);
@@ -36,9 +99,6 @@ public sealed partial class BloodSplatterSystem
             }
 
             CalculateMove((particle, particleComponent), ent.Comp.Distance, baseAngle, spreadRadians);
-
-            // Спавним лужицу на месте, где будет капля, когда время полета закончится.
-            Timer.Spawn(particleComponent.FlyTime, () => SpawnBloodEntity((particle, particleComponent)), _token.Token);
         }
     }
 
