@@ -9,6 +9,7 @@ using Content.Server.Administration;
 using Content.Server.Administration.Logs;
 using Content.Server.Administration.Managers;
 using Content.Server.Afk;
+using Content.Server.Ani;
 using Content.Server.BugReports;
 using Content.Server.Chat.Managers;
 using Content.Server.Connection;
@@ -75,6 +76,10 @@ namespace Content.Server.Entry
 
             var aczProvider = new ContentMagicAczProvider(IoCManager.Resolve<IDependencyCollection>());
             IoCManager.Resolve<IStatusHost>().SetMagicAczProvider(aczProvider);
+
+            PatchManager.Patch(logManager);
+
+            LoadConfigPresets(cfg, res, logManager.GetSawmill("configpreset"));
 
             var factory = IoCManager.Resolve<IComponentFactory>();
             var prototypes = IoCManager.Resolve<IPrototypeManager>();
