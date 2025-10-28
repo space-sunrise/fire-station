@@ -1,12 +1,10 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
-using System.Threading;
 using Content.Shared._Scp.Blood;
 using Content.Shared._Starlight.Combat.Ranged.Pierce;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
-using Content.Shared.GameTicking;
 using Content.Shared.Weapons.Melee.Events;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
@@ -26,14 +24,12 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
     [Dependency] private readonly TransformSystem _transform = default!;
 
     private const string SolutionName = "blood";
-    private CancellationTokenSource _token = new();
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<BloodstreamComponent, AttackedEvent>(OnAttacked);
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRestart);
 
         InitializeParticles();
 
@@ -170,13 +166,6 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
             return false;
 
         return true;
-    }
-
-    private void OnRestart(RoundRestartCleanupEvent _)
-    {
-        _token.Cancel();
-        _token.Dispose();
-        _token = new();
     }
 }
 
