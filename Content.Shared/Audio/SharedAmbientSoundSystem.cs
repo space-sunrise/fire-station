@@ -56,6 +56,13 @@ public abstract class SharedAmbientSoundSystem : EntitySystem
         if (!_query.Resolve(uid, ref ambience, false) || ambience.Sound == sound)
             return;
 
+        // Fire added start
+        // Если сменять звук, не делая так, то проигрывание начнется с того же временного отрезка, где играл старый звук
+        // Бредятина и баг, но как есть.
+        SetAmbience(uid, false, ambience);
+        SetAmbience(uid, true, ambience);
+        // Fire added end
+
         ambience.Sound = sound;
         QueueUpdate(uid, ambience);
         Dirty(uid, ambience);
@@ -80,4 +87,15 @@ public abstract class SharedAmbientSoundSystem : EntitySystem
             Sound = component.Sound,
         };
     }
+
+    // Fire added start - для включения с клиента
+    public virtual void SetAmbienceWithoutDirty(EntityUid uid, bool value, AmbientSoundComponent? ambience = null)
+    {
+        if (!_query.Resolve(uid, ref ambience, false) || ambience.Enabled == value)
+            return;
+
+        ambience.Enabled = value;
+        QueueUpdate(uid, ambience);
+    }
+    // Fire added end
 }

@@ -22,6 +22,7 @@ public sealed class Scp096System : SharedScp096System
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
     [Dependency] private readonly MobStateSystem _mob = default!;
+    [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
 
     private Scp096Overlay? _overlay;
 
@@ -157,9 +158,7 @@ public sealed class Scp096System : SharedScp096System
         if (!TryComp<Scp096Component>(player, out var scp096) || !TryComp<AmbientSoundComponent>(player, out var ambientSound))
             return;
 
-        var ambienceEnabled = args.Focused || scp096.InRageMode;
-
-        // работает через раз и через жопу, но другого пути нет.
-        ambientSound.Enabled = ambienceEnabled;
+        var ambienceEnabled = args.Focused || scp096.InRageMode || HasComp<ActiveScp096HeatingUpComponent>(player);
+        _ambientSound.SetAmbienceWithoutDirty(player, ambienceEnabled, ambientSound);
     }
 }
