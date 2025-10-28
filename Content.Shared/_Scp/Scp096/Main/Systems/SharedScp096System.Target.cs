@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Protection;
+using Content.Shared._Scp.Watching;
+using Content.Shared._Scp.Watching.FOV;
 using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
@@ -14,6 +16,8 @@ public abstract partial class SharedScp096System
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedSunriseHelpersSystem _helpers = default!;
+    [Dependency] private readonly FieldOfViewSystem _fov = default!;
+    [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly INetManager _net = default!;
 
     private void InitializeTargets()

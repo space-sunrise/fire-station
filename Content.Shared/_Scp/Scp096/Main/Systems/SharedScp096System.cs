@@ -1,16 +1,15 @@
-﻿using Content.Shared._Scp.Blinking;
-using Content.Shared._Scp.Helpers;
+﻿using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Other.EmitSoundRandomly;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
-using Content.Shared._Scp.Watching.FOV;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode;
 using Content.Shared.Doors.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lock;
 using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Projectiles;
@@ -22,7 +21,6 @@ using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
-using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
@@ -33,8 +31,6 @@ public abstract partial class SharedScp096System : EntitySystem
 {
     [Dependency] private readonly PredictedRandomSystem _random = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly EyeWatchingSystem _watching = default!;
-    [Dependency] private readonly FieldOfViewSystem _fov = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
@@ -51,6 +47,7 @@ public abstract partial class SharedScp096System : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<Scp096Component, SimpleEntitySeenEvent>(OnSeen);
+
         SubscribeLocalEvent<ProjectileHitEvent>(OnProjectileHit);
         SubscribeLocalEvent<Scp096Component, HitScanAttackedEvent>(OnHitScanHit);
         SubscribeLocalEvent<Scp096Component, AttackedEvent>(OnAttacked);
@@ -242,12 +239,13 @@ public abstract partial class SharedScp096System : EntitySystem
     /// </summary>
     private bool CanAttack(Entity<Scp096Component> scp, EntityUid target)
     {
+        // Атаковать можно только в состоянии агрессии
         if (!HasComp<ActiveScp096RageComponent>(scp))
             return false;
 
         // Если цель не имеет компонента моргания, значит это 99% не игрок
         // И скромник имеет право это расхуярить(это структура, борг или животное)
-        if (!HasComp<BlinkableComponent>(target))
+        if (!HasComp<MobStateComponent>(target))
             return true;
 
         if (!HasComp<Scp096TargetComponent>(target))
