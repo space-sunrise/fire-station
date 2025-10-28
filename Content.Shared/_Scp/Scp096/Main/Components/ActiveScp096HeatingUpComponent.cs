@@ -2,9 +2,9 @@
 
 namespace Content.Shared._Scp.Scp096.Main.Components;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class ActiveScp096HeatingUpComponent : Component
 {
-    [DataField, AutoNetworkedField]
+    [DataField, AutoNetworkedField, AutoPausedField]
     public TimeSpan? RageHeatUpEnd;
 }
