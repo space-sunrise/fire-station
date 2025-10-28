@@ -72,6 +72,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
         SubscribeLocalEvent<Scp096Component, BeforeRandomlyEmittingSoundEvent>(OnEmitSoundRandomly);
 
+        InitializeRange();
         InitTargets();
         InitializeHands();
     }

@@ -3,6 +3,7 @@ using Content.Shared.ActionBlocker;
 using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction.Components;
+using Content.Shared.Jittering;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 
@@ -15,6 +16,76 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private readonly SharedStaminaSystem _stamina = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private readonly SharedJitteringSystem _jittering = default!;
+
+    private void InitializeRange()
+    {
+        SubscribeLocalEvent<ActiveScp096HeatingUpComponent, ComponentStartup>(OnHeatingUpStart);
+        SubscribeLocalEvent<ActiveScp096HeatingUpComponent, ComponentShutdown>(OnHeatingUpShutdown);
+    }
+
+    private void OnHeatingUpStart(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentStartup args)
+    {
+        if (!TryComp<Scp096Component>(ent, out var scp096))
+        {
+            Log.Error($"Found entity with {nameof(ActiveScp096HeatingUpComponent)} but without {nameof(Scp096Component)}: {ToPrettyString(ent)}, prototype: {Prototype(ent)}");
+            return;
+        }
+
+        // Устанавливаем время окончания пред-агр состояния
+        ent.Comp.RageHeatUpEnd = _timing.CurTime + scp096.RageHeatUp;
+
+        // Устанавливаем звук пред-агр состояния
+        _ambientSound.SetSound(ent, scp096.TriggerSound);
+        _ambientSound.SetRange(ent, 30f);
+        _ambientSound.SetVolume(ent, 20f);
+
+        // Если скромник был застанен - убираем это
+        _stamina.TryTakeStamina(ent, -100);
+        _stun.TryUnstun(ent.Owner);
+
+        // Заставляем трястись
+        _jittering.AddJitter(ent, -10, 100);
+
+        // Устанавливаем ограничения на взаимодействие
+        if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
+        {
+            restriction.CanTakeStaminaDamage = false;
+            restriction.CanBeDisarmed = false;
+            restriction.CanStandingState = false;
+            Dirty(ent.Owner, restriction);
+        }
+
+        // Устанавливаем ограничение на передвижение
+        EnsureComp<BlockMovementComponent>(ent);
+        EnsureComp<NoRotateOnInteractComponent>(ent);
+        _actionBlocker.UpdateCanMove(ent);
+
+        // TODO: Смена спрайта(ждем спрайтеров)
+
+        Dirty(ent);
+        Dirty(ent.Owner, scp096);
+    }
+
+    private void OnHeatingUpShutdown(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentShutdown args)
+    {
+        // Сниманием тряску
+        RemComp<JitteringComponent>(ent);
+
+        // Убираем ограничения на взаимодействие
+        if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
+        {
+            restriction.CanTakeStaminaDamage = true;
+            restriction.CanBeDisarmed = true;
+            restriction.CanStandingState = true;
+            Dirty(ent.Owner, restriction);
+        }
+
+        // Убираем ограничение на передвижение
+        RemComp<BlockMovementComponent>(ent);
+        RemComp<NoRotateOnInteractComponent>(ent);
+        _actionBlocker.UpdateCanMove(ent);
+    }
 
     private void UpdateRage()
     {
@@ -78,43 +149,13 @@ public abstract partial class SharedScp096System
         if (ent.Comp.InRageMode || HasComp<ActiveScp096HeatingUpComponent>(ent))
             return false;
 
-        _ambientSound.SetSound(ent, ent.Comp.TriggerSound);
-        _ambientSound.SetRange(ent, 30f);
-        _ambientSound.SetVolume(ent, 20f);
-
-        _stamina.TryTakeStamina(ent, -100);
-        _stun.TryUnstun(ent.Owner);
-
-        if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
-        {
-            restriction.CanTakeStaminaDamage = false;
-            restriction.CanBeDisarmed = false;
-            restriction.CanStandingState = false;
-            Dirty(ent.Owner, restriction);
-        }
-
-        EnsureComp<BlockMovementComponent>(ent);
-        EnsureComp<NoRotateOnInteractComponent>(ent);
-        var comp = EnsureComp<ActiveScp096HeatingUpComponent>(ent);
-        comp.RageHeatUpEnd = _timing.CurTime + ent.Comp.RageHeatUp;
-
-        // TODO: Смена спрайта(ждем спрайтеров)
-
-        _actionBlocker.UpdateCanMove(ent);
-
-        Dirty(ent);
-        Dirty(ent.Owner, comp);
-
+        EnsureComp<ActiveScp096HeatingUpComponent>(ent);
         return true;
     }
 
     private void Rage(Entity<Scp096Component> ent)
     {
-        RemComp<BlockMovementComponent>(ent);
-        RemComp<NoRotateOnInteractComponent>(ent);
         RemComp<ActiveScp096HeatingUpComponent>(ent);
-
-        _actionBlocker.UpdateCanMove(ent);
 
         ent.Comp.InRageMode = true;
         ent.Comp.RageStartTime = _timing.CurTime;
