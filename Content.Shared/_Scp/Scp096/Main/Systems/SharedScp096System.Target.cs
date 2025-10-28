@@ -1,5 +1,7 @@
-﻿using Content.Shared._Scp.Scp096.Main.Components;
+﻿using System.Linq;
+using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Protection;
+using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
@@ -11,6 +13,7 @@ namespace Content.Shared._Scp.Scp096.Main.Systems;
 public abstract partial class SharedScp096System
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly SharedSunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly INetManager _net = default!;
 
     private void InitTargets()
@@ -50,11 +53,13 @@ public abstract partial class SharedScp096System
 
     private void OnTargetShutdown(Entity<Scp096TargetComponent> ent, ref ComponentShutdown args)
     {
-        var query = EntityQueryEnumerator<Scp096Component>();
+        if (_timing.ApplyingState)
+            return;
 
-        while (query.MoveNext(out var scpEntityUid, out var scp096Component))
+        var query = EntityQueryEnumerator<ActiveScp096RageComponent, Scp096Component>();
+        while (query.MoveNext(out var uid, out _, out _))
         {
-            RemoveTarget((scpEntityUid, scp096Component), ent.AsNullable(), false);
+            RemoveTarget(uid, ent.AsNullable(), false);
         }
     }
 
@@ -81,38 +86,25 @@ public abstract partial class SharedScp096System
     /// </summary>
     protected virtual void AddTarget(Entity<Scp096Component> scp, EntityUid target)
     {
-        scp.Comp.Targets.Add(target);
-
-        var scpTarget = EnsureComp<Scp096TargetComponent>(target);
-        scpTarget.TargetedBy.Add(scp);
-
-        Dirty(target, scpTarget);
-        Dirty(scp);
+        TryMakeAngry(scp);
+        EnsureComp<Scp096TargetComponent>(target);
 
         if (_net.IsServer)
             _audio.PlayGlobal(scp.Comp.SeenSound, target);
-
-        TryMakeAngry(scp);
     }
 
     /// <summary>
     /// Убирает конкретную цель из списка целей scp-096
     /// </summary>
-    protected virtual void RemoveTarget(Entity<Scp096Component> scp, Entity<Scp096TargetComponent?> target, bool removeComponent = true)
+    protected virtual void RemoveTarget(Entity<ActiveScp096RageComponent?> scp, EntityUid target, bool removeComponent = true)
     {
-        if (!Resolve(target, ref target.Comp))
+        if (!Resolve(scp, ref scp.Comp))
             return;
 
-        scp.Comp.Targets.Remove(target);
-        target.Comp.TargetedBy.Remove(scp);
-
-        Dirty(target);
-        Dirty(scp);
-
-        if (target.Comp.TargetedBy.Count == 0 && removeComponent)
+        if (removeComponent)
             RemComp<Scp096TargetComponent>(target);
 
-        if (scp.Comp.Targets.Count == 0)
+        if (!HasAnyTargets())
             Pacify(scp);
     }
 
@@ -123,9 +115,9 @@ public abstract partial class SharedScp096System
     {
         var query = EntityQueryEnumerator<Scp096TargetComponent>();
 
-        while (query.MoveNext(out var targetUid, out _))
+        while (query.MoveNext(out var target, out _))
         {
-            RemoveTarget(ent, targetUid);
+            RemoveTarget(ent.Owner, target);
         }
     }
 
@@ -135,7 +127,8 @@ public abstract partial class SharedScp096System
     /// </summary>
     private bool IsValidTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false)
     {
-        if (scp.Comp.Targets.Contains(target))
+        // Уже является целью?
+        if (HasComp<Scp096TargetComponent>(target))
             return false;
 
         // Проверяем, может ли цель видеть 096. Без учета поля зрения
@@ -174,5 +167,28 @@ public abstract partial class SharedScp096System
 
         // Соответственно если обе проверки прошли, то цель видит 096
         return true;
+    }
+
+    public List<Entity<Scp096TargetComponent>> GetTargets()
+    {
+        return _helpers.GetAll<Scp096TargetComponent>().ToList();
+    }
+
+    public bool HasAnyTargets()
+    {
+        var query = EntityQueryEnumerator<Scp096TargetComponent>();
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (TerminatingOrDeleted(uid))
+                continue;
+
+            if (comp.LifeStage != ComponentLifeStage.Running)
+                continue;
+
+            // Значит нашли хотя бы одного
+            return true;
+        }
+
+        return false;
     }
 }

@@ -15,10 +15,14 @@ namespace Content.Client._Scp.Scp096;
 
 public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly IUserInterfaceManager _uiManager = default!;
+    [Dependency] private readonly Scp096System _scp096 = default!;
+
+    private EntityQuery<Scp096Component> _scp096Query;
+    private EntityQuery<ActiveScp096RageComponent> _rageQuery;
 
     private Scp096UiWidget? _widget;
 
@@ -27,6 +31,9 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
         base.Initialize();
 
         SubscribeLocalEvent<Scp096TargetComponent, GetStatusIconsEvent>(OnGetStatusIcon);
+
+        _scp096Query = GetEntityQuery<Scp096Component>();
+        _rageQuery = GetEntityQuery<ActiveScp096RageComponent>();
 
         var gameplayStateLoad = _uiManager.GetUIController<GameplayStateLoadController>();
         gameplayStateLoad.OnScreenLoad += EnsureWidgetExist;
@@ -59,7 +66,13 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
         if (_widget == null)
             return;
 
-        if (!TryGetPlayerEntity(out var scpEntity) || !scpEntity.Value.Comp.RageStartTime.HasValue)
+        if (!_rageQuery.TryComp(_player.LocalEntity, out var rage) || !rage.RageStartTime.HasValue)
+        {
+            _widget.Visible = false;
+            return;
+        }
+
+        if (!_scp096Query.TryComp(_player.LocalEntity, out var scp096))
         {
             _widget.Visible = false;
             return;
@@ -67,10 +80,11 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
 
         _widget.Visible = true;
 
-        var elapsedTime = _gameTiming.CurTime - scpEntity.Value.Comp.RageStartTime;
-        var remainingTime = scpEntity.Value.Comp.RageDuration - elapsedTime.Value;
+        var elapsedTime = _gameTiming.CurTime - rage.RageStartTime;
+        var remainingTime = scp096.RageDuration - elapsedTime.Value;
 
-        _widget.SetData(remainingTime.TotalSeconds, scpEntity.Value.Comp.Targets.Count);
+        // TODO: Все таки записывать внутрь скромника хотя бы количество его таргетов, чтобы не делать это.
+        _widget.SetData(remainingTime.TotalSeconds, _scp096.GetTargets().Count);
     }
 
     protected override void DeactivateInternal()
@@ -89,37 +103,20 @@ public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
 
     private void OnGetStatusIcon(Entity<Scp096TargetComponent> ent, ref GetStatusIconsEvent args)
     {
-        var playerEntity = _playerManager.LocalEntity;
+        var playerEntity = _player.LocalEntity;
 
         if (!Validate(playerEntity))
             return;
 
-        if (ent.Comp.TargetedBy.Contains(playerEntity.Value)
-            && _prototypeManager.TryIndex(ent.Comp.KillIconPrototype, out var killIconPrototype))
-        {
-            args.StatusIcons.Add(killIconPrototype);
-        }
+        if (!_prototypeManager.TryIndex(ent.Comp.KillIconPrototype, out var killIconPrototype))
+            return;
+
+        args.StatusIcons.Add(killIconPrototype);
     }
 
     private bool Validate([NotNullWhen(true)] EntityUid? player)
     {
-        return IsActive &&
-               player.HasValue &&
-               HasComp<Scp096Component>(player.Value);
-    }
-
-    private bool TryGetPlayerEntity([NotNullWhen(true)] out Entity<Scp096Component>? scpEntity)
-    {
-        var playerEntity = _playerManager.LocalSession?.AttachedEntity;
-
-        scpEntity = null;
-
-        if (!TryComp<Scp096Component>(playerEntity, out var scp096Component))
-            return false;
-
-        scpEntity = (playerEntity.Value, scp096Component);
-
-        return true;
+        return IsActive && _scp096Query.HasComp(player);
     }
 
     private void RemoveWidget()

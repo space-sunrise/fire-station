@@ -21,7 +21,6 @@ public sealed class Scp096System : SharedScp096System
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IClyde _clyde = default!;
-    [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
     [Dependency] private readonly MobStateSystem _mob = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
@@ -73,10 +72,11 @@ public sealed class Scp096System : SharedScp096System
             return;
 
         var useDownState = UseDownState(ent);
+        var inRage = HasComp<ActiveScp096RageComponent>(ent);
 
         _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Dead, useDownState);
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Idle, !ent.Comp.InRageMode && !useDownState);
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Agro, ent.Comp.InRageMode && !useDownState);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Idle, !inRage && !useDownState);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Agro, inRage && !useDownState);
     }
 
     /// <summary>
@@ -123,7 +123,7 @@ public sealed class Scp096System : SharedScp096System
         if (_overlay != null)
             return;
 
-        _overlay = new(ent, _transform);
+        _overlay = new(ent);
         _overlayMan.AddOverlay(_overlay);
     }
 
@@ -160,7 +160,11 @@ public sealed class Scp096System : SharedScp096System
         if (!TryComp<Scp096Component>(player, out var scp096) || !TryComp<AmbientSoundComponent>(player, out var ambientSound))
             return;
 
-        var ambienceEnabled = args.Focused || scp096.InRageMode || HasComp<ActiveScp096HeatingUpComponent>(player);
+        var ambienceEnabled =
+            args.Focused
+            || HasComp<ActiveScp096RageComponent>(player)
+            || HasComp<ActiveScp096HeatingUpComponent>(player);
+
         _ambientSound.SetAmbienceWithoutDirty(player, ambienceEnabled, ambientSound);
     }
 }

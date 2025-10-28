@@ -61,7 +61,7 @@ public abstract partial class SharedScp096System : EntitySystem
         SubscribeLocalEvent<Scp096Component, DownedEvent>(UpdateAppearance);
 
         SubscribeLocalEvent<Scp096Component, AttackAttemptEvent>(OnAttackAttempt);
-        SubscribeLocalEvent<Scp096Component, StartCollideEvent>(OnCollide);
+        SubscribeLocalEvent<ActiveScp096RageComponent, StartCollideEvent>(OnCollide);
         SubscribeLocalEvent<Scp096Component, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<Scp096Component, SleepStateChangedEvent>(OnSleepStateChanged);
 
@@ -78,41 +78,13 @@ public abstract partial class SharedScp096System : EntitySystem
         InitializeHands();
     }
 
-    #region Updater
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<Scp096Component>();
-
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            var ent = (uid, comp);
-            UpdateScp096(ent);
-        }
-
+        UpdateHeatingUp();
         UpdateRage();
     }
-
-    private void UpdateScp096(Entity<Scp096Component> ent)
-    {
-        if (!ent.Comp.InRageMode)
-            return;
-
-        if (!ent.Comp.RageStartTime.HasValue)
-            return;
-
-        var currentTime = _timing.CurTime;
-        var elapsedTime = currentTime - ent.Comp.RageStartTime.Value;
-
-        if (elapsedTime > ent.Comp.RageDuration)
-        {
-            OnRageTimeExceeded(ent);
-        }
-    }
-
-    #endregion
 
     #region Event handlers
 
@@ -189,16 +161,9 @@ public abstract partial class SharedScp096System : EntitySystem
     protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
     {
         var query = EntityQueryEnumerator<Scp096TargetComponent>();
-
-        while (query.MoveNext(out var entityUid, out var targetComponent))
+        while (query.MoveNext(out var uid, out _))
         {
-            targetComponent.TargetedBy.Remove(ent.Owner);
-            Dirty(entityUid, targetComponent);
-
-            if (targetComponent.TargetedBy.Count == 0)
-            {
-                RemComp<Scp096TargetComponent>(entityUid);
-            }
+            RemCompDeferred<Scp096TargetComponent>(uid);
         }
     }
 
@@ -226,11 +191,11 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void OnMaskAttempt(Entity<Scp096Component> ent, ref ScpMaskTargetEquipAttempt args)
     {
-        if (ent.Comp.InRageMode || HasComp<ActiveScp096HeatingUpComponent>(ent))
+        if (HasComp<ActiveScp096RageComponent>(ent) || HasComp<ActiveScp096HeatingUpComponent>(ent))
             args.Cancel();
     }
 
-    private void OnCollide(Entity<Scp096Component> ent, ref StartCollideEvent args)
+    private void OnCollide(Entity<ActiveScp096RageComponent> ent, ref StartCollideEvent args)
     {
         if (!TryComp<DoorComponent>(args.OtherEntity, out var doorComponent))
             return;
@@ -240,7 +205,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     protected virtual void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
     {
-        if (ent.Comp.InRageMode || HasComp<SleepingComponent>(ent) || HasComp<ActiveScp096HeatingUpComponent>(ent))
+        if (HasComp<ActiveScp096RageComponent>(ent) || HasComp<SleepingComponent>(ent) || HasComp<ActiveScp096HeatingUpComponent>(ent))
             args.Cancel();
     }
 
@@ -271,9 +236,12 @@ public abstract partial class SharedScp096System : EntitySystem
     /// Обновляет модификаторы скорости передвижения scp-096 в зависимости от текущего состояния.
     /// В режиме ярости скорость большая, в обычном состоянии маленькая.
     /// </summary>
-    private void RefreshSpeedModifiers(Entity<Scp096Component> ent)
+    private void RefreshSpeedModifiers(Entity<Scp096Component?> ent, bool inRage)
     {
-        var newSpeed = ent.Comp.InRageMode ? ent.Comp.RageSpeed : ent.Comp.BaseSpeed;
+        if (!Resolve(ent, ref ent.Comp))
+            return;
+
+        var newSpeed = inRage ? ent.Comp.RageSpeed : ent.Comp.BaseSpeed;
         _speedModifier.ChangeBaseSpeed(ent, newSpeed, newSpeed, 20.0f);
     }
 
@@ -283,7 +251,7 @@ public abstract partial class SharedScp096System : EntitySystem
     /// </summary>
     private bool CanAttack(Entity<Scp096Component> scp, EntityUid target)
     {
-        if (!scp.Comp.InRageMode)
+        if (!HasComp<ActiveScp096RageComponent>(scp))
             return false;
 
         // Если цель не имеет компонента моргания, значит это 99% не игрок
@@ -291,10 +259,7 @@ public abstract partial class SharedScp096System : EntitySystem
         if (!HasComp<BlinkableComponent>(target))
             return true;
 
-        if (!TryComp<Scp096TargetComponent>(target, out var targetComp))
-            return false;
-
-        if (!targetComp.TargetedBy.Contains(scp))
+        if (!HasComp<Scp096TargetComponent>(target))
             return false;
 
         return true;
@@ -304,20 +269,11 @@ public abstract partial class SharedScp096System : EntitySystem
 
     #region Virtuals
 
-    protected virtual void HandleDoorCollision(Entity<Scp096Component> scpEntity, Entity<DoorComponent> doorEntity) {}
+    protected virtual void HandleDoorCollision(Entity<ActiveScp096RageComponent> scpEntity, Entity<DoorComponent> doorEntity) {}
     protected virtual void OnHandleState(Entity<Scp096Component> ent, ref AfterAutoHandleStateEvent args) {}
     protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args) {}
 
     #endregion
-}
-
-/// <summary>
-/// Ивент, вызываемый при смене состояния скромника.
-/// </summary>
-/// <param name="inRage">Вошел или вышел из режима ярости</param>
-public sealed class Scp096RageChangedEvent(bool inRage) : EntityEventArgs
-{
-    public readonly bool InRage = inRage;
 }
 
 /// <summary>

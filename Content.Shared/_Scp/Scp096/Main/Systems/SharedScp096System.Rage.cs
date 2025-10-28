@@ -23,7 +23,12 @@ public abstract partial class SharedScp096System
     {
         SubscribeLocalEvent<ActiveScp096HeatingUpComponent, ComponentStartup>(OnHeatingUpStart);
         SubscribeLocalEvent<ActiveScp096HeatingUpComponent, ComponentShutdown>(OnHeatingUpShutdown);
+
+        SubscribeLocalEvent<ActiveScp096RageComponent, ComponentStartup>(OnRageStart);
+        SubscribeLocalEvent<ActiveScp096RageComponent, ComponentShutdown>(OnRageShutdown);
     }
+
+    #region Event handlers
 
     private void OnHeatingUpStart(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentStartup args)
     {
@@ -70,6 +75,9 @@ public abstract partial class SharedScp096System
 
     private void OnHeatingUpShutdown(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentShutdown args)
     {
+        if (_timing.ApplyingState)
+            return;
+
         // Сниманием тряску
         RemComp<JitteringComponent>(ent);
 
@@ -88,11 +96,73 @@ public abstract partial class SharedScp096System
         _actionBlocker.UpdateCanMove(ent);
     }
 
-    private void UpdateRage()
+    private void OnRageStart(Entity<ActiveScp096RageComponent> ent, ref ComponentStartup args)
+    {
+        ent.Comp.RageStartTime = _timing.CurTime;
+        Dirty(ent);
+
+        // Устанавливаем ограничения на взаимодействие
+        if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
+        {
+            restriction.CanTakeStaminaDamage = false;
+            restriction.CanBeDisarmed = false;
+            restriction.CanStandingState = false;
+            Dirty(ent.Owner, restriction);
+        }
+
+        // Устанавливаем звук ора
+        _ambientSound.SetSound(ent, ent.Comp.RageSound);
+        _ambientSound.SetRange(ent, 20f);
+        _ambientSound.SetVolume(ent, 10f);
+
+        // Запрашиваем обновление внешнего вида
+        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
+
+        // Обновляем скорость передвижения
+        RefreshSpeedModifiers(ent.Owner, true);
+    }
+
+    private void OnRageShutdown(Entity<ActiveScp096RageComponent> ent, ref ComponentShutdown args)
+    {
+        if (_timing.ApplyingState)
+            return;
+
+        if (!TryComp<Scp096Component>(ent, out var scp096))
+        {
+            Log.Error($"Found entity with {nameof(ActiveScp096RageComponent)} but without {nameof(Scp096Component)}: {ToPrettyString(ent)}, prototype: {Prototype(ent)}");
+            return;
+        }
+
+        // Возвращаем звук плача
+        _ambientSound.SetSound(ent, scp096.CrySound);
+        _ambientSound.SetRange(ent, 4f);
+        _ambientSound.SetVolume(ent, -14f);
+
+        // Усыпляем скромника
+        _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, scp096.PacifiedTime);
+
+        // Убираем наложенные ограничения на взаимодействие
+        if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
+        {
+            restriction.CanTakeStaminaDamage = true;
+            restriction.CanBeDisarmed = true;
+            restriction.CanStandingState = true;
+            Dirty(ent.Owner, restriction);
+        }
+
+        // Запрашиваем обновление внешнего вида.
+        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
+
+        // Обновляем скорость передвижения
+        RefreshSpeedModifiers(ent.Owner, false);
+    }
+
+    #endregion
+
+    private void UpdateHeatingUp()
     {
         var query = EntityQueryEnumerator<ActiveScp096HeatingUpComponent, Scp096Component>();
-
-        while (query.MoveNext(out var uid, out var component, out var scp096))
+        while (query.MoveNext(out var uid, out var component, out _))
         {
             if (!component.RageHeatUpEnd.HasValue)
                 continue;
@@ -100,7 +170,23 @@ public abstract partial class SharedScp096System
             if (_timing.CurTime < component.RageHeatUpEnd.Value)
                 continue;
 
-            Rage((uid, scp096));
+            TryStartRage(uid);
+        }
+    }
+
+    private void UpdateRage()
+    {
+        var query = EntityQueryEnumerator<ActiveScp096RageComponent, Scp096Component>();
+        while (query.MoveNext(out var uid, out var rage, out var scp096))
+        {
+            if (!rage.RageStartTime.HasValue)
+                continue;
+
+            var elapsedTime = _timing.CurTime - rage.RageStartTime.Value;
+            if (elapsedTime < scp096.RageDuration)
+                continue;
+
+            OnRageTimeExceeded((uid, scp096));
         }
     }
 
@@ -117,58 +203,37 @@ public abstract partial class SharedScp096System
     /// Умиротворяет скромника.
     /// Происходит после того, как все цели были убиты и разорваны.
     /// </summary>
-    private void Pacify(Entity<Scp096Component> ent)
+    private void Pacify(EntityUid uid)
     {
-        ent.Comp.InRageMode = false;
-        ent.Comp.RageStartTime = null;
-        Dirty(ent);
-
-        _ambientSound.SetSound(ent, ent.Comp.CrySound);
-        _ambientSound.SetRange(ent, 4f);
-        _ambientSound.SetVolume(ent, -14f);
-        _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, ent.Comp.PacifiedTime);
-
-        if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
+        if (!HasComp<ActiveScp096RageComponent>(uid))
         {
-            restriction.CanTakeStaminaDamage = true;
-            restriction.CanBeDisarmed = true;
-            restriction.CanStandingState = true;
-            Dirty(ent.Owner, restriction);
+            Log.Error($"Trying to pacify SCP-096 while not being at rage - {ToPrettyString(uid)}");
+            return;
         }
 
-        RaiseLocalEvent(ent, new Scp096RageChangedEvent(false));
-        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
-
-        RefreshSpeedModifiers(ent);
+        RemComp<ActiveScp096RageComponent>(uid);
     }
 
     /// <summary>
     /// Переводит скромника в состояние ярости.
     /// </summary>
-    private bool TryMakeAngry(Entity<Scp096Component> ent)
+    private bool TryMakeAngry(EntityUid uid)
     {
-        if (ent.Comp.InRageMode || HasComp<ActiveScp096HeatingUpComponent>(ent))
+        if (HasComp<ActiveScp096RageComponent>(uid) || HasComp<ActiveScp096HeatingUpComponent>(uid))
             return false;
 
-        EnsureComp<ActiveScp096HeatingUpComponent>(ent);
+        EnsureComp<ActiveScp096HeatingUpComponent>(uid);
         return true;
     }
 
-    private void Rage(Entity<Scp096Component> ent)
+    private bool TryStartRage(EntityUid uid)
     {
-        RemComp<ActiveScp096HeatingUpComponent>(ent);
+        if (HasComp<ActiveScp096RageComponent>(uid) || !HasComp<ActiveScp096HeatingUpComponent>(uid))
+            return false;
 
-        ent.Comp.InRageMode = true;
-        ent.Comp.RageStartTime = _timing.CurTime;
-        Dirty(ent);
+        RemComp<ActiveScp096HeatingUpComponent>(uid);
+        EnsureComp<ActiveScp096RageComponent>(uid);
 
-        RaiseLocalEvent(ent, new Scp096RageChangedEvent(true));
-        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
-
-        _ambientSound.SetSound(ent, ent.Comp.RageSound);
-        _ambientSound.SetRange(ent, 20f);
-        _ambientSound.SetVolume(ent, 10f);
-
-        RefreshSpeedModifiers(ent);
+        return true;
     }
 }

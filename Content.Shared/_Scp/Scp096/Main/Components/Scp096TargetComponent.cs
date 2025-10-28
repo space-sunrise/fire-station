@@ -8,10 +8,6 @@ namespace Content.Shared._Scp.Scp096.Main.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp096TargetComponent : Component
 {
-    // Multiple SCP096 Handler
-    [AutoNetworkedField, ViewVariables]
-    public HashSet<EntityUid> TargetedBy = [];
-
     [DataField]
     public float SleepTime = 30f;
 
