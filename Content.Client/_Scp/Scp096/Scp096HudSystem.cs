@@ -2,7 +2,7 @@
 using Content.Client._Scp.Scp096.Ui;
 using Content.Client.Overlays;
 using Content.Client.UserInterface.Systems.Gameplay;
-using Content.Shared._Scp.Scp096;
+using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.Inventory.Events;
 using Content.Shared.StatusIcon.Components;
 using Robust.Client.Player;

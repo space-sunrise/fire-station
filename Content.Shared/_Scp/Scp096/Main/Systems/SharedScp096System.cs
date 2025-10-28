@@ -1,6 +1,7 @@
 ﻿using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Other.EmitSoundRandomly;
+using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Scp.Watching.FOV;
@@ -26,7 +27,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._Scp.Scp096;
+namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System : EntitySystem
 {

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Content.Shared._Scp.Helpers;
-using Content.Shared._Scp.Scp096;
+using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp173;
 using Content.Shared._Scp.Watching;
 using Content.Shared.Alert;

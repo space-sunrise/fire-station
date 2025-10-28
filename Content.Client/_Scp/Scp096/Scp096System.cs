@@ -1,5 +1,7 @@
 ﻿using Content.Shared._Scp.Other.EmitSoundRandomly;
 using Content.Shared._Scp.Scp096;
+using Content.Shared._Scp.Scp096.Main.Components;
+using Content.Shared._Scp.Scp096.Main.Systems;
 using Content.Shared.Audio;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Mobs.Systems;

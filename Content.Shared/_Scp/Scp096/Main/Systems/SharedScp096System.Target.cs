@@ -1,11 +1,12 @@
-﻿using Content.Shared._Scp.Scp096.Protection;
+﻿using Content.Shared._Scp.Scp096.Main.Components;
+using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Popups;
 using Robust.Shared.Network;
 
-namespace Content.Shared._Scp.Scp096;
+namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {

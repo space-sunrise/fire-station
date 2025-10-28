@@ -3,7 +3,7 @@ using Content.Shared.StatusIcon;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Scp.Scp096;
+namespace Content.Shared._Scp.Scp096.Main.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp096TargetComponent : Component

@@ -1,6 +1,6 @@
 ﻿using System.Numerics;
 using Content.Shared._Scp.Blinking;
-using Content.Shared._Scp.Scp096;
+using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.Mobs.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;

@@ -2,7 +2,8 @@
 using Content.Server.Doors.Systems;
 using Content.Server.Power;
 using Content.Server.Wires;
-using Content.Shared._Scp.Scp096;
+using Content.Shared._Scp.Scp096.Main.Components;
+using Content.Shared._Scp.Scp096.Main.Systems;
 using Content.Shared.Doors.Components;
 using Content.Shared.Wires;
 using Robust.Server.Audio;

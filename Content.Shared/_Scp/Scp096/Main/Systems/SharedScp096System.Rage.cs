@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Scp.Mobs.Components;
+using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
@@ -7,7 +8,7 @@ using Content.Shared.Jittering;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 
-namespace Content.Shared._Scp.Scp096;
+namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {

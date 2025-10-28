@@ -1,7 +1,8 @@
-﻿using Content.Shared.Item;
+﻿using Content.Shared._Scp.Scp096.Main.Components;
+using Content.Shared.Item;
 using Content.Shared.Whitelist;
 
-namespace Content.Shared._Scp.Scp096;
+namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
