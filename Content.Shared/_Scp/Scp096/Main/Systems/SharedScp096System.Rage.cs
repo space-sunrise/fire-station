@@ -19,7 +19,7 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
 
-    private void InitializeRange()
+    private void InitializeRage()
     {
         SubscribeLocalEvent<ActiveScp096HeatingUpComponent, ComponentStartup>(OnHeatingUpStart);
         SubscribeLocalEvent<ActiveScp096HeatingUpComponent, ComponentShutdown>(OnHeatingUpShutdown);

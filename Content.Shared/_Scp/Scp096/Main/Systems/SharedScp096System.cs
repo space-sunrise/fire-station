@@ -61,7 +61,6 @@ public abstract partial class SharedScp096System : EntitySystem
         SubscribeLocalEvent<Scp096Component, DownedEvent>(UpdateAppearance);
 
         SubscribeLocalEvent<Scp096Component, AttackAttemptEvent>(OnAttackAttempt);
-        SubscribeLocalEvent<ActiveScp096RageComponent, StartCollideEvent>(OnCollide);
         SubscribeLocalEvent<Scp096Component, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<Scp096Component, SleepStateChangedEvent>(OnSleepStateChanged);
 
@@ -73,8 +72,8 @@ public abstract partial class SharedScp096System : EntitySystem
 
         SubscribeLocalEvent<Scp096Component, BeforeRandomlyEmittingSoundEvent>(OnEmitSoundRandomly);
 
-        InitializeRange();
-        InitTargets();
+        InitializeRage();
+        InitializeTargets();
         InitializeHands();
     }
 
@@ -193,14 +192,6 @@ public abstract partial class SharedScp096System : EntitySystem
     {
         if (HasComp<ActiveScp096RageComponent>(ent) || HasComp<ActiveScp096HeatingUpComponent>(ent))
             args.Cancel();
-    }
-
-    private void OnCollide(Entity<ActiveScp096RageComponent> ent, ref StartCollideEvent args)
-    {
-        if (!TryComp<DoorComponent>(args.OtherEntity, out var doorComponent))
-            return;
-
-        HandleDoorCollision(ent, (args.OtherEntity, doorComponent));
     }
 
     protected virtual void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)

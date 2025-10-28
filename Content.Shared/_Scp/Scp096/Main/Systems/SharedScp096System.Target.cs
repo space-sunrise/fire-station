@@ -16,7 +16,7 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly SharedSunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly INetManager _net = default!;
 
-    private void InitTargets()
+    private void InitializeTargets()
     {
         SubscribeLocalEvent<Scp096TargetComponent, DamageChangedEvent>(OnTargetDamageChanged);
         SubscribeLocalEvent<Scp096TargetComponent, MobStateChangedEvent>(OnTargetMobStateChanged);
