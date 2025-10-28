@@ -5,6 +5,11 @@
   description: A rooty tooty point and shooty.
   abstract: true
   components:
+  # Fire added start
+  - type: BloodSplatterer
+    amount: 1, 3
+    probability: 0.5
+  # Fire added end
   - type: Sprite
   - type: Item
     size: Huge

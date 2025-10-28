@@ -1,11 +1,14 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
 using Content.Shared._Scp.Blood;
-using Content.Shared._Starlight.Combat.Ranged.Pierce;
+using Content.Shared._Starlight.Weapon;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.FixedPoint;
+using Content.Shared.Inventory;
+using Content.Shared.Projectiles;
 using Content.Shared.Weapons.Melee.Events;
+using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Random;
@@ -30,6 +33,8 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
         base.Initialize();
 
         SubscribeLocalEvent<BloodstreamComponent, AttackedEvent>(OnAttacked);
+        SubscribeLocalEvent<BloodstreamComponent, HitScanAttackedEvent>(OnHitscanAttacked);
+        SubscribeLocalEvent<BloodSplattererComponent, ProjectileHitEvent>(OnProjectileHit);
 
         InitializeParticles();
 
@@ -52,6 +57,22 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
         TrySplat(source.Value, ent);
     }
 
+    private void OnHitscanAttacked(Entity<BloodstreamComponent> ent, ref HitScanAttackedEvent args)
+    {
+        if (!TryComp<BloodSplattererComponent>(args.Gun, out var splatterer))
+            return;
+
+        TrySplat((args.Gun, splatterer), ent);
+    }
+
+    private void OnProjectileHit(Entity<BloodSplattererComponent> ent, ref ProjectileHitEvent args)
+    {
+        if (!TryComp<BloodstreamComponent>(args.Target, out var bloodstream))
+            return;
+
+        TrySplat(ent, (args.Target, bloodstream));
+    }
+
     /// <summary>
     /// Пытается создать брызги крови, летящие от цели при ее атаке.
     /// </summary>
@@ -62,8 +83,11 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
     /// <param name="target">Цель, которую атакуют</param>
     public bool TrySplat(Entity<BloodSplattererComponent> ent, Entity<BloodstreamComponent> target)
     {
+        var ev = new HitScanPierceAttemptEvent(ent.Comp.PierceLevel, true);
+        RaiseLocalEvent(target, ref ev);
+
         // Броня не пробита
-        if (TryComp<PierceableComponent>(target, out var pierceable) && pierceable.Level > ent.Comp.PierceLevel)
+        if (!ev.Pierced)
             return false;
 
         // Ранний выход, если у персонажа не осталось крови.

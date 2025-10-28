@@ -43,13 +43,13 @@ public sealed partial class BloodSplattererComponent : Component
     /// Шанс, что удар вызовет разбрызгивание крови.
     /// </summary>
     [DataField]
-    public float Probability = 0.5f;
+    public float Probability = 0.3f;
 
     /// <summary>
     /// Шанс, что удар создаст линию крови.
     /// </summary>
     [DataField]
-    public float BloodLineProbability = 0.1f;
+    public float BloodLineProbability = 0.05f;
 
     /// <summary>
     /// Количество крови, которое каждая капля заберет из тела персонажа.
@@ -67,7 +67,7 @@ public sealed partial class BloodSplattererComponent : Component
     /// Уровень пробития брони для срабатывания эффекта.
     /// </summary>
     [DataField]
-    public PierceLevel PierceLevel = PierceLevel.Flesh;
+    public PierceLevel PierceLevel = PierceLevel.Wood;
 
     /// <summary>
     /// Угол разброса партиклов крови в градусах (например, 200 означает разброс в 200 градусов).

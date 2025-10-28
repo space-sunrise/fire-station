@@ -590,7 +590,7 @@ public sealed partial class GunSystem : SharedGunSystem
                     }
 
                     // Fire added start - для обнаружения стрельбы по персонажу ради скромника
-                    RaiseLocalEvent(hitEntity, new HitScanAttackedEvent(user));
+                    RaiseLocalEvent(hitEntity, new HitScanAttackedEvent(user, gunUid));
                     // Fire added end
                 }
             }

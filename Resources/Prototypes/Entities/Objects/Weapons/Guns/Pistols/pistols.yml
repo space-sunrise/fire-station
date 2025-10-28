@@ -5,6 +5,9 @@
   description: A rooty tooty point and shooty.
   abstract: true
   components:
+  # Fire added start
+  - type: BloodSplatterer
+  # Fire added end
   - type: Sprite
     layers:
       - state: base
