@@ -788,6 +788,7 @@ public sealed partial class GunSystem : SharedGunSystem
                     {
                         if (TryComp<BloodstreamComponent>(hitEntity, out var bloodstream))
                         {
+                            /* Fire edit - говно, у нас свое
                             Timer.Spawn(200, () =>
                             {
                                 var color = _proto.Index(bloodstream.BloodReagent).SubstanceColor;
@@ -795,6 +796,7 @@ public sealed partial class GunSystem : SharedGunSystem
                                 var coords = fromCoordinates.Offset((angle.ToVec() * (distance + 1.3f)) + new Vector2(-0.5f, -0.5f));
                                 _decals.TryAddDecal(_rand.Pick(_bloodDecals), coords, out _, color, angle + Angle.FromDegrees(-45), cleanable: true);
                             });
+                            */
                         }
                         else
                         {
