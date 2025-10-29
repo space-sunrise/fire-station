@@ -170,7 +170,7 @@
     anchored: true
   - type: Sprite
     layers:
-    - sprite: Fluids/puddle.rsi
+    - sprite: _Scp/Fluids/puddle.rsi
       state: splat0
     drawdepth: Puddles
     color: "#FFFFFF80"
