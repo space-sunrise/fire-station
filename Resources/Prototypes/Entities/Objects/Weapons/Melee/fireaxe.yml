@@ -4,6 +4,12 @@
   id: FireAxe
   description: Truly, the weapon of a madman. Who would think to fight fire with an axe?
   components:
+  # Fire added start
+  - type: BloodSplatterer
+    amount: 1, 4
+    probability: 0.7
+    bloodLineProbability: 0.4
+  # Fire added end
   - type: Tag
     tags:
     - FireAxe
