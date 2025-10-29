@@ -4,6 +4,7 @@ using Content.Shared._Scp.Blood;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
+using Robust.Shared.Player;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -16,10 +17,10 @@ public sealed partial class BloodSplatterSystem
 
     private void InitializeParticles()
     {
-        SubscribeLocalEvent<BloodParticleComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<BloodParticleComponent, MapInitEvent>(OnInit);
     }
 
-    private void OnInit(Entity<BloodParticleComponent> ent, ref ComponentInit args)
+    private void OnInit(Entity<BloodParticleComponent> ent, ref MapInitEvent args)
     {
         Debug.Assert(ent.Comp.MoveTimes == 0);
 
@@ -50,6 +51,11 @@ public sealed partial class BloodSplatterSystem
 
         if (_timing.CurTime < particle.NextMoveTime)
             return;
+
+        // Если следующее время движения - 0, значит это первое движение частички
+        // Поэтому именно здесь нам нужно начать анимацию
+        if (particle.NextMoveTime == TimeSpan.Zero)
+            RaiseNetworkEvent(new BloodParticleAnimationStartEvent(GetNetEntity(uid)), Filter.Pvs(uid));
 
         _physics.ApplyLinearImpulse(uid, particle.Velocity.Value, fixtures, physics);
         particle.NextMoveTime = _timing.CurTime + particle.MoveCooldown;
