@@ -25,7 +25,7 @@
   name: chat-radio-heavy-containment-security-service
   keycode: 'о'
   frequency: 2360
-  color: "#d87777"
+  color: "#B54E4E"
 
 - type: radioChannel
   id: ExternalAdministrativeZoneSecurityService
