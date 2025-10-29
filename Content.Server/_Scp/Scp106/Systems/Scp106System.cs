@@ -136,7 +136,7 @@ public sealed partial class Scp106System : SharedScp106System
             return;
 
         // Не телепортировать трупы
-        if (_mobState.IsDead(target))
+        if (_mobState.IsDead(target) && scp106 != null)
             return;
 
         await TeleportToBackroomsInternal(target);
