@@ -135,8 +135,8 @@ public sealed partial class Scp106System : SharedScp106System
         if (!HasComp<HumanoidAppearanceComponent>(target))
             return;
 
-        // Не телепортировать трупы
-        if (_mobState.IsDead(target))
+        // Не телепортировать трупы, если 106 не фантом
+        if (_mobState.IsDead(target) && scp106 != null)
             return;
 
         await TeleportToBackroomsInternal(target);
