@@ -7,8 +7,7 @@
   components:
   # Fire added start
   - type: BloodSplatterer
-    amount: 2, 4
-    probability: 0.7
+    probability: 0.6
     bloodLineProbability: 0.25
   # Fire added end
   - type: Sprite
