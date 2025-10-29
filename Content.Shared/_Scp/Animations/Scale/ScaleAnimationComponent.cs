@@ -13,24 +13,24 @@ public sealed partial class ScaleAnimationComponent : Component
     /// <summary>
     /// Ключ для определения анимации
     /// </summary>
-    [DataField(required: true), AutoNetworkedField]
+    [DataField(required: true)]
     public string AnimationKey = "change_this_in_prototype";
 
     /// <summary>
     /// Время, за которое будет растекаться сущность
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField]
     public TimeSpan Duration = TimeSpan.FromSeconds(4f);
 
     /// <summary>
     /// Изначальный размер сущности, из которого она будет растекаться до стандартного
     /// </summary>
-    [DataField, AutoNetworkedField]
+    [DataField]
     public Vector2 InitialSize = new (0.25f, 0.25f);
 
     /// <summary>
     /// Время, к которому анимация закончится.
     /// </summary>
-    [ViewVariables]
+    [ViewVariables, AutoNetworkedField]
     public TimeSpan? AnimationEndTime;
 }
