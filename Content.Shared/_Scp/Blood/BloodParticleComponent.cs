@@ -9,7 +9,7 @@ namespace Content.Shared._Scp.Blood;
 /// Компонент частички крови, который разлетается от удара по персонажу.
 /// Выдается самой частике
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class BloodParticleComponent : Component
 {
     /// <summary>
@@ -36,7 +36,7 @@ public sealed partial class BloodParticleComponent : Component
     /// <summary>
     /// Время полета частички крови.
     /// </summary>
-    [DataField]
+    [DataField, AutoNetworkedField]
     public TimeSpan FlyTime = TimeSpan.FromSeconds(0.5f);
 
     /// <summary>

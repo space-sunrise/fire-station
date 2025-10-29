@@ -16,7 +16,7 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<BloodParticleAnimationStartEvent>(OnStart);
+        SubscribeNetworkEvent<BloodParticleAnimationStartEvent>(OnStart);
     }
 
     private void OnStart(BloodParticleAnimationStartEvent args)
@@ -48,7 +48,7 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
                     {
                         new AnimationTrackProperty.KeyFrame(Vector2.Zero, 0f),
                         new AnimationTrackProperty.KeyFrame(new Vector2(0f, 1f), 0.225f),
-                        new AnimationTrackProperty.KeyFrame(Vector2.Zero, length.Seconds),
+                        new AnimationTrackProperty.KeyFrame(Vector2.Zero, (float) length.TotalSeconds),
                     },
                 },
             },

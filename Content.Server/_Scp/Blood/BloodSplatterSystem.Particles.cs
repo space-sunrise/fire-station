@@ -26,6 +26,7 @@ public sealed partial class BloodSplatterSystem
 
         ent.Comp.FlyTime += ent.Comp.FlyTime * _random.NextFloat(0f, ent.Comp.FlyTimeVariation);
         ent.Comp.FlyTimeEnd = _timing.CurTime + ent.Comp.FlyTime;
+        Dirty(ent);
     }
 
     private void UpdateParticles()
