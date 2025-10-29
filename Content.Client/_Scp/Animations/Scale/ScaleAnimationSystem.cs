@@ -51,7 +51,7 @@ public sealed class ScaleAnimationSystem : SharedScaleAnimationSystem
                     KeyFrames =
                     {
                         new AnimationTrackProperty.KeyFrame(ent.Comp.InitialSize, 0f),
-                        new AnimationTrackProperty.KeyFrame(scale, length.Seconds),
+                        new AnimationTrackProperty.KeyFrame(scale, (float) length.TotalSeconds),
                     },
                 },
             },

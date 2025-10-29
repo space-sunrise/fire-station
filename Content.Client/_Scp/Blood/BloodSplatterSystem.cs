@@ -16,19 +16,15 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
     {
         base.Initialize();
 
-        SubscribeNetworkEvent<BloodParticleAnimationStartEvent>(OnStart);
+        SubscribeLocalEvent<BloodParticleComponent, ComponentStartup>(OnStart);
     }
 
-    private void OnStart(BloodParticleAnimationStartEvent args)
+    private void OnStart(Entity<BloodParticleComponent> ent, ref ComponentStartup args)
     {
-        var ent = GetEntity(args.Entity);
-        if (!TryComp<BloodParticleComponent>(ent, out var particle))
-            return;
-
         if (_animation.HasRunningAnimation(ent, ParticleAnimationKey))
             return;
 
-        _animation.Play(ent, GetDropletAnimation((ent, particle)), ParticleAnimationKey);
+        _animation.Play(ent, GetDropletAnimation(ent), ParticleAnimationKey);
     }
 
     private static Animation GetDropletAnimation(Entity<BloodParticleComponent> ent)
