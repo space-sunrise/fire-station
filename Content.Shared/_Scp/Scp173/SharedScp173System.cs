@@ -12,8 +12,6 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Events;
 using Content.Shared.Popups;
 using Content.Shared.Storage.Components;
-using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Events;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp173;
@@ -49,8 +47,6 @@ public abstract class SharedScp173System : EntitySystem
         SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
         SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnMoveInput);
         SubscribeLocalEvent<Scp173Component, MoveEvent>(OnMove);
-
-        SubscribeLocalEvent<Scp173Component, StartCollideEvent>(OnCollide);
 
         SubscribeLocalEvent<Scp173Component, Scp173BlindAction>(OnStartedBlind);
         SubscribeLocalEvent<Scp173Component, Scp173StartBlind>(OnBlind);
@@ -97,20 +93,6 @@ public abstract class SharedScp173System : EntitySystem
     #endregion
 
     #region Abillities
-
-    private void OnCollide(Entity<Scp173Component> ent, ref StartCollideEvent args)
-    {
-        var target = args.OtherEntity;
-
-        if (!TryComp<PhysicsComponent>(ent, out var physicsComponent))
-            return;
-
-        // Мы должны двигаться, чтобы сломать шею
-        if (physicsComponent.LinearVelocity.IsLengthZero())
-            return;
-
-        BreakNeck(target, ent.Comp);
-    }
 
     private void OnStartedBlind(Entity<Scp173Component> ent, ref Scp173BlindAction args)
     {

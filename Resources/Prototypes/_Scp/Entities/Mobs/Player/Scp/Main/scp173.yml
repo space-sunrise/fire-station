@@ -32,6 +32,22 @@
     name: ghost-panel-antagonist-scp-name
     description: ghost-panel-antagonist-scp-description
     priority: -10
+  - type: ScpDamageOnCollide
+    params:
+    - whitelist:
+        components:
+        - MobState
+        - HumanoidAppearance
+        requireAll: true
+      damage:
+        types:
+          Blunt: 200
+      targetSound:
+        collection: Scp173NeckSnap
+      useVariance: false
+      requiredMobStates:
+      - Alive
+      - Critical
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
     baseSprintSpeed: 12
