@@ -4,6 +4,11 @@
   name: roomba
   description: The creep of automation now threatening janitors.
   components:
+  # Fire added start
+  - type: Tag
+    tags:
+    - Scp173DestroyOnCollide
+  # Fire added end
   - type: Sprite
     drawdepth: SmallMobs
     sprite: _Scp/Mobs/Silicon/Bots/roomba.rsi

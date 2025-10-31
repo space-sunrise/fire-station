@@ -4,6 +4,11 @@
   id: MobMoproach
   description: This little mothroach has mopshoes on its feet! How adorable!
   components:
+  # Fire added start
+  - type: Tag
+    tags:
+    - Scp173DestroyOnCollide
+  # Fire added end
   - type: GhostRole
     name: ghost-role-information-moproach-name
     description: ghost-role-information-moproach-description

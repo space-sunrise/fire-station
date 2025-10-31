@@ -48,6 +48,30 @@
       requiredMobStates:
       - Alive
       - Critical
+    - whitelist:
+        tags:
+        - Scp173DestroyOnCollide
+      damage:
+        types:
+          Blunt: 100
+      targetSound:
+        path: /Audio/_Scp/Scp173/smash.ogg
+        params:
+          volume: -5
+          maxDistance: 5
+      useVariance: false
+    - whitelist:
+        tags:
+        - Window
+        - Windoor
+        - Directional
+        - SecureWindoor
+        - SecurePlasmaWindoor
+        - SecureUraniumWindoor
+        - Scp173DamageOnCollide
+      damage:
+        types:
+          Blunt: 8
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
     baseSprintSpeed: 12

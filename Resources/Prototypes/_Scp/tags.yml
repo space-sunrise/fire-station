@@ -48,3 +48,9 @@
 
 - type: Tag
   id: MetaGarbageCanBeSpawnedInContainer
+
+- type: Tag
+  id: Scp173DestroyOnCollide
+
+- type: Tag
+  id: Scp173DamageOnCollide
