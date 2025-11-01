@@ -88,8 +88,11 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.6
-        Slash: 0.6
+        Blunt: 0.55
+        Slash: 0.55
         Piercing: 0.9
         Heat: 0.95
         Caustic: 0.95
+  - type: ClothingSpeedModifier # облегченная не должна замедлять
+    walkModifier: 1
+    sprintModifier: 1
