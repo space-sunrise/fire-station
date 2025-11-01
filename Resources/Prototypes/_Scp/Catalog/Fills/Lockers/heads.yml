@@ -208,7 +208,7 @@
     - id: DrinkHosFlask
     - id: FlippoLighterSunriseHos
     - id: BoxVialAmnesiacC
-    - id: BoxVialAmnesiacD
+    - id: ChemistryVialAmnesiacD
 
 - type: entity
   id: LockerSecurityCommanderFilled
