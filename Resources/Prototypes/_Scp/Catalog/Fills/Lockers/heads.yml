@@ -204,10 +204,11 @@
     - id: DoorRemoteClassD
     - id: RubberStampSecurityCommander
     - id: SecurityTechFabCircuitboard
-    - id: WeaponDisabler
     - id: WantedListCartridge
     - id: DrinkHosFlask
     - id: FlippoLighterSunriseHos
+    - id: BoxVialAmnesiacC
+    - id: BoxVialAmnesiacD
 
 - type: entity
   id: LockerSecurityCommanderFilled
