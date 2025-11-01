@@ -24,6 +24,7 @@
   radioBold: true # Sunrise-Edit
   displayWeight: 80 # Sunrise-Edit
   overrideConsoleVisibility: false # Fire added
+  setPreference: false # Fire added
   access:
   - HeadOfSecurity
   - Command

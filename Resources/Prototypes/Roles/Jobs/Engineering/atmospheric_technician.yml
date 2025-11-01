@@ -12,6 +12,7 @@
   supervisors: job-supervisors-ce
   displayWeight: 20  # Sunrise
   overrideConsoleVisibility: false # Fire added
+  setPreference: false # Fire added
   access:
   - Maintenance
   - Engineering

@@ -13,7 +13,7 @@
   supervisors: job-supervisors-head-of-prison
   alwaysUseSpawner: true
   canBeAntag: false
-  setPreference: false # Fire
+  setPreference: false # Fire edit
   displayWeight: 50
   access:
   - Service

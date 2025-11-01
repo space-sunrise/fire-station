@@ -12,6 +12,7 @@
   icon: "JobIconMailCarrier"
   supervisors: job-supervisors-qm #job-supervisors-hop
   displayWeight: 30
+  setPreference: false # Fire added
   # salary: 1000
   access:
   - Maintenance

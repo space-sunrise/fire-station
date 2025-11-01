@@ -15,6 +15,7 @@
   supervisors: job-supervisors-cmo
   displayWeight: 25  # Sunrise
   overrideConsoleVisibility: false
+  setPreference: false # Fire added
   access:
   - Medical
   - Maintenance

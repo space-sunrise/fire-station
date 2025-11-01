@@ -251,10 +251,12 @@ namespace Content.Server.GameTicking
                 restrictedRoles.UnionWith(jobBans);
 
             // Pick best job best on prefs.
-            jobId ??= _stationJobs.PickBestAvailableJobWithPriority(station,
+            // Fire edit start - убрал ??=
+            jobId = _stationJobs.PickBestAvailableJobWithPriority(station,
                 character.JobPriorities,
                 true,
                 restrictedRoles);
+            // Fire edit end
             // If no job available, stay in lobby, or if no lobby spawn as observer
             if (jobId is null)
             {

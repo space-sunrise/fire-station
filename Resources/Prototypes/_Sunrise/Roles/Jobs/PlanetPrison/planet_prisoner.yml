@@ -9,7 +9,7 @@
   startingGear: PlanetPrisonerGear
   alwaysUseSpawner: true
   canBeAntag: false
-  setPreference: false # Fire
+  setPreference: false # Fire edit
   icon: "JobIconPrisoner"
   overrideConsoleVisibility: false
   supervisors: job-supervisors-security

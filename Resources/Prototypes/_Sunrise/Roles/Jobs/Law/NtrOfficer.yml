@@ -13,6 +13,7 @@
   startingGear: NtrOfficerGear
   icon: "JobIconNtrGuard"
   overrideConsoleVisibility: false # Fire added
+  setPreference: false # Fire added
   supervisors: job-supervisors-ntrg
   canBeAntag: false
   displayWeight: 40
@@ -62,7 +63,7 @@
     back:
     - CrowbarRed
     - MedkitCombatFilled
-  
+
 - type: chameleonOutfit
   id: NtrOfficerChameleonOutfit
   job: NtrOfficer

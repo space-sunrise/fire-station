@@ -58,6 +58,9 @@ public sealed class ScpDifficultyModeRule : GameRuleSystem<ScpDifficultyModeRule
         // Забираем у каждого SCP с классом схожим с только что зашедшим слот
         foreach (var scp in matchingScp)
         {
+            if (scp.ID == args.JobId)
+                continue;
+
             if (!_stationJobs.TryGetJobSlot(args.Station, scp, out var currentSlots))
                 continue;
 

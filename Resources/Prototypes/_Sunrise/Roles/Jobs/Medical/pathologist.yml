@@ -11,6 +11,7 @@
   icon: "JobIconPathologist"
   supervisors: job-supervisors-cmo
   overrideConsoleVisibility: false # Fire added
+  setPreference: false # Fire added
   access:
   - Medical
   - Maintenance

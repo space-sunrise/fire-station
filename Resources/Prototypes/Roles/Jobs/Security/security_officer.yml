@@ -13,6 +13,7 @@
   canBeAntag: false
   displayWeight: 10
   overrideConsoleVisibility: false # Fire added
+  setPreference: false # Fire added
   access:
   - Security
   - Brig

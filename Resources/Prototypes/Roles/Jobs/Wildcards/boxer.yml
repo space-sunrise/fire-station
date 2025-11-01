@@ -7,6 +7,7 @@
   icon: "JobIconBoxer"
   supervisors: job-supervisors-hop
   overrideConsoleVisibility: false # Fire added
+  setPreference: false # Fire added
   access:
   - Service
   - Maintenance

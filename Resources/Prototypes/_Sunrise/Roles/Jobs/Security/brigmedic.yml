@@ -16,6 +16,7 @@
   canBeAntag: false
   displayWeight: 15
   overrideConsoleVisibility: false # Fire added
+  setPreference: false # Fire added
   access:
   - Medical
   - Security
