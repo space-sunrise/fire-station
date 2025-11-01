@@ -207,8 +207,6 @@
     - id: WantedListCartridge
     - id: DrinkHosFlask
     - id: FlippoLighterSunriseHos
-    - id: BoxVialAmnesiacC
-    - id: ChemistryVialAmnesiacD
 
 - type: entity
   id: LockerSecurityCommanderFilled

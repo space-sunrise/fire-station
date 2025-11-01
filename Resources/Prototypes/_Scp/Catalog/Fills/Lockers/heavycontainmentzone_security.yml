@@ -102,6 +102,8 @@
         prob: 0.5
       - id: BoxVialAmnesiacA
       - id: BoxVialAmnesiacB
+      - id: BoxVialAmnesiacC
+      - id: ChemistryVialAmnesiacD
       - id: AmnesiacAGasGrenade
       - id: AmnesiacAGasGrenade
         prob: 0.5
