@@ -49,6 +49,11 @@ public sealed partial class DepartmentPrototype : IPrototype
     /// </summary>
     [DataField]
     public bool EditorHidden;
+
+    // Fire added start
+    [DataField]
+    public bool AlwaysShowInBanPanel;
+    // Fire added end
 }
 
 /// <summary>

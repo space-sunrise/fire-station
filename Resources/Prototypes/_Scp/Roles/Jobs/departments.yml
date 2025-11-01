@@ -39,6 +39,7 @@
   - NTFSpecialist
   - NTFCadet
   editorHidden: true
+  alwaysShowInBanPanel: true
   weight: 99 # что бы оперативники МОГ показывались под Администрацией комплекса
 
 # Гады следящие за буквой закона
