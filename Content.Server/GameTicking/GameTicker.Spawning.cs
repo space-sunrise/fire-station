@@ -252,7 +252,7 @@ namespace Content.Server.GameTicking
 
             // Pick best job best on prefs.
             // Fire edit start - починил приоритеты
-            if (!lateJoin && LobbyEnabled)
+            if (!lateJoin || !LobbyEnabled)
             {
                 jobId = _stationJobs.PickBestAvailableJobWithPriority(station,
                     character.JobPriorities,
