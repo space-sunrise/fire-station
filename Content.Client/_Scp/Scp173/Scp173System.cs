@@ -153,7 +153,7 @@ public sealed class Scp173System : SharedScp173System
             : LayoutContainer.LayoutPreset.CenterTop;
 
         LayoutContainer.SetAnchorAndMarginPreset(_widget, layout, margin: 50);
-        _ui.MainViewport.AddChild(_widget);
+        layoutContainer.AddChild(_widget);
 
         _widget.Visible = false;
     }
