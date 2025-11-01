@@ -35,8 +35,8 @@ public partial struct DamageOnCollideParameters()
     public List<MobState>? RequiredMobStates;
 
     [DataField]
-    public bool RequiresVelocity;
+    public bool RequiresVelocity = true;
 
     [DataField]
-    public bool UseVariance;
+    public bool UseVariance = true;
 }

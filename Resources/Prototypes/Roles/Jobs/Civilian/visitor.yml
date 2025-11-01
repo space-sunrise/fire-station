@@ -10,7 +10,6 @@
   icon: JobIconVisitor
   setPreference: false
   overrideConsoleVisibility: false # Fire added
-  setPreference: false # Fire added
   access:
   - Maintenance
   extendedAccess:

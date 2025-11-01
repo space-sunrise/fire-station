@@ -31,7 +31,7 @@ public sealed class ScpDamageOnCollideSystem : EntitySystem
     {
         foreach (var param in ent.Comp.Params)
         {
-            if (!CheckParameter(args.OtherEntity, param))
+            if (!CheckParameter(ent, args.OtherEntity, param))
                 continue;
 
             _damageable.TryChangeDamage(args.OtherEntity, param.Damage, useVariance: param.UseVariance);
@@ -47,10 +47,11 @@ public sealed class ScpDamageOnCollideSystem : EntitySystem
     /// <summary>
     /// Проверяет, подходит ли сущность под параметры
     /// </summary>
+    /// <param name="collider">Сущность, которая совершает столкновение</param>
     /// <param name="target">Сущность для проверки</param>
     /// <param name="param">Параметры, указанные в компоненте</param>
     /// <returns>Подходит или нет</returns>
-    private bool CheckParameter(EntityUid target, DamageOnCollideParameters param)
+    private bool CheckParameter(EntityUid collider, EntityUid target, DamageOnCollideParameters param)
     {
         // Если вайтлист не проходит - сущность не подходит
         if (!_whitelist.IsWhitelistPassOrNull(param.Whitelist, target))
@@ -60,7 +61,7 @@ public sealed class ScpDamageOnCollideSystem : EntitySystem
         if (!_whitelist.IsWhitelistFailOrNull(param.Blacklist, target))
             return false;
 
-        if (param.RequiresVelocity && !CheckVelocity(target))
+        if (param.RequiresVelocity && !CheckVelocity(collider))
             return false;
 
         if (param.RequiredMobStates != null && !CheckMobState(target, param.RequiredMobStates))
@@ -69,9 +70,9 @@ public sealed class ScpDamageOnCollideSystem : EntitySystem
         return true;
     }
 
-    private bool CheckVelocity(EntityUid target)
+    private bool CheckVelocity(EntityUid collider)
     {
-        if (!_physicsQuery.TryComp(target, out var physics))
+        if (!_physicsQuery.TryComp(collider, out var physics))
             return false;
 
         if (physics.LinearVelocity.IsLengthZero())
