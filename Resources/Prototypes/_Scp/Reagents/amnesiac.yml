@@ -37,7 +37,6 @@
         probability: 1
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacA
           min: 5
     Narcotic:
       effects:
@@ -47,7 +46,6 @@
         type: Add
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacA
           min: 4
 
 - type: reagent
@@ -68,7 +66,6 @@
         probability: 1
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacB
           min: 5
     Narcotic:
       effects:
@@ -78,7 +75,6 @@
         type: Add
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacB
           min: 4
 
 - type: reagent
@@ -99,8 +95,14 @@
         probability: 1
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacC
           min: 5
+      - !type:HealthChange
+        damage:
+          types:
+            Cellular: 0.5
+        conditions:
+        - !type:ReagentThreshold
+          min: 1
     Narcotic:
       effects:
       - !type:ModifyStatusEffect
@@ -109,7 +111,13 @@
         type: Add
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacC
+          min: 4
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectWoozy
+        time: 27
+        type: Add
+        conditions:
+        - !type:ReagentThreshold
           min: 4
 
 - type: reagent
@@ -130,8 +138,14 @@
         probability: 1
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacD
           min: 5
+      - !type:HealthChange
+        damage:
+          types:
+            Cellular: 0.75
+        conditions:
+        - !type:ReagentThreshold
+          min: 1
     Narcotic:
       effects:
       - !type:ModifyStatusEffect
@@ -140,7 +154,13 @@
         type: Add
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacD
+          min: 4
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectWoozy
+        time: 36
+        type: Add
+        conditions:
+        - !type:ReagentThreshold
           min: 4
 
 - type: reagent
@@ -160,7 +180,6 @@
         type: Add
         conditions:
         - !type:ReagentThreshold
-          reagent: RawAmnesiac
           min: 5
 
 # Мнестики ("Анти Амнезиак")
@@ -182,7 +201,6 @@
         probability: 1
         conditions:
         - !type:ReagentThreshold
-          reagent: MnesticW
           min: 5
           
 - type: reagent
@@ -203,5 +221,4 @@
         probability: 1
         conditions:
         - !type:ReagentThreshold
-          reagent: MnesticX
           min: 5
