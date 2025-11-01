@@ -71,3 +71,33 @@
         reagents:
           - ReagentId: AmnesiacD
             Quantity: 10
+
+- type: entity
+  id: ChemistryVialMnesticW
+  parent: BaseChemistryEmptyVial
+  suffix: Mnestic W
+  components:
+  - type: Label
+    currentLabel: reagent-mnestic-w-name
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 10
+        reagents:
+          - ReagentId: MnesticW
+            Quantity: 10
+
+- type: entity
+  id: ChemistryVialMnesticX
+  parent: BaseChemistryEmptyVial
+  suffix: Mnestic X
+  components:
+  - type: Label
+    currentLabel: reagent-mnestic-x-name
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 10
+        reagents:
+          - ReagentId: MnesticX
+            Quantity: 10

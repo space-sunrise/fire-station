@@ -5,11 +5,11 @@
   components:
   - type: Storage
     grid:
-    - 0,0,2,0
+    - 0,0,2,1
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacA
-        amount: 3
+        amount: 6
   - type: Sprite
     layers:
       - state: box
@@ -22,11 +22,11 @@
   components:
   - type: Storage
     grid:
-    - 0,0,2,0
+    - 0,0,2,1
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacB
-        amount: 3
+        amount: 6
   - type: Sprite
     layers:
       - state: box
@@ -39,7 +39,7 @@
   components:
   - type: Storage
     grid:
-    - 0,0,2,0
+    - 0,0,2,1
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacC
@@ -56,7 +56,7 @@
   components:
   - type: Storage
     grid:
-    - 0,0,2,0
+    - 0,0,2,1
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacD
