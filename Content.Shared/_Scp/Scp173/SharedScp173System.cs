@@ -4,15 +4,12 @@ using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Containment.Cage;
 using Content.Shared._Scp.Watching;
 using Content.Shared.ActionBlocker;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Events;
 using Content.Shared.Popups;
 using Content.Shared.Storage.Components;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp173;
 
@@ -25,7 +22,6 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     protected static readonly TimeSpan ReagentCheckInterval = TimeSpan.FromSeconds(1);
 
@@ -34,8 +30,6 @@ public abstract class SharedScp173System : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<Scp173Component, ComponentInit>(OnInit);
 
         SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, _, args) =>
         {
@@ -50,14 +44,6 @@ public abstract class SharedScp173System : EntitySystem
 
         SubscribeLocalEvent<Scp173Component, Scp173BlindAction>(OnStartedBlind);
         SubscribeLocalEvent<Scp173Component, Scp173StartBlind>(OnBlind);
-    }
-
-    private void OnInit(Entity<Scp173Component> ent, ref ComponentInit args)
-    {
-        // Fallback
-        ent.Comp.NeckSnapDamage ??= new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Blunt"), 200);
-
-        Dirty(ent);
     }
 
     #region Movement

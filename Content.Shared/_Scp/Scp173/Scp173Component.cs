@@ -1,5 +1,4 @@
 ﻿using Content.Shared.Chemistry.Reagent;
-using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -38,9 +37,6 @@ public sealed partial class Scp173Component : Component
 
     [DataField]
     public SoundSpecifier TeleportationSound = new SoundCollectionSpecifier("FootstepScp173Classic");
-
-    [DataField]
-    public DamageSpecifier? NeckSnapDamage;
 
     [AutoNetworkedField]
     public FixedPoint2 ReagentVolumeAround;
