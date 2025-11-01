@@ -9,7 +9,7 @@
       time: 7200 #2 hrs
   startingGear: PrisonGuardGear
   alwaysUseSpawner: true
-  setPreference: false # Fire
+  setPreference: false # Fire edit
   canBeAntag: false
   icon: "JobIconPrisonGuard"
   overrideConsoleVisibility: false

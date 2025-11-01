@@ -5,6 +5,11 @@
   name: railing
   description: Basic railing meant to protect idiots like you from falling.
   components:
+  # Fire added start
+  - type: Tag
+    tags:
+    - Scp173DestroyOnCollide
+  # Fire added end
   - type: Sprite
     drawdepth: SmallObjects
     sprite: Structures/Walls/railing.rsi

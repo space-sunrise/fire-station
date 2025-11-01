@@ -6,7 +6,7 @@
   requirements:
   - !type:DiscordRoleRequirement
   weight: 30
-  setPreference: true
+  setPreference: false # Fire edit
   startingGear: CentCommOperatorGear
   icon: "JobIconNanotrasen"
   overrideConsoleVisibility: false # Sunrise added

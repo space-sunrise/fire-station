@@ -27,6 +27,7 @@
   radioBold: true # Sunrise-Edit
   displayWeight: 90 # Sunrise-Edit
   overrideConsoleVisibility: false
+  setPreference: false # Fire added
   access:
   - Command
   - HeadOfPersonnel

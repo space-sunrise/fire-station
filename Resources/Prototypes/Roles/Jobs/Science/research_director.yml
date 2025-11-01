@@ -18,6 +18,7 @@
   radioBold: true # Sunrise-Edit
   displayWeight: 50 # Sunrise-Edit
   overrideConsoleVisibility: false # Fire added
+  setPreference: false # Fire added
   access:
   - Research
   - Command

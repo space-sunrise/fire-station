@@ -9,3 +9,5 @@
   recognizable: true
   physicalDesc: reagent-physical-desc-slimy
   synthesisable: true
+  viscosity: 0.3
+

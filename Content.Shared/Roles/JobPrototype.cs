@@ -178,6 +178,11 @@ namespace Content.Shared.Roles
         [DataField]
         public SpriteSpecifier PreviewIcon = new SpriteSpecifier.Rsi(new ResPath("/Textures/_Sunrise/Interface/Misc/job_preview.rsi"), "test");
         // Sunrise-End
+
+        // Fire added start
+        [DataField]
+        public bool AlwaysShowInBanPanel;
+        // Fire added end
     }
 
     /// <summary>

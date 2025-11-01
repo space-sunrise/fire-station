@@ -11,6 +11,7 @@
   canBeAntag: false
   radioBold: true
   overrideConsoleVisibility: false
+  alwaysShowInBanPanel: true
   accessGroups:
   - AllComplex
   special:
@@ -61,6 +62,7 @@
   supervisors: ghost-role-information-mtf-specialist-supervisors
   canBeAntag: false
   overrideConsoleVisibility: false
+  alwaysShowInBanPanel: true
   accessGroups:
   - AllComplex
   special:
@@ -109,6 +111,7 @@
   supervisors: ghost-role-information-mtf-cadet-supervisors
   canBeAntag: false
   overrideConsoleVisibility: false
+  alwaysShowInBanPanel: true
   accessGroups:
   - AllComplex
   special:

@@ -12,6 +12,7 @@
   supervisors: job-supervisors-rd
   displayWeight: 35
   overrideConsoleVisibility: false # Fire added
+  setPreference: false # Fire added
   access:
   - Research
   - Maintenance

@@ -140,7 +140,11 @@ public sealed class Scp173System : SharedScp173System
         if (!TryGetPlayerEntity(out _))
             return;
 
-        var layoutContainer = _ui.ActiveScreen.FindControl<LayoutContainer>("ViewportContainer");
+        var nameScope = _ui.ActiveScreen?.FindNameScope();
+        var layoutContainer = nameScope?.Find("ViewportContainer");
+
+        if (layoutContainer == null)
+            return;
 
         _widget = new Scp173UiWidget();
 
@@ -149,7 +153,6 @@ public sealed class Scp173System : SharedScp173System
             : LayoutContainer.LayoutPreset.CenterTop;
 
         LayoutContainer.SetAnchorAndMarginPreset(_widget, layout, margin: 50);
-
         layoutContainer.AddChild(_widget);
 
         _widget.Visible = false;

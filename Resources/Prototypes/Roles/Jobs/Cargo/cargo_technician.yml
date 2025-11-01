@@ -8,6 +8,7 @@
   supervisors: job-supervisors-qm
   displayWeight: 0  # Sunrise
   overrideConsoleVisibility: false
+  setPreference: false # Fire added
   access:
   - Cargo
   - Maintenance

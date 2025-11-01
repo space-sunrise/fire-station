@@ -30,6 +30,7 @@
   accessGroups:
   - AllAccess
   overrideConsoleVisibility: false
+  setPreference: false # Fire added
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant, TrackingImplant, DeathRattleImplantBlueShield ]

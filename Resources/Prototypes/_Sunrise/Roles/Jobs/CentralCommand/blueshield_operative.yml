@@ -15,6 +15,7 @@
   supervisors: job-supervisors-centcom
   canBeAntag: false
   overrideConsoleVisibility: false # Fire added
+  setPreference: false # Fire added
   accessGroups:
   - AllAccess
   access:

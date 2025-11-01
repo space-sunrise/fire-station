@@ -5,7 +5,6 @@ using Content.Server.Explosion.EntitySystems;
 using Content.Server.Ghost;
 using Content.Server.Interaction;
 using Content.Server.Popups;
-using Content.Server.Storage.Components;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Proximity;
@@ -17,11 +16,9 @@ using Content.Shared.Doors.Components;
 using Content.Shared.Doors.Systems;
 using Content.Shared.Examine;
 using Content.Shared.Fluids;
-using Content.Shared.Humanoid;
 using Content.Shared.Light.Components;
 using Content.Shared.Lock;
 using Content.Shared.Mobs.Components;
-using Content.Shared.Mobs.Systems;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Storage.Components;
@@ -53,7 +50,6 @@ public sealed partial class Scp173System : SharedScp173System
     [Dependency] private readonly PhysicsSystem _physics = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly AudioSystem _audio= default!;
-    [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly ExplosionSystem _explosion = default!;
     [Dependency] private readonly ScpHelpers _helpers = default!;
 
@@ -91,27 +87,6 @@ public sealed partial class Scp173System : SharedScp173System
             scp173.ReagentVolumeAround = _helpers.GetAroundSolutionVolume(uid, Scp173Component.Reagent, LineOfSightBlockerLevel.None);
             Dirty(uid, scp173);
         }
-    }
-
-    protected override void BreakNeck(EntityUid target, Scp173Component scp)
-    {
-        if (!HasComp<MobStateComponent>(target))
-            return;
-
-        if (!HasComp<HumanoidAppearanceComponent>(target))
-            return;
-
-        if (_mobState.IsDead(target))
-            return;
-
-        if (scp.NeckSnapDamage == null)
-            return;
-
-        _damageable.TryChangeDamage(target, scp.NeckSnapDamage, true, useVariance:false);
-
-        // TODO: Fix missing deathgasp emote on high damage per once
-
-        _audio.PlayPvs(scp.NeckSnapSound, target);
     }
 
     private void OnStructureDamage(Entity<Scp173Component> uid, ref Scp173DamageStructureAction args)

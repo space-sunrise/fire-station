@@ -12,6 +12,7 @@
   supervisors: job-supervisors-cmo
   displayWeight: 30  # Sunrise
   overrideConsoleVisibility: false
+  setPreference: false # Fire added
   access:
   - Medical
   - Chemistry

@@ -10,9 +10,9 @@
   icon: "JobIconShaftMiner"
   startingGear: SalvageSpecialistGear
   supervisors: job-supervisors-qm
-  setPreference: false # Fire
   displayWeight: 10  # Sunrise
   overrideConsoleVisibility: false
+  setPreference: false # Fire added
   access:
   - Cargo
   - Salvage
