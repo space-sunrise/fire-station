@@ -3,6 +3,8 @@ ui-options-scp-graphics = Графика
 ui-options-scp-audio = Аудио
 ui-options-scp-game = Игра
 ui-options-tab-hover-to-see-details = Наведите мышку на настройку, чтобы увидеть подсказку о действии настройки.
+ui-options-fps-impact-attention = Данные настройки напрямую влияют на производительность игры.
+    Изменение настроек вызовет изменение FPS
 ui-options-grain-toggle-overlay = Использовать шейдер зернистости
 ui-options-grain-toggle-overlay-tooltip =
     Будет ли включен шейдер зернистости?

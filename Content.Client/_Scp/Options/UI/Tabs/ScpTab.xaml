@@ -9,6 +9,7 @@
 
                 <!-- ГРАФИКА -->
                 <Label Text="{Loc ui-options-scp-graphics}" StyleClasses="LabelKeyText"/>
+                <Label Text="{Loc ui-options-fps-impact-attention}" StyleClasses="LabelSecondaryColor"/>
 
                 <!-- Зернистость -->
                 <CheckBox Name="GrainToggleOverlayCheckBox"
