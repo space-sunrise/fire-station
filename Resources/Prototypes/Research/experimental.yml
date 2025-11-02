@@ -8,9 +8,7 @@
     state: fab-idle
   discipline: Experimental
   tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - ProximitySensor
   - Nanopaste # Sunrise-Add
@@ -24,9 +22,7 @@
     state: icon
   discipline: Experimental
   tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - AnomalyScanner
   - AnomalyLocator
@@ -42,9 +38,7 @@
     state: display
   discipline: Experimental
   tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - NodeScanner
   - AnalysisComputerCircuitboard
@@ -58,9 +52,7 @@
     state: display
   discipline: Experimental
   tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - TechDiskComputerCircuitboard
 
@@ -72,9 +64,7 @@
     state: icon
   discipline: Experimental
   tier: 1
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
   - ClothingShoesBootsMagSci
   - ClothingShoesBootsMagSec #Sunrise-Add
@@ -88,9 +78,7 @@
     state: icon
   discipline: Experimental
   tier: 1
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - WeaponGauntletGorilla
 
@@ -104,9 +92,7 @@
     state: icon
   discipline: Experimental
   tier: 2
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - ArtifactCrusherMachineCircuitboard
 
@@ -118,9 +104,7 @@
     state: base
   discipline: Experimental
   tier: 2
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - WeaponPistolCHIMP
   - AnomalySynchronizerCircuitboard
@@ -136,9 +120,7 @@
     state: base
   discipline: Experimental
   tier: 2
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
   - WeaponParticleDecelerator
   - HoloprojectorField
@@ -151,9 +133,7 @@
     state: base
   discipline: Experimental
   tier: 2
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
     - WeaponForceGun
     - WeaponTetherGun
@@ -168,9 +148,7 @@
     state: icon
   discipline: Experimental
   tier: 3
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - DeviceQuantumSpinInverter
 
@@ -182,8 +160,6 @@
     state: icon
   discipline: Experimental
   tier: 3
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - DeviceDesynchronizer

@@ -8,9 +8,7 @@
     state: icon
   discipline: Arsenal
   tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - WeaponProtoKineticAccelerator
   - ShuttleGunKineticCircuitboard
@@ -25,9 +23,7 @@
     state: incendiarydisplay
   discipline: Arsenal
   tier: 1
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - BoxShotgunIncendiary
   - MagazineRifleIncendiary
@@ -53,9 +49,7 @@
     state: icon
   discipline: Arsenal
   tier: 1
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
   - WeaponLaserCarbine
   # Sunrise-Start
@@ -72,9 +66,7 @@
     state: beanbag
   discipline: Arsenal
   tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - MagazineShotgunBeanbag
   - BoxShellTranquilizer
@@ -94,9 +86,7 @@
     state: uranium
   discipline: Arsenal
   tier: 1
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
   - MagazineRifleUranium
   - MagazinePistolUranium
@@ -121,9 +111,7 @@
     state: icon
   discipline: Arsenal
   tier: 1
-  cost:
-    Default: 8000
-    Scp: 4000
+  cost: 8000
   recipeUnlocks:
   - Truncheon
   - TelescopicShield
@@ -140,9 +128,7 @@
     state: payload-explosive-armed
   discipline: Arsenal
   tier: 1
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - SignallerAdvanced
   - SignalTrigger
@@ -160,9 +146,7 @@
     state: icon
   discipline: Arsenal
   tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - ClothingBackpackElectropack
 
@@ -176,9 +160,7 @@
     state: icon
   discipline: Arsenal
   tier: 2
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - WeaponLaserCannon
   - WeaponMechCombatSolarisLaser #Sunrise-Add
@@ -191,9 +173,7 @@
     state: icon
   discipline: Arsenal
   tier: 2
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - WeaponXrayCannon
   - WeaponMechCombatXray  #Sunrise-Add
@@ -206,9 +186,7 @@
     state: display
   discipline: Arsenal
   tier: 2
-  cost:
-    Default: 7500
-    Scp: 3250
+  cost: 7500
   recipeUnlocks:
   - PKAUpgradeDamage
   - PKAUpgradeRange
@@ -222,9 +200,7 @@
     state: full
   discipline: Arsenal
   tier: 2
-  cost:
-    Default: 10500
-    Scp: 5250
+  cost: 10500
   recipeUnlocks:
   - PowerCageRechargerCircuitboard
   - PowerCageSmall
@@ -246,9 +222,7 @@
     state: icon
   discipline: Arsenal
   tier: 2
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - ClothingBackpackHarmpack
 
@@ -262,9 +236,7 @@
     state: icon
   discipline: Arsenal
   tier: 3
-  cost:
-    Default: 15000
-    Scp: 7500
+  cost: 15000
   recipeUnlocks:
   - WeaponAdvancedLaser
   - PortableRecharger
@@ -279,9 +251,7 @@
     state: icon
   discipline: Arsenal
   tier: 2
-  cost:
-    Default: 8000
-    Scp: 4000
+  cost: 8000
   recipeUnlocks:
   - WeaponTemperatureGun
 
@@ -293,9 +263,7 @@
     state: icon
   discipline: Arsenal
   tier: 3
-  cost:
-    Default: 15000
-    Scp: 7500
+  cost: 15000
   recipeUnlocks:
   - ShellEMPArtillery # Sunrise-Edit
   - PowerCageHigh
