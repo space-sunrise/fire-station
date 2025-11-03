@@ -6,8 +6,14 @@ namespace Content.Shared._Scp.Blinking.ReducedBlinking;
 public sealed partial class ActiveReducedBlinkingUserComponent : Component
 {
     [DataField(required:true), AutoNetworkedField]
-    public TimeSpan BlinkingBonusTime;
+    public TimeSpan BlinkingBonusDuration;
 
-    [DataField(required: true), AutoNetworkedField]
-    public TimeSpan Duration;
+    [ViewVariables]
+    public TimeSpan FirstBonusEndTime;
+
+    [ViewVariables]
+    public TimeSpan AllBonusEndTime;
+
+    [ViewVariables]
+    public bool FirstBonusEndPopupShowed;
 }

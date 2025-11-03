@@ -3,3 +3,9 @@
   files:
   - /Audio/_Scp/Effects/Radio/receive1.ogg
   - /Audio/_Scp/Effects/Radio/receive2.ogg
+
+- type: soundCollection
+  id: EyeDropletsUse
+  files:
+  - /Audio/_Scp/Items/EyeDroplets/Use/sound1.ogg
+  - /Audio/_Scp/Items/EyeDroplets/Use/sound2.ogg
