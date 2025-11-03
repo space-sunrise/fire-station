@@ -17,10 +17,10 @@
       reagents:
       - ReagentId: AmnesiacA
         Quantity: 10
-  - type: CartridgeAmmo #Sunrise-Start
+  - type: CartridgeAmmo
     proto: BulletAmnesiacAGasGrenade
     deleteOnSpawn: true
   - type: SpentAmmoVisuals
   - type: Tag
     tags:
-    - HandGrenadeAmmo #Sunrise-End
+    - HandGrenadeAmmo
