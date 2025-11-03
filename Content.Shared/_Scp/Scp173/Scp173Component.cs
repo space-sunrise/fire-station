@@ -17,7 +17,7 @@ public sealed partial class Scp173Component : Component
     /// Сделано, чтобы дать игрокам фору в начале раунда на раскачку и стартовые подготовления(построения, брифинги)
     /// </summary>
     [DataField]
-    public TimeSpan SafeTime = TimeSpan.FromMinutes(20f);
+    public TimeSpan SafeTime = TimeSpan.FromMinutes(15f);
 
     #region Fast movement action
 
@@ -41,7 +41,7 @@ public sealed partial class Scp173Component : Component
     /// Время, через которое начнется ослепление после активации способности
     /// </summary>
     [DataField]
-    public TimeSpan StartBlindTime = TimeSpan.FromSeconds(7);
+    public TimeSpan StartBlindTime = TimeSpan.FromSeconds(12f);
 
     /// <summary>
     /// Время ослепления после успешного применения способности
@@ -79,11 +79,11 @@ public sealed partial class Scp173Component : Component
     /// Количество реагента, которое необходимо накопить вокруг, засорение открывало шлюзы вокруг.
     /// </summary>
     [ViewVariables]
-    public const int MinTotalSolutionVolume = 500;
+    public const int MinTotalSolutionVolume = 600;
 
     /// <summary>
     /// Количество реагента, которое необходимо накопить вокруг, чтобы начать взрываться при засорении
     /// </summary>
     [ViewVariables]
-    public const int ExtraMinTotalSolutionVolume = 800;
+    public const int ExtraMinTotalSolutionVolume = 900;
 }
