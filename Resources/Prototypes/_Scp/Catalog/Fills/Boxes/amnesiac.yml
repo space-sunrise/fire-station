@@ -9,7 +9,7 @@
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacA
-        amount: 6
+        amount: 3
   - type: Sprite
     layers:
       - state: box
@@ -26,7 +26,7 @@
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacB
-        amount: 6
+        amount: 3
   - type: Sprite
     layers:
       - state: box
