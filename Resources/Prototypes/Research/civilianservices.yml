@@ -8,9 +8,7 @@
     state: seedextractor
   discipline: CivilianServices
   tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - SeedExtractorMachineCircuitboard
   - HydroponicsTrayMachineCircuitboard
@@ -24,9 +22,7 @@
     state: hamtr
   discipline: CivilianServices
   tier: 1
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
   - HamtrHarness
   - HamtrLArm
@@ -46,9 +42,7 @@
     state: cameracase
   discipline: CivilianServices
   tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - SurveillanceCameraRouterCircuitboard
   - SurveillanceCameraWirelessRouterCircuitboard
@@ -67,9 +61,7 @@
     state: television
   discipline: CivilianServices
   tier: 1
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
     - ComputerTelevisionCircuitboard
     - SynthesizerInstrument
@@ -85,9 +77,7 @@
     state: display
   discipline: CivilianServices
   tier: 1
-  cost:
-    Default: 7500
-    Scp: 3500
+  cost: 7500
   recipeUnlocks:
   - FatExtractorMachineCircuitboard
   # - BiofabricatorMachineCircuitboard #Sunrise-edit
@@ -103,9 +93,7 @@
     state: astroice
   discipline: CivilianServices
   tier: 2
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - FauxTileAstroGrass
   - FauxTileMowedAstroGrass
@@ -122,9 +110,7 @@
     state: advmop
   discipline: CivilianServices
   tier: 2
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - AdvMopItem
   - MegaSprayBottle
@@ -138,9 +124,7 @@
     state: honker
   discipline: CivilianServices
   tier: 2
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
   - HonkerHarness
   - HonkerLArm
@@ -160,9 +144,7 @@
     state: mecha_bananamrtr
   discipline: CivilianServices
   tier: 2
-  cost:
-    Default: 6000
-    Scp: 3000
+  cost: 6000
   recipeUnlocks:
   - MechEquipmentHonkerBananaMortar
   - MechEquipmentHonkerMousetrapMortar
@@ -175,9 +157,7 @@
     state: icon
   discipline: CivilianServices
   tier: 2
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - WeaponSprayNozzle
   - ClothingBackpackWaterTank
@@ -190,9 +170,7 @@
     state: display
   discipline: CivilianServices
   tier: 2
-  cost:
-    Default: 15000
-    Scp: 7500
+  cost: 15000
   recipeUnlocks:
   - CargoTelepadMachineCircuitboard
 
@@ -204,9 +182,7 @@
     state: icon
   discipline: CivilianServices
   tier: 2
-  cost:
-    Default: 4000
-    Scp: 2000
+  cost: 4000
   recipeUnlocks:
   - PushHorn
   - BorgModuleAdvancedClowning
@@ -221,8 +197,6 @@
     state: icon
   discipline: CivilianServices
   tier: 3
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - ClothingShoesBootsSpeed

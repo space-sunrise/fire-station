@@ -8,9 +8,7 @@
     state: handdrill
   discipline: Industrial
   tier: 1
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
   - MiningDrill
   - MechEquipmentDrill
@@ -27,9 +25,7 @@
     state: icon
   discipline: Industrial
   tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - RadarConsoleCircuitboard
   - HandHeldMassScanner
@@ -42,9 +38,7 @@
     state: empty
   discipline: Industrial
   tier: 1
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
   - PowerCellHigh
   - TurboItemRechargerCircuitboard
@@ -59,9 +53,7 @@
     state: base
   discipline: Industrial
   tier: 1
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - FlatpackerMachineCircuitboard
 
@@ -73,9 +65,7 @@
     state: building
   discipline: Industrial
   tier: 1
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - AutolatheHyperConvectionMachineCircuitboard
   - ProtolatheHyperConvectionMachineCircuitboard
@@ -90,9 +80,7 @@
     state: portgen0
   discipline: Industrial
   tier: 1
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
   - PortableGeneratorPacmanMachineCircuitboard
   - PortableGeneratorSuperPacmanMachineCircuitboard
@@ -109,9 +97,7 @@
     state: freezerOff
   discipline: Industrial
   tier: 1
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
   - ThermomachineFreezerMachineCircuitBoard
   - GasRecyclerMachineCircuitboard
@@ -124,9 +110,7 @@
     state: ripley
   discipline: Industrial
   tier: 1
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
   - RipleyHarness
   - RipleyLArm
@@ -149,9 +133,7 @@
     state: base
   discipline: Industrial
   tier: 2
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - ShuttleConsoleCircuitboard
   - ThrusterMachineCircuitboard
@@ -166,9 +148,7 @@
     state: icon
   discipline: Industrial
   tier: 2
-  cost:
-    Default: 7500
-    Scp: 3750
+  cost: 7500
   recipeUnlocks:
   - HellfireFreezerMachineCircuitBoard
   - PortableScrubberMachineCircuitBoard
@@ -184,9 +164,7 @@
     state: icon
   discipline: Industrial
   tier: 2
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
     - WelderExperimental
     - PowerDrill
@@ -203,9 +181,7 @@
     state: handdrill
   discipline: Industrial
   tier: 2
-  cost:
-    Default: 12500
-    Scp: 6250
+  cost: 12500
   recipeUnlocks:
     - OreBagOfHolding
     - MiningDrillDiamond
@@ -225,9 +201,7 @@
     state: holding
   discipline: Industrial
   tier: 3
-  cost:
-    Default: 15000
-    Scp: 7500
+  cost: 15000
   recipeUnlocks:
   - ClothingBackpackHolding
   - ClothingBackpackSatchelHolding
@@ -242,9 +216,7 @@
     state: microreactor
   discipline: Industrial
   tier: 3
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - PowerCellMicroreactor
   - PowerCellHyper

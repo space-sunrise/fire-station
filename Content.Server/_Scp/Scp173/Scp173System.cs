@@ -1,7 +1,10 @@
 ﻿using System.Linq;
 using System.Numerics;
+using Content.Server.Doors.Systems;
 using Content.Server.Examine;
 using Content.Server.Explosion.EntitySystems;
+using Content.Server.Fluids.EntitySystems;
+using Content.Server.GameTicking;
 using Content.Server.Ghost;
 using Content.Server.Interaction;
 using Content.Server.Popups;
@@ -13,9 +16,7 @@ using Content.Shared.Chemistry.Components;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Damage;
 using Content.Shared.Doors.Components;
-using Content.Shared.Doors.Systems;
 using Content.Shared.Examine;
-using Content.Shared.Fluids;
 using Content.Shared.Light.Components;
 using Content.Shared.Lock;
 using Content.Shared.Mobs.Components;
@@ -29,22 +30,20 @@ using Robust.Shared.Map;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
-using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Scp173;
 
 public sealed partial class Scp173System : SharedScp173System
 {
     [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly GhostSystem _ghost = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly SharedPuddleSystem _puddle = default!;
+    [Dependency] private readonly PuddleSystem _puddle = default!;
     [Dependency] private readonly LockSystem _lock = default!;
-    [Dependency] private readonly SharedDoorSystem _door = default!;
+    [Dependency] private readonly DoorSystem _door = default!;
     [Dependency] private readonly ExamineSystem _examine = default!;
     [Dependency] private readonly InteractionSystem _interaction = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
@@ -52,6 +51,7 @@ public sealed partial class Scp173System : SharedScp173System
     [Dependency] private readonly AudioSystem _audio= default!;
     [Dependency] private readonly ExplosionSystem _explosion = default!;
     [Dependency] private readonly ScpHelpers _helpers = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
 
     private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
     private readonly SoundSpecifier _clogSound = new SoundPathSpecifier("/Audio/_Scp/Scp173/clog.ogg");
@@ -64,6 +64,8 @@ public sealed partial class Scp173System : SharedScp173System
     {
         base.Initialize();
 
+        SubscribeLocalEvent<Scp173Component, MapInitEvent>(OnInit);
+
         SubscribeLocalEvent<Scp173Component, Scp173DamageStructureAction>(OnStructureDamage);
         SubscribeLocalEvent<Scp173Component, Scp173ClogAction>(OnClog);
         SubscribeLocalEvent<Scp173Component, Scp173FastMovementAction>(OnFastMovement);
@@ -73,10 +75,10 @@ public sealed partial class Scp173System : SharedScp173System
     {
         base.Update(frameTime);
 
-        if (_timing.CurTime < _nextReagentCheck)
+        if (Timing.CurTime < _nextReagentCheck)
             return;
 
-        _nextReagentCheck = _timing.CurTime + ReagentCheckInterval;
+        _nextReagentCheck = Timing.CurTime + ReagentCheckInterval;
 
         var query = EntityQueryEnumerator<Scp173Component>();
         while (query.MoveNext(out var uid, out var scp173))
@@ -87,6 +89,13 @@ public sealed partial class Scp173System : SharedScp173System
             scp173.ReagentVolumeAround = _helpers.GetAroundSolutionVolume(uid, Scp173Component.Reagent, LineOfSightBlockerLevel.None);
             Dirty(uid, scp173);
         }
+    }
+
+    private void OnInit(Entity<Scp173Component> ent, ref MapInitEvent args)
+    {
+        // Выставляем безопасное время
+        ent.Comp.SafeTimeEnd = _gameTicker.RoundStartTimeSpan + ent.Comp.SafeTime;
+        Dirty(ent);
     }
 
     private void OnStructureDamage(Entity<Scp173Component> uid, ref Scp173DamageStructureAction args)
@@ -117,9 +126,7 @@ public sealed partial class Scp173System : SharedScp173System
             return;
         }
 
-        var defileRadius = 4f;
-
-        var lookup = _lookup.GetEntitiesInRange(uid, defileRadius)
+        var lookup = _lookup.GetEntitiesInRange(uid, 4f)
             .Where(ent => _interaction.InRangeUnobstructed(uid.Owner, ent, ExamineSystemShared.ExamineRange));
 
         var entityStorage = GetEntityQuery<EntityStorageComponent>();
@@ -175,6 +182,9 @@ public sealed partial class Scp173System : SharedScp173System
     private void OnClog(Entity<Scp173Component> ent, ref Scp173ClogAction args)
     {
         if (args.Handled)
+            return;
+
+        if (!IsInSafeTime(ent, predicted: false))
             return;
 
         if (IsInScpCage(ent, out var storage))

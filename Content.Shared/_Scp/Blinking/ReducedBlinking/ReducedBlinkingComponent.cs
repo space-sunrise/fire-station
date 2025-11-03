@@ -31,5 +31,6 @@ public sealed partial class ReducedBlinkingComponent : Component
     public int UsageCount = 3;
 
     [DataField]
-    public SoundSpecifier? UseSound;
+    public SoundSpecifier? UseSound = new SoundCollectionSpecifier("EyeDropletsUse",
+        AudioParams.Default.WithMaxDistance(3f).WithVariation(0.125f));
 }
