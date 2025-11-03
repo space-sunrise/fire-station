@@ -4,6 +4,7 @@ using Content.Server.Doors.Systems;
 using Content.Server.Examine;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.Fluids.EntitySystems;
+using Content.Server.GameTicking;
 using Content.Server.Ghost;
 using Content.Server.Interaction;
 using Content.Server.Popups;
@@ -50,6 +51,7 @@ public sealed partial class Scp173System : SharedScp173System
     [Dependency] private readonly AudioSystem _audio= default!;
     [Dependency] private readonly ExplosionSystem _explosion = default!;
     [Dependency] private readonly ScpHelpers _helpers = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
 
     private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
     private readonly SoundSpecifier _clogSound = new SoundPathSpecifier("/Audio/_Scp/Scp173/clog.ogg");
@@ -92,7 +94,7 @@ public sealed partial class Scp173System : SharedScp173System
     private void OnInit(Entity<Scp173Component> ent, ref MapInitEvent args)
     {
         // Выставляем безопасное время
-        ent.Comp.SafeTimeEnd = Timing.CurTime + ent.Comp.SafeTime;
+        ent.Comp.SafeTimeEnd = _gameTicker.RoundStartTimeSpan + ent.Comp.SafeTime;
         Dirty(ent);
     }
 
