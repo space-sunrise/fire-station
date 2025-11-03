@@ -60,21 +60,24 @@ public sealed class ResearchPointsHelper : EntitySystem
         if (CachedCost.TryGetValue(tech.ID, out var cost))
             return cost;
 
-        if (!tech.CostList.ContainsKey(DefaultPoint) && tech.Cost != 0)
-            tech.CostList[DefaultPoint] = tech.Cost;
+        // Новый словарь, чтобы не изменять значение в прототипе
+        var computedCost = new Dictionary<ProtoId<ResearchPointPrototype>, int>(tech.CostList);
 
-        if (!tech.CostList.ContainsKey(ScpPoint) && tech.DefaultToScpScale != 0)
+        if (!computedCost.ContainsKey(DefaultPoint) && tech.Cost != 0)
+            computedCost[DefaultPoint] = tech.Cost;
+
+        if (!computedCost.ContainsKey(ScpPoint) && tech.DefaultToScpScale != 0)
         {
-            if (!tech.CostList.TryGetValue(DefaultPoint, out var defaultCost))
+            if (!computedCost.TryGetValue(DefaultPoint, out var defaultCost))
             {
                 Logger.Error($"Technology '{tech.ID}' has no default research cost defined, but DefaultToScpScale is set to {tech.DefaultToScpScale}. Unable to compute SCP cost.");
-                return tech.CostList;
+                return computedCost;
             }
 
-            tech.CostList[ScpPoint] = (int) Math.Ceiling(defaultCost * tech.DefaultToScpScale);
+            computedCost[ScpPoint] = (int) Math.Ceiling(defaultCost * tech.DefaultToScpScale);
         }
 
-        CachedCost[tech.ID] = tech.CostList;
-        return tech.CostList;
+        CachedCost[tech.ID] = computedCost;
+        return computedCost;
     }
 }

@@ -216,9 +216,8 @@ public abstract class SharedScp173System : EntitySystem
 
         if (!silent)
         {
-            var timeLeft = ent.Comp.SafeTimeEnd.Value - Timing.CurTime;
-            var message = Loc.GetString("scp173-in-safe-time", ("mm", timeLeft.Minutes), ("ss", timeLeft.Seconds));
-
+            var timeLeft = GetTimeLeftMMSS(Timing.CurTime, ent.Comp.SafeTimeEnd.Value);
+            var message = Loc.GetString("scp173-in-safe-time", ("time", timeLeft));
             if (predicted)
                 _popup.PopupPredicted(message, ent, ent);
             else
@@ -226,6 +225,22 @@ public abstract class SharedScp173System : EntitySystem
         }
 
         return false;
+    }
+
+    public static string GetTimeLeftMMSS(TimeSpan now, TimeSpan end)
+    {
+        var timeLeft = end - now;
+        return GetTimeLeftMMSS(timeLeft);
+    }
+
+    public static string GetTimeLeftMMSS(TimeSpan timeLeft)
+    {
+        timeLeft = timeLeft < TimeSpan.Zero ? TimeSpan.Zero : timeLeft;
+
+        var minutes = ((int) timeLeft.TotalMinutes).ToString("D2");
+        var seconds = timeLeft.Seconds.ToString("D2");
+
+        return $"{minutes}:{seconds}";
     }
 
     #endregion
