@@ -6,17 +6,30 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp173;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+/// <summary>
+/// Компонент, отвечающий за способности и ограничения SCP-173.
+/// </summary>
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class Scp173Component : Component
 {
+    /// <summary>
+    /// Безопасное время, в течении которого работают некоторые ограничения, вроде запрета засорения своей камере.
+    /// Сделано, чтобы дать игрокам фору в начале раунда на раскачку и стартовые подготовления(построения, брифинги)
+    /// </summary>
     [DataField]
-    public float WatchRange = 12f;
+    public TimeSpan SafeTime = TimeSpan.FromMinutes(20f);
 
     #region Fast movement action
 
+    /// <summary>
+    /// Максимальный радиус прыжка
+    /// </summary>
     [DataField]
     public float MaxJumpRange = 4f;
 
+    /// <summary>
+    /// Максимальное количество смотрящих, которое позволит совершить прыжок
+    /// </summary>
     [DataField]
     public int MaxWatchers = 1;
 
@@ -24,29 +37,53 @@ public sealed partial class Scp173Component : Component
 
     #region Blind action
 
+    /// <summary>
+    /// Время, через которое начнется ослепление после активации способности
+    /// </summary>
     [DataField]
     public TimeSpan StartBlindTime = TimeSpan.FromSeconds(7);
 
+    /// <summary>
+    /// Время ослепления после успешного применения способности
+    /// </summary>
     [DataField]
     public TimeSpan BlindnessTime = TimeSpan.FromSeconds(7);
 
     #endregion
 
-    [DataField]
-    public SoundSpecifier NeckSnapSound = new SoundCollectionSpecifier("Scp173NeckSnap");
-
+    /// <summary>
+    /// Звук, издающийся при прыжке
+    /// </summary>
     [DataField]
     public SoundSpecifier TeleportationSound = new SoundCollectionSpecifier("FootstepScp173Classic");
 
+    /// <summary>
+    /// Количество жидкости вокруг сущности, рассчитывается для виджета заполненности камеры
+    /// </summary>
     [AutoNetworkedField]
     public FixedPoint2 ReagentVolumeAround;
 
+    /// <summary>
+    /// Время окончания безопасного времени <see cref="SafeTime"/>
+    /// </summary>
+    [ViewVariables, AutoNetworkedField, AutoPausedField]
+    public TimeSpan? SafeTimeEnd;
+
+    /// <summary>
+    /// Прототип реагента, который создает объект при засорении.
+    /// </summary>
     [ViewVariables]
     public static readonly ProtoId<ReagentPrototype> Reagent = "Scp173Reagent";
 
+    /// <summary>
+    /// Количество реагента, которое необходимо накопить вокруг, засорение открывало шлюзы вокруг.
+    /// </summary>
     [ViewVariables]
     public const int MinTotalSolutionVolume = 500;
 
+    /// <summary>
+    /// Количество реагента, которое необходимо накопить вокруг, чтобы начать взрываться при засорении
+    /// </summary>
     [ViewVariables]
     public const int ExtraMinTotalSolutionVolume = 800;
 }

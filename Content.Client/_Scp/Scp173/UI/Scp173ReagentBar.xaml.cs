@@ -21,6 +21,11 @@ public sealed partial class Scp173ReagentBar : PanelContainer
         BackgroundColor = StyleNano.GoodGreenFore,
     };
 
+    private static readonly StyleBoxFlat SafeTimeColor = new()
+    {
+        BackgroundColor = StyleNano.ConcerningOrangeFore,
+    };
+
     public Scp173ReagentBar()
     {
         IoCManager.InjectDependencies(this);
@@ -46,5 +51,26 @@ public sealed partial class Scp173ReagentBar : PanelContainer
 
         ProgressBar.Value = current;
         ProgressLabel.Text = $"{(int) (current / max * 100)}%";
+    }
+
+    // TODO: Оптимизировать, убрав выставление каждый кадр ненужного + сделать независимым от КД
+    public void UpdateSafeTimeInfo(TimeSpan time, TimeSpan? timeLeft)
+    {
+        timeLeft ??= TimeSpan.Zero;
+
+        if (timeLeft <= TimeSpan.Zero)
+        {
+            SafeTimeInfo.Visible = false;
+            return;
+        }
+
+        SafeTimeInfo.Visible = true;
+        SafeTimeInfoLabel.Text = _loc.GetString("scp173-safe-time-title", ("mm", timeLeft.Value.Minutes), ("ss", timeLeft.Value.Seconds));
+
+        SafeTimeProgressBar.MaxValue = (int) time.TotalSeconds;
+        SafeTimeProgressBar.ForegroundStyleBoxOverride = SafeTimeColor;
+
+        SafeTimeProgressBar.Value = (int) (time.TotalSeconds - timeLeft.Value.TotalSeconds);
+        SafeTimeProgressLabel.Text = $"{(int) ((time.TotalSeconds - timeLeft.Value.TotalSeconds) / time.TotalSeconds * 100)}%";
     }
 }

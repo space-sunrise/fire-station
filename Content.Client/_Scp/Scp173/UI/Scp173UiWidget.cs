@@ -12,9 +12,10 @@ public sealed class Scp173UiWidget : UIWidget
         AddChild(_bar);
     }
 
-    public void SetData(float current, float max, float bloatedMax)
+    public void SetData(float current, float max, float bloatedMax, TimeSpan time, TimeSpan? timeLeft)
     {
         _bar.UpdateInfo(current, max, bloatedMax);
+        _bar.UpdateSafeTimeInfo(time, timeLeft);
     }
 
     protected override void ExitedTree()

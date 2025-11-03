@@ -10,11 +10,13 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Events;
 using Content.Shared.Popups;
 using Content.Shared.Storage.Components;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp173;
 
 public abstract class SharedScp173System : EntitySystem
 {
+    [Dependency] protected readonly IGameTiming Timing = default!;
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] protected readonly EyeWatchingSystem Watching = default!;
@@ -149,6 +151,7 @@ public abstract class SharedScp173System : EntitySystem
     /// <summary>
     /// Находится ли 173 в своей камере. Проверяется по наличию рядом спавнера работы
     /// </summary>
+    /// TODO: Оптимизировать, использовав EntityQueryEnumerator и ранний выход
     public bool IsContained(EntityUid uid)
     {
         return _lookup.GetEntitiesInRange<Scp173BlockStructureDamageComponent>(Transform(uid).Coordinates, ContainmentRoomSearchRadius)
@@ -201,6 +204,28 @@ public abstract class SharedScp173System : EntitySystem
             .ToHashSet();
 
         return viewers.Count != 0;
+    }
+
+    /// <summary>
+    /// Проверяет, находится ли SCP-173 в "безопасного времени", когда он не может засорять свою камеру
+    /// </summary>
+    public bool IsInSafeTime(Entity<Scp173Component> ent, bool silent = false, bool predicted = true)
+    {
+        if (Timing.CurTime >= ent.Comp.SafeTimeEnd || !ent.Comp.SafeTimeEnd.HasValue)
+            return true;
+
+        if (!silent)
+        {
+            var timeLeft = ent.Comp.SafeTimeEnd.Value - Timing.CurTime;
+            var message = Loc.GetString("scp173-in-safe-time", ("mm", timeLeft.Minutes), ("ss", timeLeft.Seconds));
+
+            if (predicted)
+                _popup.PopupPredicted(message, ent, ent);
+            else
+                _popup.PopupEntity(message, ent, ent);
+        }
+
+        return false;
     }
 
     #endregion
