@@ -4,8 +4,8 @@ meta:
   engineVersion: 266.0.0
   forkId: fire_station
   forkVersion: 65e6d43ace866c9e5b8c486eee09c226862d5f99
-  time: 11/03/2025 23:06:42
-  entityCount: 19322
+  time: 11/04/2025 13:46:17
+  entityCount: 19323
 maps:
 - 1
 grids:
@@ -10825,7 +10825,7 @@ entities:
       rot: 1.5707963267948966 rad
       pos: -14.5,-28.5
       parent: 2
-  - uid: 17253
+  - uid: 17254
     components:
     - type: Transform
       pos: -34.5,-4.5
@@ -23351,6 +23351,11 @@ entities:
     components:
     - type: Transform
       pos: -41.5,-13.5
+      parent: 2
+  - uid: 17252
+    components:
+    - type: Transform
+      pos: 38.5,-26.5
       parent: 2
 - proto: CableHV
   entities:
@@ -77489,7 +77494,7 @@ entities:
     - type: GravityAffected
       weightless: False
     - type: Door
-      secondsUntilStateChange: -66614.37
+      secondsUntilStateChange: -66779.555
       state: Opening
   - uid: 10269
     components:
@@ -89372,7 +89377,7 @@ entities:
     - type: Airtight
       airBlocked: False
     - type: Door
-      secondsUntilStateChange: -55719.074
+      secondsUntilStateChange: -55884.258
       state: Opening
     - type: DeviceLinkSource
       linkedPorts:
@@ -89526,7 +89531,7 @@ entities:
     - type: GravityAffected
       weightless: False
     - type: Door
-      secondsUntilStateChange: -169981.47
+      secondsUntilStateChange: -170146.66
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -89548,7 +89553,7 @@ entities:
     - type: GravityAffected
       weightless: False
     - type: Door
-      secondsUntilStateChange: -170916.17
+      secondsUntilStateChange: -171081.36
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -89643,7 +89648,7 @@ entities:
     - type: GravityAffected
       weightless: False
     - type: Door
-      secondsUntilStateChange: -102535.664
+      secondsUntilStateChange: -102700.85
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -89787,7 +89792,7 @@ entities:
     - type: GravityAffected
       weightless: False
     - type: Door
-      secondsUntilStateChange: -21605.592
+      secondsUntilStateChange: -21770.78
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -90116,7 +90121,7 @@ entities:
     - type: GravityAffected
       weightless: False
     - type: Door
-      secondsUntilStateChange: -162732.67
+      secondsUntilStateChange: -162897.86
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -90219,7 +90224,7 @@ entities:
       pos: 3.5,-0.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -15154.332
+      secondsUntilStateChange: -15319.519
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -90573,7 +90578,7 @@ entities:
     - type: GravityAffected
       weightless: False
     - type: Door
-      secondsUntilStateChange: -105467.81
+      secondsUntilStateChange: -105633
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -93999,7 +94004,7 @@ entities:
     - type: GravityAffected
       weightless: False
     - type: Door
-      secondsUntilStateChange: -67014.87
+      secondsUntilStateChange: -67180.055
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -94029,7 +94034,7 @@ entities:
     - type: GravityAffected
       weightless: False
     - type: Door
-      secondsUntilStateChange: -190479.05
+      secondsUntilStateChange: -190644.23
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
@@ -134124,7 +134129,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -170923.17
+      secondsUntilStateChange: -171088.36
       state: Opening
     - type: Airlock
       autoClose: False
@@ -134790,7 +134795,7 @@ entities:
       lastSignals:
         DoorStatus: True
     - type: Door
-      secondsUntilStateChange: -153707.94
+      secondsUntilStateChange: -153873.12
       state: Opening
     - type: Airlock
       autoClose: False
@@ -144652,7 +144657,7 @@ entities:
       weightless: False
 - proto: ToolboxEmergencyFilled
   entities:
-  - uid: 17252
+  - uid: 17253
     components:
     - type: Transform
       pos: -44.4455,-28.700172
