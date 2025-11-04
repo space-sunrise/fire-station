@@ -157,7 +157,7 @@
   - Ammo
   completetime: 10
   materials:
-    Steel: 1250
+    Steel: 300
     Plastic: 100
 
 - type: latheRecipe

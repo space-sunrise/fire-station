@@ -1,8 +1,0 @@
-## Recipes
-
-- type: latheRecipe
-  parent: BaseAmmoRecipe
-  id: MagazineP90
-  result: MagazineP90
-  materials:
-    Steel: 300
