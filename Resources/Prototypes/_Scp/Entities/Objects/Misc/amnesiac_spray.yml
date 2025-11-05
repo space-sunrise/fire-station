@@ -1,0 +1,18 @@
+- type: entity
+  parent: BasePepperSpray
+  id: AmnesiacSpray
+  name: amnesiac spray
+  description: It's a canister with liquid inside.
+  components:
+  - type: Sprite
+    layers:
+    - state: item
+    - state: overlay
+      color: "#ffd900"
+  - type: SolutionContainerManager
+    solutions:
+      spray:
+        maxVol: 40
+        reagents:
+        - ReagentId: AmnesiacA
+          Quantity: 20

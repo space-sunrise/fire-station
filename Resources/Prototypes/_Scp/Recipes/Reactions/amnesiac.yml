@@ -20,7 +20,7 @@
     Dylomet:
       amount: 1
     RawAmnesiac:
-      amount: 1
+      amount: 2
   products:
     AmnesiacD: 3
 

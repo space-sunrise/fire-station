@@ -204,7 +204,6 @@
     - id: DoorRemoteClassD
     - id: RubberStampSecurityCommander
     - id: SecurityTechFabCircuitboard
-    - id: WeaponDisabler
     - id: WantedListCartridge
     - id: DrinkHosFlask
     - id: FlippoLighterSunriseHos

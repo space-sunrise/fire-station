@@ -100,3 +100,11 @@
         prob: 0.5
       - id: ClothingOuterCoatLabSecurityMedic
         prob: 0.5
+      - id: BoxVialAmnesiacA
+      - id: BoxVialAmnesiacB
+      - id: ChemistryVialAmnesiacC
+        amount: 2
+      - id: ChemistryVialAmnesiacD
+      - id: AmnesiacAGasGrenade
+      - id: AmnesiacAGasGrenade
+        prob: 0.5
