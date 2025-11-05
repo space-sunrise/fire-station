@@ -157,7 +157,7 @@
   - Ammo
   completetime: 10
   materials:
-    Steel: 1250
+    Steel: 300 #Fire Edit
     Plastic: 100
 
 - type: latheRecipe
