@@ -14,6 +14,8 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
+  - type: Clothing # Fire Edit
+    sprite: _Sunrise/Objects/Weapons/Guns/SMGs/p90.rsi
   - type: GunWieldBonus
     minAngle: -2.9
     maxAngle: -30
