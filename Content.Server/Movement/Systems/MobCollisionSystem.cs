@@ -17,7 +17,6 @@ public sealed class MobCollisionSystem : SharedMobCollisionSystem
         SubscribeLocalEvent<MobCollisionComponent, MobCollisionMessage>(OnServerMobCollision);
     }
 
-
     private void OnServerMobCollision(Entity<MobCollisionComponent> ent, ref MobCollisionMessage args)
     {
         MoveMob((ent.Owner, ent.Comp, Transform(ent.Owner)), args.Direction, args.SpeedModifier);
