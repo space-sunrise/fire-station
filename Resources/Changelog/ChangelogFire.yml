@@ -7238,3 +7238,14 @@
   id: 293
   time: '2025-11-05T12:10:04.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/655
+- author: ThereDrD
+  changes:
+  - message: "\u0423\u0431\u0440\u0430\u043D\u044B \u043A\u043E\u043B\u043B\u0438\u0437\
+      \u0438 \u0443 \u043C\u0430\u043B\u0435\u043D\u044C\u043A\u0438\u0445 \u043C\u043E\
+      \u0431\u043E\u0432(\u043F\u044B\u043B\u0435\u0441\u043E\u0441\u043E\u0432, \u043C\
+      \u044B\u0448\u0435\u0439, \u043A\u0430\u043F\u043B\u0435\u0433\u043B\u0430\u0437\
+      \u0438\u043A\u043E\u0432 \u0438 \u043F\u0440\u043E\u0447\u0438\u0445)"
+    type: Remove
+  id: 294
+  time: '2025-11-06T03:41:54.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/656
