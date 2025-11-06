@@ -28,7 +28,7 @@ public sealed class NoSmallMobsCollisionSystem : EntitySystem
 
         // мелкие мобы не должны сталкиваться, в идеале сделать столкновение мелкие-мелкие и большие-большие,
         // но ради оптимизации можно просто вырубить ее у мелких, все равно всем похуй будет
-        if (physics.CollisionMask == (int) CollisionGroup.SmallMobMask)
+        if ((physics.CollisionMask & (int)CollisionGroup.SmallMobMask) != 0)
             RemComp<MobCollisionComponent>(ent);
     }
 }
