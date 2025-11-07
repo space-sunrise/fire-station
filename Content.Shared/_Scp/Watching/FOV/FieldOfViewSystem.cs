@@ -92,19 +92,18 @@ public sealed partial class FieldOfViewSystem : EntitySystem
         var radConeFeather = MathHelper.DegreesToRadians(angleTolerance);
 
         var angleInvisibility = 0f;
+        var halfCone = radConeAngle * 0.5f;
         // Если вдруг angleTolerance будет 0, то нам нужно применять другую логику, чтобы не выйти на деление на 0.
         if (radConeFeather > 0f)
         {
             // Вычисляем "коэффициент невидимости" по углу.
             // 0 = в центре конуса, 1 = за пределами конуса + допуска.
-            var halfCone = radConeAngle * 0.5f;
             var halfFeather = radConeFeather * 0.5f;
             var angleDeviation = Math.Abs(angleDist.Theta) - halfCone + halfFeather;
             angleInvisibility = (float) Math.Clamp(angleDeviation, 0f, radConeFeather) / radConeFeather;
         }
         else
         {
-            var halfCone = radConeAngle * 0.5f;
             angleInvisibility = Math.Abs(angleDist.Theta) > halfCone ? 1f : 0f;
         }
 

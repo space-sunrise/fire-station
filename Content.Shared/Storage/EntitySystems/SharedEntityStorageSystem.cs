@@ -386,9 +386,15 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         if (containerAttemptEvent.Cancelled)
             return false;
 
+        // Fire edit start - поддержка блеклиста
+
         // Consult the whitelist. The whitelist ignores the default assumption about how entity storage works.
-        if (component.Whitelist != null)
-            return _whitelistSystem.IsValid(component.Whitelist, toInsert);
+        if (!_whitelistSystem.IsWhitelistPassOrNull(component.Whitelist, toInsert))
+            return false;
+
+        if (_whitelistSystem.IsBlacklistPass(component.Blacklist, toInsert))
+            return false;
+        // Fire edit end
 
         // The inserted entity must be a mob or an item.
         return HasComp<MobStateComponent>(toInsert) || HasComp<ItemComponent>(toInsert);
