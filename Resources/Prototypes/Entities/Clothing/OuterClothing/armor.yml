@@ -312,7 +312,7 @@
     color: "#80ff80"
     radius: 5
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
     autoRot: true
     netsync: false
   - type: LightBehaviour

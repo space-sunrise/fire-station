@@ -152,7 +152,7 @@
     color: "#00FFFFFF"
     radius: 5
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
     autoRot: true
     netsync: false
   - type: LightBehaviour
@@ -209,7 +209,7 @@
     color: "#00FFFFFF"
     radius: 5
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
     autoRot: true
     netsync: false
   - type: LightBehaviour
@@ -266,7 +266,7 @@
     color: "#FFC458FF"
     radius: 5
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
     autoRot: true
     netsync: false
   - type: LightBehaviour
@@ -323,7 +323,7 @@
     color: "#00FFFFFF"
     radius: 5
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
     autoRot: true
     netsync: false
   - type: LightBehaviour
@@ -380,7 +380,7 @@
     color: "#ADFFECFF"
     radius: 5
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
     autoRot: true
     netsync: false
   - type: LightBehaviour
@@ -437,7 +437,7 @@
     color: "#CBADFFFF"
     radius: 5
     energy: 2
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
     autoRot: true
     netsync: false
   - type: LightBehaviour
