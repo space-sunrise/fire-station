@@ -20,7 +20,7 @@ void fragment(){
 
     // IgnoreRadius pass
     // radial is 1 inside the safe circle, 0 outside.
-    mediump float radial = zCircleGradient(pixelSize, finalCoords, 1.0, (ConeIgnoreFeather) / 1.0, (ConeIgnoreRadius / pow(ConeIgnoreFeather, 0.85)), 1.0);
+    mediump float radial = zCircleGradient(pixelSize, finalCoords, 1.0, ConeIgnoreFeather, (ConeIgnoreRadius / ConeIgnoreFeather), 1.0);
     mask -= radial;
 
     // Setup for cone pass

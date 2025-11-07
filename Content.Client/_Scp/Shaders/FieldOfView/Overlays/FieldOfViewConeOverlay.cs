@@ -50,7 +50,7 @@ public sealed class FieldOfViewConeOverlay : Overlay
 
     private static readonly Vector2 OffsetVectorFix = new (1, -1);
 
-    private const float AdditionalMarginMeters = 0.3f;
+    private const float AdditionalMarginMeters = 0.4f;
 
     public FieldOfViewConeOverlay()
     {
