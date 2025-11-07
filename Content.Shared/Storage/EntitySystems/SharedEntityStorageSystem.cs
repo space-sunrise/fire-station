@@ -392,7 +392,7 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         if (!_whitelistSystem.IsWhitelistPassOrNull(component.Whitelist, toInsert))
             return false;
 
-        if (!_whitelistSystem.IsWhitelistFail(component.Blacklist, toInsert))
+        if (_whitelistSystem.IsBlacklistPass(component.Blacklist, toInsert))
             return false;
         // Fire edit end
 

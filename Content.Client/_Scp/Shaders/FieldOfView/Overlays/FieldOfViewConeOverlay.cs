@@ -50,6 +50,9 @@ public sealed class FieldOfViewConeOverlay : Overlay
 
     private static readonly Vector2 OffsetVectorFix = new (1, -1);
 
+    /// <summary>
+    /// Дополнительный отступ в метрах для радиуса и размытия конуса
+    /// </summary>
     private const float AdditionalMarginMeters = 0.4f;
 
     public FieldOfViewConeOverlay()
