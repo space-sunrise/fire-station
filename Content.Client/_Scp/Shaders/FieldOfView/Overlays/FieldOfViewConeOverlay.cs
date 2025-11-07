@@ -50,6 +50,8 @@ public sealed class FieldOfViewConeOverlay : Overlay
 
     private static readonly Vector2 OffsetVectorFix = new (1, -1);
 
+    private const float AdditionalMarginMeters = 0.3f;
+
     public FieldOfViewConeOverlay()
     {
         IoCManager.InjectDependencies(this);
@@ -137,8 +139,8 @@ public sealed class FieldOfViewConeOverlay : Overlay
         _shader.SetParameter("ViewAngle", (float) fov.CurrentAngle.Theta);
         _shader.SetParameter("ConeAngle", fov.Angle);
         _shader.SetParameter("ConeFeather", fov.AngleFeather);
-        _shader.SetParameter("ConeIgnoreRadius", (fov.ConeIgnoreRadius - fov.ConeIgnoreFeather) * 50f);
-        _shader.SetParameter("ConeIgnoreFeather", Math.Max(fov.ConeIgnoreFeather * 200f, 8f));
+        _shader.SetParameter("ConeIgnoreRadius", (fov.ConeIgnoreRadius + AdditionalMarginMeters) * EyeManager.PixelsPerMeter);
+        _shader.SetParameter("ConeIgnoreFeather", (fov.ConeIgnoreFeather + AdditionalMarginMeters) * EyeManager.PixelsPerMeter);
         _shader.SetParameter("Offset", offset);
 
         handle.UseShader(_shader);

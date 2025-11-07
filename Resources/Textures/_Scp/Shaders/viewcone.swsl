@@ -21,11 +21,11 @@ void fragment(){
 
     // IgnoreRadius pass
     // radial is 1 inside the safe circle, 0 outside.
-    mediump float radial = zCircleGradient(pixelSize, finalCoords, 1.0, (ConeIgnoreFeather) / 1.0 / Zoom, (ConeIgnoreRadius / pow(ConeIgnoreFeather, 0.85) / Zoom), 1.0);
+    mediump float radial = zCircleGradient(pixelSize, finalCoords, 1.0, (ConeIgnoreFeather) / 1.0, (ConeIgnoreRadius / pow(ConeIgnoreFeather, 0.85) / Zoom), 1.0);
     mask -= radial;
 
     // Setup for cone pass
-    highp vec2 delta = finalCoords - (pixelSize * 0.5); // Оставляем highp для точности геометрии
+    highp vec2 delta = finalCoords - (pixelSize * 0.5);
     mediump float deltaAngle = atan(delta.x, delta.y);
     deltaAngle += ViewAngle;
     deltaAngle = mod(deltaAngle, radians(360.0));
