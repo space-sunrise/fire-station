@@ -10,40 +10,26 @@ uniform highp float ViewAngle;
 uniform highp vec2 Offset;
 
 void fragment(){
-    highp vec2 pixelSize = vec2(1.0/SCREEN_PIXEL_SIZE.x, 1.0/SCREEN_PIXEL_SIZE.y);
+    highp vec2 pixelSize = vec2(1.0 / SCREEN_PIXEL_SIZE.x, 1.0 / SCREEN_PIXEL_SIZE.y);
     mediump vec4 color = texture(SCREEN_TEXTURE, UV);
-
     highp vec2 finalCoords = FRAGCOORD.xy - Offset.xy;
 
-    // --- This is the new mechanic for calculating the effect mask ---
     mediump float mask = 1.0;
-
-    // IgnoreRadius pass
-    // radial is 1 inside the safe circle, 0 outside.
     mediump float radial = zCircleGradient(pixelSize, finalCoords, 1.0, ConeIgnoreFeather, (ConeIgnoreRadius / ConeIgnoreFeather), 1.0);
     mask -= radial;
 
-    // Setup for cone pass
-    highp vec2 delta = finalCoords - (pixelSize * 0.5);
-    mediump float deltaAngle = atan(delta.x, delta.y);
-    deltaAngle += ViewAngle;
-    deltaAngle = mod(deltaAngle, radians(360.0));
-    deltaAngle = abs(radians(180.0) - mod(deltaAngle, radians(360.0)));
+    highp vec2 delta = normalize(finalCoords - (pixelSize * 0.5));
+    highp vec2 viewDir = vec2(sin(ViewAngle), -cos(ViewAngle));
 
-    // The pass that actually renders the cone
-    mediump float radAngle = radians(ConeAngle);
-    mediump float radFeather = radians(ConeFeather) + pow(1.0 - radial, 2.0);
-    // deltaAngle becomes the cone visibility factor (1 inside, 0 outside)
-    deltaAngle = 1.0 - clamp((deltaAngle - (radAngle * 0.5)) + (radFeather * 0.5), 0.0, radFeather) / radFeather;
+    mediump float cosDelta = dot(delta, viewDir);
+    mediump float coneLimit = cos(radians(ConeAngle * 0.5 + 5.0));
+    mediump float deltaAngle = smoothstep(coneLimit, coneLimit + (radians(ConeFeather) * 0.5), cosDelta);
+
     mask += clamp(deltaAngle, 0.0, 1.0);
-
-    // The final mask: 1.0 means full effect (out of view), 0.0 means no effect (in view).
     mask = 1.0 - clamp(mask, 0.0, 1.0);
 
     mediump vec4 blurredColor = texture(BLURRED_TEXTURE, UV);
-    // Mix blurred color with black based on opacity to create the "out of FOV" color
     mediump vec4 outOfFovColor = mix(blurredColor, vec4(0.0, 0.0, 0.0, 1.0), coneOpacity);
 
-    // Mix the original screen color with the "out of FOV" color using the calculated mask
     COLOR = vec4(mix(color.rgb, outOfFovColor.rgb, mask), color.a);
 }
