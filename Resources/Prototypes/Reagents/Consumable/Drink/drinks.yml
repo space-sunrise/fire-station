@@ -497,7 +497,7 @@
   name: reagent-name-water
   parent: BaseDrink
   desc: reagent-desc-water
-  evaporationSpeed: 1
+  evaporationSpeed: 0.15
   absorbent: true
   physicalDesc: reagent-physical-desc-translucent
   flavor: water
