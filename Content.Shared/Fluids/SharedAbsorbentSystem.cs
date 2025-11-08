@@ -13,6 +13,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.Fluids;
 
@@ -22,6 +23,7 @@ namespace Content.Shared.Fluids;
 public abstract class SharedAbsorbentSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly IGameTiming _timing = default!; // Fire added
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popups = default!;
     [Dependency] protected readonly SharedPuddleSystem Puddle = default!;
@@ -108,6 +110,9 @@ public abstract class SharedAbsorbentSystem : EntitySystem
     {
         var soundPlayed = false;
 
+        // Fire added - чтобы не спамить анимацией, когда ничего не убрали
+        var cleanedSomething = false;
+
         foreach (var (footstepUid, comp) in footPrints)
         {
             if (!SolutionContainer.ResolveSolution(footstepUid, comp.ContainerName, ref comp.SolutionContainer, out var targetStepSolution) || targetStepSolution.Volume <= 0)
@@ -142,11 +147,13 @@ public abstract class SharedAbsorbentSystem : EntitySystem
             SolutionContainer.AddSolution(comp.SolutionContainer.Value, absorberSplit);
             SolutionContainer.AddSolution(absorberSoln, puddleSplit);
 
-            if (!soundPlayed)
+            // Fire edit start - фикс спама звуками
+            if (!soundPlayed && _timing.IsFirstTimePredicted)
             {
                 soundPlayed = true; // to prevent sound spam
-                _audio.PlayPvs(absorber.PickupSound, footstepUid);
+                _audio.PlayPredicted(absorber.PickupSound, footstepUid, user);
             }
+            // Fire edit end
 
             // Без этой хуйни некоторые лужи будут пустыми и не будут удаляться
             var ev = new SolutionContainerChangedEvent(targetStepSolution, comp.ContainerName);
@@ -156,13 +163,22 @@ public abstract class SharedAbsorbentSystem : EntitySystem
             var absorberEv = new AbsorberFootPrintEvent(user);
             RaiseLocalEvent(user, ref absorberEv);
             // Sunrise-End
+
+            // Fire added start - фикс анимации
+            cleanedSomething = true;
+            // Fire added end
         }
+
+        // Fire added start - чтобы не спамить анимацией, когда ничего не убрали
+        if (!cleanedSomething)
+            return;
+        // Fire added end
 
         var userXform = Transform(user);
         var localPos = Vector2.Transform(targetCoords.Position, _transform.GetWorldMatrix(userXform));
         localPos = userXform.LocalRotation.RotateVec(localPos);
 
-        _melee.DoLunge(user, used, Angle.Zero, localPos, null, false);
+        _melee.DoLunge(user, used, Angle.Zero, localPos, null);
     }
     // Sunrise-End
 
