@@ -13,6 +13,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.Fluids;
 
@@ -22,6 +23,7 @@ namespace Content.Shared.Fluids;
 public abstract class SharedAbsorbentSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _proto = default!;
+    [Dependency] private readonly IGameTiming _timing = default!; // Fire added
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popups = default!;
     [Dependency] protected readonly SharedPuddleSystem Puddle = default!;
@@ -106,7 +108,17 @@ public abstract class SharedAbsorbentSystem : EntitySystem
         Entity<SolutionComponent> absorberSoln, HashSet<Entity<FootprintComponent>> footPrints,
         EntityCoordinates targetCoords)
     {
+        // Fire added start - поддержка отката
+        if (_useDelay.IsDelayed(used))
+            return;
+        // Fire added end
+
         var soundPlayed = false;
+
+        // Fire added start - чтобы не спамить анимацией, когда ничего не убрали + добавил КД
+        var cleanedSomething = false;
+        Solution totalSolution = new ();
+        // Fire added end
 
         foreach (var (footstepUid, comp) in footPrints)
         {
@@ -142,11 +154,17 @@ public abstract class SharedAbsorbentSystem : EntitySystem
             SolutionContainer.AddSolution(comp.SolutionContainer.Value, absorberSplit);
             SolutionContainer.AddSolution(absorberSoln, puddleSplit);
 
-            if (!soundPlayed)
+            // Fire added start - накапливаем реагенты, чтобы задать КД
+            totalSolution.AddSolution(puddleSplit, _proto);
+            // Fire added end
+
+            // Fire edit start - фикс спама звуками
+            if (!soundPlayed && _timing.IsFirstTimePredicted)
             {
                 soundPlayed = true; // to prevent sound spam
-                _audio.PlayPvs(absorber.PickupSound, footstepUid);
+                _audio.PlayPredicted(absorber.PickupSound, footstepUid, user);
             }
+            // Fire edit end
 
             // Без этой хуйни некоторые лужи будут пустыми и не будут удаляться
             var ev = new SolutionContainerChangedEvent(targetStepSolution, comp.ContainerName);
@@ -156,13 +174,25 @@ public abstract class SharedAbsorbentSystem : EntitySystem
             var absorberEv = new AbsorberFootPrintEvent(user);
             RaiseLocalEvent(user, ref absorberEv);
             // Sunrise-End
+
+            // Fire added start - фикс анимации
+            cleanedSomething = true;
+            // Fire added end
         }
+
+        // Fire added start - чтобы не спамить анимацией, когда ничего не убрали + задаем КД
+        if (!cleanedSomething)
+            return;
+
+        if (totalSolution.Volume != FixedPoint2.Zero)
+            CalculateAndSetCooldown(used, totalSolution);
+        // Fire added end
 
         var userXform = Transform(user);
         var localPos = Vector2.Transform(targetCoords.Position, _transform.GetWorldMatrix(userXform));
         localPos = userXform.LocalRotation.RotateVec(localPos);
 
-        _melee.DoLunge(user, used, Angle.Zero, localPos, null, false);
+        _melee.DoLunge(user, used, Angle.Zero, localPos, null);
     }
     // Sunrise-End
 
@@ -450,8 +480,12 @@ public abstract class SharedAbsorbentSystem : EntitySystem
 
         _audio.PlayPredicted(absorber.PickupSound, isRemoved ? absorbEnt : target, user);
 
+        // Fire edit start - динамически изменяемый откат в зависимости от количества взятых реагентов
         if (useDelay != null)
-            _useDelay.TryResetDelay((absorbEnt, useDelay));
+        {
+            CalculateAndSetCooldown(absorbEnt.AsType(), puddleSplit);
+        }
+        // Fire edit end
 
         var userXform = Transform(user);
         var targetPos = _transform.GetWorldPosition(target);
@@ -467,4 +501,19 @@ public abstract class SharedAbsorbentSystem : EntitySystem
 
         return true;
     }
+
+    // Fire added start - динамически изменяемый откат в зависимости от количества взятых реагентов
+    private void CalculateAndSetCooldown(Entity<UseDelayComponent?> ent, Solution solution)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
+        var prev = ent.Comp.Delay;
+        var newDelay = Math.Max(prev.TotalSeconds, solution.GetAbsorbCooldown(_proto));
+
+        _useDelay.SetLength(ent, TimeSpan.FromSeconds(newDelay));
+        _useDelay.TryResetDelay(ent.AsType());
+        _useDelay.SetLength(ent, prev);
+    }
+    // Fire added end
 }

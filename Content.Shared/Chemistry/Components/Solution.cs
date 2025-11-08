@@ -962,5 +962,17 @@ namespace Content.Shared.Chemistry.Components
             }
             return dict;
         }
+
+        public double GetAbsorbCooldown(IPrototypeManager protoMan)
+        {
+            var total = 0d;
+            foreach (var reagentData in Contents)
+            {
+                var proto = protoMan.Index<ReagentPrototype>(reagentData.Reagent.Prototype);
+                total += proto.AbsorbCooldownPerUnit * reagentData.Quantity.Double();
+            }
+
+            return total;
+        }
     }
 }
