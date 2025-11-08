@@ -8,6 +8,5 @@
   flavor: horrible
   physicalDesc: reagent-physical-desc-slimy
   synthesisable: true
-  absorbCooldownPerUnit: 0.5
+  absorbCooldownPerUnit: 0.4
   viscosity: 0.3
-
