@@ -174,7 +174,7 @@ namespace Content.Shared.Chemistry.Reagent
         public bool Synthesisable;
 
         [DataField]
-        public double AbsorbCooldownPerUnit = 0.1f;
+        public double AbsorbCooldownPerUnit = 0.1d;
         // Fire added end
 
         public FixedPoint2 ReactionTile(TileRef tile, FixedPoint2 reactVolume, IEntityManager entityManager, List<ReagentData>? data)
