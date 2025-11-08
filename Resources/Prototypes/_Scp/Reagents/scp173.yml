@@ -6,8 +6,8 @@
   desc: reagent-desc-scp173
   color: "#6E1B1B"
   flavor: horrible
-  recognizable: true
   physicalDesc: reagent-physical-desc-slimy
   synthesisable: true
+  absorbCooldownPerUnit: 0.5
   viscosity: 0.3
 

@@ -13,6 +13,7 @@
   metamorphicChangeColor: false
   recognizable: true
   standsout: true
+  absorbCooldownPerUnit: 0.25 # Fire added
   physicalDesc: reagent-physical-desc-ferrous
   metabolisms:
     Drink:

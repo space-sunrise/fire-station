@@ -169,12 +169,13 @@ namespace Content.Shared.Chemistry.Reagent
         [DataField]
         public SoundSpecifier FootstepSound = new SoundCollectionSpecifier("FootstepPuddle");
 
-        // Fire edit start - синтезатор реагентов
-
+        // Fire added start - синтезатор реагентов и усложнение чистки
         [DataField]
         public bool Synthesisable;
 
-        // Fire edit end
+        [DataField]
+        public double AbsorbCooldownPerUnit = 0.1f;
+        // Fire added end
 
         public FixedPoint2 ReactionTile(TileRef tile, FixedPoint2 reactVolume, IEntityManager entityManager, List<ReagentData>? data)
         {

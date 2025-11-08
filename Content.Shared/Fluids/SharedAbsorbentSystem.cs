@@ -108,10 +108,17 @@ public abstract class SharedAbsorbentSystem : EntitySystem
         Entity<SolutionComponent> absorberSoln, HashSet<Entity<FootprintComponent>> footPrints,
         EntityCoordinates targetCoords)
     {
+        // Fire added start - поддержка отката
+        if (_useDelay.IsDelayed(used))
+            return;
+        // Fire added end
+
         var soundPlayed = false;
 
-        // Fire added - чтобы не спамить анимацией, когда ничего не убрали
+        // Fire added start - чтобы не спамить анимацией, когда ничего не убрали + добавил КД
         var cleanedSomething = false;
+        Solution totalSolution = new ();
+        // Fire added end
 
         foreach (var (footstepUid, comp) in footPrints)
         {
@@ -147,6 +154,10 @@ public abstract class SharedAbsorbentSystem : EntitySystem
             SolutionContainer.AddSolution(comp.SolutionContainer.Value, absorberSplit);
             SolutionContainer.AddSolution(absorberSoln, puddleSplit);
 
+            // Fire added start - накапливаем реагенты, чтобы задать КД
+            totalSolution.AddSolution(puddleSplit, _proto);
+            // Fire added end
+
             // Fire edit start - фикс спама звуками
             if (!soundPlayed && _timing.IsFirstTimePredicted)
             {
@@ -169,9 +180,12 @@ public abstract class SharedAbsorbentSystem : EntitySystem
             // Fire added end
         }
 
-        // Fire added start - чтобы не спамить анимацией, когда ничего не убрали
+        // Fire added start - чтобы не спамить анимацией, когда ничего не убрали + задаем КД
         if (!cleanedSomething)
             return;
+
+        if (totalSolution.Volume != FixedPoint2.Zero)
+            CalculateAndSetCooldown(used, totalSolution);
         // Fire added end
 
         var userXform = Transform(user);
@@ -466,8 +480,12 @@ public abstract class SharedAbsorbentSystem : EntitySystem
 
         _audio.PlayPredicted(absorber.PickupSound, isRemoved ? absorbEnt : target, user);
 
+        // Fire edit start - динамически изменяемый откат в зависимости от количества взятых реагентов
         if (useDelay != null)
-            _useDelay.TryResetDelay((absorbEnt, useDelay));
+        {
+            CalculateAndSetCooldown(absorbEnt.AsType(), puddleSplit);
+        }
+        // Fire edit end
 
         var userXform = Transform(user);
         var targetPos = _transform.GetWorldPosition(target);
@@ -483,4 +501,19 @@ public abstract class SharedAbsorbentSystem : EntitySystem
 
         return true;
     }
+
+    // Fire added start - динамически изменяемый откат в зависимости от количества взятых реагентов
+    private void CalculateAndSetCooldown(Entity<UseDelayComponent?> ent, Solution solution)
+    {
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
+        var prev = ent.Comp.Delay;
+        var newDelay = Math.Max(prev.TotalSeconds, solution.GetAbsorbCooldown(_proto));
+
+        _useDelay.SetLength(ent, TimeSpan.FromSeconds(newDelay));
+        _useDelay.TryResetDelay(ent.AsType());
+        _useDelay.SetLength(ent, prev);
+    }
+    // Fire added end
 }
