@@ -79,7 +79,7 @@ public sealed class ScpAnnounceOnSpawnSystem : EntitySystem
     {
         if (!_helpers.TryGetFirst<ScpAnnounceOnSpawnSourceComponent>(out var source))
         {
-            Log.Error($"Failed to found any entity with {nameof(ScpAnnounceOnSpawnSourceComponent)} while announcing spawn in radio!");
+            Log.Warning($"Failed to found any entity with {nameof(ScpAnnounceOnSpawnSourceComponent)} while announcing spawn in radio!");
             return;
         }
 
