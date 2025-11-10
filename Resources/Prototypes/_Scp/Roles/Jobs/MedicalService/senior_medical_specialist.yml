@@ -28,8 +28,8 @@
   id: SeniorMedicalSpecialistGear
   equipment:
     id: KeyCardSeniorMedicalSpecialist
-    ears: ClothingHeadsetMedical
-    eyes: ClothingHeadsetMedicalService
+    ears: ClothingHeadsetMedicalService
+    eyes: ClothingEyesHudMedical
     pocket2: ScpMedicalPDA
   storage:
     back:

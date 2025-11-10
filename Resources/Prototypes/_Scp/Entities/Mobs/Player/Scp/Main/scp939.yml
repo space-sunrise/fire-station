@@ -45,10 +45,11 @@
     templateId: scp939
   - type: ToggleableNightVision
     effect: ScpEffectNightVisionScp939
-  - type: GhostPanelAntagonistMarker
-    name: ghost-panel-antagonist-scp-name
-    description: ghost-panel-antagonist-scp-description
-    priority: -10
+  - type: ScpAnnounceOnSpawn
+    text: scp939-announce-on-spawn
+    channels:
+    - ScientificService
+    - HeavyContainmentSecurityService
   - type: Puller
     needsHands: false
   - type: Pullable

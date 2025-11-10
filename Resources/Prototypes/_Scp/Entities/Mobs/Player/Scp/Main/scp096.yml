@@ -18,6 +18,11 @@
   - type: FearSource
     uponSeenState: Fear
   - type: ShowBlinkable
+  - type: ScpAnnounceOnSpawn
+    text: scp096-announce-on-spawn
+    channels:
+    - ScientificService
+    - HeavyContainmentSecurityService
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name
     description: ghost-panel-antagonist-scp-description

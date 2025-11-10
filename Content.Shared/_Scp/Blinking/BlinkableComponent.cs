@@ -11,7 +11,7 @@ namespace Content.Shared._Scp.Blinking;
 /// Компонент, отвечающий за возможность моргать, закрыть и открывать глаза.
 /// Позволяет систем некоторых SCP объектов взаимодействовать с ними.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true), AutoGenerateComponentPause]
 public sealed partial class BlinkableComponent : Component
 {
     /// <summary>
@@ -24,7 +24,7 @@ public sealed partial class BlinkableComponent : Component
     /// Длительность моргания. Сколько игрок проведет с закрытыми глазами во время моргания
     /// </summary>
     [DataField(customTypeSerializer: typeof(TimeOffsetSerializer)), AutoNetworkedField]
-    public TimeSpan BlinkingDuration = TimeSpan.FromSeconds(2.4f);
+    public TimeSpan BlinkingDuration = TimeSpan.FromSeconds(2f);
 
     /// <summary>
     /// Вариативность интервала между морганием.
@@ -36,14 +36,14 @@ public sealed partial class BlinkableComponent : Component
     /// <summary>
     /// Время следующего моргания.
     /// </summary>
-    [ViewVariables, AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField, AutoPausedField]
     public TimeSpan NextBlink;
 
     /// <summary>
     /// Время окончания моргания.
     /// То есть момент открытия глаз после их закрытия из-за моргания.
     /// </summary>
-    [ViewVariables, AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField, AutoPausedField]
     public TimeSpan BlinkEndTime;
 
     /// <summary>

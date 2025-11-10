@@ -1,4 +1,5 @@
-﻿using Content.Shared.Examine;
+﻿using System.Linq;
+using Content.Shared.Examine;
 using Content.Shared.GameTicking;
 using Content.Shared.Interaction;
 using Content.Shared.Storage.Components;
@@ -36,6 +37,9 @@ public sealed class ProximitySystem : EntitySystem
 
     private const float JustUselessNumber = 30f;
 
+    /// <summary>
+    /// Список тегов, которые обозначают непрозрачный объект-преграду.
+    /// </summary>
     private static readonly HashSet<ProtoId<TagPrototype>> SolidTags =
     [
         "Wall",
@@ -56,9 +60,9 @@ public sealed class ProximitySystem : EntitySystem
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clean());
 
-        SubscribeLocalEvent<ProximityTargetComponent, ComponentStartup>(OnTargetStartUp);
-        SubscribeLocalEvent<ProximityTargetComponent, ComponentShutdown>(OnTargetShutdown);
-        SubscribeLocalEvent<ProximityTargetComponent, EntityTerminatingEvent>(OnTargetTerminating);
+        SubscribeLocalEvent<ProximityTargetComponent, ComponentStartup>(AddToTargets);
+        SubscribeLocalEvent<ProximityTargetComponent, ComponentShutdown>(RemoveFromTargets);
+        SubscribeLocalEvent<ProximityTargetComponent, EntityTerminatingEvent>(RemoveFromTargets);
     }
 
     private static void Clean()
@@ -69,9 +73,8 @@ public sealed class ProximitySystem : EntitySystem
 
     #region All targets population
 
-    private static void OnTargetStartUp(Entity<ProximityTargetComponent> ent, ref ComponentStartup args) => AllTargets.Add(ent);
-    private static void OnTargetShutdown(Entity<ProximityTargetComponent> ent, ref ComponentShutdown args) => AllTargets.Remove(ent);
-    private static void OnTargetTerminating(Entity<ProximityTargetComponent> ent, ref EntityTerminatingEvent args) => AllTargets.Remove(ent);
+    private static void AddToTargets<T>(Entity<ProximityTargetComponent> ent, ref T args) => AllTargets.Add(ent);
+    private static void RemoveFromTargets<T>(Entity<ProximityTargetComponent> ent, ref T args) => AllTargets.Remove(ent);
 
     #endregion
 
@@ -168,4 +171,34 @@ public sealed class ProximitySystem : EntitySystem
     }
 
     private bool IsNotSolidObject(EntityUid e) => !_tag.HasAnyTag(e, SolidTags);
+
+    /// <summary>
+    /// Проверяет, есть ли в заданном радиусе сущность с компонентом T
+    /// </summary>
+    /// <param name="uid">Сущность, от которой берем радиус</param>
+    /// <param name="range">Радиус проверки</param>
+    /// <param name="level"><see cref="LineOfSightBlockerLevel"/></param>
+    /// <typeparam name="T">Компонент, который должен быть у искомой сущности</typeparam>
+    /// <returns>Имеется ли рядом такая сущность или нет</returns>
+    public bool IsNearby<T>(EntityUid uid, float range, LineOfSightBlockerLevel level = LineOfSightBlockerLevel.None) where T : IComponent
+    {
+        return _lookup.GetEntitiesInRange<T>(Transform(uid).Coordinates, range)
+            .Any(e => IsRightType(uid, e, level, out _));
+    }
+
+    /// <summary>
+    /// Проверяет, есть ли в заданном радиусе сущность с компонентом T
+    /// </summary>
+    /// <param name="uid">Сущность, от которой берем радиус</param>
+    /// <param name="range">Радиус проверки</param>
+    /// <param name="buffer">Заготовленный список, чтобы не плодить каждый раз новый</param>
+    /// <param name="level"><see cref="LineOfSightBlockerLevel"/></param>
+    /// <typeparam name="T">Компонент, который должен быть у искомой сущности</typeparam>
+    /// <returns>Имеется ли рядом такая сущность или нет</returns>
+    public bool IsNearby<T>(EntityUid uid, float range, HashSet<Entity<T>> buffer, LineOfSightBlockerLevel level = LineOfSightBlockerLevel.None) where T : IComponent
+    {
+        _lookup.GetEntitiesInRange(Transform(uid).Coordinates, range, buffer);
+
+        return buffer.Any(e => IsRightType(uid, e, level, out _));
+    }
 }
