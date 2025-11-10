@@ -4,11 +4,8 @@ using Content.Shared._RMC14.Teleporter;
 using Content.Shared.Physics;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
-using Robust.Client.Physics;
 using Robust.Client.Player;
 using Robust.Shared.Containers;
-using Robust.Shared.Enums;
-using static Robust.Shared.GameObjects.LookupFlags;
 
 namespace Content.Client._RMC14.Teleporter;
 
@@ -20,7 +17,7 @@ public sealed class RMCTeleporterViewerOverlay : Overlay
 
     private readonly SharedContainerSystem _container;
     private readonly EntityLookupSystem _entityLookup;
-    private readonly PhysicsSystem _physics;
+    private readonly Robust.Client.Physics.PhysicsSystem _physics;
     private readonly SharedRMCTeleporterSystem _teleporter;
     private readonly SharedTransformSystem _transform;
 
@@ -36,7 +33,7 @@ public sealed class RMCTeleporterViewerOverlay : Overlay
 
         _container = _entity.System<SharedContainerSystem>();
         _entityLookup = _entity.System<EntityLookupSystem>();
-        _physics = _entity.System<PhysicsSystem>();
+        _physics = _entity.System<Robust.Client.Physics.PhysicsSystem>();
         _teleporter = _entity.System<SharedRMCTeleporterSystem>();
         _transform = _entity.System<SharedTransformSystem>();
 
@@ -66,7 +63,7 @@ public sealed class RMCTeleporterViewerOverlay : Overlay
                 var otherViewerAABB = _physics.GetWorldAABB(otherViewer);
 
                 _toDraw.Clear();
-                foreach (var viewerContact in _entityLookup.GetEntitiesIntersecting(otherViewerPosition.MapId, otherViewerAABB, Uncontained))
+                foreach (var viewerContact in _entityLookup.GetEntitiesIntersecting(otherViewerPosition.MapId, otherViewerAABB, LookupFlags.Uncontained))
                 {
                     if (!_spriteQuery.TryComp(viewerContact, out var viewerContactSprite) ||
                         !viewerContactSprite.Visible ||
