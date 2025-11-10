@@ -91,7 +91,7 @@
       collection: HappyScp999
     successChance: 1
   - type: ScpAnnounceOnSpawn
-    text: scp049-announce-on-spawn
+    text: scp999-announce-on-spawn
     channels:
     - ScientificService
     - HeavyContainmentSecurityService

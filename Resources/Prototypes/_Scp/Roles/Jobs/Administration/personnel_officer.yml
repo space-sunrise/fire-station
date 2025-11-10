@@ -28,7 +28,7 @@
     - type: ScpAnnounceOnSpawn
       text: head-announce-on-spawn
       channels:
-      - MedicalService
+      - FoodAndSanitationService
       includeJobName: true
 
 - type: startingGear
