@@ -151,6 +151,14 @@
     - MindShieldImplant
   - type: TTS
   - type: NoEmotions
+  - type: SpeakOnEyeStateChange # переопределение моргания с другими параметрами для охраны и МОГа
+    # Часть фраз уходит, так как более разговорная. А эти парни натренированы.
+    phraseOnClose:
+    - close-eye-phrase-1
+    - close-eye-phrase-2
+    phraseOnOpen:
+    - open-eye-phrase-3
+    speakOnlyInScp173Chamber: false
   - type: Fear
     phobias:
     - Exoremophobia
@@ -193,6 +201,17 @@
     - NamesLeader
     - NamesMilitaryLast
     nameFormat: name-format-ert
+  - type: ScpAnnounceOnSpawn
+    text: mtf-announce-on-spawn
+    useGlobalAnnouncement: true
+    announceOnStationGridEntered: true
+    announceOnArrival: false
+    stationAnnouncementColor: "#065290"
+    stationAnnouncementVoice: CBMTF1
+    stationAnnouncementSound:
+      path: /Audio/_Scp/Effects/Announcement/mtf.ogg
+      params:
+        volume: -5
 
 - type: randomHumanoidSettings
   id: CommonMTFOperative

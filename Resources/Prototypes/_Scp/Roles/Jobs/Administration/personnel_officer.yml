@@ -25,6 +25,11 @@
       class: C
     - type: AccessLevel
       level: Three
+    - type: ScpAnnounceOnSpawn
+      text: head-announce-on-spawn
+      channels:
+      - FoodAndSanitationService
+      includeJobName: true
 
 - type: startingGear
   id: PersonnelOfficerGear

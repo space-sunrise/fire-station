@@ -23,6 +23,11 @@
       class: C
     - type: AccessLevel
       level: Four
+    - type: ScpAnnounceOnSpawn
+      text: head-announce-on-spawn
+      channels:
+      - ScientificService
+      includeJobName: true
     - type: Fear
       phobias:
       - Exoremophobia
