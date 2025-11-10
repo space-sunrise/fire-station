@@ -35,6 +35,11 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 2
+  - type: ScpAnnounceOnSpawn
+    text: scp106-announce-on-spawn
+    channels:
+    - ScientificService
+    - HeavyContainmentSecurityService
   - type: XenoScreech
   - type: Muted
     allowed:

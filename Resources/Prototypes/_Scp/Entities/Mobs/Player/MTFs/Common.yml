@@ -201,6 +201,17 @@
     - NamesLeader
     - NamesMilitaryLast
     nameFormat: name-format-ert
+  - type: ScpAnnounceOnSpawn
+    text: mtf-announce-on-spawn
+    useGlobalAnnouncement: true
+    announceOnStationGridEntered: true
+    announceOnArrival: false
+    stationAnnouncementColor: "#065290"
+    stationAnnouncementVoice: CBMTF1
+    stationAnnouncementSound:
+      path: /Audio/_Scp/Effects/Announcement/mtf.ogg
+      params:
+        volume: -5
 
 - type: randomHumanoidSettings
   id: CommonMTFOperative

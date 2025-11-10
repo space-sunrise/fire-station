@@ -90,10 +90,11 @@
     interactSuccessSound:
       collection: HappyScp999
     successChance: 1
-  - type: GhostPanelAntagonistMarker
-    name: ghost-panel-antagonist-scp-name
-    description: ghost-panel-antagonist-scp-description
-    priority: -10
+  - type: ScpAnnounceOnSpawn
+    text: scp049-announce-on-spawn
+    channels:
+    - ScientificService
+    - HeavyContainmentSecurityService
   - type: SleepEmitSound
     snore: /Audio/Voice/Misc/silly_snore.ogg
     interval: 10

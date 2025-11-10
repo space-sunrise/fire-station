@@ -28,10 +28,11 @@
       - !type:NestedSelector
         tableId: ScpArtifactEffectsUltraFunnyTable
         weight: 1
-  - type: GhostPanelAntagonistMarker
-    name: ghost-panel-antagonist-scp-name
-    description: ghost-panel-antagonist-scp-description
-    priority: -10
+  - type: ScpAnnounceOnSpawn
+    text: scp173-announce-on-spawn
+    channels:
+    - ScientificService
+    - HeavyContainmentSecurityService
   - type: ScpDamageOnCollide
     params:
     - whitelist:

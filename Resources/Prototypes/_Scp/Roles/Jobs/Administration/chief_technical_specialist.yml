@@ -23,6 +23,11 @@
       class: C
     - type: AccessLevel
       level: Four
+    - type: ScpAnnounceOnSpawn
+      text: head-announce-on-spawn
+      channels:
+      - EngineeringTechnicalService
+      includeJobName: true
 
 - type: startingGear
   id: ChiefTechnicalSpecialistGear
