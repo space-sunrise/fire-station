@@ -1,4 +1,5 @@
 using System.Linq;
+using Content.Client.IconSmoothing;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
@@ -32,10 +33,12 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
     {
         base.Initialize();
 
-        SubscribeLocalEvent<DamageVisualsComponent, ComponentInit>(InitializeEntity);
+        // Fire edit
+        SubscribeLocalEvent<DamageVisualsComponent, ComponentStartup>(InitializeEntity, after: [typeof(IconSmoothSystem)]);
     }
 
-    private void InitializeEntity(EntityUid entity, DamageVisualsComponent comp, ComponentInit args)
+    // Fire edit - пофиксил, что дамаг оверлей срется в самый низ
+    private void InitializeEntity(EntityUid entity, DamageVisualsComponent comp, ComponentStartup args)
     {
         VerifyVisualizerSetup(entity, comp);
 

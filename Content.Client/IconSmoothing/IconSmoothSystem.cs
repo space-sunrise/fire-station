@@ -40,10 +40,11 @@ namespace Content.Client.IconSmoothing
             InitializeEdge();
             SubscribeLocalEvent<IconSmoothComponent, AnchorStateChangedEvent>(OnAnchorChanged);
             SubscribeLocalEvent<IconSmoothComponent, ComponentShutdown>(OnShutdown);
-            SubscribeLocalEvent<IconSmoothComponent, ComponentStartup>(OnStartup);
+            SubscribeLocalEvent<IconSmoothComponent, ComponentInit>(OnStartup); // Fire edit
         }
 
-        private void OnStartup(EntityUid uid, IconSmoothComponent component, ComponentStartup args)
+        // Fire edit - пофиксил, что дамаг оверлей срется в самый низ
+        private void OnStartup(EntityUid uid, IconSmoothComponent component, ComponentInit args)
         {
             var xform = Transform(uid);
             if (xform.Anchored)
