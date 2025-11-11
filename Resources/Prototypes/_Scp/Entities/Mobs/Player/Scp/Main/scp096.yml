@@ -70,6 +70,7 @@
     sound:
       collection: GibCollection
   - type: BreakDoorOnCollide
+    enabled: false
   - type: ComplexInteraction
   - type: Hands
     showInHands: false

@@ -6,6 +6,9 @@ namespace Content.Server._Scp.Other.BreakDoorOnCollide;
 public sealed partial class BreakDoorOnCollideComponent : Component
 {
     [DataField]
+    public bool Enabled = true;
+
+    [DataField]
     public float WireCutChance = 0.4f;
 
     [DataField]

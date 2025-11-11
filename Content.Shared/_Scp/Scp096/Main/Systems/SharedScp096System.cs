@@ -5,7 +5,6 @@ using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode;
-using Content.Shared.Doors.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lock;
 using Content.Shared.Mobs;

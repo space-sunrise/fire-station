@@ -99,7 +99,7 @@ public abstract partial class SharedScp096System
         _actionBlocker.UpdateCanMove(ent);
     }
 
-    private void OnRageStart(Entity<ActiveScp096RageComponent> ent, ref ComponentStartup args)
+    protected virtual void OnRageStart(Entity<ActiveScp096RageComponent> ent, ref ComponentStartup args)
     {
         ent.Comp.RageStartTime = _timing.CurTime;
         Dirty(ent);
@@ -125,7 +125,7 @@ public abstract partial class SharedScp096System
         RefreshSpeedModifiers(ent.Owner, true);
     }
 
-    private void OnRageShutdown(Entity<ActiveScp096RageComponent> ent, ref ComponentShutdown args)
+    protected virtual void OnRageShutdown(Entity<ActiveScp096RageComponent> ent, ref ComponentShutdown args)
     {
         if (_timing.ApplyingState)
             return;

@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Scp096.Main.Components;
+﻿using Content.Server._Scp.Other.BreakDoorOnCollide;
+using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Main.Systems;
 using Robust.Server.GameStates;
 
@@ -20,5 +21,25 @@ public sealed class Scp096System : SharedScp096System
         base.RemoveTarget(scp, target, removeComponent);
 
         _pvsOverride.RemoveGlobalOverride(target);
+    }
+
+    protected override void OnRageStart(Entity<ActiveScp096RageComponent> ent, ref ComponentStartup args)
+    {
+        base.OnRageStart(ent, ref args);
+
+        if (!TryComp<BreakDoorOnCollideComponent>(ent, out var breakDoor))
+            return;
+
+        breakDoor.Enabled = true;
+    }
+
+    protected override void OnRageShutdown(Entity<ActiveScp096RageComponent> ent, ref ComponentShutdown args)
+    {
+        base.OnRageShutdown(ent, ref args);
+
+        if (!TryComp<BreakDoorOnCollideComponent>(ent, out var breakDoor))
+            return;
+
+        breakDoor.Enabled = false;
     }
 }
