@@ -1,19 +1,33 @@
 ﻿# Очки
-
 - type: loadout
   id: LoadoutClothingEyesGlassesSecurityGuard
   equipment:
     eyes: ClothingEyesGlassesSecurityGuard
 
-# КПК
+# Маска
+- type: loadout
+  id: LoadoutClothingMaskSecurityBandBlack
+  equipment:
+    mask: ClothingMaskSecurityBandBlack
 
+- type: loadout
+  id: LoadoutClothingMaskSecurityBalaklava
+  equipment:
+    mask: ClothingMaskSecurityBalaklava
+
+# Пояс
+- type: loadout
+  id: LoadoutScpClothingBeltSecurityWebbingFilled
+  equipment:
+    belt: ScpClothingBeltSecurityWebbingFilled
+
+# КПК
 - type: loadout
   id: LoadoutScpSecurityPDA
   equipment:
     pocket2: ScpSecurityPDA
 
 # С собой
-
 - type: loadout
   id: ScpRadioHandheldSecurity
   storage:

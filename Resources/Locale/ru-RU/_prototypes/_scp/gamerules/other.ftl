@@ -10,3 +10,7 @@ ent-SendDocumentKeterMode = { ent-BaseGameRuleShortDelay }
     .desc = { ent-BaseGameRuleShortDelay.desc }
 ent-SendDocumentThaumielMode = { ent-BaseGameRuleShortDelay }
     .desc = { ent-BaseGameRuleShortDelay.desc }
+ent-SendDocumentMetaGarbageSuccessful = { ent-BaseGameRuleShortDelay }
+    .desc = { ent-BaseGameRuleShortDelay.desc }
+ent-SendDocumentMetaGarbageFailed = { ent-BaseGameRuleShortDelay }
+    .desc = { ent-BaseGameRuleShortDelay.desc }

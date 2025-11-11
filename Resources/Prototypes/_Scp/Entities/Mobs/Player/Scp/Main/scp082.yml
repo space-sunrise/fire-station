@@ -44,10 +44,6 @@
         type: StrippableBoundUserInterface
       enum.StoreUiKey.Key:
         type: StoreBoundUserInterface
-  - type: GhostPanelAntagonistMarker
-    name: ghost-panel-antagonist-scp-name
-    description: ghost-panel-antagonist-scp-description
-    priority: -10
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.5
     baseSprintSpeed: 2.5

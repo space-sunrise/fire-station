@@ -1,3 +1,4 @@
+using Content.Shared._Scp.Helpers;
 using Content.Shared.Database;
 using Content.Shared.Research.Components;
 using Content.Shared.Research.Prototypes;
@@ -82,7 +83,7 @@ public sealed partial class ResearchSystem
 
         AddTechnology(serverEnt.Value, prototype);
         TrySetMainDiscipline(prototype, serverEnt.Value);
-        ModifyServerPoints(serverEnt.Value, prototype.Cost, true);
+        ModifyServerPoints(serverEnt.Value, ResearchPointsHelper.GetPoints(prototype), true);
         UpdateTechnologyCards(serverEnt.Value);
 
         _adminLog.Add(LogType.Action, LogImpact.Medium,
@@ -154,7 +155,8 @@ public sealed partial class ResearchSystem
         if (!IsTechnologyAvailable(database, technology))
             return false;
 
-        foreach (var (pointType, cost) in technology.Cost)
+        // Fire edit - поддержка несколько видов очков исследований
+        foreach (var (pointType, cost) in ResearchPointsHelper.GetPoints(technology))
         {
             if (!serverComp.Points.TryGetValue(pointType, out var totalPoints)
                 || totalPoints < cost)

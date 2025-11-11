@@ -56,6 +56,11 @@
   - type: FearSource
     uponSeenState: Fear
   - type: ShowBlinkable
+  - type: ScpAnnounceOnSpawn
+    text: scp096-announce-on-spawn
+    channels:
+    - ScientificService
+    - HeavyContainmentSecurityService
   - type: BloodSplatterer
     amount: 5, 10
     distance: 5, 40

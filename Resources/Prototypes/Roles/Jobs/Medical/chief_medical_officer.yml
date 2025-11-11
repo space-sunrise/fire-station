@@ -23,6 +23,7 @@
   radioBold: true # Sunrise-Edit
   displayWeight: 60 # Sunrise-Edit
   overrideConsoleVisibility: false
+  setPreference: false # Fire added
   access:
   - Medical
   - Command

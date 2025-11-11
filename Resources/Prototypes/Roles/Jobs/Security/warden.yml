@@ -14,6 +14,7 @@
   canBeAntag: false
   displayWeight: 70  # Sunrise
   overrideConsoleVisibility: false # Fire added
+  setPreference: false # Fire added
   access:
   - Security
   - Brig

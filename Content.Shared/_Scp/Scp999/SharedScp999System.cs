@@ -1,4 +1,5 @@
-﻿using Content.Shared.Examine;
+﻿using Content.Shared.Buckle.Components;
+using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Item;
@@ -18,6 +19,7 @@ public abstract class SharedScp999System : EntitySystem
         SubscribeLocalEvent<Scp999Component, GettingPickedUpAttemptEvent>(OnPickupAttempt);
         SubscribeLocalEvent<Scp999Component, BeingPulledAttemptEvent>(OnBeingPulledAttempt);
         SubscribeLocalEvent<Scp999Component, StartPullAttemptEvent>(OnStartPullAttempt);
+        SubscribeLocalEvent<Scp999Component, BuckleAttemptEvent>(OnBuckleAttempt);
 
         SubscribeLocalEvent<Scp999Component, ExaminedEvent>(OnExamined);
 
@@ -51,6 +53,14 @@ public abstract class SharedScp999System : EntitySystem
     {
         if (ent.Comp.CurrentState != Scp999States.Default)
             args.Cancel();
+    }
+
+    private static void OnBuckleAttempt(Entity<Scp999Component> ent, ref BuckleAttemptEvent args)
+    {
+        if (ent.Comp.CurrentState == Scp999States.Default)
+            return;
+
+        args.Cancelled = true;
     }
 
     private void OnExamined(Entity<Scp999Component> entity, ref ExaminedEvent args)

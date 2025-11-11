@@ -158,14 +158,21 @@ public sealed partial class BanPanel : DefaultWindow
 
         ReasonTextEdit.Placeholder = new Rope.Leaf(Loc.GetString("ban-panel-reason"));
 
+        // Fire edit start - скрываем ненужные работы и департаменты, отображаем элементы в правильном порядке
         var departmentJobs = _protoMan.EnumeratePrototypes<DepartmentPrototype>()
-                                      .OrderBy(x => x.Weight);
+            .Where(x => !x.EditorHidden || x.AlwaysShowInBanPanel)
+            .OrderByDescending(x => x.Weight);
+
         foreach (var proto in departmentJobs)
         {
-            var roles = proto.Roles.Select(x => _protoMan.Index(x))
-                             .OrderBy(x => x.ID);
+            var roles = proto.Roles
+                .Select(x => _protoMan.Index(x))
+                .Where(x => x.SetPreference || x.AlwaysShowInBanPanel)
+                .OrderByDescending(x => x.DisplayWeight);
+
             CreateRoleGroup(proto.ID, proto.Color, roles);
         }
+        // Fire edit end
 
         var antagRoles = _protoMan.EnumeratePrototypes<AntagPrototype>()
                                   .OrderBy(x => x.ID);

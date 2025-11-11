@@ -46,7 +46,7 @@
   name: chat-radio-security
   keycode: '6' # Fire edit - чтобы не конфликтовало
   frequency: 1359
-  color: "#d87777" # Fire edit
+  color: "#976162" # Fire edit
 
 - type: radioChannel
   id: Service

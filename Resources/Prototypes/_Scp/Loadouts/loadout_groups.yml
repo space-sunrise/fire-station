@@ -29,6 +29,13 @@
   - GuardHelmet2
   - GuardBeret
   - GuardHat
+  - LoadoutClothingHeadHelmetSecurityRiot
+
+- type: loadoutGroup
+  id: CommandantSquadEars
+  name: loadout-group-ears
+  loadouts:
+  - LoadoutClothingHeadsetExternalAdministrativeZoneSecurityService
 
 - type: loadoutGroup
   id: GuardJumpsuit
@@ -37,6 +44,8 @@
   - GuardJumpsuit
   - GuardJumpsuit2
   - GuardJumpsuit3
+  - LoadoutClothingUniformSecurityWhite
+  - LoadoutClothingUniformSecurityWhiteAlternative
 
 - type: loadoutGroup
   id: GuardGloves
@@ -51,9 +60,20 @@
   minLimit: 0
   loadouts:
   - GuardMantle
+  - LoadoutClothingMaskSecurityBandBlack
+  - LoadoutClothingMaskSecurityBalaklava
 
 - type: loadoutGroup
   id: GuardArmorVest
+  name: loadout-group-outer-clothing
+  loadouts:
+  - GuardArmorVest
+  - GuardArmorVest2
+  - LoadoutClothingOuterArmorSecurityWinter
+  - LoadoutClothingOuterArmorSecurityRiotLight
+
+- type: loadoutGroup
+  id: CommandantSquadArmorVestJunior
   name: loadout-group-outer-clothing
   loadouts:
   - GuardArmorVest
@@ -65,13 +85,6 @@
   loadouts:
   - GuardCombatBoots
   - GuardWinterBoots
-
-- type: loadoutGroup
-  id: GuardCadetHead
-  name: loadout-group-head
-  loadouts:
-  - GuardHelmet
-  - GuardHelmet2
 
 - type: loadoutGroup
   id: CommandantSquadWeaponPrimary
@@ -86,6 +99,24 @@
   loadouts:
   - LoadoutWeaponTaser
 
+- type: loadoutGroup
+  id: CommandantSquadSeniorLightContainmentZoneSecurityOfficerKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardSeniorLightContainmentZoneSecurityOfficer
+
+- type: loadoutGroup
+  id: CommandantSquadLightContainmentZoneSecurityOfficerKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardLightContainmentZoneSecurityOfficer
+
+- type: loadoutGroup
+  id: CommandantSquadJuniorLightContainmentZoneSecurityOfficerKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardJuniorLightContainmentZoneSecurityOfficer
+
 # Отряд специального назначения
 
 - type: loadoutGroup
@@ -99,6 +130,59 @@
   name: loadout-group-key-card
   loadouts:
   - LoadoutKeyCardHeavyContainmentZoneCommandant
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadHead
+  name: loadout-group-head
+  loadouts:
+  - LoadoutClothingHeadHelmetBasic
+  - GuardBeret
+  - GuardHat
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadEars
+  name: loadout-group-ears
+  loadouts:
+  - LoadoutClothingHeadsetHeavyContainmentSecurityService
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadEyes
+  name: loadout-group-eyes
+  loadouts:
+  - LoadoutClothingEyesGlassesSecurity
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadJumpsuit
+  name: loadout-group-jumpsuit
+  loadouts:
+  - LoadoutClothingUniformSecurityBlack
+  - LoadoutClothingUniformTurleneckBlack
+  - LoadoutClothingUniformTurleneckBlackSleeveless
+  - LoadoutClothingUniformSecurityBlackCamouflage
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadJumpsuitJunior
+  name: loadout-group-jumpsuit
+  loadouts:
+  - LoadoutClothingUniformSecurityBlack
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadSeniorSeniorHeavyContainmentZoneOfficerKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardSeniorHeavyContainmentZoneOfficer
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadHeavyContainmentZoneOfficerKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardHeavyContainmentZoneOfficer
+
+- type: loadoutGroup
+  id: SpecialPurposeSquadJuniorHeavyContainmentZoneOfficerKeyCard
+  name: loadout-group-key-card
+  loadouts:
+  - LoadoutKeyCardJuniorHeavyContainmentZoneOfficer
 
 - type: loadoutGroup
   id: SpecialPurposeSquadWeaponPrimary
@@ -131,6 +215,8 @@
   loadouts:
   - LoadoutClothingUniformJumpsuitSquadLeader
   - LoadoutClothingUniformJumpsuitSquadLeaderAlt
+  - LoadoutClothingUniformSecurityWhiteAlternativeSquadLeader
+  - LoadoutClothingUniformSecurityBlackDresscoat
 
 - type: loadoutGroup
   id: SquadLeaderOuterClothing
@@ -138,6 +224,8 @@
   loadouts:
   - GuardArmorVest
   - GuardArmorVest2
+  - LoadoutClothingOuterArmorSecurityRiotLight
+  - LoadoutClothingOuterArmorSecurityWinter
   - LoadoutClothingOuterCoatSquadLeader
 
 - type: loadoutGroup
@@ -153,6 +241,13 @@
   name: loadout-group-eyes
   loadouts:
   - LoadoutClothingEyesGlassesSecurityGuard
+
+- type: loadoutGroup
+  id: CommonSecurityBelt
+  name: loadout-group-belt
+  loadouts:
+  - LoadoutScpClothingBeltSecurityWebbingFilled
+  - SecurityBelt
 
 - type: loadoutGroup
   id: CommonSecurityPDA

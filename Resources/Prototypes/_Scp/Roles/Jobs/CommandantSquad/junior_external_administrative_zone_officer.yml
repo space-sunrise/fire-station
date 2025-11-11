@@ -3,7 +3,6 @@
   name: job-name-junior-external-administrative-zone-officer
   description: job-description-junior-external-administrative-zone-officer
   playTimeTracker: JobJuniorExternalAdministrativeZoneOfficer
-  startingGear: JuniorExternalAdministrativeZoneOfficerGear
   requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
     - !type:OverallPlaytimeRequirement
       time: 18000 # 5 часов
@@ -22,6 +21,16 @@
       class: C
     - type: AccessLevel
       level: Three
+    - type: SpeakOnEyeStateChange # переопределение моргания с другими параметрами для охраны и МОГа
+      # Часть фраз уходит, так как более разговорная. А эти парни натренированы.
+      phraseOnClose:
+      - close-eye-phrase-1
+      - close-eye-phrase-3
+      - close-eye-phrase-4
+      phraseOnOpen:
+      - open-eye-phrase-1
+      - open-eye-phrase-3
+      speakOnlyInScp173Chamber: false
     - type: Fear # переопределение компонента страха для СБ
       phobias:
       - Exoremophobia

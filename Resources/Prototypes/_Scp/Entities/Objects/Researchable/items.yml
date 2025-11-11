@@ -15,8 +15,8 @@
     size: Tiny
   - type: ReducedBlinking
     firstBlinkingBonusTime: 30
-    otherBlinkingBonusTime: 7
-    otherBlinkingBonusDuration: 120
+    otherBlinkingBonusTime: 120
+    otherBlinkingBonusDuration: 7
     # TODO: Добавить звук использования
   - type: UseDelay
     delay: 3

@@ -19,3 +19,58 @@
     entitiesPerReplacementStdDev: 10
     replacements:
     - id: ScpWallReinforcedRust
+
+- type: entity
+  id: ScpWallConcreteCrackVariationPass
+  parent: BaseVariationPass
+  components:
+  - type: WallConcreteReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 50
+    entitiesPerReplacementStdDev: 10
+    replacements:
+    - id: ScpWallConcreteCrack
+
+- type: entity
+  id: ScpWallConcreteLightContaimentCrackVariationPass
+  parent: BaseVariationPass
+  components:
+  - type: WallConcreteLightContaimentReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 50
+    entitiesPerReplacementStdDev: 10
+    replacements:
+    - id: ScpWallConcreteLightContaimentCrack
+
+- type: entity
+  id: ScpWallConcreteScienceCrackVariationPass
+  parent: BaseVariationPass
+  components:
+  - type: WallConcreteScienceReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 50
+    entitiesPerReplacementStdDev: 10
+    replacements:
+    - id: ScpWallConcreteScienceCrack
+
+- type: entity
+  id: ScpWallConcreteEngineerCrackVariationPass
+  parent: BaseVariationPass
+  components:
+  - type: WallConcreteEngineerReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 50
+    entitiesPerReplacementStdDev: 10
+    replacements:
+    - id: ScpWallConcreteEngineerCrack
+
+- type: entity
+  id: ScpWallConcreteMedicalCrackVariationPass
+  parent: BaseVariationPass
+  components:
+  - type: WallConcreteMedicalReplaceVariationPass
+  - type: EntityReplaceVariationPass
+    entitiesPerReplacementAverage: 50
+    entitiesPerReplacementStdDev: 10
+    replacements:
+    - id: ScpWallConcreteMedicalCrack

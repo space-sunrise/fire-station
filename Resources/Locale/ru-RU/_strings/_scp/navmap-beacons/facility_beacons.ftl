@@ -1,6 +1,5 @@
-﻿# Общее
+# Общее
 scp-facility-beacon-general = Общий
-
 # Кабинеты
 scp-facility-beacon-facility-director-office = Кабинет Директора Учреждения
 scp-facility-beacon-chief-researcher-office = Кабинет Главного Научного сотрудника
@@ -14,7 +13,6 @@ scp-facility-beacon-head-commandant-office = Кабинет Главного К�
 scp-facility-beacon-special-purpose-unit-commander-office = Кабинет Командира ОСН
 scp-facility-beacon-amnesticologist-office = Кабинет Амнестезиолога
 scp-facility-beacon-parapsychologist-office = Кабинет Парапсихолога
-
 # Камеры SCP
 scp-facility-beacon-scp-173-containment = Зона содержания SCP-173
 scp-facility-beacon-scp-939-containment = Зона содержания SCP-939
@@ -29,7 +27,6 @@ scp-facility-beacon-scp-035-containment = Зона содержания SCP-035
 scp-facility-beacon-scp-079-containment = Зона содержания SCP-079
 scp-facility-beacon-scp-item-containment = Зона содержания объектов-предметов
 scp-facility-beacon-scp-humanoid-containment = Временное содержание гуманоидов
-
 # Отделы и Подразделения
 scp-facility-beacon-administration-department = Руководство учреждения
 scp-facility-beacon-security-department = Служба безопасности
@@ -44,7 +41,6 @@ scp-facility-beacon-special-purpose-squad = Отряд специального 
 scp-facility-beacon-cafeteria = Кафетерий
 scp-facility-beacon-class-d-containment-zone = Зона содержания персонала класса D
 scp-facility-beacon-life-support = Жизнеобеспечение
-
 # Специальное
 scp-facility-beacon-checkpoint-entrance-to-light-a = КПП АЗ-ЛЗС "А"
 scp-facility-beacon-checkpoint-entrance-to-light-b = КПП АЗ-ЛЗС "Б"

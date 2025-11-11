@@ -1,4 +1,4 @@
-﻿compatibility-mode-warning-title = ПРЕДУПРЕЖДЕНИЕ О РЕЖИМЕ СОВМЕСТИМОСТИ
+compatibility-mode-warning-title = ПРЕДУПРЕЖДЕНИЕ О РЕЖИМЕ СОВМЕСТИМОСТИ
 compatibility-mode-warning-label = Режим совместимости
 compatibility-mode-warning-attention-label = У вас включен режим совместимости, пожалуйста, прочитайте текст ниже!
 compatibility-mode-warning-text =

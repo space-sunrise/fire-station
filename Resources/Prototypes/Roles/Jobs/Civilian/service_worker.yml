@@ -11,6 +11,7 @@
   icon: "JobIconServiceWorker"
   supervisors: job-supervisors-service
   overrideConsoleVisibility: false # Fire added
+  setPreference: false # Fire added
   access:
   - Service
   - Maintenance

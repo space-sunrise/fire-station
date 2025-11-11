@@ -6,7 +6,6 @@
   - type: StorageFill
     contents:
       - id: FlashlightSeclite
-      - id: WeaponDisabler
       - id: ClothingHeadHatCapWardenAlt
       - id: ClothingBeltSecurityFilled
       - id: Flash
@@ -38,7 +37,6 @@
     contents:
       - id: FlashlightSeclite
         prob: 0.8
-      - id: WeaponDisabler
       - id: ClothingUniformSecurity
         prob: 0.3
       - id: ClothingUniformSecurity2

@@ -8,9 +8,7 @@
     state: icon
   discipline: Industrial
   tier: 2
-  cost:
-    Default: 5500
-    Scp: 2250
+  cost: 5500
   recipeUnlocks:
   - HandCraftedNVD
 
@@ -22,9 +20,7 @@
     state: icon
   discipline: Industrial
   tier: 1
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - CargoSuit
   - BluespaceBox
@@ -39,9 +35,7 @@
     state: ripleymkii
   discipline: Industrial
   tier: 2
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - RipleyMKIIHarness
   - RipleyUpgradeKit
@@ -60,9 +54,7 @@
     state: clarke
   discipline: Industrial
   tier: 2
-  cost:
-    Default: 9000
-    Scp: 4500
+  cost: 9000
   recipeUnlocks:
   - ClarkeHarness
   - ClarkeHead
@@ -84,9 +76,7 @@
     state: icon
   discipline: Industrial
   tier: 2
-  cost:
-    Default: 7000
-    Scp: 3500
+  cost: 7000
   recipeUnlocks:
   - BasicNVD
   technologyPrerequisites:
@@ -100,8 +90,6 @@
     state: icon
   discipline: Industrial
   tier: 3
-  cost:
-    Default: 9000
-    Scp: 4500
+  cost: 9000
   recipeUnlocks:
   - BasicThermals

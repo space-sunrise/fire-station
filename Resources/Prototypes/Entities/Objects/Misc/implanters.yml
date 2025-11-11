@@ -91,6 +91,7 @@
   - type: Tag
     tags:
     - Trash
+    - MetaGarbagePreventSaving # Fire added
 
 - type: entity
   parent: Implanter

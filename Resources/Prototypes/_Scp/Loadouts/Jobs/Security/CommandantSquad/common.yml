@@ -1,4 +1,124 @@
-﻿- type: loadout
+﻿# Голова
+- type: loadout
+  id: GuardHelmet
+  equipment:
+    head: ClothingHeadHelmetSecurity
+
+- type: loadout
+  id: GuardHelmet2
+  equipment:
+    head: ClothingHeadClosedHelmetSecurity
+
+- type: loadout
+  id: GuardHat
+  equipment:
+    head: ClothingHeadHatSecBlack
+
+- type: loadout
+  id: GuardBeret
+  equipment:
+    head: ClothingHeadSecurityBeret
+
+- type: loadout
+  id: LoadoutClothingHeadHelmetSecurityRiot
+  equipment:
+    head: ClothingHeadHelmetSecurityRiot
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: LightweightRiotArmorTimer
+
+# Уши
+- type: loadout
+  id: LoadoutClothingHeadsetExternalAdministrativeZoneSecurityService
+  equipment:
+    ears: ClothingHeadsetExternalAdministrativeZoneSecurityService
+
+# Шея
+- type: loadout
+  id: GuardMantle
+  equipment:
+    neck: ClothingNeckMantleSecurity
+
+# Перчатки
+- type: loadout
+  id: GuardGloves
+  equipment:
+    gloves: ClothingHandsGlovesSecurity
+
+- type: loadout
+  id: GuardGlovesWinter
+  equipment:
+    gloves: ClothingHandsGlovesWinterSecurity
+
+# Униформа
+- type: loadout
+  id: GuardJumpsuit
+  equipment:
+    jumpsuit: ClothingUniformSecurity2
+
+- type: loadout
+  id: GuardJumpsuit2
+  equipment:
+    jumpsuit: ClothingUniformSecurity
+
+- type: loadout
+  id: GuardJumpsuit3
+  equipment:
+    jumpsuit: ClothingUniformSecurity3
+
+- type: loadout
+  id: LoadoutClothingUniformSecurityWhite
+  equipment:
+    jumpsuit: ClothingUniformSecurityWhite
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: CommandantSquadWhiteUniformTimer
+
+- type: loadout
+  id: LoadoutClothingUniformSecurityWhiteAlternative
+  equipment:
+    jumpsuit: ClothingUniformSecurityWhiteAlternative
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: CommandantSquadWhiteUniformTimer
+
+# Верхняя одежда
+- type: loadout
+  id: GuardArmorVest
+  equipment:
+    outerClothing: ClothingOuterArmorSecurity
+
+- type: loadout
+  id: GuardArmorVest2
+  equipment:
+    outerClothing: ClothingOuterArmorSecurityBulletproof
+
+- type: loadout
+  id: LoadoutClothingOuterArmorSecurityWinter
+  equipment:
+    outerClothing: ClothingOuterArmorSecurityWinter
+
+- type: loadout
+  id: LoadoutClothingOuterArmorSecurityRiotLight
+  equipment:
+    outerClothing: ClothingOuterArmorSecurityRiotLight
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: LightweightRiotArmorTimer
+
+# Ботинки
+- type: loadout
+  id: GuardCombatBoots
+  equipment:
+    shoes: ClothingShoesBootsSecurityGuard
+
+- type: loadout
+  id: GuardWinterBoots
+  equipment:
+    shoes: ClothingShoesBootsWinterSecurityGuard
+
+# Остальное
+- type: loadout
   id: RadioHandheldExternalAdministrativeZoneSecurityService
   storage:
     back:

@@ -650,7 +650,7 @@
   icon: { sprite: Objects/Storage/boxes.rsi, state: box }
   productEntity: BoxVialAmnesiacA
   cost:
-    Crystallite: 2
+    Crystallite: 1
   categories:
   - ScpAdditional
   conditions:
@@ -662,7 +662,7 @@
   icon: { sprite: Objects/Storage/boxes.rsi, state: box }
   productEntity: BoxVialAmnesiacB
   cost:
-    Crystallite: 2
+    Crystallite: 1
   categories:
   - ScpAdditional
   conditions:

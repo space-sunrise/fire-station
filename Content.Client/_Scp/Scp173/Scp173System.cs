@@ -114,7 +114,13 @@ public sealed class Scp173System : SharedScp173System
         _widget.Visible = true;
 
         var current = ent.Value.Comp.ReagentVolumeAround.Int();
-        _widget.SetData(current, Scp173Component.MinTotalSolutionVolume, Scp173Component.ExtraMinTotalSolutionVolume);
+        var timeLeft = ent.Value.Comp.SafeTimeEnd - Timing.CurTime;
+
+        _widget.SetData(current,
+            Scp173Component.MinTotalSolutionVolume,
+            Scp173Component.ExtraMinTotalSolutionVolume,
+            ent.Value.Comp.SafeTime,
+            timeLeft);
     }
 
     private bool TryGetPlayerEntity([NotNullWhen(true)] out Entity<Scp173Component>? ent)
@@ -140,7 +146,11 @@ public sealed class Scp173System : SharedScp173System
         if (!TryGetPlayerEntity(out _))
             return;
 
-        var layoutContainer = _ui.ActiveScreen.FindControl<LayoutContainer>("ViewportContainer");
+        var nameScope = _ui.ActiveScreen?.FindNameScope();
+        var layoutContainer = nameScope?.Find("ViewportContainer");
+
+        if (layoutContainer == null)
+            return;
 
         _widget = new Scp173UiWidget();
 
@@ -149,7 +159,6 @@ public sealed class Scp173System : SharedScp173System
             : LayoutContainer.LayoutPreset.CenterTop;
 
         LayoutContainer.SetAnchorAndMarginPreset(_widget, layout, margin: 50);
-
         layoutContainer.AddChild(_widget);
 
         _widget.Visible = false;

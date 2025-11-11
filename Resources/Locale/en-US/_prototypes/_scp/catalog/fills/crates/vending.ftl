@@ -1,0 +1,10 @@
+ent-CrateVendingMachineRestockSeedsScpClassDFilled = MegaSeed restock crate
+    .desc = Contains a restock box for the MegaSeed vending machine.
+ent-CrateVendingMachineRestockNutriMaxScpClassDFilled = NutriMax restock crate
+    .desc = Contains a restock box for the NutriMax vending machine.
+ent-CrateVendingMachineRestockChefvendScpClassDFilled = ChefVend restock crate
+    .desc = Contains a restock box for the ChefVend.
+ent-CrateVendingMachineRestockDinnerwareScpClassDFilled = Plasteel Chef restock crate
+    .desc = Contains a restock box for the Plasteel Chef vending machine.
+ent-CrateVendingMachineRestockBoozeScpClassDFilled = Booze-O-Mat restock crate
+    .desc = Contains a restock box for the Booze-O-Mat.

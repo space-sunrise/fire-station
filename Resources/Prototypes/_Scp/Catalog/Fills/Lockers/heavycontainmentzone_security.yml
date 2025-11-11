@@ -6,7 +6,6 @@
   - type: StorageFill
     contents:
       - id: FlashlightSeclite
-      - id: WeaponDisabler
       - id: ClothingHeadHatCapWardenAlt
       - id: ClothingBeltSecurityFilled
       - id: Flash
@@ -43,7 +42,6 @@
     contents:
       - id: FlashlightSeclite
         prob: 0.8
-      - id: WeaponDisabler
       - id: ClothingUniformSecurity
         prob: 0.3
       - id: ClothingUniformSecurity2
@@ -73,7 +71,6 @@
   - type: StorageFill
     contents:
       - id: ClothingEyesGlassesSecurityGuard
-      - id: WeaponDisabler
       - id: TrackingImplanter
         amount: 2
       - id: BoxSterileMask
@@ -102,4 +99,12 @@
       - id: ClothingOuterVestSecurityMedic
         prob: 0.5
       - id: ClothingOuterCoatLabSecurityMedic
+        prob: 0.5
+      - id: BoxVialAmnesiacA
+      - id: BoxVialAmnesiacB
+      - id: ChemistryVialAmnesiacC
+        amount: 2
+      - id: ChemistryVialAmnesiacD
+      - id: AmnesiacAGasGrenade
+      - id: AmnesiacAGasGrenade
         prob: 0.5

@@ -21,6 +21,7 @@
   radioBold: true # Sunrise-Edit
   displayWeight: 40  # Sunrise-Edit
   overrideConsoleVisibility: false
+  setPreference: false # Fire added
   access:
   - Cargo
   - Salvage

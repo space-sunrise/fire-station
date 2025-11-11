@@ -668,15 +668,6 @@
   - Pants
   - Socks
   # Sunrise-end
-  # Fire-Station-Start
-  - GuardHead
-  - GuardGloves
-  - GuardJumpsuit
-  - GuardArmorVest
-  - GuardShoes
-  - GuardCadetHead
-  - CommonMiscItems
-  # Fire-Station-End
 
 # Medical
 - type: roleLoadout

@@ -10,7 +10,6 @@ ent-RubberStampRegionalCommand = печать регионального упр�
     .desc = { ent-RubberStampBase.desc }
 ent-RubberStampO4Command = печать штаба О4
     .desc = { ent-RubberStampBase.desc }
-
 ent-ClothingUniformJumpsuitRegionalAdministration = комбинезон Регионального Управления
     .desc = Костюм, который носят опытные управленцы. Пахнет подгоревшим кофе.
 ent-RegionalAdministrationIDCard = { ent-IDCardStandard }

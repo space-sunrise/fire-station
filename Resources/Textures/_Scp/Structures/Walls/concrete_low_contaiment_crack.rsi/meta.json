@@ -1,0 +1,46 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by discord: odlieerr | Redacted by discord: miduzka",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "full"
+        },
+        {
+            "name": "concrete_low_contaiment0",
+            "directions": 4
+        },
+        {
+            "name": "concrete_low_contaiment1",
+            "directions": 4
+        },
+        {
+            "name": "concrete_low_contaiment2",
+            "directions": 4
+        },
+        {
+            "name": "concrete_low_contaiment3",
+            "directions": 4
+        },
+        {
+            "name": "concrete_low_contaiment4",
+            "directions": 4
+        },
+        {
+            "name": "concrete_low_contaiment5",
+            "directions": 4
+        },
+        {
+            "name": "concrete_low_contaiment6",
+            "directions": 4
+        },
+        {
+            "name": "concrete_low_contaiment7",
+            "directions": 4
+        }
+    ]
+}

@@ -14,8 +14,6 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         base.Initialize();
 
         SubscribeLocalEvent<BlinkableComponent, MapInitEvent>(OnMapInit);
-        SubscribeLocalEvent<BlinkableComponent, EntityUnpausedEvent>(OnUnpaused);
-
         SubscribeLocalEvent<BlinkableComponent, PlayerSpawnCompleteEvent>(OnPlayerSpawn);
     }
 
@@ -26,12 +24,6 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         Dirty(ent);
 
         ResetBlink(ent.AsNullable());
-    }
-
-    private void OnUnpaused(Entity<BlinkableComponent> ent, ref EntityUnpausedEvent args)
-    {
-        ent.Comp.NextBlink += args.PausedTime;
-        Dirty(ent);
     }
 
     private void OnPlayerSpawn(Entity<BlinkableComponent> ent, ref PlayerSpawnCompleteEvent args)

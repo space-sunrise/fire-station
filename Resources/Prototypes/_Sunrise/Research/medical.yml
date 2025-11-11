@@ -8,9 +8,7 @@
     state: scalpel
   discipline: Biochemical
   tier: 1
-  cost:
-    Default: 4000
-    Scp: 2000
+  cost: 4000
   recipeUnlocks:
     - BoneSetter
     - BoneGel
@@ -28,9 +26,7 @@
     state: icon
   discipline: Biochemical
   tier: 1
-  cost:
-    Default: 4000
-    Scp: 2000
+  cost: 4000
   recipeUnlocks:
     - LeftArmCyber
     - LeftHandCyber
@@ -46,9 +42,7 @@
     state: med-hypospray
   discipline: Biochemical
   tier: 2
-  cost:
-    Default: 6500
-    Scp: 3250
+  cost: 6500
   recipeUnlocks:
   - HyposprayMedical
 
@@ -60,9 +54,7 @@
     state: advanced
   discipline: Biochemical
   tier: 2
-  cost:
-    Default: 7000
-    Scp: 3500
+  cost: 7000
   recipeUnlocks:
     - Drill
     - SawAdvanced
@@ -81,9 +73,7 @@
     state: scanner
   discipline: Biochemical
   tier: 2
-  cost:
-    Default: 9000
-    Scp: 4500
+  cost: 9000
   recipeUnlocks:
     - HandheldCrewMonitor
   technologyPrerequisites:
@@ -97,9 +87,7 @@
     state: eye_implant_welding
   discipline: Biochemical
   tier: 2
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
     - ImplantCaseImplantWelding
     - ImplantCaseImplantMedical
@@ -120,9 +108,7 @@
     state: icon
   discipline: Biochemical
   tier: 2
-  cost:
-    Default: 7500
-    Scp: 3250
+  cost: 7500
   recipeUnlocks:
   - StasisBedMachineCircuitboard
   - CryoPodMachineCircuitboard
@@ -140,9 +126,7 @@
     state: medical
   discipline: Biochemical
   tier: 2
-  cost:
-    Default: 5000
-    Scp: 2500
+  cost: 5000
   recipeUnlocks:
   - BorgModuleAdvancedChemical
   - AutoMenderBurn
@@ -159,9 +143,7 @@
     state: open
   discipline: Biochemical
   tier: 3
-  cost:
-    Default: 12000
-    Scp: 6000
+  cost: 12000
   recipeUnlocks:
   - ImplantExtractorMachineCircuitboard
 
@@ -173,9 +155,7 @@
     state: mender
   discipline: Biochemical
   tier: 3
-  cost:
-    Default: 7500
-    Scp: 3250
+  cost: 7500
   recipeUnlocks:
   - AutoMenderBrute
   - AutoMenderBurn
@@ -192,9 +172,7 @@
     state: cyber-hand-left
   discipline: Biochemical
   tier: 3
-  cost:
-    Default: 9220
-    Scp: 4610
+  cost: 9220
   recipeUnlocks:
     - ImplantCaseReaper
     - ImplantCaseMechwright
@@ -212,9 +190,7 @@
     state: storage
   discipline: Biochemical
   tier: 3
-  cost:
-    Default: 3500
-    Scp: 1750
+  cost: 3500
   recipeUnlocks:
     - ImplantCaseGorillaL
     - ImplantCaseGorillaR
@@ -234,9 +210,7 @@
     state: cybermantisbladesec
   discipline: Biochemical
   tier: 3
-  cost:
-    Default: 8000
-    Scp: 4000
+  cost: 8000
   recipeUnlocks:
     - ImplantCaseMantisBladeMaxGuard
     - ImplantCaseBulwark
@@ -256,12 +230,10 @@
     state: laser_cyborg
   discipline: Biochemical
   tier: 3
-  cost:
-    Default: 7500
-    Scp: 3250
+  cost: 7500
   recipeUnlocks:
-    - ImplantCaseLaserEmitter
-    - ImplantCaseGrenadeThrower
+  - ImplantCaseLaserEmitter
+  - ImplantCaseGrenadeThrower
   technologyPrerequisites:
     - FunctionalCyberLimbsTech
     - WeaponizedLaserManipulation
@@ -277,9 +249,7 @@
     state: eyes_night
   discipline: Biochemical
   tier: 3
-  cost:
-    Default: 7500
-    Scp: 3250
+  cost: 7500
   recipeUnlocks:
     - ImplantCaseNightVision
   technologyPrerequisites:
@@ -296,9 +266,7 @@
     state: eyes_thermal
   discipline: Biochemical
   tier: 3
-  cost:
-    Default: 8500
-    Scp: 4250
+  cost: 8500
   recipeUnlocks:
     - ImplantCaseThermal
   technologyPrerequisites:
@@ -316,9 +284,7 @@
     state: beakerbluespace
   discipline: Biochemical
   tier: 3
-  cost:
-    Default: 10000
-    Scp: 5000
+  cost: 10000
   recipeUnlocks:
   - BluespaceBeaker
   - SyringeBluespace
@@ -334,9 +300,7 @@
     state: syringe_gun
   discipline: Biochemical
   tier: 3
-  cost:
-    Default: 15000
-    Scp: 7500
+  cost: 15000
   recipeUnlocks:
   - LauncherSyringe
   - MiniSyringe

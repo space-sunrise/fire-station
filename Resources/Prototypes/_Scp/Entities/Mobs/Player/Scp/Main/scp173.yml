@@ -28,10 +28,51 @@
       - !type:NestedSelector
         tableId: ScpArtifactEffectsUltraFunnyTable
         weight: 1
-  - type: GhostPanelAntagonistMarker
-    name: ghost-panel-antagonist-scp-name
-    description: ghost-panel-antagonist-scp-description
-    priority: -10
+  - type: ScpAnnounceOnSpawn
+    text: scp173-announce-on-spawn
+    channels:
+    - ScientificService
+    - HeavyContainmentSecurityService
+  - type: ScpDamageOnCollide
+    params:
+    - whitelist:
+        components:
+        - MobState
+        - HumanoidAppearance
+        requireAll: true
+      damage:
+        types:
+          Blunt: 200
+      targetSound:
+        collection: Scp173NeckSnap
+      useVariance: false
+      requiredMobStates:
+      - Alive
+      - Critical
+    - whitelist:
+        tags:
+        - Scp173DestroyOnCollide
+      damage:
+        types:
+          Blunt: 100
+      targetSound:
+        path: /Audio/_Scp/Scp173/smash.ogg
+        params:
+          volume: -5
+          maxDistance: 5
+      useVariance: false
+    - whitelist:
+        tags:
+        - Window
+        - Windoor
+        - Directional
+        - SecureWindoor
+        - SecurePlasmaWindoor
+        - SecureUraniumWindoor
+        - Scp173DamageOnCollide
+      damage:
+        types:
+          Blunt: 8
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
     baseSprintSpeed: 12
@@ -57,6 +98,9 @@
       params:
         volume: -5
         maxDistance: 5
+  - type: SpeedModifierContactCapClothing
+    maxContactSprintSlowdown: 1
+    maxContactWalkSlowdown: 1
   - type: ActionGrant
     actions:
     - Scp173Blind

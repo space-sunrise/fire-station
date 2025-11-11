@@ -1,4 +1,6 @@
 ﻿using Content.Shared._Scp.Proximity;
+using Content.Shared.Mobs.Components;
+using Content.Shared.Storage.Components;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Watching;
@@ -14,11 +16,14 @@ public sealed partial class EyeWatchingSystem : EntitySystem
 
     private static readonly TimeSpan WatchingCheckInterval = TimeSpan.FromSeconds(0.3f);
 
-    public const float SeeRange = 12f;
+    public const float SeeRange = 16f;
 
     public override void Initialize()
     {
         SubscribeLocalEvent<WatchingTargetComponent, MapInitEvent>(OnMapInit);
+
+        _mobStateQuery = GetEntityQuery<MobStateComponent>();
+        _insideStorageQuery = GetEntityQuery<InsideEntityStorageComponent>();
     }
 
     private void OnMapInit(Entity<WatchingTargetComponent> ent, ref MapInitEvent args)

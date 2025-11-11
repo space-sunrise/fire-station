@@ -9,7 +9,7 @@
   icon: JobHeavyContainmentZoneCommandant
   supervisors: job-supervisors-security-commander
   canBeAntag: false
-  displayWeight: 70  # Sunrise
+  displayWeight: 70
   accessGroups:
   - SecurityCommandant
   special:
@@ -21,6 +21,22 @@
       class: C
     - type: AccessLevel
       level: Three
+    - type: ScpAnnounceOnSpawn
+      text: squad-commander-announce-on-spawn
+      channels:
+      - HeavyContainmentSecurityService
+      includeJobName: true
+    - type: SpeakOnEyeStateChange
+      phraseOnClose:
+      - close-eye-phrase-1
+      - close-eye-phrase-2
+      - close-eye-phrase-3
+      - close-eye-phrase-4
+      phraseOnOpen:
+      - open-eye-phrase-1
+      - open-eye-phrase-2
+      - open-eye-phrase-3
+      - open-eye-phrase-4
     - type: Fear # переопределение компонента страха для СБ
       phobias:
       - Exoremophobia

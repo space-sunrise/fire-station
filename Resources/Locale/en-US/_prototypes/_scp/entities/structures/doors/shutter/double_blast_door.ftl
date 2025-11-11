@@ -1,0 +1,11 @@
+ent-ScpDoubleBlastDoor = double blast door
+    .desc = The heavy door of the hermetic gate. You'd better not stand between them while they're working.
+ent-ScpDoubleBlastDoorOpen = { ent-ScpDoubleBlastDoor }
+    .suffix = Open
+    .desc = { ent-ScpDoubleBlastDoor.desc }
+ent-ScpDoubleBlastDoorNoSound = { ent-ScpDoubleBlastDoor }
+    .suffix = NoSound
+    .desc = { ent-ScpDoubleBlastDoor.desc }
+ent-ScpDoubleBlastDoorOpenNoSound = { ent-ScpDoubleBlastDoorOpen }
+    .suffix = Open | NoSound
+    .desc = { ent-ScpDoubleBlastDoorOpen.desc }

@@ -4,22 +4,19 @@ using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Containment.Cage;
 using Content.Shared._Scp.Watching;
 using Content.Shared.ActionBlocker;
-using Content.Shared.Damage;
-using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Events;
 using Content.Shared.Popups;
 using Content.Shared.Storage.Components;
-using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Events;
-using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp173;
 
 public abstract class SharedScp173System : EntitySystem
 {
+    [Dependency] protected readonly IGameTiming Timing = default!;
     [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
     [Dependency] private readonly ActionBlockerSystem _blocker = default!;
     [Dependency] protected readonly EyeWatchingSystem Watching = default!;
@@ -27,7 +24,6 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     protected static readonly TimeSpan ReagentCheckInterval = TimeSpan.FromSeconds(1);
 
@@ -36,8 +32,6 @@ public abstract class SharedScp173System : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<Scp173Component, ComponentInit>(OnInit);
 
         SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, _, args) =>
         {
@@ -50,18 +44,8 @@ public abstract class SharedScp173System : EntitySystem
         SubscribeLocalEvent<Scp173Component, MoveInputEvent>(OnMoveInput);
         SubscribeLocalEvent<Scp173Component, MoveEvent>(OnMove);
 
-        SubscribeLocalEvent<Scp173Component, StartCollideEvent>(OnCollide);
-
         SubscribeLocalEvent<Scp173Component, Scp173BlindAction>(OnStartedBlind);
         SubscribeLocalEvent<Scp173Component, Scp173StartBlind>(OnBlind);
-    }
-
-    private void OnInit(Entity<Scp173Component> ent, ref ComponentInit args)
-    {
-        // Fallback
-        ent.Comp.NeckSnapDamage ??= new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Blunt"), 200);
-
-        Dirty(ent);
     }
 
     #region Movement
@@ -97,20 +81,6 @@ public abstract class SharedScp173System : EntitySystem
     #endregion
 
     #region Abillities
-
-    private void OnCollide(Entity<Scp173Component> ent, ref StartCollideEvent args)
-    {
-        var target = args.OtherEntity;
-
-        if (!TryComp<PhysicsComponent>(ent, out var physicsComponent))
-            return;
-
-        // Мы должны двигаться, чтобы сломать шею
-        if (physicsComponent.LinearVelocity.IsLengthZero())
-            return;
-
-        BreakNeck(target, ent.Comp);
-    }
 
     private void OnStartedBlind(Entity<Scp173Component> ent, ref Scp173BlindAction args)
     {
@@ -181,6 +151,7 @@ public abstract class SharedScp173System : EntitySystem
     /// <summary>
     /// Находится ли 173 в своей камере. Проверяется по наличию рядом спавнера работы
     /// </summary>
+    /// TODO: Оптимизировать, использовав EntityQueryEnumerator и ранний выход
     public bool IsContained(EntityUid uid)
     {
         return _lookup.GetEntitiesInRange<Scp173BlockStructureDamageComponent>(Transform(uid).Coordinates, ContainmentRoomSearchRadius)
@@ -233,6 +204,43 @@ public abstract class SharedScp173System : EntitySystem
             .ToHashSet();
 
         return viewers.Count != 0;
+    }
+
+    /// <summary>
+    /// Проверяет, находится ли SCP-173 в "безопасного времени", когда он не может засорять свою камеру
+    /// </summary>
+    public bool IsInSafeTime(Entity<Scp173Component> ent, bool silent = false, bool predicted = true)
+    {
+        if (Timing.CurTime >= ent.Comp.SafeTimeEnd || !ent.Comp.SafeTimeEnd.HasValue)
+            return true;
+
+        if (!silent)
+        {
+            var timeLeft = GetTimeLeftMMSS(Timing.CurTime, ent.Comp.SafeTimeEnd.Value);
+            var message = Loc.GetString("scp173-in-safe-time", ("time", timeLeft));
+            if (predicted)
+                _popup.PopupPredicted(message, ent, ent);
+            else
+                _popup.PopupEntity(message, ent, ent);
+        }
+
+        return false;
+    }
+
+    public static string GetTimeLeftMMSS(TimeSpan now, TimeSpan end)
+    {
+        var timeLeft = end - now;
+        return GetTimeLeftMMSS(timeLeft);
+    }
+
+    public static string GetTimeLeftMMSS(TimeSpan timeLeft)
+    {
+        timeLeft = timeLeft < TimeSpan.Zero ? TimeSpan.Zero : timeLeft;
+
+        var minutes = ((int) timeLeft.TotalMinutes).ToString("D2");
+        var seconds = timeLeft.Seconds.ToString("D2");
+
+        return $"{minutes}:{seconds}";
     }
 
     #endregion

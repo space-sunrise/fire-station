@@ -25,6 +25,11 @@
       class: B
     - type: AccessLevel
       level: Four
+    - type: ScpAnnounceOnSpawn
+      text: head-announce-on-spawn
+      channels:
+      - Administration
+      includeJobName: true
 
 - type: startingGear
   id: DirectorGear

@@ -3,6 +3,8 @@ ui-options-scp-graphics = Графика
 ui-options-scp-audio = Аудио
 ui-options-scp-game = Игра
 ui-options-tab-hover-to-see-details = Наведите мышку на настройку, чтобы увидеть подсказку о действии настройки.
+ui-options-fps-impact-attention = Данные настройки напрямую влияют на производительность игры.
+    Изменение настроек вызовет изменение FPS
 ui-options-grain-toggle-overlay = Использовать шейдер зернистости
 ui-options-grain-toggle-overlay-tooltip =
     Будет ли включен шейдер зернистости?
@@ -28,8 +30,7 @@ ui-options-light-bloom-cone-enable-tooltip =
     Определяет, будет ли рисоваться конус от источника света?
     При выключении источник света продолжит иметь небольшое свечение вокруг себя.
 ui-options-light-bloom-cone-opacity = Прозрачность конуса свечения
-ui-options-light-bloom-cone-opacity-tooltip =
-    Определяет прозрачность, с которой будет рисоваться конус свечения
+ui-options-light-bloom-cone-opacity-tooltip = Определяет прозрачность, с которой будет рисоваться конус свечения
 ui-options-light-bloom-optimizations = Сниженная нагрузка на видеокарту
 ui-options-light-bloom-optimizations-tooltip =
     При включении источники света, которые не видны персонажу, не будут создавать эффект.

@@ -113,6 +113,10 @@
   - type: FlashImmunity
     examinable: false
   - type: StationRecordKeyStorage
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-name
+    description: ghost-panel-antagonist-scp-description
+    priority: -10
   - type: NpcFactionMember
     factions:
     - SCPs

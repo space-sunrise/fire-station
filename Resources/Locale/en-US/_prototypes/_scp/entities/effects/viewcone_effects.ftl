@@ -1,0 +1,12 @@
+ent-ScpBaseViewconeEffect = { "" }
+    .desc = { "" }
+ent-ScpViewconeEffectFootstep = { ent-ScpBaseViewconeEffect }
+    .desc = { ent-ScpBaseViewconeEffect.desc }
+ent-ScpViewconeEffectAttack = { ent-ScpBaseViewconeEffect }
+    .desc = { ent-ScpBaseViewconeEffect.desc }
+ent-ScpViewconeEffectForcefield = { ent-ScpBaseViewconeEffect }
+    .desc = { ent-ScpBaseViewconeEffect.desc }
+ent-ScpViewconeEffectGunfire = { ent-ScpBaseViewconeEffect }
+    .desc = { ent-ScpBaseViewconeEffect.desc }
+ent-ScpViewconeEffectTalk = { ent-ScpBaseViewconeEffect }
+    .desc = { ent-ScpBaseViewconeEffect.desc }

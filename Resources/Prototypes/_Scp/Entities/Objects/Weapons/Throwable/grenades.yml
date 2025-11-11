@@ -1,0 +1,26 @@
+
+- type: entity
+  parent: SmokeGrenade
+  id: AmnesiacAGasGrenade
+  name: amnesiac gas grenade
+  description: A grenade with class A amnesiac for mass use. Causes drowsiness and memory loss for up to an hour.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Weapons/Grenades/amnesiaca_gas.rsi
+  - type: SmokeOnTrigger
+    keysIn:
+    - timer
+    duration: 10
+    spreadAmount: 20
+    smokePrototype: TearGasSmokeWhite
+    solution:
+      reagents:
+      - ReagentId: AmnesiacA
+        Quantity: 10
+  - type: CartridgeAmmo
+    proto: BulletAmnesiacAGasGrenade
+    deleteOnSpawn: true
+  - type: SpentAmmoVisuals
+  - type: Tag
+    tags:
+    - HandGrenadeAmmo

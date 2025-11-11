@@ -5,12 +5,28 @@
   desc: reagent-amnesiac-a-desc
   flavor: bitter
   color: "#acb78e"
-  physicalDesc: reagent-physical-desc-exotic-smelling
-  plantMetabolism:
-  - !type:PlantAdjustToxins
-    amount: 10
-  - !type:PlantAdjustHealth
-    amount: -5
+  physicalDesc: reagent-physical-desc-nothing
+  reactiveEffects:
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ reagent-amnesiac-a-msg ]
+        probability: 1
+        conditions:
+        - !type:Breathing
+        - !type:Internals
+          usingInternals: false
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectForcedSleeping
+        time: 2
+        type: Add
+        conditions:
+        - !type:Breathing
+        - !type:Internals
+          usingInternals: false
   metabolisms:
     Poison:
       effects:
@@ -21,7 +37,6 @@
         probability: 1
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacA
           min: 5
     Narcotic:
       effects:
@@ -31,7 +46,6 @@
         type: Add
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacA
           min: 4
 
 - type: reagent
@@ -41,12 +55,7 @@
   desc: reagent-amnesiac-b-desc
   flavor: bitter
   color: "#383e28"
-  physicalDesc: reagent-physical-desc-exotic-smelling
-  plantMetabolism:
-  - !type:PlantAdjustToxins
-    amount: 10
-  - !type:PlantAdjustHealth
-    amount: -5
+  physicalDesc: reagent-physical-desc-viscous
   metabolisms:
     Poison:
       effects:
@@ -57,7 +66,6 @@
         probability: 1
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacB
           min: 5
     Narcotic:
       effects:
@@ -67,7 +75,6 @@
         type: Add
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacB
           min: 4
 
 - type: reagent
@@ -77,12 +84,7 @@
   desc: reagent-amnesiac-c-desc
   flavor: bitter
   color: "#383e28"
-  physicalDesc: reagent-physical-desc-exotic-smelling
-  plantMetabolism:
-  - !type:PlantAdjustToxins
-    amount: 10
-  - !type:PlantAdjustHealth
-    amount: -5
+  physicalDesc: reagent-physical-desc-viscous
   metabolisms:
     Poison:
       effects:
@@ -93,8 +95,14 @@
         probability: 1
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacC
           min: 5
+      - !type:HealthChange
+        damage:
+          types:
+            Cellular: 0.5
+        conditions:
+        - !type:ReagentThreshold
+          min: 1
     Narcotic:
       effects:
       - !type:ModifyStatusEffect
@@ -103,7 +111,13 @@
         type: Add
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacC
+          min: 4
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectWoozy
+        time: 27
+        type: Add
+        conditions:
+        - !type:ReagentThreshold
           min: 4
 
 - type: reagent
@@ -113,12 +127,7 @@
   desc: reagent-amnesiac-d-desc
   flavor: bitter
   color: "#383e28"
-  physicalDesc: reagent-physical-desc-exotic-smelling
-  plantMetabolism:
-  - !type:PlantAdjustToxins
-    amount: 10
-  - !type:PlantAdjustHealth
-    amount: -5
+  physicalDesc: reagent-physical-desc-viscous
   metabolisms:
     Poison:
       effects:
@@ -129,8 +138,14 @@
         probability: 1
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacD
           min: 5
+      - !type:HealthChange
+        damage:
+          types:
+            Cellular: 0.75
+        conditions:
+        - !type:ReagentThreshold
+          min: 1
     Narcotic:
       effects:
       - !type:ModifyStatusEffect
@@ -139,7 +154,13 @@
         type: Add
         conditions:
         - !type:ReagentThreshold
-          reagent: AmnesiacD
+          min: 4
+      - !type:ModifyStatusEffect
+        effectProto: StatusEffectWoozy
+        time: 36
+        type: Add
+        conditions:
+        - !type:ReagentThreshold
           min: 4
 
 - type: reagent
@@ -159,5 +180,45 @@
         type: Add
         conditions:
         - !type:ReagentThreshold
-          reagent: RawAmnesiac
+          min: 5
+
+# Мнестики ("Анти Амнезиак")
+- type: reagent
+  id: MnesticW
+  name: reagent-mnestic-w-name
+  group: Medicine
+  desc: reagent-mnestic-w-desc
+  flavor: medicine
+  color: "#787e6b"
+  physicalDesc: reagent-physical-desc-nothing
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ reagent-mnestic-w-msg ]
+        probability: 1
+        conditions:
+        - !type:ReagentThreshold
+          min: 5
+          
+- type: reagent
+  id: MnesticX
+  name: reagent-mnestic-x-name
+  group: Medicine
+  desc: reagent-mnestic-x-desc
+  flavor: medicine
+  color: "#828875"
+  physicalDesc: reagent-physical-desc-nothing
+  metabolisms:
+    Poison:
+      effects:
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ reagent-mnestic-x-msg ]
+        probability: 1
+        conditions:
+        - !type:ReagentThreshold
           min: 5

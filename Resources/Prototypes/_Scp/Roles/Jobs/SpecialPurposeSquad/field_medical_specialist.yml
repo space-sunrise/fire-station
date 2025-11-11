@@ -38,6 +38,7 @@
     id: KeyCardFieldMedicalSpecialist
     ears: ClothingHeadsetFieldMedicalSpecialist
     belt: ClothingBeltMedicalFilled
+    pocket1: AmnesiacSpray
     pocket2: ScpMedicalPDA
   storage:
     back:

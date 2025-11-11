@@ -5,7 +5,7 @@
   components:
   - type: Storage
     grid:
-    - 0,0,2,0
+    - 0,0,2,1
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacA
@@ -22,7 +22,7 @@
   components:
   - type: Storage
     grid:
-    - 0,0,2,0
+    - 0,0,2,1
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacB
@@ -39,7 +39,7 @@
   components:
   - type: Storage
     grid:
-    - 0,0,2,0
+    - 0,0,2,1
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacC
@@ -56,7 +56,7 @@
   components:
   - type: Storage
     grid:
-    - 0,0,2,0
+    - 0,0,2,1
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacD

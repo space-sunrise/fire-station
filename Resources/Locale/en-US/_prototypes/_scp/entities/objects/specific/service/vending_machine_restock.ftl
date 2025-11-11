@@ -1,0 +1,10 @@
+ent-VendingMachineRestockSeedsScpClassD = Seed restock box
+    .desc = A label says they're heirloom seeds, passed down from our ancestors. Pack it into the Seed Servitor!
+ent-VendingMachineRestockNutriMaxScpClassD = NutriMax restock box
+    .desc = We'll make your thumbs green with our tools. Let's get to harvesting! Load into a NutriMax vending machine.
+ent-VendingMachineRestockChefvendScpClassD = ChefVend restock box
+    .desc = Refill the ChefVend. Just don't break any more of the eggs.
+ent-VendingMachineRestockDinnerwareScpClassD = Plasteel Chef's restock box
+    .desc = It's never raw in this kitchen! Drop into the restock slot on the Plasteel Chef to begin.
+ent-VendingMachineRestockBoozeScpClassD = Booze-O-Mat restock box
+    .desc = Slot into your Booze-O-Mat! Not for sale.

@@ -1,10 +1,12 @@
 ﻿using Content.Shared.DoAfter;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
 using Content.Shared.Timing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Blinking.ReducedBlinking;
 
@@ -18,6 +20,7 @@ public abstract class SharedReducedBlinkingSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] protected readonly IGameTiming Timing = default!;
 
     public override void Initialize()
     {
@@ -66,22 +69,23 @@ public abstract class SharedReducedBlinkingSystem : EntitySystem
 
         blinkable.AdditionalBlinkingTime = ent.Comp.FirstBlinkingBonusTime;
         DirtyField(target, blinkable, nameof(BlinkableComponent.AdditionalBlinkingTime));
-        _blinking.ResetBlink(target, predicted: false);
+        _blinking.ResetBlink(target);
         _useDelay.TryResetDelay(ent);
 
-        var comp = new ActiveReducedBlinkingUserComponent()
+        var comp = new ActiveReducedBlinkingUserComponent
         {
-            Duration = ent.Comp.OtherBlinkingBonusDuration,
-            BlinkingBonusTime = ent.Comp.OtherBlinkingBonusTime,
+            BlinkingBonusDuration = ent.Comp.OtherBlinkingBonusDuration,
+            FirstBonusEndTime = Timing.CurTime + ent.Comp.FirstBlinkingBonusTime,
+            AllBonusEndTime = Timing.CurTime + ent.Comp.OtherBlinkingBonusTime,
         };
 
         AddComp(target, comp, true);
         Dirty(target, comp);
 
         if (ent.Comp.UseSound != null)
-            _audio.PlayPvs(ent.Comp.UseSound, ent);
+            _audio.PlayPredicted(ent.Comp.UseSound, ent, target);
 
-        _popup.PopupPredicted(Loc.GetString("eye-droplets-used", ("name", Name(target))), ent, ent);
+        _popup.PopupPredicted(Loc.GetString("eye-droplets-used", ("name", Identity.Name(target, EntityManager))), ent, ent);
 
         // Уменьшаем количество оставшихся использований
         ent.Comp.UsageCount--;

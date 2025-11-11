@@ -150,6 +150,7 @@ namespace Content.Client.Stylesheets
         public static readonly Color ConcerningOrangeFore = Color.FromHex("#8B4500"); // Burnt orange
         public static readonly Color DangerousRedFore = Color.FromHex("#660000"); // Deeper red
         public static readonly Color DisabledFore = Color.FromHex("#3A3A3A"); // Darker disabled
+        public static readonly Color ScpYellow = Color.FromHex("#F5DE5F");
 
         public static readonly Color NanoGold = BloodRed; // Blyat
 
