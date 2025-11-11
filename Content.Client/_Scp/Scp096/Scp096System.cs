@@ -26,6 +26,7 @@ public sealed class Scp096System : SharedScp096System
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
 
     private Scp096Overlay? _overlay;
+    private float? _cachedVolume;
 
     public override void Initialize()
     {
@@ -35,6 +36,8 @@ public sealed class Scp096System : SharedScp096System
         SubscribeLocalEvent<Scp096Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
         SubscribeNetworkEvent<Scp096RequireUpdateVisualsEvent>(OnUpdateStateRequest);
+
+        Log.Level = LogLevel.Debug;
 
         _clyde.OnWindowFocused += OnFocusChanged;
     }
@@ -56,16 +59,6 @@ public sealed class Scp096System : SharedScp096System
         UpdateVisualState((uid, scp096Component));
     }
 
-    // Ебанный предикшен
-    // Это существует тут, так как иногда значения установленные из shared кода могут не успеть установиться на клиенте(я хз как так)
-    // И происходит миспредикт -> скромник иногда мог ходить с обычным спрайтом в ярости. Поэтому для точности после установки стейта с сервера он еще раз перепроверяет внешку скромника.
-    protected override void OnHandleState(Entity<Scp096Component> ent, ref AfterAutoHandleStateEvent args)
-    {
-        base.OnHandleState(ent, ref args);
-
-        UpdateVisualState(ent);
-    }
-
     private void UpdateVisualState(Entity<Scp096Component> ent)
     {
         if (!_timing.IsFirstTimePredicted)
@@ -73,10 +66,18 @@ public sealed class Scp096System : SharedScp096System
 
         var useDownState = UseDownState(ent);
         var inRage = HasComp<ActiveScp096RageComponent>(ent);
+        var isHeatingUp = HasComp<ActiveScp096HeatingUpComponent>(ent);
+        var agroToDead = ent.Comp.AgroToDeadAnimation;
+        var deadToIdle = ent.Comp.DeadToIdleAnimation;
 
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Dead, useDownState);
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Idle, !inRage && !useDownState);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Dead, !agroToDead && useDownState);
         _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Agro, inRage && !useDownState);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Heating, isHeatingUp);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.AgroToDead, agroToDead);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.DeadToIdle, deadToIdle);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Idle, !agroToDead && !deadToIdle && !isHeatingUp && !inRage && !useDownState);
+
+        Log.Verbose($"useDownState = {useDownState}; inRage = {inRage}; isHeatingUp = {isHeatingUp}; agroToDead = {agroToDead}; deadToIdle = {deadToIdle}; ");
     }
 
     /// <summary>
@@ -94,6 +95,7 @@ public sealed class Scp096System : SharedScp096System
     private void OnPlayerAttached(Entity<Scp096Component> ent, ref LocalPlayerAttachedEvent args)
     {
         AddOverlay(ent);
+        UpdateVisualState(ent);
     }
 
     private void OnPlayerDetached(Entity<Scp096Component> ent, ref LocalPlayerDetachedEvent args)
@@ -149,6 +151,7 @@ public sealed class Scp096System : SharedScp096System
 
     private void OnFocusChanged(WindowFocusedEventArgs args)
     {
+        /* TODO: Реворк звука на ручное управление звуковым потоком
         if (args.Window != _clyde.MainWindow)
             return;
 
@@ -157,7 +160,7 @@ public sealed class Scp096System : SharedScp096System
 
         var player = _player.LocalEntity.Value;
 
-        if (!TryComp<Scp096Component>(player, out var scp096) || !TryComp<AmbientSoundComponent>(player, out var ambientSound))
+        if (!HasComp<Scp096Component>(player) || !TryComp<AmbientSoundComponent>(player, out var ambientSound))
             return;
 
         var ambienceEnabled =
@@ -165,6 +168,10 @@ public sealed class Scp096System : SharedScp096System
             || HasComp<ActiveScp096RageComponent>(player)
             || HasComp<ActiveScp096HeatingUpComponent>(player);
 
-        _ambientSound.SetAmbienceWithoutDirty(player, ambienceEnabled, ambientSound);
+        _cachedVolume ??= ambientSound.Volume;
+
+        var volume = ambienceEnabled ? _cachedVolume.Value : -40f;
+        _ambientSound.SetVolumeWithoutDirty(player, volume);
+        */
     }
 }

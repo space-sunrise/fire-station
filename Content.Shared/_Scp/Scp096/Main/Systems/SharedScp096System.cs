@@ -63,7 +63,10 @@ public abstract partial class SharedScp096System : EntitySystem
 
         SubscribeLocalEvent<Scp096Component, ScpMaskTargetEquipAttempt>(OnMaskAttempt);
 
-        SubscribeLocalEvent<Scp096Component, AfterAutoHandleStateEvent>(OnHandleState);
+        SubscribeLocalEvent<Scp096Component, AfterAutoHandleStateEvent>(UpdateAppearance);
+        SubscribeLocalEvent<ActiveScp096HeatingUpComponent, AfterAutoHandleStateEvent>(UpdateAppearance);
+        SubscribeLocalEvent<ActiveScp096RageComponent, AfterAutoHandleStateEvent>(UpdateAppearance);
+
         SubscribeLocalEvent<Scp096Component, ComponentInit>(OnInit);
         SubscribeLocalEvent<Scp096Component, ComponentShutdown>(OnShutdown);
 
@@ -80,6 +83,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
         UpdateHeatingUp();
         UpdateRage();
+        UpdateAnimations();
     }
 
     #region Event handlers
@@ -128,7 +132,7 @@ public abstract partial class SharedScp096System : EntitySystem
         TryAddTarget((target, scp), attacker.Value, true);
     }
 
-    private void UpdateAppearance<T>(Entity<Scp096Component> ent, ref T args)
+    private void UpdateAppearance<T, TE>(Entity<T> ent, ref TE args) where T : IComponent
     {
         RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
     }
@@ -151,7 +155,11 @@ public abstract partial class SharedScp096System : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
+        // Добавляем в список анимируемых объектов, чтобы через нужное время закончить анимации
+        ent.Comp.DeadToIdleAnimation = !args.FellAsleep;
+        Dirty(ent);
+
+        _pendingAnimations.Add((ent, _timing.CurTime + ent.Comp.AnimationDuration));
     }
 
     protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
@@ -258,8 +266,6 @@ public abstract partial class SharedScp096System : EntitySystem
 
     #region Virtuals
 
-    protected virtual void HandleDoorCollision(Entity<ActiveScp096RageComponent> scpEntity, Entity<DoorComponent> doorEntity) {}
-    protected virtual void OnHandleState(Entity<Scp096Component> ent, ref AfterAutoHandleStateEvent args) {}
     protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args) {}
 
     #endregion

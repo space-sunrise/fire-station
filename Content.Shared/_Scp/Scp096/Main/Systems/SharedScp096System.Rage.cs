@@ -19,6 +19,8 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
 
+    private readonly List<(Entity<Scp096Component> ent, TimeSpan end)> _pendingAnimations = [];
+
     private void InitializeRage()
     {
         SubscribeLocalEvent<ActiveScp096HeatingUpComponent, ComponentStartup>(OnHeatingUpStart);
@@ -67,7 +69,8 @@ public abstract partial class SharedScp096System
         EnsureComp<NoRotateOnInteractComponent>(ent);
         _actionBlocker.UpdateCanMove(ent);
 
-        // TODO: Смена спрайта(ждем спрайтеров)
+        // Запрашиваем обновление внешнего вида
+        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
 
         Dirty(ent);
         Dirty(ent.Owner, scp096);
@@ -150,7 +153,13 @@ public abstract partial class SharedScp096System
             Dirty(ent.Owner, restriction);
         }
 
-        // Запрашиваем обновление внешнего вида.
+        // Добавляем в список анимируемых объектов, чтобы через нужное время закончить анимацию
+        scp096.AgroToDeadAnimation = true;
+        Dirty(ent, scp096);
+
+        _pendingAnimations.Add(((ent, scp096), _timing.CurTime + scp096.AnimationDuration));
+
+        // Запрашиваем обновление внешнего вида
         RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
 
         // Обновляем скорость передвижения
@@ -187,6 +196,28 @@ public abstract partial class SharedScp096System
                 continue;
 
             OnRageTimeExceeded((uid, scp096));
+        }
+    }
+
+    private void UpdateAnimations()
+    {
+        if (_pendingAnimations.Count == 0)
+            return;
+
+        for (var i = _pendingAnimations.Count - 1; i >= 0; i--)
+        {
+            var (ent, end) = _pendingAnimations[i];
+            if (_timing.CurTime < end)
+                continue;
+
+            ent.Comp.AgroToDeadAnimation = false;
+            ent.Comp.DeadToIdleAnimation = false;
+            Dirty(ent);
+
+            // Запрашиваем обновление внешнего вида
+            RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
+
+            _pendingAnimations.RemoveAt(i);
         }
     }
 

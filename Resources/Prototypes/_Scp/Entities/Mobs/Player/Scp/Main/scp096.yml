@@ -16,7 +16,16 @@
       map: [ "enum.Scp096VisualsState.Agro", "agro" ]
       visible: false
     - state: dead
-      map: [ "enum.Scp096VisualsState.Dead", "dead" ]
+      map: [ "enum.Scp096VisualsState.Dead"]
+      visible: false
+    - state: heating
+      map: [ "enum.Scp096VisualsState.Heating"]
+      visible: false
+    - state: dead_to_idle
+      map: [ "enum.Scp096VisualsState.DeadToIdle" ]
+      visible: false
+    - state: agro_to_dead
+      map: [ "enum.Scp096VisualsState.AgroToDead" ]
       visible: false
   - type: SpriteMovement
     movementLayers:

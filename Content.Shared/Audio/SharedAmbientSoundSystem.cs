@@ -97,5 +97,14 @@ public abstract class SharedAmbientSoundSystem : EntitySystem
         ambience.Enabled = value;
         QueueUpdate(uid, ambience);
     }
+
+    public virtual void SetVolumeWithoutDirty(EntityUid uid, float value, AmbientSoundComponent? ambience = null)
+    {
+        if (!_query.Resolve(uid, ref ambience, false) || MathHelper.CloseToPercent(ambience.Volume, value))
+            return;
+
+        ambience.Volume = value;
+        QueueUpdate(uid, ambience);
+    }
     // Fire added end
 }

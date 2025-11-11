@@ -52,4 +52,17 @@ public sealed partial class Scp096Component : Component
     public SoundSpecifier TriggerSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/triggered.ogg");
 
     #endregion
+
+    #region Animations
+
+    [DataField]
+    public TimeSpan AnimationDuration = TimeSpan.FromSeconds(2f);
+
+    [ViewVariables, AutoNetworkedField]
+    public bool AgroToDeadAnimation;
+
+    [ViewVariables, AutoNetworkedField]
+    public bool DeadToIdleAnimation;
+
+    #endregion
 }
