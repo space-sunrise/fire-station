@@ -268,7 +268,7 @@ public abstract partial class SharedScp096System
 
         ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
 
-        if (!_net.IsServer)
+        if (_net.IsServer)
             ent.Comp.AudioStream = _audio.PlayPvs(sound, ent, sound.Params)?.Entity;
 
         Dirty(ent);

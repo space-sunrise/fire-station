@@ -67,8 +67,11 @@
     probability: 1
     bloodLineProbability: 0.7
     pierceLevel: HardenedMetal
-    sound:
+    attackSound:
       collection: GibCollection
+      params:
+        variation: 0.125
+        maxDistance: 10
   - type: BreakDoorOnCollide
     enabled: false
   - type: ComplexInteraction
@@ -84,8 +87,7 @@
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
     altDisarm: false
-    soundHit:
-      collection: GibCollection
+    soundHit: null
     angle: 0
     animation: WeaponArcClaw
     wideAnimation: WeaponArcClaw
@@ -93,7 +95,7 @@
     damage:
       types:
         Slash: 27
-        Structural: 70
+        Structural: 110
         Bloodloss: 5
   - type: Body
     prototype: Human # TODO: Кастомное тело

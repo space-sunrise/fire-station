@@ -88,4 +88,10 @@ public sealed partial class BloodSplattererComponent : Component
     [DataField]
     public SoundSpecifier BloodLineSpawnedSound = new SoundCollectionSpecifier("BleedingStart",
             AudioParams.Default.WithVariation(0.25f).WithMaxDistance(6f));
+
+    /// <summary>
+    /// Звук, проигрывающийся при успешной атаке по сущности
+    /// </summary>
+    [DataField]
+    public SoundSpecifier? AttackSound;
 }

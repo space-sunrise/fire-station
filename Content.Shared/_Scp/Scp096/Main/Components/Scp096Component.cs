@@ -8,10 +8,10 @@ namespace Content.Shared._Scp.Scp096.Main.Components;
 public sealed partial class Scp096Component : Component
 {
     [DataField]
-    public float ArgoAngle = 25;
+    public float ArgoAngle = 25f;
 
     [DataField, AutoNetworkedField]
-    public TimeSpan RageDuration = TimeSpan.FromSeconds(180f);
+    public TimeSpan RageDuration = TimeSpan.FromSeconds(240f); // 4 минуты
 
     [DataField]
     public TimeSpan PacifiedTime = TimeSpan.FromSeconds(60f);

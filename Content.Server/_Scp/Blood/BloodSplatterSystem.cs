@@ -95,6 +95,7 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
             return false;
 
         Splat(ent, target);
+        _audio.PlayPvs(ent.Comp.AttackSound, target);
 
         return true;
     }
