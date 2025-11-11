@@ -2,7 +2,6 @@
 using Content.Shared._Scp.Scp096;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Main.Systems;
-using Content.Shared.Audio;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Standing;
@@ -23,10 +22,8 @@ public sealed class Scp096System : SharedScp096System
     [Dependency] private readonly IClyde _clyde = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
     [Dependency] private readonly MobStateSystem _mob = default!;
-    [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
 
     private Scp096Overlay? _overlay;
-    private float? _cachedVolume;
 
     public override void Initialize()
     {
@@ -38,15 +35,6 @@ public sealed class Scp096System : SharedScp096System
         SubscribeNetworkEvent<Scp096RequireUpdateVisualsEvent>(OnUpdateStateRequest);
 
         Log.Level = LogLevel.Debug;
-
-        _clyde.OnWindowFocused += OnFocusChanged;
-    }
-
-    public override void Shutdown()
-    {
-        base.Shutdown();
-
-        _clyde.OnWindowFocused -= OnFocusChanged;
     }
 
     private void OnUpdateStateRequest(Scp096RequireUpdateVisualsEvent args)
@@ -147,31 +135,5 @@ public sealed class Scp096System : SharedScp096System
 
         if (!_clyde.IsFocused)
             args.Cancel();
-    }
-
-    private void OnFocusChanged(WindowFocusedEventArgs args)
-    {
-        /* TODO: Реворк звука на ручное управление звуковым потоком
-        if (args.Window != _clyde.MainWindow)
-            return;
-
-        if (!_player.LocalEntity.HasValue)
-            return;
-
-        var player = _player.LocalEntity.Value;
-
-        if (!HasComp<Scp096Component>(player) || !TryComp<AmbientSoundComponent>(player, out var ambientSound))
-            return;
-
-        var ambienceEnabled =
-            args.Focused
-            || HasComp<ActiveScp096RageComponent>(player)
-            || HasComp<ActiveScp096HeatingUpComponent>(player);
-
-        _cachedVolume ??= ambientSound.Volume;
-
-        var volume = ambienceEnabled ? _cachedVolume.Value : -40f;
-        _ambientSound.SetVolumeWithoutDirty(player, volume);
-        */
     }
 }

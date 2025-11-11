@@ -8,9 +8,6 @@ namespace Content.Shared._Scp.Scp096.Main.Components;
 public sealed partial class Scp096Component : Component
 {
     [DataField]
-    public float AgroDistance = 10f;
-
-    [DataField]
     public float ArgoAngle = 25;
 
     [DataField, AutoNetworkedField]
@@ -43,13 +40,18 @@ public sealed partial class Scp096Component : Component
     #region Sounds
 
     [DataField]
-    public SoundSpecifier CrySound = new SoundPathSpecifier("/Audio/_Scp/Scp096/crying.ogg");
+    public SoundSpecifier CrySound = new SoundPathSpecifier("/Audio/_Scp/Scp096/crying.ogg",
+        AudioParams.Default.WithVolume(-14f).WithMaxDistance(4f).WithLoop(true));
 
     [DataField]
     public SoundSpecifier SeenSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/seen.ogg");
 
     [DataField]
-    public SoundSpecifier TriggerSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/triggered.ogg");
+    public SoundSpecifier TriggerSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/triggered.ogg",
+        AudioParams.Default.WithVolume(20f).WithMaxDistance(30f));
+
+    [ViewVariables, AutoNetworkedField, NonSerialized]
+    public EntityUid? AudioStream;
 
     #endregion
 

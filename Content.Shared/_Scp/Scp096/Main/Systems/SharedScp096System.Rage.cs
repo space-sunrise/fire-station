@@ -1,18 +1,17 @@
 ﻿using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.ActionBlocker;
-using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Jittering;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
+using Robust.Shared.Audio;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
-    [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private readonly SharedStaminaSystem _stamina = default!;
@@ -44,9 +43,7 @@ public abstract partial class SharedScp096System
         ent.Comp.RageHeatUpEnd = _timing.CurTime + scp096.RageHeatUp;
 
         // Устанавливаем звук пред-агр состояния
-        _ambientSound.SetSound(ent, scp096.TriggerSound);
-        _ambientSound.SetRange(ent, 30f);
-        _ambientSound.SetVolume(ent, 20f);
+        UpdateAudio(ent.Owner, scp096.TriggerSound);
 
         // Если скромник был застанен - убираем это
         _stamina.TryTakeStamina(ent, -100);
@@ -114,9 +111,7 @@ public abstract partial class SharedScp096System
         }
 
         // Устанавливаем звук ора
-        _ambientSound.SetSound(ent, ent.Comp.RageSound);
-        _ambientSound.SetRange(ent, 20f);
-        _ambientSound.SetVolume(ent, 10f);
+        UpdateAudio(ent.Owner, ent.Comp.RageSound);
 
         // Запрашиваем обновление внешнего вида
         RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
@@ -137,9 +132,7 @@ public abstract partial class SharedScp096System
         }
 
         // Возвращаем звук плача
-        _ambientSound.SetSound(ent, scp096.CrySound);
-        _ambientSound.SetRange(ent, 4f);
-        _ambientSound.SetVolume(ent, -14f);
+        UpdateAudio(ent.Owner, scp096.CrySound);
 
         // Усыпляем скромника
         _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, scp096.PacifiedTime);
@@ -266,5 +259,18 @@ public abstract partial class SharedScp096System
         EnsureComp<ActiveScp096RageComponent>(uid);
 
         return true;
+    }
+
+    private void UpdateAudio(Entity<Scp096Component?> ent, SoundSpecifier sound)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return;
+
+        ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
+
+        if (!_net.IsServer)
+            ent.Comp.AudioStream = _audio.PlayPvs(sound, ent, sound.Params)?.Entity;
+
+        Dirty(ent);
     }
 }

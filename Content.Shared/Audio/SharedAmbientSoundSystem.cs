@@ -56,13 +56,6 @@ public abstract class SharedAmbientSoundSystem : EntitySystem
         if (!_query.Resolve(uid, ref ambience, false) || ambience.Sound == sound)
             return;
 
-        // Fire added start
-        // Если сменять звук, не делая так, то проигрывание начнется с того же временного отрезка, где играл старый звук
-        // Бредятина и баг, но как есть.
-        SetAmbience(uid, false, ambience);
-        SetAmbience(uid, true, ambience);
-        // Fire added end
-
         ambience.Sound = sound;
         QueueUpdate(uid, ambience);
         Dirty(uid, ambience);

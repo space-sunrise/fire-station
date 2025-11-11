@@ -10,5 +10,6 @@ public sealed partial class ActiveScp096RageComponent : Component
     public TimeSpan? RageStartTime;
 
     [DataField]
-    public SoundSpecifier RageSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/scream.ogg");
+    public SoundSpecifier RageSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/scream.ogg",
+        AudioParams.Default.WithVolume(20f).WithMaxDistance(30f).WithLoop(true));
 }

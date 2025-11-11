@@ -99,12 +99,6 @@
     prototype: Human # TODO: Кастомное тело
   - type: Inventory
     templateId: scp096
-  - type: AmbientSound
-    enabled: true
-    volume: -14
-    range: 4
-    sound:
-      path: /Audio/_Scp/Scp096/crying.ogg
   - type: EmitSoundRandomly
     sound:
       collection: IdleScp096

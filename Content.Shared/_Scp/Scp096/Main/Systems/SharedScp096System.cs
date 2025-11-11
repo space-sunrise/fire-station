@@ -161,15 +161,6 @@ public abstract partial class SharedScp096System : EntitySystem
         _pendingAnimations.Add((ent, _timing.CurTime + ent.Comp.AnimationDuration));
     }
 
-    protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
-    {
-        var query = EntityQueryEnumerator<Scp096TargetComponent>();
-        while (query.MoveNext(out var uid, out _))
-        {
-            RemCompDeferred<Scp096TargetComponent>(uid);
-        }
-    }
-
     private void OnAttackAttempt(Entity<Scp096Component> ent, ref AttackAttemptEvent args)
     {
         if (!args.Target.HasValue)
@@ -202,6 +193,23 @@ public abstract partial class SharedScp096System : EntitySystem
     {
         if (HasComp<ActiveScp096RageComponent>(ent) || HasComp<SleepingComponent>(ent) || HasComp<ActiveScp096HeatingUpComponent>(ent))
             args.Cancel();
+    }
+
+    protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
+    {
+        UpdateAudio(ent.AsNullable(), ent.Comp.CrySound);
+    }
+
+    protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
+    {
+        var query = EntityQueryEnumerator<Scp096TargetComponent>();
+        while (query.MoveNext(out var uid, out _))
+        {
+            RemCompDeferred<Scp096TargetComponent>(uid);
+        }
+
+        ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
+        Dirty(ent);
     }
 
     #endregion
@@ -260,12 +268,6 @@ public abstract partial class SharedScp096System : EntitySystem
 
         return true;
     }
-
-    #endregion
-
-    #region Virtuals
-
-    protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args) {}
 
     #endregion
 }
