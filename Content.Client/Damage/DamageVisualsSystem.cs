@@ -1,9 +1,11 @@
 using System.Linq;
 using Content.Client.IconSmoothing;
+using Content.Client._Scp.DamageOverlay;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
 using Content.Shared.FixedPoint;
 using Robust.Client.GameObjects;
+using Robust.Client.Graphics;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -35,6 +37,53 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
 
         // Fire edit
         SubscribeLocalEvent<DamageVisualsComponent, ComponentStartup>(InitializeEntity, after: [typeof(IconSmoothSystem)]);
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        // Update IconSmooth format damage overlays when IconSmooth states change
+        var query = EntityQueryEnumerator<DamageVisualsComponent, SpriteComponent, IconSmoothComponent>();
+        while (query.MoveNext(out var uid, out var damageVisComp, out var sprite, out var iconSmooth))
+        {
+            // Only update if using IconSmooth format and has corner layers
+            if (!DamageOverlayIconSmoothHelper.ShouldUseIconSmoothFormat(uid, damageVisComp, EntityManager) ||
+                damageVisComp.DamageCornerLayerKeys.Count == 0)
+                continue;
+
+            // Check if we need to update damage overlays based on current damage thresholds
+            if (!TryComp<DamageableComponent>(uid, out var damageable))
+                continue;
+
+            // Update overlays if there's active damage
+            if (damageVisComp.TrackAllDamage)
+            {
+                var threshold = damageVisComp.LastDamageThreshold;
+                if (threshold > FixedPoint2.Zero)
+                {
+                    UpdateIconSmoothDamageLayers((uid, sprite), damageVisComp, null, threshold);
+                }
+            }
+            else if (damageVisComp.DamageOverlayGroups != null)
+            {
+                foreach (var (group, _) in damageVisComp.DamageOverlayGroups)
+                {
+                    if (damageVisComp.LastThresholdPerGroup.TryGetValue(group, out var threshold) && threshold > FixedPoint2.Zero)
+                    {
+                        UpdateIconSmoothDamageLayers((uid, sprite), damageVisComp, group, threshold);
+                    }
+                }
+            }
+            else if (damageVisComp.DamageOverlay != null)
+            {
+                var threshold = damageVisComp.LastDamageThreshold;
+                if (threshold > FixedPoint2.Zero)
+                {
+                    UpdateIconSmoothDamageLayers((uid, sprite), damageVisComp, null, threshold);
+                }
+            }
+        }
     }
 
     // Fire edit - пофиксил, что дамаг оверлей срется в самый низ
@@ -300,24 +349,47 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         // reserve it as an overlay.
         else
         {
+            // Check if we should use IconSmooth format
+            var useIconSmoothFormat = DamageOverlayIconSmoothHelper.ShouldUseIconSmoothFormat(entity, damageVisComp, EntityManager);
+
             if (damageVisComp.DamageOverlayGroups != null)
             {
                 foreach (var (group, sprite) in damageVisComp.DamageOverlayGroups)
                 {
-                    AddDamageLayerToSprite((entity, spriteComponent),
-                        sprite,
-                        $"DamageOverlay_{group}_{damageVisComp.Thresholds[1]}",
-                        $"DamageOverlay{group}");
-                    damageVisComp.TopMostLayerKey = $"DamageOverlay{group}";
+                    if (useIconSmoothFormat)
+                    {
+                        // Create 4 corner layers for IconSmooth format
+                        AddIconSmoothDamageLayers((entity, spriteComponent), sprite, group, damageVisComp, damageVisComp.Thresholds[1]);
+                        damageVisComp.TopMostLayerKey = $"DamageOverlay{group}";
+                    }
+                    else
+                    {
+                        // Use old format - single layer
+                        AddDamageLayerToSprite((entity, spriteComponent),
+                            sprite,
+                            $"DamageOverlay_{group}_{damageVisComp.Thresholds[1]}",
+                            $"DamageOverlay{group}");
+                        damageVisComp.TopMostLayerKey = $"DamageOverlay{group}";
+                    }
                 }
             }
             else if (damageVisComp.DamageOverlay != null)
             {
-                AddDamageLayerToSprite((entity, spriteComponent),
-                    damageVisComp.DamageOverlay,
-                    $"DamageOverlay_{damageVisComp.Thresholds[1]}",
-                    "DamageOverlay");
-                damageVisComp.TopMostLayerKey = $"DamageOverlay";
+                if (useIconSmoothFormat)
+                {
+                    // Create 4 corner layers for IconSmooth format
+                    AddIconSmoothDamageLayers((entity, spriteComponent), damageVisComp.DamageOverlay, null, damageVisComp, damageVisComp.Thresholds[1]);
+                    damageVisComp.TopMostLayerKey = $"DamageOverlay";
+                }
+                else
+                {
+                    // Use old format - single layer
+                    AddDamageLayerToSprite((entity, spriteComponent),
+                        damageVisComp.DamageOverlay,
+                        $"DamageOverlay_{damageVisComp.Thresholds[1]}",
+                        "DamageOverlay");
+                    damageVisComp.TopMostLayerKey = $"DamageOverlay";
+                }
             }
         }
     }
@@ -338,6 +410,64 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         if (sprite.Color != null)
             SpriteSystem.LayerSetColor(spriteEnt, newLayer, Color.FromHex(sprite.Color));
         SpriteSystem.LayerSetVisible(spriteEnt, newLayer, false);
+    }
+
+    /// <summary>
+    ///     Adds 4 corner-based damage layers for IconSmooth format.
+    ///     Creates layers for SE, NE, NW, SW corners matching IconSmoothComponent format.
+    /// </summary>
+    private void AddIconSmoothDamageLayers(Entity<SpriteComponent> spriteEnt, DamageVisualizerSprite sprite, string? damageGroup, DamageVisualsComponent damageVisComp, FixedPoint2 initialThreshold)
+    {
+        // Corner layer indices matching IconSmoothSystem.CornerLayers
+        const byte CornerSE = 0;
+        const byte CornerNE = 1;
+        const byte CornerNW = 2;
+        const byte CornerSW = 3;
+
+        var corners = new[] { CornerSE, CornerNE, CornerNW, CornerSW };
+        var cornerNames = new[] { "SE", "NE", "NW", "SW" };
+
+        // For damage overlay sprites, we don't use stateBase from IconSmoothComponent
+        // because that's for the window sprite, not the damage overlay sprite.
+        // Instead, we use an empty stateBase or extract it from the sprite RSI.
+        // For now, we'll use empty string and let the RSI states be in format:
+        // {cornerIndex}_{group}_{threshold} or {cornerIndex}_{threshold}
+        var stateBase = string.Empty;
+
+        // Store the stateBase and RSI path for later use in updates
+        damageVisComp.DamageOverlayStateBase = stateBase;
+        damageVisComp.DamageOverlayRsiPath = sprite.Sprite;
+
+        for (int i = 0; i < corners.Length; i++)
+        {
+            var corner = corners[i];
+            var cornerName = cornerNames[i];
+
+            // Format: {StateBase}{cornerIndex}_{group}_{threshold} or {StateBase}{cornerIndex}_{threshold}
+            // For initial state, we use cornerIndex 0 as default
+            var statePrefix = damageGroup != null
+                ? $"{stateBase}0_{damageGroup}"
+                : $"{stateBase}0";
+            var state = $"{statePrefix}_{initialThreshold}";
+            var mapKey = damageGroup != null
+                ? $"DamageOverlay{damageGroup}{cornerName}"
+                : $"DamageOverlay{cornerName}";
+
+            var newLayer = SpriteSystem.AddLayer(
+                spriteEnt.AsNullable(),
+                new SpriteSpecifier.Rsi(
+                    new(sprite.Sprite), state
+                ),
+                null
+            );
+            SpriteSystem.LayerMapSet(spriteEnt.AsNullable(), mapKey, newLayer);
+            if (sprite.Color != null)
+                SpriteSystem.LayerSetColor(spriteEnt.AsNullable(), newLayer, Color.FromHex(sprite.Color));
+            SpriteSystem.LayerSetVisible(spriteEnt.AsNullable(), newLayer, false);
+
+            // Store the layer key in DamageCornerLayerKeys
+            damageVisComp.DamageCornerLayerKeys[corner] = mapKey;
+        }
     }
 
     protected override void OnAppearanceChange(EntityUid uid, DamageVisualsComponent damageVisComp, ref AppearanceChangeEvent args)
@@ -672,12 +802,27 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
     /// </summary>
     private void UpdateOverlay(Entity<SpriteComponent> spriteEnt, FixedPoint2 threshold)
     {
-        SpriteSystem.LayerMapTryGet(spriteEnt.AsNullable(), $"DamageOverlay", out var spriteLayer, false);
+        if (!TryComp<DamageVisualsComponent>(spriteEnt, out var damageVisComp))
+            return;
 
-        UpdateDamageLayerState(spriteEnt,
-            spriteLayer,
-            $"DamageOverlay",
-            threshold);
+        // Check if using IconSmooth format
+        var useIconSmoothFormat = DamageOverlayIconSmoothHelper.ShouldUseIconSmoothFormat(spriteEnt, damageVisComp, EntityManager);
+
+        if (useIconSmoothFormat && damageVisComp.DamageCornerLayerKeys.Count > 0)
+        {
+            // Update all 4 corner layers
+            UpdateIconSmoothDamageLayers(spriteEnt, damageVisComp, null, threshold);
+        }
+        else
+        {
+            // Use old format - single layer
+            SpriteSystem.LayerMapTryGet(spriteEnt.AsNullable(), $"DamageOverlay", out var spriteLayer, false);
+
+            UpdateDamageLayerState(spriteEnt,
+                spriteLayer,
+                $"DamageOverlay",
+                threshold);
+        }
     }
 
     /// <summary>
@@ -692,13 +837,25 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         {
             if (damageVisComp.DamageOverlayGroups.ContainsKey(damageGroup))
             {
-                SpriteSystem.LayerMapTryGet((entity, spriteComponent), $"DamageOverlay{damageGroup}", out var spriteLayer, false);
+                // Check if using IconSmooth format
+                var useIconSmoothFormat = DamageOverlayIconSmoothHelper.ShouldUseIconSmoothFormat(entity, damageVisComp, EntityManager);
 
-                UpdateDamageLayerState(
-                    (entity, spriteComponent),
-                    spriteLayer,
-                    $"DamageOverlay_{damageGroup}",
-                    threshold);
+                if (useIconSmoothFormat && damageVisComp.DamageCornerLayerKeys.Count > 0)
+                {
+                    // Update all 4 corner layers
+                    UpdateIconSmoothDamageLayers((entity, spriteComponent), damageVisComp, damageGroup, threshold);
+                }
+                else
+                {
+                    // Use old format - single layer
+                    SpriteSystem.LayerMapTryGet((entity, spriteComponent), $"DamageOverlay{damageGroup}", out var spriteLayer, false);
+
+                    UpdateDamageLayerState(
+                        (entity, spriteComponent),
+                        spriteLayer,
+                        $"DamageOverlay_{damageGroup}",
+                        threshold);
+                }
             }
         }
     }
@@ -722,6 +879,118 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
                 SpriteSystem.LayerSetVisible(spriteEnt.AsNullable(), spriteLayer, true);
             }
             SpriteSystem.LayerSetRsiState(spriteEnt.AsNullable(), spriteLayer, $"{statePrefix}_{threshold}");
+        }
+    }
+
+    /// <summary>
+    ///     Updates all 4 corner layers for IconSmooth format damage overlay.
+    ///     Gets current corner indices from IconSmoothComponent and updates each corner layer accordingly.
+    /// </summary>
+    private void UpdateIconSmoothDamageLayers(Entity<SpriteComponent> spriteEnt, DamageVisualsComponent damageVisComp, string? damageGroup, FixedPoint2 threshold)
+    {
+        if (!TryComp<IconSmoothComponent>(spriteEnt, out var iconSmooth))
+            return;
+
+        var cornerIndices = DamageOverlayIconSmoothHelper.GetCornerIndices(spriteEnt, spriteEnt.Comp, EntityManager);
+
+        if (cornerIndices == null)
+            return;
+
+        var (se, ne, nw, sw) = cornerIndices.Value;
+
+        // Corner layer indices matching IconSmoothSystem.CornerLayers
+        const byte CornerSE = 0;
+        const byte CornerNE = 1;
+        const byte CornerNW = 2;
+        const byte CornerSW = 3;
+
+        var corners = new[] { (CornerSE, se), (CornerNE, ne), (CornerNW, nw), (CornerSW, sw) };
+
+        var stateBase = damageVisComp.DamageOverlayStateBase;
+        if (string.IsNullOrEmpty(stateBase))
+        {
+            foreach (var (corner, _) in corners)
+            {
+                if (!damageVisComp.DamageCornerLayerKeys.TryGetValue(corner, out var mapKey))
+                    continue;
+
+                if (!SpriteSystem.LayerMapTryGet(spriteEnt.AsNullable(), mapKey, out var spriteLayer, false))
+                    continue;
+
+                var currentState = SpriteSystem.LayerGetRsiState(spriteEnt.AsNullable(), spriteLayer);
+                if (currentState.IsValid)
+                {
+                    var stateName = currentState.Name;
+                    if (!string.IsNullOrEmpty(stateName))
+                    {
+                        var parts = stateName.Split('_');
+                        if (parts.Length >= 1)
+                        {
+                            var firstPart = parts[0];
+                            var lastDigitIndex = -1;
+                            for (int i = firstPart.Length - 1; i >= 0; i--)
+                            {
+                                if (char.IsDigit(firstPart[i]))
+                                {
+                                    lastDigitIndex = i;
+                                    break;
+                                }
+                            }
+                            if (lastDigitIndex >= 0)
+                            {
+                                stateBase = firstPart.Substring(0, lastDigitIndex);
+                                damageVisComp.DamageOverlayStateBase = stateBase;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        stateBase ??= string.Empty;
+
+        var rsiPath = string.Empty;
+        if (damageVisComp.DamageOverlay != null)
+        {
+            rsiPath = damageVisComp.DamageOverlay.Sprite;
+        }
+        else if (damageVisComp.DamageOverlayGroups != null && damageGroup != null && damageVisComp.DamageOverlayGroups.TryGetValue(damageGroup, out var sprite))
+        {
+            rsiPath = sprite.Sprite;
+        }
+
+        if (string.IsNullOrEmpty(rsiPath))
+            return;
+
+        foreach (var (corner, cornerIndex) in corners)
+        {
+            if (!damageVisComp.DamageCornerLayerKeys.TryGetValue(corner, out var mapKey))
+                continue;
+
+            if (!SpriteSystem.LayerMapTryGet(spriteEnt.AsNullable(), mapKey, out var spriteLayer, false))
+                continue;
+
+            if (threshold == 0)
+            {
+                SpriteSystem.LayerSetVisible(spriteEnt.AsNullable(), spriteLayer, false);
+                continue;
+            }
+
+            if (!spriteEnt.Comp[spriteLayer].Visible)
+            {
+                SpriteSystem.LayerSetVisible(spriteEnt.AsNullable(), spriteLayer, true);
+            }
+
+            var actualCornerIndex = cornerIndex ?? 0;
+
+            var statePrefix = damageGroup != null
+                ? $"{stateBase}{actualCornerIndex}_{damageGroup}"
+                : $"{stateBase}{actualCornerIndex}";
+            var state = $"{statePrefix}_{threshold}";
+
+            var specifier = new SpriteSpecifier.Rsi(new ResPath("/Textures/" + rsiPath), state);
+            SpriteSystem.LayerSetSprite(spriteEnt.AsNullable(), spriteLayer, specifier);
         }
     }
 }

@@ -123,6 +123,34 @@ public sealed partial class DamageVisualsComponent : Component
     public readonly Dictionary<object, string> LayerMapKeyStates = new();
     public readonly Dictionary<string, FixedPoint2> LastThresholdPerGroup = new();
     public string TopMostLayerKey = default!;
+
+    /// <summary>
+    ///     Whether to use IconSmooth format for damage overlays.
+    ///     When enabled, damage overlays will use corner-based layers (SE, NE, NW, SW)
+    ///     matching the format used by IconSmoothComponent.
+    ///     If not explicitly set, will be auto-detected based on presence of IconSmoothComponent.
+    /// </summary>
+    [DataField("useIconSmoothFormat")]
+    public bool? UseIconSmoothFormat;
+
+    /// <summary>
+    ///     Dictionary storing layer map keys for damage corner layers.
+    ///     Key: corner layer enum value (0=SE, 1=NE, 2=NW, 3=SW)
+    ///     Value: layer map key string for that corner's damage overlay
+    /// </summary>
+    public readonly Dictionary<byte, string> DamageCornerLayerKeys = new();
+
+    /// <summary>
+    ///     StateBase for damage overlay sprite when using IconSmooth format.
+    ///     This is extracted from the damage overlay sprite RSI, not from IconSmoothComponent.
+    /// </summary>
+    public string? DamageOverlayStateBase;
+
+    /// <summary>
+    ///     RSI path for damage overlay sprite when using IconSmooth format.
+    ///     This is used to ensure the correct RSI is used when updating layer states.
+    /// </summary>
+    public string? DamageOverlayRsiPath;
 }
 
 // deals with the edge case of human damage visuals not
