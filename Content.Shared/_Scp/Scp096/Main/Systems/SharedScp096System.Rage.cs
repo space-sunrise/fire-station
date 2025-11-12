@@ -135,7 +135,12 @@ public abstract partial class SharedScp096System
         UpdateAudio(ent.Owner, scp096.CrySound);
 
         // Усыпляем скромника
-        _statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, scp096.PacifiedTime);
+        if (!_statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, scp096.PacifiedTime))
+        {
+            // При усыплении скромника и так меняется внешний вид, нет смысла делать это несколько раз.
+            // Поэтому запрашиваем обновление внешнего вида только при неуспешном усыплении
+            RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
+        }
 
         // Убираем наложенные ограничения на взаимодействие
         if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
@@ -145,15 +150,6 @@ public abstract partial class SharedScp096System
             restriction.CanStandingState = true;
             Dirty(ent.Owner, restriction);
         }
-
-        // Добавляем в список анимируемых объектов, чтобы через нужное время закончить анимацию
-        scp096.AgroToDeadAnimation = true;
-        Dirty(ent, scp096);
-
-        _pendingAnimations.Add(((ent, scp096), _timing.CurTime + scp096.AnimationDuration));
-
-        // Запрашиваем обновление внешнего вида
-        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
 
         // Обновляем скорость передвижения
         RefreshSpeedModifiers(ent.Owner, false);

@@ -154,10 +154,13 @@ public abstract partial class SharedScp096System : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        // Добавляем в список анимируемых объектов, чтобы через нужное время закончить анимации
         ent.Comp.DeadToIdleAnimation = !args.FellAsleep;
+        ent.Comp.AgroToDeadAnimation = args.FellAsleep;
         Dirty(ent);
 
+        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
+
+        // Добавляем в список анимируемых объектов, чтобы через нужное время закончить анимации
         _pendingAnimations.Add((ent, _timing.CurTime + ent.Comp.AnimationDuration));
     }
 
