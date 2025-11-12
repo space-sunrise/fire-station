@@ -19,6 +19,7 @@
   - type: PlacementReplacement
     key: ladders
   - type: Ladder
+    id: PutNewId
 
 - type: entity
   parent: RMCLadder
