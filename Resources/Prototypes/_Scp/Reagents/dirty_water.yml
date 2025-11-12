@@ -12,3 +12,15 @@
   boilingPoint: 100.0
   meltingPoint: 0.0
   friction: 0.4
+  metabolisms:
+    Poison:
+      effects:
+        - !type:HealthChange
+          damage:
+            types:
+              Poison: 2
+        - !type:ChemVomit
+          conditions:
+          - !type:ReagentThreshold
+            min: 2
+          probability: 0.2

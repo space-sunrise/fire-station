@@ -12,10 +12,10 @@
   - type: SolutionContainerManager
     solutions:
       pool:
-        maxVol: 9999999
+        maxVol: 10000
         reagents:
         - ReagentId: DirtyWater
-          Quantity: 9999999
+          Quantity: 10000
   - type: SolutionRegeneration
     solution: tank
     generated:
