@@ -1,6 +1,5 @@
 ﻿- type: entity
-  id: Scp049ALT1
-  suffix: SCP-049 "Каноничный" - ADMEME
+  id: Scp049Alternatives
   parent:
   - BaseScp
   - MobCombat
@@ -13,7 +12,6 @@
     noRot: true
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-049.rsi/Alternatives
-    state: SCP-049_ALT1
   - type: Scp
     class: Euclid
   - type: Scp049
@@ -84,3 +82,27 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+
+- type: entity
+  id: Scp049ALT1
+  suffix: SCP-049 "Каноничный" - ADMEME
+  parent: Scp049Alternatives
+  components:
+  - type: Sprite
+    state: SCP-049_ALT1
+
+- type: entity
+  id: Scp049ALT2
+  suffix: SCP-049 "Уродливый" - ADMEME
+  parent: Scp049Alternatives
+  components:
+  - type: Sprite
+    state: SCP-049_ALT2
+
+- type: entity
+  id: Scp049ALT3
+  suffix: SCP-049 "Старомодный" - ADMEME
+  parent: Scp049Alternatives
+  components:
+  - type: Sprite
+    state: SCP-049_ALT3
