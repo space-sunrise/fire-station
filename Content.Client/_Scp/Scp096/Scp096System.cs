@@ -14,7 +14,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Scp096;
 
-public sealed class Scp096System : SharedScp096System
+public sealed partial class Scp096System : SharedScp096System
 {
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
@@ -33,6 +33,8 @@ public sealed class Scp096System : SharedScp096System
         SubscribeLocalEvent<Scp096Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
         SubscribeNetworkEvent<Scp096RequireUpdateVisualsEvent>(OnUpdateStateRequest);
+
+        InitializeWidget();
 
         Log.Level = LogLevel.Debug;
     }
@@ -84,11 +86,13 @@ public sealed class Scp096System : SharedScp096System
     {
         AddOverlay(ent);
         UpdateVisualState(ent);
+        EnsureWidgetExist();
     }
 
     private void OnPlayerDetached(Entity<Scp096Component> ent, ref LocalPlayerDetachedEvent args)
     {
         RemoveOverlay();
+        RemoveWidget();
     }
 
     protected override void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
