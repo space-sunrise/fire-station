@@ -2,16 +2,8 @@
   id: DirtyWaterEntity
   name: dirty water
   description: Dirty, muddy water.
-  placement:
-    mode: SnapgridCenter
-    snap:
-    - Wall
+  parent: FloorWaterEntity
   components:
-  - type: FloorOccluder
-  - type: Transform
-    anchored: true
-  - type: SyncSprite
-  - type: Clickable
   - type: Sprite
     sprite: _Scp/Tiles/dirty_water.rsi
     drawdepth: BelowFloor
@@ -22,44 +14,11 @@
       pool:
         maxVol: 9999999
         reagents:
-        - ReagentId: Unholywater
+        - ReagentId: DirtyWater
           Quantity: 9999999
   - type: SolutionRegeneration
     solution: tank
     generated:
       reagents:
-      - ReagentId: Unholywater
+      - ReagentId: DirtyWater
         Quantity: 100
-  - type: DrainableSolution
-    solution: pool
-  - type: SpeedModifierContacts
-    walkSpeedModifier: 0.5
-    sprintSpeedModifier: 0.5
-  - type: Physics
-    bodyType: Static
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.5,-0.5,0.5,0.5"
-        layer:
-          - SlipLayer
-        mask:
-          - ItemMask
-        density: 1000
-        hard: false
-  - type: FootstepModifier
-    footstepSoundCollection:
-      collection: FootstepWater
-      params:
-        volume: 8
-  - type: StepTrigger
-    requiredTriggeredSpeed: 0
-    intersectRatio: 0.1
-    blacklist:
-      tags:
-        - Catwalk
-  - type: TileEntityEffect
-    effects:
-    - !type:ExtinguishReaction

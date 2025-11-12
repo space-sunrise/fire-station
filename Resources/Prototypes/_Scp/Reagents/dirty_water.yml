@@ -1,0 +1,14 @@
+- type: reagent
+  id: DirtyWater
+  parent: Water
+  name: reagent-name-dirty-water
+  desc: reagent-desc-dirty-water
+  evaporationSpeed: 0.15
+  absorbent: true
+  physicalDesc: reagent-physical-desc-opaque
+  flavor: water
+  color: "#5a6a00"
+  recognizable: true
+  boilingPoint: 100.0
+  meltingPoint: 0.0
+  friction: 0.4
