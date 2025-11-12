@@ -109,6 +109,9 @@ public sealed partial class Scp096System : SharedScp096System
     {
         base.OnShutdown(ent, ref args);
 
+        if (_player.LocalEntity != ent)
+            return;
+
         RemoveOverlay();
     }
 
