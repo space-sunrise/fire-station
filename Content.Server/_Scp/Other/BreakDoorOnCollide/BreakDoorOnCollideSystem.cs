@@ -26,6 +26,9 @@ public sealed class BreakDoorOnCollideSystem : EntitySystem
 
     private void OnCollide(Entity<BreakDoorOnCollideComponent> ent, ref StartCollideEvent args)
     {
+        if (!ent.Comp.Enabled)
+            return;
+
         if (!TryComp<DoorComponent>(args.OtherEntity, out var doorComponent))
             return;
 
