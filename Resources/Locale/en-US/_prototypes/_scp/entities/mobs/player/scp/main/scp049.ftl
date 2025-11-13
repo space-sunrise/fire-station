@@ -1,7 +1,10 @@
 ent-Scp049 = ???
 ent-Scp049AlternativeCanon = ???
     .suffix = SCP-049 "Canon" - Admeme
+    .desc = Our old Doctor in a new guise.
 ent-Scp049AlternativeRobotic = ???
     .suffix = SCP-049 "Robotic" - Admeme
+    .desc = Our old Doctor in a new guise.
 ent-Scp049AlternativeOldFashioned = ???
     .suffix = SCP-049 "Old Fashioned" - Admeme
+    .desc = Our old Doctor in a new guise.
