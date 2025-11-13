@@ -17,10 +17,10 @@
     state: SCP-049_Robotic
 
 - type: entity
-  id: Scp049AlternativeOldFasioned
+  id: Scp049AlternativeOldFashioned
   suffix: SCP-049
   parent: Scp049
   components:
   - type: Sprite
     sprite: _Scp/Mobs/Scp/scp-049.rsi/Alternatives
-    state: SCP-049_OldFasioned
+    state: SCP-049_OldFashioned
