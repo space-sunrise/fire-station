@@ -8,15 +8,15 @@
   },
   "states": [
     {
-      "name": "SCP-049_ALT3",
+      "name": "SCP-049_OldFasioned",
       "directions": 4
     },
     {
-      "name": "SCP-049_ALT2",
+      "name": "SCP-049_Robotic",
       "directions": 4
     },
     {
-      "name": "SCP-049_ALT1",
+      "name": "SCP-049_Canon",
       "directions": 4
     }
   ]
