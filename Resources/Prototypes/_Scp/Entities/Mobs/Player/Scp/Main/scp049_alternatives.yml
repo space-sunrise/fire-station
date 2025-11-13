@@ -4,8 +4,8 @@
   parent: Scp049
   components:
   - type: Sprite
-    sprite: _Scp/Mobs/Scp/alternatives/scp-049/scp-049_canon.rsi
-    state: SCP-049_Canon
+    sprite: _Scp/Mobs/Scp/Alternatives/Scp049/scp_049_canon.rsi
+    state: icon
 
 - type: entity
   id: Scp049AlternativeRobotic
@@ -13,8 +13,8 @@
   parent: Scp049
   components:
   - type: Sprite
-    sprite: _Scp/Mobs/Scp/alternatives/scp-049/scp-049_robotic.rsi
-    state: SCP-049_Robotic
+    sprite: _Scp/Mobs/Scp/Alternatives/Scp049/scp_049_robotic.rsi
+    state: icon
 
 - type: entity
   id: Scp049AlternativeOldFashioned
@@ -22,5 +22,5 @@
   parent: Scp049
   components:
   - type: Sprite
-    sprite: _Scp/Mobs/Scp/alternatives/scp-049/scp-049_oldfashioned.rsi
-    state: SCP-049_OldFashioned
+    sprite: _Scp/Mobs/Scp/Alternatives/Scp049/scp_049_oldfashioned.rsi
+    state: icon
