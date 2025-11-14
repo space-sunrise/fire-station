@@ -1,0 +1,26 @@
+﻿- type: entity
+  id: Scp049AlternativeCanon
+  suffix: SCP-049
+  parent: Scp049
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp/Alternatives/Scp049/scp_049_canon.rsi
+    state: icon
+
+- type: entity
+  id: Scp049AlternativeRobotic
+  suffix: SCP-049
+  parent: Scp049
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp/Alternatives/Scp049/scp_049_robotic.rsi
+    state: icon
+
+- type: entity
+  id: Scp049AlternativeOldFashioned
+  suffix: SCP-049
+  parent: Scp049
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp/Alternatives/Scp049/scp_049_oldfashioned.rsi
+    state: icon
