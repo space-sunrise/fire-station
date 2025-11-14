@@ -1,6 +1,9 @@
-﻿using Content.Shared.Whitelist;
+﻿using Content.Shared.Damage;
+using Content.Shared.Tag;
+using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp096.Main.Components;
 
@@ -65,6 +68,43 @@ public sealed partial class Scp096Component : Component
 
     [ViewVariables, AutoNetworkedField]
     public bool DeadToIdleAnimation;
+
+    #endregion
+
+    #region Abilities
+
+    [DataField]
+    public DamageSpecifier CryOutDamage = new ()
+    {
+        DamageDict = new()
+        {
+            { "Structural", 50 },
+        },
+    };
+
+    [DataField]
+    public TimeSpan CryOutCooldown = TimeSpan.FromSeconds(60f);
+
+    [DataField]
+    public float CryOutRange = 6f;
+
+    [DataField]
+    public EntityWhitelist CryOutWhitelist = new ()
+    {
+        Tags = new List<ProtoId<TagPrototype>>
+        {
+            "Wall",
+            "Window",
+            "Directional",
+        },
+    };
+
+    [DataField]
+    public SoundSpecifier CryOutSound = new SoundCollectionSpecifier("IdleScp096",
+        AudioParams.Default.WithMaxDistance(6f));
+
+    [DataField]
+    public TimeSpan CryOutJitterTime = TimeSpan.FromSeconds(1f);
 
     #endregion
 }

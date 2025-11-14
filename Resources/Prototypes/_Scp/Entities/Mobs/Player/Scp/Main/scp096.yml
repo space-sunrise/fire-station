@@ -74,6 +74,9 @@
         maxDistance: 10
   - type: BreakDoorOnCollide
     enabled: false
+  - type: ActionGrant
+    actions:
+    - Scp096CryOut
   - type: ComplexInteraction
   - type: Hands
     showInHands: false
@@ -101,11 +104,6 @@
     prototype: Human # TODO: Кастомное тело
   - type: Inventory
     templateId: scp096
-  - type: EmitSoundRandomly
-    sound:
-      collection: IdleScp096
-      params:
-        maxDistance: 6
   - type: FootstepModifier
     footstepSoundCollection:
       path: /Audio/Effects/Footsteps/slime1.ogg

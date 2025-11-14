@@ -1,11 +1,11 @@
 ﻿- type: entity
-  id: Scp096CryOut
+  id: ScpTearMask
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 0.5 # TODO: 60 sec
+    useDelay: 0.5
     icon:
       sprite: _Scp/Clothing/Mask/scp-096.rsi
       state: icon
   - type: InstantAction
-    event: !type:Scp096CryOutEvent
+    event: !type:ScpTearMaskEvent

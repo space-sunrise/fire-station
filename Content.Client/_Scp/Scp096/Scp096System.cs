@@ -54,6 +54,8 @@ public sealed partial class Scp096System : SharedScp096System
         if (!_timing.IsFirstTimePredicted)
             return;
 
+        // Это существует только потому, что анимация передвижения принимает стейты напрямую
+        // Иначе я бы сделал это через GenericVisualizer
         var useDownState = UseDownState(ent);
         var inRage = HasComp<ActiveScp096RageComponent>(ent);
         var isHeatingUp = HasComp<ActiveScp096HeatingUpComponent>(ent);

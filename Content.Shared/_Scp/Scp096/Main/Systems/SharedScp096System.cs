@@ -3,6 +3,7 @@ using Content.Shared._Scp.Other.EmitSoundRandomly;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
+using Content.Shared.Actions;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode;
 using Content.Shared.Interaction.Events;
@@ -74,6 +75,7 @@ public abstract partial class SharedScp096System : EntitySystem
         InitializeRage();
         InitializeTargets();
         InitializeHands();
+        InitializeActions();
     }
 
     public override void Update(float frameTime)
@@ -83,6 +85,7 @@ public abstract partial class SharedScp096System : EntitySystem
         UpdateHeatingUp();
         UpdateRage();
         UpdateAnimations();
+        UpdateActions();
     }
 
     #region Event handlers
@@ -284,3 +287,5 @@ public sealed class Scp096RequireUpdateVisualsEvent(NetEntity netEntity) : Entit
 {
     public NetEntity NetEntity = netEntity;
 }
+
+public sealed partial class Scp096CryOutEvent : InstantActionEvent;
