@@ -103,9 +103,8 @@
   - type: Icon
     sprite: _Scp/Structures/Windows/window.rsi
   - type: DamageVisuals
-    useIconSmoothFormat: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_test.rsi
+      sprite: _Scp/Structures/Windows/cracks.rsi
 
 - type: entity
   id: ScpWindowDirectional
