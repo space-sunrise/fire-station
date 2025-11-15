@@ -10,3 +10,55 @@
           amount: 1
     - type: AccessReader
       access: [ [ "Laboratory" ] ]
+
+- type: entity
+  id: CrateChemistryAmnesiacA
+  parent: CrateChemistrySecure
+  name: Amnesiac container
+  description: Contains jug of vials of amnesiac A.
+  components:
+    - type: StorageFill
+      contents:
+        - id: BoxVialAmnesiacA
+          amount: 2
+    - type: AccessReader
+      access: [ [ "Laboratory" ] ]
+
+- type: entity
+  id: CrateChemistryAmnesiacB
+  parent: CrateChemistrySecure
+  name: Amnesiac container
+  description: Contains jug of vials of amnesiac B.
+  components:
+    - type: StorageFill
+      contents:
+        - id: BoxVialAmnesiacB
+          amount: 2
+    - type: AccessReader
+      access: [ [ "Laboratory" ] ]
+
+- type: entity
+  id: CrateChemistryAmnesiacC
+  parent: CrateChemistrySecure
+  name: Amnesiac container
+  description: Contains jug of vials of amnesiac C.
+  components:
+    - type: StorageFill
+      contents:
+        - id: BoxVialAmnesiacC
+          amount: 2
+    - type: AccessReader
+      access: [ [ "Laboratory" ] ]
+
+- type: entity
+  id: CrateChemistryAmnesiacD
+  parent: CrateChemistrySecure
+  name: Amnesiac container
+  description: Contains jug of vials of amnesiac D.
+  components:
+    - type: StorageFill
+      contents:
+        - id: BoxVialAmnesiacD
+          amount: 2
+    - type: AccessReader
+      access: [ [ "Laboratory" ] ]
