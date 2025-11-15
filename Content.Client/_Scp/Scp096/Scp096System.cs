@@ -14,6 +14,8 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Scp096;
 
+// TODO: Управление лицом скромника в статус эффектами, смена спрайтов при смене состояния.
+// Что-то типо интерфейса дума с лицом думгая, но для скромника
 public sealed partial class Scp096System : SharedScp096System
 {
     [Dependency] private readonly IOverlayManager _overlayMan = default!;

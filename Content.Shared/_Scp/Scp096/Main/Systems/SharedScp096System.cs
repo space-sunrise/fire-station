@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Helpers;
+﻿using System.Diagnostics.CodeAnalysis;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Other.EmitSoundRandomly;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
@@ -6,6 +7,7 @@ using Content.Shared._Scp.Watching;
 using Content.Shared.Actions;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode;
+using Content.Shared.DoAfter;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lock;
 using Content.Shared.Mobs;
@@ -13,6 +15,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Projectiles;
+using Content.Shared.Rejuvenate;
 using Content.Shared.Standing;
 using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
@@ -42,6 +45,8 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private static readonly SoundSpecifier StorageOpenSound = new SoundCollectionSpecifier("MetalBreak");
 
+    private EntityQuery<ActiveScp096WithoutFaceComponent> _withoutFaceQuery;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -62,6 +67,7 @@ public abstract partial class SharedScp096System : EntitySystem
         SubscribeLocalEvent<Scp096Component, SleepStateChangedEvent>(OnSleepStateChanged);
 
         SubscribeLocalEvent<Scp096Component, ScpMaskTargetEquipAttempt>(OnMaskAttempt);
+        SubscribeLocalEvent<Scp096Component, RejuvenateEvent>(OnRejuvenate);
 
         SubscribeLocalEvent<Scp096Component, AfterAutoHandleStateEvent>(UpdateAppearance);
         SubscribeLocalEvent<ActiveScp096HeatingUpComponent, AfterAutoHandleStateEvent>(UpdateAppearance);
@@ -76,6 +82,11 @@ public abstract partial class SharedScp096System : EntitySystem
         InitializeTargets();
         InitializeHands();
         InitializeActions();
+        InitializeWithoutFace();
+
+        _withoutFaceQuery = GetEntityQuery<ActiveScp096WithoutFaceComponent>();
+
+        Log.Level = LogLevel.Info;
     }
 
     public override void Update(float frameTime)
@@ -86,12 +97,16 @@ public abstract partial class SharedScp096System : EntitySystem
         UpdateRage();
         UpdateAnimations();
         UpdateActions();
+        //UpdateWithoutFace();
     }
 
     #region Event handlers
 
     private void OnSeen(Entity<Scp096Component> ent, ref SimpleEntitySeenEvent args)
     {
+        if (_withoutFaceQuery.HasComp(ent))
+            return;
+
         TryAddTarget(ent, args.Viewer);
     }
 
@@ -195,6 +210,15 @@ public abstract partial class SharedScp096System : EntitySystem
             args.Cancel();
     }
 
+    private void OnRejuvenate(Entity<Scp096Component> ent, ref RejuvenateEvent args)
+    {
+        RemComp<ActiveScp096WithoutFaceComponent>(ent);
+        RemComp<ActiveScp096RageComponent>(ent);
+        RemComp<ActiveScp096HeatingUpComponent>(ent);
+
+        RemoveAllTargets(ent);
+    }
+
     protected virtual void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
     {
         if (HasComp<ActiveScp096RageComponent>(ent) || HasComp<SleepingComponent>(ent) || HasComp<ActiveScp096HeatingUpComponent>(ent))
@@ -245,12 +269,20 @@ public abstract partial class SharedScp096System : EntitySystem
     /// Обновляет модификаторы скорости передвижения scp-096 в зависимости от текущего состояния.
     /// В режиме ярости скорость большая, в обычном состоянии маленькая.
     /// </summary>
-    private void RefreshSpeedModifiers(Entity<Scp096Component?> ent, bool inRage)
+    private void RefreshSpeedModifiers(Entity<Scp096Component?> ent, bool forceDefault = false)
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
 
-        var newSpeed = inRage ? ent.Comp.RageSpeed : ent.Comp.BaseSpeed;
+        float newSpeed;
+
+        if (TryComp<ActiveScp096RageComponent>(ent, out var rage) && !forceDefault)
+            newSpeed = rage.Speed;
+        else if (TryComp<ActiveScp096WithoutFaceComponent>(ent, out var withoutFaceComp) && !forceDefault)
+            newSpeed = withoutFaceComp.Speed;
+        else
+            newSpeed = ent.Comp.Speed;
+
         _speedModifier.ChangeBaseSpeed(ent, newSpeed, newSpeed, 20.0f);
     }
 
@@ -260,7 +292,11 @@ public abstract partial class SharedScp096System : EntitySystem
     /// </summary>
     private bool CanAttack(Entity<Scp096Component> scp, EntityUid target)
     {
-        // Атаковать можно только в состоянии агрессии
+        // В состоянии содранного лица можно атаковать без ограничений
+        if (HasComp<ActiveScp096WithoutFaceComponent>(scp))
+            return true;
+
+        // Атаковать можно только в состоянии агрессии или случае выше
         if (!HasComp<ActiveScp096RageComponent>(scp))
             return false;
 
@@ -272,6 +308,51 @@ public abstract partial class SharedScp096System : EntitySystem
         if (!HasComp<Scp096TargetComponent>(target))
             return false;
 
+        return true;
+    }
+
+    private bool TryGetFace(Entity<Scp096Component?> ent, [NotNullWhen(true)] out Entity<Scp096FaceComponent>? face)
+    {
+        face = null;
+        if (!Resolve(ent, ref ent.Comp))
+            return false;
+
+        if (!Exists(ent.Comp.FaceEntity))
+        {
+            Log.Error($"Found SCP-096 without valid face entity. Scp096 is {ToPrettyString(ent)}, while reference is {ToPrettyString(ent.Comp.FaceEntity)}");
+            return false;
+        }
+
+        var faceEntity = ent.Comp.FaceEntity.Value;
+
+        if (!TryComp<Scp096FaceComponent>(faceEntity, out var faceComp))
+        {
+            Log.Error($"Found SCP-096 face without {nameof(Scp096FaceComponent)}! Prototype: {Prototype(faceEntity)}, Entity: {ToPrettyString(faceEntity)}");
+            return false;
+        }
+
+        face = (faceEntity, faceComp);
+        return true;
+    }
+
+    private bool TryGetScp096FromFace(Entity<Scp096FaceComponent> ent, [NotNullWhen(true)] out Entity<Scp096Component>? scp096)
+    {
+        scp096 = null;
+
+        if (!Exists(ent.Comp.FaceOwner))
+        {
+            Log.Error($"Found SCP-096 face entity with unexisting owner. Face - {ToPrettyString(ent)}, Owner - {ToPrettyString(ent.Comp.FaceOwner)}");
+            return false;
+        }
+
+
+        if (!TryComp<Scp096Component>(ent.Comp.FaceOwner, out var scp096Comp))
+        {
+            Log.Error($"Found SCP-096 face owner without {nameof(Scp096Component)}. Face - {ToPrettyString(ent)}, Owner - {ToPrettyString(ent.Comp.FaceOwner)}");
+            return false;
+        }
+
+        scp096 = (ent.Comp.FaceOwner.Value, scp096Comp);
         return true;
     }
 
@@ -289,3 +370,8 @@ public sealed class Scp096RequireUpdateVisualsEvent(NetEntity netEntity) : Entit
 }
 
 public sealed partial class Scp096CryOutEvent : InstantActionEvent;
+public sealed partial class Scp096FaceSkinRipEvent : InstantActionEvent;
+
+
+[Serializable, NetSerializable]
+public sealed partial class Scp096FaceSkinRipStartDoAfterEvent : SimpleDoAfterEvent;

@@ -212,6 +212,14 @@ public sealed class HealingSystem : EntitySystem
         if (user != target.Owner && !_interactionSystem.InRangeUnobstructed(user, target.Owner, popup: true))
             return false;
 
+        // Fire added start - возможность поменять таргета с помощью ивента(для скромника и его лица)
+        var relayTargetEvent = new HealingRelayEvent();
+        RaiseLocalEvent(target, ref relayTargetEvent);
+
+        if (relayTargetEvent.Entity.HasValue && TryComp<DamageableComponent>(relayTargetEvent.Entity, out var relayDamageable))
+            target = (relayTargetEvent.Entity.Value, relayDamageable);
+        // Fire added end
+
         if (TryComp<StackComponent>(healing, out var stack) && stack.Count < 1)
             return false;
 
@@ -310,3 +318,6 @@ public sealed class HealingSystem : EntitySystem
     }
     //Sunrise-End
 }
+
+[ByRefEvent]
+public record struct HealingRelayEvent(EntityUid? Entity = null);

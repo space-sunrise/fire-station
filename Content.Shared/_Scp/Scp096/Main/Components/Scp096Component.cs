@@ -23,10 +23,7 @@ public sealed partial class Scp096Component : Component
     public TimeSpan RageHeatUp = TimeSpan.FromSeconds(30f);
 
     [DataField]
-    public float BaseSpeed = 1.5f;
-
-    [DataField]
-    public float RageSpeed = 8f;
+    public float Speed = 1.5f;
 
     /// <summary>
     /// Какие предметы скромник сможет поднимать?
@@ -71,7 +68,7 @@ public sealed partial class Scp096Component : Component
 
     #endregion
 
-    #region Abilities
+    #region CryOut
 
     [DataField]
     public DamageSpecifier CryOutDamage = new ()
@@ -105,6 +102,37 @@ public sealed partial class Scp096Component : Component
 
     [DataField]
     public TimeSpan CryOutJitterTime = TimeSpan.FromSeconds(1f);
+
+    #endregion
+
+    #region Face skin rip
+
+    [DataField]
+    public TimeSpan FaceSkinRipCooldown = TimeSpan.FromMinutes(5f); // 25 минут до уничтожения лица
+
+    [DataField]
+    public TimeSpan FaceSkinRipDoAfterTime = TimeSpan.FromSeconds(5f);
+
+    [DataField]
+    public DamageSpecifier FaceSkinRipDamageToFace = new()
+    {
+        DamageDict = new()
+        {
+            { "Blunt", 20 },
+        },
+    };
+
+    [DataField]
+    public SoundSpecifier? FaceSkinRipDamageToFaceSound;
+
+    [DataField]
+    public EntProtoId FaceProto = "Scp096Face";
+
+    [DataField]
+    public string FaceContainer = "face_slot";
+
+    [ViewVariables, AutoNetworkedField, NonSerialized]
+    public EntityUid? FaceEntity;
 
     #endregion
 }

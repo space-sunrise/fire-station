@@ -24,6 +24,20 @@
     Radiation: 0.0
 
 - type: damageModifierSet
+  id: Scp096Face
+  coefficients:
+    Blunt: 1.0
+    Slash: 0.0
+    Piercing: 0.0
+    Cold: 0.0
+    Caustic: 0.0
+    Heat: 0.0
+    Poison: 0.0
+    Cellular: 0.0
+    Radiation: 0.0
+    Mangleness: 0.0
+
+- type: damageModifierSet
   id: StructuralMetallicHardCellsScp
   coefficients:
     Blunt: 0.1

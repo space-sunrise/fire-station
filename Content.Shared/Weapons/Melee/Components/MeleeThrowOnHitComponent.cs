@@ -7,7 +7,7 @@ namespace Content.Shared.Weapons.Melee.Components;
 /// until it hits a wall or a time limit is exhausted.
 /// </summary>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
-[Access(typeof(MeleeThrowOnHitSystem))]
+// [Access(typeof(MeleeThrowOnHitSystem))] Fire edit - да идите нахуй
 public sealed partial class MeleeThrowOnHitComponent : Component
 {
     /// <summary>

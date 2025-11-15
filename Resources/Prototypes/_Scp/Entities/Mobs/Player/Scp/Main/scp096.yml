@@ -77,6 +77,10 @@
   - type: ActionGrant
     actions:
     - Scp096CryOut
+    - Scp096FaceSkinRip
+  - type: ContainerContainer
+    containers:
+      face_slot: !type:ContainerSlot
   - type: ComplexInteraction
   - type: Hands
     showInHands: false
@@ -100,6 +104,9 @@
         Slash: 27
         Structural: 110
         Bloodloss: 5
+  - type: MeleeThrowOnHit
+    speed: 3
+    distance: 0.5
   - type: Body
     prototype: Human # TODO: Кастомное тело
   - type: Inventory
@@ -146,3 +153,31 @@
     guides:
     - ScpResearch
     - ScpResearchAdvanced
+
+- type: entity
+  id: Scp096Face
+  save: false
+  categories: [ HideSpawnMenu ]
+  # TODO: Локализация, имя, описание
+  components:
+  # TODO: Спрайты
+  # TODO: Алерт с лицом скромника, отображающий его состояние
+  - type: Scp096Face
+  - type: Damageable
+    damageModifierSet: Scp096Face
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MobThresholds
+    allowRevives: false
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: PassiveDamage
+    allowedStates:
+    - Dead
+    # Примерно 15 минут до полного излечения
+    damage:
+      types:
+        Blunt: -0.1

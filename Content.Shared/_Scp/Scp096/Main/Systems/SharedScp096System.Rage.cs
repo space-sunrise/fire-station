@@ -117,7 +117,7 @@ public abstract partial class SharedScp096System
         RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
 
         // Обновляем скорость передвижения
-        RefreshSpeedModifiers(ent.Owner, true);
+        RefreshSpeedModifiers(ent.Owner);
     }
 
     protected virtual void OnRageShutdown(Entity<ActiveScp096RageComponent> ent, ref ComponentShutdown args)
@@ -152,7 +152,7 @@ public abstract partial class SharedScp096System
         }
 
         // Обновляем скорость передвижения
-        RefreshSpeedModifiers(ent.Owner, false);
+        RefreshSpeedModifiers(ent.Owner);
     }
 
     #endregion
@@ -231,7 +231,7 @@ public abstract partial class SharedScp096System
             return;
         }
 
-        RemComp<ActiveScp096RageComponent>(uid);
+        RemCompDeferred<ActiveScp096RageComponent>(uid);
     }
 
     /// <summary>
