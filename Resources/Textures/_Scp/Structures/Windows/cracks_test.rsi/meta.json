@@ -7,77 +7,31 @@
         "y": 32
     },
     "states": [
-        {
-            "name": "0_5"
-        },
-        {
-            "name": "1_5"
-        },
-        {
-            "name": "2_5"
-        },
-        {
-            "name": "3_5"
-        },
-        {
-            "name": "4_5"
-        },
-        {
-            "name": "5_5"
-        },
-        {
-            "name": "6_5"
-        },
-        {
-            "name": "7_5"
-        },
-        {
-            "name": "0_10"
-        },
-        {
-            "name": "1_10"
-        },
-        {
-            "name": "2_10"
-        },
-        {
-            "name": "3_10"
-        },
-        {
-            "name": "4_10"
-        },
-        {
-            "name": "5_10"
-        },
-        {
-            "name": "6_10"
-        },
-        {
-            "name": "7_10"
-        },
-        {
-            "name": "0_20"
-        },
-        {
-            "name": "1_20"
-        },
-        {
-            "name": "2_20"
-        },
-        {
-            "name": "3_20"
-        },
-        {
-            "name": "4_20"
-        },
-        {
-            "name": "5_20"
-        },
-        {
-            "name": "6_20"
-        },
-        {
-            "name": "7_20"
-        }
+        { "name": "DamageOverlay0_5", "directions": 4 },
+        { "name": "DamageOverlay1_5", "directions": 4 },
+        { "name": "DamageOverlay2_5", "directions": 4 },
+        { "name": "DamageOverlay3_5", "directions": 4 },
+        { "name": "DamageOverlay4_5", "directions": 4 },
+        { "name": "DamageOverlay5_5", "directions": 4 },
+        { "name": "DamageOverlay6_5", "directions": 4 },
+        { "name": "DamageOverlay7_5", "directions": 4 },
+
+        { "name": "DamageOverlay0_10", "directions": 4 },
+        { "name": "DamageOverlay1_10", "directions": 4 },
+        { "name": "DamageOverlay2_10", "directions": 4 },
+        { "name": "DamageOverlay3_10", "directions": 4 },
+        { "name": "DamageOverlay4_10", "directions": 4 },
+        { "name": "DamageOverlay5_10", "directions": 4 },
+        { "name": "DamageOverlay6_10", "directions": 4 },
+        { "name": "DamageOverlay7_10", "directions": 4 },
+
+        { "name": "DamageOverlay0_20", "directions": 4 },
+        { "name": "DamageOverlay1_20", "directions": 4 },
+        { "name": "DamageOverlay2_20", "directions": 4 },
+        { "name": "DamageOverlay3_20", "directions": 4 },
+        { "name": "DamageOverlay4_20", "directions": 4 },
+        { "name": "DamageOverlay5_20", "directions": 4 },
+        { "name": "DamageOverlay6_20", "directions": 4 },
+        { "name": "DamageOverlay7_20", "directions": 4 }
     ]
 }

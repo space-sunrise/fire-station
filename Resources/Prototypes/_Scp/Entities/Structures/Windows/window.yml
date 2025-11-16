@@ -103,7 +103,7 @@
   - type: Icon
     sprite: _Scp/Structures/Windows/window.rsi
   - type: DamageVisuals
-    useIconSmoothFormat: true
+    supportIconSmooth: true
     damageOverlay:
       sprite: _Scp/Structures/Windows/cracks_test.rsi
 

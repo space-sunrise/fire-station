@@ -6,6 +6,7 @@ using Content.Shared.FixedPoint;
 using Robust.Client.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
+using Robust.Shared.Map.Enumerators;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
@@ -273,6 +274,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
                 // we reserve layers per damage group.
                 if (damageVisComp.Overlay && damageVisComp.DamageOverlayGroups != null)
                 {
+                    // Fire edit start - Поддержка IconSmooth
                     foreach (var (group, sprite) in damageVisComp.DamageOverlayGroups)
                     {
                         if (damageVisComp.SupportIconSmooth)
@@ -295,6 +297,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
                                 index);
                         }
                     }
+                    // Fire edit end
                     damageVisComp.DisabledLayers.Add(layer, false);
                 }
                 // If we're not targeting groups, and we're still
@@ -303,6 +306,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
                 // was taken.
                 else if (damageVisComp.DamageOverlay != null)
                 {
+                    // Fire edit start - поддержка IconSmooth
                     if (damageVisComp.SupportIconSmooth)
                     {
                         AddDamageCornerLayers((entity, spriteComponent),
@@ -322,6 +326,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
                             $"{layer}trackDamage",
                             index);
                     }
+                    // Fire edit end
                     damageVisComp.DisabledLayers.Add(layer, false);
                 }
             }
@@ -335,6 +340,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
             {
                 foreach (var (group, sprite) in damageVisComp.DamageOverlayGroups)
                 {
+                    // Fire edit start - поддержка IconSmooth
                     if (damageVisComp.SupportIconSmooth)
                     {
                         AddDamageCornerLayers((entity, spriteComponent),
@@ -352,11 +358,13 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
                             $"DamageOverlay_{group}_{damageVisComp.Thresholds[1]}",
                             $"DamageOverlay{group}");
                     }
+                    // Fire edit end
                     damageVisComp.TopMostLayerKey = $"DamageOverlay{group}";
                 }
             }
             else if (damageVisComp.DamageOverlay != null)
             {
+                // Fire edit start - поддержка IconSmooth
                 if (damageVisComp.SupportIconSmooth)
                 {
                     AddDamageCornerLayers((entity, spriteComponent),
@@ -374,6 +382,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
                         $"DamageOverlay_{damageVisComp.Thresholds[1]}",
                         "DamageOverlay");
                 }
+                // Fire edit end
                 damageVisComp.TopMostLayerKey = $"DamageOverlay";
             }
         }
@@ -382,7 +391,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
     /// <summary>
     ///     Adds a damage tracking layer to a given sprite component.
     /// </summary>
-    private int AddDamageLayerToSprite(Entity<SpriteComponent?> spriteEnt, DamageVisualizerSprite sprite, string state, string mapKey, int? index = null)
+    private int AddDamageLayerToSprite(Entity<SpriteComponent?> spriteEnt, DamageVisualizerSprite sprite, string state, string mapKey, int? index = null, SpriteComponent.DirectionOffset dirOffset = SpriteComponent.DirectionOffset.None)
     {
         var newLayer = SpriteSystem.AddLayer(
             spriteEnt,
@@ -392,25 +401,15 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
             index
         );
         SpriteSystem.LayerMapSet(spriteEnt, mapKey, newLayer);
+
+        // Fire edit start - поддержка IconSmooth
+        SpriteSystem.LayerSetDirOffset(spriteEnt.AsNullable(), newLayer, dirOffset);
+        // Fire edit end
+
         if (sprite.Color != null)
             SpriteSystem.LayerSetColor(spriteEnt, newLayer, Color.FromHex(sprite.Color));
         SpriteSystem.LayerSetVisible(spriteEnt, newLayer, false);
         return newLayer;
-    }
-
-    private void AddDamageCornerLayers(Entity<SpriteComponent?> spriteEnt, DamageVisualizerSprite sprite, string baseMapKey, string stateBase, string? damageGroup, FixedPoint2 threshold, DamageVisualsComponent comp, int? index = null)
-    {
-        var corners = new[] { CornerPosition.SE, CornerPosition.NE, CornerPosition.NW, CornerPosition.SW };
-
-        foreach (var corner in corners)
-        {
-            var mapKey = $"{baseMapKey}_{corner}";
-            var state = damageGroup != null
-                ? $"{stateBase}0_{damageGroup}_{threshold}"
-                : $"{stateBase}0_{threshold}";
-
-            AddDamageLayerToSprite(spriteEnt, sprite, state, mapKey, index);
-        }
     }
 
     protected override void OnAppearanceChange(EntityUid uid, DamageVisualsComponent damageVisComp, ref AppearanceChangeEvent args)
@@ -579,6 +578,12 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         }
         else
         {
+            if (damageVisComp.SupportIconSmooth)
+            {
+                UpdateCornerLayers((entity, spriteComponent), $"DamageOverlay", "DamageOverlay", null, threshold);
+                return;
+            }
+
             UpdateOverlay((entity, spriteComponent), threshold);
         }
     }
@@ -682,7 +687,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
     {
         if (damageVisComp.SupportIconSmooth)
         {
-            UpdateCornerLayers(spriteEnt, damageVisComp, $"{layerMapKey}trackDamage", layerMapKey.ToString(), null, threshold);
+            UpdateCornerLayers(spriteEnt, $"{layerMapKey}trackDamage", layerMapKey.ToString(), null, threshold);
             return;
         }
 
@@ -721,7 +726,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
 
         if (damageVisComp.SupportIconSmooth)
         {
-            UpdateCornerLayers((entity, spriteComponent), damageVisComp, $"{layerMapKey}{damageGroup}", layerMapKey.ToString(), damageGroup, threshold);
+            UpdateCornerLayers((entity, spriteComponent), $"{layerMapKey}{damageGroup}", layerMapKey.ToString(), damageGroup, threshold);
             return;
         }
 
@@ -775,7 +780,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
 
         if (damageVisComp.SupportIconSmooth)
         {
-            UpdateCornerLayers((entity, spriteComponent), damageVisComp, $"DamageOverlay{damageGroup}", "DamageOverlay", damageGroup, threshold);
+            UpdateCornerLayers((entity, spriteComponent), $"DamageOverlay{damageGroup}", "DamageOverlay", damageGroup, threshold);
             return;
         }
 
@@ -816,12 +821,13 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         }
     }
 
-    private void UpdateCornerLayers(Entity<SpriteComponent> spriteEnt, DamageVisualsComponent damageVisComp, string baseMapKey, string stateBase, string? damageGroup, FixedPoint2 threshold)
+    // Fire added start - поддержка IconSmooth
+    private void UpdateCornerLayers(Entity<SpriteComponent> spriteEnt, string baseMapKey, string? stateBase, string? damageGroup, FixedPoint2 threshold)
     {
-        if (!TryComp<IconSmoothComponent>(spriteEnt.Owner, out var smoothComp) || !TryComp<TransformComponent>(spriteEnt.Owner, out var xform))
+        if (!TryComp<IconSmoothComponent>(spriteEnt, out var smoothComp))
             return;
 
-        var (cornerNE, cornerNW, cornerSW, cornerSE) = CalculateCornerFill(spriteEnt.Owner, smoothComp, xform);
+        var (cornerNE, cornerNW, cornerSW, cornerSE) = CalculateCornerFill(smoothComp, Transform(spriteEnt));
 
         var corners = new[]
         {
@@ -842,7 +848,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         }
     }
 
-    private void UpdateDamageLayerStateWithCorner(Entity<SpriteComponent> spriteEnt, int spriteLayer, string stateBase, string? damageGroup, FixedPoint2 threshold, int cornerIndex)
+    private void UpdateDamageLayerStateWithCorner(Entity<SpriteComponent> spriteEnt, int spriteLayer, string? stateBase, string? damageGroup, FixedPoint2 threshold, int cornerIndex)
     {
         if (threshold == 0)
         {
@@ -865,7 +871,6 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
     }
 
     private (CornerFill ne, CornerFill nw, CornerFill sw, CornerFill se) CalculateCornerFill(
-        EntityUid uid,
         IconSmoothComponent smooth,
         TransformComponent xform)
     {
@@ -939,19 +944,51 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         }
     }
 
-    private bool MatchingEntity(IconSmoothComponent smooth, AnchoredEntitiesEnumerator candidates, EntityQuery<IconSmoothComponent> smoothQuery)
+    private static bool MatchingEntity(
+        IconSmoothComponent smooth,
+        AnchoredEntitiesEnumerator candidates,
+        EntityQuery<IconSmoothComponent> smoothQuery)
     {
         while (candidates.MoveNext(out var entity))
         {
-            if (smoothQuery.TryGetComponent(entity, out var other) &&
-                other.SmoothKey != null &&
-                (other.SmoothKey == smooth.SmoothKey || smooth.AdditionalKeys.Contains(other.SmoothKey)) &&
-                other.Enabled)
-            {
-                return true;
-            }
+            if (!smoothQuery.TryGetComponent(entity, out var other))
+                continue;
+
+            if (other.SmoothKey == null)
+                continue;
+
+            if (other.SmoothKey != smooth.SmoothKey &&
+                !smooth.AdditionalKeys.Contains(other.SmoothKey))
+                continue;
+
+            if (!other.Enabled)
+                continue;
+
+            return true;
         }
 
         return false;
     }
+
+    private void AddDamageCornerLayers(Entity<SpriteComponent?> spriteEnt, DamageVisualizerSprite sprite, string baseMapKey, string stateBase, string? damageGroup, FixedPoint2 threshold, DamageVisualsComponent comp, int? index = null)
+    {
+        var corners = new[]
+        {
+            (CornerPosition.SE, SpriteComponent.DirectionOffset.None),
+            (CornerPosition.NE, SpriteComponent.DirectionOffset.CounterClockwise),
+            (CornerPosition.NW, SpriteComponent.DirectionOffset.Flip),
+            (CornerPosition.SW, SpriteComponent.DirectionOffset.Clockwise)
+        };
+
+        foreach (var (corner, dirOffset) in corners)
+        {
+            var mapKey = $"{baseMapKey}_{corner}";
+            var state = damageGroup != null
+                ? $"{stateBase}0_{damageGroup}_{threshold}"
+                : $"{stateBase}0_{threshold}";
+
+            AddDamageLayerToSprite(spriteEnt, sprite, state, mapKey, index, dirOffset);
+        }
+    }
+    // Fire added end
 }

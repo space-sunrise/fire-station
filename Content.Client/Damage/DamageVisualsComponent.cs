@@ -115,12 +115,15 @@ public sealed partial class DamageVisualsComponent : Component
     /// </summary>
     [DataField("damageOverlay")] public  DamageVisualizerSprite? DamageOverlay;
 
+    // Fire added start - поддержка IconSmooth
+
     /// <summary>
     ///     Enables icon smooth corner support for damage sprites.
     ///     When enabled, damage sprites will use corner-based format
     ///     compatible with icon smoothing: {stateBase}{cornerIndex}_{damageGroup}_{threshold}
     /// </summary>
-    [DataField("supportIconSmooth")] public bool SupportIconSmooth;
+    [DataField] public bool SupportIconSmooth;
+    // Fire added end
 
     public readonly List<Enum> TargetLayerMapKeys = new();
     public bool Disabled = false;
