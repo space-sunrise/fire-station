@@ -7430,3 +7430,20 @@
   id: 299
   time: '2025-11-13T19:24:22.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/674
+- author: smoldering
+  changes:
+  - message: "\u0418\u0437\u043C\u0435\u043D\u0435\u043D \u0441\u043F\u0440\u0430\u0439\
+      \u0442 \u0433\u0440\u044F\u0437\u043D\u043E\u0439 \u0432\u043E\u0434\u044B"
+    type: Tweak
+  id: 300
+  time: '2025-11-16T06:08:49.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/678
+- author: Wardex
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D \u044F\u0449\u0438\u043A\
+      \ \u0430\u043C\u043D\u0435\u0437\u0438\u0430\u043A\u0430 \u043A\u043B\u0430\u0441\
+      \u0441\u0430 A, B, C, D"
+    type: Add
+  id: 301
+  time: '2025-11-16T06:08:07.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/679
