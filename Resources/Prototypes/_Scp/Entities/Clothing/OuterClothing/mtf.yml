@@ -17,6 +17,10 @@
         Blunt: 0.5
         Slash: 0.5
         Piercing: 0.5
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,3,1
 
 - type: entity
   parent: MTFVest
@@ -97,8 +101,8 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.4 # Fire Edit
-        Slash: 0.4 # Fire Edit
+        Blunt: 0.4
+        Slash: 0.4
         Piercing: 0.3
         Heat: 0.5
         Caustic: 0.6
@@ -112,14 +116,30 @@
 - type: entity
   parent: ClothingOuterArmorTactical
   id: ClothingOuterArmorTacticalAlpha
-  name: med tactical armor vest
-  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
-  suffix: MTF
+  name: modificated tactical armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability. It has undergone significant modifications.
+  suffix: MTF | Aplha-1
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_med.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_alpha.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_med.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_alpha.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.4
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.3
+        Heat: 0.5
+        Caustic: 0.5
+  - type: StaminaResistance
+    damageCoefficient: 0.4
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: HeldSpeedModifier
 
 - type: entity
   parent: ClothingOuterArmorSWAT

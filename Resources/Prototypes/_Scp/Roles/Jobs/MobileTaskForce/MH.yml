@@ -22,7 +22,7 @@
   id: MHLeaderGear
   equipment:
     jumpsuit: ClothingUniformMH
-    back: MTFSpecialistBackpack
+    back: MTFTacticalBackpack
     shoes: ClothingShoesBootsNTFFilled
     mask: ClothingMaskGasMobileTaskForceMH
     eyes: ClothingEyesGlassesSecurity
@@ -76,7 +76,7 @@
   id: MHSpecialistGear
   equipment:
     jumpsuit: ClothingUniformMH
-    back: MTFSpecialistBackpack
+    back: MTFTacticalBackpack
     shoes: ClothingShoesBootsNTFFilled
     mask: ClothingMaskGasMobileTaskForceMH
     eyes: ClothingEyesGlassesSecurity
@@ -128,7 +128,7 @@
   id: MHCadetGear
   equipment:
     jumpsuit: ClothingUniformMH
-    back: MTFSpecialistBackpack
+    back: MTFTacticalBackpack
     shoes: ClothingShoesBootsNTFFilled
     mask: ClothingMaskGasMobileTaskForceMH
     eyes: ClothingEyesGlassesSecurity

@@ -25,3 +25,232 @@
   name: webbing
   description: A modular vest with attachments and pockets for carrying equipment. The materials are noted for their increased resistance to hostile environments.
   suffix: MTF
+
+- type: entity
+  parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase, BaseCentcommContraband]
+  id: ClothingBeltMTFSparePouch
+  name: tactical belt
+  description: A small, lightweight pouch to provide additional storage. The newer G8-A model, while uncomfortable, can also be clipped around the waist.
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Clothing/Belt/sparepouch.rsi
+  - type: Clothing
+    sprite: _RMC14/Objects/Clothing/Belt/sparepouch.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+
+- type: entity
+  parent: ClothingBeltMTFSparePouch
+  id: ClothingBeltMTFConstruction
+  name: construction belt
+  description: The M277 is a common rig used by Combat Technicians to carry around materials and other supplies. It consists of a modular belt with various clips. This version sacrifices storage space for specialized material loading clips.
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Clothing/Belt/construction.rsi
+  - type: Clothing
+    sprite: _RMC14/Objects/Clothing/Belt/construction.rsi
+  - type: Storage
+    defaultStorageOrientation: Horizontal
+    grid:
+    - 0,0,9,1
+    whitelist:
+      tags:
+        - Powerdrill
+        - Wirecutter
+        - Crowbar
+        - Screwdriver
+        - Flashlight
+        - Wrench
+        - GeigerCounter
+        - Flare
+        - CableCoil
+        - CigPack
+        - Radio
+        - HolofanProjector
+        - Multitool
+        - AppraisalTool
+        - JawsOfLife
+        - GPS
+        - WeldingMask
+        - RemoteSignaller
+        - ImprovisedCrowbar
+        - ImprovisedScrewdriver
+        - ImprovisedWirecutter
+        - ImprovisedWrench
+        - ImprovisedMultitool
+      components:
+        - StationMap
+        - SprayPainter
+        - SprayPainterAmmo
+        - NetworkConfigurator
+        - RCD
+        - RCDAmmo
+        - Welder
+        - PowerCell
+        - Geiger
+        - TrayScanner
+        - GasAnalyzer
+        - HandLabeler
+        - Material
+
+- type: entity
+  parent: ClothingBeltMTFSparePouch
+  id: ClothingBeltMTFUtility
+  name: tools belt
+  description: The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This version lacks any combat functionality, and is commonly used by engineers to transport important tools.
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Clothing/Belt/utility.rsi
+  - type: Clothing
+    sprite: _RMC14/Objects/Clothing/Belt/utility.rsi
+  - type: Storage
+    grid:
+    - 0,0,9,1
+    whitelist:
+      tags:
+        - Powerdrill
+        - Wirecutter
+        - Crowbar
+        - Screwdriver
+        - Flashlight
+        - Wrench
+        - GeigerCounter
+        - Flare
+        - CableCoil
+        - CigPack
+        - Radio
+        - HolofanProjector
+        - Multitool
+        - AppraisalTool
+        - JawsOfLife
+        - GPS
+        - WeldingMask
+        - RemoteSignaller
+        - ImprovisedCrowbar
+        - ImprovisedScrewdriver
+        - ImprovisedWirecutter
+        - ImprovisedWrench
+        - ImprovisedMultitool
+      components:
+        - StationMap
+        - SprayPainter
+        - SprayPainterAmmo
+        - NetworkConfigurator
+        - RCD
+        - RCDAmmo
+        - Welder
+        - PowerCell
+        - Geiger
+        - TrayScanner
+        - GasAnalyzer
+        - HandLabeler
+
+- type: entity
+  parent: ClothingBeltMTFSparePouch
+  id: ClothingBeltMTFMedical
+  name: medical belt
+  description: The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport bulkier medical supplies.
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Clothing/Belt/medical.rsi
+  - type: Clothing
+    sprite: _RMC14/Objects/Clothing/Belt/medical.rsi
+  - type: Storage
+    grid:
+    - 0,0,9,1
+    whitelist:
+      tags:
+        - Wrench
+        - Bottle
+        - Spray
+        - Brutepack
+        - Bloodpack
+        - Gauze
+        - Ointment
+        - CigPack
+        - PillCanister
+        - Radio
+        - DiscreteHealthAnalyzer
+        - SurgeryTool
+        - Dropper
+        - Medkit
+      components:
+        - Hypospray
+        - Injector
+        - Pill
+        - HandLabeler
+
+- type: entity
+  parent: ClothingBeltMTFSparePouch
+  id: ClothingBeltMTFSecurity
+  name: security belt
+  description: The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This configuration is commonly seen among Military Police and peacekeepers, though it can hold some light munitions.
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Clothing/Belt/security.rsi
+  - type: Clothing
+    sprite: _RMC14/Objects/Clothing/Belt/security.rsi
+  - type: Storage
+    grid:
+    - 0,0,9,1
+    whitelist:
+      tags:
+        - CigPack
+        - Taser
+        - SecBeltEquip
+        - Radio
+        - Sidearm
+        - MagazinePistol
+        - MagazineMagnum
+        - CombatKnife
+        - Truncheon
+        - HandGrenade
+      components:
+        - Stunbaton
+        - FlashOnTrigger
+        - SmokeOnTrigger
+        - Flash
+        - Handcuff
+        - BallisticAmmoProvider
+        - CartridgeAmmo
+        - DoorRemote
+        - Whistle
+        - BalloonPopper
+
+- type: entity
+  parent: ClothingBeltMTFSparePouch
+  id: ClothingBeltMTFAmmo
+  name: ammo belt
+  description: The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This is the standard variant, designed for bulk ammunition-carrying operations.
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Clothing/Belt/marine.rsi
+  - type: Clothing
+    sprite: _RMC14/Objects/Clothing/Belt/marine.rsi
+  - type: Storage
+    grid:
+    - 0,0,9,1
+    whitelist:
+      components:
+      - BallisticAmmoProvider
+
+- type: entity
+  parent: ClothingBeltMTFSparePouch
+  id: ClothingBeltMTFGrenade
+  name: grenade belt
+  description: The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This version is designed to carry up to 10 grenades.
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Clothing/Belt/grenade.rsi
+  - type: Clothing
+    sprite: _RMC14/Objects/Clothing/Belt/grenade.rsi
+  - type: Storage
+    grid:
+    - 0,0,9,1
+    whitelist:
+      tags:
+        - Grenade
+        - HandGrenade
+        - HandGrenadeAmmo
+  - type: ExplosionResistance
+    damageCoefficient: 1.0

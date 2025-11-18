@@ -2262,5 +2262,6 @@ NineTailedFoxMedicHelmet: null
 NineTailedFoxSpecialistHelmet: null
 NineTailedFoxSpecialistShield: null
 ClothingHelmetNTF: ClothingHelmetMTFTactical
+MTFSpecialistBackpack: MTFTacticalBackpack
 
 # Fire added end

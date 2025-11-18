@@ -22,7 +22,7 @@
   id: HDLeaderGear
   equipment:
     jumpsuit: ClothingUniformHD
-    back: MTFSpecialistBackpack
+    back: MTFTacticalBackpack
     shoes: ClothingShoesBootsHDFilled
     head: ClothingHeadHatHDMAA
     mask: ClothingMaskMTF
@@ -72,7 +72,7 @@
   id: HDSpecialistGear
   equipment:
     jumpsuit: ClothingUniformHD
-    back: MTFSpecialistBackpack
+    back: MTFTacticalBackpack
     shoes: ClothingShoesBootsHDFilled
     head: ClothingHelmetMTF
     mask: ClothingMaskMTF
@@ -119,7 +119,7 @@
   id: HDCadetGear
   equipment:
     jumpsuit: ClothingUniformHD
-    back: MTFSpecialistBackpack
+    back: MTFTacticalBackpack
     shoes: ClothingShoesBootsHDFilled
     head: ClothingHelmetMTF
     mask: ClothingMaskMTF

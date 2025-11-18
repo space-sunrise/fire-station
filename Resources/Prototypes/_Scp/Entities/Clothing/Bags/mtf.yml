@@ -1,18 +1,38 @@
 ﻿- type: entity
   parent: ClothingBackpack
-  id: MTFSpecialistBackpack
-  name: backpack
+  id: MTFTacticalBackpack
+  name: tactical backpack
   description: A spacious tactical container with reinforced seams. The design is intended for prolonged use in field conditions.
   suffix: MTF
   components:
   - type: Sprite
-    sprite: Clothing/Back/Backpacks/atmospherics.rsi
+    sprite: _RMC14/Objects/Clothing/Back/Satchels/Marines/standard/snow-urban.rsi
   - type: Clothing
-    sprite: Clothing/Back/Backpacks/atmospherics.rsi
+    sprite: _RMC14/Objects/Clothing/Back/Satchels/Marines/standard/snow-urban.rsi
   - type: Storage
     grid:
-    - 0,0,7,4
+    - 0,0,6,4
     maxItemSize: Huge
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
+
+- type: entity
+  parent: MTFTacticalBackpack
+  id: MTFTacticalBackpackMed
+  name: tactical backpack med
+  description: A spacious tactical container with reinforced seams. The design is intended for prolonged use in field conditions.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Clothing/Back/Satchels/PMC/medic.rsi
+  - type: Clothing
+    sprite: _RMC14/Objects/Clothing/Back/Satchels/PMC/medic.rsi
+  - type: Storage
+    grid:
+    - 0,0,6,4
+    maxItemSize: Huge
+  - type: ExplosionResistance
+    damageCoefficient: 0.9
 
 - type: entity
   parent: ClothingDeathSquadronBackpack

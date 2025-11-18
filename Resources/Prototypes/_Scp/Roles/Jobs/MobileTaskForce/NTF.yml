@@ -22,7 +22,7 @@
   id: NTFLeaderGear
   equipment:
     jumpsuit: ClothingUniformNTF
-    back: MTFSpecialistBackpack
+    back: MTFTacticalBackpack
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHelmetMTFTactical
     mask: ClothingMaskMTF
@@ -71,7 +71,7 @@
   id: NTFSpecialistGear
   equipment:
     jumpsuit: ClothingUniformNTF
-    back: MTFSpecialistBackpack
+    back: MTFTacticalBackpack
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHelmetMTFTactical
     mask: ClothingMaskMTF
@@ -118,7 +118,7 @@
   id: NTFCadetGear
   equipment:
     jumpsuit: ClothingUniformNTF
-    back: MTFSpecialistBackpack
+    back: MTFTacticalBackpack
     shoes: ClothingShoesBootsJackFilled
     head: ClothingHelmetMTFTactical
     mask: ClothingMaskMTF

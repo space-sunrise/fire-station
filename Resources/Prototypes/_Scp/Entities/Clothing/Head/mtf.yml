@@ -33,7 +33,7 @@
     damageCoefficient: 0.75
 
 - type: entity
-  parent: ClothingHeadHelmetBasic
+  parent: [ClothingHeadHelmetBasic, BaseFoldable]
   id: ClothingHelmetMTFTacticalNVG
   name: tactical helmet with nvg
   description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors. NVF included.
@@ -41,10 +41,22 @@
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Head/Helmets/MTF/mtf_tactical_nvg.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: icon-up
+      map: ["foldedLayer"]
+      visible: false
   - type: Clothing
     sprite: _Scp/Clothing/Head/Helmets/MTF/mtf_tactical_nvg.rsi
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+  - type: FoldableClothing
+    foldedEquippedPrefix: up
+    foldedHeldPrefix: up
   # TODO 
-  # Добавить функционал ПНВ.
+  # Убрать костыль и добавить функционал ПНВ.
 
 - type: entity
   parent: ClothingHeadHatSyndieMAA
