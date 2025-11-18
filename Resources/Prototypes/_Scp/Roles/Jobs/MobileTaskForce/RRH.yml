@@ -22,22 +22,22 @@
   id: RRHLeaderGear
   equipment:
     jumpsuit: ClothingUniformRRH
-    back: ClothingBackpackRRH
-    shoes: ClothingShoesBootsMagAdv
-    mask: ClothingMaskGasRRH
-    eyes: ClothingEyesNVDSec
+    back: MTFTacticalBackpack
+    shoes: ClothingShoesRRHFilled
+    head: ClothingHelmetMTFTacticalNVG
+    mask: ClothingMaskMTFTacticalRed
+    eyes: ClothingEyesNVDHightMTF
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitRRH
+    outerClothing: ClothingOuterArmorTacticalAlpha
     id: KeyCardMtfRRHLeader
     ears: ClothingHeadsetAltMTFRRH
-    belt: MTFCommanderWebbing
+    belt: ClothingBeltMTFSparePouch
     pocket1: BaseUplinkRRHLeader
     pocket2: PouchAmmo
   storage:
     back:
     - BoxMRE
     - Crowbar
-    - EnergyDaggerLoud
     - HandheldCriminalRecordsMonitorUnpowered
     - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
@@ -73,15 +73,16 @@
   id: RRHSpecialistGear
   equipment:
     jumpsuit: ClothingUniformRRH
-    back: ClothingBackpackRRH
-    shoes: ClothingShoesBootsMagAdv
-    mask: ClothingMaskGasRRH
-    eyes: ClothingEyesNVDSec
+    back: MTFTacticalBackpack
+    shoes: ClothingShoesRRHFilled
+    head: ClothingHelmetMTFTacticalNVG
+    mask: ClothingMaskMTFTacticalRed
+    eyes: ClothingEyesNVDHightMTF
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitRRH
+    outerClothing: ClothingOuterArmorTacticalAlpha
     id: KeyCardMtfRRHSpecialist
     ears: ClothingHeadsetAltMTFRRH
-    belt: MTFWebbing
+    belt: ClothingBeltMTFSparePouch
     pocket1: BaseUplinkRRHSpecialist
     pocket2: PouchAmmo
   storage:
@@ -90,7 +91,6 @@
     - DoubleEmergencyOxygenTankFilled
     - BoxMRE
     - MobileTaskForcePDA
-    - EnergyDaggerLoud
     belt:
     - Stunbaton
     - Handcuffs
@@ -99,51 +99,51 @@
     - Hypospray
     - MedkitCombatFilled
 
-# Кадет
-- type: job
-  id: RRHCadet
-  name: ghost-role-information-mtf-cadet-RRH-name
-  description: ghost-role-information-mtf-cadet-description
-  playTimeTracker: JobRRHCadet
-  setPreference: false
-  startingGear: RRHCadetGear
-  icon: JobIconRRH
-  supervisors: ghost-role-information-mtf-cadet-supervisors
-  canBeAntag: false
-  overrideConsoleVisibility: false
-  alwaysShowInBanPanel: true
-  accessGroups:
-  - AllComplex
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
+# # Кадет
+# - type: job
+#   id: RRHCadet
+#   name: ghost-role-information-mtf-cadet-RRH-name
+#   description: ghost-role-information-mtf-cadet-description
+#   playTimeTracker: JobRRHCadet
+#   setPreference: false
+#   startingGear: RRHCadetGear
+#   icon: JobIconRRH
+#   supervisors: ghost-role-information-mtf-cadet-supervisors
+#   canBeAntag: false
+#   overrideConsoleVisibility: false
+#   alwaysShowInBanPanel: true
+#   accessGroups:
+#   - AllComplex
+#   special:
+#   - !type:AddImplantSpecial
+#     implants: [ MindShieldImplant ]
 
-- type: startingGear
-  id: RRHCadetGear
-  equipment:
-    jumpsuit: ClothingUniformRRH
-    back: ClothingBackpackRRH
-    shoes: ClothingShoesBootsMagAdv
-    mask: ClothingMaskGasRRH
-    eyes: ClothingEyesNVDSec
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterHardsuitRRH
-    id: KeyCardMtfRRHCadet
-    ears: ClothingHeadsetAltMTFRRH
-    belt: MTFWebbing
-    pocket1: BaseUplinkRRH
-    pocket2: PouchAmmo
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    - EnergyDaggerLoud
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - ChemistryBottleEphedrine
-    - ChemistryBottleOmnizine
-    - Hypospray
-    - MedkitCombatFilled
+# - type: startingGear
+#   id: RRHCadetGear
+#   equipment:
+#     jumpsuit: ClothingUniformRRH
+#     back: MTFTacticalBackpack
+#     shoes: ClothingShoesRRHFilled
+#     head: ClothingHelmetMTFTacticalNVG
+#     mask: ClothingMaskMTFTacticalRed
+#     eyes: ClothingEyesNVDHightMTF
+#     gloves: ClothingHandsGlovesCombat
+#     outerClothing: ClothingOuterArmorTacticalAlpha
+#     id: KeyCardMtfRRHCadet
+#     ears: ClothingHeadsetAltMTFRRH
+#     belt: ClothingBeltMTFSparePouch
+#     pocket1: BaseUplinkRRH
+#     pocket2: PouchAmmo
+#   storage:
+#     back:
+#     - Crowbar
+#     - DoubleEmergencyOxygenTankFilled
+#     - BoxMRE
+#     - MobileTaskForcePDA
+#     belt:
+#     - Stunbaton
+#     - Handcuffs
+#     - ChemistryBottleEphedrine
+#     - ChemistryBottleOmnizine
+#     - Hypospray
+#     - MedkitCombatFilled

@@ -51,30 +51,30 @@
   - type: Loadout
     prototypes: [ LLHSpecialistGear ]
 
-- type: entity
-  id: RandomHumanoidSpawnerLLHCadet
-  components:
-  - type: Sprite
-    sprite: Markers/jobs.rsi
-    state: ertsecurityeva
-  - type: RandomHumanoidSpawner
-    settings: LLHCadet
+# - type: entity
+#   id: RandomHumanoidSpawnerLLHCadet
+#   components:
+#   - type: Sprite
+#     sprite: Markers/jobs.rsi
+#     state: ertsecurityeva
+#   - type: RandomHumanoidSpawner
+#     settings: LLHCadet
 
-- type: randomHumanoidSettings
-  id: LLHCadet
-  parent: CommonMTFOperative
-  randomizeName: false
-  components:
-  - type: GhostRole
-    name: ghost-role-information-mtf-cadet-LLH-name
-    description: ghost-role-information-mtf-cadet-description
-    rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: short
-    job: LLHCadet
-  - type: Loadout
-    prototypes: [ LLHCadetGear ]
-  - type: NoEmotions
+# - type: randomHumanoidSettings
+#   id: LLHCadet
+#   parent: CommonMTFOperative
+#   randomizeName: false
+#   components:
+#   - type: GhostRole
+#     name: ghost-role-information-mtf-cadet-LLH-name
+#     description: ghost-role-information-mtf-cadet-description
+#     rules: ghost-role-information-nonantagonist-rules
+#     raffle:
+#       settings: short
+#     job: LLHCadet
+#   - type: Loadout
+#     prototypes: [ LLHCadetGear ]
+#   - type: NoEmotions
 
 # Спавнер отряда
 - type: entity
@@ -92,10 +92,12 @@
     table: !type:AllSelector
       children:
       - id: RandomHumanoidSpawnerLLHLeader
-      - id: RandomHumanoidSpawnerLLHSpecialist # 2
+      - id: RandomHumanoidSpawnerLLHSpecialist # 4
       - id: RandomHumanoidSpawnerLLHSpecialist
-      - id: RandomHumanoidSpawnerLLHCadet # 2
-      - id: RandomHumanoidSpawnerLLHCadet
+      - id: RandomHumanoidSpawnerLLHSpecialist
+      - id: RandomHumanoidSpawnerLLHSpecialist
+      # - id: RandomHumanoidSpawnerLLHCadet # 2
+      # - id: RandomHumanoidSpawnerLLHCadet
     offset: 1
 
 # Спавнер, но юзается по кнопке

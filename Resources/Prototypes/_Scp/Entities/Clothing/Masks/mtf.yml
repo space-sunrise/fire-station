@@ -12,26 +12,24 @@
 
 - type: entity
   parent: ClothingMaskGasERT
-  id: ClothingMaskMTFTactical
+  id: ClothingMaskMTFTacticalRed
   name: tactical gas mask
   description: Tactical protective mask with dense filtration. Visor create the impression of an empty, emotionless gaze.
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Mask/MTF/mtf_tactical.rsi
+    sprite: _Scp/Clothing/Mask/MTF/mtf_tactical_red.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/Mask/MTF/mtf_tactical.rsi
+    sprite: _Scp/Clothing/Mask/MTF/mtf_tactical_red.rsi
 
 - type: entity
-  parent: ClothingMaskGasSwat
-  id: ClothingMaskGasLLH
-  name: gas mask
-  description: An enhanced model with markings reminiscent of the principles of control and submission. The filters appear excessively powerful.
+  parent: ClothingMaskGasERT
+  id: ClothingMaskMTFTacticalWhite
+  name: tactical gas mask
+  description: Tactical protective mask with dense filtration. Visor create the impression of an empty, emotionless gaze.
   suffix: MTF
-
-- type: entity
-  parent: ClothingMaskGasDeathSquad
-  id: ClothingMaskGasRRH
-  name: gas mask
-  description: Traces of erased markings are visible on the surface. Internal documentation for this model is missing.
-  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Mask/MTF/mtf_tactical_white.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Mask/MTF/mtf_tactical_white.rsi

@@ -1,12 +1,6 @@
 ent-ClothingMaskMTF = gas mask
     .desc = A standard protective mask with dense filtration. The lenses create the impression of an empty, emotionless gaze.
     .suffix = MTF
-ent-ClothingMaskMTFTactical = тактический противогаз
+ent-ClothingMaskMTFTacticalRed = tactical gas mask
     .desc = Tactical protective mask with dense filtration. The visor creates a feeling of empty, emotionless gaze.
     .suffix = МОГ
-ent-ClothingMaskGasLLH = gas mask
-    .desc = An enhanced model with markings reminiscent of the principles of control and submission. The filters appear excessively powerful.
-    .suffix = MTF
-ent-ClothingMaskGasRRH = gas mask
-    .desc = Traces of erased markings are visible on the surface. Internal documentation for this model is missing.
-    .suffix = MTF

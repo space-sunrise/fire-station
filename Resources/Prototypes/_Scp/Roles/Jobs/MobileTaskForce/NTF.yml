@@ -31,7 +31,7 @@
     outerClothing: ClothingOuterArmorTactical
     id: KeyCardMtfNTFLeader
     ears: ClothingHeadsetAltMTF
-    belt: MTFCommanderWebbing
+    belt: ClothingBeltMTFSparePouch
     pocket1: BaseUplinkMTFLeader
     pocket2: PouchAmmo
   storage:
@@ -80,7 +80,7 @@
     outerClothing: ClothingOuterArmorTactical
     id: KeyCardMtfNTFSpecialist
     ears: ClothingHeadsetAltMTF
-    belt: MTFWebbing
+    belt: ClothingBeltMTFSparePouch
     pocket1: BaseUplinkMTFSpecialist
     pocket2: PouchAmmo
   storage:
@@ -124,10 +124,10 @@
     mask: ClothingMaskMTF
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorTactical
+    outerClothing: ClothingOuterArmorScout
     id: KeyCardMtfNTFCadet
     ears: ClothingHeadsetAltMTF
-    belt: MTFWebbing
+    belt: ClothingBeltMTFSparePouch
     pocket1: BaseUplinkMTFCadet
     pocket2: PouchAmmo
   storage:

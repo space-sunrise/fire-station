@@ -66,25 +66,6 @@
   suffix: MTF
 
 - type: entity
-  parent: ClothingHeadHatCapLeatherHoS
-  id: ClothingHeadHatCapLeatherLLHLeader
-  name: commander's leather cap
-  description: The worn appearance of the item suggests long-term use. It evokes a sense of discipline and control.
-  suffix: MTF
-
-- type: entity
-  parent: ClothingHeadHelmetHardsuitDeathsquad
-  id: ClothingHeadHelmetHardsuitRRH
-  name: hardsuit helmet
-  description: A sealed protective module with a rigid locking mechanism. Prolonged observation induces a feeling of being covertly watched.
-  suffix: MTF
-  components:
-  - type: ClothingAddComponents
-    components:
-    - type: Scp096Protection
-      problemChance: 0.002 # 0,2% каждый тик проебаться
-
-- type: entity
   parent: ClothingHeadHatHoodRad
   id: ClothingHelmetMobileTaskForceMH
   name: protective field helmet
@@ -102,3 +83,18 @@
         Radiation: 0.65
         Blunt: 0.95
         Slash: 0.95
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHelmetHeavyHD
+  name: helmet
+  description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mtf_heavy.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mtf_heavy.rsi
+  - type: Tag
+    tags:
+    - FullCovered

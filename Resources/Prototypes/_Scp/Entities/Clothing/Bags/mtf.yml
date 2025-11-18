@@ -14,7 +14,7 @@
     - 0,0,6,4
     maxItemSize: Huge
   - type: ExplosionResistance
-    damageCoefficient: 0.9
+    damageCoefficient: 0.1
 
 - type: entity
   parent: MTFTacticalBackpack
@@ -32,28 +32,4 @@
     - 0,0,6,4
     maxItemSize: Huge
   - type: ExplosionResistance
-    damageCoefficient: 0.9
-
-- type: entity
-  parent: ClothingDeathSquadronBackpack
-  id: ClothingBackpackLLH
-  name: backpack
-  description: A standard tactical container. For unknown reasons, its internal compartments have limited capacity.
-  suffix: MTF
-  components:
-  - type: Storage
-    grid:
-    - 0,0,8,4
-    maxItemSize: Huge
-
-- type: entity
-  parent: ClothingDeathSquadronBackpack
-  id: ClothingBackpackRRH
-  name: backpack
-  description: Documentation on the design of this unit is unavailable. Information about its features has been removed from public archives.
-  suffix: MTF
-  components:
-  - type: Storage
-    grid:
-    - 0,0,8,4
-    maxItemSize: Huge
+    damageCoefficient: 0.1
