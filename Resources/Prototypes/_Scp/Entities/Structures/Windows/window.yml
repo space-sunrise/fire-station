@@ -105,7 +105,7 @@
   - type: DamageVisuals
     supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_test.rsi
+      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
 
 - type: entity
   id: ScpWindowDirectional
@@ -210,8 +210,9 @@
   - type: Icon
     sprite: _Scp/Structures/Windows/reinforced_window.rsi
   - type: DamageVisuals
+    supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks.rsi
+      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
 
 - type: entity
   id: ScpWindowReinforcedDirectional
@@ -326,8 +327,9 @@
   - type: Icon
     sprite: _Scp/Structures/Windows/plasma_window.rsi
   - type: DamageVisuals
+    supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks.rsi
+      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
 
 - type: entity
   id: ScpPlasmaWindowDirectional
@@ -440,8 +442,9 @@
   - type: Icon
     sprite: _Scp/Structures/Windows/reinforced_plasma_window.rsi
   - type: DamageVisuals
+    supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks.rsi
+      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
 
 - type: entity
   id: ScpPlasmaReinforcedWindowDirectional
@@ -555,8 +558,9 @@
   - type: Icon
     sprite: _Scp/Structures/Windows/uranium_window.rsi
   - type: DamageVisuals
+    supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks.rsi
+      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
 
 - type: entity
   id: ScpUraniumWindowDirectional
@@ -669,8 +673,9 @@
   - type: Icon
     sprite: _Scp/Structures/Windows/reinforced_uranium_window.rsi
   - type: DamageVisuals
+    supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks.rsi
+      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
 
 - type: entity
   id: ScpUraniumReinforcedWindowDirectional
@@ -784,5 +789,6 @@
   - type: Icon
     sprite: _Scp/Structures/Windows/tinted_window.rsi
   - type: DamageVisuals
+    supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks.rsi
+      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
