@@ -2261,8 +2261,8 @@ NineTailedFoxCommanderHelmet: null
 NineTailedFoxMedicHelmet: null
 NineTailedFoxSpecialistHelmet: null
 NineTailedFoxSpecialistShield: null
-ClothingHelmetNTF: ClothingHelmetMTFTactical
-MTFSpecialistBackpack: MTFTacticalBackpack
+ClothingHelmetNTF: ClothingHelmetMtfTactical
+MTFSpecialistBackpack: MtfTacticalBackpack
 ClothingMaskGasLLH: null
 ClothingMaskGasRRH: null
 

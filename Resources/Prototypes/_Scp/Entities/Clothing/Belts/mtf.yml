@@ -1,6 +1,6 @@
 ﻿- type: entity
   parent: [ClothingBeltStorageBase, ContentsExplosionResistanceBase, BaseCentcommContraband]
-  id: ClothingBeltMTFSparePouch
+  id: ClothingBeltMtfSparePouch
   name: tactical belt
   description: A small, lightweight pouch to provide additional storage. The newer G8-A model, while uncomfortable, can also be clipped around the waist.
   components:
@@ -12,8 +12,8 @@
     damageCoefficient: 0.5
 
 - type: entity
-  parent: ClothingBeltMTFSparePouch
-  id: ClothingBeltMTFConstruction
+  parent: ClothingBeltMtfSparePouch
+  id: ClothingBeltMtfConstruction
   name: construction belt
   description: The M277 is a common rig used by Combat Technicians to carry around materials and other supplies. It consists of a modular belt with various clips. This version sacrifices storage space for specialized material loading clips.
   components:
@@ -66,8 +66,8 @@
         - Material
 
 - type: entity
-  parent: ClothingBeltMTFSparePouch
-  id: ClothingBeltMTFUtility
+  parent: ClothingBeltMtfSparePouch
+  id: ClothingBeltMtfUtility
   name: tools belt
   description: The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This version lacks any combat functionality, and is commonly used by engineers to transport important tools.
   components:
@@ -118,8 +118,8 @@
         - HandLabeler
 
 - type: entity
-  parent: ClothingBeltMTFSparePouch
-  id: ClothingBeltMTFMedical
+  parent: ClothingBeltMtfSparePouch
+  id: ClothingBeltMtfMedical
   name: medical belt
   description: The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport bulkier medical supplies.
   components:
@@ -153,8 +153,8 @@
         - HandLabeler
 
 - type: entity
-  parent: ClothingBeltMTFSparePouch
-  id: ClothingBeltMTFSecurity
+  parent: ClothingBeltMtfSparePouch
+  id: ClothingBeltMtfSecurity
   name: security belt
   description: The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This configuration is commonly seen among Military Police and peacekeepers, though it can hold some light munitions.
   components:
@@ -190,8 +190,8 @@
         - BalloonPopper
 
 - type: entity
-  parent: ClothingBeltMTFSparePouch
-  id: ClothingBeltMTFAmmo
+  parent: ClothingBeltMtfSparePouch
+  id: ClothingBeltMtfAmmo
   name: ammo belt
   description: The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This is the standard variant, designed for bulk ammunition-carrying operations.
   components:
@@ -207,8 +207,8 @@
       - BallisticAmmoProvider
 
 - type: entity
-  parent: ClothingBeltMTFSparePouch
-  id: ClothingBeltMTFGrenade
+  parent: ClothingBeltMtfSparePouch
+  id: ClothingBeltMtfGrenade
   name: grenade belt
   description: The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This version is designed to carry up to 10 grenades.
   components:

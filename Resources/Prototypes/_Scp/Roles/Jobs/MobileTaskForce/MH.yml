@@ -22,7 +22,7 @@
   id: MHLeaderGear
   equipment:
     jumpsuit: ClothingUniformMH
-    back: MTFTacticalBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsNTFFilled
     mask: ClothingMaskGasMobileTaskForceMH
     eyes: ClothingEyesGlassesSecurity
@@ -31,12 +31,12 @@
     outerClothing: ClothingOuterArmorMobileTaskForceMH
     id: KeyCardMtfMHLeader
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMTFSparePouch
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFLeader
     pocket2: PouchAmmo
   storage:
     back:
-    - BoxMRE
+    - BoxMtfLeaderKit
     - Crowbar
     - HandheldCriminalRecordsMonitorUnpowered
     - DoubleEmergencyOxygenTankFilled
@@ -76,7 +76,7 @@
   id: MHSpecialistGear
   equipment:
     jumpsuit: ClothingUniformMH
-    back: MTFTacticalBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsNTFFilled
     mask: ClothingMaskGasMobileTaskForceMH
     eyes: ClothingEyesGlassesSecurity
@@ -85,14 +85,14 @@
     outerClothing: ClothingOuterArmorMobileTaskForceMH
     id: KeyCardMtfMHSpecialist
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMTFSparePouch
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFSpecialist
     pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
+    - BoxMtfBaseKit
     - MobileTaskForcePDA
     belt:
     - MedkitCombatFilled
@@ -128,7 +128,7 @@
   id: MHCadetGear
   equipment:
     jumpsuit: ClothingUniformMH
-    back: MTFTacticalBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsNTFFilled
     mask: ClothingMaskGasMobileTaskForceMH
     eyes: ClothingEyesGlassesSecurity
@@ -137,14 +137,14 @@
     outerClothing: ClothingOuterArmorMobileTaskForceMH
     id: KeyCardMtfMHCadet
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMTFSparePouch
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFCadet
     pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
+    - BoxMtfBaseKit
     - MobileTaskForcePDA
     belt:
     - MedkitCombatFilled

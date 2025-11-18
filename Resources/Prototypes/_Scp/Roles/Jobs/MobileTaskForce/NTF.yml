@@ -22,21 +22,21 @@
   id: NTFLeaderGear
   equipment:
     jumpsuit: ClothingUniformNTF
-    back: MTFTacticalBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsJackFilled
-    head: ClothingHelmetMTFTactical
-    mask: ClothingMaskMTF
+    head: ClothingHelmetMtfTactical
+    mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorTactical
     id: KeyCardMtfNTFLeader
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMTFSparePouch
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFLeader
     pocket2: PouchAmmo
   storage:
     back:
-    - BoxMRE
+    - BoxMtfLeaderKit
     - Crowbar
     - HandheldCriminalRecordsMonitorUnpowered
     - DoubleEmergencyOxygenTankFilled
@@ -71,23 +71,23 @@
   id: NTFSpecialistGear
   equipment:
     jumpsuit: ClothingUniformNTF
-    back: MTFTacticalBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsJackFilled
-    head: ClothingHelmetMTFTactical
-    mask: ClothingMaskMTF
+    head: ClothingHelmetMtfTactical
+    mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorTactical
     id: KeyCardMtfNTFSpecialist
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMTFSparePouch
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFSpecialist
     pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
+    - BoxMtfBaseKit
     - MobileTaskForcePDA
     belt:
     - Stunbaton
@@ -118,23 +118,23 @@
   id: NTFCadetGear
   equipment:
     jumpsuit: ClothingUniformNTF
-    back: MTFTacticalBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsJackFilled
-    head: ClothingHelmetMTFTactical
-    mask: ClothingMaskMTF
+    head: ClothingHelmetMtfTactical
+    mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorScout
     id: KeyCardMtfNTFCadet
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMTFSparePouch
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFCadet
     pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
+    - BoxMtfBaseKit
     - MobileTaskForcePDA
     belt:
     - Stunbaton

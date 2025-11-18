@@ -22,21 +22,21 @@
   id: HDLeaderGear
   equipment:
     jumpsuit: ClothingUniformHD
-    back: MTFTacticalBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsHDFilled
     head: ClothingHeadHatHDMAA
-    mask: ClothingMaskMTF
+    mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHD
     id: KeyCardMtfHDLeader
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMTFSparePouch
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFLeader
     pocket2: PouchAmmo
   storage:
     back:
-    - BoxMRE
+    - BoxMtfLeaderKit
     - Crowbar
     - CombatKnife
     - HandheldCriminalRecordsMonitorUnpowered
@@ -72,22 +72,22 @@
   id: HDSpecialistGear
   equipment:
     jumpsuit: ClothingUniformHD
-    back: MTFTacticalBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsHDFilled
-    mask: ClothingMaskMTF
+    mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHD
     id: KeyCardMtfHDSpecialist
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMTFSparePouch
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFSpecialist
     pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
+    - BoxMtfBaseKit
     - MobileTaskForcePDA
     belt:
     - Stunbaton
@@ -118,22 +118,22 @@
   id: HDCadetGear
   equipment:
     jumpsuit: ClothingUniformHD
-    back: MTFTacticalBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsHDFilled
-    mask: ClothingMaskMTF
+    mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorHD
     id: KeyCardMtfHDCadet
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMTFSparePouch
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFCadet
     pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
+    - BoxMtfBaseKit
     - MobileTaskForcePDA
     belt:
     - Stunbaton

@@ -1,0 +1,57 @@
+
+- type: entity
+  name: MTF base kit box
+  parent: [BoxCardboard, BaseCentcommContraband]
+  id: BoxMtfBaseKit
+  description: Base Security Kit created for MTF squad members.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Storage/boxes.rsi
+    layers:
+    - state: boxwidemtf
+    - state: wide_scp
+  - type: Storage
+    grid:
+    - 0,0,4,3
+  - type: StorageFill
+    contents:
+    - id: DoubleEmergencyOxygenTankFilled
+    - id: PinpointerUniversal
+    - id: DrinkMREFlask
+    - id: FoodSnackNutribrick
+    - id: FireExtinguisherMini
+    - id: MedipenCombatInjector
+    - id: AutoMenderBruteFilled
+    - id: AutoMenderBurnFilled
+    - id: HandHeldMassScanner
+    - id: Telebaton
+    - id: FoodTinMRE
+
+- type: entity
+  name: MTF Leader kit box
+  parent: [BoxCardboard, BaseCentcommContraband]
+  id: BoxMtfLeaderKit
+  description: Base Leader Kit created for MTF squad commander.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Storage/boxes.rsi
+    layers:
+    - state: boxwidemtfgray
+    - state: wide_com
+  - type: Storage
+    grid:
+    - 0,0,4,3
+  - type: StorageFill
+    contents:
+    - id: PortableSurveillanceCameraMonitorUnpowered
+    - id: HandheldCriminalRecordsMonitorUnpowered
+    - id: PinpointerUniversal
+    - id: HandHeldMassScanner
+    - id: DoubleEmergencyOxygenTankFilled
+    - id: MedipenCombatInjector
+    - id: AutoMenderBruteFilled
+    - id: AutoMenderBurnFilled
+    - id: FoodTinMRE
+    - id: FoodSnackMaysonEnergy
+    - id: DrinkMREFlask
+

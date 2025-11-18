@@ -1,4 +1,4 @@
-ent-MTFVest = armor vest
+ent-MtfVest = armor vest
     .desc = A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
     .suffix = MTF
 ent-ClothingOuterArmorNTF = armor vest

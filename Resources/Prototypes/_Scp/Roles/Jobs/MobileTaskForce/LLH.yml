@@ -22,21 +22,21 @@
   id: LLHLeaderGear
   equipment:
     jumpsuit: ClothingUniformLLH
-    back: MTFTacticalBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesSwat
-    head: ClothingHelmetMTFTacticalNVG
-    mask: ClothingMaskMTFTacticalWhite
-    eyes: ClothingEyesNVDHightMTF
+    head: ClothingHelmetMtfTacticalNVG
+    mask: ClothingMaskMtfTacticalWhite
+    eyes: ClothingEyesNVDHightMtf
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorTacticalOmega
     id: KeyCardMtfLLHLeader
     ears: ClothingHeadsetAltMTFLLH
-    belt: ClothingBeltMTFSparePouch
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkLLHLeader
     pocket2: PouchAmmo
   storage:
     back:
-    - BoxMRE
+    - BoxMtfLeaderKit
     - Crowbar
     - CombatKnife
     - HandheldCriminalRecordsMonitorUnpowered
@@ -70,23 +70,23 @@
   id: LLHSpecialistGear
   equipment:
     jumpsuit: ClothingUniformLLH
-    back: MTFTacticalBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesSwat
-    head: ClothingHelmetMTFTacticalNVG
-    mask: ClothingMaskMTFTacticalWhite
-    eyes: ClothingEyesNVDHightMTF
+    head: ClothingHelmetMtfTacticalNVG
+    mask: ClothingMaskMtfTacticalWhite
+    eyes: ClothingEyesNVDHightMtf
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorTacticalOmega
     id: KeyCardMtfLLHSpecialist
     ears: ClothingHeadsetAltMTFLLH
-    belt: ClothingBeltMTFSparePouch
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkLLHSpecialist
     pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
+    - BoxMtfBaseKit
     - MobileTaskForcePDA
     - CombatKnife
     belt:
@@ -116,23 +116,23 @@
 #   id: LLHCadetGear
 #   equipment:
 #     jumpsuit: ClothingUniformLLH
-#     back: MTFTacticalBackpack
+#     back: MtfTacticalBackpack
 #     shoes: ClothingShoesSwat
-#     head: ClothingHelmetMTFTacticalNVG
-#     mask: ClothingMaskMTFTacticalWhite
-#     eyes: ClothingEyesNVDHightMTF
+#     head: ClothingHelmetMtfTacticalNVG
+#     mask: ClothingMaskMtfTacticalWhite
+#     eyes: ClothingEyesNVDHightMtf
 #     gloves: ClothingHandsGlovesCombat
 #     outerClothing: ClothingOuterArmorTacticalOmega
 #     id: KeyCardMtfLLHCadet
 #     ears: ClothingHeadsetAltMTFLLH
-#     belt: ClothingBeltMTFSparePouch
+#     belt: ClothingBeltMtfSparePouch
 #     pocket1: BaseUplinkLLH
 #     pocket2: PouchAmmo
 #   storage:
 #     back:
 #     - Crowbar
 #     - DoubleEmergencyOxygenTankFilled
-#     - BoxMRE
+#     - BoxMtfBaseKit
 #     - MobileTaskForcePDA
 #     - CombatKnife
 #     belt:

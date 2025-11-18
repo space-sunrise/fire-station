@@ -1,6 +1,6 @@
 ﻿- type: entity
   parent: [AllowSuitStorageClothing, ClothingOuterStorageBase]
-  id: MTFVest
+  id: MtfVest
   name: armor vest
   description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
   suffix: MTF
@@ -23,7 +23,7 @@
     - 0,0,3,1
 
 - type: entity
-  parent: MTFVest
+  parent: MtfVest
   id: ClothingOuterArmorTactical
   name: tactical armor vest
   description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
@@ -63,7 +63,7 @@
     sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_med.rsi
 
 - type: entity
-  parent: MTFVest
+  parent: MtfVest
   id: ClothingOuterArmorScout
   name: scout armor vest
   description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
@@ -86,7 +86,7 @@
     damageCoefficient: 0.75
 
 - type: entity
-  parent: MTFVest
+  parent: MtfVest
   id: ClothingOuterArmorMedium
   name: medium armor vest
   description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.

@@ -1,6 +1,6 @@
 ﻿- type: entity
   parent: ClothingBackpack
-  id: MTFTacticalBackpack
+  id: MtfTacticalBackpack
   name: tactical backpack
   description: A spacious tactical container with reinforced seams. The design is intended for prolonged use in field conditions.
   suffix: MTF
@@ -17,8 +17,8 @@
     damageCoefficient: 0.1
 
 - type: entity
-  parent: MTFTacticalBackpack
-  id: MTFTacticalBackpackMed
+  parent: MtfTacticalBackpack
+  id: MtfTacticalBackpackMed
   name: tactical backpack med
   description: A spacious tactical container with reinforced seams. The design is intended for prolonged use in field conditions.
   suffix: MTF

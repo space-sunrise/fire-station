@@ -1,6 +1,6 @@
 ﻿- type: entity
   parent: ClothingHeadHelmetBasic
-  id: ClothingHelmetMTF
+  id: ClothingHelmetMtf
   name: helmet
   description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
   suffix: MTF
@@ -12,7 +12,7 @@
 
 - type: entity
   parent: ClothingHeadHelmetBasic
-  id: ClothingHelmetMTFTactical
+  id: ClothingHelmetMtfTactical
   name: tactical helmet
   description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
   suffix: MTF
@@ -34,7 +34,7 @@
 
 - type: entity
   parent: [ClothingHeadHelmetBasic, BaseFoldable]
-  id: ClothingHelmetMTFTacticalNVG
+  id: ClothingHelmetMtfTacticalNVG
   name: tactical helmet with nvg
   description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors. NVF included.
   suffix: MTF | NVG

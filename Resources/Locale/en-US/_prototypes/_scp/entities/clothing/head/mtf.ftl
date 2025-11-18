@@ -1,10 +1,10 @@
-ent-ClothingHelmetMTF = helmet
+ent-ClothingHelmetMtf = helmet
     .desc = A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
     .suffix = MTF
-ent-ClothingHelmetMTFTactical = tactical helmet
+ent-ClothingHelmetMtfTactical = tactical helmet
     .desc = A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
     .suffix = MTF
-ent-ClothingHelmetMTFTacticalNVG = tactical helmet with nvg
+ent-ClothingHelmetMtfTacticalNVG = tactical helmet with nvg
     .desc = A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
     .suffix = MTF
 ent-ClothingHeadHatHDMAA = commander's cap
