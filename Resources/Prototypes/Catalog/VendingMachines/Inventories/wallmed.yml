@@ -11,6 +11,8 @@
   contrabandInventory:
     PowerCellSmall: 2
     AntiPoisonMedipen: 1 # Sunrise Edit
-    PatchViagra: 2 # Sunrise Edit
+    # Fire Edit - delete PatchViagra
+    #PatchViagra: 2 # Sunrise Edit
+    #
   emaggedInventory:
     StimpackMini: 1 # Sunrise Edit
