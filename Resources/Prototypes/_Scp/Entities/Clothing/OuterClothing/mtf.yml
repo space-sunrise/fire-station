@@ -4,9 +4,10 @@
   name: armor vest
   description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
   suffix: MTF
+  abstract: true
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Regular/vest.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_tactical.rsi
   - type: Clothing
   - type: ExplosionResistance
     damageCoefficient: 0.8
@@ -19,34 +20,106 @@
 
 - type: entity
   parent: MTFVest
-  id: ClothingOuterArmorNTF
-  name: armor vest
+  id: ClothingOuterArmorTactical
+  name: tactical armor vest
   description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/ntf.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_tactical.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/ntf.rsi
-
-- type: entity
-  parent: [AllowSuitStorageClothing, ClothingOuterStorageBase]
-  id: MTFCommanderVest
-  name: commander's armor vest
-  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability. It features more formal trim and has an authoritative appearance.
-  suffix: MTF
-  components:
-  - type: Sprite
-    sprite: _Scp/NineTailedFox/Commander/vest.rsi
-  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_tactical.rsi
   - type: ExplosionResistance
-    damageCoefficient: 0.8
+    damageCoefficient: 0.6
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.4
-        Slash: 0.4
-        Piercing: 0.4
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.45
+        Heat: 0.5
+        Caustic: 0.7
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+  - type: StaminaResistance
+    damageCoefficient: 0.60
+
+- type: entity
+  parent: ClothingOuterArmorTactical
+  id: ClothingOuterArmorTacticalMed
+  name: med tactical armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_med.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_med.rsi
+
+- type: entity
+  parent: MTFVest
+  id: ClothingOuterArmorScout
+  name: scout armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_scout.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_scout.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.85
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.60
+        Heat: 0.75
+  - type: StaminaResistance
+    damageCoefficient: 0.75
+
+- type: entity
+  parent: MTFVest
+  id: ClothingOuterArmorMedium
+  name: medium armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_medium.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_medium.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4 # Fire Edit
+        Slash: 0.4 # Fire Edit
+        Piercing: 0.3
+        Heat: 0.5
+        Caustic: 0.6
+  - type: ClothingSpeedModifier
+    walkModifier: 0.70
+    sprintModifier: 0.70
+  - type: HeldSpeedModifier
+  - type: StaminaResistance
+    damageCoefficient: 0.45
+
+- type: entity
+  parent: ClothingOuterArmorTactical
+  id: ClothingOuterArmorTacticalAlpha
+  name: med tactical armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_med.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_med.rsi
 
 - type: entity
   parent: ClothingOuterArmorSWAT
