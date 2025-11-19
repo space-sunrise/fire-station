@@ -293,6 +293,11 @@ namespace Content.Client.IconSmoothing
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            // Fire added start - обновление ближайших спрайто дамаг оверлея
+            var ev = new IconSmoothUpdatedEvent();
+            RaiseLocalEvent(uid, ref ev);
+            // Fire added end
         }
 
         private void CalculateNewSpriteDiagonal(Entity<MapGridComponent>? gridEntity, IconSmoothComponent smooth,
@@ -541,4 +546,9 @@ namespace Content.Client.IconSmoothing
             SW,
         }
     }
+
+    // Fire added start - чтобы при удалении сущности соседи меня спрайт
+    [ByRefEvent]
+    public readonly record struct IconSmoothUpdatedEvent;
+    // Fire added end
 }

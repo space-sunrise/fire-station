@@ -39,6 +39,9 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
 
         // Fire edit
         SubscribeLocalEvent<DamageVisualsComponent, ComponentStartup>(InitializeEntity, after: [typeof(IconSmoothSystem)]);
+
+        // Fire added - Подписка на обновление IconSmooth
+        SubscribeLocalEvent<DamageVisualsComponent, IconSmoothUpdatedEvent>(OnIconSmoothUpdate);
     }
 
     // Fire edit - пофиксил, что дамаг оверлей срется в самый низ
@@ -558,13 +561,14 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
     ///     Updates damage visuals without tracking
     ///     any damage groups.
     /// </summary>
-    private void UpdateDamageVisuals(Entity<DamageableComponent, SpriteComponent, DamageVisualsComponent> entity)
+    private void UpdateDamageVisuals(Entity<DamageableComponent, SpriteComponent, DamageVisualsComponent> entity, bool force = false)
     {
         var damageComponent = entity.Comp1;
         var spriteComponent = entity.Comp2;
         var damageVisComp = entity.Comp3;
 
-        if (!CheckThresholdBoundary(damageComponent.TotalDamage, damageVisComp.LastDamageThreshold, damageVisComp, out var threshold))
+        // Fire edit - добавил флаг force
+        if (!CheckThresholdBoundary(damageComponent.TotalDamage, damageVisComp.LastDamageThreshold, damageVisComp, out var threshold, force))
             return;
 
         damageVisComp.LastDamageThreshold = threshold;
@@ -632,7 +636,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
     /// <summary>
     ///     Checks if a threshold boundary was passed.
     /// </summary>
-    private bool CheckThresholdBoundary(FixedPoint2 damageTotal, FixedPoint2 lastThreshold, DamageVisualsComponent damageVisComp, out FixedPoint2 threshold)
+    private bool CheckThresholdBoundary(FixedPoint2 damageTotal, FixedPoint2 lastThreshold, DamageVisualsComponent damageVisComp, out FixedPoint2 threshold, bool force = false)
     {
         threshold = FixedPoint2.Zero;
         damageTotal = damageTotal / damageVisComp.Divisor;
@@ -648,7 +652,8 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
             threshold = damageVisComp.Thresholds[thresholdIndex];
         }
 
-        if (threshold == lastThreshold)
+        // Fire edit - иногда нужно игнорировать неизменившийся дамаг
+        if (threshold == lastThreshold && !force)
             return false;
 
         return true;
@@ -674,7 +679,8 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         }
         else if (damageVisComp.DamageOverlay != null)
         {
-            UpdateDamageVisuals(entity);
+            // Fire edit - добавил флаг force
+            UpdateDamageVisuals(entity, true);
         }
     }
 
@@ -944,7 +950,7 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         }
     }
 
-    private static bool MatchingEntity(
+    private bool MatchingEntity(
         IconSmoothComponent smooth,
         AnchoredEntitiesEnumerator candidates,
         EntityQuery<IconSmoothComponent> smoothQuery)
@@ -989,6 +995,19 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
 
             AddDamageLayerToSprite(spriteEnt, sprite, state, mapKey, index, dirOffset);
         }
+    }
+
+    private void OnIconSmoothUpdate(Entity<DamageVisualsComponent> ent, ref IconSmoothUpdatedEvent args)
+    {
+        // Проверяем наличие необходимых компонентов
+        if (!TryComp<DamageableComponent>(ent, out var damageComponent) ||
+            !TryComp<SpriteComponent>(ent, out var spriteComponent))
+            return;
+
+        // Принудительно обновляем слои повреждений.
+        // ForceUpdateLayers внутри себя вызывает UpdateCornerLayers (благодаря вашим предыдущим правкам),
+        // который заново рассчитает соседей и выберет правильный суффикс (например, _0, _3 и т.д.) для оверлея.
+        ForceUpdateLayers((ent, damageComponent, spriteComponent, ent));
     }
     // Fire added end
 }
