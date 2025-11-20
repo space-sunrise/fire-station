@@ -15,11 +15,15 @@
     sound:
       path: /Audio/Ambience/Objects/hdd_buzz.ogg
   - type: PointLight
-    radius: 1.5
-    energy: 1.6
+    # Fire edit start - для красоты + маска
+    radius: 2
+    energy: 0.5
     color: "#3db83b"
     castShadows: false
     netsync: false
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
+    autoRot: true
+    # Fire edit end
   - type: AccessReader
     access: [["Engineering"]]
   - type: Sprite
