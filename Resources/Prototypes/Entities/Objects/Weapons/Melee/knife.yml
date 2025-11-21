@@ -3,6 +3,11 @@
   id: BaseKnife
   abstract: true
   components:
+  # Fire added start
+  - type: BloodSplatterer
+    probability: 0.4
+    bloodLineProbability: 0.1
+  # Fire added end
   - type: Tag
     tags:
     - Knife

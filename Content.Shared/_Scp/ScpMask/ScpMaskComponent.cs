@@ -38,6 +38,12 @@ public sealed partial class ScpMaskComponent : Component, IClothingSlots
 
     private float _tearChanceOnDamage;
 
+    /// <summary>
+    /// Время надевания маски при помощи атаки.
+    /// </summary>
+    [DataField]
+    public TimeSpan AttackEquipTime = TimeSpan.FromSeconds(5f);
+
     #region Safe time
 
     [DataField, AlwaysPushInheritance]

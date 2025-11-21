@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Content.Shared._Scp.Helpers;
-using Content.Shared._Scp.Scp096;
+using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp173;
 using Content.Shared._Scp.Watching;
 using Content.Shared.Alert;
@@ -220,7 +220,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
 
     private TimeSpan GetBlinkVariance(Entity<BlinkableComponent> ent)
     {
-        var time = _random.NextFloat(ent, 0, (float)ent.Comp.BlinkingIntervalVariance.TotalSeconds);
+        var time = _random.NextFloatForEntity(ent, 0, (float)ent.Comp.BlinkingIntervalVariance.TotalSeconds);
         return TimeSpan.FromSeconds(time);
     }
 

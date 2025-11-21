@@ -1,4 +1,6 @@
-﻿using Content.Shared._Scp.ScpMask;
+﻿using Content.Shared._Scp.Scp096.Main.Components;
+using Content.Shared._Scp.Scp096.Main.Systems;
+using Content.Shared._Scp.ScpMask;
 using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Examine;
 

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Content.Server._Scp.Scp096;
 using Content.Server._Sunrise.Helpers;
-using Content.Shared._Scp.Scp096;
+using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
 using Content.Shared.Xenoarchaeology.Artifact;

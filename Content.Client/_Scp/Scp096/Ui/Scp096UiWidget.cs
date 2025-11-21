@@ -4,8 +4,8 @@ namespace Content.Client._Scp.Scp096.Ui;
 
 public sealed class Scp096UiWidget : UIWidget
 {
-    private Label _timeLabel;
-    private Label _targetsLabel;
+    private readonly Label _timeLabel;
+    private readonly Label _targetsLabel;
     public Scp096UiWidget()
     {
         _timeLabel = new Label();

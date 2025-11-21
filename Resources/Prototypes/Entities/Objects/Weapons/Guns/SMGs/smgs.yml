@@ -5,6 +5,10 @@
   description: A rooty tooty point and shooty.
   abstract: true
   components:
+  # Fire added start
+  - type: BloodSplatterer
+    probability: 0.5
+  # Fire added end
   - type: RestrictByUserTag
     doestContain:
     - Abductor

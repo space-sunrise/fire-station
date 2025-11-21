@@ -5,6 +5,12 @@
   description: A rooty tooty point and shooty.
   abstract: true
   components:
+  # Fire added start
+  - type: BloodSplatterer
+    amount: 1, 3
+    probability: 0.65
+    bloodLineProbability: 0.2
+  # Fire added end
   - type: Sprite
   - type: Item
     size: Huge
@@ -128,6 +134,9 @@
   parent: BaseItem
   description: A L6 SAW for use by cyborgs. Creates .30 rifle ammo on the fly from an internal ammo fabricator, which slowly self-charges.
   components:
+    # Fire added start
+    - type: BloodSplatterer
+    # Fire added end
     - type: Gun
       minAngle: 4
       maxAngle: 25

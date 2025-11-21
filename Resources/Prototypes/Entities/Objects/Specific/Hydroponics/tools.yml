@@ -81,6 +81,11 @@
   id: HydroponicsToolHatchet
   description: A very sharp axe blade upon a short fibremetal handle. It has a long history of chopping things, but now it is used for chopping wood.
   components:
+  # Fire added start
+  - type: BloodSplatterer
+    probability: 0.5
+    bloodLineProbability: 0.2
+  # Fire added end
   - type: Tag
     tags:
     - BotanyHatchet

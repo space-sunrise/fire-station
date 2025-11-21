@@ -1,3 +1,4 @@
+using Content.Shared._Starlight.Weapon;
 using Content.Shared.Armor;
 using Content.Shared.Atmos;
 using Content.Shared.Chat;
@@ -40,6 +41,10 @@ public partial class InventorySystem
 {
     public void InitializeRelay()
     {
+        // Fire added start
+        SubscribeLocalEvent<InventoryComponent, HitScanPierceAttemptEvent>(RefRelayInventoryEvent);
+        // Fire added end
+
         SubscribeLocalEvent<InventoryComponent, DamageModifyEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, ElectrocutionAttemptEvent>(RelayInventoryEvent);
         SubscribeLocalEvent<InventoryComponent, SlipAttemptEvent>(RelayInventoryEvent);

@@ -1,0 +1,29 @@
+{
+    "version": 1,
+    "license": "CC BY-SA 3.0",
+    "copyright": "Sprited by miduzka(discord)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "blood1"
+        },
+        {
+            "name": "blood2"
+        },
+        {
+            "name": "blood3"
+        },
+        {
+            "name": "blood4"
+        },
+        {
+            "name": "blood5"
+        },
+        {
+            "name": "blood6"
+        }
+    ]
+}

@@ -80,4 +80,24 @@ public abstract class SharedAmbientSoundSystem : EntitySystem
             Sound = component.Sound,
         };
     }
+
+    // Fire added start - для включения с клиента
+    public virtual void SetAmbienceWithoutDirty(EntityUid uid, bool value, AmbientSoundComponent? ambience = null)
+    {
+        if (!_query.Resolve(uid, ref ambience, false) || ambience.Enabled == value)
+            return;
+
+        ambience.Enabled = value;
+        QueueUpdate(uid, ambience);
+    }
+
+    public virtual void SetVolumeWithoutDirty(EntityUid uid, float value, AmbientSoundComponent? ambience = null)
+    {
+        if (!_query.Resolve(uid, ref ambience, false) || MathHelper.CloseToPercent(ambience.Volume, value))
+            return;
+
+        ambience.Volume = value;
+        QueueUpdate(uid, ambience);
+    }
+    // Fire added end
 }

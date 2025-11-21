@@ -71,6 +71,11 @@
   id: Screwdriver
   description: Industrial grade torque in a small screwdriving package.
   components:
+  # Fire added start
+  - type: BloodSplatterer
+    probability: 0.2
+    bloodLineProbability: 0.05
+  # Fire added end
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Items/screwdriver_drop.ogg

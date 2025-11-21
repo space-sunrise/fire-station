@@ -728,6 +728,14 @@ public abstract partial class SharedGunSystem : EntitySystem
     }
 }
 
+// Fire edit start - чтобы знать, когда в скромника попали
+public sealed partial class HitScanAttackedEvent(EntityUid? user, EntityUid gun)
+{
+    public readonly EntityUid? User = user;
+    public readonly EntityUid Gun = gun;
+}
+// Fire edit end
+
 /// <summary>
 ///     Raised directed on the gun before firing to see if the shot should go through.
 /// </summary>
