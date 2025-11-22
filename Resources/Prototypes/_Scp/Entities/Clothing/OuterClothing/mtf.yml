@@ -6,6 +6,10 @@
   suffix: MTF
   abstract: true
   components:
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,3,3
   - type: Sprite
     sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_tactical.rsi
   - type: Clothing
@@ -69,6 +73,10 @@
   description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
   suffix: MTF
   components:
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,2,2
   - type: Sprite
     sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_scout.rsi
   - type: Clothing

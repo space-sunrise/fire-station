@@ -1,0 +1,61 @@
+- type: entity
+  id: BaseMtfStorageCrate
+  parent: BaseStorageItem
+  name: equipment crate
+  description: A heavy wooden box. Contains equipment for MTF operatives.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Storage/loadout_kits.rsi
+    state: closed
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/toolbox_drop.ogg
+  - type: Storage
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,16,13
+    storageOpenSound: /Audio/Effects/closetclose.ogg
+    storageCloseSound: /Audio/Effects/closetopen.ogg
+    blacklist:
+      components:
+      - Scp
+      tags:
+      - MTFLoadoutCrate
+  - type: Tag
+    tags:
+    - MTFLoadoutCrate
+  - type: Item
+    size: Ginormous
+  - type: HeldSpeedModifier
+    walkModifier: 0.1
+    sprintModifier: 0.1
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed }
+  - type: Appearance
+
+- type: entity
+  id: MtfStorageCrateMedical
+  parent: BaseMtfStorageCrate
+  name: equipment crate
+  components:
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorTacticalMed
+      - id: ClothingBeltMtfMedical
+      - id: PouchMedical
+  - type: Storage
+    grid:
+    - 0,0,11,3
+  - type: Sprite
+    state: closed_med
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed_med }

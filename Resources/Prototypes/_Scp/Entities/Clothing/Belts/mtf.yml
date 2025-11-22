@@ -4,6 +4,9 @@
   name: tactical belt
   description: A small, lightweight pouch to provide additional storage. The newer G8-A model, while uncomfortable, can also be clipped around the waist.
   components:
+  - type: Item
+    shape:
+    - 0,0,3,3
   - type: Sprite
     sprite: _RMC14/Objects/Clothing/Belt/sparepouch.rsi
   - type: Clothing
@@ -146,11 +149,17 @@
         - SurgeryTool
         - Dropper
         - Medkit
+        - GlassBeaker
+        - ChemDispensable
+        - CentrifugeCompatible
+        - Patch
+        - PatchPack
       components:
         - Hypospray
         - Injector
         - Pill
         - HandLabeler
+        - Defibrillator
 
 - type: entity
   parent: ClothingBeltMtfSparePouch

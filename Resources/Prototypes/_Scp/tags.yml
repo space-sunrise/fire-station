@@ -54,3 +54,6 @@
 
 - type: Tag
   id: Scp173DamageOnCollide
+
+- type: Tag
+  id: MTFLoadoutCrate
