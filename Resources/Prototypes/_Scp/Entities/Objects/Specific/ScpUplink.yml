@@ -1,6 +1,7 @@
 ﻿- type: entity
   parent: [BaseItem, BaseCentcommContraband]
   id: BaseUplinkMTF
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     sprite: _Scp/Objects/Devices/command_tablet.rsi
@@ -13,9 +14,10 @@
   - type: ActivatableUI
     key: enum.StoreUiKey.Key
   - type: Store
+    refundAllowed: false
+    ownerOnly: true
     balance:
-      Bluecrystal: 0
-      Crystallite: 0
+      SupplyPoint: 0
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
   - type: Tag
@@ -28,8 +30,7 @@
   components:
   - type: Store
     balance:
-      Bluecrystal: 20
-      Crystallite: 30
+      SupplyPoint: 20
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
@@ -39,8 +40,7 @@
   components:
   - type: Store
     balance:
-      Bluecrystal: 24
-      Crystallite: 10
+      SupplyPoint: 24
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
@@ -50,20 +50,18 @@
   components:
   - type: Store
     balance:
-      Bluecrystal: 10
-      Crystallite: 10
+      SupplyPoint: 10
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
 - type: entity
-  parent: BaseUplinkMTF
+  parent: [BaseUplinkMTF, StorePresetScpUplinkCommander]
   id: BaseUplinkMTFDebug
   categories: [ Debug ]
   components:
   - type: Store
     balance:
-      Bluecrystal: 999
-      Crystallite: 999
+      SupplyPoint: 999
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
@@ -78,32 +76,27 @@
 #   components:
 #   - type: Store
 #     balance:
-#       Bluecrystal: 20
-#       Crystallite: 20
+#       SupplyPoint: 20
 #     buySuccessSound:
 #       path: /Audio/Effects/Arcade/newgame.ogg
 
 - type: entity
   parent: [BaseUplinkMTF, StorePresetScpUplinkHightCommander]
   id: BaseUplinkRRHLeader
-  categories: [ HideSpawnMenu ]
   components:
   - type: Store
     balance:
-      Bluecrystal: 46
-      Crystallite: 40
+      SupplyPoint: 46
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
 - type: entity
   parent: [BaseUplinkMTF, StorePresetScpUplinkHight]
   id: BaseUplinkRRHSpecialist
-  categories: [ HideSpawnMenu ]
   components:
   - type: Store
     balance:
-      Bluecrystal: 34
-      Crystallite: 20
+      SupplyPoint: 34
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
@@ -118,8 +111,7 @@
 #   components:
 #   - type: Store
 #     balance:
-#       Bluecrystal: 15
-#       Crystallite: 15
+#       SupplyPoint: 15
 #     buySuccessSound:
 #       path: /Audio/Effects/Arcade/newgame.ogg
 
@@ -130,8 +122,7 @@
   components:
   - type: Store
     balance:
-      Bluecrystal: 40
-      Crystallite: 35
+      SupplyPoint: 40
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
@@ -142,7 +133,6 @@
   components:
   - type: Store
     balance:
-      Bluecrystal: 28
-      Crystallite: 17
+      SupplyPoint: 28
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg

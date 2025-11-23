@@ -13,10 +13,9 @@
     - ScpAdditional
     - ScpRecontainment
     currencyWhitelist:
-    - Bluecrystal
-    - Crystallite
+    - SupplyPoint
     balance:
-      Telecrystal: 0
+      SupplyPoint: 0
 
 - type: entity
   id: StorePresetScpUplinkCommander
@@ -34,10 +33,9 @@
     - ScpRecontainment
     - ScpSpecWeapon
     currencyWhitelist:
-    - Bluecrystal
-    - Crystallite
+    - SupplyPoint
     balance:
-      Telecrystal: 0
+      SupplyPoint: 0
 
 - type: entity
   id: StorePresetScpUplinkHight
@@ -54,10 +52,9 @@
     - ScpAdditional
     - ScpRecontainment
     currencyWhitelist:
-    - Bluecrystal
-    - Crystallite
+    - SupplyPoint
     balance:
-      Telecrystal: 0
+      SupplyPoint: 0
 
 - type: entity
   id: StorePresetScpUplinkHightCommander
@@ -75,7 +72,6 @@
     - ScpRecontainment
     - ScpSpecWeapon
     currencyWhitelist:
-    - Bluecrystal
-    - Crystallite
+    - SupplyPoint
     balance:
-      Telecrystal: 0
+      SupplyPoint: 0

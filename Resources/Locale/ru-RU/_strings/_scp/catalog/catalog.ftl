@@ -1,11 +1,15 @@
 scp106-store-category-abilities = Кошмарные способности
 store-currency-display-life-essence = Страдания
+store-currency-display-supplypoint = Очки снабжения
 scp106-shop-phantom-name = { ent-Scp106BecomePhantom }
 scp106-shop-phantom-desc = { ent-Scp106BecomePhantom.desc }
 scp106-shop-phantom-upgrade-name = Сдвиг баланса
 scp106-shop-phantom-upgrade-desc = Давит на разрастающиеся трещины реальности, что позволяет уменьшить время ожидания создания нового фантома
 scp106-shop-blade-name = { ent-Scp106BareBlade }
 scp106-shop-blade-desc = { ent-Scp106BareBlade.desc }
+
+shop-name-unlock = Разблокировать категорию
+shop-desc-unlock = Внимание! При покупке чего-либо в этой категории - остальные предметы будут не доступны к покупке.
 
 shop-name-mp5box = Коробка с МП5
 shop-desc-mp5box = Коробка которая содержит в себе пистолет-пулемёт МП5, а так же пояс с патронами.

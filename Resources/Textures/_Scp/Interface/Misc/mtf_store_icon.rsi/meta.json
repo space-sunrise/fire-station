@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Made by Sunrise",
+  "size": {
+    "x": 128,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "gov-laser-sniper"
+    },
+    {
+      "name": "eg-mg"
+    },
+    {
+      "name": "eg-p"
+    },
+    {
+      "name": "eg-r"
+    },
+    {
+      "name": "mg60"
+    },
+    {
+      "name": "bulldog"
+    },
+    {
+      "name": "cshotgun"
+    },
+    {
+      "name": "cycler"
+    },
+    {
+      "name": "dominator"
+    },
+    {
+      "name": "spearheadblack"
+    },
+    {
+      "name": "sr127"
+    },
+    {
+      "name": "vp78"
+    }
+  ]
+}
+
