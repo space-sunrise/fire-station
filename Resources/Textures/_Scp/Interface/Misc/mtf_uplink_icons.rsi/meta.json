@@ -1,0 +1,53 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "FireStation",
+    "size": {
+        "x": 128,
+        "y": 64
+    },
+    "states": [
+        {
+            "name": "049_protection_implanter"
+        },
+        {
+            "name": "anti_teleportation"
+        },
+        {
+            "name": "Base_Icon"
+        },
+        {
+            "name": "closed_scp_cage"
+        },
+        {
+            "name": "crate_administration"
+        },
+        {
+            "name": "eye_droplets"
+        },
+        {
+            "name": "head_awareness"
+        },
+        {
+            "name": "head_bag_scp_096"
+        },
+        {
+            "name": "helmet_ai_powered"
+        },
+        {
+            "name": "muzzle"
+        },
+        {
+            "name": "shoes_silent"
+        },
+        {
+            "name": "box_amnesiac"
+        },
+        {
+            "name": "amnesiac_spray"
+        },
+        {
+            "name": "shoulder_patches"
+        }
+    ]
+}

@@ -646,8 +646,32 @@
 
 # Дополнительное:
 - type: listing
+  id: ScpUplinkBoxCardboardShoulderPatches
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: shoulder_patches }
+  productEntity: BoxCardboardShoulderPatches
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
+  id: ScpUplinkAmnesiacSpray
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: amnesiac_spray }
+  productEntity: AmnesiacSpray
+  cost:
+    Crystallite: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: ScpUplinkAmnesiacA
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: box_amnesiac }
   productEntity: BoxVialAmnesiacA
   cost:
     Crystallite: 1
@@ -659,7 +683,7 @@
 
 - type: listing
   id: ScpUplinkAmnesiacB
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: box_amnesiac }
   productEntity: BoxVialAmnesiacB
   cost:
     Crystallite: 1
@@ -671,7 +695,7 @@
 
 - type: listing
   id: ScpUplinkAmnesiacC
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: box_amnesiac }
   productEntity: BoxVialAmnesiacC
   cost:
     Crystallite: 2
@@ -683,7 +707,7 @@
 
 - type: listing
   id: ScpUplinkAmnesiacD
-  icon: { sprite: Objects/Storage/boxes.rsi, state: box }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: box_amnesiac }
   productEntity: BoxVialAmnesiacD
   cost:
     Crystallite: 2
@@ -1147,7 +1171,7 @@
 # Восстановление Условий Содержания
 - type: listing
   id: ScpUplinkRecontainmentCircuitsBoards
-  icon: { sprite: _Scp/Structures/Storage/Crates/administration.rsi, state: icon }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: crate_administration }
   productEntity: CrateAdministrationRecontainmentCircuitsBoards
   categories:
   - ScpRecontainment
@@ -1157,7 +1181,7 @@
 
 - type: listing
   id: ScpUplinkCrateAdministrationCrateScpCageScp173
-  icon: { sprite: _Scp/Objects/Misc/scp_cage.rsi, state: base }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: closed_scp_cage }
   productEntity: CrateAdministrationCrateScpCageScp173
   categories:
   - ScpRecontainment
@@ -1167,7 +1191,7 @@
 
 - type: listing
   id: ScpUplinkScp049ProtectionImplanter
-  icon: { sprite: Objects/Specific/Medical/implanter.rsi, state: implanter0 }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: 049_protection_implanter }
   productEntity: Scp049ProtectionImplanter
   categories:
   - ScpRecontainment
@@ -1177,7 +1201,7 @@
 
 - type: listing
   id: ScpUplinkEyeDroplets
-  icon: { sprite: Objects/Consumable/Drinks/patronbottle.rsi, state: icon_empty, scale: 0.4,0.6 }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: eye_droplets, scale: 0.4,0.6 }
   productEntity: EyeDroplets
   categories:
   - ScpRecontainment
@@ -1187,7 +1211,7 @@
 
 - type: listing
   id: ScpUplinkClothingHeadAwareness
-  icon: { sprite: _Scp/Clothing/Head/Helmets/techno.rsi, state: icon }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: head_awareness }
   productEntity: ClothingHeadAwareness
   categories:
   - ScpRecontainment
@@ -1197,7 +1221,7 @@
 
 - type: listing
   id: ScpUplinkClothingShoesSilent
-  icon: { sprite: _Scp/Clothing/Shoes/Boots/silentboots.rsi, state: icon }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: shoes_silent }
   productEntity: ClothingShoesSilent
   categories:
   - ScpRecontainment
@@ -1207,7 +1231,7 @@
 
 - type: listing
   id: ScpUplinkClothingMaskScp939
-  icon: { sprite: Clothing/Mask/muzzle.rsi, state: icon }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: muzzle }
   productEntity: ClothingMaskScp939
   categories:
   - ScpRecontainment
@@ -1217,7 +1241,7 @@
 
 - type: listing
   id: ScpUplinkClothingOuterAntiTeleportation
-  icon: { sprite: Clothing/OuterClothing/Armor/armor_reflec.rsi, state: icon }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: anti_teleportation }
   productEntity: ClothingOuterAntiTeleportation
   categories:
   - ScpRecontainment
@@ -1227,7 +1251,7 @@
 
 - type: listing
   id: ScpUplinkClothingHeadHelmetAiPowered
-  icon: { sprite: _Scp/Clothing/Head/Helmets/aipowered.rsi, state: icon }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: helmet_ai_powered }
   productEntity: ClothingHeadHelmetAiPowered
   categories:
   - ScpRecontainment
@@ -1237,7 +1261,7 @@
 
 - type: listing
   id: ScpUplinkClothingHeadBagScp096
-  icon: { sprite: _Scp/Clothing/Head/Scp096/scp096_bag-icons.rsi, state: icon }
+  icon: { sprite: _Scp/Interface/Misc/mtf_uplink_icons.rsi, state: head_bag_scp_096 }
   productEntity: ClothingHeadBagScp096
   categories:
   - ScpRecontainment

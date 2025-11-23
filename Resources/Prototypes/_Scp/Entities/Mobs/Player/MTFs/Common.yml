@@ -1,4 +1,116 @@
-﻿# ВЕЩИ АПЛИНКА
+﻿# ОДЕЖДА
+- type: entity
+  name: white shoulder patch
+  description: A simple and convenient tool for groups
+  parent: ClothingNeckBase
+  id: ClothingNeckShoulderPatchWhite
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+
+- type: entity
+  name: red shoulder patch
+  description: A simple and convenient tool for groups
+  parent: ClothingNeckShoulderPatchWhite
+  id: ClothingNeckShoulderPatchRed
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    color: "#ff0000"
+  - type: Clothing
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    slots:
+    - neck
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+        color: "#ff0000"
+
+- type: entity
+  name: blue shoulder patch
+  description: A simple and convenient tool for groups
+  parent: ClothingNeckShoulderPatchWhite
+  id: ClothingNeckShoulderPatchBlue
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    color: "#000080"
+  - type: Clothing
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    slots:
+    - neck
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+        color: "#000080"
+
+- type: entity
+  name: green shoulder patch
+  description: A simple and convenient tool for groups
+  parent: ClothingNeckShoulderPatchWhite
+  id: ClothingNeckShoulderPatchGreen
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    color: "#008000"
+  - type: Clothing
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    slots:
+    - neck
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+        color: "#008000"
+
+- type: entity
+  name: yellow shoulder patch
+  description: A simple and convenient tool for groups
+  parent: ClothingNeckShoulderPatchWhite
+  id: ClothingNeckShoulderPatchYellow
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    color: "#ffff00"
+  - type: Clothing
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    slots:
+    - neck
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+        color: "#ffff00"
+
+- type: entity
+  name: box with different patches
+  description: A box with the simplest and most convenient tools for groups
+  parent: BoxCardboard
+  id: BoxCardboardShoulderPatches
+  components:
+  - type: Storage
+    hideStackVisualsWhenClosed: false
+    maxItemSize: Small
+    grid:
+    - 0,0,3,3
+    whitelist:
+      tags:
+      - ClothMade
+      - Recyclable
+      - WhitelistChameleon
+      requireAllTags: True
+      requireAll: True
+  - type: StorageFill
+    contents:
+    - id: ClothingNeckShoulderPatchWhite
+    - id: ClothingNeckShoulderPatchRed
+    - id: ClothingNeckShoulderPatchBlue
+    - id: ClothingNeckShoulderPatchGreen
+    - id: ClothingNeckShoulderPatchYellow
+
+
+
+
+
+# ВЕЩИ АПЛИНКА
 - type: entity
   parent: WeaponPulseCarbine
   id: WeaponPulseCarbineScp
@@ -38,16 +150,15 @@
           amount: 4
 
 - type: entity
-  parent: TrackingImplanter
-  id: TrackingImplanterMTF
-  suffix: tracking
+  parent: BaseImplantOnlyImplanter
+  id: DeathRattleImplanterMTF #TrackingImplanterMTF
   components:
     - type: Implanter
-      implant: TrackingImplantMTF
+      implant: DeathRattleImplantMTF
 
 - type: entity
-  parent: TrackingImplant
-  id: TrackingImplantMTF
+  parent: DeathRattleImplant
+  id: DeathRattleImplantMTF #TrackingImplantMTF
   components:
     - type: RattleOnTrigger
       radioChannel: RegionalAdministration
@@ -58,7 +169,7 @@
   components:
     - type: StorageFill
       contents:
-        - id: TrackingImplanterMTF
+        - id: DeathRattleImplanterMTF
           amount: 6
 
 - type: entity
@@ -146,9 +257,9 @@
   - type: ZombieImmune
   - type: AutoImplant
     implants:
-    - Scp049ProtectionImplant
-    - TrackingImplantMTF
+    - DeathRattleImplantMTF
     - MindShieldImplant
+  - type: Scp049Protection
   - type: TTS
   - type: NoEmotions
   - type: SpeakOnEyeStateChange # переопределение моргания с другими параметрами для охраны и МОГа
@@ -159,6 +270,8 @@
     phraseOnOpen:
     - open-eye-phrase-3
     speakOnlyInScp173Chamber: false
+  - type: Mood
+    minimumSpeedModifier: 0.9
   - type: Fear
     phobias:
     - Exoremophobia
@@ -167,17 +280,17 @@
     fearBasedSpreadAngleModifier:
       Anxiety: 1
       Fear: 1.2
-      Terror: 2
+      Terror: 1.3
     fearBasedGrainStrength:
       None: 0
-      Anxiety: 30
-      Fear: 80
-      Terror: 150
+      Anxiety: 10
+      Fear: 40
+      Terror: 80
     fearBasedVignetteStrength:
       None: 0
-      Anxiety: 20
-      Fear: 30
-      Terror: 60
+      Anxiety: 10
+      Fear: 20
+      Terror: 30
     baseJitterTime: 0
     fallOffChance: 0
 

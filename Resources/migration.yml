@@ -1928,6 +1928,9 @@ FaxMachineCaptain: FaxMachineDirector
 HoloprojectorSecurity: null
 SpawnMobCleanBot: SpawnMobRoomba
 
+TrackingImplanterMTF: DeathRattleImplanterMTF
+TrackingImplantMTF: DeathRattleImplantMTF
+
 ClothingUniformJumpsuitEthicsCommittee: ClothingUniformJumpsuitWithWhiteShirt
 ClothingUniformJumpsuitEthicsCommitteeFormal: ClothingUniformJumpsuitBlackFormal
 ClothingUniformJumpskirtEthicsCommittee: ClothingUniformJumpskirtWithWhiteShirt
