@@ -1,5 +1,5 @@
 ﻿ent-ClothingNeckShoulderPatchWhite = белая повязка на плечо
-    .desc = Простой и удобный инструмент для распределения
+    .desc = Простой и удобный инструмент для распределения на группы
 
 ent-ClothingNeckShoulderPatchRed = красная повязка на плечо
     .desc = { ent-ClothingNeckShoulderPatchWhite.desc }
