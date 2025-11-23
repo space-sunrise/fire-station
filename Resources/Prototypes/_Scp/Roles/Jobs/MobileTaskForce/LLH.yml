@@ -22,21 +22,21 @@
   id: LLHLeaderGear
   equipment:
     jumpsuit: ClothingUniformLLH
-    back: ClothingBackpackLLH
-    shoes: ClothingShoesBootsMagAdv
-    head: ClothingHeadHatCapLeatherLLHLeader
-    mask: ClothingMaskGasLLH
-    eyes: ClothingEyesNVDSec
+    back: MtfTacticalBackpack
+    shoes: ClothingShoesSwat
+    head: ClothingHelmetMtfTacticalNVG
+    mask: ClothingMaskMtfTacticalWhite
+    eyes: ClothingEyesNVDHightMtf
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorHeavyLLH
+    outerClothing: ClothingOuterArmorTacticalOmega
     id: KeyCardMtfLLHLeader
     ears: ClothingHeadsetAltMTFLLH
-    belt: MTFCommanderWebbing
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkLLHLeader
     pocket2: PouchAmmo
   storage:
     back:
-    - BoxMRE
+    - BoxMtfLeaderKit
     - Crowbar
     - CombatKnife
     - HandheldCriminalRecordsMonitorUnpowered
@@ -70,71 +70,71 @@
   id: LLHSpecialistGear
   equipment:
     jumpsuit: ClothingUniformLLH
-    back: ClothingBackpackLLH
-    shoes: ClothingShoesBootsMagAdv
-    head: ClothingHelmetMTF
-    mask: ClothingMaskGasLLH
-    eyes: ClothingEyesNVDSec
+    back: MtfTacticalBackpack
+    shoes: ClothingShoesSwat
+    head: ClothingHelmetMtfTacticalNVG
+    mask: ClothingMaskMtfTacticalWhite
+    eyes: ClothingEyesNVDHightMtf
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorHeavyLLH
+    outerClothing: ClothingOuterArmorTacticalOmega
     id: KeyCardMtfLLHSpecialist
     ears: ClothingHeadsetAltMTFLLH
-    belt: MTFWebbing
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkLLHSpecialist
     pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
+    - BoxMtfBaseKit
     - MobileTaskForcePDA
     - CombatKnife
     belt:
     - Stunbaton
     - Handcuffs
 
-# Кадет
-- type: job
-  id: LLHCadet
-  name: ghost-role-information-mtf-cadet-LLH-name
-  description: ghost-role-information-mtf-cadet-description
-  playTimeTracker: JobLLHCadet
-  setPreference: false
-  startingGear: LLHCadetGear
-  icon: JobIconLLH
-  supervisors: ghost-role-information-mtf-LLH-cadet-supervisors
-  canBeAntag: false
-  overrideConsoleVisibility: false
-  alwaysShowInBanPanel: true
-  accessGroups:
-  - AllComplex
-  special:
-  - !type:AddImplantSpecial
-    implants: [ MindShieldImplant ]
+# # Кадет
+# - type: job
+#   id: LLHCadet
+#   name: ghost-role-information-mtf-cadet-LLH-name
+#   description: ghost-role-information-mtf-cadet-description
+#   playTimeTracker: JobLLHCadet
+#   setPreference: false
+#   startingGear: LLHCadetGear
+#   icon: JobIconLLH
+#   supervisors: ghost-role-information-mtf-LLH-cadet-supervisors
+#   canBeAntag: false
+#   overrideConsoleVisibility: false
+#   alwaysShowInBanPanel: true
+#   accessGroups:
+#   - AllComplex
+#   special:
+#   - !type:AddImplantSpecial
+#     implants: [ MindShieldImplant ]
 
-- type: startingGear
-  id: LLHCadetGear
-  equipment:
-    jumpsuit: ClothingUniformLLH
-    back: ClothingBackpackLLH
-    shoes: ClothingShoesBootsMagAdv
-    head: ClothingHelmetMTF
-    mask: ClothingMaskGasLLH
-    eyes: ClothingEyesNVDSec
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorHeavyLLH
-    id: KeyCardMtfLLHCadet
-    ears: ClothingHeadsetAltMTFLLH
-    belt: MTFWebbing
-    pocket1: BaseUplinkLLH
-    pocket2: PouchAmmo
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    - CombatKnife
-    belt:
-    - Stunbaton
-    - Handcuffs
+# - type: startingGear
+#   id: LLHCadetGear
+#   equipment:
+#     jumpsuit: ClothingUniformLLH
+#     back: MtfTacticalBackpack
+#     shoes: ClothingShoesSwat
+#     head: ClothingHelmetMtfTacticalNVG
+#     mask: ClothingMaskMtfTacticalWhite
+#     eyes: ClothingEyesNVDHightMtf
+#     gloves: ClothingHandsGlovesCombat
+#     outerClothing: ClothingOuterArmorTacticalOmega
+#     id: KeyCardMtfLLHCadet
+#     ears: ClothingHeadsetAltMTFLLH
+#     belt: ClothingBeltMtfSparePouch
+#     pocket1: BaseUplinkLLH
+#     pocket2: PouchAmmo
+#   storage:
+#     back:
+#     - Crowbar
+#     - DoubleEmergencyOxygenTankFilled
+#     - BoxMtfBaseKit
+#     - MobileTaskForcePDA
+#     - CombatKnife
+#     belt:
+#     - Stunbaton
+#     - Handcuffs

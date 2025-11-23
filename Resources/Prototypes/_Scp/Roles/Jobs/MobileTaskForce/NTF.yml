@@ -22,21 +22,21 @@
   id: NTFLeaderGear
   equipment:
     jumpsuit: ClothingUniformNTF
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsNTFFilled
-    head: ClothingHelmetNTF
-    mask: ClothingMaskMTF
+    back: MtfTacticalBackpack
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHelmetMtfTactical
+    mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorNTF
+    outerClothing: ClothingOuterArmorTactical
     id: KeyCardMtfNTFLeader
     ears: ClothingHeadsetAltMTF
-    belt: MTFCommanderWebbing
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFLeader
     pocket2: PouchAmmo
   storage:
     back:
-    - BoxMRE
+    - BoxMtfLeaderKit
     - Crowbar
     - HandheldCriminalRecordsMonitorUnpowered
     - DoubleEmergencyOxygenTankFilled
@@ -71,23 +71,23 @@
   id: NTFSpecialistGear
   equipment:
     jumpsuit: ClothingUniformNTF
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsNTFFilled
-    head: ClothingHelmetNTF
-    mask: ClothingMaskMTF
+    back: MtfTacticalBackpack
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHelmetMtfTactical
+    mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorNTF
+    outerClothing: ClothingOuterArmorTactical
     id: KeyCardMtfNTFSpecialist
     ears: ClothingHeadsetAltMTF
-    belt: MTFWebbing
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFSpecialist
     pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
+    - BoxMtfBaseKit
     - MobileTaskForcePDA
     belt:
     - Stunbaton
@@ -118,23 +118,23 @@
   id: NTFCadetGear
   equipment:
     jumpsuit: ClothingUniformNTF
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsNTFFilled
-    head: ClothingHelmetNTF
-    mask: ClothingMaskMTF
+    back: MtfTacticalBackpack
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHelmetMtfTactical
+    mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorNTF
+    outerClothing: ClothingOuterArmorScout
     id: KeyCardMtfNTFCadet
     ears: ClothingHeadsetAltMTF
-    belt: MTFWebbing
+    belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFCadet
     pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
     - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
+    - BoxMtfBaseKit
     - MobileTaskForcePDA
     belt:
     - Stunbaton

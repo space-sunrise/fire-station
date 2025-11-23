@@ -1,0 +1,49 @@
+#Med
+- type: entity
+  parent: [Pouch, ContentsExplosionResistanceBase]
+  id: PouchMedical
+  name: medical pouch
+  description: It can carry small medical supplies.
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Clothing/Pouches/wy_medkit.rsi
+  - type: Storage
+    maxItemSize: Normal
+    grid:
+    - 0,0,5,1
+    whitelist:
+      tags:
+        - Bottle
+        - Spray
+        - Brutepack
+        - Bloodpack
+        - Gauze
+        - Ointment
+        - CigPack
+        - PillCanister
+        - Radio
+        - DiscreteHealthAnalyzer
+        - Dropper
+        - CentrifugeCompatible
+        - Patch
+      components:
+        - Hypospray
+        - Injector
+        - Pill
+  - type: ExplosionResistance
+    damageCoefficient: 0.01
+    worn: false
+
+#Drop
+- type: entity
+  parent: [Pouch]
+  id: PouchDrop
+  name: pouch
+  description: A general-purpose pouch used to carry a variety of differently sized items.
+  components:
+  - type: Sprite
+    sprite: _RMC14/Objects/Clothing/Pouches/large_drop.rsi
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,2,2

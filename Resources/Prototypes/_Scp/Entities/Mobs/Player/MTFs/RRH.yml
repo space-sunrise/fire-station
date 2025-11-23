@@ -49,29 +49,29 @@
   - type: Loadout
     prototypes: [ RRHSpecialistGear ]
 
-- type: entity
-  id: RandomHumanoidSpawnerRRHCadet
-  components:
-  - type: Sprite
-    sprite: Markers/jobs.rsi
-    state: ertsecurityeva
-  - type: RandomHumanoidSpawner
-    settings: RRHCadet
+# - type: entity
+#   id: RandomHumanoidSpawnerRRHCadet
+#   components:
+#   - type: Sprite
+#     sprite: Markers/jobs.rsi
+#     state: ertsecurityeva
+#   - type: RandomHumanoidSpawner
+#     settings: RRHCadet
 
-- type: randomHumanoidSettings
-  id: RRHCadet
-  parent: CommonMTFOperative
-  components:
-  - type: GhostRole
-    name: ghost-role-information-mtf-cadet-RRH-name
-    description: ghost-role-information-mtf-cadet-description
-    rules: ghost-role-information-nonantagonist-rules
-    raffle:
-      settings: short
-    job: RRHCadet
-  - type: Loadout
-    prototypes: [ RRHCadetGear ]
-  - type: NoEmotions
+# - type: randomHumanoidSettings
+#   id: RRHCadet
+#   parent: CommonMTFOperative
+#   components:
+#   - type: GhostRole
+#     name: ghost-role-information-mtf-cadet-RRH-name
+#     description: ghost-role-information-mtf-cadet-description
+#     rules: ghost-role-information-nonantagonist-rules
+#     raffle:
+#       settings: short
+#     job: RRHCadet
+#   - type: Loadout
+#     prototypes: [ RRHCadetGear ]
+#   - type: NoEmotions
 
 # Спавнер отряда
 - type: entity
@@ -89,10 +89,12 @@
     table: !type:AllSelector
       children:
       - id: RandomHumanoidSpawnerRRHLeader
-      - id: RandomHumanoidSpawnerRRHSpecialist # 2
+      - id: RandomHumanoidSpawnerRRHSpecialist # 4
       - id: RandomHumanoidSpawnerRRHSpecialist
-      - id: RandomHumanoidSpawnerRRHCadet # 2
-      - id: RandomHumanoidSpawnerRRHCadet
+      - id: RandomHumanoidSpawnerRRHSpecialist
+      - id: RandomHumanoidSpawnerRRHSpecialist
+      # - id: RandomHumanoidSpawnerRRHCadet # 2
+      # - id: RandomHumanoidSpawnerRRHCadet
     offset: 1
 
 # Спавнер, но юзается по кнопке

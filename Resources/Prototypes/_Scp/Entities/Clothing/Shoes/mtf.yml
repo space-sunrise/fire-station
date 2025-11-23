@@ -16,3 +16,26 @@
     sprite: _Scp/Clothing/Shoes/Boots/MTF/ntf.rsi
   - type: Clothing
     sprite: _Scp/Clothing/Shoes/Boots/MTF/ntf.rsi
+
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: ClothingShoesRRHFilled
+  name: special forces boots
+  description: Heavily modified special unit boots. Quiet check, non-slip sole, scabbard and convenience.
+  suffix: MTF | Alpha-1
+  components:
+  - type: Sprite
+    sprite: Clothing/Shoes/Specific/swat.rsi
+  - type: Clothing
+    sprite: Clothing/Shoes/Specific/swat.rsi
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.35
+  - type: ClothingAddComponents
+    components:
+    - type: Scp939Protection
+  - type: FootstepModifier
+    footstepSoundCollection: null
+  - type: ContainerFill
+    containers:
+      item:
+      - CombatKnife
