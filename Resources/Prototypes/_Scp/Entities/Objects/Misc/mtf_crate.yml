@@ -104,25 +104,11 @@
           True: { state: open }
           False: { state: closed_pistol }
 
-# Коробки
-- type: entity
-  id: MtfStorageCrateMedical
-  parent: BaseMtfStorageCrateMedical
-  # categories: [ HideSpawnMenu ]
-  components:
-  - type: Storage
-    grid:
-    - 0,0,11,3
-  - type: StorageFill
-    contents:
-      - id: ClothingOuterArmorTacticalMed
-      - id: ClothingBeltMtfMedical
-      - id: PouchMedical
-
+# Коробки Оружия
 - type: entity
   parent: BaseMtfStorageCrateSpecWeapon
   id: MtfStorageCrateMachineGunMG60
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -135,7 +121,7 @@
 - type: entity
   parent: BaseMtfStorageCrateSpecWeapon
   id: MtfStorageCrateGrenadeLauncherGL70
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -149,7 +135,7 @@
 - type: entity
   parent: BaseMtfStorageCrateSpecWeapon
   id: MtfStorageCrateRifleBauer127
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -163,7 +149,7 @@
 - type: entity
   parent: BaseMtfStorageCrateWeapon
   id: MtfStorageCrateSubMachineGunMP5
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -176,7 +162,7 @@
 - type: entity
   parent: BaseMtfStorageCrateWeapon
   id: MtfStorageCrateSubMachineGunP90
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -189,7 +175,7 @@
 - type: entity
   parent: BaseMtfStorageCrateWeapon
   id: MtfStorageCrateRifleG36
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -203,7 +189,7 @@
 - type: entity
   parent: BaseMtfStorageCrateWeapon
   id: MtfStorageCrateRifleAR18
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -217,7 +203,7 @@
 - type: entity
   parent: BaseMtfStorageCrateWeapon
   id: MtfStorageCrateShotgunCombat
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -231,7 +217,7 @@
 - type: entity
   parent: BaseMtfStorageCrateWeapon
   id: MtfStorageCrateShotgunBulldog
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -245,7 +231,7 @@
 - type: entity
   parent: BaseMtfStorageCrateWeapon
   id: MtfStorageCrateRifleBR64
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -255,11 +241,25 @@
     contents:
       - id: WeaponRifleBR64
       - id: ClothingBeltMtfAmmoBR64
-      
+
+- type: entity
+  parent: BaseMtfStorageCrateWeapon
+  id: MtfStorageCrateShotgunCycler
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,8,0
+    - 0,0,3,3
+  - type: StorageFill
+    contents:
+      - id: WeaponShotgunCycler
+      - id: ClothingBeltMtfAmmoShellShotgun
+
 - type: entity
   parent: BaseMtfStorageCrateSmallPistol
   id: MtfStorageCratePistolACP14
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -270,11 +270,11 @@
       - id: MagazineACP14
         amount: 3
       - id: MagazineBoxPistol40SP
-      
+
 - type: entity
   parent: BaseMtfStorageCrateSmallPistol
   id: MtfStorageCratePistolG22
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -285,11 +285,11 @@
       - id: MagazineGlock22
         amount: 3
       - id: MagazineBoxPistolSP
-      
+
 - type: entity
   parent: BaseMtfStorageCrateSmallPistol
   id: MtfStorageCratePistolVP78
-  # categories: [ HideSpawnMenu ]
+  categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
@@ -300,3 +300,33 @@
       - id: MagazinePistol40FMJ
         amount: 3
       - id: MagazineBoxPistol40FMJ
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallPistol
+  id: MtfStorageCrateRevolverSpearheadBlack
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,5,1
+  - type: StorageFill
+    contents:
+      - id: WeaponRevolverSpearheadBlack
+      - id: SpeedLoaderMagnumSP
+        amount: 3
+      - id: MagazineBoxMagnumSP
+
+# Коробки экипировки
+- type: entity
+  id: MtfStorageCrateMedical
+  parent: BaseMtfStorageCrateMedical
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,11,3
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorTacticalMed
+      - id: ClothingBeltMtfMedical
+      - id: PouchMedical

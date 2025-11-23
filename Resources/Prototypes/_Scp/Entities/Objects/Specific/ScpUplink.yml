@@ -1,13 +1,11 @@
 ﻿- type: entity
-  parent: [BaseItem, StorePresetScpUplink, BaseCentcommContraband]
+  parent: [BaseItem, BaseCentcommContraband]
   id: BaseUplinkMTF
   components:
   - type: Sprite
-    sprite: _Sunrise/Objects/Devices/nt_uplink.rsi
+    sprite: _Scp/Objects/Devices/command_tablet.rsi
     layers:
     - state: icon
-    - state: active
-      shader: unshaded
   - type: UserInterface
     interfaces:
       enum.StoreUiKey.Key:
@@ -25,7 +23,7 @@
     - NTUplink
 
 - type: entity
-  parent: BaseUplinkMTF
+  parent: [BaseUplinkMTF, StorePresetScpUplinkCommander]
   id: BaseUplinkMTFLeader
   components:
   - type: Store
@@ -36,7 +34,7 @@
       path: /Audio/Effects/Arcade/newgame.ogg
 
 - type: entity
-  parent: BaseUplinkMTF
+  parent: [BaseUplinkMTF, StorePresetScpUplink]
   id: BaseUplinkMTFSpecialist
   components:
   - type: Store
@@ -47,7 +45,7 @@
       path: /Audio/Effects/Arcade/newgame.ogg
 
 - type: entity
-  parent: BaseUplinkMTF
+  parent: [BaseUplinkMTF, StorePresetScpUplink]
   id: BaseUplinkMTFCadet
   components:
   - type: Store
@@ -73,20 +71,20 @@
 
 
 #---------------------Аплинк/Визионер для Альфа-1
-- type: entity
-  parent: BaseUplinkMTF
-  id: BaseUplinkRRH
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Store
-    balance:
-      Bluecrystal: 20
-      Crystallite: 20
-    buySuccessSound:
-      path: /Audio/Effects/Arcade/newgame.ogg
+# - type: entity
+#   parent: [BaseUplinkMTF]
+#   id: BaseUplinkRRH
+#   categories: [ HideSpawnMenu ]
+#   components:
+#   - type: Store
+#     balance:
+#       Bluecrystal: 20
+#       Crystallite: 20
+#     buySuccessSound:
+#       path: /Audio/Effects/Arcade/newgame.ogg
 
 - type: entity
-  parent: BaseUplinkRRH
+  parent: [BaseUplinkMTF, StorePresetScpUplinkHightCommander]
   id: BaseUplinkRRHLeader
   categories: [ HideSpawnMenu ]
   components:
@@ -98,7 +96,7 @@
       path: /Audio/Effects/Arcade/newgame.ogg
 
 - type: entity
-  parent: BaseUplinkRRH
+  parent: [BaseUplinkMTF, StorePresetScpUplinkHight]
   id: BaseUplinkRRHSpecialist
   categories: [ HideSpawnMenu ]
   components:
@@ -113,20 +111,20 @@
 
 
 #---------------------Аплинк/Визионер для Омега-1
-- type: entity
-  parent: BaseUplinkMTF
-  id: BaseUplinkLLH
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Store
-    balance:
-      Bluecrystal: 15
-      Crystallite: 15
-    buySuccessSound:
-      path: /Audio/Effects/Arcade/newgame.ogg
+# - type: entity
+#   parent: [BaseUplinkMTF]
+#   id: BaseUplinkLLH
+#   categories: [ HideSpawnMenu ]
+#   components:
+#   - type: Store
+#     balance:
+#       Bluecrystal: 15
+#       Crystallite: 15
+#     buySuccessSound:
+#       path: /Audio/Effects/Arcade/newgame.ogg
 
 - type: entity
-  parent: BaseUplinkLLH
+  parent: [BaseUplinkMTF, StorePresetScpUplinkHightCommander]
   id: BaseUplinkLLHLeader
   categories: [ HideSpawnMenu ]
   components:
@@ -138,7 +136,7 @@
       path: /Audio/Effects/Arcade/newgame.ogg
 
 - type: entity
-  parent: BaseUplinkLLH
+  parent: [BaseUplinkMTF, StorePresetScpUplinkHight]
   id: BaseUplinkLLHSpecialist
   categories: [ HideSpawnMenu ]
   components:

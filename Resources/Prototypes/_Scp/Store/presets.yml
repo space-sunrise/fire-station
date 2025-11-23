@@ -5,19 +5,75 @@
   - type: Store
     name: store-preset-name-ScpUplink
     categories:
-    - ScpAutoGun
-    - ScpLasers
+    - ScpKitStart
+    - ScpEquipment
+    - ScpPrimaryArms
     - ScpPistols
     - ScpAmmo
-    - ScpMedicine
     - ScpAdditional
-    - ScpExplosive
-    - ScpMechs
-    - ScpSanitary
-    - ScpEngineering
-    #- NTCBURN
-    - ScpEquipment
     - ScpRecontainment
+    currencyWhitelist:
+    - Bluecrystal
+    - Crystallite
+    balance:
+      Telecrystal: 0
+
+- type: entity
+  id: StorePresetScpUplinkCommander
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpKitStart
+    - ScpEquipment
+    - ScpPrimaryArms
+    - ScpPistols
+    - ScpAmmo
+    - ScpAdditional
+    - ScpRecontainment
+    - ScpSpecWeapon
+    currencyWhitelist:
+    - Bluecrystal
+    - Crystallite
+    balance:
+      Telecrystal: 0
+
+- type: entity
+  id: StorePresetScpUplinkHight
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpKitStart
+    - ScpEquipment
+    - ScpPrimaryArmsElite
+    - ScpPistolsElite
+    - ScpAmmo
+    - ScpAdditional
+    - ScpRecontainment
+    currencyWhitelist:
+    - Bluecrystal
+    - Crystallite
+    balance:
+      Telecrystal: 0
+
+- type: entity
+  id: StorePresetScpUplinkHightCommander
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpKitStart
+    - ScpEquipment
+    - ScpPrimaryArmsElite
+    - ScpPistolsElite
+    - ScpAmmo
+    - ScpAdditional
+    - ScpRecontainment
+    - ScpSpecWeapon
     currencyWhitelist:
     - Bluecrystal
     - Crystallite

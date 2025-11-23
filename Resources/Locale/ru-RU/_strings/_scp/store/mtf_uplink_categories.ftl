@@ -1,2 +1,5 @@
-store-preset-name-ScpUplink = Визионер/Арсенал
+store-preset-name-ScpUplink = Планшет заказа снаряжения
 store-category-scprecontainment = Восстановление У.С.
+store-category-scpkitstart = Готовые наборы
+store-category-scpprimaryarms = Основное вооружение
+store-category-scpspecweapon = Специализированное вооружение
