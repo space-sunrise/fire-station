@@ -20,9 +20,10 @@
     - id: DrinkMREFlask
     - id: FoodSnackNutribrick
     - id: FireExtinguisherMini
-    - id: MedipenCombatInjector
-    - id: AutoMenderBruteFilled
-    - id: AutoMenderBurnFilled
+    - id: CombatMedipen
+      amount: 2
+    - id: Tourniquet
+      amount: 2
     - id: HandHeldMassScanner
     - id: Telebaton
     - id: FoodTinMRE
@@ -48,9 +49,10 @@
     - id: PinpointerUniversal
     - id: HandHeldMassScanner
     - id: DoubleEmergencyOxygenTankFilled
-    - id: MedipenCombatInjector
-    - id: AutoMenderBruteFilled
-    - id: AutoMenderBurnFilled
+    - id: CombatMedipen
+      amount: 2
+    - id: Tourniquet
+      amount: 2
     - id: FoodTinMRE
     - id: FoodSnackMaysonEnergy
     - id: DrinkMREFlask

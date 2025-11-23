@@ -25,7 +25,6 @@
   - type: Clothing
     sprite: _RMC14/Objects/Clothing/Belt/construction.rsi
   - type: Storage
-    defaultStorageOrientation: Horizontal
     grid:
     - 0,0,9,1
     whitelist:
@@ -160,6 +159,7 @@
         - Pill
         - HandLabeler
         - Defibrillator
+        - Healing
 
 - type: entity
   parent: ClothingBeltMtfSparePouch
