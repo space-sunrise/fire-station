@@ -78,43 +78,37 @@
   suffix: Amnesiac A
   components:
   - type: AccessReader
-    access: [ [ "Administration" ] ]
+    access: [ [ "Medical" ], [ "Security" ] ]
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacA
         amount: 3
 
 - type: entity
-  parent: BoxVialScpBaseSecure
+  parent: BoxVialAmnesiacA
   id: BoxVialAmnesiacB
   suffix: Amnesiac B
   components:
-  - type: AccessReader
-    access: [ [ "Administration" ] ]
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacB
         amount: 3
 
 - type: entity
-  parent: BoxVialScpBaseSecure
+  parent: BoxVialAmnesiacA
   id: BoxVialAmnesiacC
   suffix: Amnesiac C
   components:
-  - type: AccessReader
-    access: [ [ "Administration" ] ]
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacC
         amount: 3
 
 - type: entity
-  parent: BoxVialScpBase
+  parent: BoxVialAmnesiacA
   id: BoxVialAmnesiacD
   suffix: Amnesiac D
   components:
-  - type: AccessReader
-    access: [ [ "Administration" ] ]
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacD
