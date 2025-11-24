@@ -55,6 +55,20 @@
 
 - type: entity
   parent: BaseMtfStorageCrate
+  id: BaseMtfStorageCrateArmor
+  abstract: true
+  components:
+  - type: Sprite
+    state: closed_armor
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed_armor }
+
+- type: entity
+  parent: BaseMtfStorageCrate
   id: BaseMtfStorageCrateSpecWeapon
   abstract: true
   components:
@@ -316,17 +330,88 @@
         amount: 3
       - id: MagazineBoxMagnumSP
 
-# Коробки экипировки
+# Коробки экипировки Э-11
 - type: entity
-  id: MtfStorageCrateMedical
+  id: MtfStorageCrateMedicalNtf
   parent: BaseMtfStorageCrateMedical
   categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
     - 0,0,11,3
+    - 0,3,7,7
   - type: StorageFill
     contents:
       - id: ClothingOuterArmorTacticalMed
-      - id: ClothingBeltMtfMedical
+      - id: MtfTacticalBackpackMedFilled
+      - id: ClothingBeltMtfMedicalFilledMedic
       - id: PouchMedical
+      - id: PouchAmmo
+
+- type: entity
+  id: MtfStorageCrateMedicalScoutNtf
+  parent: BaseMtfStorageCrateMedical
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,7,7
+    - 8,0,10,2
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorScout
+      - id: MtfTacticalBackpackMedFilled
+      - id: ClothingBeltMtfMedicalFilledMedic
+      - id: PouchMedical
+      - id: PouchAmmo
+
+- type: entity
+  id: MtfStorageCrateArmorScoutNtf
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,7,7
+    - 8,0,10,2
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorScout
+      - id: MtfTacticalBackpackFilled
+      - id: ClothingBeltMtfSparePouch
+      - id: PouchDrop
+      - id: PouchAmmo
+
+- type: entity
+  id: MtfStorageCrateArmorNtf
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,11,3
+    - 0,3,7,7
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorTactical
+      - id: MtfTacticalBackpackFilled
+      - id: ClothingBeltMtfSparePouch
+      - id: PouchDrop
+      - id: PouchAmmo
+
+- type: entity
+  id: MtfStorageCrateArmorMediumNtf
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,11,3
+    - 0,3,7,7
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorMedium
+      - id: MtfTacticalBackpackFilled
+      - id: ClothingBeltMtfSparePouch
+      - id: PouchDrop
+      - id: PouchAmmo

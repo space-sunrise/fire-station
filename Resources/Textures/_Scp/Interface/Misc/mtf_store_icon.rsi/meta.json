@@ -32,7 +32,7 @@
       "name": "cycler"
     },
     {
-      "name": "dominator"
+      "name": "taser"
     },
     {
       "name": "spearheadblack"
@@ -42,6 +42,39 @@
     },
     {
       "name": "vp78"
+    },
+    {
+      "name": "ntf_scout_armor"
+    },
+    {
+      "name": "ntf_base_armor"
+    },
+    {
+      "name": "ntf_medium_armor"
+    },
+    {
+      "name": "ntf_med_base_armor"
+    },
+    {
+      "name": "ntf_med_scout_armor"
+    },
+    {
+      "name": "construction_belt_filled"
+    },
+    {
+      "name": "utility_belt_filled"
+    },
+    {
+      "name": "granage_belt_filled"
+    },
+    {
+      "name": "security_belt_filled"
+    },
+    {
+      "name": "med_medic_belt_filled"
+    },
+    {
+      "name": "med_operative_belt_filled"
     }
   ]
 }

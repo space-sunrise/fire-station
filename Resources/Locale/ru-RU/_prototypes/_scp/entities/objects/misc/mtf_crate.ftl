@@ -1,15 +1,23 @@
 ent-BaseMtfStorageCrate = ящик со снаряжением
     .desc = Тяжелый деревянный ящик. В нем находится снаряжение для бойцов МОГ.
-ent-BaseMtfStorageCrateMedical = ящик с медицинским снаряжением
-    .desc = { ent-BaseMtfStorageCrate.desc }
 ent-BaseMtfStorageCrateSpecWeapon = ящик с тяжёлым вооружением
     .desc = { ent-BaseMtfStorageCrate.desc }
 ent-BaseMtfStorageCrateWeapon = ящик с вооружением
     .desc = { ent-BaseMtfStorageCrate.desc }
 ent-BaseMtfStorageCrateSmallPistol = ящик с пистолетом
     .desc = { ent-BaseMtfStorageCrate.desc }
-ent-MtfStorageCrateMedical = { ent-BaseMtfStorageCrateMedical }
+
+ent-MtfStorageCrateMedicalNtf = ящик с медицинским снаряжением
     .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateMedicalScoutNtf = ящик с лёгким медицинским снаряжением
+    .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateArmorScoutNtf = ящик с лёгким снаряжением
+    .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateArmorNtf = { ent-BaseMtfStorageCrate }
+    .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateArmorMediumNtf = ящик с тяжёлым снаряжением
+    .desc = { ent-BaseMtfStorageCrate.desc }
+
 ent-MtfStorageCrateMachineGunMG60 = { ent-BaseMtfStorageCrateSpecWeapon }
     .desc = { ent-BaseMtfStorageCrate.desc }
 ent-MtfStorageCrateGrenadeLauncherGL70 = { ent-BaseMtfStorageCrateSpecWeapon }

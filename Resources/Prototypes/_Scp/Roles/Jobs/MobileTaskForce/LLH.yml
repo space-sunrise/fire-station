@@ -32,20 +32,14 @@
     id: KeyCardMtfLLHLeader
     ears: ClothingHeadsetAltMTFLLH
     belt: ClothingBeltMtfSparePouch
-    pocket1: BaseUplinkLLHLeader
-    pocket2: PouchAmmo
+    pocket1: BaseUplinkHightLeader
+    pocket2: MobileTaskForcePDA
   storage:
     back:
     - BoxMtfLeaderKit
     - Crowbar
     - CombatKnife
-    - HandheldCriminalRecordsMonitorUnpowered
-    - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
 
 # Специалист
 - type: job
@@ -80,18 +74,13 @@
     id: KeyCardMtfLLHSpecialist
     ears: ClothingHeadsetAltMTFLLH
     belt: ClothingBeltMtfSparePouch
-    pocket1: BaseUplinkLLHSpecialist
-    pocket2: PouchAmmo
+    pocket1: BaseUplinkHightSpecialist
+    pocket2: MobileTaskForcePDA
   storage:
     back:
     - Crowbar
-    - DoubleEmergencyOxygenTankFilled
     - BoxMtfBaseKit
-    - MobileTaskForcePDA
     - CombatKnife
-    belt:
-    - Stunbaton
-    - Handcuffs
 
 # # Кадет
 # - type: job
@@ -126,7 +115,7 @@
 #     id: KeyCardMtfLLHCadet
 #     ears: ClothingHeadsetAltMTFLLH
 #     belt: ClothingBeltMtfSparePouch
-#     pocket1: BaseUplinkLLH
+#     pocket1: BaseUplinkHightSpecialist
 #     pocket2: PouchAmmo
 #   storage:
 #     back:

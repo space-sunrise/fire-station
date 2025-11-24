@@ -37,6 +37,46 @@
     balance:
       SupplyPoint: 0
 
+# Эпсилон-11
+- type: entity
+  id: StorePresetScpUplinkNtf
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpKitStart
+    - ScpEquipment
+    - ScpPrimaryArms
+    - ScpPistols
+    - ScpAmmo
+    - ScpAdditional
+    - ScpRecontainment
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
+- type: entity
+  id: StorePresetScpUplinkNtfCommander
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpEquipment
+    - ScpPrimaryArms
+    - ScpPistols
+    - ScpAmmo
+    - ScpAdditional
+    - ScpRecontainment
+    - ScpSpecWeapon
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
+# Альфа-1 и Омега-1
 - type: entity
   id: StorePresetScpUplinkHight
   abstract: true

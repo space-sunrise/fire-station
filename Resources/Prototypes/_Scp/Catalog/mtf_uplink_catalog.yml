@@ -1,36 +1,285 @@
 ﻿# Заготовленные наборы
-# - type: listing
-#   id: ScpUplink.НАЗВАНИЕЭНТИТИ
-#   productEntity: ЭНТИТИ
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mp5 }
-#   categories:
-#   - ScpKitStart
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 1
+- type: listing
+  id: ScpUplinkMtfUnlockScpKitStart
+  name: shop-name-unlock
+  description: shop-desc-unlock
+  icon: { sprite: Interface/Actions/actions_ai.rsi, state: bolt_door }
+  categories:
+  - ScpKitStart
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+  - !type:BuyerJobCondition
+    whitelist:
+    - NTFSpecialist
+    - NTFCadet
 
+# Эпсилон-11
+- type: listing
+  id: ScpUplinkMtfStorageCrateMedicalNtf
+  productEntity: MtfStorageCrateMedicalNtf
+  name: shop-name-medicalntf
+  description: shop-desc-medicalntf
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: ntf_med_base_armor }
+  categories:
+  - ScpKitStart
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateMedicalNtf
+    - ScpUplinkMtfStorageCrateMedicalScoutNtf
+    - ScpUplinkMtfStorageCrateArmorScoutNtf
+    - ScpUplinkMtfStorageCrateArmorNtf
+    - ScpUplinkMtfStorageCrateArmorMediumNtf
+    whitelist:
+    - ScpUplinkMtfUnlockScpKitStart
+  - !type:BuyerJobCondition
+    whitelist:
+    - NTFSpecialist
+    - NTFCadet
 
+- type: listing
+  id: ScpUplinkMtfStorageCrateMedicalScoutNtf
+  productEntity: MtfStorageCrateMedicalScoutNtf
+  name: shop-name-medicalscoutntf
+  description: shop-desc-medicalscoutntf
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: ntf_med_scout_armor }
+  categories:
+  - ScpKitStart
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateMedicalNtf
+    - ScpUplinkMtfStorageCrateMedicalScoutNtf
+    - ScpUplinkMtfStorageCrateArmorScoutNtf
+    - ScpUplinkMtfStorageCrateArmorNtf
+    - ScpUplinkMtfStorageCrateArmorMediumNtf
+    whitelist:
+    - ScpUplinkMtfUnlockScpKitStart
+  - !type:BuyerJobCondition
+    whitelist:
+    - NTFSpecialist
+    - NTFCadet
 
+- type: listing
+  id: ScpUplinkMtfStorageCrateArmorScoutNtf
+  productEntity: MtfStorageCrateArmorScoutNtf
+  name: shop-name-armorscoutntf
+  description: shop-desc-armorscoutntf
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: ntf_scout_armor }
+  categories:
+  - ScpKitStart
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateMedicalNtf
+    - ScpUplinkMtfStorageCrateMedicalScoutNtf
+    - ScpUplinkMtfStorageCrateArmorScoutNtf
+    - ScpUplinkMtfStorageCrateArmorNtf
+    - ScpUplinkMtfStorageCrateArmorMediumNtf
+    whitelist:
+    - ScpUplinkMtfUnlockScpKitStart
+  - !type:BuyerJobCondition
+    whitelist:
+    - NTFSpecialist
+    - NTFCadet
 
+- type: listing
+  id: ScpUplinkMtfStorageCrateArmorNtf
+  productEntity: MtfStorageCrateArmorNtf
+  name: shop-name-armorntf
+  description: shop-desc-armorntf
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: ntf_base_armor }
+  categories:
+  - ScpKitStart
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateMedicalNtf
+    - ScpUplinkMtfStorageCrateMedicalScoutNtf
+    - ScpUplinkMtfStorageCrateArmorScoutNtf
+    - ScpUplinkMtfStorageCrateArmorNtf
+    - ScpUplinkMtfStorageCrateArmorMediumNtf
+    whitelist:
+    - ScpUplinkMtfUnlockScpKitStart
+  - !type:BuyerJobCondition
+    whitelist:
+    - NTFSpecialist
+    - NTFCadet
 
-
-
-
-
-
-
-
+- type: listing
+  id: ScpUplinkMtfStorageCrateArmorMediumNtf
+  productEntity: MtfStorageCrateArmorMediumNtf
+  name: shop-name-armormediumntf
+  description: shop-desc-armormediumntf
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: ntf_medium_armor }
+  categories:
+  - ScpKitStart
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateMedicalNtf
+    - ScpUplinkMtfStorageCrateMedicalScoutNtf
+    - ScpUplinkMtfStorageCrateArmorScoutNtf
+    - ScpUplinkMtfStorageCrateArmorNtf
+    - ScpUplinkMtfStorageCrateArmorMediumNtf
+    whitelist:
+    - ScpUplinkMtfUnlockScpKitStart
+  - !type:BuyerJobCondition
+    whitelist:
+    - NTFSpecialist
+    - NTFCadet
 
 # Экипировка
-# - type: listing
-#   id: ScpUplink.НАЗВАНИЕЭНТИТИ
-#   productEntity: ЭНТИТИ
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mp5 }
-#   categories:
-#   - ScpEquipment
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 1
+- type: listing
+  id: ScpUplinkMtfUnlockScpEquipment
+  name: shop-name-unlock
+  description: shop-desc-unlock
+  icon: { sprite: Interface/Actions/actions_ai.rsi, state: bolt_door }
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkClothingBeltMtfSecurityFilled
+  productEntity: ClothingBeltMtfSecurityFilled
+  name: shop-name-belt-mtf-security
+  description: shop-desc-belt-mtf-security
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: security_belt_filled }
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkClothingBeltMtfSecurityFilled
+    - ScpUplinkClothingBeltMtfGrenadeFilled
+    - ScpUplinkClothingBeltMtfConstructionFilled
+    - ScpUplinkClothingBeltMtfUtilityFilled
+    - ScpUplinkClothingBeltMtfMedicalFilledOperative
+    - ScpUplinkClothingBeltMtfMedicalFilledMedic
+    whitelist:
+    - ScpUplinkMtfUnlockScpEquipment
+
+- type: listing
+  id: ScpUplinkClothingBeltMtfGrenadeFilled
+  productEntity: ClothingBeltMtfGrenadeFilled
+  name: shop-name-belt-mtf-grenade
+  description: shop-desc-belt-mtf-grenade
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: granage_belt_filled }
+  cost:
+    SupplyPoint: 5
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkClothingBeltMtfSecurityFilled
+    - ScpUplinkClothingBeltMtfGrenadeFilled
+    - ScpUplinkClothingBeltMtfConstructionFilled
+    - ScpUplinkClothingBeltMtfUtilityFilled
+    - ScpUplinkClothingBeltMtfMedicalFilledOperative
+    - ScpUplinkClothingBeltMtfMedicalFilledMedic
+    whitelist:
+    - ScpUplinkMtfUnlockScpEquipment
+
+- type: listing
+  id: ScpUplinkClothingBeltMtfConstructionFilled
+  productEntity: ClothingBeltMtfConstructionFilled
+  name: shop-name-belt-mtf-construction
+  description: shop-desc-belt-mtf-construction
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: construction_belt_filled }
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkClothingBeltMtfSecurityFilled
+    - ScpUplinkClothingBeltMtfGrenadeFilled
+    - ScpUplinkClothingBeltMtfConstructionFilled
+    - ScpUplinkClothingBeltMtfUtilityFilled
+    - ScpUplinkClothingBeltMtfMedicalFilledOperative
+    - ScpUplinkClothingBeltMtfMedicalFilledMedic
+    whitelist:
+    - ScpUplinkMtfUnlockScpEquipment
+
+- type: listing
+  id: ScpUplinkClothingBeltMtfUtilityFilled
+  productEntity: ClothingBeltMtfUtilityFilled
+  name: shop-name-belt-mtf-utility
+  description: shop-desc-belt-mtf-utility
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: utility_belt_filled }
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkClothingBeltMtfSecurityFilled
+    - ScpUplinkClothingBeltMtfGrenadeFilled
+    - ScpUplinkClothingBeltMtfConstructionFilled
+    - ScpUplinkClothingBeltMtfUtilityFilled
+    - ScpUplinkClothingBeltMtfMedicalFilledOperative
+    - ScpUplinkClothingBeltMtfMedicalFilledMedic
+    whitelist:
+    - ScpUplinkMtfUnlockScpEquipment
+
+- type: listing
+  id: ScpUplinkClothingBeltMtfMedicalFilledOperative
+  productEntity: ClothingBeltMtfMedicalFilledOperative
+  name: shop-name-belt-mtf-med-operative
+  description: shop-desc-belt-mtf-med-operative
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: med_operative_belt_filled }
+  cost:
+    SupplyPoint: 5
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkClothingBeltMtfSecurityFilled
+    - ScpUplinkClothingBeltMtfGrenadeFilled
+    - ScpUplinkClothingBeltMtfConstructionFilled
+    - ScpUplinkClothingBeltMtfUtilityFilled
+    - ScpUplinkClothingBeltMtfMedicalFilledOperative
+    - ScpUplinkClothingBeltMtfMedicalFilledMedic
+    whitelist:
+    - ScpUplinkMtfUnlockScpEquipment
+
+- type: listing
+  id: ScpUplinkClothingBeltMtfMedicalFilledMedic
+  productEntity: ClothingBeltMtfMedicalFilledMedic
+  name: shop-name-belt-mtf-med-medic
+  description: shop-desc-belt-mtf-med-medic
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: med_medic_belt_filled }
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ScpEquipment
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkClothingBeltMtfSecurityFilled
+    - ScpUplinkClothingBeltMtfGrenadeFilled
+    - ScpUplinkClothingBeltMtfConstructionFilled
+    - ScpUplinkClothingBeltMtfUtilityFilled
+    - ScpUplinkClothingBeltMtfMedicalFilledOperative
+    - ScpUplinkClothingBeltMtfMedicalFilledMedic
+    whitelist:
+    - ScpUplinkMtfUnlockScpEquipment
+
+
+
+
+
+
+
 
 
 
@@ -274,7 +523,6 @@
     - ScpUplinkMtfStorageCratePistolG22
     - ScpUplinkMtfStorageCratePistolVP78
     - ScpUplinkWeaponEarthGovLaserPistol
-    - ScpUplinkWeaponDominator
     whitelist:
     - ScpUplinkMtfUnlockPistols
 
@@ -293,7 +541,6 @@
     - ScpUplinkMtfStorageCratePistolG22
     - ScpUplinkMtfStorageCratePistolVP78
     - ScpUplinkWeaponEarthGovLaserPistol
-    - ScpUplinkWeaponDominator
     whitelist:
     - ScpUplinkMtfUnlockPistols
 
@@ -312,7 +559,6 @@
     - ScpUplinkMtfStorageCratePistolG22
     - ScpUplinkMtfStorageCratePistolVP78
     - ScpUplinkWeaponEarthGovLaserPistol
-    - ScpUplinkWeaponDominator
     whitelist:
     - ScpUplinkMtfUnlockPistols
 
@@ -329,24 +575,6 @@
     - ScpUplinkMtfStorageCratePistolG22
     - ScpUplinkMtfStorageCratePistolVP78
     - ScpUplinkWeaponEarthGovLaserPistol
-    - ScpUplinkWeaponDominator
-    whitelist:
-    - ScpUplinkMtfUnlockPistols
-
-- type: listing
-  id: ScpUplinkWeaponDominator
-  productEntity: WeaponDominator
-  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: dominator }
-  categories:
-  - ScpPistols
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCratePistolACP14
-    - ScpUplinkMtfStorageCratePistolG22
-    - ScpUplinkMtfStorageCratePistolVP78
-    - ScpUplinkWeaponEarthGovLaserPistol
-    - ScpUplinkWeaponDominator
     whitelist:
     - ScpUplinkMtfUnlockPistols
 
@@ -754,7 +982,6 @@
     - ScpUplinkMtfStorageCratePistolACP14Elite
     - ScpUplinkMtfStorageCratePistolG22Elite
     - ScpUplinkMtfStorageCratePistolVP78Elite
-    - ScpUplinkWeaponDominatorElite
     whitelist:
     - ScpUplinkMtfUnlockPistolsElite
 
@@ -772,7 +999,6 @@
     - ScpUplinkMtfStorageCratePistolACP14Elite
     - ScpUplinkMtfStorageCratePistolG22Elite
     - ScpUplinkMtfStorageCratePistolVP78Elite
-    - ScpUplinkWeaponDominatorElite
     whitelist:
     - ScpUplinkMtfUnlockPistolsElite
 
@@ -792,7 +1018,6 @@
     - ScpUplinkMtfStorageCratePistolACP14Elite
     - ScpUplinkMtfStorageCratePistolG22Elite
     - ScpUplinkMtfStorageCratePistolVP78Elite
-    - ScpUplinkWeaponDominatorElite
     whitelist:
     - ScpUplinkMtfUnlockPistolsElite
 
@@ -812,7 +1037,6 @@
     - ScpUplinkMtfStorageCratePistolACP14Elite
     - ScpUplinkMtfStorageCratePistolG22Elite
     - ScpUplinkMtfStorageCratePistolVP78Elite
-    - ScpUplinkWeaponDominatorElite
     whitelist:
     - ScpUplinkMtfUnlockPistolsElite
 
@@ -832,25 +1056,6 @@
     - ScpUplinkMtfStorageCratePistolACP14Elite
     - ScpUplinkMtfStorageCratePistolG22Elite
     - ScpUplinkMtfStorageCratePistolVP78Elite
-    - ScpUplinkWeaponDominatorElite
-    whitelist:
-    - ScpUplinkMtfUnlockPistolsElite
-
-- type: listing
-  id: ScpUplinkWeaponDominatorElite
-  productEntity: WeaponDominator
-  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: dominator }
-  categories:
-  - ScpPistolsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateRevolverSpearheadBlackElite
-    - ScpUplinkWeaponPulsePistolScpElite
-    - ScpUplinkMtfStorageCratePistolACP14Elite
-    - ScpUplinkMtfStorageCratePistolG22Elite
-    - ScpUplinkMtfStorageCratePistolVP78Elite
-    - ScpUplinkWeaponDominatorElite
     whitelist:
     - ScpUplinkMtfUnlockPistolsElite
 

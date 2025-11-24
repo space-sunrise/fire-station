@@ -92,6 +92,10 @@
         Heat: 0.75
   - type: StaminaResistance
     damageCoefficient: 0.75
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,2,1
 
 - type: entity
   parent: MtfVest

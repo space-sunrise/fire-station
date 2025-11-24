@@ -23,6 +23,9 @@
   - type: Tag
     tags:
     - NTUplink
+  - type: Item
+    shape:
+    - 0,0,1,1
 
 - type: entity
   parent: [BaseUplinkMTF, StorePresetScpUplinkCommander]
@@ -65,24 +68,42 @@
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
-
-
-
-#---------------------Аплинк/Визионер для Альфа-1
-# - type: entity
-#   parent: [BaseUplinkMTF]
-#   id: BaseUplinkRRH
-#   categories: [ HideSpawnMenu ]
-#   components:
-#   - type: Store
-#     balance:
-#       SupplyPoint: 20
-#     buySuccessSound:
-#       path: /Audio/Effects/Arcade/newgame.ogg
+#---------------------Аплинк/Визионер для Эпсилон-11
 
 - type: entity
+  parent: [BaseUplinkMTF, StorePresetScpUplinkNtfCommander]
+  id: BaseUplinkMTFLeaderNtf
+  components:
+  - type: Store
+    balance:
+      SupplyPoint: 20
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+- type: entity
+  parent: [BaseUplinkMTF, StorePresetScpUplinkNtf]
+  id: BaseUplinkMTFSpecialistNtf
+  components:
+  - type: Store
+    balance:
+      SupplyPoint: 24
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+- type: entity
+  parent: [BaseUplinkMTF, StorePresetScpUplinkNtf]
+  id: BaseUplinkMTFCadetNtf
+  components:
+  - type: Store
+    balance:
+      SupplyPoint: 10
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+#---------------------Аплинк/Визионер для Альфа-1 и Омега-1
+- type: entity
   parent: [BaseUplinkMTF, StorePresetScpUplinkHightCommander]
-  id: BaseUplinkRRHLeader
+  id: BaseUplinkHightLeader
   components:
   - type: Store
     balance:
@@ -92,7 +113,7 @@
 
 - type: entity
   parent: [BaseUplinkMTF, StorePresetScpUplinkHight]
-  id: BaseUplinkRRHSpecialist
+  id: BaseUplinkHightSpecialist
   components:
   - type: Store
     balance:
@@ -100,39 +121,3 @@
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
-
-
-
-#---------------------Аплинк/Визионер для Омега-1
-# - type: entity
-#   parent: [BaseUplinkMTF]
-#   id: BaseUplinkLLH
-#   categories: [ HideSpawnMenu ]
-#   components:
-#   - type: Store
-#     balance:
-#       SupplyPoint: 15
-#     buySuccessSound:
-#       path: /Audio/Effects/Arcade/newgame.ogg
-
-- type: entity
-  parent: [BaseUplinkMTF, StorePresetScpUplinkHightCommander]
-  id: BaseUplinkLLHLeader
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Store
-    balance:
-      SupplyPoint: 40
-    buySuccessSound:
-      path: /Audio/Effects/Arcade/newgame.ogg
-
-- type: entity
-  parent: [BaseUplinkMTF, StorePresetScpUplinkHight]
-  id: BaseUplinkLLHSpecialist
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: Store
-    balance:
-      SupplyPoint: 28
-    buySuccessSound:
-      path: /Audio/Effects/Arcade/newgame.ogg

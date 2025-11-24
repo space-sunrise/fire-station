@@ -33,21 +33,13 @@
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFLeader
-    pocket2: PouchAmmo
+    pocket2: MobileTaskForcePDA
   storage:
     back:
     - BoxMtfLeaderKit
     - Crowbar
     - CombatKnife
-    - HandheldCriminalRecordsMonitorUnpowered
-    - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - Handcuffs
-    - Handcuffs
 
 # Специалист
 - type: job
@@ -72,28 +64,16 @@
   id: HDSpecialistGear
   equipment:
     jumpsuit: ClothingUniformHD
-    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsHDFilled
     mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorHD
+    # outerClothing: ClothingOuterArmorHD
     id: KeyCardMtfHDSpecialist
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFSpecialist
-    pocket2: PouchAmmo
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMtfBaseKit
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - Handcuffs
-    - Handcuffs
+    pocket2: MobileTaskForcePDA
 
 # Кадет
 - type: job
@@ -118,25 +98,13 @@
   id: HDCadetGear
   equipment:
     jumpsuit: ClothingUniformHD
-    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsHDFilled
     mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorHD
+    # outerClothing: ClothingOuterArmorHD
     id: KeyCardMtfHDCadet
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFCadet
-    pocket2: PouchAmmo
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMtfBaseKit
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - Handcuffs
-    - Handcuffs
+    pocket2: MobileTaskForcePDA

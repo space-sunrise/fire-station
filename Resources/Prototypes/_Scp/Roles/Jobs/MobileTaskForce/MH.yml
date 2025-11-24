@@ -33,25 +33,12 @@
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFLeader
-    pocket2: PouchAmmo
+    pocket2: MobileTaskForcePDA
   storage:
     back:
     - BoxMtfLeaderKit
     - Crowbar
-    - HandheldCriminalRecordsMonitorUnpowered
-    - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
-    - MobileTaskForcePDA
-    belt:
-    - MedkitCombatFilled
-    - ChemistryBottleEpinephrine
-    - ChemistryBottleEpinephrine
-    - PrefilledSyringe
-    - PillAmbuzolPlus
-    - PillAmbuzolPlus
-    - PillAmbuzol
-    - PillAmbuzol
-    - Handcuffs
 
 # Специалист
 - type: job
@@ -87,23 +74,11 @@
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFSpecialist
-    pocket2: PouchAmmo
+    pocket2: MobileTaskForcePDA
   storage:
     back:
     - Crowbar
-    - DoubleEmergencyOxygenTankFilled
     - BoxMtfBaseKit
-    - MobileTaskForcePDA
-    belt:
-    - MedkitCombatFilled
-    - ChemistryBottleEpinephrine
-    - ChemistryBottleEpinephrine
-    - PrefilledSyringe
-    - PillAmbuzolPlus
-    - PillAmbuzolPlus
-    - PillAmbuzol
-    - PillAmbuzol
-    - Handcuffs
 
 # Кадет
 - type: job
@@ -139,20 +114,8 @@
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch
     pocket1: BaseUplinkMTFCadet
-    pocket2: PouchAmmo
+    pocket2: MobileTaskForcePDA
   storage:
     back:
     - Crowbar
-    - DoubleEmergencyOxygenTankFilled
     - BoxMtfBaseKit
-    - MobileTaskForcePDA
-    belt:
-    - MedkitCombatFilled
-    - ChemistryBottleEpinephrine
-    - ChemistryBottleEpinephrine
-    - PrefilledSyringe
-    - PillAmbuzolPlus
-    - PillAmbuzolPlus
-    - PillAmbuzol
-    - PillAmbuzol
-    - Handcuffs
