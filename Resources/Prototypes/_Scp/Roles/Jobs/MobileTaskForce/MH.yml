@@ -39,6 +39,7 @@
     - BoxMtfLeaderKit
     - Crowbar
     - HandheldCrewMonitor
+    - DoorRemoteCustom
 
 # Специалист
 - type: job

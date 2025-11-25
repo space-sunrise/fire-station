@@ -40,6 +40,7 @@
     - Crowbar
     - CombatKnife
     - HandheldCrewMonitor
+    - DoorRemoteCustom
 
 # Специалист
 - type: job
@@ -81,6 +82,7 @@
     - Crowbar
     - BoxMtfBaseKit
     - CombatKnife
+    - DoorRemoteCustom
 
 # # Кадет
 # - type: job

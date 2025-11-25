@@ -39,6 +39,7 @@
     - BoxMtfLeaderKit
     - Crowbar
     - HandheldCrewMonitor
+    - DoorRemoteCustom
 
 # Специалист
 - type: job
@@ -79,6 +80,7 @@
     back:
     - BoxMtfBaseKit
     - Crowbar
+    - DoorRemoteCustom
 
 # # Кадет
 # - type: job
