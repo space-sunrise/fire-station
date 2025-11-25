@@ -23,12 +23,8 @@
   id: ClothingNeckShoulderPatchRed
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
     color: "#cc0000"
   - type: Clothing
-    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
-    slots:
-    - neck
     clothingVisuals:
       neck:
       - state: equipped-NECK
@@ -41,16 +37,12 @@
   id: ClothingNeckShoulderPatchBlue
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
-    color: "#0000aa" #"#000080"
+    color: "#0000aa"
   - type: Clothing
-    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
-    slots:
-    - neck
     clothingVisuals:
       neck:
       - state: equipped-NECK
-        color: "#0000aa" #"#000080"
+        color: "#0000aa"
 
 - type: entity
   name: green shoulder patch
@@ -59,12 +51,8 @@
   id: ClothingNeckShoulderPatchGreen
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
     color: "#008000"
   - type: Clothing
-    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
-    slots:
-    - neck
     clothingVisuals:
       neck:
       - state: equipped-NECK
@@ -77,12 +65,8 @@
   id: ClothingNeckShoulderPatchYellow
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
     color: "#cccc00"
   - type: Clothing
-    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
-    slots:
-    - neck
     clothingVisuals:
       neck:
       - state: equipped-NECK
