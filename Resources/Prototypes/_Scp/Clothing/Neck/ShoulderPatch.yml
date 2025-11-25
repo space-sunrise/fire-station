@@ -89,7 +89,6 @@
       - Recyclable
       - WhitelistChameleon
       requireAllTags: True
-      requireAll: True
   - type: StorageFill
     contents:
     - id: ClothingNeckShoulderPatchWhite
