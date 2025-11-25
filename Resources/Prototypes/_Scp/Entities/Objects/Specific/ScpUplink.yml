@@ -43,7 +43,7 @@
   components:
   - type: Store
     balance:
-      SupplyPoint: 24
+      SupplyPoint: 20
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
@@ -54,12 +54,12 @@
   components:
   - type: Store
     balance:
-      SupplyPoint: 10
+      SupplyPoint: 15
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
 - type: entity
-  parent: [BaseUplinkMTF, StorePresetScpUplinkCommander]
+  parent: [BaseUplinkMTF, StorePresetScpUplinkDebug]
   id: BaseUplinkMTFDebug
   categories: [ Debug ]
   components:
@@ -87,7 +87,7 @@
   components:
   - type: Store
     balance:
-      SupplyPoint: 24
+      SupplyPoint: 20
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
@@ -98,7 +98,7 @@
   components:
   - type: Store
     balance:
-      SupplyPoint: 10
+      SupplyPoint: 15
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
@@ -120,7 +120,7 @@
   components:
   - type: Store
     balance:
-      SupplyPoint: 24
+      SupplyPoint: 20
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
@@ -131,7 +131,7 @@
   components:
   - type: Store
     balance:
-      SupplyPoint: 10
+      SupplyPoint: 15
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
@@ -142,7 +142,7 @@
   components:
   - type: Store
     balance:
-      SupplyPoint: 46
+      SupplyPoint: 30
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
@@ -152,7 +152,7 @@
   components:
   - type: Store
     balance:
-      SupplyPoint: 34
+      SupplyPoint: 25
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 

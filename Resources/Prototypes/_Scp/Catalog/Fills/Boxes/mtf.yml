@@ -57,3 +57,21 @@
     - id: FoodSnackMaysonEnergy
     - id: DrinkMREFlask
 
+- type: entity
+  name: Ambuzol kit
+  parent: BoxCardboard
+  id: BoxAmbuzolKit
+  description: Base cardboard with ambuzol inside.
+  components:
+  - type: Sprite
+    layers:
+    - state: internals
+    - state: syringe
+  - type: StorageFill
+    contents:
+    - id: PillAmbuzolPlus
+      amount: 3
+    - id: PillAmbuzol
+      amount: 4
+    - id: SyringeAmbuzol
+      amount: 2

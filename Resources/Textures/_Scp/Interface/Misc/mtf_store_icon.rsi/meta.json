@@ -84,6 +84,36 @@
     },
     {
       "name": "c4_box5"
+    },
+    {
+      "name": "ambuzol_kit"
+    },
+    {
+      "name": "pouch_ammo"
+    },
+    {
+      "name": "pouch_drop"
+    },
+    {
+      "name": "pouch_granade"
+    },
+    {
+      "name": "pouch_med"
+    },
+    {
+      "name": "pouch_med_filled"
+    },
+    {
+      "name": "pouch_granade_incendiary"
+    },
+    {
+      "name": "pouch_granade_filled"
+    },
+    {
+      "name": "pouch_granade_nonlethal"
+    },
+    {
+      "name": "pouch_granade_lethal"
     }
   ]
 }

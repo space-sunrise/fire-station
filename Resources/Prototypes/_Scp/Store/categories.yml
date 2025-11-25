@@ -66,7 +66,7 @@
 
 #MTF uplink categoires NEW VEGAS
 
-- type: storeCategory
+- type: storeCategory # Для Э-11 и Ню-7
   id: ScpKitStart
   name: store-category-scpkitstart
   priority: 0
@@ -77,46 +77,56 @@
   priority: 1
 
 - type: storeCategory
+  id: ScpEquipmentBelts
+  name: store-category-equipment-belts
+  priority: 2
+
+- type: storeCategory
   id: ScpPrimaryArms
   name: store-category-scpprimaryarms
-  priority: 2
+  priority: 3
 
 - type: storeCategory # Для Альфы и Омеги
   id: ScpPrimaryArmsElite
   name: store-category-scpprimaryarms
-  priority: 2
+  priority: 3
 
 - type: storeCategory
   id: ScpPistols
   name: store-category-ntpistols
-  priority: 3
+  priority: 4
 
 - type: storeCategory # Для Альфы и Омеги
   id: ScpPistolsElite
   name: store-category-ntpistols
-  priority: 3
+  priority: 4
 
 - type: storeCategory
   id: ScpAmmo
   name: store-category-ntammo
-  priority: 4
+  priority: 5
+
+- type: storeCategory
+  id: ScpExplosive
+  name: store-category-ntexplosive
+  priority: 6
 
 - type: storeCategory
   id: ScpAdditional
   name: store-category-ntadditional
-  priority: 5
+  priority: 7
 
-- type: storeCategory
+- type: storeCategory # Для Беты-7
   id: ScpAdditionalBiohazard
   name: store-category-scpbiohazard
-  priority: 6
+  priority: 8
 
 - type: storeCategory
   id: ScpRecontainment
   name: store-category-scprecontainment
-  priority: 7
+  priority: 9
 
 - type: storeCategory
   id: ScpSpecWeapon
   name: store-category-scpspecweapon
-  priority: 8
+  priority: 10
