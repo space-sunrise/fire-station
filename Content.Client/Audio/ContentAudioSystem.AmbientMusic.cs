@@ -5,6 +5,7 @@ using Content.Shared.Audio;
 using Content.Shared.CCVar;
 using Content.Shared.GameTicking;
 using Content.Shared.Random.Rules;
+using Robust.Client.Audio;
 using Robust.Client.Player;
 using Robust.Client.State;
 using Robust.Shared.Audio;
@@ -29,12 +30,12 @@ public sealed partial class ContentAudioSystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IStateManager _state = default!;
     [Dependency] private readonly RulesSystem _rules = default!;
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
 
     private readonly TimeSpan _minAmbienceTime = TimeSpan.FromSeconds(5); // Fire edit
     private readonly TimeSpan _maxAmbienceTime = TimeSpan.FromSeconds(20); // Fire edit
 
-    private const float AmbientMusicFadeTime = 10f;
+    private const float AmbientMusicFadeTime = 5f; // Fire edit
     private static float _volumeSlider;
 
     // Don't need to worry about this being serializable or pauseable as it doesn't affect the sim.
@@ -211,6 +212,10 @@ public sealed partial class ContentAudioSystem
         var track = tracks[^1];
         tracks.RemoveAt(tracks.Count - 1);
 
+        // Fire added start
+        _sawmill.Info($"Playing new ambience - {track.CanonPath}");
+        // Fire added end
+
         var strim = _audio.PlayGlobal(
             track.ToString(),
             Filter.Local(),
@@ -273,7 +278,8 @@ public sealed partial class ContentAudioSystem
     private void OnNetworkAmbientMusic(NetworkAmbientMusicEvent ev)
     {
         // Остановить текущую музыку без задержки
-        _ambientMusicStream = _audio.Stop(_ambientMusicStream);
+        PredictedDel(_ambientMusicStream);
+        _ambientMusicStream = null;
 
         // Найти прототип новой музыки
         if (!_proto.TryIndex(ev.Prototype, out var proto))
@@ -293,6 +299,8 @@ public sealed partial class ContentAudioSystem
         // Выбрать и воспроизвести следующий трек
         var track = tracks[^1];
         tracks.RemoveAt(tracks.Count - 1);
+
+        _sawmill.Info($"Playing new ambience - {track.CanonPath}");
 
         var strim = _audio.PlayGlobal(
             track.ToString(),
@@ -314,7 +322,8 @@ public sealed partial class ContentAudioSystem
     private void OnNetworkAmbientMusicStop(NetworkAmbientMusicEventStop ev)
     {
         // Мгновенная остановка текущей музыки
-        _ambientMusicStream = _audio.Stop(_ambientMusicStream);
+        PredictedDel(_ambientMusicStream);
+        _ambientMusicStream = null;
 
         // Сброс состояния системы
         _musicProto = null;

@@ -24,7 +24,7 @@
     Radiation: 0.0
 
 - type: damageModifierSet
-  id: Scp096Face
+  id: Scp096FaceSet
   coefficients:
     Blunt: 1.0
     Slash: 0.0

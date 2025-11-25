@@ -1,14 +1,17 @@
 ﻿using System.Linq;
+using Content.Shared._Scp.Audio;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Scp.Watching.FOV;
 using Content.Shared._Sunrise.Helpers;
+using Content.Shared.Audio;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Popups;
 using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
 
@@ -20,10 +23,13 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly INetManager _net = default!;
 
+    private static readonly ProtoId<AmbientMusicPrototype> TargetAmbience = "Scp096Target";
+
     private void InitializeTargets()
     {
         SubscribeLocalEvent<Scp096TargetComponent, DamageChangedEvent>(OnTargetDamageChanged);
         SubscribeLocalEvent<Scp096TargetComponent, MobStateChangedEvent>(OnTargetMobStateChanged);
+        SubscribeLocalEvent<Scp096TargetComponent, ComponentStartup>(OnTargetStartup);
         SubscribeLocalEvent<Scp096TargetComponent, ComponentShutdown>(OnTargetShutdown);
     }
 
@@ -55,6 +61,12 @@ public abstract partial class SharedScp096System
         _popup.PopupClient(Loc.GetString("scp096-keep-attacking"), ent, args.Origin, PopupType.Medium);
     }
 
+    private void OnTargetStartup(Entity<Scp096TargetComponent> ent, ref ComponentStartup args)
+    {
+        if (_net.IsServer)
+            RaiseNetworkEvent(new NetworkAmbientMusicEvent(TargetAmbience), ent);
+    }
+
     private void OnTargetShutdown(Entity<Scp096TargetComponent> ent, ref ComponentShutdown args)
     {
         if (_timing.ApplyingState)
@@ -65,6 +77,9 @@ public abstract partial class SharedScp096System
         {
             RemoveTarget(uid, ent.AsNullable(), false);
         }
+
+        if (_net.IsServer)
+            RaiseNetworkEvent(new NetworkAmbientMusicEventStop(), ent);
     }
 
     /// <summary>

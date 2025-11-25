@@ -1,10 +1,13 @@
-﻿- type: ambientMusic
+﻿# Амбиенты
+
+- type: ambientMusic
   id: Shuttle
   sound:
     params:
-      volume: -12
+      volume: -15
     collection: FireAmbienceShuttle
   fadeIn: true
+  interruptable: true
   rules: NearShuttle
   priority: 5
 
@@ -65,7 +68,27 @@
   interruptable: true
   priority: 101
 
-# Rules
+- type: ambientMusic
+  id: Scp096Target
+  sound:
+    collection: ScpAmbienceScp096Target
+    params:
+      volume: -2
+  rules: IsScp096Target
+  interruptable: true
+  priority: 110
+
+- type: ambientMusic
+  id: Scp096Rage
+  sound:
+    collection: ScpAmbienceScp096Rage
+    params:
+      volume: 20
+  rules: IsScp096InRage
+  interruptable: true
+  priority: 110
+
+# Правила
 
 - type: rules
   id: AlwaysFalse
@@ -111,3 +134,20 @@
     allowedStates:
     - Dead
     - Critical
+
+- type: rules
+  id: IsScp096Target
+  rules:
+  - !type:OwnerWhitelistRule
+    whitelist:
+      components:
+      - Scp096Target
+
+- type: rules
+  id: IsScp096InRage
+  rules:
+  - !type:OwnerWhitelistRule
+    whitelist:
+      components:
+      - ActiveScp096Rage
+      - ActiveScp096HeatingUp

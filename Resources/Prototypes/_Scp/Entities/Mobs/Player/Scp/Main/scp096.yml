@@ -164,7 +164,8 @@
   # TODO: Алерт с лицом скромника, отображающий его состояние
   - type: Scp096Face
   - type: Damageable
-    damageModifierSet: Scp096Face
+    damageContainer: Scp096FaceContainer
+    damageModifierSet: Scp096FaceSet
   - type: MobState
     allowedStates:
     - Alive

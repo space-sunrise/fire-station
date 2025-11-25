@@ -81,3 +81,13 @@
   files:
   - /Audio/_Scp/Ambience/Music/Dead/ost1.ogg
   - /Audio/_Scp/Ambience/Music/Dead/ost2.ogg
+
+- type: soundCollection
+  id: ScpAmbienceScp096Target
+  files:
+  - /Audio/_Scp/Ambience/Music/Scp096/target.ogg
+
+- type: soundCollection
+  id: ScpAmbienceScp096Rage
+  files:
+  - /Audio/_Scp/Ambience/Music/Scp096/scp.ogg

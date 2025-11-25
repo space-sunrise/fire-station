@@ -1,6 +1,7 @@
 ﻿using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Medical.Healing;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -29,7 +30,12 @@ public abstract partial class SharedScp096System
     /// </summary>
     private void OnWithoutFaceStartup(Entity<ActiveScp096WithoutFaceComponent> ent, ref ComponentStartup args)
     {
+        var message = Loc.GetString("scp096-face-skin-rip-full", ("name", Identity.Name(ent, EntityManager)));
+        _popup.PopupPredicted(message, ent, ent);
+
         _audio.PlayPredicted(ent.Comp.StartSound, ent, ent);
+        UpdateAudio(ent.Owner, ent.Comp.AmbientSound);
+
         RefreshSpeedModifiers(ent.Owner);
 
         ent.Comp.AutoHealTimerEnd = _timing.CurTime + ent.Comp.AutoHealAfter;
@@ -66,7 +72,12 @@ public abstract partial class SharedScp096System
     /// </summary>
     private void OnWithoutFaceShutdown(Entity<ActiveScp096WithoutFaceComponent> ent, ref ComponentShutdown args)
     {
+        var message = Loc.GetString("scp096-face-healed", ("name", Identity.Name(ent, EntityManager)));
+        _popup.PopupPredicted(message, ent, ent);
+
         _audio.PlayPredicted(ent.Comp.ShutdownSound, ent, ent);
+        UpdateAudio(ent.Owner);
+
         RefreshSpeedModifiers(ent.Owner, true);
         TryHealFace(ent);
 

@@ -1,12 +1,15 @@
-﻿using Content.Shared._Scp.Mobs.Components;
+﻿using Content.Shared._Scp.Audio;
+using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.ActionBlocker;
+using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Jittering;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
 using Robust.Shared.Audio;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
 
@@ -19,6 +22,8 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
 
     private readonly List<(Entity<Scp096Component> ent, TimeSpan end)> _pendingAnimations = [];
+
+    private static readonly ProtoId<AmbientMusicPrototype> RageAmbience = "Scp096Rage";
 
     private void InitializeRage()
     {
@@ -44,6 +49,9 @@ public abstract partial class SharedScp096System
 
         // Устанавливаем звук пред-агр состояния
         UpdateAudio(ent.Owner, scp096.TriggerSound);
+
+        if (_net.IsServer)
+            RaiseNetworkEvent(new NetworkAmbientMusicEvent(RageAmbience), ent);
 
         // Если скромник был застанен - убираем это
         _stamina.TryTakeStamina(ent, -100);
@@ -133,6 +141,9 @@ public abstract partial class SharedScp096System
 
         // Возвращаем звук плача
         UpdateAudio(ent.Owner, scp096.CrySound);
+
+        if (_net.IsServer)
+            RaiseNetworkEvent(new NetworkAmbientMusicEventStop(), ent);
 
         // Усыпляем скромника
         if (!_statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, scp096.PacifiedTime))
@@ -257,10 +268,12 @@ public abstract partial class SharedScp096System
         return true;
     }
 
-    private void UpdateAudio(Entity<Scp096Component?> ent, SoundSpecifier sound)
+    private void UpdateAudio(Entity<Scp096Component?> ent, SoundSpecifier? sound = null)
     {
         if (!Resolve(ent, ref ent.Comp))
             return;
+
+        sound ??= ent.Comp.CrySound;
 
         ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
 

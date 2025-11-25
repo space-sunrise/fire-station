@@ -1,0 +1,4 @@
+﻿- type: damageContainer
+  id: Scp096FaceContainer
+  supportedGroups:
+  - Brute

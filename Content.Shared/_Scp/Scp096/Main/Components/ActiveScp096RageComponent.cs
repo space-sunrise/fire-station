@@ -14,5 +14,5 @@ public sealed partial class ActiveScp096RageComponent : Component
 
     [DataField]
     public SoundSpecifier RageSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/scream.ogg",
-        AudioParams.Default.WithVolume(20f).WithMaxDistance(30f).WithLoop(true));
+        AudioParams.Default.WithVolume(20f).WithMaxDistance(30f).WithRolloffFactor(5f).WithLoop(true));
 }

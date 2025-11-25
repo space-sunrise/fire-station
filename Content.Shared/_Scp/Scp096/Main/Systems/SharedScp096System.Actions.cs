@@ -4,6 +4,7 @@ using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.Actions;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
+using Content.Shared.IdentityManagement;
 using Content.Shared.Jittering;
 using Content.Shared.Mobs;
 
@@ -156,9 +157,10 @@ public abstract partial class SharedScp096System
         if (damaged == null)
             return;
 
-        // Нормального аналога еще не изобрели
-        if (_net.IsServer)
-            _audio.PlayEntity(ent.Comp.FaceSkinRipDamageToFaceSound, ent, ent);
+        var message = Loc.GetString("scp096-face-skin-rip", ("name", Identity.Name(ent, EntityManager)));
+        _popup.PopupPredicted(message, ent, ent);
+
+        _audio.PlayPredicted(ent.Comp.FaceSkinRipDamageToFaceSound, ent, ent);
 
         args.Handled = true;
     }

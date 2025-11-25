@@ -41,14 +41,14 @@ public sealed partial class Scp096Component : Component
 
     [DataField]
     public SoundSpecifier CrySound = new SoundPathSpecifier("/Audio/_Scp/Scp096/crying.ogg",
-        AudioParams.Default.WithVolume(-14f).WithMaxDistance(4f).WithLoop(true));
+        AudioParams.Default.WithVolume(-14f).WithMaxDistance(4f).WithRolloffFactor(5f).WithLoop(true));
 
     [DataField]
     public SoundSpecifier SeenSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/seen.ogg");
 
     [DataField]
     public SoundSpecifier TriggerSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/triggered.ogg",
-        AudioParams.Default.WithVolume(20f).WithMaxDistance(30f));
+        AudioParams.Default.WithVolume(20f).WithMaxDistance(30f).WithRolloffFactor(5f));
 
     [ViewVariables, AutoNetworkedField, NonSerialized]
     public EntityUid? AudioStream;
@@ -123,7 +123,7 @@ public sealed partial class Scp096Component : Component
     };
 
     [DataField]
-    public SoundSpecifier? FaceSkinRipDamageToFaceSound;
+    public SoundSpecifier? FaceSkinRipDamageToFaceSound = new SoundCollectionSpecifier("FaceSkinRip");
 
     [DataField]
     public EntProtoId FaceProto = "Scp096Face";

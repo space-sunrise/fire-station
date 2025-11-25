@@ -34,6 +34,13 @@ public sealed partial class ActiveScp096WithoutFaceComponent : Component
     public SoundSpecifier? ShutdownSound;
 
     /// <summary>
+    /// Звук, который будет издавать скромник в состоянии.
+    /// </summary>
+    [DataField]
+    public SoundSpecifier AmbientSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/withoutface.ogg",
+        AudioParams.Default.WithMaxDistance(15f).WithVolume(7f).WithRolloffFactor(5f).WithLoop(true));
+
+    /// <summary>
     /// Скорость передвижения в данном состоянии
     /// </summary>
     [DataField]
@@ -99,7 +106,7 @@ public sealed partial class ActiveScp096WithoutFaceComponent : Component
 
     #endregion
 
-    #region MyRegion
+    #region Throw
 
     /// <summary>
     /// Дистанция отбрасывания, на которую будет отбрасывать скромник при ударе цели в данном состоянии
@@ -128,6 +135,4 @@ public sealed partial class ActiveScp096WithoutFaceComponent : Component
     public float? CachedThrowSpeed;
 
     #endregion
-
-
 }
