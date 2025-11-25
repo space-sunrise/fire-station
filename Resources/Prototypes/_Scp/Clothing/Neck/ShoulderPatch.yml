@@ -1,0 +1,115 @@
+﻿- type: entity
+  name: white shoulder patch
+  description: A simple and convenient tool for groups
+  parent: ClothingNeckBase
+  id: ClothingNeckShoulderPatchWhite
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    color: "#dddddd"
+  - type: Clothing
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    slots:
+    - neck
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+        color: "#dddddd"
+
+- type: entity
+  name: red shoulder patch
+  description: A simple and convenient tool for groups
+  parent: ClothingNeckShoulderPatchWhite
+  id: ClothingNeckShoulderPatchRed
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    color: "#cc0000"
+  - type: Clothing
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    slots:
+    - neck
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+        color: "#cc0000"
+
+- type: entity
+  name: blue shoulder patch
+  description: A simple and convenient tool for groups
+  parent: ClothingNeckShoulderPatchWhite
+  id: ClothingNeckShoulderPatchBlue
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    color: "#0000aa" #"#000080"
+  - type: Clothing
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    slots:
+    - neck
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+        color: "#0000aa" #"#000080"
+
+- type: entity
+  name: green shoulder patch
+  description: A simple and convenient tool for groups
+  parent: ClothingNeckShoulderPatchWhite
+  id: ClothingNeckShoulderPatchGreen
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    color: "#008000"
+  - type: Clothing
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    slots:
+    - neck
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+        color: "#008000"
+
+- type: entity
+  name: yellow shoulder patch
+  description: A simple and convenient tool for groups
+  parent: ClothingNeckShoulderPatchWhite
+  id: ClothingNeckShoulderPatchYellow
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    color: "#cccc00"
+  - type: Clothing
+    sprite: _Scp/Clothing/Neck/shoulder_patch.rsi
+    slots:
+    - neck
+    clothingVisuals:
+      neck:
+      - state: equipped-NECK
+        color: "#cccc00"
+
+- type: entity
+  name: box with different patches
+  description: A box with the simplest and most convenient tools for groups
+  parent: BoxCardboard
+  id: BoxCardboardShoulderPatches
+  components:
+  - type: Storage
+    hideStackVisualsWhenClosed: false
+    maxItemSize: Small
+    grid:
+    - 0,0,3,3
+    whitelist:
+      tags:
+      - ClothMade
+      - Recyclable
+      - WhitelistChameleon
+      requireAllTags: True
+      requireAll: True
+  - type: StorageFill
+    contents:
+    - id: ClothingNeckShoulderPatchWhite
+    - id: ClothingNeckShoulderPatchRed
+    - id: ClothingNeckShoulderPatchBlue
+    - id: ClothingNeckShoulderPatchGreen
+    - id: ClothingNeckShoulderPatchYellow

@@ -43,6 +43,7 @@
     - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
     - MobileTaskForcePDA
+    - DoorRemoteCustom
     belt:
     - Stunbaton
     - Handcuffs

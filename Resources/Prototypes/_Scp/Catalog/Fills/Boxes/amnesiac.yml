@@ -68,6 +68,7 @@
     stateLocked: led1
     stateUnlocked: led0
   - type: AccessReader
+    access: [ [ "Medical" ], [ "Security" ] ]
 
 
 
@@ -77,15 +78,13 @@
   id: BoxVialAmnesiacA
   suffix: Amnesiac A
   components:
-  - type: AccessReader
-    access: [ [ "Medical" ], [ "Security" ] ]
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacA
         amount: 3
 
 - type: entity
-  parent: BoxVialAmnesiacA
+  parent: BoxVialScpBaseSecure
   id: BoxVialAmnesiacB
   suffix: Amnesiac B
   components:
@@ -95,7 +94,7 @@
         amount: 3
 
 - type: entity
-  parent: BoxVialAmnesiacA
+  parent: BoxVialScpBaseSecure
   id: BoxVialAmnesiacC
   suffix: Amnesiac C
   components:
@@ -105,7 +104,7 @@
         amount: 3
 
 - type: entity
-  parent: BoxVialAmnesiacA
+  parent: BoxVialScpBaseSecure
   id: BoxVialAmnesiacD
   suffix: Amnesiac D
   components:
