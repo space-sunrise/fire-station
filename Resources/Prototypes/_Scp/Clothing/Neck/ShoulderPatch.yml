@@ -78,6 +78,11 @@
   parent: BoxCardboard
   id: BoxCardboardShoulderPatches
   components:
+  - type: Sprite
+    layers:
+    - state: box
+    - sprite: _Scp/Objects/Storage/boxes.rsi
+      state: shoulder_patches_box
   - type: Storage
     hideStackVisualsWhenClosed: false
     maxItemSize: Small
