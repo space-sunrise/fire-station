@@ -1836,7 +1836,7 @@
   description: shop-desc-c4crate
   icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: c4_box5 }
   cost:
-    SupplyPoint: 6
+    SupplyPoint: 8
   categories:
   - ScpExplosive
   conditions:
