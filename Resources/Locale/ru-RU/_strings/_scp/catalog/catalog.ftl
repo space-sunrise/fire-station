@@ -1,12 +1,16 @@
 scp106-store-category-abilities = Кошмарные способности
 store-currency-display-life-essence = Страдания
-store-currency-display-supplypoint = Очки снабжения
 scp106-shop-phantom-name = { ent-Scp106BecomePhantom }
 scp106-shop-phantom-desc = { ent-Scp106BecomePhantom.desc }
 scp106-shop-phantom-upgrade-name = Сдвиг баланса
 scp106-shop-phantom-upgrade-desc = Давит на разрастающиеся трещины реальности, что позволяет уменьшить время ожидания создания нового фантома
 scp106-shop-blade-name = { ent-Scp106BareBlade }
 scp106-shop-blade-desc = { ent-Scp106BareBlade.desc }
+
+store-currency-display-supplypoint = Очки снабжения
+
+shop-name-unlock = Разблокировать категорию
+shop-desc-unlock = Внимание! При покупке чего-либо в этой категории - остальные предметы будут не доступны к покупке.
 
 shop-name-medicalntf = Набор боевого врача
 shop-desc-medicalntf = Ящик содержащий тактический бронежилет, медицинскую сумку, подсумки для медицины и патрон, а так же тактический пояс для медикаментов с общими лекарствами и дефибриллятором.
@@ -31,9 +35,6 @@ shop-name-belt-mtf-med-operative = тактический пояс для мед
 shop-desc-belt-mtf-med-operative = Специализированный тактический пояс полевого врача. Содержит в себе всё самое необходимое для бойца на передовой. Стимуляторы, нити, жгуты, автоинъекторы.
 shop-name-belt-mtf-med-medic = тактический пояс для медикаментов (врач)
 shop-desc-belt-mtf-med-medic = Специализированный тактический пояс полевого врача. Содержит в себе комплект полевого врача. Здесь есть всё необходимое для оказания ПМП. Нити, трансплантант, лекарства и компактный дефибриллятор.
-
-shop-name-unlock = Разблокировать категорию
-shop-desc-unlock = Внимание! При покупке чего-либо в этой категории - остальные предметы будут не доступны к покупке.
 
 shop-name-mp5box = Коробка с МП5
 shop-desc-mp5box = Коробка которая содержит в себе пистолет-пулемёт МП5, а так же пояс с патронами.
@@ -67,3 +68,17 @@ shop-name-b127box = Коробка с Bauer SR-127
 shop-desc-b127box = Коробка которая содержит в себе снайперскую винтовкe Bauer SR-127, а так же пояс с патронами.
 shop-name-mg100 = MG-100 Vindicator Миниган
 shop-desc-mg100 = Наспинный силовой агрегат на 1600 патрон, вместе с шестизарядным ротационным пулемётом. Очень тяжёлая, но убойная вещица.
+
+shop-name-granade-frag-timer = Ящик осколочных гранат на таймере
+shop-desc-granade-frag-timer = Деревянный ящик содержащий в себе 5 осколочных гранат на таймере. Специально для гранатомётов.
+shop-name-granade-blast-timer = Ящик разрывных гранат на таймере
+shop-desc-granade-blast-timer = Деревянный ящик содержащий в себе 5 разрывных гранат на таймере. Специально для гранатомётов.
+shop-name-granade-frag-contact = Ящик осколочных гранат
+shop-desc-granade-frag-contact = Деревянный ящик содержащий в себе 5 осколочных гранат. Специально для гранатомётов.
+shop-name-granade-blast-contact = Ящик разрывных гранат
+shop-desc-granade-blast-contact = Деревянный ящик содержащий в себе 5 разрывных гранат. Специально для гранатомётов.
+
+shop-name-c4crate = Ящик взрычатки C4
+shop-desc-c4crate = Деревянный ящик содержащий в себе 5 пластиковых взрывчаток С4.
+
+

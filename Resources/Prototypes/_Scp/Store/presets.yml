@@ -76,6 +76,46 @@
     balance:
       SupplyPoint: 0
 
+# Бета-7
+- type: entity
+  id: StorePresetScpUplinkBeta7
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpEquipment
+    - ScpPrimaryArms
+    - ScpPistols
+    - ScpAmmo
+    - ScpAdditional
+    - ScpAdditionalBiohazard
+    - ScpRecontainment
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
+- type: entity
+  id: StorePresetScpUplinkBeta7Commander
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpEquipment
+    - ScpPrimaryArms
+    - ScpPistols
+    - ScpAmmo
+    - ScpAdditional
+    - ScpAdditionalBiohazard
+    - ScpRecontainment
+    - ScpSpecWeapon
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
 # Альфа-1 и Омега-1
 - type: entity
   id: StorePresetScpUplinkHight

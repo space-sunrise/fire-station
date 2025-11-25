@@ -59,7 +59,7 @@
   - type: StorageFill
     contents:
       - id: MedipenCombatInjector
-        amount: 2
+      - id: Bloodpack
       - id: Tourniquet
         amount: 2
       - id: MedicatedSuture

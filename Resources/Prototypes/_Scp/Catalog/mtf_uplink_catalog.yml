@@ -274,22 +274,6 @@
     whitelist:
     - ScpUplinkMtfUnlockScpEquipment
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Основное вооружение
 - type: listing
   id: ScpUplinkMtfUnlockPrimaryArms
@@ -578,32 +562,535 @@
     whitelist:
     - ScpUplinkMtfUnlockPistols
 
-
-
-
-
-
-
-
-
 # Боеприпасы
-# - type: listing
-#   id: ScpUplink.НАЗВАНИЕЭНТИТИ
-#   productEntity: ЭНТИТИ
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mp5 }
-#   cost:
-#     SupplyPoint: 4
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 1
+- type: listing
+  id: ScpUplinkMtfStorageCrateGrenadeFragTimer
+  productEntity: MtfStorageCrateGrenadeFragTimer
+  name: shop-name-granade-frag-timer
+  description: shop-desc-granade-frag-timer
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: granade_frag_box5 }
+  cost:
+    SupplyPoint: 5
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
 
+- type: listing
+  id: ScpUplinkMtfStorageCrateGrenadeBlastTimer
+  productEntity: MtfStorageCrateGrenadeBlastTimer
+  name: shop-name-granade-blast-timer
+  description: shop-desc-granade-blast-timer
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: granade_blast_box5 }
+  cost:
+    SupplyPoint: 5
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
 
+- type: listing
+  id: ScpUplinkMtfStorageCrateGrenadeFragContact
+  productEntity: MtfStorageCrateGrenadeFragContact
+  name: shop-name-granade-frag-contact
+  description: shop-desc-granade-frag-contact
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: granade_frag_box5 }
+  cost:
+    SupplyPoint: 6
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
 
+- type: listing
+  id: ScpUplinkMtfStorageCrateGrenadeBlastContact
+  productEntity: MtfStorageCrateGrenadeBlastContact
+  name: shop-name-granade-blast-contact
+  description: shop-desc-granade-blast-contact
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: granade_blast_box5 }
+  cost:
+    SupplyPoint: 6
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
 
+- type: listing
+  id: ScpUplinkMagazineLightMachineGunMG60
+  productEntity: MagazineLightMachineGunMG60
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
 
+- type: listing
+  id: ScpUplinkMagazineBoxAntiMateriel
+  productEntity: MagazineBoxAntiMateriel
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
 
+- type: listing
+  id: ScpUplinkMagazineBauer127
+  productEntity: MagazineBauer127
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkMagazineMP5
+  productEntity: MagazineMP5
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineP90
+  productEntity: MagazineP90
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineGlock22
+  productEntity: MagazineGlock22
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxPistolSP
+  productEntity: MagazineBoxPistolSP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineRifleSP
+  productEntity: MagazineRifleSP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxRifleSP
+  productEntity: MagazineBoxRifleSP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineRifleHeavySP
+  productEntity: MagazineRifleHeavySP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxHeavyRifleSP
+  productEntity: MagazineBoxHeavyRifleSP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkMagazinePistol40SP
+  productEntity: MagazinePistol40SP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineACP14
+  productEntity: MagazineACP14
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxPistol40SP
+  productEntity: MagazineBoxPistol40SP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkSpeedLoaderMagnumSP
+  productEntity: SpeedLoaderMagnumSP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxMagnumSP
+  productEntity: MagazineBoxMagnumSP
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkBoxLethalshot
+  productEntity: BoxLethalshot
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkSpeedLoaderShellShotgun
+  productEntity: SpeedLoaderShellShotgun
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkMagazineShotgun
+  productEntity: MagazineShotgun
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkSpeedLoaderMagnumAP
+  productEntity: SpeedLoaderMagnumAP
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkSpeedLoaderMagnumIncendiary
+  productEntity: SpeedLoaderMagnumIncendiary
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkMagazineBoxMagnumIncendiary
+  productEntity: MagazineBoxMagnumIncendiary
+  cost:
+    SupplyPoint: 6
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkMagazineBoxMagnumAP
+  productEntity: MagazineBoxMagnumAP
+  cost:
+    SupplyPoint: 5
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkMagazineBoxMagnumHP
+  productEntity: MagazineBoxMagnumHP
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxMagnumFMJ
+  productEntity: MagazineBoxMagnumFMJ
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxPistol40FMJ
+  productEntity: MagazineBoxPistol40FMJ
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxPistol40HP
+  productEntity: MagazineBoxPistol40HP
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxPistol40AP
+  productEntity: MagazineBoxPistol40AP
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxPistolFMJ
+  productEntity: MagazineBoxPistolFMJ
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxPistolHP
+  productEntity: MagazineBoxPistolHP
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxPistolAP
+  productEntity: MagazineBoxPistolAP
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkMagazineBoxRifleAP
+  productEntity: MagazineBoxRifleAP
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkMagazineBoxRifleFMJ
+  productEntity: MagazineBoxRifleFMJ
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxRifleHP
+  productEntity: MagazineBoxRifleHP
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxHeavyRifleFMJ
+  productEntity: MagazineBoxHeavyRifleFMJ
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 8
+
+- type: listing
+  id: ScpUplinkMagazineBoxHeavyRifleHP
+  productEntity: MagazineBoxHeavyRifleHP
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineBoxHeavyRifleAP
+  productEntity: MagazineBoxHeavyRifleAP
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineShotgunIncendiary
+  productEntity: MagazineShotgunIncendiary
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMagazineShotgunSlug
+  productEntity: MagazineShotgunSlug
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkBoxShotgunSlug
+  productEntity: BoxShotgunSlug
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkBoxShotgunIncendiary
+  productEntity: BoxShotgunIncendiary
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkSpeedLoaderShotgunSlug
+  productEntity: SpeedLoaderShotgunSlug
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
+- type: listing
+  id: ScpUplinkSpeedLoaderShotgunIncendiary
+  productEntity: SpeedLoaderShotgunIncendiary
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpAmmo
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
 
 
 
@@ -624,12 +1111,37 @@
 #   - !type:ListingLimitedStockCondition
 #     stock: 1
 
+- type: listing
+  id: ScpUplinkMtfStorageCrateC4
+  productEntity: MtfStorageCrateC4
+  name: shop-name-c4crate
+  description: shop-desc-c4crate
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: c4_box5 }
+  cost:
+    SupplyPoint: 7
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
 
 
 
 
-
-
+# Дополнительное Бета-7
+- type: listing
+  id: ScpUplinkMtfStorageCrateC4
+  productEntity: MtfStorageCrateC4
+  name: shop-name-c4crate
+  description: shop-desc-c4crate
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: c4_box5 }
+  cost:
+    SupplyPoint: 7
+  categories:
+  - ScpAdditionalBiohazard
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
 
 
 
@@ -1197,261 +1709,6 @@
 
 
 
-
-# # Боеприпасы:
-
-# - type: listing
-#   id: ScpUplinkBoxShotgunFlare
-#   productEntity: BoxShotgunFlare
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shot_flare }
-#   cost:
-#     SupplyPoint: 1
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 6
-
-# - type: listing
-#   id: ScpUplinkBoxMagazineRifle
-#   productEntity: BoxMagazineRifle
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_rifle }
-#   cost:
-#     SupplyPoint: 5
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 6
-
-# - type: listing
-#   id: ScpUplinkMagazineMagnum
-#   productEntity: MagazineMagnum
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mag_magnum }
-#   cost:
-#     SupplyPoint: 1
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 8
-
-# - type: listing
-#   id: ScpUplinkMagazineBoxMagnumIncendiary
-#   productEntity: MagazineBoxMagnumIncendiary
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_magnum_ince }
-#   cost:
-#     SupplyPoint: 2
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 6
-
-# - type: listing
-#   id: ScpUplinkMagazineBoxMagnumUranium
-#   productEntity: MagazineBoxMagnumUranium
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_magnum_uran }
-#   cost:
-#     SupplyPoint: 5
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 6
-
-# - type: listing
-#   id: ScpUplinkMagazineP90
-#   productEntity: MagazineP90
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mag_p90 }
-#   cost:
-#     SupplyPoint: 4
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 8
-
-# - type: listing
-#   id: ScpUplinkSMGAmmoKit
-#   productEntity: SMGAmmoKit
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_smg }
-#   cost:
-#     SupplyPoint: 10
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 6
-
-# - type: listing
-#   id: ScpUplinkBoxMagazineShotgun
-#   productEntity: BoxMagazineShotgun
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shot }
-#   cost:
-#     SupplyPoint: 5
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 8
-
-# - type: listing
-#   id: ScpUplinkBoxMagazineShotgunIncendiary
-#   productEntity: BoxMagazineShotgunIncendiary
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shot_red }
-#   cost:
-#     SupplyPoint: 10
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 8
-
-# - type: listing
-#   id: ScpUplinkBoxMagazineShotgunSlug
-#   productEntity: BoxMagazineShotgunSlug
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shot_slug }
-#   cost:
-#     SupplyPoint: 6
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 8
-
-# - type: listing
-#   id: ScpUplinkBoxMagazineShotgunBeanbag
-#   productEntity: BoxMagazineShotgunBeanbag
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shot }
-#   cost:
-#     SupplyPoint: 2
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 8
-
-# - type: listing
-#   id: ScpUplinkMagazineBR64
-#   productEntity: MagazineBR64
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mag_br64 }
-#   cost:
-#     SupplyPoint: 6
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 8
-
-# - type: listing
-#   id: ScpUplinkMagazineLightRifleBox
-#   productEntity: MagazineLightRifleBoxSP
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: Base_Icon }
-#   cost:
-#     SupplyPoint: 8
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 8
-
-# - type: listing
-#   id: ScpUplinkPortableRecharger
-#   productEntity: PortableRecharger
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: port_recharge }
-#   cost:
-#     SupplyPoint: 15
-#   categories:
-#   - ScpAmmo
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 8
-
-# # ScpExplosive:
-# - type: listing
-#   id: ScpUplinkBoxFlashbang
-#   productEntity: BoxFlashbang
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_flashbangs }
-#   cost:
-#     SupplyPoint: 2
-#   categories:
-#   - ScpExplosive
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 4
-
-# - type: listing
-#   id: ScpUplinkBoxTearGasGrenade
-#   productEntity: BoxTearGasGrenade
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_flashbangs }
-#   cost:
-#     SupplyPoint: 2
-#   categories:
-#   - ScpExplosive
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 4
-
-# - type: listing
-#   id: ScpUplinkBoxSmokeGrenade
-#   productEntity: BoxSmokeGrenade
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_flashbangs }
-#   cost:
-#     SupplyPoint: 2
-#   categories:
-#   - ScpExplosive
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 4
-
-# - type: listing
-#   id: ScpUplinkBoxClusterBangFull
-#   productEntity: BoxClusterBangFull
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_flashbangs }
-#   cost:
-#     SupplyPoint: 4
-#   categories:
-#   - ScpExplosive
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 2
-
-# - type: listing
-#   id: ScpUplinkBoxGrenadeStinger
-#   productEntity: BoxGrenadeStinger
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_stinger }
-#   cost:
-#     SupplyPoint: 5
-#   categories:
-#   - ScpExplosive
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 2
-
-# - type: listing
-#   id: ScpUplinkBoxGrenadeShrapnel
-#   productEntity: BoxGrenadeShrapnel
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_shrapnel }
-#   cost:
-#     SupplyPoint: 8
-#   categories:
-#   - ScpExplosive
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 2
-
-# - type: listing
-#   id: ScpUplinkBoxGrenadeIncendiary
-#   productEntity: BoxGrenadeIncendiary
-#   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_incendiary }
-#   cost:
-#     SupplyPoint: 8
-#   categories:
-#   - ScpExplosive
-#   conditions:
-#   - !type:ListingLimitedStockCondition
-#     stock: 2
 
 # # Медицина:
 # - type: listing

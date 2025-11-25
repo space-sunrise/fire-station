@@ -75,6 +75,15 @@
     },
     {
       "name": "med_operative_belt_filled"
+    },
+    {
+      "name": "granade_blast_box5"
+    },
+    {
+      "name": "granade_frag_box5"
+    },
+    {
+      "name": "c4_box5"
     }
   ]
 }

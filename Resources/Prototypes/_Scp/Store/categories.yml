@@ -107,11 +107,16 @@
   priority: 5
 
 - type: storeCategory
+  id: ScpAdditionalBiohazard
+  name: store-category-scpbiohazard
+  priority: 6
+
+- type: storeCategory
   id: ScpRecontainment
   name: store-category-scprecontainment
-  priority: 6
+  priority: 7
 
 - type: storeCategory
   id: ScpSpecWeapon
   name: store-category-scpspecweapon
-  priority: 7
+  priority: 8

@@ -15,6 +15,17 @@
     },
     {
       "name": "closed_pistol"
+    },
+    {
+      "name": "closed_granade"
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
     }
   ]
 }

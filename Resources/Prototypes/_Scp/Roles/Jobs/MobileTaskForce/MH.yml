@@ -32,7 +32,7 @@
     id: KeyCardMtfMHLeader
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch
-    pocket1: BaseUplinkMTFLeader
+    pocket1: BaseUplinkMTFLeaderBeta7
     pocket2: MobileTaskForcePDA
   storage:
     back:
@@ -73,7 +73,7 @@
     id: KeyCardMtfMHSpecialist
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch
-    pocket1: BaseUplinkMTFSpecialist
+    pocket1: BaseUplinkMTFSpecialistBeta7
     pocket2: MobileTaskForcePDA
   storage:
     back:
@@ -113,7 +113,7 @@
     id: KeyCardMtfMHCadet
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch
-    pocket1: BaseUplinkMTFCadet
+    pocket1: BaseUplinkMTFCadetBeta7
     pocket2: MobileTaskForcePDA
   storage:
     back:

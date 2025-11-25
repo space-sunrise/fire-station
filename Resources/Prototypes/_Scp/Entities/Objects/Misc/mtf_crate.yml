@@ -118,6 +118,21 @@
           True: { state: open }
           False: { state: closed_pistol }
 
+- type: entity
+  parent: BaseMtfStorageCrate
+  id: BaseMtfStorageCrateSmallGranade
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Storage/loadout_kits_mini.rsi
+    state: closed_granade
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed_granade }
+
 # Коробки Оружия
 - type: entity
   parent: BaseMtfStorageCrateSpecWeapon
@@ -329,6 +344,72 @@
       - id: SpeedLoaderMagnumSP
         amount: 3
       - id: MagazineBoxMagnumSP
+
+# Остальное
+- type: entity
+  parent: BaseMtfStorageCrateSmallGranade
+  id: MtfStorageCrateGrenadeFragTimer
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,4,1
+  - type: StorageFill
+    contents:
+      - id: GrenadeFragTimer
+        amount: 5
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallGranade
+  id: MtfStorageCrateGrenadeBlastTimer
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,4,1
+  - type: StorageFill
+    contents:
+      - id: GrenadeBlastTimer
+        amount: 5
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallGranade
+  id: MtfStorageCrateGrenadeFragContact
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,4,1
+  - type: StorageFill
+    contents:
+      - id: GrenadeFragContact
+        amount: 5
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallGranade
+  id: MtfStorageCrateGrenadeBlastContact
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,4,1
+  - type: StorageFill
+    contents:
+      - id: GrenadeBlastContact
+        amount: 5
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallGranade
+  id: MtfStorageCrateC4
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,4,1
+  - type: StorageFill
+    contents:
+      - id: C4
+        amount: 5
 
 # Коробки экипировки Э-11
 - type: entity

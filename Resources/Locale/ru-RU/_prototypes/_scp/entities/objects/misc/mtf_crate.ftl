@@ -1,10 +1,12 @@
 ent-BaseMtfStorageCrate = ящик со снаряжением
-    .desc = Тяжелый деревянный ящик. В нем находится снаряжение для бойцов МОГ.
+    .desc = Тяжелый деревянный ящик. В нем находится различного рода вооружения. Обычно содержимое отмечено специальной этикеткой.
 ent-BaseMtfStorageCrateSpecWeapon = ящик с тяжёлым вооружением
     .desc = { ent-BaseMtfStorageCrate.desc }
 ent-BaseMtfStorageCrateWeapon = ящик с вооружением
     .desc = { ent-BaseMtfStorageCrate.desc }
 ent-BaseMtfStorageCrateSmallPistol = ящик с пистолетом
+    .desc = { ent-BaseMtfStorageCrate.desc }
+ent-BaseMtfStorageCrateSmallGranade = ящик со взрывчаткой
     .desc = { ent-BaseMtfStorageCrate.desc }
 
 ent-MtfStorageCrateMedicalNtf = ящик с медицинским снаряжением
@@ -45,4 +47,15 @@ ent-MtfStorageCratePistolG22 = { ent-BaseMtfStorageCrateSmallPistol }
 ent-MtfStorageCratePistolVP78 = { ent-BaseMtfStorageCrateSmallPistol }
     .desc = { ent-BaseMtfStorageCrate.desc }
 ent-MtfStorageCrateRevolverSpearheadBlack = { ent-BaseMtfStorageCrateSmallPistol }
+    .desc = { ent-BaseMtfStorageCrate.desc }
+
+ent-MtfStorageCrateGrenadeFragTimer = { ent-BaseMtfStorageCrateSmallGranade }
+    .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateGrenadeBlastTimer = { ent-BaseMtfStorageCrateSmallGranade }
+    .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateGrenadeFragContact = { ent-BaseMtfStorageCrateSmallGranade }
+    .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateGrenadeBlastContact = { ent-BaseMtfStorageCrateSmallGranade }
+    .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateC4 = { ent-BaseMtfStorageCrateSmallGranade }
     .desc = { ent-BaseMtfStorageCrate.desc }
