@@ -254,7 +254,7 @@
         Radiation: 0.01
         Caustic: 0.1
   - type: Construction
-    graph: MtfBiohazardLocus
+    graph: MtfBiohazard
     node: start
 
 # Locus Mod
