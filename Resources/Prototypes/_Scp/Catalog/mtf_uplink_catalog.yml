@@ -1452,6 +1452,20 @@
   - !type:ListingLimitedStockCondition
     stock: 2
 
+- type: listing
+  id: ScpUplinkLocusKitUpgrade
+  name: shop-name-locuskit
+  description: shop-desc-locuskit
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: locus_upgrade }
+  productEntity: LocusKitUpgrade
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
 # Основное вооружение Элита
 - type: listing
   id: ScpUplinkMtfUnlockPrimaryArmsElite

@@ -28,7 +28,7 @@
     eyes: ClothingEyesGlassesSecurity
     head: ClothingHelmetMobileTaskForceMH
     gloves: ClothingHandsGlovesMobileTaskForceMH
-    outerClothing: ClothingOuterArmorMobileTaskForceMH
+    outerClothing: ClothingOuterArmorMtfBiohazard
     id: KeyCardMtfMHLeader
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch
@@ -70,7 +70,7 @@
     eyes: ClothingEyesGlassesSecurity
     head: ClothingHelmetMobileTaskForceMH
     gloves: ClothingHandsGlovesMobileTaskForceMH
-    outerClothing: ClothingOuterArmorMobileTaskForceMH
+    outerClothing: ClothingOuterArmorMtfBiohazard
     id: KeyCardMtfMHSpecialist
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch
@@ -110,7 +110,7 @@
     eyes: ClothingEyesGlassesSecurity
     head: ClothingHelmetMobileTaskForceMH
     gloves: ClothingHandsGlovesMobileTaskForceMH
-    outerClothing: ClothingOuterArmorMobileTaskForceMH
+    outerClothing: ClothingOuterArmorMtfBiohazard
     id: KeyCardMtfMHCadet
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch

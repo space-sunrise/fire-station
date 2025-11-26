@@ -53,6 +53,9 @@
   - type: HeldSpeedModifier
   - type: StaminaResistance
     damageCoefficient: 0.60
+  - type: Construction
+    graph: ArmorTactical
+    node: start
 
 - type: entity
   parent: ClothingOuterArmorTactical
@@ -65,6 +68,9 @@
     sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_med.rsi
   - type: Clothing
     sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_med.rsi
+  - type: Construction
+    graph: ArmorTacticalMed
+    node: start
 
 - type: entity
   parent: MtfVest
@@ -96,6 +102,9 @@
     maxItemSize: Small
     grid:
     - 0,0,2,1
+  - type: Construction
+    graph: ArmorScout
+    node: start
 
 - type: entity
   parent: MtfVest
@@ -124,6 +133,9 @@
   - type: HeldSpeedModifier
   - type: StaminaResistance
     damageCoefficient: 0.45
+  - type: Construction
+    graph: ArmorMedium
+    node: start
 
 - type: entity
   parent: ClothingOuterArmorTactical
@@ -152,6 +164,9 @@
     walkModifier: 1.0
     sprintModifier: 1.0
   - type: HeldSpeedModifier
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
 
 - type: entity
   parent: ClothingOuterArmorTactical
@@ -180,6 +195,9 @@
     walkModifier: 0.9
     sprintModifier: 0.9
   - type: HeldSpeedModifier
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
 
 - type: entity
   parent: ClothingOuterArmorSWAT
@@ -212,15 +230,15 @@
 
 - type: entity
   parent: [ClothingOuterBaseLarge, GeigerCounterClothing, AllowSuitStorageClothing]
-  id: ClothingOuterArmorMobileTaskForceMH
+  id: ClothingOuterArmorMtfBiohazard
   name: reinforced biohazard armor
   description: A sealed protective suit reinforced against corrosive agents and radiation exposure. Designed for extended field deployment in hostile environments.
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mh.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/biohazard.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mh.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/biohazard.rsi
   - type: Pierceable
     level: Metal
   - type: ClothingSpeedModifier
@@ -230,8 +248,96 @@
     modifiers:
       coefficients:
         Blunt: 0.5
-        Slash: 0.6
-        Piercing: 0.8
+        Slash: 0.5
+        Piercing: 0.9
         Heat: 0.2
         Radiation: 0.01
         Caustic: 0.1
+  - type: Construction
+    graph: MtfBiohazardLocus
+    node: start
+
+# Locus Mod
+- type: entity
+  parent: ClothingOuterArmorTactical
+  id: ClothingOuterArmorTacticalLocus
+  name: tactical armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF | Locus
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_tactical.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_tactical.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
+
+- type: entity
+  parent: ClothingOuterArmorTacticalLocus
+  id: ClothingOuterArmorTacticalMedLocus
+  name: med tactical armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF | Locus
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_med.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_med.rsi
+
+- type: entity
+  parent: ClothingOuterArmorScout
+  id: ClothingOuterArmorScoutLocus
+  name: scout armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF | Locus
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_scout.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_scout.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.95
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
+
+- type: entity
+  parent: ClothingOuterArmorMedium
+  id: ClothingOuterArmorMediumLocus
+  name: medium armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF | Locus
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_medium.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_medium.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.65
+    sprintModifier: 0.65
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
+
+- type: entity
+  parent: ClothingOuterArmorMtfBiohazard
+  id: ClothingOuterArmorMtfBiohazardLocus
+  name: reinforced biohazard armor
+  description: A sealed protective suit reinforced against corrosive agents and radiation exposure. Designed for extended field deployment in hostile environments.
+  suffix: MTF | Locus
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/biohazard.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/biohazard.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 1
+    sprintModifier: 0.8
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection

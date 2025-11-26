@@ -1944,8 +1944,9 @@ FoodBoxDonkpocketMoth: null
 ClearPDA: BaseFoundationPDA
 PassengerPDA: BaseFoundationPDA
 
-ClothingOuterHardsuitMH: ClothingOuterArmorMobileTaskForceMH
-ClothingOuterHardsuitMHLeader: ClothingOuterArmorMobileTaskForceMH
+ClothingOuterHardsuitMH: ClothingOuterArmorMtfBiohazard
+ClothingOuterHardsuitMHLeader: ClothingOuterArmorMtfBiohazard
+ClothingOuterArmorMobileTaskForceMH: ClothingOuterArmorMtfBiohazard
 ClothingHeadHelmetMHL: ClothingHelmetMobileTaskForceMH
 
 GunSafeInternalSecurityOperative: null

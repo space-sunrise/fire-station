@@ -114,6 +114,9 @@
     },
     {
       "name": "pouch_granade_lethal"
+    },
+    {
+      "name": "locus_upgrade"
     }
   ]
 }
