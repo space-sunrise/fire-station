@@ -46,6 +46,8 @@ ent-MtfStorageCratePistolG22 = { ent-BaseMtfStorageCrateSmallPistol }
     .desc = { ent-BaseMtfStorageCrate.desc }
 ent-MtfStorageCratePistolVP78 = { ent-BaseMtfStorageCrateSmallPistol }
     .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateRevolverSpearhead = { ent-BaseMtfStorageCrateSmallPistol }
+    .desc = { ent-BaseMtfStorageCrate.desc }
 ent-MtfStorageCrateRevolverSpearheadBlack = { ent-BaseMtfStorageCrateSmallPistol }
     .desc = { ent-BaseMtfStorageCrate.desc }
 

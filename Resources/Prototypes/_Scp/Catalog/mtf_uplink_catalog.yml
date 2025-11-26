@@ -611,6 +611,7 @@
     - ScpUplinkMtfStorageCratePistolACP14
     - ScpUplinkMtfStorageCratePistolG22
     - ScpUplinkMtfStorageCratePistolVP78
+    - ScpUplinkMtfStorageCrateRevolverSpearhead
     - ScpUplinkWeaponEarthGovLaserPistol
     whitelist:
     - ScpUplinkMtfUnlockPistols
@@ -629,6 +630,7 @@
     - ScpUplinkMtfStorageCratePistolACP14
     - ScpUplinkMtfStorageCratePistolG22
     - ScpUplinkMtfStorageCratePistolVP78
+    - ScpUplinkMtfStorageCrateRevolverSpearhead
     - ScpUplinkWeaponEarthGovLaserPistol
     whitelist:
     - ScpUplinkMtfUnlockPistols
@@ -647,6 +649,26 @@
     - ScpUplinkMtfStorageCratePistolACP14
     - ScpUplinkMtfStorageCratePistolG22
     - ScpUplinkMtfStorageCratePistolVP78
+    - ScpUplinkMtfStorageCrateRevolverSpearhead
+    - ScpUplinkWeaponEarthGovLaserPistol
+    whitelist:
+    - ScpUplinkMtfUnlockPistols
+
+- type: listing
+  id: ScpUplinkMtfStorageCrateRevolverSpearhead
+  productEntity: MtfStorageCrateRevolverSpearhead
+  name: shop-name-revolversbox
+  description: shop-desc-revolversbox
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: spearhead }
+  categories:
+  - ScpPistols
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCratePistolACP14
+    - ScpUplinkMtfStorageCratePistolG22
+    - ScpUplinkMtfStorageCratePistolVP78
+    - ScpUplinkMtfStorageCrateRevolverSpearhead
     - ScpUplinkWeaponEarthGovLaserPistol
     whitelist:
     - ScpUplinkMtfUnlockPistols
@@ -663,6 +685,7 @@
     - ScpUplinkMtfStorageCratePistolACP14
     - ScpUplinkMtfStorageCratePistolG22
     - ScpUplinkMtfStorageCratePistolVP78
+    - ScpUplinkMtfStorageCrateRevolverSpearhead
     - ScpUplinkWeaponEarthGovLaserPistol
     whitelist:
     - ScpUplinkMtfUnlockPistols
@@ -1316,6 +1339,30 @@
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: nvd }
   cost:
     SupplyPoint: 6
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkClothingShoesBootsMagCombat
+  productEntity: ClothingShoesBootsMagCombat
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: magbootscombat }
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkPortableRecharger
+  productEntity: PortableRecharger
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: port_recharge }
+  cost:
+    SupplyPoint: 8
   categories:
   - ScpAdditional
   conditions:

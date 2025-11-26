@@ -332,6 +332,21 @@
 
 - type: entity
   parent: BaseMtfStorageCrateSmallPistol
+  id: MtfStorageCrateRevolverSpearhead
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,5,1
+  - type: StorageFill
+    contents:
+      - id: WeaponRevolverSpearhead
+      - id: SpeedLoaderMagnumSP
+        amount: 3
+      - id: MagazineBoxMagnumSP
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallPistol
   id: MtfStorageCrateRevolverSpearheadBlack
   categories: [ HideSpawnMenu ]
   components:
