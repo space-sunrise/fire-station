@@ -1,37 +1,41 @@
 ﻿- type: entity
   id: Scp096CryOut
   categories: [ HideSpawnMenu ]
+  name: emit mournful scream
+  description: Through your tears, you let out a scream capable of damaging nearby visible structures. Use it to create cracks in your containment cell and escape.
   components:
   - type: Action
     useDelay: 60
     icon:
-      sprite: _Scp/Clothing/Mask/scp-096.rsi
-      state: icon
+      sprite: _Scp/Actions/scp-096.rsi
+      state: scream
   - type: InstantAction
     event: !type:Scp096CryOutEvent
 
 - type: entity
   id: Scp096FaceSkinRip
-  # TODO: Локализация, имя, описание
   categories: [ HideSpawnMenu ]
+  name: tear off face skin
+  description: You gradually tear the skin from your face, carving away your hated self. Once your face becomes an indistinguishable bloody mess, you will gain the ability to open blast doors, airlocks, and attack humans. And no one will be able to see your face anymore, unless it regenerates!
   components:
   - type: Action
     useDelay: 300 # 5 минут -> 25 минут до уничтожения лица
     icon:
-      sprite: _Scp/Clothing/Mask/scp-096.rsi
-      state: icon
+      sprite: _Scp/Actions/scp-096.rsi
+      state: rip
   - type: InstantAction
     event: !type:Scp096FaceSkinRipEvent
 
 - type: entity
   id: Scp096SitDown
-  # TODO: Локализация, имя, описание
   categories: [ HideSpawnMenu ]
+  name: sit down
+  description: You sit down in a sorrowful pose.
   components:
   - type: Action
     useDelay: 5
     icon:
-      sprite: _Scp/Clothing/Mask/scp-096.rsi
-      state: icon
+      sprite: _Scp/Actions/scp-096.rsi
+      state: sit
   - type: InstantAction
     event: !type:Scp096SitDownEvent
