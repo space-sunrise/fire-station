@@ -135,6 +135,42 @@
     },
     {
       "name": "armor_military_heavy_lead"
+    },
+    {
+      "name": "amnesiac_spray"
+    },
+    {
+      "name": "049_protection_implanter"
+    },
+    {
+      "name": "anti_teleportation_locus"
+    },
+    {
+      "name": "box_amnesiac"
+    },
+    {
+      "name": "closed_scp_cage"
+    },
+    {
+      "name": "crate_administration"
+    },
+    {
+      "name": "eye_droplets"
+    },
+    {
+      "name": "head_bag_scp_096"
+    },
+    {
+      "name": "head_integra"
+    },
+    {
+      "name": "helmet_obscure"
+    },
+    {
+      "name": "muzzle"
+    },
+    {
+      "name": "shoes_silent"
     }
   ]
 }

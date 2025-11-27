@@ -1,67 +1,111 @@
 - type: entity
   parent: BoxCardboard
+  id: BoxVialScpBase
+  abstract: true
+  components:
+  - type: Storage
+    hideStackVisualsWhenClosed: false
+    maxItemSize: Small
+    grid:
+    - 0,0,2,1
+    whitelist:
+      tags:
+      - CentrifugeCompatible
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { visible: false }
+          False: { state: closed, visible: true }
+  - type: Sprite
+    sprite: _RMC14/Objects/Storage/vial_box.rsi
+    layers:
+    - state: vialbox
+      map: ["enum.StorageVisualLayers.Base"]
+    - state: vialbox1
+      map: [ "vialbox1" ]
+      visible: false
+    - state: vialbox2
+      map: [ "vialbox2" ]
+      visible: false
+    - state: vialbox3
+      map: [ "vialbox3" ]
+      visible: false
+    - state: vialbox4
+      map: [ "vialbox4" ]
+      visible: false
+    - state: vialbox5
+      map: [ "vialbox5" ]
+      visible: false
+    - state: vialbox6
+      map: [ "vialbox6" ]
+      visible: false
+    - state: led1
+      shader: unshaded
+      map: [ "enum.LockVisualLayers.Lock" ]
+      visible: false
+  - type: ItemCounter
+    count:
+      tags:
+      - CentrifugeCompatible
+    composite: true
+    layerStates:
+    - vialbox1
+    - vialbox2
+    - vialbox3
+    - vialbox4
+    - vialbox5
+    - vialbox6
+  - type: Appearance
+
+- type: entity
+  parent: BoxVialScpBase
+  id: BoxVialScpBaseSecure
+  abstract: true
+  components:
+  - type: Lock
+  - type: LockVisuals
+    stateLocked: led1
+    stateUnlocked: led0
+  - type: AccessReader
+    access: [ [ "Medical" ], [ "Security" ] ]
+
+- type: entity
+  parent: BoxVialScpBaseSecure
   id: BoxVialAmnesiacA
   suffix: Amnesiac A
   components:
-  - type: Storage
-    grid:
-    - 0,0,2,1
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacA
         amount: 3
-  - type: Sprite
-    layers:
-      - state: box
-      - state: vials
 
 - type: entity
-  parent: BoxCardboard
+  parent: BoxVialScpBaseSecure
   id: BoxVialAmnesiacB
   suffix: Amnesiac B
   components:
-  - type: Storage
-    grid:
-    - 0,0,2,1
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacB
         amount: 3
-  - type: Sprite
-    layers:
-      - state: box
-      - state: vials
 
 - type: entity
-  parent: BoxCardboard
+  parent: BoxVialScpBaseSecure
   id: BoxVialAmnesiacC
   suffix: Amnesiac C
   components:
-  - type: Storage
-    grid:
-    - 0,0,2,1
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacC
         amount: 3
-  - type: Sprite
-    layers:
-      - state: box
-      - state: vials
 
 - type: entity
-  parent: BoxCardboard
+  parent: BoxVialScpBaseSecure
   id: BoxVialAmnesiacD
   suffix: Amnesiac D
   components:
-  - type: Storage
-    grid:
-    - 0,0,2,1
   - type: StorageFill
     contents:
       - id: ChemistryVialAmnesiacD
         amount: 3
-  - type: Sprite
-    layers:
-      - state: box
-      - state: vials

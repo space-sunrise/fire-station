@@ -100,7 +100,7 @@
     - node: start
       entity: ClothingOuterArmorMilitary
       edges:
-        - to: upgradeArmorMilitary
+        - to: upgradeArmorMilitarylocus
           steps:
             - tag: UpgradeLocusKit
               name: construction-graph-tag-upgradelocus
@@ -109,7 +109,7 @@
             - !type:AdminLog
               message: "Converted ClothingOuterArmorMilitary to ClothingOuterArmorMilitaryLocus"
               impact: High
-    - node: upgradeArmorMilitary
+    - node: upgradeArmorMilitarylocus
       entity: ClothingOuterArmorMilitaryLocus
 
 - type: constructionGraph
@@ -119,7 +119,7 @@
     - node: start
       entity: ClothingOuterArmorMilitaryHeavy
       edges:
-        - to: upgradeArmorMilitaryHeavy
+        - to: upgradeArmorMilitaryHeavylocus
           steps:
             - tag: UpgradeLocusKit
               name: construction-graph-tag-upgradelocus
@@ -128,5 +128,5 @@
             - !type:AdminLog
               message: "Converted ClothingOuterArmorMilitaryHeavy to ClothingOuterArmorMilitaryHeavyLocus"
               impact: High
-    - node: upgradeArmorMilitaryHeavy
+    - node: upgradeArmorMilitaryHeavylocus
       entity: ClothingOuterArmorMilitaryHeavyLocus
