@@ -242,7 +242,7 @@
   - type: Pierceable
     level: Metal
   - type: ClothingSpeedModifier
-    walkModifier: 1
+    walkModifier: 0.85
     sprintModifier: 0.85
   - type: Armor
     modifiers:
@@ -336,8 +336,8 @@
   - type: Clothing
     sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/biohazard.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 0.8
-    sprintModifier: 0.8
+    walkModifier: 0.80
+    sprintModifier: 0.80
   - type: ClothingAddComponents
     components:
     - type: Scp106Protection
