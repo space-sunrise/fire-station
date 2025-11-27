@@ -6,6 +6,7 @@ using Content.Shared.Localizations;
 using Robust.Shared.Prototypes;
 using System.Linq;
 using System.Text.Json.Serialization;
+using Content.Shared.Medical.Healing;
 
 namespace Content.Shared.EntityEffects.Effects
 {
@@ -90,37 +91,15 @@ namespace Content.Shared.EntityEffects.Effects
         public override void Effect(EntityEffectBaseArgs args)
         {
             var scale = FixedPoint2.New(1);
-            var damageSpec = new DamageSpecifier(Damage);
 
             if (args is EntityEffectReagentArgs reagentArgs)
             {
                 scale = ScaleByQuantity ? reagentArgs.Quantity * reagentArgs.Scale : reagentArgs.Scale;
             }
 
-            var universalReagentDamageModifier = args.EntityManager.System<DamageableSystem>().UniversalReagentDamageModifier;
-            var universalReagentHealModifier = args.EntityManager.System<DamageableSystem>().UniversalReagentHealModifier;
-
-            if (universalReagentDamageModifier != 1 || universalReagentHealModifier != 1)
-            {
-                foreach (var (type, val) in damageSpec.DamageDict)
-                {
-                    if (val < 0f)
-                    {
-                        damageSpec.DamageDict[type] = val * universalReagentHealModifier;
-                    }
-                    if (val > 0f)
-                    {
-                        damageSpec.DamageDict[type] = val * universalReagentDamageModifier;
-                    }
-                }
-            }
-
-            args.EntityManager.System<DamageableSystem>()
-                .TryChangeDamage(
-                    args.TargetEntity,
-                    damageSpec * scale,
-                    IgnoreResistances,
-                    interruptsDoAfters: false);
+            // Fire edit start - урон, наносимый лекарствами должен всегда учитывать резисты.
+            args.EntityManager.System<HealingSystem>().SmartHealing(args.TargetEntity, Damage, scale: scale.Float());
+            // Fire edit end
         }
     }
 }

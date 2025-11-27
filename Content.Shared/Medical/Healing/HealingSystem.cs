@@ -81,7 +81,8 @@ public sealed class HealingSystem : EntitySystem
         if (healing.ModifyBloodLevel != 0 && bloodstream != null)
             _bloodstreamSystem.TryModifyBloodLevel((target.Owner, bloodstream), healing.ModifyBloodLevel);
 
-        var healed = _damageable.TryChangeDamage(target.Owner, healing.Damage * _damageable.UniversalTopicalsHealModifier, true, origin: args.Args.User);
+        // Fire edit - нормальное лечение
+        var healed = SmartHealing(target, healing.Damage, args.Args.User);
 
         if (healed == null && healing.BloodlossModifier != 0)
             return;
@@ -317,6 +318,63 @@ public sealed class HealingSystem : EntitySystem
         return Math.Max(modifier, 1.5f);
     }
     //Sunrise-End
+
+    // Fire added start
+
+    /// <summary>
+    /// Метод для умного лечения или нанесения урона.
+    /// Лечение от лекарств будет игнорировать резисты цели.
+    /// А урон от лекарств - учитывать.
+    /// </summary>
+    /// <param name="target">Цель лечения</param>
+    /// <param name="damage">Урон(как положительный, так и отрицательный) лечения</param>
+    /// <param name="origin">Источник лечения</param>
+    /// <param name="scale">Коэффициент увеличение урона</param>
+    public DamageSpecifier? SmartHealing(EntityUid target, DamageSpecifier damage, EntityUid? origin = null, float scale = 1f)
+    {
+        var onlyHealingDamage = new DamageSpecifier();
+        var onlyDamage = new DamageSpecifier();
+
+        foreach (var (type, value) in damage.DamageDict)
+        {
+            if (value > 0)
+                onlyDamage.DamageDict[type] = value;
+            else
+                onlyHealingDamage.DamageDict[type] = value;
+        }
+
+        var healed = _damageable.TryChangeDamage(target,
+            onlyHealingDamage * _damageable.UniversalAllHealModifier * scale,
+            true,
+            false,
+            origin: origin);
+
+        var damaged = _damageable.TryChangeDamage(target,
+            damage * _damageable.UniversalAllDamageModifier * scale,
+            interruptsDoAfters: false,
+            canHeal: false,
+            origin: origin);
+
+        if (healed == null)
+            return damaged;
+
+        if (damaged == null)
+            return healed;
+
+        var merged = new Dictionary<string, FixedPoint2>(healed.DamageDict);
+        foreach (var (key, value) in damaged.DamageDict)
+        {
+            if (merged.TryGetValue(key, out var existing))
+                merged[key] = existing + value;
+            else
+                merged[key] = value;
+        }
+
+        return new DamageSpecifier
+        {
+            DamageDict = merged,
+        };
+    }
 }
 
 [ByRefEvent]
