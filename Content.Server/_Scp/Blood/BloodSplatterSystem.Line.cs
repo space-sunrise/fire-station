@@ -1,6 +1,5 @@
 ﻿using Content.Shared._Scp.Blood;
 using Robust.Shared.Map;
-using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Blood;
 
@@ -13,13 +12,12 @@ public sealed partial class BloodSplatterSystem
 
         _audio.PlayPvs(ent.Comp.BloodLineSpawnedSound, target);
 
-        SpawnBloodLines(ent, target, coords, ent.Comp.BloodLineProto, angle, _random.Next(1, 3));
+        SpawnBloodLines(ent, target, coords, angle, _random.Next(1, 3));
     }
 
     private void SpawnBloodLines(Entity<BloodSplattererComponent> ent,
         EntityUid target,
         MapCoordinates start,
-        EntProtoId proto,
         Angle rotation,
         int count = 1)
     {
@@ -31,7 +29,7 @@ public sealed partial class BloodSplatterSystem
         for (var i = 0; i <= count; i++)
         {
             var spawnPos = start.Position + direction * i;
-            var uid = Spawn(proto, new MapCoordinates(spawnPos, start.MapId));
+            var uid = Spawn(ent.Comp.BloodLineProto, new MapCoordinates(spawnPos, start.MapId));
 
             if (!TryTakeBlood(target, ent.Comp.BloodToTakeToPerLine, uid))
             {

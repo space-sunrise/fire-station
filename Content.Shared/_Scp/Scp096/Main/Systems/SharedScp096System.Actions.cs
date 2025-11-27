@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Shared._Scp.Blood;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.Actions;
@@ -161,6 +162,7 @@ public abstract partial class SharedScp096System
         _popup.PopupPredicted(message, ent, ent);
 
         _audio.PlayPredicted(ent.Comp.FaceSkinRipDamageToFaceSound, ent, ent);
+        SpawnBlood(ent.Owner);
 
         args.Handled = true;
     }
@@ -198,4 +200,6 @@ public abstract partial class SharedScp096System
 
         return true;
     }
+
+    protected virtual void SpawnBlood(Entity<BloodSplattererComponent?> ent) { }
 }

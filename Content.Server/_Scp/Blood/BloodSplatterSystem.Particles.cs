@@ -14,9 +14,13 @@ public sealed partial class BloodSplatterSystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
 
+    private EntityQuery<BloodParticleComponent> _particleQuery;
+
     private void InitializeParticles()
     {
         SubscribeLocalEvent<BloodParticleComponent, MapInitEvent>(OnInit);
+
+        _particleQuery = GetEntityQuery<BloodParticleComponent>();
     }
 
     private void OnInit(Entity<BloodParticleComponent> ent, ref MapInitEvent args)
@@ -71,7 +75,7 @@ public sealed partial class BloodSplatterSystem
         SpawnBloodEntity((uid, particle));
     }
 
-    private void SpawnBloodParticles(Entity<BloodSplattererComponent> ent, EntityUid target, float baseAngle, float spreadRadians)
+    public void SpawnBloodParticles(Entity<BloodSplattererComponent> ent, EntityUid target, float baseAngle, float spreadRadians, Vector2? distanceOverride = null)
     {
         var count = _random.Next(ent.Comp.Amount.X, ent.Comp.Amount.Y);
         if (count <= 0)
@@ -86,7 +90,7 @@ public sealed partial class BloodSplatterSystem
             var proto = _random.Pick(ent.Comp.Particles);
             var particle = Spawn(proto, coords);
 
-            if (!TryComp<BloodParticleComponent>(particle, out var particleComponent))
+            if (!_particleQuery.TryComp(particle, out var particleComponent))
             {
                 Log.Error($"Found blood PARTICLE without {nameof(BloodParticleComponent)}, prototype: {proto}");
                 continue;
@@ -99,7 +103,7 @@ public sealed partial class BloodSplatterSystem
                 return;
             }
 
-            CalculateMove((particle, particleComponent), ent.Comp.Distance, baseAngle, spreadRadians);
+            CalculateMove((particle, particleComponent), distanceOverride ?? ent.Comp.Distance, baseAngle, spreadRadians);
         }
     }
 

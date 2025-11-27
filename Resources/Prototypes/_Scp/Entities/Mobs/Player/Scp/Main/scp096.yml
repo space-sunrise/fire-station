@@ -149,6 +149,12 @@
     - Flashed
     - RadiationProtection
     - Drowsiness
+  - type: SolutionRegeneration
+    solution: bloodstream
+    generated:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 5
   - type: GuideHelp
     guides:
     - ScpResearch

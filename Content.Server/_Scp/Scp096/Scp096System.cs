@@ -1,4 +1,7 @@
-﻿using Content.Server._Scp.Other.BreakDoorOnCollide;
+﻿using System.Numerics;
+using Content.Server._Scp.Blood;
+using Content.Server._Scp.Other.BreakDoorOnCollide;
+using Content.Shared._Scp.Blood;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Main.Systems;
 using Robust.Server.Containers;
@@ -10,6 +13,11 @@ public sealed class Scp096System : SharedScp096System
 {
     [Dependency] private readonly PvsOverrideSystem _pvsOverride = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
+    [Dependency] private readonly BloodSplatterSystem _bloodSplatter = default!;
+
+    private const float BloodAngle = 360f;
+    private const float BloodRadians = (float)Math.PI * 2f;
+    private static readonly Vector2 BloodDistance = new (3f, 20f);
 
     public override void Initialize()
     {
@@ -71,5 +79,15 @@ public sealed class Scp096System : SharedScp096System
             return;
 
         breakDoor.Enabled = false;
+    }
+
+    protected override void SpawnBlood(Entity<BloodSplattererComponent?> ent)
+    {
+        base.SpawnBlood(ent);
+
+        if (!Resolve(ent, ref ent.Comp, false))
+            return;
+
+        _bloodSplatter.SpawnBloodParticles(ent!, ent, BloodAngle, BloodRadians, BloodDistance);
     }
 }
