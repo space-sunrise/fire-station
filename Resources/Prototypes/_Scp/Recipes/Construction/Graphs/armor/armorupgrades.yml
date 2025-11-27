@@ -92,3 +92,41 @@
               impact: High
     - node: upgradeMtfBiohazardlocus
       entity: ClothingOuterArmorMtfBiohazardLocus
+
+- type: constructionGraph
+  id: ArmorMilitary
+  start: start
+  graph:
+    - node: start
+      entity: ClothingOuterArmorMilitary
+      edges:
+        - to: upgradeArmorMilitary
+          steps:
+            - tag: UpgradeLocusKit
+              name: construction-graph-tag-upgradelocus
+              doAfter: 10
+          completed:
+            - !type:AdminLog
+              message: "Converted ClothingOuterArmorMilitary to ClothingOuterArmorMilitaryLocus"
+              impact: High
+    - node: upgradeArmorMilitary
+      entity: ClothingOuterArmorMilitaryLocus
+
+- type: constructionGraph
+  id: ArmorMilitaryHeavy
+  start: start
+  graph:
+    - node: start
+      entity: ClothingOuterArmorMilitaryHeavy
+      edges:
+        - to: upgradeArmorMilitaryHeavy
+          steps:
+            - tag: UpgradeLocusKit
+              name: construction-graph-tag-upgradelocus
+              doAfter: 10
+          completed:
+            - !type:AdminLog
+              message: "Converted ClothingOuterArmorMilitaryHeavy to ClothingOuterArmorMilitaryHeavyLocus"
+              impact: High
+    - node: upgradeArmorMilitaryHeavy
+      entity: ClothingOuterArmorMilitaryHeavyLocus

@@ -13,6 +13,9 @@
     whitelist:
     - NTFSpecialist
     - NTFCadet
+    - HDLeader
+    - HDSpecialist
+    - HDCadet
 
 # Эпсилон-11
 - type: listing
@@ -31,6 +34,11 @@
     - ScpUplinkMtfStorageCrateArmorScoutNtf
     - ScpUplinkMtfStorageCrateArmorNtf
     - ScpUplinkMtfStorageCrateArmorMediumNtf
+    - ScpUplinkMtfStorageCrateArmorHDMed
+    - ScpUplinkMtfStorageCrateArmorHD
+    - ScpUplinkMtfStorageCrateArmorHeavyHD
+    - ScpUplinkMtfStorageCrateArmorHDLeader
+    - ScpUplinkMtfStorageCrateArmorHeavyHDLeader
     whitelist:
     - ScpUplinkMtfUnlockScpKitStart
   - !type:BuyerJobCondition
@@ -54,6 +62,11 @@
     - ScpUplinkMtfStorageCrateArmorScoutNtf
     - ScpUplinkMtfStorageCrateArmorNtf
     - ScpUplinkMtfStorageCrateArmorMediumNtf
+    - ScpUplinkMtfStorageCrateArmorHDMed
+    - ScpUplinkMtfStorageCrateArmorHD
+    - ScpUplinkMtfStorageCrateArmorHeavyHD
+    - ScpUplinkMtfStorageCrateArmorHDLeader
+    - ScpUplinkMtfStorageCrateArmorHeavyHDLeader
     whitelist:
     - ScpUplinkMtfUnlockScpKitStart
   - !type:BuyerJobCondition
@@ -77,6 +90,11 @@
     - ScpUplinkMtfStorageCrateArmorScoutNtf
     - ScpUplinkMtfStorageCrateArmorNtf
     - ScpUplinkMtfStorageCrateArmorMediumNtf
+    - ScpUplinkMtfStorageCrateArmorHDMed
+    - ScpUplinkMtfStorageCrateArmorHD
+    - ScpUplinkMtfStorageCrateArmorHeavyHD
+    - ScpUplinkMtfStorageCrateArmorHDLeader
+    - ScpUplinkMtfStorageCrateArmorHeavyHDLeader
     whitelist:
     - ScpUplinkMtfUnlockScpKitStart
   - !type:BuyerJobCondition
@@ -100,6 +118,11 @@
     - ScpUplinkMtfStorageCrateArmorScoutNtf
     - ScpUplinkMtfStorageCrateArmorNtf
     - ScpUplinkMtfStorageCrateArmorMediumNtf
+    - ScpUplinkMtfStorageCrateArmorHDMed
+    - ScpUplinkMtfStorageCrateArmorHD
+    - ScpUplinkMtfStorageCrateArmorHeavyHD
+    - ScpUplinkMtfStorageCrateArmorHDLeader
+    - ScpUplinkMtfStorageCrateArmorHeavyHDLeader
     whitelist:
     - ScpUplinkMtfUnlockScpKitStart
   - !type:BuyerJobCondition
@@ -123,12 +146,156 @@
     - ScpUplinkMtfStorageCrateArmorScoutNtf
     - ScpUplinkMtfStorageCrateArmorNtf
     - ScpUplinkMtfStorageCrateArmorMediumNtf
+    - ScpUplinkMtfStorageCrateArmorHDMed
+    - ScpUplinkMtfStorageCrateArmorHD
+    - ScpUplinkMtfStorageCrateArmorHeavyHD
+    - ScpUplinkMtfStorageCrateArmorHDLeader
+    - ScpUplinkMtfStorageCrateArmorHeavyHDLeader
     whitelist:
     - ScpUplinkMtfUnlockScpKitStart
   - !type:BuyerJobCondition
     whitelist:
     - NTFSpecialist
     - NTFCadet
+
+# Ню-7
+- type: listing
+  id: ScpUplinkMtfStorageCrateArmorHDMed
+  productEntity: MtfStorageCrateArmorHDMed
+  name: shop-name-armorhdmed
+  description: shop-desc-armorhdmed
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: armor_military_med }
+  categories:
+  - ScpKitStart
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateMedicalNtf
+    - ScpUplinkMtfStorageCrateMedicalScoutNtf
+    - ScpUplinkMtfStorageCrateArmorScoutNtf
+    - ScpUplinkMtfStorageCrateArmorNtf
+    - ScpUplinkMtfStorageCrateArmorMediumNtf
+    - ScpUplinkMtfStorageCrateArmorHDMed
+    - ScpUplinkMtfStorageCrateArmorHD
+    - ScpUplinkMtfStorageCrateArmorHeavyHD
+    - ScpUplinkMtfStorageCrateArmorHDLeader
+    - ScpUplinkMtfStorageCrateArmorHeavyHDLeader
+    whitelist:
+    - ScpUplinkMtfUnlockScpKitStart
+  - !type:BuyerJobCondition
+    whitelist:
+    - HDSpecialist
+    - HDCadet
+
+- type: listing
+  id: ScpUplinkMtfStorageCrateArmorHD
+  productEntity: MtfStorageCrateArmorHD
+  name: shop-name-armorhd
+  description: shop-desc-armorhd
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: armor_military }
+  categories:
+  - ScpKitStart
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateMedicalNtf
+    - ScpUplinkMtfStorageCrateMedicalScoutNtf
+    - ScpUplinkMtfStorageCrateArmorScoutNtf
+    - ScpUplinkMtfStorageCrateArmorNtf
+    - ScpUplinkMtfStorageCrateArmorMediumNtf
+    - ScpUplinkMtfStorageCrateArmorHDMed
+    - ScpUplinkMtfStorageCrateArmorHD
+    - ScpUplinkMtfStorageCrateArmorHeavyHD
+    - ScpUplinkMtfStorageCrateArmorHDLeader
+    - ScpUplinkMtfStorageCrateArmorHeavyHDLeader
+    whitelist:
+    - ScpUplinkMtfUnlockScpKitStart
+  - !type:BuyerJobCondition
+    whitelist:
+    - HDSpecialist
+    - HDCadet
+
+- type: listing
+  id: ScpUplinkMtfStorageCrateArmorHeavyHD
+  productEntity: MtfStorageCrateArmorHeavyHD
+  name: shop-name-armorheavyhd
+  description: shop-desc-armorheavyhd
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: armor_military_heavy }
+  categories:
+  - ScpKitStart
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateMedicalNtf
+    - ScpUplinkMtfStorageCrateMedicalScoutNtf
+    - ScpUplinkMtfStorageCrateArmorScoutNtf
+    - ScpUplinkMtfStorageCrateArmorNtf
+    - ScpUplinkMtfStorageCrateArmorMediumNtf
+    - ScpUplinkMtfStorageCrateArmorHDMed
+    - ScpUplinkMtfStorageCrateArmorHD
+    - ScpUplinkMtfStorageCrateArmorHeavyHD
+    - ScpUplinkMtfStorageCrateArmorHDLeader
+    - ScpUplinkMtfStorageCrateArmorHeavyHDLeader
+    whitelist:
+    - ScpUplinkMtfUnlockScpKitStart
+  - !type:BuyerJobCondition
+    whitelist:
+    - HDSpecialist
+    - HDCadet
+
+- type: listing
+  id: ScpUplinkMtfStorageCrateArmorHDLeader
+  productEntity: MtfStorageCrateArmorHDLeader
+  name: shop-name-armorhdleader
+  description: shop-desc-armorhdleader
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: armor_military_lead }
+  categories:
+  - ScpKitStart
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateMedicalNtf
+    - ScpUplinkMtfStorageCrateMedicalScoutNtf
+    - ScpUplinkMtfStorageCrateArmorScoutNtf
+    - ScpUplinkMtfStorageCrateArmorNtf
+    - ScpUplinkMtfStorageCrateArmorMediumNtf
+    - ScpUplinkMtfStorageCrateArmorHDMed
+    - ScpUplinkMtfStorageCrateArmorHD
+    - ScpUplinkMtfStorageCrateArmorHeavyHD
+    - ScpUplinkMtfStorageCrateArmorHDLeader
+    - ScpUplinkMtfStorageCrateArmorHeavyHDLeader
+    whitelist:
+    - ScpUplinkMtfUnlockScpKitStart
+  - !type:BuyerJobCondition
+    whitelist:
+    - HDLeader
+
+- type: listing
+  id: ScpUplinkMtfStorageCrateArmorHeavyHDLeader
+  productEntity: MtfStorageCrateArmorHeavyHDLeader
+  name: shop-name-armorheavyhdleader
+  description: shop-desc-armorheavyhdleader
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: armor_military_heavy_lead }
+  categories:
+  - ScpKitStart
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateMedicalNtf
+    - ScpUplinkMtfStorageCrateMedicalScoutNtf
+    - ScpUplinkMtfStorageCrateArmorScoutNtf
+    - ScpUplinkMtfStorageCrateArmorNtf
+    - ScpUplinkMtfStorageCrateArmorMediumNtf
+    - ScpUplinkMtfStorageCrateArmorHDMed
+    - ScpUplinkMtfStorageCrateArmorHD
+    - ScpUplinkMtfStorageCrateArmorHeavyHD
+    - ScpUplinkMtfStorageCrateArmorHDLeader
+    - ScpUplinkMtfStorageCrateArmorHeavyHDLeader
+    whitelist:
+    - ScpUplinkMtfUnlockScpKitStart
+  - !type:BuyerJobCondition
+    whitelist:
+    - HDLeader
 
 # Экипировка
 - type: listing

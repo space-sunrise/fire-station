@@ -26,6 +26,16 @@ ent-BaseUplinkMTFCadetNtf = Планшет заказа снаряжения к�
     .desc = { ent-BaseUplinkMTF.desc }
     .suffix = Заполнен
 
+ent-BaseUplinkMTFLeaderHD = Планшет заказа снаряжения командира Ню-7
+    .desc = { ent-BaseUplinkMTF.desc }
+    .suffix = Заполнен
+ent-BaseUplinkMTFSpecialistHD = Планшет заказа снаряжения специалиста Ню-7
+    .desc = { ent-BaseUplinkMTF.desc }
+    .suffix = Заполнен
+ent-BaseUplinkMTFCadetHD = Планшет заказа снаряжения кадета Ню-7
+    .desc = { ent-BaseUplinkMTF.desc }
+    .suffix = Заполнен
+
 ent-BaseUplinkMTFLeaderBeta7 = Планшет заказа снаряжения командира Бета-7
     .desc = { ent-BaseUplinkMTF.desc }
     .suffix = Заполнен

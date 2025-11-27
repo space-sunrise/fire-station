@@ -9,6 +9,10 @@
     sprite: _Scp/Clothing/Mask/MTF/mtf.rsi
   - type: Clothing
     sprite: _Scp/Clothing/Mask/MTF/mtf.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - FullCovered
 
 - type: entity
   parent: ClothingMaskGasERT
@@ -21,6 +25,10 @@
     sprite: _Scp/Clothing/Mask/MTF/mtf_tactical_red.rsi
   - type: Clothing
     sprite: _Scp/Clothing/Mask/MTF/mtf_tactical_red.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - FullCovered
 
 - type: entity
   parent: ClothingMaskGasERT
@@ -33,3 +41,23 @@
     sprite: _Scp/Clothing/Mask/MTF/mtf_tactical_white.rsi
   - type: Clothing
     sprite: _Scp/Clothing/Mask/MTF/mtf_tactical_white.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - FullCovered
+
+- type: entity
+  parent: ClothingMaskGasERT
+  id: ClothingMaskMtfMilitary
+  name: military gas mask
+  description: Tactical protective mask with dense filtration. This model is used in regular troops.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Mask/MTF/mtf_military.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Mask/MTF/mtf_military.rsi
+  - type: Tag
+    tags:
+    - WhitelistChameleon
+    - FullCovered

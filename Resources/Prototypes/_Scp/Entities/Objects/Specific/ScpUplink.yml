@@ -102,6 +102,39 @@
     buySuccessSound:
       path: /Audio/Effects/Arcade/newgame.ogg
 
+#---------------------Аплинк/Визионер для Ню-7
+
+- type: entity
+  parent: [BaseUplinkMTF, StorePresetScpUplinkHDCommander]
+  id: BaseUplinkMTFLeaderHD
+  components:
+  - type: Store
+    balance:
+      SupplyPoint: 20
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+- type: entity
+  parent: [BaseUplinkMTF, StorePresetScpUplinkHD]
+  id: BaseUplinkMTFSpecialistHD
+  components:
+  - type: Store
+    balance:
+      SupplyPoint: 20
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
+- type: entity
+  parent: [BaseUplinkMTF, StorePresetScpUplinkHD]
+  id: BaseUplinkMTFCadetHD
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Store
+    balance:
+      SupplyPoint: 15
+    buySuccessSound:
+      path: /Audio/Effects/Arcade/newgame.ogg
+
 #---------------------Аплинк/Визионер для Бета-7
 
 - type: entity

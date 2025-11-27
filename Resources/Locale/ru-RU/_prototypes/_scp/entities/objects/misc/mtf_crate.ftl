@@ -20,6 +20,17 @@ ent-MtfStorageCrateArmorNtf = { ent-BaseMtfStorageCrate }
 ent-MtfStorageCrateArmorMediumNtf = ящик с тяжёлым снаряжением
     .desc = { ent-BaseMtfStorageCrate.desc }
 
+ent-MtfStorageCrateArmorHDMed = ящик с медицинским снаряжением
+    .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateArmorHD = { ent-BaseMtfStorageCrate }
+    .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateArmorHeavyHD = ящик с тяжёлым снаряжением
+    .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateArmorHDLeader = { ent-BaseMtfStorageCrate }
+    .desc = { ent-BaseMtfStorageCrate.desc }
+ent-MtfStorageCrateArmorHeavyHDLeader = ящик с тяжёлым снаряжением
+    .desc = { ent-BaseMtfStorageCrate.desc }
+
 ent-MtfStorageCrateMachineGunMG60 = { ent-BaseMtfStorageCrateSpecWeapon }
     .desc = { ent-BaseMtfStorageCrate.desc }
 ent-MtfStorageCrateGrenadeLauncherGL70 = { ent-BaseMtfStorageCrateSpecWeapon }

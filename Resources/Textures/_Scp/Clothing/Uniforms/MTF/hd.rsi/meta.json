@@ -1,5 +1,7 @@
 {
   "version": 1,
+  "license": "CLA",
+  "copyright": "Sprited by dragondidlo (discord)",
   "size": {
     "x": 32,
     "y": 32
@@ -10,14 +12,6 @@
     },
     {
       "name": "equipped-INNERCLOTHING",
-      "directions": 4
-    },
-    {
-      "name": "inhand-right",
-      "directions": 4
-    },
-    {
-      "name": "inhand-left",
       "directions": 4
     }
   ]

@@ -511,3 +511,100 @@
       - id: ClothingBeltMtfSparePouch
       - id: PouchDrop
       - id: PouchAmmo
+      
+# Коробки экипировки Ню-7
+- type: entity
+  id: MtfStorageCrateArmorHDMed
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,11,3
+    - 0,3,7,7
+    - 7,3,9,5
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorMilitary
+      - id: MtfTacticalBackpackMedFilled
+      - id: ClothingBeltMtfMedicalFilledMedic
+      - id: PouchMedical
+      - id: PouchAmmo
+      - id: ClothingMaskSecurityBalaklava
+      - id: ClothingMaskMtfMilitary
+
+- type: entity
+  id: MtfStorageCrateArmorHD
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,11,3
+    - 0,3,7,7
+    - 7,3,9,5
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorMilitary
+      - id: MtfTacticalBackpackFilled
+      - id: ClothingBeltMtfSparePouch
+      - id: PouchDrop
+      - id: PouchAmmo
+      - id: ClothingMaskSecurityBalaklava
+      - id: ClothingMaskMtfMilitary
+
+- type: entity
+  id: MtfStorageCrateArmorHeavyHD
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,11,3
+    - 0,3,7,7
+    - 7,3,9,5
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorMilitaryHeavy
+      - id: MtfTacticalBackpackFilled
+      - id: ClothingBeltMtfSparePouch
+      - id: PouchDrop
+      - id: PouchAmmo
+      - id: ClothingMaskSecurityBalaklava
+      - id: ClothingMaskMtfMilitary
+
+- type: entity
+  id: MtfStorageCrateArmorHDLeader
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,7,3
+    - 0,3,3,7
+    - 3,3,5,5
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorMilitary
+      - id: PouchDrop
+      - id: PouchAmmo
+      - id: ClothingMaskSecurityBalaklava
+      - id: ClothingMaskMtfMilitary
+
+- type: entity
+  id: MtfStorageCrateArmorHeavyHDLeader
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,7,3
+    - 0,3,3,7
+    - 3,3,5,5
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorMilitaryHeavy
+      - id: PouchDrop
+      - id: PouchAmmo
+      - id: ClothingMaskSecurityBalaklava
+      - id: ClothingMaskMtfMilitary

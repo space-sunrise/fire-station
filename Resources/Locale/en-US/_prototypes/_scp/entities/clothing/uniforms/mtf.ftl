@@ -11,5 +11,5 @@ ent-ClothingUniformMH = mobile task force uniform
     .desc = A drab grey-green uniform that shows signs of heavy chemical treatment.
     .suffix = MTF
 ent-ClothingUniformHD = mobile task force uniform
-    .desc = A heavy, dark-colored uniform with reinforced armor elements and the squad's distinctive insignia.
+    .desc = A tight uniform with urban camouflage, reinforced armor elements and distinctive unit insignia.
     .suffix = MTF

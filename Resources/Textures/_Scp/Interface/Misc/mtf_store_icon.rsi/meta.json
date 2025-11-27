@@ -120,6 +120,21 @@
     },
     {
       "name": "magbootscombat"
+    },
+    {
+      "name": "armor_military_med"
+    },
+    {
+      "name": "armor_military"
+    },
+    {
+      "name": "armor_military_heavy"
+    },
+    {
+      "name": "armor_military_lead"
+    },
+    {
+      "name": "armor_military_heavy_lead"
     }
   ]
 }

@@ -23,16 +23,14 @@
   equipment:
     jumpsuit: ClothingUniformHD
     back: MtfTacticalBackpack
-    shoes: ClothingShoesBootsHDFilled
-    head: ClothingHeadHatHDMAA
-    mask: ClothingMaskMtf
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorHD
+    shoes: ClothingShoesBootsMtfMilitaryFilled
+    head: ClothingHelmetMtfMilitary
+    eyes: ClothingEyesGlassesSecurityGuard
+    gloves: ClothingHandsGlovesMtfMilitary
     id: KeyCardMtfHDLeader
     ears: ClothingHeadsetAltMTF
     belt: ClothingBeltMtfSparePouch
-    pocket1: BaseUplinkMTFLeader
+    pocket1: BaseUplinkMTFLeaderHD
     pocket2: MobileTaskForcePDA
   storage:
     back:
@@ -41,6 +39,7 @@
     - CombatKnife
     - HandheldCrewMonitor
     - DoorRemoteCustom
+    - ClothingHeadHatHDMAA
 
 # Специалист
 - type: job
@@ -65,15 +64,13 @@
   id: HDSpecialistGear
   equipment:
     jumpsuit: ClothingUniformHD
-    shoes: ClothingShoesBootsHDFilled
-    mask: ClothingMaskMtf
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    # outerClothing: ClothingOuterArmorHD
+    shoes: ClothingShoesBootsMtfMilitaryFilled
+    head: ClothingHelmetMtfMilitary
+    eyes: ClothingEyesGlassesSecurityGuard
+    gloves: ClothingHandsGlovesMtfMilitary
     id: KeyCardMtfHDSpecialist
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMtfSparePouch
-    pocket1: BaseUplinkMTFSpecialist
+    pocket1: BaseUplinkMTFSpecialistHD
     pocket2: MobileTaskForcePDA
 
 # Кадет
@@ -99,13 +96,11 @@
   id: HDCadetGear
   equipment:
     jumpsuit: ClothingUniformHD
-    shoes: ClothingShoesBootsHDFilled
-    mask: ClothingMaskMtf
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    # outerClothing: ClothingOuterArmorHD
+    shoes: ClothingShoesBootsMtfMilitaryFilled
+    head: ClothingHelmetMtfMilitary
+    eyes: ClothingEyesGlassesSecurityGuard
+    gloves: ClothingHandsGlovesMtfMilitary
     id: KeyCardMtfHDCadet
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMtfSparePouch
-    pocket1: BaseUplinkMTFCadet
+    pocket1: BaseUplinkMTFCadetHD
     pocket2: MobileTaskForcePDA

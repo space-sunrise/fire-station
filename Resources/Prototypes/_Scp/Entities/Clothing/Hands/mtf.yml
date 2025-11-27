@@ -12,3 +12,15 @@
   - type: Insulated
   - type: Fiber
     fiberMaterial: fibers-insulative
+
+- type: entity
+  parent: ClothingHandsGlovesCombat
+  id: ClothingHandsGlovesMtfMilitary
+  name: military gloves
+  description: These tactical gloves with urban camo are fireproof and shockproof.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Hands/Gloves/MTF/mtf_military.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Hands/Gloves/MTF/mtf_military.rsi

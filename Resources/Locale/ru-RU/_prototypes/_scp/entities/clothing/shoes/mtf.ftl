@@ -1,6 +1,9 @@
-ent-ClothingShoesBootsHDFilled = подкованные сапоги
-    .desc = Тяжёлые армейские сапоги из плотной кожи с металлическим укреплением подошвы и характерной маркировкой отряда.
+ent-ClothingShoesBootsMtfMilitary = армейские ботинки
+    .desc = Тяжелые армейские ботинки с городским камуфляжем из плотной кожи с усиленной металлом подошвой.
     .suffix = МОГ
+ent-ClothingShoesBootsMtfMilitaryFilled = { ent-ClothingShoesBootsMtfMilitary }
+    .desc = { ent-ClothingShoesBootsMtfMilitary.desc }
+    .suffix = МОГ | Заполнен
 ent-ClothingShoesBootsNTFFilled = подкованные сапоги
     .desc = Усиленные тактические сапоги тёмного цвета, рассчитанные на длительное использование в полевых условиях.
     .suffix = МОГ

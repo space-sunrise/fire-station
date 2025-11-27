@@ -1,0 +1,18 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by peperino0290_92944 (discord) for Fire Station",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "equipped-OUTERCLOTHING",
+            "directions": 4
+        },
+        {
+            "name": "icon"
+        }
+    ]
+}
