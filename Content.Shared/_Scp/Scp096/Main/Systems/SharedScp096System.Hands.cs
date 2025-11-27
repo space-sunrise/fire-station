@@ -15,14 +15,27 @@ public abstract partial class SharedScp096System
 
     private void OnPickupAttempt(Entity<Scp096Component> ent, ref PickupAttemptEvent args)
     {
-        // Если все ок - ничего не делаем и выходим.
-        if (!_whitelist.IsBlacklistPass(ent.Comp.PickupBlacklist, args.Item))
+        if (_whitelist.IsWhitelistPass(ent.Comp.PickupBlacklist, args.Item))
+        {
+            CancelPickup(ent, ref args);
             return;
+        }
 
-        // Если все ок - ничего не делаем и выходим.
-        if (_whitelist.IsWhitelistPass(ent.Comp.PickupWhitelist, args.Item))
+        if (!_whitelist.IsWhitelistPassOrNull(ent.Comp.PickupWhitelist, args.Item))
+        {
+            CancelPickup(ent, ref args);
             return;
+        }
 
+        if (_standing.IsDown(ent.Owner))
+        {
+            CancelPickup(ent, ref args);
+            return;
+        }
+    }
+
+    private void CancelPickup(EntityUid ent, ref PickupAttemptEvent args)
+    {
         var message = Loc.GetString("scp096-cant-pickup", ("name", Name(args.Item)));
         _popup.PopupClient(message, args.Item, ent);
         args.Cancel();

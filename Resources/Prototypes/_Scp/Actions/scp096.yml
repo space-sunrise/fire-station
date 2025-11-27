@@ -3,7 +3,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 1
+    useDelay: 60
     icon:
       sprite: _Scp/Clothing/Mask/scp-096.rsi
       state: icon
@@ -16,9 +16,22 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 1
+    useDelay: 300 # 5 минут -> 25 минут до уничтожения лица
     icon:
       sprite: _Scp/Clothing/Mask/scp-096.rsi
       state: icon
   - type: InstantAction
     event: !type:Scp096FaceSkinRipEvent
+
+- type: entity
+  id: Scp096SitDown
+  # TODO: Локализация, имя, описание
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _Scp/Clothing/Mask/scp-096.rsi
+      state: icon
+  - type: InstantAction
+    event: !type:Scp096SitDownEvent

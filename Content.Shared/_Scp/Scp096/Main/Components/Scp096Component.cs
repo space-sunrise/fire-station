@@ -13,6 +13,7 @@ public sealed partial class Scp096Component : Component
     [DataField]
     public float ArgoAngle = 25f;
 
+    // TODO: Перенести это в свои компоненты, че это тут делает.
     [DataField, AutoNetworkedField]
     public TimeSpan RageDuration = TimeSpan.FromSeconds(240f); // 4 минуты
 
@@ -80,9 +81,6 @@ public sealed partial class Scp096Component : Component
     };
 
     [DataField]
-    public TimeSpan CryOutCooldown = TimeSpan.FromSeconds(60f);
-
-    [DataField]
     public float CryOutRange = 6f;
 
     [DataField]
@@ -106,9 +104,6 @@ public sealed partial class Scp096Component : Component
     #endregion
 
     #region Face skin rip
-
-    [DataField]
-    public TimeSpan FaceSkinRipCooldown = TimeSpan.FromMinutes(5f); // 25 минут до уничтожения лица
 
     [DataField]
     public TimeSpan FaceSkinRipDoAfterTime = TimeSpan.FromSeconds(5f);

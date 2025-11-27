@@ -2,24 +2,24 @@
 using Content.Shared._Scp.Blood;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp096.Main.Components;
-using Content.Shared.Actions;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Jittering;
 using Content.Shared.Mobs;
+using Content.Shared.Standing;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
-    [Dependency] private readonly SharedActionsSystem _actions = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
+    [Dependency] private readonly StandingStateSystem _standing = default!;
 
-    private readonly List<(EntityUid uid, TimeSpan end)> _pendingJitteringRemoval = [];
+    private readonly Dictionary<EntityUid, TimeSpan> _pendingJitteringRemoval = new ();
 
     private void InitializeActions()
     {
@@ -28,6 +28,8 @@ public abstract partial class SharedScp096System
         SubscribeLocalEvent<Scp096Component, Scp096FaceSkinRipEvent>(OnFaceSkinRip);
         SubscribeLocalEvent<Scp096Component, Scp096FaceSkinRipStartDoAfterEvent>(OnFaceSkinRipDoAfter);
         SubscribeLocalEvent<Scp096FaceComponent, MobStateChangedEvent>(OnFaceMobStateChanged);
+
+        SubscribeLocalEvent<Scp096Component, Scp096SitDownEvent>(OnSitDown);
     }
 
     private void UpdateActions()
@@ -35,15 +37,13 @@ public abstract partial class SharedScp096System
         if (_pendingJitteringRemoval.Count == 0)
             return;
 
-        for (var i = 0; i < _pendingJitteringRemoval.Count; i++)
+        foreach (var (ent, end) in _pendingJitteringRemoval)
         {
-            var (uid, end) = _pendingJitteringRemoval[i];
-
             if (_timing.CurTime < end)
                 continue;
 
-            RemComp<JitteringComponent>(uid);
-            _pendingJitteringRemoval.RemoveAt(i);
+            RemComp<JitteringComponent>(ent);
+            _pendingJitteringRemoval.Remove(ent);
         }
     }
 
@@ -70,10 +70,9 @@ public abstract partial class SharedScp096System
             return;
 
         _audio.PlayPredicted(ent.Comp.CryOutSound, ent, ent);
-        _actions.SetUseDelay(args.Action.AsNullable(), ent.Comp.CryOutCooldown);
 
         _jittering.AddJitter(ent, -10, 100f);
-        _pendingJitteringRemoval.Add((ent, _timing.CurTime + ent.Comp.CryOutJitterTime));
+        AddToPendingJittering(ent, _timing.CurTime + ent.Comp.CryOutJitterTime);
 
         args.Handled = true;
     }
@@ -117,10 +116,8 @@ public abstract partial class SharedScp096System
         if (!_doAfter.TryStartDoAfter(doAfterArgs))
             return;
 
-        _actions.SetUseDelay(args.Action.AsNullable(), ent.Comp.FaceSkinRipCooldown);
-
         _jittering.AddJitter(ent, -10, 100f);
-        _pendingJitteringRemoval.Add((ent, _timing.CurTime + ent.Comp.FaceSkinRipDoAfterTime));
+        AddToPendingJittering(ent, _timing.CurTime + ent.Comp.FaceSkinRipDoAfterTime);
 
         args.Handled = true;
     }
@@ -190,6 +187,52 @@ public abstract partial class SharedScp096System
         }
     }
 
+    private void OnSitDown(Entity<Scp096Component> ent, ref Scp096SitDownEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        if (HasComp<ActiveScp096HeatingUpComponent>(ent) || HasComp<ActiveScp096RageComponent>(ent))
+            return;
+
+        var sat = _standing.IsDown(ent.Owner);
+        args.Handled = TryToggleSit(ent.AsNullable(), sat);
+    }
+
+    private bool TryToggleSit(Entity<Scp096Component?> ent, bool haveToStand, bool useAnimation = true)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return false;
+
+        // Проверка на эквивалентность состояния.
+        // Пример - мы хотим встать, но уже стоим -> выходим из метода.
+        if (!_standing.IsDown(ent.Owner) == haveToStand)
+            return false;
+
+        var successful = haveToStand
+            ? _standing.Stand(ent.Owner)
+            : _standing.Down(ent.Owner, false);
+
+        if (!successful)
+            return false;
+
+        ToggleMovement(ent, haveToStand, false);
+
+        if (useAnimation)
+        {
+            ent.Comp.AgroToDeadAnimation = !haveToStand;
+            ent.Comp.DeadToIdleAnimation = haveToStand;
+            Dirty(ent);
+
+            AddToPendingAnimations((ent, ent.Comp), _timing.CurTime + ent.Comp.AnimationDuration);
+        }
+
+        return true;
+    }
+
     private bool IsValidForCryOutDamage(Entity<Scp096Component> ent, EntityUid uid)
     {
         if (!_whitelist.IsWhitelistPassOrNull(ent.Comp.CryOutWhitelist, uid))
@@ -199,6 +242,14 @@ public abstract partial class SharedScp096System
             return false;
 
         return true;
+    }
+
+    private void AddToPendingJittering(Entity<Scp096Component> ent, TimeSpan end)
+    {
+        if (_pendingJitteringRemoval.TryGetValue(ent, out var existingEnd))
+            _pendingJitteringRemoval[ent] = TimeSpan.FromSeconds(Math.Max(end.TotalSeconds, existingEnd.TotalSeconds));
+        else
+            _pendingJitteringRemoval[ent] = end;
     }
 
     protected virtual void SpawnBlood(Entity<BloodSplattererComponent?> ent) { }

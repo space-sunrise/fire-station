@@ -4,7 +4,6 @@ using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
-using Content.Shared.Interaction.Components;
 using Content.Shared.Jittering;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
@@ -16,14 +15,12 @@ namespace Content.Shared._Scp.Scp096.Main.Systems;
 public abstract partial class SharedScp096System
 {
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
-    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private readonly SharedStaminaSystem _stamina = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
+    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
 
-    private readonly List<(Entity<Scp096Component> ent, TimeSpan end)> _pendingAnimations = [];
-
-    private static readonly ProtoId<AmbientMusicPrototype> RageAmbience = "Scp096Rage";
+    public static readonly ProtoId<AmbientMusicPrototype> RageAmbience = "Scp096Rage";
 
     private void InitializeRage()
     {
@@ -53,9 +50,10 @@ public abstract partial class SharedScp096System
         if (_net.IsServer)
             RaiseNetworkEvent(new NetworkAmbientMusicEvent(RageAmbience), ent);
 
-        // Если скромник был застанен - убираем это
+        // Если скромник был застанен или сидит - убираем это
         _stamina.TryTakeStamina(ent, -100);
         _stun.TryUnstun(ent.Owner);
+        TryToggleSit(ent.Owner, true, false);
 
         // Заставляем трястись
         _jittering.AddJitter(ent, -10, 100);
@@ -69,16 +67,11 @@ public abstract partial class SharedScp096System
             Dirty(ent.Owner, restriction);
         }
 
-        // Устанавливаем ограничение на передвижение
-        EnsureComp<BlockMovementComponent>(ent);
-        EnsureComp<NoRotateOnInteractComponent>(ent);
-        _actionBlocker.UpdateCanMove(ent);
-
-        // Запрашиваем обновление внешнего вида
-        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
+        ToggleMovement(ent, false);
+        UpdateAppearance(ent);
 
         Dirty(ent);
-        Dirty(ent.Owner, scp096);
+        Dirty(ent, scp096);
     }
 
     private void OnHeatingUpShutdown(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentShutdown args)
@@ -99,9 +92,7 @@ public abstract partial class SharedScp096System
         }
 
         // Убираем ограничение на передвижение
-        RemComp<BlockMovementComponent>(ent);
-        RemComp<NoRotateOnInteractComponent>(ent);
-        _actionBlocker.UpdateCanMove(ent);
+        ToggleMovement(ent, true);
     }
 
     protected virtual void OnRageStart(Entity<ActiveScp096RageComponent> ent, ref ComponentStartup args)
@@ -122,7 +113,7 @@ public abstract partial class SharedScp096System
         UpdateAudio(ent.Owner, ent.Comp.RageSound);
 
         // Запрашиваем обновление внешнего вида
-        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
+        UpdateAppearance(ent);
 
         // Обновляем скорость передвижения
         RefreshSpeedModifiers(ent.Owner);
@@ -150,7 +141,7 @@ public abstract partial class SharedScp096System
         {
             // При усыплении скромника и так меняется внешний вид, нет смысла делать это несколько раз.
             // Поэтому запрашиваем обновление внешнего вида только при неуспешном усыплении
-            RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
+            UpdateAppearance(ent);
         }
 
         // Убираем наложенные ограничения на взаимодействие
@@ -163,7 +154,7 @@ public abstract partial class SharedScp096System
         }
 
         // Обновляем скорость передвижения
-        RefreshSpeedModifiers(ent.Owner);
+        RefreshSpeedModifiers(ent.Owner, true);
     }
 
     #endregion
@@ -196,28 +187,6 @@ public abstract partial class SharedScp096System
                 continue;
 
             OnRageTimeExceeded((uid, scp096));
-        }
-    }
-
-    private void UpdateAnimations()
-    {
-        if (_pendingAnimations.Count == 0)
-            return;
-
-        for (var i = _pendingAnimations.Count - 1; i >= 0; i--)
-        {
-            var (ent, end) = _pendingAnimations[i];
-            if (_timing.CurTime < end)
-                continue;
-
-            ent.Comp.AgroToDeadAnimation = false;
-            ent.Comp.DeadToIdleAnimation = false;
-            Dirty(ent);
-
-            // Запрашиваем обновление внешнего вида
-            RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
-
-            _pendingAnimations.RemoveAt(i);
         }
     }
 
@@ -266,20 +235,5 @@ public abstract partial class SharedScp096System
         EnsureComp<ActiveScp096RageComponent>(uid);
 
         return true;
-    }
-
-    private void UpdateAudio(Entity<Scp096Component?> ent, SoundSpecifier? sound = null)
-    {
-        if (!Resolve(ent, ref ent.Comp))
-            return;
-
-        sound ??= ent.Comp.CrySound;
-
-        ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
-
-        if (_net.IsServer)
-            ent.Comp.AudioStream = _audio.PlayPvs(sound, ent, sound.Params)?.Entity;
-
-        Dirty(ent);
     }
 }

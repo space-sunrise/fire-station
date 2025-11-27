@@ -78,6 +78,7 @@
     actions:
     - Scp096CryOut
     - Scp096FaceSkinRip
+    - Scp096SitDown
   - type: ContainerContainer
     containers:
       face_slot: !type:ContainerSlot
@@ -105,8 +106,8 @@
         Structural: 110
         Bloodloss: 5
   - type: MeleeThrowOnHit
-    speed: 3
-    distance: 0.5
+    speed: 2
+    distance: 0.25
   - type: Body
     prototype: Human # TODO: Кастомное тело
   - type: Inventory

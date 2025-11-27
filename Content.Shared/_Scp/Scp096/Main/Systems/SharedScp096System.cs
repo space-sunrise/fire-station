@@ -8,6 +8,7 @@ using Content.Shared.Actions;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode;
 using Content.Shared.DoAfter;
+using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lock;
 using Content.Shared.Mobs;
@@ -39,11 +40,13 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly SharedEntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly LockSystem _lock = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
-
     private static readonly SoundSpecifier StorageOpenSound = new SoundCollectionSpecifier("MetalBreak");
+
+    private readonly Dictionary<Entity<Scp096Component>, TimeSpan> _pendingAnimations = new ();
 
     private EntityQuery<ActiveScp096WithoutFaceComponent> _withoutFaceQuery;
 
@@ -97,7 +100,25 @@ public abstract partial class SharedScp096System : EntitySystem
         UpdateRage();
         UpdateAnimations();
         UpdateActions();
-        //UpdateWithoutFace();
+    }
+
+    private void UpdateAnimations()
+    {
+        if (_pendingAnimations.Count == 0)
+            return;
+
+        foreach (var (ent, end) in _pendingAnimations)
+        {
+            if (_timing.CurTime < end)
+                continue;
+
+            ent.Comp.AgroToDeadAnimation = false;
+            ent.Comp.DeadToIdleAnimation = false;
+            Dirty(ent);
+
+            UpdateAppearance(ent);
+            _pendingAnimations.Remove(ent);
+        }
     }
 
     #region Event handlers
@@ -151,6 +172,11 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void UpdateAppearance<T, TE>(Entity<T> ent, ref TE args) where T : IComponent
     {
+        UpdateAppearance(ent);
+    }
+
+    private void UpdateAppearance<T>(Entity<T> ent) where T : IComponent
+    {
         RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
     }
 
@@ -159,7 +185,7 @@ public abstract partial class SharedScp096System : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
+        UpdateAppearance(ent);
 
         if (args.NewMobState == MobState.Alive)
             return;
@@ -176,10 +202,8 @@ public abstract partial class SharedScp096System : EntitySystem
         ent.Comp.AgroToDeadAnimation = args.FellAsleep;
         Dirty(ent);
 
-        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
-
-        // Добавляем в список анимируемых объектов, чтобы через нужное время закончить анимации
-        _pendingAnimations.Add((ent, _timing.CurTime + ent.Comp.AnimationDuration));
+        UpdateAppearance(ent);
+        AddToPendingAnimations(ent, _timing.CurTime + ent.Comp.AnimationDuration);
     }
 
     private void OnAttackAttempt(Entity<Scp096Component> ent, ref AttackAttemptEvent args)
@@ -286,6 +310,24 @@ public abstract partial class SharedScp096System : EntitySystem
         _speedModifier.ChangeBaseSpeed(ent, newSpeed, newSpeed, 20.0f);
     }
 
+    private void UpdateAudio(Entity<Scp096Component?> ent, SoundSpecifier? sound = null)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return;
+
+        sound ??= ent.Comp.CrySound;
+
+        ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
+
+        if (_net.IsServer)
+            ent.Comp.AudioStream = _audio.PlayPvs(sound, ent)?.Entity;
+
+        if (ent.Comp.AudioStream != null)
+            _transform.SetParent(ent.Comp.AudioStream.Value, ent);
+
+        Dirty(ent);
+    }
+
     /// <summary>
     /// Проверяет, может ли скромник ударить эту сущность.
     /// Можно ударить свою цель, структуру, борга или животного.
@@ -345,7 +387,6 @@ public abstract partial class SharedScp096System : EntitySystem
             return false;
         }
 
-
         if (!TryComp<Scp096Component>(ent.Comp.FaceOwner, out var scp096Comp))
         {
             Log.Error($"Found SCP-096 face owner without {nameof(Scp096Component)}. Face - {ToPrettyString(ent)}, Owner - {ToPrettyString(ent.Comp.FaceOwner)}");
@@ -354,6 +395,39 @@ public abstract partial class SharedScp096System : EntitySystem
 
         scp096 = (ent.Comp.FaceOwner.Value, scp096Comp);
         return true;
+    }
+
+    private void ToggleMovement(EntityUid uid, bool enable, bool blockInteractions = true)
+    {
+        if (enable)
+        {
+            RemComp<BlockMovementComponent>(uid);
+            RemComp<NoRotateOnInteractComponent>(uid);
+        }
+        else
+        {
+            var blockMovement = EnsureComp<BlockMovementComponent>(uid);
+            if (!blockInteractions)
+            {
+                blockMovement.BlockInteraction = false;
+                Dirty(uid, blockMovement);
+            }
+
+            EnsureComp<NoRotateOnInteractComponent>(uid);
+        }
+
+        var finalResult = _actionBlocker.UpdateCanMove(uid);
+
+        if (enable != finalResult)
+            Log.Error($"Movement state mismatch! Tried to set movement to {enable}, but ended up with {finalResult}.");
+    }
+
+    private void AddToPendingAnimations(Entity<Scp096Component> ent, TimeSpan end)
+    {
+        if (_pendingAnimations.TryGetValue(ent, out var existingEnd))
+            _pendingAnimations[ent] = TimeSpan.FromSeconds(Math.Max(end.TotalSeconds, existingEnd.TotalSeconds));
+        else
+            _pendingAnimations[ent] = end;
     }
 
     #endregion
@@ -371,6 +445,7 @@ public sealed class Scp096RequireUpdateVisualsEvent(NetEntity netEntity) : Entit
 
 public sealed partial class Scp096CryOutEvent : InstantActionEvent;
 public sealed partial class Scp096FaceSkinRipEvent : InstantActionEvent;
+public sealed partial class Scp096SitDownEvent : InstantActionEvent;
 
 
 [Serializable, NetSerializable]
