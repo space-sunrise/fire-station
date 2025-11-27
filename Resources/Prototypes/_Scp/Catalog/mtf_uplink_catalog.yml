@@ -409,6 +409,7 @@
     - ScpUplinkMtfStorageCrateShotgunCombat
     - ScpUplinkMtfStorageCrateShotgunBulldog
     - ScpUplinkMtfStorageCrateRifleBR64
+    - ScpUplinkWeaponEarthGovLaserRifle
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
@@ -431,6 +432,7 @@
     - ScpUplinkMtfStorageCrateShotgunCombat
     - ScpUplinkMtfStorageCrateShotgunBulldog
     - ScpUplinkMtfStorageCrateRifleBR64
+    - ScpUplinkWeaponEarthGovLaserRifle
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
@@ -453,6 +455,7 @@
     - ScpUplinkMtfStorageCrateShotgunCombat
     - ScpUplinkMtfStorageCrateShotgunBulldog
     - ScpUplinkMtfStorageCrateRifleBR64
+    - ScpUplinkWeaponEarthGovLaserRifle
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
@@ -475,6 +478,7 @@
     - ScpUplinkMtfStorageCrateShotgunCombat
     - ScpUplinkMtfStorageCrateShotgunBulldog
     - ScpUplinkMtfStorageCrateRifleBR64
+    - ScpUplinkWeaponEarthGovLaserRifle
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
@@ -497,6 +501,7 @@
     - ScpUplinkMtfStorageCrateShotgunCombat
     - ScpUplinkMtfStorageCrateShotgunBulldog
     - ScpUplinkMtfStorageCrateRifleBR64
+    - ScpUplinkWeaponEarthGovLaserRifle
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
@@ -519,6 +524,7 @@
     - ScpUplinkMtfStorageCrateShotgunCombat
     - ScpUplinkMtfStorageCrateShotgunBulldog
     - ScpUplinkMtfStorageCrateRifleBR64
+    - ScpUplinkWeaponEarthGovLaserRifle
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
@@ -541,6 +547,7 @@
     - ScpUplinkMtfStorageCrateShotgunCombat
     - ScpUplinkMtfStorageCrateShotgunBulldog
     - ScpUplinkMtfStorageCrateRifleBR64
+    - ScpUplinkWeaponEarthGovLaserRifle
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
@@ -561,6 +568,7 @@
     - ScpUplinkMtfStorageCrateShotgunCombat
     - ScpUplinkMtfStorageCrateShotgunBulldog
     - ScpUplinkMtfStorageCrateRifleBR64
+    - ScpUplinkWeaponEarthGovLaserRifle
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
@@ -581,6 +589,7 @@
     - ScpUplinkMtfStorageCrateShotgunCombat
     - ScpUplinkMtfStorageCrateShotgunBulldog
     - ScpUplinkMtfStorageCrateRifleBR64
+    - ScpUplinkWeaponEarthGovLaserRifle
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms

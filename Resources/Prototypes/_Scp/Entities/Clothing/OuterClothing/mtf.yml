@@ -142,7 +142,7 @@
   id: ClothingOuterArmorTacticalAlpha
   name: modificated tactical armor vest
   description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability. It has undergone significant modifications.
-  suffix: MTF | Aplha-1
+  suffix: MTF | Alpha-1
   components:
   - type: Sprite
     sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_alpha.rsi
@@ -336,7 +336,7 @@
   - type: Clothing
     sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/biohazard.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1
+    walkModifier: 0.8
     sprintModifier: 0.8
   - type: ClothingAddComponents
     components:

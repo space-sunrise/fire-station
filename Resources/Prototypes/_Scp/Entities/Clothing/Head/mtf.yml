@@ -36,7 +36,7 @@
   parent: [ClothingHeadHelmetBasic, BaseFoldable]
   id: ClothingHelmetMtfTacticalNVG
   name: tactical helmet with nvg
-  description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors. NVF included.
+  description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors. NVG included.
   suffix: MTF | NVG
   components:
   - type: Sprite

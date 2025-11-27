@@ -26,7 +26,7 @@
     shoes: ClothingShoesSwat
     head: ClothingHelmetMtfTacticalNVG
     mask: ClothingMaskMtfTacticalWhite
-    eyes: ClothingEyesNVDHightMtf
+    eyes: ClothingEyesNVDHighMtf
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorTacticalOmega
     id: KeyCardMtfLLHLeader
@@ -69,7 +69,7 @@
     shoes: ClothingShoesSwat
     head: ClothingHelmetMtfTacticalNVG
     mask: ClothingMaskMtfTacticalWhite
-    eyes: ClothingEyesNVDHightMtf
+    eyes: ClothingEyesNVDHighMtf
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorTacticalOmega
     id: KeyCardMtfLLHSpecialist

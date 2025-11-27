@@ -1,6 +1,6 @@
 - type: entity
   name: MTF visor
-  id: ClothingEyesNVDHightMtf
+  id: ClothingEyesNVDHighMtf
   suffix: MTF | All
   parent: ClothingEyesNVDMedSec
   description: A special, expensive visor for mobile task forces. It includes a night vision device, medical and security equipment, as well as a Obscure system against SCP-096.

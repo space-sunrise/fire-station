@@ -14,7 +14,7 @@
   parent: ClothingMaskGasERT
   id: ClothingMaskMtfTacticalRed
   name: tactical gas mask
-  description: Tactical protective mask with dense filtration. Visor create the impression of an empty, emotionless gaze.
+  description: Tactical protective mask with dense filtration. The visor creates the impression of an empty, emotionless gaze.
   suffix: MTF
   components:
   - type: Sprite
@@ -26,7 +26,7 @@
   parent: ClothingMaskGasERT
   id: ClothingMaskMtfTacticalWhite
   name: tactical gas mask
-  description: Tactical protective mask with dense filtration. Visor create the impression of an empty, emotionless gaze.
+  description: Tactical protective mask with dense filtration. The visor creates the impression of an empty, emotionless gaze.
   suffix: MTF
   components:
   - type: Sprite

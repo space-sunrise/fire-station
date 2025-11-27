@@ -21,8 +21,8 @@
   parent: ClothingShoesMilitaryBase
   id: ClothingShoesRRHFilled
   name: special forces boots
-  description: Heavily modified special unit boots. Quiet check, non-slip sole, scabbard and convenience.
-  suffix: MTF | Alpha-1
+  description: Heavily modified special unit boots. Silent step, non-slip sole, scabbard and convenience.
+  suffix: MTF | DO NOT MAP
   components:
   - type: Sprite
     sprite: Clothing/Shoes/Specific/swat.rsi
