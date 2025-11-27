@@ -28,8 +28,8 @@
   - type: Item
     size: Ginormous
   - type: HeldSpeedModifier
-    walkModifier: 0.5
-    sprintModifier: 0.5
+    walkModifier: 0.4
+    sprintModifier: 0.4
   - type: GenericVisualizer
     visuals:
       enum.StorageVisuals.Open:
@@ -436,6 +436,7 @@
     grid:
     - 0,0,11,3
     - 0,3,7,7
+    - 7,3,8,5
   - type: StorageFill
     contents:
       - id: ClothingOuterArmorTacticalMed
@@ -443,6 +444,7 @@
       - id: ClothingBeltMtfMedicalFilledMedic
       - id: PouchMedical
       - id: PouchAmmo
+      - id: ClothingEyesHudMedSec
 
 - type: entity
   id: MtfStorageCrateMedicalScoutNtf
@@ -453,6 +455,7 @@
     grid:
     - 0,0,7,7
     - 8,0,10,2
+    - 7,3,8,4
   - type: StorageFill
     contents:
       - id: ClothingOuterArmorScout
@@ -460,6 +463,7 @@
       - id: ClothingBeltMtfMedicalFilledMedic
       - id: PouchMedical
       - id: PouchAmmo
+      - id: ClothingEyesHudMedSec
 
 - type: entity
   id: MtfStorageCrateArmorScoutNtf
@@ -515,14 +519,14 @@
 # Коробки экипировки Ню-7
 - type: entity
   id: MtfStorageCrateArmorHDMed
-  parent: BaseMtfStorageCrateArmor
+  parent: BaseMtfStorageCrateMedical
   categories: [ HideSpawnMenu ]
   components:
   - type: Storage
     grid:
     - 0,0,11,3
     - 0,3,7,7
-    - 7,3,9,5
+    - 7,3,10,5
   - type: StorageFill
     contents:
       - id: ClothingOuterArmorMilitary
@@ -532,6 +536,7 @@
       - id: PouchAmmo
       - id: ClothingMaskSecurityBalaklava
       - id: ClothingMaskMtfMilitary
+      - id: ClothingEyesHudMedSec
 
 - type: entity
   id: MtfStorageCrateArmorHD
