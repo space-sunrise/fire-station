@@ -25,7 +25,6 @@
   roles:
   - RRHLeader # А-1
   - RRHSpecialist
-  # - RRHCadet
   - HDLeader # Ню-7
   - HDSpecialist
   - HDCadet
@@ -34,7 +33,6 @@
   - MHCadet
   - LLHLeader # О-1
   - LLHSpecialist
-  # - LLHCadet
   - NTFLeader # Э-11
   - NTFSpecialist
   - NTFCadet

@@ -55,13 +55,6 @@
   - type: PresetIdCard
     job: LLHSpecialist
 
-# - type: entity
-#   parent: KeyCardMtfBase
-#   id: KeyCardMtfLLHCadet
-#   components:
-#   - type: PresetIdCard
-#     job: LLHCadet
-
 - type: entity
   parent: KeyCardMtfBase
   id: KeyCardMtfMHLeader
@@ -123,10 +116,3 @@
   components:
   - type: PresetIdCard
     job: RRHSpecialist
-
-# - type: entity
-#   parent: KeyCardMtfBase
-#   id: KeyCardMtfRRHCadet
-#   components:
-#   - type: PresetIdCard
-#     job: RRHCadet

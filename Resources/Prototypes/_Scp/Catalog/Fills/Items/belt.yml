@@ -135,9 +135,9 @@
   - type: StorageFill
     contents:
       - id: MagazineBauer127
-        amount: 6
+        amount: 5
       - id: MagazineBoxAntiMateriel
-        amount: 4
+        amount: 5
 
 - type: entity
   parent: ClothingBeltMtfAmmo
@@ -147,9 +147,9 @@
   - type: StorageFill
     contents:
       - id: MagazineMP5
-        amount: 6
+        amount: 5
       - id: MagazineBoxPistolSP
-        amount: 3
+        amount: 2
 
 - type: entity
   parent: ClothingBeltMtfAmmo
@@ -159,7 +159,7 @@
   - type: StorageFill
     contents:
       - id: MagazineP90
-        amount: 6
+        amount: 4
       - id: MagazineBoxPistolSP
         amount: 2
 
@@ -171,9 +171,9 @@
   - type: StorageFill
     contents:
       - id: MagazineRifleSP
-        amount: 6
+        amount: 5
       - id: MagazineBoxRifleSP
-        amount: 3
+        amount: 2
 
 - type: entity
   parent: ClothingBeltMtfAmmo
@@ -183,9 +183,9 @@
   - type: StorageFill
     contents:
       - id: MagazineRifleHeavySP
-        amount: 6
+        amount: 5
       - id: MagazineBoxHeavyRifleSP
-        amount: 4
+        amount: 5
 
 - type: entity
   parent: ClothingBeltMtfAmmo
@@ -207,7 +207,7 @@
   - type: StorageFill
     contents:
       - id: MagazineShotgun
-        amount: 6
+        amount: 5
       - id: BoxLethalshot
         amount: 2
 
@@ -221,4 +221,4 @@
       - id: MagazineRifleHeavyFMJ
         amount: 5
       - id: MagazineBoxHeavyRifleFMJ
-        amount: 3
+        amount: 5

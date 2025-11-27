@@ -2,69 +2,7 @@
   id: Scp106Abilities
   name: scp106-store-category-abilities
 
-
 #MTF uplink categoires
-# - type: storeCategory
-#   id: ScpAutoGun
-#   name: store-category-ntautogun
-#   priority: 0
-
-# - type: storeCategory
-#   id: ScpLasers
-#   name: store-category-ntlasers
-#   priority: 1
-
-# - type: storeCategory
-#   id: ScpPistols
-#   name: store-category-ntpistols
-#   priority: 2
-
-# - type: storeCategory
-#   id: ScpAmmo
-#   name: store-category-ntammo
-#   priority: 3
-
-# - type: storeCategory
-#   id: ScpMedicine
-#   name: store-category-ntmedicine
-#   priority: 4
-
-# - type: storeCategory
-#   id: ScpAdditional
-#   name: store-category-ntadditional
-#   priority: 5
-
-# - type: storeCategory
-#   id: ScpSanitary
-#   name: store-category-ntsanitary
-#   priority: 6
-
-# - type: storeCategory
-#   id: ScpEngineering
-#   name: store-category-ntengineering
-#   priority: 7
-
-# - type: storeCategory
-#   id: ScpEquipment
-#   name: store-category-ntequipment
-#   priority: 8
-
-# - type: storeCategory
-#   id: ScpMechs
-#   name: store-category-ntmechs
-#   priority: 9
-
-# - type: storeCategory
-#   id: ScpExplosive
-#   name: store-category-ntexplosive
-#   priority: 10
-
-# - type: storeCategory
-#   id: ScpRecontainment
-#   name: store-category-scprecontainment
-#   priority: 11
-
-#MTF uplink categoires NEW VEGAS
 
 - type: storeCategory # Для Э-11 и Ню-7
   id: ScpKitStart
