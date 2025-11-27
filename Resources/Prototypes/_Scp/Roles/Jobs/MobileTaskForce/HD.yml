@@ -22,32 +22,24 @@
   id: HDLeaderGear
   equipment:
     jumpsuit: ClothingUniformHD
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsHDFilled
-    head: ClothingHeadHatHDMAA
-    mask: ClothingMaskMTF
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorHD
+    back: MtfTacticalBackpack
+    shoes: ClothingShoesBootsMtfMilitaryFilled
+    head: ClothingHelmetMtfMilitary
+    eyes: ClothingEyesGlassesSecurityGuard
+    gloves: ClothingHandsGlovesMtfMilitary
     id: KeyCardMtfHDLeader
     ears: ClothingHeadsetAltMTF
-    belt: MTFCommanderWebbing
-    pocket1: BaseUplinkMTFLeader
-    pocket2: PouchAmmo
+    belt: ClothingBeltMtfSparePouch
+    pocket1: BaseUplinkMTFLeaderHD
+    pocket2: MobileTaskForcePDA
   storage:
     back:
-    - BoxMRE
+    - BoxMtfLeaderKit
     - Crowbar
     - CombatKnife
-    - HandheldCriminalRecordsMonitorUnpowered
-    - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - Handcuffs
-    - Handcuffs
+    - DoorRemoteCustom
+    - ClothingHeadHatHDMAA
 
 # Специалист
 - type: job
@@ -72,29 +64,14 @@
   id: HDSpecialistGear
   equipment:
     jumpsuit: ClothingUniformHD
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsHDFilled
-    head: ClothingHelmetMTF
-    mask: ClothingMaskMTF
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorHD
+    shoes: ClothingShoesBootsMtfMilitaryFilled
+    head: ClothingHelmetMtfMilitary
+    eyes: ClothingEyesGlassesSecurityGuard
+    gloves: ClothingHandsGlovesMtfMilitary
     id: KeyCardMtfHDSpecialist
     ears: ClothingHeadsetAltMTF
-    belt: MTFWebbing
-    pocket1: BaseUplinkMTFSpecialist
-    pocket2: PouchAmmo
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - Handcuffs
-    - Handcuffs
+    pocket1: BaseUplinkMTFSpecialistHD
+    pocket2: MobileTaskForcePDA
 
 # Кадет
 - type: job
@@ -119,26 +96,11 @@
   id: HDCadetGear
   equipment:
     jumpsuit: ClothingUniformHD
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsHDFilled
-    head: ClothingHelmetMTF
-    mask: ClothingMaskMTF
-    eyes: ClothingEyesGlassesSecurity
-    gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorHD
+    shoes: ClothingShoesBootsMtfMilitaryFilled
+    head: ClothingHelmetMtfMilitary
+    eyes: ClothingEyesGlassesSecurityGuard
+    gloves: ClothingHandsGlovesMtfMilitary
     id: KeyCardMtfHDCadet
     ears: ClothingHeadsetAltMTF
-    belt: MTFWebbing
-    pocket1: BaseUplinkMTFCadet
-    pocket2: PouchAmmo
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - Handcuffs
-    - Handcuffs
+    pocket1: BaseUplinkMTFCadetHD
+    pocket2: MobileTaskForcePDA

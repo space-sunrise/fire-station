@@ -1,0 +1,26 @@
+- type: entity
+  parent: MtfTacticalBackpack
+  id: MtfTacticalBackpackFilled
+  name: tactical backpack
+  description: A spacious tactical container with reinforced seams. The design is intended for prolonged use in field conditions.
+  categories: [ HideSpawnMenu ]
+  suffix: MTF | Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxMtfBaseKit
+      - id: Crowbar
+
+- type: entity
+  parent: MtfTacticalBackpackMed
+  id: MtfTacticalBackpackMedFilled
+  name: tactical backpack med
+  description: A spacious tactical container with reinforced seams. The design is intended for prolonged use in field conditions.
+  categories: [ HideSpawnMenu ]
+  suffix: MTF | Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxMtfBaseKit
+      - id: HandheldCrewMonitor
+      - id: Crowbar

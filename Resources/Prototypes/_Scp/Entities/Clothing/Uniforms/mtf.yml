@@ -50,7 +50,7 @@
   id: ClothingUniformHD
   parent: ClothingUniformBase
   name: mobile task force uniform
-  description: A heavy, dark-colored uniform with reinforced armor elements and the squad's distinctive insignia.
+  description: A tight uniform with urban camouflage, reinforced armor elements and distinctive unit insignia.
   suffix: MTF
   components:
   - type: Sprite

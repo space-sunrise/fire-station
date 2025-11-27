@@ -22,36 +22,24 @@
   id: MHLeaderGear
   equipment:
     jumpsuit: ClothingUniformMH
-    back: MTFSpecialistBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsNTFFilled
     mask: ClothingMaskGasMobileTaskForceMH
     eyes: ClothingEyesGlassesSecurity
     head: ClothingHelmetMobileTaskForceMH
     gloves: ClothingHandsGlovesMobileTaskForceMH
-    outerClothing: ClothingOuterArmorMobileTaskForceMH
+    outerClothing: ClothingOuterArmorMtfBiohazard
     id: KeyCardMtfMHLeader
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMilitaryWebbingMH
-    pocket1: BaseUplinkMTFLeader
-    pocket2: PouchAmmo
+    belt: ClothingBeltMtfSparePouch
+    pocket1: BaseUplinkMTFLeaderBeta7
+    pocket2: MobileTaskForcePDA
   storage:
     back:
-    - BoxMRE
+    - BoxMtfLeaderKit
     - Crowbar
-    - HandheldCriminalRecordsMonitorUnpowered
-    - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
-    - MobileTaskForcePDA
-    belt:
-    - MedkitCombatFilled
-    - ChemistryBottleEpinephrine
-    - ChemistryBottleEpinephrine
-    - PrefilledSyringe
-    - PillAmbuzolPlus
-    - PillAmbuzolPlus
-    - PillAmbuzol
-    - PillAmbuzol
-    - Handcuffs
+    - DoorRemoteCustom
 
 # Специалист
 - type: job
@@ -76,34 +64,22 @@
   id: MHSpecialistGear
   equipment:
     jumpsuit: ClothingUniformMH
-    back: MTFSpecialistBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsNTFFilled
     mask: ClothingMaskGasMobileTaskForceMH
     eyes: ClothingEyesGlassesSecurity
     head: ClothingHelmetMobileTaskForceMH
     gloves: ClothingHandsGlovesMobileTaskForceMH
-    outerClothing: ClothingOuterArmorMobileTaskForceMH
+    outerClothing: ClothingOuterArmorMtfBiohazard
     id: KeyCardMtfMHSpecialist
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMilitaryWebbingMH
-    pocket1: BaseUplinkMTFSpecialist
-    pocket2: PouchAmmo
+    belt: ClothingBeltMtfSparePouch
+    pocket1: BaseUplinkMTFSpecialistBeta7
+    pocket2: MobileTaskForcePDA
   storage:
     back:
     - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    belt:
-    - MedkitCombatFilled
-    - ChemistryBottleEpinephrine
-    - ChemistryBottleEpinephrine
-    - PrefilledSyringe
-    - PillAmbuzolPlus
-    - PillAmbuzolPlus
-    - PillAmbuzol
-    - PillAmbuzol
-    - Handcuffs
+    - BoxMtfBaseKit
 
 # Кадет
 - type: job
@@ -128,31 +104,19 @@
   id: MHCadetGear
   equipment:
     jumpsuit: ClothingUniformMH
-    back: MTFSpecialistBackpack
+    back: MtfTacticalBackpack
     shoes: ClothingShoesBootsNTFFilled
     mask: ClothingMaskGasMobileTaskForceMH
     eyes: ClothingEyesGlassesSecurity
     head: ClothingHelmetMobileTaskForceMH
     gloves: ClothingHandsGlovesMobileTaskForceMH
-    outerClothing: ClothingOuterArmorMobileTaskForceMH
+    outerClothing: ClothingOuterArmorMtfBiohazard
     id: KeyCardMtfMHCadet
     ears: ClothingHeadsetAltMTF
-    belt: ClothingBeltMilitaryWebbingMH
-    pocket1: BaseUplinkMTFCadet
-    pocket2: PouchAmmo
+    belt: ClothingBeltMtfSparePouch
+    pocket1: BaseUplinkMTFCadetBeta7
+    pocket2: MobileTaskForcePDA
   storage:
     back:
     - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    belt:
-    - MedkitCombatFilled
-    - ChemistryBottleEpinephrine
-    - ChemistryBottleEpinephrine
-    - PrefilledSyringe
-    - PillAmbuzolPlus
-    - PillAmbuzolPlus
-    - PillAmbuzol
-    - PillAmbuzol
-    - Handcuffs
+    - BoxMtfBaseKit

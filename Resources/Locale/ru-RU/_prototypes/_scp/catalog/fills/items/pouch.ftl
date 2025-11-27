@@ -1,0 +1,12 @@
+ent-PouchMedicalFilled = { ent-PouchMedical }
+    .desc = { ent-PouchMedical.desc }
+    .suffix = Заполненный
+ent-PouchExplosiveFilledNonLethal = { ent-PouchExplosive }
+    .desc = { ent-PouchExplosive.desc }
+    .suffix = Заполненный | Нелетальные
+ent-PouchExplosiveFilledLethal = { ent-PouchExplosive }
+    .desc = { ent-PouchExplosive.desc }
+    .suffix = Заполненный | Летальные
+ent-PouchExplosiveFilledIncendiary = { ent-PouchExplosive }
+    .desc = { ent-PouchExplosive.desc }
+    .suffix = Заполненный | Зажигательные

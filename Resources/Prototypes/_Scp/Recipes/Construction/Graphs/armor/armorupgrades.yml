@@ -1,0 +1,132 @@
+- type: constructionGraph
+  id: ArmorTactical
+  start: start
+  graph:
+    - node: start
+      entity: ClothingOuterArmorTactical
+      edges:
+        - to: upgradeArmorTacticallocus
+          steps:
+            - tag: UpgradeLocusKit
+              name: construction-graph-tag-upgradelocus
+              doAfter: 10
+          completed:
+            - !type:AdminLog
+              message: "Converted ClothingOuterArmorTactical to ClothingOuterArmorTacticalLocus"
+              impact: High
+    - node: upgradeArmorTacticallocus
+      entity: ClothingOuterArmorTacticalLocus
+
+- type: constructionGraph
+  id: ArmorTacticalMed
+  start: start
+  graph:
+    - node: start
+      entity: ClothingOuterArmorTacticalMed
+      edges:
+        - to: upgradeArmorTacticalMedlocus
+          steps:
+            - tag: UpgradeLocusKit
+              name: construction-graph-tag-upgradelocus
+              doAfter: 10
+          completed:
+            - !type:AdminLog
+              message: "Converted ClothingOuterArmorTacticalMed to ClothingOuterArmorTacticalMedLocus"
+              impact: High
+    - node: upgradeArmorTacticalMedlocus
+      entity: ClothingOuterArmorTacticalMedLocus
+
+- type: constructionGraph
+  id: ArmorScout
+  start: start
+  graph:
+    - node: start
+      entity: ClothingOuterArmorScout
+      edges:
+        - to: upgradeArmorScoutlocus
+          steps:
+            - tag: UpgradeLocusKit
+              name: construction-graph-tag-upgradelocus
+              doAfter: 10
+          completed:
+            - !type:AdminLog
+              message: "Converted ClothingOuterArmorScout to ClothingOuterArmorScoutLocus"
+              impact: High
+    - node: upgradeArmorScoutlocus
+      entity: ClothingOuterArmorScoutLocus
+
+- type: constructionGraph
+  id: ArmorMedium
+  start: start
+  graph:
+    - node: start
+      entity: ClothingOuterArmorMedium
+      edges:
+        - to: upgradeArmorMediumlocus
+          steps:
+            - tag: UpgradeLocusKit
+              name: construction-graph-tag-upgradelocus
+              doAfter: 10
+          completed:
+            - !type:AdminLog
+              message: "Converted ClothingOuterArmorMedium to ClothingOuterArmorMediumLocus"
+              impact: High
+    - node: upgradeArmorMediumlocus
+      entity: ClothingOuterArmorMediumLocus
+
+- type: constructionGraph
+  id: MtfBiohazard
+  start: start
+  graph:
+    - node: start
+      entity: ClothingOuterArmorMtfBiohazard
+      edges:
+        - to: upgradeMtfBiohazardlocus
+          steps:
+            - tag: UpgradeLocusKit
+              name: construction-graph-tag-upgradelocus
+              doAfter: 10
+          completed:
+            - !type:AdminLog
+              message: "Converted ClothingOuterArmorMtfBiohazard to ClothingOuterArmorMtfBiohazardLocus"
+              impact: High
+    - node: upgradeMtfBiohazardlocus
+      entity: ClothingOuterArmorMtfBiohazardLocus
+
+- type: constructionGraph
+  id: ArmorMilitary
+  start: start
+  graph:
+    - node: start
+      entity: ClothingOuterArmorMilitary
+      edges:
+        - to: upgradeArmorMilitarylocus
+          steps:
+            - tag: UpgradeLocusKit
+              name: construction-graph-tag-upgradelocus
+              doAfter: 10
+          completed:
+            - !type:AdminLog
+              message: "Converted ClothingOuterArmorMilitary to ClothingOuterArmorMilitaryLocus"
+              impact: High
+    - node: upgradeArmorMilitarylocus
+      entity: ClothingOuterArmorMilitaryLocus
+
+- type: constructionGraph
+  id: ArmorMilitaryHeavy
+  start: start
+  graph:
+    - node: start
+      entity: ClothingOuterArmorMilitaryHeavy
+      edges:
+        - to: upgradeArmorMilitaryHeavylocus
+          steps:
+            - tag: UpgradeLocusKit
+              name: construction-graph-tag-upgradelocus
+              doAfter: 10
+          completed:
+            - !type:AdminLog
+              message: "Converted ClothingOuterArmorMilitaryHeavy to ClothingOuterArmorMilitaryHeavyLocus"
+              impact: High
+    - node: upgradeArmorMilitaryHeavylocus
+      entity: ClothingOuterArmorMilitaryHeavyLocus

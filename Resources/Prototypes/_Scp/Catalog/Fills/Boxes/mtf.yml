@@ -1,0 +1,77 @@
+
+- type: entity
+  name: MTF base kit box
+  parent: [BoxCardboard, BaseCentcommContraband]
+  id: BoxMtfBaseKit
+  description: Base Security Kit created for MTF squad members.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Storage/boxes.rsi
+    layers:
+    - state: boxwidemtf
+    - state: wide_scp
+  - type: Storage
+    grid:
+    - 0,0,4,3
+  - type: StorageFill
+    contents:
+    - id: DoubleEmergencyOxygenTankFilled
+    - id: PinpointerUniversal
+    - id: DrinkMREFlask
+    - id: FoodSnackNutribrick
+    - id: FireExtinguisherMini
+    - id: CombatMedipen
+      amount: 2
+    - id: Tourniquet
+      amount: 2
+    - id: HandHeldMassScanner
+    - id: Telebaton
+    - id: FoodTinMRE
+
+- type: entity
+  name: MTF Leader kit box
+  parent: [BoxCardboard, BaseCentcommContraband]
+  id: BoxMtfLeaderKit
+  description: Base Leader Kit created for MTF squad commander.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Storage/boxes.rsi
+    layers:
+    - state: boxwidemtfgray
+    - state: wide_com
+  - type: Storage
+    grid:
+    - 0,0,4,3
+  - type: StorageFill
+    contents:
+    - id: PortableSurveillanceCameraMonitorUnpowered
+    - id: HandheldCriminalRecordsMonitorUnpowered
+    - id: PinpointerUniversal
+    - id: HandHeldMassScanner
+    - id: DoubleEmergencyOxygenTankFilled
+    - id: CombatMedipen
+      amount: 2
+    - id: Tourniquet
+      amount: 2
+    - id: FoodTinMRE
+    - id: FoodSnackMaysonEnergy
+    - id: DrinkMREFlask
+
+- type: entity
+  name: Ambuzol kit
+  parent: BoxCardboard
+  id: BoxAmbuzolKit
+  description: Base cardboard with ambuzol inside.
+  components:
+  - type: Sprite
+    layers:
+    - state: internals
+    - state: syringe
+  - type: StorageFill
+    contents:
+    - id: PillAmbuzolPlus
+      amount: 3
+    - id: PillAmbuzol
+      amount: 4
+    - id: SyringeAmbuzol
+      amount: 2

@@ -241,3 +241,5 @@ construction-graph-tag-energy-sword-desc = описание энергетиче
 construction-graph-tag-ground-cannabis-vita-desc = описание молотой каннабис вита
 # New tag
 construction-graph-tag-smokeablejointvita = курительный косяк вита
+# SCP Tag
+construction-graph-tag-upgradelocus = улучшение модуля Локус

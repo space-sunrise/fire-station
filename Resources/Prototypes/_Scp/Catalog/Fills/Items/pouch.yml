@@ -1,0 +1,49 @@
+- type: entity
+  parent: PouchMedical
+  id: PouchMedicalFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: MedicatedSuture
+      - id: RegenerativeMesh
+      - id: SyringeEphedrine
+      - id: SyringeSaline
+      - id: BruteAutoInjector
+      - id: BurnAutoInjector
+
+- type: entity
+  parent: PouchExplosive
+  id: PouchExplosiveFilledNonLethal
+  suffix: Filled NonLethal
+  components:
+  - type: StorageFill
+    contents:
+      - id: SmokeGrenade
+        amount: 2
+      - id: GrenadeFlashBang
+        amount: 2
+      - id: GrenadeStinger
+        amount: 2
+
+- type: entity
+  parent: PouchExplosive
+  id: PouchExplosiveFilledLethal
+  suffix: Filled Lethal
+  components:
+  - type: StorageFill
+    contents:
+      - id: ExGrenade
+        amount: 2
+      - id: GrenadeShrapnel
+        amount: 4
+
+- type: entity
+  parent: PouchExplosive
+  id: PouchExplosiveFilledIncendiary
+  suffix: Filled Incendiary
+  components:
+  - type: StorageFill
+    contents:
+      - id: GrenadeIncendiary
+        amount: 6

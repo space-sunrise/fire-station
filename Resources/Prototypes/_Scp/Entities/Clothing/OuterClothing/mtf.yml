@@ -1,12 +1,17 @@
 ﻿- type: entity
   parent: [AllowSuitStorageClothing, ClothingOuterStorageBase]
-  id: MTFVest
+  id: MtfVest
   name: armor vest
   description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
   suffix: MTF
+  abstract: true
   components:
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,3,3
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Regular/vest.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_tactical.rsi
   - type: Clothing
   - type: ExplosionResistance
     damageCoefficient: 0.8
@@ -16,37 +21,183 @@
         Blunt: 0.5
         Slash: 0.5
         Piercing: 0.5
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,3,1
 
 - type: entity
-  parent: MTFVest
-  id: ClothingOuterArmorNTF
-  name: armor vest
+  parent: MtfVest
+  id: ClothingOuterArmorTactical
+  name: tactical armor vest
   description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/ntf.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_tactical.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/ntf.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_tactical.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.45
+        Slash: 0.45
+        Piercing: 0.45
+        Heat: 0.5
+        Caustic: 0.7
+  - type: ClothingSpeedModifier
+    walkModifier: 0.8
+    sprintModifier: 0.8
+  - type: HeldSpeedModifier
+  - type: StaminaResistance
+    damageCoefficient: 0.60
+  - type: Construction
+    graph: ArmorTactical
+    node: start
 
 - type: entity
-  parent: [AllowSuitStorageClothing, ClothingOuterStorageBase]
-  id: MTFCommanderVest
-  name: commander's armor vest
-  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability. It features more formal trim and has an authoritative appearance.
+  parent: ClothingOuterArmorTactical
+  id: ClothingOuterArmorTacticalMed
+  name: med tactical armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/NineTailedFox/Commander/vest.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_med.rsi
   - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_med.rsi
+  - type: Construction
+    graph: ArmorTacticalMed
+    node: start
+
+- type: entity
+  parent: MtfVest
+  id: ClothingOuterArmorScout
+  name: scout armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF
+  components:
+  - type: Item
+    size: Huge
+    shape:
+    - 0,0,2,2
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_scout.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_scout.rsi
   - type: ExplosionResistance
-    damageCoefficient: 0.8
+    damageCoefficient: 0.85
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.7
+        Slash: 0.7
+        Piercing: 0.60
+        Heat: 0.75
+  - type: StaminaResistance
+    damageCoefficient: 0.75
+  - type: Storage
+    maxItemSize: Small
+    grid:
+    - 0,0,2,1
+  - type: Construction
+    graph: ArmorScout
+    node: start
+
+- type: entity
+  parent: MtfVest
+  id: ClothingOuterArmorMedium
+  name: medium armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_medium.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_medium.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
   - type: Armor
     modifiers:
       coefficients:
         Blunt: 0.4
         Slash: 0.4
+        Piercing: 0.3
+        Heat: 0.5
+        Caustic: 0.6
+  - type: ClothingSpeedModifier
+    walkModifier: 0.70
+    sprintModifier: 0.70
+  - type: HeldSpeedModifier
+  - type: StaminaResistance
+    damageCoefficient: 0.45
+  - type: Construction
+    graph: ArmorMedium
+    node: start
+
+- type: entity
+  parent: ClothingOuterArmorTactical
+  id: ClothingOuterArmorTacticalAlpha
+  name: modified tactical armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability. It has undergone significant modifications.
+  suffix: MTF | Alpha-1
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_alpha.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_alpha.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.4
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.4
+        Slash: 0.4
+        Piercing: 0.3
+        Heat: 0.5
+        Caustic: 0.5
+  - type: StaminaResistance
+    damageCoefficient: 0.4
+  - type: ClothingSpeedModifier
+    walkModifier: 1.0
+    sprintModifier: 1.0
+  - type: HeldSpeedModifier
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
+
+- type: entity
+  parent: ClothingOuterArmorTactical
+  id: ClothingOuterArmorTacticalOmega
+  name: modified tactical armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability. It has undergone some changes.
+  suffix: MTF | Omega-1
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_omega.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_omega.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.3
+        Slash: 0.3
         Piercing: 0.4
+        Heat: 0.6
+        Caustic: 0.6
+  - type: StaminaResistance
+    damageCoefficient: 0.3
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  - type: HeldSpeedModifier
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
 
 - type: entity
   parent: ClothingOuterArmorSWAT
@@ -55,6 +206,10 @@
   description: A massive armor set with thickened plates and signs of regular combat use.
   suffix: MTF
   components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_heavy.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_heavy.rsi
   - type: ExplosionResistance
     damageCoefficient: 0.3
   - type: Armor
@@ -70,46 +225,217 @@
     walkModifier: 0.7
     sprintModifier: 0.6
   - type: HeldSpeedModifier
-
-- type: entity
-  parent: ClothingOuterArmorHeavy
-  id: ClothingOuterArmorHeavyLLH
-  name: heavy armor
-  description: A smooth black surface, complemented by symbols that evoke associations of control and order.
-  suffix: MTF
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHelmetHeavyHD
 
 - type: entity
   parent: [ClothingOuterBaseLarge, GeigerCounterClothing, AllowSuitStorageClothing]
-  id: ClothingOuterArmorMobileTaskForceMH
+  id: ClothingOuterArmorMtfBiohazard
   name: reinforced biohazard armor
   description: A sealed protective suit reinforced against corrosive agents and radiation exposure. Designed for extended field deployment in hostile environments.
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mh.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/biohazard.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mh.rsi
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/biohazard.rsi
   - type: Pierceable
     level: Metal
   - type: ClothingSpeedModifier
-    walkModifier: 1
+    walkModifier: 0.85
     sprintModifier: 0.85
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.5
+        Slash: 0.5
+        Piercing: 0.9
+        Heat: 0.2
+        Radiation: 0.01
+        Caustic: 0.1
+  - type: Construction
+    graph: MtfBiohazard
+    node: start
+
+- type: entity
+  parent: MtfVest
+  id: ClothingOuterArmorMilitary
+  name: military armor vest
+  description: Military armor. Combines aramid fiber and ceramic plates. Significantly reduces the damage received from firearms, but slows down movement.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_armor_military.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_armor_military.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.7
   - type: Armor
     modifiers:
       coefficients:
         Blunt: 0.7
         Slash: 0.7
-        Piercing: 0.8
-        Heat: 0.2
-        Radiation: 0.01
-        Caustic: 0.1
+        Piercing: 0.4
+        Heat: 0.6
+        Caustic: 0.7
+  - type: ClothingSpeedModifier
+    walkModifier: 0.85
+    sprintModifier: 0.85
+  - type: HeldSpeedModifier
+  - type: StaminaResistance
+    damageCoefficient: 0.75
+  - type: Construction
+    graph: ArmorMilitary
+    node: start
 
 - type: entity
-  parent: ClothingOuterHardsuitDeathsquad
-  id: ClothingOuterHardsuitRRH
-  name: hardsuit
-  description: A charcoal-black sealed suit, its surface seems to absorb light. Its appearance evokes a vague sense of unease.
+  parent: MtfVest
+  id: ClothingOuterArmorMilitaryHeavy
+  name: heavy military armor vest
+  description: Heavy military armor. Combines aramid fiber and ceramic plates. Significantly reduces the damage received from firearms, but slows down movement.
   suffix: MTF
   components:
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHelmetHardsuitRRH
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_armor_military_heavy.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mtf_armor_military_heavy.rsi
+  - type: ExplosionResistance
+    damageCoefficient: 0.5
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.6
+        Slash: 0.55
+        Piercing: 0.3
+        Heat: 0.5
+        Caustic: 0.7
+  - type: ClothingSpeedModifier
+    walkModifier: 0.70
+    sprintModifier: 0.70
+  - type: HeldSpeedModifier
+  - type: StaminaResistance
+    damageCoefficient: 0.40
+  - type: Construction
+    graph: ArmorMilitaryHeavy
+    node: start
+
+# Locus Mod
+- type: entity
+  parent: ClothingOuterArmorTactical
+  id: ClothingOuterArmorTacticalLocus
+  name: tactical armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF | Locus
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_tactical.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_tactical.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.75
+    sprintModifier: 0.75
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
+
+- type: entity
+  parent: ClothingOuterArmorTacticalLocus
+  id: ClothingOuterArmorTacticalMedLocus
+  name: med tactical armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF | Locus
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_med.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_med.rsi
+
+- type: entity
+  parent: ClothingOuterArmorScout
+  id: ClothingOuterArmorScoutLocus
+  name: scout armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF | Locus
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_scout.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_scout.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.95
+    sprintModifier: 0.95
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
+
+- type: entity
+  parent: ClothingOuterArmorMedium
+  id: ClothingOuterArmorMediumLocus
+  name: medium armor vest
+  description: A reinforced black protective vest. Its minimalist design and durable construction convey a sense of reliability.
+  suffix: MTF | Locus
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_medium.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_medium.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.65
+    sprintModifier: 0.65
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
+
+- type: entity
+  parent: ClothingOuterArmorMtfBiohazard
+  id: ClothingOuterArmorMtfBiohazardLocus
+  name: reinforced biohazard armor
+  description: A sealed protective suit reinforced against corrosive agents and radiation exposure. Designed for extended field deployment in hostile environments.
+  suffix: MTF | Locus
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/biohazard.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/biohazard.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.80
+    sprintModifier: 0.80
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
+
+- type: entity
+  parent: ClothingOuterArmorMilitary
+  id: ClothingOuterArmorMilitaryLocus
+  name: military armor vest
+  description: Military armor. Combines aramid fiber and ceramic plates. Significantly reduces the damage received from firearms, but slows down movement.
+  suffix: MTF | Locus
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_armor_military.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_armor_military.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.80
+    sprintModifier: 0.80
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection
+
+- type: entity
+  parent: ClothingOuterArmorMilitaryHeavy
+  id: ClothingOuterArmorMilitaryHeavyLocus
+  name: heavy military armor vest
+  description: Heavy military armor. Combines aramid fiber and ceramic plates. Significantly reduces the damage received from firearms, but slows down movement.
+  suffix: MTF | Locus
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_armor_military_heavy.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Armor/MTF/mod_armor/mtf_armor_military_heavy.rsi
+  - type: ClothingSpeedModifier
+    walkModifier: 0.65
+    sprintModifier: 0.65
+  - type: ClothingAddComponents
+    components:
+    - type: Scp106Protection

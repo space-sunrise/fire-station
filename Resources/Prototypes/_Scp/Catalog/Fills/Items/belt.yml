@@ -1,0 +1,224 @@
+# Основное
+
+- type: entity
+  parent: ClothingBeltMtfConstruction
+  id: ClothingBeltMtfConstructionFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: CrowbarYellow
+      - id: Wrench
+      - id: Screwdriver
+      - id: Wirecutter
+      - id: Welder
+      - id: Multitool
+      - id: SheetPlasteel
+      - id: SheetSteel
+
+- type: entity
+  parent: ClothingBeltMtfUtility
+  id: ClothingBeltMtfUtilityFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: JawsOfLife
+      - id: PowerDrill
+      - id: Multitool
+      - id: WelderExperimental
+      - id: HolofanProjector
+      - id: trayScanner
+      - id: GasAnalyzer
+      - id: RCDRecharging
+
+- type: entity
+  parent: ClothingBeltMtfMedical
+  id: ClothingBeltMtfMedicalFilledMedic
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: MedicatedSuture
+        amount: 2
+      - id: RegenerativeMesh
+        amount: 2
+      - id: Hypospray
+      - id: AirlossAutoInjector
+        amount: 3
+      - id: ChemistryBottleOmnizine
+        amount: 2
+      - id: SyringeEphedrine
+      - id: DefibrillatorCompact
+
+- type: entity
+  parent: ClothingBeltMtfMedical
+  id: ClothingBeltMtfMedicalFilledOperative
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: MedipenCombatInjector
+      - id: Bloodpack
+      - id: Tourniquet
+        amount: 2
+      - id: MedicatedSuture
+      - id: RegenerativeMesh
+      - id: CombatMedipen
+        amount: 2
+      - id: PyraAutoInjector
+        amount: 2
+      - id: PunctAutoInjector
+        amount: 2
+      - id: AirlossAutoInjector
+        amount: 2
+
+- type: entity
+  parent: ClothingBeltMtfSecurity
+  id: ClothingBeltMtfSecurityFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: Stunbaton
+      - id: WeaponTaser
+      - id: Handcuffs
+        amount: 3
+      - id: GrenadeFlashBang
+      - id: TearGasGrenade
+      - id: GrenadeStinger
+
+- type: entity
+  parent: ClothingBeltMtfGrenade
+  id: ClothingBeltMtfGrenadeFilled
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+      - id: GrenadeShrapnel
+        amount: 4
+      - id: ExGrenade
+        amount: 2
+      - id: SmokeGrenade
+        amount: 2
+      - id: GrenadeFlashBang
+        amount: 2
+
+# Патроны
+- type: entity
+  parent: ClothingBeltMtfAmmo
+  id: ClothingBeltMtfAmmoMG60
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineLightMachineGunMG60
+        amount: 4
+
+- type: entity
+  parent: ClothingBeltMtfGrenade
+  id: ClothingBeltMtfGrenadeGL70
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+      - id: GrenadeFragTimer
+        amount: 5
+      - id: GrenadeBlastTimer
+        amount: 5
+
+- type: entity
+  parent: ClothingBeltMtfAmmo
+  id: ClothingBeltMtfAmmoBauer127
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineBauer127
+        amount: 5
+      - id: MagazineBoxAntiMateriel
+        amount: 5
+
+- type: entity
+  parent: ClothingBeltMtfAmmo
+  id: ClothingBeltMtfAmmoMP5
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineMP5
+        amount: 5
+      - id: MagazineBoxPistolSP
+        amount: 2
+
+- type: entity
+  parent: ClothingBeltMtfAmmo
+  id: ClothingBeltMtfAmmoP90
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineP90
+        amount: 4
+      - id: MagazineBoxPistolSP
+        amount: 2
+
+- type: entity
+  parent: ClothingBeltMtfAmmo
+  id: ClothingBeltMtfAmmoG36
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineRifleSP
+        amount: 5
+      - id: MagazineBoxRifleSP
+        amount: 2
+
+- type: entity
+  parent: ClothingBeltMtfAmmo
+  id: ClothingBeltMtfAmmoAR18
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineRifleHeavySP
+        amount: 5
+      - id: MagazineBoxHeavyRifleSP
+        amount: 5
+
+- type: entity
+  parent: ClothingBeltMtfAmmo
+  id: ClothingBeltMtfAmmoShellShotgun
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+      - id: BoxLethalshot
+        amount: 3
+      - id: SpeedLoaderShellShotgun
+        amount: 2
+
+- type: entity
+  parent: ClothingBeltMtfAmmo
+  id: ClothingBeltMtfAmmoShellShotgunBulldog
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineShotgun
+        amount: 5
+      - id: BoxLethalshot
+        amount: 2
+
+- type: entity
+  parent: ClothingBeltMtfAmmo
+  id: ClothingBeltMtfAmmoBR64
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: StorageFill
+    contents:
+      - id: MagazineRifleHeavyFMJ
+        amount: 5
+      - id: MagazineBoxHeavyRifleFMJ
+        amount: 5

@@ -1,6 +1,6 @@
 ﻿- type: entity
   parent: ClothingHeadHelmetBasic
-  id: ClothingHelmetMTF
+  id: ClothingHelmetMtf
   name: helmet
   description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
   suffix: MTF
@@ -12,41 +12,58 @@
 
 - type: entity
   parent: ClothingHeadHelmetBasic
-  id: ClothingHelmetNTF
-  name: helmet
+  id: ClothingHelmetMtfTactical
+  name: tactical helmet
   description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
   suffix: MTF
   components:
   - type: Sprite
-    sprite: _Scp/Clothing/Head/Helmets/MTF/ntf.rsi
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mtf_tactical.rsi
   - type: Clothing
-    sprite: _Scp/Clothing/Head/Helmets/MTF/ntf.rsi
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mtf_tactical.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+        Caustic: 0.95
+  - type: ExplosionResistance
+    damageCoefficient: 0.75
 
 - type: entity
-  parent: ClothingHeadHatSyndieMAA
+  parent: [ClothingHeadHelmetBasic, BaseFoldable]
+  id: ClothingHelmetMtfTacticalNVG
+  name: tactical helmet with nvg
+  description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors. NVG included.
+  suffix: MTF | NVG
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mtf_tactical_nvg.rsi
+    layers:
+    - state: icon
+      map: [ "unfoldedLayer" ]
+    - state: icon-up
+      map: ["foldedLayer"]
+      visible: false
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mtf_tactical_nvg.rsi
+  - type: Appearance
+  - type: Foldable
+    canFoldInsideContainer: true
+  - type: FoldableClothing
+    foldedEquippedPrefix: up
+    foldedHeldPrefix: up
+  # TODO 
+  # Убрать костыль и добавить функционал ПНВ.
+
+- type: entity
+  parent: ClothingHeadHatBeretSecurity
   id: ClothingHeadHatHDMAA
   name: commander's cap
   description: A neatly tailored cap with clear indicators of a command position.
   suffix: MTF
-
-- type: entity
-  parent: ClothingHeadHatCapLeatherHoS
-  id: ClothingHeadHatCapLeatherLLHLeader
-  name: commander's leather cap
-  description: The worn appearance of the item suggests long-term use. It evokes a sense of discipline and control.
-  suffix: MTF
-
-- type: entity
-  parent: ClothingHeadHelmetHardsuitDeathsquad
-  id: ClothingHeadHelmetHardsuitRRH
-  name: hardsuit helmet
-  description: A sealed protective module with a rigid locking mechanism. Prolonged observation induces a feeling of being covertly watched.
-  suffix: MTF
-  components:
-  - type: ClothingAddComponents
-    components:
-    - type: Scp096Protection
-      problemChance: 0.002 # 0,2% каждый тик проебаться
 
 - type: entity
   parent: ClothingHeadHatHoodRad
@@ -66,3 +83,39 @@
         Radiation: 0.65
         Blunt: 0.95
         Slash: 0.95
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHelmetHeavyHD
+  name: helmet
+  description: A reinforced protective headgear set. Its design provides resistance against ballistic and other damaging factors.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mtf_heavy.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mtf_heavy.rsi
+  - type: Tag
+    tags:
+    - FullCovered
+
+- type: entity
+  parent: ClothingHeadHelmetBasic
+  id: ClothingHelmetMtfMilitary
+  name: military helmet
+  description: A combat model of a tactical helmet. They are supplied specifically for private military companies.
+  suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mtf_military.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Head/Helmets/MTF/mtf_military.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.8
+        Heat: 0.9
+  - type: ExplosionResistance
+    damageCoefficient: 0.8

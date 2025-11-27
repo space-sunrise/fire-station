@@ -1,0 +1,177 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Made by dragondidlo (discord)",
+  "size": {
+    "x": 128,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "gov-laser-sniper"
+    },
+    {
+      "name": "eg-mg"
+    },
+    {
+      "name": "eg-p"
+    },
+    {
+      "name": "eg-r"
+    },
+    {
+      "name": "mg60"
+    },
+    {
+      "name": "bulldog"
+    },
+    {
+      "name": "cshotgun"
+    },
+    {
+      "name": "cycler"
+    },
+    {
+      "name": "taser"
+    },
+    {
+      "name": "spearheadblack"
+    },
+    {
+      "name": "sr127"
+    },
+    {
+      "name": "vp78"
+    },
+    {
+      "name": "ntf_scout_armor"
+    },
+    {
+      "name": "ntf_base_armor"
+    },
+    {
+      "name": "ntf_medium_armor"
+    },
+    {
+      "name": "ntf_med_base_armor"
+    },
+    {
+      "name": "ntf_med_scout_armor"
+    },
+    {
+      "name": "construction_belt_filled"
+    },
+    {
+      "name": "utility_belt_filled"
+    },
+    {
+      "name": "granage_belt_filled"
+    },
+    {
+      "name": "security_belt_filled"
+    },
+    {
+      "name": "med_medic_belt_filled"
+    },
+    {
+      "name": "med_operative_belt_filled"
+    },
+    {
+      "name": "granade_blast_box5"
+    },
+    {
+      "name": "granade_frag_box5"
+    },
+    {
+      "name": "c4_box5"
+    },
+    {
+      "name": "ambuzol_kit"
+    },
+    {
+      "name": "pouch_ammo"
+    },
+    {
+      "name": "pouch_drop"
+    },
+    {
+      "name": "pouch_granade"
+    },
+    {
+      "name": "pouch_med"
+    },
+    {
+      "name": "pouch_med_filled"
+    },
+    {
+      "name": "pouch_granade_incendiary"
+    },
+    {
+      "name": "pouch_granade_filled"
+    },
+    {
+      "name": "pouch_granade_nonlethal"
+    },
+    {
+      "name": "pouch_granade_lethal"
+    },
+    {
+      "name": "locus_upgrade"
+    },
+    {
+      "name": "magbootscombat"
+    },
+    {
+      "name": "armor_military_med"
+    },
+    {
+      "name": "armor_military"
+    },
+    {
+      "name": "armor_military_heavy"
+    },
+    {
+      "name": "armor_military_lead"
+    },
+    {
+      "name": "armor_military_heavy_lead"
+    },
+    {
+      "name": "amnesiac_spray"
+    },
+    {
+      "name": "049_protection_implanter"
+    },
+    {
+      "name": "anti_teleportation_locus"
+    },
+    {
+      "name": "box_amnesiac"
+    },
+    {
+      "name": "closed_scp_cage"
+    },
+    {
+      "name": "crate_administration"
+    },
+    {
+      "name": "eye_droplets"
+    },
+    {
+      "name": "head_bag_scp_096"
+    },
+    {
+      "name": "head_integra"
+    },
+    {
+      "name": "helmet_obscure"
+    },
+    {
+      "name": "muzzle"
+    },
+    {
+      "name": "shoes_silent"
+    }
+  ]
+}
+

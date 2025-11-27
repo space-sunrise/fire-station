@@ -22,31 +22,24 @@
   id: NTFLeaderGear
   equipment:
     jumpsuit: ClothingUniformNTF
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsNTFFilled
-    head: ClothingHelmetNTF
-    mask: ClothingMaskMTF
+    back: MtfTacticalBackpack
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHelmetMtfTactical
+    mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorNTF
+    outerClothing: ClothingOuterArmorTactical
+    belt: ClothingBeltMtfSparePouch
     id: KeyCardMtfNTFLeader
     ears: ClothingHeadsetAltMTF
-    belt: MTFCommanderWebbing
-    pocket1: BaseUplinkMTFLeader
-    pocket2: PouchAmmo
+    pocket1: BaseUplinkMTFLeaderNtf
+    pocket2: MobileTaskForcePDA
   storage:
     back:
-    - BoxMRE
+    - BoxMtfLeaderKit
     - Crowbar
-    - HandheldCriminalRecordsMonitorUnpowered
-    - DoubleEmergencyOxygenTankFilled
     - HandheldCrewMonitor
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - Handcuffs
-    - Handcuffs
+    - DoorRemoteCustom
 
 # Специалист
 - type: job
@@ -71,29 +64,15 @@
   id: NTFSpecialistGear
   equipment:
     jumpsuit: ClothingUniformNTF
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsNTFFilled
-    head: ClothingHelmetNTF
-    mask: ClothingMaskMTF
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHelmetMtfTactical
+    mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorNTF
     id: KeyCardMtfNTFSpecialist
     ears: ClothingHeadsetAltMTF
-    belt: MTFWebbing
-    pocket1: BaseUplinkMTFSpecialist
-    pocket2: PouchAmmo
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - Handcuffs
-    - Handcuffs
+    pocket1: BaseUplinkMTFSpecialistNtf
+    pocket2: MobileTaskForcePDA
 
 # Кадет
 - type: job
@@ -118,26 +97,12 @@
   id: NTFCadetGear
   equipment:
     jumpsuit: ClothingUniformNTF
-    back: MTFSpecialistBackpack
-    shoes: ClothingShoesBootsNTFFilled
-    head: ClothingHelmetNTF
-    mask: ClothingMaskMTF
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHelmetMtfTactical
+    mask: ClothingMaskMtf
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
-    outerClothing: ClothingOuterArmorNTF
     id: KeyCardMtfNTFCadet
     ears: ClothingHeadsetAltMTF
-    belt: MTFWebbing
-    pocket1: BaseUplinkMTFCadet
-    pocket2: PouchAmmo
-  storage:
-    back:
-    - Crowbar
-    - DoubleEmergencyOxygenTankFilled
-    - BoxMRE
-    - MobileTaskForcePDA
-    belt:
-    - Stunbaton
-    - Handcuffs
-    - Handcuffs
-    - Handcuffs
+    pocket1: BaseUplinkMTFCadetNtf
+    pocket2: MobileTaskForcePDA

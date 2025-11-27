@@ -51,7 +51,7 @@
 
 #очки ПХ
 - type: entity
-  parent: [NineTailedFoxSpecialistBalisticGlasses, BaseChaosContraband]
+  parent: [ClothingEyesGlassesMercenary, BaseChaosContraband]
   id: ChaosBalisticGlasses
   suffix: ""
   components:

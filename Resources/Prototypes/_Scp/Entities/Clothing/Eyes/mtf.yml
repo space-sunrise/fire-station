@@ -1,0 +1,25 @@
+- type: entity
+  name: MTF visor
+  id: ClothingEyesNVDHighMtf
+  suffix: MTF | All
+  parent: ClothingEyesNVDMedSec
+  description: A special, expensive visor for mobile task forces. It includes a night vision device, medical and security equipment, as well as a Obscure system against SCP-096.
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Eyes/mtf_spec_hud.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Eyes/mtf_spec_hud.rsi
+  - type: ClothingAddComponents
+    components:
+    - type: Scp096Protection
+      problemChance: 0.002 # 0,2% каждый тик проебаться
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot { }
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellScp

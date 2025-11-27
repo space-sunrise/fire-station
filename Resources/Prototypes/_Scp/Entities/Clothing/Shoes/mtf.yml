@@ -1,9 +1,28 @@
 ﻿- type: entity
-  parent: ClothingShoesBootsJackSecFilled
-  id: ClothingShoesBootsHDFilled
-  name: reinforced boots
-  description: Heavy army boots made of dense leather, featuring metal-reinforced soles and the squad's distinctive insignia.
+  parent: ClothingShoesBootsJackSec
+  id: ClothingShoesBootsMtfMilitary
+  name: military boots
+  description: Heavy military boots with urban camouflage made of thick leather with reinforced metal soles.
   suffix: MTF
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Shoes/Boots/MTF/mtf_military.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Shoes/Boots/MTF/mtf_military.rsi
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.45
+
+- type: entity
+  parent: ClothingShoesBootsMtfMilitary
+  id: ClothingShoesBootsMtfMilitaryFilled
+  name: military boots
+  description: Heavy military boots with urban camouflage made of thick leather with reinforced metal soles.
+  suffix: MTF | Filled
+  components:
+  - type: ContainerFill
+    containers:
+      item:
+      - CombatKnife
 
 - type: entity
   parent: ClothingShoesBootsJackSecFilled
@@ -16,3 +35,26 @@
     sprite: _Scp/Clothing/Shoes/Boots/MTF/ntf.rsi
   - type: Clothing
     sprite: _Scp/Clothing/Shoes/Boots/MTF/ntf.rsi
+
+- type: entity
+  parent: ClothingShoesMilitaryBase
+  id: ClothingShoesRRHFilled
+  name: special forces boots
+  description: Heavily modified special unit boots. Silent step, non-slip sole, scabbard and convenience.
+  suffix: MTF | DO NOT MAP
+  components:
+  - type: Sprite
+    sprite: Clothing/Shoes/Specific/swat.rsi
+  - type: Clothing
+    sprite: Clothing/Shoes/Specific/swat.rsi
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.35
+  - type: ClothingAddComponents
+    components:
+    - type: Scp939Protection
+  - type: FootstepModifier
+    footstepSoundCollection: null
+  - type: ContainerFill
+    containers:
+      item:
+      - CombatKnife

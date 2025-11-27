@@ -1,0 +1,615 @@
+- type: entity
+  id: BaseMtfStorageCrate
+  parent: BaseStorageItem
+  name: equipment crate
+  description: A heavy wooden box. Contains equipment for MTF operatives.
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Storage/loadout_kits.rsi
+    state: closed
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/toolbox_drop.ogg
+  - type: Storage
+    maxItemSize: Ginormous
+    grid:
+    - 0,0,16,13
+    storageOpenSound: /Audio/Effects/closetopen.ogg
+    storageCloseSound: /Audio/Effects/closetclose.ogg
+    blacklist:
+      components:
+      - Scp
+      tags:
+      - MTFLoadoutCrate
+  - type: Tag
+    tags:
+    - MTFLoadoutCrate
+  - type: Item
+    size: Ginormous
+  - type: HeldSpeedModifier
+    walkModifier: 0.4
+    sprintModifier: 0.4
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed }
+  - type: Appearance
+  - type: MultiHandedItem
+
+- type: entity
+  parent: BaseMtfStorageCrate
+  id: BaseMtfStorageCrateMedical
+  abstract: true
+  components:
+  - type: Sprite
+    state: closed_med
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed_med }
+
+- type: entity
+  parent: BaseMtfStorageCrate
+  id: BaseMtfStorageCrateArmor
+  abstract: true
+  components:
+  - type: Sprite
+    state: closed_armor
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed_armor }
+
+- type: entity
+  parent: BaseMtfStorageCrate
+  id: BaseMtfStorageCrateSpecWeapon
+  abstract: true
+  components:
+  - type: Storage
+    whitelist:
+      components:
+      - Clothing
+  - type: Sprite
+    state: closed_spec_weapon
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed_spec_weapon }
+
+- type: entity
+  parent: BaseMtfStorageCrate
+  id: BaseMtfStorageCrateWeapon
+  abstract: true
+  components:
+  - type: Storage
+    whitelist:
+      components:
+      - Clothing
+  - type: Sprite
+    state: closed_rifle
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed_rifle }
+
+- type: entity
+  parent: BaseMtfStorageCrate
+  id: BaseMtfStorageCrateSmallPistol
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Storage/loadout_kits_mini.rsi
+    state: closed_pistol
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed_pistol }
+
+- type: entity
+  parent: BaseMtfStorageCrate
+  id: BaseMtfStorageCrateSmallGranade
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Storage/loadout_kits_mini.rsi
+    state: closed_granade
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        base:
+          True: { state: open }
+          False: { state: closed_granade }
+
+# Коробки Оружия
+- type: entity
+  parent: BaseMtfStorageCrateSpecWeapon
+  id: MtfStorageCrateMachineGunMG60
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,8,3
+  - type: StorageFill
+    contents:
+      - id: WeaponLightMachineGunMG60
+      - id: ClothingBeltMtfAmmoMG60
+
+- type: entity
+  parent: BaseMtfStorageCrateSpecWeapon
+  id: MtfStorageCrateGrenadeLauncherGL70
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,6,2
+    - 0,3,3,6
+  - type: StorageFill
+    contents:
+      - id: WeaponGrenadeLauncherGL70
+      - id: ClothingBeltMtfGrenadeGL70
+
+- type: entity
+  parent: BaseMtfStorageCrateSpecWeapon
+  id: MtfStorageCrateRifleBauer127
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,8,2
+    - 0,3,3,6
+  - type: StorageFill
+    contents:
+      - id: WeaponRifleBauer127
+      - id: ClothingBeltMtfAmmoBauer127
+
+- type: entity
+  parent: BaseMtfStorageCrateWeapon
+  id: MtfStorageCrateSubMachineGunMP5
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,6,3
+  - type: StorageFill
+    contents:
+      - id: WeaponSubMachineGunMP5
+      - id: ClothingBeltMtfAmmoMP5
+
+- type: entity
+  parent: BaseMtfStorageCrateWeapon
+  id: MtfStorageCrateSubMachineGunP90
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,6,3
+  - type: StorageFill
+    contents:
+      - id: WeaponSubMachineGunP90
+      - id: ClothingBeltMtfAmmoP90
+
+- type: entity
+  parent: BaseMtfStorageCrateWeapon
+  id: MtfStorageCrateRifleG36
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,5,2
+    - 0,3,3,6
+  - type: StorageFill
+    contents:
+      - id: WeaponRifleG36
+      - id: ClothingBeltMtfAmmoG36
+
+- type: entity
+  parent: BaseMtfStorageCrateWeapon
+  id: MtfStorageCrateRifleAR18
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,8,2
+    - 0,0,3,3
+  - type: StorageFill
+    contents:
+      - id: WeaponRifleAR18
+      - id: ClothingBeltMtfAmmoAR18
+
+- type: entity
+  parent: BaseMtfStorageCrateWeapon
+  id: MtfStorageCrateShotgunCombat
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,8,0
+    - 0,0,3,3
+  - type: StorageFill
+    contents:
+      - id: WeaponShotgunCombat
+      - id: ClothingBeltMtfAmmoShellShotgun
+
+- type: entity
+  parent: BaseMtfStorageCrateWeapon
+  id: MtfStorageCrateShotgunBulldog
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,7,1
+    - 0,0,3,3
+  - type: StorageFill
+    contents:
+      - id: WeaponShotgunBulldog
+      - id: ClothingBeltMtfAmmoShellShotgunBulldog
+
+- type: entity
+  parent: BaseMtfStorageCrateWeapon
+  id: MtfStorageCrateRifleBR64
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,6,2
+    - 0,3,3,6
+  - type: StorageFill
+    contents:
+      - id: WeaponRifleBR64
+      - id: ClothingBeltMtfAmmoBR64
+
+- type: entity
+  parent: BaseMtfStorageCrateWeapon
+  id: MtfStorageCrateShotgunCycler
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,8,0
+    - 0,0,3,3
+  - type: StorageFill
+    contents:
+      - id: WeaponShotgunCycler
+      - id: ClothingBeltMtfAmmoShellShotgun
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallPistol
+  id: MtfStorageCratePistolACP14
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,5,1
+  - type: StorageFill
+    contents:
+      - id: WeaponPistolACP14
+      - id: MagazineACP14
+        amount: 3
+      - id: MagazineBoxPistol40SP
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallPistol
+  id: MtfStorageCratePistolG22
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,5,1
+  - type: StorageFill
+    contents:
+      - id: WeaponPistolG22
+      - id: MagazineGlock22
+        amount: 3
+      - id: MagazineBoxPistolSP
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallPistol
+  id: MtfStorageCratePistolVP78
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,5,1
+  - type: StorageFill
+    contents:
+      - id: WeaponPistolVP78
+      - id: MagazinePistol40FMJ
+        amount: 3
+      - id: MagazineBoxPistol40FMJ
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallPistol
+  id: MtfStorageCrateRevolverSpearhead
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,5,1
+  - type: StorageFill
+    contents:
+      - id: WeaponRevolverSpearhead
+      - id: SpeedLoaderMagnumSP
+        amount: 3
+      - id: MagazineBoxMagnumSP
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallPistol
+  id: MtfStorageCrateRevolverSpearheadBlack
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,5,1
+  - type: StorageFill
+    contents:
+      - id: WeaponRevolverSpearheadBlack
+      - id: SpeedLoaderMagnumSP
+        amount: 3
+      - id: MagazineBoxMagnumSP
+
+# Остальное
+- type: entity
+  parent: BaseMtfStorageCrateSmallGranade
+  id: MtfStorageCrateGrenadeFragTimer
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,4,1
+  - type: StorageFill
+    contents:
+      - id: GrenadeFragTimer
+        amount: 5
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallGranade
+  id: MtfStorageCrateGrenadeBlastTimer
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,4,1
+  - type: StorageFill
+    contents:
+      - id: GrenadeBlastTimer
+        amount: 5
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallGranade
+  id: MtfStorageCrateGrenadeFragContact
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,4,1
+  - type: StorageFill
+    contents:
+      - id: GrenadeFragContact
+        amount: 5
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallGranade
+  id: MtfStorageCrateGrenadeBlastContact
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,4,1
+  - type: StorageFill
+    contents:
+      - id: GrenadeBlastContact
+        amount: 5
+
+- type: entity
+  parent: BaseMtfStorageCrateSmallGranade
+  id: MtfStorageCrateC4
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,4,1
+  - type: StorageFill
+    contents:
+      - id: C4
+        amount: 5
+
+# Коробки экипировки Э-11
+- type: entity
+  id: MtfStorageCrateMedicalNtf
+  parent: BaseMtfStorageCrateMedical
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,11,3
+    - 0,3,7,7
+    - 7,3,8,5
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorTacticalMed
+      - id: MtfTacticalBackpackMedFilled
+      - id: ClothingBeltMtfMedicalFilledMedic
+      - id: PouchMedical
+      - id: PouchAmmo
+      - id: ClothingEyesHudMedSec
+
+- type: entity
+  id: MtfStorageCrateMedicalScoutNtf
+  parent: BaseMtfStorageCrateMedical
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,7,7
+    - 8,0,10,2
+    - 7,3,8,4
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorScout
+      - id: MtfTacticalBackpackMedFilled
+      - id: ClothingBeltMtfMedicalFilledMedic
+      - id: PouchMedical
+      - id: PouchAmmo
+      - id: ClothingEyesHudMedSec
+
+- type: entity
+  id: MtfStorageCrateArmorScoutNtf
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,7,7
+    - 8,0,10,2
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorScout
+      - id: MtfTacticalBackpackFilled
+      - id: ClothingBeltMtfSparePouch
+      - id: PouchDrop
+      - id: PouchAmmo
+
+- type: entity
+  id: MtfStorageCrateArmorNtf
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,11,3
+    - 0,3,7,7
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorTactical
+      - id: MtfTacticalBackpackFilled
+      - id: ClothingBeltMtfSparePouch
+      - id: PouchDrop
+      - id: PouchAmmo
+
+- type: entity
+  id: MtfStorageCrateArmorMediumNtf
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,11,3
+    - 0,3,7,7
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorMedium
+      - id: MtfTacticalBackpackFilled
+      - id: ClothingBeltMtfSparePouch
+      - id: PouchDrop
+      - id: PouchAmmo
+      
+# Коробки экипировки Ню-7
+- type: entity
+  id: MtfStorageCrateArmorHDMed
+  parent: BaseMtfStorageCrateMedical
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,11,3
+    - 0,3,7,7
+    - 7,3,10,5
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorMilitary
+      - id: MtfTacticalBackpackMedFilled
+      - id: ClothingBeltMtfMedicalFilledMedic
+      - id: PouchMedical
+      - id: PouchAmmo
+      - id: ClothingMaskSecurityBalaklava
+      - id: ClothingMaskMtfMilitary
+      - id: ClothingEyesHudMedSec
+
+- type: entity
+  id: MtfStorageCrateArmorHD
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,11,3
+    - 0,3,7,7
+    - 7,3,9,5
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorMilitary
+      - id: MtfTacticalBackpackFilled
+      - id: ClothingBeltMtfSparePouch
+      - id: PouchDrop
+      - id: PouchAmmo
+      - id: ClothingMaskSecurityBalaklava
+      - id: ClothingMaskMtfMilitary
+
+- type: entity
+  id: MtfStorageCrateArmorHeavyHD
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,11,3
+    - 0,3,7,7
+    - 7,3,9,5
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorMilitaryHeavy
+      - id: MtfTacticalBackpackFilled
+      - id: ClothingBeltMtfSparePouch
+      - id: PouchDrop
+      - id: PouchAmmo
+      - id: ClothingMaskSecurityBalaklava
+      - id: ClothingMaskMtfMilitary
+
+- type: entity
+  id: MtfStorageCrateArmorHDLeader
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,7,3
+    - 0,3,3,7
+    - 3,3,5,5
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorMilitary
+      - id: PouchDrop
+      - id: PouchAmmo
+      - id: ClothingMaskSecurityBalaklava
+      - id: ClothingMaskMtfMilitary
+
+- type: entity
+  id: MtfStorageCrateArmorHeavyHDLeader
+  parent: BaseMtfStorageCrateArmor
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,7,3
+    - 0,3,3,7
+    - 3,3,5,5
+  - type: StorageFill
+    contents:
+      - id: ClothingOuterArmorMilitaryHeavy
+      - id: PouchDrop
+      - id: PouchAmmo
+      - id: ClothingMaskSecurityBalaklava
+      - id: ClothingMaskMtfMilitary

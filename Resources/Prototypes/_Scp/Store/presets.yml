@@ -1,25 +1,242 @@
 ﻿- type: entity
+  id: StorePresetScpUplinkDebug
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpKitStart
+    - ScpEquipment
+    - ScpEquipmentBelts
+    - ScpPrimaryArms
+    - ScpPrimaryArmsElite
+    - ScpPistols
+    - ScpPistolsElite
+    - ScpAmmo
+    - ScpExplosive
+    - ScpAdditional
+    - ScpAdditionalBiohazard
+    - ScpRecontainment
+    - ScpSpecWeapon
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
+- type: entity
   id: StorePresetScpUplink
   abstract: true
   components:
   - type: Store
     name: store-preset-name-ScpUplink
     categories:
-    - ScpAutoGun
-    - ScpLasers
+    - ScpKitStart
+    - ScpEquipment
+    - ScpEquipmentBelts
+    - ScpPrimaryArms
     - ScpPistols
     - ScpAmmo
-    - ScpMedicine
-    - ScpAdditional
     - ScpExplosive
-    - ScpMechs
-    - ScpSanitary
-    - ScpEngineering
-    #- NTCBURN
-    - ScpEquipment
+    - ScpAdditional
     - ScpRecontainment
     currencyWhitelist:
-    - Bluecrystal
-    - Crystallite
+    - SupplyPoint
     balance:
-      Telecrystal: 0
+      SupplyPoint: 0
+
+- type: entity
+  id: StorePresetScpUplinkCommander
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpKitStart
+    - ScpEquipment
+    - ScpEquipmentBelts
+    - ScpPrimaryArms
+    - ScpPistols
+    - ScpAmmo
+    - ScpExplosive
+    - ScpAdditional
+    - ScpRecontainment
+    - ScpSpecWeapon
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
+# Эпсилон-11
+- type: entity
+  id: StorePresetScpUplinkNtf
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpKitStart
+    - ScpEquipment
+    - ScpEquipmentBelts
+    - ScpPrimaryArms
+    - ScpPistols
+    - ScpAmmo
+    - ScpExplosive
+    - ScpAdditional
+    - ScpRecontainment
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
+- type: entity
+  id: StorePresetScpUplinkNtfCommander
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpEquipment
+    - ScpEquipmentBelts
+    - ScpPrimaryArms
+    - ScpPistols
+    - ScpAmmo
+    - ScpExplosive
+    - ScpAdditional
+    - ScpRecontainment
+    - ScpSpecWeapon
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
+# Ню-7
+- type: entity
+  id: StorePresetScpUplinkHD
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpKitStart
+    - ScpEquipment
+    - ScpEquipmentBelts
+    - ScpPrimaryArms
+    - ScpPistols
+    - ScpAmmo
+    - ScpExplosive
+    - ScpAdditional
+    - ScpRecontainment
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
+- type: entity
+  id: StorePresetScpUplinkHDCommander
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpKitStart
+    - ScpEquipment
+    - ScpEquipmentBelts
+    - ScpPrimaryArms
+    - ScpPistols
+    - ScpAmmo
+    - ScpExplosive
+    - ScpAdditional
+    - ScpRecontainment
+    - ScpSpecWeapon
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
+# Бета-7
+- type: entity
+  id: StorePresetScpUplinkBeta7
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpEquipment
+    - ScpEquipmentBelts
+    - ScpPrimaryArms
+    - ScpPistols
+    - ScpAmmo
+    - ScpExplosive
+    - ScpAdditional
+    - ScpAdditionalBiohazard
+    - ScpRecontainment
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
+- type: entity
+  id: StorePresetScpUplinkBeta7Commander
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpEquipment
+    - ScpEquipmentBelts
+    - ScpPrimaryArms
+    - ScpPistols
+    - ScpAmmo
+    - ScpExplosive
+    - ScpAdditional
+    - ScpAdditionalBiohazard
+    - ScpRecontainment
+    - ScpSpecWeapon
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
+# Альфа-1 и Омега-1
+- type: entity
+  id: StorePresetScpUplinkHight
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpKitStart
+    - ScpEquipment
+    - ScpEquipmentBelts
+    - ScpPrimaryArmsElite
+    - ScpPistolsElite
+    - ScpAmmo
+    - ScpExplosive
+    - ScpAdditional
+    - ScpRecontainment
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0
+
+- type: entity
+  id: StorePresetScpUplinkHightCommander
+  abstract: true
+  components:
+  - type: Store
+    name: store-preset-name-ScpUplink
+    categories:
+    - ScpKitStart
+    - ScpEquipment
+    - ScpEquipmentBelts
+    - ScpPrimaryArmsElite
+    - ScpPistolsElite
+    - ScpAmmo
+    - ScpExplosive
+    - ScpAdditional
+    - ScpRecontainment
+    - ScpSpecWeapon
+    currencyWhitelist:
+    - SupplyPoint
+    balance:
+      SupplyPoint: 0

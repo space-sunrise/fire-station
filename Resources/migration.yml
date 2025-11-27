@@ -1944,8 +1944,9 @@ FoodBoxDonkpocketMoth: null
 ClearPDA: BaseFoundationPDA
 PassengerPDA: BaseFoundationPDA
 
-ClothingOuterHardsuitMH: ClothingOuterArmorMobileTaskForceMH
-ClothingOuterHardsuitMHLeader: ClothingOuterArmorMobileTaskForceMH
+ClothingOuterHardsuitMH: ClothingOuterArmorMtfBiohazard
+ClothingOuterHardsuitMHLeader: ClothingOuterArmorMtfBiohazard
+ClothingOuterArmorMobileTaskForceMH: ClothingOuterArmorMtfBiohazard
 ClothingHeadHelmetMHL: ClothingHelmetMobileTaskForceMH
 
 GunSafeInternalSecurityOperative: null
@@ -2233,5 +2234,37 @@ ScpFloorTileItemMiniSteelWhite: ScpFloorTileItemWhiteMini
 ScpFloorTileItemMonoSteel: ScpFloorTileItemSteelMono
 ScpFloorTileItemMonoSteelWhite: ScpFloorTileItemWhiteMono
 ScpFloorTileItemMonoSteelDark: ScpFloorTileItemDarkMono
+
+# Старые МОГ
+NineTailedFoxVest: null
+NineTailedFoxCommanderVest: null
+NineTailedFoxMedicVest: null
+NineTailedFoxSpecialistArmor: null
+NineTailedFoxSuit: null
+NineTailedFoxCommanderSuit: null
+NineTailedFoxMedicSuit: null
+NineTailedFoxSpecialistSuit: null
+NineTailedFoxSpecialistBackpack: null
+NineTailedFoxMedicBackpack: null
+NineTailedFoxSpecialistGloves: null
+NineTailedFoxGasmask: null
+NineTailedFoxCommanderGasmask: null
+NineTailedFoxMedicGasmask: null
+NineTailedFoxSpecialistGasmask: null
+NineTailedFoxWebbing: null
+NineTailedFoxCommanderWebbing: null
+NineTailedFoxMedicWebbing: null
+NineTailedFoxSpecialistWebbing: null
+NineTailedFoxSpecialistBalisticGlasses: null
+NineTailedFoxMedicGlassesHud: null
+NineTailedFoxHelmet: null
+NineTailedFoxCommanderHelmet: null
+NineTailedFoxMedicHelmet: null
+NineTailedFoxSpecialistHelmet: null
+NineTailedFoxSpecialistShield: null
+ClothingHelmetNTF: ClothingHelmetMtfTactical
+MTFSpecialistBackpack: MtfTacticalBackpack
+ClothingMaskGasLLH: null
+ClothingMaskGasRRH: null
 
 # Fire added end
