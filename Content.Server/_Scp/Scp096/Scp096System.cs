@@ -54,7 +54,7 @@ public sealed class Scp096System : SharedScp096System
         _pvsOverride.AddGlobalOverride(target);
     }
 
-    protected override void RemoveTarget(Entity<ActiveScp096RageComponent?> scp, EntityUid target, bool removeComponent = true)
+    protected override void RemoveTarget(Entity<Scp096Component?> scp, EntityUid target, bool removeComponent = true)
     {
         base.RemoveTarget(scp, target, removeComponent);
 

@@ -48,7 +48,11 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private readonly Dictionary<Entity<Scp096Component>, TimeSpan> _pendingAnimations = new ();
 
-    private EntityQuery<ActiveScp096WithoutFaceComponent> _withoutFaceQuery;
+    protected EntityQuery<Scp096Component> Scp096Query;
+    protected EntityQuery<ActiveScp096HeatingUpComponent> HeatingUpQuery;
+    protected EntityQuery<ActiveScp096RageComponent> RageQuery;
+    protected EntityQuery<ActiveScp096WithoutFaceComponent> WithoutFaceQuery;
+    protected EntityQuery<Scp096FaceComponent> FaceQuery;
 
     public override void Initialize()
     {
@@ -87,7 +91,11 @@ public abstract partial class SharedScp096System : EntitySystem
         InitializeActions();
         InitializeWithoutFace();
 
-        _withoutFaceQuery = GetEntityQuery<ActiveScp096WithoutFaceComponent>();
+        Scp096Query = GetEntityQuery<Scp096Component>();
+        HeatingUpQuery = GetEntityQuery<ActiveScp096HeatingUpComponent>();
+        RageQuery = GetEntityQuery<ActiveScp096RageComponent>();
+        WithoutFaceQuery = GetEntityQuery<ActiveScp096WithoutFaceComponent>();
+        FaceQuery = GetEntityQuery<Scp096FaceComponent>();
 
         Log.Level = LogLevel.Info;
     }
@@ -125,7 +133,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void OnSeen(Entity<Scp096Component> ent, ref SimpleEntitySeenEvent args)
     {
-        if (_withoutFaceQuery.HasComp(ent))
+        if (WithoutFaceQuery.HasComp(ent))
             return;
 
         TryAddTarget(ent, args.Viewer);

@@ -14,12 +14,11 @@ public sealed class Scp096Overlay : Overlay
 
     private readonly TransformSystem _transform;
     private readonly SpriteSystem _sprite;
-    private readonly Scp096System _scp096;
 
     private readonly Entity<Scp096Component> _entity;
 
     private readonly EntityQuery<Scp096TargetComponent> _targetQuery;
-    private readonly HashSet<(Entity<SpriteComponent> ent, float alpha)> _cachedAlphas = new(128);
+    private readonly HashSet<(Entity<SpriteComponent> ent, float alpha)> _cachedAlphas = new(64);
 
     public Scp096Overlay(Entity<Scp096Component> entity)
     {
@@ -29,7 +28,6 @@ public sealed class Scp096Overlay : Overlay
 
         _transform = _ent.System<TransformSystem>();
         _sprite = _ent.System<SpriteSystem>();
-        _scp096 = _ent.System<Scp096System>();
 
         _targetQuery = _ent.GetEntityQuery<Scp096TargetComponent>();
     }
@@ -49,7 +47,7 @@ public sealed class Scp096Overlay : Overlay
 
     private void HideNonTargetEntities()
     {
-        if (!_scp096.HasAnyTargets())
+        if (_entity.Comp.TargetsCount == 0)
             return;
 
         var query = _ent.EntityQueryEnumerator<BlinkableComponent, MobStateComponent, SpriteComponent>();
@@ -74,7 +72,7 @@ public sealed class Scp096Overlay : Overlay
 
     private void DrawLineToTarget(in OverlayDrawArgs args)
     {
-        if (!_scp096.HasAnyTargets())
+        if (_entity.Comp.TargetsCount == 0)
             return;
 
         var playerPos = _transform.GetWorldPosition(_entity);
@@ -92,7 +90,8 @@ public sealed class Scp096Overlay : Overlay
         Vector2? closestEntityPos = null;
         var closestDistance = float.MaxValue;
 
-        foreach (var entity in _scp096.GetTargets())
+        var query = _ent.EntityQueryEnumerator<Scp096TargetComponent>();
+        while (query.MoveNext(out var entity, out _))
         {
             var entityPosition = _transform.GetWorldPosition(entity);
             var distance = Vector2.Distance(playerPos, entityPosition);

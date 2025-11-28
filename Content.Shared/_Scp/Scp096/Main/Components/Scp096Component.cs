@@ -11,7 +11,7 @@ namespace Content.Shared._Scp.Scp096.Main.Components;
 /// Компонент, отвечающий за поведение скромника.
 /// Служит ключевым для перехода в другие состояния.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true, true)]
 public sealed partial class Scp096Component : Component
 {
     /// <summary>
@@ -38,6 +38,16 @@ public sealed partial class Scp096Component : Component
     /// </summary>
     [DataField]
     public EntityWhitelist? PickupBlacklist;
+
+    /// <summary>
+    /// Количество целей скромника.
+    /// </summary>
+    /// <remarks>
+    /// Кешируем здесь для быстрого подсчет в виджете.
+    /// Сохраняется в базовом компоненте для удобства, так как цели могут быть как в состоянии ярости, так и пред-агр состоянии.
+    /// </remarks>
+    [ViewVariables, AutoNetworkedField]
+    public uint TargetsCount;
 
     #region Sounds
 

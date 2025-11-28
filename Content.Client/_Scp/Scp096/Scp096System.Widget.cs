@@ -1,6 +1,5 @@
 ﻿using Content.Client._Scp.Scp096.Ui;
 using Content.Client.UserInterface.Systems.Gameplay;
-using Content.Shared._Scp.Scp096.Main.Components;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 
@@ -9,9 +8,6 @@ namespace Content.Client._Scp.Scp096;
 public sealed partial class Scp096System
 {
     [Dependency] private readonly IUserInterfaceManager _ui = default!;
-    [Dependency] private readonly Scp096System _scp096 = default!;
-
-    private EntityQuery<ActiveScp096RageComponent> _rageQuery;
 
     private Scp096UiWidget? _widget;
 
@@ -20,8 +16,6 @@ public sealed partial class Scp096System
         var gameplayStateLoad = _ui.GetUIController<GameplayStateLoadController>();
         gameplayStateLoad.OnScreenLoad += EnsureWidgetExist;
         gameplayStateLoad.OnScreenUnload += RemoveWidget;
-
-        _rageQuery = GetEntityQuery<ActiveScp096RageComponent>();
     }
 
     private void EnsureWidgetExist()
@@ -61,7 +55,13 @@ public sealed partial class Scp096System
         if (_widget == null)
             return;
 
-        if (!_rageQuery.TryComp(_player.LocalEntity, out var rage) || !rage.RageStartTime.HasValue)
+        if (!RageQuery.TryComp(_player.LocalEntity, out var rage) || !rage.RageStartTime.HasValue)
+        {
+            _widget.Visible = false;
+            return;
+        }
+
+        if (!Scp096Query.TryComp(_player.LocalEntity, out var scp096))
         {
             _widget.Visible = false;
             return;
@@ -72,7 +72,6 @@ public sealed partial class Scp096System
         var elapsedTime = _timing.CurTime - rage.RageStartTime;
         var remainingTime = rage.RageDuration - elapsedTime.Value;
 
-        // TODO: Все таки записывать внутрь скромника хотя бы количество его таргетов, чтобы не делать это.
-        _widget.SetData(remainingTime.TotalSeconds, _scp096.GetTargets().Count);
+        _widget.SetData(remainingTime.TotalSeconds, scp096.TargetsCount);
     }
 }

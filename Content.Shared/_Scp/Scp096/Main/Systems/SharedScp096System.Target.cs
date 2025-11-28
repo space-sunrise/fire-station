@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Content.Shared._Scp.Audio;
+﻿using Content.Shared._Scp.Audio;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.Watching;
@@ -72,8 +71,8 @@ public abstract partial class SharedScp096System
         if (_timing.ApplyingState)
             return;
 
-        var query = EntityQueryEnumerator<ActiveScp096RageComponent, Scp096Component>();
-        while (query.MoveNext(out var uid, out _, out _))
+        var query = EntityQueryEnumerator<ActiveScp096RageComponent>();
+        while (query.MoveNext(out var uid, out _))
         {
             RemoveTarget(uid, ent.AsNullable(), false);
         }
@@ -108,6 +107,9 @@ public abstract partial class SharedScp096System
         TryMakeAngry(scp);
         EnsureComp<Scp096TargetComponent>(target);
 
+        scp.Comp.TargetsCount++;
+        DirtyField(scp.AsNullable(), nameof(Scp096Component.TargetsCount));
+
         if (_net.IsServer)
             _audio.PlayGlobal(scp.Comp.SeenSound, target);
     }
@@ -115,7 +117,7 @@ public abstract partial class SharedScp096System
     /// <summary>
     /// Убирает конкретную цель из списка целей scp-096
     /// </summary>
-    protected virtual void RemoveTarget(Entity<ActiveScp096RageComponent?> scp, EntityUid target, bool removeComponent = true)
+    protected virtual void RemoveTarget(Entity<Scp096Component?> scp, EntityUid target, bool removeComponent = true)
     {
         if (!Resolve(scp, ref scp.Comp))
             return;
@@ -123,7 +125,10 @@ public abstract partial class SharedScp096System
         if (removeComponent)
             RemComp<Scp096TargetComponent>(target);
 
-        if (!HasAnyTargets())
+        scp.Comp.TargetsCount--;
+        DirtyField(scp, nameof(Scp096Component.TargetsCount));
+
+        if (scp.Comp.TargetsCount == 0)
             Pacify(scp);
     }
 
@@ -186,28 +191,5 @@ public abstract partial class SharedScp096System
 
         // Соответственно если обе проверки прошли, то цель видит 096
         return true;
-    }
-
-    public List<Entity<Scp096TargetComponent>> GetTargets()
-    {
-        return _helpers.GetAll<Scp096TargetComponent>().ToList();
-    }
-
-    public bool HasAnyTargets()
-    {
-        var query = EntityQueryEnumerator<Scp096TargetComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            if (TerminatingOrDeleted(uid))
-                continue;
-
-            if (comp.LifeStage != ComponentLifeStage.Running)
-                continue;
-
-            // Значит нашли хотя бы одного
-            return true;
-        }
-
-        return false;
     }
 }

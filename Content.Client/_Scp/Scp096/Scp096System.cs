@@ -59,8 +59,8 @@ public sealed partial class Scp096System : SharedScp096System
         // Это существует только потому, что анимация передвижения принимает стейты напрямую
         // Иначе я бы сделал это через GenericVisualizer
         var useDownState = UseDownState(ent);
-        var inRage = HasComp<ActiveScp096RageComponent>(ent);
-        var isHeatingUp = HasComp<ActiveScp096HeatingUpComponent>(ent);
+        var inRage = RageQuery.HasComp(ent);
+        var isHeatingUp = HeatingUpQuery.HasComp(ent);
         var agroToDead = ent.Comp.AgroToDeadAnimation;
         var deadToIdle = ent.Comp.DeadToIdleAnimation;
 
