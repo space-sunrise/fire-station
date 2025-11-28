@@ -12,15 +12,9 @@ namespace Content.Shared._Scp.Scp096.Main.Components;
 /// <summary>
 /// Компонент, отвечающий за активное состояние скромника с содранным лицом.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true), AutoGenerateComponentPause]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class ActiveScp096WithoutFaceComponent : Component
 {
-    [DataField]
-    public TimeSpan AutoHealAfter = TimeSpan.FromMinutes(15f);
-
-    [ViewVariables, AutoNetworkedField, AutoPausedField]
-    public TimeSpan? AutoHealTimerEnd;
-
     /// <summary>
     /// Звук перехода в состояние содранного лица
     /// </summary>

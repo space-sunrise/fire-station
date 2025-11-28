@@ -38,8 +38,6 @@ public abstract partial class SharedScp096System
 
         RefreshSpeedModifiers(ent.Owner);
 
-        ent.Comp.AutoHealTimerEnd = _timing.CurTime + ent.Comp.AutoHealAfter;
-
         // Устанавливаем параметры атаки для режима содранного лица
         if (TryComp<MeleeWeaponComponent>(ent, out var melee))
         {
@@ -129,20 +127,6 @@ public abstract partial class SharedScp096System
 
         args.Entity = face;
     }
-
-    /*
-    private void UpdateWithoutFace()
-    {
-        var query = EntityQueryEnumerator<ActiveScp096WithoutFaceComponent>();
-        while (query.MoveNext(out var uid, out var comp))
-        {
-            if (_timing.CurTime < comp.AutoHealTimerEnd)
-                continue;
-
-            RemComp<ActiveScp096WithoutFaceComponent>(uid);
-        }
-    }
-    */
 
     /// <summary>
     /// Метод, полностью исцеляющий лицо скромника.
