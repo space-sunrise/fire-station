@@ -130,13 +130,13 @@ public abstract partial class SharedScp096System
     /// <summary>
     /// Убирает все текущие цели у scp-096
     /// </summary>
-    private void RemoveAllTargets(Entity<Scp096Component> ent)
+    private void RemoveAllTargets(EntityUid ent)
     {
         var query = EntityQueryEnumerator<Scp096TargetComponent>();
 
         while (query.MoveNext(out var target, out _))
         {
-            RemoveTarget(ent.Owner, target);
+            RemoveTarget(ent, target);
         }
     }
 

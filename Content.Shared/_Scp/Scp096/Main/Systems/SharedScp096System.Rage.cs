@@ -7,7 +7,6 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Jittering;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
-using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
@@ -35,17 +34,11 @@ public abstract partial class SharedScp096System
 
     private void OnHeatingUpStart(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentStartup args)
     {
-        if (!TryComp<Scp096Component>(ent, out var scp096))
-        {
-            Log.Error($"Found entity with {nameof(ActiveScp096HeatingUpComponent)} but without {nameof(Scp096Component)}: {ToPrettyString(ent)}, prototype: {Prototype(ent)}");
-            return;
-        }
-
         // Устанавливаем время окончания пред-агр состояния
-        ent.Comp.RageHeatUpEnd = _timing.CurTime + scp096.RageHeatUp;
+        ent.Comp.RageHeatUpEnd = _timing.CurTime + ent.Comp.RageHeatUp;
 
         // Устанавливаем звук пред-агр состояния
-        UpdateAudio(ent.Owner, scp096.TriggerSound);
+        UpdateAudio(ent.Owner, ent.Comp.TriggerSound);
 
         if (_net.IsServer)
             RaiseNetworkEvent(new NetworkAmbientMusicEvent(RageAmbience), ent);
@@ -71,7 +64,6 @@ public abstract partial class SharedScp096System
         UpdateAppearance(ent);
 
         Dirty(ent);
-        Dirty(ent, scp096);
     }
 
     private void OnHeatingUpShutdown(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentShutdown args)
@@ -137,7 +129,7 @@ public abstract partial class SharedScp096System
             RaiseNetworkEvent(new NetworkAmbientMusicEventStop(), ent);
 
         // Усыпляем скромника
-        if (!_statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, scp096.PacifiedTime))
+        if (!_statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, ent.Comp.PacifiedTime))
         {
             // При усыплении скромника и так меняется внешний вид, нет смысла делать это несколько раз.
             // Поэтому запрашиваем обновление внешнего вида только при неуспешном усыплении
@@ -176,27 +168,18 @@ public abstract partial class SharedScp096System
 
     private void UpdateRage()
     {
-        var query = EntityQueryEnumerator<ActiveScp096RageComponent, Scp096Component>();
-        while (query.MoveNext(out var uid, out var rage, out var scp096))
+        var query = EntityQueryEnumerator<ActiveScp096RageComponent>();
+        while (query.MoveNext(out var uid, out var rage))
         {
             if (!rage.RageStartTime.HasValue)
                 continue;
 
             var elapsedTime = _timing.CurTime - rage.RageStartTime.Value;
-            if (elapsedTime < scp096.RageDuration)
+            if (elapsedTime < rage.RageDuration)
                 continue;
 
-            OnRageTimeExceeded((uid, scp096));
+            RemoveAllTargets(uid);
         }
-    }
-
-    /// <summary>
-    /// Вызывается при окончании времени на поиск и уничтожение целей.
-    /// Убирает все цели из списка целей.
-    /// </summary>
-    private void OnRageTimeExceeded(Entity<Scp096Component> ent)
-    {
-        RemoveAllTargets(ent);
     }
 
     /// <summary>

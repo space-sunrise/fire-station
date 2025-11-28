@@ -13,16 +13,6 @@ public sealed partial class Scp096Component : Component
     [DataField]
     public float ArgoAngle = 25f;
 
-    // TODO: Перенести это в свои компоненты, че это тут делает.
-    [DataField, AutoNetworkedField]
-    public TimeSpan RageDuration = TimeSpan.FromSeconds(240f); // 4 минуты
-
-    [DataField]
-    public TimeSpan PacifiedTime = TimeSpan.FromSeconds(60f);
-
-    [DataField]
-    public TimeSpan RageHeatUp = TimeSpan.FromSeconds(30f);
-
     [DataField]
     public float Speed = 1.5f;
 
@@ -46,10 +36,6 @@ public sealed partial class Scp096Component : Component
 
     [DataField]
     public SoundSpecifier SeenSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/seen.ogg");
-
-    [DataField]
-    public SoundSpecifier TriggerSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/triggered.ogg",
-        AudioParams.Default.WithVolume(20f).WithMaxDistance(30f).WithRolloffFactor(5f));
 
     [ViewVariables, AutoNetworkedField, NonSerialized]
     public EntityUid? AudioStream;

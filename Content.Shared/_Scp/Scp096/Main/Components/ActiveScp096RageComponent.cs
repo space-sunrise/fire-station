@@ -6,6 +6,12 @@ namespace Content.Shared._Scp.Scp096.Main.Components;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class ActiveScp096RageComponent : Component
 {
+    [DataField, AutoNetworkedField]
+    public TimeSpan RageDuration = TimeSpan.FromMinutes(4f);
+
+    [DataField]
+    public TimeSpan PacifiedTime = TimeSpan.FromSeconds(60f);
+
     [AutoNetworkedField]
     public TimeSpan? RageStartTime;
 
