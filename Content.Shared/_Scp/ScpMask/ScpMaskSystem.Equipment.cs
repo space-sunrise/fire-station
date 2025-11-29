@@ -135,6 +135,7 @@ public sealed partial class ScpMaskSystem
                 continue;
 
             foundSlot = slot.Name;
+            break;
         }
 
         if (foundSlot == null)
