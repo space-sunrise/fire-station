@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "size":
+  {
+    "x": 32,
+    "y": 32
+},
+"license": "CLA",
+"copyright": "Fire Station, sprited by miduzka(discord)",
+  "states":
+  [
+    { "name": "rip" },
+    { "name": "scream" },
+    { "name": "sit" }
+  ]
+}

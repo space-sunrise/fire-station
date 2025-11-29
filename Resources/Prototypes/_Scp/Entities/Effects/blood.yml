@@ -1,0 +1,127 @@
+﻿- type: entity
+  id: BaseBloodSplatter
+  parent: Footstep
+  abstract: true
+  name: blood splatter
+  components:
+  - type: Sprite
+    drawdepth: Puddles
+    sprite: _Scp/Effects/blood.rsi
+  - type: Footprint
+    spritePath: /Textures/_Scp/Effects/blood.rsi
+    containerName: blood
+  - type: Appearance
+  - type: Puddle
+    solution: blood
+    canSlow: false
+    canSlip: false
+  - type: SolutionContainerManager
+    solutions:
+      blood:
+        maxVol: 5
+
+- type: entity
+  id: BaseBloodParticle
+  parent: BaseLiquidParticle
+  abstract: true
+  name: blood splatter
+  components:
+  - type: OffsetAnimation
+    animationKey: blood_particle_key
+
+- type: entity
+  id: BloodSplatter1
+  parent: BaseBloodSplatter
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    state: blood1
+
+- type: entity
+  id: BloodSplatter2
+  parent: BaseBloodSplatter
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    state: blood2
+
+- type: entity
+  id: BloodSplatter3
+  parent: BaseBloodSplatter
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    state: blood3
+
+- type: entity
+  id: BloodSplatter4
+  parent: BaseBloodSplatter
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    state: blood4
+
+- type: entity
+  id: BloodSplatter5
+  parent: BaseBloodSplatter
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    state: blood5
+
+- type: entity
+  id: BloodSplatter6
+  parent: BaseBloodSplatter
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    state: blood6
+
+- type: entity
+  id: BloodParticle1
+  parent: BaseBloodParticle
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    state: particle1
+
+- type: entity
+  id: BloodParticle2
+  parent: BaseBloodParticle
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    state: particle2
+
+- type: entity
+  id: BloodParticle3
+  parent: BaseBloodParticle
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    state: particle3
+
+- type: entity
+  id: BloodLine
+  parent: BaseBloodSplatter
+  save: false
+  name: blood line
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+    drawdepth: Puddles
+    sprite: _Scp/Effects/blood_line.rsi
+    state: icon
+  - type: ScaleAnimation
+    animationKey: bloodline_scale_animation
+    duration: 1
+    initialSize: 0.5, 0.5

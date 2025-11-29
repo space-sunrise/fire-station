@@ -1,38 +1,82 @@
 ﻿using System.Numerics;
+using Content.Shared._Scp.Blinking;
+using Content.Shared._Scp.Scp096.Main.Components;
+using Content.Shared.Mobs.Components;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
-using Robust.Client.Player;
 using Robust.Shared.Enums;
 
 namespace Content.Client._Scp.Scp096;
 
 public sealed class Scp096Overlay : Overlay
 {
-    [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IEntityManager _ent = default!;
 
-    private readonly SharedTransformSystem _transform;
-    private readonly HashSet<EntityUid> _targets;
+    private readonly TransformSystem _transform;
+    private readonly SpriteSystem _sprite;
 
-    // TODO: Исправить проеб навигатора, когда EntityUid из списка сверху перестает существовать в пвс рейнже клиента
-    // Это приводит к тому, что линия тупо улетает в ебеня, пока ентити снова не появится в пвс рейнже
+    private readonly Entity<Scp096Component> _entity;
 
-    public Scp096Overlay(SharedTransformSystem transform,
-        HashSet<EntityUid> targets)
+    private readonly EntityQuery<Scp096TargetComponent> _targetQuery;
+    private readonly HashSet<(Entity<SpriteComponent> ent, float alpha)> _cachedAlphas = new(64);
+
+    public Scp096Overlay(Entity<Scp096Component> entity)
     {
         IoCManager.InjectDependencies(this);
-        _transform = transform;
-        _targets = targets;
+
+        _entity = entity;
+
+        _transform = _ent.System<TransformSystem>();
+        _sprite = _ent.System<SpriteSystem>();
+
+        _targetQuery = _ent.GetEntityQuery<Scp096TargetComponent>();
     }
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        var playerEntity = _playerManager.LocalEntity;
-        if (playerEntity == null)
+        // Рисуем указатель к ближайшей цели
+        DrawLineToTarget(in args);
+
+        // Показываем ранее скрытые сущности
+        ShowAllHiddenEntities();
+        // Скрываем все сущности, которые не являются целями
+        HideNonTargetEntities();
+    }
+
+    private void HideNonTargetEntities()
+    {
+        if (_entity.Comp.TargetsCount == 0)
             return;
 
-        var playerPos = _transform.GetWorldPosition(playerEntity.Value);
-        var nearestTargetPos = FindClosestEntity(playerPos, _targets);
+        var query = _ent.EntityQueryEnumerator<BlinkableComponent, MobStateComponent, SpriteComponent>();
+        while (query.MoveNext(out var uid, out _ , out _, out var sprite))
+        {
+            if (_ent.IsClientSide(uid))
+                continue;
+
+            if (MathHelper.CloseTo(sprite.Color.A, 0f))
+                continue;
+
+            // Не скрываем целей скромника
+            if (_targetQuery.HasComp(uid))
+                continue;
+
+            var entity = (uid, sprite);
+
+            _cachedAlphas.Add((entity, sprite.Color.A));
+            _sprite.SetColor(entity, sprite.Color.WithAlpha(0f));
+        }
+    }
+
+    private void DrawLineToTarget(in OverlayDrawArgs args)
+    {
+        if (_entity.Comp.TargetsCount == 0)
+            return;
+
+        var playerPos = _transform.GetWorldPosition(_entity);
+        var nearestTargetPos = FindClosestEntity(playerPos);
 
         if (nearestTargetPos == null)
             return;
@@ -41,18 +85,15 @@ public sealed class Scp096Overlay : Overlay
         args.WorldHandle.DrawCircle(nearestTargetPos.Value, 0.4f, Color.Red, false);
     }
 
-    private Vector2? FindClosestEntity(Vector2 playerPos, HashSet<EntityUid> entities)
+    private Vector2? FindClosestEntity(Vector2 playerPos)
     {
-        if (entities.Count == 0)
-            return null;
-
         Vector2? closestEntityPos = null;
         var closestDistance = float.MaxValue;
 
-        foreach (var entity in entities)
+        var query = _ent.EntityQueryEnumerator<Scp096TargetComponent>();
+        while (query.MoveNext(out var entity, out _))
         {
             var entityPosition = _transform.GetWorldPosition(entity);
-
             var distance = Vector2.Distance(playerPos, entityPosition);
 
             if (distance >= closestDistance)
@@ -63,6 +104,22 @@ public sealed class Scp096Overlay : Overlay
         }
 
         return closestEntityPos;
+    }
+
+    public void ShowAllHiddenEntities()
+    {
+        if (_cachedAlphas.Count == 0)
+            return;
+
+        foreach (var (ent, alpha) in _cachedAlphas)
+        {
+            if (!_ent.EntityExists(ent))
+                continue;
+
+            _sprite.SetColor(ent.AsNullable(), ent.Comp.Color.WithAlpha(alpha));
+        }
+
+        _cachedAlphas.Clear();
     }
 }
 

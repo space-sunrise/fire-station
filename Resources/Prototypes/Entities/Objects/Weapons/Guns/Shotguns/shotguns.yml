@@ -5,6 +5,10 @@
   description: A rooty tooty point and shooty.
   abstract: true
   components:
+  # Fire added start
+  - type: BloodSplatterer
+    probability: 0.55
+  # Fire added end
   - type: Sprite
     layers:
     - state: icon
@@ -89,6 +93,9 @@
   id: WeaponShotgunBulldog
   description: An automatic magazine-fed shotgun for close-quarters combat. Kicks like a mule on steroids. Uses .50 shotgun shells.
   components:
+  # Fire added start
+  - type: BloodSplatterer
+  # Fire added end
   - type: Sprite
     sprite: Objects/Weapons/Guns/Shotguns/bulldog.rsi
     layers:

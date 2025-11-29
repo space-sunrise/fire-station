@@ -11,6 +11,7 @@ using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Slippery;
+using Content.Shared.Standing;
 
 namespace Content.Shared._Scp.Mobs.Systems;
 
@@ -23,7 +24,9 @@ public sealed class ScpRestrictionSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ScpRestrictionComponent, DisarmAttemptEvent>((_, _, args) => args.Cancelled = true);
+        SubscribeLocalEvent<ScpRestrictionComponent, DisarmAttemptEvent>(OnDisarmAttempt);
+        SubscribeLocalEvent<ScpRestrictionComponent, StandAttemptEvent>(OnStandingState);
+        SubscribeLocalEvent<ScpRestrictionComponent, DownAttemptEvent>(OnStandingState);
         SubscribeLocalEvent<ScpRestrictionComponent, ElectrocutionAttemptEvent>((_, _, args) => args.Cancel());
         SubscribeLocalEvent<ScpRestrictionComponent, TryingToSleepEvent>((_, _, args) => args.Cancelled = true);
         SubscribeLocalEvent<ScpRestrictionComponent, PullAttemptEvent>(OnPullAttempt);
@@ -34,7 +37,18 @@ public sealed class ScpRestrictionSystem : EntitySystem
         SubscribeLocalEvent<ScpRestrictionComponent, BeforeStaminaDamageEvent>(OnStaminaDamage);
 
         SubscribeLocalEvent<ScpRestrictionComponent, AttemptMobCollideEvent>(OnCollideAttempt);
+    }
 
+    private static void OnDisarmAttempt(Entity<ScpRestrictionComponent> ent, ref DisarmAttemptEvent args)
+    {
+        if (!ent.Comp.CanBeDisarmed)
+            args.Cancelled = true;
+    }
+
+    private static void OnStandingState<T>(Entity<ScpRestrictionComponent> ent, ref T args) where T : CancellableEntityEventArgs
+    {
+        if (!ent.Comp.CanStandingState)
+            args.Cancel();
     }
 
     private static void OnPullAttempt(Entity<ScpRestrictionComponent> ent, ref PullAttemptEvent args)

@@ -1,15 +1,29 @@
-﻿using Content.Shared._Scp.Scp096;
+﻿using Content.Shared._Scp.Other.EmitSoundRandomly;
+using Content.Shared._Scp.Scp096;
+using Content.Shared._Scp.Scp096.Main.Components;
+using Content.Shared._Scp.Scp096.Main.Systems;
+using Content.Shared.Bed.Sleep;
+using Content.Shared.Mobs.Systems;
+using Content.Shared.Standing;
+using Content.Shared.Stunnable;
+using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Player;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Scp096;
 
-public sealed class Scp096System : SharedScp096System
+// TODO: Управление лицом скромника в статус эффектами, смена спрайтов при смене состояния.
+// Что-то типо интерфейса дума с лицом думгая, но для скромника
+public sealed partial class Scp096System : SharedScp096System
 {
-    [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IClyde _clyde = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
+    [Dependency] private readonly MobStateSystem _mob = default!;
 
     private Scp096Overlay? _overlay;
 
@@ -17,52 +31,108 @@ public sealed class Scp096System : SharedScp096System
     {
         base.Initialize();
 
-        SubscribeNetworkEvent<Scp096RageEvent>(OnRage);
         SubscribeLocalEvent<Scp096Component, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<Scp096Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
+
+        SubscribeNetworkEvent<Scp096RequireUpdateVisualsEvent>(OnUpdateStateRequest);
+
+        InitializeWidget();
+
+        Log.Level = LogLevel.Debug;
     }
 
-    private void OnRage(Scp096RageEvent args)
+    public override void Shutdown()
     {
-        // Здесь происходит ваще хз че, поэтому распишу для понятности
+        base.Shutdown();
 
-        // Так как ивент вызывающий этот метод вызывается каждый раз, когда 096 видит новый таргет
-        // То нужно очищать оверлей, чтобы клиенту не засрать 999 оверлеями лишними
-        RemoveOverlay();
+        ShutdownWidget();
+    }
 
-        // Если мы не в рейдж моде, то мы вышли из него
-        // Значит все нужные действия (убрать оверлей) мы уже сделали и можно выходить с метода
-        if (!args.InRage)
+    private void OnUpdateStateRequest(Scp096RequireUpdateVisualsEvent args)
+    {
+        var uid = GetEntity(args.NetEntity);
+
+        if (!TryComp<Scp096Component>(uid, out var scp096Component))
             return;
 
-        // Если игрок это не 096, то ему не нужен оверлей
-        if (!TryComp<Scp096Component>(_player.LocalEntity, out var scp096Component))
+        UpdateVisualState((uid, scp096Component));
+    }
+
+    private void UpdateVisualState(Entity<Scp096Component> ent)
+    {
+        if (!_timing.IsFirstTimePredicted)
             return;
 
-        _overlay = new(_transform, scp096Component.Targets);
+        // Это существует только потому, что анимация передвижения принимает стейты напрямую
+        // Иначе я бы сделал это через GenericVisualizer
+        var useDownState = UseDownState(ent);
+        var inRage = RageQuery.HasComp(ent);
+        var isHeatingUp = HeatingUpQuery.HasComp(ent);
+        var agroToDead = ent.Comp.AgroToDeadAnimation;
+        var deadToIdle = ent.Comp.DeadToIdleAnimation;
 
-        _overlayMan.AddOverlay(_overlay);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Dead, !agroToDead && useDownState);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Agro, inRage && !useDownState);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Heating, isHeatingUp);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.AgroToDead, agroToDead);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.DeadToIdle, deadToIdle);
+        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Idle, !agroToDead && !deadToIdle && !isHeatingUp && !inRage && !useDownState);
+
+        Log.Verbose($"useDownState = {useDownState}; inRage = {inRage}; isHeatingUp = {isHeatingUp}; agroToDead = {agroToDead}; deadToIdle = {deadToIdle}; ");
     }
 
     /// <summary>
-    /// Сделал так же этот метод добавочно к OnRage, чтобы улучшить выдачу оверлея, когда агр начался без игрока в ентити скромника
+    /// Проверяет, должен ли скромник находиться в лежачем состоянии.
     /// </summary>
-    private void OnPlayerAttached(EntityUid uid, Scp096Component component, LocalPlayerAttachedEvent args)
+    private bool UseDownState(EntityUid uid)
     {
-        if (_overlay != null)
-            _overlayMan.AddOverlay(_overlay);
+        return _mob.IsIncapacitated(uid)
+               || HasComp<SleepingComponent>(uid)
+               || HasComp<StunnedComponent>(uid)
+               || HasComp<KnockedDownComponent>(uid)
+               || TryComp<StandingStateComponent>(uid, out var standing) && !standing.Standing;
     }
 
-    private void OnPlayerDetached(EntityUid uid, Scp096Component component, LocalPlayerDetachedEvent args)
+    private void OnPlayerAttached(Entity<Scp096Component> ent, ref LocalPlayerAttachedEvent args)
+    {
+        AddOverlay(ent);
+        UpdateVisualState(ent);
+        EnsureWidgetExist();
+    }
+
+    private void OnPlayerDetached(Entity<Scp096Component> ent, ref LocalPlayerDetachedEvent args)
     {
         RemoveOverlay();
+        RemoveWidget();
+    }
+
+    protected override void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
+    {
+        base.OnInit(ent, ref args);
+
+        if (_player.LocalEntity != ent)
+            return;
+
+        AddOverlay(ent);
     }
 
     protected override void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
     {
         base.OnShutdown(ent, ref args);
 
+        if (_player.LocalEntity != ent)
+            return;
+
         RemoveOverlay();
+    }
+
+    private void AddOverlay(Entity<Scp096Component> ent)
+    {
+        if (_overlay != null)
+            return;
+
+        _overlay = new(ent);
+        _overlayMan.AddOverlay(_overlay);
     }
 
     private void RemoveOverlay()
@@ -71,5 +141,17 @@ public sealed class Scp096System : SharedScp096System
             return;
 
         _overlayMan.RemoveOverlay(_overlay);
+        _overlay = null;
+    }
+
+    protected override void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
+    {
+        base.OnEmitSoundRandomly(ent, ref args);
+
+        if (_player.LocalEntity != ent)
+            return;
+
+        if (!_clyde.IsFocused)
+            args.Cancel();
     }
 }

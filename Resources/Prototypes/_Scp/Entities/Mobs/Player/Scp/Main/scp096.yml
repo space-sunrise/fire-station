@@ -11,10 +11,50 @@
     sprite: _Scp/Mobs/Scp/scp-096.rsi
     layers:
     - state: idle
-      map: [ "base" ]
+      map: [ "enum.Scp096VisualsState.Idle", "idle" ]
+    - state: idle_agro
+      map: [ "enum.Scp096VisualsState.Agro", "agro" ]
+      visible: false
+    - state: dead
+      map: [ "enum.Scp096VisualsState.Dead"]
+      visible: false
+    - state: heating
+      map: [ "enum.Scp096VisualsState.Heating"]
+      visible: false
+    - state: dead_to_idle
+      map: [ "enum.Scp096VisualsState.DeadToIdle" ]
+      visible: false
+    - state: agro_to_dead
+      map: [ "enum.Scp096VisualsState.AgroToDead" ]
+      visible: false
+  - type: SpriteMovement
+    movementLayers:
+      idle:
+        state: walking
+      agro:
+        state: running
+    noMovementLayers:
+      idle:
+        state: idle
+      agro:
+        state: idle_agro
   - type: Scp
     class: Euclid
   - type: Scp096
+    pickupBlacklist:
+      components:
+      - Gun
+      - MeleeWeapon
+      - Ensnaring # Болы
+      - Handcuff
+      - EmbeddableProjectile
+      - DamageOtherOnHit
+      - Storage
+      - EntityStorage
+  - type: ScpRestriction
+    canBeDisarmed: true
+    canTakeStaminaDamage: true
+    canStandingState: true
   - type: FearSource
     uponSeenState: Fear
   - type: ShowBlinkable
@@ -23,43 +63,62 @@
     channels:
     - ScientificService
     - HeavyContainmentSecurityService
+  - type: BloodSplatterer
+    amount: 5, 10
+    distance: 5, 40
+    probability: 1
+    bloodLineProbability: 0.7
+    pierceLevel: HardenedMetal
+    attackSound:
+      collection: GibCollection
+      params:
+        variation: 0.125
+        maxDistance: 10
+  - type: BreakDoorOnCollide
+    enabled: false
+  - type: ActionGrant
+    actions:
+    #- Scp096CryOut - Требует механику ремонта стен, отключено до реализации.
+    - Scp096FaceSkinRip
+    - Scp096SitDown
+  - type: ContainerContainer
+    containers:
+      face_slot: !type:ContainerSlot
+  - type: ComplexInteraction
+  - type: Hands
+    showInHands: false
+    disableExplosionRecursion: true
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name
     description: ghost-panel-antagonist-scp-description
     priority: -10
   - type: Pullable
+  - type: StandingState
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
     altDisarm: false
-    soundHit:
-      path: /Audio/Weapons/punch3.ogg
+    soundHit: null
     angle: 0
-    animation: WeaponArcPunch
+    animation: WeaponArcClaw
+    wideAnimation: WeaponArcClaw
+    attackRate: 2.5
     damage:
       types:
-        Blunt: 60
-        Bloodloss: 10
+        Slash: 27
+        Structural: 110
+        Bloodloss: 5
+  - type: MeleeThrowOnHit
+    speed: 2
+    distance: 0.25
   - type: Body
     prototype: Human # TODO: Кастомное тело
   - type: Inventory
     templateId: scp096
-  - type: AmbientSound
-    enabled: true
-    volume: -4
-    range: 5
-    sound:
-      path: /Audio/_Scp/Scp096/scp-096-crying.ogg
-  - type: EmitSoundRandomly
-    sound:
-      collection: IdleScp096
-      params:
-        maxDistance: 6
   - type: FootstepModifier
     footstepSoundCollection:
       path: /Audio/Effects/Footsteps/slime1.ogg
       params:
         volume: 3
-  - type: Pacified
   - type: Blindable
   - type: Climbing
   - type: Muted
@@ -82,17 +141,6 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.5
     baseSprintSpeed: 1.5
-  - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.Scp096Visuals.Visuals:
-        base:
-          Idle: { state: idle}
-          IdleAgro: { state: idle_alt}
-          Argo: { state: agro}
-          Dead: { state: dead}
-          Walking: { state: walking}
-          Running: {state: running}
   - type: StatusEffects
     allowed:
     - SlowedDown
@@ -104,7 +152,73 @@
     - Flashed
     - RadiationProtection
     - Drowsiness
+  - type: Bloodstream
+    bloodReagent: Scp096Blood
+  - type: SolutionRegeneration
+    solution: bloodstream
+    generated:
+      reagents:
+      - ReagentId: Scp096Blood
+        Quantity: 5
   - type: GuideHelp
     guides:
     - ScpResearch
     - ScpResearchAdvanced
+
+- type: entity
+  id: Scp096Face
+  save: false
+  categories: [ HideSpawnMenu ]
+  # TODO: Локализация, имя, описание
+  components:
+  # TODO: Спрайты
+  # TODO: Алерт с лицом скромника, отображающий его состояние
+  - type: Scp096Face
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Scp096FaceSet
+  - type: MobState
+    allowedStates:
+    - Alive
+    - Dead
+  - type: MobThresholds
+    allowRevives: false
+    thresholds:
+      0: Alive
+      100: Dead
+  - type: PassiveDamage
+    allowedStates:
+    - Dead
+    # Примерно 15 минут до полного излечения
+    damage:
+      types:
+        Blunt: -0.1
+  - type: Bloodstream
+    bloodReagent: Scp096Tears
+    bloodMaxVolume: 100
+    bloodlossDamage:
+      types:
+        Bloodloss:
+          0.5
+    bloodlossHealDamage:
+      types:
+        Bloodloss:
+          -0.25
+  - type: SolutionRegeneration
+    solution: bloodstream
+    generated:
+      reagents:
+      - ReagentId: Scp096Tears
+        Quantity: 20
+  - type: BloodSplatterer
+    amount: 1, 2
+    distance: 5, 10
+    particleSpawnedSound: null
+    particles:
+    - LiquidParticle1
+    - LiquidParticle2
+    - LiquidParticle3
+  - type: LiquidParticlesGenerator
+    cooldown: 3
+    angle: 90
+    radians: 0.75

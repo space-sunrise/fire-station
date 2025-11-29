@@ -5,6 +5,11 @@
   description: Spray and pray.
   abstract: true
   components:
+  # Fire added start
+  - type: BloodSplatterer
+    probability: 0.6
+    bloodLineProbability: 0.25
+  # Fire added end
   - type: Sprite
   - type: Item
     size: Ginormous

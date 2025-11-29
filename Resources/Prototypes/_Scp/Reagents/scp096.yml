@@ -1,0 +1,49 @@
+﻿- type: reagent
+  id: Scp096Tears
+  name: reagent-name-scp096-tears
+  parent: BaseDrink
+  desc: reagent-desc-scp096-tears
+  evaporationSpeed: 0.05
+  absorbent: true
+  physicalDesc: reagent-physical-desc-translucent
+  flavor: salty
+  color: "#B4D6FA66"
+  boilingPoint: 100.0
+  meltingPoint: 0.0
+  friction: 0.4
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemHealEyeDamage
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 4
+        conditions:
+        - !type:OrganType
+          type: Dwarf
+          shouldHave: false
+    Gas:
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        ignoreResistances: true
+        conditions:
+        - !type:OrganType
+          type: Slime
+          shouldHave: true
+        damage:
+          types:
+            Heat: 3
+
+- type: reagent
+  parent: Blood
+  id: Scp096Blood
+  name: reagent-name-scp096-blood
+  group: Biological
+  desc: reagent-desc-scp096-blood
+  flavor: horrible
+  color: "#4F002B"
+  recognizable: false
+  physicalDesc: reagent-physical-desc-slimy
+
