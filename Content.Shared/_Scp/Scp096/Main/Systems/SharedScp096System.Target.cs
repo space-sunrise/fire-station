@@ -1,4 +1,6 @@
 ﻿using Content.Shared._Scp.Audio;
+using Content.Shared._Scp.Fear;
+using Content.Shared._Scp.Fear.Systems;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.Watching;
@@ -17,7 +19,7 @@ namespace Content.Shared._Scp.Scp096.Main.Systems;
 public abstract partial class SharedScp096System
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedSunriseHelpersSystem _helpers = default!;
+    [Dependency] private readonly SharedFearSystem _fear = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly INetManager _net = default!;
@@ -60,10 +62,12 @@ public abstract partial class SharedScp096System
         _popup.PopupClient(Loc.GetString("scp096-keep-attacking"), ent, args.Origin, PopupType.Medium);
     }
 
-    private void OnTargetStartup(Entity<Scp096TargetComponent> ent, ref ComponentStartup args)
+    protected virtual void OnTargetStartup(Entity<Scp096TargetComponent> ent, ref ComponentStartup args)
     {
         if (_net.IsServer)
             RaiseNetworkEvent(new NetworkAmbientMusicEvent(TargetAmbience), ent);
+
+        _fear.TrySetFearLevel(ent.Owner, FearState.Terror);
     }
 
     private void OnTargetShutdown(Entity<Scp096TargetComponent> ent, ref ComponentShutdown args)

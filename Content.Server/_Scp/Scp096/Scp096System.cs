@@ -3,6 +3,7 @@ using Content.Server._Scp.Blood;
 using Content.Server._Scp.Misc.LiquidParticlesGenerator;
 using Content.Server._Scp.Other.BreakDoorOnCollide;
 using Content.Shared._Scp.Blood;
+using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Main.Systems;
 using Content.Shared.Body.Components;
@@ -27,6 +28,7 @@ public sealed class Scp096System : SharedScp096System
         base.Initialize();
 
         SubscribeLocalEvent<Scp096Component, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<Scp096TargetComponent, FearCalmDownAttemptEvent>(OnFearCalmDown);
     }
 
     private void OnMapInit(Entity<Scp096Component> ent, ref MapInitEvent args)
@@ -48,6 +50,11 @@ public sealed class Scp096System : SharedScp096System
         var faceComp = Comp<Scp096FaceComponent>(face);
         faceComp.FaceOwner = ent;
         Dirty(face, faceComp);
+    }
+
+    private void OnFearCalmDown(Entity<Scp096TargetComponent> ent, ref FearCalmDownAttemptEvent args)
+    {
+        args.Cancel();
     }
 
     protected override void AddTarget(Entity<Scp096Component> scp, EntityUid target)
