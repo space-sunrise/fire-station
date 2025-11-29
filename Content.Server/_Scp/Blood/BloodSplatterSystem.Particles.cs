@@ -29,7 +29,7 @@ public sealed partial class BloodSplatterSystem
 
     private void OnInit(Entity<BloodParticleComponent> ent, ref MapInitEvent args)
     {
-        Debug.Assert(ent.Comp.MoveTimes == 0);
+        Debug.Assert(ent.Comp.MoveTimes != 0);
 
         ent.Comp.FlyTime += ent.Comp.FlyTime * _random.NextFloat(0f, ent.Comp.FlyTimeVariation);
         ent.Comp.FlyTimeEnd = _timing.CurTime + ent.Comp.FlyTime;
