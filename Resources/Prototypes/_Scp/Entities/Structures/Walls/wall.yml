@@ -38,7 +38,7 @@
   abstract: true
   components:
   - type: DamageVisuals
-    damageDivisor: 30
+    damageDivisor: 160
     damageOverlay:
       sprite: _Scp/Effects/DamageOverlay/concrete.rsi
   - type: ExaminableDamage
