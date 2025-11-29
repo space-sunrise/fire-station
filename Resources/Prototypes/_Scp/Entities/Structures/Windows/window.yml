@@ -11,7 +11,7 @@
   - type: SpriteFade
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   id: BaseScpWindowDirectionalCorner
@@ -105,7 +105,7 @@
   - type: DamageVisuals
     supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_smooth.rsi
 
 - type: entity
   id: ScpWindowDirectional
@@ -196,7 +196,7 @@
     - East
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_diagonal.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_diagonal.rsi
   - type: Construction
     graph: WindowDiagonal
     node: windowDiagonal
@@ -212,7 +212,7 @@
   - type: DamageVisuals
     supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_smooth.rsi
 
 - type: entity
   id: ScpWindowReinforcedDirectional
@@ -230,7 +230,7 @@
     state: reinforced_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   id: ScpWindowReinforcedDirectionalCorner
@@ -248,7 +248,7 @@
     state: reinforced_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   id: ScpWindowReinforcedDirectionalRound
@@ -266,7 +266,7 @@
     state: reinforced_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   parent: ReinforcedWindow
@@ -311,7 +311,7 @@
     - East
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_diagonal.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_diagonal.rsi
   - type: Construction
     graph: WindowDiagonal
     node: reinforcedWindowDiagonal
@@ -329,7 +329,7 @@
   - type: DamageVisuals
     supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_smooth.rsi
 
 - type: entity
   id: ScpPlasmaWindowDirectional
@@ -347,7 +347,7 @@
     state: plasma_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   id: ScpPlasmaWindowDirectionalCorner
@@ -365,7 +365,7 @@
     state: plasma_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   id: ScpPlasmaWindowDirectionalRound
@@ -383,7 +383,7 @@
     state: plasma_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   parent: PlasmaWindow
@@ -428,7 +428,7 @@
     - East
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_diagonal.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_diagonal.rsi
   - type: Construction
     graph: WindowDiagonal
     node: plasmaWindowDiagonal
@@ -444,7 +444,7 @@
   - type: DamageVisuals
     supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_smooth.rsi
 
 - type: entity
   id: ScpPlasmaReinforcedWindowDirectional
@@ -462,7 +462,7 @@
     state: plasma_reinforced_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   id: ScpPlasmaReinforcedWindowDirectionalCorner
@@ -480,7 +480,7 @@
     state: plasma_reinforced_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   id: ScpPlasmaReinforcedWindowDirectionalRound
@@ -498,7 +498,7 @@
     state: plasma_reinforced_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   parent: ReinforcedPlasmaWindow
@@ -543,7 +543,7 @@
     - East
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_diagonal.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_diagonal.rsi
   - type: Construction
     graph: WindowDiagonal
     node: reinforcedPlasmaWindowDiagonal
@@ -560,7 +560,7 @@
   - type: DamageVisuals
     supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_smooth.rsi
 
 - type: entity
   id: ScpUraniumWindowDirectional
@@ -578,7 +578,7 @@
     state: uranium_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   id: ScpUraniumWindowDirectionalCorner
@@ -596,7 +596,7 @@
     state: uranium_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   id: ScpUraniumWindowDirectionalRound
@@ -614,7 +614,7 @@
     state: uranium_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   parent: UraniumWindow
@@ -659,7 +659,7 @@
     - East
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_diagonal.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_diagonal.rsi
   - type: Construction
     graph: WindowDiagonal
     node: uraniumWindowDiagonal
@@ -675,7 +675,7 @@
   - type: DamageVisuals
     supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_smooth.rsi
 
 - type: entity
   id: ScpUraniumReinforcedWindowDirectional
@@ -693,7 +693,7 @@
     state: uranium_reinforced_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   id: ScpUraniumReinforcedWindowDirectionalCorner
@@ -711,7 +711,7 @@
     state: uranium_reinforced_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   id: ScpUraniumReinforcedWindowDirectionalRound
@@ -729,7 +729,7 @@
     state: uranium_reinforced_window
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_directional.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
   parent: ReinforcedUraniumWindow
@@ -774,7 +774,7 @@
     - East
   - type: DamageVisuals
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_diagonal.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_diagonal.rsi
   - type: Construction
     graph: WindowDiagonal
     node: reinforcedUraniumWindowDiagonal
@@ -791,4 +791,4 @@
   - type: DamageVisuals
     supportIconSmooth: true
     damageOverlay:
-      sprite: _Scp/Structures/Windows/cracks_smooth.rsi
+      sprite: _Scp/Effects/DamageOverlay/cracks_smooth.rsi

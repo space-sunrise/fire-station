@@ -1,0 +1,23 @@
+﻿- type: localizedDataset
+  id: ScpWallMetalMessages
+  values:
+    prefix: scp-wall-metal-damaged-
+    count: 6
+
+- type: localizedDataset
+  id: ScpWallConcreteMessages
+  values:
+    prefix: scp-wall-concrete-damaged-
+    count: 6
+
+- type: localizedDataset
+  id: ScpWallReinforcedConcreteMessages
+  values:
+    prefix: scp-wall-reinforced-concrete-damaged
+    count: 6
+
+- type: localizedDataset
+  id: ScpWallBrickMessages
+  values:
+    prefix: scp-wall-brick-damaged-
+    count: 6

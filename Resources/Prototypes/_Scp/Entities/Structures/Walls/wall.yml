@@ -1,6 +1,66 @@
+- type: entity
+  id: ScpBaseWallDamageableVisuals
+  abstract: true
+  components:
+  - type: DamageVisuals
+    supportIconSmooth: true
+    thresholds: [ 5, 10, 20 ]
+    damageDivisor: 9
+    trackAllDamage: true
+  - type: Appearance
+
+- type: entity
+  parent: ScpBaseWallDamageableVisuals
+  id: ScpBaseWallDamageableVisualsMetal
+  abstract: true
+  components:
+  - type: DamageVisuals
+    damageOverlay:
+      sprite: _Scp/Effects/DamageOverlay/metal.rsi
+  - type: ExaminableDamage
+    messages: ScpWallMetalMessages
+
+- type: entity
+  parent: ScpBaseWallDamageableVisuals
+  id: ScpBaseWallDamageableVisualsConcrete
+  abstract: true
+  components:
+  - type: DamageVisuals
+    damageDivisor: 60
+    damageOverlay:
+      sprite: _Scp/Effects/DamageOverlay/concrete.rsi
+  - type: ExaminableDamage
+    messages: ScpWallConcreteMessages
+
+- type: entity
+  parent: ScpBaseWallDamageableVisuals
+  id: ScpBaseWallDamageableVisualsReinforcedConcrete
+  abstract: true
+  components:
+  - type: DamageVisuals
+    damageDivisor: 30
+    damageOverlay:
+      sprite: _Scp/Effects/DamageOverlay/concrete.rsi
+  - type: ExaminableDamage
+    messages: ScpWallReinforcedConcreteMessages
+
+- type: entity
+  parent: ScpBaseWallDamageableVisuals
+  id: ScpBaseWallDamageableVisualsBrick
+  abstract: true
+  components:
+  - type: DamageVisuals
+    damageDivisor: 30
+    damageOverlay:
+      sprite: _Scp/Effects/DamageOverlay/brick.rsi
+  - type: ExaminableDamage
+    messages: ScpWallBrickMessages
+
 # Стена
 - type: entity
-  parent: WallSolid
+  parent:
+  - WallSolid
+  - ScpBaseWallDamageableVisualsMetal
   id: ScpWallSolid
   name: wall
   components:
@@ -13,7 +73,9 @@
     damageModifierSet: StructuralMetallicScp
 
 - type: entity
-  parent: WallSolidRust
+  parent:
+  - WallSolidRust
+  - ScpBaseWallDamageableVisualsMetal
   id: ScpWallSolidRust
   name: wall
   components:
@@ -24,6 +86,8 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: DamageVisuals
+    damageDivisor: 7
   - type: Tag
     tags:
     - Wall
@@ -57,7 +121,9 @@
 
 # Укрепленная стена
 - type: entity
-  parent: WallReinforced
+  parent:
+  - WallReinforced
+  - ScpBaseWallDamageableVisualsMetal
   id: ScpWallReinforced
   name: reinforced wall
   components:
@@ -68,6 +134,8 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrongScp
+  - type: DamageVisuals
+    damageDivisor: 90
   - type: Destructible
     thresholds:
       - trigger:
@@ -89,7 +157,9 @@
             acts: [ "Destruction" ]
 
 - type: entity
-  parent: WallReinforcedRust
+  parent:
+  - WallReinforcedRust
+  - ScpBaseWallDamageableVisualsMetal
   id: ScpWallReinforcedRust
   name: reinforced wall
   components:
@@ -100,6 +170,8 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrongScp
+  - type: DamageVisuals
+    damageDivisor: 70
   - type: Tag
     tags:
     - Wall
@@ -174,7 +246,9 @@
 
 # База бетона
 - type: entity
-  parent: WallBrick
+  parent:
+  - WallBrick
+  - ScpBaseWallDamageableVisualsConcrete
   id: ScpWallConcreteBase
   name: concrete wall
   abstract: true
@@ -476,8 +550,12 @@
     node: concreteWallMedicalCrack
 
 # Стена Сдерживания
+
+# TODO: Исправить опечатку Metall -> Metal
 - type: entity
-  parent: BaseWall
+  parent:
+  - BaseWall
+  - ScpBaseWallDamageableVisualsReinforcedConcrete
   id: ScpWallConcreteMetallHardContaiment
   name: metall wall hard contaiment
   components:
@@ -558,7 +636,9 @@
 
 # Огнеупорный Кирпич
 - type: entity
-  parent: WallBrick
+  parent:
+  - WallBrick
+  - ScpBaseWallDamageableVisualsBrick
   id: ScpWallFireBrick
   name: fire brick wall
   components:

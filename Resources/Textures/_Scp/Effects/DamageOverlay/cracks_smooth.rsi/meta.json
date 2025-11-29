@@ -1,0 +1,37 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by Fire Station by miduzka(discord)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        { "name": "DamageOverlay0_5", "directions": 4 },
+        { "name": "DamageOverlay1_5", "directions": 4 },
+        { "name": "DamageOverlay2_5", "directions": 4 },
+        { "name": "DamageOverlay3_5", "directions": 4 },
+        { "name": "DamageOverlay4_5", "directions": 4 },
+        { "name": "DamageOverlay5_5", "directions": 4 },
+        { "name": "DamageOverlay6_5", "directions": 4 },
+        { "name": "DamageOverlay7_5", "directions": 4 },
+
+        { "name": "DamageOverlay0_10", "directions": 4 },
+        { "name": "DamageOverlay1_10", "directions": 4 },
+        { "name": "DamageOverlay2_10", "directions": 4 },
+        { "name": "DamageOverlay3_10", "directions": 4 },
+        { "name": "DamageOverlay4_10", "directions": 4 },
+        { "name": "DamageOverlay5_10", "directions": 4 },
+        { "name": "DamageOverlay6_10", "directions": 4 },
+        { "name": "DamageOverlay7_10", "directions": 4 },
+
+        { "name": "DamageOverlay0_20", "directions": 4 },
+        { "name": "DamageOverlay1_20", "directions": 4 },
+        { "name": "DamageOverlay2_20", "directions": 4 },
+        { "name": "DamageOverlay3_20", "directions": 4 },
+        { "name": "DamageOverlay4_20", "directions": 4 },
+        { "name": "DamageOverlay5_20", "directions": 4 },
+        { "name": "DamageOverlay6_20", "directions": 4 },
+        { "name": "DamageOverlay7_20", "directions": 4 }
+    ]
+}

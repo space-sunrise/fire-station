@@ -42,6 +42,8 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
 
         // Fire added - Подписка на обновление IconSmooth
         SubscribeLocalEvent<DamageVisualsComponent, IconSmoothUpdatedEvent>(OnIconSmoothUpdate);
+
+        Log.Level = LogLevel.Info;
     }
 
     // Fire edit - пофиксил, что дамаг оверлей срется в самый низ
@@ -645,7 +647,10 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
         if (thresholdIndex < 0)
         {
             thresholdIndex = ~thresholdIndex;
-            threshold = damageVisComp.Thresholds[thresholdIndex - 1];
+
+            // Fire edit start - фикс ошибки из-за поиска по отрицательному индексу(0 - 1 = -1)
+            threshold = damageVisComp.Thresholds[Math.Max(0, thresholdIndex - 1)];
+            // Fire edit end
         }
         else
         {
