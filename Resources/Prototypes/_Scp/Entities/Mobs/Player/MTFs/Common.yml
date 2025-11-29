@@ -38,16 +38,16 @@
           amount: 4
 
 - type: entity
-  parent: TrackingImplanter
-  id: TrackingImplanterMTF
+  parent: BaseImplantOnlyImplanter
+  id: DeathRattleImplanterMTF
   suffix: tracking
   components:
     - type: Implanter
-      implant: TrackingImplantMTF
+      implant: DeathRattleImplantMTF
 
 - type: entity
-  parent: TrackingImplant
-  id: TrackingImplantMTF
+  parent: DeathRattleImplant
+  id: DeathRattleImplantMTF
   components:
     - type: RattleOnTrigger
       radioChannel: RegionalAdministration
@@ -58,7 +58,7 @@
   components:
     - type: StorageFill
       contents:
-        - id: TrackingImplanterMTF
+        - id: DeathRattleImplanterMTF
           amount: 6
 
 - type: entity
@@ -144,10 +144,13 @@
     - NamesMilitaryLast
     nameFormat: name-format-ert
   - type: ZombieImmune
+  - type: Scp049Protection
+  - type: Mood
+    minimumSpeedModifier: 0.9
   - type: AutoImplant
     implants:
     - Scp049ProtectionImplant
-    - TrackingImplantMTF
+    - DeathRattleImplantMTF
     - MindShieldImplant
   - type: TTS
   - type: NoEmotions
@@ -170,14 +173,14 @@
       Terror: 2
     fearBasedGrainStrength:
       None: 0
-      Anxiety: 30
-      Fear: 80
-      Terror: 150
+      Anxiety: 15
+      Fear: 45
+      Terror: 100
     fearBasedVignetteStrength:
       None: 0
-      Anxiety: 20
-      Fear: 30
-      Terror: 60
+      Anxiety: 15
+      Fear: 25
+      Terror: 50
     baseJitterTime: 0
     fallOffChance: 0
 
