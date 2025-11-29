@@ -26,7 +26,7 @@ public sealed partial class BloodSplatterSystem
 
         var direction = rotation.ToWorldVec();
 
-        for (var i = 0; i <= count; i++)
+        for (var i = 0; i < count; i++)
         {
             var spawnPos = start.Position + direction * i;
             var uid = Spawn(ent.Comp.BloodLineProto, new MapCoordinates(spawnPos, start.MapId));
