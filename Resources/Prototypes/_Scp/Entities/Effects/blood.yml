@@ -30,6 +30,8 @@
     sprite: _Scp/Effects/blood_particles.rsi
   - type: BloodParticle
   - type: FieldOfViewOccludable
+  - type: OffsetAnimation
+    animationKey: blood_particle_key
   - type: AnimationPlayer
   - type: Physics
     bodyType: Dynamic

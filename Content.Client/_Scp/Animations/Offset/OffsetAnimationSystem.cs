@@ -1,35 +1,33 @@
 ﻿using System.Numerics;
-using Content.Shared._Scp.Blood;
+using Content.Shared._Scp.Animations.Offset;
 using Robust.Client.Animations;
 using Robust.Client.GameObjects;
 using Robust.Shared.Animations;
 
-namespace Content.Client._Scp.Blood;
+namespace Content.Client._Scp.Animations.Offset;
 
-public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
+public sealed class OffsetAnimationSystem : EntitySystem
 {
     [Dependency] private readonly AnimationPlayerSystem _animation = default!;
-
-    private const string ParticleAnimationKey = "blood_particle_key";
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<BloodParticleComponent, ComponentStartup>(OnStart);
+        SubscribeLocalEvent<OffsetAnimationComponent, ComponentStartup>(OnStart);
     }
 
-    private void OnStart(Entity<BloodParticleComponent> ent, ref ComponentStartup args)
+    private void OnStart(Entity<OffsetAnimationComponent> ent, ref ComponentStartup args)
     {
-        if (_animation.HasRunningAnimation(ent, ParticleAnimationKey))
+        if (_animation.HasRunningAnimation(ent, ent.Comp.AnimationKey))
             return;
 
-        _animation.Play(ent, GetDropletAnimation(ent), ParticleAnimationKey);
+        _animation.Play(ent, GetAnimation(ent), ent.Comp.AnimationKey);
     }
 
-    private static Animation GetDropletAnimation(Entity<BloodParticleComponent> ent)
+    private static Animation GetAnimation(Entity<OffsetAnimationComponent> ent)
     {
-        var length = ent.Comp.FlyTime;
+        var length = ent.Comp.AnimationTime;
         return new Animation
         {
             Length = length,
@@ -43,7 +41,7 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
                     KeyFrames =
                     {
                         new AnimationTrackProperty.KeyFrame(Vector2.Zero, 0f),
-                        new AnimationTrackProperty.KeyFrame(new Vector2(0f, 1f), 0.225f),
+                        new AnimationTrackProperty.KeyFrame(ent.Comp.PeakOffset, ent.Comp.PeakKeyTime),
                         new AnimationTrackProperty.KeyFrame(Vector2.Zero, (float) length.TotalSeconds),
                     },
                 },

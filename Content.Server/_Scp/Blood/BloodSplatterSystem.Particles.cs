@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Numerics;
+using Content.Shared._Scp.Animations.Offset;
 using Content.Shared._Scp.Blood;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics;
@@ -9,6 +10,9 @@ using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Blood;
 
+// TODO: Рефактор и создание LiquidParticle с целью унификации в сторону партиклов с любыми жидкостями,
+// любыми источниками жидкости, настройками и прочим.
+// + API для вызова из других систем.
 public sealed partial class BloodSplatterSystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -30,6 +34,12 @@ public sealed partial class BloodSplatterSystem
         ent.Comp.FlyTime += ent.Comp.FlyTime * _random.NextFloat(0f, ent.Comp.FlyTimeVariation);
         ent.Comp.FlyTimeEnd = _timing.CurTime + ent.Comp.FlyTime;
         Dirty(ent);
+
+        if (TryComp<OffsetAnimationComponent>(ent, out var offsetAnimation))
+        {
+            offsetAnimation.AnimationTime = ent.Comp.FlyTime;
+            Dirty(ent.Owner, offsetAnimation);
+        }
     }
 
     private void UpdateParticles()

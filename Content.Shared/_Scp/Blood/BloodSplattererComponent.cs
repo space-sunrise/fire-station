@@ -79,14 +79,14 @@ public sealed partial class BloodSplattererComponent : Component
     /// Звук, проигрывающийся при успешном спавне частичек крови
     /// </summary>
     [DataField]
-    public SoundSpecifier ParticleSpawnedSound = new SoundCollectionSpecifier("BleedingStart",
+    public SoundSpecifier? ParticleSpawnedSound = new SoundCollectionSpecifier("BleedingStart",
         AudioParams.Default.WithVariation(0.25f).WithMaxDistance(6f));
 
     /// <summary>
     /// Звук, проигрывающийся при успешном спавне линии крови
     /// </summary>
     [DataField]
-    public SoundSpecifier BloodLineSpawnedSound = new SoundCollectionSpecifier("BleedingStart",
+    public SoundSpecifier? BloodLineSpawnedSound = new SoundCollectionSpecifier("BleedingStart",
             AudioParams.Default.WithVariation(0.25f).WithMaxDistance(6f));
 
     /// <summary>

@@ -1,0 +1,34 @@
+﻿- type: reagent
+  id: Scp096Tears
+  name: reagent-name-scp096-tears
+  parent: BaseDrink
+  desc: reagent-desc-scp096-tears
+  evaporationSpeed: 0.05
+  absorbent: true
+  physicalDesc: reagent-physical-desc-translucent
+  flavor: salty
+  color: "#B4D6FA66"
+  boilingPoint: 100.0
+  meltingPoint: 0.0
+  friction: 0.4
+  metabolisms:
+    Drink:
+      effects:
+      - !type:SatiateThirst
+        factor: 4
+        conditions:
+        - !type:OrganType
+          type: Dwarf
+          shouldHave: false
+    Gas:
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        ignoreResistances: true
+        conditions:
+        - !type:OrganType
+          type: Slime
+          shouldHave: true
+        damage:
+          types:
+            Heat: 3
