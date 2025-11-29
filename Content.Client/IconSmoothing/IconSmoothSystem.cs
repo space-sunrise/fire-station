@@ -547,7 +547,7 @@ namespace Content.Client.IconSmoothing
         }
     }
 
-    // Fire added start - чтобы при удалении сущности соседи меня спрайт
+    // Fire added start - чтобы при удалении сущности соседи обновляли свои спрайты
     [ByRefEvent]
     public readonly record struct IconSmoothUpdatedEvent;
     // Fire added end
