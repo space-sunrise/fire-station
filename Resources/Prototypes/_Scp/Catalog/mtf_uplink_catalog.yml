@@ -1353,15 +1353,16 @@
   - !type:ListingLimitedStockCondition
     stock: 4
 
-- type: listing
-  id: ScpUplinkBoxCardboardShoulderPatches
-  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: shoulder_patches }
-  productEntity: BoxCardboardShoulderPatches
-  categories:
-  - ScpAdditional
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
+# уходят до лучших времен по приказу ДРД
+#- type: listing
+#  id: ScpUplinkBoxCardboardShoulderPatches
+#  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: shoulder_patches }
+#  productEntity: BoxCardboardShoulderPatches
+#  categories:
+#  - ScpAdditional
+#  conditions:
+#  - !type:ListingLimitedStockCondition
+#    stock: 1
 
 
 - type: listing

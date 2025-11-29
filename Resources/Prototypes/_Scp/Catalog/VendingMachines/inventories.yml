@@ -112,11 +112,11 @@
     ClothingHeadHatSecBlack: 3
     ClothingHeadHatOutlawHat: 1
     ClothingHeadHatCowboyBlack: 1
-    ClothingNeckShoulderPatchWhite: 6
-    ClothingNeckShoulderPatchRed: 6
-    ClothingNeckShoulderPatchBlue: 6
-    ClothingNeckShoulderPatchGreen: 6
-    ClothingNeckShoulderPatchYellow: 6
+    #ClothingNeckShoulderPatchWhite: 6 уходят до лучших времен по приказу ДРД
+    #ClothingNeckShoulderPatchRed: 6
+    #ClothingNeckShoulderPatchBlue: 6
+    #ClothingNeckShoulderPatchGreen: 6
+    #ClothingNeckShoulderPatchYellow: 6
     ClothingEyesGlassesSecurityGuard: 3
     ClothingEyesEyepatchHudSecurity: 2
     ClothingMaskSecurityBandBlack: 3
