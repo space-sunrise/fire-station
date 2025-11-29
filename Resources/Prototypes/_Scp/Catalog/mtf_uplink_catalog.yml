@@ -580,7 +580,7 @@
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
-    
+
 - type: listing
   id: ScpUplinkMtfStorageCrateSubMachineGunP90
   productEntity: MtfStorageCrateSubMachineGunP90
@@ -603,7 +603,7 @@
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
-    
+
 - type: listing
   id: ScpUplinkMtfStorageCrateRifleG36
   productEntity: MtfStorageCrateRifleG36
@@ -626,7 +626,7 @@
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
-    
+
 - type: listing
   id: ScpUplinkMtfStorageCrateRifleAR18
   productEntity: MtfStorageCrateRifleAR18
@@ -649,7 +649,7 @@
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
-    
+
 - type: listing
   id: ScpUplinkMtfStorageCrateShotgunCombat
   productEntity: MtfStorageCrateShotgunCombat
@@ -672,7 +672,7 @@
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
-    
+
 - type: listing
   id: ScpUplinkMtfStorageCrateShotgunBulldog
   productEntity: MtfStorageCrateShotgunBulldog
@@ -695,7 +695,7 @@
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
-    
+
 - type: listing
   id: ScpUplinkMtfStorageCrateRifleBR64
   productEntity: MtfStorageCrateRifleBR64
@@ -718,7 +718,7 @@
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
-    
+
 - type: listing
   id: ScpUplinkWeaponEarthGovLaserRifle
   productEntity: WeaponEarthGovLaserRifle
@@ -739,7 +739,7 @@
     - ScpUplinkWeaponEarthGovLaserSniper
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
-    
+
 - type: listing
   id: ScpUplinkWeaponEarthGovLaserSniper
   productEntity: WeaponEarthGovLaserSniper
@@ -1354,6 +1354,17 @@
     stock: 4
 
 - type: listing
+  id: ScpUplinkBoxCardboardShoulderPatches
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: shoulder_patches }
+  productEntity: BoxCardboardShoulderPatches
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+
+- type: listing
   id: ScpUplinkDuffelScpMedicalBundleFilled
   productEntity: ClothingBackpackDuffelScpMedicalBundleFilled
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med_bundle }
@@ -1382,7 +1393,7 @@
   icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: box_amnesiac }
   productEntity: BoxVialAmnesiacA
   cost:
-    SupplyPoint: 1
+    SupplyPoint: 2
   categories:
   - ScpAdditional
   conditions:
@@ -1394,7 +1405,7 @@
   icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: box_amnesiac }
   productEntity: BoxVialAmnesiacB
   cost:
-    SupplyPoint: 1
+    SupplyPoint: 2
   categories:
   - ScpAdditional
   conditions:
@@ -1406,7 +1417,7 @@
   icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: box_amnesiac }
   productEntity: BoxVialAmnesiacC
   cost:
-    SupplyPoint: 2
+    SupplyPoint: 3
   categories:
   - ScpAdditional
   conditions:
@@ -1418,7 +1429,7 @@
   icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: box_amnesiac }
   productEntity: BoxVialAmnesiacD
   cost:
-    SupplyPoint: 2
+    SupplyPoint: 3
   categories:
   - ScpAdditional
   conditions:
@@ -1712,7 +1723,7 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
-  
+
 - type: listing
   id: ScpUplinkMtfStorageCrateSubMachineGunMP5Elite
   productEntity: MtfStorageCrateSubMachineGunMP5
@@ -1729,13 +1740,13 @@
     - ScpUplinkMtfStorageCrateRifleG36Elite
     - ScpUplinkMtfStorageCrateRifleAR18Elite
     - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64Elite   
+    - ScpUplinkMtfStorageCrateRifleBR64Elite
     - ScpUplinkWeaponPulseRifleElite
     - ScpUplinkWeaponSniperPulseCarbineScpElite
     - ScpUplinkMtfStorageCrateShotgunCyclerElite
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArmsElite
-    
+
 - type: listing
   id: ScpUplinkMtfStorageCrateSubMachineGunP90Elite
   productEntity: MtfStorageCrateSubMachineGunP90
@@ -1752,13 +1763,13 @@
     - ScpUplinkMtfStorageCrateRifleG36Elite
     - ScpUplinkMtfStorageCrateRifleAR18Elite
     - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64Elite   
+    - ScpUplinkMtfStorageCrateRifleBR64Elite
     - ScpUplinkWeaponPulseRifleElite
     - ScpUplinkWeaponSniperPulseCarbineScpElite
     - ScpUplinkMtfStorageCrateShotgunCyclerElite
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArmsElite
-    
+
 - type: listing
   id: ScpUplinkMtfStorageCrateRifleG36Elite
   productEntity: MtfStorageCrateRifleG36
@@ -1775,13 +1786,13 @@
     - ScpUplinkMtfStorageCrateRifleG36Elite
     - ScpUplinkMtfStorageCrateRifleAR18Elite
     - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64Elite   
+    - ScpUplinkMtfStorageCrateRifleBR64Elite
     - ScpUplinkWeaponPulseRifleElite
     - ScpUplinkWeaponSniperPulseCarbineScpElite
     - ScpUplinkMtfStorageCrateShotgunCyclerElite
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArmsElite
-    
+
 - type: listing
   id: ScpUplinkMtfStorageCrateRifleAR18Elite
   productEntity: MtfStorageCrateRifleAR18
@@ -1798,13 +1809,13 @@
     - ScpUplinkMtfStorageCrateRifleG36Elite
     - ScpUplinkMtfStorageCrateRifleAR18Elite
     - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64Elite   
+    - ScpUplinkMtfStorageCrateRifleBR64Elite
     - ScpUplinkWeaponPulseRifleElite
     - ScpUplinkWeaponSniperPulseCarbineScpElite
     - ScpUplinkMtfStorageCrateShotgunCyclerElite
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArmsElite
-    
+
 - type: listing
   id: ScpUplinkMtfStorageCrateShotgunCyclerElite
   productEntity: MtfStorageCrateShotgunCycler
@@ -1821,13 +1832,13 @@
     - ScpUplinkMtfStorageCrateRifleG36Elite
     - ScpUplinkMtfStorageCrateRifleAR18Elite
     - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64Elite   
+    - ScpUplinkMtfStorageCrateRifleBR64Elite
     - ScpUplinkWeaponPulseRifleElite
     - ScpUplinkWeaponSniperPulseCarbineScpElite
     - ScpUplinkMtfStorageCrateShotgunCyclerElite
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArmsElite
-    
+
 - type: listing
   id: ScpUplinkMtfStorageCrateShotgunBulldogElite
   productEntity: MtfStorageCrateShotgunBulldog
@@ -1844,7 +1855,7 @@
     - ScpUplinkMtfStorageCrateRifleG36Elite
     - ScpUplinkMtfStorageCrateRifleAR18Elite
     - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64Elite   
+    - ScpUplinkMtfStorageCrateRifleBR64Elite
     - ScpUplinkWeaponPulseRifleElite
     - ScpUplinkWeaponSniperPulseCarbineScpElite
     - ScpUplinkMtfStorageCrateShotgunCyclerElite
@@ -1867,7 +1878,7 @@
     - ScpUplinkMtfStorageCrateRifleG36Elite
     - ScpUplinkMtfStorageCrateRifleAR18Elite
     - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64Elite   
+    - ScpUplinkMtfStorageCrateRifleBR64Elite
     - ScpUplinkWeaponPulseRifleElite
     - ScpUplinkWeaponSniperPulseCarbineScpElite
     - ScpUplinkMtfStorageCrateShotgunCyclerElite
@@ -1888,13 +1899,13 @@
     - ScpUplinkMtfStorageCrateRifleG36Elite
     - ScpUplinkMtfStorageCrateRifleAR18Elite
     - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64Elite   
+    - ScpUplinkMtfStorageCrateRifleBR64Elite
     - ScpUplinkWeaponPulseRifleElite
     - ScpUplinkWeaponSniperPulseCarbineScpElite
     - ScpUplinkMtfStorageCrateShotgunCyclerElite
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArmsElite
-    
+
 - type: listing
   id: ScpUplinkWeaponSniperPulseCarbineScpElite
   productEntity: WeaponSniperPulseCarbineScp
@@ -1909,7 +1920,7 @@
     - ScpUplinkMtfStorageCrateRifleG36Elite
     - ScpUplinkMtfStorageCrateRifleAR18Elite
     - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64Elite   
+    - ScpUplinkMtfStorageCrateRifleBR64Elite
     - ScpUplinkWeaponPulseRifleElite
     - ScpUplinkWeaponSniperPulseCarbineScpElite
     - ScpUplinkMtfStorageCrateShotgunCyclerElite
@@ -1927,7 +1938,7 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
-  
+
 - type: listing
   id: ScpUplinkMtfStorageCrateRevolverSpearheadBlackElite
   productEntity: MtfStorageCrateRevolverSpearheadBlack
@@ -2007,7 +2018,7 @@
   productEntity: MtfStorageCratePistolVP78
   name: shop-name-vp78box
   description: shop-desc-vp78box
-  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: vp78 } 
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: vp78 }
   categories:
   - ScpPistolsElite
   conditions:

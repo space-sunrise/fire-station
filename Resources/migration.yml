@@ -1925,6 +1925,9 @@ FaxMachineSyndie: FaxMachineEncrypted
 FaxMachineCaptain: FaxMachineDirector
 
 # Остальное
+TrackingImplanterMTF: DeathRattleImplanterMTF
+TrackingImplantMTF: DeathRattleImplantMTF
+
 HoloprojectorSecurity: null
 SpawnMobCleanBot: SpawnMobRoomba
 
