@@ -37,13 +37,11 @@ public sealed class DamageVisualsSystem : VisualizerSystem<DamageVisualsComponen
     {
         base.Initialize();
 
-        // Fire edit
+        // Fire edit - добавил запуск после IconSmoothSystem
         SubscribeLocalEvent<DamageVisualsComponent, ComponentStartup>(InitializeEntity, after: [typeof(IconSmoothSystem)]);
 
         // Fire added - Подписка на обновление IconSmooth
         SubscribeLocalEvent<DamageVisualsComponent, IconSmoothUpdatedEvent>(OnIconSmoothUpdate);
-
-        Log.Level = LogLevel.Info;
     }
 
     // Fire edit - пофиксил, что дамаг оверлей срется в самый низ
