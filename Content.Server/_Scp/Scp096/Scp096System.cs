@@ -152,10 +152,10 @@ public sealed class Scp096System : SharedScp096System
             generator.Cooldown /= ent.Comp.LiquidSpawnCooldownDivisor;
             generator.CooldownVariation /= ent.Comp.LiquidSpawnCooldownDivisor;
         }
-        else if (ent.Comp.CachedLiquidSpawnCooldown != null && ent.Comp.CachedLiquidSpawnCooldown != null)
+        else if (ent.Comp.CachedLiquidSpawnCooldown != null && ent.Comp.CachedCooldownVariation != null)
         {
             generator.Cooldown = ent.Comp.CachedLiquidSpawnCooldown.Value;
-            generator.CooldownVariation = ent.Comp.CachedLiquidSpawnCooldown.Value;
+            generator.CooldownVariation = ent.Comp.CachedCooldownVariation.Value;
 
             ent.Comp.CachedLiquidSpawnCooldown = null;
             ent.Comp.CachedCooldownVariation = null;
