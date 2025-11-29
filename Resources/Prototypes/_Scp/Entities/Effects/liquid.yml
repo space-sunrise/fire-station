@@ -12,8 +12,6 @@
   - type: Physics
     bodyType: Dynamic
     fixedRotation: false
-    friction: 0.1
-    restitution: 0.7
   - type: Puddle
     solution: blood
     canSlow: false
