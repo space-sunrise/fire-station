@@ -58,7 +58,7 @@ public sealed partial class BloodSplattererComponent : Component
     public Vector2 BloodToTakePerParticle = new (0.5f, 3f);
 
     /// <summary>
-    /// Количество крови, которое каждая линия из тела персонажа.
+    /// Количество крови, которое каждая линия заберет из тела персонажа.
     /// </summary>
     [DataField]
     public Vector2 BloodToTakeToPerLine = new (1f, 3f);
