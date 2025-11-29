@@ -40,10 +40,11 @@ namespace Content.Client.IconSmoothing
             InitializeEdge();
             SubscribeLocalEvent<IconSmoothComponent, AnchorStateChangedEvent>(OnAnchorChanged);
             SubscribeLocalEvent<IconSmoothComponent, ComponentShutdown>(OnShutdown);
-            SubscribeLocalEvent<IconSmoothComponent, ComponentStartup>(OnStartup);
+            SubscribeLocalEvent<IconSmoothComponent, ComponentInit>(OnStartup); // Fire edit
         }
 
-        private void OnStartup(EntityUid uid, IconSmoothComponent component, ComponentStartup args)
+        // Fire edit - пофиксил, что дамаг оверлей срется в самый низ
+        private void OnStartup(EntityUid uid, IconSmoothComponent component, ComponentInit args)
         {
             var xform = Transform(uid);
             if (xform.Anchored)
@@ -292,6 +293,11 @@ namespace Content.Client.IconSmoothing
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+
+            // Fire added start - обновление ближайших спрайто дамаг оверлея
+            var ev = new IconSmoothUpdatedEvent();
+            RaiseLocalEvent(uid, ref ev);
+            // Fire added end
         }
 
         private void CalculateNewSpriteDiagonal(Entity<MapGridComponent>? gridEntity, IconSmoothComponent smooth,
@@ -540,4 +546,9 @@ namespace Content.Client.IconSmoothing
             SW,
         }
     }
+
+    // Fire added start - чтобы при удалении сущности соседи обновляли свои спрайты
+    [ByRefEvent]
+    public readonly record struct IconSmoothUpdatedEvent;
+    // Fire added end
 }
