@@ -12,6 +12,9 @@
   meltingPoint: 0.0
   friction: 0.4
   metabolisms:
+    Medicine:
+      effects:
+      - !type:ChemHealEyeDamage
     Drink:
       effects:
       - !type:SatiateThirst
@@ -32,3 +35,15 @@
         damage:
           types:
             Heat: 3
+
+- type: reagent
+  parent: Blood
+  id: Scp096Blood
+  name: reagent-name-scp096-blood
+  group: Biological
+  desc: reagent-desc-scp096-blood
+  flavor: horrible
+  color: "#4F002B"
+  recognizable: false
+  physicalDesc: reagent-physical-desc-slimy
+

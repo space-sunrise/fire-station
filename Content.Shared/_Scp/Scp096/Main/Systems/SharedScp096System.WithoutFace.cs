@@ -37,6 +37,7 @@ public abstract partial class SharedScp096System
         UpdateAudio(ent.Owner, ent.Comp.AmbientSound);
 
         RefreshSpeedModifiers(ent.Owner);
+        TryToggleTearsReagent(ent.Owner, false);
 
         // Устанавливаем параметры атаки для режима содранного лица
         if (TryComp<MeleeWeaponComponent>(ent, out var melee))
@@ -76,6 +77,7 @@ public abstract partial class SharedScp096System
         _audio.PlayPredicted(ent.Comp.ShutdownSound, ent, ent);
         UpdateAudio(ent.Owner);
 
+        TryToggleTearsReagent(ent.Owner, true);
         RefreshSpeedModifiers(ent.Owner, true);
         TryHealFace(ent);
 

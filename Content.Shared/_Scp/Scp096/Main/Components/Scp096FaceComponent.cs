@@ -22,11 +22,14 @@ public sealed partial class Scp096FaceComponent : Component
     public ProtoId<ReagentPrototype> TearsReagent = "Scp096Tears";
 
     [DataField]
-    public ProtoId<ReagentPrototype> BloodReagent = "Blood";
+    public ProtoId<ReagentPrototype> BloodReagent = "Scp096Blood";
 
     [DataField]
     public float LiquidSpawnCooldownDivisor = 3f;
 
     [ViewVariables]
     public TimeSpan? CachedLiquidSpawnCooldown;
+
+    [ViewVariables]
+    public TimeSpan? CachedCooldownVariation;
 }

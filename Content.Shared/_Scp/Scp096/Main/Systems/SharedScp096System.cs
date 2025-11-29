@@ -456,9 +456,20 @@ public abstract partial class SharedScp096System : EntitySystem
         return true;
     }
 
+    private bool TryModifyTearsSpawnSpeed(Entity<Scp096Component?> ent, bool cryFaster)
+    {
+        if (!TryGetFace(ent, out var face))
+            return false;
+
+        ModifyTearsSpawnSpeed(face.Value, cryFaster);
+        return true;
+    }
+
     protected virtual void ToggleTears(Entity<Scp096FaceComponent> ent, bool value) { }
 
     protected virtual void ToggleTearsReagent(Entity<Scp096FaceComponent> ent, bool useDefaultReagent) { }
+
+    protected virtual void ModifyTearsSpawnSpeed(Entity<Scp096FaceComponent> ent, bool cryFaster) { }
 
     #endregion
 }

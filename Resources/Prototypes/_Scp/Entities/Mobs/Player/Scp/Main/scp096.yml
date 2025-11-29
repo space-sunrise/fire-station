@@ -76,7 +76,7 @@
     enabled: false
   - type: ActionGrant
     actions:
-    - Scp096CryOut
+    #- Scp096CryOut - Требует механику ремонта стен, отключено до реализации.
     - Scp096FaceSkinRip
     - Scp096SitDown
   - type: ContainerContainer
@@ -150,11 +150,13 @@
     - Flashed
     - RadiationProtection
     - Drowsiness
+  - type: Bloodstream
+    bloodReagent: Scp096Blood
   - type: SolutionRegeneration
     solution: bloodstream
     generated:
       reagents:
-      - ReagentId: Blood
+      - ReagentId: Scp096Blood
         Quantity: 5
   - type: GuideHelp
     guides:

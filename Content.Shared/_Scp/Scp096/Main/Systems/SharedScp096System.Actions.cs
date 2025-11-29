@@ -220,6 +220,7 @@ public abstract partial class SharedScp096System
             return false;
 
         ToggleMovement(ent, haveToStand, false);
+        TryModifyTearsSpawnSpeed(ent, !haveToStand);
 
         if (useAnimation)
         {

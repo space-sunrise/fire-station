@@ -6,6 +6,7 @@ using Content.Shared._Scp.Blood;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Main.Systems;
 using Content.Shared.Body.Components;
+using Content.Shared.Chemistry.Components;
 using Robust.Server.Containers;
 using Robust.Server.GameStates;
 
@@ -115,6 +116,42 @@ public sealed class Scp096System : SharedScp096System
             : ent.Comp.BloodReagent;
 
         bloodstream.BloodReagent = reagent;
+
+        if (TryComp<SolutionRegenerationComponent>(ent, out var regeneration))
+        {
+            regeneration.Generated?.RemoveAllSolution();
+            regeneration.Generated?.AddReagent(reagent, 20f);
+            Dirty(ent, regeneration);
+        }
+
+        bloodstream.BloodSolution?.Comp.Solution.RemoveAllSolution();
+        bloodstream.BloodSolution?.Comp.Solution.AddReagent(reagent, bloodstream.BloodMaxVolume);
+
         Dirty(ent, bloodstream);
+    }
+
+    protected override void ModifyTearsSpawnSpeed(Entity<Scp096FaceComponent> ent, bool cryFaster)
+    {
+        base.ModifyTearsSpawnSpeed(ent, cryFaster);
+
+        if (!TryComp<LiquidParticlesGeneratorComponent>(ent, out var generator))
+            return;
+
+        if (cryFaster)
+        {
+            ent.Comp.CachedLiquidSpawnCooldown = generator.Cooldown;
+            ent.Comp.CachedCooldownVariation = generator.CooldownVariation;
+
+            generator.Cooldown /= ent.Comp.LiquidSpawnCooldownDivisor;
+            generator.CooldownVariation /= ent.Comp.LiquidSpawnCooldownDivisor;
+        }
+        else if (ent.Comp.CachedLiquidSpawnCooldown != null && ent.Comp.CachedLiquidSpawnCooldown != null)
+        {
+            generator.Cooldown = ent.Comp.CachedLiquidSpawnCooldown.Value;
+            generator.CooldownVariation = ent.Comp.CachedLiquidSpawnCooldown.Value;
+
+            ent.Comp.CachedLiquidSpawnCooldown = null;
+            ent.Comp.CachedCooldownVariation = null;
+        }
     }
 }
