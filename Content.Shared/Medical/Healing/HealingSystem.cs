@@ -350,7 +350,7 @@ public sealed class HealingSystem : EntitySystem
             origin: origin);
 
         var damaged = _damageable.TryChangeDamage(target,
-            damage * _damageable.UniversalAllDamageModifier * scale,
+            onlyDamage * _damageable.UniversalAllDamageModifier * scale,
             interruptsDoAfters: false,
             canHeal: false,
             origin: origin);
