@@ -210,5 +210,11 @@
     amount: 1, 2
     distance: 5, 10
     particleSpawnedSound: null
+    particles:
+    - LiquidParticle1
+    - LiquidParticle2
+    - LiquidParticle3
   - type: LiquidParticlesGenerator
     cooldown: 3
+    angle: 90
+    radians: 0.75

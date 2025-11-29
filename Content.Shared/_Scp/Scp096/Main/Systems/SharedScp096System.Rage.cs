@@ -62,6 +62,7 @@ public abstract partial class SharedScp096System
 
         ToggleMovement(ent, false);
         UpdateAppearance(ent);
+        TryToggleTears(ent.Owner, false);
 
         Dirty(ent);
     }
@@ -147,6 +148,7 @@ public abstract partial class SharedScp096System
 
         // Обновляем скорость передвижения
         RefreshSpeedModifiers(ent.Owner, true);
+        TryToggleTears(ent.Owner, true);
     }
 
     #endregion

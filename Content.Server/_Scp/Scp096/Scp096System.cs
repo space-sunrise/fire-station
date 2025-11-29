@@ -1,9 +1,11 @@
 ﻿using System.Numerics;
 using Content.Server._Scp.Blood;
+using Content.Server._Scp.Misc.LiquidParticlesGenerator;
 using Content.Server._Scp.Other.BreakDoorOnCollide;
 using Content.Shared._Scp.Blood;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Main.Systems;
+using Content.Shared.Body.Components;
 using Robust.Server.Containers;
 using Robust.Server.GameStates;
 
@@ -89,5 +91,30 @@ public sealed class Scp096System : SharedScp096System
             return;
 
         _bloodSplatter.SpawnBloodParticles(ent!, ent, BloodAngle, BloodRadians, BloodDistance);
+    }
+
+    protected override void ToggleTears(Entity<Scp096FaceComponent> ent, bool value)
+    {
+        base.ToggleTears(ent, value);
+
+        if (!TryComp<LiquidParticlesGeneratorComponent>(ent, out var generator))
+            return;
+
+        generator.Enabled = value;
+    }
+
+    protected override void ToggleTearsReagent(Entity<Scp096FaceComponent> ent, bool useDefaultReagent)
+    {
+        base.ToggleTearsReagent(ent, useDefaultReagent);
+
+        if (!TryComp<BloodstreamComponent>(ent, out var bloodstream))
+            return;
+
+        var reagent = useDefaultReagent
+            ? ent.Comp.TearsReagent
+            : ent.Comp.BloodReagent;
+
+        bloodstream.BloodReagent = reagent;
+        Dirty(ent, bloodstream);
     }
 }

@@ -308,9 +308,9 @@ public abstract partial class SharedScp096System : EntitySystem
 
         float newSpeed;
 
-        if (TryComp<ActiveScp096RageComponent>(ent, out var rage) && !forceDefault)
+        if (RageQuery.TryComp(ent, out var rage) && !forceDefault)
             newSpeed = rage.Speed;
-        else if (TryComp<ActiveScp096WithoutFaceComponent>(ent, out var withoutFaceComp) && !forceDefault)
+        else if (WithoutFaceQuery.TryComp(ent, out var withoutFaceComp) && !forceDefault)
             newSpeed = withoutFaceComp.Speed;
         else
             newSpeed = ent.Comp.Speed;
@@ -375,7 +375,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
         var faceEntity = ent.Comp.FaceEntity.Value;
 
-        if (!TryComp<Scp096FaceComponent>(faceEntity, out var faceComp))
+        if (!FaceQuery.TryComp(faceEntity, out var faceComp))
         {
             Log.Error($"Found SCP-096 face without {nameof(Scp096FaceComponent)}! Prototype: {Prototype(faceEntity)}, Entity: {ToPrettyString(faceEntity)}");
             return false;
@@ -395,7 +395,7 @@ public abstract partial class SharedScp096System : EntitySystem
             return false;
         }
 
-        if (!TryComp<Scp096Component>(ent.Comp.FaceOwner, out var scp096Comp))
+        if (!Scp096Query.TryComp(ent.Comp.FaceOwner, out var scp096Comp))
         {
             Log.Error($"Found SCP-096 face owner without {nameof(Scp096Component)}. Face - {ToPrettyString(ent)}, Owner - {ToPrettyString(ent.Comp.FaceOwner)}");
             return false;
@@ -437,6 +437,28 @@ public abstract partial class SharedScp096System : EntitySystem
         else
             _pendingAnimations[ent] = end;
     }
+
+    private bool TryToggleTears(Entity<Scp096Component?> ent, bool value)
+    {
+        if (!TryGetFace(ent, out var face))
+            return false;
+
+        ToggleTears(face.Value, value);
+        return true;
+    }
+
+    private bool TryToggleTearsReagent(Entity<Scp096Component?> ent, bool useDefaultReagent)
+    {
+        if (!TryGetFace(ent, out var face))
+            return false;
+
+        ToggleTearsReagent(face.Value, useDefaultReagent);
+        return true;
+    }
+
+    protected virtual void ToggleTears(Entity<Scp096FaceComponent> ent, bool value) { }
+
+    protected virtual void ToggleTearsReagent(Entity<Scp096FaceComponent> ent, bool useDefaultReagent) { }
 
     #endregion
 }

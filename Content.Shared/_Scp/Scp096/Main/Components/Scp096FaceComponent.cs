@@ -1,4 +1,6 @@
-﻿using Robust.Shared.GameStates;
+﻿using Content.Shared.Chemistry.Reagent;
+using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp096.Main.Components;
 
@@ -15,4 +17,16 @@ public sealed partial class Scp096FaceComponent : Component
     /// </summary>
     [ViewVariables, AutoNetworkedField]
     public EntityUid? FaceOwner;
+
+    [DataField]
+    public ProtoId<ReagentPrototype> TearsReagent = "Scp096Tears";
+
+    [DataField]
+    public ProtoId<ReagentPrototype> BloodReagent = "Blood";
+
+    [DataField]
+    public float LiquidSpawnCooldownDivisor = 3f;
+
+    [ViewVariables]
+    public TimeSpan? CachedLiquidSpawnCooldown;
 }

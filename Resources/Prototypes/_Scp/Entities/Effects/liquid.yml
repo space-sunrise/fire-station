@@ -1,0 +1,61 @@
+﻿- type: entity
+  id: BaseLiquidParticle
+  abstract: true
+  name: liquid particle
+  components:
+  - type: Sprite
+    drawdepth: Effects
+    sprite: _Scp/Effects/blood_particles.rsi
+  - type: BloodParticle
+  - type: FieldOfViewOccludable
+  - type: AnimationPlayer
+  - type: Physics
+    bodyType: Dynamic
+    fixedRotation: false
+    friction: 0.1
+    restitution: 0.7
+  - type: Puddle
+    solution: blood
+    canSlow: false
+    canSlip: false
+  - type: Appearance
+  - type: SolutionContainerManager
+    solutions:
+      blood:
+        maxVol: 5
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.1
+        density: 20
+        mask:
+        - ItemMask
+
+- type: entity
+  id: LiquidParticle1
+  parent: BaseLiquidParticle
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    state: particle1
+
+- type: entity
+  id: LiquidParticle2
+  parent: BaseLiquidParticle
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    state: particle2
+
+- type: entity
+  id: LiquidParticle3
+  parent: BaseLiquidParticle
+  categories: [ HideSpawnMenu ]
+  save: false
+  components:
+  - type: Sprite
+    state: particle3

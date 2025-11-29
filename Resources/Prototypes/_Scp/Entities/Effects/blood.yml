@@ -22,43 +22,12 @@
 
 - type: entity
   id: BaseBloodParticle
+  parent: BaseLiquidParticle
   abstract: true
   name: blood splatter
   components:
-  - type: Sprite
-    drawdepth: Effects
-    sprite: _Scp/Effects/blood_particles.rsi
-  - type: BloodParticle
-  - type: FieldOfViewOccludable
   - type: OffsetAnimation
     animationKey: blood_particle_key
-  - type: AnimationPlayer
-  - type: Physics
-    bodyType: Dynamic
-    fixedRotation: false
-    friction: 0.1
-    restitution: 0.7
-  - type: Footprint
-    spritePath: /Textures/_Scp/Effects/blood_particles.rsi
-    containerName: blood
-  - type: Appearance
-  - type: Puddle
-    solution: blood
-    canSlow: false
-    canSlip: false
-  - type: SolutionContainerManager
-    solutions:
-      blood:
-        maxVol: 5
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.1
-        density: 20
-        mask:
-        - ItemMask
 
 - type: entity
   id: BloodSplatter1
