@@ -13,7 +13,7 @@
 - type: localizedDataset
   id: ScpWallReinforcedConcreteMessages
   values:
-    prefix: scp-wall-reinforced-concrete-damaged
+    prefix: scp-wall-reinforced-concrete-damaged-
     count: 6
 
 - type: localizedDataset
