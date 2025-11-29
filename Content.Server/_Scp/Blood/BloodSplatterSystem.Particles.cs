@@ -161,7 +161,11 @@ public sealed partial class BloodSplatterSystem
         var angle = baseAngle + randomOffset;
 
         if (ent.Comp.Speed == Vector2.Zero)
+        {
             Log.Error($"Found blood PARTICLE with zero speed {ToPrettyString(ent)}");
+            QueueDel(ent);
+            return;
+        }
 
         var speed = _random.NextFloat(ent.Comp.Speed.X, ent.Comp.Speed.Y);
         var direction = new Vector2(MathF.Cos(angle), MathF.Sin(angle));
