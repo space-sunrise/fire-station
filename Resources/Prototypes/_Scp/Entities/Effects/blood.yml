@@ -113,7 +113,9 @@
 - type: entity
   id: BloodLine
   parent: BaseBloodSplatter
+  save: false
   name: blood line
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     drawdepth: Puddles

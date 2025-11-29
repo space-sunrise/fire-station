@@ -18,6 +18,13 @@ public sealed partial class Scp096System
         gameplayStateLoad.OnScreenUnload += RemoveWidget;
     }
 
+    private void ShutdownWidget()
+    {
+        var gameplayStateLoad = _ui.GetUIController<GameplayStateLoadController>();
+        gameplayStateLoad.OnScreenLoad -= EnsureWidgetExist;
+        gameplayStateLoad.OnScreenUnload -= RemoveWidget;
+    }
+
     private void EnsureWidgetExist()
     {
         if (_widget != null)

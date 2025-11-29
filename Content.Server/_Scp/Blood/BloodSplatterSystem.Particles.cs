@@ -95,7 +95,7 @@ public sealed partial class BloodSplatterSystem
 
         var coords = _transform.GetMoverCoordinates(target);
 
-        for (var i = 0; i <= count; i++)
+        for (var i = 0; i < count; i++)
         {
             var proto = _random.Pick(ent.Comp.Particles);
             var particle = Spawn(proto, coords);
@@ -128,12 +128,18 @@ public sealed partial class BloodSplatterSystem
         if (!_solution.TryGetSolution(uid, SolutionName, out var solutionEntity, out _))
         {
             Log.Error($"Found blood PUDDLE without any solution, prototype: {proto}");
+
+            QueueDel(uid);
+            QueueDel(ent);
             return;
         }
 
         if (!_solution.TryGetSolution(ent.Owner, SolutionName, out _, out var particleSolution))
         {
             Log.Error($"Found blood PARTICLE without any solution, prototype: {proto}");
+
+            QueueDel(uid);
+            QueueDel(ent);
             return;
         }
 

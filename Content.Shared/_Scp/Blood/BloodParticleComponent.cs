@@ -47,7 +47,7 @@ public sealed partial class BloodParticleComponent : Component
 
     /// <summary>
     /// Процентный показатель рандомизации времени полета <see cref="FlyTime"/>.
-    /// Прибавляется к времени полета как (0-25%) от текущего времени полета
+    /// Прибавляется к времени полета как (0-70%) от текущего времени полета
     /// </summary>
     [DataField]
     public float FlyTimeVariation = 0.7f;

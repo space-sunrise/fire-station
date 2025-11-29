@@ -41,6 +41,13 @@ public sealed partial class Scp096System : SharedScp096System
         Log.Level = LogLevel.Debug;
     }
 
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        ShutdownWidget();
+    }
+
     private void OnUpdateStateRequest(Scp096RequireUpdateVisualsEvent args)
     {
         var uid = GetEntity(args.NetEntity);

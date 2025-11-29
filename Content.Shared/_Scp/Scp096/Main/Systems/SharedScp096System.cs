@@ -115,6 +115,7 @@ public abstract partial class SharedScp096System : EntitySystem
         if (_pendingAnimations.Count == 0)
             return;
 
+        List<Entity<Scp096Component>> toRemove = [];
         foreach (var (ent, end) in _pendingAnimations)
         {
             if (_timing.CurTime < end)
@@ -125,6 +126,11 @@ public abstract partial class SharedScp096System : EntitySystem
             Dirty(ent);
 
             UpdateAppearance(ent);
+            toRemove.Add(ent);
+        }
+
+        foreach (var ent in toRemove)
+        {
             _pendingAnimations.Remove(ent);
         }
     }
