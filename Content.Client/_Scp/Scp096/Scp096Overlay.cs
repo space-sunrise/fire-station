@@ -113,6 +113,9 @@ public sealed class Scp096Overlay : Overlay
 
         foreach (var (ent, alpha) in _cachedAlphas)
         {
+            if (!_ent.EntityExists(ent))
+                continue;
+
             _sprite.SetColor(ent.AsNullable(), ent.Comp.Color.WithAlpha(alpha));
         }
 
