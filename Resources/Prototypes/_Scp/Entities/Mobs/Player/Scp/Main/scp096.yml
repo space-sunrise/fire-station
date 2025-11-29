@@ -49,6 +49,8 @@
       - Handcuff
       - EmbeddableProjectile
       - DamageOtherOnHit
+      - Storage
+      - EntityStorage
   - type: ScpRestriction
     canBeDisarmed: true
     canTakeStaminaDamage: true

@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Scp096.Main.Components;
+﻿using Content.Shared._Scp.Other.OpenDoorsOnCollide;
+using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.IdentityManagement;
@@ -62,6 +63,8 @@ public abstract partial class SharedScp096System
             Dirty(ent, throwOnHit);
         }
 
+        EnsureComp<OpenDoorsOnCollideComponent>(ent);
+
         Dirty(ent);
         _tag.AddTags(ent, ent.Comp.TagsToAdd);
     }
@@ -106,6 +109,8 @@ public abstract partial class SharedScp096System
 
             Dirty(ent, throwOnHit);
         }
+
+        RemComp<OpenDoorsOnCollideComponent>(ent);
 
         _tag.RemoveTags(ent, ent.Comp.TagsToAdd);
     }
