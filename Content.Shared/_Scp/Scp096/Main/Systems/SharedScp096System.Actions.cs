@@ -37,24 +37,21 @@ public abstract partial class SharedScp096System
         if (_pendingJitteringRemoval.Count == 0)
             return;
 
-        private void UpdateActions()
+        var toRemove = new List<EntityUid>();
+        foreach (var (ent, end) in _pendingJitteringRemoval)
         {
-            if (_pendingJitteringRemoval.Count == 0)
-                return;
+            if (_timing.CurTime < end)
+                continue;
 
-            var toRemove = new List<EntityUid>();
-            foreach (var (ent, end) in _pendingJitteringRemoval)
-            {
-                if (_timing.CurTime < end)
-                    continue;
-
-                RemComp<JitteringComponent>(ent);
-                toRemove.Add(ent);
-            }
-
-            foreach (var ent in toRemove)
-                _pendingJitteringRemoval.Remove(ent);
+            RemComp<JitteringComponent>(ent);
+            toRemove.Add(ent);
         }
+
+        foreach (var ent in toRemove)
+        {
+            _pendingJitteringRemoval.Remove(ent);
+        }
+    }
 
     private void OnCryOut(Entity<Scp096Component> ent, ref Scp096CryOutEvent args)
     {
