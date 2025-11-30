@@ -266,6 +266,7 @@ public abstract partial class SharedScp096System : EntitySystem
     protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
     {
         UpdateAudio(ent.AsNullable(), ent.Comp.CrySound);
+        _meta.AddFlag(ent, MetaDataFlags.PvsPriority);
     }
 
     protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
@@ -278,6 +279,8 @@ public abstract partial class SharedScp096System : EntitySystem
 
         ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
         Dirty(ent);
+
+        _meta.RemoveFlag(ent, MetaDataFlags.PvsPriority);
     }
 
     #endregion

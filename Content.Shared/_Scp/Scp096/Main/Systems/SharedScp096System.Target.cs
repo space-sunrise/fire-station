@@ -3,9 +3,9 @@ using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Systems;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Protection;
+using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Scp.Watching.FOV;
-using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Audio;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
@@ -22,6 +22,7 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly SharedFearSystem _fear = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
+    [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly INetManager _net = default!;
 
     private static readonly ProtoId<AmbientMusicPrototype> TargetAmbience = "Scp096Target";
@@ -30,6 +31,8 @@ public abstract partial class SharedScp096System
     {
         SubscribeLocalEvent<Scp096TargetComponent, DamageChangedEvent>(OnTargetDamageChanged);
         SubscribeLocalEvent<Scp096TargetComponent, MobStateChangedEvent>(OnTargetMobStateChanged);
+        SubscribeLocalEvent<Scp096TargetComponent, MapUidChangedEvent>(OnMapChanged);
+
         SubscribeLocalEvent<Scp096TargetComponent, ComponentStartup>(OnTargetStartup);
         SubscribeLocalEvent<Scp096TargetComponent, ComponentShutdown>(OnTargetShutdown);
     }
@@ -62,12 +65,20 @@ public abstract partial class SharedScp096System
         _popup.PopupClient(Loc.GetString("scp096-keep-attacking"), ent, args.Origin, PopupType.Medium);
     }
 
+    private void OnMapChanged(Entity<Scp096TargetComponent> ent, ref MapUidChangedEvent args)
+    {
+        // Если цель оказалась в измерении SCP-106 - убираем ее из списка целей
+        if (HasComp<Scp106BackRoomMapComponent>(args.NewMap))
+            RemComp<Scp096TargetComponent>(ent);
+    }
+
     protected virtual void OnTargetStartup(Entity<Scp096TargetComponent> ent, ref ComponentStartup args)
     {
         if (_net.IsServer)
             RaiseNetworkEvent(new NetworkAmbientMusicEvent(TargetAmbience), ent);
 
         _fear.TrySetFearLevel(ent.Owner, FearState.Terror);
+        _meta.AddFlag(ent, MetaDataFlags.ExtraTransformEvents);
     }
 
     private void OnTargetShutdown(Entity<Scp096TargetComponent> ent, ref ComponentShutdown args)
@@ -83,6 +94,8 @@ public abstract partial class SharedScp096System
 
         if (_net.IsServer)
             RaiseNetworkEvent(new NetworkAmbientMusicEventStop(), ent);
+
+        _meta.RemoveFlag(ent, MetaDataFlags.ExtraTransformEvents);
     }
 
     /// <summary>
@@ -132,7 +145,7 @@ public abstract partial class SharedScp096System
         scp.Comp.TargetsCount--;
         DirtyField(scp, nameof(Scp096Component.TargetsCount));
 
-        if (scp.Comp.TargetsCount == 0)
+        if (scp.Comp.TargetsCount <= 0)
             Pacify(scp);
     }
 
@@ -142,7 +155,6 @@ public abstract partial class SharedScp096System
     private void RemoveAllTargets(EntityUid ent)
     {
         var query = EntityQueryEnumerator<Scp096TargetComponent>();
-
         while (query.MoveNext(out var target, out _))
         {
             RemoveTarget(ent, target);
