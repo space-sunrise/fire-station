@@ -11,7 +11,7 @@ namespace Content.Shared._Scp.Scp096.Main.Components;
 /// Компонент, отвечающий за поведение скромника.
 /// Служит ключевым для перехода в другие состояния.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true, true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class Scp096Component : Component
 {
     /// <summary>

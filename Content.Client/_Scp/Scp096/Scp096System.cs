@@ -1,12 +1,6 @@
 ﻿using Content.Shared._Scp.Other.EmitSoundRandomly;
-using Content.Shared._Scp.Scp096;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Main.Systems;
-using Content.Shared.Bed.Sleep;
-using Content.Shared.Mobs.Systems;
-using Content.Shared.Standing;
-using Content.Shared.Stunnable;
-using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Player;
@@ -22,8 +16,6 @@ public sealed partial class Scp096System : SharedScp096System
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IClyde _clyde = default!;
-    [Dependency] private readonly SpriteSystem _sprite = default!;
-    [Dependency] private readonly MobStateSystem _mob = default!;
 
     private Scp096Overlay? _overlay;
 
@@ -33,8 +25,6 @@ public sealed partial class Scp096System : SharedScp096System
 
         SubscribeLocalEvent<Scp096Component, LocalPlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<Scp096Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
-
-        SubscribeNetworkEvent<Scp096RequireUpdateVisualsEvent>(OnUpdateStateRequest);
 
         InitializeWidget();
 
@@ -48,55 +38,9 @@ public sealed partial class Scp096System : SharedScp096System
         ShutdownWidget();
     }
 
-    private void OnUpdateStateRequest(Scp096RequireUpdateVisualsEvent args)
-    {
-        var uid = GetEntity(args.NetEntity);
-
-        if (!TryComp<Scp096Component>(uid, out var scp096Component))
-            return;
-
-        UpdateVisualState((uid, scp096Component));
-    }
-
-    private void UpdateVisualState(Entity<Scp096Component> ent)
-    {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        // Это существует только потому, что анимация передвижения принимает стейты напрямую
-        // Иначе я бы сделал это через GenericVisualizer
-        var useDownState = UseDownState(ent);
-        var inRage = RageQuery.HasComp(ent);
-        var isHeatingUp = HeatingUpQuery.HasComp(ent);
-        var agroToDead = ent.Comp.AgroToDeadAnimation;
-        var deadToIdle = ent.Comp.DeadToIdleAnimation;
-
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Dead, !agroToDead && useDownState);
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Agro, inRage && !useDownState);
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Heating, isHeatingUp);
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.AgroToDead, agroToDead);
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.DeadToIdle, deadToIdle);
-        _sprite.LayerSetVisible(ent.Owner, Scp096VisualsState.Idle, !agroToDead && !deadToIdle && !isHeatingUp && !inRage && !useDownState);
-
-        Log.Verbose($"useDownState = {useDownState}; inRage = {inRage}; isHeatingUp = {isHeatingUp}; agroToDead = {agroToDead}; deadToIdle = {deadToIdle}; ");
-    }
-
-    /// <summary>
-    /// Проверяет, должен ли скромник находиться в лежачем состоянии.
-    /// </summary>
-    private bool UseDownState(EntityUid uid)
-    {
-        return _mob.IsIncapacitated(uid)
-               || HasComp<SleepingComponent>(uid)
-               || HasComp<StunnedComponent>(uid)
-               || HasComp<KnockedDownComponent>(uid)
-               || TryComp<StandingStateComponent>(uid, out var standing) && !standing.Standing;
-    }
-
     private void OnPlayerAttached(Entity<Scp096Component> ent, ref LocalPlayerAttachedEvent args)
     {
         AddOverlay(ent);
-        UpdateVisualState(ent);
         EnsureWidgetExist();
     }
 

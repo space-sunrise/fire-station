@@ -125,7 +125,7 @@ public abstract partial class SharedScp096System
         EnsureComp<Scp096TargetComponent>(target);
 
         scp.Comp.TargetsCount++;
-        DirtyField(scp.AsNullable(), nameof(Scp096Component.TargetsCount));
+        Dirty(scp);
 
         if (_net.IsServer)
             _audio.PlayGlobal(scp.Comp.SeenSound, target);
@@ -143,7 +143,7 @@ public abstract partial class SharedScp096System
             RemComp<Scp096TargetComponent>(target);
 
         scp.Comp.TargetsCount--;
-        DirtyField(scp, nameof(Scp096Component.TargetsCount));
+        Dirty(scp);
 
         if (scp.Comp.TargetsCount <= 0)
             Pacify(scp);

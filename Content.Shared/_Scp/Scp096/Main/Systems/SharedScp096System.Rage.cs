@@ -61,7 +61,7 @@ public abstract partial class SharedScp096System
         }
 
         ToggleMovement(ent, false);
-        UpdateAppearance(ent);
+        UpdateAppearance(ent.Owner);
         TryToggleTears(ent.Owner, false);
 
         Dirty(ent);
@@ -106,7 +106,7 @@ public abstract partial class SharedScp096System
         UpdateAudio(ent.Owner, ent.Comp.RageSound);
 
         // Запрашиваем обновление внешнего вида
-        UpdateAppearance(ent);
+        UpdateAppearance(ent.Owner);
 
         // Обновляем скорость передвижения
         RefreshSpeedModifiers(ent.Owner);
@@ -126,6 +126,9 @@ public abstract partial class SharedScp096System
         // Возвращаем звук плача
         UpdateAudio(ent.Owner, scp096.CrySound);
 
+        scp096.TargetsCount = 0;
+        Dirty(ent, scp096);
+
         if (_net.IsServer)
             RaiseNetworkEvent(new NetworkAmbientMusicEventStop(), ent);
 
@@ -134,7 +137,7 @@ public abstract partial class SharedScp096System
         {
             // При усыплении скромника и так меняется внешний вид, нет смысла делать это несколько раз.
             // Поэтому запрашиваем обновление внешнего вида только при неуспешном усыплении
-            UpdateAppearance(ent);
+            UpdateAppearance(ent.Owner);
         }
 
         // Убираем наложенные ограничения на взаимодействие
