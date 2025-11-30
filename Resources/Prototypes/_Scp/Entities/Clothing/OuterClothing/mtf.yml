@@ -48,8 +48,8 @@
         Heat: 0.5
         Caustic: 0.7
   - type: ClothingSpeedModifier
-    walkModifier: 0.8
-    sprintModifier: 0.8
+    walkModifier: 0.9
+    sprintModifier: 0.9
   - type: HeldSpeedModifier
   - type: StaminaResistance
     damageCoefficient: 0.60
@@ -128,8 +128,8 @@
         Heat: 0.5
         Caustic: 0.6
   - type: ClothingSpeedModifier
-    walkModifier: 0.70
-    sprintModifier: 0.70
+    walkModifier: 0.8
+    sprintModifier: 0.8
   - type: HeldSpeedModifier
   - type: StaminaResistance
     damageCoefficient: 0.45
@@ -279,8 +279,8 @@
         Heat: 0.6
         Caustic: 0.7
   - type: ClothingSpeedModifier
-    walkModifier: 0.85
-    sprintModifier: 0.85
+    walkModifier: 0.95
+    sprintModifier: 0.95
   - type: HeldSpeedModifier
   - type: StaminaResistance
     damageCoefficient: 0.75
@@ -310,8 +310,8 @@
         Heat: 0.5
         Caustic: 0.7
   - type: ClothingSpeedModifier
-    walkModifier: 0.70
-    sprintModifier: 0.70
+    walkModifier: 0.80
+    sprintModifier: 0.80
   - type: HeldSpeedModifier
   - type: StaminaResistance
     damageCoefficient: 0.40
