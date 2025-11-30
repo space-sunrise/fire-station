@@ -1619,6 +1619,42 @@
   - !type:ListingLimitedStockCondition
     stock: 5
 
+- type: listing
+  id: ScpUplinkWeaponTaser
+  productEntity: WeaponTaser
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: taser }
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkFlash
+  productEntity: Flash
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: flash }
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkStunbaton
+  productEntity: Stunbaton
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: stunbaton }
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
+
 # Дополнительное Бета-7
 - type: listing
   id: ScpUplinkBoxAmbuzolKit
