@@ -1340,7 +1340,68 @@
   - !type:ListingLimitedStockCondition
     stock: 3
 
-# Дополнительное
+# Медицина
+- type: listing
+  id: ScpUplinkMedkitOxygenFilled
+  productEntity: MedkitOxygenFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med-oxygen }
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpMedical
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMedkitBruteFilled
+  productEntity: MedkitBruteFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med-brute }
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpMedical
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMedkitRadiationFilled
+  productEntity: MedkitRadiationFilled
+  description: shop-desc-antiradkit
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med-rad }
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpMedical
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMedkitToxinFilled
+  productEntity: MedkitToxinFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med-toxin }
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpMedical
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkMedkitBurnFilled
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: med-burn }
+  productEntity: MedkitBurnFilled
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpMedical
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
 - type: listing
   id: ScpUplinkMedkitCombatFilled
   productEntity: MedkitCombatFilled
@@ -1348,22 +1409,10 @@
   cost:
     SupplyPoint: 5
   categories:
-  - ScpAdditional
+  - ScpMedical
   conditions:
   - !type:ListingLimitedStockCondition
-    stock: 4
-
-# уходят до лучших времен по приказу ДРД
-#- type: listing
-#  id: ScpUplinkBoxCardboardShoulderPatches
-#  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: shoulder_patches }
-#  productEntity: BoxCardboardShoulderPatches
-#  categories:
-#  - ScpAdditional
-#  conditions:
-#  - !type:ListingLimitedStockCondition
-#    stock: 1
-
+    stock: 5
 
 - type: listing
   id: ScpUplinkDuffelScpMedicalBundleFilled
@@ -1372,7 +1421,7 @@
   cost:
     SupplyPoint: 15
   categories:
-  - ScpAdditional
+  - ScpMedical
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
@@ -1382,9 +1431,9 @@
   icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: amnesiac_spray }
   productEntity: AmnesiacSpray
   cost:
-    SupplyPoint: 2
+    SupplyPoint: 3
   categories:
-  - ScpAdditional
+  - ScpMedical
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
@@ -1396,7 +1445,7 @@
   cost:
     SupplyPoint: 2
   categories:
-  - ScpAdditional
+  - ScpMedical
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
@@ -1408,7 +1457,7 @@
   cost:
     SupplyPoint: 2
   categories:
-  - ScpAdditional
+  - ScpMedical
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
@@ -1420,7 +1469,7 @@
   cost:
     SupplyPoint: 3
   categories:
-  - ScpAdditional
+  - ScpMedical
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
@@ -1430,13 +1479,14 @@
   icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: box_amnesiac }
   productEntity: BoxVialAmnesiacD
   cost:
-    SupplyPoint: 3
+    SupplyPoint: 4
   categories:
-  - ScpAdditional
+  - ScpMedical
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
 
+# Дополнительное
 - type: listing
   id: ScpUplinkPinpointerNuclear
   productEntity: PinpointerNuclear
@@ -1568,6 +1618,42 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 5
+
+- type: listing
+  id: ScpUplinkWeaponTaser
+  productEntity: WeaponTaser
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: taser }
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 4
+
+- type: listing
+  id: ScpUplinkFlash
+  productEntity: Flash
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: flash }
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 5
+
+- type: listing
+  id: ScpUplinkStunbaton
+  productEntity: Stunbaton
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: stunbaton }
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 3
 
 # Дополнительное Бета-7
 - type: listing

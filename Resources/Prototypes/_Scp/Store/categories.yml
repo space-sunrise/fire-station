@@ -50,21 +50,26 @@
   priority: 6
 
 - type: storeCategory
+  id: ScpMedical
+  name: store-category-ntmedicine
+  priority: 7
+
+- type: storeCategory
   id: ScpAdditional
   name: store-category-ntadditional
-  priority: 7
+  priority: 8
 
 - type: storeCategory # Для Беты-7
   id: ScpAdditionalBiohazard
   name: store-category-scpbiohazard
-  priority: 8
+  priority: 9
 
 - type: storeCategory
   id: ScpRecontainment
   name: store-category-scprecontainment
-  priority: 9
+  priority: 10
 
 - type: storeCategory
   id: ScpSpecWeapon
   name: store-category-scpspecweapon
-  priority: 10
+  priority: 11
