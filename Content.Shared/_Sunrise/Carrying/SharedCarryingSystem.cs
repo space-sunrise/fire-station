@@ -343,6 +343,12 @@ public sealed class SharedCarryingSystem : EntitySystem
         if (_handsSystem.CountFreeHands(carrier) < carriedComp.FreeHandsRequired)
             return false;
 
+        var ev = new CarryAttemptEvent(carried);
+        RaiseLocalEvent(carrier, ref ev);
+
+        if (ev.Cancelled)
+            return false;
+
         return true;
     }
 
@@ -364,4 +370,10 @@ public sealed class SharedCarryingSystem : EntitySystem
         var ev = new CarryDroppedEvent();
         RaiseLocalEvent(carried, ref ev);
     }
+}
+
+[ByRefEvent]
+public record struct CarryAttemptEvent(EntityUid Target)
+{
+    public bool Cancelled;
 }
