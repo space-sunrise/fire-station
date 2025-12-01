@@ -115,11 +115,6 @@
     prototype: Human # TODO: Кастомное тело
   - type: Inventory
     templateId: scp096
-  - type: FootstepModifier
-    footstepSoundCollection:
-      path: /Audio/Effects/Footsteps/slime1.ogg
-      params:
-        volume: 3
   - type: Blindable
   - type: Climbing
   - type: Muted
