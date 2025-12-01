@@ -77,6 +77,15 @@
         maxDistance: 10
   - type: BreakDoorOnCollide
     enabled: false
+  - type: Prying
+    enabled: false
+    pryPowered: true
+    force: true
+    speedModifier: 0.6
+    useSound:
+      path: /Audio/_Scp/Scp096/prydoor.ogg
+      params:
+        volume: -4
   - type: ActionGrant
     actions:
     #- Scp096CryOut - Требует механику ремонта стен, отключено до реализации.

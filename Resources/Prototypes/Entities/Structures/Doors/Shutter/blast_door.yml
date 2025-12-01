@@ -31,7 +31,10 @@
     openTimeTwo: 0.4
     openingAnimationTime: 1.0
     closingAnimationTime: 1.0
-    canPry: false
+    # Fire edit start
+    canPry: true
+    pryTime: 10
+    # Fire edit end
     crushDamage:
       types:
         Blunt: 50 # yowch
