@@ -61,6 +61,7 @@ public sealed partial class ActiveScp096WithoutFaceComponent : Component
         {
             { "Slash", 15 },
             { "Blunt", 1 },
+            { "Structural", 35 },
         },
     };
 
