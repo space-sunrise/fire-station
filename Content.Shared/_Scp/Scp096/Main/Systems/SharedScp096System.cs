@@ -88,7 +88,7 @@ public abstract partial class SharedScp096System : EntitySystem
         WithoutFaceQuery = GetEntityQuery<ActiveScp096WithoutFaceComponent>();
         FaceQuery = GetEntityQuery<Scp096FaceComponent>();
 
-        Log.Level = LogLevel.Verbose;
+        Log.Level = LogLevel.Info;
     }
 
     public override void Update(float frameTime)
@@ -237,6 +237,9 @@ public abstract partial class SharedScp096System : EntitySystem
 
         ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
         Dirty(ent);
+
+        _pendingAnimations.Remove(ent);
+        _pendingJitteringRemoval.Remove(ent);
 
         _meta.RemoveFlag(ent, MetaDataFlags.PvsPriority);
     }
