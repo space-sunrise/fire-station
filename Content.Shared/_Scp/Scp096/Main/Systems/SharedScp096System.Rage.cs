@@ -196,7 +196,7 @@ public abstract partial class SharedScp096System
     /// </summary>
     private bool TryMakeAngry(EntityUid uid)
     {
-        if (HasComp<ActiveScp096RageComponent>(uid))
+        if (HasComp<ActiveScp096RageComponent>(uid) || HasComp<ActiveScp096WithoutFaceComponent>(uid))
             return false;
 
         EnsureComp<ActiveScp096HeatingUpComponent>(uid);
