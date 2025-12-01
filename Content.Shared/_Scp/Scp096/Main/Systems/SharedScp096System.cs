@@ -138,10 +138,15 @@ public abstract partial class SharedScp096System : EntitySystem
     /// </summary>
     private void CheckRandomTargetByDamage(EntityUid target, EntityUid? attacker, float chance)
     {
+        // В состоянии без лица урон это единственный способ застанить скромника.
+        // А стан это единственный способ вылечить его лицо, не получив пиздюлей.
+        if (WithoutFaceQuery.HasComp(target))
+            return;
+
         if (!attacker.HasValue)
             return;
 
-        if (!TryComp<Scp096Component>(target, out var scp))
+        if (!Scp096Query.TryComp(target, out var scp))
             return;
 
         if (!_random.ProbForEntity(attacker.Value, chance))
