@@ -57,6 +57,7 @@ public sealed partial class Scp096System : SharedScp096System
         if (_player.LocalEntity != ent)
             return;
 
+        EnsureWidgetExist();
         AddOverlay(ent);
     }
 
@@ -68,6 +69,7 @@ public sealed partial class Scp096System : SharedScp096System
             return;
 
         RemoveOverlay();
+        RemoveWidget();
     }
 
     private void AddOverlay(Entity<Scp096Component> ent)
