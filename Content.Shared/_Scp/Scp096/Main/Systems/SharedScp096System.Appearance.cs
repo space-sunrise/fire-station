@@ -13,11 +13,19 @@ public abstract partial class SharedScp096System
     private readonly Dictionary<EntityUid, TimeSpan> _pendingJitteringRemoval = new ();
     private readonly Dictionary<Entity<Scp096Component>, TimeSpan> _pendingAnimations = new ();
 
+    private EntityQuery<SleepingComponent> _sleepingQuery;
+    private EntityQuery<KnockedDownComponent> _knockedDownQuery;
+    private EntityQuery<StunnedComponent> _stunnedQuery;
+
     private void InitializeAppearance()
     {
         SubscribeLocalEvent<Scp096Component, StunnedEvent>(SetSitDown);
         SubscribeLocalEvent<Scp096Component, DownedEvent>(SetSitDown);
         SubscribeLocalEvent<Scp096Component, StoodEvent>(SetStandUp);
+
+        _sleepingQuery = GetEntityQuery<SleepingComponent>();
+        _knockedDownQuery = GetEntityQuery<KnockedDownComponent>();
+        _stunnedQuery = GetEntityQuery<StunnedComponent>();
     }
 
     #region Update
@@ -104,9 +112,9 @@ public abstract partial class SharedScp096System
     private bool UseDownState(EntityUid uid)
     {
         return _mobState.IsIncapacitated(uid)
-               || HasComp<SleepingComponent>(uid)
-               || HasComp<StunnedComponent>(uid)
-               || HasComp<KnockedDownComponent>(uid)
+               || _sleepingQuery.HasComp(uid)
+               || _stunnedQuery.HasComp(uid)
+               || _knockedDownQuery.HasComp(uid)
                || _standing.IsDown(uid);
     }
 

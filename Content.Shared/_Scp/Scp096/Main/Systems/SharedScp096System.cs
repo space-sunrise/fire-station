@@ -47,6 +47,7 @@ public abstract partial class SharedScp096System : EntitySystem
     protected EntityQuery<Scp096Component> Scp096Query;
     protected EntityQuery<ActiveScp096HeatingUpComponent> HeatingUpQuery;
     protected EntityQuery<ActiveScp096RageComponent> RageQuery;
+    protected EntityQuery<Scp096TargetComponent> TargetQuery;
     protected EntityQuery<ActiveScp096WithoutFaceComponent> WithoutFaceQuery;
     protected EntityQuery<Scp096FaceComponent> FaceQuery;
 
@@ -83,6 +84,7 @@ public abstract partial class SharedScp096System : EntitySystem
         Scp096Query = GetEntityQuery<Scp096Component>();
         HeatingUpQuery = GetEntityQuery<ActiveScp096HeatingUpComponent>();
         RageQuery = GetEntityQuery<ActiveScp096RageComponent>();
+        TargetQuery = GetEntityQuery<Scp096TargetComponent>();
         WithoutFaceQuery = GetEntityQuery<ActiveScp096WithoutFaceComponent>();
         FaceQuery = GetEntityQuery<Scp096FaceComponent>();
 
@@ -158,7 +160,7 @@ public abstract partial class SharedScp096System : EntitySystem
         if (args.NewMobState == MobState.Alive)
             return;
 
-        RemoveAllTargets(ent);
+        RemoveAllTargets();
     }
 
     private void OnSleepStateChanged(Entity<Scp096Component> ent, ref SleepStateChangedEvent args)
@@ -205,7 +207,7 @@ public abstract partial class SharedScp096System : EntitySystem
         RemComp<ActiveScp096RageComponent>(ent);
         RemComp<ActiveScp096HeatingUpComponent>(ent);
 
-        RemoveAllTargets(ent);
+        RemoveAllTargets();
     }
 
     protected virtual void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
@@ -244,7 +246,7 @@ public abstract partial class SharedScp096System : EntitySystem
     /// </summary>
     private bool CanBeAggro(Entity<Scp096Component> ent, bool ignoreMask = false)
     {
-        if (HasComp<SleepingComponent>(ent))
+        if (_sleepingQuery.HasComp(ent))
             return false;
 
         if (_mobState.IsIncapacitated(ent))

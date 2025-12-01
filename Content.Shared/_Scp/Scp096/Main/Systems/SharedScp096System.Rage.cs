@@ -46,7 +46,6 @@ public abstract partial class SharedScp096System
         // Если скромник был застанен или сидит - убираем это
         _stamina.TryTakeStamina(ent, -100);
         _stun.TryUnstun(ent.Owner);
-        TryToggleSit(ent.Owner, true, false);
 
         // Заставляем трястись
         _jittering.AddJitter(ent, -10, 100);
@@ -183,23 +182,13 @@ public abstract partial class SharedScp096System
             if (elapsedTime < rage.RageDuration)
                 continue;
 
-            RemoveAllTargets(uid);
-        }
-    }
+            RemoveAllTargets();
 
-    /// <summary>
-    /// Умиротворяет скромника.
-    /// Происходит после того, как все цели были убиты и разорваны.
-    /// </summary>
-    private void Pacify(EntityUid uid)
-    {
-        if (!HasComp<ActiveScp096RageComponent>(uid))
-        {
-            Log.Error($"Trying to pacify SCP-096 while not being at rage - {ToPrettyString(uid)}");
-            return;
+            // Возможная заглушка на случай, если удаление всех сущностей произойдет НЕ в 1 тик.
+            // Что приведет к проблемам.
+            rage.RageStartTime = null;
+            Dirty(uid, rage);
         }
-
-        RemCompDeferred<ActiveScp096RageComponent>(uid);
     }
 
     /// <summary>
@@ -207,7 +196,7 @@ public abstract partial class SharedScp096System
     /// </summary>
     private bool TryMakeAngry(EntityUid uid)
     {
-        if (HasComp<ActiveScp096RageComponent>(uid) || HasComp<ActiveScp096HeatingUpComponent>(uid))
+        if (HasComp<ActiveScp096RageComponent>(uid))
             return false;
 
         EnsureComp<ActiveScp096HeatingUpComponent>(uid);

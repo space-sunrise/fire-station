@@ -59,12 +59,6 @@ public sealed partial class Scp096Component : Component
         AudioParams.Default.WithVolume(-14f).WithMaxDistance(4f).WithRolloffFactor(5f).WithLoop(true));
 
     /// <summary>
-    /// Звук, проигрывающийся жертве, когда она видит скромника.
-    /// </summary>
-    [DataField]
-    public SoundSpecifier SeenSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/seen.ogg");
-
-    /// <summary>
     /// Сущность звука, который издается вокруг скромника.
     /// </summary>
     [ViewVariables, AutoNetworkedField, NonSerialized]

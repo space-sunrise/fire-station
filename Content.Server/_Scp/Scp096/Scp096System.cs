@@ -52,23 +52,21 @@ public sealed class Scp096System : SharedScp096System
         Dirty(face, faceComp);
     }
 
-    private void OnFearCalmDown(Entity<Scp096TargetComponent> ent, ref FearCalmDownAttemptEvent args)
+    private static void OnFearCalmDown(Entity<Scp096TargetComponent> ent, ref FearCalmDownAttemptEvent args)
     {
         args.Cancel();
     }
 
-    protected override void AddTarget(Entity<Scp096Component> scp, EntityUid target)
+    protected override void OnTargetStartup(Entity<Scp096TargetComponent> ent, ref ComponentStartup args)
     {
-        base.AddTarget(scp, target);
-
-        _pvsOverride.AddGlobalOverride(target);
+        base.OnTargetStartup(ent, ref args);
+        _pvsOverride.AddGlobalOverride(ent);
     }
 
-    protected override void RemoveTarget(Entity<Scp096Component?> scp, EntityUid target, bool removeComponent = true)
+    protected override void OnTargetShutdown(Entity<Scp096TargetComponent> ent, ref ComponentShutdown args)
     {
-        base.RemoveTarget(scp, target, removeComponent);
-
-        _pvsOverride.RemoveGlobalOverride(target);
+        base.OnTargetShutdown(ent, ref args);
+        _pvsOverride.RemoveGlobalOverride(ent);
     }
 
     protected override void OnRageStart(Entity<ActiveScp096RageComponent> ent, ref ComponentStartup args)

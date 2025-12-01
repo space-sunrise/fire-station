@@ -182,7 +182,7 @@ public abstract partial class SharedScp096System
         args.Handled = TryToggleSit(ent.AsNullable(), sat);
     }
 
-    private bool TryToggleSit(Entity<Scp096Component?> ent, bool haveToStand, bool useAnimation = true)
+    private bool TryToggleSit(Entity<Scp096Component?> ent, bool haveToStand)
     {
         if (!Resolve(ent, ref ent.Comp))
             return false;
