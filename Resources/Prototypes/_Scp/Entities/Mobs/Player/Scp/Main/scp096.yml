@@ -9,6 +9,7 @@
   components:
   - type: Sprite
     sprite: _Scp/Mobs/Scp/scp-096.rsi
+    offset: 0, 0.35
     layers:
     - state: idle
       map: [ "enum.Scp096VisualsState.Idle", "idle" ]
@@ -128,9 +129,9 @@
     fixtures:
       fix1:
         shape:
-          !type:PhysShapeCircle
-          radius: 0.25
-        density: 80
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.4,0.25,0.4"
+        density: 500
         mask:
         - MobMask
         layer:
