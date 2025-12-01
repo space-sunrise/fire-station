@@ -48,15 +48,12 @@ public sealed partial class ScpMaskSystem : EntitySystem
 
     private void OnStopPullingAttempt(Entity<ScpComponent> ent, ref AttemptStopPullingEvent args)
     {
-        if (HasScpMask(ent))
+        if (HasScpMask(ent) && args.User == ent)
             args.Cancelled = true;
     }
 
     private void OnTear(Entity<ScpComponent> scp, ref ScpTearMaskEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
         if (!TryGetScpMask(scp, out var scpMask))
             return;
 
@@ -80,9 +77,6 @@ public sealed partial class ScpMaskSystem : EntitySystem
 
     private void OnTearSuccess(Entity<ScpComponent> scp, ref ScpTearMaskDoAfterEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
         if (args.Cancelled || args.Handled)
             return;
 
@@ -176,7 +170,6 @@ public sealed partial class ScpMaskSystem : EntitySystem
     /// <summary>
     /// Создает попап, говорящий о невозможности использовать способность из-за маски
     /// </summary>
-    /// <param name="scp"></param>
     public bool TryCreatePopup(EntityUid scp, EntityUid? mask)
     {
         if (!mask.HasValue)

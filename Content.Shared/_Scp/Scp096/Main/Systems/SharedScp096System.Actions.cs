@@ -19,8 +19,6 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly StandingStateSystem _standing = default!;
 
-    private readonly Dictionary<EntityUid, TimeSpan> _pendingJitteringRemoval = new ();
-
     private void InitializeActions()
     {
         SubscribeLocalEvent<Scp096Component, Scp096CryOutEvent>(OnCryOut);
@@ -30,27 +28,6 @@ public abstract partial class SharedScp096System
         SubscribeLocalEvent<Scp096FaceComponent, MobStateChangedEvent>(OnFaceMobStateChanged);
 
         SubscribeLocalEvent<Scp096Component, Scp096SitDownEvent>(OnSitDown);
-    }
-
-    private void UpdateActions()
-    {
-        if (_pendingJitteringRemoval.Count == 0)
-            return;
-
-        var toRemove = new List<EntityUid>();
-        foreach (var (ent, end) in _pendingJitteringRemoval)
-        {
-            if (_timing.CurTime < end)
-                continue;
-
-            RemComp<JitteringComponent>(ent);
-            toRemove.Add(ent);
-        }
-
-        foreach (var ent in toRemove)
-        {
-            _pendingJitteringRemoval.Remove(ent);
-        }
     }
 
     private void OnCryOut(Entity<Scp096Component> ent, ref Scp096CryOutEvent args)
@@ -198,9 +175,6 @@ public abstract partial class SharedScp096System
         if (args.Handled)
             return;
 
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
         if (HasComp<ActiveScp096HeatingUpComponent>(ent) || HasComp<ActiveScp096RageComponent>(ent))
             return;
 
@@ -208,7 +182,7 @@ public abstract partial class SharedScp096System
         args.Handled = TryToggleSit(ent.AsNullable(), sat);
     }
 
-    private bool TryToggleSit(Entity<Scp096Component?> ent, bool haveToStand, bool useAnimation = true)
+    private bool TryToggleSit(Entity<Scp096Component?> ent, bool haveToStand)
     {
         if (!Resolve(ent, ref ent.Comp))
             return false;
@@ -225,17 +199,8 @@ public abstract partial class SharedScp096System
         if (!successful)
             return false;
 
-        ToggleMovement(ent, haveToStand, false);
+        ToggleMovement(ent, haveToStand);
         TryModifyTearsSpawnSpeed(ent, !haveToStand);
-
-        if (useAnimation)
-        {
-            ent.Comp.AgroToDeadAnimation = !haveToStand;
-            ent.Comp.DeadToIdleAnimation = haveToStand;
-            Dirty(ent);
-
-            AddToPendingAnimations((ent, ent.Comp), _timing.CurTime + ent.Comp.AnimationDuration);
-        }
 
         return true;
     }
@@ -249,14 +214,6 @@ public abstract partial class SharedScp096System
             return false;
 
         return true;
-    }
-
-    private void AddToPendingJittering(Entity<Scp096Component> ent, TimeSpan end)
-    {
-        if (_pendingJitteringRemoval.TryGetValue(ent, out var existingEnd))
-            _pendingJitteringRemoval[ent] = TimeSpan.FromSeconds(Math.Max(end.TotalSeconds, existingEnd.TotalSeconds));
-        else
-            _pendingJitteringRemoval[ent] = end;
     }
 
     protected virtual void SpawnBlood(Entity<BloodSplattererComponent?> ent) { }

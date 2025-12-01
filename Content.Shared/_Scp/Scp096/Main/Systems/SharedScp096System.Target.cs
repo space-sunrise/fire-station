@@ -3,9 +3,9 @@ using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Systems;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Protection;
+using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Scp.Watching.FOV;
-using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Audio;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
@@ -22,16 +22,23 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly SharedFearSystem _fear = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
+    [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly INetManager _net = default!;
 
     private static readonly ProtoId<AmbientMusicPrototype> TargetAmbience = "Scp096Target";
+
+    protected EntityQuery<Scp096ProtectionComponent> ProtectionQuery;
 
     private void InitializeTargets()
     {
         SubscribeLocalEvent<Scp096TargetComponent, DamageChangedEvent>(OnTargetDamageChanged);
         SubscribeLocalEvent<Scp096TargetComponent, MobStateChangedEvent>(OnTargetMobStateChanged);
+        SubscribeLocalEvent<Scp096TargetComponent, MapUidChangedEvent>(OnMapChanged);
+
         SubscribeLocalEvent<Scp096TargetComponent, ComponentStartup>(OnTargetStartup);
         SubscribeLocalEvent<Scp096TargetComponent, ComponentShutdown>(OnTargetShutdown);
+
+        ProtectionQuery = GetEntityQuery<Scp096ProtectionComponent>();
     }
 
     private void OnTargetDamageChanged(Entity<Scp096TargetComponent> ent, ref DamageChangedEvent args)
@@ -39,7 +46,7 @@ public abstract partial class SharedScp096System
         if (!args.DamageIncreased)
             return;
 
-        if (!HasComp<Scp096Component>(args.Origin))
+        if (!Scp096Query.HasComp(args.Origin))
             return;
 
         ent.Comp.AlreadyAppliedDamage += args.DamageDelta?.GetTotal() ?? FixedPoint2.Zero;
@@ -55,34 +62,59 @@ public abstract partial class SharedScp096System
         if (!_mobState.IsDead(ent))
             return;
 
-        if (!HasComp<Scp096Component>(args.Origin))
+        if (!Scp096Query.HasComp(args.Origin))
             return;
 
         // Сообщаем игроку, что нужно продолжать разрывать цель.
         _popup.PopupClient(Loc.GetString("scp096-keep-attacking"), ent, args.Origin, PopupType.Medium);
     }
 
+    private void OnMapChanged(Entity<Scp096TargetComponent> ent, ref MapUidChangedEvent args)
+    {
+        // Если цель оказалась в измерении SCP-106 - убираем ее из списка целей
+        if (HasComp<Scp106BackRoomMapComponent>(args.NewMap))
+            RemComp<Scp096TargetComponent>(ent);
+    }
+
     protected virtual void OnTargetStartup(Entity<Scp096TargetComponent> ent, ref ComponentStartup args)
     {
         if (_net.IsServer)
+        {
+            _audio.PlayGlobal(ent.Comp.SeenSound, ent);
             RaiseNetworkEvent(new NetworkAmbientMusicEvent(TargetAmbience), ent);
+        }
 
         _fear.TrySetFearLevel(ent.Owner, FearState.Terror);
+        _meta.AddFlag(ent, MetaDataFlags.ExtraTransformEvents);
+
+        var query = EntityQueryEnumerator<Scp096Component>();
+        while (query.MoveNext(out var uid, out var scp096))
+        {
+            TryMakeAngry(uid);
+            scp096.TargetsCount++;
+            Dirty(uid, scp096);
+        }
     }
 
-    private void OnTargetShutdown(Entity<Scp096TargetComponent> ent, ref ComponentShutdown args)
+    protected virtual void OnTargetShutdown(Entity<Scp096TargetComponent> ent, ref ComponentShutdown args)
     {
         if (_timing.ApplyingState)
             return;
 
-        var query = EntityQueryEnumerator<ActiveScp096RageComponent>();
-        while (query.MoveNext(out var uid, out _))
+        var query = EntityQueryEnumerator<ActiveScp096RageComponent, Scp096Component>();
+        while (query.MoveNext(out var uid, out _, out var scp096))
         {
-            RemoveTarget(uid, ent.AsNullable(), false);
+            scp096.TargetsCount--;
+            Dirty(uid, scp096);
+
+            if (scp096.TargetsCount <= 0)
+                RemCompDeferred<ActiveScp096RageComponent>(uid);
         }
 
         if (_net.IsServer)
             RaiseNetworkEvent(new NetworkAmbientMusicEventStop(), ent);
+
+        _meta.RemoveFlag(ent, MetaDataFlags.ExtraTransformEvents);
     }
 
     /// <summary>
@@ -97,55 +129,19 @@ public abstract partial class SharedScp096System
         if (!IsValidTarget(scp, target, ignoreAngle))
             return false;
 
-        AddTarget(scp, target);
-
-        return true;
-    }
-
-    /// <summary>
-    /// Добавляет конкретную цель в список целей scp-096.
-    /// Не имеет в себе проверок, для проверок использовать <seealso cref="TryAddTarget"/>
-    /// </summary>
-    protected virtual void AddTarget(Entity<Scp096Component> scp, EntityUid target)
-    {
-        TryMakeAngry(scp);
         EnsureComp<Scp096TargetComponent>(target);
-
-        scp.Comp.TargetsCount++;
-        DirtyField(scp.AsNullable(), nameof(Scp096Component.TargetsCount));
-
-        if (_net.IsServer)
-            _audio.PlayGlobal(scp.Comp.SeenSound, target);
-    }
-
-    /// <summary>
-    /// Убирает конкретную цель из списка целей scp-096
-    /// </summary>
-    protected virtual void RemoveTarget(Entity<Scp096Component?> scp, EntityUid target, bool removeComponent = true)
-    {
-        if (!Resolve(scp, ref scp.Comp))
-            return;
-
-        if (removeComponent)
-            RemComp<Scp096TargetComponent>(target);
-
-        scp.Comp.TargetsCount--;
-        DirtyField(scp, nameof(Scp096Component.TargetsCount));
-
-        if (scp.Comp.TargetsCount == 0)
-            Pacify(scp);
+        return true;
     }
 
     /// <summary>
     /// Убирает все текущие цели у scp-096
     /// </summary>
-    private void RemoveAllTargets(EntityUid ent)
+    private void RemoveAllTargets()
     {
         var query = EntityQueryEnumerator<Scp096TargetComponent>();
-
-        while (query.MoveNext(out var target, out _))
+        while (query.MoveNext(out var uid, out _))
         {
-            RemoveTarget(ent, target);
+            RemComp<Scp096TargetComponent>(uid);
         }
     }
 
@@ -156,7 +152,7 @@ public abstract partial class SharedScp096System
     private bool IsValidTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false)
     {
         // Уже является целью?
-        if (HasComp<Scp096TargetComponent>(target))
+        if (TargetQuery.HasComp(target))
             return false;
 
         // Проверяем, может ли цель видеть 096. Без учета поля зрения
@@ -164,7 +160,8 @@ public abstract partial class SharedScp096System
             return false;
 
         // Проверяем, есть ли у цели защита от 096
-        if (TryComp<Scp096ProtectionComponent>(target, out var protection) && !_random.ProbForEntity(scp, protection.ProblemChance))
+        // TODO: Избавиться от проверки каждый тик.
+        if (ProtectionQuery.TryComp(target, out var protection) && !_random.ProbForEntity(scp, protection.ProblemChance))
             return false;
 
         // Проверяем, смотрит ли 096 на цель и цель на 096

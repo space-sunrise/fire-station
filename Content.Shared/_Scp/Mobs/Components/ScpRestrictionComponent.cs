@@ -6,7 +6,7 @@ namespace Content.Shared._Scp.Mobs.Components;
 /// Отключает некоторые взаимодействия для владельца компонента. Полезно для сцп
 /// </summary>
 /// <remarks>
-/// TODO: Сделать отключенные взаимодействие конфигурируемыми через какие-нибудь boolы
+/// TODO: Сделать отключенные взаимодействие полностью конфигурируемыми bool
 /// </remarks>
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class ScpRestrictionComponent : Component
@@ -28,4 +28,7 @@ public sealed partial class ScpRestrictionComponent : Component
 
     [DataField, AutoNetworkedField]
     public bool CanMobCollide;
+
+    [DataField, AutoNetworkedField]
+    public bool CanCarry;
 }

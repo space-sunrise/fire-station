@@ -1,7 +1,6 @@
 ﻿using System.Numerics;
 using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Scp096.Main.Components;
-using Content.Shared.Mobs.Components;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
@@ -18,7 +17,7 @@ public sealed class Scp096Overlay : Overlay
     private readonly Entity<Scp096Component> _entity;
 
     private readonly EntityQuery<Scp096TargetComponent> _targetQuery;
-    private readonly HashSet<(Entity<SpriteComponent> ent, float alpha)> _cachedAlphas = new(64);
+    private readonly List<(Entity<SpriteComponent> ent, float alpha)> _cachedAlphas = new(64);
 
     public Scp096Overlay(Entity<Scp096Component> entity)
     {
@@ -36,22 +35,23 @@ public sealed class Scp096Overlay : Overlay
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        // Рисуем указатель к ближайшей цели
-        DrawLineToTarget(in args);
-
         // Показываем ранее скрытые сущности
         ShowAllHiddenEntities();
+
+        if (_entity.Comp.TargetsCount <= 0)
+            return;
+
         // Скрываем все сущности, которые не являются целями
         HideNonTargetEntities();
+
+        // Рисуем указатель к ближайшей цели
+        DrawLineToTarget(in args);
     }
 
     private void HideNonTargetEntities()
     {
-        if (_entity.Comp.TargetsCount == 0)
-            return;
-
-        var query = _ent.EntityQueryEnumerator<BlinkableComponent, MobStateComponent, SpriteComponent>();
-        while (query.MoveNext(out var uid, out _ , out _, out var sprite))
+        var query = _ent.EntityQueryEnumerator<BlinkableComponent, SpriteComponent>();
+        while (query.MoveNext(out var uid, out _, out var sprite))
         {
             if (_ent.IsClientSide(uid))
                 continue;
@@ -106,20 +106,23 @@ public sealed class Scp096Overlay : Overlay
         return closestEntityPos;
     }
 
-    public void ShowAllHiddenEntities()
+    private void ShowAllHiddenEntities()
     {
-        if (_cachedAlphas.Count == 0)
-            return;
-
-        foreach (var (ent, alpha) in _cachedAlphas)
+        // Обходим с конца, чтобы избежать проблем из-за смещения списка после RemoveAt
+        for (var i = _cachedAlphas.Count - 1; i >= 0; i--)
         {
+            var (ent, alpha) = _cachedAlphas[i];
+
+            // Оставляем сущность неудаленной, если ее нет на клиенте
+            // Потому что несуществование на клиенте может быть, когда сущность покинуло PVS
+            // И когда она вернется(вдруг сохранится альфа), то нужно восстановить альфу.
+            // Поэтому не используется Clear() списка и удаляем вручную.
             if (!_ent.EntityExists(ent))
                 continue;
 
             _sprite.SetColor(ent.AsNullable(), ent.Comp.Color.WithAlpha(alpha));
+            _cachedAlphas.RemoveAt(i);
         }
-
-        _cachedAlphas.Clear();
     }
 }
 

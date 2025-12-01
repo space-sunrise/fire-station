@@ -17,10 +17,8 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Projectiles;
 using Content.Shared.Rejuvenate;
-using Content.Shared.Standing;
 using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
-using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Audio;
@@ -46,11 +44,10 @@ public abstract partial class SharedScp096System : EntitySystem
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
     private static readonly SoundSpecifier StorageOpenSound = new SoundCollectionSpecifier("MetalBreak");
 
-    private readonly Dictionary<Entity<Scp096Component>, TimeSpan> _pendingAnimations = new ();
-
     protected EntityQuery<Scp096Component> Scp096Query;
     protected EntityQuery<ActiveScp096HeatingUpComponent> HeatingUpQuery;
     protected EntityQuery<ActiveScp096RageComponent> RageQuery;
+    protected EntityQuery<Scp096TargetComponent> TargetQuery;
     protected EntityQuery<ActiveScp096WithoutFaceComponent> WithoutFaceQuery;
     protected EntityQuery<Scp096FaceComponent> FaceQuery;
 
@@ -65,20 +62,12 @@ public abstract partial class SharedScp096System : EntitySystem
         SubscribeLocalEvent<Scp096Component, AttackedEvent>(OnAttacked);
         SubscribeLocalEvent<Scp096Component, DisarmedEvent>(OnDisarmed);
 
-        SubscribeLocalEvent<Scp096Component, StunnedEvent>(UpdateAppearance);
-        SubscribeLocalEvent<Scp096Component, StoodEvent>(UpdateAppearance);
-        SubscribeLocalEvent<Scp096Component, DownedEvent>(UpdateAppearance);
-
         SubscribeLocalEvent<Scp096Component, AttackAttemptEvent>(OnAttackAttempt);
         SubscribeLocalEvent<Scp096Component, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<Scp096Component, SleepStateChangedEvent>(OnSleepStateChanged);
 
         SubscribeLocalEvent<Scp096Component, ScpMaskTargetEquipAttempt>(OnMaskAttempt);
         SubscribeLocalEvent<Scp096Component, RejuvenateEvent>(OnRejuvenate);
-
-        SubscribeLocalEvent<Scp096Component, AfterAutoHandleStateEvent>(UpdateAppearance);
-        SubscribeLocalEvent<ActiveScp096HeatingUpComponent, AfterAutoHandleStateEvent>(UpdateAppearance);
-        SubscribeLocalEvent<ActiveScp096RageComponent, AfterAutoHandleStateEvent>(UpdateAppearance);
 
         SubscribeLocalEvent<Scp096Component, ComponentInit>(OnInit);
         SubscribeLocalEvent<Scp096Component, ComponentShutdown>(OnShutdown);
@@ -90,10 +79,12 @@ public abstract partial class SharedScp096System : EntitySystem
         InitializeHands();
         InitializeActions();
         InitializeWithoutFace();
+        InitializeAppearance();
 
         Scp096Query = GetEntityQuery<Scp096Component>();
         HeatingUpQuery = GetEntityQuery<ActiveScp096HeatingUpComponent>();
         RageQuery = GetEntityQuery<ActiveScp096RageComponent>();
+        TargetQuery = GetEntityQuery<Scp096TargetComponent>();
         WithoutFaceQuery = GetEntityQuery<ActiveScp096WithoutFaceComponent>();
         FaceQuery = GetEntityQuery<Scp096FaceComponent>();
 
@@ -107,32 +98,7 @@ public abstract partial class SharedScp096System : EntitySystem
         UpdateHeatingUp();
         UpdateRage();
         UpdateAnimations();
-        UpdateActions();
-    }
-
-    private void UpdateAnimations()
-    {
-        if (_pendingAnimations.Count == 0)
-            return;
-
-        List<Entity<Scp096Component>> toRemove = [];
-        foreach (var (ent, end) in _pendingAnimations)
-        {
-            if (_timing.CurTime < end)
-                continue;
-
-            ent.Comp.AgroToDeadAnimation = false;
-            ent.Comp.DeadToIdleAnimation = false;
-            Dirty(ent);
-
-            UpdateAppearance(ent);
-            toRemove.Add(ent);
-        }
-
-        foreach (var ent in toRemove)
-        {
-            _pendingAnimations.Remove(ent);
-        }
+        UpdateJittering();
     }
 
     #region Event handlers
@@ -172,10 +138,15 @@ public abstract partial class SharedScp096System : EntitySystem
     /// </summary>
     private void CheckRandomTargetByDamage(EntityUid target, EntityUid? attacker, float chance)
     {
+        // В состоянии без лица урон это единственный способ застанить скромника.
+        // А стан это единственный способ вылечить его лицо, не получив пиздюлей.
+        if (WithoutFaceQuery.HasComp(target))
+            return;
+
         if (!attacker.HasValue)
             return;
 
-        if (!TryComp<Scp096Component>(target, out var scp))
+        if (!Scp096Query.TryComp(target, out var scp))
             return;
 
         if (!_random.ProbForEntity(attacker.Value, chance))
@@ -184,39 +155,26 @@ public abstract partial class SharedScp096System : EntitySystem
         TryAddTarget((target, scp), attacker.Value, true);
     }
 
-    private void UpdateAppearance<T, TE>(Entity<T> ent, ref TE args) where T : IComponent
-    {
-        UpdateAppearance(ent);
-    }
-
-    private void UpdateAppearance<T>(Entity<T> ent) where T : IComponent
-    {
-        RaiseNetworkEvent(new Scp096RequireUpdateVisualsEvent(GetNetEntity(ent)));
-    }
-
     private void OnMobStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
     {
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        UpdateAppearance(ent);
+        UpdateAppearance(ent.AsNullable());
 
         if (args.NewMobState == MobState.Alive)
             return;
 
-        RemoveAllTargets(ent);
+        RemoveAllTargets();
     }
 
     private void OnSleepStateChanged(Entity<Scp096Component> ent, ref SleepStateChangedEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
         ent.Comp.DeadToIdleAnimation = !args.FellAsleep;
         ent.Comp.AgroToDeadAnimation = args.FellAsleep;
         Dirty(ent);
 
-        UpdateAppearance(ent);
+        UpdateAppearance(ent.AsNullable());
         AddToPendingAnimations(ent, _timing.CurTime + ent.Comp.AnimationDuration);
     }
 
@@ -254,7 +212,7 @@ public abstract partial class SharedScp096System : EntitySystem
         RemComp<ActiveScp096RageComponent>(ent);
         RemComp<ActiveScp096HeatingUpComponent>(ent);
 
-        RemoveAllTargets(ent);
+        RemoveAllTargets();
     }
 
     protected virtual void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
@@ -266,6 +224,7 @@ public abstract partial class SharedScp096System : EntitySystem
     protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
     {
         UpdateAudio(ent.AsNullable(), ent.Comp.CrySound);
+        _meta.AddFlag(ent, MetaDataFlags.PvsPriority);
     }
 
     protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
@@ -278,6 +237,11 @@ public abstract partial class SharedScp096System : EntitySystem
 
         ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
         Dirty(ent);
+
+        _pendingAnimations.Remove(ent);
+        _pendingJitteringRemoval.Remove(ent);
+
+        _meta.RemoveFlag(ent, MetaDataFlags.PvsPriority);
     }
 
     #endregion
@@ -290,7 +254,7 @@ public abstract partial class SharedScp096System : EntitySystem
     /// </summary>
     private bool CanBeAggro(Entity<Scp096Component> ent, bool ignoreMask = false)
     {
-        if (HasComp<SleepingComponent>(ent))
+        if (_sleepingQuery.HasComp(ent))
             return false;
 
         if (_mobState.IsIncapacitated(ent))
@@ -411,7 +375,7 @@ public abstract partial class SharedScp096System : EntitySystem
         return true;
     }
 
-    private void ToggleMovement(EntityUid uid, bool enable, bool blockInteractions = true)
+    private void ToggleMovement(EntityUid uid, bool enable)
     {
         if (enable)
         {
@@ -420,13 +384,7 @@ public abstract partial class SharedScp096System : EntitySystem
         }
         else
         {
-            var blockMovement = EnsureComp<BlockMovementComponent>(uid);
-            if (!blockInteractions)
-            {
-                blockMovement.BlockInteraction = false;
-                Dirty(uid, blockMovement);
-            }
-
+            EnsureComp<BlockMovementComponent>(uid);
             EnsureComp<NoRotateOnInteractComponent>(uid);
         }
 
@@ -434,14 +392,6 @@ public abstract partial class SharedScp096System : EntitySystem
 
         if (enable != finalResult)
             Log.Error($"Movement state mismatch! Tried to set movement to {enable}, but ended up with {finalResult}.");
-    }
-
-    private void AddToPendingAnimations(Entity<Scp096Component> ent, TimeSpan end)
-    {
-        if (_pendingAnimations.TryGetValue(ent, out var existingEnd))
-            _pendingAnimations[ent] = TimeSpan.FromSeconds(Math.Max(end.TotalSeconds, existingEnd.TotalSeconds));
-        else
-            _pendingAnimations[ent] = end;
     }
 
     private bool TryToggleTears(Entity<Scp096Component?> ent, bool value)
@@ -480,6 +430,8 @@ public abstract partial class SharedScp096System : EntitySystem
     #endregion
 }
 
+#region Events
+
 /// <summary>
 /// Ивент, информирующий клиент, что требуется перепроверять внешний вид scp-096.
 /// </summary>
@@ -497,3 +449,5 @@ public sealed partial class Scp096SitDownEvent : InstantActionEvent;
 
 [Serializable, NetSerializable]
 public sealed partial class Scp096FaceSkinRipStartDoAfterEvent : SimpleDoAfterEvent;
+
+#endregion

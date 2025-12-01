@@ -11,7 +11,7 @@ namespace Content.Shared._Scp.Scp096.Main.Components;
 /// Компонент, отвечающий за поведение скромника.
 /// Служит ключевым для перехода в другие состояния.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true, true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class Scp096Component : Component
 {
     /// <summary>
@@ -57,12 +57,6 @@ public sealed partial class Scp096Component : Component
     [DataField]
     public SoundSpecifier CrySound = new SoundPathSpecifier("/Audio/_Scp/Scp096/crying.ogg",
         AudioParams.Default.WithVolume(-14f).WithMaxDistance(4f).WithRolloffFactor(5f).WithLoop(true));
-
-    /// <summary>
-    /// Звук, проигрывающийся жертве, когда она видит скромника.
-    /// </summary>
-    [DataField]
-    public SoundSpecifier SeenSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/seen.ogg");
 
     /// <summary>
     /// Сущность звука, который издается вокруг скромника.

@@ -9,6 +9,7 @@
   components:
   - type: Sprite
     sprite: _Scp/Mobs/Scp/scp-096.rsi
+    offset: 0, 0.35
     layers:
     - state: idle
       map: [ "enum.Scp096VisualsState.Idle", "idle" ]
@@ -76,6 +77,15 @@
         maxDistance: 10
   - type: BreakDoorOnCollide
     enabled: false
+  - type: Prying
+    enabled: false
+    pryPowered: true
+    force: true
+    speedModifier: 0.6
+    useSound:
+      path: /Audio/_Scp/Scp096/prydoor.ogg
+      params:
+        volume: -4
   - type: ActionGrant
     actions:
     #- Scp096CryOut - Требует механику ремонта стен, отключено до реализации.
@@ -114,11 +124,6 @@
     prototype: Human # TODO: Кастомное тело
   - type: Inventory
     templateId: scp096
-  - type: FootstepModifier
-    footstepSoundCollection:
-      path: /Audio/Effects/Footsteps/slime1.ogg
-      params:
-        volume: 3
   - type: Blindable
   - type: Climbing
   - type: Muted
@@ -128,9 +133,9 @@
     fixtures:
       fix1:
         shape:
-          !type:PhysShapeCircle
-          radius: 0.25
-        density: 80
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.4,0.25,0.4"
+        density: 500
         mask:
         - MobMask
         layer:
