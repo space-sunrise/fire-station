@@ -102,11 +102,6 @@
     rules:
     - id: ScpSolidWallRustingVariationPass
     - id: ScpReinforcedWallRustingVariationPass
-    - id: ScpWallConcreteCrackVariationPass
-    - id: ScpWallConcreteLightContaimentCrackVariationPass
-    - id: ScpWallConcreteScienceCrackVariationPass
-    - id: ScpWallConcreteEngineerCrackVariationPass
-    - id: ScpWallConcreteMedicalCrackVariationPass
 
 - type: entity
   id: BasicFoundationChillEventScheduler
