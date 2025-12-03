@@ -1,0 +1,39 @@
+- type: entity
+  parent: Stairs
+  id: StairScpConcrete
+  suffix: Concrete
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/stairs.rsi
+    state: stairs_concrete
+    drawdepth: FloorTiles
+
+- type: entity
+  parent: Stairs
+  id: StairScpConcreteStage
+  suffix: Concrete, stage
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/stairs.rsi
+    state: stairs_stage_concrete
+    drawdepth: FloorTiles
+
+- type: entity
+  parent: Stairs
+  id: StairScpSteel
+  suffix: Steel
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/stairs.rsi
+    state: stairs_steel
+    drawdepth: FloorTiles
+
+- type: entity
+  parent: Stairs
+  id: StairScpSteelStage
+  suffix: Steel, stage
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/stairs.rsi
+    state: stairs_stage_steel
+    drawdepth: FloorTiles
