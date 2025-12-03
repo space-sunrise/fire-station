@@ -76,19 +76,37 @@
             ]
         },
 		{
-		  "name": "poster1_chaos_contraband"
+		    "name": "poster1_chaos_contraband"
 		},
 		{
-		  "name": "poster2_chaos_contraband"
+	        "name": "poster2_chaos_contraband"
 		},
 		{
-		  "name": "poster3_chaos_contraband"
+		    "name": "poster3_chaos_contraband"
 		},
 		{
-		  "name": "poster4_chaos_contraband"
+		    "name": "poster4_chaos_contraband"
 		},
 		{
             "name": "loose_lips_lose_scips"
+        },  
+        {
+            "name": "rick_roll",
+            "delays": [
+                [
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1,
+                0.1
+                ]
+            ]
         }
+        
     ]
 }

@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "random_classd"
+    },
+    {
+      "name": "poster1_classd"
+    },
+    {
+      "name": "poster2_classd"
+    },
+    {
+      "name": "poster3_classd"
+    },
+    {
+      "name": "poster4_classd"
+    },
+    {
+      "name": "poster5_classd"
+    },
+    {
+      "name": "poster6_classd"
+    },
+    {
+      "name": "poster7_classd"
+    },
+    {
+      "name": "poster8_classd"
+    },
+    {
+      "name": "poster9_classd"
+    },
+    {
+      "name": "poster10_classd"
+    },
+    {
+      "name": "poster11_classd"
+    },
+    {
+      "name": "poster12_classd"
+    },
+    {
+      "name": "poster13_classd"
+    },
+    {
+      "name": "poster14_classd"
+    },
+    {
+      "name": "poster15_classd"
+    },
+    {
+      "name": "poster16_classd"
+    },
+    {
+      "name": "poster17_classd"
+    },
+    {
+      "name": "poster18_classd"
+    }
+  ]
+}

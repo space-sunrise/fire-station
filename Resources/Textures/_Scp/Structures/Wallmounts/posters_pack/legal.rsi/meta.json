@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "poster1_legit"
+    },
+    {
+      "name": "poster2_legit"
+    },
+    {
+      "name": "poster3_legit"
+    },
+    {
+      "name": "poster4_legit"
+    },
+    {
+      "name": "poster5_legit"
+    },
+    {
+      "name": "poster6_legit"
+    },
+    {
+      "name": "poster7_legit"
+    },
+    {
+      "name": "poster8_legit"
+    },
+    {
+      "name": "poster9_legit"
+    },
+    {
+      "name": "poster10_legit"
+    },
+    {
+      "name": "poster11_legit"
+    },
+    {
+      "name": "poster12_legit"
+    },
+    {
+      "name": "poster13_legit"
+    },
+    {
+      "name": "poster14_legit"
+    },
+    {
+      "name": "poster15_legit"
+    },
+    {
+      "name": "poster16_legit"
+    },
+    {
+      "name": "poster17_legit"
+    },
+    {
+      "name": "poster18_legit"
+    },
+    {
+      "name": "poster19_legit"
+    }
+  ]
+}

@@ -7,6 +7,7 @@
     prototypes:
     - ScpRandomPosterContraband
     - ScpRandomPosterLegit
+    - ScpRandomPosterDClass
     chance: 0.9
     rarePrototypes:
     - PosterBroken
@@ -19,25 +20,25 @@
   - type: RandomSpawner
     offset: 0
     prototypes:
-    - PosterContrabandSam300 # Sunrise-edit
-    - PosterContrabandSyndiMechs # Sunrise-edit
-    - PosterContrabandFreeTonto
-    - PosterContrabandSmoke
-    - PosterContrabandHackingGuide
-    - PosterContrabandEAT
-    - PosterContrabandTools
-    - PosterContrabandSpaceCube
-    - PosterContrabandCommunistState
-    - PosterContrabandRebelsUnite
-    - PosterContrabandC20r
-    - PosterContrabandHaveaPuff
-    - PosterContrabandRevolver
-    - PosterContrabandUnreadableAnnouncement
-    - PosterContrabandNuclearDeviceInformational
-    - PosterContrabandRevolt
-    - PosterContrabandRise
-    - PosterContrabandInterdyne
-    chance: 0.5
+    - PosterContrabandAtmosiaDeclarationIndependence # poster2_contraband
+    - PosterContrabandCommunistState # poster18_contraband
+    - PosterContrabandHaveaPuff # poster25_contraband
+    - PosterContrabandRouny # poster36_contraband
+    - PosterContrabandShamblersJuice # poster38_contraband
+    - PosterContrabandMaskedMen # poster44_contraband
+    - PosterContrabandUnreadableAnnouncement # poster45_contraband
+    - PosterContrabandBountyHunters # poster47_contraband
+    - PosterContrabandCybersun600 # poster58_contraband
+    - PosterContrabandDonk # poster59_contraband
+    # SCP
+    - PosterChaos # chaos
+    - PosterGoc # goc
+    - PosterAlertness # sus
+    - PosterContrabandChaos1 # poster1_chaos_contraband
+    - PosterContrabandChaos2 # poster2_chaos_contraband
+    - PosterContrabandChaos3 # poster3_chaos_contraband
+    - PosterContrabandChaos4 # poster4_chaos_contraband
+    chance: 0.9
 
 - type: entity
   parent: RandomPosterLegit
@@ -46,33 +47,130 @@
   - type: RandomSpawner
     offset: 0
     prototypes:
-    - PosterLegitAIOverseer #Sunrise-edit
-    - PosterLegitHereForYourSafety
-    - PosterLegitCleanliness
-    - PosterLegitHelpOthers
-    - PosterLegitBuild
-    - PosterLegitScience
-    - PosterLegitObey
-    - PosterLegitWalk
-    - PosterLegitStateLaws
-    - PosterLegitGetYourLEGS
-    - PosterLegitDoNotQuestion
-    - PosterLegitWorkForAFuture
-    - PosterLegitSoftCapPopArt
-    - PosterLegitSafetyInternals
-    - PosterLegitSafetyEyeProtection
-    - PosterLegitSafetyReport
-    - PosterLegitReportCrimes
-    - PosterLegitIonRifle
-    - PosterLegit50thAnniversaryVintageReprint
-    - PosterLegitFruitBowl
-    - PosterLegit12Gauge
-    - PosterLegitHighClassMartini
-    - PosterLegitTheOwl
-    - PosterLegitCarbonDioxide
-    - PosterLegitDickGumshue
-    - PosterLegitThereIsNoGasGiant
-    - PosterLegitSecWatch
-    - PosterLegitRenault
-    - PosterLegitTyrone
-    chance: 0.5
+    - PosterLegitDejaVu
+    - PosterLegitDontPanic
+    - PosterLegitBarDrinks
+    - PosterLegitBotanyFood
+    - PosterLegitHotDonkExplosion
+    - PosterLegitEatMeat
+    - PosterLegitMoreBread
+    - PosterLegitPieSlice
+    - PosterLegitPizzaHope
+    - PosterLegitMedicate
+    - PosterLegitNoTouching
+    - PosterLegitChknDnnr
+    - PosterContrabandSaucerNumberOne
+    - PosterContrabandBreadLies
+    - PosterLegitCleanliness # poster3_legit
+    - PosterLegitHelpOthers # poster4_legit
+    - PosterLegitScience # poster7_legit
+    - PosterLegitWalk # poster10_legit
+    - PosterLegitUeNo # poster14_legit
+    - PosterLegitGetYourLEGS # poster15_legit
+    - PosterLegitDoNotQuestion # poster16_legit
+    - PosterLegitWorkForAFuture # poster17_legit
+    - PosterLegitSoftCapPopArt # poster18_legit
+    - PosterLegitSafetyInternals # poster19_legit
+    - PosterLegitSafetyEyeProtection # poster20_legit
+    - PosterLegitSafetyReport # poster21_legit
+    - PosterLegitReportCrimes # poster22_legit
+    - PosterLegitFoamForceAd # poster24_legit
+    - PosterLegitCohibaRobustoAd # poster25_legit
+    - PosterLegitFruitBowl # poster27_legit
+    - PosterLegitNanomichiAd # poster30_legit
+    - PosterLegitHighClassMartini # poster32_legit
+    - PosterLegitNoERP # poster34_legit
+    - PosterLegitDickGumshue # poster36_legit
+    - PosterLegitThereIsNoGasGiant # poster37_legit
+    - PosterLegitAnatomyPoster # poster40_legit
+    - PosterLegitMime # poster41_legit
+    - PosterLegitVacation # poster48_legit
+    - PosterLegitPeriodicTable # poster49_legit
+    - PosterContrabandAriralInSpace
+    - PosterContrabandSmoke # poster7_contraband
+    - PosterContrabandMissingGloves # poster9_contraband
+    - PosterContrabandEAT # poster14_contraband
+    - PosterContrabandTools # poster15_contraband
+    - PosterContrabandRedRum # poster30_contraband
+    - PosterContrabandBeachStarYamamoto # poster52_contraband
+    - PosterContrabandMissingSpacepen # poster63_contraband
+    # SCP
+    - PosterScp # scp
+    - PosterBreath # breath
+    - PosterScpYours # nt
+    - PosterLook # scp173
+    - Poster217 # scp217
+    - PosterSaulAgency # saul
+    - PosterChanges # changes
+    - PosterLooseLipsLoseScips # loose_lips_lose_scips
+    - PosterScpHey # poster1_legit
+    - PosterScpBonFire # poster2_legit
+    - PosterScpShodan # poster3_legit
+    - PosterScpVal # poster4_legit
+    - PosterScpBand # poster5_legit
+    - PosterScpLandscape # poster6_legit
+    - PosterScpSinger # poster7_legit
+    - PosterScpColleague # poster8_legit
+    - PosterScpGirl # poster9_legit
+    - PosterScpScientist # poster10_legit
+    - PosterScpScientist2 # poster11_legit
+    - PosterScpIHaveNoMouthAndIMustScream # poster12_legit
+    - PosterScpDoctor # poster13_legit
+    - PosterScpNun # poster14_legit
+    - PosterScpGirl2 # poster15_legit
+    - PosterScpGirl3 # poster16_legit
+    - PosterScpGirl4 # poster17_legit
+    - PosterScpEngineerGaming # poster18_legit
+    - PosterScpSecurity # poster19_legit
+    chance: 0.9
+
+- type: entity
+  parent: MarkerBase
+  id: ScpRandomPosterDClass
+  components:
+  - type: Sprite
+    layers:
+      - state: red
+      - sprite: _Scp/Structures/Wallmounts/posters_pack/classd.rsi
+        state: random_classd
+  - type: RandomSpawner
+    offset: 0
+    prototypes:
+    - PosterScpDeath # poster1_classd
+    - PosterScpElerium # poster2_classd
+    - PosterScpHappiness # poster3_classd
+    - PosterScpLana # poster4_classd
+    - PosterScpLeviathan # poster5_classd
+    - PosterScpMicroscope # poster6_classd
+    - PosterScpLeopold # poster7_classd
+    - PosterScpSuperDClass # poster8_classd
+    - PosterScpDislike # poster9_classd
+    - PosterScpFallout # poster10_classd
+    - PosterScpWhoWhatWhere # poster11_classd
+    - PosterScpEnemy # poster12_classd
+    - PosterScpNotUFriend # poster13_classd
+    - PosterScpGalaxy # poster14_classd
+    - PosterScpYellowFace # poster15_classd
+    - PosterScpTriangle # poster16_classd
+    - PosterScpSad # poster17_classd
+    - PosterScpUgly # poster18_classd
+    chance: 0.9
+
+- type: entity
+  parent: RandomPosterLegit
+  id: ScpRandomPosterScp049
+  components:
+  - type: RandomSpawner
+    offset: 0
+    prototypes:
+    - Poster049Hand
+    - Poster049Veins
+    - Poster049Dermis
+    - Poster049Dissection
+    - Poster049Heart
+    chance: 1
+
+
+
+
+
