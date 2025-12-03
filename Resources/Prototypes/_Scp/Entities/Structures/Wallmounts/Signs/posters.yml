@@ -618,4 +618,4 @@
   id: PosterRickRoll
   components:
   - type: Sprite
-    state: eldritch_painting_debug
+    state: rick_roll

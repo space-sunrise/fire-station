@@ -202,3 +202,5 @@ ent-PosterScpSad = плакат "Тоска"
 ent-PosterScpUgly = плакат "Безобразие"
     .desc = Тут изображено какое-то обезображенное лицо. Выглядит жутко.
     .suffix = SCP D Класс
+ent-PosterRickRoll = плакат "Рик"
+    .desc = Ого что же это?
