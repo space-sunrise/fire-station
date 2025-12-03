@@ -2,12 +2,10 @@
 using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.ActionBlocker;
-using Content.Shared.Audio;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Jittering;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
 
@@ -18,8 +16,6 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
-
-    public static readonly ProtoId<AmbientMusicPrototype> RageAmbience = "Scp096Rage";
 
     private void InitializeRage()
     {
@@ -32,16 +28,13 @@ public abstract partial class SharedScp096System
 
     #region Event handlers
 
-    private void OnHeatingUpStart(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentStartup args)
+    protected virtual void OnHeatingUpStart(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentStartup args)
     {
         // Устанавливаем время окончания пред-агр состояния
         ent.Comp.RageHeatUpEnd = _timing.CurTime + ent.Comp.RageHeatUp;
 
         // Устанавливаем звук пред-агр состояния
         UpdateAudio(ent.Owner, ent.Comp.TriggerSound);
-
-        if (_net.IsServer)
-            RaiseNetworkEvent(new NetworkAmbientMusicEvent(RageAmbience), ent);
 
         // Если скромник был застанен или сидит - убираем это
         _stamina.TryTakeStamina(ent, -100);

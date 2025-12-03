@@ -1,9 +1,5 @@
 ﻿using Content.Shared._Scp.Scp096.Main.Components;
-using Content.Shared.Damage;
-using Content.Shared.FixedPoint;
 using Content.Shared.IdentityManagement;
-using Content.Shared.Medical.Healing;
-using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Prying.Components;
 using Content.Shared.Tag;
@@ -21,9 +17,7 @@ public abstract partial class SharedScp096System
     {
         SubscribeLocalEvent<ActiveScp096WithoutFaceComponent, ComponentStartup>(OnWithoutFaceStartup);
         SubscribeLocalEvent<ActiveScp096WithoutFaceComponent, ComponentShutdown>(OnWithoutFaceShutdown);
-        SubscribeLocalEvent<Scp096FaceComponent, DamageChangedEvent>(OnFaceDamageChanged);
 
-        SubscribeLocalEvent<Scp096Component, HealingRelayEvent>(OnHealingRelay);
     }
 
     /// <summary>
@@ -117,54 +111,5 @@ public abstract partial class SharedScp096System
         Dirty(ent, prying);
 
         _tag.RemoveTags(ent, ent.Comp.TagsToAdd);
-    }
-
-    /// <summary>
-    /// Метод, обрабатывающий полное исцеление лица для перехода в стандартное состояние.
-    /// </summary>
-    private void OnFaceDamageChanged(Entity<Scp096FaceComponent> ent, ref DamageChangedEvent args)
-    {
-        if (!_mobThreshold.TryGetThresholdForState(ent, MobState.Alive, out var aliveThreshold))
-            return;
-
-        if (args.Damageable.TotalDamage == aliveThreshold)
-            HealFace(ent);
-    }
-
-    private void OnHealingRelay(Entity<Scp096Component> ent, ref HealingRelayEvent args)
-    {
-        if (!TryGetFace(ent.AsNullable(), out var face))
-            return;
-
-        args.Entity = face;
-    }
-
-    /// <summary>
-    /// Метод, полностью исцеляющий лицо скромника.
-    /// Принимает самого скромника и автоматически получает его лицо.
-    /// </summary>
-    /// <param name="scp096"><see cref="EntityUid"/> скромника</param>
-    /// <returns>Получилось вылечить лицо или нет</returns>
-    private bool TryHealFace(EntityUid scp096)
-    {
-        if (!TryGetFace(scp096, out var face))
-            return false;
-
-        HealFace(face.Value);
-        return true;
-    }
-
-    /// <summary>
-    /// Метод, исцеляющий лицо скромника и переводящий его в живое состояние.
-    /// Принимает лицо скромника в качестве аргумента.
-    /// </summary>
-    /// <param name="face">Лицо скромника</param>
-    private void HealFace(Entity<Scp096FaceComponent> face)
-    {
-        // Лечим лицо и воскрешаем его.
-        _mobState.ChangeMobState(face, MobState.Alive);
-
-        if (TryComp<DamageableComponent>(face, out var damageable) && damageable.TotalDamage != FixedPoint2.Zero)
-            _damageable.SetAllDamage(face, damageable, FixedPoint2.Zero);
     }
 }

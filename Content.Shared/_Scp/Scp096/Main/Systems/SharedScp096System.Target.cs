@@ -1,18 +1,16 @@
-﻿using Content.Shared._Scp.Audio;
-using Content.Shared._Scp.Fear;
+﻿using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Systems;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Scp.Watching.FOV;
-using Content.Shared.Audio;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Popups;
+using JetBrains.Annotations;
 using Robust.Shared.Network;
-using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
 
@@ -24,8 +22,6 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly INetManager _net = default!;
-
-    private static readonly ProtoId<AmbientMusicPrototype> TargetAmbience = "Scp096Target";
 
     protected EntityQuery<Scp096ProtectionComponent> ProtectionQuery;
 
@@ -78,14 +74,7 @@ public abstract partial class SharedScp096System
 
     protected virtual void OnTargetStartup(Entity<Scp096TargetComponent> ent, ref ComponentStartup args)
     {
-        if (_net.IsServer)
-        {
-            _audio.PlayGlobal(ent.Comp.SeenSound, ent);
-            RaiseNetworkEvent(new NetworkAmbientMusicEvent(TargetAmbience), ent);
-        }
-
         _fear.TrySetFearLevel(ent.Owner, FearState.Terror);
-        _meta.AddFlag(ent, MetaDataFlags.ExtraTransformEvents);
 
         var query = EntityQueryEnumerator<Scp096Component>();
         while (query.MoveNext(out var uid, out var scp096))
@@ -110,17 +99,13 @@ public abstract partial class SharedScp096System
             if (scp096.TargetsCount <= 0)
                 RemCompDeferred<ActiveScp096RageComponent>(uid);
         }
-
-        if (_net.IsServer)
-            RaiseNetworkEvent(new NetworkAmbientMusicEventStop(), ent);
-
-        _meta.RemoveFlag(ent, MetaDataFlags.ExtraTransformEvents);
     }
 
     /// <summary>
     /// Проверяет, может ли цель быть целью scp-096.
     /// Если может - добавляет ее в список целей. Возвращает полученный результат
     /// </summary>
+    [PublicAPI]
     public bool TryAddTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false, bool ignoreMask = false)
     {
         if (!CanBeAggro(scp, ignoreMask))

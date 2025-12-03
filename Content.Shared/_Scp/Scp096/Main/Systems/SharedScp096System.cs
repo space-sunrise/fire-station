@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Content.Shared._Scp.Helpers;
+﻿using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Other.EmitSoundRandomly;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
@@ -80,6 +79,7 @@ public abstract partial class SharedScp096System : EntitySystem
         InitializeActions();
         InitializeWithoutFace();
         InitializeAppearance();
+        InitializeFace();
 
         Scp096Query = GetEntityQuery<Scp096Component>();
         HeatingUpQuery = GetEntityQuery<ActiveScp096HeatingUpComponent>();
@@ -331,50 +331,6 @@ public abstract partial class SharedScp096System : EntitySystem
         return true;
     }
 
-    private bool TryGetFace(Entity<Scp096Component?> ent, [NotNullWhen(true)] out Entity<Scp096FaceComponent>? face)
-    {
-        face = null;
-        if (!Resolve(ent, ref ent.Comp))
-            return false;
-
-        if (!Exists(ent.Comp.FaceEntity))
-        {
-            Log.Error($"Found SCP-096 without valid face entity. Scp096 is {ToPrettyString(ent)}, while reference is {ToPrettyString(ent.Comp.FaceEntity)}");
-            return false;
-        }
-
-        var faceEntity = ent.Comp.FaceEntity.Value;
-
-        if (!FaceQuery.TryComp(faceEntity, out var faceComp))
-        {
-            Log.Error($"Found SCP-096 face without {nameof(Scp096FaceComponent)}! Prototype: {Prototype(faceEntity)}, Entity: {ToPrettyString(faceEntity)}");
-            return false;
-        }
-
-        face = (faceEntity, faceComp);
-        return true;
-    }
-
-    private bool TryGetScp096FromFace(Entity<Scp096FaceComponent> ent, [NotNullWhen(true)] out Entity<Scp096Component>? scp096)
-    {
-        scp096 = null;
-
-        if (!Exists(ent.Comp.FaceOwner))
-        {
-            Log.Error($"Found SCP-096 face entity with unexisting owner. Face - {ToPrettyString(ent)}, Owner - {ToPrettyString(ent.Comp.FaceOwner)}");
-            return false;
-        }
-
-        if (!Scp096Query.TryComp(ent.Comp.FaceOwner, out var scp096Comp))
-        {
-            Log.Error($"Found SCP-096 face owner without {nameof(Scp096Component)}. Face - {ToPrettyString(ent)}, Owner - {ToPrettyString(ent.Comp.FaceOwner)}");
-            return false;
-        }
-
-        scp096 = (ent.Comp.FaceOwner.Value, scp096Comp);
-        return true;
-    }
-
     private void ToggleMovement(EntityUid uid, bool enable)
     {
         if (enable)
@@ -393,39 +349,6 @@ public abstract partial class SharedScp096System : EntitySystem
         if (enable != finalResult)
             Log.Error($"Movement state mismatch! Tried to set movement to {enable}, but ended up with {finalResult}.");
     }
-
-    private bool TryToggleTears(Entity<Scp096Component?> ent, bool value)
-    {
-        if (!TryGetFace(ent, out var face))
-            return false;
-
-        ToggleTears(face.Value, value);
-        return true;
-    }
-
-    private bool TryToggleTearsReagent(Entity<Scp096Component?> ent, bool useDefaultReagent)
-    {
-        if (!TryGetFace(ent, out var face))
-            return false;
-
-        ToggleTearsReagent(face.Value, useDefaultReagent);
-        return true;
-    }
-
-    private bool TryModifyTearsSpawnSpeed(Entity<Scp096Component?> ent, bool cryFaster)
-    {
-        if (!TryGetFace(ent, out var face))
-            return false;
-
-        ModifyTearsSpawnSpeed(face.Value, cryFaster);
-        return true;
-    }
-
-    protected virtual void ToggleTears(Entity<Scp096FaceComponent> ent, bool value) { }
-
-    protected virtual void ToggleTearsReagent(Entity<Scp096FaceComponent> ent, bool useDefaultReagent) { }
-
-    protected virtual void ModifyTearsSpawnSpeed(Entity<Scp096FaceComponent> ent, bool cryFaster) { }
 
     #endregion
 }
