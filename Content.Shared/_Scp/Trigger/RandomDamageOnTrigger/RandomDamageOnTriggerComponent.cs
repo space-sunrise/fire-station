@@ -15,5 +15,11 @@ public sealed partial class RandomDamageOnTriggerComponent : BaseXOnTriggerCompo
     public bool IgnoreResistancesForDamage;
 
     [DataField]
-    public float MaxDamagePercent = 0.7f;
+    public float MaxDamagePercent = 0.95f;
+
+    [DataField]
+    public float MinDamagePercent = 0.15f;
+
+    [DataField]
+    public float Probability = 0.3f;
 }

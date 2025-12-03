@@ -28,6 +28,9 @@ public sealed class RandomDamageOnTriggerSystem : EntitySystem
         if (args.Key != null && !ent.Comp.KeysIn.Contains(args.Key))
             return;
 
+        if (!_random.Prob(ent.Comp.Probability))
+            return;
+
         if (!_destructible.TryGetDestroyedAt(ent.Owner, out var destroyed))
         {
             Log.Warning($"Tried to trigger {nameof(RandomDamageOnTriggerComponent)} for entity with {nameof(DestructibleComponent)}! " +
@@ -37,7 +40,7 @@ public sealed class RandomDamageOnTriggerSystem : EntitySystem
 
         foreach (var type in ent.Comp.DamageTypes)
         {
-            _tempDamage.DamageDict[type] =  destroyed.Value * _random.NextFloat(0f, ent.Comp.MaxDamagePercent);
+            _tempDamage.DamageDict[type] = destroyed.Value * _random.NextFloat(ent.Comp.MinDamagePercent, ent.Comp.MaxDamagePercent);
         }
 
         _damageable.TryChangeDamage(ent, _tempDamage, ent.Comp.IgnoreResistancesForDamage);

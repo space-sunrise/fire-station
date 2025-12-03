@@ -1,17 +1,4 @@
 - type: entity
-  id: ScpBaseWallDamageOnSpawn
-  abstract: true
-  components:
-  - type: RandomDamageOnTrigger
-    ignoreResistancesForDamage: true
-    damageTypes:
-    - Structural
-    keysIn:
-    - random-damage
-  - type: TriggerOnSpawn
-    keyOut: random-damage
-
-- type: entity
   id: ScpBaseWallDamageableVisuals
   abstract: true
   components:
@@ -74,7 +61,7 @@
   parent:
   - WallSolid
   - ScpBaseWallDamageableVisualsMetal
-  - ScpBaseWallDamageOnSpawn
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallSolid
   name: wall
   components:
@@ -90,7 +77,7 @@
   parent:
   - WallSolidRust
   - ScpBaseWallDamageableVisualsMetal
-  - ScpBaseWallDamageOnSpawn
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallSolidRust
   name: wall
   components:
@@ -139,7 +126,7 @@
   parent:
   - WallReinforced
   - ScpBaseWallDamageableVisualsMetal
-  - ScpBaseWallDamageOnSpawn
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallReinforced
   name: reinforced wall
   components:
@@ -176,7 +163,7 @@
   parent:
   - WallReinforcedRust
   - ScpBaseWallDamageableVisualsMetal
-  - ScpBaseWallDamageOnSpawn
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallReinforcedRust
   name: reinforced wall
   components:
@@ -266,7 +253,7 @@
   parent:
   - WallBrick
   - ScpBaseWallDamageableVisualsConcrete
-  - ScpBaseWallDamageOnSpawn
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallConcreteBase
   name: concrete wall
   abstract: true
@@ -447,7 +434,7 @@
   parent:
   - BaseWall
   - ScpBaseWallDamageableVisualsReinforcedConcrete
-  - ScpBaseWallDamageOnSpawn
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallConcreteMetallHardContaiment
   name: metall wall hard contaiment
   components:
@@ -531,7 +518,7 @@
   parent:
   - WallBrick
   - ScpBaseWallDamageableVisualsBrick
-  - ScpBaseWallDamageOnSpawn
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallFireBrick
   name: fire brick wall
   components:

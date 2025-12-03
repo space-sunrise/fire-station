@@ -1,6 +1,7 @@
 # Окно
 - type: entity
   id: BaseScpWindowDirectional
+  parent: ScpBaseStructureDamageOnSpawnLow
   abstract: true
   components:
   - type: Sprite
@@ -95,7 +96,9 @@
     - West
 
 - type: entity
-  parent: Window
+  parent:
+   - Window
+   - ScpBaseStructureDamageOnSpawnLow
   id: ScpWindow
   components:
   - type: Sprite
@@ -154,7 +157,9 @@
     state: window
 
 - type: entity
-  parent: Window
+  parent:
+  - Window
+  - ScpBaseStructureDamageOnSpawnLow
   id: ScpWindowDiagonal
   suffix: SCP diagonal
   placement:
@@ -202,7 +207,9 @@
     node: windowDiagonal
 
 - type: entity
-  parent: ReinforcedWindow
+  parent:
+  - ReinforcedWindow
+  - ScpBaseStructureDamageOnSpawnLow
   id: ScpReinforcedWindow
   components:
   - type: Sprite
@@ -269,7 +276,9 @@
       sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
-  parent: ReinforcedWindow
+  parent:
+  - ReinforcedWindow
+  - ScpBaseStructureDamageOnSpawnLow
   id: ScpReinforcedWindowDiagonal
   suffix: SCP diagonal
   placement:
@@ -318,7 +327,9 @@
 
 # Плазменное окно
 - type: entity
-  parent: PlasmaWindow
+  parent:
+  - PlasmaWindow
+  - ScpBaseStructureDamageOnSpawnLow
   id: ScpPlasmaWindow
   name: window
   components:
@@ -386,7 +397,9 @@
       sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
-  parent: PlasmaWindow
+  parent:
+  - PlasmaWindow
+  - ScpBaseStructureDamageOnSpawnLow
   id: ScpPlasmaWindowDiagonal
   suffix: SCP diagonal
   placement:
@@ -434,7 +447,9 @@
     node: plasmaWindowDiagonal
 
 - type: entity
-  parent: ReinforcedPlasmaWindow
+  parent:
+  - ReinforcedPlasmaWindow
+  - ScpBaseStructureDamageOnSpawnLow
   id: ScpReinforcedPlasmaWindow
   components:
   - type: Sprite
@@ -501,7 +516,9 @@
       sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
-  parent: ReinforcedPlasmaWindow
+  parent:
+  - ReinforcedPlasmaWindow
+  - ScpBaseStructureDamageOnSpawnLow
   id: ScpReinforcedPlasmaWindowDiagonal
   suffix: SCP diagonal
   placement:
@@ -550,7 +567,9 @@
 
 # Урановое окно
 - type: entity
-  parent: UraniumWindow
+  parent:
+  - UraniumWindow
+  - ScpBaseStructureDamageOnSpawnLow
   id: ScpUraniumWindow
   components:
   - type: Sprite
@@ -617,7 +636,9 @@
       sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
-  parent: UraniumWindow
+  parent:
+  - UraniumWindow
+  - ScpBaseStructureDamageOnSpawnLow
   id: ScpUraniumWindowDiagonal
   suffix: SCP diagonal
   placement:
@@ -665,7 +686,9 @@
     node: uraniumWindowDiagonal
 
 - type: entity
-  parent: ReinforcedUraniumWindow
+  parent:
+  - ReinforcedUraniumWindow
+  - ScpBaseStructureDamageOnSpawnLow
   id: ScpReinforcedUraniumWindow
   components:
   - type: Sprite
@@ -732,7 +755,9 @@
       sprite: _Scp/Effects/DamageOverlay/cracks_directional.rsi
 
 - type: entity
-  parent: ReinforcedUraniumWindow
+  parent:
+  - ReinforcedUraniumWindow
+  - ScpBaseStructureDamageOnSpawnLow
   id: ScpReinforcedUraniumWindowDiagonal
   suffix: SCP diagonal
   placement:
@@ -781,7 +806,9 @@
 
 # Тонированное окно
 - type: entity
-  parent: TintedWindow
+  parent:
+  - TintedWindow
+  - ScpBaseStructureDamageOnSpawnLow
   id: ScpTintedWindow
   components:
   - type: Sprite
