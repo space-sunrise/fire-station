@@ -85,7 +85,7 @@
   id: PosterAlertness
   components:
   - type: Sprite
-    state: scp217
+    state: sus
 
 - type: entity
   parent: PosterScpBase
@@ -93,6 +93,330 @@
   components:
   - type: Sprite
     state: loose_lips_lose_scips
+
+# Легальные 2
+
+- type: entity
+  parent: PosterBase
+  id: PosterScpLegalBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/posters_legal.rsi
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpHey
+  components:
+  - type: Sprite
+    state: poster1_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpBonFire
+  components:
+  - type: Sprite
+    state: poster2_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpShodan
+  components:
+  - type: Sprite
+    state: poster3_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpVal
+  components:
+  - type: Sprite
+    state: poster4_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpBand
+  components:
+  - type: Sprite
+    state: poster5_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpLandscape
+  components:
+  - type: Sprite
+    state: poster6_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpSinger
+  components:
+  - type: Sprite
+    state: poster7_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpColleague
+  components:
+  - type: Sprite
+    state: poster8_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpGirl
+  components:
+  - type: Sprite
+    state: poster9_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpScientist
+  components:
+  - type: Sprite
+    state: poster10_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpScientist2
+  components:
+  - type: Sprite
+    state: poster11_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpIHaveNoMouthAndIMustScream
+  components:
+  - type: Sprite
+    state: poster12_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpDoctor
+  components:
+  - type: Sprite
+    state: poster13_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpNun
+  components:
+  - type: Sprite
+    state: poster14_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpGirl2
+  components:
+  - type: Sprite
+    state: poster15_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpGirl3
+  components:
+  - type: Sprite
+    state: poster16_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpGirl4
+  components:
+  - type: Sprite
+    state: poster17_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpEngineerGaming
+  components:
+  - type: Sprite
+    state: poster18_legit
+
+- type: entity
+  parent: PosterScpLegalBase
+  id: PosterScpSecurity
+  components:
+  - type: Sprite
+    state: poster19_legit
+
+# Плакаты Блока Д
+
+- type: entity
+  parent: PosterBase
+  id: PosterScpDClassBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/posters_classd.rsi
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpDeath
+  components:
+  - type: Sprite
+    state: poster1_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpElerium
+  components:
+  - type: Sprite
+    state: poster2_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpHappiness
+  components:
+  - type: Sprite
+    state: poster3_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpLana
+  components:
+  - type: Sprite
+    state: poster4_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpLeviathan
+  components:
+  - type: Sprite
+    state: poster5_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpMicroscope
+  components:
+  - type: Sprite
+    state: poster6_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpLeopold
+  components:
+  - type: Sprite
+    state: poster7_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpSuperDClass
+  components:
+  - type: Sprite
+    state: poster8_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpDislike
+  components:
+  - type: Sprite
+    state: poster9_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpFallout
+  components:
+  - type: Sprite
+    state: poster10_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpWhoWhatWhere
+  components:
+  - type: Sprite
+    state: poster11_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpEnemy
+  components:
+  - type: Sprite
+    state: poster12_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpNotUFriend
+  components:
+  - type: Sprite
+    state: poster13_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpGalaxy
+  components:
+  - type: Sprite
+    state: poster14_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpYellowFace
+  components:
+  - type: Sprite
+    state: poster15_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpTriangle
+  components:
+  - type: Sprite
+    state: poster16_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpSad
+  components:
+  - type: Sprite
+    state: poster17_classd
+
+- type: entity
+  parent: PosterScpDClassBase
+  id: PosterScpUgly
+  components:
+  - type: Sprite
+    state: poster18_classd
+
+# Плакаты SCP-049
+
+- type: entity
+  parent: PosterBase
+  id: PosterScp049Base
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Wallmounts/posters_scp049.rsi
+
+- type: entity
+  parent: PosterScp049Base
+  id: Poster049Hand
+  components:
+  - type: Sprite
+    state: poster1_scp049
+
+- type: entity
+  parent: PosterScp049Base
+  id: Poster049Veins
+  components:
+  - type: Sprite
+    state: poster2_scp049
+
+- type: entity
+  parent: PosterScp049Base
+  id: Poster049Dermis
+  components:
+  - type: Sprite
+    state: poster3_scp049
+
+- type: entity
+  parent: PosterScp049Base
+  id: Poster049Dissection
+  components:
+  - type: Sprite
+    state: poster4_scp049
+
+- type: entity
+  parent: PosterScp049Base
+  id: Poster049Heart
+  components:
+  - type: Sprite
+    state: poster5_scp049
 
 # Контрабанда
 
@@ -286,3 +610,12 @@
   components:
   - type: Sprite
     state: engineering
+
+# Пасхалка
+
+- type: entity
+  parent: PosterScpBase
+  id: PosterRickRoll
+  components:
+  - type: Sprite
+    state: rick_roll
