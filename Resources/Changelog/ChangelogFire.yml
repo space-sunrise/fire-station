@@ -7886,3 +7886,20 @@
   id: 310
   time: '2025-12-04T07:06:03.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/700
+- author: Parashut
+  changes:
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u043E 43 \u043D\u043E\
+      \u0432\u044B\u0445 \u043F\u043E\u0441\u0442\u0435\u0440\u0430."
+    type: Add
+  - message: "\u0414\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u044B \u0441\u043F\u0430\
+      \u0432\u043D\u0435\u0440\u044B \u043F\u043E\u0441\u0442\u0435\u0440\u043E\u0432\
+      \ \u0432 \u0411\u043B\u043E\u043A \u0414."
+    type: Add
+  - message: "\u0418\u0441\u043F\u0440\u0430\u0432\u043B\u0435\u043D\u043E \u043E\u043F\
+      \u0438\u0441\u0430\u043D\u0438\u0435 \u043D\u0435\u043A\u043E\u0442\u043E\u0440\
+      \u044B\u0445 \u0432\u0430\u043D\u0438\u043B\u044C\u043D\u044B\u0445 \u043F\u043B\
+      \u0430\u043A\u0430\u0442\u043E\u0432."
+    type: Fix
+  id: 311
+  time: '2025-12-04T09:54:43.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/701
