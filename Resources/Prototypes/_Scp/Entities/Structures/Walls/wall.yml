@@ -61,6 +61,7 @@
   parent:
   - WallSolid
   - ScpBaseWallDamageableVisualsMetal
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallSolid
   name: wall
   components:
@@ -76,6 +77,7 @@
   parent:
   - WallSolidRust
   - ScpBaseWallDamageableVisualsMetal
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallSolidRust
   name: wall
   components:
@@ -124,6 +126,7 @@
   parent:
   - WallReinforced
   - ScpBaseWallDamageableVisualsMetal
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallReinforced
   name: reinforced wall
   components:
@@ -160,6 +163,7 @@
   parent:
   - WallReinforcedRust
   - ScpBaseWallDamageableVisualsMetal
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallReinforcedRust
   name: reinforced wall
   components:
@@ -249,6 +253,7 @@
   parent:
   - WallBrick
   - ScpBaseWallDamageableVisualsConcrete
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallConcreteBase
   name: concrete wall
   abstract: true
@@ -302,7 +307,6 @@
   - type: Construction
     graph: concreteWall
     node: concreteWallEnd
-  - type: WallConcreteReplacementMarker
 
 - type: entity
   parent: ScpWallSolidDiagonal
@@ -371,7 +375,6 @@
   - type: Construction
     graph: concreteWallLightContaiment
     node: concreteWallLightContaimentEnd
-  - type: WallConcreteLightContaimentReplacementMarker
 
 # Стена Административной Зоны / Научной
 - type: entity
@@ -389,7 +392,6 @@
   - type: Construction
     graph: concreteWallScience
     node: concreteWallScienceEnd
-  - type: WallConcreteScienceReplacementMarker
 
 # Стена Инженерии
 - type: entity
@@ -407,7 +409,6 @@
   - type: Construction
     graph: concreteWallEngineer
     node: concreteWallEngineerEnd
-  - type: WallConcreteEngineerReplacementMarker
 
 # Стена Мед отдела
 - type: entity
@@ -425,129 +426,6 @@
   - type: Construction
     graph: concreteWallMedical
     node: concreteWallMedicalEnd
-  - type: WallConcreteMedicalReplacementMarker
-
-# Треснутая Бетонная стена
-- type: entity
-  parent: ScpWallConcreteBase
-  id: ScpWallConcreteCrack
-  name: crack concrete wall
-  components:
-  - type: Sprite
-    sprite: _Scp/Structures/Walls/concrete_crack.rsi
-  - type: Icon
-    sprite: _Scp/Structures/Walls/concrete_crack.rsi
-  - type: IconSmooth
-    key: walls
-    base: concrete
-  - type: Construction
-    graph: concreteWall
-    node: concreteWallCrack
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StructuralMetallic
-  - type: Destructible
-    thresholds:
-      - trigger:
-          !type:DamageTrigger
-          damage: 850
-        behaviors:
-        - !type:DoActsBehavior
-          acts: ["Destruction"]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
-      - trigger:
-          !type:DamageTrigger
-          damage: 650
-        behaviors:
-        - !type:SpawnEntitiesBehavior
-          spawn:
-            PartRodMetal1:
-              min: 1
-              max: 3
-        - !type:DoActsBehavior
-          acts: [ "Destruction" ]
-        - !type:PlaySoundBehavior
-          sound:
-            path: /Audio/Effects/break_stone.ogg
-            params:
-              volume: -6
-  - type: Tag
-    tags:
-    - Wall
-    - MetaGarbageSavable
-    - MetaGarbageReplace
-
-# Треснутая Стена Лёгкой Зоны Содержания
-- type: entity
-  parent: ScpWallConcreteCrack
-  id: ScpWallConcreteLightContaimentCrack
-  name: crack concrete wall low contaiment
-  components:
-  - type: Sprite
-    sprite: _Scp/Structures/Walls/concrete_low_contaiment_crack.rsi
-  - type: Icon
-    sprite: _Scp/Structures/Walls/concrete_low_contaiment_crack.rsi
-  - type: IconSmooth
-    key: walls
-    base: concrete_low_contaiment
-  - type: Construction
-    graph: concreteWallLightContaiment
-    node: concreteWallLightContaimentCrack
-
-# Треснутая Стена Административной Зоны / Научной
-- type: entity
-  parent: ScpWallConcreteCrack
-  id: ScpWallConcreteScienceCrack
-  name: crack concrete wall science sector
-  components:
-  - type: Sprite
-    sprite: _Scp/Structures/Walls/concrete_science_crack.rsi
-  - type: Icon
-    sprite: _Scp/Structures/Walls/concrete_science_crack.rsi
-  - type: IconSmooth
-    key: walls
-    base: concrete_science
-  - type: Construction
-    graph: concreteWallScience
-    node: concreteWallScienceCrack
-
-# Треснутая Стена Инженерии
-- type: entity
-  parent: ScpWallConcreteCrack
-  id: ScpWallConcreteEngineerCrack
-  name: crack concrete wall engineer sector
-  components:
-  - type: Sprite
-    sprite: _Scp/Structures/Walls/concrete_engineer_crack.rsi
-  - type: Icon
-    sprite: _Scp/Structures/Walls/concrete_engineer_crack.rsi
-  - type: IconSmooth
-    key: walls
-    base: engineer
-  - type: Construction
-    graph: concreteWallEngineer
-    node: concreteWallEngineerCrack
-
-# Треснутая Стена Мед отдела
-- type: entity
-  parent: ScpWallConcreteCrack
-  id: ScpWallConcreteMedicalCrack
-  name: crack concrete wall medical sector
-  components:
-  - type: Sprite
-    sprite: _Scp/Structures/Walls/concrete_medical_crack.rsi
-  - type: Icon
-    sprite: _Scp/Structures/Walls/concrete_medical_crack.rsi
-  - type: IconSmooth
-    key: walls
-    base: medical
-  - type: Construction
-    graph: concreteWallMedical
-    node: concreteWallMedicalCrack
 
 # Стена Сдерживания
 
@@ -556,6 +434,7 @@
   parent:
   - BaseWall
   - ScpBaseWallDamageableVisualsReinforcedConcrete
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallConcreteMetallHardContaiment
   name: metall wall hard contaiment
   components:
@@ -639,6 +518,7 @@
   parent:
   - WallBrick
   - ScpBaseWallDamageableVisualsBrick
+  - ScpBaseStructureDamageOnSpawn
   id: ScpWallFireBrick
   name: fire brick wall
   components:
