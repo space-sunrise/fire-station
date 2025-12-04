@@ -14,7 +14,7 @@ public sealed partial class Scp096System
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly BloodSplatterSystem _bloodSplatter = default!;
 
-    private const float BloodAngle = 360f;
+    private static readonly Angle BloodAngle = Angle.FromDegrees(360f);
     private const float BloodRadians = (float)Math.PI * 2f;
     private static readonly Vector2 BloodDistance = new (3f, 20f);
 

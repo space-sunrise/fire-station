@@ -121,7 +121,7 @@ public sealed partial class BloodSplatterSystem : SharedBloodSplatterSystem
             CreateBloodLine(ent, target);
 
         if (_random.Prob(ent.Comp.Probability))
-            SpawnBloodParticles(ent, target, baseAngle, spreadRadians);
+            SpawnBloodParticles(ent, target, Angle.FromDegrees(baseAngle), spreadRadians);
     }
 
     /// <summary>
