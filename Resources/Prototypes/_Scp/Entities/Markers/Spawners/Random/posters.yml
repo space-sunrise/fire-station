@@ -130,7 +130,7 @@
   - type: Sprite
     layers:
       - state: red
-      - sprite: _Scp/Structures/Wallmounts/posters_pack/classd.rsi
+      - sprite: _Scp/Structures/Wallmounts/posters_classd.rsi
         state: random_classd
   - type: RandomSpawner
     offset: 0

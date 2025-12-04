@@ -102,7 +102,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _Scp/Structures/Wallmounts/posters_pack/legal.rsi
+    sprite: _Scp/Structures/Wallmounts/posters_legal.rsi
 
 - type: entity
   parent: PosterScpLegalBase
@@ -245,7 +245,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _Scp/Structures/Wallmounts/posters_pack/classd.rsi
+    sprite: _Scp/Structures/Wallmounts/posters_classd.rsi
 
 - type: entity
   parent: PosterScpDClassBase
@@ -381,7 +381,7 @@
   abstract: true
   components:
   - type: Sprite
-    sprite: _Scp/Structures/Wallmounts/posters_pack/scp049.rsi
+    sprite: _Scp/Structures/Wallmounts/posters_scp049.rsi
 
 - type: entity
   parent: PosterScp049Base
