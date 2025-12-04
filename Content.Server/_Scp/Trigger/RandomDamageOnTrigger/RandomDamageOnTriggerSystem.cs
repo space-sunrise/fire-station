@@ -20,7 +20,6 @@ public sealed class RandomDamageOnTriggerSystem : EntitySystem
 
         SubscribeLocalEvent<RandomDamageOnTriggerComponent, TriggerEvent>(OnTrigger);
 
-        Log.Level = LogLevel.Info;
     }
 
     private void OnTrigger(Entity<RandomDamageOnTriggerComponent> ent, ref TriggerEvent args)
