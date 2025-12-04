@@ -87,7 +87,7 @@ public abstract partial class SharedScp096System
 
     protected virtual void OnTargetShutdown(Entity<Scp096TargetComponent> ent, ref ComponentShutdown args)
     {
-        if (_timing.ApplyingState)
+        if (_timing.ApplyingState || IsClientSide(ent))
             return;
 
         var query = EntityQueryEnumerator<ActiveScp096RageComponent, Scp096Component>();

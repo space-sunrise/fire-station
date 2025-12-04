@@ -61,7 +61,7 @@ public abstract partial class SharedScp096System
 
     private void OnHeatingUpShutdown(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentShutdown args)
     {
-        if (_timing.ApplyingState)
+        if (_timing.ApplyingState || IsClientSide(ent))
             return;
 
         // Сниманием тряску
@@ -106,7 +106,7 @@ public abstract partial class SharedScp096System
 
     protected virtual void OnRageShutdown(Entity<ActiveScp096RageComponent> ent, ref ComponentShutdown args)
     {
-        if (_timing.ApplyingState)
+        if (_timing.ApplyingState || IsClientSide(ent))
             return;
 
         if (!TryComp<Scp096Component>(ent, out var scp096))

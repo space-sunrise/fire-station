@@ -37,7 +37,6 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly SharedEntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly LockSystem _lock = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
@@ -88,7 +87,7 @@ public abstract partial class SharedScp096System : EntitySystem
         WithoutFaceQuery = GetEntityQuery<ActiveScp096WithoutFaceComponent>();
         FaceQuery = GetEntityQuery<Scp096FaceComponent>();
 
-        Log.Level = LogLevel.Info;
+        Log.Level = LogLevel.Debug;
     }
 
     public override void Update(float frameTime)
@@ -223,25 +222,22 @@ public abstract partial class SharedScp096System : EntitySystem
 
     protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
     {
-        UpdateAudio(ent.AsNullable(), ent.Comp.CrySound);
-        _meta.AddFlag(ent, MetaDataFlags.PvsPriority);
+
     }
 
     protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
     {
+        if (_timing.ApplyingState || IsClientSide(ent))
+            return;
+
         var query = EntityQueryEnumerator<Scp096TargetComponent>();
         while (query.MoveNext(out var uid, out _))
         {
             RemCompDeferred<Scp096TargetComponent>(uid);
         }
 
-        ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
-        Dirty(ent);
-
         _pendingAnimations.Remove(ent);
         _pendingJitteringRemoval.Remove(ent);
-
-        _meta.RemoveFlag(ent, MetaDataFlags.PvsPriority);
     }
 
     #endregion
@@ -288,22 +284,43 @@ public abstract partial class SharedScp096System : EntitySystem
         _speedModifier.ChangeBaseSpeed(ent, newSpeed, newSpeed, 20.0f);
     }
 
-    private void UpdateAudio(Entity<Scp096Component?> ent, SoundSpecifier? sound = null)
+    protected void UpdateAudio(Entity<Scp096Component?> ent, SoundSpecifier? sound = null, bool setDefault = true)
     {
+        if (IsClientSide(ent) || !_timing.IsFirstTimePredicted || _timing.ApplyingState)
+            return;
+
         if (!Resolve(ent, ref ent.Comp))
             return;
 
-        sound ??= ent.Comp.CrySound;
+        if (setDefault)
+            sound ??= ent.Comp.CrySound;
 
         ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
 
         if (_net.IsServer)
             ent.Comp.AudioStream = _audio.PlayPvs(sound, ent)?.Entity;
 
-        if (ent.Comp.AudioStream != null)
-            _transform.SetParent(ent.Comp.AudioStream.Value, ent);
-
         Dirty(ent);
+
+        // Логгирование!
+        if (!Log.IsLogLevelEnabled(LogLevel.Debug))
+            return;
+
+        switch (sound)
+        {
+            case SoundPathSpecifier soundPath:
+                Log.Debug($"Set SCP-096 sound to {soundPath.Path}");
+                break;
+            case SoundCollectionSpecifier soundCollection:
+                Log.Debug($"Set SCP-096 sound to {soundCollection.Collection}");
+                break;
+            case null:
+                Log.Debug("Disabled SCP-096 sound");
+                break;
+            default:
+                Log.Error("Set SCP-096 sound to unknown sound type!");
+                break;
+        }
     }
 
     /// <summary>

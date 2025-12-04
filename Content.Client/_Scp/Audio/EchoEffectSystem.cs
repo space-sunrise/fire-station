@@ -107,6 +107,9 @@ public sealed class EchoEffectSystem : EntitySystem
         if (!_effectsManager.TryRemoveEffect(sound, echoComp.Preset))
             return false;
 
+        RemComp<AudioEchoEffectAffectedComponent>(sound);
+        RemComp<AudioEffectedComponent>(sound);
+
         return true;
     }
 

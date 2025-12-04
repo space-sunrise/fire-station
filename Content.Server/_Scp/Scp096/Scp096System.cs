@@ -20,5 +20,16 @@ public sealed partial class Scp096System : SharedScp096System
     private void OnMapInit(Entity<Scp096Component> ent, ref MapInitEvent args)
     {
         SpawnFace(ent);
+
+        UpdateAudio(ent.AsNullable(), ent.Comp.CrySound);
+        _meta.AddFlag(ent, MetaDataFlags.PvsPriority);
+    }
+
+    protected override void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
+    {
+        base.OnShutdown(ent, ref args);
+
+        UpdateAudio(ent.AsNullable(), setDefault: false);
+        _meta.RemoveFlag(ent, MetaDataFlags.PvsPriority);
     }
 }
