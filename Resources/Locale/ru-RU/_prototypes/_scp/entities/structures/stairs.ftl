@@ -1,0 +1,12 @@
+ent-StairScpConcrete = ступеньки
+    .suffix = Бетон, Широкая
+    .desc = { ent-Stairs.desc }
+ent-StairScpConcreteStage = { ent-Stairs }
+    .suffix = Бетон
+    .desc = { ent-Stairs.desc }
+ent-StairScpSteel = { ent-Stairs }
+    .suffix = Сталь, Широкая
+    .desc = { ent-Stairs.desc }
+ent-StairScpSteelStage = { ent-Stairs }
+    .suffix = Сталь
+    .desc = { ent-Stairs.desc }
