@@ -104,9 +104,6 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void OnSeen(Entity<Scp096Component> ent, ref SimpleEntitySeenEvent args)
     {
-        if (WithoutFaceQuery.HasComp(ent))
-            return;
-
         TryAddTarget(ent, args.Viewer);
     }
 
@@ -258,6 +255,9 @@ public abstract partial class SharedScp096System : EntitySystem
 
         // В маске мы мирные
         if (_scpMask.HasScpMask(ent) && !ignoreMask)
+            return false;
+
+        if (WithoutFaceQuery.HasComp(ent))
             return false;
 
         return true;
