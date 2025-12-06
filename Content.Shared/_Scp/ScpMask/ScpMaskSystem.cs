@@ -20,6 +20,7 @@ namespace Content.Shared._Scp.ScpMask;
 /// Позволяет контролировать будет ли надета маска, дает способность разорвать маску.
 /// Имеет два метода для работы извне для получения Entity c маской и ее разрыва
 /// </summary>
+/// TODO: Рефактор на выдачу компонента на время ношения маски. Компонент должен хранить ссылку на маску
 public sealed partial class ScpMaskSystem : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -35,21 +36,15 @@ public sealed partial class ScpMaskSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ScpComponent, AttemptStopPullingEvent>(OnStopPullingAttempt);
         SubscribeLocalEvent<ScpComponent, ScpTearMaskEvent>(OnTear);
         SubscribeLocalEvent<ScpComponent, ScpTearMaskDoAfterEvent>(OnTearSuccess);
 
         SubscribeLocalEvent<ScpComponent, DamageChangedEvent>(OnDamage);
 
         InitializeEquipment();
+        InitializeRestrictions();
 
         Log.Level = LogLevel.Info;
-    }
-
-    private void OnStopPullingAttempt(Entity<ScpComponent> ent, ref AttemptStopPullingEvent args)
-    {
-        if (HasScpMask(ent) && args.User == ent)
-            args.Cancelled = true;
     }
 
     private void OnTear(Entity<ScpComponent> scp, ref ScpTearMaskEvent args)
