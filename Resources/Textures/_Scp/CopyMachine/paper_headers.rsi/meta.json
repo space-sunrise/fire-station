@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "Author discord: odlieerr",
+  "metaAtlas": false,
+  "size": {
+    "x": 256,
+    "y": 64
+  },
+  "states": [
+    {
+      "name": "scp_form_header"
+    }
+  ]
+}
