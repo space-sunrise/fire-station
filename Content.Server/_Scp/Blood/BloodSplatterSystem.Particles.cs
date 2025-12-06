@@ -92,8 +92,15 @@ public sealed partial class BloodSplatterSystem
             return;
 
         _audio.PlayPvs(ent.Comp.ParticleSpawnedSound, target);
-
         var coords = _transform.GetMapCoordinates(target);
+
+        var parent = Transform(target).GridUid;
+        var angle = Angle.Zero;
+
+        // Чтобы направление правильно просчитывалось, нужно прибавлять поворот грида
+        // Иначе каждый раунд все будет летать в разном направлении из-за случайного поворота грида относительно мира
+        if (parent.HasValue)
+            angle = _transform.GetWorldPositionRotation(parent.Value).WorldRotation;
 
         for (var i = 0; i < count; i++)
         {
@@ -113,7 +120,7 @@ public sealed partial class BloodSplatterSystem
                 return;
             }
 
-            CalculateMove((particle, particleComponent), distanceOverride ?? ent.Comp.Distance, baseAngle, spreadRadians);
+            CalculateMove((particle, particleComponent), distanceOverride ?? ent.Comp.Distance, baseAngle + angle, spreadRadians);
         }
     }
 
