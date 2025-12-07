@@ -46,13 +46,13 @@ public abstract partial class SharedScp096System
     {
         if (_whitelist.IsWhitelistPass(ent.Comp.PickupBlacklist, args.Equipped))
         {
-            PopupAndDropEntity(args.User, ent, args.Equipped);
+            PopupAndDropEntity(ent, args.Equipped);
             return;
         }
 
         if (!_whitelist.IsWhitelistPassOrNull(ent.Comp.PickupWhitelist, args.Equipped))
         {
-            PopupAndDropEntity(args.User, ent, args.Equipped);
+            PopupAndDropEntity(ent, args.Equipped);
             return;
         }
     }
@@ -64,11 +64,8 @@ public abstract partial class SharedScp096System
         args.Cancel();
     }
 
-    private void PopupAndDropEntity(EntityUid user, EntityUid target, EntityUid item)
+    private void PopupAndDropEntity(EntityUid target, EntityUid item)
     {
-        var message = Loc.GetString("scp096-not-interested", ("name", Name(item)));
-        _popup.PopupClient(message, target, user);
-
         _transform.DropNextTo(item, target);
 
         var x = _random.NextFloatForEntity(item);
