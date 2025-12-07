@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.Hands;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Item;
 using Content.Shared.Throwing;
 using Content.Shared.Whitelist;
@@ -11,7 +12,7 @@ public abstract partial class SharedScp096System
 {
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
 
     private void InitializeHands()
     {
@@ -66,10 +67,10 @@ public abstract partial class SharedScp096System
 
     private void PopupAndDropEntity(EntityUid target, EntityUid item)
     {
-        _transform.DropNextTo(item, target);
+        _hands.TryDrop(target, item, checkActionBlocker: false);
 
-        var x = _random.NextFloatForEntity(item);
-        var y = _random.NextFloatForEntity(item);
+        var x = _random.NextFloatForEntity(item, -1f);
+        var y = _random.NextFloatForEntity(target, -1f);
 
         _throwing.TryThrow(item, new Vector2(x, y));
     }

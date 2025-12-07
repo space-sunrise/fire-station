@@ -96,6 +96,10 @@ public sealed partial class Scp096System
 
         if (cryFaster)
         {
+            // Уже ускорены — повторно не трогаем, чтобы не накапливать деление.
+            if (ent.Comp.CachedLiquidSpawnCooldown != null && ent.Comp.CachedCooldownVariation != null)
+                return;
+
             ent.Comp.CachedLiquidSpawnCooldown = generator.Cooldown;
             ent.Comp.CachedCooldownVariation = generator.CooldownVariation;
 

@@ -28,7 +28,7 @@ public sealed partial class Scp096System : SharedScp096System
 
         InitializeWidget();
 
-        Log.Level = LogLevel.Debug;
+        Log.Level = LogLevel.Info;
     }
 
     public override void Shutdown()

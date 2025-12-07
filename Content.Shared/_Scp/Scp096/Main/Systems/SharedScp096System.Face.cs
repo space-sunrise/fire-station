@@ -141,11 +141,11 @@ public abstract partial class SharedScp096System
     /// <param name="face">Лицо скромника</param>
     private void HealFace(Entity<Scp096FaceComponent> face)
     {
-        // Лечим лицо и воскрешаем его.
-        _mobState.ChangeMobState(face, MobState.Alive);
-
         if (TryComp<DamageableComponent>(face, out var damageable) && damageable.TotalDamage != FixedPoint2.Zero)
             _damageable.SetAllDamage(face, damageable, FixedPoint2.Zero);
+
+        // Лечим лицо и воскрешаем его.
+        _mobState.ChangeMobState(face, MobState.Alive);
     }
 
     #endregion
