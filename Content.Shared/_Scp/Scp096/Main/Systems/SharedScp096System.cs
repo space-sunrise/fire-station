@@ -446,6 +446,9 @@ public abstract partial class SharedScp096System : EntitySystem
         var max = _alerts.GetMaxSeverity(FaceDamageAlert);
         var deathThreshold = _mobThreshold.GetThresholdForState(face.Value, MobState.Dead);
 
+        if (deathThreshold <= FixedPoint2.Zero)
+            return false;
+
         // Делаем +1, так как отсчет идет с 0
         // Максимальное состояние 5 означает, что всего их 6. То есть (0, 1, 2, 3, 4, 5)
         var divisor = deathThreshold / (max + 1);
