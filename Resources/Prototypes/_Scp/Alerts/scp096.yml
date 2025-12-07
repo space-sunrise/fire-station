@@ -75,5 +75,3 @@
     - Drowsiness
   - type: Appearance
   - type: Jittering
-    amplitude: -10
-    frequency: 100
