@@ -1,12 +1,16 @@
 ﻿using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Other.EmitSoundRandomly;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
 using Content.Shared.Actions;
+using Content.Shared.Alert;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode;
+using Content.Shared.Damage;
 using Content.Shared.DoAfter;
+using Content.Shared.FixedPoint;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lock;
@@ -37,6 +41,7 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly SharedEntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly LockSystem _lock = default!;
+    [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
@@ -48,6 +53,12 @@ public abstract partial class SharedScp096System : EntitySystem
     protected EntityQuery<Scp096TargetComponent> TargetQuery;
     protected EntityQuery<ActiveScp096WithoutFaceComponent> WithoutFaceQuery;
     protected EntityQuery<Scp096FaceComponent> FaceQuery;
+
+    protected static readonly ProtoId<AlertPrototype> IdleAlert = "Scp096Idle";
+    protected static readonly ProtoId<AlertPrototype> RageAlert = "Scp096Rage";
+    protected static readonly ProtoId<AlertPrototype> HeatingUpAlert = "Scp096HeatingUp";
+    protected static readonly ProtoId<AlertPrototype> SleepAlert = "Scp096Sleep";
+    protected static readonly ProtoId<AlertPrototype> FaceDamageAlert = "Scp096FaceDamage";
 
     public override void Initialize()
     {
@@ -219,7 +230,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
     {
-
+        ActualizeAlert(ent);
     }
 
     protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
@@ -365,6 +376,97 @@ public abstract partial class SharedScp096System : EntitySystem
 
         if (enable != finalResult)
             Log.Error($"Movement state mismatch! Tried to set movement to {enable}, but ended up with {finalResult}.");
+    }
+
+    /// <summary>
+    /// <para> Актуализирует состояние лица в интерфейсе скромника в зависимости от состояния </para>
+    /// Самостоятельно просчитывает данные и состояние в зависимости от наличия компонентов.
+    /// </summary>
+    private void ActualizeAlert(EntityUid uid)
+    {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        if (RageQuery.HasComp(uid))
+        {
+            _alerts.ShowAlert(uid, RageAlert);
+            return;
+        }
+
+        if (HeatingUpQuery.HasComp(uid))
+        {
+            _alerts.ShowAlert(uid, HeatingUpAlert);
+            return;
+        }
+
+        if (UseDownState(uid))
+        {
+            _alerts.ShowAlert(uid, SleepAlert);
+            return;
+        }
+
+        if (TrySetDamageAlert(uid, out var severity))
+        {
+            _alerts.ShowAlert(uid, FaceDamageAlert, severity);
+            return;
+        }
+
+        _alerts.ShowAlert(uid, IdleAlert);
+    }
+
+    /// <summary>
+    /// <para> Пытается просчитать текущее состояние алерта для поврежденного лица. </para>
+    /// <para> Если лицо не повреждено - возвращает false. </para>
+    /// Если лицо мертво - возвращает максимальное состояние.
+    /// </summary>
+    /// <param name="uid"><see cref="EntityUid"/> скромника</param>
+    /// <param name="severity">Состояние алерта для поврежденного лица</param>
+    /// <returns>
+    /// <para> True: Удалось просчитать значение для состояния лица. </para>
+    /// False: Не удалось
+    /// </returns>
+    private bool TrySetDamageAlert(EntityUid uid, out short severity)
+    {
+        severity = 0;
+
+        if (!TryGetFace(uid, out var face))
+            return false;
+
+        if (!TryComp<DamageableComponent>(face, out var damageable) || damageable.TotalDamage <= FixedPoint2.Zero)
+            return false;
+
+        // Если лицо мертво - используем максимальное состояние сразу.
+        if (_mobState.IsDead(face.Value))
+        {
+            severity = _alerts.GetMaxSeverity(FaceDamageAlert);
+            return true;
+        }
+
+        var min = _alerts.GetMinSeverity(FaceDamageAlert);
+        var max = _alerts.GetMaxSeverity(FaceDamageAlert);
+        var deathThreshold = _mobThreshold.GetThresholdForState(face.Value, MobState.Dead);
+
+        // Делаем +1, так как отсчет идет с 0
+        // Максимальное состояние 5 означает, что всего их 6. То есть (0, 1, 2, 3, 4, 5)
+        var divisor = deathThreshold / (max + 1);
+
+        var rawSeverity = Math.Floor(damageable.TotalDamage.Double() / divisor.Double());
+        severity = (short) Math.Floor(Math.Clamp(rawSeverity, min, max));
+
+        return true;
+    }
+
+    private bool TryToggleRestrictions(Entity<ScpRestrictionComponent?> ent, bool value)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return false;
+
+        ent.Comp.CanTakeStaminaDamage = value;
+        ent.Comp.CanBeDisarmed = value;
+        ent.Comp.CanStandingState = value;
+        Dirty(ent);
+
+        return true;
     }
 
     #endregion

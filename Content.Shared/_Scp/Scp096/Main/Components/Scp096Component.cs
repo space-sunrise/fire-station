@@ -1,4 +1,5 @@
-﻿using Content.Shared.Damage;
+﻿using Content.Shared.Alert;
+using Content.Shared.Damage;
 using Content.Shared.Tag;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
@@ -39,6 +40,8 @@ public sealed partial class Scp096Component : Component
     [DataField]
     public EntityWhitelist? PickupBlacklist;
 
+    #region UI
+
     /// <summary>
     /// Количество целей скромника.
     /// </summary>
@@ -48,6 +51,8 @@ public sealed partial class Scp096Component : Component
     /// </remarks>
     [ViewVariables, AutoNetworkedField]
     public uint TargetsCount;
+
+    #endregion
 
     #region Sounds
 

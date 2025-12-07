@@ -14,6 +14,7 @@ public abstract partial class SharedScp096System
     {
         SubscribeLocalEvent<Scp096FaceComponent, DamageChangedEvent>(OnFaceDamageChanged);
         SubscribeLocalEvent<Scp096Component, HealingRelayEvent>(OnHealingRelay);
+        SubscribeLocalEvent<Scp096FaceComponent, MobStateChangedEvent>(OnFaceMobStateChanged);
     }
 
     #region Event handlers
@@ -23,6 +24,9 @@ public abstract partial class SharedScp096System
     /// </summary>
     private void OnFaceDamageChanged(Entity<Scp096FaceComponent> ent, ref DamageChangedEvent args)
     {
+        if (TryGetScp096FromFace(ent, out var owner))
+            ActualizeAlert(owner.Value);
+
         if (!_mobThreshold.TryGetThresholdForState(ent, MobState.Alive, out var aliveThreshold))
             return;
 
@@ -38,6 +42,29 @@ public abstract partial class SharedScp096System
         args.Entity = face;
     }
 
+    private void OnFaceMobStateChanged(Entity<Scp096FaceComponent> ent, ref MobStateChangedEvent args)
+    {
+        if (!ent.Comp.FaceOwner.HasValue)
+        {
+            Log.Error("Found SCP-096 face without reference to original SCP-096");
+            return;
+        }
+
+        switch (args.NewMobState)
+        {
+            case MobState.Dead:
+            case MobState.Critical:
+                EnsureComp<ActiveScp096WithoutFaceComponent>(ent.Comp.FaceOwner.Value);
+                break;
+            case MobState.Invalid:
+            case MobState.Alive:
+                // Используем RemCompDeferred, чтобы избежать конфликта с уже запланированным удалением
+                // (например, при воскрешении через OnRejuvenate)
+                RemCompDeferred<ActiveScp096WithoutFaceComponent>(ent.Comp.FaceOwner.Value);
+                break;
+        }
+    }
+
     #endregion
 
     #region API
@@ -46,6 +73,10 @@ public abstract partial class SharedScp096System
     public bool TryGetFace(Entity<Scp096Component?> ent, [NotNullWhen(true)] out Entity<Scp096FaceComponent>? face)
     {
         face = null;
+
+        if (IsClientSide(ent))
+            return false;
+
         if (!Resolve(ent, ref ent.Comp))
             return false;
 

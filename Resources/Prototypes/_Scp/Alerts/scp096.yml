@@ -1,0 +1,79 @@
+﻿- type: alertCategory
+  id: Scp096Face
+
+# Алерты
+
+- type: alert
+  id: Scp096FaceDamage
+  category: Scp096Face
+  icons:
+  - sprite: /Textures/_Scp/Alerts/scp096_face.rsi
+    state: damage0
+  - sprite: /Textures/_Scp/Alerts/scp096_face.rsi
+    state: damage1
+  - sprite: /Textures/_Scp/Alerts/scp096_face.rsi
+    state: damage2
+  - sprite: /Textures/_Scp/Alerts/scp096_face.rsi
+    state: damage3
+  - sprite: /Textures/_Scp/Alerts/scp096_face.rsi
+    state: damage4
+  - sprite: /Textures/_Scp/Alerts/scp096_face.rsi
+    state: damage5
+  name: alert-name-scp096-face
+  description: alert-desc-scp096-face-damage
+  minSeverity: 0
+  maxSeverity: 5
+
+- type: alert
+  id: Scp096Idle
+  category: Scp096Face
+  icons:
+  - sprite: /Textures/_Scp/Alerts/scp096_face.rsi
+    state: idle
+  name: alert-name-scp096-face
+  description: alert-desc-scp096-face-idle
+
+- type: alert
+  id: Scp096HeatingUp
+  category: Scp096Face
+  icons:
+  - sprite: /Textures/_Scp/Alerts/scp096_face.rsi
+    state: rage
+  alertViewEntity: AlertScp096HeatingUp
+  name: alert-name-scp096-face
+  description: alert-desc-scp096-face-heating-up
+
+- type: alert
+  id: Scp096Rage
+  category: Scp096Face
+  icons:
+  - sprite: /Textures/_Scp/Alerts/scp096_face.rsi
+    state: rage
+  name: alert-name-scp096-face
+  description: alert-desc-scp096-face-rage
+
+- type: alert
+  id: Scp096Sleep
+  category: Scp096Face
+  icons:
+  - sprite: /Textures/_Scp/Alerts/scp096_face.rsi
+    state: sleep
+  name: alert-name-scp096-face
+  description: alert-desc-scp096-face-sleep
+
+# Сущности
+
+- type: entity
+  parent: AlertSpriteView
+  id: AlertScp096HeatingUp
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Sprite
+  - type: StatusEffects
+    allowed:
+    - Stutter
+    - Drowsiness
+  - type: Appearance
+  - type: Jittering
+    amplitude: -10
+    frequency: 100

@@ -88,6 +88,8 @@ public abstract partial class SharedScp096System
         if (!Resolve(ent, ref ent.Comp1, ref ent.Comp2))
             return;
 
+        ActualizeAlert(ent);
+
         // Это существует только потому, что анимация передвижения принимает стейты напрямую
         // Иначе я бы сделал это через GenericVisualizer
         var useDownState = UseDownState(ent);
@@ -143,8 +145,8 @@ public abstract partial class SharedScp096System
         ent.Comp.DeadToIdleAnimation = haveToStand;
         Dirty(ent);
 
-        Log.Info(
-            $"AgroToDeadAnimation: {ent.Comp.AgroToDeadAnimation}, DeadToIdleAnimation: {ent.Comp.DeadToIdleAnimation}");
+        if (_timing.IsFirstTimePredicted)
+            Log.Info($"AgroToDeadAnimation: {ent.Comp.AgroToDeadAnimation}, DeadToIdleAnimation: {ent.Comp.DeadToIdleAnimation}");
 
         UpdateAppearance(ent);
         AddToPendingAnimations((ent, ent.Comp), _timing.CurTime + ent.Comp.AnimationDuration);
