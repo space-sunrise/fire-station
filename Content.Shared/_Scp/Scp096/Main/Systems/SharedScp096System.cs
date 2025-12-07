@@ -1,5 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Content.Shared._Scp.Helpers;
+﻿using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Other.EmitSoundRandomly;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
@@ -38,7 +37,6 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly SharedEntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly LockSystem _lock = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
@@ -80,6 +78,7 @@ public abstract partial class SharedScp096System : EntitySystem
         InitializeActions();
         InitializeWithoutFace();
         InitializeAppearance();
+        InitializeFace();
 
         Scp096Query = GetEntityQuery<Scp096Component>();
         HeatingUpQuery = GetEntityQuery<ActiveScp096HeatingUpComponent>();
@@ -105,9 +104,6 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void OnSeen(Entity<Scp096Component> ent, ref SimpleEntitySeenEvent args)
     {
-        if (WithoutFaceQuery.HasComp(ent))
-            return;
-
         TryAddTarget(ent, args.Viewer);
     }
 
@@ -223,25 +219,22 @@ public abstract partial class SharedScp096System : EntitySystem
 
     protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
     {
-        UpdateAudio(ent.AsNullable(), ent.Comp.CrySound);
-        _meta.AddFlag(ent, MetaDataFlags.PvsPriority);
+
     }
 
     protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
     {
+        if (_timing.ApplyingState || IsClientSide(ent))
+            return;
+
         var query = EntityQueryEnumerator<Scp096TargetComponent>();
         while (query.MoveNext(out var uid, out _))
         {
             RemCompDeferred<Scp096TargetComponent>(uid);
         }
 
-        ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
-        Dirty(ent);
-
         _pendingAnimations.Remove(ent);
         _pendingJitteringRemoval.Remove(ent);
-
-        _meta.RemoveFlag(ent, MetaDataFlags.PvsPriority);
     }
 
     #endregion
@@ -262,6 +255,9 @@ public abstract partial class SharedScp096System : EntitySystem
 
         // В маске мы мирные
         if (_scpMask.HasScpMask(ent) && !ignoreMask)
+            return false;
+
+        if (WithoutFaceQuery.HasComp(ent))
             return false;
 
         return true;
@@ -288,22 +284,43 @@ public abstract partial class SharedScp096System : EntitySystem
         _speedModifier.ChangeBaseSpeed(ent, newSpeed, newSpeed, 20.0f);
     }
 
-    private void UpdateAudio(Entity<Scp096Component?> ent, SoundSpecifier? sound = null)
+    protected void UpdateAudio(Entity<Scp096Component?> ent, SoundSpecifier? sound = null, bool setDefault = true)
     {
+        if (IsClientSide(ent) || !_timing.IsFirstTimePredicted || _timing.ApplyingState)
+            return;
+
         if (!Resolve(ent, ref ent.Comp))
             return;
 
-        sound ??= ent.Comp.CrySound;
+        if (setDefault)
+            sound ??= ent.Comp.CrySound;
 
         ent.Comp.AudioStream = _audio.Stop(ent.Comp.AudioStream);
 
         if (_net.IsServer)
             ent.Comp.AudioStream = _audio.PlayPvs(sound, ent)?.Entity;
 
-        if (ent.Comp.AudioStream != null)
-            _transform.SetParent(ent.Comp.AudioStream.Value, ent);
-
         Dirty(ent);
+
+        // Логгирование!
+        if (!Log.IsLogLevelEnabled(LogLevel.Debug))
+            return;
+
+        switch (sound)
+        {
+            case SoundPathSpecifier soundPath:
+                Log.Debug($"Set SCP-096 sound to {soundPath.Path}");
+                break;
+            case SoundCollectionSpecifier soundCollection:
+                Log.Debug($"Set SCP-096 sound to {soundCollection.Collection}");
+                break;
+            case null:
+                Log.Debug("Disabled SCP-096 sound");
+                break;
+            default:
+                Log.Error("Set SCP-096 sound to unknown sound type!");
+                break;
+        }
     }
 
     /// <summary>
@@ -331,50 +348,6 @@ public abstract partial class SharedScp096System : EntitySystem
         return true;
     }
 
-    private bool TryGetFace(Entity<Scp096Component?> ent, [NotNullWhen(true)] out Entity<Scp096FaceComponent>? face)
-    {
-        face = null;
-        if (!Resolve(ent, ref ent.Comp))
-            return false;
-
-        if (!Exists(ent.Comp.FaceEntity))
-        {
-            Log.Error($"Found SCP-096 without valid face entity. Scp096 is {ToPrettyString(ent)}, while reference is {ToPrettyString(ent.Comp.FaceEntity)}");
-            return false;
-        }
-
-        var faceEntity = ent.Comp.FaceEntity.Value;
-
-        if (!FaceQuery.TryComp(faceEntity, out var faceComp))
-        {
-            Log.Error($"Found SCP-096 face without {nameof(Scp096FaceComponent)}! Prototype: {Prototype(faceEntity)}, Entity: {ToPrettyString(faceEntity)}");
-            return false;
-        }
-
-        face = (faceEntity, faceComp);
-        return true;
-    }
-
-    private bool TryGetScp096FromFace(Entity<Scp096FaceComponent> ent, [NotNullWhen(true)] out Entity<Scp096Component>? scp096)
-    {
-        scp096 = null;
-
-        if (!Exists(ent.Comp.FaceOwner))
-        {
-            Log.Error($"Found SCP-096 face entity with unexisting owner. Face - {ToPrettyString(ent)}, Owner - {ToPrettyString(ent.Comp.FaceOwner)}");
-            return false;
-        }
-
-        if (!Scp096Query.TryComp(ent.Comp.FaceOwner, out var scp096Comp))
-        {
-            Log.Error($"Found SCP-096 face owner without {nameof(Scp096Component)}. Face - {ToPrettyString(ent)}, Owner - {ToPrettyString(ent.Comp.FaceOwner)}");
-            return false;
-        }
-
-        scp096 = (ent.Comp.FaceOwner.Value, scp096Comp);
-        return true;
-    }
-
     private void ToggleMovement(EntityUid uid, bool enable)
     {
         if (enable)
@@ -393,39 +366,6 @@ public abstract partial class SharedScp096System : EntitySystem
         if (enable != finalResult)
             Log.Error($"Movement state mismatch! Tried to set movement to {enable}, but ended up with {finalResult}.");
     }
-
-    private bool TryToggleTears(Entity<Scp096Component?> ent, bool value)
-    {
-        if (!TryGetFace(ent, out var face))
-            return false;
-
-        ToggleTears(face.Value, value);
-        return true;
-    }
-
-    private bool TryToggleTearsReagent(Entity<Scp096Component?> ent, bool useDefaultReagent)
-    {
-        if (!TryGetFace(ent, out var face))
-            return false;
-
-        ToggleTearsReagent(face.Value, useDefaultReagent);
-        return true;
-    }
-
-    private bool TryModifyTearsSpawnSpeed(Entity<Scp096Component?> ent, bool cryFaster)
-    {
-        if (!TryGetFace(ent, out var face))
-            return false;
-
-        ModifyTearsSpawnSpeed(face.Value, cryFaster);
-        return true;
-    }
-
-    protected virtual void ToggleTears(Entity<Scp096FaceComponent> ent, bool value) { }
-
-    protected virtual void ToggleTearsReagent(Entity<Scp096FaceComponent> ent, bool useDefaultReagent) { }
-
-    protected virtual void ModifyTearsSpawnSpeed(Entity<Scp096FaceComponent> ent, bool cryFaster) { }
 
     #endregion
 }

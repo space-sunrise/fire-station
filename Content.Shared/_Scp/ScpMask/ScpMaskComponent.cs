@@ -44,6 +44,22 @@ public sealed partial class ScpMaskComponent : Component, IClothingSlots
     [DataField]
     public TimeSpan AttackEquipTime = TimeSpan.FromSeconds(5f);
 
+    #region Restrictions
+
+    /// <summary>
+    /// Будет ли маска блокировать возможность вырваться?
+    /// </summary>
+    [DataField]
+    public bool BlockStopPulling = true;
+
+    /// <summary>
+    /// Будет ли маска блокировать возможность атаковать?
+    /// </summary>
+    [DataField]
+    public bool BlockAttacks = true;
+
+    #endregion
+
     #region Safe time
 
     [DataField, AlwaysPushInheritance]
@@ -65,5 +81,4 @@ public sealed partial class ScpMaskComponent : Component, IClothingSlots
     // TODO: Постоянный звук разрывания маски, которые будет проигрываться на протяжении всего процесса
 
     #endregion
-
 }

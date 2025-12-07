@@ -85,15 +85,22 @@ public sealed partial class BloodSplatterSystem
         SpawnBloodEntity((uid, particle));
     }
 
-    public void SpawnBloodParticles(Entity<BloodSplattererComponent> ent, EntityUid target, float baseAngle, float spreadRadians, Vector2? distanceOverride = null)
+    public void SpawnBloodParticles(Entity<BloodSplattererComponent> ent, EntityUid target, Angle baseAngle, float spreadRadians, Vector2? distanceOverride = null)
     {
         var count = _random.Next(ent.Comp.Amount.X, ent.Comp.Amount.Y);
         if (count <= 0)
             return;
 
         _audio.PlayPvs(ent.Comp.ParticleSpawnedSound, target);
+        var coords = _transform.GetMapCoordinates(target);
 
-        var coords = _transform.GetMoverCoordinates(target);
+        var parent = Transform(target).GridUid;
+        var angle = Angle.Zero;
+
+        // Чтобы направление правильно просчитывалось, нужно прибавлять поворот грида
+        // Иначе каждый раунд все будет летать в разном направлении из-за случайного поворота грида относительно мира
+        if (parent.HasValue)
+            angle = _transform.GetWorldPositionRotation(parent.Value).WorldRotation;
 
         for (var i = 0; i < count; i++)
         {
@@ -113,7 +120,7 @@ public sealed partial class BloodSplatterSystem
                 return;
             }
 
-            CalculateMove((particle, particleComponent), distanceOverride ?? ent.Comp.Distance, baseAngle, spreadRadians);
+            CalculateMove((particle, particleComponent), distanceOverride ?? ent.Comp.Distance, baseAngle + angle, spreadRadians);
         }
     }
 
@@ -152,7 +159,7 @@ public sealed partial class BloodSplatterSystem
     /// <summary>
     /// Рассчитывает параметры для перемещения частички крови на основе времени полета и количества промежутков перемещения.
     /// </summary>
-    private void CalculateMove(Entity<BloodParticleComponent> ent, Vector2 distance, float baseAngle, float spreadRadians)
+    private void CalculateMove(Entity<BloodParticleComponent> ent, Vector2 distance, Angle baseAngle, float spreadRadians)
     {
         // Задаем количество раз, когда частику крови будет толкать физика.
         // Это количество зависит от времени полета и указанного числа промежутков.
@@ -174,7 +181,7 @@ public sealed partial class BloodSplatterSystem
         }
 
         var speed = _random.NextFloat(ent.Comp.Speed.X, ent.Comp.Speed.Y);
-        var direction = new Vector2(MathF.Cos(angle), MathF.Sin(angle));
+        var direction = new Vector2((float) Math.Cos(angle.Theta), (float) Math.Sin(angle.Theta));
 
         ent.Comp.Velocity = direction * speed;
     }

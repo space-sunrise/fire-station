@@ -18,7 +18,7 @@ public sealed class LiquidParticlesGeneratorSystem : EntitySystem
         SubscribeLocalEvent<LiquidParticlesGeneratorComponent, MapInitEvent>(OnMapInit);
     }
 
-    private static void OnMapInit(Entity<LiquidParticlesGeneratorComponent> ent, ref MapInitEvent args)
+    private void OnMapInit(Entity<LiquidParticlesGeneratorComponent> ent, ref MapInitEvent args)
     {
         if (!ent.Comp.EnableOnMapInit)
             return;
@@ -49,6 +49,6 @@ public sealed class LiquidParticlesGeneratorSystem : EntitySystem
 
     private void SpawnParticle(Entity<BloodSplattererComponent, LiquidParticlesGeneratorComponent> target)
     {
-        _bloodSplatter.SpawnBloodParticles(target, target, target.Comp2.Angle, target.Comp2.Radians);
+        _bloodSplatter.SpawnBloodParticles(target, target, Angle.FromDegrees(target.Comp2.Angle), target.Comp2.Radians);
     }
 }

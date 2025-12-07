@@ -225,5 +225,5 @@
     - LiquidParticle3
   - type: LiquidParticlesGenerator
     cooldown: 3
-    angle: 90
+    angle: -90
     radians: 0.75

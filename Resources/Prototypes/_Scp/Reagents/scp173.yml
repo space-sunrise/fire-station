@@ -4,8 +4,9 @@
   name: reagent-name-scp173
   group: Biological
   desc: reagent-desc-scp173
-  color: "#6E1B1B"
+  color: "#4F1500"
   flavor: horrible
+  recognizable: false
   physicalDesc: reagent-physical-desc-slimy
   synthesisable: true
   absorbCooldownPerUnit: 0.4
