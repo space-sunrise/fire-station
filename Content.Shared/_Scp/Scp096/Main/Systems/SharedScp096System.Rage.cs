@@ -38,6 +38,7 @@ public abstract partial class SharedScp096System
         // Если скромник был застанен или сидит - убираем это
         _stamina.TryTakeStamina(ent, -100);
         _stun.TryUnstun(ent.Owner);
+        _standing.Stand(ent, force: true);
 
         // Заставляем трястись
         _jittering.AddJitter(ent, -10, 100);

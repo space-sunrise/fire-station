@@ -177,12 +177,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     private void OnSleepStateChanged(Entity<Scp096Component> ent, ref SleepStateChangedEvent args)
     {
-        ent.Comp.DeadToIdleAnimation = !args.FellAsleep;
-        ent.Comp.AgroToDeadAnimation = args.FellAsleep;
-        Dirty(ent);
-
-        UpdateAppearance(ent.AsNullable());
-        AddToPendingAnimations(ent, _timing.CurTime + ent.Comp.AnimationDuration);
+        ToggleSitAnimation(ent.AsNullable(), !args.FellAsleep);
     }
 
     private void OnAttackAttempt(Entity<Scp096Component> ent, ref AttackAttemptEvent args)

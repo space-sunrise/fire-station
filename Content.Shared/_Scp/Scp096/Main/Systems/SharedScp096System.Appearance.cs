@@ -146,7 +146,7 @@ public abstract partial class SharedScp096System
         Dirty(ent);
 
         if (_timing.IsFirstTimePredicted)
-            Log.Info($"AgroToDeadAnimation: {ent.Comp.AgroToDeadAnimation}, DeadToIdleAnimation: {ent.Comp.DeadToIdleAnimation}");
+            Log.Debug($"AgroToDeadAnimation: {ent.Comp.AgroToDeadAnimation}, DeadToIdleAnimation: {ent.Comp.DeadToIdleAnimation}");
 
         UpdateAppearance(ent);
         AddToPendingAnimations((ent, ent.Comp), _timing.CurTime + ent.Comp.AnimationDuration);
