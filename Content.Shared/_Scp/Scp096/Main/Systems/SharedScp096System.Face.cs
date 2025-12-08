@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using Content.Shared._Scp.Damage.ExaminableDamage;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
@@ -13,8 +14,10 @@ public abstract partial class SharedScp096System
     private void InitializeFace()
     {
         SubscribeLocalEvent<Scp096FaceComponent, DamageChangedEvent>(OnFaceDamageChanged);
-        SubscribeLocalEvent<Scp096Component, HealingRelayEvent>(OnHealingRelay);
         SubscribeLocalEvent<Scp096FaceComponent, MobStateChangedEvent>(OnFaceMobStateChanged);
+
+        SubscribeLocalEvent<Scp096Component, HealingRelayEvent>(OnHealingRelay);
+        SubscribeLocalEvent<Scp096Component, ExaminableDamageRelayEvent>(OnExaminableRelay);
     }
 
     #region Event handlers
@@ -32,14 +35,6 @@ public abstract partial class SharedScp096System
 
         if (args.Damageable.TotalDamage == aliveThreshold)
             HealFace(ent);
-    }
-
-    private void OnHealingRelay(Entity<Scp096Component> ent, ref HealingRelayEvent args)
-    {
-        if (!TryGetFace(ent.AsNullable(), out var face))
-            return;
-
-        args.Entity = face;
     }
 
     private void OnFaceMobStateChanged(Entity<Scp096FaceComponent> ent, ref MobStateChangedEvent args)
@@ -63,6 +58,22 @@ public abstract partial class SharedScp096System
                 RemCompDeferred<ActiveScp096WithoutFaceComponent>(ent.Comp.FaceOwner.Value);
                 break;
         }
+    }
+
+    private void OnHealingRelay(Entity<Scp096Component> ent, ref HealingRelayEvent args)
+    {
+        if (!TryGetFace(ent.AsNullable(), out var face))
+            return;
+
+        args.Entity = face;
+    }
+
+    private void OnExaminableRelay(Entity<Scp096Component> ent, ref ExaminableDamageRelayEvent args)
+    {
+        if (!TryGetFace(ent.AsNullable(), out var face))
+            return;
+
+        args.Entity = face;
     }
 
     #endregion

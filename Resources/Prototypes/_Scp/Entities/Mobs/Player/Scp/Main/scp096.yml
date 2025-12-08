@@ -132,6 +132,14 @@
   - type: Muted
   - type: Damageable
     damageModifierSet: SCP-096
+  - type: ScpExaminableDamage
+    generalMessages:
+    - scp096-face-damaged-0
+    - scp096-face-damaged-1
+    - scp096-face-damaged-2
+    - scp096-face-damaged-3
+    - scp096-face-damaged-4
+    - scp096-face-damaged-5
   - type: Fixtures
     fixtures:
       fix1:
