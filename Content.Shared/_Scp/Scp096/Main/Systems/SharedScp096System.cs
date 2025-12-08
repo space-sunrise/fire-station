@@ -8,9 +8,7 @@ using Content.Shared.Actions;
 using Content.Shared.Alert;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode;
-using Content.Shared.Damage;
 using Content.Shared.DoAfter;
-using Content.Shared.FixedPoint;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Lock;
@@ -53,8 +51,6 @@ public abstract partial class SharedScp096System : EntitySystem
     protected EntityQuery<Scp096TargetComponent> TargetQuery;
     protected EntityQuery<ActiveScp096WithoutFaceComponent> WithoutFaceQuery;
     protected EntityQuery<Scp096FaceComponent> FaceQuery;
-
-    private EntityQuery<DamageableComponent> _damageableQuery;
 
     protected static readonly ProtoId<AlertPrototype> IdleAlert = "Scp096Idle";
     protected static readonly ProtoId<AlertPrototype> RageAlert = "Scp096Rage";
@@ -99,8 +95,6 @@ public abstract partial class SharedScp096System : EntitySystem
         TargetQuery = GetEntityQuery<Scp096TargetComponent>();
         WithoutFaceQuery = GetEntityQuery<ActiveScp096WithoutFaceComponent>();
         FaceQuery = GetEntityQuery<Scp096FaceComponent>();
-
-        _damageableQuery = GetEntityQuery<DamageableComponent>();
 
         Log.Level = LogLevel.Info;
     }
@@ -419,73 +413,14 @@ public abstract partial class SharedScp096System : EntitySystem
             return;
         }
 
-        if (TrySetDamageAlert(uid, out var severity))
+        // Если лицо не повреждено(severity == 0), то там нужно использовать стандартный алерт -> поэтому тут проверка.
+        if (TryGetAlertDamageSeverity(uid, out var severity) && severity != 0)
         {
             _alerts.ShowAlert(uid, FaceDamageAlert, severity);
             return;
         }
 
         _alerts.ShowAlert(uid, IdleAlert);
-    }
-
-    /// <summary>
-    /// <para> Пытается просчитать текущее состояние алерта для поврежденного лица. </para>
-    /// <para> Если лицо не повреждено - возвращает false. </para>
-    /// Если лицо мертво - возвращает максимальное состояние.
-    /// </summary>
-    /// <param name="uid"><see cref="EntityUid"/> скромника</param>
-    /// <param name="severity">Состояние алерта для поврежденного лица</param>
-    /// <param name="skipDamageCheck">Пропускать проверку на нулевой или отрицательный урон?</param>
-    /// <returns>
-    /// <para> True: Удалось просчитать значение для состояния лица. </para>
-    /// False: Не удалось
-    /// </returns>
-    public bool TrySetDamageAlert(EntityUid uid, out short severity, bool skipDamageCheck = false)
-    {
-        severity = 0;
-
-        if (!TryGetFace(uid, out var face))
-            return false;
-
-        if (!TryGetDamage(face.Value, skipDamageCheck, out var totalDamage))
-            return false;
-
-        // Если лицо мертво - используем максимальное состояние сразу.
-        if (_mobState.IsDead(face.Value))
-        {
-            severity = _alerts.GetMaxSeverity(FaceDamageAlert);
-            return true;
-        }
-
-        var min = _alerts.GetMinSeverity(FaceDamageAlert);
-        var max = _alerts.GetMaxSeverity(FaceDamageAlert);
-        var deathThreshold = _mobThreshold.GetThresholdForState(face.Value, MobState.Dead);
-
-        if (deathThreshold <= FixedPoint2.Zero)
-            return false;
-
-        // Делаем +1, так как отсчет идет с 0
-        // Максимальное состояние 5 означает, что всего их 6. То есть (0, 1, 2, 3, 4, 5)
-        var divisor = deathThreshold / (max + 1);
-
-        var rawSeverity = Math.Floor(totalDamage.Double() / divisor.Double());
-        severity = (short) Math.Floor(Math.Clamp(rawSeverity, min, max));
-
-        return true;
-    }
-
-    private bool TryGetDamage(EntityUid uid, bool skipCheck, out FixedPoint2 totalDamage)
-    {
-        totalDamage = FixedPoint2.Zero;
-
-        if (!_damageableQuery.TryComp(uid, out var damageable))
-            return false;
-
-        if (damageable.TotalDamage <= FixedPoint2.Zero && !skipCheck)
-            return false;
-
-        totalDamage = damageable.TotalDamage;
-        return true;
     }
 
     /// <summary>

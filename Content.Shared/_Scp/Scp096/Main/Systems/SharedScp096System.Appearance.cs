@@ -78,7 +78,7 @@ public abstract partial class SharedScp096System
 
     #endregion
 
-    #region Helpers and API
+    #region Helpers
 
     private void UpdateAppearance(Entity<Scp096Component?, AppearanceComponent?> ent)
     {

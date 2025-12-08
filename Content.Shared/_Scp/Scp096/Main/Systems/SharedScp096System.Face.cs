@@ -5,12 +5,15 @@ using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.Medical.Healing;
 using Content.Shared.Mobs;
+using Content.Shared.Rounding;
 using JetBrains.Annotations;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
+    [Dependency] private readonly SharedScpExaminableDamageSystem _examinableDamage = default!;
+
     private void InitializeFace()
     {
         SubscribeLocalEvent<Scp096FaceComponent, DamageChangedEvent>(OnFaceDamageChanged);
@@ -130,6 +133,62 @@ public abstract partial class SharedScp096System
         return true;
     }
 
+    /// <summary>
+    /// <para> Пытается просчитать текущее состояние алерта для поврежденного лица. </para>
+    /// Если лицо мертво - возвращает максимальное состояние.
+    /// </summary>
+    /// <param name="uid"><see cref="EntityUid"/> скромника</param>
+    /// <param name="severity">Состояние алерта для поврежденного лица</param>
+    /// <returns>
+    /// <para> True: Удалось просчитать значение для состояния лица. </para>
+    /// False: Не удалось
+    /// </returns>
+    [PublicAPI]
+    public bool TryGetAlertDamageSeverity(EntityUid uid, out short severity)
+    {
+        var min = _alerts.GetMinSeverity(FaceDamageAlert);
+        var max = _alerts.GetMaxSeverity(FaceDamageAlert);
+
+        return TryGetFaceDamageLevel(uid, min, max, out severity);
+    }
+
+    /// <summary>
+    /// <para> Пытается просчитать текущий уровень повреждения лица скромника</para>
+    /// Если лицо мертво - возвращает максимальное состояние.
+    /// </summary>
+    /// <param name="uid"><see cref="EntityUid"/> скромника</param>
+    /// <param name="min">Минимальный уровень неповрежденности лица. Обычно должен быть 0</param>
+    /// <param name="max">Максимальный уровень неповрежденности лица. </param>
+    /// <param name="level">Просчитанный уровень неповрежденности лица</param>
+    /// <returns>
+    /// <para> True: Удалось просчитать значение для состояния лица. </para>
+    /// False: Не удалось
+    /// </returns>
+    [PublicAPI]
+    public bool TryGetFaceDamageLevel(EntityUid uid, int min, int max, out short level)
+    {
+        level = 0;
+
+        if (!TryGetFace(uid, out var face))
+            return false;
+
+        // Если лицо мертво - используем максимальное состояние сразу.
+        if (_mobState.IsDead(face.Value))
+        {
+            level = (short) max;
+            return true;
+        }
+
+        var deathThreshold = _mobThreshold.GetThresholdForState(face.Value, MobState.Dead);
+        if (deathThreshold <= FixedPoint2.Zero)
+            return false;
+
+        var levels = max - min;
+        level = (short) GetDamageLevel(face.Value, deathThreshold, levels);
+
+        return true;
+    }
+
     #endregion
 
     #region Helpers
@@ -188,6 +247,14 @@ public abstract partial class SharedScp096System
 
         // Лечим лицо и воскрешаем его.
         _mobState.ChangeMobState(face, MobState.Alive);
+    }
+
+    private int GetDamageLevel(EntityUid target, FixedPoint2 maxDamage, int levels)
+    {
+        var percent = _examinableDamage.GetDamagePercent(target, maxDamage);
+        var level = ContentHelpers.RoundToNearestLevels(percent, SharedScpExaminableDamageSystem.FullPercent, levels);
+
+        return level;
     }
 
     #endregion

@@ -20,7 +20,6 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly SharedFearSystem _fear = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
-    [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly INetManager _net = default!;
 
     protected EntityQuery<Scp096ProtectionComponent> ProtectionQuery;

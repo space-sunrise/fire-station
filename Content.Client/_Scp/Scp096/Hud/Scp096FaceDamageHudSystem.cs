@@ -24,7 +24,7 @@ public sealed class Scp096FaceDamageHudSystem : EquipmentHudSystem<ShowScp096Fac
         if (!IsActive)
             return;
 
-        if (!_scp096.TrySetDamageAlert(ent, out var severity, true))
+        if (!_scp096.TryGetFaceDamageLevel(ent, 0, ShowScp096FaceDamageHudComponent.Icons.Count - 1, out var severity))
             return;
 
         if (!ShowScp096FaceDamageHudComponent.Icons.TryGetValue(severity, out var iconProto))

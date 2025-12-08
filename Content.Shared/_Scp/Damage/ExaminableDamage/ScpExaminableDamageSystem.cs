@@ -23,7 +23,7 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
 
     private const int Priority = -99;
-    private const double FullPercent = 1d;
+    public const double FullPercent = 1d;
 
     public override void Initialize()
     {
@@ -85,11 +85,11 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
     }
 
     /// <summary>
-    /// Returns a value between 0 and 1 representing how damaged the entity is,
-    /// where 0 is undamaged and 1 is fully damaged.
+    /// Возвращает значение между 0 и 1, показывающее степень повреждение сущности,
+    /// где 0 это отсутствие урона, а 1 максимальная степень урона.
     /// </summary>
-    /// <returns>How damaged the entity is from 0 to 1</returns>
-    protected float GetDamagePercent(Entity<DamageableComponent?> ent, FixedPoint2 damageThreshold)
+    /// <returns>Насколько сущность получила урона в оценке от 0 до 1</returns>
+    public float GetDamagePercent(Entity<DamageableComponent?> ent, FixedPoint2 damageThreshold)
     {
         if (damageThreshold <= 0)
             return 0f;
