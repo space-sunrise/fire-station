@@ -43,7 +43,7 @@ public abstract partial class SharedScp096System
         // Заставляем трястись
         _jittering.AddJitter(ent, -10, 100);
 
-        TryToggleRestrictions(ent.Owner, true);
+        TryToggleRestrictions(ent.Owner, false);
         ToggleMovement(ent, false);
         TryToggleTears(ent.Owner, false);
         UpdateAppearance(ent.Owner);
@@ -98,7 +98,7 @@ public abstract partial class SharedScp096System
             UpdateAppearance(ent.Owner);
         }
 
-        TryToggleRestrictions(ent.Owner, false);
+        TryToggleRestrictions(ent.Owner, true);
         RefreshSpeedModifiers(ent.Owner, true);
         TryToggleTears(ent.Owner, true);
         UpdateAudio(ent.Owner, scp096.CrySound);

@@ -249,7 +249,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     /// <summary>
     /// Проверяет, может ли scp-096 перейти в состояние ярости.
-    /// Не включает проверку, что скромник уже в состоянии ярости. Так и задуманно
+    /// Не включает проверку, что скромник уже в состоянии ярости. Так и задумано
     /// </summary>
     private bool CanBeAggro(Entity<Scp096Component> ent, bool ignoreMask = false)
     {
@@ -290,6 +290,13 @@ public abstract partial class SharedScp096System : EntitySystem
         _speedModifier.ChangeBaseSpeed(ent, newSpeed, newSpeed, 20.0f);
     }
 
+    /// <summary>
+    /// Актуализирует звук, исходящий от скромника.
+    /// Обновляет его в зависимости
+    /// </summary>
+    /// <param name="ent">Сущность, на которой будет висеть звук</param>
+    /// <param name="sound">Звук, который мы хотим поставить. Если не указывать - звук выключится</param>
+    /// <param name="setDefault">Если звук не указан и параметр True будет установлен стандартный звук - звук плача.</param>
     protected void UpdateAudio(Entity<Scp096Component?> ent, SoundSpecifier? sound = null, bool setDefault = true)
     {
         if (IsClientSide(ent) || !_timing.IsFirstTimePredicted || _timing.ApplyingState)
@@ -354,6 +361,14 @@ public abstract partial class SharedScp096System : EntitySystem
         return true;
     }
 
+    /// <summary>
+    /// Переключает возможность передвижения.
+    /// </summary>
+    /// <param name="uid"><see cref="EntityUid"/>, с которым будет происходить действие</param>
+    /// <param name="enable"> Включить передвижение?
+    /// <para>True - включает возможность передвижения, убирая блокирующие компоненты</para>
+    /// False - блокирует передвижение, выдавая компоненты.
+    /// </param>
     private void ToggleMovement(EntityUid uid, bool enable)
     {
         if (enable)
@@ -454,6 +469,9 @@ public abstract partial class SharedScp096System : EntitySystem
         return true;
     }
 
+    /// <summary>
+    /// Переключает ограничения связанные с взаимодействием с объектом.
+    /// </summary>
     private bool TryToggleRestrictions(Entity<ScpRestrictionComponent?> ent, bool value)
     {
         if (!Resolve(ent, ref ent.Comp))
@@ -471,16 +489,6 @@ public abstract partial class SharedScp096System : EntitySystem
 }
 
 #region Events
-
-/// <summary>
-/// Ивент, информирующий клиент, что требуется перепроверять внешний вид scp-096.
-/// </summary>
-/// <param name="netEntity"><see cref="NetEntity"/> scp-096</param>
-[Serializable, NetSerializable]
-public sealed class Scp096RequireUpdateVisualsEvent(NetEntity netEntity) : EntityEventArgs
-{
-    public NetEntity NetEntity = netEntity;
-}
 
 public sealed partial class Scp096CryOutEvent : InstantActionEvent;
 public sealed partial class Scp096FaceSkinRipEvent : InstantActionEvent;
