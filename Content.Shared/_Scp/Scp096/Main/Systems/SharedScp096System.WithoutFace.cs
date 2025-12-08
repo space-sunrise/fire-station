@@ -78,6 +78,7 @@ public abstract partial class SharedScp096System
         TryToggleTearsReagent(ent.Owner, true);
         RefreshSpeedModifiers(ent.Owner, true);
         TryHealFace(ent);
+        ActualizeAlert(ent);
 
         // Возвращаем стандартные параметры атаки
         if (TryComp<MeleeWeaponComponent>(ent, out var melee))
