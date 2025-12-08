@@ -50,7 +50,7 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
                 break;
 
             default:
-                throw new NotImplementedException($"Found not implemented type {ent.Comp.Mode.ToString()}");
+                throw new NotImplementedException($"Found not implemented type {ent.Comp.Mode}");
         }
     }
 
