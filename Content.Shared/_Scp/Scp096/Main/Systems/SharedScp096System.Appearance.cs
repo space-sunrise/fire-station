@@ -143,7 +143,7 @@ public abstract partial class SharedScp096System
         ent.Comp.DeadToIdleAnimation = haveToStand;
         Dirty(ent);
 
-        Log.Info(
+        Log.Debug(
             $"AgroToDeadAnimation: {ent.Comp.AgroToDeadAnimation}, DeadToIdleAnimation: {ent.Comp.DeadToIdleAnimation}");
 
         UpdateAppearance(ent);
