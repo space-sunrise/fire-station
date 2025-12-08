@@ -52,6 +52,9 @@
     comps:
     - type: ShowHealthBars
     - type: ShowHealthIcons
+    # Fire added start
+    - type: ShowScp096FaceDamageHud
+    # Fire added end
   - type: Contraband
     allowedDepartments: [ Science, Medical ]
 

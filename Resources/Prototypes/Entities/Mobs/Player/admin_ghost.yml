@@ -6,6 +6,7 @@
   components:
   # Fire start
   - type: ShowBlinkable
+  - type: ShowScp096FaceDamageHud
   # Fire end
   - type: ContentEye
     maxZoom: 8.916104, 8.916104

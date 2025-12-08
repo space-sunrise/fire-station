@@ -104,6 +104,9 @@
     priority: -10
   - type: Pullable
   - type: StandingState
+  - type: StatusIcon
+    bounds: -0.6, -1, 0.6, 1
+  - type: ShowScp096FaceDamageHud
   - type: MeleeWeapon
     bluntStaminaDamageFactor: 1.0
     altDisarm: false
