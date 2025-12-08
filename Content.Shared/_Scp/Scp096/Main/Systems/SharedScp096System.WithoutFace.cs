@@ -17,7 +17,6 @@ public abstract partial class SharedScp096System
     {
         SubscribeLocalEvent<ActiveScp096WithoutFaceComponent, ComponentStartup>(OnWithoutFaceStartup);
         SubscribeLocalEvent<ActiveScp096WithoutFaceComponent, ComponentShutdown>(OnWithoutFaceShutdown);
-
     }
 
     /// <summary>
