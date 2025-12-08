@@ -8,7 +8,7 @@ namespace Content.Shared._Scp.Scp096.Hud;
 public sealed partial class ShowScp096FaceDamageHudComponent : Component
 {
     [ViewVariables]
-    public static readonly List<ProtoId<FactionIconPrototype>> Icons = new()
+    public static readonly IReadOnlyList<ProtoId<FactionIconPrototype>> Icons = new List<ProtoId<FactionIconPrototype>>
     {
         "Scp096FaceDamage0",
         "Scp096FaceDamage1",
