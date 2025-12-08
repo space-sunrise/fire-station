@@ -1,5 +1,6 @@
 ﻿using Content.Server._Scp.Blood;
 using Content.Shared._Scp.Blood;
+using Robust.Server.GameObjects;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
@@ -8,6 +9,7 @@ namespace Content.Server._Scp.Misc.LiquidParticlesGenerator;
 public sealed class LiquidParticlesGeneratorSystem : EntitySystem
 {
     [Dependency] private readonly BloodSplatterSystem _bloodSplatter = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
@@ -49,6 +51,14 @@ public sealed class LiquidParticlesGeneratorSystem : EntitySystem
 
     private void SpawnParticle(Entity<BloodSplattererComponent, LiquidParticlesGeneratorComponent> target)
     {
-        _bloodSplatter.SpawnBloodParticles(target, target, Angle.FromDegrees(target.Comp2.Angle), target.Comp2.Radians);
+        var parent = Transform(target).GridUid;
+        var angle = Angle.Zero;
+
+        // Чтобы направление правильно просчитывалось, нужно прибавлять поворот грида
+        // Иначе каждый раунд все будет летать в разном направлении из-за случайного поворота грида относительно мира
+        if (parent.HasValue)
+            angle = _transform.GetWorldPositionRotation(parent.Value).WorldRotation;
+
+        _bloodSplatter.SpawnBloodParticles(target, target, Angle.FromDegrees(target.Comp2.Angle) + angle, target.Comp2.Radians);
     }
 }
