@@ -13,6 +13,8 @@ namespace Content.Shared._Scp.Damage.ExaminableDamage;
 /// Поддерживает различные сущности, как живые сущности, так и структуры.
 /// Тип расчета повреждений зависит от <see cref="Mode"/>
 /// </remarks>
+// TODO: Замена List<string> на прототип, хранящий List<string>
+// Это должно уменьшить потребление памяти при большом количестве повторяющихся списков описаний. А они будут повторяться
 [RegisterComponent, NetworkedComponent]
 public sealed partial class ScpExaminableDamageComponent : Component
 {

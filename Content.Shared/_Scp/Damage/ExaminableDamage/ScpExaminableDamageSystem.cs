@@ -22,6 +22,8 @@ namespace Content.Shared._Scp.Damage.ExaminableDamage;
 /// <para>Для живых сущностей требуются компоненты <see cref="MobStateComponent"/> и <see cref="MobThresholdsComponent"/></para>
 /// Для структуры требуется <see cref="DestructibleComponent"/>
 /// </remarks>
+// TODO: Написать больше описаний для различных объектов, вроде SCP-049, SCP-049-2
+// TODO: Описание разрушения структур через это с специальным сообщением-индикатором для инженеров
 public abstract class SharedScpExaminableDamageSystem : EntitySystem
 {
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
@@ -82,10 +84,19 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
         var percent = GetDamagePercent(target, maxDamage);
         var level = ContentHelpers.RoundToNearestLevels(percent, FullPercent, ent.Comp.GeneralMessages.Count - 1);
 
+        TryAddGeneralMessage(ent, level, ref args);
+        TryAddSpecificMessage(ent, level, ref args);
+    }
+
+    private bool TryAddGeneralMessage(Entity<ScpExaminableDamageComponent> ent, int level, ref ExaminedEvent args)
+    {
+        if (ent.Comp.GeneralMessages.Count == 0)
+            return false;
+
         if (!ent.Comp.GeneralMessages.TryGetValue(level, out var message))
         {
             Log.Error($"Failed to get message with index {level}");
-            return;
+            return false;
         }
 
         var prefix = Loc.GetString(DefaultPrefix);
@@ -95,7 +106,7 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
         var formatted = $"\n{ prefix }\n[color={ color }]{ message }[/color]";
         args.PushMarkup(formatted, Priority);
 
-        TryAddSpecificMessage(ent, level, ref args);
+        return true;
     }
 
     private bool TryAddSpecificMessage(Entity<ScpExaminableDamageComponent> ent, int level, ref ExaminedEvent args)

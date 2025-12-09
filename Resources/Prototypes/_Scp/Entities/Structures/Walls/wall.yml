@@ -1,3 +1,6 @@
+# TODO: После введения ремонта стен заменить ExaminableDamage на ScpExaminableDamage
+# Добавить специальные описания-индикаторы для инженерной службы
+
 - type: entity
   id: ScpBaseWallDamageableVisuals
   abstract: true
