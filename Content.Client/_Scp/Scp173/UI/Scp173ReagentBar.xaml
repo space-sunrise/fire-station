@@ -19,7 +19,7 @@
                 <Label Name="ProgressLabel" Align="Center" />
             </ProgressBar>
         </BoxContainer>
-        <BoxContainer Name="SafeTimeInfo" Orientation="Vertical" MinSize="220, 40" Margin="0 10 0 0">
+        <BoxContainer Name="SafeTimeInfo" Access="Public" Orientation="Vertical" MinSize="220, 40" Margin="0 10 0 0">
             <RichTextLabel Name="SafeTimeInfoLabel" Margin="0 0 0 5"/>
             <ProgressBar Name="SafeTimeProgressBar" MinValue="0">
                 <ProgressBar.BackgroundStyleBoxOverride>

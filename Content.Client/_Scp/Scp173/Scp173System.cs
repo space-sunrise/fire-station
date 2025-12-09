@@ -6,6 +6,7 @@ using Content.Client.Examine;
 using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Actions;
 using Content.Client.UserInterface.Systems.Gameplay;
+using Content.Shared._Scp.SafeTime;
 using Content.Shared._Scp.Scp173;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -36,6 +37,7 @@ public sealed class Scp173System : SharedScp173System
     private TimeSpan _nextReagentCheck;
 
     private EntityQuery<Scp173Component> _scp173Query;
+    private EntityQuery<SafeTimeComponent> _safeTimeQuery;
 
     public override void Initialize()
     {
@@ -48,6 +50,7 @@ public sealed class Scp173System : SharedScp173System
         SubscribeLocalEvent<Scp173Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
         _scp173Query = GetEntityQuery<Scp173Component>();
+        _safeTimeQuery = GetEntityQuery<SafeTimeComponent>();
 
         var gameplayStateLoad = _ui.GetUIController<GameplayStateLoadController>();
         gameplayStateLoad.OnScreenLoad += EnsureWidgetExist;
@@ -111,16 +114,10 @@ public sealed class Scp173System : SharedScp173System
             return;
         }
 
+        SetReagentData(ent.Value, _widget);
+        SetSafeTimeData(ent.Value, _widget);
+
         _widget.Visible = true;
-
-        var current = ent.Value.Comp.ReagentVolumeAround.Int();
-        var timeLeft = ent.Value.Comp.SafeTimeEnd - Timing.CurTime;
-
-        _widget.SetData(current,
-            Scp173Component.MinTotalSolutionVolume,
-            Scp173Component.ExtraMinTotalSolutionVolume,
-            ent.Value.Comp.SafeTime,
-            timeLeft);
     }
 
     private bool TryGetPlayerEntity([NotNullWhen(true)] out Entity<Scp173Component>? ent)
@@ -133,6 +130,21 @@ public sealed class Scp173System : SharedScp173System
         ent = (_player.LocalEntity.Value, scp173);
 
         return true;
+    }
+
+    private void SetReagentData(Entity<Scp173Component> ent, Scp173UiWidget widget)
+    {
+        var current = ent.Comp.ReagentVolumeAround.Int();
+        widget.SetReagentData(current, Scp173Component.MinTotalSolutionVolume, Scp173Component.ExtraMinTotalSolutionVolume);
+    }
+
+    private void SetSafeTimeData(EntityUid ent, Scp173UiWidget widget)
+    {
+        if (!_safeTimeQuery.TryComp(ent, out var safeTime))
+            return;
+
+        var timeLeft = safeTime.TimeEnd - Timing.CurTime;
+        widget.SetSafeTimeData(Timing.CurTime, timeLeft);
     }
 
     private void EnsureWidgetExist()

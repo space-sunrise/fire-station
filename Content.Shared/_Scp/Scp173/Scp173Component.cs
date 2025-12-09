@@ -12,13 +12,6 @@ namespace Content.Shared._Scp.Scp173;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class Scp173Component : Component
 {
-    /// <summary>
-    /// Безопасное время, в течении которого работают некоторые ограничения, вроде запрета засорения своей камере.
-    /// Сделано, чтобы дать игрокам фору в начале раунда на раскачку и стартовые подготовления(построения, брифинги)
-    /// </summary>
-    [DataField]
-    public TimeSpan SafeTime = TimeSpan.FromMinutes(15f);
-
     #region Fast movement action
 
     /// <summary>
@@ -62,12 +55,6 @@ public sealed partial class Scp173Component : Component
     /// </summary>
     [AutoNetworkedField]
     public FixedPoint2 ReagentVolumeAround;
-
-    /// <summary>
-    /// Время окончания безопасного времени <see cref="SafeTime"/>
-    /// </summary>
-    [ViewVariables, AutoNetworkedField, AutoPausedField]
-    public TimeSpan? SafeTimeEnd;
 
     /// <summary>
     /// Прототип реагента, который создает объект при засорении.

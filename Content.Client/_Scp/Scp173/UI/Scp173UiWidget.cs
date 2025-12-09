@@ -12,10 +12,19 @@ public sealed class Scp173UiWidget : UIWidget
         AddChild(_bar);
     }
 
-    public void SetData(float current, float max, float bloatedMax, TimeSpan time, TimeSpan? timeLeft)
+    public void SetReagentData(float current, float max, float bloatedMax)
     {
         _bar.UpdateInfo(current, max, bloatedMax);
+    }
+
+    public void SetSafeTimeData(TimeSpan time, TimeSpan? timeLeft)
+    {
         _bar.UpdateSafeTimeInfo(time, timeLeft);
+    }
+
+    public void ToggleSafeTimeWindow(bool visible)
+    {
+        _bar.SafeTimeInfo.Visible = visible;
     }
 
     protected override void ExitedTree()
