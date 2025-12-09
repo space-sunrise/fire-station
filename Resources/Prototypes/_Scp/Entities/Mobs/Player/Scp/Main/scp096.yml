@@ -140,6 +140,22 @@
     - scp096-face-damaged-3
     - scp096-face-damaged-4
     - scp096-face-damaged-5
+    departmentMessages:
+      ScientificService:
+      - scp096-face-damaged-0-science
+      - scp096-face-damaged-1-science
+      - scp096-face-damaged-2-science
+      - scp096-face-damaged-3-science
+      - scp096-face-damaged-4-science
+      - scp096-face-damaged-5-science
+    jobMessages:
+      ScientificServiceDirector:
+      - scp096-face-damaged-0-science
+      - scp096-face-damaged-1-science
+      - scp096-face-damaged-2-science
+      - scp096-face-damaged-3-science
+      - scp096-face-damaged-4-science
+      - scp096-face-damaged-5-science
   - type: Fixtures
     fixtures:
       fix1:

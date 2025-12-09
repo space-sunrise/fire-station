@@ -1,5 +1,7 @@
 ﻿using Content.Shared.Mobs;
+using Content.Shared.Roles;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Damage.ExaminableDamage;
 
@@ -31,6 +33,18 @@ public sealed partial class ScpExaminableDamageComponent : Component
     /// </summary>
     [DataField]
     public ScpExaminableDamageMode Mode = ScpExaminableDamageMode.MobToDeath;
+
+    /// <summary>
+    /// Дополнительная информация, которую будет видеть игрок, обладая определенным департаментом.
+    /// </summary>
+    [DataField]
+    public Dictionary<ProtoId<DepartmentPrototype>, List<string>> DepartmentMessages = new();
+
+    /// <summary>
+    /// Дополнительная информация, которую будет видеть игрок, обладая определенной работой.
+    /// </summary>
+    [DataField]
+    public Dictionary<ProtoId<JobPrototype>, List<string>> JobMessages = new();
 }
 
 /// <summary>

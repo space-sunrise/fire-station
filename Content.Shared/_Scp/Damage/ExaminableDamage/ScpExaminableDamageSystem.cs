@@ -1,10 +1,14 @@
 ﻿using Content.Shared.Damage;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
+using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Roles;
+using Content.Shared.Roles.Jobs;
 using Content.Shared.Rounding;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
 
 namespace Content.Shared._Scp.Damage.ExaminableDamage;
@@ -21,9 +25,15 @@ namespace Content.Shared._Scp.Damage.ExaminableDamage;
 public abstract class SharedScpExaminableDamageSystem : EntitySystem
 {
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
+    [Dependency] private readonly SharedJobSystem _job = default!;
+    [Dependency] private readonly SharedMindSystem _mind = default!;
 
     private const int Priority = -99;
     public const double FullPercent = 1d;
+
+    private const string DefaultPrefix = "scp-examinable-damage-message-prefix";
+    private const string DepartmentMessagePrefix = "scp-examinable-damage-department-specific-message-prefix";
+    private const string JobMessagePrefix = "scp-examinable-damage-job-specific-message-prefix";
 
     public override void Initialize()
     {
@@ -64,8 +74,6 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
 
     protected virtual void StructureExamine(Entity<ScpExaminableDamageComponent> ent, EntityUid target, ref ExaminedEvent args) {}
 
-    #region Helpers
-
     protected void CreateMessage(Entity<ScpExaminableDamageComponent> ent,
         EntityUid target,
         FixedPoint2 maxDamage,
@@ -80,9 +88,83 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
             return;
         }
 
-        var formatted = $"\n[color={ent.Comp.Color.ToHex()}]{Loc.GetString(message)}[/color]";
+        var prefix = Loc.GetString(DefaultPrefix);
+        var color = ent.Comp.Color.ToHex();
+        message = Loc.GetString(message);
+
+        var formatted = $"\n{ prefix }\n[color={ color }]{ message }[/color]";
         args.PushMarkup(formatted, Priority);
+
+        TryAddSpecificMessage(ent, level, ref args);
     }
+
+    private bool TryAddSpecificMessage(Entity<ScpExaminableDamageComponent> ent, int level, ref ExaminedEvent args)
+    {
+        if (!_mind.TryGetMind(args.Examiner, out var mind, out _))
+            return false;
+
+        if (!_job.MindTryGetJob(mind, out var job))
+            return false;
+
+        if (!TryAddJobSpecificMessage(ent, level, job, ref args)
+            && !TryAddDepartmentSpecificMessage(ent, level, job.ID, ref args))
+            return false;
+
+        return true;
+    }
+
+    private bool TryAddJobSpecificMessage(Entity<ScpExaminableDamageComponent> ent,
+        int level,
+        JobPrototype job,
+        ref ExaminedEvent args)
+    {
+        if (ent.Comp.JobMessages.Count == 0)
+            return false;
+
+        if (!ent.Comp.JobMessages.TryGetValue(job.ID, out var messageList))
+            return false;
+
+        if (!messageList.TryGetValue(level, out var message))
+            return false;
+
+        var prefix = Loc.GetString(JobMessagePrefix, ("job", job.LocalizedName));
+        var color = ent.Comp.Color.ToHex();
+        message = Loc.GetString(message);
+
+        var formatted = $"\n{ prefix }\n[color={ color }]{ message }[/color]";
+        args.PushMarkup(formatted, Priority - 1);
+
+        return true;
+    }
+
+    private bool TryAddDepartmentSpecificMessage(Entity<ScpExaminableDamageComponent> ent,
+        int level,
+        ProtoId<JobPrototype> job,
+        ref ExaminedEvent args)
+    {
+        if (ent.Comp.DepartmentMessages.Count == 0)
+            return false;
+
+        if (!_job.TryGetDepartment(job, out var department))
+            return false;
+
+        if (!ent.Comp.DepartmentMessages.TryGetValue(department.ID, out var messageList))
+            return false;
+
+        if (!messageList.TryGetValue(level, out var message))
+            return false;
+
+        var prefix = Loc.GetString(DepartmentMessagePrefix, ("department", Loc.GetString(department.Name)));
+        var color = ent.Comp.Color.ToHex();
+        message = Loc.GetString(message);
+
+        var formatted = $"\n{ prefix }\n[color={ color }]{ message }[/color]";
+        args.PushMarkup(formatted, Priority - 2);
+
+        return true;
+    }
+
+    #region Helpers
 
     /// <summary>
     /// Возвращает значение между 0 и 1, показывающее степень повреждение сущности,
