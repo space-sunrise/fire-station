@@ -1,5 +1,4 @@
 ﻿using Content.Shared._Scp.Audio;
-using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage.Systems;
@@ -44,18 +43,10 @@ public abstract partial class SharedScp096System
         // Заставляем трястись
         _jittering.AddJitter(ent, -10, 100);
 
-        // Устанавливаем ограничения на взаимодействие
-        if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
-        {
-            restriction.CanTakeStaminaDamage = false;
-            restriction.CanBeDisarmed = false;
-            restriction.CanStandingState = false;
-            Dirty(ent.Owner, restriction);
-        }
-
+        TryToggleRestrictions(ent.Owner, false);
         ToggleMovement(ent, false);
-        UpdateAppearance(ent.Owner);
         TryToggleTears(ent.Owner, false);
+        UpdateAppearance(ent.Owner);
 
         Dirty(ent);
     }
@@ -68,15 +59,6 @@ public abstract partial class SharedScp096System
         // Сниманием тряску
         RemComp<JitteringComponent>(ent);
 
-        // Убираем ограничения на взаимодействие
-        if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
-        {
-            restriction.CanTakeStaminaDamage = true;
-            restriction.CanBeDisarmed = true;
-            restriction.CanStandingState = true;
-            Dirty(ent.Owner, restriction);
-        }
-
         // Убираем ограничение на передвижение
         ToggleMovement(ent, true);
     }
@@ -86,22 +68,8 @@ public abstract partial class SharedScp096System
         ent.Comp.RageStartTime = _timing.CurTime;
         Dirty(ent);
 
-        // Устанавливаем ограничения на взаимодействие
-        if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
-        {
-            restriction.CanTakeStaminaDamage = false;
-            restriction.CanBeDisarmed = false;
-            restriction.CanStandingState = false;
-            Dirty(ent.Owner, restriction);
-        }
-
-        // Устанавливаем звук ора
         UpdateAudio(ent.Owner, ent.Comp.RageSound);
-
-        // Запрашиваем обновление внешнего вида
         UpdateAppearance(ent.Owner);
-
-        // Обновляем скорость передвижения
         RefreshSpeedModifiers(ent.Owner);
     }
 
@@ -115,9 +83,6 @@ public abstract partial class SharedScp096System
             Log.Error($"Found entity with {nameof(ActiveScp096RageComponent)} but without {nameof(Scp096Component)}: {ToPrettyString(ent)}, prototype: {Prototype(ent)}");
             return;
         }
-
-        // Возвращаем звук плача
-        UpdateAudio(ent.Owner, scp096.CrySound);
 
         scp096.TargetsCount = 0;
         Dirty(ent, scp096);
@@ -133,18 +98,10 @@ public abstract partial class SharedScp096System
             UpdateAppearance(ent.Owner);
         }
 
-        // Убираем наложенные ограничения на взаимодействие
-        if (TryComp<ScpRestrictionComponent>(ent, out var restriction))
-        {
-            restriction.CanTakeStaminaDamage = true;
-            restriction.CanBeDisarmed = true;
-            restriction.CanStandingState = true;
-            Dirty(ent.Owner, restriction);
-        }
-
-        // Обновляем скорость передвижения
+        TryToggleRestrictions(ent.Owner, true);
         RefreshSpeedModifiers(ent.Owner, true);
         TryToggleTears(ent.Owner, true);
+        UpdateAudio(ent.Owner, scp096.CrySound);
     }
 
     #endregion
@@ -186,9 +143,17 @@ public abstract partial class SharedScp096System
     }
 
     /// <summary>
-    /// Переводит скромника в состояние ярости.
+    /// Пытается перевести скромника в пред-агр состояние.
     /// </summary>
-    private bool TryMakeAngry(EntityUid uid)
+    /// <remarks>
+    /// Не будет переводить в состояние ярости, если скромник уже находится в нем или находится в состоянии ярости.
+    /// </remarks>
+    /// <param name="uid"><see cref="EntityUid"/> Скромника</param>
+    /// <returns>
+    /// <para>True: Скромник переведен в состояние</para>
+    /// False: Скромник НЕ переведен в состояние.
+    /// </returns>
+    private bool TryStartHeatingUp(EntityUid uid)
     {
         if (HasComp<ActiveScp096RageComponent>(uid) || HasComp<ActiveScp096WithoutFaceComponent>(uid))
             return false;
@@ -197,6 +162,17 @@ public abstract partial class SharedScp096System
         return true;
     }
 
+    /// <summary>
+    /// Пытается перевести скромника в состояние ярости.
+    /// </summary>
+    /// <remarks>
+    /// Не будет переводить в состояние ярости, если скромник уже находится в нем или находится в пред-агр состоянии.
+    /// </remarks>
+    /// <param name="uid"><see cref="EntityUid"/> Скромника</param>
+    /// <returns>
+    /// <para>True: Скромник переведен в состояние ярости</para>
+    /// False: Скромник НЕ переведен в состояние ярости.
+    /// </returns>
     private bool TryStartRage(EntityUid uid)
     {
         if (HasComp<ActiveScp096RageComponent>(uid) || !HasComp<ActiveScp096HeatingUpComponent>(uid))

@@ -6,7 +6,6 @@ using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Jittering;
-using Content.Shared.Mobs;
 using Content.Shared.Standing;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
@@ -25,7 +24,6 @@ public abstract partial class SharedScp096System
 
         SubscribeLocalEvent<Scp096Component, Scp096FaceSkinRipEvent>(OnFaceSkinRip);
         SubscribeLocalEvent<Scp096Component, Scp096FaceSkinRipStartDoAfterEvent>(OnFaceSkinRipDoAfter);
-        SubscribeLocalEvent<Scp096FaceComponent, MobStateChangedEvent>(OnFaceMobStateChanged);
 
         SubscribeLocalEvent<Scp096Component, Scp096SitDownEvent>(OnSitDown);
     }
@@ -145,29 +143,6 @@ public abstract partial class SharedScp096System
         SpawnBlood(ent.Owner);
 
         args.Handled = true;
-    }
-
-    private void OnFaceMobStateChanged(Entity<Scp096FaceComponent> ent, ref MobStateChangedEvent args)
-    {
-        if (!ent.Comp.FaceOwner.HasValue)
-        {
-            Log.Error("Found SCP-096 face without reference to original SCP-096");
-            return;
-        }
-
-        switch (args.NewMobState)
-        {
-            case MobState.Dead:
-            case MobState.Critical:
-                EnsureComp<ActiveScp096WithoutFaceComponent>(ent.Comp.FaceOwner.Value);
-                break;
-            case MobState.Invalid:
-            case MobState.Alive:
-                // Используем RemCompDeferred, чтобы избежать конфликта с уже запланированным удалением
-                // (например, при воскрешении через OnRejuvenate)
-                RemCompDeferred<ActiveScp096WithoutFaceComponent>(ent.Comp.FaceOwner.Value);
-                break;
-        }
     }
 
     private void OnSitDown(Entity<Scp096Component> ent, ref Scp096SitDownEvent args)

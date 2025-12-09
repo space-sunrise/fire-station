@@ -5,7 +5,7 @@ using Content.Shared.StatusIcon.Components;
 using Robust.Client.Player;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client._Scp.Scp096;
+namespace Content.Client._Scp.Scp096.Hud;
 
 public sealed class Scp096HudSystem : EquipmentHudSystem<Scp096Component>
 {

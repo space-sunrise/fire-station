@@ -78,7 +78,7 @@ public abstract partial class SharedScp096System
 
     #endregion
 
-    #region Helpers and API
+    #region Helpers
 
     private void UpdateAppearance(Entity<Scp096Component?, AppearanceComponent?> ent)
     {
@@ -87,6 +87,8 @@ public abstract partial class SharedScp096System
 
         if (!Resolve(ent, ref ent.Comp1, ref ent.Comp2))
             return;
+
+        ActualizeAlert(ent);
 
         // Это существует только потому, что анимация передвижения принимает стейты напрямую
         // Иначе я бы сделал это через GenericVisualizer
@@ -143,8 +145,8 @@ public abstract partial class SharedScp096System
         ent.Comp.DeadToIdleAnimation = haveToStand;
         Dirty(ent);
 
-        Log.Debug(
-            $"AgroToDeadAnimation: {ent.Comp.AgroToDeadAnimation}, DeadToIdleAnimation: {ent.Comp.DeadToIdleAnimation}");
+        if (_timing.IsFirstTimePredicted)
+            Log.Debug($"AgroToDeadAnimation: {ent.Comp.AgroToDeadAnimation}, DeadToIdleAnimation: {ent.Comp.DeadToIdleAnimation}");
 
         UpdateAppearance(ent);
         AddToPendingAnimations((ent, ent.Comp), _timing.CurTime + ent.Comp.AnimationDuration);

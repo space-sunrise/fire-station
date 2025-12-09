@@ -79,6 +79,9 @@
     params:
       volume: -15
   addComponents:
+  # Fire added start
+  - type: ShowScp096FaceDamageHud
+  # Fire added end
   - type: ShowHealthBars
     damageContainers:
     - Inorganic
@@ -270,6 +273,9 @@
   - Medical
 
   addComponents:
+  # Fire added start
+  - type: ShowScp096FaceDamageHud
+  # Fire added end
   - type: SolutionScanner
   - type: ShowHealthBars
     damageContainers:

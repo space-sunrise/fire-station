@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by odlieerr(discord) for Fire Station",
+    "size": {
+        "x": 8,
+        "y": 8
+    },
+    "states": [
+        {
+            "name": "icon"
+        }
+    ]
+}

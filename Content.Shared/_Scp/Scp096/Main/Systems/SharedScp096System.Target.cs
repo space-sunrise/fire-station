@@ -20,7 +20,6 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly SharedFearSystem _fear = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
-    [Dependency] private readonly MetaDataSystem _meta = default!;
     [Dependency] private readonly INetManager _net = default!;
 
     protected EntityQuery<Scp096ProtectionComponent> ProtectionQuery;
@@ -74,15 +73,25 @@ public abstract partial class SharedScp096System
 
     protected virtual void OnTargetStartup(Entity<Scp096TargetComponent> ent, ref ComponentStartup args)
     {
-        _fear.TrySetFearLevel(ent.Owner, FearState.Terror);
+        var becameTarget = false;
 
         var query = EntityQueryEnumerator<Scp096Component>();
         while (query.MoveNext(out var uid, out var scp096))
         {
-            TryMakeAngry(uid);
+            if (!TryStartHeatingUp(uid))
+                continue;
+
             scp096.TargetsCount++;
             Dirty(uid, scp096);
+            becameTarget = true;
         }
+
+        // TODO: Что-то сделать с компонентом таргета у цели и учесть, что при удалении компонента
+        // количество таргетов уменьшится -> будет десинхронизация с реальным количеством таргетов
+        if (!becameTarget)
+            return;
+
+        _fear.TrySetFearLevel(ent.Owner, FearState.Terror);
     }
 
     protected virtual void OnTargetShutdown(Entity<Scp096TargetComponent> ent, ref ComponentShutdown args)

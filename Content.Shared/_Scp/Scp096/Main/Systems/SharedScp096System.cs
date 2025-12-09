@@ -1,9 +1,11 @@
 ﻿using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Other.EmitSoundRandomly;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
 using Content.Shared.Actions;
+using Content.Shared.Alert;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.CombatMode;
 using Content.Shared.DoAfter;
@@ -37,6 +39,7 @@ public abstract partial class SharedScp096System : EntitySystem
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly SharedEntityStorageSystem _entityStorage = default!;
     [Dependency] private readonly LockSystem _lock = default!;
+    [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
@@ -48,6 +51,12 @@ public abstract partial class SharedScp096System : EntitySystem
     protected EntityQuery<Scp096TargetComponent> TargetQuery;
     protected EntityQuery<ActiveScp096WithoutFaceComponent> WithoutFaceQuery;
     protected EntityQuery<Scp096FaceComponent> FaceQuery;
+
+    protected static readonly ProtoId<AlertPrototype> IdleAlert = "Scp096Idle";
+    protected static readonly ProtoId<AlertPrototype> RageAlert = "Scp096Rage";
+    protected static readonly ProtoId<AlertPrototype> HeatingUpAlert = "Scp096HeatingUp";
+    protected static readonly ProtoId<AlertPrototype> SleepAlert = "Scp096Sleep";
+    protected static readonly ProtoId<AlertPrototype> FaceDamageAlert = "Scp096FaceDamage";
 
     public override void Initialize()
     {
@@ -214,7 +223,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
     {
-
+        ActualizeAlert(ent);
     }
 
     protected virtual void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
@@ -238,7 +247,7 @@ public abstract partial class SharedScp096System : EntitySystem
 
     /// <summary>
     /// Проверяет, может ли scp-096 перейти в состояние ярости.
-    /// Не включает проверку, что скромник уже в состоянии ярости. Так и задуманно
+    /// Не включает проверку, что скромник уже в состоянии ярости. Так и задумано
     /// </summary>
     private bool CanBeAggro(Entity<Scp096Component> ent, bool ignoreMask = false)
     {
@@ -279,6 +288,13 @@ public abstract partial class SharedScp096System : EntitySystem
         _speedModifier.ChangeBaseSpeed(ent, newSpeed, newSpeed, 20.0f);
     }
 
+    /// <summary>
+    /// Актуализирует звук, исходящий от скромника.
+    /// Обновляет его в зависимости
+    /// </summary>
+    /// <param name="ent">Сущность, на которой будет висеть звук</param>
+    /// <param name="sound">Звук, который мы хотим поставить. Если не указывать - звук выключится</param>
+    /// <param name="setDefault">Если звук не указан и параметр True будет установлен стандартный звук - звук плача.</param>
     protected void UpdateAudio(Entity<Scp096Component?> ent, SoundSpecifier? sound = null, bool setDefault = true)
     {
         if (IsClientSide(ent) || !_timing.IsFirstTimePredicted || _timing.ApplyingState)
@@ -343,6 +359,14 @@ public abstract partial class SharedScp096System : EntitySystem
         return true;
     }
 
+    /// <summary>
+    /// Переключает возможность передвижения.
+    /// </summary>
+    /// <param name="uid"><see cref="EntityUid"/>, с которым будет происходить действие</param>
+    /// <param name="enable"> Включить передвижение?
+    /// <para>True - включает возможность передвижения, убирая блокирующие компоненты</para>
+    /// False - блокирует передвижение, выдавая компоненты.
+    /// </param>
     private void ToggleMovement(EntityUid uid, bool enable)
     {
         if (enable)
@@ -362,20 +386,63 @@ public abstract partial class SharedScp096System : EntitySystem
             Log.Error($"Movement state mismatch! Tried to set movement to {enable}, but ended up with {finalResult}.");
     }
 
+    /// <summary>
+    /// <para> Актуализирует состояние лица в интерфейсе скромника в зависимости от состояния </para>
+    /// Самостоятельно просчитывает данные и состояние в зависимости от наличия компонентов.
+    /// </summary>
+    private void ActualizeAlert(EntityUid uid)
+    {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        if (RageQuery.HasComp(uid))
+        {
+            _alerts.ShowAlert(uid, RageAlert);
+            return;
+        }
+
+        if (HeatingUpQuery.HasComp(uid))
+        {
+            _alerts.ShowAlert(uid, HeatingUpAlert);
+            return;
+        }
+
+        if (UseDownState(uid))
+        {
+            _alerts.ShowAlert(uid, SleepAlert);
+            return;
+        }
+
+        // Если лицо не повреждено(severity == 0), то там нужно использовать стандартный алерт -> поэтому тут проверка.
+        if (TryGetAlertDamageSeverity(uid, out var severity) && severity != 0)
+        {
+            _alerts.ShowAlert(uid, FaceDamageAlert, severity);
+            return;
+        }
+
+        _alerts.ShowAlert(uid, IdleAlert);
+    }
+
+    /// <summary>
+    /// Переключает ограничения связанные с взаимодействием с объектом.
+    /// </summary>
+    private bool TryToggleRestrictions(Entity<ScpRestrictionComponent?> ent, bool value)
+    {
+        if (!Resolve(ent, ref ent.Comp))
+            return false;
+
+        ent.Comp.CanTakeStaminaDamage = value;
+        ent.Comp.CanBeDisarmed = value;
+        ent.Comp.CanStandingState = value;
+        Dirty(ent);
+
+        return true;
+    }
+
     #endregion
 }
 
 #region Events
-
-/// <summary>
-/// Ивент, информирующий клиент, что требуется перепроверять внешний вид scp-096.
-/// </summary>
-/// <param name="netEntity"><see cref="NetEntity"/> scp-096</param>
-[Serializable, NetSerializable]
-public sealed class Scp096RequireUpdateVisualsEvent(NetEntity netEntity) : EntityEventArgs
-{
-    public NetEntity NetEntity = netEntity;
-}
 
 public sealed partial class Scp096CryOutEvent : InstantActionEvent;
 public sealed partial class Scp096FaceSkinRipEvent : InstantActionEvent;

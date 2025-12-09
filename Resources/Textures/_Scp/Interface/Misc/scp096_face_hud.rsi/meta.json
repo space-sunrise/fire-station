@@ -1,0 +1,17 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by miduzka(discord) for Fire Station",
+    "size": {
+        "x": 8,
+        "y": 8
+    },
+    "states": [
+        { "name": "damage0" },
+        { "name": "damage1" },
+        { "name": "damage2" },
+        { "name": "damage3" },
+        { "name": "damage4" },
+        { "name": "damage5" }
+    ]
+}

@@ -65,7 +65,8 @@ namespace Content.Client.UserInterface.Systems.Alerts.Controls
                 Scale = new Vector2(2, 2),
                 MaxSize = new Vector2(64, 64),
                 Stretch = SpriteView.StretchMode.None,
-                HorizontalAlignment = HAlignment.Left
+                HorizontalAlignment = HAlignment.Left,
+                SpriteOffset = true, // Fire added
             };
 
             SetupIcon();

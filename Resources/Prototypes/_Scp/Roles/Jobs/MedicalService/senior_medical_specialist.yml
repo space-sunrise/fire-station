@@ -23,6 +23,7 @@
       phobias:
       - Exoremophobia
       # Врачи не пугаются трупов, у них не будет некрофобии
+    - type: ShowScp096FaceDamageHud
 
 - type: startingGear
   id: SeniorMedicalSpecialistGear

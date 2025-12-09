@@ -23,6 +23,7 @@
       - Necrophobia
       proximityBlockerLevel: None
       seenBlockerLevel: None
+    - type: ShowScp096FaceDamageHud
 
 - type: startingGear
   id: JuniorResearcherGear

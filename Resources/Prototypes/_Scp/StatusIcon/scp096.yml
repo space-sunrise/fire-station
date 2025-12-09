@@ -1,0 +1,63 @@
+﻿# Цель скромника
+
+- type: factionIcon
+  id: Scp096TargetIcon
+  priority: 1
+  locationPreference: Right
+  isShaded: false # He knows
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp_icons.rsi
+    state: 096_target
+
+# Урон по лицу
+
+- type: factionIcon
+  id: Scp096FaceDamageBase
+  abstract: true
+  priority: 1
+  locationPreference: Right
+  isShaded: true
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp096_face_hud.rsi
+
+- type: factionIcon
+  parent: Scp096FaceDamageBase
+  id: Scp096FaceDamage0
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp096_face_hud.rsi
+    state: damage0
+
+- type: factionIcon
+  parent: Scp096FaceDamageBase
+  id: Scp096FaceDamage1
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp096_face_hud.rsi
+    state: damage1
+
+- type: factionIcon
+  parent: Scp096FaceDamageBase
+  id: Scp096FaceDamage2
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp096_face_hud.rsi
+    state: damage2
+
+- type: factionIcon
+  parent: Scp096FaceDamageBase
+  id: Scp096FaceDamage3
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp096_face_hud.rsi
+    state: damage3
+
+- type: factionIcon
+  parent: Scp096FaceDamageBase
+  id: Scp096FaceDamage4
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp096_face_hud.rsi
+    state: damage4
+
+- type: factionIcon
+  parent: Scp096FaceDamageBase
+  id: Scp096FaceDamage5
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/scp096_face_hud.rsi
+    state: damage5
