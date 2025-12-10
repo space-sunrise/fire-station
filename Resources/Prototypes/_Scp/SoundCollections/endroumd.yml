@@ -1,0 +1,20 @@
+- type: soundCollection
+  id: FireRoundEnd
+  files:
+  - /Audio/_Scp/EndSound/079_broadcast.ogg
+  - /Audio/_Scp/EndSound/415baza.ogg
+  - /Audio/_Scp/EndSound/990_dream_1.ogg
+  - /Audio/_Scp/EndSound/990_dream_2.ogg
+  - /Audio/_Scp/EndSound/epsilon_bog.ogg
+  - /Audio/_Scp/EndSound/eralash.ogg
+  - /Audio/_Scp/EndSound/gtasa.ogg
+  - /Audio/_Scp/EndSound/meksika.ogg
+  - /Audio/_Scp/EndSound/metod_agit.ogg
+  - /Audio/_Scp/EndSound/nuke_restart.ogg
+  - /Audio/_Scp/EndSound/polnomochiya.ogg
+  - /Audio/_Scp/EndSound/saxophone_duck.ogg
+  - /Audio/_Scp/EndSound/scp_sosat.ogg
+  - /Audio/_Scp/EndSound/scpcb_ending_b2.ogg
+  - /Audio/_Scp/EndSound/show_pause.ogg
+  - /Audio/_Scp/EndSound/STOPRIGHTTHERE.ogg
+  - /Audio/_Scp/EndSound/true_hero.ogg
