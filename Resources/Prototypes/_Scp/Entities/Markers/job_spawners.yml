@@ -178,13 +178,6 @@
     job_id: LeadResearcher
 
 - type: entity
-  id: SpawnPointAnomabiologyResearcher
-  parent: SpawnPointScpBase
-  components:
-  - type: SpawnPoint
-    job_id: AnomabiologyResearcher
-
-- type: entity
   id: SpawnPointAnomarchologyResearcher
   parent: SpawnPointScpBase
   components:

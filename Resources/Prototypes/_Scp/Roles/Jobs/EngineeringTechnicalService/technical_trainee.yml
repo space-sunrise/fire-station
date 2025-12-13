@@ -3,6 +3,9 @@
   name: job-name-technical-trainee
   description: job-description-technical-trainee
   playTimeTracker: JobTechnicalTrainee
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 1800
   startingGear: TechnicalTraineeGear
   icon: JobTechnicalTrainee
   supervisors: job-supervisors-chief-technical-specialist

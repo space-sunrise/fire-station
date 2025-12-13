@@ -3,9 +3,10 @@
   name: job-name-medical-specialist
   description: job-description-medical-specialist
   playTimeTracker: JobMedicalSpecialist
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-  - !type:OverallPlaytimeRequirement
-    time: 18000 # 5 часов
+  requirements:
+  - !type:DepartmentTimeRequirement
+    department: MedicalService
+    time: 10800
   startingGear: MedicalSpecialistGear
   icon: JobMedicalSpecialist
   supervisors: job-supervisors-head-of-medical-sector

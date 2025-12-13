@@ -3,9 +3,10 @@
   name: job-name-electrical-technical-specialist
   description: job-description-electrical-technical-specialist
   playTimeTracker: JobElectricalTechnicalSpecialist
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-  - !type:OverallPlaytimeRequirement
-    time: 36000 # 10 часов
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: EngineeringTechnicalService
+      time: 28800
   startingGear: ElectricalTechnicalSpecialistGear
   icon: JobElectricalTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist

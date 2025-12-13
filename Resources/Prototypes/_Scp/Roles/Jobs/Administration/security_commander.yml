@@ -6,6 +6,12 @@
   requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
   - !type:OverallPlaytimeRequirement
     time: 144000 # 40 часов
+  - !type:DepartmentTimeRequirement
+    department: HeavyContainmentSecurityService
+    time: 36000
+  - !type:DepartmentTimeRequirement
+    department: ExternalAdministrativeZoneSecurityService
+    time: 72000
   weight: 10
   startingGear: SecurityCommanderGear
   icon: JobSecurityCommander

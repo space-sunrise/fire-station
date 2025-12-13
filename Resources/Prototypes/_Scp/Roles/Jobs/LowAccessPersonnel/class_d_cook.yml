@@ -3,7 +3,7 @@
   name: job-name-class-d-cook
   description: job-description-class-d-cook
   playTimeTracker: JobClassDCook
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  requirements:
   - !type:OverallPlaytimeRequirement
     time: 3600 # 1 час
   startingGear: ClassDCookGear

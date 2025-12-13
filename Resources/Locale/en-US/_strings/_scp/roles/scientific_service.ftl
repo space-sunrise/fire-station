@@ -1,7 +1,5 @@
 job-name-lead-researcher = Lead Researcher
 job-description-lead-researcher = Senior scientific specialist responsible for training junior researchers. Manages research teams and participates in the study of objects. CLASS C
-job-name-anomabiology-researcher = Anomabiology Researcher
-job-description-anomabiology-researcher = Researcher with a biological qualification. Responsible for researching objects and documenting experiments. CLASS C
 job-name-anomarchology-researcher = Anomarchology Researcher
 job-description-anomarchology-researcher = Researcher with an archaeological qualification. Responsible for researching and documenting experiments with artifacts. CLASS C
 job-name-production-specialist = Production Specialist

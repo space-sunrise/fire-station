@@ -3,6 +3,9 @@
   name: job-name-botanist-phytogeneticist
   description: job-description-botanist-phytogeneticist
   playTimeTracker: JobBotanistPhytogeneticist
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 3600
   startingGear: BotanistPhytogeneticistGear
   icon: JobBotanistPhytogeneticist
   supervisors: job-supervisors-personnel-officer

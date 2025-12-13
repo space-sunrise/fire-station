@@ -175,13 +175,6 @@
 
 - type: jobIcon
   parent: JobIcon
-  id: JobAnomabiologyResearcher
-  icon:
-    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
-    state: AnomabiologyResearcher
-
-- type: jobIcon
-  parent: JobIcon
   id: JobAnomarchologyResearcher
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi

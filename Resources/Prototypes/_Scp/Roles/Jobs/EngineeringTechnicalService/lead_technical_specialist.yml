@@ -3,9 +3,10 @@
   name: job-name-lead-technical-specialist
   description: job-description-lead-technical-specialist
   playTimeTracker: JobLeadTechnicalSpecialist
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-    - !type:OverallPlaytimeRequirement
-      time: 54000 # 15 часов
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: EngineeringTechnicalService
+      time: 54000
   startingGear: LeadTechnicalSpecialistGear
   icon: JobLeadTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist

@@ -3,9 +3,10 @@
   name: job-name-heavy-containment-zone-officer
   description: job-description-heavy-containment-zone-officer
   playTimeTracker: JobHeavyContainmentZoneOfficer
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-    - !type:OverallPlaytimeRequirement
-      time: 36000 # 10 часов
+  requirements:
+  - !type:DepartmentTimeRequirement
+    department: HeavyContainmentSecurityService
+    time: 18000
   icon: JobHeavyContainmentZoneOfficer
   supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false

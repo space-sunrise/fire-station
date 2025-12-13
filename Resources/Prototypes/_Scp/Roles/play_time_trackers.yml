@@ -79,9 +79,6 @@
   id: JobLeadResearcher
 
 - type: playTimeTracker
-  id: JobAnomabiologyResearcher
-
-- type: playTimeTracker
   id: JobAnomarchologyResearcher
 
 - type: playTimeTracker

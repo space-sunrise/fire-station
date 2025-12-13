@@ -3,9 +3,13 @@
   name: job-name-production-specialist
   description: job-description-production-specialist
   playTimeTracker: JobProductionSpecialist
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-    - !type:OverallPlaytimeRequirement
-      time: 10800 # 3 часов
+  requirements:
+  - !type:DepartmentTimeRequirement
+    department: ScientificService
+    time: 14400
+  - !type:DepartmentTimeRequirement
+    department: EngineeringTechnicalService
+    time: 14400
   startingGear: ProductionSpecialistGear
   icon: JobProductionSpecialist
   supervisors: job-supervisors-scientific-service-director

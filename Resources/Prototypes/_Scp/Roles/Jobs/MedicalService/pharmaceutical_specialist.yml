@@ -3,9 +3,10 @@
   name: job-name-pharmaceutical-specialist
   description: job-description-pharmaceutical-specialist
   playTimeTracker: JobPharmaceuticalSpecialist
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-  - !type:OverallPlaytimeRequirement
-    time: 18000 # 5 часов
+  requirements:
+  - !type:DepartmentTimeRequirement
+    department: MedicalService
+    time: 18000
   startingGear: PharmaceuticalSpecialistGear
   icon: JobPharmaceuticalSpecialist
   supervisors: job-supervisors-head-of-medical-sector
