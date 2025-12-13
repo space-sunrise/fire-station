@@ -49,6 +49,7 @@
     items:
       # Fire added start
       - id: PlushieScp999
+        orGroup: GiftPool
       # Fire added end
       - id: PresentTrash
       - id: Bucket
