@@ -4,11 +4,12 @@
   name: roomba
   description: The creep of automation now threatening janitors.
   components:
-  # Fire added start
   - type: Tag
     tags:
+    - SiliconEmotes
+    - Bot
+    - Unimplantable
     - Scp173DestroyOnCollide
-  # Fire added end
   - type: Sprite
     drawdepth: SmallMobs
     sprite: _Scp/Mobs/Silicon/Bots/roomba.rsi
@@ -22,7 +23,7 @@
       task: CleanbotCompound
     blackboard:
       MeleeRange: !type:Single
-        0.01
+        0.08
   - type: SolutionRegeneration
     solution: absorbed
     generated:
@@ -35,9 +36,6 @@
     range: 5
     sound:
       path: /Audio/_Sunrise/Effects/Flying/medibot.ogg
-  - type: FootstepModifier # Из-за какого-то бага не работает
-    footstepSoundCollection:
-      collection: FootstepBorg
   - type: Fixtures
     fixtures:
       fix1:
