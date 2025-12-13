@@ -6,7 +6,7 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: ExternalAdministrativeZoneSecurityService
-    time: 36000
+    time: 18000
   icon: JobExternalAdministrativeZoneOfficer
   supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false
