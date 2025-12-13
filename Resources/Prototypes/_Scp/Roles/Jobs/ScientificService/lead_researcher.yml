@@ -3,9 +3,10 @@
   name: job-name-lead-researcher
   description: job-description-lead-researcher
   playTimeTracker: JobLeadResearcher
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-  - !type:OverallPlaytimeRequirement
-    time: 54000 # 15 часов
+  requirements:
+  - !type:DepartmentTimeRequirement
+    department: ScientificService
+    time: 54000
   startingGear: LeadResearcherGear
   icon: JobLeadResearcher
   supervisors: job-supervisors-scientific-service-director

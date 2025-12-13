@@ -3,9 +3,13 @@
   name: job-name-field-medical-specialist
   description: job-description-field-medical-specialist
   playTimeTracker: JobFieldMedicalSpecialist
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-    - !type:OverallPlaytimeRequirement
-      time: 36000 # 10 часов
+  requirements:
+  - !type:DepartmentTimeRequirement
+    department: ExternalAdministrativeZoneSecurityService
+    time: 36000
+  - !type:DepartmentTimeRequirement
+    department: MedicalService
+    time: 18000
   startingGear: FieldMedicalSpecialistGear
   icon: JobAmnesthesiologist
   supervisors: job-supervisors-heavy-containment-zone-commandant

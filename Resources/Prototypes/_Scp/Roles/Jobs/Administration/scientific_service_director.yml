@@ -3,9 +3,12 @@
   name: job-name-scientific-service-director
   description: job-description-scientific-service-director
   playTimeTracker: JobScientificServiceDirector
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  requirements:
   - !type:OverallPlaytimeRequirement
-    time: 144000 # 40 часов
+    time: 144000 
+  - !type:DepartmentTimeRequirement
+    department: ScientificService
+    time: 54000
   weight: 10
   startingGear: ScientificServiceDirectorGear
   icon: JobScientificServiceDirector

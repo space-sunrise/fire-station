@@ -3,9 +3,15 @@
   name: job-name-chief-technical-specialist
   description: job-description-chief-technical-specialist
   playTimeTracker: JobChiefTechnicalSpecialist
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  requirements:
   - !type:OverallPlaytimeRequirement
-    time: 144000 # 40 часов
+    time: 144000
+  - !type:RoleTimeRequirement
+    role: JobGeneralTechnicalSpecialist
+    time: 21600
+  - !type:DepartmentTimeRequirement
+    department: EngineeringTechnicalService
+    time: 36000
   weight: 10
   startingGear: ChiefTechnicalSpecialistGear
   icon: JobChiefTechnicalSpecialist

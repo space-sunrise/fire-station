@@ -3,9 +3,10 @@
   name: job-name-general-technical-specialist
   description: job-description-general-technical-specialist
   playTimeTracker: JobGeneralTechnicalSpecialist
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-    - !type:OverallPlaytimeRequirement
-      time: 18000 # 5 часов
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: EngineeringTechnicalService
+      time: 7200
   startingGear: GeneralTechnicalSpecialistGear
   icon: JobGeneralTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist

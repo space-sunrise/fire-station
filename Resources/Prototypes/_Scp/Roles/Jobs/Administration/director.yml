@@ -3,9 +3,25 @@
   name: job-name-director
   description: job-description-director
   playTimeTracker: JobDirector
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-  - !type:OverallPlaytimeRequirement
-    time: 180000 # 50 часов
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: HeavyContainmentSecurityService
+      time: 18000
+    - !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService
+      time: 18000
+    - !type:DepartmentTimeRequirement
+      department: ScientificService
+      time: 54000
+    - !type:DepartmentTimeRequirement
+      department: MedicalService
+      time: 36000
+    - !type:DepartmentTimeRequirement
+      department: EngineeringTechnicalService
+      time: 36000
+    - !type:DepartmentTimeRequirement
+      department: Administration
+      time: 36000
   weight: 5
   icon: JobDirector
   joinNotifyCrew: true

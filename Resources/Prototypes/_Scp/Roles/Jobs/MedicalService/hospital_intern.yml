@@ -3,6 +3,9 @@
   name: job-name-hospital-intern
   description: job-description-hospital-intern
   playTimeTracker: JobHospitalIntern
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 1800
   startingGear: HospitalInternGear
   icon: JobHospitalIntern
   supervisors: job-supervisors-head-of-medical-sector
