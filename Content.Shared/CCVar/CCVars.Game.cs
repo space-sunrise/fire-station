@@ -360,7 +360,7 @@ public sealed partial class CCVars
     ///     The id of the sound collection to randomly choose a sound from and play when the round ends.
     /// </summary>
     public static readonly CVarDef<string> RoundEndSoundCollection =
-        CVarDef.Create("game.round_end_sound_collection", "SunriseRoundEnd", CVar.SERVERONLY); // Sunrise-Edit
+        CVarDef.Create("game.round_end_sound_collection", "FireRoundEnd", CVar.SERVERONLY); // Fire-Edit
 
     /// <summary>
     ///     Whether or not to add every player as a global override to PVS at round end.
