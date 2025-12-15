@@ -1974,6 +1974,9 @@ ClothingShoesBootsInternalSecurityOperativeFilled: null
 ClothingUniformJumpskirtInternalSecurityOperative: null
 ClothingUniformJumpsuitInternalSecurityOperative: null
 
+SpawnPointAnomabiologyResearcher: SpawnPointAnomarchologyResearcher
+KeyCardAnomabiologyResearcher: null
+
 # Растения из будущего
 PottedPlantRandom: ScpPottedPlantRandom
 PottedPlantBioluminscent: null
@@ -2276,7 +2279,5 @@ ScpWallConcreteScienceCrack: ScpWallConcreteScience
 ScpWallConcreteEngineerCrack: ScpWallConcreteEngineer
 ScpWallConcreteMedicalCrack: ScpWallConcreteMedical
 ScpWallConcreteCrack: ScpWallConcrete
-
-SpawnPointAnomabiologyResearcher: SpawnPointAnomarchologyResearcher
 
 # Fire added end

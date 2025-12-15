@@ -3,9 +3,6 @@
   name: job-name-class-d-janitor
   description: job-description-class-d-janitor
   playTimeTracker: JobClassDJanitor
-  requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 3600 # 1 час
   startingGear: ClassDJanitorGear
   icon: JobClassDJanitor
   supervisors: job-supervisors-security-and-research
