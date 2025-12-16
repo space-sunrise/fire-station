@@ -9,7 +9,7 @@ namespace Content.Shared._Scp.Scp173;
 /// <summary>
 /// Компонент, отвечающий за способности и ограничения SCP-173.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp173Component : Component
 {
     #region Fast movement action

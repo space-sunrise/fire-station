@@ -21,4 +21,10 @@ public sealed partial class SafeTimeComponent : Component
     /// </summary>
     [ViewVariables, AutoNetworkedField, AutoPausedField]
     public TimeSpan? TimeEnd;
+
+    /// <summary>
+    /// Должен ли добавляться виджет с указанием времени до окончания безопасного времени?
+    /// </summary>
+    [DataField]
+    public bool AddWidget = true;
 }

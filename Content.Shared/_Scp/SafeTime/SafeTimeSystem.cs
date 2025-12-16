@@ -7,7 +7,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Shared._Scp.SafeTime;
 
-public sealed class SafeTimeSystem : EntitySystem
+public abstract class SharedSafeTimeSystem : EntitySystem
 {
     [Dependency] private readonly SharedGameTicker _gameTicker = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;

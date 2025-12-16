@@ -19,6 +19,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Scp173;
 
+// TODO: Единая система для управления виджетами вместе с SafeTimeSystem
 public sealed class Scp173System : SharedScp173System
 {
     [Dependency] private readonly IPlayerManager _player = default!;
@@ -101,10 +102,7 @@ public sealed class Scp173System : SharedScp173System
         _nextReagentCheck = _timing.CurTime + ReagentCheckInterval;
 
         if (!TryGetPlayerEntity(out var ent))
-        {
-            _widget.Visible = false;
             return;
-        }
 
         if (!IsContained(ent.Value))
         {
@@ -161,7 +159,7 @@ public sealed class Scp173System : SharedScp173System
         if (layoutContainer == null)
             return;
 
-        _widget = new Scp173UiWidget();
+        _widget = new ();
 
         var layout = _ui.ActiveScreen is SeparatedChatGameScreen
             ? LayoutContainer.LayoutPreset.TopRight
