@@ -25,6 +25,7 @@ public abstract class SharedSafeTimeSystem : EntitySystem
     private void OnMapInit(Entity<SafeTimeComponent> ent, ref MapInitEvent args)
     {
         DebugTools.Assert(ent.Comp.TimeEnd == null);
+        DebugTools.Assert(ent.Comp.Time > TimeSpan.Zero);
 
         ent.Comp.TimeEnd = _gameTicker.RoundStartTimeSpan + ent.Comp.Time;
         Dirty(ent);
@@ -55,7 +56,7 @@ public abstract class SharedSafeTimeSystem : EntitySystem
         if (!silent)
         {
             var timeLeft = GetTimeLeft(_timing.CurTime, ent.Comp.TimeEnd.Value);
-            var message = Loc.GetString("scp173-in-safe-time", ("time", timeLeft));
+            var message = Loc.GetString("safe-time-restricted", ("time", timeLeft));
 
             if (predicted)
                 _popup.PopupPredicted(message, ent, ent);
