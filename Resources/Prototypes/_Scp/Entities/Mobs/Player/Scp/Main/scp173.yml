@@ -88,6 +88,7 @@
       groups:
         Brute: 10
   - type: Muted
+  - type: SafeTime
   - type: DamageOnHighSpeedImpact
     stunChance: 0
     speedDamageFactor: 0

@@ -37,7 +37,6 @@ public sealed class Scp173System : SharedScp173System
     private TimeSpan _nextReagentCheck;
 
     private EntityQuery<Scp173Component> _scp173Query;
-    private EntityQuery<SafeTimeComponent> _safeTimeQuery;
 
     public override void Initialize()
     {
@@ -50,7 +49,6 @@ public sealed class Scp173System : SharedScp173System
         SubscribeLocalEvent<Scp173Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
         _scp173Query = GetEntityQuery<Scp173Component>();
-        _safeTimeQuery = GetEntityQuery<SafeTimeComponent>();
 
         var gameplayStateLoad = _ui.GetUIController<GameplayStateLoadController>();
         gameplayStateLoad.OnScreenLoad += EnsureWidgetExist;
@@ -115,7 +113,7 @@ public sealed class Scp173System : SharedScp173System
         }
 
         SetReagentData(ent.Value, _widget);
-        SetSafeTimeData(ent.Value, _widget);
+        SetSafeTimeData(ent.Value.Owner, _widget);
 
         _widget.Visible = true;
     }
@@ -135,16 +133,15 @@ public sealed class Scp173System : SharedScp173System
     private void SetReagentData(Entity<Scp173Component> ent, Scp173UiWidget widget)
     {
         var current = ent.Comp.ReagentVolumeAround.Int();
-        widget.SetReagentData(current, Scp173Component.MinTotalSolutionVolume, Scp173Component.ExtraMinTotalSolutionVolume);
+        widget.ReagentBar.UpdateInfo(current, Scp173Component.MinTotalSolutionVolume, Scp173Component.ExtraMinTotalSolutionVolume);
     }
 
-    private void SetSafeTimeData(EntityUid ent, Scp173UiWidget widget)
+    private void SetSafeTimeData(Entity<SafeTimeComponent?> ent, Scp173UiWidget widget)
     {
-        if (!_safeTimeQuery.TryComp(ent, out var safeTime))
+        if (!Resolve(ent, ref ent.Comp))
             return;
 
-        var timeLeft = safeTime.TimeEnd - Timing.CurTime;
-        widget.SetSafeTimeData(Timing.CurTime, timeLeft);
+        widget.SafeTime.UpdateSafeTimeInfo(ent.Comp.TimeEnd);
     }
 
     private void EnsureWidgetExist()

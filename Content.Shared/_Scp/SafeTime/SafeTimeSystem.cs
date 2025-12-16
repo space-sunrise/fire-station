@@ -50,7 +50,7 @@ public sealed class SafeTimeSystem : EntitySystem
             return false;
 
         if (_timing.CurTime >= ent.Comp.TimeEnd || !ent.Comp.TimeEnd.HasValue)
-            return true;
+            return false;
 
         if (!silent)
         {
@@ -63,9 +63,14 @@ public sealed class SafeTimeSystem : EntitySystem
                 _popup.PopupEntity(message, ent, ent);
         }
 
-        return false;
+        return true;
     }
 
+    /// <summary>
+    /// Получает красивую строку с временем исходя из переданных значений.
+    /// </summary>
+    /// <param name="now">Текущее время</param>
+    /// <param name="end">Время окончания</param>
     [PublicAPI]
     public static string GetTimeLeft(TimeSpan now, TimeSpan end)
     {
@@ -73,6 +78,10 @@ public sealed class SafeTimeSystem : EntitySystem
         return GetTimeLeft(timeLeft);
     }
 
+    /// <summary>
+    /// Получает красивую строку с временем исходя из переданных значений.
+    /// </summary>
+    /// <param name="timeLeft">Оставшееся до окончания время</param>
     [PublicAPI]
     public static string GetTimeLeft(TimeSpan timeLeft)
     {
