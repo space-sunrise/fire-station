@@ -230,16 +230,6 @@
 
 - type: entity
   parent: KeyCardBase
-  id: KeyCardAnomabiologyResearcher
-  name: research personnel keycard
-  components:
-  - type: Sprite
-    state: science
-  - type: PresetIdCard
-    job: AnomabiologyResearcher
-
-- type: entity
-  parent: KeyCardBase
   id: KeyCardAnomarchologyResearcher
   name: research personnel keycard
   components:

@@ -1974,6 +1974,9 @@ ClothingShoesBootsInternalSecurityOperativeFilled: null
 ClothingUniformJumpskirtInternalSecurityOperative: null
 ClothingUniformJumpsuitInternalSecurityOperative: null
 
+SpawnPointAnomabiologyResearcher: SpawnPointAnomarchologyResearcher
+KeyCardAnomabiologyResearcher: null
+
 # Растения из будущего
 PottedPlantRandom: ScpPottedPlantRandom
 PottedPlantBioluminscent: null

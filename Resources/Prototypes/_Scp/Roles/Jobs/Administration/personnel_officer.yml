@@ -3,9 +3,19 @@
   name: job-name-personnel-officer
   description: job-description-personnel-officer
   playTimeTracker: JobPersonnelOfficer
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-  - !type:OverallPlaytimeRequirement
-    time: 108000 # 30 часов
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService
+      time: 18000
+    - !type:DepartmentTimeRequirement
+      department: MedicalService
+      time: 36000
+    - !type:DepartmentTimeRequirement
+      department: EngineeringTechnicalService
+      time: 36000
+    - !type:DepartmentTimeRequirement
+      department: Administration
+      time: 36000
   weight: 20
   startingGear: PersonnelOfficerGear
   icon: JobPersonnelOfficer

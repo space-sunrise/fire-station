@@ -3,9 +3,9 @@
   name: job-name-psychotherapist
   description: job-description-psychotherapist
   playTimeTracker: JobPsychotherapist
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  requirements:
     - !type:OverallPlaytimeRequirement
-      time: 10800 # 3 часов
+      time: 18000
   startingGear: PsychotherapistGear
   icon: JobPsychotherapist
   supervisors: job-supervisors-head-of-medical-sector

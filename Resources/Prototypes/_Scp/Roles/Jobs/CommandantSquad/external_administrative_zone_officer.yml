@@ -3,9 +3,10 @@
   name: job-name-external-administrative-zone-officer
   description: job-description-external-administrative-zone-officer
   playTimeTracker: JobExternalAdministrativeZoneOfficer
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-    - !type:OverallPlaytimeRequirement
-      time: 36000 # 10 часов
+  requirements:
+  - !type:DepartmentTimeRequirement
+    department: ExternalAdministrativeZoneSecurityService
+    time: 18000
   icon: JobExternalAdministrativeZoneOfficer
   supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false

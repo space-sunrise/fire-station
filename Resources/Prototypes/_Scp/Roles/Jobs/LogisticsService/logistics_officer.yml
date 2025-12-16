@@ -3,6 +3,9 @@
   name: job-name-logistics-officer
   description: job-description-logistics-officer
   playTimeTracker: JobLogisticsOfficer
+  requirements:
+    - !type:OverallPlaytimeRequirement
+      time: 3600
   startingGear: LogisticsOfficerGear
   icon: JobLogisticsOfficer
   supervisors: job-supervisors-senior-logistics-officer

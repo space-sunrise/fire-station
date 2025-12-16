@@ -360,22 +360,6 @@
   - Socks
 
 - type: roleLoadout
-  id: JobAnomabiologyResearcher
-  groups:
-  - GroupTankHarness
-  - ScientistNeck
-  - ScientistJumpsuit
-  - ScientistBackpack
-  - ScientistOuterClothing
-  - ScientistGloves
-  - ScientistShoes
-  - Glasses
-  - CommonMiscItems
-  - Bra
-  - Pants
-  - Socks
-
-- type: roleLoadout
   id: JobAnomarchologyResearcher
   groups:
   - GroupTankHarness
