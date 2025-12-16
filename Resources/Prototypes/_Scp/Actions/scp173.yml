@@ -29,6 +29,7 @@
     raiseOnUser: true
   - type: InstantAction
     event: !type:Scp173ClogAction
+  - type: SafeTimeRestricted
 
 - type: entity
   id: Scp173DamageStructure

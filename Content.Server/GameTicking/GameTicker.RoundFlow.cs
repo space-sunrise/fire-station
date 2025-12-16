@@ -446,6 +446,13 @@ namespace Content.Server.GameTicking
                 AddExcludedPreset(CurrentPreset.ID);
             // Sunrise-End
 
+            // Fire edit start - для SafeTimeSystem.
+            // Иначе MapInitEvent срабатывает на сущностях раньше, чем время начала раунда установлено
+            // И система SafeTime будет брать время начала ПРЕРЫДУЩЕГО раунда.
+            // Поэтому делаем "фальшстарт" до загрузки карты, чтобы данные были плюс-минус актуальны.
+            RoundStartTimeSpan = _gameTiming.CurTime;
+            // Fire edit end
+
             // MapInitialize *before* spawning players, our codebase is too shit to do it afterwards...
             _map.InitializeMap(DefaultMap);
 
