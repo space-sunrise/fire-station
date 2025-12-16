@@ -6,30 +6,16 @@
     <PanelContainer.PanelOverride>
         <graphics:StyleBoxFlat BackgroundColor="#121111CC"/>
     </PanelContainer.PanelOverride>
-    <BoxContainer Orientation="Vertical">
-        <BoxContainer Name="ReagentInfo" Orientation="Vertical" MinSize="220, 40">
-            <RichTextLabel Name="InfoLabel" Margin="0 0 0 5"/>
-            <ProgressBar Name="ProgressBar" MinValue="0">
-                <ProgressBar.BackgroundStyleBoxOverride>
-                    <graphics:StyleBoxFlat
-                        BackgroundColor="{x:Static s:StyleNano.PanelUltraDark}"
-                        BorderColor="{x:Static s:StyleNano.SCPWhite}"
-                        BorderThickness="2"/>
-                </ProgressBar.BackgroundStyleBoxOverride>
-                <Label Name="ProgressLabel" Align="Center" />
-            </ProgressBar>
-        </BoxContainer>
-        <BoxContainer Name="SafeTimeInfo" Orientation="Vertical" MinSize="220, 40" Margin="0 10 0 0">
-            <RichTextLabel Name="SafeTimeInfoLabel" Margin="0 0 0 5"/>
-            <ProgressBar Name="SafeTimeProgressBar" MinValue="0">
-                <ProgressBar.BackgroundStyleBoxOverride>
-                    <graphics:StyleBoxFlat
-                        BackgroundColor="{x:Static s:StyleNano.PanelUltraDark}"
-                        BorderColor="{x:Static s:StyleNano.SCPWhite}"
-                        BorderThickness="2"/>
-                </ProgressBar.BackgroundStyleBoxOverride>
-                <Label Name="SafeTimeProgressLabel" Align="Center" />
-            </ProgressBar>
-        </BoxContainer>
+    <BoxContainer Name="ReagentInfo" Orientation="Vertical" MinSize="220, 40">
+        <RichTextLabel Name="InfoLabel" Margin="0 0 0 5"/>
+        <ProgressBar Name="ProgressBar" MinValue="0">
+            <ProgressBar.BackgroundStyleBoxOverride>
+                <graphics:StyleBoxFlat
+                    BackgroundColor="{x:Static s:StyleNano.PanelUltraDark}"
+                    BorderColor="{x:Static s:StyleNano.SCPWhite}"
+                    BorderThickness="2"/>
+            </ProgressBar.BackgroundStyleBoxOverride>
+            <Label Name="ProgressLabel" Align="Center" />
+        </ProgressBar>
     </BoxContainer>
 </PanelContainer>

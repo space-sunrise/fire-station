@@ -91,6 +91,7 @@
     #- Scp096CryOut - Требует механику ремонта стен, отключено до реализации.
     - Scp096FaceSkinRip
     - Scp096SitDown
+  - type: SafeTime
   - type: ContainerContainer
     containers:
       face_slot: !type:ContainerSlot

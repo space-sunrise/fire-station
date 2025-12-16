@@ -206,42 +206,5 @@ public abstract class SharedScp173System : EntitySystem
         return viewers.Count != 0;
     }
 
-    /// <summary>
-    /// Проверяет, находится ли SCP-173 в "безопасного времени", когда он не может засорять свою камеру
-    /// </summary>
-    public bool IsInSafeTime(Entity<Scp173Component> ent, bool silent = false, bool predicted = true)
-    {
-        if (Timing.CurTime >= ent.Comp.SafeTimeEnd || !ent.Comp.SafeTimeEnd.HasValue)
-            return true;
-
-        if (!silent)
-        {
-            var timeLeft = GetTimeLeftMMSS(Timing.CurTime, ent.Comp.SafeTimeEnd.Value);
-            var message = Loc.GetString("scp173-in-safe-time", ("time", timeLeft));
-            if (predicted)
-                _popup.PopupPredicted(message, ent, ent);
-            else
-                _popup.PopupEntity(message, ent, ent);
-        }
-
-        return false;
-    }
-
-    public static string GetTimeLeftMMSS(TimeSpan now, TimeSpan end)
-    {
-        var timeLeft = end - now;
-        return GetTimeLeftMMSS(timeLeft);
-    }
-
-    public static string GetTimeLeftMMSS(TimeSpan timeLeft)
-    {
-        timeLeft = timeLeft < TimeSpan.Zero ? TimeSpan.Zero : timeLeft;
-
-        var minutes = ((int) timeLeft.TotalMinutes).ToString("D2");
-        var seconds = timeLeft.Seconds.ToString("D2");
-
-        return $"{minutes}:{seconds}";
-    }
-
     #endregion
 }

@@ -25,6 +25,7 @@
       state: rip
   - type: InstantAction
     event: !type:Scp096FaceSkinRipEvent
+  - type: SafeTimeRestricted
 
 - type: entity
   id: Scp096SitDown
