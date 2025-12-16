@@ -5,7 +5,7 @@
   playTimeTracker: JobLogisticsOfficer
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 10800
+      time: 3600
   startingGear: LogisticsOfficerGear
   icon: JobLogisticsOfficer
   supervisors: job-supervisors-senior-logistics-officer

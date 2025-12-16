@@ -3,9 +3,6 @@
   name: job-name-gastronomic-specialist
   description: job-description-gastronomic-specialist
   playTimeTracker: JobGastronomicSpecialist
-  requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 3600
   startingGear: GastronomicSpecialistGear
   icon: JobGastronomicSpecialist
   supervisors: job-supervisors-personnel-officer

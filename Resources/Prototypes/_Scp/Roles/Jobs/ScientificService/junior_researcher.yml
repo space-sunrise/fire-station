@@ -5,7 +5,7 @@
   playTimeTracker: JobJuniorResearcher
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 1800
+      time: 3600
   startingGear: JuniorResearcherGear
   icon: JobJuniorResearcher
   supervisors: job-supervisors-scientific-service-director
