@@ -238,10 +238,10 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         }
 
         // Остальные нормальные случаи, когда мы не используем дуафтер
-        DoOpenStorage(uid, component);
+        DoOpenStorage(uid, component, user);
     }
 
-    protected void DoOpenStorage(EntityUid uid, EntityStorageComponent component)
+    protected void DoOpenStorage(EntityUid uid, EntityStorageComponent component, EntityUid? user = null)
     {
         component.Open = true;
         Dirty(uid, component);
@@ -249,8 +249,7 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         EmptyContents(uid, component);
         ModifyComponents(uid, component);
 
-        if (_net.IsClient && _timing.IsFirstTimePredicted)
-            _audio.PlayPvs(component.OpenSound, uid);
+        _audio.PlayPredicted(component.OpenSound, uid, user);
 
         ReleaseGas(uid, component);
         var afterev = new StorageAfterOpenEvent();
@@ -258,7 +257,7 @@ public abstract class SharedEntityStorageSystem : EntitySystem
     }
     // Fire edit end
 
-    public void CloseStorage(EntityUid uid, EntityStorageComponent? component = null)
+    public void CloseStorage(EntityUid uid, EntityStorageComponent? component = null, EntityUid? user = null)
     {
         if (!ResolveStorage(uid, ref component))
             return;
@@ -302,8 +301,10 @@ public abstract class SharedEntityStorageSystem : EntitySystem
 
         TakeGas(uid, component);
         ModifyComponents(uid, component);
-        if (_net.IsClient && _timing.IsFirstTimePredicted)
-            _audio.PlayPvs(component.CloseSound, uid);
+
+        // Fire edit start - чтобы с сервера нормально шли звуки
+        _audio.PlayPredicted(component.CloseSound, uid, user);
+        // Fire edit end
 
         var afterev = new StorageAfterCloseEvent();
         RaiseLocalEvent(uid, ref afterev);
@@ -416,7 +417,10 @@ public abstract class SharedEntityStorageSystem : EntitySystem
             return false;
         }
 
-        CloseStorage(target);
+        // Fire edit start - добавил поле user для predicted audio
+        CloseStorage(target, user: user);
+        // Fire edit end
+
         return true;
     }
 
