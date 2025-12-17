@@ -25,7 +25,15 @@
   - type: StationEvent
     weight: 4
   - type: SpawnInEntityStorageRule
+    probability: 0.07
+    entities:
+    - id: Scp096PhotoDeveloped
+  - type: SpawnInPlayerInventoryRule
     probability: 0.1
+    sound:
+      path: /Audio/_Scp/Effects/spawn.ogg
+      params:
+        volume: 3
     entities:
     - id: Scp096PhotoDeveloped
 

@@ -1049,7 +1049,8 @@ public abstract class SharedStorageSystem : EntitySystem
         bool ignoreStacks = false,
         bool ignoreLocation = false)
     {
-        if (!Resolve(uid, ref storageComp) || !Resolve(insertEnt, ref item, false))
+        // Fire edit - убрал из логов МЕТОДА ДЛЯ ПРОВЕРКИ непрохождение проверки на наличие компонента.
+        if (!Resolve(uid, ref storageComp, false) || !Resolve(insertEnt, ref item, false))
         {
             reason = null;
             return false;

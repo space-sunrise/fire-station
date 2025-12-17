@@ -61,7 +61,7 @@ public sealed class SpawnInEntityStorageRule : StationEventSystem<SpawnInEntityS
                 var spawned = Spawn(spawn);
                 _storage.Insert(spawned, storage, storageComp);
 
-                Log.Info($"Spawned {ToPrettyString(spawned)} in {ToPrettyString(storage)}");
+                Log.Debug($"Spawned {ToPrettyString(spawned)} in {ToPrettyString(storage)}");
             }
 
             if (component.DoOpenCloseAnimation)
