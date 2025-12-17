@@ -2,6 +2,7 @@
 using Content.Server.StationEvents.Events;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared.GameTicking.Components;
+using Content.Shared.Random.Rules;
 using Content.Shared.Storage;
 using Content.Shared.Storage.Components;
 using Robust.Shared.Random;
@@ -13,6 +14,7 @@ public sealed class SpawnInEntityStorageRule : StationEventSystem<SpawnInEntityS
 {
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly EntityStorageSystem _storage = default!;
+    [Dependency] private readonly RulesSystem _rules = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private readonly List<PendingClose> _pendingStorageClosing = [];
@@ -44,6 +46,13 @@ public sealed class SpawnInEntityStorageRule : StationEventSystem<SpawnInEntityS
 
         if (!TryGetRandomStation(out var station))
             return;
+
+        if (_prototype.TryIndex(component.StationRules, out var stationRule) &&
+            !_rules.IsTrue(station.Value, stationRule))
+        {
+            Log.Info($"Skipped {Prototype(uid)} due to {component.StationRules} fails! Event aborted");
+            return;
+        }
 
         var query = EntityQueryEnumerator<EntityStorageComponent, TransformComponent>();
         while (query.MoveNext(out var storage, out var storageComp, out var xform))

@@ -4,6 +4,7 @@ using Content.Server.Storage.EntitySystems;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
+using Content.Shared.Random.Rules;
 using Content.Shared.Storage;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
@@ -18,6 +19,7 @@ public sealed class SpawnInPlayerInventoryRule : StationEventSystem<SpawnInPlaye
     [Dependency] private readonly StorageSystem _storage = default!;
     [Dependency] private readonly StationSystem _station = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly RulesSystem _rules = default!;
 
     private const string Pocket1Slot = "pocket1";
     private const string Pocket2Slot = "pocket2";
@@ -33,6 +35,13 @@ public sealed class SpawnInPlayerInventoryRule : StationEventSystem<SpawnInPlaye
 
         if (!TryGetRandomStation(out var station))
             return;
+
+        if (_prototype.TryIndex(component.StationRules, out var stationRule) &&
+            !_rules.IsTrue(station.Value, stationRule))
+        {
+            Log.Info($"Skipped {Prototype(uid)} due to {component.StationRules} fails! Event aborted");
+            return;
+        }
 
         var query = EntityQueryEnumerator<HumanoidAppearanceComponent, InventoryComponent, TransformComponent>();
         while (query.MoveNext(out var target, out _, out var inventory, out var xform))
