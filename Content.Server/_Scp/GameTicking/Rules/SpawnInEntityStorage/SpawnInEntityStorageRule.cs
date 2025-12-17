@@ -1,6 +1,7 @@
 ﻿using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Events;
 using Content.Server.Storage.EntitySystems;
+using Content.Shared.GameTicking;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Random.Rules;
 using Content.Shared.Storage;
@@ -19,6 +20,13 @@ public sealed class SpawnInEntityStorageRule : StationEventSystem<SpawnInEntityS
 
     private readonly List<PendingClose> _pendingStorageClosing = [];
 
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => _pendingStorageClosing.Clear());
+    }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
@@ -35,6 +43,13 @@ public sealed class SpawnInEntityStorageRule : StationEventSystem<SpawnInEntityS
 
             _pendingStorageClosing.RemoveAt(i);
         }
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _pendingStorageClosing.Clear();
     }
 
     protected override void Started(EntityUid uid,

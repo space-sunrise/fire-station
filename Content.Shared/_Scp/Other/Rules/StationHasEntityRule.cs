@@ -30,6 +30,8 @@ public sealed partial class StationHasEntityRule : RulesRule
 
         _lookup ??= entManager.System<EntityLookupSystem>();
         _whitelist ??= entManager.System<EntityWhitelistSystem>();
+
+        _entities.Clear();
         _lookup.GetEntitiesOnMap(mapId, _entities);
 
         foreach (var ent in _entities)
