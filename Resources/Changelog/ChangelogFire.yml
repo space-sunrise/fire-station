@@ -8089,3 +8089,14 @@
   id: 320
   time: '2025-12-16T20:47:51.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/713
+- author: Parashut
+  changes:
+  - message: "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u044B \u0432\u0441\u0435\
+      \ \u043A\u0430\u0440\u0442\u044B \u043F\u043E\u0434 \u043D\u043E\u0432\u043E\
+      \u0433\u043E\u0434\u043D\u0438\u0439 \u0441\u0442\u0438\u043B\u044C! \u0412\u0441\
+      \u0435\u0445 \u0441 \u043D\u0430\u0441\u0442\u0443\u043F\u0430\u044E\u0449\u0438\
+      \u043C!"
+    type: Tweak
+  id: 321
+  time: '2025-12-17T13:48:40.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/716
