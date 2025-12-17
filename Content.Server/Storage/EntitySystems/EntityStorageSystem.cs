@@ -71,7 +71,7 @@ public sealed class EntityStorageSystem : SharedEntityStorageSystem
         if (!CanOpen(args.User, ent, requireHands:false))
             return;
 
-        DoOpenStorage(ent.Owner, ent.Comp);
+        DoOpenStorage(ent.Owner, ent.Comp, args.User);
 
         // TODO: Убейте меня за эту реализацию, но получше
         _audio.PlayPvs(ent.Comp.OpenSound, ent);

@@ -24,8 +24,8 @@
   components:
   - type: StationEvent
     weight: 4
-  - type: SpawnRandomEntitiesRule
-    tilesPerEntityAverage: 600
+  - type: SpawnInEntityStorageRule
+    probability: 0.1
     entities:
     - id: Scp096PhotoDeveloped
 
