@@ -208,6 +208,7 @@
     - Scp096About
     - ScpResearch
     - ScpResearchAdvanced
+    - ScpFear
 
 - type: entity
   id: Scp096Face

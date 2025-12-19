@@ -113,6 +113,7 @@
   - type: GuideHelp
     guides:
     - ScpResearch
+    - ScpFear
   - type: Store
     balance:
       LifeEssence: 20
