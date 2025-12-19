@@ -87,16 +87,6 @@
   tileReactions:
   - !type:SpillTileReaction
   - !type:ExtinguishTileReaction
-    effects:
-    - !type:MovespeedModifier
-      walkSpeedModifier: 0.9
-      sprintSpeedModifier: 0.9
-      statusLifetime: 3
-  - !type:PryTileReaction
-    effects:
-    - !type:PopupMessage
-      type: Local
-      messages: [ "reagent-effect-guidebook-pry-tile-reaction" ]
 
 - type: reagent
   parent: Blood
@@ -160,36 +150,9 @@
       - !type:Emote
         emote: Scream
         probability: 0.5
-    Blood:
-      methods: [ Touch ]
-      effects:
-      - !type:HealthChange
-        scaleByQuantity: true
-        ignoreResistances: false
-        damage:
-          types:
-            Poison: 0.5
-      - !type:PopupMessage
-        type: Local
-        messages: [ "scp096-blood-fear" ]
   tileReactions:
   - !type:SpillTileReaction
   - !type:ExtinguishTileReaction
-    effects:
-    - !type:AdjustTemperature
-      amount: -3000
-  - !type:PryTileReaction
-    effects:
-    - !type:Jitter
   - !type:FlammableTileReaction
     temperatureMultiplier: 1.5
-    effects:
-    - !type:AdjustTemperature
-      amount: 2000
-  - !type:CreateEntityTileReaction
-    entity: Carpet
-    effects:
-    - !type:PopupMessage
-      type: Local
-      messages: [ "scp096-blood-fear-in-air" ]
 
