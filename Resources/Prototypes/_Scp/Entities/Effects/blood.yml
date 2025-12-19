@@ -19,6 +19,19 @@
     solutions:
       blood:
         maxVol: 5
+  - type: DrawableSolution
+    solution: blood
+  - type: ExaminableSolution
+    solution: blood
+    locVolume: "examinable-solution-on-examine-volume-puddle"
+  - type: StepTrigger
+  - type: Edible
+    edible: Drink
+    delay: 0.5
+    transferAmount: 1
+    solution: blood
+  - type: MixableSolution
+    solution: blood
 
 - type: entity
   id: BaseBloodParticle

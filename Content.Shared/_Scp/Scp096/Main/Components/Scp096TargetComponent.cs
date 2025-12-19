@@ -22,5 +22,5 @@ public sealed partial class Scp096TargetComponent : Component
     /// Звук, проигрывающийся жертве, когда она видит скромника.
     /// </summary>
     [DataField]
-    public SoundSpecifier SeenSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/seen.ogg");
+    public SoundSpecifier SeenSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/seen.ogg", AudioParams.Default.WithVolume(3f));
 }

@@ -7,7 +7,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp096.Main.Components;
 
-// TODO: Звуки
+// TODO: Звуки(нормальные)
 // TODO: Возможность визуально понять степень урона лица скромника со стороны
 /// <summary>
 /// Компонент, отвечающий за активное состояние скромника с содранным лицом.
@@ -61,7 +61,7 @@ public sealed partial class ActiveScp096WithoutFaceComponent : Component
         {
             { "Slash", 15 },
             { "Blunt", 1 },
-            { "Structural", 35 },
+            { "Structural", 45 },
         },
     };
 
