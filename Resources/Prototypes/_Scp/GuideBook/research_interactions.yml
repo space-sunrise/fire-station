@@ -1,4 +1,4 @@
-﻿# TODO: Иконки в гайдбуки. Нужно написать на санрайзе тег берущий спрайт из указанного EntProtoId
+﻿# TODO: Иконки в гайдбуки
 
 - type: guideEntry
   id: ScpResearch
@@ -17,4 +17,35 @@
   id: ScpFear
   name: guide-entry-scp-fear
   text: "/ServerInfo/_Scp/Guidebook/Fear/Fear.xml"
+  priority: -3
+
+- type: guideEntry
+  id: Scp096About
+  name: guide-entry-scp-scp096-about
+  text: "/ServerInfo/_Scp/Guidebook/Scp096/About.xml"
   priority: -2
+  children:
+  - Scp096States
+  - Scp096Abilities
+  - Scp096Containment
+  - Scp096ContainmentBreach
+
+- type: guideEntry
+  id: Scp096States
+  name: guide-entry-scp-scp096-states
+  text: "/ServerInfo/_Scp/Guidebook/Scp096/States.xml"
+
+- type: guideEntry
+  id: Scp096Abilities
+  name: guide-entry-scp-scp096-abilities
+  text: "/ServerInfo/_Scp/Guidebook/Scp096/Abilities.xml"
+
+- type: guideEntry
+  id: Scp096Containment
+  name: guide-entry-scp-scp096-containment
+  text: "/ServerInfo/_Scp/Guidebook/Scp096/Containment.xml"
+
+- type: guideEntry
+  id: Scp096ContainmentBreach
+  name: guide-entry-scp-scp096-containment-breach
+  text: "/ServerInfo/_Scp/Guidebook/Scp096/ContainmentBreach.xml"
