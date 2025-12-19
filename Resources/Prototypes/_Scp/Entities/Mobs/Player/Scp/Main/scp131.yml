@@ -75,6 +75,9 @@
 #  - type: Blinkable мейби в другой жизни, когда будет не криво работать и балансно
 #  - type: EyeClosing
   - type: VentCrawler
+  - type: GuideHelp
+    guides:
+    - ScpResearch
 
 - type: entity
   id: Scp131B

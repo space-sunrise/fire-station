@@ -205,8 +205,10 @@
         Quantity: 5
   - type: GuideHelp
     guides:
+    - Scp096About
     - ScpResearch
     - ScpResearchAdvanced
+    - ScpFear
 
 - type: entity
   id: Scp096Face

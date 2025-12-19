@@ -70,3 +70,7 @@
   - type: GhostTakeoverAvailable
   - type: ReplacementAccent
     accent: cat
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+    - ScpFear
