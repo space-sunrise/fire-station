@@ -28,7 +28,7 @@
       types:
         Blunt: 20
         Slash: 20
-        Structural: 50
+        Structural: 80
     range: 2
   - type: BloodSplatterer
     amount: 2, 6
