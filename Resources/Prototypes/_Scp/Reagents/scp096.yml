@@ -15,6 +15,20 @@
     Medicine:
       effects:
       - !type:ChemHealEyeDamage
+      - !type:Emote
+        emote: Crying
+        probability: 0.3
+      - !type:Paralyze
+        probability: 0.1
+      - !type:AdjustTemperature
+        amount: -3000
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.1
+        sprintSpeedModifier: 1.1
+        statusLifetime: 10
+      - !type:Jitter
+      - !type:ChemVomit
+        probability: 0.05
     Drink:
       effects:
       - !type:SatiateThirst
@@ -35,6 +49,54 @@
         damage:
           types:
             Heat: 3
+  plantMetabolism:
+  - !type:PlantAdjustWater
+    amount: 2
+  - !type:PlantAdjustNutrition
+    amount: 1.5
+  - !type:PlantAdjustHealth
+    amount: 3
+  reactiveEffects:
+    Flammable:
+      methods: [ Touch ]
+      effects:
+      - !type:FlammableReaction
+        multiplier: 0.5
+      - !type:AdjustTemperature
+        amount: -2000
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        ignoreResistances: false
+        damage:
+          types:
+            Caustic: 0.3
+      - !type:AdjustTemperature
+        amount: -1500
+      - !type:Jitter
+    Extinguish:
+      methods: [ Touch ]
+      effects:
+      - !type:ExtinguishReaction
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.8
+        sprintSpeedModifier: 0.8
+        statusLifetime: 5
+  tileReactions:
+  - !type:SpillTileReaction
+  - !type:ExtinguishTileReaction
+    effects:
+    - !type:MovespeedModifier
+      walkSpeedModifier: 0.9
+      sprintSpeedModifier: 0.9
+      statusLifetime: 3
+  - !type:PryTileReaction
+    effects:
+    - !type:PopupMessage
+      type: Local
+      messages: [ "reagent-effect-guidebook-pry-tile-reaction" ]
 
 - type: reagent
   parent: Blood
@@ -46,4 +108,88 @@
   color: "#4F002B"
   recognizable: false
   physicalDesc: reagent-physical-desc-slimy
+  metabolisms:
+    Poison:
+      effects:
+      - !type:ChemVomit
+        probability: 0.15
+      - !type:Jitter
+      - !type:AdjustTemperature
+        amount: -5000
+    Medicine:
+      effects:
+      - !type:Oxygenate
+      - !type:ReduceRotting
+        seconds: 5
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: 15
+  - !type:PlantAdjustWater
+    amount: 1
+  reactiveEffects:
+    Flammable:
+      methods: [ Touch ]
+      effects:
+      - !type:FlammableReaction
+        multiplier: 1.5
+      - !type:Ignite
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        ignoreResistances: false
+        damage:
+          types:
+            Caustic: 0.8
+      - !type:Paralyze
+        probability: 0.3
+    Extinguish:
+      methods: [ Touch ]
+      effects:
+      - !type:ExtinguishReaction
+      - !type:AdjustTemperature
+        amount: -4000
+    Unholy:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: 3
+      - !type:Emote
+        emote: Scream
+        probability: 0.5
+    Blood:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        ignoreResistances: false
+        damage:
+          types:
+            Poison: 0.5
+      - !type:PopupMessage
+        type: Local
+        messages: [ "scp096-blood-fear" ]
+  tileReactions:
+  - !type:SpillTileReaction
+  - !type:ExtinguishTileReaction
+    effects:
+    - !type:AdjustTemperature
+      amount: -3000
+  - !type:PryTileReaction
+    effects:
+    - !type:Jitter
+  - !type:FlammableTileReaction
+    temperatureMultiplier: 1.5
+    effects:
+    - !type:AdjustTemperature
+      amount: 2000
+  - !type:CreateEntityTileReaction
+    entity: Carpet
+    effects:
+    - !type:PopupMessage
+      type: Local
+      messages: [ "scp096-blood-fear-in-air" ]
 
