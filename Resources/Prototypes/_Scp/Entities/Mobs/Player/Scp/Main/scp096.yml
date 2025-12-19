@@ -131,6 +131,16 @@
   - type: Blindable
   - type: Climbing
   - type: Muted
+  - type: Stamina
+    stunTime: 12
+    critThreshold: 400
+    animationThreshold: 220
+    stunModifierThresholds:
+      0: 1
+      70: 0.85
+      120: 0.7
+      180: 0.55
+      230: 0.4
   - type: Damageable
     damageModifierSet: SCP-096
   - type: ScpExaminableDamage
