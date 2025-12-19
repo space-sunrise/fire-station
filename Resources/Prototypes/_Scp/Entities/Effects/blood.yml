@@ -27,7 +27,7 @@
   - type: StepTrigger
   - type: Edible
     edible: Drink
-    delay: 3
+    delay: 0.5
     transferAmount: 1
     solution: blood
   - type: MixableSolution
