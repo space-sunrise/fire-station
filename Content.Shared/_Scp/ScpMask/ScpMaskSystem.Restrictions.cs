@@ -56,6 +56,9 @@ public sealed partial class ScpMaskSystem
 
     private void OnPickupAttempt(Entity<ScpComponent> ent, ref PickupAttemptEvent args)
     {
+        if (args.Cancelled)
+            return;
+
         if (!TryGetScpMask(ent, out var mask))
             return;
 
