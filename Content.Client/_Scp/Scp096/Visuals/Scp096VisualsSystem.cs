@@ -20,6 +20,7 @@ public sealed class Scp096VisualsSystem : VisualizerSystem<Scp096Component>
         if (args.Sprite == null)
             return;
 
+        var enabledLayers = 0;
         foreach (var key in args.AppearanceData.Keys)
         {
             if (!AppearanceSystem.TryGetData<bool>(uid, key, out var boolValue, args.Component))
@@ -30,6 +31,20 @@ public sealed class Scp096VisualsSystem : VisualizerSystem<Scp096Component>
 
             Log.Debug($"{key.ToString()}: {boolValue}");
             SpriteSystem.LayerSetVisible(uid, key, boolValue);
+
+            if (boolValue)
+                enabledLayers++;
+        }
+
+        // Этого не должно происходить, но что-то всегда может пойти не так.
+        // Логгируем
+        if (enabledLayers > 1)
+        {
+            Log.Error($"""
+                Enabled more than 1 sprite layers at the same time!
+                Stack trace:
+                {Environment.StackTrace}
+                """);
         }
     }
 }
