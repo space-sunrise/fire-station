@@ -5,26 +5,26 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.ScpMask;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class ScpMaskComponent : Component, IClothingSlots
 {
     /// <summary>
-    /// Вайтлист таргетов, на которых можно надеть маску
+    /// Вайтлист целей, на которых можно надеть маску
     /// </summary>
-    [DataField(required: true), AlwaysPushInheritance]
+    [DataField(required: true)]
     public EntityWhitelist TargetWhitelist = default!;
 
     /// <summary>
     /// Слот, в котором должна находиться маска
     /// </summary>
-    [DataField, AlwaysPushInheritance]
+    [DataField]
     public SlotFlags Slots { get; set; } = SlotFlags.MASK;
 
     /// <summary>
-    /// Время, которое сцп 096 должен рвать свою маску
+    /// Время, которое объект будет разрывать маску
     /// </summary>
-    [DataField, AlwaysPushInheritance]
-    public float TearTime = 10f; // 10 секунд
+    [DataField]
+    public TimeSpan TearTime = TimeSpan.FromSeconds(10f);
 
     /// <summary>
     /// Шанс того, что маска слетит при получении урона
@@ -62,20 +62,33 @@ public sealed partial class ScpMaskComponent : Component, IClothingSlots
 
     #region Safe time
 
-    [DataField, AlwaysPushInheritance]
-    public float SafeTime = 300; // 5 минут
+    /// <summary>
+    /// Безопасное время, в течение которого запрещено снимать маску.
+    /// Устанавливается после надевания маски на объект.
+    /// </summary>
+    [DataField]
+    public TimeSpan SafeTime = TimeSpan.FromMinutes(5f);
 
-    [AutoNetworkedField, AlwaysPushInheritance]
+    /// <summary>
+    /// Время окончания безопасного времени
+    /// </summary>
+    [AutoNetworkedField, AutoPausedField]
     public TimeSpan? SafeTimeEnd;
 
     #endregion
 
     #region Sounds
 
-    [DataField, AlwaysPushInheritance]
+    /// <summary>
+    /// Звук экипировки маски на сущность.
+    /// </summary>
+    [DataField]
     public SoundSpecifier? EquipSound;
 
-    [DataField, AlwaysPushInheritance]
+    /// <summary>
+    /// Звук успешного разрыва маски сущностью.
+    /// </summary>
+    [DataField]
     public SoundSpecifier? TearSound;
 
     // TODO: Постоянный звук разрывания маски, которые будет проигрываться на протяжении всего процесса

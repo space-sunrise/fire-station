@@ -23,6 +23,7 @@ public sealed partial class ScpMaskSystem
 
         SubscribeLocalEvent<ScpComponent, ScpMaskEquipmentDoAfterEvent>(OnMeleeEquip);
         SubscribeLocalEvent<ScpMaskComponent, BeingEquippedAttemptEvent>(OnEquip);
+        SubscribeLocalEvent<ScpMaskComponent, BeingUnequippedAttemptEvent>(OnUnequip);
     }
 
     private void OnAfterInteract(Entity<ScpMaskComponent> ent, ref AfterInteractEvent args)
@@ -166,9 +167,6 @@ public sealed partial class ScpMaskSystem
 
     private void OnEquip(Entity<ScpMaskComponent> ent, ref BeingEquippedAttemptEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
         if (args.Cancelled)
             return;
 
@@ -178,23 +176,35 @@ public sealed partial class ScpMaskSystem
             return;
         }
 
-        DoEquipmentStuff(ent, args.EquipTarget);
+        DoEquipmentStuff(ent, args.EquipTarget, args.Equipee);
     }
 
-    private void DoEquipmentStuff(Entity<ScpMaskComponent> ent, EntityUid target)
+    private void OnUnequip(Entity<ScpMaskComponent> ent, ref BeingUnequippedAttemptEvent args)
     {
-        // Проигрывание звука надевания
-        if (ent.Comp.EquipSound != null)
-            _audio.PlayPvs(ent.Comp.EquipSound, target);
+        if (args.Cancelled)
+            return;
+
+        if (args.UnEquipTarget == args.Unequipee && IsInSafeTime(ent, args.Unequipee))
+            args.Cancel();
+    }
+
+    private void DoEquipmentStuff(Entity<ScpMaskComponent> ent, EntityUid target, EntityUid equiper)
+    {
+        // Проигрывание звука надевания.
+        _audio.PlayPredicted(ent.Comp.EquipSound, target, equiper);
 
         // Задаем сейвтайм, в течение которого игрок не может снять маску
-        ent.Comp.SafeTimeEnd = _timing.CurTime + TimeSpan.FromSeconds(ent.Comp.SafeTime);
+        ent.Comp.SafeTimeEnd = _timing.CurTime + ent.Comp.SafeTime;
         Dirty(ent);
     }
 }
+
+#region Events
 
 [Serializable, NetSerializable]
 public sealed partial class ScpMaskEquipmentDoAfterEvent : SimpleDoAfterEvent;
 
 public sealed partial class ScpMaskEquipAttempt : CancellableEntityEventArgs;
 public sealed partial class ScpMaskTargetEquipAttempt : CancellableEntityEventArgs;
+
+#endregion

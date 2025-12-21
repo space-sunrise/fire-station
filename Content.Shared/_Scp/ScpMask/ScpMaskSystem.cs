@@ -1,12 +1,12 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Mobs.Components;
+using Content.Shared._Scp.SafeTime;
 using Content.Shared.Actions;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
-using Content.Shared.Pulling.Events;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
@@ -43,23 +43,19 @@ public sealed partial class ScpMaskSystem : EntitySystem
 
         InitializeEquipment();
         InitializeRestrictions();
-
-        Log.Level = LogLevel.Info;
     }
 
     private void OnTear(Entity<ScpComponent> scp, ref ScpTearMaskEvent args)
     {
+        if (args.Handled)
+            return;
+
         if (!TryGetScpMask(scp, out var scpMask))
             return;
 
         // Нельзя снять маску, пока действует сейвтайм
-        if (scpMask.Value.Comp.SafeTimeEnd != null && _timing.CurTime < scpMask.Value.Comp.SafeTimeEnd)
-        {
-            var message = Loc.GetString("scp-mask-cannot-tear-safetime", ("time", scpMask.Value.Comp.SafeTimeEnd - _timing.CurTime));
-            _popup.PopupClient(message, scp, scp);
-
+        if (IsInSafeTime(scpMask.Value, scp))
             return;
-        }
 
         var doAfterArgs = new DoAfterArgs(EntityManager, scp, scpMask.Value.Comp.TearTime, new ScpTearMaskDoAfterEvent(), scp, scp, scpMask)
         {
@@ -67,7 +63,7 @@ public sealed partial class ScpMaskSystem : EntitySystem
             BreakOnMove = true,
         };
 
-        _doAfter.TryStartDoAfter(doAfterArgs);
+        args.Handled = _doAfter.TryStartDoAfter(doAfterArgs);
     }
 
     private void OnTearSuccess(Entity<ScpComponent> scp, ref ScpTearMaskDoAfterEvent args)
@@ -128,9 +124,7 @@ public sealed partial class ScpMaskSystem : EntitySystem
         );
 
         _popup.PopupPredicted(message, scp, null, PopupType.LargeCaution);
-
-        if (_net.IsServer)
-            QueueDel(mask);
+        PredictedQueueDel(mask.Owner);
 
         return true;
     }
@@ -147,9 +141,6 @@ public sealed partial class ScpMaskSystem : EntitySystem
             return false;
 
         if (!Resolve(maskEntity, ref maskEntity.Comp))
-            return false;
-
-        if (!Exists(maskEntity) || Terminating(maskEntity))
             return false;
 
         mask = (maskEntity.Owner, maskEntity.Comp);
@@ -173,6 +164,50 @@ public sealed partial class ScpMaskSystem : EntitySystem
         var message = Loc.GetString("scp-mask-action-blocked", ("mask", Name(mask.Value)));
         if (_net.IsServer) // Для работы вызовов с сервера
             _popup.PopupEntity(message, scp, scp, PopupType.LargeCaution);
+
+        return true;
+    }
+
+    #endregion
+
+    #region Helpers
+
+    /// <summary>
+    /// Упрощенный метод для проверки, находится ли маска в периоде "безопасного времени".
+    /// Автоматически получает маску на сущности и вызывает полноценный метод, возвращая его результат.
+    /// </summary>
+    /// <param name="user">Сущность, для которой будет показано уведомление о невозможности снятия маски, если <see cref="silent"/> = true</param>
+    /// <param name="silent">Будет ли показано уведомление о невозможности снятия маски, если маска находится в безопасном времени</param>
+    /// <returns>Находится ли маска в безопасном времени или нет</returns>
+    private bool IsInSafeTime(EntityUid user, bool silent = false)
+    {
+        if (!TryGetScpMask(user, out var mask))
+            return false;
+
+        return IsInSafeTime(mask.Value, user, silent);
+    }
+
+    /// <summary>
+    /// Проверяет, находится ли маска в "безопасном времени" в течение которого ее запрещено снимать.
+    /// </summary>
+    /// <param name="ent">Маска, которую проверяем</param>
+    /// <param name="user">Сущность, для которой будет показано уведомление о невозможности снятия маски, если <see cref="silent"/> = true</param>
+    /// <param name="silent">Будет ли показано уведомление о невозможности снятия маски, если маска находится в безопасном времени</param>
+    /// <returns>Находится ли маска в безопасном времени или нет.</returns>
+    private bool IsInSafeTime(Entity<ScpMaskComponent> ent, EntityUid user, bool silent = false)
+    {
+        if (!ent.Comp.SafeTimeEnd.HasValue)
+            return false;
+
+        if (_timing.CurTime >= ent.Comp.SafeTimeEnd)
+            return false;
+
+        if (!silent)
+        {
+            var timeLeft = SharedSafeTimeSystem.GetTimeLeft(_timing.CurTime, ent.Comp.SafeTimeEnd.Value);
+            var message = Loc.GetString("scp-mask-cannot-tear-safe-time", ("time", timeLeft));
+            _popup.PopupClient(message, user, user);
+        }
 
         return true;
     }
