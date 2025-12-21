@@ -70,6 +70,12 @@ public sealed partial class ScpMaskComponent : Component, IClothingSlots
     [DataField]
     public bool BlockAttacks = true;
 
+    /// <summary>
+    /// Будет ли маска блокировать возможность подбирать предметы?
+    /// </summary>
+    [DataField]
+    public bool BlockPickups = true;
+
     #endregion
 
     #region Safe time
