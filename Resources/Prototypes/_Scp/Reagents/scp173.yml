@@ -1,4 +1,4 @@
-﻿- type: reagent
+- type: reagent
   parent: Blood
   id: Scp173Reagent
   name: reagent-name-scp173
@@ -11,3 +11,52 @@
   synthesisable: true
   absorbCooldownPerUnit: 0.4
   viscosity: 0.3
+  metabolisms:
+    Drink:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 3
+      - !type:ChemVomit
+        probability: 0.3
+      - !type:PopupMessage
+        type: Local
+        visualType: MediumCaution
+        messages: [ "scp173-reagent-effect-nausea", "scp173-reagent-effect-disgusting", "scp173-reagent-effect-burning" ]
+        probability: 0.2
+      - !type:GenericStatusEffect
+        key: TemporaryBlindness
+        component: TemporaryBlindness
+        conditions:
+        - !type:ReagentThreshold
+          min: 10
+      - !type:MovespeedModifier
+        conditions:
+        - !type:ReagentThreshold
+          min: 20
+        walkSpeedModifier: 0.8
+        sprintSpeedModifier: 0.8
+      - !type:ModifyBleedAmount
+        amount: 0.3
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 8
+      - !type:MovespeedModifier
+        conditions:
+        - !type:ReagentThreshold
+          min: 15
+        walkSpeedModifier: 0.7
+        sprintSpeedModifier: 0.7
+      - !type:ModifyBleedAmount
+        amount: 0.5
+  plantMetabolism:
+  - !type:PlantAdjustToxins
+    amount: 5
+  - !type:PlantAdjustWater
+    amount: 0.3
+  - !type:PlantAdjustHealth
+    amount: -2

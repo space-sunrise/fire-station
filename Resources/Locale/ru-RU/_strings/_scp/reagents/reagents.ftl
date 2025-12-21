@@ -6,3 +6,9 @@ reagent-desc-scp096-blood = Плотная тёмная жидкость, изъ
 
 scp096-blood-fear = Вы чувствуете чужой страх...
 scp096-blood-fear-in-air = В воздухе витает страх...
+
+reagent-name-scp173 = коричневое нечто
+reagent-desc-scp173 = отвратительно пахнущее вещество
+scp173-reagent-effect-nausea = Вас тошнит от этой мерзости!
+scp173-reagent-effect-disgusting = Эта смесь вызывает сильное отвращение!
+scp173-reagent-effect-burning = Внутри все горит от этой отвратительной субстанции!
