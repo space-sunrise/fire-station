@@ -83,10 +83,18 @@ public sealed partial class ScpMaskSystem : EntitySystem
             return;
 
         // Нужен только тот урон, что нанесли игроки
-        if (!args.Origin.HasValue)
+        if (!args.Origin.HasValue || args.Origin == scp)
             return;
 
         if (!TryGetScpMask(scp, out var scpMask))
+            return;
+
+        // Проверяем, подходит ли инициатор урона под заданные критерии
+        // Например, мы не хотим, чтобы урон от НЕ мобов считался -> записываем MobState в DamageOriginWhitelist
+        // и только сущности имеющие MobState пройдут здесь
+        if (!_whitelist.CheckBoth(args.Origin,
+                scpMask.Value.Comp.DamageOriginBlacklist,
+                scpMask.Value.Comp.DamageOriginWhitelist))
             return;
 
         if (!_random.ProbForEntity(scp, scpMask.Value.Comp.TearChanceOnDamage))

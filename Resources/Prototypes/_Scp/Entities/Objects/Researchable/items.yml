@@ -45,6 +45,9 @@
     targetWhitelist:
       components:
       - Scp096
+    damageOriginWhitelist:
+      components:
+      - MobState
     tearChanceOnDamage: 0.4
   - type: ClothingAddActions
     actions:

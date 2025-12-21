@@ -39,6 +39,18 @@ public sealed partial class ScpMaskComponent : Component, IClothingSlots
     private float _tearChanceOnDamage;
 
     /// <summary>
+    /// Белый список сущностей, которые могут уничтожить маску нанеся урон по сущности с маской.
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? DamageOriginWhitelist;
+
+    /// <summary>
+    /// Черный список сущностей, которые могут уничтожить маску нанеся урон по сущности с маской.
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? DamageOriginBlacklist;
+
+    /// <summary>
     /// Время надевания маски при помощи атаки.
     /// </summary>
     [DataField]
