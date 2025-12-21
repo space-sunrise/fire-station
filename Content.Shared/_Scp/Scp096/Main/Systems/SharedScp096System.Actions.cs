@@ -172,10 +172,12 @@ public abstract partial class SharedScp096System
             : _standing.Down(ent.Owner, false);
 
         if (!successful)
-            return false;
+        {
+            if (_timing.IsFirstTimePredicted)
+                Log.Error($"Failed to change SCP-096 standing state! Entity {ToPrettyString(ent)}, have to stand: {haveToStand}");
 
-        ToggleMovement(ent, haveToStand);
-        TryModifyTearsSpawnSpeed(ent, !haveToStand);
+            return false;
+        }
 
         return true;
     }
