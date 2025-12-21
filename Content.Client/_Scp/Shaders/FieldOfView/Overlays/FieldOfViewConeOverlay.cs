@@ -113,7 +113,7 @@ public sealed class FieldOfViewConeOverlay : Overlay
         var viewport = args.WorldBounds;
         var viewportBounds = new Box2(Vector2.Zero, _blurPass.Size);
 
-        if (_timing.CurTime >= _nextUpdate)
+        if (_timing.RealTime >= _nextUpdate)
         {
             handle.RenderInRenderTarget(_blurPass, () =>
             {
@@ -129,7 +129,7 @@ public sealed class FieldOfViewConeOverlay : Overlay
                 handle.DrawRect(viewportBounds, Color.White);
             }, Color.Transparent);
 
-            _nextUpdate = _timing.CurTime + _fovManagement.UpdateInterval;
+            _nextUpdate = _timing.RealTime + _fovManagement.UpdateInterval;
         }
 
         var offset = GetOffset(uid, xform, eye);

@@ -19,7 +19,6 @@ public abstract partial class SharedScp096System
 
     private void InitializeAppearance()
     {
-        SubscribeLocalEvent<Scp096Component, StunnedEvent>(SetSitDown);
         SubscribeLocalEvent<Scp096Component, DownedEvent>(SetSitDown);
         SubscribeLocalEvent<Scp096Component, StoodEvent>(SetStandUp);
 
@@ -155,11 +154,15 @@ public abstract partial class SharedScp096System
     private void SetSitDown<T>(Entity<Scp096Component> ent, ref T args)
     {
         ToggleSitAnimation(ent.AsNullable(), false);
+        ToggleMovement(ent, false);
+        TryModifyTearsSpawnSpeed(ent.AsNullable(), true);
     }
 
     private void SetStandUp<T>(Entity<Scp096Component> ent, ref T args)
     {
         ToggleSitAnimation(ent.AsNullable(), true);
+        ToggleMovement(ent, true);
+        TryModifyTearsSpawnSpeed(ent.AsNullable(), false);
     }
 
     #endregion

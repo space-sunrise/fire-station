@@ -203,6 +203,11 @@
       reagents:
       - ReagentId: Scp096Blood
         Quantity: 5
+  - type: Tag
+    tags:
+    - FootstepSound
+    - CannotSuicide
+    - CanStandUpWithoutAbilityToMove
   - type: GuideHelp
     guides:
     - Scp096About

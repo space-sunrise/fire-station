@@ -306,7 +306,9 @@ public abstract partial class SharedStunSystem : EntitySystem
             return false;
 
         // We can't exit knockdown when we're stunned, so this prevents knockdown lasting longer than the stun.
-        Knockdown(uid, null, false, true, true);
+
+        // Fire edit start - почему тут было null во времени
+        Knockdown(uid, duration, false, true, true);
         OnStunnedSuccessfully(uid, duration);
 
         return true;
