@@ -27,6 +27,7 @@ namespace Content.Client.Launcher
     public sealed partial class LauncherConnectingGui : Control
     {
         [Dependency] private readonly IUriOpener _uri = default!; // Sunrise-Edit
+        [Dependency] private readonly IResourceCache _resourceCache = default!; // Fire added
 
         private const float RedialWaitTimeSeconds = 10f; // Sunrise-edit
         private readonly LauncherConnecting _state;
@@ -44,7 +45,10 @@ namespace Content.Client.Launcher
         private string _discordLink = ""; // Sunrise-Edit
         private string _telegramLink = ""; // Sunrise-Edit
 
-        private const string AnimationId = "DeepFacility"; // Fire added
+        // Fire added start - крутая анимция загрузки
+        private const string AnimationId = "DeepFacility";
+        private TextureResource? _animationResource;
+        // Fire added end
 
         public LauncherConnectingGui(LauncherConnecting state, IRobustRandom random,
             IPrototypeManager prototype, IConfigurationManager config, IClipboardManager clipboard,
@@ -79,12 +83,13 @@ namespace Content.Client.Launcher
             Telegram.OnPressed += _ => _uri.OpenUri(_telegramLink); // Sunrise-Edit
 
             // Fire added start - анимация вместо паралакса при загрузке
-            var resourceCache = IoCManager.Resolve<IResourceCache>();
             SetAnimation();
 
-            var logoTexture = resourceCache.GetTexture("/Textures/_Scp/Logo/logo-hollow.png"); // Fire edit
+            var logoTexture = _resourceCache.GetResource<TextureResource>("/Textures/_Scp/Logo/logo-hollow.png"); // Fire edit
             Logo.Texture = logoTexture;
             Logo.TextureScale = new Vector2(0.125f, 0.125f);
+
+            _animationResource = logoTexture;
             // Fire added end
 
             var addr = state.Address;
@@ -121,6 +126,7 @@ namespace Content.Client.Launcher
             if (!_prototype.TryIndex<LobbyAnimationPrototype>(AnimationId, out var lobbyAnimationPrototype))
                 return;
 
+            // TODO: Здесь пофиксить
             ConnectionAnimation.SetFromSpriteSpecifier(new SpriteSpecifier.Rsi(new ResPath(lobbyAnimationPrototype.RawPath), lobbyAnimationPrototype.State));
             ConnectionAnimation.DisplayRect.TextureScale = lobbyAnimationPrototype.Scale;
             ConnectionAnimation.DisplayRect.Stretch = TextureRect.StretchMode.Scale;
@@ -260,5 +266,30 @@ namespace Content.Client.Launcher
         {
             ConnectStatus.Text = Loc.GetString($"connecting-state-{state}");
         }
+
+        // Fire added start - очищение ресурсов
+
+        protected override void EnteredTree()
+        {
+            base.EnteredTree();
+
+            if (_animationResource != null || Logo.Texture != null)
+                return;
+
+            var logoTexture = _resourceCache.GetResource<TextureResource>("/Textures/_Scp/Logo/logo-hollow.png"); // Fire edit
+            Logo.Texture = logoTexture;
+            Logo.TextureScale = new Vector2(0.125f, 0.125f);
+        }
+
+        protected override void ExitedTree()
+        {
+            base.ExitedTree();
+
+            _animationResource?.Dispose();
+            _animationResource = null;
+
+            Logo.Texture = null;
+        }
+        // Fire added end
     }
 }
