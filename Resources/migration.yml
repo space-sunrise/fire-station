@@ -1919,6 +1919,12 @@ LockerSecurityFilled: null
 LockerBrigmedic: null
 LockerBrigmedicFilled: null
 
+# Столы
+Table: ScpTable
+TableReinforced: ScpTableReinforced
+TableGlass: ScpTableGlass
+TableReinforcedGlass: ScpTableReinforcedGlass
+
 # Факсы
 FaxMachineCentcom: FaxMachineRegionalAdministration
 FaxMachineSyndie: FaxMachineEncrypted
@@ -2272,6 +2278,11 @@ ClothingHelmetNTF: ClothingHelmetMtfTactical
 MTFSpecialistBackpack: MtfTacticalBackpack
 ClothingMaskGasLLH: null
 ClothingMaskGasRRH: null
+
+# Ликвидированные столы
+TableStone: ScpTable
+TableWeb: ScpTable
+TableXeno: ScpTable
 
 # Удаленные стены
 ScpWallConcreteLightContaimentCrack: ScpWallConcreteLightContaiment
