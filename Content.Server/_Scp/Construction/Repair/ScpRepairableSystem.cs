@@ -4,6 +4,7 @@ using Content.Server.DoAfter;
 using Content.Server.Popups;
 using Content.Server.Stack;
 using Content.Server.Tools;
+using Content.Shared._Scp.Damage.ExaminableDamage;
 using Content.Shared.Construction;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Construction.Steps;
@@ -34,7 +35,7 @@ public sealed class ScpRepairableSystem : EntitySystem
     [Dependency] private readonly ToolSystem _tool = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
 
-    private const int ExaminePriority = -100;
+    private const int ExaminePriority = SharedScpExaminableDamageSystem.Priority - 3;
 
     public override void Initialize()
     {
