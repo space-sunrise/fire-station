@@ -1,15 +1,18 @@
+using Content.Server.Construction.Components;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Random.Rules;
 using Content.Shared.Whitelist;
-using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
-namespace Content.Shared._Scp.Repair.Components;
+namespace Content.Server._Scp.Construction.Repair;
 
 /// <summary>
-/// Компонент, позволяющий сущности быть отремонтированной с использованием ConstructionGraph.
+/// Компонент, позволяющий сущности быть отремонтированной с использованием <see cref="ConstructionGraphPrototype"/>.
+/// Является аналогом <see cref="ConstructionComponent"/>, но для ремонта.
+/// <seealso cref="ScpRepairableSystem"/>
+/// <seealso cref="ScpRepairableCanSeeExamineHintsComponent"/>
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class ScpRepairableComponent : Component
 {
     /// <summary>
@@ -17,6 +20,8 @@ public sealed partial class ScpRepairableComponent : Component
     /// </summary>
     [DataField(required: true)]
     public ProtoId<ConstructionGraphPrototype> Graph;
+
+    #region Restrictions
 
     /// <summary>
     /// Правила проверки, которые будут применяться к цели ремонта
@@ -56,6 +61,10 @@ public sealed partial class ScpRepairableComponent : Component
     [DataField]
     public EntityWhitelist? UserBlacklist;
 
+    #endregion
+
+    #region Examining
+
     /// <summary>
     /// Строка, которая будет показываться определенным цветом, когда сущность можно отремонтировать.
     /// </summary>
@@ -67,6 +76,22 @@ public sealed partial class ScpRepairableComponent : Component
     /// </summary>
     [DataField]
     public Color ExamineColor = Color.LightGray;
+
+    /// <summary>
+    /// Белый список для сущности, которая осматривает цель ремонта.
+    /// Определяет, увидит ли осматривающий подсказки при ремонте.
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? ExamineWhitelist;
+
+    /// <summary>
+    /// Черный список для сущности, которая осматривает цель ремонта.
+    /// Определяет, увидит ли осматривающий подсказки при ремонте.
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? ExamineBlacklist;
+
+    #endregion
 
     #region Repair State
 

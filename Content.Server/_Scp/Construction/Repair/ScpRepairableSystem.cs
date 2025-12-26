@@ -4,7 +4,6 @@ using Content.Server.DoAfter;
 using Content.Server.Popups;
 using Content.Server.Stack;
 using Content.Server.Tools;
-using Content.Shared._Scp.Repair.Components;
 using Content.Shared.Construction;
 using Content.Shared.Construction.Prototypes;
 using Content.Shared.Construction.Steps;
@@ -18,10 +17,10 @@ using Robust.Server.Containers;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server._Scp.Repair;
+namespace Content.Server._Scp.Construction.Repair;
 
 /// <summary>
-/// Система ремонта структур с использованием ConstructionGraph.
+/// Система ремонта структур с использованием <see cref="ConstructionGraphPrototype"/>.
 /// </summary>
 public sealed class ScpRepairableSystem : EntitySystem
 {
@@ -87,7 +86,10 @@ public sealed class ScpRepairableSystem : EntitySystem
             if (!string.IsNullOrEmpty(ent.Comp.ExamineMessage))
                 args.PushMarkup($"[color={colorHex}]{Loc.GetString(ent.Comp.ExamineMessage)}[/color]");
 
-            nextStep?.DoExamine(args);
+            // Проверки для возможности видеть подсказки при ремонте.
+            // Задумывается, что их должен видеть только персонал инженерно-технической службы
+            if (_whitelist.CheckBoth(args.Examiner, ent.Comp.ExamineBlacklist, ent.Comp.ExamineWhitelist))
+                nextStep?.DoExamine(args);
         }
     }
 

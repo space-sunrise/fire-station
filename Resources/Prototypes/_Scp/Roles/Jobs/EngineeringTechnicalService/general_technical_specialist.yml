@@ -20,6 +20,7 @@
       class: C
     - type: AccessLevel
       level: Two
+    - type: ScpRepairableCanSeeExamineHints
 
 - type: startingGear
   id: GeneralTechnicalSpecialistGear
