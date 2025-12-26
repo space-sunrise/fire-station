@@ -59,12 +59,24 @@
   - type: ExaminableDamage
     messages: ScpWallBrickMessages
 
+- type: entity
+  id: ScpBaseWallRepairable
+  abstract: true
+  components:
+  - type: ScpRepairable
+    graph: ScpWallRepair
+    targetRules: RequireDamageRule
+    userBlacklist:
+      components:
+      - Scp
+
 # Стена
 - type: entity
   parent:
   - WallSolid
   - ScpBaseWallDamageableVisualsMetal
   - ScpBaseStructureDamageOnSpawn
+  - ScpBaseWallRepairable
   id: ScpWallSolid
   name: wall
   components:
@@ -75,12 +87,15 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: ScpRepairable
+    graph: ScpWallRepair
 
 - type: entity
   parent:
   - WallSolidRust
   - ScpBaseWallDamageableVisualsMetal
   - ScpBaseStructureDamageOnSpawn
+  - ScpBaseWallRepairable
   id: ScpWallSolidRust
   name: wall
   components:
@@ -93,6 +108,8 @@
     damageModifierSet: StructuralMetallicScp
   - type: DamageVisuals
     damageDivisor: 7
+  - type: ScpRepairable
+    graph: ScpWallRepair
   - type: Tag
     tags:
     - Wall
@@ -130,6 +147,7 @@
   - WallReinforced
   - ScpBaseWallDamageableVisualsMetal
   - ScpBaseStructureDamageOnSpawn
+  - ScpBaseWallRepairable
   id: ScpWallReinforced
   name: reinforced wall
   components:
@@ -142,6 +160,8 @@
     damageModifierSet: StructuralMetallicStrongScp
   - type: DamageVisuals
     damageDivisor: 90
+  - type: ScpRepairable
+    graph: ScpWallReinforcedRepair
   - type: Destructible
     thresholds:
       - trigger:
@@ -167,6 +187,7 @@
   - WallReinforcedRust
   - ScpBaseWallDamageableVisualsMetal
   - ScpBaseStructureDamageOnSpawn
+  - ScpBaseWallRepairable
   id: ScpWallReinforcedRust
   name: reinforced wall
   components:
@@ -179,6 +200,8 @@
     damageModifierSet: StructuralMetallicStrongScp
   - type: DamageVisuals
     damageDivisor: 70
+  - type: ScpRepairable
+    graph: ScpWallReinforcedRepair
   - type: Tag
     tags:
     - Wall
@@ -257,6 +280,7 @@
   - WallBrick
   - ScpBaseWallDamageableVisualsConcrete
   - ScpBaseStructureDamageOnSpawn
+  - ScpBaseWallRepairable
   id: ScpWallConcreteBase
   name: concrete wall
   abstract: true
@@ -264,6 +288,8 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+  - type: ScpRepairable
+    graph: ScpWallConcreteRepair
   - type: Destructible
     thresholds:
       - trigger:
@@ -438,6 +464,7 @@
   - BaseWall
   - ScpBaseWallDamageableVisualsReinforcedConcrete
   - ScpBaseStructureDamageOnSpawn
+  - ScpBaseWallRepairable
   id: ScpWallConcreteMetallHardContaiment
   name: metall wall hard contaiment
   components:
@@ -451,6 +478,8 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicHardCellsScp
+  - type: ScpRepairable
+    graph: ScpWallConcreteMetalRepair
   - type: Destructible
     thresholds:
       - trigger:
@@ -522,6 +551,7 @@
   - WallBrick
   - ScpBaseWallDamageableVisualsBrick
   - ScpBaseStructureDamageOnSpawn
+  - ScpBaseWallRepairable
   id: ScpWallFireBrick
   name: fire brick wall
   components:
@@ -532,6 +562,8 @@
   - type: IconSmooth
     key: walls
     base: fire_brick
+  - type: ScpRepairable
+    graph: ScpWallConcreteRepair
   - type: Destructible
     thresholds:
       - trigger:

@@ -125,6 +125,13 @@ public sealed partial class ConstructionInteractDoAfterEvent : DoAfterEvent
         ClickLocation = entManager.GetNetCoordinates(ev.ClickLocation);
     }
 
+    // Fire added start - Для системы ремонта с графами, чтобы код не был говном
+    public ConstructionInteractDoAfterEvent(NetCoordinates clickLocation)
+    {
+        ClickLocation = clickLocation;
+    }
+    // Fire added end
+
     public override DoAfterEvent Clone() => this;
 }
 
