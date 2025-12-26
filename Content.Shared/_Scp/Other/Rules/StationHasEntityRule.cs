@@ -1,10 +1,12 @@
 ﻿using Content.Shared.Random.Rules;
 using Content.Shared.Station.Components;
 using Content.Shared.Whitelist;
+using JetBrains.Annotations;
 using Robust.Shared.Map;
 
 namespace Content.Shared._Scp.Other.Rules;
 
+[UsedImplicitly]
 public sealed partial class StationHasEntityRule : RulesRule
 {
     [DataField]
