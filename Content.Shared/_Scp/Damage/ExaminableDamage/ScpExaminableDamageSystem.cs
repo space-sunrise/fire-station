@@ -169,7 +169,8 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
 
         var level = ContentHelpers.RoundToNearestLevels(percent, FullPercent, messages.Values.Count - 1);
         var message = messages.Values[level];
-        var prefix = Loc.GetString(DepartmentMessagePrefix, ("department", Loc.GetString(department.Name)));
+        var departmentColor = department.Color.ToHex();
+        var prefix = Loc.GetString(DepartmentMessagePrefix, ("department", $"[color={departmentColor}]{Loc.GetString(department.Name)}[/color]"));
         var color = ent.Comp.Color.ToHex();
 
         message = Loc.GetString(message);
