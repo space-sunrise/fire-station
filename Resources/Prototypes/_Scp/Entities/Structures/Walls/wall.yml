@@ -1,6 +1,3 @@
-# TODO: После введения ремонта стен заменить ExaminableDamage на ScpExaminableDamage
-# Добавить специальные описания-индикаторы для инженерной службы
-
 - type: entity
   id: ScpBaseWallDamageableVisuals
   abstract: true
@@ -20,8 +17,31 @@
   - type: DamageVisuals
     damageOverlay:
       sprite: _Scp/Effects/DamageOverlay/metal.rsi
-  - type: ExaminableDamage
-    messages: ScpWallMetalMessages
+  - type: ScpExaminableDamage
+    mode: Structure
+    generalMessages:
+    - scp-wall-metal-damaged-0
+    - scp-wall-metal-damaged-1
+    - scp-wall-metal-damaged-2
+    - scp-wall-metal-damaged-3
+    - scp-wall-metal-damaged-4
+    - scp-wall-metal-damaged-5
+    departmentMessages:
+      EngineeringTechnicalService:
+      - scp-wall-metal-damaged-engineering-0
+      - scp-wall-metal-damaged-engineering-1
+      - scp-wall-metal-damaged-engineering-2
+      - scp-wall-metal-damaged-engineering-3
+      - scp-wall-metal-damaged-engineering-4
+      - scp-wall-metal-damaged-engineering-5
+    jobMessages:
+      ChiefTechnicalSpecialist:
+      - scp-wall-metal-damaged-engineering-0
+      - scp-wall-metal-damaged-engineering-1
+      - scp-wall-metal-damaged-engineering-2
+      - scp-wall-metal-damaged-engineering-3
+      - scp-wall-metal-damaged-engineering-4
+      - scp-wall-metal-damaged-engineering-5
 
 - type: entity
   parent: ScpBaseWallDamageableVisuals
@@ -32,8 +52,31 @@
     damageDivisor: 60
     damageOverlay:
       sprite: _Scp/Effects/DamageOverlay/concrete.rsi
-  - type: ExaminableDamage
-    messages: ScpWallConcreteMessages
+  - type: ScpExaminableDamage
+    mode: Structure
+    generalMessages:
+    - scp-wall-concrete-damaged-0
+    - scp-wall-concrete-damaged-1
+    - scp-wall-concrete-damaged-2
+    - scp-wall-concrete-damaged-3
+    - scp-wall-concrete-damaged-4
+    - scp-wall-concrete-damaged-5
+    departmentMessages:
+      EngineeringTechnicalService:
+      - scp-wall-concrete-damaged-engineering-0
+      - scp-wall-concrete-damaged-engineering-1
+      - scp-wall-concrete-damaged-engineering-2
+      - scp-wall-concrete-damaged-engineering-3
+      - scp-wall-concrete-damaged-engineering-4
+      - scp-wall-concrete-damaged-engineering-5
+    jobMessages:
+      ChiefTechnicalSpecialist:
+      - scp-wall-concrete-damaged-engineering-0
+      - scp-wall-concrete-damaged-engineering-1
+      - scp-wall-concrete-damaged-engineering-2
+      - scp-wall-concrete-damaged-engineering-3
+      - scp-wall-concrete-damaged-engineering-4
+      - scp-wall-concrete-damaged-engineering-5
 
 - type: entity
   parent: ScpBaseWallDamageableVisuals
@@ -44,8 +87,31 @@
     damageDivisor: 160
     damageOverlay:
       sprite: _Scp/Effects/DamageOverlay/concrete.rsi
-  - type: ExaminableDamage
-    messages: ScpWallReinforcedConcreteMessages
+  - type: ScpExaminableDamage
+    mode: Structure
+    generalMessages:
+    - scp-wall-reinforced-concrete-damaged-0
+    - scp-wall-reinforced-concrete-damaged-1
+    - scp-wall-reinforced-concrete-damaged-2
+    - scp-wall-reinforced-concrete-damaged-3
+    - scp-wall-reinforced-concrete-damaged-4
+    - scp-wall-reinforced-concrete-damaged-5
+    departmentMessages:
+      EngineeringTechnicalService:
+      - scp-wall-reinforced-concrete-damaged-engineering-0
+      - scp-wall-reinforced-concrete-damaged-engineering-1
+      - scp-wall-reinforced-concrete-damaged-engineering-2
+      - scp-wall-reinforced-concrete-damaged-engineering-3
+      - scp-wall-reinforced-concrete-damaged-engineering-4
+      - scp-wall-reinforced-concrete-damaged-engineering-5
+    jobMessages:
+      ChiefTechnicalSpecialist:
+      - scp-wall-reinforced-concrete-damaged-engineering-0
+      - scp-wall-reinforced-concrete-damaged-engineering-1
+      - scp-wall-reinforced-concrete-damaged-engineering-2
+      - scp-wall-reinforced-concrete-damaged-engineering-3
+      - scp-wall-reinforced-concrete-damaged-engineering-4
+      - scp-wall-reinforced-concrete-damaged-engineering-5
 
 - type: entity
   parent: ScpBaseWallDamageableVisuals
@@ -56,8 +122,31 @@
     damageDivisor: 30
     damageOverlay:
       sprite: _Scp/Effects/DamageOverlay/brick.rsi
-  - type: ExaminableDamage
-    messages: ScpWallBrickMessages
+  - type: ScpExaminableDamage
+    mode: Structure
+    generalMessages:
+    - scp-wall-brick-damaged-0
+    - scp-wall-brick-damaged-1
+    - scp-wall-brick-damaged-2
+    - scp-wall-brick-damaged-3
+    - scp-wall-brick-damaged-4
+    - scp-wall-brick-damaged-5
+    departmentMessages:
+      EngineeringTechnicalService:
+      - scp-wall-brick-damaged-engineering-0
+      - scp-wall-brick-damaged-engineering-1
+      - scp-wall-brick-damaged-engineering-2
+      - scp-wall-brick-damaged-engineering-3
+      - scp-wall-brick-damaged-engineering-4
+      - scp-wall-brick-damaged-engineering-5
+    jobMessages:
+      ChiefTechnicalSpecialist:
+      - scp-wall-brick-damaged-engineering-0
+      - scp-wall-brick-damaged-engineering-1
+      - scp-wall-brick-damaged-engineering-2
+      - scp-wall-brick-damaged-engineering-3
+      - scp-wall-brick-damaged-engineering-4
+      - scp-wall-brick-damaged-engineering-5
 
 - type: entity
   id: ScpBaseWallRepairable
