@@ -136,6 +136,9 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
         if (!_prototype.TryIndex(messageList, out var messages))
             return false;
 
+        if (messages.Values.Count == 0)
+            return false;
+
         var level = ContentHelpers.RoundToNearestLevels(percent, FullPercent, messages.Values.Count - 1);
         var message = messages.Values[level];
         var prefix = Loc.GetString(JobMessagePrefix, ("job", job.LocalizedName));
@@ -164,6 +167,9 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
             return false;
 
         if (!_prototype.TryIndex(messageList, out var messages))
+            return false;
+
+        if (messages.Values.Count == 0)
             return false;
 
         var level = ContentHelpers.RoundToNearestLevels(percent, FullPercent, messages.Values.Count - 1);
