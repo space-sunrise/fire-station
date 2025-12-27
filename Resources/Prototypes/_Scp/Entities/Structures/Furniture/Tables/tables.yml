@@ -1,0 +1,35 @@
+﻿- type: entity
+  id: ScpTable
+  parent: Table
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/generic.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/generic.rsi
+
+- type: entity
+  id: ScpTableReinforced
+  parent: TableReinforced
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/reinforced.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/reinforced.rsi
+
+- type: entity
+  id: ScpTableGlass
+  parent: TableGlass
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/glass.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/glass.rsi
+
+- type: entity
+  id: ScpTableReinforcedGlass
+  parent: TableReinforcedGlass
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/r_glass.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/r_glass.rsi
