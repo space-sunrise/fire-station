@@ -19,9 +19,6 @@
           steps:
             - tool: Welding
               doAfter: 2
-          conditions:
-          - !type:HasDamage
-            require: true
           completed:
             - !type:DamageEntityAllTypes
               amount: -200
@@ -49,9 +46,6 @@
         doAfter: 2
       - tool: Screwing
         doAfter: 1
-      conditions:
-      - !type:HasDamage
-        require: true
       completed:
       - !type:DamageEntityAllTypes
         amount: -500
@@ -79,9 +73,6 @@
         doAfter: 1
       - tool: Screwing
         doAfter: 1
-      conditions:
-      - !type:HasDamage
-        require: true
       completed:
       - !type:DamageEntityAllTypes
         amount: -300
@@ -114,9 +105,6 @@
         doAfter: 1
       - tool: Welding
         doAfter: 2
-      conditions:
-      - !type:HasDamage
-        require: true
       completed:
       - !type:DamageEntityAllTypes
         amount: -1000

@@ -20,7 +20,7 @@ public sealed partial class ScpExaminableDamageComponent : Component
     /// <summary>
     /// Список сообщений о повреждениях.
     /// </summary>
-    [DataField(required: true)]
+    [DataField]
     public ProtoId<LocalizedDatasetPrototype>? GeneralMessages;
 
     /// <summary>

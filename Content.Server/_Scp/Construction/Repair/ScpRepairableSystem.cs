@@ -111,7 +111,7 @@ public sealed class ScpRepairableSystem : EntitySystem
         }
 
         // Проверка RulesPrototype для пользователя
-        if (_prototype.TryIndex(repairable.UserRules, out var userRules) && !_rules.IsTrue(target, userRules))
+        if (_prototype.TryIndex(repairable.UserRules, out var userRules) && !_rules.IsTrue(user, userRules))
         {
             if (!silent)
                 _popup.PopupEntity(Loc.GetString("scp-repairable-failed-user"), target, user);
@@ -298,15 +298,21 @@ public sealed class ScpRepairableSystem : EntitySystem
     private bool CanRepairNode(Entity<ScpRepairableComponent> ent, EntityUid used, ConstructionGraphNode node)
     {
         // Сбрасываем индекс шага
+        var cachedIndex = ent.Comp.StepIndex;
         ent.Comp.StepIndex = 0;
 
         // Проверяем все ребра нода
         foreach (var edge in node.Edges)
         {
-            if (CanRepairEdge(ent, used, edge))
-                return true;
+            if (!CanRepairEdge(ent, used, edge))
+                continue;
+
+            // Если находим первый результат - считаем, что сущность можно отремонтировать
+            ent.Comp.StepIndex = cachedIndex;
+            return true;
         }
 
+        ent.Comp.StepIndex = cachedIndex;
         return false;
     }
 
