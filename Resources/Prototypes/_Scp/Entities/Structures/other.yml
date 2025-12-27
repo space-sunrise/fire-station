@@ -4,11 +4,13 @@
   components:
   - type: RandomDamageOnTrigger
     ignoreResistancesForDamage: true
+    probability: 0.2
     damageTypes:
     - Structural
     keysIn:
     - random-damage
-  - type: TriggerOnSpawn
+  - type: ScpTriggerOnSpawn
+    requiredGameRunLevel: PreRoundLobby
     keyOut: random-damage
 
 - type: entity
@@ -17,5 +19,6 @@
   abstract: true
   components:
   - type: RandomDamageOnTrigger
-    maxDamagePercent: 0.7
+    probability: 0.05
+    maxDamagePercent: 0.4
     minDamagePercent: 0.1

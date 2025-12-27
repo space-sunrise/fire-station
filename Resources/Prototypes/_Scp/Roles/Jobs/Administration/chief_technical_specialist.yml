@@ -34,6 +34,7 @@
       channels:
       - EngineeringTechnicalService
       includeJobName: true
+    - type: ScpRepairableCanSeeExamineHints
 
 - type: startingGear
   id: ChiefTechnicalSpecialistGear

@@ -9,7 +9,6 @@ using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.Rounding;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Utility;
 
 namespace Content.Shared._Scp.Damage.ExaminableDamage;
 
@@ -23,14 +22,14 @@ namespace Content.Shared._Scp.Damage.ExaminableDamage;
 /// Для структуры требуется <see cref="DestructibleComponent"/>
 /// </remarks>
 // TODO: Написать больше описаний для различных объектов, вроде SCP-049, SCP-049-2
-// TODO: Описание разрушения структур через это с специальным сообщением-индикатором для инженеров
 public abstract class SharedScpExaminableDamageSystem : EntitySystem
 {
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
     [Dependency] private readonly SharedJobSystem _job = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
 
-    private const int Priority = -99;
+    public const int Priority = -99;
     public const double FullPercent = 1d;
 
     private const string DefaultPrefix = "scp-examinable-damage-message-prefix";
@@ -82,25 +81,24 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
         ref ExaminedEvent args)
     {
         var percent = GetDamagePercent(target, maxDamage);
-        var level = ContentHelpers.RoundToNearestLevels(percent, FullPercent, ent.Comp.GeneralMessages.Count - 1);
 
-        TryAddGeneralMessage(ent, level, ref args);
-        TryAddSpecificMessage(ent, level, ref args);
+        TryAddGeneralMessage(ent, percent, ref args);
+        TryAddSpecificMessage(ent, percent, ref args);
     }
 
-    private bool TryAddGeneralMessage(Entity<ScpExaminableDamageComponent> ent, int level, ref ExaminedEvent args)
+    private bool TryAddGeneralMessage(Entity<ScpExaminableDamageComponent> ent, float percent, ref ExaminedEvent args)
     {
-        if (ent.Comp.GeneralMessages.Count == 0)
+        if (!_prototype.TryIndex(ent.Comp.GeneralMessages, out var messages))
             return false;
 
-        if (!ent.Comp.GeneralMessages.TryGetValue(level, out var message))
-        {
-            Log.Error($"Failed to get message with index {level}");
+        if (messages.Values.Count == 0)
             return false;
-        }
 
+        var level = ContentHelpers.RoundToNearestLevels(percent, FullPercent, messages.Values.Count - 1);
+        var message = messages.Values[level];
         var prefix = Loc.GetString(DefaultPrefix);
         var color = ent.Comp.Color.ToHex();
+
         message = Loc.GetString(message);
 
         var formatted = $"\n{ prefix }\n[color={ color }]{ message }[/color]";
@@ -109,7 +107,7 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
         return true;
     }
 
-    private bool TryAddSpecificMessage(Entity<ScpExaminableDamageComponent> ent, int level, ref ExaminedEvent args)
+    private bool TryAddSpecificMessage(Entity<ScpExaminableDamageComponent> ent, float percent, ref ExaminedEvent args)
     {
         if (!_mind.TryGetMind(args.Examiner, out var mind, out _))
             return false;
@@ -117,15 +115,15 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
         if (!_job.MindTryGetJob(mind, out var job))
             return false;
 
-        if (!TryAddJobSpecificMessage(ent, level, job, ref args)
-            && !TryAddDepartmentSpecificMessage(ent, level, job.ID, ref args))
+        if (!TryAddJobSpecificMessage(ent, percent, job, ref args)
+            && !TryAddDepartmentSpecificMessage(ent, percent, job.ID, ref args))
             return false;
 
         return true;
     }
 
     private bool TryAddJobSpecificMessage(Entity<ScpExaminableDamageComponent> ent,
-        int level,
+        float percent,
         JobPrototype job,
         ref ExaminedEvent args)
     {
@@ -135,11 +133,17 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
         if (!ent.Comp.JobMessages.TryGetValue(job.ID, out var messageList))
             return false;
 
-        if (!messageList.TryGetValue(level, out var message))
+        if (!_prototype.TryIndex(messageList, out var messages))
             return false;
 
+        if (messages.Values.Count == 0)
+            return false;
+
+        var level = ContentHelpers.RoundToNearestLevels(percent, FullPercent, messages.Values.Count - 1);
+        var message = messages.Values[level];
         var prefix = Loc.GetString(JobMessagePrefix, ("job", job.LocalizedName));
         var color = ent.Comp.Color.ToHex();
+
         message = Loc.GetString(message);
 
         var formatted = $"\n{ prefix }\n[color={ color }]{ message }[/color]";
@@ -149,7 +153,7 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
     }
 
     private bool TryAddDepartmentSpecificMessage(Entity<ScpExaminableDamageComponent> ent,
-        int level,
+        float percent,
         ProtoId<JobPrototype> job,
         ref ExaminedEvent args)
     {
@@ -162,11 +166,18 @@ public abstract class SharedScpExaminableDamageSystem : EntitySystem
         if (!ent.Comp.DepartmentMessages.TryGetValue(department.ID, out var messageList))
             return false;
 
-        if (!messageList.TryGetValue(level, out var message))
+        if (!_prototype.TryIndex(messageList, out var messages))
             return false;
 
-        var prefix = Loc.GetString(DepartmentMessagePrefix, ("department", Loc.GetString(department.Name)));
+        if (messages.Values.Count == 0)
+            return false;
+
+        var level = ContentHelpers.RoundToNearestLevels(percent, FullPercent, messages.Values.Count - 1);
+        var message = messages.Values[level];
+        var departmentColor = department.Color.ToHex();
+        var prefix = Loc.GetString(DepartmentMessagePrefix, ("department", $"[color={departmentColor}]{Loc.GetString(department.Name)}[/color]"));
         var color = ent.Comp.Color.ToHex();
+
         message = Loc.GetString(message);
 
         var formatted = $"\n{ prefix }\n[color={ color }]{ message }[/color]";

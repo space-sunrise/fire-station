@@ -1,0 +1,110 @@
+- type: constructionGraph
+  id: ScpWallRepair
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: welded
+          conditions:
+          - !type:HasDamage
+            require: true
+          steps:
+            - material: Steel
+              amount: 1
+              doAfter: 1
+
+    - node: welded
+      edges:
+        - to: start
+          steps:
+            - tool: Welding
+              doAfter: 2
+          completed:
+            - !type:DamageEntityAllTypes
+              amount: -200
+
+- type: constructionGraph
+  id: ScpWallReinforcedRepair
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: welded
+      conditions:
+      - !type:HasDamage
+        require: true
+      steps:
+      - material: Plasteel
+        amount: 1
+        doAfter: 1
+
+  - node: welded
+    edges:
+    - to: start
+      steps:
+      - tool: Welding
+        doAfter: 2
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:DamageEntityAllTypes
+        amount: -500
+
+- type: constructionGraph
+  id: ScpWallConcreteRepair
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: welded
+      conditions:
+      - !type:HasDamage
+        require: true
+      steps:
+      - material: Concrete
+        amount: 1
+        doAfter: 1
+
+  - node: welded
+    edges:
+    - to: start
+      steps:
+      - tool: Prying
+        doAfter: 1
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:DamageEntityAllTypes
+        amount: -300
+
+- type: constructionGraph
+  id: ScpWallConcreteMetalRepair
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: welded
+      conditions:
+      - !type:HasDamage
+        require: true
+      steps:
+      - material: Concrete
+        amount: 1
+        doAfter: 1
+      - material: MetalRod
+        amount: 2
+        doAfter: 1
+
+  - node: welded
+    edges:
+    - to: start
+      steps:
+      - tool: Prying
+        doAfter: 1
+      - tool: Screwing
+        doAfter: 1
+      - tool: Welding
+        doAfter: 2
+      completed:
+      - !type:DamageEntityAllTypes
+        amount: -1000

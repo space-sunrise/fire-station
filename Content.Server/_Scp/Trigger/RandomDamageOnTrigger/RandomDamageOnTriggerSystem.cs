@@ -13,7 +13,7 @@ public sealed class RandomDamageOnTriggerSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private readonly DamageSpecifier _tempDamage = new ();
-    private const double Lambda = 2.5d;
+    private const double Lambda = 3d;
 
     public override void Initialize()
     {

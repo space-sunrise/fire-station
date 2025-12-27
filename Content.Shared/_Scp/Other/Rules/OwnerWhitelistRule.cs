@@ -1,11 +1,13 @@
 ﻿using Content.Shared.Random.Rules;
 using Content.Shared.Whitelist;
+using JetBrains.Annotations;
 
 namespace Content.Shared._Scp.Other.Rules;
 
 /// <summary>
 /// Проверяет переданный вайтлист и блеклист для сущности.
 /// </summary>
+[UsedImplicitly]
 public sealed partial class OwnerWhitelistRule : RulesRule
 {
     /// <summary>

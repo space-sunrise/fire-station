@@ -21,3 +21,51 @@
   values:
     prefix: scp-wall-brick-damaged-
     count: 6
+
+- type: localizedDataset
+  id: ScpWallMetalEngineeringMessages
+  values:
+    prefix: scp-wall-metal-damaged-engineering-
+    count: 6
+
+- type: localizedDataset
+  id: ScpWallConcreteEngineeringMessages
+  values:
+    prefix: scp-wall-concrete-damaged-engineering-
+    count: 6
+
+- type: localizedDataset
+  id: ScpWallReinforcedConcreteEngineeringMessages
+  values:
+    prefix: scp-wall-reinforced-concrete-damaged-engineering-
+    count: 6
+
+- type: localizedDataset
+  id: ScpWallBrickEngineeringMessages
+  values:
+    prefix: scp-wall-brick-damaged-engineering-
+    count: 6
+
+- type: localizedDataset
+  id: ScpScp096FaceMessages
+  values:
+    prefix: scp096-face-damaged-
+    count: 6
+
+- type: localizedDataset
+  id: ScpScp096FaceScienceMessages
+  values:
+    prefix: scp096-face-damaged-science-
+    count: 6
+
+- type: localizedDataset
+  id: ScpScp939Messages
+  values:
+    prefix: scp939-damaged-
+    count: 4
+
+- type: localizedDataset
+  id: ScpScp939SecurityMessages
+  values:
+    prefix: scp939-damaged-security-
+    count: 4
