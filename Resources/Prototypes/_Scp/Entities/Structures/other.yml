@@ -9,7 +9,8 @@
     - Structural
     keysIn:
     - random-damage
-  - type: TriggerOnSpawn
+  - type: ScpTriggerOnSpawn
+    requiredGameRunLevel: PreRoundLobby
     keyOut: random-damage
 
 - type: entity
