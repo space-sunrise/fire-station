@@ -1,0 +1,31 @@
+﻿uniform sampler2D SCREEN_TEXTURE;
+uniform highp float abber;
+uniform highp float strength; // 0.0 - 1.0
+
+void fragment() {
+    // Читаем текстуру со сдвигом каналов (статичная аберрация)
+    lowp float r = texture(SCREEN_TEXTURE, UV + vec2(abber, 0.0)).r;
+    lowp float g = texture(SCREEN_TEXTURE, UV).g;
+    lowp float b = texture(SCREEN_TEXTURE, UV - vec2(abber, 0.0)).b;
+
+    // Исходный цвет с аберрацией
+    lowp vec3 sourceColor = vec3(r, g, b);
+
+    // 1. Логика обесцвечивания
+    lowp float gray = dot(sourceColor, vec3(0.299, 0.587, 0.114));
+
+    // 2. Логика выделения красного
+    // (Red - Max(Green, Blue)) * Контраст
+    lowp float redness = sourceColor.r - max(sourceColor.g, sourceColor.b);
+    redness = clamp(redness * 8.0, 0.0, 1.0);
+
+    // 3. Формируем цвет "Ярости" (Серый мир + Красные акценты)
+    lowp vec3 grayColor = vec3(gray * 0.5); // Затемненный серый
+    lowp vec3 rageColor = mix(grayColor, sourceColor, redness);
+
+    // 4. Финальное смешивание
+    // Линейная интерполяция между обычным цветом и цветом ярости на основе strength
+    lowp vec3 finalColor = mix(sourceColor, rageColor, strength);
+
+    COLOR = vec4(finalColor, 1.0);
+}

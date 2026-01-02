@@ -27,4 +27,10 @@ public sealed partial class ActiveScp096HeatingUpComponent : Component
     [DataField]
     public SoundSpecifier TriggerSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/triggered.ogg",
         AudioParams.Default.WithVolume(20f).WithMaxDistance(30f).WithRolloffFactor(5f));
+
+    [DataField]
+    public double OverlayIntensityMin = 0d;
+
+    [DataField]
+    public double OverlayIntensityMax = 1d;
 }

@@ -2,9 +2,9 @@
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client._Scp.Shaders.RetroMonitor;
+namespace Content.Client._Scp.Shaders.Scp096.Static;
 
-public sealed class RetroMonitorOverlay : Overlay
+public sealed class Scp096ShaderStaticOverlay : Overlay
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
@@ -12,9 +12,9 @@ public sealed class RetroMonitorOverlay : Overlay
     public override bool RequestScreenTexture => true;
 
     private readonly ShaderInstance _shader;
-    private static readonly ProtoId<ShaderPrototype> ShaderProtoId = "CRT_VHS";
+    private static readonly ProtoId<ShaderPrototype> ShaderProtoId = "Scp096Static";
 
-    public RetroMonitorOverlay()
+    public Scp096ShaderStaticOverlay()
     {
         IoCManager.InjectDependencies(this);
         _shader = _prototypeManager.Index(ShaderProtoId).InstanceUnique();
