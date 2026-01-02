@@ -1,4 +1,4 @@
-﻿using Content.Client._Scp.Scp096.Overlays;
+﻿using Content.Client._Scp.Shaders.Scp096.Rage;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Robust.Shared.Player;
 
@@ -15,6 +15,11 @@ public sealed partial class Scp096System
 
         SubscribeLocalEvent<ActiveScp096RageComponent, LocalPlayerAttachedEvent>(OnRagePlayerAttached);
         SubscribeLocalEvent<ActiveScp096RageComponent, LocalPlayerDetachedEvent>(OnRagePlayerDetached);
+    }
+
+    private void ShutdownRage()
+    {
+        RemoveRageOverlay();
     }
 
     #region Update

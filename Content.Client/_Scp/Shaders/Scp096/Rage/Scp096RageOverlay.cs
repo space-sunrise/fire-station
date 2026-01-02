@@ -6,7 +6,7 @@ using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Client._Scp.Scp096.Overlays;
+namespace Content.Client._Scp.Shaders.Scp096.Rage;
 
 public sealed class Scp096RageOverlay : Overlay
 {

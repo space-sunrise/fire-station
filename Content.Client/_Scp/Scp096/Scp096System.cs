@@ -36,6 +36,8 @@ public sealed partial class Scp096System : SharedScp096System
         base.Shutdown();
 
         ShutdownWidget();
+        RemoveTargetsOverlay();
+        ShutdownRage();
     }
 
     public override void FrameUpdate(float frameTime)
