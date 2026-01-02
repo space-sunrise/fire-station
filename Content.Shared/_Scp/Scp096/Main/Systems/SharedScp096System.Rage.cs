@@ -32,6 +32,9 @@ public abstract partial class SharedScp096System
         // Устанавливаем время окончания пред-агр состояния
         ent.Comp.RageHeatUpEnd = _timing.CurTime + ent.Comp.RageHeatUp;
 
+        // Убираем компонент, отвечающий за шейдер для обычного состояния
+        RemComp<Scp096ShaderStaticComponent>(ent);
+
         // Устанавливаем звук пред-агр состояния
         UpdateAudio(ent.Owner, ent.Comp.TriggerSound);
 
@@ -89,6 +92,9 @@ public abstract partial class SharedScp096System
 
         if (_net.IsServer)
             RaiseNetworkEvent(new NetworkAmbientMusicEventStop(), ent);
+
+        // Добавляем компонент, отвечающий за шейдер для обычного состояния
+        RemComp<Scp096ShaderStaticComponent>(ent);
 
         // Усыпляем скромника
         if (!_statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, ent.Comp.PacifiedTime))

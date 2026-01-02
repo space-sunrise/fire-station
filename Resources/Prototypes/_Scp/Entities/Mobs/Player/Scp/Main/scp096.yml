@@ -52,6 +52,7 @@
       - DamageOtherOnHit
       - Storage
       - EntityStorage
+  - type: Scp096ShaderStatic
   - type: ScpRestriction
     canBeDisarmed: true
     canTakeStaminaDamage: true
