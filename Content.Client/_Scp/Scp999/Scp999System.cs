@@ -5,6 +5,8 @@ namespace Content.Client._Scp.Scp999;
 
 public sealed class Scp999System : SharedScp999System
 {
+    [Dependency] private readonly SpriteSystem _sprite = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -16,20 +18,12 @@ public sealed class Scp999System : SharedScp999System
     private void OnWallify(Scp999WallifyEvent args)
     {
         var uid = GetEntity(args.NetEntity);
-
-        if (!TryComp<SpriteComponent>(uid, out var spriteComponent))
-            return;
-
-        spriteComponent.LayerSetState(Scp999States.Default, args.TargetState);
+        _sprite.LayerSetRsiState(uid, Scp999States.Default, args.TargetState);
     }
 
     private void OnRest(Scp999RestEvent args)
     {
         var uid = GetEntity(args.NetEntity);
-
-        if (!TryComp<SpriteComponent>(uid, out var spriteComponent))
-            return;
-
-        spriteComponent.LayerSetState(Scp999States.Default, args.TargetState);
+        _sprite.LayerSetRsiState(uid, Scp999States.Default, args.TargetState);
     }
 }

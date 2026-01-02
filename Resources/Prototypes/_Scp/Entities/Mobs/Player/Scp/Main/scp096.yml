@@ -171,11 +171,8 @@
     allowed:
     - SlowedDown
     - Stutter
-    - Electrocution
     - ForcedSleep
-    - TemporaryBlindness
     - Pacified
-    - Flashed
     - RadiationProtection
     - Drowsiness
   - type: Bloodstream

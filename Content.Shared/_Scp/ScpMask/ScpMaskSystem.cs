@@ -62,7 +62,6 @@ public sealed partial class ScpMaskSystem : EntitySystem
         var doAfterArgs = new DoAfterArgs(EntityManager, scp, scpMask.Value.Comp.TearTime, new ScpTearMaskDoAfterEvent(), scp, scp, scpMask)
         {
             BreakOnDamage = true,
-            BreakOnMove = true,
         };
 
         args.Handled = _doAfter.TryStartDoAfter(doAfterArgs);

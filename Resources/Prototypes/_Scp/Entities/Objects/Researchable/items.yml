@@ -30,7 +30,7 @@
   - type: Clothing
     sprite: _Scp/Clothing/Head/Scp096/scp096_bag-equipped.rsi
     equipDelay: 3
-    unequipDelay: 3
+    unequipDelay: 10
   - type: Item
     size: Normal
     storedRotation: -90
@@ -63,6 +63,8 @@
   - type: Sprite
     sprite: _Scp/Clothing/Head/Scp096/scp096_bag-icons.rsi
     state: icon
+  - type: Clothing
+    unequipDelay: 1
   - type: ScpMask
     slots:
     - Head
