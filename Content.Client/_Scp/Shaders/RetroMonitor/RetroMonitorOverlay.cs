@@ -11,12 +11,13 @@ public sealed class RetroMonitorOverlay : Overlay
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     public override bool RequestScreenTexture => true;
 
-    private readonly ShaderInstance _retroShader;
+    private readonly ShaderInstance _shader;
+    private static readonly ProtoId<ShaderPrototype> ShaderProtoId = "CRT_VHS";
 
     public RetroMonitorOverlay()
     {
         IoCManager.InjectDependencies(this);
-        _retroShader = _prototypeManager.Index<ShaderPrototype>("CRT_VHS").InstanceUnique();
+        _shader = _prototypeManager.Index(ShaderProtoId).InstanceUnique();
 
         ZIndex = 20;
     }
@@ -26,12 +27,19 @@ public sealed class RetroMonitorOverlay : Overlay
         if (ScreenTexture == null)
             return;
 
-        _retroShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+        _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
         var handle = args.WorldHandle;
         var viewport = args.WorldBounds;
 
-        handle.UseShader(_retroShader);
+        handle.UseShader(_shader);
         handle.DrawRect(viewport, Color.White);
         handle.UseShader(null);
+    }
+
+    protected override void DisposeBehavior()
+    {
+        base.DisposeBehavior();
+
+        _shader.Dispose();
     }
 }

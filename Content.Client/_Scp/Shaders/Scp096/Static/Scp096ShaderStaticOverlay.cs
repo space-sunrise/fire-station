@@ -40,7 +40,6 @@ public sealed class Scp096ShaderStaticOverlay : Overlay
     {
         base.DisposeBehavior();
 
-        if (!_shader.Disposed)
-            _shader.Dispose();
+        _shader.Dispose();
     }
 }

@@ -13,7 +13,8 @@ public sealed class WarpOverlay : Overlay
     public override bool RequestScreenTexture => true;
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
-    private readonly ShaderInstance _warpShader;
+    private readonly ShaderInstance _shader;
+    private static readonly ProtoId<ShaderPrototype> ShaderProtoId = "Warping";
 
     private readonly TimeSpan _startTime;
 
@@ -25,7 +26,7 @@ public sealed class WarpOverlay : Overlay
     public WarpOverlay(TimeSpan startedTime)
     {
         IoCManager.InjectDependencies(this);
-        _warpShader = _prototypeManager.Index<ShaderPrototype>("Warping").InstanceUnique();
+        _shader = _prototypeManager.Index(ShaderProtoId).InstanceUnique();
 
         _startTime = startedTime;
     }
@@ -46,12 +47,19 @@ public sealed class WarpOverlay : Overlay
         intensity = Math.Clamp(intensity, StartIntensity, FinalIntensity);
 
         // Применяем интенсивность в шейдер
-        _warpShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
-        _warpShader.SetParameter("warp_intensity", intensity);
-        _warpShader.SetParameter("time_scale", 5.0f);
+        _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
+        _shader.SetParameter("warp_intensity", intensity);
+        _shader.SetParameter("time_scale", 5.0f);
 
-        handle.UseShader(_warpShader);
+        handle.UseShader(_shader);
         handle.DrawRect(viewport, Color.White);
         handle.UseShader(null);
+    }
+
+    protected override void DisposeBehavior()
+    {
+        base.DisposeBehavior();
+
+        _shader.Dispose();
     }
 }

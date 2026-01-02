@@ -20,19 +20,26 @@ public sealed class HighlightSystem : SharedHighlightSystem
     /// Шейдер подсвечивания.
     /// Будет накладываться на текстуры используя внутренние методы спрайта.
     /// </summary>
-    private ShaderInstance _highlightShader = default!;
+    private ShaderInstance _shader = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        _highlightShader = _prototype.Index(ShaderProtoId).Instance();
+        _shader = _prototype.Index(ShaderProtoId).InstanceUnique();
 
         SubscribeLocalEvent<HighlightedComponent, HighLightStartEvent>(OnHighlightStarted);
         SubscribeLocalEvent<SpriteComponent, HighLightEndEvent>(OnHighlightEnded);
 
         SubscribeNetworkEvent<HighLightStartEvent>(OnNetworkHighlightStarted);
         SubscribeNetworkEvent<HighLightEndEvent>(OnNetworkHighlightEnded);
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _shader.Dispose();
     }
 
     private void OnHighlightStarted(Entity<HighlightedComponent> ent, ref HighLightStartEvent args)
@@ -74,8 +81,8 @@ public sealed class HighlightSystem : SharedHighlightSystem
         if (!TryComp<SpriteComponent>(ent, out var sprite))
             return;
 
-        if (sprite.PostShader != _highlightShader)
-            sprite.PostShader = _highlightShader;
+        if (sprite.PostShader != _shader)
+            sprite.PostShader = _shader;
     }
 
     private void EndHighlight(Entity<SpriteComponent?> ent)
@@ -83,7 +90,7 @@ public sealed class HighlightSystem : SharedHighlightSystem
         if (!Resolve(ent, ref ent.Comp))
             return;
 
-        if (ent.Comp.PostShader != _highlightShader)
+        if (ent.Comp.PostShader != _shader)
             return;
 
         ent.Comp.PostShader = null;
