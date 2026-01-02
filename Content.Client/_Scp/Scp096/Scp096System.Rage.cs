@@ -88,7 +88,7 @@ public sealed partial class Scp096System
     private void OnHeatingUpPlayerAttached(Entity<ActiveScp096HeatingUpComponent> ent,
         ref LocalPlayerAttachedEvent args)
     {
-        AddRageOverlay();
+        AddRageOverlay((float) ent.Comp.OverlayIntensityMin);
     }
 
     private void OnHeatingUpPlayerDetached(Entity<ActiveScp096HeatingUpComponent> ent,
