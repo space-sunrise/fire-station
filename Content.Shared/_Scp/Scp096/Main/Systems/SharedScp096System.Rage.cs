@@ -39,7 +39,8 @@ public abstract partial class SharedScp096System
         UpdateAudio(ent.Owner, ent.Comp.TriggerSound);
 
         // Если скромник был застанен или сидит - убираем это
-        _stamina.TryTakeStamina(ent, -100);
+        var totalDamage = _stamina.GetStaminaDamage(ent);
+        _stamina.TryTakeStamina(ent, -1f * totalDamage);
         _stun.TryUnstun(ent.Owner);
         _standing.Stand(ent, force: true);
 
