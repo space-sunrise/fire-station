@@ -2,7 +2,6 @@
 uniform lowp float RageIntensity; // От 0.0 до 1.0
 uniform lowp float Time;
 
-const lowp vec3 RedFilter = vec3(1.0, 0.2, 0.2);
 const lowp vec3 VignetteColor = vec3(0.6, 0.0, 0.0);
 
 void fragment() {

@@ -1,5 +1,4 @@
-﻿using Content.Shared._Scp.Helpers;
-using Robust.Shared.Audio;
+﻿using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Scp096.Main.Components;

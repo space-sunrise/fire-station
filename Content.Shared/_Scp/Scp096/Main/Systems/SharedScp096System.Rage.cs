@@ -94,7 +94,7 @@ public abstract partial class SharedScp096System
             RaiseNetworkEvent(new NetworkAmbientMusicEventStop(), ent);
 
         // Добавляем компонент, отвечающий за шейдер для обычного состояния
-        RemComp<Scp096ShaderStaticComponent>(ent);
+        AddComp<Scp096ShaderStaticComponent>(ent);
 
         // Усыпляем скромника
         if (!_statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, ent.Comp.PacifiedTime))
