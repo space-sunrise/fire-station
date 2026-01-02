@@ -6,7 +6,7 @@ using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
-namespace Content.Client._Scp.Scp096;
+namespace Content.Client._Scp.Scp096.Overlays;
 
 public sealed class Scp096RageOverlay : Overlay
 {
@@ -28,6 +28,8 @@ public sealed class Scp096RageOverlay : Overlay
     /// </summary>
     private const float MaxScaleIncrease = 0.15f;
 
+    public float Intensity;
+
     private static readonly Color MinColor = Color.Red.WithAlpha(0.6f);
     private static readonly Color MaxColor = Color.Red.WithAlpha(1.0f);
 
@@ -37,7 +39,7 @@ public sealed class Scp096RageOverlay : Overlay
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
     public override bool RequestScreenTexture => true;
 
-    public Scp096RageOverlay()
+    public Scp096RageOverlay(float intensity = 1.0f)
     {
         IoCManager.InjectDependencies(this);
 
@@ -45,6 +47,8 @@ public sealed class Scp096RageOverlay : Overlay
         _transform = _entManager.System<TransformSystem>();
 
         _shader = _prototype.Index(ShaderProtoId).InstanceUnique();
+
+        Intensity = intensity;
 
         ZIndex = 100;
     }
@@ -59,7 +63,7 @@ public sealed class Scp096RageOverlay : Overlay
         var viewport = args.WorldBounds;
 
         _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
-        _shader.SetParameter("RageIntensity", 1.0f);
+        _shader.SetParameter("RageIntensity", Intensity);
         _shader.SetParameter("Time", (float) _timing.RealTime.TotalSeconds);
 
         worldHandle.UseShader(_shader);

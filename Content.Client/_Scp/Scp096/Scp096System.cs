@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Other.EmitSoundRandomly;
+﻿using Content.Client._Scp.Scp096.Overlays;
+using Content.Shared._Scp.Other.EmitSoundRandomly;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Main.Systems;
 using Robust.Client.Graphics;
@@ -8,16 +9,14 @@ using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Scp096;
 
-// TODO: Управление лицом скромника в статус эффектами, смена спрайтов при смене состояния.
-// Что-то типо интерфейса дума с лицом думгая, но для скромника
 public sealed partial class Scp096System : SharedScp096System
 {
-    [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IClyde _clyde = default!;
 
-    private Scp096Overlay? _overlay;
+    private Scp096TargetsOverlay? _targetsOverlay;
 
     public override void Initialize()
     {
@@ -39,15 +38,22 @@ public sealed partial class Scp096System : SharedScp096System
         ShutdownWidget();
     }
 
+    public override void FrameUpdate(float frameTime)
+    {
+        base.FrameUpdate(frameTime);
+
+        FrameUpdateRage(frameTime);
+    }
+
     private void OnPlayerAttached(Entity<Scp096Component> ent, ref LocalPlayerAttachedEvent args)
     {
-        AddOverlay(ent);
+        AddTargetsOverlay(ent);
         EnsureWidgetExist();
     }
 
     private void OnPlayerDetached(Entity<Scp096Component> ent, ref LocalPlayerDetachedEvent args)
     {
-        RemoveOverlay();
+        RemoveTargetsOverlay();
         RemoveWidget();
     }
 
@@ -59,7 +65,7 @@ public sealed partial class Scp096System : SharedScp096System
             return;
 
         EnsureWidgetExist();
-        AddOverlay(ent);
+        AddTargetsOverlay(ent);
     }
 
     protected override void OnShutdown(Entity<Scp096Component> ent, ref ComponentShutdown args)
@@ -69,26 +75,27 @@ public sealed partial class Scp096System : SharedScp096System
         if (_player.LocalEntity != ent)
             return;
 
-        RemoveOverlay();
+        RemoveTargetsOverlay();
         RemoveWidget();
     }
 
-    private void AddOverlay(Entity<Scp096Component> ent)
+    private void AddTargetsOverlay(Entity<Scp096Component> ent)
     {
-        if (_overlay != null)
+        if (_targetsOverlay != null)
             return;
 
-        _overlay = new(ent);
-        _overlayMan.AddOverlay(_overlay);
+        _targetsOverlay = new(ent);
+        _overlay.AddOverlay(_targetsOverlay);
     }
 
-    private void RemoveOverlay()
+    private void RemoveTargetsOverlay()
     {
-        if (_overlay == null)
+        if (_targetsOverlay == null)
             return;
 
-        _overlayMan.RemoveOverlay(_overlay);
-        _overlay = null;
+        _overlay.RemoveOverlay(_targetsOverlay);
+        _targetsOverlay.Dispose();
+        _targetsOverlay = null;
     }
 
     protected override void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)

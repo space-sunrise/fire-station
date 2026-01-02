@@ -51,7 +51,7 @@ public abstract partial class SharedScp096System
         Dirty(ent);
     }
 
-    private void OnHeatingUpShutdown(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentShutdown args)
+    protected virtual void OnHeatingUpShutdown(Entity<ActiveScp096HeatingUpComponent> ent, ref ComponentShutdown args)
     {
         if (_timing.ApplyingState || IsClientSide(ent))
             return;
