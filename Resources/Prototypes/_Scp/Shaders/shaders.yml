@@ -49,3 +49,8 @@
   id: LightingOverlay
   kind: source
   path: "/Textures/_Scp/Shaders/light.swsl"
+
+- type: shader
+  id: Scp096Rage
+  kind: source
+  path: "/Textures/_Scp/Shaders/scp096_rage.swsl"

@@ -27,6 +27,7 @@ public sealed partial class Scp096System : SharedScp096System
         SubscribeLocalEvent<Scp096Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
 
         InitializeWidget();
+        InitializeRage();
 
         Log.Level = LogLevel.Info;
     }

@@ -1,0 +1,47 @@
+﻿uniform sampler2D SCREEN_TEXTURE;
+uniform lowp float RageIntensity; // От 0.0 до 1.0, зависит от стадии ярости
+uniform lowp float Time;
+
+const lowp vec3 RedFilter = vec3(1.0, 0.2, 0.2);
+
+void fragment() {
+    lowp vec2 distVec = UV - vec2(0.5, 0.5);
+    lowp float dist = length(distVec);
+
+    // 1. Эффект сердцебиения/пульсации (туннельное зрение)
+    // Искажаем UV координаты от центра к краям в ритме пульса
+    lowp float heartbeat = sin(Time * 8.0) * 0.5 + 0.5; // Быстрая пульсация
+    lowp float distortion = heartbeat * 0.02 * RageIntensity * (dist * dist);
+    lowp vec2 distortedUV = UV - distVec * distortion;
+
+    // 2. Хроматическая аберрация (расслоение цветов по краям)
+    lowp float aberrAmount = 0.009 * RageIntensity * (1.0 + heartbeat) * dist;
+
+    lowp float r = texture(SCREEN_TEXTURE, distortedUV + vec2(aberrAmount, 0.0)).r;
+    lowp float g = texture(SCREEN_TEXTURE, distortedUV).g;
+    lowp float b = texture(SCREEN_TEXTURE, distortedUV - vec2(aberrAmount, 0.0)).b;
+    lowp vec3 color = vec3(r, g, b);
+
+    // 3. Обесцвечивание мира (Grayscale), но оставляем красный цвет
+    lowp float gray = dot(color, vec3(0.299, 0.587, 0.114));
+
+    // Вычисляем, насколько пиксель "красный".
+    // Берем красный канал и вычитаем среднее от зеленого и синего.
+    lowp float redness = color.r - max(color.g, color.b);
+    redness = clamp(redness * 10.0, 0.0, 1.0); // Усиливаем контраст красного
+
+    // Смешиваем серый мир и оригинальный цвет на основе "красноты"
+    lowp vec3 desaturated = vec3(gray * 0.8); // Немного темнее обычного
+    lowp vec3 worldColor = mix(desaturated, color, redness);
+
+    // 4. Кровавая виньетка (красная дымка по краям)
+    lowp float vignette = smoothstep(0.3, 0.95, dist);
+    lowp vec3 vignetteColor = vec3(0.6, 0.0, 0.0); // Темно-красный
+
+    // Виньетка пульсирует вместе с сердцебиением
+    lowp float vignetteStrength = vignette * (0.4 + 0.4 * heartbeat) * RageIntensity;
+
+    worldColor = mix(worldColor, vignetteColor, vignetteStrength);
+
+    COLOR = vec4(worldColor, 1.0);
+}
