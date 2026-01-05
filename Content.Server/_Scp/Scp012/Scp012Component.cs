@@ -4,7 +4,7 @@ using Content.Shared.FixedPoint;
 namespace Content.Server._Scp.Scp012;
 
 [RegisterComponent]
-public sealed partial class SCP012Component : Component
+public sealed partial class Scp012Component : Component
 {
     [DataField("range")]
     public float Range = 7.0f;
