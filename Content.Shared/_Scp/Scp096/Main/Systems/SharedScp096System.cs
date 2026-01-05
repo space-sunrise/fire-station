@@ -223,6 +223,8 @@ public abstract partial class SharedScp096System : EntitySystem
 
     protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)
     {
+        SpawnFace(ent);
+        UpdateAudio(ent.AsNullable(), ent.Comp.CrySound);
         ActualizeAlert(ent);
     }
 
@@ -239,6 +241,8 @@ public abstract partial class SharedScp096System : EntitySystem
 
         _pendingAnimations.Remove(ent);
         _pendingJitteringRemoval.Remove(ent);
+
+        UpdateAudio(ent.AsNullable(), setDefault: false);
     }
 
     #endregion
