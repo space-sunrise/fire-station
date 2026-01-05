@@ -7,12 +7,14 @@ using Content.Shared.Medical.Healing;
 using Content.Shared.Mobs;
 using Content.Shared.Rounding;
 using JetBrains.Annotations;
+using Robust.Shared.Containers;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
     [Dependency] private readonly SharedScpExaminableDamageSystem _examinableDamage = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
 
     private void InitializeFace()
     {
@@ -192,6 +194,24 @@ public abstract partial class SharedScp096System
     #endregion
 
     #region Helpers
+
+    private void SpawnFace(Entity<Scp096Component> ent)
+    {
+        if (!_timing.IsFirstTimePredicted || _timing.ApplyingState)
+            return;
+
+        if (ent.Comp.FaceEntity != null)
+            return;
+
+        var face = PredictedSpawnInContainerOrDrop(ent.Comp.FaceProto, ent, ent.Comp.FaceContainer);
+
+        ent.Comp.FaceEntity = face;
+        Dirty(ent);
+
+        var faceComp = Comp<Scp096FaceComponent>(face);
+        faceComp.FaceOwner = ent;
+        Dirty(face, faceComp);
+    }
 
     private bool TryToggleTears(Entity<Scp096Component?> ent, bool value)
     {
