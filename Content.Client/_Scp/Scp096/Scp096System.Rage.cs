@@ -135,7 +135,7 @@ public sealed partial class Scp096System
 
     private void AddRageOverlay(float intensity = 1f)
     {
-        if (_rageOverlay != null)
+        if (_rageOverlay is not null)
             return;
 
         _rageOverlay = new(intensity);
@@ -144,7 +144,7 @@ public sealed partial class Scp096System
 
     private void RemoveRageOverlay()
     {
-        if (_rageOverlay == null)
+        if (_rageOverlay is null)
             return;
 
         _overlay.RemoveOverlay(_rageOverlay);
