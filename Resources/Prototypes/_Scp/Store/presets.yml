@@ -15,6 +15,7 @@
     - ScpMedical
     - ScpAdditional
     - ScpRecontainment
+    - ScpScientificEquipment
     - ScpSpecWeapon
     currencyWhitelist:
     - SupplyPoint
@@ -170,6 +171,7 @@
     - ScpExplosive
     - ScpMedical
     - ScpAdditional
+    - ScpScientificEquipment
     currencyWhitelist:
     - SupplyPoint
     balance:
@@ -190,6 +192,7 @@
     - ScpExplosive
     - ScpMedical
     - ScpAdditional
+    - ScpScientificEquipment
     - ScpSpecWeapon
     currencyWhitelist:
     - SupplyPoint

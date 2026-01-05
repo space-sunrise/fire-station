@@ -50,11 +50,16 @@
   priority: 8
 
 - type: storeCategory
+  id: ScpScientificEquipment
+  name: store-category-scientific-equipment
+  priority: 9
+
+- type: storeCategory
   id: ScpRecontainment
   name: store-category-scprecontainment
-  priority: 9
+  priority: 10
 
 - type: storeCategory
   id: ScpSpecWeapon
   name: store-category-scpspecweapon
-  priority: 10
+  priority: 11

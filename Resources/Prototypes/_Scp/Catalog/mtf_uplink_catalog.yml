@@ -2076,6 +2076,123 @@
   - !type:ListingLimitedStockCondition
     stock: 3
 
+# Научное оборудование
+
+- type: listing
+  id: ScpUplinkCrateArtifactContainer
+  productEntity: CrateArtifactContainer
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpScientificEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkHandheldArtifactContainer
+  productEntity: HandheldArtifactContainer
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpScientificEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkClothingEyesGlassesChemical
+  productEntity: ClothingEyesGlassesChemical
+  categories:
+  - ScpScientificEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkMachineAPE
+  productEntity: MachineAPE
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpScientificEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkCyberPistolCHIMP
+  productEntity: CyberPistolCHIMP
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpScientificEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkAnomalyLocator
+  productEntity: AnomalyLocator
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpScientificEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkAnomalyLocatorWide
+  productEntity: AnomalyLocatorWide
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpScientificEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkGeigerCounter
+  productEntity: GeigerCounter
+  categories:
+  - ScpScientificEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkAnomalyScanner
+  productEntity: AnomalyScanner
+  categories:
+  - ScpScientificEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkNodeScanner
+  productEntity: NodeScanner
+  categories:
+  - ScpScientificEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ScpUplinkChemistryBottleArtifexium
+  productEntity: ChemistryBottleArtifexium
+  name: shop-name-bottle-artifexium
+  description: shop-desc-bottle-artifexium
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpScientificEquipment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
 # Восстановление Условий Содержания
 - type: listing
   id: ScpUplinkRecontainmentCircuitsBoards
