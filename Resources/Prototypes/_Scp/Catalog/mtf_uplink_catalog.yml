@@ -1983,8 +1983,6 @@
   - ScpAdditional
   conditions:
   - !type:ListingLimitedStockCondition
-    stock: 5
-  - !type:ListingLimitedStockCondition
     stock: 1
   - !type:BuyerJobCondition
     blacklist:
