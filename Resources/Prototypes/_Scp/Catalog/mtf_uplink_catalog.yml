@@ -389,11 +389,6 @@
     - ScpUplinkClothingBeltMtfMedicalFilledMedic
     whitelist:
     - ScpUplinkMtfUnlockScpEquipment
-  - !type:BuyerJobCondition
-    blacklist:
-    - MHLeader # Б-7
-    - MHSpecialist
-    - MHCadet
 
 - type: listing
   id: ScpUplinkClothingBeltMtfUtilityFilled
@@ -421,6 +416,9 @@
     - HDLeader # Ню-7
     - HDSpecialist
     - HDCadet
+    - MHLeader # Б-7
+    - MHSpecialist
+    - MHCadet
 
 - type: listing
   id: ScpUplinkClothingBeltMtfMedicalFilledOperative
@@ -909,10 +907,129 @@
     - ScpUplinkMtfStorageCrateRifleBR64
     - ScpUplinkWeaponEarthGovLaserRifle
     - ScpUplinkWeaponEarthGovLaserSniper
+    - ScpUplinkWeaponPulseRifle
+    - ScpUplinkWeaponSniperPulseCarbineScp
+    - ScpUplinkMtfStorageCrateShotgunCycler
     whitelist:
     - ScpUplinkMtfUnlockPrimaryArms
   - !type:BuyerJobCondition
     blacklist:
+    - MHLeader # Б-7
+    - MHSpecialist
+    - MHCadet
+    - NTFLeader # Э-11
+    - NTFSpecialist
+    - NTFCadet
+
+- type: listing
+  id: ScpUplinkMtfStorageCrateShotgunCycler
+  productEntity: MtfStorageCrateShotgunCycler
+  name: shop-name-cyclerbox
+  description: shop-desc-cyclerbox
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: cycler }
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpPrimaryArms
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateSubMachineGunMP5
+    - ScpUplinkMtfStorageCrateSubMachineGunP90
+    - ScpUplinkMtfStorageCrateRifleFamas
+    - ScpUplinkMtfStorageCrateRifleG36
+    - ScpUplinkMtfStorageCrateRifleAR18
+    - ScpUplinkMtfStorageCrateShotgunCombat
+    - ScpUplinkMtfStorageCrateShotgunBulldog
+    - ScpUplinkMtfStorageCrateRifleBR64
+    - ScpUplinkWeaponEarthGovLaserRifle
+    - ScpUplinkWeaponEarthGovLaserSniper
+    - ScpUplinkWeaponPulseRifle
+    - ScpUplinkWeaponSniperPulseCarbineScp
+    - ScpUplinkMtfStorageCrateShotgunCycler
+    whitelist:
+    - ScpUplinkMtfUnlockPrimaryArms
+  - !type:BuyerJobCondition
+    blacklist:
+    - HDLeader # Ню-7
+    - HDSpecialist
+    - HDCadet
+    - MHLeader # Б-7
+    - MHSpecialist
+    - MHCadet
+    - NTFLeader # Э-11
+    - NTFSpecialist
+    - NTFCadet
+
+- type: listing
+  id: ScpUplinkWeaponPulseRifle
+  productEntity: WeaponPulseRifle
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pulse-r }
+  cost:
+    SupplyPoint: 3
+  categories:
+  - ScpPrimaryArms
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateSubMachineGunMP5
+    - ScpUplinkMtfStorageCrateSubMachineGunP90
+    - ScpUplinkMtfStorageCrateRifleFamas
+    - ScpUplinkMtfStorageCrateRifleG36
+    - ScpUplinkMtfStorageCrateRifleAR18
+    - ScpUplinkMtfStorageCrateShotgunCombat
+    - ScpUplinkMtfStorageCrateShotgunBulldog
+    - ScpUplinkMtfStorageCrateRifleBR64
+    - ScpUplinkWeaponEarthGovLaserRifle
+    - ScpUplinkWeaponEarthGovLaserSniper
+    - ScpUplinkWeaponPulseRifle
+    - ScpUplinkWeaponSniperPulseCarbineScp
+    - ScpUplinkMtfStorageCrateShotgunCycler
+    whitelist:
+    - ScpUplinkMtfUnlockPrimaryArms
+  - !type:BuyerJobCondition
+    blacklist:
+    - HDLeader # Ню-7
+    - HDSpecialist
+    - HDCadet
+    - MHLeader # Б-7
+    - MHSpecialist
+    - MHCadet
+    - NTFLeader # Э-11
+    - NTFSpecialist
+    - NTFCadet
+
+- type: listing
+  id: ScpUplinkWeaponSniperPulseCarbineScp
+  productEntity: WeaponSniperPulseCarbineScp
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pulse-sc }
+  cost:
+    SupplyPoint: 4
+  categories:
+  - ScpPrimaryArms
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCrateSubMachineGunMP5
+    - ScpUplinkMtfStorageCrateSubMachineGunP90
+    - ScpUplinkMtfStorageCrateRifleFamas
+    - ScpUplinkMtfStorageCrateRifleG36
+    - ScpUplinkMtfStorageCrateRifleAR18
+    - ScpUplinkMtfStorageCrateShotgunCombat
+    - ScpUplinkMtfStorageCrateShotgunBulldog
+    - ScpUplinkMtfStorageCrateRifleBR64
+    - ScpUplinkWeaponEarthGovLaserRifle
+    - ScpUplinkWeaponEarthGovLaserSniper
+    - ScpUplinkWeaponPulseRifle
+    - ScpUplinkWeaponSniperPulseCarbineScp
+    - ScpUplinkMtfStorageCrateShotgunCycler
+    whitelist:
+    - ScpUplinkMtfUnlockPrimaryArms
+  - !type:BuyerJobCondition
+    blacklist:
+    - HDLeader # Ню-7
+    - HDSpecialist
+    - HDCadet
     - MHLeader # Б-7
     - MHSpecialist
     - MHCadet
@@ -948,6 +1065,8 @@
     - ScpUplinkMtfStorageCratePistolVP78
     - ScpUplinkMtfStorageCrateRevolverSpearhead
     - ScpUplinkWeaponEarthGovLaserPistol
+    - ScpUplinkMtfStorageCrateRevolverSpearheadBlack
+    - ScpUplinkWeaponPulsePistolScp
     whitelist:
     - ScpUplinkMtfUnlockPistols
 
@@ -967,6 +1086,8 @@
     - ScpUplinkMtfStorageCratePistolVP78
     - ScpUplinkMtfStorageCrateRevolverSpearhead
     - ScpUplinkWeaponEarthGovLaserPistol
+    - ScpUplinkMtfStorageCrateRevolverSpearheadBlack
+    - ScpUplinkWeaponPulsePistolScp
     whitelist:
     - ScpUplinkMtfUnlockPistols
 
@@ -986,13 +1107,10 @@
     - ScpUplinkMtfStorageCratePistolVP78
     - ScpUplinkMtfStorageCrateRevolverSpearhead
     - ScpUplinkWeaponEarthGovLaserPistol
+    - ScpUplinkMtfStorageCrateRevolverSpearheadBlack
+    - ScpUplinkWeaponPulsePistolScp
     whitelist:
     - ScpUplinkMtfUnlockPistols
-  - !type:BuyerJobCondition
-    blacklist:
-    - MHLeader # Б-7
-    - MHSpecialist
-    - MHCadet
 
 - type: listing
   id: ScpUplinkMtfStorageCrateRevolverSpearhead
@@ -1010,13 +1128,16 @@
     - ScpUplinkMtfStorageCratePistolVP78
     - ScpUplinkMtfStorageCrateRevolverSpearhead
     - ScpUplinkWeaponEarthGovLaserPistol
+    - ScpUplinkMtfStorageCrateRevolverSpearheadBlack
+    - ScpUplinkWeaponPulsePistolScp
     whitelist:
     - ScpUplinkMtfUnlockPistols
   - !type:BuyerJobCondition
     blacklist:
-    - MHLeader # Б-7
-    - MHSpecialist
-    - MHCadet
+    - RRHLeader # А-1
+    - RRHSpecialist
+    - LLHLeader # О-1
+    - LLHSpecialist
 
 - type: listing
   id: ScpUplinkWeaponEarthGovLaserPistol
@@ -1034,10 +1155,76 @@
     - ScpUplinkMtfStorageCratePistolVP78
     - ScpUplinkMtfStorageCrateRevolverSpearhead
     - ScpUplinkWeaponEarthGovLaserPistol
+    - ScpUplinkMtfStorageCrateRevolverSpearheadBlack
+    - ScpUplinkWeaponPulsePistolScp
     whitelist:
     - ScpUplinkMtfUnlockPistols
   - !type:BuyerJobCondition
     blacklist:
+    - MHLeader # Б-7
+    - MHSpecialist
+    - MHCadet
+    - NTFLeader # Э-11
+    - NTFSpecialist
+    - NTFCadet
+
+- type: listing
+  id: ScpUplinkMtfStorageCrateRevolverSpearheadBlack
+  productEntity: MtfStorageCrateRevolverSpearheadBlack
+  name: shop-name-revolversbbox
+  description: shop-desc-revolversbbox
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: spearheadblack }
+  categories:
+  - ScpPistols
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCratePistolACP14
+    - ScpUplinkMtfStorageCratePistolG22
+    - ScpUplinkMtfStorageCratePistolVP78
+    - ScpUplinkMtfStorageCrateRevolverSpearhead
+    - ScpUplinkWeaponEarthGovLaserPistol
+    - ScpUplinkMtfStorageCrateRevolverSpearheadBlack
+    - ScpUplinkWeaponPulsePistolScp
+    whitelist:
+    - ScpUplinkMtfUnlockPistols
+  - !type:BuyerJobCondition
+    blacklist:
+    - HDLeader # Ню-7
+    - HDSpecialist
+    - HDCadet
+    - MHLeader # Б-7
+    - MHSpecialist
+    - MHCadet
+    - NTFLeader # Э-11
+    - NTFSpecialist
+    - NTFCadet
+
+- type: listing
+  id: ScpUplinkWeaponPulsePistolScp
+  productEntity: WeaponPulsePistolScp
+  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pulse-p }
+  cost:
+    SupplyPoint: 2
+  categories:
+  - ScpPistols
+  conditions:
+  - !type:BuyBeforeCondition
+    blacklist:
+    - ScpUplinkMtfStorageCratePistolACP14
+    - ScpUplinkMtfStorageCratePistolG22
+    - ScpUplinkMtfStorageCratePistolVP78
+    - ScpUplinkMtfStorageCrateRevolverSpearhead
+    - ScpUplinkWeaponEarthGovLaserPistol
+    - ScpUplinkMtfStorageCrateRevolverSpearheadBlack
+    - ScpUplinkWeaponPulsePistolScp
+    whitelist:
+    - ScpUplinkMtfUnlockPistols
+  - !type:BuyerJobCondition
+    blacklist:
+    - HDLeader # Ню-7
+    - HDSpecialist
+    - HDCadet
     - MHLeader # Б-7
     - MHSpecialist
     - MHCadet
@@ -2004,335 +2191,6 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
-# Основное вооружение Элита
-- type: listing
-  id: ScpUplinkMtfUnlockPrimaryArmsElite
-  name: shop-name-unlock
-  description: shop-desc-unlock
-  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: limited_supply }
-  categories:
-  - ScpPrimaryArmsElite
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
-- type: listing
-  id: ScpUplinkMtfStorageCrateSubMachineGunMP5Elite
-  productEntity: MtfStorageCrateSubMachineGunMP5
-  name: shop-name-mp5box
-  description: shop-desc-mp5box
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: mp5 }
-  categories:
-  - ScpPrimaryArmsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateSubMachineGunMP5Elite
-    - ScpUplinkMtfStorageCrateSubMachineGunP90Elite
-    - ScpUplinkMtfStorageCrateRifleG36Elite
-    - ScpUplinkMtfStorageCrateRifleAR18Elite
-    - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64
-    - ScpUplinkMtfStorageCrateRifleFamasElite
-    - ScpUplinkWeaponPulseRifleElite
-    - ScpUplinkWeaponSniperPulseCarbineScpElite
-    - ScpUplinkMtfStorageCrateShotgunCyclerElite
-    whitelist:
-    - ScpUplinkMtfUnlockPrimaryArmsElite
-
-- type: listing
-  id: ScpUplinkMtfStorageCrateSubMachineGunP90Elite
-  productEntity: MtfStorageCrateSubMachineGunP90
-  name: shop-name-p90box
-  description: shop-desc-p90box
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: p90 }
-  categories:
-  - ScpPrimaryArmsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateSubMachineGunMP5Elite
-    - ScpUplinkMtfStorageCrateSubMachineGunP90Elite
-    - ScpUplinkMtfStorageCrateRifleG36Elite
-    - ScpUplinkMtfStorageCrateRifleAR18Elite
-    - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64
-    - ScpUplinkMtfStorageCrateRifleFamasElite
-    - ScpUplinkWeaponPulseRifleElite
-    - ScpUplinkWeaponSniperPulseCarbineScpElite
-    - ScpUplinkMtfStorageCrateShotgunCyclerElite
-    whitelist:
-    - ScpUplinkMtfUnlockPrimaryArmsElite
-
-- type: listing
-  id: ScpUplinkMtfStorageCrateRifleG36Elite
-  productEntity: MtfStorageCrateRifleG36
-  name: shop-name-g36box
-  description: shop-desc-g36box
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: g36 }
-  categories:
-  - ScpPrimaryArmsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateSubMachineGunMP5Elite
-    - ScpUplinkMtfStorageCrateSubMachineGunP90Elite
-    - ScpUplinkMtfStorageCrateRifleG36Elite
-    - ScpUplinkMtfStorageCrateRifleAR18Elite
-    - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64
-    - ScpUplinkMtfStorageCrateRifleFamasElite
-    - ScpUplinkWeaponPulseRifleElite
-    - ScpUplinkWeaponSniperPulseCarbineScpElite
-    - ScpUplinkMtfStorageCrateShotgunCyclerElite
-    whitelist:
-    - ScpUplinkMtfUnlockPrimaryArmsElite
-
-- type: listing
-  id: ScpUplinkMtfStorageCrateRifleAR18Elite
-  productEntity: MtfStorageCrateRifleAR18
-  name: shop-name-ar18box
-  description: shop-desc-ar18box
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: ar18 }
-  categories:
-  - ScpPrimaryArmsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateSubMachineGunMP5Elite
-    - ScpUplinkMtfStorageCrateSubMachineGunP90Elite
-    - ScpUplinkMtfStorageCrateRifleG36Elite
-    - ScpUplinkMtfStorageCrateRifleAR18Elite
-    - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64
-    - ScpUplinkMtfStorageCrateRifleFamasElite
-    - ScpUplinkWeaponPulseRifleElite
-    - ScpUplinkWeaponSniperPulseCarbineScpElite
-    - ScpUplinkMtfStorageCrateShotgunCyclerElite
-    whitelist:
-    - ScpUplinkMtfUnlockPrimaryArmsElite
-
-- type: listing
-  id: ScpUplinkMtfStorageCrateShotgunCyclerElite
-  productEntity: MtfStorageCrateShotgunCycler
-  name: shop-name-cyclerbox
-  description: shop-desc-cyclerbox
-  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: cycler }
-  categories:
-  - ScpPrimaryArmsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateSubMachineGunMP5Elite
-    - ScpUplinkMtfStorageCrateSubMachineGunP90Elite
-    - ScpUplinkMtfStorageCrateRifleG36Elite
-    - ScpUplinkMtfStorageCrateRifleAR18Elite
-    - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64
-    - ScpUplinkMtfStorageCrateRifleFamasElite
-    - ScpUplinkWeaponPulseRifleElite
-    - ScpUplinkWeaponSniperPulseCarbineScpElite
-    - ScpUplinkMtfStorageCrateShotgunCyclerElite
-    whitelist:
-    - ScpUplinkMtfUnlockPrimaryArmsElite
-
-- type: listing
-  id: ScpUplinkMtfStorageCrateShotgunBulldogElite
-  productEntity: MtfStorageCrateShotgunBulldog
-  name: shop-name-bulldogbox
-  description: shop-desc-bulldogbox
-  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: bulldog }
-  categories:
-  - ScpPrimaryArmsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateSubMachineGunMP5Elite
-    - ScpUplinkMtfStorageCrateSubMachineGunP90Elite
-    - ScpUplinkMtfStorageCrateRifleG36Elite
-    - ScpUplinkMtfStorageCrateRifleAR18Elite
-    - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64
-    - ScpUplinkMtfStorageCrateRifleFamasElite
-    - ScpUplinkWeaponPulseRifleElite
-    - ScpUplinkWeaponSniperPulseCarbineScpElite
-    - ScpUplinkMtfStorageCrateShotgunCyclerElite
-    whitelist:
-    - ScpUplinkMtfUnlockPrimaryArmsElite
-
-- type: listing
-  id: ScpUplinkMtfStorageCrateRifleBR64Elite
-  productEntity: MtfStorageCrateRifleBR64
-  name: shop-name-br64box
-  description: shop-desc-br64box
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: br64 }
-  categories:
-  - ScpPrimaryArmsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateSubMachineGunMP5Elite
-    - ScpUplinkMtfStorageCrateSubMachineGunP90Elite
-    - ScpUplinkMtfStorageCrateRifleG36Elite
-    - ScpUplinkMtfStorageCrateRifleAR18Elite
-    - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64
-    - ScpUplinkMtfStorageCrateRifleFamasElite
-    - ScpUplinkWeaponPulseRifleElite
-    - ScpUplinkWeaponSniperPulseCarbineScpElite
-    - ScpUplinkMtfStorageCrateShotgunCyclerElite
-    whitelist:
-    - ScpUplinkMtfUnlockPrimaryArmsElite
-
-- type: listing
-  id: ScpUplinkWeaponPulseRifleElite
-  productEntity: WeaponPulseRifle
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pulse-r }
-  categories:
-  - ScpPrimaryArmsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateSubMachineGunMP5Elite
-    - ScpUplinkMtfStorageCrateSubMachineGunP90Elite
-    - ScpUplinkMtfStorageCrateRifleG36Elite
-    - ScpUplinkMtfStorageCrateRifleAR18Elite
-    - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64
-    - ScpUplinkMtfStorageCrateRifleFamasElite
-    - ScpUplinkWeaponPulseRifleElite
-    - ScpUplinkWeaponSniperPulseCarbineScpElite
-    - ScpUplinkMtfStorageCrateShotgunCyclerElite
-    whitelist:
-    - ScpUplinkMtfUnlockPrimaryArmsElite
-
-- type: listing
-  id: ScpUplinkWeaponSniperPulseCarbineScpElite
-  productEntity: WeaponSniperPulseCarbineScp
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pulse-sc }
-  categories:
-  - ScpPrimaryArmsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateSubMachineGunMP5Elite
-    - ScpUplinkMtfStorageCrateSubMachineGunP90Elite
-    - ScpUplinkMtfStorageCrateRifleG36Elite
-    - ScpUplinkMtfStorageCrateRifleAR18Elite
-    - ScpUplinkMtfStorageCrateShotgunBulldogElite
-    - ScpUplinkMtfStorageCrateRifleBR64
-    - ScpUplinkMtfStorageCrateRifleFamasElite
-    - ScpUplinkWeaponPulseRifleElite
-    - ScpUplinkWeaponSniperPulseCarbineScpElite
-    - ScpUplinkMtfStorageCrateShotgunCyclerElite
-    whitelist:
-    - ScpUplinkMtfUnlockPrimaryArmsElite
-
-# Пистолеты Элита
-- type: listing
-  id: ScpUplinkMtfUnlockPistolsElite
-  name: shop-name-unlock
-  description: shop-desc-unlock
-  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: limited_supply }
-  categories:
-  - ScpPistolsElite
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
-- type: listing
-  id: ScpUplinkMtfStorageCrateRevolverSpearheadBlackElite
-  productEntity: MtfStorageCrateRevolverSpearheadBlack
-  name: shop-name-revolversbbox
-  description: shop-desc-revolversbbox
-  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: spearheadblack }
-  categories:
-  - ScpPistolsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateRevolverSpearheadBlackElite
-    - ScpUplinkWeaponPulsePistolScpElite
-    - ScpUplinkMtfStorageCratePistolACP14Elite
-    - ScpUplinkMtfStorageCratePistolG22Elite
-    - ScpUplinkMtfStorageCratePistolVP78Elite
-    whitelist:
-    - ScpUplinkMtfUnlockPistolsElite
-
-- type: listing
-  id: ScpUplinkWeaponPulsePistolScpElite
-  productEntity: WeaponPulsePistolScp
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: pulse-p }
-  categories:
-  - ScpPistolsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateRevolverSpearheadBlackElite
-    - ScpUplinkWeaponPulsePistolScpElite
-    - ScpUplinkMtfStorageCratePistolACP14Elite
-    - ScpUplinkMtfStorageCratePistolG22Elite
-    - ScpUplinkMtfStorageCratePistolVP78Elite
-    whitelist:
-    - ScpUplinkMtfUnlockPistolsElite
-
-- type: listing
-  id: ScpUplinkMtfStorageCratePistolACP14Elite
-  productEntity: MtfStorageCratePistolACP14
-  name: shop-name-acp14box
-  description: shop-desc-acp14box
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: acp14 }
-  categories:
-  - ScpPistolsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateRevolverSpearheadBlackElite
-    - ScpUplinkWeaponPulsePistolScpElite
-    - ScpUplinkMtfStorageCratePistolACP14Elite
-    - ScpUplinkMtfStorageCratePistolG22Elite
-    - ScpUplinkMtfStorageCratePistolVP78Elite
-    whitelist:
-    - ScpUplinkMtfUnlockPistolsElite
-
-- type: listing
-  id: ScpUplinkMtfStorageCratePistolG22Elite
-  productEntity: MtfStorageCratePistolG22
-  name: shop-name-glock22box
-  description: shop-desc-glock22box
-  icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: g22 }
-  categories:
-  - ScpPistolsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateRevolverSpearheadBlackElite
-    - ScpUplinkWeaponPulsePistolScpElite
-    - ScpUplinkMtfStorageCratePistolACP14Elite
-    - ScpUplinkMtfStorageCratePistolG22Elite
-    - ScpUplinkMtfStorageCratePistolVP78Elite
-    whitelist:
-    - ScpUplinkMtfUnlockPistolsElite
-
-- type: listing
-  id: ScpUplinkMtfStorageCratePistolVP78Elite
-  productEntity: MtfStorageCratePistolVP78
-  name: shop-name-vp78box
-  description: shop-desc-vp78box
-  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: vp78 }
-  categories:
-  - ScpPistolsElite
-  conditions:
-  - !type:BuyBeforeCondition
-    blacklist:
-    - ScpUplinkMtfStorageCrateRevolverSpearheadBlackElite
-    - ScpUplinkWeaponPulsePistolScpElite
-    - ScpUplinkMtfStorageCratePistolACP14Elite
-    - ScpUplinkMtfStorageCratePistolG22Elite
-    - ScpUplinkMtfStorageCratePistolVP78Elite
-    whitelist:
-    - ScpUplinkMtfUnlockPistolsElite
-
 # Взрывчатка
 - type: listing
   id: ScpUplinkMtfStorageCrateGrenadeFragTimer
@@ -2347,6 +2205,14 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 2
+  - !type:BuyerJobCondition
+    blacklist:
+    - MHLeader # Б-7
+    - MHSpecialist
+    - MHCadet
+    - NTFLeader # Э-11
+    - NTFSpecialist
+    - NTFCadet
 
 - type: listing
   id: ScpUplinkMtfStorageCrateGrenadeBlastTimer
@@ -2361,6 +2227,14 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 2
+  - !type:BuyerJobCondition
+    blacklist:
+    - MHLeader # Б-7
+    - MHSpecialist
+    - MHCadet
+    - NTFLeader # Э-11
+    - NTFSpecialist
+    - NTFCadet
 
 - type: listing
   id: ScpUplinkMtfStorageCrateGrenadeFragContact
@@ -2375,6 +2249,14 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 2
+  - !type:BuyerJobCondition
+    blacklist:
+    - MHLeader # Б-7
+    - MHSpecialist
+    - MHCadet
+    - NTFLeader # Э-11
+    - NTFSpecialist
+    - NTFCadet
 
 - type: listing
   id: ScpUplinkMtfStorageCrateGrenadeBlastContact
@@ -2389,6 +2271,14 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 2
+  - !type:BuyerJobCondition
+    blacklist:
+    - MHLeader # Б-7
+    - MHSpecialist
+    - MHCadet
+    - NTFLeader # Э-11
+    - NTFSpecialist
+    - NTFCadet
 
 - type: listing
   id: ScpUplinkMtfStorageCrateC4
@@ -2403,6 +2293,11 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+  - !type:BuyerJobCondition
+    blacklist:
+    - MHLeader # Б-7
+    - MHSpecialist
+    - MHCadet
 
 # Специализированное вооружение
 - type: listing

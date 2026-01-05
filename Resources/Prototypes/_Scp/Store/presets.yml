@@ -9,9 +9,7 @@
     - ScpEquipment
     - ScpEquipmentBelts
     - ScpPrimaryArms
-    - ScpPrimaryArmsElite
     - ScpPistols
-    - ScpPistolsElite
     - ScpAmmo
     - ScpExplosive
     - ScpMedical
@@ -209,8 +207,8 @@
     - ScpKitStart
     - ScpEquipment
     - ScpEquipmentBelts
-    - ScpPrimaryArmsElite
-    - ScpPistolsElite
+    - ScpPrimaryArms
+    - ScpPistols
     - ScpAmmo
     - ScpExplosive
     - ScpMedical
@@ -231,8 +229,8 @@
     - ScpKitStart
     - ScpEquipment
     - ScpEquipmentBelts
-    - ScpPrimaryArmsElite
-    - ScpPistolsElite
+    - ScpPrimaryArms
+    - ScpPistols
     - ScpAmmo
     - ScpExplosive
     - ScpMedical

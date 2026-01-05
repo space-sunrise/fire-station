@@ -24,18 +24,8 @@
   name: store-category-scpprimaryarms
   priority: 3
 
-- type: storeCategory # Для Альфы и Омеги
-  id: ScpPrimaryArmsElite
-  name: store-category-scpprimaryarms
-  priority: 3
-
 - type: storeCategory
   id: ScpPistols
-  name: store-category-ntpistols
-  priority: 4
-
-- type: storeCategory # Для Альфы и Омеги
-  id: ScpPistolsElite
   name: store-category-ntpistols
   priority: 4
 
