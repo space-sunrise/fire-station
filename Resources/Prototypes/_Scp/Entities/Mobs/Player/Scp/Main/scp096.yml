@@ -52,6 +52,15 @@
       - DamageOtherOnHit
       - Storage
       - EntityStorage
+    cryOutWhitelist:
+      tags:
+      - Wall
+      - Window
+      - Directional
+      - Structure
+    cryOutDamage:
+      types:
+        Structural: 850
   - type: Scp096ShaderStatic
   - type: ScpRestriction
     canBeDisarmed: true
@@ -89,7 +98,7 @@
         volume: -4
   - type: ActionGrant
     actions:
-    #- Scp096CryOut - Требует механику ремонта стен, отключено до реализации.
+    - Scp096CryOut
     - Scp096FaceSkinRip
     - Scp096SitDown
   - type: SafeTime

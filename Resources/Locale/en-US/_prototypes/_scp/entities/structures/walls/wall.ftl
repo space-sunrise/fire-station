@@ -56,3 +56,7 @@ ent-ScpWallRockBasalt = { ent-ScpWallRock }
     .desc = { ent-ScpWallRock.desc }
 ent-ScpWallFlesh106 = rotting flesh
     .desc = A rotten piece of meat. The stench is terrible. You obviously don't want to touch it.
+ent-ScpWallScp096Containment = SCP-096 containment wall
+    .desc = A specially reinforced wall for containing SCP-096. Capable of withstanding extreme stress.
+ent-ScpWallScp096ContainmentShattered = shattered SCP-096 containment wall
+    .desc = A heavily damaged SCP-096 containment wall. Requires immediate repair to restore safety.

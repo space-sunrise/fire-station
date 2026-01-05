@@ -1,6 +1,8 @@
-﻿using Content.Shared._Scp.Helpers;
+﻿using System.Linq;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Other.EmitSoundRandomly;
+using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
@@ -30,6 +32,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
 
+// TODO: Generic система для обнаружения, находится ли объект в камере содержания
 public abstract partial class SharedScp096System : EntitySystem
 {
     [Dependency] private readonly PredictedRandomSystem _random = default!;
@@ -57,6 +60,8 @@ public abstract partial class SharedScp096System : EntitySystem
     protected static readonly ProtoId<AlertPrototype> HeatingUpAlert = "Scp096HeatingUp";
     protected static readonly ProtoId<AlertPrototype> SleepAlert = "Scp096Sleep";
     protected static readonly ProtoId<AlertPrototype> FaceDamageAlert = "Scp096FaceDamage";
+
+    private const float ContainmentChamberSearchRadius = 8f;
 
     public override void Initialize()
     {
@@ -441,6 +446,21 @@ public abstract partial class SharedScp096System : EntitySystem
         Dirty(ent);
 
         return true;
+    }
+
+    /// <summary>
+    /// Проверяет, находится ли скромник в камере содержания
+    /// </summary>
+    /// <param name="uid"><see cref="EntityUid"/> скромника</param>
+    /// <returns>Находится/не находится</returns>
+    private bool IsInContainmentChamber(EntityUid uid)
+    {
+        var coords = Transform(uid).Coordinates;
+        var markers =
+            _lookup.GetEntitiesInRange<Scp096ContainmentChamberMarkerComponent>(coords, ContainmentChamberSearchRadius, LookupFlags.Sensors);
+
+        return markers
+            .Any(e => _proximity.IsRightType(uid, e, LineOfSightBlockerLevel.None, out _));
     }
 
     #endregion

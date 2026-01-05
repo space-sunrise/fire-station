@@ -33,6 +33,17 @@ public abstract partial class SharedScp096System
         if (args.Handled)
             return;
 
+        if (ent.Comp.CryOutDamage == null)
+            return;
+
+        if (ent.Comp.CryOutRequireBeInContainmentChamber && !IsInContainmentChamber(ent))
+        {
+            var message = Loc.GetString("scp096-only-in-containment-chamber");
+            _popup.PopupClient(message, ent, ent);
+
+            return;
+        }
+
         var targets =
             _lookup.GetEntitiesInRange<DamageableComponent>(Transform(ent).Coordinates,
                     ent.Comp.CryOutRange,
@@ -184,7 +195,7 @@ public abstract partial class SharedScp096System
 
     private bool IsValidForCryOutDamage(Entity<Scp096Component> ent, EntityUid uid)
     {
-        if (!_whitelist.IsWhitelistPassOrNull(ent.Comp.CryOutWhitelist, uid))
+        if (!_whitelist.CheckBoth(uid, ent.Comp.CryOutBlacklist, ent.Comp.CryOutWhitelist))
             return false;
 
         if (!_proximity.IsRightType(ent, uid, LineOfSightBlockerLevel.None, out _))
