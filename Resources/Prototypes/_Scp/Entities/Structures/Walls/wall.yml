@@ -478,14 +478,13 @@
 
 # Стена Сдерживания
 
-# TODO: Исправить опечатку Metall -> Metal
 - type: entity
   parent:
   - BaseWall
   - ScpBaseWallDamageableVisualsReinforcedConcrete
   - ScpBaseStructureDamageOnSpawn
   - ScpBaseWallRepairable
-  id: ScpWallConcreteMetallHardContaiment
+  id: ScpWallMetalHardContaiment
   name: metall wall hard contaiment
   components:
   - type: Sprite
@@ -499,7 +498,7 @@
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicHardCellsScp
   - type: ScpRepairable
-    graph: ScpWallConcreteMetalRepair
+    graph: ScpWallMetalHardRepair
   - type: Destructible
     thresholds:
       - trigger:
@@ -522,7 +521,7 @@
 
 - type: entity
   parent: WallShuttleDiagonal
-  id: ScpWallConcreteMetallHardContaimentDiagonal
+  id: ScpWallMetalHardContaimentDiagonal
   name: metall wall hard contaiment
   placement:
     mode: SnapgridCenter
