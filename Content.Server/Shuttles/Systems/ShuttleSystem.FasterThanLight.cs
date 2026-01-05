@@ -139,18 +139,18 @@ public sealed partial class ShuttleSystem
 
         // Fire added start
         var lightMap = AddComp<MapLightComponent>(mapUid);
-        lightMap.AmbientLightColor = Color.FromHex("#6b6b6bff");
+        lightMap.AmbientLightColor = Color.FromHex("#a5a5a5ff");
 
-        AddComp<MapAtmosphereComponent>(mapUid);
+        // AddComp<MapAtmosphereComponent>(mapUid);
         EnsureComp<MapAtmosphereComponent>(mapUid);
 
         _atmosphere.SetMapSpace(mapUid, false);
 
         var moles = new float[Atmospherics.AdjustedNumberOfGases];
-        moles[(int) Gas.Oxygen] = 21.824779f;
-        moles[(int) Gas.Nitrogen] = 82.10312f;
+        moles[(int) Gas.Oxygen] = 5.89f;
+        moles[(int) Gas.Nitrogen] = 21.16f;
 
-        var mixture = new GasMixture(moles, Atmospherics.T0C);
+        var mixture = new GasMixture(moles, Atmospherics.T0C - 50);
 
         _atmosphere.SetMapAtmosphere(mapUid, false, mixture);
         // Fire added end
