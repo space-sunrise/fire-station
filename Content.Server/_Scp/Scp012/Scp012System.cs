@@ -16,7 +16,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp012;
 
-public sealed class SCP012System : EntitySystem
+public sealed class Scp012System : EntitySystem
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
