@@ -802,6 +802,8 @@
   parent:
   - BaseWall
   id: ScpWallScp096Containment
+  name: SCP-096 containment chamber acoustic isolation wall
+  description: A multilayer containment wall designed to fully absorb sound and vibrational waves produced by SCP-096. Uses materials comparable to those found in anechoic chambers. Structural failure may occur when anomalous acoustic resonance exceeds design limits.
   components:
   - type: Sprite
     sprite: _Scp/Structures/Walls/scp096_containment.rsi
@@ -824,17 +826,17 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          Girder:
+          ScpWallScp096ContainmentShattered:
             min: 1
             max: 1
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
 
 - type: entity
-  id: ScpWallScp096ContainmentShattered
-  name: test
-  description: test
   parent: [ BaseStructure, BaseScpWallScp096Containment ]
+  id: ScpWallScp096ContainmentShattered
+  name: shattered acoustic isolation debris
+  description: Heavily damaged debris caused by prolonged exposure to acoustic resonance. Repairable. Use a screwdriver to begin repairs.
   components:
   - type: InteractionOutline
   - type: Fixtures

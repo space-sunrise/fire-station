@@ -5,6 +5,11 @@
   - node: start
     edges:
     - to: repairedWall
+      completed:
+      - !type:SpawnPrototype
+        prototype: ScpWallScp096Containment
+        amount: 1
+      - !type:DeleteEntity { }
       steps:
       - tool: Screwing
         doAfter: 2
@@ -38,4 +43,3 @@
         doAfter: 2
 
   - node: repairedWall
-    entity: ScpWallScp096Containment
