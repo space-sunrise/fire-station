@@ -12,7 +12,7 @@ public sealed partial class SCP012Component : Component
     [DataField("attractionForce")]
     public float AttractionForce = 1.5f;
 
-    [DataField("suicideThreshold")]
+    [DataField("suicideTimer")]
     public float SuicideThreshold = 30.0f;
 
     [DataField("damage")]
@@ -30,7 +30,7 @@ public sealed partial class SCP012Component : Component
 [RegisterComponent]
 public sealed partial class SCP012VictimComponent : Component
 {
-    public EntityUid Source;
+    public EntityUid Source = EntityUid.Invalid;
     public float TotalTime = 0f;
-	public float SpeakTimer = 0f; // таймер для пауз между фразами
+    public float SpeakTimer = 0f; 
 }
