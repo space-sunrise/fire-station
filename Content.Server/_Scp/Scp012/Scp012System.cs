@@ -73,7 +73,7 @@ public sealed class Scp012System : EntitySystem
                 continue;
 
             var worldPos = _transform.GetMapCoordinates(uid);
-            foreach (var entity in _lookup.GetEntitiesInRange(worldPos, scp.Range))
+            foreach (var entity in _lookup.GetEntitiesInRange<HumanoidAppearanceComponent>(worldPos, scp.Range))
             {
                 if (!HasComp<HumanoidAppearanceComponent>(entity) || !_mobState.IsAlive(entity))
                     continue;
