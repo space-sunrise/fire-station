@@ -141,7 +141,6 @@ public sealed partial class ShuttleSystem
         var lightMap = AddComp<MapLightComponent>(mapUid);
         lightMap.AmbientLightColor = Color.FromHex("#a5a5a5ff");
 
-        // AddComp<MapAtmosphereComponent>(mapUid);
         EnsureComp<MapAtmosphereComponent>(mapUid);
 
         _atmosphere.SetMapSpace(mapUid, false);
