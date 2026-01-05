@@ -59,17 +59,12 @@
   name: store-category-ntadditional
   priority: 8
 
-- type: storeCategory # Для Беты-7
-  id: ScpAdditionalBiohazard
-  name: store-category-scpbiohazard
-  priority: 9
-
 - type: storeCategory
   id: ScpRecontainment
   name: store-category-scprecontainment
-  priority: 10
+  priority: 9
 
 - type: storeCategory
   id: ScpSpecWeapon
   name: store-category-scpspecweapon
-  priority: 11
+  priority: 10
