@@ -79,7 +79,6 @@
 
 - type: constructionGraph
   id: ScpWallMetalHardRepair
-  id: 
   start: start
   graph:
   - node: start
