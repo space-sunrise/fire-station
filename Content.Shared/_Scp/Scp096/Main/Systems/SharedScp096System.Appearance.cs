@@ -8,6 +8,10 @@ namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
+    /*
+     * Часть системы, отвечающая за внешность скромника и его анимации.
+     */
+
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
 
     private readonly Dictionary<EntityUid, TimeSpan> _pendingJitteringRemoval = new ();
@@ -29,6 +33,9 @@ public abstract partial class SharedScp096System
 
     #region Update
 
+    /// <summary>
+    /// Проходится по списку запланированных анимаций и выполняет их в нужное время.
+    /// </summary>
     private void UpdateAnimations()
     {
         if (_pendingAnimations.Count == 0)
@@ -54,6 +61,9 @@ public abstract partial class SharedScp096System
         }
     }
 
+    /// <summary>
+    /// Проходится по списку запланированных анимаций дрожания и заканчивает их в нужное время.
+    /// </summary>
     private void UpdateJittering()
     {
         if (_pendingJitteringRemoval.Count == 0)
@@ -79,6 +89,11 @@ public abstract partial class SharedScp096System
 
     #region Helpers
 
+    /// <summary>
+    /// Актуализирует внешний вид скромника.
+    /// Проверяет, какие состояние должен иметь скромник и отправляет данные через <see cref="SharedAppearanceSystem"/>
+    /// </summary>
+    /// <param name="ent">Скромник, состояние которого будет актуализироваться</param>
     private void UpdateAppearance(Entity<Scp096Component?, AppearanceComponent?> ent)
     {
         if (!_timing.IsFirstTimePredicted)
@@ -119,6 +134,12 @@ public abstract partial class SharedScp096System
                || _standing.IsDown(uid);
     }
 
+    /// <summary>
+    /// Добавляет скромника в список запланированных анимаций.
+    /// Если он там уже присутствует - продлевает анимацию.
+    /// </summary>
+    /// <param name="ent">Скромник, который будет выполнять анимацию</param>
+    /// <param name="end">Время окончания анимации</param>
     private void AddToPendingAnimations(Entity<Scp096Component> ent, TimeSpan end)
     {
         if (_pendingAnimations.TryGetValue(ent, out var existingEnd))
@@ -127,6 +148,12 @@ public abstract partial class SharedScp096System
             _pendingAnimations[ent] = end;
     }
 
+    /// <summary>
+    /// Добавляет скромника в список запланированных анимаций дрожания.
+    /// Если он там уже присутствует - продлевает анимацию.
+    /// </summary>
+    /// <param name="ent">Скромник, который будет выполнять анимацию</param>
+    /// <param name="end">Время окончания анимации</param>
     private void AddToPendingJittering(Entity<Scp096Component> ent, TimeSpan end)
     {
         if (_pendingJitteringRemoval.TryGetValue(ent, out var existingEnd))
@@ -135,6 +162,12 @@ public abstract partial class SharedScp096System
             _pendingJitteringRemoval[ent] = end;
     }
 
+    /// <summary>
+    /// Переключает анимацию сидения/вставания скромника.
+    /// Обновляет его внешний вид и добавляет в список запланированных анимаций.
+    /// </summary>
+    /// <param name="ent">Скромник, который будет выполнять действие</param>
+    /// <param name="haveToStand">Должен ли скромник встать?</param>
     private void ToggleSitAnimation(Entity<Scp096Component?> ent, bool haveToStand)
     {
         if (!Resolve(ent, ref ent.Comp))
@@ -151,6 +184,10 @@ public abstract partial class SharedScp096System
         AddToPendingAnimations((ent, ent.Comp), _timing.CurTime + ent.Comp.AnimationDuration);
     }
 
+    /// <summary>
+    /// Заставляет скромника сесть.
+    /// Включает анимацию сидения, убирает возможность передвигаться и делает плач быстрее.
+    /// </summary>
     private void SetSitDown<T>(Entity<Scp096Component> ent, ref T args)
     {
         ToggleSitAnimation(ent.AsNullable(), false);
@@ -158,6 +195,10 @@ public abstract partial class SharedScp096System
         TryModifyTearsSpawnSpeed(ent.AsNullable(), true);
     }
 
+    /// <summary>
+    /// Заставляет скромника встать.
+    /// Включает анимацию вставания, восстанавливает возможность передвигаться и возвращает скорость плача.
+    /// </summary>
     private void SetStandUp<T>(Entity<Scp096Component> ent, ref T args)
     {
         ToggleSitAnimation(ent.AsNullable(), true);

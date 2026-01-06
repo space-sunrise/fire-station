@@ -13,6 +13,11 @@ namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
+    /*
+     * Часть системы, отвечающая за лицо скромника и работу с ним.
+     * Обрабатывает лечение лица и переход в спокойное состояние, если лицо вылечено.
+     */
+
     [Dependency] private readonly SharedScpExaminableDamageSystem _examinableDamage = default!;
     [Dependency] private readonly SharedContainerSystem _container = default!;
 
@@ -65,6 +70,9 @@ public abstract partial class SharedScp096System
         }
     }
 
+    /// <summary>
+    /// Перенаправляет все попытки вылечить урон на скромника на попытки вылечить урон у его лица.
+    /// </summary>
     private void OnHealingRelay(Entity<Scp096Component> ent, ref HealingRelayEvent args)
     {
         if (!TryGetFace(ent.AsNullable(), out var face))
@@ -73,6 +81,9 @@ public abstract partial class SharedScp096System
         args.Entity = face;
     }
 
+    /// <summary>
+    /// Перенаправляет осмотр повреждений с скромника на осмотр повреждений его лица.
+    /// </summary>
     private void OnExaminableRelay(Entity<Scp096Component> ent, ref ExaminableDamageRelayEvent args)
     {
         if (!TryGetFace(ent.AsNullable(), out var face))
@@ -85,6 +96,10 @@ public abstract partial class SharedScp096System
 
     #region API
 
+    /// <summary>
+    /// Пытается получить сущность лица скромника из самого скромника.
+    /// </summary>
+    /// <returns>Удалось ли получить лицо - да/нет</returns>
     [PublicAPI]
     public bool TryGetFace(Entity<Scp096Component?> ent, [NotNullWhen(true)] out Entity<Scp096FaceComponent>? face)
     {
@@ -114,6 +129,10 @@ public abstract partial class SharedScp096System
         return true;
     }
 
+    /// <summary>
+    /// Пытается получить сущность скромника из его лица.
+    /// </summary>
+    /// <returns>Удалось ли получить скромника - да/нет</returns>
     [PublicAPI]
     public bool TryGetScp096FromFace(Entity<Scp096FaceComponent> ent, [NotNullWhen(true)] out Entity<Scp096Component>? scp096)
     {
@@ -195,6 +214,10 @@ public abstract partial class SharedScp096System
 
     #region Helpers
 
+    /// <summary>
+    /// Создает лицо скромника и выставляет его в компоненте скромника.
+    /// Поддерживает предугадывание.
+    /// </summary>
     private void SpawnFace(Entity<Scp096Component> ent)
     {
         if (!_timing.IsFirstTimePredicted || _timing.ApplyingState)
@@ -213,6 +236,10 @@ public abstract partial class SharedScp096System
         Dirty(face, faceComp);
     }
 
+    /// <summary>
+    /// Пытается переключить возможность плакать
+    /// </summary>
+    /// <returns>Получилось? - да/нет</returns>
     private bool TryToggleTears(Entity<Scp096Component?> ent, bool value)
     {
         if (!TryGetFace(ent, out var face))
@@ -222,6 +249,12 @@ public abstract partial class SharedScp096System
         return true;
     }
 
+    /// <summary>
+    /// Пытается переключить реагент, которым плачет скромник.
+    /// </summary>
+    /// <param name="useDefaultReagent">Использовать стандартный реагент?
+    /// Если да - скромник будет плакать обычными слезами</param>
+    /// <returns>Получилось? - да/нет</returns>
     private bool TryToggleTearsReagent(Entity<Scp096Component?> ent, bool useDefaultReagent)
     {
         if (!TryGetFace(ent, out var face))
@@ -231,6 +264,12 @@ public abstract partial class SharedScp096System
         return true;
     }
 
+    /// <summary>
+    /// Пытается переключить скорость появления слез(скорость плача).
+    /// </summary>
+    /// <param name="cryFaster">Нужно плакать быстрее?
+    /// Если да - устанавливает более быструю скорость плача, иначе восстанавливает стандартную</param>
+    /// <returns>Получилось? - да/нет</returns>
     private bool TryModifyTearsSpawnSpeed(Entity<Scp096Component?> ent, bool cryFaster)
     {
         if (!TryGetFace(ent, out var face))

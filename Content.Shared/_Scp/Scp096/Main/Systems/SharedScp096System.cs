@@ -33,8 +33,15 @@ using Robust.Shared.Timing;
 namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 // TODO: Generic система для обнаружения, находится ли объект в камере содержания
+/// <summary>
+/// Система, регулирующая поведения и состояния скромника.
+/// </summary>
 public abstract partial class SharedScp096System : EntitySystem
 {
+    /*
+     * Основная часть системы, отвечающая за самые базовые вещи.
+     */
+
     [Dependency] private readonly PredictedRandomSystem _random = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = default!;
@@ -48,6 +55,7 @@ public abstract partial class SharedScp096System : EntitySystem
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
     private static readonly SoundSpecifier StorageOpenSound = new SoundCollectionSpecifier("MetalBreak");
 
+    // EntityQuery для быстрого доступа к компонентам
     protected EntityQuery<Scp096Component> Scp096Query;
     protected EntityQuery<ActiveScp096HeatingUpComponent> HeatingUpQuery;
     protected EntityQuery<ActiveScp096RageComponent> RageQuery;
@@ -55,12 +63,16 @@ public abstract partial class SharedScp096System : EntitySystem
     protected EntityQuery<ActiveScp096WithoutFaceComponent> WithoutFaceQuery;
     protected EntityQuery<Scp096FaceComponent> FaceQuery;
 
+    // ID алертов с лицом скромника
     protected static readonly ProtoId<AlertPrototype> IdleAlert = "Scp096Idle";
     protected static readonly ProtoId<AlertPrototype> RageAlert = "Scp096Rage";
     protected static readonly ProtoId<AlertPrototype> HeatingUpAlert = "Scp096HeatingUp";
     protected static readonly ProtoId<AlertPrototype> SleepAlert = "Scp096Sleep";
     protected static readonly ProtoId<AlertPrototype> FaceDamageAlert = "Scp096FaceDamage";
 
+    /// <summary>
+    /// Радиус поиска камеры содержания вокруг скромника.
+    /// </summary>
     private const float ContainmentChamberSearchRadius = 8f;
 
     public override void Initialize()

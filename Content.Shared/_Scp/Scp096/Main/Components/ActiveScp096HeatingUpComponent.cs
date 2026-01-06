@@ -28,9 +28,16 @@ public sealed partial class ActiveScp096HeatingUpComponent : Component
     public SoundSpecifier TriggerSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/triggered.ogg",
         AudioParams.Default.WithVolume(20f).WithMaxDistance(30f).WithRolloffFactor(5f));
 
+    /// <summary>
+    /// Минимальная интенсивность оверлея. Выставляется в начале перехода в состояние
+    /// </summary>
     [DataField]
     public double OverlayIntensityMin = 0d;
 
+    /// <summary>
+    /// Максимальная интенсивность оверлея.
+    /// Выставляется в пиковой точке, когда время становится равным <see cref="RageHeatUpEnd"/>
+    /// </summary>
     [DataField]
     public double OverlayIntensityMax = 1d;
 }
