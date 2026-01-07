@@ -7,16 +7,16 @@ namespace Content.Server._Scp.Scp012;
 [RegisterComponent]
 public sealed partial class Scp012Component : Component
 {
-    [DataField]
+    [ViewVariables(VVAccess.ReadWrite), DataField]
     public float Range = 7.0f;
 
-    [DataField]
+    [ViewVariables(VVAccess.ReadWrite), DataField]
     public float AttractionForce = 1.5f;
 
-    [DataField]
+    [ViewVariables(VVAccess.ReadWrite), DataField]
     public float SuicideThreshold = 30.0f;
 
-    [DataField]
+    [ViewVariables(VVAccess.ReadWrite), DataField]
     public DamageSpecifier Damage = new()
     {
         DamageDict = new Dictionary<string, FixedPoint2>
@@ -25,17 +25,25 @@ public sealed partial class Scp012Component : Component
         }
     };
 
-    [DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
+    [ViewVariables(VVAccess.ReadWrite), DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
     public TimeSpan? NextDamageTime;
 
-    // Интервал между тиками урона
+    [ViewVariables(VVAccess.ReadOnly)]
     public readonly TimeSpan DamageCooldown = TimeSpan.FromSeconds(2.0);
 }
 
 [RegisterComponent]
-public sealed partial class SCP012VictimComponent : Component
+public sealed partial class Scp012VictimComponent : Component
 {
+    [ViewVariables]
     public EntityUid Source = EntityUid.Invalid;
+
+    [ViewVariables(VVAccess.ReadWrite)]
     public float TotalTime = 0f;
-    public float SpeakTimer = 0f; 
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    public float SpeakTimer = 0f;
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan? NextLosCheckTime;
 }

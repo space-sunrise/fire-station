@@ -8,7 +8,7 @@
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-012.rsi
     state: icon
-  - type: SCP012
+  - type: Scp012
     range: 7.0
     attractionForce: 1.2
     suicideTimer: 30.0

@@ -1,23 +1,27 @@
-﻿using Content.Server.Popups;
-using Content.Server.Chat.Systems;
+﻿using Content.Server.Chat.Systems;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Hands.Components;
+using Content.Shared.Hands; // Важно для событий рук
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Speech.Muting;
 using Content.Shared.Humanoid;
+using Content.Shared.Mobs; 
+using Content.Shared.Inventory.Events;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Robust.Shared.Containers;
 
 namespace Content.Server._Scp.Scp012;
 
-public sealed class SCP012System : EntitySystem
+public sealed class Scp012System : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
@@ -30,6 +34,7 @@ public sealed class SCP012System : EntitySystem
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
 
     private readonly string[] _suicidePhrases = 
     {
@@ -40,18 +45,42 @@ public sealed class SCP012System : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<SCP012VictimComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshSpeed);
-        SubscribeLocalEvent<SCP012Component, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<Scp012VictimComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshSpeed);
+        SubscribeLocalEvent<Scp012Component, MapInitEvent>(OnMapInit);
+        
+
+        SubscribeLocalEvent<Scp012Component, GotEquippedHandEvent>(OnGotEquipped);
+        SubscribeLocalEvent<Scp012VictimComponent, MobStateChangedEvent>(OnMobStateChanged);
     }
 
-    private void OnMapInit(EntityUid uid, SCP012Component component, MapInitEvent args)
+    private void OnMapInit(EntityUid uid, Scp012Component component, MapInitEvent args)
     {
         component.NextDamageTime = _timing.CurTime;
     }
 
-    private void OnRefreshSpeed(EntityUid uid, SCP012VictimComponent component, RefreshMovementSpeedModifiersEvent args)
+    private void OnMobStateChanged(EntityUid uid, Scp012VictimComponent component, MobStateChangedEvent args)
     {
-        if (_hands.IsHolding(uid, component.Source, out _))
+        if (args.NewMobState == MobState.Dead)
+        {
+            StopEffect(uid);
+        }
+    }
+
+    // Срабатывает, когда SCP-012 попадает в руки (подняли или украли)
+    private void OnGotEquipped(EntityUid uid, Scp012Component component, GotEquippedHandEvent args)
+    {
+        var victim = args.User;
+        if (!HasComp<HumanoidAppearanceComponent>(victim))
+            return;
+
+        var victimComp = EnsureComp<Scp012VictimComponent>(victim);
+        victimComp.Source = uid;
+        _movementSpeed.RefreshMovementSpeedModifiers(victim);
+    }
+
+    private void OnRefreshSpeed(EntityUid uid, Scp012VictimComponent component, RefreshMovementSpeedModifiersEvent args)
+    {
+        if (_mobState.IsAlive(uid) && _hands.IsHolding(uid, component.Source, out _))
             args.ModifySpeed(0f, 0f);
     }
 
@@ -70,7 +99,7 @@ public sealed class SCP012System : EntitySystem
         var curTime = _timing.CurTime;
         var damageTicks = new HashSet<EntityUid>();
 
-        var scpQuery = EntityQueryEnumerator<SCP012Component, TransformComponent>();
+        var scpQuery = EntityQueryEnumerator<Scp012Component, TransformComponent>();
         while (scpQuery.MoveNext(out var uid, out var scp, out var xform))
         {
             if (scp.NextDamageTime == null || curTime < scp.NextDamageTime)
@@ -79,7 +108,10 @@ public sealed class SCP012System : EntitySystem
             scp.NextDamageTime = curTime + scp.DamageCooldown;
             damageTicks.Add(uid);
 
-            if (HasComp<MobStateComponent>(xform.ParentUid))
+            if (HasComp<HandsComponent>(xform.ParentUid))
+                continue;
+
+            if (_container.IsEntityInContainer(uid) && HasComp<MobStateComponent>(Transform(xform.ParentUid).ParentUid))
                 continue;
 
             var worldPos = _transform.GetMapCoordinates(uid);
@@ -87,7 +119,7 @@ public sealed class SCP012System : EntitySystem
             {
                 if (!HasComp<HumanoidAppearanceComponent>(entity) || 
                     !_mobState.IsAlive(entity) || 
-                    HasComp<SCP012VictimComponent>(entity))
+                    HasComp<Scp012VictimComponent>(entity))
                     continue;
 
                 if (TryComp<BlindableComponent>(entity, out var blind) && blind.IsBlind)
@@ -96,15 +128,15 @@ public sealed class SCP012System : EntitySystem
                 if (!_interaction.InRangeUnobstructed(entity, uid, scp.Range))
                     continue;
 
-                var victimComp = EnsureComp<SCP012VictimComponent>(entity);
+                var victimComp = EnsureComp<Scp012VictimComponent>(entity);
                 victimComp.Source = uid;
             }
         }
 
-        var victimQuery = EntityQueryEnumerator<SCP012VictimComponent, TransformComponent, PhysicsComponent>();
+        var victimQuery = EntityQueryEnumerator<Scp012VictimComponent, TransformComponent, PhysicsComponent>();
         while (victimQuery.MoveNext(out var vUid, out var victim, out var vXform, out var vPhysics))
         {
-            if (!Exists(victim.Source) || !TryComp<SCP012Component>(victim.Source, out var scp))
+            if (!Exists(victim.Source) || !TryComp<Scp012Component>(victim.Source, out var scp))
             {
                 StopEffect(vUid);
                 continue;
@@ -131,8 +163,20 @@ public sealed class SCP012System : EntitySystem
 
             if (!isInHands)
             {
+                if (TryComp<TransformComponent>(victim.Source, out var scpXform) && 
+                    HasComp<HandsComponent>(scpXform.ParentUid) && scpXform.ParentUid != vUid)
+                {
+                    StopEffect(vUid);
+                    continue;
+                }
+
                 if (HasComp<MutedComponent>(vUid))
                     RemCompDeferred<MutedComponent>(vUid);
+
+                if (victim.NextLosCheckTime == null || curTime >= victim.NextLosCheckTime)
+                {
+                    victim.NextLosCheckTime = curTime + TimeSpan.FromSeconds(0.5);
+                }
 
                 if (_interaction.InRangeUnobstructed(vUid, victim.Source, scp.Range))
                 {
@@ -182,10 +226,8 @@ public sealed class SCP012System : EntitySystem
 
     private void StopEffect(EntityUid uid)
     {
-        if (HasComp<MutedComponent>(uid))
-            RemCompDeferred<MutedComponent>(uid);
-            
-        RemCompDeferred<SCP012VictimComponent>(uid);
+        RemCompDeferred<MutedComponent>(uid);
+        RemCompDeferred<Scp012VictimComponent>(uid);
         _movementSpeed.RefreshMovementSpeedModifiers(uid);
     }
 }
