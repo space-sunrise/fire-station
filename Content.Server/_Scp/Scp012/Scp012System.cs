@@ -13,16 +13,17 @@ using Content.Shared.Humanoid;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Server._Scp.Scp012;
 
 public sealed class SCP012System : EntitySystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedInteractionSystem _interaction = default!;
@@ -40,6 +41,12 @@ public sealed class SCP012System : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<SCP012VictimComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshSpeed);
+        SubscribeLocalEvent<SCP012Component, MapInitEvent>(OnMapInit);
+    }
+
+    private void OnMapInit(EntityUid uid, SCP012Component component, MapInitEvent args)
+    {
+        component.NextDamageTime = _timing.CurTime;
     }
 
     private void OnRefreshSpeed(EntityUid uid, SCP012VictimComponent component, RefreshMovementSpeedModifiersEvent args)
@@ -60,25 +67,27 @@ public sealed class SCP012System : EntitySystem
     {
         base.Update(frameTime);
 
-        // поиск людей
+        var curTime = _timing.CurTime;
+        var damageTicks = new HashSet<EntityUid>();
+
         var scpQuery = EntityQueryEnumerator<SCP012Component, TransformComponent>();
         while (scpQuery.MoveNext(out var uid, out var scp, out var xform))
         {
-            scp.DamageTimer += frameTime;
-            bool shouldDamage = scp.DamageTimer >= 0.5f;
-            if (shouldDamage) scp.DamageTimer = 0f;
+            if (scp.NextDamageTime == null || curTime < scp.NextDamageTime)
+                continue;
 
-            // если уже кто то держит то другим не надо этого
+            scp.NextDamageTime = curTime + scp.DamageCooldown;
+            damageTicks.Add(uid); // Отмечаем, что этот SCP сейчас должен нанести урон
+
             if (HasComp<MobStateComponent>(xform.ParentUid))
                 continue;
 
             var worldPos = _transform.GetMapCoordinates(uid);
             foreach (var entity in _lookup.GetEntitiesInRange(worldPos, scp.Range))
             {
-                if (!HasComp<HumanoidAppearanceComponent>(entity) || !_mobState.IsAlive(entity))
-                    continue;
-
-                if (HasComp<SCP012VictimComponent>(entity))
+                if (!HasComp<HumanoidAppearanceComponent>(entity) || 
+                    !_mobState.IsAlive(entity) || 
+                    HasComp<SCP012VictimComponent>(entity))
                     continue;
 
                 if (TryComp<BlindableComponent>(entity, out var blind) && blind.IsBlind)
@@ -95,7 +104,6 @@ public sealed class SCP012System : EntitySystem
         var victimQuery = EntityQueryEnumerator<SCP012VictimComponent, TransformComponent, PhysicsComponent>();
         while (victimQuery.MoveNext(out var vUid, out var victim, out var vXform, out var vPhysics))
         {
-
             if (!Exists(victim.Source) || !TryComp<SCP012Component>(victim.Source, out var scp))
             {
                 StopEffect(vUid);
@@ -113,7 +121,6 @@ public sealed class SCP012System : EntitySystem
             var distVec = scpPos - victimPos;
             var distance = distVec.Length();
 
-            // Если слишком далеко от своего источника
             if (distance > scp.Range + 1.5f)
             {
                 StopEffect(vUid);
@@ -124,7 +131,9 @@ public sealed class SCP012System : EntitySystem
 
             if (!isInHands)
             {
-                RemCompDeferred<MutedComponent>(vUid);
+                if (HasComp<MutedComponent>(vUid))
+                    RemCompDeferred<MutedComponent>(vUid);
+
                 if (_interaction.InRangeUnobstructed(vUid, victim.Source, scp.Range))
                 {
                     _transform.SetWorldRotation(vUid, distVec.ToWorldAngle());
@@ -145,16 +154,16 @@ public sealed class SCP012System : EntitySystem
                 victim.TotalTime += frameTime;
                 victim.SpeakTimer += frameTime;
 
-                if (scp.DamageTimer <= 0f)
+                if (damageTicks.Contains(victim.Source))
                 {
                     _damageable.TryChangeDamage(vUid, scp.Damage, ignoreResistances: true);
-                    
-                    if (victim.SpeakTimer >= 4.0f)
-                    {
-                        victim.SpeakTimer = 0f;
-                        if (_random.Prob(0.7f))
-                            ForceSpeak(vUid, _random.Pick(_suicidePhrases));
-                    }
+                }
+
+                if (victim.SpeakTimer >= 4.0f)
+                {
+                    victim.SpeakTimer = 0f;
+                    if (_random.Prob(0.7f))
+                        ForceSpeak(vUid, _random.Pick(_suicidePhrases));
                 }
 
                 if (victim.TotalTime >= scp.SuicideThreshold)
@@ -163,7 +172,7 @@ public sealed class SCP012System : EntitySystem
                     var deathDamage = new DamageSpecifier();
                     foreach (var key in scp.Damage.DamageDict.Keys)
                         deathDamage.DamageDict.Add(key, FixedPoint2.New(200)); 
-                    
+
                     _damageable.TryChangeDamage(vUid, deathDamage, ignoreResistances: true);
                     StopEffect(vUid);
                 }
@@ -173,7 +182,9 @@ public sealed class SCP012System : EntitySystem
 
     private void StopEffect(EntityUid uid)
     {
-        RemCompDeferred<MutedComponent>(uid);
+        if (HasComp<MutedComponent>(uid))
+            RemCompDeferred<MutedComponent>(uid);
+            
         RemCompDeferred<SCP012VictimComponent>(uid);
         _movementSpeed.RefreshMovementSpeedModifiers(uid);
     }
