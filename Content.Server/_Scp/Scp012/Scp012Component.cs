@@ -21,7 +21,6 @@ public sealed partial class SCP012Component : Component
     {
         DamageDict = new Dictionary<string, FixedPoint2>
         {
-            // Увеличил урон до 5, так как он теперь наносится реже (раз в 2 сек)
             { "Slash", FixedPoint2.New(5) } 
         }
     };
