@@ -70,7 +70,6 @@ public sealed class SCP012System : EntitySystem
         var curTime = _timing.CurTime;
         var damageTicks = new HashSet<EntityUid>();
 
-        // дурачок просто я не знаю что за бред в десктопе
         var scpQuery = EntityQueryEnumerator<SCP012Component, TransformComponent>();
         while (scpQuery.MoveNext(out var uid, out var scp, out var xform))
         {
@@ -78,7 +77,7 @@ public sealed class SCP012System : EntitySystem
                 continue;
 
             scp.NextDamageTime = curTime + scp.DamageCooldown;
-            damageTicks.Add(uid); // Отмечаем, что этот SCP сейчас должен нанести урон
+            damageTicks.Add(uid);
 
             if (HasComp<MobStateComponent>(xform.ParentUid))
                 continue;
