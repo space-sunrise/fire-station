@@ -13,16 +13,13 @@ public sealed partial class Scp012Component : Component
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public float AttractionForce = 1.5f;
 
-    [ViewVariables(VVAccess.ReadWrite), DataField]
-    public float SuicideThreshold = 30.0f;
+    [ViewVariables(VVAccess.ReadWrite), DataField("suicideTimer")]
+    public float SuicideTimer = 30.0f;
 
     [ViewVariables(VVAccess.ReadWrite), DataField]
     public DamageSpecifier Damage = new()
     {
-        DamageDict = new Dictionary<string, FixedPoint2>
-        {
-            { "Slash", FixedPoint2.New(5) } 
-        }
+        DamageDict = new Dictionary<string, FixedPoint2> { { "Slash", FixedPoint2.New(5) } }
     };
 
     [ViewVariables(VVAccess.ReadWrite), DataField(customTypeSerializer: typeof(TimeOffsetSerializer))]
@@ -46,4 +43,14 @@ public sealed partial class Scp012VictimComponent : Component
 
     [ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan? NextLosCheckTime;
+
+    [ViewVariables]
+    public bool CachedLos = false;
+
+    [DataField("phrases")]
+    public List<string> Phrases = new()
+    {
+        "scp012-phrase-1", "scp012-phrase-2", "scp012-phrase-3",
+        "scp012-phrase-4", "scp012-phrase-5", "scp012-phrase-6"
+    };
 }

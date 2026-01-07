@@ -3,7 +3,7 @@
   parent: BaseItemScp
   suffix: SCP-012
   name: ???
-  description: "Музыкальная рукопись под названием «On Mount Golgotha». Она кажется... незаконченной."
+  description: "scp012-description"
   components:
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-012.rsi
