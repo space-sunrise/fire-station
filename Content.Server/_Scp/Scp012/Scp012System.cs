@@ -18,8 +18,8 @@ using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using System.Numerics;        // Для самого типа Vector2
-using Robust.Shared.Maths;   // Для методов расширения типа .ToWorldAngle()
+using System.Numerics;
+using Robust.Shared.Maths;
 
 namespace Content.Server._Scp.Scp012;
 
@@ -77,7 +77,6 @@ public sealed class Scp012System : EntitySystem
 
     private void OnGotEquipped(Entity<Scp012Component> ent, ref GotEquippedHandEvent args)
     {
-        // Проверяем вайтлист вместо прямой проверки HumanoidAppearance
         if (_whitelist.IsWhitelistFail(ent.Comp.Whitelist, args.User) || 
             _whitelist.IsBlacklistPass(ent.Comp.Blacklist, args.User))
             return;
@@ -89,7 +88,6 @@ public sealed class Scp012System : EntitySystem
 
 private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
 {
-    // Используем ent.Owner, чтобы метод подхватил правильный тип сущности
     if (_mobState.IsAlive(ent.Owner) && _hands.IsHolding(ent.Owner, ent.Comp.Source, out _))
         args.ModifySpeed(0f, 0f);
 }
@@ -140,7 +138,6 @@ private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMoveme
         UpdateVictims(frameTime, damageTicks);
     }
 
-    // Вынесли логику жертв в отдельный метод по просьбе ревьюера
     private void UpdateVictims(float frameTime, HashSet<EntityUid> damageTicks)
     {
         var victimEnumerator = EntityQueryEnumerator<Scp012VictimComponent, TransformComponent, PhysicsComponent>();

@@ -36,7 +36,7 @@ public sealed partial class Scp012VictimComponent : Component
     [ViewVariables(VVAccess.ReadWrite)] public TimeSpan? NextLosCheckTime;
     [ViewVariables] public bool CachedLos = false;
 
-    [DataField] // Убрали "phrases"
+    [DataField]
     public List<string> Phrases = new()
     {
         "scp012-phrase-1", "scp012-phrase-2", "scp012-phrase-3",
