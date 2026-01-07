@@ -1,0 +1,14 @@
+- type: entity
+  id: ChemistryBottleArtifexium
+  suffix: artifexium
+  parent: BaseChemistryBottleFilled
+  components:
+  - type: Label
+    currentLabel: reagent-name-artifexium
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 30
+        reagents:
+        - ReagentId: Artifexium
+          Quantity: 30

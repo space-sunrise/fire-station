@@ -9,15 +9,13 @@
     - ScpEquipment
     - ScpEquipmentBelts
     - ScpPrimaryArms
-    - ScpPrimaryArmsElite
     - ScpPistols
-    - ScpPistolsElite
     - ScpAmmo
     - ScpExplosive
     - ScpMedical
     - ScpAdditional
-    - ScpAdditionalBiohazard
     - ScpRecontainment
+    - ScpScientificEquipment
     - ScpSpecWeapon
     currencyWhitelist:
     - SupplyPoint
@@ -108,7 +106,6 @@
     - ScpMedical
     - ScpAdditional
     - ScpRecontainment
-    - ScpSpecWeapon
     currencyWhitelist:
     - SupplyPoint
     balance:
@@ -131,7 +128,6 @@
     - ScpExplosive
     - ScpMedical
     - ScpAdditional
-    - ScpRecontainment
     currencyWhitelist:
     - SupplyPoint
     balance:
@@ -153,7 +149,6 @@
     - ScpExplosive
     - ScpMedical
     - ScpAdditional
-    - ScpRecontainment
     - ScpSpecWeapon
     currencyWhitelist:
     - SupplyPoint
@@ -176,8 +171,7 @@
     - ScpExplosive
     - ScpMedical
     - ScpAdditional
-    - ScpAdditionalBiohazard
-    - ScpRecontainment
+    - ScpScientificEquipment
     currencyWhitelist:
     - SupplyPoint
     balance:
@@ -198,8 +192,7 @@
     - ScpExplosive
     - ScpMedical
     - ScpAdditional
-    - ScpAdditionalBiohazard
-    - ScpRecontainment
+    - ScpScientificEquipment
     - ScpSpecWeapon
     currencyWhitelist:
     - SupplyPoint
@@ -217,8 +210,8 @@
     - ScpKitStart
     - ScpEquipment
     - ScpEquipmentBelts
-    - ScpPrimaryArmsElite
-    - ScpPistolsElite
+    - ScpPrimaryArms
+    - ScpPistols
     - ScpAmmo
     - ScpExplosive
     - ScpMedical
@@ -239,8 +232,8 @@
     - ScpKitStart
     - ScpEquipment
     - ScpEquipmentBelts
-    - ScpPrimaryArmsElite
-    - ScpPistolsElite
+    - ScpPrimaryArms
+    - ScpPistols
     - ScpAmmo
     - ScpExplosive
     - ScpMedical
