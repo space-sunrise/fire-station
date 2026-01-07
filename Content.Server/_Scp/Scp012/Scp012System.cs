@@ -70,6 +70,7 @@ public sealed class SCP012System : EntitySystem
         var curTime = _timing.CurTime;
         var damageTicks = new HashSet<EntityUid>();
 
+        // 1. Поиск новых целей и проверка кулдауна урона
         var scpQuery = EntityQueryEnumerator<SCP012Component, TransformComponent>();
         while (scpQuery.MoveNext(out var uid, out var scp, out var xform))
         {
@@ -101,6 +102,7 @@ public sealed class SCP012System : EntitySystem
             }
         }
 
+        // 2. Обработка текущих жертв
         var victimQuery = EntityQueryEnumerator<SCP012VictimComponent, TransformComponent, PhysicsComponent>();
         while (victimQuery.MoveNext(out var vUid, out var victim, out var vXform, out var vPhysics))
         {
@@ -154,6 +156,7 @@ public sealed class SCP012System : EntitySystem
                 victim.TotalTime += frameTime;
                 victim.SpeakTimer += frameTime;
 
+                // Наносим урон только в момент тика кулдауна
                 if (damageTicks.Contains(victim.Source))
                 {
                     _damageable.TryChangeDamage(vUid, scp.Damage, ignoreResistances: true);
