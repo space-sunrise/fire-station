@@ -168,13 +168,13 @@ public abstract partial class SharedScp096System : EntitySystem
         if (!attacker.HasValue)
             return;
 
-        if (!Scp096Query.TryComp(target, out var scp))
-            return;
-
         if (!_random.ProbForEntity(attacker.Value, chance))
             return;
 
-        TryAddTarget((target, scp), attacker.Value, true);
+        if (!Scp096Query.TryComp(target, out var scp))
+            return;
+
+        TryAddTarget((target, scp), attacker.Value, true, ignoreBlinded: true);
     }
 
     private void OnMobStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
