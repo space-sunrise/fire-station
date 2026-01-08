@@ -1,0 +1,21 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Сreated by MIDUZKA(Discord) | MIDUZKA(Space Station 14)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        { "name": "full" },
+
+        { "name": "tile0", "directions": 4 },
+        { "name": "tile1", "directions": 4 },
+        { "name": "tile2", "directions": 4 },
+        { "name": "tile3", "directions": 4 },
+        { "name": "tile4", "directions": 4 },
+        { "name": "tile5", "directions": 4 },
+        { "name": "tile6", "directions": 4 },
+        { "name": "tile7", "directions": 4 }
+    ]
+}

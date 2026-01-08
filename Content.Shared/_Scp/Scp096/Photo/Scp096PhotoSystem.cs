@@ -5,6 +5,10 @@ using Content.Shared.Examine;
 
 namespace Content.Shared._Scp.Scp096.Photo;
 
+/// <summary>
+/// Система управляющая фотографиями SCP-096.
+/// Отвечает за действия при осмотре фотографии.
+/// </summary>
 public sealed class Scp096PhotoSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;

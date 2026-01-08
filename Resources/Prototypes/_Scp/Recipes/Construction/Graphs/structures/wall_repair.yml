@@ -108,3 +108,35 @@
       completed:
       - !type:DamageEntityAllTypes
         amount: -1000
+
+- type: constructionGraph
+  id: ScpWallScp096ContainmentRepair
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: welded
+      conditions:
+      - !type:HasDamage
+        require: true
+      steps:
+      - material: Plasteel
+        amount: 2
+        doAfter: 1
+      - material: MetalRod
+        amount: 4
+        doAfter: 1
+
+  - node: welded
+    edges:
+    - to: start
+      steps:
+      - tool: Prying
+        doAfter: 1
+      - tool: Screwing
+        doAfter: 1
+      - tool: Welding
+        doAfter: 2
+      completed:
+      - !type:DamageEntityAllTypes
+        amount: -5000

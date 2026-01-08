@@ -16,6 +16,10 @@ namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
+    /*
+     * Часть системы, отвечающая за целей скромника и их обработку.
+     */
+
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedFearSystem _fear = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;

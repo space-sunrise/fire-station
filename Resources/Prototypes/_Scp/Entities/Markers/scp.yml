@@ -38,6 +38,7 @@
       state: idle
   - type: SpawnPoint
     job_id: Scp096
+  - type: Scp096ContainmentChamberMarker
 
 - type: entity
   name: SCP-939 spawner

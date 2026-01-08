@@ -10,6 +10,10 @@ namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
+    /*
+     * Часть системы, отвечающая за состояние ярости и пред-яростное состояние скромника.
+     */
+
     [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly SharedStaminaSystem _stamina = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
@@ -113,6 +117,9 @@ public abstract partial class SharedScp096System
 
     #endregion
 
+    /// <summary>
+    /// Проходится по скромникам и переводит из пред-яростного состояния в яростное, когда придет время.
+    /// </summary>
     private void UpdateHeatingUp()
     {
         var query = EntityQueryEnumerator<ActiveScp096HeatingUpComponent, Scp096Component>();
@@ -128,6 +135,10 @@ public abstract partial class SharedScp096System
         }
     }
 
+    /// <summary>
+    /// Проходится по скромникам и проверяет, не вышел ли таймер ярости.
+    /// Если да - убирает все цели и заканчивает состояние ярости, переводя скромника в сон.
+    /// </summary>
     private void UpdateRage()
     {
         var query = EntityQueryEnumerator<ActiveScp096RageComponent>();

@@ -10,6 +10,10 @@ namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
+    /*
+     * Часть системы, отвечающая за состояние без лица скромника.
+     */
+
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
 

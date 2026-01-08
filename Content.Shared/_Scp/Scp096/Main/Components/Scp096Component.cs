@@ -1,6 +1,4 @@
-﻿using Content.Shared.Alert;
-using Content.Shared.Damage;
-using Content.Shared.Tag;
+﻿using Content.Shared.Damage;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -99,13 +97,7 @@ public sealed partial class Scp096Component : Component
     /// Урон, который будет наносить способность плача скромника.
     /// </summary>
     [DataField]
-    public DamageSpecifier CryOutDamage = new ()
-    {
-        DamageDict = new()
-        {
-            { "Structural", 50 },
-        },
-    };
+    public DamageSpecifier? CryOutDamage;
 
     /// <summary>
     /// Радиус нанесения урона от способности плача
@@ -117,15 +109,13 @@ public sealed partial class Scp096Component : Component
     /// Белый список сущностей, которые будут получать урон от способности плача.
     /// </summary>
     [DataField]
-    public EntityWhitelist CryOutWhitelist = new ()
-    {
-        Tags = new List<ProtoId<TagPrototype>>
-        {
-            "Wall",
-            "Window",
-            "Directional",
-        },
-    };
+    public EntityWhitelist? CryOutWhitelist;
+
+    /// <summary>
+    /// Черный список сущностей, которые будут получать урон от способности плача.
+    /// </summary>
+    [DataField]
+    public EntityWhitelist? CryOutBlacklist;
 
     /// <summary>
     /// Звук, который будет произноситься во время активации способности плача
@@ -139,6 +129,12 @@ public sealed partial class Scp096Component : Component
     /// </summary>
     [DataField]
     public TimeSpan CryOutJitterTime = TimeSpan.FromSeconds(1f);
+
+    /// <summary>
+    /// Должен ли скромник находиться в камере содержания, чтобы использовать плач.
+    /// </summary>
+    [DataField]
+    public bool CryOutRequireBeInContainmentChamber = true;
 
     #endregion
 

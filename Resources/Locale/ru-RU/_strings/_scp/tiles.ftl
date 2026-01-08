@@ -47,3 +47,4 @@ scp-tiles-steel-grille-offset-3 = [SCP] { ent-ScpFloorTileItemSteelGrilleOffset3
 scp-tiles-steel-grille-offset-4 = [SCP] { ent-ScpFloorTileItemSteelGrilleOffset4 }
 scp-tiles-concrete-tile = [SCP] { ent-ScpFloorTileItemConcrete }
 scp-tiles-concrete-mono = [SCP] { ent-ScpFloorTileItemConcreteMono }
+scp-tiles-anechoic = [SCP] покрытие безэховой камеры
