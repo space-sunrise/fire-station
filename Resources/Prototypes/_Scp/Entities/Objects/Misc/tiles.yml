@@ -771,7 +771,7 @@
     - ScpFloorAnechoic1
 
 - type: entity
-  parent: ScpFloorAnechoic1
+  parent: ScpFloorTileItemAnechoic1
   id: ScpFloorTileItemAnechoic2
   components:
   - type: Sprite
@@ -783,7 +783,7 @@
     - ScpFloorAnechoic2
 
 - type: entity
-  parent: ScpFloorAnechoic1
+  parent: ScpFloorTileItemAnechoic1
   id: ScpFloorTileItemAnechoic3
   components:
   - type: Sprite
