@@ -1,182 +1,71 @@
 {
-  "version": 1,
-  "license": "CC-BY-SA-3.0",
-  "copyright": "Created by odlieerr(Discord) | Odleer(Space Station 14)",
-  "size": {
-    "x": 32,
-    "y": 32
-  },
-  "states": [
-    {
-      "name": "dark"
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Created by odlieerr(Discord) | Odleer(Space Station 14). anechoic_1, anechoic_2, anechoic_3 created by miduzka(discord)",
+    "size": {
+        "x": 32,
+        "y": 32
     },
-    {
-      "name": "steel"
-    },
-    {
-      "name": "white"
-    },
-    {
-      "name": "department_cargo"
-    },
-    {
-      "name": "department_com"
-    },
-    {
-      "name": "department_eng"
-    },
-    {
-      "name": "department_med"
-    },
-    {
-      "name": "department_rnd"
-    },
-    {
-      "name": "department_sec"
-    },
-    {
-      "name": "department_ser"
-    },
-    {
-      "name": "department_atmos"
-    },
-    {
-      "name": "blue"
-    },
-    {
-      "name": "green"
-    },
-    {
-      "name": "checker_dark"
-    },
-    {
-      "name": "checker_steel"
-    },
-    {
-      "name": "checker_white"
-    },
-    {
-      "name": "concrete"
-    },
-    {
-      "name": "concrete_mono"
-    },
-    {
-      "name": "dark_diagonal"
-    },
-    {
-      "name": "dark_half_mono"
-    },
-    {
-      "name": "dark_half_mono_vertical"
-    },
-    {
-      "name": "dark_herringbone"
-    },
-    {
-      "name": "dark_mini"
-    },
-    {
-      "name": "dark_mono"
-    },
-    {
-      "name": "dark_offset"
-    },
-    {
-      "name": "dark_pavement"
-    },
-    {
-      "name": "dark_pavement_vertical"
-    },
-    {
-      "name": "steel_1"
-    },
-    {
-      "name": "steel_2"
-    },
-    {
-      "name": "steel_3"
-    },
-    {
-      "name": "steel_4"
-    },
-    {
-      "name": "steel_diagonal"
-    },
-    {
-      "name": "steel_half_mono"
-    },
-    {
-      "name": "steel_half_mono_vertical"
-    },
-    {
-      "name": "steel_herringbone"
-    },
-    {
-      "name": "steel_mini"
-    },
-    {
-      "name": "steel_mono"
-    },
-    {
-      "name": "steel_mono_1"
-    },
-    {
-      "name": "steel_mono_2"
-    },
-    {
-      "name": "steel_mono_3"
-    },
-    {
-      "name": "steel_mono_4"
-    },
-    {
-      "name": "steel_offset"
-    },
-    {
-      "name": "steel_offset_1"
-    },
-    {
-      "name": "steel_offset_2"
-    },
-    {
-      "name": "steel_offset_3"
-    },
-    {
-      "name": "steel_offset_4"
-    },
-    {
-      "name": "steel_pavement"
-    },
-    {
-      "name": "steel_pavement_vertical"
-    },
-    {
-      "name": "white_diagonal"
-    },
-    {
-      "name": "white_half_mono"
-    },
-    {
-      "name": "white_half_mono_vertical"
-    },
-    {
-      "name": "white_herringbone"
-    },
-    {
-      "name": "white_mini"
-    },
-    {
-      "name": "white_mono"
-    },
-    {
-      "name": "white_offset"
-    },
-    {
-      "name": "white_pavement"
-    },
-    {
-      "name": "white_pavement_vertical"
-    }
-  ]
+    "states": [
+        { "name": "dark" },
+        { "name": "steel" },
+        { "name": "white" },
+        { "name": "department_cargo" },
+        { "name": "department_com" },
+        { "name": "department_eng" },
+        { "name": "department_med" },
+        { "name": "department_rnd" },
+        { "name": "department_sec" },
+        { "name": "department_ser" },
+        { "name": "department_atmos" },
+        { "name": "blue" },
+        { "name": "green" },
+        { "name": "checker_dark" },
+        { "name": "checker_steel" },
+        { "name": "checker_white" },
+        { "name": "concrete" },
+        { "name": "concrete_mono" },
+        { "name": "dark_diagonal" },
+        { "name": "dark_half_mono" },
+        { "name": "dark_half_mono_vertical" },
+        { "name": "dark_herringbone" },
+        { "name": "dark_mini" },
+        { "name": "dark_mono" },
+        { "name": "dark_offset" },
+        { "name": "dark_pavement" },
+        { "name": "dark_pavement_vertical" },
+        { "name": "steel_1" },
+        { "name": "steel_2" },
+        { "name": "steel_3" },
+        { "name": "steel_4" },
+        { "name": "steel_diagonal" },
+        { "name": "steel_half_mono" },
+        { "name": "steel_half_mono_vertical" },
+        { "name": "steel_herringbone" },
+        { "name": "steel_mini" },
+        { "name": "steel_mono" },
+        { "name": "steel_mono_1" },
+        { "name": "steel_mono_2" },
+        { "name": "steel_mono_3" },
+        { "name": "steel_mono_4" },
+        { "name": "steel_offset" },
+        { "name": "steel_offset_1" },
+        { "name": "steel_offset_2" },
+        { "name": "steel_offset_3" },
+        { "name": "steel_offset_4" },
+        { "name": "steel_pavement" },
+        { "name": "steel_pavement_vertical" },
+        { "name": "white_diagonal" },
+        { "name": "white_half_mono" },
+        { "name": "white_half_mono_vertical" },
+        { "name": "white_herringbone" },
+        { "name": "white_mini" },
+        { "name": "white_mono" },
+        { "name": "white_offset" },
+        { "name": "white_pavement" },
+        { "name": "white_pavement_vertical" },
+        { "name": "anechoic_1" },
+        { "name": "anechoic_2" },
+        { "name": "anechoic_3" }
+    ]
 }
