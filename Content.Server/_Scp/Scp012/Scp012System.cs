@@ -50,6 +50,9 @@ public sealed partial class Scp012System : SharedScp012System
 
     private void OnGotEquipped(Entity<Scp012Component> ent, ref GotEquippedHandEvent args)
     {
+        if (!_whitelist.CheckBoth(args.User, ent.Comp.Blacklist, ent.Comp.Whitelist))
+            return;
+        
         var victimComp = EnsureComp<Scp012VictimComponent>(args.User);
         victimComp.Source = ent;
 

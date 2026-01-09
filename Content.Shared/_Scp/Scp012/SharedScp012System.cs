@@ -1,37 +1,27 @@
 ﻿using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Item;
-using Content.Shared.Popups;
-using Content.Shared.Whitelist;
 
 namespace Content.Shared._Scp.Scp012;
 
 public abstract class SharedScp012System : EntitySystem
 {
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
-
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<Scp012Component, GettingPickedUpAttemptEvent>(OnGettingPickedUp);
         SubscribeLocalEvent<Scp012Component, GettingDroppedAttemptEvent>(OnGettingDropped);
-    }
-
-    private void OnGettingPickedUp(Entity<Scp012Component> ent, ref GettingPickedUpAttemptEvent args)
-    {
-        if (_whitelist.CheckBoth(args.User, ent.Comp.Blacklist, ent.Comp.Whitelist))
-            return;
-
-        var message = Loc.GetString("scp012-failed-pickup");
-        _popup.PopupClient(message, args.User, args.User);
-
-        args.Cancel();
     }
 
     private void OnGettingDropped(Entity<Scp012Component> ent, ref GettingDroppedAttemptEvent args)
     {
-        if (HasComp<Scp012VictimComponent>(args.User))
-            args.Cancelled = true;
+        if (!TryComp<Scp012VictimComponent>(args.User, out var victim))
+            return;
+
+        if (victim.LifeStage <= ComponentLifeStage.Initialized)
+            return;
+
+        if (victim.LifeStage >= ComponentLifeStage.Stopping)
+            return;
+
+        args.Cancelled = true;
     }
 }

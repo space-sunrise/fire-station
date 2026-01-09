@@ -53,12 +53,15 @@ public sealed partial class Scp012System
         RemCompDeferred<MutedComponent>(ent);
         _movementSpeed.RefreshMovementSpeedModifiers(ent);
         SetAudio(ent, enable: false);
+
+        if (ent.Comp.Source.HasValue)
+            _hands.TryDrop(ent.Owner, ent.Comp.Source.Value, Transform(ent).Coordinates, false);
     }
 
     private void OnMobStateChanged(Entity<Scp012VictimComponent> ent, ref MobStateChangedEvent args)
     {
         if (_mobState.IsIncapacitated(ent))
-            RemCompDeferred<Scp012VictimComponent>(ent);
+            RemComp<Scp012VictimComponent>(ent);
     }
 
     private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMovementSpeedModifiersEvent args)

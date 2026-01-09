@@ -17,6 +17,7 @@
     blacklist:
       components:
       - Scp012Protection
+      - Scp
     passiveDamage:
       types:
         Slash: 5

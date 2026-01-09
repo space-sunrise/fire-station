@@ -121,11 +121,13 @@ public abstract partial class SharedHandsSystem
         if (!TryGetHeldItem(ent, handId, out var entity))
             return false;
 
+        // Fire added start - для сцп 012
         var ev = new GettingDroppedAttemptEvent(ent);
         RaiseLocalEvent(entity.Value, ref ev);
 
         if (ev.Cancelled)
             return false;
+        // Fire added end
 
         // if item is a fake item (like with pulling), just delete it rather than bothering with trying to drop it into the world
         if (TryComp(entity, out VirtualItemComponent? @virtual))
