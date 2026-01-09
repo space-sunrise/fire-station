@@ -2,6 +2,7 @@
 using Content.Shared.Examine;
 using Content.Shared.GameTicking;
 using Content.Shared.Interaction;
+using Content.Shared.Physics;
 using Content.Shared.Storage.Components;
 using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
@@ -52,6 +53,16 @@ public sealed class ProximitySystem : EntitySystem
         "SecureWindoor",
         "SecurePlasmaWindoor",
         "SecureUraniumWindoor",
+    ];
+
+    /// <summary>
+    /// Список тегов, которые обозначают прозрачный объект-преграду.
+    /// </summary>
+    private static readonly HashSet<ProtoId<TagPrototype>> OpaqueTags =
+    [
+        "Wall",
+        "Airlock",
+        "HighSecDoor",
     ];
 
     public override void Initialize()
@@ -128,6 +139,13 @@ public sealed class ProximitySystem : EntitySystem
         _nextSearchTime = _timing.CurTime + ProximitySearchCooldown;
     }
 
+
+    /// <inheritdoc cref="IsRightType(EntityUid, EntityUid, LineOfSightBlockerLevel, out LineOfSightBlockerLevel)"/>
+    public bool IsRightType(EntityUid receiver, EntityUid target, LineOfSightBlockerLevel type)
+    {
+        return IsRightType(receiver, target, type, out _);
+    }
+
     /// <summary>
     /// Проверяет, совпадает ли тип прозрачности сущностей между двумя переданными сущностям.
     /// </summary>
@@ -155,7 +173,7 @@ public sealed class ProximitySystem : EntitySystem
             return LineOfSightBlockerLevel.Solid;
 
         var isUnobstructed = InRangeUnobstructed(receiver, target);
-        var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, JustUselessNumber);
+        var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, JustUselessNumber, IsNotOpaqueObject);
 
         if (!isUnOccluded)
             return LineOfSightBlockerLevel.Solid;
@@ -167,10 +185,17 @@ public sealed class ProximitySystem : EntitySystem
 
     private bool InRangeUnobstructed(Entity<TransformComponent?> first, Entity<TransformComponent?> second)
     {
-        return _interaction.InRangeUnobstructed(first, second, JustUselessNumber, predicate: IsNotSolidObject);
+        return _interaction.InRangeUnobstructed(
+            first,
+            second,
+            JustUselessNumber,
+            collisionMask: CollisionGroup.Impassable,
+            IsNotSolidObject);
     }
 
     private bool IsNotSolidObject(EntityUid e) => !_tag.HasAnyTag(e, SolidTags);
+
+    private bool IsNotOpaqueObject(EntityUid e) => !_tag.HasAnyTag(e, OpaqueTags);
 
     /// <summary>
     /// Проверяет, есть ли в заданном радиусе сущность с компонентом T
