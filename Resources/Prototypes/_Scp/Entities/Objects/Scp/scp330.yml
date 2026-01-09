@@ -1,0 +1,34 @@
+﻿# Сама конфета
+- type: entity
+  id: Scp330Candy
+  parent: BaseItem
+  name: загадочная конфета
+  description: Маленькое лакомство в яркой обертке. Наверное, одна не повредит.
+  components:
+  - type: Sprite
+    sprite: _Scp\Objects\Scp\scp-330.rsi
+    state: candy
+  - type: Edible
+    foodType: JunkFood
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Sugar
+          Quantity: 5
+
+# Миска SCP-330
+- type: entity
+  id: Scp330Bowl
+  parent: BaseStructure
+  name: миска с конфетами
+  description: "На миске приклеена записка: «Берите только две, пожалуйста!»"
+  components:
+  - type: Sprite
+    sprite: _Scp\Objects\Scp\scp-330.rsi
+    state: bowl
+  - type: Scp330
+    regenDelay: 10
+    maxCandies: 10
+    baseDamage: 50
+  - type: InteractionOutline
