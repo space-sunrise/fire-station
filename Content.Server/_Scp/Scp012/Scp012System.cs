@@ -10,34 +10,32 @@ using Content.Shared.Hands;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Speech.Muting;
-using Content.Shared.Whitelist; // Для вайтлиста
+using Content.Shared.Whitelist;
 using Content.Shared.Mobs;
 using Robust.Server.GameObjects;
 using Robust.Server.Containers;
 using Robust.Shared.Physics.Components;
-using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Numerics;
-using Robust.Shared.Maths;
 
 namespace Content.Server._Scp.Scp012;
 
 public sealed class Scp012System : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly InteractionSystem _interaction = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movementSpeed = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!; // Новая зависимость
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     private EntityQuery<Scp012Component> _scpQuery;
     private EntityQuery<Scp012VictimComponent> _victimQuery;
@@ -49,7 +47,7 @@ public sealed class Scp012System : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        
+
         _scpQuery = GetEntityQuery<Scp012Component>();
         _victimQuery = GetEntityQuery<Scp012VictimComponent>();
         _handsQuery = GetEntityQuery<HandsComponent>();
@@ -57,7 +55,6 @@ public sealed class Scp012System : EntitySystem
         _mutedQuery = GetEntityQuery<MutedComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
 
-        // Новый формат подписок
         SubscribeLocalEvent<Scp012VictimComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshSpeed);
         SubscribeLocalEvent<Scp012Component, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<Scp012Component, GotEquippedHandEvent>(OnGotEquipped);
@@ -77,8 +74,7 @@ public sealed class Scp012System : EntitySystem
 
     private void OnGotEquipped(Entity<Scp012Component> ent, ref GotEquippedHandEvent args)
     {
-        if (_whitelist.IsWhitelistFail(ent.Comp.Whitelist, args.User) || 
-            _whitelist.IsBlacklistPass(ent.Comp.Blacklist, args.User))
+        if (!_whitelist.CheckBoth(ent, ent.Comp.Blacklist, ent.Comp.Whitelist))
             return;
 
         var victimComp = EnsureComp<Scp012VictimComponent>(args.User);
@@ -86,22 +82,15 @@ public sealed class Scp012System : EntitySystem
         _movementSpeed.RefreshMovementSpeedModifiers(args.User);
     }
 
-private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
-{
-    if (_mobState.IsAlive(ent.Owner) && _hands.IsHolding(ent.Owner, ent.Comp.Source, out _))
-        args.ModifySpeed(0f, 0f);
-}
+    private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
+    {
+        if (_mobState.IsAlive(ent.Owner) && _hands.IsHolding(ent.Owner, ent.Comp.Source, out _))
+            args.ModifySpeed(0f, 0f);
+    }
 
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
-
-        _scpQuery = GetEntityQuery<Scp012Component>();
-        _victimQuery = GetEntityQuery<Scp012VictimComponent>();
-        _handsQuery = GetEntityQuery<HandsComponent>();
-        _mobStateQuery = GetEntityQuery<MobStateComponent>();
-        _mutedQuery = GetEntityQuery<MutedComponent>();
-        _xformQuery = GetEntityQuery<TransformComponent>();
 
         var damageTicks = new HashSet<EntityUid>();
 
@@ -114,21 +103,29 @@ private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMoveme
             scp.NextDamageTime = _timing.CurTime + scp.DamageCooldown;
             damageTicks.Add(uid);
 
-            if (_handsQuery.HasComp(xform.ParentUid)) continue;
-            if (_container.IsEntityInContainer(uid) && _mobStateQuery.HasComp(_xformQuery.GetComponent(xform.ParentUid).ParentUid)) continue;
+            if (_handsQuery.HasComp(xform.ParentUid))
+                continue;
+
+            if (_container.IsEntityInContainer(uid) && _mobStateQuery.HasComp(_xformQuery.GetComponent(xform.ParentUid).ParentUid))
+                continue;
 
             var worldPos = _transform.GetMapCoordinates(uid);
             foreach (var entity in _lookup.GetEntitiesInRange(worldPos, scp.Range))
             {
-                // Используем вайтлист
-                if (_whitelist.IsWhitelistFail(scp.Whitelist, entity) || 
-                    _whitelist.IsBlacklistPass(scp.Blacklist, entity) ||
-                    !_mobState.IsAlive(entity) || 
-                    _victimQuery.HasComp(entity))
+                if (!_whitelist.CheckBoth(entity, scp.Blacklist, scp.Whitelist))
                     continue;
 
-                if (TryComp<BlindableComponent>(entity, out var blind) && blind.IsBlind) continue;
-                if (!_interaction.InRangeUnobstructed(entity, uid, scp.Range)) continue;
+                if (!_mobState.IsAlive(entity))
+                    continue;
+
+                if (_victimQuery.HasComp(entity))
+                    continue;
+
+                if (TryComp<BlindableComponent>(entity, out var blind) && blind.IsBlind)
+                    continue;
+
+                if (!_interaction.InRangeUnobstructed(entity, uid, scp.Range))
+                    continue;
 
                 var vComp = EnsureComp<Scp012VictimComponent>(entity);
                 vComp.Source = uid;
@@ -143,6 +140,9 @@ private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMoveme
         var victimEnumerator = EntityQueryEnumerator<Scp012VictimComponent, TransformComponent, PhysicsComponent>();
         while (victimEnumerator.MoveNext(out var vUid, out var victim, out var vXform, out var vPhysics))
         {
+            if (!Exists(victim.Source))
+                continue;
+
             if (!_scpQuery.TryComp(victim.Source, out var scp) || !_mobState.IsAlive(vUid))
             {
                 StopEffect(vUid);
@@ -150,32 +150,40 @@ private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMoveme
             }
 
             var victimPos = _transform.GetWorldPosition(vXform);
-            var scpPos = _transform.GetWorldPosition(victim.Source);
+            var scpPos = _transform.GetWorldPosition(victim.Source.Value);
             var distVec = scpPos - victimPos;
             var distance = distVec.Length();
 
-            if (distance > scp.Range + 1.5f) { StopEffect(vUid); continue; }
+            if (distance > scp.Range + 1.5f)
+            {
+                StopEffect(vUid);
+                continue;
+            }
 
             if (!_hands.IsHolding(vUid, victim.Source, out _))
-            {
                 ProcessPulling(vUid, victim, scp, distVec, distance, vPhysics);
-            }
             else
-            {
                 ProcessInHands(vUid, victim, scp, frameTime, damageTicks);
-            }
         }
     }
 
     private void ProcessPulling(EntityUid vUid, Scp012VictimComponent victim, Scp012Component scp, Vector2 distVec, float distance, PhysicsComponent vPhysics)
     {
-        if (_handsQuery.HasComp(_xformQuery.GetComponent(victim.Source).ParentUid)) { StopEffect(vUid); return; }
-        if (_mutedQuery.HasComp(vUid)) RemCompDeferred<MutedComponent>(vUid);
+        if (!Exists(victim.Source))
+            return;
+
+        if (_handsQuery.HasComp(_xformQuery.GetComponent(victim.Source.Value).ParentUid))
+        {
+            StopEffect(vUid);
+            return;
+        }
+
+        RemCompDeferred<MutedComponent>(vUid);
 
         if (victim.NextLosCheckTime == null || _timing.CurTime >= victim.NextLosCheckTime)
         {
             victim.NextLosCheckTime = _timing.CurTime + TimeSpan.FromSeconds(0.5);
-            victim.CachedLos = _interaction.InRangeUnobstructed(vUid, victim.Source, scp.Range);
+            victim.CachedLos = _interaction.InRangeUnobstructed(vUid, victim.Source.Value, scp.Range);
         }
 
         if (victim.CachedLos)
@@ -186,7 +194,7 @@ private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMoveme
 
             if (distance < 0.6f)
             {
-                _hands.TryPickupAnyHand(vUid, victim.Source);
+                _hands.TryPickupAnyHand(vUid, victim.Source.Value);
                 _movementSpeed.RefreshMovementSpeedModifiers(vUid);
             }
         }
@@ -194,12 +202,15 @@ private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMoveme
 
     private void ProcessInHands(EntityUid vUid, Scp012VictimComponent victim, Scp012Component scp, float frameTime, HashSet<EntityUid> damageTicks)
     {
-        if (!_mutedQuery.HasComp(vUid)) EnsureComp<MutedComponent>(vUid);
+        if (!Exists(victim.Source))
+            return;
+
+        EnsureComp<MutedComponent>(vUid);
 
         victim.TotalTime += frameTime;
         victim.SpeakTimer += frameTime;
 
-        if (damageTicks.Contains(victim.Source))
+        if (damageTicks.Contains(victim.Source.Value))
             _damageable.TryChangeDamage(vUid, scp.Damage, ignoreResistances: true);
 
         if (victim.SpeakTimer >= 4.0f)
@@ -213,8 +224,12 @@ private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMoveme
         {
             ForceSpeak(vUid, "scp012-phrase-final");
             var deathDamage = new DamageSpecifier();
+
             foreach (var key in scp.Damage.DamageDict.Keys)
-                deathDamage.DamageDict.Add(key, FixedPoint2.New(200)); 
+            {
+                deathDamage.DamageDict.Add(key, FixedPoint2.New(200));
+            }
+
             _damageable.TryChangeDamage(vUid, deathDamage, ignoreResistances: true);
             StopEffect(vUid);
         }
@@ -223,16 +238,17 @@ private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMoveme
     private void ForceSpeak(EntityUid victim, string phraseId)
     {
         var message = Loc.GetString(phraseId);
-        bool wasMuted = _mutedQuery.HasComp(victim);
-        if (wasMuted) RemComp<MutedComponent>(victim);
+
+        RemComp<MutedComponent>(victim);
         _chat.TrySendInGameICMessage(victim, message, InGameICChatType.Speak, hideChat: false);
-        if (wasMuted) EnsureComp<MutedComponent>(victim);
+        EnsureComp<MutedComponent>(victim);
     }
 
     private void StopEffect(EntityUid uid)
     {
         RemCompDeferred<MutedComponent>(uid);
         RemCompDeferred<Scp012VictimComponent>(uid);
+
         _movementSpeed.RefreshMovementSpeedModifiers(uid);
     }
 }

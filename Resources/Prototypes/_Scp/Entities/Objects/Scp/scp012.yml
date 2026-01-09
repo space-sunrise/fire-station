@@ -12,9 +12,9 @@
     whitelist:
       components:
       - HumanoidAppearance
-    range: 7.0
-    attractionForce: 1.2
-    suicideTimer: 30.0
+    damage:
+      types:
+        Slash: 5
   - type: Item
     size: Small
   - type: Damageable
