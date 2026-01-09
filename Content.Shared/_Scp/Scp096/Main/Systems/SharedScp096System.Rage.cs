@@ -5,6 +5,7 @@ using Content.Shared.Damage.Systems;
 using Content.Shared.Jittering;
 using Content.Shared.StatusEffectNew;
 using Content.Shared.Stunnable;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
 
@@ -19,6 +20,8 @@ public abstract partial class SharedScp096System
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
     [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
+
+    private static readonly EntProtoId StunnedEffect = "StatusEffectStunned";
 
     private void InitializeRage()
     {
@@ -44,8 +47,9 @@ public abstract partial class SharedScp096System
 
         // Если скромник был застанен или сидит - убираем это
         var totalDamage = _stamina.GetStaminaDamage(ent);
-        _stamina.TryTakeStamina(ent, -1f * totalDamage);
+        _statusEffects.TryRemoveStatusEffect(ent, StunnedEffect);
         _stun.TryUnstun(ent.Owner);
+        _stamina.TryTakeStamina(ent, -1f * totalDamage);
         _standing.Stand(ent, force: true);
 
         // Заставляем трястись

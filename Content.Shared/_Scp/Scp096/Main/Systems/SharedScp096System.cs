@@ -113,7 +113,7 @@ public abstract partial class SharedScp096System : EntitySystem
         WithoutFaceQuery = GetEntityQuery<ActiveScp096WithoutFaceComponent>();
         FaceQuery = GetEntityQuery<Scp096FaceComponent>();
 
-        Log.Level = LogLevel.Info;
+        Log.Level = LogLevel.Debug;
     }
 
     public override void Update(float frameTime)
@@ -404,7 +404,10 @@ public abstract partial class SharedScp096System : EntitySystem
         var finalResult = _actionBlocker.UpdateCanMove(uid);
 
         if (enable != finalResult)
-            Log.Error($"Movement state mismatch! Tried to set movement to {enable}, but ended up with {finalResult}.");
+        {
+            if (_timing.IsFirstTimePredicted)
+                Log.Verbose($"Movement state mismatch! Tried to set movement to {enable}, but ended up with {finalResult}. This CAN BE NORMAL if entity is stunned or something like this.");
+        }
     }
 
     /// <summary>
