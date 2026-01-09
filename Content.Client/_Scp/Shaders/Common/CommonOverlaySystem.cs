@@ -24,11 +24,11 @@ public abstract class CommonOverlaySystem<T> : BaseOverlaySystem<T> where T : Ov
 
     protected virtual void OnPlayerAttached(LocalPlayerAttachedEvent args)
     {
-        AddOverlay();
+        TryAddOverlay();
     }
 
     protected virtual void OnPlayerDetached(LocalPlayerDetachedEvent args)
     {
-        RemoveOverlay();
+        TryRemoveOverlay();
     }
 }
