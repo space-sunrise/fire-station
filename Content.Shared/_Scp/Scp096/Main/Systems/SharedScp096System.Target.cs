@@ -119,12 +119,12 @@ public abstract partial class SharedScp096System
     /// Если может - добавляет ее в список целей. Возвращает полученный результат
     /// </summary>
     [PublicAPI]
-    public bool TryAddTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false, bool ignoreMask = false)
+    public bool TryAddTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false, bool ignoreMask = false, bool ignoreBlinded = false)
     {
         if (!CanBeAggro(scp, ignoreMask))
             return false;
 
-        if (!IsValidTarget(scp, target, ignoreAngle))
+        if (!IsValidTarget(scp, target, ignoreAngle, ignoreBlinded))
             return false;
 
         EnsureComp<Scp096TargetComponent>(target);
@@ -147,14 +147,10 @@ public abstract partial class SharedScp096System
     /// Проверяет, может ли цель быть целью скромника.
     /// Включает в себя различные проверки на поле зрения, защиту и прочее.
     /// </summary>
-    private bool IsValidTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false)
+    private bool IsValidTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false, bool ignoreBlinded = false)
     {
         // Уже является целью?
         if (TargetQuery.HasComp(target))
-            return false;
-
-        // Проверяем, может ли цель видеть 096. Без учета поля зрения
-        if (!_watching.IsWatchedBy(scp, [target], viewers: out _, false))
             return false;
 
         // Проверяем, есть ли у цели защита от 096
@@ -163,7 +159,7 @@ public abstract partial class SharedScp096System
             return false;
 
         // Проверяем, смотрит ли 096 на цель и цель на 096
-        if (!IsTargetSeeScp096(target, scp, ignoreAngle))
+        if (!IsTargetSeeScp096(target, scp, ignoreAngle, ignoreBlinded))
             return false;
 
         // Если все условия выполнены, то цель валидна
@@ -174,8 +170,17 @@ public abstract partial class SharedScp096System
     /// Проверяет, видит ли цель SCP-096.
     /// Использует особые проверки поля зрения для проверки "смотрят ли они друг-другу в лицо"
     /// </summary>
-    private bool IsTargetSeeScp096(EntityUid viewer, Entity<Scp096Component> scp, bool ignoreAngle)
+    private bool IsTargetSeeScp096(EntityUid viewer, Entity<Scp096Component> scp, bool ignoreAngle, bool ignoreBlinded = false)
     {
+        // Проверяем, может ли цель вообще быть увидена.
+        // Проверяет на наличие базовых компонентов и т.п.
+        if (!_watching.CanBeWatched(viewer, scp))
+            return false;
+
+        // Проверяет, не слеп ли персонаж
+        if (_watching.IsEyeBlinded(viewer, scp, false) && !ignoreBlinded)
+            return false;
+
         // Если игнорируем угол, то считаем, что смотрящий видит 096
         if (ignoreAngle)
             return true;
@@ -188,7 +193,7 @@ public abstract partial class SharedScp096System
         if (!_fov.IsInViewAngle(viewer, scp.Owner, scp.Comp.ArgoAngle))
             return false;
 
-        // Соответственно если обе проверки прошли, то цель видит 096
+        // Соответственно если все проверки прошли, то цель видит 096
         return true;
     }
 }

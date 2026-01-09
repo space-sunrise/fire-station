@@ -168,13 +168,13 @@ public abstract partial class SharedScp096System : EntitySystem
         if (!attacker.HasValue)
             return;
 
-        if (!Scp096Query.TryComp(target, out var scp))
-            return;
-
         if (!_random.ProbForEntity(attacker.Value, chance))
             return;
 
-        TryAddTarget((target, scp), attacker.Value, true);
+        if (!Scp096Query.TryComp(target, out var scp))
+            return;
+
+        TryAddTarget((target, scp), attacker.Value, true, ignoreBlinded: true);
     }
 
     private void OnMobStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
@@ -404,7 +404,10 @@ public abstract partial class SharedScp096System : EntitySystem
         var finalResult = _actionBlocker.UpdateCanMove(uid);
 
         if (enable != finalResult)
-            Log.Error($"Movement state mismatch! Tried to set movement to {enable}, but ended up with {finalResult}.");
+        {
+            if (_timing.IsFirstTimePredicted)
+                Log.Verbose($"Movement state mismatch! Tried to set movement to {enable}, but ended up with {finalResult}. This CAN BE NORMAL if entity is stunned or something like this.");
+        }
     }
 
     /// <summary>

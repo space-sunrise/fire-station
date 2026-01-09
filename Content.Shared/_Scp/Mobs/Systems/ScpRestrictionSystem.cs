@@ -72,6 +72,10 @@ public sealed class ScpRestrictionSystem : EntitySystem
 
     private static void OnStaminaDamage(Entity<ScpRestrictionComponent> ent, ref BeforeStaminaDamageEvent args)
     {
+        // Отрицательный урон по стамине(т.е. лечение этого урона) не должно блокироваться никогда.
+        if (args.Value <= 0)
+            return;
+
         if (!ent.Comp.CanTakeStaminaDamage)
             args.Cancelled = true;
     }
