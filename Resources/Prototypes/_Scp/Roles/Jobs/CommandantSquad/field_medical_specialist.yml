@@ -6,10 +6,10 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: ExternalAdministrativeZoneSecurityService
-    time: 18000
+    time: 10800
   - !type:DepartmentTimeRequirement
     department: MedicalService
-    time: 18000
+    time: 10800
   startingGear: FieldMedicalSpecialistGear
   icon: JobAmnesthesiologist
   supervisors: job-supervisors-heavy-containment-zone-commandant

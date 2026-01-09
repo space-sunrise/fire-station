@@ -4,6 +4,9 @@
   name: ghost-role-information-mtf-leader-MH-name
   description: ghost-role-information-mtf-leader-description
   playTimeTracker: JobMHLeader
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000
   setPreference: false
   startingGear: MHLeaderGear
   icon: JobIconMHleader
@@ -47,6 +50,9 @@
   name: ghost-role-information-mtf-specialist-MH-name
   description: ghost-role-information-mtf-specialist-description
   playTimeTracker: JobMHSpecialist
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 3600
   setPreference: false
   startingGear: MHSpecialistGear
   icon: JobIconMH
@@ -87,6 +93,9 @@
   name: ghost-role-information-mtf-cadet-MH-name
   description: ghost-role-information-mtf-cadet-description
   playTimeTracker: JobMHCadet
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 3600
   setPreference: false
   startingGear: MHCadetGear
   icon: JobIconMH

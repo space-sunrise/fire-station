@@ -5,7 +5,7 @@
   playTimeTracker: JobJuniorHeavyContainmentZoneOfficer
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 18000
+      time: 7200
   icon: JobJuniorHeavyContainmentZoneOfficer
   supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false

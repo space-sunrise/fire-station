@@ -4,6 +4,9 @@
   name: ghost-role-information-mtf-leader-RRH-name
   description: ghost-role-information-mtf-leader-description
   playTimeTracker: JobRRHLeader
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000
   setPreference: false
   startingGear: RRHLeaderGear
   icon: JobIconRRHleader
@@ -47,6 +50,9 @@
   name: ghost-role-information-mtf-specialist-RRH-name
   description: ghost-role-information-mtf-specialist-description
   playTimeTracker: JobRRHSpecialist
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 10800
   setPreference: false
   startingGear: RRHSpecialistGear
   icon: JobIconRRH

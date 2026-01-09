@@ -5,7 +5,7 @@
   playTimeTracker: JobScp049
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 720000 # 200h
+    time: 324000 # 90h
   weight: 25
   icon: JobIconScp049
   joinNotifyCrew: false
@@ -22,7 +22,7 @@
   playTimeTracker: JobScp939
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 1080000 # 300h
+    time: 540000 # 150h
   weight: 25
   icon: JobIconScp939
   joinNotifyCrew: false
@@ -39,7 +39,7 @@
   playTimeTracker: JobScp173
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 720000 # 200h
+    time: 288000 # 80h
   weight: 25
   icon: JobIconScp173
   joinNotifyCrew: false
@@ -56,7 +56,7 @@
   playTimeTracker: JobScp999
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 360000 # 100h
+    time: 90000 # 25h
   weight: 25
   icon: JobIconScp999
   joinNotifyCrew: false
@@ -73,7 +73,7 @@
   playTimeTracker: JobScp096
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 720000 # 200h
+    time: 288000 # 80h
   weight: 25
   icon: JobIconScp096
   joinNotifyCrew: false
@@ -90,7 +90,7 @@
   playTimeTracker: JobScp106
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 1080000 # 300h
+    time: 576000 # 160h
   weight: 25
   icon: JobIconScp106
   joinNotifyCrew: false
@@ -116,3 +116,4 @@
   jobEntity: Scp082 # TODO: Поменять после добавления каннибала
   alwaysUseSpawner: true
   applyTraits: false
+  setPreference: false # TODO: Убрать после добавления каннибала
