@@ -9,6 +9,7 @@ using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp012;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
+using Robust.Server.Audio;
 
 namespace Content.Server._Scp.Scp012;
 
@@ -23,6 +24,7 @@ public sealed partial class Scp012System : SharedScp012System
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly FearSystem _fear = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private EntityQuery<Scp012Component> _scpQuery;
@@ -56,6 +58,8 @@ public sealed partial class Scp012System : SharedScp012System
 
         _movementSpeed.RefreshMovementSpeedModifiers(args.User);
         _fear.TrySetFearLevel(args.User, ent.Comp.FearOnPickup);
+
+        SetAudio((args.User, victimComp), ent, true);
     }
 
     private void OnGettingDropped(Entity<Scp012Component> ent, ref GettingDroppedAttemptEvent args)
@@ -69,7 +73,9 @@ public sealed partial class Scp012System : SharedScp012System
         if (!_victimQuery.TryComp(args.OldParent, out var victim))
             return;
 
-        SetNextLosCheckTime((args.OldParent.Value, victim));
+        var victimEntity = (args.OldParent.Value, victim);
+        SetAudio(victimEntity, enable: false);
+        SetNextLosCheckTime(victimEntity);
     }
 
     private void OnShutdown(Entity<Scp012Component> ent, ref ComponentShutdown args)
@@ -125,6 +131,17 @@ public sealed partial class Scp012System : SharedScp012System
                 victim.Source = uid;
             }
         }
+    }
+
+    #endregion
+
+    #region Helpers
+
+    private void SetAudio(Entity<Scp012VictimComponent> source, Entity<Scp012Component>? scp = null, bool enable = false)
+    {
+        source.Comp.AudioStream = _audio.Stop(source.Comp.AudioStream);
+        if (enable && scp.HasValue)
+            source.Comp.AudioStream = _audio.PlayPvs(scp.Value.Comp.WritingSound, source)?.Entity;
     }
 
     #endregion

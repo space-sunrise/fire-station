@@ -53,6 +53,7 @@ public sealed partial class Scp012System
     {
         RemCompDeferred<MutedComponent>(ent);
         _movementSpeed.RefreshMovementSpeedModifiers(ent);
+        SetAudio(ent, enable: false);
     }
 
     private void OnMobStateChanged(Entity<Scp012VictimComponent> ent, ref MobStateChangedEvent args)

@@ -51,4 +51,7 @@ public sealed partial class Scp012VictimComponent : Component
 
     [ViewVariables(VVAccess.ReadWrite)]
     public TimeSpan LosCooldown = TimeSpan.FromSeconds(0.5f);
+
+    [ViewVariables]
+    public EntityUid? AudioStream;
 }
