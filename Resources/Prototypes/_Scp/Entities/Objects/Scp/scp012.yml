@@ -14,6 +14,9 @@
       - HumanoidAppearance
       - Bloodstream
       requireAll: true
+    blacklist:
+      components:
+      - Scp012Protection
     passiveDamage:
       types:
         Slash: 5

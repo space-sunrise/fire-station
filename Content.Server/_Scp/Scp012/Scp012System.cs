@@ -5,13 +5,15 @@ using Content.Shared.Whitelist;
 using Robust.Server.GameObjects;
 using Robust.Shared.Timing;
 using Content.Shared._Scp.Proximity;
+using Content.Shared._Scp.Scp012;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
-using Content.Shared.Item;
 
 namespace Content.Server._Scp.Scp012;
 
-public sealed partial class Scp012System : EntitySystem
+// TODO: Больше предикшена
+// TODO: Перенести систему притягивания и форсированного подбирания для SCP-035.
+public sealed partial class Scp012System : SharedScp012System
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
@@ -35,7 +37,6 @@ public sealed partial class Scp012System : EntitySystem
 
         InitializeVictim();
 
-        SubscribeLocalEvent<Scp012Component, GettingPickedUpAttemptEvent>(OnGettingPickedUp);
         SubscribeLocalEvent<Scp012Component, GotEquippedHandEvent>(OnGotEquipped);
 
         SubscribeLocalEvent<Scp012Component, GettingDroppedAttemptEvent>(OnGettingDropped);
@@ -45,12 +46,6 @@ public sealed partial class Scp012System : EntitySystem
     }
 
     #region Event handlers
-
-    private void OnGettingPickedUp(Entity<Scp012Component> ent, ref GettingPickedUpAttemptEvent args)
-    {
-        if (!_whitelist.CheckBoth(args.User, ent.Comp.Blacklist, ent.Comp.Whitelist))
-            args.Cancel();
-    }
 
     private void OnGotEquipped(Entity<Scp012Component> ent, ref GotEquippedHandEvent args)
     {
@@ -68,8 +63,10 @@ public sealed partial class Scp012System : EntitySystem
 
     private void OnParentChanged(Entity<Scp012Component> ent, ref EntParentChangedMessage args)
     {
-        if (args.OldParent != null)
-            RemCompDeferred<Scp012VictimComponent>(args.OldParent.Value);
+        if (!_victimQuery.TryComp(args.OldParent, out var victim))
+            return;
+
+        SetNextLosCheckTime((args.OldParent.Value, victim));
     }
 
     private void OnShutdown(Entity<Scp012Component> ent, ref ComponentShutdown args)

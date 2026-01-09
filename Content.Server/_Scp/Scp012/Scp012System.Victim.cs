@@ -2,6 +2,7 @@
 using Content.Server.Chat.Systems;
 using Content.Server.Hands.Systems;
 using Content.Shared._Scp.Proximity;
+using Content.Shared._Scp.Scp012;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
@@ -40,6 +41,8 @@ public sealed partial class Scp012System
         SetNextSpeakTime(ent);
         SetNextPassiveDamageTime(ent);
         SetNextLosCheckTime(ent);
+
+        _movementSpeed.RefreshMovementSpeedModifiers(ent);
     }
 
     private void OnVictimShutdown(Entity<Scp012VictimComponent> ent, ref ComponentShutdown args)
@@ -56,8 +59,17 @@ public sealed partial class Scp012System
 
     private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
     {
-        if (_mobState.IsAlive(ent.Owner) && _hands.IsHolding(ent.Owner, ent.Comp.Source, out _))
+        if (_hands.IsHolding(ent.Owner, ent.Comp.Source, out _))
+        {
             args.ModifySpeed(0f, 0f);
+            return;
+        }
+
+        if (_mobState.IsAlive(ent))
+        {
+            args.ModifySpeed(0.25f, 0.25f);
+            return;
+        }
     }
 
     #endregion

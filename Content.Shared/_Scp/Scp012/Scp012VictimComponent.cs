@@ -1,6 +1,8 @@
-﻿namespace Content.Server._Scp.Scp012;
+﻿using Robust.Shared.GameStates;
 
-[RegisterComponent, AutoGenerateComponentPause]
+namespace Content.Shared._Scp.Scp012;
+
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentPause]
 public sealed partial class Scp012VictimComponent : Component
 {
     [ViewVariables]

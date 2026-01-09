@@ -1,9 +1,10 @@
 ﻿using Content.Shared.Damage;
 using Content.Shared.Whitelist;
+using Robust.Shared.GameStates;
 
-namespace Content.Server._Scp.Scp012;
+namespace Content.Shared._Scp.Scp012;
 
-[RegisterComponent]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class Scp012Component : Component
 {
     [DataField]
