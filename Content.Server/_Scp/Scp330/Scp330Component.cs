@@ -1,21 +1,25 @@
-﻿namespace Content.Server.Scp330;
+﻿using Content.Shared.Damage;
+using Robust.Shared.Prototypes;
+
+namespace Content.Server._Scp.Scp330;
 
 [RegisterComponent]
 public sealed partial class Scp330Component : Component
 {
-    [DataField("regenDelay")]
-    public float RegenDelay = 10f;
+    [DataField]
+    public EntProtoId CandyPrototype = "Scp330Candy";
 
-    public float Accumulator = 0f;
-
-    [DataField("maxCandies")]
+    [DataField]
     public int MaxCandies = 10;
-    
-    // количество конфет в миске
+
+    [ViewVariables]
     public int CurrentCandies = 10;
 
-    [DataField("baseDamage")]
-    public float BaseDamage = 20f;
+    [DataField(required: true)]
+    public DamageSpecifier BaseDamage;
+
+    [DataField]
+    public int PunishmentAfter = 2;
 
     public Dictionary<EntityUid, int> ThiefCounter = new();
 }
