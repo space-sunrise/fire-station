@@ -54,8 +54,11 @@ public sealed class BlinkingOverlay : Overlay
         if (!IsAnimating)
             return;
 
-        if (AnimationDuration == 0f)
+        if (MathHelper.CloseTo(AnimationDuration, 0f))
+        {
             StopAnimating();
+            return;
+        }
 
         _timer += args.DeltaSeconds;
         var t = Math.Clamp(_timer / AnimationDuration, 0f, 1f);
