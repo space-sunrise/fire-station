@@ -113,7 +113,7 @@ public abstract partial class SharedScp096System : EntitySystem
         WithoutFaceQuery = GetEntityQuery<ActiveScp096WithoutFaceComponent>();
         FaceQuery = GetEntityQuery<Scp096FaceComponent>();
 
-        Log.Level = LogLevel.Debug;
+        Log.Level = LogLevel.Info;
     }
 
     public override void Update(float frameTime)
