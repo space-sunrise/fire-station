@@ -11,9 +11,9 @@
     count: 6
 
 - type: localizedDataset
-  id: ScpWallReinforcedConcreteMessages
+  id: ScpWallHardContainmentMessages
   values:
-    prefix: scp-wall-reinforced-concrete-damaged-
+    prefix: scp-wall-reinforced-hard-containment-damaged-
     count: 6
 
 - type: localizedDataset
@@ -35,9 +35,9 @@
     count: 6
 
 - type: localizedDataset
-  id: ScpWallReinforcedConcreteEngineeringMessages
+  id: ScpWallHardContainmentEngineeringMessages
   values:
-    prefix: scp-wall-reinforced-concrete-damaged-engineering-
+    prefix: scp-wall-reinforced-hard-containment-damaged-engineering-
     count: 6
 
 - type: localizedDataset
