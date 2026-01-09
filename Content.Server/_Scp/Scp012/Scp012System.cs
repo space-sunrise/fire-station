@@ -1,4 +1,5 @@
-﻿using Content.Shared.Mobs.Systems;
+﻿using Content.Server._Scp.Fear;
+using Content.Shared.Mobs.Systems;
 using Content.Shared.Hands;
 using Content.Shared.Movement.Systems;
 using Content.Shared.Whitelist;
@@ -21,6 +22,7 @@ public sealed partial class Scp012System : SharedScp012System
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly ProximitySystem _proximity = default!;
+    [Dependency] private readonly FearSystem _fear = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private EntityQuery<Scp012Component> _scpQuery;
@@ -53,6 +55,7 @@ public sealed partial class Scp012System : SharedScp012System
         victimComp.Source = ent;
 
         _movementSpeed.RefreshMovementSpeedModifiers(args.User);
+        _fear.TrySetFearLevel(args.User, ent.Comp.FearOnPickup);
     }
 
     private void OnGettingDropped(Entity<Scp012Component> ent, ref GettingDroppedAttemptEvent args)

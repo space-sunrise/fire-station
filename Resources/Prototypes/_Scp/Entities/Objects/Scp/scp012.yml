@@ -23,5 +23,10 @@
     suicideDamage:
       types:
         Piercing: 150
+  - type: ProximityReceiver
+    requiredLineOfSight: None
+  - type: FearSource
+    uponSeenState: None
+    uponComeCloser: Terror
   - type: Item
     size: Small

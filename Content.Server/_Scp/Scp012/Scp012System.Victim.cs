@@ -1,6 +1,8 @@
 ﻿using System.Numerics;
+using Content.Server._Scp.Fear;
 using Content.Server.Chat.Systems;
 using Content.Server.Hands.Systems;
+using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp012;
 using Content.Shared.Damage;
@@ -29,6 +31,8 @@ public sealed partial class Scp012System
 
         SubscribeLocalEvent<Scp012VictimComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<Scp012VictimComponent, RefreshMovementSpeedModifiersEvent>(OnRefreshSpeed);
+
+        SubscribeLocalEvent<Scp012VictimComponent, FearCalmDownAttemptEvent>(CancelEvent);
     }
 
     #region Event handlers
@@ -70,6 +74,11 @@ public sealed partial class Scp012System
             args.ModifySpeed(0.25f, 0.25f);
             return;
         }
+    }
+
+    private void CancelEvent<T>(Entity<Scp012VictimComponent> ent, ref T args) where T : CancellableEntityEventArgs
+    {
+        args.Cancel();
     }
 
     #endregion

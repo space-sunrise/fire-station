@@ -1,4 +1,5 @@
-﻿using Content.Shared.Damage;
+﻿using Content.Shared._Scp.Fear;
+using Content.Shared.Damage;
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
 
@@ -24,4 +25,7 @@ public sealed partial class Scp012Component : Component
 
     [DataField]
     public EntityWhitelist? Blacklist;
+
+    [DataField]
+    public FearState FearOnPickup = FearState.Terror;
 }
