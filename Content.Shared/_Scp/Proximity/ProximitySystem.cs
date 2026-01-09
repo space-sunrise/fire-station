@@ -55,16 +55,6 @@ public sealed class ProximitySystem : EntitySystem
         "SecureUraniumWindoor",
     ];
 
-    /// <summary>
-    /// Список тегов, которые обозначают прозрачный объект-преграду.
-    /// </summary>
-    private static readonly HashSet<ProtoId<TagPrototype>> OpaqueTags =
-    [
-        "Wall",
-        "Airlock",
-        "HighSecDoor",
-    ];
-
     public override void Initialize()
     {
         base.Initialize();
@@ -172,12 +162,11 @@ public sealed class ProximitySystem : EntitySystem
         if (HasComp<InsideEntityStorageComponent>(receiver))
             return LineOfSightBlockerLevel.Solid;
 
-        var isUnobstructed = InRangeUnobstructed(receiver, target);
-        var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, JustUselessNumber, IsNotOpaqueObject);
+        var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, JustUselessNumber);
 
         if (!isUnOccluded)
             return LineOfSightBlockerLevel.Solid;
-        else if (!isUnobstructed)
+        else if (!InRangeUnobstructed(receiver, target))
             return LineOfSightBlockerLevel.Transparent;
         else
             return LineOfSightBlockerLevel.None;
@@ -189,13 +178,10 @@ public sealed class ProximitySystem : EntitySystem
             first,
             second,
             JustUselessNumber,
-            collisionMask: CollisionGroup.Impassable,
-            IsNotSolidObject);
+            predicate: IsNotSolidObject);
     }
 
     private bool IsNotSolidObject(EntityUid e) => !_tag.HasAnyTag(e, SolidTags);
-
-    private bool IsNotOpaqueObject(EntityUid e) => !_tag.HasAnyTag(e, OpaqueTags);
 
     /// <summary>
     /// Проверяет, есть ли в заданном радиусе сущность с компонентом T
