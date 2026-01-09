@@ -12,17 +12,11 @@ public sealed partial class Scp012Component : Component
     [DataField]
     public float AttractionForce = 1.5f;
 
-    [DataField]
-    public float SuicideTimer = 30f;
+    [DataField(required: true)]
+    public DamageSpecifier PassiveDamage;
 
     [DataField(required: true)]
-    public DamageSpecifier Damage;
-
-    [DataField]
-    public TimeSpan DamageCooldown = TimeSpan.FromSeconds(2);
-
-    [ViewVariables]
-    public TimeSpan? NextDamageTime;
+    public DamageSpecifier SuicideDamage;
 
     [DataField]
     public EntityWhitelist? Whitelist;

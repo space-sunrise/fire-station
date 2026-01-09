@@ -1,22 +1,34 @@
 ﻿namespace Content.Server._Scp.Scp012;
 
-[RegisterComponent]
+[RegisterComponent, AutoGenerateComponentPause]
 public sealed partial class Scp012VictimComponent : Component
 {
     [ViewVariables]
     public EntityUid? Source;
 
-    [ViewVariables(VVAccess.ReadWrite)]
-    public float TotalTime;
+    [DataField]
+    public float PickupDistance = 0.6f;
 
-    [ViewVariables(VVAccess.ReadWrite)]
-    public float SpeakTimer;
+    [DataField]
+    public TimeSpan SuicideCooldown = TimeSpan.FromSeconds(30f);
 
-    [ViewVariables(VVAccess.ReadWrite)]
-    public TimeSpan? NextLosCheckTime;
+    [ViewVariables, AutoPausedField]
+    public TimeSpan? NextSuicideTime;
 
-    [ViewVariables]
-    public bool CachedLos = false;
+    [DataField]
+    public TimeSpan SpeakCooldown = TimeSpan.FromSeconds(4f);
+
+    [ViewVariables, AutoPausedField]
+    public TimeSpan? NextSpeakTime;
+
+    [DataField]
+    public TimeSpan PassiveDamageCooldown = TimeSpan.FromSeconds(1f);
+
+    [ViewVariables, AutoPausedField]
+    public TimeSpan? NextPassiveDamageTime;
+
+    [DataField]
+    public float SpeakChance = 0.7f;
 
     [DataField]
     public List<string> Phrases = new()
@@ -28,4 +40,13 @@ public sealed partial class Scp012VictimComponent : Component
         "scp012-phrase-5",
         "scp012-phrase-6",
     };
+
+    [ViewVariables]
+    public bool CachedLos;
+
+    [ViewVariables]
+    public TimeSpan? NextLosCheckTime;
+
+    [ViewVariables(VVAccess.ReadWrite)]
+    public TimeSpan LosCooldown = TimeSpan.FromSeconds(0.5f);
 }

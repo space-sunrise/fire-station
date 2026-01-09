@@ -3,7 +3,7 @@
   parent: BaseItemScp
   suffix: SCP-012
   name: ???
-  description: "scp012-description"
+  description: A musical manuscript titled “On Mount Golgotha.” It appears to be unfinished.
   components:
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-012.rsi
@@ -12,21 +12,13 @@
     whitelist:
       components:
       - HumanoidAppearance
-    damage:
+      - Bloodstream
+      requireAll: true
+    passiveDamage:
       types:
         Slash: 5
+    suicideDamage:
+      types:
+        Piercing: 150
   - type: Item
     size: Small
-  - type: Damageable
-    damageContainer: Biological
-  - type: InteractionOutline
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.15,-0.15,0.15,0.15"
-        mask:
-        - ItemMask
-        restitution: 0.3
-        friction: 0.2
