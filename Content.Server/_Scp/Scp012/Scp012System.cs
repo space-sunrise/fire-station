@@ -8,7 +8,6 @@ using Robust.Shared.Timing;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp012;
 using Content.Shared.Hands.Components;
-using Content.Shared.Hands.EntitySystems;
 using Robust.Server.Audio;
 
 namespace Content.Server._Scp.Scp012;
@@ -42,8 +41,6 @@ public sealed partial class Scp012System : SharedScp012System
         InitializeVictim();
 
         SubscribeLocalEvent<Scp012Component, GotEquippedHandEvent>(OnGotEquipped);
-
-        SubscribeLocalEvent<Scp012Component, GettingDroppedAttemptEvent>(OnGettingDropped);
         SubscribeLocalEvent<Scp012Component, EntParentChangedMessage>(OnParentChanged);
 
         SubscribeLocalEvent<Scp012Component, ComponentShutdown>(OnShutdown);
@@ -60,12 +57,6 @@ public sealed partial class Scp012System : SharedScp012System
         _fear.TrySetFearLevel(args.User, ent.Comp.FearOnPickup);
 
         SetAudio((args.User, victimComp), ent, true);
-    }
-
-    private void OnGettingDropped(Entity<Scp012Component> ent, ref GettingDroppedAttemptEvent args)
-    {
-        if (_victimQuery.HasComp(ent))
-            args.Cancelled = true;
     }
 
     private void OnParentChanged(Entity<Scp012Component> ent, ref EntParentChangedMessage args)

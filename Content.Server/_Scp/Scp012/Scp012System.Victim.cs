@@ -1,5 +1,4 @@
 ﻿using System.Numerics;
-using Content.Server._Scp.Fear;
 using Content.Server.Chat.Systems;
 using Content.Server.Hands.Systems;
 using Content.Shared._Scp.Fear;
@@ -204,6 +203,7 @@ public sealed partial class Scp012System
             return false;
 
         ForceSpeak(ent, "scp012-phrase-final");
+        SetNextSuicideTime(ent);
 
         if (_damageable.TryChangeDamage(ent, scp.Comp.SuicideDamage, ignoreResistances: true)?.GetTotal() == FixedPoint2.Zero)
             return false;

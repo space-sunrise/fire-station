@@ -255,6 +255,5 @@ public abstract partial class SharedHandsSystem
 public record struct GettingDroppedAttemptEvent(EntityUid User)
 {
     public bool Cancelled;
-    public EntityUid User = User;
 }
 // Fire added end

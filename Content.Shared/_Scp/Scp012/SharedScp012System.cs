@@ -1,4 +1,5 @@
-﻿using Content.Shared.Item;
+﻿using Content.Shared.Hands.EntitySystems;
+using Content.Shared.Item;
 using Content.Shared.Popups;
 using Content.Shared.Whitelist;
 
@@ -14,6 +15,7 @@ public abstract class SharedScp012System : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<Scp012Component, GettingPickedUpAttemptEvent>(OnGettingPickedUp);
+        SubscribeLocalEvent<Scp012Component, GettingDroppedAttemptEvent>(OnGettingDropped);
     }
 
     private void OnGettingPickedUp(Entity<Scp012Component> ent, ref GettingPickedUpAttemptEvent args)
@@ -25,5 +27,11 @@ public abstract class SharedScp012System : EntitySystem
         _popup.PopupClient(message, args.User, args.User);
 
         args.Cancel();
+    }
+
+    private void OnGettingDropped(Entity<Scp012Component> ent, ref GettingDroppedAttemptEvent args)
+    {
+        if (HasComp<Scp012VictimComponent>(args.User))
+            args.Cancelled = true;
     }
 }

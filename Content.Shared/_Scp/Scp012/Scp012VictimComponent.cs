@@ -46,11 +46,11 @@ public sealed partial class Scp012VictimComponent : Component
     [ViewVariables]
     public bool CachedLos;
 
-    [ViewVariables]
-    public TimeSpan? NextLosCheckTime;
-
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public TimeSpan LosCooldown = TimeSpan.FromSeconds(0.5f);
+
+    [ViewVariables, AutoPausedField]
+    public TimeSpan? NextLosCheckTime;
 
     [ViewVariables]
     public EntityUid? AudioStream;
