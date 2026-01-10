@@ -4,14 +4,9 @@
   description: job-description-chief-technical-specialist
   playTimeTracker: JobChiefTechnicalSpecialist
   requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 144000
-  - !type:RoleTimeRequirement
-    role: JobGeneralTechnicalSpecialist
-    time: 21600
   - !type:DepartmentTimeRequirement
     department: EngineeringTechnicalService
-    time: 36000
+    time: 54000
   weight: 10
   startingGear: ChiefTechnicalSpecialistGear
   icon: JobChiefTechnicalSpecialist

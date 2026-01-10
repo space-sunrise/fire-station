@@ -5,23 +5,8 @@
   playTimeTracker: JobDirector
   requirements:
     - !type:DepartmentTimeRequirement
-      department: HeavyContainmentSecurityService
-      time: 18000
-    - !type:DepartmentTimeRequirement
-      department: ExternalAdministrativeZoneSecurityService
-      time: 18000
-    - !type:DepartmentTimeRequirement
-      department: ScientificService
-      time: 54000
-    - !type:DepartmentTimeRequirement
-      department: MedicalService
-      time: 36000
-    - !type:DepartmentTimeRequirement
-      department: EngineeringTechnicalService
-      time: 36000
-    - !type:DepartmentTimeRequirement
       department: Administration
-      time: 36000
+      time: 54000
   weight: 5
   icon: JobDirector
   joinNotifyCrew: true

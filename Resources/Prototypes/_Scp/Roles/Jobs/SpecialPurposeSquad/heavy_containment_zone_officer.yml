@@ -6,7 +6,7 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: HeavyContainmentSecurityService
-    time: 18000
+    time: 14400
   icon: JobHeavyContainmentZoneOfficer
   supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false

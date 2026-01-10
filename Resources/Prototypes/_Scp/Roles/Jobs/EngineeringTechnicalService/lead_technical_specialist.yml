@@ -6,7 +6,7 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: EngineeringTechnicalService
-      time: 54000
+      time: 36000
   startingGear: LeadTechnicalSpecialistGear
   icon: JobLeadTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
