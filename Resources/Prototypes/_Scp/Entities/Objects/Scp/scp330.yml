@@ -9,6 +9,7 @@
   - type: Sprite
     sprite: _Scp\Objects\Scp\scp-330.rsi
     state: candy
+  - type: Scp330Candy
   - type: Edible
     foodType: JunkFood
   - type: SolutionContainerManager
@@ -29,7 +30,16 @@
   - type: Sprite
     sprite: _Scp\Objects\Scp\scp-330.rsi
     state: bowl
-  - type: Scp330
+  - type: Scp330Bowl
     baseDamage:
       types:
         Slash: 50
+  - type: ContainerContainer
+    containers:
+      bowl: !type:Container
+  - type: EntityTableContainerFill
+    containers:
+      bowl: !type:AllSelector
+        children:
+        - id: Scp330Candy
+          amount: 10

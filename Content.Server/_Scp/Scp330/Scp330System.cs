@@ -7,17 +7,22 @@ using Content.Server.Body.Systems;
 using Content.Server.Hands.Systems;
 using Content.Server.Popups;
 using Content.Shared._Scp.Proximity;
+using Content.Shared._Scp.Scp330;
 using Content.Shared.Body.Part;
 using Content.Shared.Gibbing.Events;
 using Content.Shared.Hands.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Gibbing.Systems;
+using Content.Shared.Whitelist;
+using Robust.Server.Containers;
 using Robust.Server.GameObjects;
+using Robust.Shared.Containers;
 using Robust.Shared.Map;
+using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp330;
 
-public sealed class Scp330System : EntitySystem
+public sealed class Scp330System : SharedScp330System
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
@@ -28,6 +33,9 @@ public sealed class Scp330System : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly GibbingSystem _gibbing = default!;
+    [Dependency] private readonly ContainerSystem _container = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
     private readonly HashSet<Entity<HandsComponent>> _cachedEntities = [];
     private HashSet<EntityUid> _gibCachedEntities = [];
@@ -36,42 +44,77 @@ public sealed class Scp330System : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<Scp330Component, ActivateInWorldEvent>(OnActivate);
+        SubscribeLocalEvent<Scp330BowlComponent, InteractHandEvent>(OnActivate);
+        SubscribeLocalEvent<Scp330BowlComponent, AfterInteractUsingEvent>(OnAfterInteract);
     }
 
-    private void OnActivate(Entity<Scp330Component> ent, ref ActivateInWorldEvent args)
+    #region Event handlers
+
+    private void OnActivate(Entity<Scp330BowlComponent> ent, ref InteractHandEvent args)
     {
         if (args.Handled)
             return;
 
-        // если конфет нет
-        if (ent.Comp.CurrentCandies <= 0)
-        {
-            _popup.PopupEntity(Loc.GetString("scp330-bowl-empty"), ent, args.User);
+        if (!TryTakeCandy(ent, args.User))
             return;
-        }
-
-        var candy = Spawn(ent.Comp.CandyPrototype, _transform.GetMapCoordinates(args.User));
-        if (!_hands.TryPickupAnyHand(args.User, candy))
-        {
-            QueueDel(candy);
-            return;
-        }
-
-        ent.Comp.CurrentCandies--;
-
-        ent.Comp.ThiefCounter.TryAdd(args.User, 0);
-        ent.Comp.ThiefCounter[args.User]++;
-
-        if (ent.Comp.ThiefCounter[args.User] > ent.Comp.PunishmentAfter)
-        {
-            ApplyPunishment(ent, args.User);
-        }
 
         args.Handled = true;
     }
 
-    private void ApplyPunishment(Entity<Scp330Component> ent, EntityUid user)
+    private void OnAfterInteract(Entity<Scp330BowlComponent> ent, ref AfterInteractUsingEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryInsert(ent, args.Used))
+            return;
+
+        args.Handled = true;
+    }
+
+    #endregion
+
+    #region Take&Return
+
+    public bool TryTakeCandy(Entity<Scp330BowlComponent> ent, EntityUid user)
+    {
+        var container = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
+        if (container.Count == 0)
+        {
+            _popup.PopupEntity(Loc.GetString("scp330-bowl-empty"), ent, user);
+            return false;
+        }
+
+        var item = _random.Pick(container.ContainedEntities);
+        if (!_hands.TryPickup(user, item))
+            return false;
+
+        ent.Comp.ThiefCounter.TryAdd(user, 0);
+        ent.Comp.ThiefCounter[user]++;
+
+        if (ent.Comp.ThiefCounter[user] > ent.Comp.PunishmentAfter)
+            ApplyPunishment(ent, user);
+
+        return true;
+    }
+
+    public bool TryInsert(Entity<Scp330BowlComponent> ent, EntityUid item)
+    {
+        if (!_whitelist.CheckBoth(item, ent.Comp.Blacklist, ent.Comp.Whitelist))
+            return false;
+
+        var container = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
+        if (!_container.Insert(item, container))
+            return false;
+
+        return true;
+    }
+
+    #endregion
+
+    #region Punishment
+
+    private void ApplyPunishment(Entity<Scp330BowlComponent> ent, EntityUid user)
     {
         var extra = Math.Max(1, ent.Comp.ThiefCounter[user] - ent.Comp.PunishmentAfter);
         var radius = ent.Comp.BasePunishmentRadius + (extra * 0.5f);
@@ -94,21 +137,6 @@ public sealed class Scp330System : EntitySystem
         }
 
         CutOffHands(user);
-    }
-
-    private DamageSpecifier CalculateDamage(EntityUid target, MapCoordinates bowlCoords, float maxRange, in DamageSpecifier baseDamage)
-    {
-        var targetCoords = _transform.GetMapCoordinates(target);
-        var distance = Vector2.Distance(bowlCoords.Position, targetCoords.Position);
-        var closePercent = Math.Clamp(distance / maxRange, 0f, 1f);
-
-        var newDamage = new DamageSpecifier();
-        foreach (var (type, value) in baseDamage.DamageDict)
-        {
-            newDamage.DamageDict[type] = value * closePercent;
-        }
-
-        return newDamage;
     }
 
     private void CutOffHands(EntityUid target)
@@ -138,4 +166,25 @@ public sealed class Scp330System : EntitySystem
             _popup.PopupEntity(Loc.GetString("scp330-removed-hands"), target, target, PopupType.LargeCaution);
         }
     }
+
+    #endregion
+
+    #region Helpers
+
+    private DamageSpecifier CalculateDamage(EntityUid target, MapCoordinates bowlCoords, float maxRange, in DamageSpecifier baseDamage)
+    {
+        var targetCoords = _transform.GetMapCoordinates(target);
+        var distance = Vector2.Distance(bowlCoords.Position, targetCoords.Position);
+        var closePercent = Math.Clamp(distance / maxRange, 0f, 1f);
+
+        var newDamage = new DamageSpecifier();
+        foreach (var (type, value) in baseDamage.DamageDict)
+        {
+            newDamage.DamageDict[type] = value * closePercent;
+        }
+
+        return newDamage;
+    }
+
+    #endregion
 }
