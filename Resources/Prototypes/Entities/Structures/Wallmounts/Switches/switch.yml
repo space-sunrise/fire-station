@@ -67,6 +67,7 @@
   - type: UseDelay
     delay: 0.5 # prevent light-toggling auto-clickers.
   - type: SignalSwitch
+    clickSound: /Audio/_Scp/Machines/button.ogg
     onPort: Pressed
     offPort: Pressed
     statusPort: Pressed
