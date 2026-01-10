@@ -6,5 +6,5 @@ namespace Content.Shared._Scp.Scp330;
 public sealed partial class Scp330CandyComponent : Component
 {
     [ViewVariables, AutoNetworkedField]
-    public EntityUid? TackedBy;
+    public EntityUid? TakenBy;
 }

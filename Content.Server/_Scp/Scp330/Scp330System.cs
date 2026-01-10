@@ -89,7 +89,8 @@ public sealed class Scp330System : SharedScp330System
         if (!_hands.TryPickup(user, item))
             return false;
 
-        TrySignCandy(ent, item, user);
+        if (!TrySignCandy(ent, item, user))
+            return false;
 
         if (ent.Comp.ThiefCounter[user] > ent.Comp.PunishmentAfter)
             ApplyPunishment(ent, user);
@@ -118,7 +119,7 @@ public sealed class Scp330System : SharedScp330System
         if (!Resolve(candy, ref candy.Comp, false))
             return false;
 
-        candy.Comp.TackedBy = user;
+        candy.Comp.TakenBy = user;
         Dirty(candy);
 
         ent.Comp.ThiefCounter.TryAdd(user, 0);
@@ -133,17 +134,17 @@ public sealed class Scp330System : SharedScp330System
         if (!Resolve(candy, ref candy.Comp, false))
             return false;
 
-        if (!candy.Comp.TackedBy.HasValue)
+        if (!candy.Comp.TakenBy.HasValue)
             return false;
 
-        if (!ent.Comp.ThiefCounter.TryGetValue(candy.Comp.TackedBy.Value, out var count))
+        if (!ent.Comp.ThiefCounter.TryGetValue(candy.Comp.TakenBy.Value, out var count))
             return false;
 
         if (count <= 0)
             return false;
 
         // Вернули конфету - уменьшаем счетчик "взятых конфет" для человека, который взял эту конфету.
-        ent.Comp.ThiefCounter[candy.Comp.TackedBy.Value]--;
+        ent.Comp.ThiefCounter[candy.Comp.TakenBy.Value]--;
         Dirty(ent);
 
         return true;
