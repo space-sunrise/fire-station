@@ -1,0 +1,111 @@
+﻿# Сама конфета
+- type: entity
+  parent: FoodInjectableBase
+  id: BaseScp330Candy
+  abstract: true
+  name: mysterious candy
+  description: A small treat in a bright wrapper. Surely, one won't hurt.
+  suffix: SCP-330
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-330.rsi
+    state: candy_blue
+  - type: Scp330Candy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 10
+        reagents:
+        - ReagentId: Scp330Nothing
+          Quantity: 10
+
+- type: entity
+  parent: BaseScp330Candy
+  id: Scp330CandyBlue
+  name: blue mysterious candy
+  components:
+  - type: Sprite
+    state: candy_blue
+
+- type: entity
+  parent: BaseScp330Candy
+  id: Scp330CandyRed
+  name: red mysterious candy
+  components:
+  - type: Sprite
+    state: candy_red
+
+- type: entity
+  parent: BaseScp330Candy
+  id: Scp330CandyGreen
+  name: green mysterious candy
+  components:
+  - type: Sprite
+    state: candy_green
+
+- type: entity
+  parent: BaseScp330Candy
+  id: Scp330CandyYellow
+  name: yellow mysterious candy
+  components:
+  - type: Sprite
+    state: candy_yellow
+
+- type: entity
+  parent: BaseScp330Candy
+  id: Scp330CandyPink
+  name: pink mysterious candy
+  components:
+  - type: Sprite
+    state: candy_pink
+
+# Миска SCP-330
+- type: entity
+  id: Scp330Bowl
+  parent: BaseStructure
+  name: candy bowl
+  description: "A note is attached to the bowl that reads: 'Take no more than two, please!'"
+  suffix: SCP-330
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-330.rsi
+    layers:
+    - state: bowl
+    - state: candy_layer0
+      map: [ "enum.StorageContainerVisualLayers.Fill" ]
+  - type: Scp330Bowl
+    baseDamage:
+      types:
+        Slash: 50
+  - type: Storage
+    openOnActivate: false
+    showVerb: false
+    grid:
+    - 0,0,4,9
+    storageInsertSound:
+      path: /Audio/_Sunrise/Items/Handling/Plastic/pickup.ogg
+    storageRemoveSound:
+      path: /Audio/_Sunrise/Items/Handling/Plastic/drop.ogg
+    whitelist:
+      components:
+      - Scp330Candy
+  - type: StorageContainerVisuals
+    maxFillLevels: 5
+    fillBaseName: candy_layer
+  - type: Appearance
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:NestedSelector
+        tableId: Scp330BowlTable
+        rolls: !type:RangeNumberSelector
+          range: 10, 18
+
+- type: entityTable
+  id: Scp330BowlTable
+  table: !type:GroupSelector
+    children:
+    - id: Scp330CandyBlue
+    - id: Scp330CandyRed
+    - id: Scp330CandyGreen
+    - id: Scp330CandyYellow
+    - id: Scp330CandyPink

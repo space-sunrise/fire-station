@@ -1,0 +1,24 @@
+﻿{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "SUNRISE",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        { "name": "bowl" },
+
+        { "name": "candy_layer0" },
+        { "name": "candy_layer1" },
+        { "name": "candy_layer2" },
+        { "name": "candy_layer3" },
+        { "name": "candy_layer4" },
+
+        { "name": "candy_blue" },
+        { "name": "candy_red" },
+        { "name": "candy_green" },
+        { "name": "candy_yellow" },
+        { "name": "candy_pink" }
+    ]
+}
