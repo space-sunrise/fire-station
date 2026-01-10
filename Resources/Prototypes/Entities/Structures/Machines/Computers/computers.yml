@@ -100,7 +100,7 @@
   components:
   - type: AccessReader
     access:
-    - [ Command ]
+    - [ Exit ] # Fire Edit
   - type: EmergencyShuttleConsole
   - type: ActivatableUI
     key: enum.EmergencyConsoleUiKey.Key
