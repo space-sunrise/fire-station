@@ -160,6 +160,7 @@
   parent: TableBase
   name: table
   description: A square piece of metal standing on four metal legs.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Furniture/Tables/generic.rsi
@@ -204,6 +205,7 @@
   parent: TableBase
   name: reinforced table
   description: A square piece of metal standing on four metal legs. Extra robust.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Furniture/Tables/reinforced.rsi
@@ -251,6 +253,7 @@
   parent: TableBase
   name: glass table
   description: A square piece of glass, standing on four metal legs.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Furniture/Tables/glass.rsi
@@ -360,6 +363,7 @@
   parent: TableBase
   name: reinforced glass table
   description: A square piece of glass, standing on four metal legs. Extra robust.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Furniture/Tables/r_glass.rsi
@@ -618,6 +622,7 @@
   parent: TableBase
   name: stone table
   description: Literally the sturdiest thing you have ever seen.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Furniture/Tables/stone.rsi
@@ -645,6 +650,7 @@
   parent: TableBase
   name: web table
   description: Really smooth and surprisingly durable.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Damageable
     damageModifierSet: Web
@@ -679,6 +685,7 @@
   id: TableXeno
   name: xeno table
   description: I wouldn't put the silverware on it.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Furniture/Tables/xeno.rsi
