@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Other.Events;
+﻿using System.Linq;
+using Content.Shared._Scp.Other.Events;
 using Content.Shared._Scp.Scp330;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
@@ -14,7 +15,6 @@ public sealed partial class Scp330System
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
 
     private static readonly ProtoId<ReagentPrototype> FallbackReagent = "Scp330Nothing";
-    private const int MaximumGetUniqueReagentTries = 15;
 
     private void InitializeCandy()
     {
@@ -78,35 +78,24 @@ public sealed partial class Scp330System
 
     private ProtoId<ReagentPrototype> GetRandomEffect(Entity<Scp330BowlComponent> ent)
     {
-        var tries = 0;
-        ProtoId<ReagentPrototype> reagent;
-
         if (ent.Comp.AvailableReagents.Count == 0)
         {
             Log.Error($"{nameof(Scp330BowlComponent.AvailableReagents)} is empty! This should not be");
             return FallbackReagent;
         }
 
-        // Если все реагенты уже использованы, разрешаем повторное использование
-        if (ent.Comp.CandyEffects.Count >= ent.Comp.AvailableReagents.Count)
+        var usedReagents = ent.Comp.CandyEffects.Values.ToHashSet();
+        var availableUnused = ent.Comp.AvailableReagents
+            .Where(r => !usedReagents.Contains(r))
+            .ToList();
+
+        if (availableUnused.Count == 0)
         {
+            Log.Warning($"All unique reagents for {ent} have been exhausted. Picking a duplicate effect.");
             return _random.Pick(ent.Comp.AvailableReagents);
         }
 
-        do
-        {
-            tries++;
-            if (tries > MaximumGetUniqueReagentTries)
-            {
-                Log.Error($"Reached maximum tries({MaximumGetUniqueReagentTries}) while trying to get unique reagent for SCP-330 Candy with bowl {ToPrettyString(ent)}");
-                return FallbackReagent;
-            }
-
-            reagent = _random.Pick(ent.Comp.AvailableReagents);
-
-        } while (ent.Comp.CandyEffects.ContainsValue(reagent));
-
-        return reagent;
+        return _random.Pick(availableUnused);
     }
 
     #endregion
