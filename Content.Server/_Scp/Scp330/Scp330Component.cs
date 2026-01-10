@@ -21,5 +21,8 @@ public sealed partial class Scp330Component : Component
     [DataField]
     public int PunishmentAfter = 2;
 
+    [DataField]
+    public float BasePunishmentRadius = 1.5f;
+
     public Dictionary<EntityUid, int> ThiefCounter = new();
 }

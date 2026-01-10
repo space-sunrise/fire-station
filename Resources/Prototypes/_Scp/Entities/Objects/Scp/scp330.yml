@@ -28,7 +28,6 @@
     sprite: _Scp\Objects\Scp\scp-330.rsi
     state: bowl
   - type: Scp330
-    regenDelay: 10
-    maxCandies: 10
-    baseDamage: 50
-  - type: InteractionOutline
+    baseDamage:
+      types:
+        Slash: 50
