@@ -86,10 +86,10 @@ public sealed class Scp330System : SharedScp330System
         }
 
         var item = _random.Pick(container.ContainedEntities);
-        if (!_hands.TryPickup(user, item))
+        if (!TrySignCandy(ent, item, user))
             return false;
 
-        if (!TrySignCandy(ent, item, user))
+        if (!_hands.TryPickup(user, item))
             return false;
 
         if (ent.Comp.ThiefCounter[user] > ent.Comp.PunishmentAfter)

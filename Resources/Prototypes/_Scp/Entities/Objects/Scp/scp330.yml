@@ -45,4 +45,4 @@
       bowl: !type:AllSelector
         children:
         - id: Scp330Candy
-          amount: 10
+          amount: 15
