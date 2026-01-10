@@ -1,0 +1,14 @@
+﻿<ui:FancyWindow xmlns="https://spacestation14.io"
+                xmlns:x="http://schemas.microsoft.com/winfx/2007/xaml"
+                xmlns:ui="clr-namespace:Content.Client.UserInterface.Controls"
+                xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
+                MinSize="200 150" Resizable="False" Title="SCP 914">
+    <BoxContainer Align="Center" Orientation="Vertical" HorizontalExpand="True" VerticalExpand="True">
+        <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center" HorizontalExpand="True">
+            <Button HorizontalAlignment="Left" Name="TurnLeftButton" TextAlign="Center" Text="{Loc scp914-cycle-left-button}" SetSize="35 35"/>
+            <Label HorizontalAlignment="Stretch" Name="CurrentModeLabel" Align="Center" HorizontalExpand="True" SetSize="100 25"/>
+            <Button HorizontalAlignment="Right" Name="TurnRightButton" TextAlign="Center" Text="{Loc scp914-cycle-right-button}" SetSize="35 35"/>
+        </BoxContainer>
+        <Button Name="StartCycleBytton" TextAlign="Center" SetHeight="35" HorizontalExpand="True" Text="{Loc scp914-start-cycle}"></Button>
+    </BoxContainer>
+</ui:FancyWindow>

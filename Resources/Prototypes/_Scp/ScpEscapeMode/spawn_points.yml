@@ -1,0 +1,123 @@
+﻿- type: entity
+  id: BaseSlSpawnPoints
+  abstract: true
+  noSpawn: true
+  parent: MarkerBase
+  components:
+  - type: Marker
+  - type: Sprite
+    layers:
+    - state: blue
+
+# Humanoids
+- type: entity
+  id: SlMogSpawnPoint
+  parent: BaseSlSpawnPoints
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Scp/ScpSl/spawn-points.rsi
+      state: m
+  - type: SlHumanoidSpawnPoint
+    spawnPointType: Mog
+
+- type: entity
+  id: SlChaosSpawnPoint
+  parent: BaseSlSpawnPoints
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Scp/ScpSl/spawn-points.rsi
+      state: c
+  - type: SlHumanoidSpawnPoint
+    spawnPointType: Chaos
+
+- type: entity
+  id: SlClassDSpawnPoint
+  parent: BaseSlSpawnPoints
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Scp/ScpSl/spawn-points.rsi
+      state: d
+  - type: SlHumanoidSpawnPoint
+    spawnPointType: ClassD
+
+- type: entity
+  id: SlScientistSpawnPoint
+  parent: BaseSlSpawnPoints
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Scp/ScpSl/spawn-points.rsi
+      state: e
+  - type: SlHumanoidSpawnPoint
+    spawnPointType: Scientist
+
+- type: entity
+  id: SlSecuritySpawnPoint
+  parent: BaseSlSpawnPoints
+  components:
+  - type: Sprite
+    layers:
+    - sprite: _Scp/ScpSl/spawn-points.rsi
+      state: s
+  - type: SlHumanoidSpawnPoint
+    spawnPointType: Security
+
+# SCP
+- type: entity
+  id: Sl096SpawnPoint
+  parent: BaseSlSpawnPoints
+  components:
+  - type: SlScpSpawnPoint
+    scpProtoId: Scp096
+    playable: true
+
+- type: entity
+  id: Sl939ASpawnPoint
+  parent: BaseSlSpawnPoints
+  components:
+  - type: SlScpSpawnPoint
+    scpProtoId: Scp939
+    playable: true
+
+- type: entity
+  id: Sl939BSpawnPoint
+  parent: BaseSlSpawnPoints
+  components:
+  - type: SlScpSpawnPoint
+    scpProtoId: Scp939
+    playable: true
+
+- type: entity
+  id: Sl106SpawnPoints
+  parent: BaseSlSpawnPoints
+  components:
+  - type: SlScpSpawnPoint
+    scpProtoId: Scp106
+    playable: true
+
+- type: entity
+  id: Sl173SpawnPoints
+  parent: BaseSlSpawnPoints
+  components:
+  - type: SlScpSpawnPoint
+    scpProtoId: Scp173
+    playable: true
+
+- type: entity
+  id: Sl035SpawnPoints
+  parent: BaseSlSpawnPoints
+  components:
+  - type: SlScpSpawnPoint
+    scpProtoId: ClothingMaskScp035
+    playable: false
+
+- type: entity
+  id: Sl500SpawnPoints
+  parent: BaseSlSpawnPoints
+  components:
+  - type: SlScpSpawnPoint
+    scpProtoId: PillCanisterScp500
+    playable: false
