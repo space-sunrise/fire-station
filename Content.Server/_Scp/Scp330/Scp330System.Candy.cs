@@ -14,7 +14,7 @@ public sealed partial class Scp330System
     [Dependency] private readonly SharedSolutionContainerSystem _solution = default!;
 
     private static readonly ProtoId<ReagentPrototype> FallbackReagent = "Scp330Nothing";
-    private const int MaximumGetUniqueReagentTries = 10;
+    private const int MaximumGetUniqueReagentTries = 15;
 
     private void InitializeCandy()
     {

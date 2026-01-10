@@ -95,20 +95,22 @@
       components:
       - Scp330Candy
   - type: StorageContainerVisuals
-    maxFillLevels: 6
+    maxFillLevels: 5
     fillBaseName: candy_layer
   - type: Appearance
   - type: EntityTableContainerFill
     containers:
-      storagebase: !type:AllSelector
-        children:
-        - id: Scp330CandyBlue
-          amount: 3
-        - id: Scp330CandyRed
-          amount: 3
-        - id: Scp330CandyGreen
-          amount: 3
-        - id: Scp330CandyYellow
-          amount: 3
-        - id: Scp330CandyPink
-          amount: 3
+      storagebase: !type:NestedSelector
+        tableId: Scp330BowlTable
+        rolls: !type:RangeNumberSelector
+          range: 10, 18
+
+- type: entityTable
+  id: Scp330BowlTable
+  table: !type:GroupSelector
+    children:
+    - id: Scp330CandyBlue
+    - id: Scp330CandyRed
+    - id: Scp330CandyGreen
+    - id: Scp330CandyYellow
+    - id: Scp330CandyPink
