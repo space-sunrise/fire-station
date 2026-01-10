@@ -87,6 +87,12 @@ public sealed partial class Scp330System
             return FallbackReagent;
         }
 
+        // Если все реагенты уже использованы, разрешаем повторное использование
+        if (ent.Comp.CandyEffects.Count >= ent.Comp.AvailableReagents.Count)
+        {
+            return _random.Pick(ent.Comp.AvailableReagents);
+        }
+
         do
         {
             tries++;
