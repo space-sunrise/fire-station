@@ -1,10 +1,13 @@
-﻿# TODO: Перенести текст в локализацию
+﻿# TODO: Стандартизация стейтов спрайтов с знаками и плакатами.
+# TODO: Внедрение CamelCase для ID для постеров из группы PosterScpContainmentRoomBase
 
 # Просто плакаты
 
 - type: entity
   parent: PosterBase
   id: PosterScpBase
+  name: poster
+  description: A poster.
   abstract: true
   components:
   - type: Sprite
@@ -13,6 +16,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterTattered
+  name: tattered poster
+  description: Only pathetic fragments remain, making it impossible to distinguish the original image.
   components:
   - type: Sprite
     state: tattered
@@ -20,6 +25,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterScp
+  name: "Secure Contain Protect" poster
+  description: A poster with the SCP Foundation emblem.
   components:
   - type: Sprite
     state: scp
@@ -27,6 +34,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterChaos
+  name: "Chaos" poster
+  description: A poster with the Chaos Insurgency emblem.
   components:
   - type: Sprite
     state: chaos
@@ -34,6 +43,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterGoc
+  name: "G.O.C." poster
+  description: A poster with the Global Occult Coalition emblem.
   components:
   - type: Sprite
     state: goc
@@ -41,6 +52,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterChanges
+  name: "Changes" poster
+  description: The content of this poster reminds you of something... What exactly?
   components:
   - type: Sprite
     state: changes
@@ -48,6 +61,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterBreath
+  name: "Breathe!" poster
+  description: A poster urging you to... breathe!!
   components:
   - type: Sprite
     state: breath
@@ -55,6 +70,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterScpYours
+  name: "SCP is Your Everything!" poster
+  description: A poster urging you to join the SCP Foundation.
   components:
   - type: Sprite
     state: nt
@@ -62,6 +79,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterLook
+  name: "Keep Your Eyes Peeled" poster
+  description: A poster urging you to maintain eye contact.
   components:
   - type: Sprite
     state: scp173
@@ -69,6 +88,8 @@
 - type: entity
   parent: PosterScpBase
   id: Poster217
+  name: "SCP-217" poster
+  description: A poster showing the anatomy of SCP-217.
   components:
   - type: Sprite
     state: scp217
@@ -76,6 +97,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterSaulAgency
+  name: law office advertisement
+  description: A poster featuring an advertisement for Saul's law agency.
   components:
   - type: Sprite
     state: saul
@@ -83,6 +106,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterAlertness
+  name: "Stay Alert" poster
+  description: A poster warning personnel about the necessity of vigilance within the facility.
   components:
   - type: Sprite
     state: sus
@@ -90,6 +115,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterLooseLipsLoseScips
+  name: "Loose Lips Lose Scips" poster
+  description: Protect information. You never know who is listening. A poster urging foundation personnel not to gossip and to watch what they say.
   components:
   - type: Sprite
     state: loose_lips_lose_scips
@@ -99,6 +126,8 @@
 - type: entity
   parent: PosterBase
   id: PosterScpLegalBase
+  name: poster
+  description: A poster.
   abstract: true
   components:
   - type: Sprite
@@ -107,6 +136,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpHey
+  name: "Hey!" poster
+  description: Did a stranger call out to you? Are they wearing a strange mask? Better contact security.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster1_legit
@@ -114,6 +146,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpBonFire
+  name: "Bonfire" poster
+  description: Don't forget to take a rest.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster2_legit
@@ -121,6 +156,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpShodan
+  name: "Shodan" poster
+  description: A poster with the face of some AI.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster3_legit
@@ -128,6 +166,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpVal
+  name: "Colleague" poster
+  description: A calm working environment together with a colleague.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster4_legit
@@ -135,6 +176,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpBand
+  name: "The Band" poster
+  description: Some poster featuring a group of people. One of them doesn't look human.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster5_legit
@@ -142,6 +186,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpLandscape
+  name: "Landscape" poster
+  description: Some beautiful landscape. I wonder where this is from?
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster6_legit
@@ -149,6 +196,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpSinger
+  name: "Singer" poster
+  description: A poster of a famous singer.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster7_legit
@@ -156,6 +206,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpColleague
+  name: "Colleague" poster
+  description: Don't forget that you're not the only one working here.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster8_legit
@@ -163,6 +216,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpGirl
+  name: girl poster
+  description: A promotional poster for some movie or something else.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster9_legit
@@ -170,6 +226,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpScientist
+  name: "Colleague" poster
+  description: Successful work for everyone!
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster10_legit
@@ -177,6 +236,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpScientist2
+  name: "Colleague" poster
+  description: Everyone has their quirks. But the main thing is the progress indicator!
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster11_legit
@@ -184,6 +246,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpIHaveNoMouthAndIMustScream
+  name: "I Have No Mouth, and I Must Scream" poster
+  description: A poster about an old adventure game.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster12_legit
@@ -191,6 +256,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpDoctor
+  name: "Medicine" poster
+  description: Professional medical services only here.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster13_legit
@@ -198,6 +266,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpNun
+  name: "Nun" poster
+  description: Some old poster featuring an unknown nun.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster14_legit
@@ -205,6 +276,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpGirl2
+  name: girl poster
+  description: A poster from some movie or something else.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster15_legit
@@ -212,6 +286,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpGirl3
+  name: girl poster
+  description: Some foundation employee. Apparently, another promotional poster.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster16_legit
@@ -219,6 +296,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpGirl4
+  name: girl poster
+  description: A poster from some movie or something else.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster17_legit
@@ -226,6 +306,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpEngineerGaming
+  name: "Engineer" poster
+  description: Engineers here don't just change lightbulbs. Join us!
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster18_legit
@@ -233,6 +316,9 @@
 - type: entity
   parent: PosterScpLegalBase
   id: PosterScpSecurity
+  name: "Security" poster
+  description: A poster reminding you that security is always nearby.
+  suffix: SCP Authorized
   components:
   - type: Sprite
     state: poster19_legit
@@ -242,6 +328,8 @@
 - type: entity
   parent: PosterBase
   id: PosterScpDClassBase
+  name: poster
+  description: A poster.
   abstract: true
   components:
   - type: Sprite
@@ -250,6 +338,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpDeath
+  name: "Death" poster
+  description: A skull with a crown on its head. Probably something philosophical.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster1_classd
@@ -257,6 +348,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpElerium
+  name: "Elerium" poster
+  description: Elerium? Some obscure poster with a slogan unknown to you.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster2_classd
@@ -264,6 +358,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpHappiness
+  name: "Happiness" poster
+  description: Be happy. MADLY happy.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster3_classd
@@ -271,6 +368,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpLana
+  name: "Lana" poster
+  description: Lana. She... You... It brings back warm feelings. Do you even remember her?
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster4_classd
@@ -278,6 +378,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpLeviathan
+  name: "The Eye" poster
+  description: The poster depicts a person against the backdrop of a huge eye of an unknown creature.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster5_classd
@@ -285,6 +388,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpMicroscope
+  name: "Microscope" poster
+  description: We are all like under a microscope here. We are just objects of study.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster6_classd
@@ -292,6 +398,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpLeopold
+  name: "Leopold" poster
+  description: This man does not inspire confidence. He is clearly up to something.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster7_classd
@@ -299,6 +408,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpSuperDClass
+  name: "Super D" poster
+  description: A poster featuring a muscular Class D employee.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster8_classd
@@ -306,6 +418,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpDislike
+  name: "Dislike" poster
+  description: Shows denial or disgust towards something. But everyone understands.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster9_classd
@@ -313,6 +428,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpFallout
+  name: "Wasteland" poster
+  description: A poster about some old game.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster10_classd
@@ -320,6 +438,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpWhoWhatWhere
+  name: "Who?" poster
+  description: Who are they? Why do they exist? Why are we here? Always think.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster11_classd
@@ -327,6 +448,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpEnemy
+  name: "Enemy" poster
+  description: Beware of your enemy.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster12_classd
@@ -334,6 +458,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpNotUFriend
+  name: "Not Your Friend" poster
+  description: They are not your friends. Beware.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster13_classd
@@ -341,6 +468,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpGalaxy
+  name: "Galaxy" poster
+  description: The poster depicts some galaxy. Probably ours.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster14_classd
@@ -348,6 +478,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpYellowFace
+  name: "Yellow-faced" poster
+  description: Depicts the face of an unknown person with a yellow skin tone. Maybe it's jaundice?
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster15_classd
@@ -355,6 +488,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpTriangle
+  name: "Pyramid" poster
+  description: What could this possibly mean?
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster16_classd
@@ -362,6 +498,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpSad
+  name: "Melancholy" poster
+  description: Don't let yourself fall into sadness. And if you already have, then embrace it.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster17_classd
@@ -369,6 +508,9 @@
 - type: entity
   parent: PosterScpDClassBase
   id: PosterScpUgly
+  name: "Deformity" poster
+  description: Some disfigured face is depicted here. Looks creepy.
+  suffix: SCP Class D
   components:
   - type: Sprite
     state: poster18_classd
@@ -378,6 +520,8 @@
 - type: entity
   parent: PosterBase
   id: PosterScp049Base
+  name: poster
+  description: A poster.
   abstract: true
   components:
   - type: Sprite
@@ -386,6 +530,9 @@
 - type: entity
   parent: PosterScp049Base
   id: Poster049Hand
+  name: 'anatomy: "hand"'
+  description: An old clipping from a faded book. It contains notes on the structure of the human hand.
+  suffix: CC-049
   components:
   - type: Sprite
     state: poster1_scp049
@@ -393,6 +540,9 @@
 - type: entity
   parent: PosterScp049Base
   id: Poster049Veins
+  name: 'anatomy: "veins"'
+  description: An old clipping from a faded book. It contains notes on the venous system.
+  suffix: CC-049
   components:
   - type: Sprite
     state: poster2_scp049
@@ -400,6 +550,9 @@
 - type: entity
   parent: PosterScp049Base
   id: Poster049Dermis
+  name: 'anatomy: "flesh"'
+  description: An old clipping from a faded book. It contains notes on the epidermis.
+  suffix: CC-049
   components:
   - type: Sprite
     state: poster3_scp049
@@ -407,6 +560,9 @@
 - type: entity
   parent: PosterScp049Base
   id: Poster049Dissection
+  name: 'anatomy: "dissection"'
+  description: An old clipping from a faded book. It describes dissection experiments.
+  suffix: CC-049
   components:
   - type: Sprite
     state: poster4_scp049
@@ -414,6 +570,9 @@
 - type: entity
   parent: PosterScp049Base
   id: Poster049Heart
+  name: 'anatomy: "heart"'
+  description: An old clipping from a faded book. It contains notes on the human heart.
+  suffix: CC-049
   components:
   - type: Sprite
     state: poster5_scp049
@@ -423,6 +582,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterContrabandChaos1
+  name: "Again?" poster
+  description: Contraband poster from the Chaos Insurgency. "Shall he again, the fickle avenger, send his crimson right hand to our destruction?"
   components:
   - type: Sprite
     state: poster1_chaos_contraband
@@ -430,6 +591,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterContrabandChaos2
+  name: "Am I the Enemy?" poster
+  description: Contraband poster from the Chaos Insurgency. "Is your enemy truly ME?" Perhaps... you should think about it.
   components:
   - type: Sprite
     state: poster2_chaos_contraband
@@ -437,6 +600,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterContrabandChaos3
+  name: "I SEE" poster
+  description: Contraband poster from the Chaos Insurgency. "Why is he looking at me like that...? Maybe... he sees me?"
   components:
   - type: Sprite
     state: poster3_chaos_contraband
@@ -444,6 +609,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterContrabandChaos4
+  name: "CHAOS" poster
+  description: Contraband poster from the Chaos Insurgency. It looks old. "Chaos is what we strive for! That which lived, lives, and will live!"
   components:
   - type: Sprite
     state: poster4_chaos_contraband
@@ -453,6 +620,8 @@
 - type: entity
   parent: PosterBase
   id: PosterScpContainmentRoomBase
+  name: poster
+  description: A poster.
   abstract: true
   components:
   - type: Sprite
@@ -461,13 +630,26 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP005
+  name: "SCP-005" poster
+  description: Information poster for SCP-005.
   components:
   - type: Sprite
     state: scp005
 
 - type: entity
   parent: PosterScpContainmentRoomBase
+  id: PosterScp012
+  name: "SCP-012" poster
+  description: Information poster for SCP-012.
+  components:
+  - type: Sprite
+    state: scp012
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
   id: PosterSCP035
+  name: "SCP-035" poster
+  description: Information poster for SCP-035.
   components:
   - type: Sprite
     state: scp035
@@ -475,6 +657,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP049
+  name: "SCP-049" poster
+  description: Information poster for SCP-049.
   components:
   - type: Sprite
     state: scp049
@@ -482,6 +666,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP082
+  name: "SCP-082" poster
+  description: Information poster for SCP-082.
   components:
   - type: Sprite
     state: scp082
@@ -489,6 +675,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP096
+  name: "SCP-096" poster
+  description: Information poster for SCP-096.
   components:
   - type: Sprite
     state: scp096
@@ -496,6 +684,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP106
+  name: "SCP-106" poster
+  description: Information poster for SCP-106.
   components:
   - type: Sprite
     state: scp106
@@ -503,6 +693,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP131
+  name: "SCP-131" poster
+  description: Information poster for SCP-131.
   components:
   - type: Sprite
     state: scp131
@@ -510,6 +702,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP173
+  name: "SCP-173" poster
+  description: Information poster for SCP-173.
   components:
   - type: Sprite
     state: scp173
@@ -517,6 +711,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP247
+  name: "SCP-247" poster
+  description: Information poster for SCP-247.
   components:
   - type: Sprite
     state: scp247
@@ -524,6 +720,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP457
+  name: "SCP-457" poster
+  description: Information poster for SCP-457.
   components:
   - type: Sprite
     state: scp457
@@ -531,6 +729,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP500
+  name: "SCP-500" poster
+  description: Information poster for SCP-500.
   components:
   - type: Sprite
     state: scp500
@@ -538,6 +738,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP969
+  name: "SCP-969" poster
+  description: Information poster for SCP-969.
   components:
   - type: Sprite
     state: scp969
@@ -545,6 +747,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP999
+  name: "SCP-999" poster
+  description: Information poster for SCP-999.
   components:
   - type: Sprite
     state: scp999
@@ -552,6 +756,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP939
+  name: "SCP-939" poster
+  description: Information poster for SCP-939.
   components:
   - type: Sprite
     state: scp939
@@ -559,6 +765,8 @@
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP612
+  name: "SCP-612" poster
+  description: Information poster for SCP-612.
   components:
   - type: Sprite
     state: scp612
@@ -568,6 +776,8 @@
 - type: entity
   parent: PosterBase
   id: PosterWideBase
+  name: poster
+  description: A poster.
   abstract: true
   components:
   - type: Sprite
@@ -576,6 +786,8 @@
 - type: entity
   parent: PosterWideBase
   id: PosterScp173Wide
+  name: "Staring Contest" poster
+  description: A humorous information poster about the necessity of maintaining eye contact with SCP-173.
   components:
   - type: Sprite
     state: 173
@@ -585,6 +797,8 @@
 - type: entity
   parent: PosterBase
   id: PosterSchemaBase
+  name: poster
+  description: A poster.
   abstract: true
   components:
   - type: Sprite
@@ -593,6 +807,8 @@
 - type: entity
   parent: PosterSchemaBase
   id: PosterAKDisassemblySchema
+  name: AK disassembly schema
+  description: An information poster depicting a disassembled Kalashnikov assault rifle.
   components:
   - type: Sprite
     state: ak
@@ -600,6 +816,8 @@
 - type: entity
   parent: PosterSchemaBase
   id: PosterMk56DisassemblySchema
+  name: pistol disassembly schema
+  description: An information poster depicting a disassembled Mk56 pistol.
   components:
   - type: Sprite
     state: mk56
@@ -607,6 +825,8 @@
 - type: entity
   parent: PosterSchemaBase
   id: PosterEngineeringSchema
+  name: engineering equipment schema
+  description: An information poster depicting systems used by space shuttles and a wrench.
   components:
   - type: Sprite
     state: engineering
@@ -616,6 +836,8 @@
 - type: entity
   parent: PosterScpBase
   id: PosterRickRoll
+  name: "Rick" poster
+  description: Oh, what's this?
   components:
   - type: Sprite
     state: rick_roll
