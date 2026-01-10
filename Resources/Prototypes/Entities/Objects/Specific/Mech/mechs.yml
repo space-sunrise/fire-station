@@ -201,7 +201,7 @@
     bounds: "-0.6,-0.6, 0.6, 0.6"
   - type: PointLight
     enabled: false
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
     autoRot: true
     energy: 3 # Sunrise-edit
     radius: 18 # Sunrise-edit
@@ -500,7 +500,7 @@
     baseWalkSpeed: 2.5
     baseSprintSpeed: 4
   - type: PointLight
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
     autoRot: true
     radius: 5
     energy: 5
@@ -590,7 +590,7 @@
     allowRevives: true
   - type: PointLight
     enabled: false
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
     autoRot: true
     radius: 8
     netsync: false
