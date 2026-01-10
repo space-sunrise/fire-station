@@ -66,6 +66,12 @@ public sealed partial class Scp012System
 
     private void OnRefreshSpeed(Entity<Scp012VictimComponent> ent, ref RefreshMovementSpeedModifiersEvent args)
     {
+        if (ent.Comp.LifeStage <= ComponentLifeStage.Initialized)
+            return;
+
+        if (ent.Comp.LifeStage >= ComponentLifeStage.Stopping)
+            return;
+
         if (_hands.IsHolding(ent.Owner, ent.Comp.Source, out _))
         {
             args.ModifySpeed(0f, 0f);
