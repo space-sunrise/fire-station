@@ -8625,3 +8625,13 @@
   id: 336
   time: '2026-01-09T03:57:58.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/754
+- author: Parashut
+  changes:
+  - message: "\u041F\u043E\u043D\u0438\u0436\u0435\u043D\u043E \u0442\u0440\u0435\u0431\
+      \u0443\u0435\u043C\u043E\u0435 \u0432\u0440\u0435\u043C\u044F \u0434\u043B\u044F\
+      \ \u043E\u0442\u043A\u0440\u044B\u0442\u0438\u044F \u0431\u043E\u043B\u044C\u0448\
+      \u0438\u043D\u0441\u0442\u0432\u0430 \u0440\u043E\u043B\u0435\u0439."
+    type: Tweak
+  id: 337
+  time: '2026-01-10T11:52:55.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/756
