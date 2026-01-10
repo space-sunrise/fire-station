@@ -1,6 +1,8 @@
-﻿using Content.Shared._Scp.Scp330;
+﻿using Content.Shared._Scp.Other.Events;
+using Content.Shared._Scp.Scp330;
 using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Storage;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -14,9 +16,28 @@ public sealed partial class Scp330System
     private static readonly ProtoId<ReagentPrototype> FallbackReagent = "Scp330Nothing";
     private const int MaximumGetUniqueReagentTries = 10;
 
+    private void InitializeCandy()
+    {
+        SubscribeLocalEvent<Scp330CandyComponent, EntityInsertedIntoStorageEvent>(OnRemovedFromStorage);
+    }
+
+    #region Events
+
+    private void OnRemovedFromStorage(Entity<Scp330CandyComponent> ent, ref EntityInsertedIntoStorageEvent args)
+    {
+        if (!TryComp<Scp330BowlComponent>(args.Storage, out var storage))
+            return;
+
+        TryDecreaseThiefCounter((args.Storage, storage), ent.Owner);
+    }
+
+    #endregion
+
+    #region Assign effects to candies
+
     private bool TryAssignEffects(Entity<Scp330BowlComponent> ent)
     {
-        var container = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
+        var container = _container.EnsureContainer<Container>(ent, StorageComponent.ContainerId);
         if (container.Count == 0)
         {
             Log.Error($"Failed to assign effects to SCP-330 candies due to bowl contents {ToPrettyString(ent)} is empty. Probably this is race condition issue.");
@@ -51,6 +72,10 @@ public sealed partial class Scp330System
         ent.Comp.CandyEffects[proto] = reagent;
     }
 
+    #endregion
+
+    #region Helpers
+
     private ProtoId<ReagentPrototype> GetRandomEffect(Entity<Scp330BowlComponent> ent)
     {
         var tries = 0;
@@ -71,4 +96,6 @@ public sealed partial class Scp330System
 
         return reagent;
     }
+
+    #endregion
 }

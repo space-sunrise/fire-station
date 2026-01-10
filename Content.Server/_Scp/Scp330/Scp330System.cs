@@ -14,7 +14,7 @@ using Content.Shared.Gibbing.Events;
 using Content.Shared.Hands.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Gibbing.Systems;
-using Content.Shared.Whitelist;
+using Content.Shared.Storage;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
@@ -35,7 +35,6 @@ public sealed partial class Scp330System : SharedScp330System
     [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly GibbingSystem _gibbing = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
-    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private readonly HashSet<Entity<HandsComponent>> _cachedEntities = [];
@@ -47,7 +46,8 @@ public sealed partial class Scp330System : SharedScp330System
 
         SubscribeLocalEvent<Scp330BowlComponent, MapInitEvent>(OnBowlMapInit, after: [typeof(ContainerFillSystem)]);
         SubscribeLocalEvent<Scp330BowlComponent, InteractHandEvent>(OnActivate);
-        SubscribeLocalEvent<Scp330BowlComponent, AfterInteractUsingEvent>(OnAfterInteract);
+
+        InitializeCandy();
     }
 
     #region Event handlers
@@ -68,24 +68,13 @@ public sealed partial class Scp330System : SharedScp330System
         args.Handled = true;
     }
 
-    private void OnAfterInteract(Entity<Scp330BowlComponent> ent, ref AfterInteractUsingEvent args)
-    {
-        if (args.Handled)
-            return;
-
-        if (!TryReturnCandy(ent, args.Used))
-            return;
-
-        args.Handled = true;
-    }
-
     #endregion
 
     #region Take&Return
 
     public bool TryTakeCandy(Entity<Scp330BowlComponent> ent, EntityUid user)
     {
-        var container = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
+        var container = _container.EnsureContainer<Container>(ent, StorageComponent.ContainerId);
         if (container.Count == 0)
         {
             _popup.PopupEntity(Loc.GetString("scp330-bowl-empty"), ent, user);
@@ -101,22 +90,6 @@ public sealed partial class Scp330System : SharedScp330System
 
         if (ent.Comp.ThiefCounter[user] > ent.Comp.PunishmentAfter)
             ApplyPunishment(ent, user);
-
-        return true;
-    }
-
-    public bool TryReturnCandy(Entity<Scp330BowlComponent> ent, EntityUid item)
-    {
-        if (!_whitelist.CheckBoth(item, ent.Comp.Blacklist, ent.Comp.Whitelist))
-            return false;
-
-        var container = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
-        if (!_container.Insert(item, container))
-            return false;
-
-        // Не уверен, что false при уменьшении счетчика воровства стоит считать как false для всего метода
-        // Поэтому посидит без него.
-        TryDecreaseThiefCounter(ent, item);
 
         return true;
     }

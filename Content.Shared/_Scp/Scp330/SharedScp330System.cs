@@ -1,4 +1,5 @@
 ﻿using Content.Shared.Examine;
+using Content.Shared.Storage;
 using Robust.Shared.Containers;
 
 namespace Content.Shared._Scp.Scp330;
@@ -26,7 +27,7 @@ public abstract class SharedScp330System : EntitySystem
             return;
         }
 
-        var container = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
+        var container = _container.EnsureContainer<Container>(ent, StorageComponent.ContainerId);
         var message = Loc.GetString("scp330-see-count", ("count", container.Count));
 
         var tacked = ent.Comp.ThiefCounter.GetValueOrDefault(args.Examiner);

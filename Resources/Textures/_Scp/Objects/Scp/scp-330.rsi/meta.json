@@ -7,12 +7,13 @@
         "y": 32
     },
     "states": [
-        { "name": "bowl_0" },
-        { "name": "bowl_1" },
-        { "name": "bowl_2" },
-        { "name": "bowl_3" },
-        { "name": "bowl_4" },
-        { "name": "bowl_5" },
+        { "name": "bowl" },
+
+        { "name": "candy_layer0" },
+        { "name": "candy_layer1" },
+        { "name": "candy_layer2" },
+        { "name": "candy_layer3" },
+        { "name": "candy_layer4" },
 
         { "name": "candy_blue" },
         { "name": "candy_red" },

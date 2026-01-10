@@ -71,7 +71,10 @@
   components:
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-330.rsi
-    state: bowl_0
+    layers:
+    - state: bowl
+    - state: candy_layer0
+      map: [ "enum.StorageContainerVisualLayers.Fill" ]
   - type: Scp330Bowl
     baseDamage:
       types:
@@ -79,12 +82,25 @@
     whitelist:
       components:
       - Scp330Candy
-  - type: ContainerContainer
-    containers:
-      bowl: !type:Container
+  - type: Storage
+    openOnActivate: false
+    showVerb: false
+    grid:
+    - 0,0,4,9
+    storageInsertSound:
+      path: /Audio/_Sunrise/Items/Handling/Plastic/pickup.ogg
+    storageRemoveSound:
+      path: /Audio/_Sunrise/Items/Handling/Plastic/drop.ogg
+    whitelist:
+      components:
+      - Scp330Candy
+  - type: StorageContainerVisuals
+    maxFillLevels: 6
+    fillBaseName: candy_layer
+  - type: Appearance
   - type: EntityTableContainerFill
     containers:
-      bowl: !type:AllSelector
+      storagebase: !type:AllSelector
         children:
         - id: Scp330CandyBlue
           amount: 3
