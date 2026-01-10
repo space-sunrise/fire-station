@@ -7,93 +7,31 @@
         "y": 32
     },
     "states": [
-        {
-            "name": "005",
-            "directions": 4
-        },
-        {
-            "name": "035",
-            "directions": 4
-        },
-        {
-            "name": "049",
-            "directions": 4
-        },
-        {
-            "name": "096",
-            "directions": 4
-        },
-        {
-            "name": "106",
-            "directions": 4
-        },
-        {
-            "name": "173",
-            "directions": 4
-        },
-        {
-            "name": "500",
-            "directions": 4
-        },
-        {
-            "name": "612",
-            "directions": 4
-        },
-        {
-            "name": "939",
-            "directions": 4
-        },
-        {
-            "name": "969",
-            "directions": 4
-        },
-        {
-            "name": "999",
-            "directions": 4
-        },
-        {
-            "name": "classd",
-            "directions": 4
-        },
-        {
-            "name": "hcz",
-            "directions": 4
-        },
-        {
-            "name": "lcz",
-            "directions": 4
-        },
-        {
-            "name": "direction_administration",
-            "directions": 4
-        },
-        {
-            "name": "direction_logistics",
-            "directions": 4
-        },
-        {
-            "name": "direction_ss",
-            "directions": 4
-        },
-        {
-            "name": "direction_po",
-            "directions": 4
-        },
-        {
-            "name": "direction_shelter",
-            "directions": 4
-        },
-        {
-            "name": "scp_safe",
-            "directions": 4
-        },
-        {
-            "name": "scp_euclid",
-            "directions": 4
-        },
-        {
-            "name": "scp_keter",
-            "directions": 4
-        }
+        { "name": "005", "directions": 4 },
+        { "name": "012", "directions": 4 },
+        { "name": "035", "directions": 4 },
+        { "name": "049", "directions": 4 },
+        { "name": "096", "directions": 4 },
+        { "name": "106", "directions": 4 },
+        { "name": "173", "directions": 4 },
+        { "name": "500", "directions": 4 },
+        { "name": "612", "directions": 4 },
+        { "name": "939", "directions": 4 },
+        { "name": "969", "directions": 4 },
+        { "name": "999", "directions": 4 },
+
+        { "name": "classd", "directions": 4 },
+        { "name": "hcz", "directions": 4 },
+        { "name": "lcz", "directions": 4 },
+
+        { "name": "direction_administration", "directions": 4 },
+        { "name": "direction_logistics", "directions": 4 },
+        { "name": "direction_ss", "directions": 4 },
+        { "name": "direction_po", "directions": 4 },
+        { "name": "direction_shelter", "directions": 4 },
+
+        { "name": "scp_safe", "directions": 4 },
+        { "name": "scp_euclid", "directions": 4 },
+        { "name": "scp_keter", "directions": 4 }
     ]
 }

@@ -128,6 +128,13 @@ public sealed class ProximitySystem : EntitySystem
         _nextSearchTime = _timing.CurTime + ProximitySearchCooldown;
     }
 
+
+    /// <inheritdoc cref="IsRightType(EntityUid, EntityUid, LineOfSightBlockerLevel, out LineOfSightBlockerLevel)"/>
+    public bool IsRightType(EntityUid receiver, EntityUid target, LineOfSightBlockerLevel type)
+    {
+        return IsRightType(receiver, target, type, out _);
+    }
+
     /// <summary>
     /// Проверяет, совпадает ли тип прозрачности сущностей между двумя переданными сущностям.
     /// </summary>
@@ -154,12 +161,11 @@ public sealed class ProximitySystem : EntitySystem
         if (HasComp<InsideEntityStorageComponent>(receiver))
             return LineOfSightBlockerLevel.Solid;
 
-        var isUnobstructed = InRangeUnobstructed(receiver, target);
         var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, JustUselessNumber);
 
         if (!isUnOccluded)
             return LineOfSightBlockerLevel.Solid;
-        else if (!isUnobstructed)
+        else if (!InRangeUnobstructed(receiver, target))
             return LineOfSightBlockerLevel.Transparent;
         else
             return LineOfSightBlockerLevel.None;
@@ -167,7 +173,11 @@ public sealed class ProximitySystem : EntitySystem
 
     private bool InRangeUnobstructed(Entity<TransformComponent?> first, Entity<TransformComponent?> second)
     {
-        return _interaction.InRangeUnobstructed(first, second, JustUselessNumber, predicate: IsNotSolidObject);
+        return _interaction.InRangeUnobstructed(
+            first,
+            second,
+            JustUselessNumber,
+            predicate: IsNotSolidObject);
     }
 
     private bool IsNotSolidObject(EntityUid e) => !_tag.HasAnyTag(e, SolidTags);
