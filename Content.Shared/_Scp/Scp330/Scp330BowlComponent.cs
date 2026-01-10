@@ -4,7 +4,7 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Scp330;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp330BowlComponent : Component
 {
     [DataField]
@@ -28,6 +28,6 @@ public sealed partial class Scp330BowlComponent : Component
     [DataField]
     public Color ExamineMessageColor = Color.Gray;
 
-    [ViewVariables]
+    [ViewVariables, AutoNetworkedField]
     public Dictionary<EntityUid, int> ThiefCounter = new();
 }

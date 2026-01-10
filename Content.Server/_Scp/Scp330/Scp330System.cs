@@ -66,7 +66,7 @@ public sealed class Scp330System : SharedScp330System
         if (args.Handled)
             return;
 
-        if (!TryInsert(ent, args.Used))
+        if (!TryReturnCandy(ent, args.Used))
             return;
 
         args.Handled = true;
@@ -89,8 +89,7 @@ public sealed class Scp330System : SharedScp330System
         if (!_hands.TryPickup(user, item))
             return false;
 
-        ent.Comp.ThiefCounter.TryAdd(user, 0);
-        ent.Comp.ThiefCounter[user]++;
+        TrySignCandy(ent, item, user);
 
         if (ent.Comp.ThiefCounter[user] > ent.Comp.PunishmentAfter)
             ApplyPunishment(ent, user);
@@ -98,7 +97,7 @@ public sealed class Scp330System : SharedScp330System
         return true;
     }
 
-    public bool TryInsert(Entity<Scp330BowlComponent> ent, EntityUid item)
+    public bool TryReturnCandy(Entity<Scp330BowlComponent> ent, EntityUid item)
     {
         if (!_whitelist.CheckBoth(item, ent.Comp.Blacklist, ent.Comp.Whitelist))
             return false;
@@ -106,6 +105,46 @@ public sealed class Scp330System : SharedScp330System
         var container = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
         if (!_container.Insert(item, container))
             return false;
+
+        // Не уверен, что false при уменьшении счетчика воровства стоит считать как false для всего метода
+        // Поэтому посидит без него.
+        TryDecreaseThiefCounter(ent, item);
+
+        return true;
+    }
+
+    private bool TrySignCandy(Entity<Scp330BowlComponent> ent, Entity<Scp330CandyComponent?> candy, EntityUid user)
+    {
+        if (!Resolve(candy, ref candy.Comp, false))
+            return false;
+
+        candy.Comp.TackedBy = user;
+        Dirty(candy);
+
+        ent.Comp.ThiefCounter.TryAdd(user, 0);
+        ent.Comp.ThiefCounter[user]++;
+        Dirty(ent);
+
+        return true;
+    }
+
+    private bool TryDecreaseThiefCounter(Entity<Scp330BowlComponent> ent, Entity<Scp330CandyComponent?> candy)
+    {
+        if (!Resolve(candy, ref candy.Comp, false))
+            return false;
+
+        if (!candy.Comp.TackedBy.HasValue)
+            return false;
+
+        if (!ent.Comp.ThiefCounter.TryGetValue(candy.Comp.TackedBy.Value, out var count))
+            return false;
+
+        if (count <= 0)
+            return false;
+
+        // Вернули конфету - уменьшаем счетчик "взятых конфет" для человека, который взял эту конфету.
+        ent.Comp.ThiefCounter[candy.Comp.TackedBy.Value]--;
+        Dirty(ent);
 
         return true;
     }

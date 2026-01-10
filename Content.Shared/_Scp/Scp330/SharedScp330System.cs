@@ -28,18 +28,28 @@ public abstract class SharedScp330System : EntitySystem
 
         var container = _container.EnsureContainer<Container>(ent, ent.Comp.ContainerId);
         var message = Loc.GetString("scp330-see-count", ("count", container.Count));
-        AddMessage(ent, ref args, message);
+
+        var tacked = ent.Comp.ThiefCounter.GetValueOrDefault(args.Examiner);
+        var canTake = Math.Max(0, ent.Comp.PunishmentAfter - tacked);
+        var message2 = canTake != 0
+            ? Loc.GetString("scp330-can-take", ("count", canTake))
+            : Loc.GetString("scp330-can-not-take");
+
+        AddMessage(ent, ref args, message, message2);
     }
 
     #endregion
 
     #region Helpers
 
-    private void AddMessage(Entity<Scp330BowlComponent> ent, ref ExaminedEvent args, string message)
+    private void AddMessage(Entity<Scp330BowlComponent> ent, ref ExaminedEvent args, params string[] messages)
     {
         using (args.PushGroup(nameof(Scp330BowlComponent)))
         {
-            args.PushMarkup(GetColoredMessage(ent, message), ExaminePriority);
+            foreach (var message in messages)
+            {
+                args.PushMarkup(GetColoredMessage(ent, message), ExaminePriority);
+            }
         }
     }
 

@@ -34,6 +34,9 @@
     baseDamage:
       types:
         Slash: 50
+    whitelist:
+      components:
+      - Scp330Candy
   - type: ContainerContainer
     containers:
       bowl: !type:Container

@@ -2,8 +2,9 @@
 
 namespace Content.Shared._Scp.Scp330;
 
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp330CandyComponent : Component
 {
-
+    [ViewVariables, AutoNetworkedField]
+    public EntityUid? TackedBy;
 }
