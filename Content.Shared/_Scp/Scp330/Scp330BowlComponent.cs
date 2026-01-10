@@ -1,6 +1,8 @@
-﻿using Content.Shared.Damage;
+﻿using Content.Shared.Chemistry.Reagent;
+using Content.Shared.Damage;
 using Content.Shared.Whitelist;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp330;
 
@@ -30,4 +32,23 @@ public sealed partial class Scp330BowlComponent : Component
 
     [ViewVariables, AutoNetworkedField]
     public Dictionary<EntityUid, int> ThiefCounter = new();
+
+    /// <summary>
+    /// Список доступных реагентов для эффектов конфет SCP-330
+    /// </summary>
+    [DataField]
+    public List<ProtoId<ReagentPrototype>> AvailableReagents = new ()
+    {
+        "Scp330Vomit",
+        "Scp330PoisonHeal",
+        "Scp330CalmDown",
+        "Scp330Nothing",
+        "Scp330Paralysis",
+    };
+
+    /// <summary>
+    /// Словарь, связывающий тип конфеты с назначенным реагентом эффекта
+    /// </summary>
+    [ViewVariables, AutoNetworkedField]
+    public Dictionary<EntProtoId, ProtoId<ReagentPrototype>> CandyEffects = new ();
 }

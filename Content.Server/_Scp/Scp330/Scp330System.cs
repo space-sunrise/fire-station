@@ -9,6 +9,7 @@ using Content.Server.Popups;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp330;
 using Content.Shared.Body.Part;
+using Content.Shared.Containers;
 using Content.Shared.Gibbing.Events;
 using Content.Shared.Hands.Components;
 using Content.Shared.Mobs.Systems;
@@ -22,7 +23,7 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp330;
 
-public sealed class Scp330System : SharedScp330System
+public sealed partial class Scp330System : SharedScp330System
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
@@ -44,11 +45,17 @@ public sealed class Scp330System : SharedScp330System
     {
         base.Initialize();
 
+        SubscribeLocalEvent<Scp330BowlComponent, MapInitEvent>(OnBowlMapInit, after: [typeof(ContainerFillSystem)]);
         SubscribeLocalEvent<Scp330BowlComponent, InteractHandEvent>(OnActivate);
         SubscribeLocalEvent<Scp330BowlComponent, AfterInteractUsingEvent>(OnAfterInteract);
     }
 
     #region Event handlers
+
+    private void OnBowlMapInit(Entity<Scp330BowlComponent> ent, ref MapInitEvent args)
+    {
+        TryAssignEffects(ent);
+    }
 
     private void OnActivate(Entity<Scp330BowlComponent> ent, ref InteractHandEvent args)
     {

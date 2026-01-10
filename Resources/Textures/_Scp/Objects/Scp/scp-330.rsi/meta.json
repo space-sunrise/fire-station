@@ -7,11 +7,17 @@
         "y": 32
     },
     "states": [
-        {
-            "name": "bowl"
-        },
-        {
-            "name": "candy"
-        }
+        { "name": "bowl_0" },
+        { "name": "bowl_1" },
+        { "name": "bowl_2" },
+        { "name": "bowl_3" },
+        { "name": "bowl_4" },
+        { "name": "bowl_5" },
+
+        { "name": "candy_blue" },
+        { "name": "candy_red" },
+        { "name": "candy_green" },
+        { "name": "candy_yellow" },
+        { "name": "candy_pink" }
     ]
 }

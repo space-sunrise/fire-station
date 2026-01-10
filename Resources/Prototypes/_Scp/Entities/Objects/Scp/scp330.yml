@@ -1,23 +1,65 @@
 ﻿# Сама конфета
 - type: entity
-  id: Scp330Candy
-  parent: BaseItem
+  parent: FoodInjectableBase
+  id: BaseScp330Candy
+  abstract: true
   name: mysterious candy
   description: A small treat in a bright wrapper. Surely, one won't hurt.
   suffix: SCP-330
   components:
   - type: Sprite
-    sprite: _Scp\Objects\Scp\scp-330.rsi
-    state: candy
+    sprite: _Scp/Objects/Scp/scp-330.rsi
+    state: candy_blue
   - type: Scp330Candy
   - type: Edible
     foodType: JunkFood
   - type: SolutionContainerManager
     solutions:
       food:
+        maxVol: 10
         reagents:
-        - ReagentId: Sugar
-          Quantity: 5
+        - ReagentId: Scp330Nothing
+          Quantity: 10
+
+- type: entity
+  parent: BaseScp330Candy
+  id: Scp330CandyBlue
+  name: blue mysterious candy
+  components:
+  - type: Sprite
+    state: candy_blue
+
+- type: entity
+  parent: BaseScp330Candy
+  id: Scp330CandyRed
+  name: red mysterious candy
+  components:
+  - type: Sprite
+    state: candy_red
+
+- type: entity
+  parent: BaseScp330Candy
+  id: Scp330CandyGreen
+  name: green mysterious candy
+  components:
+  - type: Sprite
+    state: candy_green
+
+- type: entity
+  parent: BaseScp330Candy
+  id: Scp330CandyYellow
+  name: yellow mysterious candy
+  components:
+  - type: Sprite
+    state: candy_yellow
+
+- type: entity
+  parent: BaseScp330Candy
+  id: Scp330CandyPink
+  name: pink mysterious candy
+  components:
+  - type: Sprite
+    state: candy_pink
 
 # Миска SCP-330
 - type: entity
@@ -28,8 +70,8 @@
   suffix: SCP-330
   components:
   - type: Sprite
-    sprite: _Scp\Objects\Scp\scp-330.rsi
-    state: bowl
+    sprite: _Scp/Objects/Scp/scp-330.rsi
+    state: bowl_0
   - type: Scp330Bowl
     baseDamage:
       types:
@@ -44,5 +86,13 @@
     containers:
       bowl: !type:AllSelector
         children:
-        - id: Scp330Candy
-          amount: 15
+        - id: Scp330CandyBlue
+          amount: 3
+        - id: Scp330CandyRed
+          amount: 3
+        - id: Scp330CandyGreen
+          amount: 3
+        - id: Scp330CandyYellow
+          amount: 3
+        - id: Scp330CandyPink
+          amount: 3
