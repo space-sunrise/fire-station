@@ -47,7 +47,7 @@ public sealed class Scp330System : EntitySystem
         // если конфет нет
         if (ent.Comp.CurrentCandies <= 0)
         {
-            _popup.PopupEntity("Миска пуста...", ent, args.User);
+            _popup.PopupEntity(Loc.GetString("scp330-bowl-empty"), ent, args.User);
             return;
         }
 
@@ -135,7 +135,7 @@ public sealed class Scp330System : EntitySystem
 
         if (_gibCachedEntities.Count > 0)
         {
-            _popup.PopupEntity("ВАШИ КИСТИ ОТВАЛИЛИСЬ!", target, target, PopupType.LargeCaution);
+            _popup.PopupEntity(Loc.GetString("scp330-removed-hands"), target, target, PopupType.LargeCaution);
         }
     }
 }

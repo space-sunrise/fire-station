@@ -2,8 +2,9 @@
 - type: entity
   id: Scp330Candy
   parent: BaseItem
-  name: загадочная конфета
-  description: Маленькое лакомство в яркой обертке. Наверное, одна не повредит.
+  name: mysterious candy
+  description: A small treat in a bright wrapper. Surely, one won't hurt.
+  suffix: SCP-330
   components:
   - type: Sprite
     sprite: _Scp\Objects\Scp\scp-330.rsi
@@ -21,8 +22,9 @@
 - type: entity
   id: Scp330Bowl
   parent: BaseStructure
-  name: миска с конфетами
-  description: "На миске приклеена записка: «Берите только две, пожалуйста!»"
+  name: candy bowl
+  description: "A note is attached to the bowl that reads: 'Take no more than two, please!'"
+  suffix: SCP-330
   components:
   - type: Sprite
     sprite: _Scp\Objects\Scp\scp-330.rsi
