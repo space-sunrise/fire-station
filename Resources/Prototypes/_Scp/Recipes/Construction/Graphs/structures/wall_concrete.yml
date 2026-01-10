@@ -41,12 +41,12 @@
       entity: ScpWallConcreteDiagonal
 
 - type: constructionGraph
-  id: concreteWallLightContaiment
+  id: concreteWallLightContainment
   start: start
   graph:
     - node: start
       edges:
-        - to: concreteWallLightContaimentEnd
+        - to: concreteWallLightContainmentEnd
           completed:
             - !type:SnapToGrid
               southRotation: true
@@ -60,8 +60,8 @@
               amount: 3
               doAfter: 9
 
-    - node: concreteWallLightContaimentEnd
-      entity: ScpWallConcreteLightContaiment
+    - node: concreteWallLightContainmentEnd
+      entity: ScpWallConcreteLightContainment
 
 - type: constructionGraph
   id: concreteWallScience

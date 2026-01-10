@@ -2260,4 +2260,8 @@ ScpWallConcreteEngineerCrack: ScpWallConcreteEngineer
 ScpWallConcreteMedicalCrack: ScpWallConcreteMedical
 ScpWallConcreteCrack: ScpWallConcrete
 
+ScpWallConcreteMetallHardContaiment: ScpWallMetalHardContainment
+ScpWallConcreteMetallHardContaimentDiagonal: ScpWallMetalHardContainmentDiagonal
+ScpWallConcreteLightContaiment: ScpWallConcreteLightContainment
+
 # Fire added end

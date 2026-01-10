@@ -44,7 +44,7 @@
 
 - type: entity
   parent: ScpBaseWallDamageableVisuals
-  id: ScpBaseWallDamageableVisualsReinforcedConcrete
+  id: ScpBaseWallDamageableVisualsHardContainment
   abstract: true
   components:
   - type: DamageVisuals
@@ -53,11 +53,11 @@
       sprite: _Scp/Effects/DamageOverlay/concrete.rsi
   - type: ScpExaminableDamage
     mode: Structure
-    generalMessages: ScpWallReinforcedConcreteMessages
+    generalMessages: ScpWallHardContainmentMessages
     departmentMessages:
-      EngineeringTechnicalService: ScpWallReinforcedConcreteEngineeringMessages
+      EngineeringTechnicalService: ScpWallHardContainmentEngineeringMessages
     jobMessages:
-      ChiefTechnicalSpecialist: ScpWallReinforcedConcreteEngineeringMessages
+      ChiefTechnicalSpecialist: ScpWallHardContainmentEngineeringMessages
 
 - type: entity
   parent: ScpBaseWallDamageableVisuals
@@ -411,8 +411,8 @@
 # Стена Лёгкой Зоны Содержания
 - type: entity
   parent: ScpWallConcreteBase
-  id: ScpWallConcreteLightContaiment
-  name: concrete wall low contaiment
+  id: ScpWallConcreteLightContainment
+  name: concrete wall low containment
   components:
   - type: Sprite
     sprite: _Scp/Structures/Walls/concrete_low_contaiment.rsi
@@ -422,8 +422,8 @@
     key: walls
     base: concrete_low_contaiment
   - type: Construction
-    graph: concreteWallLightContaiment
-    node: concreteWallLightContaimentEnd
+    graph: concreteWallLightContainment
+    node: concreteWallLightContainmentEnd
 
 # Стена Административной Зоны / Научной
 - type: entity
@@ -478,15 +478,14 @@
 
 # Стена Сдерживания
 
-# TODO: Исправить опечатку Metall -> Metal
 - type: entity
   parent:
   - BaseWall
-  - ScpBaseWallDamageableVisualsReinforcedConcrete
+  - ScpBaseWallDamageableVisualsHardContainment
   - ScpBaseStructureDamageOnSpawn
   - ScpBaseWallRepairable
-  id: ScpWallConcreteMetallHardContaiment
-  name: metall wall hard contaiment
+  id: ScpWallMetalHardContainment
+  name: metall wall hard containment
   components:
   - type: Sprite
     sprite: _Scp/Structures/Walls/metall_hard_contaiment.rsi
@@ -499,7 +498,7 @@
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicHardCellsScp
   - type: ScpRepairable
-    graph: ScpWallConcreteMetalRepair
+    graph: ScpWallMetalHardRepair
   - type: Destructible
     thresholds:
       - trigger:
@@ -522,8 +521,8 @@
 
 - type: entity
   parent: WallShuttleDiagonal
-  id: ScpWallConcreteMetallHardContaimentDiagonal
-  name: metall wall hard contaiment
+  id: ScpWallMetalHardContainmentDiagonal
+  name: metall wall hard containment
   placement:
     mode: SnapgridCenter
     snap:

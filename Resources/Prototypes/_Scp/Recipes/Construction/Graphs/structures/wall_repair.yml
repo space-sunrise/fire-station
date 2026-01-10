@@ -78,7 +78,7 @@
         amount: -300
 
 - type: constructionGraph
-  id: ScpWallConcreteMetalRepair
+  id: ScpWallMetalHardRepair
   start: start
   graph:
   - node: start
@@ -88,12 +88,12 @@
       - !type:HasDamage
         require: true
       steps:
-      - material: Concrete
-        amount: 1
-        doAfter: 1
+      - material: Plasteel
+        amount: 2
+        doAfter: 2
       - material: MetalRod
         amount: 2
-        doAfter: 1
+        doAfter: 2
 
   - node: welded
     edges:
