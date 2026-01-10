@@ -760,7 +760,7 @@
   - type: Sprite
     color: "#3b3b3b"
 
-# Измерение Деда (SCP-106)
+# Измерение SCP-106
 - type: entity
   parent: BaseWall
   id: ScpWallFlesh106
@@ -777,3 +777,97 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicStrongScp
+
+# Камера содержания SCP-096
+- type: entity
+  id: BaseScpWallScp096Containment
+  abstract: true
+  components:
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: StructuralMetallicScp
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 14000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: StaticPrice
+    price: 300
+
+- type: entity
+  parent:
+  - BaseWall
+  - ScpBaseWallRepairable
+  - ScpBaseWallDamageableVisualsMetal
+  id: ScpWallScp096Containment
+  name: SCP-096 containment chamber acoustic isolation wall
+  description: A multilayer containment wall designed to fully absorb sound and vibrational waves produced by SCP-096. Uses materials comparable to those found in anechoic chambers. Structural failure may occur when anomalous acoustic resonance exceeds design limits.
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/scp096_containment.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/scp096_containment.rsi
+  - type: IconSmooth
+    key: walls
+    base: tile
+  - type: DamageVisuals
+    damageDivisor: 250
+    damageOverlay:
+      sprite: _Scp/Effects/DamageOverlay/scp096_containment.rsi
+  - type: ScpRepairable
+    graph: ScpWallScp096ContainmentRepair
+  - type: ScpExaminableDamage
+    generalMessages: ScpWallScp096ContainmentMessages
+    departmentMessages:
+      EngineeringTechnicalService: ScpWallScp096ContainmentEngineeringMessages
+    jobMessages:
+      ChiefTechnicalSpecialist: ScpWallScp096ContainmentEngineeringMessages
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 14000
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 12000
+      behaviors:
+      - !type:SpawnEntitiesBehavior
+        offset: 0
+        spawn:
+          ScpWallScp096ContainmentShattered:
+            min: 1
+            max: 1
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+- type: entity
+  parent: [ BaseStructure, BaseScpWallScp096Containment ]
+  id: ScpWallScp096ContainmentShattered
+  name: shattered acoustic isolation debris
+  description: Heavily damaged debris caused by prolonged exposure to acoustic resonance. Repairable. Use a screwdriver to begin repairs.
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/scp096_containment_shattered.rsi
+    state: full
+  - type: IconSmooth
+    key: scp096_containment_shattered
+    base: tile
+  - type: InteractionOutline
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 60
+        mask:
+        - TableMask
+  - type: Construction
+    graph: Scp096ContainmentWallRepair
+    node: start

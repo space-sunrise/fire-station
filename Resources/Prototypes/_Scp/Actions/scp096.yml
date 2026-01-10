@@ -11,6 +11,7 @@
       state: scream
   - type: InstantAction
     event: !type:Scp096CryOutEvent
+  - type: SafeTimeRestricted
 
 - type: entity
   id: Scp096FaceSkinRip

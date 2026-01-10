@@ -1,6 +1,8 @@
-﻿using Content.Shared._Scp.Helpers;
+﻿using System.Linq;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Other.EmitSoundRandomly;
+using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
@@ -30,8 +32,16 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp096.Main.Systems;
 
+// TODO: Generic система для обнаружения, находится ли объект в камере содержания
+/// <summary>
+/// Система, регулирующая поведения и состояния скромника.
+/// </summary>
 public abstract partial class SharedScp096System : EntitySystem
 {
+    /*
+     * Основная часть системы, отвечающая за самые базовые вещи.
+     */
+
     [Dependency] private readonly PredictedRandomSystem _random = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _speedModifier = default!;
@@ -45,6 +55,7 @@ public abstract partial class SharedScp096System : EntitySystem
     private static readonly EntProtoId StatusEffectSleep = "StatusEffectForcedSleeping";
     private static readonly SoundSpecifier StorageOpenSound = new SoundCollectionSpecifier("MetalBreak");
 
+    // EntityQuery для быстрого доступа к компонентам
     protected EntityQuery<Scp096Component> Scp096Query;
     protected EntityQuery<ActiveScp096HeatingUpComponent> HeatingUpQuery;
     protected EntityQuery<ActiveScp096RageComponent> RageQuery;
@@ -52,11 +63,17 @@ public abstract partial class SharedScp096System : EntitySystem
     protected EntityQuery<ActiveScp096WithoutFaceComponent> WithoutFaceQuery;
     protected EntityQuery<Scp096FaceComponent> FaceQuery;
 
+    // ID алертов с лицом скромника
     protected static readonly ProtoId<AlertPrototype> IdleAlert = "Scp096Idle";
     protected static readonly ProtoId<AlertPrototype> RageAlert = "Scp096Rage";
     protected static readonly ProtoId<AlertPrototype> HeatingUpAlert = "Scp096HeatingUp";
     protected static readonly ProtoId<AlertPrototype> SleepAlert = "Scp096Sleep";
     protected static readonly ProtoId<AlertPrototype> FaceDamageAlert = "Scp096FaceDamage";
+
+    /// <summary>
+    /// Радиус поиска камеры содержания вокруг скромника.
+    /// </summary>
+    private const float ContainmentChamberSearchRadius = 8f;
 
     public override void Initialize()
     {
@@ -151,13 +168,13 @@ public abstract partial class SharedScp096System : EntitySystem
         if (!attacker.HasValue)
             return;
 
-        if (!Scp096Query.TryComp(target, out var scp))
-            return;
-
         if (!_random.ProbForEntity(attacker.Value, chance))
             return;
 
-        TryAddTarget((target, scp), attacker.Value, true);
+        if (!Scp096Query.TryComp(target, out var scp))
+            return;
+
+        TryAddTarget((target, scp), attacker.Value, true, ignoreBlinded: true);
     }
 
     private void OnMobStateChanged(Entity<Scp096Component> ent, ref MobStateChangedEvent args)
@@ -387,7 +404,10 @@ public abstract partial class SharedScp096System : EntitySystem
         var finalResult = _actionBlocker.UpdateCanMove(uid);
 
         if (enable != finalResult)
-            Log.Error($"Movement state mismatch! Tried to set movement to {enable}, but ended up with {finalResult}.");
+        {
+            if (_timing.IsFirstTimePredicted)
+                Log.Verbose($"Movement state mismatch! Tried to set movement to {enable}, but ended up with {finalResult}. This CAN BE NORMAL if entity is stunned or something like this.");
+        }
     }
 
     /// <summary>
@@ -441,6 +461,21 @@ public abstract partial class SharedScp096System : EntitySystem
         Dirty(ent);
 
         return true;
+    }
+
+    /// <summary>
+    /// Проверяет, находится ли скромник в камере содержания
+    /// </summary>
+    /// <param name="uid"><see cref="EntityUid"/> скромника</param>
+    /// <returns>Находится/не находится</returns>
+    private bool IsInContainmentChamber(EntityUid uid)
+    {
+        var coords = Transform(uid).Coordinates;
+        var markers =
+            _lookup.GetEntitiesInRange<Scp096ContainmentChamberMarkerComponent>(coords, ContainmentChamberSearchRadius, LookupFlags.Sensors);
+
+        return markers
+            .Any(e => _proximity.IsRightType(uid, e, LineOfSightBlockerLevel.None, out _));
     }
 
     #endregion

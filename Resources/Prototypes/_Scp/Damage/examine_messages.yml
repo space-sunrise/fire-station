@@ -1,4 +1,6 @@
-﻿- type: localizedDataset
+﻿# Стены, обычные люди
+
+- type: localizedDataset
   id: ScpWallMetalMessages
   values:
     prefix: scp-wall-metal-damaged-
@@ -23,6 +25,14 @@
     count: 6
 
 - type: localizedDataset
+  id: ScpWallScp096ContainmentMessages
+  values:
+    prefix: scp-wall-scp096-containment-damaged-
+    count: 6
+
+# Стены, инженеры
+
+- type: localizedDataset
   id: ScpWallMetalEngineeringMessages
   values:
     prefix: scp-wall-metal-damaged-engineering-
@@ -45,6 +55,14 @@
   values:
     prefix: scp-wall-brick-damaged-engineering-
     count: 6
+
+- type: localizedDataset
+  id: ScpWallScp096ContainmentEngineeringMessages
+  values:
+    prefix: scp-wall-scp096-containment-damaged-engineering-
+    count: 6
+
+# SCP
 
 - type: localizedDataset
   id: ScpScp096FaceMessages

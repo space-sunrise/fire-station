@@ -754,3 +754,42 @@
   - type: Construction
     graph: ScpTileConcrete
     node: scpconcretetile
+
+# Безэховая камера(SCP-096)
+
+- type: entity
+  name: anechoic chamber tile
+  parent: ScpFloorTileItemSteel
+  id: ScpFloorTileItemAnechoic1
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: anechoic_1
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorAnechoic1
+
+- type: entity
+  parent: ScpFloorTileItemAnechoic1
+  id: ScpFloorTileItemAnechoic2
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: anechoic_2
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorAnechoic2
+
+- type: entity
+  parent: ScpFloorTileItemAnechoic1
+  id: ScpFloorTileItemAnechoic3
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/tile.rsi
+    state: anechoic_3
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorAnechoic3

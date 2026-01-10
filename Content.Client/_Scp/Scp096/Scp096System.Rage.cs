@@ -1,4 +1,5 @@
-﻿using Content.Client._Scp.Shaders.Scp096.Rage;
+﻿using Content.Client._Scp.Shaders.Common;
+using Content.Client._Scp.Shaders.Scp096.Rage;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Robust.Shared.Player;
 
@@ -6,6 +7,8 @@ namespace Content.Client._Scp.Scp096;
 
 public sealed partial class Scp096System
 {
+    [Dependency] private readonly CompatibilityModeActiveWarningSystem _compatibility = default!;
+
     private Scp096RageOverlay? _rageOverlay;
 
     private void InitializeRage()
@@ -136,6 +139,9 @@ public sealed partial class Scp096System
     private void AddRageOverlay(float intensity = 1f)
     {
         if (_rageOverlay is not null)
+            return;
+
+        if (!_compatibility.ShouldUseShaders)
             return;
 
         _rageOverlay = new(intensity);
