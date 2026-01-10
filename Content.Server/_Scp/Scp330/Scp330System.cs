@@ -214,12 +214,12 @@ public sealed class Scp330System : SharedScp330System
     {
         var targetCoords = _transform.GetMapCoordinates(target);
         var distance = Vector2.Distance(bowlCoords.Position, targetCoords.Position);
-        var closePercent = Math.Clamp(distance / maxRange, 0f, 1f);
+        var falloff = Math.Clamp(1f - (distance / maxRange), 0f, 1f);
 
         var newDamage = new DamageSpecifier();
         foreach (var (type, value) in baseDamage.DamageDict)
         {
-            newDamage.DamageDict[type] = value * closePercent;
+            newDamage.DamageDict[type] = value * falloff;
         }
 
         return newDamage;
