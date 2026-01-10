@@ -1,0 +1,34 @@
+﻿- type: entity
+  id: Scp012
+  parent: BaseItemScp
+  suffix: SCP-012
+  name: ???
+  description: A musical manuscript titled “On Mount Golgotha.” It appears to be unfinished.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-012.rsi
+    state: icon
+  - type: Item
+    sprite: _Scp/Objects/Scp/scp-012.rsi
+    size: Small
+  - type: Scp012
+    whitelist:
+      components:
+      - HumanoidAppearance
+      - Bloodstream
+      requireAll: true
+    blacklist:
+      components:
+      - Scp012Protection
+      - Scp
+    passiveDamage:
+      types:
+        Slash: 5
+    suicideDamage:
+      types:
+        Piercing: 150
+  - type: ProximityReceiver
+    requiredLineOfSight: None
+  - type: FearSource
+    uponSeenState: None
+    uponComeCloser: Terror
