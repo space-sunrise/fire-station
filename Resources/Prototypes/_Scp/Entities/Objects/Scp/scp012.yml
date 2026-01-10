@@ -8,6 +8,9 @@
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-012.rsi
     state: icon
+  - type: Item
+    sprite: _Scp/Objects/Scp/scp-012.rsi
+    size: Small
   - type: Scp012
     whitelist:
       components:
@@ -29,5 +32,3 @@
   - type: FearSource
     uponSeenState: None
     uponComeCloser: Terror
-  - type: Item
-    size: Small
