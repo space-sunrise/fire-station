@@ -3,10 +3,10 @@ using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Scp330;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class Scp330CandyComponent : Component
 {
-    [ViewVariables, AutoNetworkedField]
+    [ViewVariables]
     public EntityUid? TakenBy;
 
     [DataField]

@@ -30,8 +30,8 @@ public abstract class SharedScp330System : EntitySystem
         var container = _container.EnsureContainer<Container>(ent, StorageComponent.ContainerId);
         var message = Loc.GetString("scp330-see-count", ("count", container.Count));
 
-        var tacked = ent.Comp.ThiefCounter.GetValueOrDefault(args.Examiner);
-        var canTake = Math.Max(0, ent.Comp.PunishmentAfter - tacked);
+        var taken = ent.Comp.ThiefCounter.GetValueOrDefault(args.Examiner);
+        var canTake = Math.Max(0, ent.Comp.PunishmentAfter - taken);
         var message2 = canTake != 0
             ? Loc.GetString("scp330-can-take", ("count", canTake))
             : Loc.GetString("scp330-can-not-take");

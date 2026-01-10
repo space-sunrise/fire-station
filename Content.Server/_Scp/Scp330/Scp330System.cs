@@ -82,10 +82,14 @@ public sealed partial class Scp330System : SharedScp330System
         }
 
         var item = _random.Pick(container.ContainedEntities);
+
+        if (!_hands.CanPickupAnyHand(user, item))
+            return false;
+
         if (!TrySignCandy(ent, item, user))
             return false;
 
-        if (!_hands.TryPickup(user, item))
+        if (!_hands.TryPickupAnyHand(user, item))
             return false;
 
         if (ent.Comp.ThiefCounter[user] > ent.Comp.PunishmentAfter)
@@ -100,7 +104,6 @@ public sealed partial class Scp330System : SharedScp330System
             return false;
 
         candy.Comp.TakenBy = user;
-        Dirty(candy);
 
         ent.Comp.ThiefCounter.TryAdd(user, 0);
         ent.Comp.ThiefCounter[user]++;

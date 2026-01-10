@@ -18,12 +18,12 @@ public sealed partial class Scp330System
 
     private void InitializeCandy()
     {
-        SubscribeLocalEvent<Scp330CandyComponent, EntityInsertedIntoStorageEvent>(OnRemovedFromStorage);
+        SubscribeLocalEvent<Scp330CandyComponent, EntityInsertedIntoStorageEvent>(OnInsertedIntoStorage);
     }
 
     #region Events
 
-    private void OnRemovedFromStorage(Entity<Scp330CandyComponent> ent, ref EntityInsertedIntoStorageEvent args)
+    private void OnInsertedIntoStorage(Entity<Scp330CandyComponent> ent, ref EntityInsertedIntoStorageEvent args)
     {
         if (!TryComp<Scp330BowlComponent>(args.Storage, out var storage))
             return;
@@ -40,7 +40,7 @@ public sealed partial class Scp330System
         var container = _container.EnsureContainer<Container>(ent, StorageComponent.ContainerId);
         if (container.Count == 0)
         {
-            Log.Error($"Failed to assign effects to SCP-330 candies due to bowl contents {ToPrettyString(ent)} is empty. Probably this is race condition issue.");
+            Log.Error($"Failed to assign effects to SCP-330 candies due to bowl contents {ToPrettyString(ent)} is empty");
             return false;
         }
 
@@ -80,6 +80,12 @@ public sealed partial class Scp330System
     {
         var tries = 0;
         ProtoId<ReagentPrototype> reagent;
+
+        if (ent.Comp.AvailableReagents.Count == 0)
+        {
+            Log.Error($"{nameof(Scp330BowlComponent.AvailableReagents)} is empty! This should not be");
+            return FallbackReagent;
+        }
 
         do
         {

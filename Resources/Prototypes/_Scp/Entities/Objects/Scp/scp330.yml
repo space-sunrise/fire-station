@@ -11,8 +11,6 @@
     sprite: _Scp/Objects/Scp/scp-330.rsi
     state: candy_blue
   - type: Scp330Candy
-  - type: Edible
-    foodType: JunkFood
   - type: SolutionContainerManager
     solutions:
       food:
@@ -79,9 +77,6 @@
     baseDamage:
       types:
         Slash: 50
-    whitelist:
-      components:
-      - Scp330Candy
   - type: Storage
     openOnActivate: false
     showVerb: false

@@ -1,8 +1,8 @@
 reagent-name-scp330-vomit = SCP-330: Рвота
 reagent-desc-scp330-vomit = Вызывает рвоту.
 
-reagent-name-scp330-poison-heal = SCP-330: Лечение
-reagent-desc-scp330-poison-heal = Постепенно исцеляет все типы урона.
+reagent-name-scp330-heal = SCP-330: Лечение
+reagent-desc-scp330-heal = Постепенно исцеляет все типы урона.
 
 reagent-name-scp330-calm-down = SCP-330: Успокоение
 reagent-desc-scp330-calm-down = Вызывает успокаивающий эффект.

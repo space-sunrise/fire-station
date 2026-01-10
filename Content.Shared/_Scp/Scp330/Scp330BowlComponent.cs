@@ -39,6 +39,6 @@ public sealed partial class Scp330BowlComponent : Component
     /// <summary>
     /// Словарь, связывающий тип конфеты с назначенным реагентом эффекта
     /// </summary>
-    [ViewVariables, AutoNetworkedField]
+    [ViewVariables]
     public Dictionary<EntProtoId, ProtoId<ReagentPrototype>> CandyEffects = new ();
 }
