@@ -22,11 +22,17 @@
           bounds: "-0.49,-0.49,0.49,-0.25"
         density: 1000
         mask:
-        - TableMask
+        - FullTileMask
         layer:
-        - TableLayer
+        - MidImpassable
+        - LowImpassable
   - type: InteractionOutline
   - type: Climbable
+    delay: 5.0
+    startClimbSound:
+      collection: FootstepAsteroid
+    finishClimbSound:
+      collection: FootstepAsteroid
 
 - type: entity
   parent: FSConcreteCurbNorth
