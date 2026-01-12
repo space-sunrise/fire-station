@@ -4,8 +4,8 @@
   mapPath: /Maps/_Scp/scp_complex_standard.yml
   maxRandomOffset: 0
   randomRotation: false
-  minPlayers: 20
-  maxPlayers: 50
+  minPlayers: 10
+  maxPlayers: 60
   stations:
     ScpComplexStandard:
       stationProto: ScpComplexStandard
