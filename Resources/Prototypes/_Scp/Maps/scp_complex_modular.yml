@@ -4,7 +4,7 @@
   mapPath: /Maps/_Scp/scp_complex_modular.yml
   maxRandomOffset: 0
   randomRotation: false
-  minPlayers: 40
+  minPlayers: 15
   stations:
     ScpComplexModular:
       stationProto: ScpComplexModular
