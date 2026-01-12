@@ -90,7 +90,7 @@
 - type: entity
   parent: ConcreteCurbCornerIn
   id: ConcreteCurbCornerOut
-  name: railing
+  name: concrete curb
   description: High concrete threshold. It divides two floors.
   components:
   - type: Sprite
