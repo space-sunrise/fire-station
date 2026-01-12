@@ -4,6 +4,7 @@
   parent: BaseStructure
   name: table frame
   description: Pieces of metal that make the frame of a table.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Furniture/Tables/frame.rsi
@@ -421,6 +422,7 @@
   parent: TableBase
   name: plasma glass table
   description: A square piece of plasma glass, standing on four metal legs. Pretty!
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Furniture/Tables/plasma.rsi

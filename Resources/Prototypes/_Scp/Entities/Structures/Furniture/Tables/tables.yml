@@ -1,4 +1,15 @@
 ﻿- type: entity
+  id: ScpTableFrame
+  parent: TableFrame
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/frame.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/frame.rsi
+  - type: Construction
+    graph: ScpTable
+
+- type: entity
   id: ScpTable
   parent: Table
   components:
@@ -6,6 +17,8 @@
     sprite: _Scp/Structures/Furniture/Tables/generic.rsi
   - type: Icon
     sprite: _Scp/Structures/Furniture/Tables/generic.rsi
+  - type: Construction
+    graph: ScpTable
 
 - type: entity
   id: ScpTableReinforced
@@ -15,6 +28,8 @@
     sprite: _Scp/Structures/Furniture/Tables/reinforced.rsi
   - type: Icon
     sprite: _Scp/Structures/Furniture/Tables/reinforced.rsi
+  - type: Construction
+    graph: ScpTable
 
 - type: entity
   id: ScpTableGlass
@@ -24,6 +39,8 @@
     sprite: _Scp/Structures/Furniture/Tables/glass.rsi
   - type: Icon
     sprite: _Scp/Structures/Furniture/Tables/glass.rsi
+  - type: Construction
+    graph: ScpTable
 
 - type: entity
   id: ScpTableReinforcedGlass
@@ -33,3 +50,16 @@
     sprite: _Scp/Structures/Furniture/Tables/r_glass.rsi
   - type: Icon
     sprite: _Scp/Structures/Furniture/Tables/r_glass.rsi
+  - type: Construction
+    graph: ScpTable
+
+- type: entity
+  id: ScpTablePlasmaGlass
+  parent: TablePlasmaGlass
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/plasma.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/plasma.rsi
+  - type: Construction
+    graph: ScpTable

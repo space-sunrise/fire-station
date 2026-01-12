@@ -1,0 +1,61 @@
+﻿# TODO: Сделать construction наследуемыми.
+
+- type: construction
+  id: ScpTable
+  graph: ScpTable
+  startNode: start
+  targetNode: Table
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: ScpTableReinforced
+  graph: ScpTable
+  startNode: start
+  targetNode: TableReinforced
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: ScpTableGlass
+  graph: ScpTable
+  startNode: start
+  targetNode: TableGlass
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: ScpTableReinforcedGlass
+  graph: ScpTable
+  startNode: start
+  targetNode: TableReinforcedGlass
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: ScpTablePlasmaGlass
+  graph: ScpTable
+  startNode: start
+  targetNode: TablePlasmaGlass
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
