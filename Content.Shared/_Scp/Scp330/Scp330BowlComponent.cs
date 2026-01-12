@@ -15,7 +15,7 @@ public sealed partial class Scp330BowlComponent : Component
     public int PunishmentAfter = 2;
 
     [DataField]
-    public float BasePunishmentRadius = 1.5f;
+    public float BasePunishmentRadius = 3f;
 
     [DataField]
     public Color ExamineMessageColor = Color.Gray;
