@@ -8,27 +8,35 @@
     },
   "states": [
     {
-      "name": "side_north",
+      "name": "side_in",
       "directions": 4
     },
     {
-      "name": "side_south",
+      "name": "side_out",
       "directions": 4
     },
     {
-      "name": "corner_north",
+      "name": "corner_in",
       "directions": 4
     },
     {
-      "name": "corner_south",
+      "name": "corner_out",
       "directions": 4
     },
     {
-      "name": "corner_small_north",
+      "name": "corner_small_in",
       "directions": 4
     },
     {
-      "name": "corner_small_south",
+      "name": "corner_small_out",
+      "directions": 4
+    },
+    {
+      "name": "round_in",
+      "directions": 4
+    },
+    {
+      "name": "round_out",
       "directions": 4
     }
   ]

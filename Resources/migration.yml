@@ -2260,4 +2260,13 @@ ScpWallConcreteEngineerCrack: ScpWallConcreteEngineer
 ScpWallConcreteMedicalCrack: ScpWallConcreteMedical
 ScpWallConcreteCrack: ScpWallConcrete
 
+# Rename
+
+FSConcreteCurbNorth: ConcreteCurbIn
+FSConcreteCurbSouth: ConcreteCurbOut
+FSConcreteCurbCornerNorth: ConcreteCurbCornerIn
+FSConcreteCurbCornerSouth: ConcreteCurbCornerOut
+FSConcreteCurbCornerSmallNorth: ConcreteCurbCornerSmallOut # Тут всё ок. Спрайты были не правильно названы.
+FSConcreteCurbCornerSmallSouth: ConcreteCurbCornerSmallIn # Тут всё ок. Спрайты были не правильно названы.
+
 # Fire added end
