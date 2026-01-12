@@ -62,8 +62,6 @@
   - type: Icon
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: corner_in
-  - type: Physics
-    bodyType: Static
   - type: Fixtures
     fixtures:
       fix1:
@@ -114,8 +112,6 @@
   - type: Icon
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: corner_small_in
-  - type: Physics
-    bodyType: Static
   - type: Fixtures
     fixtures:
       fix1:
@@ -156,8 +152,6 @@
   - type: Icon
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: round_in
-  - type: Physics
-    bodyType: Static
   - type: Fixtures
     fixtures:
       fix1:
@@ -204,37 +198,3 @@
   - type: Icon
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
     state: round_out
-  - type: Physics
-    bodyType: Static
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.49,-0.49,0.49,-0.25"
-        density: 1000
-        mask:
-        - FullTileMask
-        layer:
-        - MidImpassable
-        - LowImpassable
-      fix2:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.49,-0.49,-0.25,0.49"
-        density: 1000
-        mask:
-        - FullTileMask
-        layer:
-        - MidImpassable
-        - LowImpassable
-      fix3:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "0.25,-0.49,0.49,0.49"
-        density: 1000
-        mask:
-        - FullTileMask
-        layer:
-        - MidImpassable
-        - LowImpassable
