@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Blinking;
+﻿using Content.Client._Scp.Shaders.Common;
+using Content.Shared._Scp.Blinking;
 using Robust.Client.Audio;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
@@ -11,6 +12,7 @@ namespace Content.Client._Scp.Blinking;
 public sealed class BlinkingSystem : SharedBlinkingSystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly CompatibilityModeActiveWarningSystem _compatibility = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -191,6 +193,6 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
     private void SetDefaultAnimationDuration()
     {
-        _overlay.AnimationDuration = DefaultAnimationDuration;
+        _overlay.AnimationDuration = _compatibility.ShouldUseShaders ? DefaultAnimationDuration : 0f;
     }
 }

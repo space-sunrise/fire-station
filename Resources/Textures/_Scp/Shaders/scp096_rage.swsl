@@ -1,0 +1,58 @@
+﻿uniform sampler2D SCREEN_TEXTURE;
+uniform lowp float RageIntensity; // От 0.0 до 1.0
+uniform lowp float Time;
+
+const lowp vec3 VignetteColor = vec3(0.6, 0.0, 0.0);
+
+void fragment() {
+    highp vec2 distVec = UV - vec2(0.5, 0.5);
+    highp float dist = length(distVec);
+
+    // 1. Пульсация (сердцебиение)
+    lowp float heartbeat = sin(Time * 8.0) * 0.5 + 0.5;
+
+    // 2. Искажение (Fish eye / Tunnel)
+    lowp float distortion = heartbeat * 0.03 * RageIntensity * (dist * dist);
+    highp vec2 distortedUV = UV - distVec * distortion;
+
+    // 3. Хроматическая аберрация
+    lowp float aberrAmount = 0.01 * RageIntensity * (1.0 + heartbeat * 0.5) * dist;
+
+    lowp float r = texture(SCREEN_TEXTURE, distortedUV + vec2(aberrAmount, 0.0)).r;
+    lowp float g = texture(SCREEN_TEXTURE, distortedUV).g;
+    lowp float b = texture(SCREEN_TEXTURE, distortedUV - vec2(aberrAmount, 0.0)).b;
+    lowp vec3 color = vec3(r, g, b);
+
+    // 4. Обесцвечивание (Grayscale) с сохранением красного
+    lowp float gray = dot(color, vec3(0.299, 0.587, 0.114));
+    lowp float redness = color.r - max(color.g, color.b);
+    redness = clamp(redness * 8.0, 0.0, 1.0); // Мягче множитель (был 10), чтобы не было резких границ
+
+    lowp vec3 desaturated = vec3(gray * 0.7); // Чуть темнее обычного серого
+    lowp vec3 worldColor = mix(desaturated, color, redness);
+
+    // 5. Кровавая виньетка
+
+    // Рассчитываем внутренний радиус виньетки.
+    // При Rage 0.0 радиус ~0.8 (только углы).
+    // При Rage 1.0 радиус ~0.25 (сильное туннельное зрение).
+    lowp float innerRadius = mix(0.8, 0.38, RageIntensity);
+
+    // Добавляем пульсацию к радиусу: при ударе сердца круг сужается
+    innerRadius -= 0.05 * heartbeat * RageIntensity;
+
+    // Ширина градиента перехода (мягкость краев)
+    lowp float softness = 0.45;
+
+    // Smoothstep вернет 0 в центре и 1 за пределами радиуса
+    lowp float vignetteFactor = smoothstep(innerRadius, innerRadius + softness, dist);
+
+    // Дополнительное усиление непрозрачности самой виньетки от ярости
+    // Чтобы на низкой ярости она была полупрозрачной, а на высокой — густой кровью
+    lowp float opacity = vignetteFactor * (0.6 + 0.4 * RageIntensity);
+
+    // Накладываем виньетку
+    worldColor = mix(worldColor, VignetteColor, opacity);
+
+    COLOR = vec4(worldColor, 1.0);
+}

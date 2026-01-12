@@ -45,11 +45,6 @@
   parent: ScpAirlock
   name: double airlock
   components:
-  - type: MeleeSound
-    soundGroups:
-      Brute:
-        path:
-          "/Audio/Effects/glass_hit.ogg"
   - type: Sprite
     sprite: _Scp/Structures/Doors/Airlocks/Standard_double/double_basic.rsi
     snapCardinals: false
@@ -68,6 +63,8 @@
         - GlassAirlockLayer
   - type: Transform
     noRot: false
+  - type: Occluder
+    boundingBox: "-0.5, -0.5, 1.5, 0.5"
   - type: Door
     crushDamage:
       types:

@@ -49,4 +49,5 @@ arrivals_round_start_spawn = false
 # Fire edit start
 [scp]
 server_auto_open_character_menu = false # чтобы не мешало
+safe_time_enabled = false
 # Fire edit end

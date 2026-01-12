@@ -5,39 +5,16 @@ using Content.Shared._Scp.Blood;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.Chemistry.Components;
-using Robust.Server.Containers;
 
 namespace Content.Server._Scp.Scp096;
 
 public sealed partial class Scp096System
 {
-    [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly BloodSplatterSystem _bloodSplatter = default!;
 
     private static readonly Angle BloodAngle = Angle.FromDegrees(360f);
     private const float BloodRadians = (float)Math.PI * 2f;
     private static readonly Vector2 BloodDistance = new (3f, 20f);
-
-    private void SpawnFace(Entity<Scp096Component> ent)
-    {
-        if (!_container.TryGetContainer(ent, ent.Comp.FaceContainer, out var container))
-            return;
-
-        var face = Spawn(ent.Comp.FaceProto);
-
-        if (!_container.Insert(face, container, force: true))
-        {
-            Log.Error($"Failed to insert SCP-096's face {ToPrettyString(face)} into container {container.ID}");
-            QueueDel(face);
-        }
-
-        ent.Comp.FaceEntity = face;
-        Dirty(ent);
-
-        var faceComp = Comp<Scp096FaceComponent>(face);
-        faceComp.FaceOwner = ent;
-        Dirty(face, faceComp);
-    }
 
     #region Virtuals, Tears logic
 

@@ -3,6 +3,12 @@ using Robust.Shared.Player;
 
 namespace Content.Client._Scp.Shaders.Common;
 
+/// <summary>
+/// Абстрактная прослойка для <see cref="BaseOverlaySystem"/>, добавляющая оверлей <see cref="Overlay"/>
+/// при заходе игрока в любое тело. И удаляющая после
+/// </summary>
+/// <typeparam name="T">Оверлей, который будет использован системой</typeparam>
+/// <seealso cref="BaseOverlaySystem"/>
 public abstract class CommonOverlaySystem<T> : BaseOverlaySystem<T> where T : Overlay
 {
     public override void Initialize()
@@ -18,11 +24,11 @@ public abstract class CommonOverlaySystem<T> : BaseOverlaySystem<T> where T : Ov
 
     protected virtual void OnPlayerAttached(LocalPlayerAttachedEvent args)
     {
-        AddOverlay();
+        TryAddOverlay();
     }
 
     protected virtual void OnPlayerDetached(LocalPlayerDetachedEvent args)
     {
-        RemoveOverlay();
+        TryRemoveOverlay();
     }
 }

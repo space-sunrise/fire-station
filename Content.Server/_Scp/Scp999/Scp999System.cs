@@ -3,6 +3,7 @@ using Content.Server.Disposal.Unit;
 using Content.Server.Popups;
 using Content.Shared._Scp.Scp999;
 using Content.Shared._Sunrise.VentCraw;
+using Content.Shared.ActionBlocker;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Movement.Components;
@@ -30,6 +31,7 @@ public sealed class Scp999System : SharedScp999System
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
+    [Dependency] private readonly ActionBlockerSystem _action = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private const string WallFixtureId = "fix2";
@@ -207,9 +209,11 @@ public sealed class Scp999System : SharedScp999System
                 ent.Comp.CurrentState = Scp999States.Default;
                 Dirty(ent);
 
+                RemComp<BlockMovementComponent>(ent);
                 RemComp<NoRotateOnMoveComponent>(ent);
                 RemComp<NoRotateOnInteractComponent>(ent);
-                RemComp<BlockMovementComponent>(ent);
+
+                _action.UpdateCanMove(ent);
 
                 var toDefaultChangedEvent = new Scp999ChangedStateEvent(Scp999States.Default);
                 RaiseLocalEvent(ent, toDefaultChangedEvent);
@@ -272,7 +276,6 @@ public sealed class Scp999System : SharedScp999System
 
         Spawn(scp.Comp.Scp999Jelly, Transform(scp).Coordinates);
 
-        if (scp.Comp.CreateJellySound != null)
-            _audio.PlayPvs(scp.Comp.CreateJellySound, scp);
+        _audio.PlayPvs(scp.Comp.CreateJellySound, scp);
     }
 }

@@ -7,15 +7,29 @@ using Robust.Shared.Configuration;
 
 namespace Content.Client._Scp.Shaders.Common;
 
+/// <summary>
+/// Система, отвечающая за оповещение игрока о включенном режиме совместимости.
+/// Также выключает все шейдеры, которые ведут себя неправильно при включенном режиме совместимости, пока игрок не выключит режим.
+/// </summary>
 public sealed class CompatibilityModeActiveWarningSystem : EntitySystem
 {
     [Dependency] private readonly GrainOverlaySystem _grain = default!;
     [Dependency] private readonly FieldOfViewOverlayManagementSystem _fovManagement = default!;
     [Dependency] private readonly IConfigurationManager _configuration = default!;
 
+    /// <summary>
+    /// Окно с предупреждением о режиме совместимости.
+    /// </summary>
     private CompatibilityModeActiveWarningWindow? _window;
 
+    /// <summary>
+    /// Включен ли режим совместимости у текущего локального игрока?
+    /// </summary>
     public bool IsCompatibilityModeEnabled { get; private set; }
+
+    /// <summary>
+    /// Будут ли использоваться шейдеры при включенном режиме совместимости?
+    /// </summary>
     public bool CompabilityUseShaders { get; private set; }
 
     /// <summary>

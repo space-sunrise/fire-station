@@ -1,4 +1,5 @@
-﻿using Content.Shared.Mobs;
+﻿using Content.Shared.Dataset;
+using Content.Shared.Mobs;
 using Content.Shared.Roles;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -13,8 +14,6 @@ namespace Content.Shared._Scp.Damage.ExaminableDamage;
 /// Поддерживает различные сущности, как живые сущности, так и структуры.
 /// Тип расчета повреждений зависит от <see cref="Mode"/>
 /// </remarks>
-// TODO: Замена List<string> на прототип, хранящий List<string>
-// Это должно уменьшить потребление памяти при большом количестве повторяющихся списков описаний. А они будут повторяться
 [RegisterComponent, NetworkedComponent]
 public sealed partial class ScpExaminableDamageComponent : Component
 {
@@ -22,7 +21,7 @@ public sealed partial class ScpExaminableDamageComponent : Component
     /// Список сообщений о повреждениях.
     /// </summary>
     [DataField]
-    public List<string> GeneralMessages = [];
+    public ProtoId<LocalizedDatasetPrototype>? GeneralMessages;
 
     /// <summary>
     /// Цвет сообщений о повреждениях
@@ -40,13 +39,13 @@ public sealed partial class ScpExaminableDamageComponent : Component
     /// Дополнительная информация, которую будет видеть игрок, обладая определенным департаментом.
     /// </summary>
     [DataField]
-    public Dictionary<ProtoId<DepartmentPrototype>, List<string>> DepartmentMessages = new();
+    public Dictionary<ProtoId<DepartmentPrototype>, ProtoId<LocalizedDatasetPrototype>> DepartmentMessages = new();
 
     /// <summary>
     /// Дополнительная информация, которую будет видеть игрок, обладая определенной работой.
     /// </summary>
     [DataField]
-    public Dictionary<ProtoId<JobPrototype>, List<string>> JobMessages = new();
+    public Dictionary<ProtoId<JobPrototype>, ProtoId<LocalizedDatasetPrototype>> JobMessages = new();
 }
 
 /// <summary>

@@ -135,9 +135,12 @@
               doAfter: 2
 
     - node: wall
-      entity: ScpWallSolid
+      entity: ScpWallSolid # Fire edit
       edges:
         - to: girder
+          conditions:
+          - !type:HasDamage
+            require: false
           completed:
             - !type:GivePrototype
               prototype: SheetSteel1
@@ -309,9 +312,12 @@
               doAfter: 2
 
     - node: reinforcedWall
-      entity: ScpWallReinforced
+      entity: ScpWallReinforced # Fire edit
       edges:
         - to: reinforcedGirder
+          conditions:
+          - !type:HasDamage
+            require: false
           completed:
             - !type:SpawnPrototype
               prototype: SheetPlasteel1
@@ -504,7 +510,7 @@
               doAfter: 1
 
     - node: wallrust
-      entity: ScpWallSolidRust
+      entity: ScpWallSolidRust # Fire edit
       edges:
         - to: wall
           steps:
@@ -516,7 +522,7 @@
               doAfter: 12
 
     - node: reinforcedWallRust
-      entity: ScpWallReinforcedRust
+      entity: ScpWallReinforcedRust # Fire edit
       edges:
         - to: reinforcedWall
           steps:

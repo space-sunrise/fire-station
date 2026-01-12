@@ -52,6 +52,16 @@
       - DamageOtherOnHit
       - Storage
       - EntityStorage
+    cryOutWhitelist:
+      tags:
+      - Wall
+      - Window
+      - Directional
+      - Structure
+    cryOutDamage:
+      types:
+        Structural: 850
+  - type: Scp096ShaderStatic
   - type: ScpRestriction
     canBeDisarmed: true
     canTakeStaminaDamage: true
@@ -88,7 +98,7 @@
         volume: -4
   - type: ActionGrant
     actions:
-    #- Scp096CryOut - Требует механику ремонта стен, отключено до реализации.
+    - Scp096CryOut
     - Scp096FaceSkinRip
     - Scp096SitDown
   - type: SafeTime
@@ -144,29 +154,11 @@
   - type: Damageable
     damageModifierSet: SCP-096
   - type: ScpExaminableDamage
-    generalMessages:
-    - scp096-face-damaged-0
-    - scp096-face-damaged-1
-    - scp096-face-damaged-2
-    - scp096-face-damaged-3
-    - scp096-face-damaged-4
-    - scp096-face-damaged-5
+    generalMessages: ScpScp096FaceMessages
     departmentMessages:
-      ScientificService:
-      - scp096-face-damaged-0-science
-      - scp096-face-damaged-1-science
-      - scp096-face-damaged-2-science
-      - scp096-face-damaged-3-science
-      - scp096-face-damaged-4-science
-      - scp096-face-damaged-5-science
+      ScientificService: ScpScp096FaceScienceMessages
     jobMessages:
-      ScientificServiceDirector:
-      - scp096-face-damaged-0-science
-      - scp096-face-damaged-1-science
-      - scp096-face-damaged-2-science
-      - scp096-face-damaged-3-science
-      - scp096-face-damaged-4-science
-      - scp096-face-damaged-5-science
+      ScientificServiceDirector: ScpScp096FaceScienceMessages
   - type: Fixtures
     fixtures:
       fix1:
@@ -188,11 +180,8 @@
     allowed:
     - SlowedDown
     - Stutter
-    - Electrocution
     - ForcedSleep
-    - TemporaryBlindness
     - Pacified
-    - Flashed
     - RadiationProtection
     - Drowsiness
   - type: Bloodstream

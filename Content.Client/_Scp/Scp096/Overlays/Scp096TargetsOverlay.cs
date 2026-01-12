@@ -5,9 +5,9 @@ using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 
-namespace Content.Client._Scp.Scp096;
+namespace Content.Client._Scp.Scp096.Overlays;
 
-public sealed class Scp096Overlay : Overlay
+public sealed class Scp096TargetsOverlay : Overlay
 {
     [Dependency] private readonly IEntityManager _ent = default!;
 
@@ -19,7 +19,7 @@ public sealed class Scp096Overlay : Overlay
     private readonly EntityQuery<Scp096TargetComponent> _targetQuery;
     private readonly List<(Entity<SpriteComponent> ent, float alpha)> _cachedAlphas = new(64);
 
-    public Scp096Overlay(Entity<Scp096Component> entity)
+    public Scp096TargetsOverlay(Entity<Scp096Component> entity)
     {
         IoCManager.InjectDependencies(this);
 

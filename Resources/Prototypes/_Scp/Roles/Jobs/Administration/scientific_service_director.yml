@@ -4,8 +4,6 @@
   description: job-description-scientific-service-director
   playTimeTracker: JobScientificServiceDirector
   requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 144000 
   - !type:DepartmentTimeRequirement
     department: ScientificService
     time: 54000

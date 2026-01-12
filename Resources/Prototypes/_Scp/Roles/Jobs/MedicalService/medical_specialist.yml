@@ -6,7 +6,7 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: MedicalService
-    time: 10800
+    time: 7200
   startingGear: MedicalSpecialistGear
   icon: JobMedicalSpecialist
   supervisors: job-supervisors-head-of-medical-sector

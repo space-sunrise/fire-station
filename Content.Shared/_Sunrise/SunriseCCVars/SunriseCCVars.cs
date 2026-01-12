@@ -247,7 +247,7 @@ public sealed partial class SunriseCCVars : CVars
      * Lobby Changelog
      */
 
-    public static readonly CVarDef<string> LobbyChangelogsList =
+    public static readonly CVarDef<string> LobbyChangelogsList = // Fire edit
         CVarDef.Create("lobby_changelog.list", "ChangelogFire.yml", CVar.SERVER | CVar.REPLICATED);
 
     /*
@@ -294,13 +294,14 @@ public sealed partial class SunriseCCVars : CVars
 
     public static readonly CVarDef<bool> ShowMapVotes = CVarDef.Create("vote.show_map_votes", true);
 
-    public static readonly CVarDef<bool> RunMapVoteAfterRestart =
-        CVarDef.Create("vote.run_map_vote_after_restart", false);
+    public static readonly CVarDef<bool> RunMapVoteAfterRestart = // Fire edit
+        CVarDef.Create("vote.run_map_vote_after_restart", true);
 
     public static readonly CVarDef<bool> RunPresetVoteAfterRestart =
         CVarDef.Create("vote.run_preset_vote_after_restart", false);
 
-    public static readonly CVarDef<int> VotingsDelay = CVarDef.Create("vote.votings_delay", 60);
+    // Fire edit
+    public static readonly CVarDef<int> VotingsDelay = CVarDef.Create("vote.votings_delay", 20);
 
     public static readonly CVarDef<bool> VoteMusicDisable =
         CVarDef.Create("vote.music_disable", true, CVar.CLIENTONLY | CVar.ARCHIVE);

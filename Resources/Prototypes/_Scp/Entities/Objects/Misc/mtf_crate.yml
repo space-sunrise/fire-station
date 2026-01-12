@@ -203,6 +203,20 @@
 
 - type: entity
   parent: BaseMtfStorageCrateWeapon
+  id: MtfStorageCrateRifleFamas
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Storage
+    grid:
+    - 0,0,8,2
+    - 0,0,3,3
+  - type: StorageFill
+    contents:
+      - id: WeaponRifleFamas
+      - id: ClothingBeltMtfAmmoG36
+
+- type: entity
+  parent: BaseMtfStorageCrateWeapon
   id: MtfStorageCrateRifleG36
   categories: [ HideSpawnMenu ]
   components:

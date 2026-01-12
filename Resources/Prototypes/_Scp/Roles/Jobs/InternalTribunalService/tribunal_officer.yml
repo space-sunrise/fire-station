@@ -3,7 +3,7 @@
   name: job-name-tribunal-officer
   description: job-description-tribunal-officer
   playTimeTracker: JobTribunalOfficer
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
+  requirements:
   - !type:OverallPlaytimeRequirement
     time: 90000 # 25 часов
   icon: JobTribunalOfficer

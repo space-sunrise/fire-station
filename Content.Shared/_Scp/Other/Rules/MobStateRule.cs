@@ -1,9 +1,11 @@
 ﻿using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Random.Rules;
+using JetBrains.Annotations;
 
 namespace Content.Shared._Scp.Other.Rules;
 
+[UsedImplicitly]
 public sealed partial class MobStateRule : RulesRule
 {
     [DataField]

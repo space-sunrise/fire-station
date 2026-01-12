@@ -1,0 +1,14 @@
+- type: parallax
+  id: FTLSky
+  layers:
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/Parallaxes/land.png"
+      slowness: 0.48
+      scale: 1,1
+    - texture:
+        !type:ImageParallaxTextureSource
+        path: "/Textures/Parallaxes/noise.png"
+      slowness: 0.45
+      scale: "2, 2"
+      scrolling: "0.5, -0.15"

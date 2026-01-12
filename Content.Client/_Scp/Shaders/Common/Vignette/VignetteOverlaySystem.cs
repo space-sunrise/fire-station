@@ -14,6 +14,7 @@ public sealed class VignetteOverlaySystem : ComponentOverlaySystem<VignetteOverl
     {
         base.Initialize();
 
+        DisableOnCompatibilityMode = false;
         Overlay = new VignetteOverlay();
 
         SubscribeLocalEvent<VignetteOverlayComponent, ShaderAdditionalStrengthChanged>(OnAdditionalStrengthChanged);

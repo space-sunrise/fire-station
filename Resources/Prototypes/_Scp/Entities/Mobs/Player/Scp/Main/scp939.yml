@@ -91,28 +91,12 @@
       - Scp939
   - type: ScpExaminableDamage
     mode: MobToCritical
-    generalMessages:
-    - scp939-damaged-0
-    - scp939-damaged-1
-    - scp939-damaged-2
-    - scp939-damaged-3
+    generalMessages: ScpScp939Messages
     departmentMessages:
-      HeavyContainmentSecurityService:
-      - scp939-damaged-security-0
-      - scp939-damaged-security-1
-      - scp939-damaged-security-2
-      - scp939-damaged-security-3
-      ExternalAdministrativeZoneSecurityService:
-      - scp939-damaged-security-0
-      - scp939-damaged-security-1
-      - scp939-damaged-security-2
-      - scp939-damaged-security-3
+      HeavyContainmentSecurityService: ScpScp939SecurityMessages
+      ExternalAdministrativeZoneSecurityService: ScpScp939SecurityMessages
     jobMessages:
-      SecurityCommander:
-      - scp939-damaged-security-0
-      - scp939-damaged-security-1
-      - scp939-damaged-security-2
-      - scp939-damaged-security-3
+      SecurityCommander: ScpScp939SecurityMessages
   - type: GuideHelp
     guides:
     - ScpResearch

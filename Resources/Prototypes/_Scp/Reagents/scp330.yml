@@ -1,0 +1,86 @@
+﻿- type: reagent
+  id: BaseScp330Reagent
+  name: reagent-name-scp330-nothing
+  desc: reagent-desc-scp330-nothing
+  physicalDesc: reagent-physical-desc-sweet
+  flavor: sweet
+  color: "#B58E86"
+
+- type: reagent
+  parent: BaseScp330Reagent
+  id: Scp330Vomit
+  name: reagent-name-scp330-vomit
+  desc: reagent-desc-scp330-vomit
+  metabolisms:
+    Food:
+      effects:
+      - !type:SatiateHunger
+        factor: 0.5
+      - !type:ChemVomit
+        conditions:
+        - !type:ReagentThreshold
+          min: 1
+
+- type: reagent
+  parent: BaseScp330Reagent
+  id: Scp330PoisonHeal
+  name: reagent-name-scp330-heal
+  desc: reagent-desc-scp330-heal
+  metabolisms:
+    Food:
+      effects:
+      - !type:SatiateHunger
+        factor: 0.5
+    Medicine:
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        damage:
+          groups:
+            Brute: -2
+            Burn: -2
+            Toxin: -2
+            Genetic: -2
+
+- type: reagent
+  parent: BaseScp330Reagent
+  id: Scp330CalmDown
+  name: reagent-name-scp330-calm-down
+  desc: reagent-desc-scp330-calm-down
+  metabolisms:
+    Food:
+      effects:
+      - !type:SatiateHunger
+        factor: 0.5
+      - !type:CalmDownEffect
+        speedUpBy: 10
+        conditions:
+        - !type:ReagentThreshold
+          min: 1
+
+- type: reagent
+  parent: BaseScp330Reagent
+  id: Scp330Nothing
+  name: reagent-name-scp330-nothing
+  desc: reagent-desc-scp330-nothing
+  metabolisms:
+    Food:
+      effects:
+      - !type:SatiateHunger
+        factor: 0.5
+
+- type: reagent
+  parent: BaseScp330Reagent
+  id: Scp330Paralysis
+  name: reagent-name-scp330-paralysis
+  desc: reagent-desc-scp330-paralysis
+  metabolisms:
+    Food:
+      effects:
+      - !type:SatiateHunger
+        factor: 0.5
+      - !type:Paralyze
+        paralyzeTime: 20
+        conditions:
+        - !type:ReagentThreshold
+          min: 1

@@ -6,7 +6,7 @@
   requirements:
     - !type:DepartmentTimeRequirement
       department: EngineeringTechnicalService
-      time: 28800
+      time: 18000
   startingGear: ElectricalTechnicalSpecialistGear
   icon: JobElectricalTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
@@ -20,6 +20,7 @@
       class: C
     - type: AccessLevel
       level: Two
+    - type: ScpRepairableCanSeeExamineHints
 
 - type: startingGear
   id: ElectricalTechnicalSpecialistGear

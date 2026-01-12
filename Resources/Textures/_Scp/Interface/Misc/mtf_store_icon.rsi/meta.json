@@ -174,6 +174,15 @@
     },
     {
       "name": "shoulder_patches"
+    },
+    {
+      "name": "famas"
+    },
+    {
+      "name": "flamethrower"
+    },
+    {
+      "name": "limited_supply"
     }
   ]
 }

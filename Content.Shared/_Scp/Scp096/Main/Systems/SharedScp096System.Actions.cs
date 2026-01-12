@@ -12,6 +12,10 @@ namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
+    /*
+     * Часть системы, отвечающая за способности скромника и их применение.
+     */
+
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
@@ -32,6 +36,17 @@ public abstract partial class SharedScp096System
     {
         if (args.Handled)
             return;
+
+        if (ent.Comp.CryOutDamage == null)
+            return;
+
+        if (ent.Comp.CryOutRequireBeInContainmentChamber && !IsInContainmentChamber(ent))
+        {
+            var message = Loc.GetString("scp096-only-in-containment-chamber");
+            _popup.PopupClient(message, ent, ent);
+
+            return;
+        }
 
         var targets =
             _lookup.GetEntitiesInRange<DamageableComponent>(Transform(ent).Coordinates,
@@ -157,19 +172,22 @@ public abstract partial class SharedScp096System
         args.Handled = TryToggleSit(ent.AsNullable(), sat);
     }
 
-    private bool TryToggleSit(Entity<Scp096Component?> ent, bool haveToStand)
+    /// <summary>
+    /// Переключает положение скромника из сидячего в стоячее. Или наоборот.
+    /// </summary>
+    /// <param name="ent">Сущность, которая будет менять свое состояние</param>
+    /// <param name="haveToStand">Мы хотим встать? Если да -> true. Иначе false</param>
+    /// <returns>Получилось сменить состояние или нет</returns>
+    private bool TryToggleSit(EntityUid ent, bool haveToStand)
     {
-        if (!Resolve(ent, ref ent.Comp))
-            return false;
-
         // Проверка на эквивалентность состояния.
         // Пример - мы хотим встать, но уже стоим -> выходим из метода.
-        if (!_standing.IsDown(ent.Owner) == haveToStand)
+        if (!_standing.IsDown(ent) == haveToStand)
             return false;
 
         var successful = haveToStand
-            ? _standing.Stand(ent.Owner)
-            : _standing.Down(ent.Owner, false);
+            ? _standing.Stand(ent)
+            : _standing.Down(ent, false);
 
         if (!successful)
         {
@@ -182,16 +200,26 @@ public abstract partial class SharedScp096System
         return true;
     }
 
-    private bool IsValidForCryOutDamage(Entity<Scp096Component> ent, EntityUid uid)
+    /// <summary>
+    /// Проверяет, должна ли сущность получить урон от способности плача.
+    /// </summary>
+    /// <param name="ent">Скромник, который использует способность</param>
+    /// <param name="target">Сущность для проверки</param>
+    /// <returns>Должна ли сущность получить урон. Да или нет</returns>
+    private bool IsValidForCryOutDamage(Entity<Scp096Component> ent, EntityUid target)
     {
-        if (!_whitelist.IsWhitelistPassOrNull(ent.Comp.CryOutWhitelist, uid))
+        if (!_whitelist.CheckBoth(target, ent.Comp.CryOutBlacklist, ent.Comp.CryOutWhitelist))
             return false;
 
-        if (!_proximity.IsRightType(ent, uid, LineOfSightBlockerLevel.None, out _))
+        if (!_proximity.IsRightType(ent, target, LineOfSightBlockerLevel.None, out _))
             return false;
 
         return true;
     }
 
+    /// <summary>
+    /// Создает разбрызгивающиеся кровавые частички рядом с сущностью, идущие от самой сущности.
+    /// </summary>
+    /// <param name="ent">Сущность, которая будет разбрызгивать свою кровь</param>
     protected virtual void SpawnBlood(Entity<BloodSplattererComponent?> ent) { }
 }

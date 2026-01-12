@@ -40,14 +40,11 @@
   - type: StorageFill
     contents:
       - id: MedicatedSuture
-        amount: 2
       - id: RegenerativeMesh
-        amount: 2
       - id: Hypospray
       - id: AirlossAutoInjector
         amount: 3
       - id: ChemistryBottleOmnizine
-        amount: 2
       - id: SyringeEphedrine
       - id: DefibrillatorCompact
 
@@ -58,10 +55,8 @@
   components:
   - type: StorageFill
     contents:
-      - id: MedipenCombatInjector
       - id: Bloodpack
       - id: Tourniquet
-        amount: 2
       - id: MedicatedSuture
       - id: RegenerativeMesh
       - id: CombatMedipen
