@@ -719,6 +719,15 @@
 
 - type: entity
   parent: PosterScpContainmentRoomBase
+  id: PosterScp330
+  name: SCP-330 poster
+  description: Information poster for SCP-330.
+  components:
+  - type: Sprite
+    state: scp330
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
   id: PosterSCP457
   name: SCP-457 poster
   description: Information poster for SCP-457.

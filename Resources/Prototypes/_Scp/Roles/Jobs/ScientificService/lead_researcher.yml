@@ -6,7 +6,7 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: ScientificService
-    time: 54000
+    time: 36000
   startingGear: LeadResearcherGear
   icon: JobLeadResearcher
   supervisors: job-supervisors-scientific-service-director

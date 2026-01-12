@@ -49,6 +49,7 @@ public sealed class EmitSoundRandomlySystem : EntitySystem
         var cooldown = ent.Comp.SoundCooldown + TimeSpan.FromSeconds(variance);
 
         ent.Comp.NextSoundTime = _timing.CurTime + cooldown;
+        Dirty(ent);
     }
 }
 

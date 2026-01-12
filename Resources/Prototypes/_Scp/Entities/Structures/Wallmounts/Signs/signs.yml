@@ -89,6 +89,15 @@
 
 - type: entity
   parent: BaseSignDirectionalScp
+  id: SignDirectionalScp330
+  name: SCP-330 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 330
+
+- type: entity
+  parent: BaseSignDirectionalScp
   id: SignDirectionalScp500
   name: SCP-500 sign
   description: Points in a direction you shouldn't go without a clear understanding of where it leads.

@@ -9,13 +9,13 @@
       time: 18000
     - !type:DepartmentTimeRequirement
       department: MedicalService
-      time: 36000
+      time: 18000
     - !type:DepartmentTimeRequirement
       department: EngineeringTechnicalService
-      time: 36000
+      time: 18000
     - !type:DepartmentTimeRequirement
       department: Administration
-      time: 36000
+      time: 18000
   weight: 20
   startingGear: PersonnelOfficerGear
   icon: JobPersonnelOfficer
