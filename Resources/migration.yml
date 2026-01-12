@@ -1900,10 +1900,12 @@ LockerBrigmedic: null
 LockerBrigmedicFilled: null
 
 # Столы
+TableFrame: ScpTableFrame
 Table: ScpTable
 TableReinforced: ScpTableReinforced
 TableGlass: ScpTableGlass
 TableReinforcedGlass: ScpTableReinforcedGlass
+TablePlasmaGlass: ScpTablePlasmaGlass
 
 # Факсы
 FaxMachineCentcom: FaxMachineRegionalAdministration
