@@ -2254,7 +2254,7 @@ ClothingMaskGasLLH: null
 ClothingMaskGasRRH: null
 
 # Удаленные стены
-ScpWallConcreteLightContaimentCrack: ScpWallConcreteLightContaiment
+ScpWallConcreteLightContaimentCrack: ScpWallConcreteLightContainment
 ScpWallConcreteScienceCrack: ScpWallConcreteScience
 ScpWallConcreteEngineerCrack: ScpWallConcreteEngineer
 ScpWallConcreteMedicalCrack: ScpWallConcreteMedical
