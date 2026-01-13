@@ -10,3 +10,5 @@ ent-ScpTableReinforcedGlass = { ent-TableReinforcedGlass }
     .desc = { ent-TableReinforcedGlass.desc }
 ent-ScpTablePlasmaGlass = { ent-TablePlasmaGlass }
     .desc = { ent-TablePlasmaGlass.desc }
+ent-ScpTableWood = { ent-TableWood }
+    .desc = { ent-TableWood.desc }
