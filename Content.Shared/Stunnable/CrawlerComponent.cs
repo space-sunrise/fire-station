@@ -30,7 +30,7 @@ public sealed partial class CrawlerComponent : Component
     /// Base modifier to the maximum movement speed of a knocked down mover.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float SpeedModifier = 0.6f; // Sunrise-edit
+    public float SpeedModifier = 0.25f; // Fire edit
 
     /// <summary>
     /// Friction modifier applied to an entity in the downed state.
