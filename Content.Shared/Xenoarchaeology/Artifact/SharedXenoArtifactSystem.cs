@@ -45,7 +45,9 @@ public abstract partial class SharedXenoArtifactSystem : EntitySystem
     /// <summary> As all artifacts have to contain nodes - we ensure that they are containers. </summary>
     private void OnStartup(Entity<XenoArtifactComponent> ent, ref ComponentStartup args)
     {
-        _actions.AddAction(ent, ent.Comp.SelfActivateAction);
+        // Fire edit - нам это не надо.
+        // _actions.AddAction(ent, ent.Comp.SelfActivateAction);
+
         ent.Comp.NodeContainer = _container.EnsureContainer<Container>(ent, XenoArtifactComponent.NodeContainerId);
     }
 
