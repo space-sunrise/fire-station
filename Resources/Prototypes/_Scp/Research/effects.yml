@@ -25,8 +25,8 @@
   - type: XAEApplyComponents
     components:
     - type: RandomWalk
-      minSpeed: 12
-      maxSpeed: 20
+      minSpeed: 5
+      maxSpeed: 12
       minStepCooldown: 1
       maxStepCooldown: 3
 
