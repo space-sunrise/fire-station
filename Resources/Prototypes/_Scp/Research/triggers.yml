@@ -1,0 +1,23 @@
+﻿# Общие
+
+- type: xenoArchTrigger
+  id: TriggerInsertIntoContainer
+  tip: artifact-trigger-hint-insert-into-container
+  components:
+  - type: XATModifyContainer
+    triggerOnInsert: true
+
+- type: xenoArchTrigger
+  id: TriggerRemoveFromContainer
+  tip: artifact-trigger-hint-remove-from-container
+  components:
+  - type: XATModifyContainer
+    triggerOnRemove: true
+
+# SCP-330
+
+- type: xenoArchTrigger
+  id: TriggerScp330Punishment
+  tip: artifact-trigger-scp330-punishment
+  components:
+  - type: XATScp330Punishment

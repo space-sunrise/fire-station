@@ -20,6 +20,7 @@ public sealed partial class Scp330BowlComponent : Component
     [DataField]
     public Color ExamineMessageColor = Color.Gray;
 
+    // TODO: После удаления из мира отсюда убирать ее из словаря
     [ViewVariables, AutoNetworkedField]
     public Dictionary<EntityUid, int> ThiefCounter = new();
 

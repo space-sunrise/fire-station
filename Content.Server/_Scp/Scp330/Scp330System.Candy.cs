@@ -33,6 +33,31 @@ public sealed partial class Scp330System
 
     #endregion
 
+    #region Return
+
+    private bool TryDecreaseThiefCounter(Entity<Scp330BowlComponent> ent, Entity<Scp330CandyComponent?> candy)
+    {
+        if (!Resolve(candy, ref candy.Comp, false))
+            return false;
+
+        if (!candy.Comp.TakenBy.HasValue)
+            return false;
+
+        if (!ent.Comp.ThiefCounter.TryGetValue(candy.Comp.TakenBy.Value, out var count))
+            return false;
+
+        if (count <= 0)
+            return false;
+
+        // Вернули конфету - уменьшаем счетчик "взятых конфет" для человека, который взял эту конфету.
+        ent.Comp.ThiefCounter[candy.Comp.TakenBy.Value]--;
+        Dirty(ent);
+
+        return true;
+    }
+
+    #endregion
+
     #region Assign effects to candies
 
     private bool TryAssignEffects(Entity<Scp330BowlComponent> ent)

@@ -159,11 +159,11 @@
   weights:
     TriggerMusic: 1
     TriggerHeat: 1
-    TriggerCold: 0.5
-    TriggerPlasma: 0.5
+    TriggerCold: 0.4
+    TriggerPlasma: 0.4
     TriggerRadiation: 0.5
-    TriggerPressureHigh: 0.5
-    TriggerPressureLow: 1
+    TriggerPressureHigh: 0.4
+    TriggerPressureLow: 0.4
     TriggerExamine: 1
     TriggerBruteDamage: 1
     TriggerWrenching: 1
@@ -177,3 +177,11 @@
     TriggerMagnet: 1
     # Дальше наши самописные
     TriggerHealthAnalyzer: 1
+
+- type: weightedRandomXenoArchTrigger
+  id: Scp330Triggers
+  weights:
+    TriggerInsertIntoContainer: 1
+    TriggerRemoveFromContainer: 1
+    TriggerScp330Punishment: 1
+    TriggerDeath: 0.5

@@ -1,4 +1,5 @@
 ﻿using Content.Shared.Examine;
+using Content.Shared.Interaction;
 using Content.Shared.Storage;
 using Robust.Shared.Containers;
 
@@ -15,6 +16,7 @@ public abstract class SharedScp330System : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<Scp330BowlComponent, ExaminedEvent>(OnExamined);
+        SubscribeLocalEvent<Scp330BowlComponent, InteractHandEvent>(OnActivate);
     }
 
     #region Event handlers
@@ -38,6 +40,25 @@ public abstract class SharedScp330System : EntitySystem
 
         AddMessage(ent, ref args, message, message2);
     }
+
+    private void OnActivate(Entity<Scp330BowlComponent> ent, ref InteractHandEvent args)
+    {
+        if (args.Handled)
+            return;
+
+        if (!TryTakeCandy(ent, args.User))
+            return;
+
+        args.Handled = true;
+    }
+
+    #endregion
+
+    #region Virtuals
+
+    public virtual bool TryTakeCandy(Entity<Scp330BowlComponent> ent, EntityUid user) { return true; }
+
+    protected virtual void ApplyPunishment(Entity<Scp330BowlComponent> ent, EntityUid user) {}
 
     #endregion
 

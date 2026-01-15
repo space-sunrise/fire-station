@@ -1,7 +1,6 @@
 ﻿using System.Numerics;
 using Content.Shared.Damage;
 using Content.Shared.Popups;
-using Content.Shared.Interaction;
 using Content.Shared.Body.Components;
 using Content.Server.Body.Systems;
 using Content.Server.Hands.Systems;
@@ -23,17 +22,18 @@ using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp330;
 
+// TODO: Добавить, что миску можно будет бросить. При этом конфеты высыпятся и приколиста кастрирует.
 public sealed partial class Scp330System : SharedScp330System
 {
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
-    [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly BodySystem _body = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly GibbingSystem _gibbing = default!;
+    [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
@@ -45,7 +45,6 @@ public sealed partial class Scp330System : SharedScp330System
         base.Initialize();
 
         SubscribeLocalEvent<Scp330BowlComponent, MapInitEvent>(OnBowlMapInit, after: [typeof(ContainerFillSystem)]);
-        SubscribeLocalEvent<Scp330BowlComponent, InteractHandEvent>(OnActivate);
 
         InitializeCandy();
     }
@@ -57,22 +56,11 @@ public sealed partial class Scp330System : SharedScp330System
         TryAssignEffects(ent);
     }
 
-    private void OnActivate(Entity<Scp330BowlComponent> ent, ref InteractHandEvent args)
-    {
-        if (args.Handled)
-            return;
-
-        if (!TryTakeCandy(ent, args.User))
-            return;
-
-        args.Handled = true;
-    }
-
     #endregion
 
-    #region Take&Return
+    #region Take candy
 
-    public bool TryTakeCandy(Entity<Scp330BowlComponent> ent, EntityUid user)
+    public override bool TryTakeCandy(Entity<Scp330BowlComponent> ent, EntityUid user)
     {
         var container = _container.EnsureContainer<Container>(ent, StorageComponent.ContainerId);
         if (container.Count == 0)
@@ -112,33 +100,14 @@ public sealed partial class Scp330System : SharedScp330System
         return true;
     }
 
-    private bool TryDecreaseThiefCounter(Entity<Scp330BowlComponent> ent, Entity<Scp330CandyComponent?> candy)
-    {
-        if (!Resolve(candy, ref candy.Comp, false))
-            return false;
-
-        if (!candy.Comp.TakenBy.HasValue)
-            return false;
-
-        if (!ent.Comp.ThiefCounter.TryGetValue(candy.Comp.TakenBy.Value, out var count))
-            return false;
-
-        if (count <= 0)
-            return false;
-
-        // Вернули конфету - уменьшаем счетчик "взятых конфет" для человека, который взял эту конфету.
-        ent.Comp.ThiefCounter[candy.Comp.TakenBy.Value]--;
-        Dirty(ent);
-
-        return true;
-    }
-
     #endregion
 
     #region Punishment
 
-    private void ApplyPunishment(Entity<Scp330BowlComponent> ent, EntityUid user)
+    protected override void ApplyPunishment(Entity<Scp330BowlComponent> ent, EntityUid user)
     {
+        base.ApplyPunishment(ent, user);
+
         var extra = Math.Max(1, ent.Comp.ThiefCounter[user] - ent.Comp.PunishmentAfter);
         var radius = ent.Comp.BasePunishmentRadius + (extra * 0.5f);
 
@@ -159,10 +128,10 @@ public sealed partial class Scp330System : SharedScp330System
             _damageable.TryChangeDamage(target, damage, true, origin: ent);
         }
 
-        CutOffHands(user);
+        CutOffHands(ent, user);
     }
 
-    private void CutOffHands(EntityUid target)
+    private void CutOffHands(EntityUid bowl, EntityUid target)
     {
         if (!TryComp<BodyComponent>(target, out var body))
             return;
@@ -184,10 +153,16 @@ public sealed partial class Scp330System : SharedScp330System
                 ref _gibCachedEntities);
         }
 
-        if (_gibCachedEntities.Count > 0)
-        {
-            _popup.PopupEntity(Loc.GetString("scp330-removed-hands"), target, target, PopupType.LargeCaution);
-        }
+        if (_gibCachedEntities.Count <= 0)
+            return;
+
+        _popup.PopupEntity(Loc.GetString("scp330-removed-hands"), target, target, PopupType.LargeCaution);
+
+        var selfEvent = new Scp330SelfPunishmentEvent(target);
+        RaiseLocalEvent(bowl, ref selfEvent);
+
+        var targetEvent = new Scp330TargetPunishmentEvent(bowl);
+        RaiseLocalEvent(bowl, ref targetEvent);
     }
 
     #endregion
