@@ -14,6 +14,7 @@ namespace Content.Server._Scp.Scp012;
 
 // TODO: Больше предикшена
 // TODO: Перенести систему притягивания и форсированного подбирания для SCP-035.
+// TODO: Переделать систему притягивания под pathfinding, чтобы обходить препятствия
 public sealed partial class Scp012System : SharedScp012System
 {
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
@@ -52,7 +53,7 @@ public sealed partial class Scp012System : SharedScp012System
     {
         if (!_whitelist.CheckBoth(args.User, ent.Comp.Blacklist, ent.Comp.Whitelist))
             return;
-        
+
         var victimComp = EnsureComp<Scp012VictimComponent>(args.User);
         victimComp.Source = ent;
 
