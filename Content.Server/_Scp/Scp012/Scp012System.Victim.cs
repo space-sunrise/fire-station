@@ -185,7 +185,7 @@ public sealed partial class Scp012System
             return false;
 
         SetNextPassiveDamageTime(ent);
-        if (_damageable.TryChangeDamage(ent, scp.Comp.PassiveDamage, ignoreResistances: true)?.GetTotal() == FixedPoint2.Zero)
+        if (_damageable.TryChangeDamage(ent, scp.Comp.PassiveDamage, origin: scp, ignoreResistances: true)?.GetTotal() == FixedPoint2.Zero)
             return false;
 
         return true;
@@ -213,7 +213,7 @@ public sealed partial class Scp012System
         ForceSpeak(ent, "scp012-phrase-final");
         SetNextSuicideTime(ent);
 
-        if (_damageable.TryChangeDamage(ent, scp.Comp.SuicideDamage, ignoreResistances: true)?.GetTotal() == FixedPoint2.Zero)
+        if (_damageable.TryChangeDamage(ent, scp.Comp.SuicideDamage, origin: scp, ignoreResistances: true)?.GetTotal() == FixedPoint2.Zero)
             return false;
 
         _mobState.ChangeMobState(ent, MobState.Dead, origin: scp);

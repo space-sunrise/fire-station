@@ -14,6 +14,38 @@
   - type: XATModifyContainer
     triggerOnRemove: true
 
+- type: xenoArchTrigger
+  id: TriggerOnTake
+  tip: artifact-trigger-hint-take-item
+  components:
+  - type: XATTakeDrop
+    triggerOnTake: true
+
+- type: xenoArchTrigger
+  id: TriggerOnDrop
+  tip: artifact-trigger-hint-drop-item
+  components:
+  - type: XATTakeDrop
+    triggerOnDrop: true
+
+- type: xenoArchTrigger
+  id: TriggerDealDamageSlash30
+  tip: artifact-trigger-deal-damage-slash-30
+  components:
+  - type: XATDealDamage
+    requiredDamage:
+      types:
+        Slash: 30
+
+- type: xenoArchTrigger
+  id: TriggerDealDamageSlash70
+  tip: artifact-trigger-deal-damage-slash-70
+  components:
+  - type: XATDealDamage
+    requiredDamage:
+      types:
+        Slash: 70
+
 # SCP-330
 
 - type: xenoArchTrigger

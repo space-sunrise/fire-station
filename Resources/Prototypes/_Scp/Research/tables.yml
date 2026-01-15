@@ -185,3 +185,12 @@
     TriggerRemoveFromContainer: 1
     TriggerScp330Punishment: 1
     TriggerDeath: 0.5
+
+- type: weightedRandomXenoArchTrigger
+  id: Scp012Triggers
+  weights:
+    TriggerOnTake: 1
+    TriggerOnDrop: 1
+    TriggerDealDamageSlash30: 1
+    TriggerDealDamageSlash70: 1
+    TriggerDeath: 0.5

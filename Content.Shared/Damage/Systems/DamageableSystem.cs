@@ -1,5 +1,6 @@
 using System.Linq;
 using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Other.Events;
 using Content.Shared._Starlight.Medical.Damage;
 using Content.Shared.CCVar;
 using Content.Shared.Chemistry;
@@ -174,6 +175,14 @@ namespace Content.Shared.Damage
                 _appearance.SetData(uid, DamageVisualizerKeys.DamageUpdateGroups, data, appearance);
             }
             RaiseLocalEvent(uid, new DamageChangedEvent(component, damageDelta, interruptsDoAfters, origin));
+
+            // Fire edit start - для артефактов
+            if (origin != null && damageDelta != null)
+            {
+                var ev = new DamageChangedOriginEvent(uid, damageDelta);
+                RaiseLocalEvent(origin.Value, ref ev);
+            }
+            // Fire edit end
         }
 
         /// <summary>
