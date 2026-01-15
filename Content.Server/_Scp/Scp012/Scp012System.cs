@@ -60,7 +60,9 @@ public sealed partial class Scp012System : SharedScp012System
         _movementSpeed.RefreshMovementSpeedModifiers(args.User);
         _fear.TrySetFearLevel(args.User, ent.Comp.FearOnPickup);
 
-        SetAudio((args.User, victimComp), ent, true);
+        var victimEnt = (args.User, victimComp);
+        SetAudio(victimEnt, ent, true);
+        SetNextSuicideTime(victimEnt);
     }
 
     private void OnParentChanged(Entity<Scp012Component> ent, ref EntParentChangedMessage args)

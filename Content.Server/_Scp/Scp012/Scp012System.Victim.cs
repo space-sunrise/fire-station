@@ -40,10 +40,9 @@ public sealed partial class Scp012System
     {
         EnsureComp<MutedComponent>(ent);
 
-        SetNextSuicideTime(ent);
         SetNextSpeakTime(ent);
-        SetNextPassiveDamageTime(ent);
         SetNextLosCheckTime(ent);
+        SetNextPassiveDamageTime(ent);
 
         _movementSpeed.RefreshMovementSpeedModifiers(ent);
     }
