@@ -12,6 +12,7 @@
   access:
   - ClassDCanteen
   alwaysUseSpawner: true
+  weight: 720
   special:
   - !type:AddComponentSpecial
     components:

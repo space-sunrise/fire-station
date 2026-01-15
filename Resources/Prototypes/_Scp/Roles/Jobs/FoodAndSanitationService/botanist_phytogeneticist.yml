@@ -6,6 +6,7 @@
   startingGear: BotanistPhytogeneticistGear
   icon: JobBotanistPhytogeneticist
   supervisors: job-supervisors-personnel-officer
+  weight: 730
   access:
   - Service
   special:

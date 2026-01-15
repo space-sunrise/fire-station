@@ -10,6 +10,7 @@
   supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false
   displayWeight: 0
+  weight: 810
   accessGroups:
   - SecurityJobCommon
   special:

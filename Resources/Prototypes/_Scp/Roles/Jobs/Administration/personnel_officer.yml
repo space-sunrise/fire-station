@@ -16,7 +16,7 @@
     - !type:DepartmentTimeRequirement
       department: Administration
       time: 18000
-  weight: 20
+  weight: 950
   startingGear: PersonnelOfficerGear
   icon: JobPersonnelOfficer
   supervisors: job-supervisors-director

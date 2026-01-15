@@ -11,6 +11,7 @@
   supervisors: job-supervisors-scientific-service-director
   canBeAntag: true
   displayWeight: 0
+  weight: 785
   accessGroups:
   - JuniorResearcher
   special:

@@ -10,6 +10,7 @@
   supervisors: ghost-role-information-mtf-leader-supervisors
   canBeAntag: false
   radioBold: true
+  weight: 930
   overrideConsoleVisibility: false
   alwaysShowInBanPanel: true
   accessGroups:
@@ -52,6 +53,7 @@
   icon: JobIconRRH
   supervisors: ghost-role-information-mtf-specialist-supervisors
   canBeAntag: false
+  weight: 925
   overrideConsoleVisibility: false
   alwaysShowInBanPanel: true
   accessGroups:

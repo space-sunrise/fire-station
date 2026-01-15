@@ -6,6 +6,7 @@
   startingGear: GastronomicSpecialistGear
   icon: JobGastronomicSpecialist
   supervisors: job-supervisors-personnel-officer
+  weight: 735
   access:
   - Service
   special:

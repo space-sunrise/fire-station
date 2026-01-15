@@ -10,7 +10,7 @@
   - !type:DepartmentTimeRequirement
     department: ExternalAdministrativeZoneSecurityService
     time: 36000
-  weight: 10
+  weight: 955
   startingGear: SecurityCommanderGear
   icon: JobSecurityCommander
   supervisors: job-supervisors-director
