@@ -3,6 +3,7 @@
   name: clockwork window
   description: Don't smudge up the brass down there.
   parent: Window
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     drawdepth: WallTops
@@ -57,6 +58,7 @@
   parent: WindowDirectional
   name: directional clockwork window
   description: Don't smudge up the brass down there.
+  categories: [ HideSpawnMenu ] # Fire added
   placement:
     mode: SnapgridCenter
     snap:
@@ -112,6 +114,7 @@
   parent: ClockworkWindow
   id: ClockworkWindowDiagonal
   suffix: diagonal
+  categories: [ HideSpawnMenu ] # Fire added
   placement:
     mode: SnapgridCenter
     snap:
