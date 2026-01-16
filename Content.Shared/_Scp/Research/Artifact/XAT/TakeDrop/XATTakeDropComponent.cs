@@ -6,7 +6,7 @@ namespace Content.Shared._Scp.Research.Artifact.XAT.TakeDrop;
 public sealed partial class XATTakeDropComponent : Component
 {
     [DataField]
-    public bool TriggerOnPickup;
+    public bool TriggerOnTake;
 
     [DataField]
     public bool TriggerOnDrop;

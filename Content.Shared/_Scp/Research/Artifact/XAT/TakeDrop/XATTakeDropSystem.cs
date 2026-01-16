@@ -16,7 +16,7 @@ public sealed class XATTakeDropSystem : BaseXATSystem<XATTakeDropComponent>
 
     private void OnTake(Entity<XenoArtifactComponent> artifact, Entity<XATTakeDropComponent, XenoArtifactNodeComponent> node, ref GotEquippedHandEvent args)
     {
-        if (!node.Comp1.TriggerOnPickup)
+        if (!node.Comp1.TriggerOnTake)
             return;
 
         Trigger(artifact, node);
