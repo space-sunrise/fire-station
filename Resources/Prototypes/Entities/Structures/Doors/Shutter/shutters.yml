@@ -104,6 +104,7 @@
 - type: entity
   id: ShuttersNormal
   parent: BaseShutter
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Occluder
   - type: Construction
@@ -116,6 +117,7 @@
   id: ShuttersNormalOpen
   parent: ShuttersNormal
   suffix: Open
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Door
     state: Open
@@ -133,6 +135,7 @@
   parent: BaseShutter
   name: radiation shutters
   description: Why did they make these shutters radioactive?
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Shutters/shutters_radiation.rsi
@@ -154,6 +157,7 @@
   id: ShuttersRadiationOpen
   parent: ShuttersRadiation
   suffix: Open
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Door
     state: Open
@@ -171,6 +175,7 @@
   parent: BaseShutter
   name: window shutters
   description: The Best (TM) place to see your friends explode!
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Shutters/shutters_window.rsi
@@ -191,6 +196,7 @@
   id: ShuttersWindowOpen
   parent: ShuttersWindow
   suffix: Open
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Door
     state: Open
@@ -207,6 +213,7 @@
   parent: BaseStructureDynamic
   name: shutter frame
   description: A frame for constructing a shutter.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Shutters/shutters.rsi
