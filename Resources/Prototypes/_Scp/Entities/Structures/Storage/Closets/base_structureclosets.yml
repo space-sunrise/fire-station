@@ -1,0 +1,25 @@
+- type: entity
+  id: ScpClosetBase
+  parent: ClosetBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/closet.rsi
+  - type: Transform
+    noRot: false
+  - type: EntityStorage
+    whitelist:
+      components:
+      - MobState
+      - Item
+    blacklist:
+      components:
+      - Scp
+  - type: Appearance
+  - type: Tag
+    tags:
+    - Scp173DamageOnCollide
+
+- type: entity
+  id: ScpClosetSteelBase
+  parent: [ ScpClosetBase, ClosetSteelBase ]

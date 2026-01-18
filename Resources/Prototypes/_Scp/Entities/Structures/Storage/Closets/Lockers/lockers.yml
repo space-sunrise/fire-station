@@ -1,8 +1,28 @@
+- type: entity
+  id: ScpLockerSteel
+  parent: ScpLockerBaseSecure
+  name: secure closet
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: secure
+    stateDoorOpen: secure_open
+    stateDoorClosed: secure_door
+
 # Администрация
 
 - type: entity
+  id: BaseAdministrationLocker
+  parent: ScpLockerBaseSecure
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: com
+    stateDoorOpen: com_open
+    stateDoorClosed: com_door
+
+- type: entity
   id: LockerDirector
-  parent: LockerCaptain
+  parent: BaseAdministrationLocker
   name: director's locker
   components:
   - type: AccessReader
@@ -10,7 +30,7 @@
 
 - type: entity
   id: LockerPersonnelOfficer
-  parent: LockerHeadOfPersonnel
+  parent: BaseAdministrationLocker
   name: personnel officer's locker
   components:
   - type: AccessReader
@@ -18,7 +38,7 @@
 
 - type: entity
   id: LockerChiefTechnicalSpecialist
-  parent: LockerChiefEngineer
+  parent: BaseAdministrationLocker
   name: chief technical specialist's locker
   components:
   - type: AccessReader
@@ -26,7 +46,7 @@
 
 - type: entity
   id: LockerSeniorLogisticsOfficer
-  parent: LockerQuarterMaster
+  parent: BaseAdministrationLocker
   name: senior logistics officer's locker
   components:
   - type: AccessReader
@@ -34,7 +54,7 @@
 
 - type: entity
   id: LockerHeadOfMedicalSector
-  parent: LockerChiefMedicalOfficer
+  parent: BaseAdministrationLocker
   name: head of medical sector locker
   components:
   - type: AccessReader
@@ -42,7 +62,7 @@
 
 - type: entity
   id: LockerSecurityCommander
-  parent: LockerHeadOfSecurity
+  parent: BaseAdministrationLocker
   name: security commander's locker
   components:
   - type: AccessReader
@@ -50,7 +70,7 @@
 
 - type: entity
   id: LockerScientificServiceDirector
-  parent: LockerResearchDirector
+  parent: BaseAdministrationLocker
   name: scientific director's locker
   components:
   - type: AccessReader
@@ -58,7 +78,7 @@
 
 - type: entity
   id: LockerEthicsCommittee
-  parent: LockerHeadOfPersonnel
+  parent: BaseAdministrationLocker
   name: ethics committee's locker
   components:
   - type: AccessReader
@@ -66,17 +86,25 @@
 
 - type: entity
   id: LockerInternalTribunalService
-  parent: LockerHeadOfPersonnel
+  parent: BaseAdministrationLocker
   name: internal tribunal service locker
   components:
   - type: AccessReader
     access: [["InternalTribunalService"]]
 
+- type: entity
+  id: LockerAdministration
+  parent: BaseAdministrationLocker
+  name: administration locker
+  components:
+  - type: AccessReader
+    access: [ [ "Administration" ] ]
+
 # Региональная администрация
 
 - type: entity
   id: LockerMTF
-  parent: LockerCaptain
+  parent: BaseAdministrationLocker
   name: mobile task force locker
   components:
   - type: AccessReader
@@ -84,7 +112,7 @@
 
 - type: entity
   id: LockerO5
-  parent: LockerCaptain
+  parent: BaseAdministrationLocker
   name: O5 locker
   components:
   - type: AccessReader
@@ -93,8 +121,18 @@
 # Служба безопасности тяжелой зоны содержания
 
 - type: entity
+  id: BaseSpecialPurposeSquadLocker
+  parent: ScpLockerBaseSecure
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: sec_2
+    stateDoorOpen: sec_open_2
+    stateDoorClosed: sec_door_2
+
+- type: entity
   id: LockerHeavyContainmentZoneCommandant
-  parent: LockerWarden
+  parent: BaseSpecialPurposeSquadLocker
   name: heavy containment zone commandant's locker
   components:
   - type: AccessReader
@@ -102,25 +140,35 @@
 
 - type: entity
   id: LockerHeavyContainmentZoneOfficer
-  parent: LockerSecurity
+  parent: BaseSpecialPurposeSquadLocker
   name: heavy containment zone officer's locker
   components:
   - type: AccessReader
     access: [["Security"]]
 
 - type: entity
-  id: LockerHeavyContainmentZoneFieldMedic
-  parent: LockerBrigmedic
-  name: field medic's locker
+  id: LockerSpecialPurposeSquad
+  parent: BaseSpecialPurposeSquadLocker
+  name: special purpose squad locker
   components:
   - type: AccessReader
-    access: [["Security"], ["Medical"]]
+    access: [["Security"]]
 
 # Служба безопасности легкой зоны содержания
 
 - type: entity
+  id: BaseCommandantSquadLocker
+  parent: ScpLockerBaseSecure
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: sec
+    stateDoorOpen: sec_open
+    stateDoorClosed: sec_door
+
+- type: entity
   id: LockerExternalAdministrativeZoneCommandant
-  parent: LockerWarden
+  parent: BaseCommandantSquadLocker
   name: light containment zone commandant's locker
   components:
   - type: AccessReader
@@ -128,8 +176,24 @@
 
 - type: entity
   id: LockerExternalAdministrativeZoneOfficer
-  parent: LockerSecurity
+  parent: BaseCommandantSquadLocker
   name: light containment zone officer's locker
+  components:
+  - type: AccessReader
+    access: [["Security"]]
+
+- type: entity
+  id: LockerHeavyContainmentZoneFieldMedic
+  parent: BaseCommandantSquadLocker
+  name: field medic's locker
+  components:
+  - type: AccessReader
+    access: [["Security"], ["Medical"]]
+
+- type: entity
+  id: LockerCommandantSquad
+  parent: BaseCommandantSquadLocker
+  name: commandant squad locker
   components:
   - type: AccessReader
     access: [["Security"]]
@@ -137,8 +201,18 @@
 # Научная служба
 
 - type: entity
+  id: BaseScientificServiceLocker
+  parent: ScpLockerBaseSecure
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: science
+    stateDoorOpen: science_open
+    stateDoorClosed: science_door
+
+- type: entity
   id: LockerScpSafe
-  parent: LockerBase
+  parent: BaseScientificServiceLocker
   name: scp safe class locker
   components:
   - type: AccessReader
@@ -146,7 +220,7 @@
 
 - type: entity
   id: LockerScpEuclid
-  parent: LockerBase
+  parent: BaseScientificServiceLocker
   name: scp euclid class locker
   components:
   - type: AccessReader
@@ -154,41 +228,149 @@
 
 - type: entity
   id: LockerScpKeter
-  parent: LockerBase
+  parent: BaseScientificServiceLocker
   name: scp keter class locker
   components:
   - type: AccessReader
     access: [["Keter"]]
 
+- type: entity
+  id: LockerScientificService
+  parent: BaseScientificServiceLocker
+  name: scientific service locker
+  components:
+  - type: AccessReader
+    access: [ [ "Research" ] ]
+
 # Медицинская служба
 
 - type: entity
+  id: BaseMedicalServiceLocker
+  parent: ScpLockerBaseSecure
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: med
+    stateDoorOpen: med_open
+    stateDoorClosed: med_door
+
+- type: entity
   id: LockerLaboratory
-  parent: LockerChemistry
+  parent: BaseMedicalServiceLocker
   name: laboratory locker
   components:
   - type: AccessReader
     access: [["Laboratory"]]
 
+- type: entity
+  id: LockerMedicalService
+  parent: BaseMedicalServiceLocker
+  name: medical service locker
+  components:
+  - type: AccessReader
+    access: [["Medical"]]
+
 # Инженерно-техническая служба
 
 - type: entity
+  id: BaseEngineeringTechnicalServiceLocker
+  parent: ScpLockerBaseSecure
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: eng
+    stateDoorOpen: eng_open
+    stateDoorClosed: eng_door
+
+- type: entity
   id: LockerLifeSupport
-  parent: LockerAtmospherics
+  parent: BaseEngineeringTechnicalServiceLocker
   name: life support inventory locker
   components:
   - type: AccessReader
     access: [["LifeSupport"]]
-    alertAccesses:
-      red: RedAlertAccesses
-      blue: BlueAlertAccessesHOS
-      gamma: GammaAlertAccesses
+
+- type: entity
+  id: LockerGeneralTechnicalSpecialist
+  parent: BaseEngineeringTechnicalServiceLocker
+  name: engineer's locker
+  components:
+  - type: AccessReader
+    access: [ [ "Engineering" ] ]
+
+- type: entity
+  id: ScpLockerElectricalSupplies
+  parent: BaseEngineeringTechnicalServiceLocker
+  name: electrical supplies locker
+  components:
+  - type: EntityStorageVisuals
+    stateDoorClosed: eng_elec_door
+  - type: AccessReader
+    access: [ [ "Engineering" ] ]
+
+- type: entity
+  parent: BaseEngineeringTechnicalServiceLocker
+  id: ScpLockerWeldingSupplies
+  name: welding supplies locker
+  components:
+  - type: EntityStorageVisuals
+    stateDoorClosed: eng_weld_door
+  - type: AccessReader
+    access: [ [ "Engineering" ] ]
+
+- type: entity
+  parent: BaseEngineeringTechnicalServiceLocker
+  id: ScpLockerEvacRepair
+  name: emergency shuttle emergency locker
+  description: It's emergencies all the way down.
+  components:
+  - type: EntityStorageVisuals
+    stateDoorClosed: eng_evac_door
+  - type: AccessReader
+    access: [ [ "Engineering" ] ]
+
+- type: entity
+  id: LockerEngineeringTechnicalService
+  parent: BaseEngineeringTechnicalServiceLocker
+  name: engineering technical service locker
+  components:
+  - type: AccessReader
+    access: [ [ "Engineering" ] ]
+
+# Логистика
+
+- type: entity
+  id: BaseLogisticsServiceLocker
+  parent: ScpLockerBaseSecure
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: cargo
+    stateDoorOpen: cargo_open
+    stateDoorClosed: cargo_door
+
+- type: entity
+  id: LockerLogisticsOfficer
+  parent: BaseLogisticsServiceLocker
+  name: logistics officer's locker
+  components:
+  - type: AccessReader
+    access: [["Logistics"]]
+
+- type: entity
+  id: LockerLogisticsService
+  parent: BaseLogisticsServiceLocker
+  name: logistics service locker
+  components:
+  - type: AccessReader
+    access: [["Logistics"]]
 
 # Департамент продовольственного и санитарного обслуживания
 
 - type: entity
   id: ScpLockerFreezer
-  parent: LockerFreezer
+  parent: ScpLockerBaseSecure
+  name: freezer locker
   components:
   - type: AccessReader
     access: [["Service"]]
@@ -199,18 +381,15 @@
 
 - type: entity
   id: ScpLockerBotanist
-  parent: LockerBotanist
+  parent: ScpLockerBaseSecure
+  name: botanist-phytogeneticist's locker
   components:
   - type: AccessReader
     access: [["Service"]]
-    alertAccesses:
-      red: RedAlertAccesses
-      blue: BlueAlertAccessesHOS
-      gamma: GammaAlertAccesses
 
 - type: entity
   id: ScpLockerBooze
-  parent: LockerBooze
+  parent: ScpLockerBaseSecure
   components:
   - type: AccessReader
     access: [["Service"]]
@@ -219,15 +398,16 @@
 
 - type: entity
   id: LockerChaosInsurgency
+  parent: ScpLockerBaseSecure
   name: chaos insurgency locker
-  parent: LockerSyndicatePersonal
   components:
   - type: AccessReader
     access: [["ChaosInsurgency"]]
 
 - type: entity
-  parent: LockerBase
+  parent: ScpLockerBaseSecure
   id: LockerThirdParty
+  name: third party organization's locker
   components:
   - type: AccessReader
     access: [["ThirdParty"]]
