@@ -2,6 +2,7 @@
   id: LockerPilotFilledHardsuit
   suffix: Filled, Hardsuit
   parent: LockerPilot
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: StorageFill
     contents:

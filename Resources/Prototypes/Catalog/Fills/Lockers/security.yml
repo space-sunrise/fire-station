@@ -147,6 +147,7 @@
   id: LockerDetectiveFilled
   suffix: Filled
   parent: LockerDetective
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -179,6 +180,7 @@
   id: ClosetBombFilled
   parent: ClosetBomb
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:

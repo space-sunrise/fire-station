@@ -36,6 +36,7 @@
   id: ClosetChefFilled
   suffix: Filled
   parent: ClosetChef
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -70,6 +71,7 @@
   id: ClosetJanitorFilled
   suffix: Filled
   parent: ClosetJanitor
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:

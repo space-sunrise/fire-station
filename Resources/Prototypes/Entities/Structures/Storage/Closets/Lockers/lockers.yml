@@ -26,6 +26,7 @@
   id: LockerSteel
   parent: LockerBaseSecure
   name: secure closet
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -118,6 +119,7 @@
   id: LockerElectricalSupplies
   parent: LockerBase
   name: electrical supplies locker
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -138,6 +140,7 @@
   id: LockerWeldingSupplies
   parent: LockerBase
   name: welding supplies locker
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -179,6 +182,7 @@
   id: LockerEngineer
   parent: LockerBase
   name: engineer's locker
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -200,6 +204,7 @@
   id: LockerEvacRepair
   name: emergency shuttle emergency locker
   description: It's emergencies all the way down.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -215,6 +220,7 @@
   parent: LockerBase
   name: freezer
   suffix: No Access
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -275,6 +281,7 @@
   parent: LockerBase
   name: medicine locker
   description: Filled to the brim with medical junk.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -295,6 +302,7 @@
   id: LockerMedical
   parent: LockerBase
   name: medical doctor's locker
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -387,6 +395,7 @@
   id: LockerScientist
   parent: LockerBase
   name: scientist's locker
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -621,6 +630,7 @@
   parent: LockerSecurity
   name: evidence locker
   description: To store bags of bullet casings and detainee belongings.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Security"]]
@@ -631,6 +641,7 @@
   name: armory closet
   parent: LockerBaseSecure
   description: It's a personal storage unit for operative gear.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -645,6 +656,7 @@
   suffix: once to station
   parent: LockerSyndicatePersonal
   description: Advanced locker technology.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: ArrivalsBlacklist
     - type: BluespaceLocker

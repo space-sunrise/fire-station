@@ -2,6 +2,7 @@
   id: WardrobeGreyFilled
   suffix: Filled
   parent: WardrobeGrey
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -12,6 +13,7 @@
   id: ClosetWallWardrobeGreyFilled
   suffix: Filled
   parent: ClosetWallGrey
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -38,6 +40,7 @@
   id: WardrobeMixedFilled
   suffix: Filled
   parent: WardrobeMixed
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -48,6 +51,7 @@
   id: ClosetWallWardrobeMixedFilled
   suffix: Filled
   parent: ClosetWallMixed
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -83,6 +87,7 @@
   id: WardrobeYellowFilled
   suffix: Filled
   parent: WardrobeYellow
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -93,6 +98,7 @@
   id: ClosetWallWardrobeYellowFilled
   suffix: Filled
   parent: ClosetWallYellow
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -114,6 +120,7 @@
   id: WardrobeWhiteFilled
   suffix: Filled
   parent: WardrobeWhite
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -124,6 +131,7 @@
   id: ClosetWallWardrobeWhiteFilled
   suffix: Filled
   parent: ClosetWallWhite
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -144,6 +152,7 @@
   id: WardrobeBlueFilled
   suffix: Filled
   parent: WardrobeBlue
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -154,6 +163,7 @@
   id: ClosetWallWardrobeBlueFilled
   suffix: Filled
   parent: ClosetWallBlue
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -173,6 +183,7 @@
   id: WardrobePinkFilled
   suffix: Filled
   parent: WardrobePink
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -183,6 +194,7 @@
   id: ClosetWallWardrobePinkFilled
   suffix: Filled
   parent: ClosetWallPink
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -202,6 +214,7 @@
   id: WardrobeBlackFilled
   suffix: Filled
   parent: WardrobeBlack
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -212,6 +225,7 @@
   id: ClosetWallWardrobeBlackFilled
   suffix: Filled
   parent: ClosetWallBlack
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -234,6 +248,7 @@
   id: WardrobeGreenFilled
   suffix: Filled
   parent: WardrobeGreen
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -244,6 +259,7 @@
   id: ClosetWallWardrobeGreenFilled
   suffix: Filled
   parent: ClosetWallGreen
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:

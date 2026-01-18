@@ -2,6 +2,7 @@
   id: LockerSyndicatePersonalFilled
   suffix: Filled
   parent: LockerSyndicatePersonal
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -43,6 +44,7 @@
   id: ClosetEmergencyFilledRandom
   parent: ClosetEmergency
   suffix: Filled, Random
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -53,6 +55,7 @@
   id: ClosetWallEmergencyFilledRandom
   parent: ClosetWallEmergency
   suffix: Filled, Random
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -84,6 +87,7 @@
   id: ClosetEmergencyN2FilledRandom
   parent: ClosetEmergencyN2
   suffix: Filled, Random
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -94,6 +98,7 @@
   parent: ClosetWallEmergencyN2
   id: ClosetWallEmergencyN2FilledRandom
   suffix: Filled, Random
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -128,6 +133,7 @@
   id: ClosetFireFilled
   parent: ClosetFire
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -138,6 +144,7 @@
   id: ClosetWallFireFilledRandom
   parent: ClosetWallFire
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -216,6 +223,7 @@
   id: ClosetMaintenanceFilledRandom
   suffix: Filled, Random
   parent: ClosetMaintenance
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -226,6 +234,7 @@
   id: ClosetWallMaintenanceFilledRandom
   parent: ClosetWall
   suffix: Filled, Random
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
