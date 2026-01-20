@@ -111,18 +111,6 @@
             "directions": 4
         },
         {
-            "name": "medicines",
-            "directions": 4
-        },
-        {
-            "name": "medicines_door",
-            "directions": 4
-        },
-        {
-            "name": "medicines_open",
-            "directions": 4
-        },
-        {
             "name": "n2",
             "directions": 4
         },

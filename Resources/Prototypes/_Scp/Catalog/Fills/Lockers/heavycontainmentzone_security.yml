@@ -64,9 +64,9 @@
         prob: 0.5
 
 - type: entity
-  id: LockerHeavyContainmentZoneFieldMedicFilled
+  id: ScpLockerAmnesticologistFilled
   suffix: Brigmedic, Filled
-  parent: LockerHeavyContainmentZoneFieldMedic
+  parent: ScpLockerAmnesticologist
   components:
   - type: StorageFill
     contents:

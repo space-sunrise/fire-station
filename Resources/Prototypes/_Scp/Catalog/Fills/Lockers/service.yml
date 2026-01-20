@@ -1,12 +1,12 @@
 ﻿- type: entity
-  parent: ScpLockerBotanist
-  id: ScpLockerBotanistFilled
+  parent: ScpLockerBotanistPhytogeneticist
+  id: ScpLockerBotanistPhytogeneticistFilled
   suffix: Filled
   components:
   - type: EntityTableContainerFill
     containers:
       entity_storage: !type:NestedSelector
-        tableId: ScpFillLockerBotanist
+        tableId: ScpFillLockerBotanistPhytogeneticist
 
 - type: entity
   parent: ScpLockerBooze
@@ -19,7 +19,7 @@
         tableId: ScpFillLockerBooze
 
 - type: entityTable
-  id: ScpFillLockerBotanist
+  id: ScpFillLockerBotanistPhytogeneticist
   table: !type:AllSelector
     children:
     - id: ClothingHandsGlovesLeather

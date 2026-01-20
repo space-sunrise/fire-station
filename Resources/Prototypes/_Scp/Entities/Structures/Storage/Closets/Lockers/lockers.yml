@@ -118,7 +118,7 @@
   - type: AccessReader
     access: [["O5"]]
 
-# Служба безопасности тяжелой зоны содержания
+# СБ - Отряд специального назначения
 
 - type: entity
   id: BaseSpecialPurposeSquadLocker
@@ -147,14 +147,14 @@
     access: [["Security"]]
 
 - type: entity
-  id: LockerSpecialPurposeSquad
+  id: ScpLockerSpecialPurposeSquad
   parent: BaseSpecialPurposeSquadLocker
   name: special purpose squad locker
   components:
   - type: AccessReader
     access: [["Security"]]
 
-# Служба безопасности легкой зоны содержания
+# СБ - Комендантский отряд
 
 - type: entity
   id: BaseCommandantSquadLocker
@@ -183,15 +183,15 @@
     access: [["Security"]]
 
 - type: entity
-  id: LockerHeavyContainmentZoneFieldMedic
+  id: ScpLockerAmnesticologist
   parent: BaseCommandantSquadLocker
-  name: field medic's locker
+  name: amnesticologist's locker
   components:
   - type: AccessReader
     access: [["Security"], ["Medical"]]
 
 - type: entity
-  id: LockerCommandantSquad
+  id: ScpLockerCommandantSquad
   parent: BaseCommandantSquadLocker
   name: commandant squad locker
   components:
@@ -235,12 +235,20 @@
     access: [["Keter"]]
 
 - type: entity
-  id: LockerScientificService
+  id: ScpLockerResearcher
+  parent: BaseScientificServiceLocker
+  name: researcher's locker
+  components:
+  - type: AccessReader
+    access: [[ "Research" ]]
+
+- type: entity
+  id: ScpLockerScientificService
   parent: BaseScientificServiceLocker
   name: scientific service locker
   components:
   - type: AccessReader
-    access: [ [ "Research" ] ]
+    access: [[ "Research" ]]
 
 # Медицинская служба
 
@@ -261,6 +269,18 @@
   components:
   - type: AccessReader
     access: [["Laboratory"]]
+
+- type: entity
+  id: ScpLockerMedicalSpecialist
+  parent: BaseMedicalServiceLocker
+  name: medical specialist's locker
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: med_secure
+    stateDoorOpen: med_secure_open
+    stateDoorClosed: med_secure_door
+  - type: AccessReader
+    access: [["Medical"]]
 
 - type: entity
   id: LockerMedicalService
@@ -368,19 +388,36 @@
 # Департамент продовольственного и санитарного обслуживания
 
 - type: entity
-  id: ScpLockerFreezer
+  id: ScpLockerFreezerBase
   parent: ScpLockerBaseSecure
+  name: freezer
+  suffix: No Access
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: freezer
+    stateDoorOpen: freezer_open
+    stateDoorClosed: freezer_door
+  - type: ExplosionResistance
+    damageCoefficient: 0.50
+  - type: AntiRottingContainer
+  - type: Construction
+    graph: ClosetFreezer
+    node: done
+    containers:
+    - entity_storage
+  - type: Paintable
+    group: null
+
+- type: entity
+  id: ScpLockerFreezer
+  parent: ScpLockerFreezerBase
   name: freezer locker
   components:
   - type: AccessReader
     access: [["Service"]]
-    alertAccesses:
-      red: RedAlertAccesses
-      blue: BlueAlertAccessesHOS
-      gamma: GammaAlertAccesses
 
 - type: entity
-  id: ScpLockerBotanist
+  id: ScpLockerBotanistPhytogeneticist
   parent: ScpLockerBaseSecure
   name: botanist-phytogeneticist's locker
   components:

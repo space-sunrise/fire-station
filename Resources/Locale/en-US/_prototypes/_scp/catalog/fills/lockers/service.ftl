@@ -1,6 +1,6 @@
-ent-ScpLockerBotanistFilled = { ent-ScpLockerBotanist }
+ent-ScpLockerBotanistPhytogeneticistFilled = { ent-ScpLockerBotanistPhytogeneticist }
     .suffix = Filled
-    .desc = { ent-ScpLockerBotanist.desc }
+    .desc = { ent-ScpLockerBotanistPhytogeneticist.desc }
 ent-ScpLockerBoozeFilled = { ent-ScpLockerBooze }
     .suffix = Filled
     .desc = { ent-ScpLockerBooze.desc }

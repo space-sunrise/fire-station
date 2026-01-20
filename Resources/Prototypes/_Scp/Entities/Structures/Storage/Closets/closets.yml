@@ -127,14 +127,3 @@
   parent: [ ScpClosetSteelBase, ClosetMaintenance ]
   name: maintenance closet
   description: It's a storage unit.
-
-- type: entity
-  id: ScpLockerSyndicate
-  parent: [ ScpClosetSteelBase, LockerSyndicate ]
-  name: armory closet
-  description: It's a storage unit.
-  components:
-  - type: EntityStorageVisuals
-    stateBaseClosed: syndicate
-    stateDoorOpen: syndicate_open
-    stateDoorClosed: syndicate_door

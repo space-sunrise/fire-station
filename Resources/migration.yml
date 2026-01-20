@@ -1426,10 +1426,10 @@ ScpUraniumWindoorNukeopLocked: null
 ScpUraniumWindoorSecureNukeopLocked: null
 ScpBlastDoorCentralCommand: ScpBlastDoorRegionalAdministration
 ScpShuttersWindowCentralCommand: ScpShuttersWindowRegionalAdministration
-LockerExternalAdministrativeZoneFieldDoctor: LockerHeavyContainmentZoneFieldMedic
-LockerHeavyContainmentZoneFieldDoctor: LockerHeavyContainmentZoneFieldMedic
-LockerExternalAdministrativeZoneFieldDoctorFilled: LockerHeavyContainmentZoneFieldMedicFilled
-LockerHeavyContainmentZoneFieldDoctorFilled: LockerHeavyContainmentZoneFieldMedicFilled
+LockerExternalAdministrativeZoneFieldDoctor: ScpLockerAmnesticologist
+LockerHeavyContainmentZoneFieldDoctor: ScpLockerAmnesticologist
+LockerExternalAdministrativeZoneFieldDoctorFilled: ScpLockerAmnesticologistFilled
+LockerHeavyContainmentZoneFieldDoctorFilled: ScpLockerAmnesticologistFilled
 KeyCardLevel0: null
 KeyCardLevel1: null
 KeyCardLevel2: null
@@ -1868,8 +1868,37 @@ LockerRepresentative: LockerEthicsCommittee
 LockerChemistry: LockerLaboratory
 LockerAtmospherics: LockerLifeSupport
 LockerFreezer: ScpLockerFreezer
-LockerBotanist: ScpLockerBotanist
+LockerBotanist: ScpLockerBotanistPhytogeneticist
+ScpLockerBotanist: ScpLockerBotanistPhytogeneticist
 LockerBooze: ScpLockerBooze
+LockerSteel: ScpLockerSteel
+LockerSalvageSpecialist: LockerLogisticsService
+LockerElectricalSupplies: ScpLockerElectricalSupplies
+LockerWeldingSupplies: ScpLockerWeldingSupplies
+LockerEngineer: ScpLockerGeneralTechnicalSpecialist
+LockerEvacRepair: ScpLockerEvacRepair
+LockerFreezerBase: ScpLockerFreezerBase
+LockerMedicine: LockerMedicalService
+LockerMedical: ScpLockerMedicalSpecialist
+LockerScientist: ScpLockerResearcher
+LockerBrigmedic: ScpLockerAmnesticologist
+LockerHeavyContainmentZoneFieldMedic: ScpLockerAmnesticologist
+LockerEvidence: ScpLockerCommandantSquad
+
+ClosetTool: ScpClosetTool
+ClosetRadiationSuit: ScpClosetRadiationSuit
+ClosetEmergency: ScpClosetEmergency
+ClosetEmergencyN2: ScpClosetEmergencyN2
+ClosetFire: ScpClosetFire
+ClosetBomb: ScpClosetBomb
+ClosetJanitorBomb: ScpClosetJanitorBomb
+ClosetL3: ScpClosetL3
+ClosetL3Science: ScpClosetL3Science
+ClosetL3Virology: ScpClosetL3Virology
+ClosetL3Security: ScpClosetL3Security
+ClosetL3Janitor: ScpClosetL3Janitor
+ClosetMaintenance: ScpClosetMaintenance
+
 
 LockerCaptainFilled: LockerDirectorFilled
 LockerCaptainFilledNoLaser: LockerDirectorFilled
@@ -1887,8 +1916,10 @@ LockerResearchDirectorFilledHardsuit: LockerScientificServiceDirectorFilled
 LockerChemistryFilled: LockerLaboratoryFilled
 LockerAtmosphericsFilled: LockerLifeSupportFilled
 LockerAtmosphericsFilledHardsuit: LockerLifeSupportFilled
-LockerBotanistFilled: ScpLockerBotanistFilled
+LockerBotanistFilled: ScpLockerBotanistPhytogeneticistFilled
+ScpLockerBotanistFilled: ScpLockerBotanistPhytogeneticistFilled
 LockerBoozeFilled: ScpLockerBoozeFilled
+LockerBrigmedicFilled: null
 
 LockerFreezerVaultFilled: null
 LockerWarden: null
@@ -1896,8 +1927,10 @@ LockerWardenFilled: null
 LockerWardenFilledHardsuit: null
 LockerSecurity: null
 LockerSecurityFilled: null
-LockerBrigmedic: null
-LockerBrigmedicFilled: null
+LockerSyndicatePersonal: null
+LockerBluespaceStation: null
+LockerClown: null
+LockerMime: null
 
 # Столы
 TableFrame: ScpTableFrame
