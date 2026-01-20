@@ -1,4 +1,24 @@
 ﻿- type: entity
+  parent: ScpLockerMedicalService
+  id: ScpLockerMedicalServiceFilledMedicine
+  suffix: Filled, Medicine
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: LockerFillMedicine
+
+- type: entity
+  parent: ScpLockerMedicalSpecialist
+  id: ScpLockerMedicalSpecialistFilled
+  suffix: Filled, Medical specialist
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: LockerFillMedicalDoctor
+
+- type: entity
   parent: LockerLaboratory
   id: LockerLaboratoryFilled
   suffix: Filled

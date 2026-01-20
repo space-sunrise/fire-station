@@ -283,7 +283,7 @@
     access: [["Medical"]]
 
 - type: entity
-  id: LockerMedicalService
+  id: ScpLockerMedicalService
   parent: BaseMedicalServiceLocker
   name: medical service locker
   components:
@@ -311,7 +311,7 @@
     access: [["LifeSupport"]]
 
 - type: entity
-  id: LockerGeneralTechnicalSpecialist
+  id: ScpLockerGeneralTechnicalSpecialist
   parent: BaseEngineeringTechnicalServiceLocker
   name: engineer's locker
   components:

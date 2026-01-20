@@ -1878,7 +1878,7 @@ LockerWeldingSupplies: ScpLockerWeldingSupplies
 LockerEngineer: ScpLockerGeneralTechnicalSpecialist
 LockerEvacRepair: ScpLockerEvacRepair
 LockerFreezerBase: ScpLockerFreezerBase
-LockerMedicine: LockerMedicalService
+LockerMedicine: ScpLockerMedicalService
 LockerMedical: ScpLockerMedicalSpecialist
 LockerScientist: ScpLockerResearcher
 LockerBrigmedic: ScpLockerAmnesticologist
@@ -1919,6 +1919,15 @@ LockerAtmosphericsFilledHardsuit: LockerLifeSupportFilled
 LockerBotanistFilled: ScpLockerBotanistPhytogeneticistFilled
 ScpLockerBotanistFilled: ScpLockerBotanistPhytogeneticistFilled
 LockerBoozeFilled: ScpLockerBoozeFilled
+ClosetToolFilled: ScpClosetToolFilled
+LockerElectricalSuppliesFilled: ScpLockerElectricalSuppliesFilled
+LockerWeldingSuppliesFilled: ScpLockerWeldingSuppliesFilled
+ClosetRadiationSuitFilled: ScpClosetRadiationSuitFilled
+LockerEvacRepairFilled: ScpLockerEvacRepairFilled
+LockerEngineerFilled: ScpLockerGeneralTechnicalSpecialistFilled
+LockerMedicineFilled: ScpLockerMedicalServiceFilledMedicine
+LockerMedicalFilled: ScpLockerMedicalSpecialistFilled
+LockerParamedicFilled: ScpLockerMedicalSpecialistFilled
 LockerBrigmedicFilled: null
 
 LockerFreezerVaultFilled: null
@@ -1931,6 +1940,9 @@ LockerSyndicatePersonal: null
 LockerBluespaceStation: null
 LockerClown: null
 LockerMime: null
+
+LockerWallMedicalFilled: null
+LockerWallMedicalDoctorFilled: null
 
 # Столы
 TableFrame: ScpTableFrame
