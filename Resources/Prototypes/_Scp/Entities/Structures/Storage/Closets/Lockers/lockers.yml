@@ -507,3 +507,33 @@
   components:
   - type: AccessReader
     access: [["ThirdParty"]]
+
+# Шкафчики заключенных
+
+- type: entity
+  parent: [ GenpopBase , ScpLockerBase ]
+  id: ScpLockerPrisoner
+  name: prisoner closet
+  description: It's a secure locker for an inmate's personal belongings during their time in prison.
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PolygonShape
+          radius: 0.01
+          vertices:
+          - -0.25,-0.48
+          - 0.25,-0.48
+          - 0.25,0.48
+          - -0.25,0.48
+        mask:
+        - Impassable
+        - TableLayer
+        - LowImpassable
+        layer:
+        - BulletImpassable
+        - Opaque
+        density: 75
+        hard: True
+        restitution: 0
+        friction: 0.4

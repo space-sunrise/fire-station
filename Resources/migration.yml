@@ -1904,6 +1904,14 @@ ClosetJanitor: ScpClosetJanitor
 ClosetChef: ScpClosetGastronomicSpecialist
 ClosetLegal: ScpClosetLegal
 ClosetCursed: ScpClosetCursed
+LockerPrisoner: ScpLockerPrisoner
+LockerPrisoner2: ScpLockerPrisoner
+LockerPrisoner3: ScpLockerPrisoner
+LockerPrisoner4: ScpLockerPrisoner
+LockerPrisoner5: ScpLockerPrisoner
+LockerPrisoner6: ScpLockerPrisoner
+LockerPrisoner7: ScpLockerPrisoner
+LockerPrisoner8: ScpLockerPrisoner
 
 # Шкафы с одеждой
 WardrobeEngineering: ScpLockerEngineeringTechnicalService
@@ -1992,6 +2000,14 @@ ClosetWallEmergencyFilledRandom: null
 ClosetWallEmergencyN2FilledRandom: null
 ClosetWallFireFilledRandom: null
 ClosetWallMaintenanceFilledRandom: null
+LockerWallBasePrisoner: null
+LockerWallBasePrisoner2: null
+LockerWallBasePrisoner3: null
+LockerWallBasePrisoner4: null
+LockerWallBasePrisoner5: null
+LockerWallBasePrisoner6: null
+LockerWallBasePrisoner7: null
+LockerWallBasePrisoner8: null
 
 # Столы
 TableFrame: ScpTableFrame
