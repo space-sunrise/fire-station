@@ -37,9 +37,10 @@
     group: Locker # TODO: Разные группы
 
 - type: entity
-  id: ScpLockerPlasteelBase
+  id: ScpLockerPlasteel
   parent: [ ScpLockerBaseComponents, ScpClosetPlasteel ]
-  abstract: true
+  name: sturdy locker
+  description: A reinforced plasteel locker designed for secure storage of equipment and sensitive materials.
   components:
   - type: Construction
     graph: ClosetSteelSecure
