@@ -6,4 +6,15 @@
   - type: EntityTableContainerFill
     containers:
       entity_storage: !type:NestedSelector
-        tableId: LockerFillChemistry # TODO: Добавить инвентарь
+        tableId: LockerFillLogisticsOfficer
+
+- type: entityTable
+  id: LockerFillLogisticsOfficer
+  table: !type:AllSelector
+    children:
+    - id: ClothingHeadsetLogistics
+    - id: AppraisalTool
+    - id: Paper
+    - id: Pen
+    - id: BriefcaseBrownFilled
+    - id: ClothingBeltUtilityFilled
