@@ -7,3 +7,6 @@ ent-ClothingShoesBootsMtfMilitaryFilled = { ent-ClothingShoesBootsMtfMilitary }
 ent-ClothingShoesBootsNTFFilled = reinforced boots
     .desc = Reinforced dark-colored tactical boots, designed for prolonged use in field conditions.
     .suffix = MTF
+ent-ClothingShoesRRHFilled = special forces boots
+    .desc = Heavily modified special unit boots. Silent step, non-slip sole, scabbard and convenience.
+    .suffix = MTF | DO NOT MAP

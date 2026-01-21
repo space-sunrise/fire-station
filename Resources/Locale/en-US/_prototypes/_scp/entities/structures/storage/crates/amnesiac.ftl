@@ -1,2 +1,10 @@
 ent-CrateChemistryRawAmnesiac = Amnesiac container
     .desc = Contains jug of raw amnesiac used for producing amnesiacs.
+ent-CrateChemistryAmnesiacA = Amnesiac container
+    .desc = Contains jug of vials of amnesiac A.
+ent-CrateChemistryAmnesiacB = Amnesiac container
+    .desc = Contains jug of vials of amnesiac B.
+ent-CrateChemistryAmnesiacC = Amnesiac container
+    .desc = Contains jug of vials of amnesiac C.
+ent-CrateChemistryAmnesiacD = Amnesiac container
+    .desc = Contains jug of vials of amnesiac D.

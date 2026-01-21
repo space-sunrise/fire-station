@@ -1,3 +1,9 @@
+ent-ScpLockerMedicalServiceFilledMedicine = { ent-ScpLockerMedicalService }
+    .suffix = Filled, Medicine
+    .desc = { ent-ScpLockerMedicalService.desc }
+ent-ScpLockerMedicalSpecialistFilled = { ent-ScpLockerMedicalSpecialist }
+    .suffix = Filled, Medical specialist
+    .desc = { ent-ScpLockerMedicalSpecialist.desc }
 ent-LockerLaboratoryFilled = { ent-LockerLaboratory }
     .suffix = Filled
     .desc = { ent-LockerLaboratory.desc }

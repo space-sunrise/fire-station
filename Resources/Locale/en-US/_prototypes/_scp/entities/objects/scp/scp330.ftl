@@ -1,0 +1,16 @@
+ent-BaseScp330Candy = mysterious candy
+    .desc = A small treat in a bright wrapper. Surely, one won't hurt.
+    .suffix = SCP-330
+ent-Scp330CandyBlue = blue mysterious candy
+    .desc = { ent-BaseScp330Candy.desc }
+ent-Scp330CandyRed = red mysterious candy
+    .desc = { ent-BaseScp330Candy.desc }
+ent-Scp330CandyGreen = green mysterious candy
+    .desc = { ent-BaseScp330Candy.desc }
+ent-Scp330CandyYellow = yellow mysterious candy
+    .desc = { ent-BaseScp330Candy.desc }
+ent-Scp330CandyPink = pink mysterious candy
+    .desc = { ent-BaseScp330Candy.desc }
+ent-Scp330Bowl = candy bowl
+    .desc = A note is attached to the bowl that reads: 'Take no more than two, please!'
+    .suffix = SCP-330

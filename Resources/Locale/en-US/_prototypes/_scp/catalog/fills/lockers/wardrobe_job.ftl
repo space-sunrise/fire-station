@@ -1,0 +1,12 @@
+ent-ScpLockerEngineeringTechnicalServiceFilledWardrobe = { ent-ScpLockerEngineeringTechnicalService }
+    .desc = This locker contains a uniform for engineering or social engineering.
+    .suffix = Filled, Wardrobe
+ent-ScpLockerMedicalServiceFilledWardrobe = { ent-ScpLockerMedicalService }
+    .desc = We've all played doctor before, now practice medicine.
+    .suffix = Filled, Wardrobe
+ent-ScpLockerMedicalServiceFilledWardrobeLaboratory = { ent-ScpLockerMedicalService }
+    .desc = The sleek orange threads contained within make you much less likely to be thrown out of the chemistry lab.
+    .suffix = Filled, Wardrobe, Laboratory
+ent-ScpLockerLogisticsServiceFilledWardrobe = { ent-ScpLockerLogisticsService }
+    .desc = This locker? Maybe 500 spesos. Brotherhood? Priceless.
+    .suffix = Filled, Wardrobe
