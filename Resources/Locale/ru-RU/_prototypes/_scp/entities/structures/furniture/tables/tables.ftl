@@ -1,4 +1,4 @@
-﻿ent-ScpTableFrame = { ent-TableFrame }
+ent-ScpTableFrame = { ent-TableFrame }
     .desc = { ent-TableFrame.desc }
 ent-ScpTable = { ent-Table }
     .desc = { ent-Table.desc }

@@ -1,4 +1,4 @@
-﻿ent-BaseLiquidParticle = капля жидкости
+ent-BaseLiquidParticle = капля жидкости
     .desc = Небольшая летящая капля жидкости
 
 ent-LiquidParticle1 = { ent-BaseLiquidParticle }
