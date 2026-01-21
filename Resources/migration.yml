@@ -2026,11 +2026,8 @@ LockerScientificServiceDirector: ScpLockerScientificServiceDirector
 LockerScientificServiceDirectorFilled: ScpLockerScientificServiceDirectorFilled
 LockerEthicsCommittee: ScpLockerEthicsCommittee
 LockerInternalTribunalService: ScpLockerInternalTribunalService
-LockerInternalTribunalServiceFilled: ScpLockerInternalTribunalServiceFilled
 LockerMTF: ScpLockerMtf
-LockerMTFFilled: ScpLockerMtfFilled
 LockerO5: ScpLockerO5
-LockerO5Filled: ScpLockerO5Filled
 LockerScpSafe: ScpLockerScpSafe
 LockerScpEuclid: ScpLockerScpEuclid
 LockerScpKeter: ScpLockerScpKeter
@@ -2040,11 +2037,6 @@ LockerLifeSupport: ScpLockerLifeSupport
 LockerLifeSupportFilled: ScpLockerLifeSupportFilled
 LockerChaosInsurgency: ScpLockerChaosInsurgency
 LockerThirdParty: ScpLockerThirdParty
-
-
-
-
-
 
 # Столы
 TableFrame: ScpTableFrame
