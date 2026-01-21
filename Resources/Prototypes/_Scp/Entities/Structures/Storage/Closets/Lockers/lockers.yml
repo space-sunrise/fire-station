@@ -516,6 +516,10 @@
   name: prisoner closet
   description: It's a secure locker for an inmate's personal belongings during their time in prison.
   components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: generic_door
   - type: Fixtures
     fixtures:
       fix1:
