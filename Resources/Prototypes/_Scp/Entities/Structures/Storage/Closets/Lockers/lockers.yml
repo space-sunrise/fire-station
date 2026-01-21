@@ -21,7 +21,7 @@
     stateDoorClosed: com_door_plasteel
 
 - type: entity
-  id: LockerDirector
+  id: ScpLockerDirector
   parent: BaseAdministrationLockerPlasteel
   name: director's locker
   components:
@@ -29,7 +29,7 @@
     access: [["ComplexDirector"]]
 
 - type: entity
-  id: LockerPersonnelOfficer
+  id: ScpLockerPersonnelOfficer
   parent: BaseAdministrationLockerPlasteel
   name: personnel officer's locker
   components:
@@ -37,7 +37,7 @@
     access: [["PersonnelOfficer"]]
 
 - type: entity
-  id: LockerChiefTechnicalSpecialist
+  id: ScpLockerChiefTechnicalSpecialist
   parent: BaseAdministrationLockerPlasteel
   name: chief technical specialist's locker
   components:
@@ -45,7 +45,7 @@
     access: [ [ "ChiefTechnicalSpecialist" ] ]
 
 - type: entity
-  id: LockerSeniorLogisticsOfficer
+  id: ScpLockerSeniorLogisticsOfficer
   parent: BaseAdministrationLockerPlasteel
   name: senior logistics officer's locker
   components:
@@ -53,7 +53,7 @@
     access: [["SeniorLogisticsOfficer"]]
 
 - type: entity
-  id: LockerHeadOfMedicalSector
+  id: ScpLockerHeadOfMedicalSector
   parent: BaseAdministrationLockerPlasteel
   name: head of medical sector locker
   components:
@@ -61,7 +61,7 @@
     access: [ [ "HeadOfMedicalSector" ] ]
 
 - type: entity
-  id: LockerSecurityCommander
+  id: ScpLockerSecurityCommander
   parent: BaseAdministrationLockerPlasteel
   name: security commander's locker
   components:
@@ -69,7 +69,7 @@
     access: [["SecurityCommander"]]
 
 - type: entity
-  id: LockerScientificServiceDirector
+  id: ScpLockerScientificServiceDirector
   parent: BaseAdministrationLockerPlasteel
   name: scientific director's locker
   components:
@@ -77,7 +77,7 @@
     access: [ [ "ScientificServiceDirector" ] ]
 
 - type: entity
-  id: LockerEthicsCommittee
+  id: ScpLockerEthicsCommittee
   parent: BaseAdministrationLockerPlasteel
   name: ethics committee's locker
   components:
@@ -85,7 +85,7 @@
     access: [["EthicsCommittee"]]
 
 - type: entity
-  id: LockerInternalTribunalService
+  id: ScpLockerInternalTribunalService
   parent: BaseAdministrationLockerPlasteel
   name: internal tribunal service locker
   components:
@@ -103,7 +103,7 @@
 # Региональная администрация
 
 - type: entity
-  id: LockerMTF
+  id: ScpLockerMtf
   parent: BaseAdministrationLockerPlasteel
   name: mobile task force locker
   components:
@@ -111,7 +111,7 @@
     access: [["MTF"]]
 
 - type: entity
-  id: LockerO5
+  id: ScpLockerO5
   parent: BaseAdministrationLockerPlasteel
   name: O5 locker
   components:
@@ -241,7 +241,7 @@
     stateDoorClosed: science_door_plasteel
 
 - type: entity
-  id: LockerScpSafe
+  id: ScpLockerScpSafe
   parent: BaseScientificServiceLockerPlasteel
   name: scp safe class locker
   components:
@@ -249,7 +249,7 @@
     access: [["Safe"]]
 
 - type: entity
-  id: LockerScpEuclid
+  id: ScpLockerScpEuclid
   parent: BaseScientificServiceLockerPlasteel
   name: scp euclid class locker
   components:
@@ -257,7 +257,7 @@
     access: [["Euclid"]]
 
 - type: entity
-  id: LockerScpKeter
+  id: ScpLockerScpKeter
   parent: BaseScientificServiceLockerPlasteel
   name: scp keter class locker
   components:
@@ -303,7 +303,7 @@
     stateDoorClosed: med_door_plasteel
 
 - type: entity
-  id: LockerLaboratory
+  id: ScpLockerLaboratory
   parent: BaseMedicalServiceLockerPlasteel
   name: laboratory locker
   components:
@@ -349,7 +349,7 @@
     stateDoorClosed: eng_door_plasteel
 
 - type: entity
-  id: LockerLifeSupport
+  id: ScpLockerLifeSupport
   parent: BaseEngineeringTechnicalServiceLockerPlasteel
   name: life support inventory locker
   components:
@@ -493,7 +493,7 @@
 # Сторонний
 
 - type: entity
-  id: LockerChaosInsurgency
+  id: ScpLockerChaosInsurgency
   parent: ScpLockerBase
   name: chaos insurgency locker
   components:
@@ -502,7 +502,7 @@
 
 - type: entity
   parent: ScpLockerBase
-  id: LockerThirdParty
+  id: ScpLockerThirdParty
   name: third party organization's locker
   components:
   - type: AccessReader

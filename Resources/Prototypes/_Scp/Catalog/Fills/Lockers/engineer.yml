@@ -67,8 +67,8 @@
         tableId: FillLockerEngineer
 
 - type: entity
-  parent: LockerLifeSupport
-  id: LockerLifeSupportFilled
+  parent: ScpLockerLifeSupport
+  id: ScpLockerLifeSupportFilled
   suffix: Filled
   components:
   - type: EntityTableContainerFill

@@ -19,8 +19,8 @@
         tableId: LockerFillMedicalDoctor
 
 - type: entity
-  parent: LockerLaboratory
-  id: LockerLaboratoryFilled
+  parent: ScpLockerLaboratory
+  id: ScpLockerLaboratoryFilled
   suffix: Filled
   components:
   - type: EntityTableContainerFill
