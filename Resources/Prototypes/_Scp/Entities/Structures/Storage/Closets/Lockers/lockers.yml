@@ -1,18 +1,8 @@
-- type: entity
-  id: ScpLockerSteel
-  parent: ScpLockerBaseSecure
-  name: secure closet
-  components:
-  - type: EntityStorageVisuals
-    stateBaseClosed: secure
-    stateDoorOpen: secure_open
-    stateDoorClosed: secure_door
-
 # Администрация
 
 - type: entity
   id: BaseAdministrationLocker
-  parent: ScpLockerBaseSecure
+  parent: ScpLockerBase
   abstract: true
   components:
   - type: EntityStorageVisuals
@@ -21,8 +11,18 @@
     stateDoorClosed: com_door
 
 - type: entity
-  id: LockerDirector
+  id: BaseAdministrationLockerPlasteel
   parent: BaseAdministrationLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: com_plasteel
+    stateDoorOpen: com_open_plasteel
+    stateDoorClosed: com_door_plasteel
+
+- type: entity
+  id: LockerDirector
+  parent: BaseAdministrationLockerPlasteel
   name: director's locker
   components:
   - type: AccessReader
@@ -30,7 +30,7 @@
 
 - type: entity
   id: LockerPersonnelOfficer
-  parent: BaseAdministrationLocker
+  parent: BaseAdministrationLockerPlasteel
   name: personnel officer's locker
   components:
   - type: AccessReader
@@ -38,7 +38,7 @@
 
 - type: entity
   id: LockerChiefTechnicalSpecialist
-  parent: BaseAdministrationLocker
+  parent: BaseAdministrationLockerPlasteel
   name: chief technical specialist's locker
   components:
   - type: AccessReader
@@ -46,7 +46,7 @@
 
 - type: entity
   id: LockerSeniorLogisticsOfficer
-  parent: BaseAdministrationLocker
+  parent: BaseAdministrationLockerPlasteel
   name: senior logistics officer's locker
   components:
   - type: AccessReader
@@ -54,7 +54,7 @@
 
 - type: entity
   id: LockerHeadOfMedicalSector
-  parent: BaseAdministrationLocker
+  parent: BaseAdministrationLockerPlasteel
   name: head of medical sector locker
   components:
   - type: AccessReader
@@ -62,7 +62,7 @@
 
 - type: entity
   id: LockerSecurityCommander
-  parent: BaseAdministrationLocker
+  parent: BaseAdministrationLockerPlasteel
   name: security commander's locker
   components:
   - type: AccessReader
@@ -70,7 +70,7 @@
 
 - type: entity
   id: LockerScientificServiceDirector
-  parent: BaseAdministrationLocker
+  parent: BaseAdministrationLockerPlasteel
   name: scientific director's locker
   components:
   - type: AccessReader
@@ -78,7 +78,7 @@
 
 - type: entity
   id: LockerEthicsCommittee
-  parent: BaseAdministrationLocker
+  parent: BaseAdministrationLockerPlasteel
   name: ethics committee's locker
   components:
   - type: AccessReader
@@ -86,7 +86,7 @@
 
 - type: entity
   id: LockerInternalTribunalService
-  parent: BaseAdministrationLocker
+  parent: BaseAdministrationLockerPlasteel
   name: internal tribunal service locker
   components:
   - type: AccessReader
@@ -104,7 +104,7 @@
 
 - type: entity
   id: LockerMTF
-  parent: BaseAdministrationLocker
+  parent: BaseAdministrationLockerPlasteel
   name: mobile task force locker
   components:
   - type: AccessReader
@@ -112,7 +112,7 @@
 
 - type: entity
   id: LockerO5
-  parent: BaseAdministrationLocker
+  parent: BaseAdministrationLockerPlasteel
   name: O5 locker
   components:
   - type: AccessReader
@@ -122,7 +122,7 @@
 
 - type: entity
   id: BaseSpecialPurposeSquadLocker
-  parent: ScpLockerBaseSecure
+  parent: ScpLockerBase
   abstract: true
   components:
   - type: EntityStorageVisuals
@@ -131,8 +131,18 @@
     stateDoorClosed: sec_door_2
 
 - type: entity
-  id: LockerHeavyContainmentZoneCommandant
+  id: BaseSpecialPurposeSquadLockerPlasteel
   parent: BaseSpecialPurposeSquadLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: sec_2_plasteel
+    stateDoorOpen: sec_2_open_plasteel
+    stateDoorClosed: sec_2_door_plasteel
+
+- type: entity
+  id: LockerHeavyContainmentZoneCommandant
+  parent: BaseSpecialPurposeSquadLockerPlasteel
   name: heavy containment zone commandant's locker
   components:
   - type: AccessReader
@@ -140,7 +150,7 @@
 
 - type: entity
   id: LockerHeavyContainmentZoneOfficer
-  parent: BaseSpecialPurposeSquadLocker
+  parent: BaseSpecialPurposeSquadLockerPlasteel
   name: heavy containment zone officer's locker
   components:
   - type: AccessReader
@@ -158,7 +168,7 @@
 
 - type: entity
   id: BaseCommandantSquadLocker
-  parent: ScpLockerBaseSecure
+  parent: ScpLockerBase
   abstract: true
   components:
   - type: EntityStorageVisuals
@@ -167,8 +177,18 @@
     stateDoorClosed: sec_door
 
 - type: entity
-  id: LockerExternalAdministrativeZoneCommandant
+  id: BaseCommandantSquadLockerPlasteel
   parent: BaseCommandantSquadLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: sec_plasteel
+    stateDoorOpen: sec_open_plasteel
+    stateDoorClosed: sec_door_plasteel
+
+- type: entity
+  id: LockerExternalAdministrativeZoneCommandant
+  parent: BaseCommandantSquadLockerPlasteel
   name: light containment zone commandant's locker
   components:
   - type: AccessReader
@@ -176,7 +196,7 @@
 
 - type: entity
   id: LockerExternalAdministrativeZoneOfficer
-  parent: BaseCommandantSquadLocker
+  parent: BaseCommandantSquadLockerPlasteel
   name: light containment zone officer's locker
   components:
   - type: AccessReader
@@ -184,7 +204,7 @@
 
 - type: entity
   id: ScpLockerAmnesticologist
-  parent: BaseCommandantSquadLocker
+  parent: BaseCommandantSquadLockerPlasteel
   name: amnesticologist's locker
   components:
   - type: AccessReader
@@ -202,7 +222,7 @@
 
 - type: entity
   id: BaseScientificServiceLocker
-  parent: ScpLockerBaseSecure
+  parent: ScpLockerBase
   abstract: true
   components:
   - type: EntityStorageVisuals
@@ -211,8 +231,18 @@
     stateDoorClosed: science_door
 
 - type: entity
-  id: LockerScpSafe
+  id: BaseScientificServiceLockerPlasteel
   parent: BaseScientificServiceLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: science_plasteel
+    stateDoorOpen: science_open_plasteel
+    stateDoorClosed: science_door_plasteel
+
+- type: entity
+  id: LockerScpSafe
+  parent: BaseScientificServiceLockerPlasteel
   name: scp safe class locker
   components:
   - type: AccessReader
@@ -220,7 +250,7 @@
 
 - type: entity
   id: LockerScpEuclid
-  parent: BaseScientificServiceLocker
+  parent: BaseScientificServiceLockerPlasteel
   name: scp euclid class locker
   components:
   - type: AccessReader
@@ -228,7 +258,7 @@
 
 - type: entity
   id: LockerScpKeter
-  parent: BaseScientificServiceLocker
+  parent: BaseScientificServiceLockerPlasteel
   name: scp keter class locker
   components:
   - type: AccessReader
@@ -236,7 +266,7 @@
 
 - type: entity
   id: ScpLockerResearcher
-  parent: BaseScientificServiceLocker
+  parent: BaseScientificServiceLockerPlasteel
   name: researcher's locker
   components:
   - type: AccessReader
@@ -254,7 +284,7 @@
 
 - type: entity
   id: BaseMedicalServiceLocker
-  parent: ScpLockerBaseSecure
+  parent: ScpLockerBase
   abstract: true
   components:
   - type: EntityStorageVisuals
@@ -263,8 +293,18 @@
     stateDoorClosed: med_door
 
 - type: entity
-  id: LockerLaboratory
+  id: BaseMedicalServiceLockerPlasteel
   parent: BaseMedicalServiceLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: med_plasteel
+    stateDoorOpen: med_open_plasteel
+    stateDoorClosed: med_door_plasteel
+
+- type: entity
+  id: LockerLaboratory
+  parent: BaseMedicalServiceLockerPlasteel
   name: laboratory locker
   components:
   - type: AccessReader
@@ -272,13 +312,9 @@
 
 - type: entity
   id: ScpLockerMedicalSpecialist
-  parent: BaseMedicalServiceLocker
+  parent: BaseMedicalServiceLockerPlasteel
   name: medical specialist's locker
   components:
-  - type: EntityStorageVisuals
-    stateBaseClosed: med_secure
-    stateDoorOpen: med_secure_open
-    stateDoorClosed: med_secure_door
   - type: AccessReader
     access: [["Medical"]]
 
@@ -294,7 +330,7 @@
 
 - type: entity
   id: BaseEngineeringTechnicalServiceLocker
-  parent: ScpLockerBaseSecure
+  parent: ScpLockerBase
   abstract: true
   components:
   - type: EntityStorageVisuals
@@ -303,8 +339,18 @@
     stateDoorClosed: eng_door
 
 - type: entity
-  id: LockerLifeSupport
+  id: BaseEngineeringTechnicalServiceLockerPlasteel
   parent: BaseEngineeringTechnicalServiceLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: eng_plasteel
+    stateDoorOpen: eng_open_plasteel
+    stateDoorClosed: eng_door_plasteel
+
+- type: entity
+  id: LockerLifeSupport
+  parent: BaseEngineeringTechnicalServiceLockerPlasteel
   name: life support inventory locker
   components:
   - type: AccessReader
@@ -312,7 +358,7 @@
 
 - type: entity
   id: ScpLockerGeneralTechnicalSpecialist
-  parent: BaseEngineeringTechnicalServiceLocker
+  parent: BaseEngineeringTechnicalServiceLockerPlasteel
   name: engineer's locker
   components:
   - type: AccessReader
@@ -324,6 +370,7 @@
   name: electrical supplies locker
   components:
   - type: EntityStorageVisuals
+    stateDoorOpen: eng_elec_open
     stateDoorClosed: eng_elec_door
   - type: AccessReader
     access: [["Engineering"]]
@@ -334,6 +381,7 @@
   name: welding supplies locker
   components:
   - type: EntityStorageVisuals
+    stateDoorOpen: eng_weld_open
     stateDoorClosed: eng_weld_door
   - type: AccessReader
     access: [["Engineering"]]
@@ -345,6 +393,7 @@
   description: It's emergencies all the way down.
   components:
   - type: EntityStorageVisuals
+    stateDoorOpen: eng_evac_open
     stateDoorClosed: eng_evac_door
   - type: AccessReader
     access: [["Engineering"]]
@@ -361,7 +410,7 @@
 
 - type: entity
   id: BaseLogisticsServiceLocker
-  parent: ScpLockerBaseSecure
+  parent: ScpLockerBase
   abstract: true
   components:
   - type: EntityStorageVisuals
@@ -370,15 +419,25 @@
     stateDoorClosed: cargo_door
 
 - type: entity
-  id: ScpLockerLogisticsOfficer
+  id: BaseLogisticsServiceLockerPlasteel
   parent: BaseLogisticsServiceLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: cargo_plasteel
+    stateDoorOpen: cargo_open_plasteel
+    stateDoorClosed: cargo_door_plasteel
+
+- type: entity
+  id: ScpLockerLogisticsOfficer
+  parent: BaseLogisticsServiceLockerPlasteel
   name: logistics officer's locker
   components:
   - type: AccessReader
     access: [["Logistics"]]
 
 - type: entity
-  id: LockerLogisticsService
+  id: ScpLockerLogisticsService
   parent: BaseLogisticsServiceLocker
   name: logistics service locker
   components:
@@ -389,7 +448,7 @@
 
 - type: entity
   id: ScpLockerFreezerBase
-  parent: ScpLockerBaseSecure
+  parent: ScpLockerBase
   name: freezer
   suffix: No Access
   components:
@@ -418,7 +477,7 @@
 
 - type: entity
   id: ScpLockerBotanistPhytogeneticist
-  parent: ScpLockerBaseSecure
+  parent: ScpLockerBase
   name: botanist-phytogeneticist's locker
   components:
   - type: AccessReader
@@ -426,7 +485,7 @@
 
 - type: entity
   id: ScpLockerBooze
-  parent: ScpLockerBaseSecure
+  parent: ScpLockerBase
   components:
   - type: AccessReader
     access: [["Service"]]
@@ -435,14 +494,14 @@
 
 - type: entity
   id: LockerChaosInsurgency
-  parent: ScpLockerBaseSecure
+  parent: ScpLockerBase
   name: chaos insurgency locker
   components:
   - type: AccessReader
     access: [["ChaosInsurgency"]]
 
 - type: entity
-  parent: ScpLockerBaseSecure
+  parent: ScpLockerBase
   id: LockerThirdParty
   name: third party organization's locker
   components:

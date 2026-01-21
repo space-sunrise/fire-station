@@ -107,7 +107,7 @@
 - type: entity
   id: ScpLockerCommandantSquadFilledWardrobe
   parent: ScpLockerCommandantSquad
-  suffix: Filled
+  suffix: Filled, Wardrobe
   components:
   - type: EntityTableContainerFill
     containers:

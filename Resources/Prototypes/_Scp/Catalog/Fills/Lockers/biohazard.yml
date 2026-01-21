@@ -27,23 +27,3 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: FillBiohazardGearSecurity
-
-- type: entity
-  id: ScpClosetL3JanitorFilled
-  parent: ScpClosetL3Janitor
-  suffix: Filled, Janitor
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:NestedSelector
-        tableId: FillBiohazardGearJanitor
-
-- type: entity
-  id: ScpClosetL3ScienceFilled
-  parent: ScpClosetL3Science
-  suffix: Filled, Science
-  components:
-  - type: EntityTableContainerFill
-    containers:
-      entity_storage: !type:NestedSelector
-        tableId: FillBiohazardGearScience

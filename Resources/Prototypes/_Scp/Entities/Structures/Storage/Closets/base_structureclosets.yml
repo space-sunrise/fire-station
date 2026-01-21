@@ -22,4 +22,45 @@
 
 - type: entity
   id: ScpClosetSteelBase
-  parent: [ ScpClosetBase, ClosetSteelBase ]
+  parent: ScpClosetBase
+  components:
+  - type: Construction
+    graph: ClosetSteel
+    node: done
+    containers:
+    - entity_storage
+  - type: Paintable
+    group: Closet
+
+- type: entity
+  id: ScpClosetPlasteel
+  parent: ScpClosetSteelBase
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic_plasteel
+    stateDoorOpen: generic_open_plasteel
+    stateDoorClosed: generic_door_plasteel
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetPlasteel1:
+            min: 1
+            max: 1

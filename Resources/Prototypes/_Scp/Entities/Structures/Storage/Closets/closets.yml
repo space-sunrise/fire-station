@@ -6,7 +6,7 @@
   components:
   - type: EntityStorageVisuals
     stateBaseClosed: eng
-    stateDoorOpen: eng_open
+    stateDoorOpen: eng_tool_open
     stateDoorClosed: eng_tool_door
 
 - type: entity
@@ -17,7 +17,7 @@
   components:
   - type: EntityStorageVisuals
     stateBaseClosed: eng
-    stateDoorOpen: eng_open
+    stateDoorOpen: eng_rad_open
     stateDoorClosed: eng_rad_door
 
 - type: entity
@@ -65,17 +65,6 @@
     stateDoorClosed: bomb_door
 
 - type: entity
-  id: ScpClosetJanitorBomb
-  parent: [ ScpClosetSteelBase, ClosetJanitorBomb ]
-  name: janitorial bomb suit closet
-  description: It's a storage unit for janitorial explosion-protective suits.
-  components:
-  - type: EntityStorageVisuals
-    stateBaseClosed: janitor_bomb
-    stateDoorOpen: janitor_bomb_open
-    stateDoorClosed: janitor_bomb_door
-
-- type: entity
   id: ScpClosetL3
   parent: [ ScpClosetSteelBase, ClosetL3 ]
   name: level 3 biohazard gear closet
@@ -85,15 +74,6 @@
     stateBaseClosed: bio
     stateDoorOpen: bio_open
     stateDoorClosed: bio_door
-
-- type: entity
-  id: ScpClosetL3Science
-  parent: [ ScpClosetL3, ClosetL3Science ]
-  components:
-  - type: EntityStorageVisuals
-    stateBaseClosed: bio_sci
-    stateDoorOpen: bio_sci_open
-    stateDoorClosed: bio_sci_door
 
 - type: entity
   id: ScpClosetL3Virology
@@ -114,16 +94,17 @@
     stateDoorClosed: bio_sec_door
 
 - type: entity
-  id: ScpClosetL3Janitor
-  parent: [ ScpClosetL3, ClosetL3Janitor ]
-  components:
-  - type: EntityStorageVisuals
-    stateBaseClosed: bio_jan
-    stateDoorOpen: bio_jan_open
-    stateDoorClosed: bio_jan_door
-
-- type: entity
   id: ScpClosetMaintenance
   parent: [ ScpClosetSteelBase, ClosetMaintenance ]
   name: maintenance closet
   description: It's a storage unit.
+
+- type: entity
+  id: ScpClosetCursed
+  parent: ScpClosetSteelBase
+  suffix: cursed
+  components:
+  - type: CursedEntityStorage
+  - type: EntityStorage
+    closeSound:
+      path: /Audio/Effects/teleport_arrival.ogg

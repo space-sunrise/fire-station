@@ -1871,8 +1871,8 @@ LockerFreezer: ScpLockerFreezer
 LockerBotanist: ScpLockerBotanistPhytogeneticist
 ScpLockerBotanist: ScpLockerBotanistPhytogeneticist
 LockerBooze: ScpLockerBooze
-LockerSteel: ScpLockerSteel
-LockerSalvageSpecialist: LockerLogisticsService
+LockerSteel: ScpLockerPlasteel
+LockerSalvageSpecialist: ScpLockerLogisticsService
 LockerElectricalSupplies: ScpLockerElectricalSupplies
 LockerWeldingSupplies: ScpLockerWeldingSupplies
 LockerEngineer: ScpLockerGeneralTechnicalSpecialist
@@ -1894,21 +1894,23 @@ ClosetEmergency: ScpClosetEmergency
 ClosetEmergencyN2: ScpClosetEmergencyN2
 ClosetFire: ScpClosetFire
 ClosetBomb: ScpClosetBomb
-ClosetJanitorBomb: ScpClosetJanitorBomb
 ClosetL3: ScpClosetL3
-ClosetL3Science: ScpClosetL3Science
+ClosetL3Science: ScpClosetL3
 ClosetL3Virology: ScpClosetL3Virology
 ClosetL3Security: ScpClosetL3Security
-ClosetL3Janitor: ScpClosetL3Janitor
+ClosetL3Janitor: ScpClosetL3Virology
 ClosetMaintenance: ScpClosetMaintenance
 ClosetJanitor: ScpClosetJanitor
 ClosetChef: ScpClosetGastronomicSpecialist
 ClosetLegal: ScpClosetLegal
+ClosetCursed: ScpClosetCursed
 
 # Шкафы с одеждой
 WardrobeEngineering: ScpLockerEngineeringTechnicalService
 WardrobeMedicalDoctor: ScpLockerMedicalService
-WardrobeSecurity: null
+WardrobeSecurity: null # У нас два отряда СБ, им не подойдет единый шкаф. Новые нужно ставить вручную
+WardrobeCargo: ScpLockerLogisticsService
+WardrobeChemistry: ScpLockerMedicalService
 
 # Заполненные шкафы с замком
 LockerCaptainFilled: LockerDirectorFilled
@@ -1948,13 +1950,13 @@ LockerScienceFilled: ScpLockerResearcherFilled
 ClosetBombFilled: ScpClosetBombFilled
 ClosetEmergencyFilledRandom: ScpClosetEmergencyFilled
 ClosetEmergencyN2FilledRandom: ScpClosetEmergencyN2Filled
-ClosetFireFilled: ScpClosetFire
+ClosetFireFilled: ScpClosetFireFilled
 ClosetMaintenanceFilledRandom: ScpClosetMaintenanceFilled
 ClosetL3Filled: ScpClosetL3Filled
 ClosetL3VirologyFilled: ScpClosetL3VirologyFilled
 ClosetL3SecurityFilled: ScpClosetL3SecurityFilled
-ClosetL3JanitorFilled: ScpClosetL3JanitorFilled
-ClosetL3ScienceFilled: ScpClosetL3ScienceFilled
+ClosetL3JanitorFilled: ScpClosetL3VirologyFilled
+ClosetL3ScienceFilled: ScpClosetL3Filled
 ClosetJanitorFilled: ScpClosetJanitorFilled
 ClosetChefFilled: ScpClosetGastronomicSpecialistFilled
 ClosetLegalFilled: ScpClosetLegalFilled
@@ -1963,6 +1965,8 @@ ClosetLegalFilled: ScpClosetLegalFilled
 WardrobeEngineeringFilled: ScpLockerEngineeringTechnicalServiceFilledWardrobe
 WardrobeMedicalDoctorFilled: ScpLockerMedicalServiceFilledWardrobe
 WardrobeSecurityFilled: null # У нас два отряда СБ, им не подойдет единый шкаф. Новые нужно ставить вручную
+WardrobeCargoFilled: ScpLockerLogisticsServiceFilledWardrobe
+WardrobeChemistryFilled: ScpLockerMedicalServiceFilledWardrobeLaboratory
 
 # Лишние ванильные шкафы
 LockerFreezerVaultFilled: null
@@ -1976,8 +1980,10 @@ LockerClown: null
 LockerMime: null
 LockerDetective: null
 LockerDetectiveFilled: null
+LockerSyndicate: null
 LockerSyndicatePersonal: null
 LockerSyndicatePersonalFilled: null
+ClosetJanitorBomb: null
 
 # Настенные шкафы(не нужны)
 LockerWallMedicalFilled: null
