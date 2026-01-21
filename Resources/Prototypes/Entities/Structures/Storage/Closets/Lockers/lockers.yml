@@ -535,6 +535,7 @@
   name: prisoner closet
   description: It's a secure locker for an inmate's personal belongings during their time in prison.
   suffix: 1
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Fixtures
     fixtures:
@@ -562,6 +563,7 @@
   parent: LockerPrisoner
   id: LockerPrisoner2
   suffix: 2
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityStorageVisuals
     stateDoorClosed: genpop_door_2
@@ -570,6 +572,7 @@
   parent: LockerPrisoner
   id: LockerPrisoner3
   suffix: 3
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityStorageVisuals
     stateDoorClosed: genpop_door_3
@@ -578,6 +581,7 @@
   parent: LockerPrisoner
   id: LockerPrisoner4
   suffix: 4
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityStorageVisuals
     stateDoorClosed: genpop_door_4
@@ -586,6 +590,7 @@
   parent: LockerPrisoner
   id: LockerPrisoner5
   suffix: 5
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityStorageVisuals
     stateDoorClosed: genpop_door_5
@@ -594,6 +599,7 @@
   parent: LockerPrisoner
   id: LockerPrisoner6
   suffix: 6
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityStorageVisuals
     stateDoorClosed: genpop_door_6
@@ -602,6 +608,7 @@
   parent: LockerPrisoner
   id: LockerPrisoner7
   suffix: 7
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityStorageVisuals
     stateDoorClosed: genpop_door_7
@@ -610,6 +617,7 @@
   parent: LockerPrisoner
   id: LockerPrisoner8
   suffix: 8
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityStorageVisuals
     stateDoorClosed: genpop_door_8
