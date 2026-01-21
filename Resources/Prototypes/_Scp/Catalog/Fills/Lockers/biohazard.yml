@@ -1,0 +1,49 @@
+- type: entity
+  id: ScpClosetL3Filled
+  parent: ScpClosetL3
+  suffix: Filled, Generic
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillBiohazardGearGeneric
+
+- type: entity
+  id: ScpClosetL3VirologyFilled
+  parent: ScpClosetL3Virology
+  suffix: Filled, Virology
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillBiohazardGearVirology
+
+- type: entity
+  id: ScpClosetL3SecurityFilled
+  parent: ScpClosetL3Security
+  suffix: Filled, Security
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillBiohazardGearSecurity
+
+- type: entity
+  id: ScpClosetL3JanitorFilled
+  parent: ScpClosetL3Janitor
+  suffix: Filled, Janitor
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillBiohazardGearJanitor
+
+- type: entity
+  id: ScpClosetL3ScienceFilled
+  parent: ScpClosetL3Science
+  suffix: Filled, Science
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillBiohazardGearScience

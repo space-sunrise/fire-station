@@ -1,4 +1,26 @@
-﻿- type: entityTable
+﻿- type: entity
+  id: ScpLockerEngineeringTechnicalServiceFilledWardrobe
+  parent: ScpLockerEngineeringTechnicalService
+  description: This locker contains a uniform for engineering or social engineering.
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillWardrobeEngineering
+
+- type: entity
+  id: ScpLockerMedicalServiceFilledWardrobe
+  suffix: Filled
+  parent: ScpLockerMedicalService
+  description: We've all played doctor before, now practice medicine.
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillWardrobeMedicalDoctor
+
+- type: entityTable
   id: ScpFillWardrobeSecurity
   table: !type:AllSelector
     children:

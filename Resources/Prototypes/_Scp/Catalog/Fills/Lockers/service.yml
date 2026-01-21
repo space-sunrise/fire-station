@@ -1,4 +1,24 @@
 ﻿- type: entity
+  id: ScpClosetGastronomicSpecialistFilled
+  parent: ScpClosetGastronomicSpecialist
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillClosetChef
+
+- type: entity
+  id: ScpClosetJanitorFilled
+  parent: ScpClosetJanitor
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillClosetJanitor
+
+- type: entity
   parent: ScpLockerBotanistPhytogeneticist
   id: ScpLockerBotanistPhytogeneticistFilled
   suffix: Filled
@@ -17,6 +37,16 @@
     containers:
       entity_storage: !type:NestedSelector
         tableId: ScpFillLockerBooze
+
+- type: entity
+  id: ScpClosetLegalFilled
+  parent: ScpClosetLegal
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillClosetLegal
 
 - type: entityTable
   id: ScpFillLockerBotanistPhytogeneticist

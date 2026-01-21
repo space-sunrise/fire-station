@@ -1,0 +1,9 @@
+﻿- type: entity
+  parent: ScpLockerLogisticsOfficer
+  id: ScpLockerLogisticsOfficerFilled
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: LockerFillChemistry # TODO: Добавить инвентарь

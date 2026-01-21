@@ -1,0 +1,17 @@
+﻿- type: entity
+  id: ScpClosetGastronomicSpecialist
+  parent: ScpClosetSteelBase
+  name: gastronomic specialist's closet
+  description: It's a storage unit for foodservice garments and mouse traps.
+
+- type: entity
+  id: ScpClosetJanitor
+  parent: ScpClosetSteelBase
+  name: custodial closet
+  description: It's a storage unit for janitorial clothes and gear.
+
+- type: entity
+  id: ScpClosetLegal
+  parent: ScpClosetSteelBase
+  name: legal closet
+  description: It's a storage unit for courtroom apparel and items.

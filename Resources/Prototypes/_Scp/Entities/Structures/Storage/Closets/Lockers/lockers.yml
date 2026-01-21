@@ -316,7 +316,7 @@
   name: engineer's locker
   components:
   - type: AccessReader
-    access: [ [ "Engineering" ] ]
+    access: [["Engineering"]]
 
 - type: entity
   id: ScpLockerElectricalSupplies
@@ -326,7 +326,7 @@
   - type: EntityStorageVisuals
     stateDoorClosed: eng_elec_door
   - type: AccessReader
-    access: [ [ "Engineering" ] ]
+    access: [["Engineering"]]
 
 - type: entity
   parent: BaseEngineeringTechnicalServiceLocker
@@ -336,7 +336,7 @@
   - type: EntityStorageVisuals
     stateDoorClosed: eng_weld_door
   - type: AccessReader
-    access: [ [ "Engineering" ] ]
+    access: [["Engineering"]]
 
 - type: entity
   parent: BaseEngineeringTechnicalServiceLocker
@@ -347,15 +347,15 @@
   - type: EntityStorageVisuals
     stateDoorClosed: eng_evac_door
   - type: AccessReader
-    access: [ [ "Engineering" ] ]
+    access: [["Engineering"]]
 
 - type: entity
-  id: LockerEngineeringTechnicalService
+  id: ScpLockerEngineeringTechnicalService
   parent: BaseEngineeringTechnicalServiceLocker
   name: engineering technical service locker
   components:
   - type: AccessReader
-    access: [ [ "Engineering" ] ]
+    access: [["Engineering"]]
 
 # Логистика
 
@@ -370,7 +370,7 @@
     stateDoorClosed: cargo_door
 
 - type: entity
-  id: LockerLogisticsOfficer
+  id: ScpLockerLogisticsOfficer
   parent: BaseLogisticsServiceLocker
   name: logistics officer's locker
   components:

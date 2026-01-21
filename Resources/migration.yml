@@ -1856,7 +1856,7 @@ TelecomServerFilledCommand: TelecomServerFilledAdministration
 #
 TelecomServerFilledSecurity: null
 
-# Шкафы
+# Шкафы с замком
 LockerCaptain: LockerDirector
 LockerHeadOfPersonnel: LockerPersonnelOfficer
 LockerChiefEngineer: LockerChiefTechnicalSpecialist
@@ -1884,7 +1884,10 @@ LockerScientist: ScpLockerResearcher
 LockerBrigmedic: ScpLockerAmnesticologist
 LockerHeavyContainmentZoneFieldMedic: ScpLockerAmnesticologist
 LockerEvidence: ScpLockerCommandantSquad
+LockerScience: ScpLockerResearcher
 
+# Шкафы
+ClosetSteelBase: ScpClosetSteelBase
 ClosetTool: ScpClosetTool
 ClosetRadiationSuit: ScpClosetRadiationSuit
 ClosetEmergency: ScpClosetEmergency
@@ -1898,8 +1901,16 @@ ClosetL3Virology: ScpClosetL3Virology
 ClosetL3Security: ScpClosetL3Security
 ClosetL3Janitor: ScpClosetL3Janitor
 ClosetMaintenance: ScpClosetMaintenance
+ClosetJanitor: ScpClosetJanitor
+ClosetChef: ScpClosetGastronomicSpecialist
+ClosetLegal: ScpClosetLegal
 
+# Шкафы с одеждой
+WardrobeEngineering: ScpLockerEngineeringTechnicalService
+WardrobeMedicalDoctor: ScpLockerMedicalService
+WardrobeSecurity: null
 
+# Заполненные шкафы с замком
 LockerCaptainFilled: LockerDirectorFilled
 LockerCaptainFilledNoLaser: LockerDirectorFilled
 LockerCaptainFilledHardsuit: LockerDirectorFilled
@@ -1925,24 +1936,56 @@ LockerWeldingSuppliesFilled: ScpLockerWeldingSuppliesFilled
 ClosetRadiationSuitFilled: ScpClosetRadiationSuitFilled
 LockerEvacRepairFilled: ScpLockerEvacRepairFilled
 LockerEngineerFilled: ScpLockerGeneralTechnicalSpecialistFilled
+LockerEngineerFilledHardsuit: ScpLockerGeneralTechnicalSpecialistFilled
 LockerMedicineFilled: ScpLockerMedicalServiceFilledMedicine
 LockerMedicalFilled: ScpLockerMedicalSpecialistFilled
 LockerParamedicFilled: ScpLockerMedicalSpecialistFilled
-LockerBrigmedicFilled: null
+LockerBrigmedicFilled: ScpLockerAmnesticologistFilled
+LockerHeavyContainmentZoneFieldMedicFilled: ScpLockerAmnesticologistFilled
+LockerScienceFilled: ScpLockerResearcherFilled
 
+# Заполненные шкафы
+ClosetBombFilled: ScpClosetBombFilled
+ClosetEmergencyFilledRandom: ScpClosetEmergencyFilled
+ClosetEmergencyN2FilledRandom: ScpClosetEmergencyN2Filled
+ClosetFireFilled: ScpClosetFire
+ClosetMaintenanceFilledRandom: ScpClosetMaintenanceFilled
+ClosetL3Filled: ScpClosetL3Filled
+ClosetL3VirologyFilled: ScpClosetL3VirologyFilled
+ClosetL3SecurityFilled: ScpClosetL3SecurityFilled
+ClosetL3JanitorFilled: ScpClosetL3JanitorFilled
+ClosetL3ScienceFilled: ScpClosetL3ScienceFilled
+ClosetJanitorFilled: ScpClosetJanitorFilled
+ClosetChefFilled: ScpClosetGastronomicSpecialistFilled
+ClosetLegalFilled: ScpClosetLegalFilled
+
+# Шкафы с одеждой
+WardrobeEngineeringFilled: ScpLockerEngineeringTechnicalServiceFilledWardrobe
+WardrobeMedicalDoctorFilled: ScpLockerMedicalServiceFilledWardrobe
+WardrobeSecurityFilled: null # У нас два отряда СБ, им не подойдет единый шкаф. Новые нужно ставить вручную
+
+# Лишние ванильные шкафы
 LockerFreezerVaultFilled: null
 LockerWarden: null
 LockerWardenFilled: null
 LockerWardenFilledHardsuit: null
 LockerSecurity: null
 LockerSecurityFilled: null
-LockerSyndicatePersonal: null
 LockerBluespaceStation: null
 LockerClown: null
 LockerMime: null
+LockerDetective: null
+LockerDetectiveFilled: null
+LockerSyndicatePersonal: null
+LockerSyndicatePersonalFilled: null
 
+# Настенные шкафы(не нужны)
 LockerWallMedicalFilled: null
 LockerWallMedicalDoctorFilled: null
+ClosetWallEmergencyFilledRandom: null
+ClosetWallEmergencyN2FilledRandom: null
+ClosetWallFireFilledRandom: null
+ClosetWallMaintenanceFilledRandom: null
 
 # Столы
 TableFrame: ScpTableFrame
