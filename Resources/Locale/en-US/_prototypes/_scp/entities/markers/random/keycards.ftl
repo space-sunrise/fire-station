@@ -24,15 +24,15 @@ ent-RandomStaffKeycardSpawnerHigh = staff keycard spawner
 
 ent-RandomLogisticsKeycardSpawnerLow = logistics keycard spawner
     .suffix = 30%
-    .desc = self-explanatory.
+    .desc = Spawns a logistics officer key card.
 
 ent-RandomLogisticsKeycardSpawnerMedium = logistics keycard spawner
     .suffix = 50%
-    .desc = self-explanatory.
+    .desc = Spawns a logistics officer key card.
 
 ent-RandomLogisticsKeycardSpawnerHigh = logistics keycard spawner
     .suffix = 70%
-    .desc = self-explanatory.
+    .desc = Spawns a logistics officer key card.
 
 ent-RandomMedicalKeycardSpawnerLow = medical department keycard spawner
     .suffix = 30%
@@ -78,6 +78,6 @@ ent-RandomServiceKeycardSpawnerMedium = service department keycard spawner
     .suffix = 50%
     .desc = Spawns a keycard of one service department employees.
 
-ent-RandomServiceKeycardSpawnerHigh = customer department keycard spawner
+ent-RandomServiceKeycardSpawnerHigh = service department keycard spawner
     .suffix = 70%
-    .desc = Spawns a keycard of one service department employees.
+    .desc = Spawns a service department key card.
