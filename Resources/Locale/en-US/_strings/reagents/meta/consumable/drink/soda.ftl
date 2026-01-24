@@ -1,4 +1,4 @@
-reagent-name-cola = Space Cola
+reagent-name-cola = Cola
 reagent-desc-cola = A sweet, carbonated soft drink.
 
 reagent-name-shirley-temple = Shirley Temple
