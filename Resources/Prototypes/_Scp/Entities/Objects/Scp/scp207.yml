@@ -3,7 +3,7 @@
     - BaseItemScp
     - DrinkBottleVisualsAll
     - DrinkBottlePlasticBaseFull
-  id: Scp207bottle
+  id: Scp207Bottle
   suffix: SCP-207
   components:
   - type: SolutionContainerManager
