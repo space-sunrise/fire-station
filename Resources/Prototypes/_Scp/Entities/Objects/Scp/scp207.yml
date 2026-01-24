@@ -10,7 +10,7 @@
     solutions:
       drink:
         reagents:
-        - ReagentId: Scp207reagent
+        - ReagentId: Scp207Reagent
           Quantity: 100
   - type: Sprite
     sprite: Objects/Consumable/Drinks/colabottle.rsi

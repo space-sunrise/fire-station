@@ -710,6 +710,15 @@
 
 - type: entity
   parent: PosterScpContainmentRoomBase
+  id: PosterScp207
+  name: SCP-207 poster
+  description: Information poster for SCP-207.
+  components:
+  - type: Sprite
+    state: scp207
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
   id: PosterSCP247
   name: SCP-247 poster
   description: Information poster for SCP-247.
