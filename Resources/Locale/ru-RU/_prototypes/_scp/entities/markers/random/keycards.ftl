@@ -1,83 +1,104 @@
-ent-RandomJuniorKeycardSpawnerLow = спавнер карты младших сотрудников
-    .suffix = 30%
+ent-RandomJuniorKeycardSpawnerBase = спавнер карты младших сотрудников
     .desc = Спавнит ключ-карту младшего сотрудника. Не включает охрану.
 
-ent-RandomJuniorKeycardSpawnerMedium = спавнер карты младших сотрудников
-    .suffix = 50%
-    .desc = Спавнит ключ-карту младшего сотрудника. Не включает охрану.
-
-ent-RandomJuniorKeycardSpawnerHigh = спавнер карты младших сотрудников
-    .suffix = 70%
-    .desc = Спавнит ключ-карту младшего сотрудника. Не включает охрану.
-
-ent-RandomStaffKeycardSpawnerLow = спавнер карты сотрудников
+ent-RandomJuniorKeycardSpawnerLow = { ent-RandomJuniorKeycardSpawnerBase }
     .suffix = 30%
+    .desc  = { ent-RandomJuniorKeycardSpawnerBase .desc  }
+
+ent-RandomJuniorKeycardSpawnerMedium = { ent-RandomJuniorKeycardSpawnerBase }
+    .suffix = 50%
+    .desc  = { ent-RandomJuniorKeycardSpawnerBase .desc  }
+
+ent-RandomJuniorKeycardSpawnerHigh = { ent-RandomJuniorKeycardSpawnerBase }
+    .suffix = 70%
+    .desc  = { ent-RandomJuniorKeycardSpawnerBase .desc  }
+
+ent-RandomStaffKeycardSpawnerBase = спавнер карты сотрудников
     .desc = Спавнит ключ-карту сотрудника или стажёра. Не включает охрану.
 
-ent-RandomStaffKeycardSpawnerMedium = спавнер карты сотрудников
-    .suffix = 50%
-    .desc = Спавнит ключ-карту сотрудника или стажёра. Не включает охрану.
-
-ent-RandomStaffKeycardSpawnerHigh = спавнер карты сотрудников
-    .suffix = 70%
-    .desc = Спавнит ключ-карту сотрудника или стажёра. Не включает охрану.
-
-ent-RandomLogisticsKeycardSpawnerLow = спавнер ключ-карты логистической службы
+ent-RandomStaffKeycardSpawnerLow = { ent-RandomStaffKeycardSpawnerBase }
     .suffix = 30%
+    .desc  = { ent-RandomStaffKeycardSpawnerBase .desc  }
+
+ent-RandomStaffKeycardSpawnerMedium = { ent-RandomStaffKeycardSpawnerBase }
+    .suffix = 50%
+    .desc  = { ent-RandomStaffKeycardSpawnerBase .desc  }
+
+ent-RandomStaffKeycardSpawnerHigh = { ent-RandomStaffKeycardSpawnerBase }
+    .suffix = 70%
+    .desc  = { ent-RandomStaffKeycardSpawnerBase .desc  }
+
+ent-RandomLogisticsKeycardSpawnerBase = спавнер ключ-карты логистической службы
     .desc = Спавнит ключ-карту логиста.
 
-ent-RandomLogisticsKeycardSpawnerMedium = спавнер ключ-карты логистической службы
-    .suffix = 50%
-    .desc = Спавнит ключ-карту логиста.
-
-ent-RandomLogisticsKeycardSpawnerHigh = спавнер ключ-карты логистической службы
-    .suffix = 70%
-    .desc = Спавнит ключ-карту логиста.
-
-ent-RandomMedicalKeycardSpawnerLow = спавнер ключ-карты медицинской службы
+ent-RandomLogisticsKeycardSpawnerLow = { ent-RandomLogisticsKeycardSpawnerBase }
     .suffix = 30%
+    .desc  = { ent-RandomLogisticsKeycardSpawnerBase .desc  }
+
+ent-RandomLogisticsKeycardSpawnerMedium = { ent-RandomLogisticsKeycardSpawnerBase }
+    .suffix = 50%
+    .desc  = { ent-RandomLogisticsKeycardSpawnerBase .desc  }
+
+ent-RandomLogisticsKeycardSpawnerHigh = { ent-RandomLogisticsKeycardSpawnerBase }
+    .suffix = 70%
+    .desc  = { ent-RandomLogisticsKeycardSpawnerBase .desc  }
+
+ent-RandomMedicalKeycardSpawnerBase = спавнер ключ-карты медицинской службы
     .desc = Спавнит ключ-карту сотрудника медицинской службы. Не включает старших или главу.
 
-ent-RandomMedicalKeycardSpawnerMedium = спавнер ключ-карты медицинской службы
-    .suffix = 50%
-    .desc = Спавнит ключ-карту сотрудника медицинской службы. Не включает старших или главу.
-
-ent-RandomMedicalKeycardSpawnerHigh = спавнер ключ-карты медицинской службы
-    .suffix = 70%
-    .desc = Спавнит ключ-карту сотрудника медицинской службы. Не включает старших или главу.
-
-ent-RandomTechnicalKeycardSpawnerLow = спавнер ключ-карты инженерно-технической службы
+ent-RandomMedicalKeycardSpawnerLow = { ent-RandomMedicalKeycardSpawnerBase }
     .suffix = 30%
-    .desc = Спавнит ключ-карту сотрудника инженерной службы. Не включает старших или главу.
+    .desc  = { ent-RandomMedicalKeycardSpawnerBase .desc  }
 
-ent-RandomTechnicalKeycardSpawnerMedium = спавнер ключ-карты инженерно-технической службы
+ent-RandomMedicalKeycardSpawnerMedium = { ent-RandomMedicalKeycardSpawnerBase }
     .suffix = 50%
-    .desc = Спавнит ключ-карту сотрудника инженерной службы. Не включает старших или главу.
+    .desc  = { ent-RandomMedicalKeycardSpawnerBase .desc  }
 
-ent-RandomTechnicalKeycardSpawnerHigh = спавнер ключ-карты инженерно-технической службы
+ent-RandomMedicalKeycardSpawnerHigh = { ent-RandomMedicalKeycardSpawnerBase }
     .suffix = 70%
-    .desc = Спавнит ключ-карту сотрудника инженерной службы. Не включает старших или главу.
+    .desc  = { ent-RandomMedicalKeycardSpawnerBase .desc  }
 
-ent-RandomScientificKeycardSpawnerLow = спавнер ключ-карты научной службы
+ent-RandomTechnicalKeycardSpawnerBase = спавнер ключ-карты инженерно-технической службы
+    .desc = Спавнит ключ-карту сотрудника инженерно-технической службы. Не включает старших или главу.
+
+ent-RandomTechnicalKeycardSpawnerLow = { ent-RandomTechnicalKeycardSpawnerBase }
     .suffix = 30%
+    .desc  = { ent-RandomTechnicalKeycardSpawnerBase .desc  }
+
+ent-RandomTechnicalKeycardSpawnerMedium = { ent-RandomTechnicalKeycardSpawnerBase }
+    .suffix = 50%
+    .desc  = { ent-RandomTechnicalKeycardSpawnerBase .desc  }
+
+ent-RandomTechnicalKeycardSpawnerHigh = { ent-RandomTechnicalKeycardSpawnerBase }
+    .suffix = 70%
+    .desc  = { ent-RandomTechnicalKeycardSpawnerBase .desc  }
+
+ent-RandomScientificKeycardSpawnerBase = спавнер ключ-карты научной службы
     .desc = Спавнит ключ-карту сотрудника научной службы. Не включает старших или главу.
 
-ent-RandomScientificKeycardSpawnerMedium = спавнер ключ-карты научной службы
-    .suffix = 50%
-    .desc = Спавнит ключ-карту сотрудника научной службы. Не включает старших или главу.
-
-ent-RandomScientificKeycardSpawnerHigh = спавнер ключ-карты научной службы
-    .suffix = 70%
-    .desc = Спавнит ключ-карту сотрудника научной службы. Не включает старших или главу.
-
-ent-RandomServiceKeycardSpawnerLow = спавнер ключ-карты сервисной службы
+ent-RandomScientificKeycardSpawnerLow = { ent-RandomScientificKeycardSpawnerBase }
     .suffix = 30%
-    .desc = Спавнит ключ-карту сотрудника сервисной службы.
+    .desc  = { ent-RandomScientificKeycardSpawnerBase .desc  }
 
-ent-RandomServiceKeycardSpawnerMedium = спавнер ключ-карты сервисной службы
+ent-RandomScientificKeycardSpawnerMedium = { ent-RandomScientificKeycardSpawnerBase }
     .suffix = 50%
+    .desc  = { ent-RandomScientificKeycardSpawnerBase .desc  }
+
+ent-RandomScientificKeycardSpawnerHigh = { ent-RandomScientificKeycardSpawnerBase }
+    .suffix = 70%
+    .desc  = { ent-RandomScientificKeycardSpawnerBase .desc  }
+
+ent-RandomServiceKeycardSpawnerBase = спавнер ключ-карты сервисной службы
     .desc = Спавнит ключ-карту сотрудника сервисной службы.
 
-ent-RandomServiceKeycardSpawnerHigh = спавнер ключ-карты сервисной службы
+ent-RandomServiceKeycardSpawnerLow = { ent-RandomServiceKeycardSpawnerBase }
+    .suffix = 30%
+    .desc  = { ent-RandomServiceKeycardSpawnerBase .desc  }
+
+ent-RandomServiceKeycardSpawnerMedium = { ent-RandomServiceKeycardSpawnerBase }
+    .suffix = 50%
+    .desc  = { ent-RandomServiceKeycardSpawnerBase .desc  }
+
+ent-RandomServiceKeycardSpawnerHigh = { ent-RandomServiceKeycardSpawnerBase }
     .suffix = 70%
-    .desc = Спавнит ключ-карту сотрудника сервисной службы.
+    .desc  = { ent-RandomServiceKeycardSpawnerBase .desc  }

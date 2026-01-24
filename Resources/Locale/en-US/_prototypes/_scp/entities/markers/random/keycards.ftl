@@ -1,83 +1,104 @@
-ent-RandomJuniorKeycardSpawnerLow = junior keycard spawner
-    .suffix = 30%
+ent-RandomJuniorKeycardSpawnerBase = junior keycard spawner
     .desc = Spawns a junior employee's keycard. Security not included.
 
-ent-RandomJuniorKeycardSpawnerMedium = junior keycard spawner
-    .suffix = 50%
-    .desc = Spawns a junior employee's keycard. Security not included.
-
-ent-RandomJuniorKeycardSpawnerHigh = junior keycard spawner
-    .suffix = 70%
-    .desc = Spawns a junior employee's keycard. Security not included.
-
-ent-RandomStaffKeycardSpawnerLow = staff keycard spawner
+ent-RandomJuniorKeycardSpawnerLow = { ent-RandomJuniorKeycardSpawnerBase }
     .suffix = 30%
+    .desc  = { ent-RandomJuniorKeycardSpawnerBase .desc  }
+
+ent-RandomJuniorKeycardSpawnerMedium = { ent-RandomJuniorKeycardSpawnerBase }
+    .suffix = 50%
+    .desc  = { ent-RandomJuniorKeycardSpawnerBase .desc  }
+
+ent-RandomJuniorKeycardSpawnerHigh = { ent-RandomJuniorKeycardSpawnerBase }
+    .suffix = 70%
+    .desc  = { ent-RandomJuniorKeycardSpawnerBase .desc  }
+
+ent-RandomStaffKeycardSpawnerBase = staff keycard spawner
     .desc = Spawns a staff member's or junior's keycard. Security not included.
 
-ent-RandomStaffKeycardSpawnerMedium = staff keycard spawner
-    .suffix = 50%
-    .desc = Spawns a staff member's or junior's keycard. Security not included.
-
-ent-RandomStaffKeycardSpawnerHigh = staff keycard spawner
-    .suffix = 70%
-    .desc = Spawns a staff member's or junior's keycard. Security not included.
-
-ent-RandomLogisticsKeycardSpawnerLow = logistics keycard spawner
+ent-RandomStaffKeycardSpawnerLow = { ent-RandomStaffKeycardSpawnerBase }
     .suffix = 30%
+    .desc  = { ent-RandomStaffKeycardSpawnerBase .desc  }
+
+ent-RandomStaffKeycardSpawnerMedium = { ent-RandomStaffKeycardSpawnerBase }
+    .suffix = 50%
+    .desc  = { ent-RandomStaffKeycardSpawnerBase .desc  }
+
+ent-RandomStaffKeycardSpawnerHigh = { ent-RandomStaffKeycardSpawnerBase }
+    .suffix = 70%
+    .desc  = { ent-RandomStaffKeycardSpawnerBase .desc  }
+
+ent-RandomLogisticsKeycardSpawnerBase = logistics keycard spawner
     .desc = Spawns a logistics officer keycard.
 
-ent-RandomLogisticsKeycardSpawnerMedium = logistics keycard spawner
-    .suffix = 50%
-    .desc = Spawns a logistics officer keycard.
-
-ent-RandomLogisticsKeycardSpawnerHigh = logistics keycard spawner
-    .suffix = 70%
-    .desc = Spawns a logistics officer keycard.
-
-ent-RandomMedicalKeycardSpawnerLow = medical department keycard spawner
+ent-RandomLogisticsKeycardSpawnerLow = { ent-RandomLogisticsKeycardSpawnerBase }
     .suffix = 30%
+    .desc  = { ent-RandomLogisticsKeycardSpawnerBase .desc  }
+
+ent-RandomLogisticsKeycardSpawnerMedium = { ent-RandomLogisticsKeycardSpawnerBase }
+    .suffix = 50%
+    .desc  = { ent-RandomLogisticsKeycardSpawnerBase .desc  }
+
+ent-RandomLogisticsKeycardSpawnerHigh = { ent-RandomLogisticsKeycardSpawnerBase }
+    .suffix = 70%
+    .desc  = { ent-RandomLogisticsKeycardSpawnerBase .desc  }
+
+ent-RandomMedicalKeycardSpawnerBase = medical department keycard spawner
     .desc = Spawns a medical department member's keycard. Does not include senior staff or heads.
 
-ent-RandomMedicalKeycardSpawnerMedium = medical department keycard spawner
-    .suffix = 50%
-    .desc = Spawns a medical department member's keycard. Does not include senior staff or heads.
-
-ent-RandomMedicalKeycardSpawnerHigh = medical department keycard spawner
-    .suffix = 70%
-    .desc = Spawns a medical department member's keycard. Does not include senior staff or heads.
-
-ent-RandomTechnicalKeycardSpawnerLow = technical department keycard spawner
+ent-RandomMedicalKeycardSpawnerLow = { ent-RandomMedicalKeycardSpawnerBase }
     .suffix = 30%
+    .desc  = { ent-RandomMedicalKeycardSpawnerBase .desc  }
+
+ent-RandomMedicalKeycardSpawnerMedium = { ent-RandomMedicalKeycardSpawnerBase }
+    .suffix = 50%
+    .desc  = { ent-RandomMedicalKeycardSpawnerBase .desc  }
+
+ent-RandomMedicalKeycardSpawnerHigh = { ent-RandomMedicalKeycardSpawnerBase }
+    .suffix = 70%
+    .desc  = { ent-RandomMedicalKeycardSpawnerBase .desc  }
+
+ent-RandomTechnicalKeycardSpawnerBase = technical department keycard spawner
     .desc = Spawns a technical department member's keycard. Does not include senior staff or heads.
 
-ent-RandomTechnicalKeycardSpawnerMedium = technical department keycard spawner
-    .suffix = 50%
-    .desc = Spawns a technical department member's keycard. Does not include senior staff or heads.
-
-ent-RandomTechnicalKeycardSpawnerHigh = technical department keycard spawner
-    .suffix = 70%
-    .desc = Spawns a technical department member's keycard. Does not include senior staff or heads.
-
-ent-RandomScientificKeycardSpawnerLow = scientific department keycard spawner
+ent-RandomTechnicalKeycardSpawnerLow = { ent-RandomTechnicalKeycardSpawnerBase }
     .suffix = 30%
-    .desc = Spawns a scientific department member's keycard. Does not include senior staff or heads.
+    .desc  = { ent-RandomTechnicalKeycardSpawnerBase .desc  }
 
-ent-RandomScientificKeycardSpawnerMedium = scientific department keycard spawner
+ent-RandomTechnicalKeycardSpawnerMedium = { ent-RandomTechnicalKeycardSpawnerBase }
     .suffix = 50%
-    .desc = Spawns a scientific department member's keycard. Does not include senior staff or heads.
+    .desc  = { ent-RandomTechnicalKeycardSpawnerBase .desc  }
 
-ent-RandomScientificKeycardSpawnerHigh = scientific department keycard spawner
+ent-RandomTechnicalKeycardSpawnerHigh = { ent-RandomTechnicalKeycardSpawnerBase }
     .suffix = 70%
+    .desc  = { ent-RandomTechnicalKeycardSpawnerBase .desc  }
+
+ent-RandomScientificKeycardSpawnerBase = scientific department keycard spawner
     .desc = Spawns a scientific department member's keycard. Does not include senior staff or heads.
 
-ent-RandomServiceKeycardSpawnerLow = service department keycard spawner
+ent-RandomScientificKeycardSpawnerLow = { ent-RandomScientificKeycardSpawnerBase }
     .suffix = 30%
-    .desc = Spawns a service department member's keycard.
+    .desc  = { ent-RandomScientificKeycardSpawnerBase .desc  }
 
-ent-RandomServiceKeycardSpawnerMedium = service department keycard spawner
+ent-RandomScientificKeycardSpawnerMedium = { ent-RandomScientificKeycardSpawnerBase }
     .suffix = 50%
+    .desc  = { ent-RandomScientificKeycardSpawnerBase .desc  }
+
+ent-RandomScientificKeycardSpawnerHigh = { ent-RandomScientificKeycardSpawnerBase }
+    .suffix = 70%
+    .desc  = { ent-RandomScientificKeycardSpawnerBase .desc  }
+
+ent-RandomServiceKeycardSpawnerBase = service department keycard spawner
     .desc = Spawns a service department member's keycard.
 
-ent-RandomServiceKeycardSpawnerHigh = service department keycard spawner
+ent-RandomServiceKeycardSpawnerLow = { ent-RandomServiceKeycardSpawnerBase }
+    .suffix = 30%
+    .desc  = { ent-RandomServiceKeycardSpawnerBase .desc  }
+
+ent-RandomServiceKeycardSpawnerMedium = { ent-RandomServiceKeycardSpawnerBase }
+    .suffix = 50%
+    .desc  = { ent-RandomServiceKeycardSpawnerBase .desc  }
+
+ent-RandomServiceKeycardSpawnerHigh = { ent-RandomServiceKeycardSpawnerBase }
     .suffix = 70%
-    .desc = Spawns a service department member's keycard.
+    .desc  = { ent-RandomServiceKeycardSpawnerBase .desc  }

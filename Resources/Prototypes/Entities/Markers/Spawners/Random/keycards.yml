@@ -25,6 +25,7 @@
   components:
     - type: RandomSpawner
       chance: 0.3 # 30% шанс спавна
+
 - type: entity
   id: RandomJuniorKeycardSpawnerMedium
   parent: RandomJuniorKeycardSpawnerBase
@@ -73,6 +74,7 @@
   components:
     - type: RandomSpawner
       chance: 0.3 # 30% шанс спавна
+
 - type: entity
   id: RandomStaffKeycardSpawnerMedium
   parent: RandomStaffKeycardSpawnerBase
@@ -108,6 +110,7 @@
   components:
     - type: RandomSpawner
       chance: 0.3 # 30% шанс спавна
+
 - type: entity
   id: RandomLogisticsKeycardSpawnerMedium
   parent: RandomLogisticsKeycardSpawnerBase
@@ -146,6 +149,7 @@
   components:
     - type: RandomSpawner
       chance: 0.3 # 30% шанс спавна
+
 - type: entity
   id: RandomMedicalKeycardSpawnerMedium
   parent: RandomMedicalKeycardSpawnerBase
@@ -183,6 +187,7 @@
   components:
     - type: RandomSpawner
       chance: 0.3 # 30% шанс спавна
+
 - type: entity
   id: RandomTechnicalKeycardSpawnerMedium
   parent: RandomTechnicalKeycardSpawnerBase
@@ -220,6 +225,7 @@
   components:
     - type: RandomSpawner
       chance: 0.3 # 30% шанс спавна
+
 - type: entity
   id: RandomScientificKeycardSpawnerMedium
   parent: RandomScientificKeycardSpawnerBase
@@ -257,6 +263,7 @@
   components:
     - type: RandomSpawner
       chance: 0.3 # 30% шанс спавна
+
 - type: entity
   id: RandomServiceKeycardSpawnerMedium
   parent: RandomServiceKeycardSpawnerBase
