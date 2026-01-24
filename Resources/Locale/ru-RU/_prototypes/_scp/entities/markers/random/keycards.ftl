@@ -1,4 +1,4 @@
-ent-RandomJuniorKeycardSpawnerBase = спавнер карты младших сотрудников
+ent-RandomJuniorKeycardSpawnerBase = спавнер ключ-карты младших сотрудников
     .desc = Спавнит ключ-карту младшего сотрудника. Не включает охрану.
 
 ent-RandomJuniorKeycardSpawnerLow = { ent-RandomJuniorKeycardSpawnerBase }
@@ -13,7 +13,7 @@ ent-RandomJuniorKeycardSpawnerHigh = { ent-RandomJuniorKeycardSpawnerBase }
     .suffix = 70%
     .desc  = { ent-RandomJuniorKeycardSpawnerBase .desc  }
 
-ent-RandomStaffKeycardSpawnerBase = спавнер карты сотрудников
+ent-RandomStaffKeycardSpawnerBase = спавнер ключ-карты сотрудников
     .desc = Спавнит ключ-карту сотрудника или стажёра. Не включает охрану.
 
 ent-RandomStaffKeycardSpawnerLow = { ent-RandomStaffKeycardSpawnerBase }
