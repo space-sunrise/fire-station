@@ -16,11 +16,11 @@ ent-RandomStaffKeycardSpawnerLow = staff keycard spawner
 
 ent-RandomStaffKeycardSpawnerMedium = staff keycard spawner
     .suffix = 50%
-    .desc = Spawns a staff member's or junior's keycard Security not included.
+    .desc = Spawns a staff member's or junior's keycard. Security not included.
 
 ent-RandomStaffKeycardSpawnerHigh = staff keycard spawner
     .suffix = 70%
-    .desc = Spawns a staff member's or junior's keycard Security not included.
+    .desc = Spawns a staff member's or junior's keycard. Security not included.
 
 ent-RandomLogisticsKeycardSpawnerLow = logistics keycard spawner
     .suffix = 30%
