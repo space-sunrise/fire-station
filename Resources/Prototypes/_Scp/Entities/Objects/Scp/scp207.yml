@@ -5,8 +5,6 @@
     - DrinkBottlePlasticBaseFull
   id: Scp207bottle
   suffix: SCP-207
-  name: Бутылка колы
-  description: Стеклянная бутылка с этикеткой марки "Coca-Cola®".
   components:
   - type: SolutionContainerManager
     solutions:
