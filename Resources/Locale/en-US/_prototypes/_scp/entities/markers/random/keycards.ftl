@@ -70,14 +70,14 @@ ent-RandomScientificKeycardSpawnerHigh = scientific department keycard spawner
     .suffix = 70%
     .desc = Spawns a keycard of the scientific department employees. Does not include the senior or head.
 
-ent-RandomdepartmentKeycardSpawnerLow = service department keycard spawner
+ent-RandomServiceKeycardSpawnerLow = service department keycard spawner
     .suffix = 30%
     .desc = Spawns a keycard of one service department employees.
 
-ent-RandomdepartmentKeycardSpawnerMedium = service department keycard spawner
+ent-RandomServiceKeycardSpawnerMedium = service department keycard spawner
     .suffix = 50%
     .desc = Spawns a keycard of one service department employees.
 
-ent-RandomdepartmentKeycardSpawnerHigh = customer department keycard spawner
+ent-RandomServiceKeycardSpawnerHigh = customer department keycard spawner
     .suffix = 70%
     .desc = Spawns a keycard of one service department employees.

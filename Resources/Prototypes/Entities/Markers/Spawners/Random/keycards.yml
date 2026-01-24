@@ -243,7 +243,7 @@
       layers:
         - state: red
         - sprite: _Scp/Objects/Keycards/keycards.rsi
-          state: science
+          state: service
     - type: RandomSpawner
       prototypes:
         - KeyCardBotanistPhytogeneticist
