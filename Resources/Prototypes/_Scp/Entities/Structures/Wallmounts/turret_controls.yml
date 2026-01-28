@@ -5,6 +5,7 @@
   components:
   - type: DeployableTurretController
     accessGroups:
+    - RegionalAdministration
     - Administration
     - Security
     - ScientificService
@@ -16,6 +17,7 @@
     - ClassD
     - Silicon
     accessLevels:
+    - MTF
     - Administration
     - ComplexDirector
     - ScientificServiceDirector
