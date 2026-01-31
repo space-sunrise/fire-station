@@ -10,7 +10,6 @@
   - StripableInventoryBase
   components:
   - type: Sprite
-    # noRot: true
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-049.rsi
     state: SCP-049
@@ -63,7 +62,6 @@
     thresholds:
       0: Alive
       500: Critical
-      1500: Dead
   - type: SlowOnDamage
     speedModifierThresholds:
       100: 0.9

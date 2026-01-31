@@ -13,10 +13,10 @@ emergency-shuttle-command-dock-desc = Вызывает спасательный 
 
 ## Launch emergency shuttle
 
-emergency-shuttle-command-launch-desc = Досрочно запускает эвакуационный шаттл, если это возможно.
+emergency-shuttle-command-launch-desc = Досрочно запускает транспортный шаттл, если это возможно.
 # Emergency shuttle
 emergency-shuttle-left = Эвакуационный транспортник покинул комплекс. Расчётное время полёта транспортника - { $transitTime } секунд.
-emergency-shuttle-launch-time = Эвакуационный транспортник взелает через { $consoleAccumulator } секунд.
+emergency-shuttle-launch-time = Эвакуационный транспортник взлетает через { $consoleAccumulator } секунд.
 emergency-shuttle-docked = Эвакуационный транспортник приземлился{ $location }. Он улетит через { $time } секунд.
 emergency-shuttle-good-luck = Эвакуационный транспортник не может найти ближайшее место приземления. Удачи.
 emergency-shuttle-nearby = Эвакуационный транспортник не может найти подходящее место для приземления, поэтому приземляется недалеко от комплекса. Направление: { $direction }.
