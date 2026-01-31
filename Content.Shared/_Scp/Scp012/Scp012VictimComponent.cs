@@ -9,7 +9,7 @@ public sealed partial class Scp012VictimComponent : Component
     public EntityUid? Source;
 
     [DataField]
-    public float PickupDistance = 0.6f;
+    public float PickupDistance = 1.1f;
 
     [DataField]
     public TimeSpan SuicideCooldown = TimeSpan.FromSeconds(30f);

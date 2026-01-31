@@ -29,6 +29,7 @@
 - type: entity
   id: ScpViewconeEffectFootstep
   parent: ScpBaseViewconeEffect
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: footstep
@@ -37,6 +38,7 @@
 - type: entity
   id: ScpViewconeEffectAttack
   parent: ScpBaseViewconeEffect
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: attack
@@ -45,6 +47,7 @@
 - type: entity
   id: ScpViewconeEffectForcefield
   parent: ScpBaseViewconeEffect
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: forcefield
@@ -53,6 +56,7 @@
 - type: entity
   id: ScpViewconeEffectGunfire
   parent: ScpBaseViewconeEffect
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: gunfire
@@ -61,6 +65,7 @@
 - type: entity
   id: ScpViewconeEffectTalk
   parent: ScpBaseViewconeEffect
+  categories: [ HideSpawnMenu ]
   components:
   - type: Sprite
     state: talk

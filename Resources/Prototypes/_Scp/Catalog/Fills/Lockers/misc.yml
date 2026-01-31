@@ -1,0 +1,39 @@
+﻿- type: entity
+  id: ScpClosetEmergencyFilled
+  parent: ScpClosetEmergency
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillLockerEmergencyStandard
+
+- type: entity
+  id: ScpClosetEmergencyN2Filled
+  parent: ScpClosetEmergencyN2
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillLockerEmergencyN2Standard
+
+- type: entity
+  id: ScpClosetFireFilled
+  parent: ScpClosetFire
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillLockerFireStandard
+
+- type: entity
+  id: ScpClosetMaintenanceFilled
+  suffix: Filled
+  parent: ScpClosetMaintenance
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: MaintenanceLockerLoot

@@ -2,6 +2,7 @@
   id: ReinforcedWindow
   name: reinforced window
   parent: Window
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     drawdepth: WallTops
@@ -60,6 +61,7 @@
   parent: WindowDirectional
   name: directional reinforced window
   description: Don't smudge up the glass down there.
+  categories: [ HideSpawnMenu ] # Fire added
   placement:
     mode: SnapgridCenter
     snap:
@@ -119,6 +121,7 @@
   parent: ReinforcedWindow
   id: ReinforcedWindowDiagonal
   suffix: diagonal
+  categories: [ HideSpawnMenu ] # Fire added
   placement:
     mode: SnapgridCenter
     snap:

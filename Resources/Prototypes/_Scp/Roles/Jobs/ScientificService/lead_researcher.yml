@@ -11,6 +11,7 @@
   icon: JobLeadResearcher
   supervisors: job-supervisors-scientific-service-director
   displayWeight: 35
+  weight: 800
   accessGroups:
   - LeadResearcher
   special:

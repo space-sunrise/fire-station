@@ -1,7 +1,11 @@
 using System.Linq;
+using Content.Shared._Scp.Other.Events;
+using Content.Shared._Scp.Scp330;
+using Robust.Shared.Containers;
 using Content.Shared.Chemistry;
 using Content.Shared.Damage;
 using Content.Shared.Examine;
+using Content.Shared.Hands;
 using Content.Shared.Interaction;
 using Content.Shared.Movement.Pulling.Events;
 using Content.Shared.Throwing;
@@ -23,6 +27,15 @@ public abstract partial class SharedXenoArtifactSystem
         XATRelayLocalEvent<InteractHandEvent>();
         XATRelayLocalEvent<ReactionEntityEvent>();
         XATRelayLocalEvent<LandEvent>();
+
+        // Fire edit start
+        XATRelayLocalEvent<EntInsertedIntoContainerMessage>();
+        XATRelayLocalEvent<EntRemovedFromContainerMessage>();
+        XATRelayLocalEvent<Scp330SelfPunishmentEvent>();
+        XATRelayLocalEvent<GotEquippedHandEvent>();
+        XATRelayLocalEvent<GotUnequippedHandEvent>();
+        XATRelayLocalEvent<DamageChangedOriginEvent>();
+        // Fire edit end
 
         // special case this one because we need to order the messages
         SubscribeLocalEvent<XenoArtifactComponent, ExaminedEvent>(OnExamined);

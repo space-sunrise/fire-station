@@ -20,12 +20,13 @@
   id: ScpArtifactWandering
   parent: BaseOneTimeScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
     components:
     - type: RandomWalk
-      minSpeed: 12
-      maxSpeed: 20
+      minSpeed: 5
+      maxSpeed: 12
       minStepCooldown: 1
       maxStepCooldown: 3
 
@@ -33,6 +34,7 @@
   id: ScpArtifactThrowThingsAround
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEThrowThingsAround
 
@@ -40,6 +42,7 @@
   id: ScpArtifactKnock
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEKnock
   - type: XAELightFlicker
@@ -48,6 +51,7 @@
   id: ScpArtifactShatterWindows
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XenoArtifactNode
     maxDurability: 3
@@ -67,6 +71,7 @@
   id: ScpEffectBoltAirlocks
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactBoltAirlocks
 
@@ -74,6 +79,7 @@
   id: ScpEffectTeslaDischarge
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
     components:
@@ -87,9 +93,10 @@
       - type: LightningArcShooter
 
 - type: entity
-  id: ScpEffectSpawnEvilTwin
+  id: ScpEffectSpawn2054X
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XenoArtifactNode
     maxDurability: 1
@@ -99,7 +106,7 @@
     triggerDecreasesDurability: true
   - type: ArtifactStartGameRule
     rules:
-      EvilTwinSpawn: 2
+      Scp2054X: 1
 
 
 #  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣤⣤⣤⣤⣴⡶⠶⠶⠶⠶⠶⠶⠶⠶⠤⠤⢤⣤⣤⣤⣤⣤⣄⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -129,6 +136,7 @@
   id: ScpEffectShuffleUltra
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEShuffle
     radius: 70
@@ -137,6 +145,7 @@
   id: ScpEffectPolyChair
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
     polymorphPrototypeName: SunriseEffectChair
@@ -145,6 +154,7 @@
   id: ScpEffectPolyWatermelon
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
     polymorphPrototypeName: SunriseEffectWatermelon
@@ -153,6 +163,7 @@
   id: ScpEffectPolyAppendix
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
     polymorphPrototypeName: SunriseEffectAppendix
@@ -161,6 +172,7 @@
   id: ScpEffectPolyScrewdriver
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
     polymorphPrototypeName: ScpEffectScrewdriver
@@ -169,6 +181,7 @@
   id: ScpEffectPolyCigarSpent
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
     polymorphPrototypeName: ScpEffectCigarSpent
@@ -177,6 +190,7 @@
   id: ScpEffectPolyToyRubberDuck
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
     polymorphPrototypeName: ScpEffectToyRubberDuck
@@ -185,6 +199,7 @@
   id: ScpEffectPolyDisposal
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
     polymorphPrototypeName: SunriseEffectDisposal
@@ -193,6 +208,7 @@
   id: ScpEffectPolyTable
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEPolymorph
     polymorphPrototypeName: SunriseEffectTable
@@ -201,6 +217,7 @@
   id: ScpEffectSwap
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactWhitelistSwap
     targetWhitelist:
@@ -212,6 +229,7 @@
   id: EffectMagnetUltra
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
     components:
@@ -226,6 +244,7 @@
   id: ScpEffectShiftedAsciiTableAccent
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: AddComponentsInRadius
     whitelist:
@@ -244,6 +263,7 @@
   id: ScpEffectSmoke939
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactCreateSmoke
     reagent: АМН-С227
@@ -254,6 +274,7 @@
   id: ScpEffectSleep939
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactScp939Sleep
 
@@ -261,6 +282,7 @@
   id: ScpArtifactHunger
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactModifyHunger
 
@@ -268,6 +290,7 @@
   id: ScpEffectThirst
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactModifyThirst
 
@@ -277,6 +300,7 @@
   id: ScpArtifactTeleport
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
     components:
@@ -286,6 +310,7 @@
   id: ScpArtifactEmp
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XenoArtifactNode
     maxDurability: 5
@@ -298,6 +323,7 @@
   id: ScpArtifactShuffle
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEShuffle
   - type: XAETelepathic
@@ -309,6 +335,7 @@
   id: ScpArtifactScp106Teleport
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactScp106Teleport
 
@@ -316,6 +343,7 @@
   id: ScpArtifactGenerateEnergy
   parent: BaseOneTimeScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
     components:
@@ -334,6 +362,7 @@
   id: ScpEffectHeal999
   parent: BaseScpArtifactEffect
   description: Miraculously heals all nearby creatures.
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEDamageInArea
     damageChance: 1
@@ -352,6 +381,7 @@
   id: ScpEffectBlind
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactScp173BlindEveryoneInRange
 
@@ -359,6 +389,7 @@
   id: ScpArtifactEffectJunkSpawn
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true
@@ -378,6 +409,7 @@
   id: ScpArtifactEffectLightFlicker
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAELightFlicker
 
@@ -387,6 +419,7 @@
   id: ScpEffectMadness096
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: ArtifactScp096Madness
 
@@ -396,6 +429,7 @@
   id: ScpEffectIgnite
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEIgnite
     range: 7
@@ -409,6 +443,7 @@
   id: ScpEffectServantSpawn035
   parent: BaseScpArtifactEffect
   description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
   components:
   - type: XAEApplyComponents
     applyIfAlreadyHave: true

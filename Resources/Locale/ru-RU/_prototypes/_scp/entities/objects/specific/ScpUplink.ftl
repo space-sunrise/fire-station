@@ -2,10 +2,6 @@ ent-BaseUplinkMTF = Планшет заказа снаряжения МОГ
     .desc = Специальный планшет заказа различного рода снаряжения для бойцов МОГ.
     .suffix = Пустой
 
-ent-BaseUplinkMTFDebug = Планшет заказа снаряжения
-    .desc = { ent-BaseUplinkMTF.desc }
-    .suffix = Заполнен, Дебаг
-
 ent-BaseUplinkMTFLeader = Планшет заказа снаряжения командира МОГ
     .desc = { ent-BaseUplinkMTF.desc }
     .suffix = Заполнен
@@ -16,6 +12,9 @@ ent-BaseUplinkMTFCadet = Планшет заказа снаряжения кад
     .desc = { ent-BaseUplinkMTF.desc }
     .suffix = Заполнен
 
+ent-BaseUplinkMTFDebug = Планшет заказа снаряжения
+    .desc = { ent-BaseUplinkMTF.desc }
+    .suffix = Заполнен, Дебаг
 ent-BaseUplinkMTFLeaderNtf = Планшет заказа снаряжения командира Эпсилон-11
     .desc = { ent-BaseUplinkMTF.desc }
     .suffix = Заполнен

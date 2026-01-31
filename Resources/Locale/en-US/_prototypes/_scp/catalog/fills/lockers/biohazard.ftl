@@ -1,0 +1,9 @@
+ent-ScpClosetL3Filled = { ent-ScpClosetL3 }
+    .suffix = Filled, Generic
+    .desc = { ent-ScpClosetL3.desc }
+ent-ScpClosetL3VirologyFilled = { ent-ScpClosetL3Virology }
+    .suffix = Filled, Virology
+    .desc = { ent-ScpClosetL3Virology.desc }
+ent-ScpClosetL3SecurityFilled = { ent-ScpClosetL3Security }
+    .suffix = Filled, Security
+    .desc = { ent-ScpClosetL3Security.desc }

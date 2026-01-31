@@ -13,6 +13,7 @@
   parent: WardrobeBase
   name: blue wardrobe
   description: "A wardrobe packed with stylish blue clothing."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -26,6 +27,7 @@
   parent: WardrobeBase
   name: pink wardrobe
   description: "A wardrobe packed with fabulous pink clothing."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -39,6 +41,7 @@
   parent: WardrobeBase
   name: black wardrobe
   description: "A wardrobe packed with stylish black clothing."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -52,6 +55,7 @@
   parent: WardrobeBase
   name: green wardrobe
   description: "A wardrobe packed with stylish green clothing."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -64,6 +68,7 @@
   id: WardrobePrison
   parent: WardrobeBase
   name: prison wardrobe
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -77,6 +82,7 @@
   parent: WardrobeBase
   name: yellow wardrobe
   description: "A wardrobe packed with stylish yellow clothing."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -90,6 +96,7 @@
   parent: WardrobeBase
   name: white wardrobe
   description: "A wardrobe packed with stylish white clothing."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -103,6 +110,7 @@
   parent: WardrobeBase
   name: grey wardrobe
   description: "A wardrobe packed with a tide of grey clothing."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -116,6 +124,7 @@
   parent: WardrobeBase
   name: mixed wardrobe
   description: "A wardrobe packed with a mix of colorful clothing."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -129,6 +138,7 @@
   id: WardrobeSecurity
   parent: WardrobeBase
   name: security wardrobe
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -140,6 +150,7 @@
   id: WardrobeAtmospherics
   parent: WardrobeBase
   name: atmospherics wardrobe
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
   - type: EntityStorageVisuals
@@ -152,78 +163,93 @@
   parent: WardrobeMixed
   name: custodial closet
   description: It's a storage unit for janitorial clothes and gear.
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: WardrobeFormal
   parent: WardrobeBlack
   name: formal closet
   description: It's a storage unit for formal clothing.
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: ClosetChef
   parent: WardrobeBlack
   name: chef's closet
   description: It's a storage unit for foodservice garments and mouse traps.
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: WardrobeChapel
   parent: WardrobeBlack
   name: chaplain's wardrobe
   description: It's a storage unit for Nanotrasen-approved religious attire.
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: ClosetLegal
   parent: WardrobeBlue
   name: legal closet
   description: It's a storage unit for courtroom apparel and items.
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: WardrobeCargo
   parent: WardrobePrison
   name: cargo wardrobe
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: WardrobeSalvage
   parent: WardrobeMixed
   name: salvage wardrobe
   description: Notably not salvaged.
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: WardrobeEngineering
   parent: WardrobeYellow
   name: engineering wardrobe
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: WardrobeMedicalDoctor
   parent: WardrobeWhite
   name: medical doctor's wardrobe
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: WardrobeRobotics
   parent: WardrobeBlack
   name: robotics wardrobe
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: WardrobeChemistry
   parent: WardrobeWhite
   name: chemistry wardrobe
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: WardrobeGenetics
   parent: WardrobeWhite
   name: genetics wardrobe
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: WardrobeVirology
   parent: WardrobeWhite
   name: virology wardrobe
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: WardrobeScience
   parent: WardrobeWhite
   name: science wardrobe
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   id: WardrobeBotanist
   parent: WardrobeGreen
   name: botanist wardrobe
+  categories: [ HideSpawnMenu ] # Fire added

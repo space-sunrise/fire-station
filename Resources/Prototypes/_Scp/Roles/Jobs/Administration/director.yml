@@ -7,7 +7,7 @@
     - !type:DepartmentTimeRequirement
       department: Administration
       time: 54000
-  weight: 5
+  weight: 965
   icon: JobDirector
   joinNotifyCrew: true
   supervisors: job-supervisors-O5-command

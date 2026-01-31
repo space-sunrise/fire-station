@@ -1,0 +1,77 @@
+- type: entity
+  id: ScpClosetBase
+  parent: ClosetBase
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/closet.rsi
+  - type: Transform
+    noRot: false
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25, -0, 0.25, 0.48"
+        density: 75
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+  - type: EntityStorage
+    whitelist:
+      components:
+      - MobState
+      - Item
+    blacklist:
+      components:
+      - Scp
+  - type: Appearance
+  - type: Tag
+    tags:
+    - Scp173DamageOnCollide
+
+- type: entity
+  id: ScpClosetSteelBase
+  parent: ScpClosetBase
+  components:
+  - type: Construction
+    graph: ClosetSteel
+    node: done
+    containers:
+    - entity_storage
+  - type: Paintable
+    group: Closet
+
+- type: entity
+  id: ScpClosetPlasteel
+  parent: ScpClosetSteelBase
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic_plasteel
+    stateDoorOpen: generic_open_plasteel
+    stateDoorClosed: generic_door_plasteel
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 400
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+    - trigger:
+        !type:DamageTrigger
+        damage: 200
+      behaviors:
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+      - !type:PlaySoundBehavior
+        sound:
+          collection: MetalBreak
+          params:
+            volume: -6
+      - !type:SpawnEntitiesBehavior
+        spawn:
+          SheetPlasteel1:
+            min: 1
+            max: 1

@@ -2,6 +2,7 @@
   id: ClosetToolFilled
   parent: ClosetTool
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -56,6 +57,7 @@
   id: LockerElectricalSuppliesFilled
   suffix: Filled
   parent: LockerElectricalSupplies
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -85,6 +87,7 @@
   id: LockerWeldingSuppliesFilled
   suffix: Filled
   parent: LockerWeldingSupplies
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -174,6 +177,7 @@
   id: LockerEngineerFilledHardsuit
   suffix: Filled, Hardsuit
   parent: LockerEngineer
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -188,6 +192,7 @@
   id: LockerEngineerFilled
   suffix: Filled
   parent: LockerEngineer
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -218,6 +223,7 @@
   id: ClosetRadiationSuitFilled
   parent: ClosetRadiationSuit
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -239,6 +245,7 @@
   parent: LockerEvacRepair
   id: LockerEvacRepairFilled
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -249,6 +256,7 @@
   parent: LockerWallEvacRepair
   id: LockerWallEvacRepairFilled
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:

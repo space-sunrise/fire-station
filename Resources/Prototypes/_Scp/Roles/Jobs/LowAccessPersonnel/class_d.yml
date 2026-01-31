@@ -7,6 +7,7 @@
   icon: JobClassD
   supervisors: job-supervisors-security-and-research
   alwaysUseSpawner: true
+  weight: 705
   special:
   - !type:AddComponentSpecial
     components:

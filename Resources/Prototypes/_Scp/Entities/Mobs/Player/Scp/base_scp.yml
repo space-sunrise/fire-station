@@ -17,6 +17,8 @@
       Flammable: [ Touch ]
       Extinguish: [ Touch ]
       Acidic: [ Touch ]
+  - type: XenoArtifact
+    triggerWeights: ScpDefaultTriggers
 
 - type: entity
   id: BaseScpArtifactMajor

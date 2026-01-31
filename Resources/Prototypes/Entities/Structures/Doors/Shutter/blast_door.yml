@@ -3,6 +3,7 @@
   parent: BaseShutter
   name: blast door
   description: This one says 'BLAST DONGER'.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     containerAccessProvider: board
@@ -73,6 +74,7 @@
   id: BlastDoorOpen
   parent: BlastDoor
   suffix: Open
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Door
     state: Open
@@ -90,6 +92,7 @@
   parent: BaseStructureDynamic
   name: blast door frame
   description: This one says 'BLAST DONGER'.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Shutters/blastdoor.rsi
@@ -158,6 +161,7 @@
   parent: BlastDoorXeno
   id: BlastDoorXenoOpen
   suffix: Open
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Door
     state: Open
@@ -175,6 +179,7 @@
   id: BlastDoorXenoFrame
   name: xeno blast door frame
   description: This one says 'BLAST DONGER'.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Shutters/xeno_blastdoor.rsi

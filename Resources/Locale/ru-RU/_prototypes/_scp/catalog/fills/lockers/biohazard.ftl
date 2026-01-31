@@ -1,0 +1,9 @@
+ent-ScpClosetL3Filled = { ent-ScpClosetL3 }
+    .suffix = Заполненный, Стандартный
+    .desc = { ent-ScpClosetL3.desc }
+ent-ScpClosetL3VirologyFilled = { ent-ScpClosetL3Virology }
+    .suffix = Заполненный, Вирусология
+    .desc = { ent-ScpClosetL3Virology.desc }
+ent-ScpClosetL3SecurityFilled = { ent-ScpClosetL3Security }
+    .suffix = Заполненный, СБ
+    .desc = { ent-ScpClosetL3Security.desc }

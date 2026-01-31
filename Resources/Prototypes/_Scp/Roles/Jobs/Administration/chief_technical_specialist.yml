@@ -7,7 +7,7 @@
   - !type:DepartmentTimeRequirement
     department: EngineeringTechnicalService
     time: 54000
-  weight: 10
+  weight: 940
   startingGear: ChiefTechnicalSpecialistGear
   icon: JobChiefTechnicalSpecialist
   supervisors: job-supervisors-director

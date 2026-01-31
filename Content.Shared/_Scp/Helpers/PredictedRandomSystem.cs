@@ -119,6 +119,13 @@ public sealed class PredictedRandomSystem : EntitySystem
         return list[index];
     }
 
+    public T PickForEntity<T>(IReadOnlyList<T> list, EntityUid ent)
+    {
+        var random = GetOrCreateEntityRandom(ent);
+        var index = random.Next(list.Count);
+        return list[index];
+    }
+
     #endregion
 }
 

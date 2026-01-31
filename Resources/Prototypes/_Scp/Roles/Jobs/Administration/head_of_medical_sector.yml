@@ -13,7 +13,7 @@
     - !type:DepartmentTimeRequirement
       department: MedicalService
       time: 36000
-  weight: 10
+  weight: 945
   startingGear: HeadOfMedicalSectorGear
   icon: JobHeadOfMedicalSector
   supervisors: job-supervisors-director

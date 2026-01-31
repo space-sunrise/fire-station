@@ -15,6 +15,7 @@
   supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false
   displayWeight: 15
+  weight: 805
   accessGroups:
   - FieldMedic
   special:

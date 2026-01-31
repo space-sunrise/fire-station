@@ -8,6 +8,7 @@
   supervisors: job-supervisors-head-of-medical-sector
   canBeAntag: true
   displayWeight: 0
+  weight: 760
   accessGroups:
   - CommonMedicalJob
   special:

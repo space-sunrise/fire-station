@@ -11,6 +11,7 @@
   icon: JobPharmaceuticalSpecialist
   supervisors: job-supervisors-head-of-medical-sector
   displayWeight: 30
+  weight: 775
   accessGroups:
   - PharmaceuticalSpecialist
   special:

@@ -11,6 +11,7 @@
   icon: JobMedicalSpecialist
   supervisors: job-supervisors-head-of-medical-sector
   displayWeight: 20
+  weight: 770
   accessGroups:
   - CommonMedicalJob
   special:

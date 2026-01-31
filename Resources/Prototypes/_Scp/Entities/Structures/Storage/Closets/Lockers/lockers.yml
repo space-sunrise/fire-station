@@ -1,100 +1,148 @@
 # Администрация
 
 - type: entity
-  id: LockerDirector
-  parent: LockerCaptain
+  id: BaseAdministrationLocker
+  parent: ScpLockerBase
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: com
+    stateDoorOpen: com_open
+    stateDoorClosed: com_door
+
+- type: entity
+  id: BaseAdministrationLockerPlasteel
+  parent: BaseAdministrationLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: com_plasteel
+    stateDoorOpen: com_open_plasteel
+    stateDoorClosed: com_door_plasteel
+
+- type: entity
+  id: ScpLockerDirector
+  parent: BaseAdministrationLockerPlasteel
   name: director's locker
   components:
   - type: AccessReader
     access: [["ComplexDirector"]]
 
 - type: entity
-  id: LockerPersonnelOfficer
-  parent: LockerHeadOfPersonnel
+  id: ScpLockerPersonnelOfficer
+  parent: BaseAdministrationLockerPlasteel
   name: personnel officer's locker
   components:
   - type: AccessReader
     access: [["PersonnelOfficer"]]
 
 - type: entity
-  id: LockerChiefTechnicalSpecialist
-  parent: LockerChiefEngineer
+  id: ScpLockerChiefTechnicalSpecialist
+  parent: BaseAdministrationLockerPlasteel
   name: chief technical specialist's locker
   components:
   - type: AccessReader
     access: [ [ "ChiefTechnicalSpecialist" ] ]
 
 - type: entity
-  id: LockerSeniorLogisticsOfficer
-  parent: LockerQuarterMaster
+  id: ScpLockerSeniorLogisticsOfficer
+  parent: BaseAdministrationLockerPlasteel
   name: senior logistics officer's locker
   components:
   - type: AccessReader
     access: [["SeniorLogisticsOfficer"]]
 
 - type: entity
-  id: LockerHeadOfMedicalSector
-  parent: LockerChiefMedicalOfficer
+  id: ScpLockerHeadOfMedicalSector
+  parent: BaseAdministrationLockerPlasteel
   name: head of medical sector locker
   components:
   - type: AccessReader
     access: [ [ "HeadOfMedicalSector" ] ]
 
 - type: entity
-  id: LockerSecurityCommander
-  parent: LockerHeadOfSecurity
+  id: ScpLockerSecurityCommander
+  parent: BaseAdministrationLockerPlasteel
   name: security commander's locker
   components:
   - type: AccessReader
     access: [["SecurityCommander"]]
 
 - type: entity
-  id: LockerScientificServiceDirector
-  parent: LockerResearchDirector
+  id: ScpLockerScientificServiceDirector
+  parent: BaseAdministrationLockerPlasteel
   name: scientific director's locker
   components:
   - type: AccessReader
     access: [ [ "ScientificServiceDirector" ] ]
 
 - type: entity
-  id: LockerEthicsCommittee
-  parent: LockerHeadOfPersonnel
+  id: ScpLockerEthicsCommittee
+  parent: BaseAdministrationLockerPlasteel
   name: ethics committee's locker
   components:
   - type: AccessReader
     access: [["EthicsCommittee"]]
 
 - type: entity
-  id: LockerInternalTribunalService
-  parent: LockerHeadOfPersonnel
+  id: ScpLockerInternalTribunalService
+  parent: BaseAdministrationLockerPlasteel
   name: internal tribunal service locker
   components:
   - type: AccessReader
     access: [["InternalTribunalService"]]
 
+- type: entity
+  id: ScpLockerAdministration
+  parent: BaseAdministrationLocker
+  name: administration locker
+  components:
+  - type: AccessReader
+    access: [ [ "Administration" ] ]
+
 # Региональная администрация
 
 - type: entity
-  id: LockerMTF
-  parent: LockerCaptain
+  id: ScpLockerMtf
+  parent: BaseAdministrationLockerPlasteel
   name: mobile task force locker
   components:
   - type: AccessReader
     access: [["MTF"]]
 
 - type: entity
-  id: LockerO5
-  parent: LockerCaptain
+  id: ScpLockerO5
+  parent: BaseAdministrationLockerPlasteel
   name: O5 locker
   components:
   - type: AccessReader
     access: [["O5"]]
 
-# Служба безопасности тяжелой зоны содержания
+# СБ - Отряд специального назначения
+
+- type: entity
+  id: BaseSpecialPurposeSquadLocker
+  parent: ScpLockerBase
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: sec_2
+    stateDoorOpen: sec_open_2
+    stateDoorClosed: sec_door_2
+
+- type: entity
+  id: BaseSpecialPurposeSquadLockerPlasteel
+  parent: BaseSpecialPurposeSquadLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: sec_2_plasteel
+    stateDoorOpen: sec_2_open_plasteel
+    stateDoorClosed: sec_2_door_plasteel
 
 - type: entity
   id: LockerHeavyContainmentZoneCommandant
-  parent: LockerWarden
+  parent: BaseSpecialPurposeSquadLockerPlasteel
   name: heavy containment zone commandant's locker
   components:
   - type: AccessReader
@@ -102,25 +150,45 @@
 
 - type: entity
   id: LockerHeavyContainmentZoneOfficer
-  parent: LockerSecurity
+  parent: BaseSpecialPurposeSquadLockerPlasteel
   name: heavy containment zone officer's locker
   components:
   - type: AccessReader
     access: [["Security"]]
 
 - type: entity
-  id: LockerHeavyContainmentZoneFieldMedic
-  parent: LockerBrigmedic
-  name: field medic's locker
+  id: ScpLockerSpecialPurposeSquad
+  parent: BaseSpecialPurposeSquadLocker
+  name: special purpose squad locker
   components:
   - type: AccessReader
-    access: [["Security"], ["Medical"]]
+    access: [["Security"]]
 
-# Служба безопасности легкой зоны содержания
+# СБ - Комендантский отряд
+
+- type: entity
+  id: BaseCommandantSquadLocker
+  parent: ScpLockerBase
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: sec
+    stateDoorOpen: sec_open
+    stateDoorClosed: sec_door
+
+- type: entity
+  id: BaseCommandantSquadLockerPlasteel
+  parent: BaseCommandantSquadLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: sec_plasteel
+    stateDoorOpen: sec_open_plasteel
+    stateDoorClosed: sec_door_plasteel
 
 - type: entity
   id: LockerExternalAdministrativeZoneCommandant
-  parent: LockerWarden
+  parent: BaseCommandantSquadLockerPlasteel
   name: light containment zone commandant's locker
   components:
   - type: AccessReader
@@ -128,8 +196,24 @@
 
 - type: entity
   id: LockerExternalAdministrativeZoneOfficer
-  parent: LockerSecurity
+  parent: BaseCommandantSquadLockerPlasteel
   name: light containment zone officer's locker
+  components:
+  - type: AccessReader
+    access: [["Security"]]
+
+- type: entity
+  id: ScpLockerAmnesticologist
+  parent: BaseCommandantSquadLockerPlasteel
+  name: amnesticologist's locker
+  components:
+  - type: AccessReader
+    access: [["Security"], ["Medical"]]
+
+- type: entity
+  id: ScpLockerCommandantSquad
+  parent: BaseCommandantSquadLocker
+  name: commandant squad locker
   components:
   - type: AccessReader
     access: [["Security"]]
@@ -137,80 +221,271 @@
 # Научная служба
 
 - type: entity
-  id: LockerScpSafe
-  parent: LockerBase
+  id: BaseScientificServiceLocker
+  parent: ScpLockerBase
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: science
+    stateDoorOpen: science_open
+    stateDoorClosed: science_door
+
+- type: entity
+  id: BaseScientificServiceLockerPlasteel
+  parent: BaseScientificServiceLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: science_plasteel
+    stateDoorOpen: science_open_plasteel
+    stateDoorClosed: science_door_plasteel
+
+- type: entity
+  id: ScpLockerScpSafe
+  parent: BaseScientificServiceLockerPlasteel
   name: scp safe class locker
   components:
   - type: AccessReader
     access: [["Safe"]]
 
 - type: entity
-  id: LockerScpEuclid
-  parent: LockerBase
+  id: ScpLockerScpEuclid
+  parent: BaseScientificServiceLockerPlasteel
   name: scp euclid class locker
   components:
   - type: AccessReader
     access: [["Euclid"]]
 
 - type: entity
-  id: LockerScpKeter
-  parent: LockerBase
+  id: ScpLockerScpKeter
+  parent: BaseScientificServiceLockerPlasteel
   name: scp keter class locker
   components:
   - type: AccessReader
     access: [["Keter"]]
 
+- type: entity
+  id: ScpLockerResearcher
+  parent: BaseScientificServiceLockerPlasteel
+  name: researcher's locker
+  components:
+  - type: AccessReader
+    access: [[ "Research" ]]
+
+- type: entity
+  id: ScpLockerScientificService
+  parent: BaseScientificServiceLocker
+  name: scientific service locker
+  components:
+  - type: AccessReader
+    access: [[ "Research" ]]
+
 # Медицинская служба
 
 - type: entity
-  id: LockerLaboratory
-  parent: LockerChemistry
+  id: BaseMedicalServiceLocker
+  parent: ScpLockerBase
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: med
+    stateDoorOpen: med_open
+    stateDoorClosed: med_door
+
+- type: entity
+  id: BaseMedicalServiceLockerPlasteel
+  parent: BaseMedicalServiceLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: med_plasteel
+    stateDoorOpen: med_open_plasteel
+    stateDoorClosed: med_door_plasteel
+
+- type: entity
+  id: ScpLockerLaboratory
+  parent: BaseMedicalServiceLockerPlasteel
   name: laboratory locker
   components:
   - type: AccessReader
     access: [["Laboratory"]]
 
+- type: entity
+  id: ScpLockerMedicalSpecialist
+  parent: BaseMedicalServiceLockerPlasteel
+  name: medical specialist's locker
+  components:
+  - type: AccessReader
+    access: [["Medical"]]
+
+- type: entity
+  id: ScpLockerMedicalService
+  parent: BaseMedicalServiceLocker
+  name: medical service locker
+  components:
+  - type: AccessReader
+    access: [["Medical"]]
+
 # Инженерно-техническая служба
 
 - type: entity
-  id: LockerLifeSupport
-  parent: LockerAtmospherics
+  id: BaseEngineeringTechnicalServiceLocker
+  parent: ScpLockerBase
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: eng
+    stateDoorOpen: eng_open
+    stateDoorClosed: eng_door
+
+- type: entity
+  id: BaseEngineeringTechnicalServiceLockerPlasteel
+  parent: BaseEngineeringTechnicalServiceLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: eng_plasteel
+    stateDoorOpen: eng_open_plasteel
+    stateDoorClosed: eng_door_plasteel
+
+- type: entity
+  id: ScpLockerLifeSupport
+  parent: BaseEngineeringTechnicalServiceLockerPlasteel
   name: life support inventory locker
   components:
   - type: AccessReader
     access: [["LifeSupport"]]
-    alertAccesses:
-      red: RedAlertAccesses
-      blue: BlueAlertAccessesHOS
-      gamma: GammaAlertAccesses
+
+- type: entity
+  id: ScpLockerGeneralTechnicalSpecialist
+  parent: BaseEngineeringTechnicalServiceLockerPlasteel
+  name: engineer's locker
+  components:
+  - type: AccessReader
+    access: [["Engineering"]]
+
+- type: entity
+  id: ScpLockerElectricalSupplies
+  parent: BaseEngineeringTechnicalServiceLocker
+  name: electrical supplies locker
+  components:
+  - type: EntityStorageVisuals
+    stateDoorOpen: eng_elec_open
+    stateDoorClosed: eng_elec_door
+  - type: AccessReader
+    access: [["Engineering"]]
+
+- type: entity
+  parent: BaseEngineeringTechnicalServiceLocker
+  id: ScpLockerWeldingSupplies
+  name: welding supplies locker
+  components:
+  - type: EntityStorageVisuals
+    stateDoorOpen: eng_weld_open
+    stateDoorClosed: eng_weld_door
+  - type: AccessReader
+    access: [["Engineering"]]
+
+- type: entity
+  parent: BaseEngineeringTechnicalServiceLocker
+  id: ScpLockerEvacRepair
+  name: emergency shuttle emergency locker
+  description: It's emergencies all the way down.
+  components:
+  - type: EntityStorageVisuals
+    stateDoorOpen: eng_evac_open
+    stateDoorClosed: eng_evac_door
+  - type: AccessReader
+    access: [["Engineering"]]
+
+- type: entity
+  id: ScpLockerEngineeringTechnicalService
+  parent: BaseEngineeringTechnicalServiceLocker
+  name: engineering technical service locker
+  components:
+  - type: AccessReader
+    access: [["Engineering"]]
+
+# Логистика
+
+- type: entity
+  id: BaseLogisticsServiceLocker
+  parent: ScpLockerBase
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: cargo
+    stateDoorOpen: cargo_open
+    stateDoorClosed: cargo_door
+
+- type: entity
+  id: BaseLogisticsServiceLockerPlasteel
+  parent: BaseLogisticsServiceLocker
+  abstract: true
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: cargo_plasteel
+    stateDoorOpen: cargo_open_plasteel
+    stateDoorClosed: cargo_door_plasteel
+
+- type: entity
+  id: ScpLockerLogisticsOfficer
+  parent: BaseLogisticsServiceLockerPlasteel
+  name: logistics officer's locker
+  components:
+  - type: AccessReader
+    access: [["Logistics"]]
+
+- type: entity
+  id: ScpLockerLogisticsService
+  parent: BaseLogisticsServiceLocker
+  name: logistics service locker
+  components:
+  - type: AccessReader
+    access: [["Logistics"]]
 
 # Департамент продовольственного и санитарного обслуживания
 
 - type: entity
-  id: ScpLockerFreezer
-  parent: LockerFreezer
+  id: ScpLockerFreezerBase
+  parent: ScpLockerBase
+  name: freezer
+  suffix: No Access
   components:
-  - type: AccessReader
-    access: [["Service"]]
-    alertAccesses:
-      red: RedAlertAccesses
-      blue: BlueAlertAccessesHOS
-      gamma: GammaAlertAccesses
+  - type: EntityStorageVisuals
+    stateBaseClosed: freezer
+    stateDoorOpen: freezer_open
+    stateDoorClosed: freezer_door
+  - type: ExplosionResistance
+    damageCoefficient: 0.50
+  - type: AntiRottingContainer
+  - type: Construction
+    graph: ClosetFreezer
+    node: done
+    containers:
+    - entity_storage
+  - type: Paintable
+    group: null
 
 - type: entity
-  id: ScpLockerBotanist
-  parent: LockerBotanist
+  id: ScpLockerFreezer
+  parent: ScpLockerFreezerBase
+  name: freezer locker
   components:
   - type: AccessReader
     access: [["Service"]]
-    alertAccesses:
-      red: RedAlertAccesses
-      blue: BlueAlertAccessesHOS
-      gamma: GammaAlertAccesses
+
+- type: entity
+  id: ScpLockerBotanistPhytogeneticist
+  parent: ScpLockerBase
+  name: botanist-phytogeneticist's locker
+  components:
+  - type: AccessReader
+    access: [["Service"]]
 
 - type: entity
   id: ScpLockerBooze
-  parent: LockerBooze
+  parent: ScpLockerBase
   components:
   - type: AccessReader
     access: [["Service"]]
@@ -218,16 +493,51 @@
 # Сторонний
 
 - type: entity
-  id: LockerChaosInsurgency
+  id: ScpLockerChaosInsurgency
+  parent: ScpLockerBase
   name: chaos insurgency locker
-  parent: LockerSyndicatePersonal
   components:
   - type: AccessReader
     access: [["ChaosInsurgency"]]
 
 - type: entity
-  parent: LockerBase
-  id: LockerThirdParty
+  parent: ScpLockerBase
+  id: ScpLockerThirdParty
+  name: third party organization's locker
   components:
   - type: AccessReader
     access: [["ThirdParty"]]
+
+# Шкафчики заключенных
+
+- type: entity
+  parent: [ GenpopBase , ScpLockerBase ]
+  id: ScpLockerPrisoner
+  name: prisoner closet
+  description: It's a secure locker for an inmate's personal belongings during their time in prison.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: generic
+    stateDoorOpen: generic_open
+    stateDoorClosed: generic_door
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PolygonShape
+          radius: 0.01
+          vertices:
+          - -0.25,-0.48
+          - 0.25,-0.48
+          - 0.25,0.48
+          - -0.25,0.48
+        mask:
+        - Impassable
+        - TableLayer
+        - LowImpassable
+        layer:
+        - BulletImpassable
+        - Opaque
+        density: 75
+        hard: True
+        restitution: 0
+        friction: 0.4

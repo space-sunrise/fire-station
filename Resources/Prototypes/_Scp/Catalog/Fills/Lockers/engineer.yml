@@ -1,6 +1,74 @@
 ﻿- type: entity
-  parent: LockerLifeSupport
-  id: LockerLifeSupportFilled
+  id: ScpClosetToolFilled
+  parent: ScpClosetTool
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillClosetTool
+
+- type: entity
+  id: ScpLockerElectricalSuppliesFilled
+  parent: ScpLockerElectricalSupplies
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillElectricalSupplies
+
+- type: entity
+  id: ScpLockerWeldingSuppliesFilled
+  parent: ScpLockerWeldingSupplies
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - !type:NestedSelector
+          tableId: FillWelderSupplies
+          rolls: !type:ConstantNumberSelector
+            value: 3
+        - !type:NestedSelector
+          tableId: FillWelderSuppliesMask
+          rolls: !type:ConstantNumberSelector
+            value: 3
+
+- type: entity
+  id: ScpClosetRadiationSuitFilled
+  parent: ScpClosetRadiationSuit
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillRadiationSuit
+
+- type: entity
+  parent: ScpLockerEvacRepair
+  id: ScpLockerEvacRepairFilled
+  suffix: Filled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillLockerEvacRepair
+
+- type: entity
+  id: ScpLockerGeneralTechnicalSpecialistFilled
+  suffix: Filled
+  parent: ScpLockerGeneralTechnicalSpecialist
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:NestedSelector
+        tableId: FillLockerEngineer
+
+- type: entity
+  parent: ScpLockerLifeSupport
+  id: ScpLockerLifeSupportFilled
   suffix: Filled
   components:
   - type: EntityTableContainerFill

@@ -1,0 +1,12 @@
+ent-ScpClosetEmergencyFilled = { ent-ScpClosetEmergency }
+    .suffix = Filled
+    .desc = { ent-ScpClosetEmergency.desc }
+ent-ScpClosetEmergencyN2Filled = { ent-ScpClosetEmergencyN2 }
+    .suffix = Filled
+    .desc = { ent-ScpClosetEmergencyN2.desc }
+ent-ScpClosetFireFilled = { ent-ScpClosetFire }
+    .suffix = Filled
+    .desc = { ent-ScpClosetFire.desc }
+ent-ScpClosetMaintenanceFilled = { ent-ScpClosetMaintenance }
+    .suffix = Filled
+    .desc = { ent-ScpClosetMaintenance.desc }

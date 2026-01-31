@@ -19,9 +19,9 @@
     - id: FlippoLighterSunriseCap
 
 - type: entity
-  id: LockerDirectorFilled
+  id: ScpLockerDirectorFilled
   suffix: Filled
-  parent: LockerDirector
+  parent: ScpLockerDirector
   components:
   - type: EntityTableContainerFill
     containers:
@@ -54,9 +54,9 @@
     - id: FlippoLighterSunriseQm
 
 - type: entity
-  id: LockerSeniorLogisticsOfficerFilled
+  id: ScpLockerSeniorLogisticsOfficerFilled
   suffix: Filled
-  parent: LockerSeniorLogisticsOfficer
+  parent: ScpLockerSeniorLogisticsOfficer
   components:
   - type: EntityTableContainerFill
     containers:
@@ -87,9 +87,9 @@
     - id: FlippoLighterSunriseHop
 
 - type: entity
-  id: LockerPersonnelOfficerFilled
+  id: ScpLockerPersonnelOfficerFilled
   suffix: Filled
-  parent: LockerPersonnelOfficer
+  parent: ScpLockerPersonnelOfficer
   components:
   - type: EntityTableContainerFill
     containers:
@@ -116,9 +116,9 @@
     - id: VariantCubeBoxSunrise
 
 - type: entity
-  id: LockerChiefTechnicalSpecialistFilled
+  id: ScpLockerChiefTechnicalSpecialistFilled
   suffix: Filled
-  parent: LockerChiefTechnicalSpecialist
+  parent: ScpLockerChiefTechnicalSpecialist
   components:
   - type: EntityTableContainerFill
     containers:
@@ -148,9 +148,9 @@
     - id: FlippoLighterSunriseCmo
 
 - type: entity
-  id: LockerHeadOfMedicalSectorFilled
+  id: ScpLockerHeadOfMedicalSectorFilled
   suffix: Filled
-  parent: LockerHeadOfMedicalSector
+  parent: ScpLockerHeadOfMedicalSector
   components:
   - type: EntityTableContainerFill
     containers:
@@ -175,9 +175,9 @@
     - id: FlippoLighterSunriseRd
 
 - type: entity
-  id: LockerScientificServiceDirectorFilled
+  id: ScpLockerScientificServiceDirectorFilled
   suffix: Filled
-  parent: LockerScientificServiceDirector
+  parent: ScpLockerScientificServiceDirector
   components:
   - type: EntityTableContainerFill
     containers:
@@ -209,9 +209,9 @@
     - id: FlippoLighterSunriseHos
 
 - type: entity
-  id: LockerSecurityCommanderFilled
+  id: ScpLockerSecurityCommanderFilled
   suffix: Filled
-  parent: LockerSecurityCommander
+  parent: ScpLockerSecurityCommander
   components:
   - type: EntityTableContainerFill
     containers:

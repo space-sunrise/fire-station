@@ -11,6 +11,7 @@
   supervisors: job-supervisors-security-commander
   canBeAntag: false
   displayWeight: 70
+  weight: 845
   accessGroups:
   - SecurityCommandant
   special:

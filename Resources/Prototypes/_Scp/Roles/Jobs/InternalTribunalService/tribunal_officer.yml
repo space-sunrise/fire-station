@@ -9,6 +9,7 @@
   icon: JobTribunalOfficer
   canBeAntag: false
   supervisors: job-supervisors-judicial-inspector
+  weight: 850
   accessGroups:
   - InternalTribunalService
   special:

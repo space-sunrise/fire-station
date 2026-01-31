@@ -11,6 +11,7 @@
   icon: JobAnomarchologyResearcher
   supervisors: job-supervisors-scientific-service-director
   displayWeight: 10
+  weight: 795
   accessGroups:
   - Scientist
   special:

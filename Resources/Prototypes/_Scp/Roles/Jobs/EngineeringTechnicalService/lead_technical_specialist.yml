@@ -11,6 +11,7 @@
   icon: JobLeadTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
   displayWeight: 30
+  weight: 755
   accessGroups:
   - LeadTechnicalSpecialist
   special:

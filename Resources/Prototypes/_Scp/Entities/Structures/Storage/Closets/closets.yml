@@ -1,0 +1,110 @@
+﻿- type: entity
+  id: ScpClosetTool
+  parent: [ ScpClosetSteelBase, ClosetTool ]
+  name: tool closet
+  description: It's a storage unit for tools.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: eng
+    stateDoorOpen: eng_tool_open
+    stateDoorClosed: eng_tool_door
+
+- type: entity
+  id: ScpClosetRadiationSuit
+  parent: [ ScpClosetSteelBase, ClosetRadiationSuit ]
+  name: radiation suit closet
+  description: More comfortable than radiation poisoning.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: eng
+    stateDoorOpen: eng_rad_open
+    stateDoorClosed: eng_rad_door
+
+- type: entity
+  id: ScpClosetEmergency
+  parent: [ ScpClosetSteelBase, ClosetEmergency ]
+  name: emergency closet
+  description: It's a storage unit for emergency breath masks and O2 tanks.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: emergency
+    stateDoorOpen: emergency_open
+    stateDoorClosed: emergency_door
+
+- type: entity
+  id: ScpClosetEmergencyN2
+  parent: [ ScpClosetSteelBase, ClosetEmergencyN2 ]
+  name: emergency nitrogen closet
+  description: It's full of life-saving equipment. Assuming, that is, that you breathe nitrogen.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: n2
+    stateDoorOpen: n2_open
+    stateDoorClosed: n2_door
+
+- type: entity
+  id: ScpClosetFire
+  parent: [ ScpClosetSteelBase, ClosetFire ]
+  name: fire-safety closet
+  description: It's a storage unit for fire-fighting supplies.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: fire
+    stateDoorOpen: fire_open
+    stateDoorClosed: fire_door
+
+- type: entity
+  id: ScpClosetBomb
+  parent: [ ScpClosetSteelBase, ClosetBomb ]
+  name: EOD closet
+  description: It's a storage unit for explosion-protective suits.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: bomb
+    stateDoorOpen: bomb_open
+    stateDoorClosed: bomb_door
+
+- type: entity
+  id: ScpClosetL3
+  parent: [ ScpClosetSteelBase, ClosetL3 ]
+  name: level 3 biohazard gear closet
+  description: It's a storage unit for level 3 biohazard gear.
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: bio
+    stateDoorOpen: bio_open
+    stateDoorClosed: bio_door
+
+- type: entity
+  id: ScpClosetL3Virology
+  parent: [ ScpClosetL3, ClosetL3Virology]
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: bio_viro
+    stateDoorOpen: bio_viro_open
+    stateDoorClosed: bio_viro_door
+
+- type: entity
+  id: ScpClosetL3Security
+  parent: [ ScpClosetL3, ClosetL3Security ]
+  components:
+  - type: EntityStorageVisuals
+    stateBaseClosed: bio_sec
+    stateDoorOpen: bio_sec_open
+    stateDoorClosed: bio_sec_door
+
+- type: entity
+  id: ScpClosetMaintenance
+  parent: [ ScpClosetSteelBase, ClosetMaintenance ]
+  name: maintenance closet
+  description: It's a storage unit.
+
+- type: entity
+  id: ScpClosetCursed
+  parent: ScpClosetSteelBase
+  suffix: cursed
+  components:
+  - type: CursedEntityStorage
+  - type: EntityStorage
+    closeSound:
+      path: /Audio/Effects/teleport_arrival.ogg

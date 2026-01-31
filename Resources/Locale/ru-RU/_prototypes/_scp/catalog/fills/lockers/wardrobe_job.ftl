@@ -1,0 +1,12 @@
+ent-ScpLockerEngineeringTechnicalServiceFilledWardrobe = { ent-ScpLockerEngineeringTechnicalService }
+    .desc = В этом шкафу находится униформа для инженерного дела или социальной инженерии.
+    .suffix = Заполненный, Гардероб
+ent-ScpLockerMedicalServiceFilledWardrobe = { ent-ScpLockerMedicalService }
+    .desc = Все мы когда-то играли во врача, а теперь пора заняться медициной.
+    .suffix = Заполненный, Гардероб
+ent-ScpLockerMedicalServiceFilledWardrobeLaboratory = { ent-ScpLockerMedicalService }
+    .desc = Благодаря стильной оранжевой одежде внутри вас с гораздо меньшей вероятностью вышвырнут из химической лаборатории.
+    .suffix = Заполненный, Гардероб, Лаборатория
+ent-ScpLockerLogisticsServiceFilledWardrobe = { ent-ScpLockerLogisticsService }
+    .desc = Этот шкаф? Может, 500 кредитов. Братство? Бесценно.
+    .suffix = Заполненный, Гардероб

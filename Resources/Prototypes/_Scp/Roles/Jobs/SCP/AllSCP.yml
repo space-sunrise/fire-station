@@ -7,7 +7,7 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 90000 # 25h
-  weight: 25
+  weight: 970
   icon: JobIconScp999
   joinNotifyCrew: false
   overrideConsoleVisibility: false
@@ -25,7 +25,7 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 360000 # 100h
-  weight: 25
+  weight: 975
   icon: JobIconScp173
   joinNotifyCrew: false
   overrideConsoleVisibility: false
@@ -42,7 +42,7 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 360000 # 100h
-  weight: 25
+  weight: 980
   icon: JobIconScp096
   joinNotifyCrew: false
   overrideConsoleVisibility: false
@@ -59,7 +59,7 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 432000 # 120h
-  weight: 25
+  weight: 985
   icon: JobIconScp049
   joinNotifyCrew: false
   overrideConsoleVisibility: false
@@ -76,7 +76,7 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 99999999999 # Временно 120h 432000
-  weight: 25
+  weight: 990
   icon: JobIconScp082
   joinNotifyCrew: false
   overrideConsoleVisibility: false
@@ -95,7 +95,7 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 720000 # 200h
-  weight: 25
+  weight: 995
   icon: JobIconScp939
   joinNotifyCrew: false
   overrideConsoleVisibility: false
@@ -112,7 +112,7 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 756000 # 210h
-  weight: 25
+  weight: 1000
   icon: JobIconScp106
   joinNotifyCrew: false
   overrideConsoleVisibility: false

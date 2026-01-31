@@ -10,6 +10,7 @@
   supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false
   displayWeight: 0
+  weight: 830
   accessGroups:
   - SecurityJobCommon
   special:

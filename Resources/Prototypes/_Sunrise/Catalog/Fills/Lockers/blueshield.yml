@@ -2,6 +2,7 @@
   id: LockerBlueShieldOfficerFilled
   suffix: Filled
   parent: LockerBlueShield
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: StorageFill
     contents:
@@ -15,6 +16,7 @@
   id: LockerBlueshieldFilledHardsuit
   suffix: Filled, Hardsuit
   parent: LockerBlueShield
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: StorageFill
     contents:
@@ -31,6 +33,7 @@
   parent: GunSafe
   id: GunSafeBlueShield
   name: blue shield safe
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["BlueShield"]]

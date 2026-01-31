@@ -58,6 +58,9 @@
       - Window
       - Directional
       - Structure
+    cryOutBlacklist:
+      components:
+      - ArtifactAnalyzer
     cryOutDamage:
       types:
         Structural: 850

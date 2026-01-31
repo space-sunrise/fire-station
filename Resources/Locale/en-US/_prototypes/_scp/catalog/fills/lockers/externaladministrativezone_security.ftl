@@ -1,9 +1,3 @@
-ent-LockerExternalAdministrativeZoneCommandantFilled = { ent-LockerExternalAdministrativeZoneCommandant }
-    .suffix = Filled
-    .desc = { ent-LockerExternalAdministrativeZoneCommandant.desc }
-ent-LockerExternalAdministrativeZoneOfficerFilled = { ent-LockerExternalAdministrativeZoneOfficer }
-    .suffix = Filled
-    .desc = { ent-LockerExternalAdministrativeZoneOfficer.desc }
 ent-LockerExternalAdministrativeZoneFieldDoctorFilled = { ent-LockerExternalAdministrativeZoneFieldDoctor }
     .suffix = Brigmedic, Filled
     .desc = { ent-LockerExternalAdministrativeZoneFieldDoctor.desc }

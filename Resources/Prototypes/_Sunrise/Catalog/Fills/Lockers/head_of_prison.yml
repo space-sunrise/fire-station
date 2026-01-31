@@ -3,6 +3,7 @@
   name: head of prison's locker
   suffix: Filled
   parent: LockerHeadOfSecurity
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: StorageFill
     contents:

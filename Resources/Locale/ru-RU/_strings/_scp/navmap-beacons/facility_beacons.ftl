@@ -22,6 +22,7 @@ scp-facility-beacon-scp-131-containment = Зона содержания SCP-131
 scp-facility-beacon-scp-049-containment = Зона содержания SCP-049
 scp-facility-beacon-scp-096-containment = Зона содержания SCP-096
 scp-facility-beacon-scp-082-containment = Зона содержания SCP-082
+scp-facility-beacon-scp-207-containment = Зона содержания SCP-207
 scp-facility-beacon-scp-457-containment = Зона содержания SCP-457
 scp-facility-beacon-scp-035-containment = Зона содержания SCP-035
 scp-facility-beacon-scp-079-containment = Зона содержания SCP-079

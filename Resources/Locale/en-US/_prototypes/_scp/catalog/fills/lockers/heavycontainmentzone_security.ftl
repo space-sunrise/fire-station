@@ -1,12 +1,3 @@
-ent-LockerHeavyContainmentZoneCommandantFilled = { ent-LockerHeavyContainmentZoneCommandant }
-    .suffix = Filled
-    .desc = { ent-LockerHeavyContainmentZoneCommandant.desc }
-ent-LockerHeavyContainmentZoneOfficerFilled = { ent-LockerHeavyContainmentZoneOfficer }
-    .suffix = Filled
-    .desc = { ent-LockerHeavyContainmentZoneOfficer.desc }
-ent-LockerHeavyContainmentZoneFieldMedicFilled = { ent-LockerHeavyContainmentZoneFieldMedic }
-    .suffix = Brigmedic, Filled
-    .desc = { ent-LockerHeavyContainmentZoneFieldMedic.desc }
 ent-LockerHeavyContainmentZoneFieldDoctorFilled = { ent-LockerHeavyContainmentZoneFieldDoctor }
     .suffix = Brigmedic, Filled
     .desc = { ent-LockerHeavyContainmentZoneFieldDoctor.desc }

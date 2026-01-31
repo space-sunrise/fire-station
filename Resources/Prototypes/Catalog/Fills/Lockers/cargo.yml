@@ -26,6 +26,7 @@
   id: LockerSalvageSpecialistFilledHardsuit
   suffix: Filled, Hardsuit
   parent: LockerSalvageSpecialist
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -40,6 +41,7 @@
   id: LockerSalvageSpecialistFilled
   suffix: Filled
   parent: LockerSalvageSpecialist
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: EntityTableContainerFill
       containers:

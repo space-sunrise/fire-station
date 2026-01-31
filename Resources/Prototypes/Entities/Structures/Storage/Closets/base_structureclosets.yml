@@ -5,11 +5,6 @@
   description: A standard-issue Nanotrasen storage unit.
   abstract: true
   components:
-  # Fire added start
-  - type: Tag
-    tags:
-    - Scp173DamageOnCollide
-  # Fire added end
   - type: Animateable
   - type: ResistLocker
   - type: Transform
@@ -71,15 +66,6 @@
       params:
         volume: -1
     # Sunrise edit end
-    # Fire edit start
-    whitelist:
-      components:
-      - MobState
-      - Item
-    blacklist:
-      components:
-      - Scp
-    # Fire edit end
   - type: ContainerContainer
     containers:
       entity_storage: !type:Container
@@ -142,6 +128,7 @@
 - type: entity
   id: ClosetSteelBase
   parent: ClosetBase
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Construction
     graph: ClosetSteel

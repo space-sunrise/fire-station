@@ -1,4 +1,4 @@
-reagent-name-cola = Космическая кола
+reagent-name-cola = Кола
 reagent-desc-cola = Сладкий газированный безалкогольный напиток.
 reagent-name-shirley-temple = Ширли Темпл
 reagent-desc-shirley-temple = Фаворит среди более юных членов экипажа.

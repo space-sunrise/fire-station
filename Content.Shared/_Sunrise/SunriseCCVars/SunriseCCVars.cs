@@ -528,8 +528,8 @@ public sealed partial class SunriseCCVars : CVars
     /// <summary>
     /// Включена ли санитизация чата (антиспам от набегаторов)
     /// </summary>
-    public static readonly CVarDef<bool> ChatSanitizationEnable =
-        CVarDef.Create("chatsan.enable", true, CVar.SERVER | CVar.ARCHIVE);
+    public static readonly CVarDef<bool> ChatSanitizationEnable = // Fire edit
+        CVarDef.Create("chatsan.enable", false, CVar.SERVER | CVar.ARCHIVE);
 
     /// <summary>
     /// Контроллирует поведение санитизации.
@@ -548,8 +548,8 @@ public sealed partial class SunriseCCVars : CVars
     /// <summary>
     /// Название корпорации для подстановки в документы
     /// </summary>
-    public static readonly CVarDef<string> DocumentCorporationName =
-        CVarDef.Create("doc.corp_name", "Nanotrasen", CVar.SERVER | CVar.ARCHIVE);
+    public static readonly CVarDef<string> DocumentCorporationName = // Fire edit
+        CVarDef.Create("doc.corp_name", "SCP Foundation", CVar.SERVER | CVar.ARCHIVE);
 
     /// <summary>
     /// Смешение автозаполнения времени в часах
@@ -560,8 +560,8 @@ public sealed partial class SunriseCCVars : CVars
     /// <summary>
     /// Смешение автозаполнения времени в годах
     /// </summary>
-    public static readonly CVarDef<int> DocumentYearOffset =
-        CVarDef.Create("doc.year_offset", 1000, CVar.SERVER | CVar.ARCHIVE);
+    public static readonly CVarDef<int> DocumentYearOffset = // Fire edit
+        CVarDef.Create("doc.year_offset", 0, CVar.SERVER | CVar.ARCHIVE);
 
     /// <summary>
     /// Пул шаблонов документов, используемых при создании документов на принтере

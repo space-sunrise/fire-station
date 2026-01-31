@@ -11,6 +11,8 @@
     sprite: _Scp/Objects/Scp/scp-330.rsi
     state: candy_blue
   - type: Scp330Candy
+  - type: Scp
+    class: Safe
   - type: SolutionContainerManager
     solutions:
       food:
@@ -62,18 +64,20 @@
 # Миска SCP-330
 - type: entity
   id: Scp330Bowl
-  parent: BaseStructure
+  parent:
+  - BaseItemScp
   name: candy bowl
   description: "A note is attached to the bowl that reads: 'Take no more than two, please!'"
   suffix: SCP-330
   components:
   - type: Sprite
-    drawdepth: Items
     sprite: _Scp/Objects/Scp/scp-330.rsi
     layers:
     - state: bowl
     - state: candy_layer0
       map: [ "enum.StorageContainerVisualLayers.Fill" ]
+  - type: Scp
+    class: Safe
   - type: Scp330Bowl
     baseDamage:
       types:
@@ -101,6 +105,8 @@
         tableId: Scp330BowlTable
         rolls: !type:RangeNumberSelector
           range: 10, 18
+  - type: XenoArtifact
+    triggerWeights: Scp330Triggers
 
 - type: entityTable
   id: Scp330BowlTable

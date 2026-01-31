@@ -4,6 +4,7 @@
   name: closet
   suffix: cursed
   description: A standard-issue Nanotrasen storage unit.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: CursedEntityStorage
   - type: EntityStorage
