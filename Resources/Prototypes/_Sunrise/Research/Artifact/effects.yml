@@ -334,6 +334,6 @@
     components:
     - type: AnomalyAccent
     - type: TimedRemoveComponents
-      removeAfter: 300
+      removeAfter: 600
       components:
       - type: AnomalyAccent
