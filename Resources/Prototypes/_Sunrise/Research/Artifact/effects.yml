@@ -321,19 +321,19 @@
       components:
       - type: GravityWell
 
-- type: entity
-  id: SunriseEffectShiftedAsciiTableAccent
-  parent: BaseXenoArtifactEffect
-  description: artifact-effect-description-shifted-ascii
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: AddComponentsInRadius
-    whitelist:
-      components:
-      - HumanoidAppearance
-    components:
-    - type: AnomalyAccent
-    - type: TimedRemoveComponents
-      removeAfter: 600
-      components:
-      - type: AnomalyAccent
+# - type: entity
+#   id: SunriseEffectShiftedAsciiTableAccent
+#   parent: BaseXenoArtifactEffect
+#   description: artifact-effect-description-shifted-ascii
+#   categories: [ HideSpawnMenu ]
+#   components:
+#   - type: AddComponentsInRadius
+#     whitelist:
+#       components:
+#       - HumanoidAppearance
+#     components:
+#     - type: AnomalyAccent
+#     - type: TimedRemoveComponents
+#       removeAfter: 600
+#       components:
+#       - type: AnomalyAccent
