@@ -240,22 +240,22 @@
       components:
       - type: GravityWell
 
-# - type: entity
-#   id: ScpEffectShiftedAsciiTableAccent
-#   parent: BaseScpArtifactEffect
-#   description: artifact-effect-hint-data-deleted
-#   categories: [ HideSpawnMenu ]
-#   components:
-#   - type: AddComponentsInRadius
-#     whitelist:
-#       components:
-#       - HumanoidAppearance
-#     components:
-#     - type: AnomalyAccent
-#     - type: TimedRemoveComponents
-#       removeAfter: 600
-#       components:
-#       - type: AnomalyAccent
+- type: entity
+  id: ScpEffectShiftedAsciiTableAccent
+  parent: BaseScpArtifactEffect
+  description: artifact-effect-hint-data-deleted
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: AddComponentsInRadius
+    whitelist:
+      components:
+      - HumanoidAppearance
+    components:
+    - type: AnomalyAccent
+    - type: TimedRemoveComponents
+      removeAfter: 600
+      components:
+      - type: AnomalyAccent
 
 # Scp 939
 
