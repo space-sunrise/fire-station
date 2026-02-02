@@ -86,10 +86,10 @@
     table: !type:AllSelector
       children:
       - id: RandomHumanoidSpawnerNTFLeader
-      - id: RandomHumanoidSpawnerNTFSpecialist # 2
       - id: RandomHumanoidSpawnerNTFSpecialist
-      - id: RandomHumanoidSpawnerNTFCadet # 2
+        amount: 2
       - id: RandomHumanoidSpawnerNTFCadet
+        amount: 2
     offset: 1
 
 # Спавнер, но юзается по кнопке

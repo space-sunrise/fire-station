@@ -108,10 +108,10 @@
     table: !type:AllSelector
       children:
       - id: RandomHumanoidSpawnerGRULeader
-      - id: RandomHumanoidSpawnerGRUSpecialist # 2
       - id: RandomHumanoidSpawnerGRUSpecialist
-      - id: RandomHumanoidSpawnerGRUCadet # 2
+        amount: 2
       - id: RandomHumanoidSpawnerGRUCadet
+        amount: 2
     offset: 1
 
 # Поясняем, кто такой "Капитан"
