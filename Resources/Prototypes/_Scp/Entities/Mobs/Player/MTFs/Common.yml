@@ -133,8 +133,8 @@
   parent: EventHumanoidMindShielded
   randomizeName: false
   voiceWhitelist:
-  - CBMTF1
-  - CBMTF2
+  - StarcraftTerranAdviser
+  - LOLAkali1
   genderWhitelist:
   - Female
   components:
