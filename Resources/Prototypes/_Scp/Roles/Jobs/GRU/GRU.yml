@@ -65,7 +65,7 @@
     rules: ghost-role-information-chaos-rules
     raffle:
       settings: short
-    job: GRUSpecialist
+    job: GRUCadet
   - type: Loadout
     prototypes: [ GRUSpecialistGear ]
   - type: TimedRemoveComponents
