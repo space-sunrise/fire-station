@@ -136,7 +136,7 @@
   - CBMTF1
   - CBMTF2
   genderWhitelist:
-  - Male
+  - Female
   components:
   - type: RandomMetadata
     nameSegments:
