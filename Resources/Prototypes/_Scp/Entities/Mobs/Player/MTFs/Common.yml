@@ -133,10 +133,10 @@
   parent: EventHumanoidMindShielded
   randomizeName: false
   voiceWhitelist:
-  - CBMTF1
-  - CBMTF2
+  - HeartstoneDjaina
+  - HearthstoneTiranda
   genderWhitelist:
-  - Male
+  - Female
   components:
   - type: RandomMetadata
     nameSegments:
