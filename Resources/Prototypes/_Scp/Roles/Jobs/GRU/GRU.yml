@@ -9,7 +9,6 @@
     rules: ghost-role-information-chaos-rules
     raffle:
       settings: short
-    job: GRULeader
   - type: Loadout
     prototypes: [ GRULeaderGear ]
   - type: TimedRemoveComponents
@@ -46,7 +45,6 @@
     rules: ghost-role-information-chaos-rules
     raffle:
       settings: short
-    job: GRUSpecialist
   - type: Loadout
     prototypes: [ GRUSpecialistGear ]
   - type: TimedRemoveComponents
@@ -65,7 +63,6 @@
     rules: ghost-role-information-chaos-rules
     raffle:
       settings: short
-    job: GRUCadet
   - type: Loadout
     prototypes: [ GRUSpecialistGear ]
   - type: TimedRemoveComponents
