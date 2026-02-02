@@ -24,3 +24,5 @@ ent-ClothingHeadsetAltLogistics = { ent-ClothingHeadsetAlt } логистиче�
     .desc = { ent-ClothingHeadsetAlt.desc }
 ent-ClothingHeadsetAltChaos = полноразмерная тёмно-зелёная гарнитура
     .desc = Звучит чётче, чем гарнитура Фонда. Принимает ключи шифрования.
+ent-ClothingHeadsetGRU = { ent-ClothingHeadsetAltChaos }
+    .desc = { ent-ClothingHeadsetAltChaos.desc }

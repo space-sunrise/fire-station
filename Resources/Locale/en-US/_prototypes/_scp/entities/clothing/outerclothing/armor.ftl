@@ -13,3 +13,6 @@ ent-ClothingOuterArmorSecurityBulletproof = security ballistic vest
 ent-ClothingOuterArmorSecurityRiotLight = lightweight riot armor suit
     .desc = A lightweight variant of the standard riot armor. Offers high mobility while still exuding an unsettling, imposing presence.
     .suffix = { ent-ClothingOuterArmorSecurity.suffix }
+ent-ClothingOuterArmorGRU = 6B45 body armor
+    .desc = A combat body armor of the Armed Forces of the Russian Federation, with shoulder pads. Basis.
+    .suffix = GRU

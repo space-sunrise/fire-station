@@ -1,0 +1,8 @@
+- type: entity
+  parent: [ClothingHeadsetAltChaos, BaseSyndicateContraband]
+  id: ClothingHeadsetGRU
+  components:
+    - type: ContainerFill
+      containers:
+        key_slots:
+        - EncryptionKeyGRU

@@ -24,3 +24,5 @@ ent-ClothingHeadsetAltLogistics = { ent-ClothingHeadsetAlt }
     .desc = { ent-ClothingHeadsetAlt.desc }
 ent-ClothingHeadsetAltChaos = { ent-ClothingHeadsetAlt }
     .desc = { ent-ClothingHeadsetAlt.desc }
+ent-ClothingHeadsetGRU = { ent-ClothingHeadsetAlt }
+    .desc = { ent-ClothingHeadsetAlt.desc }

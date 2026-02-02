@@ -76,6 +76,15 @@
   frequency: 0251
   color: "#40826d"
   longRange: true
+
+- type: radioChannel
+  id: GRU
+  name: chat-radio-gru
+  keycode: 'г'
+  frequency: 0418
+  color: "#2e4b5c"
+  longRange: true
+
 # Ниже под удаление на будущее.
 - type: radioChannel
   id: InternalTribunalService
