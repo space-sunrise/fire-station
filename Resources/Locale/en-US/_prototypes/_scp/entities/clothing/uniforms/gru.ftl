@@ -1,3 +1,3 @@
 ent-ClothingUniformGRU = Military uniform
-    .desc = Special dense set of uniform of the Russian spetznaz.
+    .desc = Special dense uniform set of the Russian spetsnaz.
     .suffix = GRU
