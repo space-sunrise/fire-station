@@ -1,6 +1,6 @@
 #Маска ГРУ
 - type: entity
-  parent: [ClothingMaskGas, BaseSyndicateContraband]
+  parent: [ClothingMaskGas, BaseFoundationEnemyContraband]
   id: ClothingMaskGRU
   suffix: GRU
   components:

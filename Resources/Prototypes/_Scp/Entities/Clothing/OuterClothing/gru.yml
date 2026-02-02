@@ -1,6 +1,6 @@
 #Бронежилет ГРУ
 - type: entity
-  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSyndicateContraband]
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseFoundationEnemyContraband]
   id: ClothingOuterArmorGRU
   components:
   - type: Sprite

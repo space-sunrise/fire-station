@@ -1,6 +1,6 @@
 #Шлем ГРУ
 - type: entity
-  parent: [ClothingHeadHelmetBase, BaseSyndicateContraband]
+  parent: [ClothingHeadHelmetBase, BaseFoundationEnemyContraband]
   id: ClothingHelmetGRU
   components:
   - type: Armor

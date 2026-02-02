@@ -1,5 +1,5 @@
 - type: entity
-  parent: [ClothingHeadsetAltChaos, BaseSyndicateContraband]
+  parent: [ClothingHeadsetAltChaos, BaseFoundationEnemyContraband]
   id: ClothingHeadsetGRU
   components:
     - type: ContainerFill

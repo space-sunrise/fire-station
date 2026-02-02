@@ -1,7 +1,7 @@
 #Униформа ГРУ
 - type: entity
   id: ClothingUniformGRU
-  parent: [ClothingUniformBase, BaseSyndicateContraband]
+  parent: [ClothingUniformBase, BaseFoundationEnemyContraband]
   components:
     - type: Sprite
       sprite: _Scp/Clothing/Uniforms/gru.rsi

@@ -285,7 +285,7 @@
     - state: chaos_label
 
 - type: entity
-  parent: [ EncryptionKey, BaseSyndicateContraband ]
+  parent: [ EncryptionKey, BaseFoundationEnemyContraband ]
   id: EncryptionKeyGRU
   components:
   - type: EncryptionKey
