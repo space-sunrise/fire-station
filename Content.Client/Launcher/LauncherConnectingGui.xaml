@@ -103,12 +103,12 @@
                                             Margin="0 10">
                                     <Button Name="RetryButton"
                                             Text="{Loc 'connecting-retry'}"
-                                            StyleClasses="ButtonColorGreen OpenRight"
+                                            StyleClasses="positive"
                                             MinWidth="120"
                                             MinHeight="35"/>
                                     <Button Name="CopyButton"
                                             Text="{Loc 'connecting-copy'}"
-                                            StyleClasses="ButtonColorBlue OpenLeft"
+                                            StyleClasses="OpenLeft"
                                             MinWidth="120"
                                             MinHeight="35"/>
                                 </BoxContainer>
@@ -227,7 +227,7 @@
             <BoxContainer Orientation="Vertical" Margin="8">
                 <Button Name="ExitButton"
                         Text="{Loc 'connecting-exit'}"
-                        StyleClasses="ButtonColorRed"
+                        StyleClasses="negative"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         HorizontalExpand="True"
