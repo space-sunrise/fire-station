@@ -114,7 +114,7 @@
     bounds: "-0.6,-0.6, 0.6, 0.6"
   - type: PointLight
     enabled: false
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
     autoRot: true
     radius: 30
     energy: 3

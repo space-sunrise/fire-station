@@ -244,7 +244,7 @@
     spriteLayer: light
   - type: PointLight
     enabled: false
-    mask: /Textures/Effects/LightMasks/cone.png
+    mask: /Textures/_Scp/Effects/LightMasks/cone.png
     autoRot: true
     energy: 2 # Sunrise-edit
     radius: 12 # Sunrise-edit
