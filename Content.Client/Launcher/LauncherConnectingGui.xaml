@@ -108,7 +108,7 @@
                                             MinHeight="35"/>
                                     <Button Name="CopyButton"
                                             Text="{Loc 'connecting-copy'}"
-                                            StyleClasses="OpenLeft"
+                                            StyleClasses="ButtonColorBlue OpenLeft"
                                             MinWidth="120"
                                             MinHeight="35"/>
                                 </BoxContainer>
@@ -130,7 +130,7 @@
                                             Margin="0 10">
                                     <Button Name="ReconnectButton"
                                             Text="{Loc 'connecting-reconnect'}"
-                                            StyleClasses="ButtonColorGreen OpenRight"
+                                            StyleClasses="positive"
                                             MinWidth="120"
                                             MinHeight="35"/>
                                     <Button Name="CopyButtonDisconnected"

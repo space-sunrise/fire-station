@@ -27,8 +27,6 @@ public sealed partial class LauncherConnectingGui
     {
         base.EnteredTree();
 
-        SetAnimation();
-
         var logoTexture = _resource.GetTexture("/Textures/_Scp/Logo/logo-hollow.png");
         Logo.Texture = logoTexture;
         Logo.TextureScale = new Vector2(0.125f, 0.125f);

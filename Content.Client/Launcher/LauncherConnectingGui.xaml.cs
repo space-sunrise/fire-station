@@ -58,6 +58,8 @@ namespace Content.Client.Launcher
             RobustXamlLoader.Load(this);
             IoCManager.InjectDependencies(this);
 
+            SetAnimation(); // Fire added
+
             LayoutContainer.SetAnchorPreset(this, LayoutContainer.LayoutPreset.Wide);
 
             // У нас своя система стилей
