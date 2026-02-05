@@ -1,5 +1,5 @@
 ﻿ent-PlayerScp079Empty = ???
-    .desc = Старый... никому не нужны компьютер 80х годов.
+    .desc = Старый... никому не нужный компьютер 80х годов.
     .suffix = SCP-079
 
 ent-Scp079EnabledFace = SCP 079 активирован
@@ -12,7 +12,7 @@ ent-Scp079Brain = мозг SCP 079
 ent-Scp079Holo = глаз SCP 079
     .desc = Большой брат следит за тобой.
 
-str-079-eye-name = { ent-ent-Scp079Holo }
+str-079-eye-name = { ent-Scp079Holo }
 
 str-079-CommunicationsConsole-title = [ДАННЫЕ УДАЛЕНЫ]
 
