@@ -1,4 +1,4 @@
-﻿artifact-trigger-hint-insert-into-container = Положить внутрь
+artifact-trigger-hint-insert-into-container = Положить внутрь
 artifact-trigger-hint-remove-from-container = Достать изнутри
 artifact-trigger-hint-take-item = Поднять
 artifact-trigger-hint-drop-item = Положить
