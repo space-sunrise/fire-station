@@ -8,7 +8,6 @@
   supervisors: job-supervisors-security-and-research
   access:
   - ClassDJanitor
-  alwaysUseSpawner: true
   weight: 710
   special:
   - !type:AddComponentSpecial
