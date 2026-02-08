@@ -312,7 +312,7 @@
   - type: BlockMovement
     blockInteraction: false
   - type: SiliconLawProvider
-    laws: Crewsimov
+    laws: Crewsimov # поменять и сделать 079 свои законы когда оффы добавят возможность ставить кастомный мозг для ИИ
   - type: SiliconLawBound
   # буду делать законы для 079 - верну
   #- type: ActionGrant
