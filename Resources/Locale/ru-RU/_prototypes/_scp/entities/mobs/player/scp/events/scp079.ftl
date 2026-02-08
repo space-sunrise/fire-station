@@ -14,7 +14,7 @@ ent-Scp079Holo = глаз SCP 079
 
 str-079-eye-name = { ent-Scp079Holo }
 
-str-079-CommunicationsConsole-title = [ДАННЫЕ УДАЛЕНЫ]
+str-079-CommunicationsConsole-title = \[ДАННЫЕ УДАЛЕНЫ\]
 
 ent-Scp079HoloLocal = ???
     .desc = Голографическая репрезентация... кто это вообще?
