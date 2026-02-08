@@ -291,6 +291,25 @@
   - EthicsCommitteeRepresentativeCoat
   - EthicsCommitteeRepresentativeCoatOpen
 
+# Научная служба
+
+- type: loadoutGroup
+  id: TrinketsScientificService
+  name: loadout-group-trinkets
+  loadouts:
+  - BoxFolderBaseThreePapers
+  - BoxFolderPlasticClipboardThreePapers
+  - BoxFolderClipboardThreePapers
+
+# Д класс
+
+- type: loadoutGroup
+  id: TrinketsClassD
+  name: loadout-group-trinkets
+  loadouts:
+  - ClothingNeckPlanetPrisonCellblockPin
+  - ClothingNeckPlanetPrisonLockdownPin
+
 # Общие
 
 - type: loadoutGroup

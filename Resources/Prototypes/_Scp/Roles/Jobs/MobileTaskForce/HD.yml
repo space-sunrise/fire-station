@@ -4,6 +4,9 @@
   name: ghost-role-information-mtf-leader-HD-name
   description: ghost-role-information-mtf-leader-description
   playTimeTracker: JobHDLeader
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 #5 hrs
   setPreference: false
   startingGear: HDLeaderGear
   icon: JobIconHDleader
@@ -48,6 +51,9 @@
   name: ghost-role-information-mtf-specialist-HD-name
   description: ghost-role-information-mtf-specialist-description
   playTimeTracker: JobHDSpecialist
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 #5 hrs
   setPreference: false
   startingGear: HDSpecialistGear
   icon: JobIconHD
@@ -81,6 +87,9 @@
   name: ghost-role-information-mtf-cadet-HD-name
   description: ghost-role-information-mtf-cadet-description
   playTimeTracker: JobHDCadet
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 3600 #1 hr
   setPreference: false
   startingGear: HDCadetGear
   icon: JobIconHD

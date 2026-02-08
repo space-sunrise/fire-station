@@ -21,45 +21,49 @@
   - BoxFolderBaseThreePapers
   - BoxFolderPlasticClipboardThreePapers
   - BoxFolderClipboardThreePapers
-  # Sunrise-Start
   - ClothingWraps
   - ClothingWrapsHigh
-  - ClothingNeckNanoTrasenPin
-  - ClothingNeckNakamuraPin
-  - ClothingNeckLogistikaPin
-  - ClothingNeckDeForestPin
-  - ClothingNeckDonkPin
-  - ClothingNeckVitezstviPin
-  - ClothingNeckEarthPin
-  - ClothingNeckUSSPPin
-  - ClothingNeckReedIndustriesPin
+  # Fire edit start
+  #- ClothingNeckNanoTrasenPin
+  #- ClothingNeckNakamuraPin
+  #- ClothingNeckLogistikaPin
+  #- ClothingNeckDeForestPin
+  #- ClothingNeckDonkPin
+  #- ClothingNeckVitezstviPin
+  #- ClothingNeckEarthPin
+  #- ClothingNeckUSSPPin
+  #- ClothingNeckReedIndustriesPin
+  # Fire edit end
   - CorporateLaw
-  - ClothingNeckPlanetPrisonLockdownPin
-  - ClothingNeckPlanetPrisonCellblockPin
-  # Sunrise-End
-  - ClothingNeckLGBTPin
-  - ClothingNeckAllyPin
-  - ClothingNeckAromanticPin
-  - ClothingNeckAsexualPin
-  - ClothingNeckAroacePin
-  - ClothingNeckBisexualPin
-  - ClothingNeckGayPin
-  - ClothingNeckIntersexPin
-  - ClothingNeckLesbianPin
-  - ClothingNeckNonBinaryPin
-  - ClothingNeckPansexualPin
-  - ClothingNeckPluralPin
-  - ClothingNeckOmnisexualPin
-  - ClothingNeckGenderqueerPin
-  - ClothingNeckGenderfluidPin
-  - ClothingNeckTransPin
-  - ClothingNeckAutismPin
-  - ClothingNeckGoldAutismPin
+  # Fire edit start
+  #- ClothingNeckPlanetPrisonLockdownPin # брух. Зачем всяким ПКпЭ значек строго режима? Будет странно
+  #- ClothingNeckPlanetPrisonCellblockPin # тот же вопрос что и выше. Так что я для д класса добавил отдельную категорию
+  #- ClothingNeckLGBTPin
+  #- ClothingNeckAllyPin
+  #- ClothingNeckAromanticPin
+  #- ClothingNeckAsexualPin
+  #- ClothingNeckAroacePin
+  #- ClothingNeckBisexualPin
+  #- ClothingNeckGayPin
+  #- ClothingNeckIntersexPin
+  #- ClothingNeckLesbianPin
+  #- ClothingNeckNonBinaryPin
+  #- ClothingNeckPansexualPin
+  #- ClothingNeckPluralPin
+  #- ClothingNeckOmnisexualPin
+  #- ClothingNeckGenderqueerPin
+  #- ClothingNeckGenderfluidPin
+  #- ClothingNeckTransPin
+  #- ClothingNeckAutismPin
+  #- ClothingNeckGoldAutismPin
+  # Fire edit end
   - OffsetCane
   - OffsetCaneWood
-  - OffsetCaneClown
-  - OffsetCaneMime
-  - OffsetCaneNT
+  # Fire edit start
+  #- OffsetCaneClown
+  #- OffsetCaneMime
+  #- OffsetCaneNT
+  # Fire edit end
   - Cane
   - TowelColorWhite
   - TowelColorGray
@@ -69,14 +73,14 @@
   - TowelColorLightBrown
   - TowelColorYellow
   - TowelColorDarkGreen
-  - TowelColorGreen
+  #- TowelColorGreen
   - TowelColorLightBlue
   - TowelColorDarkBlue
   - TowelColorPurple
-  - TowelColorMaroon
-  - TowelColorMime
-  - TowelColorSilver
-  - TowelColorGold
+  #- TowelColorMaroon
+  #- TowelColorMime
+  #- TowelColorSilver
+  #- TowelColorGold
 
 - type: loadoutGroup
   id: Glasses

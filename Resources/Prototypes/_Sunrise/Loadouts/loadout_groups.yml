@@ -900,7 +900,7 @@
   - TrinketsEngineeringFL
   - TrinketsEngineeringGA
   - TrinketsEngineeringGC
-  - TrinketsEngineeringHSM
+  #- TrinketsEngineeringHSM # Fire edit
   - TrinketsEngineeringTFE
   - TrinketsEngineeringTFAT
   - TrinketsEngineeringTFCF

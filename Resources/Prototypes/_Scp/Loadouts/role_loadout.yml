@@ -32,6 +32,7 @@
   - ResearchDirectorShoes
   - Glasses
   - CommonMiscItems
+  - TrinketsScientificService
   - Bra
   - Pants
   - Socks
@@ -355,6 +356,7 @@
   - ScientistShoes
   - Glasses
   - CommonMiscItems
+  - TrinketsScientificService
   - Bra
   - Pants
   - Socks
@@ -371,6 +373,7 @@
   - ScientistShoes
   - Glasses
   - CommonMiscItems
+  - TrinketsScientificService
   - Bra
   - Pants
   - Socks
@@ -385,6 +388,7 @@
   - ScientistBackpack
   - ScientistShoes
   - CommonMiscItems
+  - TrinketsScientificService
   - Bra
   - Pants
   - Socks
@@ -397,6 +401,7 @@
   - ScientistBackpack
   - Glasses
   - CommonMiscItems
+  - TrinketsScientificService
   - Bra
   - Pants
   - Socks
@@ -649,6 +654,7 @@
   - Bra
   - Pants
   - Socks
+  - TrinketsClassD
 
 - type: roleLoadout
   id: JobClassDBotanist
@@ -656,6 +662,7 @@
   - Bra
   - Pants
   - Socks
+  - TrinketsClassD
 
 - type: roleLoadout
   id: JobClassDJanitor
@@ -663,6 +670,7 @@
   - Bra
   - Pants
   - Socks
+  - TrinketsClassD
 
 - type: roleLoadout
   id: JobClassD
@@ -670,3 +678,4 @@
   - Bra
   - Pants
   - Socks
+  - TrinketsClassD
