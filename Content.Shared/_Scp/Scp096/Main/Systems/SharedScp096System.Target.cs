@@ -1,5 +1,6 @@
 ﻿using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Systems;
+using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.Scp106.Components;
@@ -184,6 +185,11 @@ public abstract partial class SharedScp096System
         // Если игнорируем угол, то считаем, что смотрящий видит 096
         if (ignoreAngle)
             return true;
+
+        // Проверяем, что между скромником и целью нет сплошных препятствий, закрывающих обзор
+        // TODO: Проверить, что лучше проверять первым для максимальной производительности. Сюда впихнул временно.
+        if (!_proximity.IsRightType(scp, viewer, LineOfSightBlockerLevel.Transparent))
+            return false;
 
         // Проверяем, смотрит ли 096 в лицо цели
         if (!_fov.IsInViewAngle(scp.Owner, viewer, scp.Comp.ArgoAngle))
