@@ -1,8 +1,9 @@
 - type: species
   id: Resomi
   name: species-name-resomi
-  roundStart: true
   sponsorOnly: true
+  roundStart: false # Fire edit
+  stationRecordsHidden: true # Fire added
   prototype: MobResomi
   bodyTypes:
   - ResomiNormal

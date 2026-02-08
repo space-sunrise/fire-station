@@ -11,7 +11,10 @@
     - sprite: _Scp/Mobs/Scp/scp-173.rsi
       state: scp-173
   - type: SpawnPoint
+    spawn_type: Job
     job_id: Scp173
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Scp173BlockStructureDamage
 
 - type: entity # Для особых случаев
@@ -37,7 +40,10 @@
     - sprite: _Scp/Mobs/Scp/scp-096.rsi
       state: idle
   - type: SpawnPoint
+    spawn_type: Job
     job_id: Scp096
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Scp096ContainmentChamberMarker
 
 - type: entity
@@ -51,7 +57,10 @@
     - sprite: _Scp/Mobs/Scp/scp-939.rsi
       state: alive
   - type: SpawnPoint
+    spawn_type: Job
     job_id: Scp939
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
 
 - type: entity
   name: SCP-049 spawner
@@ -64,7 +73,10 @@
     - sprite: _Scp/Mobs/Scp/scp-049.rsi
       state: SCP-049
   - type: SpawnPoint
+    spawn_type: Job
     job_id: Scp049
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
 
 - type: entity
   name: SCP-106 spawner
@@ -77,7 +89,10 @@
     - sprite: _Scp/Mobs/Scp/scp-106.rsi
       state: base
   - type: SpawnPoint
+    spawn_type: Job
     job_id: Scp106
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
 
 - type: entity
   name: SCP-999 spawner
@@ -90,7 +105,10 @@
     - sprite: _Scp/Mobs/Scp/scp-999.rsi
       state: default
   - type: SpawnPoint
+    spawn_type: Job
     job_id: Scp999
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
 
 - type: entity
   name: SCP-082 spawner
@@ -101,7 +119,10 @@
     layers:
     - state: green
   - type: SpawnPoint
+    spawn_type: Job
     job_id: Scp082
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
 
 # Второстепенные сцп
 

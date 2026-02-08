@@ -13,7 +13,6 @@
   overrideConsoleVisibility: false
   canBeAntag: false
   jobEntity: Scp999
-  alwaysUseSpawner: true
   applyTraits: false
 
 # Euclid
@@ -31,7 +30,6 @@
   overrideConsoleVisibility: false
   canBeAntag: false
   jobEntity: Scp173
-  alwaysUseSpawner: true
   applyTraits: false
 
 - type: job
@@ -48,7 +46,6 @@
   overrideConsoleVisibility: false
   canBeAntag: false
   jobEntity: Scp096
-  alwaysUseSpawner: true
   applyTraits: false
 
 - type: job
@@ -65,7 +62,6 @@
   overrideConsoleVisibility: false
   canBeAntag: false
   jobEntity: Scp049
-  alwaysUseSpawner: true
   applyTraits: false
 
 - type: job
@@ -82,7 +78,6 @@
   overrideConsoleVisibility: false
   canBeAntag: false
   jobEntity: Scp082 # TODO: Поменять после добавления каннибала
-  alwaysUseSpawner: true
   applyTraits: false
   setPreference: false # TODO: Убрать после добавления каннибала
 
@@ -101,7 +96,6 @@
   overrideConsoleVisibility: false
   canBeAntag: false
   jobEntity: Scp939
-  alwaysUseSpawner: true
   applyTraits: false
 
 - type: job
@@ -118,5 +112,4 @@
   overrideConsoleVisibility: false
   canBeAntag: false
   jobEntity: Scp106
-  alwaysUseSpawner: true
   applyTraits: false
