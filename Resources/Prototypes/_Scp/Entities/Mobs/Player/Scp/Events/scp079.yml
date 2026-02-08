@@ -268,9 +268,9 @@
         type: HolopadBoundUserInterface
       enum.HolopadUiKey.AiActionWindow:
         type: HolopadBoundUserInterface
-      #enum.StationAiCustomizationUiKey.Key:              мб в будующем
+      #enum.StationAiCustomizationUiKey.Key:              мб в будущем
       #  type: StationAiCustomizationBoundUserInterface
-  #- type: Construction                                   тоже мб в будующем
+  #- type: Construction                                   тоже мб в будущем
   #  graph: StationAiCore
   #  node: stationAiCore
   - type: ContainerContainer
