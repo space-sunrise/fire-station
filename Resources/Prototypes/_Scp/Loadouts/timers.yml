@@ -42,3 +42,17 @@
       !type:DepartmentTimeRequirement
       department: HeavyContainmentSecurityService
       time: 90000 # 30 часов
+
+- type: loadoutEffectGroup
+  id: TowelColorGoldAndDinkystar
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: HeavyContainmentSecurityService
+      time: 180000 #50 часов
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService
+      time: 180000 #50 часов

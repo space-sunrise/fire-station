@@ -80,7 +80,7 @@
   #- TowelColorMaroon
   #- TowelColorMime
   #- TowelColorSilver
-  #- TowelColorGold
+  - TowelColorGold
 
 - type: loadoutGroup
   id: Glasses
