@@ -1,0 +1,39 @@
+﻿- type: entity
+  id: OrganScp096Lungs
+  parent: OrganHumanLungs
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Scp096 ]
+    groups:
+    - id: Gas
+      rateModifier: 100.0
+
+- type: entity
+  id: OrganScpHeart
+  parent: OrganHumanHeart
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Scp096 ]
+
+- type: entity
+  id: OrganScp096Stomach
+  parent: OrganHumanStomach
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Scp096 ]
+    groups: null
+
+- type: entity
+  id: OrganScp096Liver
+  parent: OrganHumanLiver
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Scp096 ]
+    groups: null
+
+- type: entity
+  id: OrganScp096Kidneys
+  parent: OrganHumanKidneys
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Scp096 ]

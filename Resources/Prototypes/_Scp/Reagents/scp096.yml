@@ -15,21 +15,49 @@
     Medicine:
       effects:
       - !type:EyeDamage
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Scp096 ]
+          inverted: true
       - !type:Emote
         emote: Crying
         probability: 0.3
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Scp096 ]
+          inverted: true
       - !type:ModifyStatusEffect # TODO: Шанс срабатывания
         effectProto: StatusEffectFearStupor
         time: 1
         type: Add
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Scp096 ]
+          inverted: true
       - !type:AdjustTemperature
         amount: -3000
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Scp096 ]
+          inverted: true
       - !type:MovementSpeedModifier
         walkSpeedModifier: 1.1
         sprintSpeedModifier: 1.1
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Scp096 ]
+          inverted: true
       - !type:Jitter
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Scp096 ]
+          inverted: true
       - !type:Vomit
         probability: 0.05
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Scp096 ]
+          inverted: true
     Drink:
       effects:
       - !type:SatiateThirst
@@ -86,14 +114,34 @@
       effects:
       - !type:Vomit
         probability: 0.15
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Scp096 ]
+          inverted: true
       - !type:Jitter
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Scp096 ]
+          inverted: true
       - !type:AdjustTemperature
         amount: -5000
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Scp096 ]
+          inverted: true
     Medicine:
       effects:
       - !type:Oxygenate
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Scp096 ]
+          inverted: true
       - !type:ReduceRotting
         seconds: 5
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Scp096 ]
+          inverted: true
   plantMetabolism:
   - !type:PlantAdjustToxins
     amount: 15
