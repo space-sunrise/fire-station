@@ -275,17 +275,12 @@
   #  node: stationAiCore
   - type: ContainerContainer
     containers:
-      #board: !type:Container    как минимум пока что у 079 не будет платы
       station_ai_brain_slot: !type:Container
       station_ai_mind_slot: !type:ContainerSlot
         showEnts: true
-  #- type: ContainerFill         без платы на 079
-  #  containers:
-  #    board:
-  #    - StationAiCoreElectronics
 
 
-
+# TODO: т.к. пока что смена лица для ИИ через GenericVisualizer сломано, то приходится использовать такой костыль в виде отдельной сущности. Когда оффы исправят - удалить и сделать нормально
 - type: entity
   id: Scp079EnabledFace
   name: 079 active
