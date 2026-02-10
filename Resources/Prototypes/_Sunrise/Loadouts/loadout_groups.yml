@@ -176,7 +176,7 @@
 
 - type: loadoutGroup
   id: SecurityTrinkets
-  name: loadout-group-trinkets # Fire edit
+  name: loadout-group-department-trinkets # Fire edit
   minLimit: 0
   maxLimit: 3
   loadouts:
@@ -773,7 +773,7 @@
 
 - type: loadoutGroup
   id: MedicalTrinkets
-  name: loadout-group-trinkets # Fire edit
+  name: loadout-group-department-trinkets # Fire edit
   minLimit: 0
   maxLimit: 2
   loadouts:
@@ -890,7 +890,7 @@
 
 - type: loadoutGroup
   id: TrinketsEngineering
-  name: loadout-group-trinkets # Fire edit
+  name: loadout-group-department-trinkets # Fire edit
   minLimit: 0
   maxLimit: 2
   loadouts:
@@ -1272,7 +1272,7 @@
 
 - type: loadoutGroup
   id: TrinketsCargo
-  name: loadout-group-trinkets # Fire edit
+  name: loadout-group-department-trinkets # Fire edit
   minLimit: 0
   maxLimit: 2
   loadouts:
