@@ -294,6 +294,8 @@
 - type: loadoutGroup
   id: EthicsCommitteeRepresentativeTrinkets
   name: loadout-group-department-trinkets
+  minLimit: 0
+  maxLimit: 3
   loadouts:
   - BoxFolderBaseThreePapers
   - BoxFolderPlasticClipboardThreePapers
@@ -305,6 +307,8 @@
 - type: loadoutGroup
   id: ScientificServiceTrinkets
   name: loadout-group-department-trinkets
+  minLimit: 0
+  maxLimit: 2
   loadouts:
   - BoxFolderBaseThreePapers
   - BoxFolderPlasticClipboardThreePapers
@@ -315,6 +319,8 @@
 - type: loadoutGroup
   id: ClassDTrinkets
   name: loadout-group-department-trinkets
+  minLimit: 0
+  maxLimit: 1
   loadouts:
   - ClothingNeckPlanetPrisonCellblockPin
   - ClothingNeckPlanetPrisonLockdownPin
