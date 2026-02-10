@@ -257,7 +257,7 @@
 
 - type: loadoutGroup
   id: CommonSecurityTrinkets
-  name: loadout-group-trinkets
+  name: loadout-group-department-trinkets
   minLimit: 0
   maxLimit: 3
   loadouts:
@@ -291,11 +291,20 @@
   - EthicsCommitteeRepresentativeCoat
   - EthicsCommitteeRepresentativeCoatOpen
 
+- type: loadoutGroup
+  id: EthicsCommitteeRepresentativeTrinkets
+  name: loadout-group-department-trinkets
+  loadouts:
+  - BoxFolderBaseThreePapers
+  - BoxFolderPlasticClipboardThreePapers
+  - BoxFolderClipboardThreePapers
+  - RubberStampVeto
+
 # Научная служба
 
 - type: loadoutGroup
-  id: TrinketsScientificService
-  name: loadout-group-trinkets
+  id: ScientificServiceTrinkets
+  name: loadout-group-department-trinkets
   loadouts:
   - BoxFolderBaseThreePapers
   - BoxFolderPlasticClipboardThreePapers
@@ -304,8 +313,8 @@
 # Д класс
 
 - type: loadoutGroup
-  id: TrinketsClassD
-  name: loadout-group-trinkets
+  id: ClassDTrinkets
+  name: loadout-group-department-trinkets
   loadouts:
   - ClothingNeckPlanetPrisonCellblockPin
   - ClothingNeckPlanetPrisonLockdownPin
@@ -317,3 +326,48 @@
   name: loadout-group-common-misc-items
   loadouts:
   - PortableStationMap
+
+- type: loadoutGroup
+  id: ScpCommonTrinkets
+  name: loadout-group-common-trinkets
+  minLimit: 0
+  maxLimit: 3
+  loadouts:
+  # разное
+  - PortableStationMap
+  - FlowerWreath
+  - Hairflower
+  - Headphones
+  - PlushieLizard
+  - PlushieSpaceLizard
+  # поджигаемое
+  - ThreeCandles
+  - Lighter
+  - CigPackGreen
+  - CigPackRed
+  - CigPackBlue
+  - CigPackBlack
+  - CigarCase
+  - CigarGold
+  # для бюрократии
+  - CorporateLaw
+  # какие-то обертки
+  - ClothingWraps
+  - ClothingWrapsHigh
+  # трости
+  - OffsetCane
+  - OffsetCaneWood
+  - Cane
+  # полотенчики
+  - TowelColorWhite
+  - TowelColorGray
+  - TowelColorBlack
+  - TowelColorRed
+  - TowelColorOrange
+  - TowelColorLightBrown
+  - TowelColorYellow
+  - TowelColorDarkGreen
+  - TowelColorLightBlue
+  - TowelColorDarkBlue
+  - TowelColorPurple
+  - TowelColorGold

@@ -1,0 +1,9 @@
+﻿- type: loadout
+  id: RubberStampVeto
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Command
+  storage:
+    back:
+    - RubberStampVeto
+  groupBy: "folders"
