@@ -14,7 +14,7 @@ namespace Content.Shared._Sunrise.Footprints;
 public sealed partial class FootprintComponent : Component
 {
     [ViewVariables(VVAccess.ReadOnly), DataField]
-    public ResPath SpritePath = new("/Textures/_Sunrise/Effects/footprints.rsi");
+    public ResPath SpritePath = new("/Textures/_Scp/Fluids/footprints.rsi"); // Fire edit
 
     /// <summary>
     /// Name of the solution container for this footprint
@@ -99,11 +99,10 @@ public sealed partial class FootprintEmitterComponent : Component
     [ViewVariables(VVAccess.ReadOnly), DataField]
     public string[] DraggingStates =
     {
+        // Fire edit start
         "dragging-1",
         "dragging-2",
-        "dragging-3",
-        "dragging-4",
-        "dragging-5",
+        // Fire edit end
     };
 
     /// <summary>
@@ -125,7 +124,7 @@ public sealed partial class FootprintEmitterComponent : Component
     /// Distance between marks when being dragged
     /// </summary>
     [DataField]
-    public float DragMarkInterval = 0.5f;
+    public float DragMarkInterval = 0.3f; // Fire edit
 
     [ViewVariables(VVAccess.ReadOnly), DataField]
     public string FootsSolutionName = "foots";

@@ -171,6 +171,17 @@ namespace Content.Client.Lobby.UI
             SetupButtonIcon(TelegramButton, "/Textures/Interface/telegram.svg.192dpi.png", Loc.GetString("server-info-telegram-button"));
             SetupButtonIcon(ReplaysButton, "/Textures/Interface/replay.svg.192dpi.png", Loc.GetString("ui-lobby-replays-button"));
 
+            // Fire edit - Track all icon buttons for hover color inversion
+            TrackButtonHover(AHelpButton);
+            TrackButtonHover(MHelpButton);
+            TrackButtonHover(CallVoteButton);
+            TrackButtonHover(OptionsButton);
+            TrackButtonHover(LeaveButton);
+            TrackButtonHover(DiscordButton);
+            TrackButtonHover(WikiButton);
+            TrackButtonHover(TelegramButton);
+            TrackButtonHover(ReplaysButton);
+
             DiscordButton.OnPressed += _ =>
             {
                 var url = _configurationManager.GetCVar(CCVars.InfoLinksDiscord);
