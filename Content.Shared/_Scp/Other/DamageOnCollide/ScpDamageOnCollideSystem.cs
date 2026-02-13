@@ -77,12 +77,7 @@ public sealed class ScpDamageOnCollideSystem : EntitySystem
     /// <returns>Подходит или нет</returns>
     private bool CheckParameter(EntityUid collider, EntityUid target, DamageOnCollideParameters param, bool requireVelocity = true)
     {
-        // Если вайтлист не проходит - сущность не подходит
-        if (!_whitelist.IsWhitelistPassOrNull(param.Whitelist, target))
-            return false;
-
-        // Если блеклист проходит - то сущность не подходит. Это же блеклист
-        if (!_whitelist.IsWhitelistFailOrNull(param.Blacklist, target))
+        if (!_whitelist.CheckBoth(target, param.Blacklist, param.Whitelist))
             return false;
 
         if (requireVelocity && param.RequiresVelocity && !CheckVelocity(collider))

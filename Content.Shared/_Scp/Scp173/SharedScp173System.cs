@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Numerics;
 using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Containment.Cage;
 using Content.Shared._Scp.Watching;
@@ -8,8 +9,11 @@ using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Movement.Events;
+using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Storage.Components;
+using Robust.Shared.Map;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp173;
@@ -202,6 +206,45 @@ public abstract class SharedScp173System : EntitySystem
             .ToHashSet();
 
         return viewers.Count != 0;
+    }
+
+    #endregion
+
+    #region Jump Helpers
+
+    /// <summary>
+    /// Проверяет, является ли сущность непроходимым препятствием.
+    /// Используется для определения, нужно ли остановить прыжок SCP-173 при столкновении.
+    /// </summary>
+    protected bool IsImpassableObstacle(EntityUid entity)
+    {
+        if (!TryComp<PhysicsComponent>(entity, out var physics))
+            return false;
+
+        if (!physics.Hard)
+            return false;
+
+        var layer = (CollisionGroup) physics.CollisionLayer;
+
+        return layer.HasFlag(CollisionGroup.WallLayer)
+               || layer.HasFlag(CollisionGroup.GlassAirlockLayer)
+               || layer.HasFlag(CollisionGroup.HumanoidBlockLayer);
+    }
+
+    /// <summary>
+    /// Ограничивает координаты цели прыжка до максимальной дальности.
+    /// Если цель дальше <paramref name="maxRange"/>, координаты обрезаются.
+    /// </summary>
+    protected static void ClampTargetToRange(MapCoordinates performerCoords, ref MapCoordinates targetCoords, float maxRange)
+    {
+        var direction = targetCoords.Position - performerCoords.Position;
+        var distance = direction.Length();
+
+        if (distance > maxRange)
+        {
+            direction = Vector2.Normalize(direction) * maxRange;
+            targetCoords = performerCoords.Offset(direction);
+        }
     }
 
     #endregion

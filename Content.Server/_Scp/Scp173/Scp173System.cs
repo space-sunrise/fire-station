@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Numerics;
 using Content.Server.Doors.Systems;
 using Content.Server.Examine;
@@ -29,7 +30,6 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
-using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp173;
@@ -261,49 +261,29 @@ public sealed partial class Scp173System : SharedScp173System
             return;
         }
 
-        var (isValidTarget, targetCoords) = ValidateAndCalculateTarget(args, ent.Comp);
-        if (!isValidTarget)
+        if (!TryCalculateTarget(args, ent.Comp, out var targetCoords))
             return;
 
-        var finalPosition = CalculateFinalPosition(ent, targetCoords);
-        if (finalPosition == null)
+        if (!TryCalculateFinalPosition(ent, targetCoords, out var finalPosition))
             return;
 
         _transform.SetCoordinates(args.Performer, finalPosition.Value.SnapToGrid());
 
-        _audio.PlayPvs(ent.Comp.TeleportationSound, ent, AudioParams.Default);
+        _audio.PlayPvs(ent.Comp.TeleportationSound, ent);
         args.Handled = true;
     }
 
     /// <summary>
-    /// Проверяет, что цель прыжка находится в зоне видимости и в пределах допустимой дальности.
-    /// Если цель слишком далеко, ограничивает дальность прыжка до <see cref="Scp173Component.MaxJumpRange"/>.
-    /// Возвращает кортеж: (валидна ли цель, координаты цели на карте).
+    /// Ограничивает дальность прыжка до <see cref="Scp173Component.MaxJumpRange"/>.
     /// </summary>
-    private (bool isValid, MapCoordinates coords) ValidateAndCalculateTarget(Scp173FastMovementAction args, Scp173Component component)
+    private bool TryCalculateTarget(Scp173FastMovementAction args, Scp173Component component, out MapCoordinates targetCoords)
     {
-        var targetCoords = _transform.ToMapCoordinates(args.Target);
+        targetCoords = _transform.ToMapCoordinates(args.Target);
         var performerCoords = _transform.GetMapCoordinates(args.Performer);
 
-        if (!_examine.InRangeUnOccluded(
-            targetCoords,
-            performerCoords,
-            ExamineSystemShared.MaxRaycastRange,
-            null))
-        {
-            return (false, default);
-        }
+        ClampTargetToRange(performerCoords, ref targetCoords, component.MaxJumpRange);
 
-        var direction = targetCoords.Position - performerCoords.Position;
-        var distance = direction.Length();
-
-        if (distance > component.MaxJumpRange)
-        {
-            direction = Vector2.Normalize(direction) * component.MaxJumpRange;
-            targetCoords = performerCoords.Offset(direction);
-        }
-
-        return (true, targetCoords);
+        return true;
     }
 
     /// <summary>
@@ -313,8 +293,9 @@ public sealed partial class Scp173System : SharedScp173System
     /// на позиции последнего убитого моба, либо остаётся на месте, если убийств не было.
     /// Если путь свободен от препятствий — возвращает позицию цели.
     /// </summary>
-    private EntityCoordinates? CalculateFinalPosition(Entity<Scp173Component> scp, MapCoordinates targetCoords)
+    private bool TryCalculateFinalPosition(Entity<Scp173Component> scp, MapCoordinates targetCoords, [NotNullWhen(true)] out EntityCoordinates? finalPosition)
     {
+        finalPosition = null;
         var performerPos = _transform.GetWorldPosition(scp);
         var direction = targetCoords.Position - performerPos;
         var normalizedDirection = Vector2.Normalize(direction);
@@ -341,8 +322,8 @@ public sealed partial class Scp173System : SharedScp173System
 
         foreach (var result in rayCastResults)
         {
-            // Мобы на пути — убиваем и запоминаем позицию как безопасную
-            if (!_damageOnCollide.TryApplyDamage(scp.Owner, result.HitEntity, requireVelocity: false))
+            // Если удалось нанести урон (это моб) — запоминаем позицию как безопасную
+            if (_damageOnCollide.TryApplyDamage(scp.Owner, result.HitEntity, requireVelocity: false))
             {
                 lastSafePos = result.HitPos;
                 continue;
@@ -351,28 +332,22 @@ public sealed partial class Scp173System : SharedScp173System
             // Непроходимое препятствие — останавливаемся на последней безопасной позиции
             if (IsImpassableObstacle(result.HitEntity))
             {
-                return _transform.ToCoordinates(new MapCoordinates(lastSafePos, targetCoords.MapId));
+                // Если мы сдвинулись - считаем действие успешным и возвращаем последний чекпоинт.
+                if (lastSafePos != performerPos)
+                {
+                    finalPosition = _transform.ToCoordinates(new MapCoordinates(lastSafePos, targetCoords.MapId));
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
 
         // Путь полностью свободен — летим до точки назначения
-        return _transform.ToCoordinates(targetCoords);
+        finalPosition = _transform.ToCoordinates(targetCoords);
+        return true;
     }
 
-    /// <summary>
-    /// Проверяет, является ли сущность непроходимым препятствием (стена или стол).
-    /// Используется для определения, нужно ли остановить прыжок SCP-173 при столкновении.
-    /// </summary>
-    private bool IsImpassableObstacle(EntityUid entity)
-    {
-        if (!TryComp<PhysicsComponent>(entity, out var physics))
-            return false;
-
-        if (!physics.Hard)
-            return false;
-
-        var layer = (CollisionGroup) physics.CollisionLayer;
-
-        return layer.HasFlag(CollisionGroup.WallLayer) || layer.HasFlag(CollisionGroup.TableLayer);
-    }
 }
