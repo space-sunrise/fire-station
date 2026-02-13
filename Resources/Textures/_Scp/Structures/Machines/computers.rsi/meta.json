@@ -1,11 +1,11 @@
 {
-  "version": 1,
-  "license": "CC-BY-SA-3.0",
-  "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/bd6873fd4dd6a61d7e46f1d75cd4d90f64c40894. comm_syndie made by Veritius, based on comm. generic_panel_open made by Errant, commit https://github.com/space-wizards/space-station-14/pull/32273, comms_wizard and wizard_key by ScarKy0, request- variants transfer made by EmoGarbage404 (github), xenorobot by Samuka-C (github), ai-fixer-progress and -purge sprites made by chromiumboy",
-  "size": {
-    "x": 32,
-    "y": 32
-  },
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by odlieerr(discord) for Fire Station. Continued by miduzka(discord)",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
     "states": [
         {
             "name": "ai-fixer",
@@ -338,10 +338,6 @@
             ]
         },
         {
-            "name": "aiupload_key",
-            "directions": 4
-        },
-        {
             "name": "alert-0",
             "directions": 4
         },
@@ -398,28 +394,6 @@
             ]
         },
         {
-            "name": "area_atmos",
-            "directions": 4,
-            "delays": [
-                [
-                    1,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ],
-                [
-                    1,
-                    1
-                ]
-            ]
-        },
-        {
             "name": "artifact",
             "directions": 4,
             "delays": [
@@ -463,10 +437,6 @@
         },
         {
             "name": "atmos_key",
-            "directions": 4
-        },
-        {
-            "name": "atmos_key_off",
             "directions": 4
         },
         {
@@ -626,32 +596,6 @@
             ]
         },
         {
-            "name": "comm_monitor",
-            "directions": 4,
-            "delays": [
-                [
-                    0.4,
-                    0.4,
-                    0.4
-                ],
-                [
-                    0.4,
-                    0.4,
-                    0.4
-                ],
-                [
-                    0.4,
-                    0.4,
-                    0.4
-                ],
-                [
-                    0.4,
-                    0.4,
-                    0.4
-                ]
-            ]
-        },
-        {
             "name": "comm_syndie",
             "directions": 4,
             "delays": [
@@ -719,10 +663,6 @@
         },
         {
             "name": "computer",
-            "directions": 4
-        },
-        {
-            "name": "screen_broken",
             "directions": 4
         },
         {
@@ -922,98 +862,6 @@
             ]
         },
         {
-            "name": "dron_control_monitor",
-            "directions": 4,
-            "delays": [
-                [
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05
-                ],
-                [
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05
-                ],
-                [
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05
-                ],
-                [
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.05
-                ]
-            ]
-        },
-        {
-            "name": "engie_cams",
-            "directions": 4,
-            "delays": [
-                [
-                    1.8,
-                    0.1,
-                    1.8,
-                    0.1,
-                    1.8,
-                    0.1,
-                    1.8,
-                    0.1
-                ],
-                [
-                    1.8,
-                    0.1,
-                    1.8,
-                    0.1,
-                    1.8,
-                    0.1,
-                    1.8,
-                    0.1
-                ],
-                [
-                    1.8,
-                    0.1,
-                    1.8,
-                    0.1,
-                    1.8,
-                    0.1,
-                    1.8,
-                    0.1
-                ],
-                [
-                    1.8,
-                    0.1,
-                    1.8,
-                    0.1,
-                    1.8,
-                    0.1,
-                    1.8,
-                    0.1
-                ]
-            ]
-        },
-        {
             "name": "engine",
             "directions": 4,
             "delays": [
@@ -1048,48 +896,6 @@
                     0.2
                 ],
                 [
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2
-                ]
-            ]
-        },
-        {
-            "name": "entertainment",
-            "delays": [
-                [
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
-                    0.2,
                     0.2,
                     0.2,
                     0.2,
@@ -1310,52 +1116,6 @@
             "directions": 4
         },
         {
-            "name": "holocontrol",
-            "directions": 4,
-            "delays": [
-                [
-                    1,
-                    0.1,
-                    1,
-                    0.1,
-                    1,
-                    0.1,
-                    1,
-                    0.1
-                ],
-                [
-                    1,
-                    0.1,
-                    1,
-                    0.1,
-                    1,
-                    0.1,
-                    1,
-                    0.1
-                ],
-                [
-                    1,
-                    0.1,
-                    1,
-                    0.1,
-                    1,
-                    0.1,
-                    1,
-                    0.1
-                ],
-                [
-                    1,
-                    0.1,
-                    1,
-                    0.1,
-                    1,
-                    0.1,
-                    1,
-                    0.1
-                ]
-            ]
-        },
-        {
             "name": "id",
             "directions": 4,
             "delays": [
@@ -1380,13 +1140,6 @@
         {
             "name": "id_key",
             "directions": 4
-        },
-        {
-            "name": "id_key_off",
-            "directions": 4
-        },
-        {
-            "name": "mass_driver"
         },
         {
             "name": "mecha",
@@ -1428,10 +1181,6 @@
         },
         {
             "name": "med_key",
-            "directions": 4
-        },
-        {
-            "name": "med_key_off",
             "directions": 4
         },
         {
@@ -1555,19 +1304,7 @@
             ]
         },
         {
-            "name": "mining_key",
-            "directions": 4
-        },
-        {
-            "name": "mining_key_off",
-            "directions": 4
-        },
-        {
             "name": "power_key",
-            "directions": 4
-        },
-        {
-            "name": "power_key_off",
             "directions": 4
         },
         {
@@ -1601,84 +1338,12 @@
             ]
         },
         {
-            "name": "power_monitor_warn",
-            "directions": 4,
-            "delays": [
-                [
-                    0.2,
-                    0.2
-                ],
-                [
-                    0.2,
-                    0.2
-                ],
-                [
-                    0.2,
-                    0.2
-                ],
-                [
-                    0.2,
-                    0.2
-                ]
-            ]
-        },
-        {
             "name": "rd_key",
-            "directions": 4
-        },
-        {
-            "name": "rd_key_off",
             "directions": 4
         },
         {
             "name": "rdcomp",
             "directions": 4
-        },
-        {
-            "name": "recharge_comp",
-            "directions": 4
-        },
-        {
-            "name": "recharge_comp_on",
-            "directions": 4,
-            "delays": [
-                [
-                    0.2,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.2
-                ],
-                [
-                    0.2,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.2
-                ],
-                [
-                    0.2,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.2
-                ],
-                [
-                    0.2,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.2
-                ]
-            ]
         },
         {
             "name": "request",
@@ -1977,10 +1642,6 @@
             "directions": 4
         },
         {
-            "name": "security_key_off",
-            "directions": 4
-        },
-        {
             "name": "sensors",
             "directions": 4
         },
@@ -2049,10 +1710,6 @@
             "directions": 4
         },
         {
-            "name": "syndie_key_off",
-            "directions": 4
-        },
-        {
             "name": "syndishuttle",
             "directions": 4
         },
@@ -2061,91 +1718,7 @@
             "directions": 4
         },
         {
-            "name": "tcboss",
-            "directions": 4
-        },
-        {
             "name": "tech_key",
-            "directions": 4
-        },
-        {
-            "name": "tech_key_off",
-            "directions": 4
-        },
-        {
-            "name": "teleport",
-            "directions": 4,
-            "delays": [
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ]
-            ]
-        },
-        {
-            "name": "teleport_key",
-            "directions": 4
-        },
-        {
-            "name": "teleport_key_off",
-            "directions": 4
-        },
-        {
-            "name": "telesci",
-            "directions": 4,
-            "delays": [
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1,
-                    0.1,
-                    0.1
-                ]
-            ]
-        },
-        {
-            "name": "telesci_key",
-            "directions": 4
-        },
-        {
-            "name": "telesci_key_off",
             "directions": 4
         },
         {
@@ -2207,20 +1780,7 @@
             ]
         },
         {
-            "name": "turbinecomp",
-            "directions": 4
-        },
-        {
-            "name": "computer-datatheory"
-        },
-        {
-            "name": "avionics-systems"
-        },
-        {
             "name": "television"
-        },
-        {
-            "name": "television_broken"
         },
         {
             "name": "telescreen",
@@ -2228,10 +1788,6 @@
         },
         {
             "name": "telescreen_frame",
-            "directions": 4
-        },
-        {
-            "name": "telescreen_broken",
             "directions": 4
         },
         {
