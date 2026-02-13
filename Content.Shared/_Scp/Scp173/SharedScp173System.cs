@@ -113,8 +113,6 @@ public abstract class SharedScp173System : EntitySystem
         args.Handled = true;
     }
 
-    protected virtual void BreakNeck(EntityUid target, Scp173Component scp) {}
-
     #endregion
 
     #region Public API
