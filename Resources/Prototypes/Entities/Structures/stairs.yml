@@ -96,7 +96,7 @@
   suffix: Wood
   components:
   - type: Sprite
-    sprite: Structures/stairs.rsi
+    sprite: _Scp/Structures/stairs.rsi # Fire edit
     state: stairs_wood
     drawdepth: FloorTiles
 
@@ -106,6 +106,6 @@
   suffix: Wood, stage
   components:
   - type: Sprite
-    sprite: Structures/stairs.rsi
+    sprite: _Scp/Structures/stairs.rsi # Fire edit
     state: stairs_stage_wood
     drawdepth: FloorTiles

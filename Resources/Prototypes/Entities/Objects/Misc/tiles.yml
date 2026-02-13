@@ -501,8 +501,10 @@
   id: FloorTileItemWood
   components:
   - type: Sprite
+    sprite: _Scp/Objects/Tiles/wood.rsi # Fire added
     state: wood
   - type: Item
+    sprite: _Scp/Objects/Tiles/wood.rsi # Fire added
     heldPrefix: wood
   - type: FloorTile
     outputs:
@@ -1387,6 +1389,7 @@
   id: FloorTileItemWoodPattern
   components:
   - type: Sprite
+    sprite: _Scp/Objects/Tiles/wood.rsi # Fire added
     state: woodpatternfloor
   - type: Item
     heldPrefix: wood
@@ -1405,6 +1408,7 @@
   - type: Sprite
     state: meat
   - type: Item
+    sprite: _Scp/Objects/Tiles/wood.rsi # Fire added
     heldPrefix: meat
   - type: FloorTile
     outputs:
@@ -1643,8 +1647,10 @@
   id: FloorTileItemWoodLarge
   components:
   - type: Sprite
+    sprite: _Scp/Objects/Tiles/wood.rsi # Fire added
     state: wood-large
   - type: Item
+    sprite: _Scp/Objects/Tiles/wood.rsi # Fire added
     heldPrefix: wood
   - type: FloorTile
     outputs:

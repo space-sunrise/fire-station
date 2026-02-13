@@ -1,0 +1,25 @@
+﻿- type: constructionGraph
+  id: ScpSeat
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity {}
+    edges:
+    - to: chairWoodWings
+      steps:
+      - material: WoodPlank
+        amount: 3
+        doAfter: 1
+
+  - node: chairWoodWings
+    entity: ChairWoodWings
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 3
+      steps:
+      - tool: Screwing
+        doAfter: 1

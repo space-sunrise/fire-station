@@ -1,0 +1,11 @@
+﻿- type: entity
+  id: ChairWoodWings
+  parent: ChairWood
+  name: wooden chair with wings
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi
+    state: wooden-wings
+  - type: Construction
+    graph: Seat
+    node: chairWoodWings

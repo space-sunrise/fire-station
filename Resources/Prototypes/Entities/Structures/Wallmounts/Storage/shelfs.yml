@@ -8,7 +8,7 @@
   components:
   - type: Sprite
     drawdepth: WallMountedItems
-    sprite: Structures/Storage/Shelfs/wood.rsi
+    sprite: _Scp/Structures/Storage/Shelfs/wood.rsi # Fire edit
     state: base
   - type: Damageable
     damageModifierSet: Wood
@@ -48,7 +48,7 @@
   - type: LockedStorage
   - type: LockVisuals
   - type: Sprite
-    sprite: Structures/Storage/Shelfs/wood.rsi
+    sprite: _Scp/Structures/Storage/Shelfs/wood.rsi # Fire edit
     state: base
     layers:
     - state: rbase
@@ -197,7 +197,7 @@
   description: A safe place to put your favorite bottle of whiskey.
   components:
   - type: Sprite
-    sprite: Structures/Storage/Shelfs/wood.rsi
+    sprite: _Scp/Structures/Storage/Shelfs/wood.rsi # Fire edit
     state: base
     layers:
     - state: rbase

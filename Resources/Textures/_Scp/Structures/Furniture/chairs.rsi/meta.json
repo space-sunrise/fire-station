@@ -1,0 +1,35 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Sprited by peperino0290_92944(discord) for Fire Station",
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "states": [
+        {
+            "name": "wooden",
+            "directions": 4
+        },
+        {
+            "name": "wooden-bench",
+            "directions": 4
+        },
+        {
+            "name": "wooden-wings",
+            "directions": 4
+        },
+        {
+            "name": "wooden-wings-knocked",
+            "directions": 4
+        },
+        {
+            "name": "ritual",
+            "directions": 4
+        },
+        {
+            "name": "cursed",
+            "directions": 4
+        }
+    ]
+}

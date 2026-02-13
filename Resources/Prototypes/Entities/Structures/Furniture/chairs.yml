@@ -209,6 +209,7 @@
   parent: UnanchoredChairBase
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi # Fire added
     state: wooden
   - type: Construction
     graph: Seat
@@ -253,6 +254,7 @@
   description: Looks uncomfortable.
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi # Fire added
     state: ritual
   - type: Construction
     graph: RitualSeat
@@ -277,6 +279,7 @@
   description: It's staring back.
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi # Fire added
     state: cursed
   - type: Strap
     buckleSound:
@@ -455,6 +458,7 @@
   description: Did you get a splinter? Well, at least it’s eco friendly.
   components:
   - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi # Fire added
     state: wooden-bench
   - type: Construction
     graph: Seat
