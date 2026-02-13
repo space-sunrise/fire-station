@@ -100,6 +100,7 @@ public sealed class Scp173Overlay : Overlay
             .OrderBy(x => x.Distance)
             .ToList();
 
+        var lastSafePos = playerPos;
         var finalPos = mousePos.Position;
 
         foreach (var result in rayCastResults)
@@ -110,13 +111,14 @@ public sealed class Scp173Overlay : Overlay
             if (_mobQuery.TryGetComponent(ent, out var mobState) && mobState.CurrentState == MobState.Alive)
             {
                 args.WorldHandle.DrawCircle(result.HitPos, 0.15f, Color.MediumVioletRed);
+                lastSafePos = result.HitPos;
                 continue;
             }
 
             // Если непроходимое препятствие — останавливаемся
             if (_scp173.CheckImpassableObstacle(ent))
             {
-                finalPos = result.HitPos;
+                finalPos = lastSafePos != playerPos ? lastSafePos : playerPos;
                 break;
             }
         }
