@@ -1,6 +1,6 @@
 ent-OrganScp096Lungs = { ent-OrganHumanLungs }
     .desc = { ent-OrganHumanLungs.desc }
-ent-OrganScpHeart = { ent-OrganHumanHeart }
+ent-OrganScp096Heart = { ent-OrganHumanHeart }
     .desc = { ent-OrganHumanHeart.desc }
 ent-OrganScp096Stomach = { ent-OrganHumanStomach }
     .desc = { ent-OrganHumanStomach.desc }

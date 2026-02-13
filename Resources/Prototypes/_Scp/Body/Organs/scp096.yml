@@ -9,10 +9,11 @@
       rateModifier: 100.0
 
 - type: entity
-  id: OrganScpHeart
+  id: OrganScp096Heart
   parent: OrganHumanHeart
   components:
   - type: Metabolizer
+    groups: null
     metabolizerTypes: [ Scp096 ]
 
 - type: entity

@@ -22,7 +22,7 @@
       - right leg
       - left leg
       organs:
-        heart: OrganScpHeart
+        heart: OrganScp096Heart
         lungs: OrganScp096Lungs
         stomach: OrganScp096Stomach
         liver: OrganScp096Liver
