@@ -8,14 +8,23 @@
   - type: Sprite
     layers:
     - map: [ "enum.PowerCellVisualLayers.Base" ]
-      state: syndicate
+      state: chaos #syndicate Fire edit
     - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-      state: o2
+      state: fo2microreactor # o2 Fire edit
       shader: unshaded
   - type: Battery
     maxCharge: 1800
     startingCharge: 1800
   - type: EmpImmune
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2microreactor }
+          Neither: { visible: true, state: fo1microreactor }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   name: ERT power cell
@@ -27,14 +36,23 @@
   - type: Sprite
     layers:
     - map: [ "enum.PowerCellVisualLayers.Base" ]
-      state: nanotrasen
+      state: scp #nanotrasen Fire edit
     - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-      state: o2
+      state: fo2microreactor # o2 Fire edit
       shader: unshaded
   - type: Battery
     maxCharge: 1800
     startingCharge: 1800
   - type: EmpImmune
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2microreactor }
+          Neither: { visible: true, state: fo1microreactor }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity #makeshift, by Noychik
   name: makeshift power cage

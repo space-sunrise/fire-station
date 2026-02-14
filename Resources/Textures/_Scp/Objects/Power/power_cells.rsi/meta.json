@@ -1,0 +1,77 @@
+﻿{
+    "version": 1,
+    "size": {
+        "x": 32,
+        "y": 32
+    },
+    "license": "CLA",
+    "copyright": "Made by MIDUZKA (discord) for Fire station",
+    "states": [
+        {
+            "name": "potato"
+        },
+        {
+            "name": "small"
+        },
+        {
+            "name": "medium"
+        },
+        {
+            "name": "high"
+        },
+        {
+            "name": "hyper"
+        },
+        {
+            "name": "microreactor"
+        },
+        {
+            "name": "combat"
+        },
+        {
+            "name": "scp"
+        },
+        {
+            "name": "chaos"
+        },
+        {
+            "name": "antique"
+        },
+        {
+            "name": "syndicate"
+        },
+        {
+            "name": "nanotrasen"
+        },
+        {
+            "name": "fo1small"
+        },
+        {
+            "name": "fo2small"
+        },
+        {
+            "name": "fo1medium"
+        },
+        {
+            "name": "fo2medium"
+        },
+        {
+            "name": "fo1high"
+        },
+        {
+            "name": "fo2high"
+        },
+        {
+            "name": "fo1microreactor"
+        },
+        {
+            "name": "fo2microreactor"
+        },
+        {
+            "name": "o1"
+        },
+        {
+            "name": "o2"
+        }
+    ]
+}
