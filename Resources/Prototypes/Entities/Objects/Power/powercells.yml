@@ -100,12 +100,21 @@
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: small
       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-        state: o2
+        state: fo2small # o2 Fire edit
         shader: unshaded
         visible: false
   - type: Battery
     maxCharge: 360
     startingCharge: 0
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2small }
+          Neither: { visible: true, state: fo1small }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   parent: PowerCellSmall
@@ -154,12 +163,21 @@
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: medium
       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-        state: o2
+        state: fo2medium # o2 Fire edit
         shader: unshaded
         visible: false
   - type: Battery
     maxCharge: 720
     startingCharge: 0
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2medium }
+          Neither: { visible: true, state: fo1medium }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   name: high-capacity power cell
