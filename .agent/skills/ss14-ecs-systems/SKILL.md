@@ -294,7 +294,7 @@ public sealed partial class MySystem : SharedMySystem
 
 Для сложных систем логика разбивается на несколько файлов через `partial class`. Каждый файл отвечает за свою подсистему:
 
-```
+```text
 SharedMySystem.cs            — Initialize, базовые подписки, DI
 SharedMySystem.Actions.cs    — способности и действия
 SharedMySystem.Target.cs     — управление целями

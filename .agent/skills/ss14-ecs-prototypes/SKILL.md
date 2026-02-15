@@ -17,16 +17,35 @@ description: YAML prototypes in Space Station 14 — entity definitions, field i
 # Правильно
 - type: entity
   id: Scp096
-  id: BaseScp
-  id: MobCombat
-  id: Scp096CryOut
-  id: XenoArchTriggerHeat
-  id: WeaponArcClaw
 
+- type: entity
+  id: BaseScp
+
+- type: entity
+  id: MobCombat
+
+- type: entity
+  id: Scp096CryOut
+
+- type: entity
+  id: XenoArchTriggerHeat
+
+- type: entity
+  id: WeaponArcClaw
+```
+
+```yml
 # Неправильно
+- type: entity
   id: scp_096          # подчёркивания
+
+- type: entity
   id: scp-096          # дефисы
+
+- type: entity
   id: SCP096           # все заглавные
+
+- type: entity
   id: scp096           # все строчные
 ```
 
@@ -42,7 +61,7 @@ description: YAML prototypes in Space Station 14 — entity definitions, field i
     sprite: path/to/sprite.rsi
     layers:
     - state: idle
-  - type: MyComponent
+  - type: MyAction # Оригинальное название MyActionComponent. в Прототипе окончание не пишется!
     speed: 5.0
     activationSound:
       path: /Audio/sound.ogg
@@ -78,6 +97,8 @@ description: YAML prototypes in Space Station 14 — entity definitions, field i
   - MobCombat
   - MobBloodstream
   - StripableInventoryBase
+  # Наложение наследований идет СВЕРХУ ВНИЗ!
+  # Самый нижний имеет наиболее высокий приоритет, его компоненты и значения перезапишут остальные, если будет конфликт
   components:
   - type: Scp096
     # ...специфичные поля
@@ -303,7 +324,7 @@ if (_proto.TryIndex<MyPrototype>("protoId", out var proto))
 
 Имена и описания задаются **не** в YAML, а через файлы локализации (`.ftl`):
 
-```
+```text
 Resources/Locale/en-US/_prototypes/.../myentity.ftl
 Resources/Locale/ru-RU/_prototypes/.../myentity.ftl
 ```
@@ -358,7 +379,7 @@ ent-MyEntityId = entity name
 ### В CI
 
 YAMLLinter запускается автоматически в CI/CD. Ошибки блокируют мердж. Формат выходных ошибок:
-```
+```text
 ::error in Prototypes/file.yml(42,5)  Unknown field 'nonExistentField' for component 'MyComponent'
 ```
 
@@ -430,7 +451,9 @@ containers:
     params:
       volume: -4
       maxDistance: 10
+```
 
+```yml
   # Коллекция звуков
   sound:
     collection: GibCollection
