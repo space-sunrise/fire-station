@@ -89,6 +89,13 @@ predictionTarget = LastProcessedTick + TargetBufferSize + lag_ticks + PredictTic
 if (_timing.IsFirstTimePredicted)
     _audio.PlayPvs(sound, uid);
 
+// ✅ Более правильно - использовать Predicted методы
+_audio.PlayPredicted(sound, source, receiver);
+// source - источник звука
+// receiver - сущность "клиента", которая сделала звук.
+// По умолчанию клиент игрока, который спровоцировал звук продублирует звук(локально и от сервера). Чтобы это избежать передаем спроцировавшего звук игрока в метод
+// Из-за этой особенности иногда Predicted метод может неправильно работать!
+
 // ❌ Неправильно — звук будет играться при каждом re-prediction!
 _audio.PlayPvs(sound, uid);
 ```
@@ -115,8 +122,7 @@ _audio.PlayPvs(sound, uid);
 
 ```csharp
 // Создание сущности с предикцией
-var entity = Spawn(prototype, coordinates);
-EnsureComp<PredictedSpawnComponent>(entity); // или через хелпер
+var entity = PredictedSpawn(prototype, coordinates);
 ```
 
 При применении серверного состояния:

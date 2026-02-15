@@ -89,7 +89,7 @@ public EntProtoId EntityId;   // Обязательное, ошибка если
 > public EntityUid? CurrentTarget;
 >
 > [DataField]
-> public HashSet<EntityUid> ActiveTargets = new();
+> public HashSet<EntityUid> ActiveTargets = [];
 >
 > [DataField]
 > public TimeSpan? RageStartTime;  // Устанавливается системой, не прототипом
@@ -99,7 +99,7 @@ public EntProtoId EntityId;   // Обязательное, ошибка если
 > public EntityUid? CurrentTarget;
 >
 > [AutoNetworkedField]
-> public HashSet<EntityUid> ActiveTargets = new();
+> public HashSet<EntityUid> ActiveTargets = [];
 >
 > [AutoNetworkedField]
 > public TimeSpan? RageStartTime;
@@ -138,7 +138,7 @@ public TimeSpan? ActivationTime;
 Делает поле видимым в отладочном View Variables панели (VV):
 
 ```csharp
-[ViewVariables(VVAccess.ReadWrite)]
+[ViewVariables] // По умолчанию доступ = (VVAccess.ReadWrite), прописывать снова НЕ нужно!
 public float DebugValue;
 
 [ViewVariables(VVAccess.ReadOnly)]
@@ -208,10 +208,10 @@ public TimeSpan Duration = TimeSpan.FromSeconds(10);
 
 ```csharp
 [DataField]
-public List<EntProtoId> Prototypes = new();
+public List<EntProtoId> Prototypes = [];
 
 [DataField]
-public HashSet<EntityUid> Targets = new();
+public HashSet<EntityUid> Targets = [];
 
 [DataField]
 public Dictionary<string, float> Values = new();
