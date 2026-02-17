@@ -33,7 +33,7 @@
   parent: ChairOfficeLight
   components:
   - type: Sprite
-    sprite: _Sunrise/Structures/Furniture/chairs.rsi
+    sprite: _Scp/Structures/Furniture/chairs.rsi # _Sunrise/Structures/Furniture/chairs.rsi Fire edit
     state: office-grey
   - type: Construction
     graph: Seat
