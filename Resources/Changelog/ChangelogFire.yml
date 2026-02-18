@@ -8985,3 +8985,16 @@
   id: 357
   time: '2026-02-18T06:00:48.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/822
+- author: MIDUZKA & Odler
+  changes:
+  - message: "\u0418\u0437\u043C\u0435\u043D\u0451\u043D \u0441\u043F\u0440\u0430\u0439\
+      \u0442 \u043E\u0444\u0438\u0441\u043D\u044B\u0445 \u043A\u0440\u0435\u0441\u0435\
+      \u043B."
+    type: Tweak
+  - message: "\u0418\u0437\u043C\u0435\u043D\u0451\u043D \u0441\u043F\u0440\u0430\u0439\
+      \u0442 \u0441\u0442\u0430\u043B\u044C\u043D\u044B\u0445 \u0441\u0442\u0443\u043B\
+      \u044C\u0435\u0432."
+    type: Tweak
+  id: 358
+  time: '2026-02-18T09:59:23.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/825
