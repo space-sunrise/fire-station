@@ -8969,3 +8969,19 @@
   id: 356
   time: '2026-02-13T08:31:24.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/816
+- author: MIDUZKA
+  changes:
+  - message: "\u0418\u0437\u043C\u0435\u043D\u0435\u043D\u044B \u0442\u0435\u043A\u0441\
+      \u0442\u0443\u0440\u044B \u0431\u0430\u0442\u0430\u0440\u0435\u0435\u043A \u043D\
+      \u0430 \u0431\u043E\u043B\u0435\u0435 \u043F\u043E\u0434\u0445\u043E\u0434\u044F\
+      \u0449\u0438\u0435 \u043A \u0441\u0442\u0438\u043B\u044E \u0441\u0435\u0440\u0432\
+      \u0435\u0440\u0430."
+    type: Tweak
+  - message: "\u0418\u0437\u043C\u0435\u043D\u0435\u043D\u044B \u0442\u0435\u043A\u0441\
+      \u0442\u0443\u0440\u044B \u0437\u0430\u0440\u044F\u0434\u043D\u043E\u0439 \u0441\
+      \u0442\u0430\u043D\u0446\u0438\u0438 \u0431\u0430\u0442\u0430\u0440\u0435\u0435\
+      \u043A"
+    type: Tweak
+  id: 357
+  time: '2026-02-18T06:00:48.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/822
