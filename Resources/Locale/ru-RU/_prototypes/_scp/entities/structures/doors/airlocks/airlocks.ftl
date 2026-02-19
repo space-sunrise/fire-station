@@ -1,6 +1,9 @@
 ent-ScpAirlockAdministration = { ent-ScpAirlock }
     .suffix = { access-name-administration }
     .desc = { ent-ScpAirlock.desc }
+ent-ScpAirlockCB = { ent-ScpAirlock }
+    .suffix = SCPAirlock
+    .desc = Шлюз с сканером ключ-карты и логотипом SCP
 ent-ScpAirlockRegionalAdministration = { ent-ScpAirlockAdministration }
     .suffix = { access-name-mtf }
     .desc = { ent-ScpAirlockAdministration.desc }

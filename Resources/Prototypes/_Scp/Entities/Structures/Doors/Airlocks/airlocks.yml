@@ -38,10 +38,20 @@
   - type: Wires
     layoutId: AirlockSecurity
 
-# Научная служба
+# Особая дверь scp
 
 - type: entity
   parent: ScpAirlock
+  id: ScpAirlockCB
+  suffix: SCP Airlock
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/scpdoor.rsi
+
+# Научная служба
+
+- type: entity
+  parent: ScpHighSecDoor
   id: ScpAirlockScience
   suffix: SCP Science
   components:
