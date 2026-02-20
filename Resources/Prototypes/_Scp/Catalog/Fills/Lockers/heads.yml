@@ -189,9 +189,6 @@
   id: LockerFillSecurityCommander
   table: !type:AllSelector
     children:
-    - id: WeaponRifleAKM
-    - id: MagazineLightRifleSP
-    - id: MagazineLightRifleSP
     - id: BookSpaceLaw
     - id: CigarGoldCase
       prob: 0.50
