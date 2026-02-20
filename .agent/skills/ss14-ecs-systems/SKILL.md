@@ -5,6 +5,12 @@ description: Architecture guide for EntitySystem in Space Station 14 — lifecyc
 
 # EntitySystem — системы в ECS
 
+## Граница ответственности
+
+Этот skill покрывает устройство систем, lifecycle, события, query и предикцию.
+Строгие naming-нормативы (суффикс `System`, парность имен `Component/System`, стиль dependency-алиасов, соглашения по именам файлов) ведутся в `ss14-naming-conventions`.
+Если пример здесь конфликтует с `ss14-naming-conventions`, применяй `ss14-naming-conventions`.
+
 ## Что такое EntitySystem
 
 EntitySystem — это синглтон-класс, который содержит **всю логику и поведение** для сущностей. В ECS-архитектуре компоненты хранят только данные, а системы оперируют этими данными. Системы автоматически создаются и управляются движком — не нужно их вручную регистрировать.
@@ -54,6 +60,74 @@ public sealed class MySystem : EntitySystem
 ```
 
 Зависимости разрешаются автоматически до вызова `Initialize()`. Всегда используйте `= default!` для подавления предупреждений компилятора.
+
+## Порядок членов системы (обязательный)
+
+Держи стабильный порядок блоков в каждом `*System`, чтобы код читался быстро и одинаково во всех подсистемах 🙂
+
+1. Зависимости (`[Dependency]` поля).
+2. Константы + `static readonly` поля.
+3. Runtime-кэшированные поля и долгоживущие поля состояния.
+4. `Initialize()`, `Shutdown()`.
+5. Event handlers (`On...`, `Handle...`, сетевые и компонентные события).
+6. Main logic (публичный/защищенный API системы).
+7. Other code (override/специализированные методы, не helper-блок).
+8. Helpers (маленькие private-методы для обслуживания логики).
+9. Private nested classes / records / enums / прочее.
+
+Не смешивай блоки между собой: helpers не поднимай выше event handlers, runtime-кэш не размазывай по файлу, private nested-типы держи внизу.
+
+Пример:
+
+```csharp
+public sealed class ExampleSystem : EntitySystem
+{
+    // 1) Dependencies
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+
+    // 2) Constants + static readonly
+    private const float TimeoutSeconds = 1.0f;
+    private static readonly ProtoId<TagPrototype> SpecialTag = "Special";
+
+    // 3) Runtime cache/state
+    private readonly Dictionary<EntityUid, TimeSpan> _cooldowns = new();
+
+    // 4) Init/Shutdown
+    public override void Initialize()
+    {
+        base.Initialize();
+        SubscribeLocalEvent<MyComponent, ComponentInit>(OnInit);
+    }
+
+    public override void Shutdown()
+    {
+        base.Shutdown();
+        _cooldowns.Clear();
+    }
+
+    // 5) Event handlers
+    private void OnInit(Entity<MyComponent> ent, ref ComponentInit args)
+    {
+        _cooldowns[ent] = _timing.CurTime;
+    }
+
+    // 6) Main logic
+    public bool TryActivate(EntityUid uid) => true;
+
+    // 7) Other code
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+    }
+
+    // 8) Helpers
+    private bool IsCoolingDown(EntityUid uid) => _cooldowns.ContainsKey(uid);
+
+    // 9) Private nested types
+    private sealed record DebugEntry(EntityUid Uid, TimeSpan Time);
+}
+```
 
 ## Подписка на события
 
@@ -449,3 +523,86 @@ public record struct MyPerformantEvent(EntityUid Target, float Value);
 - Имена всегда заканчиваются на `Event`: `InteractUsingEvent`, `DamageChangedEvent`
 - Попытки: `AttemptEvent` / `Attempt`: `PickupAttemptEvent`
 - Уведомления: описательное имя: `MobStateChangedEvent`, `StackCountChangedEvent`
+
+## Оптимизации hot-path (дополнение)
+
+### 1) Предвычисляй инварианты до вложенных циклов
+
+```csharp
+var fastPath = false;
+var itemShape = ItemSystem.GetItemShape(itemEnt); // Получаем форму один раз.
+var fastAngles = itemShape.Count == 1;
+
+if (itemShape.Count == 1 && itemShape[0].Contains(Vector2i.Zero))
+    fastPath = true;
+
+var angles = new ValueList<Angle>();
+if (!fastAngles)
+{
+    for (var angle = startAngle; angle <= Angle.FromDegrees(360 - startAngle); angle += Math.PI / 2f)
+        angles.Add(angle); // Подготовили набор углов один раз.
+}
+else
+{
+    angles.Add(startAngle);
+    if (itemShape[0].Width != itemShape[0].Height)
+        angles.Add(startAngle + Angle.FromDegrees(90));
+}
+
+while (chunkEnumerator.MoveNext(out var storageChunk))
+{
+    for (var y = bottom; y <= top; y++)
+    {
+        for (var x = left; x <= right; x++)
+        {
+            foreach (var angle in angles)
+            {
+                // Основная тяжёлая проверка использует уже предвычисленные значения.
+            }
+        }
+    }
+}
+```
+
+### 1.1) Храни агрегат (`TargetCount`/`BurstShotsCount`) как состояние
+
+```csharp
+// Вместо пересчёта "сколько выстрелов уже сделано в burst" на каждом шаге:
+if (gun.BurstActivated)
+{
+    gun.BurstShotsCount += shots; // Инкрементальный счётчик.
+    if (gun.BurstShotsCount >= gun.ShotsPerBurstModified)
+    {
+        gun.BurstActivated = false;
+        gun.BurstShotsCount = 0;
+    }
+}
+```
+
+### 2) Не используй LINQ в горячих циклах
+
+```csharp
+// ✅ Для hot-path: явный цикл и ранний выход.
+for (var i = 0; i < entities.Count; i++)
+{
+    var uid = entities[i];
+    if (!TryComp<MyComponent>(uid, out var comp))
+        continue;
+    Process(uid, comp);
+}
+
+// ❌ Избегай в hot-path:
+// entities.Where(...).Select(...).ToList();
+```
+
+### 3) Порядок компонентов в `EntityQueryEnumerator`
+
+Ставь первым более редкий компонент, чтобы сократить пересечение множеств:
+
+```csharp
+var query = EntityQueryEnumerator<ActiveTimerTriggerComponent, TimerTriggerComponent>();
+```
+
+### 4) Ранние `continue/return` обязательны для дешёвых фильтров
+
+Сначала дешёвые проверки, потом дорогие вычисления/события. Это снижает среднюю цену итерации и уменьшает шум профайлера.

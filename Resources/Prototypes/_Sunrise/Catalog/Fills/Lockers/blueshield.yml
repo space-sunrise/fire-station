@@ -4,14 +4,16 @@
   parent: LockerBlueShield
   categories: [ HideSpawnMenu ] # Fire added
   components:
-  - type: StorageFill
-    contents:
-      - id: CigarGoldCase
-        prob: 0.25
-      - id: ClothingMaskGasBlueShield
-      - id: ClothingHeadsetAltCommand
-      - id: HandheldBSOCrewMonitor
-      - id: WeaponMultiphaseGun
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CigarGoldCase
+          prob: 0.25
+        - id: ClothingMaskGasBlueShield
+        - id: ClothingHeadsetAltCommand
+        - id: HandheldBSOCrewMonitor
+        - id: WeaponMultiphaseGun
 
 - type: entity
   id: LockerBlueshieldFilledHardsuit
@@ -19,13 +21,15 @@
   parent: LockerBlueShield
   categories: [ HideSpawnMenu ] # Fire added
   components:
-  - type: StorageFill
-    contents:
-      - id: CigarGoldCase
-        prob: 0.25
-      - id: ClothingMaskGasBlueShield
-      - id: ClothingHeadsetAltCommand
-      - id: HandheldBSOCrewMonitor
-      - id: WeaponMultiphaseGun
-      - id: ClothingOuterHardsuitBlueShield
-      - id: OxygenTankFilled
+  - type: EntityTableContainerFill
+    containers:
+      entity_storage: !type:AllSelector
+        children:
+        - id: CigarGoldCase
+          prob: 0.25
+        - id: ClothingMaskGasBlueShield
+        - id: ClothingHeadsetAltCommand
+        - id: HandheldBSOCrewMonitor
+        - id: WeaponMultiphaseGun
+        - id: ClothingOuterHardsuitBlueShield
+        - id: OxygenTankFilled
