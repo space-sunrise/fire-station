@@ -54,6 +54,8 @@ public sealed class ProximitySystem : EntitySystem
         "SecureUraniumWindoor",
     ];
 
+    private EntityQuery<InsideEntityStorageComponent> _insideQuery;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -63,6 +65,8 @@ public sealed class ProximitySystem : EntitySystem
         SubscribeLocalEvent<ProximityTargetComponent, ComponentStartup>(AddToTargets);
         SubscribeLocalEvent<ProximityTargetComponent, ComponentShutdown>(RemoveFromTargets);
         SubscribeLocalEvent<ProximityTargetComponent, EntityTerminatingEvent>(RemoveFromTargets);
+
+        _insideQuery = GetEntityQuery<InsideEntityStorageComponent>();
     }
 
     private static void Clean()
@@ -93,7 +97,6 @@ public sealed class ProximitySystem : EntitySystem
         PossibleNotInRange.UnionWith(AllTargets);
 
         var query = EntityQueryEnumerator<ProximityReceiverComponent, TransformComponent>();
-
         while (query.MoveNext(out var uid, out var receiver, out var xform))
         {
             Targets.Clear();
@@ -158,10 +161,10 @@ public sealed class ProximitySystem : EntitySystem
     /// <returns>Тип прозрачности сущностей, перекрывающий прямой контакт между этими двумя</returns>
     public LineOfSightBlockerLevel GetLightOfSightBlockerLevel(EntityUid receiver, EntityUid target)
     {
-        if (HasComp<InsideEntityStorageComponent>(receiver))
+        if (_insideQuery.HasComp(receiver))
             return LineOfSightBlockerLevel.Solid;
 
-        var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, JustUselessNumber);
+        var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, JustUselessNumber, ignoreInsideBlocker: false);
 
         if (!isUnOccluded)
             return LineOfSightBlockerLevel.Solid;

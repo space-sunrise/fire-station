@@ -1,4 +1,3 @@
-using System.Numerics;
 using Content.Client._Scp.Shaders.FieldOfView.ComponentTree;
 using Content.Shared._Scp.Watching.FOV;
 using Robust.Client.GameObjects;
@@ -69,7 +68,8 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
 
         // микро-оптимизация - не трогать, если альфа почти не изменилась
         var newAlpha = comp.Inverted ? 1f - targetAlpha : targetAlpha;
-        if (MathF.Abs(sprite.Color.A - newAlpha) <= 0.001f)
+        var finalAlpha = sprite.Color.A * newAlpha;
+        if (MathF.Abs(sprite.Color.A - finalAlpha) <= 0.01f)
             return true;
 
         var ent = (uid, sprite);
@@ -78,7 +78,7 @@ public sealed class FieldOfViewSetAlphaOverlay : Overlay
         state.FovManagement.CachedBaseAlphas.Add((ent, sprite.Color.A));
 
         // применяем новую цвет/альфу
-        state.SpriteSys.SetColor(ent, sprite.Color.WithAlpha(newAlpha));
+        state.SpriteSys.SetColor(ent, sprite.Color.WithAlpha(finalAlpha));
 
         return true;
     }
