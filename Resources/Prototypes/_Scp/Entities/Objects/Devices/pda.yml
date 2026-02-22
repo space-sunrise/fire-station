@@ -50,6 +50,7 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
+    - PhotoCartridge
     - WantedListCartridge
     - LogProbeCartridge
     - NavigatorCartridge
@@ -66,6 +67,7 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
+    - PhotoCartridge
     - MedTekCartridge
     - NavigatorCartridge
 
@@ -81,6 +83,7 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
+    - PhotoCartridge
     - NetProbeCartridge
     - AstroNavCartridge
     - NavigatorCartridge
@@ -334,6 +337,7 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
+    - PhotoCartridge
     - WantedListCartridge
     - NavigatorCartridge
 
@@ -380,6 +384,7 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
+    - PhotoCartridge
     - WantedListCartridge
     - NavigatorCartridge
 
@@ -597,6 +602,7 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
+    - PhotoCartridge
     - MedTekCartridge
     - WantedListCartridge
     - AstroNavCartridge
@@ -650,6 +656,7 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
+    - PhotoCartridge
     - MedTekCartridge
     - WantedListCartridge
     - LogProbeCartridge
@@ -713,6 +720,7 @@
     - NotekeeperCartridge
     - NanoTaskCartridge
     - NewsReaderCartridge
+    - PhotoCartridge
     - LogProbeCartridge
     - WantedListCartridge
     - MedTekCartridge
