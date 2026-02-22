@@ -34,6 +34,7 @@
   id: HeadOfPrisonPDA
   name: Prison governor's PDA
   description: Has the look of a prestigious instrument of power, but a little scratched from constant emergency calls.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pda
     id: HeadOfPrisonIDCard

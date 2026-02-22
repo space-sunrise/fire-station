@@ -4,6 +4,7 @@
   abstract: true
   name: prison trainee's PDA
   description: New and clean, still learning the ropes, marked with orange to show the path of growth.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pda
     id: PrisonTraineeIDCard
@@ -14,6 +15,7 @@
 - type: entity
   parent: PrisonTraineePDA
   id: PrisonTraineePDAPartial
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
     appearanceDataInit:
@@ -29,6 +31,7 @@
 - type: entity
   parent: PrisonTraineePDA
   id: PrisonTraineePDAAdvanced
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
     appearanceDataInit:
@@ -44,6 +47,7 @@
 - type: entity
   parent: PrisonTraineePDA
   id: PrisonTraineePDAComplete
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Appearance
     appearanceDataInit:
