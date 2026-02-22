@@ -135,31 +135,29 @@
   equipment:
     back: ClothingBackpackSatchelAdmin
     id: ScpAdminPDA # Fire edit
-    belt: ClothingBeltChiefEngineerFilled # Sunrise-add
-    eyes: ClothingEyesHudSyndicateMedic # Sunrise-add
-    head: ClothingHeadHatCowboyWhite # Sunrise-add
+    # belt: ClothingBeltChiefEngineerFilled # Fire edit
+    eyes: ClothingEyesHudOmni # Fire edit
+    # head: ClothingHeadHatCowboyWhite # Fire edit
   storage:
     back:
     - GasAnalyzer
     - trayScanner
     - AccessConfiguratorUniversal
     - Multitool
-    # sunrise-start
+    # fire-start
     - AnomalyScanner
     - RubberStampApproved
     - RubberStampDenied
-    - RubberStampCentcom
-    - RubberStampSyndicate
-    - RubberStampMagistrat
     - RubberStampRedo
-    - RubberStampTrader
-    - RubberStampSpecOps
-    - BoxFolderCentCom
+    - RubberStampEthicsCommittee
+    - RubberStampRegionalCommand
+    - RubberStampO4Command
+    - RubberStampOverseerCouncil
+    - BoxFolderCentComThreePapers
     - Emag
     - AccessBreaker
-    - ClothingEyesHudOmni
     - ClothingEyesHudDiagnosticERT
-    # sunrise-end
+    # fire-end
 
 #Gladiator with spear
 - type: startingGear
