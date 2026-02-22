@@ -99,7 +99,7 @@ namespace Content.Client.PDA
                 ToHomeScreen();
             };
 
-            /* Fire Edit
+            /* Fire Edit - у нас ПДА без возможности вставлять туда карту
             PdaOwnerButton.OnPressed += _ =>
             {
                 _clipboard.SetText(_pdaOwner);
@@ -192,7 +192,7 @@ namespace Content.Client.PDA
                 IdInfoLabel.SetMarkup(Loc.GetString("comp-pda-ui-blank"));
             }
             */
-            
+
             _stationName = state.StationName ?? Loc.GetString("comp-pda-ui-unknown");
             StationNameLabel.SetMarkup(Loc.GetString("comp-pda-ui-station",
                 ("station", _stationName)));

@@ -1,3 +1,4 @@
+using Content.Client._Scp.Stylesheets.Palette;
 using Content.Client.PDA;
 using Content.Client.Stylesheets;
 using Content.Client.Stylesheets.Sheetlets;
@@ -28,7 +29,7 @@ public sealed class PdaSheetlet : Sheetlet<NanotrasenStylesheet>
             E<PanelContainer>()
                 .Class("PdaContentBackground")
                 .Prop(PanelContainer.StylePropertyPanel, StyleBoxHelpers.SquareStyleBox(sheet))
-                .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#25252a")),
+                .Prop(Control.StylePropertyModulateSelf, ScpPalettes.Primary.Background),
 
             E<PanelContainer>()
                 .Class("PdaBackground")
