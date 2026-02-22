@@ -259,8 +259,19 @@ namespace Content.Server.GameTicking
                 restrictedRoles.UnionWith(jobBans);
 
             // Pick best job best on prefs.
-            // Fire edit start - починил приоритеты
-            if (!lateJoin || !LobbyEnabled)
+            // Fire edit start - only repick on roundstart if assigned job became unavailable
+            var shouldPickJob = jobId is null;
+            string? repickReason = null;
+
+            if (!lateJoin && jobId is not null)
+            {
+                if (!IsAssignedRoundStartJobAvailable(station, jobId, restrictedRoles))
+                {
+                    shouldPickJob = true;
+                }
+            }
+
+            if (shouldPickJob)
             {
                 jobId = _stationJobs.PickBestAvailableJobWithPriority(station,
                     character.JobPriorities,
