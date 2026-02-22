@@ -135,7 +135,7 @@
   equipment:
     back: ClothingBackpackSatchelAdmin
     id: ScpAdminPDA # Fire edit
-    # belt: ClothingBeltChiefEngineerFilled # Fire edit
+    belt: ClothingBeltMtfUtilityFilled # Fire edit
     eyes: ClothingEyesHudOmni # Fire edit
     # head: ClothingHeadHatCowboyWhite # Fire edit
   storage:
