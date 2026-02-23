@@ -42,8 +42,6 @@
       #    - id: ScpEffectPolyTable
       #      weight: 2
       # Сломано TODO: вернём после фикса
-    # - id: ScpEffectSwap # TODO: Пока не пофиксим телепорт с разных карт
-    #   weight: 2
 #    - id: ScpEffectCreateArtifacts
 #      weight: 1
 # Пока не работает
@@ -144,8 +142,6 @@
     children:
     - id: ScpEffectShuffleUltra
       weight: 0.01
-    # - id: ScpEffectSwap # TODO: Пока не пофиксим телепорт с разных карт
-    #   weight: 2
     - id: EffectMagnetUltra
       weight: 1
     - id: ScpEffectShiftedAsciiTableAccent
