@@ -42,6 +42,8 @@
       #    - id: ScpEffectPolyTable
       #      weight: 2
       # Сломано TODO: вернём после фикса
+    - id: ScpArtifactShuffle
+      weight: 2
 #    - id: ScpEffectCreateArtifacts
 #      weight: 1
 # Пока не работает
@@ -142,6 +144,8 @@
     children:
     - id: ScpEffectShuffleUltra
       weight: 0.01
+    - id: ScpArtifactShuffle
+      weight: 2
     - id: EffectMagnetUltra
       weight: 1
     - id: ScpEffectShiftedAsciiTableAccent
