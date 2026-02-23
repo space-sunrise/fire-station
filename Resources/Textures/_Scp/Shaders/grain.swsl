@@ -19,7 +19,8 @@ void fragment()
 
     mediump vec2 uv = FRAGCOORD.xy / 1000.0;
 
-    mediump float x = (uv.x + 1.0) * (uv.y + 2.0) * TIME;
+    mediump float timeFactor = TIME * 10.0;
+    mediump float x = (uv.x + 1.0) * (uv.y + 2.0) * timeFactor;
 
     mediump float modX = mod(x, 123.0) + 1.0;
     mediump float modY = mod(x, 123.0) + 1.0;
