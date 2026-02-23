@@ -3,6 +3,7 @@
    id: PrisonChefPDA
    name: prison chef's PDA
    description: Worn and stained with spots of spices, it reflects the harsh daily grind of the prison kitchen.
+   categories: [ HideSpawnMenu ] # Fire added
    components:
    - type: Pda
      id: PrisonChefIDCard

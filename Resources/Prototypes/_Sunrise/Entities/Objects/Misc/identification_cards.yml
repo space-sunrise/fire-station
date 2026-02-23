@@ -122,6 +122,7 @@
   parent: IDCardStandard
   id: MagistratIDCard
   name: magistrate ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -502,6 +503,7 @@
   parent: IDCardStandard
   id: CommaidIDCard
   name: Commaid ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -521,6 +523,7 @@
   parent: IDCardStandard
   id: CentcomOperatorIDCard
   name: command operator ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
@@ -540,6 +543,7 @@
   parent: IDCardStandard
   id: SeniorCourierIDCard
   name: senior courier ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi

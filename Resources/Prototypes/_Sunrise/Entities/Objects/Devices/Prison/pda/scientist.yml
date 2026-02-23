@@ -3,6 +3,7 @@
   id: PrisonScientistPDA
   name: prison scientist's PDA
   description: Faded with time, marked by traces of chemicals and burnt corners born from hurried work behind locked doors.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pda
     id: PrisonScientistIDCard

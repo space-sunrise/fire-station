@@ -463,6 +463,7 @@
   id: PrisonComputerComms
   name: prison communications computer
   description: A console for controlling announcements in a space prison.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [[ "Security" ]]
