@@ -164,7 +164,7 @@ public sealed class ProximitySystem : EntitySystem
         if (_insideQuery.HasComp(receiver))
             return LineOfSightBlockerLevel.Solid;
 
-        var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, JustUselessNumber, ignoreInsideBlocker: false);
+        var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, JustUselessNumber);
 
         if (!isUnOccluded)
             return LineOfSightBlockerLevel.Solid;
