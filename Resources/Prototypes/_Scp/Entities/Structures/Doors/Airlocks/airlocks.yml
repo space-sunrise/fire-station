@@ -38,20 +38,6 @@
   - type: Wires
     layoutId: AirlockSecurity
 
-# Особая дверь с логотипом SCP
-- type: entity
-  parent: ScpAirlock
-  id: ScpAirlockCB
-  suffix: General, closed
-  components:
-  - type: Sprite
-    sprite: _Scp/Structures/Doors/Airlocks/Standard/scpdoor.rsi
-  - type: Wires
-    layoutId: AirlockSecurity
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronics ]
-
 # Научная служба
 
 - type: entity
