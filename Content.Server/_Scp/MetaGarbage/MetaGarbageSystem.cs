@@ -5,6 +5,7 @@ using Content.Server._Sunrise.Helpers;
 using Content.Server.Light.EntitySystems;
 using Content.Server.Station.Events;
 using Content.Server.Station.Systems;
+using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
 using Content.Shared.Chemistry.EntitySystems;
@@ -125,11 +126,11 @@ public sealed partial class MetaGarbageSystem : EntitySystem
         if (!CachedGarbage.TryGetValue(mapPrototype, out var list))
             return false;
 
+        list.ShuffleRobust(_random).TakePercentage(ent.Comp1.SpawnPercent);
         var mapId = GetStationMapId((ent, ent.Comp2));
-        _random.Shuffle(list);
-        var reducedGarbage = _helpers.GetPercentageOfHashSet(list, ent.Comp1.SpawnPercent).ToList();
 
-        foreach (var data in reducedGarbage)
+        var spawnedCount = 0;
+        foreach (var data in list)
         {
             var coords = new MapCoordinates(data.Position, mapId);
 
@@ -144,10 +145,11 @@ public sealed partial class MetaGarbageSystem : EntitySystem
             TrySetBulbState(item, data.BulbState);
             TryInsertIntoContainer(item, coords, data.ContainerName);
 
+            spawnedCount++;
             Log.Debug($"Spawned {data.Prototype}|{item} at {data.Position} on map {mapId}|{Name(ent)}");
         }
 
-        Log.Info($"Spawned {reducedGarbage.Count}/{list.Count} items");
+        Log.Info($"Spawned {spawnedCount}/{list.Count} items");
         PrintDebugInfo(ent);
 
         return true;
