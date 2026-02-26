@@ -46,7 +46,7 @@
      edges:
      - to: electronics
        conditions:
-       - !type:EntityAnchored { }
+       - !type:EntityAnchored {}
        steps:
        - component: DoorElectronics
          store: board
@@ -99,13 +99,13 @@
 
  - type: construction
    id: ScpAirlockLogotypeConstruction
-   name: шлюз
+   name: airlock
    graph: ScpAirlockLogotypeGraph
    startNode: start
    targetNode: airlock
    category: construction-category-structures
    placementMode: SnapgridCenter
-   description: Шлюз с большим логотипом SCP и сканером ключ-карты
+   description: airlock with large SCP logo and keycard scanner
    icon:
      sprite: _Scp/Structures/Doors/Airlocks/Standard/scpdoor.rsi
      state: closed
@@ -122,7 +122,7 @@
    - type: Wires
      layoutId: AirlockSecurity
    - type: Construction
-     graph: ScpAirlockGraph
+     graph: ScpAirlockLogotypeGraph
      node: airlock
    - type: ContainerFill
      containers:
