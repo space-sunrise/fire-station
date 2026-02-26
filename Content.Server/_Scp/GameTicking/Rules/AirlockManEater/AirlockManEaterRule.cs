@@ -3,6 +3,7 @@ using Content.Server._Sunrise.Helpers;
 using Content.Server.Station.Systems;
 using Content.Server.StationEvents.Events;
 using Content.Shared._Scp.Other.AirlockManEater;
+using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Doors.Components;
 using Content.Shared.GameTicking.Components;
 using Content.Shared.Tag;
@@ -40,13 +41,11 @@ public sealed class AirlockManEaterRule : StationEventSystem<AirlockManEaterRule
     {
         var airlocks = _helpers.GetAll<AirlockComponent>()
             .Where(ent => IsSuitable(ent, station))
-            .ToList();
+            .ToList()
+            .ShuffleRobust(_random)
+            .TakePercentage(percentage);
 
-        _random.Shuffle(airlocks);
-
-        var targetAirlocks = _helpers.GetPercentageOfHashSet(airlocks, percentage);
-
-        foreach (var airlock in targetAirlocks)
+        foreach (var airlock in airlocks)
         {
             AddComp<AirlockManEaterComponent>(airlock);
         }
