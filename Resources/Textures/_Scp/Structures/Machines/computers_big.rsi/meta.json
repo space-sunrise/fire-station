@@ -30,6 +30,18 @@
         {
             "name": "computer_right_broken",
             "directions": 4
+        },
+        {
+            "name": "generic_keyboard_right",
+            "directions": 4
+        },
+        {
+            "name": "generic_keyboard_middle",
+            "directions": 4
+        },
+        {
+            "name": "generic_keyboard_left",
+            "directions": 4
         }
     ]
 }
