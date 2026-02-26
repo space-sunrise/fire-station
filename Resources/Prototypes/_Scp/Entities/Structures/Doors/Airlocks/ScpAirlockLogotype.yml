@@ -51,7 +51,7 @@
        - component: DoorElectronics
          store: board
          name: construction-graph-component-door-electronics-circuit-board
-         icon:
+         icons:
            sprite: "Objects/Misc/module.rsi"
            state: "door_electronics"
          doAfter: 3
@@ -99,14 +99,14 @@
 
  - type: construction
    id: ScpAirlockLogotypeConstruction
-   name: airlock
+   name: construction-scpairlocklogotype-name
    graph: ScpAirlockLogotypeGraph
    startNode: start
    targetNode: airlock
    category: construction-category-structures
    placementMode: SnapgridCenter
-   description: airlock with large SCP logo and keycard scanner
-   icon:
+   description: construction-scpairlocklogotype-desc
+   icons:
      sprite: _Scp/Structures/Doors/Airlocks/Standard/scpdoor.rsi
      state: closed
    canBuildInImpassable: false
