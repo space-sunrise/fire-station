@@ -77,7 +77,7 @@
   description: An older model recharger that can recharge power cells.
   components:
   - type: Sprite
-    sprite: Structures/Power/cell_recharger.rsi
+    sprite: _Scp/Structures/Power/cell_recharger.rsi # Fire edit
     layers:
     - map: ["enum.PowerChargerVisualLayers.Base"]
       state: "empty"

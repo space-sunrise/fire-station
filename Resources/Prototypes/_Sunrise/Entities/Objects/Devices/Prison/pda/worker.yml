@@ -3,6 +3,7 @@
   id: PrisonWorkerPDA
   name: prison worker's PDA
   description: Worn and scratched, it bears the marks of hard and monotonous labor.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pda
     id: PrisonWorkerIDCard

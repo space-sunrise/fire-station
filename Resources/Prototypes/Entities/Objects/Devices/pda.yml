@@ -1362,6 +1362,7 @@
   id: SyndiOperativePDA
   name: syndicate operative PDA
   description: Death to NT!
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pda
     id: SyndiOperativeIDCard
@@ -1383,6 +1384,7 @@
   id: SyndiCorpsmanPDA
   name: syndicate corpsman PDA
   description: Commander... I need to cook!
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pda
     id: SyndiCorpsmanIDCard
@@ -1410,6 +1412,7 @@
   id: SyndiCommanderPDA
   name: syndicate commander PDA
   description: So what are we, some kind of Nukie squad?
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pda
     id: SyndiCommanderIDCard
@@ -1831,6 +1834,7 @@
   id: SeniorCourierPDA
   name: senior courier PDA
   description: Smells like postage stamps and shuttle fuel.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pda
     id: SeniorCourierIDCard   # Sunrise-edit
@@ -1955,6 +1959,7 @@
   parent: ClearPDA
   id: ScurretPDA
   description: A temporary PDA granted to scurret temps. Doesn't do much. Wawa!
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pda
     id: VisitorIDCard
