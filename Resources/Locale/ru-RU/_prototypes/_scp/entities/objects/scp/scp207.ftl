@@ -1,2 +1,2 @@
-ent-Scp207bottle = { ent-DrinkColaBottleFull }
+ent-Scp207Bottle = { ent-DrinkColaBottleFull }
     .desc = Стеклянная бутылка с сильно изношенной, но узнаваемой этикеткой популярной марки газированного напитка

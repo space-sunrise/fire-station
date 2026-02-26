@@ -143,6 +143,11 @@ namespace Content.Client.Input
             aghost.AddFunction(ContentKeyFunctions.MeleeGunAttack);
             aghost.AddFunction(ContentKeyFunctions.LookUp);
             // Sunrise-End
+            // Fire added start
+            aghost.AddFunction(ContentKeyFunctions.RotateObjectClockwise);
+            aghost.AddFunction(ContentKeyFunctions.RotateObjectCounterclockwise);
+            aghost.AddFunction(ContentKeyFunctions.FlipObject);
+            // Fire added end
 
             var ghost = contexts.New("ghost", "human");
             ghost.AddFunction(EngineKeyFunctions.MoveUp);

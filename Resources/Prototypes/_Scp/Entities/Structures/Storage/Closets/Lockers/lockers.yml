@@ -381,7 +381,7 @@
   name: welding supplies locker
   components:
   - type: EntityStorageVisuals
-    stateDoorOpen: eng_weld_open
+    #stateDoorOpen: eng_weld_open TODO: Нарисовать и вернуть
     stateDoorClosed: eng_weld_door
   - type: AccessReader
     access: [["Engineering"]]

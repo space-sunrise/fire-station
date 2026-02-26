@@ -3,6 +3,7 @@
   id: PrisonInspectorPDA
   name: prison inspector's PDA
   description: Scarred with small dents and scratches, yet still retaining an official appearance.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pda
     id: PrisonInspectorIDCard

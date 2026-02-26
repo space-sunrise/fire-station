@@ -141,6 +141,7 @@
   id: FugitivePrisonerPDA
   name: prisoner's PDA
   description: A dim screen and a stuck button, the appearance reveals a past that left its mark.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pda
     id: PlanetPrisonerIDCard
@@ -452,6 +453,7 @@
   parent: BasePDA
   id: CommaidPDA
   name: Command maid PDA
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Devices/pda.rsi
@@ -480,6 +482,7 @@
   id: PiratePDAMusic
   name: Shantyman PDA
   description: Yargh! but now with shanties.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Devices/pda.rsi
@@ -506,12 +509,14 @@
   id: SecuritySergeantPDA
   name: security sergeant PDA
   description: Still functional. Unlike its owner, it does not shout at you.
+  categories: [ HideSpawnMenu ] # Fire added
 
 - type: entity
   parent: PiratePDAMusic
   id:  PiratePDAMusicPassengerId
   name: Shantyman PDA
   description: Yargh! but now with shanties.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pda
     id: PassengerIDCard
