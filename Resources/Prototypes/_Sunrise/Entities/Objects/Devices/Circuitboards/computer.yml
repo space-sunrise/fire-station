@@ -212,7 +212,7 @@
   description: A computer printed circuit board for a prison communications console.
   components:
   - type: ComputerBoard
-    prototype: ScpPrisonComputerComms # Fire edit
+    prototype: PrisonComputerComms
 
 - type: entity
   parent: BaseComputerCircuitboard
