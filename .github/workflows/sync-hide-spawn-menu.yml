@@ -50,7 +50,10 @@ jobs:
           dotnet-version: 10.0.x
 
       - name: Restore Content.MigrationHideSpawnMenu
-        run: dotnet restore Content.MigrationHideSpawnMenu/Content.MigrationHideSpawnMenu.csproj --runtime linux-x64
+        run: |
+          dotnet restore Content.MigrationHideSpawnMenu/Content.MigrationHideSpawnMenu.csproj \
+            --runtime linux-x64 \
+            -p:PublishReadyToRun=true
 
       - name: Publish Content.MigrationHideSpawnMenu (ReadyToRun)
         run: |
