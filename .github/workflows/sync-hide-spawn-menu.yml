@@ -6,6 +6,15 @@ on:
       - "**"
     paths:
       - Resources/migration.yml
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+    paths:
+      - Resources/migration.yml
+      - Resources/Prototypes/**/*.yml
 
 permissions:
   contents: write
@@ -54,11 +63,17 @@ jobs:
             --output artifacts/hide-spawn-menu
 
       - name: Sync HideSpawnMenu categories
+        if: github.event_name == 'push'
         env:
           MIGRATION_HIDE_SPAWN_EDIT_COMMENT: ${{ vars.MIGRATION_HIDE_SPAWN_EDIT_COMMENT }}
         run: dotnet artifacts/hide-spawn-menu/Content.MigrationHideSpawnMenu.dll sync
 
+      - name: Check HideSpawnMenu categories
+        if: github.event_name == 'pull_request' && github.event.pull_request.draft == false
+        run: dotnet artifacts/hide-spawn-menu/Content.MigrationHideSpawnMenu.dll check
+
       - name: Commit and push changes
+        if: github.event_name == 'push'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
