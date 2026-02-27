@@ -7,7 +7,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputerCargoFinanceConsole
+    prototype: ScpComputerLogisticsFinanceConsole # Fire edit
   - type: StaticPrice
     price: 750
   - type: Tag
@@ -23,7 +23,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputerSaleConsole
+    prototype: ScpComputerSaleConsole # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -34,7 +34,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputerBountySaleConsole
+    prototype: ScpComputerBountySaleConsole # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -45,7 +45,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputeStationBankConsole
+    prototype: ScpComputerFacilityBankConsole # Fire edit
   - type: StaticPrice
     price: 750
   - type: Tag
@@ -62,7 +62,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputeCargoSalaryConsole
+    prototype: ScpComputerLogisticsSalaryConsole # Fire edit
   - type: StaticPrice
     price: 750
   - type: Tag
@@ -80,7 +80,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputerCallErtConsole
+    prototype: ScpComputerCallMtfConsole # Fire edit
   - type: StaticPrice
     price: 3000
   - type: Tag
@@ -97,7 +97,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputerApproveErtConsole
+    prototype: ScpComputerApproveMtfConsole # Fire edit
   - type: StaticPrice
     price: 3000
   - type: Tag
@@ -114,7 +114,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputerFineRecords
+    prototype: ScpComputerFineRecords # Fire edit
   - type: StaticPrice
     price: 3000
 
@@ -128,7 +128,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputerContrabandSale
+    prototype: ScpComputerContrabandSale # Fire edit
   - type: StaticPrice
     price: 3000
 
@@ -141,7 +141,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputerServiceSaleConsole
+    prototype: ScpComputerFoodAndSanitationServiceSaleConsole # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -152,7 +152,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputerSecuritySaleConsole
+    prototype: ScpComputerSecuritySaleConsole # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -163,7 +163,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputerMedicalSaleConsole
+    prototype: ScpComputerMedicalServiceSaleConsole # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -185,7 +185,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputerScienceSaleConsole
+    prototype: ScpComputerScientificServiceSaleConsole # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -194,7 +194,7 @@
   description: A computer printed circuit board for a CCR shuttle computer.
   components:
   - type: ComputerBoard
-    prototype: ComputerShuttleCentComm
+    prototype: ScpComputerShuttleRegionalAdministration # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -212,7 +212,7 @@
   description: A computer printed circuit board for a prison communications console.
   components:
   - type: ComputerBoard
-    prototype: PrisonComputerComms
+    prototype: ScpPrisonComputerComms # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -221,7 +221,7 @@
   description: A computer printed circuit board for a security shuttle computer.
   components:
   - type: ComputerBoard
-    prototype: ComputerShuttleSecurity
+    prototype: ScpComputerShuttleSecurity # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -241,7 +241,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ComputerShipyard
+    prototype: ScpComputerShipyard # Fire edit
   - type: StaticPrice
     price: 750
 
@@ -250,4 +250,4 @@
   id: CommandConsoleCircuitboard
   components:
   - type: ComputerBoard
-    prototype: CommandConsoleComputer
+    prototype: ScpComputerAdministration # Fire edit

@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CLA",
-    "copyright": "Sprited by odlieerr(discord) for Fire Station. Continued by miduzka(discord)",
+    "copyright": "Computers sprited by odlieerr(discord) for Fire Station. Continued by miduzka(discord). Screens are copypaste from original RSI from Resources/Textures/Structures/Machines/computers.rsi",
     "size": {
         "x": 32,
         "y": 32
@@ -1830,6 +1830,46 @@
         {
             "name": "wizard_key",
             "directions": 4
+        },
+        {
+            "name": "financial_accounting",
+            "directions": 4,
+            "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
+        },
+        {
+            "name": "financial_accounting_key",
+            "directions": 4,
+            "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
+        },
+        {
+            "name": "icarus",
+            "directions": 4,
+            "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
+        },
+        {
+            "name": "icarus_keys",
+            "directions": 4,
+            "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
+        },
+        {
+            "name": "forfeiture",
+            "directions": 4,
+            "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
+        },
+        {
+            "name": "forfeiture_key",
+            "directions": 4,
+            "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
+        },
+        {
+            "name": "contraband_sell",
+            "directions": 4,
+            "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
+        },
+        {
+            "name": "contraband_sell_key",
+            "directions": 4,
+            "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
         }
     ]
 }

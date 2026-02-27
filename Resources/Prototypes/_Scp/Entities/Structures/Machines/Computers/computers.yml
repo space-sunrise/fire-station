@@ -1,0 +1,484 @@
+- type: entity
+  id: ScpBaseComputer
+  abstract: true
+  components:
+  - type: Construction
+    graph: ScpComputer
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/computers.rsi
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: -3
+    enabled: false
+    sound:
+      path: /Audio/_Scp/Ambience/Machines/Consoles/ost1.ogg
+      params:
+        maxDistance: 2
+        variation: 0.25
+  - type: EdgeConnection
+    connectionKey: computers
+    allowedDirections: East, West
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer, sprite: _Scp/Structures/Machines/computers.rsi }
+          West: { state: computer_right, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East: { state: computer_left, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East, West: { state: computer_middle, sprite: _Scp/Structures/Machines/computers_big.rsi }
+
+- type: entity
+  id: ScpComputerAlert
+  parent:
+  - ScpBaseComputer
+  - ComputerAlert
+  components:
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+      enum.AtmosAlertsComputerVisuals.ComputerLayerScreen:
+        computerLayerScreen:
+          0: { state: alert-0 }
+          1: { state: alert-0 }
+          2: { state: alert-1 }
+          3: { state: alert-2 }
+          4: { state: alert-2 }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer, sprite: _Scp/Structures/Machines/computers.rsi }
+          West: { state: computer_right, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East: { state: computer_left, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East, West: { state: computer_middle, sprite: _Scp/Structures/Machines/computers_big.rsi }
+
+- type: entity
+  id: ScpComputerAtmosphereMonitoring
+  parent:
+  - ScpBaseComputer
+  - ComputerAtmosMonitoring
+
+- type: entity
+  id: ScpComputerEmergencyShuttle
+  parent:
+  - ScpBaseComputer
+  - ComputerEmergencyShuttle
+
+- type: entity
+  id: ScpComputerShuttle
+  parent:
+  - ScpBaseComputer
+  - ComputerShuttle
+
+- type: entity
+  id: ScpComputerShuttleChaosInsurgency
+  parent:
+  - ScpBaseComputer
+  - ComputerShuttleSyndie
+
+- type: entity
+  id: ScpComputerShuttleCargo
+  parent:
+  - ScpBaseComputer
+  - ComputerShuttleCargo
+
+- type: entity
+  id: ScpComputerIFF
+  parent:
+  - ScpBaseComputer
+  - ComputerIFF
+
+- type: entity
+  id: ScpComputerIFFSyndicate
+  parent:
+  - ScpComputerIFF
+  - ComputerIFFSyndicate
+
+- type: entity
+  id: ScpComputerPowerMonitoring
+  parent:
+  - ScpBaseComputer
+  - ComputerPowerMonitoring
+
+- type: entity
+  id: ScpComputerMedicalRecords
+  parent:
+  - ScpBaseComputer
+  - ComputerMedicalRecords
+
+- type: entity
+  id: ScpComputerCriminalRecords
+  parent:
+  - ScpBaseComputer
+  - ComputerCriminalRecords
+
+- type: entity
+  id: ScpComputerFacilityRecords
+  parent:
+  - ScpBaseComputer
+  - ComputerStationRecords
+
+- type: entity
+  id: ScpComputerCrewMonitoring
+  parent:
+  - ScpBaseComputer
+  - ComputerCrewMonitoring
+
+- type: entity
+  id: ScpComputerResearchAndDevelopment
+  parent:
+  - ScpBaseComputer
+  - ComputerResearchAndDevelopment
+
+- type: entity
+  id: ScpComputerAnalysisConsole
+  parent:
+  - ScpBaseComputer
+  - ComputerAnalysisConsole
+
+- type: entity
+  id: ScpComputerId
+  parent:
+  - ScpBaseComputer
+  - ComputerId
+
+- type: entity
+  id: ScpcomputerBodyScanner
+  parent:
+  - ScpBaseComputer
+  - computerBodyScanner
+
+- type: entity
+  id: ScpComputerComms
+  parent:
+  - ScpBaseComputer
+  - ComputerComms
+
+- type: entity
+  id: ScpSyndicateComputerComms
+  parent:
+  - ScpComputerComms
+  - SyndicateComputerComms
+
+- type: entity
+  id: ScpComputerRegionalAdministrationCommunication
+  parent:
+  - ScpComputerComms
+  - CentcommComputerComms
+
+- type: entity
+  id: ScpComputerSolarControl
+  parent:
+  - ScpBaseComputer
+  - ComputerSolarControl
+
+- type: entity
+  id: ScpComputerRadar
+  parent:
+  - ScpBaseComputer
+  - ComputerRadar
+
+- type: entity
+  id: ScpComputerLogisticsOrders
+  parent:
+  - ScpBaseComputer
+  - ComputerCargoOrders
+
+- type: entity
+  id: ScpComputerLogisticsOrdersEngineeringTechnicalService
+  parent:
+  - ScpComputerLogisticsOrders
+  - ComputerCargoOrdersEngineering
+
+- type: entity
+  id: ScpComputerLogisticsOrdersMedicalService
+  parent:
+  - ScpComputerLogisticsOrders
+  - ComputerCargoOrdersMedical
+
+- type: entity
+  id: ScpComputerLogisticsOrdersScientificService
+  parent:
+  - ScpComputerLogisticsOrders
+  - ComputerCargoOrdersScience
+
+- type: entity
+  id: ScpComputerLogisticsOrdersSecurity
+  parent:
+  - ScpComputerLogisticsOrders
+  - ComputerCargoOrdersSecurity
+
+- type: entity
+  id: ScpComputerLogisticsOrdersFoodAndSanitationService
+  parent:
+  - ScpComputerLogisticsOrders
+  - ComputerCargoOrdersService
+
+- type: entity
+  id: ScpComputerLogisticsBounty
+  parent:
+  - ScpBaseComputer
+  - ComputerCargoBounty
+
+- type: entity
+  id: ScpComputerFundingAllocation
+  parent:
+  - ScpBaseComputer
+  - ComputerFundingAllocation
+
+- type: entity
+  id: ScpComputerCloningConsole
+  parent:
+  - ScpBaseComputer
+  - ComputerCloningConsole
+
+- type: entity
+  id: ScpComputerSurveillanceCameraMonitor
+  parent:
+  - ScpBaseComputer
+  - ComputerSurveillanceCameraMonitor
+
+- type: entity
+  id: ScpComputerSurveillanceWirelessCameraMonitor
+  parent:
+  - ScpBaseComputer
+  - ComputerSurveillanceWirelessCameraMonitor
+
+- type: entity
+  id: ScpComputerPalletConsole
+  parent:
+  - ScpBaseComputer
+  - ComputerPalletConsole
+
+- type: entity
+  id: ScpComputerMassMedia
+  parent:
+  - ScpBaseComputer
+  - ComputerMassMedia
+
+- type: entity
+  id: ScpComputerSensorMonitoring
+  parent:
+  - ScpBaseComputer
+  - ComputerSensorMonitoring
+
+- type: entity
+  id: ScpComputerRoboticsControl
+  parent:
+  - ScpBaseComputer
+  - ComputerRoboticsControl
+
+- type: entity
+  id: ScpStationAiUploadComputer
+  parent:
+  - ScpBaseComputer
+  - StationAiUploadComputer
+
+- type: entity
+  id: ScpStationAiFixerComputer
+  parent:
+  - ScpBaseComputer
+  - StationAiFixerComputer
+  components:
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+      enum.StationAiFixerConsoleVisuals.Key:
+        computerLayerScreen:
+          Repair0: { state: ai-fixer-progress-0 }
+          Repair1: { state: ai-fixer-progress-1 }
+          Repair2: { state: ai-fixer-progress-2 }
+          Repair3: { state: ai-fixer-progress-3 }
+          Purge0: { state: ai-fixer-purge-0 }
+          Purge1: { state: ai-fixer-purge-1 }
+          Purge2: { state: ai-fixer-purge-2 }
+          Purge3: { state: ai-fixer-purge-3 }
+          Empty: { state: ai-fixer-empty }
+          Occupied: { state: ai-fixer-full }
+          Rebooting: { state: ai-fixer-404 }
+          Dead: { state: ai-fixer-404 }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: computer, sprite: _Scp/Structures/Machines/computers.rsi }
+          West: { state: computer_right, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East: { state: computer_left, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East, West: { state: computer_middle, sprite: _Scp/Structures/Machines/computers_big.rsi }
+
+- type: entity
+  id: ScpComputerTelevision
+  parent:
+  - ScpComputerSurveillanceWirelessCameraMonitor
+  - ComputerTelevision
+
+- type: entity
+  id: ScpComputerFrame
+  parent: ComputerFrame
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/parts.rsi
+  - type: Construction
+    graph: ScpComputer
+
+- type: entity
+  id: ScpComputerBroken
+  parent: ComputerBroken
+  components:
+  - type: Construction
+    graph: ScpComputer
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/computers.rsi
+  - type: EdgeConnection
+    connectionKey: computers
+    allowedDirections: East, West
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: broken, sprite: _Scp/Structures/Machines/computers.rsi }
+          West: { state: computer_right_broken, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East: { state: computer_left_broken, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East, West: { state: computer_middle_broken, sprite: _Scp/Structures/Machines/computers_big.rsi }
+
+- type: entity
+  id: ScpComputerShipyard
+  parent:
+  - ScpBaseComputer
+  - ComputerShipyard
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/computers.rsi
+
+- type: entity
+  id: ScpComputerSaleConsole
+  parent:
+  - ScpComputerPalletConsole
+  - ComputerSaleConsole
+
+- type: entity
+  id: ScpComputerFacilityBankConsole
+  parent:
+  - ScpBaseComputer
+  - ComputeStationBankConsole
+
+- type: entity
+  id: ScpComputerLogisticsSalaryConsole
+  parent:
+  - ScpBaseComputer
+  - ComputeCargoSalaryConsole
+
+- type: entity
+  id: ScpComputerLogisticsFinanceConsole
+  parent:
+  - ScpBaseComputer
+  - ComputerCargoFinanceConsole
+
+- type: entity
+  id: ScpComputerBountySaleConsole
+  parent:
+  - ScpComputerPalletConsole
+  - ComputerBountySaleConsole
+
+- type: entity
+  id: ScpComputerCallMtfConsole
+  parent:
+  - ScpBaseComputer
+  - ComputerCallErtConsole
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/computers.rsi
+
+- type: entity
+  id: ScpComputerApproveMtfConsole
+  parent:
+  - ScpBaseComputer
+  - ComputerApproveErtConsole
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/computers.rsi
+
+- type: entity
+  id: ScpComputerFineRecords
+  parent:
+  - ScpBaseComputer
+  - ComputerFineRecords
+
+- type: entity
+  id: ScpComputerContrabandSale
+  parent:
+  - ScpBaseComputer
+  - ComputerContrabandSale
+
+- type: entity
+  id: ScpComputerFoodAndSanitationServiceSaleConsole
+  parent:
+  - ScpComputerSaleConsole
+  - ComputerServiceSaleConsole
+
+- type: entity
+  id: ScpComputerSecuritySaleConsole
+  parent:
+  - ScpComputerSaleConsole
+  - ComputerSecuritySaleConsole
+
+- type: entity
+  id: ScpComputerMedicalServiceSaleConsole
+  parent:
+  - ScpComputerSaleConsole
+  - ComputerMedicalSaleConsole
+
+- type: entity
+  id: ScpComputerScientificServiceSaleConsole
+  parent:
+  - ScpComputerSaleConsole
+  - ComputerScienceSaleConsole
+
+- type: entity
+  id: ScpComputerShuttleRegionalAdministration
+  parent:
+  - ScpBaseComputer
+  - ComputerShuttleCentComm
+
+- type: entity
+  id: ScpComputerShuttleSecurity
+  parent:
+  - ScpBaseComputer
+  - ComputerShuttleSecurity
+
+- type: entity
+  id: ScpComputerAdministration
+  parent:
+  - ScpBaseComputer
+  - CommandConsoleComputer
+
+- type: entity
+  id: ScpComputerCodes
+  parent:
+  - ScpBaseComputer
+  - CodeConsole
+
+- type: entity
+  id: ScpComputerIcarus
+  parent:
+  - ScpBaseComputer
+  - BaseComputer
