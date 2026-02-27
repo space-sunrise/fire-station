@@ -358,7 +358,7 @@
     - type: Sprite
       state: cpu_medical
     - type: ComputerBoard
-      prototype: ScpcomputerBodyScanner # Fire edit
+      prototype: ScpComputerBodyScanner # Fire edit
 
 - type: entity
   parent: [ BaseComputerCircuitboard, BaseCommandContraband ]

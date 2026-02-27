@@ -2578,7 +2578,7 @@ ComputerAlert: ScpComputerAlert
 ComputerAnalysisConsole: ScpComputerAnalysisConsole
 ComputerApproveErtConsole: ScpComputerApproveMtfConsole
 ComputerAtmosMonitoring: ScpComputerAtmosphereMonitoring
-computerBodyScanner: ScpcomputerBodyScanner
+computerBodyScanner: ScpComputerBodyScanner
 ComputerBountySaleConsole: ScpComputerBountySaleConsole
 ComputerBroken: ScpComputerBroken
 ComputerCallErtConsole: ScpComputerCallMtfConsole

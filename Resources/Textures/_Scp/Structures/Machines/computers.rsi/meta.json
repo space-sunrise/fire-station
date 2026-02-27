@@ -436,10 +436,6 @@
             ]
         },
         {
-            "name": "atmos_key",
-            "directions": 4
-        },
-        {
             "name": "bounty",
             "directions": 4,
             "delays": [
@@ -597,28 +593,6 @@
         },
         {
             "name": "comm_syndie",
-            "directions": 4,
-            "delays": [
-                [
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1
-                ],
-                [
-                    0.1,
-                    0.1
-                ]
-            ]
-        },
-        {
-            "name": "comm_wizard",
             "directions": 4,
             "delays": [
                 [
@@ -1104,10 +1078,6 @@
             ]
         },
         {
-            "name": "generic_keys",
-            "directions": 4
-        },
-        {
             "name": "generic_panel_open",
             "directions": 4
         },
@@ -1136,10 +1106,6 @@
                     0.2
                 ]
             ]
-        },
-        {
-            "name": "id_key",
-            "directions": 4
         },
         {
             "name": "mecha",
@@ -1178,10 +1144,6 @@
                     0.1
                 ]
             ]
-        },
-        {
-            "name": "med_key",
-            "directions": 4
         },
         {
             "name": "medcomp",
@@ -1304,10 +1266,6 @@
             ]
         },
         {
-            "name": "power_key",
-            "directions": 4
-        },
-        {
             "name": "power_monitor",
             "directions": 4,
             "delays": [
@@ -1336,10 +1294,6 @@
                     0.6
                 ]
             ]
-        },
-        {
-            "name": "rd_key",
-            "directions": 4
         },
         {
             "name": "rdcomp",
@@ -1638,10 +1592,6 @@
             ]
         },
         {
-            "name": "security_key",
-            "directions": 4
-        },
-        {
             "name": "sensors",
             "directions": 4
         },
@@ -1706,19 +1656,11 @@
             "directions": 4
         },
         {
-            "name": "syndie_key",
-            "directions": 4
-        },
-        {
             "name": "syndishuttle",
             "directions": 4
         },
         {
             "name": "tank",
-            "directions": 4
-        },
-        {
-            "name": "tech_key",
             "directions": 4
         },
         {
@@ -1820,24 +1762,74 @@
             ]
         },
         {
-            "name": "service_keys",
-            "directions": 4
-        },
-        {
-            "name": "xenorobot",
-            "directions": 4
-        },
-        {
-            "name": "wizard_key",
-            "directions": 4
+            "name": "facility_records",
+            "copyright": "Sprited by miduzka(discord) for Fire Station",
+            "directions": 4,
+            "delays": [
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ],
+                [
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2,
+                    0.2
+                ]
+            ]
         },
         {
             "name": "financial_accounting",
-            "directions": 4,
-            "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
-        },
-        {
-            "name": "financial_accounting_key",
             "directions": 4,
             "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
         },
@@ -1847,17 +1839,7 @@
             "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
         },
         {
-            "name": "icarus_keys",
-            "directions": 4,
-            "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
-        },
-        {
             "name": "forfeiture",
-            "directions": 4,
-            "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
-        },
-        {
-            "name": "forfeiture_key",
             "directions": 4,
             "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
         },
@@ -1867,7 +1849,12 @@
             "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
         },
         {
-            "name": "contraband_sell_key",
+            "name": "salary",
+            "directions": 4,
+            "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
+        },
+        {
+            "name": "station_account",
             "directions": 4,
             "copyright": "Copypaste from Resources/Textures/_Sunrise/Structures/Machines/computers.rsi"
         }
