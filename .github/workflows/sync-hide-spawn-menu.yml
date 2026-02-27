@@ -1,0 +1,61 @@
+name: Sync HideSpawnMenu
+
+on:
+  push:
+    branches:
+      - "**"
+    paths:
+      - Resources/migration.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-hide-spawn-menu-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync-hide-spawn-menu:
+    if: github.actor != 'Sunrise-Bot'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Setup submodules
+        run: git submodule update --init --recursive
+
+      - name: Pull engine updates
+        uses: space-wizards/submodule-dependency@v0.1.5
+
+      - name: Update engine submodules
+        run: |
+          cd RobustToolbox/
+          git submodule update --init --recursive
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4.1.0
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore Content.MigrationHideSpawnMenu
+        run: dotnet restore Content.MigrationHideSpawnMenu/Content.MigrationHideSpawnMenu.csproj
+
+      - name: Sync HideSpawnMenu categories
+        env:
+          MIGRATION_HIDE_SPAWN_EDIT_COMMENT: ${{ vars.MIGRATION_HIDE_SPAWN_EDIT_COMMENT }}
+        run: dotnet run --project Content.MigrationHideSpawnMenu/Content.MigrationHideSpawnMenu.csproj -- sync
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Resources/Prototypes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-sync HideSpawnMenu categories [skip ci]"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
