@@ -2570,8 +2570,8 @@ FSConcreteCurbCornerSmallNorth: ConcreteCurbCornerSmallOut # Тут всё ок.
 FSConcreteCurbCornerSmallSouth: ConcreteCurbCornerSmallIn # Тут всё ок. Спрайты были не правильно названы.
 
 # SCP Consoles
-CentcomComputerComms: ScpComputerRegionalAdministrationCommunication
-CentcommComputerComms: ScpComputerRegionalAdministrationCommunication
+CentcomComputerComms: ScpComputerCommunicationRegionalAdministration
+CentcommComputerComms: ScpComputerCommunicationRegionalAdministration
 CommandConsoleComputer: ScpComputerPlayerConsole
 ComputeCargoSalaryConsole: ScpComputerLogisticsSalaryConsole
 ComputerAlert: ScpComputerAlert

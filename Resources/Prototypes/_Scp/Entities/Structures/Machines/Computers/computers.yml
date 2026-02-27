@@ -373,7 +373,7 @@
       state: generic_panel_open
 
 - type: entity
-  id: ScpComputerRegionalAdministrationCommunication
+  id: ScpComputerCommunicationRegionalAdministration
   parent:
   - ScpComputerCommunication
   - CentcommComputerComms

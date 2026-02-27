@@ -213,7 +213,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ScpComputerSalvageJobBoard # Fire edit
+    prototype: ComputerSalvageJobBoard
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -275,7 +275,7 @@
   - type: Sprite
     state: cpu_science
   - type: ComputerBoard
-    prototype: ScpComputerSurveillanceWirelessXenoborgCameraMonitor # Fire edit
+    prototype: ComputerSurveillanceWirelessXenoborgCameraMonitor
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -391,7 +391,7 @@
   - type: Sprite
     state: cpu_wizard
   - type: ComputerBoard
-    prototype: ScpWizardComputerComms # Fire edit
+    prototype: WizardComputerComms
 
 - type: entity
   parent: [ BaseComputerCircuitboard, BaseCentcommContraband ]
@@ -402,7 +402,7 @@
   - type: Sprite
     state: cpu_centcomm
   - type: ComputerBoard
-    prototype: ScpCentcommComputerComms # Fire edit
+    prototype: ScpComputerCommunicationRegionalAdministration # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -474,7 +474,7 @@
   - type: Sprite
     state: cpu_syndicate
   - type: ComputerBoard
-    prototype: ScpComputerShuttleSyndie # Fire edit
+    prototype: ScpComputerShuttleChaosInsurgency # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -553,7 +553,7 @@
     - type: Sprite
       state: cpu_science
     - type: ComputerBoard
-      prototype: ScpComputerXenoborgsControl # Fire edit
+      prototype: ComputerXenoborgsControl
 
 - type: entity
   parent: BaseComputerCircuitboard
