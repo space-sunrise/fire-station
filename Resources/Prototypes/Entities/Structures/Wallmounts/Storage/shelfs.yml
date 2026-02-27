@@ -330,7 +330,7 @@
   description: Made out of the finest synthetic wood for all alcohol holding needs.
   components:
   - type: Sprite
-    sprite: Structures/Storage/Shelfs/Departments/Service/bar.rsi
+    sprite: _Scp/Structures/Storage/Shelfs/Departments/Service/bar.rsi # Fire edit
     state: base
     layers:
       - state: base

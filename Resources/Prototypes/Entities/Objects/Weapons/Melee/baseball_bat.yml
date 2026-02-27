@@ -5,7 +5,7 @@
   description: A robust baseball bat.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Melee/baseball_bat.rsi
+    sprite: _Scp/Objects/Weapons/Melee/baseball_bat.rsi # Fire edit
     state: icon
   - type: MeleeWeapon
     wideAnimationRotation: -135
@@ -27,7 +27,7 @@
     - 0,0,0,3
     storedSprite:
       state: storage
-      sprite: Objects/Weapons/Melee/baseball_bat.rsi
+      sprite: _Scp/Objects/Weapons/Melee/baseball_bat.rsi # Fire edit
   - type: Tool
     qualities:
     - Rolling
@@ -55,7 +55,7 @@
   description: A few planks of wood stuck together.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Melee/incomplete_bat.rsi
+    sprite: _Scp/Objects/Weapons/Melee/incomplete_bat.rsi # Fire edit
     state: icon
   - type: Item
     size: Normal
@@ -63,8 +63,8 @@
     - 0,0,0,3
     storedSprite:
       state: storage
-      sprite: Objects/Weapons/Melee/incomplete_bat.rsi
-    sprite: Objects/Weapons/Melee/incomplete_bat.rsi
+      sprite: _Scp/Objects/Weapons/Melee/incomplete_bat.rsi # Fire edit
+    sprite: _Scp/Objects/Weapons/Melee/incomplete_bat.rsi # Fire edit
   - type: Construction
     graph: WoodenBat
     node: incompleteBat

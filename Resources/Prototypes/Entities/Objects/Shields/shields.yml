@@ -6,10 +6,10 @@
   abstract: true
   components:
     - type: Sprite
-      sprite: Objects/Weapons/Melee/shields.rsi
+      sprite: _Scp/Objects/Weapons/Melee/shields.rsi # Fire edit
       state: riot-icon
     - type: Item
-      sprite: Objects/Weapons/Melee/shields.rsi
+      sprite: _Scp/Objects/Weapons/Melee/shields.rsi # Fire edit
       size: Ginormous
       heldPrefix: riot
     - type: Blocking
