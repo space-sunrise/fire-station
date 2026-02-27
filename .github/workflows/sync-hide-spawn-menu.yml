@@ -43,10 +43,20 @@ jobs:
       - name: Restore Content.MigrationHideSpawnMenu
         run: dotnet restore Content.MigrationHideSpawnMenu/Content.MigrationHideSpawnMenu.csproj
 
+      - name: Publish Content.MigrationHideSpawnMenu (ReadyToRun)
+        run: |
+          dotnet publish Content.MigrationHideSpawnMenu/Content.MigrationHideSpawnMenu.csproj \
+            --configuration Release \
+            --runtime linux-x64 \
+            --self-contained false \
+            -p:PublishReadyToRun=true \
+            --no-restore \
+            --output artifacts/hide-spawn-menu
+
       - name: Sync HideSpawnMenu categories
         env:
           MIGRATION_HIDE_SPAWN_EDIT_COMMENT: ${{ vars.MIGRATION_HIDE_SPAWN_EDIT_COMMENT }}
-        run: dotnet run --project Content.MigrationHideSpawnMenu/Content.MigrationHideSpawnMenu.csproj -- sync
+        run: dotnet artifacts/hide-spawn-menu/Content.MigrationHideSpawnMenu.dll sync
 
       - name: Commit and push changes
         run: |
