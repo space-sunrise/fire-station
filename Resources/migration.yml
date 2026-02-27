@@ -2572,7 +2572,7 @@ FSConcreteCurbCornerSmallSouth: ConcreteCurbCornerSmallIn # Тут всё ок. 
 # SCP Consoles
 CentcomComputerComms: ScpComputerRegionalAdministrationCommunication
 CentcommComputerComms: ScpComputerRegionalAdministrationCommunication
-CommandConsoleComputer: ScpComputerAdministration
+CommandConsoleComputer: ScpComputerPlayerConsole
 ComputeCargoSalaryConsole: ScpComputerLogisticsSalaryConsole
 ComputerAlert: ScpComputerAlert
 ComputerAnalysisConsole: ScpComputerAnalysisConsole
@@ -2633,5 +2633,7 @@ SyndicateComputerComms: ScpComputerCommunicationChaosInsurgency
 ComputerShuttleCargo: ScpComputerShuttleLogistics
 CodeConsole: ScpComputerCodes
 ComputerIcarus: ScpComputerIcarus
+BaseComputer: ScpComputer
+BaseComputerAiAccess: ScpComputer
 
 # Fire added end

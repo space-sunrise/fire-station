@@ -41,6 +41,23 @@
           East, West: { state: generic_keyboard_middle, sprite: _Scp/Structures/Machines/computers_big.rsi }
 
 - type: entity
+  id: ScpComputer
+  parent:
+  - ScpBaseComputer
+  - BaseComputer
+  components:
+  - type: Sprite
+    layers: &ComputerGenericSpriteLayers
+    - map: [ "computerLayerBody" ]
+      state: computer
+    - map: [ "computerLayerKeyboard" ]
+      state: generic_keyboard
+    - map: [ "computerLayerScreen" ]
+      state: generic
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
   id: ScpComputerAlert
   parent:
   - ScpBaseComputer
@@ -99,15 +116,7 @@
   - ComputerEmergencyShuttle
   components:
   - type: Sprite
-    layers: &ComputerGenericSpriteLayers
-    - map: [ "computerLayerBody" ]
-      state: computer
-    - map: [ "computerLayerKeyboard" ]
-      state: generic_keyboard
-    - map: [ "computerLayerScreen" ]
-      state: generic
-    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
-      state: generic_panel_open
+    layers: *ComputerGenericSpriteLayers
 
 - type: entity
   id: ScpComputerShuttle
@@ -960,7 +969,7 @@
       state: eris_control
 
 - type: entity
-  id: ScpComputerAdministration
+  id: ScpComputerPlayerConsole
   parent:
   - ScpBaseComputer
   - CommandConsoleComputer

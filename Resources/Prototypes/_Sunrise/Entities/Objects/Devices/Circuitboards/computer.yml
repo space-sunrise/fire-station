@@ -250,4 +250,4 @@
   id: CommandConsoleCircuitboard
   components:
   - type: ComputerBoard
-    prototype: ScpComputerAdministration # Fire edit
+    prototype: ScpComputerPlayerConsole # Fire edit
