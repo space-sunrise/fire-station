@@ -37,6 +37,7 @@ public sealed class EdgeConnectionSystem : EntitySystem
 
     private void OnShutdown(Entity<EdgeConnectionComponent> ent, ref ComponentShutdown args)
     {
+        _appearance.SetData(ent, EdgeConnectionVisuals.ConnectionMask, EdgeConnectionFlags.None);
         // Update neighbors when this entity is removed
         UpdateNeighbors(ent);
     }
