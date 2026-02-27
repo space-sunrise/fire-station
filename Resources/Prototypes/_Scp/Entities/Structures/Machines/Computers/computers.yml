@@ -144,7 +144,7 @@
       state: generic_panel_open
 
 - type: entity
-  id: ScpComputerShuttleCargo
+  id: ScpComputerShuttleLogistics
   parent:
   - ScpBaseComputer
   - ComputerShuttleCargo
@@ -179,7 +179,7 @@
       state: generic_panel_open
 
 - type: entity
-  id: ScpComputerIFFSyndicate
+  id: ScpComputerIFFChaosInsurgency
   parent:
   - ScpComputerIFF
   - ComputerIFFSyndicate
@@ -253,7 +253,7 @@
       state: generic_panel_open
 
 - type: entity
-  id: ScpComputerCrewMonitoring
+  id: ScpComputerPersonnelMonitoring
   parent:
   - ScpBaseComputer
   - ComputerCrewMonitoring
@@ -330,7 +330,7 @@
     layers: *ComputerGenericSpriteLayers
 
 - type: entity
-  id: ScpComputerComms
+  id: ScpComputerCommunication
   parent:
   - ScpBaseComputer
   - ComputerComms
@@ -347,9 +347,9 @@
       state: generic_panel_open
 
 - type: entity
-  id: ScpSyndicateComputerComms
+  id: ScpComputerCommunicationChaosInsurgency
   parent:
-  - ScpComputerComms
+  - ScpComputerCommunication
   - SyndicateComputerComms
   components:
   - type: Sprite
@@ -366,7 +366,7 @@
 - type: entity
   id: ScpComputerRegionalAdministrationCommunication
   parent:
-  - ScpComputerComms
+  - ScpComputerCommunication
   - CentcommComputerComms
   components:
   - type: Sprite
@@ -670,7 +670,7 @@
       state: generic_panel_open
 
 - type: entity
-  id: ScpStationAiUploadComputer
+  id: ScpComputerFacilityAiUpload
   parent:
   - ScpBaseComputer
   - StationAiUploadComputer
@@ -687,7 +687,7 @@
       state: generic_panel_open
 
 - type: entity
-  id: ScpStationAiFixerComputer
+  id: ScpComputerFacilityAiFixer
   parent:
   - ScpBaseComputer
   - StationAiFixerComputer

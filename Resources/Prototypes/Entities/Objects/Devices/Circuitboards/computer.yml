@@ -237,7 +237,7 @@
   - type: Sprite
     state: cpu_supply
   - type: ComputerBoard
-    prototype: ScpComputerShuttleCargo # Fire edit
+    prototype: ScpComputerShuttleLogistics # Fire edit
   - type: StealTarget
     stealGroup: CargoShuttleConsoleCircuitboard
 
@@ -331,7 +331,7 @@
   - type: Sprite
     state: cpu_medical
   - type: ComputerBoard
-    prototype: ScpComputerCrewMonitoring # Fire edit
+    prototype: ScpComputerPersonnelMonitoring # Fire edit
 
 - type: entity
   parent: [BaseComputerCircuitboard, BaseCommandContraband]
@@ -369,7 +369,7 @@
     - type: Sprite
       state: cpu_command
     - type: ComputerBoard
-      prototype: ScpComputerComms # Fire edit
+      prototype: ScpComputerCommunication # Fire edit
 
 - type: entity
   parent: [ BaseComputerCircuitboard, BaseSyndicateContraband ]
@@ -380,7 +380,7 @@
   - type: Sprite
     state: cpu_syndicate
   - type: ComputerBoard
-    prototype: ScpSyndicateComputerComms # Fire edit
+    prototype: ScpComputerCommunicationChaosInsurgency # Fire edit
 
 - type: entity
   parent: [ BaseComputerCircuitboard, BaseSyndicateContraband ]
@@ -507,7 +507,7 @@
   - type: Sprite
     state: cpu_syndicate
   - type: ComputerBoard
-    prototype: ScpComputerIFFSyndicate # Fire edit
+    prototype: ScpComputerIFFChaosInsurgency # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -564,7 +564,7 @@
     - type: Sprite
       state: cpu_science
     - type: ComputerBoard
-      prototype: ScpStationAiUploadComputer # Fire edit
+      prototype: ScpComputerFacilityAiUpload # Fire edit
 
 - type: entity
   parent: BaseComputerCircuitboard
@@ -575,4 +575,4 @@
     - type: Sprite
       state: cpu_science
     - type: ComputerBoard
-      prototype: ScpStationAiFixerComputer # Fire edit
+      prototype: ScpComputerFacilityAiFixer # Fire edit
