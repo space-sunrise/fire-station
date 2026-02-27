@@ -15,6 +15,7 @@
 - type: entity
   parent: MarkerBase
   id: SpawnMobCleanBot
+  categories: [ HideSpawnMenu ] # Fire edit
   name: cleanbot spawner
   components:
   - type: Sprite

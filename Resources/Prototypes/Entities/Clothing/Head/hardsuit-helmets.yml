@@ -330,6 +330,7 @@
 - type: entity
   parent: [ ClothingHeadHardsuitBase, ClothingHeadSuitWithLightBase ]
   id: ClothingHeadHelmetHardsuitSecurity
+  categories: [ HideSpawnMenu ] # Fire edit
   name: security hardsuit helmet
   description: Armored hardsuit helmet for security needs.
   components:

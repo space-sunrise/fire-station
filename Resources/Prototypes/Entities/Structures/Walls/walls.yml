@@ -1448,6 +1448,7 @@
 - type: entity
   parent: BaseWall
   id: WallMining
+  categories: [ HideSpawnMenu ] # Fire edit
   name: mining wall
   components:
   - type: Sprite
@@ -1473,6 +1474,7 @@
 - type: entity
   parent: WallDiagonalBase
   id: WallMiningDiagonal
+  categories: [ HideSpawnMenu ] # Fire edit
   name: mining wall
   components:
   - type: Sprite

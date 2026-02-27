@@ -56,6 +56,7 @@
 
 - type: entity
   id: PlasticFlapsClear
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: PlasticFlapsBase
   name: plastic flaps
   suffix: Clear
@@ -67,6 +68,7 @@
 
 - type: entity
   id: PlasticFlapsOpaque
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: PlasticFlapsBase
   name: plastic flaps
   suffix: Opaque
@@ -91,6 +93,7 @@
 
 - type: entity
   id: PlasticFlapsAirtightClear
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: PlasticFlapsBase
   name: airtight plastic flaps
   suffix: Airtight, Clear
@@ -118,6 +121,7 @@
 
 - type: entity
   id: PlasticFlapsAirtightOpaque
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: PlasticFlapsAirtightClear #Sunrise-edit
   name: airtight plastic flaps
   suffix: Airtight, Opaque
