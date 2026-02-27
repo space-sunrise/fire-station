@@ -1,14 +1,25 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using YamlDotNet.RepresentationModel;
 
 namespace Content.MigrationHideSpawnMenu;
 
+/// <summary>
+/// Synchronizes <c>HideSpawnMenu</c> category for migrated entity prototypes.
+/// </summary>
 public static class MigrationHideSpawnMenuSyncTool
 {
+    /// <summary>
+    /// Environment variable used for edit comment text appended to updated lines.
+    /// </summary>
     public const string EditCommentEnvironmentVariable = "MIGRATION_HIDE_SPAWN_EDIT_COMMENT";
+
+    /// <summary>
+    /// Fallback edit comment used when the environment variable is empty.
+    /// </summary>
     public const string FallbackEditComment = "Fire edit";
 
     private const string HideSpawnMenuCategory = "HideSpawnMenu";
@@ -19,13 +30,20 @@ public static class MigrationHideSpawnMenuSyncTool
     private const int CheckOutOfSyncExitCode = 1;
     private const int TechnicalFailureExitCode = 2;
 
+    /// <summary>
+    /// Runs the tool from the current working directory.
+    /// </summary>
     public static int Run(string[] args)
     {
         return Run(args, Directory.GetCurrentDirectory(), null);
     }
 
+    /// <summary>
+    /// Runs the tool with explicit repository root and optional edit comment override.
+    /// </summary>
     public static int Run(string[] args, string repositoryRoot, string editCommentOverride)
     {
+        var stopwatch = Stopwatch.StartNew();
         try
         {
             if (!TryParseMode(args, out var mode))
@@ -36,7 +54,8 @@ public static class MigrationHideSpawnMenuSyncTool
 
             var editComment = ResolveEditComment(editCommentOverride);
             var summary = Execute(mode, repositoryRoot, editComment);
-            PrintSummary(mode, summary);
+            stopwatch.Stop();
+            PrintSummary(mode, summary, stopwatch.Elapsed);
 
             if (mode == MigrationHideSpawnMenuMode.Check && summary.Violations.Count > 0)
             {
@@ -52,7 +71,9 @@ public static class MigrationHideSpawnMenuSyncTool
         }
         catch (Exception e)
         {
+            stopwatch.Stop();
             Console.Error.WriteLine(e);
+            Console.Error.WriteLine($"❌ Failed in {stopwatch.Elapsed.TotalMilliseconds:N0} ms.");
             return TechnicalFailureExitCode;
         }
     }
@@ -331,7 +352,7 @@ public static class MigrationHideSpawnMenuSyncTool
         return false;
     }
 
-    private static void PrintSummary(MigrationHideSpawnMenuMode mode, MigrationHideSpawnMenuSummary summary)
+    private static void PrintSummary(MigrationHideSpawnMenuMode mode, MigrationHideSpawnMenuSummary summary, TimeSpan elapsed)
     {
         Console.WriteLine("🧭 HideSpawnMenu migration sync report");
         Console.WriteLine("-------------------------------------");
@@ -340,6 +361,7 @@ public static class MigrationHideSpawnMenuSyncTool
         Console.WriteLine($"📝 Files changed:      {summary.FilesChanged}");
         Console.WriteLine($"🔎 Candidates found:   {summary.CandidatesFound}");
         Console.WriteLine($"✅ Candidates updated: {summary.CandidatesUpdated}");
+        Console.WriteLine($"⏱️  Elapsed:           {elapsed.TotalMilliseconds:N0} ms ({elapsed.TotalSeconds:F2} s)");
 
         if (mode == MigrationHideSpawnMenuMode.Check)
         {
