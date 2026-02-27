@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           fetch-depth: 0
 
@@ -37,7 +37,7 @@ jobs:
         run: git submodule update --init --recursive
 
       - name: Pull engine updates
-        uses: space-wizards/submodule-dependency@v0.1.5
+        uses: space-wizards/submodule-dependency@548a726da00ca348ce9e1ea9f026da8f528caa71
 
       - name: Update engine submodules
         run: |
@@ -45,7 +45,7 @@ jobs:
           git submodule update --init --recursive
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4.1.0
+        uses: actions/setup-dotnet@3e891b0cb619bf60e2c25674b222b8940e2c1c25
         with:
           dotnet-version: 10.0.x
 
