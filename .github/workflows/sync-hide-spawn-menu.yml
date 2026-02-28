@@ -66,13 +66,13 @@ jobs:
             --output artifacts/hide-spawn-menu
 
       - name: Sync HideSpawnMenu categories
-        if: github.event_name == 'push'
+        if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.repository)
         env:
           MIGRATION_HIDE_SPAWN_EDIT_COMMENT: ${{ vars.MIGRATION_HIDE_SPAWN_EDIT_COMMENT }}
         run: dotnet artifacts/hide-spawn-menu/Content.MigrationHideSpawnMenu.dll sync
 
       - name: Check HideSpawnMenu categories
-        if: github.event_name == 'pull_request' && github.event.pull_request.draft == false
+        if: github.event_name == 'pull_request' && github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name != github.repository
         run: dotnet artifacts/hide-spawn-menu/Content.MigrationHideSpawnMenu.dll check
 
       - name: Commit and push changes
@@ -86,4 +86,17 @@ jobs:
           else
             git commit -m "Auto-sync HideSpawnMenu categories [skip ci]"
             git push origin HEAD:${{ github.ref_name }}
+          fi
+
+      - name: Commit and push changes (PR branch)
+        if: github.event_name == 'pull_request' && github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Resources/Prototypes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-sync HideSpawnMenu categories [skip ci]"
+            git push origin HEAD:${{ github.head_ref }}
           fi
