@@ -146,7 +146,7 @@ public sealed class EdgeConnectionSystem : EntitySystem
         if (quarterTurns == 0)
             return flags;
 
-        for (int i = 0; i < quarterTurns; i++)
+        for (var i = 0; i < quarterTurns; i++)
         {
             var rotated = EdgeConnectionFlags.None;
 

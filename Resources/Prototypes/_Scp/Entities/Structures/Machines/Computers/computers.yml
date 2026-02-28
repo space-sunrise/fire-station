@@ -773,7 +773,12 @@
   - type: Appearance
   - type: GenericVisualizer
     visuals:
-      enum.EdgeConnectionVisuals.ConnectionMask: *ComputerEdgeVisuals
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        computerLayerBody:
+          None: { state: broken, sprite: _Scp/Structures/Machines/computers.rsi }
+          West: { state: computer_right_broken, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East: { state: computer_left_broken, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East, West: { state: computer_middle_broken, sprite: _Scp/Structures/Machines/computers_big.rsi }
 
 - type: entity
   id: ScpComputerShipyard
