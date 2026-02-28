@@ -96,4 +96,4 @@
   description: A flatpack used for constructing a R&D computer.
   components:
   - type: Flatpack
-    entity: ComputerResearchAndDevelopment
+    entity: ScpComputerResearchAndDevelopment # Fire edit

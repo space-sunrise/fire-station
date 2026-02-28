@@ -1,0 +1,1021 @@
+- type: entity
+  id: ScpBaseComputer
+  abstract: true
+  components:
+  - type: Construction
+    graph: ScpComputer
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/computers.rsi
+  - type: AmbientOnPowered
+  - type: AmbientSound
+    volume: -3
+    enabled: false
+    sound:
+      path: /Audio/_Scp/Ambience/Machines/Consoles/ost1.ogg
+      params:
+        maxDistance: 2
+        variation: 0.25
+  - type: EdgeConnection
+    connectionKey: computers
+    allowedDirections: East, West
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
+      enum.EdgeConnectionVisuals.ConnectionMask: &ComputerEdgeVisuals
+        computerLayerBody:
+          None: { state: computer, sprite: _Scp/Structures/Machines/computers.rsi }
+          West: { state: computer_right, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East: { state: computer_left, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East, West: { state: computer_middle, sprite: _Scp/Structures/Machines/computers_big.rsi }
+        computerLayerKeyboard:
+          None: { state: generic_keyboard, sprite: _Scp/Structures/Machines/computers.rsi }
+          West: { state: generic_keyboard_right, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East: { state: generic_keyboard_left, sprite: _Scp/Structures/Machines/computers_big.rsi }
+          East, West: { state: generic_keyboard_middle, sprite: _Scp/Structures/Machines/computers_big.rsi }
+
+- type: entity
+  id: ScpComputer
+  parent:
+  - ScpBaseComputer
+  - BaseComputer
+  components:
+  - type: Sprite
+    layers: &ComputerGenericSpriteLayers
+    - map: [ "computerLayerBody" ]
+      state: computer
+    - map: [ "computerLayerKeyboard" ]
+      state: generic_keyboard
+    - map: [ "computerLayerScreen" ]
+      state: generic
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerAlert
+  parent:
+  - ScpBaseComputer
+  - ComputerAlert
+  components:
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+      enum.AtmosAlertsComputerVisuals.ComputerLayerScreen:
+        computerLayerScreen:
+          0: { state: alert-0 }
+          1: { state: alert-0 }
+          2: { state: alert-1 }
+          3: { state: alert-2 }
+          4: { state: alert-2 }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
+      enum.EdgeConnectionVisuals.ConnectionMask: *ComputerEdgeVisuals
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+    - map: ["computerLayerScreen"]
+      state: alert-0
+
+- type: entity
+  id: ScpComputerAtmosphereMonitoring
+  parent:
+  - ScpBaseComputer
+  - ComputerAtmosMonitoring
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: tank
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerEmergencyShuttle
+  parent:
+  - ScpBaseComputer
+  - ComputerEmergencyShuttle
+  components:
+  - type: Sprite
+    layers: *ComputerGenericSpriteLayers
+
+- type: entity
+  id: ScpComputerShuttle
+  parent:
+  - ScpBaseComputer
+  - ComputerShuttle
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: shuttle
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerShuttleChaosInsurgency
+  parent:
+  - ScpBaseComputer
+  - ComputerShuttleSyndie
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: syndishuttle
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerShuttleLogistics
+  parent:
+  - ScpBaseComputer
+  - ComputerShuttleCargo
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: shuttle
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerIFF
+  parent:
+  - ScpBaseComputer
+  - ComputerIFF
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      sprite: Structures/Shuttles/iff.rsi
+      state: helm
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerIFFChaosInsurgency
+  parent:
+  - ScpComputerIFF
+  - ComputerIFFSyndicate
+
+- type: entity
+  id: ScpComputerPowerMonitoring
+  parent:
+  - ScpBaseComputer
+  - ComputerPowerMonitoring
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: power_monitor
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerMedicalRecords
+  parent:
+  - ScpBaseComputer
+  - ComputerMedicalRecords
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: medcomp
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerCriminalRecords
+  parent:
+  - ScpBaseComputer
+  - ComputerCriminalRecords
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: explosive
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerFacilityRecords
+  parent:
+  - ScpBaseComputer
+  - ComputerStationRecords
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "computerLayerBody" ]
+      state: computer
+    - map: [ "computerLayerKeyboard" ]
+      state: generic_keyboard
+    - map: [ "computerLayerScreen" ]
+      state: facility_records
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerPersonnelMonitoring
+  parent:
+  - ScpBaseComputer
+  - ComputerCrewMonitoring
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: crew
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerResearchAndDevelopment
+  parent:
+  - ScpBaseComputer
+  - ComputerResearchAndDevelopment
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: rdcomp
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerAnalysisConsole
+  parent:
+  - ScpBaseComputer
+  - ComputerAnalysisConsole
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: artifact
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerId
+  parent:
+  - ScpBaseComputer
+  - ComputerId
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: id
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerBodyScanner
+  parent:
+  - ScpBaseComputer
+  - computerBodyScanner
+  components:
+  - type: Sprite
+    layers: *ComputerGenericSpriteLayers
+
+- type: entity
+  id: ScpComputerCommunication
+  parent:
+  - ScpBaseComputer
+  - ComputerComms
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerCommunicationChaosInsurgency
+  parent:
+  - ScpComputerCommunication
+  - SyndicateComputerComms
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm_syndie
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerCommunicationRegionalAdministration
+  parent:
+  - ScpComputerCommunication
+  - CentcommComputerComms
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm_logs
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerSolarControl
+  parent:
+  - ScpBaseComputer
+  - ComputerSolarControl
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: solar_screen
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerRadar
+  parent:
+  - ScpBaseComputer
+  - ComputerRadar
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: solar_screen
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerLogisticsOrders
+  parent:
+  - ScpBaseComputer
+  - ComputerCargoOrders
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerLogisticsOrdersEngineeringTechnicalService
+  parent:
+  - ScpComputerLogisticsOrders
+  - ComputerCargoOrdersEngineering
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request-eng
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerLogisticsOrdersMedicalService
+  parent:
+  - ScpComputerLogisticsOrders
+  - ComputerCargoOrdersMedical
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request-med
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerLogisticsOrdersScientificService
+  parent:
+  - ScpComputerLogisticsOrders
+  - ComputerCargoOrdersScience
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request-sci
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerLogisticsOrdersSecurity
+  parent:
+  - ScpComputerLogisticsOrders
+  - ComputerCargoOrdersSecurity
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request-sec
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerLogisticsOrdersFoodAndSanitationService
+  parent:
+  - ScpComputerLogisticsOrders
+  - ComputerCargoOrdersService
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request-srv
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerLogisticsBounty
+  parent:
+  - ScpBaseComputer
+  - ComputerCargoBounty
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: bounty
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerFundingAllocation
+  parent:
+  - ScpBaseComputer
+  - ComputerFundingAllocation
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: allocate # ALLOCATION !!!
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerCloningConsole
+  parent:
+  - ScpBaseComputer
+  - ComputerCloningConsole
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: dna
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerSurveillanceCameraMonitor
+  parent:
+  - ScpBaseComputer
+  - ComputerSurveillanceCameraMonitor
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: cameras
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerSurveillanceWirelessCameraMonitor
+  parent:
+  - ScpBaseComputer
+  - ComputerSurveillanceWirelessCameraMonitor
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: cameras
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerPalletConsole
+  parent:
+  - ScpBaseComputer
+  - ComputerPalletConsole
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: transfer
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerMassMedia
+  parent:
+  - ScpBaseComputer
+  - ComputerMassMedia
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: service
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerSensorMonitoring
+  parent:
+  - ScpBaseComputer
+  - ComputerSensorMonitoring
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: sensors
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerRoboticsControl
+  parent:
+  - ScpBaseComputer
+  - ComputerRoboticsControl
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: robot
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerFacilityAiUpload
+  parent:
+  - ScpBaseComputer
+  - StationAiUploadComputer
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "computerLayerBody" ]
+      state: computer
+    - map: [ "computerLayerKeyboard" ]
+      state: generic_keyboard
+    - map: [ "computerLayerScreen" ]
+      state: aiupload
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerFacilityAiFixer
+  parent:
+  - ScpBaseComputer
+  - StationAiFixerComputer
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "computerLayerBody" ]
+      state: computer
+    - map: [ "computerLayerKeyboard" ]
+      state: generic_keyboard
+    - map: [ "computerLayerScreen" ]
+      state: ai-fixer-empty
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+      enum.StationAiFixerConsoleVisuals.Key:
+        computerLayerScreen:
+          Repair0: { state: ai-fixer-progress-0 }
+          Repair1: { state: ai-fixer-progress-1 }
+          Repair2: { state: ai-fixer-progress-2 }
+          Repair3: { state: ai-fixer-progress-3 }
+          Purge0: { state: ai-fixer-purge-0 }
+          Purge1: { state: ai-fixer-purge-1 }
+          Purge2: { state: ai-fixer-purge-2 }
+          Purge3: { state: ai-fixer-purge-3 }
+          Empty: { state: ai-fixer-empty }
+          Occupied: { state: ai-fixer-full }
+          Rebooting: { state: ai-fixer-404 }
+          Dead: { state: ai-fixer-404 }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
+      enum.EdgeConnectionVisuals.ConnectionMask: *ComputerEdgeVisuals
+
+- type: entity
+  id: ScpComputerTelevision
+  parent:
+  - ScpComputerSurveillanceWirelessCameraMonitor
+  - ComputerTelevision
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: television
+    - map: ["computerLayerScreen"]
+      state: detective_television
+
+- type: entity
+  id: ScpComputerFrame
+  parent: ComputerFrame
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/parts.rsi
+  - type: Construction
+    graph: ScpComputer
+
+- type: entity
+  id: ScpComputerBroken
+  parent: ComputerBroken
+  components:
+  - type: Construction
+    graph: ScpComputer
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/computers.rsi
+  - type: EdgeConnection
+    connectionKey: computers
+    allowedDirections: East, West
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask: *ComputerEdgeVisuals
+
+- type: entity
+  id: ScpComputerShipyard
+  parent:
+  - ScpBaseComputer
+  - ComputerShipyard
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: request
+
+- type: entity
+  id: ScpComputerSaleConsole
+  parent:
+  - ScpComputerPalletConsole
+  - ComputerSaleConsole
+
+- type: entity
+  id: ScpComputerFacilityBankConsole
+  parent:
+  - ScpBaseComputer
+  - ComputeStationBankConsole
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: station_account
+
+- type: entity
+  id: ScpComputerLogisticsSalaryConsole
+  parent:
+  - ScpBaseComputer
+  - ComputeCargoSalaryConsole
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: salary
+
+- type: entity
+  id: ScpComputerLogisticsFinanceConsole
+  parent:
+  - ScpBaseComputer
+  - ComputerCargoFinanceConsole
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: financial_accounting
+
+- type: entity
+  id: ScpComputerBountySaleConsole
+  parent:
+  - ScpComputerPalletConsole
+  - ComputerBountySaleConsole
+
+- type: entity
+  id: ScpComputerCallMtfConsole
+  parent:
+  - ScpBaseComputer
+  - ComputerCallErtConsole
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm
+
+- type: entity
+  id: ScpComputerApproveMtfConsole
+  parent:
+  - ScpBaseComputer
+  - ComputerApproveErtConsole
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Machines/computers.rsi
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: comm
+
+- type: entity
+  id: ScpComputerFineRecords
+  parent:
+  - ScpBaseComputer
+  - ComputerFineRecords
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: forfeiture
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerContrabandSale
+  parent:
+  - ScpBaseComputer
+  - ComputerContrabandSale
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: contraband_sell
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerFoodAndSanitationServiceSaleConsole
+  parent:
+  - ScpComputerSaleConsole
+  - ComputerServiceSaleConsole
+
+- type: entity
+  id: ScpComputerSecuritySaleConsole
+  parent:
+  - ScpComputerSaleConsole
+  - ComputerSecuritySaleConsole
+
+- type: entity
+  id: ScpComputerMedicalServiceSaleConsole
+  parent:
+  - ScpComputerSaleConsole
+  - ComputerMedicalSaleConsole
+
+- type: entity
+  id: ScpComputerScientificServiceSaleConsole
+  parent:
+  - ScpComputerSaleConsole
+  - ComputerScienceSaleConsole
+
+- type: entity
+  id: ScpComputerShuttleRegionalAdministration
+  parent:
+  - ScpBaseComputer
+  - ComputerShuttleCentComm
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: eris_control
+
+- type: entity
+  id: ScpComputerShuttleSecurity
+  parent:
+  - ScpBaseComputer
+  - ComputerShuttleSecurity
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: eris_control
+
+- type: entity
+  id: ScpComputerPlayerConsole
+  parent:
+  - ScpBaseComputer
+  - CommandConsoleComputer
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "computerLayerBody" ]
+      state: computer
+    - map: [ "computerLayerKeyboard" ]
+      state: generic_keyboard
+    - map: [ "computerLayerScreen" ]
+      state: command
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerCodes
+  parent:
+  - ScpBaseComputer
+  - CodeConsole
+  components:
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: generic
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
+- type: entity
+  id: ScpComputerIcarus
+  parent:
+  - ScpBaseComputer
+  - ComputerIcarus
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "computerLayerBody" ]
+      state: computer
+    - map: [ "computerLayerKeyboard" ]
+      state: generic_keyboard
+    - map: [ "computerLayerScreen" ]
+      state: icarus
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+
