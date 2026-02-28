@@ -28,10 +28,10 @@ namespace Content.IntegrationTests.Tests._Scp;
 [TestFixture]
 public sealed class ScpRoundstartJobRegressionTest
 {
-    private static readonly ProtoId<JobPrototype> RoleTimerAssistant = "TRoleTimerAssistant";
-    private static readonly ProtoId<JobPrototype> RoleTimerEngineer = "TRoleTimerEngineer";
-    private static readonly ProtoId<JobPrototype> ScpTestAssistant = "ScpTestAssistant";
-    private static readonly ProtoId<JobPrototype> ScpTestCaptain = "ScpTestCaptain";
+    private const string RoleTimerAssistant = "TRoleTimerAssistant";
+    private const string RoleTimerEngineer = "TRoleTimerEngineer";
+    private const string ScpTestAssistant = "ScpTestAssistant";
+    private const string ScpTestCaptain = "ScpTestCaptain";
 
     private const string RoleTimerMapId = "ScpJobRoleTimerTestMap";
     private const string StationMapNoDockId = "ScpJobStationNoDockMap";
@@ -137,7 +137,7 @@ public sealed class ScpRoundstartJobRegressionTest
             DummyTicker = false,
             Connected = true,
             InLobby = true,
-            Fresh = true
+            Fresh = true,
         });
 
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, RoleTimerMapId);
@@ -149,7 +149,6 @@ public sealed class ScpRoundstartJobRegressionTest
         await pair.SetJobPriorities((RoleTimerAssistant, JobPriority.Medium), (RoleTimerEngineer, JobPriority.High));
         ticker.ToggleReadyAll(true);
         await pair.Server.WaitPost(() => ticker.StartRound());
-        await pair.RunTicksSync(10);
 
         AssertJob(pair, RoleTimerEngineer);
 
@@ -171,7 +170,7 @@ public sealed class ScpRoundstartJobRegressionTest
             DummyTicker = false,
             Connected = true,
             InLobby = true,
-            Fresh = true
+            Fresh = true,
         });
 
         pair.Server.CfgMan.SetCVar(CCVars.GameMap, RoleTimerMapId);
@@ -183,13 +182,11 @@ public sealed class ScpRoundstartJobRegressionTest
         await pair.SetJobPriorities((RoleTimerAssistant, JobPriority.Low), (RoleTimerEngineer, JobPriority.High));
 
         await pair.Server.WaitPost(() => ticker.StartRound(true));
-        await pair.RunTicksSync(10);
 
         await pair.Server.WaitPost(() =>
         {
-            var station = EntityUid.Invalid;
             var stationQuery = pair.Server.EntMan.EntityQueryEnumerator<StationJobsComponent>();
-            Assert.That(stationQuery.MoveNext(out station, out _), Is.True);
+            Assert.That(stationQuery.MoveNext(out var station, out _), Is.True);
 
             var session = pair.Server.PlayerMan.SessionsDict[pair.Client.User!.Value];
             var spawnPlayer = typeof(GameTicker).GetMethod(
@@ -200,10 +197,9 @@ public sealed class ScpRoundstartJobRegressionTest
                 null);
 
             Assert.That(spawnPlayer, Is.Not.Null);
-            spawnPlayer!.Invoke(ticker, [session, station, RoleTimerAssistant.Id, false, true, true]);
+            spawnPlayer!.Invoke(ticker, [session, station, RoleTimerAssistant, false, true, true]);
         });
 
-        await pair.RunTicksSync(10);
         AssertJob(pair, RoleTimerAssistant);
 
         await pair.Server.WaitPost(() => ticker.RestartRound());
@@ -220,7 +216,7 @@ public sealed class ScpRoundstartJobRegressionTest
     {
         await using var pair = await PoolManager.GetServerClient(new PoolSettings
         {
-            Fresh = true
+            Fresh = true,
         });
         var server = pair.Server;
 
@@ -243,11 +239,11 @@ public sealed class ScpRoundstartJobRegressionTest
             var priorities = new Dictionary<ProtoId<JobPrototype>, JobPriority>
             {
                 [ScpTestCaptain] = JobPriority.High,
-                [ScpTestAssistant] = JobPriority.Medium
+                [ScpTestAssistant] = JobPriority.Medium,
             };
 
-            var picked = stationJobs.PickBestAvailableJobWithPriority(station, priorities, false, null);
-            Assert.That(picked, Is.EqualTo(ScpTestCaptain.Id));
+            var picked = stationJobs.PickBestAvailableJobWithPriority(station, priorities, false);
+            Assert.That(picked, Is.EqualTo(ScpTestCaptain));
         });
 
         await pair.CleanReturnAsync();

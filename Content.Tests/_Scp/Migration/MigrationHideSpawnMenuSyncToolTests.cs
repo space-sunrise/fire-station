@@ -40,7 +40,7 @@ public sealed class MigrationHideSpawnMenuSyncToolTests
 
         var exitCode = MigrationHideSpawnMenuSyncTool.Run([ "sync" ], repoRoot, EditComment);
 
-        Assert.That(exitCode, Is.Zero);
+        Assert.That(exitCode, Is.EqualTo(MigrationHideSpawnMenuSyncTool.SuccessExitCode));
         var updated = ReadPrototype(repoRoot);
         Assert.That(updated, Does.Contain("categories: [ Debug, HideSpawnMenu ] # Unit test edit"));
     }
@@ -59,7 +59,7 @@ public sealed class MigrationHideSpawnMenuSyncToolTests
 
         var exitCode = MigrationHideSpawnMenuSyncTool.Run([ "sync" ], repoRoot, EditComment);
 
-        Assert.That(exitCode, Is.Zero);
+        Assert.That(exitCode, Is.EqualTo(MigrationHideSpawnMenuSyncTool.SuccessExitCode));
         var updated = ReadPrototype(repoRoot);
         Assert.That(updated, Does.Contain("  - Debug"));
         Assert.That(updated, Does.Contain("  - HideSpawnMenu # Unit test edit"));
@@ -79,7 +79,7 @@ public sealed class MigrationHideSpawnMenuSyncToolTests
 
         var exitCode = MigrationHideSpawnMenuSyncTool.Run([ "sync" ], repoRoot, EditComment);
 
-        Assert.That(exitCode, Is.Zero);
+        Assert.That(exitCode, Is.EqualTo(MigrationHideSpawnMenuSyncTool.SuccessExitCode));
         var updated = ReadPrototype(repoRoot);
         Assert.That(updated, Does.Contain("  categories: [ HideSpawnMenu ] # Unit test edit"));
     }
@@ -97,7 +97,7 @@ public sealed class MigrationHideSpawnMenuSyncToolTests
 
         var exitCode = MigrationHideSpawnMenuSyncTool.Run([ "sync" ], repoRoot, EditComment);
 
-        Assert.That(exitCode, Is.Zero);
+        Assert.That(exitCode, Is.EqualTo(MigrationHideSpawnMenuSyncTool.SuccessExitCode));
         var updated = ReadPrototype(repoRoot);
         Assert.That(updated, Does.Not.Contain("HideSpawnMenu"));
     }
@@ -115,7 +115,7 @@ public sealed class MigrationHideSpawnMenuSyncToolTests
 
         var exitCode = MigrationHideSpawnMenuSyncTool.Run([ "sync" ], repoRoot, EditComment);
 
-        Assert.That(exitCode, Is.Zero);
+        Assert.That(exitCode, Is.EqualTo(MigrationHideSpawnMenuSyncTool.SuccessExitCode));
         var updated = ReadPrototype(repoRoot);
         Assert.That(CountOccurrences(updated, "HideSpawnMenu"), Is.EqualTo(1));
     }
@@ -130,8 +130,8 @@ public sealed class MigrationHideSpawnMenuSyncToolTests
   id: OldEntity
 ");
 
-        var exitCode = MigrationHideSpawnMenuSyncTool.Run([ "sync" ], repoRoot, EditComment);
-        Assert.That(exitCode, Is.EqualTo(1));
+        var exitCode = MigrationHideSpawnMenuSyncTool.Run([ "check" ], repoRoot, EditComment);
+        Assert.That(exitCode, Is.EqualTo(MigrationHideSpawnMenuSyncTool.CheckOutOfSyncExitCode));
     }
 
     [Test]
@@ -149,7 +149,7 @@ public sealed class MigrationHideSpawnMenuSyncToolTests
 ");
 
             var exitCode = MigrationHideSpawnMenuSyncTool.Run([ "sync" ], repoRoot, null);
-            Assert.That(exitCode, Is.Zero);
+            Assert.That(exitCode, Is.EqualTo(MigrationHideSpawnMenuSyncTool.SuccessExitCode));
 
             var updated = ReadPrototype(repoRoot);
             Assert.That(updated, Does.Contain("# Fire edit"));
@@ -175,7 +175,7 @@ public sealed class MigrationHideSpawnMenuSyncToolTests
 ");
 
             var exitCode = MigrationHideSpawnMenuSyncTool.Run([ "sync" ], repoRoot, null);
-            Assert.That(exitCode, Is.Zero);
+            Assert.That(exitCode, Is.EqualTo(MigrationHideSpawnMenuSyncTool.SuccessExitCode));
 
             var updated = ReadPrototype(repoRoot);
             Assert.That(updated, Does.Contain("# CI comment"));
@@ -199,8 +199,8 @@ public sealed class MigrationHideSpawnMenuSyncToolTests
         Directory.CreateDirectory(nestedDirectory);
 
         var exitCode = MigrationHideSpawnMenuSyncTool.Run([ "sync" ], nestedDirectory, EditComment);
+        Assert.That(exitCode, Is.EqualTo(MigrationHideSpawnMenuSyncTool.SuccessExitCode));
 
-        Assert.That(exitCode, Is.EqualTo(0));
         var updated = ReadPrototype(repoRoot);
         Assert.That(updated, Does.Contain("categories: [ HideSpawnMenu ] # Unit test edit"));
     }
