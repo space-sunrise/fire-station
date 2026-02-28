@@ -1,0 +1,77 @@
+﻿- type: tile
+  id: ScpFloorBaseWood
+  parent: ScpFloorBase
+  abstract: true
+  variants: 4
+  deconstructTools: [ Screwing ]
+  placementVariants:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+
+- type: tile
+  id: ScpFloorWood
+  parent: ScpFloorBaseWood
+  name: scp-tiles-wood
+  sprite: /Textures/_Scp/Tiles/Wood/wood.png
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: FloorTileItemWood
+
+- type: tile
+  id: ScpFloorWoodLarge
+  parent: ScpFloorBaseWood
+  name: scp-tiles-wood-large
+  sprite: /Textures/_Scp/Tiles/Wood/wood_large.png
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: FloorTileItemWoodLarge
+
+- type: tile
+  id: ScpFloorWoodPattern
+  parent: ScpFloorBaseWood
+  name: scp-tiles-wood-pattern
+  sprite: /Textures/_Scp/Tiles/Wood/wood_pattern.png
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: FloorTileItemWoodPattern
+
+- type: tile
+  id: ScpFloorWoodBroken
+  parent: ScpFloorBaseWood
+  name: scp-tiles-wood-broken
+  sprite: /Textures/_Scp/Tiles/Wood/wood_broken.png
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: MaterialWoodPlank1
+
+- type: tile
+  id: ScpFloorWoodLargeBroken
+  parent: ScpFloorBaseWood
+  name: scp-tiles-wood-large-broken
+  sprite: /Textures/_Scp/Tiles/Wood/wood_large_broken.png
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: MaterialWoodPlank1
+
+- type: tile
+  id: ScpFloorWoodPatternBroken
+  parent: ScpFloorBaseWood
+  name: scp-tiles-wood-pattern-broken
+  sprite: /Textures/_Scp/Tiles/Wood/wood_pattern_broken.png
+  footstepSounds:
+    collection: FootstepWood
+  barestepSounds:
+    collection: BarestepWood
+  itemDrop: MaterialWoodPlank1
