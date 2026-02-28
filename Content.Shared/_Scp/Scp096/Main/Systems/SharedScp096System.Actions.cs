@@ -82,9 +82,9 @@ public abstract partial class SharedScp096System
         if (!ent.Comp.FaceEntity.HasValue)
             return;
 
-        if (_scpMask.HasScpMask(ent))
+        if (_scpMask.TryGetScpMask(ent, out var mask))
         {
-            var message = Loc.GetString("scp096-mask-prevent-skin-rip");
+            var message = Loc.GetString("scp096-mask-prevent-skin-rip", ("mask", Name(mask.Value)));
             _popup.PopupClient(message, ent, ent);
 
             return;

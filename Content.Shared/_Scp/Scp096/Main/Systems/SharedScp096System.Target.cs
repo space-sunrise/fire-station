@@ -97,16 +97,10 @@ public abstract partial class SharedScp096System
         // Если не получилось стать целью - убираем компонент
         if (!becameTarget)
         {
-            // Так как при убирании компонента у скромника уменьшается количество целей
-            // то нужно сначала их увеличить, чтобы не вызвать десинк
-            var query2 = EntityQueryEnumerator<Scp096Component>();
-            while (query2.MoveNext(out var uid, out var scp096))
-            {
-                scp096.TargetsCount++;
-                Dirty(uid, scp096);
-            }
-
+            ent.Comp.DecreaseTargetCountOnShutdown = false;
+            Dirty(ent);
             RemComp<Scp096TargetComponent>(ent);
+
             return;
         }
 
@@ -118,11 +112,14 @@ public abstract partial class SharedScp096System
         if (_timing.ApplyingState || IsClientSide(ent))
             return;
 
-        var query = EntityQueryEnumerator<ActiveScp096RageComponent, Scp096Component>();
-        while (query.MoveNext(out var uid, out _, out var scp096))
+        var query = EntityQueryEnumerator<Scp096Component>();
+        while (query.MoveNext(out var uid, out var scp096))
         {
-            scp096.TargetsCount--;
-            Dirty(uid, scp096);
+            if (ent.Comp.DecreaseTargetCountOnShutdown)
+            {
+                scp096.TargetsCount--;
+                Dirty(uid, scp096);
+            }
 
             if (scp096.TargetsCount <= 0)
                 RemCompDeferred<ActiveScp096RageComponent>(uid);

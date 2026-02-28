@@ -16,14 +16,13 @@ void fragment()
     // mediump надеюсь достаточно, чтобы не создавались артефакты
 
     mediump vec4 color = texture(SCREEN_TEXTURE, UV);
-
-    mediump vec2 uv = FRAGCOORD.xy / 1000.0;
+    mediump vec2 uv = UV * 10.1;
 
     mediump float timeFactor = TIME * 10.0;
     mediump float x = (uv.x + 1.0) * (uv.y + 2.0) * timeFactor;
 
     mediump float modX = mod(x, 123.0) + 1.0;
-    mediump float modY = mod(x, 123.0) + 1.0;
+    mediump float modY = mod(x, 312.0) + 1.0;
 
     mediump float grainValue = mod(modX * modY, 0.01) - 0.005;
 

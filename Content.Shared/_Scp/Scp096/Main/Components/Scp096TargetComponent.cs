@@ -37,4 +37,12 @@ public sealed partial class Scp096TargetComponent : Component
     /// </summary>
     [DataField]
     public SoundSpecifier SeenSound = new SoundPathSpecifier("/Audio/_Scp/Scp096/seen.ogg", AudioParams.Default.WithVolume(3f));
+
+    /// <summary>
+    /// Будет ли уменьшаться количество целей у скромника при shutdown данного компонента.
+    /// Нужно, чтобы учесть случаи, когда компонент выдался, но скромник не может сменить состояние.
+    /// Компонент должен быть удален без изменения количества целей
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool DecreaseTargetCountOnShutdown = true;
 }
