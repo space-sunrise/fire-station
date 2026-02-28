@@ -1,6 +1,7 @@
 - type: entity
   parent: ComputerSurveillanceWirelessCameraMonitor
   id: ComputerTelevision
+  categories: [ HideSpawnMenu ] # Fire edit
   name: wooden television
   description: Finally, some decent reception around here...
   components:
