@@ -27,8 +27,9 @@ public static class MigrationHideSpawnMenuSyncTool
     private const string PrototypesRelativePath = "Resources/Prototypes";
     private const string CommandPrefix = "hide-spawn-menu";
 
-    private const int CheckOutOfSyncExitCode = 1;
-    private const int TechnicalFailureExitCode = 2;
+    public const int SuccessExitCode = 0;
+    public const int CheckOutOfSyncExitCode = 1;
+    public const int TechnicalFailureExitCode = 2;
 
     /// <summary>
     /// Runs the tool from the current working directory.
@@ -57,17 +58,22 @@ public static class MigrationHideSpawnMenuSyncTool
             stopwatch.Stop();
             PrintSummary(mode, summary, stopwatch.Elapsed);
 
-            if (mode == MigrationHideSpawnMenuMode.Check && summary.Violations.Count > 0)
+            switch (mode)
             {
-                foreach (var violation in summary.Violations)
-                {
-                    Console.WriteLine(violation);
-                }
+                case MigrationHideSpawnMenuMode.Check when summary.Violations.Count > 0:
+                    foreach (var violation in summary.Violations)
+                    {
+                        Console.WriteLine(violation);
+                    }
 
-                return CheckOutOfSyncExitCode;
+                    return CheckOutOfSyncExitCode;
+
+                case MigrationHideSpawnMenuMode.Sync:
+                    return SuccessExitCode;
+
+                default:
+                    return SuccessExitCode;
             }
-
-            return 0;
         }
         catch (Exception e)
         {

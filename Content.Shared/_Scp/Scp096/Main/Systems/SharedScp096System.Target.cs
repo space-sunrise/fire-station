@@ -78,6 +78,9 @@ public abstract partial class SharedScp096System
 
     protected virtual void OnTargetStartup(Entity<Scp096TargetComponent> ent, ref ComponentStartup args)
     {
+        if (_timing.ApplyingState || IsClientSide(ent))
+            return;
+
         var becameTarget = false;
 
         var query = EntityQueryEnumerator<Scp096Component>();
@@ -91,10 +94,15 @@ public abstract partial class SharedScp096System
             becameTarget = true;
         }
 
-        // TODO: Что-то сделать с компонентом таргета у цели и учесть, что при удалении компонента
-        // количество таргетов уменьшится -> будет десинхронизация с реальным количеством таргетов
+        // Если не получилось стать целью - убираем компонент
         if (!becameTarget)
+        {
+            ent.Comp.DecreaseTargetCountOnShutdown = false;
+            Dirty(ent);
+            RemComp<Scp096TargetComponent>(ent);
+
             return;
+        }
 
         _fear.TrySetFearLevel(ent.Owner, FearState.Terror);
     }
@@ -104,11 +112,14 @@ public abstract partial class SharedScp096System
         if (_timing.ApplyingState || IsClientSide(ent))
             return;
 
-        var query = EntityQueryEnumerator<ActiveScp096RageComponent, Scp096Component>();
-        while (query.MoveNext(out var uid, out _, out var scp096))
+        var query = EntityQueryEnumerator<Scp096Component>();
+        while (query.MoveNext(out var uid, out var scp096))
         {
-            scp096.TargetsCount--;
-            Dirty(uid, scp096);
+            if (ent.Comp.DecreaseTargetCountOnShutdown)
+            {
+                scp096.TargetsCount--;
+                Dirty(uid, scp096);
+            }
 
             if (scp096.TargetsCount <= 0)
                 RemCompDeferred<ActiveScp096RageComponent>(uid);

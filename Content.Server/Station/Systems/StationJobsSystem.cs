@@ -421,7 +421,6 @@ public sealed partial class StationJobsSystem : EntitySystem
     /// <returns>The selected job, if any.</returns>
     public ProtoId<JobPrototype>? PickBestAvailableJobWithPriority(EntityUid station, IReadOnlyDictionary<ProtoId<JobPrototype>, JobPriority> jobPriorities, bool pickOverflows, IReadOnlySet<ProtoId<JobPrototype>>? disallowedJobs = null)
     {
-        Logger.Info("PickBestAvailableJobWithPriority");
         if (station == EntityUid.Invalid)
             return null;
 
@@ -431,8 +430,8 @@ public sealed partial class StationJobsSystem : EntitySystem
             var filtered = jobPriorities
                 .Where(p =>
                             p.Value == priority
-                            && disallowedJobs != null
-                            && !disallowedJobs.Contains(p.Key)
+                            // Fire edit - null means no explicit disallowed set
+                            && (disallowedJobs == null || !disallowedJobs.Contains(p.Key))
                             && available.Contains(p.Key))
                 .Select(p => p.Key)
                 .ToList();

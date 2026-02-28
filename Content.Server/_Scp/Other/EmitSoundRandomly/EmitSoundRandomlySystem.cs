@@ -1,13 +1,13 @@
-﻿using Content.Shared._Sunrise.Random;
-using Robust.Shared.Audio.Systems;
+﻿using Robust.Server.Audio;
+using Robust.Shared.Random;
 using Robust.Shared.Timing;
 
-namespace Content.Shared._Scp.Other.EmitSoundRandomly;
+namespace Content.Server._Scp.Other.EmitSoundRandomly;
 
 public sealed class EmitSoundRandomlySystem : EntitySystem
 {
-    [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly RandomPredictedSystem _random = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
@@ -34,10 +34,10 @@ public sealed class EmitSoundRandomlySystem : EntitySystem
                 continue;
 
             var ev = new BeforeRandomlyEmittingSoundEvent();
-            RaiseLocalEvent(uid, ev);
+            RaiseLocalEvent(uid, ref ev);
 
             if (!ev.Cancelled)
-                _audio.PlayPredicted(component.Sound, uid, uid);
+                _audio.PlayPvs(component.Sound, uid);
 
             SetNextSoundTime((uid, component));
         }
@@ -45,13 +45,16 @@ public sealed class EmitSoundRandomlySystem : EntitySystem
 
     private void SetNextSoundTime(Entity<EmitSoundRandomlyComponent> ent)
     {
-        var variance = _random.NextFloatForEntity(ent, 0f, (float)ent.Comp.CooldownVariation.TotalSeconds);
-        var cooldown = ent.Comp.SoundCooldown + TimeSpan.FromSeconds(variance);
+        var variance = _random.Next(TimeSpan.Zero, ent.Comp.CooldownVariation);
+        var cooldown = ent.Comp.SoundCooldown + variance;
 
         ent.Comp.NextSoundTime = _timing.CurTime + cooldown;
-        Dirty(ent);
     }
 }
 
 
-public sealed class BeforeRandomlyEmittingSoundEvent : CancellableEntityEventArgs;
+[ByRefEvent]
+public record struct BeforeRandomlyEmittingSoundEvent()
+{
+    public bool Cancelled = false;
+}
