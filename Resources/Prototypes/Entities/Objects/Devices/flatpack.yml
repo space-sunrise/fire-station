@@ -250,7 +250,7 @@
   description: A flatpack used for constructing a crew monitoring console.
   components:
   - type: Flatpack
-    entity: ComputerCrewMonitoring
+    entity: ScpComputerPersonnelMonitoring # Fire edit
 
 - type: entity
   parent: BaseFlatpack

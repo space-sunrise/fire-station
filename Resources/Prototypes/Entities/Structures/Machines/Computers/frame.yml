@@ -45,6 +45,7 @@
 
 - type: entity
   id: ComputerFrame
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseStructureComputer
   name: computer frame
   description: A computer under construction.
@@ -68,6 +69,7 @@
 - type: entity
   parent: BaseStructureComputer
   id: ComputerBroken
+  categories: [ HideSpawnMenu ] # Fire edit
   name: broken computer
   description: This computer has seen better days.
   components:
