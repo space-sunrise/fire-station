@@ -59,3 +59,75 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
+
+- type: construction
+  id: ScpChair
+  graph: ScpSeat
+  startNode: start
+  targetNode: chair
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: ScpChairOfficeLight
+  graph: ScpSeat
+  startNode: start
+  targetNode: chairOffice
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: ScpChairOfficeDark
+  graph: ScpSeat
+  startNode: start
+  targetNode: chairOfficeDark
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: ScpChairWood
+  graph: ScpSeat
+  startNode: start
+  targetNode: chairWood
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: ScpWoodenBench
+  graph: ScpSeat
+  startNode: start
+  targetNode: chairWoodBench
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  id: ScpChairRitual
+  graph: ScpRitualSeat
+  startNode: start
+  targetNode: chairRitual
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked

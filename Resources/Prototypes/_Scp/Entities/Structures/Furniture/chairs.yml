@@ -1,11 +1,110 @@
-﻿- type: entity
-  id: ChairWoodWings
+- type: entity
+  id: ScpChair
+  parent: Chair
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi
+    state: chair
+  - type: Construction
+    graph: ScpSeat
+    node: chair
+
+- type: entity
+  id: ScpChairGreyscale
+  parent: ChairGreyscale
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi
+    state: chair-greyscale
+  - type: Construction
+    graph: ScpSeat
+    node: chair
+
+- type: entity
+  id: ScpChairOfficeLight
+  parent: ChairOfficeLight
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi
+    state: office-white
+  - type: Construction
+    graph: ScpSeat
+    node: chairOffice
+
+- type: entity
+  id: ScpChairOfficeDark
+  parent: ChairOfficeDark
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi
+    state: office-dark
+  - type: Construction
+    graph: ScpSeat
+    node: chairOfficeDark
+
+- type: entity
+  id: ScpChairOfficeGrey
+  parent: ChairOfficeGrey
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi
+    state: office-grey
+  - type: Construction
+    graph: ScpSeat
+    node: chairOfficeDark
+
+- type: entity
+  id: ScpChairWood
   parent: ChairWood
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi
+    state: wooden
+  - type: Construction
+    graph: ScpSeat
+    node: chairWood
+
+- type: entity
+  id: ScpWoodenBench
+  parent: WoodenBench
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi
+    state: wooden-bench
+  - type: Construction
+    graph: ScpSeat
+    node: chairWoodBench
+
+- type: entity
+  id: ScpChairRitual
+  parent: ChairRitual
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi
+    state: ritual
+  - type: Construction
+    graph: ScpRitualSeat
+    node: chairRitual
+
+- type: entity
+  id: ScpChairCursed
+  parent: ChairCursed
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/chairs.rsi
+    state: cursed
+  - type: Construction
+    graph: ScpRitualSeat
+    node: chairCursed
+
+- type: entity
+  id: ChairWoodWings
+  parent: ScpChairWood
   name: wooden chair with wings
   components:
   - type: Sprite
     sprite: _Scp/Structures/Furniture/chairs.rsi
     state: wooden-wings
   - type: Construction
-    graph: Seat
+    graph: ScpSeat
     node: chairWoodWings

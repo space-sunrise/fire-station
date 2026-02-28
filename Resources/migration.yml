@@ -2636,4 +2636,15 @@ ComputerIcarus: ScpComputerIcarus
 BaseComputer: ScpComputer
 BaseComputerAiAccess: ScpComputer
 
+# Chair replacements
+Chair: ScpChair
+ChairGreyscale: ScpChairGreyscale
+ChairOfficeLight: ScpChairOfficeLight
+ChairOfficeDark: ScpChairOfficeDark
+ChairOfficeGrey: ScpChairOfficeGrey
+ChairWood: ScpChairWood
+WoodenBench: ScpWoodenBench
+ChairRitual: ScpChairRitual
+ChairCursed: ScpChairCursed
+
 # Fire added end

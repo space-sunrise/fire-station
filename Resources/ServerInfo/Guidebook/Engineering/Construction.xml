@@ -5,7 +5,7 @@
     <GuideEntityEmbed Entity="Bed" Caption=""/>
     <GuideEntityEmbed Entity="TableReinforced" Caption=""/>
     <GuideEntityEmbed Entity="WeaponImprovisedPneumaticCannon" Caption=""/>
-    <GuideEntityEmbed Entity="Chair" Caption=""/>
+    <GuideEntityEmbed Entity="ScpChair" Caption=""/>
   </Box>
 
 
