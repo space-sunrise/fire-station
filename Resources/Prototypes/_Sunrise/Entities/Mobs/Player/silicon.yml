@@ -325,6 +325,7 @@
 
 - type: entity
   id: SyndicateCircuitBoard
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseElectronics
   name: law board (Syndicate)
   description: An electronics board containing the Sindicate lawset.

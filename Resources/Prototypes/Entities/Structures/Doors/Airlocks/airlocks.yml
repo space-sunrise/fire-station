@@ -203,6 +203,7 @@
 - type: entity
   parent: AirlockUnlitVisibleFalse # Sunrise-edit
   id: AirlockHatchSyndicate
+  categories: [ HideSpawnMenu ] # Fire edit
   name: airtight hatch
   suffix: Syndicate
   components:

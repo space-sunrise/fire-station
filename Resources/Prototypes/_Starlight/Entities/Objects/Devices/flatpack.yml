@@ -56,6 +56,7 @@
 - type: entity
   parent: [BaseStructureFlatpack, BaseEngineeringContraband]
   id: SupermatterFlatpack
+  categories: [ HideSpawnMenu ] # Fire edit
   name: supermatter flatpack
   description: A flatpack used for constructing a Supermatter Crystal.
   components:

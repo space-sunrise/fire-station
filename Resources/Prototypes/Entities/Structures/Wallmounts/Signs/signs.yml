@@ -37,6 +37,7 @@
 - type: entity
   parent: BaseSignDirectional
   id: SignDirectionalBridge
+  categories: [ HideSpawnMenu ] # Fire edit
   name: bridge sign
   description: A direction sign, pointing out which way the Bridge is.
   components:
@@ -144,6 +145,7 @@
 - type: entity
   parent: BaseSignDirectional
   id: SignDirectionalHop
+  categories: [ HideSpawnMenu ] # Fire edit
   name: hop sign
   description: A direction sign, pointing out which way Head of Personnel's office is.
   components:
@@ -207,6 +209,7 @@
 - type: entity
   parent: BaseSignDirectional
   id: SignDirectionalSci
+  categories: [ HideSpawnMenu ] # Fire edit
   name: science sign
   description: A direction sign, pointing out which way the Science department is.
   components:
@@ -234,6 +237,7 @@
 - type: entity
   parent: BaseSignDirectional
   id: SignDirectionalSupply
+  categories: [ HideSpawnMenu ] # Fire edit
   name: supply sign
   description: A direction sign, pointing to some supplies.
   components:
@@ -263,6 +267,7 @@
 - type: entity
   parent: BaseSign
   id: SignAi
+  categories: [ HideSpawnMenu ] # Fire edit
   name: ai sign
   description: A sign, indicating an AI is present.
   components:
@@ -415,6 +420,7 @@
 - type: entity
   parent: BaseSign
   id: SignBridge
+  categories: [ HideSpawnMenu ] # Fire edit
   name: bridge sign
   description: A sign indicating the bridge.
   components:
@@ -605,6 +611,7 @@
 - type: entity
   parent: BaseSign
   id: SignHead
+  categories: [ HideSpawnMenu ] # Fire edit
   name: head sign
   description: An official sign indicating the dwellings of a Nanotrasen-certified head of department.
   components:

@@ -32,6 +32,7 @@
 - type: entity
   parent: [ EncryptionKey, BaseCargoContraband ]
   id: EncryptionKeyCargo
+  categories: [ HideSpawnMenu ] # Fire edit
   name: cargo encryption key
   description: An encryption key used by supply employees.
   components:
@@ -50,6 +51,7 @@
 - type: entity
   parent: [ EncryptionKey, BaseCentcommContraband ]
   id: EncryptionKeyCentCom
+  categories: [ HideSpawnMenu ] # Fire edit
   name: central command encryption key
   description: An encryption key used by captain's bosses.
   components:
@@ -65,6 +67,7 @@
 - type: entity
   parent: [ EncryptionKey, BaseCentcommCommandContraband ]
   id: EncryptionKeyStationMaster
+  categories: [ HideSpawnMenu ] # Fire edit
   name: station master encryption key
   description: An encryption key used by station's bosses.
   components:
@@ -87,6 +90,7 @@
 - type: entity
   parent: [ EncryptionKey, BaseCommandContraband ]
   id: EncryptionKeyCommand
+  categories: [ HideSpawnMenu ] # Fire edit
   name: command encryption key
   description: An encryption key used by crew's bosses.
   components:
@@ -105,6 +109,7 @@
 - type: entity
   parent: [ EncryptionKey, BaseEngineeringContraband ]
   id: EncryptionKeyEngineering
+  categories: [ HideSpawnMenu ] # Fire edit
   name: engineering encryption key
   description: An encryption key used by the engineers.
   components:
@@ -123,6 +128,7 @@
 - type: entity
   parent: [ EncryptionKey, BaseMedicalContraband ]
   id: EncryptionKeyMedical
+  categories: [ HideSpawnMenu ] # Fire edit
   name: medical encryption key
   description: An encryption key used by those who save lives.
   components:
@@ -157,6 +163,7 @@
 - type: entity
   parent: [ EncryptionKey, BaseScienceContraband ]
   id: EncryptionKeyScience
+  categories: [ HideSpawnMenu ] # Fire edit
   name: science encryption key
   description: An encryption key used by scientists. Maybe it is plasmaproof?
   components:
@@ -208,6 +215,7 @@
 - type: entity
   parent: [ EncryptionKey, BaseCivilianContraband ]
   id: EncryptionKeyService
+  categories: [ HideSpawnMenu ] # Fire edit
   name: service encryption key
   description: An encryption key used by the service staff, tasked with keeping the station full, happy and clean.
   components:
