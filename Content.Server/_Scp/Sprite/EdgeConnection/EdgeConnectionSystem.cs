@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Scp.Sprite.EdgeConnection;
+using Robust.Server.GameObjects;
 using Robust.Shared.Map.Components;
 
 namespace Content.Server._Scp.Sprite.EdgeConnection;
@@ -9,8 +10,12 @@ namespace Content.Server._Scp.Sprite.EdgeConnection;
 /// </summary>
 public sealed class EdgeConnectionSystem : EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly SharedMapSystem _map = default!;
+    [Dependency] private readonly AppearanceSystem _appearance = default!;
+    [Dependency] private readonly MapSystem _map = default!;
+
+    private const float MinimumMovementDistance = 0.005f;
+
+    private EntityQuery<EdgeConnectionComponent> _edgeQuery;
 
     public override void Initialize()
     {
@@ -19,8 +24,9 @@ public sealed class EdgeConnectionSystem : EntitySystem
         SubscribeLocalEvent<EdgeConnectionComponent, AnchorStateChangedEvent>(OnAnchorChanged);
         SubscribeLocalEvent<EdgeConnectionComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<EdgeConnectionComponent, ComponentInit>(OnInit);
-        SubscribeLocalEvent<EdgeConnectionComponent, EntityTerminatingEvent>(OnTerminating);
         SubscribeLocalEvent<EdgeConnectionComponent, MoveEvent>(OnMove);
+
+        _edgeQuery = GetEntityQuery<EdgeConnectionComponent>();
     }
 
     private void OnInit(Entity<EdgeConnectionComponent> ent, ref ComponentInit args)
@@ -42,20 +48,18 @@ public sealed class EdgeConnectionSystem : EntitySystem
         UpdateNeighbors(ent);
     }
 
-    private void OnTerminating(Entity<EdgeConnectionComponent> ent, ref EntityTerminatingEvent args)
-    {
-        // Update neighbors when entity is completely destroyed or deleted
-        UpdateNeighbors(ent);
-    }
-
     private void OnMove(Entity<EdgeConnectionComponent> ent, ref MoveEvent args)
     {
-        // Only update if rotation changed
-        if (!args.OldRotation.EqualsApprox(args.NewRotation))
-        {
-            UpdateConnections(ent);
-            UpdateNeighbors(ent);
-        }
+        var rotationChanged = !args.OldRotation.EqualsApprox(args.NewRotation);
+        var positionChanged = args.NewPosition.EntityId != args.OldPosition.EntityId ||
+                              (args.NewPosition.Position - args.OldPosition.Position).LengthSquared() >=
+                              MinimumMovementDistance * MinimumMovementDistance;
+
+        if (!rotationChanged && !positionChanged)
+            return;
+
+        UpdateConnections(ent);
+        UpdateNeighbors(ent);
     }
 
     private void UpdateConnections(Entity<EdgeConnectionComponent> ent)
@@ -129,7 +133,8 @@ public sealed class EdgeConnectionSystem : EntitySystem
     {
         // Normalize angle to 0-360
         var degrees = (int)Math.Round(rotation.Degrees) % 360;
-        if (degrees < 0) degrees += 360;
+        if (degrees < 0)
+            degrees += 360;
 
         // Round to nearest 90 degrees
         var quarterTurns = (int)Math.Round(degrees / 90.0) % 4;
@@ -148,18 +153,26 @@ public sealed class EdgeConnectionSystem : EntitySystem
             if (clockwise)
             {
                 // Clockwise: North→East→South→West
-                if ((flags & EdgeConnectionFlags.North) != 0) rotated |= EdgeConnectionFlags.East;
-                if ((flags & EdgeConnectionFlags.East) != 0) rotated |= EdgeConnectionFlags.South;
-                if ((flags & EdgeConnectionFlags.South) != 0) rotated |= EdgeConnectionFlags.West;
-                if ((flags & EdgeConnectionFlags.West) != 0) rotated |= EdgeConnectionFlags.North;
+                if ((flags & EdgeConnectionFlags.North) != 0)
+                    rotated |= EdgeConnectionFlags.East;
+                if ((flags & EdgeConnectionFlags.East) != 0)
+                    rotated |= EdgeConnectionFlags.South;
+                if ((flags & EdgeConnectionFlags.South) != 0)
+                    rotated |= EdgeConnectionFlags.West;
+                if ((flags & EdgeConnectionFlags.West) != 0)
+                    rotated |= EdgeConnectionFlags.North;
             }
             else
             {
                 // Counterclockwise: North→West→South→East
-                if ((flags & EdgeConnectionFlags.North) != 0) rotated |= EdgeConnectionFlags.West;
-                if ((flags & EdgeConnectionFlags.West) != 0) rotated |= EdgeConnectionFlags.South;
-                if ((flags & EdgeConnectionFlags.South) != 0) rotated |= EdgeConnectionFlags.East;
-                if ((flags & EdgeConnectionFlags.East) != 0) rotated |= EdgeConnectionFlags.North;
+                if ((flags & EdgeConnectionFlags.North) != 0)
+                    rotated |= EdgeConnectionFlags.West;
+                if ((flags & EdgeConnectionFlags.West) != 0)
+                    rotated |= EdgeConnectionFlags.South;
+                if ((flags & EdgeConnectionFlags.South) != 0)
+                    rotated |= EdgeConnectionFlags.East;
+                if ((flags & EdgeConnectionFlags.East) != 0)
+                    rotated |= EdgeConnectionFlags.North;
             }
 
             flags = rotated;
@@ -183,7 +196,7 @@ public sealed class EdgeConnectionSystem : EntitySystem
             if (other == entity)
                 continue;
 
-            if (!TryComp<EdgeConnectionComponent>(other, out var comp) || comp.ConnectionKey != key)
+            if (!_edgeQuery.TryComp(other, out var comp) || comp.ConnectionKey != key)
                 continue;
 
             var otherXform = Transform(other.Value);
@@ -231,13 +244,12 @@ public sealed class EdgeConnectionSystem : EntitySystem
     private void UpdateNeighborsAtTile(EntityUid gridUid, MapGridComponent grid, Vector2i tile)
     {
         var anchored = _map.GetAnchoredEntitiesEnumerator(gridUid, grid, tile);
-
         while (anchored.MoveNext(out var other))
         {
-            if (TryComp<EdgeConnectionComponent>(other, out var comp))
-            {
-                UpdateConnections((other.Value, comp));
-            }
+            if (!_edgeQuery.TryComp(other, out var comp))
+                continue;
+
+            UpdateConnections((other.Value, comp));
         }
     }
 }
