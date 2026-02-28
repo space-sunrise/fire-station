@@ -1,6 +1,7 @@
 #Base
 - type: entity
   id: AirlockAssembly
+  categories: [ HideSpawnMenu ] # Fire edit
   name: airlock assembly
   description: It opens, it closes, and maybe crushes you.
   components:

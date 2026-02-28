@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "Sprited by miduzka(discord) for Fire Station",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+    "states": [
+        {
+            "name": "computer_left",
+            "directions": 4
+        },
+        {
+            "name": "computer_left_broken",
+            "directions": 4
+        },
+        {
+            "name": "computer_middle",
+            "directions": 4
+        },
+        {
+            "name": "computer_middle_broken",
+            "directions": 4
+        },
+        {
+            "name": "computer_right",
+            "directions": 4
+        },
+        {
+            "name": "computer_right_broken",
+            "directions": 4
+        },
+        {
+            "name": "generic_keyboard_right",
+            "directions": 4
+        },
+        {
+            "name": "generic_keyboard_middle",
+            "directions": 4
+        },
+        {
+            "name": "generic_keyboard_left",
+            "directions": 4
+        }
+    ]
+}

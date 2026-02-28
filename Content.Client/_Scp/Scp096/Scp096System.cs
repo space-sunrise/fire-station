@@ -1,5 +1,4 @@
 ﻿using Content.Client._Scp.Scp096.Overlays;
-using Content.Shared._Scp.Other.EmitSoundRandomly;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Main.Systems;
 using Robust.Client.Graphics;
@@ -14,7 +13,6 @@ public sealed partial class Scp096System : SharedScp096System
     [Dependency] private readonly IOverlayManager _overlay = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly IClyde _clyde = default!;
 
     private Scp096TargetsOverlay? _targetsOverlay;
 
@@ -98,16 +96,5 @@ public sealed partial class Scp096System : SharedScp096System
         _overlay.RemoveOverlay(_targetsOverlay);
         _targetsOverlay.Dispose();
         _targetsOverlay = null;
-    }
-
-    protected override void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
-    {
-        base.OnEmitSoundRandomly(ent, ref args);
-
-        if (_player.LocalEntity != ent)
-            return;
-
-        if (!_clyde.IsFocused)
-            args.Cancel();
     }
 }

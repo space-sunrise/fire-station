@@ -33,7 +33,7 @@
   parent: ChairOfficeLight
   components:
   - type: Sprite
-    sprite: _Sunrise/Structures/Furniture/chairs.rsi
+    sprite: _Scp/Structures/Furniture/chairs.rsi # Fire edit
     state: office-grey
   - type: Construction
     graph: Seat
@@ -56,3 +56,13 @@
   components:
   - type: Construction
     deconstructionTarget: null
+
+- type: entity
+  id: ChairAbductor
+  parent: ChairBase
+  name: chair abductor
+  description: cool chair for cool vulp
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Structures/Furniture/abductor_chair.rsi
+    state: abductor_chair

@@ -214,7 +214,7 @@
   id: WeaponTaser
   storage:
     back:
-    - WeaponTaser
+    - WeaponAdvancedTaser
 
 - type: loadoutEffectGroup
   id: MasterSecurityCam
@@ -237,3 +237,30 @@
   storage:
     back:
     - MasterHandheldCamera
+
+###
+- type: loadout
+  id: WeaponTaserBrigmed
+  startingGear: WeaponTaserBrigmed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterSecurity #MasterSecurityCam
+
+- type: startingGear
+  id: WeaponTaserBrigmed
+  storage:
+    back:
+    - WeaponAdvancedTaser
+
+- type: loadout
+  id: WeaponDominatorBrigmed
+  startingGear: WeaponDominatorBrigmed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterSecurityCam
+
+- type: startingGear
+  id: WeaponDominatorBrigmed
+  storage:
+    back:
+    - WeaponDominator

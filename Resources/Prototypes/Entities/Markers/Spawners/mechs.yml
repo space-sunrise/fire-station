@@ -1,6 +1,7 @@
 - type: entity
   name: Ripley APLU Spawner
   id: SpawnMechRipley
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: MarkerBase
   components:
   - type: Sprite

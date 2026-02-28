@@ -1,6 +1,7 @@
 # TODO move this to tiles once tile smoothing is supported
 - type: entity
   id: Catwalk
+  categories: [ HideSpawnMenu ] # Fire edit
   name: catwalk
   description: A catwalk for easier EVA maneuvering and cable placement.
   placement:

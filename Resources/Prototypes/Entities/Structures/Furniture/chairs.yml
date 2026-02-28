@@ -21,7 +21,7 @@
         mask:
         - TableMask
   - type: Sprite
-    sprite: Structures/Furniture/chairs.rsi
+    sprite: _Scp/Structures/Furniture/chairs.rsi # Fire edit
     noRot: true
   - type: Strap
     position: Stand

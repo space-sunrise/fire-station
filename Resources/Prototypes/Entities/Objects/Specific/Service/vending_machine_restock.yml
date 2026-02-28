@@ -339,7 +339,7 @@
     - SpaceUpInventory
     - SodaInventory
     - DrGibbInventory
-    - SmiteInventory 
+    - SmiteInventory
   - type: Sprite
     layers:
     - state: base
@@ -421,6 +421,7 @@
     canRestock:
     - TankDispenserEVAInventory
     - TankDispenserEngineeringInventory
+    - EVASuitDispenserInventory # Sunrise-Edit
   - type: Sprite
     layers:
     - state: base

@@ -775,7 +775,7 @@ AirlockHatchSyndicate: AirlockHatchSyndicateLocked
 SurveillanceCameraWirelessRouterBase: SurveillanceCameraWirelessRouterConstructed
 CryogenicSleepUnitSpawner: CryogenicSleepUnitSpawnerLateJoin
 ComputerCargoShuttle: null
-ComputerShuttleCargo: null
+#ComputerShuttleCargo: null
 ClothingOuterHardsuitSecurity: ClothingOuterHardsuitSecuritySunrise
 ClothingHeadHelmetHardsuitSecurity: ClothingHeadHelmetHardsuitSecuritySunrise
 AirlockMailGlassLocked: AirlockServiceGlassLocked
@@ -943,6 +943,9 @@ WeaponEnergyGunMultiphase: WeaponMultiphaseGun
 ClothingBeltAssaultFilled: null
 MagazinePistolSubMachineGunCaseless: BaseMagazinePistolCaselessRifleExtended
 SyndicateCircuitBoard: SyndimovCircuitBoard
+WeaponRifleAKM: WeaponRifleAKMU
+CrateArmoryAKMS: null
+SpawnPointPrisonGuard: null
 # 2025-12-21
 ClothingNeckCMOCloak: ClothingNeckMedCloak
 
@@ -955,10 +958,33 @@ ImplantExtractorMachineCircuitboard: InterrogatorMachineCircuitboard
 
 # 2026-01-02
 EnergyDomeWiredTest: null
-# Sunrise-End
 
-# 2026-01-30
+# 2026-01-31
+ClothingHeadHelmetHardsuitMilira: ClothingHeadHelmetEVAMilira
 MagazineDragunov: MagazineDragunovSP
+# 2026-02-07
+ClothingHeadAreopagite: null
+ClothingHeadHelmetInsulated: null
+ClothingHeadTechPriest: null
+ClothingOuterRobeTechPriest: null
+ClothingOuterWinterCoatLong: null
+ClothingOuterWinterCoatPlaid: null
+ClothingOuterWinterMystagogue: null
+GunSafeBlueshield: null
+MusicTape157: null
+MusicTape18: null
+PosterLegitSMAnomalies: null
+PosterLegitSMEpi: null
+PosterLegitSMGlimmer: null
+PosterLegitSMHardhats: null
+PosterLegitSMPills: null
+SalvageSeedSpawnerLow: null
+PosterLegitSMPiping: null
+ClothingOuterSuitAreopagite: null
+SuitStorageBlueshield: SuitStorageBlueShield
+GunSafeIonRifle: GunSafeSuperIonRifle
+GunSafeSMRTGun: GunSafeSuperweaponSmartGun
+# region Sunrise-End
 
 # Санрайз насрал опять
 MagazineBoxHeavyRifle: null
@@ -2542,5 +2568,72 @@ FSConcreteCurbCornerNorth: ConcreteCurbCornerIn
 FSConcreteCurbCornerSouth: ConcreteCurbCornerOut
 FSConcreteCurbCornerSmallNorth: ConcreteCurbCornerSmallOut # Тут всё ок. Спрайты были не правильно названы.
 FSConcreteCurbCornerSmallSouth: ConcreteCurbCornerSmallIn # Тут всё ок. Спрайты были не правильно названы.
+
+# SCP Consoles
+CentcomComputerComms: ScpComputerCommunicationRegionalAdministration
+CentcommComputerComms: ScpComputerCommunicationRegionalAdministration
+CommandConsoleComputer: ScpComputerPlayerConsole
+ComputeCargoSalaryConsole: ScpComputerLogisticsSalaryConsole
+ComputerAlert: ScpComputerAlert
+ComputerAnalysisConsole: ScpComputerAnalysisConsole
+ComputerApproveErtConsole: ScpComputerApproveMtfConsole
+ComputerAtmosMonitoring: ScpComputerAtmosphereMonitoring
+computerBodyScanner: ScpComputerBodyScanner
+ComputerBountySaleConsole: ScpComputerBountySaleConsole
+ComputerBroken: ScpComputerBroken
+ComputerCallErtConsole: ScpComputerCallMtfConsole
+ComputerCargoBounty: ScpComputerLogisticsBounty
+ComputerCargoFinanceConsole: ScpComputerLogisticsFinanceConsole
+ComputerCargoOrders: ScpComputerLogisticsOrders
+ComputerCargoOrdersEngineering: ScpComputerLogisticsOrdersEngineeringTechnicalService
+ComputerCargoOrdersMedical: ScpComputerLogisticsOrdersMedicalService
+ComputerCargoOrdersScience: ScpComputerLogisticsOrdersScientificService
+ComputerCargoOrdersSecurity: ScpComputerLogisticsOrdersSecurity
+ComputerCargoOrdersService: ScpComputerLogisticsOrdersFoodAndSanitationService
+ComputerCloningConsole: ScpComputerCloningConsole
+ComputerComms: ScpComputerCommunication
+ComputerContrabandSale: ScpComputerContrabandSale
+ComputerCrewMonitoring: ScpComputerPersonnelMonitoring
+ComputerCriminalRecords: ScpComputerCriminalRecords
+ComputerEmergencyShuttle: ScpComputerEmergencyShuttle
+ComputerFineRecords: ScpComputerFineRecords
+ComputerFrame: ScpComputerFrame
+ComputerFundingAllocation: ScpComputerFundingAllocation
+ComputerId: ScpComputerId
+ComputerIFF: ScpComputerIFF
+ComputerIFFSyndicate: ScpComputerIFFChaosInsurgency
+ComputerMassMedia: ScpComputerMassMedia
+ComputerMedicalRecords: ScpComputerMedicalRecords
+ComputerMedicalSaleConsole: ScpComputerMedicalServiceSaleConsole
+ComputerPalletConsole: ScpComputerPalletConsole
+ComputerPowerMonitoring: ScpComputerPowerMonitoring
+ComputerRadar: ScpComputerRadar
+ComputerResearchAndDevelopment: ScpComputerResearchAndDevelopment
+ComputerRoboticsControl: ScpComputerRoboticsControl
+ComputerSaleConsole: ScpComputerSaleConsole
+ComputerSalvageExpedition: null
+ComputerScienceSaleConsole: ScpComputerScientificServiceSaleConsole
+ComputerSecuritySaleConsole: ScpComputerSecuritySaleConsole
+ComputerSensorMonitoring: ScpComputerSensorMonitoring
+ComputerServiceSaleConsole: ScpComputerFoodAndSanitationServiceSaleConsole
+ComputerShipyard: ScpComputerShipyard
+ComputerShuttle: ScpComputerShuttle
+ComputerShuttleCentComm: ScpComputerShuttleRegionalAdministration
+ComputerShuttleSecurity: ScpComputerShuttleSecurity
+ComputerShuttleSyndie: ScpComputerShuttleChaosInsurgency
+ComputerSolarControl: ScpComputerSolarControl
+ComputerStationRecords: ScpComputerFacilityRecords
+ComputerSurveillanceCameraMonitor: ScpComputerSurveillanceCameraMonitor
+ComputerSurveillanceWirelessCameraMonitor: ScpComputerSurveillanceWirelessCameraMonitor
+ComputerTelevision: ScpComputerTelevision
+ComputeStationBankConsole: ScpComputerFacilityBankConsole
+StationAiFixerComputer: ScpComputerFacilityAiFixer
+StationAiUploadComputer: ScpComputerFacilityAiUpload
+SyndicateComputerComms: ScpComputerCommunicationChaosInsurgency
+ComputerShuttleCargo: ScpComputerShuttleLogistics
+CodeConsole: ScpComputerCodes
+ComputerIcarus: ScpComputerIcarus
+BaseComputer: ScpComputer
+BaseComputerAiAccess: ScpComputer
 
 # Fire added end

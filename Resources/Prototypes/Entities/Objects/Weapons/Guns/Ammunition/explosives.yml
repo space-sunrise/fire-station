@@ -74,6 +74,7 @@
 
 - type: entity
   id: GrenadeBlast
+  categories: [ HideSpawnMenu ] # Fire edit
   name: contact blast grenade
   parent: BaseGrenade
   components:
@@ -142,6 +143,7 @@
 
 - type: entity
   id: GrenadeEMP
+  categories: [ HideSpawnMenu ] # Fire edit
   name: contact EMP grenade
   parent: BaseGrenade
   components:
@@ -182,8 +184,8 @@
     proto: BulletCannonBall
     deleteOnSpawn: true
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
-    state: ball
+    sprite: _Sunrise/Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi # Sunrise-Edit
+    state: blastball # Sunrise-Edit
 
 - type: entity
   id: CannonBallGrapeshot

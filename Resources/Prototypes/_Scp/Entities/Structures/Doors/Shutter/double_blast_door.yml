@@ -6,9 +6,6 @@
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Shutters/double_blastdoor.rsi
-    layers:
-    - state: closed
-      map: ["enum.DoorVisualLayers.Base"]
   - type: Door
     closeTimeOne: 1.2
     closeTimeTwo: 1.2

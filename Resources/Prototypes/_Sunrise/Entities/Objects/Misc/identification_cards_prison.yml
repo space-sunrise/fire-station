@@ -16,6 +16,7 @@
   parent: SecurityMetusIDCard
   id: HeadOfPrisonIDCard
   name: head of prison ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -32,6 +33,7 @@
   parent: SecurityMetusIDCard
   id: PrisonInspectorIDCard
   name: prison inspector ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -48,6 +50,7 @@
   parent: SecurityMetusIDCard
   id: PrisonWorkerIDCard
   name: prison worker ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -64,6 +67,7 @@
   parent: SecurityMetusIDCard
   id: PrisonEngineerIDCard
   name: prison engineer ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -80,6 +84,7 @@
   parent: SecurityMetusIDCard
   id: PrisonScientistIDCard
   name: prison scientist ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -96,6 +101,7 @@
   parent: SecurityMetusIDCard
   id: PrisonDoctorIDCard
   name: prison doctor ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -112,6 +118,7 @@
   parent: SecurityMetusIDCard
   id: PrisonChefIDCard
   name: prison chef ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -128,6 +135,7 @@
   parent: SecurityMetusIDCard
   id: PrisonTraineeIDCard
   name: prison trainee ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     layers:
@@ -144,6 +152,7 @@
   parent: IDCardStandard
   id: PlanetPrisonerIDCard
   name: prisoner ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi

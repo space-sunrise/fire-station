@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Content.Shared._Scp.Mobs.Components;
-using Content.Shared._Scp.Other.EmitSoundRandomly;
 using Content.Shared._Scp.Other.Events;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp096.Main.Components;
@@ -95,8 +94,6 @@ public abstract partial class SharedScp096System : EntitySystem
 
         SubscribeLocalEvent<Scp096Component, ComponentInit>(OnInit);
         SubscribeLocalEvent<Scp096Component, ComponentShutdown>(OnShutdown);
-
-        SubscribeLocalEvent<Scp096Component, BeforeRandomlyEmittingSoundEvent>(OnEmitSoundRandomly);
 
         InitializeRage();
         InitializeTargets();
@@ -230,12 +227,6 @@ public abstract partial class SharedScp096System : EntitySystem
         RemComp<ActiveScp096HeatingUpComponent>(ent);
 
         RemoveAllTargets();
-    }
-
-    protected virtual void OnEmitSoundRandomly(Entity<Scp096Component> ent, ref BeforeRandomlyEmittingSoundEvent args)
-    {
-        if (HasComp<ActiveScp096RageComponent>(ent) || HasComp<SleepingComponent>(ent) || HasComp<ActiveScp096HeatingUpComponent>(ent))
-            args.Cancel();
     }
 
     protected virtual void OnInit(Entity<Scp096Component> ent, ref ComponentInit args)

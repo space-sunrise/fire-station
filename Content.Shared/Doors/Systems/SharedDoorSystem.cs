@@ -3,11 +3,13 @@ using Content.Shared._Scp.Other.Events;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Administration.Logs;
+using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Database;
 using Content.Shared.Doors.Components;
 using Content.Shared.Emag.Systems;
 using Content.Shared.Interaction;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Power.EntitySystems;
@@ -73,7 +75,8 @@ public abstract partial class SharedDoorSystem : EntitySystem
     // Sunrise added end
 
     // Fire edit start
-    private readonly SoundSpecifier _doorSmashSound = new SoundCollectionSpecifier("DoorSmash");
+    private static readonly SoundSpecifier DoorSmashSound = new SoundCollectionSpecifier("DoorSmash",
+        AudioParams.Default.WithVariation(0.125f).WithMaxDistance(7f));
     // Fire edit end
 
     public override void Initialize()
@@ -576,6 +579,11 @@ public abstract partial class SharedDoorSystem : EntitySystem
         var stunTime = door.DoorStunTime + door.OpenTimeOne;
         foreach (var entity in GetColliding(uid, physics))
         {
+            // Fire added start
+            if (!HasComp<MobStateComponent>(entity) || !HasComp<DamageableComponent>(entity))
+                continue;
+            // Fire added end
+
             door.CurrentlyCrushing.Add(entity);
             if (door.CrushDamage != null)
                 _damageableSystem.TryChangeDamage(entity, door.CrushDamage, origin: uid);
@@ -583,7 +591,9 @@ public abstract partial class SharedDoorSystem : EntitySystem
             _stunSystem.TryUpdateParalyzeDuration(entity, stunTime);
 
             // Fire edit start - чтобы двери могли убивать людей
-            Audio.PlayPredicted(_doorSmashSound, entity, entity);
+            if (_net.IsServer)
+                Audio.PlayPvs(DoorSmashSound, entity);
+
             RaiseLocalEvent(uid, new AirlockCrushedEvent(GetNetEntity(entity)));
             // Fire edit end
         }

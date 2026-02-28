@@ -1,1 +1,1 @@
-﻿metabolizer-type-scp096 = SCP-096
+metabolizer-type-scp096 = SCP-096

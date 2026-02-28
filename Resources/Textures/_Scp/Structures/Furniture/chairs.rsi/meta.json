@@ -1,12 +1,76 @@
 {
     "version": 1,
     "license": "CLA",
-    "copyright": "Sprited by peperino0290_92944(discord) for Fire Station",
+    "copyright": "Made by MIDUZKA (discord) for Fire Station. Wooden made by peperino0290_92944(discord) for Fire Station",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
+        {
+            "name": "bar",
+            "directions": 4
+        },
+        {
+            "name": "office-grey",
+            "directions": 4
+        },
+        {
+            "name": "bar-knocked",
+            "directions": 4
+        },
+        {
+            "name": "chair",
+            "directions": 4
+        },
+        {
+            "name": "chair-knocked",
+            "directions": 4
+        },
+        {
+            "name": "chair-greyscale",
+            "directions": 4
+        },
+        {
+            "name": "chair-greyscale-knocked",
+            "directions": 4
+        },
+        {
+            "name": "comfy",
+            "directions": 4
+        },
+        {
+            "name": "comfy-overlay",
+            "directions": 4
+        },
+        {
+            "name": "meat",
+            "directions": 4
+        },
+        {
+            "name": "office-dark",
+            "directions": 4
+        },
+        {
+            "name": "office-white",
+            "directions": 4
+        },
+        {
+            "name": "shuttle",
+            "directions": 4
+        },
+        {
+            "name": "shuttle-overlay",
+            "directions": 4
+        },
+        {
+            "name": "stool",
+            "directions": 4
+        },
+        {
+            "name": "stool-knocked",
+            "directions": 4
+        },
         {
             "name": "wooden",
             "directions": 4
@@ -29,6 +93,22 @@
         },
         {
             "name": "cursed",
+            "directions": 4
+        },
+        {
+            "name": "steel-bench",
+            "directions": 4
+        },
+        {
+            "name": "brass_chair",
+            "directions": 4
+        },
+        {
+            "name": "xeno-chair",
+            "directions": 4
+        },
+        {
+            "name": "card-stool",
             "directions": 4
         }
     ]
