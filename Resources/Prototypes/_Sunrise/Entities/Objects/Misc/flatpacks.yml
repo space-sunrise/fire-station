@@ -14,4 +14,4 @@
   description: A flatpack used for constructing a document printer.
   components:
   - type: Flatpack
-    entity: ComputerShuttleSecurity
+    entity: ScpComputerShuttleSecurity # Fire edit

@@ -17,6 +17,7 @@
 
 - type: entity
   id: CartridgePistolRubber
+  categories: [ HideSpawnMenu ] # Fire edit
   name: cartridge (.35 auto rubber)
   parent: BaseCartridgePistol
   components:

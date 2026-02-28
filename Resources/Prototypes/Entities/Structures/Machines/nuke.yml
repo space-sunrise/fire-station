@@ -82,6 +82,7 @@
 - type: entity
   parent: BaseNuclearBomb
   id: NuclearBomb
+  categories: [ HideSpawnMenu ] # Fire edit
   description: You probably shouldn't stick around to see if this is armed.
   components:
   - type: PointLight

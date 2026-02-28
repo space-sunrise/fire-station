@@ -56,6 +56,7 @@
 - type: entity
   parent: [BaseStructureFlatpack, BaseEngineeringContraband]
   id: SupermatterFlatpack
+  categories: [ HideSpawnMenu ] # Fire edit
   name: supermatter flatpack
   description: A flatpack used for constructing a Supermatter Crystal.
   components:
@@ -95,4 +96,4 @@
   description: A flatpack used for constructing a R&D computer.
   components:
   - type: Flatpack
-    entity: ComputerResearchAndDevelopment
+    entity: ScpComputerResearchAndDevelopment # Fire edit

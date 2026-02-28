@@ -1,0 +1,102 @@
+name: Sync HideSpawnMenu
+
+on:
+  push:
+    branches:
+      - "**"
+    paths:
+      - Resources/migration.yml
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+    paths:
+      - Resources/migration.yml
+      - Resources/Prototypes/**/*.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-hide-spawn-menu-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync-hide-spawn-menu:
+    if: github.actor != 'Sunrise-Bot' && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          fetch-depth: 0
+
+      - name: Setup submodules
+        run: git submodule update --init --recursive
+
+      - name: Pull engine updates
+        uses: space-wizards/submodule-dependency@548a726da00ca348ce9e1ea9f026da8f528caa71
+
+      - name: Update engine submodules
+        run: |
+          cd RobustToolbox/
+          git submodule update --init --recursive
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@3e891b0cb619bf60e2c25674b222b8940e2c1c25
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore Content.MigrationHideSpawnMenu
+        run: |
+          dotnet restore Content.MigrationHideSpawnMenu/Content.MigrationHideSpawnMenu.csproj \
+            --runtime linux-x64 \
+            -p:PublishReadyToRun=true
+
+      - name: Publish Content.MigrationHideSpawnMenu (ReadyToRun)
+        run: |
+          dotnet publish Content.MigrationHideSpawnMenu/Content.MigrationHideSpawnMenu.csproj \
+            --configuration Release \
+            --runtime linux-x64 \
+            --self-contained false \
+            -p:PublishReadyToRun=true \
+            --no-restore \
+            --output artifacts/hide-spawn-menu
+
+      - name: Sync HideSpawnMenu categories
+        if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.repository)
+        env:
+          MIGRATION_HIDE_SPAWN_EDIT_COMMENT: ${{ vars.MIGRATION_HIDE_SPAWN_EDIT_COMMENT }}
+        run: dotnet artifacts/hide-spawn-menu/Content.MigrationHideSpawnMenu.dll sync
+
+      - name: Check HideSpawnMenu categories
+        if: github.event_name == 'pull_request' && github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name != github.repository
+        run: dotnet artifacts/hide-spawn-menu/Content.MigrationHideSpawnMenu.dll check
+
+      - name: Commit and push changes
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Resources/Prototypes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-sync HideSpawnMenu categories"
+            git push origin HEAD:${{ github.ref_name }}
+          fi
+
+      - name: Commit and push changes (PR branch)
+        if: github.event_name == 'pull_request' && github.event.pull_request.draft == false && github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Resources/Prototypes
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Auto-sync HideSpawnMenu categories"
+            git push origin HEAD:${{ github.head_ref }}
+          fi

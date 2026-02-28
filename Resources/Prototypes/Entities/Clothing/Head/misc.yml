@@ -399,6 +399,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatHairflower
+  categories: [ HideSpawnMenu ] # Fire edit
   name: hairflower
   description: A beautiful hairflower that can be inserted between locks of hair.
   components:
