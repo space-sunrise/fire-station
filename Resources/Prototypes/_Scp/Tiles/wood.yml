@@ -3,7 +3,6 @@
   parent: ScpFloorBase
   abstract: true
   variants: 4
-  deconstructTools: [ Screwing ]
   placementVariants:
   - 1.0
   - 1.0
@@ -19,7 +18,7 @@
     collection: FootstepWood
   barestepSounds:
     collection: BarestepWood
-  itemDrop: FloorTileItemWood
+  itemDrop: ScpFloorTileItemWood
 
 - type: tile
   id: ScpFloorWoodLarge
@@ -30,7 +29,7 @@
     collection: FootstepWood
   barestepSounds:
     collection: BarestepWood
-  itemDrop: FloorTileItemWoodLarge
+  itemDrop: ScpFloorTileItemWoodLarge
 
 - type: tile
   id: ScpFloorWoodPattern
@@ -41,7 +40,7 @@
     collection: FootstepWood
   barestepSounds:
     collection: BarestepWood
-  itemDrop: FloorTileItemWoodPattern
+  itemDrop: ScpFloorTileItemWoodPattern
 
 - type: tile
   id: ScpFloorWoodBroken

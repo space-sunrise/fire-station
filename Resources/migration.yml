@@ -2646,5 +2646,8 @@ ChairWood: ScpChairWood
 WoodenBench: ScpWoodenBench
 ChairRitual: ScpChairRitual
 ChairCursed: ScpChairCursed
+FloorTileItemWood: ScpFloorTileItemWood
+FloorTileItemWoodLarge: ScpFloorTileItemWoodLarge
+FloorTileItemWoodPattern: ScpFloorTileItemWoodPattern
 
 # Fire added end

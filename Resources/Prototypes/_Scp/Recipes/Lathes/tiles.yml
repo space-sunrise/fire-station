@@ -289,6 +289,22 @@
   id: ScpFloorTileItemSteelGrilleOffset4
   result: ScpFloorTileItemSteelGrilleOffset4
 
+# Wood
+- type: latheRecipe
+  parent: BaseWoodTileRecipe
+  id: ScpFloorTileItemWood
+  result: ScpFloorTileItemWood
+
+- type: latheRecipe
+  parent: BaseWoodTileRecipe
+  id: ScpFloorTileItemWoodLarge
+  result: ScpFloorTileItemWoodLarge
+
+- type: latheRecipe
+  parent: BaseWoodTileRecipe
+  id: ScpFloorTileItemWoodPattern
+  result: ScpFloorTileItemWoodPattern
+
 # Concrete
 - type: latheRecipe
   parent: BaseConcreteTileRecipe

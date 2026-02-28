@@ -29,3 +29,19 @@
   targetNode: scpconcretetile
   category: construction-category-tiles
   objectType: Item
+
+- type: construction
+  id: ScpTileWoodCraft
+  graph: ScpTileWood
+  startNode: start
+  targetNode: scpwoodtile
+  category: construction-category-tiles
+  objectType: Item
+
+- type: construction
+  id: ScpTileWoodLargeCraft
+  graph: ScpTileWoodLarge
+  startNode: start
+  targetNode: scpwoodtilelarge
+  category: construction-category-tiles
+  objectType: Item

@@ -499,16 +499,17 @@
   name: wood floor
   parent: FloorTileItemBase
   id: FloorTileItemWood
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
-    sprite: _Scp/Objects/Tiles/wood.rsi # Fire added
+    sprite: Objects/Tiles/wood.rsi
     state: wood
   - type: Item
-    sprite: _Scp/Objects/Tiles/wood.rsi # Fire added
+    sprite: Objects/Tiles/wood.rsi
     heldPrefix: wood
   - type: FloorTile
     outputs:
-      - ScpPlating # Fire Edit
+      - Plating
       - FloorWood
   - type: Stack
     stackType: FloorTileWood
@@ -1387,15 +1388,16 @@
   name: wood pattern floor
   parent: FloorTileItemBase
   id: FloorTileItemWoodPattern
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
-    sprite: _Scp/Objects/Tiles/wood.rsi # Fire added
+    sprite: Objects/Tiles/wood.rsi
     state: woodpatternfloor
   - type: Item
     heldPrefix: wood
   - type: FloorTile
     outputs:
-      - ScpPlating # Fire Edit
+      - Plating
       - FloorWoodTile
   - type: Stack
     stackType: FloorTileWoodPattern
@@ -1645,16 +1647,17 @@
   name: large wood floor
   parent: FloorTileItemBase
   id: FloorTileItemWoodLarge
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
-    sprite: _Scp/Objects/Tiles/wood.rsi # Fire added
+    sprite: Objects/Tiles/wood.rsi
     state: wood-large
   - type: Item
-    sprite: _Scp/Objects/Tiles/wood.rsi # Fire added
+    sprite: Objects/Tiles/wood.rsi
     heldPrefix: wood
   - type: FloorTile
     outputs:
-      - ScpPlating # Fire Edit
+      - Plating
       - FloorWoodLarge
   - type: Stack
     stackType: FloorTileWoodLarge
