@@ -42,12 +42,11 @@
   id: ScpAirlockLogotypeAssembly
   components:
   - type: Sprite
-    sprite: _Scp/Structures/Doors/Airlocks/Standard/scpdoor.rsi
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/logotype.rsi
     state: assembly
   - type: Construction
     graph: ScpAirlockLogotypeGraph
     node: assembly
-
 
 # Служба безопасности
 - type: entity

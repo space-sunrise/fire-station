@@ -1,4 +1,4 @@
-﻿ # Особая дверь с логотипом scp
+﻿# Особая дверь с логотипом scp
  - type: constructionGraph
    id: ScpAirlockLogotypeGraph
    start: start
@@ -106,9 +106,6 @@
    category: construction-category-structures
    placementMode: SnapgridCenter
    description: construction-scpairlocklogotype-desc
-   icons:
-     sprite: _Scp/Structures/Doors/Airlocks/Standard/scpdoor.rsi
-     state: closed
    canBuildInImpassable: false
    conditions:
    - !type:TileNotBlocked
@@ -118,7 +115,7 @@
    id: ScpAirlockLogotype
    components:
    - type: Sprite
-     sprite: _Scp/Structures/Doors/Airlocks/Standard/scpdoor.rsi
+     sprite: _Scp/Structures/Doors/Airlocks/Standard/logotype.rsi
    - type: Wires
      layoutId: AirlockSecurity
    - type: Construction
