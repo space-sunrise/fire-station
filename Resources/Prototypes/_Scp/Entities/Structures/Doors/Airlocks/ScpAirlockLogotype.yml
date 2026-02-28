@@ -51,7 +51,7 @@
        - component: DoorElectronics
          store: board
          name: construction-graph-component-door-electronics-circuit-board
-         icons:
+         icon:
            sprite: "Objects/Misc/module.rsi"
            state: "door_electronics"
          doAfter: 3
