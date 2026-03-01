@@ -9059,3 +9059,22 @@
   id: 361
   time: '2026-02-28T19:08:17.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/832
+- author: Parashut
+  changes:
+  - message: "\u0423\u0434\u0430\u043B\u0451\u043D \u0434\u0443\u0431\u043B\u044C\
+      \ \u043A\u043B\u044E\u0447\u0430 SCP-005 \u0438\u0437 \u0441\u043B\u0443\u0447\
+      \u0430\u0439\u043D\u043E\u0433\u043E \u0441\u043F\u0430\u0432\u043D\u0430 SCP\
+      \ \u043F\u0440\u0435\u0434\u043C\u0435\u0442\u043E\u0432."
+    type: Remove
+  id: 362
+  time: '2026-03-01T15:25:04.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/838
+- author: Parashut
+  changes:
+  - message: "\u041E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u044B \u0432\u0441\u0435\
+      \ \u043A\u0430\u0440\u0442\u044B \u043A\u043E\u043C\u043F\u043B\u0435\u043A\u0441\
+      \u0430."
+    type: Tweak
+  id: 363
+  time: '2026-03-01T15:24:41.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/840
