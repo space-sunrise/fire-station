@@ -27,7 +27,7 @@
 
 # Печать
 - type: loadout
-  id: RubberStampVeto
+  id: LoadoutRubberStampVeto
   effects:
   - !type:GroupLoadoutEffect
     proto: Administration

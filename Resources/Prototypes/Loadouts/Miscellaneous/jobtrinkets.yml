@@ -360,10 +360,11 @@
 - type: loadout
   id: SecStar
   effects:
-  # Fire edit start
-  - !type:GroupLoadoutEffect
-    proto: TowelColorBlackAndDinkystar
-  # Fire edit end
+    - !type:JobRequirementLoadoutEffect
+      requirement:
+        !type:DepartmentTimeRequirement
+        department: Security
+        time: 100h
   storage:
     back:
     - Dinkystar

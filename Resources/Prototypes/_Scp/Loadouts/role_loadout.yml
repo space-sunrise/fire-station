@@ -14,7 +14,6 @@
   - DirectorKeyCard
   - DirectorPDA
   - DirectorBack
-  - CommonAdministrationGlasses
   - ScpCommonTrinkets
   - Bra
   - Pants
@@ -68,7 +67,7 @@
   - ChiefEngineerNeck
   - ChiefEngineerShoes
   - SurvivalExtended
-  - TrinketsEngineering
+  - ScpTrinketsEngineering
   - ScpCommonTrinkets
   - Bra
   - Pants
@@ -102,7 +101,7 @@
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
   - Glasses
-  - MedicalTrinkets
+  - ScpMedicalTrinkets
   - ScpCommonTrinkets
   - Bra
   - Pants
@@ -121,7 +120,7 @@
   - QuartermasterNeck
   - QuartermasterShoes
   - Glasses
-  - TrinketsCargo
+  - ScpTrinketsCargo
   - ScpCommonTrinkets
   - Bra
   - Pants
@@ -420,7 +419,7 @@
   - SeniorPhysicianNeck
   - SeniorPhysicianBelt
   - SeniorPhysicianShoes
-  - MedicalTrinkets
+  - ScpMedicalTrinkets
   - Glasses
   - ScpCommonTrinkets
   - Bra
@@ -439,7 +438,7 @@
   - ChemistOuterClothing
   - SunriseChemistNeck
   - SunriseChemistShoes
-  - MedicalTrinkets
+  - ScpMedicalTrinkets
   - ScpCommonTrinkets
   - Bra
   - Pants
@@ -458,7 +457,7 @@
   - SunriseMedicalDoctorNeck
   - MedicalShoes
   - Glasses
-  - MedicalTrinkets
+  - ScpMedicalTrinkets
   - ScpCommonTrinkets
   - Bra
   - Pants
@@ -477,7 +476,7 @@
   - SunrisePsychologistNeck
   - SunrisePsychologistShoes
   - Glasses
-  - MedicalTrinkets
+  - ScpMedicalTrinkets
   - ScpCommonTrinkets
   - Bra
   - Pants
@@ -496,7 +495,7 @@
   - SunriseMedicalDoctorNeck
   - MedicalShoes
   - Glasses
-  - MedicalTrinkets
+  - ScpMedicalTrinkets
   - ScpCommonTrinkets
   - Bra
   - Pants
@@ -516,7 +515,7 @@
   - SeniorEngineerNeck
   - SeniorEngineerShoes
   - SurvivalExtended
-  - TrinketsEngineering
+  - ScpTrinketsEngineering
   - ScpCommonTrinkets
   - Bra
   - Pants
@@ -535,7 +534,7 @@
   - StationSunriseEngineerNeck
   - StationEngineerShoes
   - SurvivalExtended
-  - TrinketsEngineering
+  - ScpTrinketsEngineering
   - ScpCommonTrinkets
   - Bra
   - Pants
@@ -553,7 +552,7 @@
   - AtmosphericTechnicianOuterClothing
   - SunriseAtmosNeck
   - AtmosphericTechnicianShoes
-  - TrinketsEngineering
+  - ScpTrinketsEngineering
   - ScpCommonTrinkets
   - Bra
   - Pants
@@ -572,7 +571,7 @@
   - StationSunriseEngineerNeck
   - StationEngineerShoes
   - SurvivalExtended
-  - TrinketsEngineering
+  - ScpTrinketsEngineering
   - ScpCommonTrinkets
   - Bra
   - Pants
@@ -593,7 +592,7 @@
   - SunriseCargoTechNeck
   - CargoTechnicianShoes
   - Glasses
-  - TrinketsCargo
+  - ScpTrinketsCargo
   - ScpCommonTrinkets
   - Bra
   - Pants

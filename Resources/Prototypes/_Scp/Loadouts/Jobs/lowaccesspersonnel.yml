@@ -5,7 +5,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: LowAccessPersonnel # Fire edit
+      department: LowAccessPersonnel
       time: 360000 # 100 hrs
   equipment:
     neck: ClothingNeckPlanetPrisonLockdownPin
@@ -17,7 +17,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: LowAccessPersonnel # Fire edit
+      department: LowAccessPersonnel
       time: 180000 # 50 hrs
   equipment:
     neck: ClothingNeckPlanetPrisonCellblockPin

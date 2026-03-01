@@ -266,7 +266,7 @@
   - SecurityWhistle
   - SecurityTourniquet
   - LoadoutFlashlightSeclite
-  - SecStar
+  - ScpSecStar
 
 - type: loadoutGroup
   id: SecurityRadio
@@ -299,13 +299,68 @@
   loadouts:
   - BoxFolderBaseThreePapers
   - BoxFolderPlasticClipboardThreePapers
-  - BoxFolderClipboardThreePapers
-  - RubberStampVeto
+  - ScpBoxFolderClipboardThreePapers
+  - LoadoutRubberStampVeto
 
 # Медицинская служба
-
+- type: loadoutGroup
+  id: ScpMedicalTrinkets
+  name: loadout-group-department-trinkets
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - TrinketsMedicalS
+  - TrinketsMedicalECB
+  - TrinketsMedicalHHA
+  - TrinketsMedicalCEHM
+  - TrinketsMedicalCEEHM
+  - TrinketsMedicalBMS
+  - TrinketsMedicalTFMD
+  - TrinketsMedicalTFP
+  - TrinketsMedicalTFC
+  - TrinketsMedicalTFCMO
+  - TrinketsMedicalCNSG
 
 # Инженерно-техническая служба
+- type: loadoutGroup
+  id: ScpTrinketsEngineering
+  name: loadout-group-department-trinkets
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - TrinketsEngineeringAAM
+  - TrinketsEngineeringEAM
+  - TrinketsEngineeringTS
+  - TrinketsEngineeringFL
+  - TrinketsEngineeringGA
+  - TrinketsEngineeringGC
+  #- TrinketsEngineeringHSM  не имеет смысла пока карта есть у всех
+  - TrinketsEngineeringTFE
+  - TrinketsEngineeringTFAT
+  - TrinketsEngineeringTFCF
+  #- TrinketsEngineeringTT  дичь а не игрушка
+  - TrinketsEngineeringGCW
+  - TrinketsEngineeringST
+
+# Служба снабжения
+- type: loadoutGroup
+  id: ScpTrinketsCargo
+  name: loadout-group-department-trinkets
+  minLimit: 0
+  maxLimit: 2
+  loadouts:
+  - Sunrise-Clipboard
+  - TrinketsCargoGPS
+  - TrinketsCargoFL
+  - TrinketsCargoF
+  - TrinketsCargoLB
+  - TrinketsCargoRH
+  - TrinketsCargoT
+  - TrinketsCargoS
+  - TrinketsCargoSD
+  - TrinketsCargoQueen
+  - TrinketsCargoQ
+  - TrinketsCargoLGW
 
 # Научная служба
 
@@ -317,7 +372,7 @@
   loadouts:
   - BoxFolderBaseThreePapers
   - BoxFolderPlasticClipboardThreePapers
-  - BoxFolderClipboardThreePapers
+  - ScpBoxFolderClipboardThreePapers
 
 # Д класс
 
@@ -345,7 +400,6 @@
   maxLimit: 3
   loadouts:
   # разное
-  - PortableStationMap
   - FlowerWreath
   - Hairflower
   - Headphones
