@@ -117,8 +117,8 @@ public abstract partial class GameRuleSystem<T> where T: IComponent
             tile = new Vector2i(randomX, randomY);
             if (_atmosphere.IsTileSpace(targetGrid, Transform(targetGrid).MapUid, tile)
                 || _atmosphere.IsTileAirBlockedCached(targetGrid, tile)
-                || !_map.TryGetTileRef(targetGrid, gridComp, tile, out var tileRef) // Fire added
-                || tileRef.Tile.IsEmpty) // Fire added
+                || !_map.TryGetTileRef(targetGrid, gridComp, tile, out var tileRef) // Sunrise added
+                || tileRef.Tile.IsEmpty) // Sunrise added
             {
                 continue;
             }

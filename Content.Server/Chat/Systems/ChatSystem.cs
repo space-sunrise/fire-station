@@ -1049,7 +1049,9 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         var msg = message;
 
+        /* Fire edit - В ПИЗДУ
         msg = _wordreplacement.ApplyReplacements(msg, ChatSanitizeAccent);
+        */
 
         return msg;
     }

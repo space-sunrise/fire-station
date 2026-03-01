@@ -1,5 +1,6 @@
 - type: entity
   id: WeaponPistolMk58Nonlethal
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: [WeaponPistolMk58, BaseSecurityContraband]
   suffix: Non-lethal
   components:
@@ -26,6 +27,7 @@
   name: N1984
   parent: [ WeaponPistolN1984, BaseSecurityContraband ]
   id: WeaponPistolN1984Nonlethal
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Non-lethal
   components:
   - type: ItemSlots

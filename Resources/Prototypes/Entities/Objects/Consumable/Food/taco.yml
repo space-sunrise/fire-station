@@ -72,6 +72,7 @@
   name: beef taco
   parent: FoodTacoBase
   id: FoodTacoBeef
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A very basic and run of the mill beef taco, now with cheese!
   components:
   - type: Sprite
@@ -81,6 +82,7 @@
   name: chicken taco
   parent: FoodTacoBase
   id: FoodTacoChicken
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A very basic and run of the mill chicken taco, now with cheese!
   components:
   - type: Sprite
@@ -90,6 +92,7 @@
   name: fish taco
   parent: FoodTacoBase
   id: FoodTacoFish
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Sounds kinda gross, but it's actually not that bad.
   components:
   - type: FlavorProfile
@@ -112,6 +115,7 @@
   name: rat taco
   parent: FoodTacoBase
   id: FoodTacoRat
+  categories: [ HideSpawnMenu ] # Fire edit
   description: Yeah, that looks about right...
   components:
   - type: Sprite
@@ -130,6 +134,7 @@
   name: beef taco supreme
   parent: FoodTacoBase
   id: FoodTacoBeefSupreme
+  categories: [ HideSpawnMenu ] # Fire edit
   description: It's like a regular beef taco, but supreme!
   components:
   - type: Sprite
@@ -148,6 +153,7 @@
   name: chicken taco supreme
   parent: FoodTacoBase
   id: FoodTacoChickenSupreme
+  categories: [ HideSpawnMenu ] # Fire edit
   description: It's like a regular chicken taco, but supreme!
   components:
   - type: Sprite

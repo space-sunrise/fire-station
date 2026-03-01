@@ -496,7 +496,7 @@
       - !type:NestedSelector
         weight: 0.5
         tableId: LowValueCrateTable
-      - id: ComputerBroken
+      - id: ScpComputerBroken # Fire edit
         weight: 0.1
       - id: CrateGeneric
         weight: 0.25

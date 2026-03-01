@@ -30,6 +30,8 @@ public sealed class GrainOverlaySystem : ComponentOverlaySystem<GrainOverlay, Gr
     {
         base.Shutdown();
 
+        Overlay.Dispose();
+
         _cfg.UnsubValueChanged(ScpCCVars.GrainToggleOverlay, ToggleGrainOverlay);
         _cfg.UnsubValueChanged(ScpCCVars.GrainStrength, SetBaseStrength);
     }

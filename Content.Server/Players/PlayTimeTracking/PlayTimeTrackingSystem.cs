@@ -324,11 +324,14 @@ public sealed class PlayTimeTrackingSystem : EntitySystem
             : [];
         // Sunrise-Sponsors-End
 
+        // Fire edit start - disallowed list should contain jobs the player cannot take.
+        var selectedCharacter = (HumanoidCharacterProfile?) _preferencesManager.GetPreferences(player.UserId).SelectedCharacter;
         foreach (var job in _prototypes.EnumeratePrototypes<JobPrototype>())
         {
-            if (JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, (HumanoidCharacterProfile?) _preferencesManager.GetPreferences(player.UserId).SelectedCharacter, sponsorPrototypes)) // Sunrise-Sponsors
+            if (!JobRequirements.TryRequirementsMet(job, playTimes, out _, EntityManager, _prototypes, selectedCharacter, sponsorPrototypes)) // Sunrise-Sponsors
                 roles.Add(job.ID);
         }
+        // Fire edit end
 
         return roles;
     }

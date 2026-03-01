@@ -1,6 +1,9 @@
 ent-ScpAirlockAdministration = { ent-ScpAirlock }
     .suffix = SCP Administration
     .desc = { ent-ScpAirlock.desc }
+ent-ScpAirlockLogotype = { ent-ScpAirlock }
+    .suffix = Logotype
+    .desc = Airlock with a large SCP logo and a key card scanner
 ent-ScpAirlockRegionalAdministration = { ent-ScpAirlockAdministration }
     .suffix = SCP Regional Administration
     .desc = { ent-ScpAirlockAdministration.desc }

@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerAlert
+  categories: [ HideSpawnMenu ] # Fire edit
   name: atmospheric alerts computer
   description: Used to access the station's atmospheric automated alert system.
   components:
@@ -58,6 +59,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerAtmosMonitoring
+  categories: [ HideSpawnMenu ] # Fire edit
   name: atmospheric network monitor
   description: Used to monitor the station's atmospheric networks.
   components:
@@ -95,6 +97,7 @@
 - type: entity
   parent: BaseComputer
   id: ComputerEmergencyShuttle
+  categories: [ HideSpawnMenu ] # Fire edit
   name: emergency shuttle console
   description: Handles authorization to early launch the shuttle.
   components:
@@ -161,6 +164,7 @@
 - type: entity
   parent: BaseComputerShuttle
   id: ComputerShuttle
+  categories: [ HideSpawnMenu ] # Fire edit
   name: shuttle console
   description: Used to pilot a shuttle.
   components:
@@ -182,6 +186,7 @@
 - type: entity
   parent: BaseComputerShuttle
   id: ComputerShuttleSyndie
+  categories: [ HideSpawnMenu ] # Fire edit
   name: syndicate shuttle console
   description: Used to pilot a syndicate shuttle.
   components:
@@ -214,6 +219,7 @@
 - type: entity
   parent: BaseComputerShuttle
   id: ComputerShuttleCargo
+  categories: [ HideSpawnMenu ] # Fire edit
   name: cargo shuttle console
   description: Used to pilot the cargo shuttle.
   components:
@@ -246,6 +252,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerIFF
+  categories: [ HideSpawnMenu ] # Fire edit
   name: IFF computer
   description: Allows you to control the IFF characteristics of this vessel.
   components:
@@ -277,6 +284,7 @@
 - type: entity
   parent: ComputerIFF
   id: ComputerIFFSyndicate
+  categories: [ HideSpawnMenu ] # Fire edit
   name: IFF computer
   suffix: Syndicate
   description: Allows you to control the IFF and stealth characteristics of this vessel.
@@ -299,6 +307,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerPowerMonitoring
+  categories: [ HideSpawnMenu ] # Fire edit
   name: power monitoring computer
   description: It monitors power levels across the station.
   components:
@@ -341,6 +350,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerMedicalRecords
+  categories: [ HideSpawnMenu ] # Fire edit
   name: medical records computer
   description: This can be used to check medical records.
   components:
@@ -366,6 +376,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerCriminalRecords
+  categories: [ HideSpawnMenu ] # Fire edit
   name: criminal records computer
   description: This can be used to check criminal records. Only security can modify them.
   components:
@@ -405,6 +416,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerStationRecords
+  categories: [ HideSpawnMenu ] # Fire edit
   name: station records computer
   description: This can be used to check station records.
   components:
@@ -438,6 +450,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerCrewMonitoring
+  categories: [ HideSpawnMenu ] # Fire edit
   name: crew monitoring console
   description: Used to monitor active health sensors built into most of the crew's uniforms.
   components:
@@ -477,6 +490,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerResearchAndDevelopment
+  categories: [ HideSpawnMenu ] # Fire edit
   name: R&D computer
   description: A computer used to interface with R&D tools.
   components:
@@ -527,6 +541,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerAnalysisConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   name: analysis console
   description: A computer used to interface with the artifact analyzer.
   components:
@@ -576,6 +591,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerId
+  categories: [ HideSpawnMenu ] # Fire edit
   name: ID card computer
   description: Terminal for programming Nanotrasen employee ID cards to access parts of the station.
   components:
@@ -757,6 +773,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: computerBodyScanner
+  categories: [ HideSpawnMenu ] # Fire edit
   name: body scanner computer
   description: A body scanner.
   components:
@@ -772,6 +789,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerComms
+  categories: [ HideSpawnMenu ] # Fire edit
   name: communications computer
   description: A computer used to make station wide announcements via keyboard, set the appropriate alert level, and call the emergency shuttle.
   components:
@@ -815,6 +833,7 @@
 - type: entity
   parent: ComputerComms
   id: SyndicateComputerComms
+  categories: [ HideSpawnMenu ] # Fire edit
   name: syndicate communications computer
   description: A computer capable of remotely hacking into the station's communications systems. Using this to make an announcement will alert the station to your presence.
   components:
@@ -884,6 +903,7 @@
 - type: entity
   parent: ComputerComms
   id: CentcommComputerComms
+  categories: [ HideSpawnMenu ] # Fire edit
   name: central command communications computer
   description: A computer used to make world wide announcements via keyboard. The superior cousin of the regular communications computer.
   components:
@@ -916,6 +936,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerSolarControl
+  categories: [ HideSpawnMenu ] # Fire edit
   name: solar control computer
   description: A controller for solar panel arrays.
   components:
@@ -954,6 +975,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerRadar
+  categories: [ HideSpawnMenu ] # Fire edit
   name: mass scanner computer
   description: A computer for detecting nearby bodies, displaying them by position and mass.
   components:
@@ -987,6 +1009,7 @@
 
 - type: entity
   id: ComputerCargoOrders
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerAiAccess
   name: cargo request computer
   description: Used to order supplies and approve requests.
@@ -1040,6 +1063,7 @@
 # Request console variants.
 - type: entity
   id: ComputerCargoOrdersEngineering
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerCargoOrders
   name: engineering request computer
   description: Used by the engineering department to order supplies.
@@ -1073,6 +1097,7 @@
 
 - type: entity
   id: ComputerCargoOrdersMedical
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerCargoOrders
   name: medical request computer
   description: Used by the medical department to order supplies.
@@ -1106,6 +1131,7 @@
 
 - type: entity
   id: ComputerCargoOrdersScience
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerCargoOrders
   name: science request computer
   description: Used by the science department to order supplies.
@@ -1139,6 +1165,7 @@
 
 - type: entity
   id: ComputerCargoOrdersSecurity
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerCargoOrders
   name: security request computer
   description: Used by the security department to order supplies.
@@ -1172,6 +1199,7 @@
 
 - type: entity
   id: ComputerCargoOrdersService
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerCargoOrders
   name: service request computer
   description: Used by the service department to order supplies.
@@ -1205,6 +1233,7 @@
 
 - type: entity
   id: ComputerCargoBounty
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerAiAccess
   name: cargo bounty computer
   description: Used to manage currently active bounties.
@@ -1246,6 +1275,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerFundingAllocation
+  categories: [ HideSpawnMenu ] # Fire edit
   name: funding allocation computer
   description: Terminal for controlling the distribution of funds and pay to departments.
   components:
@@ -1283,6 +1313,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerCloningConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   name: cloning console computer
   description: The centerpiece of the cloning system, medicine's greatest accomplishment. It has lots of ports and wires.
   components:
@@ -1425,6 +1456,7 @@
 - type: entity
   parent: BaseComputer
   id: ComputerSurveillanceCameraMonitor
+  categories: [ HideSpawnMenu ] # Fire edit
   name: camera monitor
   description: A surveillance camera monitor. You're watching them. Maybe.
   components:
@@ -1464,6 +1496,7 @@
 - type: entity
   parent: BaseComputer
   id: ComputerSurveillanceWirelessCameraMonitor
+  categories: [ HideSpawnMenu ] # Fire edit
   name: wireless camera monitor
   description: A wireless surveillance camera monitor. You're watching them. Maybe.
   components:
@@ -1519,6 +1552,7 @@
 
 - type: entity
   id: ComputerPalletConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerAiAccess
   name: cargo sale computer
   description: Used to sell goods loaded onto cargo pallets.
@@ -1562,6 +1596,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerMassMedia
+  categories: [ HideSpawnMenu ] # Fire edit
   name: news manager console
   description: Write your message to the world!
   components:
@@ -1603,7 +1638,7 @@
   # Putting this as "DO NOT MAP" until the performance issues are fixed.
   # And it's more fleshed out.
   suffix: TESTING, DO NOT MAP
-  categories: [ DoNotMap ]
+  categories: [ DoNotMap, HideSpawnMenu ] # Fire edit
   components:
     - type: Sprite
       layers:
@@ -1646,6 +1681,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerRoboticsControl
+  categories: [ HideSpawnMenu ] # Fire edit
   name: robotics control console
   description: Used to remotely monitor the station's cyborgs.
   components:
@@ -1730,6 +1766,7 @@
 
 - type: entity
   id: StationAiUploadComputer
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputer
   name: AI upload console
   description: Used to update the laws of the station AI.
@@ -1778,6 +1815,7 @@
 
 - type: entity
   id: StationAiFixerComputer
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputer
   name: AI restoration console
   description: Used to repair damaged artifical intelligences.

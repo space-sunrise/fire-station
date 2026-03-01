@@ -1,9 +1,8 @@
 ﻿using Robust.Shared.Audio;
-using Robust.Shared.GameStates;
 
-namespace Content.Shared._Scp.Other.EmitSoundRandomly;
+namespace Content.Server._Scp.Other.EmitSoundRandomly;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState, AutoGenerateComponentPause]
+[RegisterComponent, AutoGenerateComponentPause]
 public sealed partial class EmitSoundRandomlyComponent : Component
 {
     [DataField(required: true)]
@@ -15,6 +14,6 @@ public sealed partial class EmitSoundRandomlyComponent : Component
     [DataField]
     public TimeSpan CooldownVariation = TimeSpan.FromSeconds(10f);
 
-    [ViewVariables, AutoNetworkedField, AutoPausedField]
+    [ViewVariables, AutoPausedField]
     public TimeSpan? NextSoundTime;
 }

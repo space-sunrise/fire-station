@@ -22,6 +22,7 @@ public sealed class GrainOverlay : Overlay
     /// <summary>
     /// Текущая сила шейдера
     /// </summary>
+    [ViewVariables]
     public float CurrentStrength;
 
     public GrainOverlay()
