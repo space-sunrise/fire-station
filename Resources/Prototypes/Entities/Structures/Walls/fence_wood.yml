@@ -14,7 +14,7 @@
     tags:
     - Wooden
   - type: Sprite
-    sprite: Structures/Walls/wooden_fence.rsi
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi # Fire edit
     drawdepth: WallTops
   - type: Physics
     bodyType: Static

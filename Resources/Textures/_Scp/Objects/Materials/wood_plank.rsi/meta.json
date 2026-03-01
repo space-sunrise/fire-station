@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "Sprited by peperino0290_92944(discord) for Fire Station",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "wood"
+    },
+    {
+      "name": "wood_2"
+    },
+    {
+      "name": "wood_3"
+    },
+    {
+      "name": "wood-inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "wood-inhand-right",
+      "directions": 4
+    }
+  ]
+}

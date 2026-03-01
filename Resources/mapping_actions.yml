@@ -82,13 +82,13 @@
 - entity: Table
   assignments:
   - 3: 1
-- entity: ChairWood
+- entity: ScpChairWood # Fire edit
   assignments:
   - 3: 2
-- entity: Chair
+- entity: ScpChair # Fire edit
   assignments:
   - 3: 3
-- entity: ChairOfficeLight
+- entity: ScpChairOfficeLight # Fire edit
   assignments:
   - 3: 4
 - entity: StoolBar
@@ -100,7 +100,7 @@
 - entity: Rack
   assignments:
   - 3: 8
-- entity: ChairOfficeDark
+- entity: ScpChairOfficeDark # Fire edit
   assignments:
   - 3: 5
 - entity: LampGold

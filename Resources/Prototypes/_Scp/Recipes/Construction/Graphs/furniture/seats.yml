@@ -1,0 +1,109 @@
+- type: constructionGraph
+  id: ScpSeat
+  start: start
+  graph:
+  - node: start
+    actions:
+    - !type:DestroyEntity {}
+    edges:
+    - to: chair
+      steps:
+      - material: Steel
+        amount: 1
+        doAfter: 1
+    - to: chairOffice
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+    - to: chairOfficeDark
+      steps:
+      - material: Steel
+        amount: 2
+        doAfter: 1
+    - to: chairWood
+      steps:
+      - material: WoodPlank
+        amount: 3
+        doAfter: 1
+    - to: chairWoodBench
+      steps:
+      - material: WoodPlank
+        amount: 4
+        doAfter: 2
+    - to: chairWoodWings
+      steps:
+      - material: WoodPlank
+        amount: 3
+        doAfter: 1
+
+  - node: chair
+    entity: ScpChair
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+      steps:
+      - tool: Screwing
+        doAfter: 1
+
+  - node: chairOffice
+    entity: ScpChairOfficeLight
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+
+  - node: chairOfficeDark
+    entity: ScpChairOfficeDark
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: SheetSteel1
+        amount: 2
+      steps:
+      - tool: Screwing
+        doAfter: 1
+
+  - node: chairWood
+    entity: ScpChairWood
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 3
+      steps:
+      - tool: Screwing
+        doAfter: 1
+
+  - node: chairWoodBench
+    entity: ScpWoodenBench
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 4
+      steps:
+      - tool: Screwing
+        doAfter: 2
+
+  - node: chairWoodWings
+    entity: ChairWoodWings
+    edges:
+    - to: start
+      completed:
+      - !type:SpawnPrototype
+        prototype: MaterialWoodPlank1
+        amount: 3
+      steps:
+      - tool: Screwing
+        doAfter: 1

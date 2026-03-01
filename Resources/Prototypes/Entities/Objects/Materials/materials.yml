@@ -280,12 +280,14 @@
     - wood_2
     - wood_3
   - type: Sprite
+    sprite: _Scp/Objects/Materials/wood_plank.rsi # Fire added
     state: wood
     layers:
     - state: wood
       map: ["base"]
   - type: Appearance
   - type: Item
+    sprite: _Scp/Objects/Materials/wood_plank.rsi # Fire added
     heldPrefix: wood
   - type: Tag
     tags:

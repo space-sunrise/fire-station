@@ -226,7 +226,7 @@
     - type: Seed
       seedId: towercap
     - type: Sprite
-      sprite: Objects/Specific/Hydroponics/towercap.rsi
+      sprite: _Scp/Objects/Specific/Hydroponics/towercap.rsi # Fire edit
 
 - type: entity
   parent: SeedBase

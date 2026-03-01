@@ -195,7 +195,7 @@
   parent: ProduceBase
   components:
   - type: Sprite
-    sprite: Objects/Specific/Hydroponics/towercap.rsi
+    sprite: _Scp/Objects/Specific/Hydroponics/towercap.rsi
   - type: Item
     heldPrefix: produce
   - type: SolutionContainerManager

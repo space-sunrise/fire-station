@@ -1,7 +1,7 @@
 {
     "version": 1,
     "license": "CLA",
-    "copyright": "Сreated by odlieerr(Discord) | Odleer(Space Station 14)",
+    "copyright": "Сreated by odlieerr(Discord) | Odleer(Space Station 14). Wooden sprited by peperino0290_92944(discord) for Fire Station",
     "size": {
         "x": 32,
         "y": 32
@@ -18,6 +18,13 @@
         },
         {
             "name": "stairs_stage_steel"
+        },
+        {
+            "name": "stairs_stage_wood"
+        },
+        {
+            "name": "stairs_wood",
+            "directions": 4
         }
     ]
 }

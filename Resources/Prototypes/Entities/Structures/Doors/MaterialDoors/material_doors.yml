@@ -228,7 +228,7 @@
   - type: Pierceable
     level: Wood
   - type: Sprite
-    sprite: Structures/Doors/MineralDoors/wood_door.rsi
+    sprite: _Scp/Structures/Doors/MineralDoors/wood_door.rsi # Fire edit
   - type: Door
     openSound:
       path: /Audio/Effects/door_open.ogg

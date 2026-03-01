@@ -12,7 +12,7 @@
   components:
   - type: InteractionOutline
   - type: Sprite
-    sprite: Structures/barricades.rsi
+    sprite: _Scp/Structures/barricades.rsi # Fire edit
     state: barricade_full
     drawdepth: BlastDoors
     noRot: true

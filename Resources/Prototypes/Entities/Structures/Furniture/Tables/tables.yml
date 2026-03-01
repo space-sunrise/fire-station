@@ -938,9 +938,9 @@
   description: Do not apply fire to this. Rumour says it burns easily.
   components:
   - type: Sprite
-    sprite: Structures/Furniture/Tables/counterwood.rsi
+    sprite: _Scp/Structures/Furniture/Tables/counterwood.rsi # Fire edit
   - type: Icon
-    sprite: Structures/Furniture/Tables/counterwood.rsi
+    sprite: _Scp/SStructures/Furniture/Tables/counterwood.rsi # Fire edit
     state: full
   - type: Damageable
     damageContainer: StructuralInorganic
