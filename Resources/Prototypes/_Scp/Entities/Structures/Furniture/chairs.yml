@@ -98,7 +98,7 @@
     node: chairCursed
 
 - type: entity
-  id: ChairWoodWings
+  id: ScpChairWoodWings
   parent: ScpChairWood
   name: wooden chair with wings
   components:
