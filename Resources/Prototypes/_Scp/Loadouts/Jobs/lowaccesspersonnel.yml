@@ -1,0 +1,23 @@
+﻿- type: loadout
+  id: ScpClothingNeckPrisonLockdownPin
+  groupBy: "prison"
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: LowAccessPersonnel # Fire edit
+      time: 360000 # 100 hrs
+  equipment:
+    neck: ClothingNeckPlanetPrisonLockdownPin
+
+- type: loadout
+  id: ScpClothingNeckPrisonCellblockPin
+  groupBy: "prison"
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: LowAccessPersonnel # Fire edit
+      time: 180000 # 50 hrs
+  equipment:
+    neck: ClothingNeckPlanetPrisonCellblockPin

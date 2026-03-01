@@ -24,3 +24,14 @@
   id: EthicsCommitteeRepresentativeCoatOpen
   equipment:
     outerClothing: ClothingOuterCoatBlackFancyOpen
+
+# Печать
+- type: loadout
+  id: RubberStampVeto
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Administration
+  storage:
+    back:
+    - RubberStampVeto
+  groupBy: "folders"

@@ -302,6 +302,11 @@
   - BoxFolderClipboardThreePapers
   - RubberStampVeto
 
+# Медицинская служба
+
+
+# Инженерно-техническая служба
+
 # Научная служба
 
 - type: loadoutGroup
@@ -322,8 +327,8 @@
   minLimit: 0
   maxLimit: 1
   loadouts:
-  - ClothingNeckPlanetPrisonCellblockPin
-  - ClothingNeckPlanetPrisonLockdownPin
+  - ScpClothingNeckPrisonCellblockPin
+  - ScpClothingNeckPrisonLockdownPin
 
 # Общие
 
@@ -348,32 +353,33 @@
   - PlushieSpaceLizard
   # поджигаемое
   - ThreeCandles
-  - Lighter
-  - CigPackGreen
-  - CigPackRed
-  - CigPackBlue
-  - CigPackBlack
-  - CigarCase
-  - CigarGold
-  # для бюрократии
-  - CorporateLaw
+  - ScpLighter
+  - ScpCigPackGreen
+  - ScpCigPackRed
+  - ScpCigPackBlue
+  - ScpCigPackBlack
+  - ScpCigarCase
+  - ScpCigarGold
+  # бюрократия
+  - LegalCodeForPersonnel
   # какие-то обертки
   - ClothingWraps
   - ClothingWrapsHigh
   # трости
   - OffsetCane
   - OffsetCaneWood
-  - Cane
+  - ScpCane
   # полотенчики
-  - TowelColorWhite
-  - TowelColorGray
-  - TowelColorBlack
-  - TowelColorRed
-  - TowelColorOrange
-  - TowelColorLightBrown
-  - TowelColorYellow
-  - TowelColorDarkGreen
-  - TowelColorLightBlue
-  - TowelColorDarkBlue
-  - TowelColorPurple
-  - TowelColorGold
+  - ScpTowelColorWhite
+  - ScpTowelColorGray
+  - ScpTowelColorBlack
+  - ScpTowelColorRed
+  - ScpTowelColorOrange
+  - ScpTowelColorLightBrown
+  - ScpTowelColorYellow
+  - ScpTowelColorDarkGreen
+  - ScpTowelColorLightBlue
+  - ScpTowelColorDarkBlue
+  - ScpTowelColorPurple
+  - ScpTowelColorSilver
+  - ScpTowelColorGold

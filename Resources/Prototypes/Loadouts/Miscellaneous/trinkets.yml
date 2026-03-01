@@ -319,8 +319,8 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobEthicsCommitteeRepresentative # Fire edit
-      time: 18000 # 5hrs. Fire edit
+      role: JobLibrarian
+      time: 3600 # 1hr same as Jamjar.
   storage:
     back:
     - Cane
@@ -339,9 +339,9 @@
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
-      !type:DepartmentTimeRequirement
-      department: ExternalAdministrativeZoneSecurityService # Fire edit
-      time: 360000 # 100hr
+      !type:RoleTimeRequirement
+      role: JobPassenger
+      time: 100h
   storage:
     back:
     - TowelColorGray
@@ -350,10 +350,11 @@
 - type: loadout
   id: TowelColorBlack
   effects:
-  # Fire edit start
-  - !type:GroupLoadoutEffect
-    proto: TowelColorGoldAndDinkystar
-  # Fire edit end
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChaplain
+      time: 100h
   storage:
     back:
     - TowelColorBlack
@@ -365,7 +366,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: HeavyContainmentSecurityService # Fire edit
+      department: Cargo
       time: 360000 # 100hr
   storage:
     back:
@@ -378,7 +379,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: LowAccessPersonnel # Fire edit
+      department: FoodAndSanitationServiceDepartment # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -391,7 +392,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: LogisticsService # Fire edit
+      department: Administration # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -417,7 +418,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: FoodAndSanitationServiceDepartment # Fire Edit
+      department: MedicalService # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -440,11 +441,18 @@
 - type: loadout
   id: TowelColorLightBlue
   effects:
+  # Fire edit start
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: MedicalService # Fire edit
-      time: 360000 # 100hr
+      department: HeavyContainmentSecurityService
+      time: 180000 #50 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService
+      time: 180000 #50 hrs
+  # Fire edit end
   storage:
     back:
     - TowelColorLightBlue
@@ -456,7 +464,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: Administration # Fire Edit
+      department: ExternalAdministrativeZoneSecurityService # Fire Edit
       time: 360000 # 100hr
   storage:
     back:
@@ -468,8 +476,8 @@
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
-      !type:DepartmentTimeRequirement
-      department: ScientificService # Fire edit
+      !type:RoleTimeRequirement
+      role: JobDirector # Fire edit
       time: 360000 # 100hr
   storage:
     back:
@@ -520,8 +528,9 @@
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
-      !type:OverallPlaytimeRequirement
-      time: 1080000 # 300 часов общих часов. Fire Edit
+      !type:RoleTimeRequirement
+      role: JobServicePersonnel # Fire Edit
+      time: 360000 # 100hr
   storage:
     back:
     - TowelColorGold

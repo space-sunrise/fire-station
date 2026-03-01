@@ -362,7 +362,7 @@
   effects:
   # Fire edit start
   - !type:GroupLoadoutEffect
-    proto: TowelColorGoldAndDinkystar
+    proto: TowelColorBlackAndDinkystar
   # Fire edit end
   storage:
     back:
