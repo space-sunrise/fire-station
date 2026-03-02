@@ -5,6 +5,7 @@ using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.Damage.Components;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
+using Content.Shared.Interaction;
 using Content.Shared.Mobs;
 using Content.Shared.Rounding;
 using JetBrains.Annotations;
@@ -24,6 +25,8 @@ public abstract partial class SharedScp096System
     {
         SubscribeLocalEvent<Scp096FaceComponent, DamageChangedEvent>(OnFaceDamageChanged);
         SubscribeLocalEvent<Scp096FaceComponent, MobStateChangedEvent>(OnFaceMobStateChanged);
+        SubscribeLocalEvent<Scp096FaceComponent, AccessibleOverrideEvent>(OnFaceAccessible);
+        SubscribeLocalEvent<Scp096FaceComponent, InRangeOverrideEvent>(OnFaceInRange);
 
         SubscribeLocalEvent<Scp096Component, HealingRelayEvent>(OnHealingRelay);
         SubscribeLocalEvent<Scp096Component, ExaminableDamageRelayEvent>(OnExaminableRelay);
@@ -67,6 +70,38 @@ public abstract partial class SharedScp096System
                 RemCompDeferred<ActiveScp096WithoutFaceComponent>(ent.Comp.FaceOwner.Value);
                 break;
         }
+    }
+
+    /// <summary>
+    /// Обрабатывает событие <see cref="AccessibleOverrideEvent"/> и устанавливает значение на true.
+    /// Это дает доступ к лечению лица
+    /// </summary>
+    private void OnFaceAccessible(Entity<Scp096FaceComponent> ent, ref AccessibleOverrideEvent args)
+    {
+        if (!TryComp<DamageableComponent>(ent, out var damageable))
+            return;
+
+        if (damageable.TotalDamage <= FixedPoint2.Zero)
+            return;
+
+        args.Accessible = true;
+        args.Handled = true;
+    }
+
+    /// <summary>
+    /// Обрабатывает событие <see cref="InRangeOverrideEvent"/> и устанавливает значение на true.
+    /// Это дает доступ к лечению лица
+    /// </summary>
+    private void OnFaceInRange(Entity<Scp096FaceComponent> ent, ref InRangeOverrideEvent args)
+    {
+        if (!TryComp<DamageableComponent>(ent, out var damageable))
+            return;
+
+        if (damageable.TotalDamage <= FixedPoint2.Zero)
+            return;
+
+        args.InRange = true;
+        args.Handled = true;
     }
 
     /// <summary>
