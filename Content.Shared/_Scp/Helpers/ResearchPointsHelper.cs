@@ -2,6 +2,7 @@
 using Content.Shared.Research.Prototypes;
 using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
+using System.Text;
 
 namespace Content.Shared._Scp.Helpers;
 
@@ -25,6 +26,43 @@ public sealed class ResearchPointsHelper : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<PrototypesReloadedEventArgs>(_ => CachedCost.Clear());
+    }
+
+    /// <summary>
+    /// Конвертирует словарь очков в читаемый массив следующего формата
+    /// <code>
+    /// name: quantity(separator)name: quantity
+    /// </code>
+    /// </summary>
+    /// <param name="points">Словарь очков исследований</param>
+    /// <param name="separator">Разделитель между разными очками</param>
+    /// <param name="proto"><see cref="IPrototypeManager"/></param>
+    /// <param name="loc"><see cref="ILocalizationManager"/></param>
+    /// <returns>Отформатированную строку</returns>
+    [PublicAPI]
+    public static string PointsToString(Dictionary<ProtoId<ResearchPointPrototype>, int> points, string separator = "\n", IPrototypeManager? proto = null, ILocalizationManager? loc = null)
+    {
+        proto ??= IoCManager.Resolve<IPrototypeManager>();
+        loc ??= IoCManager.Resolve<ILocalizationManager>();
+
+        var sb = new StringBuilder();
+        var first = true;
+
+        foreach (var (pointType, value) in points)
+        {
+            // Лучший из доступных вариантов в RT, чтобы не применять разделитель для одного элемента в словаре
+            if (!first)
+                sb.Append(separator);
+
+            first = false;
+
+            var pointPrototype = proto.Index(pointType);
+            sb.Append(loc.GetString(pointPrototype.Name))
+                .Append(": ")
+                .Append(value);
+        }
+
+        return sb.ToString();
     }
 
     /// <summary>
