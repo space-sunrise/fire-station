@@ -118,11 +118,11 @@
   suffix: White
   components:
   - type: Sprite
+    # Fire edit start
     layers:
-    - state: chair-greyscale
-      # Fire edit start
+    - state: chair_grayscale_legs
       color: "#8C8D8F"
-    - state: chair-greyscaleL2
+    - state: chair_grayscale_seat
       color: "#FFFFFF"
       # Fire edit end
 
