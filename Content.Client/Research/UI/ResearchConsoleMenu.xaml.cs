@@ -100,20 +100,19 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
 
     private void UpdateRediscoverButton()
     {
-        // Fire edit - поддержка разных видов очков исследований
+        // Fire edit start- поддержка разных видов очков исследований
         RediscoverButton.Disabled = !HasAccess() || !ResearchPointsHelper.IsEnoughPoints(_serverPoints, _rediscoverCost) || _timing.CurTime < _nextRediscover;
-        RediscoverButton.Text = Loc.GetString("research-console-menu-server-rediscover-button", ("cost", _rediscoverCost));
+
+        var cost = ResearchPointsHelper.PointsToString(_rediscoverCost, " ", _prototype);
+        RediscoverButton.Text = Loc.GetString("research-console-menu-server-rediscover-button", ("cost", cost));
+        // Fire edit end
     }
 
     public void UpdateInformationPanel(ResearchConsoleBoundInterfaceState state)
     {
-        var totalPoints = string.Empty;
-
-        foreach (var (pointType, value) in state.Points)
-        {
-            var pointPrototype = _prototype.Index<ResearchPointPrototype>(pointType);
-            totalPoints += $"{Loc.GetString(pointPrototype.Name)}: {value}  ";
-        }
+        // Fire edit start- поддержка разных видов очков исследований
+        var totalPoints = "\n" + ResearchPointsHelper.PointsToString(state.Points, proto: _prototype);
+        // Fire edit end
 
         var amountMsg = new FormattedMessage();
 
