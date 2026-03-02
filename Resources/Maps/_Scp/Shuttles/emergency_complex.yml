@@ -1,16 +1,16 @@
 meta:
   format: 7
-  category: Map
+  category: Grid
   engineVersion: 271.1.0
   forkId: fire_station
   forkVersion: e328d568b78c610484cff24b45c2694730b1137b
-  time: 03/02/2026 14:45:35
-  entityCount: 658
-maps:
-- 2
+  time: 03/02/2026 15:16:10
+  entityCount: 657
+maps: []
 grids:
 - 1
-orphans: []
+orphans:
+- 1
 nullspace: []
 tilemap:
   0: Space
@@ -30,7 +30,7 @@ entities:
       name: Бронированный эвакуационный шаттл
     - type: Transform
       pos: 0.0859375,-1.15625
-      parent: 2
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -351,16 +351,6 @@ entities:
       color: '#AFEEEEFF'
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
-  - uid: 2
-    components:
-    - type: MetaData
-      name: Map Entity
-    - type: Transform
-    - type: Map
-      mapPaused: True
-    - type: GridTree
-    - type: Broadphase
-    - type: OccluderTree
 - proto: AirAlarm
   entities:
   - uid: 367
