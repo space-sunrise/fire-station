@@ -6,11 +6,12 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: HeavyContainmentSecurityService
-    time: 54000
+    time: 43200
   icon: JobHeavyContainmentZoneCommandant
   supervisors: job-supervisors-security-commander
   canBeAntag: false
   displayWeight: 70
+  weight: 845
   accessGroups:
   - SecurityCommandant
   special:

@@ -72,7 +72,7 @@
   - type: StorageFill
     contents:
     - id: WeaponLightMachineGunL6
-    - id: MagazineLightRifleBoxSP
+    - id: MagazineRifleBoxSP
 
 - type: entity
   parent: CrateCommandSecure

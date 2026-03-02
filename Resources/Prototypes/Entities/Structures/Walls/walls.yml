@@ -9,6 +9,10 @@
     snap:
     - Wall
   components:
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
   - type: RangedDamageSound
     soundGroups:
       Brute:
@@ -98,6 +102,7 @@
   parent: BaseWall
   id: WallBrick
   name: brick wall
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pierceable
     level: Metal
@@ -135,6 +140,7 @@
   parent: BaseWall
   id: WallClock
   name: clock wall
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Walls/clock.rsi
@@ -164,6 +170,7 @@
   parent: BaseWall
   id: WallClown
   name: bananium wall
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Walls/clown.rsi
@@ -209,6 +216,7 @@
   id: WallMeat
   name: meat wall
   description: Sticky.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Tag
     tags:
@@ -242,6 +250,7 @@
   parent: BaseWall
   id: WallCult
   name: cult wall
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Walls/cult.rsi
@@ -255,7 +264,7 @@
       behaviors:
       - !type:SpawnEntitiesBehavior
         spawn:
-          Girder:
+          CultGirder: # sunrise-edit
             min: 1
             max: 1
       - !type:DoActsBehavior
@@ -279,7 +288,7 @@
   - type: Tag
     tags:
     - Wall
-    - Debug
+
   - type: Sprite
     sprite: Structures/Walls/debug.rsi
   - type: Icon
@@ -505,13 +514,14 @@
   id: WallPlastitaniumIndestructible
   name: plastitanium wall
   suffix: indestructible
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Ricochetable
     chance: 1
   - type: Sprite
-    sprite: Structures/Walls/plastitanium.rsi
+    sprite: _Sunrise/Structures/Walls/plastitanium.rsi # Sunrise-edit
   - type: Icon
-    sprite: Structures/Walls/plastitanium.rsi
+    sprite: _Sunrise/Structures/Walls/plastitanium.rsi # Sunrise-edit
   - type: IconSmooth
     key: walls
     base: plastitanium
@@ -537,6 +547,7 @@
   id: WallPlastitanium
   name: plastitanium wall
   suffix: ""
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Destructible
     thresholds:
@@ -557,13 +568,14 @@
   id: WallPlastitaniumDiagonalIndestructible
   name: plastitanium wall
   suffix: diagonal, indestructible
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: Structures/Walls/plastitanium_diagonal.rsi
+    sprite: _Sunrise/Structures/Walls/plastitanium_diagonal.rsi # Sunrise-edit
     state: state0
   - type: Icon
-    sprite: Structures/Walls/plastitanium_diagonal.rsi
+    sprite: _Sunrise/Structures/Walls/plastitanium_diagonal.rsi # Sunrise-edit
     state: state0
   - type: Damageable
     damageContainer: StructuralInorganic
@@ -576,13 +588,14 @@
   id: WallPlastitaniumDiagonal
   name: plastitanium wall
   suffix: diagonal
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: Structures/Walls/plastitanium_diagonal.rsi
+    sprite: _Sunrise/Structures/Walls/plastitanium_diagonal.rsi # Sunrise-edit
     state: state0
   - type: Icon
-    sprite: Structures/Walls/plastitanium_diagonal.rsi
+    sprite: _Sunrise/Structures/Walls/plastitanium_diagonal.rsi # Sunrise-edit
     state: state0
   - type: Destructible
     thresholds:
@@ -605,6 +618,7 @@
   parent: BaseWall
   id: WallReinforced
   name: reinforced wall
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Pierceable
     level: HardenedMetal
@@ -679,6 +693,7 @@
   parent: WallReinforced
   id: WallReinforcedRust
   suffix: rusted
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Walls/solid_rust.rsi
@@ -718,6 +733,7 @@
   parent: WallDiagonalBase
   id: WallReinforcedDiagonal
   name: reinforced wall
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     drawdepth: Walls
@@ -759,6 +775,7 @@
   parent: BaseWall
   id: WallRiveted
   name: riveted wall
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Walls/riveted.rsi
@@ -863,18 +880,19 @@
   parent: WallDiagonalBase
   id: WallShuttleDiagonal
   name: shuttle wall
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: Structures/Walls/shuttle_diagonal.rsi
+    sprite: _Sunrise/Structures/Walls/shuttle_diagonal.rsi # Sunrise-edit
     state: state0
   - type: Icon
-    sprite: Structures/Walls/shuttle_diagonal.rsi
+    sprite: _Sunrise/Structures/Walls/shuttle_diagonal.rsi # Sunrise-edit
     state: state0
   - type: Physics
     bodyType: Static
-  #- type: Ricochetable Fire edit
-  #  chance: 1
+  - type: Ricochetable
+    chance: 1
   - type: Pullable
   - type: Airtight
     noAirWhenFullyAirBlocked: false
@@ -932,6 +950,7 @@
   parent: BaseWall
   id: WallShuttle
   name: shuttle wall
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Damageable
     damageContainer: StructuralInorganic
@@ -963,9 +982,9 @@
   - type: RadiationBlocker
     resistance: 5
   - type: Sprite
-    sprite: Structures/Walls/shuttle.rsi
+    sprite: _Sunrise/Structures/Walls/shuttle.rsi # Sunrise-edit
   - type: Icon
-    sprite: Structures/Walls/shuttle.rsi
+    sprite: _Sunrise/Structures/Walls/shuttle.rsi # Sunrise-edit
     state: full
   - type: Construction
     graph: Girder
@@ -985,11 +1004,11 @@
           3: { state: shuttle_construct-3, visible: true}
           4: { state: shuttle_construct-4, visible: true}
           5: { state: shuttle_construct-5, visible: true}
-  #- type: Reflect Fire edit
-  #  reflects: Energy
-  #  reflectProb: 1
-  #- type: Ricochetable
-  #  chance: 1
+  - type: Reflect
+    reflects: Energy
+    reflectProb: 1
+  - type: Ricochetable
+    chance: 1
   - type: Fixtures
     fixtures:
       fix1:
@@ -1003,9 +1022,10 @@
         density: 2000
 
 - type: entity
-  parent: BaseWall
+  parent: [BaseWall, BaseDeltaPressurePlasma]
   id: WallSolid
   name: solid wall
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Walls/solid.rsi
@@ -1049,6 +1069,7 @@
   parent: WallDiagonalBase
   id: WallSolidDiagonal
   name: solid wall
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     drawdepth: Walls
@@ -1086,6 +1107,7 @@
   parent: WallSolid
   id: WallSolidRust
   suffix: rusted
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Walls/solid_rust.rsi
@@ -1426,12 +1448,13 @@
 - type: entity
   parent: BaseWall
   id: WallMining
+  categories: [ HideSpawnMenu ] # Fire edit
   name: mining wall
   components:
   - type: Sprite
-    sprite: Structures/Walls/mining.rsi
+    sprite: _Sunrise/Structures/Walls/mining.rsi # Sunrise-edit
   - type: Icon
-    sprite: Structures/Walls/mining.rsi
+    sprite: _Sunrise/Structures/Walls/mining.rsi # Sunrise-edit
   - type: Destructible
     thresholds:
     - trigger:
@@ -1443,22 +1466,23 @@
   - type: IconSmooth
     key: walls
     base: mining
-  - type: RandomIconSmooth
-    randomStates:
-    - mining
+  # - type: RandomIconSmooth # sunrise-edit # We dont have diferent 2.5d sprites
+  #   randomStates:
+  #   - mining
   - type: Appearance
 
 - type: entity
   parent: WallDiagonalBase
   id: WallMiningDiagonal
+  categories: [ HideSpawnMenu ] # Fire edit
   name: mining wall
   components:
   - type: Sprite
     drawdepth: Walls
-    sprite: Structures/Walls/mining_diagonal.rsi
+    sprite: _Sunrise/Structures/Walls/mining_diagonal.rsi # Sunrise-edit
     state: state0
   - type: Icon
-    sprite: Structures/Walls/mining_diagonal.rsi
+    sprite: _Sunrise/Structures/Walls/mining_diagonal.rsi # Sunrise-edit
     state: state0
   - type: Damageable
     damageContainer: StructuralInorganic

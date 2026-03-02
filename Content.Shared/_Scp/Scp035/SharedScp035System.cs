@@ -52,7 +52,6 @@ public abstract class SharedScp035System : EntitySystem
         SubscribeLocalEvent<Scp035MaskComponent, ClothingGotEquippedEvent>(OnMaskEquipped);
         SubscribeLocalEvent<Scp035MaskComponent, ClothingGotUnequippedEvent>(OnMaskUnequipped);
         SubscribeLocalEvent<Scp035MaskComponent, BeingEquippedAttemptEvent>(OnEquippeAttempt);
-        SubscribeLocalEvent((Entity<Scp035MaskComponent> _, ref BeforeDamageChangedEvent args) => args.Cancelled = true);
 
         SubscribeLocalEvent<Scp035MaskUserComponent, MeleeHitEvent>(OnMeleeHit);
         SubscribeLocalEvent<Scp035MaskUserComponent, MaskStunActionEvent>(OnStun);

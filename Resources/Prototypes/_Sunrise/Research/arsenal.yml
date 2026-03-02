@@ -23,21 +23,24 @@
   cost: 12000
   recipeUnlocks:
   - SpeedLoaderMagnumAP
+  - MagazineMagnumAP
   - MagazinePistolAP
-  #- MagazinePistol40AP
+  - MagazinePistol40AP
   - MagazineRifleAP
   - MagazineLightRifleAP
   - MagazineBoxMagnumAP
   - MagazineBoxPistolAP
-  #- MagazineBoxPistol40AP
+  - MagazineBoxPistol40AP
   - MagazineBoxRifleAP
   - MagazineBoxLightRifleAP
-  - LightRifleHeavyMagazineAP
+  - MagazineLightRifleBeltBoxAP
   - MagazinePistolSubMachineGunAP
   - MagazinePistolSubMachineGunTopMountedAP
   - MagazinePistolHighCapacityAP
   - MagazineBoxHeavyRifleAP
   - MagazineRifleHeavyAP
+  - BoxShotgunFlechette
+  - SpeedLoaderShotgunFlechette
   radioChannels:
   - Security
 
@@ -107,13 +110,29 @@
   - DurandTargetingElectronics
   - WeaponMechCombatShotgun
   - WeaponMechCombatShotgunIncendiary
-  - WeaponMechCombatMG
   - PaintDurandExecutor
   - PaintDurandShire
   - PaintDurandOld
   - PowerCageHigh
   technologyPrerequisites:
   - Gygax
+  radioChannels:
+  - Security
+
+- type: technology
+  id: PortableIonWeaponry
+  name: research-technology-ion-technology
+  icon:
+    sprite: _Sunrise/Objects/Weapons/Guns/Battery/ion_rifle.rsi
+    state: base
+  discipline: Arsenal
+  tier: 3
+  cost: 15000
+  recipeUnlocks:
+  - WeaponIonCarbine
+  technologyPrerequisites:
+  - PortableMicrofusionWeaponry
+  - ThermalWeaponry
   radioChannels:
   - Security
 
@@ -135,15 +154,13 @@
 #  - MagazineMP5Extended
 #  - MagazineMP7Extended
 #  - MagazineRifleExtended
-#  - MagazineV31Extended
 #  - MagazineDragunovExtended
 #  radioChannels:
 #  - Security
 
-
 - type: technology
   id: CombatEquipment
-  name: research-technology-combat-equipment #
+  name: research-technology-combat-equipment
   icon:
     sprite: _Sunrise/Clothing/Shoes/magboots-combat.rsi
     state: icon
@@ -152,12 +169,50 @@
   cost: 12500
   recipeUnlocks:
   - ClothingShoesBootsMagCombat
-  - VestSecUpgrade
   - ModularReceiverAuto
   - LecterUpgrade
   - DrozdUpgrade
+  - ClothingHeadHelmetPubg
+  - VestSecUpgradeBullet
+  - VestSecUpgradeRiot
+  - VestSecUpgradeReflective
   technologyPrerequisites:
   - AdvancedRiotControl
+  radioChannels:
+  - Security
+
+- type: technology
+  id: AdvancedCombatEquipment
+  name: research-technology-advanced-combat-equipment
+  icon:
+    sprite: _Sunrise/Clothing/OuterClothing/Vests/web_armor_sec.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 3
+  cost: 20000
+  recipeUnlocks:
+  - VestSecUpgradeBulletHeavy
+  - VestSecUpgradeWeb
+  technologyPrerequisites:
+  - CombatEquipment
+  radioChannels:
+  - Security
+
+- type: technology
+  id: MiliraEquipment
+  name: research-technology-milira-equipment
+  icon:
+    sprite: _Sunrise/Clothing/OuterClothing/Armor/Milira/heavy.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
+  - ClothingOuterArmorMiliraLight
+  - ClothingOuterArmorMiliraHeavy
+  - ClothingOuterHardsuitMilira
+  - ClothingEyesHudMilira
+  - ClothingHeadHelmetEVAMilira
   radioChannels:
   - Security
 
@@ -175,4 +230,35 @@
   - MagazineBatteryLr30
   - WeaponEnergyGunPistol
   radioChannels:
+  - Security
+
+- type: technology
+  id: AdvancedSecBorgsCombatModules
+  name: research-technology-advance-secborgs-combat
+  icon:
+    sprite: Objects/Specific/Robotics/borgmodule.rsi
+    state: security
+  discipline: Arsenal
+  tier: 2
+  cost: 10000
+  recipeUnlocks:
+  - BorgModuleAdvancedCombat
+  radioChannels:
+  - Security
+
+- type: technology
+  id: HiTechShuttleWeapon
+  name: research-technology-hitech-shuttle-weapon
+  icon:
+    sprite: _Sunrise/Objects/Weapons/Guns/Ammunition/Boxes/heavyammobelt.rsi
+    state: icon
+  discipline: Arsenal
+  tier: 3
+  cost: 20000
+  recipeUnlocks:
+  - ShuttleGunTeslaHyperionCircuitboard
+  - ShuttleGunQuadlingCircuitboard
+  technologyPrerequisites:
+  - AdvancedShuttleWeapon
+  radioChannels: # Sunrise-Add
   - Security

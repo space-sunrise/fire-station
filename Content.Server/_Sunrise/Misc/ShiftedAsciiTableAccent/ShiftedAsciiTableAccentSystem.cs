@@ -28,7 +28,7 @@ public sealed class AnomalyAccentSystem : EntitySystem
 
         for (var i = 0; i < speechArray.Length; i++)
         {
-            if (!_random.Prob(0.5f))
+            if (!_random.Prob(0.1f)) // Fire edit
                 continue;
 
             // Сдвиг символа по алфавиту юникода

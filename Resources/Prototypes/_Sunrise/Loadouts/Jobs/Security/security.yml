@@ -1,4 +1,4 @@
-﻿- type: loadoutEffectGroup
+- type: loadoutEffectGroup
   id: MasterSecurity
   effects:
   # Fire edit start
@@ -19,8 +19,8 @@
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
-      !type:RoleTimeRequirement
-      role: JobSecurityOfficer
+      !type:DepartmentTimeRequirement
+      department: Security
       time: 360000 #100 hrs
 
 - type: loadout
@@ -157,6 +157,16 @@
     - ACP14Box
 
 - type: loadout
+  id: SnubRevolverBox
+  startingGear: SnubRevolverBox
+
+- type: startingGear
+  id: SnubRevolverBox
+  storage:
+    back:
+    - SnubRevolverBox
+
+- type: loadout
   id: MK58GoldBox
   startingGear: MK58GoldBox
   effects:
@@ -204,7 +214,7 @@
   id: WeaponTaser
   storage:
     back:
-    - WeaponTaser
+    - WeaponAdvancedTaser
 
 - type: loadoutEffectGroup
   id: MasterSecurityCam
@@ -227,3 +237,30 @@
   storage:
     back:
     - MasterHandheldCamera
+
+###
+- type: loadout
+  id: WeaponTaserBrigmed
+  startingGear: WeaponTaserBrigmed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterSecurity #MasterSecurityCam
+
+- type: startingGear
+  id: WeaponTaserBrigmed
+  storage:
+    back:
+    - WeaponAdvancedTaser
+
+- type: loadout
+  id: WeaponDominatorBrigmed
+  startingGear: WeaponDominatorBrigmed
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: MasterSecurityCam
+
+- type: startingGear
+  id: WeaponDominatorBrigmed
+  storage:
+    back:
+    - WeaponDominator

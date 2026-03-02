@@ -1,5 +1,4 @@
-﻿using Content.Server.Administration.Systems;
-using Content.Server.DoAfter;
+﻿using Content.Server.DoAfter;
 using Content.Server.Ghost.Roles.Components;
 using Content.Server.Hands.Systems;
 using Content.Server.NPC.HTN;
@@ -10,6 +9,7 @@ using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp049;
 using Content.Shared._Scp.Scp049.Scp049Protection;
+using Content.Shared.Administration.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
 using Content.Shared.IdentityManagement;

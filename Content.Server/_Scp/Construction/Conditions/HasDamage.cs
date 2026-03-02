@@ -1,5 +1,6 @@
 ﻿using Content.Shared.Construction;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Components;
 using Content.Shared.Examine;
 using Content.Shared.FixedPoint;
 using JetBrains.Annotations;

@@ -4,6 +4,7 @@
   id: BlastDoorExterior1
   parent: BlastDoor
   suffix: Autolink, Ext1
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: AutoLinkReceiver
       channel: Ext1
@@ -13,6 +14,7 @@
   id: BlastDoorExterior1Open
   parent: BlastDoorOpen
   suffix: Open, Autolink, Ext1
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: AutoLinkReceiver
       channel: Ext1
@@ -21,6 +23,7 @@
   id: BlastDoorExterior2
   parent: BlastDoor
   suffix: Autolink, Ext2
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: AutoLinkReceiver
       channel: Ext2
@@ -30,6 +33,7 @@
   id: BlastDoorExterior2Open
   parent: BlastDoorOpen
   suffix: Open, Autolink, Ext2
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: AutoLinkReceiver
       channel: Ext2
@@ -38,6 +42,7 @@
   id: BlastDoorExterior3
   parent: BlastDoor
   suffix: Autolink, Ext3
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: AutoLinkReceiver
       channel: Ext3
@@ -47,6 +52,7 @@
   id: BlastDoorExterior3Open
   parent: BlastDoorOpen
   suffix: Open, Autolink, Ext3
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: AutoLinkReceiver
       channel: Ext3
@@ -55,6 +61,7 @@
   id: BlastDoorBridge
   parent: BlastDoor
   suffix: Autolink, Bridge
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: AccessReader
       access: [["Command"]]
@@ -71,6 +78,7 @@
   id: BlastDoorBridgeOpen
   parent: BlastDoorOpen
   suffix: Open, Autolink, Bridge
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: AccessReader
       access: [["Command"]]
@@ -87,6 +95,7 @@
   id: BlastDoorEngineering
   parent: BlastDoor
   suffix: Autolink, Engineering
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Command"], ["Engineering"]]
@@ -103,6 +112,7 @@
   id: BlastDoorEngineeringOpen
   parent: BlastDoorOpen
   suffix: Open, Autolink, Engineering
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Command"], ["Engineering"]]
@@ -119,6 +129,7 @@
   id: BlastDoorScience
   parent: BlastDoor
   suffix: Autolink, Science
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Command"], ["Research"]]
@@ -135,6 +146,7 @@
   id: BlastDoorScienceOpen
   parent: BlastDoorOpen
   suffix: Open, Autolink, Science
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [["Command"], ["Research"]]
@@ -151,6 +163,7 @@
   id: BlastDoorWindows
   parent: BlastDoor
   suffix: Autolink, Windows
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: AutoLinkReceiver
       channel: Windows
@@ -159,7 +172,7 @@
   id: BlastDoorWindowsOpen
   parent: BlastDoorOpen
   suffix: Open, Autolink, Windows
+  categories: [ HideSpawnMenu ] # Fire added
   components:
     - type: AutoLinkReceiver
       channel: Windows
-

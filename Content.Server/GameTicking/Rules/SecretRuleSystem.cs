@@ -164,13 +164,13 @@ public sealed class SecretRuleSystem : GameRuleSystem<SecretRuleComponent>
         if (selected == null)
             return false;
 
-        // Fire added start - Почему раньше это НЕ учитывалось
+        // Sunrise added start - Почему раньше это НЕ учитывалось
         if (players < selected.MinPlayers)
             return false;
 
         if (players > selected.MaxPlayers)
             return false;
-        // Fire added end
+        // Sunrise added end
 
         foreach (var ruleId in selected.Rules)
         {

@@ -1,7 +1,7 @@
 ﻿<PanelContainer xmlns="https://spacestation14.io"
                 xmlns:graphics="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                xmlns:s="clr-namespace:Content.Client.Stylesheets"
+                xmlns:palette="clr-namespace:Content.Client._Scp.Stylesheets.Palette"
                 StyleClasses="AngleRect">
     <PanelContainer.PanelOverride>
         <graphics:StyleBoxFlat BackgroundColor="#121111CC"/>
@@ -11,8 +11,8 @@
         <ProgressBar Name="ProgressBar" MinValue="0">
             <ProgressBar.BackgroundStyleBoxOverride>
                 <graphics:StyleBoxFlat
-                    BackgroundColor="{x:Static s:StyleNano.PanelUltraDark}"
-                    BorderColor="{x:Static s:StyleNano.SCPWhite}"
+                    BackgroundColor="{x:Static palette:ScpPalettes.PanelUltraDark}"
+                    BorderColor="{x:Static palette:ScpPalettes.SCPWhite}"
                     BorderThickness="2"/>
             </ProgressBar.BackgroundStyleBoxOverride>
             <Label Name="ProgressLabel" Align="Center" />

@@ -10,6 +10,10 @@ namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
+    /*
+     * Часть системы, отвечающая за руки скромника и взаимодействие с предметами.
+     */
+
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
     [Dependency] private readonly ThrowingSystem _throwing = default!;
     [Dependency] private readonly SharedHandsSystem _hands = default!;
@@ -47,13 +51,13 @@ public abstract partial class SharedScp096System
     {
         if (_whitelist.IsWhitelistPass(ent.Comp.PickupBlacklist, args.Equipped))
         {
-            PopupAndDropEntity(ent, args.Equipped);
+            DropEntity(ent, args.Equipped);
             return;
         }
 
         if (!_whitelist.IsWhitelistPassOrNull(ent.Comp.PickupWhitelist, args.Equipped))
         {
-            PopupAndDropEntity(ent, args.Equipped);
+            DropEntity(ent, args.Equipped);
             return;
         }
     }
@@ -65,10 +69,17 @@ public abstract partial class SharedScp096System
         args.Cancel();
     }
 
-    private void PopupAndDropEntity(EntityUid target, EntityUid item)
+    /// <summary>
+    /// Выкидывает предмет из руки скромника и швыряет его в случайную сторону.
+    /// </summary>
+    /// <param name="target">Сущность, которая выкинет предмет</param>
+    /// <param name="item">Предмет, который выкинут</param>
+    private void DropEntity(EntityUid target, EntityUid item)
     {
         _hands.TryDrop(target, item, checkActionBlocker: false);
 
+        // Предиктед рандом немного неслучайный,
+        // поэтому скорее всего стороны будут очень ограничены и часто повторяться
         var x = _random.NextFloatForEntity(item, -1f);
         var y = _random.NextFloatForEntity(target, -1f);
 

@@ -251,7 +251,7 @@ public partial class SharedBodySystem
         BodyComponent? body = null,
         BodyPartComponent? rootPart = null)
     {
-        // Fire edit start - тут было NRE, чатгпт тут красиво распределил код и добавил проверки
+        // Sunrise edit start - тут было NRE, чатгпт тут красиво распределил код и добавил проверки
         // Надеюсь больше не будет
         if (!id.HasValue)
             yield break;
@@ -268,7 +268,7 @@ public partial class SharedBodySystem
 
         foreach (var child in GetBodyPartChildren(contained.Value, rootPart))
             yield return child;
-        // Fire edit end
+        // Sunrise edit end
     }
 
 
@@ -276,7 +276,7 @@ public partial class SharedBodySystem
         EntityUid? bodyId,
         BodyComponent? body = null)
     {
-        if (!bodyId.HasValue || !Resolve(bodyId.Value, ref body, logMissing: false)) // Fire edit - фикс Null Reference Exception
+        if (!bodyId.HasValue || !Resolve(bodyId.Value, ref body, logMissing: false)) // Sunrise edit - фикс Null Reference Exception
             yield break;
 
         foreach (var part in GetBodyChildren(bodyId, body))

@@ -1,44 +1,44 @@
 # Components
-spray-painter-ammo-on-examine = В нем {$charges} зарядов.
-spray-painter-ammo-after-interact-full = Распылитель полный!
-spray-painter-ammo-after-interact-refilled = Вы перезаряжаете распылитель.
+spray-painter-ammo-on-examine = Вмещает {$charges} зарядов.
+spray-painter-ammo-after-interact-full = Краскопульт полностью заправлен!
+spray-painter-ammo-after-interact-refilled = Вы заправляете краскопульт.
 
 spray-painter-interact-no-charges = Недостаточно краски.
 spray-painter-interact-nothing-to-remove = Нечего удалять!
 
-spray-painter-on-examined-painted-message = Кажется что это только что покрасили.
+spray-painter-on-examined-painted-message = Похоже, объект был недавно окрашен.
 spray-painter-style-not-available = Невозможно применить выбранный стиль к этому объекту.
 
-spray-painter-verb-toggle-decals = Вкл/Выкл рисование
+spray-painter-verb-toggle-decals = Переключить рисование декалей
 
-spray-painter-item-status-label = Рисунки: {$mode}
-spray-painter-item-status-add = [color=green]Нарисовать[/color]
-spray-painter-item-status-remove = [color=red]Стереть[/color]
-spray-painter-item-status-off = [color=gray]Выкл[/color]
+spray-painter-item-status-label = Декали: {$mode}
+spray-painter-item-status-add = [color=green]Добавить[/color]
+spray-painter-item-status-remove = [color=red]Удалить[/color]
+spray-painter-item-status-off = [color=gray]Выкл.[/color]
 
 # UI
 spray-painter-window-title = Краскопульт
 
 spray-painter-selected-style = Выбранный стиль:
 
-spray-painter-selected-decals = Выбранная наклейка:
+spray-painter-selected-decals = Выбранная декаль:
 spray-painter-use-custom-color = Использовать свой цвет
-spray-painter-use-snap-to-tile = Привязать к плитке
+spray-painter-use-snap-to-tile = Привязать к тайлу
 
-spray-painter-angle-rotation = Вращение:
+spray-painter-angle-rotation = Поворот:
 spray-painter-angle-rotation-90-sub = -90°
 spray-painter-angle-rotation-reset = 0°
 spray-painter-angle-rotation-90-add = +90°
 
 spray-painter-selected-color = Выбранный цвет:
 spray-painter-color-red = красный
-spray-painter-color-yellow = желтый
+spray-painter-color-yellow = жёлтый
 spray-painter-color-brown = коричневый
-spray-painter-color-green = зеленый
+spray-painter-color-green = зелёный
 spray-painter-color-cyan = голубой
 spray-painter-color-blue = синий
 spray-painter-color-white = белый
-spray-painter-color-black = черный
+spray-painter-color-black = чёрный
 
 # Categories (tabs)
 spray-painter-tab-category-airlocks = Шлюзы
@@ -46,25 +46,24 @@ spray-painter-tab-category-canisters = Канистры
 spray-painter-tab-category-crates = Ящики
 spray-painter-tab-category-lockers = Шкафчики
 spray-painter-tab-category-pipes = Трубы
-spray-painter-tab-category-decals = Рисунки
+spray-painter-tab-category-decals = Декали
 
-# Groups (subtabs)
-spray-painter-tab-group-airlockstandard = Стандартные
-spray-painter-tab-group-airlockglass = Стеклянные
+spray-painter-tab-group-airlockstandard = Стандартный
+spray-painter-tab-group-airlockglass = Стеклянный
 
-spray-painter-tab-group-cratesteel = Стальные
-spray-painter-tab-group-crateplastic = Пластиковые
-spray-painter-tab-group-cratesecure = С замком
+spray-painter-tab-group-cratesteel = Сталь
+spray-painter-tab-group-crateplastic = Пластик
+spray-painter-tab-group-cratesecure = Защищённый
 
-spray-painter-tab-group-closet = Открытые
-spray-painter-tab-group-locker = Закрытые
-spray-painter-tab-group-wallcloset = Открытые (настенные)
-spray-painter-tab-group-walllocker = Закрытые (настенные)
+spray-painter-tab-group-closet = Незапертый
+spray-painter-tab-group-locker = Запертый
+spray-painter-tab-group-wallcloset = Незапертый (настенный)
+spray-painter-tab-group-walllocker = Запертый (настенный)
 
 # Airlocks
-spray-painter-style-airlockstandard-atmospherics = Атмосферный
+spray-painter-style-airlockstandard-atmospherics = Атмосферика
 spray-painter-style-airlockstandard-basic = Обычный
-spray-painter-style-airlockstandard-cargo = Карго
+spray-painter-style-airlockstandard-cargo = Снабжение
 spray-painter-style-airlockstandard-chemistry = Химия
 spray-painter-style-airlockstandard-command = Командный
 spray-painter-style-airlockstandard-engineering = Инженерный
@@ -74,12 +73,12 @@ spray-painter-style-airlockstandard-maintenance = Технический
 spray-painter-style-airlockstandard-medical = Медицинский
 spray-painter-style-airlockstandard-salvage = Утилизация
 spray-painter-style-airlockstandard-science = Научный
-spray-painter-style-airlockstandard-security = Охрана
+spray-painter-style-airlockstandard-security = Служба безопасности
 spray-painter-style-airlockstandard-virology = Вирусология
 
-spray-painter-style-airlockglass-atmospherics = Атмосферный
+spray-painter-style-airlockglass-atmospherics = Атмосферика
 spray-painter-style-airlockglass-basic = Обычный
-spray-painter-style-airlockglass-cargo = Карго
+spray-painter-style-airlockglass-cargo = Снабжение
 spray-painter-style-airlockglass-chemistry = Химия
 spray-painter-style-airlockglass-command = Командный
 spray-painter-style-airlockglass-engineering = Инженерный
@@ -88,26 +87,26 @@ spray-painter-style-airlockglass-maintenance = Технический
 spray-painter-style-airlockglass-medical = Медицинский
 spray-painter-style-airlockglass-salvage = Утилизация
 spray-painter-style-airlockglass-science = Научный
-spray-painter-style-airlockglass-security = Охрана
+spray-painter-style-airlockglass-security = Служба безопасности
 spray-painter-style-airlockglass-virology = Вирусология
 
 # Lockers
-spray-painter-style-locker-atmospherics = Атмосферный
+spray-painter-style-locker-atmospherics = Атмосферика
 spray-painter-style-locker-basic = Обычный
 spray-painter-style-locker-botanist = Ботаник
 spray-painter-style-locker-brigmedic = Бригмедик
-spray-painter-style-locker-captain = Капитан
-spray-painter-style-locker-ce = Старший инженер
-spray-painter-style-locker-chemical = Химический
+spray-painter-style-locker-captain = Капитана
+spray-painter-style-locker-ce = Старшего Инженера
+spray-painter-style-locker-chemical = Химия
 spray-painter-style-locker-clown = Клоун
 spray-painter-style-locker-cmo = Главный врач
-spray-painter-style-locker-doctor = Врач
-spray-painter-style-locker-electrical = Электрик
+spray-painter-style-locker-doctor = Врача
+spray-painter-style-locker-electrical = Электрика
 spray-painter-style-locker-engineer = Инженер
-spray-painter-style-locker-evac = Эвакуационный
+spray-painter-style-locker-evac = Ремонт эвакуации
 spray-painter-style-locker-hop = Глава персонала
 spray-painter-style-locker-hos = Глава службы безопасности
-spray-painter-style-locker-medicine = Медицина
+spray-painter-style-locker-medicine = Медицинский
 spray-painter-style-locker-mime = Мим
 spray-painter-style-locker-paramedic = Парамедик
 spray-painter-style-locker-quartermaster = Квартирмейстер
@@ -115,51 +114,51 @@ spray-painter-style-locker-rd = Научный руководитель
 spray-painter-style-locker-representative = Представитель
 spray-painter-style-locker-salvage = Утилизация
 spray-painter-style-locker-scientist = Учёный
-spray-painter-style-locker-security = Охрана
-spray-painter-style-locker-welding = Сварочный
+spray-painter-style-locker-security = Служба безопасности
+spray-painter-style-locker-welding = Инструменты
 
 spray-painter-style-closet-basic = Обычный
-spray-painter-style-closet-biohazard = Биозащита
-spray-painter-style-closet-biohazard-science = Биозащита (научная)
-spray-painter-style-closet-biohazard-virology = Биозащита (вирусология)
-spray-painter-style-closet-biohazard-security = Биозащита (охрана)
-spray-painter-style-closet-biohazard-janitor = Биозащита (уборщик)
-spray-painter-style-closet-bomb = Сапёрный костюм
-spray-painter-style-closet-bomb-janitor = Сапёрный костюм (уборщик)
+spray-painter-style-closet-biohazard = Биологическая опасность
+spray-painter-style-closet-biohazard-science = Биологическая опасность (наука)
+spray-painter-style-closet-biohazard-virology = Биологическая опасность (вирусология)
+spray-painter-style-closet-biohazard-security = Биологическая опасность (служба безопасности)
+spray-painter-style-closet-biohazard-janitor = Биологическая опасность (уборщик)
+spray-painter-style-closet-bomb = Сапёрный Набор
+spray-painter-style-closet-bomb-janitor = Сапёрный Набор
 spray-painter-style-closet-chef = Шеф-повар
-spray-painter-style-closet-fire = Пожарный
+spray-painter-style-closet-fire = Пожарная безопасность
 spray-painter-style-closet-janitor = Уборщик
 spray-painter-style-closet-legal = Юрист
-spray-painter-style-closet-nitrogen = Аварийный (азот)
-spray-painter-style-closet-oxygen = Аварийный (кислород)
-spray-painter-style-closet-radiation = Радиационная защита
+spray-painter-style-closet-nitrogen = Интерналы (азот)
+spray-painter-style-closet-oxygen = Интерналы (кислород)
+spray-painter-style-closet-radiation = Радиационный костюм
 spray-painter-style-closet-tool = Инструменты
 
-spray-painter-style-wallcloset-atmospherics = Атмосферный
+spray-painter-style-wallcloset-atmospherics = Атмосферика
 spray-painter-style-wallcloset-basic = Обычный
 spray-painter-style-wallcloset-black = Чёрный
 spray-painter-style-wallcloset-blue = Синий
-spray-painter-style-wallcloset-fire = Пожарный
+spray-painter-style-wallcloset-fire = Пожарная безопасность
 spray-painter-style-wallcloset-green = Зелёный
 spray-painter-style-wallcloset-grey = Серый
-spray-painter-style-wallcloset-mixed = Разноцветный
-spray-painter-style-wallcloset-nitrogen = Аварийный (азот)
+spray-painter-style-wallcloset-mixed = Смешанный
+spray-painter-style-wallcloset-nitrogen = Интерналы (азот)
 spray-painter-style-wallcloset-orange = Оранжевый
-spray-painter-style-wallcloset-oxygen = Аварийный (кислород)
+spray-painter-style-wallcloset-oxygen = Интерналы (кислород)
 spray-painter-style-wallcloset-pink = Розовый
 spray-painter-style-wallcloset-white = Белый
 spray-painter-style-wallcloset-yellow = Жёлтый
 
-spray-painter-style-walllocker-evac = Эвакуационный
+spray-painter-style-walllocker-evac = Ремонт эвакуации
 spray-painter-style-walllocker-medical = Медицинский
 
 # Crates
 spray-painter-style-cratesteel-basic = Обычный
-spray-painter-style-cratesteel-electrical = Электрический
+spray-painter-style-cratesteel-electrical = Электрика
 spray-painter-style-cratesteel-engineering = Инженерный
 spray-painter-style-cratesteel-radiation = Радиация
 spray-painter-style-cratesteel-science = Научный
-spray-painter-style-cratesteel-surgery = Хирургический
+spray-painter-style-cratesteel-surgery = Хирургия
 
 spray-painter-style-crateplastic-basic = Обычный
 spray-painter-style-crateplastic-chemistry = Химия
@@ -175,10 +174,10 @@ spray-painter-style-cratesecure-engineering = Инженерный
 spray-painter-style-cratesecure-hydroponics = Гидропоника
 spray-painter-style-cratesecure-medical = Медицинский
 spray-painter-style-cratesecure-plasma = Плазма
-spray-painter-style-cratesecure-private = Приватный
+spray-painter-style-cratesecure-private = Личный
 spray-painter-style-cratesecure-science = Научный
 spray-painter-style-cratesecure-secgear = Снаряжение СБ
-spray-painter-style-cratesecure-weapon = Оружейный
+spray-painter-style-cratesecure-weapon = Оружие
 
 # Canisters
 spray-painter-style-canisters-air = Воздух

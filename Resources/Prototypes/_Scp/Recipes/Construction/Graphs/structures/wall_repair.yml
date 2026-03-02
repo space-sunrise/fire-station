@@ -78,7 +78,7 @@
         amount: -300
 
 - type: constructionGraph
-  id: ScpWallConcreteMetalRepair
+  id: ScpWallMetalHardRepair
   start: start
   graph:
   - node: start
@@ -88,12 +88,12 @@
       - !type:HasDamage
         require: true
       steps:
-      - material: Concrete
-        amount: 1
-        doAfter: 1
+      - material: Plasteel
+        amount: 2
+        doAfter: 2
       - material: MetalRod
         amount: 2
-        doAfter: 1
+        doAfter: 2
 
   - node: welded
     edges:
@@ -108,3 +108,35 @@
       completed:
       - !type:DamageEntityAllTypes
         amount: -1000
+
+- type: constructionGraph
+  id: ScpWallScp096ContainmentRepair
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: welded
+      conditions:
+      - !type:HasDamage
+        require: true
+      steps:
+      - material: Plasteel
+        amount: 2
+        doAfter: 1
+      - material: MetalRod
+        amount: 4
+        doAfter: 1
+
+  - node: welded
+    edges:
+    - to: start
+      steps:
+      - tool: Prying
+        doAfter: 1
+      - tool: Screwing
+        doAfter: 1
+      - tool: Welding
+        doAfter: 2
+      completed:
+      - !type:DamageEntityAllTypes
+        amount: -5000

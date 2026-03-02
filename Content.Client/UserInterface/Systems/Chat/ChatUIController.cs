@@ -20,6 +20,7 @@ using Content.Shared._Sunrise.CollectiveMind;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
 using Content.Shared.Chat;
+using Content.Shared.GameTicking;
 using Content.Shared.Decals;
 using Content.Shared.Damage.ForceSay;
 using Content.Shared.Decals;
@@ -142,6 +143,8 @@ public sealed partial class ChatUIController : UIController
     private readonly Dictionary<EntityUid, SpeechBubbleQueueData> _queuedSpeechBubbles
         = new();
 
+    private bool _roundEnded; // Sunrise-Add
+
     private readonly HashSet<ChatBox> _chats = new();
     public IReadOnlySet<ChatBox> Chats => _chats;
 
@@ -192,6 +195,7 @@ public sealed partial class ChatUIController : UIController
         _net.RegisterNetMessage<MsgChatMessage>(OnChatMessage);
         _net.RegisterNetMessage<MsgDeleteChatMessagesBy>(OnDeleteChatMessagesBy);
         SubscribeNetworkEvent<DamageForceSayEvent>(OnDamageForceSay);
+        SubscribeNetworkEvent<RoundEndMessageEvent>((_, _) => OnRoundEnd()); // Sunrise-Add
         _config.OnValueChanged(CCVars.ChatEnableColorName, (value) => { _chatNameColorsEnabled = value; });
         _chatNameColorsEnabled = _config.GetCVar(CCVars.ChatEnableColorName);
 
@@ -252,6 +256,7 @@ public sealed partial class ChatUIController : UIController
         }
 
         _config.OnValueChanged(CCVars.ChatWindowOpacity, OnChatWindowOpacityChanged);
+        _config.OnValueChanged(CCVars.OocEnabled, _ => UpdateChannelPermissions()); // Sunrise-Add
 
         InitializeHighlights();
     }
@@ -276,7 +281,7 @@ public sealed partial class ChatUIController : UIController
         SetChatWindowOpacity(opacity);
     }
 
-    public void SetChatWindowOpacity(float opacity)
+    public void SetChatWindowOpacity(float opacity) // Sunrise-Edit
     {
         var chatBox = UIManager.ActiveScreen?.GetWidget<ChatBox>() ?? UIManager.ActiveScreen?.GetWidget<ResizableChatBox>();
 
@@ -297,7 +302,7 @@ public sealed partial class ChatUIController : UIController
                  && style is StyleBoxFlat propStyleBoxFlat)
             color = propStyleBoxFlat.BackgroundColor;
         else
-            color = StyleNano.ChatBackgroundColor;
+            color = Color.FromHex("#25252ADD");
 
         panel.PanelOverride = new StyleBoxFlat
         {
@@ -430,10 +435,23 @@ public sealed partial class ChatUIController : UIController
         if (args.NewState is GameplayState)
         {
             PreferredChannel = ChatSelectChannel.Local;
+            _roundEnded = false; // Sunrise-Add
+        }
+        else
+        {
+            _roundEnded = false; // Sunrise-Add
         }
 
         UpdateChannelPermissions();
     }
+
+    // Sunrise-Start
+    private void OnRoundEnd()
+    {
+        _roundEnded = true;
+        UpdateChannelPermissions();
+    }
+    // Sunrise-End
 
     public void SetSpeechBubbleRoot(LayoutContainer root)
     {
@@ -602,7 +620,28 @@ public sealed partial class ChatUIController : UIController
         CanSendChannelsChanged?.Invoke(CanSendChannels);
         FilterableChannelsChanged?.Invoke(FilterableChannels);
         SelectableChannelsChanged?.Invoke(SelectableChannels);
+
+        // Sunrise-Start
+        var showEmoji = ShouldShowEmojiButton();
+        foreach (var chat in _chats)
+        {
+            chat.ToggleEmojiButton(showEmoji);
+        }
+        // Sunrise-End
     }
+
+    // Sunrise-Start
+    private bool ShouldShowEmojiButton()
+    {
+        if (_state.CurrentState is not GameplayStateBase)
+            return true;
+
+        if (_roundEnded || _config.GetCVar(CCVars.OocEnabled)) // Sunrise-Edit
+            return true;
+
+        return _admin.HasFlag(AdminFlags.Adminchat) || (_ghost is { IsGhost: true });
+    }
+    // Sunrise-End
 
     public void ClearUnfilteredUnreads(ChatChannel channels)
     {
@@ -717,7 +756,7 @@ public sealed partial class ChatUIController : UIController
         radioChannel = null;
         return _player.LocalEntity is EntityUid { Valid: true } uid
            && _chatSys != null
-           && _chatSys.TryProccessRadioMessage(uid, text, out _, out radioChannel, quiet: true);
+           && _chatSys.TryProcessRadioMessage(uid, text, out _, out radioChannel, quiet: true);
     }
 
     // Sunrise-Start
@@ -753,6 +792,18 @@ public sealed partial class ChatUIController : UIController
         text = text.Trim();
         if (text.Length == 0)
             return (ChatSelectChannel.None, text, null, null); // Sunrise-Edit
+
+        // Sunrise-Start
+        if (text.StartsWith(SharedChatSystem.RadioChannelPrefix) && text.Length > 2 && text.IndexOf(SharedChatSystem.RadioChannelPrefix, 1) > 0)
+        {
+            var secondColon = text.IndexOf(SharedChatSystem.RadioChannelPrefix, 1);
+            var space = text.IndexOf(' ');
+            if (space == -1 || space > secondColon)
+            {
+                return (ChatSelectChannel.None, text, null, null);
+            }
+        }
+        // Sunrise-End
 
         // We only cut off prefix only if it is not a radio or local channel, which both map to the same /say command
         // because ????????
@@ -994,6 +1045,7 @@ public sealed partial class ChatUIController : UIController
     public void RegisterChat(ChatBox chat)
     {
         _chats.Add(chat);
+        chat.ToggleEmojiButton(ShouldShowEmojiButton()); // Sunrise-Edit
     }
 
     public void UnregisterChat(ChatBox chat)

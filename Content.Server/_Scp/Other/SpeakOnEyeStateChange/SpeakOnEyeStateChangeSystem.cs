@@ -2,6 +2,7 @@
 using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp173;
+using Content.Shared.Chat;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Other.SpeakOnEyeStateChange;

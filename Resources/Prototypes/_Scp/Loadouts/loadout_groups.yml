@@ -286,7 +286,7 @@
 
 - type: loadoutGroup
   id: EthicsCommitteeRepresentativeOuterClothing
-  name: loadout-group-outerclothing
+  name: loadout-group-outer-clothing
   loadouts:
   - EthicsCommitteeRepresentativeCoat
   - EthicsCommitteeRepresentativeCoatOpen

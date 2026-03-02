@@ -26,6 +26,7 @@ public sealed partial class FearSystem : SharedFearSystem
         InitializeFears();
         InitializeGameplay();
         InitializeTraits();
+        InitializeEntityEffects();
 
         _activeFearEffects = GetEntityQuery<FearActiveSoundEffectsComponent>();
     }

@@ -36,6 +36,18 @@
     sprite: _Scp/Structures/Doors/Airlocks/Glass/centcomm.rsi
     state: "assembly"
 
+# Особая дверь с логотипом SCP
+- type: entity
+  parent: AirlockAssembly
+  id: ScpAirlockLogotypeAssembly
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/Airlocks/Standard/logotype.rsi
+    state: assembly
+  - type: Construction
+    graph: ScpAirlockLogotypeGraph
+    node: assembly
+
 # Служба безопасности
 - type: entity
   parent: ScpAirlockAssembly

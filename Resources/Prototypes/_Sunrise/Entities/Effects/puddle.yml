@@ -12,7 +12,6 @@
     noRot: false
   - type: Sprite
     drawdepth: FloorObjects
-    color: "#FFFFFF80"
   - type: SolutionContainerManager
     solutions:
       step: { maxVol: 1 }

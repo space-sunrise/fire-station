@@ -128,6 +128,8 @@
     sprite: Clothing/Head/Misc/richard.rsi
   - type: Clothing
     sprite: Clothing/Head/Misc/richard.rsi
+  - type: Item
+    storedRotation: 0
   - type: IngestionBlocker
   - type: IdentityBlocker
   # SUNRISE EDIT
@@ -355,6 +357,7 @@
     solution: drink
     delay: 0.5
     forceFeedDelay: 1.5
+    utensil: Spoon
   - type: FlavorProfile
     flavors:
       - water
@@ -396,6 +399,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatHairflower
+  categories: [ HideSpawnMenu ] # Fire edit
   name: hairflower
   description: A beautiful hairflower that can be inserted between locks of hair.
   components:
@@ -419,3 +423,4 @@
     - Hair
     - HeadTop
     - HeadSide
+

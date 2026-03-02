@@ -8,7 +8,6 @@ namespace Content.Shared._Scp.Helpers;
 /// <summary>
 /// Система, позволяющая просчитать стоимость технологии исходя из относительных модификаторов.
 /// </summary>
-[PublicAPI]
 public sealed class ResearchPointsHelper : EntitySystem
 {
     public static readonly ProtoId<ResearchPointPrototype> DefaultPoint = "Default";
@@ -34,12 +33,26 @@ public sealed class ResearchPointsHelper : EntitySystem
     /// <param name="tech">Прототип технологии, для которой идет проверка</param>
     /// <param name="totalPoints">Количество доступных для покупки очков</param>
     /// <returns>Получится или не получится купить</returns>
+    [PublicAPI]
     public static bool CanBuy(TechnologyPrototype tech, Dictionary<ProtoId<ResearchPointPrototype>, int> totalPoints)
     {
         var cost = GetPoints(tech);
-        foreach (var (researchPointType, requiredAmount) in cost)
+        return IsEnoughPoints(totalPoints, cost);
+    }
+
+    /// <summary>
+    /// Проверяет, достаточно ли имеется очков по сравнению с требуемым значением очков.
+    /// </summary>
+    /// <param name="pointWeHave">Словарь, содержащий информацию о доступных очках, которые мы хотим "потратить"</param>
+    /// <param name="requiredPoints">Нужное количество очков. Пытаемся узнать, имеется ли это количество</param>
+    /// <returns>Имеется ли нужное количество очков нужных типов</returns>
+    [PublicAPI]
+    public static bool IsEnoughPoints(Dictionary<ProtoId<ResearchPointPrototype>, int> pointWeHave,
+        Dictionary<ProtoId<ResearchPointPrototype>, int> requiredPoints)
+    {
+        foreach (var (researchPointType, requiredAmount) in requiredPoints)
         {
-            if (!totalPoints.TryGetValue(researchPointType, out var point))
+            if (!pointWeHave.TryGetValue(researchPointType, out var point))
                 return false;
 
             if (point < requiredAmount)
@@ -54,6 +67,7 @@ public sealed class ResearchPointsHelper : EntitySystem
     /// </summary>
     /// <param name="tech">Прототип технологии, для которой идет подсчет</param>
     /// <returns>Словарь стоимости технологии, где ключ - тип очков, а значение - требуемое количество</returns>
+    [PublicAPI]
     public static Dictionary<ProtoId<ResearchPointPrototype>, int> GetPoints(TechnologyPrototype tech)
     {
         // Нашли сохраненное значение - возвращаем его. Иначе считаем снова

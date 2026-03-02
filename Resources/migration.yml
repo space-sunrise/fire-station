@@ -8,6 +8,8 @@
 # WallSolid: Window
 # Table: null
 
+
+
 # 2023-07-03
 ClothingHeadHelmetHelmet: ClothingHeadHelmetBasic
 ClothingHeadHelmetHelmetOld: ClothingHeadHelmetBasic
@@ -39,33 +41,33 @@ BoxMagazinePistolCaselessRifleHighVelocity: BoxMagazinePistolCaselessRifle
 BoxMagazinePistolHighCapacityHighVelocity: BoxMagazinePistolHighCapacity
 BoxMagazinePistolHighVelocity: BoxMagazinePistol
 BoxMagazinePistolSubMachineGunHighVelocity: BoxMagazinePistolSubMachineGun
-BoxMagazineRifleHighVelocity: BoxMagazineRifleSP
+BoxMagazineRifleHighVelocity: BoxMagazineRifleSP # Sunrise-Edit
 BulletCaselessRifleHighVelocity: BulletCaselessRifle
 BulletLightRifleHighVelocity: BulletLightRifle
 BulletMagnumHighVelocity: BulletMagnum
 BulletPistolHighVelocity: BulletPistol
 BulletRifleHighVelocity: BulletRifle
 CartridgeCaselessRifleHighVelocity: CartridgeCaselessRifle
-CartridgeLightRifleHighVelocity: CartridgeLightRifleFMJ
-CartridgeMagnumHighVelocity: CartridgeMagnumFMJ
-CartridgePistolHighVelocity: CartridgePistolFMJ
-CartridgeRifleHighVelocity: CartridgeRifleFMJ
+CartridgeLightRifleHighVelocity: CartridgeLightRifleFMJ # Sunrise-Edit
+CartridgeMagnumHighVelocity: CartridgeMagnumFMJ # Sunrise-Edit
+CartridgePistolHighVelocity: CartridgePistolFMJ # Sunrise-Edit
+CartridgeRifleHighVelocity: CartridgeRifleFMJ # Sunrise-Edit
 MagazineBoxCaselessRifleHighVelocity: MagazineBoxCaselessRifle
-MagazineBoxLightRifleHighVelocity: MagazineBoxLightRifleFMJ
-MagazineBoxMagnumHighVelocity: MagazineBoxMagnumSP
-MagazineBoxPistolHighVelocity: MagazineBoxPistolFMJ
-MagazineBoxRifleHighVelocity: MagazineBoxRifleFMJ
-MagazineCaselessRifleHighVelocity: MagazineCaselessRifle
+MagazineBoxLightRifleHighVelocity: MagazineBoxLightRifleFMJ # Sunrise-Edit
+MagazineBoxMagnumHighVelocity: MagazineBoxMagnumSP # Sunrise-Edit
+MagazineBoxPistolHighVelocity: MagazineBoxPistolFMJ # Sunrise-Edit
+MagazineBoxRifleHighVelocity: MagazineBoxRifleFMJ # Sunrise-Edit
+MagazineCaselessRifleHighVelocity: MagazinePistolCaselessRifle
 MagazineCaselessRifleShortHighVelocity: null
 MagazineLightRifleHighVelocity: MagazineLightRifleFMJ
 MagazineMagnumSubMachineGunHighVelocity: null
 MagazinePistolCaselessRifleHighVelocity: MagazinePistolCaselessRifle
-MagazinePistolHighCapacityHighVelocity: MagazinePistolHighCapacityFMJ
-MagazinePistolHighVelocity: MagazinePistolFMJ
-MagazinePistolSubMachineGunHighVelocity: MagazinePistolSubMachineGunSP
-MagazineRifleHighVelocity: MagazineRifleFMJ
-SpeedLoaderMagnumHighVelocity: SpeedLoaderMagnumFMJ
-SpeedLoaderPistolHighVelocity: SpeedLoaderPistol
+MagazinePistolHighCapacityHighVelocity: MagazinePistolHighCapacityFMJ # Sunrise-Edit
+MagazinePistolHighVelocity: MagazinePistolFMJ # Sunrise-Edit
+MagazinePistolSubMachineGunHighVelocity: MagazinePistolSubMachineGunSP # Sunrise-Edit
+MagazineRifleHighVelocity: MagazineRifleFMJ # Sunrise-Edit
+SpeedLoaderMagnumHighVelocity: SpeedLoaderMagnumFMJ # Sunrise-Edit
+SpeedLoaderPistolHighVelocity: null
 
 # 2023-08-07
 #If the name is anything to go off of, these are presumably just CEV-Eris versions of the snow rock (which we already have.)
@@ -88,7 +90,8 @@ GeneratorUranium: PortableGeneratorSuperPacman
 GeneratorPlasmaMachineCircuitboard: PortableGeneratorPacmanMachineCircuitboard
 GeneratorUraniumMachineCircuitboard: PortableGeneratorSuperPacmanMachineCircuitboard
 
-# 2023-12-10 //Sunrise edit
+# 2023-12-10
+# Sunrise-Edit
 # SpawnPointSeniorResearcher: null
 # SpawnPointSeniorOfficer: null
 # SpawnPointSeniorEngineer: null
@@ -156,6 +159,7 @@ TransmitterSubspaceStockPart: null
 ClothingHeadHatHoodRad: null
 
 # 2024-01-12
+# Sunrise-Edit
 #SpaceMedipen: null
 
 # 2024-01-18
@@ -293,28 +297,33 @@ BulletMagnumRubber: BulletMagnum
 BulletLightRifleRubber: BulletLightRifle
 BulletRifleRubber: BulletRifle
 BulletCaselessRifleRubber: BulletCaselessRifle
-CartridgePistolRubber: CartridgePistolFMJ
-CartridgeLightRifleRubber: CartridgeLightRifleSP
-CartridgeRifleRubber: CartridgeRifleSP
+CartridgePistolRubber: CartridgePistolFMJ # Sunrise-Edit
+CartridgeLightRifleRubber: CartridgeLightRifleSP # Sunrise-Edit
+CartridgeRifleRubber: CartridgeRifleSP # Sunrise-Edit
 CartridgeCaselessRifleRubber: CartridgeCaselessRifle
-# MagazinePistolRubber: MagazinePistol # Its me! Rubber!
-MagazinePistolSubMachineGunRubber: MagazinePistolSubMachineGunSP
+# Sunrise-Edit
+# MagazinePistolRubber: MagazinePistol
+MagazinePistolSubMachineGunRubber: MagazinePistolSubMachineGunSP # Sunrise-Edit
 MagazinePistolCaselessRifleRubber: MagazinePistolCaselessRifle
-# MagazineMagnumRubber: MagazineMagnum # Its me! Rubber!
+# Sunrise-Edit
+# MagazineMagnumRubber: MagazineMagnum
 MagazineMagnumSubMachineGunRubber: null
-MagazineLightRifleRubber: MagazineLightRifleSP
-MagazineRifleRubber: MagazineRifleSP
-MagazineCaselessRifleRubber: MagazineCaselessRifle
+MagazineLightRifleRubber: MagazineLightRifleSP # Sunrise-Edit
+MagazineRifleRubber: MagazineRifleSP # Sunrise-Edit
+MagazineCaselessRifleRubber: MagazinePistolCaselessRifle
 MagazineCaselessRifleShortRubber: null
-SpeedLoaderPistolRubber: SpeedLoaderPistol
-# SpeedLoaderMagnumRubber: SpeedLoaderMagnumSP # Its me! Rubber!
+SpeedLoaderPistolRubber: null
+# Sunrise-Edit
+# SpeedLoaderMagnumRubber: SpeedLoaderMagnumSP
 MagazineBoxPistolRubber: MagazineBoxPistolSP
 # RIP box of magnum rubbers 202X to 2024
+# Sunrise-Edit
 # MagazineBoxMagnumRubber: MagazineBoxMagnumSP
-MagazineBoxLightRifleRubber: MagazineBoxLightRifleSP
-MagazineBoxRifleRubber: MagazineBoxRifleSP
+MagazineBoxLightRifleRubber: MagazineBoxLightRifleSP # Sunrise-Edit
+MagazineBoxRifleRubber: MagazineBoxRifleSP # Sunrise-Edit
 MagazineBoxRifleBigRubber: MagazineBoxRifleBig
 MagazineBoxCaselessRifleRubber: MagazineBoxCaselessRifle
+# Sunrise-Edit
 #MagazineBoxCaselessRifleBigRubber: MagazineBoxCaselessRifle10x24
 # BoxMagazinePistolRubber: BoxMagazinePistol
 BoxMagazinePistolHighCapacityRubber: BoxMagazinePistolHighCapacity
@@ -326,6 +335,7 @@ BoxMagazineMagnumSubMachineGunRubber: null
 WeaponPistolMk58Nonlethal: WeaponPistolMk58
 WeaponPistolN1984Nonlethal: WeaponPistolN1984
 WeaponSubMachineGunDrozdRubber: WeaponSubMachineGunDrozd
+# Sunrise-Edit
 #WeaponRifleLecterRubber: WeaponRifleLecter
 
 # 2024-04-26
@@ -614,6 +624,7 @@ VariedXenoArtifactItem: ComplexXenoArtifactItem
 ClothingOuterHardsuitSyndicate: ClothingOuterEVASuitSyndicate
 
 # 2025-04-26
+# Sunrise-Edit
 #ComputerCargoShuttle: ComputerShuttleCargo
 CargoShuttleComputerCircuitboard: CargoShuttleConsoleCircuitboard
 
@@ -651,6 +662,11 @@ SpawnHonkBot: SpawnMobHonkBot
 # 2025-06-01
 CrateFoodPizzaLarge: CrateFoodPizza
 CrateFoodSoftdrinksLarge: CrateFoodSoftdrinks
+
+# 2025-06-03
+FloorTileItemGCircuit4: FloorTileItemGCircuit
+FloorTileItemBCircuit4: FloorTileItemBCircuit
+FloorTileItemRCircuit4: FloorTileItemRCircuit
 
 # 2025-06-06
 MagazineLightRifleMaxim: null
@@ -699,6 +715,12 @@ BarSignWhiskeyEchoesAlignTile: BarSignWhiskeyEchoes
 # 2025-06-21
 ClothingNeckHeadphones: ClothingMultipleHeadphones
 
+# 2025-07-17
+RipleyChassis: null
+HonkerChassis: null
+HamtrChassis: null
+VimChassis: null
+
 # 2025-08-01
 FoodDonutJellySlugcat: FoodDonutJellyScurret
 
@@ -706,13 +728,54 @@ FoodDonutJellySlugcat: FoodDonutJellyScurret
 ClothingUniformJumpsuitChiefEngineerNT: ClothingUniformJumpsuitChiefEngineer
 ClothingUniformJumpsuitParamedicNT: ClothingUniformJumpsuitParamedic
 
+# 2025-08-29
+PrefilledSyringe: Syringe
+
+# 2025-10-6
+BibleTanakh: null
+BibleSatanic: null
+
+# 2025-10-08
+ClothingBeltAssault: ClothingBeltMilitaryWebbing
+WarpPointBombing: null
+
+# 2025-10-13
+ToyGriffin: ToyFigurineGriffin
+ToyOwlman: ToyFigurineOwlman
+ToySkeleton: ToyFigurineSkeleton
+
+# 2025-10-28
+DrinkKiraSpecial: DrinkOrangeLimeSodaGlass
+
+# 2025-11-08
+DebugSMES: SMESBasicEmpty
+DebugSubstation: SubstationBasicEmpty
+DebugSubstationWall: BaseSubstationWall
+DebugAPC: BaseAPC
+MagazineCaselessRifle: MagazinePistolCaselessRifle
+MagazineCaselessRiflePractice: MagazinePistolCaselessRiflePractice
+SpeedLoaderPistol: null
+SpeedLoaderPistolPractice: null
+
+# 2025-12-05
+GlowstickBase: GlowstickGreen
+
+# 2025-12-06
+SpawnPointZookeeper: null
+SpawnPointBoxer: null
+
+# 2025-12-07
+FigureSpawner: MechFigurineSpawner50
+ToySpawner: PlushieSpawner50
+SpacemenFigureSpawner: SpacemenFigurineSpawner90
+
 # Sunrise-Start
 # AirlockExternalGlassShuttleArrivals: AirlockExternalGlassShuttleArrivalsLocked # Fire edit
 AirlockHatchSyndicate: AirlockHatchSyndicateLocked
 SurveillanceCameraWirelessRouterBase: SurveillanceCameraWirelessRouterConstructed
 CryogenicSleepUnitSpawner: CryogenicSleepUnitSpawnerLateJoin
 ComputerCargoShuttle: null
-ComputerShuttleCargo: null
+#ComputerShuttleCargo: null
 ClothingOuterHardsuitSecurity: ClothingOuterHardsuitSecuritySunrise
 ClothingHeadHelmetHardsuitSecurity: ClothingHeadHelmetHardsuitSecuritySunrise
 AirlockMailGlassLocked: AirlockServiceGlassLocked
@@ -778,9 +841,7 @@ ScienceTechFabCircuitboard: null
 EngineeringTechFabCircuitboard: null
 MagazineDeagle: null
 MagazineMagnum: null
-#SpawnPointBlueShield: SpawnPointBlueShieldOfficer Fire
-SuitStorageBlueShield: null
-LockerBlueShieldOfficerFilled: null
+SpawnPointBlueShield: SpawnPointBlueShieldOfficer
 PoweredLightBlueInterior: null
 RandomItem: null
 TableWoodReinforced: null
@@ -803,13 +864,14 @@ BaseUplinkNTERT100BC: null
 BaseUplinkNTERT200BC: null
 SupermatterSliver: null
 CartridgePistol: null
-AtmosDeviceFanTiny: AtmosDeviceFanTinyDev
-AtmosDeviceFanDirectional: AtmosDeviceFanDirectionalDev
+AtmosDeviceFanTinyDev: AtmosDeviceFanTiny
+AtmosDeviceFanDirectionalDev: AtmosDeviceFanDirectional
 MagazineBR64Extended: null
 MagazineBR64: null
 MagazineAR18Extended: null
 MagazineAR18: null
 ClothingOuterHardsuitPilot: null
+ClothingOuterHardsuitPirateEVASun: ClothingOuterEVASuitPirate
 CrateArmoryMagazineBoxLightRifleBig: null
 CrateArmoryMagazineBoxRifleBig: null
 CrateArmoryM16A4: null
@@ -821,15 +883,50 @@ WeaponShotgunZauer: null
 HandheldCamera: null # Не надо маппить, оно есть в автоматах
 GrenadeBlast: GrenadeBlastTimer
 GrenadeEMP: GrenadeEMPTimer
-GrenadeFlash: GrenadeFlashTimer
-GrenadeFrag: GrenadeFragTimer
 WeaponEnergyGunMini: WeaponMiniEnergyGun
 GunSafeCombineSmallArms: SpawnerSafeSmallArms
+AphrodisiacChemistryBottle: null
+PatchViagra: null
+ClothingHandsGlovesBoxingRigged: GlovesBoxingRiggedRandomSpawner
+MagazinePPSH41: MagazinePistolSubMachineGunPPSHExtended
+MagazinePPSH41Extended: null
+WeaponSTG44: null
+MagazineSTG44: null
+WeaponSniperMosinNew: null
+WeaponIONRifle: WeaponIonRifle
+GunSafeBlueShield: null
+# Super Matter
+SupermatterFlatpack: SupermatterFlatpackAnchored
+SupermatterCrystal: SupermatterFlatpackAnchored
+WeaponRifleM28: WeaponRifleSKM28
+WeaponRifleAR18: null
+MagazineScarH: null
+WeaponRifleScarH: null
+MagazinePistolSubMachineGunSIAR52: MagazinePistolSubMachineGunCaselessExtended
+RandomHumanoidSpawnerERTEngineerGammaVeteran: RandomHumanoidSpawnerERTEngineerGamma
+RandomHumanoidSpawnerERTJanitorGammaVeteran: RandomHumanoidSpawnerERTJanitorGamma
+RandomHumanoidSpawnerERTSecurityGammaVeteran: RandomHumanoidSpawnerERTSecurityGamma
+RandomHumanoidSpawnerERTLeaderRedVeteran: RandomHumanoidSpawnerERTLeaderRed
+RandomHumanoidSpawnerERTMedicalGammaVeteran: RandomHumanoidSpawnerERTMedicalGamma
+RandomHumanoidSpawnerERTEngineerAmberVeteran: RandomHumanoidSpawnerERTEngineerAmber
+RandomHumanoidSpawnerERTLeaderAmberVeteran: RandomHumanoidSpawnerERTLeaderAmber
+RandomHumanoidSpawnerERTMedicalAmberVeteran: RandomHumanoidSpawnerERTMedicalAmber
+RandomHumanoidSpawnerERTSecurityAmberVeteran: RandomHumanoidSpawnerERTSecurityAmber
+RandomHumanoidSpawnerCBURNVeteran: RandomHumanoidSpawnerCBURNUnitEVA
+RandomHumanoidSpawnerERTLeaderGammaVeteran: RandomHumanoidSpawnerERTLeaderGamma
+VendingMachineMayson: null
+DrinkLukin: null
+DrinkFourteenLokoPlusCan: null
+MagazineAsh12: null
+ClothingHeadHelmetSpaceNinjaBiocode: null
+ClothingHandsGlovesSpaceNinjaBiocode: null
+ClothingOuterSuitSpaceNinjaBiocode: null
+EnergyKatanaBiocode: null
 # SL HITSCAN START
 BoxMagazineRifle: BoxMagazineRifleSP
 MagazineBoxLightRifle: MagazineBoxLightRifleSP
 MagazineBoxPistol: MagazineBoxPistolSP
-MagazineLightRifleBox: MagazineLightRifleBoxSP
+MagazineLightRifleBox: MagazineRifleBoxSP
 MagazineLightRifle: MagazineLightRifleSP
 MagazinePistolSubMachineGun: MagazinePistolSubMachineGunSP
 MagazineRifle: MagazineRifleSP
@@ -840,8 +937,54 @@ PrinterDoc: CopyMachineFilled
 PrinterDocFlatpack: CopyMachineFlatpack
 MagazineP90Extended: null
 CrateArmoryWeaponXM1014: null
+WeaponRifleV31: null
+MagazineV31: null
 WeaponEnergyGunMultiphase: WeaponMultiphaseGun
-# Sunrise-End
+ClothingBeltAssaultFilled: null
+MagazinePistolSubMachineGunCaseless: BaseMagazinePistolCaselessRifleExtended
+SyndicateCircuitBoard: SyndimovCircuitBoard
+WeaponRifleAKM: WeaponRifleAKMU
+CrateArmoryAKMS: null
+SpawnPointPrisonGuard: null
+# 2025-12-21
+ClothingNeckCMOCloak: ClothingNeckMedCloak
+
+HyposprayMedicalNoFilter: null
+HyposprayMedical: null
+HyposprayMedicalNoFilterBox: null
+GrenadeFlashTimer: null
+
+ImplantExtractorMachineCircuitboard: InterrogatorMachineCircuitboard
+
+# 2026-01-02
+EnergyDomeWiredTest: null
+
+# 2026-01-31
+ClothingHeadHelmetHardsuitMilira: ClothingHeadHelmetEVAMilira
+MagazineDragunov: MagazineDragunovSP
+# 2026-02-07
+ClothingHeadAreopagite: null
+ClothingHeadHelmetInsulated: null
+ClothingHeadTechPriest: null
+ClothingOuterRobeTechPriest: null
+ClothingOuterWinterCoatLong: null
+ClothingOuterWinterCoatPlaid: null
+ClothingOuterWinterMystagogue: null
+GunSafeBlueshield: null
+MusicTape157: null
+MusicTape18: null
+PosterLegitSMAnomalies: null
+PosterLegitSMEpi: null
+PosterLegitSMGlimmer: null
+PosterLegitSMHardhats: null
+PosterLegitSMPills: null
+SalvageSeedSpawnerLow: null
+PosterLegitSMPiping: null
+ClothingOuterSuitAreopagite: null
+SuitStorageBlueshield: SuitStorageBlueShield
+GunSafeIonRifle: GunSafeSuperIonRifle
+GunSafeSMRTGun: GunSafeSuperweaponSmartGun
+# region Sunrise-End
 
 # Санрайз насрал опять
 MagazineBoxHeavyRifle: null
@@ -855,7 +998,6 @@ PosterPeremen: PosterChanges
 PosterGok: PosterGoc
 PosterSCP126: PosterSCP106
 
-GunSafeBlueShield: null
 LockerBlueShield: null
 LockerBlueshieldFilled: null
 LockerBlueshieldFilledUplink: null
@@ -1426,10 +1568,10 @@ ScpUraniumWindoorNukeopLocked: null
 ScpUraniumWindoorSecureNukeopLocked: null
 ScpBlastDoorCentralCommand: ScpBlastDoorRegionalAdministration
 ScpShuttersWindowCentralCommand: ScpShuttersWindowRegionalAdministration
-LockerExternalAdministrativeZoneFieldDoctor: LockerHeavyContainmentZoneFieldMedic
-LockerHeavyContainmentZoneFieldDoctor: LockerHeavyContainmentZoneFieldMedic
-LockerExternalAdministrativeZoneFieldDoctorFilled: LockerHeavyContainmentZoneFieldMedicFilled
-LockerHeavyContainmentZoneFieldDoctorFilled: LockerHeavyContainmentZoneFieldMedicFilled
+LockerExternalAdministrativeZoneFieldDoctor: ScpLockerAmnesticologist
+LockerHeavyContainmentZoneFieldDoctor: ScpLockerAmnesticologist
+LockerExternalAdministrativeZoneFieldDoctorFilled: ScpLockerAmnesticologistFilled
+LockerHeavyContainmentZoneFieldDoctorFilled: ScpLockerAmnesticologistFilled
 KeyCardLevel0: null
 KeyCardLevel1: null
 KeyCardLevel2: null
@@ -1438,26 +1580,6 @@ KeyCardLevel4: null
 KeyCardLevel5: null
 KeyCardScpSec: null
 KeyCardMtfLeader: null
-
-# Удалить после фикса
-ScpDoubleAirlockAtmospherics: ScpDoubleGlassAirlockLifeSupport
-ScpDoubleAirlockCargo: ScpDoubleGlassAirlockLogistics
-ScpDoubleAirlockCommand: ScpDoubleGlassAirlockAdministration
-ScpDoubleAirlockCentralCommand: ScpDoubleGlassAirlockRegionalAdministration
-ScpDoubleAirlockEngineering: ScpDoubleGlassAirlockEngineering
-ScpDoubleAirlockMedical: ScpDoubleGlassAirlockMedical
-ScpDoubleAirlockScience: ScpDoubleGlassAirlockScience
-ScpDoubleAirlockSecurity: ScpDoubleGlassAirlockSecurity
-ScpDoubleAirlockAtmosphericsLocked: ScpDoubleGlassAirlockLifeSupportLocked
-ScpDoubleAirlockCargoLocked: ScpDoubleGlassAirlockLogisticsLocked
-ScpDoubleAirlockCommandLocked: ScpDoubleGlassAirlockAdministrationLocked
-ScpDoubleAirlockCentralCommandLocked: ScpDoubleGlassAirlockRegionalAdministrationLocked
-ScpDoubleAirlockEngineeringLocked: ScpDoubleGlassAirlockEngineeringLocked
-ScpDoubleAirlockMedicalLocked: ScpDoubleGlassAirlockMedicalLocked
-ScpDoubleAirlockScienceLocked: ScpDoubleGlassAirlockScienceLocked
-ScpDoubleAirlockSecurityLocked: ScpDoubleGlassAirlockSecurityLocked
-ScpDoubleAirlock: ScpDoubleGlassAirlock
-# Удалить после фикса
 
 SpawnPointCaptain: SpawnPointDirector
 SpawnPointHeadOfPersonnel: SpawnPointPersonnelOfficer
@@ -1498,7 +1620,6 @@ SpawnPointChaplain: null
 SpawnPointLibrarian: null
 SpawnPointLawyer: null
 SpawnPointMusician: null
-SpawnPointBoxer: null
 SpawnPointBorg: null
 SpawnPointAtmos: null
 SpawnPointParamedic: null
@@ -1507,7 +1628,6 @@ SpawnPointWarden: null
 SpawnPointSecurityOfficer: null
 SpawnPointDetective: null
 SpawnPointReporter: null
-SpawnPointZookeeper: null
 SpawnPointERTJanitor: null
 SpawnPointERTSecurity: null
 SpawnPointERTMedical: null
@@ -1519,7 +1639,6 @@ SpawnPointMedicalPathologist: null
 SpawnPointMagistrat: null
 SpawnPointNtrep: null
 SpawnPointBrigmedic: null
-SpawnPointBlueShield: null
 SpawnPointBlueShieldOfficer: null
 SpawnPointSeniorOfficer: null
 SpawnPointBarber: null
@@ -1876,48 +1995,201 @@ TelecomServerFilledCommand: TelecomServerFilledAdministration
 #
 TelecomServerFilledSecurity: null
 
-# Шкафы
-LockerCaptain: LockerDirector
-LockerHeadOfPersonnel: LockerPersonnelOfficer
-LockerChiefEngineer: LockerChiefTechnicalSpecialist
-LockerQuarterMaster: LockerSeniorLogisticsOfficer
-LockerChiefMedicalOfficer: LockerHeadOfMedicalSector
-LockerHeadOfSecurity: LockerSecurityCommander
-LockerResearchDirector: LockerScientificServiceDirector
-LockerRepresentative: LockerEthicsCommittee
-LockerChemistry: LockerLaboratory
-LockerAtmospherics: LockerLifeSupport
+# Шкафы с замком
+LockerCaptain: ScpLockerDirector
+LockerHeadOfPersonnel: ScpLockerPersonnelOfficer
+LockerChiefEngineer: ScpLockerChiefTechnicalSpecialist
+LockerQuarterMaster: ScpLockerSeniorLogisticsOfficer
+LockerChiefMedicalOfficer: ScpLockerHeadOfMedicalSector
+LockerHeadOfSecurity: ScpLockerSecurityCommander
+LockerResearchDirector: ScpLockerScientificServiceDirector
+LockerRepresentative: ScpLockerEthicsCommittee
+LockerChemistry: ScpLockerLaboratory
+LockerAtmospherics: ScpLockerLifeSupport
 LockerFreezer: ScpLockerFreezer
-LockerBotanist: ScpLockerBotanist
+LockerBotanist: ScpLockerBotanistPhytogeneticist
+ScpLockerBotanist: ScpLockerBotanistPhytogeneticist
 LockerBooze: ScpLockerBooze
+LockerSteel: ScpLockerPlasteel
+LockerSalvageSpecialist: ScpLockerLogisticsService
+LockerElectricalSupplies: ScpLockerElectricalSupplies
+LockerWeldingSupplies: ScpLockerWeldingSupplies
+LockerEngineer: ScpLockerGeneralTechnicalSpecialist
+LockerEvacRepair: ScpLockerEvacRepair
+LockerFreezerBase: ScpLockerFreezerBase
+LockerMedicine: ScpLockerMedicalService
+LockerMedical: ScpLockerMedicalSpecialist
+LockerScientist: ScpLockerResearcher
+LockerBrigmedic: ScpLockerAmnesticologist
+LockerHeavyContainmentZoneFieldMedic: ScpLockerAmnesticologist
+LockerEvidence: ScpLockerCommandantSquad
+LockerScience: ScpLockerResearcher
 
-LockerCaptainFilled: LockerDirectorFilled
-LockerCaptainFilledNoLaser: LockerDirectorFilled
-LockerCaptainFilledHardsuit: LockerDirectorFilled
-LockerHeadOfPersonnelFilled: LockerPersonnelOfficerFilled
-LockerChiefEngineerFilled: LockerChiefTechnicalSpecialistFilled
-LockerChiefEngineerFilledHardsuit: LockerChiefTechnicalSpecialistFilled
-LockerQuarterMasterFilled: LockerSeniorLogisticsOfficerFilled
-LockerChiefMedicalOfficerFilled: LockerHeadOfMedicalSectorFilled
-LockerChiefMedicalOfficerFilledHardsuit: LockerHeadOfMedicalSectorFilled
-LockerHeadOfSecurityFilled: LockerSecurityCommanderFilled
-LockerHeadOfSecurityFilledHardsuit: LockerSecurityCommanderFilled
-LockerResearchDirectorFilled: LockerScientificServiceDirectorFilled
-LockerResearchDirectorFilledHardsuit: LockerScientificServiceDirectorFilled
-LockerChemistryFilled: LockerLaboratoryFilled
-LockerAtmosphericsFilled: LockerLifeSupportFilled
-LockerAtmosphericsFilledHardsuit: LockerLifeSupportFilled
-LockerBotanistFilled: ScpLockerBotanistFilled
+# Шкафы
+ClosetSteelBase: ScpClosetSteelBase
+ClosetTool: ScpClosetTool
+ClosetRadiationSuit: ScpClosetRadiationSuit
+ClosetEmergency: ScpClosetEmergency
+ClosetEmergencyN2: ScpClosetEmergencyN2
+ClosetFire: ScpClosetFire
+ClosetBomb: ScpClosetBomb
+ClosetL3: ScpClosetL3
+ClosetL3Science: ScpClosetL3
+ClosetL3Virology: ScpClosetL3Virology
+ClosetL3Security: ScpClosetL3Security
+ClosetL3Janitor: ScpClosetL3Virology
+ClosetMaintenance: ScpClosetMaintenance
+ClosetJanitor: ScpClosetJanitor
+ClosetChef: ScpClosetGastronomicSpecialist
+ClosetLegal: ScpClosetLegal
+ClosetPatologoanatom: ScpLockerMedicalService
+ClosetCursed: ScpClosetCursed
+LockerPrisoner: ScpLockerPrisoner
+LockerPrisoner2: ScpLockerPrisoner
+LockerPrisoner3: ScpLockerPrisoner
+LockerPrisoner4: ScpLockerPrisoner
+LockerPrisoner5: ScpLockerPrisoner
+LockerPrisoner6: ScpLockerPrisoner
+LockerPrisoner7: ScpLockerPrisoner
+LockerPrisoner8: ScpLockerPrisoner
+
+# Шкафы с одеждой
+WardrobeEngineering: ScpLockerEngineeringTechnicalService
+WardrobeMedicalDoctor: ScpLockerMedicalService
+WardrobeSecurity: null # У нас два отряда СБ, им не подойдет единый шкаф. Новые нужно ставить вручную
+WardrobeCargo: ScpLockerLogisticsService
+WardrobeChemistry: ScpLockerMedicalService
+WardrobePrison: ScpClosetPrison
+WardrobeScience: ScpClosetScience
+
+# Заполненные шкафы с замком
+LockerCaptainFilled: ScpLockerDirectorFilled
+LockerCaptainFilledNoLaser: ScpLockerDirectorFilled
+LockerCaptainFilledHardsuit: ScpLockerDirectorFilled
+LockerHeadOfPersonnelFilled: ScpLockerPersonnelOfficerFilled
+LockerChiefEngineerFilled: ScpLockerChiefTechnicalSpecialistFilled
+LockerChiefEngineerFilledHardsuit: ScpLockerChiefTechnicalSpecialistFilled
+LockerQuarterMasterFilled: ScpLockerSeniorLogisticsOfficerFilled
+LockerChiefMedicalOfficerFilled: ScpLockerHeadOfMedicalSectorFilled
+LockerChiefMedicalOfficerFilledHardsuit: ScpLockerHeadOfMedicalSectorFilled
+LockerHeadOfSecurityFilled: ScpLockerSecurityCommanderFilled
+LockerHeadOfSecurityFilledHardsuit: ScpLockerSecurityCommanderFilled
+LockerResearchDirectorFilled: ScpLockerScientificServiceDirectorFilled
+LockerResearchDirectorFilledHardsuit: ScpLockerScientificServiceDirectorFilled
+LockerChemistryFilled: ScpLockerLaboratoryFilled
+LockerAtmosphericsFilled: ScpLockerLifeSupportFilled
+LockerAtmosphericsFilledHardsuit: ScpLockerLifeSupportFilled
+LockerBotanistFilled: ScpLockerBotanistPhytogeneticistFilled
+ScpLockerBotanistFilled: ScpLockerBotanistPhytogeneticistFilled
 LockerBoozeFilled: ScpLockerBoozeFilled
+ClosetToolFilled: ScpClosetToolFilled
+LockerElectricalSuppliesFilled: ScpLockerElectricalSuppliesFilled
+LockerWeldingSuppliesFilled: ScpLockerWeldingSuppliesFilled
+ClosetRadiationSuitFilled: ScpClosetRadiationSuitFilled
+LockerEvacRepairFilled: ScpLockerEvacRepairFilled
+LockerEngineerFilled: ScpLockerGeneralTechnicalSpecialistFilled
+LockerEngineerFilledHardsuit: ScpLockerGeneralTechnicalSpecialistFilled
+LockerMedicineFilled: ScpLockerMedicalServiceFilledMedicine
+LockerMedicalFilled: ScpLockerMedicalSpecialistFilled
+LockerParamedicFilled: ScpLockerMedicalSpecialistFilled
+LockerBrigmedicFilled: ScpLockerAmnesticologistFilled
+LockerHeavyContainmentZoneFieldMedicFilled: ScpLockerAmnesticologistFilled
+LockerScienceFilled: ScpLockerResearcherFilled
 
+# Заполненные шкафы
+ClosetBombFilled: ScpClosetBombFilled
+ClosetEmergencyFilledRandom: ScpClosetEmergencyFilled
+ClosetEmergencyN2FilledRandom: ScpClosetEmergencyN2Filled
+ClosetFireFilled: ScpClosetFireFilled
+ClosetMaintenanceFilledRandom: ScpClosetMaintenanceFilled
+ClosetL3Filled: ScpClosetL3Filled
+ClosetL3VirologyFilled: ScpClosetL3VirologyFilled
+ClosetL3SecurityFilled: ScpClosetL3SecurityFilled
+ClosetL3JanitorFilled: ScpClosetL3VirologyFilled
+ClosetL3ScienceFilled: ScpClosetL3Filled
+ClosetJanitorFilled: ScpClosetJanitorFilled
+ClosetChefFilled: ScpClosetGastronomicSpecialistFilled
+ClosetLegalFilled: ScpClosetLegalFilled
+ClosetPatologoanatomFilled: ScpLockerMedicalService
+
+# Шкафы с одеждой
+WardrobeEngineeringFilled: ScpLockerEngineeringTechnicalServiceFilledWardrobe
+WardrobeMedicalDoctorFilled: ScpLockerMedicalServiceFilledWardrobe
+WardrobeSecurityFilled: null # У нас два отряда СБ, им не подойдет единый шкаф. Новые нужно ставить вручную
+WardrobeCargoFilled: ScpLockerLogisticsServiceFilledWardrobe
+WardrobeChemistryFilled: ScpLockerMedicalServiceFilledWardrobeLaboratory
+WardrobePrisonFilled: ScpClosetPrisonFilled
+WardrobeScienceFilled: ScpClosetScienceFilled
+
+# Лишние ванильные шкафы
 LockerFreezerVaultFilled: null
 LockerWarden: null
 LockerWardenFilled: null
 LockerWardenFilledHardsuit: null
 LockerSecurity: null
 LockerSecurityFilled: null
-LockerBrigmedic: null
-LockerBrigmedicFilled: null
+LockerBluespaceStation: null
+LockerClown: null
+LockerMime: null
+LockerDetective: null
+LockerDetectiveFilled: null
+LockerSyndicate: null
+LockerSyndicatePersonal: null
+LockerSyndicatePersonalFilled: null
+ClosetJanitorBomb: null
+
+# Настенные шкафы(не нужны)
+LockerWallMedicalFilled: null
+LockerWallMedicalDoctorFilled: null
+ClosetWallEmergencyFilledRandom: null
+ClosetWallEmergencyN2FilledRandom: null
+ClosetWallFireFilledRandom: null
+ClosetWallMaintenanceFilledRandom: null
+LockerWallBasePrisoner: null
+LockerWallBasePrisoner2: null
+LockerWallBasePrisoner3: null
+LockerWallBasePrisoner4: null
+LockerWallBasePrisoner5: null
+LockerWallBasePrisoner6: null
+LockerWallBasePrisoner7: null
+LockerWallBasePrisoner8: null
+
+# Переименование
+LockerDirector: ScpLockerDirector
+LockerDirectorFilled: ScpLockerDirectorFilled
+LockerPersonnelOfficer: ScpLockerPersonnelOfficer
+LockerPersonnelOfficerFilled: ScpLockerPersonnelOfficerFilled
+LockerChiefTechnicalSpecialist: ScpLockerChiefTechnicalSpecialist
+LockerChiefTechnicalSpecialistFilled: ScpLockerChiefTechnicalSpecialistFilled
+LockerSeniorLogisticsOfficer: ScpLockerSeniorLogisticsOfficer
+LockerSeniorLogisticsOfficerFilled: ScpLockerSeniorLogisticsOfficerFilled
+LockerHeadOfMedicalSector: ScpLockerHeadOfMedicalSector
+LockerHeadOfMedicalSectorFilled: ScpLockerHeadOfMedicalSectorFilled
+LockerSecurityCommander: ScpLockerSecurityCommander
+LockerSecurityCommanderFilled: ScpLockerSecurityCommanderFilled
+LockerScientificServiceDirector: ScpLockerScientificServiceDirector
+LockerScientificServiceDirectorFilled: ScpLockerScientificServiceDirectorFilled
+LockerEthicsCommittee: ScpLockerEthicsCommittee
+LockerInternalTribunalService: ScpLockerInternalTribunalService
+LockerMTF: ScpLockerMtf
+LockerO5: ScpLockerO5
+LockerScpSafe: ScpLockerScpSafe
+LockerScpEuclid: ScpLockerScpEuclid
+LockerScpKeter: ScpLockerScpKeter
+LockerLaboratory: ScpLockerLaboratory
+LockerLaboratoryFilled: ScpLockerLaboratoryFilled
+LockerLifeSupport: ScpLockerLifeSupport
+LockerLifeSupportFilled: ScpLockerLifeSupportFilled
+LockerChaosInsurgency: ScpLockerChaosInsurgency
+LockerThirdParty: ScpLockerThirdParty
+
+# Столы
+TableFrame: ScpTableFrame
+Table: ScpTable
+TableReinforced: ScpTableReinforced
+TableGlass: ScpTableGlass
+TableReinforcedGlass: ScpTableReinforcedGlass
+TablePlasmaGlass: ScpTablePlasmaGlass
 
 # Факсы
 FaxMachineCentcom: FaxMachineRegionalAdministration
@@ -2090,15 +2362,15 @@ PosterMapMetaRight: null
 PosterLegitGrueSomeSanta: null
 
 # Игрушки, не вписывающиеся в атмосферу
-ToySpawner: ScpToySpawner
-FigureSpawner: ScpFigureSpawner
-SpacemenFigureSpawner: ScpSpacemenFigureSpawner
+PlushieSpawner50: ScpToySpawner
+MechFigurineSpawner50: ScpFigureSpawner
+SpacemenFigurineSpawner90: ScpSpacemenFigureSpawner
 
 ToyFigurineNukieElite: null
 ToyFigurineSalvage: null
 ToyFigurineSlime: null
-ToyOwlman: null
-ToySkeleton: null
+ToyFigurineOwlman: null
+ToyFigurineSkeleton: null
 ToyFigurineChaplain: null
 ToyFigurinePassenger: null
 ToyFigurineParamedic: null
@@ -2124,7 +2396,7 @@ ToyFigurineDeathsquad: null
 ToyFigurineNukie: null
 ToyFigurineFootsoldier: null
 ToyFigurineGreytider: null
-ToyGriffin: null
+ToyFigurineGriffin: null
 PlushieNuke: null
 PlushieRatvar: null
 PlushieVox: null
@@ -2273,11 +2545,95 @@ MTFSpecialistBackpack: MtfTacticalBackpack
 ClothingMaskGasLLH: null
 ClothingMaskGasRRH: null
 
+# Ликвидированные столы
+TableStone: ScpTable
+TableWeb: ScpTable
+TableXeno: ScpTable
+
 # Удаленные стены
-ScpWallConcreteLightContaimentCrack: ScpWallConcreteLightContaiment
+ScpWallConcreteLightContaimentCrack: ScpWallConcreteLightContainment
 ScpWallConcreteScienceCrack: ScpWallConcreteScience
 ScpWallConcreteEngineerCrack: ScpWallConcreteEngineer
 ScpWallConcreteMedicalCrack: ScpWallConcreteMedical
 ScpWallConcreteCrack: ScpWallConcrete
+
+ScpWallConcreteMetallHardContaiment: ScpWallMetalHardContainment
+ScpWallConcreteMetallHardContaimentDiagonal: ScpWallMetalHardContainmentDiagonal
+ScpWallConcreteLightContaiment: ScpWallConcreteLightContainment
+
+# Rename
+FSConcreteCurbNorth: ConcreteCurbIn
+FSConcreteCurbSouth: ConcreteCurbOut
+FSConcreteCurbCornerNorth: ConcreteCurbCornerIn
+FSConcreteCurbCornerSouth: ConcreteCurbCornerOut
+FSConcreteCurbCornerSmallNorth: ConcreteCurbCornerSmallOut # Тут всё ок. Спрайты были не правильно названы.
+FSConcreteCurbCornerSmallSouth: ConcreteCurbCornerSmallIn # Тут всё ок. Спрайты были не правильно названы.
+
+# SCP Consoles
+CentcomComputerComms: ScpComputerCommunicationRegionalAdministration
+CentcommComputerComms: ScpComputerCommunicationRegionalAdministration
+CommandConsoleComputer: ScpComputerPlayerConsole
+ComputeCargoSalaryConsole: ScpComputerLogisticsSalaryConsole
+ComputerAlert: ScpComputerAlert
+ComputerAnalysisConsole: ScpComputerAnalysisConsole
+ComputerApproveErtConsole: ScpComputerApproveMtfConsole
+ComputerAtmosMonitoring: ScpComputerAtmosphereMonitoring
+computerBodyScanner: ScpComputerBodyScanner
+ComputerBountySaleConsole: ScpComputerBountySaleConsole
+ComputerBroken: ScpComputerBroken
+ComputerCallErtConsole: ScpComputerCallMtfConsole
+ComputerCargoBounty: ScpComputerLogisticsBounty
+ComputerCargoFinanceConsole: ScpComputerLogisticsFinanceConsole
+ComputerCargoOrders: ScpComputerLogisticsOrders
+ComputerCargoOrdersEngineering: ScpComputerLogisticsOrdersEngineeringTechnicalService
+ComputerCargoOrdersMedical: ScpComputerLogisticsOrdersMedicalService
+ComputerCargoOrdersScience: ScpComputerLogisticsOrdersScientificService
+ComputerCargoOrdersSecurity: ScpComputerLogisticsOrdersSecurity
+ComputerCargoOrdersService: ScpComputerLogisticsOrdersFoodAndSanitationService
+ComputerCloningConsole: ScpComputerCloningConsole
+ComputerComms: ScpComputerCommunication
+ComputerContrabandSale: ScpComputerContrabandSale
+ComputerCrewMonitoring: ScpComputerPersonnelMonitoring
+ComputerCriminalRecords: ScpComputerCriminalRecords
+ComputerEmergencyShuttle: ScpComputerEmergencyShuttle
+ComputerFineRecords: ScpComputerFineRecords
+ComputerFrame: ScpComputerFrame
+ComputerFundingAllocation: ScpComputerFundingAllocation
+ComputerId: ScpComputerId
+ComputerIFF: ScpComputerIFF
+ComputerIFFSyndicate: ScpComputerIFFChaosInsurgency
+ComputerMassMedia: ScpComputerMassMedia
+ComputerMedicalRecords: ScpComputerMedicalRecords
+ComputerMedicalSaleConsole: ScpComputerMedicalServiceSaleConsole
+ComputerPalletConsole: ScpComputerPalletConsole
+ComputerPowerMonitoring: ScpComputerPowerMonitoring
+ComputerRadar: ScpComputerRadar
+ComputerResearchAndDevelopment: ScpComputerResearchAndDevelopment
+ComputerRoboticsControl: ScpComputerRoboticsControl
+ComputerSaleConsole: ScpComputerSaleConsole
+ComputerSalvageExpedition: null
+ComputerScienceSaleConsole: ScpComputerScientificServiceSaleConsole
+ComputerSecuritySaleConsole: ScpComputerSecuritySaleConsole
+ComputerSensorMonitoring: ScpComputerSensorMonitoring
+ComputerServiceSaleConsole: ScpComputerFoodAndSanitationServiceSaleConsole
+ComputerShipyard: ScpComputerShipyard
+ComputerShuttle: ScpComputerShuttle
+ComputerShuttleCentComm: ScpComputerShuttleRegionalAdministration
+ComputerShuttleSecurity: ScpComputerShuttleSecurity
+ComputerShuttleSyndie: ScpComputerShuttleChaosInsurgency
+ComputerSolarControl: ScpComputerSolarControl
+ComputerStationRecords: ScpComputerFacilityRecords
+ComputerSurveillanceCameraMonitor: ScpComputerSurveillanceCameraMonitor
+ComputerSurveillanceWirelessCameraMonitor: ScpComputerSurveillanceWirelessCameraMonitor
+ComputerTelevision: ScpComputerTelevision
+ComputeStationBankConsole: ScpComputerFacilityBankConsole
+StationAiFixerComputer: ScpComputerFacilityAiFixer
+StationAiUploadComputer: ScpComputerFacilityAiUpload
+SyndicateComputerComms: ScpComputerCommunicationChaosInsurgency
+ComputerShuttleCargo: ScpComputerShuttleLogistics
+CodeConsole: ScpComputerCodes
+ComputerIcarus: ScpComputerIcarus
+BaseComputer: ScpComputer
+BaseComputerAiAccess: ScpComputer
 
 # Fire added end

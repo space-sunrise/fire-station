@@ -283,3 +283,17 @@
     layers:
     - state: crypt_chaos
     - state: chaos_label
+
+- type: entity
+  parent: [ EncryptionKey, BaseFoundationEnemyContraband ]
+  id: EncryptionKeyGRU
+  components:
+  - type: EncryptionKey
+    channels:
+    - GRU
+    defaultChannel: GRU
+  - type: Sprite
+    sprite: _Scp/Objects/Devices/encryption_keys.rsi
+    layers:
+    - state: crypt_gru
+    - state: gru_label

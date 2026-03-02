@@ -1,4 +1,17 @@
 ignore_list:
+  - AMH-C227 # Fire added
+  - name # Fire added
+  - value # Fire added
+  - 6x3 # Fire added
+  - 6x2 # Fire added
+  - 5x3 # Fire added
+  - 5x2 # Fire added
+  - 5x1 # Fire added
+  - 4x3 # Fire added
+  - 3x3 # Fire added
+  - G36 # Fire added
+  - AR18 # Fire added
+  - P90 # Fire added
   - 'EntityUid'
   - 'Zzz...'
   - 'playglobalsound'
@@ -10,6 +23,7 @@ ignore_list:
   - 'X'
   - 'Y'
   - 'EI NATH'
+  - 'CBURN'
   - '>MFW'
   - 'Hello world!'
   - 'green'
@@ -59,11 +73,14 @@ ignore_list:
   - 'EVA'
   - 'MK58'
   - 'WT550'
+  - 'SKM-24'
+  - 'SKM-28'
   - 'N1984'
   - 'DEUS VULT'
   - 'AMS-42'
   - 'SAM-300'
   - 'AJ-100'
+  - 'SIAR-52'
   - 'Deus vult! Ave maria!'
   - TR-263'
   - 'G-Man'
@@ -85,12 +102,17 @@ ignore_list:
   - 'G-36'
   - 'M-28'
   - 'AR-18'
+  - 'ARG'
   - 'M16A4'
   - 'STG 44'
   - 'ACP-14'
   - 'Glock-22'
+  - 'Desert Eagle'
+  - 'Metus'
   - 'GL-70'
+  - 'M79'
   - 'M-41'
+  - 'Aussec Armory M-52'
   - 'DEAD-BEEF'
   - 'UwU'
   - 'C-4'
@@ -101,6 +123,7 @@ ignore_list:
   - 'Sun-kist'
   - 'Robust Softdrinks'
   - 'C-20r'
+  - 'C-40r'
   - 'Donut Corp.'
   - 'LV426'
   - 'Kept ya waiting, huh?'
@@ -109,6 +132,7 @@ ignore_list:
   - 'L6 SAW'
   - 'L6C ROW'
   - 'China Lake'
+  - 'China-Lake'
   - 'Plant-B-Gone'
   - 'Bon appétit!'
   - 'Bon ap-petite!'
@@ -136,10 +160,12 @@ ignore_list:
   - 'AMLG-90'
   - 'TR-263'
   - 'LAW-12'    # Для ent-WeaponShotgunSPAS12
-  - 'AKM'       # Для ent-WeaponRifleAKM
   - 'MG-342'    # Для ent-WeaponMachineGunMG42
+  - 'S-13'
   - 'v3.0.9'
+  - 'v0.2.1'
   - 'F₃BZ'
+  - 'Holo Girl'
   - 'BZ'
   - 'NH₃'
   - 'CO₂'
@@ -151,6 +177,7 @@ ignore_list:
   - 'T'
   - 'H₂O'
   - 'v2.1'
+  - 'v0.2.1'
   - 'v 1.6'
   - 'Sol Dry'
   - 'Ds ujdjhbnt nhfyckbnjv.'
@@ -163,19 +190,12 @@ ignore_list:
   - '{$linked ->'
   - <username>
   - <index>
-  - AMH-C227 # Fire added
-  - name # Fire added
-  - value # Fire added
-  - 6x3 # Fire added
-  - 6x2 # Fire added
-  - 5x3 # Fire added
-  - 5x2 # Fire added
-  - 5x1 # Fire added
-  - 4x3 # Fire added
-  - 3x3 # Fire added
-  - G36 # Fire added
-  - AR18 # Fire added
-  - P90 # Fire added
+  - 'MHelp'
+  - 'Net-ERR*?*%'
+  - 'Holo Girl'
+  - 'RobustChat'
+  - 'www.wetskrell.nt'
+  - '25-j*%...o1q'
 
 ignore_files:
   - 'italian.ftl'
@@ -206,3 +226,6 @@ ignore_files:
   - role-types.ftl
   - rmobjective.ftl
   - persistence-save-command.ftl
+  - xeno_last.ftl
+  - xeno_first.ftl
+  - narsie.ftl

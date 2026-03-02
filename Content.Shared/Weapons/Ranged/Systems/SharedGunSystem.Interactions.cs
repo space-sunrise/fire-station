@@ -117,7 +117,7 @@ public abstract partial class SharedGunSystem
         // Fire edit end
 
         if (Timing.ApplyingState)
-             return;
+            return;
 
         if (component.FireRateModified <= 0)
             return;

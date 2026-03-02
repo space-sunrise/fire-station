@@ -16,17 +16,17 @@
         messages: [ reagent-amnesiac-a-msg ]
         probability: 1
         conditions:
-        - !type:Breathing
-        - !type:Internals
-          usingInternals: false
+        - !type:BreathingCondition
+        - !type:InternalsCondition
+          inverted: true
       - !type:ModifyStatusEffect
         effectProto: StatusEffectForcedSleeping
         time: 2
         type: Add
         conditions:
-        - !type:Breathing
-        - !type:Internals
-          usingInternals: false
+        - !type:BreathingCondition
+        - !type:InternalsCondition
+          inverted: true
   metabolisms:
     Poison:
       effects:
@@ -36,7 +36,8 @@
         messages: [ reagent-amnesiac-a-msg ]
         probability: 1
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AmnesiacA
           min: 5
     Narcotic:
       effects:
@@ -45,7 +46,8 @@
         time: 5
         type: Add
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AmnesiacA
           min: 4
 
 - type: reagent
@@ -65,7 +67,8 @@
         messages: [ reagent-amnesiac-b-msg ]
         probability: 1
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AmnesiacB
           min: 5
     Narcotic:
       effects:
@@ -74,7 +77,8 @@
         time: 7
         type: Add
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AmnesiacB
           min: 4
 
 - type: reagent
@@ -94,14 +98,16 @@
         messages: [ reagent-amnesiac-c-msg ]
         probability: 1
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AmnesiacC
           min: 5
       - !type:HealthChange
         damage:
           types:
             Cellular: 0.5
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AmnesiacC
           min: 1
     Narcotic:
       effects:
@@ -110,14 +116,16 @@
         time: 9
         type: Add
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AmnesiacC
           min: 4
       - !type:ModifyStatusEffect
         effectProto: StatusEffectWoozy
         time: 27
         type: Add
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AmnesiacC
           min: 4
 
 - type: reagent
@@ -137,14 +145,16 @@
         messages: [ reagent-amnesiac-d-msg ]
         probability: 1
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AmnesiacD
           min: 5
       - !type:HealthChange
         damage:
           types:
             Cellular: 0.75
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AmnesiacD
           min: 1
     Narcotic:
       effects:
@@ -153,14 +163,16 @@
         time: 12
         type: Add
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AmnesiacD
           min: 4
       - !type:ModifyStatusEffect
         effectProto: StatusEffectWoozy
         time: 36
         type: Add
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: AmnesiacD
           min: 4
 
 - type: reagent
@@ -179,7 +191,8 @@
         time: 2
         type: Add
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: RawAmnesiac
           min: 5
 
 # Мнестики ("Анти Амнезиак")
@@ -200,9 +213,10 @@
         messages: [ reagent-mnestic-w-msg ]
         probability: 1
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: MnesticW
           min: 5
-          
+
 - type: reagent
   id: MnesticX
   name: reagent-mnestic-x-name
@@ -220,5 +234,6 @@
         messages: [ reagent-mnestic-x-msg ]
         probability: 1
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: MnesticX
           min: 5

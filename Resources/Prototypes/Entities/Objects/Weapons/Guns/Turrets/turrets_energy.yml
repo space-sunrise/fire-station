@@ -6,6 +6,10 @@
   description: A high-tech autonomous weapons system designed to keep unauthorized personnel out of sensitive areas.
   categories: [ HideSpawnMenu ] # Fire added
   components:
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
   - type: Fixtures
     fixtures:
       body:
@@ -74,7 +78,7 @@
   - type: NpcFactionMember
     factions:
     - AllHostile
-  - type: ProjectileBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: BulletEnergyTurretDisabler
     fireCost: 100
   - type: BatteryWeaponFireModes
@@ -188,7 +192,7 @@
     - Borg
     - BasicSilicon
   - type: Machine
-    board: WeaponEnergyTurretSecurityMachineCircuitboard
+    board: WeaponEnergyTurretCommandMachineCircuitboard
   - type: DeviceNetwork
     receiveFrequencyId: TurretControl
     transmitFrequencyId: Turret

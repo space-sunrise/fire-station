@@ -77,7 +77,7 @@ public sealed partial class Scp106System : SharedScp106System
 
     private void OnMapInit(Entity<Scp106Component> ent, ref MapInitEvent args)
     {
-        _alerts.ShowAlert(ent, ent.Comp.Scp106EssenceAlert);
+        _alerts.ShowAlert(ent.Owner, ent.Comp.Scp106EssenceAlert);
 
         var marks = SearchForMarks();
         if (marks.Count == 0)

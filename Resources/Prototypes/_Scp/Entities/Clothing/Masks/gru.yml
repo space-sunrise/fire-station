@@ -1,0 +1,13 @@
+#Маска ГРУ
+- type: entity
+  parent: [ClothingMaskGas, BaseFoundationEnemyContraband]
+  id: ClothingMaskGRU
+  suffix: GRU
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/Mask/gru.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/Mask/gru.rsi
+  - type: Tag
+    tags:
+    - FullCovered

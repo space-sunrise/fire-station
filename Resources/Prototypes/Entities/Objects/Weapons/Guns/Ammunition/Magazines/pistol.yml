@@ -833,6 +833,7 @@
 
 - type: entity #  Sunrise-Edit
   id: MagazinePistolSubMachineGun
+  categories: [ HideSpawnMenu ] # Fire edit
   name: SMG magazine (.35 auto SP)
   parent: BaseMagazinePistolSubMachineGun
   description: 30-round double-stack magazine for submachine guns. Intended to hold general-purpose kinetic ammunition.
@@ -850,12 +851,18 @@
       map: ["enum.GunVisualLayers.Base"]
     - state: mag-1
       map: ["enum.GunVisualLayers.Mag"]
+    - state: stripe
+      color: "#575EF5"
   - type: Item
     inhandVisuals:
       left:
       - state: inhand-left-mag
+      - state: inhand-left-stripe
+        color: "#575EF5"
       right:
       - state: inhand-right-mag
+      - state: inhand-right-stripe
+        color: "#575EF5"
 
 - type: entity
   id: MagazinePistolSubMachineGunEmpty
@@ -881,6 +888,7 @@
 
 - type: entity
   id: MagazinePistolSubMachineGunRubber
+  categories: [ HideSpawnMenu ] # Fire edit
   name: SMG magazine (.35 auto rubber)
   parent: BaseMagazinePistolSubMachineGun
   components:
@@ -920,7 +928,7 @@
   - type: BallisticAmmoProvider
     capacity: 30
     proto: CartridgePistolSP
-    whitelist:
+    whitelist: # Redundant
       tags:
       - CartridgePistol
     soundInsert:

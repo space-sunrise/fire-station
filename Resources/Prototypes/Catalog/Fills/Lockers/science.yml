@@ -2,6 +2,7 @@
   id: LockerScienceFilled
   suffix: Filled
   parent: LockerScientist
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:

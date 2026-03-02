@@ -11,25 +11,27 @@
       effects:
       - !type:Emote
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: АМН-С227
           min: 1
         emote: Yawn
         showInChat: true
         probability: 0.1
-      - !type:MovespeedModifier
+      - !type:MovementSpeedModifier
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: АМН-С227
           min: 1
         walkSpeedModifier: 0.65
         sprintSpeedModifier: 0.65
       - !type:ModifyStatusEffect
-        conditions:
-        - !type:ReagentThreshold
-          min: 1
         effectProto: StatusEffectDrowsiness
         time: 4
         type: Add
-        refresh: false
+        conditions:
+        - !type:ReagentCondition
+          reagent: АМН-С227
+          min: 1
 
 - type: entity
   parent: BaseFoam

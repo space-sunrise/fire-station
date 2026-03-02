@@ -6,11 +6,12 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: ExternalAdministrativeZoneSecurityService
-    time: 54000
+    time: 43200
   icon: JobExternalAdministrativeZoneCommandant
   supervisors: job-supervisors-security-commander
   canBeAntag: false
   displayWeight: 70
+  weight: 825
   accessGroups:
   - SecurityCommandant
   special:

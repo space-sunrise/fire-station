@@ -7,11 +7,14 @@
     - Body
   blacklist:
     components:
+    # Fire added start
+    - Scp
+    # Fire added end
     - Ghost
-    - Jump
     - Flip
-    - Fall
-    - Scp # Fire added
+    statusEffects:
+    - StatusEffectJump
+    - StatusEffectFall
   popupMessages: ["animations-msg-flip"]
   animation: true
 
@@ -24,11 +27,14 @@
     - Body
   blacklist:
     components:
+    # Fire added start
+    - Scp
+    # Fire added end
     - Ghost
-    - Jump
     - Flip
-    - Fall
-    - Scp # Fire added
+    statusEffects:
+    - StatusEffectJump
+    - StatusEffectFall
   popupMessages: ["animations-msg-jump"]
   animation: true
 
@@ -41,11 +47,14 @@
     - Body
   blacklist:
     components:
+    # Fire added start
+    - Scp
+    # Fire added end
     - Ghost
-    - Jump
     - Flip
-    - Fall
-    - Scp # Fire added
+    statusEffects:
+    - StatusEffectJump
+    - StatusEffectFall
   popupMessages: ["animations-msg-dance"]
   animation: true
 
@@ -58,11 +67,14 @@
     - Hands
   blacklist:
     components:
+    # Fire added start
+    - Scp
+    # Fire added end
     - Ghost
-    - Jump
     - Flip
-    - Fall
-    - Scp # Fire added
+    statusEffects:
+    - StatusEffectJump
+    - StatusEffectFall
   animation: true
 
 - type: emote
@@ -74,8 +86,10 @@
     - Hands
   blacklist:
     components:
+    # Fire added start
+    - Scp
+    # Fire added end
     - Ghost
     - BorgChassis
-    - Scp # Fire added
   chatMessages: ["animations-msg-fall-on-neck"]
   animation: true

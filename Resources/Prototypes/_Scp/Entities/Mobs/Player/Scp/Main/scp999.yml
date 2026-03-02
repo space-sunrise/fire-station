@@ -172,15 +172,9 @@
     leftBareFootState:
     - dragging-1
     - dragging-2
-    - dragging-3
-    - dragging-4
-    - dragging-5
     rightBareFootState:
     - dragging-1
     - dragging-2
-    - dragging-3
-    - dragging-4
-    - dragging-5
   - type: ActionGrant
     actions:
     - Scp999Wallify

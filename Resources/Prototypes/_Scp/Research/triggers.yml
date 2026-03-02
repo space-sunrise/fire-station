@@ -1,0 +1,55 @@
+﻿# Общие
+
+- type: xenoArchTrigger
+  id: TriggerInsertIntoContainer
+  tip: artifact-trigger-hint-insert-into-container
+  components:
+  - type: XATModifyContainer
+    triggerOnInsert: true
+
+- type: xenoArchTrigger
+  id: TriggerRemoveFromContainer
+  tip: artifact-trigger-hint-remove-from-container
+  components:
+  - type: XATModifyContainer
+    triggerOnRemove: true
+
+- type: xenoArchTrigger
+  id: TriggerOnTake
+  tip: artifact-trigger-hint-take-item
+  components:
+  - type: XATTakeDrop
+    triggerOnTake: true
+
+- type: xenoArchTrigger
+  id: TriggerOnDrop
+  tip: artifact-trigger-hint-drop-item
+  components:
+  - type: XATTakeDrop
+    triggerOnDrop: true
+
+- type: xenoArchTrigger
+  id: TriggerDealDamageSlash30
+  tip: artifact-trigger-deal-damage-slash-30
+  components:
+  - type: XATDealDamage
+    requiredDamage:
+      types:
+        Slash: 30
+
+- type: xenoArchTrigger
+  id: TriggerDealDamageSlash70
+  tip: artifact-trigger-deal-damage-slash-70
+  components:
+  - type: XATDealDamage
+    requiredDamage:
+      types:
+        Slash: 70
+
+# SCP-330
+
+- type: xenoArchTrigger
+  id: TriggerScp330Punishment
+  tip: artifact-trigger-scp330-punishment
+  components:
+  - type: XATScp330Punishment

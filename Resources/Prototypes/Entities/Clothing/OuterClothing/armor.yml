@@ -33,24 +33,26 @@
     - WhitelistChameleon
   - type: ArmorSparkEffect #starlight
   - type: StaminaResistance # Sunrise-Add
-    damageCoefficient: 0.85 # Sunrise-Add
+    damageCoefficient: 0.9 # Sunrise-Add
   # Sunrise-End
 
 #Standard armor vest, allowed for security and bartenders
 - type: entity
-  parent: [ BaseSecurityBartenderContraband, ClothingOuterArmorBase]
+  parent: ClothingOuterArmorBase #[ BaseSecurityBartenderContraband, ClothingOuterArmorBase] # Sunrise-Edit
   id: ClothingOuterArmorBasic
   components:
   - type: Tag
     tags:
     - CorgiWearable
     - WhitelistChameleon
-    - NudeBottom # Sunrise-Add
-  # Sunrise-start
+    # Sunrise-start
+    - NudeBottom
+    - ArmorBasic
+    - Vest
   - type: StaminaResistance
-    damageCoefficient: 0.85
+    damageCoefficient: 0.9
   - type: Construction
-    graph: VestArmorSecurity
+    graph: UpgradeArmorVest
     node: start
   # Sunrise-end
 
@@ -68,7 +70,7 @@
     sprite: Clothing/OuterClothing/Armor/security_slim.rsi
 
 - type: entity
-  parent: ClothingOuterArmorBase
+  parent: [ ClothingOuterArmorPlate, ClothingOuterArmorBase] # Sunrise-Edit
   id: ClothingOuterArmorBulletproof
   name: bulletproof vest
   description: A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent.
@@ -88,9 +90,14 @@
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.80
+  # Sunrise-Start
+  - type: Construction
+    graph: UpgradeArmorVest
+    node: bullet
+  # Sunrise-End
 
 - type: entity
-  parent: ClothingOuterArmorBase
+  parent: [ClothingOuterArmorBase, ClothingOuterArmorHeatAbsorb] # Sunrise-Edit
   id: ClothingOuterArmorReflective
   name: reflective vest
   description: An armored vest with advanced shielding to protect against energy weapons.
@@ -113,6 +120,9 @@
     reflects:
       - Energy
     reflectingInHands: false
+  - type: Construction
+    graph: UpgradeArmorVest
+    node: reflective
 
 #Detective's vest
 - type: entity
@@ -127,7 +137,7 @@
     sprite: Clothing/OuterClothing/Vests/detvest.rsi
 
 - type: entity
-  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing]
+  parent: [ ClothingOuterBaseMedium, AllowSuitStorageClothing ]
   id: ClothingOuterArmorBaseCarapace
   abstract: true
   components:
@@ -141,10 +151,6 @@
         Caustic: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.65
-  - type: ClothingSpeedModifier
-    walkModifier: 1.0
-    sprintModifier: 1.0
-  - type: HeldSpeedModifier
   - type: GroupExamine
 
 - type: entity
@@ -177,7 +183,7 @@
 
 #Web vest
 - type: entity
-  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
+  parent: [ClothingOuterArmorBase, ClothingOuterStorageBase, BaseSyndicateContraband]
   id: ClothingOuterVestWeb
   name: web vest
   description: A synthetic armor vest. This one has added webbing and ballistic plates.
@@ -195,16 +201,16 @@
         Slash: 0.6
         Piercing: 0.3
         Heat: 0.9
-  - type: ExplosionResistance
-    damageCoefficient: 0.8
   - type: StaticPrice
     price: 1500
-  - type: StaminaResistance # Sunrise-Add
-    damageCoefficient: 0.75 # Sunrise-Add
+  # Sunrise-Start
+  - type: StaminaResistance
+    damageCoefficient: 0.8
+  # Sunrise-End
 
 #Elite web vest
 - type: entity
-  parent: [ClothingOuterStorageBase, AllowSuitStorageClothing, BaseSyndicateContraband]
+  parent: [ClothingOuterArmorBase, ClothingOuterStorageBase, BaseSyndicateContraband] # Sunrise-Edit
   id: ClothingOuterVestWebElite
   name: elite web vest
   description: A synthetic armor vest. This one has added webbing and heat resistant fibers.
@@ -233,8 +239,10 @@
     reduction: 0.85
   - type: StaticPrice
     price: 2500
-  - type: StaminaResistance # Sunrise-Add
-    damageCoefficient: 0.8 # Sunrise-Add
+  # Sunrise-Start
+  - type: StaminaResistance
+    damageCoefficient: 0.7
+  # Sunrise-End
 
 #Mercenary web vest
 - type: entity
@@ -254,8 +262,6 @@
         Slash: 0.7
         Piercing: 0.5
         Heat: 0.9
-  - type: ExplosionResistance
-    damageCoefficient: 0.9
 
 
 # Armor covering multiple body parts including limbs
@@ -289,8 +295,8 @@
   - type: StaminaResistance # do not add these to other equipment or mobs, we don't want to microbalance these everywhere
     damageCoefficient: 0.45
   - type: ClothingSpeedModifier
-    walkModifier: 0.9
-    sprintModifier: 0.9
+    walkModifier: 0.95 # Sunrise-Edit
+    sprintModifier: 0.95 # Sunrise-Edit
   #Shoulder mounted flashlight
   - type: ToggleableVisuals
     spriteLayer: light
@@ -336,11 +342,25 @@
     maxCharge: 600
     startingCharge: 600
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 2
   - type: Item
     size: Normal
   # Sunrise-Start
+  - type: FireProtection
+    reduction: 0.65
+  - type: ContainerContainer
+    containers:
+      beakerSlot: !type:ContainerSlot
+  - type: Inject
+    openCloseDelay: 1
+    autoClose: true
+    autoCloseDelay: 6
+  - type: ItemSlots
+    slots:
+      beakerSlot:
+        whitelist:
+          tags:
+          - FitsHardsuit
   - type: Tag
     tags:
     - FullBodyOuter
@@ -348,7 +368,7 @@
   # Sunrise-End
 
 - type: entity
-  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSecurityContraband]
+  parent: [ClothingOuterBaseLarge, AllowSuitStorageClothing, BaseSecurityContraband, ClothingOuterArmorStab]
   id: ClothingOuterArmorRiot
   name: riot suit
   description: A suit of semi-flexible polycarbonate body armor with heavy padding to protect against melee attacks. Perfect for fighting delinquents around the station.
@@ -376,6 +396,9 @@
     - Vest
     - FullBodyOuter
     - WhitelistChameleon
+  - type: Construction
+    graph: UpgradeArmorVest
+    node: riot
   # SUNRISE EDIT
 
 - type: entity

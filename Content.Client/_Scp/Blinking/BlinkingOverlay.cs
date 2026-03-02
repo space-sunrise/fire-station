@@ -54,18 +54,27 @@ public sealed class BlinkingOverlay : Overlay
         if (!IsAnimating)
             return;
 
+        if (MathHelper.CloseTo(AnimationDuration, 0f))
+        {
+            StopAnimating();
+            return;
+        }
+
         _timer += args.DeltaSeconds;
         var t = Math.Clamp(_timer / AnimationDuration, 0f, 1f);
         _blinkingProgress = MathHelper.Lerp(_startProgress, _targetProgress, t);
 
         if (t >= 1f)
-        {
-            _blinkingProgress = _targetProgress;
-            _timer = 0f;
-            IsAnimating = false;
+            StopAnimating();
+    }
 
-            OnAnimationFinished?.Invoke();
-        }
+    private void StopAnimating()
+    {
+        _blinkingProgress = _targetProgress;
+        _timer = 0f;
+        IsAnimating = false;
+
+        OnAnimationFinished?.Invoke();
     }
 
     protected override void Draw(in OverlayDrawArgs args)

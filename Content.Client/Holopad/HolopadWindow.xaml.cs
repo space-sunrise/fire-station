@@ -11,7 +11,7 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 using System.Linq;
-using Content.Client.Stylesheets;
+using Content.Client._Scp.Stylesheets.Palette;
 
 namespace Content.Client.Holopad;
 
@@ -70,7 +70,7 @@ public sealed partial class HolopadWindow : FancyWindow
 
         HolopadContactListPanel.PanelOverride = new StyleBoxFlat
         {
-            BackgroundColor = StyleNano.PanelLightDark * Color.DarkGray, // Fire edit
+            BackgroundColor = ScpPalettes.PanelLightDark * Color.DarkGray, // Fire edit
             BorderColor = new Color(82, 82, 82), //new Color(70, 73, 102),
             BorderThickness = new Thickness(2),
         };

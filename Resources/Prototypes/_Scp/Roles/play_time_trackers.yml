@@ -171,6 +171,12 @@
 - type: playTimeTracker
   id: JobScp999
 
+- type: playTimeTracker
+  id: JobScp131A
+
+- type: playTimeTracker
+  id: JobScp131B
+
 # Отряды МОГ
 
 - type: playTimeTracker
@@ -217,3 +223,8 @@
 
 - type: playTimeTracker
   id: JobNTFCadet
+
+# Антагонисты
+
+- type: playTimeTracker
+  id: AntagScp2054X

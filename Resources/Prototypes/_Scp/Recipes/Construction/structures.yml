@@ -25,10 +25,10 @@
     - !type:TileNotBlocked
 
 - type: construction
-  id: ScpWallConcreteLightContaiment
-  graph: concreteWallLightContaiment
+  id: ScpWallConcreteLightContainment
+  graph: concreteWallLightContainment
   startNode: start
-  targetNode: concreteWallLightContaimentEnd
+  targetNode: concreteWallLightContainmentEnd
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter

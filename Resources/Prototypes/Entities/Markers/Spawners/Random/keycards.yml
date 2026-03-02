@@ -1,0 +1,279 @@
+- type: entity
+  id: RandomJuniorKeycardSpawnerBase
+  parent: MarkerBase
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _Scp/Objects/Keycards/keycards.rsi
+          state: pass # Символизирует карту младшего персонала, хоть и не особо корректно
+    - type: RandomSpawner
+      prototypes:
+        - KeyCardLogisticsOfficer
+        - KeyCardBotanistPhytogeneticist
+        - KeyCardGastronomicSpecialist
+        - KeyCardServicePersonnel
+        - KeyCardJuniorResearcher
+        - KeyCardHospitalIntern
+        - KeyCardTechnicalTrainee
+      offset: 0.2
+
+- type: entity
+  id: RandomJuniorKeycardSpawnerLow
+  parent: RandomJuniorKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.3 # 30% шанс спавна
+
+- type: entity
+  id: RandomJuniorKeycardSpawnerMedium
+  parent: RandomJuniorKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.5 # 50% шанс спавна
+
+- type: entity
+  id: RandomJuniorKeycardSpawnerHigh
+  parent: RandomJuniorKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.7 # 70% шанс спавна
+
+- type: entity
+  id: RandomStaffKeycardSpawnerBase
+  parent: MarkerBase
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _Scp/Objects/Keycards/keycards.rsi
+          state: service
+    - type: RandomSpawner
+      prototypes:
+        - KeyCardLogisticsOfficer
+        - KeyCardBotanistPhytogeneticist
+        - KeyCardGastronomicSpecialist
+        - KeyCardServicePersonnel
+        - KeyCardJuniorResearcher
+        - KeyCardProductionSpecialist
+        - KeyCardAnomarchologyResearcher
+        - KeyCardHospitalIntern
+        - KeyCardPsychotherapist
+        - KeyCardMedicalSpecialist
+        - KeyCardPharmaceuticalSpecialist
+        - KeyCardTechnicalTrainee
+        - KeyCardGeneralTechnicalSpecialist
+        - KeyCardElectricalTechnicalSpecialist
+      offset: 0.2
+
+- type: entity
+  id: RandomStaffKeycardSpawnerLow
+  parent: RandomStaffKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.3 # 30% шанс спавна
+
+- type: entity
+  id: RandomStaffKeycardSpawnerMedium
+  parent: RandomStaffKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.5 # 50% шанс спавна
+
+- type: entity
+  id: RandomStaffKeycardSpawnerHigh
+  parent: RandomStaffKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.7 # 70% шанс спавна
+
+- type: entity
+  id: RandomLogisticsKeycardSpawnerBase
+  parent: MarkerBase
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _Scp/Objects/Keycards/keycards.rsi
+          state: logistics
+    - type: RandomSpawner
+      prototypes:
+        - KeyCardLogisticsOfficer
+      offset: 0.2
+
+- type: entity
+  id: RandomLogisticsKeycardSpawnerLow
+  parent: RandomLogisticsKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.3 # 30% шанс спавна
+
+- type: entity
+  id: RandomLogisticsKeycardSpawnerMedium
+  parent: RandomLogisticsKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.5 # 50% шанс спавна
+
+- type: entity
+  id: RandomLogisticsKeycardSpawnerHigh
+  parent: RandomLogisticsKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.7 # 70% шанс спавна
+
+- type: entity
+  id: RandomMedicalKeycardSpawnerBase
+  parent: MarkerBase
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _Scp/Objects/Keycards/keycards.rsi
+          state: medical
+    - type: RandomSpawner
+      prototypes:
+        - KeyCardHospitalIntern
+        - KeyCardPsychotherapist
+        - KeyCardMedicalSpecialist
+        - KeyCardPharmaceuticalSpecialist
+      offset: 0.2
+
+- type: entity
+  id: RandomMedicalKeycardSpawnerLow
+  parent: RandomMedicalKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.3 # 30% шанс спавна
+
+- type: entity
+  id: RandomMedicalKeycardSpawnerMedium
+  parent: RandomMedicalKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.5 # 50% шанс спавна
+
+- type: entity
+  id: RandomMedicalKeycardSpawnerHigh
+  parent: RandomMedicalKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.7 # 70% шанс спавна
+
+- type: entity
+  id: RandomTechnicalKeycardSpawnerBase
+  parent: MarkerBase
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _Scp/Objects/Keycards/keycards.rsi
+          state: engineer
+    - type: RandomSpawner
+      prototypes:
+        - KeyCardTechnicalTrainee
+        - KeyCardGeneralTechnicalSpecialist
+        - KeyCardElectricalTechnicalSpecialist
+      offset: 0.2
+
+- type: entity
+  id: RandomTechnicalKeycardSpawnerLow
+  parent: RandomTechnicalKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.3 # 30% шанс спавна
+
+- type: entity
+  id: RandomTechnicalKeycardSpawnerMedium
+  parent: RandomTechnicalKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.5 # 50% шанс спавна
+
+- type: entity
+  id: RandomTechnicalKeycardSpawnerHigh
+  parent: RandomTechnicalKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.7 # 70% шанс спавна
+
+- type: entity
+  id: RandomScientificKeycardSpawnerBase
+  parent: MarkerBase
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _Scp/Objects/Keycards/keycards.rsi
+          state: science
+    - type: RandomSpawner
+      prototypes:
+        - KeyCardJuniorResearcher
+        - KeyCardProductionSpecialist
+        - KeyCardAnomarchologyResearcher
+      offset: 0.2
+
+- type: entity
+  id: RandomScientificKeycardSpawnerLow
+  parent: RandomScientificKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.3 # 30% шанс спавна
+
+- type: entity
+  id: RandomScientificKeycardSpawnerMedium
+  parent: RandomScientificKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.5 # 50% шанс спавна
+
+- type: entity
+  id: RandomScientificKeycardSpawnerHigh
+  parent: RandomScientificKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.7 # 70% шанс спавна
+
+- type: entity
+  id: RandomServiceKeycardSpawnerBase
+  parent: MarkerBase
+  categories: [ HideSpawnMenu ]
+  components:
+    - type: Sprite
+      layers:
+        - state: red
+        - sprite: _Scp/Objects/Keycards/keycards.rsi
+          state: service
+    - type: RandomSpawner
+      prototypes:
+        - KeyCardBotanistPhytogeneticist
+        - KeyCardGastronomicSpecialist
+        - KeyCardServicePersonnel
+      offset: 0.2
+
+- type: entity
+  id: RandomServiceKeycardSpawnerLow
+  parent: RandomServiceKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.3 # 30% шанс спавна
+
+- type: entity
+  id: RandomServiceKeycardSpawnerMedium
+  parent: RandomServiceKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.5 # 50% шанс спавна
+
+- type: entity
+  id: RandomServiceKeycardSpawnerHigh
+  parent: RandomServiceKeycardSpawnerBase
+  components:
+    - type: RandomSpawner
+      chance: 0.7 # 70% шанс спавна

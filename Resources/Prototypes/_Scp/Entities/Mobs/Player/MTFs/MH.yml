@@ -86,10 +86,10 @@
     table: !type:AllSelector
       children:
       - id: RandomHumanoidSpawnerMHLeader
-      - id: RandomHumanoidSpawnerMHSpecialist # 2
       - id: RandomHumanoidSpawnerMHSpecialist
-      - id: RandomHumanoidSpawnerMHCadet # 2
+        amount: 2
       - id: RandomHumanoidSpawnerMHCadet
+        amount: 2
     offset: 1
 
 # Спавнер, но юзается по кнопке

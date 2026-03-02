@@ -2,6 +2,7 @@
 using Content.Shared.GameTicking;
 using Content.Shared.Popups;
 using JetBrains.Annotations;
+using Robust.Shared.Configuration;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
@@ -12,6 +13,12 @@ public abstract class SharedSafeTimeSystem : EntitySystem
     [Dependency] private readonly SharedGameTicker _gameTicker = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
+
+    /// <summary>
+    /// Включена ли механика безопасного времени в настройках сервера?
+    /// </summary>
+    private bool _enabled;
 
     public override void Initialize()
     {
@@ -20,6 +27,8 @@ public abstract class SharedSafeTimeSystem : EntitySystem
         SubscribeLocalEvent<SafeTimeComponent, MapInitEvent>(OnMapInit);
 
         SubscribeLocalEvent<SafeTimeRestrictedComponent, ActionAttemptEvent>(OnActionAttempt);
+
+        Subs.CVar(_cfg, ScpCCVars.ScpCCVars.SafeTimeEnabled, x => _enabled = x, true);
     }
 
     private void OnMapInit(Entity<SafeTimeComponent> ent, ref MapInitEvent args)
@@ -47,6 +56,9 @@ public abstract class SharedSafeTimeSystem : EntitySystem
     [PublicAPI]
     public bool IsInSafeTime(Entity<SafeTimeComponent?> ent, bool silent = false, bool predicted = true)
     {
+        if (!_enabled)
+            return false;
+
         if (!Resolve(ent, ref ent.Comp, false))
             return false;
 

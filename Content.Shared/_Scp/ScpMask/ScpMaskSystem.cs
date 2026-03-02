@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Mobs.Components;
 using Content.Shared._Scp.SafeTime;
+using Content.Shared._Sunrise.Random;
 using Content.Shared.Actions;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
 using Content.Shared.Inventory;
 using Content.Shared.Popups;
@@ -30,7 +30,7 @@ public sealed partial class ScpMaskSystem : EntitySystem
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
-    [Dependency] private readonly PredictedRandomSystem _random = default!;
+    [Dependency] private readonly RandomPredictedSystem _random = default!;
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 

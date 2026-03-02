@@ -1,18 +1,26 @@
-﻿using Content.Shared.EntityEffects;
-using Content.Shared.Rejuvenate;
+﻿using Content.Shared.Administration.Systems;
+using Content.Shared.EntityEffects;
+using Content.Shared.Mobs.Components;
+using JetBrains.Annotations;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Effects;
 
-public sealed partial class Rejuvenate : EntityEffect
+public sealed partial class RejuvenateEntityEffectSystem : EntityEffectSystem<MobStateComponent, Rejuvenate>
 {
-    protected override string? ReagentEffectGuidebookText(IPrototypeManager prototypeManager, IEntitySystemManager entitySystemManager)
-    {
-        return Loc.GetString("reagent-effect-guidebook-scp500");
-    }
+    [Dependency] private readonly RejuvenateSystem _rejuvenate = default!;
 
-    public override void Effect(EntityEffectBaseArgs args)
+    protected override void Effect(Entity<MobStateComponent> entity, ref EntityEffectEvent<Rejuvenate> args)
     {
-        args.EntityManager.EventBus.RaiseLocalEvent(args.TargetEntity, new RejuvenateEvent());
+        _rejuvenate.PerformRejuvenate(entity);
     }
 }
+
+/// <inheritdoc cref="EntityEffectBase"/>
+[UsedImplicitly]
+public sealed partial class Rejuvenate : EntityEffectBase<Rejuvenate>
+{
+    public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys) =>
+        Loc.GetString("reagent-effect-guidebook-scp500");
+}
+

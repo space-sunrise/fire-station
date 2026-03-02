@@ -1,0 +1,12 @@
+ent-StairScpConcrete = { ent-Stairs }
+    .suffix = Concrete
+    .desc = { ent-Stairs.desc }
+ent-StairScpConcreteStage = { ent-Stairs }
+    .suffix = Concrete, stage
+    .desc = { ent-Stairs.desc }
+ent-StairScpSteel = { ent-Stairs }
+    .suffix = Steel
+    .desc = { ent-Stairs.desc }
+ent-StairScpSteelStage = { ent-Stairs }
+    .suffix = Steel, stage
+    .desc = { ent-Stairs.desc }

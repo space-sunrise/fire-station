@@ -10,6 +10,10 @@ namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
+    /*
+     * Часть системы, отвечающая за состояние без лица скромника.
+     */
+
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly MobThresholdSystem _mobThreshold = default!;
 
@@ -31,7 +35,7 @@ public abstract partial class SharedScp096System
         UpdateAudio(ent.Owner, ent.Comp.AmbientSound);
 
         RemComp<Scp096ShaderStaticComponent>(ent);
-        AddComp<Scp096ShaderWithoutFaceComponent>(ent);
+        EnsureComp<Scp096ShaderWithoutFaceComponent>(ent);
 
         RefreshSpeedModifiers(ent.Owner);
         TryToggleTearsReagent(ent.Owner, false);
@@ -78,7 +82,7 @@ public abstract partial class SharedScp096System
         _audio.PlayPredicted(ent.Comp.ShutdownSound, ent, ent);
         UpdateAudio(ent.Owner);
 
-        AddComp<Scp096ShaderStaticComponent>(ent);
+        EnsureComp<Scp096ShaderStaticComponent>(ent);
         RemComp<Scp096ShaderWithoutFaceComponent>(ent);
 
         TryToggleTearsReagent(ent.Owner, true);

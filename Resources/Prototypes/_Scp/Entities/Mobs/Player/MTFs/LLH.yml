@@ -67,10 +67,8 @@
     table: !type:AllSelector
       children:
       - id: RandomHumanoidSpawnerLLHLeader
-      - id: RandomHumanoidSpawnerLLHSpecialist # 4
       - id: RandomHumanoidSpawnerLLHSpecialist
-      - id: RandomHumanoidSpawnerLLHSpecialist
-      - id: RandomHumanoidSpawnerLLHSpecialist
+        amount: 4
     offset: 1
 
 # Спавнер, но юзается по кнопке

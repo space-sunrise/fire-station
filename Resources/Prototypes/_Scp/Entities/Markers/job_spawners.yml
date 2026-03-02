@@ -16,6 +16,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: Director
 
 - type: entity
@@ -23,6 +24,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: ScientificServiceDirector
 
 - type: entity
@@ -30,6 +32,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: SecurityCommander
 
 - type: entity
@@ -37,6 +40,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: ChiefTechnicalSpecialist
 
 - type: entity
@@ -44,6 +48,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: PersonnelOfficer
 
 - type: entity
@@ -51,6 +56,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: HeadOfMedicalSector
 
 - type: entity
@@ -58,6 +64,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: SeniorLogisticsOfficer
 
 # Внутренняя безопасность
@@ -67,6 +74,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: MentalControlOfficer
 
 - type: entity
@@ -74,6 +82,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: InternalSecurityOperative
 
 # Комитет по этике
@@ -83,6 +92,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: EthicsCommitteeRepresentative
 
 # Служба внутреннего трибунала
@@ -92,6 +102,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: JudicialInspector
 
 - type: entity
@@ -99,15 +110,17 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: TribunalOfficer
 
-# Служба безопасности тяжелой зоны
+# Служба безопасности - Отряд специального назначения
 
 - type: entity
   id: SpawnPointHeavyContainmentZoneCommandant
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: HeavyContainmentZoneCommandant
 
 - type: entity
@@ -115,6 +128,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: SeniorHeavyContainmentZoneOfficer
 
 - type: entity
@@ -122,29 +136,33 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: HeavyContainmentZoneOfficer
 
 - type: entity
   id: SpawnPointJuniorHeavyContainmentZoneOfficer
   parent: SpawnPointScpBase
   components:
-    - type: SpawnPoint
-      job_id: JuniorHeavyContainmentZoneOfficer
+  - type: SpawnPoint
+    spawn_type: Job
+    job_id: JuniorHeavyContainmentZoneOfficer
 
 - type: entity
   id: SpawnPointFieldMedicalSpecialist
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: FieldMedicalSpecialist
 
-# Служба безопасности внешней административной зоны
+# Служба безопасности - Комендантский отряд
 
 - type: entity
   id: SpawnPointExternalAdministrativeZoneCommandant
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: ExternalAdministrativeZoneCommandant
 
 - type: entity
@@ -152,6 +170,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: SeniorExternalAdministrativeZoneOfficer
 
 - type: entity
@@ -159,6 +178,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: ExternalAdministrativeZoneOfficer
 
 - type: entity
@@ -166,6 +186,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: JuniorExternalAdministrativeZoneOfficer
 
 # Научный отдел
@@ -175,6 +196,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: LeadResearcher
 
 - type: entity
@@ -182,6 +204,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: AnomarchologyResearcher
 
 - type: entity
@@ -189,6 +212,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: ProductionSpecialist
 
 - type: entity
@@ -196,6 +220,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: JuniorResearcher
 
 # Медицинский отдел
@@ -205,6 +230,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: SeniorMedicalSpecialist
 
 - type: entity
@@ -212,6 +238,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: PharmaceuticalSpecialist
 
 - type: entity
@@ -219,6 +246,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: MedicalSpecialist
 
 - type: entity
@@ -226,6 +254,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: Psychotherapist
 
 - type: entity
@@ -233,6 +262,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: HospitalIntern
 
 # Инженерный отдел
@@ -241,14 +271,16 @@
   id: SpawnPointLeadTechnicalSpecialist
   parent: SpawnPointScpBase
   components:
-    - type: SpawnPoint
-      job_id: LeadTechnicalSpecialist
+  - type: SpawnPoint
+    spawn_type: Job
+    job_id: LeadTechnicalSpecialist
 
 - type: entity
   id: SpawnPointGeneralTechnicalSpecialist
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: GeneralTechnicalSpecialist
 
 - type: entity
@@ -256,6 +288,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: ElectricalTechnicalSpecialist
 
 - type: entity
@@ -263,6 +296,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: TechnicalTrainee
 
 # Отдел логистики
@@ -272,6 +306,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: LogisticsOfficer
 
 # Департамент продовольственного и санитарного обслуживания
@@ -281,6 +316,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: GastronomicSpecialist
 
 - type: entity
@@ -288,6 +324,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: BotanistPhytogeneticist
 
 - type: entity
@@ -295,6 +332,7 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: ServicePersonnel
 
 # Класс Д
@@ -304,7 +342,10 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: ClassD
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Tag
     tags:
     - ClassDSpawner
@@ -314,7 +355,10 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: ClassDCook
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Tag
     tags:
     - ClassDSpawner
@@ -324,7 +368,10 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: ClassDBotanist
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Tag
     tags:
     - ClassDSpawner
@@ -334,7 +381,10 @@
   parent: SpawnPointScpBase
   components:
   - type: SpawnPoint
+    spawn_type: Job
     job_id: ClassDJanitor
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Tag
     tags:
     - ClassDSpawner

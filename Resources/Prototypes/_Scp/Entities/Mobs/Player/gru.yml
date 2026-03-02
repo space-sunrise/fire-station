@@ -1,0 +1,176 @@
+#Параметры отряда
+- type: randomHumanoidSettings
+  id: CommonGRUCadet
+  speciesBlacklist:
+  - Diona
+  - Vox
+  - Felinid
+  - Moth
+  - Arachnid
+  - Reptilian
+  - Vulpkanin
+  - Swine
+  - Tajaran
+  - Demon
+  - SlimePerson
+  - Dwarf
+  parent: EventHumanoid
+  randomizeName: false
+  voiceWhitelist:
+  - CBMTF1
+  - CBMTF2
+  genderWhitelist:
+  - Male
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesGRUCadet
+    - NamesOperativeGRULast
+    nameFormat: name-format-ert
+  - type: Mood
+    minimumSpeedModifier: 0.9
+  - type: TTS
+  - type: NoEmotions
+  - type: SpeakOnEyeStateChange # переопределение моргания с другими параметрами для охраны и МОГа
+    # Часть фраз уходит, так как более разговорная. А эти парни натренированы.
+    phraseOnClose:
+    - close-eye-phrase-1
+    - close-eye-phrase-2
+    phraseOnOpen:
+    - open-eye-phrase-3
+    speakOnlyInScp173Chamber: false
+  - type: Fear
+    phobias:
+    - Exoremophobia
+    proximityBlockerLevel: None
+    seenBlockerLevel: None
+    fearBasedSpreadAngleModifier:
+      Anxiety: 1
+      Fear: 1.2
+      Terror: 2
+    fearBasedGrainStrength:
+      None: 0
+      Anxiety: 15
+      Fear: 45
+      Terror: 100
+    fearBasedVignetteStrength:
+      None: 0
+      Anxiety: 15
+      Fear: 25
+      Terror: 50
+    baseJitterTime: 0
+    fallOffChance: 0
+
+- type: randomHumanoidSettings
+  id: CommonGRUSpecialist
+  parent: CommonGRUCadet
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesGRUSpecialist
+    - NamesOperativeGRULast
+    nameFormat: name-format-ert
+
+- type: randomHumanoidSettings
+  id: CommonGRULeader
+  parent: CommonGRUSpecialist
+  randomizeName: false
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesGRULeader
+    - NamesOperativeGRULeaderLast
+    nameFormat: name-format-ert
+
+- type: randomHumanoidSettings
+  id: CommonGRUOperative
+  parent: CommonGRULeader
+  randomizeName: false
+  components:
+  - type: RandomMetadata
+    nameSegments:
+    - NamesOperativeFirst
+    - NamesOperativeLast
+    nameFormat: name-format-ert
+
+# Спавнер отряда
+- type: entity
+  id: SpawnerSquadGRU
+  parent: SpawnPointScpBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - state: ertleader
+      sprite: /Textures/Markers/jobs.rsi
+  - type: EntityTableSpawner
+    deleteSpawnerAfterSpawn: true
+    table: !type:AllSelector
+      children:
+      - id: RandomHumanoidSpawnerGRULeader
+      - id: RandomHumanoidSpawnerGRUSpecialist
+        amount: 2
+      - id: RandomHumanoidSpawnerGRUCadet
+        amount: 2
+    offset: 1
+
+# Поясняем, кто такой "Капитан"
+- type: entity
+  id: RandomHumanoidSpawnerGRULeader
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertleader
+  - type: RandomHumanoidSpawner
+    settings: GRULeader
+
+# Поясняем, кто такой "Специалист"
+- type: entity
+  id: RandomHumanoidSpawnerGRUSpecialist
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertsecurityeva
+  - type: RandomHumanoidSpawner
+    settings: GRUSpecialist
+
+# Поясняем, кто такой "Кадет"
+- type: entity
+  id: RandomHumanoidSpawnerGRUCadet
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertsecurityeva
+  - type: RandomHumanoidSpawner
+    settings: GRUCadet
+
+# ЗВАНИЯ
+- type: localizedDataset
+  id: NamesGRULeader
+  values:
+    prefix: names-gru-leader-first-dataset-
+    count: 1
+
+- type: localizedDataset
+  id: NamesGRUSpecialist
+  values:
+    prefix: names-gru-specialist-first-dataset-
+    count: 1
+
+- type: localizedDataset
+  id: NamesGRUCadet
+  values:
+    prefix: names-gru-cadet-first-dataset-
+    count: 1
+
+- type: localizedDataset
+  id: NamesOperativeGRULast
+  values:
+    prefix: names-gru-operative-last-dataset-
+    count: 14
+
+- type: localizedDataset
+  id: NamesOperativeGRULeaderLast
+  values:
+    prefix: names-gru-operative-leader-last-dataset-
+    count: 13

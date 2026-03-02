@@ -12,7 +12,6 @@ using Robust.Shared.Containers;
 using Robust.Shared.Timing;
 using Content.Server.Jittering;
 using Content.Shared._Scp.Research.Misc;
-using Content.Shared._Sunrise.CollectiveMind;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.EntityEffects;
 using Content.Shared.FixedPoint;
@@ -34,6 +33,7 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
     [Dependency] private readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private readonly JitteringSystem _jitter = default!;
     [Dependency] private readonly AppearanceSystem _appearance = default!;
+    [Dependency] private readonly SharedEntityEffectsSystem _effects = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
@@ -141,7 +141,8 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
 
         synthesizer.Comp.AudioStream = _audioSystem.PlayPvs(synthesizer.Comp.ActiveSound,
             synthesizer,
-            AudioParams.Default.WithPitchScale(0.3f).WithLoop(true))?.Entity;
+            AudioParams.Default.WithPitchScale(0.3f).WithLoop(true))
+            ?.Entity;
     }
 
     private void SynthesizeSolution(ReagentSynthesizerComponent synthesizer, Entity<SolutionComponent> solution)
@@ -170,25 +171,7 @@ public sealed class ReagentSynthesizerSystem : EntitySystem
         if (effects.Count == 0)
             return;
 
-        if (!_prototype.TryIndex<ReagentPrototype>(reagent, out var reagentPrototype))
-            return;
-
-        var args = new EntityEffectReagentArgs(solutionEntity,
-            EntityManager,
-            null,
-            solutionEntity.Comp.Solution,
-            solutionEntity.Comp.Solution.Volume,
-            reagentPrototype,
-            null,
-            1f);
-
-        foreach (var effect in effects)
-        {
-            if (!effect.ShouldApply(args))
-                continue;
-
-            effect.Effect(args);
-        }
+        _effects.ApplyEffects(solutionEntity, effects.ToArray());
     }
 
     #region Visuals

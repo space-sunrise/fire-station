@@ -1,17 +1,17 @@
 - type: entity
   parent: BaseStructure
-  id: FSConcreteCurbNorth
+  id: ConcreteCurbIn
   name: concrete curb
-  suffix: north
-  description: Basic railing meant to protect idiots like you from falling.
+  suffix: in
+  description: High concrete threshold. It divides two floors.
   components:
   - type: Sprite
     drawdepth: WallTops
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
-    state: side_north
+    state: side_in
   - type: Icon
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
-    state: side_north
+    state: side_in
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -22,42 +22,46 @@
           bounds: "-0.49,-0.49,0.49,-0.25"
         density: 1000
         mask:
-        - TableMask
+        - FullTileMask
         layer:
-        - TableLayer
+        - MidImpassable
+        - LowImpassable
   - type: InteractionOutline
   - type: Climbable
+    delay: 5.0
+    startClimbSound:
+      collection: FootstepScpStone
+    finishClimbSound:
+      collection: FootstepScpStone
 
 - type: entity
-  parent: FSConcreteCurbNorth
-  id: FSConcreteCurbSouth
+  parent: ConcreteCurbIn
+  id: ConcreteCurbOut
   name: concrete curb
-  suffix: south
-  description: Basic railing meant to protect idiots like you from falling.
+  suffix: out
+  description: High concrete threshold. It divides two floors.
   components:
   - type: Sprite
     drawdepth: WallTops
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
-    state: side_south
+    state: side_out
   - type: Icon
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
-    state: side_south
+    state: side_out
 
 - type: entity
-  parent: FSConcreteCurbNorth
-  id: FSConcreteCurbCornerNorth
-  name: railing
-  description: Basic railing meant to protect idiots like you from falling.
+  parent: ConcreteCurbIn
+  id: ConcreteCurbCornerIn
+  name: concrete curb
+  description: High concrete threshold. It divides two floors.
   components:
   - type: Sprite
     drawdepth: WallTops
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
-    state: corner_north
+    state: corner_in
   - type: Icon
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
-    state: corner_north
-  - type: Physics
-    bodyType: Static
+    state: corner_in
   - type: Fixtures
     fixtures:
       fix1:
@@ -66,34 +70,88 @@
           bounds: "-0.49,-0.49,0.49,-0.25"
         density: 1000
         mask:
-        - TableMask
+        - FullTileMask
         layer:
-        - TableLayer
+        - MidImpassable
+        - LowImpassable
       fix2:
         shape:
           !type:PhysShapeAabb
           bounds: "0.49,0.49,0.25,-0.49"
         density: 1000
         mask:
-        - TableMask
+        - FullTileMask
         layer:
-        - TableLayer
+        - MidImpassable
+        - LowImpassable
 
 - type: entity
-  parent: FSConcreteCurbSouth
-  id: FSConcreteCurbCornerSouth
-  name: railing
-  description: Basic railing meant to protect idiots like you from falling.
+  parent: ConcreteCurbCornerIn
+  id: ConcreteCurbCornerOut
+  name: concrete curb
+  description: High concrete threshold. It divides two floors.
   components:
   - type: Sprite
     drawdepth: WallTops
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
-    state: corner_south
+    state: corner_out
   - type: Icon
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
-    state: corner_south
-  - type: Physics
-    bodyType: Static
+    state: corner_out
+
+- type: entity
+  parent: ConcreteCurbIn
+  id: ConcreteCurbCornerSmallIn
+  name: concrete curb
+  description: High concrete threshold. It divides two floors.
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
+    state: corner_small_in
+  - type: Icon
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
+    state: corner_small_in
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.49,0.49,-0.25,0.25"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+
+- type: entity
+  parent: ConcreteCurbCornerSmallIn
+  id: ConcreteCurbCornerSmallOut
+  name: concrete curb
+  description: High concrete threshold. It divides two floors.
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
+    state: corner_small_out
+  - type: Icon
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
+    state: corner_small_out
+
+- type: entity
+  parent: ConcreteCurbIn
+  id: ConcreteCurbRoundIn
+  name: concrete curb
+  description: High concrete threshold. It divides two floors.
+  components:
+  - type: Sprite
+    drawdepth: WallTops
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
+    state: round_in
+  - type: Icon
+    sprite: _Scp/Structures/Walls/concrete_curb.rsi
+    state: round_in
   - type: Fixtures
     fixtures:
       fix1:
@@ -102,69 +160,41 @@
           bounds: "-0.49,-0.49,0.49,-0.25"
         density: 1000
         mask:
-        - TableMask
+        - FullTileMask
         layer:
-        - TableLayer
+        - MidImpassable
+        - LowImpassable
       fix2:
         shape:
           !type:PhysShapeAabb
-          bounds: "0.49,0.49,0.25,-0.49"
+          bounds: "-0.49,-0.49,-0.25,0.49"
         density: 1000
         mask:
-        - TableMask
+        - FullTileMask
         layer:
-        - TableLayer
+        - MidImpassable
+        - LowImpassable
+      fix3:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "0.25,-0.49,0.49,0.49"
+        density: 1000
+        mask:
+        - FullTileMask
+        layer:
+        - MidImpassable
+        - LowImpassable
 
 - type: entity
-  parent: FSConcreteCurbNorth
-  id: FSConcreteCurbCornerSmallNorth
-  name: railing
-  description: Basic railing meant to protect idiots like you from falling.
+  parent: ConcreteCurbRoundIn
+  id: ConcreteCurbRoundOut
+  name: concrete curb
+  description: High concrete threshold. It divides two floors.
   components:
   - type: Sprite
     drawdepth: WallTops
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
-    state: corner_small_north
+    state: round_out
   - type: Icon
     sprite: _Scp/Structures/Walls/concrete_curb.rsi
-    state: corner_small_north
-  - type: Physics
-    bodyType: Static
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.49,0.49,-0.25,0.25"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
-
-- type: entity
-  parent: FSConcreteCurbSouth
-  id: FSConcreteCurbCornerSmallSouth
-  name: railing
-  description: Basic railing meant to protect idiots like you from falling.
-  components:
-  - type: Sprite
-    drawdepth: WallTops
-    sprite: _Scp/Structures/Walls/concrete_curb.rsi
-    state: corner_small_south
-  - type: Icon
-    sprite: _Scp/Structures/Walls/concrete_curb.rsi
-    state: corner_small_south
-  - type: Physics
-    bodyType: Static
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeAabb
-          bounds: "-0.49,0.49,-0.25,0.25"
-        density: 1000
-        mask:
-        - TableMask
-        layer:
-        - TableLayer
+    state: round_out

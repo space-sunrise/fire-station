@@ -325,6 +325,14 @@
 
 - type: entity
   parent: ScpFacilityBeaconScpContainment
+  id: ScpFacilityBeaconScp207Containment
+  suffix: SCP-207 Containment
+  components:
+  - type: NavMapBeacon
+    defaultText: scp-facility-beacon-scp-207-containment
+
+- type: entity
+  parent: ScpFacilityBeaconScpContainment
   id: ScpFacilityBeaconScp096Containment
   suffix: SCP-096 Containment
   components:

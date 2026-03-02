@@ -1,0 +1,15 @@
+﻿- type: lobbyBackgroundPreset
+  id: ScpAnimations
+  whitelistAnimations:
+  - Scp049
+  - Scp096
+  - Scp173
+  - Camera
+  - Foundation
+  - Mtf
+  - DeepFacility
+  - Logo
+  - PC
+  - RedGuy
+  - Screen
+  - WorldMap

@@ -27,7 +27,6 @@
         - CentrifugeCompatible
         - Patch
       components:
-        - Hypospray
         - Injector
         - Pill
   - type: ExplosionResistance

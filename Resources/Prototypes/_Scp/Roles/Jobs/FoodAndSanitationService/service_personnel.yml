@@ -6,6 +6,7 @@
   startingGear: ServicePersonnelGear
   icon: JobServicePersonnel
   supervisors: job-supervisors-personnel-officer
+  weight: 725
   access:
   - Service
   special:

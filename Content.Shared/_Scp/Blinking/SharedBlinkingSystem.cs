@@ -1,8 +1,8 @@
 ﻿using System.Linq;
-using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp173;
 using Content.Shared._Scp.Watching;
+using Content.Shared._Sunrise.Random;
 using Content.Shared.Alert;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -21,7 +21,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
-    [Dependency] private readonly PredictedRandomSystem _random = default!;
+    [Dependency] private readonly RandomPredictedSystem _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
 
@@ -234,7 +234,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         // Если в данный момент глаза закрыты, то выставляем иконку с закрытым глазом
         if (IsBlind(ent.AsNullable()))
         {
-            _alerts.ShowAlert(ent, ent.Comp.BlinkingAlert, 4);
+            _alerts.ShowAlert(ent.Owner, ent.Comp.BlinkingAlert, 4);
             return;
         }
 
@@ -242,7 +242,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         var denom = MathF.Max(0.001f, (float)(ent.Comp.BlinkingInterval.TotalSeconds - ent.Comp.BlinkingDuration.TotalSeconds));
         var severity = (short) Math.Clamp(4 - (float) timeToNextBlink.TotalSeconds / denom * 4, 0, 4);
 
-        _alerts.ShowAlert(ent, ent.Comp.BlinkingAlert, severity);
+        _alerts.ShowAlert(ent.Owner, ent.Comp.BlinkingAlert, severity);
     }
 
     /// <summary>

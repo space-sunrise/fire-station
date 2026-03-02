@@ -8,7 +8,7 @@ comms-console-menu-broadcast-button-tooltip = Транслируйте ваше 
 comms-console-menu-alert-level-button-tooltip = Измените уровень тревоги в комплексе. Применяется немедленно при выборе.
 comms-console-menu-call-shuttle = Вызвать
 comms-console-menu-recall-shuttle = Отозвать
-comms-console-menu-emergency-shuttle-button-tooltip = Вызов или отмена эвакуационного шаттла. Отменить можно только, если осталось достаточно времени.
+comms-console-menu-emergency-shuttle-button-tooltip = Вызов или отмена эвакуационного транспортника. Отменить можно только, если осталось достаточно времени.
 comms-console-menu-time-remaining = Оставшееся время: { $time }
 # Popup
 comms-console-permission-denied = В доступе отказано

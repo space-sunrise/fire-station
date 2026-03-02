@@ -8,7 +8,11 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: silver
-    - state: idblueshield
+    - state: department-side
+      color: &color-centcomm "#134975"
+    - sprite: &sunrise-icon-rsi _Sunrise/Interface/Misc/job_icons.rsi
+      offset: &icon-offset -0.19, 0
+      state: BlueShield
   - type: Item
     heldPrefix: silver
   - type: PresetIdCard
@@ -24,7 +28,11 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: gold
-    - state: idblueshield
+    - state: department-side
+      color: *color-centcomm
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: BlueShield
   - type: Item
     heldPrefix: gold
   - type: PresetIdCard
@@ -37,9 +45,14 @@
   categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: centcom
-    - state: idcentcom
+    - state: blue
+    - state: department-side
+      color: *color-centcomm
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: BlueShield
   - type: Item
     heldPrefix: blue
   - type: PresetIdCard
@@ -52,9 +65,16 @@
   categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: default
-    - state: idroboticist
+    - state: department-side
+      color: &color-science "#a53aaa"
+    - sprite: &icon-rsi Interface/Misc/job_icons.rsi
+      offset: *icon-offset
+      state: Roboticist
+  - type: Item
+    heldPrefix: default
   - type: PresetIdCard
     job: Roboticist
 
@@ -68,22 +88,15 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: default
-    - state: idsecuritypilot
+    - state: department-side
+      color: &color-security "#cb0000"
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: SecurityPilot
+  - type: Item
+    heldPrefix: default
   - type: PresetIdCard
     job: SecurityPilot
-
-- type: entity
-  parent: IDCardStandard
-  id: PrisonEngineeringIDCard
-  name: prison engineer ID card
-  categories: [ HideSpawnMenu ] # Fire added
-  components:
-  - type: Sprite
-    layers:
-    - state: default
-    - state: idstationengineer
-  - type: PresetIdCard
-    job: PrisonEngineer
 
 - type: entity
   parent: IDCardStandard
@@ -92,9 +105,16 @@
   categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: silver
-    - state: idiaa
+    - state: department-side
+      color: *color-centcomm
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: IAA
+  - type: Item
+    heldPrefix: silver
   - type: PresetIdCard
     job: IAA
 
@@ -105,53 +125,37 @@
   categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: silver
-    - state: idmagistrat
+    - state: blue
+    - state: department-side
+      color: *color-centcomm
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: Magistrat
+  - type: Item
+    heldPrefix: blue
   - type: PresetIdCard
     job: Magistrat
 
-- type: entity
-  parent: IDCardStandard
-  id: BrigmedicIDCard
-  name: brigmedic ID card
-  categories: [ HideSpawnMenu ] # Fire added
-  components:
-  - type: Sprite
-    sprite: _Sunrise/Objects/Misc/id_cards.rsi
-    layers:
-    - state: default
-    - state: idbrigmedic
-  - type: PresetIdCard
-    job: Brigmedic
-
-- type: entity
-  parent: IDCardStandard
-  id: PlanetPrisonerIDCard
-  name: prisoner ID card
-  categories: [ HideSpawnMenu ] # Fire added
-  components:
-  - type: Sprite
-    sprite: _Sunrise/Objects/Misc/id_cards.rsi
-    layers:
-    - state: prisoner-space-prison
-    - state: idprisoner-space-prison
-  - type: PresetIdCard
-    job: PlanetPrisoner
-
-- type: entity
-  parent: IDCardStandard
-  id: GuardIDCard
-  name: guard ID card
-  categories: [ HideSpawnMenu ] # Fire added
-  components:
-  - type: Sprite
-    sprite: _Sunrise/Objects/Misc/id_cards.rsi
-    layers:
-    - state: orange-space-prison
-    - state: idguardian-space-prison
-  - type: PresetIdCard
-    job: PrisonGuard
+# - type: entity
+#   parent: IDCardStandard
+#   id: GuardIDCard
+#   name: guard ID card
+#   components:
+#   - type: Sprite
+#     sprite: _Sunrise/Objects/Misc/id_cards.rsi
+#     layers:
+#     - state: orange
+#     - state: department-side
+#       color: *color-security
+#     - sprite: *sunrise-icon-rsi
+#       offset: *icon-offset
+#       state: PrisonGuard
+#   - type: Item
+#     heldPrefix: orange
+#   - type: PresetIdCard
+#     job: PrisonGuard
 
 - type: entity
   parent: IDCardStandard
@@ -162,26 +166,16 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: orange-space-prison
-    - state: idprisonpilot-space-prison
+    - state: orange
+    - state: department-side
+      color: *color-security
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: PrisonPilot
+  - type: Item
+    heldPrefix: orange
   - type: PresetIdCard
     job: PrisonPilot
-
-- type: entity
-  parent: IDCardStandard
-  id: HeadOfPrisonIDCard
-  name: head of prison ID card
-  categories: [ HideSpawnMenu ] # Fire added
-  components:
-  - type: Sprite
-    sprite: _Sunrise/Objects/Misc/id_cards.rsi
-    layers:
-    - state: orange-space-prison
-    - state: idheadofprison-space-prison
-  - type: Item
-    heldPrefix: silver
-  - type: PresetIdCard
-    job: HeadOfPrison
 
 - type: entity
   parent: IDCardStandard
@@ -190,8 +184,16 @@
   categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: ert_commander
+    - state: gold
+    - state: department-side
+      color: *color-centcomm
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: Nanotrasen
+  - type: Item
+    heldPrefix: gold
   - type: PresetIdCard
     job: NanoTrasenRepresentative
 
@@ -205,7 +207,13 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: default
-    - state: idbarber
+    - state: department-side
+      color: "#639137"
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: Barber
+  - type: Item
+    heldPrefix: default
   - type: PresetIdCard
     job: Barber
 
@@ -219,8 +227,14 @@
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
-    - state: default
-    - state: idadjutant
+    - state: silver
+    - state: department-side
+      color: "#1b67a5"
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: Adjutant
+  - type: Item
+    heldPrefix: silver
   - type: PresetIdCard
     job: Adjutant
 
@@ -234,7 +248,13 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: default
-    - state: idpatologoanatom
+    - state: department-side
+      color: "#68aed6"
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: Pathologist
+  - type: Item
+    heldPrefix: default
   - type: PresetIdCard
     job: MedicalPathologist
 
@@ -249,10 +269,16 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: ussp
-    - state: idcard_crew
+    - state: department-side
+      color: &color-ussp-side "#e80c0c"
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: CrewUSSP
   - type: Access
     tags:
     - Maintenance
+  - type: Item
+    heldPrefix: black
   - type: PresetIdCard
     job: USSPCrew
 
@@ -267,12 +293,18 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: ussp
-    - state: idcard_officer
+    - state: department-side
+      color: *color-ussp-side
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: OfficerUSSP
   - type: Access
     tags:
     - Maintenance
     - NuclearOperative
     - SyndicateAgent
+  - type: Item
+    heldPrefix: black
   - type: PresetIdCard
     job: USSPOfficer
 
@@ -287,11 +319,17 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: ussp
-    - state: idcard_soldier
+    - state: department-side
+      color: *color-ussp-side
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: SoldierUSSP
   - type: Access
     tags:
     - NuclearOperative
     - SyndicateAgent
+  - type: Item
+    heldPrefix: black
   - type: PresetIdCard
     job: USSPSoldier
 
@@ -306,11 +344,17 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: ussp
-    - state: idcard_officer_alt
+    - state: department-side
+      color: *color-ussp-side
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: OfficerAltUSSP
   - type: Access
     tags:
     - NuclearOperative
     - SyndicateAgent
+  - type: Item
+    heldPrefix: black
   - type: PresetIdCard
     job: USSPOfficerAlt
 
@@ -325,13 +369,20 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: ussp
-    - state: idcard_captain
+    - state: department-side
+      color: *color-ussp-side
+    - state: department-side-extra-gold-ussp
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: CaptainUSSP
   - type: Access
     groups:
     - AllAccess
     tags:
     - NuclearOperative
     - SyndicateAgent
+  - type: Item
+    heldPrefix: black
   - type: PresetIdCard
     job: USSPCaptain
   - type: IdCard
@@ -349,7 +400,11 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: silver
-    - state: ntr-operator
+    - state: department-side
+      color: *color-ussp-side
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: NanotrasenGuard
   - type: Item
     heldPrefix: silver
   - type: PresetIdCard
@@ -367,7 +422,12 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: silver
-    - state: ntr-captain
+    - state: department-side
+      color: *color-centcomm
+    - state: department-side-extra-gold
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: NanotrasenLeader
   - type: Item
     heldPrefix: silver
   - type: PresetIdCard
@@ -383,7 +443,13 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: default
-    - state: idmail
+    - state: department-side
+      color: &color-supply "#b18644"
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: MailCarrier
+  - type: Item
+    heldPrefix: default
   - type: PresetIdCard
     job: MailCarrier
 
@@ -397,7 +463,13 @@
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: default
-    - state: idstationminer
+    - state: department-side
+      color: *color-supply
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: Miner
+  - type: Item
+    heldPrefix: default
   - type: PresetIdCard
     job: MiningSpecialist
 
@@ -417,6 +489,8 @@
       bypassLogging: true
       canMicrowave: false
       jobTitle: job-name-unknown
+    - type: Item
+      heldPrefix: default
     - type: ActivatableUI
       key: enum.AgentIDCardUiKey.Key
       inHandsOnly: true
@@ -429,11 +503,63 @@
   parent: IDCardStandard
   id: CommaidIDCard
   name: Commaid ID card
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Misc/id_cards.rsi
     layers:
     - state: silver
-    - state: idcommaid
+    - state: department-side
+      color: "#ff7ee3"
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: CommandMaid
+    - type: Item
+      heldPrefix: silver
   - type: PresetIdCard
     job: ComMaid
+
+- type: entity
+  parent: IDCardStandard
+  id: CentcomOperatorIDCard
+  name: command operator ID card
+  categories: [ HideSpawnMenu ] # Fire added
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
+    layers:
+    - state: blue
+    - state: department-side
+      color: *color-centcomm
+    - sprite: *sunrise-icon-rsi
+      offset: *icon-offset
+      state: Nanotrasen
+  - type: Item
+    heldPrefix: blue
+  - type: PresetIdCard
+    job: CentCommOperator
+
+- type: entity
+  parent: IDCardStandard
+  id: SeniorCourierIDCard
+  name: senior courier ID card
+  categories: [ HideSpawnMenu ] # Fire added
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - state: department-side
+      color: *color-supply
+    - sprite: *icon-rsi
+      offset: *icon-offset
+      state: CargoTechnician
+  - type: Access
+    tags:
+    - Cargo
+    - CargoPurchaseAccess
+    - Maintenance
+    - External
+  - type: IdCard
+    jobTitle: job-name-senior-courier
+    jobIcon: JobIconCargoTechnician

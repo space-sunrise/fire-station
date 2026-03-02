@@ -11,9 +11,6 @@
   - type: Sprite
     sprite: _Scp/Structures/Doors/Shutters/shutters.rsi
     drawdepth: BlastDoors
-    layers:
-    - state: closed
-      map: ["enum.DoorVisualLayers.Base"]
   - type: IconSmooth
     key: walls
     mode: NoSprite
@@ -53,9 +50,6 @@
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Shutters/shutters_radiation.rsi
-    layers:
-    - state: closed
-      map: ["enum.DoorVisualLayers.Base"]
   - type: Occluder
   - type: Construction
     graph: Shutters
@@ -89,9 +83,6 @@
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Shutters/shutters_window.rsi
-    layers:
-    - state: closed
-      map: ["enum.DoorVisualLayers.Base"]
   - type: Construction
     graph: Shutters
     node: ShuttersWindow

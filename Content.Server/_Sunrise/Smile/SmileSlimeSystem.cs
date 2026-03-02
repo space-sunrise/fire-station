@@ -8,6 +8,7 @@ using Content.Shared.Actions;
 using Content.Shared.Body.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Zombies;
+using Content.Shared.Damage.Systems;
 
 namespace Content.Server._Sunrise.Smile;
 
@@ -94,7 +95,7 @@ public sealed class SmileSlimeSystem : EntitySystem
 
         _entMan.SpawnEntity("EffectHearts", targetXform.Coordinates);
         _audio.PlayPvs(comp.SoundSpecifier, targetXform.Coordinates);
-        _damageableSystem.TryChangeDamage(args.Target, comp.DamageSpecifier, true, false);
+        _damageableSystem.TryChangeDamage(args.Target.Value, comp.DamageSpecifier, true, false);
         args.Handled = true;
     }
 

@@ -200,6 +200,7 @@ public sealed partial class ResearchSystem
         Dirty(uid, component);
     }
 
+    // Fire edit - поддержка разных очков исследований
     public void ModifyServerPoints(EntityUid uid, Dictionary<ProtoId<ResearchPointPrototype>, int> points, bool reverse = false, ResearchServerComponent? component = null)
     {
         if (!Resolve(uid, ref component))

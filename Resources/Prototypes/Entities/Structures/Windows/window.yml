@@ -1,13 +1,18 @@
 - type: entity
   id: Window
-  parent: BaseStructure
+  parent: [BaseDeltaPressureGlass, BaseStructure]
   name: window
   description: Don't smudge up the glass down there.
+  categories: [ HideSpawnMenu ] # Fire added
   placement:
     mode: SnapgridCenter
     snap:
     - Window
   components:
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
   - type: Ricochetable
     chance: 0.7
   - type: MeleeSound
@@ -99,6 +104,7 @@
   parent: Window
   id: TintedWindow
   name: tinted window
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     drawdepth: WallTops
@@ -124,9 +130,10 @@
 
 - type: entity
   id: WindowDirectional
-  parent: BaseStructure
+  parent: [BaseDeltaPressureGlassQuarter, BaseStructure]
   name: directional window
   description: Don't smudge up the glass down there.
+  categories: [ HideSpawnMenu ] # Fire added
   placement:
     mode: SnapgridCenter
     snap:
@@ -230,6 +237,7 @@
   parent: WindowDirectional
   name: directional frosted window
   description: Don't smudge up the glass down there.
+  categories: [ HideSpawnMenu ] # Fire added
   placement:
     mode: SnapgridCenter
     snap:
@@ -248,6 +256,7 @@
   parent: Window
   id: WindowDiagonal
   suffix: diagonal
+  categories: [ HideSpawnMenu ] # Fire added
   placement:
     mode: SnapgridCenter
     snap:

@@ -15,5 +15,6 @@
         type: Local
       - !type:Rejuvenate
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Scp500Reagent
           min: 1

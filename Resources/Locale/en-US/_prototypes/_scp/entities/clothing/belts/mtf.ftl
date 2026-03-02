@@ -1,0 +1,14 @@
+ent-ClothingBeltMtfSparePouch = tactical belt
+    .desc = A small, lightweight pouch to provide additional storage. The newer G8-A model, while uncomfortable, can also be clipped around the waist.
+ent-ClothingBeltMtfConstruction = construction belt
+    .desc = The M277 is a common rig used by Combat Technicians to carry around materials and other supplies. It consists of a modular belt with various clips. This version sacrifices storage space for specialized material loading clips.
+ent-ClothingBeltMtfUtility = tools belt
+    .desc = The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This version lacks any combat functionality, and is commonly used by engineers to transport important tools.
+ent-ClothingBeltMtfMedical = medical belt
+    .desc = The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport bulkier medical supplies.
+ent-ClothingBeltMtfSecurity = security belt
+    .desc = The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This configuration is commonly seen among Military Police and peacekeepers, though it can hold some light munitions.
+ent-ClothingBeltMtfAmmo = ammo belt
+    .desc = The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This is the standard variant, designed for bulk ammunition-carrying operations.
+ent-ClothingBeltMtfGrenade = grenade belt
+    .desc = The M276 is the standard load-bearing equipment. It consists of a modular belt with various clips. This version is designed to carry up to 10 grenades.

@@ -1,18 +1,18 @@
 {
     "version": 1,
     "license": "CLA",
-    "copyright": "Sprited by discord: odlieerr",
-    "size": 
+    "copyright": "Sprited by discord: odlieerr. Welded sprited by miduzka(discord)",
+    "size":
     {
         "x": 32,
         "y": 32
     },
-    "states": 
+    "states":
     [
         {
             "name": "closing",
             "directions": 4,
-            "delays": 
+            "delays":
             [
                 [
                     0.05,
@@ -67,7 +67,7 @@
         {
             "name": "opening",
             "directions": 4,
-            "delays": 
+            "delays":
             [
                 [
                     0.05,
@@ -129,6 +129,10 @@
         },
         {
             "name": "closed",
+            "directions": 4
+        },
+        {
+            "name": "welded",
             "directions": 4
         }
     ]

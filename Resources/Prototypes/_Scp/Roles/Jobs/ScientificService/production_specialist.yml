@@ -6,14 +6,15 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: ScientificService
-    time: 14400
+    time: 10800
   - !type:DepartmentTimeRequirement
     department: EngineeringTechnicalService
-    time: 14400
+    time: 10800
   startingGear: ProductionSpecialistGear
   icon: JobProductionSpecialist
   supervisors: job-supervisors-scientific-service-director
   displayWeight: 10
+  weight: 790
   accessGroups:
   - ProductionSpecialist
   special:

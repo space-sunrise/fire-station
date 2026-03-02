@@ -1,6 +1,15 @@
-ent-ScpLockerBotanistFilled = { ent-ScpLockerBotanist }
+ent-ScpClosetGastronomicSpecialistFilled = { ent-ScpClosetGastronomicSpecialist }
     .suffix = Filled
-    .desc = { ent-ScpLockerBotanist.desc }
+    .desc = { ent-ScpClosetGastronomicSpecialist.desc }
+ent-ScpClosetJanitorFilled = { ent-ScpClosetJanitor }
+    .suffix = Filled
+    .desc = { ent-ScpClosetJanitor.desc }
+ent-ScpLockerBotanistPhytogeneticistFilled = { ent-ScpLockerBotanistPhytogeneticist }
+    .suffix = Filled
+    .desc = { ent-ScpLockerBotanistPhytogeneticist.desc }
 ent-ScpLockerBoozeFilled = { ent-ScpLockerBooze }
     .suffix = Filled
     .desc = { ent-ScpLockerBooze.desc }
+ent-ScpClosetLegalFilled = { ent-ScpClosetLegal }
+    .suffix = Filled
+    .desc = { ent-ScpClosetLegal.desc }

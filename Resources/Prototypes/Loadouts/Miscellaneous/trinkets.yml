@@ -106,6 +106,31 @@
     - CigarGold
   groupBy: "smokeables"
 
+# Folders
+- type: loadout
+  id: BoxFolderBaseThreePapers
+  storage:
+    back:
+    - BoxFolderBaseThreePapers
+  groupBy: "folders"
+
+- type: loadout
+  id: BoxFolderPlasticClipboardThreePapers
+  storage:
+    back:
+    - BoxFolderPlasticClipboardThreePapers
+  groupBy: "folders"
+
+- type: loadout
+  id: BoxFolderClipboardThreePapers
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Command
+  storage:
+    back:
+    - BoxFolderClipboardThreePapers
+  groupBy: "folders"
+
 # Pins
 - type: loadout
   id: ClothingNeckLGBTPin
@@ -304,55 +329,52 @@
 # Towels
 - type: loadout
   id: TowelColorWhite
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:OverallPlaytimeRequirement
-      time: 36000 # 10hr
   storage:
     back:
     - TowelColorWhite
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorSilver
+  id: TowelColorGray
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
-      !type:OverallPlaytimeRequirement
-      time: 1800000 # 500hr
+      !type:RoleTimeRequirement
+      role: JobPassenger
+      time: 100h
   storage:
     back:
-    - TowelColorSilver
+    - TowelColorGray
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorGold
+  id: TowelColorBlack
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
-      !type:OverallPlaytimeRequirement
-      time: 3600000 # 1000hr
+      !type:RoleTimeRequirement
+      role: JobChaplain
+      time: 100h
   storage:
     back:
-    - TowelColorGold
+    - TowelColorBlack
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorLightBrown
+  id: TowelColorRed
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: LogisticsService # Fire edit
+      department: Cargo
       time: 360000 # 100hr
   storage:
     back:
-    - TowelColorLightBrown
+    - TowelColorRed
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorGreen
+  id: TowelColorOrange
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -361,11 +383,11 @@
       time: 360000 # 100hr
   storage:
     back:
-    - TowelColorGreen
+    - TowelColorOrange
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorDarkBlue
+  id: TowelColorLightBrown
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -374,11 +396,11 @@
       time: 360000 # 100hr
   storage:
     back:
-    - TowelColorDarkBlue
+    - TowelColorLightBrown
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorOrange
+  id: TowelColorYellow
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -391,7 +413,7 @@
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorLightBlue
+  id: TowelColorDarkGreen
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -400,11 +422,11 @@
       time: 360000 # 100hr
   storage:
     back:
-    - TowelColorLightBlue
+    - TowelColorDarkGreen
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorPurple
+  id: TowelColorGreen
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -413,11 +435,11 @@
       time: 360000 # 100hr
   storage:
     back:
-    - TowelColorPurple
+    - TowelColorGreen
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorRed
+  id: TowelColorLightBlue
   effects:
   # Fire edit start
   - !type:JobRequirementLoadoutEffect
@@ -433,11 +455,11 @@
   # Fire edit end
   storage:
     back:
-    - TowelColorRed
+    - TowelColorLightBlue
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorGray
+  id: TowelColorDarkBlue
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -446,11 +468,11 @@
       time: 360000 # 100hr
   storage:
     back:
-    - TowelColorGray
+    - TowelColorDarkBlue
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorBlack
+  id: TowelColorPurple
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -459,20 +481,7 @@
       time: 360000 # 100hr
   storage:
     back:
-    - TowelColorBlack
-  groupBy: "towels"
-
-- type: loadout
-  id: TowelColorDarkGreen
-  effects:
-  - !type:JobRequirementLoadoutEffect
-    requirement:
-      !type:RoleTimeRequirement
-      role: JobServicePersonnel # Fire Edit
-      time: 360000 # 100hr
-  storage:
-    back:
-    - TowelColorDarkGreen
+    - TowelColorPurple
   groupBy: "towels"
 
 - type: loadout
@@ -481,7 +490,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobTribunalOfficer # Fire edit
+      role: JobServicePersonnel # Fire Edit
       time: 360000 # 100hr
   storage:
     back:
@@ -489,7 +498,20 @@
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorYellow
+  id: TowelColorMime
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobTribunalOfficer # Fire edit
+      time: 360000 # 100hr
+  storage:
+    back:
+    - TowelColorMime
+  groupBy: "towels"
+
+- type: loadout
+  id: TowelColorSilver
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -502,7 +524,7 @@
   groupBy: "towels"
 
 - type: loadout
-  id: TowelColorMime
+  id: TowelColorGold
   effects:
   - !type:JobRequirementLoadoutEffect
     requirement:
@@ -511,5 +533,5 @@
       time: 360000 # 100hr
   storage:
     back:
-    - TowelColorMime
+    - TowelColorGold
   groupBy: "towels"

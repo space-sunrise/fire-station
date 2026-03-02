@@ -1,11 +1,12 @@
 ﻿using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Systems;
+using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp096.Protection;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Scp.Watching.FOV;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs;
 using Content.Shared.Popups;
@@ -16,6 +17,10 @@ namespace Content.Shared._Scp.Scp096.Main.Systems;
 
 public abstract partial class SharedScp096System
 {
+    /*
+     * Часть системы, отвечающая за целей скромника и их обработку.
+     */
+
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedFearSystem _fear = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
@@ -73,6 +78,9 @@ public abstract partial class SharedScp096System
 
     protected virtual void OnTargetStartup(Entity<Scp096TargetComponent> ent, ref ComponentStartup args)
     {
+        if (_timing.ApplyingState || IsClientSide(ent))
+            return;
+
         var becameTarget = false;
 
         var query = EntityQueryEnumerator<Scp096Component>();
@@ -86,10 +94,15 @@ public abstract partial class SharedScp096System
             becameTarget = true;
         }
 
-        // TODO: Что-то сделать с компонентом таргета у цели и учесть, что при удалении компонента
-        // количество таргетов уменьшится -> будет десинхронизация с реальным количеством таргетов
+        // Если не получилось стать целью - убираем компонент
         if (!becameTarget)
+        {
+            ent.Comp.DecreaseTargetCountOnShutdown = false;
+            Dirty(ent);
+            RemComp<Scp096TargetComponent>(ent);
+
             return;
+        }
 
         _fear.TrySetFearLevel(ent.Owner, FearState.Terror);
     }
@@ -99,11 +112,14 @@ public abstract partial class SharedScp096System
         if (_timing.ApplyingState || IsClientSide(ent))
             return;
 
-        var query = EntityQueryEnumerator<ActiveScp096RageComponent, Scp096Component>();
-        while (query.MoveNext(out var uid, out _, out var scp096))
+        var query = EntityQueryEnumerator<Scp096Component>();
+        while (query.MoveNext(out var uid, out var scp096))
         {
-            scp096.TargetsCount--;
-            Dirty(uid, scp096);
+            if (ent.Comp.DecreaseTargetCountOnShutdown)
+            {
+                scp096.TargetsCount--;
+                Dirty(uid, scp096);
+            }
 
             if (scp096.TargetsCount <= 0)
                 RemCompDeferred<ActiveScp096RageComponent>(uid);
@@ -115,12 +131,12 @@ public abstract partial class SharedScp096System
     /// Если может - добавляет ее в список целей. Возвращает полученный результат
     /// </summary>
     [PublicAPI]
-    public bool TryAddTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false, bool ignoreMask = false)
+    public bool TryAddTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false, bool ignoreMask = false, bool ignoreBlinded = false)
     {
         if (!CanBeAggro(scp, ignoreMask))
             return false;
 
-        if (!IsValidTarget(scp, target, ignoreAngle))
+        if (!IsValidTarget(scp, target, ignoreAngle, ignoreBlinded))
             return false;
 
         EnsureComp<Scp096TargetComponent>(target);
@@ -143,14 +159,10 @@ public abstract partial class SharedScp096System
     /// Проверяет, может ли цель быть целью скромника.
     /// Включает в себя различные проверки на поле зрения, защиту и прочее.
     /// </summary>
-    private bool IsValidTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false)
+    private bool IsValidTarget(Entity<Scp096Component> scp, EntityUid target, bool ignoreAngle = false, bool ignoreBlinded = false)
     {
         // Уже является целью?
         if (TargetQuery.HasComp(target))
-            return false;
-
-        // Проверяем, может ли цель видеть 096. Без учета поля зрения
-        if (!_watching.IsWatchedBy(scp, [target], viewers: out _, false))
             return false;
 
         // Проверяем, есть ли у цели защита от 096
@@ -159,7 +171,7 @@ public abstract partial class SharedScp096System
             return false;
 
         // Проверяем, смотрит ли 096 на цель и цель на 096
-        if (!IsTargetSeeScp096(target, scp, ignoreAngle))
+        if (!IsTargetSeeScp096(target, scp, ignoreAngle, ignoreBlinded))
             return false;
 
         // Если все условия выполнены, то цель валидна
@@ -170,11 +182,25 @@ public abstract partial class SharedScp096System
     /// Проверяет, видит ли цель SCP-096.
     /// Использует особые проверки поля зрения для проверки "смотрят ли они друг-другу в лицо"
     /// </summary>
-    private bool IsTargetSeeScp096(EntityUid viewer, Entity<Scp096Component> scp, bool ignoreAngle)
+    private bool IsTargetSeeScp096(EntityUid viewer, Entity<Scp096Component> scp, bool ignoreAngle, bool ignoreBlinded = false)
     {
+        // Проверяем, может ли цель вообще быть увидена.
+        // Проверяет на наличие базовых компонентов и т.п.
+        if (!_watching.CanBeWatched(viewer, scp))
+            return false;
+
+        // Проверяет, не слеп ли персонаж
+        if (_watching.IsEyeBlinded(viewer, scp, false) && !ignoreBlinded)
+            return false;
+
         // Если игнорируем угол, то считаем, что смотрящий видит 096
         if (ignoreAngle)
             return true;
+
+        // Проверяем, что между скромником и целью нет сплошных препятствий, закрывающих обзор
+        // TODO: Проверить, что лучше проверять первым для максимальной производительности. Сюда впихнул временно.
+        if (!_proximity.IsRightType(scp, viewer, LineOfSightBlockerLevel.Transparent))
+            return false;
 
         // Проверяем, смотрит ли 096 в лицо цели
         if (!_fov.IsInViewAngle(scp.Owner, viewer, scp.Comp.ArgoAngle))
@@ -184,7 +210,7 @@ public abstract partial class SharedScp096System
         if (!_fov.IsInViewAngle(viewer, scp.Owner, scp.Comp.ArgoAngle))
             return false;
 
-        // Соответственно если обе проверки прошли, то цель видит 096
+        // Соответственно если все проверки прошли, то цель видит 096
         return true;
     }
 }

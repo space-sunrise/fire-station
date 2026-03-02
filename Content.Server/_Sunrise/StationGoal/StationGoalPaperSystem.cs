@@ -1,10 +1,11 @@
-using Content.Server.GameTicking.Events;
-using Content.Server.Paper;
 using Content.Shared.Fax.Components;
 using Content.Shared.GameTicking;
 using Content.Shared.Paper;
+using Content.Shared._Sunrise.CopyMachine;
+using Content.Shared._Sunrise.SunriseCCVars;
 using Robust.Server.Containers;
 using Robust.Server.Player;
+using Robust.Shared.Configuration;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -15,10 +16,11 @@ namespace Content.Server._Sunrise.StationGoal
     public sealed class StationGoalPaperSystem : EntitySystem
     {
         [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
-        [Dependency] private readonly IRobustRandom _random = default!;
         [Dependency] private readonly ContainerSystem _containerSystem = default!;
         [Dependency] private readonly PaperSystem _paperSystem = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
+        [Dependency] private readonly IConfigurationManager _cfg = default!;
+        [Dependency] private readonly IRobustRandom _random = default!;
 
         public override void Initialize()
         {
@@ -34,37 +36,33 @@ namespace Content.Server._Sunrise.StationGoal
             while (query.MoveNext(out var uid, out var station))
             {
                 var tempGoals = new List<ProtoId<StationGoalPrototype>>(station.Goals);
+                _random.Shuffle(tempGoals);
+
                 StationGoalPrototype? selGoal = null;
-                while (tempGoals.Count > 0)
+                foreach (var goalId in tempGoals)
                 {
-                    var goalId = _random.Pick(tempGoals);
                     var goalProto = _prototypeManager.Index(goalId);
 
-                    if (playerCount > goalProto.MaxPlayers ||
-                        playerCount < goalProto.MinPlayers)
-                    {
-                        tempGoals.Remove(goalId);
+                    if (playerCount < goalProto.MinPlayers)
                         continue;
-                    }
+
+                    if (playerCount > goalProto.MaxPlayers)
+                        continue;
 
                     selGoal = goalProto;
                     break;
                 }
 
                 if (selGoal is null)
-                    return;
+                    continue;
 
                 if (SendStationGoal(uid, selGoal))
-                {
                     Log.Info($"Goal {selGoal.ID} has been sent to station {MetaData(uid).EntityName}");
-                }
             }
         }
 
         public bool SendStationGoal(EntityUid? ent, ProtoId<StationGoalPrototype> goal)
-        {
-            return SendStationGoal(ent, _prototypeManager.Index(goal));
-        }
+            => SendStationGoal(ent, _prototypeManager.Index(goal));
 
         public bool SendStationGoal(EntityUid? ent, StationGoalPrototype goal)
         {
@@ -73,7 +71,10 @@ namespace Content.Server._Sunrise.StationGoal
 
             var wasSent = false;
 
-            var ntHeader = new SpriteSpecifier.Rsi(new ResPath("/Textures/_Sunrise/CopyMachine/paper_headers.rsi"), "nanotrasen_form_header_centcom");
+            SpriteSpecifier? header = null;
+            var poolId = _cfg.GetCVar(SunriseCCVars.DocumentTemplatePool);
+            if (_prototypeManager.TryIndex<DocTemplatePoolPrototype>(poolId, out var poolProto))
+                header = poolProto.StationGoalHeader;
 
             var printout = new FaxPrintout(
                 Loc.GetString(goal.Text, ("station", MetaData(ent.Value).EntityName)),
@@ -85,7 +86,7 @@ namespace Content.Server._Sunrise.StationGoal
                 {
                     new() { StampedName = Loc.GetString("stamp-component-stamped-name-centcom"), StampedColor = Color.Green },
                 },
-                imageContent: ntHeader);
+                imageContent: header);
 
             var faxQuery = EntityQueryEnumerator<FaxMachineComponent>();
             while (faxQuery.MoveNext(out var faxId, out var fax))
@@ -130,9 +131,7 @@ namespace Content.Server._Sunrise.StationGoal
                 return printed;
 
             foreach (var stamp in printout.StampedBy)
-            {
                 _paperSystem.TryStamp((printed, paper), stamp, printout.StampState);
-            }
 
             return printed;
         }

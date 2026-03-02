@@ -54,6 +54,8 @@ public sealed class ProximitySystem : EntitySystem
         "SecureUraniumWindoor",
     ];
 
+    private EntityQuery<InsideEntityStorageComponent> _insideQuery;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -63,6 +65,8 @@ public sealed class ProximitySystem : EntitySystem
         SubscribeLocalEvent<ProximityTargetComponent, ComponentStartup>(AddToTargets);
         SubscribeLocalEvent<ProximityTargetComponent, ComponentShutdown>(RemoveFromTargets);
         SubscribeLocalEvent<ProximityTargetComponent, EntityTerminatingEvent>(RemoveFromTargets);
+
+        _insideQuery = GetEntityQuery<InsideEntityStorageComponent>();
     }
 
     private static void Clean()
@@ -93,7 +97,6 @@ public sealed class ProximitySystem : EntitySystem
         PossibleNotInRange.UnionWith(AllTargets);
 
         var query = EntityQueryEnumerator<ProximityReceiverComponent, TransformComponent>();
-
         while (query.MoveNext(out var uid, out var receiver, out var xform))
         {
             Targets.Clear();
@@ -128,6 +131,13 @@ public sealed class ProximitySystem : EntitySystem
         _nextSearchTime = _timing.CurTime + ProximitySearchCooldown;
     }
 
+
+    /// <inheritdoc cref="IsRightType(EntityUid, EntityUid, LineOfSightBlockerLevel, out LineOfSightBlockerLevel)"/>
+    public bool IsRightType(EntityUid receiver, EntityUid target, LineOfSightBlockerLevel type)
+    {
+        return IsRightType(receiver, target, type, out _);
+    }
+
     /// <summary>
     /// Проверяет, совпадает ли тип прозрачности сущностей между двумя переданными сущностям.
     /// </summary>
@@ -151,15 +161,14 @@ public sealed class ProximitySystem : EntitySystem
     /// <returns>Тип прозрачности сущностей, перекрывающий прямой контакт между этими двумя</returns>
     public LineOfSightBlockerLevel GetLightOfSightBlockerLevel(EntityUid receiver, EntityUid target)
     {
-        if (HasComp<InsideEntityStorageComponent>(receiver))
+        if (_insideQuery.HasComp(receiver))
             return LineOfSightBlockerLevel.Solid;
 
-        var isUnobstructed = InRangeUnobstructed(receiver, target);
         var isUnOccluded = _examine.InRangeUnOccluded(receiver, target, JustUselessNumber);
 
         if (!isUnOccluded)
             return LineOfSightBlockerLevel.Solid;
-        else if (!isUnobstructed)
+        else if (!InRangeUnobstructed(receiver, target))
             return LineOfSightBlockerLevel.Transparent;
         else
             return LineOfSightBlockerLevel.None;
@@ -167,7 +176,11 @@ public sealed class ProximitySystem : EntitySystem
 
     private bool InRangeUnobstructed(Entity<TransformComponent?> first, Entity<TransformComponent?> second)
     {
-        return _interaction.InRangeUnobstructed(first, second, JustUselessNumber, predicate: IsNotSolidObject);
+        return _interaction.InRangeUnobstructed(
+            first,
+            second,
+            JustUselessNumber,
+            predicate: IsNotSolidObject);
     }
 
     private bool IsNotSolidObject(EntityUid e) => !_tag.HasAnyTag(e, SolidTags);

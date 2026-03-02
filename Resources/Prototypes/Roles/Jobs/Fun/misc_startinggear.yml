@@ -81,11 +81,11 @@
     eyes: ClothingEyesGlassesSecurity
     head: ClothingHeadHelmetSwat
     mask: ClothingMaskGasSwat
-    outerClothing: ClothingOuterArmorBasicSlim
+    outerClothing: ClothingOuterArmorBulletproofHeavy # Sunrise-Edit
     ears: ClothingHeadsetSecurity
     gloves: ClothingHandsGlovesCombat
   inhand:
-   - WeaponSubMachineGunDrozd # Sunrise-Edit
+   - WeaponSubMachineGunWt550 # Sunrise-Edit
   storage:
     back:
     - BoxSurvivalSecurity
@@ -135,12 +135,29 @@
   equipment:
     back: ClothingBackpackSatchelAdmin
     id: ScpAdminPDA # Fire edit
+    belt: ClothingBeltMtfUtilityFilled # Fire edit
+    eyes: ClothingEyesHudOmni # Fire edit
+    # head: ClothingHeadHatCowboyWhite # Fire edit
   storage:
     back:
     - GasAnalyzer
     - trayScanner
     - AccessConfiguratorUniversal
     - Multitool
+    # fire-start
+    - AnomalyScanner
+    - RubberStampApproved
+    - RubberStampDenied
+    - RubberStampRedo
+    - RubberStampEthicsCommittee
+    - RubberStampRegionalCommand
+    - RubberStampO4Command
+    - RubberStampOverseerCouncil
+    - BoxFolderCentComThreePapers
+    - Emag
+    - AccessBreaker
+    - ClothingEyesHudDiagnosticERT
+    # fire-end
 
 #Gladiator with spear
 - type: startingGear

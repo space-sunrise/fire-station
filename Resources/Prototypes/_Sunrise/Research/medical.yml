@@ -35,16 +35,31 @@
 
 # Tier 2
 - type: technology
-  id: MedicalHyposprays
-  name: research-technology-medical-hyposprays
+  id: ImplantExtractor
+  name: research-technology-implant-extractor
   icon:
-    sprite: _Sunrise/Objects/Specific/Medical/hypospray.rsi
-    state: med-hypospray
+    sprite: Objects/Specific/Medical/implanter.rsi
+    state: implanter0
   discipline: Biochemical
   tier: 2
-  cost: 6500
+  cost: 8000
   recipeUnlocks:
-  - HyposprayMedical
+  - ImplanterExtractor
+
+- type: technology
+  id: MedicalAssembler
+  name: research-technology-medical-assembler
+  icon:
+    sprite: _Sunrise/Structures/Machines/medical_assembler.rsi
+    state: icon
+  discipline: Biochemical
+  tier: 2
+  cost: 7500
+  recipeUnlocks:
+  - MedicalAssemblerMachineCircuitboard
+  - BlankMediPen
+  # technologyPrerequisites: # Sunrise-todo Привязать JetInjectors
+  #   - MedicalHyposprays
 
 - type: technology
   id: SurgeryTechAdvanced
@@ -66,16 +81,31 @@
     - SurgeryTech
 
 - type: technology
-  id: HandheldCrewMonitorTech
+  id: DnaInjectorTech
+  name: research-technology-dna-injector
+  icon:
+    sprite: Objects/Specific/Medical/implanter.rsi
+    state: implanter0
+  discipline: Biochemical
+  tier: 2
+  cost: 9000
+  recipeUnlocks:
+    - DnaInjector
+  technologyPrerequisites:
+    - SurgeryTechAdvanced
+    - ImplantExtractor
+
+- type: technology
+  id: HandheldEmergencyCrewMonitorTech
   name: research-technology-hanheld-crew-monitor
   icon:
-    sprite: Objects/Specific/Medical/handheldcrewmonitor.rsi
+    sprite: _Sunrise/Objects/Specific/Medical/handheld_emergency_crewmonitor.rsi
     state: scanner
   discipline: Biochemical
   tier: 2
   cost: 9000
   recipeUnlocks:
-    - HandheldCrewMonitor
+    - HandheldEmergencyCrewMonitor
   technologyPrerequisites:
     - SurgeryTech
 
@@ -97,6 +127,26 @@
     - CyberLimbsTech
   radioChannels:
   - Security
+  - Medical
+
+- type: technology
+  id: BiochemicalImplantsTech
+  name: research-technology-biochemical-implants
+  icon:
+    sprite: _Sunrise/Entities/Objects/Implants/implants.rsi
+    state: inject_implant_blue
+  discipline: Biochemical
+  tier: 2
+  cost: 9000
+  recipeUnlocks:
+    - SadTromboneImplant
+    - BikeHornImplant
+    - LightImplant
+    - TrackingImplant
+    - CreepyLaughImplant # EMAG
+  technologyPrerequisites:
+    - CyberImplantsTech
+  radioChannels:
   - Medical
 
 # Sunrise, moved from civilian to medical. Ave Starlight!
@@ -134,10 +184,118 @@
   radioChannels:
   - Medical
 
+- type: technology
+  id: FunctionalCyberLimbsTech
+  name: research-technology-functional-cyberlimbs
+  icon:
+    sprite: _Starlight/Interface/Actions/actions_cyber.rsi
+    state: cyber-hand-left
+  discipline: Biochemical
+  tier: 2
+  cost: 14000
+  recipeUnlocks:
+    - ImplantCaseReaper
+    - ImplantCaseMechwright
+    - ImplantCaseRobust
+  technologyPrerequisites:
+    - CyberLimbsTech
+  radioChannels:
+  - Medical
+  - Engineering
+  - Service
+
+- type: technology
+  id: AtmosCyberLimbsTech
+  name: research-technology-atmos-cyberlimbs
+  icon:
+    sprite: _Starlight/Interface/Actions/actions_cyber.rsi
+    state: cyber-hand-left
+  discipline: Biochemical
+  tier: 2
+  cost: 6500
+  recipeUnlocks:
+    - ImplantCaseAtmos
+  technologyPrerequisites:
+    - FunctionalCyberLimbsTech
+    - AtmosphericTech
+  radioChannels:
+  - Medical
+  - Engineering
+
+- type: technology
+  id: JanitorialCyberLimbsTech
+  name: research-technology-jani-cyberlimbs
+  icon:
+    sprite: _Sunrise/Objects/Tools/cyber_advmop.rsi
+    state: advmop
+  discipline: Biochemical
+  tier: 2
+  cost: 1984
+  recipeUnlocks:
+    - ImplantCaseJani
+  technologyPrerequisites:
+    - FunctionalCyberLimbsTech
+    - AdvancedCleaning
+  radioChannels:
+  - Medical
+  - Service
+
+- type: technology
+  id: CompactDefibrillation
+  name: research-technology-compact-defibrilation
+  icon:
+    sprite: Objects/Specific/Medical/defibsmall.rsi
+    state: icon
+  discipline: Biochemical
+  tier: 2
+  cost: 8000
+  recipeUnlocks:
+    - DefibrillatorCompact
+  technologyPrerequisites:
+    - SurgeryTech
+  radioChannels:
+  - Medical
+
+- type: technology
+  id: AdvancedCompactDefibrillation
+  name: research-technology-advanced-compact-defibrilation
+  icon:
+    sprite: _Sunrise/Entities/Objects/Specific/Medical/advanced_defibsmall.rsi
+    state: icon
+  discipline: Biochemical
+  tier: 2
+  cost: 15000
+  recipeUnlocks:
+    - AdvancedDefibrillatorCompact
+  technologyPrerequisites:
+    - CompactDefibrillation
+  radioChannels:
+  - Medical
+
 # Tier 3
 - type: technology
-  id: ImplantExtractor
-  name: research-technology-implant-extractor
+  id: HackCyberLimbsTech
+  name: research-technology-hack-cyberlimbs
+  icon:
+    sprite: _Starlight/Interface/Actions/actions_cyber.rsi
+    state: cyber-hand-left
+  discipline: Biochemical
+  tier: 3
+  cost: 404 # ERROR #ERR*?*%!
+  recipeUnlocks:
+    - ImplantCaseHack
+  technologyPrerequisites:
+    - FunctionalCyberLimbsTech
+    - AdvancedToolsTechnology
+    - BasicXenoArcheology
+  radioChannels:
+  - Medical
+  - Engineering
+  - Service
+
+- type: technology
+  id: ImplantExtractorSafety
+  name: research-technology-implant-extractor-safety
   icon:
     sprite: _Sunrise/Structures/Machines/interrogator.rsi
     state: open
@@ -145,7 +303,9 @@
   tier: 3
   cost: 12000
   recipeUnlocks:
-  - ImplantExtractorMachineCircuitboard
+  - InterrogatorMachineCircuitboard
+  technologyPrerequisites:
+    - ImplantExtractor
 
 - type: technology
   id: AutoMenders
@@ -159,27 +319,9 @@
   recipeUnlocks:
   - AutoMenderBrute
   - AutoMenderBurn
-  technologyPrerequisites:
-  - MedicalHyposprays
+  # technologyPrerequisites: # Sunrise-todo Привязать JetInjectors
+  # - MedicalHyposprays
   radioChannels:
-  - Medical
-
-- type: technology
-  id: FunctionalCyberLimbsTech
-  name: research-technology-functional-cyberlimbs
-  icon:
-    sprite: _Starlight/Interface/Actions/actions_cyber.rsi
-    state: cyber-hand-left
-  discipline: Biochemical
-  tier: 3
-  cost: 9220
-  recipeUnlocks:
-    - ImplantCaseReaper
-    - ImplantCaseMechwright
-  technologyPrerequisites:
-    - CyberLimbsTech
-  radioChannels:
-  - Security
   - Medical
 
 - type: technology
@@ -192,8 +334,7 @@
   tier: 3
   cost: 3500
   recipeUnlocks:
-    - ImplantCaseGorillaL
-    - ImplantCaseGorillaR
+    - ImplantCaseGorilla
   technologyPrerequisites:
     - FunctionalCyberLimbsTech
     - AnomalyCoreHarnessing
@@ -275,6 +416,27 @@
   - Security
   - Medical
 
+- type: technology
+  id: AdvancedImplantsTech
+  name: research-technology-advanced-implants
+  icon:
+    sprite: _Sunrise/Entities/Objects/Implants/implants.rsi
+    state: reviver_implant
+  discipline: Biochemical
+  tier: 3
+  cost: 12000
+  recipeUnlocks:
+    - ReviverImplant
+    - NutrimentImplant
+    - ProtoAdrenalImplant # EMAG
+    - ScramImplantProto # EMAG
+  technologyPrerequisites:
+    - BiochemicalImplantsTech
+    - SurgeryTechAdvanced
+  radioChannels:
+  - Medical
+  - Security
+
 # Sunrise, moved from civilian to medical
 - type: technology
   id: BluespaceChemistry
@@ -288,6 +450,7 @@
   recipeUnlocks:
   - BluespaceBeaker
   - SyringeBluespace
+  - BluespacePillPatchCanister # Sunrise-Add
   radioChannels:
   - Medical
 
@@ -304,5 +467,21 @@
   recipeUnlocks:
   - LauncherSyringe
   - MiniSyringe
+  radioChannels:
+  - Medical
+
+- type: technology
+  id: CloningSystems
+  name: research-technology-cloning
+  icon:
+    sprite: Structures/Machines/cloning.rsi
+    state: pod_0
+  discipline: Biochemical
+  tier: 3
+  cost: 25000
+  recipeUnlocks:
+  - CloningConsoleComputerCircuitboard
+  - CloningPodMachineCircuitboard
+  - MedicalScannerMachineCircuitboard
   radioChannels:
   - Medical

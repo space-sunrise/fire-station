@@ -1,4 +1,4 @@
-﻿using Content.Shared.Damage;
+﻿using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Whitelist;
@@ -16,6 +16,7 @@ public sealed class ScpDamageOnCollideSystem : EntitySystem
 
     private EntityQuery<PhysicsComponent> _physicsQuery;
     private EntityQuery<MobStateComponent> _mobStateQuery;
+    private EntityQuery<ScpDamageOnCollideComponent> _damageCollideQuery;
 
     public override void Initialize()
     {
@@ -25,23 +26,45 @@ public sealed class ScpDamageOnCollideSystem : EntitySystem
 
         _physicsQuery = GetEntityQuery<PhysicsComponent>();
         _mobStateQuery = GetEntityQuery<MobStateComponent>();
+        _damageCollideQuery = GetEntityQuery<ScpDamageOnCollideComponent>();
     }
 
     private void OnCollide(Entity<ScpDamageOnCollideComponent> ent, ref StartCollideEvent args)
     {
+        TryApplyDamage(ent!, args.OtherEntity);
+    }
+
+    /// <summary>
+    /// Пытается нанести урон цели, используя параметры компонента <see cref="ScpDamageOnCollideComponent"/>.
+    /// Перебирает все наборы параметров и применяет первый подходящий (по вайтлисту, блеклисту,
+    /// состоянию моба и проверке скорости). При успехе наносит урон и проигрывает звуки.
+    /// </summary>
+    /// <param name="ent">Сущность с компонентом ScpDamageOnCollide (источник урона)</param>
+    /// <param name="target">Цель, которой наносится урон</param>
+    /// <param name="requireVelocity">
+    /// Если true — проверяет наличие скорости для параметров с RequiresVelocity.
+    /// Передавайте false при вызове из способностей (например, прыжок SCP-173), где скорость не нужна.
+    /// </param>
+    /// <returns>true, если урон был нанесён; false, если ни один набор параметров не подошёл</returns>
+    public bool TryApplyDamage(Entity<ScpDamageOnCollideComponent?> ent, EntityUid target, bool requireVelocity = true)
+    {
+        if (!_damageCollideQuery.Resolve(ent, ref ent.Comp))
+            return false;
+
         foreach (var param in ent.Comp.Params)
         {
-            if (!CheckParameter(ent, args.OtherEntity, param))
+            if (!CheckParameter(ent, target, param, requireVelocity))
                 continue;
 
-            _damageable.TryChangeDamage(args.OtherEntity, param.Damage, useVariance: param.UseVariance);
+            _damageable.TryChangeDamage(target, param.Damage, ignoreVariance: !param.UseVariance);
 
-            _audio.PlayPredicted(param.TargetSound, args.OtherEntity, ent);
+            _audio.PlayPredicted(param.TargetSound, target, ent);
             _audio.PlayPredicted(param.EntitySound, ent, ent);
 
-            // Выходим, как только нанесли урон.
-            return;
+            return true;
         }
+
+        return false;
     }
 
     /// <summary>
@@ -50,18 +73,14 @@ public sealed class ScpDamageOnCollideSystem : EntitySystem
     /// <param name="collider">Сущность, которая совершает столкновение</param>
     /// <param name="target">Сущность для проверки</param>
     /// <param name="param">Параметры, указанные в компоненте</param>
+    /// <param name="requireVelocity">Нужна ли проверка скорости</param>
     /// <returns>Подходит или нет</returns>
-    private bool CheckParameter(EntityUid collider, EntityUid target, DamageOnCollideParameters param)
+    private bool CheckParameter(EntityUid collider, EntityUid target, DamageOnCollideParameters param, bool requireVelocity = true)
     {
-        // Если вайтлист не проходит - сущность не подходит
-        if (!_whitelist.IsWhitelistPassOrNull(param.Whitelist, target))
+        if (!_whitelist.CheckBoth(target, param.Blacklist, param.Whitelist))
             return false;
 
-        // Если блеклист проходит - то сущность не подходит. Это же блеклист
-        if (!_whitelist.IsWhitelistFailOrNull(param.Blacklist, target))
-            return false;
-
-        if (param.RequiresVelocity && !CheckVelocity(collider))
+        if (requireVelocity && param.RequiresVelocity && !CheckVelocity(collider))
             return false;
 
         if (param.RequiredMobStates != null && !CheckMobState(target, param.RequiredMobStates))

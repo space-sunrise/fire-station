@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Linq;
 using Content.Server.Chat.Systems;
+using Content.Shared.Chat;
 
 namespace Content.Server._Sunrise.TTS;
 

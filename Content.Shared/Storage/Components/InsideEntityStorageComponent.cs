@@ -3,11 +3,14 @@
 namespace Content.Shared.Storage.Components;
 
 /// <summary>
-///     Added to entities contained within entity storage, for directed event purposes.
+/// Added to entities contained within entity storage, for directed event purposes.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState] // Fire edit
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class InsideEntityStorageComponent : Component
 {
-    [AutoNetworkedField] // Fire added
+    /// <summary>
+    /// The entity storage this entity is inside.
+    /// </summary>
+    [DataField, AutoNetworkedField]
     public EntityUid Storage;
 }

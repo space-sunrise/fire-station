@@ -4,6 +4,7 @@ using Content.Shared._Scp.Scp939;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Sunrise.TTS;
 using Content.Shared.Bed.Sleep;
+using Content.Shared.Chat;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs.Components;

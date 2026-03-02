@@ -6,9 +6,6 @@
   components:
   - type: Sprite
     sprite: _Scp/Structures/Doors/Shutters/blastdoor.rsi
-    layers:
-    - state: closed
-      map: ["enum.DoorVisualLayers.Base"]
 
 - type: entity
   id: ScpBlastDoorOpen

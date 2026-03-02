@@ -9,6 +9,10 @@
   displayWeight: 10  # Sunrise
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  special:
+    - !type:AddComponentSpecial
+      components:
+      - type: PsychologistBlockAlcohol
   access:
   - Medical
   - Maintenance

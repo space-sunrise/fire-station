@@ -28,3 +28,5 @@ ent-EncryptionKeyFoodAndSanitationService = { ent-EncryptionKey }
     .desc = { ent-EncryptionKey.desc }
 ent-EncryptionKeyChaos = { ent-EncryptionKey }
     .desc = { ent-EncryptionKey.desc }
+ent-EncryptionKeyGRU = { ent-EncryptionKey }
+    .desc = { ent-EncryptionKey.desc }

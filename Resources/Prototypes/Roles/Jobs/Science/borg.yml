@@ -9,6 +9,7 @@
   - !type:DepartmentTimeRequirement
     department: Administration # Fire edit
     time: 36000 # 10 hours FireStation Edit
+  weight: 10
   canBeAntag: false
   icon: JobIconStationAi
   overrideConsoleVisibility: false # Sunrise added
@@ -25,7 +26,7 @@
   playTimeTracker: JobBorg
   requirements:
     - !type:OverallPlaytimeRequirement
-      time: 72000 #20 hrs # Sunrise-Edit
+      time: 10h
   canBeAntag: false
   displayWeight: -10  # Sunrise
   icon: JobIconBorg

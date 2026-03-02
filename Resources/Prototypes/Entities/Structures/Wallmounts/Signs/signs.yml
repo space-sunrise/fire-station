@@ -37,6 +37,7 @@
 - type: entity
   parent: BaseSignDirectional
   id: SignDirectionalBridge
+  categories: [ HideSpawnMenu ] # Fire edit
   name: bridge sign
   description: A direction sign, pointing out which way the Bridge is.
   components:
@@ -104,7 +105,15 @@
   description: A direction sign, pointing out which way evac is.
   components:
   - type: Sprite
-    state: direction_evac
+    layers:
+    - state: direction_evac
+    - state: direction_evac_glow
+      shader: unshaded
+    - state: direction_evac_glow
+      shader: shaded
+      #This is a neat trick I found to sort of "hack" an emissive map into ss14. Basically, the direction_evac_glow texture has an alpha channel.
+      #Alpha doesn't work for unshaded, but for *shaded* it does, and by putting a shaded texture infront of the unshaded, we can dim the unshaded texture, effectively allowing brightness control.
+      #I am re-using this from my high-vis vest PR, where I go further into detail, https://github.com/space-wizards/space-station-14/pull/37869
 
 - type: entity
   parent: BaseSignDirectional
@@ -136,6 +145,7 @@
 - type: entity
   parent: BaseSignDirectional
   id: SignDirectionalHop
+  categories: [ HideSpawnMenu ] # Fire edit
   name: hop sign
   description: A direction sign, pointing out which way Head of Personnel's office is.
   components:
@@ -199,6 +209,7 @@
 - type: entity
   parent: BaseSignDirectional
   id: SignDirectionalSci
+  categories: [ HideSpawnMenu ] # Fire edit
   name: science sign
   description: A direction sign, pointing out which way the Science department is.
   components:
@@ -226,6 +237,7 @@
 - type: entity
   parent: BaseSignDirectional
   id: SignDirectionalSupply
+  categories: [ HideSpawnMenu ] # Fire edit
   name: supply sign
   description: A direction sign, pointing to some supplies.
   components:
@@ -255,6 +267,7 @@
 - type: entity
   parent: BaseSign
   id: SignAi
+  categories: [ HideSpawnMenu ] # Fire edit
   name: ai sign
   description: A sign, indicating an AI is present.
   components:
@@ -287,6 +300,15 @@
   components:
   - type: Sprite
     state: armory
+
+- type: entity
+  parent: BaseSign
+  id: SignArrivals
+  name: arrivals sign
+  description: A sign indicating where the Arrivals shuttle will dock.
+  components:
+  - type: Sprite
+    state: arrivals
 
 - type: entity
   parent: BaseSign
@@ -398,6 +420,7 @@
 - type: entity
   parent: BaseSign
   id: SignBridge
+  categories: [ HideSpawnMenu ] # Fire edit
   name: bridge sign
   description: A sign indicating the bridge.
   components:
@@ -588,6 +611,7 @@
 - type: entity
   parent: BaseSign
   id: SignHead
+  categories: [ HideSpawnMenu ] # Fire edit
   name: head sign
   description: An official sign indicating the dwellings of a Nanotrasen-certified head of department.
   components:

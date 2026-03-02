@@ -1,0 +1,79 @@
+﻿- type: entity
+  parent: TableFrame
+  id: ScpTableFrame
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/frame.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/frame.rsi
+  - type: Construction
+    graph: ScpTable
+
+- type: entity
+  parent: Table
+  id: ScpTable
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/generic.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/generic.rsi
+  - type: Construction
+    graph: ScpTable
+
+- type: entity
+  parent: TableReinforced
+  id: ScpTableReinforced
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/reinforced.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/reinforced.rsi
+  - type: Construction
+    graph: ScpTable
+
+- type: entity
+  parent: TableGlass
+  id: ScpTableGlass
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/glass.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/glass.rsi
+  - type: Construction
+    graph: ScpTable
+
+- type: entity
+  parent: TableReinforcedGlass
+  id: ScpTableReinforcedGlass
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/r_glass.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/r_glass.rsi
+  - type: Construction
+    graph: ScpTable
+
+- type: entity
+  parent: TablePlasmaGlass
+  id: ScpTablePlasmaGlass
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/plasma.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/plasma.rsi
+  - type: Construction
+    graph: ScpTable
+
+# TODO: Респрайт всех деревянных предметов.
+# До этого момента этот стол является опциональным и необязательным в использовании,
+# так как на фоне других деревянных предметов его отличающийся спрайт выглядит совершенно странно
+- type: entity
+  parent: TableWood
+  id: ScpTableWood
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/wood.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/wood.rsi
+  - type: Construction
+    graph: ScpTable

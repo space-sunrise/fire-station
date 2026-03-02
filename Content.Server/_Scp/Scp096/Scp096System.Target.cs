@@ -2,7 +2,10 @@
 using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared.Audio;
+using Robust.Server.Audio;
 using Robust.Server.GameStates;
+using Robust.Server.Player;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Scp096;
@@ -11,6 +14,8 @@ public sealed partial class Scp096System
 {
     [Dependency] private readonly PvsOverrideSystem _pvsOverride = default!;
     [Dependency] private readonly MetaDataSystem _meta = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
 
     private static readonly ProtoId<AmbientMusicPrototype> TargetAmbience = "Scp096Target";
 
@@ -28,7 +33,9 @@ public sealed partial class Scp096System
     {
         base.OnTargetStartup(ent, ref args);
 
-        _pvsOverride.AddGlobalOverride(ent);
+        var filter = Filter.Empty().AddWhereAttachedEntity(Scp096Query.HasComp);
+        _pvsOverride.AddSessionOverrides(ent, filter);
+
         RaiseNetworkEvent(new NetworkAmbientMusicEvent(TargetAmbience), ent);
         _audio.PlayGlobal(ent.Comp.SeenSound, ent);
 
@@ -39,7 +46,15 @@ public sealed partial class Scp096System
     {
         base.OnTargetShutdown(ent, ref args);
 
-        _pvsOverride.RemoveGlobalOverride(ent);
+        var query = EntityQueryEnumerator<Scp096Component>();
+        while (query.MoveNext(out var uid, out _))
+        {
+            if (!_player.TryGetSessionByEntity(uid, out var session))
+                continue;
+
+            _pvsOverride.RemoveSessionOverride(ent, session);
+        }
+
         RaiseNetworkEvent(new NetworkAmbientMusicEventStop(), ent);
 
         _meta.RemoveFlag(ent, MetaDataFlags.ExtraTransformEvents);

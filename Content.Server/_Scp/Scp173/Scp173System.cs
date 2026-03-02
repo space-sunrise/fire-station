@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Numerics;
 using Content.Server.Doors.Systems;
 using Content.Server.Examine;
@@ -9,16 +10,18 @@ using Content.Server.Interaction;
 using Content.Server.Popups;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Other.DamageOnCollide;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp173;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Doors.Components;
 using Content.Shared.Examine;
+using Content.Shared.Explosion.EntitySystems;
 using Content.Shared.Light.Components;
 using Content.Shared.Lock;
-using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
 using Content.Shared.Storage.Components;
@@ -27,7 +30,6 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
 using Robust.Shared.Physics;
-using Robust.Shared.Physics.Components;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp173;
@@ -50,6 +52,7 @@ public sealed partial class Scp173System : SharedScp173System
     [Dependency] private readonly AudioSystem _audio= default!;
     [Dependency] private readonly ExplosionSystem _explosion = default!;
     [Dependency] private readonly ScpHelpers _helpers = default!;
+    [Dependency] private readonly ScpDamageOnCollideSystem _damageOnCollide = default!;
 
     private readonly SoundSpecifier _storageOpenSound = new SoundCollectionSpecifier("MetalBreak");
     private readonly SoundSpecifier _clogSound = new SoundPathSpecifier("/Audio/_Scp/Scp173/clog.ogg");
@@ -218,12 +221,17 @@ public sealed partial class Scp173System : SharedScp173System
         }
         if (total >= Scp173Component.ExtraMinTotalSolutionVolume)
         {
-            _explosion.QueueExplosion(_transform.GetMapCoordinates(ent), ExplosionSystem.DefaultExplosionPrototypeId, 300f, 0.6f, 50f, ent);
+            _explosion.QueueExplosion(_transform.GetMapCoordinates(ent), SharedExplosionSystem.DefaultExplosionPrototypeId, 300f, 0.6f, 50f, ent);
         }
 
         args.Handled = true;
     }
 
+    /// <summary>
+    /// Обработчик способности быстрого перемещения (прыжка) SCP-173.
+    /// Проверяет все условия, запрещающие прыжок, рассчитывает конечную позицию
+    /// и перемещает статую, убивая всех мобов на пути.
+    /// </summary>
     private void OnFastMovement(Entity<Scp173Component> ent, ref Scp173FastMovementAction args)
     {
         if (args.Handled)
@@ -253,175 +261,93 @@ public sealed partial class Scp173System : SharedScp173System
             return;
         }
 
-        var (isValidTarget, targetCoords) = ValidateAndCalculateTarget(args, ent.Comp);
-        if (!isValidTarget)
+        if (!TryCalculateTarget(args, ent.Comp, out var targetCoords))
             return;
 
-        var finalPosition = CalculateFinalPosition(ent, targetCoords);
-        if (finalPosition == null)
+        if (!TryCalculateFinalPosition(ent, targetCoords, out var finalPosition))
             return;
 
         _transform.SetCoordinates(args.Performer, finalPosition.Value.SnapToGrid());
 
-        _audio.PlayPvs(ent.Comp.TeleportationSound, ent, AudioParams.Default);
+        _audio.PlayPvs(ent.Comp.TeleportationSound, ent);
         args.Handled = true;
     }
 
-    private (bool isValid, MapCoordinates coords) ValidateAndCalculateTarget(Scp173FastMovementAction args, Scp173Component component)
+    /// <summary>
+    /// Ограничивает дальность прыжка до <see cref="Scp173Component.MaxJumpRange"/>.
+    /// </summary>
+    private bool TryCalculateTarget(Scp173FastMovementAction args, Scp173Component component, out MapCoordinates targetCoords)
     {
-        var targetCoords = _transform.ToMapCoordinates(args.Target);
+        targetCoords = _transform.ToMapCoordinates(args.Target);
         var performerCoords = _transform.GetMapCoordinates(args.Performer);
-        var performerPos = _transform.GetWorldPosition(args.Performer);
 
-        if (!_examine.InRangeUnOccluded(
-            targetCoords,
-            performerCoords,
-            ExamineSystemShared.MaxRaycastRange,
-            null))
-        {
-            return (false, default);
-        }
+        ClampTargetToRange(performerCoords, ref targetCoords, component.MaxJumpRange);
 
-        var direction = targetCoords.Position - performerPos;
-        var distance = direction.Length();
-
-        if (distance > component.MaxJumpRange)
-        {
-            direction = Vector2.Normalize(direction) * component.MaxJumpRange;
-            targetCoords = performerCoords.Offset(direction);
-        }
-
-        return (true, targetCoords);
+        return true;
     }
 
-    private EntityCoordinates? CalculateFinalPosition(Entity<Scp173Component> scpEntitiy, MapCoordinates targetCoords)
+    /// <summary>
+    /// Рассчитывает конечную позицию SCP-173 после прыжка.
+    /// Выполняет рейкаст от текущей позиции до цели. Все мобы на пути — убиваются.
+    /// При столкновении с непроходимым препятствием (стена, стол) — SCP-173 останавливается
+    /// на позиции последнего убитого моба, либо остаётся на месте, если убийств не было.
+    /// Если путь свободен от препятствий — возвращает позицию цели.
+    /// </summary>
+    private bool TryCalculateFinalPosition(Entity<Scp173Component> scp, MapCoordinates targetCoords, [NotNullWhen(true)] out EntityCoordinates? finalPosition)
     {
-        var performerPos = _transform.GetWorldPosition(scpEntitiy);
+        finalPosition = null;
+        var performerPos = _transform.GetWorldPosition(scp);
         var direction = targetCoords.Position - performerPos;
         var normalizedDirection = Vector2.Normalize(direction);
 
         var ray = new CollisionRay(
             performerPos,
             normalizedDirection,
-            collisionMask: (int)CollisionGroup.AllMask
+            collisionMask: (int) CollisionGroup.AllMask
         );
 
         var rayCastResults = _physics.IntersectRay(
                 targetCoords.MapId,
                 ray,
                 direction.Length(),
-                scpEntitiy,
+                scp,
                 false
             )
             .OrderBy(x => x.Distance)
             .ToList();
 
-        var previousHitPos = performerPos;
+        // Последняя безопасная позиция, на которой SCP-173 может оказаться.
+        // Изначально — текущая позиция статуи.
+        var lastSafePos = performerPos;
+
         foreach (var result in rayCastResults)
         {
-            if (CanBreakNeck(result.HitEntity))
+            // Если удалось нанести урон (это моб) — запоминаем позицию как безопасную
+            if (_damageOnCollide.TryApplyDamage(scp.Owner, result.HitEntity, requireVelocity: false))
             {
-                BreakNeck(result.HitEntity, scpEntitiy);
-                previousHitPos = result.HitPos;
-
-                var worldPos = _transform.GetWorldPosition(scpEntitiy);
-                _transform.SetWorldPosition(scpEntitiy, worldPos);
-
+                lastSafePos = result.HitPos;
                 continue;
             }
 
+            // Непроходимое препятствие — останавливаемся на последней безопасной позиции
             if (IsImpassableObstacle(result.HitEntity))
             {
-                var potentialPosition = result.HitPos;
-                if (HasEnoughSpace(potentialPosition, scpEntitiy, targetCoords.MapId))
+                // Если мы сдвинулись - считаем действие успешным и возвращаем последний чекпоинт.
+                if (lastSafePos != performerPos)
                 {
-                    return _transform.ToCoordinates(new MapCoordinates(potentialPosition, targetCoords.MapId));
+                    finalPosition = _transform.ToCoordinates(new MapCoordinates(lastSafePos, targetCoords.MapId));
+                    return true;
                 }
-
-                var safePosition = FindSafePosition(previousHitPos, result.HitPos, scpEntitiy, targetCoords.MapId);
-                if (safePosition != null)
+                else
                 {
-                    return null;
+                    return false;
                 }
-
-                return _transform.ToCoordinates(new MapCoordinates(performerPos, targetCoords.MapId));
             }
-
-            previousHitPos = result.HitPos;
         }
 
-        if (HasEnoughSpace(targetCoords.Position, scpEntitiy, targetCoords.MapId))
-        {
-            return _transform.ToCoordinates(targetCoords);
-        }
-
-        var safePositionMaybe = FindSafePosition(performerPos, targetCoords.Position, scpEntitiy, targetCoords.MapId);
-
-        if (safePositionMaybe.HasValue)
-        {
-            return _transform.ToCoordinates(new MapCoordinates(safePositionMaybe.Value, targetCoords.MapId));
-        }
-
-        return null;
-    }
-
-    private bool HasEnoughSpace(Vector2 position, EntityUid entityUid, MapId mapId)
-    {
-        var fixtureComponent = Comp<FixturesComponent>(entityUid);
-        var fixture = fixtureComponent.Fixtures.Values.First();
-
-        var transform = new Transform(position, 0);
-        var halfSize = fixture.Shape.ComputeAABB(transform, 0).Extents;
-        var testBox = new Box2(position - halfSize, position + halfSize);
-
-        var query = _physics.GetCollidingEntities(mapId, testBox);
-
-        foreach (var collidingEntity in query)
-        {
-            if (IsImpassableObstacle(collidingEntity.Owner))
-                return false;
-        }
-
+        // Путь полностью свободен — летим до точки назначения
+        finalPosition = _transform.ToCoordinates(targetCoords);
         return true;
     }
 
-    private Vector2? FindSafePosition(Vector2 start, Vector2 end, EntityUid entityUid, MapId mapId)
-    {
-        const int maxAttempts = 10;
-        const float stepBack = 0.25f;
-
-        var direction = end - start;
-        var normalizedDirection = Vector2.Normalize(direction);
-
-        for (var i = 1; i <= maxAttempts; i++)
-        {
-            var testPosition = end - (normalizedDirection * (stepBack * i));
-            if (HasEnoughSpace(testPosition, entityUid, mapId))
-            {
-                return testPosition;
-            }
-        }
-
-        return null;
-    }
-
-    private bool CanBreakNeck(EntityUid entity)
-    {
-        return HasComp<MobStateComponent>(entity);
-    }
-
-    private bool IsImpassableObstacle(EntityUid entity)
-    {
-        if (!TryComp<PhysicsComponent>(entity, out var collidedEntityPhysics))
-            return false;
-
-        if (!collidedEntityPhysics.Hard)
-        {
-            return false;
-        }
-
-        var layer = (CollisionGroup)collidedEntityPhysics.CollisionLayer;
-
-        return layer.HasFlag(CollisionGroup.WallLayer) || layer.HasFlag(CollisionGroup.TableLayer);
-    }
 }

@@ -1,5 +1,5 @@
 - type: entity
-  parent: ScpAirlockRCDResistant
+  parent: AirlockRCDResistant
   id: ScpAirlockExit
   suffix: SCP, Exit
   components:

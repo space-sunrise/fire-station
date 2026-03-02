@@ -63,7 +63,14 @@
 
 - type: jobIcon
   parent: JobIcon
-  id: JobIconPrisonGuard
+  id: JobIconPrisonScientist
+  icon:
+    sprite: /Textures/_Sunrise/Interface/Misc/job_icons.rsi
+    state: PrisonScientist
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconPrisonTrainee
   icon:
     sprite: /Textures/_Sunrise/Interface/Misc/job_icons.rsi
     state: PrisonGuard
@@ -81,6 +88,13 @@
   icon:
     sprite: /Textures/_Sunrise/Interface/Misc/job_icons.rsi
     state: PrisonWorker
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconPrisonInspector
+  icon:
+    sprite: /Textures/_Sunrise/Interface/Misc/job_icons.rsi
+    state: PrisonInspector
 
 - type: jobIcon
   parent: JobIcon
@@ -212,3 +226,10 @@
   icon:
     sprite: /Textures/_Sunrise/Interface/Misc/job_icons.rsi
     state: MailCarrier
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobIconMiner
+  icon:
+    sprite: /Textures/_Sunrise/Interface/Misc/job_icons.rsi
+    state: Miner

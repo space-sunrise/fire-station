@@ -11,11 +11,12 @@
       appearanceDataInit:
         enum.PdaVisuals.PdaType:
           !type:String
-          pda-lawyer
+          pda-iaa
     - type: PdaBorderColor
-      borderColor: "#6f6192"
+      borderColor: "#665c99"
+      accentVColor: "#3d3d40"
     - type: Icon
-      state: pda-lawyer
+      state: pda-iaa
 
 - type: entity
   parent: CaptainPDA
@@ -35,11 +36,13 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-captain
+        pda-magistrat
   - type: PdaBorderColor
-    borderColor: "#7C5D00"
+    borderColor: "#3d3d40"
+    accentVColor: "#e6bd45"
+    accentHColor: "#2e4259"
   - type: Icon
-    state: pda-captain
+    state: pda-magistrat
 
 - type: entity
   parent: BasePDA
@@ -56,6 +59,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-blueshield
+  - type: PdaBorderColor
+    borderColor: "#546c8c"
+    accentHColor: "#3d3d40"
+    accentVColor: "#3d3d40"
   - type: Icon
     sprite: _Sunrise/Objects/Devices/pda.rsi
     state: pda-blueshield
@@ -74,7 +81,11 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-blueshield
+        pda-blueshield-ensign
+  - type: PdaBorderColor
+    borderColor: "#546c8c"
+    accentHColor: "#3d3d40"
+    accentVColor: "#3d3d40"
   - type: Icon
     sprite: _Sunrise/Objects/Devices/pda.rsi
     state: pda-blueshield
@@ -94,6 +105,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-blueshield
+  - type: PdaBorderColor
+    borderColor: "#546c8c"
+    accentHColor: "#3d3d40"
+    accentVColor: "#3d3d40"
   - type: Icon
     sprite: _Sunrise/Objects/Devices/pda.rsi
     state: pda-blueshield
@@ -114,134 +129,25 @@
         !type:String
         pda-patologoanatom
   - type: PdaBorderColor
-    borderColor: "#717059"
-    accentVColor: "#447987"
+    borderColor: "#a3b2cc"
+    accentHColor: "#3d3d40"
+    accentVColor: "#2f6e67"
   - type: Icon
     sprite: _Sunrise/Objects/Devices/pda.rsi
     state: pda-patologoanatom
 
 - type: entity
   parent: BasePDA
-  id: PlanetPrisonerPDA
-  name: prisoner's PDA
-  description: In the colour of the robe for a complete set.
-  categories: [ HideSpawnMenu ] # Fire added
-  components:
-  - type: Sprite
-    sprite: _Sunrise/Objects/Devices/pda.rsi
-  - type: Pda
-    id: PlanetPrisonerIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-space-prison-prisoner
-  - type: Icon
-    sprite: _Sunrise/Objects/Devices/pda.rsi
-    state: pda-space-prison-prisoner
-
-- type: entity
-  parent: BasePDA
   id: FugitivePrisonerPDA
   name: prisoner's PDA
-  description: In the colour of the robe for a complete set.
+  description: A dim screen and a stuck button, the appearance reveals a past that left its mark.
   categories: [ HideSpawnMenu ] # Fire added
   components:
-  - type: Sprite
-    sprite: _Sunrise/Objects/Devices/pda.rsi
   - type: Pda
     id: PlanetPrisonerIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-space-prison-prisoner
-  - type: Icon
-    sprite: _Sunrise/Objects/Devices/pda.rsi
-    state: pda-space-prison-prisoner
 
 - type: entity
-  parent: BasePDA
-  id: GuardPDA
-  name: prison guard's PDA
-  description: Bent and scuffed, but every scratch is evidence of a continuous struggle for safety.
-  categories: [ HideSpawnMenu ] # Fire added
-  components:
-  - type: Sprite
-    sprite: _Sunrise/Objects/Devices/pda.rsi
-  - type: Pda
-    id: GuardIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-space-prison-guardian
-  - type: Icon
-    sprite: _Sunrise/Objects/Devices/pda.rsi
-    state: pda-space-prison-guardian
-
-- type: entity
-  parent: BasePDA
-  id: PrisonEngineerPDA
-  name: prison engineer's PDA
-  categories: [ HideSpawnMenu ] # Fire added
-  components:
-  - type: Pda
-    id: PrisonEngineeringIDCard
-  - type: PdaBorderColor
-    borderColor: "#949137"
-    accentVColor: "#A32D26"
-  - type: Icon
-    state: pda-engineer
-
-- type: entity
-  parent: BasePDA
-  id: PrisonPilotPDA
-  name: prison pilot's PDA
-  description: Shiny and technologically advanced, as if it had just been pulled out of the cockpit.
-  categories: [ HideSpawnMenu ] # Fire added
-  components:
-  - type: Sprite
-    sprite: _Sunrise/Objects/Devices/pda.rsi
-  - type: Pda
-    id: PrisonPilotIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-space-prison-pilot
-  - type: PdaBorderColor
-    borderColor: "#A32D26"
-    accentVColor: "#DFDFDF"
-  - type: Icon
-    sprite: _Sunrise/Objects/Devices/pda.rsi
-    state: pda-space-prison-pilot
-
-- type: entity
-  parent: BasePDA
-  id: HeadOfPrisonPDA
-  name: Prison governor's PDA
-  description: Has the look of a prestigious instrument of power, but a little scratched from constant emergency calls.
-  categories: [ HideSpawnMenu ] # Fire added
-  components:
-  - type: Sprite
-    sprite: _Sunrise/Objects/Devices/pda.rsi
-  - type: Pda
-    id: HeadOfPrisonIDCard
-  - type: Appearance
-    appearanceDataInit:
-      enum.PdaVisuals.PdaType:
-        !type:String
-        pda-space-prison-boss
-  - type: PdaBorderColor
-    borderColor: "#A32D26"
-    accentHColor: "#447987"
-  - type: Icon
-    sprite: _Sunrise/Objects/Devices/pda.rsi
-    state: pda-space-prison-boss
-
-- type: entity
-  parent: BasePDA
+  parent: BaseMedicalPDA
   id: RoboticistPDA
   name: roboticist's PDA
   description: It's covered in something sticky.
@@ -255,16 +161,11 @@
         !type:String
         pda-roboticist
   - type: PdaBorderColor
-    borderColor: "#d7d7d0"
-    accentVColor: "#8900c9"
+    borderColor: "#a3b2cc"
+    accentVColor: "#7a2699"
+    accentHColor: "#d95e00"
   - type: Icon
     state: pda-roboticist
-  - type: HealthAnalyzer
-    scanningEndSound:
-      path: "/Audio/Items/Medical/healthscanner.ogg"
-    damageContainers:
-    - Synth
-    - Silicon
 
 - type: entity
   parent: BaseSecurityPDA
@@ -278,12 +179,24 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-seniorofficer
+        pda-securitypilot
   - type: PdaBorderColor
-    borderColor: "#A32D26"
-    accentVColor: "#DFDFDF"
+    borderColor: "#637199"
+    accentVColor: "#cc3d3d"
+    accentHColor: "#3d3d40"
   - type: Icon
-    state: pda-seniorofficer
+    state: pda-securitypilot
+  - type: CartridgeLoader
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - WantedListCartridge
+      - AstroNavCartridge
+      - NavigatorCartridge
+      - MessengerCartridge
+      - PhotoCartridge
 
 - type: entity
   parent: CaptainPDA
@@ -303,11 +216,13 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-captain
+        pda-representative
   - type: PdaBorderColor
-    borderColor: "#7C5D00"
+    borderColor: "#3d3d40"
+    accentVColor: "#e6bd45"
+    accentHColor: "#e6bd45"
   - type: Icon
-    state: pda-captain
+    state: pda-representative
 
 - type: entity
   parent: BasePDA
@@ -321,9 +236,12 @@
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
-        pda-bartender
+        pda-barber
+  - type: PdaBorderColor
+    borderColor: "#616266"
+    accentVColor: "#198019"
   - type: Icon
-    state: pda-bartender
+    state: pda-barber
 
 - type: entity
   parent: BasePDA
@@ -342,8 +260,8 @@
         !type:String
         pda-adj
   - type: PdaBorderColor
-    borderColor: "#1b2426"
-    accentVColor: "#62584a"
+    borderColor: "#2e4259"
+    accentVColor: "#a3b2cc"
   - type: Icon
     sprite: _Sunrise/Objects/Devices/pda.rsi
     state: pda-adj
@@ -364,6 +282,8 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-ussp
+  - type: PdaBorderColor
+    borderColor: "#891417"
   - type: CartridgeLoader
     uiKey: enum.PdaUiKey.Key
     preinstalled:
@@ -453,6 +373,10 @@
       enum.PdaVisuals.PdaType:
         !type:String
         pda-isn-operator
+  - type: PdaBorderColor
+    borderColor: "#616266"
+    accentVColor: "#a3b2cc"
+    accentHColor: "#a3b2cc"
   - type: Icon
     sprite: _Sunrise/Objects/Devices/pda.rsi
     state: pda-isn-operator
@@ -466,6 +390,11 @@
   components:
   - type: Pda
     id: NtrLeadGuardIDCard
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-isn-leader
 
 - type: entity
   parent: BasePDA
@@ -480,12 +409,12 @@
     appearanceDataInit:
      enum.PdaVisuals.PdaType:
        !type:String
-       pda-cargo
+       pda-mailcarrier
   - type: PdaBorderColor
-    borderColor: "#e39751"
-    accentVColor: "#003cc9"
+    borderColor: "#996e2e"
+    accentVColor: "#a3b2cc"
   - type: Icon
-    state: pda-cargo
+    state: pda-mailcarrier
 
 - type: entity
   parent: BasePDA
@@ -504,8 +433,8 @@
         !type:String
         pda-mining
   - type: PdaBorderColor
-    borderColor: "#af9366"
-    accentVColor: "#3e3ac3"
+    borderColor: "#996e2e"
+    accentVColor: "#262699"
   - type: Icon
     sprite: _Sunrise/Objects/Devices/pda.rsi
     state: pda-mining
@@ -516,22 +445,78 @@
     - NotekeeperCartridge
     - NewsReaderCartridge
     - AstroNavCartridge
+    - NavigatorCartridge
+    - MessengerCartridge
+    - PhotoCartridge
 
 - type: entity
   parent: BasePDA
   id: CommaidPDA
   name: Command maid PDA
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Devices/pda.rsi
   - type: Pda
     id: CommaidIDCard
+    penSlot:
+      startingItem: CommaidPen
+      priority: -1
+      whitelist:
+        tags:
+        - Write
   - type: Appearance
     appearanceDataInit:
       enum.PdaVisuals.PdaType:
         !type:String
         pda-commaid
+  - type: PdaBorderColor
+    borderColor: "#b36bb3"
+    accentVColor: "#a3b2cc"
   - type: Icon
     sprite: _Sunrise/Objects/Devices/pda.rsi
     state: pda-commaid
 
+- type: entity
+  parent: PiratePDA
+  id: PiratePDAMusic
+  name: Shantyman PDA
+  description: Yargh! but now with shanties.
+  categories: [ HideSpawnMenu ] # Fire added
+  components:
+  - type: Sprite
+    sprite: _Sunrise/Objects/Devices/pda.rsi
+  - type: Pda
+    id: PirateIDCard
+  - type: Appearance
+    appearanceDataInit:
+     enum.PdaVisuals.PdaType:
+       !type:String
+       pda-pirate-music
+  - type: PdaBorderColor
+    borderColor: "#333333"
+  - type: Icon
+    sprite: _Sunrise/Objects/Devices/pda.rsi
+    state: pda-pirate-music
+  - type: Instrument
+    allowPercussion: false
+    handheld: true
+    bank: 1
+    program: 2
+
+- type: entity
+  parent: SeniorOfficerPDA
+  id: SecuritySergeantPDA
+  name: security sergeant PDA
+  description: Still functional. Unlike its owner, it does not shout at you.
+  categories: [ HideSpawnMenu ] # Fire added
+
+- type: entity
+  parent: PiratePDAMusic
+  id:  PiratePDAMusicPassengerId
+  name: Shantyman PDA
+  description: Yargh! but now with shanties.
+  categories: [ HideSpawnMenu ] # Fire added
+  components:
+  - type: Pda
+    id: PassengerIDCard

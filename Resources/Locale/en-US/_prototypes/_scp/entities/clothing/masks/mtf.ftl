@@ -7,3 +7,6 @@ ent-ClothingMaskMtfTacticalRed = tactical gas mask
 ent-ClothingMaskMtfTacticalWhite = tactical gas mask
     .desc = Tactical protective mask with dense filtration. The visor creates the impression of an empty, emotionless gaze.
     .suffix = MTF | White
+ent-ClothingMaskMtfMilitary = military gas mask
+    .desc = Tactical protective mask with dense filtration. This model is used in regular troops.
+    .suffix = MTF

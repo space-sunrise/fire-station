@@ -1,0 +1,57 @@
+- type: entity
+  parent: SecurityMetusPDA
+  id: PrisonEngineerPDA
+  abstract: true
+  name: prison engineer's PDA
+  description: Heavy and scorched at the edges, it has absorbed the heat of short circuits and welding seams of the prison block.
+  categories: [ HideSpawnMenu ] # Fire added
+  components:
+  - type: Pda
+    id: PrisonEngineerIDCard
+  - type: PdaBorderColor
+    borderColor: "#6b3000"
+    accentVColor: "#615f00"
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+      - CrewManifestCartridge
+      - NotekeeperCartridge
+      - NanoTaskCartridge
+      - NewsReaderCartridge
+      - AstroNavCartridge
+      - NetProbeCartridge
+      - NavigatorCartridge
+      - MessengerCartridge
+      - PhotoCartridge
+
+- type: entity
+  parent: PrisonEngineerPDA
+  id: PrisonEngineerPDAScreenZap
+  categories: [ HideSpawnMenu ] # Fire added
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-space-prison-engineer-screen-zap
+  - type: Icon
+    state: pda-space-prison-engineer-screen-zap
+  - type: PdaAnimationVisuals
+    animatedState: pda-space-prison-engineer-screen-zap
+    idInsertedLayerState: id_inserted-space-prison
+
+- type: entity
+  parent: PrisonEngineerPDA
+  id: PrisonEngineerPDAScreenPoint
+  categories: [ HideSpawnMenu ] # Fire added
+  components:
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-space-prison-engineer-screen-point
+  - type: Icon
+    state: pda-space-prison-engineer-screen-point
+  - type: PdaAnimationVisuals
+    animatedState: pda-space-prison-engineer-screen-point
+    idInsertedLayerState: id_inserted-space-prison

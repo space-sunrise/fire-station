@@ -18,7 +18,7 @@
         damage:
           types:
             Poison: 3
-      - !type:ChemVomit
+      - !type:Vomit
         probability: 0.3
       - !type:PopupMessage
         type: Local
@@ -29,15 +29,17 @@
         key: TemporaryBlindness
         component: TemporaryBlindness
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Scp173Reagent
           min: 10
-      - !type:MovespeedModifier
+      - !type:MovementSpeedModifier
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Scp173Reagent
           min: 20
         walkSpeedModifier: 0.8
         sprintSpeedModifier: 0.8
-      - !type:ModifyBleedAmount
+      - !type:ModifyBleed
         amount: 0.3
     Poison:
       effects:
@@ -45,13 +47,14 @@
         damage:
           types:
             Poison: 8
-      - !type:MovespeedModifier
+      - !type:MovementSpeedModifier
         conditions:
-        - !type:ReagentThreshold
+        - !type:ReagentCondition
+          reagent: Scp173Reagent
           min: 15
         walkSpeedModifier: 0.7
         sprintSpeedModifier: 0.7
-      - !type:ModifyBleedAmount
+      - !type:ModifyBleed
         amount: 0.5
   plantMetabolism:
   - !type:PlantAdjustToxins

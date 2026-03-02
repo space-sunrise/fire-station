@@ -1,0 +1,52 @@
+- type: entity
+  id: ScpLockerBaseComponents
+  abstract: true
+  components:
+  - type: Sprite
+    layers:
+    - state: generic
+      map: [ "enum.StorageVisualLayers.Base" ]
+    - state: generic_door
+      map: [ "enum.StorageVisualLayers.Door" ]
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+    - state: welded
+      visible: false
+      map: [ "enum.WeldableLayers.BaseWelded" ]
+    - state: paper
+      visible: false
+      sprite: Structures/Storage/closet_labels.rsi
+      offset: "-0.065,0"
+      map: [ "enum.PaperLabelVisuals.Layer" ]
+  - type: Lock
+  - type: LockVisuals
+  - type: AccessReader
+
+- type: entity
+  id: ScpLockerBase
+  parent: [ ScpLockerBaseComponents, ScpClosetSteelBase ]
+  abstract: true
+  components:
+  - type: Construction
+    graph: ClosetSteelSecure
+    node: done
+    containers:
+    - entity_storage
+  - type: Paintable
+    group: Locker # TODO: Разные группы
+
+- type: entity
+  id: ScpLockerPlasteel
+  parent: [ ScpLockerBaseComponents, ScpClosetPlasteel ]
+  name: sturdy locker
+  description: A reinforced plasteel locker designed for secure storage of equipment and sensitive materials.
+  components:
+  - type: Construction
+    graph: ClosetSteelSecure
+    node: done
+    containers:
+    - entity_storage
+  - type: Paintable
+    group: Locker
+

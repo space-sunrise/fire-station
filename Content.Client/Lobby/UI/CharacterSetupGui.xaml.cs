@@ -1,3 +1,4 @@
+using Content.Client._Scp.Stylesheets.Palette;
 using Content.Client.Info;
 using Content.Client.Info.PlaytimeStats;
 using Content.Client.Resources;
@@ -43,7 +44,7 @@ namespace Content.Client.Lobby.UI
             _back = new StyleBoxTexture
             {
                 Texture = panelTex,
-                Modulate = new Color(37, 37, 42)
+                Modulate = ScpPalettes.Primary.Background, // Fire edit
             };
             _back.SetPatchMargin(StyleBox.Margin.All, 10);
 
@@ -80,7 +81,7 @@ namespace Content.Client.Lobby.UI
 
         private void SetLobbyOpacity(float opacity)
         {
-            _back.Modulate = new Color(37, 37, 42).WithAlpha(opacity);
+            _back.Modulate = ScpPalettes.Primary.Background.WithAlpha(opacity); // Fire edit
         }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace Content.Client.Lobby.UI
         public void ReloadCharacterPickers()
         {
             _createNewCharacterButton.Orphan();
-            Characters.DisposeAllChildren();
+            Characters.RemoveAllChildren();
 
             var numberOfFullSlots = 0;
             var characterButtonsGroup = new ButtonGroup();

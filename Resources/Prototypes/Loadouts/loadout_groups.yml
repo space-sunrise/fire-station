@@ -18,18 +18,25 @@
   - CigPackBlack
   - CigarCase
   - CigarGold
-  - ClothingWraps # Sunrise
-  - ClothingWrapsHigh # Sunrise
-  - ClothingNeckNanoTrasenPin  # Sunrise
-  - ClothingNeckNakamuraPin  # Sunrise
-  - ClothingNeckLogistikaPin  # Sunrise
-  - ClothingNeckDeForestPin  # Sunrise
-  - ClothingNeckDonkPin  # Sunrise
-  - ClothingNeckVitezstviPin  # Sunrise
-  - ClothingNeckEarthPin  # Sunrise
-  - ClothingNeckUSSPPin  # Sunrise
-  - ClothingNeckReedIndustriesPin  # Sunrise
-  - CorporateLaw # Sunrise-edit
+  - BoxFolderBaseThreePapers
+  - BoxFolderPlasticClipboardThreePapers
+  - BoxFolderClipboardThreePapers
+  # Sunrise-Start
+  - ClothingWraps
+  - ClothingWrapsHigh
+  - ClothingNeckNanoTrasenPin
+  - ClothingNeckNakamuraPin
+  - ClothingNeckLogistikaPin
+  - ClothingNeckDeForestPin
+  - ClothingNeckDonkPin
+  - ClothingNeckVitezstviPin
+  - ClothingNeckEarthPin
+  - ClothingNeckUSSPPin
+  - ClothingNeckReedIndustriesPin
+  - CorporateLaw
+  - ClothingNeckPlanetPrisonLockdownPin
+  - ClothingNeckPlanetPrisonCellblockPin
+  # Sunrise-End
   - ClothingNeckLGBTPin
   - ClothingNeckAllyPin
   - ClothingNeckAromanticPin
@@ -54,22 +61,22 @@
   - OffsetCaneMime
   - OffsetCaneNT
   - Cane
-  - TowelColorBlack
-  - TowelColorDarkBlue
-  - TowelColorDarkGreen
-  - TowelColorGold
+  - TowelColorWhite
   - TowelColorGray
+  - TowelColorBlack
+  - TowelColorRed
+  - TowelColorOrange
+  - TowelColorLightBrown
+  - TowelColorYellow
+  - TowelColorDarkGreen
   - TowelColorGreen
   - TowelColorLightBlue
-  - TowelColorLightBrown
+  - TowelColorDarkBlue
+  - TowelColorPurple
   - TowelColorMaroon
   - TowelColorMime
-  - TowelColorOrange
-  - TowelColorPurple
-  - TowelColorRed
   - TowelColorSilver
-  - TowelColorWhite
-  - TowelColorYellow
+  - TowelColorGold
 
 - type: loadoutGroup
   id: Glasses
@@ -79,8 +86,6 @@
   - Glasses
   - GlassesJamjar
   - GlassesJensen
-  - GlassesStuttering
-  - GlassesCheapSunglasses # sunrise
 
 - type: loadoutGroup
   id: GroupTankHarness
@@ -135,7 +140,11 @@
   loadouts:
   - CaptainHead
   - CaptainCap
-  - EliteCaptainCap #Sunrise-Edit
+  # Sunrise-Start
+  - CaptainCapWhite
+  - CaptainCapBlack
+  - EliteCaptainCap
+  # Sunrise-End
 
 - type: loadoutGroup
   id: CaptainJumpsuit
@@ -145,6 +154,12 @@
   - CaptainJumpskirt
   - CaptainFormalSuit
   - CaptainFormalSkirt
+  # Sunrise - Start: captain cap uniforms
+  - CaptainJumpsuitCapWhite
+  - CaptainJumpsuitCapBlack
+  - CaptainJumpskirtCapWhite
+  - CaptainJumpskirtCapBlack
+  # Sunrise - End
 
 - type: loadoutGroup
   id: CaptainNeck
@@ -154,8 +169,14 @@
   - CaptainCloak
   - CaptainCloakFormal
   - CaptainMantle
-  - CaptainEliteCloak # Sunrise-Edit
-  - CapitainScarf # Sunrise-Edit
+  # Sunrise - Start
+  - CaptainEliteCloak
+  - CaptainScarf
+  - CaptainMantleWhite
+  - CaptainMantleWhiteShoulder
+  - CaptainMantleBlack
+  - CaptainMantleBlackShoulder
+  # Sunrise - End
 
 - type: loadoutGroup
   id: CaptainBackpack
@@ -164,15 +185,44 @@
   - CaptainBackpack
   - CaptainSatchel
   - CaptainDuffel
+  # Sunrise - Start
+  - CaptainBackpackWhite
+  - CaptainBackpackBlack
+  - CaptainSatchelWhite
+  - CaptainSatchelBlack
+  - CaptainDuffelWhite
+  - CaptainDuffelBlack
+  # Sunrise - End
+
+# Sunrise - Start
+- type: loadoutGroup
+  id: CaptainGloves
+  name: loadout-group-captain-gloves
+  minLimit: 1
+  maxLimit: 1
+  loadouts:
+  - CaptainGloves
+  - CaptainGlovesWhite
+  - CaptainGlovesBlack
+# Sunrise - End
 
 - type: loadoutGroup
   id: CaptainOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   loadouts:
   - CaptainOuterArmor # Sunrise-Edit
   - CaptainOuterCoat # Sunrise-Edit
   - CaptainOuterOverCoat  # Sunrise-Edit
   - CaptainWintercoat
+  - CaptainCarapaceWhite # Sunrise-Edit
+  - CaptainCarapaceBlack # Sunrise-Edit
+
+- type: loadoutGroup
+  id: CaptainJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieCaptain
 
 - type: loadoutGroup
   id: HoPHead
@@ -208,10 +258,17 @@
 
 - type: loadoutGroup
   id: HoPOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - HoPWintercoat
+
+- type: loadoutGroup
+  id: HoPJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieHeadOfPersonnel
 
 # Civilian
 - type: loadoutGroup
@@ -245,6 +302,7 @@
   - CommonBackpack
   - CommonSatchel
   - CommonDuffel
+  - CommonModsuit #Sunrise-edit
 
 - type: loadoutGroup
   id: PassengerNeck
@@ -255,7 +313,7 @@
 
 - type: loadoutGroup
   id: PassengerOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - PassengerWintercoat
@@ -266,6 +324,13 @@
   loadouts:
   - BlackShoes
   - WinterBoots
+
+- type: loadoutGroup
+  id: PassengerJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushiePassenger
 
 - type: loadoutGroup
   id: BartenderHead
@@ -285,12 +350,27 @@
 
 - type: loadoutGroup
   id: BartenderOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - BartenderVest
   - BartenderApron
   - BartenderWintercoat
+
+- type: loadoutGroup
+  id: BartenderJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieBartender
+  - BartenderGoldenShaker
+
+- type: loadoutGroup
+  id: ServiceWorkerJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieServiceWorker
 
 - type: loadoutGroup
   id: ChefHead
@@ -315,12 +395,19 @@
 
 - type: loadoutGroup
   id: ChefOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - ChefApron
   - ChefJacket
   - ChefWintercoat
+
+- type: loadoutGroup
+  id: ChefJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieChef
 
 - type: loadoutGroup
   id: LibrarianJumpsuit
@@ -330,6 +417,13 @@
   - LibrarianJumpskirt
   - CuratorJumpsuit
   - CuratorJumpskirt
+
+- type: loadoutGroup
+  id: LibrarianJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieLibrarian
 
 - type: loadoutGroup
   id: LawyerJumpsuit
@@ -352,6 +446,13 @@
   minLimit: 0
   loadouts:
   - LawyerNeck
+
+- type: loadoutGroup
+  id: LawyerJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieLawyer
 
 - type: loadoutGroup
   id: ChaplainHead
@@ -382,7 +483,7 @@
 
 - type: loadoutGroup
   id: ChaplainOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - ChaplainPlagueSuit
@@ -398,15 +499,23 @@
   - ChaplainNeck
 
 - type: loadoutGroup
+  id: ChaplainJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieChaplain
+
+- type: loadoutGroup
   id: ChaplainBible
   name: loadout-group-chaplain-bible
   minLimit: 1
   loadouts:
   - Bible
-  - BibleDruid
   - BibleNanoTrasen
-  - BibleSatanic
-  - BibleTanakh
+  - BibleDruid
+  - BibleHonk
+  - BibleRatvar
+  - BibleNarsie
 
 - type: loadoutGroup
   id: JanitorHead
@@ -434,16 +543,17 @@
 
 - type: loadoutGroup
   id: JanitorOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - JanitorWintercoat
 
 - type: loadoutGroup
-  id: JanitorPlunger
-  name: loadout-group-janitor-plunger
+  id: JanitorJobTrinkets
+  name: loadout-group-jobtrinkets
   minLimit: 0
   loadouts:
+  - LizardPlushieJanitor
   - JanitorGoldenPlunger
 
 - type: loadoutGroup
@@ -472,11 +582,18 @@
 
 - type: loadoutGroup
   id: BotanistOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - BotanistApron
   - BotanistWintercoat
+
+- type: loadoutGroup
+  id: BotanistJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieBotanist
 
 - type: loadoutGroup
   id: ClownHead
@@ -505,7 +622,7 @@
 
 - type: loadoutGroup
   id: ClownOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - ClownRobes
@@ -529,6 +646,14 @@
   - LoadoutSpeciesVoxNitrogen
   - EmergencyWithoutGasClown # Sunrise-Edit
   - EmergencyDwarfClown # Sunrise-Edit
+
+- type: loadoutGroup
+  id: ClownJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieClown
+  - FlowerWaterClown
 
 - type: loadoutGroup
   id: MimeHead
@@ -564,7 +689,7 @@
 
 - type: loadoutGroup
   id: MimeOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - MimeWintercoat
@@ -590,18 +715,27 @@
   - EmergencyDwarfMime # Sunrise-Edit
 
 - type: loadoutGroup
+  id: MimeJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieMime
+
+- type: loadoutGroup
   id: MusicianJumpsuit
   name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - MusicianJumpsuit
   - MusicianJumpskirt
+  - MusicianPunkSuit # Sunrise - Edit
 
 - type: loadoutGroup
   id: MusicianOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - MusicianWintercoat
+  - MusicianLeatherJacket # Sunrise - Edit
 
 - type: loadoutGroup
   id: Instruments
@@ -638,6 +772,13 @@
   - Ocarina
   - Bagpipe
   - SuperSynthesizer
+
+- type: loadoutGroup
+  id: MusicianJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieMusician
 
 # Cargo
 - type: loadoutGroup
@@ -693,7 +834,7 @@
 
 - type: loadoutGroup
   id: QuartermasterOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - QuartermasterWintercoat
@@ -722,6 +863,13 @@
   - Sunrise-ShoesPurple
   - Sunrise-ShoesLeather
 #Sunrise-end
+
+- type: loadoutGroup
+  id: QuartermasterJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieQuartermaster
 
 - type: loadoutGroup
   id: CargoTechnicianHead
@@ -758,7 +906,7 @@
 
 - type: loadoutGroup
   id: CargoTechnicianOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - CargoTechnicianWintercoat
@@ -784,6 +932,20 @@
 #Sunrise-end
 
 - type: loadoutGroup
+  id: CargoTechnicianID
+  name: loadout-group-cargo-technician-id
+  loadouts:
+  - CargoTechnicianPDA
+  - SeniorCourierPDA
+
+- type: loadoutGroup
+  id: CargoTechnicianJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieCargoTechnician
+
+- type: loadoutGroup
   id: SalvageSpecialistBackpack
   name: loadout-group-backpack # Fire edit
   loadouts:
@@ -793,7 +955,7 @@
 
 - type: loadoutGroup
   id: SalvageSpecialistOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - SalvageSpecialistWintercoat
@@ -821,6 +983,13 @@
   - Sunrise-ShoesPurple
 #Sunrise-end
 
+- type: loadoutGroup
+  id: SalvageSpecialistJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieSalvageSpecialist
+
 # Engineering
 - type: loadoutGroup
   id: ChiefEngineerJumpsuit
@@ -839,6 +1008,7 @@
   - ChiefEngineerCloak
   - ChiefEngineerMantle
   - ChiefEngineerScarf
+  - ChiefEngineerCloakLegacy #Sunrise-edit
   #sunrise-start
   - Sunrise-ScarfRed
   - Sunrise-ScarfOrange
@@ -850,7 +1020,7 @@
 
 - type: loadoutGroup
   id: ChiefEngineerOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - ChiefEngineerWintercoat
@@ -877,12 +1047,27 @@
   - Sunrise-OrangeShoes
   - Sunrise-YellowShoes
 #Sunrise-end
+
+- type: loadoutGroup
+  id: ChiefEngineerJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieChiefEngineer
+
 - type: loadoutGroup
   id: TechnicalAssistantJumpsuit
   name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - YellowJumpsuit
   - YellowJumpskirt
+
+- type: loadoutGroup
+  id: TechnicalAssistantJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieTechnicalAssistant
 
 - type: loadoutGroup
   id: StationEngineerHead
@@ -924,7 +1109,7 @@
 
 - type: loadoutGroup
   id: StationEngineerOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - StationEngineerOuterVest
@@ -947,6 +1132,13 @@
 #sunrise-end
 
 - type: loadoutGroup
+  id: StationEngineerJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieStationEngineer
+
+- type: loadoutGroup
   id: AtmosphericTechnicianJumpsuit
   name: loadout-group-jumpsuit # Fire edit
   loadouts:
@@ -956,7 +1148,7 @@
 
 - type: loadoutGroup
   id: AtmosphericTechnicianOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - AtmosphericTechnicianWintercoat
@@ -988,6 +1180,13 @@
 #sunrise-end
 
 - type: loadoutGroup
+  id: AtmosphericTechnicianJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieAtmosphericTechnician
+
+- type: loadoutGroup
   id: SurvivalExtended
   name: loadout-group-survival-extended
   minLimit: 2
@@ -1008,6 +1207,7 @@
   - ResearchDirectorMantle
   - ResearchDirectorCloak
   - ResearchDirectorScarf # Sunrise-Edit
+  - ResearchDirectorCloakLegacy # Sunrise-edit
 
 - type: loadoutGroup
   id: ResearchDirectorJumpsuit
@@ -1018,7 +1218,7 @@
 
 - type: loadoutGroup
   id: ResearchDirectorOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - ResearchDirectorLabCoat
@@ -1030,6 +1230,22 @@
   loadouts:
   - BrownShoes
   - ScienceWinterBoots
+
+- type: loadoutGroup
+  id: ResearchDirectorJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieResearchDirector
+
+- type: loadoutGroup
+  id: ScientistHead
+  name: loadout-group-scientist-head
+  minLimit: 0
+  loadouts:
+  - RoboticistCap
+  - SkullBandana
+  - ScientificBeret
 
 - type: loadoutGroup
   id: ScientistNeck
@@ -1055,7 +1271,7 @@
 
 - type: loadoutGroup
   id: ScientistOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - RegularLabCoat
@@ -1079,11 +1295,25 @@
   - PurpleGloves
 
 - type: loadoutGroup
+  id: ScientistJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieScientist
+
+- type: loadoutGroup
   id: ResearchAssistantJumpsuit
   name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - WhiteJumpsuit
   - WhiteJumpskirt
+
+- type: loadoutGroup
+  id: ResearchAssistantJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieResearchAssistant
 
 # Security
 - type: loadoutGroup
@@ -1125,7 +1355,7 @@
 
 - type: loadoutGroup
   id: HeadofSecurityOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   loadouts:
   - HeadofSecurityCoat
   - HeadofSecurityWinterCoat
@@ -1135,6 +1365,14 @@
   - HeadofSecurityOvercoat
   - HeadofSecurityUSSPBlack
   #Sunrise-End
+
+- type: loadoutGroup
+  id: HeadofSecurityJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieHeadofSecurity
+  - SecStar
 
 - type: loadoutGroup
   id: WardenHead
@@ -1154,11 +1392,19 @@
 
 - type: loadoutGroup
   id: WardenOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   loadouts:
   - WardenCoat
   - WardenArmoredWinterCoat
   - ClothingOuterCoatWardenAlt # Sunrise-Edit
+
+- type: loadoutGroup
+  id: WardenJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieWarden
+  - SecStar
 
 - type: loadoutGroup
   id: SecurityHead
@@ -1201,7 +1447,6 @@
   id: SecurityOuterClothing
   name: loadout-group-security-outerclothing
   loadouts:
-  - ArmorVestSec
   - ArmorVest
   - ArmorVestSlim
   - SecurityOfficerWintercoat
@@ -1212,6 +1457,21 @@
   loadouts:
   - JackBoots
   - SecurityWinterBoots
+
+- type: loadoutGroup
+  id: SecurityPDA
+  name: loadout-group-security-id
+  loadouts:
+  - SecurityPDA
+  - SeniorOfficerPDA
+
+- type: loadoutGroup
+  id: SecurityJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieSecurity
+  - SecStar
 
 - type: loadoutGroup
   id: DetectiveHead
@@ -1240,7 +1500,7 @@
 
 - type: loadoutGroup
   id: DetectiveOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   loadouts:
   - DetectiveArmorVest
   - DetectiveCoat
@@ -1248,11 +1508,26 @@
   - DetectiveCoatDark # Sunrise-edit
 
 - type: loadoutGroup
+  id: DetectiveJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieDetective
+  - SecStar
+
+- type: loadoutGroup
   id: SecurityCadetJumpsuit
   name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - RedJumpsuit
   - RedJumpskirt
+
+- type: loadoutGroup
+  id: SecurityCadetJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieSecurityCadet
 
 - type: loadoutGroup
   id: SurvivalSecurity
@@ -1265,13 +1540,6 @@
   - LoadoutSpeciesVoxNitrogen
   - EmergencyWithoutGasSecurity # Sunrise-Edit
   - EmergencyDwarfSecurity # Sunrise-Edit
-
-- type: loadoutGroup
-  id: SecurityStar
-  name: loadout-group-security-star
-  minLimit: 0
-  loadouts:
-  - SecStar
 
 # Medical
 - type: loadoutGroup
@@ -1312,7 +1580,7 @@
 
 - type: loadoutGroup
   id: ChiefMedicalOfficerOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - ChiefMedicalOfficerLabCoat
@@ -1374,6 +1642,13 @@
   - MedicalWinterBoots
 
 - type: loadoutGroup
+  id: ChiefMedicalOfficerJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieChiefMedicalOfficer
+
+- type: loadoutGroup
   id: MedicalDoctorHead
   name: loadout-group-head # Fire edit
   minLimit: 0
@@ -1402,7 +1677,7 @@
 
 - type: loadoutGroup
   id: MedicalDoctorOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - RegularLabCoat
@@ -1468,11 +1743,25 @@
 # Sunrise-end
 
 - type: loadoutGroup
+  id: MedicalDoctorJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieMedicalDoctor
+
+- type: loadoutGroup
   id: MedicalInternJumpsuit
   name: loadout-group-jumpsuit # Fire edit
   loadouts:
   - WhiteJumpsuit
   - WhiteJumpskirt
+
+- type: loadoutGroup
+  id: MedicalInternJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieMedicalIntern
 
 - type: loadoutGroup
   id: ChemistJumpsuit
@@ -1483,7 +1772,7 @@
 
 - type: loadoutGroup
   id: ChemistOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - RegularLabCoat
@@ -1508,6 +1797,13 @@
   - ChemistBackpack
   - ChemistSatchel
   - ChemistDuffel
+
+- type: loadoutGroup
+  id: ChemistJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieChemist
 
 - type: loadoutGroup
   id: ParamedicHead
@@ -1540,7 +1836,7 @@
 
 - type: loadoutGroup
   id: ParamedicOuterClothing
-  name: loadout-group-outerclothing # Fire edit
+  name: loadout-group-outer-clothing # Fire edit
   minLimit: 0
   loadouts:
   - ParamedicWindbreaker
@@ -1571,6 +1867,13 @@
   - BlueShoes
   - WhiteShoes
   - MedicalWinterBoots
+
+- type: loadoutGroup
+  id: ParamedicJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieParamedic
 
 - type: loadoutGroup
   id: MedicalEyewear
@@ -1604,6 +1907,13 @@
   - JournalistJumpsuit
 
 - type: loadoutGroup
+  id: ReporterJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
+  loadouts:
+  - LizardPlushieReporter
+
+- type: loadoutGroup
   id: PsychologistJumpsuit
   name: loadout-group-jumpsuit # Fire edit
   loadouts:
@@ -1611,20 +1921,11 @@
   - PsychologistJumpskirt
 
 - type: loadoutGroup
-  id: BoxerJumpsuit
-  name: loadout-group-boxer-jumpsuit
+  id: PsychologistJobTrinkets
+  name: loadout-group-jobtrinkets
+  minLimit: 0
   loadouts:
-  - BoxerShorts
-  - BoxerShortsWithTop
-
-- type: loadoutGroup
-  id: BoxerGloves
-  name: loadout-group-boxer-gloves
-  loadouts:
-  - RedBoxingGloves
-  - BlueBoxingGloves
-  - GreenBoxingGloves
-  - YellowBoxingGloves
+  - LizardPlushiePsychologist
 
 # Other
 - type: loadoutGroup
@@ -1638,6 +1939,15 @@
   - LoadoutSpeciesVoxNitrogen
   - EmergencyWithoutGasSyndicate # Sunrise-Edit
   - EmergencyDwarfSyndicate # Sunrise-Edit
+
+- type: loadoutGroup
+  id: SurvivalMilitaryDouble
+  name: loadout-group-survival-military
+  minLimit: 2
+  hidden: true
+  loadouts:
+  - EmergencyNitrogenMilitaryDouble
+  - EmergencyOxygenMilitaryDouble
 
 - type: loadoutGroup
   id: GroupSpeciesBreathTool
@@ -1665,3 +1975,26 @@
   hidden: true
   loadouts:
   - LoadoutSpeciesBreathToolSecurity
+
+# Sunrise-start
+- type: loadoutGroup
+  id: StationEngineerID
+  name: loadout-group-station-engineer-id
+  loadouts:
+  - StationEngineerPDA
+  - SeniorEngineerPDA
+
+- type: loadoutGroup
+  id: ScientistPDA
+  name: loadout-group-scientist-id
+  loadouts:
+  - ScientistPDA
+  - SeniorResearcherPDA
+
+- type: loadoutGroup
+  id: MedicalDoctorPDA
+  name: loadout-group-medical-doctor-id
+  loadouts:
+  - MedicalPDA
+  - SeniorPhysicianPDA
+# Sunrise-edn

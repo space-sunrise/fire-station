@@ -2,6 +2,7 @@ using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using System.Numerics;
+using Content.Client.Graphics;
 using Robust.Client.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
@@ -33,8 +34,7 @@ public sealed class FieldOfViewConeOverlay : Overlay
     private static readonly ProtoId<ShaderPrototype> BlurryXShaderProtoId = "BlurryVisionX";
     private static readonly ProtoId<ShaderPrototype> BlurryYShaderProtoId = "BlurryVisionY";
 
-    private IRenderTexture? _blurPass;
-    private IRenderTexture? _backBuffer;
+    private readonly OverlayResourceCache<CachedResources> _resources = new ();
 
     private TimeSpan _nextUpdate = TimeSpan.Zero;
 
@@ -75,8 +75,7 @@ public sealed class FieldOfViewConeOverlay : Overlay
         _blurXShader.Dispose();
         _blurYShader.Dispose();
 
-        _blurPass?.Dispose();
-        _backBuffer?.Dispose();
+        _resources.Dispose();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)
@@ -90,13 +89,15 @@ public sealed class FieldOfViewConeOverlay : Overlay
             return false;
 
         var size = (Vector2i)(args.Viewport.Size * BlurScale);
-        if (_backBuffer == null || _backBuffer.Size != size)
-        {
-            _backBuffer?.Dispose();
-            _backBuffer = _clyde.CreateRenderTarget(size, new RenderTargetFormatParameters(RenderTargetColorFormat.Rgba8Srgb), name: "fov-backbuffer");
 
-            _blurPass?.Dispose();
-            _blurPass = _clyde.CreateRenderTarget(size, new RenderTargetFormatParameters(RenderTargetColorFormat.Rgba8Srgb), name: "fov-blurpass");
+        var res = _resources.GetForViewport(args.Viewport, static _ => new CachedResources());
+        if (res.BackBuffer == null || res.BackBuffer.Size != size)
+        {
+            res.BackBuffer?.Dispose();
+            res.BackBuffer = _clyde.CreateRenderTarget(size, new RenderTargetFormatParameters(RenderTargetColorFormat.Rgba8Srgb), name: "fov-backbuffer");
+
+            res.BlurPass?.Dispose();
+            res.BlurPass = _clyde.CreateRenderTarget(size, new RenderTargetFormatParameters(RenderTargetColorFormat.Rgba8Srgb), name: "fov-blurpass");
         }
 
         return true;
@@ -104,27 +105,31 @@ public sealed class FieldOfViewConeOverlay : Overlay
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        if (ScreenTexture == null || _backBuffer == null || _blurPass == null || !_fovManagement.PlayerEntity.HasValue)
+        if (ScreenTexture == null || !_fovManagement.PlayerEntity.HasValue)
+            return;
+
+        var res = _resources.GetForViewport(args.Viewport, static _ => new CachedResources());
+        if (res.BackBuffer == null || res.BlurPass == null)
             return;
 
         var (uid, eye, fov, xform) = _fovManagement.PlayerEntity.Value;
 
         var handle = args.WorldHandle;
         var viewport = args.WorldBounds;
-        var viewportBounds = new Box2(Vector2.Zero, _blurPass.Size);
+        var viewportBounds = new Box2(Vector2.Zero, res.BlurPass.Size);
 
         if (_timing.RealTime >= _nextUpdate)
         {
-            handle.RenderInRenderTarget(_blurPass, () =>
+            handle.RenderInRenderTarget(res.BlurPass, () =>
             {
                 _blurXShader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
                 handle.UseShader(_blurXShader);
                 handle.DrawRect(viewportBounds, Color.White);
             }, Color.Transparent);
 
-            handle.RenderInRenderTarget(_backBuffer, () =>
+            handle.RenderInRenderTarget(res.BackBuffer, () =>
             {
-                _blurYShader.SetParameter("SCREEN_TEXTURE", _blurPass.Texture);
+                _blurYShader.SetParameter("SCREEN_TEXTURE", res.BlurPass.Texture);
                 handle.UseShader(_blurYShader);
                 handle.DrawRect(viewportBounds, Color.White);
             }, Color.Transparent);
@@ -135,7 +140,7 @@ public sealed class FieldOfViewConeOverlay : Overlay
         var offset = GetOffset(uid, xform, eye);
 
         _shader.SetParameter("SCREEN_TEXTURE", ScreenTexture);
-        _shader.SetParameter("BLURRED_TEXTURE", _backBuffer.Texture);
+        _shader.SetParameter("BLURRED_TEXTURE", res.BackBuffer.Texture);
         _shader.SetParameter("coneOpacity", Opacity);
 
         _shader.SetParameter("ViewAngle", (float) fov.CurrentAngle.Theta);
@@ -172,5 +177,17 @@ public sealed class FieldOfViewConeOverlay : Overlay
         offset *= OffsetVectorFix;
 
         return offset;
+    }
+
+    private sealed class CachedResources : IDisposable
+    {
+        public IRenderTexture? BlurPass;
+        public IRenderTexture? BackBuffer;
+
+        public void Dispose()
+        {
+            BlurPass?.Dispose();
+            BackBuffer?.Dispose();
+        }
     }
 }

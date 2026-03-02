@@ -18,9 +18,11 @@ namespace Content.Client._Scp.Shaders.Common;
 public abstract class BaseOverlaySystem<T> : EntitySystem where T : Overlay
 {
     [Dependency] protected readonly IOverlayManager OverlayManager = default!;
+    [Dependency] protected readonly CompatibilityModeActiveWarningSystem Compatibility = default!;
 
     protected T Overlay = default!;
     public bool Enabled = true;
+    public bool DisableOnCompatibilityMode = true;
 
     public bool DisposeOnShutdown = true;
 
@@ -65,6 +67,9 @@ public abstract class BaseOverlaySystem<T> : EntitySystem where T : Overlay
     public void AddOverlay()
     {
         if (!Enabled)
+            return;
+
+        if (!Compatibility.ShouldUseShaders && DisableOnCompatibilityMode)
             return;
 
         OverlayManager.AddOverlay(Overlay);

@@ -7,12 +7,15 @@ using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using System.Numerics;
+using Content.Client._Scp.Stylesheets.Palette;
 using Content.Client.Parallax.Managers;
 using Content.Client.Resources;
 using Content.Client.Stylesheets;
 using Content.Shared._Sunrise.SunriseCCVars;
+using Content.Shared.CCVar;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
+using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Configuration;
 using Robust.Shared.Input;
 using Robust.Shared.Utility;
@@ -55,7 +58,6 @@ namespace Content.Client.Lobby.UI
 
             LeaveButton.OnPressed += _ => _consoleHost.ExecuteCommand("disconnect");
             OptionsButton.OnPressed += _ => UserInterfaceManager.GetUIController<OptionsUIController>().ToggleWindow();
-            ReplaysButton.OnPressed += _ => _uriOpener.OpenUri(_configurationManager.GetCVar(SunriseCCVars.InfoLinksReplays));
 
             //CollapseButton.OnPressed += _ => TogglePanel(false);
             //ExpandButton.OnPressed += _ => TogglePanel(true);
@@ -131,7 +133,7 @@ namespace Content.Client.Lobby.UI
             _back = new StyleBoxTexture
             {
                 Texture = panelTex,
-                Modulate = new Color(37, 37, 42),
+                Modulate = ScpPalettes.Primary.Background, // Fire edit
             };
             _back.SetPatchMargin(StyleBox.Margin.All, 10);
 
@@ -145,16 +147,74 @@ namespace Content.Client.Lobby.UI
 
             LobbySongPanel.PanelOverride = _back;
 
+            SocialButtonsPanel.PanelOverride = _back;
+
             _configurationManager.OnValueChanged(SunriseCCVars.LobbyOpacity, OnLobbyOpacityChanged, true);
             _configurationManager.OnValueChanged(SunriseCCVars.ServersHubEnable, OnServersHubEnableChanged, true);
             _configurationManager.OnValueChanged(SunriseCCVars.ServiceAuthEnabled, OnServiceAuthEnableChanged, true);
             _configurationManager.OnValueChanged(SunriseCCVars.ServerName, OnServerNameChanged, true);
-            _configurationManager.OnValueChanged(SunriseCCVars.InfoLinksReplays, OnReplaysLinkChanged, true);
 
             Chat.SetChatOpacity();
+            Chat.ToggleEmojiButton(true); // Sunrise-Add
 
             ServerName.Text = Loc.GetString("ui-lobby-welcome", ("name", _serverName));
             LoadIcons();
+
+            SetupButtonIcon(AHelpButton, "/Textures/Interface/info.svg.192dpi.png", Loc.GetString("ui-lobby-ahelp-button"));
+            SetupButtonIcon(MHelpButton, "/Textures/Interface/mentor.svg.192dpi.png", Loc.GetString("ui-lobby-mhelp-button"));
+            SetupButtonIcon(CallVoteButton, "/Textures/Interface/gavel.svg.192dpi.png", Loc.GetString("ui-vote-menu-button"));
+            SetupButtonIcon(OptionsButton, "/Textures/Interface/VerbIcons/settings.svg.192dpi.png", Loc.GetString("ui-lobby-options-button"));
+            SetupButtonIcon(LeaveButton, "/Textures/Interface/VerbIcons/close.svg.192dpi.png", Loc.GetString("ui-lobby-leave-button"));
+
+            SetupButtonIcon(DiscordButton, "/Textures/Interface/discord.svg.192dpi.png", Loc.GetString("server-info-discord-button"));
+            SetupButtonIcon(WikiButton, "/Textures/Interface/wiki.svg.192dpi.png", Loc.GetString("server-info-wiki-button"));
+            SetupButtonIcon(TelegramButton, "/Textures/Interface/telegram.svg.192dpi.png", Loc.GetString("server-info-telegram-button"));
+            SetupButtonIcon(ReplaysButton, "/Textures/Interface/replay.svg.192dpi.png", Loc.GetString("ui-lobby-replays-button"));
+
+            // Fire edit - Track all icon buttons for hover color inversion
+            TrackButtonHover(AHelpButton);
+            TrackButtonHover(MHelpButton);
+            TrackButtonHover(CallVoteButton);
+            TrackButtonHover(OptionsButton);
+            TrackButtonHover(LeaveButton);
+            TrackButtonHover(DiscordButton);
+            TrackButtonHover(WikiButton);
+            TrackButtonHover(TelegramButton);
+            TrackButtonHover(ReplaysButton);
+
+            DiscordButton.OnPressed += _ =>
+            {
+                var url = _configurationManager.GetCVar(CCVars.InfoLinksDiscord);
+                if (!string.IsNullOrEmpty(url))
+                    _uriOpener.OpenUri(url);
+            };
+
+            WikiButton.OnPressed += _ =>
+            {
+                var url = _configurationManager.GetCVar(CCVars.InfoLinksWiki);
+                if (!string.IsNullOrEmpty(url))
+                    _uriOpener.OpenUri(url);
+            };
+
+            TelegramButton.OnPressed += _ =>
+            {
+                var url = _configurationManager.GetCVar(CCVars.InfoLinksTelegram);
+                if (!string.IsNullOrEmpty(url))
+                    _uriOpener.OpenUri(url);
+            };
+
+            ReplaysButton.OnPressed += _ =>
+            {
+                var url = _configurationManager.GetCVar(SunriseCCVars.InfoLinksReplays);
+                if (!string.IsNullOrEmpty(url))
+                    _uriOpener.OpenUri(url);
+            };
+
+            _configurationManager.OnValueChanged(CCVars.InfoLinksDiscord, OnDiscordLinkChanged, true);
+            _configurationManager.OnValueChanged(CCVars.InfoLinksWiki, OnWikiLinkChanged, true);
+            _configurationManager.OnValueChanged(CCVars.InfoLinksTelegram, OnTelegramLinkChanged, true);
+            _configurationManager.OnValueChanged(SunriseCCVars.InfoLinksReplays, OnReplaysLinkChanged, true);
+
             // Sunrise-end
         }
 
@@ -182,13 +242,16 @@ namespace Content.Client.Lobby.UI
             CharacterInfoHider.Texture = CharacterInfoContent.Visible ? IconExpanded : IconCollapsed;
             ChatHider.Texture = ChatContent.Visible ? IconExpanded : IconCollapsed;
             UserProfileHider.Texture = CharacterInfoContent.Visible ? IconExpanded : IconCollapsed;
-            ServersHubHider.Modulate = StyleNano.NanoGold;
-            ContributorsHider.Modulate = StyleNano.NanoGold;
-            ChangelogHider.Modulate = StyleNano.NanoGold;
-            ServerInfoHider.Modulate = StyleNano.NanoGold;
-            CharacterInfoHider.Modulate = StyleNano.NanoGold;
-            ChatHider.Modulate = StyleNano.NanoGold;
-            UserProfileHider.Modulate = StyleNano.NanoGold;
+
+            // Fire edit start
+            ServersHubHider.Modulate = ScpPalettes.Red.Element;
+            ContributorsHider.Modulate = ScpPalettes.Red.Element;
+            ChangelogHider.Modulate = ScpPalettes.Red.Element;
+            ServerInfoHider.Modulate = ScpPalettes.Red.Element;
+            CharacterInfoHider.Modulate = ScpPalettes.Red.Element;
+            ChatHider.Modulate = ScpPalettes.Red.Element;
+            UserProfileHider.Modulate = ScpPalettes.Red.Element;
+            // Fire edit end
 
             // Скрываем чейнджлог по умолчанию
             ChangelogContent.Visible = false;
@@ -221,9 +284,24 @@ namespace Content.Client.Lobby.UI
             UserProfileBox.Visible = enable;
         }
 
-        private void OnReplaysLinkChanged(string replaysUrl)
+        private void OnDiscordLinkChanged(string url)
         {
-            ReplaysButton.Visible = !string.IsNullOrEmpty(replaysUrl);
+            DiscordButton.Visible = !string.IsNullOrEmpty(url);
+        }
+
+        private void OnWikiLinkChanged(string url)
+        {
+            WikiButton.Visible = !string.IsNullOrEmpty(url);
+        }
+
+        private void OnTelegramLinkChanged(string url)
+        {
+            TelegramButton.Visible = !string.IsNullOrEmpty(url);
+        }
+
+        private void OnReplaysLinkChanged(string url)
+        {
+            ReplaysButton.Visible = !string.IsNullOrEmpty(url);
         }
         // Sunrise-End
 
@@ -234,7 +312,7 @@ namespace Content.Client.Lobby.UI
 
         private void SetLobbyOpacity(float opacity)
         {
-            _back.Modulate = new Color(37, 37, 42).WithAlpha(opacity);
+            _back.Modulate = ScpPalettes.Primary.Background.WithAlpha(opacity); // Fire edit
         }
         // Sunrise-End
 
@@ -263,7 +341,7 @@ namespace Content.Client.Lobby.UI
         //    ExpandPanel.Visible = !value;
         //}
 
-        // Sunrise-start
+        // Sunrise-Start
         protected override void Draw(DrawingHandleScreen handle)
         {
             if (!ShowParallax)
@@ -308,7 +386,27 @@ namespace Content.Client.Lobby.UI
                 }
             }
         }
-        // Sunrise-end
+
+        private void SetupButtonIcon(Button button, string iconPath, string tooltip)
+        {
+            button.Text = string.Empty;
+            button.ToolTip = tooltip;
+
+            var iconRect = new TextureRect
+            {
+                Texture = _resourceCache.GetTexture(new ResPath(iconPath)),
+                TextureScale = new Vector2(0.5f, 0.5f),
+                HorizontalAlignment = HAlignment.Center,
+                VerticalAlignment = VAlignment.Center,
+                Stretch = TextureRect.StretchMode.KeepAspectCentered,
+                HorizontalExpand = true,
+                VerticalExpand = true
+            };
+
+            button.RemoveAllChildren();
+            button.AddChild(iconRect);
+        }
+        // Sunrise-End
 
         public enum LobbyGuiState : byte
         {

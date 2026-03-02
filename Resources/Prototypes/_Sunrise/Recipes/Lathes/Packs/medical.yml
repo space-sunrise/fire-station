@@ -18,10 +18,14 @@
   - BluespaceBeaker
   - SyringeBluespace
   - SyringeCryostasis
-  - HyposprayMedical
   - AutoMenderBurn
   - AutoMenderBrute
-  - HandheldCrewMonitor
+  - HandheldEmergencyCrewMonitor
+  - BlankMediPen
+  - ImplanterExtractor
+  - DefibrillatorCompact
+  - AdvancedDefibrillatorCompact
+  - DnaInjector
 
 - type: latheRecipePack
   id: SurgeryDynamicSunrise
@@ -44,10 +48,17 @@
   #
   - ImplantCaseMechwright
   #
+  - ImplantCaseRobust
+  #
+  - ImplantCaseJani
+  #
+  - ImplantCaseAtmos
+  #
+  - ImplantCaseHack
+  #
   - ImplantCaseBulwark
   #
-  - ImplantCaseGorillaR
-  - ImplantCaseGorillaL
+  - ImplantCaseGorilla
   #
   - ImplantCaseMantisBladeMaxGuard
   #
@@ -68,3 +79,16 @@
   - ImplantCaseImplantMedical
   - ImplantCaseImplantChemical
   - ImplantCaseImplantSecurity
+  - SadTromboneImplant
+  - BikeHornImplant
+  - LightImplant
+  - TrackingImplant
+  - NutrimentImplant
+  - ReviverImplant
+
+- type: latheRecipePack
+  id: MedicalImplantEmag
+  recipes:
+  - CreepyLaughImplant
+  - ProtoAdrenalImplant
+  - ScramImplantProto

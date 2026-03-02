@@ -11,6 +11,7 @@
   - Revolutionary
   - AllHostile
   - Wizard
+  - Xenoborg
   # Sunrise Edit
   - Thief
   - Vampire
@@ -21,6 +22,10 @@
 - type: npcFaction
   id: NanoTrasen
   hostile:
+  # Fire added start
+  - Chaos
+  - SCPs
+  # Fire added end
   - SimpleHostile
   - Syndicate
   - Xeno
@@ -36,9 +41,7 @@
   - Vampire
   - Flesh
   - BloodCult
-  # Fire Edit
-  - Chaos
-  - SCPs
+  - Pirate
 
 - type: npcFaction
   id: Mouse
@@ -52,23 +55,31 @@
 
 - type: npcFaction
   id: PetsNT
+  friendly:
+  - NanoTrasen
   hostile:
+  # Fire added start
+  - SCPs
+  # Fire added end
   - Mouse
   - SimpleHostile
   - Zombie
   - Xeno
   - AllHostile
-  - Wizard
   - Dragon
   # Sunrise Edit
+  - Pirate
   - Carps
   - Flesh
-  # Fire Edit
-  - SCPs
+  - Xenoborg
 
 - type: npcFaction
   id: SimpleHostile
   hostile:
+  # Fire added start
+  - Chaos
+  - SCPs
+  # Fire added end
   - NanoTrasen
   - Syndicate
   - Passive
@@ -87,9 +98,7 @@
   - FleshHuman
   - Flesh
   - BloodCult
-  # Fire Edit
-  - Chaos
-  - SCPs
+  - Pirate
 
 - type: npcFaction
   id: SimpleNeutral
@@ -97,6 +106,9 @@
 - type: npcFaction
   id: Syndicate
   hostile:
+  # Fire added start
+  - SCPs
+  # Fire added end
   - NanoTrasen
   - SimpleHostile
   - Xeno
@@ -113,12 +125,15 @@
   - FleshHuman
   - Flesh
   - BloodCult
-  # Fire Edit
-  - SCPs
+  - Pirate
 
 - type: npcFaction
   id: Xeno
   hostile:
+  # Fire added start
+  - Chaos
+  - SCPs
+  # Fire added end
   - NanoTrasen
   - Syndicate
   - Passive
@@ -136,13 +151,15 @@
   - FleshHuman
   - Flesh
   - BloodCult
-  # Fire Edit
-  - Chaos
-  - SCPs
+  - Pirate
 
 - type: npcFaction
   id: Zombie
   hostile:
+  # Fire added start
+  - Chaos
+  - SCPs
+  # Fire added end
   - NanoTrasen
   - SimpleNeutral
   - SimpleHostile
@@ -161,13 +178,14 @@
   - FleshHuman
   - Flesh
   - BloodCult
-  # Fire Edit
-  - Chaos
-  - SCPs
+  - Pirate
 
 - type: npcFaction
   id: Revolutionary
   hostile:
+  # Fire added start
+  - SCPs
+  # Fire added end
   - NanoTrasen
   - Zombie
   - SimpleHostile
@@ -181,12 +199,15 @@
   - FleshHuman
   - Flesh
   - BloodCult
-  # Fire Edit
-  - SCPs
+  - Pirate
 
 - type: npcFaction
   id: AllHostile
   hostile:
+  # Fire added start
+  - Chaos
+  - SCPs
+  # Fire added end
   - NanoTrasen
   - Mouse
   - Passive
@@ -207,13 +228,15 @@
   - FleshHuman
   - Flesh
   - BloodCult
-  # Fire Edit
-  - Chaos
-  - SCPs
+  - Pirate
 
 - type: npcFaction
   id: Wizard
   hostile:
+  # Fire added start
+  - Chaos
+  - SCPs
+  # Fire added end
   - NanoTrasen
   - Mouse
   - Passive
@@ -235,9 +258,8 @@
   - Flesh
   - Xeno
   - BloodCult
-  # Fire Edit
-  - Chaos
-  - SCPs
+  - Pirate
+  - Dragon
 
 - type: npcFaction
   id: Xenoborg
@@ -263,3 +285,4 @@
   - Flesh
   - Xeno
   - BloodCult
+  - Pirate

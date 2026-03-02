@@ -81,7 +81,7 @@
       0: Alive
       30: Dead
   - type: Stamina
-    critThreshold: 60
+    baseCritThreshold: 60
   - type: MeleeWeapon
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg

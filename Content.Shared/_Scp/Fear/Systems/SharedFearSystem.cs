@@ -22,6 +22,8 @@ namespace Content.Shared._Scp.Fear.Systems;
 /// Приближение к источнику страха сильно усиливает эффекты в зависимости от расстояния до источника.
 /// Повышение уровня страха усиливает эффекты, уровень страха понижается со временем.
 /// </summary>
+// TODO: Перевод всех фич страха на отдельные компоненты
+// TODO: Attempt-ивенты для страха
 public abstract partial class SharedFearSystem : EntitySystem
 {
     [Dependency] private readonly SharedHighlightSystem _highlight = default!;

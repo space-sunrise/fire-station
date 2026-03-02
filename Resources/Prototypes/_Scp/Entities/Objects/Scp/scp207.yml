@@ -1,0 +1,20 @@
+﻿- type: entity
+  parent:
+  - BaseItemScp
+  - DrinkColaBottleFull
+  id: Scp207Bottle
+  suffix: SCP-207
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        reagents:
+        - ReagentId: Scp207Reagent
+          Quantity: 100
+  - type: Scp
+    class: Safe
+  - type: Item
+    size: Normal
+  - type: GuideHelp
+    guides:
+    - ScpResearch

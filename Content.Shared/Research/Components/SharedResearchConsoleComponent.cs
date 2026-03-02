@@ -10,15 +10,13 @@ namespace Content.Shared.Research.Components
     }
 
     [Serializable, NetSerializable]
-    public sealed class ConsoleUnlockTechnologyMessage : BoundUserInterfaceMessage
+    public sealed class ConsoleUnlockTechnologyMessage(string id) : BoundUserInterfaceMessage
     {
-        public string Id;
-
-        public ConsoleUnlockTechnologyMessage(string id)
-        {
-            Id = id;
-        }
+        public string Id = id;
     }
+
+    [Serializable, NetSerializable]
+    public sealed class ConsoleRediscoverTechnologyMessage : BoundUserInterfaceMessage;
 
     [Serializable, NetSerializable]
     public sealed class ConsoleServerSelectionMessage : BoundUserInterfaceMessage
@@ -26,20 +24,15 @@ namespace Content.Shared.Research.Components
 
     }
 
-    // Fire edit start - сканирование артефактов на расстоянии.
-    // Ивент будет сообщать, что при открытии окна нужно поискать на расстоянии таргет, если его нет
+    // Fire edit start - поддержка разных видов очков исследований
     [Serializable, NetSerializable]
-    public sealed class ConsoleServerSearchForArtifactInRadius : BoundUserInterfaceMessage;
-    // Fire edit end
-
-    [Serializable, NetSerializable]
-    public sealed class ResearchConsoleBoundInterfaceState : BoundUserInterfaceState
+    public sealed class ResearchConsoleBoundInterfaceState(Dictionary<ProtoId<ResearchPointPrototype>, int> points, TimeSpan nextRediscover, Dictionary<ProtoId<ResearchPointPrototype>, int> rediscoverCost) : BoundUserInterfaceState
     {
-        public Dictionary<ProtoId<ResearchPointPrototype>, int> Points;
+        public Dictionary<ProtoId<ResearchPointPrototype>, int> Points = points;
 
-        public ResearchConsoleBoundInterfaceState(Dictionary<ProtoId<ResearchPointPrototype>, int> points)
-        {
-            Points = points;
-        }
+        public TimeSpan NextRediscover = nextRediscover;
+
+        public Dictionary<ProtoId<ResearchPointPrototype>, int> RediscoverCost = rediscoverCost;
     }
+    // Fire edit end
 }

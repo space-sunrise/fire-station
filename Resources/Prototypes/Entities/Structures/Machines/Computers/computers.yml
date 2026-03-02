@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerAlert
+  categories: [ HideSpawnMenu ] # Fire edit
   name: atmospheric alerts computer
   description: Used to access the station's atmospheric automated alert system.
   components:
@@ -58,6 +59,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerAtmosMonitoring
+  categories: [ HideSpawnMenu ] # Fire edit
   name: atmospheric network monitor
   description: Used to monitor the station's atmospheric networks.
   components:
@@ -95,12 +97,13 @@
 - type: entity
   parent: BaseComputer
   id: ComputerEmergencyShuttle
+  categories: [ HideSpawnMenu ] # Fire edit
   name: emergency shuttle console
   description: Handles authorization to early launch the shuttle.
   components:
   - type: AccessReader
     access:
-    - [ Command ]
+    - [ Exit ] # Fire Edit
   - type: EmergencyShuttleConsole
   - type: ActivatableUI
     key: enum.EmergencyConsoleUiKey.Key
@@ -112,7 +115,7 @@
           type: WiresBoundUserInterface
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#43ccb5"
 
 - type: entity
@@ -136,7 +139,7 @@
     radius: 256
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#43ccb5"
   - type: ItemSlots
     slots:
@@ -161,6 +164,7 @@
 - type: entity
   parent: BaseComputerShuttle
   id: ComputerShuttle
+  categories: [ HideSpawnMenu ] # Fire edit
   name: shuttle console
   description: Used to pilot a shuttle.
   components:
@@ -182,6 +186,7 @@
 - type: entity
   parent: BaseComputerShuttle
   id: ComputerShuttleSyndie
+  categories: [ HideSpawnMenu ] # Fire edit
   name: syndicate shuttle console
   description: Used to pilot a syndicate shuttle.
   components:
@@ -206,7 +211,7 @@
     radius: 1536
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#c94242"
   - type: Computer
     board: SyndicateShuttleConsoleCircuitboard
@@ -214,6 +219,7 @@
 - type: entity
   parent: BaseComputerShuttle
   id: ComputerShuttleCargo
+  categories: [ HideSpawnMenu ] # Fire edit
   name: cargo shuttle console
   description: Used to pilot the cargo shuttle.
   components:
@@ -236,7 +242,7 @@
     maxRange: 256
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#43ccb5"
   - type: Computer
     board: CargoShuttleConsoleCircuitboard
@@ -246,6 +252,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerIFF
+  categories: [ HideSpawnMenu ] # Fire edit
   name: IFF computer
   description: Allows you to control the IFF characteristics of this vessel.
   components:
@@ -277,6 +284,7 @@
 - type: entity
   parent: ComputerIFF
   id: ComputerIFFSyndicate
+  categories: [ HideSpawnMenu ] # Fire edit
   name: IFF computer
   suffix: Syndicate
   description: Allows you to control the IFF and stealth characteristics of this vessel.
@@ -299,6 +307,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerPowerMonitoring
+  categories: [ HideSpawnMenu ] # Fire edit
   name: power monitoring computer
   description: It monitors power levels across the station.
   components:
@@ -316,7 +325,7 @@
       state: generic_panel_open
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#c9c042"
   - type: Computer
     board: PowerComputerCircuitboard
@@ -341,6 +350,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerMedicalRecords
+  categories: [ HideSpawnMenu ] # Fire edit
   name: medical records computer
   description: This can be used to check medical records.
   components:
@@ -358,7 +368,7 @@
       state: generic_panel_open
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#1f8c28"
   - type: Computer
     board: MedicalRecordsComputerCircuitboard
@@ -366,6 +376,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerCriminalRecords
+  categories: [ HideSpawnMenu ] # Fire edit
   name: criminal records computer
   description: This can be used to check criminal records. Only security can modify them.
   components:
@@ -392,7 +403,7 @@
       state: generic_panel_open
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#1f8c28"
   - type: Computer
     board: CriminalRecordsComputerCircuitboard
@@ -405,6 +416,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerStationRecords
+  categories: [ HideSpawnMenu ] # Fire edit
   name: station records computer
   description: This can be used to check station records.
   components:
@@ -427,7 +439,7 @@
     key: enum.GeneralStationRecordConsoleKey.Key
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#1f8c28"
   - type: Computer
     board: StationRecordsComputerCircuitboard
@@ -438,6 +450,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerCrewMonitoring
+  categories: [ HideSpawnMenu ] # Fire edit
   name: crew monitoring console
   description: Used to monitor active health sensors built into most of the crew's uniforms.
   components:
@@ -455,7 +468,7 @@
       state: generic_panel_open
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#006400"
   - type: Computer
     board: CrewMonitoringComputerCircuitboard
@@ -477,6 +490,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerResearchAndDevelopment
+  categories: [ HideSpawnMenu ] # Fire edit
   name: R&D computer
   description: A computer used to interface with R&D tools.
   components:
@@ -518,7 +532,7 @@
     access: [["Research"]] # Fire edit
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#b53ca1"
   - type: GuideHelp
     guides:
@@ -527,6 +541,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerAnalysisConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   name: analysis console
   description: A computer used to interface with the artifact analyzer.
   components:
@@ -567,15 +582,16 @@
     board: AnalysisComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#b53ca1"
   - type: GuideHelp
     guides:
-    - Xenoarchaeology
+    - AnalysisConsole
 
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerId
+  categories: [ HideSpawnMenu ] # Fire edit
   name: ID card computer
   description: Terminal for programming Nanotrasen employee ID cards to access parts of the station.
   components:
@@ -659,11 +675,8 @@
     board: IDComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#3c5eb5"
-  - type: Tag
-    tags:
-    - AccessBreakerImmune
   - type: ItemSlots
   - type: ContainerContainer
     containers:
@@ -760,6 +773,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: computerBodyScanner
+  categories: [ HideSpawnMenu ] # Fire edit
   name: body scanner computer
   description: A body scanner.
   components:
@@ -769,12 +783,13 @@
     board: BodyScannerComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#1f8c28"
 
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerComms
+  categories: [ HideSpawnMenu ] # Fire edit
   name: communications computer
   description: A computer used to make station wide announcements via keyboard, set the appropriate alert level, and call the emergency shuttle.
   components:
@@ -809,7 +824,7 @@
     board: CommsComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#3c5eb5"
   - type: Damageable
     damageContainer: StructuralInorganic
@@ -818,6 +833,7 @@
 - type: entity
   parent: ComputerComms
   id: SyndicateComputerComms
+  categories: [ HideSpawnMenu ] # Fire edit
   name: syndicate communications computer
   description: A computer capable of remotely hacking into the station's communications systems. Using this to make an announcement will alert the station to your presence.
   components:
@@ -847,7 +863,7 @@
     board: SyndicateCommsComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#f71713"
 
 - type: entity
@@ -881,12 +897,13 @@
     board: WizardCommsComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#F317F3"
 
 - type: entity
   parent: ComputerComms
   id: CentcommComputerComms
+  categories: [ HideSpawnMenu ] # Fire edit
   name: central command communications computer
   description: A computer used to make world wide announcements via keyboard. The superior cousin of the regular communications computer.
   components:
@@ -913,12 +930,13 @@
     board: CentcommCommsComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#00FF00"
 
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerSolarControl
+  categories: [ HideSpawnMenu ] # Fire edit
   name: solar control computer
   description: A controller for solar panel arrays.
   components:
@@ -947,7 +965,7 @@
     board: SolarControlComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#e6e227"
   - type: GuideHelp
     guides:
@@ -957,6 +975,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerRadar
+  categories: [ HideSpawnMenu ] # Fire edit
   name: mass scanner computer
   description: A computer for detecting nearby bodies, displaying them by position and mass.
   components:
@@ -985,11 +1004,12 @@
     board: RadarConsoleCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#e6e227"
 
 - type: entity
   id: ComputerCargoOrders
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerAiAccess
   name: cargo request computer
   description: Used to order supplies and approve requests.
@@ -1023,7 +1043,7 @@
     board: CargoRequestComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#b89f25"
   - type: AccessReader
     access: [["Logistics"]] # Fire edit
@@ -1043,6 +1063,7 @@
 # Request console variants.
 - type: entity
   id: ComputerCargoOrdersEngineering
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerCargoOrders
   name: engineering request computer
   description: Used by the engineering department to order supplies.
@@ -1076,6 +1097,7 @@
 
 - type: entity
   id: ComputerCargoOrdersMedical
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerCargoOrders
   name: medical request computer
   description: Used by the medical department to order supplies.
@@ -1109,6 +1131,7 @@
 
 - type: entity
   id: ComputerCargoOrdersScience
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerCargoOrders
   name: science request computer
   description: Used by the science department to order supplies.
@@ -1142,6 +1165,7 @@
 
 - type: entity
   id: ComputerCargoOrdersSecurity
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerCargoOrders
   name: security request computer
   description: Used by the security department to order supplies.
@@ -1175,6 +1199,7 @@
 
 - type: entity
   id: ComputerCargoOrdersService
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerCargoOrders
   name: service request computer
   description: Used by the service department to order supplies.
@@ -1208,6 +1233,7 @@
 
 - type: entity
   id: ComputerCargoBounty
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerAiAccess
   name: cargo bounty computer
   description: Used to manage currently active bounties.
@@ -1237,7 +1263,7 @@
     board: CargoBountyComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#b89f25"
   - type: AccessReader
     access: [["Logistics"]] # Fire edit
@@ -1249,6 +1275,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerFundingAllocation
+  categories: [ HideSpawnMenu ] # Fire edit
   name: funding allocation computer
   description: Terminal for controlling the distribution of funds and pay to departments.
   components:
@@ -1280,12 +1307,13 @@
     board: FundingAllocationComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#3c5eb5"
 
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerCloningConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   name: cloning console computer
   description: The centerpiece of the cloning system, medicine's greatest accomplishment. It has lots of ports and wires.
   components:
@@ -1311,7 +1339,7 @@
     board: CloningConsoleComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#1f8c28"
   - type: DeviceLinkSource
     range: 4
@@ -1369,7 +1397,7 @@
     board: SalvageJobBoardComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#b89f25"
 
 - type: entity
@@ -1418,7 +1446,7 @@
       board: SalvageExpeditionsComputerCircuitboard
     - type: PointLight
       radius: 1.5
-      energy: 1.6
+      energy: 4.0
       color: "#b89f25"
     - type: AccessReader
       access: [["Salvage"]]
@@ -1428,6 +1456,7 @@
 - type: entity
   parent: BaseComputer
   id: ComputerSurveillanceCameraMonitor
+  categories: [ HideSpawnMenu ] # Fire edit
   name: camera monitor
   description: A surveillance camera monitor. You're watching them. Maybe.
   components:
@@ -1467,6 +1496,7 @@
 - type: entity
   parent: BaseComputer
   id: ComputerSurveillanceWirelessCameraMonitor
+  categories: [ HideSpawnMenu ] # Fire edit
   name: wireless camera monitor
   description: A wireless surveillance camera monitor. You're watching them. Maybe.
   components:
@@ -1522,6 +1552,7 @@
 
 - type: entity
   id: ComputerPalletConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerAiAccess
   name: cargo sale computer
   description: Used to sell goods loaded onto cargo pallets.
@@ -1554,7 +1585,7 @@
     board: CargoSaleComputerCircuitboard
   - type: PointLight
     radius: 1.5
-    energy: 1.6
+    energy: 4.0
     color: "#b89f25"
   - type: AccessReader
     access: [["Logistics"]] # Fire edit
@@ -1565,6 +1596,7 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerMassMedia
+  categories: [ HideSpawnMenu ] # Fire edit
   name: news manager console
   description: Write your message to the world!
   components:
@@ -1606,7 +1638,7 @@
   # Putting this as "DO NOT MAP" until the performance issues are fixed.
   # And it's more fleshed out.
   suffix: TESTING, DO NOT MAP
-  categories: [ DoNotMap ]
+  categories: [ DoNotMap, HideSpawnMenu ] # Fire edit
   components:
     - type: Sprite
       layers:
@@ -1622,7 +1654,7 @@
           state: generic_panel_open
     - type: PointLight
       radius: 1.5
-      energy: 1.6
+      energy: 4.0
       color: "#43ccb5"
     - type: Computer
       board: SensorConsoleCircuitboard
@@ -1649,8 +1681,9 @@
 - type: entity
   parent: BaseComputerAiAccess
   id: ComputerRoboticsControl
+  categories: [ HideSpawnMenu ] # Fire edit
   name: robotics control console
-  description: Used to remotely monitor, disable and destroy the station's cyborgs.
+  description: Used to remotely monitor the station's cyborgs.
   components:
   - type: Sprite
     layers:
@@ -1665,6 +1698,7 @@
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
   - type: RoboticsConsole
+    allowBorgControl: false
   - type: ActiveRadio
     channels:
     - Science
@@ -1690,7 +1724,7 @@
     unlockOnClick: false
 
 - type: entity
-  parent: ComputerRoboticsControl
+  parent: BaseComputer
   id: ComputerXenoborgsControl
   name: xenoborgs control console
   description: Used to remotely monitor all xenoborgs.
@@ -1707,23 +1741,32 @@
       state: rd_key
     - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
       state: generic_panel_open
+  - type: ActivatableUI
+    key: enum.RoboticsConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.RoboticsConsoleUiKey.Key:
+        type: RoboticsConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface
   - type: RoboticsConsole
     allowBorgControl: false
     radioChannel: Xenoborg
   - type: ActiveRadio
     channels:
     - Xenoborg
+  - type: ApcPowerReceiver
+    powerLoad: 1000
   - type: DeviceNetwork
     deviceNetId: Wireless
     receiveFrequencyId: Mothership
     transmitFrequencyId: Xenoborg
   - type: Computer
     board: ComputerXenoborgsControlCircuitboard
-  - type: AccessReader # only used for dangerous things
-    access: [["Xenoborg"]]
 
 - type: entity
   id: StationAiUploadComputer
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputer
   name: AI upload console
   description: Used to update the laws of the station AI.
@@ -1769,3 +1812,87 @@
     containers:
       circuit_holder: !type:ContainerSlot
       board: !type:Container
+
+- type: entity
+  id: StationAiFixerComputer
+  categories: [ HideSpawnMenu ] # Fire edit
+  parent: BaseComputer
+  name: AI restoration console
+  description: Used to repair damaged artifical intelligences.
+  components:
+  - type: Sprite
+    layers:
+    - map: [ "computerLayerBody" ]
+      state: computer
+    - map: [ "computerLayerKeyboard" ]
+      state: generic_keyboard
+    - map: [ "computerLayerScreen" ]
+      state: ai-fixer-empty
+    - map: [ "computerLayerKeys" ]
+      state: rd_key
+    - map: [ "enum.WiresVisualLayers.MaintenancePanel" ]
+      state: generic_panel_open
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.ComputerVisuals.Powered:
+        computerLayerScreen:
+          True: { visible: true, shader: unshaded }
+          False: { visible: false }
+        computerLayerKeys:
+          True: { visible: true, shader: unshaded }
+          False: { visible: true, shader: shaded }
+      enum.StationAiFixerConsoleVisuals.Key:
+        computerLayerScreen:
+          Repair0: { state: ai-fixer-progress-0 }
+          Repair1: { state: ai-fixer-progress-1 }
+          Repair2: { state: ai-fixer-progress-2 }
+          Repair3: { state: ai-fixer-progress-3 }
+          Purge0: { state: ai-fixer-purge-0 }
+          Purge1: { state: ai-fixer-purge-1 }
+          Purge2: { state: ai-fixer-purge-2 }
+          Purge3: { state: ai-fixer-purge-3 }
+          Empty: { state: ai-fixer-empty }
+          Occupied: { state: ai-fixer-full }
+          Rebooting: { state: ai-fixer-404 }
+          Dead: { state: ai-fixer-404 }
+      enum.WiresVisuals.MaintenancePanelState:
+        enum.WiresVisualLayers.MaintenancePanel:
+          True: { visible: false }
+          False: { visible: true }
+  - type: ApcPowerReceiver
+    powerLoad: 1000
+  - type: Computer
+    board: StationAiFixerCircuitboard
+  - type: AccessReader
+    access: [ [ "ResearchDirector" ] ]
+  - type: Lock
+    unlockOnClick: false
+  - type: StationAiFixerConsole
+  - type: ItemSlotsLock
+    slots:
+    - station_ai_holder
+  - type: ItemSlotRequiresPower
+  - type: ItemSlots
+    slots:
+      station_ai_holder:
+        ejectOnBreak: true
+        lockedFailPopup: station-ai-fixer-console-is-locked
+        whitelistFailPopup: station-ai-fixer-console-station-ai-holder-required
+        whitelist:
+          requireAll: true
+          components:
+          - StationAiHolder
+          - Item
+  - type: ContainerContainer
+    containers:
+      station_ai_holder: !type:ContainerSlot
+      board: !type:Container
+  - type: ActivatableUI
+    key: enum.StationAiFixerConsoleUiKey.Key
+  - type: UserInterface
+    interfaces:
+      enum.StationAiFixerConsoleUiKey.Key:
+        type: StationAiFixerConsoleBoundUserInterface
+      enum.WiresUiKey.Key:
+        type: WiresBoundUserInterface

@@ -1,0 +1,37 @@
+﻿# Безопасный
+
+- type: job
+  id: Scp131A
+  name: job-name-scp131
+  description: job-description-scp131
+  playTimeTracker: JobScp131A
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 # 5h
+  weight: 969
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp131A
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false
+
+- type: job
+  id: Scp131B
+  name: job-name-scp131
+  description: job-description-scp131
+  playTimeTracker: JobScp131B
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 # 5h
+  weight: 968
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp131B
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false

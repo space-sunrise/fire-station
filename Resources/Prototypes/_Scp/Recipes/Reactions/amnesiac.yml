@@ -4,7 +4,7 @@
   reactants:
     Ephedrine:
       amount: 1
-    Dylomet:
+    Diethylamine:
       amount: 1
     RawAmnesiac:
       amount: 1
@@ -17,7 +17,7 @@
   reactants:
     MindbreakerToxin:
       amount: 1
-    Dylomet:
+    Diethylamine:
       amount: 1
     RawAmnesiac:
       amount: 2
@@ -30,7 +30,7 @@
   reactants:
     PolytrinicAcid:
       amount: 1
-    Dylomet:
+    Diethylamine:
       amount: 1
     RawAmnesiac:
       amount: 1
@@ -43,7 +43,7 @@
   reactants:
     Lipolicide:
       amount: 1
-    Dylomet:
+    Diethylamine:
       amount: 1
     RawAmnesiac:
       amount: 1

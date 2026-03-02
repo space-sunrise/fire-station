@@ -12,7 +12,7 @@
   - type: FlavorProfile
     flavors:
     - scp999jelly
-  - type: Food
+  - type: Edible
   - type: Tag
     tags:
     - Scp999jelly

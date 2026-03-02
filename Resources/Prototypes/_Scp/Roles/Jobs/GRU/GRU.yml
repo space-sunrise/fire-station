@@ -1,0 +1,89 @@
+- type: randomHumanoidSettings
+  id: GRULeader
+  parent: CommonGRULeader
+  randomizeName: false
+  components:
+  - type: GhostRole
+    name: ghost-role-information-gru-leader-name
+    description: ghost-role-information-gru-leader-description
+    rules: ghost-role-information-chaos-rules
+    raffle:
+      settings: short
+  - type: Loadout
+    prototypes: [ GRULeaderGear ]
+  - type: TimedRemoveComponents
+    removeAfter: 2
+    components:
+    - type: Implanted
+
+- type: startingGear
+  id: GRULeaderGear
+  equipment:
+    jumpsuit: ClothingUniformGRU
+    back: MtfTacticalBackpack
+    shoes: ClothingShoesBootsSecurityGuard
+    head: ClothingHeadHatBeretCommand
+    mask: ClothingMaskGRU
+    eyes: ClothingEyesNVDSec
+    gloves: ClothingHandsGlovesMtfMilitary
+    outerClothing: ClothingOuterArmorGRU
+    belt: ClothingBeltMtfMedicalFilledOperative
+    ears: ClothingHeadsetGRU
+    pocket1: ChaosAccessBreaker
+  storage:
+    back:
+    - Crowbar
+
+- type: randomHumanoidSettings
+  id: GRUSpecialist
+  parent: CommonGRUSpecialist
+  randomizeName: false
+  components:
+  - type: GhostRole
+    name: ghost-role-information-gru-specialist-name
+    description: ghost-role-information-gru-description
+    rules: ghost-role-information-chaos-rules
+    raffle:
+      settings: short
+  - type: Loadout
+    prototypes: [ GRUSpecialistGear ]
+  - type: TimedRemoveComponents
+    removeAfter: 2
+    components:
+    - type: Implanted
+
+- type: randomHumanoidSettings
+  id: GRUCadet
+  parent: CommonGRUCadet
+  randomizeName: false
+  components:
+  - type: GhostRole
+    name: ghost-role-information-gru-cadet-name
+    description: ghost-role-information-gru-description
+    rules: ghost-role-information-chaos-rules
+    raffle:
+      settings: short
+  - type: Loadout
+    prototypes: [ GRUSpecialistGear ]
+  - type: TimedRemoveComponents
+    removeAfter: 2
+    components:
+    - type: Implanted
+
+- type: startingGear
+  id: GRUSpecialistGear
+  equipment:
+    jumpsuit: ClothingUniformGRU
+    back: MtfTacticalBackpack
+    shoes: ClothingShoesBootsSecurityGuard
+    head: ClothingHelmetGRU
+    mask: ClothingMaskGRU
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesMtfMilitary
+    outerClothing: ClothingOuterArmorGRU
+    belt: ClothingBeltMtfMedicalFilledOperative
+    ears: ClothingHeadsetGRU
+    pocket1: ChaosAccessBreaker
+  storage:
+    back:
+    - Crowbar

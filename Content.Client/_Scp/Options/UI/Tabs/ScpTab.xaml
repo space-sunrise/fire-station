@@ -5,11 +5,11 @@
         <ScrollContainer VerticalExpand="True">
             <BoxContainer Orientation="Vertical" Margin="8 8 8 8">
 
-                <Label Text="{Loc ui-options-tab-hover-to-see-details}" StyleClasses="LabelSecondaryColor"/>
+                <Label Text="{Loc ui-options-tab-hover-to-see-details}" StyleClasses="LabelWeak"/>
 
                 <!-- ГРАФИКА -->
                 <Label Text="{Loc ui-options-scp-graphics}" StyleClasses="LabelKeyText"/>
-                <Label Text="{Loc ui-options-fps-impact-attention}" StyleClasses="LabelSecondaryColor"/>
+                <Label Text="{Loc ui-options-fps-impact-attention}" StyleClasses="LabelWeak"/>
 
                 <!-- Зернистость -->
                 <CheckBox Name="GrainToggleOverlayCheckBox"

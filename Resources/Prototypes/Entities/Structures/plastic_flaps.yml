@@ -1,10 +1,14 @@
 - type: entity
   id: PlasticFlapsBase
-  parent: BaseStructureDynamic
+  parent: [BaseDeltaPressureGlass, BaseStructureDynamic] # Sunrise-Edit
   abstract: true
   placement:
     mode: SnapgridCenter
   components:
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
   - type: Sprite
     sprite: Structures/plastic_flaps.rsi
     state: plasticflaps
@@ -27,6 +31,18 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: Metallic
+  # Sunrise-Start
+  - type: ExaminableDamage
+    messages: WindowMessages
+  - type: Repairable
+  - type: Appearance
+  - type: DamageVisuals
+    thresholds: [5, 10, 20]
+    damageDivisor: 5
+    trackAllDamage: true
+    damageOverlay:
+      sprite: Structures/Windows/cracks.rsi
+  # Sunrise-End
   - type: Destructible
     thresholds:
     - trigger:
@@ -40,6 +56,7 @@
 
 - type: entity
   id: PlasticFlapsClear
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: PlasticFlapsBase
   name: plastic flaps
   suffix: Clear
@@ -51,6 +68,7 @@
 
 - type: entity
   id: PlasticFlapsOpaque
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: PlasticFlapsBase
   name: plastic flaps
   suffix: Opaque
@@ -75,11 +93,20 @@
 
 - type: entity
   id: PlasticFlapsAirtightClear
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: PlasticFlapsBase
   name: airtight plastic flaps
   suffix: Airtight, Clear
   description: Heavy duty, slightly stronger, airtight plastic flaps. Definitely can't get past those. No way.
   components:
+  # Sunrise-Start
+  - type: DamageVisuals
+    thresholds: [5, 10, 20]
+    damageDivisor: 7
+    trackAllDamage: true
+    damageOverlay:
+      sprite: Structures/Windows/cracks.rsi
+  # Sunrise-End
   - type: Destructible
     thresholds:
     - trigger:
@@ -91,16 +118,23 @@
   - type: Airtight
   - type: StaticPrice
     price: 100
-  - type: Anchorable
-    delay: 999
 
 - type: entity
   id: PlasticFlapsAirtightOpaque
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: PlasticFlapsAirtightClear #Sunrise-edit
   name: airtight plastic flaps
   suffix: Airtight, Opaque
   description: Heavy duty, slightly stronger, airtight plastic flaps. Definitely can't get past those. No way.
   components:
+  # Sunrise-Start
+  - type: DamageVisuals
+    thresholds: [5, 10, 20]
+    damageDivisor: 6.5
+    trackAllDamage: true
+    damageOverlay:
+      sprite: Structures/Windows/cracks.rsi
+  # Sunrise-End
   - type: Destructible
     thresholds:
     - trigger:

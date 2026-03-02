@@ -1,10 +1,10 @@
 using System.Linq;
+using Content.Client._Scp.Stylesheets.Palette;
 using Content.Client._Sunrise.AntagObjectives;
 using Content.Client.Administration.Systems;
 using Content.Shared.Administration; // Sunrise-Edit
 using Content.Shared.Administration.Managers; // Sunrise-Edit
 using Content.Client.Administration.UI.AntagObjectives;
-using Content.Client.Stylesheets;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Administration;
 using Content.Shared.CCVar;
@@ -31,8 +31,8 @@ public sealed partial class PlayerTab : Control
     private const string ArrowDown = "↓";
 
     // Fire edit start
-    private readonly Color _altColor = StyleNano.PanelDarker;
-    private readonly Color _defaultColor = StyleNano.PanelDark;
+    private readonly Color _altColor = ScpPalettes.PanelDarker;
+    private readonly Color _defaultColor = ScpPalettes.PanelDark;
     // Fire edit end
 
     private readonly AdminSystem _adminSystem;
@@ -63,6 +63,7 @@ public sealed partial class PlayerTab : Control
         _config.OnValueChanged(CCVars.AdminPlayerTabRoleSetting, RoleSettingChanged, true);
         _config.OnValueChanged(CCVars.AdminPlayerTabColorSetting, ColorSettingChanged, true);
         _config.OnValueChanged(CCVars.AdminPlayerTabSymbolSetting, SymbolSettingChanged, true);
+
 
         OverlayButton.OnPressed += OverlayButtonPressed;
         ShowDisconnectedButton.OnPressed += ShowDisconnectedPressed;

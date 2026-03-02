@@ -1,0 +1,352 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Created by odlieerr(Discord) | Odleer(Space Station 14). Bio, bomb and plasteel sprites made by miduzka(discord)",
+    "size": {
+        "x": 48,
+        "y": 48
+    },
+    "states": [
+        {
+            "name": "cargo",
+            "directions": 4
+        },
+        {
+            "name": "cargo_door",
+            "directions": 4
+        },
+        {
+            "name": "cargo_open",
+            "directions": 4
+        },
+        {
+            "name": "com",
+            "directions": 4
+        },
+        {
+            "name": "com_door",
+            "directions": 4
+        },
+        {
+            "name": "com_open",
+            "directions": 4
+        },
+        {
+            "name": "emergency",
+            "directions": 4
+        },
+        {
+            "name": "emergency_door",
+            "directions": 4
+        },
+        {
+            "name": "emergency_open",
+            "directions": 4
+        },
+        {
+            "name": "eng",
+            "directions": 4
+        },
+        {
+            "name": "eng_door",
+            "directions": 4
+        },
+        {
+            "name": "eng_elec_door",
+            "directions": 4
+        },
+        {
+            "name": "eng_elec_open",
+            "directions": 4
+        },
+        {
+            "name": "eng_evac_door",
+            "directions": 4
+        },
+        {
+            "name": "eng_open",
+            "directions": 4
+        },
+        {
+            "name": "eng_rad_door",
+            "directions": 4
+        },
+        {
+            "name": "eng_tool_door",
+            "directions": 4
+        },
+        {
+            "name": "eng_weld_door",
+            "directions": 4
+        },
+        {
+            "name": "generic",
+            "directions": 4
+        },
+        {
+            "name": "generic_door",
+            "directions": 4
+        },
+        {
+            "name": "generic_icon"
+        },
+        {
+            "name": "generic_open",
+            "directions": 4
+        },
+        {
+            "name": "locked",
+            "directions": 4
+        },
+        {
+            "name": "med",
+            "directions": 4
+        },
+        {
+            "name": "med_door",
+            "directions": 4
+        },
+        {
+            "name": "med_open",
+            "directions": 4
+        },
+        {
+            "name": "n2",
+            "directions": 4
+        },
+        {
+            "name": "n2_door",
+            "directions": 4
+        },
+        {
+            "name": "n2_open",
+            "directions": 4
+        },
+        {
+            "name": "science",
+            "directions": 4
+        },
+        {
+            "name": "science_door",
+            "directions": 4
+        },
+        {
+            "name": "science_open",
+            "directions": 4
+        },
+        {
+            "name": "sec",
+            "directions": 4
+        },
+        {
+            "name": "sec_2",
+            "directions": 4
+        },
+        {
+            "name": "sec_door",
+            "directions": 4
+        },
+        {
+            "name": "sec_door_2",
+            "directions": 4
+        },
+        {
+            "name": "sec_open",
+            "directions": 4
+        },
+        {
+            "name": "sec_open_2",
+            "directions": 4
+        },
+        {
+            "name": "sparking",
+            "directions": 4,
+            "delays": [
+                [0.1, 0.1, 0.1, 0.1],
+                [0.1, 0.1, 0.1, 0.1],
+                [0.1, 0.1, 0.1, 0.1],
+                [0.1, 0.1, 0.1, 0.1]
+            ]
+        },
+        {
+            "name": "unlocked",
+            "directions": 4
+        },
+        {
+            "name": "welded",
+            "directions": 4
+        },
+        {
+            "name": "bio",
+            "directions": 4
+        },
+        {
+            "name": "bio_door",
+            "directions": 4
+        },
+        {
+            "name": "bio_open",
+            "directions": 4
+        },
+        {
+            "name": "bio_sec",
+            "directions": 4
+        },
+        {
+            "name": "bio_sec_door",
+            "directions": 4
+        },
+        {
+            "name": "bio_sec_open",
+            "directions": 4
+        },
+        {
+            "name": "bio_viro",
+            "directions": 4
+        },
+        {
+            "name": "bio_viro_door",
+            "directions": 4
+        },
+        {
+            "name": "bio_viro_open",
+            "directions": 4
+        },
+        {
+            "name": "bomb",
+            "directions": 4
+        },
+        {
+            "name": "bomb_door",
+            "directions": 4
+        },
+        {
+            "name": "bomb_open",
+            "directions": 4
+        },
+        {
+            "name": "cargo_door_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "cargo_open_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "cargo_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "com_door_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "com_open_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "com_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "eng_door_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "eng_open_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "eng_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "eng_tool_open",
+            "directions": 4
+        },
+        {
+            "name": "fire",
+            "directions": 4
+        },
+        {
+            "name": "fire_door",
+            "directions": 4
+        },
+        {
+            "name": "fire_open",
+            "directions": 4
+        },
+        {
+            "name": "freezer",
+            "directions": 4
+        },
+        {
+            "name": "freezer_door",
+            "directions": 4
+        },
+        {
+            "name": "freezer_open",
+            "directions": 4
+        },
+        {
+            "name": "generic_door_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "generic_open_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "generic_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "med_door_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "med_open_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "med_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "science_door_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "science_open_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "science_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "sec_2_door_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "sec_2_open_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "sec_2_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "sec_door_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "sec_open_plasteel",
+            "directions": 4
+        },
+        {
+            "name": "sec_plasteel",
+            "directions": 4
+        }
+    ]
+}

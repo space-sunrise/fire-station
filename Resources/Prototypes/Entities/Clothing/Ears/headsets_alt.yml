@@ -24,9 +24,9 @@
       - EncryptionKeyCommand
       - EncryptionKeyCommon
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/cargo.rsi
+    sprite:  _Sunrise/Clothing/Ears/Headsets/cargo.rsi # Sunrise-Edit
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/cargo.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/cargo.rsi # Sunrise-Edit
 
 - type: entity
   parent: ClothingHeadsetAlt
@@ -40,9 +40,9 @@
       - EncryptionKeyCentCom
       - EncryptionKeyStationMaster
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/centcom.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/centcom.rsi # Sunrise-Edit
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/centcom.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/centcom.rsi # Sunrise-Edit
 
 - type: entity
   parent: [ClothingHeadsetAlt, BaseCommandContraband]
@@ -55,9 +55,9 @@
       key_slots:
       - EncryptionKeyStationMaster
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/command.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/command.rsi # Sunrise-Edit
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/command.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/command.rsi # Sunrise-Edit
 
 - type: entity
   parent: [ClothingHeadsetAlt, BaseCommandContraband]
@@ -72,9 +72,9 @@
       - EncryptionKeyCommand
       - EncryptionKeyCommon
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/engineering.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/engineering.rsi # Sunrise-Edit
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/engineering.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/engineering.rsi # Sunrise-Edit
 
 - type: entity
   parent: [ClothingHeadsetAlt, BaseCommandContraband]
@@ -89,9 +89,9 @@
       - EncryptionKeyCommand
       - EncryptionKeyCommon
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/medical.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/medical.rsi # Sunrise-Edit
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/medical.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/medical.rsi # Sunrise-Edit
   - type: StealTarget
     stealGroup: ClothingHeadsetAltMedical
 
@@ -108,9 +108,9 @@
       - EncryptionKeyCommand
       - EncryptionKeyCommon
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/security.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/security.rsi # Sunrise-Edit
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/security.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/security.rsi # Sunrise-Edit
 
 - type: entity
   parent: [ClothingHeadsetAlt, BaseCommandContraband]
@@ -125,9 +125,9 @@
       - EncryptionKeyCommand
       - EncryptionKeyCommon
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/science.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/science.rsi # Sunrise-Edit
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/science.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/science.rsi # Sunrise-Edit
 
 - type: entity
   parent: [ClothingHeadsetAlt, BaseSyndicateContraband]
@@ -144,9 +144,9 @@
       key_slots:
       - EncryptionKeySyndie
   - type: Sprite
-    sprite: Clothing/Ears/Headsets/syndicate.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/syndicate.rsi # Sunrise-Edit
   - type: Clothing
-    sprite: Clothing/Ears/Headsets/syndicate.rsi
+    sprite: _Sunrise/Clothing/Ears/Headsets/syndicate.rsi # Sunrise-Edit
 
 - type: entity
   parent: ClothingHeadsetAlt
@@ -162,9 +162,9 @@
         key_slots:
           - EncryptionKeyFreelance
     - type: Sprite
-      sprite: Clothing/Ears/Headsets/freelance.rsi
+      sprite: _Sunrise/Clothing/Ears/Headsets/freelance.rsi # Sunrise-Edit
     - type: Clothing
-      sprite: Clothing/Ears/Headsets/freelance.rsi
+      sprite: _Sunrise/Clothing/Ears/Headsets/freelance.rsi # Sunrise-Edit
 
 - type: entity
   parent: [ClothingHeadsetAlt, BaseMagicalContraband]
@@ -179,6 +179,6 @@
         key_slots:
         - EncryptionKeyStationMaster
     - type: Sprite
-      sprite: Clothing/Ears/Headsets/wizard.rsi
+      sprite: _Sunrise/Clothing/Ears/Headsets/wizard.rsi # Sunrise-Edit
     - type: Clothing
-      sprite: Clothing/Ears/Headsets/wizard.rsi
+      sprite: _Sunrise/Clothing/Ears/Headsets/wizard.rsi # Sunrise-Edit

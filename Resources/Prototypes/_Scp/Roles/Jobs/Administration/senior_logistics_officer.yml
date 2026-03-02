@@ -4,12 +4,10 @@
   description: job-description-senior-logistics-officer
   playTimeTracker: JobSeniorLogisticsOfficer
   requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 144000
   - !type:RoleTimeRequirement
     role: JobLogisticsOfficer
     time: 36000
-  weight: 10
+  weight: 935
   startingGear: SeniorLogisticsOfficerGear
   icon: JobSeniorLogisticsOfficer
   supervisors: job-supervisors-director

@@ -1,60 +1,59 @@
 ﻿- type: lobbyAnimation
   id: Scp049
-  rawPath: _Scp/Lobby/Animations/049
+  animation: NetTextures/_Scp/Lobby/Animations/049.rsi
   scale: 13, 13
 
 - type: lobbyAnimation
   id: Scp096
-  rawPath: _Scp/Lobby/Animations/096
+  animation: NetTextures/_Scp/Lobby/Animations/096.rsi
   scale: 13, 13
 
 - type: lobbyAnimation
   id: Scp173
-  rawPath: _Scp/Lobby/Animations/173
+  animation: NetTextures/_Scp/Lobby/Animations/173.rsi
   scale: 13, 13
 
-# Вводит клиент в стан хз почему
-#- type: lobbyAnimation
-#  id: Camera
-#  rawPath: _Scp/Lobby/Animations/camera
-#  scale: 13, 13
+- type: lobbyAnimation
+  id: Camera
+  animation: NetTextures/_Scp/Lobby/Animations/camera.rsi
+  scale: 13, 13
 
 - type: lobbyAnimation
   id: Foundation
-  rawPath: _Scp/Lobby/Animations/foundation
+  animation: NetTextures/_Scp/Lobby/Animations/foundation.rsi
   scale: 13, 13
 
 - type: lobbyAnimation
   id: Mtf
-  rawPath: _Scp/Lobby/Animations/mtf
+  animation: NetTextures/_Scp/Lobby/Animations/mtf.rsi
   scale: 13, 13
 
 - type: lobbyAnimation
   id: DeepFacility
-  rawPath: _Scp/Lobby/Animations/deepfacility
+  animation: Textures/_Scp/Lobby/Animations/deep_facility.rsi
   scale: 13, 13
 
 - type: lobbyAnimation
   id: Logo
-  rawPath: _Scp/Lobby/Animations/logo
+  animation: NetTextures/_Scp/Lobby/Animations/logo.rsi
   scale: 13, 13
 
 - type: lobbyAnimation
   id: PC
-  rawPath: _Scp/Lobby/Animations/pc
+  animation: NetTextures/_Scp/Lobby/Animations/pc.rsi
   scale: 13, 13
 
 - type: lobbyAnimation
   id: RedGuy
-  rawPath: _Scp/Lobby/Animations/redguy
+  animation: NetTextures/_Scp/Lobby/Animations/red_guy.rsi
   scale: 13, 13
 
 - type: lobbyAnimation
   id: Screen
-  rawPath: _Scp/Lobby/Animations/screen
+  animation: NetTextures/_Scp/Lobby/Animations/screen.rsi
   scale: 13, 13
 
 - type: lobbyAnimation
   id: WorldMap
-  rawPath: _Scp/Lobby/Animations/worldmap
+  animation: NetTextures/_Scp/Lobby/Animations/world_map.rsi
   scale: 8, 8

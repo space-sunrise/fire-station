@@ -3,20 +3,25 @@
   name: job-name-research-assistant
   description: job-description-research-assistant
   playTimeTracker: JobResearchAssistant
-#  requirements: Fire edit
-#    - !type:OverallPlaytimeRequirement
-#      time: 3600 #1 hr # Sunrise-RoleTime
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Science
+      time: 15h #  Sunrise-edit
+      inverted: true # stop playing intern if you're good at science!
   startingGear: ResearchAssistantGear
   icon: "JobIconResearchAssistant"
   supervisors: job-supervisors-science
-  canBeAntag: true # Sunrise-Edit
+  canBeAntag: false
   displayWeight: 0 # Sunrise-Edit
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
   access:
   - Research
   - Maintenance
-
+  # Sunrise-Start
+  extendedAccess:
+  - ResearchConsoleAccess
+  # Sunrise-End
 - type: startingGear
   id: ResearchAssistantGear
   equipment:

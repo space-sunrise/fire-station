@@ -1,10 +1,14 @@
 ﻿- type: entity
   id: Airlock
-  parent: BaseStructure
+  parent: [BaseStructure, BaseDeltaPressurePlasma]
   name: airlock
   description: It opens, it closes, and maybe crushes you.
   categories: [ HideSpawnMenu ] # Fire added
   components:
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
   - type: Ricochetable
     chance: 1
   - type: Pierceable
@@ -45,6 +49,10 @@
       shader: unshaded
       visible: false
       map: ["enum.ElectrifiedLayers.Sparks"]
+    - state: sparks
+      map: ["enum.DoorVisualLayers.BaseEmagging"]
+      shader: unshaded
+      visible: false
   - type: AnimationPlayer
   - type: Physics
   - type: Fixtures
@@ -52,7 +60,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.49,-0.49,0.49,0.49" # don't want this colliding with walls or they won't close
+          bounds: "-0.46,-0.46,0.46,0.46" # Sunrise edit - фикс двойных шлюзов
         density: 100
         mask:
         - FullTileMask
@@ -180,6 +188,11 @@
     - Airlocks
     - WirePanels
     - Networking
+  # Sunrise-start
+  - type: IconSmooth
+    key: walls
+    mode: NoSprite
+  # Sunrise-end
   placement:
     mode: SnapgridCenter
 
@@ -193,7 +206,7 @@
 
 - type: entity
   id: AirlockGlass
-  parent: Airlock
+  parent: [Airlock, BaseDeltaPressureReinforcedPlasmaQuarter]
   name: glass airlock
   categories: [ HideSpawnMenu ] # Fire added
   components:
@@ -213,7 +226,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.49,-0.49,0.49,0.49" # don't want this colliding with walls or they won't close
+          bounds: "-0.46,-0.46,0.46,0.46" # Sunrise edit - фикс двойных шлюзов
         density: 100
         mask:
         - FullTileMask

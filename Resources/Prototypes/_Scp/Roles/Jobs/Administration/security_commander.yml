@@ -3,16 +3,14 @@
   name: job-name-security-commander
   description: job-description-security-commander
   playTimeTracker: JobSecurityCommander
-  requirements: # TODO: Поменять после того, как игроки наберут время на новых ролях
-  - !type:OverallPlaytimeRequirement
-    time: 144000 # 40 часов
+  requirements:
   - !type:DepartmentTimeRequirement
     department: HeavyContainmentSecurityService
     time: 36000
   - !type:DepartmentTimeRequirement
     department: ExternalAdministrativeZoneSecurityService
-    time: 72000
-  weight: 10
+    time: 36000
+  weight: 955
   startingGear: SecurityCommanderGear
   icon: JobSecurityCommander
   supervisors: job-supervisors-director

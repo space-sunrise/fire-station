@@ -1,3 +1,4 @@
+using Content.Shared._Scp.Other.Events;
 using Content.Shared.Research.Components;
 using Content.Shared.Xenoarchaeology.Equipment.Components;
 using Robust.Client.UserInterface;

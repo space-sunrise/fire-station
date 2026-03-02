@@ -41,6 +41,8 @@ namespace Content.Client.Stylesheets
 
     }
     // STLYE SHEETS WERE A MISTAKE. KILL ALL OF THIS WITH FIRE
+    [Obsolete("Please use the new sheetlet system to define styles, and remove all references to this class as it may be deleted in the future")]
+    // i did :)
     public sealed class StyleNano : StyleBase
     {
         public const string StyleClassBorderedWindowPanel = "BorderedWindowPanel";
@@ -48,7 +50,6 @@ namespace Content.Client.Stylesheets
         public const string StyleClassHandSlotHighlight = "HandSlotHighlight";
         public const string StyleClassChatPanel = "ChatPanel";
         public const string StyleClassChatSubPanel = "ChatSubPanel";
-        public const string StyleClassTransparentBorderedWindowPanel = "TransparentBorderedWindowPanel";
         public const string StyleClassHotbarPanel = "HotbarPanel";
         public const string StyleClassTooltipPanel = "tooltipBox";
         public const string StyleClassTooltipAlertTitle = "tooltipAlertTitle";
@@ -106,8 +107,51 @@ namespace Content.Client.Stylesheets
         public static readonly Color TelegramButtonColor = Color.FromHex("#0088cc");
         // Sunrise-Edit
 
-        // Fire edit - тут была куча хуйни, так как там многое поменялось я перенес ее в большой фаер едит
-        // Если сюда хочет встать какой-то конфликт, шлите нахуй, если это не чето новое
+        public static readonly Color PanelDark = Color.FromHex("#1E1E22");
+
+        public static readonly Color NanoGold = Color.FromHex("#A88B5E");
+        public static readonly Color GoodGreenFore = Color.FromHex("#31843E");
+        public static readonly Color ConcerningOrangeFore = Color.FromHex("#A5762F");
+        public static readonly Color DangerousRedFore = Color.FromHex("#BB3232");
+        public static readonly Color DisabledFore = Color.FromHex("#5A5A5A");
+
+        public static readonly Color ButtonColorDefault = Color.FromHex("#464966");
+        public static readonly Color ButtonColorDefaultRed = Color.FromHex("#D43B3B");
+        public static readonly Color ButtonColorHovered = Color.FromHex("#575b7f");
+        public static readonly Color ButtonColorHoveredRed = Color.FromHex("#DF6B6B");
+        public static readonly Color ButtonColorPressed = Color.FromHex("#3e6c45");
+        public static readonly Color ButtonColorDisabled = Color.FromHex("#30313c");
+
+        public static readonly Color ButtonColorCautionDefault = Color.FromHex("#ab3232");
+        public static readonly Color ButtonColorCautionHovered = Color.FromHex("#cf2f2f");
+        public static readonly Color ButtonColorCautionPressed = Color.FromHex("#3e6c45");
+        public static readonly Color ButtonColorCautionDisabled = Color.FromHex("#602a2a");
+
+        public static readonly Color ButtonColorGoodDefault = Color.FromHex("#3E6C45");
+        public static readonly Color ButtonColorGoodHovered = Color.FromHex("#31843E");
+        public static readonly Color ButtonColorGoodDisabled = Color.FromHex("#164420");
+
+        //NavMap
+        public static readonly Color PointRed = Color.FromHex("#B02E26");
+        public static readonly Color PointGreen = Color.FromHex("#38b026");
+        public static readonly Color PointMagenta = Color.FromHex("#FF00FF");
+
+        // Context menu button colors
+        public static readonly Color ButtonColorContext = Color.FromHex("#1119");
+        public static readonly Color ButtonColorContextHover = Color.DarkSlateGray;
+        public static readonly Color ButtonColorContextPressed = Color.LightSlateGray;
+        public static readonly Color ButtonColorContextDisabled = Color.Black;
+
+        // Examine button colors
+        public static readonly Color ExamineButtonColorContext = Color.Transparent;
+        public static readonly Color ExamineButtonColorContextHover = Color.DarkSlateGray;
+        public static readonly Color ExamineButtonColorContextPressed = Color.LightSlateGray;
+        public static readonly Color ExamineButtonColorContextDisabled = Color.FromHex("#5A5A5A");
+
+        // Fancy Tree elements
+        public static readonly Color FancyTreeEvenRowColor = Color.FromHex("#25252A");
+        public static readonly Color FancyTreeOddRowColor = FancyTreeEvenRowColor * new Color(0.8f, 0.8f, 0.8f);
+        public static readonly Color FancyTreeSelectedRowColor = new Color(55, 55, 68);
 
         //Used by the APC and SMES menus
         public const string StyleClassPowerStateNone = "PowerStateNone";
@@ -125,71 +169,21 @@ namespace Content.Client.Stylesheets
         public const string StyleClassCrossButtonRed = "CrossButtonRed";
         public const string StyleClassButtonColorRed = "ButtonColorRed";
         public const string StyleClassButtonColorGreen = "ButtonColorGreen";
-        public const string StyleClassNoStyle = "NoStyle";  // Sunrise-Edit
+        public static readonly Color ChatBackgroundColor = Color.FromHex("#25252ADD");
 
-        // Чат бекграуд переехал в блок фаер едит
+        // i'm not sure what the missing symbols were referencing, and this is getting obseleted anyway so:
+        public const string ButtonOpenRight = "OpenRight";
+        public const string ButtonOpenLeft = "OpenLeft";
+        public const string ButtonOpenBoth = "OpenBoth";
+        public const string ButtonSquare = "OpenBoth";
+        public const string ButtonCaution = "negative";
+        public const string StyleClassLabelHeading = "LabelHeading";
+        public const string StyleClassLabelSubText = "LabelSubText";
+        public const string StyleClassRedTopButton = "negative";
+        public const string ClassHighDivider = "HighDivider";
+        public const string ClassLowDivider = "LowDivider";
+        public const string ClassAngleRect = "AngleRect";
 
-        //Bwoink
-        public const string StyleClassPinButtonPinned = "pinButtonPinned";
-        public const string StyleClassPinButtonUnpinned = "pinButtonUnpinned";
-
-        // Fire edit - Updated colors for SCP/Grimdark theme
-
-        public const string StyleClassLabelHeadingTheBiggest = "LabelHeadingTheBiggest";
-
-        public static readonly Color PanelUltraDark = Color.FromHex("#090909");
-        public static readonly Color PanelDarker = Color.FromHex("#121111");  // 1d1c1c 161515
-        public static readonly Color PanelDark = Color.FromHex("#171616"); // Darker background 2a2828 1d1c1c
-        public static readonly Color PanelLightDark = Color.FromHex("#373535"); // 444444
-        public static readonly Color LightGray = Color.FromHex("#b2b2b2");
-        public static readonly Color BloodRed = Color.FromHex("#8B0000"); // Blood red accent
-        public static readonly Color BloodRedDarker = Color.FromHex("#4D0000"); // Blood red accent
-        public static readonly Color BloodRedDarker2 = Color.FromHex("#3A0000"); // Blood red accent
-        public static readonly Color SCPWhite = Color.FromHex("#e1e1e1");
-        public static readonly Color GoodGreenFore = Color.FromHex("#1A4D1A"); // Darker green
-        public static readonly Color ConcerningOrangeFore = Color.FromHex("#8B4500"); // Burnt orange
-        public static readonly Color DangerousRedFore = Color.FromHex("#660000"); // Deeper red
-        public static readonly Color DisabledFore = Color.FromHex("#3A3A3A"); // Darker disabled
-        public static readonly Color ScpYellow = Color.FromHex("#F5DE5F");
-
-        public static readonly Color NanoGold = BloodRed; // Blyat
-
-        public static readonly Color ButtonColorDefault = PanelDarker;
-        public static readonly Color ButtonColorDefaultRed = BloodRedDarker;
-        public static readonly Color ButtonColorHovered = BloodRedDarker2; // Dark red hover
-        public static readonly Color ButtonColorHoveredRed = Color.FromHex("#5A0000");
-        public static readonly Color ButtonColorPressed = BloodRed;
-        public static readonly Color ButtonColorDisabled = PanelLightDark;
-
-        public static readonly Color ButtonColorCautionDefault = Color.FromHex("#4D0000");
-        public static readonly Color ButtonColorCautionHovered = Color.FromHex("#660000");
-        public static readonly Color ButtonColorCautionPressed = Color.FromHex("#330000");
-        public static readonly Color ButtonColorCautionDisabled = Color.FromHex("#260000");
-
-        public static readonly Color ButtonColorGoodDefault = Color.FromHex("#1A4D1A");
-        public static readonly Color ButtonColorGoodHovered = Color.FromHex("#2B662B");
-        public static readonly Color ButtonColorGoodDisabled = Color.FromHex("#0D260D");
-
-        public static readonly Color PointRed = BloodRed;
-        public static readonly Color PointGreen = Color.FromHex("#1A4D1A");
-        public static readonly Color PointMagenta = Color.FromHex("#8B008B");
-
-        public static readonly Color ButtonColorContext = Color.FromHex("#111111");
-        public static readonly Color ButtonColorContextHover = Color.FromHex("#330000");
-        public static readonly Color ButtonColorContextPressed = Color.FromHex("#1A0000");
-        public static readonly Color ButtonColorContextDisabled = Color.Black;
-
-        public static readonly Color ExamineButtonColorContext = Color.Transparent;
-        public static readonly Color ExamineButtonColorContextHover = Color.FromHex("#330000");
-        public static readonly Color ExamineButtonColorContextPressed = Color.FromHex("#1A0000");
-        public static readonly Color ExamineButtonColorContextDisabled = Color.FromHex("#3A3A3A");
-
-        public static readonly Color FancyTreeEvenRowColor = Color.FromHex("#1A1A1A");
-        public static readonly Color FancyTreeOddRowColor = FancyTreeEvenRowColor * new Color(0.8f, 0.8f, 0.8f);
-        public static readonly Color FancyTreeSelectedRowColor = new Color(40, 0, 0);
-
-        public static readonly Color ChatBackgroundColor = Color.FromHex("#313131");
-        // Fire edit end
 
         public override Stylesheet Stylesheet { get; }
 
@@ -212,47 +206,41 @@ namespace Content.Client.Stylesheets
             var notoSansBold18 = resCache.NotoStack(variation: "Bold", size: 18);
             var notoSansBold20 = resCache.NotoStack(variation: "Bold", size: 20);
             var notoSansMono = resCache.GetFont("/EngineFonts/NotoSans/NotoSansMono-Regular.ttf", size: 12);
-            var robotoMonoBold11 = resCache.GetFont("/Fonts/RobotoMono/RobotoMono-Bold.ttf", size: 11);
-            var robotoMonoBold12 = resCache.GetFont("/Fonts/RobotoMono/RobotoMono-Bold.ttf", size: 12);
-            var robotoMonoBold14 = resCache.GetFont("/Fonts/RobotoMono/RobotoMono-Bold.ttf", size: 14);
 
             var windowHeaderTex = resCache.GetTexture("/Textures/Interface/Nano/window_header.png");
-            // Fire edit start
-            var notoSansBold48 = resCache.NotoStack(variation: "Bold", size: 48); // Fire added
-
-            var windowHeader = new StyleBoxFlat
+            var windowHeader = new StyleBoxTexture
             {
-                ContentMarginBottomOverride = 0,
-                BackgroundColor = SCPWhite,
-                BorderColor = PanelDarker,
+                Texture = windowHeaderTex,
+                PatchMarginBottom = 3,
+                ExpandMarginBottom = 3,
+                ContentMarginBottomOverride = 0
             };
-            var windowHeaderAlert = new StyleBoxFlat
+            var windowHeaderAlertTex = resCache.GetTexture("/Textures/Interface/Nano/window_header_alert.png");
+            var windowHeaderAlert = new StyleBoxTexture
             {
-                ContentMarginBottomOverride = 0,
-                BackgroundColor = SCPWhite,
-                BorderColor = PanelDarker,
+                Texture = windowHeaderAlertTex,
+                PatchMarginBottom = 3,
+                ExpandMarginBottom = 3,
+                ContentMarginBottomOverride = 0
             };
-
-            var windowBackground = new StyleBoxFlat // Переделал во флет, нахуй мне ваша текстура
+            var windowBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/window_background.png");
+            var windowBackground = new StyleBoxTexture
             {
-                BackgroundColor = PanelDark,
-                BorderColor = SCPWhite,
+                Texture = windowBackgroundTex,
             };
-            windowBackground.SetContentMarginOverride(StyleBox.Margin.Horizontal | StyleBox.Margin.Bottom, 2);
-            // Fire edit end
+            windowBackground.SetPatchMargin(StyleBox.Margin.Horizontal | StyleBox.Margin.Bottom, 2);
+            windowBackground.SetExpandMargin(StyleBox.Margin.Horizontal | StyleBox.Margin.Bottom, 2);
 
             var borderedWindowBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/window_background_bordered.png");
             var borderedWindowBackground = new StyleBoxTexture
             {
                 Texture = borderedWindowBackgroundTex,
-                Modulate = PanelDark // Fire edit - Dark background
             };
             borderedWindowBackground.SetPatchMargin(StyleBox.Margin.All, 2);
 
             var contextMenuBackground = new StyleBoxTexture
             {
                 Texture = borderedWindowBackgroundTex,
-                Modulate = PanelDark // Fire edit - Dark background
             };
             contextMenuBackground.SetPatchMargin(StyleBox.Margin.All, ContextMenuElement.ElementMargin);
 
@@ -270,13 +258,6 @@ namespace Content.Client.Stylesheets
                 Texture = handSlotHighlightTex,
             };
             handSlotHighlight.SetPatchMargin(StyleBox.Margin.All, 2);
-
-            var borderedTransparentWindowBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/transparent_window_background_bordered.png");
-            var borderedTransparentWindowBackground = new StyleBoxTexture
-            {
-                Texture = borderedTransparentWindowBackgroundTex,
-            };
-            borderedTransparentWindowBackground.SetPatchMargin(StyleBox.Margin.All, 2);
 
             var hotbarBackground = new StyleBoxTexture
             {
@@ -380,7 +361,6 @@ namespace Content.Client.Stylesheets
             var chatFilterButton = new StyleBoxTexture
             {
                 Texture = chatFilterButtonTex,
-                Modulate = PanelDarker // Fire edit - Dark background
             };
             chatFilterButton.SetPatchMargin(StyleBox.Margin.All, 5);
             chatFilterButton.SetPadding(StyleBox.Margin.All, 2);
@@ -399,7 +379,6 @@ namespace Content.Client.Stylesheets
             var smallButtonBase = new StyleBoxTexture
             {
                 Texture = smallButtonTex,
-                Modulate = PanelDarker // Fire edit - Dark background
             };
 
             var textureInvertedTriangle = resCache.GetTexture("/Textures/Interface/Nano/inverted_triangle.svg.png");
@@ -408,7 +387,6 @@ namespace Content.Client.Stylesheets
             var lineEdit = new StyleBoxTexture
             {
                 Texture = lineEditTex,
-                Modulate = PanelLightDark.WithAlpha(0.8f), // Fire edit
             };
             lineEdit.SetPatchMargin(StyleBox.Margin.All, 3);
             lineEdit.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
@@ -432,98 +410,42 @@ namespace Content.Client.Stylesheets
             actionSearchBox.SetPatchMargin(StyleBox.Margin.All, 3);
             actionSearchBox.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
 
-            // Fire edit start
-            var tabContainerPanel = new StyleBoxFlat()
+            var tabContainerPanelTex = resCache.GetTexture("/Textures/Interface/Nano/tabcontainer_panel.png");
+            var tabContainerPanel = new StyleBoxTexture
             {
-                BackgroundColor = PanelDark,
-                BorderColor = BloodRed,
+                Texture = tabContainerPanelTex,
             };
-            tabContainerPanel.SetContentMarginOverride(StyleBox.Margin.All, 2);
+            tabContainerPanel.SetPatchMargin(StyleBox.Margin.All, 2);
 
-            var tabContainerBoxActive = new StyleBoxFlat { BackgroundColor = PanelDark };
+            var tabContainerBoxActive = new StyleBoxFlat { BackgroundColor = new Color(64, 64, 64) };
             tabContainerBoxActive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
-            var tabContainerBoxInactive = new StyleBoxFlat { BackgroundColor = PanelLightDark };
+            var tabContainerBoxInactive = new StyleBoxFlat { BackgroundColor = new Color(32, 32, 32) };
             tabContainerBoxInactive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
-            // Fire edit end
 
             var progressBarBackground = new StyleBoxFlat
             {
-                BackgroundColor = PanelDark
+                BackgroundColor = new Color(0.25f, 0.25f, 0.25f)
             };
             progressBarBackground.SetContentMarginOverride(StyleBox.Margin.Vertical, 14.5f);
 
             var progressBarForeground = new StyleBoxFlat
             {
-                BackgroundColor = PanelDark
+                BackgroundColor = new Color(0.25f, 0.50f, 0.25f)
             };
             progressBarForeground.SetContentMarginOverride(StyleBox.Margin.Vertical, 14.5f);
-
-            // Monotone (unfilled)
-            var monotoneButton = new StyleBoxTexture
-            {
-                Texture = resCache.GetTexture("/Textures/Interface/Nano/Monotone/monotone_button.svg.96dpi.png"),
-            };
-            monotoneButton.SetPatchMargin(StyleBox.Margin.All, 11);
-            monotoneButton.SetPadding(StyleBox.Margin.All, 1);
-            monotoneButton.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
-            monotoneButton.SetContentMarginOverride(StyleBox.Margin.Horizontal, 14);
-
-            var monotoneButtonOpenLeft = new StyleBoxTexture(monotoneButton)
-            {
-                Texture = resCache.GetTexture("/Textures/Interface/Nano/Monotone/monotone_button_open_left.svg.96dpi.png"),
-            };
-
-            var monotoneButtonOpenRight = new StyleBoxTexture(monotoneButton)
-            {
-                Texture = resCache.GetTexture("/Textures/Interface/Nano/Monotone/monotone_button_open_right.svg.96dpi.png"),
-            };
-
-            var monotoneButtonOpenBoth = new StyleBoxTexture(monotoneButton)
-            {
-                Texture = resCache.GetTexture("/Textures/Interface/Nano/Monotone/monotone_button_open_both.svg.96dpi.png"),
-            };
-
-            // Monotone (filled)
-            var monotoneFilledButton = new StyleBoxTexture(monotoneButton)
-            {
-                Texture = buttonTex,
-            };
-
-            var monotoneFilledButtonOpenLeft = new StyleBoxTexture(monotoneButton)
-            {
-                Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(10, 0), new Vector2(14, 24))),
-            };
-            monotoneFilledButtonOpenLeft.SetPatchMargin(StyleBox.Margin.Left, 0);
-
-            var monotoneFilledButtonOpenRight = new StyleBoxTexture(monotoneButton)
-            {
-                Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(0, 0), new Vector2(14, 24))),
-            };
-            monotoneFilledButtonOpenRight.SetPatchMargin(StyleBox.Margin.Right, 0);
-
-            var monotoneFilledButtonOpenBoth = new StyleBoxTexture(monotoneButton)
-            {
-                Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(10, 0), new Vector2(3, 24))),
-            };
-            monotoneFilledButtonOpenBoth.SetPatchMargin(StyleBox.Margin.Horizontal, 0);
 
             // CheckBox
             var checkBoxTextureChecked = resCache.GetTexture("/Textures/Interface/Nano/checkbox_checked.svg.96dpi.png");
             var checkBoxTextureUnchecked = resCache.GetTexture("/Textures/Interface/Nano/checkbox_unchecked.svg.96dpi.png");
-            var monotoneCheckBoxTextureChecked = resCache.GetTexture("/Textures/Interface/Nano/Monotone/monotone_checkbox_checked.svg.96dpi.png");
-            var monotoneCheckBoxTextureUnchecked = resCache.GetTexture("/Textures/Interface/Nano/Monotone/monotone_checkbox_unchecked.svg.96dpi.png");
 
             // Tooltip box
-            // Fire edit start
-            var tooltipBox = new StyleBoxFlat()
+            var tooltipTexture = resCache.GetTexture("/Textures/Interface/Nano/tooltip.png");
+            var tooltipBox = new StyleBoxTexture
             {
-                BackgroundColor = PanelDarker,
-                BorderColor = SCPWhite.WithAlpha(0.5f),
-                BorderThickness = new Thickness(1f),
+                Texture = tooltipTexture,
             };
-            tooltipBox.SetContentMarginOverride(StyleBox.Margin.All, 2);
+            tooltipBox.SetPatchMargin(StyleBox.Margin.All, 2);
             tooltipBox.SetContentMarginOverride(StyleBox.Margin.Horizontal, 7);
-            // Fire edit end
 
             // Whisper box
             var whisperTexture = resCache.GetTexture("/Textures/Interface/Nano/whisper.png");
@@ -541,25 +463,21 @@ namespace Content.Client.Stylesheets
             placeholder.SetExpandMargin(StyleBox.Margin.All, -5);
             placeholder.Mode = StyleBoxTexture.StretchMode.Tile;
 
-            // Fire edit start
-            var itemListBackgroundSelected = new StyleBoxFlat { BackgroundColor = PanelDarker };
+            var itemListBackgroundSelected = new StyleBoxFlat { BackgroundColor = new Color(75, 75, 86) };
             itemListBackgroundSelected.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListBackgroundSelected.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
-            var itemListItemBackgroundDisabled = new StyleBoxFlat { BackgroundColor = PanelDark};
+            var itemListItemBackgroundDisabled = new StyleBoxFlat { BackgroundColor = new Color(10, 10, 12) };
             itemListItemBackgroundDisabled.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListItemBackgroundDisabled.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
-            var itemListItemBackground = new StyleBoxFlat { BackgroundColor = PanelDark };
+            var itemListItemBackground = new StyleBoxFlat { BackgroundColor = new Color(55, 55, 68) };
             itemListItemBackground.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListItemBackground.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
             var itemListItemBackgroundTransparent = new StyleBoxFlat { BackgroundColor = Color.Transparent };
             itemListItemBackgroundTransparent.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListItemBackgroundTransparent.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
-            // Fire edit end
 
-            var squareTex = resCache.GetTexture("/Textures/Interface/Nano/square.png");
-            var listContainerButton = new StyleBoxTexture
+            var listContainerButton = new StyleBoxFlat
             {
-                Texture = squareTex,
                 ContentMarginLeftOverride = 10
             };
 
@@ -590,37 +508,28 @@ namespace Content.Client.Stylesheets
             var sliderFillTex = resCache.GetTexture("/Textures/Interface/Nano/slider_fill.svg.96dpi.png");
             var sliderGrabTex = resCache.GetTexture("/Textures/Interface/Nano/slider_grabber.svg.96dpi.png");
 
-            // Fire edit start
             var sliderFillBox = new StyleBoxTexture
             {
                 Texture = sliderFillTex,
-                ExpandMarginLeft = -3,
-                ExpandMarginTop = -3,
-                ExpandMarginRight = -3,
-                ExpandMarginBottom = -3,
-                Modulate = SCPWhite, // Fire edit
+                Modulate = Color.FromHex("#3E6C45")
             };
-
-            sliderFillBox.SetPadding(StyleBox.Margin.Left, 2f);
 
             var sliderBackBox = new StyleBoxTexture
             {
                 Texture = sliderFillTex,
-                Modulate = PanelDarker,
+                Modulate = PanelDark,
             };
 
             var sliderForeBox = new StyleBoxTexture
             {
                 Texture = sliderOutlineTex,
-                Modulate = PanelDarker, // Fire edit
+                Modulate = Color.FromHex("#494949")
             };
 
             var sliderGrabBox = new StyleBoxTexture
             {
                 Texture = sliderGrabTex,
-                Modulate = Color.Red, // Fire edit
             };
-            // Fire edit end
 
             sliderFillBox.SetPatchMargin(StyleBox.Margin.All, 12);
             sliderBackBox.SetPatchMargin(StyleBox.Margin.All, 12);
@@ -637,7 +546,7 @@ namespace Content.Client.Stylesheets
             var insetBack = new StyleBoxTexture
             {
                 Texture = buttonTex,
-                Modulate = Color.FromHex("#121111"),
+                Modulate = Color.FromHex("#202023"),
             };
             insetBack.SetPatchMargin(StyleBox.Margin.All, 10);
 
@@ -659,89 +568,24 @@ namespace Content.Client.Stylesheets
             var directionIconQuestionTex = resCache.GetTexture("/Textures/Interface/VerbIcons/information.svg.192dpi.png");
             var directionIconHereTex = resCache.GetTexture("/Textures/Interface/VerbIcons/dot.svg.192dpi.png");
 
-            var textureCloseButton = resCache.GetTexture("/Textures/Interface/Nano/cross.svg.png");
-
-            // Fire edit start - Update style properties
             Stylesheet = new Stylesheet(BaseRules.Concat(new[]
             {
-                // Updated window title color
+                Element().Class("monospace")
+                    .Prop("font", notoSansMono),
+                // Window title.
                 new StyleRule(
                     new SelectorElement(typeof(Label), new[] {DefaultWindow.StyleClassWindowTitle}, null, null),
                     new[]
                     {
-                        new StyleProperty(Label.StylePropertyFontColor, PanelDarker),
+                        new StyleProperty(Label.StylePropertyFontColor, NanoGold),
                         new StyleProperty(Label.StylePropertyFont, notoSansDisplayBold14),
                     }),
-
-                // Updated context menu colors
-                Element<ContextMenuElement>().Class(ContextMenuElement.StyleClassContextMenuButton)
-                    .Pseudo(ContainerButton.StylePseudoClassHover)
-                    .Prop(Control.StylePropertyModulateSelf, ButtonColorContextHover),
-
-                Element<ContextMenuElement>().Class(ContextMenuElement.StyleClassContextMenuButton)
-                    .Pseudo(ContainerButton.StylePseudoClassPressed)
-                    .Prop(Control.StylePropertyModulateSelf, ButtonColorContextPressed),
-
-                // Updated tooltip styling
-                new StyleRule(new SelectorElement(typeof(Tooltip), null, null, null), new[]
-                {
-                    new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat
-                    {
-                        BackgroundColor = PanelDark,
-                        BorderColor = SCPWhite,
-                        BorderThickness = new Thickness(2)
-                    })
-                }),
-
-                // Window close button base texture.
-                new StyleRule(
-                    new SelectorElement(typeof(TextureButton), new[] {DefaultWindow.StyleClassWindowCloseButton}, null,
-                        null),
-                    new[]
-                    {
-                        new StyleProperty(TextureButton.StylePropertyTexture, textureCloseButton),
-                        new StyleProperty(Control.StylePropertyModulateSelf, PanelDarker),
-                    }),
-
-                // Window close button hover.
-                new StyleRule(
-                    new SelectorElement(typeof(TextureButton), new[] {DefaultWindow.StyleClassWindowCloseButton}, null,
-                        new[] {TextureButton.StylePseudoClassHover}),
-                    new[]
-                    {
-                        new StyleProperty(Control.StylePropertyModulateSelf, PanelDarker),
-                    }),
-                // Window close button pressed.
-                new StyleRule(
-                    new SelectorElement(typeof(TextureButton), new[] {DefaultWindow.StyleClassWindowCloseButton}, null,
-                        new[] {TextureButton.StylePseudoClassPressed}),
-                    new[]
-                    {
-                        new StyleProperty(Control.StylePropertyModulateSelf, PanelDarker),
-                    }),
-
-                // Updated chat panel
-                new StyleRule(new SelectorElement(typeof(PanelContainer), new[] {StyleClassChatPanel}, null, null),
-                    new[]
-                    {
-                        new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat
-                        {
-                            BackgroundColor = PanelDark,
-                            BorderColor = SCPWhite,
-                            BorderThickness = new Thickness(1)
-                        }),
-                    }),
-
-                Element().Class("monospace")
-                    .Prop("font", notoSansMono),
-                // Fire edit end
-
                 // Alert (white) window title.
                 new StyleRule(
                     new SelectorElement(typeof(Label), new[] {"windowTitleAlert"}, null, null),
                     new[]
                     {
-                        new StyleProperty(Label.StylePropertyFontColor, PanelDarker), // Fire edit
+                        new StyleProperty(Label.StylePropertyFontColor, Color.White),
                         new StyleProperty(Label.StylePropertyFont, notoSansDisplayBold14),
                     }),
                 // Window background.
@@ -757,12 +601,6 @@ namespace Content.Client.Stylesheets
                     new[]
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, borderedWindowBackground),
-                    }),
-                new StyleRule(
-                    new SelectorElement(null, new[] {StyleClassTransparentBorderedWindowPanel}, null, null),
-                    new[]
-                    {
-                        new StyleProperty(PanelContainer.StylePropertyPanel, borderedTransparentWindowBackground),
                     }),
                 // inventory slot background
                 new StyleRule(
@@ -856,23 +694,6 @@ namespace Content.Client.Stylesheets
 
                 Element<ContainerButton>().Class(ContainerButton.StyleClassButton).Class(ButtonCaution)
                     .Pseudo(ContainerButton.StylePseudoClassDisabled)
-                    .Prop(Control.StylePropertyModulateSelf, ButtonColorCautionDisabled),
-
-                // Colors for confirm buttons confirm states.
-                Element<ConfirmButton>()
-                    .Pseudo(ConfirmButton.ConfirmPrefix + ContainerButton.StylePseudoClassNormal)
-                    .Prop(Control.StylePropertyModulateSelf, ButtonColorCautionDefault),
-
-                Element<ConfirmButton>()
-                    .Pseudo(ConfirmButton.ConfirmPrefix + ContainerButton.StylePseudoClassHover)
-                    .Prop(Control.StylePropertyModulateSelf, ButtonColorCautionHovered),
-
-                Element<ConfirmButton>()
-                    .Pseudo(ConfirmButton.ConfirmPrefix + ContainerButton.StylePseudoClassPressed)
-                    .Prop(Control.StylePropertyModulateSelf, ButtonColorCautionPressed),
-
-                Element<ConfirmButton>()
-                    .Pseudo(ConfirmButton.ConfirmPrefix + ContainerButton.StylePseudoClassDisabled)
                     .Prop(Control.StylePropertyModulateSelf, ButtonColorCautionDisabled),
 
                 new StyleRule(new SelectorChild(
@@ -1011,23 +832,21 @@ namespace Content.Client.Stylesheets
                 Element<ContainerButton>().Class(ListContainer.StyleClassListContainerButton)
                     .Prop(ContainerButton.StylePropertyStyleBox, listContainerButton),
 
-                // Fire edit start
                 Element<ContainerButton>().Class(ListContainer.StyleClassListContainerButton)
                     .Pseudo(ContainerButton.StylePseudoClassNormal)
-                    .Prop(Control.StylePropertyModulateSelf, PanelLightDark),
+                    .Prop(Control.StylePropertyModulateSelf, new Color(55, 55, 68)),
 
                 Element<ContainerButton>().Class(ListContainer.StyleClassListContainerButton)
                     .Pseudo(ContainerButton.StylePseudoClassHover)
-                    .Prop(Control.StylePropertyModulateSelf, PanelDarker),
+                    .Prop(Control.StylePropertyModulateSelf, new Color(75, 75, 86)),
 
                 Element<ContainerButton>().Class(ListContainer.StyleClassListContainerButton)
                     .Pseudo(ContainerButton.StylePseudoClassPressed)
-                    .Prop(Control.StylePropertyModulateSelf, PanelDarker),
+                    .Prop(Control.StylePropertyModulateSelf, new Color(75, 75, 86)),
 
                 Element<ContainerButton>().Class(ListContainer.StyleClassListContainerButton)
                     .Pseudo(ContainerButton.StylePseudoClassDisabled)
-                    .Prop(Control.StylePropertyModulateSelf, PanelLightDark),
-                // Fire edit end
+                    .Prop(Control.StylePropertyModulateSelf, new Color(10, 10, 12)),
 
                 // Main menu: Make those buttons bigger.
                 new StyleRule(new SelectorChild(
@@ -1050,10 +869,6 @@ namespace Content.Client.Stylesheets
                     new[]
                     {
                         new StyleProperty(LineEdit.StylePropertyStyleBox, lineEdit),
-                        // Fire edit start
-                        new StyleProperty(LineEdit.StylePropertySelectionColor, SCPWhite.WithAlpha(0.25f)),
-                        new StyleProperty(LineEdit.StylePropertyCursorColor, BloodRed),
-                        // Fire edit end
                     }),
 
                 new StyleRule(
@@ -1126,17 +941,6 @@ namespace Content.Client.Stylesheets
                 new StyleRule(new SelectorElement(typeof(BoxContainer), new [] { CheckBox.StyleClassCheckBox }, null, null), new[]
                 {
                     new StyleProperty(BoxContainer.StylePropertySeparation, 10),
-                }),
-
-                // MonotoneCheckBox
-                new StyleRule(new SelectorElement(typeof(TextureRect), new [] { MonotoneCheckBox.StyleClassMonotoneCheckBox }, null, null), new[]
-                {
-                    new StyleProperty(TextureRect.StylePropertyTexture, monotoneCheckBoxTextureUnchecked),
-                }),
-
-                new StyleRule(new SelectorElement(typeof(TextureRect), new [] { MonotoneCheckBox.StyleClassMonotoneCheckBox, CheckBox.StyleClassCheckBoxChecked }, null, null), new[]
-                {
-                    new StyleProperty(TextureRect.StylePropertyTexture, monotoneCheckBoxTextureChecked),
                 }),
 
                 // Tooltip
@@ -1219,11 +1023,11 @@ namespace Content.Client.Stylesheets
                 }),
 
                 // small number for the entity counter in the entity menu
-                new StyleRule(new SelectorElement(typeof(Label), new[] {ContextMenuElement.StyleClassEntityMenuIconLabel}, null, null), new[]
-                {
-                    new StyleProperty("font", notoSans10),
-                    new StyleProperty(Label.StylePropertyAlignMode, Label.AlignMode.Right),
-                }),
+                // new StyleRule(new SelectorElement(typeof(Label), new[] {ContextMenuElement.StyleClassEntityMenuIconLabel}, null, null), new[]
+                // {
+                //     new StyleProperty("font", notoSans10),
+                //     new StyleProperty(Label.StylePropertyAlignMode, Label.AlignMode.Right),
+                // }),
 
                 // hotbar slot
                 new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassHotbarSlotNumber}, null, null), new[]
@@ -1243,7 +1047,7 @@ namespace Content.Client.Stylesheets
                 new StyleRule(new SelectorElement(typeof(ItemList), null, null, null), new[]
                 {
                     new StyleProperty(ItemList.StylePropertyBackground,
-                        new StyleBoxFlat {BackgroundColor = PanelDark}), // Fire edit
+                        new StyleBoxFlat {BackgroundColor = new Color(32, 32, 40)}),
                     new StyleProperty(ItemList.StylePropertyItemBackground,
                         itemListItemBackground),
                     new StyleProperty(ItemList.StylePropertyDisabledItemBackground,
@@ -1280,9 +1084,10 @@ namespace Content.Client.Stylesheets
                 new StyleRule(new SelectorElement(typeof(Tree), null, null, null), new[]
                 {
                     new StyleProperty(Tree.StylePropertyBackground,
-                        new StyleBoxFlat {BackgroundColor = PanelLightDark}), // Fire edit
+                        new StyleBoxFlat {BackgroundColor = new Color(32, 32, 40)}),
                     new StyleProperty(Tree.StylePropertyItemBoxSelected, new StyleBoxFlat
                     {
+                        BackgroundColor = new Color(55, 55, 68),
                         ContentMarginLeftOverride = 4
                     })
                 }),
@@ -1335,22 +1140,6 @@ namespace Content.Client.Stylesheets
                         new StyleProperty(Label.StylePropertyFont, notoSans12),
                         new StyleProperty(Label.StylePropertyFontColor, Color.DarkGray),
                     }),
-
-                // Console text
-                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassConsoleText}, null, null), new[]
-                {
-                    new StyleProperty(Label.StylePropertyFont, robotoMonoBold11)
-                }),
-
-                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassConsoleSubHeading}, null, null), new[]
-                {
-                    new StyleProperty(Label.StylePropertyFont, robotoMonoBold12)
-                }),
-
-                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassConsoleHeading}, null, null), new[]
-                {
-                    new StyleProperty(Label.StylePropertyFont, robotoMonoBold14)
-                }),
 
                 // Big Button
                 new StyleRule(new SelectorChild(
@@ -1410,13 +1199,6 @@ namespace Content.Client.Stylesheets
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
-                    new[]
-                    {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorDefaultRed),
-                    }),
-
-                new StyleRule(
                     new SelectorElement(typeof(MenuButton), null, null, new[] {Button.StylePseudoClassNormal}),
                     new[]
                     {
@@ -1435,78 +1217,6 @@ namespace Content.Client.Stylesheets
                     new[]
                     {
                         new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorHovered),
-                    }),
-
-                new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassHover}),
-                    new[]
-                    {
-                        new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorHoveredRed),
-                    }),
-
-                new StyleRule(
-                    new SelectorElement(typeof(Label), new[] {MenuButton.StyleClassLabelTopButton}, null, null),
-                    new[]
-                    {
-                        new StyleProperty(Label.StylePropertyFont, notoSansDisplayBold14),
-                    }),
-
-                // MonotoneButton (unfilled)
-                new StyleRule(
-                    new SelectorElement(typeof(MonotoneButton), null, null, null),
-                    new[]
-                    {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneButton),
-                    }),
-
-                new StyleRule(
-                    new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenLeft }, null, null),
-                    new[]
-                    {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneButtonOpenLeft),
-                    }),
-
-                new StyleRule(
-                    new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenRight }, null, null),
-                    new[]
-                    {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneButtonOpenRight),
-                    }),
-
-                new StyleRule(
-                    new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenBoth }, null, null),
-                    new[]
-                    {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneButtonOpenBoth),
-                    }),
-
-                // MonotoneButton (filled)
-                new StyleRule(
-                    new SelectorElement(typeof(MonotoneButton), null, null, new[] { Button.StylePseudoClassPressed }),
-                    new[]
-                    {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneFilledButton),
-                    }),
-
-                new StyleRule(
-                    new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenLeft }, null, new[] { Button.StylePseudoClassPressed }),
-                    new[]
-                    {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneFilledButtonOpenLeft),
-                    }),
-
-                new StyleRule(
-                    new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenRight }, null, new[] { Button.StylePseudoClassPressed }),
-                    new[]
-                    {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneFilledButtonOpenRight),
-                    }),
-
-                new StyleRule(
-                    new SelectorElement(typeof(MonotoneButton), new[] { ButtonOpenBoth }, null, new[] { Button.StylePseudoClassPressed }),
-                    new[]
-                    {
-                        new StyleProperty(Button.StylePropertyStyleBox, monotoneFilledButtonOpenBoth),
                     }),
 
                 // NanoHeading
@@ -1645,42 +1355,13 @@ namespace Content.Client.Stylesheets
                     new StyleProperty(Label.StylePropertyAlignMode, Label.AlignMode.Center),
                 }),
 
-                // Fire edit start - TODO: Перенести наверх к остальным фаер едит
                 Element<PanelContainer>().Class(OptionButton.StyleClassOptionsBackground)
-                    .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat(PanelDarker)),
+                    .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat(Color.FromHex("#25252A"))),
 
                 new StyleRule(new SelectorElement(typeof(PanelContainer), new []{ ClassHighDivider}, null, null), new []
                 {
-                    new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat { BackgroundColor = BloodRed, ContentMarginBottomOverride = 2, ContentMarginLeftOverride = 2}),
+                    new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat { BackgroundColor = NanoGold, ContentMarginBottomOverride = 2, ContentMarginLeftOverride = 2}),
                 }),
-
-                new StyleRule(SelectorElement.Type(typeof(BoxContainer)), new []
-                    {
-                        new StyleProperty(Control.StylePropertyModulateSelf, new StyleBoxFlat
-                        {
-                            BackgroundColor = PanelDark,
-                            BorderColor = SCPWhite,
-                        })
-                    }
-                ),
-
-                new StyleRule(SelectorElement.Type(typeof(ScrollContainer)), new []
-                    {
-                        new StyleProperty(Control.StylePropertyModulateSelf, new StyleBoxFlat
-                        {
-                            BackgroundColor = PanelDark,
-                            BorderColor = SCPWhite,
-                        })
-                    }
-                ),
-
-                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelHeadingTheBiggest}, null, null),
-                    new[]
-                    {
-                        new StyleProperty(Label.StylePropertyFont, notoSansBold48),
-                        new StyleProperty(Label.StylePropertyFontColor, SCPWhite),
-                    }),
-                // Fire edit end
 
                 Element<TextureButton>()
                     .Class(StyleClassButtonHelp)
@@ -1697,15 +1378,15 @@ namespace Content.Client.Stylesheets
                 // Different Background shapes ---
                 Element<PanelContainer>().Class(ClassAngleRect)
                     .Prop(PanelContainer.StylePropertyPanel, BaseAngleRect)
-                    .Prop(Control.StylePropertyModulateSelf, PanelDark),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#25252A")),
 
                 Element<PanelContainer>().Class("BackgroundOpenRight")
                     .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenRight)
-                    .Prop(Control.StylePropertyModulateSelf, PanelDarker),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#25252A")),
 
                 Element<PanelContainer>().Class("BackgroundOpenLeft")
                     .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenLeft)
-                    .Prop(Control.StylePropertyModulateSelf, PanelDarker),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#25252A")),
                 // ---
 
                 // Dividers
@@ -1718,40 +1399,36 @@ namespace Content.Client.Stylesheets
                     }),
 
                 // Window Headers
-
-                // Fire edit start
                 Element<Label>().Class("FancyWindowTitle")
                     .Prop("font", boxFont13)
-                    .Prop("font-color", PanelDarker),
+                    .Prop("font-color", NanoGold),
 
                 Element<PanelContainer>().Class("WindowHeadingBackground")
                     .Prop("panel", new StyleBoxTexture(BaseButtonOpenLeft) { Padding = default })
-                    .Prop(Control.StylePropertyModulateSelf, SCPWhite),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#1F1F23")),
 
                 Element<PanelContainer>().Class("WindowHeadingBackgroundLight")
-                    .Prop("panel", new StyleBoxTexture(BaseButtonOpenLeft) { Padding = default })
-                    .Prop(Control.StylePropertyModulateSelf, SCPWhite),
+                    .Prop("panel", new StyleBoxTexture(BaseButtonOpenLeft) { Padding = default }),
 
                 // Window Header Help Button
                 Element<TextureButton>().Class(FancyWindow.StyleClassWindowHelpButton)
                     .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Nano/help.png"))
-                    .Prop(Control.StylePropertyModulateSelf, PanelDarker),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#4B596A")),
 
                 Element<TextureButton>().Class(FancyWindow.StyleClassWindowHelpButton).Pseudo(ContainerButton.StylePseudoClassHover)
-                    .Prop(Control.StylePropertyModulateSelf, PanelDarker),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#7F3636")),
 
                 Element<TextureButton>().Class(FancyWindow.StyleClassWindowHelpButton).Pseudo(ContainerButton.StylePseudoClassPressed)
-                    .Prop(Control.StylePropertyModulateSelf, PanelDarker),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#753131")),
 
                 //The lengths you have to go through to change a background color smh
                 Element<PanelContainer>().Class("PanelBackgroundBaseDark")
                     .Prop("panel", new StyleBoxTexture(BaseButtonOpenBoth) { Padding = default })
-                    .Prop(Control.StylePropertyModulateSelf, PanelDark), // Fire edit
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#1F1F23")),
 
                 Element<PanelContainer>().Class("PanelBackgroundLight")
                     .Prop("panel", new StyleBoxTexture(BaseButtonOpenBoth) { Padding = default })
-                    .Prop(Control.StylePropertyModulateSelf, PanelDark), // Fire edit
-                // Fire edit end
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#2F2F3B")),
 
                 // Window Footer
                 Element<TextureRect>().Class("NTLogoDark")
@@ -1773,9 +1450,6 @@ namespace Content.Client.Stylesheets
                 Element<TextureButton>().Class("CrossButtonRed").Pseudo(TextureButton.StylePseudoClassHover)
                     .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#753131")),
 
-                //
-                Element<TextureButton>().Class("Refresh")
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Nano/circular_arrow.svg.96dpi.png")),
                 // ---
 
                 // Profile Editor
@@ -1882,50 +1556,47 @@ namespace Content.Client.Stylesheets
                 //PDA - Backgrounds
                 Element<PanelContainer>().Class("PdaContentBackground")
                     .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenBoth)
-                    .Prop(Control.StylePropertyModulateSelf, PanelDark), // Fire edit
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#25252a")),
 
                 Element<PanelContainer>().Class("PdaBackground")
                     .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenBoth)
-                    .Prop(Control.StylePropertyModulateSelf, PanelDark), // Fire edit
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#000000")),
 
                 Element<PanelContainer>().Class("PdaBackgroundRect")
                     .Prop(PanelContainer.StylePropertyPanel, BaseAngleRect)
-                    .Prop(Control.StylePropertyModulateSelf, LightGray), // Fire edit
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#717059")),
 
                 Element<PanelContainer>().Class("PdaBorderRect")
                     .Prop(PanelContainer.StylePropertyPanel, AngleBorderRect),
 
                 Element<PanelContainer>().Class("BackgroundDark")
-                    .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat(PanelDark)), // Fire edit
+                    .Prop(PanelContainer.StylePropertyPanel, new StyleBoxFlat(Color.FromHex("#25252A"))),
 
                 //PDA - Buttons
-
-                // Fire edit start
                 Element<PdaSettingsButton>().Pseudo(ContainerButton.StylePseudoClassNormal)
-                    .Prop(PdaSettingsButton.StylePropertyBgColor, PdaSettingsButton.NormalBgColor)
-                    .Prop(PdaSettingsButton.StylePropertyFgColor, PdaSettingsButton.EnabledFgColor),
+                    .Prop(PdaSettingsButton.StylePropertyBgColor, Color.FromHex(PdaSettingsButton.NormalBgColor))
+                    .Prop(PdaSettingsButton.StylePropertyFgColor, Color.FromHex(PdaSettingsButton.EnabledFgColor)),
 
                 Element<PdaSettingsButton>().Pseudo(ContainerButton.StylePseudoClassHover)
-                    .Prop(PdaSettingsButton.StylePropertyBgColor, PdaSettingsButton.HoverColor)
-                    .Prop(PdaSettingsButton.StylePropertyFgColor, PdaSettingsButton.EnabledFgColor),
+                    .Prop(PdaSettingsButton.StylePropertyBgColor, Color.FromHex(PdaSettingsButton.HoverColor))
+                    .Prop(PdaSettingsButton.StylePropertyFgColor, Color.FromHex(PdaSettingsButton.EnabledFgColor)),
 
                 Element<PdaSettingsButton>().Pseudo(ContainerButton.StylePseudoClassPressed)
-                    .Prop(PdaSettingsButton.StylePropertyBgColor, PdaSettingsButton.PressedColor)
-                    .Prop(PdaSettingsButton.StylePropertyFgColor, PdaSettingsButton.EnabledFgColor),
+                    .Prop(PdaSettingsButton.StylePropertyBgColor, Color.FromHex(PdaSettingsButton.PressedColor))
+                    .Prop(PdaSettingsButton.StylePropertyFgColor, Color.FromHex(PdaSettingsButton.EnabledFgColor)),
 
                 Element<PdaSettingsButton>().Pseudo(ContainerButton.StylePseudoClassDisabled)
-                    .Prop(PdaSettingsButton.StylePropertyBgColor, PdaSettingsButton.NormalBgColor)
-                    .Prop(PdaSettingsButton.StylePropertyFgColor, PdaSettingsButton.DisabledFgColor),
+                    .Prop(PdaSettingsButton.StylePropertyBgColor, Color.FromHex(PdaSettingsButton.NormalBgColor))
+                    .Prop(PdaSettingsButton.StylePropertyFgColor, Color.FromHex(PdaSettingsButton.DisabledFgColor)),
 
                 Element<PdaProgramItem>().Pseudo(ContainerButton.StylePseudoClassNormal)
-                    .Prop(PdaProgramItem.StylePropertyBgColor, PdaProgramItem.NormalBgColor),
+                    .Prop(PdaProgramItem.StylePropertyBgColor, Color.FromHex(PdaProgramItem.NormalBgColor)),
 
                 Element<PdaProgramItem>().Pseudo(ContainerButton.StylePseudoClassHover)
-                    .Prop(PdaProgramItem.StylePropertyBgColor, PdaProgramItem.HoverColor),
+                    .Prop(PdaProgramItem.StylePropertyBgColor, Color.FromHex(PdaProgramItem.HoverColor)),
 
                 Element<PdaProgramItem>().Pseudo(ContainerButton.StylePseudoClassPressed)
-                    .Prop(PdaProgramItem.StylePropertyBgColor, PdaProgramItem.HoverColor),
-                // Fire edit end
+                    .Prop(PdaProgramItem.StylePropertyBgColor, Color.FromHex(PdaProgramItem.HoverColor)),
 
                 //PDA - Text
                 Element<Label>().Class("PdaContentFooterText")
@@ -1982,7 +1653,7 @@ namespace Content.Client.Stylesheets
                 Element<Button>().Class(StyleClassSocialButton)
                     .Prop(Button.StylePropertyStyleBox, new StyleBoxFlat
                     {
-                        BackgroundColor = PanelDark, // Fire edit
+                        BackgroundColor = new Color(42, 42, 48),
                         ContentMarginLeftOverride = 15,
                         ContentMarginRightOverride = 15,
                         ContentMarginTopOverride = 8,
@@ -2013,37 +1684,10 @@ namespace Content.Client.Stylesheets
                 Element<Button>().Class(StyleClassSocialButtonTelegram)
                     .Pseudo(ContainerButton.StylePseudoClassHover)
                     .Prop(Control.StylePropertyModulateSelf, new Color(20, 156, 224)),
-                // Sunrise-Edit
 
                 // Silicon law edit ui
                 Element<Label>().Class(SiliconLawContainer.StyleClassSiliconLawPositionLabel)
                     .Prop(Label.StylePropertyFontColor, NanoGold),
-                // Pinned button style
-                new StyleRule(
-                    new SelectorElement(typeof(TextureButton), new[] { StyleClassPinButtonPinned }, null, null),
-                    new[]
-                    {
-                        new StyleProperty(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Bwoink/pinned.png"))
-                    }),
-
-                // Unpinned button style
-                new StyleRule(
-                    new SelectorElement(typeof(TextureButton), new[] { StyleClassPinButtonUnpinned }, null, null),
-                    new[]
-                    {
-                        new StyleProperty(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Bwoink/un_pinned.png"))
-                    }),
-                // Sunrise-Start
-                Element<Button>().Class(StyleClassNoStyle)
-                    .Prop(Button.StylePropertyStyleBox, new StyleBoxFlat
-                    {
-                        BackgroundColor = Color.Transparent,
-                        ContentMarginLeftOverride = 15,
-                        ContentMarginRightOverride = 15,
-                        ContentMarginTopOverride = 12,
-                        ContentMarginBottomOverride = 12
-                    }),
-                // Sunrise-End
 
                 Element<PanelContainer>()
                     .Class(StyleClassInset)

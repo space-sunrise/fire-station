@@ -31,7 +31,6 @@
   id: ComMaidGear
   equipment:
     eyes: ClothingEyesGlassesSunglasses
-    back: ClothingBackpackSatchelLeather
     id: CommaidPDA
     ears: ClothingHeadsetCommaid
 
@@ -40,5 +39,16 @@
   id: JobIconComMaid
   icon:
     sprite: /Textures/_Sunrise/Interface/Misc/job_icons.rsi
-    state: commaid
+    state: CommandMaid
+
+- type: chameleonOutfit
+  id: ComMaidChameleonOutfit
+  job: ComMaid
+  icon: JobIconComMaid
+  equipment:
+    jumpsuit: ClothingUniformJumpskirtElegantMaid
+    head: ClothingHeadNurseHat
+    eyes: ClothingEyesGlassesSunglasses
+    neck: BunnyButterfly
+    shoes: ClothingShoesColorWhite
 

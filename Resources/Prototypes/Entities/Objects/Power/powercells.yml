@@ -13,7 +13,7 @@
     maxIntensity: 200
     intensitySlope: 1.5
   - type: Sprite
-    sprite: Objects/Power/power_cells.rsi
+    sprite: _Scp/Objects/Power/power_cells.rsi #Objects/Power/power_cells.rsi Fire edit
   - type: SolutionContainerManager
     solutions:
       battery:
@@ -30,9 +30,16 @@
   - type: Tag
     tags:
       - PowerCell
-  - type: Appearance
-  - type: PowerCellVisuals
   - type: Riggable
+  - type: Appearance
+  - type: BatteryVisuals
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: {visible: true, state: o2}
+          Neither: {visible: true, state: o1}
+          Empty: {visible: false}
 
 - type: entity
   name: potato battery
@@ -65,7 +72,7 @@
     - map: [ "enum.PowerCellVisualLayers.Base" ]
       state: small
     - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-      state: o2
+      state: fo2small # o2 Fire edit
       shader: unshaded
   - type: Battery
     maxCharge: 360
@@ -73,6 +80,15 @@
   - type: Tag
     tags:
       - PowerCellSmall
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2small }
+          Neither: { visible: true, state: fo1small }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   id: PowerCellSmallPrinted
@@ -84,12 +100,21 @@
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: small
       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-        state: o2
+        state: fo2small # o2 Fire edit
         shader: unshaded
         visible: false
   - type: Battery
     maxCharge: 360
     startingCharge: 0
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2small }
+          Neither: { visible: true, state: fo1small }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   parent: PowerCellSmall
@@ -98,9 +123,7 @@
   description: A self rechargeable power cell, designed for fast recharge rate at the expense of capacity.
   components:
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 36 # 10 seconds to recharge
-    autoRechargePause: true
     autoRechargePauseTime: 30
 
 - type: entity
@@ -115,11 +138,20 @@
     - map: [ "enum.PowerCellVisualLayers.Base" ]
       state: medium
     - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-      state: o2
+      state: fo2medium # o2 Fire edit
       shader: unshaded
   - type: Battery
     maxCharge: 720
     startingCharge: 720
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2medium }
+          Neither: { visible: true, state: fo1medium }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   id: PowerCellMediumPrinted
@@ -131,12 +163,21 @@
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: medium
       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-        state: o2
+        state: fo2medium # o2 Fire edit
         shader: unshaded
         visible: false
   - type: Battery
     maxCharge: 720
     startingCharge: 0
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2medium }
+          Neither: { visible: true, state: fo1medium }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   name: high-capacity power cell
@@ -150,7 +191,7 @@
     - map: [ "enum.PowerCellVisualLayers.Base" ]
       state: high
     - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-      state: o2
+      state: fo2high # o2 Fire edit
       shader: unshaded
   - type: Battery
     maxCharge: 1080
@@ -161,6 +202,15 @@
     - PowerCellHigh
     - PowerCell
   # Sunrise added end
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2high }
+          Neither: { visible: true, state: fo1high }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   id: PowerCellHighPrinted
@@ -172,12 +222,21 @@
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: high
       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-        state: o2
+        state: fo2high # o2 Fire edit
         shader: unshaded
         visible: false
   - type: Battery
     maxCharge: 1080
     startingCharge: 0
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2high }
+          Neither: { visible: true, state: fo1high }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   name: hyper-capacity power cell
@@ -191,11 +250,20 @@
     - map: [ "enum.PowerCellVisualLayers.Base" ]
       state: hyper
     - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-      state: o2
+      state: fo2high # o2 Fire edit
       shader: unshaded
   - type: Battery
     maxCharge: 1800
     startingCharge: 1800
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2high }
+          Neither: { visible: true, state: fo1high }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   id: PowerCellHyperPrinted
@@ -207,12 +275,21 @@
       - map: [ "enum.PowerCellVisualLayers.Base" ]
         state: hyper
       - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-        state: o2
+        state: fo2high # o2 Fire edit
         shader: unshaded
         visible: false
   - type: Battery
     maxCharge: 1800
     startingCharge: 0
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2high }
+          Neither: { visible: true, state: fo1high }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   parent: BasePowerCell
@@ -226,14 +303,22 @@
     - map: [ "enum.PowerCellVisualLayers.Base" ]
       state: microreactor
     - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-      state: o2
+      state: fo2microreactor # o2 Fire edit
       shader: unshaded
   - type: Battery
     maxCharge: 720
     startingCharge: 720
   - type: BatterySelfRecharger
-    autoRecharge: true
     autoRechargeRate: 12 # takes 1 minute to charge itself back to full
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2microreactor }
+          Neither: { visible: true, state: fo1microreactor }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   parent: PowerCellMicroreactor
@@ -245,11 +330,20 @@
     - map: [ "enum.PowerCellVisualLayers.Base" ]
       state: microreactor
     - map: [ "enum.PowerCellVisualLayers.Unshaded" ]
-      state: o2
+      state: fo2microreactor # o2 Fire edit
       shader: unshaded
       visible: false
   - type: Battery
     startingCharge: 0
+  # Fire edit start
+  - type: GenericVisualizer
+    visuals:
+      enum.BatteryVisuals.State:
+        enum.PowerCellVisualLayers.Unshaded:
+          Full: { visible: true, state: fo2microreactor }
+          Neither: { visible: true, state: fo1microreactor }
+          Empty: { visible: false }
+  # Fire edit end
 
 - type: entity
   name: antique power cell prototype
@@ -268,7 +362,6 @@
       maxCharge: 1200
       startingCharge: 1200
     - type: BatterySelfRecharger
-      autoRecharge: true
       autoRechargeRate: 40
 
 # Power cage (big heavy power cell for big devices)
@@ -297,7 +390,7 @@
     walkModifier: 0.8
     sprintModifier: 0.8
   - type: HeldSpeedModifier
-  - type: EmpImmune # Мехи теперь имеют прямой урон от ЭМИ.
+  #- type: EmpImmune # Мехи теперь имеют прямой урон от ЭМИ. Sunrise-Edit: Комент до Фикса Вайтлистов батарей
 
 - type: entity
   id: PowerCageSmall
@@ -352,6 +445,7 @@
   - type: Battery
     maxCharge: 6200
     startingCharge: 6200
+  - type: EmpImmune # Sunrise-Edit: "Эдит" до Фикса Вайтлистов батарей, потом удалим
 
 - type: entity
   id: PowerCageSmallEmpty

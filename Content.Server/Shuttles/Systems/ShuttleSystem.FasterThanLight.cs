@@ -4,6 +4,8 @@ using System.Numerics;
 using Content.Server.Shuttles.Components;
 using Content.Server.Shuttles.Events;
 using Content.Server.Station.Events;
+using Content.Server.Atmos.Components; // Fire added
+using Content.Server.Atmos.EntitySystems; // Fire added
 using Content.Shared.Atmos.Components;
 using Content.Shared.Body.Components;
 using Content.Shared.CCVar;
@@ -16,6 +18,7 @@ using Content.Shared.Shuttles.Systems;
 using Content.Shared.StatusEffect;
 using Content.Shared.Timing;
 using Content.Shared.Whitelist;
+using Content.Shared.Atmos; // Fire added
 using JetBrains.Annotations;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
@@ -77,6 +80,7 @@ public sealed partial class ShuttleSystem
     private EntityQuery<FTLSmashImmuneComponent> _immuneQuery;
     private EntityQuery<StatusEffectsComponent> _statusQuery;
     private EntityQuery<MovedByPressureComponent> _movedByPressureQuery;
+    [Dependency] private readonly AtmosphereSystem _atmosphere = default!; // Fire added
 
     private void InitializeFTL()
     {
@@ -132,6 +136,23 @@ public sealed partial class ShuttleSystem
 
         var mapUid = _mapSystem.CreateMap(out var mapId);
         var ftlMap = AddComp<FTLMapComponent>(mapUid);
+
+        // Fire added start
+        var lightMap = AddComp<MapLightComponent>(mapUid);
+        lightMap.AmbientLightColor = Color.FromHex("#a5a5a5ff");
+
+        EnsureComp<MapAtmosphereComponent>(mapUid);
+
+        _atmosphere.SetMapSpace(mapUid, false);
+
+        var moles = new float[Atmospherics.AdjustedNumberOfGases];
+        moles[(int) Gas.Oxygen] = 5.89f;
+        moles[(int) Gas.Nitrogen] = 21.16f;
+
+        var mixture = new GasMixture(moles, Atmospherics.T0C - 50);
+
+        _atmosphere.SetMapAtmosphere(mapUid, false, mixture);
+        // Fire added end
 
         _metadata.SetEntityName(mapUid, "FTL");
         Log.Debug($"Setup hyperspace map at {mapUid}");

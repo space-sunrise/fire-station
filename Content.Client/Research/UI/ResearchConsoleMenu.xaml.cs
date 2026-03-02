@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Numerics;
 using Content.Client.UserInterface.Controls;
+using Content.Shared._Scp.Helpers;
 using Content.Shared.Access.Components;
 using Content.Shared.Access.Systems;
 using Content.Shared.Research;
@@ -13,6 +14,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Prototypes;
+using Robust.Shared.Timing;
 using Robust.Shared.Utility;
 
 namespace Content.Client.Research.UI;
@@ -21,14 +23,28 @@ namespace Content.Client.Research.UI;
 public sealed partial class ResearchConsoleMenu : FancyWindow
 {
     public Action<string>? OnTechnologyCardPressed;
+    public Action? OnTechnologyRediscoverPressed;
     public Action? OnServerButtonPressed;
 
     [Dependency] private readonly IEntityManager _entity = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+
     private readonly ResearchSystem _research;
     private readonly SpriteSystem _sprite;
     private readonly AccessReaderSystem _accessReader;
+
+    // if set to null  - we are waiting for server info and should not let rerolls
+    private TimeSpan? _nextRediscover;
+
+    // Fire edit start - поддержка нескольких видов очков исследований
+    private Dictionary<ProtoId<ResearchPointPrototype>, int> _rediscoverCost = new ();
+    private Dictionary<ProtoId<ResearchPointPrototype>, int> _serverPoints = new ();
+    // Fire edit end
+
+    private TimeSpan _nextUpdate;
+    private readonly TimeSpan _updateInterval = TimeSpan.FromMilliseconds(500);
 
     public EntityUid Entity;
 
@@ -42,6 +58,7 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         _accessReader = _entity.System<AccessReaderSystem>();
 
         ServerButton.OnPressed += _ => OnServerButtonPressed?.Invoke();
+        RediscoverButton.OnPressed += OnRediscoverPressed;
     }
 
     public void SetEntity(EntityUid entity)
@@ -65,9 +82,7 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
             MinHeight = 10
         });
 
-        var hasAccess = _player.LocalEntity is not { } local ||
-                        !_entity.TryGetComponent<AccessReaderComponent>(Entity, out var access) ||
-                        _accessReader.IsAllowed(local, Entity, access);
+        var hasAccess = HasAccess();
         foreach (var techId in database.CurrentTechnologyCards)
         {
             var tech = _prototype.Index<TechnologyPrototype>(techId);
@@ -81,6 +96,13 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
 
         var unlockedTech = database.UnlockedTechnologies.Select(x => _prototype.Index<TechnologyPrototype>(x));
         SyncTechnologyList(UnlockedCardsContainer, unlockedTech);
+    }
+
+    private void UpdateRediscoverButton()
+    {
+        // Fire edit - поддержка разных видов очков исследований
+        RediscoverButton.Disabled = !HasAccess() || !ResearchPointsHelper.IsEnoughPoints(_serverPoints, _rediscoverCost) || _timing.CurTime < _nextRediscover;
+        RediscoverButton.Text = Loc.GetString("research-console-menu-server-rediscover-button", ("cost", _rediscoverCost));
     }
 
     public void UpdateInformationPanel(ResearchConsoleBoundInterfaceState state)
@@ -150,6 +172,27 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
             };
             TierDisplayContainer.AddChild(control);
         }
+
+        _serverPoints = state.Points;
+        _rediscoverCost = state.RediscoverCost;
+        _nextRediscover = state.NextRediscover;
+
+        UpdateRediscoverButton();
+    }
+
+    private void OnRediscoverPressed(BaseButton.ButtonEventArgs args)
+    {
+        RediscoverButton.Disabled = true;
+        _nextRediscover = null;
+
+        OnTechnologyRediscoverPressed?.Invoke();
+    }
+
+    private bool HasAccess()
+    {
+        return _player.LocalEntity is not { } local
+               || !_entity.TryGetComponent<AccessReaderComponent>(Entity, out var access)
+               || _accessReader.IsAllowed(local, Entity, access);
     }
 
     /// <summary>
@@ -191,6 +234,25 @@ public sealed partial class ResearchConsoleMenu : FancyWindow
         {
             container.Children.Remove(techControl);
         }
+    }
+
+    /// <inheritdoc />
+    protected override void FrameUpdate(FrameEventArgs args)
+    {
+        base.FrameUpdate(args);
+
+        if(_nextUpdate > _timing.CurTime)
+            return;
+
+        _nextUpdate = _timing.CurTime + _updateInterval;
+
+        if (!RediscoverButton.Disabled)
+            return;
+
+        if (_nextRediscover == null || _nextRediscover > _timing.CurTime)
+            return;
+
+        UpdateRediscoverButton();
     }
 }
 

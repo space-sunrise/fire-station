@@ -19,6 +19,7 @@
   parent: LockerMedicine
   id: LockerMedicineFilled
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -30,6 +31,7 @@
   id: LockerWallMedicalFilled
   name: medicine wall locker
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -69,6 +71,7 @@
   parent: LockerMedical
   id: LockerMedicalFilled
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -80,6 +83,7 @@
   id: LockerWallMedicalDoctorFilled
   name: medical doctor's wall locker
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -112,6 +116,7 @@
   parent: LockerChemistry
   id: LockerChemistryFilled
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -122,7 +127,7 @@
   id: LockerFillParamedic
   table: !type:AllSelector
     children:
-    - id: HandheldCrewMonitor # Sunrise-Edit
+    - id: HandheldEmergencyCrewMonitor # Sunrise-Edit
     - id: ClothingOuterHardsuitVoidParamed
     - id: ClothingOuterCoatParamedicWB
     - id: ClothingHeadHatParamedicsoft
@@ -141,6 +146,7 @@
   parent: LockerParamedic
   id: LockerParamedicFilled
   suffix: Filled
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:

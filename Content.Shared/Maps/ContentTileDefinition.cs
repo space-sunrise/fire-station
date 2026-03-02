@@ -19,7 +19,7 @@ namespace Content.Shared.Maps
 
         public const string SpaceID = "Space";
 
-        [ParentDataFieldAttribute(typeof(AbstractPrototypeIdArraySerializer<ContentTileDefinition>))]
+        [ParentDataField(typeof(AbstractPrototypeIdArraySerializer<ContentTileDefinition>))]
         public string[]? Parents { get; private set; }
 
         [NeverPushInheritance]
@@ -111,6 +111,11 @@ namespace Content.Shared.Maps
         public float? MobAcceleration { get; private set; }
 
         [DataField("sturdy")] public bool Sturdy { get; private set; } = true;
+
+        /// <summary>
+        /// Can weather affect this tile.
+        /// </summary>
+        [DataField("weather")] public bool Weather = false;
 
         /// <summary>
         /// Is this tile immune to RCD deconstruct.

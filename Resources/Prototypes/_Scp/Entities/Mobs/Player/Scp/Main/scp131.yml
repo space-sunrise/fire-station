@@ -7,6 +7,14 @@
     drawdepth: SmallMobs
     sprite: _Scp/Mobs/Scp/scp-131/scp-131-a.rsi
     state: scp-131-a
+  - type: Item
+    size: Huge
+    sprite: _Scp/Mobs/Scp/scp-131/scp-131-a.rsi
+  - type: Clothing
+    sprite: _Scp/Mobs/Scp/scp-131/scp-131-a.rsi
+    slots:
+    - NECK
+  - type: MultiHandedItem
   - type: Scp
     class: Safe
   - type: Muted
@@ -23,14 +31,6 @@
     name: ghost-panel-antagonist-scp-minor-name
     description: ghost-panel-antagonist-scp-minor-description
     priority: 0
-  - type: MultiHandedItem
-  - type: Item
-    size: Huge
-    sprite: _Scp/Mobs/Scp/scp-131/scp-131-a.rsi
-  - type: Clothing
-    sprite: _Scp/Mobs/Scp/scp-131/scp-131-a.rsi
-    slots:
-    - NECK
   - type: ItemRepickupCooldown
     cooldown: 5
   - type: CanEscapeInventory
@@ -64,9 +64,7 @@
     description: ghost-role-information-scp131-description
     raffle:
       settings: short
-    requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 18000 # 5 часов
+    job: Scp131A
   - type: GhostTakeoverAvailable
   - type: Tag # перезаписываем родительский список тегов, без DoorBumpOpener
     tags:
@@ -88,9 +86,13 @@
     sprite: _Scp/Mobs/Scp/scp-131/scp-131-b.rsi
     state: scp-131-b
   - type: Item
-    size: Huge
     sprite: _Scp/Mobs/Scp/scp-131/scp-131-b.rsi
   - type: Clothing
     sprite: _Scp/Mobs/Scp/scp-131/scp-131-b.rsi
-    slots:
-    - NECK
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-scp131-name
+    description: ghost-role-information-scp131-description
+    raffle:
+      settings: short
+    job: Scp131B

@@ -1,0 +1,14 @@
+ent-ScpTableFrame = { ent-TableFrame }
+    .desc = { ent-TableFrame.desc }
+ent-ScpTable = { ent-Table }
+    .desc = { ent-Table.desc }
+ent-ScpTableReinforced = { ent-TableReinforced }
+    .desc = { ent-TableReinforced.desc }
+ent-ScpTableGlass = { ent-TableGlass }
+    .desc = { ent-TableGlass.desc }
+ent-ScpTableReinforcedGlass = { ent-TableReinforcedGlass }
+    .desc = { ent-TableReinforcedGlass.desc }
+ent-ScpTablePlasmaGlass = { ent-TablePlasmaGlass }
+    .desc = { ent-TablePlasmaGlass.desc }
+ent-ScpTableWood = { ent-TableWood }
+    .desc = { ent-TableWood.desc }

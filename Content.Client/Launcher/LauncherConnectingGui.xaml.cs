@@ -44,8 +44,6 @@ namespace Content.Client.Launcher
         private string _discordLink = ""; // Sunrise-Edit
         private string _telegramLink = ""; // Sunrise-Edit
 
-        private const string AnimationId = "DeepFacility"; // Fire added
-
         public LauncherConnectingGui(LauncherConnecting state, IRobustRandom random,
             IPrototypeManager prototype, IConfigurationManager config, IClipboardManager clipboard,
             ServersHubManager serversHubManager) // Sunrise-Edit
@@ -60,9 +58,12 @@ namespace Content.Client.Launcher
             RobustXamlLoader.Load(this);
             IoCManager.InjectDependencies(this);
 
+            SetAnimation(); // Fire added
+
             LayoutContainer.SetAnchorPreset(this, LayoutContainer.LayoutPreset.Wide);
 
-            Stylesheet = IoCManager.Resolve<IStylesheetManager>().SheetNano;
+            // У нас своя система стилей
+            // Stylesheet = IoCManager.Resolve<IStylesheetManager>().SheetSystem;
 
             ChangeLoginTip();
             RetryButton.OnPressed += ReconnectButtonPressed;
@@ -78,14 +79,10 @@ namespace Content.Client.Launcher
             Discord.OnPressed += _ => _uri.OpenUri(_discordLink); // Sunrise-Edit
             Telegram.OnPressed += _ => _uri.OpenUri(_telegramLink); // Sunrise-Edit
 
-            // Fire added start - анимация вместо паралакса при загрузке
-            var resourceCache = IoCManager.Resolve<IResourceCache>();
-            SetAnimation();
-
-            var logoTexture = resourceCache.GetTexture("/Textures/_Scp/Logo/logo-hollow.png"); // Fire edit
-            Logo.Texture = logoTexture;
-            Logo.TextureScale = new Vector2(0.125f, 0.125f);
-            // Fire added end
+            /*
+             * Здесь была логика про лого, но у нас все сильно изменено.
+             * Я удалил логику.
+             */
 
             var addr = state.Address;
             if (addr != null)
@@ -114,18 +111,6 @@ namespace Content.Client.Launcher
             ServersHubHeaderLabel.Text = Loc.GetString("serverhub-playingnow", ("total", totalPlayers), ("max", maxPlayers)); // Sunrise-Edit
         }
         // Sunrise-End
-
-        // Fire added start - анимация при загрузке вместо паралакса
-        private void SetAnimation()
-        {
-            if (!_prototype.TryIndex<LobbyAnimationPrototype>(AnimationId, out var lobbyAnimationPrototype))
-                return;
-
-            ConnectionAnimation.SetFromSpriteSpecifier(new SpriteSpecifier.Rsi(new ResPath(lobbyAnimationPrototype.RawPath), lobbyAnimationPrototype.State));
-            ConnectionAnimation.DisplayRect.TextureScale = lobbyAnimationPrototype.Scale;
-            ConnectionAnimation.DisplayRect.Stretch = TextureRect.StretchMode.Scale;
-        }
-        // Fire added end
 
         // Just button, there's only one at once anyways :)
         private void ReconnectButtonPressed(BaseButton.ButtonEventArgs args)
@@ -219,6 +204,10 @@ namespace Content.Client.Launcher
         protected override void FrameUpdate(FrameEventArgs args)
         {
             base.FrameUpdate(args);
+
+            // Fire added start - анимация загрузки
+            UpdateAnimation(args);
+            // Fire added end
 
             var button = _state.CurrentPage == LauncherConnecting.Page.ConnectFailed
                 ? RetryButton

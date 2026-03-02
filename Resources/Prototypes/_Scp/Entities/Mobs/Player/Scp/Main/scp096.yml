@@ -52,6 +52,18 @@
       - DamageOtherOnHit
       - Storage
       - EntityStorage
+    cryOutWhitelist:
+      tags:
+      - Wall
+      - Window
+      - Directional
+      - Structure
+    cryOutBlacklist:
+      components:
+      - ArtifactAnalyzer
+    cryOutDamage:
+      types:
+        Structural: 850
   - type: Scp096ShaderStatic
   - type: ScpRestriction
     canBeDisarmed: true
@@ -89,7 +101,7 @@
         volume: -4
   - type: ActionGrant
     actions:
-    #- Scp096CryOut - Требует механику ремонта стен, отключено до реализации.
+    - Scp096CryOut
     - Scp096FaceSkinRip
     - Scp096SitDown
   - type: SafeTime
@@ -126,7 +138,7 @@
     speed: 2
     distance: 0.25
   - type: Body
-    prototype: Human # TODO: Кастомное тело
+    prototype: Scp096
   - type: Inventory
     templateId: scp096
   - type: Blindable
@@ -134,7 +146,7 @@
   - type: Muted
   - type: Stamina
     stunTime: 12
-    critThreshold: 400
+    baseCritThreshold: 400
     animationThreshold: 220
     stunModifierThresholds:
       0: 1
@@ -176,7 +188,10 @@
     - RadiationProtection
     - Drowsiness
   - type: Bloodstream
-    bloodReagent: Scp096Blood
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Scp096Blood
+        Quantity: 300
   - type: SolutionRegeneration
     solution: bloodstream
     generated:
@@ -224,8 +239,10 @@
       types:
         Blunt: -0.1
   - type: Bloodstream
-    bloodReagent: Scp096Tears
-    bloodMaxVolume: 100
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Scp096Tears
+        Quantity: 100
     bloodlossDamage:
       types:
         Bloodloss:

@@ -1,0 +1,6 @@
+﻿- type: guideEntry
+  id: FireStationRuleset
+  name: guide-entry-rules
+  ruleEntry: true
+  priority: 10
+  text: "/ServerInfo/_Scp/Guidebook/ServerRules/FireStationRules.xml"

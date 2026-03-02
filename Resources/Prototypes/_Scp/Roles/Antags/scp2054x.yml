@@ -1,0 +1,10 @@
+﻿- type: antag
+  id: Scp2054X
+  name: ghost-role-information-scp-2054-x-name
+  antagonist: true
+  objective: roles-antag-paradox-clone-objective
+  setPreference: false
+  playTimeTracker: AntagScp2054X
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 # 5 часов

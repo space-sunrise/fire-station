@@ -1,8 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Content.Client._Scp.Scp173.UI;
-using Content.Client.Actions;
 using Content.Client.Charges;
-using Content.Client.Examine;
 using Content.Client.UserInterface.Screens;
 using Content.Client.UserInterface.Systems.Actions;
 using Content.Client.UserInterface.Systems.Gameplay;
@@ -13,6 +11,7 @@ using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.Map;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
@@ -27,9 +26,7 @@ public sealed class Scp173System : SharedScp173System
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IUserInterfaceManager _ui = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
-    [Dependency] private readonly ActionsSystem _actionsSystem = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly ExamineSystem _examine = default!;
     [Dependency] private readonly ChargesSystem _charges = default!;
 
     private Scp173Overlay _overlay = default!;
@@ -55,7 +52,7 @@ public sealed class Scp173System : SharedScp173System
         gameplayStateLoad.OnScreenLoad += EnsureWidgetExist;
         gameplayStateLoad.OnScreenUnload += RemoveWidget;
 
-        _overlay = new(_transform, _ui.GetUIController<ActionUIController>(), _actionsSystem, _physics, _examine, _charges);
+        _overlay = new(_transform, _ui.GetUIController<ActionUIController>(), _physics, _charges, this);
         _ui.OnScreenChanged += _ => RecreateWidget();
     }
 
@@ -186,4 +183,19 @@ public sealed class Scp173System : SharedScp173System
         RemoveWidget();
         EnsureWidgetExist();
     }
+
+    #region Overlay API
+
+    /// <summary>
+    /// Публичная обёртка над <see cref="SharedScp173System.IsImpassableObstacle"/> для использования в оверлее.
+    /// </summary>
+    public bool CheckImpassableObstacle(EntityUid entity) => IsImpassableObstacle(entity);
+
+    /// <summary>
+    /// Публичная обёртка над <see cref="SharedScp173System.ClampTargetToRange"/> для использования в оверлее.
+    /// </summary>
+    public void ClampTarget(MapCoordinates performerCoords, ref MapCoordinates targetCoords, float maxRange)
+        => ClampTargetToRange(performerCoords, ref targetCoords, maxRange);
+
+    #endregion
 }

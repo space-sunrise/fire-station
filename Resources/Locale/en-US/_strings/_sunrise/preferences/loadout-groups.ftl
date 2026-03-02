@@ -10,12 +10,14 @@ loadout-group-backntr = ИСН, рюкзак
 loadout-group-barber-jumpsuit = Униформа парикмахера
 loadout-group-blueshield-belt = Офицер «Синий щит», пояс
 loadout-group-blueshield-neck = Офицер «Синий щит», шея
+loadout-group-blueshield-gun = Офицер «Синий щит», Табельное
 loadout-group-blueshield-backpack = Офицер «Синий щит», рюкзак
 loadout-group-blueshield-jumpsuit = Офицер «Синий щит», комбинезон
 loadout-group-bodycam = Бодикамера
 loadout-group-bra = Бюстгальтер
 loadout-group-brigmedic-backpack = Рюкзак бригмедика
 loadout-group-brigmedic-jumpsuit = Униформа бригмедика
+loadout-group-sunrise-injectors = Инъекторы
 loadout-group-cargo-technician-gloves = Грузчик, перчатки
 loadout-group-cargo-technician-mask = Грузчик, маска
 loadout-group-cargo-technician-neck = Грузчик, шея
@@ -37,6 +39,7 @@ loadout-group-engineering-trinkets = Безделушки ИНЖ
 loadout-group-hos-gun = ГСБ, оружие
 loadout-group-mail-backpack = Почтальон, рюкзак
 loadout-group-mail-jumpsuit = Почтальон, комбинезон
+loadout-group-captain-gloves = Captain, gloves
 loadout-group-medical-doctor-neck = Врач, шея
 loadout-group-medical-trinkets = Безделушки МЕД
 loadout-group-nanotrasenrepresentative-jumpsuit = Представитель NT, комбинезон
@@ -98,3 +101,14 @@ loadout-group-station-engineer-gloves = Инженер, перчатки
 loadout-group-station-engineer-mask = Инженер, маска
 loadout-group-station-engineer-neck = Инженер, шея
 loadout-group-uniformntr = Униформа ИСН
+loadout-group-contributors = Contributors
+
+loadout-group-head = Headwear
+loadout-group-hats = Hats
+loadout-group-pda = PDA
+
+loadout-group-prison-trinkets = Prison Trinkets
+loadout-group-prisoner-loot = Prisoner Loot
+loadout-group-prison-security-loot = Security Privileges
+
+loadout-group-prison-jumpsuit = Prison Jumpsuit

@@ -5,6 +5,11 @@ namespace Content.Shared.Roles;
 [Prototype]
 public sealed partial class DepartmentPrototype : IPrototype
 {
+    // Fire added start
+    [DataField]
+    public bool AlwaysShowInBanPanel;
+    // Fire added end
+
     [IdDataField]
     public string ID { get; private set; } = string.Empty;
 
@@ -50,10 +55,13 @@ public sealed partial class DepartmentPrototype : IPrototype
     [DataField]
     public bool EditorHidden;
 
-    // Fire added start
+    // Sunrise-Start
+    /// <summary>
+    /// Если true, скрывает департамент только из "Манифеста экипажа" (PDA CrewManifest App).
+    /// </summary>
     [DataField]
-    public bool AlwaysShowInBanPanel;
-    // Fire added end
+    public bool ManifestHidden = false;
+    // Sunrise-End
 }
 
 /// <summary>

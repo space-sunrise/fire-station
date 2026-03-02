@@ -17,7 +17,6 @@
     firstBlinkingBonusTime: 30
     otherBlinkingBonusTime: 120
     otherBlinkingBonusDuration: 7
-    # TODO: Добавить звук использования
   - type: UseDelay
     delay: 3
 
@@ -162,7 +161,6 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadAwareness
-  suffix: SCP-035 Item
   components:
   - type: Sprite
     sprite: _Scp/Clothing/Head/Helmets/techno.rsi
@@ -175,6 +173,7 @@
   - type: ClothingAddComponents
     components:
     - type: Scp035MindProtection
+    - type: Scp012Protection
 
 # Пушки
 
@@ -219,7 +218,7 @@
   - type: Battery
     maxCharge: 1500
     startingCharge: 1500
-  - type: HitscanBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: UltraXrayLaser
     fireCost: 750
   - type: Wieldable
@@ -267,7 +266,7 @@
   - type: Battery
     maxCharge: 1500
     startingCharge: 1500
-  - type: HitscanBatteryAmmoProvider
+  - type: BatteryAmmoProvider
     proto: UltraRedHeavyLaser
     fireCost: 300
   - type: Wieldable

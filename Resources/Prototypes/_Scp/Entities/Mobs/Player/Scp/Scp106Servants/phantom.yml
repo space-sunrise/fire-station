@@ -25,7 +25,7 @@
   - type: Eye
     drawFov: false
   - type: FlashImmunity
-    examinable: false
+    showInExamine: false
   - type: Scp106Phantom
   - type: ScpRestriction
   - type: ToggleableNightVision

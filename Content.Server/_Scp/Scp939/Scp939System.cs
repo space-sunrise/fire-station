@@ -3,7 +3,7 @@ using Content.Server.Fluids.EntitySystems;
 using Content.Shared._Scp.Scp939;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Body.Components;
-using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs;
 using Content.Shared.StatusEffectNew;
 using Robust.Server.Audio;

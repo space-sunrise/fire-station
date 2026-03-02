@@ -1,10 +1,9 @@
-﻿using System.Numerics;
-using Content.Client.Actions;
+﻿using System.Linq;
+using System.Numerics;
 using Content.Client.UserInterface.Systems.Actions;
-using Content.Shared.Actions;
+using Content.Shared._Scp.Scp173;
 using Content.Shared.Actions.Components;
 using Content.Shared.Charges.Systems;
-using Content.Shared.Examine;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Physics;
@@ -29,25 +28,31 @@ public sealed class Scp173Overlay : Overlay
 
     private readonly SharedTransformSystem _transform;
     private readonly ActionUIController _controller;
-    private readonly ActionsSystem _actionsSystem;
     private readonly SharedPhysicsSystem _physics;
-    private readonly ExamineSystemShared _examine;
     private readonly SharedChargesSystem _charges;
+    private readonly Scp173System _scp173;
+
+    private readonly EntityQuery<MobStateComponent> _mobQuery;
+    private readonly EntityQuery<Scp173Component> _scp173Query;
+    private readonly EntityQuery<ActionComponent> _actionQuery;
 
     public Scp173Overlay(SharedTransformSystem transform,
         ActionUIController controller,
-        ActionsSystem actionsSystem,
         SharedPhysicsSystem physics,
-        ExamineSystemShared examine,
-        SharedChargesSystem charges)
+        SharedChargesSystem charges,
+        Scp173System scp173)
     {
         IoCManager.InjectDependencies(this);
+
         _transform = transform;
         _controller = controller;
-        _actionsSystem = actionsSystem;
         _physics = physics;
-        _examine = examine;
         _charges = charges;
+        _scp173 = scp173;
+
+        _mobQuery = _entity.GetEntityQuery<MobStateComponent>();
+        _scp173Query = _entity.GetEntityQuery<Scp173Component>();
+        _actionQuery = _entity.GetEntityQuery<ActionComponent>();
     }
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
@@ -61,7 +66,7 @@ public sealed class Scp173Overlay : Overlay
         if (_controller.SelectingTargetFor is not { } actionId)
             return;
 
-        if (!_entity.TryGetComponent<ActionComponent>(actionId, out var action))
+        if (!_actionQuery.TryGetComponent(actionId, out var action))
             return;
 
         if (!action.Enabled)
@@ -73,38 +78,52 @@ public sealed class Scp173Overlay : Overlay
         if (action.Cooldown.HasValue && action.Cooldown.Value.End > _timing.CurTime)
             return;
 
+        if (!_scp173Query.TryGetComponent(playerEntity.Value, out var scp173))
+            return;
+
         var mousePos = _eyeManager.PixelToMap(_inputManager.MouseScreenPosition);
         if (mousePos.MapId == MapId.Nullspace)
             return;
 
         var playerPos = _transform.GetWorldPosition(playerEntity.Value);
+        var performerCoords = _transform.GetMapCoordinates(playerEntity.Value);
 
-        if (!_examine.InRangeUnOccluded(
-                mousePos,
-                _transform.GetMapCoordinates(playerEntity.Value),
-                ExamineSystemShared.MaxRaycastRange,
-                null))
-            return;
+        // Ограничиваем цель максимальной дальностью прыжка
+        _scp173.ClampTarget(performerCoords, ref mousePos, scp173.MaxJumpRange);
 
-        args.WorldHandle.DrawLine(playerPos, mousePos.Position, Color.Aqua);
-        args.WorldHandle.DrawCircle(mousePos.Position, 0.4f, Color.Red, false);
-
+        // Рейкаст по AllMask для обнаружения как мобов, так и препятствий
         var direction = mousePos.Position - playerPos;
         var normalizedDirection = Vector2.Normalize(direction);
-        var ray = new CollisionRay(playerPos, normalizedDirection, collisionMask: (int)CollisionGroup.MobLayer);
-        var rayCastResults = _physics.IntersectRay(mousePos.MapId, ray, direction.Length(), playerEntity, false);
+        var ray = new CollisionRay(playerPos, normalizedDirection, collisionMask: (int) CollisionGroup.AllMask);
+
+        var rayCastResults = _physics.IntersectRay(mousePos.MapId, ray, direction.Length(), playerEntity, false)
+            .OrderBy(x => x.Distance)
+            .ToList();
+
+        var lastSafePos = playerPos;
+        var finalPos = mousePos.Position;
 
         foreach (var result in rayCastResults)
         {
             var ent = result.HitEntity;
-            if (!_entity.TryGetComponent<MobStateComponent>(ent, out var mobStateComponent))
-                continue;
 
-            if (mobStateComponent.CurrentState == MobState.Dead || mobStateComponent.CurrentState == MobState.Critical)
+            // Если моб — рисуем маркер убийства
+            if (_mobQuery.TryGetComponent(ent, out var mobState) && mobState.CurrentState == MobState.Alive)
+            {
+                args.WorldHandle.DrawCircle(result.HitPos, 0.15f, Color.MediumVioletRed);
+                lastSafePos = result.HitPos;
                 continue;
+            }
 
-            args.WorldHandle.DrawCircle(result.HitPos, 0.15f, Color.MediumVioletRed);
+            // Если непроходимое препятствие — останавливаемся
+            if (_scp173.CheckImpassableObstacle(ent))
+            {
+                finalPos = lastSafePos != playerPos ? lastSafePos : playerPos;
+                break;
+            }
         }
+
+        args.WorldHandle.DrawLine(playerPos, finalPos, Color.Aqua);
+        args.WorldHandle.DrawCircle(finalPos, 0.4f, Color.Red, false);
     }
 }
-

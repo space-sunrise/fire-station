@@ -17,6 +17,8 @@
       Flammable: [ Touch ]
       Extinguish: [ Touch ]
       Acidic: [ Touch ]
+  - type: XenoArtifact
+    triggerWeights: ScpDefaultTriggers
 
 - type: entity
   id: BaseScpArtifactMajor
@@ -111,7 +113,7 @@
   - type: FootprintEmitter
   - type: ZombieImmune # ебало игроков представили?
   - type: FlashImmunity
-    examinable: false
+    showInExamine: false
   - type: StationRecordKeyStorage
   - type: GhostPanelAntagonistMarker
     name: ghost-panel-antagonist-scp-name

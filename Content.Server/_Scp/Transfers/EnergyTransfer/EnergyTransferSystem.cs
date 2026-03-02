@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using Content.Server.Power.EntitySystems;
-using Content.Server.Power.Components;
+using Content.Shared.Power.Components;
 
 namespace Content.Server._Scp.Transfers.EnergyTransfer;
 
@@ -120,7 +120,10 @@ public sealed class EnergyTransferSystem : EntitySystem
 
     private void BalanceEnergy(Entity<BatteryComponent> sourceEnt, Entity<BatteryComponent> targetEnt, float maxTransfer)
     {
-        var chargeDiff = sourceEnt.Comp.CurrentCharge - targetEnt.Comp.CurrentCharge;
+        var sourceCharge = _battery.GetCharge(sourceEnt.AsNullable());
+        var targetCharge = _battery.GetCharge(targetEnt.AsNullable());
+
+        var chargeDiff = sourceCharge - targetCharge;
         var absChargeDiff = Math.Abs(chargeDiff);
         if (absChargeDiff < BalanceThreshold)
             return;
@@ -135,7 +138,8 @@ public sealed class EnergyTransferSystem : EntitySystem
 
     private void TransferEnergyBetween(Entity<BatteryComponent> fromEntity, Entity<BatteryComponent> toEntity, float transferAmount)
     {
-        var availableCapacity = toEntity.Comp.MaxCharge - toEntity.Comp.CurrentCharge;
+        var toCharge = _battery.GetCharge(toEntity.AsNullable());
+        var availableCapacity = toEntity.Comp.MaxCharge - toCharge;
         transferAmount = Math.Min(transferAmount, availableCapacity);
 
         if (transferAmount > 0)
@@ -147,14 +151,16 @@ public sealed class EnergyTransferSystem : EntitySystem
 
     private void SendEnergy(Entity<BatteryComponent> sourceEnt, Entity<BatteryComponent> targetEnt, float maxTransfer)
     {
-        if (sourceEnt.Comp.CurrentCharge <= 0)
+        var sourceCharge = _battery.GetCharge(sourceEnt.AsNullable());
+        if (sourceCharge <= 0)
             return;
 
-        var availableCapacity = targetEnt.Comp.MaxCharge - targetEnt.Comp.CurrentCharge;
+        var targetCharge = _battery.GetCharge(targetEnt.AsNullable());
+        var availableCapacity = targetEnt.Comp.MaxCharge - targetCharge;
         if (availableCapacity <= 0)
             return;
 
-        var transferAmount = Math.Min(Math.Min(maxTransfer, sourceEnt.Comp.CurrentCharge), availableCapacity);
+        var transferAmount = Math.Min(Math.Min(maxTransfer, sourceCharge), availableCapacity);
         if (transferAmount > 0)
         {
             TransferCharge(sourceEnt, -transferAmount);
@@ -164,14 +170,16 @@ public sealed class EnergyTransferSystem : EntitySystem
 
     private void ReceiveEnergy(Entity<BatteryComponent> sourceEnt, Entity<BatteryComponent> targetEnt, float maxTransfer)
     {
-        if (targetEnt.Comp.CurrentCharge <= 0)
+        var targetCharge = _battery.GetCharge(targetEnt.AsNullable());
+        if (targetCharge <= 0)
             return;
 
-        var availableCapacity = sourceEnt.Comp.MaxCharge - sourceEnt.Comp.CurrentCharge;
+        var sourceCharge = _battery.GetCharge(sourceEnt.AsNullable());
+        var availableCapacity = sourceEnt.Comp.MaxCharge - sourceCharge;
         if (availableCapacity <= 0)
             return;
 
-        var transferAmount = Math.Min(Math.Min(maxTransfer, targetEnt.Comp.CurrentCharge), availableCapacity);
+        var transferAmount = Math.Min(Math.Min(maxTransfer, targetCharge), availableCapacity);
         if (transferAmount > 0)
         {
             TransferCharge(targetEnt, -transferAmount);
@@ -181,6 +189,7 @@ public sealed class EnergyTransferSystem : EntitySystem
 
     private void TransferCharge(Entity<BatteryComponent> entity, float amount)
     {
-        _battery.SetCharge(entity.Owner, entity.Comp.CurrentCharge + amount, entity.Comp);
+        var charge = _battery.GetCharge(entity.AsNullable());
+        _battery.SetCharge(entity.AsNullable(), charge + amount);
     }
 }

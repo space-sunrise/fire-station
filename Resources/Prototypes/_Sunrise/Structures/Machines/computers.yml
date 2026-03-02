@@ -33,6 +33,7 @@
 
 - type: entity
   id: ComputerShipyard
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerSunrise
   name: shipyard console
   description: Used to purchase and sell shuttles
@@ -69,6 +70,7 @@
 
 - type: entity
   id: ComputerSaleConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerPalletConsole
   name: sale console
   suffix: Finance
@@ -87,6 +89,7 @@
 
 - type: entity
   id: ComputeStationBankConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerSunrise
   name: station bank console
   suffix: Finance
@@ -120,6 +123,7 @@
 
 - type: entity
   id: ComputeCargoSalaryConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerSunrise
   name: cargo salary console
   suffix: Finance
@@ -153,6 +157,7 @@
 
 - type: entity
   id: ComputerCargoFinanceConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerSunrise
   name: cargo finance console
   suffix: Finance
@@ -186,6 +191,7 @@
 
 - type: entity
   id: ComputerBountySaleConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerPalletConsole
   name: bounty sale console
   suffix: Finance
@@ -201,6 +207,7 @@
 
 - type: entity
   id: ComputerCallErtConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerSunrise
   name: ERT call console
   suffix: ERTCALL
@@ -234,6 +241,7 @@
 
 - type: entity
   id: ComputerApproveErtConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerSunrise
   name: ERT approve console
   suffix: ERTCALL
@@ -268,6 +276,7 @@
 - type: entity
   parent: BaseComputerSunrise
   id: ComputerFineRecords
+  categories: [ HideSpawnMenu ] # Fire edit
   name: fine records computer
   suffix: Finance, Security
   description: This can be used to check fines and set them up for criminal scum. Only security can modify them.
@@ -305,6 +314,7 @@
 - type: entity
   parent: BaseComputerSunrise
   id: ComputerContrabandSale
+  categories: [ HideSpawnMenu ] # Fire edit
   name: contraband exchanger computer
   suffix: Finance, Security
   description: This can be used to validate contraband and exchange it to the station account. Only security can modify them.
@@ -341,42 +351,39 @@
 
 - type: entity
   id: ComputerServiceSaleConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerSaleConsole
   suffix: Finance, Service
   name: service sale console
   description:
   components:
   - type: CargoPalletConsole
-    #tag: #Service sale
-    #whitelist:
-    #  components:
-    #  - Food
+  - type: Computer
+    board: ComputerServiceSaleConsoleCircuitboard
 
 - type: entity
   id: ComputerSecuritySaleConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerSaleConsole
   suffix: Finance, Security
   name: security sale console
   description:
   components:
   - type: CargoPalletConsole
-#    tag: #Security sale
-#    whitelist:
-#      components:
-#      - Gun
+  - type: Computer
+    board: ComputerSecuritySaleConsoleCircuitboard
 
 - type: entity
   id: ComputerMedicalSaleConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerSaleConsole
   suffix: Finance, Medical
   name: medical sale console
   description:
   components:
   - type: CargoPalletConsole
-#    tag: #Medical sale
-#    whitelist:
-#      components:
-#      - Healing
+  - type: Computer
+    board: ComputerMedicalSaleConsoleCircuitboard
 
 - type: entity
   id: ComputerMiningSaleConsole
@@ -386,30 +393,25 @@
   description:
   components:
   - type: CargoPalletConsole
-#    tag: #Mining sale
-#    whitelist:
-#      components:
-#      - Material
+  - type: Computer
+    board: ComputerMiningSaleConsoleCircuitboard
 
 - type: entity
   id: ComputerScienceSaleConsole
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ComputerSaleConsole
   suffix: Finance, RND
   name: science sale console
   description:
   components:
   - type: CargoPalletConsole
-#    tag: #Science sale
-#    whitelist:
-#      components:
-#      - TechnologyDisk
-#      - MachineBoard
-#      - MachinePart
-#      - PowerCell
+  - type: Computer
+    board: ComputerScienceSaleConsoleboard
 
 - type: entity
   parent: ComputerComms
   id: CentcomComputerComms
+  categories: [ HideSpawnMenu ] # Fire edit
   name: centcom communications computer
   components:
   - type: AccessReader
@@ -422,6 +424,7 @@
 - type: entity
   parent: BaseComputerShuttle
   id: ComputerShuttleCentComm
+  categories: [ HideSpawnMenu ] # Fire edit
   name: RCC shuttle console
   description: Console for remote control of the Central Command Representative's shuttle.
   components:
@@ -476,6 +479,7 @@
   id: PrisonComputerComms
   name: prison communications computer
   description: A console for controlling announcements in a space prison.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: AccessReader
     access: [[ "Security" ]]
@@ -494,6 +498,7 @@
 - type: entity
   parent: BaseComputerShuttle
   id: ComputerShuttleSecurity
+  categories: [ HideSpawnMenu ] # Fire edit
   name: security shuttle console
   description: Console for remote control of the security shuttle.
   components:
@@ -521,6 +526,7 @@
 - type: entity
   parent: BaseComputer
   id: CommandConsoleComputer
+  categories: [ HideSpawnMenu ] # Fire edit
   name: command line computer
   components:
   - type: Sprite

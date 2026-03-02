@@ -6,11 +6,12 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: ScientificService
-    time: 18000
+    time: 10800
   startingGear: AnomarchologyResearcherGear
   icon: JobAnomarchologyResearcher
   supervisors: job-supervisors-scientific-service-director
   displayWeight: 10
+  weight: 795
   accessGroups:
   - Scientist
   special:

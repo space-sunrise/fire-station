@@ -9,6 +9,7 @@
   canBeAntag: false
   radioBold: true
   displayWeight: 75
+  weight: 855
   setPreference: false # TODO: После добавления вайт-листа убрать
   accessGroups:
   - InternalTribunalService

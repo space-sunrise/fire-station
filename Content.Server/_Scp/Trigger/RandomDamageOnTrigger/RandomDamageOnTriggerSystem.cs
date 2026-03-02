@@ -1,6 +1,7 @@
 ﻿using Content.Server.Destructible;
 using Content.Shared._Scp.Trigger.RandomDamageOnTrigger;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Trigger;
 using Robust.Shared.Random;
 
@@ -45,7 +46,7 @@ public sealed class RandomDamageOnTriggerSystem : EntitySystem
             _tempDamage.DamageDict[type] = destroyed.Value * modifier;
         }
 
-        _damageable.TryChangeDamage(ent, _tempDamage, ent.Comp.IgnoreResistancesForDamage);
+        _damageable.TryChangeDamage(ent.Owner, _tempDamage, ent.Comp.IgnoreResistancesForDamage);
         _tempDamage.DamageDict.Clear();
     }
 }

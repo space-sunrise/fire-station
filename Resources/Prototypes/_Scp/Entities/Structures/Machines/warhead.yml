@@ -81,8 +81,8 @@
     totalIntensity: 80000000
     diskSlot:
       whitelist:
-        components:
-        - Wall
+        tags:
+        - Wall # Заглушка, так как диск не должен вставляться в саму боеголовку.
     armMusic:
       path: /Audio/_Scp/StationEvents/nuke_countdown.ogg
     alertLevelOnActivate: scpDelta

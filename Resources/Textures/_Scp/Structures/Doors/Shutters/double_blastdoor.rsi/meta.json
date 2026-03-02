@@ -1,18 +1,18 @@
 {
     "version": 1,
     "license": "CC-BY-SA-3.0",
-    "copyright": "Sprited by discord: land1001",
-    "size": 
+    "copyright": "Sprited by discord: land1001. Welded sprited by miduzka(discord)",
+    "size":
     {
         "x": 32,
         "y": 32
     },
-    "states": 
+    "states":
     [
         {
             "name": "closing_unshaded",
             "directions": 4,
-            "delays": 
+            "delays":
             [
                 [
                     0.2,
@@ -67,7 +67,7 @@
         {
             "name": "opening_unshaded",
             "directions": 4,
-            "delays": 
+            "delays":
             [
                 [
                     0.2,
@@ -122,7 +122,7 @@
         {
             "name": "closing",
             "directions": 4,
-            "delays": 
+            "delays":
             [
                 [
                     0.2,
@@ -177,7 +177,7 @@
         {
             "name": "opening",
             "directions": 4,
-            "delays": 
+            "delays":
             [
                 [
                     0.2,
@@ -239,6 +239,10 @@
         },
         {
             "name": "closed",
+            "directions": 4
+        },
+        {
+            "name": "welded",
             "directions": 4
         }
     ]

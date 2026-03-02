@@ -1,0 +1,8 @@
+- type: construction
+  id: ScpComputer
+  graph: ScpComputer
+  startNode: start
+  targetNode: computer
+  category: construction-category-machines
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false

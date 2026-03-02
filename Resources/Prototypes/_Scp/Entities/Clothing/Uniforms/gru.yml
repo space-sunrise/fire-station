@@ -1,0 +1,12 @@
+#Униформа ГРУ
+- type: entity
+  id: ClothingUniformGRU
+  parent: [ClothingUniformBase, BaseFoundationEnemyContraband]
+  components:
+    - type: Sprite
+      sprite: _Scp/Clothing/Uniforms/gru.rsi
+    - type: Clothing
+      sprite: _Scp/Clothing/Uniforms/gru.rsi
+    - type: SuitSensor
+      randomMode: false
+      mode: SensorOff

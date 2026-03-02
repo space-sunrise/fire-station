@@ -7,6 +7,10 @@
   placement:
     mode: SnapgridCenter
   components:
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
   - type: StationAiWhitelist
   - type: Sprite
     sprite: Structures/Doors/Shutters/shutters.rsi
@@ -23,7 +27,7 @@
       fix1:
         shape:
           !type:PhysShapeAabb
-          bounds: "-0.49,-0.49,0.49,0.49" # don't want this colliding with walls or they won't close
+          bounds: "-0.46,-0.46,0.46,0.46" # Sunrise edit - фикс двойных шлюзов
         density: 100
         mask:
         - FullTileMask
@@ -103,7 +107,8 @@
 
 - type: entity
   id: ShuttersNormal
-  parent: BaseShutter
+  parent: [BaseDeltaPressureGlass, BaseShutter]
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Occluder
   - type: Construction
@@ -116,6 +121,7 @@
   id: ShuttersNormalOpen
   parent: ShuttersNormal
   suffix: Open
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Door
     state: Open
@@ -130,9 +136,10 @@
 
 - type: entity
   id: ShuttersRadiation
-  parent: BaseShutter
+  parent: [BaseDeltaPressureGlass, BaseShutter]
   name: radiation shutters
   description: Why did they make these shutters radioactive?
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Shutters/shutters_radiation.rsi
@@ -154,6 +161,7 @@
   id: ShuttersRadiationOpen
   parent: ShuttersRadiation
   suffix: Open
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Door
     state: Open
@@ -168,9 +176,10 @@
 
 - type: entity
   id: ShuttersWindow
-  parent: BaseShutter
+  parent: [BaseDeltaPressureGlass, BaseShutter]
   name: window shutters
   description: The Best (TM) place to see your friends explode!
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Shutters/shutters_window.rsi
@@ -191,6 +200,7 @@
   id: ShuttersWindowOpen
   parent: ShuttersWindow
   suffix: Open
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Door
     state: Open
@@ -207,6 +217,7 @@
   parent: BaseStructureDynamic
   name: shutter frame
   description: A frame for constructing a shutter.
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     sprite: Structures/Doors/Shutters/shutters.rsi

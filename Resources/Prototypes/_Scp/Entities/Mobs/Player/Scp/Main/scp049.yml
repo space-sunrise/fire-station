@@ -10,7 +10,6 @@
   - StripableInventoryBase
   components:
   - type: Sprite
-    noRot: true
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-049.rsi
     state: SCP-049
@@ -18,6 +17,8 @@
     class: Euclid
   - type: Scp049
   - type: ScpRestriction
+    canBeDisarmed: true
+    canStandingState: true
     canPull: true
     canMobCollide: true
   - type: ScpShow049Hud
@@ -85,3 +86,8 @@
     guides:
     - ScpResearch
     - ScpFear
+  - type: Appearance
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: Perishable

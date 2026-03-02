@@ -1,6 +1,6 @@
 ﻿using Content.Client.Overlays;
 using Content.Shared._Scp.Blinking;
-using Content.Shared.StatusIcon;
+using Content.Shared._Scp.Other.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Robust.Shared.Prototypes;
 

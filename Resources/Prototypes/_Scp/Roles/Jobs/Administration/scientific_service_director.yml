@@ -4,12 +4,10 @@
   description: job-description-scientific-service-director
   playTimeTracker: JobScientificServiceDirector
   requirements:
-  - !type:OverallPlaytimeRequirement
-    time: 144000 
   - !type:DepartmentTimeRequirement
     department: ScientificService
     time: 54000
-  weight: 10
+  weight: 960
   startingGear: ScientificServiceDirectorGear
   icon: JobScientificServiceDirector
   supervisors: job-supervisors-director

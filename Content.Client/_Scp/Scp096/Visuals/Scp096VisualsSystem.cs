@@ -39,12 +39,6 @@ public sealed class Scp096VisualsSystem : VisualizerSystem<Scp096Component>
         // Этого не должно происходить, но что-то всегда может пойти не так.
         // Логгируем
         if (enabledLayers > 1)
-        {
-            Log.Error($"""
-                Enabled more than 1 sprite layers at the same time!
-                Stack trace:
-                {Environment.StackTrace}
-                """);
-        }
+            Log.Error("Enabled more than 1 sprite layers at the same time!");
     }
 }

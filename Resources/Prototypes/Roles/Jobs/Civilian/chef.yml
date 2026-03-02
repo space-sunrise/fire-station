@@ -3,10 +3,10 @@
   name: job-name-chef
   description: job-description-chef
   playTimeTracker: JobChef
-#  requirements: Fire edit
-#    - !type:DepartmentTimeRequirement
-#      department: Civilian
-#      time: 3600 #1 hrs # Sunrise-RoleTime
+  requirements:
+    - !type:DepartmentTimeRequirement
+      department: Civilian
+      time: 0.5h
   startingGear: ChefGear
   icon: "JobIconChef"
   supervisors: job-supervisors-hop
@@ -23,7 +23,7 @@
 - type: startingGear
   id: ChefGear
   equipment:
-    shoes: ClothingShoesColorBlack
+    shoes: ClothingShoesChef
     id: ChefPDA
     ears: ClothingHeadsetService
     belt: ClothingBeltChefFilled

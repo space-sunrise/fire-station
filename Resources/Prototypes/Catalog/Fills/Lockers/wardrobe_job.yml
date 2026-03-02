@@ -3,6 +3,7 @@
   suffix: Filled
   parent: WardrobePrison
   description: "Contains a selection of nice orange clothes for people enjoying their stay in the brig."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -13,6 +14,7 @@
   id: ClosetWallWardrobePrisonFilled
   suffix: Filled
   parent: ClosetWallOrange
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -90,6 +92,7 @@
   suffix: Filled
   parent: WardrobeRobotics
   description: "You can build a robot out of this locker."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -114,6 +117,7 @@
   suffix: Filled
   parent: WardrobeChemistry
   description: "The sleek orange threads contained within make you much less likely to be thrown out of the chemistry lab."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -135,6 +139,7 @@
   suffix: Filled
   parent: WardrobeGenetics
   description: "The sleek blue threads contained within make you much less likely to be thrown out of the genetics lab."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -156,6 +161,7 @@
   suffix: Filled
   parent: WardrobeVirology
   description: "The sleek green threads contained within make you much less likely to be thrown out of the virology lab."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -177,6 +183,7 @@
   suffix: Filled
   parent: WardrobeScience
   description: "You've read a couple pop science articles, now it's time for the real deal."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -202,6 +209,7 @@
   suffix: Filled
   parent: WardrobeBotanist
   description: "Plant yourself among the plant men with these 100% natural plant-derived clothes."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -228,6 +236,7 @@
   suffix: Filled
   parent: WardrobeMedicalDoctor
   description: "We've all played doctor before, now practice medicine."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -253,6 +262,7 @@
   suffix: Filled
   parent: WardrobeChapel
   description: "You have to look presentable for your flock."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -273,6 +283,7 @@
   suffix: Filled
   parent: WardrobeSecurity
   description: "Cross the thin red line."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -296,6 +307,7 @@
   suffix: Filled
   parent: WardrobeCargo
   description: "This locker? Maybe 500 spesos. Brotherhood? Priceless."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -318,6 +330,7 @@
   id: WardrobeSalvageFilled
   suffix: Filled
   parent: WardrobeSalvage
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -339,6 +352,7 @@
   suffix: Filled
   parent: WardrobeAtmospherics
   description: "This locker contains a uniform for atmospheric technicians."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -350,6 +364,7 @@
   suffix: Filled
   parent: ClosetWallAtmospherics
   description: "This locker contains a uniform for atmospheric technicians."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:
@@ -370,6 +385,7 @@
   suffix: Filled
   parent: WardrobeEngineering
   description: "This locker contains a uniform for engineering or social engineering."
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: EntityTableContainerFill
     containers:

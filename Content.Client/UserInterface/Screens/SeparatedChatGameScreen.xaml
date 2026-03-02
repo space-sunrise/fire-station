@@ -12,13 +12,13 @@
     xmlns:inventory="clr-namespace:Content.Client.UserInterface.Systems.Inventory.Widgets"
     xmlns:us="clr-namespace:Content.Client._Sunrise.UserActions"
     xmlns:xNamespace="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:stylesheets="clr-namespace:Content.Client.Stylesheets"
+    xmlns:palette="clr-namespace:Content.Client._Scp.Stylesheets.Palette"
     Name="SeparatedChatHud"
     VerticalExpand="False"
     VerticalAlignment="Bottom"
     HorizontalAlignment="Center">
     <SplitContainer Name="ScreenContainer" HorizontalExpand="True" VerticalExpand="True" SplitWidth="0" StretchDirection="TopLeft">
-        <LayoutContainer Name="ViewportContainer" SizeFlagsStretchRatio="6" HorizontalExpand="True" VerticalExpand="True">
+        <LayoutContainer Name="ViewportContainer" SizeFlagsStretchRatio="6" HorizontalExpand="True" VerticalExpand="True"> <!-- Sunrise-Edit -->
             <controls:MainViewport Name="MainViewport"/>
             <widgets:GhostGui Name="Ghost" Access="Protected" />
             <inventory:InventoryGui Name="Inventory" Access="Protected"/>
@@ -31,13 +31,13 @@
         </LayoutContainer>
         <PanelContainer Name="SeparatedChatPanel" SizeFlagsStretchRatio="4" MinWidth="300"> <!-- Sunrise-Edit -->
             <PanelContainer.PanelOverride> <!-- Fire edit start -->
-                <graphics:StyleBoxFlat BackgroundColor="{xNamespace:Static stylesheets:StyleNano.PanelDark}" />
+                <graphics:StyleBoxFlat BackgroundColor="{xNamespace:Static palette:ScpPalettes.PanelDark}" />
             </PanelContainer.PanelOverride> <!-- Fire edit end -->
 
             <BoxContainer Orientation="Vertical" HorizontalExpand="True" SeparationOverride="10" Margin="10">
-                <menuBar:GameTopMenuBar Name="TopBar" HorizontalExpand="True" Access="Protected" />
-                <us:UserActionsPanel></us:UserActionsPanel>
-                <chat:ChatBox VerticalExpand="True" HorizontalExpand="True" Name="Chat" Access="Protected" MinSize="0 0"/>
+                <menuBar:GameTopMenuBar Name="TopBar" HorizontalExpand="True" Access="Public" />
+                <us:UserActionsPanel></us:UserActionsPanel> <!-- Sunrise-Edit -->
+                <chat:ChatBox StyleClasses="ChatOutput" VerticalExpand="True" HorizontalExpand="True" Name="Chat" Access="Protected" MinSize="0 0"/>
             </BoxContainer>
         </PanelContainer>
     </SplitContainer>

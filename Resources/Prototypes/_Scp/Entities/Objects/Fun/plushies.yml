@@ -22,9 +22,6 @@
     sound: *PlushieScp999Sound
   - type: EmitSoundOnCollide
     sound: *PlushieScp999Sound
-  - type: Food
-    requiresSpecialDigestion: true
-    useSound: *PlushieScp999Sound
   - type: MeleeWeapon
     wideAnimationRotation: 180
     soundHit: *PlushieScp999Sound

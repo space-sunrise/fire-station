@@ -21,7 +21,6 @@
   roles:
   - Bartender
   - Botanist
-  - Boxer
   - Chaplain
   - Chef
   - Clown
@@ -33,7 +32,6 @@
   - Passenger
   - Reporter
   - Visitor
-  - Zookeeper
   - ServiceWorker
   - Barber # Sunrise-Roles
   - ComMaid  # Sunrise-Lust edit
@@ -173,9 +171,7 @@
   weight: 5  # Sunrise-weights
   editorHidden: true # Fire added
   roles:
-  - Boxer
   - Reporter
-  - Zookeeper
   - Psychologist
   - Barber  # Sunrise-Roles
   primary: false

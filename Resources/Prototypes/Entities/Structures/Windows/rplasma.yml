@@ -1,7 +1,8 @@
 - type: entity
   id: ReinforcedPlasmaWindow
   name: reinforced plasma window
-  parent: WindowRCDResistant
+  parent: [BaseDeltaPressureReinforcedPlasma, WindowRCDResistant]
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Sprite
     drawdepth: WallTops
@@ -58,9 +59,10 @@
 
 - type: entity
   id: PlasmaReinforcedWindowDirectional
-  parent: WindowDirectionalRCDResistant
+  parent: [BaseDeltaPressureReinforcedPlasmaQuarter, WindowDirectionalRCDResistant]
   name: directional reinforced plasma window
   description: Don't smudge up the glass down there.
+  categories: [ HideSpawnMenu ] # Fire added
   placement:
     mode: SnapgridCenter
     snap:
@@ -118,6 +120,7 @@
   parent: ReinforcedPlasmaWindow
   id: ReinforcedPlasmaWindowDiagonal
   suffix: diagonal
+  categories: [ HideSpawnMenu ] # Fire added
   placement:
     mode: SnapgridCenter
     snap:

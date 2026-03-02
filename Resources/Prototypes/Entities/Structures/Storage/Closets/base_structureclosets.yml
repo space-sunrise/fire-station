@@ -1,15 +1,10 @@
 - type: entity
   id: ClosetBase
-  parent: BaseStructureDynamic
+  parent: [ BaseStructureDynamic, BasePaperLabelableVisualized ]
   name: closet
   description: A standard-issue Nanotrasen storage unit.
   abstract: true
   components:
-  # Fire added start
-  - type: Tag
-    tags:
-    - Scp173DamageOnCollide
-  # Fire added end
   - type: Animateable
   - type: ResistLocker
   - type: Transform
@@ -30,17 +25,6 @@
       sprite: Structures/Storage/closet_labels.rsi
       map: ["enum.PaperLabelVisuals.Layer"]
   - type: MovedByPressure
-  - type: PaperLabel
-    labelSlot:
-      insertVerbText: comp-paper-label-insert
-      ejectVerbText: comp-paper-label-eject
-      whitelist:
-        components:
-        - Paper
-      blacklist:
-        tags:
-        - Book
-  - type: ItemSlots
   - type: DamageOnHighSpeedImpact
     damage:
       types:
@@ -71,15 +55,6 @@
       params:
         volume: -1
     # Sunrise edit end
-    # Fire edit start
-    whitelist:
-      components:
-      - MobState
-      - Item
-    blacklist:
-      components:
-      - Scp
-    # Fire edit end
   - type: ContainerContainer
     containers:
       entity_storage: !type:Container
@@ -95,13 +70,13 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300
+        damage: 100
       behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 50
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
@@ -137,11 +112,14 @@
     stateDoorClosed: generic_door
   - type: StaticPrice
     price: 75
+  - type: Pierceable # Sunrise-edit - прострел ящиков
+    level: Wood
 
 # steel closet base (that can be constructed/deconstructed)
 - type: entity
   id: ClosetSteelBase
   parent: ClosetBase
+  categories: [ HideSpawnMenu ] # Fire added
   components:
   - type: Construction
     graph: ClosetSteel
@@ -191,13 +169,13 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 300
+        damage: 100
       behaviors:
         - !type:DoActsBehavior
           acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
-        damage: 150
+        damage: 50
       behaviors:
       - !type:DoActsBehavior
         acts: ["Destruction"]
@@ -340,3 +318,5 @@
     stateDoorOpen: base
     stateDoorClosed: door
   - type: LockVisuals
+  - type: Pierceable # Sunrise-edit - прострел ящиков
+    level: Wood

@@ -4,18 +4,16 @@
   description: job-description-head-of-medical-sector
   playTimeTracker: JobHeadOfMedicalSector
   requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 144000
     - !type:RoleTimeRequirement
       role: JobMedicalSpecialist
-      time: 21600
+      time: 7200
     - !type:RoleTimeRequirement
       role: JobPharmaceuticalSpecialist
       time: 10800
     - !type:DepartmentTimeRequirement
       department: MedicalService
       time: 36000
-  weight: 10
+  weight: 945
   startingGear: HeadOfMedicalSectorGear
   icon: JobHeadOfMedicalSector
   supervisors: job-supervisors-director

@@ -8,6 +8,7 @@
   supervisors: job-supervisors-chief-technical-specialist
   canBeAntag: true
   displayWeight: 0
+  weight: 740
   accessGroups:
   - CommonEngineeringJob
   special:

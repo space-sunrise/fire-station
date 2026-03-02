@@ -154,7 +154,6 @@
         - Patch
         - PatchPack
       components:
-        - Hypospray
         - Injector
         - Pill
         - HandLabeler

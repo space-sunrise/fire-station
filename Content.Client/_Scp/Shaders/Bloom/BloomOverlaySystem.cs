@@ -74,7 +74,7 @@ public sealed class LightingOverlaySystem : EntitySystem
 
         // Просчитываем, какие сущности будут иметь эффект свечения и будет ли это видно игроку.
         // Если сущность проходит проверки -> добавляем ее в список и отправляем список в оверлеи.
-        var query = EntityQueryEnumerator<BloomOverlayVisualsComponent, PointLightComponent, TransformComponent>();
+        var query = AllEntityQuery<BloomOverlayVisualsComponent, PointLightComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out _, out var pointLight, out var xform))
         {
             if (!pointLight.Enabled)
