@@ -28,11 +28,19 @@
             "directions": 4
         },
         {
-            "name": "chair-greyscale",
+            "name": "chair_grayscale_legs",
             "directions": 4
         },
         {
-            "name": "chair-greyscale-knocked",
+            "name": "chair_grayscale_legs-knocked",
+            "directions": 4
+        },
+        {
+            "name": "chair_grayscale_seat",
+            "directions": 4
+        },
+        {
+            "name": "chair_grayscale_seat-knocked",
             "directions": 4
         },
         {
