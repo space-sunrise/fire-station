@@ -183,6 +183,7 @@
       Terror: 50
     baseJitterTime: 0
     fallOffChance: 0
+  - type: ScpRepairableCanSeeExamineHints
 
 - type: randomHumanoidSettings
   id: CommonMTFSpecialist
