@@ -36,6 +36,14 @@
             "directions": 4
         },
         {
+            "name": "chair-greyscaleL2",
+            "directions": 4
+        },
+        {
+            "name": "chair-greyscale-knockedL2",
+            "directions": 4
+        },
+        {
             "name": "comfy",
             "directions": 4
         },

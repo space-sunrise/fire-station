@@ -118,7 +118,13 @@
   suffix: White
   components:
   - type: Sprite
-    state: chair-greyscale
+    layers:
+    - state: chair-greyscale
+      # Fire edit start
+      color: "#8C8D8F"
+    - state: chair-greyscaleL2
+      color: "#FFFFFF"
+      # Fire edit end
 
 - type: entity
   name: stool
