@@ -34,4 +34,4 @@
   storage:
     back:
     - RubberStampVeto
-  groupBy: "folders"
+  groupBy: folders

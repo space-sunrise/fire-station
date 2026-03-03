@@ -4,35 +4,35 @@
   storage:
     back:
     - Lighter
-  groupBy: "smokeables"
+  groupBy: smokeables
 
 - type: loadout
   id: ScpCigPackGreen
   storage:
     back:
     - CigPackGreen
-  groupBy: "smokeables"
+  groupBy: smokeables
 
 - type: loadout
   id: ScpCigPackRed
   storage:
     back:
     - CigPackRed
-  groupBy: "smokeables"
+  groupBy: smokeables
 
 - type: loadout
   id: ScpCigPackBlue
   storage:
     back:
     - CigPackBlue
-  groupBy: "smokeables"
+  groupBy: smokeables
 
 - type: loadout
   id: ScpCigPackBlack
   storage:
     back:
     - CigPackBlack
-  groupBy: "smokeables"
+  groupBy: smokeables
 
 - type: loadout
   id: ScpCigarCase
@@ -42,7 +42,7 @@
   storage:
     back:
     - CigarCase
-  groupBy: "smokeables"
+  groupBy: smokeables
 
 - type: loadout
   id: ScpCigarGold
@@ -52,7 +52,7 @@
   storage:
     back:
     - CigarGold
-  groupBy: "smokeables"
+  groupBy: smokeables
 
 
 
@@ -65,14 +65,14 @@
   storage:
     back:
     - BoxFolderClipboardThreePapers
-  groupBy: "folders"
+  groupBy: folders
 
 - type: loadout
   id: LegalCodeForPersonnel
   storage:
     back:
     - HyperLinkBookCorporateLaw
-  groupBy: "folders"
+  groupBy: folders
 
 
 
@@ -88,7 +88,7 @@
   storage:
     back:
     - Cane
-  groupBy: "canes"
+  groupBy: canes
 
 
 
@@ -98,7 +98,7 @@
   storage:
     back:
     - TowelColorWhite
-  groupBy: "towels"
+  groupBy: towels
 
 - type: loadout
   id: ScpTowelColorGray
@@ -111,7 +111,7 @@
   storage:
     back:
     - TowelColorGray
-  groupBy: "towels"
+  groupBy: towels
 
 - type: loadout
   id: ScpTowelColorBlack
@@ -121,7 +121,7 @@
   storage:
     back:
     - TowelColorBlack
-  groupBy: "towels"
+  groupBy: towels
 
 - type: loadout
   id: ScpTowelColorRed
@@ -134,7 +134,7 @@
   storage:
     back:
     - TowelColorRed
-  groupBy: "towels"
+  groupBy: towels
 
 - type: loadout
   id: ScpTowelColorOrange
@@ -147,7 +147,7 @@
   storage:
     back:
     - TowelColorOrange
-  groupBy: "towels"
+  groupBy: towels
 
 - type: loadout
   id: ScpTowelColorLightBrown
@@ -160,7 +160,7 @@
   storage:
     back:
     - TowelColorLightBrown
-  groupBy: "towels"
+  groupBy: towels
 
 - type: loadout
   id: ScpTowelColorYellow
@@ -173,7 +173,7 @@
   storage:
     back:
     - TowelColorYellow
-  groupBy: "towels"
+  groupBy: towels
 
 - type: loadout
   id: ScpTowelColorDarkGreen
@@ -186,7 +186,7 @@
   storage:
     back:
     - TowelColorDarkGreen
-  groupBy: "towels"
+  groupBy: towels
 
 - type: loadout
   id: ScpTowelColorLightBlue
@@ -199,7 +199,7 @@
   storage:
     back:
     - TowelColorLightBlue
-  groupBy: "towels"
+  groupBy: towels
 
 - type: loadout
   id: ScpTowelColorDarkBlue
@@ -212,7 +212,7 @@
   storage:
     back:
     - TowelColorDarkBlue
-  groupBy: "towels"
+  groupBy: towels
 
 - type: loadout
   id: ScpTowelColorPurple
@@ -225,7 +225,7 @@
   storage:
     back:
     - TowelColorPurple
-  groupBy: "towels"
+  groupBy: towels
 
 - type: loadout
   id: ScpTowelColorSilver
@@ -237,7 +237,7 @@
   storage:
     back:
     - TowelColorSilver
-  groupBy: "towels"
+  groupBy: towels
 
 - type: loadout
   id: ScpTowelColorGold
@@ -249,4 +249,4 @@
   storage:
     back:
     - TowelColorGold
-  groupBy: "towels"
+  groupBy: towels

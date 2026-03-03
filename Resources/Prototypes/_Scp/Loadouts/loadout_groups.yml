@@ -334,11 +334,9 @@
   - TrinketsEngineeringFL
   - TrinketsEngineeringGA
   - TrinketsEngineeringGC
-  #- TrinketsEngineeringHSM  не имеет смысла пока карта есть у всех
   - TrinketsEngineeringTFE
   - TrinketsEngineeringTFAT
   - TrinketsEngineeringTFCF
-  #- TrinketsEngineeringTT  дичь а не игрушка
   - TrinketsEngineeringGCW
   - TrinketsEngineeringST
 
