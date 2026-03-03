@@ -1,5 +1,5 @@
 ﻿- type: entity
-  parent: ClothingUniformBase
+  parent: [ ClothingUniformBase, ClothingUniformFoldableBase ]
   id: ClothingUniformClassD
   suffix: SCP
   components:
