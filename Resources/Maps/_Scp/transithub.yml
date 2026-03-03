@@ -1,16 +1,16 @@
 meta:
   format: 7
-  category: Map
+  category: Grid
   engineVersion: 271.1.0
   forkId: fire_station
   forkVersion: e328d568b78c610484cff24b45c2694730b1137b
-  time: 03/02/2026 14:37:56
-  entityCount: 4174
-maps:
-- 3
+  time: 03/03/2026 16:08:13
+  entityCount: 4185
+maps: []
 grids:
 - 2
-orphans: []
+orphans:
+- 2
 nullspace: []
 tilemap:
   0: Space
@@ -61,7 +61,7 @@ entities:
       name: Распределительный центр Фонда
     - type: Transform
       pos: -0.75448555,0.32319754
-      parent: 3
+      parent: invalid
     - type: MapGrid
       chunks:
         0,0:
@@ -1386,16 +1386,6 @@ entities:
     - type: RadiationGridResistance
     - type: ImplicitRoof
     - type: ExplosionAirtightGrid
-  - uid: 3
-    components:
-    - type: MetaData
-      name: Map Entity
-    - type: Transform
-    - type: Map
-      mapPaused: True
-    - type: GridTree
-    - type: Broadphase
-    - type: OccluderTree
 - proto: AirAlarmFreezer
   entities:
   - uid: 12
@@ -9244,7 +9234,7 @@ entities:
       pos: 18.5,10.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -3642.4983
+      secondsUntilStateChange: -3697.978
       state: Opening
   - uid: 1460
     components:
@@ -25524,6 +25514,14 @@ entities:
       parent: 2
 - proto: SunriseMultiTileAirtightBlocker
   entities:
+  - uid: 3
+    components:
+    - type: Transform
+      anchored: True
+      pos: 2.5,25.5
+      parent: 2
+    - type: Airtight
+      airBlocked: True
   - uid: 3966
     components:
     - type: Transform
@@ -25613,6 +25611,94 @@ entities:
     - type: Airtight
       airBlocked: True
   - uid: 3989
+    components:
+    - type: Transform
+      anchored: True
+      pos: 5.5,4.5
+      parent: 2
+    - type: Airtight
+      airBlocked: True
+  - uid: 4075
+    components:
+    - type: Transform
+      anchored: True
+      pos: 0.5,25.5
+      parent: 2
+    - type: Airtight
+      airBlocked: True
+  - uid: 4076
+    components:
+    - type: Transform
+      anchored: True
+      pos: 11.5,-2.5
+      parent: 2
+    - type: Airtight
+      airBlocked: True
+  - uid: 4077
+    components:
+    - type: Transform
+      anchored: True
+      pos: 9.5,-2.5
+      parent: 2
+    - type: Airtight
+      airBlocked: True
+  - uid: 4078
+    components:
+    - type: Transform
+      anchored: True
+      pos: -6.5,-2.5
+      parent: 2
+    - type: Airtight
+      airBlocked: True
+  - uid: 4079
+    components:
+    - type: Transform
+      anchored: True
+      pos: -8.5,-2.5
+      parent: 2
+    - type: Airtight
+      airBlocked: True
+  - uid: 4080
+    components:
+    - type: Transform
+      anchored: True
+      pos: 13.5,14.5
+      parent: 2
+    - type: Airtight
+      airBlocked: True
+  - uid: 4081
+    components:
+    - type: Transform
+      anchored: True
+      pos: 15.5,14.5
+      parent: 2
+    - type: Airtight
+      airBlocked: True
+  - uid: 4082
+    components:
+    - type: Transform
+      anchored: True
+      pos: -2.5,4.5
+      parent: 2
+    - type: Airtight
+      airBlocked: True
+  - uid: 4083
+    components:
+    - type: Transform
+      anchored: True
+      pos: -0.5,4.5
+      parent: 2
+    - type: Airtight
+      airBlocked: True
+  - uid: 4084
+    components:
+    - type: Transform
+      anchored: True
+      pos: 3.5,4.5
+      parent: 2
+    - type: Airtight
+      airBlocked: True
+  - uid: 4085
     components:
     - type: Transform
       anchored: True
@@ -26158,7 +26244,7 @@ entities:
       pos: 10.5,-2.5
       parent: 2
     - type: Door
-      secondsUntilStateChange: -30230.777
+      secondsUntilStateChange: -30286.258
       state: Opening
     - type: DeviceLinkSource
       lastSignals:
