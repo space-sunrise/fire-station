@@ -9143,3 +9143,12 @@
   id: 366
   time: '2026-03-02T19:36:31.0000000+00:00'
   url: https://github.com/space-sunrise/fire-station/pull/842
+- author: Parashut
+  changes:
+  - message: "\u041F\u043E\u0447\u0438\u043D\u0438\u043B \u0441\u043F\u0430\u0432\u043D\
+      \ \u0442\u0440\u0430\u043D\u0437\u0438\u0442\u043D\u043E\u0433\u043E \u0445\u0430\
+      \u0431\u0430."
+    type: Fix
+  id: 367
+  time: '2026-03-03T20:03:39.0000000+00:00'
+  url: https://github.com/space-sunrise/fire-station/pull/845
