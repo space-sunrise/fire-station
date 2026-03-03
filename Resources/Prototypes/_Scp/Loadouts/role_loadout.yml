@@ -14,8 +14,7 @@
   - DirectorKeyCard
   - DirectorPDA
   - DirectorBack
-  - CommonAdministrationGlasses
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -31,7 +30,8 @@
   - ScientistGloves
   - ResearchDirectorShoes
   - Glasses
-  - CommonMiscItems
+  - ScpCommonTrinkets
+  - ScientificServiceTrinkets
   - Bra
   - Pants
   - Socks
@@ -49,7 +49,7 @@
   - SecurityCommanderWeapon
   - SecurityRadio
   - CommonSecurityTrinkets
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -67,8 +67,8 @@
   - ChiefEngineerNeck
   - ChiefEngineerShoes
   - SurvivalExtended
-  - TrinketsEngineering
-  - CommonMiscItems
+  - ScpTrinketsEngineering
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -83,7 +83,7 @@
   - HoPBackpack
   - HoPOuterClothing
   - Glasses
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -101,8 +101,8 @@
   - ChiefMedicalOfficerNeck
   - ChiefMedicalOfficerShoes
   - Glasses
-  - MedicalTrinkets
-  - CommonMiscItems
+  - ScpMedicalTrinkets
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -120,8 +120,8 @@
   - QuartermasterNeck
   - QuartermasterShoes
   - Glasses
-  - TrinketsCargo
-  - CommonMiscItems
+  - ScpTrinketsCargo
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -133,8 +133,8 @@
   groups:
   - EthicsCommitteeRepresentativeJumpsuit
   - EthicsCommitteeRepresentativeOuterClothing
-  - Trinkets
-  - CommonMiscItems
+  - EthicsCommitteeRepresentativeTrinkets
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -160,7 +160,7 @@
   - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -184,7 +184,7 @@
   - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -208,7 +208,7 @@
   - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -230,7 +230,7 @@
   - SpecialPurposeSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -256,7 +256,7 @@
   - CommandantSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -280,7 +280,7 @@
   - CommandantSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -304,7 +304,7 @@
   - CommandantSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -326,7 +326,7 @@
   - CommandantSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -339,7 +339,7 @@
   - CommandantSquadWeaponSecondary
   - SecurityRadio
   - CommonSecurityTrinkets
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -354,7 +354,8 @@
   - ScientistGloves
   - ScientistShoes
   - Glasses
-  - CommonMiscItems
+  - ScpCommonTrinkets
+  - ScientificServiceTrinkets
   - Bra
   - Pants
   - Socks
@@ -370,7 +371,8 @@
   - ScientistGloves
   - ScientistShoes
   - Glasses
-  - CommonMiscItems
+  - ScpCommonTrinkets
+  - ScientificServiceTrinkets
   - Bra
   - Pants
   - Socks
@@ -384,7 +386,8 @@
   - RoboticistOuterClothing
   - ScientistBackpack
   - ScientistShoes
-  - CommonMiscItems
+  - ScpCommonTrinkets
+  - ScientificServiceTrinkets
   - Bra
   - Pants
   - Socks
@@ -396,7 +399,8 @@
   - ResearchAssistantJumpsuit
   - ScientistBackpack
   - Glasses
-  - CommonMiscItems
+  - ScpCommonTrinkets
+  - ScientificServiceTrinkets
   - Bra
   - Pants
   - Socks
@@ -415,9 +419,9 @@
   - SeniorPhysicianNeck
   - SeniorPhysicianBelt
   - SeniorPhysicianShoes
-  - MedicalTrinkets
+  - ScpMedicalTrinkets
   - Glasses
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -434,8 +438,8 @@
   - ChemistOuterClothing
   - SunriseChemistNeck
   - SunriseChemistShoes
-  - MedicalTrinkets
-  - CommonMiscItems
+  - ScpMedicalTrinkets
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -453,8 +457,8 @@
   - SunriseMedicalDoctorNeck
   - MedicalShoes
   - Glasses
-  - MedicalTrinkets
-  - CommonMiscItems
+  - ScpMedicalTrinkets
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -467,14 +471,13 @@
   - SunrisePsychologistGloves
   - GroupTankHarness
   - PsychologistJumpsuit
-  - CommonBackpack
   - MedicalBackpack
   - SunrisePsychologistOuterClothing
   - SunrisePsychologistNeck
   - SunrisePsychologistShoes
   - Glasses
-  - MedicalTrinkets
-  - CommonMiscItems
+  - ScpMedicalTrinkets
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -492,8 +495,8 @@
   - SunriseMedicalDoctorNeck
   - MedicalShoes
   - Glasses
-  - MedicalTrinkets
-  - CommonMiscItems
+  - ScpMedicalTrinkets
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -512,8 +515,8 @@
   - SeniorEngineerNeck
   - SeniorEngineerShoes
   - SurvivalExtended
-  - TrinketsEngineering
-  - CommonMiscItems
+  - ScpTrinketsEngineering
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -531,8 +534,8 @@
   - StationSunriseEngineerNeck
   - StationEngineerShoes
   - SurvivalExtended
-  - TrinketsEngineering
-  - CommonMiscItems
+  - ScpTrinketsEngineering
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -549,8 +552,8 @@
   - AtmosphericTechnicianOuterClothing
   - SunriseAtmosNeck
   - AtmosphericTechnicianShoes
-  - TrinketsEngineering
-  - CommonMiscItems
+  - ScpTrinketsEngineering
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -568,8 +571,8 @@
   - StationSunriseEngineerNeck
   - StationEngineerShoes
   - SurvivalExtended
-  - TrinketsEngineering
-  - CommonMiscItems
+  - ScpTrinketsEngineering
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -589,8 +592,8 @@
   - SunriseCargoTechNeck
   - CargoTechnicianShoes
   - Glasses
-  - TrinketsCargo
-  - CommonMiscItems
+  - ScpTrinketsCargo
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -607,7 +610,7 @@
   - CommonBackpack
   - ChefOuterClothing
   - Glasses
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -621,7 +624,7 @@
   - BotanistBackpack
   - BotanistOuterClothing
   - Glasses
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -636,7 +639,7 @@
   - CommonBackpack
   - JanitorOuterClothing
   - Glasses
-  - CommonMiscItems
+  - ScpCommonTrinkets
   - Bra
   - Pants
   - Socks
@@ -649,6 +652,7 @@
   - Bra
   - Pants
   - Socks
+  - ClassDTrinkets
 
 - type: roleLoadout
   id: JobClassDBotanist
@@ -656,6 +660,7 @@
   - Bra
   - Pants
   - Socks
+  - ClassDTrinkets
 
 - type: roleLoadout
   id: JobClassDJanitor
@@ -663,6 +668,7 @@
   - Bra
   - Pants
   - Socks
+  - ClassDTrinkets
 
 - type: roleLoadout
   id: JobClassD
@@ -670,3 +676,4 @@
   - Bra
   - Pants
   - Socks
+  - ClassDTrinkets

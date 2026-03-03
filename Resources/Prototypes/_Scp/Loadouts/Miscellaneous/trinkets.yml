@@ -1,0 +1,252 @@
+﻿# Smokeables
+- type: loadout
+  id: ScpLighter
+  storage:
+    back:
+    - Lighter
+  groupBy: smokeables
+
+- type: loadout
+  id: ScpCigPackGreen
+  storage:
+    back:
+    - CigPackGreen
+  groupBy: smokeables
+
+- type: loadout
+  id: ScpCigPackRed
+  storage:
+    back:
+    - CigPackRed
+  groupBy: smokeables
+
+- type: loadout
+  id: ScpCigPackBlue
+  storage:
+    back:
+    - CigPackBlue
+  groupBy: smokeables
+
+- type: loadout
+  id: ScpCigPackBlack
+  storage:
+    back:
+    - CigPackBlack
+  groupBy: smokeables
+
+- type: loadout
+  id: ScpCigarCase
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Administration
+  storage:
+    back:
+    - CigarCase
+  groupBy: smokeables
+
+- type: loadout
+  id: ScpCigarGold
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Administration
+  storage:
+    back:
+    - CigarGold
+  groupBy: smokeables
+
+
+
+# Folders and bureaucracy
+- type: loadout
+  id: ScpBoxFolderClipboardThreePapers
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: Administration
+  storage:
+    back:
+    - BoxFolderClipboardThreePapers
+  groupBy: folders
+
+- type: loadout
+  id: LegalCodeForPersonnel
+  storage:
+    back:
+    - HyperLinkBookCorporateLaw
+  groupBy: folders
+
+
+
+# Canes
+- type: loadout
+  id: ScpCane
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobEthicsCommitteeRepresentative
+      time: 18000 # 5hr
+  storage:
+    back:
+    - Cane
+  groupBy: canes
+
+
+
+# Towels
+- type: loadout
+  id: ScpTowelColorWhite
+  storage:
+    back:
+    - TowelColorWhite
+  groupBy: towels
+
+- type: loadout
+  id: ScpTowelColorGray
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: ExternalAdministrativeZoneSecurityService
+      time: 360000 # 100hr
+  storage:
+    back:
+    - TowelColorGray
+  groupBy: towels
+
+- type: loadout
+  id: ScpTowelColorBlack
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TowelColorBlackAndDinkystar
+  storage:
+    back:
+    - TowelColorBlack
+  groupBy: towels
+
+- type: loadout
+  id: ScpTowelColorRed
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: HeavyContainmentSecurityService
+      time: 360000 # 100hr
+  storage:
+    back:
+    - TowelColorRed
+  groupBy: towels
+
+- type: loadout
+  id: ScpTowelColorOrange
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: LowAccessPersonnel
+      time: 360000 # 100hr
+  storage:
+    back:
+    - TowelColorOrange
+  groupBy: towels
+
+- type: loadout
+  id: ScpTowelColorLightBrown
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: LogisticsService
+      time: 360000 # 100hr
+  storage:
+    back:
+    - TowelColorLightBrown
+  groupBy: towels
+
+- type: loadout
+  id: ScpTowelColorYellow
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: EngineeringTechnicalService
+      time: 360000 # 100hr
+  storage:
+    back:
+    - TowelColorYellow
+  groupBy: towels
+
+- type: loadout
+  id: ScpTowelColorDarkGreen
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: FoodAndSanitationServiceDepartment
+      time: 360000 # 100hr
+  storage:
+    back:
+    - TowelColorDarkGreen
+  groupBy: towels
+
+- type: loadout
+  id: ScpTowelColorLightBlue
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: MedicalService
+      time: 360000 # 100hr
+  storage:
+    back:
+    - TowelColorLightBlue
+  groupBy: towels
+
+- type: loadout
+  id: ScpTowelColorDarkBlue
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: Administration
+      time: 360000 # 100hr
+  storage:
+    back:
+    - TowelColorDarkBlue
+  groupBy: towels
+
+- type: loadout
+  id: ScpTowelColorPurple
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: ScientificService
+      time: 360000 # 100hr
+  storage:
+    back:
+    - TowelColorPurple
+  groupBy: towels
+
+- type: loadout
+  id: ScpTowelColorSilver
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 180000 # 50hr
+  storage:
+    back:
+    - TowelColorSilver
+  groupBy: towels
+
+- type: loadout
+  id: ScpTowelColorGold
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:OverallPlaytimeRequirement
+      time: 1080000 # 300hr
+  storage:
+    back:
+    - TowelColorGold
+  groupBy: towels

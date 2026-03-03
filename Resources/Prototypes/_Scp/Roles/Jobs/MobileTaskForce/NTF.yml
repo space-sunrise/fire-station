@@ -4,6 +4,9 @@
   name: ghost-role-information-mtf-leader-NTF-name
   description: ghost-role-information-mtf-leader-description
   playTimeTracker: JobNTFLeader
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 #5 hrs
   setPreference: false
   startingGear: NTFLeaderGear
   icon: JobIconNTFleader
@@ -48,6 +51,9 @@
   name: ghost-role-information-mtf-specialist-NTF-name
   description: ghost-role-information-mtf-specialist-description
   playTimeTracker: JobNTFSpecialist
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 #5 hrs
   setPreference: false
   startingGear: NTFSpecialistGear
   icon: JobIconNTF
@@ -82,6 +88,9 @@
   name: ghost-role-information-mtf-cadet-NTF-name
   description: ghost-role-information-mtf-cadet-description
   playTimeTracker: JobNTFCadet
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 3600 #1 hrs
   setPreference: false
   startingGear: NTFCadetGear
   icon: JobIconNTF

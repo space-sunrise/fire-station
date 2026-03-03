@@ -39,3 +39,13 @@
   storage:
     back:
     - FlashlightSeclite
+
+# побрикушки
+- type: loadout
+  id: ScpSecStar
+  effects:
+  - !type:GroupLoadoutEffect
+    proto: TowelColorBlackAndDinkystar
+  storage:
+    back:
+    - Dinkystar
