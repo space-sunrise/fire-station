@@ -1,0 +1,366 @@
+- type: entity
+  parent: ClothingOuterVestWeb
+  id: ClothingOuterVestWebGorizont
+  name: Тактик горизонта
+  description: Лучший из лучших.
+  suffix: Горизонт
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.3
+        Slash: 0.25
+        Piercing: 0.25
+        Heat: 0.7
+  - type: ExplosionResistance
+    damageCoefficient: 0.6
+  - type: StaminaResistance
+    damageCoefficient: 0
+    
+- type: entity
+  parent: ClothingUniformJumpsuitDeathSquad
+  id: ClothingUniformJumpsuitGorizont
+  name: Комбинезон Горизонта
+  suffix: Горизонт
+  description: Комбинезон со стальными пластинами.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.85
+        Slash: 0.95
+        Piercing: 0.95
+  - type: StaminaResistance
+    damageCoefficient: 0
+    
+- type: entity
+  parent: ClothingMaskGasDeathSquad
+  id: ClothingMaskGasGorizont
+  name: Маска Горизонта
+  description: Уникальная маска. Кто скрывается под ней?
+  suffix: Горизонт
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.95
+        Heat: 0.85
+  - type: ExplosionResistance
+    damageCoefficient: 0.95
+  - type: FlashImmunity
+  - type: EyeProtection
+  
+- type: entity
+  parent: ClothingBackpackDeathSquad
+  id: ClothingBackpackGorizont
+  name: Рюкзак Горизонта
+  suffix: Горизонт
+  description: Содержит в себе многое.
+  components:
+  - type: Storage
+    grid:
+    - 0,0,7,7
+  - type: ExplosionResistance
+    damageCoefficient: 0.85
+  - type: StorageFill
+    contents:
+    - id: Crowbar
+    - id: FlashlightLantern
+    - id: DrinkWaterBottleFull
+    - id: FoodSnackNutribrick
+      amount: 2
+    - id: Screwdriver
+    
+- type: entity
+  parent: ClothingEyesHudMultiversal
+  id: ClothingEyesHudGorizont
+  name: Визор Горизонта
+  suffix: Горизонт
+  description: С этим визором гораздо лучше.
+  
+- type: entity
+  parent: ScpBaseSecurityPDA
+  id: GorizontPDA
+  suffix: Горизонт
+  name: КПК Горизонта
+  description: Нужен для опознания мертвого.
+  components:
+  - type: Pda
+  - type: PdaBorderColor
+    borderColor: "#3D3D3D"
+    accentHColor: "#F0BB3E"
+    accentVColor: "#F0BB3E"
+  - type: Appearance
+    appearanceDataInit:
+      enum.PdaVisuals.PdaType:
+        !type:String
+        pda-neo
+  - type: Sprite
+    layers:
+    - map: [ "enum.PdaVisualLayers.Base" ]
+      state: "pda-neo"
+    - state: "menu"
+      shader: "unshaded"
+    - state: "light_overlay"
+      map: [ "enum.PdaVisualLayers.Flashlight" ]
+      shader: "unshaded"
+      visible: false
+    - state: "id_overlay"
+      map: [ "enum.PdaVisualLayers.IdLight" ]
+      shader: "unshaded"
+      visible: false
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - MedTekCartridge
+    - NavigatorCartridge
+    
+- type: entity
+  parent: BaseUplinkHightLeader
+  id: BaseUplinkGorizont
+  suffix: Горизонт
+  name: Чёрный рынок Горизонта
+  description: Что может быть в этом устройстве?
+  
+- type: entity
+  parent: ClothingShoesBootsCowboyBlack
+  id: ClothingShoesBootsGorizont
+  suffix: Горизонт
+  name: Ботинки Горизонта
+  description: Выглядят странно.
+  components:
+  - type: NoSlip
+  
+- type: entity
+  parent: ClothingHandsGlovesCombat
+  suffix: Горизонт
+  id: ClothingHandsGlovesGorizont
+  name: Уникальные перчатки Горизонта
+  description: Эти перчатки бьют сильнее обычного.
+  components:
+  - type: Armor
+    modifiers:
+      coefficients:
+        Piercing: 0.95
+  - type: DamageOnInteractProtection
+  
+- type: entity
+  parent: ClothingHeadHelmetSpaceNinja
+  id: ClothingHeadHelmetGorizont
+  suffix: Горизонт
+  name: Закрытый шлем Горизонта
+  description: Кто под шлемом?
+
+- type: entity
+  parent: ClothingOuterCoatBlueshield
+  id: ClothingOuterCoatGorizontLeader
+  suffix: Горизонт
+  name: Плащ командира отряда Горизонт
+  description: Только храбрый наденет этот плащ.
+  components:
+  - type: ClothingSpeedModifier
+    walkModifier: 1.15
+    sprintModifier: 1.15
+    
+- type: radioChannel
+  id: Gorizont
+  name: Горизонт
+  keycode: 'щ'
+  frequency: 1383
+  color: "#f1ce64"
+  longRange: true
+  
+- type: entity
+  parent: [ EncryptionKey, BaseSyndicateContraband ]
+  id: EncryptionKeyGorizont
+  name: Ключ радио Горизонта
+  suffix: Горизонт
+  description: Интересная ключ карта.
+  components:
+  - type: EncryptionKey
+    channels:
+    - Gorizont
+    defaultChannel: Gorizont
+  - type: Sprite
+    layers:
+    - state: crypt_blue
+    - state: robotics_label
+    
+- type: entity
+  parent: [ClothingHeadset, BaseSyndicateContraband]
+  id: ClothingHeadsetGorizont
+  name: Гарнитура Горизонта
+  suffix: Горизонт
+  description: Это гарнитура одной из Мобильных Оперативных Групп?
+  components:
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyGorizont
+  - type: Sprite
+    sprite: Clothing/Ears/Headsets/command.rsi
+  - type: Clothing
+    sprite: Clothing/Ears/Headsets/command.rsi
+    
+- type: entity
+  parent: KeyCardMtfBase
+  suffix: Горизонт
+  id: KeyCardGorizontLeader
+  name: ключ карта Лидера Горизонта
+  description: Подозрительная карта.
+  components:
+  - type: Sprite
+    state: mtf_commander
+    
+- type: entity
+  parent: KeyCardGorizontLeader
+  suffix: Горизонт
+  id: KeyCardGorizontMedic
+  name: ключ карта Медика Горизонта
+
+- type: entity
+  parent: KeyCardGorizontLeader
+  suffix: Горизонт
+  id: KeyCardGorizontWarrior
+  name: ключ карта Бойца Горизонта
+  
+- type: entity
+  id: RandomHumanoidSpawnerGorizontLeader
+  name: Лидер отряда Горизонт
+  suffix: Горизонт
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertleader
+  - type: RandomHumanoidSpawner
+    settings: GorizontLeader
+  - type: Speech
+  - type: TTS
+    voice: Crysis2Operator3v1
+    
+- type: randomHumanoidSettings
+  id: GorizontLeader
+  parent: CommonMTFCadet
+  voiceWhitelist:
+  - Crysis2Operator3v1
+  randomizeName: false
+  components:
+  - type: Loadout
+    prototypes: [ GorizontLeaderGear ]
+  - type: TTS
+  - type: RandomMetadata
+    nameSegments:
+    - NamesLeader
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+    
+- type: startingGear
+  id: GorizontLeaderGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGorizont
+    back: ClothingBackpackGorizont
+    mask: ClothingMaskGasGorizont
+    head: ClothingHeadHelmetGorizont
+    eyes: ClothingEyesHudGorizont
+    gloves: ClothingHandsGlovesGorizont
+    outerClothing: ClothingOuterVestWebGorizont
+    shoes: ClothingShoesBootsGorizont
+    id: KeyCardGorizontLeader
+    ears: ClothingHeadsetGorizont
+    belt: ClothingBeltChaosFilled
+    neck: ClothingOuterCoatGorizontLeader
+    pocket1: GorizontPDA
+    pocket2: BaseUplinkGorizont
+  
+- type: entity
+  id: RandomHumanoidSpawnerGorizontMedic
+  name: Медик отряда Горизонт
+  suffix: Горизонт
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertleader
+  - type: RandomHumanoidSpawner
+    settings: GorizontMedic
+    
+- type: randomHumanoidSettings
+  id: GorizontMedic
+  parent: CommonMTFCadet
+  randomizeName: false
+  voiceWhitelist:
+  - Barni
+  - Brukan
+  components:
+  - type: Loadout
+    prototypes: [ GorizontMedicGear ]
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSpecialist
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+  - type: TTS
+    
+- type: startingGear
+  id: GorizontMedicGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGorizont
+    back: ClothingBackpackGorizont
+    mask: ClothingMaskGasGorizont
+    head: ClothingHeadHelmetGorizont
+    eyes: ClothingEyesHudGorizont
+    gloves: ClothingHandsGlovesGorizont
+    outerClothing: ClothingOuterVestWebGorizont
+    shoes: ClothingShoesBootsGorizont
+    id: KeyCardGorizontMedic
+    ears: ClothingHeadsetGorizont
+    belt: ClothingBeltChaosFilled
+    pocket1: GorizontPDA
+    pocket2: BaseUplinkGorizont
+  
+- type: entity
+  id: RandomHumanoidSpawnerGorizontWarrior
+  name: Боец отряда Горизонт
+  suffix: Горизонт
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertleader
+  - type: RandomHumanoidSpawner
+    settings: GorizontWarrior
+    
+- type: randomHumanoidSettings
+  id: GorizontWarrior
+  parent: CommonMTFCadet
+  voiceWhitelist:
+  - Dota2Pudge
+  randomizeName: false
+  components:
+  - type: Loadout
+    prototypes: [ GorizontWarriorGear ]
+  - type: TTS
+  - type: RandomMetadata
+    nameSegments:
+    - NamesCadet
+    - NamesMilitaryLast
+    nameFormat: name-format-ert
+    
+- type: startingGear
+  id: GorizontWarriorGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGorizont
+    back: ClothingBackpackGorizont
+    mask: ClothingMaskGasGorizont
+    head: ClothingHeadHelmetGorizont
+    eyes: ClothingEyesHudGorizont
+    gloves: ClothingHandsGlovesGorizont
+    outerClothing: ClothingOuterVestWebGorizont
+    shoes: ClothingShoesBootsGorizont
+    id: KeyCardGorizontWarrior
+    ears: ClothingHeadsetGorizont
+    belt: ClothingBeltChaosFilled
+    pocket1: GorizontPDA
+    pocket2: BaseUplinkGorizont
