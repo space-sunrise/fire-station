@@ -242,7 +242,7 @@ public sealed partial class Scp106System : SharedScp106System
             if (mobStateComponent.CurrentState != MobState.Alive)
                 continue;
 
-            if (TryComp<SSDIndicatorComponent>(humanUid, out var ssd) && !ssd.IsSSD)
+            if (TryComp<SSDIndicatorComponent>(humanUid, out var ssd) && ssd.IsSSD)
                 continue;
 
             humansInBackrooms += 1;
