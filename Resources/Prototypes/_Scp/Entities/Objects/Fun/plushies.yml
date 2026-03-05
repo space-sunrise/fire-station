@@ -52,7 +52,7 @@
 - type: entity
   parent: PlushieHuman
   id: PlushieClassD
-  name:  class D plushie
+  name: class D plushie
   description: This plushie is dressed in a tiny orange jumpsuit. Despite its cute face, its button eyes reflect the realization that the next work can be its last.
   components:
   - type: Sprite
