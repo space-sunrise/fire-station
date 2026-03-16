@@ -90,16 +90,6 @@
     neck: ClothingNeckScarfCe
 
 - type: loadout
-  id: ScpLoadoutChiefTechnicalSpecialistLegacyCloak
-  equipment:
-    neck: ClothingNeckCloakLegacyCe
-
-- type: loadout
-  id: ScpLoadoutChiefTechnicalSpecialistCloak
-  equipment:
-    neck: ClothingNeckCloakCe
-
-- type: loadout
   id: ScpLoadoutChiefTechnicalSpecialistMantle
   equipment:
     neck: ClothingNeckMantleCE

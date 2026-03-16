@@ -136,32 +136,12 @@
     neck: ClothingNeckScarfHos
 
 - type: loadout
-  id: ScpLoadoutSecurityCommanderCloak
-  equipment:
-    neck: ClothingNeckCloakHos
-
-- type: loadout
   id: ScpLoadoutSecurityCommanderMantle
   equipment:
     neck: ClothingNeckMantleHOS
   effects:
   - !type:GroupLoadoutEffect
     proto: MasterHoS
-
-- type: loadout
-  id: ScpLoadoutSecurityCommanderDarthCloak
-  sponsorOnly: false
-  equipment:
-    neck: ClothingNeckCloakDarthHOSCloak
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: MasterHoS
-
-- type: loadout
-  id: ScpLoadoutSecurityCommanderCommandCloak
-  sponsorOnly: false
-  equipment:
-    neck: ClothingNeckCloakHOSCloak
 
 # Outer Clothing
 - type: loadout

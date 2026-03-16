@@ -41,11 +41,6 @@
     neck: ClothingNeckScarfHOP
 
 - type: loadout
-  id: ScpLoadoutPersonnelOfficerCloak
-  equipment:
-    neck: ClothingNeckCloakHop
-
-- type: loadout
   id: ScpLoadoutPersonnelOfficerMantle
   equipment:
     neck: ClothingNeckMantleHOP

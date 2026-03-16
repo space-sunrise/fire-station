@@ -81,11 +81,6 @@
     neck: ClothingNeckScarfQm
 
 - type: loadout
-  id: ScpLoadoutSeniorLogisticsOfficerCloak
-  equipment:
-    neck: ClothingNeckCloakQm
-
-- type: loadout
   id: ScpLoadoutSeniorLogisticsOfficerMantle
   equipment:
     neck: ClothingNeckMantleQM
