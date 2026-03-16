@@ -154,7 +154,7 @@
   name: doc-template-ReportExecutionProcedure-name
   content: /Documents/_Scp/Sec_commandant/ReportExecutionProcedure.xml
   component: Security
-
+  PermissionToCarryWeapons
 - type: docTemplate
   id: ComplaintOffense
   name: doc-template-ComplaintOffense-name
@@ -162,9 +162,9 @@
   component: Security
 
 - type: docTemplate
-  id: ComplaintOffense
-  name: doc-template-ComplaintOffense-name
-  content: /Documents/_Scp/Sec_commandant/ComplaintOffense.xml
+  id: CertificateOffense
+  name: doc-template-CertificateOffense-name
+  content: /Documents/_Scp/Sec_commandant/CertificateOffense.xml
   component: Security
 
 # Fire edit end
@@ -425,14 +425,20 @@
 - type: docTemplate
   id: PermissionToCarryWeapons
   name: doc-template-permission-to-carry-weapons-name
-  content: /Documents/_Scp/Command/PermissionToCarryWeapons.xml
+  content: /Documents/_Sunrise/Command/PermissionToCarryWeapons.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_command
 
 - type: docTemplate
   id: PermissionToTravelInCaseOfThreat
   name: doc-template-permission-to-travel-in-case-of-threat-name
-  content: /Documents/_Scp/Command/PermissionToTravelInCaseOfThreat.xml
+  content: /Documents/__Sunrise/Command/PermissionToTravelInCaseOfThreat.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_command
 
 - type: docTemplate
   id: PrescriptionDrugAuthorization
@@ -733,9 +739,11 @@
 - type: docTemplate
   id: RequestImmediateIntervention
   name: doc-template-request-immediate-intervention-name
-  content: /Documents/_Scp/Command/RequestImmediateIntervention.xml
+  content: /Documents/_Sunrise/Command/RequestImmediateIntervention.xml
   component: Command
   header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_сommand
 
 - type: docTemplate
   id: OrderSynthesizeEssentialDrugs
