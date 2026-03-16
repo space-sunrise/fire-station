@@ -71,6 +71,8 @@
     canStandingState: true
   - type: FearSource
     uponSeenState: Fear
+  - type: WatchingTarget
+    simpleMode: true
   - type: ShowBlinkable
   - type: ScpAnnounceOnSpawn
     text: scp096-announce-on-spawn
