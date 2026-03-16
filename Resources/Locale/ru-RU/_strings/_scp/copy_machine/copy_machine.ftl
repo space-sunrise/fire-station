@@ -24,5 +24,3 @@ doc-template-NoticeTransferClassD-name = Уведомление о перево�
 doc-template-RequestAmnesia-name = Запрос на применение амнезиака
 doc-template-RequestExecutionProcedure-name = Запрос проведения процедуры казни
 doc-template-ReportExecutionProcedure-name = Отчёт о проведении процедуры казни
-doc-template-ComplaintOffense-name = Жалоба на правонарушение
-doc-template-CertificateOffense-name = Свидетельство о правонарушении

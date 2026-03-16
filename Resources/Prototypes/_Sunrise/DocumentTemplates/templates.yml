@@ -155,18 +155,6 @@
   content: /Documents/_Scp/Sec_commandant/ReportExecutionProcedure.xml
   component: Security
 
-- type: docTemplate
-  id: ComplaintOffense
-  name: doc-template-ComplaintOffense-name
-  content: /Documents/_Scp/Sec_commandant/ComplaintOffense.xml
-  component: Security
-
-- type: docTemplate
-  id: CertificateOffense
-  name: doc-template-CertificateOffense-name
-  content: /Documents/_Scp/Sec_commandant/CertificateOffense.xml
-  component: Security
-
 # Fire edit end
 - type: docTemplate
   id: Appeal
@@ -215,11 +203,8 @@
 - type: docTemplate
   id: CertificateOffense
   name: doc-template-certificate-offense-name
-  content: /Documents/_Sunrise/Security/CertificateOffense.xml
+  content: /Documents/_Scp/Sec_commandant/CertificateOffense.xml
   component: Security
-  header:
-    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
-    state: nanotrasen_form_header_sec_investig
 
 - type: docTemplate
   id: ClosingIndictment
@@ -233,11 +218,8 @@
 - type: docTemplate
   id: ComplaintOffense
   name: doc-template-complaint-offense-name
-  content: /Documents/_Sunrise/Security/ComplaintOffense.xml
+  content: /Documents/_Scp/Sec_commandant/ComplaintOffense.xml
   component: Security
-  header:
-    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
-    state: nanotrasen_form_header_sec_investig
 
 - type: docTemplate
   id: ComplaintViolationLaborRules
@@ -743,7 +725,7 @@
   component: Command
   header:
     sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
-    state: nanotrasen_form_header_сommand
+    state: nanotrasen_form_header_command
 
 - type: docTemplate
   id: OrderSynthesizeEssentialDrugs
