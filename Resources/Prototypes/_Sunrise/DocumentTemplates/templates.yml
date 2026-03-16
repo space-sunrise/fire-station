@@ -359,8 +359,11 @@
 - type: docTemplate
   id: OrderParolePrisoner
   name: doc-template-order-parole-prisoner-name
-  content: /Documents/_Scp/Command/OrderParolePrisoner.xml
+  content: /Documents/_Sunrise/Command/OrderParolePrisoner.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: OrderPurchaseResourcesEquipment
@@ -411,7 +414,7 @@
   component: Command
   header:
     sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
-    state: nanotrasen_form_header_command
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: PermissionToTravelInCaseOfThreat
@@ -420,7 +423,7 @@
   component: Command
   header:
     sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
-    state: nanotrasen_form_header_command
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: PrescriptionDrugAuthorization
@@ -725,7 +728,7 @@
   component: Command
   header:
     sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
-    state: nanotrasen_form_header_command
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: OrderSynthesizeEssentialDrugs
