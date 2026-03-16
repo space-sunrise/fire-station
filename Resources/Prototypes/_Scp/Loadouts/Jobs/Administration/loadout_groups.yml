@@ -85,9 +85,7 @@
   minLimit: 0
   loadouts:
   - ScpLoadoutScientificServiceDirectorMantle
-  - ScpLoadoutScientificServiceDirectorCloak
   - ScpLoadoutScientificServiceDirectorScarf
-  - ScpLoadoutScientificServiceDirectorLegacyCloak
 
 - type: loadoutGroup
   id: ScpLoadoutGroupScientificServiceDirectorOuterClothing
@@ -129,10 +127,7 @@
   name: loadout-group-neck
   minLimit: 0
   loadouts:
-  - ScpLoadoutSecurityCommanderCloak
   - ScpLoadoutSecurityCommanderMantle
-  - ScpLoadoutSecurityCommanderDarthCloak
-  - ScpLoadoutSecurityCommanderCommandCloak
   - ScpLoadoutSecurityCommanderScarf
 
 - type: loadoutGroup
@@ -211,10 +206,8 @@
   name: loadout-group-neck
   minLimit: 0
   loadouts:
-  - ScpLoadoutChiefTechnicalSpecialistCloak
   - ScpLoadoutChiefTechnicalSpecialistMantle
   - ScpLoadoutChiefTechnicalSpecialistScarf
-  - ScpLoadoutChiefTechnicalSpecialistLegacyCloak
   - ScpLoadoutClothingNeckScarfStripedRed
   - ScpLoadoutClothingNeckScarfStripedOrange
   - ScpLoadoutClothingNeckScarfStripedYellow
@@ -292,7 +285,6 @@
   name: loadout-group-neck
   minLimit: 0
   loadouts:
-  - ScpLoadoutPersonnelOfficerCloak
   - ScpLoadoutPersonnelOfficerMantle
   - ScpLoadoutPersonnelOfficerScarf
 
@@ -369,7 +361,6 @@
   name: loadout-group-neck
   minLimit: 0
   loadouts:
-  - ScpLoadoutHeadOfMedicalSectorCloak
   - ScpLoadoutHeadOfMedicalSectorMantle
   - ScpLoadoutHeadOfMedicalSectorScarf
   - ScpLoadoutClothingNeckScarfStripedRed
@@ -487,14 +478,12 @@
   name: loadout-group-neck
   minLimit: 0
   loadouts:
-  - ScpLoadoutSeniorLogisticsOfficerCloak
   - ScpLoadoutSeniorLogisticsOfficerMantle
   - ScpLoadoutSeniorLogisticsOfficerScarf
   - ScpLoadoutClothingNeckScarfStripedOrange
   - ScpLoadoutClothingNeckScarfStripedYellow
   - ScpLoadoutClothingNeckScarfStripedBrown
   - ScpLoadoutClothingNeckScarfStripedPurple
-  - ScpLoadoutBedsheetCosmos
 
 - type: loadoutGroup
   id: ScpLoadoutGroupSeniorLogisticsOfficerOuterClothing

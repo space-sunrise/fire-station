@@ -68,11 +68,6 @@
     neck: ClothingNeckScarfCmo
 
 - type: loadout
-  id: ScpLoadoutHeadOfMedicalSectorCloak
-  equipment:
-    neck: ClothingCloakCmo
-
-- type: loadout
   id: ScpLoadoutHeadOfMedicalSectorMantle
   equipment:
     neck: ClothingNeckMantleCMO

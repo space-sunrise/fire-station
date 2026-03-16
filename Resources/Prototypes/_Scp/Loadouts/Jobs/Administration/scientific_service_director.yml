@@ -40,22 +40,12 @@
     neck: ClothingNeckScarfRD
 
 - type: loadout
-  id: ScpLoadoutScientificServiceDirectorLegacyCloak
-  equipment:
-    neck: ClothingNeckCloakLegacyRd
-
-- type: loadout
   id: ScpLoadoutScientificServiceDirectorMantle
   equipment:
     neck: ClothingNeckMantleRD
   effects:
   - !type:GroupLoadoutEffect
     proto: MasterRD
-
-- type: loadout
-  id: ScpLoadoutScientificServiceDirectorCloak
-  equipment:
-    neck: ClothingNeckCloakRd
 
 # Outer Clothing
 - type: loadout

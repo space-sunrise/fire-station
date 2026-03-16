@@ -1,0 +1,11 @@
+- type: entity
+  id: ScpCockroachMigration
+  parent: BaseStationEventShortDelay
+  components:
+  - type: StationEvent
+    weight: 6
+    duration: 50
+  - type: VentCrittersRule
+    entries:
+    - id: MobCockroach
+      prob: 0.03

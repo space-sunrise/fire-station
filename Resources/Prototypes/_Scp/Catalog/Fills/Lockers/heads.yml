@@ -168,7 +168,6 @@
     - id: ClothingHeadsetAltScientificService
     - id: DoorRemoteScientificService
     - id: DoorRemoteScpChambers
-    - id: HandTeleporter
     - id: ProtolatheMachineCircuitboard
     - id: ResearchComputerCircuitboard
     - id: RubberStampScientificServiceDirector
