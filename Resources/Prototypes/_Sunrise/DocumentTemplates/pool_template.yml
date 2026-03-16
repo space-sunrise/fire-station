@@ -7,126 +7,58 @@
     - Appeal
     - ApplicationAccess
     - ApplicationAppointmentInterim
+    - ApplicationChangePosition
     - ApplicationEmployment
     - ApplicationEquipment
-    - Certificate
-    - CertificateAdvancedTraining
-    - CertificateOffense
-    - ClosingIndictment
-    - ComplaintOffense
-    - ComplaintViolationLaborRules
+    - LetterResignation
+    - OrderingSpecialEquipment
+    - ProductManufacturingOrder
+    - RequestChangeSalary
+    - RequestForNonlistedEmployment
+    - RequestForPromotion
     - ConditionReport
     - ConstructionPermit
-    - DeathCertificate
-    - DecisionToStartTrial
-    - DisposalReport
-    - DivorceCertificate
+    - ConstructionReport
+    - ActCollection
+    - Certificate
+    - CertificateAdvancedTraining
     - EvacuationShuttleRequest
-    - ExperimentReport
-    - InternalAffairsAgentsReport
-    - Judgment
-    - LetterResignation
-    - MarriageCertificate
+    - OrderAppointmentInterim
     - OrderDeprivationAccess
     - OrderDismissal
     - OrderEncouragement
-    - OrderingSpecialEquipment
-    - OrderMedicalIntervention
-    - OrderParolePrisoner
-    - OrderPurchaseResourcesEquipment
-    - OrderPurchaseWeapons
-    - OrderRecognizingSentienceCreature
-    - PermissionDisposeBody
+    - OrderProhibition
     - PermissionEquipment
-    - PermissionToCarryWeapons
-    - PermissionToTravelInCaseOfThreat
-    - PrescriptionDrugAuthorization
-    - ProductManufacturingOrder
+    - ReportCrewAccessChange
     - ReportDepartment
     - ReportEmployeePerformance
     - ReportOnEliminationOfViolations
     - ReportOnTheChaptersMeeting
     - ReportStation
-    - ReportStudyObject
     - RequestCallMembersCentralCommitteeDSO
-    - RequestChangeSalary
-    - RequestConstructionWork
-    - RequestDocuments
-    - RequestEuthanasia
-    - RequestForNonlistedEmployment
-    - RequestForPromotion
-    - RequestModernization
-    - RequestRequestToEstablishThreatLevel
-    - SearchPermission
-    - SearchPermissionDepartment
-    - Sentence
-    - ShuttleRegistrationRequest
-    - StatementHealth
-    - BusinessDeal
-    - ErrorLoadingFormHeader
-    - NoticeOfLiquidation
-    - NoteBeginningMilitaryActions
-    - ReportAccomplishmentGoals
-    - OrderAppointmentInterim
-    - OrderAnnulmentOfRight
-    - ApplicationChangePosition
-    - ApplicationPetRegistration
-    - ReportQilluRepresentative
-    - ExplanatoryNote
-    - ReportCrewAccessChange
-    - RequestLegalProtection
-    - RequestDeprivationLegalProtection
-    - RequestDeprivationVetoRight
-    - RequestImmediateIntervention
-    - OrderSynthesizeEssentialDrugs
-    - MedicalDutyRoster
-    - ReportUsedMedications
-    - ReportExtractionSec
-    - ReportMedicalIntervention
-    - PermissionPrescriptionDrug
-    - DirectiveMedicalIntervention
-    - PsychologicalHealthReport
-    - ConsentMedicalIntervention
-    - InfectionCertificate
-    - OrderQuarantine
-    - EpidemiologicalConclusion
-    - ConsentVivisection
-    - ContractLegalAid
-    - ReportServiceInvestigation
-    - RequestCaseReview
-    - OrderGrantLegalProtection
-    - OrderDeprivationLegalProtection
-    - ReportPowerSources
-    - DutyRosterEngineering
-    - AdministrativeBanOrder
-    - OrderDismissalSecurity
-    - OrderParolePrisonerSecurity
-    - PermissionExosuitCreation
-    - PermissionExosuitUsage
-    - DirectiveSecurityDuty
-    - InventoryWeapons
-    - ReportInvestigation
-    - ReportExtractionMed
-    - DirectiveMedicalInterventionSecurity
-    - ReportSecurityStaffCheck
-    - ReportLawAndConductViolations
-    - ReportDetainedCrew
-    - ReportArtifactResearch
-    - ListScienceDepartmentDuty
-    - OrderSupplyResourcesEquipment
-    - PermissionExpeditionSend
-    - PermissionToExtendMarriage
-    - KitchenMenu
-    - BarMenu
-    - RequestPrisonerTransport
-    - ReportPrisonerCount
-    - ReportPrisonerRelease
-    - RequestEvacuationPrisoners
-    - ApplicationAppointmentInterimWarden
-    - AppealToWarden
-    - OrderEvacuation
-    - OrderProvideCCReport
-    - DecreeHeadsPresence
-    - OrderCentcom
-    - OrderReport
-    - OrderCentcomTransferStationStaff
+    - RequestMTFChange
+    - RequestChangeTarget
+    - OrderEthicsCommittee
+    - AnswerRegionalManagement
+    - OrderIntroductionReporting
+    - OrderO5
+    - OrderRegionalManagement
+    - SendingMTF
+    - SendingOmega1
+    - RequestPurchase
+    - ReportCremation
+    - DeathCertificate
+    - ReportUseAmnestics
+    - ReportExperiment
+    - ReportSurveyObject
+    - ReportResearchTechnology
+    - ReportObjectStatus
+    - ReportIncident
+    - ReportRecoverySpecialContainmentProcedures
+    - ReportSituationBlockD
+    - NoticeTransferClassD
+    - RequestAmnesia
+    - RequestExecutionProcedure
+    - ReportExecutionProcedure
+    - ComplaintOffense
+    - ComplaintOffense
