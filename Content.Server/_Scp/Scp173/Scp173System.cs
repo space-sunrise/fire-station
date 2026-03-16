@@ -103,7 +103,7 @@ public sealed partial class Scp173System : SharedScp173System
             return;
         }
 
-        if (Watching.IsWatched(uid.Owner))
+        if (Watching.IsWatched(uid))
         {
             var message = Loc.GetString("scp173-fast-movement-too-many-watchers");
             _popup.PopupEntity(message, uid, uid, PopupType.LargeCaution);
@@ -185,7 +185,7 @@ public sealed partial class Scp173System : SharedScp173System
             return;
         }
 
-        if (Watching.IsWatched(ent.Owner))
+        if (Watching.IsWatched(ent))
         {
             var message = Loc.GetString("scp173-fast-movement-too-many-watchers");
             _popup.PopupEntity(message, ent, ent, PopupType.LargeCaution);
@@ -253,7 +253,7 @@ public sealed partial class Scp173System : SharedScp173System
             return;
         }
 
-        if (Watching.IsWatched(ent.Owner, out var watchersCount) && watchersCount > ent.Comp.MaxWatchers)
+        if (Watching.IsWatched(ent, out var watchersCount) && watchersCount > ent.Comp.MaxWatchers)
         {
             var message = Loc.GetString("scp173-fast-movement-too-many-watchers");
             _popup.PopupEntity(message, ent, ent, PopupType.LargeCaution);

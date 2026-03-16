@@ -31,6 +31,9 @@ public sealed partial class FearSystem
 
     private readonly List<EntityUid> _hemophobiaBloodList = [];
 
+    private readonly List<Entity<MoodComponent>> _moodList = [];
+    private readonly HashSet<Entity<MoodComponent>> _moodSearchList = [];
+
     private void InitializeFears()
     {
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
@@ -55,9 +58,11 @@ public sealed partial class FearSystem
         if (!activated)
             return;
 
-        var whoSaw = _watching.GetAllEntitiesVisibleTo<MoodComponent>(ev.Target);
+        _moodList.Clear();
+        if (!_watching.TryGetAllEntitiesVisibleTo(ev.Target, _moodList, _moodSearchList, flags: LookupFlags.Dynamic))
+            return;
 
-        foreach (var uid in whoSaw)
+        foreach (var uid in _moodList)
         {
             AddNegativeMoodEffect(uid, MoodSomeoneDiedOnMyEyes);
         }
@@ -80,7 +85,7 @@ public sealed partial class FearSystem
                 continue;
 
             _hemophobiaBloodList.Clear();
-            var bloodAmount = _helpers.GetAroundSolutionVolume(uid, hemophobia.Reagent, in _hemophobiaBloodList);
+            var bloodAmount = _helpers.GetAroundSolutionVolume(uid, hemophobia.Reagent, _hemophobiaBloodList);
             var requiredBloodAmount = hemophobia.BloodRequiredPerState[fear.State];
 
             if (bloodAmount <= requiredBloodAmount)

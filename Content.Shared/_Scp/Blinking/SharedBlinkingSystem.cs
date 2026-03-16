@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp173;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Sunrise.Random;
@@ -24,6 +23,9 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly RandomPredictedSystem _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
+
+    private readonly HashSet<Entity<Scp173Component>> _scp173SearchList = [];
+    private readonly List<Entity<Scp173Component>> _scp173List = [];
 
     public override void Initialize()
     {
@@ -255,11 +257,11 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     protected bool IsScpNearby(EntityUid player)
     {
         // Получаем всех Scp с механиками зрения, которые видят игрока
-        var allScp173InView = _watching.GetAllVisibleTo<Scp173Component>(player);
-        var allScp096InView = _watching.GetAllVisibleTo<Scp096Component>(player);
+        _scp173List.Clear();
+        if (!_watching.TryGetAllEntitiesVisibleTo(player, _scp173List, _scp173SearchList))
+            return false;
 
-        return allScp173InView.Any(e => _watching.CanBeWatched(player, e))
-               || allScp096InView.Any(e => _watching.CanBeWatched(player, e));
+        return _scp173List.Any(e => _watching.CanBeWatched(player, e));
     }
 }
 

@@ -15,16 +15,23 @@ public abstract partial class SharedFearSystem
 
     private const int GenericFearBasedScaleModifier = 2;
 
+    private readonly HashSet<Entity<FearSourceComponent>> _fearSourceSearchList = [];
+    private readonly List<Entity<FearSourceComponent>> _fearSourceList = [];
+
     /// <summary>
     /// Подсвечивает все сущности, которые вызывают страх.
     /// Сущности, чей уровень страха при видимости отличается от текущего уровня страха не будет подсвечены.
     /// </summary>
     private void HighLightAllVisibleFears(Entity<FearComponent> ent)
     {
-        var visibleFearSources =
-            _watching.GetAllEntitiesVisibleTo<FearSourceComponent>(ent.Owner, ent.Comp.SeenBlockerLevel);
+        _fearSourceList.Clear();
+        if (!_watching.TryGetAllEntitiesVisibleTo(ent.Owner,
+                _fearSourceList,
+                _fearSourceSearchList,
+                ent.Comp.SeenBlockerLevel))
+            return;
 
-        foreach (var source in visibleFearSources)
+        foreach (var source in _fearSourceList)
         {
             if (source.Comp.UponSeenState != ent.Comp.State)
                 continue;

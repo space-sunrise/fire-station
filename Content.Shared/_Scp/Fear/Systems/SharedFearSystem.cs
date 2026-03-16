@@ -139,7 +139,7 @@ public abstract partial class SharedFearSystem : EntitySystem
             return;
 
         // Проверка на зрение, чтобы можно было закрыть глазки и было не страшно
-        if (!_watching.SimpleIsWatchedBy(args.Receiver, [ent]))
+        if (!_watching.SimpleIsWatchedBy(args.Receiver, ent))
             return;
 
         // Если текущий уровень страха выше, чем тот, что мы хотим поставить,

@@ -18,6 +18,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Scp173;
 
+// TODO: Выделить логику блокировки движения при смотрении в отдельную систему со своим компонентом.
 public abstract class SharedScp173System : EntitySystem
 {
     [Dependency] protected readonly IGameTiming Timing = default!;
@@ -29,19 +30,17 @@ public abstract class SharedScp173System : EntitySystem
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
-    protected static readonly TimeSpan ReagentCheckInterval = TimeSpan.FromSeconds(1);
+    protected static readonly TimeSpan ReagentCheckInterval = TimeSpan.FromSeconds(1f);
 
     public const float ContainmentRoomSearchRadius = 8f;
+
+    private readonly List<Entity<BlinkableComponent>> _blinkableList = [];
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>((uid, _, args) =>
-        {
-            if (Watching.IsWatched(uid))
-                args.Cancel();
-        });
+        SubscribeLocalEvent<Scp173Component, AttackAttemptEvent>(OnAttackAttempt);
 
         SubscribeLocalEvent<Scp173Component, ChangeDirectionAttemptEvent>(OnDirectionAttempt);
         SubscribeLocalEvent<Scp173Component, UpdateCanMoveEvent>(OnMoveAttempt);
@@ -54,16 +53,37 @@ public abstract class SharedScp173System : EntitySystem
 
     #region Movement
 
+    private void OnAttackAttempt(Entity<Scp173Component> ent, ref AttackAttemptEvent args)
+    {
+        if (IsInScpCage(ent, out _))
+        {
+            args.Cancel();
+            return;
+        }
+
+        if (Watching.IsWatched(ent.Owner))
+        {
+            args.Cancel();
+            return;
+        }
+    }
+
     private void OnDirectionAttempt(Entity<Scp173Component> ent, ref ChangeDirectionAttemptEvent args)
     {
         if (Watching.IsWatched(ent.Owner) && !IsInScpCage(ent, out _))
+        {
             args.Cancel();
+            return;
+        }
     }
 
     private void OnMoveAttempt(Entity<Scp173Component> ent, ref UpdateCanMoveEvent args)
     {
         if (Watching.IsWatched(ent.Owner) && !IsInScpCage(ent, out _))
+        {
             args.Cancel();
+            return;
+        }
     }
 
     private void OnMoveInput(Entity<Scp173Component> ent, ref MoveInputEvent args)
@@ -123,11 +143,13 @@ public abstract class SharedScp173System : EntitySystem
 
     public void BlindEveryoneInRange(EntityUid scp, TimeSpan time, bool predicted = true)
     {
-        var eyes = Watching.GetWatchers(scp);
+        _blinkableList.Clear();
+        if (!Watching.TryGetAllEntitiesVisibleTo(scp, _blinkableList))
+            return;
 
-        foreach (var eye in eyes)
+        foreach (var eye in _blinkableList)
         {
-            _blinking.ForceBlind(eye, time, predicted);
+            _blinking.ForceBlind(eye.AsNullable(), time, predicted);
         }
 
         // TODO: Add sound.
@@ -186,7 +208,7 @@ public abstract class SharedScp173System : EntitySystem
             return false;
         }
 
-        if (watchers.Count <= 3)
+        if (watchers <= 3)
         {
             if (showPopups)
                 _popup.PopupClient(Loc.GetString("scp173-blind-failed-too-few-watchers"), uid, uid);
@@ -197,15 +219,23 @@ public abstract class SharedScp173System : EntitySystem
         return true;
     }
 
-    public bool IsWatched(EntityUid target, out HashSet<EntityUid> viewers)
+    public bool IsWatched(EntityUid scp, out int viewersCount)
     {
-        var watchers = Watching.GetWatchers(target);
+        viewersCount = 0;
 
-        viewers = watchers
-            .Where(eye => Watching.CanBeWatched(eye, target))
-            .ToHashSet();
+        _blinkableList.Clear();
+        if (!Watching.TryGetAllEntitiesVisibleTo(scp, _blinkableList))
+            return false;
 
-        return viewers.Count != 0;
+        foreach (var viewer in _blinkableList)
+        {
+            if (!Watching.CanBeWatched(viewer.AsNullable(), scp))
+                continue;
+
+            viewersCount++;
+        }
+
+        return viewersCount != 0;
     }
 
     #endregion

@@ -7,11 +7,12 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Helpers;
 
-// TODO: Использовать оптимизации GC после внедрения их в EyeWatchingSystem
-
 public sealed class ScpHelpers : EntitySystem
 {
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
+
+    private readonly HashSet<Entity<PuddleComponent>> _puddleSearchList = [];
+    private readonly List<Entity<PuddleComponent>> _puddleList = [];
 
     /// <summary>
     /// Получает суммарное количество реагента в зоне видимости сущности.
@@ -19,19 +20,20 @@ public sealed class ScpHelpers : EntitySystem
     /// </summary>
     public FixedPoint2 GetAroundSolutionVolume(EntityUid uid,
         ProtoId<ReagentPrototype> reagent,
-        in List<EntityUid> puddleList,
+        List<EntityUid> puddleList,
         LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
     {
-        FixedPoint2 total = 0;
-        var puddles = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(uid, lineOfSight);
+        _puddleList.Clear();
+        if (!_watching.TryGetAllEntitiesVisibleTo(uid, _puddleList, _puddleSearchList, lineOfSight, LookupFlags.Static))
+            return FixedPoint2.Zero;
 
-        foreach (var puddle in puddles)
+        FixedPoint2 total = 0;
+        foreach (var puddle in _puddleList)
         {
             if (!puddle.Comp.Solution.HasValue)
                 continue;
 
             var solution = puddle.Comp.Solution.Value.Comp.Solution;
-
             foreach (var (reagentId, quantity) in solution.Contents)
             {
                 if (reagentId.Prototype != reagent)
@@ -53,10 +55,12 @@ public sealed class ScpHelpers : EntitySystem
         ProtoId<ReagentPrototype> reagent,
         LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
     {
-        FixedPoint2 total = 0;
-        var puddles = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(uid, lineOfSight);
+        _puddleList.Clear();
+        if (!_watching.TryGetAllEntitiesVisibleTo(uid, _puddleList, _puddleSearchList, lineOfSight, LookupFlags.Static))
+            return FixedPoint2.Zero;
 
-        foreach (var puddle in puddles)
+        FixedPoint2 total = 0;
+        foreach (var puddle in _puddleList)
         {
             if (!puddle.Comp.Solution.HasValue)
                 continue;
@@ -80,10 +84,12 @@ public sealed class ScpHelpers : EntitySystem
         FixedPoint2 required,
         LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
     {
-        FixedPoint2 total = 0;
-        var puddles = _watching.GetAllEntitiesVisibleTo<PuddleComponent>(uid, lineOfSight);
+        _puddleList.Clear();
+        if (!_watching.TryGetAllEntitiesVisibleTo(uid, _puddleList, _puddleSearchList, lineOfSight, LookupFlags.Static))
+            return false;
 
-        foreach (var puddle in puddles)
+        FixedPoint2 total = 0;
+        foreach (var puddle in _puddleList)
         {
             if (!puddle.Comp.Solution.HasValue)
                 continue;

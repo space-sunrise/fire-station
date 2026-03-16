@@ -1,6 +1,7 @@
-﻿using System.Linq;
-using Content.Server._Scp.Scp096;
+﻿using Content.Server._Scp.Scp096;
 using Content.Server._Sunrise.Helpers;
+using Content.Shared._Scp.Blinking;
+using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Scp.Watching;
@@ -19,17 +20,22 @@ public sealed class ArtifactScp096MadnessSystem : BaseXAESystem<ArtifactScp096Ma
     [Dependency] private readonly SunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
+    private readonly List<Entity<BlinkableComponent>> _list = [];
+
     protected override void OnActivated(Entity<ArtifactScp096MadnessComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
         if (!_helpers.TryGetFirst<Scp096Component>(out var scp096))
             return;
 
-        var targets = _watching.GetWatchers(ent.Owner)
-            .ToList()
-            .ShuffleRobust(_random)
-            .TakePercentage(ent.Comp.Percent);
+        _list.Clear();
+        if (!_watching.TryGetAllEntitiesVisibleTo(scp096.Value.Owner,
+                _list,
+                LineOfSightBlockerLevel.Solid,
+                LookupFlags.Dynamic))
+            return;
 
-        foreach (var target in targets)
+        _list.ShuffleRobust(_random).TakePercentage(ent.Comp.Percent);
+        foreach (var target in _list)
         {
             if (!_scp096.TryAddTarget(scp096.Value, target, true, true))
                 continue;
@@ -37,5 +43,7 @@ public sealed class ArtifactScp096MadnessSystem : BaseXAESystem<ArtifactScp096Ma
             // TODO: Пофиксить разрыв маски много раз
             _scpMask.TryTear(scp096.Value);
         }
+
+        // TODO: Звук
     }
 }

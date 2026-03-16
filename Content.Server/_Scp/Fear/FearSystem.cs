@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using Content.Shared._Scp.Fear;
+﻿using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Systems;
 using Content.Shared._Sunrise.Mood;
@@ -17,6 +16,9 @@ public sealed partial class FearSystem : SharedFearSystem
 
     private static readonly TimeSpan CalmDownCheckCooldown = TimeSpan.FromSeconds(1f);
     private TimeSpan _nextCalmDownCheck = TimeSpan.Zero;
+
+    private readonly List<Entity<FearSourceComponent>> _fearSourceList = [];
+    private readonly HashSet<Entity<FearSourceComponent>> _fearSourceSearchList = [];
 
     public override void Initialize()
     {
@@ -80,11 +82,10 @@ public sealed partial class FearSystem : SharedFearSystem
         if (_activeFearEffects.HasComp(ent))
             return false;
 
-        var visibleFearSources = _watching.GetAllVisibleTo<FearSourceComponent>(ent.Owner, ent.Comp.SeenBlockerLevel);
-
         // Проверка на то, что мы в данный момент не смотрим на какую-то страшную сущность.
         // Нельзя успокоиться, когда мы смотрим на источник страха.
-        if (visibleFearSources.Any())
+        _fearSourceList.Clear();
+        if (!_watching.TryGetAllEntitiesVisibleTo(ent.Owner, _fearSourceList, _fearSourceSearchList, ent.Comp.SeenBlockerLevel))
             return false;
 
         var newFearState = GetDecreasedLevel(ent.Comp.State);
