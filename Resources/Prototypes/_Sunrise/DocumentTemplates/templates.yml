@@ -154,7 +154,7 @@
   name: doc-template-ReportExecutionProcedure-name
   content: /Documents/_Scp/Sec_commandant/ReportExecutionProcedure.xml
   component: Security
-  PermissionToCarryWeapons
+
 - type: docTemplate
   id: ComplaintOffense
   name: doc-template-ComplaintOffense-name
@@ -434,7 +434,7 @@
 - type: docTemplate
   id: PermissionToTravelInCaseOfThreat
   name: doc-template-permission-to-travel-in-case-of-threat-name
-  content: /Documents/__Sunrise/Command/PermissionToTravelInCaseOfThreat.xml
+  content: /Documents/_Sunrise/Command/PermissionToTravelInCaseOfThreat.xml
   component: Command
   header:
     sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
