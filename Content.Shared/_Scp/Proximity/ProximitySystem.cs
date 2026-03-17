@@ -100,7 +100,7 @@ public sealed class ProximitySystem : EntitySystem
         while (query.MoveNext(out var uid, out var receiver, out var xform))
         {
             Targets.Clear();
-            _lookup.GetEntitiesInRange(xform.Coordinates, receiver.CloseRange, Targets);
+            _lookup.GetEntitiesInRange(xform.Coordinates, receiver.CloseRange, Targets, receiver.Flags);
 
             foreach (var target in Targets)
             {
@@ -113,10 +113,10 @@ public sealed class ProximitySystem : EntitySystem
                     continue;
 
                 var receiverEvent = new ProximityInRangeReceiverEvent(target, range, receiver.CloseRange, lightOfSightBlockerLevel);
-                RaiseLocalEvent(uid, receiverEvent);
+                RaiseLocalEvent(uid, ref receiverEvent);
 
                 var targetEvent = new ProximityInRangeTargetEvent(uid, range, receiver.CloseRange, lightOfSightBlockerLevel);
-                RaiseLocalEvent(target, targetEvent);
+                RaiseLocalEvent(target, ref targetEvent);
 
                 PossibleNotInRange.Remove(target);
             }
