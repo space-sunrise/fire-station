@@ -1,6 +1,7 @@
 ﻿using Content.Server._Scp.Scp096;
 using Content.Server._Sunrise.Helpers;
 using Content.Shared._Scp.Blinking;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
@@ -20,22 +21,23 @@ public sealed class ArtifactScp096MadnessSystem : BaseXAESystem<ArtifactScp096Ma
     [Dependency] private readonly SunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    private readonly List<Entity<BlinkableComponent>> _list = [];
-
     protected override void OnActivated(Entity<ArtifactScp096MadnessComponent> ent, ref XenoArtifactNodeActivatedEvent args)
     {
         if (!_helpers.TryGetFirst<Scp096Component>(out var scp096))
             return;
 
-        _list.Clear();
+        using var targets = ListPoolEntity<BlinkableComponent>.Rent();
         if (!_watching.TryGetAllEntitiesVisibleTo(scp096.Value.Owner,
-                _list,
+                targets.Value,
                 LineOfSightBlockerLevel.Solid,
                 LookupFlags.Dynamic))
             return;
 
-        _list.ShuffleRobust(_random).TakePercentage(ent.Comp.Percent);
-        foreach (var target in _list)
+        targets.Value
+            .ShuffleRobust(_random)
+            .TakePercentage(ent.Comp.Percent);
+
+        foreach (var target in targets.Value)
         {
             if (!_scp096.TryAddTarget(scp096.Value, target, true, true))
                 continue;

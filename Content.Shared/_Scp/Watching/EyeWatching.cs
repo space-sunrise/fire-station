@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Scp.Blinking;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Proximity;
 using Robust.Shared.Timing;
 
@@ -12,8 +13,6 @@ public sealed partial class EyeWatchingSystem : EntitySystem
 {
     [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-
-    private readonly HashSet<Entity<BlinkableComponent>> _searchList = [];
 
     /// <summary>
     /// Радиус, в котором сущности могут увидеть друг друга.
@@ -49,13 +48,15 @@ public sealed partial class EyeWatchingSystem : EntitySystem
                 continue;
 
             // Все потенциально возможные смотрящие. Среди них те, что прошли фаст-чек из самых простых проверок
-            var potentialViewers = new List<Entity<BlinkableComponent>> ();
-            if (!TryGetAllEntitiesVisibleTo(uid, potentialViewers, _searchList))
+            using var potentialViewers = ListPoolEntity<BlinkableComponent>.Rent();
+            using var searchList = HashSetPoolEntity<BlinkableComponent>.Rent();
+
+            if (!TryGetAllEntitiesVisibleTo(uid, potentialViewers.Value, searchList.Value))
                 continue;
 
             // Вызываем ивенты на потенциально смотрящих. Без особых проверок
             // Полезно в коде, который уже использует подобные проверки или не требует этого
-            foreach (var potentialViewer in potentialViewers)
+            foreach (var potentialViewer in potentialViewers.Value)
             {
                 var simpleViewerEvent = new SimpleEntityLookedAtEvent((uid, watchingComponent));
                 var simpleTargetEvent = new SimpleEntitySeenEvent(potentialViewer);
@@ -72,12 +73,12 @@ public sealed partial class EyeWatchingSystem : EntitySystem
             // Проверяет всех потенциальных смотрящих на то, действительно ли они видят цель.
             // Каждый потенциально смотрящий проходит полный комплекс проверок.
             // Выдает полный список всех сущностей, кто действительно видит цель
-            var realViewers = new List<Entity<BlinkableComponent>> ();
-            if (!IsWatchedBy(uid, potentialViewers, realViewers))
+            using var realViewers = ListPoolEntity<BlinkableComponent>.Rent();
+            if (!TryGetWatchers(uid, potentialViewers.Value, realViewers.Value))
                 continue;
 
             // Вызываем ивент на смотрящем, говорящие, что он действительно видит цель
-            foreach (var viewer in realViewers)
+            foreach (var viewer in realViewers.Value)
             {
                 var netViewer = GetNetEntity(viewer);
                 var firstTime = !watchingComponent.AlreadyLookedAt.ContainsKey(netViewer);

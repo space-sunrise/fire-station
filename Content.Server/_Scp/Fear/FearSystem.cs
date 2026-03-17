@@ -1,6 +1,7 @@
 ﻿using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Systems;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Sunrise.Mood;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Rejuvenate;
@@ -16,9 +17,6 @@ public sealed partial class FearSystem : SharedFearSystem
 
     private static readonly TimeSpan CalmDownCheckCooldown = TimeSpan.FromSeconds(1f);
     private TimeSpan _nextCalmDownCheck = TimeSpan.Zero;
-
-    private readonly List<Entity<FearSourceComponent>> _fearSourceList = [];
-    private readonly HashSet<Entity<FearSourceComponent>> _fearSourceSearchList = [];
 
     public override void Initialize()
     {
@@ -84,8 +82,9 @@ public sealed partial class FearSystem : SharedFearSystem
 
         // Проверка на то, что мы в данный момент не смотрим на какую-то страшную сущность.
         // Нельзя успокоиться, когда мы смотрим на источник страха.
-        _fearSourceList.Clear();
-        if (!_watching.TryGetAllEntitiesVisibleTo(ent.Owner, _fearSourceList, _fearSourceSearchList, ent.Comp.SeenBlockerLevel))
+        // TODO: Создать проверки "сколько сущностей с компонентом X видит сущность способная к зрению"
+        using var fearSources = ListPoolEntity<FearSourceComponent>.Rent();
+        if (_watching.TryGetAllEntitiesVisibleTo(ent.Owner, fearSources.Value, ent.Comp.SeenBlockerLevel))
             return false;
 
         var newFearState = GetDecreasedLevel(ent.Comp.State);

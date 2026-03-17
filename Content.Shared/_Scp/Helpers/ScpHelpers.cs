@@ -11,9 +11,6 @@ public sealed class ScpHelpers : EntitySystem
 {
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
 
-    private readonly HashSet<Entity<PuddleComponent>> _puddleSearchList = [];
-    private readonly List<Entity<PuddleComponent>> _puddleList = [];
-
     /// <summary>
     /// Получает суммарное количество реагента в зоне видимости сущности.
     /// Возвращает количество реагентов.
@@ -23,12 +20,12 @@ public sealed class ScpHelpers : EntitySystem
         List<EntityUid> puddleList,
         LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
     {
-        _puddleList.Clear();
-        if (!_watching.TryGetAllEntitiesVisibleTo(uid, _puddleList, _puddleSearchList, lineOfSight, LookupFlags.Static))
+        using var puddles = ListPoolEntity<PuddleComponent>.Rent();
+        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, LookupFlags.Static))
             return FixedPoint2.Zero;
 
         FixedPoint2 total = 0;
-        foreach (var puddle in _puddleList)
+        foreach (var puddle in puddles.Value)
         {
             if (!puddle.Comp.Solution.HasValue)
                 continue;
@@ -55,12 +52,12 @@ public sealed class ScpHelpers : EntitySystem
         ProtoId<ReagentPrototype> reagent,
         LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
     {
-        _puddleList.Clear();
-        if (!_watching.TryGetAllEntitiesVisibleTo(uid, _puddleList, _puddleSearchList, lineOfSight, LookupFlags.Static))
+        using var puddles = ListPoolEntity<PuddleComponent>.Rent();
+        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, LookupFlags.Static))
             return FixedPoint2.Zero;
 
         FixedPoint2 total = 0;
-        foreach (var puddle in _puddleList)
+        foreach (var puddle in puddles.Value)
         {
             if (!puddle.Comp.Solution.HasValue)
                 continue;
@@ -84,12 +81,12 @@ public sealed class ScpHelpers : EntitySystem
         FixedPoint2 required,
         LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
     {
-        _puddleList.Clear();
-        if (!_watching.TryGetAllEntitiesVisibleTo(uid, _puddleList, _puddleSearchList, lineOfSight, LookupFlags.Static))
+        using var puddles = ListPoolEntity<PuddleComponent>.Rent();
+        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, LookupFlags.Static))
             return false;
 
         FixedPoint2 total = 0;
-        foreach (var puddle in _puddleList)
+        foreach (var puddle in puddles.Value)
         {
             if (!puddle.Comp.Solution.HasValue)
                 continue;

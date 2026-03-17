@@ -31,9 +31,6 @@ public sealed partial class FearSystem
 
     private readonly List<EntityUid> _hemophobiaBloodList = [];
 
-    private readonly List<Entity<MoodComponent>> _moodList = [];
-    private readonly HashSet<Entity<MoodComponent>> _moodSearchList = [];
-
     private void InitializeFears()
     {
         SubscribeLocalEvent<MobStateChangedEvent>(OnMobStateChanged);
@@ -55,15 +52,25 @@ public sealed partial class FearSystem
         var toggleUsed = new ItemToggledEvent(false, activated, null);
         RaiseLocalEvent(ev.Target, ref toggleUsed);
 
+        // Если activated = true, значит человек умер.
+        // Поэтому код ниже требует true, так как реализует логику для смерти.
         if (!activated)
             return;
 
-        _moodList.Clear();
-        if (!_watching.TryGetAllEntitiesVisibleTo(ev.Target, _moodList, _moodSearchList, flags: LookupFlags.Dynamic))
+        // TODO: Создать проверки "сколько сущностей с компонентом X видит сущность способная к зрению"
+        using var potentialViewer = ListPoolEntity<MoodComponent>.Rent();
+        if (!_watching.TryGetAllEntitiesVisibleTo(ev.Target, potentialViewer.Value, flags: LookupFlags.Dynamic))
             return;
 
-        foreach (var uid in _moodList)
+        foreach (var uid in potentialViewer.Value)
         {
+            // Убийца не будет печалиться смерти убитого
+            if (uid.Owner == ev.Origin)
+                continue;
+
+            if (!_watching.IsWatchedBy(uid, ev.Target))
+                continue;
+
             AddNegativeMoodEffect(uid, MoodSomeoneDiedOnMyEyes);
         }
     }

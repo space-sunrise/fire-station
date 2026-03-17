@@ -3,6 +3,7 @@ using System.Linq;
 using System.Numerics;
 using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Containment.Cage;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Watching;
 using Content.Shared.ActionBlocker;
 using Content.Shared.DoAfter;
@@ -33,8 +34,6 @@ public abstract class SharedScp173System : EntitySystem
     protected static readonly TimeSpan ReagentCheckInterval = TimeSpan.FromSeconds(1f);
 
     public const float ContainmentRoomSearchRadius = 8f;
-
-    private readonly List<Entity<BlinkableComponent>> _blinkableList = [];
 
     public override void Initialize()
     {
@@ -143,11 +142,11 @@ public abstract class SharedScp173System : EntitySystem
 
     public void BlindEveryoneInRange(EntityUid scp, TimeSpan time, bool predicted = true)
     {
-        _blinkableList.Clear();
-        if (!Watching.TryGetAllEntitiesVisibleTo(scp, _blinkableList))
+        using var blinkableList = ListPoolEntity<BlinkableComponent>.Rent();
+        if (!Watching.TryGetAllEntitiesVisibleTo(scp, blinkableList.Value))
             return;
 
-        foreach (var eye in _blinkableList)
+        foreach (var eye in blinkableList.Value)
         {
             _blinking.ForceBlind(eye.AsNullable(), time, predicted);
         }
@@ -223,11 +222,11 @@ public abstract class SharedScp173System : EntitySystem
     {
         viewersCount = 0;
 
-        _blinkableList.Clear();
-        if (!Watching.TryGetAllEntitiesVisibleTo(scp, _blinkableList))
+        using var blinkableList = ListPoolEntity<BlinkableComponent>.Rent();
+        if (!Watching.TryGetAllEntitiesVisibleTo(scp, blinkableList.Value))
             return false;
 
-        foreach (var viewer in _blinkableList)
+        foreach (var viewer in blinkableList.Value)
         {
             if (!Watching.CanBeWatched(viewer.AsNullable(), scp))
                 continue;

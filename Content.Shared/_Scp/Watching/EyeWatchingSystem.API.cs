@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Content.Shared._Scp.Blinking;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Watching.FOV;
 using Content.Shared.Eye.Blinding.Systems;
@@ -32,15 +33,11 @@ public sealed partial class EyeWatchingSystem
 
     public bool IsWatched(EntityUid ent, out int watchersCount, bool useFov = true, float? fovOverride = null)
     {
-        watchersCount = 0;
-        var potentialWatchers = RentBlinkableList();
-        var searchSet = RentBlinkableSet();
+        using var potentialWatchers = ListPoolEntity<BlinkableComponent>.Rent();
+        using var searchSet = HashSetPoolEntity<BlinkableComponent>.Rent();
 
-        var result = IsWatched(ent, potentialWatchers, searchSet, useFov , fovOverride);
-        watchersCount = potentialWatchers.Count;
-
-        ReturnBlinkableList(potentialWatchers);
-        ReturnBlinkableSet(searchSet);
+        var result = IsWatched(ent, potentialWatchers.Value, searchSet.Value, useFov, fovOverride);
+        watchersCount = potentialWatchers.Value.Count;
 
         return result;
     }
@@ -62,7 +59,7 @@ public sealed partial class EyeWatchingSystem
         if (!TryGetAllEntitiesVisibleTo(ent, potentialWatchers, searchSet))
             return false;
 
-        return IsWatchedBy(ent, potentialWatchers , useFov, fovOverride);
+        return IsWatchedByAny(ent, potentialWatchers , useFov, fovOverride);
     }
 
     public bool TryGetAllEntitiesVisibleTo(
@@ -71,11 +68,21 @@ public sealed partial class EyeWatchingSystem
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
         LookupFlags flags = LookupFlags.All)
     {
-        var searchSet = RentBlinkableSet();
-        var result = TryGetAllEntitiesVisibleTo(ent, potentialWatchers, searchSet, type, flags);
-        ReturnBlinkableSet(searchSet);
+        using var searchSet = HashSetPoolEntity<BlinkableComponent>.Rent();
+        var result = TryGetAllEntitiesVisibleTo(ent, potentialWatchers, searchSet.Value, type, flags);
 
         return result;
+    }
+
+    public bool TryGetAllEntitiesVisibleTo<T>(
+        Entity<TransformComponent?> ent,
+        List<Entity<T>> potentialWatchers,
+        LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
+        LookupFlags flags = LookupFlags.All)
+        where T : IComponent
+    {
+        using var searchSet = HashSetPoolEntity<T>.Rent();
+        return TryGetAllEntitiesVisibleTo(ent, potentialWatchers, searchSet.Value, type, flags);
     }
 
     /// <summary>
@@ -119,6 +126,17 @@ public sealed partial class EyeWatchingSystem
         return potentialWatchers.Count != 0;
     }
 
+    public bool IsWatchedBy(EntityUid target, EntityUid potentialViewer, bool useFov = true, float? fovOverride = null)
+    {
+        if (!CanBeWatched(potentialViewer, target))
+            return false;
+
+        if (IsEyeBlinded(potentialViewer, target, useFov, fovOverride))
+            return false;
+
+        return true;
+    }
+
     /// <summary>
     /// Проверяет, смотрят ли переданные сущности на указанную цель. Передает список всех сущностей, что действительно смотрят на цель
     /// </summary>
@@ -128,7 +146,7 @@ public sealed partial class EyeWatchingSystem
     /// <param name="useFov">Нужно ли проверять, находится ли цель в поле зрения сущности</param>
     /// <param name="fovOverride">Если нужно перезаписать угол поля зрения</param>
     /// <returns>Смотрит ли хоть кто-то на цель</returns>
-    public bool IsWatchedBy(EntityUid target,
+    public bool TryGetWatchers(EntityUid target,
         List<Entity<BlinkableComponent>> potentialViewers,
         List<Entity<BlinkableComponent>> realViewers,
         bool useFov = true,
@@ -136,10 +154,7 @@ public sealed partial class EyeWatchingSystem
     {
         foreach (var viewer in potentialViewers)
         {
-            if (!CanBeWatched(viewer.AsNullable(), target))
-                continue;
-
-            if (IsEyeBlinded(viewer.AsNullable(), target, useFov, fovOverride))
+            if (!IsWatchedBy(target, viewer, useFov, fovOverride))
                 continue;
 
             realViewers.Add(viewer);
@@ -148,17 +163,14 @@ public sealed partial class EyeWatchingSystem
         return realViewers.Any();
     }
 
-    public bool IsWatchedBy(EntityUid target,
+    public bool IsWatchedByAny(EntityUid target,
         List<Entity<BlinkableComponent>> potentialViewers,
         bool useFov = true,
         float? fovOverride = null)
     {
         foreach (var viewer in potentialViewers)
         {
-            if (!CanBeWatched(viewer.AsNullable(), target))
-                continue;
-
-            if (IsEyeBlinded(viewer.AsNullable(), target, useFov, fovOverride))
+            if (!IsWatchedBy(target, viewer, useFov, fovOverride))
                 continue;
 
             return true;
