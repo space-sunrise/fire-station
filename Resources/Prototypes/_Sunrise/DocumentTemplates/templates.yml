@@ -1,32 +1,32 @@
-# fire edit start
+# Fire edit start
 - type: docTemplate
   id: OrderProhibition
   name: doc-template-OrderProhibition-name
-  content: /Documents/_Scp/Command/OrderProhibition.xml
+  content: /Documents/_Scp/Administration/OrderProhibition.xml
   component: Command
 
 - type: docTemplate
   id: ActCollection
   name: doc-template-ActCollection-name
-  content: /Documents/_Scp/Command/ActCollection.xml
+  content: /Documents/_Scp/Administration/ActCollection.xml
   component: Command
 
 - type: docTemplate
   id: RequestMTFChange
   name: doc-template-RequestMTFChange-name
-  content: /Documents/_Scp/Command/RequestMTFChange.xml
+  content: /Documents/_Scp/Administration/RequestMTFChange.xml
   component: Command
 
 - type: docTemplate
   id: RequestChangeTarget
   name: doc-template-RequestChangeTarget-name
-  content: /Documents/_Scp/Command/RequestChangeTarget.xml
+  content: /Documents/_Scp/Administration/RequestChangeTarget.xml
   component: Command
 
 - type: docTemplate
   id: OrderEthicsCommittee
   name: doc-template-OrderEthicsCommittee-name
-  content: /Documents/_Scp/Command/OrderEthicsCommittee.xml
+  content: /Documents/_Scp/Administration/OrderEthicsCommittee.xml
   component: Command
 
 - type: docTemplate
@@ -38,37 +38,37 @@
 - type: docTemplate
   id: SendingOmega1
   name: doc-template-SendingOmega1-name
-  content: /Documents/_Scp/RegionalManagement/SendingOmega1.xml
+  content: /Documents/_Scp/RegionalAdministration/SendingOmega1.xml
   component: Centcom
 
 - type: docTemplate
   id: SendingMTF
   name: doc-template-SendingMTF-name
-  content: /Documents/_Scp/RegionalManagement/SendingMTF.xml
+  content: /Documents/_Scp/RegionalAdministration/SendingMTF.xml
   component: Centcom
 
 - type: docTemplate
-  id: OrderRegionalManagement
-  name: doc-template-OrderRegionalManagement-name
-  content: /Documents/_Scp/RegionalManagement/OrderRegionalManagement.xml
+  id: OrderRegionalAdministration
+  name: doc-template-OrderRegionalAdministration-name
+  content: /Documents/_Scp/RegionalAdministration/OrderRegionalAdministration.xml
   component: Centcom
 
 - type: docTemplate
   id: OrderO5
   name: doc-template-OrderO5-name
-  content: /Documents/_Scp/RegionalManagement/OrderO5.xml
+  content: /Documents/_Scp/RegionalAdministration/OrderO5.xml
   component: Centcom
 
 - type: docTemplate
   id: OrderIntroductionReporting
   name: doc-template-OrderIntroductionReporting-name
-  content: /Documents/_Scp/RegionalManagement/OrderIntroductionReporting.xml
+  content: /Documents/_Scp/RegionalAdministration/OrderIntroductionReporting.xml
   component: Centcom
 
 - type: docTemplate
-  id: AnswerRegionalManagement
-  name: doc-template-AnswerRegionalManagement-name
-  content: /Documents/_Scp/RegionalManagement/AnswerRegionalManagement.xml
+  id: AnswerRegionalAdministration
+  name: doc-template-AnswerRegionalAdministration-name
+  content: /Documents/_Scp/RegionalAdministration/AnswerRegionalAdministration.xml
   component: Centcom
 
 - type: docTemplate
@@ -110,101 +110,320 @@
 - type: docTemplate
   id: ReportObjectStatus
   name: doc-template-ReportObjectStatus-name
-  content: /Documents/_Scp/Sec_SFS/ReportObjectStatus.xml
+  content: /Documents/_Scp/Security/SpecialPurposeSquad/ReportObjectStatus.xml
   component: Security
 
 - type: docTemplate
   id: ReportIncident
   name: doc-template-ReportIncident-name
-  content: /Documents/_Scp/Sec_SFS/ReportIncident.xml
+  content: /Documents/_Scp/Security/SpecialPurposeSquad/ReportIncident.xml
   component: Security
 
 - type: docTemplate
   id: ReportRecoverySpecialContainmentProcedures
   name: doc-template-ReportRecoverySpecialContainmentProcedures-name
-  content: /Documents/_Scp/Sec_SFS/ReportRecoverySpecialContainmentProcedures.xml
+  content: /Documents/_Scp/Security/SpecialPurposeSquad/ReportRecoverySpecialContainmentProcedures.xml
   component: Security
 
 - type: docTemplate
   id: ReportSituationBlockD
   name: doc-template-ReportSituationBlockD-name
-  content: /Documents/_Scp/Sec_commandant/ReportSituationBlockD.xml
+  content: /Documents/_Scp/Security/CommandantSquad/ReportSituationBlockD.xml
   component: Security
 
 - type: docTemplate
   id: NoticeTransferClassD
   name: doc-template-NoticeTransferClassD-name
-  content: /Documents/_Scp/Sec_commandant/NoticeTransferClassD.xml
+  content: /Documents/_Scp/Security/CommandantSquad/NoticeTransferClassD.xml
   component: Security
 
 - type: docTemplate
   id: RequestAmnesia
   name: doc-template-RequestAmnesia-name
-  content: /Documents/_Scp/Sec_commandant/RequestAmnesia.xml
+  content: /Documents/_Scp/Security/CommandantSquad/RequestAmnesia.xml
   component: Security
 
 - type: docTemplate
   id: RequestExecutionProcedure
   name: doc-template-RequestExecutionProcedure-name
-  content: /Documents/_Scp/Sec_commandant/RequestExecutionProcedure.xml
+  content: /Documents/_Scp/Security/CommandantSquad/RequestExecutionProcedure.xml
   component: Security
 
 - type: docTemplate
   id: ReportExecutionProcedure
   name: doc-template-ReportExecutionProcedure-name
-  content: /Documents/_Scp/Sec_commandant/ReportExecutionProcedure.xml
+  content: /Documents/_Scp/Security/CommandantSquad/ReportExecutionProcedure.xml
   component: Security
 
-# Fire edit end
 - type: docTemplate
-  id: Appeal
+  id: scpAppeal
   name: doc-template-appeal-name
   content: /Documents/_Scp/General/Appeal.xml
   component: General
 
 - type: docTemplate
-  id: ApplicationAccess
+  id: scpApplicationAccess
   name: doc-template-application-access-name
   content: /Documents/_Scp/General/ApplicationAccess.xml
   component: General
 
 - type: docTemplate
-  id: ApplicationAppointmentInterim
+  id: scpApplicationAppointmentInterim
   name: doc-template-application-appointment-interim-name
   content: /Documents/_Scp/General/ApplicationAppointmentInterim.xml
   component: General
 
-
 - type: docTemplate
-  id: ApplicationEmployment
+  id: scpApplicationEmployment
   name: doc-template-application-employment-name
   content: /Documents/_Scp/General/ApplicationEmployment.xml
   component: General
 
 - type: docTemplate
-  id: ApplicationEquipment
+  id: scpApplicationEquipment
   name: doc-template-application-equipment-name
   content: /Documents/_Scp/General/ApplicationEquipment.xml
   component: General
 
 - type: docTemplate
-  id: Certificate
+  id: scpCertificate
   name: doc-template-certificate-name
-  content: /Documents/_Scp/Command/Certificate.xml
+  content: /Documents/_Scp/Administration/Certificate.xml
   component: Command
 
+- type: docTemplate
+  id: scpCertificateAdvancedTraining
+  name: doc-template-certificate-advanced-training-name
+  content: /Documents/_Scp/Administration/CertificateAdvancedTraining.xml
+  component: Command
+
+- type: docTemplate
+  id: scpCertificateOffense
+  name: doc-template-certificate-offense-name
+  content: /Documents/_Scp/Security/CommandantSquad/CertificateOffense.xml
+  component: Security
+
+- type: docTemplate
+  id: scpComplaintOffense
+  name: doc-template-complaint-offense-name
+  content: /Documents/_Scp/Security/CommandantSquad/ComplaintOffense.xml
+  component: Security
+
+- type: docTemplate
+  id: scpConditionReport
+  name: doc-template-condition-report-name
+  content: /Documents/_Scp/Engineering/ConditionReport.xml
+  component: Engineering
+
+- type: docTemplate
+  id: scpConstructionPermit
+  name: doc-template-construction-permit-name
+  content: /Documents/_Scp/Engineering/ConstructionPermit.xml
+  component: Engineering
+
+- type: docTemplate
+  id: scpDeathCertificate
+  name: doc-template-death-certificate-name
+  content: /Documents/_Scp/Medical/DeathCertificate.xml
+  component: Medical
+
+- type: docTemplate
+  id: scpEvacuationShuttleRequest
+  name: doc-template-evacuation-shuttle-request-name
+  content: /Documents/_Scp/Administration/EvacuationShuttleRequest.xml
+  component: Command
+
+- type: docTemplate
+  id: scpLetterResignation
+  name: doc-template-letter-resignation-name
+  content: /Documents/_Scp/General/LetterResignation.xml
+  component: General
+
+- type: docTemplate
+  id: scpOrderDeprivationAccess
+  name: doc-template-order-deprivation-access-name
+  content: /Documents/_Scp/Administration/OrderDeprivationAccess.xml
+  component: Command
+
+- type: docTemplate
+  id: scpOrderDismissal
+  name: doc-template-order-dismissal-name
+  content: /Documents/_Scp/Administration/OrderDismissal.xml
+  component: Command
+
+- type: docTemplate
+  id: scpOrderEncouragement
+  name: doc-template-order-encouragement-name
+  content: /Documents/_Scp/Administration/OrderEncouragement.xml
+  component: Command
+
+- type: docTemplate
+  id: scpOrderingSpecialEquipment
+  name: doc-template-ordering-special-equipment-name
+  content: /Documents/_Scp/General/OrderingSpecialEquipment.xml
+  component: General
+
+- type: docTemplate
+  id: scpPermissionEquipment
+  name: doc-template-permission-equipment-name
+  content: /Documents/_Scp/Administration/PermissionEquipment.xml
+  component: Command
+
+- type: docTemplate
+  id: scpProductManufacturingOrder
+  name: doc-template-product-manufacturing-order-name
+  content: /Documents/_Scp/General/ProductManufacturingOrder.xml
+  component: General
+
+- type: docTemplate
+  id: scpReportDepartment
+  name: doc-template-report-department-name
+  content: /Documents/_Scp/Administration/ReportDepartment.xml
+  component: Command
+
+- type: docTemplate
+  id: scpReportEmployeePerformance
+  name: doc-template-report-employee-performance-name
+  content: /Documents/_Scp/Administration/ReportEmployeePerformance.xml
+  component: Command
+
+- type: docTemplate
+  id: scpReportOnEliminationOfViolations
+  name: doc-template-report-on-elimination-of-violations-name
+  content: /Documents/_Scp/Administration/ReportOnEliminationOfViolations.xml
+  component: Command
+
+- type: docTemplate
+  id: scpReportOnTheChaptersMeeting
+  name: doc-template-report-on-the-chapters-meeting-name
+  content: /Documents/_Scp/Administration/ReportOnTheChaptersMeeting.xml
+  component: Command
+
+- type: docTemplate
+  id: scpReportStation
+  name: doc-template-report-station-name
+  content: /Documents/_Scp/Administration/ReportStation.xml
+  component: Command
+
+- type: docTemplate
+  id: scpRequestCallMembersCentralCommitteeDSO
+  name: doc-template-request-call-members-central-committee-dso-name
+  content: /Documents/_Scp/Administration/RequestCallMembersCentralCommitteeDSO.xml
+  component: Command
+
+- type: docTemplate
+  id: scpRequestChangeSalary
+  name: doc-template-request-change-salary-name
+  content: /Documents/_Scp/General/RequestChangeSalary.xml
+  component: General
+
+- type: docTemplate
+  id: scpRequestForNonlistedEmployment
+  name: doc-template-request-for-non-listed-employment-name
+  content: /Documents/_Scp/General/RequestForNonlistedEmployment.xml
+  component: General
+
+- type: docTemplate
+  id: scpRequestForPromotion
+  name: doc-template-request-for-promotion-name
+  content: /Documents/_Scp/General/RequestForPromotion.xml
+  component: General
+
+- type: docTemplate
+  id: scpOrderAppointmentInterim
+  name: doc-template-order-appointment-interim-name
+  content: /Documents/_Scp/Administration/OrderAppointmentInterim.xml
+  component: Command
+
+- type: docTemplate
+  id: scpApplicationChangePosition
+  name: doc-template-application-change-position-name
+  content: /Documents/_Scp/General/ApplicationChangePosition.xml
+  component: General
+
+- type: docTemplate
+  id: scpExplanatoryNote
+  name: doc-template-explanatory-note-name
+  content: /Documents/_Scp/General/ExplanatoryNote.xml
+  component: General
+
+- type: docTemplate
+  id: scpReportCrewAccessChange
+  name: doc-template-report-crew-access-change-name
+  content: /Documents/_Scp/Administration/ReportCrewAccessChange.xml
+  component: Command
+#fire edit end
+- type: docTemplate
+  id: Appeal
+  name: doc-template-appeal-name
+  content: /Documents/_Sunrise/General/Appeal.xml
+  component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
+
+- type: docTemplate
+  id: ApplicationAccess
+  name: doc-template-application-access-name
+  content: /Documents/_Sunrise/General/ApplicationAccess.xml
+  component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
+
+- type: docTemplate
+  id: ApplicationAppointmentInterim
+  name: doc-template-application-appointment-interim-name
+  content: /Documents/_Sunrise/General/ApplicationAppointmentInterim.xml
+  component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
+
+- type: docTemplate
+  id: ApplicationEmployment
+  name: doc-template-application-employment-name
+  content: /Documents/_Sunrise/General/ApplicationEmployment.xml
+  component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
+
+- type: docTemplate
+  id: ApplicationEquipment
+  name: doc-template-application-equipment-name
+  content: /Documents/_Sunrise/General/ApplicationEquipment.xml
+  component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
+
+- type: docTemplate
+  id: Certificate
+  name: doc-template-certificate-name
+  content: /Documents/_Sunrise/Command/Certificate.xml
+  component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: CertificateAdvancedTraining
   name: doc-template-certificate-advanced-training-name
-  content: /Documents/_Scp/Command/CertificateAdvancedTraining.xml
+  content: /Documents/_Sunrise/Command/CertificateAdvancedTraining.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: CertificateOffense
   name: doc-template-certificate-offense-name
-  content: /Documents/_Scp/Sec_commandant/CertificateOffense.xml
+  content: /Documents/_Sunrise/Security/CertificateOffense.xml
   component: Security
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_sec_investig
 
 - type: docTemplate
   id: ClosingIndictment
@@ -218,8 +437,11 @@
 - type: docTemplate
   id: ComplaintOffense
   name: doc-template-complaint-offense-name
-  content: /Documents/_Scp/Sec_commandant/ComplaintOffense.xml
+  content: /Documents/_Sunrise/Security/ComplaintOffense.xml
   component: Security
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_sec_investig
 
 - type: docTemplate
   id: ComplaintViolationLaborRules
@@ -233,20 +455,29 @@
 - type: docTemplate
   id: ConditionReport
   name: doc-template-condition-report-name
-  content: /Documents/_Scp/Engineering/ConditionReport.xml
+  content: /Documents/_Sunrise/Engineering/ConditionReport.xml
   component: Engineering
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_eng
 
 - type: docTemplate
   id: ConstructionPermit
   name: doc-template-construction-permit-name
-  content: /Documents/_Scp/Engineering/ConstructionPermit.xml
+  content: /Documents/_Sunrise/Engineering/ConstructionPermit.xml
   component: Engineering
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_eng
 
 - type: docTemplate
   id: DeathCertificate
   name: doc-template-death-certificate-name
-  content: /Documents/_Scp/Medical/DeathCertificate.xml
+  content: /Documents/_Sunrise/Medical/DeathCertificate.xml
   component: Medical
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_med
 
 - type: docTemplate
   id: DecisionToStartTrial
@@ -278,8 +509,11 @@
 - type: docTemplate
   id: EvacuationShuttleRequest
   name: doc-template-evacuation-shuttle-request-name
-  content: /Documents/_Scp/Command/EvacuationShuttleRequest.xml
+  content: /Documents/_Sunrise/Command/EvacuationShuttleRequest.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: ExperimentReport
@@ -311,8 +545,11 @@
 - type: docTemplate
   id: LetterResignation
   name: doc-template-letter-resignation-name
-  content: /Documents/_Scp/General/LetterResignation.xml
+  content: /Documents/_Sunrise/General/LetterResignation.xml
   component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
 
 - type: docTemplate
   id: MarriageCertificate
@@ -326,26 +563,38 @@
 - type: docTemplate
   id: OrderDeprivationAccess
   name: doc-template-order-deprivation-access-name
-  content: /Documents/_Scp/Command/OrderDeprivationAccess.xml
+  content: /Documents/_Sunrise/Command/OrderDeprivationAccess.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: OrderDismissal
   name: doc-template-order-dismissal-name
-  content: /Documents/_Scp/Command/OrderDismissal.xml
+  content: /Documents/_Sunrise/Command/OrderDismissal.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: OrderEncouragement
   name: doc-template-order-encouragement-name
-  content: /Documents/_Scp/Command/OrderEncouragement.xml
+  content: /Documents/_Sunrise/Command/OrderEncouragement.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: OrderingSpecialEquipment
   name: doc-template-ordering-special-equipment-name
-  content: /Documents/_Scp/General/OrderingSpecialEquipment.xml
+  content: /Documents/_Sunrise/General/OrderingSpecialEquipment.xml
   component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
 
 - type: docTemplate
   id: OrderMedicalIntervention
@@ -404,8 +653,11 @@
 - type: docTemplate
   id: PermissionEquipment
   name: doc-template-permission-equipment-name
-  content: /Documents/_Scp/Command/PermissionEquipment.xml
+  content: /Documents/_Sunrise/Command/PermissionEquipment.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: PermissionToCarryWeapons
@@ -437,38 +689,56 @@
 - type: docTemplate
   id: ProductManufacturingOrder
   name: doc-template-product-manufacturing-order-name
-  content: /Documents/_Scp/General/ProductManufacturingOrder.xml
+  content: /Documents/_Sunrise/General/ProductManufacturingOrder.xml
   component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
 
 - type: docTemplate
   id: ReportDepartment
   name: doc-template-report-department-name
-  content: /Documents/_Scp/Command/ReportDepartment.xml
+  content: /Documents/_Sunrise/Command/ReportDepartment.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: ReportEmployeePerformance
   name: doc-template-report-employee-performance-name
-  content: /Documents/_Scp/Command/ReportEmployeePerformance.xml
+  content: /Documents/_Sunrise/Command/ReportEmployeePerformance.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: ReportOnEliminationOfViolations
   name: doc-template-report-on-elimination-of-violations-name
-  content: /Documents/_Scp/Command/ReportOnEliminationOfViolations.xml
+  content: /Documents/_Sunrise/Command/ReportOnEliminationOfViolations.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: ReportOnTheChaptersMeeting
   name: doc-template-report-on-the-chapters-meeting-name
-  content: /Documents/_Scp/Command/ReportOnTheChaptersMeeting.xml
+  content: /Documents/_Sunrise/Command/ReportOnTheChaptersMeeting.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: ReportStation
   name: doc-template-report-station-name
-  content: /Documents/_Scp/Command/ReportStation.xml
+  content: /Documents/_Sunrise/Command/ReportStation.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: ReportStudyObject
@@ -482,14 +752,20 @@
 - type: docTemplate
   id: RequestCallMembersCentralCommitteeDSO
   name: doc-template-request-call-members-central-committee-dso-name
-  content: /Documents/_Scp/Command/RequestCallMembersCentralCommitteeDSO.xml
+  content: /Documents/_Sunrise/Command/RequestCallMembersCentralCommitteeDSO.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: RequestChangeSalary
   name: doc-template-request-change-salary-name
-  content: /Documents/_Scp/General/RequestChangeSalary.xml
+  content: /Documents/_Sunrise/General/RequestChangeSalary.xml
   component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
 
 - type: docTemplate
   id: RequestConstructionWork
@@ -521,14 +797,20 @@
 - type: docTemplate
   id: RequestForNonlistedEmployment
   name: doc-template-request-for-non-listed-employment-name
-  content: /Documents/_Scp/General/RequestForNonlistedEmployment.xml
+  content: /Documents/_Sunrise/General/RequestForNonlistedEmployment.xml
   component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
 
 - type: docTemplate
   id: RequestForPromotion
   name: doc-template-request-for-promotion-name
-  content: /Documents/_Scp/General/RequestForPromotion.xml
+  content: /Documents/_Sunrise/General/RequestForPromotion.xml
   component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
 
 - type: docTemplate
   id: RequestModernization
@@ -646,8 +928,11 @@
 - type: docTemplate
   id: OrderAppointmentInterim
   name: doc-template-order-appointment-interim-name
-  content: /Documents/_Scp/Command/OrderAppointmentInterim.xml
+  content: /Documents/_Sunrise/Command/OrderAppointmentInterim.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: OrderAnnulmentOfRight
@@ -661,8 +946,11 @@
 - type: docTemplate
   id: ApplicationChangePosition
   name: doc-template-application-change-position-name
-  content: /Documents/_Scp/General/ApplicationChangePosition.xml
+  content: /Documents/_Sunrise/General/ApplicationChangePosition.xml
   component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
 
 - type: docTemplate
   id: ApplicationPetRegistration
@@ -685,14 +973,20 @@
 - type: docTemplate
   id: ExplanatoryNote
   name: doc-template-explanatory-note-name
-  content: /Documents/_Scp/General/ExplanatoryNote.xml
+  content: /Documents/_Sunrise/General/ExplanatoryNote.xml
   component: General
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header
 
 - type: docTemplate
   id: ReportCrewAccessChange
   name: doc-template-report-crew-access-change-name
-  content: /Documents/_Scp/Command/ReportCrewAccessChange.xml
+  content: /Documents/_Sunrise/Command/ReportCrewAccessChange.xml
   component: Command
+  header:
+    sprite: /Textures/_Sunrise/CopyMachine/paper_headers.rsi
+    state: nanotrasen_form_header_cmd
 
 - type: docTemplate
   id: RequestLegalProtection
