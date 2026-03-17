@@ -546,7 +546,7 @@ public sealed partial class SunriseCCVars : CVars
     /// Пул шаблонов документов, используемых при создании документов на принтере
     /// </summary>
     public static readonly CVarDef<string> DocumentTemplatePool =
-        CVarDef.Create("doc.template_pool", "Sunrise", CVar.SERVER | CVar.ARCHIVE);
+        CVarDef.Create("doc.template_pool", "ProjectFire", CVar.SERVER | CVar.ARCHIVE); /// fire edit
 
     public static readonly CVarDef<bool> MentorHelpAdminPrefix =
         CVarDef.Create("mentor_help.admin_prefix", true, CVar.SERVERONLY);
