@@ -84,7 +84,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
         var ent = GetEntity(ev.NetEntity);
 
-        if (!TryComp<BlinkableComponent>(ent, out var blinkable))
+        if (!BlinkableQuery.TryComp(ent, out var blinkable))
             return;
 
         if (ev.NewState == EyesState.Closed)

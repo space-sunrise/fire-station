@@ -30,7 +30,7 @@ public abstract partial class SharedBlinkingSystem
 
     #region Event handlers
 
-    private void OnShutdown(Entity<BlinkableComponent> ent, ref ComponentShutdown _)
+    private void OnShutdown(Entity<BlinkableComponent> ent, ref ComponentShutdown args)
     {
         _actions.RemoveAction(ent.Owner, ent.Comp.EyeToggleActionEntity);
 
@@ -101,7 +101,7 @@ public abstract partial class SharedBlinkingSystem
     /// </summary>
     private void OnHumanoidClosedEyes(Entity<HumanoidAppearanceComponent> ent, ref EntityClosedEyesEvent args)
     {
-        if (!TryComp<BlinkableComponent>(ent, out var blinkableComponent))
+        if (!BlinkableQuery.TryComp(ent, out var blinkableComponent))
             return;
 
         blinkableComponent.CachedEyesColor = ent.Comp.EyeColor;
@@ -114,7 +114,7 @@ public abstract partial class SharedBlinkingSystem
     /// </summary>
     private void OnHumanoidOpenedEyes(Entity<HumanoidAppearanceComponent> ent, ref EntityOpenedEyesEvent args)
     {
-        if (!TryComp<BlinkableComponent>(ent, out var blinkableComponent))
+        if (!BlinkableQuery.TryComp(ent, out var blinkableComponent))
             return;
 
         if (blinkableComponent.CachedEyesColor == null)
@@ -152,7 +152,7 @@ public abstract partial class SharedBlinkingSystem
         bool useEffects = false,
         TimeSpan? customBlinkDuration = null)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!BlinkableQuery.Resolve(ent, ref ent.Comp))
             return false;
 
         if (ent.Comp.State == newState)
@@ -192,7 +192,7 @@ public abstract partial class SharedBlinkingSystem
     /// <returns>True -> закрыты, False -> открыты</returns>
     public bool AreEyesClosed(Entity<BlinkableComponent?> ent)
     {
-        if (!Resolve(ent.Owner, ref ent.Comp, false))
+        if (!BlinkableQuery.Resolve(ent.Owner, ref ent.Comp, false))
             return false;
 
         // Мб одна из проверок лишняя, но ладно пусть будет. Не сильная потеря производительности
@@ -207,7 +207,7 @@ public abstract partial class SharedBlinkingSystem
     /// </summary>
     public bool AreEyesClosedManually(Entity<BlinkableComponent?> ent)
     {
-        if (!Resolve(ent.Owner, ref ent.Comp, false))
+        if (!BlinkableQuery.Resolve(ent.Owner, ref ent.Comp, false))
             return false;
 
         if (ent.Comp.State == EyesState.Opened)
@@ -265,9 +265,17 @@ public abstract partial class SharedBlinkingSystem
             nameof(BlinkableComponent.NextOpenEyesRequiresEffects));
 
         if (newState == EyesState.Closed)
-            RaiseLocalEvent(ent, new EntityClosedEyesEvent(manual, useEffects, customBlinkDuration));
+        {
+            var closedEvent = new EntityClosedEyesEvent(manual, useEffects, customBlinkDuration);
+            RaiseLocalEvent(ent, ref closedEvent);
+        }
+
         else
-            RaiseLocalEvent(ent, new EntityOpenedEyesEvent(manual, useEffects || openEyesRequiresEffects, customBlinkDuration));
+        {
+            var openedEvent =
+                new EntityOpenedEyesEvent(manual, useEffects || openEyesRequiresEffects, customBlinkDuration);
+            RaiseLocalEvent(ent, ref openedEvent);
+        }
 
         if (predicted)
             RaiseLocalEvent(ent, new EntityEyesStateChanged(oldState, newState, manual));

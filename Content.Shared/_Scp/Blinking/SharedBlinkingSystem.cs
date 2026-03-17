@@ -25,6 +25,8 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
 
+    protected EntityQuery<BlinkableComponent> BlinkableQuery;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -35,6 +37,8 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         SubscribeLocalEvent<BlinkableComponent, MobStateChangedEvent>(OnMobStateChanged);
 
         InitializeEyeClosing();
+
+        BlinkableQuery = GetEntityQuery<BlinkableComponent>();
     }
 
     #region Event handlers
@@ -120,7 +124,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
 
     private bool TryBlink(Entity<BlinkableComponent?> ent, TimeSpan? customDuration = null)
     {
-        if (!Resolve(ent.Owner, ref ent.Comp))
+        if (!BlinkableQuery.Resolve(ent.Owner, ref ent.Comp))
             return false;
 
         if (_timing.CurTime < ent.Comp.NextBlink)
@@ -142,7 +146,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     /// <param name="predicted">Предугадывается ли клиентом этот вызов метода? Если нет, отправляет клиенту стейт с сервера.</param>
     public void SetNextBlink(Entity<BlinkableComponent?> ent, TimeSpan interval, TimeSpan? variance = null, bool predicted = true)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!BlinkableQuery.Resolve(ent, ref ent.Comp))
             return;
 
         if (!variance.HasValue)
@@ -162,7 +166,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
 
     public void ResetBlink(Entity<BlinkableComponent?> ent, bool useVariance = true, bool predicted = true)
     {
-        if (!Resolve(ent, ref ent.Comp))
+        if (!BlinkableQuery.Resolve(ent, ref ent.Comp))
             return;
 
         // Если useVariance == false, то variance = 0
@@ -183,7 +187,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     /// </summary>
     public bool IsBlind(Entity<BlinkableComponent?> ent, bool useTimeCompensation = false)
     {
-        if (!Resolve(ent, ref ent.Comp, false))
+        if (!BlinkableQuery.Resolve(ent, ref ent.Comp, false))
             return false;
 
         // Специально для сцп173. Он должен начинать остановку незадолго до того, как у людей откроются глаза
@@ -200,7 +204,7 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         if (_mobState.IsIncapacitated(ent))
             return;
 
-        if (!Resolve(ent, ref ent.Comp))
+        if (!BlinkableQuery.Resolve(ent, ref ent.Comp))
             return;
 
         // Если у персонажа уже закрыты глаза, то обновляем время
@@ -256,26 +260,24 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     {
         // Получаем всех Scp с механиками зрения, которые видят игрока
         using var scp173List = ListPoolEntity<Scp173Component>.Rent();
-        if (!_watching.TryGetAllEntitiesVisibleTo(player, scp173List.Value))
+        if (!_watching.TryGetAllEntitiesVisibleTo(player, scp173List.Value, flags: LookupFlags.Dynamic | LookupFlags.Approximate))
             return false;
 
         return scp173List.Value.Any(e => _watching.CanBeWatched(player, e));
     }
 }
 
-public sealed class EntityOpenedEyesEvent(bool manual = false, bool useEffects = false, TimeSpan? customNextTimeBlinkInterval = null) : EntityEventArgs
-{
-    public readonly bool Manual = manual;
-    public readonly bool UseEffects = useEffects;
-    public readonly TimeSpan? CustomNextTimeBlinkInterval = customNextTimeBlinkInterval;
-}
+[ByRefEvent]
+public readonly record struct EntityOpenedEyesEvent(
+    bool Manual = false,
+    bool UseEffects = false,
+    TimeSpan? CustomNextTimeBlinkInterval = null);
 
-public sealed class EntityClosedEyesEvent(bool manual = false, bool useEffects = false, TimeSpan? customBlinkDuration = null) : EntityEventArgs
-{
-    public readonly bool Manual = manual;
-    public readonly bool UseEffects = useEffects;
-    public readonly TimeSpan? CustomBlinkDuration = customBlinkDuration;
-}
+[ByRefEvent]
+public readonly record struct EntityClosedEyesEvent(
+    bool Manual = false,
+    bool UseEffects = false,
+    TimeSpan? CustomBlinkDuration = null);
 
 [Serializable, NetSerializable]
 public sealed class EntityEyesStateChanged(EyesState oldState, EyesState newState, bool manual = false, bool useEffects = false, NetEntity? netEntity = null) : EntityEventArgs
