@@ -21,7 +21,7 @@ public sealed class ScpHelpers : EntitySystem
         LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
     {
         using var puddles = ListPoolEntity<PuddleComponent>.Rent();
-        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, LookupFlags.Static))
+        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, LookupFlags.Static | LookupFlags.Approximate))
             return FixedPoint2.Zero;
 
         FixedPoint2 total = 0;
@@ -53,7 +53,7 @@ public sealed class ScpHelpers : EntitySystem
         LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
     {
         using var puddles = ListPoolEntity<PuddleComponent>.Rent();
-        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, LookupFlags.Static))
+        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, LookupFlags.Static | LookupFlags.Approximate))
             return FixedPoint2.Zero;
 
         FixedPoint2 total = 0;
@@ -82,7 +82,7 @@ public sealed class ScpHelpers : EntitySystem
         LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
     {
         using var puddles = ListPoolEntity<PuddleComponent>.Rent();
-        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, LookupFlags.Static))
+        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, LookupFlags.Static | LookupFlags.Approximate))
             return false;
 
         FixedPoint2 total = 0;

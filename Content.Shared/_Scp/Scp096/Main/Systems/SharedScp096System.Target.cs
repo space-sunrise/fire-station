@@ -190,7 +190,7 @@ public abstract partial class SharedScp096System
             return false;
 
         // Проверяет, не слеп ли персонаж
-        if (_watching.IsEyeBlinded(viewer, scp, false) && !ignoreBlinded)
+        if (!_watching.CanSee(viewer, scp, false) && !ignoreBlinded)
             return false;
 
         // Если игнорируем угол, то считаем, что смотрящий видит 096

@@ -22,7 +22,7 @@ public abstract partial class SharedFearSystem
     private void HighLightAllVisibleFears(Entity<FearComponent> ent)
     {
         using var fearSources = ListPoolEntity<FearSourceComponent>.Rent();
-        if (!_watching.TryGetAllEntitiesVisibleTo(ent.Owner, fearSources.Value, ent.Comp.SeenBlockerLevel))
+        if (!_watching.TryGetWatchingTargets(ent.Owner, fearSources.Value, ent.Comp.SeenBlockerLevel))
             return;
 
         foreach (var source in fearSources.Value)

@@ -68,13 +68,18 @@ public sealed partial class EyeWatchingSystem : EntitySystem
 
             // Если требуются только Simple ивенты, то нет смысла делать дальнейшие действия.
             if (watchingComponent.SimpleMode)
+            {
+                SetNextTime(watchingComponent);
+                Dirty(uid, watchingComponent);
+
                 continue;
+            }
 
             // Проверяет всех потенциальных смотрящих на то, действительно ли они видят цель.
             // Каждый потенциально смотрящий проходит полный комплекс проверок.
             // Выдает полный список всех сущностей, кто действительно видит цель
             using var realViewers = ListPoolEntity<BlinkableComponent>.Rent();
-            if (!TryGetWatchers(uid, potentialViewers.Value, realViewers.Value))
+            if (!TryGetWatchersFrom(uid, realViewers.Value, potentialViewers.Value))
                 continue;
 
             // Вызываем ивент на смотрящем, говорящие, что он действительно видит цель

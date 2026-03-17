@@ -1,4 +1,6 @@
-﻿namespace Content.Shared._Scp.Helpers;
+﻿using System.Runtime.CompilerServices;
+
+namespace Content.Shared._Scp.Helpers;
 
 /// <summary>
 /// Provides a static object pool for collections to minimize garbage collection allocations.
@@ -15,7 +17,7 @@ public static class CollectionPool<TCollection, T>
     /// Configures the factory function used to instantiate new collections when the pool is empty.
     /// </summary>
     /// <param name="factory">The delegate used to create new instances of <typeparamref name="TCollection"/>.</param>
-    /// <exception cref="ArgumentNullException">Thrown when the provided <paramref name="factory"/> is null.</exception>
+    /// <exception cref="InvalidOperationException">Thrown when the provided <paramref name="factory"/> is null.</exception>
     public static void Configure(Func<TCollection> factory)
     {
         _factory = factory ?? throw new InvalidOperationException("Factory cannot be null");
@@ -58,14 +60,14 @@ public static class CollectionPool<TCollection, T>
     {
         if (Pool.Count >= 512)
         {
-            Logger.Warning("Pool bloated, new collections will not be generated");
+            Logger.Warning("Pool bloated, new collections will not be stored");
             return;
         }
 
-        if (collection is List<T> list && list.Capacity > 1024)
+        if (collection is List<T> list && list.Capacity > 2048)
             return;
 
-        if (collection is HashSet<T> hashSet && hashSet.Capacity > 1024)
+        if (collection is HashSet<T> hashSet && hashSet.Capacity > 2048)
             return;
 
         collection.Clear();
@@ -83,7 +85,7 @@ public static class CollectionPool<TCollection, T>
         /// <summary>
         /// Gets the underlying rented collection.
         /// </summary>
-        /// <exception cref="ObjectDisposedException">Thrown if accessed after the collection has been returned to the pool.</exception>
+        /// <exception cref="InvalidOperationException">Thrown if accessed after the collection has been returned to the pool.</exception>
         public TCollection Value
         {
             get
@@ -135,6 +137,7 @@ public static class ListPool<T>
     /// Rents a list from the pool.
     /// </summary>
     /// <returns>A disposable wrapper containing the rented list.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static CollectionPool<List<T>, T>.PooledCollection Rent()
         => CollectionPool<List<T>, T>.Rent();
 }
@@ -149,6 +152,7 @@ public static class ListPoolEntity<T> where T : IComponent
     /// Rents a list of <see cref="Entity{T}"/> from the pool.
     /// </summary>
     /// <returns>A disposable wrapper containing the rented entity list.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static CollectionPool<List<Entity<T>>, Entity<T>>.PooledCollection Rent()
         => ListPool<Entity<T>>.Rent();
 }
@@ -168,6 +172,7 @@ public static class HashSetPool<T>
     /// Rents a hash set from the pool.
     /// </summary>
     /// <returns>A disposable wrapper containing the rented hash set.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static CollectionPool<HashSet<T>, T>.PooledCollection Rent()
         => CollectionPool<HashSet<T>, T>.Rent();
 }
@@ -182,6 +187,7 @@ public static class HashSetPoolEntity<T> where T : IComponent
     /// Rents a hash set of <see cref="Entity{T}"/> from the pool.
     /// </summary>
     /// <returns>A disposable wrapper containing the rented entity hash set.</returns>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static CollectionPool<HashSet<Entity<T>>, Entity<T>>.PooledCollection Rent()
         => HashSetPool<Entity<T>>.Rent();
 }

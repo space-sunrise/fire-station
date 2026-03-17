@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using Content.Server._Scp.Shaders.Highlighting;
-using Content.Server._Sunrise.Mood;
+using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Components.Fears;
@@ -57,18 +57,14 @@ public sealed partial class FearSystem
         if (!activated)
             return;
 
-        // TODO: Создать проверки "сколько сущностей с компонентом X видит сущность способная к зрению"
-        using var potentialViewer = ListPoolEntity<MoodComponent>.Rent();
-        if (!_watching.TryGetAllEntitiesVisibleTo(ev.Target, potentialViewer.Value, flags: LookupFlags.Dynamic))
+        using var realWatchers = ListPoolEntity<BlinkableComponent>.Rent();
+        if (!_watching.TryGetWatchers(ev.Target, realWatchers.Value, flags: LookupFlags.Dynamic))
             return;
 
-        foreach (var uid in potentialViewer.Value)
+        foreach (var uid in realWatchers.Value)
         {
             // Убийца не будет печалиться смерти убитого
             if (uid.Owner == ev.Origin)
-                continue;
-
-            if (!_watching.IsWatchedBy(uid, ev.Target))
                 continue;
 
             AddNegativeMoodEffect(uid, MoodSomeoneDiedOnMyEyes);

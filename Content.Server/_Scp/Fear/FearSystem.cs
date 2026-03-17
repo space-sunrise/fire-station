@@ -1,7 +1,6 @@
 ﻿using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Systems;
-using Content.Shared._Scp.Helpers;
 using Content.Shared._Sunrise.Mood;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Rejuvenate;
@@ -82,9 +81,7 @@ public sealed partial class FearSystem : SharedFearSystem
 
         // Проверка на то, что мы в данный момент не смотрим на какую-то страшную сущность.
         // Нельзя успокоиться, когда мы смотрим на источник страха.
-        // TODO: Создать проверки "сколько сущностей с компонентом X видит сущность способная к зрению"
-        using var fearSources = ListPoolEntity<FearSourceComponent>.Rent();
-        if (_watching.TryGetAllEntitiesVisibleTo(ent.Owner, fearSources.Value, ent.Comp.SeenBlockerLevel))
+        if (_watching.TryGetAnyEntitiesVisibleTo<FearSourceComponent>(ent.Owner, ent.Comp.SeenBlockerLevel))
             return false;
 
         var newFearState = GetDecreasedLevel(ent.Comp.State);

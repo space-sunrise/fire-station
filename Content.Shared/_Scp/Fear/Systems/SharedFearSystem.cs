@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Fear.Components;
+﻿using Content.Shared._Scp.Blinking;
+using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Shaders;
@@ -27,6 +28,7 @@ namespace Content.Shared._Scp.Fear.Systems;
 public abstract partial class SharedFearSystem : EntitySystem
 {
     [Dependency] private readonly SharedHighlightSystem _highlight = default!;
+    [Dependency] private readonly SharedBlinkingSystem _blinking = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedShaderStrengthSystem _shaderStrength = default!;
@@ -139,7 +141,10 @@ public abstract partial class SharedFearSystem : EntitySystem
             return;
 
         // Проверка на зрение, чтобы можно было закрыть глазки и было не страшно
-        if (!_watching.SimpleIsWatchedBy(args.Receiver, ent))
+        if (_blinking.AreEyesClosedManually(ent.Owner))
+            return;
+
+        if (!_watching.IsWatchedBy(args.Receiver, ent, checkProximity: false))
             return;
 
         // Если текущий уровень страха выше, чем тот, что мы хотим поставить,

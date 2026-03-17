@@ -101,7 +101,7 @@ public abstract partial class SharedScp106System
         if (!_mob.IsAlive(args.Examiner))
             return;
 
-        if (!_watching.SimpleIsWatchedBy(ent.Owner, args.Examiner))
+        if (!_watching.IsWatchedBy(ent.Owner, args.Examiner))
             return;
 
         // Ликвидируйся
