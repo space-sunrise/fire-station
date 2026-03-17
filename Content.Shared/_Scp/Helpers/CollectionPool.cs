@@ -59,10 +59,7 @@ public static class CollectionPool<TCollection, T>
     internal static void Return(TCollection collection)
     {
         if (Pool.Count >= 512)
-        {
-            Logger.Warning("Pool bloated, new collections will not be stored");
             return;
-        }
 
         if (collection is List<T> list && list.Capacity > 2048)
             return;

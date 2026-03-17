@@ -48,10 +48,8 @@ public sealed partial class EyeWatchingSystem : EntitySystem
                 continue;
 
             // Все потенциально возможные смотрящие. Среди них те, что прошли фаст-чек из самых простых проверок
-            using var potentialViewers = ListPoolEntity<BlinkableComponent>.Rent();
-            using var searchList = HashSetPoolEntity<BlinkableComponent>.Rent();
-
-            if (!TryGetAllEntitiesVisibleTo(uid, potentialViewers.Value, searchList.Value))
+            using var potentialViewers = ListPool<WatchCandidate>.Rent();
+            if (!_TryGetAllEntitiesVisibleTo(uid, potentialViewers.Value))
                 continue;
 
             // Вызываем ивенты на потенциально смотрящих. Без особых проверок
@@ -59,10 +57,10 @@ public sealed partial class EyeWatchingSystem : EntitySystem
             foreach (var potentialViewer in potentialViewers.Value)
             {
                 var simpleViewerEvent = new SimpleEntityLookedAtEvent((uid, watchingComponent));
-                var simpleTargetEvent = new SimpleEntitySeenEvent(potentialViewer);
+                var simpleTargetEvent = new SimpleEntitySeenEvent(potentialViewer.Viewer);
 
                 // За подробностями какой ивент для чего навести мышку на название ивента
-                RaiseLocalEvent(potentialViewer, ref simpleViewerEvent);
+                RaiseLocalEvent(potentialViewer.Viewer, ref simpleViewerEvent);
                 RaiseLocalEvent(uid, ref simpleTargetEvent);
             }
 
@@ -78,26 +76,25 @@ public sealed partial class EyeWatchingSystem : EntitySystem
             // Проверяет всех потенциальных смотрящих на то, действительно ли они видят цель.
             // Каждый потенциально смотрящий проходит полный комплекс проверок.
             // Выдает полный список всех сущностей, кто действительно видит цель
-            using var realViewers = ListPoolEntity<BlinkableComponent>.Rent();
-            if (!TryGetWatchersFrom(uid, realViewers.Value, potentialViewers.Value))
+            using var realViewers = ListPool<WatchCandidate>.Rent();
+            if (!_TryGetWatchersFrom(uid, realViewers.Value, potentialViewers.Value, checkProximity: false))
                 continue;
 
             // Вызываем ивент на смотрящем, говорящие, что он действительно видит цель
             foreach (var viewer in realViewers.Value)
             {
-                var netViewer = GetNetEntity(viewer);
+                var netViewer = GetNetEntity(viewer.Viewer);
                 var firstTime = !watchingComponent.AlreadyLookedAt.ContainsKey(netViewer);
-                var blockerLevel = _proximity.GetLightOfSightBlockerLevel(viewer, uid);
 
                 // Небольшая заглушка для удобства работы с ивентами.
                 // Использовать firstTime не очень удобно, поэтому в качестве дополнительного способа определения будет TimeSpan.Zero
                 watchingComponent.AlreadyLookedAt[netViewer] = TimeSpan.Zero;
 
                 // За подробностями какой ивент для чего навести мышку на название ивента
-                var viewerEvent = new EntityLookedAtEvent((uid, watchingComponent), firstTime, blockerLevel);
-                var targetEvent = new EntitySeenEvent(viewer, firstTime, blockerLevel);
+                var viewerEvent = new EntityLookedAtEvent((uid, watchingComponent), firstTime, viewer.BlockerLevel);
+                var targetEvent = new EntitySeenEvent(viewer.Viewer, firstTime, viewer.BlockerLevel);
 
-                RaiseLocalEvent(viewer, ref viewerEvent);
+                RaiseLocalEvent(viewer.Viewer, ref viewerEvent);
                 RaiseLocalEvent(uid, ref targetEvent);
 
                 // Добавляет смотрящего в список уже смотревших, чтобы позволить системам манипулировать этим
