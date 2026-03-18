@@ -3,6 +3,12 @@
   name: job-name-gastronomic-specialist
   description: job-description-gastronomic-specialist
   playTimeTracker: JobGastronomicSpecialist
+  requirements:
+  - !type:AgeRequirement
+    requiredAge: 22
+  - !type:AgeRequirement
+    requiredAge: 85
+    inverted: true
   icon: JobGastronomicSpecialist
   supervisors: job-supervisors-personnel-officer
   weight: 735

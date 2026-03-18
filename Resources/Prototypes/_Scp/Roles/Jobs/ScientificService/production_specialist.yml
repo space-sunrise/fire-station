@@ -10,6 +10,11 @@
   - !type:DepartmentTimeRequirement
     department: EngineeringTechnicalService
     time: 10800
+  - !type:AgeRequirement
+    requiredAge: 25
+  - !type:AgeRequirement
+    requiredAge: 75
+    inverted: true
   icon: JobProductionSpecialist
   supervisors: job-supervisors-scientific-service-director
   displayWeight: 10

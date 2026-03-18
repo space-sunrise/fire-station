@@ -4,8 +4,13 @@
   description: job-description-junior-heavy-containment-zone-officer
   playTimeTracker: JobJuniorHeavyContainmentZoneOfficer
   requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 7200
+  - !type:OverallPlaytimeRequirement
+    time: 7200
+  - !type:AgeRequirement
+    requiredAge: 23
+  - !type:AgeRequirement
+    requiredAge: 45
+    inverted: true
   icon: JobJuniorHeavyContainmentZoneOfficer
   supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false
