@@ -994,6 +994,7 @@ CrateServicePrinterDocRestock: null
 
 # Fire added start
 ClosetWallAtmospherics: null
+ClosetWallWardrobeAtmosphericsFilled: null
 LockerRepresentative: null
 LockerRepresentativeFilled: null
 WardrobeBotanist: ScpLockerBotanistPhytogeneticist
