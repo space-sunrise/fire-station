@@ -73,7 +73,8 @@
     baseWalkSpeed: 2.5
     baseSprintSpeed: 2.5
   - type: NpcFactionMember
-    factions: [ "Neutral" ]
+    factions:
+    - Neutral
   - type: TimedDespawn
     lifetime: 600.1
   - type: TimedSpawner
@@ -93,7 +94,8 @@
   suffix: SCP-3008 ANGRY
   components:
   - type: NpcFactionMember
-    factions: [ "SCPs" ]
+    factions:
+    - SCPs
   - type: MovementSpeedModifier
     baseWalkSpeed: 3
     baseSprintSpeed: 3
@@ -103,8 +105,6 @@
     prototypes:
     - BasicScp3008
     intervalSeconds: 300
-  - type: NPCRetaliation
-    enabled: false
   - type: AmbientSound
     volume: -7
     range: 8
@@ -126,7 +126,8 @@
     baseWalkSpeed: 2
     baseSprintSpeed: 2
   - type: NpcFactionMember
-    factions: [ "Neutral" ]
+    factions:
+    - Passive
   - type: TimedDespawn
     lifetime: 600.1
   - type: TimedSpawner
@@ -160,15 +161,14 @@
     baseWalkSpeed: 2.5
     baseSprintSpeed: 2.5
   - type: NpcFactionMember
-    factions: [ "SCPs" ]
+    factions:
+    - SCPs
   - type: TimedDespawn
     lifetime: 300.1
   - type: TimedSpawner
     prototypes:
     - StrongScp3008
     intervalSeconds: 300
-  - type: NPCRetaliation
-    _enabled: false
   - type: AmbientSound
     volume: -7
     range: 8
@@ -190,7 +190,8 @@
     baseWalkSpeed: 3.5
     baseSprintSpeed: 3.5
   - type: NpcFactionMember
-    factions: [ "Neutral" ]
+    factions:
+    - Passive
   - type: TimedDespawn
     lifetime: 600.1
   - type: TimedSpawner
@@ -226,7 +227,8 @@
         Blunt: 3
         Structural: 5
   - type: NpcFactionMember
-    factions: [ "SCPs" ]
+    factions:
+    - SCPs
   - type: TimedDespawn
     lifetime: 300.1
   - type: TimedSpawner
@@ -235,8 +237,6 @@
     intervalSeconds: 300
     minimumEntitiesSpawned: 1
     maximumEntitiesSpawned: 1
-  - type: NPCRetaliation
-    _enabled: false
   - type: AmbientSound
     volume: -7
     range: 8
