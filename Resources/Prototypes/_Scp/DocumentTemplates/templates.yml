@@ -1,0 +1,353 @@
+﻿- type: docTemplate
+  id: OrderProhibition
+  name: doc-template-OrderProhibition-name
+  content: /Documents/_Scp/Administration/OrderProhibition.xml
+  component: Administration
+
+- type: docTemplate
+  id: ActCollection
+  name: doc-template-ActCollection-name
+  content: /Documents/_Scp/Administration/ActCollection.xml
+  component: Administration
+
+- type: docTemplate
+  id: RequestMTFChange
+  name: doc-template-RequestMTFChange-name
+  content: /Documents/_Scp/Administration/RequestMTFChange.xml
+  component: Administration
+
+- type: docTemplate
+  id: RequestChangeTarget
+  name: doc-template-RequestChangeTarget-name
+  content: /Documents/_Scp/Administration/RequestChangeTarget.xml
+  component: Administration
+
+- type: docTemplate
+  id: OrderEthicsCommittee
+  name: doc-template-OrderEthicsCommittee-name
+  content: /Documents/_Scp/Administration/OrderEthicsCommittee.xml
+  component: Administration
+
+- type: docTemplate
+  id: ConstructionReport
+  name: doc-template-ConstructionReport-name
+  content: /Documents/_Scp/Engineering/ConstructionReport.xml
+  component: Engineering
+
+- type: docTemplate
+  id: SendingOmega1
+  name: doc-template-SendingOmega1-name
+  content: /Documents/_Scp/RegionalAdministration/SendingOmega1.xml
+  component: RegionalAdministration
+
+- type: docTemplate
+  id: SendingMTF
+  name: doc-template-SendingMTF-name
+  content: /Documents/_Scp/RegionalAdministration/SendingMTF.xml
+  component: RegionalAdministration
+
+- type: docTemplate
+  id: OrderRegionalAdministration
+  name: doc-template-OrderRegionalAdministration-name
+  content: /Documents/_Scp/RegionalAdministration/OrderRegionalAdministration.xml
+  component: RegionalAdministration
+
+- type: docTemplate
+  id: OrderO5
+  name: doc-template-OrderO5-name
+  content: /Documents/_Scp/RegionalAdministration/OrderO5.xml
+  component: RegionalAdministration
+
+- type: docTemplate
+  id: OrderIntroductionReporting
+  name: doc-template-OrderIntroductionReporting-name
+  content: /Documents/_Scp/RegionalAdministration/OrderIntroductionReporting.xml
+  component: RegionalAdministration
+
+- type: docTemplate
+  id: AnswerRegionalAdministration
+  name: doc-template-AnswerRegionalAdministration-name
+  content: /Documents/_Scp/RegionalAdministration/AnswerRegionalAdministration.xml
+  component: RegionalAdministration
+
+- type: docTemplate
+  id: RequestPurchase
+  name: doc-template-RequestPurchase-name
+  content: /Documents/_Scp/Logistics/RequestPurchase.xml
+  component: Logistics
+
+- type: docTemplate
+  id: ReportCremation
+  name: doc-template-ReportCremation-name
+  content: /Documents/_Scp/Medical/ReportCremation.xml
+  component: Medical
+
+- type: docTemplate
+  id: ReportUseAmnestics
+  name: doc-template-ReportUseAmnestics-name
+  content: /Documents/_Scp/Medical/ReportUseAmnestics.xml
+  component: Medical
+
+- type: docTemplate
+  id: ReportExperiment
+  name: doc-template-ReportExperiment-name
+  content: /Documents/_Scp/Science/ReportExperiment.xml
+  component: ScientificService
+
+- type: docTemplate
+  id: ReportSurveyObject
+  name: doc-template-ReportSurveyObject-name
+  content: /Documents/_Scp/Science/ReportSurveyObject.xml
+  component: ScientificService
+
+- type: docTemplate
+  id: ReportResearchTechnology
+  name: doc-template-ReportResearchTechnology-name
+  content: /Documents/_Scp/Science/ReportResearchTechnology.xml
+  component: ScientificService
+
+- type: docTemplate
+  id: ReportObjectStatus
+  name: doc-template-ReportObjectStatus-name
+  content: /Documents/_Scp/Security/SpecialPurposeSquad/ReportObjectStatus.xml
+  component: SpecialPurposeSquad
+
+- type: docTemplate
+  id: ReportIncident
+  name: doc-template-ReportIncident-name
+  content: /Documents/_Scp/Security/SpecialPurposeSquad/ReportIncident.xml
+  component: SpecialPurposeSquad
+
+- type: docTemplate
+  id: ReportRecoverySpecialContainmentProcedures
+  name: doc-template-ReportRecoverySpecialContainmentProcedures-name
+  content: /Documents/_Scp/Security/SpecialPurposeSquad/ReportRecoverySpecialContainmentProcedures.xml
+  component: SpecialPurposeSquad
+
+- type: docTemplate
+  id: ReportSituationBlockD
+  name: doc-template-ReportSituationBlockD-name
+  content: /Documents/_Scp/Security/CommandantSquad/ReportSituationBlockD.xml
+  component: CommandantSquad
+
+- type: docTemplate
+  id: NoticeTransferClassD
+  name: doc-template-NoticeTransferClassD-name
+  content: /Documents/_Scp/Security/CommandantSquad/NoticeTransferClassD.xml
+  component: CommandantSquad
+
+- type: docTemplate
+  id: RequestAmnesia
+  name: doc-template-RequestAmnesia-name
+  content: /Documents/_Scp/Security/CommandantSquad/RequestAmnesia.xml
+  component: CommandantSquad
+
+- type: docTemplate
+  id: RequestExecutionProcedure
+  name: doc-template-RequestExecutionProcedure-name
+  content: /Documents/_Scp/Security/CommandantSquad/RequestExecutionProcedure.xml
+  component: CommandantSquad
+
+- type: docTemplate
+  id: ReportExecutionProcedure
+  name: doc-template-ReportExecutionProcedure-name
+  content: /Documents/_Scp/Security/CommandantSquad/ReportExecutionProcedure.xml
+  component: CommandantSquad
+
+- type: docTemplate
+  id: ScpAppeal
+  name: doc-template-appeal-name
+  content: /Documents/_Scp/General/Appeal.xml
+  component: General
+
+- type: docTemplate
+  id: ScpApplicationAccess
+  name: doc-template-application-access-name
+  content: /Documents/_Scp/General/ApplicationAccess.xml
+  component: General
+
+- type: docTemplate
+  id: ScpApplicationAppointmentInterim
+  name: doc-template-application-appointment-interim-name
+  content: /Documents/_Scp/General/ApplicationAppointmentInterim.xml
+  component: General
+
+- type: docTemplate
+  id: ScpApplicationEmployment
+  name: doc-template-application-employment-name
+  content: /Documents/_Scp/General/ApplicationEmployment.xml
+  component: General
+
+- type: docTemplate
+  id: ScpApplicationEquipment
+  name: doc-template-application-equipment-name
+  content: /Documents/_Scp/General/ApplicationEquipment.xml
+  component: General
+
+- type: docTemplate
+  id: ScpCertificate
+  name: doc-template-certificate-name
+  content: /Documents/_Scp/Administration/Certificate.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpCertificateAdvancedTraining
+  name: doc-template-certificate-advanced-training-name
+  content: /Documents/_Scp/Administration/CertificateAdvancedTraining.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpCertificateOffense
+  name: doc-template-certificate-offense-name
+  content: /Documents/_Scp/Security/CommandantSquad/CertificateOffense.xml
+  component: CommandantSquad
+
+- type: docTemplate
+  id: ScpComplaintOffense
+  name: doc-template-complaint-offense-name
+  content: /Documents/_Scp/Security/CommandantSquad/ComplaintOffense.xml
+  component: CommandantSquad
+
+- type: docTemplate
+  id: ScpConditionReport
+  name: doc-template-condition-report-name
+  content: /Documents/_Scp/Engineering/ConditionReport.xml
+  component: Engineering
+
+- type: docTemplate
+  id: ScpConstructionPermit
+  name: doc-template-construction-permit-name
+  content: /Documents/_Scp/Engineering/ConstructionPermit.xml
+  component: Engineering
+
+- type: docTemplate
+  id: ScpDeathCertificate
+  name: doc-template-death-certificate-name
+  content: /Documents/_Scp/Medical/DeathCertificate.xml
+  component: Medical
+
+- type: docTemplate
+  id: ScpEvacuationShuttleRequest
+  name: doc-template-evacuation-shuttle-request-name
+  content: /Documents/_Scp/Administration/EvacuationShuttleRequest.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpLetterResignation
+  name: doc-template-letter-resignation-name
+  content: /Documents/_Scp/General/LetterResignation.xml
+  component: General
+
+- type: docTemplate
+  id: ScpOrderDeprivationAccess
+  name: doc-template-order-deprivation-access-name
+  content: /Documents/_Scp/Administration/OrderDeprivationAccess.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpOrderDismissal
+  name: doc-template-order-dismissal-name
+  content: /Documents/_Scp/Administration/OrderDismissal.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpOrderEncouragement
+  name: doc-template-order-encouragement-name
+  content: /Documents/_Scp/Administration/OrderEncouragement.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpOrderingSpecialEquipment
+  name: doc-template-ordering-special-equipment-name
+  content: /Documents/_Scp/General/OrderingSpecialEquipment.xml
+  component: General
+
+- type: docTemplate
+  id: ScpPermissionEquipment
+  name: doc-template-permission-equipment-name
+  content: /Documents/_Scp/Administration/PermissionEquipment.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpProductManufacturingOrder
+  name: doc-template-product-manufacturing-order-name
+  content: /Documents/_Scp/General/ProductManufacturingOrder.xml
+  component: General
+
+- type: docTemplate
+  id: ScpReportDepartment
+  name: doc-template-report-department-name
+  content: /Documents/_Scp/Administration/ReportDepartment.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpReportEmployeePerformance
+  name: doc-template-report-employee-performance-name
+  content: /Documents/_Scp/Administration/ReportEmployeePerformance.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpReportOnEliminationOfViolations
+  name: doc-template-report-on-elimination-of-violations-name
+  content: /Documents/_Scp/Administration/ReportOnEliminationOfViolations.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpReportOnTheChaptersMeeting
+  name: doc-template-report-on-the-chapters-meeting-name
+  content: /Documents/_Scp/Administration/ReportOnTheChaptersMeeting.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpReportStation
+  name: doc-template-report-station-name
+  content: /Documents/_Scp/Administration/ReportStation.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpRequestCallMembersCentralCommitteeDSO
+  name: doc-template-request-call-members-central-committee-dso-name
+  content: /Documents/_Scp/Administration/RequestCallMembersCentralCommitteeDSO.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpRequestChangeSalary
+  name: doc-template-request-change-salary-name
+  content: /Documents/_Scp/General/RequestChangeSalary.xml
+  component: General
+
+- type: docTemplate
+  id: ScpRequestForNonlistedEmployment
+  name: doc-template-request-for-non-listed-employment-name
+  content: /Documents/_Scp/General/RequestForNonlistedEmployment.xml
+  component: General
+
+- type: docTemplate
+  id: ScpRequestForPromotion
+  name: doc-template-request-for-promotion-name
+  content: /Documents/_Scp/General/RequestForPromotion.xml
+  component: General
+
+- type: docTemplate
+  id: ScpOrderAppointmentInterim
+  name: doc-template-order-appointment-interim-name
+  content: /Documents/_Scp/Administration/OrderAppointmentInterim.xml
+  component: Administration
+
+- type: docTemplate
+  id: ScpApplicationChangePosition
+  name: doc-template-application-change-position-name
+  content: /Documents/_Scp/General/ApplicationChangePosition.xml
+  component: General
+
+- type: docTemplate
+  id: ScpExplanatoryNote
+  name: doc-template-explanatory-note-name
+  content: /Documents/_Scp/General/ExplanatoryNote.xml
+  component: General
+
+- type: docTemplate
+  id: ScpReportCrewAccessChange
+  name: doc-template-report-crew-access-change-name
+  content: /Documents/_Scp/Administration/ReportCrewAccessChange.xml
+  component: Administration

@@ -101,8 +101,10 @@ public sealed partial class CopyMachineMenu : DefaultWindow
 
         var allowedComponents = new[]
         {
-            "Centcom", "Command", "Engineering", "Justice", "Medical", "Science",
-            "Security", "Service", "Supply", "Syndicate", "General", "Prison"
+            ///fire edit start
+            "RegionalAdministration", "CommandantSquad", "SpecialPurposeSquad", "Logistics", "ScientificService",
+            "ClassD", "Medical", "General", "Service", "Engineering", "Administration"
+            ///fire edit end
         };
 
         var usedComponents = _protoManager
