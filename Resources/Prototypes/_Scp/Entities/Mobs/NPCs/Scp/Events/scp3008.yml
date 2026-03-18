@@ -14,7 +14,7 @@
     range: 75
     volume: -13
     sound:
-      path: /Audio/_Scp/Scp3008/IKEA.ogg
+      path: /Audio/_Scp/Events/Scp3008/IKEA.ogg
   - type: ContainerContainer
     containers:
       cell_slot: !type:ContainerSlot
@@ -67,7 +67,7 @@
   name: IKEA employee
   components:
   - type: Sprite
-    sprite: _Scp/Mobs/Scp/scp-3008/basic.rsi
+    sprite: _Scp/Mobs/Scp/Events/scp-3008/basic.rsi
     state: Basic3008
   - type: MovementSpeedModifier
     baseWalkSpeed: 2.5
@@ -104,14 +104,14 @@
     - BasicScp3008
     intervalSeconds: 300
   - type: NPCRetaliation
-    _enabled: false
+    enabled: false
   - type: AmbientSound
     volume: -7
     range: 8
     sound:
       params:
         variation: 0.5
-      path: /Audio/_Scp/Scp3008/VOICE.ogg
+      path: /Audio/_Scp/Events/Scp3008/VOICE.ogg
 
 
 - type: entity
@@ -120,7 +120,7 @@
   name: A tough IKEA employee
   components:
   - type: Sprite
-    sprite: _Scp/Mobs/Scp/scp-3008/basic.rsi
+    sprite: _Scp/Mobs/Scp/Events/scp-3008/basic.rsi
     state: Strong3008
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
@@ -153,6 +153,7 @@
     damage:
       types:
         Blunt: 15
+        Structural: 40
   - type: StaminaDamageOnHit
     damage: 20
   - type: MovementSpeedModifier
@@ -174,7 +175,7 @@
     sound:
       params:
         variation: 0.15
-      path: /Audio/_Scp/Scp3008/VOICE.ogg
+      path: /Audio/_Scp/Events/Scp3008/VOICE.ogg
 
 
 - type: entity
@@ -183,7 +184,7 @@
   name: A tall IKEA employee
   components:
   - type: Sprite
-    sprite: _Scp/Mobs/Scp/scp-3008/tall.rsi
+    sprite: _Scp/Mobs/Scp/Events/scp-3008/tall.rsi
     state: Tall3008
   - type: MovementSpeedModifier
     baseWalkSpeed: 3.5
@@ -242,4 +243,4 @@
     sound:
       params:
         variation: 0.15
-      path: /Audio/_Scp/Scp3008/VOICE.ogg
+      path: /Audio/_Scp/Events/Scp3008/VOICE.ogg
