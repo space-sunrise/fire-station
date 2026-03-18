@@ -15,15 +15,6 @@
     volume: -13
     sound:
       path: /Audio/_Scp/Scp3008/IKEA.ogg
-  - type: ScpRadio
-    enabled: true
-    microphoneEnabled: false
-    channels:
-    - Common
-    activeChannel: Common
-    wattageReceiveMessage: 0
-    wattageSendMessage: 0
-    listenRange: 0
   - type: ContainerContainer
     containers:
       cell_slot: !type:ContainerSlot
@@ -37,7 +28,7 @@
 
 - type: entity
   id: BaseScp3008
-  suffix: SCP-3008
+  suffix: BASE SCP-3008
   description: A disproportionate and faceless person in an IKEA employee suit.
   parent:
   - MobCombat
