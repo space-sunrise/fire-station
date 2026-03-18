@@ -6,9 +6,6 @@
   requirements:
   - !type:AgeRequirement
     requiredAge: 20
-  - !type:AgeRequirement
-    requiredAge: 85
-    inverted: true
   icon: JobServicePersonnel
   supervisors: job-supervisors-personnel-officer
   weight: 725

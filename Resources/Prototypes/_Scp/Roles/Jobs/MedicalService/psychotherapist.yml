@@ -8,9 +8,6 @@
     time: 7200
   - !type:AgeRequirement
     requiredAge: 27
-  - !type:AgeRequirement
-    requiredAge: 85
-    inverted: true
   icon: JobPsychotherapist
   supervisors: job-supervisors-head-of-medical-sector
   displayWeight: 10  # Sunrise

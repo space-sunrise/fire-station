@@ -9,9 +9,6 @@
     time: 10800
   - !type:AgeRequirement
     requiredAge: 27
-  - !type:AgeRequirement
-    requiredAge: 85
-    inverted: true
   icon: JobAnomarchologyResearcher
   supervisors: job-supervisors-scientific-service-director
   displayWeight: 10

@@ -9,9 +9,6 @@
     time: 36000
   - !type:AgeRequirement
     requiredAge: 30
-  - !type:AgeRequirement
-    requiredAge: 85
-    inverted: true
   icon: JobLeadResearcher
   supervisors: job-supervisors-scientific-service-director
   displayWeight: 35

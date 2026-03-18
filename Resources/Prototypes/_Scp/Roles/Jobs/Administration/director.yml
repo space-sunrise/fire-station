@@ -9,9 +9,6 @@
     time: 54000
   - !type:AgeRequirement
     requiredAge: 35
-  - !type:AgeRequirement
-    requiredAge: 85
-    inverted: true
   weight: 965
   icon: JobDirector
   joinNotifyCrew: true

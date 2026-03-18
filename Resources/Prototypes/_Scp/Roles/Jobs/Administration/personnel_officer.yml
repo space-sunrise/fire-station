@@ -18,9 +18,6 @@
     time: 18000
   - !type:AgeRequirement
     requiredAge: 31
-  - !type:AgeRequirement
-    requiredAge: 85
-    inverted: true
   weight: 950
   icon: JobPersonnelOfficer
   supervisors: job-supervisors-director

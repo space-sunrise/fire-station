@@ -7,9 +7,6 @@
   - !type:DiscordRoleRequirement
   - !type:AgeRequirement
     requiredAge: 32
-  - !type:AgeRequirement
-    requiredAge: 85
-    inverted: true
   weight: 860
   icon: JobEthicsCommitteeRepresentative
   supervisors: job-supervisors-ethics-committee

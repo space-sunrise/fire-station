@@ -15,9 +15,6 @@
     time: 36000
   - !type:AgeRequirement
     requiredAge: 35
-  - !type:AgeRequirement
-    requiredAge: 85
-    inverted: true
   weight: 945
   icon: JobHeadOfMedicalSector
   supervisors: job-supervisors-director
