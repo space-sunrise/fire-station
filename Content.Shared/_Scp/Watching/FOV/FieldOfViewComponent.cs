@@ -18,7 +18,7 @@ public sealed partial class FieldOfViewComponent : Component
     /// Угол обзора персонажа
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float Angle = 180f;
+    public float Angle = 210f;
 
     /// <summary>
     /// "Дополнительный" угол обзора, при котором предметы начинают исчезать из поля зрения, но все еще видны.
