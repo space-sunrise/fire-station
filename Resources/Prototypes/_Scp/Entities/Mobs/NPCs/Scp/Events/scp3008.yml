@@ -74,7 +74,7 @@
     baseSprintSpeed: 2.5
   - type: NpcFactionMember
     factions:
-    - Neutral
+    - Passive
   - type: TimedDespawn
     lifetime: 600.1
   - type: TimedSpawner
