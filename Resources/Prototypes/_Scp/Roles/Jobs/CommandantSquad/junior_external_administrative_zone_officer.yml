@@ -4,8 +4,13 @@
   description: job-description-junior-external-administrative-zone-officer
   playTimeTracker: JobJuniorExternalAdministrativeZoneOfficer
   requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 7200
+  - !type:OverallPlaytimeRequirement
+    time: 7200
+  - !type:AgeRequirement
+    requiredAge: 23
+  - !type:AgeRequirement
+    requiredAge: 45
+    inverted: true
   icon: JobJuniorExternalAdministrativeZoneOfficer
   supervisors: job-supervisors-external-administrative-zone-commandant
   canBeAntag: false

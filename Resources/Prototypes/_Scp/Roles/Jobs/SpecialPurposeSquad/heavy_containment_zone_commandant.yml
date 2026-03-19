@@ -7,6 +7,11 @@
   - !type:DepartmentTimeRequirement
     department: HeavyContainmentSecurityService
     time: 43200
+  - !type:AgeRequirement
+    requiredAge: 29
+  - !type:AgeRequirement
+    requiredAge: 65
+    inverted: true
   icon: JobHeavyContainmentZoneCommandant
   supervisors: job-supervisors-security-commander
   canBeAntag: false
