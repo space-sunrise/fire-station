@@ -3,6 +3,12 @@
   name: job-name-hospital-intern
   description: job-description-hospital-intern
   playTimeTracker: JobHospitalIntern
+  requirements:
+  - !type:AgeRequirement
+    requiredAge: 25
+  - !type:AgeRequirement
+    requiredAge: 45
+    inverted: true
   icon: JobHospitalIntern
   supervisors: job-supervisors-head-of-medical-sector
   canBeAntag: true

@@ -7,6 +7,11 @@
   - !type:DepartmentTimeRequirement
     department: MedicalService
     time: 36000
+  - !type:AgeRequirement
+    requiredAge: 30
+  - !type:AgeRequirement
+    requiredAge: 75
+    inverted: true
   icon: JobSeniorMedicalSpecialist
   supervisors: job-supervisors-head-of-medical-sector
   displayWeight: 35

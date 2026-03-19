@@ -7,6 +7,11 @@
   - !type:DepartmentTimeRequirement
     department: EngineeringTechnicalService
     time: 54000
+  - !type:AgeRequirement
+    requiredAge: 35
+  - !type:AgeRequirement
+    requiredAge: 75
+    inverted: true
   weight: 940
   icon: JobChiefTechnicalSpecialist
   supervisors: job-supervisors-director

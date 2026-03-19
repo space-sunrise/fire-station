@@ -4,9 +4,14 @@
   description: job-description-electrical-technical-specialist
   playTimeTracker: JobElectricalTechnicalSpecialist
   requirements:
-    - !type:DepartmentTimeRequirement
-      department: EngineeringTechnicalService
-      time: 18000
+  - !type:DepartmentTimeRequirement
+    department: EngineeringTechnicalService
+    time: 18000
+  - !type:AgeRequirement
+    requiredAge: 29
+  - !type:AgeRequirement
+    requiredAge: 75
+    inverted: true
   icon: JobElectricalTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
   displayWeight: 10

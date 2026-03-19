@@ -4,9 +4,14 @@
   description: job-description-general-technical-specialist
   playTimeTracker: JobGeneralTechnicalSpecialist
   requirements:
-    - !type:DepartmentTimeRequirement
-      department: EngineeringTechnicalService
-      time: 7200
+  - !type:DepartmentTimeRequirement
+    department: EngineeringTechnicalService
+    time: 7200
+  - !type:AgeRequirement
+    requiredAge: 27
+  - !type:AgeRequirement
+    requiredAge: 75
+    inverted: true
   icon: JobGeneralTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
   displayWeight: 10

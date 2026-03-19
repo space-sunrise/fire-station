@@ -3,6 +3,9 @@
   name: job-name-service-personnel
   description: job-description-service-personnel
   playTimeTracker: JobServicePersonnel
+  requirements:
+  - !type:AgeRequirement
+    requiredAge: 20
   icon: JobServicePersonnel
   supervisors: job-supervisors-personnel-officer
   weight: 725
