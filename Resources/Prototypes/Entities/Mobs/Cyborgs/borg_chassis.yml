@@ -48,9 +48,9 @@
   id: BorgChassisMining
   parent: BorgChassisSelectable
   name: salvage cyborg
-  components:
-  - type: BorgSwitchableType
-    selectedBorgType: mining
+  # components: # Fire Edit
+  # - type: BorgSwitchableType
+  #   selectedBorgType: mining
 
 - type: entity
   id: BorgChassisEngineer

@@ -141,6 +141,7 @@
   - MedicalHeadless
   - EngineeringHeadless
   - ServiceHeadless
+  - LogisticsHeadless
   tags:
   - Checkpoint
   - Security

@@ -28,9 +28,9 @@
   id: BorgChassisClown
   parent: BorgChassisSelectable
   name: clown cyborg
-  components:
-  - type: BorgSwitchableType
-    selectedBorgType: clown
+  # components: # Fire Edit
+  # - type: BorgSwitchableType
+  #   selectedBorgType: clown
 
 - type: entity
   id: BorgChassisSyndicateReaper
@@ -196,7 +196,7 @@
     - RegionalAdministration
     # Fire edit end
   - type: AccessReader
-    access: [["Security"], ["Command"], ["Research"]]
+    access: [["Administration"], ["MTF"]] # Fire edit
   - type: SiliconLawProvider
     laws: ScpMtf # Fire edit
   - type: PointLight

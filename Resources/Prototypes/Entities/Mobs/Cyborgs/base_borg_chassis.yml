@@ -360,14 +360,15 @@
     enabled: false
   # Fire edit start - новые доступы
     groups:
-    - Administration
-    - Security
-    - ScientificService
-    - Engineering
-    - Logistics
-    - Service
-    - ClassD
-    - ScpCommon
+    - MedicalHeadless
+    - EngineeringHeadless
+    - LogisticsHeadless
+    - ServiceHeadless
+    tags:
+    - Research
+    - Checkpoint
+    - AI
+
   - type: AccessReader
     access: [["Administration"], ["Research"]]
   # Fire edit end
