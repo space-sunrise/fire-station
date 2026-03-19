@@ -17,5 +17,5 @@ cargo-gift-medical-supply = медицинских припасов
 cargo-gift-space-protection = атмосферных средств защиты
 cargo-gift-fire-protection = средств защиты от огня
 cargo-gift-security-guns = летального вооружения
-cargo-gift-security-riot = нелетального снаряжение
+cargo-gift-security-riot = нелетального снаряжения
 cargo-gift-security-oldguns = излишков вооружения
