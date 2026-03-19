@@ -7,12 +7,10 @@
   placement:
     mode: SnapgridCenter
   components:
-  # Fire Edit Start
-  #- type: Anchorable
-  #  flags:
-  #  - Anchorable
-  #- type: Rotatable
-  # Fire Edit End
+  - type: Anchorable
+    flags:
+    - Anchorable
+  - type: Rotatable
   - type: Clickable
   - type: Sprite
     sprite: Structures/catwalk.rsi
