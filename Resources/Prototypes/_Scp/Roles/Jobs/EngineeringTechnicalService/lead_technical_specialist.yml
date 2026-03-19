@@ -4,9 +4,14 @@
   description: job-description-lead-technical-specialist
   playTimeTracker: JobLeadTechnicalSpecialist
   requirements:
-    - !type:DepartmentTimeRequirement
-      department: EngineeringTechnicalService
-      time: 36000
+  - !type:DepartmentTimeRequirement
+    department: EngineeringTechnicalService
+    time: 36000
+  - !type:AgeRequirement
+    requiredAge: 30
+  - !type:AgeRequirement
+    requiredAge: 75
+    inverted: true
   icon: JobLeadTechnicalSpecialist
   supervisors: job-supervisors-chief-technical-specialist
   displayWeight: 30

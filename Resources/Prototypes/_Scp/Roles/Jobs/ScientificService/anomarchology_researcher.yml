@@ -7,6 +7,8 @@
   - !type:DepartmentTimeRequirement
     department: ScientificService
     time: 10800
+  - !type:AgeRequirement
+    requiredAge: 27
   icon: JobAnomarchologyResearcher
   supervisors: job-supervisors-scientific-service-director
   displayWeight: 10

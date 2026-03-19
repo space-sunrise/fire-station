@@ -10,6 +10,11 @@
   - !type:DepartmentTimeRequirement
     department: MedicalService
     time: 10800
+  - !type:AgeRequirement
+    requiredAge: 29
+  - !type:AgeRequirement
+    requiredAge: 75
+    inverted: true
   icon: JobAmnesthesiologist
   supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false

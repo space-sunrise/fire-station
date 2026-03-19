@@ -10,6 +10,11 @@
   - !type:DepartmentTimeRequirement
     department: ExternalAdministrativeZoneSecurityService
     time: 36000
+  - !type:AgeRequirement
+    requiredAge: 31
+  - !type:AgeRequirement
+    requiredAge: 75
+    inverted: true
   weight: 955
   icon: JobSecurityCommander
   supervisors: job-supervisors-director
