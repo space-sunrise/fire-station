@@ -8,8 +8,7 @@
       color: White
       emergencyLightColor: White
       shuttleTime: 1800
-      extendedAccessOptions:
-        announcement: access-system-accesses-delay-scpNone
+
     scpGreen:
       announcement: alert-level-scpGreen-announcement
       sound:
@@ -20,8 +19,7 @@
       forceEnableEmergencyLights: true
       emergencyLightColor: LawnGreen
       shuttleTime: 1200
-      extendedAccessOptions:
-        announcement: access-system-accesses-delay-scpGreen
+
     scpBlue:
       announcement: alert-level-scpBlue-announcement
       sound:
@@ -32,8 +30,7 @@
       forceEnableEmergencyLights: true
       emergencyLightColor: DodgerBlue
       shuttleTime: 600
-      extendedAccessOptions:
-        announcement: access-system-accesses-delay-scpBlue
+
     scpOrange:
       announcement: alert-level-scpOrange-announcement
       sound:
@@ -44,8 +41,7 @@
       emergencyLightColor: DarkOrange
       forceEnableEmergencyLights: true
       shuttleTime: 600
-      extendedAccessOptions:
-        announcement: access-system-accesses-delay-scpOrange
+
     scpGray:
       announcement: alert-level-scpGray-announcement
       sound:
@@ -56,9 +52,6 @@
       emergencyLightColor: Gray
       forceEnableEmergencyLights: true
       shuttleTime: 600
-      extendedAccessOptions:
-        announcement: access-system-accesses-delay-scpGray
-
 
     # Коды при НУС
     scpYellow:
@@ -71,8 +64,7 @@
       emergencyLightColor: Gold
       forceEnableEmergencyLights: true
       shuttleTime: 600
-      extendedAccessOptions:
-        announcement: access-system-accesses-delay-scpYellow
+
     scpRed:
       announcement: alert-level-scpRed-announcement
       sound:
@@ -83,8 +75,7 @@
       emergencyLightColor: Red
       forceEnableEmergencyLights: true
       shuttleTime: 600
-      extendedAccessOptions:
-        announcement: access-system-accesses-delay-scpRed
+
     scpPurple:
       announcement: alert-level-scpPurple-announcement
       sound:
@@ -96,8 +87,7 @@
       emergencyLightColor: MediumPurple
       forceEnableEmergencyLights: true
       shuttleTime: 1200
-      extendedAccessOptions:
-        announcement: access-system-accesses-delay-scpPurple
+
     scpBlack:
       announcement: alert-level-scpBlack-announcement
       sound:
@@ -108,9 +98,6 @@
       emergencyLightColor: DarkGray
       forceEnableEmergencyLights: true
       shuttleTime: 1200
-      extendedAccessOptions:
-        announcement: access-system-accesses-delay-scpBlack
-
 
     # "Особые" коды
     scpDelta:
@@ -125,8 +112,6 @@
       emergencyLightColor: DarkRed
       forceEnableEmergencyLights: true
       shuttleTime: 1200
-      extendedAccessOptions:
-        announcement: access-system-accesses-delay-scpDelta
 
     scpColdSilver:
       announcement: alert-level-scpColdSilver-announcement
@@ -140,5 +125,3 @@
       emergencyLightColor: DarkCyan
       forceEnableEmergencyLights: true
       shuttleTime: 1200
-      extendedAccessOptions:
-        announcement: access-system-accesses-delay-scpColdSilver

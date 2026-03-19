@@ -83,6 +83,9 @@
         type: GhostThemeBoundUserInterface
         requireInputValidation: false
   # Sunrise-End
+  - type: MovementSpeedModifier # Fire Edit
+    baseSprintSpeed: 12
+    baseWalkSpeed: 20
 
 # proto for player ghosts specifically
 - type: entity

@@ -113,7 +113,7 @@
     - id: RCDAmmo
     - id: RubberStampChiefTechnicalSpecialist
     - id: FlippoLighterSunriseCe
-    - id: VariantCubeBoxSunrise
+    - id: MonkeyCubeBox
 
 - type: entity
   id: ScpLockerChiefTechnicalSpecialistFilled
