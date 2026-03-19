@@ -4,8 +4,13 @@
   description: job-description-junior-researcher
   playTimeTracker: JobJuniorResearcher
   requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 3600
+  - !type:OverallPlaytimeRequirement
+    time: 3600
+  - !type:AgeRequirement
+    requiredAge: 22
+  - !type:AgeRequirement
+    requiredAge: 45
+    inverted: true
   icon: JobJuniorResearcher
   supervisors: job-supervisors-scientific-service-director
   canBeAntag: true

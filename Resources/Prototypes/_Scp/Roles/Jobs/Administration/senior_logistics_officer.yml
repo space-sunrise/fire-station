@@ -7,6 +7,11 @@
   - !type:RoleTimeRequirement
     role: JobLogisticsOfficer
     time: 36000
+  - !type:AgeRequirement
+    requiredAge: 29
+  - !type:AgeRequirement
+    requiredAge: 75
+    inverted: true
   weight: 935
   icon: JobSeniorLogisticsOfficer
   supervisors: job-supervisors-director

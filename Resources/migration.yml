@@ -993,6 +993,11 @@ CrateServicePrinterDoc: null
 CrateServicePrinterDocRestock: null
 
 # Fire added start
+ClosetWallAtmospherics: null
+ClosetWallWardrobeAtmosphericsFilled: null
+WardrobeBotanist: ScpLockerBotanistPhytogeneticist
+WardrobeBotanistFilled: ScpLockerBotanistPhytogeneticistFilled
+
 PosterDyshi: PosterBreath
 PosterPeremen: PosterChanges
 PosterGok: PosterGoc

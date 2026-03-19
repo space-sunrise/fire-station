@@ -28,3 +28,4 @@
   buttScan:
     sprite: /Textures/_Sunrise/CopyMachine/butts_scans.rsi
     state: human
+  maxAge: 85 # Fire-Edit

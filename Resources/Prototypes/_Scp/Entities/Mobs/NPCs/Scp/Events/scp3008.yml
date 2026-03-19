@@ -1,0 +1,246 @@
+- type: entity
+  parent: BaseItem
+  id: Scp3008MusicBox
+  name: radio IKEA
+  description: Soothing music comes from it.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Devices/radio.rsi
+    state: common
+  - type: Item
+    sprite: _Scp/Objects/Devices/radio.rsi
+    heldPrefix: walkietalkie
+  - type: AmbientSound
+    range: 75
+    volume: -13
+    sound:
+      path: /Audio/_Scp/Events/Scp3008/IKEA.ogg
+  - type: ContainerContainer
+    containers:
+      cell_slot: !type:ContainerSlot
+  - type: PowerCellSlot
+    cellSlotId: cell_slot
+  - type: ItemSlots
+    slots:
+      cell_slot:
+        name: power-cell-slot-component-slot-name-default
+        startingItem: PowerCellMedium
+
+- type: entity
+  id: BaseScp3008
+  suffix: BASE SCP-3008
+  description: A disproportionate and faceless person in an IKEA employee suit.
+  parent:
+  - MobCombat
+  - SimpleMobBase
+  abstract: true
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavClimb: !type:Bool
+        true
+      NavSmash: !type:Bool
+        true
+      NavPry: !type:Bool
+        true
+  - type: NPCRetaliation
+    attackMemoryLength: 10
+  - type: FactionException
+  - type: NpcFactionMember
+    factions:
+    - Passive
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 250
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+
+
+- type: entity
+  id: BasicScp3008
+  parent: BaseScp3008
+  name: IKEA employee
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp/Events/scp-3008/basic.rsi
+    state: Basic3008
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 2.5
+  - type: NpcFactionMember
+    factions:
+    - Passive
+  - type: TimedDespawn
+    lifetime: 600.1
+  - type: TimedSpawner
+    prototypes:
+    - BasicScp3008Angry
+    intervalSeconds: 600
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 5
+        Structural: 20
+
+- type: entity
+  id: BasicScp3008Angry
+  parent: BasicScp3008
+  name: IKEA employee
+  suffix: SCP-3008 ANGRY
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SCPs
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 3
+  - type: TimedDespawn
+    lifetime: 300.1
+  - type: TimedSpawner
+    prototypes:
+    - BasicScp3008
+    intervalSeconds: 300
+  - type: AmbientSound
+    volume: -7
+    range: 8
+    sound:
+      params:
+        variation: 0.5
+      path: /Audio/_Scp/Events/Scp3008/VOICE.ogg
+
+
+- type: entity
+  id: StrongScp3008
+  parent: BaseScp3008
+  name: A tough IKEA employee
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp/Events/scp-3008/basic.rsi
+    state: Strong3008
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 2
+  - type: NpcFactionMember
+    factions:
+    - Passive
+  - type: TimedDespawn
+    lifetime: 600.1
+  - type: TimedSpawner
+    prototypes:
+    - StrongScp3008Angry
+    intervalSeconds: 600
+  - type: MeleeWeapon
+    attackRate: 0.7
+    damage:
+      types:
+        Blunt: 15
+        Structural: 40
+  - type: StaminaDamageOnHit
+    damage: 20
+
+
+- type: entity
+  id: StrongScp3008Angry
+  parent: StrongScp3008
+  suffix: SCP-3008 ANGRY
+  name: A tough IKEA employee
+  components:
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 15
+        Structural: 40
+  - type: StaminaDamageOnHit
+    damage: 20
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 2.5
+  - type: NpcFactionMember
+    factions:
+    - SCPs
+  - type: TimedDespawn
+    lifetime: 300.1
+  - type: TimedSpawner
+    prototypes:
+    - StrongScp3008
+    intervalSeconds: 300
+  - type: AmbientSound
+    volume: -7
+    range: 8
+    sound:
+      params:
+        variation: 0.15
+      path: /Audio/_Scp/Events/Scp3008/VOICE.ogg
+
+
+- type: entity
+  id: TallScp3008
+  parent: BaseScp3008
+  name: A tall IKEA employee
+  components:
+  - type: Sprite
+    sprite: _Scp/Mobs/Scp/Events/scp-3008/tall.rsi
+    state: Tall3008
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 3.5
+  - type: NpcFactionMember
+    factions:
+    - Passive
+  - type: TimedDespawn
+    lifetime: 600.1
+  - type: TimedSpawner
+    prototypes:
+    - TallScp3008Angry
+    intervalSeconds: 600
+
+
+- type: entity
+  id: TallScp3008Angry
+  parent: TallScp3008
+  suffix: SCP-3008 ANGRY
+  name: A tall IKEA employee
+  components:
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 3.5
+  - type: UseDelay
+    delay: 5
+  - type: UseDelayOnMeleeHit
+  - type: MeleeThrowOnHit
+    stunTime: 0.2
+    activateOnThrown: true
+    distance: -1
+    speed: 7
+  - type: MeleeWeapon
+    angle: 0
+    animation: WeaponArcClaw
+    attackRate: 0.5
+    range: 2.5
+    damage:
+      types:
+        Blunt: 3
+        Structural: 5
+  - type: NpcFactionMember
+    factions:
+    - SCPs
+  - type: TimedDespawn
+    lifetime: 300.1
+  - type: TimedSpawner
+    prototypes:
+    - TallScp3008
+    intervalSeconds: 300
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: AmbientSound
+    volume: -7
+    range: 8
+    sound:
+      params:
+        variation: 0.15
+      path: /Audio/_Scp/Events/Scp3008/VOICE.ogg

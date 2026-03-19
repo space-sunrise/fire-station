@@ -3,6 +3,9 @@
   name: job-name-botanist-phytogeneticist
   description: job-description-botanist-phytogeneticist
   playTimeTracker: JobBotanistPhytogeneticist
+  requirements:
+  - !type:AgeRequirement
+    requiredAge: 22
   icon: JobBotanistPhytogeneticist
   supervisors: job-supervisors-personnel-officer
   weight: 730
