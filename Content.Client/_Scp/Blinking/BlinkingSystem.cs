@@ -1,10 +1,12 @@
 ﻿using Content.Client._Scp.Shaders.Common;
 using Content.Shared._Scp.Blinking;
+using Content.Shared.Alert;
 using Robust.Client.Audio;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Blinking;
@@ -13,6 +15,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly CompatibilityModeActiveWarningSystem _compatibility = default!;
+    [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -25,6 +28,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
     private BlinkingOverlay _overlay = default!;
     private const float DefaultAnimationDuration = 0.4f;
+    private ProtoId<AlertPrototype>? _localBlinkingAlert;
 
     public override void Initialize()
     {
@@ -40,6 +44,29 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
         SetDefaultAnimationDuration();
         _overlay.OnAnimationFinished += SetDefaultAnimationDuration;
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (_player.LocalEntity is not { Valid: true } localEntity)
+            return;
+
+        if (!BlinkableQuery.TryComp(localEntity, out var blinkable))
+        {
+            if (_localBlinkingAlert.HasValue)
+                _alerts.ClearAlert(localEntity, _localBlinkingAlert.Value);
+
+            _localBlinkingAlert = null;
+            return;
+        }
+
+        if (_localBlinkingAlert.HasValue && _localBlinkingAlert.Value != blinkable.BlinkingAlert)
+            _alerts.ClearAlert(localEntity, _localBlinkingAlert.Value);
+
+        _localBlinkingAlert = blinkable.BlinkingAlert;
+        UpdateAlert((localEntity, blinkable));
     }
 
     protected override void OnOpenedEyes(Entity<BlinkableComponent> ent, ref EntityOpenedEyesEvent args)
@@ -66,6 +93,11 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
     private void OnDetached(Entity<BlinkableComponent> ent, ref LocalPlayerDetachedEvent args)
     {
+        if (_localBlinkingAlert.HasValue)
+            _alerts.ClearAlert(ent.Owner, _localBlinkingAlert.Value);
+
+        _localBlinkingAlert = null;
+
         if (!_overlayMan.HasOverlay<BlinkingOverlay>())
             return;
 
@@ -194,5 +226,24 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     private void SetDefaultAnimationDuration()
     {
         _overlay.AnimationDuration = _compatibility.ShouldUseShaders ? DefaultAnimationDuration : 0f;
+    }
+
+    /// <summary>
+    /// Актуализирует иконку моргания справа у панели чата игрока
+    /// </summary>
+    private void UpdateAlert(Entity<BlinkableComponent> ent)
+    {
+        // Если в данный момент глаза закрыты, то выставляем иконку с закрытым глазом
+        if (IsBlind(ent.AsNullable()))
+        {
+            _alerts.ShowAlert(ent.Owner, ent.Comp.BlinkingAlert, 4);
+            return;
+        }
+
+        var timeToNextBlink = ent.Comp.NextBlink - _timing.CurTime;
+        var denom = MathF.Max(0.001f, (float)(ent.Comp.BlinkingInterval.TotalSeconds - ent.Comp.BlinkingDuration.TotalSeconds));
+        var severity = (short) Math.Clamp(4 - (float) timeToNextBlink.TotalSeconds / denom * 4, 0, 4);
+
+        _alerts.ShowAlert(ent.Owner, ent.Comp.BlinkingAlert, severity);
     }
 }

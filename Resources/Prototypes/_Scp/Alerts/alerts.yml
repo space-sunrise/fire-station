@@ -15,6 +15,7 @@
   description: alert-desc-blinking
   minSeverity: 0
   maxSeverity: 4
+  clientHandled: true
 
 - type: alert
   id: Scp106LifeEssence

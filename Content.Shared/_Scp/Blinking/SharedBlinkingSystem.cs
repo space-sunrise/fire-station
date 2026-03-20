@@ -3,7 +3,6 @@ using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp173;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Sunrise.Random;
-using Content.Shared.Alert;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Robust.Shared.Network;
@@ -20,7 +19,6 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
-    [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly RandomPredictedSystem _random = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly INetManager _net = default!;
@@ -110,8 +108,6 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
         while (query.MoveNext(out var uid, out var blinkableComponent))
         {
             var blinkableEntity = (uid, blinkableComponent);
-
-            UpdateAlert(blinkableEntity);
 
             if (TryOpenEyes(blinkableEntity))
                 continue;
@@ -229,25 +225,6 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
     }
 
     #endregion
-
-    /// <summary>
-    /// Актуализирует иконку моргания справа у панели чата игрока
-    /// </summary>
-    protected void UpdateAlert(Entity<BlinkableComponent> ent)
-    {
-        // Если в данный момент глаза закрыты, то выставляем иконку с закрытым глазом
-        if (IsBlind(ent.AsNullable()))
-        {
-            _alerts.ShowAlert(ent.Owner, ent.Comp.BlinkingAlert, 4);
-            return;
-        }
-
-        var timeToNextBlink = ent.Comp.NextBlink - _timing.CurTime;
-        var denom = MathF.Max(0.001f, (float)(ent.Comp.BlinkingInterval.TotalSeconds - ent.Comp.BlinkingDuration.TotalSeconds));
-        var severity = (short) Math.Clamp(4 - (float) timeToNextBlink.TotalSeconds / denom * 4, 0, 4);
-
-        _alerts.ShowAlert(ent.Owner, ent.Comp.BlinkingAlert, severity);
-    }
 
     /// <summary>
     /// Проверяет, есть ли рядом с игроком Scp, использующий механики зрения
