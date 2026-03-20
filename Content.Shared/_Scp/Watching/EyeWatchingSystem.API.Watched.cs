@@ -1,14 +1,23 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Proximity;
 
 namespace Content.Shared._Scp.Watching;
 
-// TODO: Унифицировать название переменных realWatchers/realViewers + potentialWatchers/potentialViewers
 public sealed partial class EyeWatchingSystem
 {
+    /// <summary>
+    /// Получает всех зрителей для конкретной сущности, которые подходят заданным условиям.
+    /// </summary>
+    /// <param name="target">Цель, для которой ищутся зрители</param>
+    /// <param name="watchers">Количество зрителей</param>
+    /// <param name="type">Требуемый тип линии видимости</param>
+    /// <param name="flags">Флаги для поиска зрителей</param>
+    /// <param name="checkProximity">Будет ли проверять тип линии видимости</param>
+    /// <param name="useFov">Будет ли проверять FOV зрителя</param>
+    /// <param name="fovOverride">Если нужно использовать другой угол для FOV зрителя</param>
+    /// <returns>Найден ли хоть один зритель</returns>
     public bool TryGetWatchers(EntityUid target,
         [NotNullWhen(true)] out int? watchers,
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
@@ -20,13 +29,24 @@ public sealed partial class EyeWatchingSystem
         watchers = null;
 
         using var realWatchers = ListPoolEntity<BlinkableComponent>.Rent();
-        if (!TryGetWatchers(target, realWatchers.Value, type, flags, useFov, checkProximity, fovOverride))
+        if (!TryGetWatchers(target, realWatchers.Value, type, flags, checkProximity, useFov, fovOverride))
             return false;
 
         watchers = realWatchers.Value.Count;
         return true;
     }
 
+    /// <summary>
+    /// Получает всех зрителей для конкретной сущности, которые подходят заданным условиям.
+    /// </summary>
+    /// <param name="target">Цель, для которой ищутся зрители</param>
+    /// <param name="realWatchers">Список зрителей, который будет наполнен методом</param>
+    /// <param name="type">Требуемый тип линии видимости</param>
+    /// <param name="flags">Флаги для поиска зрителей</param>
+    /// <param name="checkProximity">Будет ли проверять тип линии видимости</param>
+    /// <param name="useFov">Будет ли проверять FOV зрителя</param>
+    /// <param name="fovOverride">Если нужно использовать другой угол для FOV зрителя</param>
+    /// <returns>Найден ли хоть один зритель</returns>
     public bool TryGetWatchers(EntityUid target,
         List<Entity<BlinkableComponent>> realWatchers,
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
@@ -47,6 +67,17 @@ public sealed partial class EyeWatchingSystem
             fovOverride);
     }
 
+    /// <summary>
+    /// Получает всех зрителей для конкретной сущности из заранее заготовленного списка потенциальных зрителей, которые подходят заданным условиям.
+    /// </summary>
+    /// <param name="target">Цель, для которой ищутся зрители</param>
+    /// <param name="realWatchers">Список зрителей, который будет наполнен методом</param>
+    /// <param name="potentialWatchers">Заранее заготовленный список потенциальных зрителей, среди которых будет поиск</param>
+    /// <param name="type">Требуемый тип линии видимости</param>
+    /// <param name="checkProximity">Будет ли проверять тип линии видимости</param>
+    /// <param name="useFov">Будет ли проверять FOV зрителя</param>
+    /// <param name="fovOverride">Если нужно использовать другой угол для FOV зрителя</param>
+    /// <returns>Найден ли хоть один зритель</returns>
     public bool TryGetWatchersFrom(EntityUid target,
         List<Entity<BlinkableComponent>> realWatchers,
         ICollection<Entity<BlinkableComponent>> potentialWatchers,
@@ -63,9 +94,20 @@ public sealed partial class EyeWatchingSystem
             realWatchers.Add(viewer);
         }
 
-        return realWatchers.Any();
+        return realWatchers.Count != 0;
     }
 
+    /// <summary>
+    /// Проверяет, есть ли хоть один зритель для целевой сущности.
+    /// Более оптимизированный вариант, который прерывает свое выполнение при найденном результате
+    /// </summary>
+    /// <param name="target">Цель для поиска зрителей</param>
+    /// <param name="type">Требуемый тип линии видимости</param>
+    /// <param name="flags">Флаги для поиска зрителей в радиусе видимости</param>
+    /// <param name="checkProximity">Будет ли проверяться тип линии видимости?</param>
+    /// <param name="useFov">Будет ли проверять FOV зрителя?</param>
+    /// <param name="fovOverride">Если нужно использовать другой угол FOV зрителя</param>
+    /// <returns>Найден ли хоть один зритель для цели</returns>
     public bool IsWatchedByAny(EntityUid target,
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
         LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate,
@@ -87,6 +129,16 @@ public sealed partial class EyeWatchingSystem
         return false;
     }
 
+    /// <summary>
+    /// Проверяет, смотри ли потенциальный зритель на цель.
+    /// </summary>
+    /// <param name="target">Цель для проверки</param>
+    /// <param name="potentialViewer">Потенциальный зритель, который проверяется</param>
+    /// <param name="type">Требуемый тип линии видимости</param>
+    /// <param name="checkProximity">Будет ли проверяться тип линии видимости</param>
+    /// <param name="useFov">Будет ли проверять FOV зрителя</param>
+    /// <param name="fovOverride">Если нужно задать другой угол FOV зрителя</param>
+    /// <returns>Смотрит ли потенциальный зритель на цель.</returns>
     public bool IsWatchedBy(EntityUid target,
         EntityUid potentialViewer,
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
@@ -115,12 +167,12 @@ public sealed partial class EyeWatchingSystem
     /// <param name="viewer">Смотрящий, который в теории может увидеть цель</param>
     /// <param name="target">Цель, которую мы проверяем на возможность быть увиденной смотрящим</param>
     /// <returns>Да/нет</returns>
-    public bool CanBeWatched(Entity<BlinkableComponent?> viewer, EntityUid target)
+    public bool CanBeWatched(EntityUid viewer, EntityUid target)
     {
-        if (!_blinkableQuery.Resolve(viewer.Owner, ref viewer.Comp, false))
+        if (!_blinkableQuery.HasComp(viewer))
             return false;
 
-        if (viewer.Owner == target)
+        if (viewer == target)
             return false;
 
         if (_insideStorageQuery.HasComp(viewer))

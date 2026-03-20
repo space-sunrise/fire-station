@@ -28,6 +28,21 @@ public sealed partial class EyeWatchingSystem
         _blinkableQuery = GetEntityQuery<BlinkableComponent>();
     }
 
+    /// <summary>
+    /// Получает и возвращает всех сущности в радиусе видимости для цели.
+    /// По сути является аналогом <see cref="EntityLookupSystem"/>, но использует проверку на линию видимости.
+    /// </summary>
+    /// <remarks>
+    /// В методе нет проверок на дополнительные состояния, такие как моргание/закрыты ли глаза/поле зрения т.п.
+    /// Единственная проверка - можно ли физически увидеть цель(т.е. не закрыта ли она стеной и т.п.).
+    /// <see cref="ProximitySystem.IsRightType(EntityUid, EntityUid, LineOfSightBlockerLevel)"/>
+    /// </remarks>
+    /// <param name="ent">Цель, для которой ищем сущности в радиусе видимости</param>
+    /// <param name="potentialWatchers">Список всех, кто находится в радиусе видимости</param>
+    /// <param name="type">Требуемая прозрачность линии видимости.</param>
+    /// <param name="flags">Список флагов для поиска целей в <see cref="EntityLookupSystem"/></param>
+    /// <typeparam name="T">Компонент, который должны иметь все сущности в радиусе видимости</typeparam>
+    /// <returns>Удалось ли найти хоть кого-то</returns>
     public bool TryGetAllEntitiesVisibleTo<T>(
         Entity<TransformComponent?> ent,
         List<Entity<T>> potentialWatchers,
@@ -40,17 +55,20 @@ public sealed partial class EyeWatchingSystem
     }
 
     /// <summary>
-    /// Получает и возвращает всех потенциально смотрящих на указанную цель.
+    /// Получает и возвращает всех сущности в радиусе видимости для цели.
+    /// По сути является аналогом <see cref="EntityLookupSystem"/>, но использует проверку на линию видимости.
     /// </summary>
     /// <remarks>
     /// В методе нет проверок на дополнительные состояния, такие как моргание/закрыты ли глаза/поле зрения т.п.
-    /// Единственная проверка - можно ли физически увидеть цель(т.е. не закрыта ли она стеной и т.п.)
+    /// Единственная проверка - можно ли физически увидеть цель(т.е. не закрыта ли она стеной и т.п.).
+    /// <see cref="ProximitySystem.IsRightType(EntityUid, EntityUid, LineOfSightBlockerLevel)"/>
     /// </remarks>
-    /// <param name="ent">Цель, для которой ищем потенциальных смотрящих</param>
-    /// <param name="potentialWatchers">Список всех, кто потенциально видит цель</param>
+    /// <param name="ent">Цель, для которой ищем сущности в радиусе видимости</param>
+    /// <param name="potentialWatchers">Список всех, кто находится в радиусе видимости</param>
+    /// <param name="searchSet">Заранее заготовленный список, который будет использоваться в <see cref="EntityLookupSystem"/></param>
     /// <param name="type">Требуемая прозрачность линии видимости.</param>
-    /// <param name="targets">Заранее заготовленный список, который будет использоваться в <see cref="EntityLookupSystem"/></param>
     /// <param name="flags">Список флагов для поиска целей в <see cref="EntityLookupSystem"/></param>
+    /// <typeparam name="T">Компонент, который должны иметь все сущности в радиусе видимости</typeparam>
     /// <returns>Удалось ли найти хоть кого-то</returns>
     private bool TryGetAllEntitiesVisibleTo<T>(
         Entity<TransformComponent?> ent,
@@ -77,6 +95,20 @@ public sealed partial class EyeWatchingSystem
         return potentialWatchers.Count != 0;
     }
 
+    /// <summary>
+    /// Проверяет, есть ли хоть одна сущность в радиусе видимости цели.
+    /// По сути является аналогом <see cref="EntityLookupSystem"/>, но использует проверку на линию видимости.
+    /// </summary>
+    /// <remarks>
+    /// В методе нет проверок на дополнительные состояния, такие как моргание/закрыты ли глаза/поле зрения т.п.
+    /// Единственная проверка - можно ли физически увидеть цель(т.е. не закрыта ли она стеной и т.п.).
+    /// <see cref="ProximitySystem.IsRightType(EntityUid, EntityUid, LineOfSightBlockerLevel)"/>
+    /// </remarks>
+    /// <param name="viewer">Цель, для которой ищем сущности в радиусе видимости</param>
+    /// <param name="type">Требуемая прозрачность линии видимости.</param>
+    /// <param name="flags">Список флагов для поиска целей в <see cref="EntityLookupSystem"/></param>
+    /// <typeparam name="T">Компонент, который должны иметь все сущности в радиусе видимости</typeparam>
+    /// <returns>Удалось ли найти хоть кого-то</returns>
     public bool TryGetAnyEntitiesVisibleTo<T>(
         Entity<TransformComponent?> viewer,
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
@@ -90,6 +122,21 @@ public sealed partial class EyeWatchingSystem
         return true;
     }
 
+    /// <summary>
+    /// Получает и возвращает первую сущность в радиусе видимости цели.
+    /// По сути является аналогом <see cref="EntityLookupSystem"/>, но использует проверку на линию видимости.
+    /// </summary>
+    /// <remarks>
+    /// В методе нет проверок на дополнительные состояния, такие как моргание/закрыты ли глаза/поле зрения т.п.
+    /// Единственная проверка - можно ли физически увидеть цель(т.е. не закрыта ли она стеной и т.п.).
+    /// <see cref="ProximitySystem.IsRightType(EntityUid, EntityUid, LineOfSightBlockerLevel)"/>
+    /// </remarks>
+    /// <param name="viewer">Цель, для которой ищем сущности в радиусе видимости</param>
+    /// <param name="firstVisible">Первая попавшаяся сущность в радиусе видимости цели</param>
+    /// <param name="type">Требуемая прозрачность линии видимости.</param>
+    /// <param name="flags">Список флагов для поиска целей в <see cref="EntityLookupSystem"/></param>
+    /// <typeparam name="T">Компонент, который должны иметь все сущности в радиусе видимости</typeparam>
+    /// <returns>Удалось ли найти хоть кого-то</returns>
     public bool TryGetAnyEntitiesVisibleTo<T>(
         Entity<TransformComponent?> viewer,
         [NotNullWhen(true)] out Entity<T>? firstVisible,
@@ -107,6 +154,22 @@ public sealed partial class EyeWatchingSystem
         return true;
     }
 
+    /// <summary>
+    /// Получает и возвращает первую сущность в радиусе видимости цели.
+    /// По сути является аналогом <see cref="EntityLookupSystem"/>, но использует проверку на линию видимости.
+    /// </summary>
+    /// <remarks>
+    /// В методе нет проверок на дополнительные состояния, такие как моргание/закрыты ли глаза/поле зрения т.п.
+    /// Единственная проверка - можно ли физически увидеть цель(т.е. не закрыта ли она стеной и т.п.).
+    /// <see cref="ProximitySystem.IsRightType(EntityUid, EntityUid, LineOfSightBlockerLevel)"/>
+    /// </remarks>
+    /// <param name="viewer">Цель, для которой ищем сущности в радиусе видимости</param>
+    /// <param name="firstVisible">Первая попавшаяся сущность в радиусе видимости цели</param>
+    /// <param name="searchSet">Заранее заготовленный список, который будет использоваться в <see cref="EntityLookupSystem"/></param>
+    /// <param name="type">Требуемая прозрачность линии видимости.</param>
+    /// <param name="flags">Список флагов для поиска целей в <see cref="EntityLookupSystem"/></param>
+    /// <typeparam name="T">Компонент, который должны иметь все сущности в радиусе видимости</typeparam>
+    /// <returns>Удалось ли найти хоть кого-то</returns>
     private bool TryGetAnyEntitiesVisibleTo<T>(
         Entity<TransformComponent?> viewer,
         [NotNullWhen(true)] out Entity<T>? firstVisible,
@@ -135,6 +198,9 @@ public sealed partial class EyeWatchingSystem
         return false;
     }
 
+    /// <summary>
+    /// Проверяет, правильный ли между сущностями тип видимости.
+    /// </summary>
     private bool IsInProximity(EntityUid ent, EntityUid target, LineOfSightBlockerLevel type)
     {
         if (target == ent)

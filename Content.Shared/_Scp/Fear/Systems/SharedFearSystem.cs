@@ -32,6 +32,7 @@ public abstract partial class SharedFearSystem : EntitySystem
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedShaderStrengthSystem _shaderStrength = default!;
+    [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private const string MoodSourceClose = "FearSourceClose";
@@ -78,7 +79,7 @@ public abstract partial class SharedFearSystem : EntitySystem
         // Проверка на видимость.
         // Это нужно, чтобы можно было не пугаться через стекло, например.
         // Это будет использовано, например, у ученых, которые 100 лет видели сцп через стекла и не должны пугаться.
-        if (args.BlockerLevel > ent.Comp.SeenBlockerLevel)
+        if (!_proximity.IsRightType(args.Target, ent, ent.Comp.SeenBlockerLevel))
             return;
 
         if (!args.Target.Comp.AlreadyLookedAt.TryGetValue(GetNetEntity(ent), out var lastSeenTime))

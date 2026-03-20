@@ -20,7 +20,7 @@ public sealed partial class WatchingTargetComponent : Component
     /// Время между проверками зрения
     /// </summary>
     [DataField]
-    public TimeSpan WatchingCheckInterval = TimeSpan.FromSeconds(0.1f);
+    public TimeSpan WatchingCheckInterval = TimeSpan.FromSeconds(0.2f);
 
     /// <summary>
     /// Время следующей проверки зрения
