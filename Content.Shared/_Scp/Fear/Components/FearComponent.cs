@@ -8,7 +8,7 @@ namespace Content.Shared._Scp.Fear.Components;
 /// Компонент, отвечающий за возможность пугаться.
 /// Обрабатывает уровни страха и хранит текущий.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class FearComponent : Component
 {
     /// <inheritdoc cref="FearState"/>

@@ -43,7 +43,13 @@ public abstract partial class SharedFearSystem
         effects.PlayBreathingSound = playBreathingSound;
 
         if (!existed || heartbeatChanged || breathingChanged)
-            Dirty(uid, effects);
+        {
+            DirtyFields(uid,
+                effects,
+                null,
+                nameof(FearActiveSoundEffectsComponent.PlayHeartbeatSound),
+                nameof(FearActiveSoundEffectsComponent.PlayBreathingSound));
+        }
 
         if (!existed || (heartbeatChanged && playHeartbeatSound))
             StartHeartBeat((uid, effects));
@@ -80,7 +86,12 @@ public abstract partial class SharedFearSystem
         ent.Comp.Pitch = currentPitch;
         ent.Comp.NextHeartbeatCooldown = currentCooldown;
 
-        Dirty(ent);
+        DirtyFields(ent,
+            ent.Comp,
+            null,
+            nameof(FearActiveSoundEffectsComponent.AdditionalVolume),
+            nameof(FearActiveSoundEffectsComponent.Pitch),
+            nameof(FearActiveSoundEffectsComponent.NextHeartbeatCooldown));
     }
 
     /// <summary>

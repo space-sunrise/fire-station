@@ -9,7 +9,7 @@ namespace Content.Shared._Scp.Fear.Components;
 /// Сущность с этим компонентом будет являться источников страха для игрока.
 /// Здесь настраивается, какой уровень страха будет вызван у игрока при разных обстоятельствах.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class FearSourceComponent : Component
 {
     [DataField, ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]

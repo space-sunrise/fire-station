@@ -1,15 +1,11 @@
-﻿using System.Threading;
-using Content.Shared._Scp.Fear.Components;
+﻿using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Shaders;
-using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Shared._Scp.Fear.Systems;
 
 public abstract partial class SharedFearSystem
 {
-    private static CancellationTokenSource _restartToken = new ();
-
     private const int MinPossibleValue = (int) FearState.None;
     private const int MaxPossibleValue = (int) FearState.Terror;
 
@@ -125,17 +121,6 @@ public abstract partial class SharedFearSystem
     protected void SetNextCalmDownTime(Entity<FearComponent> ent)
     {
         ent.Comp.NextTimeDecreaseFearLevel = _timing.CurTime + ent.Comp.TimeToDecreaseFearLevel;
-        Dirty(ent);
-    }
-
-    protected void RemoveComponentAfter<T>(EntityUid ent, float removeAfter) where T : IComponent
-    {
-        Timer.Spawn(TimeSpan.FromSeconds(removeAfter), () => RemComp<T>(ent), _restartToken.Token);
-    }
-
-    protected void RemoveComponentAfter<T>(EntityUid ent, TimeSpan removeAfter) where T : IComponent
-    {
-        Timer.Spawn(removeAfter, () => RemComp<T>(ent), _restartToken.Token);
     }
 
     /// <summary>
@@ -173,11 +158,5 @@ public abstract partial class SharedFearSystem
     protected static float PercentToNormalized(float percent)
     {
         return Math.Clamp(percent / 100f, 0f, 1f);
-    }
-
-    protected virtual void Clear()
-    {
-        _restartToken.Cancel();
-        _restartToken = new();
     }
 }

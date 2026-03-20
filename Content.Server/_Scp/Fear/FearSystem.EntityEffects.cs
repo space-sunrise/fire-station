@@ -14,6 +14,5 @@ public sealed partial class FearSystem
     private void OnExecuteCalmDown(Entity<FearComponent> ent, ref EntityEffectEvent<CalmDownEffect> args)
     {
         ent.Comp.NextTimeDecreaseFearLevel -= args.Effect.SpeedUpBy;
-        Dirty(ent);
     }
 }

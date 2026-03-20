@@ -26,7 +26,7 @@ public abstract partial class SharedFearSystem
             return;
 
         fearComponent.Phobias.Add(ent.Comp.Phobia);
-        Dirty(ent, fearComponent);
+        DirtyField(ent, fearComponent, nameof(FearComponent.Phobias));
     }
 
     /// <summary>
@@ -42,6 +42,6 @@ public abstract partial class SharedFearSystem
             return;
 
         fearComponent.Phobias.Remove(ent.Comp.Phobia);
-        Dirty(ent, fearComponent);
+        DirtyField(ent, fearComponent, nameof(FearComponent.Phobias));
     }
 }

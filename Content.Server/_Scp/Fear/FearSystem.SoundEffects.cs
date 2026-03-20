@@ -77,12 +77,12 @@ public sealed partial class FearSystem
 
         var audio = _audio.PlayGlobal(BreathingSound, ent, audioParams);
         ent.Comp.BreathingAudioStream = audio?.Entity;
-        Dirty(ent);
+        DirtyField(ent, ent.Comp, nameof(FearActiveSoundEffectsComponent.BreathingAudioStream));
     }
 
     protected override void StopBreathing(Entity<FearActiveSoundEffectsComponent> ent)
     {
         ent.Comp.BreathingAudioStream = _audio.Stop(ent.Comp.BreathingAudioStream);
-        Dirty(ent);
+        DirtyField(ent, ent.Comp, nameof(FearActiveSoundEffectsComponent.BreathingAudioStream));
     }
 }

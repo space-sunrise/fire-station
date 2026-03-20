@@ -8,7 +8,6 @@ using Content.Shared._Scp.Shaders.Vignette;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Sunrise.Mood;
 using Content.Shared.Examine;
-using Content.Shared.GameTicking;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Timing;
@@ -50,8 +49,6 @@ public abstract partial class SharedFearSystem : EntitySystem
         SubscribeLocalEvent<FearComponent, RejuvenateEvent>(OnRejuvenate);
 
         SubscribeLocalEvent<FearComponent, ExaminedEvent>(OnExamine);
-
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
 
         InitializeFears();
         InitializeGameplay();
@@ -182,7 +179,7 @@ public abstract partial class SharedFearSystem : EntitySystem
         SetFearBasedShaderStrength(entity);
         SetNextCalmDownTime(entity);
 
-        Dirty(ent);
+        DirtyField(ent, ent.Comp, nameof(FearComponent.State));
 
         return true;
     }
@@ -201,7 +198,7 @@ public abstract partial class SharedFearSystem : EntitySystem
         ent.Comp.CurrentFearBasedShaderStrength[nameof(GrainOverlayComponent)] = grainStrength;
         ent.Comp.CurrentFearBasedShaderStrength[nameof(VignetteOverlayComponent)] = vignetteStrength;
 
-        Dirty(ent);
+        DirtyField(ent, ent.Comp, nameof(FearComponent.CurrentFearBasedShaderStrength));
     }
 
     private void ResetFear(Entity<FearComponent> ent)

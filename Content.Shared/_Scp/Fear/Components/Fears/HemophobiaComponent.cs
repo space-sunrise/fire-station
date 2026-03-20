@@ -8,7 +8,7 @@ namespace Content.Shared._Scp.Fear.Components.Fears;
 /// <summary>
 /// Компонент, отвечающий за страх перед кровью
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class HemophobiaComponent : Component
 {
     /// <summary>
