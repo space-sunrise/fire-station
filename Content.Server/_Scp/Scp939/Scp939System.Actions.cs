@@ -1,5 +1,6 @@
 ﻿using Content.Server.Chat.Systems;
 using Content.Server.Examine;
+using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Scp939;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared._Sunrise.TTS;
@@ -7,7 +8,6 @@ using Content.Shared.Bed.Sleep;
 using Content.Shared.Chat;
 using Content.Shared.Coordinates.Helpers;
 using Content.Shared.IdentityManagement;
-using Content.Shared.Mobs.Components;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
@@ -28,8 +28,6 @@ public sealed partial class Scp939System
         SubscribeLocalEvent<Scp939Component, Scp939SleepAction>(OnSleepAction);
         SubscribeLocalEvent<Scp939Component, Scp939GasAction>(OnGasAction);
         SubscribeLocalEvent<Scp939Component, Scp939MimicActionEvent>(OnMimic);
-
-        SubscribeLocalEvent<MobStateComponent, EntitySpokeEvent>(OnEntitySpoke);
     }
 
     private void OnSleepAction(Entity<Scp939Component> ent, ref Scp939SleepAction args)
@@ -93,15 +91,19 @@ public sealed partial class Scp939System
     /// <summary>
     /// Запоминание последних сказанных возле 939 слов
     /// </summary>
-    private void OnEntitySpoke(Entity<MobStateComponent> ent, ref EntitySpokeEvent args)
+    private void TryRememberPhrase(Entity<ActiveScp939VisibilityComponent> ent, string message)
     {
-        var query = _entityLookup.GetEntitiesInRange<Scp939Component>(Transform(ent).Coordinates, 16f);
+        using var scp939Set = HashSetPoolEntity<Scp939Component>.Rent();
+        _entityLookup.GetEntitiesInRange(Transform(ent).Coordinates, 16f, scp939Set.Value, LookupFlags.Dynamic | LookupFlags.Approximate);
+        if (scp939Set.Value.Count == 0)
+            return;
+
         string? voicePrototype = null;
 
         if (TryComp<TTSComponent>(ent, out var ttsComponent))
             voicePrototype = ttsComponent.VoicePrototypeId;
 
-        foreach (var scp in query)
+        foreach (var scp in scp939Set.Value)
         {
             if (!_examine.InRangeUnOccluded(ent, scp))
                 continue;
@@ -113,8 +115,7 @@ public sealed partial class Scp939System
             }
 
             var username = Identity.Name(ent, EntityManager);
-            scp.Comp.RememberedMessages.TryAdd(args.Message, new(username, voicePrototype));
-            Dirty(scp);
+            scp.Comp.RememberedMessages.TryAdd(message, new(username, voicePrototype));
         }
     }
 }

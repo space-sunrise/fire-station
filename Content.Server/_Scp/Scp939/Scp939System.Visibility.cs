@@ -48,7 +48,11 @@ public sealed partial class Scp939System
         var message = Loc.GetString("scp939-flashed", ("time", ent.Comp.PoorEyesightTime));
         _popup.PopupEntity(message, ent, ent, PopupType.MediumCaution);
 
-        Dirty(ent);
+        DirtyFields(ent,
+            ent.Comp,
+            null,
+            nameof(Scp939Component.PoorEyesight),
+            nameof(Scp939Component.PoorEyesightTimeStart));
     }
 
     private void OnTargetEmote(Entity<ActiveScp939VisibilityComponent> ent, ref EmoteEvent args)
@@ -80,12 +84,16 @@ public sealed partial class Scp939System
     private void OnTargetSpoke(Entity<ActiveScp939VisibilityComponent> ent, ref EntitySpokeEvent args)
     {
         MobDidSomething(ent);
+        TryRememberPhrase(ent, args.Message);
     }
 
     private void MobDidSomething(Entity<ActiveScp939VisibilityComponent> ent)
     {
+        if (MathHelper.CloseTo(ent.Comp.VisibilityAcc, Scp939VisibilityComponent.InitialVisibilityAcc))
+            return;
+
         ent.Comp.VisibilityAcc = Scp939VisibilityComponent.InitialVisibilityAcc;
-        Dirty(ent);
+        DirtyField(ent, ent.Comp, nameof(ActiveScp939VisibilityComponent.VisibilityAcc));
     }
 
     private void UpdateVisibilityTargets()
@@ -140,34 +148,32 @@ public sealed partial class Scp939System
 
     private void EnsureActiveVisibility(Entity<Scp939VisibilityComponent> ent)
     {
-        var dirty = false;
-
         if (!_activeQuery.TryComp(ent, out var active))
         {
             active = AddComp<ActiveScp939VisibilityComponent>(ent);
             active.VisibilityAcc = Scp939VisibilityComponent.InitialVisibilityAcc;
-            dirty = true;
+            active.HideTime = ent.Comp.HideTime;
+            active.MinValue = ent.Comp.MinValue;
+            active.MaxValue = ent.Comp.MaxValue;
+            return;
         }
 
         if (!MathHelper.CloseTo(active.HideTime, ent.Comp.HideTime))
         {
             active.HideTime = ent.Comp.HideTime;
-            dirty = true;
+            DirtyField(ent, active, nameof(ActiveScp939VisibilityComponent.HideTime));
         }
 
         if (active.MinValue != ent.Comp.MinValue)
         {
             active.MinValue = ent.Comp.MinValue;
-            dirty = true;
+            DirtyField(ent, active, nameof(ActiveScp939VisibilityComponent.MinValue));
         }
 
         if (active.MaxValue != ent.Comp.MaxValue)
         {
             active.MaxValue = ent.Comp.MaxValue;
-            dirty = true;
+            DirtyField(ent, active, nameof(ActiveScp939VisibilityComponent.MaxValue));
         }
-
-        if (dirty)
-            Dirty(ent, active);
     }
 }
