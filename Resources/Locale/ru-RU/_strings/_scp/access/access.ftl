@@ -24,3 +24,4 @@ access-name-mtf = Мобильная оперативная группа
 access-name-chaos-insurgency = Повстанцы хаоса
 access-name-third-party = Третья сторона
 access-name-o5 = Совет О5
+access-name-bunker = Бункер

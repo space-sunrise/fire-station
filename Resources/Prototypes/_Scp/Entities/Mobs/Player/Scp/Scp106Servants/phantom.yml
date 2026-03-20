@@ -62,6 +62,7 @@
         density: 50
         mask:
         - SmallMobMask
+        - GhostImpassable
         layer:
         - MobLayer
   - type: ActionGrant
@@ -84,6 +85,8 @@
           !type:PhysShapeCircle
           radius: 0.35
         density: 50
+        mask:
+        - GhostImpassable
         layer:
         - GhostImpassable
   - type: MovementIgnoreGravity

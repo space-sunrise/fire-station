@@ -207,3 +207,12 @@
   components:
   - type: AccessReader
     access: [["ChaosInsurgency"]]
+
+# Bunker
+- type: entity
+  parent: LockableButton
+  id: LockableButtonBunker
+  suffix: Bunker
+  components:
+  - type: AccessReader
+    access: [["Bunker"]]

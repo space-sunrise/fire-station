@@ -8,6 +8,7 @@
   weight: 725
   access:
   - Service
+  - Bunker
   special:
   - !type:AddComponentSpecial
     components:

@@ -1,0 +1,27 @@
+﻿- type: entity
+  id: ScpBunkerWallMarker
+  name: bunker wall marker
+  suffix: Invisible Wall
+  parent: MarkerBase
+  components:
+  - type: BunkerMarker
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+  - type: Fixtures
+    fixtures:
+      scpBunkerWallBlock:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.4
+        hard: true
+        mask:
+        - GhostImpassable
+        layer:
+        - GhostImpassable
+  - type: Sprite
+    sprite: _Scp/Markers/roof.rsi
+    layers:
+    - state: roof_on
+      color: "#FFFFFF4D"
+      shader: unshaded
