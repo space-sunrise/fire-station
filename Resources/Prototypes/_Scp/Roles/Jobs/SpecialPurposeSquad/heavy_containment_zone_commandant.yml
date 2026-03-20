@@ -60,7 +60,7 @@
         Fear: 60
         Terror: 350
       baseJitterTime: 2
-      fallOffChance: 1
+      fallOffChance: 0.01
 
 - type: startingGear
   id: HeavyContainmentZoneCommandantGear

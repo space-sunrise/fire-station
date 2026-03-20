@@ -35,7 +35,8 @@ public abstract partial class SharedFearSystem : EntitySystem
     private const string MoodSourceClose = "FearSourceClose";
     private const string MoodFearSourceSeen = "FearSourceSeen";
 
-    private EntityQuery<FearSourceComponent> _fears;
+    private EntityQuery<FearSourceComponent> _fearSourceQuery;
+    private EntityQuery<FearComponent> _fearQuery;
 
     public override void Initialize()
     {
@@ -55,7 +56,8 @@ public abstract partial class SharedFearSystem : EntitySystem
         InitializeTraits();
         InitializeCloseFear();
 
-        _fears = GetEntityQuery<FearSourceComponent>();
+        _fearSourceQuery = GetEntityQuery<FearSourceComponent>();
+        _fearQuery = GetEntityQuery<FearComponent>();
     }
 
     /// <summary>
@@ -82,7 +84,7 @@ public abstract partial class SharedFearSystem : EntitySystem
             && _timing.CurTime < lastSeenTime + ent.Comp.TimeToGetScaredAgainOnLookAt)
             return;
 
-        if (!_fears.TryComp(args.Target, out var source))
+        if (!_fearSourceQuery.TryComp(args.Target, out var source))
             return;
 
         if (source.UponSeenState == FearState.None)
@@ -109,14 +111,12 @@ public abstract partial class SharedFearSystem : EntitySystem
     /// </summary>
     private void OnFearStateChanged(Entity<FearComponent> ent, ref FearStateChangedEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
         PlayFearStateSound(ent, args.OldState);
 
         // Добавляем геймплейные проблемы, завязанный на уровне страха
         ManageShootingProblems(ent);
         ManageStateBasedMood(ent);
+        ManageFallOff(ent);
 
         // Проверка на то, что уровень понизился -> мы успокоились.
         // Геймплейные штуки ниже не нужно триггерить.
@@ -211,8 +211,8 @@ public abstract partial class SharedFearSystem : EntitySystem
     {
         ClearCloseFear(ent);
 
-        RemoveSeenFearMood(ent.Owner);
-        WipeMood(ent.Owner);
+        RemoveSeenFearMood(ent);
+        WipeMood(ent);
     }
 
     private void RemoveSeenFearMood(EntityUid uid)

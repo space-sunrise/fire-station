@@ -40,7 +40,7 @@ public abstract partial class SharedFearSystem
             return;
         }
 
-        if (!_fears.TryComp(proximity.Comp.Receiver, out var source))
+        if (!_fearSourceQuery.TryComp(proximity.Comp.Receiver, out var source))
         {
             ClearCloseFear(ent);
             return;
@@ -126,7 +126,7 @@ public abstract partial class SharedFearSystem
 
     private void OnActiveProximityShutdown(Entity<ActiveProximityTargetComponent> ent, ref ComponentShutdown args)
     {
-        if (!TryComp<FearComponent>(ent, out var fear))
+        if (!_fearQuery.TryComp(ent, out var fear))
             return;
 
         ClearCloseFear((ent.Owner, fear));

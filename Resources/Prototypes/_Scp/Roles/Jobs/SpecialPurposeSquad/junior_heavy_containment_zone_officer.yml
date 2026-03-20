@@ -43,7 +43,7 @@
         Fear: 2.2
         Terror: 5
       baseJitterTime: 3
-      fallOffChance: 2
+      fallOffChance: 0.02
 
 - type: startingGear
   id: JuniorHeavyContainmentZoneOfficerGear

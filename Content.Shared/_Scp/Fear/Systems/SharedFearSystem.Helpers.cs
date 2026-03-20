@@ -151,12 +151,4 @@ public abstract partial class SharedFearSystem
 
         _ => null,
     };
-
-    /// <summary>
-    /// Преобразует процент из человеческого формата в probный.
-    /// </summary>
-    protected static float PercentToNormalized(float percent)
-    {
-        return Math.Clamp(percent / 100f, 0f, 1f);
-    }
 }
