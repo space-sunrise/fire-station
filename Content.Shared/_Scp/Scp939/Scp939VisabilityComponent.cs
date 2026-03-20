@@ -1,22 +1,19 @@
-﻿using Robust.Shared.GameStates;
-
 namespace Content.Shared._Scp.Scp939;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent]
 public sealed partial class Scp939VisibilityComponent : Component
 {
-    [ViewVariables(VVAccess.ReadWrite), AutoNetworkedField]
-    public float VisibilityAcc;
+    public const float InitialVisibilityAcc = 0.001f;
+    public const float DefaultHideTime = 2.5f;
+    public const int DefaultMinValue = 40;
+    public const int DefaultMaxValue = 400;
 
-    public readonly float HideTime = 2.5f;
+    [DataField]
+    public float HideTime = DefaultHideTime;
 
-    #region PoorEyesight
+    [DataField]
+    public int MinValue = DefaultMinValue;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public int MinValue = 40;
-
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public int MaxValue = 400;
-
-    #endregion
+    [DataField]
+    public int MaxValue = DefaultMaxValue;
 }

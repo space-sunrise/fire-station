@@ -66,6 +66,8 @@ public sealed partial class Scp939System : EntitySystem
     {
         base.Update(frameTime);
 
+        UpdateVisibilityTargets();
+
         // Все 939, что спят
         var querySleeping = EntityQueryEnumerator<Scp939Component, SleepingComponent>();
 

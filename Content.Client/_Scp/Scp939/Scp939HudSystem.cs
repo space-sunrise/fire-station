@@ -1,74 +1,92 @@
-﻿using System.Diagnostics.CodeAnalysis;
 using Content.Client.Overlays;
 using Content.Client.SSDIndicator;
 using Content.Client.Stealth;
 using Content.Shared._Scp.Scp939;
 using Content.Shared._Scp.Scp939.Protection;
 using Content.Shared.Examine;
+using Content.Shared.Inventory.Events;
 using Content.Shared.Movement.Components;
 using Content.Shared.Standing;
 using Content.Shared.StatusIcon.Components;
 using Content.Shared.Throwing;
 using Content.Shared.Weapons.Melee.Events;
-using Content.Shared.Weapons.Ranged.Events;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Client._Scp.Scp939;
 
 public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
 {
-    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+    [Dependency] private readonly IOverlayManager _overlayManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly SpriteSystem _sprite = default!;
 
-    private ShaderInstance _shaderInstance = default!;
-    private readonly Dictionary<EntityUid, ShaderInstance> _shaderCache = new();
+    internal readonly List<(Entity<SpriteComponent> Ent, float BaseAlpha)> CachedBaseAlphas = new(64);
+
+    private Scp939SetAlphaOverlay _setAlphaOverlay = default!;
+    private Scp939ResetAlphaOverlay _resetAlphaOverlay = default!;
 
     // TODO: Выделить значения плохого зрения в отдельный компонент, не связанный с 939
     private Scp939Component? _scp939Component;
 
+    private EntityQuery<EyeComponent> _eyeQuery;
+
+    private bool _overlaysPresented;
     private float _lastUpdateTime;
-    private const float UpdateInterval = 0.05f; // Обновляем каждые n секунды
+
+    private const float UpdateInterval = 0.05f;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent((Entity<Scp939VisibilityComponent> ent, ref StartCollideEvent args) => OnCollide(ent, args.OtherEntity));
-        SubscribeLocalEvent((Entity<Scp939VisibilityComponent> ent, ref EndCollideEvent args) => OnCollide(ent, args.OtherEntity));
+        SubscribeLocalEvent((Entity<ActiveScp939VisibilityComponent> ent, ref StartCollideEvent args)
+            => OnCollide(ent, args.OtherEntity));
+        SubscribeLocalEvent((Entity<ActiveScp939VisibilityComponent> ent, ref EndCollideEvent args)
+            => OnCollide(ent, args.OtherEntity));
 
         #region Visibility
 
-        SubscribeLocalEvent<Scp939VisibilityComponent, MoveEvent>(OnMove);
+        SubscribeLocalEvent<ActiveScp939VisibilityComponent, MoveEvent>(OnMove);
 
-        SubscribeLocalEvent<Scp939VisibilityComponent, ThrowEvent>(OnThrow);
-        SubscribeLocalEvent<Scp939VisibilityComponent, StoodEvent>(OnStood);
-        SubscribeLocalEvent<Scp939VisibilityComponent, MeleeAttackEvent>(OnMeleeAttack);
+        SubscribeLocalEvent<ActiveScp939VisibilityComponent, ThrowEvent>(OnThrow);
+        SubscribeLocalEvent<ActiveScp939VisibilityComponent, StoodEvent>(OnStood);
+        SubscribeLocalEvent<ActiveScp939VisibilityComponent, MeleeAttackEvent>(OnMeleeAttack);
 
         #endregion
 
-        SubscribeLocalEvent<Scp939VisibilityComponent, BeforePostShaderRenderEvent>(BeforeRender);
-        SubscribeLocalEvent<Scp939VisibilityComponent, GetStatusIconsEvent>(OnGetStatusIcons, after: new []{typeof(SSDIndicatorSystem)});
-        SubscribeLocalEvent<Scp939VisibilityComponent, ExamineAttemptEvent>(OnExamine);
+        SubscribeLocalEvent<ActiveScp939VisibilityComponent, GetStatusIconsEvent>(OnGetStatusIcons, after: [typeof(SSDIndicatorSystem)] );
+        SubscribeLocalEvent<ActiveScp939VisibilityComponent, ExamineAttemptEvent>(OnExamine);
 
         SubscribeLocalEvent<Scp939Component, PlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<Scp939Component, PlayerDetachedEvent>(OnPlayerDetached);
 
-        SubscribeLocalEvent<Scp939VisibilityComponent, EntityTerminatingEvent>(OnEntityTerminating);
+        _eyeQuery = GetEntityQuery<EyeComponent>();
 
-        _shaderInstance = _prototypeManager.Index<ShaderPrototype>("Hide").Instance();
+        _setAlphaOverlay = new();
+        _resetAlphaOverlay = new();
 
         UpdatesAfter.Add(typeof(StealthSystem));
     }
 
-    private void OnExamine(Entity<Scp939VisibilityComponent> ent, ref ExamineAttemptEvent args)
+    public override void Shutdown()
+    {
+        RestoreCachedBaseAlphas();
+        RemoveOverlays();
+
+        _setAlphaOverlay.Dispose();
+        _resetAlphaOverlay.Dispose();
+
+        base.Shutdown();
+    }
+
+    private void OnExamine(Entity<ActiveScp939VisibilityComponent> ent, ref ExamineAttemptEvent args)
     {
         if (!IsActive)
             return;
@@ -79,12 +97,9 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
             args.Cancel();
     }
 
-    private void OnGetStatusIcons(Entity<Scp939VisibilityComponent> ent, ref GetStatusIconsEvent args)
+    private void OnGetStatusIcons(Entity<ActiveScp939VisibilityComponent> ent, ref GetStatusIconsEvent args)
     {
-        // Олежа чурка
-        var playerEntity = _playerManager.LocalSession?.AttachedEntity;
-
-        if (!HasComp<Scp939Component>(playerEntity))
+        if (!IsActive)
             return;
 
         var visibility = GetVisibility(ent);
@@ -93,51 +108,73 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
             args.StatusIcons.Clear();
     }
 
+    protected override void UpdateInternal(RefreshEquipmentHudEvent<Scp939Component> args)
+    {
+        base.UpdateInternal(args);
+
+        _scp939Component = args.Components.Count > 0 ? args.Components[0] : null;
+        AddOverlays();
+    }
+
     protected override void DeactivateInternal()
     {
         base.DeactivateInternal();
 
-        var query = EntityQueryEnumerator<Scp939VisibilityComponent, SpriteComponent>();
+        _scp939Component = null;
+        _lastUpdateTime = 0f;
 
-        while (query.MoveNext(out _, out _, out var spriteComponent))
-        {
-            spriteComponent.PostShader = null;
-        }
+        RestoreCachedBaseAlphas();
+        RemoveOverlays();
     }
 
     #region Visibility
 
-    private void OnCollide(Entity<Scp939VisibilityComponent> ent, EntityUid otherEntity)
+    private void OnCollide(Entity<ActiveScp939VisibilityComponent> ent, EntityUid otherEntity)
     {
+        if (!IsActive)
+            return;
+
         if (!HasComp<Scp939Component>(otherEntity))
             return;
 
         MobDidSomething(ent);
     }
 
-    private void OnThrow(Entity<Scp939VisibilityComponent> ent, ref ThrowEvent args)
+    private void OnThrow(Entity<ActiveScp939VisibilityComponent> ent, ref ThrowEvent args)
     {
+        if (!IsActive)
+            return;
+
         MobDidSomething(ent);
     }
 
-    private void OnStood(Entity<Scp939VisibilityComponent> ent, ref StoodEvent args)
+    private void OnStood(Entity<ActiveScp939VisibilityComponent> ent, ref StoodEvent args)
     {
+        if (!IsActive)
+            return;
+
         MobDidSomething(ent);
     }
 
-    private void OnMeleeAttack(Entity<Scp939VisibilityComponent> ent, ref MeleeAttackEvent args)
+    private void OnMeleeAttack(Entity<ActiveScp939VisibilityComponent> ent, ref MeleeAttackEvent args)
     {
+        if (!IsActive)
+            return;
+
         MobDidSomething(ent);
     }
 
-    private void MobDidSomething(Entity<Scp939VisibilityComponent> ent)
+    private void MobDidSomething(Entity<ActiveScp939VisibilityComponent> ent)
     {
-        ent.Comp.VisibilityAcc = 0.001f;
+        ent.Comp.VisibilityAcc = Scp939VisibilityComponent.InitialVisibilityAcc;
         Dirty(ent);
     }
 
-    private void OnMove(Entity<Scp939VisibilityComponent> ent, ref MoveEvent args)
+    private void OnMove(Entity<ActiveScp939VisibilityComponent> ent, ref MoveEvent args)
     {
+        if (!IsActive)
+            return;
+
         // В зависимости от наличие защит или проблем со зрением у 939 изменяется то, насколько хорошо мы видим жертву
         if (ModifyAcc(ent.Comp, out var modifier)) // Если зрение затруднено
         {
@@ -161,9 +198,7 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         var currentVelocity = physicsComponent.LinearVelocity.Length();
 
         if (speedModifierComponent.BaseWalkSpeed > currentVelocity)
-        {
             ent.Comp.VisibilityAcc = ent.Comp.HideTime / 2f;
-        }
     }
 
     #endregion
@@ -171,16 +206,12 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
     private void OnPlayerAttached(Entity<Scp939Component> ent, ref PlayerAttachedEvent args)
     {
         _scp939Component = ent.Comp;
+        AddOverlays();
     }
 
     private void OnPlayerDetached(Entity<Scp939Component> ent, ref PlayerDetachedEvent args)
     {
         _scp939Component = null;
-    }
-
-    private void OnEntityTerminating(Entity<Scp939VisibilityComponent> ent, ref EntityTerminatingEvent args)
-    {
-        _shaderCache.Remove(ent);
     }
 
     public override void Update(float frameTime)
@@ -194,35 +225,47 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         if (_lastUpdateTime < UpdateInterval)
             return;
 
+        var delta = _lastUpdateTime;
         _lastUpdateTime = 0f;
 
-        var query = EntityQueryEnumerator<SpriteComponent, Scp939VisibilityComponent>();
-
-        while (query.MoveNext(out var uid, out var spriteComponent, out var visibilityComponent))
+        var query = EntityQueryEnumerator<ActiveScp939VisibilityComponent>();
+        while (query.MoveNext(out _, out var visibilityComponent))
         {
-            // Обновляем только если нужно
-            if (!_shaderCache.TryGetValue(uid, out var shader))
-            {
-                shader = _shaderInstance.Duplicate();
-                _shaderCache[uid] = shader;
-                UpdateVisibility(spriteComponent, shader);
-            }
+            if (visibilityComponent.VisibilityAcc >= visibilityComponent.HideTime)
+                continue;
 
-            if (visibilityComponent.VisibilityAcc < 3f)
-                visibilityComponent.VisibilityAcc += frameTime;
+            visibilityComponent.VisibilityAcc = MathF.Min(visibilityComponent.VisibilityAcc + delta, visibilityComponent.HideTime);
         }
     }
 
-    private static void UpdateVisibility(SpriteComponent spriteComponent, ShaderInstance shader)
+    internal bool CanDraw(in OverlayDrawArgs args)
     {
-        spriteComponent.Color = Color.White;
-        spriteComponent.GetScreenTexture = true;
-        spriteComponent.RaiseShaderEvent = true;
+        if (!IsActive)
+            return false;
 
-        spriteComponent.PostShader = shader;
+        if (_playerManager.LocalEntity is not { } player)
+            return false;
+
+        if (!_eyeQuery.TryComp(player, out var eye))
+            return false;
+
+        return args.Viewport.Eye == eye.Eye;
     }
 
-    private static float GetVisibility(Entity<Scp939VisibilityComponent> ent)
+    internal void RestoreCachedBaseAlphas()
+    {
+        foreach (var (ent, baseAlpha) in CachedBaseAlphas)
+        {
+            if (!EntityManager.EntityExists(ent))
+                continue;
+
+            _sprite.SetColor(ent.AsNullable(), ent.Comp.Color.WithAlpha(baseAlpha));
+        }
+
+        CachedBaseAlphas.Clear();
+    }
+
+    internal static float GetVisibility(Entity<ActiveScp939VisibilityComponent> ent)
     {
         var acc = ent.Comp.VisibilityAcc;
 
@@ -232,17 +275,34 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         return Math.Clamp(1f - (acc / ent.Comp.HideTime), 0f, 1f);
     }
 
-    private static void BeforeRender(Entity<Scp939VisibilityComponent> ent, ref BeforePostShaderRenderEvent args)
+    private void AddOverlays()
     {
-        var visibility = GetVisibility(ent);
-        args.Sprite.PostShader?.SetParameter("visibility", visibility);
+        if (_overlaysPresented)
+            return;
+
+        _overlayManager.AddOverlay(_setAlphaOverlay);
+        _overlayManager.AddOverlay(_resetAlphaOverlay);
+
+        _overlaysPresented = true;
+    }
+
+    private void RemoveOverlays()
+    {
+        if (!_overlaysPresented)
+            return;
+
+        _overlayManager.RemoveOverlay(_setAlphaOverlay);
+        _overlayManager.RemoveOverlay(_resetAlphaOverlay);
+
+        CachedBaseAlphas.Clear();
+        _overlaysPresented = false;
     }
 
     // TODO: Переделать под статус эффект и добавить его в панель статус эффектов, а то непонятно игруну
     /// <summary>
     /// Если вдруг собачка плохо видит
     /// </summary>
-    private bool ModifyAcc(Scp939VisibilityComponent visibilityComponent, [NotNullWhen(true)] out int modifier)
+    private bool ModifyAcc(ActiveScp939VisibilityComponent visibilityComponent, out int modifier)
     {
         // 1 = отсутствие модификатора
         modifier = 1;

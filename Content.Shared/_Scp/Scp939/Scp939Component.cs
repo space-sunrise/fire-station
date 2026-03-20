@@ -63,6 +63,9 @@ public sealed partial class Scp939Component : Component
     [AutoNetworkedField]
     public TimeSpan? PoorEyesightTimeStart; // Когда начали плохо видеть
 
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float VisibilityActivationRange = 20f;
+
     #endregion
 
     [DataField]
