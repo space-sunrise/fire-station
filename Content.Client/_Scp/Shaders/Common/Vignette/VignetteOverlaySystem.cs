@@ -17,11 +17,11 @@ public sealed class VignetteOverlaySystem : ComponentOverlaySystem<VignetteOverl
         DisableOnCompatibilityMode = false;
         Overlay = new VignetteOverlay();
 
-        SubscribeLocalEvent<VignetteOverlayComponent, ShaderAdditionalStrengthChanged>(OnAdditionalStrengthChanged);
+        SubscribeLocalEvent<VignetteOverlayComponent, AfterAutoHandleStateEvent>(OnAdditionalStrengthChanged);
     }
 
     private void OnAdditionalStrengthChanged(Entity<VignetteOverlayComponent> ent,
-        ref ShaderAdditionalStrengthChanged args)
+        ref AfterAutoHandleStateEvent args)
     {
         if (_player.LocalEntity != ent)
             return;

@@ -14,6 +14,8 @@ public sealed partial class EyeWatchingSystem
     /// <param name="flags">Флаги для поиска целей</param>
     /// <param name="checkProximity">Будет ли проверяться тип линии видимости</param>
     /// <param name="useFov">Будет ли проверяться FOV зрителя</param>
+    /// <param name="useTimeCompensation">Будет ли использоваться компенсация времени? Нужно для передвижения SCP-173</param>
+    /// <param name="checkBlinking">Будет ли проводиться проверка на моргание?</param>
     /// <param name="fovOverride">Если нужно поставить другой угол FOV зрителя</param>
     /// <typeparam name="T">Компонент, который должен быть у целей</typeparam>
     /// <returns>Найдена ли хоть одна цель</returns>
@@ -23,6 +25,8 @@ public sealed partial class EyeWatchingSystem
         LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate,
         bool checkProximity = true,
         bool useFov = true,
+        bool useTimeCompensation = false,
+        bool checkBlinking = true,
         float? fovOverride = null)
         where T : IComponent
     {
@@ -35,6 +39,8 @@ public sealed partial class EyeWatchingSystem
             type,
             checkProximity,
             useFov,
+            useTimeCompensation,
+            checkBlinking,
             fovOverride);
     }
 
@@ -48,6 +54,8 @@ public sealed partial class EyeWatchingSystem
     /// <param name="potentialTargets">Заранее заготовленный список целей из которых будет производиться поиск.</param>
     /// <param name="checkProximity">Будет ли проверяться тип линии видимости</param>
     /// <param name="useFov">Будет ли проверяться FOV зрителя</param>
+    /// <param name="useTimeCompensation">Будет ли использоваться компенсация времени? Нужно для передвижения SCP-173</param>
+    /// <param name="checkBlinking">Будет ли проводиться проверка на моргание?</param>
     /// <param name="fovOverride">Если нужно поставить другой угол FOV зрителя</param>
     /// <typeparam name="T">Компонент, который должен быть у целей</typeparam>
     /// <returns>Найдена ли хоть одна цель</returns>
@@ -57,12 +65,21 @@ public sealed partial class EyeWatchingSystem
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
         bool checkProximity = true,
         bool useFov = true,
+        bool useTimeCompensation = false,
+        bool checkBlinking = true,
         float? fovOverride = null)
         where T : IComponent
     {
         foreach (var target in potentialTargets)
         {
-            if (!IsWatchedBy(target, watcher, type, useFov, checkProximity, fovOverride))
+            if (!IsWatchedBy(target,
+                    watcher,
+                    type,
+                    checkProximity,
+                    useFov,
+                    useTimeCompensation,
+                    checkBlinking,
+                    fovOverride))
                 continue;
 
             targets.Add(target);

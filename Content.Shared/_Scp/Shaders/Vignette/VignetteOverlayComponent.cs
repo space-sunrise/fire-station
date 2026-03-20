@@ -2,7 +2,7 @@
 
 namespace Content.Shared._Scp.Shaders.Vignette;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true, true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class VignetteOverlayComponent : Component, IShaderStrength
 {
     /// <inheritdoc/>

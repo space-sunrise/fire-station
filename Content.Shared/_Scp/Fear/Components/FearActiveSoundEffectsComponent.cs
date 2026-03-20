@@ -61,5 +61,4 @@ public sealed partial class FearActiveSoundEffectsComponent : Component
     public EntityUid? BreathingAudioStream;
 
     #endregion
-
 }

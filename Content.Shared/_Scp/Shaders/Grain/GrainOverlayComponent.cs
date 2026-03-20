@@ -7,7 +7,7 @@ namespace Content.Shared._Scp.Shaders.Grain;
 /// Компонент, отвечающий за параметры шейдера зернистости.
 /// Наличие компонента необходимо для работы шейдера.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true, true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class GrainOverlayComponent : Component, IShaderStrength
 {
     /// <summary>

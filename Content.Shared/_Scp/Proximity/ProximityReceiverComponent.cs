@@ -85,3 +85,30 @@ public readonly record struct ProximityInRangeTargetEvent(EntityUid Receiver,
 /// </summary>
 [ByRefEvent]
 public readonly record struct ProximityNotInRangeTargetEvent;
+
+/// <summary>
+/// Ивент, вызываемый на цели, когда рядом впервые появляется dominant proximity receiver.
+/// </summary>
+[ByRefEvent]
+public readonly record struct ProximityTargetEnteredEvent(
+    EntityUid Receiver,
+    float Range,
+    float CloseRange,
+    LineOfSightBlockerLevel Type);
+
+/// <summary>
+/// Ивент, вызываемый на цели, когда она перестает находиться рядом с dominant proximity receiver.
+/// </summary>
+[ByRefEvent]
+public readonly record struct ProximityTargetExitedEvent(EntityUid Receiver);
+
+/// <summary>
+/// Ивент, вызываемый на цели, когда ее dominant proximity receiver сменился.
+/// </summary>
+[ByRefEvent]
+public readonly record struct ProximityTargetReceiverChangedEvent(
+    EntityUid OldReceiver,
+    EntityUid NewReceiver,
+    float Range,
+    float CloseRange,
+    LineOfSightBlockerLevel Type);

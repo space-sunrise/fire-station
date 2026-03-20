@@ -218,9 +218,16 @@ public sealed partial class EyeWatchingSystem
     /// <param name="viewer">Смотрящий</param>
     /// <param name="target">Цель, которую проверяем</param>
     /// <param name="useFov">Применять ли проверку на поле зрения?</param>
+    /// <param name="useTimeCompensation">Будет ли использоваться компенсация времени? Нужно для передвижения SCP-173</param>
+    /// <param name="checkBlinking">Будет ли проводиться проверка на моргание?</param>
     /// <param name="fovOverride">Если нужно использовать другой угол поля зрения</param>
     /// <returns>Видит ли смотрящий цель</returns>
-    public bool CanSee(Entity<BlinkableComponent?> viewer, EntityUid target, bool useFov = true, float? fovOverride = null)
+    public bool CanSee(Entity<BlinkableComponent?> viewer,
+        EntityUid target,
+        bool useFov = true,
+        bool useTimeCompensation = false,
+        bool checkBlinking = true,
+        float? fovOverride = null)
     {
         if (_mobState.IsIncapacitated(viewer))
             return false;
@@ -229,7 +236,10 @@ public sealed partial class EyeWatchingSystem
         if (useFov && !_fov.IsInFov(viewer.Owner, target, fovOverride))
             return false; // Если не видит, то не считаем его как смотрящего
 
-        if (_blinking.IsBlind(viewer, true))
+        if (checkBlinking && _blinking.IsBlind(viewer, useTimeCompensation))
+            return false;
+
+        if (!checkBlinking && _blinking.AreEyesClosedManually(viewer))
             return false;
 
         var canSeeAttempt = new CanSeeAttemptEvent();

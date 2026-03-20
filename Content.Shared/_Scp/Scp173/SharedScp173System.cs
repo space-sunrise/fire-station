@@ -63,7 +63,7 @@ public abstract class SharedScp173System : EntitySystem
             return;
         }
 
-        if (Watching.IsWatchedByAny(ent))
+        if (Watching.IsWatchedByAny(ent, useTimeCompensation: true))
         {
             args.Cancel();
             return;
@@ -76,7 +76,7 @@ public abstract class SharedScp173System : EntitySystem
         if (IsInScpCage(ent, out _))
             return;
 
-        if (Watching.IsWatchedByAny(ent))
+        if (Watching.IsWatchedByAny(ent, useTimeCompensation: true))
             return;
 
         args.Cancel();
@@ -88,7 +88,7 @@ public abstract class SharedScp173System : EntitySystem
         if (IsInScpCage(ent, out _))
             return;
 
-        if (!Watching.IsWatchedByAny(ent))
+        if (!Watching.IsWatchedByAny(ent, useTimeCompensation: true))
             return;
 
         args.Cancel();

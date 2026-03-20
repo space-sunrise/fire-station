@@ -16,6 +16,8 @@ public sealed partial class EyeWatchingSystem
     /// <param name="flags">Флаги для поиска зрителей</param>
     /// <param name="checkProximity">Будет ли проверять тип линии видимости</param>
     /// <param name="useFov">Будет ли проверять FOV зрителя</param>
+    /// <param name="useTimeCompensation">Будет ли использоваться компенсация времени? Нужно для передвижения SCP-173</param>
+    /// <param name="checkBlinking">Будет ли проводиться проверка на моргание?</param>
     /// <param name="fovOverride">Если нужно использовать другой угол для FOV зрителя</param>
     /// <returns>Найден ли хоть один зритель</returns>
     public bool TryGetWatchers(EntityUid target,
@@ -24,12 +26,14 @@ public sealed partial class EyeWatchingSystem
         LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate,
         bool checkProximity = true,
         bool useFov = true,
+        bool useTimeCompensation = false,
+        bool checkBlinking = true,
         float? fovOverride = null)
     {
         watchers = null;
 
         using var realWatchers = ListPoolEntity<BlinkableComponent>.Rent();
-        if (!TryGetWatchers(target, realWatchers.Value, type, flags, checkProximity, useFov, fovOverride))
+        if (!TryGetWatchers(target, realWatchers.Value, type, flags, checkProximity, useFov, useTimeCompensation, checkBlinking, fovOverride))
             return false;
 
         watchers = realWatchers.Value.Count;
@@ -45,6 +49,8 @@ public sealed partial class EyeWatchingSystem
     /// <param name="flags">Флаги для поиска зрителей</param>
     /// <param name="checkProximity">Будет ли проверять тип линии видимости</param>
     /// <param name="useFov">Будет ли проверять FOV зрителя</param>
+    /// <param name="useTimeCompensation">Будет ли использоваться компенсация времени? Нужно для передвижения SCP-173</param>
+    /// <param name="checkBlinking">Будет ли проводиться проверка на моргание?</param>
     /// <param name="fovOverride">Если нужно использовать другой угол для FOV зрителя</param>
     /// <returns>Найден ли хоть один зритель</returns>
     public bool TryGetWatchers(EntityUid target,
@@ -53,6 +59,8 @@ public sealed partial class EyeWatchingSystem
         LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate,
         bool checkProximity = true,
         bool useFov = true,
+        bool useTimeCompensation = false,
+        bool checkBlinking = true,
         float? fovOverride = null)
     {
         using var potentialWatchers = HashSetPoolEntity<BlinkableComponent>.Rent();
@@ -64,6 +72,8 @@ public sealed partial class EyeWatchingSystem
             type,
             checkProximity,
             useFov,
+            useTimeCompensation,
+            checkBlinking,
             fovOverride);
     }
 
@@ -76,6 +86,8 @@ public sealed partial class EyeWatchingSystem
     /// <param name="type">Требуемый тип линии видимости</param>
     /// <param name="checkProximity">Будет ли проверять тип линии видимости</param>
     /// <param name="useFov">Будет ли проверять FOV зрителя</param>
+    /// <param name="useTimeCompensation">Будет ли использоваться компенсация времени? Нужно для передвижения SCP-173</param>
+    /// <param name="checkBlinking">Будет ли проводиться проверка на моргание?</param>
     /// <param name="fovOverride">Если нужно использовать другой угол для FOV зрителя</param>
     /// <returns>Найден ли хоть один зритель</returns>
     public bool TryGetWatchersFrom(EntityUid target,
@@ -84,11 +96,13 @@ public sealed partial class EyeWatchingSystem
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
         bool checkProximity = true,
         bool useFov = true,
+        bool useTimeCompensation = false,
+        bool checkBlinking = true,
         float? fovOverride = null)
     {
         foreach (var viewer in potentialWatchers)
         {
-            if (!IsWatchedBy(target, viewer, type, useFov, checkProximity, fovOverride))
+            if (!IsWatchedBy(target, viewer, type, checkProximity, useFov, useTimeCompensation, checkBlinking, fovOverride))
                 continue;
 
             realWatchers.Add(viewer);
@@ -106,6 +120,8 @@ public sealed partial class EyeWatchingSystem
     /// <param name="flags">Флаги для поиска зрителей в радиусе видимости</param>
     /// <param name="checkProximity">Будет ли проверяться тип линии видимости?</param>
     /// <param name="useFov">Будет ли проверять FOV зрителя?</param>
+    /// <param name="useTimeCompensation">Будет ли использоваться компенсация времени? Нужно для передвижения SCP-173</param>
+    /// <param name="checkBlinking">Будет ли проводиться проверка на моргание?</param>
     /// <param name="fovOverride">Если нужно использовать другой угол FOV зрителя</param>
     /// <returns>Найден ли хоть один зритель для цели</returns>
     public bool IsWatchedByAny(EntityUid target,
@@ -113,6 +129,8 @@ public sealed partial class EyeWatchingSystem
         LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate,
         bool checkProximity = true,
         bool useFov = true,
+        bool useTimeCompensation = false,
+        bool checkBlinking = true,
         float? fovOverride = null)
     {
         using var potentialWatchers = HashSetPoolEntity<BlinkableComponent>.Rent();
@@ -120,7 +138,7 @@ public sealed partial class EyeWatchingSystem
 
         foreach (var viewer in potentialWatchers.Value)
         {
-            if (!IsWatchedBy(target, viewer, type, useFov, checkProximity, fovOverride))
+            if (!IsWatchedBy(target, viewer, type, useFov, checkProximity, useTimeCompensation, checkBlinking, fovOverride))
                 continue;
 
             return true;
@@ -137,6 +155,8 @@ public sealed partial class EyeWatchingSystem
     /// <param name="type">Требуемый тип линии видимости</param>
     /// <param name="checkProximity">Будет ли проверяться тип линии видимости</param>
     /// <param name="useFov">Будет ли проверять FOV зрителя</param>
+    /// <param name="useTimeCompensation">Будет ли использоваться компенсация времени? Нужно для передвижения SCP-173</param>
+    /// <param name="checkBlinking">Будет ли проводиться проверка на моргание?</param>
     /// <param name="fovOverride">Если нужно задать другой угол FOV зрителя</param>
     /// <returns>Смотрит ли потенциальный зритель на цель.</returns>
     public bool IsWatchedBy(EntityUid target,
@@ -144,6 +164,8 @@ public sealed partial class EyeWatchingSystem
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
         bool checkProximity = true,
         bool useFov = true,
+        bool useTimeCompensation = false,
+        bool checkBlinking = true,
         float? fovOverride = null)
     {
         if (!CanBeWatched(potentialViewer, target))
@@ -152,7 +174,7 @@ public sealed partial class EyeWatchingSystem
         if (checkProximity && !IsInProximity(potentialViewer, target, type))
             return false;
 
-        if (!CanSee(potentialViewer, target, useFov, fovOverride))
+        if (!CanSee(potentialViewer, target, useFov, useTimeCompensation, checkBlinking, fovOverride))
             return false;
 
         return true;
