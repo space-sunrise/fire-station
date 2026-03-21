@@ -5,6 +5,8 @@ namespace Content.Shared._Scp.Scp939;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class ActiveScp939VisibilityComponent : Component
 {
+    public float VisibilityAccClient = Scp939VisibilityComponent.InitialVisibilityAcc;
+
     [DataField, AutoNetworkedField]
     public float VisibilityAcc = Scp939VisibilityComponent.InitialVisibilityAcc;
 

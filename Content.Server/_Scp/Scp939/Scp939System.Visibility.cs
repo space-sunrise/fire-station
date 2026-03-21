@@ -32,7 +32,6 @@ public sealed partial class Scp939System
 
         SubscribeLocalEvent<ActiveScp939VisibilityComponent, EntitySpokeEvent>(OnTargetSpoke);
         SubscribeLocalEvent<ActiveScp939VisibilityComponent, EmoteEvent>(OnTargetEmote);
-        SubscribeLocalEvent<ActiveScp939VisibilityComponent, DownedEvent>(OnDown);
         SubscribeLocalEvent<ItemComponent, GunShotEvent>(OnShot);
 
         SubscribeLocalEvent<Scp939Component, AfterFlashedEvent>(OnFlash);
@@ -56,11 +55,6 @@ public sealed partial class Scp939System
     }
 
     private void OnTargetEmote(Entity<ActiveScp939VisibilityComponent> ent, ref EmoteEvent args)
-    {
-        MobDidSomething(ent);
-    }
-
-    private void OnDown(Entity<ActiveScp939VisibilityComponent> ent, ref DownedEvent args)
     {
         MobDidSomething(ent);
     }
