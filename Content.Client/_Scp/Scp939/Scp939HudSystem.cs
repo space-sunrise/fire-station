@@ -139,7 +139,7 @@ public sealed partial class Scp939HudSystem : EquipmentHudSystem<Scp939Component
 
     internal static float GetVisibility(Entity<ActiveScp939VisibilityComponent> ent)
     {
-        var acc = ent.Comp.VisibilityAccClient + ent.Comp.VisibilityAcc;
+        var acc = ent.Comp.VisibilityAcc;
 
         if (acc > ent.Comp.HideTime)
             return 0;

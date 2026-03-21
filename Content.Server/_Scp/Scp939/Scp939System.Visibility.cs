@@ -5,7 +5,6 @@ using Content.Shared.Flash;
 using Content.Shared.Item;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
-using Content.Shared.Standing;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
@@ -83,11 +82,8 @@ public sealed partial class Scp939System
 
     private void MobDidSomething(Entity<ActiveScp939VisibilityComponent> ent)
     {
-        if (MathHelper.CloseTo(ent.Comp.VisibilityAcc, Scp939VisibilityComponent.InitialVisibilityAcc))
-            return;
-
-        ent.Comp.VisibilityAcc = Scp939VisibilityComponent.InitialVisibilityAcc;
-        DirtyField(ent, ent.Comp, nameof(ActiveScp939VisibilityComponent.VisibilityAcc));
+        ent.Comp.VisibilityResetCounter++;
+        DirtyField(ent, ent.Comp, nameof(ActiveScp939VisibilityComponent.VisibilityResetCounter));
     }
 
     private void UpdateVisibilityTargets()
@@ -145,7 +141,6 @@ public sealed partial class Scp939System
         if (!_activeQuery.TryComp(ent, out var active))
         {
             active = AddComp<ActiveScp939VisibilityComponent>(ent);
-            active.VisibilityAcc = Scp939VisibilityComponent.InitialVisibilityAcc;
             active.HideTime = ent.Comp.HideTime;
             active.MinValue = ent.Comp.MinValue;
             active.MaxValue = ent.Comp.MaxValue;

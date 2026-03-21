@@ -17,6 +17,7 @@ public sealed partial class Scp939HudSystem
             => OnCollide(ent, args.OtherEntity));
         SubscribeLocalEvent((Entity<ActiveScp939VisibilityComponent> ent, ref EndCollideEvent args)
             => OnCollide(ent, args.OtherEntity));
+        SubscribeLocalEvent<ActiveScp939VisibilityComponent, AfterAutoHandleStateEvent>(OnVisibilityStateUpdated);
 
         SubscribeLocalEvent<ActiveScp939VisibilityComponent, MoveEvent>(OnMove);
 
@@ -24,6 +25,15 @@ public sealed partial class Scp939HudSystem
         SubscribeLocalEvent<ActiveScp939VisibilityComponent, StoodEvent>(OnStood);
         SubscribeLocalEvent<ActiveScp939VisibilityComponent, MeleeAttackEvent>(OnMeleeAttack);
         SubscribeLocalEvent<ActiveScp939VisibilityComponent, DownedEvent>(OnDown);
+    }
+
+    private void OnVisibilityStateUpdated(Entity<ActiveScp939VisibilityComponent> ent, ref AfterAutoHandleStateEvent args)
+    {
+        if (ent.Comp.LastHandledVisibilityResetCounter == ent.Comp.VisibilityResetCounter)
+            return;
+
+        ent.Comp.LastHandledVisibilityResetCounter = ent.Comp.VisibilityResetCounter;
+        ent.Comp.VisibilityAcc = Scp939VisibilityComponent.InitialVisibilityAcc;
     }
 
     public override void Update(float frameTime)
@@ -43,10 +53,10 @@ public sealed partial class Scp939HudSystem
         var query = EntityQueryEnumerator<ActiveScp939VisibilityComponent>();
         while (query.MoveNext(out _, out var visibilityComponent))
         {
-            if (visibilityComponent.VisibilityAccClient >= visibilityComponent.HideTime)
+            if (visibilityComponent.VisibilityAcc >= visibilityComponent.HideTime)
                 continue;
 
-            visibilityComponent.VisibilityAccClient = MathF.Min(visibilityComponent.VisibilityAccClient + delta, visibilityComponent.HideTime);
+            visibilityComponent.VisibilityAcc = MathF.Min(visibilityComponent.VisibilityAcc + delta, visibilityComponent.HideTime);
         }
     }
 
@@ -58,7 +68,7 @@ public sealed partial class Scp939HudSystem
         // В зависимости от наличие защит или проблем со зрением у 939 изменяется то, насколько хорошо мы видим жертву
         if (ModifyAcc(ent.Comp, out var modifier)) // Если зрение затруднено
         {
-            ent.Comp.VisibilityAccClient *= modifier;
+            ent.Comp.VisibilityAcc *= modifier;
         }
         else if (_scp939ProtectionQuery.HasComp(ent)) // Если имеется защита(тихое хождение)
         {
@@ -66,7 +76,7 @@ public sealed partial class Scp939HudSystem
         }
         else // Если со зрением все ок
         {
-            ent.Comp.VisibilityAccClient = 0;
+            ent.Comp.VisibilityAcc = 0;
         }
 
         if (!_movementSpeedQuery.TryComp(ent, out var speedModifierComponent)
@@ -78,7 +88,7 @@ public sealed partial class Scp939HudSystem
         var currentVelocity = physicsComponent.LinearVelocity.Length();
 
         if (speedModifierComponent.BaseWalkSpeed > currentVelocity)
-            ent.Comp.VisibilityAccClient = ent.Comp.HideTime / 2f;
+            ent.Comp.VisibilityAcc = ent.Comp.HideTime / 2f;
     }
 
 
@@ -127,7 +137,7 @@ public sealed partial class Scp939HudSystem
 
     private void MobDidSomething(Entity<ActiveScp939VisibilityComponent> ent)
     {
-        ent.Comp.VisibilityAccClient = Scp939VisibilityComponent.InitialVisibilityAcc;
+        ent.Comp.VisibilityAcc = Scp939VisibilityComponent.InitialVisibilityAcc;
     }
 
     // TODO: Переделать под статус эффект и добавить его в панель статус эффектов, а то непонятно игруну
