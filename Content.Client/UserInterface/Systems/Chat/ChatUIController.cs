@@ -1013,8 +1013,11 @@ public sealed partial class ChatUIController : UIController
         if (_examine == null || _transform == null)
             return false;
 
-        if (!_ent.EntityExists(sender) || !_ent.EntityExists(player))
+        if (!_ent.EntityExists(player))
             return false;
+
+        if (!_ent.EntityExists(sender))
+            return true;
 
         if (!_examine.IsOccluded(player.Value))
             return true;
