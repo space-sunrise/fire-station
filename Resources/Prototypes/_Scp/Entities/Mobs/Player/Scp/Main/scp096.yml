@@ -25,9 +25,11 @@
     - state: dead_to_idle
       map: [ "enum.Scp096VisualsState.DeadToIdle" ]
       visible: false
+      loop: false
     - state: agro_to_dead
       map: [ "enum.Scp096VisualsState.AgroToDead" ]
       visible: false
+      loop: false
   - type: SpriteMovement
     movementLayers:
       idle:

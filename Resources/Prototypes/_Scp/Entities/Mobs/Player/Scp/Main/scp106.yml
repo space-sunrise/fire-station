@@ -11,6 +11,7 @@
     layers:
     - map: [ "base" ]
       state: base
+      loop: false
   - type: Scp
     class: Keter
   - type: Scp106
@@ -59,13 +60,11 @@
         layer:
         - MobLayer
   - type: Appearance
-  - type: GenericVisualizer
-    visuals:
-      enum.Scp106Visuals.Visuals:
-        base:
-          Default: { state: base }
-          Entering: { state: lusha_from_ded }
-          Exiting: { state: ded_from_lusha }
+  - type: Scp106Visuals
+    baseLayer: base
+    defaultState: base
+    enteringState: lusha_from_ded
+    exitingState: ded_from_lusha
   - type: ActionGrant
     actions:
     - BecomeTeleportPhantomAction
