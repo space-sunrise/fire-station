@@ -50,7 +50,12 @@ public sealed partial class EyeWatchingSystem : EntitySystem
             // Все потенциально возможные смотрящие. Среди них те, что прошли фаст-чек из самых простых проверок
             using var potentialWatchers = ListPoolEntity<BlinkableComponent>.Rent();
             if (!TryGetAllEntitiesVisibleTo(uid, potentialWatchers.Value))
+            {
+                SetNextTime(watchingComponent);
+                Dirty(uid, watchingComponent);
+
                 continue;
+            }
 
             // Вызываем ивенты на потенциально смотрящих. Без особых проверок
             // Полезно в коде, который уже использует подобные проверки или не требует этого
@@ -78,7 +83,12 @@ public sealed partial class EyeWatchingSystem : EntitySystem
             // Выдает полный список всех сущностей, кто действительно видит цель
             using var realWatchers = ListPoolEntity<BlinkableComponent>.Rent();
             if (!TryGetWatchersFrom(uid, realWatchers.Value, potentialWatchers.Value, checkProximity: false))
+            {
+                SetNextTime(watchingComponent);
+                Dirty(uid, watchingComponent);
+
                 continue;
+            }
 
             // Вызываем ивент на смотрящем, говорящие, что он действительно видит цель
             foreach (var viewer in realWatchers.Value)

@@ -25,6 +25,7 @@ public abstract partial class SharedFearSystem
         if (!_fearQuery.TryComp(ent, out var fearComponent))
         {
             Log.Warning($"Found entity {ToPrettyString(ent)} with {nameof(HemophobiaComponent)} but without {nameof(FearComponent)}! {nameof(HemophobiaComponent)} will be deleted");
+            RemComp<HemophobiaComponent>(ent);
 
             return;
         }

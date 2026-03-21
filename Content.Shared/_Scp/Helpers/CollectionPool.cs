@@ -53,7 +53,7 @@ public static class CollectionPool<TCollection, T>
 
     /// <summary>
     /// Returns a collection to the pool. Clears the collection before storing it.
-    /// Collections will be dropped and garbage collected if the pool is full (>= 512 items) or if the collection capacity exceeds 1024.
+    /// Collections will be dropped and garbage collected if the pool is full (>= 512 items) or if the collection capacity exceeds 2048.
     /// </summary>
     /// <param name="collection">The collection to return to the pool.</param>
     internal static void Return(TCollection collection)

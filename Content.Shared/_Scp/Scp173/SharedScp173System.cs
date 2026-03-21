@@ -187,7 +187,8 @@ public abstract class SharedScp173System : EntitySystem
     {
         return Watching.TryGetAnyEntitiesVisibleTo<Scp173BlockStructureDamageComponent>(uid,
             LineOfSightBlockerLevel.None,
-            LookupFlags.Sensors | LookupFlags.Sundries);
+            LookupFlags.Sensors | LookupFlags.Sundries,
+            ContainmentRoomSearchRadius);
     }
 
     private bool CanBlind(EntityUid uid, bool showPopups = true)

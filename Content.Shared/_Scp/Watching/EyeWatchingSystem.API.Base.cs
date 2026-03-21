@@ -41,17 +41,19 @@ public sealed partial class EyeWatchingSystem
     /// <param name="potentialWatchers">Список всех, кто находится в радиусе видимости</param>
     /// <param name="type">Требуемая прозрачность линии видимости.</param>
     /// <param name="flags">Список флагов для поиска целей в <see cref="EntityLookupSystem"/></param>
+    /// <param name="rangeOverride">Если нужно использовать другой радиус поиска, отличный от <see cref="SeeRange"/></param>
     /// <typeparam name="T">Компонент, который должны иметь все сущности в радиусе видимости</typeparam>
     /// <returns>Удалось ли найти хоть кого-то</returns>
     public bool TryGetAllEntitiesVisibleTo<T>(
         Entity<TransformComponent?> ent,
         List<Entity<T>> potentialWatchers,
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
-        LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate)
+        LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate,
+        float? rangeOverride = null)
         where T : IComponent
     {
         using var searchSet = HashSetPoolEntity<T>.Rent();
-        return TryGetAllEntitiesVisibleTo(ent, potentialWatchers, searchSet.Value, type, flags);
+        return TryGetAllEntitiesVisibleTo(ent, potentialWatchers, searchSet.Value, type, flags, rangeOverride);
     }
 
     /// <summary>
@@ -68,6 +70,7 @@ public sealed partial class EyeWatchingSystem
     /// <param name="searchSet">Заранее заготовленный список, который будет использоваться в <see cref="EntityLookupSystem"/></param>
     /// <param name="type">Требуемая прозрачность линии видимости.</param>
     /// <param name="flags">Список флагов для поиска целей в <see cref="EntityLookupSystem"/></param>
+    /// <param name="rangeOverride">Если нужно использовать другой радиус поиска, отличный от <see cref="SeeRange"/></param>
     /// <typeparam name="T">Компонент, который должны иметь все сущности в радиусе видимости</typeparam>
     /// <returns>Удалось ли найти хоть кого-то</returns>
     private bool TryGetAllEntitiesVisibleTo<T>(
@@ -75,14 +78,15 @@ public sealed partial class EyeWatchingSystem
         List<Entity<T>> potentialWatchers,
         HashSet<Entity<T>> searchSet,
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
-        LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate)
+        LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate,
+        float? rangeOverride = null)
         where T : IComponent
     {
         if (!Resolve(ent.Owner, ref ent.Comp))
             return false;
 
         searchSet.Clear();
-        _lookup.GetEntitiesInRange(ent.Comp.Coordinates, SeeRange, searchSet, flags);
+        _lookup.GetEntitiesInRange(ent.Comp.Coordinates, rangeOverride ?? SeeRange, searchSet, flags);
 
         foreach (var target in searchSet)
         {
@@ -107,16 +111,18 @@ public sealed partial class EyeWatchingSystem
     /// <param name="viewer">Цель, для которой ищем сущности в радиусе видимости</param>
     /// <param name="type">Требуемая прозрачность линии видимости.</param>
     /// <param name="flags">Список флагов для поиска целей в <see cref="EntityLookupSystem"/></param>
+    /// <param name="rangeOverride">Если нужно использовать другой радиус поиска, отличный от <see cref="SeeRange"/></param>
     /// <typeparam name="T">Компонент, который должны иметь все сущности в радиусе видимости</typeparam>
     /// <returns>Удалось ли найти хоть кого-то</returns>
     public bool TryGetAnyEntitiesVisibleTo<T>(
         Entity<TransformComponent?> viewer,
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
-        LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate)
+        LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate,
+        float? rangeOverride = null)
         where T : IComponent
     {
         using var searchSet = HashSetPoolEntity<T>.Rent();
-        if (!TryGetAnyEntitiesVisibleTo(viewer, out _, searchSet.Value, type, flags))
+        if (!TryGetAnyEntitiesVisibleTo(viewer, out _, searchSet.Value, type, flags, rangeOverride))
             return false;
 
         return true;
@@ -135,19 +141,21 @@ public sealed partial class EyeWatchingSystem
     /// <param name="firstVisible">Первая попавшаяся сущность в радиусе видимости цели</param>
     /// <param name="type">Требуемая прозрачность линии видимости.</param>
     /// <param name="flags">Список флагов для поиска целей в <see cref="EntityLookupSystem"/></param>
+    /// <param name="rangeOverride">Если нужно использовать другой радиус поиска, отличный от <see cref="SeeRange"/></param>
     /// <typeparam name="T">Компонент, который должны иметь все сущности в радиусе видимости</typeparam>
     /// <returns>Удалось ли найти хоть кого-то</returns>
     public bool TryGetAnyEntitiesVisibleTo<T>(
         Entity<TransformComponent?> viewer,
         [NotNullWhen(true)] out Entity<T>? firstVisible,
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
-        LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate)
+        LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate,
+        float? rangeOverride = null)
         where T : IComponent
     {
         firstVisible = null;
 
         using var searchSet = HashSetPoolEntity<T>.Rent();
-        if (!TryGetAnyEntitiesVisibleTo(viewer, out var first, searchSet.Value, type, flags))
+        if (!TryGetAnyEntitiesVisibleTo(viewer, out var first, searchSet.Value, type, flags, rangeOverride))
             return false;
 
         firstVisible = first;
@@ -168,6 +176,7 @@ public sealed partial class EyeWatchingSystem
     /// <param name="searchSet">Заранее заготовленный список, который будет использоваться в <see cref="EntityLookupSystem"/></param>
     /// <param name="type">Требуемая прозрачность линии видимости.</param>
     /// <param name="flags">Список флагов для поиска целей в <see cref="EntityLookupSystem"/></param>
+    /// <param name="rangeOverride">Если нужно использовать другой радиус поиска, отличный от <see cref="SeeRange"/></param>
     /// <typeparam name="T">Компонент, который должны иметь все сущности в радиусе видимости</typeparam>
     /// <returns>Удалось ли найти хоть кого-то</returns>
     private bool TryGetAnyEntitiesVisibleTo<T>(
@@ -175,7 +184,8 @@ public sealed partial class EyeWatchingSystem
         [NotNullWhen(true)] out Entity<T>? firstVisible,
         HashSet<Entity<T>> searchSet,
         LineOfSightBlockerLevel type = LineOfSightBlockerLevel.Transparent,
-        LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate)
+        LookupFlags flags = LookupFlags.Uncontained | LookupFlags.Approximate,
+        float? rangeOverride = null)
         where T : IComponent
     {
         firstVisible = null;
@@ -184,7 +194,7 @@ public sealed partial class EyeWatchingSystem
             return false;
 
         searchSet.Clear();
-        _lookup.GetEntitiesInRange(viewer.Comp.Coordinates, SeeRange, searchSet, flags);
+        _lookup.GetEntitiesInRange(viewer.Comp.Coordinates, rangeOverride ?? SeeRange, searchSet, flags);
 
         foreach (var target in searchSet)
         {
@@ -237,9 +247,6 @@ public sealed partial class EyeWatchingSystem
             return false; // Если не видит, то не считаем его как смотрящего
 
         if (checkBlinking && _blinking.IsBlind(viewer, useTimeCompensation))
-            return false;
-
-        if (!checkBlinking && _blinking.AreEyesClosedManually(viewer))
             return false;
 
         var canSeeAttempt = new CanSeeAttemptEvent();

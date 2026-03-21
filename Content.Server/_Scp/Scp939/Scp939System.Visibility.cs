@@ -17,7 +17,7 @@ public sealed partial class Scp939System
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private static readonly TimeSpan VisibilityRefreshInterval = TimeSpan.FromSeconds(0.25f);
+    private static readonly TimeSpan VisibilityRefreshInterval = TimeSpan.FromSeconds(0.2f);
 
     private TimeSpan _nextVisibilityRefresh = TimeSpan.Zero;
     private readonly HashSet<EntityUid> _visibilityActiveTargets = [];

@@ -28,5 +28,5 @@ public sealed partial class FearFaintingComponent : Component
     public float Chance = 0.3f;
 
     [DataField]
-    public  EntProtoId StatusEffect = "StatusEffectForcedSleeping";
+    public EntProtoId StatusEffect = "StatusEffectForcedSleeping";
 }

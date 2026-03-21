@@ -184,8 +184,11 @@ public abstract partial class SharedFearSystem
 
     private void ManageFallOff(Entity<FearComponent> ent)
     {
-        if (ent.Comp.State >= ent.Comp.FallOffRequiredState && !HasComp<ActiveFearFallOffComponent>(ent))
+        if (ent.Comp.State >= ent.Comp.FallOffRequiredState)
         {
+            if (HasComp<ActiveFearFallOffComponent>(ent))
+                return;
+
             var comp = EnsureComp<ActiveFearFallOffComponent>(ent);
             comp.FallOffChance = ent.Comp.FallOffChance;
             Dirty(ent, comp);

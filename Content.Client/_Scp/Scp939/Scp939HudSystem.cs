@@ -36,6 +36,9 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
     private Scp939Component? _scp939Component;
 
     private EntityQuery<EyeComponent> _eyeQuery;
+    private EntityQuery<Scp939ProtectionComponent> _scp939ProtectionQuery;
+    private EntityQuery<MovementSpeedModifierComponent> _movementSpeedQuery;
+    private EntityQuery<PhysicsComponent> _physicsQuery;
 
     private bool _overlaysPresented;
     private float _lastUpdateTime;
@@ -68,6 +71,9 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         SubscribeLocalEvent<Scp939Component, PlayerDetachedEvent>(OnPlayerDetached);
 
         _eyeQuery = GetEntityQuery<EyeComponent>();
+        _scp939ProtectionQuery = GetEntityQuery<Scp939ProtectionComponent>();
+        _movementSpeedQuery = GetEntityQuery<MovementSpeedModifierComponent>();
+        _physicsQuery = GetEntityQuery<PhysicsComponent>();
 
         _setAlphaOverlay = new();
         _resetAlphaOverlay = new();
@@ -167,7 +173,6 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
     private void MobDidSomething(Entity<ActiveScp939VisibilityComponent> ent)
     {
         ent.Comp.VisibilityAcc = Scp939VisibilityComponent.InitialVisibilityAcc;
-        Dirty(ent);
     }
 
     private void OnMove(Entity<ActiveScp939VisibilityComponent> ent, ref MoveEvent args)
@@ -180,7 +185,7 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
         {
             ent.Comp.VisibilityAcc *= modifier;
         }
-        else if (HasComp<Scp939ProtectionComponent>(ent)) // Если имеется защита(тихое хождение)
+        else if (_scp939ProtectionQuery.HasComp(ent)) // Если имеется защита(тихое хождение)
         {
             return;
         }
@@ -189,8 +194,8 @@ public sealed class Scp939HudSystem : EquipmentHudSystem<Scp939Component>
             ent.Comp.VisibilityAcc = 0;
         }
 
-        if (!TryComp<MovementSpeedModifierComponent>(ent, out var speedModifierComponent)
-            || !TryComp<PhysicsComponent>(ent, out var physicsComponent))
+        if (!_movementSpeedQuery.TryComp(ent, out var speedModifierComponent)
+            || !_physicsQuery.TryComp(ent, out var physicsComponent))
         {
             return;
         }
