@@ -1,4 +1,4 @@
-ent-KeyCardMtfBase = { ent-KeyCardMtfBase }
+ent-KeyCardMtfBase = { ent-KeyCardBase }
     .desc = { ent-KeyCardMtfBase.desc }
 ent-KeyCardMtfHDLeader = { ent-KeyCardMtfBase } командира
     .desc = { ent-KeyCardMtfBase.desc }
