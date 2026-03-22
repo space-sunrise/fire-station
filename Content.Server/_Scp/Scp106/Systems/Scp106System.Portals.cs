@@ -25,7 +25,7 @@ public sealed partial class Scp106System
         if (args.Handled)
             return;
 
-        SendToBackrooms(args.User);
+        _ = SendToBackrooms(args.User);
         args.Handled = true;
     }
 
@@ -40,7 +40,7 @@ public sealed partial class Scp106System
         if (!_mobState.IsIncapacitated(ent))
             return;
 
-        SendToBackrooms(ent);
+        _ = SendToBackrooms(ent);
     }
 
     private void OnPortalSpawn(Entity<Scp106PortalSpawnerComponent> ent, ref ComponentInit args)
@@ -50,7 +50,7 @@ public sealed partial class Scp106System
 
     private void CheckPortals()
     {
-        var query = AllEntityQuery<Scp106PortalSpawnerComponent>();
+        var query = EntityQueryEnumerator<Scp106PortalSpawnerComponent>();
         while (query.MoveNext(out var uid, out var comp))
         {
             if (comp.NextSpawnTime > _timing.CurTime)

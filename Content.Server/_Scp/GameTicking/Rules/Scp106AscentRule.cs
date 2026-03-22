@@ -9,7 +9,6 @@ using Content.Server.GameTicking;
 using Content.Server.GameTicking.Rules;
 using Content.Server.Ghost;
 using Content.Server.Jittering;
-using Content.Server.Light.Components;
 using Content.Server.Nuke;
 using Content.Server.RoundEnd;
 using Content.Server.Speech.EntitySystems;
@@ -57,20 +56,24 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     private static readonly TimeSpan AscentFailTime = TimeSpan.FromMinutes(5f);
     private static readonly TimeSpan AscentAnnounceAfter = TimeSpan.FromSeconds(5f);
 
-    private static bool _tickEffectEnabled;
+    private bool _tickEffectEnabled;
     private static readonly TimeSpan TickEffectCooldown = TimeSpan.FromSeconds(1f);
-    private static TimeSpan _nextTickEffectTime;
+    private TimeSpan _nextTickEffectTime;
 
-    private static readonly SoundSpecifier TickEffectSound = new SoundPathSpecifier("/Audio/_Scp/Effects/tick.ogg");
+    private static readonly SoundSpecifier TickEffectSound =
+        new SoundPathSpecifier("/Audio/_Scp/Effects/tick.ogg");
 
-    private static readonly SoundSpecifier ShiftStartSound = new SoundCollectionSpecifier("ShiftStart");
-    private static readonly SoundSpecifier ShiftPassedSound = new SoundPathSpecifier("/Audio/_Scp/Effects/Shift/passed.ogg");
+    private static readonly SoundSpecifier ShiftStartSound =
+        new SoundCollectionSpecifier("ShiftStart");
+    private static readonly SoundSpecifier ShiftPassedSound =
+        new SoundPathSpecifier("/Audio/_Scp/Effects/Shift/passed.ogg");
 
     private static readonly ProtoId<AmbientMusicPrototype> ShiftAddedMusic = "ShiftAdded";
     private static readonly ProtoId<AmbientMusicPrototype> ShiftStartedMusic = "ShiftStarted";
     private static readonly ProtoId<AmbientMusicPrototype> ShiftAvertedMusic = "ShiftAverted";
 
-    private static readonly SoundSpecifier ShiftNoReturnPointReachedMusic = new SoundPathSpecifier("/Audio/_Scp/Ambient/Shift/noreturn.ogg");
+    private static readonly SoundSpecifier ShiftNoReturnPointReachedMusic =
+        new SoundPathSpecifier("/Audio/_Scp/Ambience/Music/Shift/noreturn.ogg");
 
     private static readonly ProtoId<AudioPresetPrototype> FancyEffect = "Dizzy";
 
@@ -79,7 +82,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
     private static readonly TimeSpan ReturnCachedAlertLevelAfter = TimeSpan.FromSeconds(5f);
 
-    private static bool _noReturnPointReached;
+    private bool _noReturnPointReached;
 
     // В теории несколько событий сразу без сранья педалями быть не должно, поэтому для удобства оно будет тут сохранено
     private EntityUid _ruleUid;
@@ -91,7 +94,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
     {
         base.Initialize();
 
-        SubscribeLocalEvent<Scp106PortalSpawnerComponent, EntityTerminatingEvent>(OnSpawnerShutdown);
+        SubscribeLocalEvent<Scp106PortalSpawnerComponent, ComponentShutdown>(OnSpawnerShutdown);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
 
         SubscribeLocalEvent<HumanoidAppearanceComponent, PlayerAttachedEvent>(OnPlayerAttached);
@@ -169,11 +172,13 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         var humans = _scp106.CountHumansInBackrooms();
 
         // Если событие было остановлено до начала(людей спасли)
+#if !DEBUG && !TOOLS
         if (humans < Scp106System.HumansInBackroomsRequiredToAscent)
         {
             EarlyAvert((uid, component));
             return;
         }
+#endif
 
         if (!TryGetRandomStation(out var station))
             return;
@@ -229,7 +234,7 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
 
     private void OnTimeEnded()
     {
-        if (!_gameTicker.IsGameRuleAdded(Scp106System.AscentRule))
+        if (!_gameTicker.IsGameRuleActive(Scp106System.AscentRule))
             return;
 
         var timeToExplosion = ToggleNuke();
@@ -269,19 +274,28 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
         return TimeSpan.FromSeconds(nuke.Timer);
     }
 
-    private void OnSpawnerShutdown(Entity<Scp106PortalSpawnerComponent> ent, ref EntityTerminatingEvent args)
+    private void OnSpawnerShutdown(Entity<Scp106PortalSpawnerComponent> ent, ref ComponentShutdown args)
     {
-        if (!_gameTicker.IsGameRuleAdded(Scp106System.AscentRule))
+        if (!_gameTicker.IsGameRuleActive(Scp106System.AscentRule))
             return;
 
         // Если не успели - уже ничего не поможет
         if (_noReturnPointReached)
             return;
 
-        var allPortals = EntityQuery<Scp106PortalSpawnerComponent>();
+        var foundOtherPortals = false;
+        var query = EntityQueryEnumerator<Scp106PortalSpawnerComponent>();
+        while (query.MoveNext(out var uid, out _))
+        {
+            if (ent.Owner == uid)
+                continue;
+
+            foundOtherPortals = true;
+            break;
+        }
 
         // Если все порталы уничтожены до начала конца, то все заебись все молодцы
-        if (!allPortals.Any())
+        if (!foundOtherPortals)
             Avert();
     }
 
