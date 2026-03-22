@@ -225,7 +225,7 @@
       - Scp
       - MobState
       requireAll: true
-    targetBlacklistL:
+    targetBlacklist:
       components:
       - Scp096Face
     otherMapWhitelist:
