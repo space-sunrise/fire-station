@@ -20,7 +20,7 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     /// Захешированные эффекты под их прототипами пренитов. Позволяет не засрать слоты OpenAL сотней одинаковых эффектов
     /// </summary>
     private readonly Dictionary<ProtoId<AudioPresetPrototype>, EntityUid> _cachedEffects = new ();
-    private static CancellationTokenSource _tokenSource = new();
+    private CancellationTokenSource _tokenSource = new();
 
     private static readonly TimeSpan RaceConditionWaiting = TimeSpan.FromTicks(10L);
 
