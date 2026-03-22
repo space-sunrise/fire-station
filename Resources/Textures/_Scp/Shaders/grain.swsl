@@ -18,8 +18,8 @@ void fragment()
     mediump vec4 color = texture(SCREEN_TEXTURE, UV);
     mediump vec2 uv = UV * 10.1;
 
-    mediump float timeFactor = TIME * 10.0;
-    mediump float x = (uv.x + 1.0) * (uv.y + 2.0) * timeFactor;
+    mediump float timeFactor = mod(TIME, 100.0) * 10.0;
+    mediump float x = (uv.x + 1.0) * (uv.y + 2.0) * (timeFactor + 1.0);
 
     mediump float modX = mod(x, 123.0) + 1.0;
     mediump float modY = mod(x, 312.0) + 1.0;
