@@ -195,9 +195,6 @@
   id: JobLLHSpecialist
 
 - type: playTimeTracker
-  id: JobLLHCadet
-
-- type: playTimeTracker
   id: JobMHLeader
 
 - type: playTimeTracker
@@ -211,9 +208,6 @@
 
 - type: playTimeTracker
   id: JobRRHSpecialist
-
-- type: playTimeTracker
-  id: JobRRHCadet
 
 - type: playTimeTracker
   id: JobNTFLeader
