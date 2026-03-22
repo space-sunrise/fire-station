@@ -7,7 +7,6 @@ using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Audio;
 
@@ -18,7 +17,6 @@ namespace Content.Client._Scp.Audio;
 public sealed class EchoEffectSystem : EntitySystem
 {
     [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
-    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     private static readonly ProtoId<AudioPresetPrototype> StandardEchoEffectPreset = "Bathroom";
@@ -26,6 +24,9 @@ public sealed class EchoEffectSystem : EntitySystem
 
     private bool _isClientSideEnabled;
     private bool _strongPresetPreferred;
+
+    private EntityQuery<AudioComponent> _audioQuery;
+    private EntityQuery<AudioEchoEffectAffectedComponent> _echoQuery;
 
     public override void Initialize()
     {
@@ -39,6 +40,9 @@ public sealed class EchoEffectSystem : EntitySystem
 
         _cfg.OnValueChanged(ScpCCVars.EchoEnabled, OnEnabledToggled);
         _cfg.OnValueChanged(ScpCCVars.EchoStrongPresetPreferred, OnPreferredPresetToggled);
+
+        _audioQuery = GetEntityQuery<AudioComponent>();
+        _echoQuery = GetEntityQuery<AudioEchoEffectAffectedComponent>();
     }
 
     public override void Shutdown()
@@ -62,7 +66,7 @@ public sealed class EchoEffectSystem : EntitySystem
         if (!_isClientSideEnabled)
             return;
 
-        if (!TryComp<AudioComponent>(ent.Owner, out var audio))
+        if (!_audioQuery.TryComp(ent.Owner, out var audio))
             return;
 
         TryApplyEcho((ent.Owner, audio));
@@ -76,11 +80,11 @@ public sealed class EchoEffectSystem : EntitySystem
     /// <returns>Получилось или не получилось применить эффект</returns>
     public bool TryApplyEcho(Entity<AudioComponent> sound, ProtoId<AudioPresetPrototype>? preset = null)
     {
-        if (TerminatingOrDeleted(sound) || Paused(sound))
+        if (TerminatingOrDeleted(sound))
             return false;
 
         // Фоновая музыка не должна подвергаться эффектам эха
-        if (sound.Comp.Global)
+        if (sound.Comp.Global || !sound.Comp.Loaded)
             return false;
 
         // Выбираем пресет для эха исходя из настроек игрока и возможного приоритетного эффекта при вызове извне системы
@@ -101,7 +105,7 @@ public sealed class EchoEffectSystem : EntitySystem
     /// </summary>
     public bool TryRemoveEcho(Entity<AudioComponent> sound, AudioEchoEffectAffectedComponent? echoComp = null)
     {
-        if (!Resolve(sound, ref echoComp))
+        if (!_echoQuery.Resolve(sound, ref echoComp))
             return false;
 
         if (!_effectsManager.TryRemoveEffect(sound, echoComp.Preset))

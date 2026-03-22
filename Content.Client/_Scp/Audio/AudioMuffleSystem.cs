@@ -25,13 +25,9 @@ public sealed class AudioMuffleSystem : EntitySystem
     private const float ReducedVolume = -20f;
 
     private bool _isClientSideEnabled;
-    // Отвечает за выбор цикла для итерации звуков.
-    // При true будет использована итерация каждый фрейм, что гораздо больше, чем стандартный Update
-    // Но это может позволить избежать проблем со звуками, которые успеют издать пук между тиками
-    // При true будет использовать FrameUpdate. При false стандартный завязанный на тиках Update
-    private bool _useHighFrequencyUpdate;
 
     private EntityQuery<StationAiHeldComponent> _aiQuery;
+    private EntityQuery<AudioMuffledComponent> _audioMuffledQuery;
 
     #region CCvar events
 
@@ -39,12 +35,15 @@ public sealed class AudioMuffleSystem : EntitySystem
     {
         base.Initialize();
 
+        UpdatesOutsidePrediction = true;
+        UpdatesAfter.Add(typeof(AudioSystem));
+
         _isClientSideEnabled = _cfg.GetCVar(ScpCCVars.AudioMufflingEnabled);
 
         _cfg.OnValueChanged(ScpCCVars.AudioMufflingEnabled, OnToggled);
-        _cfg.OnValueChanged(ScpCCVars.AudioMufflingHighFrequencyUpdate, b => _useHighFrequencyUpdate = b);
 
         _aiQuery = GetEntityQuery<StationAiHeldComponent>();
+        _audioMuffledQuery = GetEntityQuery<AudioMuffledComponent>();
     }
 
     public override void Shutdown()
@@ -52,32 +51,15 @@ public sealed class AudioMuffleSystem : EntitySystem
         base.Shutdown();
 
         _cfg.UnsubValueChanged(ScpCCVars.AudioMufflingEnabled, OnToggled);
-        _cfg.UnsubValueChanged(ScpCCVars.AudioMufflingHighFrequencyUpdate, b => _useHighFrequencyUpdate = b);
     }
 
     #endregion
-
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        if (!_isClientSideEnabled)
-            return;
-
-        if (_useHighFrequencyUpdate)
-            return;
-
-        IterateAudios();
-    }
 
     public override void FrameUpdate(float frameTime)
     {
         base.FrameUpdate(frameTime);
 
         if (!_isClientSideEnabled)
-            return;
-
-        if (!_useHighFrequencyUpdate)
             return;
 
         IterateAudios();
@@ -101,15 +83,18 @@ public sealed class AudioMuffleSystem : EntitySystem
             return;
 
         var player = _player.LocalEntity.Value;
-        var query = EntityQueryEnumerator<AudioComponent>();
+        var query = AllEntityQuery<AudioComponent, MetaDataComponent>();
 
-        while (query.MoveNext(out var sound, out var audioComp))
+        while (query.MoveNext(out var sound, out var audioComp, out var meta))
         {
-            if (TerminatingOrDeleted(sound))
+            if (TerminatingOrDeleted(sound, meta))
                 continue;
 
             // Глобальные звуки(музыка и т.д) не должны поддаваться заглушению
-            if (audioComp.Global)
+            if (audioComp.Global || !audioComp.Loaded || !audioComp.Started)
+                continue;
+
+            if (audioComp.ExcludedEntity == player)
                 continue;
 
             var lineOfSight = _proximity.GetLightOfSightBlockerLevel(sound, player);
@@ -147,10 +132,7 @@ public sealed class AudioMuffleSystem : EntitySystem
     /// <returns>Получилось ли добавить эффект?</returns>
     public bool TryMuffleSound(Entity<AudioComponent> ent, bool decreaseVolume = true)
     {
-        if (AudioEffectsManagerSystem.HasEffect(ent, MufflingEffectPreset))
-            return false;
-
-        if (HasComp<AudioMuffledComponent>(ent))
+        if (_audioMuffledQuery.HasComp(ent))
             return false;
 
         // Добавляем компонент-маркер, что звук заглушен
@@ -180,10 +162,7 @@ public sealed class AudioMuffleSystem : EntitySystem
     /// <returns></returns>
     public bool TryUnMuffleSound(Entity<AudioComponent> ent, AudioMuffledComponent? muffledComponent = null)
     {
-        if (!AudioEffectsManagerSystem.HasEffect(ent, MufflingEffectPreset))
-            return false;
-
-        if (!Resolve(ent.Owner, ref muffledComponent))
+        if (!_audioMuffledQuery.Resolve(ent.Owner, ref muffledComponent, false))
             return false;
 
         _effectsManager.TryRemoveEffect(ent, MufflingEffectPreset);
