@@ -19,10 +19,12 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     /// <summary>
     /// Захешированные эффекты под их прототипами пренитов. Позволяет не засрать слоты OpenAL сотней одинаковых эффектов
     /// </summary>
-    private static readonly Dictionary<ProtoId<AudioPresetPrototype>, EntityUid> CachedEffects = new ();
+    private readonly Dictionary<ProtoId<AudioPresetPrototype>, EntityUid> _cachedEffects = new ();
     private static CancellationTokenSource _tokenSource = new();
 
     private static readonly TimeSpan RaceConditionWaiting = TimeSpan.FromTicks(10L);
+
+    private bool _isAuxiliariesSafe = true;
 
     public override void Initialize()
     {
@@ -38,9 +40,9 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         Clear();
     }
 
-    private static void Clear()
+    private void Clear()
     {
-        CachedEffects.Clear();
+        _cachedEffects.Clear();
 
         _tokenSource.Cancel();
         _tokenSource = new();
@@ -51,7 +53,7 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     /// </summary>
     public bool TryAddEffect(Entity<AudioComponent> sound, ProtoId<AudioPresetPrototype> preset)
     {
-        if (!CachedEffects.TryGetValue(preset, out var effect) && !TryCreateEffect(preset, out effect))
+        if (!_cachedEffects.TryGetValue(preset, out var effect) && !TryCreateEffect(preset, out effect))
             return false;
 
         // ЕБАННЫЙ РОТ ЭТОГО РЕЙС КОДИШЕН
@@ -83,7 +85,7 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     /// </summary>
     public bool TryRemoveEffect(Entity<AudioComponent> sound, ProtoId<AudioPresetPrototype> preset)
     {
-        if (!CachedEffects.TryGetValue(preset, out var effect))
+        if (!_cachedEffects.TryGetValue(preset, out var effect))
             return false;
 
         if (sound.Comp.Auxiliary != effect)
@@ -111,16 +113,32 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         if (!_prototype.TryIndex(preset, out var prototype))
             return false;
 
-        var effect = _audio.CreateEffect();
+        if (!_isAuxiliariesSafe)
+            return false;
+
+        (EntityUid Entity, AudioEffectComponent Component)? effect;
+        try
+        {
+            effect = _audio.CreateEffect();
+        }
+        catch (Exception e)
+        {
+            Log.Info($"Encountered error {e} while creating audio effect, if you see this log in Integration Test its ok");
+
+            _isAuxiliariesSafe = false;
+            return false;
+        }
+
+        _isAuxiliariesSafe = true;
         var auxiliary = _audio.CreateAuxiliary();
 
-        _audio.SetEffectPreset(effect.Entity, effect.Component, prototype);
-        _audio.SetEffect(auxiliary.Entity, auxiliary.Component, effect.Entity);
+        _audio.SetEffectPreset(effect.Value.Entity, effect.Value.Component, prototype);
+        _audio.SetEffect(auxiliary.Entity, auxiliary.Component, effect.Value.Entity);
 
         if (!Exists(auxiliary.Entity))
             return false;
 
-        if (!CachedEffects.TryAdd(preset, auxiliary.Entity))
+        if (!_cachedEffects.TryAdd(preset, auxiliary.Entity))
             return false;
 
         effectStuff = auxiliary.Entity;
@@ -128,9 +146,9 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         return true;
     }
 
-    public static bool HasEffect(Entity<AudioComponent> sound, ProtoId<AudioPresetPrototype> preset)
+    public bool HasEffect(Entity<AudioComponent> sound, ProtoId<AudioPresetPrototype> preset)
     {
-        if (!CachedEffects.TryGetValue(preset, out var effect))
+        if (!_cachedEffects.TryGetValue(preset, out var effect))
             return false;
 
         return sound.Comp.Auxiliary == effect;
@@ -140,7 +158,7 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     {
         preset = null;
 
-        foreach (var (storedPreset, auxUid) in CachedEffects)
+        foreach (var (storedPreset, auxUid) in _cachedEffects)
         {
             if (sound.Comp.Auxiliary != auxUid)
                 continue;
