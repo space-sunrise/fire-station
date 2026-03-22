@@ -23,3 +23,13 @@
   time: 5
   solids:
     Scp173PaintChips: 1
+
+- type: microwaveMealRecipe
+  id: ScpRecipeBaseballBurger
+  name: baseball burger recipe
+  result: FoodBurgerBaseball
+  time: 10
+  group: Savory
+  solids:
+    FoodBreadBun: 1
+    ScpBaseBallBat: 1

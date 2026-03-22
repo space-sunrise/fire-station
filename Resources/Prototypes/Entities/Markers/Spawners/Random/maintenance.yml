@@ -334,7 +334,7 @@
       children:
       - id: Machete
       - id: Claymore
-      - id: BaseBallBat
+      - id: ScpBaseBallBat # Fire edit
       - id: CombatKnife
       - id: Spear
       - id: RifleStock

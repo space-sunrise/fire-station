@@ -99,6 +99,7 @@
   graph: WoodenBuckler
   startNode: start
   targetNode: woodenBuckler
+  hide: true
   category: construction-category-weapons
   objectType: Item
 

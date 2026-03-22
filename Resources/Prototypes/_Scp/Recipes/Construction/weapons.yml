@@ -1,0 +1,7 @@
+- type: construction
+  id: ScpWoodenBuckler
+  graph: ScpWoodenBuckler
+  startNode: start
+  targetNode: woodenBuckler
+  category: construction-category-weapons
+  objectType: Item

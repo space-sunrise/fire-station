@@ -3,6 +3,7 @@
   graph: WoodenBat
   startNode: start
   targetNode: bat
+  hide: true
   category: construction-category-weapons
   objectType: Item
 

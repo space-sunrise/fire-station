@@ -344,6 +344,7 @@
   graph: HiltWoodGraph
   startNode: start
   targetNode: hilt
+  hide: true
   category: construction-category-tools
   objectType: Item
   description: crafting-menu-text-WH

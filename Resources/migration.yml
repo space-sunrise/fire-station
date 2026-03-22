@@ -1081,6 +1081,7 @@ WallMiningDiagonal: ScpWallConcreteDiagonal
 SolidSecretDoor: ScpSolidSecretDoor
 WindowFrostedDirectional: ScpWindowReinforcedDirectional
 WallBrick: ScpWallFireBrick
+WallWood: ScpWallWood
 
 PlasticFlapsAirtightClear: ScpPlasticFlapsAirtightClear
 PlasticFlapsAirtightOpaque: ScpPlasticFlapsAirtightOpaque
@@ -2649,6 +2650,22 @@ ChairWood: ScpChairWood
 WoodenBench: ScpWoodenBench
 ChairRitual: ScpChairRitual
 ChairCursed: ScpChairCursed
+
+# Wallmount storage replacements
+ShelfWood: ScpShelfWood
+ShelfRWood: ScpShelfRWood
+
+# Melee weapon replacements
+BaseBallBat: ScpBaseBallBat
+IncompleteBaseBallBat: ScpIncompleteBaseBallBat
+
+# Shield replacements
+WoodenBuckler: ScpWoodenBuckler
+
+# Craft part replacements
+HiltWood: ScpHiltWood
+
+# Floor tile replacements
 FloorTileItemWood: ScpFloorTileItemWood
 FloorTileItemWoodLarge: ScpFloorTileItemWoodLarge
 FloorTileItemWoodPattern: ScpFloorTileItemWoodPattern
