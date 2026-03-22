@@ -30,6 +30,11 @@ namespace Content.Server.Chat.Commands
             if (player.Status != SessionStatus.InGame || player.AttachedEntity == null)
                 return;
 
+            // Fire edit start
+            shell.WriteLine(Loc.GetString("suicide-command-life-is-good"));
+            return;
+            // Fire edit end
+
             var minds = _e.System<SharedMindSystem>();
 
             // This check also proves mind not-null for at the end when the mob is ghosted.
