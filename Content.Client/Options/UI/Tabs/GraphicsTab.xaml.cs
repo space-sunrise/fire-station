@@ -145,7 +145,6 @@ public sealed partial class GraphicsTab : Control
                     // Fire added start
                     _cfg.SetCVar(ScpCCVars.LightBloomEnable, false);
                     _cfg.SetCVar(ScpCCVars.FieldOfViewBlurScale, 0.25f);
-                    _cfg.SetCVar(ScpCCVars.AudioMufflingHighFrequencyUpdate, false);
                     // Fire added end
                     break;
                 case QualityLow:
@@ -155,7 +154,6 @@ public sealed partial class GraphicsTab : Control
                     // Fire added start
                     _cfg.SetCVar(ScpCCVars.LightBloomEnable, false);
                     _cfg.SetCVar(ScpCCVars.FieldOfViewBlurScale, 0.4f);
-                    _cfg.SetCVar(ScpCCVars.AudioMufflingHighFrequencyUpdate, false);
                     // Fire added end
                     break;
                 default: // = QualityMedium
@@ -165,7 +163,6 @@ public sealed partial class GraphicsTab : Control
                     // Fire added start
                     _cfg.SetCVar(ScpCCVars.LightBloomEnable, true);
                     _cfg.SetCVar(ScpCCVars.FieldOfViewBlurScale, 0.7f);
-                    _cfg.SetCVar(ScpCCVars.AudioMufflingHighFrequencyUpdate, false);
                     // Fire added end
                     break;
                 case QualityHigh:

@@ -58,7 +58,6 @@ public sealed partial class ScpTab : Control
 
         // Подавление звуков
         Control.AddOptionCheckBox(ScpCCVars.AudioMufflingEnabled, AudioMufflingEnabled);
-        Control.AddOptionCheckBox(ScpCCVars.AudioMufflingHighFrequencyUpdate, AudioMufflingHighFrequencyUpdate);
 
         /*
          * Игра
@@ -86,7 +85,6 @@ public sealed partial class ScpTab : Control
         ToggleBloom();
         ToggleBloomCone();
         ToggleEcho();
-        ToggleAudioMuffling();
     }
 
     protected override void EnteredTree()
@@ -97,7 +95,6 @@ public sealed partial class ScpTab : Control
         LightBloomEnable.OnToggled += ToggleBloom;
         LightBloomConeEnable.OnToggled += ToggleBloomCone;
         EchoEnabled.OnToggled += ToggleEcho;
-        AudioMufflingEnabled.OnToggled += ToggleAudioMuffling;
     }
 
     protected override void ExitedTree()
@@ -108,7 +105,6 @@ public sealed partial class ScpTab : Control
         LightBloomEnable.OnToggled -= ToggleBloom;
         LightBloomConeEnable.OnToggled -= ToggleBloomCone;
         EchoEnabled.OnToggled -= ToggleEcho;
-        AudioMufflingEnabled.OnToggled -= ToggleAudioMuffling;
     }
 
     private void ToggleGrain(BaseButton.ButtonToggledEventArgs value = default!)
@@ -134,10 +130,5 @@ public sealed partial class ScpTab : Control
     private void ToggleEcho(BaseButton.ButtonToggledEventArgs value = default!)
     {
         EchoStrongPresetPreferred.Visible = EchoEnabled.Pressed;
-    }
-
-    private void ToggleAudioMuffling(BaseButton.ButtonToggledEventArgs value = default!)
-    {
-        AudioMufflingHighFrequencyUpdate.Visible = AudioMufflingEnabled.Pressed;
     }
 }

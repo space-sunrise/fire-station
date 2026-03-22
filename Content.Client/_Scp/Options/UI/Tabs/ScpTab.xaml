@@ -69,9 +69,6 @@
                 <CheckBox Name="AudioMufflingEnabled"
                           Text="{Loc ui-options-scp-audio-muffling-enabled}"
                           ToolTip="{Loc ui-options-scp-audio-muffling-enabled-tooltip}" />
-                <CheckBox Name="AudioMufflingHighFrequencyUpdate"
-                          Text="{Loc ui-options-scp-audio-muffling-use-high-frequency-update}"
-                          ToolTip="{Loc ui-options-scp-audio-muffling-use-high-frequency-update-tooltip}" />
 
                 <!-- ИГРА -->
                 <Label Text="{Loc ui-options-scp-game}" StyleClasses="LabelKeyText"/>

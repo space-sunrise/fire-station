@@ -31,12 +31,6 @@ public sealed partial class ScpCCVars
         CVarDef.Create("scp.audio_muffling_enabled", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
-    /// Enables a higher-frequency update mode for audio muffling parameters.
-    /// </summary>
-    public static readonly CVarDef<bool> AudioMufflingHighFrequencyUpdate =
-        CVarDef.Create("scp.audio_muffling_use_high_frequency_update", false, CVar.CLIENTONLY | CVar.ARCHIVE);
-
-    /// <summary>
     /// Controls how aggressively occlusion attenuates gain through the exponential falloff curve.
     /// </summary>
     public static readonly CVarDef<float> AudioMufflingOcclusionGainFalloff =
