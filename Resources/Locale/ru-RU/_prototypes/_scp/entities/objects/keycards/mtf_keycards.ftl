@@ -1,5 +1,5 @@
 ent-KeyCardMtfBase = { ent-KeyCardBase }
-    .desc = { ent-KeyCardMtfBase.desc }
+    .desc = { ent-KeyCardBase.desc }
 ent-KeyCardMtfHDLeader = { ent-KeyCardMtfBase } командира
     .desc = { ent-KeyCardMtfBase.desc }
     .suffix = { ghost-role-information-mtf-leader-HD-name }

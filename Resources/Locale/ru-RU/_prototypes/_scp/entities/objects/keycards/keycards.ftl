@@ -1,6 +1,6 @@
-ent-KeyCardBase = ключ карта
+ent-KeyCardBase = ключ-карта
     .desc = Персональная идентификационная карта на шнуре для ношения на шее. Содержит магнитно-чиповый модуль с данными владельца и перечнем разрешённых зон доступа.
-    .suffix = SCP ключ карта
+    .suffix = SCP ключ-карта
 ent-KeyCardDirector = { ent-KeyCardBase } директора
     .desc = { ent-KeyCardBase.desc }
     .suffix = { job-name-director }
