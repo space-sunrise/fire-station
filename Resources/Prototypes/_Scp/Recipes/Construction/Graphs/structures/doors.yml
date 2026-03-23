@@ -1,0 +1,26 @@
+- type: constructionGraph
+  id: ScpWoodDoor
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: woodDoor
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: WoodPlank
+              amount: 10
+              doAfter: 8
+    - node: woodDoor
+      entity: ScpWoodDoor
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 10
+          steps:
+            - tool: Anchoring
+              doAfter: 8

@@ -3967,7 +3967,7 @@
         Base: nymph_dead
   - type: Butcherable
     spawned:
-    - id: MaterialWoodPlank1
+    - id: ScpMaterialWoodPlank1 # Fire edit
       amount: 2
   - type: InteractionPopup
     successChance: 0.7

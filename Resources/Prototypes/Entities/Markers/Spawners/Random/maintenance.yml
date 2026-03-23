@@ -215,7 +215,7 @@
           weight: 0.25
         - id: MaterialCloth10
           weight: 0.25
-        - id: MaterialWoodPlank10
+        - id: ScpMaterialWoodPlank10 # Fire edit
           weight: 0.25
       - id: Plunger
       - id: PowerCellMedium

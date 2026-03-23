@@ -12,7 +12,7 @@
   components:
   - type: InteractionOutline
   - type: Sprite
-    sprite: _Scp/Structures/barricades.rsi # Fire edit
+    sprite: Structures/barricades.rsi
     state: barricade_full
     drawdepth: BlastDoors
     noRot: true
@@ -53,6 +53,7 @@
 #Regular Barricade
 - type: entity
   id: Barricade
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseBarricade
   components:
   - type: Construction

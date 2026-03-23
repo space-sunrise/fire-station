@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: TableFrame
   id: ScpTableFrame
   components:
@@ -77,3 +77,12 @@
     sprite: _Scp/Structures/Furniture/Tables/wood.rsi
   - type: Construction
     graph: ScpTable
+
+- type: entity
+  parent: TableCounterWood
+  id: ScpTableCounterWood
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/counterwood.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/counterwood.rsi

@@ -461,6 +461,7 @@
   graph: Table
   startNode: start
   targetNode: CounterWood
+  hide: true # Fire added
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter

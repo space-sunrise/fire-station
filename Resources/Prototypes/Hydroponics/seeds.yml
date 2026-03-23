@@ -476,9 +476,9 @@
   noun: seeds-noun-spores
   displayName: seeds-towercap-display-name
   plantRsi: _Scp/Objects/Specific/Hydroponics/towercap.rsi # Fire edit
-  packetPrototype: TowercapSeeds
+  packetPrototype: ScpTowercapSeeds # Fire edit
   productPrototypes:
-    - Log
+    - ScpLog # Fire edit
   mutationPrototypes:
     - steelcap
     - glasscap #Sunrise-add

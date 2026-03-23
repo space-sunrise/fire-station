@@ -2654,6 +2654,7 @@ ChairCursed: ScpChairCursed
 # Wallmount storage replacements
 ShelfWood: ScpShelfWood
 ShelfRWood: ScpShelfRWood
+ShelfBar: ScpShelfBar
 
 # Melee weapon replacements
 BaseBallBat: ScpBaseBallBat
@@ -2664,6 +2665,32 @@ WoodenBuckler: ScpWoodenBuckler
 
 # Craft part replacements
 HiltWood: ScpHiltWood
+
+# Material replacements
+MaterialWoodPlank: ScpMaterialWoodPlank
+MaterialWoodPlank10: ScpMaterialWoodPlank10
+MaterialWoodPlank1: ScpMaterialWoodPlank1
+
+# Towercap replacements
+Log: ScpLog
+TowercapSeeds: ScpTowercapSeeds
+
+# Structure replacements
+WoodDoor: ScpWoodDoor
+TableCounterWood: ScpTableCounterWood
+Barricade: ScpBarricade
+StairWood: StairScpWood
+StairStageWood: StairScpWoodStage
+FenceWoodHighStraight: ScpFenceWoodHighStraight
+FenceWoodHighEnd: ScpFenceWoodHighEnd
+FenceWoodHighCorner: ScpFenceWoodHighCorner
+FenceWoodHighTJunction: ScpFenceWoodHighTJunction
+FenceWoodHighGate: ScpFenceWoodHighGate
+FenceWoodSmallStraight: ScpFenceWoodSmallStraight
+FenceWoodSmallEnd: ScpFenceWoodSmallEnd
+FenceWoodSmallCorner: ScpFenceWoodSmallCorner
+FenceWoodSmallTJunction: ScpFenceWoodSmallTJunction
+FenceWoodSmallGate: ScpFenceWoodSmallGate
 
 # Floor tile replacements
 FloorTileItemWood: ScpFloorTileItemWood

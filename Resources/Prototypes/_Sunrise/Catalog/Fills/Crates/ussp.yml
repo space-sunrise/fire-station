@@ -36,7 +36,7 @@
           collection: WoodDestroyHeavy
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank1:
+          ScpMaterialWoodPlank1: # Fire edit
             min: 1
             max: 2
       - !type:DoActsBehavior
@@ -208,7 +208,7 @@
           collection: WoodDestroyHeavy
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank:
+          ScpMaterialWoodPlank:
             min: 2
             max: 3
       - !type:DoActsBehavior
@@ -270,5 +270,3 @@
     tags:
     - Recyclable
     - WrappedWeapon
-
-

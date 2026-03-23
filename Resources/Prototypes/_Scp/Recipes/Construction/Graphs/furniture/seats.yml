@@ -78,7 +78,7 @@
     - to: start
       completed:
       - !type:SpawnPrototype
-        prototype: MaterialWoodPlank1
+        prototype: ScpMaterialWoodPlank1
         amount: 3
       steps:
       - tool: Screwing
@@ -90,7 +90,7 @@
     - to: start
       completed:
       - !type:SpawnPrototype
-        prototype: MaterialWoodPlank1
+        prototype: ScpMaterialWoodPlank1
         amount: 4
       steps:
       - tool: Screwing
@@ -102,7 +102,7 @@
     - to: start
       completed:
       - !type:SpawnPrototype
-        prototype: MaterialWoodPlank1
+        prototype: ScpMaterialWoodPlank1
         amount: 3
       steps:
       - tool: Screwing

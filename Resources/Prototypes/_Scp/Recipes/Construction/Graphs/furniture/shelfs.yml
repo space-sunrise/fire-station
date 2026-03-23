@@ -23,6 +23,13 @@
             - material: Cable
               amount: 2
               doAfter: 1
+        - to: ShelfBar
+          completed:
+            - !type:SnapToGrid {}
+          steps:
+            - material: WoodPlank
+              amount: 6
+              doAfter: 2
 
     - node: ShelfWood
       entity: ScpShelfWood
@@ -31,7 +38,7 @@
           completed:
             - !type:EmptyAllContainers
             - !type:GivePrototype
-                prototype: MaterialWoodPlank1
+                prototype: ScpMaterialWoodPlank1
                 amount: 4
           steps:
             - tool: Prying
@@ -44,7 +51,7 @@
           completed:
             - !type:EmptyAllContainers
             - !type:GivePrototype
-                prototype: MaterialWoodPlank1
+                prototype: ScpMaterialWoodPlank1
                 amount: 8
             - !type:GivePrototype
                 prototype: CableApcStack1
@@ -54,3 +61,16 @@
               doAfter: 5
             - tool: Prying
               doAfter: 2
+
+    - node: ShelfBar
+      entity: ScpShelfBar
+      edges:
+        - to: start
+          completed:
+            - !type:EmptyAllContainers
+            - !type:GivePrototype
+                prototype: ScpMaterialWoodPlank1
+                amount: 6
+          steps:
+            - tool: Prying
+              doAfter: 3

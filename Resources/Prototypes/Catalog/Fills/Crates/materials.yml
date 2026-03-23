@@ -57,7 +57,7 @@
   - type: EntityTableContainerFill
     containers:
       entity_storage:
-        id: MaterialWoodPlank
+        id: ScpMaterialWoodPlank
 
 - type: entity
   parent: CrateGenericSteel
@@ -168,7 +168,7 @@
       children:
       - id: MaterialCloth
       - id: SheetPlasteel
-      - id: MaterialWoodPlank
+      - id: ScpMaterialWoodPlank
       - id: PartRodMetal
     - !type:GroupSelector # tertiary materials, singles
       weight: 5

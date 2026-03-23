@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   abstract: true
   parent: BaseStructure
   id: BaseMaterialDoor
@@ -223,12 +223,13 @@
 - type: entity
   parent: BaseMaterialDoorNavMap
   id: WoodDoor
+  categories: [ HideSpawnMenu ] # Fire edit
   name: wooden door
   components:
   - type: Pierceable
     level: Wood
   - type: Sprite
-    sprite: _Scp/Structures/Doors/MineralDoors/wood_door.rsi # Fire edit
+    sprite: Structures/Doors/MineralDoors/wood_door.rsi
   - type: Door
     openSound:
       path: /Audio/Effects/door_open.ogg

@@ -92,20 +92,22 @@
 
 - type: entity
   id: StairWood
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: Stairs
   suffix: Wood
   components:
   - type: Sprite
-    sprite: _Scp/Structures/stairs.rsi # Fire edit
+    sprite: Structures/stairs.rsi
     state: stairs_wood
     drawdepth: FloorTiles
 
 - type: entity
   id: StairStageWood
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: Stairs
   suffix: Wood, stage
   components:
   - type: Sprite
-    sprite: _Scp/Structures/stairs.rsi # Fire edit
+    sprite: Structures/stairs.rsi
     state: stairs_stage_wood
     drawdepth: FloorTiles

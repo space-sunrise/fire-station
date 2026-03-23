@@ -29,7 +29,7 @@
           collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank:
+          ScpMaterialWoodPlank: # Fire edit
             min: 1
             max: 2
       - !type:DoActsBehavior

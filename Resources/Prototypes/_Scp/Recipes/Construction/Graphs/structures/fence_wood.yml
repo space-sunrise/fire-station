@@ -1,0 +1,176 @@
+- type: constructionGraph
+  id: ScpFenceWood
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: straight
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2.0
+        - to: end
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2.0
+        - to: corner
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2.0
+        - to: tjunction
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2.0
+        - to: gate
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2.0
+        - to: straight_small
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2.0
+        - to: end_small
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2.0
+        - to: corner_small
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2.0
+        - to: tjunction_small
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2.0
+        - to: gate_small
+          steps:
+            - material: WoodPlank
+              amount: 2
+              doAfter: 2.0
+    - node: straight
+      entity: ScpFenceWoodHighStraight
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 5.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}
+    - node: end
+      entity: ScpFenceWoodHighEnd
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 2.5
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}
+    - node: corner
+      entity: ScpFenceWoodHighCorner
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 5.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}
+    - node: tjunction
+      entity: ScpFenceWoodHighTJunction
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 5.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}
+    - node: gate
+      entity: ScpFenceWoodHighGate
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 5.0
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 2
+            - !type:DeleteEntity {}
+    - node: straight_small
+      entity: ScpFenceWoodSmallStraight
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 2.5
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 1
+            - !type:DeleteEntity {}
+    - node: end_small
+      entity: ScpFenceWoodSmallEnd
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 1.25
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 1
+            - !type:DeleteEntity {}
+    - node: corner_small
+      entity: ScpFenceWoodSmallCorner
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 2.5
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 1
+            - !type:DeleteEntity {}
+    - node: tjunction_small
+      entity: ScpFenceWoodSmallTJunction
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 2.5
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 1
+            - !type:DeleteEntity {}
+    - node: gate_small
+      entity: ScpFenceWoodSmallGate
+      edges:
+        - to: start
+          steps:
+            - tool: Prying
+              doAfter: 2.5
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 1
+            - !type:DeleteEntity {}

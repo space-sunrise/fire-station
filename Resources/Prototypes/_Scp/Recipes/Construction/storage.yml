@@ -19,3 +19,14 @@
   canBuildInImpassable: true
   conditions:
   - !type:WallmountCondition
+
+- type: construction
+  id: ScpShelfBar
+  graph: ScpShelf
+  startNode: start
+  targetNode: ShelfBar
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+  conditions:
+  - !type:WallmountCondition

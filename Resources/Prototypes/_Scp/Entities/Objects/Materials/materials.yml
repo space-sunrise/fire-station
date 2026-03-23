@@ -54,3 +54,30 @@
     state: concrete
   - type: Stack
     count: 1
+
+- type: entity
+  parent: MaterialWoodPlank
+  id: ScpMaterialWoodPlank
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Materials/wood_plank.rsi
+  - type: Item
+    sprite: _Scp/Objects/Materials/wood_plank.rsi
+
+- type: entity
+  parent: MaterialWoodPlank10
+  id: ScpMaterialWoodPlank10
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Materials/wood_plank.rsi
+  - type: Item
+    sprite: _Scp/Objects/Materials/wood_plank.rsi
+
+- type: entity
+  parent: MaterialWoodPlank1
+  id: ScpMaterialWoodPlank1
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Materials/wood_plank.rsi
+  - type: Item
+    sprite: _Scp/Objects/Materials/wood_plank.rsi

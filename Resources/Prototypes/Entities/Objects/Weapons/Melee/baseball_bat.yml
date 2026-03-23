@@ -2,6 +2,7 @@
   name: baseball bat
   parent: [BaseItem, BaseMinorContraband]
   id: BaseBallBat
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A robust baseball bat.
   components:
   - type: Sprite
@@ -52,6 +53,7 @@
   name: incomplete baseball bat
   parent: BaseItem
   id: IncompleteBaseBallBat
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A few planks of wood stuck together.
   components:
   - type: Sprite

@@ -53,7 +53,7 @@
       weight: 0.5
     - id: PartRodMetal10
       weight: 0.33
-    - id: MaterialWoodPlank10
+    - id: ScpMaterialWoodPlank10 # Fire edit
       weight: 0.2
     - id: SheetPlasma10
       weight: 0.2
