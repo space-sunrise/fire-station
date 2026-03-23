@@ -15,7 +15,11 @@
   components:
   - type: Sprite
     sprite: _Scp/Structures/Furniture/chairs.rsi
-    state: chair-greyscale
+    layers:
+    - state: chair_grayscale_legs
+      color: "#8C8D8F"
+    - state: chair_grayscale_seat
+      color: "#FFFFFF"
   - type: Construction
     graph: ScpSeat
     node: chair

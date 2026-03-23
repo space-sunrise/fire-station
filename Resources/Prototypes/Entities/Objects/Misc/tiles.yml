@@ -502,10 +502,8 @@
   categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
-    sprite: Objects/Tiles/wood.rsi
     state: wood
   - type: Item
-    sprite: Objects/Tiles/wood.rsi
     heldPrefix: wood
   - type: FloorTile
     outputs:
@@ -1391,7 +1389,6 @@
   categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
-    sprite: Objects/Tiles/wood.rsi
     state: woodpatternfloor
   - type: Item
     heldPrefix: wood
@@ -1410,7 +1407,6 @@
   - type: Sprite
     state: meat
   - type: Item
-    sprite: _Scp/Objects/Tiles/wood.rsi # Fire added
     heldPrefix: meat
   - type: FloorTile
     outputs:
@@ -1650,10 +1646,8 @@
   categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
-    sprite: Objects/Tiles/wood.rsi
     state: wood-large
   - type: Item
-    sprite: Objects/Tiles/wood.rsi
     heldPrefix: wood
   - type: FloorTile
     outputs:

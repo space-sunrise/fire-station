@@ -97,7 +97,7 @@
         doAfter: 2
 
   - node: chairWoodWings
-    entity: ChairWoodWings
+    entity: ScpChairWoodWings
     edges:
     - to: start
       completed:
