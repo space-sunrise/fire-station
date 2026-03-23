@@ -17,3 +17,5 @@ ent-ScpChairRitual = { ent-ChairRitual }
     .desc = { ent-ChairRitual.desc }
 ent-ScpChairCursed = { ent-ChairCursed }
     .desc = { ent-ChairCursed.desc }
+ent-ScpChairWoodWings = деревянный стул с крыльями
+    .desc = { ent-ChairWood.desc }
