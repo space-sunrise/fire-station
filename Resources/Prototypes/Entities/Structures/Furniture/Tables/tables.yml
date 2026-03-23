@@ -58,6 +58,7 @@
 
 - type: entity
   id: CounterWoodFrame
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseStructure
   name: wooden counter frame
   description: Pieces of wood that make the frame of a table.
@@ -520,6 +521,7 @@
 
 - type: entity
   id: TableWood
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: TableBase
   name: wood table
   description: Do not apply fire to this. Rumour says it burns easily.

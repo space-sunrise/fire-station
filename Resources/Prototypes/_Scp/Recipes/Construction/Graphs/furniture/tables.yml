@@ -96,7 +96,7 @@
 
 
   - node: CounterWoodFrame
-    entity: CounterWoodFrame
+    entity: ScpCounterWoodFrame
     edges:
     - to: start
       completed:
@@ -217,7 +217,7 @@
         doAfter: 1
 
   - node: TableWood
-    entity: TableWood
+    entity: ScpTableWood
     edges:
     - to: TableFrame
       completed:

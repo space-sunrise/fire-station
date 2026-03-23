@@ -61,6 +61,18 @@
   - !type:TileNotBlocked
 
 - type: construction
+  id: ScpTableWood
+  graph: ScpTable
+  startNode: start
+  targetNode: TableWood
+  category: construction-category-furniture
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
   id: ScpChair
   graph: ScpSeat
   startNode: start

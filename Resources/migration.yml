@@ -2186,11 +2186,19 @@ LockerThirdParty: ScpLockerThirdParty
 
 # Столы
 TableFrame: ScpTableFrame
+CounterWoodFrame: ScpCounterWoodFrame
 Table: ScpTable
 TableReinforced: ScpTableReinforced
 TableGlass: ScpTableGlass
 TableReinforcedGlass: ScpTableReinforcedGlass
 TablePlasmaGlass: ScpTablePlasmaGlass
+TableWood: ScpTableWood
+
+# Деревянные перила
+RailingWood: ScpRailingWood
+RailingCornerWood: ScpRailingCornerWood
+RailingCornerWoodSmall: ScpRailingCornerWoodSmall
+RailingRoundWood: ScpRailingRoundWood
 
 # Факсы
 FaxMachineCentcom: FaxMachineRegionalAdministration

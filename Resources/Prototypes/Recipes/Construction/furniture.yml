@@ -295,6 +295,7 @@
   graph: Table
   startNode: start
   targetNode: TableWood
+  hide: true # Fire added
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
