@@ -1,0 +1,17 @@
+- type: entity
+  parent: ClothingOuterCoatHoSGreatcoat
+  id: basiacoat
+  name: basia's coat
+  description: Fken sht.
+  components:
+  - type: Sprite
+    sprite: _Scp/Clothing/OuterClothing/Coats/basia_coat.rsi
+  - type: Clothing
+    sprite: _Scp/Clothing/OuterClothing/Coats/basia_coat.rsi
+  # By Basia
+  - type: Tag
+    tags:
+      - Vest
+      - NudeBottom  # INTERACTIONS
+      - WhitelistChameleon
+  # By Basia

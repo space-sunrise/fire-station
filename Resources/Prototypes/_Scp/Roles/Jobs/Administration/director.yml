@@ -37,14 +37,12 @@
 - type: startingGear
   id: DirectorGear
   equipment:
-    head: ClothingHeadHatDirector
+    head: ClothingHeadHatBeretFrench
     eyes: ClothingEyesGlassesSunglasses
-    neck: ClothingNeckTieDet
-    jumpsuit: ClothingUniformJumpsuitDirector
-    outerClothing: ClothingOuterCoatDirectorTrench
-    gloves: ClothingHandsGlovesDirectorSpecial
-    shoes: ClothingShoesBootsLaceup
-    back: ClothingBackpackSatchelLeatherDirectorFilled
+    jumpsuit: ClothingUniformJumpsuitTacticool
+    outerClothing: basiacoat
+    gloves: ClothingHandsGlovesCombat
+    shoes: ClothingShoesBootsChaos
     id: KeyCardDirector
     ears: ClothingHeadsetAltAdministration
     pocket2: DirectorPDA
