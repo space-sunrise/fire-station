@@ -60,6 +60,7 @@
     receiveStationGoal: true
   - type: StealTarget
     stealGroup: FaxMachineCaptain
+  - type: ScpDirectorFax
 
 - type: entity
   parent: FaxMachineBase
