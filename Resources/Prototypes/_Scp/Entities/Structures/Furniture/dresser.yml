@@ -16,6 +16,8 @@
           True: { state: opened }
           False: { state: closed }
   - type: Appearance
+  - type: Rotatable
+    rotateWhileAnchored: true
 
 - type: entity
   id: ScpDresser

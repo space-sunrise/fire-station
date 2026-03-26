@@ -26,8 +26,12 @@
   - type: Transform
     anchored: true
     noRot: false
-  - type: Occluder
-    enabled: false
+  - type: ScpDirectionalOccluder
+    boundingBoxes:
+      East: "-0.5, -0.25, 0.5, 0.25"
+      West: "-0.5, -0.25, 0.5, 0.25"
+  - type: Rotatable
+    rotateWhileAnchored: true
 
 - type: entity
   id: ScpBookshelf
