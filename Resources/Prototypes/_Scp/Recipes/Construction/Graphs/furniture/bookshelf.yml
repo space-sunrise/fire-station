@@ -1,0 +1,26 @@
+- type: constructionGraph
+  id: ScpBookshelf
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: bookshelf
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: WoodPlank
+              amount: 5
+              doAfter: 4
+    - node: bookshelf
+      entity: ScpBookshelf
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 5
+          steps:
+            - tool: Prying
+              doAfter: 4

@@ -2686,6 +2686,18 @@ TowercapSeeds: ScpTowercapSeeds
 # Structure replacements
 WoodDoor: ScpWoodDoor
 TableCounterWood: ScpTableCounterWood
+Dresser: ScpDresser
+DresserFilled: ScpDresserFilled
+DresserCaptainFilled: ScpDresserDirectorFilled
+DresserChiefEngineerFilled: ScpDresserChiefTechnicalSpecialistFilled
+DresserChiefMedicalOfficerFilled: ScpDresserHeadOfMedicalSectorFilled
+DresserHeadOfPersonnelFilled: ScpDresserPersonnelOfficerFilled
+DresserHeadOfSecurityFilled: ScpDresserSecurityCommanderFilled
+DresserQuarterMasterFilled: ScpDresserQuarterMasterFilled
+DresserResearchDirectorFilled: ScpDresserScientificServiceDirectorFilled
+DresserWardenFilled: ScpDresserSquadLeaderFilled
+Bookshelf: ScpBookshelf
+BookshelfFilled: ScpBookshelfFilled
 Barricade: ScpBarricade
 StairWood: StairScpWood
 StairStageWood: StairScpWoodStage
