@@ -26,6 +26,8 @@
   - type: Transform
     anchored: true
     noRot: false
+  - type: Occluder
+    enabled: false
 
 - type: entity
   id: ScpBookshelf
