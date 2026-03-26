@@ -21,6 +21,9 @@
           West: { state: wide_right }
           East: { state: wide_left }
           East, West: { state: wide }
+  - type: Storage
+    grid:
+    - 0,0,9,1
   - type: StorageFillVisualizer
     maxFillLevels: 20
   - type: Transform
@@ -28,8 +31,12 @@
     noRot: false
   - type: ScpDirectionalOccluder
     boundingBoxes:
-      East: "-0.5, -0.25, 0.5, 0.25"
-      West: "-0.5, -0.25, 0.5, 0.25"
+      East: "-0.5, -0.3, 0.5, 0.3"
+      West: "-0.5, -0.3, 0.5, 0.3"
+  - type: ScpDirectionalFixture
+    boundingBoxes:
+      East: "-0.5, -0.3, 0.5, 0.3"
+      West: "-0.5, -0.3, 0.5, 0.3"
   - type: Rotatable
     rotateWhileAnchored: true
 

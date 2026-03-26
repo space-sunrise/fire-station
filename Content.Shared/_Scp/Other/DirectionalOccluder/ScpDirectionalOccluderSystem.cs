@@ -8,12 +8,12 @@ public sealed class ScpDirectionalOccluderSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ScpDirectionalOccluderComponent, ComponentStartup>(OnStartup);
+        SubscribeLocalEvent<ScpDirectionalOccluderComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ScpDirectionalOccluderComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<ScpDirectionalOccluderComponent, MoveEvent>(OnMove);
     }
 
-    private void OnStartup(Entity<ScpDirectionalOccluderComponent> ent, ref ComponentStartup args)
+    private void OnMapInit(Entity<ScpDirectionalOccluderComponent> ent, ref MapInitEvent args)
     {
         RefreshBoundingBox(ent);
     }
