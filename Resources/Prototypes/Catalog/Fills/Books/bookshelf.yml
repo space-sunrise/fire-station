@@ -1,6 +1,7 @@
 - type: entity
   parent: Bookshelf
   id: BookshelfFilled
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: random filled
   components:
   - type: EntityTableContainerFill
