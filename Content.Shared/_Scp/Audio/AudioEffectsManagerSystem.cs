@@ -20,19 +20,8 @@ namespace Content.Shared._Scp.Audio;
 /// </remarks>
 public sealed class AudioEffectsManagerSystem : EntitySystem
 {
-    /// <summary>
-    /// Shared audio API used to create effects/auxiliaries and attach them to live audio sources.
-    /// </summary>
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-
-    /// <summary>
-    /// Prototype manager used to resolve <see cref="AudioPresetPrototype"/> definitions.
-    /// </summary>
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-
-    /// <summary>
-    /// Network side used to determine whether the current execution path is server-side or client-side.
-    /// </summary>
     [Dependency] private readonly INetManager _net = default!;
 
     /// <summary>

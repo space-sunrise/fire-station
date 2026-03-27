@@ -49,7 +49,8 @@
     keysIn: [ click ]
     sound:
       path: /Audio/_Scp/Effects/Button/emergency_alarm.ogg
-      maxDistance: 6
+      params:
+        maxDistance: 6
   - type: TTS
     voice: Brendan
 
