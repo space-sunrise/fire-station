@@ -14,6 +14,8 @@ ui-options-grain-strength = Сила шейдера зернистости
 ui-options-grain-strength-tooltip =
     Определяет интенсивность эффектов шейдера зернистости.
     Чем больше, тем больше будет "шуршания" на экране
+ui-options-field-of-view-blur-enabled = Размытие поля зрения
+ui-options-field-of-view-blur-enabled-tooltip = Размывает область за пределами поля зрения. Отключите для повышения производительности или если эффект мешает.
 ui-options-field-of-view-blur-scale = Качество текстуры размытия
 ui-options-field-of-view-blur-scale-tooltip =
     Определяет качество текстуры размытия. Чем больше, тем более ресурсозатратная текстура

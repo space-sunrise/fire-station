@@ -10,6 +10,8 @@ ui-options-grain-strength = Grain shader strength
 ui-options-grain-strength-tooltip =
     Determines the intensity of the grain shader effects.
     The higher the value, the more "noise" there will be on the screen
+ui-options-field-of-view-blur-enabled = Enable FOV blur
+ui-options-field-of-view-blur-enabled-tooltip = Blurs the area outside your field of view. Disable for better performance or if you find it distracting.
 ui-options-field-of-view-blur-scale = Blur texture quality
 ui-options-field-of-view-blur-scale-tooltip =
     Determines the quality of the blur texture. The larger, the more resource-intensive the texture

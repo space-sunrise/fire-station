@@ -32,6 +32,7 @@ public sealed partial class ScpTab : Control
             GrainOverlayComponent.BaseStrengthLimit.Min, GrainOverlayComponent.BaseStrengthLimit.Max);
 
         // Поле зрения
+        Control.AddOptionCheckBox(ScpCCVars.FieldOfViewBlurEnabled, FieldOfViewBlurEnabled);
         Control.AddOptionPercentSlider(ScpCCVars.FieldOfViewOpacity, FieldOfViewOpacitySlider,
             FieldOfViewComponent.MinOpacity, FieldOfViewComponent.MaxOpacity);
         Control.AddOptionPercentSlider(ScpCCVars.FieldOfViewBlurScale, FieldOfViewBlurScale,
@@ -85,6 +86,7 @@ public sealed partial class ScpTab : Control
         ToggleBloom();
         ToggleBloomCone();
         ToggleEcho();
+        ToggleFovBlur();
     }
 
     protected override void EnteredTree()
@@ -95,6 +97,7 @@ public sealed partial class ScpTab : Control
         LightBloomEnable.OnToggled += ToggleBloom;
         LightBloomConeEnable.OnToggled += ToggleBloomCone;
         EchoEnabled.OnToggled += ToggleEcho;
+        FieldOfViewBlurEnabled.OnToggled += ToggleFovBlur;
     }
 
     protected override void ExitedTree()
@@ -105,6 +108,7 @@ public sealed partial class ScpTab : Control
         LightBloomEnable.OnToggled -= ToggleBloom;
         LightBloomConeEnable.OnToggled -= ToggleBloomCone;
         EchoEnabled.OnToggled -= ToggleEcho;
+        FieldOfViewBlurEnabled.OnToggled -= ToggleFovBlur;
     }
 
     private void ToggleGrain(BaseButton.ButtonToggledEventArgs value = default!)
@@ -130,5 +134,10 @@ public sealed partial class ScpTab : Control
     private void ToggleEcho(BaseButton.ButtonToggledEventArgs value = default!)
     {
         EchoStrongPresetPreferred.Visible = EchoEnabled.Pressed;
+    }
+
+    private void ToggleFovBlur(BaseButton.ButtonToggledEventArgs value = default!)
+    {
+        FieldOfViewBlurScale.Visible = FieldOfViewBlurEnabled.Pressed;
     }
 }

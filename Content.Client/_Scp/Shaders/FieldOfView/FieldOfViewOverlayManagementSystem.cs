@@ -75,7 +75,8 @@ public sealed class FieldOfViewOverlayManagementSystem : EntitySystem
 
         _configSub = _cfg.SubscribeMultiple()
             .OnValueChanged(ScpCCVars.FieldOfViewBlurScale, x => _coneOverlay.BlurScale = x, true)
-            .OnValueChanged(ScpCCVars.FieldOfViewOpacity, x => _coneOverlay.Opacity = x, true);
+            .OnValueChanged(ScpCCVars.FieldOfViewOpacity, x => _coneOverlay.Opacity = x, true)
+            .OnValueChanged(ScpCCVars.FieldOfViewBlurEnabled, x => _coneOverlay.BlurEnabled = x, true);
     }
 
     public override void Shutdown()
