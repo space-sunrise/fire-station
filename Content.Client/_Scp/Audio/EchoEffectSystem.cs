@@ -17,14 +17,7 @@ namespace Content.Client._Scp.Audio;
 /// </remarks>
 public sealed class EchoEffectSystem : EntitySystem
 {
-    /// <summary>
-    /// Provides access to tracked audio sources and commits the final auxiliary choice after desired echo changes.
-    /// </summary>
     [Dependency] private readonly AudioEffectResolverSystem _resolver = default!;
-
-    /// <summary>
-    /// Supplies the client cvars that toggle echo and choose between the standard and strong presets.
-    /// </summary>
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     /// <summary>

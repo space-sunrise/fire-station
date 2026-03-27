@@ -24,24 +24,9 @@ namespace Content.Client._Scp.Audio;
 /// </remarks>
 public sealed partial class AudioMuffleSystem : EntitySystem
 {
-    /// <summary>
-    /// Client audio system that exposes positional audio state and the occlusion override hook.
-    /// </summary>
     [Dependency] private readonly AudioSystem _audio = default!;
-
-    /// <summary>
-    /// Resolver that merges muffling state with echo state and owns the final auxiliary slot.
-    /// </summary>
     [Dependency] private readonly AudioEffectResolverSystem _resolver = default!;
-
-    /// <summary>
-    /// Provides the local player entity so muffling can be disabled for special viewpoints and excluded sounds.
-    /// </summary>
     [Dependency] private readonly ISharedPlayerManager _player = default!;
-
-    /// <summary>
-    /// Supplies all muffling-related tuning cvars.
-    /// </summary>
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     /// <summary>

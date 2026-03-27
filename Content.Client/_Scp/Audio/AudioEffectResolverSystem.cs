@@ -29,19 +29,8 @@ namespace Content.Client._Scp.Audio;
 /// </remarks>
 public sealed class AudioEffectResolverSystem : EntitySystem
 {
-    /// <summary>
-    /// Provides the low-level auxiliary assignment API used to attach or restore audio routing.
-    /// </summary>
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-
-    /// <summary>
-    /// Creates and caches auxiliary/effect entities for audio presets referenced by the SCP pipeline.
-    /// </summary>
     [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
-
-    /// <summary>
-    /// Supplies the client echo cvars so newly tracked sounds can inherit the current user preference immediately.
-    /// </summary>
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     /// <summary>
