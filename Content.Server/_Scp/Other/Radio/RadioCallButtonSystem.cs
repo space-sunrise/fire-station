@@ -1,13 +1,15 @@
-﻿using Content.Server.Radio.EntitySystems;
-using Content.Shared.Interaction;
+using Content.Server.Radio.EntitySystems;
 using Content.Shared.Pinpointer;
 using Content.Shared.Timing;
+using Content.Shared._Scp.Trigger.TriggerOnSignalSwitch;
 using Robust.Server.GameObjects;
 
 namespace Content.Server._Scp.Other.Radio;
 
 public sealed class RadioCallButtonSystem : EntitySystem
 {
+    private const string RadioCallUseDelayId = "RadioCall";
+
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly UseDelaySystem _delay = default!;
@@ -16,14 +18,17 @@ public sealed class RadioCallButtonSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<RadioCallButtonComponent, InteractHandEvent>(OnButtonPressed);
+        SubscribeLocalEvent<RadioCallButtonComponent, SignalSwitchActivatedEvent>(OnButtonPressed,
+            before: [typeof(TriggerOnSignalSwitchSystem)]);
     }
 
-    private void OnButtonPressed(Entity<RadioCallButtonComponent> ent, ref InteractHandEvent args)
+    private void OnButtonPressed(Entity<RadioCallButtonComponent> ent, ref SignalSwitchActivatedEvent args)
     {
-        // Check if the button is on cooldown.
-        if (!_delay.TryResetDelay(ent.Owner, checkDelayed: true))
+        if (!_delay.TryResetDelay(ent.Owner, checkDelayed: true, id: RadioCallUseDelayId))
+        {
+            args.Cancelled = true;
             return;
+        }
 
         var locationName = Loc.GetString("scp-radio-button-unknown-location");
         if (string.IsNullOrEmpty(ent.Comp.RoomName))
@@ -34,6 +39,7 @@ public sealed class RadioCallButtonSystem : EntitySystem
         {
             locationName = ent.Comp.RoomName;
         }
+
         // Get the localized message.
         var message = Loc.GetString(ent.Comp.MessageKey, ("location", locationName));
 
@@ -56,7 +62,7 @@ public sealed class RadioCallButtonSystem : EntitySystem
 
         while (query.MoveNext(out var beaconUid, out var beacon, out var beaconXform))
         {
-            if(!beacon.Enabled || !beaconXform.Anchored || coordinates.MapId != beaconXform.MapID)
+            if (!beacon.Enabled || !beaconXform.Anchored || coordinates.MapId != beaconXform.MapID)
                 continue;
 
             var beaconCoords = _transform.GetMapCoordinates(beaconUid, beaconXform);
