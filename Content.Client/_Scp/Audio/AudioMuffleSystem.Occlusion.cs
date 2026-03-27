@@ -4,8 +4,10 @@ using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.ScpCCVars;
 using Content.Shared.Physics;
 using Content.Shared.Tag;
+using Content.Shared.Wall;
 using Robust.Shared;
 using Robust.Shared.Map;
+using Robust.Shared.Map.Components;
 using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
@@ -15,7 +17,9 @@ namespace Content.Client._Scp.Audio;
 public sealed partial class AudioMuffleSystem
 {
     [Dependency] private readonly Robust.Client.Physics.PhysicsSystem _physics = default!;
+    [Dependency] private readonly SharedMapSystem _map = default!;
     [Dependency] private readonly TagSystem _tag = default!;
+    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private float _maxRayLength;
     private float _solidBaseOcclusion;
@@ -36,6 +40,8 @@ public sealed partial class AudioMuffleSystem
     ];
 
     private EntityQuery<PhysicsComponent> _physicsQuery;
+    private EntityQuery<MapGridComponent> _gridQuery;
+    private EntityQuery<WallMountComponent> _wallMountQuery;
 
     /// <summary>
     /// Initializes the custom occlusion override and binds its tuning cvars.
@@ -51,6 +57,8 @@ public sealed partial class AudioMuffleSystem
         Subs.CVar(_cfg, ScpCCVars.AudioMufflingTransparentOcclusionPerMeter, value => _transparentOcclusionPerMeter = value, true);
 
         _physicsQuery = GetEntityQuery<PhysicsComponent>();
+        _gridQuery = GetEntityQuery<MapGridComponent>();
+        _wallMountQuery = GetEntityQuery<WallMountComponent>();
     }
 
     /// <summary>
@@ -76,13 +84,20 @@ public sealed partial class AudioMuffleSystem
 
         try
         {
+            if (ignoredEnt != null)
+                seen.Add(ignoredEnt.Value);
+
+            AddWallMountOcclusionExemptions(listener.Position, ignoredEnt, seen);
             var occlusion = 0f;
 
-            foreach (var hit in _physics.IntersectRay(listener.MapId, ray, rayLength, ignoredEnt, returnOnFirstHit: false))
+            foreach (var hit in _physics.IntersectRayWithPredicate(
+                         listener.MapId,
+                         ray,
+                         seen,
+                         static (uid, seenState) => !seenState.Add(uid),
+                         rayLength,
+                         returnOnFirstHit: false))
             {
-                if (!seen.Add(hit.HitEntity))
-                    continue;
-
                 var blockerType = ClassifyBlocker(hit.HitEntity);
                 if (blockerType == LineOfSightBlockerLevel.None)
                     continue;
@@ -109,6 +124,48 @@ public sealed partial class AudioMuffleSystem
         {
             ReturnSeenBuffer(seen);
         }
+    }
+
+    /// <summary>
+    /// Adds same-tile anchored occluders to the ignore set for eligible wall-mount sources, but only when the
+    /// listener is on the permitted side of the mount.
+    /// </summary>
+    private void AddWallMountOcclusionExemptions(Vector2 listenerPosition, EntityUid? source, HashSet<EntityUid> seen)
+    {
+        if (source == null || !_wallMountQuery.TryComp(source.Value, out var wallMount))
+            return;
+
+        var xform = Transform(source.Value);
+
+        if (!wallMount.IgnoreAudioOcclusion)
+            return;
+
+        if (!xform.GridUid.HasValue|| !_gridQuery.TryComp(xform.GridUid, out var grid))
+            return;
+
+        if (!ShouldIgnoreWallMountOcclusion(listenerPosition, xform, wallMount))
+            return;
+
+        var tileIndices = _map.TileIndicesFor(xform.GridUid.Value, grid, xform.Coordinates);
+        seen.UnionWith(_map.GetAnchoredEntities(xform.GridUid.Value, grid, tileIndices));
+    }
+
+    /// <summary>
+    /// Uses the wall-mount interaction arc to determine whether same-tile blockers should be ignored for audio.
+    /// </summary>
+    private bool ShouldIgnoreWallMountOcclusion(
+        Vector2 listenerPosition,
+        TransformComponent xform,
+        WallMountComponent wallMount)
+    {
+        if (wallMount.Arc >= Math.Tau)
+            return true;
+
+        var (worldPosition, worldRotation) = _transform.GetWorldPositionRotation(xform);
+        var angle = Angle.FromWorldVec(listenerPosition - worldPosition);
+        var angleDelta = (wallMount.Direction + worldRotation - angle).Reduced().FlipPositive();
+
+        return angleDelta < wallMount.Arc / 2 || Math.Tau - angleDelta < wallMount.Arc / 2;
     }
 
     /// <summary>

@@ -1,4 +1,6 @@
 using Content.Server.Radio.EntitySystems;
+using Content.Shared._Scp.Helpers;
+using Content.Shared.Examine;
 using Content.Shared.Pinpointer;
 using Content.Shared.Timing;
 using Content.Shared._Scp.Trigger.TriggerOnSignalSwitch;
@@ -11,6 +13,7 @@ public sealed class RadioCallButtonSystem : EntitySystem
     private const string RadioCallUseDelayId = "RadioCall";
 
     [Dependency] private readonly RadioSystem _radio = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly UseDelaySystem _delay = default!;
 
@@ -20,6 +23,7 @@ public sealed class RadioCallButtonSystem : EntitySystem
 
         SubscribeLocalEvent<RadioCallButtonComponent, SignalSwitchActivatedEvent>(OnButtonPressed,
             before: [typeof(TriggerOnSignalSwitchSystem)]);
+        SubscribeLocalEvent<RadioCallButtonComponent, ExaminedEvent>(OnExamined);
     }
 
     private void OnButtonPressed(Entity<RadioCallButtonComponent> ent, ref SignalSwitchActivatedEvent args)
@@ -30,15 +34,7 @@ public sealed class RadioCallButtonSystem : EntitySystem
             return;
         }
 
-        var locationName = Loc.GetString("scp-radio-button-unknown-location");
-        if (string.IsNullOrEmpty(ent.Comp.RoomName))
-        {
-            locationName = ExtractLocationName(ent, locationName);
-        }
-        else
-        {
-            locationName = ent.Comp.RoomName;
-        }
+        var locationName = GetLocationName(ent);
 
         // Get the localized message.
         var message = Loc.GetString(ent.Comp.MessageKey, ("location", locationName));
@@ -50,28 +46,51 @@ public sealed class RadioCallButtonSystem : EntitySystem
         }
     }
 
+    private void OnExamined(Entity<RadioCallButtonComponent> ent, ref ExaminedEvent args)
+    {
+        if (!args.IsInDetailsRange)
+            return;
+
+        using (args.PushGroup(nameof(RadioCallButtonComponent)))
+        {
+            args.PushMarkup(Loc.GetString("scp-radio-button-location-examine", ("location", GetLocationName(ent))));
+        }
+    }
+
+    private string GetLocationName(Entity<RadioCallButtonComponent> ent)
+    {
+        if (!string.IsNullOrEmpty(ent.Comp.RoomName))
+            return ent.Comp.RoomName;
+
+        var locationName = Loc.GetString("scp-radio-button-unknown-location");
+        return ExtractLocationName(ent, locationName);
+    }
+
     private string ExtractLocationName(Entity<RadioCallButtonComponent> ent, string locationName)
     {
-        // Get button's MapCoordinates via TransformSystem
         var coordinates = _transform.GetMapCoordinates(ent);
+        var closestDistanceSquared = ent.Comp.BeaconSearchRadius * ent.Comp.BeaconSearchRadius;
 
-        // Initialize closest distance tracking variables
-        var closest = ent.Comp.BeaconSearchRadius;
+        using var beacons = HashSetPoolEntity<NavMapBeaconComponent>.Rent();
+        _lookup.GetEntitiesInRange(coordinates, ent.Comp.BeaconSearchRadius, beacons.Value, LookupFlags.StaticSundries);
 
-        var query = EntityQueryEnumerator<NavMapBeaconComponent, TransformComponent>();
-
-        while (query.MoveNext(out var beaconUid, out var beacon, out var beaconXform))
+        foreach (var beacon in beacons.Value)
         {
-            if (!beacon.Enabled || !beaconXform.Anchored || coordinates.MapId != beaconXform.MapID)
+            var beaconXform = Transform(beacon);
+
+            if (!beacon.Comp.Enabled || !beaconXform.Anchored || coordinates.MapId != beaconXform.MapID)
                 continue;
 
-            var beaconCoords = _transform.GetMapCoordinates(beaconUid, beaconXform);
-            var distance = (coordinates.Position - beaconCoords.Position).Length();
+            if (string.IsNullOrEmpty(beacon.Comp.Text))
+                continue;
 
-            if (distance <= closest && !string.IsNullOrEmpty(beacon.Text))
+            var beaconCoords = _transform.GetMapCoordinates(beacon, beaconXform);
+            var distanceSquared = (coordinates.Position - beaconCoords.Position).LengthSquared();
+
+            if (distanceSquared <= closestDistanceSquared)
             {
-                closest = distance;
-                locationName = beacon.Text;
+                closestDistanceSquared = distanceSquared;
+                locationName = beacon.Comp.Text;
             }
         }
 

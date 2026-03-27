@@ -26,7 +26,7 @@ public sealed partial class RadioCallButtonComponent : Component
     /// The room name of where the call is coming from.
     /// </summary>
     [DataField]
-    public string? RoomName = null;
+    public string? RoomName;
 
     /// <summary>
     /// Maximum search radius for beacons.

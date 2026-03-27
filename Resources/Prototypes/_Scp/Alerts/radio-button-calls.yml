@@ -31,7 +31,7 @@
   - type: Lock
   - type: LockVisuals
   - type: AccessReader
-    access: [ [ "Science" ], [ "Security" ] ]
+    access: [ [ "Research" ], [ "Security" ] ]
   - type: Appearance
   - type: GenericVisualizer
     visuals:

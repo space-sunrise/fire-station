@@ -52,4 +52,5 @@ scp-commandant-squad-call = Commandant squad assistance required at {$location}!
 scp-ethics-committee-call = Ethics committee assistance required at {$location}!
 scp-d-class-request = D-class personnel required at {$location}!
 
+scp-radio-button-location-examine = Service call target: {$location}
 scp-radio-button-unknown-location = Unknown location
