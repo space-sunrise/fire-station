@@ -3,7 +3,6 @@ using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared.Doors;
 using Content.Shared.Doors.Components;
-using Content.Shared.Ghost;
 using Content.Shared.Physics;
 using Content.Shared.Prying.Components;
 using Robust.Shared.Map;
@@ -23,7 +22,6 @@ public sealed class BunkerMarkerSystem : EntitySystem
     private EntityQuery<FixturesComponent> _fixturesQuery;
     private EntityQuery<Scp106PhantomComponent> _phantomQuery;
     private EntityQuery<Scp106Component> _scp106Query;
-    private EntityQuery<GhostComponent> _ghostQuery;
     private EntityQuery<ActiveScp096WithoutFaceComponent> _scp096Query;
     private EntityQuery<DoorComponent> _doorQuery;
 
@@ -34,7 +32,6 @@ public sealed class BunkerMarkerSystem : EntitySystem
         _fixturesQuery = GetEntityQuery<FixturesComponent>();
         _phantomQuery = GetEntityQuery<Scp106PhantomComponent>();
         _scp106Query = GetEntityQuery<Scp106Component>();
-        _ghostQuery = GetEntityQuery<GhostComponent>();
         _scp096Query = GetEntityQuery<ActiveScp096WithoutFaceComponent>();
         _doorQuery = GetEntityQuery<DoorComponent>();
 
@@ -188,10 +185,27 @@ public sealed class BunkerMarkerSystem : EntitySystem
         return fixtures.Fixtures.Values.All(f => f.CollisionLayer == (int)CollisionGroup.GhostImpassable);
     }
 
+    private bool ShouldBunkerBlock(EntityUid uid)
+    {
+        return _phantomQuery.HasComp(uid) || _scp106Query.HasComp(uid);
+    }
+
     private void OnPreventCollide(Entity<BunkerMarkerComponent> ent, ref PreventCollideEvent args)
     {
-        // Let observer ghosts pass through freely
-        if (_ghostQuery.HasComp(args.OtherEntity) && !_phantomQuery.HasComp(args.OtherEntity))
+        if (args.Cancelled)
+            return;
+
+        if (!_fixturesQuery.TryGetComponent(ent.Owner, out var fixtures))
+            return;
+
+        if (!fixtures.Fixtures.TryGetValue(BunkerMarkerComponent.BunkerBlockFixtureId, out var bunkerBlockFixture))
+            return;
+
+        if (!ReferenceEquals(args.OurFixture, bunkerBlockFixture))
+            return;
+
+        // Bunkers should only stop SCP-106 and its phantom.
+        if (!ShouldBunkerBlock(args.OtherEntity))
             args.Cancelled = true;
     }
 }
