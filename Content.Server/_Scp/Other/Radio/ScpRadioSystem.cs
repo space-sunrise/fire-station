@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Content.Server.Audio;
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
@@ -27,7 +26,6 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly AmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
@@ -185,7 +183,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         var message = Loc.GetString("scp-radio-toggle-message", ("name", Name(ent)), ("value", ent.Comp.Enabled));
 
         _popup.PopupEntity(message, ent, user.Value);
-        _ambientSound.SetAmbience(ent, value);
+        UpdateAmbience(ent);
         _audio.PlayEntity(ent.Comp.ToggleSound, user.Value, ent);
 
         UpdateMicrophone(ent);

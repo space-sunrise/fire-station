@@ -2,12 +2,15 @@
 using Content.Shared._Scp.Other.Events;
 using Content.Shared.Audio;
 using Content.Shared.Examine;
+using Content.Shared.Hands;
+using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory.Events;
 using Content.Shared.Popups;
 using Content.Shared.Radio;
 using Content.Shared.Verbs;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
@@ -18,6 +21,8 @@ public abstract class SharedScpRadioSystem : EntitySystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] protected readonly IPrototypeManager PrototypeManager = default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
+    [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedAmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -31,16 +36,19 @@ public abstract class SharedScpRadioSystem : EntitySystem
         SubscribeLocalEvent<GetVerbsEvent<Verb>>(AddVerbs);
         SubscribeLocalEvent<ScpRadioComponent, ExaminedEvent>(OnExamine);
 
-        SubscribeLocalEvent<ScpRadioComponent, GotEquippedEvent>(DisableAmbience);
-        SubscribeLocalEvent<ScpRadioComponent, EntityInsertedIntoStorageEvent>(DisableAmbience);
-        SubscribeLocalEvent<ScpRadioComponent, GotUnequippedEvent>(EnableAmbience);
-        SubscribeLocalEvent<ScpRadioComponent, EntityRemovedFromStorageEvent>(EnableAmbience);
+        SubscribeLocalEvent<ScpRadioComponent, EntParentChangedMessage>(OnAmbienceChanged);
+        SubscribeLocalEvent<ScpRadioComponent, GotEquippedEvent>(OnAmbienceChanged);
+        SubscribeLocalEvent<ScpRadioComponent, GotUnequippedEvent>(OnAmbienceChanged);
+        SubscribeLocalEvent<ScpRadioComponent, GotEquippedHandEvent>(OnAmbienceChanged);
+        SubscribeLocalEvent<ScpRadioComponent, GotUnequippedHandEvent>(OnAmbienceChanged);
+        SubscribeLocalEvent<ScpRadioComponent, EntityInsertedIntoStorageEvent>(OnAmbienceChanged);
+        SubscribeLocalEvent<ScpRadioComponent, EntityRemovedFromStorageEvent>(OnAmbienceChanged);
     }
 
     protected virtual void OnStartup(Entity<ScpRadioComponent> ent, ref ComponentStartup args)
     {
         ent.Comp.ActiveChannel = ent.Comp.Channels.First();
-        _ambientSound.SetAmbience(ent, ent.Comp.Enabled);
+        UpdateAmbience(ent);
     }
 
     private void OnActivate(Entity<ScpRadioComponent> ent, ref ActivateInWorldEvent args)
@@ -83,17 +91,14 @@ public abstract class SharedScpRadioSystem : EntitySystem
         }
     }
 
-    private void DisableAmbience<T>(Entity<ScpRadioComponent> ent, ref T _)
+    private void OnAmbienceChanged<T>(Entity<ScpRadioComponent> ent, ref T _)
     {
-        _ambientSound.SetAmbience(ent, false);
+        UpdateAmbience(ent);
     }
 
-    private void EnableAmbience<T>(Entity<ScpRadioComponent> ent, ref T _)
+    protected void UpdateAmbience(Entity<ScpRadioComponent> ent)
     {
-        if (!ent.Comp.Enabled)
-            return;
-
-        _ambientSound.SetAmbience(ent, true);
+        _ambientSound.SetAmbience(ent, ent.Comp.Enabled && ShouldPlayAmbience(ent));
     }
 
     private void AddCycleChannelVerb(Entity<ScpRadioComponent> ent, GetVerbsEvent<Verb> ev)
@@ -162,6 +167,14 @@ public abstract class SharedScpRadioSystem : EntitySystem
     }
 
     protected virtual void ToggleRadio(Entity<ScpRadioComponent> ent, bool value, EntityUid? user = null) { }
+
+    private bool ShouldPlayAmbience(EntityUid uid)
+    {
+        if (!_container.TryGetContainingContainer((uid, null, null), out var container))
+            return true;
+
+        return _hands.TryGetHand(container.Owner, container.ID, out _);
+    }
 
     private static ProtoId<RadioChannelPrototype> GetNextChannel(List<ProtoId<RadioChannelPrototype>> channels,
         ProtoId<RadioChannelPrototype> current)
