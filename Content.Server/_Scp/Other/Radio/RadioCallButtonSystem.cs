@@ -1,6 +1,8 @@
 using Content.Server.Radio.EntitySystems;
+using Content.Server.Popups;
 using Content.Shared._Scp.Helpers;
 using Content.Shared.Examine;
+using Content.Shared.Popups;
 using Content.Shared.Pinpointer;
 using Content.Shared.Timing;
 using Content.Shared._Scp.Trigger.TriggerOnSignalSwitch;
@@ -14,6 +16,7 @@ public sealed class RadioCallButtonSystem : EntitySystem
 
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly EntityLookupSystem _lookup = default!;
+    [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly UseDelaySystem _delay = default!;
 
@@ -44,6 +47,9 @@ public sealed class RadioCallButtonSystem : EntitySystem
         {
             _radio.SendRadioMessage(ent.Owner, message, channel, ent.Owner);
         }
+
+        if (args.User is { } user)
+            _popup.PopupCursor(Loc.GetString("scp-radio-button-request-sent"), user, PopupType.Medium);
     }
 
     private void OnExamined(Entity<RadioCallButtonComponent> ent, ref ExaminedEvent args)

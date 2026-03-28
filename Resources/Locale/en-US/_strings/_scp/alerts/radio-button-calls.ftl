@@ -54,3 +54,4 @@ scp-d-class-request = D-class personnel required at {$location}!
 
 scp-radio-button-location-examine = Service call target: {$location}
 scp-radio-button-unknown-location = Unknown location
+scp-radio-button-request-sent = Your request has been sent

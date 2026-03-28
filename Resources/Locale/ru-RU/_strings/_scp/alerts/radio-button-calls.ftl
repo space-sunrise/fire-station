@@ -53,3 +53,4 @@ scp-d-class-request = Требуется персонал класса D в: {$l
 
 scp-radio-button-location-examine = Точка вызова службы: {$location}
 scp-radio-button-unknown-location = Неизвестное местоположение
+scp-radio-button-request-sent = Ваш запрос отправлен
