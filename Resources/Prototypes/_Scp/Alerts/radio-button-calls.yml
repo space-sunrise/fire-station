@@ -15,6 +15,9 @@
     delays:
       RadioCall: !type:UseDelayInfo
         length: 5
+  - type: ScpEchoExemptSounds
+    exemptPaths:
+    - /Audio/_Scp/Effects/Button/click.ogg
 
 - type: entity
   parent: BaseRadioButtonCall
@@ -51,6 +54,10 @@
       path: /Audio/_Scp/Effects/Button/emergency_alarm.ogg
       params:
         maxDistance: 6
+  - type: ScpEchoExemptSounds
+    exemptPaths:
+    - /Audio/_Scp/Effects/Button/click.ogg
+    - /Audio/_Scp/Effects/Button/emergency_alarm.ogg
   - type: TTS
     voice: Brendan
 

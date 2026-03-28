@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Content.Client._Scp.Audio.Components;
 using Content.Shared._Scp.Audio;
@@ -79,6 +80,11 @@ public sealed class AudioEffectResolverSystem : EntitySystem
     private EntityQuery<TransformComponent> _transformQuery;
 
     /// <summary>
+    /// Query cache for source entities that exempt specific files from SCP echo.
+    /// </summary>
+    private EntityQuery<ScpEchoExemptSoundsComponent> _echoExemptQuery;
+
+    /// <summary>
     /// Read-only view of all audio entities currently tracked by the resolver.
     /// </summary>
     public IReadOnlyCollection<EntityUid> TrackedAudio => _trackedAudio;
@@ -98,6 +104,7 @@ public sealed class AudioEffectResolverSystem : EntitySystem
         _audioQuery = GetEntityQuery<AudioComponent>();
         _localEffectsQuery = GetEntityQuery<AudioLocalEffectsComponent>();
         _transformQuery = GetEntityQuery<TransformComponent>();
+        _echoExemptQuery = GetEntityQuery<ScpEchoExemptSoundsComponent>();
     }
 
     /// <summary>
@@ -348,6 +355,27 @@ public sealed class AudioEffectResolverSystem : EntitySystem
     }
 
     /// <summary>
+    /// Checks whether the source entity declared the current audio file as dry for SCP echo.
+    /// </summary>
+    /// <param name="uid">The transient audio entity whose parent emitted the sound.</param>
+    /// <param name="audio">The audio component storing the resolved file path.</param>
+    /// <returns>
+    /// <see langword="true"/> when the audio source's parent whitelists the file for dry playback; otherwise
+    /// <see langword="false"/>.
+    /// </returns>
+    private bool IsEchoExempt(EntityUid uid, AudioComponent audio)
+    {
+        if (string.IsNullOrWhiteSpace(audio.FileName) ||
+            !_transformQuery.TryComp(uid, out var xform) ||
+            !_echoExemptQuery.TryComp(xform.ParentUid, out var exempt))
+        {
+            return false;
+        }
+
+        return exempt.ExemptPaths.Any(path => string.Equals(path, audio.FileName, StringComparison.OrdinalIgnoreCase));
+    }
+
+    /// <summary>
     /// Resolves which SCP preset, if any, should own the local auxiliary slot for the given sound.
     /// </summary>
     /// <param name="uid">The tracked audio entity.</param>
@@ -372,6 +400,9 @@ public sealed class AudioEffectResolverSystem : EntitySystem
         AudioLocalEffectsComponent localEffects)
     {
         if (IsEffectivelyGlobal(uid, audio))
+            return null;
+
+        if (localEffects.OcclusionBand == AudioOcclusionBand.Clear && IsEchoExempt(uid, audio))
             return null;
 
         // Fully silent sources must not keep any SCP local auxiliary attached.
