@@ -1,12 +1,12 @@
 - type: shader
   id: BlinkingEffect
   kind: source
-  path: "/Textures/Shaders/blinking_effect.swsl"
+  path: "/Textures/_Scp/Shaders/blinking_effect.swsl"
 
 - type: shader
   id: Hide
   kind: source
-  path: "/Textures/Shaders/hide.swsl"
+  path: "/Textures/_Scp/Shaders/hide.swsl"
 
 - type: shader
   id: CRT_VHS
