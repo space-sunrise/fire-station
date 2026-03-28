@@ -19,10 +19,6 @@ namespace Content.Client.Options.UI
             SetTabsName();
             // Sunrise-End
 
-            // Fire added start
-            Tabs.SetTabTitle(0, Loc.GetString("ui-options-tab-scp"));
-            // Fire added end
-
             UpdateTabs();
         }
 
