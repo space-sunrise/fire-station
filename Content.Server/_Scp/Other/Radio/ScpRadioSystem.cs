@@ -47,7 +47,10 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
     private void OnListen(Entity<ScpRadioComponent> ent, ref ListenEvent args)
     {
-        var channel = PrototypeManager.Index(ent.Comp.ActiveChannel);
+        if (ent.Comp.ActiveChannel is not { } activeChannel)
+            return;
+
+        var channel = PrototypeManager.Index(activeChannel);
         _radio.SendRadioMessage(args.Source, args.Message, channel, ent);
         _audio.PlayEntity(ent.Comp.SendSound, args.Source, ent);
 
@@ -62,6 +65,9 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
             args.Cancel();
 
         if (!ent.Comp.MicrophoneEnabled)
+            args.Cancel();
+
+        if (ent.Comp.ActiveChannel == null)
             args.Cancel();
 
         if (HasComp<EmpDisabledComponent>(ent))
@@ -106,6 +112,14 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
         if (HasHeadsetForChannel(ent, args.Channel.ID))
             args.Cancelled = true;
+    }
+
+    protected override void OnEncryptionChannelsChanged(Entity<ScpRadioComponent> ent, ref EncryptionChannelsChangedEvent args)
+    {
+        base.OnEncryptionChannelsChanged(ent, ref args);
+
+        UpdateMicrophone(ent);
+        UpdateSpeaker(ent);
     }
 
     protected override void ToggleMicrophone(Entity<ScpRadioComponent> ent, EntityUid user)
@@ -192,7 +206,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
     private void UpdateMicrophone(Entity<ScpRadioComponent> ent)
     {
-        if (ent.Comp.MicrophoneEnabled)
+        if (ent.Comp.MicrophoneEnabled && ent.Comp.ActiveChannel != null)
             EnsureComp<ActiveListenerComponent>(ent).Range = ent.Comp.ListenRange;
         else
             RemCompDeferred<ActiveListenerComponent>(ent);
@@ -200,7 +214,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
     private void UpdateSpeaker(Entity<ScpRadioComponent> ent)
     {
-        if (ent.Comp.Enabled)
+        if (ent.Comp.Enabled && ent.Comp.Channels.Count > 0)
             EnsureComp<ActiveRadioComponent>(ent).Channels = ent.Comp.Channels.ToHashSet();
         else
             RemCompDeferred<ActiveRadioComponent>(ent);

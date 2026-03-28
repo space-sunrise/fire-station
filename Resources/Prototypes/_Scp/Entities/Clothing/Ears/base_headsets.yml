@@ -7,6 +7,8 @@
     keyBlacklist:
       tags:
       - EncryptionCommon
+      - EncryptionScpSecurityCommon
+      - EncryptionSecurity
 
 - type: entity
   abstract: true
@@ -17,3 +19,5 @@
     keyBlacklist:
       tags:
       - EncryptionCommon
+      - EncryptionScpSecurityCommon
+      - EncryptionSecurity

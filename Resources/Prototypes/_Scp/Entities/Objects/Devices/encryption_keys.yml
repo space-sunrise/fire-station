@@ -143,7 +143,16 @@
 # Служба безопасности тяжелой зоны
 
 - type: entity
-  parent: [ EncryptionKey, BaseSecurityLawyerContraband ]
+  parent: [ EncryptionKeySecurity, BaseSecurityContraband ]
+  id: ScpEncryptionKeySecurity
+  components:
+  - type: Tag
+    tags:
+    - EncryptionSecurity
+    - EncryptionScpSecurityCommon
+
+- type: entity
+  parent: [ EncryptionKey, BaseSecurityContraband ]
   id: EncryptionKeyHeavyContainmentSecurityService
   components:
   - type: EncryptionKey
@@ -162,7 +171,7 @@
 # Служба безопасности внешней административной зоны
 
 - type: entity
-  parent: [ EncryptionKey, BaseSecurityLawyerContraband ]
+  parent: [ EncryptionKey, BaseSecurityContraband ]
   id: EncryptionKeyExternalAdministrativeZoneSecurityService
   components:
   - type: EncryptionKey
