@@ -2730,4 +2730,9 @@ FloorTileItemWood: ScpFloorTileItemWood
 FloorTileItemWoodLarge: ScpFloorTileItemWoodLarge
 FloorTileItemWoodPattern: ScpFloorTileItemWoodPattern
 
+# почему это существовало
+ClothingUniformJumpsuitBlueDirectorFormal: ClothingUniformJumpsuitDirector
+ClothingHeadHatCapDirector: ClothingHeadHatDirector
+ClothingHandsGlovesDirector: ClothingHandsGlovesDirectorSpecial
+
 # Fire added end

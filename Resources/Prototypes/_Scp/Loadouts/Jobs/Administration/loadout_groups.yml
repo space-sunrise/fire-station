@@ -8,7 +8,6 @@
   minLimit: 0
   loadouts:
   - ScpLoadoutClothingHeadHatDirector
-  - ScpLoadoutClothingHeadHatCapDirector
 
 - type: loadoutGroup
   id: ScpLoadoutGroupAdministrationGlasses
@@ -43,14 +42,12 @@
   name: loadout-group-jumpsuit
   loadouts:
   - ScpLoadoutClothingUniformJumpsuitDirector
-  - ScpLoadoutClothingUniformJumpsuitBlueDirectorFormal
 
 - type: loadoutGroup
   id: ScpLoadoutGroupDirectorGloves
   name: loadout-group-gloves
   minLimit: 0
   loadouts:
-  - ScpLoadoutClothingHandsGlovesDirector
   - ScpLoadoutClothingHandsGlovesDirectorSpecial
 
 - type: loadoutGroup
