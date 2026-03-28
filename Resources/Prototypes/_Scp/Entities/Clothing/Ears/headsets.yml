@@ -1,7 +1,7 @@
 ﻿# Служба безопасности тяжелой зоны
 
 - type: entity
-  parent: [ClothingHeadset, BaseSecurityLawyerContraband]
+  parent: [BaseScpHeadset, BaseSecurityLawyerContraband]
   id: ClothingHeadsetHeavyContainmentSecurityService
   components:
   - type: ContainerFill
@@ -16,7 +16,7 @@
 # Служба безопасности внешней административной зоны
 
 - type: entity
-  parent: [ClothingHeadset, BaseSecurityContraband]
+  parent: [BaseScpHeadset, BaseSecurityContraband]
   id: ClothingHeadsetFieldMedicalSpecialist
   components:
   - type: ContainerFill
@@ -30,7 +30,7 @@
     sprite: Clothing/Ears/Headsets/brigmedic.rsi
 
 - type: entity
-  parent: [ClothingHeadset, BaseSecurityLawyerContraband]
+  parent: [BaseScpHeadset, BaseSecurityLawyerContraband]
   id: ClothingHeadsetExternalAdministrativeZoneSecurityService
   components:
   - type: ContainerFill
@@ -45,7 +45,7 @@
 # Научный отдел
 
 - type: entity
-  parent: ClothingHeadset
+  parent: BaseScpHeadset
   id: ClothingHeadsetScientificService
   components:
   - type: ContainerFill
@@ -60,7 +60,7 @@
 # Медицинский отдел
 
 - type: entity
-  parent: ClothingHeadset
+  parent: BaseScpHeadset
   id: ClothingHeadsetMedicalService
   components:
   - type: ContainerFill
@@ -75,7 +75,7 @@
 # Инженерно-технический отдел
 
 - type: entity
-  parent: ClothingHeadset
+  parent: BaseScpHeadset
   id: ClothingHeadsetEngineeringTechnicalService
   components:
   - type: ContainerFill
@@ -90,7 +90,7 @@
 # Отдел логистики
 
 - type: entity
-  parent: ClothingHeadset
+  parent: BaseScpHeadset
   id: ClothingHeadsetLogistics
   components:
   - type: ContainerFill
@@ -105,7 +105,7 @@
 # Департамент продовольствия и санитарной службы
 
 - type: entity
-  parent: ClothingHeadset
+  parent: BaseScpHeadset
   id: ClothingHeadsetFoodAndSanitation
   components:
   - type: ContainerFill

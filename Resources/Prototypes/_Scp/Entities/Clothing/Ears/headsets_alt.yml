@@ -1,7 +1,7 @@
 ﻿# Региональная администрация
 
 - type: entity
-  parent: ClothingHeadsetAlt
+  parent: BaseScpHeadsetAlt
   id: ClothingHeadsetAltRegionalAdministration
   components:
   - type: ContainerFill
@@ -17,7 +17,7 @@
 # Администрация
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [BaseScpHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltAdministration
   components:
   - type: ContainerFill
@@ -32,7 +32,7 @@
 # Департамент внутренней безопасности
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [BaseScpHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltInternalSecurity
   components:
   - type: ContainerFill
@@ -48,7 +48,7 @@
 # Комитет по этике
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [BaseScpHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltEthicsCommittee
   components:
   - type: ContainerFill
@@ -64,7 +64,7 @@
 # Департамент внутреннего трибунала
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [BaseScpHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltInternalTribunalService
   components:
   - type: ContainerFill
@@ -80,7 +80,7 @@
 # Руководство СБ(начальник охраны)
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [BaseScpHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltSecurityAdministration
   components:
   - type: ContainerFill
@@ -97,7 +97,7 @@
 # Служба безопасности тяжелой зоны
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [BaseScpHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltHeavyContainmentSecurityService
   components:
   - type: ContainerFill
@@ -113,7 +113,7 @@
 # Служба безопасности внешней административной зоны
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [BaseScpHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltExternalAdministrativeZoneSecurityService
   components:
   - type: ContainerFill
@@ -129,7 +129,7 @@
 # Научный отдел
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [BaseScpHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltScientificService
   components:
   - type: ContainerFill
@@ -145,7 +145,7 @@
 # Медицинский отдел
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [BaseScpHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltMedicalService
   components:
   - type: ContainerFill
@@ -161,7 +161,7 @@
 # Инженерно-технический отдел
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseCommandContraband]
+  parent: [BaseScpHeadsetAlt, BaseCommandContraband]
   id: ClothingHeadsetAltEngineeringTechnicalService
   components:
   - type: ContainerFill
@@ -177,7 +177,7 @@
 # Отдел логистики
 
 - type: entity
-  parent: ClothingHeadsetAlt
+  parent: BaseScpHeadsetAlt
   id: ClothingHeadsetAltLogistics
   components:
   - type: ContainerFill
@@ -193,7 +193,7 @@
 # Повстанцы хаоса
 
 - type: entity
-  parent: [ClothingHeadsetAlt, BaseChaosContraband]
+  parent: [BaseScpHeadsetAlt, BaseChaosContraband]
   id: ClothingHeadsetAltChaos
   components:
   - type: Headset
