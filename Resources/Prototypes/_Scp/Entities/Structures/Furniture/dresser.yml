@@ -1,0 +1,35 @@
+- type: entity
+  id: ScpBaseDresserComponents
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/dresser.rsi
+    layers:
+    - map: [ "base" ]
+      state: base
+    - map: [ "state" ]
+      state: closed
+  - type: GenericVisualizer
+    visuals:
+      enum.StorageVisuals.Open:
+        state:
+          True: { state: opened }
+          False: { state: closed }
+  - type: Appearance
+  - type: Rotatable
+    rotateWhileAnchored: true
+
+- type: entity
+  id: ScpDresser
+  parent:
+  - ScpBaseDresserComponents
+  - Dresser
+
+- type: entity
+  id: ScpDresserFilled
+  parent:
+  - ScpBaseDresserComponents
+  - DresserFilled
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/dresser.rsi

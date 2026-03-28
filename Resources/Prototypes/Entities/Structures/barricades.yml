@@ -53,6 +53,7 @@
 #Regular Barricade
 - type: entity
   id: Barricade
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseBarricade
   components:
   - type: Construction

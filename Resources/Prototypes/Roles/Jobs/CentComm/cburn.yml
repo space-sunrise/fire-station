@@ -28,7 +28,7 @@
     back: ClothingBackpackDuffelCBURN
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
-    ears: ClothingHeadsetAltCentCom
+    ears: ClothingHeadsetAltERT #Sunrise-Edit
     # gloves: ClothingHandsGlovesCombat #Sunrise-Edit
     outerClothing: ClothingOuterHardsuitCBURN
     shoes: ClothingShoesBootsCombatFilled
@@ -61,7 +61,7 @@
     back: ClothingBackpackDuffelCBURN
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
-    ears: ClothingHeadsetAltCentCom
+    ears: ClothingHeadsetAltERT #Sunrise-Edit
     outerClothing: ClothingOuterSoftsuitCBURN
     shoes: ClothingShoesBootsCombatFilled
     id: CBURNPDA

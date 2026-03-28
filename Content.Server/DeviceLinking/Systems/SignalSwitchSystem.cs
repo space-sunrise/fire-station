@@ -2,6 +2,7 @@ using Content.Server.DeviceLinking.Components;
 using Content.Server.DeviceNetwork;
 using Content.Shared.Interaction;
 using Content.Shared.Lock;
+using Content.Shared._Scp.Trigger.TriggerOnSignalSwitch;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 
@@ -46,5 +47,10 @@ public sealed class SignalSwitchSystem : EntitySystem
         _audio.PlayPvs(comp.ClickSound, uid, AudioParams.Default.WithVariation(0.125f).WithVolume(8f));
 
         args.Handled = true;
+
+        // Fire added start
+        var ev = new SignalSwitchActivatedEvent(comp.State, args.User);
+        RaiseLocalEvent(uid, ref ev);
+        // Fire added end
     }
 }

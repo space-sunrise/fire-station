@@ -1,0 +1,17 @@
+- type: construction
+  id: ScpBaseBallBat
+  graph: ScpWoodenBat
+  startNode: start
+  targetNode: bat
+  category: construction-category-weapons
+  objectType: Item
+
+- type: construction
+  name: crafting-menu-name-WH
+  id: ScpHiltWood
+  graph: ScpHiltWoodGraph
+  startNode: start
+  targetNode: hilt
+  category: construction-category-tools
+  objectType: Item
+  description: crafting-menu-text-WH

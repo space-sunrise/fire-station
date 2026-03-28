@@ -192,6 +192,7 @@
   name: tower-cap log
   description: It's better than bad, it's good!
   id: Log
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ProduceBase
   components:
   - type: Sprite

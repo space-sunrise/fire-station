@@ -46,7 +46,7 @@
   - type: Item
     size: Ginormous
   - type: StaminaResistance
-    damageCoefficient: 0.7
+    damageCoefficient: 0.5
   - type: Pierceable
     level: Rock
   - type: Armor
@@ -357,7 +357,6 @@
         - type: ExplosionResistance
           damageCoefficient: 0.5
 
-# Starlight
 - type: entity
   parent: ClothingOuterArmorBasic
   id: ClothingOuterArmorPlate

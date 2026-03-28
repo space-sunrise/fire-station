@@ -1,5 +1,6 @@
 - type: entity
   id: Dresser
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseStructure
   name: dresser
   description: Wooden dresser, can store things inside itself, ideal for underwear, and someone's kidneys?...
@@ -53,6 +54,7 @@
 
 - type: entity
   id: DresserFilled
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: Dresser
   suffix: Filled
   components:

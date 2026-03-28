@@ -281,6 +281,7 @@
   name: wooden buckler
   parent: BaseShield
   id: WoodenBuckler
+  categories: [ HideSpawnMenu ] # Fire edit
   description: A small round wooden makeshift shield.
   components:
     - type: Sprite

@@ -75,3 +75,154 @@
   canBuildInImpassable: false
   conditions:
     - !type:TileNotBlocked
+
+- type: construction
+  id: ScpBarricade
+  graph: ScpBarricade
+  startNode: start
+  targetNode: barricadefull
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpFenceWood
+  graph: ScpFenceWood
+  startNode: start
+  targetNode: straight
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpFenceWoodEnd
+  name: construction-recipe-fence-wood-end
+  graph: ScpFenceWood
+  startNode: start
+  targetNode: end
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpFenceWoodCorner
+  name: construction-recipe-fence-wood-corner
+  graph: ScpFenceWood
+  startNode: start
+  targetNode: corner
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpFenceWoodTJunction
+  name: construction-recipe-fence-wood-t-junction
+  graph: ScpFenceWood
+  startNode: start
+  targetNode: tjunction
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpFenceWoodGate
+  graph: ScpFenceWood
+  startNode: start
+  targetNode: gate
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpFenceWoodSmall
+  graph: ScpFenceWood
+  startNode: start
+  targetNode: straight_small
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpFenceWoodEndSmall
+  name: construction-recipe-fence-wood-end-small
+  graph: ScpFenceWood
+  startNode: start
+  targetNode: end_small
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpFenceWoodCornerSmall
+  name: construction-recipe-fence-wood-corner-small
+  graph: ScpFenceWood
+  startNode: start
+  targetNode: corner_small
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpFenceWoodTJunctionSmall
+  name: construction-recipe-fence-wood-t-junction-small
+  graph: ScpFenceWood
+  startNode: start
+  targetNode: tjunction_small
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpFenceWoodGateSmall
+  name: construction-recipe-fence-wood-gate-small
+  graph: ScpFenceWood
+  startNode: start
+  targetNode: gate_small
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
+  id: ScpWoodDoor
+  graph: ScpWoodDoor
+  startNode: start
+  targetNode: woodDoor
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked

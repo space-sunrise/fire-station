@@ -1,0 +1,37 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "Sprited by peperino0290_92944(discord) for Fire Station",
+  "size": {
+      "x": 32,
+      "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+     {
+      "name": "storage"
+     },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "wielded-inhand-left",
+      "directions": 4
+    },
+	  {
+      "name": "wielded-inhand-right",
+      "directions": 4
+    },
+    {
+      "name": "equipped-BACKPACK",
+      "directions": 4
+    }
+  ]
+}

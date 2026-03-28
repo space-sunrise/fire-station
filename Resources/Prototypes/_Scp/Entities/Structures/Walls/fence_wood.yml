@@ -1,0 +1,91 @@
+- type: entity
+  parent: FenceWoodHighStraight
+  id: ScpFenceWoodHighStraight
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+
+- type: entity
+  parent: FenceWoodHighEnd
+  id: ScpFenceWoodHighEnd
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+
+- type: entity
+  parent: FenceWoodHighCorner
+  id: ScpFenceWoodHighCorner
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+
+- type: entity
+  parent: FenceWoodHighTJunction
+  id: ScpFenceWoodHighTJunction
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+
+- type: entity
+  parent: FenceWoodHighGate
+  id: ScpFenceWoodHighGate
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+    state: door_closed
+
+- type: entity
+  parent: FenceWoodSmallStraight
+  id: ScpFenceWoodSmallStraight
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+
+- type: entity
+  parent: FenceWoodSmallEnd
+  id: ScpFenceWoodSmallEnd
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+
+- type: entity
+  parent: FenceWoodSmallCorner
+  id: ScpFenceWoodSmallCorner
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+
+- type: entity
+  parent: FenceWoodSmallTJunction
+  id: ScpFenceWoodSmallTJunction
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+
+- type: entity
+  parent: FenceWoodSmallGate
+  id: ScpFenceWoodSmallGate
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/wooden_fence.rsi
+    state: door_closed_small

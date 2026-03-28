@@ -81,7 +81,7 @@
 - type: radioChannel
   id: Binary
   name: chat-radio-binary
-  keycode: 'д' # Fire edit - чтобы не конфликтовало
+  keycode: '<' # Fire edit - чтобы не конфликтовало
   frequency: 1001
   color: "#9fd6c1" # Fire edit
   # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
@@ -90,7 +90,7 @@
 - type: radioChannel
   id: Freelance
   name: chat-radio-freelance
-  keycode: 'ф' # Fire edit - чтобы не конфликтовало
+  keycode: '\' # Fire edit - чтобы не конфликтовало
   frequency: 1984
   color: "#f6ce64"
   # long range since otherwise it'd defeat the point of a handheld radio independent of telecomms
@@ -99,7 +99,7 @@
 - type: radioChannel
   id: Xenoborg
   name: chat-radio-xenoborg
-  keycode: 'ч' # Sunrise-Localization
+  keycode: ']' # Sunrise-Localization
   frequency: 2002
   color: "#2288ff"
   # long range since I don't wanna make a special xenoborg telecomm server
@@ -108,7 +108,7 @@
 - type: radioChannel
   id: Mothership
   name: chat-radio-mothership
-  keycode: 'я' # Sunrise-Localization
+  keycode: ')' # Sunrise-Localization
   frequency: 2003
   color: "#ff2222"
   # long range since I don't wanna make a special xenoborg telecomm server

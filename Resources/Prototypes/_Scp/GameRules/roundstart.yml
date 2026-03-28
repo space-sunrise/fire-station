@@ -166,3 +166,9 @@
   table: !type:AllSelector
     children:
     - id: Scp2054X
+
+- type: entity
+  id: FreeScpRule
+  parent: BaseGameRule
+  components:
+  - type: FreeScpRule

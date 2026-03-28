@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "license": "CLA",
+  "copyright": "Sprited by miduzka(discord) for Scp: Project Fire",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "base",
+      "directions": 4
+    },
+    {
+      "name": "closed",
+      "directions": 4
+    },
+    {
+      "name": "opened",
+      "directions": 4
+    }
+  ]
+}

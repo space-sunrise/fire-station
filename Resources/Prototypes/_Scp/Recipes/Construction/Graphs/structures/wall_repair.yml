@@ -78,6 +78,31 @@
         amount: -300
 
 - type: constructionGraph
+  id: ScpWallWoodRepair
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: patched
+      conditions:
+      - !type:HasDamage
+        require: true
+      steps:
+      - material: WoodPlank
+        amount: 1
+        doAfter: 1
+
+  - node: patched
+    edges:
+    - to: start
+      steps:
+      - tool: Screwing
+        doAfter: 1
+      completed:
+      - !type:DamageEntityAllTypes
+        amount: -150
+
+- type: constructionGraph
   id: ScpWallMetalHardRepair
   start: start
   graph:

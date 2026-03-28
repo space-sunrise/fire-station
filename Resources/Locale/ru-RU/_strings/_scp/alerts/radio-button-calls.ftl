@@ -1,39 +1,38 @@
 ﻿# Названия и описания сущностей
-ent-BaseRadioCallButton = кнопка радиовызова
+ent-BaseRadioButtonCall = кнопка радиовызова
     .desc = Простая и удобная кнопка для вызова помощи.
 
-ent-CallButtonMedicalService = кнопка вызова медицинской службы
+ent-BaseEmergencyRadioButtonCall = аварийная кнопка радиовызова
+    .desc = Кнопка для экстренного вызова помощи.
+
+ent-ButtonCallMedicalService = кнопка вызова медицинской службы
     .desc = Кнопка для вызова помощи медицинской службы.
-
-ent-CallButtonScientificService = кнопка вызова научной службы
+ent-ButtonCallScientificService = кнопка вызова научной службы
     .desc = Кнопка для вызова помощи научной службы.
-
-ent-CallButtonEngineeringTechnicalService = кнопка вызова инженерно-технической службы
+ent-ButtonCallEngineeringTechnicalService = кнопка вызова инженерно-технической службы
     .desc = Кнопка для вызова помощи инженерно-технической службы.
-
-ent-CallButtonSpecialPurposeSquad = кнопка вызова отряда специального назначения
+ent-ButtonCallSpecialPurposeSquad = кнопка вызова отряда специального назначения
     .desc = Кнопка для вызова помощи отряда специального назначения.
-
-ent-CallButtonFoodAndSanitationService = кнопка вызова службы питания и санитарии
+ent-ButtonCallFoodAndSanitationService = кнопка вызова службы питания и санитарии
     .desc = Кнопка для вызова помощи службы питания и санитарии.
-
-ent-CallButtonLogisticsService = кнопка вызова службы логистики
+ent-ButtonCallLogisticsService = кнопка вызова службы логистики
     .desc = Кнопка для вызова помощи службы логистики.
-
-ent-CallButtonCommandantSquad = кнопка вызова отряда комендатуры
+ent-ButtonCallCommandantSquad = кнопка вызова отряда комендатуры
     .desc = Кнопка для вызова помощи отряда комендатуры.
-
-ent-CallButtonEthicsCommittee = кнопка вызова Комитета по этике
+ent-ButtonCallEthicsCommittee = кнопка вызова Комитета по этике
     .desc = Кнопка для вызова содействия Комитета по этике.
 
-ent-CallButtonEmergencyMedicalService = кнопка экстренного вызова медицинской службы
-    .desc = Кнопка для экстренного вызова помощи медицинской службы.
+ent-ButtonCallDClassRequest = кнопка запроса персонала класса D
+    .desc = Кнопка для запроса персонала класса D.
 
-ent-CallButtonEmergencyEngineeringTechnicalService = кнопка экстренного вызова инженерно-технической службы
-    .desc = Кнопка для экстренного вызова помощи инженерно-технической службы.
-
-ent-CallButtonEmergencySpecialPurposeSquad = кнопка экстренного вызова отряда специального назначения
-    .desc = Кнопка для экстренного вызова помощи отряда специального назначения.
+ent-ButtonCallEmergencyMedicalService = кнопка экстренного вызова медицинской службы
+    .desc = Кнопка для экстренного вызова помощи медицинской службы. При активации активирует тревогу и экстренно вызывает заданную службу в точку.
+ent-ButtonCallEmergencySpecialPurposeSquad = кнопка экстренного вызова отряда специального назначения
+    .desc = Кнопка для экстренного вызова помощи отряда специального назначения. При активации активирует тревогу и экстренно вызывает заданную службу в точку.
+ent-ButtonCallEmergencyEngineeringTechnicalService = кнопка экстренного вызова инженерно-технической службы
+    .desc = Кнопка для экстренного вызова помощи инженерно-технической службы. При активации активирует тревогу и экстренно вызывает заданную службу в точку.
+ent-ButtonCallEmergencyCommandantSquad = кнопка экстренного вызова отряда комендатуры
+    .desc = Кнопка для экстренного вызова помощи отряда комендатуры. При активации активирует тревогу и экстренно вызывает заданную службу в точку.
 
 # Экстренные сообщения
 scp-emergency-medical-service-call = ТРЕВОГА! Требуется немедленная помощь медицинской службы в: {$location}!
@@ -52,4 +51,6 @@ scp-commandant-squad-call = Требуется помощь отряда ком�
 scp-ethics-committee-call = Требуется содействие Комитета по этике в: {$location}!
 scp-d-class-request = Требуется персонал класса D в: {$location}!
 
+scp-radio-button-location-examine = Точка вызова службы: {$location}
 scp-radio-button-unknown-location = Неизвестное местоположение
+scp-radio-button-request-sent = Ваш запрос отправлен

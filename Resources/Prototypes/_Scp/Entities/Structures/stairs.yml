@@ -37,3 +37,19 @@
     sprite: _Scp/Structures/stairs.rsi
     state: stairs_stage_steel
     drawdepth: FloorTiles
+
+- type: entity
+  parent: StairWood
+  id: StairScpWood
+  suffix: Wood
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/stairs.rsi
+
+- type: entity
+  parent: StairStageWood
+  id: StairScpWoodStage
+  suffix: Wood, stage
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/stairs.rsi

@@ -1,38 +1,74 @@
-﻿using Content.Shared._Scp.Audio;
-using Content.Shared._Scp.Audio.Components;
+using System.Linq;
+using Content.Client._Scp.Audio.Components;
 using Content.Shared._Scp.ScpCCVars;
 using Content.Shared.Silicons.StationAi;
 using Robust.Client.Audio;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Player;
-using Robust.Shared.Prototypes;
 
 namespace Content.Client._Scp.Audio;
 
+/// <summary>
+/// Applies SCP-specific positional sound muffling on the client based on computed occlusion.
+/// </summary>
+/// <remarks>
+/// This system is responsible for two separate but related tasks:
+/// <list type="bullet">
+/// <item><description>Deriving a coarse occlusion band used by <see cref="AudioEffectResolverSystem"/>.</description></item>
+/// <item><description>Applying additional gain attenuation so heavily occluded sounds become quiet or fully silent.</description></item>
+/// </list>
+/// It intentionally runs after <see cref="AudioSystem"/> so it can build on top of the engine's current positional,
+/// distance, and occlusion state instead of competing with it.
+/// </remarks>
 public sealed partial class AudioMuffleSystem : EntitySystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
+    [Dependency] private readonly AudioEffectResolverSystem _resolver = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
-    private static readonly ProtoId<AudioPresetPrototype> MufflingEffectPreset = "ScpBehindWalls";
-
+    /// <summary>
+    /// Cached value of <see cref="ScpCCVars.AudioMufflingEnabled"/>.
+    /// </summary>
     private bool _isClientSideEnabled;
+
+    /// <summary>
+    /// Exponential falloff coefficient used to convert occlusion into an additional gain multiplier.
+    /// </summary>
     private float _occlusionGainFalloff;
+
+    /// <summary>
+    /// Occlusion level at or above which a sound is treated as fully silent for SCP muffling.
+    /// </summary>
     private float _silentOcclusionThreshold;
+
+    /// <summary>
+    /// Gain multiplier below which the source is clamped to zero instead of remaining faintly audible.
+    /// </summary>
     private float _minAudibleGainFactor;
+
+    /// <summary>
+    /// Occlusion threshold for entering the <see cref="AudioOcclusionBand.Muffled"/> state.
+    /// </summary>
     private float _muffleEffectApplyOcclusionThreshold;
+
+    /// <summary>
+    /// Lower hysteresis threshold for leaving the <see cref="AudioOcclusionBand.Muffled"/> state.
+    /// </summary>
     private float _muffleEffectClearOcclusionThreshold;
 
+    /// <summary>
+    /// Cached query used to exempt Station AI listeners from client-side muffling.
+    /// </summary>
     private EntityQuery<StationAiHeldComponent> _aiQuery;
-    private EntityQuery<AudioMuffledComponent> _audioMuffledQuery;
 
     #region CCvar events
 
+    /// <summary>
+    /// Binds muffling cvars, initializes the occlusion override, and schedules the system after engine audio updates.
+    /// </summary>
     public override void Initialize()
     {
         base.Initialize();
@@ -48,10 +84,12 @@ public sealed partial class AudioMuffleSystem : EntitySystem
         Subs.CVar(_cfg, ScpCCVars.AudioMufflingEffectClearOcclusionThreshold, value => _muffleEffectClearOcclusionThreshold = value, true);
 
         _aiQuery = GetEntityQuery<StationAiHeldComponent>();
-        _audioMuffledQuery = GetEntityQuery<AudioMuffledComponent>();
         InitializeOcclusion();
     }
 
+    /// <summary>
+    /// Removes the custom occlusion hook installed during <see cref="Initialize"/>.
+    /// </summary>
     public override void Shutdown()
     {
         base.Shutdown();
@@ -61,82 +99,102 @@ public sealed partial class AudioMuffleSystem : EntitySystem
 
     #endregion
 
+    /// <summary>
+    /// Re-evaluates tracked positional sounds once per frame after the engine has refreshed positional audio state.
+    /// </summary>
+    /// <param name="frameTime">The current frame duration in seconds.</param>
     public override void FrameUpdate(float frameTime)
     {
         base.FrameUpdate(frameTime);
-
-        if (!_isClientSideEnabled)
-            return;
 
         IterateAudios();
     }
 
     /// <summary>
-    /// Iterates over active audio entities and applies content-side muffling state.
+    /// Iterates tracked positional sounds on the same cadence as the engine audio update.
+    /// This avoids a full scan over every audio entity every render frame.
     /// </summary>
     /// <remarks>
-    /// This runs as a post-pass over audio because the engine audio API does not expose a cleaner content hook for
-    /// effect management, and positional data becomes valid later than component creation and playback startup.
+    /// The scan is limited to sounds tracked by <see cref="AudioEffectResolverSystem"/>, which keeps the work bounded
+    /// to audio entities that have already opted into the SCP local-effects pipeline.
     /// </remarks>
     private void IterateAudios()
     {
-        if (!Exists(_player.LocalEntity))
-            return;
+        var hasLocalEntity = Exists(_player.LocalEntity);
 
-        // Station AI should not have positional audio muffled away.
-        if (_aiQuery.HasComp(_player.LocalEntity))
-            return;
+        var player = hasLocalEntity
+            ? _player.LocalEntity!.Value
+            : EntityUid.Invalid;
 
-        var player = _player.LocalEntity.Value;
-        var query = EntityQueryEnumerator<AudioComponent, MetaDataComponent>();
-        while (query.MoveNext(out var sound, out var audioComp, out var meta))
+        var canMuffle = _isClientSideEnabled &&
+                        hasLocalEntity &&
+                        !_aiQuery.HasComp(player);
+
+        foreach (var uid in _resolver.TrackedAudio.ToArray())
         {
-            if (TerminatingOrDeleted(sound, meta))
+            if (!_resolver.TryGetTrackedAudio(uid, out var audioComp, out var localEffects))
                 continue;
 
-            // Detached/nullspace audio must stay governed by AudioSystem's own mute logic.
-            if ((meta.Flags & MetaDataFlags.Detached) != 0)
+            if (TerminatingOrDeleted(uid))
                 continue;
 
-            // Global sounds such as music should not be muffled.
-            if (audioComp.Global || !audioComp.Loaded || !audioComp.Started)
+            if (_resolver.IsEffectivelyGlobal(uid, audioComp))
+            {
+                _resolver.SetOcclusionBand(uid, AudioOcclusionBand.Clear);
+                _resolver.Reconcile(uid, audioComp, localEffects);
+                continue;
+            }
+
+            if (!audioComp.Loaded || !audioComp.Started)
                 continue;
 
-            if (audioComp.ExcludedEntity == player)
+            if (hasLocalEntity && audioComp.ExcludedEntity == player)
                 continue;
 
-            UpdateMuffleEffect((sound, audioComp));
-            ApplyOcclusionGain(audioComp);
+            UpdateMuffleEffect(uid, audioComp, localEffects, canMuffle);
+            ApplyOcclusionGain(audioComp, canMuffle);
+            _resolver.Reconcile(uid, audioComp, localEffects);
         }
     }
 
     /// <summary>
-    /// Applies or removes the muffling effect preset based on the current occlusion value.
+    /// Updates the content-side occlusion band used by the resolver.
     /// </summary>
-    private void UpdateMuffleEffect(Entity<AudioComponent> ent)
+    /// <param name="uid">The tracked audio entity being updated.</param>
+    /// <param name="audioComp">Its audio component with the latest engine occlusion value.</param>
+    /// <param name="localEffects">The stored SCP-local effect state for the sound.</param>
+    /// <param name="canMuffle">
+    /// Whether muffling is currently allowed for the listener, taking client settings and special viewpoints into
+    /// account.
+    /// </param>
+    private void UpdateMuffleEffect(
+        EntityUid uid,
+        AudioComponent audioComp,
+        AudioLocalEffectsComponent localEffects,
+        bool canMuffle)
     {
-        if (ent.Comp.Occlusion >= _silentOcclusionThreshold)
-            return;
+        var band = canMuffle
+            ? GetOcclusionBand(audioComp.Occlusion, localEffects.OcclusionBand)
+            : AudioOcclusionBand.Clear;
 
-        var threshold = _audioMuffledQuery.HasComp(ent)
-            ? _muffleEffectClearOcclusionThreshold
-            : _muffleEffectApplyOcclusionThreshold;
-
-        if (ent.Comp.Occlusion >= threshold)
-            TryMuffleSound(ent);
-        else
-            TryUnMuffleSound(ent);
+        _resolver.SetOcclusionBand(uid, band);
     }
 
     /// <summary>
     /// Applies additional gain attenuation derived from occlusion without ever restoring gain above the engine result.
     /// </summary>
-    private void ApplyOcclusionGain(AudioComponent audioComp)
+    /// <param name="audioComp">The audio component whose gain should be attenuated further.</param>
+    /// <param name="canMuffle">Whether muffling attenuation is currently permitted for the listener.</param>
+    /// <remarks>
+    /// The engine may already mute the source because of distance, map mismatch, nullspace, or built-in occlusion.
+    /// This method therefore clamps downward only and never increases <see cref="AudioComponent.Gain"/>.
+    /// </remarks>
+    private void ApplyOcclusionGain(AudioComponent audioComp, bool canMuffle)
     {
         var occlusion = audioComp.Occlusion;
 
         float gainFactor;
-        if (occlusion <= 0f)
+        if (!canMuffle || occlusion <= 0f)
         {
             gainFactor = 1f;
         }
@@ -161,74 +219,48 @@ public sealed partial class AudioMuffleSystem : EntitySystem
     }
 
     /// <summary>
-    /// Tries to apply the muffling effect to a sound.
+    /// Converts raw occlusion into a stable band used by the resolver.
     /// </summary>
-    /// <param name="ent">The audio entity to modify.</param>
-    /// <returns>True if the effect was applied; otherwise false.</returns>
-    public bool TryMuffleSound(Entity<AudioComponent> ent)
+    /// <param name="occlusion">The raw occlusion value currently reported for the sound.</param>
+    /// <param name="currentBand">The band assigned during the previous update, used for hysteresis.</param>
+    /// <returns>The new coarse occlusion band for the source.</returns>
+    /// <remarks>
+    /// Hysteresis prevents sources from flickering between clear and muffled when their occlusion hovers around the
+    /// threshold while either the listener or the source is moving.
+    /// </remarks>
+    private AudioOcclusionBand GetOcclusionBand(float occlusion, AudioOcclusionBand currentBand)
     {
-        if (_audioMuffledQuery.HasComp(ent))
-            return false;
+        if (occlusion >= _silentOcclusionThreshold)
+            return AudioOcclusionBand.Silent;
 
-        // Store prior effect state in a marker component so it can be restored later.
-        var muffledComponent = AddComp<AudioMuffledComponent>(ent);
-        muffledComponent.CachedVolume = ent.Comp.Volume;
+        var threshold = currentBand == AudioOcclusionBand.Clear
+            ? _muffleEffectApplyOcclusionThreshold
+            : _muffleEffectClearOcclusionThreshold;
 
-        if (_effectsManager.TryGetEffect(ent, out var preset))
-            muffledComponent.CachedPreset = preset;
-
-        // Clear incompatible effects, such as echo, before applying the muffling preset.
-        _effectsManager.RemoveAllEffects(ent);
-
-        _effectsManager.TryAddEffect(ent, MufflingEffectPreset);
-
-        return true;
-    }
-
-    /// <summary>
-    /// Tries to remove the muffling effect from a sound.
-    /// </summary>
-    /// <param name="ent">The audio entity to modify.</param>
-    /// <param name="muffledComponent">The cached muffling marker component.</param>
-    /// <returns>True if the effect was removed; otherwise false.</returns>
-    public bool TryUnMuffleSound(Entity<AudioComponent> ent, AudioMuffledComponent? muffledComponent = null)
-    {
-        if (!_audioMuffledQuery.Resolve(ent.Owner, ref muffledComponent, false))
-            return false;
-
-        _effectsManager.TryRemoveEffect(ent, MufflingEffectPreset);
-
-        if (muffledComponent.CachedPreset != null)
-            _effectsManager.TryAddEffect(ent, muffledComponent.CachedPreset.Value);
-
-        RemComp<AudioMuffledComponent>(ent);
-
-        return true;
+        return occlusion >= threshold
+            ? AudioOcclusionBand.Muffled
+            : AudioOcclusionBand.Clear;
     }
 
     /// <summary>
     /// Handles runtime toggling of the client-side audio muffling feature.
     /// </summary>
+    /// <param name="enabled">Whether muffling should remain active for subsequently updated sounds.</param>
+    /// <remarks>
+    /// Disabling muffling immediately clears the occlusion band on every tracked sound and asks the resolver to remove
+    /// any muffling-owned auxiliary that is still attached.
+    /// </remarks>
     private void OnToggled(bool enabled)
     {
         _isClientSideEnabled = enabled;
 
-        if (!enabled)
-        {
-            RevertChanges();
-        }
-    }
+        if (enabled)
+            return;
 
-    /// <summary>
-    /// Restores all sounds that still have the muffling marker component.
-    /// Used when the player disables the client-side muffling feature.
-    /// </summary>
-    private void RevertChanges()
-    {
-        var query = AllEntityQuery<AudioMuffledComponent, AudioComponent>();
-        while (query.MoveNext(out var uid, out var muffled, out var audio))
+        foreach (var uid in _resolver.TrackedAudio.ToArray())
         {
-            TryUnMuffleSound((uid, audio), muffled);
+            _resolver.SetOcclusionBand(uid, AudioOcclusionBand.Clear);
+            _resolver.Reconcile(uid);
         }
     }
 }

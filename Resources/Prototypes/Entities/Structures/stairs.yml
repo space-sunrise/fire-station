@@ -92,6 +92,7 @@
 
 - type: entity
   id: StairWood
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: Stairs
   suffix: Wood
   components:
@@ -102,6 +103,7 @@
 
 - type: entity
   id: StairStageWood
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: Stairs
   suffix: Wood, stage
   components:

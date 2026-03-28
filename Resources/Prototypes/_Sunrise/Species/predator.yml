@@ -37,6 +37,8 @@
     RLeg: MobPredatorRLeg
     LFoot: MobPredatorLFoot
     RFoot: MobPredatorRFoot
+    Dreadlocks: MobPredatorDreadlocks
+    Rings: MobPredatorRings
 
 - type: markingPoints
   id: MobPredatorMarkingLimits
@@ -50,17 +52,20 @@
     Tail:
       points: 0
       required: false
-    HeadTop:
-      points: 0
+    Dreadlocks:
+      points: 1
       required: false
     Chest:
-      points: 0
+      points: 1
       required: false
     Legs:
-      points: 0
+      points: 1
       required: false
     Arms:
-      points: 0
+      points: 1
+      required: false
+    Rings:
+      points: 1
       required: false
 
 - type: humanoidBaseSprite
@@ -153,3 +158,15 @@
   baseSprite:
     sprite: _Sunrise/Mobs/Species/Predator/parts.rsi
     state: r_foot
+
+- type: humanoidBaseSprite
+  id: MobPredatorDreadlocks
+  baseSprite:
+    sprite: _Sunrise/Mobs/Species/Predator/parts.rsi
+    state: dreadlocks
+
+- type: humanoidBaseSprite
+  id: MobPredatorRings
+  baseSprite:
+    sprite: _Sunrise/Mobs/Species/Predator/parts.rsi
+    state: rings

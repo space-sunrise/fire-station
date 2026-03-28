@@ -10,6 +10,14 @@ using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Shared._Scp.Audio;
 
+/// <summary>
+/// Creates, caches, and assigns audio effect auxiliaries referenced by the SCP audio-effects pipeline.
+/// </summary>
+/// <remarks>
+/// Audio presets are represented by entities rather than raw OpenAL handles.
+/// This system deduplicates them so multiple sounds that request the same preset can share one auxiliary instead of
+/// creating redundant OpenAL state for every source.
+/// </remarks>
 public sealed class AudioEffectsManagerSystem : EntitySystem
 {
     [Dependency] private readonly SharedAudioSystem _audio = default!;
@@ -17,15 +25,35 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
 
     /// <summary>
-    /// Захешированные эффекты под их прототипами пренитов. Позволяет не засрать слоты OpenAL сотней одинаковых эффектов
+    /// Cached auxiliary entity for each preset already materialized by this system.
     /// </summary>
+    /// <remarks>
+    /// The cache is keyed by preset id so repeated requests for the same reverb/echo profile reuse the same auxiliary.
+    /// </remarks>
     private readonly Dictionary<ProtoId<AudioPresetPrototype>, EntityUid> _cachedEffects = new ();
+
+    /// <summary>
+    /// Cancellation source for delayed server-side auxiliary assignments.
+    /// </summary>
     private CancellationTokenSource _tokenSource = new();
 
+    /// <summary>
+    /// Delay used on the server to avoid assigning an auxiliary before the replicated client audio source is ready.
+    /// </summary>
     private static readonly TimeSpan RaceConditionWaiting = TimeSpan.FromTicks(10L);
 
+    /// <summary>
+    /// Tracks whether creating auxiliaries/effects is currently considered safe in the running environment.
+    /// </summary>
+    /// <remarks>
+    /// Integration tests or missing EFX support may cause effect creation to fail. Once a failure is observed, the
+    /// system temporarily stops trying to create new auxiliaries until a later successful attempt resets the flag.
+    /// </remarks>
     private bool _isAuxiliariesSafe = true;
 
+    /// <summary>
+    /// Subscribes to round cleanup so cached effect entities do not leak across rounds.
+    /// </summary>
     public override void Initialize()
     {
         base.Initialize();
@@ -33,6 +61,9 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
     }
 
+    /// <summary>
+    /// Releases cached state created by this manager.
+    /// </summary>
     public override void Shutdown()
     {
         base.Shutdown();
@@ -40,6 +71,9 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         Clear();
     }
 
+    /// <summary>
+    /// Clears the effect cache and cancels any delayed auxiliary assignment still queued by the server.
+    /// </summary>
     private void Clear()
     {
         _cachedEffects.Clear();
@@ -49,27 +83,24 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     }
 
     /// <summary>
-    /// Добавляет переданный эффект к звуку
+    /// Attaches the auxiliary for a preset to an audio source, creating the auxiliary on demand if necessary.
     /// </summary>
+    /// <param name="sound">The target audio source.</param>
+    /// <param name="preset">The preset whose auxiliary should be attached.</param>
+    /// <returns><see langword="true"/> if the preset was resolved and an auxiliary assignment was issued.</returns>
+    /// <remarks>
+    /// Server-side assignment is intentionally delayed by <see cref="RaceConditionWaiting"/>.
+    /// Replicated sounds may reach the client before the backing audio source has fully completed startup, and assigning
+    /// the auxiliary immediately can bind it to a placeholder source instead of the final live source.
+    /// </remarks>
     public bool TryAddEffect(Entity<AudioComponent> sound, ProtoId<AudioPresetPrototype> preset)
     {
         if (!_cachedEffects.TryGetValue(preset, out var effect) && !TryCreateEffect(preset, out effect))
             return false;
 
-        // ЕБАННЫЙ РОТ ЭТОГО РЕЙС КОДИШЕН
-        /*
-         Лонг-рид причина почему тут стоит таймер:
-         Как только only server-side звук приходит сюда, он вызывает только серверную систему добавления Auxiliary
-         Тот вызывает Dirty(), который отлавливается на клиенте вручную через компонент стейт
-         Там на аудио сурс навешивается эффект. Только по умолчанию сурс это дамми(заглушка)
-         Аудио сурс выставляется на подписке AudioComponent на ComponentStartup().
-         Так как я могу подписаться только ComponentInit(), который идет раньше, чем ComponentStartup()
-         То мой ивент происходит раньше, чем выставляется аудиосурс на клиенте -> сервер успевает втиснуться в промежуток между этой хуйней
-         И добавить эффект на заглушку, которая ниче не сделает. Поэтому я на рандом поставил сюда 10 тиков, за это время все успевает сработать
-         ГОВНО
-         */
         if (_net.IsServer)
         {
+            // Let the replicated client source finish initializing before we assign the auxiliary.
             Timer.Spawn(RaceConditionWaiting, () => _audio.SetAuxiliary(sound, sound, effect), _tokenSource.Token);
         }
         else
@@ -81,8 +112,13 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     }
 
     /// <summary>
-    /// Пытается убрать данный эффект со звука
+    /// Removes a specific preset from a sound if that preset currently owns the auxiliary slot.
     /// </summary>
+    /// <param name="sound">The target audio source.</param>
+    /// <param name="preset">The preset expected to be attached.</param>
+    /// <returns>
+    /// <see langword="true"/> when the preset was attached to the sound and the auxiliary slot was cleared.
+    /// </returns>
     public bool TryRemoveEffect(Entity<AudioComponent> sound, ProtoId<AudioPresetPrototype> preset)
     {
         if (!_cachedEffects.TryGetValue(preset, out var effect))
@@ -95,17 +131,27 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         return true;
     }
 
+    /// <summary>
+    /// Clears the auxiliary slot regardless of which preset is currently attached.
+    /// </summary>
+    /// <param name="sound">The target audio source.</param>
     public void RemoveAllEffects(Entity<AudioComponent> sound)
     {
         _audio.SetAuxiliary(sound, sound, null);
     }
 
     /// <summary>
-    /// Пытается создать эффект и захешировать его
+    /// Creates the effect and auxiliary entities for a preset and stores them in the local cache.
     /// </summary>
-    /// <param name="preset">Пресет эффектов</param>
-    /// <param name="effectStuff">Получаемый эффект. Не представляет собой ничего, когда метод возвращает false</param>
-    /// <returns>Возвращает успешно ли создание и хеширование эффекта</returns>
+    /// <param name="preset">The preset to materialize.</param>
+    /// <param name="effectStuff">Receives the auxiliary entity created for the preset.</param>
+    /// <returns>
+    /// <see langword="true"/> if the preset was resolved and cached successfully; otherwise <see langword="false"/>.
+    /// </returns>
+    /// <remarks>
+    /// The method may fail because the preset id is unknown, because auxiliary creation was previously marked unsafe,
+    /// or because OpenAL/EFX support is unavailable in the current runtime.
+    /// </remarks>
     public bool TryCreateEffect(ProtoId<AudioPresetPrototype> preset, out EntityUid effectStuff)
     {
         effectStuff = default;
@@ -146,6 +192,12 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         return true;
     }
 
+    /// <summary>
+    /// Determines whether the sound currently points at the auxiliary associated with the given preset.
+    /// </summary>
+    /// <param name="sound">The audio source to inspect.</param>
+    /// <param name="preset">The preset to compare against.</param>
+    /// <returns><see langword="true"/> if the sound is routed through the cached auxiliary for the preset.</returns>
     public bool HasEffect(Entity<AudioComponent> sound, ProtoId<AudioPresetPrototype> preset)
     {
         if (!_cachedEffects.TryGetValue(preset, out var effect))
@@ -154,6 +206,14 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         return sound.Comp.Auxiliary == effect;
     }
 
+    /// <summary>
+    /// Tries to identify which cached preset, if any, currently owns the sound's auxiliary slot.
+    /// </summary>
+    /// <param name="sound">The audio source to inspect.</param>
+    /// <param name="preset">Receives the matching preset when one is found.</param>
+    /// <returns>
+    /// <see langword="true"/> if the sound's auxiliary matches a preset cached by this manager.
+    /// </returns>
     public bool TryGetEffect(Entity<AudioComponent> sound, [NotNullWhen(true)] out ProtoId<AudioPresetPrototype>? preset)
     {
         preset = null;

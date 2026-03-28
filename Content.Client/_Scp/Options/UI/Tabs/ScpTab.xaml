@@ -20,6 +20,9 @@
                                  ToolTip="{Loc ui-options-grain-strength-tooltip}"/>
 
                 <!-- Поле зрения -->
+                <CheckBox Name="FieldOfViewBlurEnabled"
+                          Text="{Loc ui-options-field-of-view-blur-enabled}"
+                          ToolTip="{Loc ui-options-field-of-view-blur-enabled-tooltip}"/>
                 <ui:OptionSlider Name="FieldOfViewBlurScale"
                                  Title="{Loc ui-options-field-of-view-blur-scale}"
                                  ToolTip="{Loc ui-options-field-of-view-blur-scale-tooltip}"/>

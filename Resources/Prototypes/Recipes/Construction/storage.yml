@@ -55,6 +55,7 @@
   graph: Shelf
   startNode: start
   targetNode: ShelfWood
+  hide: true
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
@@ -89,6 +90,7 @@
   graph: Shelf
   startNode: start
   targetNode: ShelfRWood
+  hide: true
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
@@ -123,6 +125,7 @@
   graph: Shelf
   startNode: start
   targetNode: ShelfBar
+  hide: true # Fire added
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true

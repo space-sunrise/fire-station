@@ -208,6 +208,7 @@
     - WeaponEnergyGun
     - WeaponMiniEnergyGun
     - WeaponEnergyGunPistol
+    - WeaponIonCarbine
     - WeaponGunLaserCarbineAutomatic
     - MagazineBatteryLr30
     - FlareGunSecurityUpgrade
@@ -225,7 +226,9 @@
     - ShellBlastArtillery
     - ShellEMPArtillery
     - ShellFlashArtillery
+    - ShellFragArtillery
     - MagazineBauer127
+    - MagazineBauer127Penetrator
     - RifleHeavyMagazineArtillery
     - MagazineBoxBelt127Artillery
     - MagazineBauer127Blast
@@ -313,6 +316,9 @@
     - MagazineRifleHeavyIncendiary
     - MagazineRifleHeavyAP
     - MagazineRifleHeavyUranium
+    - RifleHeavyMagazineFMJ
+    - RifleHeavyMagazineHP
+    - RifleHeavyMagazineSP
   # Shotgun
     - SpeedLoaderShotgunIncendiary
     - SpeedLoaderShotgunUranium

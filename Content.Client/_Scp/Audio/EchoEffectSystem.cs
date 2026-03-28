@@ -1,50 +1,62 @@
-﻿using Content.Shared._Scp.Audio;
-using Content.Shared._Scp.Audio.Components;
+using System.Linq;
 using Content.Shared._Scp.ScpCCVars;
-using Content.Client._Scp.Audio.Components;
 using Robust.Shared.Audio;
-using Robust.Shared.Audio.Components;
-using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._Scp.Audio;
 
 /// <summary>
-/// Система, накладывающая эффект эхо каждому неглобальному звуку.
-/// Эффект может быть отключен игроком в настройках
+/// Maintains the desired client-side echo preset for every tracked SCP audio source.
 /// </summary>
+/// <remarks>
+/// This system never applies auxiliaries directly.
+/// It only updates the desired echo preset stored in <see cref="Content.Client._Scp.Audio.Components.AudioLocalEffectsComponent"/>.
+/// The final decision about whether echo, muffling, or no local auxiliary should be active is delegated to
+/// <see cref="AudioEffectResolverSystem"/>, which merges echo state with occlusion-derived muffling state.
+/// </remarks>
 public sealed class EchoEffectSystem : EntitySystem
 {
-    [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
+    [Dependency] private readonly AudioEffectResolverSystem _resolver = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
+    /// <summary>
+    /// Default environmental preset requested when SCP echo is enabled.
+    /// </summary>
     private static readonly ProtoId<AudioPresetPrototype> StandardEchoEffectPreset = "Bathroom";
+
+    /// <summary>
+    /// Stronger environmental preset requested when the user opts into the more aggressive variant.
+    /// </summary>
     private static readonly ProtoId<AudioPresetPrototype> StrongEchoEffectPreset = "SewerPipe";
 
+    /// <summary>
+    /// Cached state of <see cref="ScpCCVars.EchoEnabled"/> used to avoid repeated cvar lookups while processing sounds.
+    /// </summary>
     private bool _isClientSideEnabled;
+
+    /// <summary>
+    /// Cached state of <see cref="ScpCCVars.EchoStrongPresetPreferred"/>.
+    /// </summary>
     private bool _strongPresetPreferred;
 
-    private EntityQuery<AudioComponent> _audioQuery;
-    private EntityQuery<AudioEchoEffectAffectedComponent> _echoQuery;
-
+    /// <summary>
+    /// Reads the initial echo settings and subscribes to runtime changes.
+    /// </summary>
     public override void Initialize()
     {
         base.Initialize();
-
-        SubscribeLocalEvent<AudioComponent, ComponentAdd>(OnAudioAdd);
-        SubscribeLocalEvent<AudioEffectedComponent, ComponentStartup>(OnEffectedAudioStartup, after: [typeof(SharedAudioSystem)]);
 
         _isClientSideEnabled = _cfg.GetCVar(ScpCCVars.EchoEnabled);
         _strongPresetPreferred = _cfg.GetCVar(ScpCCVars.EchoStrongPresetPreferred);
 
         _cfg.OnValueChanged(ScpCCVars.EchoEnabled, OnEnabledToggled);
         _cfg.OnValueChanged(ScpCCVars.EchoStrongPresetPreferred, OnPreferredPresetToggled);
-
-        _audioQuery = GetEntityQuery<AudioComponent>();
-        _echoQuery = GetEntityQuery<AudioEchoEffectAffectedComponent>();
     }
 
+    /// <summary>
+    /// Removes the cvar subscriptions established during <see cref="Initialize"/>.
+    /// </summary>
     public override void Shutdown()
     {
         base.Shutdown();
@@ -53,110 +65,68 @@ public sealed class EchoEffectSystem : EntitySystem
         _cfg.UnsubValueChanged(ScpCCVars.EchoStrongPresetPreferred, OnPreferredPresetToggled);
     }
 
-    private void OnAudioAdd(Entity<AudioComponent> ent, ref ComponentAdd args)
-    {
-        if (!_isClientSideEnabled)
-            return;
-
-        EnsureComp<AudioEffectedComponent>(ent);
-    }
-
-    private void OnEffectedAudioStartup(Entity<AudioEffectedComponent> ent, ref ComponentStartup args)
-    {
-        if (!_isClientSideEnabled)
-            return;
-
-        if (!_audioQuery.TryComp(ent.Owner, out var audio))
-            return;
-
-        TryApplyEcho((ent.Owner, audio));
-    }
-
     /// <summary>
-    /// Пытается применить эхо к данном звуку
+    /// Updates the cached enabled flag and reapplies the desired echo preset to every tracked sound.
     /// </summary>
-    /// <param name="sound">Звук, к которому будет применен эффект</param>
-    /// <param name="preset">Пресет, если нужно выставить какой-то особенный</param>
-    /// <returns>Получилось или не получилось применить эффект</returns>
-    public bool TryApplyEcho(Entity<AudioComponent> sound, ProtoId<AudioPresetPrototype>? preset = null)
-    {
-        if (TerminatingOrDeleted(sound))
-            return false;
-
-        // Фоновая музыка не должна подвергаться эффектам эха
-        if (sound.Comp.Global || !sound.Comp.Loaded)
-            return false;
-
-        // Выбираем пресет для эха исходя из настроек игрока и возможного приоритетного эффекта при вызове извне системы
-        var clientPreferredPreset = _strongPresetPreferred ? StrongEchoEffectPreset : StandardEchoEffectPreset;
-        var targetPreset = preset ?? clientPreferredPreset;
-
-        _effectsManager.TryAddEffect(sound, targetPreset);
-
-        // Добавляем компонент-маркер к звуку, который будет хранить эффект эха
-        var echoComp = EnsureComp<AudioEchoEffectAffectedComponent>(sound);
-        echoComp.Preset = targetPreset;
-
-        return true;
-    }
-
-    /// <summary>
-    /// Пытается убрать эффект эхо у выбранного звука
-    /// </summary>
-    public bool TryRemoveEcho(Entity<AudioComponent> sound, AudioEchoEffectAffectedComponent? echoComp = null)
-    {
-        if (!_echoQuery.Resolve(sound, ref echoComp))
-            return false;
-
-        if (!_effectsManager.TryRemoveEffect(sound, echoComp.Preset))
-            return false;
-
-        RemComp<AudioEchoEffectAffectedComponent>(sound);
-        RemComp<AudioEffectedComponent>(sound);
-
-        return true;
-    }
-
+    /// <param name="enabled">Whether the client-side SCP echo feature is enabled.</param>
     private void OnEnabledToggled(bool enabled)
     {
         _isClientSideEnabled = enabled;
-
-        if (!enabled)
-            RevertChanges();
-    }
-
-    private void OnPreferredPresetToggled(bool useStrong)
-    {
-        _strongPresetPreferred = useStrong;
-        var newPreferredPreset = useStrong ? StrongEchoEffectPreset : StandardEchoEffectPreset;
-
-        TogglePreset(newPreferredPreset);
+        RefreshAllTracked();
     }
 
     /// <summary>
-    /// Убирает эффекты эхо у всех звуков, что имеют его.
-    /// Вызывается при выключении эффекта эха игроком.
+    /// Updates the cached preset preference and reapplies the desired echo preset to every tracked sound.
     /// </summary>
-    private void RevertChanges()
+    /// <param name="useStrong">
+    /// <see langword="true"/> to prefer <see cref="StrongEchoEffectPreset"/>; otherwise
+    /// <see cref="StandardEchoEffectPreset"/> is used.
+    /// </param>
+    private void OnPreferredPresetToggled(bool useStrong)
     {
-        var query = AllEntityQuery<AudioEchoEffectAffectedComponent, AudioComponent>();
+        _strongPresetPreferred = useStrong;
+        RefreshAllTracked();
+    }
 
-        while (query.MoveNext(out var uid, out var echoComp, out var audio))
+    /// <summary>
+    /// Recomputes desired echo state for all currently tracked audio sources and asks the resolver to reconcile them.
+    /// </summary>
+    /// <remarks>
+    /// This is primarily used after a cvar change so the active auxiliary state converges immediately without waiting
+    /// for a new sound to spawn.
+    /// </remarks>
+    private void RefreshAllTracked()
+    {
+        foreach (var uid in _resolver.TrackedAudio.ToArray())
         {
-            TryRemoveEcho((uid, audio), echoComp);
+            RefreshDesiredEcho(uid);
+            _resolver.Reconcile(uid);
         }
     }
 
-    private void TogglePreset(ProtoId<AudioPresetPrototype> newPreferredPreset)
+    /// <summary>
+    /// Writes the currently preferred echo preset, or clears the request entirely when echo is disabled.
+    /// </summary>
+    /// <param name="uid">The tracked audio entity whose desired echo state should be updated.</param>
+    private void RefreshDesiredEcho(EntityUid uid)
     {
-        var query = AllEntityQuery<AudioEchoEffectAffectedComponent, AudioComponent>();
-
-        while (query.MoveNext(out var uid, out var echoComp, out var audio))
+        if (_isClientSideEnabled)
         {
-            if (!TryRemoveEcho((uid, audio), echoComp))
-                continue;
-
-            TryApplyEcho((uid, audio), newPreferredPreset);
+            _resolver.SetDesiredEchoPreset(uid, GetPreferredPreset());
+            return;
         }
+
+        _resolver.SetDesiredEchoPreset(uid, default);
+    }
+
+    /// <summary>
+    /// Returns the echo preset that matches the current client preference.
+    /// </summary>
+    /// <returns>The prototype id of the standard or strong echo preset.</returns>
+    private ProtoId<AudioPresetPrototype> GetPreferredPreset()
+    {
+        return _strongPresetPreferred
+            ? StrongEchoEffectPreset
+            : StandardEchoEffectPreset;
     }
 }

@@ -793,3 +793,56 @@
     outputs:
     - ScpPlating
     - ScpFloorAnechoic3
+
+# Wood
+
+- type: entity
+  id: ScpFloorTileItemWood
+  parent: FloorTileItemWood
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/wood.rsi
+  - type: Item
+    sprite: _Scp/Objects/Tiles/wood.rsi
+  - type: FloorTile
+    outputs:
+    - ScpPlating # Fire Edit
+    - ScpFloorWood
+  - type: Stack
+    stackType: ScpFloorTileWood
+  - type: Construction
+    graph: ScpTileWood
+    node: scpwoodtile
+
+- type: entity
+  id: ScpFloorTileItemWoodLarge
+  parent: FloorTileItemWoodLarge
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/wood.rsi
+  - type: Item
+    sprite: _Scp/Objects/Tiles/wood.rsi
+  - type: Stack
+    stackType: ScpFloorTileWoodLarge
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorWoodLarge
+  - type: Construction
+    graph: ScpTileWoodLarge
+    node: scpwoodtilelarge
+
+- type: entity
+  id: ScpFloorTileItemWoodPattern
+  parent: FloorTileItemWoodPattern
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Tiles/wood.rsi
+  - type: Item
+    sprite: _Scp/Objects/Tiles/wood.rsi
+  - type: Stack
+    stackType: ScpFloorTileWoodPattern
+  - type: FloorTile
+    outputs:
+    - ScpPlating
+    - ScpFloorWoodPattern

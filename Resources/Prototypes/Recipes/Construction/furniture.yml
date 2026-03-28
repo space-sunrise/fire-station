@@ -295,6 +295,7 @@
   graph: Table
   startNode: start
   targetNode: TableWood
+  hide: true # Fire added
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -461,6 +462,7 @@
   graph: Table
   startNode: start
   targetNode: CounterWood
+  hide: true # Fire added
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter
@@ -520,6 +522,7 @@
 
 - type: construction
   id: Dresser
+  hide: true # Fire edit - hidden in favor of ScpDresser
   graph: Dresser
   startNode: start
   targetNode: dresser
@@ -679,6 +682,7 @@
 
 - type: construction
   id: Bookshelf
+  hide: true # Fire edit - hidden in favor of ScpBookshelf
   graph: Bookshelf
   startNode: start
   targetNode: bookshelf

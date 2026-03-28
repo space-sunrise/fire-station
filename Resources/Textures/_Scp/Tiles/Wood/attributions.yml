@@ -1,0 +1,4 @@
+- files: [ "wood", "wood_broken", "wood_large", "wood_large_broken", "wood_pattern", "wood_pattern_broken" ]
+  license: "CLA"
+  copyright: "Sprited by peperino0290_92944(discord) for Fire Station"
+  source: "https://github.com/space-sunrise/fire-station"

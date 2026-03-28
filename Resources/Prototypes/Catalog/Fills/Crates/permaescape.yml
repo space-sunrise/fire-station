@@ -313,12 +313,12 @@
     containers:
       entity_storage: !type:AllSelector
         children:
-        - id: TowercapSeeds
-        - id: TowercapSeeds
+        - id: ScpTowercapSeeds # Fire edit
+        - id: ScpTowercapSeeds # Fire edit
           prob: 0.80
-        - id: TowercapSeeds
+        - id: ScpTowercapSeeds # Fire edit
           prob: 0.50
-        - id: TowercapSeeds
+        - id: ScpTowercapSeeds # Fire edit
           prob: 0.20
         - id: SteelcapSeeds
           prob: 0.10

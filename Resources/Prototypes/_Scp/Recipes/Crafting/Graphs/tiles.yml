@@ -61,3 +61,35 @@
               amount: 1
     - node: scpconcretetile
       entity: ScpFloorTileItemConcreteMono
+
+- type: constructionGraph
+  id: ScpTileWood
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: scpwoodtile
+          completed:
+            - !type:SetStackCount
+              amount: 4
+          steps:
+            - material: WoodPlank
+              amount: 1
+    - node: scpwoodtile
+      entity: ScpFloorTileItemWood
+
+- type: constructionGraph
+  id: ScpTileWoodLarge
+  start: start
+  graph:
+    - node: start
+      edges:
+        - to: scpwoodtilelarge
+          completed:
+            - !type:SetStackCount
+              amount: 4
+          steps:
+            - material: WoodPlank
+              amount: 2
+    - node: scpwoodtilelarge
+      entity: ScpFloorTileItemWoodLarge

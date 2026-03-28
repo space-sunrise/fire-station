@@ -1,0 +1,10 @@
+- type: entity
+  parent: HiltWood
+  id: ScpHiltWood
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/wooden_hilt.rsi
+    state: icon
+  - type: Construction
+    graph: ScpHiltWoodGraph
+    node: hilt

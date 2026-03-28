@@ -105,7 +105,7 @@
   petFailureString: petting-failure-engineer-cyborg
 
 # Fire Edit - Start
-# Salvage borg 
+# Salvage borg
 # - type: borgType
 #   id: mining
 
@@ -277,7 +277,7 @@
   - type: InnateItem
     instantActions:
     - HandheldStationMapUnpowered
-    - HandheldEmergencyCrewMonitor
+    - HandheldEmergencyCrewMonitorBorg
     entityTargetActions:
     - HandheldHealthAnalyzerUnpowered
   # Sunrise-End

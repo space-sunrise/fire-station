@@ -1,0 +1,32 @@
+- type: construction
+  id: ScpShelfWood
+  graph: ScpShelf
+  startNode: start
+  targetNode: ShelfWood
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+  conditions:
+  - !type:WallmountCondition
+
+- type: construction
+  id: ScpShelfRWood
+  graph: ScpShelf
+  startNode: start
+  targetNode: ShelfRWood
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+  conditions:
+  - !type:WallmountCondition
+
+- type: construction
+  id: ScpShelfBar
+  graph: ScpShelf
+  startNode: start
+  targetNode: ShelfBar
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true
+  conditions:
+  - !type:WallmountCondition

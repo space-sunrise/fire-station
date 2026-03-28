@@ -1331,6 +1331,7 @@
 - type: entity
   parent: BaseWall
   id: WallWood
+  categories: [ HideSpawnMenu ] # Fire edit
   name: wood wall
   description: The traditional assistant defense.
   components:

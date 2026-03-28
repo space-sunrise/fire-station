@@ -25,13 +25,19 @@ public sealed partial class ScpCCVars
     /// Размер текстуры размытия у шейдера поля зрения
     /// </summary>
     public static readonly CVarDef<float> FieldOfViewBlurScale =
-        CVarDef.Create("shader.field_of_view_blur_scale", 0.7f, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("shader.field_of_view_blur_scale", 1.0f, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
     /// Прозрачность наложения поля зрения
     /// </summary>
     public static readonly CVarDef<float> FieldOfViewOpacity =
-        CVarDef.Create("shader.field_of_view_opacity", 0.7f, CVar.CLIENTONLY | CVar.ARCHIVE);
+        CVarDef.Create("shader.field_of_view_opacity", 0.55f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Whether the blur effect outside the field of view is enabled
+    /// </summary>
+    public static readonly CVarDef<bool> FieldOfViewBlurEnabled =
+        CVarDef.Create("shader.field_of_view_blur_enabled", true, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /*
      * Режим совместимости

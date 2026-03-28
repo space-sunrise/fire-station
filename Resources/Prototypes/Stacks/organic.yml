@@ -11,8 +11,8 @@
   parent: BaseMediumStack
   id: WoodPlank
   name: stack-wood-plank
-  icon: { sprite: /Textures/Objects/Materials/materials.rsi, state: wood }
-  spawn: MaterialWoodPlank1
+  icon: { sprite: /Textures/_Scp/Objects/Materials/wood_plank.rsi, state: wood }  # Fire edit
+  spawn: ScpMaterialWoodPlank1 # Fire edit
 
 - type: stack
   parent: BaseMediumStack

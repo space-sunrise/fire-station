@@ -212,6 +212,8 @@
   components:
   - type: SpawnPoint
     job_id: ClownBorg
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Sprite
     layers:
     - state: green
@@ -228,6 +230,8 @@
   components:
   - type: SpawnPoint
     job_id: EngineerBorg
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Sprite
     layers:
     - state: green
@@ -244,6 +248,8 @@
   components:
   - type: SpawnPoint
     job_id: JanitorBorg
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Sprite
     layers:
     - state: green
@@ -259,6 +265,8 @@
   components:
   - type: SpawnPoint
     job_id: MedicalBorg
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Sprite
     layers:
     - state: green
@@ -274,6 +282,8 @@
   components:
   - type: SpawnPoint
     job_id: MiningBorg
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Sprite
     layers:
     - state: green
@@ -289,6 +299,8 @@
   components:
   - type: SpawnPoint
     job_id: PeaceBorg
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Sprite
     layers:
     - state: green
@@ -304,6 +316,8 @@
   components:
   - type: SpawnPoint
     job_id: SecurityBorg
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Sprite
     layers:
     - state: green
@@ -319,6 +333,8 @@
   components:
   - type: SpawnPoint
     job_id: ServiceBorg
+  - type: PreferredSpawn
+    preferredSpawnTypes: [ Job ]
   - type: Sprite
     layers:
     - state: green

@@ -1,18 +1,15 @@
 ﻿- type: tile
   id: ScpFloorAnechoicBase
+  parent: ScpFloorBase
   abstract: true
   name: scp-tiles-anechoic
   variants: 1
   placementVariants:
   - 1.0
-  baseTurf: ScpPlating
-  isSubfloor: false
-  deconstructTools: [ Prying ]
   footstepSounds:
     collection: FootstepScpCatwalk
     params:
       volume: -6
-  heatCapacity: 10000
 
 - type: tile
   parent: ScpFloorAnechoicBase

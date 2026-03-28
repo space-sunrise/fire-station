@@ -685,6 +685,7 @@
   graph: Barricade
   startNode: start
   targetNode: barricadefull
+  hide: true # Fire edit
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -813,6 +814,7 @@
   graph: FenceWood
   startNode: start
   targetNode: straight
+  hide: true
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -826,6 +828,7 @@
   graph: FenceWood
   startNode: start
   targetNode: end
+  hide: true
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -839,6 +842,7 @@
   graph: FenceWood
   startNode: start
   targetNode: corner
+  hide: true
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -852,6 +856,7 @@
   graph: FenceWood
   startNode: start
   targetNode: tjunction
+  hide: true
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -864,6 +869,7 @@
   graph: FenceWood
   startNode: start
   targetNode: gate
+  hide: true
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -877,6 +883,7 @@
   graph: FenceWood
   startNode: start
   targetNode: straight_small
+  hide: true
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -890,6 +897,7 @@
   graph: FenceWood
   startNode: start
   targetNode: end_small
+  hide: true
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -903,6 +911,7 @@
   graph: FenceWood
   startNode: start
   targetNode: corner_small
+  hide: true
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -916,6 +925,7 @@
   graph: FenceWood
   startNode: start
   targetNode: tjunction_small
+  hide: true
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -929,6 +939,7 @@
   graph: FenceWood
   startNode: start
   targetNode: gate_small
+  hide: true
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -1149,6 +1160,7 @@
   graph: DoorGraph
   startNode: start
   targetNode: woodDoor
+  hide: true
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter

@@ -70,6 +70,7 @@
 # Normal
 - type: entity
   id: ShelfWood
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ShelfBase
   name: wooden shelf
   description: A convenient place to place, well, anything really.
@@ -192,6 +193,7 @@
 # Reinforced
 - type: entity
   id: ShelfRWood
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ShelfBaseReinforced
   name: sturdy wood shelf
   description: A safe place to put your favorite bottle of whiskey.
@@ -325,6 +327,7 @@
 # Departmental
 - type: entity
   id: ShelfBar
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ShelfBase
   name: bar shelf
   description: Made out of the finest synthetic wood for all alcohol holding needs.
@@ -413,7 +416,7 @@
           SheetSteel1:
             min: 1
             max: 4
-          MaterialWoodPlank1:
+          ScpMaterialWoodPlank1: # Fire edit
             min: 0
             max: 1
           PartRodMetal1:
@@ -507,4 +510,3 @@
       blue: BlueAlertAccessesHOS
       gamma: GammaAlertAccesses
     # Sunrise-end
-
