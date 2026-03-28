@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using Content.Client._Scp.Stylesheets.Palette;
 using Content.Client.Administration.Managers;
 using Content.Client.Chat;
 using Content.Client.Chat.Managers;
@@ -302,7 +303,7 @@ public sealed partial class ChatUIController : UIController
                  && style is StyleBoxFlat propStyleBoxFlat)
             color = propStyleBoxFlat.BackgroundColor;
         else
-            color = Color.FromHex("#25252ADD");
+            color = ScpPalettes.Primary.Background; // Fire edit
 
         panel.PanelOverride = new StyleBoxFlat
         {
