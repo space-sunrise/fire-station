@@ -4,6 +4,7 @@
   keycode: ";"
   frequency: 1459
   color: "#4bb14b" # Fire edit
+  longRange: true # Fire added
 
 - type: radioChannel
   id: CentCom
