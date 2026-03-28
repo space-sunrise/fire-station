@@ -13,7 +13,8 @@
     xmlns:vote="clr-namespace:Content.Client.Voting.UI"
     xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Chat.Widgets"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ui="clr-namespace:Content.Client._Sunrise.Lobby.UI">
+    xmlns:ui="clr-namespace:Content.Client._Sunrise.Lobby.UI"
+    xmlns:palette="clr-namespace:Content.Client._Scp.Stylesheets.Palette">
     <!--  Background  -->
     <TextureRect
         Access="Public"
@@ -69,7 +70,7 @@
                             StyleClasses="LabelHeadingBigger"
                             Text="{Loc 'ui-lobby-welcome'}"
                             VAlign="Center" />
-                        <controls:HLine Color="{x:Static style:StyleNano.NanoGold}" Thickness="2" />
+                        <controls:HLine Color="{x:Static palette:ScpPalettes.SCPWhite}" Thickness="2" />
                         <info:LinkBanner
                             HorizontalAlignment="Center"
                             Margin="3,3,3,3"
