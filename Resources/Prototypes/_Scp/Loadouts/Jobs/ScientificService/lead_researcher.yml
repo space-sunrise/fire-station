@@ -35,7 +35,7 @@
   id: ScpLoadoutLeadResearcherSeniorResearcher
   effects:
   - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+    proto: ScpLeadResearcher
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorResearcher
 
@@ -43,6 +43,6 @@
   id: ScpLoadoutLeadResearcherSeniorResearcherSeniorResearcher
   effects:
   - !type:GroupLoadoutEffect
-    proto: SeniorResearcher
+    proto: ScpLeadResearcher
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorResearcher

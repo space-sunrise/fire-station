@@ -13,7 +13,7 @@
   id: ScpLoadoutLeadTechnicalSpecialistJumpsuit
   effects:
   - !type:GroupLoadoutEffect
-    proto: SeniorEngineering
+    proto: ScpLeadTechnicalSpecialist
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorEngineer
 
@@ -21,7 +21,7 @@
   id: ScpLoadoutLeadTechnicalSpecialistJumpskirt
   effects:
   - !type:GroupLoadoutEffect
-    proto: SeniorEngineering
+    proto: ScpLeadTechnicalSpecialist
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorEngineer
 

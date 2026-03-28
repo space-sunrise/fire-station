@@ -39,7 +39,7 @@
     head: ClothingHeadHatCapHoS
   effects:
   - !type:GroupLoadoutEffect
-    proto: MasterHoS
+    proto: ScpMasterSecurityCommander
 
 - type: loadout
   id: ScpLoadoutSecurityCommanderBlackCap
@@ -121,7 +121,7 @@
     jumpsuit: ClothingUniformJumpsuitHoSOld
   effects:
   - !type:GroupLoadoutEffect
-    proto: MasterHoS
+    proto: ScpMasterSecurityCommander
 
 - type: loadout
   id: ScpLoadoutSecurityCommanderBlackUniform
@@ -141,7 +141,7 @@
     neck: ClothingNeckMantleHOS
   effects:
   - !type:GroupLoadoutEffect
-    proto: MasterHoS
+    proto: ScpMasterSecurityCommander
 
 # Outer Clothing
 - type: loadout
@@ -160,7 +160,7 @@
     outerClothing: ClothingOuterCoatHoSGreatcoat
   effects:
   - !type:GroupLoadoutEffect
-    proto: MasterHoS
+    proto: ScpMasterSecurityCommander
 
 - type: loadout
   id: ScpLoadoutSecurityCommanderBlackOvercoat
@@ -169,7 +169,7 @@
     outerClothing: ClothingOuterCoatHOSOvercoatBlack
   effects:
   - !type:GroupLoadoutEffect
-    proto: MasterHoS
+    proto: ScpMasterSecurityCommander
 
 - type: loadout
   id: ScpLoadoutSecurityCommanderOvercoat

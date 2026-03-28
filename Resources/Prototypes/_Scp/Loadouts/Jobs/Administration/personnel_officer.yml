@@ -46,7 +46,7 @@
     neck: ClothingNeckMantleHOP
   effects:
   - !type:GroupLoadoutEffect
-    proto: MasterHoP
+    proto: ScpMasterPersonnelOfficer
 
 # Gloves
 - type: loadout
@@ -65,7 +65,7 @@
   id: ScpLoadoutPersonnelOfficerIanBackpack
   effects:
   - !type:GroupLoadoutEffect
-    proto: ProfessionalHoP
+    proto: ScpProfessionalPersonnelOfficer
   equipment:
     back: ClothingBackpackIan
 

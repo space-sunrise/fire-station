@@ -95,7 +95,7 @@
     neck: ClothingNeckMantleCE
   effects:
   - !type:GroupLoadoutEffect
-    proto: MasterCE
+    proto: ScpMasterChiefTechnicalSpecialist
 
 # Outer Clothing
 - type: loadout
@@ -177,7 +177,7 @@
     head: ClothingHeadHatSingulo
   effects:
   - !type:GroupLoadoutEffect
-    proto: BigMasterCE
+    proto: ScpBigMasterChiefTechnicalSpecialist
 
 # Mask
 - type: loadout

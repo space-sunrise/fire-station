@@ -65,3 +65,179 @@
       !type:DepartmentTimeRequirement
       department: Administration
       time: 3600 # 1 час
+
+# Shared timers copied into _Scp
+
+- type: loadoutEffectGroup
+  id: ScpGreyTider
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobServicePersonnel
+      time: 36000 # 10 hrs
+
+- type: loadoutEffectGroup
+  id: ScpJamjarTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobServicePersonnel
+      time: 3600 # 1 hr
+
+- type: loadoutEffectGroup
+  id: ScpJensenTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: LogisticsService
+      time: 36000 # 10 hrs
+
+- type: loadoutEffectGroup
+  id: ScpMaidServicePersonnel
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobServicePersonnel
+      time: 72000 # 20 hrs
+
+- type: loadoutEffectGroup
+  id: ScpLeadTechnicalSpecialist
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobElectricalTechnicalSpecialist
+      time: 21600 # 6 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobGeneralTechnicalSpecialist
+      time: 21600 # 6 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: EngineeringTechnicalService
+      time: 216000 # 60 hrs
+
+- type: loadoutEffectGroup
+  id: ScpSeniorMedicalSpecialist
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobPharmaceuticalSpecialist
+      time: 21600 # 6 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobMedicalSpecialist
+      time: 21600 # 6 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: MedicalService
+      time: 216000 # 60 hrs
+
+- type: loadoutEffectGroup
+  id: ScpSeniorMedicalSpecialistClothingTimer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobPharmaceuticalSpecialist
+      time: 21600 # 6 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobMedicalSpecialist
+      time: 21600 # 6 hrs
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: MedicalService
+      time: 216000 # 60 hrs
+
+- type: loadoutEffectGroup
+  id: ScpLeadResearcher
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:DepartmentTimeRequirement
+      department: ScientificService
+      time: 216000 # 60 hrs
+
+- type: loadoutEffectGroup
+  id: ScpMasterSeniorLogisticsOfficer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSeniorLogisticsOfficer
+      time: 72000 # 20 hrs
+
+- type: loadoutEffectGroup
+  id: ScpMasterHeadOfMedicalSector
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobHeadOfMedicalSector
+      time: 72000 # 20 hrs
+
+- type: loadoutEffectGroup
+  id: ScpMasterPersonnelOfficer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobPersonnelOfficer
+      time: 72000 # 20 hrs
+
+- type: loadoutEffectGroup
+  id: ScpProfessionalPersonnelOfficer
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobPersonnelOfficer
+      time: 54000 # 15 hrs
+
+- type: loadoutEffectGroup
+  id: ScpMasterSecurityCommander
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSecurityCommander
+      time: 72000 # 20 hrs
+
+- type: loadoutEffectGroup
+  id: ScpMasterChiefTechnicalSpecialist
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChiefTechnicalSpecialist
+      time: 72000 # 20 hrs
+
+- type: loadoutEffectGroup
+  id: ScpBigMasterChiefTechnicalSpecialist
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobChiefTechnicalSpecialist
+      time: 360000 # 100 hrs
+
+- type: loadoutEffectGroup
+  id: ScpMasterScientificServiceDirector
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobScientificServiceDirector
+      time: 72000 # 20 hrs
