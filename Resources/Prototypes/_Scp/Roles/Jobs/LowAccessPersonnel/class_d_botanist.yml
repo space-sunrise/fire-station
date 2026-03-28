@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: ClassDBotanist
   name: job-name-class-d-botanist
   description: job-description-class-d-botanist
@@ -17,6 +17,12 @@
     - type: ClassDAppearance
     - type: EmployeeClass
       class: D
+    - type: ScpAnnounceOnSpawn
+      text: class-d-announce-on-spawn
+      channels:
+      - ExternalAdministrativeZoneSecurityService
+      includeJobName: true
+      requiredGameRunLevel: InRound
 
 - type: startingGear
   id: ClassDBotanistGear
@@ -28,4 +34,3 @@
     gloves: ClothingHandsGlovesLeather
     shoes: ClothingShoesClassD
     id: KeyCardClassDBotanist
-

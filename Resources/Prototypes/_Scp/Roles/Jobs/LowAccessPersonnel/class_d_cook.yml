@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: ClassDCook
   name: job-name-class-d-cook
   description: job-description-class-d-cook
@@ -17,6 +17,12 @@
     - type: ClassDAppearance
     - type: EmployeeClass
       class: D
+    - type: ScpAnnounceOnSpawn
+      text: class-d-announce-on-spawn
+      channels:
+      - ExternalAdministrativeZoneSecurityService
+      includeJobName: true
+      requiredGameRunLevel: InRound
 
 - type: startingGear
   id: ClassDCookGear
