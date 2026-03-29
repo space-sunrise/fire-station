@@ -152,6 +152,13 @@
   parent: VendingMachineCart
   id: ScpVendingMachineCart
   components:
+  - type: VendingMachine
+    pack: ScpPTechInventory
+    offState: off
+    brokenState: broken
+    normalState: normal-unshaded
+    ejectState: eject-unshaded
+    denyState: deny-unshaded
   - type: AccessReader
     access: [["PersonnelOfficer"]]
 

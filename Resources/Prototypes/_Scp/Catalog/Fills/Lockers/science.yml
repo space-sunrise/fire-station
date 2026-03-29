@@ -13,7 +13,7 @@
   table: !type:AllSelector
     children:
     - id: ClothingHandsGlovesLatex
-    - id: ClothingHeadsetScience
+    - id: ClothingHeadsetAltScientificService
     - id: ClothingMaskSterile
     - id: ClothingOuterCoatRnd
     - id: AnomalyScanner

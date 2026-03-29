@@ -1921,6 +1921,18 @@
     stock: 6
 
 - type: listing
+  id: ScpUplinkBoxCardboardShoulderPatches
+  productEntity: BoxCardboardShoulderPatches
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: shoulder_patches }
+  cost:
+    SupplyPoint: 1
+  categories:
+  - ScpAdditional
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 2
+
+- type: listing
   id: ScpUplinkBoxHandcuff
   productEntity: BoxHandcuff
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_handcuffs }

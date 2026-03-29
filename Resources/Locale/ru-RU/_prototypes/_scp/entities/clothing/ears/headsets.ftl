@@ -14,3 +14,5 @@ ent-ClothingHeadsetLogistics = { ent-ClothingHeadset } логистическо�
     .desc = { ent-ClothingHeadset.desc }
 ent-ClothingHeadsetFoodAndSanitation = { ent-ClothingHeadset } сервисной службы
     .desc = { ent-ClothingHeadset.desc }
+ent-ClothingHeadsetEmpty = пустая { ent-ClothingHeadset }
+    .desc = { ent-ClothingHeadset.desc } Изначально не имеет ключей шифрования.
