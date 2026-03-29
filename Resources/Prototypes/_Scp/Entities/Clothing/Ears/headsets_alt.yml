@@ -193,17 +193,27 @@
 # Пустая гарнитура
 
 - type: entity
-  parent: ClothingHeadsetGrey
+  parent: Clothing
   id: ClothingHeadsetEmpty
   components:
-  - type: ContainerFill
+  - type: ContainerContainer
     containers:
-      key_slots:
-      - null
+      key_slots: !type:Container
+  - type: Headset
+  - type: EncryptionKeyHolder
+    keySlots: 4
   - type: Sprite
     sprite: Clothing/Ears/Headsets/base.rsi
+    state: icon
+  - type: Item
+    size: Small
   - type: Clothing
+    slots:
+    - ears
     sprite: Clothing/Ears/Headsets/base.rsi
+  - type: GuideHelp
+    guides:
+    - Radio
 
 # Повстанцы хаоса
 
