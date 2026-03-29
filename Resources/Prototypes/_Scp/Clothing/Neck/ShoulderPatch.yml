@@ -37,12 +37,12 @@
   id: ClothingNeckShoulderPatchBlue
   components:
   - type: Sprite
-    color: "#0000aa"
+    color: "#0077aa"
   - type: Clothing
     clothingVisuals:
       neck:
       - state: equipped-NECK
-        color: "#0000aa"
+        color: "#0077aa"
 
 - type: entity
   name: green shoulder patch
