@@ -308,15 +308,10 @@ public sealed class Scp106AscentRule : GameRuleSystem<Scp106AscentRuleComponent>
             new AudioParams().WithVolume(5));
 
         var message = Loc.GetString("scp106-dimension-shift-passed-alarm-announcement");
-        _chat.DispatchGlobalAnnouncement(message,
-            colorOverride: Color.FromHex("#1A4D1A")); // GoodGreenFore из StyleNano
+        _chat.DispatchGlobalAnnouncement(message, colorOverride: Color.FromHex("#33A652"));
 
         RaiseNetworkEvent(new WarpingOverlayToggle(false));
-
-        // Чут позже включаем спокойную музыку
-        Timer.Spawn(AscentAnnounceAfter,
-            () => RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftAvertedMusic)),
-            _timerDespawnToken.Token);
+        RaiseNetworkEvent(new NetworkAmbientMusicEvent(ShiftAvertedMusic));
 
         // Как только все порталы уничтожены завершает события вторжения
         _gameTicker.EndGameRule(_ruleUid);

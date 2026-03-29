@@ -49,10 +49,12 @@ public abstract class BaseOverlaySystem<T> : EntitySystem where T : Overlay
 
     public void ToggleOverlay(bool enable)
     {
-        if (!enable && OverlayManager.HasOverlay<T>())
-            RemoveOverlay();
-        else if (enable)
+        var exists = OverlayManager.HasOverlay<T>();
+
+        if (enable && !exists)
             AddOverlay();
+        else if (!enable && exists)
+            RemoveOverlay();
     }
 
     public bool TryAddOverlay()
