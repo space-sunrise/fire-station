@@ -117,6 +117,7 @@ public abstract class SharedScpRadioSystem : EntitySystem
         {
             ent.Comp.Channels.Clear();
             ent.Comp.ActiveChannel = null;
+            DirtyFields(ent!, null, nameof(ScpRadioComponent.Channels), nameof(ScpRadioComponent.ActiveChannel));
             return;
         }
 
@@ -139,6 +140,8 @@ public abstract class SharedScpRadioSystem : EntitySystem
             if (ent.Comp.Channels.Contains(protoId))
             {
                 ent.Comp.ActiveChannel = protoId;
+                DirtyField(ent!, nameof(ScpRadioComponent.ActiveChannel));
+
                 return;
             }
         }

@@ -12,7 +12,7 @@ public sealed class BlinkingOverlay : Overlay
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
 
-    public override bool RequestScreenTexture => true; // _blinkingProgress > 0f
+    public override bool RequestScreenTexture => true; // _blinkingProgress > 0f || IsAnimating
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
     private readonly ShaderInstance _shader;

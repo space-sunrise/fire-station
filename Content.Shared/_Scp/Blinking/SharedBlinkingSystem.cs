@@ -62,7 +62,12 @@ public abstract partial class SharedBlinkingSystem : EntitySystem
 
         // Так как персонажи моргают на протяжении всего времени, то для удобства игрока мы
         // не добавляем никакие эффекты, если рядом нет SCP использующего механику зрения.
-        if (RequiresExplicitOpen(ent.Comp.CloseMode) || IsScpNearby(ent))
+        var shouldUpdateBlindState =
+            args.Mode == EyeCloseReason.Force ||
+            RequiresExplicitOpen(args.Mode) ||
+            IsScpNearby(ent.Owner);
+
+        if (shouldUpdateBlindState)
             _blindable.UpdateIsBlind(ent.Owner);
 
         if (_net.IsServer)
