@@ -44,6 +44,15 @@
 
 - type: entity
   parent: BaseSignDirectionalScp
+  id: SignDirectionalScp018
+  name: SCP-018 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 018
+
+- type: entity
+  parent: BaseSignDirectionalScp
   id: SignDirectionalScp035
   name: SCP-035 sign
   description: Points in a direction you shouldn't go without a clear understanding of where it leads.

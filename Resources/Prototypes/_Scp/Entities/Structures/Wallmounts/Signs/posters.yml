@@ -644,6 +644,15 @@
   components:
   - type: Sprite
     state: scp012
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterScp018
+  name: SCP-018 poster
+  description: Information poster for SCP-018.
+  components:
+  - type: Sprite
+    state: scp018
 
 - type: entity
   parent: PosterScpContainmentRoomBase
