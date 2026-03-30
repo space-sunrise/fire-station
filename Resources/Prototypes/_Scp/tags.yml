@@ -66,3 +66,9 @@
 
 - type: Tag
   id: EncryptionScpSecurityCommon
+
+- type: Tag
+  id: ScpMuffleCountsThisAsTransparent
+
+- type: Tag
+  id: ScpMuffleCountsThisAsNone
