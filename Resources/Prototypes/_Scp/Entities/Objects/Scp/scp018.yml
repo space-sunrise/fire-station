@@ -54,10 +54,10 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 50
+        damage: 100
       behaviors:
       - !type:PlaySoundBehavior
         sound:
-          path: /Audio/Items/snap.ogg # Звук хлопка
+          path: /Audio/Items/snap.ogg
       - !type:DoActsBehavior
-        acts: ["Destruction"] # Посылает сигнал удаления сущности
+        acts: ["Destruction"]
