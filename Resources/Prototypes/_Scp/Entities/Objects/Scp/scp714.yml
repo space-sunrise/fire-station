@@ -1,0 +1,48 @@
+﻿- type: entity
+  id: Scp714
+  parent: BaseItemScp
+  suffix: SCP-714
+  name: green ring
+  description: A small green ring carved from jade. It seems to expand or contract to fit the wearer's finger perfectly.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-714.rsi
+    state: icon
+  - type: Item
+    size: Tiny
+  - type: Clothing
+    quickEquip: true
+    slots:
+    - gloves
+  - type: AddDrunkClothing # типо усталость
+  - type: ClothingSpeedModifier
+    walkModifier: 0.6
+    sprintModifier: 0.5
+    requireActivated: false
+  - type: ClothingAddComponents
+    components:
+    - type: Scp035MindProtection
+    - type: Scp012Protection
+    - type: Fear # он также приглушает страх если чо
+    proximityBlockerLevel: None
+    seenBlockerLevel: None
+    fearBasedSpreadAngleModifier:
+      Anxiety: 1
+      Fear: 1.2
+      Terror: 2
+    fearBasedGrainStrength:
+      None: 0
+      Anxiety: 15
+      Fear: 45
+      Terror: 100
+    fearBasedVignetteStrength:
+      None: 0
+      Anxiety: 15
+      Fear: 25
+      Terror: 50
+    baseJitterTime: 0
+  - type: Scp
+    class: Safe   
+  - type: GuideHelp
+    guides:
+    - ScpResearch

@@ -761,6 +761,15 @@
   components:
   - type: Sprite
     state: scp969
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP714
+  name: SCP-714 poster
+  description: Information poster for SCP-714.
+  components:
+  - type: Sprite
+    state: scp714
 
 - type: entity
   parent: PosterScpContainmentRoomBase
