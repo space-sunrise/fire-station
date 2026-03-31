@@ -23,24 +23,6 @@
     components:
     - type: Scp035MindProtection
     - type: Scp012Protection
-    - type: Fear # он также приглушает страх если чо
-    proximityBlockerLevel: None
-    seenBlockerLevel: None
-    fearBasedSpreadAngleModifier:
-      Anxiety: 1
-      Fear: 1.2
-      Terror: 2
-    fearBasedGrainStrength:
-      None: 0
-      Anxiety: 15
-      Fear: 45
-      Terror: 100
-    fearBasedVignetteStrength:
-      None: 0
-      Anxiety: 15
-      Fear: 25
-      Terror: 50
-    baseJitterTime: 0
   - type: Scp
     class: Safe   
   - type: GuideHelp
