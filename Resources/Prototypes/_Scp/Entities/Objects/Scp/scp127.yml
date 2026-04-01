@@ -1,0 +1,84 @@
+﻿- type: entity
+  id: Scp127
+  name: MP5K
+  description: A compact submachine gun. A faint pulsing can be felt beneath its frame.
+  parent:
+  - BaseItemScp
+  - GunLight
+  suffix: SCP-127
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-127/big.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Scp/Objects/Scp/scp-127/tiny.rsi
+    slots:
+    - Back
+    - suitStorage
+  - type: Item
+    size: Large
+    sprite: _Scp/Objects/Scp/scp-127/tiny.rsi
+    quickEquip: false
+    slots:
+    - Back
+    - suitStorage
+    storedOffset: 0,-2
+  - type: Appearance
+  - type: Scp
+    class: Safe
+  - type: BasicEntityAmmoProvider
+    proto: Scp127Tooth
+    capacity: 60
+  - type: RechargeBasicEntityAmmo
+    rechargeCooldown: 10
+    rechargeSound: /Audio/_Sunrise/FleshCult/flesh_cultist_mutation.ogg
+    showExamineText: false
+  - type: Wieldable
+  - type: GunWieldBonus
+    minAngle: -5
+    maxAngle: -18
+  - type: AmmoCounter
+  - type: Gun
+    minAngle: 2
+    maxAngle: 16
+    fireRate: 8
+    burstFireRate: 8
+    angleIncrease: 3
+    angleDecay: 16
+    selectedMode: FullAuto
+    availableModes:
+    - SemiAuto
+    - FullAuto
+    soundGunshot:
+      path: /Audio/_Sunrise/FleshCult/spike_gun_shot.ogg
+    soundEmpty:
+      path: /Audio/_Sunrise/FleshCult/spike_gun_reload.ogg
+    soundMode:
+      path: /Audio/_Sunrise/FleshCult/flesh_pudge_dead.ogg
+    defaultDirection: 1, 0
+  - type: EmitSoundOnPickup
+    sound:
+      collection: RiflesPickUp
+  - type: EmitSoundOnDrop
+    sound:
+      collection: RiflesDrop
+  - type: EmitSoundOnLand
+    sound:
+      collection: RiflesDrop
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+
+- type: entity
+  parent: BaseBullet
+  id: Scp127Tooth
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Projectile
+    damage:
+      types:
+        Piercing: 19
+  - type: Sprite
+    sprite: Objects/Materials/Mob/carptooth.rsi
+    layers:
+      - state: tooth

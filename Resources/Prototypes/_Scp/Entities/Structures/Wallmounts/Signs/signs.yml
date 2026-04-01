@@ -86,6 +86,15 @@
   components:
   - type: Sprite
     state: 106
+    
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp127
+  name: SCP-127 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 127
 
 - type: entity
   parent: BaseSignDirectionalScp
