@@ -93,8 +93,8 @@ public sealed partial class AudioMuffleSystem : EntitySystem
             if (!audioComp.Loaded || !audioComp.Started)
                 continue;
 
-            UpdateMuffleEffect((sound, audioComp));
             ApplyOcclusionGain(audioComp);
+            UpdateMuffleEffect((sound, audioComp));
         }
     }
 
@@ -104,10 +104,22 @@ public sealed partial class AudioMuffleSystem : EntitySystem
     private void UpdateMuffleEffect(Entity<AudioComponent> ent)
     {
         if (TerminatingOrDeleted(ent))
+        {
             TryUnMuffleSound(ent);
+            return;
+        }
+
+        if (MathHelper.CloseTo(ent.Comp.Volume, 0f))
+        {
+            TryUnMuffleSound(ent);
+            return;
+        }
 
         if (ent.Comp.Occlusion >= _silentOcclusionThreshold)
+        {
+            TryUnMuffleSound(ent);
             return;
+        }
 
         var threshold = _audioMuffledQuery.HasComp(ent)
             ? _muffleEffectClearOcclusionThreshold
@@ -165,7 +177,7 @@ public sealed partial class AudioMuffleSystem : EntitySystem
         var muffledComponent = AddComp<AudioMuffledComponent>(ent);
         muffledComponent.CachedVolume = ent.Comp.Volume;
 
-        if (_effectsManager.TryGetEffect(ent, out var preset))
+        if (_effectsManager.TryGetEffect(ent, out var preset) && preset != MufflingEffectPreset)
             muffledComponent.CachedPreset = preset;
 
         // Clear incompatible effects, such as echo, before applying the muffling preset.
