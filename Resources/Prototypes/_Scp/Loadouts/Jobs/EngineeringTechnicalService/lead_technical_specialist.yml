@@ -11,17 +11,11 @@
 
 - type: loadout
   id: ScpLoadoutLeadTechnicalSpecialistJumpsuit
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ScpLeadTechnicalSpecialist
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorEngineer
 
 - type: loadout
   id: ScpLoadoutLeadTechnicalSpecialistJumpskirt
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ScpLeadTechnicalSpecialist
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorEngineer
 
