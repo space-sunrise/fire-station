@@ -1,23 +1,9 @@
-﻿using Robust.Shared.Audio;
-using Robust.Shared.Prototypes;
-
 namespace Content.Client._Scp.Audio.Muffle;
 
 /// <summary>
-/// Компонент для кэширования исходных параметров звука при применении эффекта приглушения.
+/// Компонент-маркер, указывающий что звук временно переведен на behind-walls override.
 /// </summary>
 [RegisterComponent]
 public sealed partial class AudioMuffledComponent : Component
 {
-    /// <summary>
-    /// Кэшированная громкость звука до применения эффекта приглушения.
-    /// </summary>
-    [ViewVariables]
-    public float? CachedVolume;
-
-    /// <summary>
-    /// Кэшированный пресет звука до применения эффекта приглушения.
-    /// </summary>
-    [ViewVariables]
-    public ProtoId<AudioPresetPrototype>? CachedPreset;
 }

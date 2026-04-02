@@ -1,4 +1,3 @@
-﻿using Content.Shared._Scp.Audio;
 using Content.Shared._Scp.ScpCCVars;
 using Content.Shared.Silicons.StationAi;
 using Robust.Client.Audio;
@@ -14,7 +13,7 @@ namespace Content.Client._Scp.Audio.Muffle;
 public sealed partial class AudioMuffleSystem : EntitySystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
-    [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
+    [Dependency] private readonly AudioEffectStateSystem _effectState = default!;
     [Dependency] private readonly ISharedPlayerManager _player = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
@@ -83,13 +82,9 @@ public sealed partial class AudioMuffleSystem : EntitySystem
         if (_aiQuery.HasComp(_player.LocalEntity))
             return;
 
-        var query = EntityQueryEnumerator<AudioEffectedComponent, AudioComponent, MetaDataComponent>();
-        while (query.MoveNext(out var sound, out _, out var audioComp, out var meta))
+        var query = EntityQueryEnumerator<AudioEffectedComponent, AudioComponent>();
+        while (query.MoveNext(out var sound, out _, out var audioComp))
         {
-            // Detached/nullspace audio must stay governed by AudioSystem's own mute logic.
-            if ((meta.Flags & MetaDataFlags.Detached) != 0)
-                continue;
-
             if (!audioComp.Loaded || !audioComp.Started)
                 continue;
 
@@ -103,13 +98,7 @@ public sealed partial class AudioMuffleSystem : EntitySystem
     /// </summary>
     private void UpdateMuffleEffect(Entity<AudioComponent> ent)
     {
-        if (TerminatingOrDeleted(ent))
-        {
-            TryUnMuffleSound(ent);
-            return;
-        }
-
-        if (MathHelper.CloseTo(ent.Comp.Volume, 0f))
+        if (ent.Comp.Gain <= 0f)
         {
             TryUnMuffleSound(ent);
             return;
@@ -166,47 +155,24 @@ public sealed partial class AudioMuffleSystem : EntitySystem
     /// <summary>
     /// Tries to apply the muffling effect to a sound.
     /// </summary>
-    /// <param name="ent">The audio entity to modify.</param>
-    /// <returns>True if the effect was applied; otherwise false.</returns>
     public bool TryMuffleSound(Entity<AudioComponent> ent)
     {
         if (_audioMuffledQuery.HasComp(ent))
             return false;
 
-        // Store prior effect state in a marker component so it can be restored later.
-        var muffledComponent = AddComp<AudioMuffledComponent>(ent);
-        muffledComponent.CachedVolume = ent.Comp.Volume;
-
-        if (_effectsManager.TryGetEffect(ent, out var preset) && preset != MufflingEffectPreset)
-            muffledComponent.CachedPreset = preset;
-
-        // Clear incompatible effects, such as echo, before applying the muffling preset.
-        _effectsManager.RemoveAllEffects(ent);
-
-        _effectsManager.TryAddEffect(ent, MufflingEffectPreset);
-
-        return true;
+        AddComp<AudioMuffledComponent>(ent);
+        return _effectState.SetOverrideEffect(ent, MufflingEffectPreset);
     }
 
     /// <summary>
     /// Tries to remove the muffling effect from a sound.
     /// </summary>
-    /// <param name="ent">The audio entity to modify.</param>
-    /// <param name="muffledComponent">The cached muffling marker component.</param>
-    /// <returns>True if the effect was removed; otherwise false.</returns>
     public bool TryUnMuffleSound(Entity<AudioComponent> ent, AudioMuffledComponent? muffledComponent = null)
     {
         if (!_audioMuffledQuery.Resolve(ent.Owner, ref muffledComponent, false))
             return false;
 
-        _effectsManager.TryRemoveEffect(ent, MufflingEffectPreset);
-
-        if (muffledComponent.CachedPreset != null)
-            _effectsManager.TryAddEffect(ent, muffledComponent.CachedPreset.Value);
-
-        if (muffledComponent.CachedVolume != null)
-            ent.Comp.Volume = muffledComponent.CachedVolume.Value;
-
+        _effectState.SetOverrideEffect(ent, null);
         RemComp<AudioMuffledComponent>(ent);
 
         return true;

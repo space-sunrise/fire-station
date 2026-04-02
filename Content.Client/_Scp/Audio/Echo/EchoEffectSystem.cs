@@ -1,20 +1,19 @@
-﻿using Content.Shared._Scp.Audio;
 using Content.Shared._Scp.ScpCCVars;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Components;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
-using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client._Scp.Audio.Echo;
+
 /// <summary>
 /// Система, накладывающая эффект эхо каждому неглобальному звуку.
-/// Эффект может быть отключен игроком в настройках
+/// Эффект может быть отключен игроком в настройках.
 /// </summary>
 public sealed class EchoEffectSystem : EntitySystem
 {
-    [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
+    [Dependency] private readonly AudioEffectStateSystem _effectState = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     private static readonly ProtoId<AudioPresetPrototype> StandardEchoEffectPreset = "Bathroom";
@@ -24,7 +23,6 @@ public sealed class EchoEffectSystem : EntitySystem
     private bool _strongPresetPreferred;
 
     private EntityQuery<AudioComponent> _audioQuery;
-    private EntityQuery<AudioEchoEffectAffectedComponent> _echoQuery;
 
     public override void Initialize()
     {
@@ -36,7 +34,6 @@ public sealed class EchoEffectSystem : EntitySystem
         Subs.CVar(_cfg, ScpCCVars.EchoStrongPresetPreferred, OnPreferredPresetToggled, true);
 
         _audioQuery = GetEntityQuery<AudioComponent>();
-        _echoQuery = GetEntityQuery<AudioEchoEffectAffectedComponent>();
     }
 
     private void OnEffectedAudioStartup(Entity<AudioEffectedComponent> ent, ref ComponentStartup args)
@@ -51,86 +48,84 @@ public sealed class EchoEffectSystem : EntitySystem
     }
 
     /// <summary>
-    /// Пытается применить эхо к данном звуку
+    /// Пытается применить эхо к данному звуку.
     /// </summary>
-    /// <param name="sound">Звук, к которому будет применен эффект</param>
-    /// <param name="preset">Пресет, если нужно выставить какой-то особенный</param>
-    /// <returns>Получилось или не получилось применить эффект</returns>
+    /// <param name="sound">Звук, к которому будет применен эффект.</param>
+    /// <param name="preset">Пресет, если нужно выставить какой-то особенный.</param>
+    /// <returns>Удалось ли обновить желаемое состояние эффекта.</returns>
     public bool TryApplyEcho(Entity<AudioComponent> sound, ProtoId<AudioPresetPrototype>? preset = null)
     {
         if (TerminatingOrDeleted(sound))
             return false;
 
-        // Выбираем пресет для эха исходя из настроек игрока и возможного приоритетного эффекта при вызове извне системы
         var clientPreferredPreset = _strongPresetPreferred ? StrongEchoEffectPreset : StandardEchoEffectPreset;
         var targetPreset = preset ?? clientPreferredPreset;
 
-        _effectsManager.TryAddEffect(sound, targetPreset);
-
-        // Добавляем компонент-маркер к звуку, который будет хранить эффект эха
-        var echoComp = AddComp<AudioEchoEffectAffectedComponent>(sound);
-        echoComp.Preset = targetPreset;
-
-        return true;
+        return _effectState.SetBaseEffect(sound, targetPreset);
     }
 
     /// <summary>
-    /// Пытается убрать эффект эхо у выбранного звука
+    /// Пытается убрать эффект эхо у выбранного звука.
     /// </summary>
-    public bool TryRemoveEcho(Entity<AudioComponent> sound, AudioEchoEffectAffectedComponent? echoComp = null)
+    public bool TryRemoveEcho(Entity<AudioComponent> sound)
     {
-        if (!_echoQuery.Resolve(sound, ref echoComp))
+        if (TerminatingOrDeleted(sound))
             return false;
 
-        if (!_effectsManager.TryRemoveEffect(sound, echoComp.Preset))
-            return false;
-
-        RemComp<AudioEchoEffectAffectedComponent>(sound);
-        RemComp<AudioEffectedComponent>(sound);
-
-        return true;
+        return _effectState.SetBaseEffect(sound, null);
     }
 
     private void OnEnabledToggled(bool enabled)
     {
         _isClientSideEnabled = enabled;
 
-        if (!enabled)
+        if (enabled)
+            ApplyEchoToAll();
+        else
             RevertChanges();
     }
 
     private void OnPreferredPresetToggled(bool useStrong)
     {
         _strongPresetPreferred = useStrong;
-        var newPreferredPreset = useStrong ? StrongEchoEffectPreset : StandardEchoEffectPreset;
+        if (!_isClientSideEnabled)
+            return;
 
+        var newPreferredPreset = useStrong ? StrongEchoEffectPreset : StandardEchoEffectPreset;
         TogglePreset(newPreferredPreset);
     }
 
     /// <summary>
-    /// Убирает эффекты эхо у всех звуков, что имеют его.
+    /// Убирает эхо у всех затронутых звуков.
     /// Вызывается при выключении эффекта эха игроком.
     /// </summary>
     private void RevertChanges()
     {
-        var query = AllEntityQuery<AudioEchoEffectAffectedComponent, AudioComponent>();
+        var query = AllEntityQuery<AudioEffectedComponent, AudioComponent>();
 
-        while (query.MoveNext(out var uid, out var echoComp, out var audio))
+        while (query.MoveNext(out var uid, out _, out var audio))
         {
-            TryRemoveEcho((uid, audio), echoComp);
+            TryRemoveEcho((uid, audio));
         }
     }
 
     private void TogglePreset(ProtoId<AudioPresetPrototype> newPreferredPreset)
     {
-        var query = AllEntityQuery<AudioEchoEffectAffectedComponent, AudioComponent>();
+        var query = AllEntityQuery<AudioEffectedComponent, AudioComponent>();
 
-        while (query.MoveNext(out var uid, out var echoComp, out var audio))
+        while (query.MoveNext(out var uid, out _, out var audio))
         {
-            if (!TryRemoveEcho((uid, audio), echoComp))
-                continue;
-
             TryApplyEcho((uid, audio), newPreferredPreset);
+        }
+    }
+
+    private void ApplyEchoToAll()
+    {
+        var query = AllEntityQuery<AudioEffectedComponent, AudioComponent>();
+
+        while (query.MoveNext(out var uid, out _, out var audio))
+        {
+            TryApplyEcho((uid, audio));
         }
     }
 }
