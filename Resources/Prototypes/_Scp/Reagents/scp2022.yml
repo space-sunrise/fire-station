@@ -1,6 +1,6 @@
 ﻿- type: reagent
   id: Scp2022Reagent
-  name: SCP-2022-D
+  name: reagent-name-scp2022
   desc: reagent-desc-scp2022
   physicalDesc: reagent-physical-desc-glowing
   flavor: medicine
