@@ -743,6 +743,15 @@
   components:
   - type: Sprite
     state: scp247
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP268
+  name: SCP-268 poster
+  description: Information poster for SCP-268.
+  components:
+  - type: Sprite
+    state: scp268
 
 - type: entity
   parent: PosterScpContainmentRoomBase
