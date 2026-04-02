@@ -12,6 +12,7 @@ namespace Content.Client._Scp.Audio;
 public sealed class AudioEffectStateSystem : EntitySystem
 {
     [Dependency] private readonly AudioEffectsManagerSystem _effectsManager = default!;
+    [Dependency] private readonly AudioMuffleSystem _muffle = default!;
 
     private EntityQuery<AudioEffectStateComponent> _audioStateQuery;
 
@@ -34,7 +35,10 @@ public sealed class AudioEffectStateSystem : EntitySystem
         var query = EntityQueryEnumerator<AudioEffectStateComponent, AudioComponent>();
         while (query.MoveNext(out var uid, out var state, out var audio))
         {
-            if (!state.NeedsReconcile)
+            // Desired preset state does not change when muffle makes a source fully inaudible.
+            // Keep polling sources that still have a live effect so we can tear it down immediately.
+            var needsSilencePolling = state.AppliedPreset != null && _muffle.IsSilencedByMuffle((uid, audio));
+            if (!state.NeedsReconcile && !needsSilencePolling)
                 continue;
 
             Reconcile((uid, audio), state);
@@ -79,10 +83,19 @@ public sealed class AudioEffectStateSystem : EntitySystem
         if (!_audioStateQuery.Resolve(ent, ref state, false))
             return;
 
+        // Fully silenced sources must not keep feeding a stale auxiliary effect.
+        if (_muffle.IsSilencedByMuffle(ent))
+        {
+            if (state.AppliedPreset != null)
+                _effectsManager.RemoveAllEffects(ent.AsNullable());
+
+            return;
+        }
+
         var targetPreset = GetTargetPreset(state);
 
         // Removing a stale effect must always win over readiness checks so state cannot get stuck while muted.
-        if (state.AppliedPreset != null && state.AppliedPreset != targetPreset)
+        if (state.AppliedPreset != targetPreset || targetPreset == null)
             _effectsManager.RemoveAllEffects(ent.AsNullable());
 
         if (targetPreset == null)

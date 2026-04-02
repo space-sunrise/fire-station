@@ -126,23 +126,7 @@ public sealed partial class AudioMuffleSystem : EntitySystem
     private void ApplyOcclusionGain(AudioComponent audioComp)
     {
         var occlusion = audioComp.Occlusion;
-
-        float gainFactor;
-        if (occlusion <= 0f)
-        {
-            gainFactor = 1f;
-        }
-        else if (occlusion >= _silentOcclusionThreshold)
-        {
-            gainFactor = 0f;
-        }
-        else
-        {
-            gainFactor = MathF.Exp(-occlusion * _occlusionGainFalloff);
-
-            if (gainFactor < _minAudibleGainFactor)
-                gainFactor = 0f;
-        }
+        var gainFactor = GetGainFactor(occlusion);
 
         var targetGain = SharedAudioSystem.VolumeToGain(audioComp.Params.Volume) * gainFactor;
 
@@ -200,5 +184,32 @@ public sealed partial class AudioMuffleSystem : EntitySystem
         {
             TryUnMuffleSound((uid, audio), muffled);
         }
+    }
+
+    private float GetGainFactor(float occlusion)
+    {
+        float gainFactor;
+        if (occlusion <= 0f)
+        {
+            gainFactor = 1f;
+        }
+        else if (occlusion >= _silentOcclusionThreshold)
+        {
+            gainFactor = 0f;
+        }
+        else
+        {
+            gainFactor = MathF.Exp(-occlusion * _occlusionGainFalloff);
+
+            if (gainFactor < _minAudibleGainFactor)
+                gainFactor = 0f;
+        }
+
+        return gainFactor;
+    }
+
+    public bool IsSilencedByMuffle(Entity<AudioComponent> ent)
+    {
+        return GetGainFactor(ent.Comp.Occlusion) <= 0f;
     }
 }

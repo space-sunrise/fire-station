@@ -1,12 +1,10 @@
-﻿using Content.Shared._Scp.Audio;
-using Robust.Client.Player;
+﻿using Robust.Client.Player;
 using Robust.Shared.Audio.Components;
 
 namespace Content.Client._Scp.Audio;
 
 public sealed class AudioEffectsEntryPointSystem : EntitySystem
 {
-    [Dependency] private readonly AudioEffectsManagerSystem _effects = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
 
     public override void Initialize()
@@ -14,7 +12,6 @@ public sealed class AudioEffectsEntryPointSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<AudioComponent, ComponentAdd>(OnAudioAdd);
-        SubscribeLocalEvent<AudioEffectedComponent, ComponentShutdown>(OnShutdown);
     }
 
     private void OnAudioAdd(Entity<AudioComponent> ent, ref ComponentAdd args)
@@ -32,11 +29,6 @@ public sealed class AudioEffectsEntryPointSystem : EntitySystem
             return;
 
         AddComp<AudioEffectedComponent>(ent);
-    }
-
-    private void OnShutdown(Entity<AudioEffectedComponent> ent, ref ComponentShutdown args)
-    {
-        _effects.RemoveAllEffects(ent.Owner);
     }
 
     /// <summary>
