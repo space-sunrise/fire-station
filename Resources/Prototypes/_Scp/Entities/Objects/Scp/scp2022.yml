@@ -6,7 +6,7 @@
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-2022.rsi
     layers:
-    - state: pill 
+    - state: pill
       shader: unshaded
   - type: Pill
     useStandardVisuals: false
