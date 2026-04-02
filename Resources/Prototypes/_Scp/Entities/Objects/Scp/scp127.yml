@@ -18,10 +18,6 @@
   - type: Item
     size: Large
     sprite: _Scp/Objects/Scp/scp-127/tiny.rsi
-    quickEquip: false
-    slots:
-    - Back
-    - suitStorage
     storedOffset: 0,-2
   - type: Appearance
   - type: Scp
