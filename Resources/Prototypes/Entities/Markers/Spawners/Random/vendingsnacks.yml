@@ -10,6 +10,11 @@
       - sprite: Structures/Machines/VendingMachines/random.rsi
         state: snack
   - type: RandomSpawner
+  # Fire edit start
+    rarePrototypes:
+    - Scp261
+    rareChance: 0.03
+  # Fire edit end
     prototypes:
       - VendingMachineDiscount
       - VendingMachineSnack

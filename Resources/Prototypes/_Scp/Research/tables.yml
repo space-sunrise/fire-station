@@ -201,3 +201,14 @@
     TriggerThrow: 1
     TriggerOnDrop: 1
     TriggerDeath: 0.5
+    
+- type: weightedRandomXenoArchTrigger
+  id: Scp261Triggers
+  weights:
+    TriggerInsertIntoContainer: 1
+    TriggerExamine: 1
+    TriggerBruteDamage: 1
+    TriggerWrenching: 1
+    TriggerPrying: 1
+    TriggerScrewing: 1
+    
