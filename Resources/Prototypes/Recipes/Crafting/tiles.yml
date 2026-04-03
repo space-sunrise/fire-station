@@ -13,6 +13,7 @@
   graph: TileWood
   startNode: start
   targetNode: woodtile
+  hide: true # Fire edit
   category: construction-category-tiles
   objectType: Item
 
@@ -61,5 +62,6 @@
   graph: TileWoodLarge
   startNode: start
   targetNode: woodtilelarge
+  hide: true # Fire edit
   category: construction-category-tiles
   objectType: Item

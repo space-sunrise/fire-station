@@ -1,0 +1,24 @@
+- type: construction
+  id: ScpClosetSteelBase
+  graph: ScpClosetSteel
+  startNode: start
+  targetNode: done
+  category: construction-category-storage
+  objectType: Structure
+
+- type: construction
+  id: ScpLockerPlasteel
+  graph: ScpClosetSteelSecure
+  startNode: start
+  targetNode: done
+  category: construction-category-storage
+  objectType: Structure
+
+- type: construction
+  id: ScpLockerFreezerBase
+  name: construction-recipe-closet-freezer
+  graph: ScpClosetFreezer
+  startNode: start
+  targetNode: done
+  category: construction-category-storage
+  objectType: Structure
