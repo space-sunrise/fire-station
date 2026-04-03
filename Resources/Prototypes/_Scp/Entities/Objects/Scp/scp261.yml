@@ -10,16 +10,12 @@
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-261.rsi
     state: icon
-    
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
-  
   - type: TriggerOnInsertedIntoContainer
     containerId: storagebase
     keyOut: StartVending
-    requireConditions: true
-
   - type: TimerTrigger
     keysIn: [ StartVending ]
     keyOut: ReleaseProduct
@@ -29,25 +25,21 @@
       path: /Audio/Machines/tray_eject.ogg
     popup: scp-261-processing
     examinable: false
-    
   - type: EmitSoundOnTrigger
     keysIn: [ StartVending ]
     sound:
       path: /Audio/Machines/vending_jingle.ogg
     positional: true
     targetUser: false
-
   - type: SpawnOnTrigger
     keysIn: [ ReleaseProduct ]
     proto: Scp261Spawner
     targetUser: false
-
   - type: CleanContainersOnTrigger
     keysIn: [ ReleaseProduct ]
     container: [ storagebase ]
-    
   - type: Storage
-    quickInsertCooldown: 3.0
+#   quickInsertCooldown: 3.0
     openOnActivate: false
     showVerb: false
     maxItemSize: Small
@@ -58,10 +50,8 @@
     whitelist:
       components:
       - Cash
-      
   - type: XenoArtifact
     triggerWeights: Scp261Triggers
-
   - type: Physics
     bodyType: Static
   - type: Transform
@@ -86,7 +76,8 @@
     isStructure: true
   - type: PointLight
     radius: 1.5
-
+  - type: Scp
+    class: Safe
   - type: GuideHelp
     guides:
     - ScpResearch
