@@ -1,4 +1,5 @@
-﻿using Content.Shared.Tag;
+﻿using Content.Shared.FixedPoint;
+using Content.Shared.Tag;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -10,7 +11,7 @@ public sealed partial class Scp999Component : Component
 {
     #region Abilities
 
-    [DataField, AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public Scp999States CurrentState = Scp999States.Default;
 
     [DataField]
@@ -21,6 +22,12 @@ public sealed partial class Scp999Component : Component
 
     [DataField]
     public SoundSpecifier? SleepSound = new SoundPathSpecifier("/Audio/_Scp/Scp999/sleep.ogg");
+
+    [DataField]
+    public FixedPoint2 TotalDamageToChangeState = 30f;
+
+    [ViewVariables, AutoNetworkedField]
+    public FixedPoint2 CurrentTotalDamage = FixedPoint2.Zero;
 
     #endregion
 
