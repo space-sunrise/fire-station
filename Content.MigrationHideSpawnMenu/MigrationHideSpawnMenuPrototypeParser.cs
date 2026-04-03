@@ -7,9 +7,17 @@ namespace Content.MigrationHideSpawnMenu;
 internal static class MigrationHideSpawnMenuPrototypeParser
 {
     private const string EntityType = "entity";
+    private const string ConstructionType = "construction";
+    private const string ConstructionGraphType = "constructionGraph";
+
     private const string IdField = "id";
     private const string AbstractField = "abstract";
     private const string CategoriesField = "categories";
+    private const string GraphField = "graph";
+    private const string TargetNodeField = "targetNode";
+    private const string HideField = "hide";
+    private const string NodeField = "node";
+    private const string EntityField = "entity";
 
     public static MigrationHideSpawnMenuPrototypeFile Parse(string content)
     {
@@ -26,12 +34,20 @@ internal static class MigrationHideSpawnMenuPrototypeParser
         for (var i = 0; i < entries.Count; i++)
         {
             var entry = entries[i];
-            if (!entry.PrototypeType.Equals(EntityType, StringComparison.Ordinal))
-                continue;
-
             var endExclusive = i + 1 < entries.Count ? entries[i + 1].LineIndex : lines.Count;
-            var block = ParseEntityBlock(lines, entry.LineIndex, endExclusive, entry.Indent);
-            result.EntityBlocks.Add(block);
+
+            switch (entry.PrototypeType)
+            {
+                case EntityType:
+                    result.EntityBlocks.Add(ParseEntityBlock(lines, entry.LineIndex, endExclusive, entry.Indent));
+                    break;
+                case ConstructionType:
+                    result.ConstructionBlocks.Add(ParseConstructionBlock(lines, entry.LineIndex, endExclusive, entry.Indent));
+                    break;
+                case ConstructionGraphType:
+                    result.ConstructionGraphBlocks.Add(ParseConstructionGraphBlock(lines, entry.LineIndex, endExclusive, entry.Indent));
+                    break;
+            }
         }
 
         return result;
@@ -68,7 +84,11 @@ internal static class MigrationHideSpawnMenuPrototypeParser
         return entries.Where(e => e.Indent == minIndent.Value).ToList();
     }
 
-    private static MigrationHideSpawnMenuEntityBlock ParseEntityBlock(List<string> lines, int startLineIndex, int endLineExclusive, int prototypeIndent)
+    private static MigrationHideSpawnMenuEntityBlock ParseEntityBlock(
+        List<string> lines,
+        int startLineIndex,
+        int endLineExclusive,
+        int prototypeIndent)
     {
         var block = new MigrationHideSpawnMenuEntityBlock
         {
@@ -100,7 +120,7 @@ internal static class MigrationHideSpawnMenuPrototypeParser
                 continue;
             }
 
-            if (!TryParseCategoriesField(lines[i], fieldIndent, out var categoriesRemainder))
+            if (!TryParseFieldHeader(lines[i], fieldIndent, CategoriesField, out var categoriesRemainder))
                 continue;
 
             block.CategoriesLineIndex = i;
@@ -108,6 +128,160 @@ internal static class MigrationHideSpawnMenuPrototypeParser
         }
 
         return block;
+    }
+
+    private static MigrationHideSpawnMenuConstructionBlock ParseConstructionBlock(
+        List<string> lines,
+        int startLineIndex,
+        int endLineExclusive,
+        int prototypeIndent)
+    {
+        var block = new MigrationHideSpawnMenuConstructionBlock
+        {
+            StartLineIndex = startLineIndex,
+            EndLineIndexExclusive = endLineExclusive,
+            PrototypeIndent = prototypeIndent,
+        };
+
+        var fieldIndent = FindFieldIndent(lines, startLineIndex, endLineExclusive, prototypeIndent);
+        block.FieldIndent = fieldIndent;
+
+        if (fieldIndent < 0)
+            return block;
+
+        for (var i = startLineIndex + 1; i < endLineExclusive; i++)
+        {
+            if (TryParseFieldValue(lines[i], fieldIndent, IdField, out var id))
+            {
+                block.HasId = !string.IsNullOrWhiteSpace(id);
+                block.Id = id;
+                block.IdLineIndex = i;
+                continue;
+            }
+
+            if (TryParseFieldValue(lines[i], fieldIndent, GraphField, out var graphId))
+            {
+                block.HasGraph = !string.IsNullOrWhiteSpace(graphId);
+                block.GraphId = graphId;
+                block.GraphLineIndex = i;
+                continue;
+            }
+
+            if (TryParseFieldValue(lines[i], fieldIndent, TargetNodeField, out var targetNode))
+            {
+                block.HasTargetNode = !string.IsNullOrWhiteSpace(targetNode);
+                block.TargetNode = targetNode;
+                block.TargetNodeLineIndex = i;
+                continue;
+            }
+
+            if (!TryParseFieldValue(lines[i], fieldIndent, HideField, out var hideValue))
+                continue;
+
+            block.HasHide = true;
+            block.HideLineIndex = i;
+            block.Hide = hideValue.Equals("true", StringComparison.OrdinalIgnoreCase);
+        }
+
+        return block;
+    }
+
+    private static MigrationHideSpawnMenuConstructionGraphBlock ParseConstructionGraphBlock(
+        List<string> lines,
+        int startLineIndex,
+        int endLineExclusive,
+        int prototypeIndent)
+    {
+        var block = new MigrationHideSpawnMenuConstructionGraphBlock
+        {
+            StartLineIndex = startLineIndex,
+            EndLineIndexExclusive = endLineExclusive,
+            PrototypeIndent = prototypeIndent,
+        };
+
+        var fieldIndent = FindFieldIndent(lines, startLineIndex, endLineExclusive, prototypeIndent);
+        block.FieldIndent = fieldIndent;
+
+        if (fieldIndent < 0)
+            return block;
+
+        for (var i = startLineIndex + 1; i < endLineExclusive; i++)
+        {
+            if (TryParseFieldValue(lines[i], fieldIndent, IdField, out var id))
+            {
+                block.HasId = !string.IsNullOrWhiteSpace(id);
+                block.Id = id;
+                block.IdLineIndex = i;
+                continue;
+            }
+
+            if (TryParseFieldHeader(lines[i], fieldIndent, GraphField, out _))
+            {
+                block.GraphLineIndex = i;
+                ParseConstructionGraphNodes(lines, i, endLineExclusive, fieldIndent, block);
+            }
+        }
+
+        return block;
+    }
+
+    private static void ParseConstructionGraphNodes(
+        List<string> lines,
+        int graphLineIndex,
+        int endLineExclusive,
+        int fieldIndent,
+        MigrationHideSpawnMenuConstructionGraphBlock block)
+    {
+        var nodeEntries = new List<GraphNodeEntry>();
+
+        for (var i = graphLineIndex + 1; i < endLineExclusive; i++)
+        {
+            var line = lines[i];
+            if (string.IsNullOrWhiteSpace(line))
+                continue;
+
+            var indent = CountIndent(line);
+            var trimmed = line.TrimStart();
+
+            if (trimmed.StartsWith('#'))
+                continue;
+
+            if (indent < fieldIndent)
+                break;
+
+            if (indent == fieldIndent && !trimmed.StartsWith('-'))
+                break;
+
+            if (!TryParseListItemFieldValue(line, fieldIndent, NodeField, out var nodeIndent, out var nodeId))
+                continue;
+
+            if (string.IsNullOrWhiteSpace(nodeId))
+                continue;
+
+            nodeEntries.Add(new GraphNodeEntry(i, nodeIndent, nodeId));
+        }
+
+        for (var i = 0; i < nodeEntries.Count; i++)
+        {
+            var nodeEntry = nodeEntries[i];
+            var nodeEndExclusive = i + 1 < nodeEntries.Count ? nodeEntries[i + 1].LineIndex : endLineExclusive;
+            var nodeFieldIndent = FindFieldIndent(lines, nodeEntry.LineIndex, nodeEndExclusive, nodeEntry.Indent);
+
+            if (nodeFieldIndent < 0)
+                continue;
+
+            for (var lineIndex = nodeEntry.LineIndex + 1; lineIndex < nodeEndExclusive; lineIndex++)
+            {
+                if (!TryParseFieldValue(lines[lineIndex], nodeFieldIndent, EntityField, out var entityId))
+                    continue;
+
+                if (!IsStaticEntityReference(entityId))
+                    break;
+
+                block.NodeEntities[nodeEntry.NodeId] = entityId;
+                break;
+            }
+        }
     }
 
     private static void ParseCategories(
@@ -232,6 +406,18 @@ internal static class MigrationHideSpawnMenuPrototypeParser
     {
         value = string.Empty;
 
+        if (!TryParseFieldHeader(line, fieldIndent, fieldName, out var remainder))
+            return false;
+
+        value = StripInlineComment(remainder).Trim();
+        value = TrimQuotes(value);
+        return true;
+    }
+
+    private static bool TryParseFieldHeader(string line, int fieldIndent, string fieldName, out string remainder)
+    {
+        remainder = string.Empty;
+
         if (string.IsNullOrWhiteSpace(line))
             return false;
 
@@ -249,31 +435,49 @@ internal static class MigrationHideSpawnMenuPrototypeParser
         if (trimmed.Length <= fieldName.Length || trimmed[fieldName.Length] != ':')
             return false;
 
+        remainder = trimmed.Substring(fieldName.Length + 1).Trim();
+        return true;
+    }
+
+    private static bool TryParseListItemFieldValue(
+        string line,
+        int parentIndent,
+        string fieldName,
+        out int indent,
+        out string value)
+    {
+        indent = 0;
+        value = string.Empty;
+
+        if (string.IsNullOrWhiteSpace(line))
+            return false;
+
+        indent = CountIndent(line);
+        if (indent < parentIndent)
+            return false;
+
+        var trimmed = line.TrimStart();
+        if (!trimmed.StartsWith('-'))
+            return false;
+
+        trimmed = trimmed.Substring(1).TrimStart();
+        if (!trimmed.StartsWith(fieldName, StringComparison.Ordinal))
+            return false;
+
+        if (trimmed.Length <= fieldName.Length || trimmed[fieldName.Length] != ':')
+            return false;
+
         value = StripInlineComment(trimmed.Substring(fieldName.Length + 1)).Trim();
         value = TrimQuotes(value);
         return true;
     }
 
-    private static bool TryParseCategoriesField(string line, int fieldIndent, out string remainder)
+    private static bool IsStaticEntityReference(string value)
     {
-        remainder = string.Empty;
-
-        if (string.IsNullOrWhiteSpace(line))
+        if (string.IsNullOrWhiteSpace(value))
             return false;
 
-        var indent = CountIndent(line);
-        if (indent != fieldIndent)
-            return false;
-
-        var trimmed = line.TrimStart();
-        if (!trimmed.StartsWith(CategoriesField, StringComparison.Ordinal))
-            return false;
-
-        if (trimmed.Length <= CategoriesField.Length || trimmed[CategoriesField.Length] != ':')
-            return false;
-
-        remainder = trimmed.Substring(CategoriesField.Length + 1).Trim();
-        return true;
+        return !value.StartsWith("!type:", StringComparison.Ordinal);
     }
 
     private static int CountIndent(string line)
@@ -312,5 +516,12 @@ internal static class MigrationHideSpawnMenuPrototypeParser
         public int LineIndex { get; } = LineIndex;
         public int Indent { get; } = Indent;
         public string PrototypeType { get; } = PrototypeType;
+    }
+
+    private readonly record struct GraphNodeEntry(int LineIndex, int Indent, string NodeId)
+    {
+        public int LineIndex { get; } = LineIndex;
+        public int Indent { get; } = Indent;
+        public string NodeId { get; } = NodeId;
     }
 }
