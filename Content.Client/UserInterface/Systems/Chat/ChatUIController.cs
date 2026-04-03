@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using Content.Client._Scp.Audio.UIAudio;
 using Content.Client._Scp.Stylesheets.Palette;
 using Content.Client.Administration.Managers;
 using Content.Client.Chat;
@@ -73,6 +74,10 @@ public sealed partial class ChatUIController : UIController
     [UISystemDependency] private readonly TransformSystem? _transform = default;
     [UISystemDependency] private readonly MindSystem? _mindSystem = default!;
     [UISystemDependency] private readonly RoleCodewordSystem? _roleCodewordSystem = default!;
+
+    // Fire added start
+    private TypingSoundUIController? _typingSound;
+    // Fire added end
 
     private static readonly ProtoId<ColorPalettePrototype> ChatNamePalette = "ChatNames";
     private string[] _chatNameColors = default!;
@@ -859,6 +864,11 @@ public sealed partial class ChatUIController : UIController
             box.AddLine(locWarning, Color.FromHex("#e1e1e1")); // Fire
             return;
         }
+
+        // Fire added start
+        _typingSound ??= UIManager.GetUIController<TypingSoundUIController>();
+        _typingSound?.PlayGameChatSubmit(box.ChatInput.Input);
+        // Fire added end
 
         if (prefixChannel != ChatSelectChannel.None)
             channel = prefixChannel;
