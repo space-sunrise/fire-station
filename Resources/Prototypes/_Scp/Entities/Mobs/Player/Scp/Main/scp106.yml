@@ -81,22 +81,11 @@
   - type: FootstepModifier
     footstepSoundCollection:
       collection: FootstepScp106
-  - type: RangedDamageSound
-    soundGroups:
-      Brute:
-        collection:
-          HurtScp106
-      Burn:
-        collection:
-          HurtScp106
-  - type: MeleeSound
-    soundGroups:
-      Brute:
-        collection:
-          HurtScp106
-      Burn:
-        collection:
-          HurtScp106
+  - type: AnyDamageSound
+    sound:
+      collection: HurtScp106
+      params:
+        maxDistance: 8
   - type: KillGlobalSound
     sound:
       collection: DistanceKillScp106
