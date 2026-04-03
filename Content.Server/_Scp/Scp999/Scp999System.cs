@@ -36,9 +36,6 @@ public sealed class Scp999System : SharedScp999System
 
     private const string WallFixtureId = "fix2";
 
-    private readonly SoundSpecifier _wallSound = new SoundCollectionSpecifier("WallTransformScp999");
-    private readonly SoundSpecifier _sleepSound = new SoundPathSpecifier("/Audio/_Scp/Scp999/sleep.ogg");
-
     public override void Initialize()
     {
         base.Initialize();
@@ -113,7 +110,7 @@ public sealed class Scp999System : SharedScp999System
                 EnsureComp<NoRotateOnInteractComponent>(ent);
                 EnsureComp<NoRotateOnMoveComponent>(ent);
 
-                _audio.PlayPvs(_wallSound, ent);
+                _audio.PlayPvs(ent.Comp.WallSound, ent);
 
                 var toWallChangedEvent = new Scp999ChangedStateEvent(Scp999States.Wall);
                 RaiseLocalEvent(ent, toWallChangedEvent);
@@ -188,7 +185,7 @@ public sealed class Scp999System : SharedScp999System
                 EnsureComp<NoRotateOnInteractComponent>(ent);
                 EnsureComp<NoRotateOnMoveComponent>(ent);
 
-                _audio.PlayPvs(_sleepSound, ent);
+                _audio.PlayPvs(ent.Comp.SleepSound, ent);
 
                 var toRestChangedEvent = new Scp999ChangedStateEvent(Scp999States.Rest);
                 RaiseLocalEvent(ent, toRestChangedEvent);
@@ -234,7 +231,7 @@ public sealed class Scp999System : SharedScp999System
 
     private void OnChangeStateAttempt(Entity<Scp999Component> ent, ref Scp999ChangeStateAttemptEvent args)
     {
-        if (_container.IsEntityInContainer(ent))
+        if (_container.IsEntityInContainer(ent) && args.TargetState == Scp999States.Wall)
             args.Cancel();
 
         if (HasComp<BeingDisposedComponent>(ent))
@@ -247,7 +244,7 @@ public sealed class Scp999System : SharedScp999System
             _popup.PopupEntity(Loc.GetString("scp-999-change-state-cancelled"), ent, ent);
     }
 
-    private void OnChangedState(Entity<Scp999Component> ent, ref Scp999ChangedStateEvent _)
+    private void OnChangedState(Entity<Scp999Component> ent, ref Scp999ChangedStateEvent args)
     {
         // Чтобы в момент превращения прекращать тащить и быть таскаемым.
 

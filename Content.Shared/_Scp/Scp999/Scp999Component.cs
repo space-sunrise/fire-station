@@ -16,14 +16,20 @@ public sealed partial class Scp999Component : Component
     [DataField]
     public Dictionary<Scp999States, string> States = new();
 
+    [DataField]
+    public SoundSpecifier? WallSound = new SoundCollectionSpecifier("WallTransformScp999");
+
+    [DataField]
+    public SoundSpecifier? SleepSound = new SoundPathSpecifier("/Audio/_Scp/Scp999/sleep.ogg");
+
     #endregion
 
     #region Feeding
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public float CreateJellyChance = 0.2f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public EntProtoId Scp999Jelly = "FoodJellyScp999";
 
     [DataField]
