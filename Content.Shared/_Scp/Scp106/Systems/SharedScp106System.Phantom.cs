@@ -95,8 +95,6 @@ public abstract partial class SharedScp106System
             _physics.SetCollisionLayer(ent, id, fixture, (int)CollisionGroup.MobLayer);
         }
 
-        _bunkerMarker.ReapplyMaskIfInSensorZone(ent);
-
         args.Handled = true;
     }
 

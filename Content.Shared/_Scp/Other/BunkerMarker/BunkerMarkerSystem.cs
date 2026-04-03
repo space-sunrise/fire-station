@@ -5,8 +5,8 @@ using Content.Shared.Doors;
 using Content.Shared.Doors.Components;
 using Content.Shared.Physics;
 using Content.Shared.Prying.Components;
-using Robust.Shared.Map;
 using Robust.Shared.Physics;
+using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Collision.Shapes;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
@@ -17,13 +17,13 @@ public sealed class BunkerMarkerSystem : EntitySystem
 {
     [Dependency] private readonly FixtureSystem _fixture = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     private EntityQuery<FixturesComponent> _fixturesQuery;
     private EntityQuery<Scp106PhantomComponent> _phantomQuery;
     private EntityQuery<Scp106Component> _scp106Query;
     private EntityQuery<ActiveScp096WithoutFaceComponent> _scp096Query;
     private EntityQuery<DoorComponent> _doorQuery;
+    private EntityQuery<PhysicsComponent> _physicsQuery;
 
     public override void Initialize()
     {
@@ -34,6 +34,7 @@ public sealed class BunkerMarkerSystem : EntitySystem
         _scp106Query = GetEntityQuery<Scp106Component>();
         _scp096Query = GetEntityQuery<ActiveScp096WithoutFaceComponent>();
         _doorQuery = GetEntityQuery<DoorComponent>();
+        _physicsQuery = GetEntityQuery<PhysicsComponent>();
 
         SubscribeLocalEvent<BunkerMarkerComponent, BeforePryEvent>(OnPryingBunkerDoor);
         SubscribeLocalEvent<BunkerMarkerComponent, MapInitEvent>(OnBunkerMarkerInit);
@@ -43,37 +44,14 @@ public sealed class BunkerMarkerSystem : EntitySystem
         SubscribeLocalEvent<BunkerMarkerComponent, PreventCollideEvent> (OnPreventCollide);
     }
 
-    public void ReapplyMaskIfInSensorZone(EntityUid uid)
-    {
-        if (!_fixturesQuery.TryGetComponent(uid, out var fixtures))
-            return;
-
-        var coordinates = Transform(uid).Coordinates;
-        var query = EntityQueryEnumerator<BunkerMarkerComponent, TransformComponent>();
-
-        while (query.MoveNext(out _, out var marker, out var markerXform))
-        {
-            var markerCoords = new EntityCoordinates(markerXform.ParentUid, markerXform.LocalPosition);
-            if (!_transform.InRange(coordinates, markerCoords, marker.Radius))
-                continue;
-
-            if (_phantomQuery.HasComp(uid))
-                SetFixturesCollision(uid, fixtures, (int)(CollisionGroup.MobMask | CollisionGroup.GhostImpassable), (int)CollisionGroup.MobLayer);
-            else if (_scp106Query.HasComp(uid))
-                SetFixturesCollision(uid, fixtures, (int)CollisionGroup.MobMask, (int)CollisionGroup.MobLayer);
-
-            return;
-        }
-    }
-
     private void OnStartCollide(Entity<BunkerMarkerComponent> ent, ref StartCollideEvent args)
     {
-        if (args.OurFixtureId != BunkerMarkerComponent.BunkerSensorFixtureId)
+        if (args.OurFixtureId != ent.Comp.BunkerSensorFixtureId)
             return;
 
         var other = args.OtherEntity;
 
-        if (!_fixturesQuery.TryGetComponent(other, out var fixtures))
+        if (!_fixturesQuery.TryComp(other, out var fixtures))
             return;
 
         if (_phantomQuery.HasComp(other))
@@ -91,7 +69,7 @@ public sealed class BunkerMarkerSystem : EntitySystem
 
     private void OnEndCollide(Entity<BunkerMarkerComponent> ent, ref EndCollideEvent args)
     {
-        if (args.OurFixtureId != BunkerMarkerComponent.BunkerSensorFixtureId)
+        if (args.OurFixtureId != ent.Comp.BunkerSensorFixtureId)
             return;
 
         var other = args.OtherEntity;
@@ -123,51 +101,62 @@ public sealed class BunkerMarkerSystem : EntitySystem
 
     private void OnBunkerMarkerInit(Entity<BunkerMarkerComponent> ent, ref MapInitEvent args)
     {
-        // Hard blocker. Small radius
-        // Blocks the 106 phantom body from passing through when the door is closed
+        // Hard blocker. Full-tile square to match the bunker wall marker footprint.
+        // Blocks SCP-106 and its phantom while PreventCollide lets everyone else through.
+        var blockShape = new PolygonShape();
+        blockShape.SetAsBox(
+            ent.Comp.BunkerBlockFixtureHalfExtent,
+            ent.Comp.BunkerBlockFixtureHalfExtent);
+
         _fixture.TryCreateFixture(
             ent,
-            shape: new PhysShapeCircle(BunkerMarkerComponent.BunkerBlockFixtureRadius),
-            BunkerMarkerComponent.BunkerBlockFixtureId,
+            shape: blockShape,
+            ent.Comp.BunkerBlockFixtureId,
             hard: true,
-            collisionMask:  (int)CollisionGroup.GhostImpassable,
-            collisionLayer: (int)CollisionGroup.GhostImpassable);
+            collisionMask: ent.Comp.BunkerBlockCollision,
+            collisionLayer: ent.Comp.BunkerBlockCollision);
 
         // Sensor. Fires StartCollide/EndCollide.
         //
-        // Layer is GhostImpassable so the phantom can always "see" it regardless of
-        // which mask state it is in. This prevents spurious EndCollideEvent when we change the phantom's mask on StartCollide
+        // Mask includes MobLayer so SCP-106 and the normal phantom state hit the sensor via their layer,
+        // while GhostImpassable keeps pass-through phantom / incorporeals detectable.
         //
-        // Mask is MobMask|GhostImpassable so the sensor sees both the normal phantom layer and the pass-through layer
         _fixture.TryCreateFixture(
             ent,
             shape: new PhysShapeCircle(ent.Comp.Radius),
-            BunkerMarkerComponent.BunkerSensorFixtureId,
+            ent.Comp.BunkerSensorFixtureId,
             hard: false,
-            collisionMask:  (int)(CollisionGroup.MobMask | CollisionGroup.GhostImpassable),
-            collisionLayer: (int)CollisionGroup.GhostImpassable);
+            collisionMask: ent.Comp.BunkerSensorCollisionMask,
+            collisionLayer: ent.Comp.BunkerSensorCollisionLayer);
 
-        if (_doorQuery.TryGetComponent(ent, out var door))
-            SetBunkerFixtureCollision(ent.Owner, door.State != DoorState.Open);
+        if (_doorQuery.TryComp(ent, out var door))
+            SetBunkerFixtureCollision(ent, door.State != DoorState.Open);
+
+        if (_fixturesQuery.TryComp(ent, out var fixtures) && _physicsQuery.TryComp(ent, out var physics))
+        {
+            // Runtime-only fixtures leave the body non-collidable after prototype init if the
+            // Fixtures component starts empty. Re-enable collision once our fixtures exist.
+            _physics.SetCanCollide(ent, true, manager: fixtures, body: physics);
+        }
     }
 
     private void OnDoorStateChanged(Entity<BunkerMarkerComponent> ent, ref DoorStateChangedEvent args)
     {
-        SetBunkerFixtureCollision(ent.Owner, args.State != DoorState.Open);
+        SetBunkerFixtureCollision(ent, args.State != DoorState.Open);
     }
 
-    private void SetBunkerFixtureCollision(EntityUid uid, bool canCollide)
+    private void SetBunkerFixtureCollision(Entity<BunkerMarkerComponent> ent, bool canCollide)
     {
-        if (!_fixturesQuery.TryGetComponent(uid, out var fixtures))
+        if (!_fixturesQuery.TryComp(ent, out var fixtures))
             return;
 
-        if (!fixtures.Fixtures.TryGetValue(BunkerMarkerComponent.BunkerBlockFixtureId, out var fixture))
+        if (!fixtures.Fixtures.TryGetValue(ent.Comp.BunkerBlockFixtureId, out var fixture))
             return;
 
-        var value = canCollide ? (int)CollisionGroup.GhostImpassable : 0;
+        var value = canCollide ? ent.Comp.BunkerBlockCollision : 0;
 
-        _physics.SetCollisionMask(uid, BunkerMarkerComponent.BunkerBlockFixtureId, fixture, value);
-        _physics.SetCollisionLayer(uid, BunkerMarkerComponent.BunkerBlockFixtureId, fixture, value);
+        _physics.SetCollisionMask(ent, ent.Comp.BunkerBlockFixtureId, fixture, value);
+        _physics.SetCollisionLayer(ent, ent.Comp.BunkerBlockFixtureId, fixture, value);
     }
 
     private void SetFixturesCollision(EntityUid uid, FixturesComponent fixtures, int mask, int layer)
@@ -198,7 +187,7 @@ public sealed class BunkerMarkerSystem : EntitySystem
         if (!_fixturesQuery.TryGetComponent(ent.Owner, out var fixtures))
             return;
 
-        if (!fixtures.Fixtures.TryGetValue(BunkerMarkerComponent.BunkerBlockFixtureId, out var bunkerBlockFixture))
+        if (!fixtures.Fixtures.TryGetValue(ent.Comp.BunkerBlockFixtureId, out var bunkerBlockFixture))
             return;
 
         if (!ReferenceEquals(args.OurFixture, bunkerBlockFixture))
