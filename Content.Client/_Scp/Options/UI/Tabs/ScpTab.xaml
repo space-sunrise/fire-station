@@ -18,6 +18,12 @@
                 <ui:OptionSlider Name="GrainStrengthSlider"
                                  Title="{Loc ui-options-grain-strength}"
                                  ToolTip="{Loc ui-options-grain-strength-tooltip}"/>
+                <CheckBox Name="SinCityToggleOverlayCheckBox"
+                          Text="{Loc ui-options-sin-city-toggle-overlay}"
+                          ToolTip="{Loc ui-options-sin-city-toggle-overlay-tooltip}"/>
+                <ui:OptionSlider Name="SinCityStrengthSlider"
+                                 Title="{Loc ui-options-sin-city-strength}"
+                                 ToolTip="{Loc ui-options-sin-city-strength-tooltip}"/>
 
                 <!-- Поле зрения -->
                 <CheckBox Name="FieldOfViewBlurEnabled"

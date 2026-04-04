@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Scp.Scp096.Main.Components;
+using Content.Shared._Scp.Shaders.SinCity;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Prying.Components;
@@ -34,7 +35,7 @@ public abstract partial class SharedScp096System
         _audio.PlayPredicted(ent.Comp.StartSound, ent, ent);
         UpdateAudio(ent.Owner, ent.Comp.AmbientSound);
 
-        RemComp<Scp096ShaderStaticComponent>(ent);
+        RemComp<SinCityOverlayComponent>(ent);
         EnsureComp<Scp096ShaderWithoutFaceComponent>(ent);
 
         RefreshSpeedModifiers(ent.Owner);
@@ -82,7 +83,7 @@ public abstract partial class SharedScp096System
         _audio.PlayPredicted(ent.Comp.ShutdownSound, ent, ent);
         UpdateAudio(ent.Owner);
 
-        EnsureComp<Scp096ShaderStaticComponent>(ent);
+        EnsureComp<SinCityOverlayComponent>(ent);
         RemComp<Scp096ShaderWithoutFaceComponent>(ent);
 
         TryToggleTearsReagent(ent.Owner, true);

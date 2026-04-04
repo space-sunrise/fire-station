@@ -66,7 +66,6 @@
     cryOutDamage:
       types:
         Structural: 850
-  - type: Scp096ShaderStatic
   - type: ScpRestriction
     canBeDisarmed: true
     canTakeStaminaDamage: true

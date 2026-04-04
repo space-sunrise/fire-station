@@ -18,6 +18,16 @@ ui-options-grain-strength-tooltip =
     Determines the intensity of the grain shader effects.
     The higher the value, the more "noise" there will be on the screen.
 
+ui-options-sin-city-toggle-overlay = Use Sin City shader
+ui-options-sin-city-toggle-overlay-tooltip =
+    Fully enables or disables the Sin City shader.
+    Disable it if the effect gets in the way or you want a cleaner screen.
+
+ui-options-sin-city-strength = Sin City shader strength
+ui-options-sin-city-strength-tooltip =
+    Adjusts the intensity of the Sin City shader.
+    A value of 100 keeps the current default look of the effect.
+
 ui-options-field-of-view-blur-enabled = Field of view blur
 ui-options-field-of-view-blur-enabled-tooltip =
     Blurs the area outside the field of view.

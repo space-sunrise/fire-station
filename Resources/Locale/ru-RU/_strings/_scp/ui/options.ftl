@@ -18,6 +18,16 @@ ui-options-grain-strength-tooltip =
     Определяет интенсивность эффектов шейдера зернистости.
     Чем больше, тем больше будет "шуршания" на экране
 
+ui-options-sin-city-toggle-overlay = Использовать шейдер Sin City
+ui-options-sin-city-toggle-overlay-tooltip =
+    Полностью включает или отключает шейдер Sin City.
+    Отключите, если эффект мешает или нужен максимально чистый экран.
+
+ui-options-sin-city-strength = Сила шейдера Sin City
+ui-options-sin-city-strength-tooltip =
+    Регулирует интенсивность шейдера Sin City.
+    Значение 100 сохраняет текущий стандартный вид эффекта.
+
 ui-options-field-of-view-blur-enabled = Размытие поля зрения
 ui-options-field-of-view-blur-enabled-tooltip =
     Размывает область за пределами поля зрения.

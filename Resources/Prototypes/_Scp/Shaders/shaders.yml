@@ -62,6 +62,7 @@
   params:
     abber: 0.0
     strength: 0.6
+    settings_scale: 1.0
 
 - type: shader
   id: Scp096WithoutFace
@@ -70,3 +71,4 @@
   params:
     abber: 0.0015
     strength: 0.85
+    settings_scale: 1.0

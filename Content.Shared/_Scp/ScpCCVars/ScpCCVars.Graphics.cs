@@ -22,6 +22,18 @@ public sealed partial class ScpCCVars
         CVarDef.Create("shader.grain_strength", 70, CVar.CLIENTONLY | CVar.ARCHIVE);
 
     /// <summary>
+    /// Выключен ли шейдер SinCity?
+    /// </summary>
+    public static readonly CVarDef<bool> SinCityToggleOverlay =
+        CVarDef.Create("shader.sin_city_toggle_overlay", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Сила шейдера SinCity
+    /// </summary>
+    public static readonly CVarDef<int> SinCityStrength =
+        CVarDef.Create("shader.sin_city_strength", 100, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
     /// Размер текстуры размытия у шейдера поля зрения
     /// </summary>
     public static readonly CVarDef<float> FieldOfViewBlurScale =
