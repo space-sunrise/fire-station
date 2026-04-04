@@ -1,4 +1,5 @@
 ﻿using Content.Server._Sunrise.VentCraw;
+using Content.Server.Actions;
 using Content.Server.Disposal.Unit;
 using Content.Server.Popups;
 using Content.Shared._Scp.Scp999;
@@ -31,6 +32,7 @@ public sealed partial class Scp999System : SharedScp999System
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly ActionBlockerSystem _action = default!;
+    [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private const string WallFixtureId = "fix2";
@@ -205,6 +207,14 @@ public sealed partial class Scp999System : SharedScp999System
 
         FromWallToDefault(ent);
         ent.Comp.CurrentTotalDamage = FixedPoint2.Zero;
+
+        foreach (var action in _actions.GetActions(ent))
+        {
+            if (!action.Comp.UseDelay.HasValue)
+                continue;
+
+            _actions.SetIfBiggerCooldown(action.AsNullable(), action.Comp.UseDelay.Value * 3f);
+        }
     }
 
     private void OnEnterVent(Entity<Scp999Component> ent, ref VentCrawlAttemptEvent args)
