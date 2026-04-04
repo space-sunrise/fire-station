@@ -45,7 +45,6 @@
     keysIn: [ EndEat ]
     container: [ storagebase ]
   - type: Storage
-#   quickInsertCooldown: 5.0 не работает ало
     showVerb: false
     storageInsertSound: /Audio/_Sunrise/FleshCult/flesh_cultist_mutation.ogg
     maxItemSize: Large
