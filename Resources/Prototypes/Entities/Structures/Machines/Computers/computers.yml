@@ -1406,6 +1406,7 @@
 
 - type: entity
   id: ComputerSalvageExpedition
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerAiAccess
   name: salvage expeditions computer
   description: Used to accept salvage missions, if you're tough enough.

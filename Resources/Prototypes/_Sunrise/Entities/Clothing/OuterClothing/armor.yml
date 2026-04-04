@@ -12,6 +12,7 @@
 - type: entity
   parent: ClothingOuterArmorBasic
   id: ClothingOuterArmorBlueShield
+  categories: [ HideSpawnMenu ] # Fire edit
   name: blue shield's vest.
   description: Blue and rugged.
   components:

@@ -65,6 +65,7 @@
 
 - type: entity
   id: MagazineMagnum
+  categories: [ HideSpawnMenu ] # Fire edit
   name: pistol magazine (.45 magnum)
   parent: BaseMagazineMagnum
   description: 7-round single stack pistol magazine. Intended to hold general-purpose kinetic ammunition.

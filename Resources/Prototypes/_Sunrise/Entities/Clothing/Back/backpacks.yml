@@ -43,6 +43,7 @@
 - type: entity
   parent: ClothingBackpack
   id: ClothingBackpackBlueShield
+  categories: [ HideSpawnMenu ] # Fire edit
   name: blue shield's backpack
   description: Superior.
   components:

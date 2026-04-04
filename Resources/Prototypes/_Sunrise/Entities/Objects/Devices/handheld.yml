@@ -376,6 +376,7 @@
 
 - type: entity
   id: HandheldCamera
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseHandheldCamera
   suffix: HandHeld
 

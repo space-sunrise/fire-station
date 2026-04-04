@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: ClothingEyesBase
   id: ClothingEyesSalesman
   name: colored glasses
@@ -23,6 +23,7 @@
 - type: entity
   parent: [ClothingEyesBase, ShowSecurityIcons, BaseSecurityContraband]
   id: ClothingEyesGlassesBlueShield
+  categories: [ HideSpawnMenu ] # Fire edit
   name: blueshield's glasses
   description: The innovative blue lenses hide your eyes from light flashes and have a built-in visor.
   components:

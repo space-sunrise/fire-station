@@ -87,6 +87,7 @@
 
 - type: entity
   id: OverlordCircuitBoard
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseSiliconLawboard
   name: law board (Overlord)
   description: An electronics board containing the Overlord lawset.
@@ -114,6 +115,7 @@
 
 - type: entity
   id: AntimovCircuitBoard
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: [BaseSiliconLawboard, BaseSyndicateContraband]
   name: law board (Antimov)
   description: An electronics board containing the Antimov lawset.

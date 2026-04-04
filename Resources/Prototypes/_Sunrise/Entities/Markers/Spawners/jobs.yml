@@ -370,6 +370,7 @@
 
 - type: entity
   id: SpawnPointMailCarrier
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: SpawnPointJobBase
   name: mailcarrier
   components:

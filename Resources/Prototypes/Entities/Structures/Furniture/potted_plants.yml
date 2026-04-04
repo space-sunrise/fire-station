@@ -76,6 +76,7 @@
 
 - type: entity
   id: PottedPlant3
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: PottedPlantBase
   components:
   - type: Sprite

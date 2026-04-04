@@ -23,6 +23,7 @@
 - type: entity
   parent: ClothingBackpackDuffel
   id: ClothingBackpackDuffelBlueShield
+  categories: [ HideSpawnMenu ] # Fire edit
   name: blueshield's lightweight duffel bag
   description: On style.
   components:

@@ -1,6 +1,7 @@
 - type: entity
   parent: BaseFigurine
   id: ToyFigurineBlueshield
+  categories: [ HideSpawnMenu ] # Fire edit
   name: blue shield figure
   description: A figure depicting Blue Shield, ready to protect the command staff at all costs.
   components:
@@ -13,6 +14,7 @@
 - type: entity
   parent: BaseFigurine
   id: ToyFigurineEnforcementofficer
+  categories: [ HideSpawnMenu ] # Fire edit
   name: enforcement officer figure
   description: A figure depicting Enforcement Officer, ready to protect the lawyer at all costs.
   components:
@@ -49,6 +51,7 @@
 - type: entity
   parent: BaseFigurine
   id: ToyFigurineDeathsquad
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Deathsquad figure
   description: A figurine depicting.... Who's that?
   components:
@@ -61,6 +64,7 @@
 - type: entity
   parent: BaseFigurine
   id: ToyFigurineErt
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Ert leader figure
   description: A figurine depicting the station's defenders from..... I don't know, just in case?
   components:

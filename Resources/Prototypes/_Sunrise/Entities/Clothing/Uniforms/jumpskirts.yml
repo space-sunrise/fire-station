@@ -57,6 +57,7 @@
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtBlueShield
+  categories: [ HideSpawnMenu ] # Fire edit
   name: blueshield's jumpskirt
   description: Baby...
   components:

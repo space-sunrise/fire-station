@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: ClothingShoesBootsJack
   id: ClothingShoesBootsJackSec
   components:
@@ -10,6 +10,7 @@
 - type: entity
   parent: ClothingShoesMilitaryBase
   id: ClothingShoesBootsBlueShield
+  categories: [ HideSpawnMenu ] # Fire edit
   name: blueshield's boots
   description: Blue or blue, that is the question.
   components:

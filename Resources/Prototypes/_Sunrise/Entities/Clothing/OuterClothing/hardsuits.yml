@@ -14,6 +14,7 @@
 - type: entity
   parent: ClothingOuterHardsuitBase
   id: ClothingOuterHardsuitBlueShield
+  categories: [ HideSpawnMenu ] # Fire edit
   name: blue shield hardsuit
   description: Tough and reliable, just like its owner.
   components:
@@ -73,6 +74,7 @@
 - type: entity
   parent: ClothingOuterHardsuitBrigmedicSunrise
   id: ClothingOuterHardsuitPilot
+  categories: [ HideSpawnMenu ] # Fire edit
   name: security pilot's hardsuit
   description: A lightweight version of the Security Service spacesuit, it provides good mobility but less protection.
   components:

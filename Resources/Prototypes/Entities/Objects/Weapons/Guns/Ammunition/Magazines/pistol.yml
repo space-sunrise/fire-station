@@ -66,6 +66,7 @@
 
 - type: entity
   id: MagazinePistolHighCapacityRubber
+  categories: [ HideSpawnMenu ] # Fire edit
   name: machine pistol magazine (.35 auto rubber)
   parent: BaseMagazinePistolHighCapacity
   components:

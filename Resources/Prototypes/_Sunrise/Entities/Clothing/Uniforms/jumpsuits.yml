@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitSuperstarCop
   name: superstar cop uniform
@@ -78,6 +78,7 @@
 - type: entity
   parent: ClothingUniformBase
   id: ClothingUniformJumpsuitBlueShield
+  categories: [ HideSpawnMenu ] # Fire edit
   name: blueshield's uniform
   description: On style.
   components:

@@ -157,6 +157,7 @@
 - type: entity
   parent: Holoprojector
   id: HoloprojectorSecurity
+  categories: [ HideSpawnMenu ] # Fire edit
   name: holobarrier projector
   description: Creates a solid but fragile holographic barrier.
   components:

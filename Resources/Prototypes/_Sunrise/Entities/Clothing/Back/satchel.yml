@@ -23,6 +23,7 @@
 - type: entity
   parent: ClothingBackpackSatchel
   id: ClothingBackpackSatchelBlueShield
+  categories: [ HideSpawnMenu ] # Fire edit
   name: blueshield's satchel
   description: On style.
   components:
