@@ -37,11 +37,11 @@ public sealed class AudioEffectsEntryPointSystem : EntitySystem
     /// </summary>
     private bool IsAllowedToHear(Entity<AudioComponent> ent, EntityUid player)
     {
-        if (ent.Comp.IncludedEntities == null || ent.Comp.IncludedEntities.Count == 0)
-            return true;
-
         if (ent.Comp.ExcludedEntity == player)
             return false;
+
+        if (ent.Comp.IncludedEntities == null || ent.Comp.IncludedEntities.Count == 0)
+            return true;
 
         foreach (var someEntity in ent.Comp.IncludedEntities)
         {

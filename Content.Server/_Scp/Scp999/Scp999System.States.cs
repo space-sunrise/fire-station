@@ -21,10 +21,10 @@ public sealed partial class Scp999System
         if (fix2 == null)
             return;
 
-        var toWallAttemptEvent = new Scp999ChangeStateAttemptEvent(Scp999States.Wall);
-        RaiseLocalEvent(ent, toWallAttemptEvent);
+        var attemptEvent = new Scp999ChangeStateAttemptEvent(Scp999States.Wall);
+        RaiseLocalEvent(ent, attemptEvent);
 
-        if (toWallAttemptEvent.Cancelled)
+        if (attemptEvent.Cancelled)
             return;
 
         ent.Comp.CurrentState = Scp999States.Wall;
@@ -62,10 +62,10 @@ public sealed partial class Scp999System
         if (fix2 == null)
             return;
 
-        var toWallAttemptEvent = new Scp999ChangeStateAttemptEvent(Scp999States.Wall);
-        RaiseLocalEvent(ent, toWallAttemptEvent);
+        var attemptEvent = new Scp999ChangeStateAttemptEvent(Scp999States.Default);
+        RaiseLocalEvent(ent, attemptEvent);
 
-        if (toWallAttemptEvent.Cancelled)
+        if (attemptEvent.Cancelled)
             return;
 
         ent.Comp.CurrentState = Scp999States.Default;
