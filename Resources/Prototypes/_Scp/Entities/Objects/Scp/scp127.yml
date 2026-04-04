@@ -31,8 +31,8 @@
     showExamineText: false
   - type: Wieldable
   - type: GunWieldBonus
-    minAngle: -5
-    maxAngle: -18
+    minAngle: -18
+    maxAngle: -5
   - type: AmmoCounter
   - type: Gun
     minAngle: 2
