@@ -352,6 +352,7 @@
 
 - type: entity
   id: LockerMiningSpecialist
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: LockerBaseSecure
   suffix: Empty
   name: mining specialist's equipment
@@ -373,6 +374,7 @@
 
 - type: entity
   id: LockerMiningSpecialistFilled
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: LockerMiningSpecialist
   suffix: Filled, Hardsuit
   name: mining specialist's equipment
@@ -431,6 +433,7 @@
 
 - type: entity
   id: LockerRepresentativeFilled
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: LockerRepresentative
   suffix: Filled
   components:
