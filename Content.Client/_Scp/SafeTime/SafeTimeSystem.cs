@@ -57,7 +57,7 @@ public sealed class SafeTimeSystem : SharedSafeTimeSystem
         if (!_safeTimeQuery.TryComp(_player.LocalEntity, out var safeTime))
             return;
 
-        _widget.ProgressBar.UpdateSafeTimeInfo(safeTime.TimeEnd);
+        _widget.ProgressBar.UpdateSafeTimeInfo(safeTime.TimeEnd, safeTime.Time);
         _widget.Visible = true;
     }
 
