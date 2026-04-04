@@ -1006,6 +1006,8 @@ ClosetWallWardrobeAtmosphericsFilled: null
 WardrobeBotanist: ScpLockerBotanistPhytogeneticist
 WardrobeBotanistFilled: ScpLockerBotanistPhytogeneticistFilled
 
+CrateSyndicateSurplusBundleAgent: null
+
 PosterDyshi: PosterBreath
 PosterPeremen: PosterChanges
 PosterGok: PosterGoc
