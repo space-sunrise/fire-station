@@ -3,6 +3,7 @@ using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Watching.FOV;
+using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
@@ -17,15 +18,20 @@ public sealed partial class EyeWatchingSystem
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly FieldOfViewSystem _fov = default!;
 
+    private const float MinVisibilityRange = 2f;
+    private const float BlurryVisionRangeMultiplier = 2.5f;
+
     private EntityQuery<MobStateComponent> _mobStateQuery;
     private EntityQuery<InsideEntityStorageComponent> _insideStorageQuery;
     private EntityQuery<BlinkableComponent> _blinkableQuery;
+    private EntityQuery<BlurryVisionComponent> _blurryVisionQuery;
 
     private void InitializeApi()
     {
         _mobStateQuery = GetEntityQuery<MobStateComponent>();
         _insideStorageQuery = GetEntityQuery<InsideEntityStorageComponent>();
         _blinkableQuery = GetEntityQuery<BlinkableComponent>();
+        _blurryVisionQuery = GetEntityQuery<BlurryVisionComponent>();
     }
 
     /// <summary>
@@ -86,7 +92,7 @@ public sealed partial class EyeWatchingSystem
             return false;
 
         searchSet.Clear();
-        _lookup.GetEntitiesInRange(ent.Comp.Coordinates, rangeOverride ?? SeeRange, searchSet, flags);
+        _lookup.GetEntitiesInRange(ent.Comp.Coordinates, GetVisibilityRange(ent, rangeOverride), searchSet, flags);
 
         foreach (var target in searchSet)
         {
@@ -194,7 +200,7 @@ public sealed partial class EyeWatchingSystem
             return false;
 
         searchSet.Clear();
-        _lookup.GetEntitiesInRange(viewer.Comp.Coordinates, rangeOverride ?? SeeRange, searchSet, flags);
+        _lookup.GetEntitiesInRange(viewer.Comp.Coordinates, GetVisibilityRange(viewer, rangeOverride), searchSet, flags);
 
         foreach (var target in searchSet)
         {
@@ -223,6 +229,32 @@ public sealed partial class EyeWatchingSystem
     }
 
     /// <summary>
+    /// Получает фактический радиус обзора сущности с учетом эффектов, ухудшающих зрение.
+    /// </summary>
+    private float GetVisibilityRange(EntityUid viewer, float? rangeOverride = null)
+    {
+        if (rangeOverride.HasValue)
+            return rangeOverride.Value;
+
+        if (!_blurryVisionQuery.TryComp(viewer, out var blurry))
+            return SeeRange;
+
+        return Math.Clamp(SeeRange - blurry.Magnitude * BlurryVisionRangeMultiplier, MinVisibilityRange, SeeRange);
+    }
+
+    /// <summary>
+    /// Проверяет, находится ли цель в фактическом радиусе обзора смотрящего.
+    /// </summary>
+    private bool IsInVisibilityRange(EntityUid viewer, EntityUid target)
+    {
+        var viewerCoords = Transform(viewer).Coordinates;
+        var targetCoords = Transform(target).Coordinates;
+
+        return viewerCoords.TryDistance(EntityManager, targetCoords, out var distance) &&
+               distance <= GetVisibilityRange(viewer);
+    }
+
+    /// <summary>
     /// Проверка на то, может ли смотрящий видеть цель
     /// </summary>
     /// <param name="viewer">Смотрящий</param>
@@ -240,6 +272,9 @@ public sealed partial class EyeWatchingSystem
         float? fovOverride = null)
     {
         if (_mobState.IsIncapacitated(viewer))
+            return false;
+
+        if (!IsInVisibilityRange(viewer.Owner, target))
             return false;
 
         // Проверяем, видит ли смотрящий цель

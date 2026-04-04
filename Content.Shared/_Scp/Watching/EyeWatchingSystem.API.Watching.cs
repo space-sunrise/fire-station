@@ -31,7 +31,7 @@ public sealed partial class EyeWatchingSystem
         where T : IComponent
     {
         using var potentialTargets = HashSetPoolEntity<T>.Rent();
-        _lookup.GetEntitiesInRange(Transform(watcher).Coordinates, SeeRange, potentialTargets.Value, flags);
+        _lookup.GetEntitiesInRange(Transform(watcher).Coordinates, GetVisibilityRange(watcher), potentialTargets.Value, flags);
 
         return TryGetWatchingTargetsFrom(watcher,
             targets,
