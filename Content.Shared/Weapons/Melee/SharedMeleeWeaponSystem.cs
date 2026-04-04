@@ -661,6 +661,12 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                 continue;
             //Sunrise-end
 
+            // Fire edit start - filter invalid wide-swing targets before MeleeHitEvent
+            // so on-hit systems only process entities that can actually be attacked.
+            if (!Blocker.CanAttack(user, entity, (meleeUid, component)))
+                continue;
+            // Fire edit end
+
             targets.Add(entity);
         }
 
@@ -692,6 +698,8 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
         for (var i = targets.Count - 1; i >= 0; i--)
         {
             var entity = targets[i];
+
+            /* Fire edit start
             // We raise an attack attempt here as well,
             // primarily because this was an untargeted wideswing: if a subscriber to that event cared about
             // the potential target (such as for pacifism), they need to be made aware of the target here.
@@ -701,6 +709,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                 targets.RemoveAt(i);
                 continue;
             }
+            */
 
             var attackedEvent = new AttackedEvent(meleeUid, user, GetCoordinates(ev.Coordinates));
             RaiseLocalEvent(entity, attackedEvent);
@@ -733,11 +742,13 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
             }
         }
 
-        if (entities.Count != 0)
+        // Fire edit start - play hit audio only for actually valid targets.
+        if (targets.Count != 0)
         {
-            var target = entities.First();
+            var target = targets.First();
             _meleeSound.PlayHitSound(target, user, GetHighestDamageSound(appliedDamage, _protoManager), hitEvent.HitSoundOverride, component);
         }
+        // Fire edit end
 
         if (appliedDamage.GetTotal() > FixedPoint2.Zero)
         {
