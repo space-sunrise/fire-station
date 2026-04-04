@@ -3,6 +3,7 @@ using Content.Shared.Examine;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Item;
+using Content.Shared.Movement.Systems;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Speech;
 
@@ -20,47 +21,53 @@ public abstract class SharedScp999System : EntitySystem
         SubscribeLocalEvent<Scp999Component, BeingPulledAttemptEvent>(OnBeingPulledAttempt);
         SubscribeLocalEvent<Scp999Component, StartPullAttemptEvent>(OnStartPullAttempt);
         SubscribeLocalEvent<Scp999Component, BuckleAttemptEvent>(OnBuckleAttempt);
+        SubscribeLocalEvent<Scp999Component, SpriteMovementAttemptEvent>(OnSpriteMovementAttempt);
 
         SubscribeLocalEvent<Scp999Component, ExaminedEvent>(OnExamined);
-
     }
 
-    private static void OnCanSee(Entity<Scp999Component> entity, ref CanSeeAttemptEvent args)
+    private void OnCanSee(Entity<Scp999Component> entity, ref CanSeeAttemptEvent args)
     {
         if (entity.Comp.CurrentState == Scp999States.Rest)
             args.Cancel();
     }
 
-    private static void OnSpeakAttempt(Entity<Scp999Component> entity, ref SpeakAttemptEvent args)
+    private void OnSpeakAttempt(Entity<Scp999Component> entity, ref SpeakAttemptEvent args)
     {
         if (entity.Comp.CurrentState == Scp999States.Rest)
             args.Cancel();
     }
 
-    private static void OnPickupAttempt(Entity<Scp999Component> ent, ref GettingPickedUpAttemptEvent args)
+    private void OnPickupAttempt(Entity<Scp999Component> ent, ref GettingPickedUpAttemptEvent args)
     {
         if (ent.Comp.CurrentState == Scp999States.Wall)
             args.Cancel();
     }
 
-    private static void OnBeingPulledAttempt(Entity<Scp999Component> ent, ref BeingPulledAttemptEvent args)
+    private void OnBeingPulledAttempt(Entity<Scp999Component> ent, ref BeingPulledAttemptEvent args)
     {
         if (ent.Comp.CurrentState != Scp999States.Default)
             args.Cancel();
     }
 
-    private static void OnStartPullAttempt(Entity<Scp999Component> ent, ref StartPullAttemptEvent args)
+    private void OnStartPullAttempt(Entity<Scp999Component> ent, ref StartPullAttemptEvent args)
     {
         if (ent.Comp.CurrentState != Scp999States.Default)
             args.Cancel();
     }
 
-    private static void OnBuckleAttempt(Entity<Scp999Component> ent, ref BuckleAttemptEvent args)
+    private void OnBuckleAttempt(Entity<Scp999Component> ent, ref BuckleAttemptEvent args)
     {
         if (ent.Comp.CurrentState == Scp999States.Default)
             return;
 
         args.Cancelled = true;
+    }
+
+    private void OnSpriteMovementAttempt(Entity<Scp999Component> ent, ref SpriteMovementAttemptEvent args)
+    {
+        if (ent.Comp.CurrentState != Scp999States.Default)
+            args.Cancelled = true;
     }
 
     private void OnExamined(Entity<Scp999Component> entity, ref ExaminedEvent args)

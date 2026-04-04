@@ -1065,6 +1065,7 @@ WeaponEnergyTurretAI: WeaponEnergyTurretCSS
 
 WallSolid: ScpWallSolid
 WallReinforced: ScpWallReinforced
+WallRiveted: ScpWallReinforced
 Window: ScpWindow
 ReinforcedWindow: ScpReinforcedWindow
 PlasmaWindow: ScpPlasmaWindow
@@ -1289,6 +1290,7 @@ AirlockExternalGlassShuttleArrivals: ScpAirlockExitGlassShuttleLocked
 AirlockExternalGlassShuttleArrivalsLocked: ScpAirlockExitGlassShuttleLocked
 AirlockExternalGlassShuttleArrivalsLockedCentComm: ScpAirlockExitGlassShuttleLocked
 AirlockExternalGlassShuttleEscape: ScpAirlockExitGlassShuttleLocked
+AirlockExternalGlassSecurityShuttle: ScpAirlockExternalGlassSecurityShuttle
 HighSecCentralCommandLocked: ScpHighSecRegionalAdministrationLocked
 HighSecCommandLocked: ScpHighSecAdministrationLocked
 HighSecCaptainLocked: ScpHighSecDirectorLocked
@@ -2028,6 +2030,7 @@ ScpLockerBotanist: ScpLockerBotanistPhytogeneticist
 LockerBooze: ScpLockerBooze
 LockerSteel: ScpLockerPlasteel
 LockerSalvageSpecialist: ScpLockerLogisticsService
+LockerMiningSpecialist: ScpLockerLogisticsService
 LockerElectricalSupplies: ScpLockerElectricalSupplies
 LockerWeldingSupplies: ScpLockerWeldingSupplies
 LockerEngineer: ScpLockerGeneralTechnicalSpecialist
@@ -2111,6 +2114,8 @@ LockerParamedicFilled: ScpLockerMedicalSpecialistFilled
 LockerBrigmedicFilled: ScpLockerAmnesticologistFilled
 LockerHeavyContainmentZoneFieldMedicFilled: ScpLockerAmnesticologistFilled
 LockerScienceFilled: ScpLockerResearcherFilled
+LockerMiningSpecialistFilled: ScpLockerLogisticsService
+LockerRepresentativeFilled: ScpLockerEthicsCommittee
 
 # Заполненные шкафы
 ClosetBombFilled: ScpClosetBombFilled

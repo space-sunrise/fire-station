@@ -9,16 +9,7 @@
     bodyType: Static
     canCollide: true
   - type: Fixtures
-    fixtures:
-      scpBunkerWallBlock:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.4
-        hard: true
-        mask:
-        - GhostImpassable
-        layer:
-        - GhostImpassable
+    fixtures: {}
   - type: Sprite
     sprite: _Scp/Markers/roof.rsi
     layers:

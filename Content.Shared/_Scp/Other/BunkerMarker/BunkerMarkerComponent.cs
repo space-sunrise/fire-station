@@ -1,4 +1,5 @@
-﻿using Robust.Shared.GameStates;
+﻿using Content.Shared.Physics;
+using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Other.BunkerMarker;
 
@@ -8,7 +9,21 @@ public sealed partial class BunkerMarkerComponent : Component
     [DataField]
     public float Radius = 1.5f;
 
-    public const string BunkerBlockFixtureId  = "ScpBunkerBlock";
-    public const string BunkerSensorFixtureId = "ScpBunkerSensor";
-    public const float  BunkerBlockFixtureRadius = 0.4f;
+    [DataField]
+    public string BunkerBlockFixtureId  = "ScpBunkerBlock";
+
+    [DataField]
+    public string BunkerSensorFixtureId = "ScpBunkerSensor";
+
+    [DataField]
+    public float  BunkerBlockFixtureHalfExtent = 0.5f;
+
+    [DataField]
+    public int BunkerBlockCollision = (int)(CollisionGroup.MobMask | CollisionGroup.GhostImpassable);
+
+    [DataField]
+    public int BunkerSensorCollisionMask = (int)(CollisionGroup.MobLayer | CollisionGroup.GhostImpassable);
+
+    [DataField]
+    public int BunkerSensorCollisionLayer = (int)CollisionGroup.GhostImpassable;
 }

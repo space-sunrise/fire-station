@@ -1,16 +1,20 @@
-using Content.Shared.Interaction.Components;
 using Content.Shared.Movement.Components;
 using Content.Shared.Movement.Events;
 
 namespace Content.Shared.Movement.Systems;
 
-public abstract class SharedSpriteMovementSystem : EntitySystem
+// Fire edit start
+public abstract partial class SharedSpriteMovementSystem : EntitySystem
 {
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<SpriteMovementComponent, SpriteMoveEvent>(OnSpriteMoveInput);
+
+        // Fire added start
+        InitializePartial();
+        // Fire added end
     }
 
     private void OnSpriteMoveInput(Entity<SpriteMovementComponent> ent, ref SpriteMoveEvent args)
@@ -19,7 +23,7 @@ public abstract class SharedSpriteMovementSystem : EntitySystem
             return;
 
         // Fire added start
-        if (HasComp<BlockMovementComponent>(ent))
+        if (ShouldBlockMovement(ent, ref args))
             return;
         // Fire added end
 

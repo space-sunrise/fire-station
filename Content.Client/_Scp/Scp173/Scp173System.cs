@@ -136,7 +136,7 @@ public sealed class Scp173System : SharedScp173System
         if (!Resolve(ent, ref ent.Comp))
             return;
 
-        widget.SafeTime.UpdateSafeTimeInfo(ent.Comp.TimeEnd);
+        widget.SafeTime.UpdateSafeTimeInfo(ent.Comp.TimeEnd, ent.Comp.Time);
     }
 
     private void EnsureWidgetExist()

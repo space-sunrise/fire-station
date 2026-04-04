@@ -30,9 +30,6 @@
 
 - type: loadout
   id: ScpLoadoutMedicalServiceSeniorBeret
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ScpSeniorMedicalSpecialistClothingTimer
   equipment:
     head: ClothingHeadHatBeretSeniorPhysician
 
@@ -63,9 +60,6 @@
 
 - type: loadout
   id: ScpLoadoutMedicalServiceSeniorLabCoat
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ScpSeniorMedicalSpecialistClothingTimer
   equipment:
     outerClothing: ClothingOuterCoatLabSeniorPhysician
 

@@ -113,14 +113,6 @@
   - ScpLoadoutClothingBraUk
 
 - type: loadoutGroup
-  id: ScpLoadoutGroupTankHarness
-  name: loadout-group-tank-harness
-  minLimit: 1
-  hidden: true
-  loadouts:
-  - ScpLoadoutClothingOuterVestTank
-
-- type: loadoutGroup
   id: ScpLoadoutGroupPants
   name: loadout-group-pants
   minLimit: 1

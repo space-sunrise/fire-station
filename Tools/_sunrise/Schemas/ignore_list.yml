@@ -208,6 +208,7 @@ ignore_list:
   - '25-j*%...o1q'
 
 ignore_files:
+  - commands.ftl # Fire added
   - 'italian.ftl'
   - 'russian.ftl'
   - 'popup.ftl'

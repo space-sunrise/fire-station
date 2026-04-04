@@ -12,28 +12,13 @@ using Robust.Shared.Physics;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Prototypes;
 
-namespace Content.Client._Scp.Audio;
+namespace Content.Client._Scp.Audio.Muffle;
 
 public sealed partial class AudioMuffleSystem
 {
-    /// <summary>
-    /// Physics API used to raycast through blockers and inspect their collision data.
-    /// </summary>
     [Dependency] private readonly Robust.Client.Physics.PhysicsSystem _physics = default!;
-
-    /// <summary>
-    /// Shared map helpers used to locate grids, tiles, and anchored entities for wall-mount exemptions.
-    /// </summary>
     [Dependency] private readonly SharedMapSystem _map = default!;
-
-    /// <summary>
-    /// Tag lookup used to classify transparent occluders such as windows and windoors.
-    /// </summary>
     [Dependency] private readonly TagSystem _tag = default!;
-
-    /// <summary>
-    /// Transform helpers used to convert wall-mount geometry into world-space directional checks.
-    /// </summary>
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
     /// <summary>
@@ -64,7 +49,7 @@ public sealed partial class AudioMuffleSystem
     /// <summary>
     /// Pool of scratch sets used to de-duplicate ray hits without allocating every update.
     /// </summary>
-    private readonly ConcurrentBag<HashSet<EntityUid>> _seenPool = new();
+    private readonly ConcurrentBag<HashSet<EntityUid>> _seenPool = [];
 
     /// <summary>
     /// Tags that identify blockers which should attenuate like transparent materials instead of solid walls.
@@ -78,6 +63,12 @@ public sealed partial class AudioMuffleSystem
         "SecureWindoor",
         "SecurePlasmaWindoor",
         "SecureUraniumWindoor",
+        "ScpMuffleCountsThisAsTransparent",
+    ];
+
+    private static readonly HashSet<ProtoId<TagPrototype>> NoneOccluderTags =
+    [
+        "ScpMuffleCountsThisAsNone",
     ];
 
     /// <summary>
@@ -102,6 +93,7 @@ public sealed partial class AudioMuffleSystem
     {
         _audio.GetOcclusionOverride += Override;
 
+        Subs.CVar(_cfg, CVars.NetPvsPriorityRange, OnPvsPriorityRangeChanged, true);
         Subs.CVar(_cfg, CVars.AudioRaycastLength, OnRaycastLengthChanged, true);
         Subs.CVar(_cfg, ScpCCVars.AudioMufflingSolidBaseOcclusion, value => _solidBaseOcclusion = value, true);
         Subs.CVar(_cfg, ScpCCVars.AudioMufflingSolidOcclusionPerMeter, value => _solidOcclusionPerMeter = value, true);
@@ -281,6 +273,9 @@ public sealed partial class AudioMuffleSystem
         if (_tag.HasAnyTag(uid, TransparentOccluderTags))
             return LineOfSightBlockerLevel.Transparent;
 
+        if (_tag.HasAnyTag(uid, NoneOccluderTags))
+            return LineOfSightBlockerLevel.None;
+
         if (layer.HasFlag(CollisionGroup.Impassable) || layer.HasFlag(CollisionGroup.InteractImpassable))
             return LineOfSightBlockerLevel.Solid;
 
@@ -310,6 +305,12 @@ public sealed partial class AudioMuffleSystem
             return 0f;
 
         return (entryPoint - exitPoint).Length();
+    }
+
+    private void OnPvsPriorityRangeChanged(float value)
+    {
+        var newRayCastRange = MathF.Ceiling((value / 2f) + 2);
+        _cfg.SetCVar(CVars.AudioRaycastLength, newRayCastRange);
     }
 
     /// <summary>

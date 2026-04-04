@@ -1050,6 +1050,14 @@
   - type: ContainerFill
     containers:
       board: [ DoorElectronicsExit ]
+
+- type: entity
+  parent: ScpAirlockGlassShuttle
+  id: ScpAirlockExternalGlassSecurityShuttle
+  suffix: External, Security, Glass, Docking, AutoDock
+  components:
+  - type: PriorityDock
+    tag: DockSecurity
   
 # Сторонние
 

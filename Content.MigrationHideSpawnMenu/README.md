@@ -1,16 +1,21 @@
 # Content.MigrationHideSpawnMenu
 
-CLI tool that marks migrated entities with `HideSpawnMenu` category in their `.yml` file directly
+CLI tool that synchronizes migration-related visibility for entity and construction prototypes in their `.yml` files directly.
 
 ## What it does
 
-1. Reads `Resources/migration.yml` and collects source IDs from `oldId -> newId` where `newId` is not `null` or empty.
-2. Scans `Resources/Prototypes/**/*.yml` for top-level `- type: entity` blocks.
-3. For non-abstract, live prototypes with matching IDs:
+1. Reads `Resources/migration.yml`, keeps every migrated `oldId`, and stores direct `oldId -> newId` mappings when `newId` is not `null` or empty.
+2. Scans `Resources/Prototypes/**/*.yml` for top-level `- type: entity`, `- type: construction`, and `- type: constructionGraph` blocks.
+3. For non-abstract, live entity prototypes with matching IDs:
    - adds `HideSpawnMenu` to inline `categories`,
    - appends it to block-list `categories`,
    - or creates `categories: [ HideSpawnMenu ]` when missing.
-4. Preserves existing categories and never creates duplicate `HideSpawnMenu`.
+4. For construction recipes, resolves `graph + targetNode` through `constructionGraph` nodes to the crafted entity and hides legacy recipes with `hide: true` when:
+   - the crafted entity is an `oldId` from `migration.yml`,
+   - its mapped non-empty `newId` has at least one visible replacement construction recipe,
+   - and the legacy recipe is not already hidden.
+5. A replacement construction recipe is considered visible only when it does not have `hide: true`.
+6. Preserves existing categories, never creates duplicate `HideSpawnMenu`, and does not create new construction recipes.
 
 ## Commands
 

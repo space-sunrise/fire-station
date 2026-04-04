@@ -19,6 +19,7 @@
   graph: WebStructures
   startNode: start
   targetNode: table
+  hide: true # Fire edit
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter

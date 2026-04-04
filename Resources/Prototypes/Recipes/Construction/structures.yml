@@ -82,6 +82,7 @@
   graph: Barricade
   startNode: start
   targetNode: woodWall
+  hide: true # Fire edit
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter

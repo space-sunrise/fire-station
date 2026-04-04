@@ -89,6 +89,19 @@
     - !type:TileNotBlocked
 
 - type: construction
+  id: ScpWallWood
+  graph: ScpBarricade
+  startNode: start
+  targetNode: woodWall
+  category: construction-category-structures
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   id: ScpFenceWood
   graph: ScpFenceWood
   startNode: start

@@ -1,9 +1,12 @@
 ﻿using Content.Server._Sunrise.VentCraw;
+using Content.Server.Actions;
 using Content.Server.Disposal.Unit;
 using Content.Server.Popups;
 using Content.Shared._Scp.Scp999;
 using Content.Shared._Sunrise.VentCraw;
 using Content.Shared.ActionBlocker;
+using Content.Shared.Damage.Systems;
+using Content.Shared.FixedPoint;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Movement.Components;
@@ -13,15 +16,12 @@ using Content.Shared.Tag;
 using Robust.Server.Audio;
 using Robust.Server.Containers;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
-using Robust.Shared.Physics;
-using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
 
 namespace Content.Server._Scp.Scp999;
 
-public sealed class Scp999System : SharedScp999System
+public sealed partial class Scp999System : SharedScp999System
 {
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly PhysicsSystem _physics = default!;
@@ -32,12 +32,10 @@ public sealed class Scp999System : SharedScp999System
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly PullingSystem _pulling = default!;
     [Dependency] private readonly ActionBlockerSystem _action = default!;
+    [Dependency] private readonly ActionsSystem _actions = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     private const string WallFixtureId = "fix2";
-
-    private readonly SoundSpecifier _wallSound = new SoundCollectionSpecifier("WallTransformScp999");
-    private readonly SoundSpecifier _sleepSound = new SoundPathSpecifier("/Audio/_Scp/Scp999/sleep.ogg");
 
     public override void Initialize()
     {
@@ -49,6 +47,8 @@ public sealed class Scp999System : SharedScp999System
 
         SubscribeLocalEvent<Scp999Component, Scp999ChangeStateAttemptEvent>(OnChangeStateAttempt);
         SubscribeLocalEvent<Scp999Component, Scp999ChangedStateEvent>(OnChangedState);
+
+        SubscribeLocalEvent<Scp999Component, DamageChangedEvent>(OnDamageChanged);
 
         SubscribeLocalEvent<Scp999Component, VentCrawlAttemptEvent>(OnEnterVent);
 
@@ -71,90 +71,22 @@ public sealed class Scp999System : SharedScp999System
         if (args.Handled)
             return;
 
-        if (!TryComp<PhysicsComponent>(ent, out var physicsComponent))
-            return;
-
-        if (!TryComp<FixturesComponent>(ent, out var fixturesComponent))
-            return;
-
-        var xform = Transform(ent);
-
-        var fix2 = _fixture.GetFixtureOrNull(ent, WallFixtureId, fixturesComponent);
-
-        if (fix2 == null)
-            return;
-
-        Scp999WallifyEvent ev;
-        var netEntity = GetNetEntity(ent);
-
         switch (ent.Comp.CurrentState)
         {
             // add buffs
             case Scp999States.Default:
-
-                var toWallAttemptEvent = new Scp999ChangeStateAttemptEvent(Scp999States.Wall);
-                RaiseLocalEvent(ent, toWallAttemptEvent);
-
-                if (toWallAttemptEvent.Cancelled)
-                    return;
-
-                ev = new Scp999WallifyEvent(netEntity, ent.Comp.States[Scp999States.Wall]);
-
-                ent.Comp.CurrentState = Scp999States.Wall;
-                Dirty(ent);
-
-                _transform.AnchorEntity(ent, Transform(ent));
-
-                // shitcode
-                _physics.TrySetBodyType(ent, BodyType.Dynamic, fixturesComponent, physicsComponent, xform);
-                _physics.SetCollisionLayer(ent, WallFixtureId, fix2, 221);
-                _physics.SetCollisionMask(ent, WallFixtureId, fix2, 158);
-
-                EnsureComp<NoRotateOnInteractComponent>(ent);
-                EnsureComp<NoRotateOnMoveComponent>(ent);
-
-                _audio.PlayPvs(_wallSound, ent);
-
-                var toWallChangedEvent = new Scp999ChangedStateEvent(Scp999States.Wall);
-                RaiseLocalEvent(ent, toWallChangedEvent);
-
+                FromDefaultToWall(ent);
                 break;
 
             // remove buffs
             case Scp999States.Wall:
-
-                var toDefaultAttemptEvent = new Scp999ChangeStateAttemptEvent(Scp999States.Default);
-                RaiseLocalEvent(ent, toDefaultAttemptEvent);
-
-                if (toDefaultAttemptEvent.Cancelled)
-                    return;
-
-                ev = new Scp999WallifyEvent(netEntity, ent.Comp.States[Scp999States.Default]);
-
-                ent.Comp.CurrentState = Scp999States.Default;
-                Dirty(ent);
-
-                _transform.Unanchor(ent, Transform(ent));
-
-                // shitcode
-                _physics.TrySetBodyType(ent, BodyType.KinematicController, fixturesComponent, physicsComponent, xform);
-                _physics.SetCollisionLayer(ent, WallFixtureId, fix2, 0);
-                _physics.SetCollisionMask(ent, WallFixtureId, fix2, 0);
-
-                RemComp<NoRotateOnMoveComponent>(ent);
-                RemComp<NoRotateOnInteractComponent>(ent);
-
-                var toDefaultChangedEvent = new Scp999ChangedStateEvent(Scp999States.Default);
-                RaiseLocalEvent(ent, toDefaultChangedEvent);
-
+                FromWallToDefault(ent);
                 break;
 
             // Все остальное
             default:
                 return;
         }
-
-        RaiseNetworkEvent(ev);
 
         args.Handled = true;
     }
@@ -188,7 +120,7 @@ public sealed class Scp999System : SharedScp999System
                 EnsureComp<NoRotateOnInteractComponent>(ent);
                 EnsureComp<NoRotateOnMoveComponent>(ent);
 
-                _audio.PlayPvs(_sleepSound, ent);
+                _audio.PlayPvs(ent.Comp.SleepSound, ent);
 
                 var toRestChangedEvent = new Scp999ChangedStateEvent(Scp999States.Rest);
                 RaiseLocalEvent(ent, toRestChangedEvent);
@@ -234,7 +166,7 @@ public sealed class Scp999System : SharedScp999System
 
     private void OnChangeStateAttempt(Entity<Scp999Component> ent, ref Scp999ChangeStateAttemptEvent args)
     {
-        if (_container.IsEntityInContainer(ent))
+        if (_container.IsEntityInContainer(ent) && args.TargetState == Scp999States.Wall)
             args.Cancel();
 
         if (HasComp<BeingDisposedComponent>(ent))
@@ -247,7 +179,7 @@ public sealed class Scp999System : SharedScp999System
             _popup.PopupEntity(Loc.GetString("scp-999-change-state-cancelled"), ent, ent);
     }
 
-    private void OnChangedState(Entity<Scp999Component> ent, ref Scp999ChangedStateEvent _)
+    private void OnChangedState(Entity<Scp999Component> ent, ref Scp999ChangedStateEvent args)
     {
         // Чтобы в момент превращения прекращать тащить и быть таскаемым.
 
@@ -256,6 +188,32 @@ public sealed class Scp999System : SharedScp999System
 
         if (TryComp<PullerComponent>(ent, out var puller) && puller.Pulling.HasValue && TryComp<PullableComponent>(puller.Pulling, out var pullable2))
             _pulling.TryStopPull(puller.Pulling.Value, pullable2, ent);
+    }
+
+    private void OnDamageChanged(Entity<Scp999Component> ent, ref DamageChangedEvent args)
+    {
+        if (ent.Comp.CurrentState != Scp999States.Wall)
+            return;
+
+        if (!args.DamageIncreased || args.DamageDelta == null)
+            return;
+
+        if (args.Origin == null)
+            return;
+
+        ent.Comp.CurrentTotalDamage += args.DamageDelta.GetTotal();
+        if (ent.Comp.CurrentTotalDamage < ent.Comp.TotalDamageToChangeState)
+            return;
+
+        FromWallToDefault(ent);
+
+        foreach (var action in _actions.GetActions(ent))
+        {
+            if (!action.Comp.UseDelay.HasValue)
+                continue;
+
+            _actions.SetIfBiggerCooldown(action.AsNullable(), action.Comp.UseDelay.Value * 3f);
+        }
     }
 
     private void OnEnterVent(Entity<Scp999Component> ent, ref VentCrawlAttemptEvent args)

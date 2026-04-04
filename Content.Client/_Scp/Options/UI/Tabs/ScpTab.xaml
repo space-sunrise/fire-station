@@ -60,6 +60,14 @@
                 <!-- АУДИО -->
                 <Label Text="{Loc ui-options-scp-audio}" StyleClasses="LabelKeyText"/>
 
+                <!-- UI typing sound -->
+                <CheckBox Name="TypingSoundEnabled"
+                          Text="{Loc ui-options-scp-typing-sound-enabled}"
+                          ToolTip="{Loc ui-options-scp-typing-sound-enabled-tooltip}" />
+                <CheckBox Name="TypingChatSubmitSoundEnabled"
+                          Text="{Loc ui-options-scp-typing-chat-submit-sound-enabled}"
+                          ToolTip="{Loc ui-options-scp-typing-chat-submit-sound-enabled-tooltip}" />
+
                 <!-- Эхо -->
                 <CheckBox Name="EchoEnabled"
                           Text="{Loc ui-options-scp-echo-enabled}"

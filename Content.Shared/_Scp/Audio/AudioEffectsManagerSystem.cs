@@ -51,14 +51,15 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     /// </remarks>
     private bool _isAuxiliariesSafe = true;
 
-    /// <summary>
-    /// Subscribes to round cleanup so cached effect entities do not leak across rounds.
-    /// </summary>
+    private EntityQuery<AudioComponent> _audioQuery;
+
+
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
+        _audioQuery = GetEntityQuery<AudioComponent>();
     }
 
     /// <summary>
@@ -98,17 +99,31 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         if (!_cachedEffects.TryGetValue(preset, out var effect) && !TryCreateEffect(preset, out effect))
             return false;
 
+        var ev = new AudioGetNewEffectAttemptEvent(preset);
+        RaiseLocalEvent(sound, ref ev);
+
+        if (ev.Cancelled)
+            return false;
+
         if (_net.IsServer)
         {
             // Let the replicated client source finish initializing before we assign the auxiliary.
-            Timer.Spawn(RaceConditionWaiting, () => _audio.SetAuxiliary(sound, sound, effect), _tokenSource.Token);
+            Timer.Spawn(RaceConditionWaiting, () => SetEffect(sound, effect, preset), _tokenSource.Token);
         }
         else
         {
-            _audio.SetAuxiliary(sound, sound, effect);
+            SetEffect(sound, effect, preset);
         }
 
         return true;
+    }
+
+    private void SetEffect(Entity<AudioComponent> sound, EntityUid effect, ProtoId<AudioPresetPrototype> preset)
+    {
+        _audio.SetAuxiliary(sound, sound, effect);
+
+        var ev = new AudioGotNewEffectEvent(preset);
+        RaiseLocalEvent(sound, ref ev);
     }
 
     /// <summary>
@@ -127,7 +142,13 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         if (sound.Comp.Auxiliary != effect)
             return false;
 
-        _audio.SetAuxiliary(sound, sound, null);
+        var ev = new AudioGetNewEffectAttemptEvent(preset);
+        RaiseLocalEvent(sound, ref ev);
+
+        if (ev.Cancelled)
+            return false;
+
+        RemoveAllEffects(sound.AsNullable());
         return true;
     }
 
@@ -135,9 +156,15 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
     /// Clears the auxiliary slot regardless of which preset is currently attached.
     /// </summary>
     /// <param name="sound">The target audio source.</param>
-    public void RemoveAllEffects(Entity<AudioComponent> sound)
+    public void RemoveAllEffects(Entity<AudioComponent?> sound)
     {
-        _audio.SetAuxiliary(sound, sound, null);
+        if (!_audioQuery.Resolve(sound, ref sound.Comp, false))
+            return;
+
+        _audio.SetAuxiliary(sound, sound.Comp, null);
+
+        var ev = new AudioGotNewEffectEvent(null);
+        RaiseLocalEvent(sound, ref ev);
     }
 
     /// <summary>
@@ -230,3 +257,12 @@ public sealed class AudioEffectsManagerSystem : EntitySystem
         return false;
     }
 }
+
+[ByRefEvent]
+public record struct AudioGetNewEffectAttemptEvent(ProtoId<AudioPresetPrototype>? Prototype)
+{
+    public bool Cancelled;
+}
+
+[ByRefEvent]
+public record struct AudioGotNewEffectEvent(ProtoId<AudioPresetPrototype>? Prototype);

@@ -33,16 +33,10 @@
 
 - type: loadout
   id: ScpLoadoutLeadResearcherSeniorResearcher
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ScpLeadResearcher
   equipment:
     jumpsuit: ClothingUniformJumpsuitSeniorResearcher
 
 - type: loadout
   id: ScpLoadoutLeadResearcherSeniorResearcherSeniorResearcher
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ScpLeadResearcher
   equipment:
     jumpsuit: ClothingUniformJumpskirtSeniorResearcher

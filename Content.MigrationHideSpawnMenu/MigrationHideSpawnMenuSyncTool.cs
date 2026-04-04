@@ -96,48 +96,141 @@ public static class MigrationHideSpawnMenuSyncTool
         if (!Directory.Exists(prototypesRoot))
             throw new DirectoryNotFoundException($"Prototype directory was not found: {prototypesRoot}");
 
-        var sourceIds = ReadMigrationSourceIds(migrationPath);
+        var migrationMappings = ReadMigrationMappings(migrationPath);
+        var sourceIds = new HashSet<string>(migrationMappings.Keys, StringComparer.Ordinal);
         var summary = new MigrationHideSpawnMenuSummary();
+        var parsedFiles = LoadPrototypeFiles(prototypesRoot);
+        summary.FilesScanned = parsedFiles.Count;
 
-        foreach (var prototypePath in Directory.EnumerateFiles(prototypesRoot, "*.yml", SearchOption.AllDirectories))
+        var graphEntityMap = BuildConstructionGraphEntityMap(parsedFiles);
+        var resolvedConstructionBlocks = ResolveConstructionBlocks(parsedFiles, graphEntityMap);
+        var visibleConstructionResults = resolvedConstructionBlocks
+            .Where(static resolved => !IsConstructionHidden(resolved.Block))
+            .Select(static resolved => resolved.ResultEntityId)
+            .ToHashSet(StringComparer.Ordinal);
+        var constructionBlocksByFile = resolvedConstructionBlocks
+            .GroupBy(static resolved => resolved.File)
+            .ToDictionary(static group => group.Key, static group => group.ToList());
+
+        foreach (var file in parsedFiles)
         {
-            summary.FilesScanned++;
+            var pendingCandidates = new List<PendingCandidate>();
 
-            var originalContent = File.ReadAllText(prototypePath);
-            var parsed = MigrationHideSpawnMenuPrototypeParser.Parse(originalContent);
-
-            var changedInFile = false;
-            var blocks = parsed.EntityBlocks.OrderByDescending(static b => b.StartLineIndex);
-            foreach (var block in blocks)
+            foreach (var block in file.Parsed.EntityBlocks)
             {
-                if (!IsCandidate(sourceIds, block))
+                if (!IsEntityCandidate(sourceIds, block))
                     continue;
 
                 summary.CandidatesFound++;
-
-                if (mode == MigrationHideSpawnMenuMode.Check)
-                {
-                    summary.Violations.Add($"{Path.GetRelativePath(repositoryRoot, prototypePath)}: {block.Id}");
-                    continue;
-                }
-
-                AddHideSpawnMenuCategory(parsed.Lines, block, editComment);
-                summary.CandidatesUpdated++;
-                changedInFile = true;
+                pendingCandidates.Add(new PendingCandidate(
+                    block.StartLineIndex,
+                    block.Id,
+                    () => AddHideSpawnMenuCategory(file.Parsed.Lines, block, editComment)));
             }
 
-            if (mode != MigrationHideSpawnMenuMode.Sync || !changedInFile)
+            if (constructionBlocksByFile.TryGetValue(file, out var resolvedBlocks))
+            {
+                foreach (var resolvedBlock in resolvedBlocks)
+                {
+                    if (!IsConstructionCandidate(migrationMappings, visibleConstructionResults, resolvedBlock))
+                        continue;
+
+                    summary.CandidatesFound++;
+                    pendingCandidates.Add(new PendingCandidate(
+                        resolvedBlock.Block.StartLineIndex,
+                        resolvedBlock.Block.Id,
+                        () => EnsureConstructionHidden(file.Parsed.Lines, resolvedBlock.Block, editComment)));
+                }
+            }
+
+            if (pendingCandidates.Count == 0)
                 continue;
 
-            var updatedContent = MigrationHideSpawnMenuPrototypeParser.ComposeContent(parsed);
-            if (string.Equals(updatedContent, originalContent, StringComparison.Ordinal))
+            if (mode == MigrationHideSpawnMenuMode.Check)
+            {
+                foreach (var candidate in pendingCandidates)
+                {
+                    summary.Violations.Add($"{Path.GetRelativePath(repositoryRoot, file.Path)}: {candidate.ViolationId}");
+                }
+
+                continue;
+            }
+
+            foreach (var candidate in pendingCandidates.OrderByDescending(static candidate => candidate.StartLineIndex))
+            {
+                candidate.ApplyChange();
+                summary.CandidatesUpdated++;
+            }
+
+            var updatedContent = MigrationHideSpawnMenuPrototypeParser.ComposeContent(file.Parsed);
+            if (string.Equals(updatedContent, file.OriginalContent, StringComparison.Ordinal))
                 continue;
 
-            File.WriteAllText(prototypePath, updatedContent);
+            File.WriteAllText(file.Path, updatedContent);
             summary.FilesChanged++;
         }
 
         return summary;
+    }
+
+    private static List<MigrationHideSpawnMenuRepositoryFile> LoadPrototypeFiles(string prototypesRoot)
+    {
+        var files = new List<MigrationHideSpawnMenuRepositoryFile>();
+
+        foreach (var prototypePath in Directory.EnumerateFiles(prototypesRoot, "*.yml", SearchOption.AllDirectories)
+                     .OrderBy(static path => path, StringComparer.OrdinalIgnoreCase))
+        {
+            var originalContent = File.ReadAllText(prototypePath);
+            var parsed = MigrationHideSpawnMenuPrototypeParser.Parse(originalContent);
+            files.Add(new MigrationHideSpawnMenuRepositoryFile(prototypePath, originalContent, parsed));
+        }
+
+        return files;
+    }
+
+    private static Dictionary<ConstructionGraphNodeKey, string> BuildConstructionGraphEntityMap(
+        List<MigrationHideSpawnMenuRepositoryFile> parsedFiles)
+    {
+        var result = new Dictionary<ConstructionGraphNodeKey, string>();
+
+        foreach (var file in parsedFiles)
+        {
+            foreach (var graphBlock in file.Parsed.ConstructionGraphBlocks)
+            {
+                if (!graphBlock.HasId)
+                    continue;
+
+                foreach (var (nodeId, entityId) in graphBlock.NodeEntities)
+                {
+                    result[new ConstructionGraphNodeKey(graphBlock.Id, nodeId)] = entityId;
+                }
+            }
+        }
+
+        return result;
+    }
+
+    private static List<MigrationHideSpawnMenuResolvedConstructionBlock> ResolveConstructionBlocks(
+        List<MigrationHideSpawnMenuRepositoryFile> parsedFiles,
+        Dictionary<ConstructionGraphNodeKey, string> graphEntityMap)
+    {
+        var result = new List<MigrationHideSpawnMenuResolvedConstructionBlock>();
+
+        foreach (var file in parsedFiles)
+        {
+            foreach (var block in file.Parsed.ConstructionBlocks)
+            {
+                if (!block.HasId || !block.HasGraph || !block.HasTargetNode)
+                    continue;
+
+                if (!graphEntityMap.TryGetValue(new ConstructionGraphNodeKey(block.GraphId, block.TargetNode), out var entityId))
+                    continue;
+
+                result.Add(new MigrationHideSpawnMenuResolvedConstructionBlock(file, block, entityId));
+            }
+        }
+
+        return result;
     }
 
     private static string ResolveRepositoryRoot(string repositoryRoot)
@@ -182,7 +275,7 @@ public static class MigrationHideSpawnMenuSyncTool
         return null;
     }
 
-    private static bool IsCandidate(HashSet<string> sourceIds, MigrationHideSpawnMenuEntityBlock block)
+    private static bool IsEntityCandidate(HashSet<string> sourceIds, MigrationHideSpawnMenuEntityBlock block)
     {
         if (!block.HasId || block.IsAbstract)
             return false;
@@ -197,6 +290,28 @@ public static class MigrationHideSpawnMenuSyncTool
         }
 
         return true;
+    }
+
+    private static bool IsConstructionCandidate(
+        Dictionary<string, string> migrationMappings,
+        HashSet<string> visibleConstructionResults,
+        MigrationHideSpawnMenuResolvedConstructionBlock resolvedBlock)
+    {
+        if (!resolvedBlock.Block.HasId || IsConstructionHidden(resolvedBlock.Block))
+            return false;
+
+        if (!migrationMappings.TryGetValue(resolvedBlock.ResultEntityId, out var replacementEntityId))
+            return false;
+
+        if (string.IsNullOrWhiteSpace(replacementEntityId))
+            return false;
+
+        return visibleConstructionResults.Contains(replacementEntityId);
+    }
+
+    private static bool IsConstructionHidden(MigrationHideSpawnMenuConstructionBlock block)
+    {
+        return block.HasHide && block.Hide;
     }
 
     private static void AddHideSpawnMenuCategory(
@@ -216,6 +331,23 @@ public static class MigrationHideSpawnMenuSyncTool
                 InsertMissingCategories(lines, block, editComment);
                 break;
         }
+    }
+
+    private static void EnsureConstructionHidden(
+        List<string> lines,
+        MigrationHideSpawnMenuConstructionBlock block,
+        string editComment)
+    {
+        if (block.HasHide && block.Hide)
+            return;
+
+        if (block.HasHide && block.HideLineIndex >= 0 && block.HideLineIndex < lines.Count)
+        {
+            UpdateConstructionHide(lines, block, editComment);
+            return;
+        }
+
+        InsertMissingConstructionHide(lines, block, editComment);
     }
 
     private static void UpdateInlineCategories(
@@ -272,13 +404,41 @@ public static class MigrationHideSpawnMenuSyncTool
         lines.Insert(insertAt, $"{indentValue}categories: [ {HideSpawnMenuCategory} ] # {editComment}");
     }
 
-    private static HashSet<string> ReadMigrationSourceIds(string migrationPath)
+    private static void UpdateConstructionHide(
+        List<string> lines,
+        MigrationHideSpawnMenuConstructionBlock block,
+        string editComment)
+    {
+        var indent = block.FieldIndent > -1 ? block.FieldIndent : block.PrototypeIndent + 2;
+        var indentValue = new string(' ', indent);
+        lines[block.HideLineIndex] = $"{indentValue}hide: true # {editComment}";
+    }
+
+    private static void InsertMissingConstructionHide(
+        List<string> lines,
+        MigrationHideSpawnMenuConstructionBlock block,
+        string editComment)
+    {
+        var indent = block.FieldIndent > -1 ? block.FieldIndent : block.PrototypeIndent + 2;
+        var indentValue = new string(' ', indent);
+        var insertAt = block.TargetNodeLineIndex > -1
+            ? block.TargetNodeLineIndex + 1
+            : block.GraphLineIndex > -1
+                ? block.GraphLineIndex + 1
+                : block.IdLineIndex > -1
+                    ? block.IdLineIndex + 1
+                    : block.StartLineIndex + 1;
+
+        lines.Insert(insertAt, $"{indentValue}hide: true # {editComment}");
+    }
+
+    private static Dictionary<string, string> ReadMigrationMappings(string migrationPath)
     {
         using var reader = new StreamReader(migrationPath);
         var yaml = new YamlStream();
         yaml.Load(reader);
 
-        var result = new HashSet<string>(StringComparer.Ordinal);
+        var result = new Dictionary<string, string>(StringComparer.Ordinal);
         foreach (var document in yaml.Documents)
         {
             if (document.RootNode is not YamlMappingNode map)
@@ -299,9 +459,12 @@ public static class MigrationHideSpawnMenuSyncTool
                     continue;
 
                 if (string.IsNullOrWhiteSpace(newId) || newId.Equals("null", StringComparison.OrdinalIgnoreCase))
+                {
+                    result[oldId] = null;
                     continue;
+                }
 
-                result.Add(oldId);
+                result[oldId] = newId;
             }
         }
 
@@ -384,5 +547,18 @@ public static class MigrationHideSpawnMenuSyncTool
         Console.WriteLine("  dotnet run --project Content.MigrationHideSpawnMenu -- check");
         Console.WriteLine("  dotnet run --project Content.MigrationHideSpawnMenu -- hide-spawn-menu sync");
         Console.WriteLine("  dotnet run --project Content.MigrationHideSpawnMenu -- hide-spawn-menu check");
+    }
+
+    private readonly record struct ConstructionGraphNodeKey(string GraphId, string NodeId)
+    {
+        public string GraphId { get; } = GraphId;
+        public string NodeId { get; } = NodeId;
+    }
+
+    private sealed class PendingCandidate(int startLineIndex, string violationId, Action applyChange)
+    {
+        public int StartLineIndex { get; } = startLineIndex;
+        public string ViolationId { get; } = violationId;
+        public Action ApplyChange { get; } = applyChange;
     }
 }

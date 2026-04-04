@@ -13,7 +13,7 @@ namespace Content.Client._Scp.Options.UI.Tabs;
 [GenerateTypedNameReferences]
 public sealed partial class ScpTab : Control
 {
-    [Dependency] private readonly IConfigurationManager _configuration = default!;
+    [Dependency] private readonly IConfigurationManager _cfg = default!;
 
     public ScpTab()
     {
@@ -53,6 +53,10 @@ public sealed partial class ScpTab : Control
          * Аудио
          */
 
+        // UI typing sound
+        Control.AddOptionCheckBox(ScpCCVars.TypingSoundEnabled, TypingSoundEnabled);
+        Control.AddOptionCheckBox(ScpCCVars.TypingChatSubmitSoundEnabled, TypingChatSubmitSoundEnabled);
+
         // Эхо
         Control.AddOptionCheckBox(ScpCCVars.EchoEnabled, EchoEnabled);
         Control.AddOptionCheckBox(ScpCCVars.EchoStrongPresetPreferred, EchoStrongPresetPreferred);
@@ -74,7 +78,7 @@ public sealed partial class ScpTab : Control
 
     private void CheckCompatibilityMode()
     {
-        var isInCompatibilityMode = _configuration.GetCVar(CVars.DisplayCompat);
+        var isInCompatibilityMode = _cfg.GetCVar(CVars.DisplayCompat);
 
         CompatibilityModeShowWarning.Visible = isInCompatibilityMode;
         CompatibilityModeUseShaders.Visible = isInCompatibilityMode;
@@ -87,6 +91,7 @@ public sealed partial class ScpTab : Control
         ToggleBloomCone();
         ToggleEcho();
         ToggleFovBlur();
+        ToggleChatSubmit();
     }
 
     protected override void EnteredTree()
@@ -98,6 +103,7 @@ public sealed partial class ScpTab : Control
         LightBloomConeEnable.OnToggled += ToggleBloomCone;
         EchoEnabled.OnToggled += ToggleEcho;
         FieldOfViewBlurEnabled.OnToggled += ToggleFovBlur;
+        TypingSoundEnabled.OnToggled += ToggleChatSubmit;
     }
 
     protected override void ExitedTree()
@@ -139,5 +145,10 @@ public sealed partial class ScpTab : Control
     private void ToggleFovBlur(BaseButton.ButtonToggledEventArgs value = default!)
     {
         FieldOfViewBlurScale.Visible = FieldOfViewBlurEnabled.Pressed;
+    }
+
+    private void ToggleChatSubmit(BaseButton.ButtonToggledEventArgs value = default!)
+    {
+        TypingChatSubmitSoundEnabled.Visible = TypingSoundEnabled.Pressed;
     }
 }

@@ -60,15 +60,6 @@
   loadouts:
   - ScpLoadoutClothingHandsGlovesHop
 
-# Back
-- type: loadout
-  id: ScpLoadoutPersonnelOfficerIanBackpack
-  effects:
-  - !type:GroupLoadoutEffect
-    proto: ScpProfessionalPersonnelOfficer
-  equipment:
-    back: ClothingBackpackIan
-
 # Outer Clothing
 - type: loadout
   id: ScpLoadoutPersonnelOfficerWinterCoat
