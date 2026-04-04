@@ -80,7 +80,7 @@
     followEntity: false
   - type: CommunicationsConsole
     canShuttle: false
-    title: comms-console-announcement-title-station-ai
+    title: comms-console-announcement-title-complex-ai # Fire edit
     color: "#5ed7aa"
     announceVoice: SCP079 # Fire-Edit
     sound: /Audio/_Sunrise/Announcements/announce_dig.ogg # Sunrise-Edit

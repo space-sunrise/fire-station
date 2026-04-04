@@ -856,7 +856,7 @@
   - type: AccessReader
     access: [[ "NuclearOperative" ]]
   - type: CommunicationsConsole
-    title: comms-console-announcement-title-nukie
+    title: comms-console-announcement-title-chaos # Fire edit
     color: "#ff0000"
     canShuttle: false
     announceVoice: CBMTF1 # Fire edit
