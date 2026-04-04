@@ -283,7 +283,7 @@ public sealed partial class SunriseCCVars : CVars
         CVarDef.Create("vote.run_preset_vote_after_restart", false);
 
     // Fire edit
-    public static readonly CVarDef<int> VotingsDelay = CVarDef.Create("vote.votings_delay", 20);
+    public static readonly CVarDef<int> VotingsDelay = CVarDef.Create("vote.votings_delay", 80);
 
     public static readonly CVarDef<bool> VoteMusicDisable =
         CVarDef.Create("vote.music_disable", true, CVar.CLIENTONLY | CVar.ARCHIVE);
@@ -292,7 +292,7 @@ public sealed partial class SunriseCCVars : CVars
         CVarDef.Create("vote.disable_ooc", false, CVar.SERVERONLY);
 
     public static readonly CVarDef<bool> VotePause =
-        CVarDef.Create("vote.pause", true, CVar.SERVERONLY);
+        CVarDef.Create("vote.pause", false, CVar.SERVERONLY); // Fire edit
 
     public static readonly CVarDef<bool> ExcludeMaps = CVarDef.Create("vote.exclude_maps", true, CVar.SERVERONLY);
 
