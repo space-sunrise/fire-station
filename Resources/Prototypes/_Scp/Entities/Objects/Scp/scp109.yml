@@ -11,7 +11,7 @@
     sprite: _Scp/Objects/Scp/scp-109.rsi
     state: icon
   - type: Scp
-    class: Safe
+    class: Euclid # это в оригинале такое чудо
   - type: Item
     size: Small
   - type: SolutionRegeneration
