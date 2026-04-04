@@ -89,6 +89,15 @@
     
 - type: entity
   parent: BaseSignDirectionalScp
+  id: SignDirectionalScp109
+  name: SCP-109 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 109
+    
+- type: entity
+  parent: BaseSignDirectionalScp
   id: SignDirectionalScp124
   name: SCP-124 sign
   description: Points in a direction you shouldn't go without a clear understanding of where it leads.

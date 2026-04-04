@@ -701,6 +701,15 @@
     
 - type: entity
   parent: PosterScpContainmentRoomBase
+  id: PosterSCP109
+  name: SCP-109 poster
+  description: Information poster for SCP-109.
+  components:
+  - type: Sprite
+    state: scp109
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
   id: PosterSCP124
   name: SCP-124 poster
   description: Information poster for SCP-124.
