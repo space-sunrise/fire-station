@@ -1,4 +1,5 @@
 ﻿using Content.Shared._Scp.Scp999;
+using Content.Shared.FixedPoint;
 using Content.Shared.Interaction.Components;
 using Content.Shared.Movement.Components;
 using Robust.Shared.Physics;
@@ -78,6 +79,7 @@ public sealed partial class Scp999System
         _physics.TrySetBodyType(ent, BodyType.KinematicController, fixturesComponent, physicsComponent, xform);
         _physics.SetCollisionLayer(ent, WallFixtureId, fix2, 0);
         _physics.SetCollisionMask(ent, WallFixtureId, fix2, 0);
+        ent.Comp.CurrentTotalDamage = FixedPoint2.Zero;
 
         RemComp<NoRotateOnMoveComponent>(ent);
         RemComp<NoRotateOnInteractComponent>(ent);

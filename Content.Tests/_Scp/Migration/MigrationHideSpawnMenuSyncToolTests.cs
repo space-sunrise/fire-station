@@ -113,6 +113,40 @@ public sealed class MigrationHideSpawnMenuSyncToolTests
     }
 
     [Test]
+    public void SyncAddsHideSpawnMenuWhenMigrationTargetIsNull()
+    {
+        var repoRoot = CreateRepository(
+            "OldEntity: null\n",
+            """
+            - type: entity
+              id: OldEntity
+            """);
+
+        var exitCode = MigrationHideSpawnMenuSyncTool.Run([ "sync" ], repoRoot, EditComment);
+
+        Assert.That(exitCode, Is.EqualTo(MigrationHideSpawnMenuSyncTool.SuccessExitCode));
+        var updated = ReadPrototype(repoRoot);
+        Assert.That(updated, Does.Contain("  categories: [ HideSpawnMenu ] # Unit test edit"));
+    }
+
+    [Test]
+    public void SyncAddsHideSpawnMenuWhenMigrationTargetIsEmpty()
+    {
+        var repoRoot = CreateRepository(
+            "OldEntity:\n",
+            """
+            - type: entity
+              id: OldEntity
+            """);
+
+        var exitCode = MigrationHideSpawnMenuSyncTool.Run([ "sync" ], repoRoot, EditComment);
+
+        Assert.That(exitCode, Is.EqualTo(MigrationHideSpawnMenuSyncTool.SuccessExitCode));
+        var updated = ReadPrototype(repoRoot);
+        Assert.That(updated, Does.Contain("  categories: [ HideSpawnMenu ] # Unit test edit"));
+    }
+
+    [Test]
     public void SyncSkipsAbstractPrototypes()
     {
         var repoRoot = CreateRepository(

@@ -206,7 +206,6 @@ public sealed partial class Scp999System : SharedScp999System
             return;
 
         FromWallToDefault(ent);
-        ent.Comp.CurrentTotalDamage = FixedPoint2.Zero;
 
         foreach (var action in _actions.GetActions(ent))
         {

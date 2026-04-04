@@ -303,6 +303,9 @@ public static class MigrationHideSpawnMenuSyncTool
         if (!migrationMappings.TryGetValue(resolvedBlock.ResultEntityId, out var replacementEntityId))
             return false;
 
+        if (string.IsNullOrWhiteSpace(replacementEntityId))
+            return false;
+
         return visibleConstructionResults.Contains(replacementEntityId);
     }
 
@@ -456,7 +459,10 @@ public static class MigrationHideSpawnMenuSyncTool
                     continue;
 
                 if (string.IsNullOrWhiteSpace(newId) || newId.Equals("null", StringComparison.OrdinalIgnoreCase))
+                {
+                    result[oldId] = null;
                     continue;
+                }
 
                 result[oldId] = newId;
             }

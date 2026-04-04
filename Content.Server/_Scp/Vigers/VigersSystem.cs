@@ -81,8 +81,7 @@ public sealed class VigersSystem : EntitySystem
 
         if (_autoDeadminEnabled && args.NewStatus == SessionStatus.InGame)
         {
-            if (_autoDeadminEnabled)
-                TryDeadminProtectedUser(args.Session);
+            TryDeadminProtectedUser(args.Session);
         }
     }
 

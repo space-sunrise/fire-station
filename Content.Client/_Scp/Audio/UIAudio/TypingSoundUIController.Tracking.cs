@@ -155,9 +155,11 @@ public sealed partial class TypingSoundUIController
 
         tracking.ProcessedRevision = tracking.Revision;
         tracking.PreviousText = control.Text;
+        var pendingAction = tracking.PendingAction;
+        var kind = pendingAction == PendingKeyAction.Paste || CountRunes(args.Text) > 1
+            ? TypingSoundKind.Paste
+            : TypingSoundKind.Input;
         tracking.PendingAction = PendingKeyAction.None;
-
-        var kind = CountRunes(args.Text) > 1 ? TypingSoundKind.Paste : TypingSoundKind.Input;
         Play(control, kind);
     }
 
@@ -180,11 +182,13 @@ public sealed partial class TypingSoundUIController
         if (!_trackedLineEdits.TryGetValue(control, out var tracking))
             return;
 
-        tracking.PendingAction = PendingKeyAction.None;
-
         if (IsGameChatInput(control))
+        {
+            tracking.PendingAction = PendingKeyAction.ChatSubmit;
             return;
+        }
 
+        tracking.PendingAction = PendingKeyAction.None;
         Play(control, TypingSoundKind.Submit);
     }
 

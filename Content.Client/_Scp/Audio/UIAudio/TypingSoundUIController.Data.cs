@@ -37,6 +37,7 @@ public sealed partial class TypingSoundUIController
         None,
         Paste,
         Delete,
+        ChatSubmit,
     }
 
     private enum TypingSoundKind : byte

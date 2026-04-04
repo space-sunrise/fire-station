@@ -61,8 +61,7 @@ public sealed class VigersCommand : LocalizedCommands
 
         if (enabled == null)
         {
-            if (mode is not ("autokick" or "autodeadmin"))
-                shell.WriteError(Loc.GetString("vigers-command-mode-unknown", ("mode", args[0])));
+            shell.WriteError(Loc.GetString("vigers-command-mode-unknown", ("mode", args[0])));
 
             return;
         }

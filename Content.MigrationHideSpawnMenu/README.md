@@ -4,7 +4,7 @@ CLI tool that synchronizes migration-related visibility for entity and construct
 
 ## What it does
 
-1. Reads `Resources/migration.yml` and collects direct `oldId -> newId` mappings where `newId` is not `null` or empty.
+1. Reads `Resources/migration.yml`, keeps every migrated `oldId`, and stores direct `oldId -> newId` mappings when `newId` is not `null` or empty.
 2. Scans `Resources/Prototypes/**/*.yml` for top-level `- type: entity`, `- type: construction`, and `- type: constructionGraph` blocks.
 3. For non-abstract, live entity prototypes with matching IDs:
    - adds `HideSpawnMenu` to inline `categories`,
@@ -12,7 +12,7 @@ CLI tool that synchronizes migration-related visibility for entity and construct
    - or creates `categories: [ HideSpawnMenu ]` when missing.
 4. For construction recipes, resolves `graph + targetNode` through `constructionGraph` nodes to the crafted entity and hides legacy recipes with `hide: true` when:
    - the crafted entity is an `oldId` from `migration.yml`,
-   - its mapped `newId` has at least one visible replacement construction recipe,
+   - its mapped non-empty `newId` has at least one visible replacement construction recipe,
    - and the legacy recipe is not already hidden.
 5. A replacement construction recipe is considered visible only when it does not have `hide: true`.
 6. Preserves existing categories, never creates duplicate `HideSpawnMenu`, and does not create new construction recipes.

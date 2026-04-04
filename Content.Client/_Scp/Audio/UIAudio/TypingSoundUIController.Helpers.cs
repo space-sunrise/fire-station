@@ -49,6 +49,7 @@ public sealed partial class TypingSoundUIController
         {
             PendingKeyAction.Paste => TypingSoundKind.Paste,
             PendingKeyAction.Delete => TypingSoundKind.Delete,
+            PendingKeyAction.ChatSubmit => null,
             _ => ClassifyByTextDelta(previousText, newText),
         };
     }
