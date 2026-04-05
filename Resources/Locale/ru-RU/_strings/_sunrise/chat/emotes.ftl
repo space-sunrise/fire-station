@@ -22,4 +22,3 @@ chat-emote-name-roar = Реветь
 chat-emote-name-rumble = Рокотать
 chat-emote-msg-roar = ревёт!
 chat-emote-msg-rumble = рокочет
-chat-emote-name-pain = Боль
