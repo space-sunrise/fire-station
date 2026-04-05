@@ -1,10 +1,6 @@
 # species
 - type: emoteSounds
   id: MaleHuman
-  params:
-  # Fire start
-    variation: 0
-  # Fire end
   sounds:
     Scream:
       collection: MaleScreams
@@ -53,10 +49,6 @@
 
 - type: emoteSounds
   id: FemaleHuman
-  params:
-  # Fire start
-    variation: 0
-  # Fire end
   sounds:
     Scream:
       collection: FemaleScreams

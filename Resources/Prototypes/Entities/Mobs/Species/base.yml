@@ -242,9 +242,7 @@
     thresholdDamage: 5
     coughInterval: 5
     emotesTakeDamage:
-    # Fire start
-    - Pain
-    # Fire end
+    - Pain # Fire
   - type: SolutionContainerManager
     solutions:
       food:
