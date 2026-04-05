@@ -64,6 +64,7 @@
   - Security
   - Armory
   - Checkpoint
+  - Bunker
 
 - type: accessGroup
   id: ScientificServiceHeadless
@@ -73,12 +74,14 @@
   - Safe
   - Euclid
   - Keter
+  - Bunker
 
 - type: accessGroup
   id: MedicalHeadless
   tags:
   - Medical
   - Laboratory
+  - Bunker
 
 - type: accessGroup
   id: EngineeringHeadless
@@ -86,16 +89,19 @@
   - Engineering
   - LifeSupport
   - Maintenance
+  - Bunker
 
 - type: accessGroup
   id: LogisticsHeadless
   tags:
   - Logistics
+  - Bunker
 
 - type: accessGroup
   id: ServiceHeadless
   tags:
   - Service
+  - Bunker
 
 - type: accessGroup
   id: AllComplex
@@ -115,3 +121,4 @@
   - Exit
   - EthicsCommittee
   - InternalTribunalService
+  - Bunker

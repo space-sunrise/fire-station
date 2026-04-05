@@ -1,3 +1,5 @@
+using Content.Client._Sunrise.Lobby.UI;
+using Content.Client._Scp.UI.Compatibility;
 using Content.Client.Administration.Managers;
 using Content.Client.Gameplay;
 using Content.Client.Lobby;
@@ -48,7 +50,7 @@ public sealed class MentorHelpUIController : UIController, IOnSystemChanged<Ment
     private static readonly SoundSpecifier? MentorHelpSound =
         new SoundPathSpecifier("/Audio/_Sunrise/Effects/adminticketopen.ogg", AudioParams.Default.WithVolume(-3f));
 
-    private Button? LobbyMHelpButton => (UIManager.ActiveScreen as LobbyGui)?.MHelpButton;
+    private Button? LobbyMHelpButton => (UIManager.ActiveScreen as SunriseLobbyGui)?.MHelpButton;
     private MenuButton? GameMHelpButton => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>()?.MHelpButton;
 
     protected override string SawmillName => "c.s.go.es.mhelp";
@@ -147,6 +149,11 @@ public sealed class MentorHelpUIController : UIController, IOnSystemChanged<Ment
             LobbyMHelpButton.OnPressed -= MHelpButtonPressed;
             LobbyMHelpButton.OnPressed += MHelpButtonPressed;
             LobbyMHelpButton.Pressed = UIHelper?.IsOpen ?? false;
+
+            // Fire added start
+            HoverColorHelper.SetContentColor(LobbyMHelpButton, HoverColorHelper.GetColorForCurrentState(LobbyMHelpButton));
+            // Fire added end
+
             UpdateButtonStyling();
         }
     }
@@ -198,9 +205,8 @@ public sealed class MentorHelpUIController : UIController, IOnSystemChanged<Ment
         UIHelper.TicketUpdated(message.Ticket);
 
         if (UIHelper.IsOpen && UIHelper.CurrentTicketId == message.Ticket.Id)
-        {
             _mentorHelpSystem?.RequestTicketMessages(message.Ticket.Id);
-        }
+
     }
 
     private void OnTicketsListReceived(object? sender, MentorHelpTicketsListMessage message)
@@ -209,6 +215,7 @@ public sealed class MentorHelpUIController : UIController, IOnSystemChanged<Ment
         foreach (var ticket in message.Tickets)
         {
             _ticketDataById[ticket.Id] = ticket;
+
             if (!IsRelevantTicket(ticket.Id))
                 _unreadTicketIds.Remove(ticket.Id);
         }
@@ -301,15 +308,10 @@ public sealed class MentorHelpUIController : UIController, IOnSystemChanged<Ment
             return;
 
         UIHelper?.Dispose();
-        var localUser = _playerManager.LocalUser;
-        if (localUser == null)
+        if (!TryGetLocalUserId(out var ownerUserId))
             return;
 
-        var ownerUserId = localUser.Value;
-
-        UIHelper = hasMentorPerms
-            ? new MentorMentorHelpUIHandler(ownerUserId, _mentorHelpSystem)
-            : new PlayerMentorHelpUIHandler(ownerUserId, _mentorHelpSystem);
+        UIHelper = CreateUiHandler(ownerUserId, hasMentorPerms);
 
         UIHelper.OnClose += () => { SetMentorHelpPressed(false); };
     }
@@ -319,7 +321,7 @@ public sealed class MentorHelpUIController : UIController, IOnSystemChanged<Ment
     /// </summary>
     public void Open()
     {
-        if (_playerManager.LocalUser == null)
+        if (!TryGetLocalUserId(out _))
             return;
 
         EnsureUIHelper();
@@ -329,6 +331,25 @@ public sealed class MentorHelpUIController : UIController, IOnSystemChanged<Ment
         UIHelper.OpenWindow();
 
         SetMentorHelpPressed(true);
+    }
+
+    private IMentorHelpUIHandler CreateUiHandler(NetUserId ownerUserId, bool hasMentorPerms)
+    {
+        return hasMentorPerms
+            ? new MentorMentorHelpUIHandler(ownerUserId, _mentorHelpSystem)
+            : new PlayerMentorHelpUIHandler(ownerUserId, _mentorHelpSystem);
+    }
+
+    private bool TryGetLocalUserId(out NetUserId userId)
+    {
+        if (_playerManager.LocalUser is not { } localUser)
+        {
+            userId = default;
+            return false;
+        }
+
+        userId = localUser;
+        return true;
     }
 
     /// <summary>
@@ -346,14 +367,15 @@ public sealed class MentorHelpUIController : UIController, IOnSystemChanged<Ment
         UnreadTicketsRead();
 
         if (GameMHelpButton != null)
-        {
             GameMHelpButton.Pressed = pressed;
-        }
 
         if (LobbyMHelpButton != null)
-        {
             LobbyMHelpButton.Pressed = pressed;
-        }
+
+        // Fire added start
+        if (LobbyMHelpButton != null)
+            HoverColorHelper.SetContentColor(LobbyMHelpButton, HoverColorHelper.GetColorForCurrentState(LobbyMHelpButton));
+        // Fire added end
     }
 
     private void UnreadTicketsRead()
@@ -389,6 +411,7 @@ public sealed class MentorHelpUIController : UIController, IOnSystemChanged<Ment
 
         if (unread)
             _unreadTicketIds.Add(ticketId);
+
         else
             _unreadTicketIds.Remove(ticketId);
 
@@ -511,6 +534,7 @@ public sealed class PlayerMentorHelpUIHandler : IMentorHelpUIHandler
         _window.MentorHelp.Initialize(_mentorHelpSystem, _ownerUserId, false);
         _window.OnClose += () =>
         {
+            _window?.MentorHelp.Cleanup();
             IsOpen = false;
             CurrentTicketId = null;
             OnClose?.Invoke();
@@ -606,6 +630,7 @@ public sealed class MentorMentorHelpUIHandler : IMentorHelpUIHandler
         _window.MentorHelp.Initialize(_mentorHelpSystem, _ownerUserId, true);
         _window.OnClose += () =>
         {
+            _window?.MentorHelp.Cleanup();
             IsOpen = false;
             CurrentTicketId = null;
             OnClose?.Invoke();

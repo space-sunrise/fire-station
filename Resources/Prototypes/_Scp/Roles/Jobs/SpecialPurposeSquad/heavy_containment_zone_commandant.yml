@@ -44,6 +44,7 @@
       - open-eye-phrase-2
       - open-eye-phrase-3
       - open-eye-phrase-4
+      speakOnAutomaticBlinking: true
     - type: Fear # переопределение компонента страха для СБ
       phobias:
       - Exoremophobia

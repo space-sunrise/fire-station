@@ -4,21 +4,11 @@
   equipment:
     head: ClothingHeadHatDirector
 
-- type: loadout
-  id: ScpLoadoutClothingHeadHatCapDirector
-  equipment:
-    head: ClothingHeadHatCapDirector
-
 # Униформа
 - type: loadout
   id: ScpLoadoutClothingUniformJumpsuitDirector
   equipment:
     jumpsuit: ClothingUniformJumpsuitDirector
-
-- type: loadout
-  id: ScpLoadoutClothingUniformJumpsuitBlueDirectorFormal
-  equipment:
-    jumpsuit: ClothingUniformJumpsuitBlueDirectorFormal
 
 # Верхняя одежда
 - type: loadout
@@ -27,10 +17,6 @@
     outerClothing: ClothingOuterCoatDirectorTrench
 
 # Перчатки
-- type: loadout
-  id: ScpLoadoutClothingHandsGlovesDirector
-  equipment:
-    gloves: ClothingHandsGlovesDirector
 
 - type: loadout
   id: ScpLoadoutClothingHandsGlovesDirectorSpecial
@@ -54,10 +40,3 @@
   id: ScpLoadoutClothingBackpackSatchelLeatherDirectorFilled
   equipment:
     back: ClothingBackpackSatchelLeatherDirectorFilled
-
-# В сумке
-- type: loadout
-  id: ScpLoadoutRubberStampCaptain
-  storage:
-    back:
-    - RubberStampCaptain

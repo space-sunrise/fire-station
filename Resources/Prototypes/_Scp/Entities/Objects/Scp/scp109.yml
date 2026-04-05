@@ -1,0 +1,27 @@
+﻿- type: entity
+  id: Scp109
+  parent:
+  - BaseItemScp
+  - DrinkFlaskOld
+  name: army flask
+  description: A standard 1899 United States Army water canteen.
+  suffix: SCP-109
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-109.rsi
+    state: icon
+  - type: Scp
+    class: Euclid # это в оригинале такое чудо
+  - type: Item
+    size: Small
+  - type: SolutionRegeneration
+    solution: drink
+    generated:
+      reagents:
+      - ReagentId: Water
+        Quantity: 2
+      - ReagentId: Omnizine
+        Quantity: 1
+  - type: GuideHelp
+    guides:
+    - ScpResearch

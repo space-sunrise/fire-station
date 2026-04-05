@@ -1,4 +1,5 @@
-﻿using Content.Shared.Radio;
+using Content.Server.GameTicking;
+using Content.Shared.Radio;
 using Robust.Shared.Audio;
 using Robust.Shared.Prototypes;
 
@@ -27,6 +28,9 @@ public sealed partial class ScpAnnounceOnSpawnComponent : Component
 
     [DataField]
     public bool IncludeJobName;
+
+    [DataField]
+    public GameRunLevel? RequiredGameRunLevel;
 
     [ViewVariables]
     public bool Announced;

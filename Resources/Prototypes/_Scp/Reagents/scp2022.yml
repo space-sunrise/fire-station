@@ -1,0 +1,58 @@
+﻿- type: reagent
+  id: Scp2022Reagent
+  name: reagent-name-scp2022
+  desc: reagent-desc-scp2022
+  physicalDesc: reagent-physical-desc-glowing
+  flavor: medicine
+  color: "#FFCC00"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.5
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp2022Reagent
+          min: 5
+        damage:
+          types:
+            Blunt: -0.5
+            Slash: -0.5
+            
+      - !type:ModifyStatusEffect
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp2022Reagent
+          min: 1
+        effectProto: StatusEffectDrowsiness
+        time: 10
+        type: Remove
+        
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp2022Reagent
+          min: 5
+        visualType: Large
+        messages: ["reagent-effect-scp2022-warmth"]
+        probability: 0.7
+        type: Local
+
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: 1.5
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp2022Reagent
+          min: 30
+          
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp2022Reagent
+          min: 30
+        visualType: Large
+        messages: ["reagent-effect-scp2022-heat-burn"]
+        probability: 0.7
+        type: Local

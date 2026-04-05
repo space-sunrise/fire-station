@@ -161,6 +161,7 @@
     - close-eye-phrase-2
     phraseOnOpen:
     - open-eye-phrase-3
+    speakOnAutomaticBlinking: true
     speakOnlyInScp173Chamber: false
   - type: Fear
     phobias:

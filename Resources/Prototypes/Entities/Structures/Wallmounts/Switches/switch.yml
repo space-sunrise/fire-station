@@ -70,6 +70,10 @@
     onPort: Pressed
     offPort: Pressed
     statusPort: Pressed
+    # Fire added start
+    clickSound:
+      path: /Audio/_Scp/Effects/Button/click.ogg
+    # Fire added end
   - type: Rotatable
   - type: Construction
     graph: SignalButtonGraph

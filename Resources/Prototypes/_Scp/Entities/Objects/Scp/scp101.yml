@@ -1,0 +1,59 @@
+﻿- type: entity
+  id: Scp101
+  parent: 
+  - BaseItemScp
+  - ClothingBeltStorageWaistbag
+  - BaseBagOpenClose
+  name: leather bag
+  description: A leather waist bag. You can hear faint breathing coming from inside.
+  suffix: SCP-101
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-101.rsi
+    layers:
+    - state: icon
+      map: ["closeLayer"]
+    - state: open
+      map: ["openLayer"]
+  - type: Appearance
+  - type: Scp
+    class: Euclid
+  - type: Item
+    size: Large
+  - type: RandomWalk # в оригинале этот сцп может чутка смещать себя для передвижения
+    minSpeed: 1.0
+    maxSpeed: 2.5
+    minStepCooldown: 6
+    maxStepCooldown: 16
+    stepOnStartup: true
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: TriggerOnInsertedIntoContainer
+    containerId: storagebase
+    keyOut: StartEat
+  - type: TimerTrigger
+    keysIn: [ StartEat ]
+    keyOut: EndEat
+    delay: 15
+    beepInterval: 15
+    beepSound:
+      path: /Audio/_Sunrise/FleshCult/devour_flesh_cultist.ogg
+    popup: scp-101-processing
+    examinable: false
+  - type: CleanContainersOnTrigger
+    keysIn: [ EndEat ]
+    container: [ storagebase ]
+  - type: Storage
+    showVerb: false
+    storageInsertSound: /Audio/_Sunrise/FleshCult/flesh_cultist_mutation.ogg
+    maxItemSize: Large
+    grid:
+    - 0,0,3,3
+    blacklist:
+      components:
+      - Scp
+      - StealTarget
+  - type: GuideHelp
+    guides:
+    - ScpResearch

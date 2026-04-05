@@ -53,7 +53,7 @@
         - to: start
           completed:
             - !type:SpawnPrototype
-              prototype: MaterialWoodPlank1
+              prototype: ScpMaterialWoodPlank1 # Fire edit
               amount: 10
           steps:
             - tool: Screwing

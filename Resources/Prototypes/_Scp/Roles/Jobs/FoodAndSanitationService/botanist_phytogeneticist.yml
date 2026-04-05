@@ -11,6 +11,7 @@
   weight: 730
   access:
   - Service
+  - Bunker
   special:
   - !type:GiveItemOnHolidaySpecial
     holiday: FourTwenty

@@ -1,4 +1,4 @@
-﻿using Content.Shared.Actions;
+using Content.Shared.Actions;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.Flash;
@@ -66,7 +66,7 @@ public abstract partial class SharedBlinkingSystem
             return;
 
         var newState = ent.Comp.State == EyesState.Closed ? EyesState.Opened : EyesState.Closed;
-        args.Handled = TrySetEyelids((ent.Owner, ent.Comp), newState, true);
+        args.Handled = TrySetEyelids((ent.Owner, ent.Comp), newState, closeMode: EyeCloseReason.Action);
     }
 
     private void OnTrySee(Entity<BlinkableComponent> ent, ref CanSeeAttemptEvent args)
@@ -74,7 +74,7 @@ public abstract partial class SharedBlinkingSystem
         if (ent.Comp.State == EyesState.Opened)
             return;
 
-        if (!ent.Comp.ManuallyClosed && !IsScpNearby(ent))
+        if (!RequiresExplicitOpen(ent.Comp.CloseMode) && !IsScpNearby(ent))
             return;
 
         args.Cancel();
@@ -85,7 +85,7 @@ public abstract partial class SharedBlinkingSystem
         if (args.FellAsleep)
             return;
 
-        TrySetEyelids((ent.Owner, ent.Comp), EyesState.Opened, true);
+        TrySetEyelids((ent.Owner, ent.Comp), EyesState.Opened);
     }
 
     private void OnTryingSleep(Entity<BlinkableComponent> ent, ref TryingToSleepEvent args)
@@ -93,7 +93,7 @@ public abstract partial class SharedBlinkingSystem
         if (args.Cancelled)
             return;
 
-        TrySetEyelids((ent.Owner, ent.Comp), EyesState.Closed, true);
+        TrySetEyelids((ent.Owner, ent.Comp), EyesState.Closed, closeMode: EyeCloseReason.Sleep);
     }
 
     /// <summary>
@@ -141,15 +141,13 @@ public abstract partial class SharedBlinkingSystem
     /// </summary>
     /// <param name="ent">Сущность, способная моргать</param>
     /// <param name="newState">Устанавливаемое состояние глаз. Закрыть/открыть</param>
-    /// <param name="manual">Закрыли ли глаза вручную?</param>
     /// <param name="predicted">Будет ли ивент смены состояния глаз вызван локально(при true) или как network event(при false)</param>
-    /// <param name="useEffects">Будут ли использованы эффекты: черный оверлей, звуки?</param>
     /// <param name="customBlinkDuration">Если нужно вручную задать время, которое игрок проведет с закрытыми глазами</param>
+    /// <param name="closeMode">Режим закрытия глаз. Используется только при их закрытии.</param>
     public bool TrySetEyelids(Entity<BlinkableComponent?> ent,
         EyesState newState,
-        bool manual = false,
         bool predicted = true,
-        bool useEffects = false,
+        EyeCloseReason closeMode = EyeCloseReason.Blink,
         TimeSpan? customBlinkDuration = null)
     {
         if (!BlinkableQuery.Resolve(ent, ref ent.Comp))
@@ -161,7 +159,7 @@ public abstract partial class SharedBlinkingSystem
         if (!CanToggleEyes((ent.Owner, ent.Comp), newState))
             return false;
 
-        SetEyelids((ent.Owner, ent.Comp), newState, manual, predicted, useEffects, customBlinkDuration);
+        SetEyelids((ent.Owner, ent.Comp), newState, predicted, closeMode, customBlinkDuration);
 
         return true;
     }
@@ -177,10 +175,10 @@ public abstract partial class SharedBlinkingSystem
         if (_mobState.IsIncapacitated(ent))
             return false;
 
-        // Если в данный момент глаза закрыты(то есть мы хотим их открыть)
-        // То мы должны проверить, имеет ли право персонаж открыть глаза сейчас
-        if (newState == EyesState.Opened && !ent.Comp.ManuallyClosed)
-            return !IsBlind(ent.AsNullable()); // Можем открыть глаза, если мы не моргаем в данный момент
+        // Если в данный момент глаза закрыты(то есть мы хотим их открыть),
+        // то мы должны проверить, имеет ли право персонаж открыть глаза сейчас.
+        if (newState == EyesState.Opened && !RequiresExplicitOpen(ent.Comp.CloseMode))
+            return !IsBlind(ent.AsNullable());
         else
             return true;
     }
@@ -195,7 +193,6 @@ public abstract partial class SharedBlinkingSystem
         if (!BlinkableQuery.Resolve(ent.Owner, ref ent.Comp, false))
             return false;
 
-        // Мб одна из проверок лишняя, но ладно пусть будет. Не сильная потеря производительности
         if (!IsBlind(ent) || ent.Comp.State != EyesState.Closed)
             return false;
 
@@ -213,7 +210,7 @@ public abstract partial class SharedBlinkingSystem
         if (ent.Comp.State == EyesState.Opened)
             return false;
 
-        if (!ent.Comp.ManuallyClosed && !ent.Comp.NextOpenEyesRequiresEffects)
+        if (!RequiresExplicitOpen(ent.Comp.CloseMode) && !RequiresOpenEffects(ent.Comp.CloseMode))
             return false;
 
         return true;
@@ -224,6 +221,9 @@ public abstract partial class SharedBlinkingSystem
     private bool TryOpenEyes(Entity<BlinkableComponent> ent)
     {
         if (_timing.CurTime < ent.Comp.BlinkEndTime)
+            return false;
+
+        if (RequiresExplicitOpen(ent.Comp.CloseMode) || ent.Comp.CloseMode == EyeCloseReason.None)
             return false;
 
         if (!TrySetEyelids(ent.Owner, EyesState.Opened))
@@ -237,50 +237,41 @@ public abstract partial class SharedBlinkingSystem
     /// </summary>
     /// <param name="ent">Сущность, которой будет установлено состояние</param>
     /// <param name="newState">Новое состояние глаз, которое мы хотим установить</param>
-    /// <param name="manual">Устанавливается вручную(игрок нажал на кнопку закрытия глаз)?</param>
     /// <param name="predicted">Будет ли ивент смены состояния глаз вызван локально(при true) или как network event(при false)</param>
-    /// <param name="useEffects">Будут ли использованы эффекты: черный оверлей, звуки?</param>
     /// <param name="customBlinkDuration">Если нужно использовать какое-то отличное от стандарта время, которое игрок проведет с закрытыми глазами</param>
-    /// <remarks>
-    /// Поле manual влияет на то, будут ли глаза автоматически открыты после КД.
-    /// Если глаза закрыты вручную, то их нужно будет и открывать вручную
-    /// </remarks>
+    /// <param name="closeMode">Режим закрытия глаз. Используется только при их закрытии.</param>
     private void SetEyelids(Entity<BlinkableComponent> ent,
         EyesState newState,
-        bool manual = false,
         bool predicted = true,
-        bool useEffects = false,
+        EyeCloseReason closeMode = EyeCloseReason.Blink,
         TimeSpan? customBlinkDuration = null)
     {
         var oldState = ent.Comp.State;
-        var openEyesRequiresEffects = ent.Comp.NextOpenEyesRequiresEffects;
+        var oldMode = ent.Comp.CloseMode;
         ent.Comp.State = newState;
-        ent.Comp.ManuallyClosed = manual;
-        ent.Comp.NextOpenEyesRequiresEffects = useEffects && newState == EyesState.Closed;
+        ent.Comp.CloseMode = newState == EyesState.Closed ? closeMode : EyeCloseReason.None;
 
         DirtyFields(ent.AsNullable(),
             null,
             nameof(BlinkableComponent.State),
-            nameof(BlinkableComponent.ManuallyClosed),
-            nameof(BlinkableComponent.NextOpenEyesRequiresEffects));
+            nameof(BlinkableComponent.CloseMode));
 
         if (newState == EyesState.Closed)
         {
-            var closedEvent = new EntityClosedEyesEvent(manual, useEffects, customBlinkDuration);
+            var closedEvent = new EntityClosedEyesEvent(closeMode, RequiresOpenEffects(closeMode), customBlinkDuration);
             RaiseLocalEvent(ent, ref closedEvent);
         }
-
         else
         {
-            var openedEvent =
-                new EntityOpenedEyesEvent(manual, useEffects || openEyesRequiresEffects, customBlinkDuration);
+            var openedEvent = new EntityOpenedEyesEvent(oldMode, RequiresOpenEffects(oldMode), customBlinkDuration);
             RaiseLocalEvent(ent, ref openedEvent);
         }
 
+        var mode = newState == EyesState.Closed ? closeMode : oldMode;
         if (predicted)
-            RaiseLocalEvent(ent, new EntityEyesStateChanged(oldState, newState, manual));
+            RaiseLocalEvent(ent, new EntityEyesStateChanged(oldState, newState, mode, RequiresOpenEffects(mode)));
         else
-            RaiseNetworkEvent(new EntityEyesStateChanged(oldState, newState, manual, useEffects, GetNetEntity(ent)));
+            RaiseNetworkEvent(new EntityEyesStateChanged(oldState, newState, mode, RequiresOpenEffects(mode), GetNetEntity(ent)));
 
         if (ent.Comp.EyeToggleActionEntity != null)
         {
@@ -299,18 +290,13 @@ public abstract partial class SharedBlinkingSystem
         if (args.NewMobState != MobState.Dead && args.NewMobState != MobState.Critical)
             return;
 
-        SetEyelids(ent, EyesState.Closed, true);
+        SetEyelids(ent, EyesState.Closed, false, EyeCloseReason.Incapacitated);
     }
 
     /// <summary>
     /// Вспомогательный метод, который требуется для создания эффект закрытия глаз на спрайте.
     /// Получает исходный цвет кожи и возвращает его более темную версию.
-    /// <remarks>
-    /// Более темная версия цвета кожи нужна, чтобы не создавалось ощущение, будто глаза пропали
-    /// </remarks>
     /// </summary>
-    /// <param name="original">Цвет кожи персонажа</param>
-    /// <returns>Более темный цвет кожи</returns>
     private static Color DarkenSkinColor(Color original)
     {
         var hsl = Color.ToHsl(original);
@@ -321,6 +307,18 @@ public abstract partial class SharedBlinkingSystem
         var newHsl = hsl with { Z = newLightness };
 
         return Color.FromHsl(newHsl);
+    }
+
+    protected static bool RequiresExplicitOpen(EyeCloseReason mode)
+    {
+        return mode == EyeCloseReason.Action ||
+               mode == EyeCloseReason.Sleep ||
+               mode == EyeCloseReason.Incapacitated;
+    }
+
+    protected static bool RequiresOpenEffects(EyeCloseReason mode)
+    {
+        return mode == EyeCloseReason.Force;
     }
 }
 

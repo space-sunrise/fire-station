@@ -740,14 +740,16 @@
 - type: entity
   id: ScpComputerTelevision
   parent:
-  - ScpComputerSurveillanceWirelessCameraMonitor
   - ComputerTelevision
   components:
+  - type: Construction
+    graph: ScpComputer
   - type: Sprite
+    sprite: _Scp/Structures/Machines/computers.rsi
     layers:
-    - map: ["computerLayerBody"]
+    - map: [ "computerLayerBody" ]
       state: television
-    - map: ["computerLayerScreen"]
+    - map: [ "computerLayerScreen" ]
       state: detective_television
 
 - type: entity

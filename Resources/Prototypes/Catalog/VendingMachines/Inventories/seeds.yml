@@ -35,7 +35,7 @@
     SugarcaneSeeds: 5
     TeaPlantSeeds: 5
     TomatoSeeds: 5
-    TowercapSeeds: 5
+    ScpTowercapSeeds: 5 # Fire edit
     WheatSeeds: 5
     WatermelonSeeds: 5
     CoffeeArabicaSeeds: 5 # Sunrise-add
@@ -46,4 +46,3 @@
     TobaccoSeeds: 2
     FoodSnackSemki: 2
     FlyAmanitaSeeds: 1
-

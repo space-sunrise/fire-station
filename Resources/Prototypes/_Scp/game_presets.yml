@@ -23,6 +23,7 @@
   - SendDocumentSafeMode
   - BasicFoundationEventScheduler
   - ScpMetaGarbageSpawn
+  - FreeScpRule
 
 - type: gamePreset
   id: Euclid
@@ -37,6 +38,7 @@
   - SendDocumentEuclidMode
   - BasicFoundationEventScheduler
   - ScpMetaGarbageSpawn
+  - FreeScpRule
 
 - type: gamePreset
   id: Keter
@@ -51,6 +53,7 @@
   - SendDocumentKeterMode
   - BasicFoundationEventScheduler
   - ScpMetaGarbageSpawn
+  - FreeScpRule
 
 - type: gamePreset
   id: Thaumiel
@@ -65,3 +68,4 @@
   - SendDocumentThaumielMode
   - BasicFoundationEventScheduler
   - ScpMetaGarbageSpawn
+  - FreeScpRule

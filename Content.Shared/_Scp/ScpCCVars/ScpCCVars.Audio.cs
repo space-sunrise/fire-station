@@ -5,6 +5,55 @@ namespace Content.Shared._Scp.ScpCCVars;
 public sealed partial class ScpCCVars
 {
     /*
+     * UI typing sounds
+     */
+
+    /// <summary>
+    /// Enables client-side sounds for text input controls.
+    /// </summary>
+    public static readonly CVarDef<bool> TypingSoundEnabled =
+        CVarDef.Create("scp.typing_sound_enabled", true, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    public static readonly CVarDef<bool> TypingChatSubmitSoundEnabled =
+        CVarDef.Create("scp.typing_chat_submit_sound_enabled", false, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Base sound specifier for typed characters. Accepts either a resource path or a sound collection id.
+    /// </summary>
+    public static readonly CVarDef<string> TypingSound =
+        CVarDef.Create("scp.typing_sound", "Typing", CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Override sound specifier for paste actions. Empty value falls back to <see cref="TypingSound"/>.
+    /// </summary>
+    public static readonly CVarDef<string> TypingPasteSound =
+        CVarDef.Create("scp.typing_paste_sound", "Paste", CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Override sound specifier for submit or enter actions. Empty value falls back to <see cref="TypingPasteSound"/>.
+    /// </summary>
+    public static readonly CVarDef<string> TypingSubmitSound =
+        CVarDef.Create("scp.typing_submit_sound", "Paste", CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Override sound specifier for delete actions. Empty value falls back to <see cref="TypingSound"/>.
+    /// </summary>
+    public static readonly CVarDef<string> TypingDeleteSound =
+        CVarDef.Create("scp.typing_delete_sound", string.Empty, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Multiplier applied to the base UI typing gain before interface volume is applied.
+    /// </summary>
+    public static readonly CVarDef<float> TypingSoundVolume =
+        CVarDef.Create("scp.typing_sound_volume", 13f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Base random pitch deviation for typing sounds. Mirrors the behavior of <see cref="Robust.Shared.Audio.AudioParams.Variation"/>.
+    /// </summary>
+    public static readonly CVarDef<float> TypingSoundVariance =
+        CVarDef.Create("scp.typing_sound_variance", 0.15f, CVar.CLIENTONLY | CVar.ARCHIVE);
+
+    /*
      * Echo
      */
 

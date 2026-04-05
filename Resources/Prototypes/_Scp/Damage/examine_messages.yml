@@ -25,6 +25,12 @@
     count: 6
 
 - type: localizedDataset
+  id: ScpWallWoodMessages
+  values:
+    prefix: scp-wall-wood-damaged-
+    count: 6
+
+- type: localizedDataset
   id: ScpWallScp096ContainmentMessages
   values:
     prefix: scp-wall-scp096-containment-damaged-
@@ -54,6 +60,12 @@
   id: ScpWallBrickEngineeringMessages
   values:
     prefix: scp-wall-brick-damaged-engineering-
+    count: 6
+
+- type: localizedDataset
+  id: ScpWallWoodEngineeringMessages
+  values:
+    prefix: scp-wall-wood-damaged-engineering-
     count: 6
 
 - type: localizedDataset

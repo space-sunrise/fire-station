@@ -45,7 +45,7 @@
     neck: ClothingNeckMantleRD
   effects:
   - !type:GroupLoadoutEffect
-    proto: MasterRD
+    proto: ScpMasterScientificServiceDirector
 
 # Outer Clothing
 - type: loadout

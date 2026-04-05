@@ -18,10 +18,11 @@ public sealed class ScpHelpers : EntitySystem
     public FixedPoint2 GetAroundSolutionVolume(EntityUid uid,
         ProtoId<ReagentPrototype> reagent,
         List<EntityUid> puddleList,
-        LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
+        LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent,
+        LookupFlags flags = LookupFlags.StaticSundries | LookupFlags.Sensors | LookupFlags.Approximate)
     {
         using var puddles = ListPoolEntity<PuddleComponent>.Rent();
-        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, LookupFlags.Static | LookupFlags.Approximate))
+        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, flags))
             return FixedPoint2.Zero;
 
         FixedPoint2 total = 0;
@@ -50,10 +51,11 @@ public sealed class ScpHelpers : EntitySystem
     /// </summary>
     public FixedPoint2 GetAroundSolutionVolume(EntityUid uid,
         ProtoId<ReagentPrototype> reagent,
-        LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
+        LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent,
+        LookupFlags flags = LookupFlags.StaticSundries | LookupFlags.Sensors | LookupFlags.Approximate)
     {
         using var puddles = ListPoolEntity<PuddleComponent>.Rent();
-        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, LookupFlags.Static | LookupFlags.Approximate))
+        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, flags))
             return FixedPoint2.Zero;
 
         FixedPoint2 total = 0;
@@ -79,10 +81,11 @@ public sealed class ScpHelpers : EntitySystem
     public bool IsAroundSolutionVolumeGreaterThan(EntityUid uid,
         ProtoId<ReagentPrototype> reagent,
         FixedPoint2 required,
-        LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent)
+        LineOfSightBlockerLevel lineOfSight = LineOfSightBlockerLevel.Transparent,
+        LookupFlags flags = LookupFlags.StaticSundries | LookupFlags.Sensors | LookupFlags.Approximate)
     {
         using var puddles = ListPoolEntity<PuddleComponent>.Rent();
-        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, LookupFlags.Static | LookupFlags.Approximate))
+        if (!_watching.TryGetAllEntitiesVisibleTo(uid, puddles.Value, lineOfSight, flags))
             return false;
 
         FixedPoint2 total = 0;

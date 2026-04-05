@@ -9,7 +9,7 @@ namespace Content.Shared._Scp.Watching.FOV;
 public sealed partial class FieldOfViewComponent : Component
 {
     public const float MaxOpacity = 0.95f;
-    public const float MinOpacity = 0.55f;
+    public const float MinOpacity = 0.15f;
 
     public const float MaxBlurScale = 1f;
     public const float MinBlurScale = 0.25f;

@@ -85,6 +85,11 @@
             True: { visible: True }
             False: { visible: False }
     - type: AnimationPlayer
+    # Fire added start
+    - type: Tag
+      tags:
+      - ScpMuffleCountsThisAsNone
+    # Fire added end
 
 - type: entity
   id: ClockworkGrille
@@ -105,6 +110,11 @@
     graph: ClockGrille
     node: clockGrille
     deconstructionTarget: start
+  # Fire added start
+  - type: Tag
+    tags:
+    - ScpMuffleCountsThisAsNone
+  # Fire added end
 
 - type: entity
   id: GrilleBroken
@@ -134,6 +144,7 @@
   - type: Tag
     tags:
     - ForceNoFixRotations
+    - ScpMuffleCountsThisAsNone # Fire added
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: FlimsyMetallic
@@ -164,6 +175,11 @@
   - type: Construction
     graph: ClockGrille
     node: clockGrilleBroken
+  # Fire added start
+  - type: Tag
+    tags:
+    - ScpMuffleCountsThisAsNone
+  # Fire added end
 
 - type: entity
   id: GrilleDiagonal
@@ -186,6 +202,7 @@
   - type: Tag
     tags:
     - Diagonal
+    - ScpMuffleCountsThisAsNone # Fire added
   - type: Fixtures
     fixtures:
       fix1:
@@ -224,6 +241,7 @@
   - type: Tag
     tags:
     - Diagonal
+    - ScpMuffleCountsThisAsNone # Fire added
   - type: Fixtures
     fixtures:
       fix1:

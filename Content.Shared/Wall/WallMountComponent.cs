@@ -25,4 +25,15 @@ public sealed partial class WallMountComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("direction"), AutoNetworkedField]
     public Angle Direction = Angle.Zero;
+
+    // Fire added start
+    /// <summary>
+    ///     Whether audio emitted by this wall-mount should ignore anchored blockers on its own tile when heard from
+    ///     within the allowed wall-mount arc. This prevents sounds from being treated as fully behind the wall they
+    ///     are mounted on.
+    /// </summary>
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField, AutoNetworkedField]
+    public bool IgnoreAudioOcclusion = true;
+    // Fire added end
 }

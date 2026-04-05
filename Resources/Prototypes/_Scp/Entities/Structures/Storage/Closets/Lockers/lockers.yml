@@ -460,7 +460,7 @@
     damageCoefficient: 0.50
   - type: AntiRottingContainer
   - type: Construction
-    graph: ClosetFreezer
+    graph: ScpClosetFreezer
     node: done
     containers:
     - entity_storage

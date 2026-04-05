@@ -1,123 +1,86 @@
 {
     "version": 1,
     "license": "CLA",
-    "copyright": "Made by MIDUZKA (discord) for Fire Station",
+    "copyright": "Sprite for Fire Station. For additional info see copyright field on each state",
     "size": {
         "x": 32,
         "y": 32
     },
     "states": [
         {
-            "name": "bar",
-            "directions": 4
-        },
-        {
             "name": "office-grey",
-            "directions": 4
-        },
-        {
-            "name": "bar-knocked",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by odlieerr(discord), continued by MIDUZKA (discord)"
         },
         {
             "name": "chair",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by odlieerr(discord), continued by MIDUZKA (discord)"
         },
         {
             "name": "chair-knocked",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by odlieerr(discord), continued by MIDUZKA (discord)"
         },
         {
             "name": "chair_grayscale_legs",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by odlieerr(discord), continued and split into 2 parts by MIDUZKA (discord)"
         },
         {
             "name": "chair_grayscale_legs-knocked",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by odlieerr(discord), continued and split into 2 parts by MIDUZKA (discord)"
         },
         {
             "name": "chair_grayscale_seat",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by odlieerr(discord), continued and split into 2 parts by MIDUZKA (discord)"
         },
         {
             "name": "chair_grayscale_seat-knocked",
-            "directions": 4
-        },
-        {
-            "name": "comfy",
-            "directions": 4
-        },
-        {
-            "name": "comfy-overlay",
-            "directions": 4
-        },
-        {
-            "name": "meat",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by odlieerr(discord), continued and split into 2 parts by MIDUZKA (discord)"
         },
         {
             "name": "office-dark",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by odlieerr(discord), continued by MIDUZKA (discord)"
         },
         {
             "name": "office-white",
-            "directions": 4
-        },
-        {
-            "name": "shuttle",
-            "directions": 4
-        },
-        {
-            "name": "shuttle-overlay",
-            "directions": 4
-        },
-        {
-            "name": "stool",
-            "directions": 4
-        },
-        {
-            "name": "stool-knocked",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by odlieerr(discord), continued by MIDUZKA (discord)"
         },
         {
             "name": "wooden",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by peperino0290_92944(discord)"
         },
         {
             "name": "wooden-bench",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by peperino0290_92944(discord)"
         },
         {
             "name": "wooden-wings",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by peperino0290_92944(discord)"
         },
         {
             "name": "wooden-wings-knocked",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by peperino0290_92944(discord)"
         },
         {
             "name": "ritual",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by peperino0290_92944(discord)"
         },
         {
             "name": "cursed",
-            "directions": 4
-        },
-        {
-            "name": "steel-bench",
-            "directions": 4
-        },
-        {
-            "name": "brass_chair",
-            "directions": 4
-        },
-        {
-            "name": "xeno-chair",
-            "directions": 4
-        },
-        {
-            "name": "card-stool",
-            "directions": 4
+            "directions": 4,
+            "copyright": "Made by peperino0290_92944(discord)"
         }
     ]
 }

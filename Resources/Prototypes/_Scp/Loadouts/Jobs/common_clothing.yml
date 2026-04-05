@@ -19,7 +19,7 @@
   id: ScpLoadoutClothingHandsGlovesFingerlessInsulated
   effects:
   - !type:GroupLoadoutEffect
-    proto: GreyTider
+    proto: ScpGreyTider
   equipment:
     gloves: ClothingHandsGlovesFingerlessInsulated
 

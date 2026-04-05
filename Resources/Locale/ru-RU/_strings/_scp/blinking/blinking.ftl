@@ -5,8 +5,14 @@ eye-droplets-end = Глаза пересохли, кажется капли вы
 close-eye-phrase-1 = Моргаю!
 close-eye-phrase-2 = Моргаю!!
 close-eye-phrase-3 = Закрываю глаза
-close-eye-phrase-4 = Закрыл
-open-eye-phrase-1 = Открыл глаза
+close-eye-phrase-4 = { GENDER($entity) ->
+    [female] Закрыла
+    *[other] Закрыл
+}
+open-eye-phrase-1 = { GENDER($entity) ->
+    [female] Открыла глаза
+    *[other] Открыл глаза
+}
 open-eye-phrase-2 = Открываю глаза
 open-eye-phrase-3 = Смотрю
 open-eye-phrase-4 = Вижу

@@ -67,6 +67,9 @@ public sealed partial class ContentAudioSystem : SharedContentAudioSystem
             Audio.SetGain(restartAudio, oldAudioGain.Value, restartComp);
         }
         PlayRestartSound(ev);
+        // Sunrise added start - clear end-round music rotation when the round returns to lobby.
+        HandleSunriseRoundEndMusicCleanup();
+        // Sunrise added end
     }
 
     public override void Shutdown()
@@ -85,6 +88,9 @@ public sealed partial class ContentAudioSystem : SharedContentAudioSystem
 
         UpdateAmbientMusic();
         UpdateLobbyMusic();
+        // Sunrise added start - keep end-round music rotating while the summary screen is open.
+        UpdateSunriseRoundEndMusic();
+        // Sunrise added end
         UpdateFades(frameTime);
     }
 

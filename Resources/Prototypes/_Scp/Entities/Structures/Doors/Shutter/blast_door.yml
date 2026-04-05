@@ -65,3 +65,12 @@
     node: frame1
   placement:
     mode: SnapgridCenter
+
+# Bunker Blast Door
+- type: entity
+  id: ScpBunkerBlastDoor
+  parent: ScpBlastDoor
+  name: bunker blast door
+  description: This one says 'BLAST DONGER'.
+  components:
+  - type: BunkerMarker

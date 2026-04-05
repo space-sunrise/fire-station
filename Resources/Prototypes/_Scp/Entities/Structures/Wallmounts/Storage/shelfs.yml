@@ -1,0 +1,38 @@
+- type: entity
+  parent: ShelfWood
+  id: ScpShelfWood
+  components:
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: _Scp/Structures/Storage/Shelfs/wood.rsi
+    state: base
+  - type: Construction
+    graph: ScpShelf
+    node: ShelfWood
+
+- type: entity
+  parent: ShelfRWood
+  id: ScpShelfRWood
+  components:
+  - type: Sprite
+    drawdepth: WallMountedItems
+    sprite: _Scp/Structures/Storage/Shelfs/wood.rsi
+    state: base
+    layers:
+    - state: rbase
+      map: [ "enum.StorageVisualLayers.Base" ]
+    - state: closed
+      map: [ "enum.StorageVisualLayers.Door" ]
+    - state: locked
+      map: [ "enum.LockVisualLayers.Lock" ]
+      shader: unshaded
+  - type: Construction
+    graph: ScpShelf
+    node: ShelfRWood
+
+- type: entity
+  parent: ShelfBar
+  id: ScpShelfBar
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Storage/Shelfs/Departments/Service/bar.rsi

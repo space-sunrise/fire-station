@@ -105,3 +105,19 @@
 - type: tileAlias
   id: FloorBlue
   target: ScpFloorBlue
+
+- type: tileAlias
+  id: FloorWood
+  target: ScpFloorWood
+
+- type: tileAlias
+  id: FloorWoodLarge
+  target: ScpFloorWoodLarge
+
+- type: tileAlias
+  id: FloorWoodTile
+  target: ScpFloorWoodPattern
+
+- type: tileAlias
+  id: FloorBrokenWood
+  target: ScpFloorWoodBroken

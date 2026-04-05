@@ -1,6 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using Content.Server._Sunrise.Helpers;
 using Content.Server.Chat.Systems;
+using Content.Server.GameTicking;
 using Content.Server.Mind;
 using Content.Server.Radio.EntitySystems;
 using Content.Server.Roles.Jobs;
@@ -17,6 +18,7 @@ public sealed class ScpAnnounceOnSpawnSystem : EntitySystem
     [Dependency] private readonly ChatSystem _chat = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly StationSystem _station = default!;
+    [Dependency] private readonly GameTicker _gameTicker = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
     [Dependency] private readonly SunriseHelpersSystem _helpers = default!;
@@ -42,6 +44,9 @@ public sealed class ScpAnnounceOnSpawnSystem : EntitySystem
         if (!ent.Comp.AnnounceOnMapInit)
             return;
 
+        if (!CanAnnounce(ent.Comp))
+            return;
+
         Announce(ent);
     }
 
@@ -51,6 +56,9 @@ public sealed class ScpAnnounceOnSpawnSystem : EntitySystem
             return;
 
         if (!ent.Comp.AnnounceOnArrival)
+            return;
+
+        if (!CanAnnounce(ent.Comp))
             return;
 
         Announce(ent);
@@ -70,6 +78,9 @@ public sealed class ScpAnnounceOnSpawnSystem : EntitySystem
 
         var station = _station.GetOwningStation(ent, args.Transform);
         if (!station.HasValue)
+            return;
+
+        if (!CanAnnounce(ent.Comp))
             return;
 
         Announce(ent);
@@ -137,5 +148,11 @@ public sealed class ScpAnnounceOnSpawnSystem : EntitySystem
             return false;
 
         return true;
+    }
+
+    private bool CanAnnounce(ScpAnnounceOnSpawnComponent component)
+    {
+        return component.RequiredGameRunLevel == null ||
+               _gameTicker.RunLevel == component.RequiredGameRunLevel;
     }
 }

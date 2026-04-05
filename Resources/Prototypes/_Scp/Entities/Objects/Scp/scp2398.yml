@@ -1,6 +1,6 @@
 ﻿- type: entity
   parent:
-  - BaseBallBat
+  - ScpBaseBallBat
   - BaseItemScp
   id: Scp2398
   suffix: SCP-2398

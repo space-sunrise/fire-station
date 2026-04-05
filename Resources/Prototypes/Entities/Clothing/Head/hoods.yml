@@ -158,6 +158,7 @@
 - type: entity
   parent: ClothingHeadBase
   id: ClothingHeadHatHoodRad
+  categories: [ HideSpawnMenu ] # Fire edit
   name: radiation hood
   description: A hood of the hazmat suit, designed for protection from high radioactivity.
   components:

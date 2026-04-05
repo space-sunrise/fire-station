@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   abstract: true
   parent: BaseStructure
   id: BaseMaterialDoor
@@ -223,6 +223,7 @@
 - type: entity
   parent: BaseMaterialDoorNavMap
   id: WoodDoor
+  categories: [ HideSpawnMenu ] # Fire edit
   name: wooden door
   components:
   - type: Pierceable

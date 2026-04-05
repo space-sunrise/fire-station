@@ -36,8 +36,8 @@ public sealed class WarpingOverlaySystem : EntitySystem
         Toggle(args.Enable);
 
         // Переключаем лишние шейдеры, их все равно почти не будет видно
-        _grain.ToggleOverlay(args.Enable);
-        _vignette.ToggleOverlay(args.Enable);
+        _grain.ToggleOverlay();
+        _vignette.ToggleOverlay();
     }
 
     public void Toggle(bool enable)

@@ -70,9 +70,12 @@
         - SecurePlasmaWindoor
         - SecureUraniumWindoor
         - Scp173DamageOnCollide
+        components:
+        - EntityStorage
+        - VendingMachine
       damage:
         types:
-          Blunt: 8
+          Blunt: 14
   - type: MovementSpeedModifier
     baseWalkSpeed: 5
     baseSprintSpeed: 12

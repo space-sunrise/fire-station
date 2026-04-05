@@ -1,4 +1,4 @@
-﻿using Content.Shared.Alert;
+using Content.Shared.Alert;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
@@ -68,20 +68,12 @@ public sealed partial class BlinkableComponent : Component
     public EyesState State = EyesState.Opened;
 
     /// <summary>
-    /// Закрыты ли глаза вручную?
-    /// Обозначает, что следующее открытие глаз требуется сделать так же вручную.
+    /// Текущий режим закрытия глаз.
+    /// Определяет, должны ли глаза открываться автоматически,
+    /// требуется ли явное открытие и нужны ли дополнительные эффекты.
     /// </summary>
-    /// TODO: Переименовать в ManuallyStateChanged
     [ViewVariables, AutoNetworkedField]
-    public bool ManuallyClosed;
-
-    /// <summary>
-    /// Нужно ли показывать игроку эффекты при следующем открытии глаз.
-    /// Используется, когда глаза игрока были закрыты через код
-    /// </summary>
-    /// TODO: Переименовать в ForceStateChanged
-    [ViewVariables, AutoNetworkedField]
-    public bool NextOpenEyesRequiresEffects;
+    public EyeCloseReason CloseMode;
 
     /// <summary>
     /// Айди прототипа способности закрыть глаза
@@ -92,7 +84,7 @@ public sealed partial class BlinkableComponent : Component
     /// <summary>
     /// Сущность способности закрыть глаза вручную
     /// </summary>
-    [NonSerialized]
+    [ViewVariables, NonSerialized]
     public EntityUid? EyeToggleActionEntity;
 
     /// <summary>
@@ -107,7 +99,6 @@ public sealed partial class BlinkableComponent : Component
     public GameTick? LastClientSideVisualsAttemptTick;
 
     #endregion
-
 }
 
 /// <summary>
@@ -124,6 +115,20 @@ public enum EyesState : byte
 {
     Closed = 0,
     Opened = 1,
+}
+
+/// <summary>
+/// Режим, в котором находятся закрытые глаза.
+/// </summary>
+[Serializable, NetSerializable]
+public enum EyeCloseReason : byte
+{
+    None = 0,
+    Blink = 1,
+    Action = 2,
+    Sleep = 3,
+    Force = 4,
+    Incapacitated = 5,
 }
 
 /// <summary>

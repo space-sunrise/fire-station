@@ -1,0 +1,47 @@
+- type: entity
+  id: ScpDresserDirectorFilled
+  parent:
+  - ScpBaseDresserComponents
+  - DresserCaptainFilled
+
+- type: entity
+  id: ScpDresserChiefTechnicalSpecialistFilled
+  parent:
+  - ScpBaseDresserComponents
+  - DresserChiefEngineerFilled
+
+- type: entity
+  id: ScpDresserHeadOfMedicalSectorFilled
+  parent:
+  - ScpBaseDresserComponents
+  - DresserChiefMedicalOfficerFilled
+
+- type: entity
+  id: ScpDresserPersonnelOfficerFilled
+  parent:
+  - ScpBaseDresserComponents
+  - DresserHeadOfPersonnelFilled
+
+- type: entity
+  id: ScpDresserSecurityCommanderFilled
+  parent:
+  - ScpBaseDresserComponents
+  - DresserHeadOfSecurityFilled
+
+- type: entity
+  id: ScpDresserQuarterMasterFilled
+  parent:
+  - ScpBaseDresserComponents
+  - DresserQuarterMasterFilled
+
+- type: entity
+  id: ScpDresserScientificServiceDirectorFilled
+  parent:
+  - ScpBaseDresserComponents
+  - DresserResearchDirectorFilled
+
+- type: entity
+  id: ScpDresserSquadLeaderFilled
+  parent:
+  - ScpBaseDresserComponents
+  - DresserWardenFilled

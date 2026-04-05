@@ -104,6 +104,7 @@
   name: plasma gas miner
   parent: GasMinerBase
   id: GasMinerPlasma
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
     - type: GasMiner
       spawnGas: Plasma

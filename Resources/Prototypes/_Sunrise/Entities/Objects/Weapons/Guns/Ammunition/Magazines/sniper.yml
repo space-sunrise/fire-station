@@ -1,5 +1,6 @@
 - type: entity
   id: MagazineBR64
+  categories: [ HideSpawnMenu ] # Fire edit
   name: BR64 magazine
   description: Standart EarthGov type of heavy magazines.
   parent: BaseItem

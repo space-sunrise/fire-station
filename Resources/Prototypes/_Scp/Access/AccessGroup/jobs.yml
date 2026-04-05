@@ -116,6 +116,7 @@
   - Checkpoint
   - Exit
   - Maintenance
+  - Bunker
 
 # Служба безопасности
 
@@ -145,6 +146,7 @@
   tags:
   - Checkpoint
   - Security
+  - Bunker
 
 # Научная служба
 
@@ -169,11 +171,13 @@
   - Safe
   - Research
   - Laboratory
+  - Bunker
 
 - type: accessGroup
   id: JuniorResearcher
   tags:
   - Research
+  - Bunker
 
 # Медицинская служба
 
@@ -196,6 +200,7 @@
   id: CommonMedicalJob
   tags:
   - Medical
+  - Bunker
 
 # Инженерно-техническая служба
 
@@ -219,6 +224,7 @@
   tags:
   - Engineering
   - Maintenance
+  - Bunker
 
 # Логистическая служба
 

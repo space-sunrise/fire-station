@@ -1,0 +1,26 @@
+- type: constructionGraph
+  id: ScpDresser
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: dresser
+          completed:
+            - !type:SnapToGrid { }
+          steps:
+            - material: WoodPlank
+              amount: 3
+              doAfter: 2
+    - node: dresser
+      entity: ScpDresser
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: ScpMaterialWoodPlank1
+              amount: 3
+          steps:
+            - tool: Prying
+              doAfter: 3

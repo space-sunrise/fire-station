@@ -315,7 +315,7 @@
   components:
   - type: VendingMachineRestock
     canRestock:
-    - PTechInventory
+    - ScpPTechInventory # Fire edit
   - type: Sprite
     layers:
     - state: base

@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: ClassD
   name: job-name-class-d
   description: job-description-class-d
@@ -12,6 +12,12 @@
     - type: ClassDAppearance
     - type: EmployeeClass
       class: D
+    - type: ScpAnnounceOnSpawn
+      text: class-d-announce-on-spawn
+      channels:
+      - ExternalAdministrativeZoneSecurityService
+      includeJobName: true
+      requiredGameRunLevel: InRound
 
 - type: startingGear
   id: ClassDGear

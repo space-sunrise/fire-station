@@ -1,0 +1,6 @@
+- type: entity
+  parent: WoodDoor
+  id: ScpWoodDoor
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Doors/MineralDoors/wood_door.rsi

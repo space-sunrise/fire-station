@@ -29,7 +29,7 @@
   abstract: true
   components:
   - type: Construction
-    graph: ClosetSteelSecure
+    graph: ScpClosetSteelSecure
     node: done
     containers:
     - entity_storage
@@ -43,7 +43,7 @@
   description: A reinforced plasteel locker designed for secure storage of equipment and sensitive materials.
   components:
   - type: Construction
-    graph: ClosetSteelSecure
+    graph: ScpClosetSteelSecure
     node: done
     containers:
     - entity_storage

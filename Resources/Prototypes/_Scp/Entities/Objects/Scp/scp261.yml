@@ -1,0 +1,110 @@
+﻿- type: entity
+  id: Scp261
+  parent:
+  - BaseStructure
+  - BaseScpArtifactMinor
+  name: vending machine
+  description: Black vending machine with no identifying marks. It seems to require a banknote to dispense an item.
+  suffix: SCP-261
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-261.rsi
+    state: icon
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: TriggerOnInsertedIntoContainer
+    containerId: storagebase
+    keyOut: StartVending
+  - type: TimerTrigger
+    keysIn: [ StartVending ]
+    keyOut: ReleaseProduct
+    delay: 2.5
+    beepInterval: 2.5
+    beepSound:
+      path: /Audio/Machines/tray_eject.ogg
+    popup: scp-261-processing
+    examinable: false
+  - type: EmitSoundOnTrigger
+    keysIn: [ StartVending ]
+    sound:
+      path: /Audio/Machines/vending_jingle.ogg
+    positional: true
+    targetUser: false
+  - type: SpawnOnTrigger
+    keysIn: [ ReleaseProduct ]
+    proto: Scp261Spawner
+    targetUser: false
+  - type: CleanContainersOnTrigger
+    keysIn: [ ReleaseProduct ]
+    container: [ storagebase ]
+  - type: Storage
+#   quickInsertCooldown: 3.0
+    openOnActivate: false
+    showVerb: false
+    maxItemSize: Small
+    grid:
+    - 0,0,4,9
+    storageInsertSound:
+      path: /Audio/_Sunrise/Items/Handling/Plastic/pickup.ogg
+    whitelist:
+      components:
+      - Cash
+  - type: XenoArtifact
+    triggerWeights: Scp261Triggers
+  - type: Physics
+    bodyType: Static
+  - type: Transform
+    noRot: true
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.45,0.25,0.45"
+        mask:
+        - MachineMask
+        layer:
+        - MachineLayer
+        density: 200
+  - type: Anchorable
+  - type: Clickable
+  - type: InteractionOutline
+  - type: Damageable
+  - type: DamageOverlay
+    damagePopupType: SmallFloating
+    isStructure: true
+  - type: PointLight
+    radius: 1.5
+  - type: Scp
+    class: Safe
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+          
+- type: entity
+  id: Scp261Spawner
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: RandomSpawner
+    rarePrototypes:
+    - Scp330CandyRed
+    - Scp207Bottle
+    rareChance: 0.03
+    prototypes:
+    - FoodSnackSwirlLollipop
+    - FoodBakedCookieSugar
+    - FoodBurgerGhost
+    - DrinkHolyWaterFull
+    - FoodJellyScp999
+    - DrinkMopwataBottleRandom
+    - FoodSoupFacehugger
+    - FoodSnackPopcorn
+    - DrinkJuiceLimeCarton
+    - DrinkColaCan
+    - FoodApple
+    - FoodSnackSemki
+    - FoodGlasstle
+    - FoodLaughinPeaPod
+    - FoodMeatSlimeJelly
+    chance: 1

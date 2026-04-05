@@ -34,7 +34,7 @@
   id: ScpLoadoutServicePersonnelMaidJanitor
   effects:
   - !type:GroupLoadoutEffect
-    proto: MaidJanitor
+    proto: ScpMaidServicePersonnel
   equipment:
     jumpsuit: ClothingUniformJumpskirtElegantMaid
 

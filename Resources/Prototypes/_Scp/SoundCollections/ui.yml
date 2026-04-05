@@ -1,0 +1,9 @@
+﻿- type: soundCollection
+  id: Typing
+  files:
+  - /Audio/_Scp/Effects/Typing/type.ogg
+
+- type: soundCollection
+  id: Paste
+  files:
+  - /Audio/_Scp/Effects/Typing/paste.ogg

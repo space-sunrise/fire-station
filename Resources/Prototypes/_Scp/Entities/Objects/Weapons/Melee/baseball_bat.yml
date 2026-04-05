@@ -1,0 +1,30 @@
+- type: entity
+  parent: BaseBallBat
+  id: ScpBaseBallBat
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Weapons/Melee/baseball_bat.rsi
+    state: icon
+  - type: Item
+    storedSprite:
+      state: storage
+      sprite: _Scp/Objects/Weapons/Melee/baseball_bat.rsi
+  - type: Construction
+    graph: ScpWoodenBat
+    node: bat
+
+- type: entity
+  parent: IncompleteBaseBallBat
+  id: ScpIncompleteBaseBallBat
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Weapons/Melee/incomplete_bat.rsi
+    state: icon
+  - type: Item
+    sprite: _Scp/Objects/Weapons/Melee/incomplete_bat.rsi
+    storedSprite:
+      state: storage
+      sprite: _Scp/Objects/Weapons/Melee/incomplete_bat.rsi
+  - type: Construction
+    graph: ScpWoodenBat
+    node: incompleteBat

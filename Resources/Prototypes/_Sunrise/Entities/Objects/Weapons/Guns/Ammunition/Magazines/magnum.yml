@@ -1,5 +1,6 @@
 - type: entity
   id: MagazineDeagle
+  categories: [ HideSpawnMenu ] # Fire edit
   name: Deagle magazine
   parent: BaseItem
   components:

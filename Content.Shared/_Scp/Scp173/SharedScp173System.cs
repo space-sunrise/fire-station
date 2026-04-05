@@ -76,7 +76,7 @@ public abstract class SharedScp173System : EntitySystem
         if (IsInScpCage(ent, out _))
             return;
 
-        if (Watching.IsWatchedByAny(ent, useTimeCompensation: true))
+        if (!Watching.IsWatchedByAny(ent, useTimeCompensation: true))
             return;
 
         args.Cancel();

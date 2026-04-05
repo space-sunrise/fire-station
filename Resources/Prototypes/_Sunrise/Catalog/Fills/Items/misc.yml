@@ -10,6 +10,7 @@
 
 - type: entity
   id: ClothingBeltBlueShieldWebbingFilled
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: ClothingBeltBlueShieldWebbing
   suffix: Filled
   components:
@@ -50,3 +51,15 @@
         - id: Handcuffs
         - id: Handcuffs
         #- id: HoloprojectorSecurity Fire edit
+
+- type: entity
+  id: ClothingShoesBootsUSSPFilled
+  parent: ClothingShoesBootsCombat
+  suffix: Filled, Finka
+  components:
+  - type: ContainerFill
+    containers:
+      item:
+      - Finka
+  - type: ClothingSlowOnDamageModifier
+    modifier: 0.35

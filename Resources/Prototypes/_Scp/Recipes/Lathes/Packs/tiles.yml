@@ -8,9 +8,6 @@
   - FloorTileItemTechmaint
   - FloorTileItemSteelMaint
   - FloorTileItemTechmaintDark
-  - FloorTileItemWood
-  - FloorTileItemWoodLarge
-  - FloorTileItemWoodPattern
   - FloorTileItemConcrete
   - FloorTileItemConcreteMono
   - FloorTileItemConcreteSmooth
@@ -80,3 +77,6 @@
   - ScpFloorTileItemSteelGrilleOffset4
   - ScpFloorTileItemConcrete
   - ScpFloorTileItemConcreteMono
+  - ScpFloorTileItemWood
+  - ScpFloorTileItemWoodLarge
+  - ScpFloorTileItemWoodPattern

@@ -34,6 +34,7 @@
   - Medical
   - BlueShield
   - Lawyer
+  - Bunker
   special:
   - !type:AddImplantSpecial
     implants: [MindShieldImplant]

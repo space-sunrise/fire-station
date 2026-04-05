@@ -1,0 +1,23 @@
+- type: entity
+  abstract: true
+  parent: ClothingHeadset
+  id: BaseScpHeadset
+  components:
+  - type: EncryptionKeyHolder
+    keyBlacklist:
+      tags:
+      - EncryptionCommon
+      - EncryptionScpSecurityCommon
+      - EncryptionSecurity
+
+- type: entity
+  abstract: true
+  parent: ClothingHeadsetAlt
+  id: BaseScpHeadsetAlt
+  components:
+  - type: EncryptionKeyHolder
+    keyBlacklist:
+      tags:
+      - EncryptionCommon
+      - EncryptionScpSecurityCommon
+      - EncryptionSecurity

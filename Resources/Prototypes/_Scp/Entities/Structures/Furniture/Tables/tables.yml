@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: TableFrame
   id: ScpTableFrame
   components:
@@ -6,6 +6,18 @@
     sprite: _Scp/Structures/Furniture/Tables/frame.rsi
   - type: Icon
     sprite: _Scp/Structures/Furniture/Tables/frame.rsi
+  - type: Construction
+    graph: ScpTable
+
+- type: entity
+  parent: CounterWoodFrame
+  id: ScpCounterWoodFrame
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/frame.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/frame.rsi
+    state: full
   - type: Construction
     graph: ScpTable
 
@@ -64,9 +76,6 @@
   - type: Construction
     graph: ScpTable
 
-# TODO: Респрайт всех деревянных предметов.
-# До этого момента этот стол является опциональным и необязательным в использовании,
-# так как на фоне других деревянных предметов его отличающийся спрайт выглядит совершенно странно
 - type: entity
   parent: TableWood
   id: ScpTableWood
@@ -75,5 +84,16 @@
     sprite: _Scp/Structures/Furniture/Tables/wood.rsi
   - type: Icon
     sprite: _Scp/Structures/Furniture/Tables/wood.rsi
+  - type: Construction
+    graph: ScpTable
+
+- type: entity
+  parent: TableCounterWood
+  id: ScpTableCounterWood
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/Tables/counterwood.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Furniture/Tables/counterwood.rsi
   - type: Construction
     graph: ScpTable
