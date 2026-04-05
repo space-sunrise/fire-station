@@ -2,8 +2,10 @@
 - type: emoteSounds
   id: MaleHuman
   sounds:
+    params:
+      variation: 0 # Fire Edit
     Scream:
-      collection: MaleScreams
+      collection: MaleScreamsNew # Fire Edit
     Laugh:
       collection: MaleLaugh
     Sneeze:
@@ -51,7 +53,7 @@
   id: FemaleHuman
   sounds:
     Scream:
-      collection: FemaleScreams
+      collection: FemaleScreamsNew # Fire Edit
     Laugh:
       collection: FemaleLaugh
     Sneeze:
@@ -90,8 +92,10 @@
     SevereCough:
       collection: FemaleSevereCough
     # Sunrise end
+    # Fire start
     Pain:
-      collection: FemalePain
+      collection: FemalePain 
+    # Fire end
     
 
 - type: emoteSounds
@@ -162,7 +166,7 @@
     Squish:
       collection: Squishes
     Scream:
-      collection: MaleScreams
+      collection: MaleScreamsNew # Fire Edit
     Laugh:
       collection: MaleLaugh
     Sneeze:
@@ -210,7 +214,7 @@
     Squish:
       collection: Squishes
     Scream:
-      collection: FemaleScreams
+      collection: FemaleScreamsNew # Fire Edit
     Laugh:
       collection: FemaleLaugh
     Sneeze:
@@ -342,7 +346,7 @@
   id: UnisexDwarf
   sounds:
     Scream:
-      collection: MaleScreams
+      collection: MaleScreamsNew # Fire Edit
     Laugh:
       collection: MaleLaugh
     Sneeze:
@@ -389,7 +393,7 @@
   id: FemaleDwarf
   sounds:
     Scream:
-      collection: FemaleScreams
+      collection: FemaleScreamsNew # Fire Edit
     Laugh:
       collection: FemaleLaugh
     Sneeze:

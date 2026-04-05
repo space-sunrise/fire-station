@@ -240,7 +240,7 @@
         acts: [ "Destruction" ]
       - !type:PlaySoundBehavior
         sound:
-          collection: MaleScreams
+          collection: MaleScreamsNew #Fire add
           params:
             volume: 10
       - !type:SpillBehavior

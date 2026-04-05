@@ -1,0 +1,1 @@
+chat-emote-msg-pain = screams in pain.

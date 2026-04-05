@@ -37,7 +37,6 @@ chat-emote-name-snarl = Snarl
 chat-emote-name-whine = Whine
 chat-emote-name-howl = Howl
 chat-emote-name-growl = Growl
-chat-emote-name-pain = Pain
 
 # Message
 chat-emote-msg-scream = screams!
@@ -79,4 +78,3 @@ chat-emote-msg-snarl = snarls.
 chat-emote-msg-whine = whines.
 chat-emote-msg-howl = howls.
 chat-emote-msg-growl = growls.
-chat-emote-msg-pain = screams in pain.

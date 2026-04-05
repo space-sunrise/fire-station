@@ -77,4 +77,3 @@ chat-emote-msg-snarl = оскаливается.
 chat-emote-msg-whine = скулит!
 chat-emote-msg-howl = воет.
 chat-emote-msg-growl = рычит.
-chat-emote-msg-pain = кричит от боли.
