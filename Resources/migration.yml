@@ -2580,6 +2580,7 @@ ClothingMaskGasRRH: null
 TableStone: ScpTable
 TableWeb: ScpTable
 TableXeno: ScpTable
+TableCarpet: ScpTableWood
 
 # Удаленные стены
 ScpWallConcreteLightContaimentCrack: ScpWallConcreteLightContainment
