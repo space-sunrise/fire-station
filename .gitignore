@@ -309,3 +309,7 @@ Resources/MapImages
 
 # Direnv stuff
 .direnv/
+
+Resources/Prototypes/_Scp/Clothing/OuterClothing/coats.yml
+Resources/Prototypes/_Scp/Roles/Jobs/Administration/director.yml
+Resources/Textures/_Scp/Clothing/OuterClothing/Coats/basia_coat.rsi/meta.json
