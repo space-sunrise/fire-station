@@ -1,4 +1,3 @@
-# Fire start
 - type: soundCollection
   id: MaleScreams
   files:
@@ -17,7 +16,7 @@
     - /Audio/Voice/Human/femalescream_3.ogg
     - /Audio/Voice/Human/femalescream_4.ogg
     - /Audio/Voice/Human/femalescream_5.ogg
-# Fire end
+    
 - type: soundCollection
   id: ZombieScreams
   files:
