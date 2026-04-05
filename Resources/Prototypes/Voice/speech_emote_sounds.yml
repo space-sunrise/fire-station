@@ -1,9 +1,9 @@
 # species
 - type: emoteSounds
   id: MaleHuman
+  params:
+    variation: 0 # Fire Edit
   sounds:
-    params:
-      variation: 0 # Fire Edit
     Scream:
       collection: MaleScreamsNew # Fire Edit
     Laugh:
