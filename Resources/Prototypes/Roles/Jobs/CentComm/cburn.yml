@@ -19,7 +19,7 @@
   - CentralCommand
   special:
   - !type:AddImplantSpecial
-    implants: [ MindShieldImplant, DeathRattleImplantCentcomm ]
+    implants: [ MindShieldImplant, DeathRattleImplantERT ] #Sunrise-Edit
 
 - type: startingGear
   id: CBURNGear
@@ -43,6 +43,7 @@
     - GrenadeFlashBang
     - PillAmbuzolPlus
     - PillAmbuzol
+    - TacticalAxe #Sunrise-Edit
     - ClothingHandsPowerGlovesUplinkNTERTCBURN #Sunrise-Edit
 
 - type: chameleonOutfit
@@ -84,4 +85,5 @@
     - MedkitCombatFilled
     - MedkitBurnFilled
     - MedkitToxinFilled
+    - TacticalAxe
 # Sunrise-end

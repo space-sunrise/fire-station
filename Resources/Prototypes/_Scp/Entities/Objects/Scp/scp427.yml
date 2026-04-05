@@ -1,0 +1,28 @@
+﻿- type: entity
+  id: Scp427
+  parent:
+  - BaseItemScp
+  - ClothingNeckBase
+  name: green amulet
+  description: A small, ornate, spherical amulet.
+  suffix: SCP-427
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-427.rsi
+  - type: Clothing
+    sprite: _Scp/Objects/Scp/scp-427.rsi
+  - type: Scp
+    class: Safe
+  - type: Item
+    size: Normal
+  - type: ClothingAddComponents
+    components:
+    - type: SolutionRegeneration
+      solution: bloodstream
+      generated:
+        reagents:
+        - ReagentId: Scp427Reagent
+          Quantity: 1
+  - type: GuideHelp
+    guides:
+    - ScpResearch

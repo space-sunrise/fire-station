@@ -1,0 +1,12 @@
+- type: polymorph
+  id: Scp427Polymorph
+  configuration:
+    entity: MobFleshGolem
+    forced: true
+    transferDamage: true
+    inventory: Drop
+    revertOnDeath: false
+    revertOnCrit: false
+    revertOnDelete: false
+    polymorphSound: /Audio/_Sunrise/FleshCult/devour_flesh_cultist.ogg
+    polymorphPopup: polymorph-popup-scp427
