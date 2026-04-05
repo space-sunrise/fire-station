@@ -176,7 +176,7 @@
 
 - type: entity
   parent: ScpFacilityBeacon
-  id: ScpFacilityBeaconScpContainmentCommon
+  id: ScpFacilityBeaconScpContainment
   suffix: SCP Containment
   components:
   - type: NavMapBeacon
