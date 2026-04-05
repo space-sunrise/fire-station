@@ -2,7 +2,9 @@
 - type: emoteSounds
   id: MaleHuman
   params:
-    variation: 0.125
+  # Fire start
+    variation: 0
+  # Fire end
   sounds:
     Scream:
       collection: MaleScreams
@@ -44,18 +46,22 @@
     SevereCough:
       collection: MaleSevereCough
     # Sunrise end
+    # Fire start
+    Pain:
+      collection: MalePain
+    # Fire end
 
 - type: emoteSounds
   id: FemaleHuman
   params:
-    variation: 0.1
+  # Fire start
+    variation: 0
+  # Fire end
   sounds:
     Scream:
       collection: FemaleScreams
     Laugh:
       collection: FemaleLaugh
-      params:
-        pitch: 0.125
     Sneeze:
       collection: FemaleSneezes
     Cough:
@@ -92,6 +98,9 @@
     SevereCough:
       collection: FemaleSevereCough
     # Sunrise end
+    Pain:
+      collection: FemalePain
+    
 
 - type: emoteSounds
   id: MaleReptilian

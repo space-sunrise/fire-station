@@ -782,3 +782,18 @@
     - пингнул
     - пингнула
   # Sunrise-end
+# Fire start
+- type: emote
+  id: Pain
+  name: chat-emote-name-pain
+  category: Vocal
+  icon: Interface/Emotes/scream.png
+  whitelist:
+    components:
+    - Vocal
+  chatMessages: ["chat-emote-msg-pain"]
+  chatTriggers:
+    # Я откровенно хер знает чё сюда можно написать...
+    - вскрикивает
+    - подкрикивает
+# Fire end
