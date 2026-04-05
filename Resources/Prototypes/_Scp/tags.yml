@@ -68,6 +68,9 @@
   id: EncryptionScpSecurityCommon
 
 - type: Tag
+  id: PreventInsertingIntoHeadset
+
+- type: Tag
   id: ScpMuffleCountsThisAsTransparent
 
 - type: Tag
