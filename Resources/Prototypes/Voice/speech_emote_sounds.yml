@@ -51,6 +51,8 @@
 
 - type: emoteSounds
   id: FemaleHuman
+  params:
+    variation: 0 # Fire Edit
   sounds:
     Scream:
       collection: FemaleScreamsNew # Fire Edit
