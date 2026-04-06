@@ -5,7 +5,7 @@
   playTimeTracker: JobJuniorExternalAdministrativeZoneOfficer
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 7200
+    time: 10800
   - !type:AgeRequirement
     requiredAge: 23
   - !type:AgeRequirement
