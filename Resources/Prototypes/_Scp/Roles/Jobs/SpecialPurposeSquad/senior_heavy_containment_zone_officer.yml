@@ -6,7 +6,7 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: HeavyContainmentSecurityService
-    time: 36000
+    time: 43200
   - !type:AgeRequirement
     requiredAge: 29
   - !type:AgeRequirement
