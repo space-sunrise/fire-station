@@ -1,5 +1,6 @@
 ﻿- type: entity
   id: RandomHumanoidSpawnerFondSeniorSecurityOfficer
+  name: fond senior security officer spawner
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi
@@ -32,6 +33,7 @@
 
 - type: entity
   id: RandomHumanoidSpawnerFondSecurityOfficer
+  name: fond security officer spawner
   components:
   - type: Sprite
     sprite: Markers/jobs.rsi

@@ -1,5 +1,4 @@
-﻿# Командир
-- type: job
+﻿- type: job
   id: FondSecurityOfficer
   name: ghost-role-information-fond-security-officer-name
   description: ghost-role-information-fond-security-officer-description

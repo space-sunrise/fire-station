@@ -27,4 +27,4 @@
   - type: IngestionBlocker
   - type: Tag
     tags:
-    - FullCovered
+    - TopCovered
