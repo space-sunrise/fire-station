@@ -6,7 +6,7 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: ScientificService
-    time: 10800
+    time: 14400
   - !type:AgeRequirement
     requiredAge: 27
   icon: JobAnomarchologyResearcher
