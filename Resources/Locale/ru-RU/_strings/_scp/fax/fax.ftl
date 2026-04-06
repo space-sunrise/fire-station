@@ -1,9 +1,11 @@
-fax-name-regional-administration = Региональное управление
-fax-name-o4-headquarters = Штаб О4
+fax-name-regional-administration = [Региональное управление]
+fax-name-o4-headquarters = [Штаб О4]
 fax-name-complex-director-office = Офис директора комплекса
 fax-name-encrypted = ОШ&Б*?*%!
 fax-name-chief-researcher-office = Кабинет главного научного сотрудника
 fax-name-security-commander-office = Кабинет начальника службы безопасности
+fax-name-head-commandant-office = Офис главного коменданта
+fax-name-sps-commander-office = Офис командира ОСН
 fax-name-chief-engineer-office = Кабинет ведущего инженера
 fax-name-personnel-manager-office = Кабинет менеджера по персоналу
 fax-name-chief-medical-officer-office = Кабинет главного врача
