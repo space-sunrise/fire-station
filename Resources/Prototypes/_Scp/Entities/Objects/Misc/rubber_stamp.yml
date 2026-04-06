@@ -86,3 +86,27 @@
     stampState: "paper_stamp-rd"
   - type: Sprite
     state: stamp-rd
+
+- type: entity
+  parent: [RubberStampBase, BaseCommandContraband]
+  id: RubberStampEAZCommandant
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-external-administrative-zone-commandant
+    stampedColor: "#999999"
+    stampState: "paper_stamp-greytide"
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/stamps.rsi
+    state: stamp-eazc
+    
+- type: entity
+  parent: [RubberStampBase, BaseCommandContraband]
+  id: RubberStampHCZCommandant
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-heavy-containment-zone-commandant
+    stampedColor: "#bd4b31"
+    stampState: "paper_stamp-warden"
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/stamps.rsi
+    state: stamp-hczc
