@@ -89,24 +89,24 @@
 
 - type: entity
   parent: [RubberStampBase, BaseCommandContraband]
-  id: RubberStampEAZCommandant
+  id: RubberStampCommandantSquadCommandant
   components:
   - type: Stamp
-    stampedName: stamp-component-stamped-name-external-administrative-zone-commandant
+    stampedName: stamp-component-stamped-name-commandant-squad-commandant
     stampedColor: "#999999"
     stampState: "paper_stamp-greytide"
   - type: Sprite
     sprite: _Scp/Objects/Misc/stamps.rsi
-    state: stamp-eazc
+    state: stamp-csc
     
 - type: entity
   parent: [RubberStampBase, BaseCommandContraband]
-  id: RubberStampHCZCommandant
+  id: RubberStampSpecialPurposeSquadCommandant
   components:
   - type: Stamp
-    stampedName: stamp-component-stamped-name-heavy-containment-zone-commandant
+    stampedName: stamp-component-stamped-name-special-purpose-squad-commandant
     stampedColor: "#bd4b31"
     stampState: "paper_stamp-warden"
   - type: Sprite
     sprite: _Scp/Objects/Misc/stamps.rsi
-    state: stamp-hczc
+    state: stamp-spsc
