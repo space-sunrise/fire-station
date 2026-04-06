@@ -98,7 +98,7 @@
   - type: Sprite
     sprite: _Scp/Objects/Misc/stamps.rsi
     state: stamp-csc
-    
+
 - type: entity
   parent: [RubberStampBase, BaseCommandContraband]
   id: RubberStampSpecialPurposeSquadCommandant
