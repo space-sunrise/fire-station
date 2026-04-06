@@ -322,3 +322,19 @@
   icon:
     sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
     state: ClassD
+
+# Служба безопасности фонда
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobFondSecurityOfficer
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+    state: FondSecurityOfficer
+
+- type: jobIcon
+  parent: JobIcon
+  id: JobFondSeniorSecurityOfficer
+  icon:
+    sprite: /Textures/_Scp/Interface/Misc/job_icons.rsi
+    state: FondSeniorSecurityOfficer

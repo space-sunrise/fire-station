@@ -1,0 +1,43 @@
+﻿# Командир
+- type: job
+  id: FondSecurityOfficer
+  name: ghost-role-information-fond-security-officer-name
+  description: ghost-role-information-fond-security-officer-description
+  playTimeTracker: JobFondSecurityOfficer
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 #5 hrs
+  setPreference: false
+  startingGear: FondSecurityOfficerGear
+  icon: JobFondSecurityOfficer
+  supervisors: ghost-role-information-fond-security-officer-supervisors
+  canBeAntag: false
+  radioBold: false
+  weight: 810
+  overrideConsoleVisibility: false
+  alwaysShowInBanPanel: true
+  accessGroups:
+  - FondSecurity
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: FondSecurityOfficerGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSec
+    back: MtfTacticalBackpack
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHeadHelmetBasic
+    mask: ClothingMaskSecurityBalaklava
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesColorBlack
+    outerClothing: ClothingOuterArmorBulletproof
+    belt: ScpClothingBeltSecurityWebbingFilled
+    id: KeyCardFondSecurityOfficer
+    # ears: 
+    pocket1: FlashlightSeclite
+    pocket2: WeaponTaser
+  storage:
+    back:
+    - Crowbar

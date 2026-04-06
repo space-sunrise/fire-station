@@ -1,0 +1,45 @@
+# Командир
+- type: job
+  id: FondSeniorSecurityOfficer
+  name: ghost-role-information-fond-senior-security-officer-name
+  description: ghost-role-information-fond-senior-security-officer-description
+  playTimeTracker: JobFondSeniorSecurityOfficer
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 #5 hrs
+  setPreference: false
+  startingGear: FondSeniorSecurityOfficerGear
+  icon: JobFondSeniorSecurityOfficer
+  supervisors: ghost-role-information-fond-senior-security-officer-supervisors
+  canBeAntag: false
+  radioBold: true
+  weight: 820
+  overrideConsoleVisibility: false
+  alwaysShowInBanPanel: true
+  accessGroups:
+  - FondSecurity
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: FondSeniorSecurityOfficerGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSec
+    back: MtfTacticalBackpack
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHeadHatBeretSecurity
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesColorBlack
+    outerClothing: ClothingOuterArmorBulletproof
+    neck: ClothingNeckCloakWhite
+    belt: ScpClothingBeltSecurityWebbingFilled
+    id: KeyCardFondSeniorSecurityOfficer
+    # ears: 
+    pocket1: FlashlightSeclite
+    pocket2: WeaponTaser
+  storage:
+    back:
+    - BoxMtfLeaderKit
+    - Crowbar
+    - DoorRemoteCustom
