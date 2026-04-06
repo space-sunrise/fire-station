@@ -35,9 +35,42 @@
     outerClothing: ClothingOuterArmorBulletproof
     belt: ScpClothingBeltSecurityWebbingFilled
     id: KeyCardFondSecurityOfficer
-    # ears: 
-    pocket1: FlashlightSeclite
-    pocket2: WeaponTaser
+    ears: ClothingHeadsetAltMTF
+    pocket1: PinpointerUniversal
+  storage:
+    belt:
+    - FlashlightSeclite
+    - WeaponTaser
+    - GrenadeStinger
+
+- type: startingGear
+  id: FondSecurityOfficerGearAltA
+  parent: FondSecurityOfficerGear
+  equipment:
+    suitstorage: WeaponSubMachineGunMP5
+    pocket2: PouchAmmo
   storage:
     back:
     - Crowbar
+    - MagazineMP5
+    - MagazineMP5
+    - MagazineMP5
+    - MagazineMP5
+    - Gauze
+    - ScpRadioHandheldSecurity
+    - BoxSurvivalSecurity
+
+- type: startingGear
+  id: FondSecurityOfficerGearAltB
+  parent: FondSecurityOfficerGear
+  equipment:
+    suitstorage: WeaponShotgunSPAS12
+    pocket2: ScpRadioHandheldSecurity
+  storage:
+    back:
+    - Crowbar
+    - BoxLethalshot
+    - BoxLethalshot
+    - BoxLethalshot
+    - Gauze
+    - BoxSurvivalSecurity

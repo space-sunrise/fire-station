@@ -35,11 +35,44 @@
     neck: ClothingNeckCloakWhite
     belt: ScpClothingBeltSecurityWebbingFilled
     id: KeyCardFondSeniorSecurityOfficer
-    # ears: 
-    pocket1: FlashlightSeclite
-    pocket2: WeaponTaser
+    ears: ClothingHeadsetAltMTF
+    pocket1: PinpointerUniversal
+  storage:
+    belt:
+    - FlashlightSeclite
+    - WeaponTaser
+    - GrenadeStinger
+
+- type: startingGear
+  id: FondSeniorSecurityOfficerGearAltA
+  parent: FondSeniorSecurityOfficerGear
+  equipment:
+    suitstorage: WeaponSubMachineGunMP5
+    pocket2: PouchAmmo
   storage:
     back:
-    - BoxMtfLeaderKit
     - Crowbar
-    - DoorRemoteCustom
+    - MagazineMP5
+    - MagazineMP5
+    - MagazineMP5
+    - MagazineMP5
+    - Gauze
+    - ScpRadioHandheldSecurity
+    - BoxSurvivalSecurity
+    - HandheldCrewMonitor
+
+- type: startingGear
+  id: FondSeniorSecurityOfficerGearAltB
+  parent: FondSeniorSecurityOfficerGear
+  equipment:
+    suitstorage: WeaponShotgunSPAS12
+    pocket2: HandheldCrewMonitor
+  storage:
+    back:
+    - Crowbar
+    - BoxLethalshot
+    - BoxLethalshot
+    - BoxLethalshot
+    - Gauze
+    - BoxSurvivalSecurity
+    - ScpRadioHandheldSecurity
