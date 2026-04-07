@@ -89,10 +89,10 @@
 
 - type: entity
   parent: [RubberStampBase, BaseCommandContraband]
-  id: RubberStampCommandantSquadCommandant
+  id: RubberStampCommandantSquadLeader
   components:
   - type: Stamp
-    stampedName: stamp-component-stamped-name-commandant-squad-commandant
+    stampedName: stamp-component-stamped-name-commandant-squad-leader
     stampedColor: "#999999"
     stampState: "paper_stamp-greytide"
   - type: Sprite
@@ -101,10 +101,10 @@
 
 - type: entity
   parent: [RubberStampBase, BaseCommandContraband]
-  id: RubberStampSpecialPurposeSquadCommandant
+  id: RubberStampSpecialPurposeSquadLeader
   components:
   - type: Stamp
-    stampedName: stamp-component-stamped-name-special-purpose-squad-commandant
+    stampedName: stamp-component-stamped-name-special-purpose-squad-leader
     stampedColor: "#bd4b31"
     stampState: "paper_stamp-warden"
   - type: Sprite
