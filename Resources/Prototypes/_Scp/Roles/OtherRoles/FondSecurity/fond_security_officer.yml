@@ -1,0 +1,75 @@
+﻿- type: job
+  id: FondSecurityOfficer
+  name: ghost-role-information-fond-security-officer-name
+  description: ghost-role-information-fond-security-officer-description
+  playTimeTracker: JobFondSecurityOfficer
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 #5 hrs
+  setPreference: false
+  startingGear: FondSecurityOfficerGear
+  icon: JobFondSecurityOfficer
+  supervisors: ghost-role-information-fond-security-officer-supervisors
+  canBeAntag: false
+  radioBold: false
+  weight: 810
+  overrideConsoleVisibility: false
+  alwaysShowInBanPanel: true
+  accessGroups:
+  - FondSecurity
+  special:
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
+
+- type: startingGear
+  id: FondSecurityOfficerGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSec
+    back: MtfTacticalBackpack
+    shoes: ClothingShoesBootsJackFilled
+    head: ClothingHeadHelmetBasic
+    mask: ClothingMaskSecurityBalaklava
+    eyes: ClothingEyesGlassesSecurity
+    gloves: ClothingHandsGlovesColorBlack
+    outerClothing: ClothingOuterArmorBulletproof
+    belt: ScpClothingBeltSecurityWebbingFilled
+    id: KeyCardFondSecurityOfficer
+    ears: ClothingHeadsetAltMTF
+    pocket1: PinpointerUniversal
+  storage:
+    belt:
+    - FlashlightSeclite
+    - WeaponTaser
+    - GrenadeStinger
+
+- type: startingGear
+  id: FondSecurityOfficerGearAltA
+  parent: FondSecurityOfficerGear
+  equipment:
+    suitstorage: WeaponSubMachineGunMP5
+    pocket2: PouchAmmo
+  storage:
+    back:
+    - Crowbar
+    - MagazineMP5
+    - MagazineMP5
+    - MagazineMP5
+    - MagazineMP5
+    - Gauze
+    - ScpRadioHandheldSecurity
+    - BoxSurvivalSecurity
+
+- type: startingGear
+  id: FondSecurityOfficerGearAltB
+  parent: FondSecurityOfficerGear
+  equipment:
+    suitstorage: WeaponShotgunSPAS12
+    pocket2: ScpRadioHandheldSecurity
+  storage:
+    back:
+    - Crowbar
+    - BoxLethalshot
+    - BoxLethalshot
+    - BoxLethalshot
+    - Gauze
+    - BoxSurvivalSecurity

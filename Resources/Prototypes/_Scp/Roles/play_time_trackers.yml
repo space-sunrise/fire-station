@@ -218,6 +218,14 @@
 - type: playTimeTracker
   id: JobNTFCadet
 
+# Служба Безопасности Фонда
+
+- type: playTimeTracker
+  id: JobFondSecurityOfficer
+
+- type: playTimeTracker
+  id: JobFondSeniorSecurityOfficer
+
 # Антагонисты
 
 - type: playTimeTracker
