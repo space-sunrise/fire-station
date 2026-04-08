@@ -72,19 +72,19 @@
 
 - type: entity
   parent: FaxMachineBase
-  id: FaxMachineHeadCommandant
-  name: head commandant fax machine
+  id: FaxMachineCommandant
+  name: commandant fax machine
   components:
   - type: FaxMachine
-    name: fax-name-head-commandant-office
+    name: fax-name-commandant-department
 
 - type: entity
   parent: FaxMachineBase
-  id: FaxMachineSpsCommander
-  name: sps commander fax machine
+  id: FaxMachineSps
+  name: sps fax machine
   components:
   - type: FaxMachine
-    name: fax-name-sps-commander-office
+    name: fax-name-sps-department
 
 - type: entity
   parent: FaxMachineBase
