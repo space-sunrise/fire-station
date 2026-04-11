@@ -14,6 +14,9 @@
   whitelist:
     components:
     - Vocal
+  blacklist:
+    components:
+    - BorgChassis
   chatMessages: ["chat-emote-msg-pain"]
   chatTriggers:
     # Я откровенно хер знает чё сюда можно написать...
