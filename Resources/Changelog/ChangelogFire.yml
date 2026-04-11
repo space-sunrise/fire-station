@@ -10173,3 +10173,12 @@
   id: 413
   time: '2026-04-09T14:31:55.0000000+00:00'
   url: https://github.com/space-sunrise/project-fire/pull/925
+- author: Parashut
+  changes:
+  - message: "\u041D\u0421\u0411 \u043F\u043E\u043B\u0443\u0447\u0438\u043B \u0434\
+      \u043E\u0441\u0442\u0443\u043F \u0432 \u043B\u043E\u0433\u0438\u0441\u0442\u0438\
+      \u0447\u0435\u0441\u043A\u0438\u0439 \u043E\u0442\u0434\u0435\u043B."
+    type: Tweak
+  id: 414
+  time: '2026-04-10T14:22:52.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/933

@@ -27,12 +27,9 @@
   id: SecurityCommander
   groups:
   - AdministrationJobCommon
-  - Security
-  - ScientificServiceHeadless
-  - MedicalHeadless
-  - EngineeringHeadless
-  - ServiceHeadless
-  - ClassD
+  - SecurityJobCommon
+  tags:
+  - Armory
 
 - type: accessGroup
   id: ChiefTechnicalSpecialist
