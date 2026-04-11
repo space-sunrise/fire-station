@@ -1,0 +1,21 @@
+- type: cargoBounty
+  id: BountyBreadSCPTEST
+  reward: 2000
+  description: bounty-description-bread
+  # idPrefix: ETC
+  entries:
+  - name: bounty-item-bread
+    amount: 1
+    whitelist:
+      components:
+      - Sharp
+      tags:
+      - UtilityKnife
+    blacklist:
+      tags:
+      - Slice
+  - name: bounty-item-clown-shoes
+    amount: 1
+    whitelist:
+      tags:
+      - ClownShoes
