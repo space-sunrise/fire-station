@@ -81,10 +81,10 @@ namespace Content.Server._Sunrise.StationGoal
                 Loc.GetString("station-goal-fax-paper-name"),
                 null,
                 null,
-                "paper_stamp-centcom",
+                "paper_stamp-hos", // Fire-Edit
                 new List<StampDisplayInfo>
                 {
-                    new() { StampedName = Loc.GetString("stamp-component-stamped-name-centcom"), StampedColor = Color.Green },
+                    new() { StampedName = Loc.GetString("stamp-component-stamped-name-regional-command"), StampedColor = Color.FromHex("#CC0000FF") }, // Fire-Edit
                 },
                 imageContent: header);
 
