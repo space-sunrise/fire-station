@@ -32,7 +32,7 @@
     children:
     - id: DrinkBeerCan
     - id: DrinkCafeLatte
-    - id: DrinkChangelingStingCan
+    #- id: DrinkChangelingStingCan # Fire edit
     - id: DrinkColaBottleFull
     - id: DrinkColaCan
     - id: DrinkDrGibbCan
