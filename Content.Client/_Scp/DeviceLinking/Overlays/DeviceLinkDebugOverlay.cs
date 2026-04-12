@@ -23,11 +23,11 @@ public sealed class DeviceLinkDebugOverlay : Overlay
 
     protected override void Draw(in OverlayDrawArgs args)
     {
-        var rays = _deviceLinking.GetConnectionRays();
+        var rays = _deviceLinking.Rays;
         if (rays == null || rays.Count == 0)
             return;
 
-        var colors = _deviceLinking.GetSourceColors();
+        var colors = _deviceLinking.SourceColors;
 
         foreach (var ray in rays)
         {

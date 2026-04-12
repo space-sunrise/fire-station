@@ -1,8 +1,7 @@
-using Content.Server.Administration;
 using Content.Shared._Scp.DeviceLinking;
-using Content.Shared.Administration;
 using Content.Shared.DeviceLinking;
-using Robust.Shared.Console;
+using Robust.Server.Player;
+using Robust.Shared.Enums;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
@@ -10,12 +9,27 @@ namespace Content.Server._Scp.DeviceLinking;
 
 public sealed class DeviceLinkingVisualizationSystem : EntitySystem
 {
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly IPlayerManager _player = default!;
+
     private TimeSpan _nextOverlayUpdate = TimeSpan.Zero;
     private TimeSpan _overlayUpdateInterval = TimeSpan.FromSeconds(1);
 
     private readonly HashSet<ICommonSession> _debugSessions = new();
 
-    [Dependency] private readonly IGameTiming _timing = default!;
+    public override void Initialize()
+    {
+        base.Initialize();
+
+        _player.PlayerStatusChanged += OnPlayerStatusChanged;
+    }
+
+    public override void Shutdown()
+    {
+        _debugSessions.Clear();
+
+        _player.PlayerStatusChanged -= OnPlayerStatusChanged;
+    }
 
     public override void Update(float frameTime)
     {
@@ -47,6 +61,17 @@ public sealed class DeviceLinkingVisualizationSystem : EntitySystem
         RaiseNetworkEvent(ev, session.Channel);
     }
 
+    private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
+    {
+        if (e.NewStatus != SessionStatus.Disconnected || e.OldStatus != SessionStatus.Connected)
+            return;
+
+        if (!_debugSessions.Contains(e.Session))
+            return;
+
+        _debugSessions.Remove(e.Session);
+    }
+
     private void UpdateOverlay()
     {
         if (_debugSessions.Count == 0)
@@ -71,25 +96,5 @@ public sealed class DeviceLinkingVisualizationSystem : EntitySystem
 
         foreach (var session in _debugSessions)
             RaiseNetworkEvent(new DeviceLinkOverlayData(rays), session);
-    }
-}
-
-/// <summary>
-///     Переключает отображение связку подключенных устройств.
-/// </summary>
-[AdminCommand(AdminFlags.Admin)]
-public sealed class ShowDeviceLinkCommand : LocalizedEntityCommands
-{
-    [Dependency] private readonly DeviceLinkingVisualizationSystem _deviceLinking = default!;
-
-    public override string Command => "showdevicelink";
-
-    public override void Execute(IConsoleShell shell, string argStr, string[] args)
-    {
-        var session = shell.Player;
-        if (session == null)
-            return;
-
-        _deviceLinking.ToggleDebugView(session);
     }
 }

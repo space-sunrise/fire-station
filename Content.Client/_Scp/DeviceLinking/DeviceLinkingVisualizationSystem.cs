@@ -8,9 +8,12 @@ namespace Content.Client._Scp.DeviceLinking;
 public sealed class DeviceLinkingVisualizationSystem : EntitySystem
 {
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
+    [Dependency] private readonly IRobustRandom _random = default!;
 
-    private Dictionary<EntityUid, List<EntityUid>>? _rays;
-    private Dictionary<EntityUid, Color>? _sourceColors;
+    public Dictionary<EntityUid, List<EntityUid>> Rays { get; } = new();
+    public Dictionary<EntityUid, Color> SourceColors { get; } = new();
+
+    private Color[] _randomRayColors = { Color.Red, Color.Orange, Color.Yellow, Color.Green, Color.LightBlue, Color.Blue, Color.Purple, Color.Pink };
 
     public override void Initialize()
     {
@@ -35,24 +38,18 @@ public sealed class DeviceLinkingVisualizationSystem : EntitySystem
             RemoveOverlay();
     }
 
-    public Dictionary<EntityUid, List<EntityUid>>? GetConnectionRays() => this._rays;
-    public Dictionary<EntityUid, Color>? GetSourceColors() => this._sourceColors;
-
     private void RemoveOverlay()
     {
-        _overlayMan.RemoveOverlay<DeviceLinkDebugOverlay>();
+        Rays.Clear();
+        SourceColors.Clear();
 
-        _rays = null;
-        _sourceColors = null;
+        _overlayMan.RemoveOverlay<DeviceLinkDebugOverlay>();
     }
 
     private void OnDebugOverlayData(DeviceLinkOverlayData args)
     {
         if (!_overlayMan.TryGetOverlay(out DeviceLinkDebugOverlay? overlay))
             return;
-
-        _rays = new();
-        _sourceColors = new();
 
         foreach (var ray in args.Rays)
         {
@@ -63,30 +60,24 @@ public sealed class DeviceLinkingVisualizationSystem : EntitySystem
             if (!source.Valid || Transform(source).MapUid is null)
                 continue;
 
-            bool isInvalidConnection = false; // Проверка на то является ли сущность видной клиентом
             foreach (var connection in ray.Connections)
             {
                 var entity = GetEntity(connection);
 
                 if (!entity.Valid || Transform(entity).MapUid is null)
-                {
-                    isInvalidConnection = true;
-                    break;
-                }
+                    continue;
 
                 entities.Add(entity);
             }
 
-            if (isInvalidConnection)
+            if (entities.Count == 0)
                 continue;
 
-            if (!_rays.ContainsKey(source))
-                _rays.Add(source, entities);
+            if (!Rays.ContainsKey(source))
+                Rays.Add(source, entities);
 
-            var random = new Random(ray.Source.Id);
-            var rayColor = new Color(random.NextFloat(0, 1), random.NextFloat(0, 1), random.NextFloat(0, 1));
-
-            _sourceColors.Add(source, rayColor);
+            if (!SourceColors.ContainsKey(source))
+                SourceColors.Add(source, _random.Pick(_randomRayColors));
         }
     }
 }
