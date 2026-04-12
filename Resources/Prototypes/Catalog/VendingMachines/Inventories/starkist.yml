@@ -11,6 +11,6 @@
     DrinkFourteenLokoCan: 2
   contrabandInventory:
     FoodBurgerCarp: 2
-    DrinkChangelingStingCan: 2
+    #DrinkChangelingStingCan: 2 # Fire edit
   emaggedInventory:
     DrinkNukieCan: 2
