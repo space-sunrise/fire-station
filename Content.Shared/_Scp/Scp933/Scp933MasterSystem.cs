@@ -2,6 +2,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 using Content.Shared.Popups;
 using Content.Shared.Speech.Muting;
+using Robust.Shared.Localization;
 using Robust.Shared.Network;
 
 namespace Content.Shared._Scp.Scp933;
@@ -34,16 +35,9 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         if (!_net.IsServer)
             return;
 
-        // Скрыть лицо
-        if (TryComp<HumanoidAppearanceComponent>(ent, out var humanoidComp))
-        {
-            var humanoidEnt = new Entity<HumanoidAppearanceComponent?>(ent, humanoidComp);
-            _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Eyes, false);
-            _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Snout, false);
-            _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Head, false);
-        }
+        EraseFaceFor933(ent);
 
-        _popup.PopupEntity("SCP-933-02 пробудился...", ent, ent, PopupType.LargeCaution);
+        _popup.PopupEntity(Loc.GetString("scp933-master-awakened"), ent, ent, PopupType.LargeCaution);
     }
 
     private void OnMasterShutdown(Entity<Scp933MasterComponent> ent, ref ComponentShutdown args)
@@ -93,36 +87,26 @@ public abstract class SharedScp933MasterSystem : EntitySystem
     }
 
     /// <summary>
-    /// Применить ленту на жертву. Первая жертва становится 933-02 (босс).
+    /// Спрятать лицо гуманоида (SCP-933): хост и порабощённые жертвы.
     /// </summary>
-    public void ApplyTape(EntityUid victim)
+    public void EraseFaceFor933(EntityUid uid)
     {
-        if (!_net.IsServer)
+        if (!TryComp<HumanoidAppearanceComponent>(uid, out var humanoidComp))
             return;
 
-        // Если у жертвы уже есть лента - выход
-        if (HasComp<Scp933MasterComponent>(victim) || HasComp<Scp933ControlledComponent>(victim))
-            return;
-
-        if (!TryComp<HumanoidAppearanceComponent>(victim, out _))
-            return;
-
-        // Проверить есть ли уже мастер 933
-        var masters = EntityQueryEnumerator<Scp933MasterComponent>();
-        if (!masters.MoveNext(out var masterId, out _))
-        {
-            // Нет боссов - эта жертва становится боссом 933-02
-            ConvertToMaster(victim);
-        }
-        else
-        {
-            // Уже есть босс - эта жертва становится миньоном
-            ControlVictim(masterId, victim);
-        }
+        var humanoidEnt = new Entity<HumanoidAppearanceComponent?>(uid, humanoidComp);
+        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Eyes, false);
+        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Snout, false);
+        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Head, false);
+        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Hair, false);
+        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.FacialHair, false);
+        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.HeadTop, false);
+        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.HeadSide, false);
+        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.SnoutCover, false);
     }
 
     /// <summary>
-    /// Превратить жертву в SCP-933-02 (босс).
+    /// Превратить сущность в нового носителя SCP-933-02 (отдельно от ритуала ленты).
     /// </summary>
     public void ConvertToMaster(EntityUid victim)
     {
@@ -136,20 +120,15 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         var masterComp = new Scp933MasterComponent();
         AddComp(victim, masterComp);
 
-        // Скрыть лицо
-        if (TryComp<HumanoidAppearanceComponent>(victim, out var humanoidComp))
-        {
-            var humanoidEnt = new Entity<HumanoidAppearanceComponent?>(victim, humanoidComp);
-            _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Head, false);
-        }
+        EraseFaceFor933(victim);
 
-        _popup.PopupEntity("SCP-933-02 пробудился...", victim, victim, PopupType.LargeCaution);
+        _popup.PopupEntity(Loc.GetString("scp933-master-awakened"), victim, victim, PopupType.LargeCaution);
     }
 
     /// <summary>
-    /// Контролировать жертву как миньон босса.
+    /// Поработить жертву после ритуала: без лица, немая, связь с мастером.
     /// </summary>
-    public void ControlVictim(EntityUid master, EntityUid victim)
+    public void DominateVictim(EntityUid master, EntityUid victim)
     {
         if (!_net.IsServer)
             return;
@@ -160,39 +139,23 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         if (!TryComp<HumanoidAppearanceComponent>(victim, out _))
             return;
 
-        // Если уже контролирует - выход
         if (HasComp<Scp933ControlledComponent>(victim) || HasComp<Scp933MasterComponent>(victim))
             return;
 
-        // Добавить компонент контроля
+        if (masterComp.Controlled.Count >= masterComp.MaxControlled)
+            return;
+
         var controlComp = new Scp933ControlledComponent { Master = master };
         AddComp(victim, controlComp);
 
-        // Добавить маску ленты
-        if (!HasComp<TapedFaceComponent>(victim))
-        {
-            AddComp(victim, new TapedFaceComponent());
-        }
-
-        // Добавить MutedComponent чтобы не могли говорить
         if (!HasComp<MutedComponent>(victim))
-        {
             AddComp(victim, new MutedComponent());
-        }
 
-        // Скрыть лицо и добавить визуальный слой маски
-        if (TryComp<HumanoidAppearanceComponent>(victim, out var humanoidComp))
-        {
-            var humanoidEnt = new Entity<HumanoidAppearanceComponent?>(victim, humanoidComp);
-            _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Head, false);
-            // Показать слой маски (используем Ensnare для визуализации ленты на лице)
-            _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Ensnare, true);
-        }
+        EraseFaceFor933(victim);
 
-        // Добавить в список контролируемых
         masterComp.Controlled.Add(victim);
         Dirty(master, masterComp);
 
-        _popup.PopupEntity("Вы контролируемы SCP-933-02!", victim, victim, PopupType.LargeCaution);
+        _popup.PopupEntity(Loc.GetString("scp933-victim-dominated"), victim, victim, PopupType.LargeCaution);
     }
 }

@@ -29,16 +29,6 @@
   name: SCP-933-02 "The Tape Master"
   description: scp933-master-desc
   components:
-  - type: Sprite
-    sprite: _Scp/Mobs/Scp933Master.rsi  # основной спрайт
-    layers:
-    - map: ["enum.HumanoidVisualLayers.Chest"]
-      # ...
-    - map: ["enum.HumanoidVisualLayers.Ensnare"]
-      sprite: _Scp/Objects/Scp/scp-933.rsi
-      state: equipped
-      visible: true
-
   - type: HumanoidAppearance
     sex: Male
     # hairColor: "#FFFF00"  # лучше убрать или сделать менее ярким
