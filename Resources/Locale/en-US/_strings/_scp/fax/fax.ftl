@@ -1,4 +1,14 @@
-fax-name-regional-administration = Regional Administration
-fax-name-o4-headquarters = O4 Headquarters
+fax-name-regional-administration = [Regional Administration]
+fax-name-o4-headquarters = [O4 Headquarters]
+fax-name-ethics-committee-office = [Ethics Committee]
 fax-name-complex-director-office = Complex Director Office
-fax-name-encrypted = Cф&щ*?*%!
+fax-name-encrypted = 3RR0R
+fax-name-chief-researcher-office = Chief Researcher's Office
+fax-name-security-commander-office = Security Commander’s Office
+fax-name-commandant-department = Commandant Department
+fax-name-sps-department = SPS Department
+fax-name-chief-engineer-office = Chief Engineer’s Office
+fax-name-personnel-manager-office = Personnel Manager’s Office
+fax-name-chief-medical-officer-office = Chief Medical Officer’s Office
+fax-name-quartermaster-office = Quartermaster’s Office
+fax-name-ethics-committee-representative-office = Ethics Committee Representative Office

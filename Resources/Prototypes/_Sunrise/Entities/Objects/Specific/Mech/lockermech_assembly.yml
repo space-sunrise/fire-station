@@ -19,7 +19,6 @@
     node: chassis
     defaultTarget: lockermech
 
-
 - type: constructionGraph
   id: LockerMechConstruction
   start: start
@@ -181,6 +180,7 @@
 # Единый рецепт
 - type: construction
   id: LockerMech
+  hide: true # Fire Edit
   name: construction-graph-tag-lockermech-name
   description: construction-graph-tag-lockermech-desc
   graph: LockerMechConstruction
@@ -188,4 +188,3 @@
   targetNode: lockermech
   category: construction-category-misc
   objectType: Structure
-

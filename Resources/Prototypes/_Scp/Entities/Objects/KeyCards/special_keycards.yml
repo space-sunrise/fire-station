@@ -1,0 +1,21 @@
+# Fond Security
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardFondSecurityOfficer
+  name: fond security keycard
+  components:
+  - type: Sprite
+    state: security_red
+  - type: PresetIdCard
+    job: FondSecurityOfficer
+
+- type: entity
+  parent: KeyCardBase
+  id: KeyCardFondSeniorSecurityOfficer
+  name: fond senior security keycard
+  components:
+  - type: Sprite
+    state: head_security_red
+  - type: PresetIdCard
+    job: FondSeniorSecurityOfficer
