@@ -34,6 +34,7 @@ public sealed class ScpRepairableSystem : EntitySystem
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly ToolSystem _tool = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
 
     private const int ExaminePriority = SharedScpExaminableDamageSystem.Priority - 3;
 
@@ -50,7 +51,7 @@ public sealed class ScpRepairableSystem : EntitySystem
 
     private void OnInteractUsing(Entity<ScpRepairableComponent> ent, ref InteractUsingEvent args)
     {
-        if (args.Handled)
+        if (args.Handled || !_interaction.InRangeUnobstructed(args.User, ent.Owner))
             return;
 
         if (TryRepair(ent, args.User, args.Used))
