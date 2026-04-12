@@ -85,7 +85,7 @@ public sealed partial class Scp035MaskComponent : Component
 
     [AutoNetworkedField]
     [DataField]
-    public FixedPoint2 NewCriticalThreshold = FixedPoint2.New(800);
+    public FixedPoint2 NewCriticalThreshold = FixedPoint2.New(790);
 
     [AutoNetworkedField]
     [DataField]

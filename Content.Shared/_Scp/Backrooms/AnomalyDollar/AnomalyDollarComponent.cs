@@ -1,6 +1,7 @@
 
 
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Backrooms.AnomalyDollar;
 
@@ -30,6 +31,9 @@ public sealed partial class AnomalyDollarComponent : Component
     /// </summary>
     [DataField, AutoNetworkedField]
     public int CopiesLimit = 10;
+
+    [DataField, AutoNetworkedField]
+    public EntProtoId CloneProto = "ScpAnomalyDollar";
 
     /// <summary>
     /// Следующее время создания копии банкноты.

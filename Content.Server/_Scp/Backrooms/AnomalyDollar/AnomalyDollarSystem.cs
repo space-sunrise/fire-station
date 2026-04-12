@@ -83,11 +83,8 @@ public sealed partial class AnomalyDollarSystem : EntitySystem
         {
             if (_timing.CurTime >= component.NextCloneTime)
             {
-                var proto = Prototype(uid)?.ID;
-                if (proto != null)
-                {
-                    _readyToCloneBuffer.Add((proto, Transform(uid).Coordinates, component.ImpulseStrength, component, uid));
-                }
+
+                _readyToCloneBuffer.Add((component.CloneProto, Transform(uid).Coordinates, component.ImpulseStrength, component, uid));
             }
         }
 
