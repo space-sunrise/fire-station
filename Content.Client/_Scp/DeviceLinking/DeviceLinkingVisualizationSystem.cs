@@ -51,6 +51,8 @@ public sealed class DeviceLinkingVisualizationSystem : EntitySystem
         if (!_overlayMan.TryGetOverlay(out DeviceLinkDebugOverlay? overlay))
             return;
 
+        Rays.Clear();
+
         foreach (var ray in args.Rays)
         {
             List<EntityUid> entities = new();

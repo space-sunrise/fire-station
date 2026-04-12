@@ -26,6 +26,8 @@ public sealed class DeviceLinkingVisualizationSystem : EntitySystem
 
     public override void Shutdown()
     {
+        base.Shutdown();
+
         _debugSessions.Clear();
 
         _player.PlayerStatusChanged -= OnPlayerStatusChanged;
