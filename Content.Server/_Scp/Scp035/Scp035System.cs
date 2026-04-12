@@ -164,8 +164,11 @@ public sealed class Scp035System : SharedScp035System
         if (curTime < entity.Comp.NextMessaging)
             return;
 
-        var message = _random.Pick(entity.Comp.Messages);
-        _chatSystem.TrySendInGameICMessage(entity, message, InGameICChatType.Speak, ChatTransmitRange.Normal, ignoreActionBlocker: true);
+        if (entity.Comp.Messages.Count > 0)
+        {
+            var message = _random.Pick(entity.Comp.Messages);
+            _chatSystem.TrySendInGameICMessage(entity, message, InGameICChatType.Speak, ChatTransmitRange.Normal, ignoreActionBlocker: true);
+        }
 
         entity.Comp.NextMessaging = curTime + entity.Comp.NextMessageDelay;
     }

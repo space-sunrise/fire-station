@@ -15,15 +15,15 @@ public sealed partial class Scp035MaskUserComponent : Component
     public HashSet<EntityUid> Servants = new();
 
     [AutoNetworkedField]
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public EntProtoId ServantsProto = "MobServant035";
 
     [AutoNetworkedField]
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public int MaxServants = 3;
 
     [AutoNetworkedField]
-    [ViewVariables(VVAccess.ReadOnly)]
+    [DataField]
     public EntProtoId DeadSpawnProto = "Ash";
 
     [AutoNetworkedField]

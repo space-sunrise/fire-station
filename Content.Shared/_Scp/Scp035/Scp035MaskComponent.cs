@@ -20,11 +20,11 @@ public sealed partial class Scp035MaskComponent : Component
     public TimeSpan NextMessageDelay = TimeSpan.FromSeconds(60);
 
     [AutoNetworkedField]
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public List<LocId> Messages = new();
 
     [AutoNetworkedField]
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public string ReagentName = "PoisonWine";
 
     [AutoNetworkedField]
@@ -52,7 +52,7 @@ public sealed partial class Scp035MaskComponent : Component
     public float EntityCorrosionRange = 3f;
 
     [AutoNetworkedField]
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public DamageSpecifier DamageSpecif = new()
     {
         DamageDict = new() { { "Structural", 60f } }
