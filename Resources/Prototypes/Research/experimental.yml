@@ -24,6 +24,7 @@
   discipline: Experimental
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - AnomalyScanner
   - AnomalyLocator
@@ -40,6 +41,7 @@
   discipline: Experimental
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - NodeScanner
   - AnalysisComputerCircuitboard
