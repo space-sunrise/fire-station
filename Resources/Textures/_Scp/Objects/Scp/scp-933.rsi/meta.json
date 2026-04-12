@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Fire Helper",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "equipped",
+      "directions": 4
+    },
+    {
+      "name": "tape",
+      "directions": 1
+    }
+  ]
+}
