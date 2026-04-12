@@ -1,7 +1,6 @@
 ﻿using Content.Shared._Scp.Fear.Components;
 using Content.Shared.Actions;
 using Content.Shared.Clothing;
-using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
@@ -31,7 +30,7 @@ public abstract class SharedScp035System : EntitySystem
 {
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
-    [Dependency] private readonly SharedContainerSystem _container= default!;
+    [Dependency] private readonly SharedContainerSystem _container = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedActionsSystem _action = default!;
@@ -63,7 +62,7 @@ public abstract class SharedScp035System : EntitySystem
         SubscribeLocalEvent<Scp035ServantComponent, ComponentShutdown>(OnServantShutdown);
     }
 
-    private void OnMaskEquipped(Entity<Scp035MaskComponent> ent, ref ClothingGotEquippedEvent args)
+    protected virtual void OnMaskEquipped(Entity<Scp035MaskComponent> ent, ref ClothingGotEquippedEvent args)
     {
         EnsureComp<UnremoveableComponent>(ent);
 
@@ -124,7 +123,7 @@ public abstract class SharedScp035System : EntitySystem
 
             if (_net.IsServer)
             {
-                _popup.PopupEntity("Маска отвергает вас!", args.Equipee, args.Equipee, PopupType.LargeCaution);
+                _popup.PopupEntity(Loc.GetString("scp-035-reject-you"), args.Equipee, args.Equipee, PopupType.LargeCaution);
 
                 var impulse = _random.NextVector2() * 10000;
                 _physics.ApplyLinearImpulse(args.Equipee, impulse);
@@ -165,7 +164,7 @@ public abstract class SharedScp035System : EntitySystem
         if (!HasComp<HumanoidAppearanceComponent>(args.Target))
         {
             if(_net.IsServer)
-                _popup.PopupEntity("Работает только на людей.", args.Performer, args.Performer, PopupType.LargeCaution);
+                _popup.PopupEntity(Loc.GetString("scp-035-reject-target"), args.Performer, args.Performer, PopupType.LargeCaution);
 
             return;
         }
@@ -173,7 +172,7 @@ public abstract class SharedScp035System : EntitySystem
         _stun.TryAddParalyzeDuration(args.Target, TimeSpan.FromSeconds(10));
 
         if (_net.IsServer)
-            _popup.PopupEntity("ваше тело онемело!", args.Target, args.Target, PopupType.LargeCaution);
+            _popup.PopupEntity(Loc.GetString("scp-035-stun-effect"), args.Target, args.Target, PopupType.LargeCaution);
 
         args.Handled = true;
     }
@@ -183,7 +182,7 @@ public abstract class SharedScp035System : EntitySystem
         RaiseLocalEvent(ent, new RejuvenateEvent());
 
         // Маска овладевает разумом человека и блокирует страх.
-        // ЧТО БУДЕТ ЕСЛИ ЧЕЛОВЕК ОВЛАДЕЕТ РАЗУМОМ НА ВСЕ 100????!!
+        // ЧТО БУДЕТ ЕСЛИ ЧЕЛОВЕК ОВЛАДЕЕТ РАЗУМОМ НА ВСЕ 100????!! УЖАС!
         RemCompDeferred<FearComponent>(ent);
     }
 

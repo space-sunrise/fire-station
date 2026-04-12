@@ -2,13 +2,18 @@
 using System.Numerics;
 using Content.Server.Chat.Systems;
 using Content.Server.Ghost;
+using Content.Server.Mind;
 using Content.Server.NPC;
 using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Server.Storage.EntitySystems;
+using Content.Server.Ghost.Roles.Raffles;
+using Content.Shared.Ghost.Roles.Raffles;
+using Content.Server.Ghost.Roles.Components;
 using Content.Shared._Scp.Scp035;
 using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
+using Content.Shared.Clothing;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
@@ -53,13 +58,7 @@ public sealed class Scp035System : SharedScp035System
     [Dependency] private readonly TileSystem _tile = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
-
-    private List<string> _messages = new()
-    {
-        "Ну же, надень меня!",
-        "Чего ты ждешь! Надень меня..",
-        "Помоги мне!.."
-    };
+    [Dependency] private readonly MindSystem _mind = default!;
 
     public override void Initialize()
     {
@@ -76,6 +75,28 @@ public sealed class Scp035System : SharedScp035System
         RaiseLocalEvent(ent, ref toggleUsed);
     }
 
+    protected override void OnMaskEquipped(Entity<Scp035MaskComponent> ent, ref ClothingGotEquippedEvent args)
+    {
+        base.OnMaskEquipped(ent, ref args);
+
+        if (_mind.TryGetMind(args.Wearer, out var mindId, out var mind))
+        {
+            _ghost.OnGhostAttempt(mindId, false, false, false, mind);
+
+            var settings = new GhostRoleRaffleSettings()
+            {
+                InitialDuration = 10,
+                JoinExtendsDurationBy = 10,
+                MaxDuration = 30
+            };
+
+            var ghostRoleComp = EnsureComp<GhostRoleComponent>(ent.Owner);
+            ghostRoleComp.RoleName = Loc.GetString("scp-035-ghost-role-name");
+            ghostRoleComp.RoleDescription = Loc.GetString("scp-035-ghost-role-desc");
+            ghostRoleComp.RaffleConfig = new GhostRoleRaffleConfig(settings);
+        }
+    }
+
     private void OnRaiseArmy(Entity<Scp035MaskUserComponent> ent, ref MaskRaiseArmyActionEvent args)
     {
         if (args.Handled)
@@ -83,7 +104,7 @@ public sealed class Scp035System : SharedScp035System
 
         if (ent.Comp.Servants.Count >= ent.Comp.MaxServants)
         {
-            _popup.PopupEntity("Достигнуто максимальное число!", ent, ent, PopupType.MediumCaution);
+            _popup.PopupEntity(Loc.GetString("scp-035-max-servants"), ent, ent, PopupType.MediumCaution);
             return;
         }
 
@@ -143,7 +164,14 @@ public sealed class Scp035System : SharedScp035System
         if (curTime < entity.Comp.NextMessaging)
             return;
 
-        var message = _random.Pick(_messages);
+        List<string> messages = new()
+        {
+            Loc.GetString("scp-035-message-one"),
+            Loc.GetString("scp-035-message-two"),
+            Loc.GetString("scp-035-message-three")
+        };
+
+        var message = _random.Pick(messages);
         _chatSystem.TrySendInGameICMessage(entity, message, InGameICChatType.Speak, ChatTransmitRange.Normal, ignoreActionBlocker: true);
 
         entity.Comp.NextMessaging = curTime + TimeSpan.FromSeconds(60);
