@@ -267,35 +267,17 @@
       tags:
       - Slice
 
-
-
-
-
-
-
-### ЗАМЕНИТЬ НА ФОРМУ Д КЛАССА
-### ДОБАВИТЬ ФОРМУ Д КЛАССА В ПРИНТЕР
 - type: cargoBounty
   id: BountyPrisonUniform
   reward: 8000
   description: scp-bounty-description-dclass-uniform
-  idPrefix: TG
+  idPrefix: PZ
   entries:
   - name: scp-bounty-item-dclass-uniform
     amount: 4
     whitelist:
       tags:
       - PrisonUniform
-
-
-
-
-
-
-
-
-
-
 
 - type: cargoBounty
   id: BountyRadio
@@ -557,6 +539,7 @@
   id: BountyBandana
   reward: 4000
   description: scp-bounty-description-bandana
+  idPrefix: CI
   entries:
   - name: scp-bounty-item-bandana
     amount: 7
