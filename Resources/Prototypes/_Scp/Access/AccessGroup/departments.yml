@@ -104,6 +104,22 @@
   - Bunker
 
 - type: accessGroup
+  id: FondSecurity
+  groups:
+  - Administration
+  - SecurityHeadless
+  - ScientificServiceHeadless
+  - MedicalHeadless
+  - EngineeringHeadless
+  - LogisticsHeadless
+  - ServiceHeadless
+  - ClassD
+  tags:
+  - MTF
+  - Exit
+  - Bunker
+
+- type: accessGroup
   id: AllComplex
   groups:
   - Administration

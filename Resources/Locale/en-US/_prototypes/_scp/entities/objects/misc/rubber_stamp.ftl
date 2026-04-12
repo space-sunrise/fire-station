@@ -16,3 +16,7 @@ ent-RubberStampScientificServiceDirector = { ent-RubberStampBase }
     .desc = { ent-RubberStampBase.desc }
 ent-RubberStampRegionalAdministration = { ent-RubberStampBase }
     .desc = { ent-RubberStampBase.desc }
+ent-RubberStampCommandantSquadLeader = { ent-RubberStampBase }
+    .desc = { ent-RubberStampBase.desc }
+ent-RubberStampSpecialPurposeSquadLeader = { ent-RubberStampBase }
+    .desc = { ent-RubberStampBase.desc }

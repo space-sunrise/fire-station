@@ -24,6 +24,7 @@
   - type: HideLayerClothing
     layers:
       Hair: MASK
+  - type: IngestionBlocker
   - type: Tag
     tags:
     - TopCovered

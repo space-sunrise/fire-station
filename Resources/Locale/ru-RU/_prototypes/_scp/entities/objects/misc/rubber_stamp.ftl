@@ -14,3 +14,7 @@ ent-RubberStampSeniorLogisticsOfficer = печать старшего офице
     .desc = { ent-RubberStampBase.desc }
 ent-RubberStampScientificServiceDirector = печать директора научной службы
     .desc = { ent-RubberStampBase.desc }
+ent-RubberStampCommandantSquadLeader = печать главного коменданта
+    .desc = { ent-RubberStampBase.desc }
+ent-RubberStampSpecialPurposeSquadLeader = печать командира осн
+    .desc = { ent-RubberStampBase.desc }

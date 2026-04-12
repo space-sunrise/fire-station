@@ -1,0 +1,7 @@
+- type: entity
+  id: AirAlarmScientific
+  parent: AirAlarm
+  suffix: Scientific
+  components:
+  - type: AccessReader
+    access: [["LifeSupport"], ["Research"]]

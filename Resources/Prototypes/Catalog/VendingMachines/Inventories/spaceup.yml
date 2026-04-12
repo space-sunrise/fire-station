@@ -11,6 +11,6 @@
   contrabandInventory:
     DrinkSpaceMountainWindBottleFull: 2
     DrinkSpaceUpBottleFull: 2
-    DrinkChangelingStingCan: 2
+    #DrinkChangelingStingCan: 2 # Fire edit
   emaggedInventory:
     DrinkNukieCan: 2

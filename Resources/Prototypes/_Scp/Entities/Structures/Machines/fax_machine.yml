@@ -28,7 +28,21 @@
   - type: FaxMachine
     name: fax-name-o4-headquarters
     notifyAdmins: true
-    receiveStationGoal: true
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineEthicsCommittee
+  name: ethics committee fax machine
+  suffix: Ethics Committee
+  components:
+  - type: Sprite
+    layers:
+      - state: icon
+        map: [ "base" ]
+        color: "#642554"
+  - type: FaxMachine
+    name: fax-name-ethics-committee-office
+    notifyAdmins: true
 
 - type: entity
   parent: FaxMachineBase
@@ -69,6 +83,22 @@
   components:
   - type: FaxMachine
     name: fax-name-chief-researcher-office
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineCommandant
+  name: commandant fax machine
+  components:
+  - type: FaxMachine
+    name: fax-name-commandant-department
+
+- type: entity
+  parent: FaxMachineBase
+  id: FaxMachineSps
+  name: sps fax machine
+  components:
+  - type: FaxMachine
+    name: fax-name-sps-department
 
 - type: entity
   parent: FaxMachineBase
@@ -116,4 +146,4 @@
   name: ethics committee representative fax machine
   components:
   - type: FaxMachine
-    name: fax-name-ethics-committee-office
+    name: fax-name-ethics-committee-representative-office
