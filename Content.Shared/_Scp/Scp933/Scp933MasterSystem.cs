@@ -37,7 +37,7 @@ public abstract class SharedScp933MasterSystem : EntitySystem
 
         EraseFaceFor933(ent);
 
-        _popup.PopupEntity(Loc.GetString("scp933-master-awakened"), ent, ent, PopupType.LargeCaution);
+        _popup.PopupEntity(Loc.GetString("scp933-host-emerged"), ent, ent, PopupType.LargeCaution);
     }
 
     private void OnMasterShutdown(Entity<Scp933MasterComponent> ent, ref ComponentShutdown args)
@@ -116,13 +116,9 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         if (HasComp<Scp933MasterComponent>(victim))
             return;
 
-        // Добавить компонент босса
+        // Добавить компонент босса (лицо и попап — в OnMasterStartup).
         var masterComp = new Scp933MasterComponent();
         AddComp(victim, masterComp);
-
-        EraseFaceFor933(victim);
-
-        _popup.PopupEntity(Loc.GetString("scp933-master-awakened"), victim, victim, PopupType.LargeCaution);
     }
 
     /// <summary>
