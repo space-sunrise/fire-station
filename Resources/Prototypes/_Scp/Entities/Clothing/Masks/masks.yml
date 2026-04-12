@@ -36,3 +36,27 @@
     slots:
     - Snout
     hideOnToggle: true
+
+# Fire added — SCP-933: предмет «полоска» в мире — tape (1 dir); на лице — equipped (4 dir), не рулон.
+- type: entity
+  parent: ClothingMaskPullableBase
+  id: ClothingMaskScp933Tape
+  name: scp933-tape-mask
+  description: scp933-tape-mask-desc
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-933.rsi
+    layers:
+    - state: tape
+      map: [ "mask" ]
+  - type: Clothing
+    sprite: _Scp/Objects/Scp/scp-933.rsi
+    equippedState: equipped
+  - type: Scp933TapeMask
+    incubationSeconds: 8
+  - type: HideLayerClothing
+    slots:
+    - Snout
+    hideOnToggle: false
+  - type: Item
+    size: Small

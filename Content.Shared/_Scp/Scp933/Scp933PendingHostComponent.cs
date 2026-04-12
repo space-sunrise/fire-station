@@ -1,11 +1,9 @@
-using Robust.Shared.GameStates;
-
 namespace Content.Shared._Scp.Scp933;
 
 /// <summary>
-/// Ожидание «отпадания» ленты после самонаклеивания; по истечении времени выдаётся Scp933Master.
+/// Ожидание «отпадания» ленты после самонаклеивания; по истечении времени выдаётся Scp933Master (только сервер).
 /// </summary>
-[RegisterComponent, NetworkedComponent]
+[RegisterComponent]
 public sealed partial class Scp933PendingHostComponent : Component
 {
     [DataField]
