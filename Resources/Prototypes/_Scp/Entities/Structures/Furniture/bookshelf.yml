@@ -31,12 +31,12 @@
     noRot: false
   - type: ScpDirectionalOccluder
     boundingBoxes:
-      East: "-0.5, -0.3, 0.5, 0.3"
-      West: "-0.5, -0.3, 0.5, 0.3"
+      East: "-0.5, -0.1, 0.5, 0.5"
+      West: "-0.5, -0.1, 0.5, 0.5"
   - type: ScpDirectionalFixture
     boundingBoxes:
-      East: "-0.5, -0.3, 0.5, 0.3"
-      West: "-0.5, -0.3, 0.5, 0.3"
+      East: "-0.5, -0.1, 0.5, 0.5"
+      West: "-0.5, -0.1, 0.5, 0.5"
   - type: Rotatable
     rotateWhileAnchored: true
 
