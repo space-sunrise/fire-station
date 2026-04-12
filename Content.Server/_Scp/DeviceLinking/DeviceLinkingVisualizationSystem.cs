@@ -63,7 +63,7 @@ public sealed class DeviceLinkingVisualizationSystem : EntitySystem
 
     private void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
     {
-        if (e.NewStatus != SessionStatus.Disconnected || e.OldStatus != SessionStatus.Connected)
+        if (e.NewStatus != SessionStatus.Disconnected || e.OldStatus != SessionStatus.InGame)
             return;
 
         if (!_debugSessions.Contains(e.Session))
