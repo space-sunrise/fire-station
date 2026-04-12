@@ -191,6 +191,7 @@
   name: strange dollar
   suffix: SCP Item
   components:
+  - type: AnomalyDollar
   - type: Sprite
     sprite: _Scp/Objects/Items/dollar.rsi
     state: icon
@@ -235,6 +236,11 @@
     - Scream
     cooldownVariations: 10
     mode: Random
+  - type: Explosive
+    explosionType: DefaultStandardEffect
+    maxIntensity: 15
+    intensitySlope: 5
+    totalIntensity: 50
 
 - type: entity # TODO: Сделать парента этой штуки бьющимся
   parent: DrinkHotCoffee
