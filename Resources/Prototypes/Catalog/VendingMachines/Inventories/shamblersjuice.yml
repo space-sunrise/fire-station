@@ -10,7 +10,7 @@
     DrinkLemonLimeCranberryCan: 2
     DrinkFourteenLokoCan: 2
   contrabandInventory:
-    DrinkChangelingStingCan: 2
+    #DrinkChangelingStingCan: 2 # Fire edit
     DrinkBeerCan: 2 #Sunrise-Edit
   emaggedInventory:
     DrinkNukieCan: 2

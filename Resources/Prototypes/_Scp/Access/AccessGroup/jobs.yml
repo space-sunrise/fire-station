@@ -1,4 +1,4 @@
-﻿- type: accessGroup
+- type: accessGroup
   id: Director
   groups:
   - AdministrationJobCommon
@@ -29,6 +29,7 @@
   - AdministrationJobCommon
   - SecurityJobCommon
   tags:
+  - SecurityCommander
   - Armory
 
 - type: accessGroup
@@ -141,6 +142,7 @@
   - ServiceHeadless
   - LogisticsHeadless
   tags:
+  - Maintenance
   - Checkpoint
   - Security
   - Bunker

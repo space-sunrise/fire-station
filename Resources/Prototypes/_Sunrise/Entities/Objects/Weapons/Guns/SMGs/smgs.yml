@@ -18,9 +18,9 @@
     minAngle: -2.9
     maxAngle: -30
   - type: Gun
-    minAngle: 3
-    maxAngle: 50
-    angleIncrease: 3
+    minAngle: 3 # Fire edit
+    maxAngle: 40 # Fire edit
+    angleIncrease: 2 # Fire edit
     angleDecay: 20
     fireRate: 10
     soundGunshot:

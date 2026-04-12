@@ -34,3 +34,6 @@ ent-WeaponPistolDeagleGolden = Golden Desert Eagle
 
 ent-WeaponPistolTec9 = Tac-Tec
     .desc = Very cheap to produce and very easy to use, as reliable as the SKM-24.
+
+ent-SunriseWeaponSubMachineGunUzi = Type U3 Uzi
+    .desc = Lightweight and iconic submachine gun with a large magazine and high rate of fire.
