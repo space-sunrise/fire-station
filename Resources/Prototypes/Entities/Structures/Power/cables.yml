@@ -127,7 +127,7 @@
     layers:
     - state: mvcable_0
      # color: Yellow fire edit
-  # - state: mvstripes_0 fire edit
+    # - state: mvstripes_0 fire edit
   - type: Icon
     sprite: _Scp/Structures/Power/Cables/mv_cable.rsi # Fire edit
     state: mvcable_4
@@ -160,7 +160,7 @@
         acts: [ "Destruction" ]
   - type: CableVisualizer
     statePrefix: mvcable_
-    extraLayerPrefix: mvstripes_
+    # extraLayerPrefix: mvstripes_ Fire edit
 
 - type: entity
   id: CableMVUncuttable
