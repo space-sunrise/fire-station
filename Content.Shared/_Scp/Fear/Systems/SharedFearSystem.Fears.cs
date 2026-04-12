@@ -22,11 +22,16 @@ public abstract partial class SharedFearSystem
             .OrderBy(kv => kv.Value)
             .ToList();
 
-        if (!TryComp<FearComponent>(ent, out var fearComponent))
+        if (!_fearQuery.TryComp(ent, out var fearComponent))
+        {
+            Log.Warning($"Found entity {ToPrettyString(ent)} with {nameof(HemophobiaComponent)} but without {nameof(FearComponent)}! {nameof(HemophobiaComponent)} will be deleted");
+            RemComp<HemophobiaComponent>(ent);
+
             return;
+        }
 
         fearComponent.Phobias.Add(ent.Comp.Phobia);
-        Dirty(ent, fearComponent);
+        DirtyField(ent, fearComponent, nameof(FearComponent.Phobias));
     }
 
     /// <summary>
@@ -35,13 +40,10 @@ public abstract partial class SharedFearSystem
     /// </summary>
     private void OnHemophobiaShutdown(Entity<HemophobiaComponent> ent, ref ComponentShutdown args)
     {
-        if (TerminatingOrDeleted(ent))
-            return;
-
-        if (!TryComp<FearComponent>(ent, out var fearComponent))
+        if (!_fearQuery.TryComp(ent, out var fearComponent))
             return;
 
         fearComponent.Phobias.Remove(ent.Comp.Phobia);
-        Dirty(ent, fearComponent);
+        DirtyField(ent, fearComponent, nameof(FearComponent.Phobias));
     }
 }

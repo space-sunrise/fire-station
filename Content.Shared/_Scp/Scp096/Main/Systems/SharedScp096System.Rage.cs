@@ -1,5 +1,6 @@
 ﻿using Content.Shared._Scp.Audio;
 using Content.Shared._Scp.Scp096.Main.Components;
+using Content.Shared._Scp.Shaders.SinCity;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Damage.Systems;
 using Content.Shared.Jittering;
@@ -40,7 +41,7 @@ public abstract partial class SharedScp096System
         ent.Comp.RageHeatUpEnd = _timing.CurTime + ent.Comp.RageHeatUp;
 
         // Убираем компонент, отвечающий за шейдер для обычного состояния
-        RemComp<Scp096ShaderStaticComponent>(ent);
+        RemComp<SinCityOverlayComponent>(ent);
 
         // Устанавливаем звук пред-агр состояния
         UpdateAudio(ent.Owner, ent.Comp.TriggerSound);
@@ -104,7 +105,7 @@ public abstract partial class SharedScp096System
             RaiseNetworkEvent(new NetworkAmbientMusicEventStop(), ent);
 
         // Добавляем компонент, отвечающий за шейдер для обычного состояния
-        EnsureComp<Scp096ShaderStaticComponent>(ent);
+        EnsureComp<SinCityOverlayComponent>(ent);
 
         // Усыпляем скромника
         if (!_statusEffects.TryAddStatusEffectDuration(ent, StatusEffectSleep, ent.Comp.PacifiedTime))

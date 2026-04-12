@@ -10,3 +10,7 @@ ent-StairScpSteel = { ent-Stairs }
 ent-StairScpSteelStage = { ent-Stairs }
     .suffix = Сталь
     .desc = { ent-Stairs.desc }
+ent-StairScpWood = { ent-StairWood }
+    .desc = { ent-StairWood.desc }
+ent-StairScpWoodStage = { ent-StairStageWood }
+    .desc = { ent-StairStageWood.desc }

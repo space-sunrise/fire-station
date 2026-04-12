@@ -1,0 +1,6 @@
+- type: entity
+  parent: Barricade
+  id: ScpBarricade
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/barricades.rsi

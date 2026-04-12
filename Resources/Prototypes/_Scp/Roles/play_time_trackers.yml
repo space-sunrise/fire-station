@@ -195,9 +195,6 @@
   id: JobLLHSpecialist
 
 - type: playTimeTracker
-  id: JobLLHCadet
-
-- type: playTimeTracker
   id: JobMHLeader
 
 - type: playTimeTracker
@@ -213,9 +210,6 @@
   id: JobRRHSpecialist
 
 - type: playTimeTracker
-  id: JobRRHCadet
-
-- type: playTimeTracker
   id: JobNTFLeader
 
 - type: playTimeTracker
@@ -223,6 +217,14 @@
 
 - type: playTimeTracker
   id: JobNTFCadet
+
+# Служба Безопасности Фонда
+
+- type: playTimeTracker
+  id: JobFondSecurityOfficer
+
+- type: playTimeTracker
+  id: JobFondSeniorSecurityOfficer
 
 # Антагонисты
 

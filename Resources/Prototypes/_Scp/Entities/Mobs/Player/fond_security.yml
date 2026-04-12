@@ -1,0 +1,87 @@
+﻿- type: entity
+  id: RandomHumanoidSpawnerFondSeniorSecurityOfficer
+  name: fond senior security officer spawner
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertleader
+  - type: RandomHumanoidSpawner
+    settings: FondSeniorSecurityOfficer
+
+- type: randomHumanoidSettings
+  id: FondSeniorSecurityOfficer
+  parent: CommonMTFCadet
+  randomizeName: false
+  voiceWhitelist:
+  - ColinMoriartyFL1
+  - OfficerEnclave
+  components:
+  - type: GhostRole
+    name: ghost-role-information-fond-senior-security-officer-name
+    description: ghost-role-information-fond-senior-security-officer-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: FondSeniorSecurityOfficer
+  - type: RandomMetadata
+    nameSegments:
+    - NamesSeniorOfficer
+    - NamesOfficerLast
+    nameFormat: name-format-ert
+  - type: Loadout
+    prototypes: [ FondSeniorSecurityOfficerGearAltA, FondSeniorSecurityOfficerGearAltB ]
+
+- type: entity
+  id: RandomHumanoidSpawnerFondSecurityOfficer
+  name: fond security officer spawner
+  components:
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    state: ertsecurityeva
+  - type: RandomHumanoidSpawner
+    settings: FondSecurityOfficer
+
+- type: randomHumanoidSettings
+  id: FondSecurityOfficer
+  parent: CommonMTFCadet
+  randomizeName: false
+  voiceWhitelist:
+  - Crysis2Operator3v1
+  - Crysis2Blackops01
+  - Crysis2Blackops02
+  - Crysis2Overlord1
+  - Crysis2Overlord2
+  components:
+  - type: GhostRole
+    name: ghost-role-information-fond-security-officer-name
+    description: ghost-role-information-fond-security-officer-description
+    rules: ghost-role-information-nonantagonist-rules
+    raffle:
+      settings: short
+    job: FondSecurityOfficer
+  - type: RandomMetadata
+    nameSegments:
+    - NamesOfficer
+    - NamesOfficerLast
+    nameFormat: name-format-ert
+  - type: Loadout
+    prototypes: [ FondSecurityOfficerGearAltA, FondSecurityOfficerGearAltB ]
+
+# Имена
+- type: localizedDataset
+  id: NamesSeniorOfficer
+  values:
+    prefix: names-fond-senior-officer-first-dataset-
+    count: 1
+
+- type: localizedDataset
+  id: NamesOfficer
+  values:
+    prefix: names-fond-officer-first-dataset-
+    count: 1
+
+- type: localizedDataset
+  id: NamesOfficerLast
+  values:
+    prefix: names-fond-officer-last-dataset-
+    count: 25

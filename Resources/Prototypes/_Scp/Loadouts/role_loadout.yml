@@ -25,7 +25,6 @@
   - ScpLoadoutGroupGlasses
   - ScpLoadoutGroupEarsClothingHeadsetAltScientificService
   - ScpLoadoutGroupScientificServiceDirectorNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupScientificServiceDirectorOuterClothing
   - ScpLoadoutGroupScientificServiceDirectorJumpsuit
   - ScpLoadoutGroupScientistGloves
@@ -73,7 +72,6 @@
   - ScpLoadoutGroupEarsClothingHeadsetAltEngineeringTechnicalService
   - ScpLoadoutGroupChiefTechnicalSpecialistMask
   - ScpLoadoutGroupChiefTechnicalSpecialistNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupChiefTechnicalSpecialistOuterClothing
   - ScpLoadoutGroupChiefTechnicalSpecialistJumpsuit
   - ScpLoadoutGroupChiefTechnicalSpecialistGloves
@@ -96,7 +94,6 @@
   - ScpLoadoutGroupGlasses
   - ScpLoadoutGroupEarsClothingHeadsetAltAdministration
   - ScpLoadoutGroupPersonnelOfficerNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupPersonnelOfficerOuterClothing
   - ScpLoadoutGroupPersonnelOfficerJumpsuit
   - ScpLoadoutGroupGlovesClothingHandsGlovesHop
@@ -120,7 +117,6 @@
   - ScpLoadoutGroupHeadOfMedicalSectorMask
   - ScpLoadoutGroupHeadOfMedicalSectorNeck
   - ScpLoadoutGroupHeadOfMedicalSectorOuterClothing
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupHeadOfMedicalSectorJumpsuit
   - ScpLoadoutGroupHeadOfMedicalSectorGloves
   - ScpLoadoutGroupHeadOfMedicalSectorShoes
@@ -143,7 +139,6 @@
   - ScpLoadoutGroupEarsClothingHeadsetAltLogistics
   - ScpLoadoutGroupSeniorLogisticsOfficerMask
   - ScpLoadoutGroupSeniorLogisticsOfficerNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupSeniorLogisticsOfficerOuterClothing
   - ScpLoadoutGroupSeniorLogisticsOfficerJumpsuit
   - ScpLoadoutGroupSeniorLogisticsOfficerGloves
@@ -421,7 +416,6 @@
   - ScpLoadoutGroupGlasses
   - ScpLoadoutGroupEarsClothingHeadsetScientificService
   - ScpLoadoutGroupScientistNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupScientistOuterClothing
   - ScpLoadoutGroupScientistJumpsuit
   - ScpLoadoutGroupScientistGloves
@@ -458,7 +452,6 @@
   groups:
   - ScpLoadoutGroupGlasses
   - ScpLoadoutGroupEarsClothingHeadsetScientificService
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupJuniorResearcherJumpsuit
   - ScpLoadoutGroupShoesClothingShoesColorWhite
   - ScpLoadoutGroupScientistBackpack
@@ -504,7 +497,6 @@
   - ScpLoadoutGroupEarsClothingHeadsetMedicalService
   - ScpLoadoutGroupPharmaceuticalSpecialistMask
   - ScpLoadoutGroupPharmaceuticalSpecialistNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupPharmaceuticalSpecialistOuterClothing
   - ScpLoadoutGroupPharmaceuticalSpecialistJumpsuit
   - ScpLoadoutGroupPharmaceuticalSpecialistGloves
@@ -528,7 +520,6 @@
   - ScpLoadoutGroupEarsClothingHeadsetMedicalService
   - ScpLoadoutGroupMedicalMask
   - ScpLoadoutGroupMedicalSpecialistNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupMedicalSpecialistOuterClothing
   - ScpLoadoutGroupMedicalSpecialistJumpsuit
   - ScpLoadoutGroupMedicalGloves
@@ -551,7 +542,6 @@
   - ScpLoadoutGroupEarsClothingHeadsetMedicalService
   - ScpLoadoutGroupPsychotherapistMask
   - ScpLoadoutGroupPsychotherapistNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupPsychotherapistOuterClothing
   - ScpLoadoutGroupPsychotherapistJumpsuit
   - ScpLoadoutGroupPsychotherapistGloves
@@ -574,7 +564,6 @@
   - ScpLoadoutGroupEarsClothingHeadsetMedicalService
   - ScpLoadoutGroupMedicalMask
   - ScpLoadoutGroupMedicalSpecialistNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupMedicalSpecialistOuterClothing
   - ScpLoadoutGroupHospitalInternJumpsuit
   - ScpLoadoutGroupMedicalGloves
@@ -622,7 +611,6 @@
   - ScpLoadoutGroupEarsClothingHeadsetEngineeringTechnicalService
   - ScpLoadoutGroupGeneralTechnicalSpecialistMask
   - ScpLoadoutGroupGeneralTechnicalSpecialistNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupGeneralTechnicalSpecialistOuterClothing
   - ScpLoadoutGroupGeneralTechnicalSpecialistJumpsuit
   - ScpLoadoutGroupGeneralTechnicalSpecialistGloves
@@ -645,7 +633,6 @@
   - ScpLoadoutGroupEarsClothingHeadsetEngineeringTechnicalService
   - ScpLoadoutGroupElectricalTechnicalSpecialistMask
   - ScpLoadoutGroupElectricalTechnicalSpecialistNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupElectricalTechnicalSpecialistOuterClothing
   - ScpLoadoutGroupElectricalTechnicalSpecialistJumpsuit
   - ScpLoadoutGroupElectricalTechnicalSpecialistGloves
@@ -667,7 +654,6 @@
   - ScpLoadoutGroupEarsClothingHeadsetEngineeringTechnicalService
   - ScpLoadoutGroupGeneralTechnicalSpecialistMask
   - ScpLoadoutGroupGeneralTechnicalSpecialistNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupGeneralTechnicalSpecialistOuterClothing
   - ScpLoadoutGroupTechnicalTraineeJumpsuit
   - ScpLoadoutGroupGeneralTechnicalSpecialistGloves
@@ -693,7 +679,6 @@
   - ScpLoadoutGroupEarsClothingHeadsetLogistics
   - ScpLoadoutGroupLogisticsOfficerMask
   - ScpLoadoutGroupLogisticsOfficerNeck
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupLogisticsOfficerOuterClothing
   - ScpLoadoutGroupLogisticsOfficerJumpsuit
   - ScpLoadoutGroupLogisticsOfficerGloves
@@ -717,7 +702,6 @@
   - ScpLoadoutGroupGlasses
   - ScpLoadoutGroupEarsClothingHeadsetFoodAndSanitation
   - ScpLoadoutGroupGastronomicSpecialistMask
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupGastronomicSpecialistOuterClothing
   - ScpLoadoutGroupGastronomicSpecialistJumpsuit
   - ScpLoadoutGroupShoesClothingShoesColorBlack
@@ -736,7 +720,6 @@
   - ScpLoadoutGroupBotanistPhytogeneticistHead
   - ScpLoadoutGroupGlasses
   - ScpLoadoutGroupEarsClothingHeadsetFoodAndSanitation
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupBotanistPhytogeneticistOuterClothing
   - ScpLoadoutGroupBotanistPhytogeneticistJumpsuit
   - ScpLoadoutGroupShoesClothingShoesColorBrown
@@ -755,7 +738,6 @@
   - ScpLoadoutGroupServicePersonnelHead
   - ScpLoadoutGroupGlasses
   - ScpLoadoutGroupEarsClothingHeadsetFoodAndSanitation
-  - ScpLoadoutGroupTankHarness
   - ScpLoadoutGroupServicePersonnelOuterClothing
   - ScpLoadoutGroupServicePersonnelJumpsuit
   - ScpLoadoutGroupServicePersonnelGloves

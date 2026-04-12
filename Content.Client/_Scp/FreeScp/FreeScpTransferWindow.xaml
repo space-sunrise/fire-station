@@ -1,0 +1,15 @@
+﻿<DefaultWindow xmlns="https://spacestation14.io"
+               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+               x:Class="Content.Client._Scp.FreeScp.FreeScpTransferWindow"
+               Title="{Loc free-scp-transfer-window-title}">
+    <BoxContainer Orientation="Vertical">
+        <Label Name="BodyLabel" />
+        <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Name="TransferNowButton" Access="Public" />
+            <Control MinSize="20 0" />
+            <Button Name="WaitButton" Access="Public" />
+            <Control MinSize="20 0" />
+            <Button Name="DeclineButton" Access="Public" />
+        </BoxContainer>
+    </BoxContainer>
+</DefaultWindow>

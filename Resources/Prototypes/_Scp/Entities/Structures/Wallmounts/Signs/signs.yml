@@ -44,6 +44,15 @@
 
 - type: entity
   parent: BaseSignDirectionalScp
+  id: SignDirectionalScp018
+  name: SCP-018 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 018
+
+- type: entity
+  parent: BaseSignDirectionalScp
   id: SignDirectionalScp035
   name: SCP-035 sign
   description: Points in a direction you shouldn't go without a clear understanding of where it leads.
@@ -71,12 +80,48 @@
 
 - type: entity
   parent: BaseSignDirectionalScp
+  id: SignDirectionalScp101
+  name: SCP-101 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 101
+
+- type: entity
+  parent: BaseSignDirectionalScp
   id: SignDirectionalScp106
   name: SCP-106 sign
   description: Points in a direction you shouldn't go without a clear understanding of where it leads.
   components:
   - type: Sprite
     state: 106
+    
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp109
+  name: SCP-109 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 109
+    
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp124
+  name: SCP-124 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 124
+    
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp127
+  name: SCP-127 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 127
 
 - type: entity
   parent: BaseSignDirectionalScp
@@ -95,6 +140,15 @@
   components:
   - type: Sprite
     state: 207
+    
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp268
+  name: SCP-268 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 268
 
 - type: entity
   parent: BaseSignDirectionalScp
@@ -104,6 +158,15 @@
   components:
   - type: Sprite
     state: 330
+
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp427
+  name: SCP-427 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 427
 
 - type: entity
   parent: BaseSignDirectionalScp
@@ -122,6 +185,15 @@
   components:
   - type: Sprite
     state: 612
+    
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp714
+  name: SCP-714 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 714
 
 - type: entity
   parent: BaseSignDirectionalScp
@@ -149,6 +221,15 @@
   components:
   - type: Sprite
     state: 999
+    
+- type: entity
+  parent: BaseSignDirectionalScp
+  id: SignDirectionalScp2022
+  name: SCP-2022 sign
+  description: Points in a direction you shouldn't go without a clear understanding of where it leads.
+  components:
+  - type: Sprite
+    state: 2022
 
 # Места в зоне
 

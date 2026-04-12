@@ -1,0 +1,45 @@
+﻿- type: reagent
+  id: Scp427Reagent
+  name: reagent-name-scp427
+  desc: reagent-desc-scp427
+  physicalDesc: reagent-physical-desc-glowing
+  flavor: medicine
+  color: "#FFCC00"
+  metabolisms:
+    Medicine:
+      metabolismRate: 0.5
+      effects:
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp427Reagent
+          min: 1
+          max: 59
+        damage: # если что хил балансный
+          types:
+            Blunt: -2
+            Slash: -2
+            Mangleness: -2
+            Radiation: -2
+            Cellular: -2
+            Poison: -2
+            Piercing: -2
+            Heat: -2
+
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp427Reagent
+          min: 55
+          max: 57
+        visualType: Large
+        messages: ["reagent-effect-scp427-warning"]
+        probability: 1
+        type: Local
+
+      - !type:Polymorph
+        prototype: Scp427Polymorph
+        conditions:
+        - !type:ReagentCondition
+          reagent: Scp427Reagent
+          min: 60

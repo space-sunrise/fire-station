@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "MIDUZKA",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "Basic3008",
+      "directions": 4
+    },
+    {
+      "name": "Strong3008",
+      "directions": 4
+    }
+  ]
+}

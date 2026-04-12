@@ -24,6 +24,8 @@
     stateDoorClosed: door
   - type: Transform
     anchored: true
+  - type: Physics
+    bodyType: Static
 
 - type: entity
   id: GunSafeBaseSecureSunrise
@@ -218,7 +220,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 900
+        damage: 99999
       behaviors:
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
@@ -350,6 +352,7 @@
 
 - type: entity
   id: LockerMiningSpecialist
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: LockerBaseSecure
   suffix: Empty
   name: mining specialist's equipment
@@ -371,6 +374,7 @@
 
 - type: entity
   id: LockerMiningSpecialistFilled
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: LockerMiningSpecialist
   suffix: Filled, Hardsuit
   name: mining specialist's equipment
@@ -429,6 +433,7 @@
 
 - type: entity
   id: LockerRepresentativeFilled
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: LockerRepresentative
   suffix: Filled
   components:

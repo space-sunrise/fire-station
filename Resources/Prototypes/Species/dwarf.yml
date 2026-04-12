@@ -1,7 +1,7 @@
 - type: species
   id: Dwarf
   name: species-name-dwarf
-  roundStart: true
+  roundStart: false # Fire Edit
   prototype: MobDwarf
   bodyTypes:
   - HumanNormal
@@ -28,3 +28,4 @@
   buttScan:
     sprite: /Textures/_Sunrise/CopyMachine/butts_scans.rsi
     state: human
+  maxAge: 85 # Fire-Edit

@@ -224,6 +224,13 @@
       components:
       - Scp
       - MobState
+      requireAll: true
+    targetBlacklist:
+      components:
+      - Scp096Face
+    otherMapWhitelist:
+      components:
+      - Scp106BackRoomMap
 
 - type: entity
   id: EffectMagnetUltra

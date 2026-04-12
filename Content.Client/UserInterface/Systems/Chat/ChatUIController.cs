@@ -1,6 +1,8 @@
 using System.Globalization;
 using System.Linq;
 using System.Numerics;
+using Content.Client._Scp.Audio.UIAudio;
+using Content.Client._Scp.Stylesheets.Palette;
 using Content.Client.Administration.Managers;
 using Content.Client.Chat;
 using Content.Client.Chat.Managers;
@@ -72,6 +74,10 @@ public sealed partial class ChatUIController : UIController
     [UISystemDependency] private readonly TransformSystem? _transform = default;
     [UISystemDependency] private readonly MindSystem? _mindSystem = default!;
     [UISystemDependency] private readonly RoleCodewordSystem? _roleCodewordSystem = default!;
+
+    // Fire added start
+    private TypingSoundUIController? _typingSound;
+    // Fire added end
 
     private static readonly ProtoId<ColorPalettePrototype> ChatNamePalette = "ChatNames";
     private string[] _chatNameColors = default!;
@@ -302,7 +308,7 @@ public sealed partial class ChatUIController : UIController
                  && style is StyleBoxFlat propStyleBoxFlat)
             color = propStyleBoxFlat.BackgroundColor;
         else
-            color = Color.FromHex("#25252ADD");
+            color = ScpPalettes.Primary.Background; // Fire edit
 
         panel.PanelOverride = new StyleBoxFlat
         {
@@ -859,6 +865,11 @@ public sealed partial class ChatUIController : UIController
             return;
         }
 
+        // Fire added start
+        _typingSound ??= UIManager.GetUIController<TypingSoundUIController>();
+        _typingSound?.PlayGameChatSubmit(box.ChatInput.Input);
+        // Fire added end
+
         if (prefixChannel != ChatSelectChannel.None)
             channel = prefixChannel;
         else if (channel == ChatSelectChannel.Radio)
@@ -1013,8 +1024,11 @@ public sealed partial class ChatUIController : UIController
         if (_examine == null || _transform == null)
             return false;
 
-        if (!_ent.EntityExists(sender) || !_ent.EntityExists(player))
+        if (!_ent.EntityExists(player))
             return false;
+
+        if (!_ent.EntityExists(sender))
+            return true;
 
         if (!_examine.IsOccluded(player.Value))
             return true;

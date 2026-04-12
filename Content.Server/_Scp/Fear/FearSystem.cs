@@ -1,8 +1,8 @@
-﻿using System.Linq;
-using Content.Shared._Scp.Fear;
+﻿using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Systems;
 using Content.Shared._Sunrise.Mood;
+using Content.Shared.GameTicking;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Timing;
@@ -13,8 +13,6 @@ public sealed partial class FearSystem : SharedFearSystem
 {
     [Dependency] private readonly IGameTiming _timing = default!;
 
-    private EntityQuery<FearActiveSoundEffectsComponent> _activeFearEffects;
-
     private static readonly TimeSpan CalmDownCheckCooldown = TimeSpan.FromSeconds(1f);
     private TimeSpan _nextCalmDownCheck = TimeSpan.Zero;
 
@@ -22,13 +20,12 @@ public sealed partial class FearSystem : SharedFearSystem
     {
         base.Initialize();
 
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnCleanUp);
+
         InitializeSoundEffects();
         InitializeFears();
-        InitializeGameplay();
         InitializeTraits();
         InitializeEntityEffects();
-
-        _activeFearEffects = GetEntityQuery<FearActiveSoundEffectsComponent>();
     }
 
     public override void Update(float frameTime)
@@ -49,13 +46,13 @@ public sealed partial class FearSystem : SharedFearSystem
         // Проходимся по людям с компонентом страха и уменьшаем уровень страха со временем
         while (query.MoveNext(out var uid, out var fear, out var mob))
         {
-            if (!_mob.IsAlive(uid, mob))
-                continue;
-
             if (fear.State == FearState.None)
                 continue;
 
-            if (fear.NextTimeDecreaseFearLevel > _timing.CurTime)
+            if (!_mob.IsAlive(uid, mob))
+                continue;
+
+            if (_timing.CurTime < fear.NextTimeDecreaseFearLevel)
                 continue;
 
             var entity = (uid, fear);
@@ -75,16 +72,9 @@ public sealed partial class FearSystem : SharedFearSystem
     /// </summary>
     public bool TryCalmDown(Entity<FearComponent> ent)
     {
-        // Немного костыль, но это означает, что мы прямо сейчас испытываем какие-то приколы со страхом
-        // И пугаемся чего-то в данный момент. Значит мы не должны успокаиваться.
-        if (_activeFearEffects.HasComp(ent))
-            return false;
-
-        var visibleFearSources = _watching.GetAllVisibleTo<FearSourceComponent>(ent.Owner, ent.Comp.SeenBlockerLevel);
-
         // Проверка на то, что мы в данный момент не смотрим на какую-то страшную сущность.
         // Нельзя успокоиться, когда мы смотрим на источник страха.
-        if (visibleFearSources.Any())
+        if (_watching.TryGetAnyEntitiesVisibleTo<FearSourceComponent>(ent.Owner, ent.Comp.SeenBlockerLevel))
             return false;
 
         var newFearState = GetDecreasedLevel(ent.Comp.State);
@@ -124,10 +114,8 @@ public sealed partial class FearSystem : SharedFearSystem
         RaiseLocalEvent(uid, new MoodRemoveEffectEvent(MoodHemophobicBleeding));
     }
 
-    protected override void Clear()
+    private void OnCleanUp(RoundRestartCleanupEvent args)
     {
-        base.Clear();
-
         _nextHemophobiaCheck = TimeSpan.Zero;
         _nextCalmDownCheck = TimeSpan.Zero;
     }

@@ -1,6 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
+using Content.Client._Scp.UI.Compatibility;
+using Content.Client._Sunrise.Lobby.UI;
 using Content.Client.Administration.Managers;
 using Content.Client.Administration.Systems;
 using Content.Client.Administration.UI.Bwoink;
@@ -43,7 +45,7 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
 
     private BwoinkSystem? _bwoinkSystem;
     private MenuButton? GameAHelpButton => UIManager.GetActiveUIWidgetOrNull<GameTopMenuBar>()?.AHelpButton;
-    private Button? LobbyAHelpButton => (UIManager.ActiveScreen as LobbyGui)?.AHelpButton;
+    private Button? LobbyAHelpButton => (UIManager.ActiveScreen as SunriseLobbyGui)?.AHelpButton;
     public IAHelpUIHandler? UIHelper;
     private bool _discordRelayActive;
     private bool _hasUnreadAHelp;
@@ -129,6 +131,9 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
         if (LobbyAHelpButton != null)
         {
             LobbyAHelpButton.Pressed = pressed;
+            // Sunrise added start - sync lobby icon tint on programmatic pressed changes
+            HoverColorHelper.SetContentColor(LobbyAHelpButton, HoverColorHelper.GetColorForCurrentState(LobbyAHelpButton));
+            // Sunrise added end
         }
 
         UIManager.ClickSound();
@@ -322,6 +327,9 @@ public sealed class AHelpUIController: UIController, IOnSystemChanged<BwoinkSyst
             LobbyAHelpButton.OnPressed -= AHelpButtonPressed;
             LobbyAHelpButton.OnPressed += AHelpButtonPressed;
             LobbyAHelpButton.Pressed = UIHelper?.IsOpen ?? false;
+            // Sunrise added start - sync lobby icon tint on programmatic pressed changes
+            HoverColorHelper.SetContentColor(LobbyAHelpButton, HoverColorHelper.GetColorForCurrentState(LobbyAHelpButton));
+            // Sunrise added end
 
             if (_hasUnreadAHelp)
             {
@@ -376,10 +384,10 @@ public sealed class AdminAHelpUIHandler : IAHelpUIHandler
     public bool IsOpen => Window is { Disposed: false, IsOpen: true } || ClydeWindow is { IsDisposed: false };
     public bool EverOpened;
 
-    public BwoinkWindow? Window;
+    public _Sunrise.Administration.UI.Bwoink.SunriseBwoinkWindow? Window;   // Sunrise-edit
     public WindowRoot? WindowRoot;
     public IClydeWindow? ClydeWindow;
-    public BwoinkControl? Control;
+    public _Sunrise.Administration.UI.Bwoink.SunriseBwoinkControl? Control;  // Sunrise-edit
 
     public void Receive(SharedBwoinkSystem.BwoinkTextMessage message)
     {
@@ -497,7 +505,7 @@ public sealed class AdminAHelpUIHandler : IAHelpUIHandler
         if (Control is { Disposed: false })
             return;
 
-        Window = new BwoinkWindow();
+        Window = new _Sunrise.Administration.UI.Bwoink.SunriseBwoinkWindow();  // Sunrise-edit
         Control = Window.Bwoink;
         Window.OnClose += () => { OnClose?.Invoke(); };
         Window.OnOpen += () =>

@@ -40,6 +40,20 @@
   alwaysShowInBanPanel: true
   weight: 99 # что бы оперативники МОГ показывались под Администрацией комплекса
 
+# Служба безопасности фонда
+
+- type: department
+  id: FondSecurity
+  name: department-FondSecurity
+  description: department-FondSecurity-description
+  color: "#913030"
+  roles:
+  - FondSecurityOfficer
+  - FondSeniorSecurityOfficer
+  editorHidden: true
+  alwaysShowInBanPanel: true
+  weight: 97
+
 # Гады следящие за буквой закона
 
 - type: department

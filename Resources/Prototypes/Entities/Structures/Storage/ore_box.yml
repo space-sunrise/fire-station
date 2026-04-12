@@ -26,7 +26,7 @@
       - !type:EmptyAllContainersBehaviour
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank1:
+          ScpMaterialWoodPlank1: # Fire edit
             min: 3
             max: 5
       - !type:DoActsBehavior

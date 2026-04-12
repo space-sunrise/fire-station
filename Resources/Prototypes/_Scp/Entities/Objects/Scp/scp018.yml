@@ -1,0 +1,62 @@
+﻿- type: entity
+  parent: BaseItemScp
+  id: Scp018
+  suffix: SCP-018
+  name: red ball
+  description: A seemingly ordinary red ball made of dense rubber. It seems to bounce slightly higher than it should.
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-018.rsi
+    state: icon
+  - type: Scp
+    class: Euclid
+  - type: Item
+    size: Normal
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: TriggerOnCollide
+    fixtureID: fix1
+    keyOut: OnCollide
+  - type: Physics
+    bodyType: Dynamic
+  - type: StaminaDamageOnTrigger
+    stamina: 20
+    keysIn:
+      - OnCollide
+    targetUser: true
+  - type: DamageOnTrigger
+    damage:
+      types:
+        Blunt: 10
+        Structural: 5
+    keysIn:
+      - OnCollide
+    targetUser: true
+  - type: TileFrictionModifier
+    modifier: 0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape: !type:PhysShapeCircle
+          radius: 0.3
+        density: 0
+        mask:
+          - BulletImpassable
+        restitution: 1.02 # чтбы разгонялся но не начинал лететь слишком быстро  
+  - type: XenoArtifact
+    triggerWeights: Scp018Triggers
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          path: /Audio/Items/snap.ogg
+      - !type:DoActsBehavior
+        acts: ["Destruction"]

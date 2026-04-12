@@ -7,5 +7,5 @@ public sealed partial class ArtifactScp096MadnessComponent : Component
     public float Radius = 12f;
 
     [DataField]
-    public float Percent = 70f;
+    public float Percent = 0.7f;
 }

@@ -421,7 +421,7 @@
           collection: WoodDestroyHeavy
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank1:
+          ScpMaterialWoodPlank1: # Fire edit
             min: 1
             max: 4
       - !type:DoActsBehavior
@@ -788,7 +788,7 @@
           collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank1:
+          ScpMaterialWoodPlank1:
             min: 1
             max: 4
       - !type:DoActsBehavior
@@ -840,7 +840,7 @@
           collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank1:
+          ScpMaterialWoodPlank1:
             min: 1
             max: 4
       - !type:DoActsBehavior

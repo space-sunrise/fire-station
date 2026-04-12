@@ -10,6 +10,7 @@ using Content.Server.Interaction;
 using Content.Server.Popups;
 using Content.Server.Storage.EntitySystems;
 using Content.Shared._Scp.Helpers;
+using Content.Shared._Scp.Other.BunkerMarker;
 using Content.Shared._Scp.Other.DamageOnCollide;
 using Content.Shared._Scp.Proximity;
 using Content.Shared._Scp.Scp173;
@@ -103,7 +104,7 @@ public sealed partial class Scp173System : SharedScp173System
             return;
         }
 
-        if (Watching.IsWatched(uid.Owner))
+        if (Watching.IsWatchedByAny(uid))
         {
             var message = Loc.GetString("scp173-fast-movement-too-many-watchers");
             _popup.PopupEntity(message, uid, uid, PopupType.LargeCaution);
@@ -145,7 +146,7 @@ public sealed partial class Scp173System : SharedScp173System
                 _door.SetBoltsDown((ent, doorBoltComp), false, predicted: true);
 
             // Открываем шлюзы
-            if (_random.Prob(ToggleDoorStuffChance) && doors.TryComp(ent, out var doorComp) && doorComp.State is not DoorState.Open)
+            if (_random.Prob(ToggleDoorStuffChance) && doors.TryComp(ent, out var doorComp) && doorComp.State is not DoorState.Open && !HasComp<BunkerMarkerComponent>(ent))
                 _door.StartOpening(ent);
 
             // Кешируем шанс, так как его придется использовать несколько раз
@@ -185,7 +186,7 @@ public sealed partial class Scp173System : SharedScp173System
             return;
         }
 
-        if (Watching.IsWatched(ent.Owner))
+        if (Watching.IsWatchedByAny(ent))
         {
             var message = Loc.GetString("scp173-fast-movement-too-many-watchers");
             _popup.PopupEntity(message, ent, ent, PopupType.LargeCaution);
@@ -215,7 +216,7 @@ public sealed partial class Scp173System : SharedScp173System
                 if (TryComp<LockComponent>(target, out var lockComp) && lockComp.Locked)
                     _lock.Unlock(target, args.Performer, lockComp);
 
-                if (TryComp<DoorComponent>(target, out var doorComp) && doorComp.State is not DoorState.Open)
+                if (TryComp<DoorComponent>(target, out var doorComp) && doorComp.State is not DoorState.Open && !HasComp<BunkerMarkerComponent>(target))
                     _door.StartOpening(target);
             }
         }
@@ -253,7 +254,7 @@ public sealed partial class Scp173System : SharedScp173System
             return;
         }
 
-        if (Watching.IsWatched(ent.Owner, out var watchersCount) && watchersCount > ent.Comp.MaxWatchers)
+        if (Watching.TryGetWatchers(ent, out var watchersCount) && watchersCount > ent.Comp.MaxWatchers)
         {
             var message = Loc.GetString("scp173-fast-movement-too-many-watchers");
             _popup.PopupEntity(message, ent, ent, PopupType.LargeCaution);

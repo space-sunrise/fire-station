@@ -222,6 +222,7 @@
   parent: SeedBase
   name: packet of tower cap spores
   id: TowercapSeeds
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
     - type: Seed
       seedId: towercap

@@ -28,16 +28,17 @@ public sealed partial class SafeTimeProgressBar : BoxContainer
     /// <summary>
     /// Обновляет и актуализирует информацию о безопасном времени
     /// </summary>
-    /// <param name="time">Все безопасное время, установленное для сущности</param>
-    public void UpdateSafeTimeInfo(TimeSpan? time)
+    /// <param name="timeEnd">Абсолютное время окончания safe time.</param>
+    /// <param name="totalTime">Полная длительность safe time для расчета прогресса.</param>
+    public void UpdateSafeTimeInfo(TimeSpan? timeEnd, TimeSpan totalTime)
     {
-        if (!time.HasValue)
+        if (!timeEnd.HasValue || totalTime <= TimeSpan.Zero)
         {
             Visible = false;
             return;
         }
 
-        var timeLeft = time - _timing.CurTime;
+        var timeLeft = timeEnd.Value - _timing.CurTime;
         if (timeLeft <= TimeSpan.Zero)
         {
             Visible = false;
@@ -46,14 +47,15 @@ public sealed partial class SafeTimeProgressBar : BoxContainer
 
         Visible = true;
 
-        var timeLeftString = SafeTimeSystem.GetTimeLeft(timeLeft.Value);
+        var timeLeftString = SafeTimeSystem.GetTimeLeft(timeLeft);
         InfoLabel.Text = _loc.GetString("safe-time-title", ("time", timeLeftString));
 
-        ProgressBar.MaxValue = (int) time.Value.TotalSeconds;
+        var totalSeconds = (int) totalTime.TotalSeconds;
+        ProgressBar.MaxValue = totalSeconds;
         ProgressBar.ForegroundStyleBoxOverride = SafeTimeColor;
 
-        var elapsed = (int) (time.Value.TotalSeconds - timeLeft.Value.TotalSeconds);
+        var elapsed = Math.Clamp(totalSeconds - (int) timeLeft.TotalSeconds, 0, totalSeconds);
         ProgressBar.Value = elapsed;
-        ProgressLabel.Text = $"{(int) (elapsed / time.Value.TotalSeconds * 100)}%";
+        ProgressLabel.Text = $"{(int) (elapsed / (float) totalSeconds * 100)}%";
     }
 }

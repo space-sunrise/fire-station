@@ -1,4 +1,4 @@
-﻿- type: accessGroup
+- type: accessGroup
   id: Director
   groups:
   - AdministrationJobCommon
@@ -27,12 +27,10 @@
   id: SecurityCommander
   groups:
   - AdministrationJobCommon
-  - Security
-  - ScientificServiceHeadless
-  - MedicalHeadless
-  - EngineeringHeadless
-  - ServiceHeadless
-  - ClassD
+  - SecurityJobCommon
+  tags:
+  - SecurityCommander
+  - Armory
 
 - type: accessGroup
   id: ChiefTechnicalSpecialist
@@ -116,6 +114,7 @@
   - Checkpoint
   - Exit
   - Maintenance
+  - Bunker
 
 # Служба безопасности
 
@@ -141,9 +140,12 @@
   - MedicalHeadless
   - EngineeringHeadless
   - ServiceHeadless
+  - LogisticsHeadless
   tags:
+  - Maintenance
   - Checkpoint
   - Security
+  - Bunker
 
 # Научная служба
 
@@ -168,11 +170,13 @@
   - Safe
   - Research
   - Laboratory
+  - Bunker
 
 - type: accessGroup
   id: JuniorResearcher
   tags:
   - Research
+  - Bunker
 
 # Медицинская служба
 
@@ -195,6 +199,7 @@
   id: CommonMedicalJob
   tags:
   - Medical
+  - Bunker
 
 # Инженерно-техническая служба
 
@@ -218,6 +223,7 @@
   tags:
   - Engineering
   - Maintenance
+  - Bunker
 
 # Логистическая служба
 

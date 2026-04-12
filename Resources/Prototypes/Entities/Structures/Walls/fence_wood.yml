@@ -96,6 +96,7 @@
 - type: entity
   parent: BaseFenceWood
   id: FenceWoodHighStraight
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Straight
   components:
   - type: Icon
@@ -125,6 +126,7 @@
 - type: entity
   parent: BaseFenceWood
   id: FenceWoodHighEnd
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: End
   components:
   - type: Icon
@@ -154,6 +156,7 @@
 - type: entity
   parent: BaseFenceWood
   id: FenceWoodHighCorner
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Corner
   components:
   - type: Icon
@@ -192,6 +195,7 @@
 - type: entity
   parent: BaseFenceWood
   id: FenceWoodHighTJunction
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: T-Junction
   components:
   - type: Icon
@@ -230,6 +234,7 @@
 - type: entity
   parent: BaseFenceWood
   id: FenceWoodHighGate
+  categories: [ HideSpawnMenu ] # Fire edit
   name: wooden fence gate
   description: Do you have any idea what awaits you behind these gates? It can be either a toilet or a luxurious mansion. But you continue to love your emo boys.
   components:
@@ -279,6 +284,7 @@
 - type: entity
   parent: BaseFenceWoodSmall
   id: FenceWoodSmallStraight
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Straight
   components:
   - type: Icon
@@ -307,6 +313,7 @@
 - type: entity
   parent: BaseFenceWoodSmall
   id: FenceWoodSmallEnd
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: End
   components:
   - type: Icon
@@ -335,6 +342,7 @@
 - type: entity
   parent: BaseFenceWoodSmall
   id: FenceWoodSmallCorner
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: Corner
   components:
   - type: Icon
@@ -372,6 +380,7 @@
 - type: entity
   parent: BaseFenceWoodSmall
   id: FenceWoodSmallTJunction
+  categories: [ HideSpawnMenu ] # Fire edit
   suffix: T-Junction
   components:
   - type: Icon
@@ -409,6 +418,7 @@
 - type: entity
   parent: BaseFenceWoodSmall
   id: FenceWoodSmallGate
+  categories: [ HideSpawnMenu ] # Fire edit
   name: wooden fence gate
   description: Looking at this gate, a familiar image pops up in your head. Where's my piggy?
   components:

@@ -86,7 +86,7 @@
     neck: ClothingNeckMantleQM
   effects:
   - !type:GroupLoadoutEffect
-    proto: MasterQM
+    proto: ScpMasterSeniorLogisticsOfficer
 
 # Gloves
 - type: loadout

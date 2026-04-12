@@ -242,8 +242,7 @@
     thresholdDamage: 5
     coughInterval: 5
     emotesTakeDamage:
-    - Scream
-    - Crying
+    - Pain # Fire edit
   - type: SolutionContainerManager
     solutions:
       food:
@@ -281,8 +280,8 @@
   # Fire start
   - type: FieldOfView
   - type: Blinkable
-  - type: SpeakOnEyeStateChange # переопределение моргания с другими параметрами для охраны и МОГа
-    # Часть фраз уходит, так как более разговорная. А эти парни натренированы.
+  - type: SpeakOnEyeStateChange
+    # Обычные персонажи проговаривают фразы только при ручном переключении глаз через акшен.
     phraseOnClose:
     - close-eye-phrase-1
     - close-eye-phrase-3

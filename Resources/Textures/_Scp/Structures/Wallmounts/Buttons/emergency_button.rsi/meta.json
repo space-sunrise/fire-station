@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "license": "CLA",
+  "copyright": "Sprited by Open AI Codex for SCP: Project Fire",
+  "states": [
+    {
+      "name": "off",
+      "directions": 4
+    },
+    {
+      "name": "on",
+      "directions": 4
+    },
+    {
+      "name": "locked",
+      "directions": 4
+    },
+    {
+      "name": "unlocked",
+      "directions": 4
+    }
+  ]
+}

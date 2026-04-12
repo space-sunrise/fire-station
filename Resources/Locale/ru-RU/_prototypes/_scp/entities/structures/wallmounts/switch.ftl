@@ -70,3 +70,6 @@ ent-LockableButtonThirdParty = { ent-LockableButton }
 ent-LockableButtonChaosInsurgency = { ent-LockableButton }
     .suffix = { access-name-chaos-insurgency }
     .desc = { ent-LockableButton.desc }
+ent-LockableButtonBunker = { ent-LockableButton }
+    .suffix = { access-name-bunker }
+    .desc = { ent-LockableButton.desc }

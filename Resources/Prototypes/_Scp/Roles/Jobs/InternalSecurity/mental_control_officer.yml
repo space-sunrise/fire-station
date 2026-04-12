@@ -17,6 +17,7 @@
   - Maintenance
   - External
   - Lawyer
+  - Bunker
   special:
   - !type:AddImplantSpecial
     implants: [ MindShieldImplant ]

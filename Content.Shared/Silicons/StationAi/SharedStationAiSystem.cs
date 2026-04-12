@@ -90,6 +90,10 @@ public abstract partial class SharedStationAiSystem : EntitySystem
         InitializeLight();
         InitializeCustomization();
 
+        // fire edit start - proxy access through AI relay targets
+        InitializeAccess();
+        // fire edit end
+
         SubscribeLocalEvent<StationAiWhitelistComponent, BoundUserInterfaceCheckRangeEvent>(OnAiBuiCheck);
 
         SubscribeLocalEvent<StationAiOverlayComponent, AccessibleOverrideEvent>(OnAiAccessible);

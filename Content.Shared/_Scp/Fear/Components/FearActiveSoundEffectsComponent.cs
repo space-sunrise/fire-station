@@ -6,7 +6,7 @@ namespace Content.Shared._Scp.Fear.Components;
 /// <summary>
 /// Компонент, отвечающий за звуковые эффекты страха при приближении к источнику.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class FearActiveSoundEffectsComponent : Component
 {
     /// <summary>
@@ -61,5 +61,4 @@ public sealed partial class FearActiveSoundEffectsComponent : Component
     public EntityUid? BreathingAudioStream;
 
     #endregion
-
 }

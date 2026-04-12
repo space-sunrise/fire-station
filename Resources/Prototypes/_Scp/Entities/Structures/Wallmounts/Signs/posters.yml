@@ -644,6 +644,15 @@
   components:
   - type: Sprite
     state: scp012
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterScp018
+  name: SCP-018 poster
+  description: Information poster for SCP-018.
+  components:
+  - type: Sprite
+    state: scp018
 
 - type: entity
   parent: PosterScpContainmentRoomBase
@@ -683,12 +692,48 @@
 
 - type: entity
   parent: PosterScpContainmentRoomBase
+  id: PosterSCP101
+  name: SCP-101 poster
+  description: Information poster for SCP-101.
+  components:
+  - type: Sprite
+    state: scp101
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
   id: PosterSCP106
   name: SCP-106 poster
   description: Information poster for SCP-106.
   components:
   - type: Sprite
     state: scp106
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP109
+  name: SCP-109 poster
+  description: Information poster for SCP-109.
+  components:
+  - type: Sprite
+    state: scp109
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP124
+  name: SCP-124 poster
+  description: Information poster for SCP-124.
+  components:
+  - type: Sprite
+    state: scp124
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP127
+  name: SCP-127 poster
+  description: Information poster for SCP-127.
+  components:
+  - type: Sprite
+    state: scp127
 
 - type: entity
   parent: PosterScpContainmentRoomBase
@@ -725,6 +770,15 @@
   components:
   - type: Sprite
     state: scp247
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP268
+  name: SCP-268 poster
+  description: Information poster for SCP-268.
+  components:
+  - type: Sprite
+    state: scp268
 
 - type: entity
   parent: PosterScpContainmentRoomBase
@@ -734,6 +788,15 @@
   components:
   - type: Sprite
     state: scp330
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP427
+  name: SCP-427 poster
+  description: Information poster for SCP-427.
+  components:
+  - type: Sprite
+    state: scp427
 
 - type: entity
   parent: PosterScpContainmentRoomBase
@@ -761,6 +824,15 @@
   components:
   - type: Sprite
     state: scp969
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP714
+  name: SCP-714 poster
+  description: Information poster for SCP-714.
+  components:
+  - type: Sprite
+    state: scp714
 
 - type: entity
   parent: PosterScpContainmentRoomBase
@@ -788,6 +860,15 @@
   components:
   - type: Sprite
     state: scp612
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP2022
+  name: SCP-2022 poster
+  description: Information poster for SCP-2022.
+  components:
+  - type: Sprite
+    state: scp2022
 
 # Длинные плакаты
 

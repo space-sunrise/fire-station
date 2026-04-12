@@ -5,9 +5,11 @@ using Content.Server._Sunrise.Helpers;
 using Content.Server.DoAfter;
 using Content.Server.GameTicking;
 using Content.Server.Gateway.Systems;
+using Content.Server.Mind;
 using Content.Server.Store.Systems;
 using Content.Server.Stunnable;
 using Content.Shared._Scp.Fear;
+using Content.Shared._Scp.Other.BunkerMarker;
 using Content.Shared._Scp.Scp106;
 using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Scp106.Systems;
@@ -15,13 +17,16 @@ using Content.Shared.Alert;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
-using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Physics;
 using Content.Shared.SSDIndicator;
 using Robust.Server.Audio;
+using Robust.Server.GameObjects;
 using Robust.Shared.Audio;
 using Robust.Shared.Map;
+using Robust.Shared.Physics;
+using Robust.Shared.Physics.Systems;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
@@ -31,11 +36,11 @@ namespace Content.Server._Scp.Scp106.Systems;
 public sealed partial class Scp106System : SharedScp106System
 {
     [Dependency] private readonly StairsSystem _stairs = default!;
-    [Dependency] private readonly SharedTransformSystem _transform = default!;
-    [Dependency] private readonly SharedMindSystem _mind = default!;
+    [Dependency] private readonly TransformSystem _transform = default!;
+    [Dependency] private readonly MindSystem _mind = default!;
     [Dependency] private readonly SunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly StoreSystem _store = default!;
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] private readonly AppearanceSystem _appearance = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly StunSystem _stun = default!;
@@ -54,9 +59,10 @@ public sealed partial class Scp106System : SharedScp106System
     public const int HumansInBackroomsRequiredToAscent = 10;
     public static readonly EntProtoId AscentRule = "Scp106AscentRule";
 
-    private static TimeSpan _defaultOnBackroomsStunTime = TimeSpan.FromSeconds(5f);
+    private TimeSpan _defaultOnBackroomsStunTime = TimeSpan.FromSeconds(5f);
 
-    private static readonly SoundSpecifier SendBackroomsSound = new SoundPathSpecifier("/Audio/_Scp/Scp106/onbackrooms.ogg");
+    private static readonly SoundSpecifier SendBackroomsSound =
+        new SoundPathSpecifier("/Audio/_Scp/Scp106/onbackrooms.ogg");
 
     public override void Initialize()
     {
@@ -99,7 +105,7 @@ public sealed partial class Scp106System : SharedScp106System
         base.Update(frameTime);
 
         // Пополнение маны для 106го
-        var queryScp106 = AllEntityQuery<Scp106Component>();
+        var queryScp106 = EntityQueryEnumerator<Scp106Component>();
         while (queryScp106.MoveNext(out var uid, out var component))
         {
             if (component.NextEssenceAddedTime > _timing.CurTime)
@@ -168,8 +174,10 @@ public sealed partial class Scp106System : SharedScp106System
     {
         var humansInBackrooms = CountHumansInBackrooms();
 
+#if !DEBUG && !TOOLS
         if (humansInBackrooms < HumansInBackroomsRequiredToAscent)
             return false;
+#endif
 
         OnAscent();
 

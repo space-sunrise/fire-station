@@ -112,11 +112,12 @@
     ClothingHeadHatSecBlack: 3
     ClothingHeadHatOutlawHat: 1
     ClothingHeadHatCowboyBlack: 1
-    #ClothingNeckShoulderPatchWhite: 6 уходят до лучших времен по приказу ДРД
-    #ClothingNeckShoulderPatchRed: 6
-    #ClothingNeckShoulderPatchBlue: 6
-    #ClothingNeckShoulderPatchGreen: 6
-    #ClothingNeckShoulderPatchYellow: 6
+    ClothingNeckShoulderPatchWhite: 5
+    ClothingNeckShoulderPatchRed: 5
+    ClothingNeckShoulderPatchBlue: 5
+    ClothingNeckShoulderPatchGreen: 5
+    ClothingNeckShoulderPatchYellow: 5
+    BoxCardboardShoulderPatches: 2
     ClothingEyesGlassesSecurityGuard: 3
     ClothingEyesEyepatchHudSecurity: 2
     ClothingMaskSecurityBandBlack: 3
@@ -170,3 +171,34 @@
     ModularReceiverAuto: 1
   emaggedInventory:
     ClothingEyesGlassesNVG: 1
+
+- type: vendingMachineInventory
+  id: ScpPTechInventory
+  startingInventory:
+    BaseFoundationPDA: 8
+    ScpEngineeringPDA: 2
+    ScpMedicalPDA: 2
+    ScpSecurityPDA: 2
+    KeyCardEmpty: 5
+    KeyCardPassEmpty: 2
+    ClothingHeadsetEmpty: 5
+    RubberStampApproved: 1
+    RubberStampDenied: 1
+    Pen: 5
+    BoxFolderPlasticClipboardEmpty: 2
+    Paper: 10
+    HandLabeler: 2
+    DrinkInc: 4
+    #EncryptionKeyCommon: 6  удален общий канал
+    EncryptionKeyLogisticsService: 2
+    EncryptionKeyEngineeringTechnicalService: 2
+    EncryptionKeyMedicalService: 2
+    EncryptionKeyScientificService: 2
+    EncryptionKeyExternalAdministrativeZoneSecurityService: 1
+    EncryptionKeyHeavyContainmentSecurityService: 1
+    EncryptionKeyFoodAndSanitationService: 3
+  contrabandInventory:
+    LuxuryPen: 1
+  emaggedInventory:
+    CyberPen: 1
+    ClothingNeckChaosPin: 2

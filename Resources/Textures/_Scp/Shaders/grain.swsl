@@ -8,25 +8,22 @@
 
 light_mode unshaded;
 
-uniform sampler2D SCREEN_TEXTURE; // Текстура экрана
-uniform lowp float strength; // Сила эффекта зерна
+uniform sampler2D SCREEN_TEXTURE;
+uniform lowp float strength;
+
+mediump float hash12(mediump vec2 p) {
+    p = fract(p * vec2(443.897, 397.297));
+    p += dot(p, p + 19.19);
+    return fract(p.x * p.y);
+}
 
 void fragment()
 {
-    // mediump надеюсь достаточно, чтобы не создавались артефакты
-
     mediump vec4 color = texture(SCREEN_TEXTURE, UV);
-    mediump vec2 uv = UV * 10.1;
 
-    mediump float timeFactor = TIME * 10.0;
-    mediump float x = (uv.x + 1.0) * (uv.y + 2.0) * timeFactor;
+    mediump float grain = hash12(UV * 10.1 + fract(TIME * vec2(1.137, 0.373))) - 0.5;
 
-    mediump float modX = mod(x, 123.0) + 1.0;
-    mediump float modY = mod(x, 312.0) + 1.0;
-
-    mediump float grainValue = mod(modX * modY, 0.01) - 0.005;
-
-    color *= (1.0 - grainValue * strength);
+    color *= (1.0 - grain * (strength / 100.0));
 
     COLOR = color;
 }

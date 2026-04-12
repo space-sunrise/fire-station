@@ -8,6 +8,7 @@
   - type: GrainOverlay
   - type: VignetteOverlay
   - type: FieldOfViewOccludable
+  - type: SinCityOverlay
   # Fire edit end
   - type: Sprite
     noRot: true

@@ -66,19 +66,15 @@ public sealed partial class Scp939System : EntitySystem
     {
         base.Update(frameTime);
 
-        // Все 939, что спят
-        var querySleeping = EntityQueryEnumerator<Scp939Component, SleepingComponent>();
+        UpdateVisibilityTargets();
 
-        // Обработка лечения 939 во сне
+        var querySleeping = EntityQueryEnumerator<Scp939Component, SleepingComponent>();
         while (querySleeping.MoveNext(out var uid, out var scp939Component, out _))
         {
             _damageableSystem.TryChangeDamage(uid, scp939Component.HibernationHealingRate * frameTime);
         }
 
-        // Просто все 939
         var querySimple = EntityQueryEnumerator<Scp939Component>();
-
-        // Обработка плохого зрения 939
         while (querySimple.MoveNext(out var uid, out var scp939Component))
         {
             if (!scp939Component.PoorEyesight)
@@ -94,7 +90,11 @@ public sealed partial class Scp939System : EntitySystem
                 scp939Component.PoorEyesight = false;
                 scp939Component.PoorEyesightTimeStart = null;
 
-                Dirty(uid, scp939Component);
+                DirtyFields(uid,
+                    scp939Component,
+                    null,
+                    nameof(Scp939Component.PoorEyesight),
+                    nameof(Scp939Component.PoorEyesightTimeStart));
             }
         }
     }

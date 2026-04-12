@@ -2,6 +2,7 @@
   name: AR-18
   parent: BaseWeaponRifleSunrise
   id: WeaponRifleAR18
+  categories: [ HideSpawnMenu ] # Fire edit
   components:
   - type: Sprite
     sprite: _Sunrise/Objects/Weapons/Guns/Rifles/ar18/big.rsi

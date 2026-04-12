@@ -3,6 +3,7 @@
   graph: RailingWood
   startNode: start
   targetNode: railing
+  hide: true # Fire added
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -15,6 +16,7 @@
   graph: RailingWood
   startNode: start
   targetNode: railingCorner
+  hide: true # Fire added
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -27,6 +29,7 @@
   graph: RailingWood
   startNode: start
   targetNode: railingCornerSmall
+  hide: true # Fire added
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter
@@ -39,6 +42,7 @@
   graph: RailingWood
   startNode: start
   targetNode: railingRound
+  hide: true # Fire added
   category: construction-category-structures
   objectType: Structure
   placementMode: SnapgridCenter

@@ -10,7 +10,7 @@
   id: ScpLoadoutClothingEyesGlassesJamjar
   effects:
   - !type:GroupLoadoutEffect
-    proto: JamjarTimer
+    proto: ScpJamjarTimer
   equipment:
     eyes: ClothingEyesGlassesJamjar
 
@@ -20,6 +20,6 @@
   id: ScpLoadoutClothingEyesGlassesJensen
   effects:
   - !type:GroupLoadoutEffect
-    proto: JensenTimer
+    proto: ScpJensenTimer
   equipment:
     eyes: ClothingEyesGlassesJensen

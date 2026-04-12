@@ -258,7 +258,7 @@
   - "%user принимает крутую позу"
   - "%user встает в крутую позу"
   - "%user позирует играя мускулами"
-  - "%user делает jojo reference"
+  #- "%user делает jojo reference" Fire edit
   interactionSounds:
   - FriendlyXZ
   cooldown: 3

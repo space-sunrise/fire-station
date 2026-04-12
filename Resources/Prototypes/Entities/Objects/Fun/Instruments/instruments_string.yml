@@ -107,7 +107,7 @@
           path: /Audio/Weapons/guitarsmash.ogg
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank:
+          ScpMaterialWoodPlank: # Fire edit
             min: 2
             max: 4
       - !type:DoActsBehavior

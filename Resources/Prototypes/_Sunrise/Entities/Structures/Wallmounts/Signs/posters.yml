@@ -1,6 +1,7 @@
 - type: entity
   parent: PosterBase
   id: PosterContrabandAriralInSpace
+  categories: [ HideSpawnMenu ] # Fire edit
   name: "Ariral in Space"
   description: "This is clearly a message..I think I forgot something..."
   components:
@@ -104,6 +105,7 @@
 - type: entity
   parent: PosterBase
   id: PosterLegitDejaVu
+  categories: [ HideSpawnMenu ] # Fire edit
   name: "Deja Vu Area"
   description: "This is your first time here. If this station feels familiar, immediately alert a NanoTrasen employee."
   components:
@@ -124,6 +126,7 @@
 - type: entity
   parent: PosterBase
   id: PosterContrabandSaucerNumberOne
+  categories: [ HideSpawnMenu ] # Fire edit
   name: "Saucer #1!"
   description: "Out of every station in the _Sunrise jurisdiction, Saucer was rated #1 out of 5! Congratulations!"
   components:
@@ -134,6 +137,7 @@
 - type: entity
   parent: PosterBase
   id: PosterLegitBarDrinks
+  categories: [ HideSpawnMenu ] # Fire edit
   name: "Bar Poster"
   description: "The Bartender is always there to hear your woes and get you plastered all at the same time. Go have a visit!"
   components:
@@ -204,6 +208,7 @@
 - type: entity
   parent: PosterBase
   id: PosterLegitPizzaHope
+  categories: [ HideSpawnMenu ] # Fire edit
   name: "Pizza Hope"
   description: "In the darkest of times there is only one hope, PIZZA! Harass your local Quartermaster to order an emergency crate of pizza now!"
   components:
@@ -234,6 +239,7 @@
 - type: entity
   parent: PosterBase
   id: PosterLegitChknDnnr
+  categories: [ HideSpawnMenu ] # Fire edit
   name: "Winner Winner Chicken Dinner"
   description: "An advertisement for crispy fried chicken."
   components:
@@ -245,6 +251,7 @@
 - type: entity
   parent: PosterBase
   id: PosterMapArena
+  categories: [ HideSpawnMenu ] # Fire edit
   name: "Arena Map"
   description: "A map of Arena station."
   components:
@@ -255,6 +262,7 @@
 - type: entity
   parent: PosterBase
   id: PosterMapGlacier
+  categories: [ HideSpawnMenu ] # Fire edit
   name: "Glacier Map"
   description: "A map of Glacier outpost."
   components:
@@ -265,6 +273,7 @@
 - type: entity
   parent: PosterBase
   id: PosterMapShoukou
+  categories: [ HideSpawnMenu ] # Fire edit
   name: "Shōkō Map"
   description: "Shōkō no mappu desu."
   components:
@@ -275,6 +284,7 @@
 - type: entity
   parent: PosterBase
   id: PosterMapNorthway
+  categories: [ HideSpawnMenu ] # Fire edit
   name: "Northway Map"
   description: "A map of Northway spaceship."
   components:

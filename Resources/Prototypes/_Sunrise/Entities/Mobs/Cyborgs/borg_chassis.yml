@@ -6,7 +6,7 @@
   - type: BorgSwitchableType
     selectedBorgType: security
   - type: Loadout
-    prototypes: [ BorgArmorSiliconLoadoutMk2 ]
+    prototypes: [ BorgArmorSiliconLoadout ]
   - type: Tag
     tags:
     - DoorBumpOpener
@@ -28,9 +28,9 @@
   id: BorgChassisClown
   parent: BorgChassisSelectable
   name: clown cyborg
-  components:
-  - type: BorgSwitchableType
-    selectedBorgType: clown
+  # components: # Fire Edit
+  # - type: BorgSwitchableType
+  #   selectedBorgType: clown
 
 - type: entity
   id: BorgChassisSyndicateReaper
@@ -196,7 +196,7 @@
     - RegionalAdministration
     # Fire edit end
   - type: AccessReader
-    access: [["Security"], ["Command"], ["Research"]]
+    access: [["Administration"], ["MTF"]] # Fire edit
   - type: SiliconLawProvider
     laws: ScpMtf # Fire edit
   - type: PointLight
@@ -219,6 +219,7 @@
     - CanPilot
     - FootstepSound
     - EmagImmune
+    - NoPaint
   - type: InnateItem
     instantActions:
     - PortableSurveillanceCameraMonitorUnpowered
@@ -574,6 +575,10 @@
     - AccessBreaker
   - type: Construction
     node: derelictcyborg
+
+- type: entity
+  id: SyndicateSaboteurBorgChassisDerelict
+  parent: SyndicateSaboteurBorgChassisDerelictSunrise
 
 - type: entity
   parent: BaseBorgChassisSyndicateDerelict

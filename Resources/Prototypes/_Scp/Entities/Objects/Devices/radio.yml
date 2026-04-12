@@ -13,8 +13,12 @@
     heldPrefix: walkietalkie
   - type: ScpRadio
     enabled: false
-    channels:
-    - Common
+  - type: EncryptionKeyHolder
+    keySlots: 3
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
   - type: Speech
     speechVerb: Robotic
   - type: AmbientSound
@@ -38,9 +42,6 @@
     tags:
     - Radio
 
-# Пока общий канал доступен через наушник он не будет в рациях
-# Так как иначе будет попросту жрать заряд у раций на прием сообщений
-
 - type: entity
   parent: ScpRadioHandheldCommon
   id: ScpRadioHandheldEngineering
@@ -48,9 +49,10 @@
   components:
   - type: Sprite
     state: engineering
-  - type: ScpRadio
-    channels:
-    - EngineeringTechnicalService
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyEngineeringTechnicalService
 
 - type: entity
   parent: ScpRadioHandheldEngineering
@@ -65,9 +67,10 @@
   id: ScpRadioHandheldSecurity
   name: security handheld radio
   components:
-  - type: ScpRadio
-    channels:
-    - Security
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - ScpEncryptionKeySecurity
 
 - type: entity
   parent: ScpRadioHandheldSecurity
@@ -82,10 +85,11 @@
   id: RadioHandheldHeavyContainmentSecurityService
   name: security handheld radio
   components:
-  - type: ScpRadio
-    channels:
-    - Security
-    - HeavyContainmentSecurityService
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - ScpEncryptionKeySecurity
+      - EncryptionKeyHeavyContainmentSecurityService
 
 - type: entity
   parent: RadioHandheldHeavyContainmentSecurityService
@@ -100,10 +104,11 @@
   id: RadioHandheldExternalAdministrativeZoneSecurityService
   name: security handheld radio
   components:
-  - type: ScpRadio
-    channels:
-    - Security
-    - ExternalAdministrativeZoneSecurityService
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - ScpEncryptionKeySecurity
+      - EncryptionKeyExternalAdministrativeZoneSecurityService
 
 - type: entity
   parent: RadioHandheldExternalAdministrativeZoneSecurityService

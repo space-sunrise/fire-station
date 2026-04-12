@@ -6,7 +6,12 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: ExternalAdministrativeZoneSecurityService
-    time: 43200
+    time: 46800
+  - !type:AgeRequirement
+    requiredAge: 29
+  - !type:AgeRequirement
+    requiredAge: 65
+    inverted: true
   icon: JobExternalAdministrativeZoneCommandant
   supervisors: job-supervisors-security-commander
   canBeAntag: false
@@ -37,6 +42,7 @@
       phraseOnOpen:
       - open-eye-phrase-1
       - open-eye-phrase-3
+      speakOnAutomaticBlinking: true
       speakOnlyInScp173Chamber: false
     - type: Fear # переопределение компонента страха для СБ
       phobias:
@@ -59,7 +65,7 @@
         Fear: 60
         Terror: 350
       baseJitterTime: 2
-      fallOffChance: 1
+      fallOffChance: 0.01
 
 - type: startingGear
   id: ExternalAdministrativeZoneCommandantGear

@@ -1,0 +1,57 @@
+- type: soundCollection
+  id: MaleLaughNew
+  files:
+    - /Audio/_Scp/Voice/Human/Male/laugh_1.ogg
+    - /Audio/_Scp/Voice/Human/Male/laugh_2.ogg
+    - /Audio/_Scp/Voice/Human/Male/laugh_3.ogg
+    - /Audio/_Scp/Voice/Human/Male/laugh_4.ogg
+    - /Audio/_Scp/Voice/Human/Male/laugh_5.ogg
+    - /Audio/_Scp/Voice/Human/Male/laugh_6.ogg
+
+- type: soundCollection
+  id: MalePain
+  files:
+    - /Audio/_Scp/Voice/Human/Male/pain_1.ogg
+    - /Audio/_Scp/Voice/Human/Male/pain_2.ogg
+    - /Audio/_Scp/Voice/Human/Male/pain_3.ogg
+    - /Audio/_Scp/Voice/Human/Male/pain_4.ogg
+    - /Audio/_Scp/Voice/Human/Male/pain_5.ogg
+
+- type: soundCollection
+  id: FemaleLaughNew
+  files:
+    - /Audio/_Scp/Voice/Human/Female/laugh_1.ogg
+    - /Audio/_Scp/Voice/Human/Female/laugh_2.ogg
+    - /Audio/_Scp/Voice/Human/Female/laugh_3.ogg
+    - /Audio/_Scp/Voice/Human/Female/laugh_4.ogg
+    - /Audio/_Scp/Voice/Human/Female/laugh_5.ogg
+    - /Audio/_Scp/Voice/Human/Female/laugh_6.ogg
+
+- type: soundCollection
+  id: FemalePain
+  files:
+    - /Audio/_Scp/Voice/Human/Female/pain_1.ogg
+    - /Audio/_Scp/Voice/Human/Female/pain_2.ogg
+    - /Audio/_Scp/Voice/Human/Female/pain_3.ogg
+    - /Audio/_Scp/Voice/Human/Female/pain_4.ogg
+    - /Audio/_Scp/Voice/Human/Female/pain_5.ogg
+
+- type: soundCollection
+  id: MaleScreamsNew
+  files:
+    - /Audio/_Scp/Voice/Human/Male/heavy_1.ogg
+    - /Audio/_Scp/Voice/Human/Male/heavy_2.ogg
+    - /Audio/_Scp/Voice/Human/Male/heavy_3.ogg
+    - /Audio/_Scp/Voice/Human/Male/heavy_4.ogg
+    - /Audio/_Scp/Voice/Human/Male/heavy_5.ogg
+    - /Audio/_Scp/Voice/Human/Male/heavy_6.ogg
+
+- type: soundCollection
+  id: FemaleScreamsNew
+  files:
+    - /Audio/_Scp/Voice/Human/Female/heavy_1.ogg
+    - /Audio/_Scp/Voice/Human/Female/heavy_2.ogg
+    - /Audio/_Scp/Voice/Human/Female/heavy_3.ogg
+    - /Audio/_Scp/Voice/Human/Female/heavy_4.ogg
+    - /Audio/_Scp/Voice/Human/Female/heavy_5.ogg
+    - /Audio/_Scp/Voice/Human/Female/heavy_6.ogg

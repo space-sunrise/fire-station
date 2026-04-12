@@ -27,6 +27,15 @@
     idSlot:
       whitelist:
         requireAllTags: true
+  - type: CartridgeLoader
+    uiKey: enum.PdaUiKey.Key
+    preinstalled:
+    - CrewManifestCartridge
+    - NotekeeperCartridge
+    - NanoTaskCartridge
+    - NewsReaderCartridge
+    - NavigatorCartridge
+    - PhotoCartridge
   - type: ContainerContainer
     containers:
       PDA-pen: !type:ContainerSlot {}

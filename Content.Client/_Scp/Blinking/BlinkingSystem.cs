@@ -1,10 +1,13 @@
 ﻿using Content.Client._Scp.Shaders.Common;
 using Content.Shared._Scp.Blinking;
+using Content.Shared.Alert;
+using Content.Shared.Eye.Blinding.Systems;
 using Robust.Client.Audio;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Blinking;
@@ -13,6 +16,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 {
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly CompatibilityModeActiveWarningSystem _compatibility = default!;
+    [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
@@ -25,6 +29,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
     private BlinkingOverlay _overlay = default!;
     private const float DefaultAnimationDuration = 0.4f;
+    private ProtoId<AlertPrototype>? _localBlinkingAlert;
 
     public override void Initialize()
     {
@@ -32,6 +37,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
         SubscribeLocalEvent<BlinkableComponent, LocalPlayerAttachedEvent>(OnAttached);
         SubscribeLocalEvent<BlinkableComponent, LocalPlayerDetachedEvent>(OnDetached);
+        SubscribeLocalEvent<BlinkableComponent, EntityEyesStateChanged>(OnPredictedEyesStateChanged);
 
         SubscribeNetworkEvent<EntityEyesStateChanged>(OnEyesStateChanged);
         SubscribeNetworkEvent<PlayerOpenEyesAnimation>(OnOpenEyesAnimation);
@@ -42,18 +48,48 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
         _overlay.OnAnimationFinished += SetDefaultAnimationDuration;
     }
 
+    public override void Shutdown()
+    {
+        base.Shutdown();
+
+        _overlay.Dispose();
+    }
+
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        if (_player.LocalEntity is not { Valid: true } localEntity)
+            return;
+
+        if (!BlinkableQuery.TryComp(localEntity, out var blinkable))
+        {
+            if (_localBlinkingAlert.HasValue)
+                _alerts.ClearAlert(localEntity, _localBlinkingAlert.Value);
+
+            _localBlinkingAlert = null;
+            return;
+        }
+
+        if (_localBlinkingAlert.HasValue && _localBlinkingAlert.Value != blinkable.BlinkingAlert)
+            _alerts.ClearAlert(localEntity, _localBlinkingAlert.Value);
+
+        _localBlinkingAlert = blinkable.BlinkingAlert;
+        UpdateAlert((localEntity, blinkable));
+    }
+
     protected override void OnOpenedEyes(Entity<BlinkableComponent> ent, ref EntityOpenedEyesEvent args)
     {
         base.OnOpenedEyes(ent, ref args);
 
-        OpenEyes(ent, args.Manual, args.UseEffects);
+        OpenEyes(ent, args.Mode, args.UseEffects);
     }
 
     protected override void OnClosedEyes(Entity<BlinkableComponent> ent, ref EntityClosedEyesEvent args)
     {
         base.OnClosedEyes(ent, ref args);
 
-        CloseEyes(ent, args.Manual, args.UseEffects);
+        CloseEyes(ent, args.Mode, args.UseEffects);
     }
 
     private void OnAttached(Entity<BlinkableComponent> ent, ref LocalPlayerAttachedEvent args)
@@ -66,10 +102,20 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
     private void OnDetached(Entity<BlinkableComponent> ent, ref LocalPlayerDetachedEvent args)
     {
+        if (_localBlinkingAlert.HasValue)
+            _alerts.ClearAlert(ent.Owner, _localBlinkingAlert.Value);
+
+        _localBlinkingAlert = null;
+
         if (!_overlayMan.HasOverlay<BlinkingOverlay>())
             return;
 
         _overlayMan.RemoveOverlay(_overlay);
+    }
+
+    private void OnPredictedEyesStateChanged(Entity<BlinkableComponent> ent, ref EntityEyesStateChanged args)
+    {
+        ToggleEyesState(ent, ref args);
     }
 
     /// <summary>
@@ -84,13 +130,18 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
 
         var ent = GetEntity(ev.NetEntity);
 
-        if (!TryComp<BlinkableComponent>(ent, out var blinkable))
+        if (!BlinkableQuery.TryComp(ent, out var blinkable))
             return;
 
+        ToggleEyesState((ent.Value, blinkable), ref ev);
+    }
+
+    private void ToggleEyesState(Entity<BlinkableComponent> ent, ref EntityEyesStateChanged ev)
+    {
         if (ev.NewState == EyesState.Closed)
-            CloseEyes((ent.Value, blinkable), ev.Manual, ev.UseEffects);
+            CloseEyes(ent, ev.Mode, ev.UseEffects);
         else
-            OpenEyes((ent.Value, blinkable), ev.Manual, ev.UseEffects);
+            OpenEyes(ent, ev.Mode, ev.UseEffects);
     }
 
     private void OnOpenEyesAnimation(PlayerOpenEyesAnimation ev)
@@ -109,12 +160,9 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     /// Открывает глаза персонажа, проигрывает специфичный звук открытия глаз.
     /// Сама анимация открытия происходит в оверлее.
     /// </summary>
-    /// <param name="ent">Сущность, которой будут открыты глаза</param>
-    /// <param name="manual">Глаза открыты вручную?</param>
-    /// <param name="useEffects">Требуется ли использовать эффекты?</param>
-    private void OpenEyes(Entity<BlinkableComponent> ent, bool manual = false, bool useEffects = false)
+    private void OpenEyes(Entity<BlinkableComponent> ent, EyeCloseReason mode = EyeCloseReason.None, bool useEffects = false)
     {
-        if (!TryEyes(ent, manual, useEffects))
+        if (!TryEyes(ent))
             return;
 
         if (!_overlay.AreEyesClosed())
@@ -128,17 +176,14 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     /// Закрывает глаза персонажа, проигрывает специфичный звук закрытия глаз.
     /// Сама анимация закрытия происходит в оверлее.
     /// </summary>
-    /// <param name="ent">Сущность, которой будут закрыты глаза</param>
-    /// <param name="manual">Глаза закрыты вручную?</param>
-    /// <param name="useEffects">Требуется ли использовать эффекты?</param>
-    private void CloseEyes(Entity<BlinkableComponent> ent, bool manual = false, bool useEffects = false)
+    private void CloseEyes(Entity<BlinkableComponent> ent, EyeCloseReason mode = EyeCloseReason.None, bool useEffects = false)
     {
-        if (!TryEyes(ent, manual, useEffects))
+        if (!TryEyes(ent))
             return;
 
         // Основная проверка, которая определяет наличие эффектов.
         // Если ничего из этого не выполняется, значит эффекты не нужны
-        if (!manual && !IsScpNearby(ent) && !useEffects)
+        if (!RequiresExplicitOpen(mode) && !IsScpNearby(ent) && !useEffects)
             return;
 
         _overlay.CloseEyes();
@@ -149,11 +194,7 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     /// Клиентский метод проверки на возможность включить эффекты смены закрытия или открытия глаз.
     /// Содержит общие одинаковые проверки для закрытия и открытия глаз.
     /// </summary>
-    /// <param name="ent">Сущность, для которой делается проверка.</param>
-    /// <param name="manual">Глаза открыты/закрыты вручную?</param>
-    /// <param name="useEffects">Требуется ли использовать эффекты?</param>
-    /// <returns></returns>
-    private bool TryEyes(Entity<BlinkableComponent> ent, bool manual = false, bool useEffects = false)
+    private bool TryEyes(Entity<BlinkableComponent> ent)
     {
         if (!_timing.IsFirstTimePredicted)
             return false;
@@ -194,5 +235,23 @@ public sealed class BlinkingSystem : SharedBlinkingSystem
     private void SetDefaultAnimationDuration()
     {
         _overlay.AnimationDuration = _compatibility.ShouldUseShaders ? DefaultAnimationDuration : 0f;
+    }
+
+    /// <summary>
+    /// Актуализирует иконку моргания справа у панели чата игрока
+    /// </summary>
+    private void UpdateAlert(Entity<BlinkableComponent> ent)
+    {
+        if (IsBlind(ent.AsNullable()))
+        {
+            _alerts.ShowAlert(ent.Owner, ent.Comp.BlinkingAlert, 4);
+            return;
+        }
+
+        var timeToNextBlink = ent.Comp.NextBlink - _timing.CurTime;
+        var denom = MathF.Max(0.001f, (float) (ent.Comp.BlinkingInterval.TotalSeconds - ent.Comp.BlinkingDuration.TotalSeconds));
+        var severity = (short) Math.Clamp(4 - (float) timeToNextBlink.TotalSeconds / denom * 4, 0, 4);
+
+        _alerts.ShowAlert(ent.Owner, ent.Comp.BlinkingAlert, severity);
     }
 }

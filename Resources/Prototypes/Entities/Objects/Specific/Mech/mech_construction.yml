@@ -577,6 +577,7 @@
 
 - type: entity
   id: RipleyChassis
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseRipleyPart
   name: ripley chassis
   description: An in-progress construction of the Ripley APLU mech.

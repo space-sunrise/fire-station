@@ -3,18 +3,10 @@
   parent: ClothingHeadHatIAA
   id: ClothingHeadHatDirector
 
-- type: entity
-  parent: ClothingHeadHatCapcap
-  id: ClothingHeadHatCapDirector
-
 # Униформа
 - type: entity
   parent: ClothingUniformJumpsuitNtrep
   id: ClothingUniformJumpsuitDirector
-
-- type: entity
-  parent: ClothingUniformJumpsuitCapFormal
-  id: ClothingUniformJumpsuitBlueDirectorFormal
 
 # Верхняя одежда
 - type: entity
@@ -42,16 +34,8 @@
   parent: ClothingHandsGlovesHop
   id: ClothingHandsGlovesDirectorSpecial
 
-- type: entity
-  parent: ClothingHandsGlovesCaptain
-  id: ClothingHandsGlovesDirector
-
 # Сумка
 - type: entity
   parent: ClothingBackpackSatchelLeather
   id: ClothingBackpackSatchelLeatherDirectorFilled
   categories: [ HideSpawnMenu ]
-  components:
-  - type: StorageFill
-    contents:
-    - id: RubberStampDirector

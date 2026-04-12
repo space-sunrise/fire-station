@@ -1,0 +1,11 @@
+﻿- type: soundCollection
+  id: HeadsetSent
+  files:
+  - /Audio/_Scp/Effects/Radio/Headset/Send/sound1.ogg
+  - /Audio/_Scp/Effects/Radio/Headset/Send/sound2.ogg
+
+- type: soundCollection
+  id: HeadsetReceive
+  files:
+  - /Audio/_Scp/Effects/Radio/Headset/Receive/sound1.ogg
+  - /Audio/_Scp/Effects/Radio/Headset/Receive/sound2.ogg

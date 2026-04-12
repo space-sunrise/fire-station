@@ -13,7 +13,7 @@
     - AsteroidRockMining
     chance: 1
     rarePrototypes:
-    - Barricade
+    - ScpBarricade # Fire edit
     - WallRockGold
     - WallRockPlasma
     - WallRockBananium
@@ -85,7 +85,7 @@
       - RandomWoodenSupport
       - RandomWoodenWall
       - RandomStalagmiteOrCrystal
-      - Barricade
+      - ScpBarricade # Fire edit
       # Редкие
     rarePrototypes:
       - WallRockPlasma
@@ -162,7 +162,7 @@
       - RandomWoodenSupport
       - RandomWoodenWall
       - RandomStalagmiteOrCrystal
-      - Barricade
+      - ScpBarricade # Fire edit
       # Редкие
     rarePrototypes:
       - WallRockPlasma
@@ -317,9 +317,9 @@
       - CrystalSpawner
       - CrystalSpawner
       - RandomStalagmiteOrCrystal
-      - Barricade
-      - Barricade
-      - Barricade
+      - ScpBarricade # Fire edit
+      - ScpBarricade # Fire edit
+      - ScpBarricade # Fire edit
       # Редкие
     rarePrototypes:
       - WallRockPlasma
@@ -383,7 +383,7 @@
       - RandomWoodenWall
       - RandomStalagmiteOrCrystal
       - RandomStalagmiteOrCrystal
-      - Barricade
+      - ScpBarricade # Fire edit
       - Spaceshroom
       - Spaceshroom
       # Редкие
@@ -434,9 +434,9 @@
       - RandomStalagmiteOrCrystal
       - RandomStalagmiteOrCrystal
       - RandomStalagmiteOrCrystal
-      - Barricade
-      - Barricade
-      - Barricade
+      - ScpBarricade # Fire edit
+      - ScpBarricade # Fire edit
+      - ScpBarricade # Fire edit
       # Редкие
     rarePrototypes:
       - WallRockPlasma

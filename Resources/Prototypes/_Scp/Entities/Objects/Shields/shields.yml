@@ -1,0 +1,13 @@
+- type: entity
+  parent: WoodenBuckler
+  id: ScpWoodenBuckler
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Weapons/Melee/shields.rsi
+    state: buckler-icon
+  - type: Item
+    sprite: _Scp/Objects/Weapons/Melee/shields.rsi
+    heldPrefix: buckler
+  - type: Construction
+    graph: ScpWoodenBuckler
+    node: woodenBuckler

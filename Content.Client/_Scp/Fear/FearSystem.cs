@@ -1,5 +1,4 @@
-﻿using Content.Shared._Scp.Fear;
-using Content.Shared._Scp.Fear.Components;
+﻿using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Systems;
 using Content.Shared._Sunrise.Heartbeat;
 using Robust.Client.Audio;

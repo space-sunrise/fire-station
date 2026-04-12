@@ -32,7 +32,7 @@
   id: ConstructionReport
   name: doc-template-ConstructionReport-name
   content: /Documents/_Scp/Engineering/ConstructionReport.xml
-  component: Engineering
+  component: EngineeringTechnicalService
 
 - type: docTemplate
   id: SendingOmega1
@@ -80,13 +80,13 @@
   id: ReportCremation
   name: doc-template-ReportCremation-name
   content: /Documents/_Scp/Medical/ReportCremation.xml
-  component: Medical
+  component: MedicalService
 
 - type: docTemplate
   id: ReportUseAmnestics
   name: doc-template-ReportUseAmnestics-name
   content: /Documents/_Scp/Medical/ReportUseAmnestics.xml
-  component: Medical
+  component: MedicalService
 
 - type: docTemplate
   id: ReportExperiment
@@ -158,31 +158,31 @@
   id: ScpAppeal
   name: doc-template-appeal-name
   content: /Documents/_Scp/General/Appeal.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
   id: ScpApplicationAccess
   name: doc-template-application-access-name
   content: /Documents/_Scp/General/ApplicationAccess.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
   id: ScpApplicationAppointmentInterim
   name: doc-template-application-appointment-interim-name
   content: /Documents/_Scp/General/ApplicationAppointmentInterim.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
   id: ScpApplicationEmployment
   name: doc-template-application-employment-name
   content: /Documents/_Scp/General/ApplicationEmployment.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
   id: ScpApplicationEquipment
   name: doc-template-application-equipment-name
   content: /Documents/_Scp/General/ApplicationEquipment.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
   id: ScpCertificate
@@ -212,23 +212,23 @@
   id: ScpConditionReport
   name: doc-template-condition-report-name
   content: /Documents/_Scp/Engineering/ConditionReport.xml
-  component: Engineering
+  component: EngineeringTechnicalService
 
 - type: docTemplate
   id: ScpConstructionPermit
   name: doc-template-construction-permit-name
   content: /Documents/_Scp/Engineering/ConstructionPermit.xml
-  component: Engineering
+  component: EngineeringTechnicalService
 
 - type: docTemplate
   id: ScpDeathCertificate
   name: doc-template-death-certificate-name
   content: /Documents/_Scp/Medical/DeathCertificate.xml
-  component: Medical
+  component: MedicalService
 
 - type: docTemplate
   id: ScpEvacuationShuttleRequest
-  name: doc-template-evacuation-shuttle-request-name
+  name: doc-template-scp-evacuation-shuttle-request-name
   content: /Documents/_Scp/Administration/EvacuationShuttleRequest.xml
   component: Administration
 
@@ -236,7 +236,7 @@
   id: ScpLetterResignation
   name: doc-template-letter-resignation-name
   content: /Documents/_Scp/General/LetterResignation.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
   id: ScpOrderDeprivationAccess
@@ -260,7 +260,7 @@
   id: ScpOrderingSpecialEquipment
   name: doc-template-ordering-special-equipment-name
   content: /Documents/_Scp/General/OrderingSpecialEquipment.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
   id: ScpPermissionEquipment
@@ -272,7 +272,7 @@
   id: ScpProductManufacturingOrder
   name: doc-template-product-manufacturing-order-name
   content: /Documents/_Scp/General/ProductManufacturingOrder.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
   id: ScpReportDepartment
@@ -305,28 +305,28 @@
   component: Administration
 
 - type: docTemplate
-  id: ScpRequestCallMembersCentralCommitteeDSO
-  name: doc-template-request-call-members-central-committee-dso-name
-  content: /Documents/_Scp/Administration/RequestCallMembersCentralCommitteeDSO.xml
+  id: ScpRequestCallMembersRegionalAdministration
+  name: doc-template-request-call-members-regional-administration-name
+  content: /Documents/_Scp/Administration/RequestCallMembersRegionalAdministration.xml
   component: Administration
 
 - type: docTemplate
   id: ScpRequestChangeSalary
   name: doc-template-request-change-salary-name
   content: /Documents/_Scp/General/RequestChangeSalary.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
   id: ScpRequestForNonlistedEmployment
   name: doc-template-request-for-non-listed-employment-name
   content: /Documents/_Scp/General/RequestForNonlistedEmployment.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
   id: ScpRequestForPromotion
   name: doc-template-request-for-promotion-name
   content: /Documents/_Scp/General/RequestForPromotion.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
   id: ScpOrderAppointmentInterim
@@ -338,16 +338,16 @@
   id: ScpApplicationChangePosition
   name: doc-template-application-change-position-name
   content: /Documents/_Scp/General/ApplicationChangePosition.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
   id: ScpExplanatoryNote
   name: doc-template-explanatory-note-name
   content: /Documents/_Scp/General/ExplanatoryNote.xml
-  component: General
+  component: ScpGeneral
 
 - type: docTemplate
-  id: ScpReportCrewAccessChange
-  name: doc-template-report-crew-access-change-name
-  content: /Documents/_Scp/Administration/ReportCrewAccessChange.xml
+  id: ScpReportPersonnelAccessChange
+  name: doc-template-report-personnel-access-change-name
+  content: /Documents/_Scp/Administration/ReportPersonnelAccessChange.xml
   component: Administration

@@ -57,6 +57,7 @@
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformJumpskirtBlueShield
+  categories: [ HideSpawnMenu ] # Fire edit
   name: blueshield's jumpskirt
   description: Baby...
   components:
@@ -120,7 +121,6 @@
   - type: Clothing
     sprite: _Sunrise/Clothing/Uniforms/Jumpskirt/adjutant.rsi
 
-#Sunrise-OLD
 - type: entity
   parent: ClothingUniformSkirtBase
   id: ClothingUniformSkirtMailCarrier

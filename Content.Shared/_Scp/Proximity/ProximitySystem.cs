@@ -28,12 +28,12 @@ public sealed class ProximitySystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private static readonly TimeSpan ProximitySearchCooldown = TimeSpan.FromSeconds(0.05f);
-    private static TimeSpan _nextSearchTime = TimeSpan.Zero;
+    private TimeSpan _nextSearchTime = TimeSpan.Zero;
 
     // Оптимизации аллокации памяти
-    private static readonly HashSet<Entity<ProximityTargetComponent>> Targets = [];
-    private static readonly HashSet<EntityUid> PossibleNotInRange = [];
-    private static readonly HashSet<EntityUid> AllTargets = [];
+    private readonly HashSet<Entity<ProximityTargetComponent>> _targets = [];
+    private readonly Dictionary<EntityUid, ProximityMatch> _currentMatches = [];
+    private readonly Dictionary<EntityUid, ProximityMatch> _nextMatches = [];
 
     private const float JustUselessNumber = 30f;
 
@@ -54,33 +54,33 @@ public sealed class ProximitySystem : EntitySystem
         "SecureUraniumWindoor",
     ];
 
+    private EntityQuery<ActiveProximityTargetComponent> _activeProximityQuery;
     private EntityQuery<InsideEntityStorageComponent> _insideQuery;
+    private EntityQuery<TransformComponent> _xformQuery;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clean());
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestartCleanup);
 
-        SubscribeLocalEvent<ProximityTargetComponent, ComponentStartup>(AddToTargets);
-        SubscribeLocalEvent<ProximityTargetComponent, ComponentShutdown>(RemoveFromTargets);
-        SubscribeLocalEvent<ProximityTargetComponent, EntityTerminatingEvent>(RemoveFromTargets);
-
+        _activeProximityQuery = GetEntityQuery<ActiveProximityTargetComponent>();
         _insideQuery = GetEntityQuery<InsideEntityStorageComponent>();
+        _xformQuery = GetEntityQuery<TransformComponent>();
     }
 
-    private static void Clean()
+    private void OnRoundRestartCleanup(RoundRestartCleanupEvent args)
     {
         _nextSearchTime = TimeSpan.Zero;
-        AllTargets.Clear();
+        _currentMatches.Clear();
+        _nextMatches.Clear();
+
+        var query = EntityQueryEnumerator<ActiveProximityTargetComponent>();
+        while (query.MoveNext(out var uid, out _))
+        {
+            RemCompDeferred<ActiveProximityTargetComponent>(uid);
+        }
     }
-
-    #region All targets population
-
-    private static void AddToTargets<T>(Entity<ProximityTargetComponent> ent, ref T args) => AllTargets.Add(ent);
-    private static void RemoveFromTargets<T>(Entity<ProximityTargetComponent> ent, ref T args) => AllTargets.Remove(ent);
-
-    #endregion
 
     public override void Update(float frameTime)
     {
@@ -93,42 +93,117 @@ public sealed class ProximitySystem : EntitySystem
         if (_timing.CurTime < _nextSearchTime)
             return;
 
-        PossibleNotInRange.Clear();
-        PossibleNotInRange.UnionWith(AllTargets);
+        _nextMatches.Clear();
 
         var query = EntityQueryEnumerator<ProximityReceiverComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out var receiver, out var xform))
         {
-            Targets.Clear();
-            _lookup.GetEntitiesInRange(xform.Coordinates, receiver.CloseRange, Targets);
+            _targets.Clear();
+            _lookup.GetEntitiesInRange(xform.Coordinates, receiver.CloseRange, _targets, receiver.Flags);
 
-            foreach (var target in Targets)
+            foreach (var target in _targets)
             {
-                if (!IsRightType(uid, target, receiver.RequiredLineOfSight, out var lightOfSightBlockerLevel))
+                if (!_xformQuery.TryComp(target, out var targetXform))
                     continue;
 
-                var targetCoords = Transform(target).Coordinates;
+                var targetCoords = targetXform.Coordinates;
 
                 if (!xform.Coordinates.TryDistance(EntityManager, _transform, targetCoords, out var range))
                     continue;
 
-                var receiverEvent = new ProximityInRangeReceiverEvent(target, range, receiver.CloseRange, lightOfSightBlockerLevel);
-                RaiseLocalEvent(uid, receiverEvent);
+                if (range > receiver.CloseRange)
+                    continue;
 
-                var targetEvent = new ProximityInRangeTargetEvent(uid, range, receiver.CloseRange, lightOfSightBlockerLevel);
-                RaiseLocalEvent(target, targetEvent);
+                if (!IsRightType(uid, target, receiver.RequiredLineOfSight, out var lightOfSightBlockerLevel))
+                    continue;
 
-                PossibleNotInRange.Remove(target);
+                var candidate = new ProximityMatch(uid, receiver.CloseRange, range, lightOfSightBlockerLevel);
+
+                if (_nextMatches.TryGetValue(target, out var current) && !IsBetter(candidate, current))
+                    continue;
+
+                _nextMatches[target] = candidate;
             }
         }
 
-        foreach (var target in PossibleNotInRange)
-        {
-            var notInRangeEvent = new ProximityNotInRangeTargetEvent();
-            RaiseLocalEvent(target, ref notInRangeEvent);
-        }
+        ApplyDelta();
 
         _nextSearchTime = _timing.CurTime + ProximitySearchCooldown;
+    }
+
+    private void ApplyDelta()
+    {
+        foreach (var (target, current) in _currentMatches)
+        {
+            if (_nextMatches.ContainsKey(target))
+                continue;
+
+            if (Deleted(target))
+                continue;
+
+            if (_activeProximityQuery.HasComp(target))
+                RemCompDeferred<ActiveProximityTargetComponent>(target);
+
+            var exited = new ProximityTargetExitedEvent(current.Receiver);
+            RaiseLocalEvent(target, ref exited);
+        }
+
+        foreach (var (target, next) in _nextMatches)
+        {
+            if (Deleted(target))
+                continue;
+
+            var hadCurrent = _currentMatches.TryGetValue(target, out var current);
+            var proximity = EnsureComp<ActiveProximityTargetComponent>(target);
+
+            proximity.Receiver = next.Receiver;
+            proximity.CloseRange = next.CloseRange;
+
+            if (!hadCurrent)
+            {
+                var entered = new ProximityTargetEnteredEvent(next.Receiver, next.Range, next.CloseRange, next.BlockerLevel);
+                RaiseLocalEvent(target, ref entered);
+                continue;
+            }
+
+            if (current.Receiver != next.Receiver)
+            {
+                var changed = new ProximityTargetReceiverChangedEvent(
+                    current.Receiver,
+                    next.Receiver,
+                    next.Range,
+                    next.CloseRange,
+                    next.BlockerLevel);
+
+                RaiseLocalEvent(target, ref changed);
+            }
+        }
+
+        _currentMatches.Clear();
+        foreach (var (target, next) in _nextMatches)
+        {
+            _currentMatches[target] = next;
+        }
+    }
+
+    private static bool IsBetter(ProximityMatch candidate, ProximityMatch current)
+    {
+        var candidateNormalized = candidate.Range / MathF.Max(candidate.CloseRange, float.Epsilon);
+        var currentNormalized = current.Range / MathF.Max(current.CloseRange, float.Epsilon);
+
+        if (candidateNormalized < currentNormalized)
+            return true;
+
+        if (candidateNormalized > currentNormalized)
+            return false;
+
+        if (candidate.BlockerLevel < current.BlockerLevel)
+            return true;
+
+        if (candidate.BlockerLevel > current.BlockerLevel)
+            return false;
+
+        return candidate.Receiver.CompareTo(current.Receiver) < 0;
     }
 
 
@@ -195,7 +270,7 @@ public sealed class ProximitySystem : EntitySystem
     /// <returns>Имеется ли рядом такая сущность или нет</returns>
     public bool IsNearby<T>(EntityUid uid, float range, LineOfSightBlockerLevel level = LineOfSightBlockerLevel.None) where T : IComponent
     {
-        return _lookup.GetEntitiesInRange<T>(Transform(uid).Coordinates, range)
+        return _lookup.GetEntitiesInRange<T>(Transform(uid).Coordinates, range, LookupFlags.Uncontained | LookupFlags.Approximate)
             .Any(e => IsRightType(uid, e, level, out _));
     }
 
@@ -214,4 +289,10 @@ public sealed class ProximitySystem : EntitySystem
 
         return buffer.Any(e => IsRightType(uid, e, level, out _));
     }
+
+    private readonly record struct ProximityMatch(
+        EntityUid Receiver,
+        float CloseRange,
+        float Range,
+        LineOfSightBlockerLevel BlockerLevel);
 }

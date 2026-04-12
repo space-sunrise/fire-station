@@ -40,8 +40,12 @@ ent-ScpComputerCommunication = { ent-ComputerComms }
     .desc = { ent-ComputerComms.desc }
 ent-ScpComputerCommunicationChaosInsurgency = консоль связи повстанцев хаоса
     .desc = { ent-SyndicateComputerComms.desc }
-ent-ScpComputerCommunicationRegionalAdministration = { ent-CentcommComputerComms }
-    .desc = { ent-CentcommComputerComms.desc }
+
+ent-ScpComputerCommunicationRegionalAdministration = консоль связи регионального управления
+    .desc = консоль, что используется для передачи важных оповещений.
+ent-ScpComputerCommunicationO4Headquarters = консоль связи штаба О4
+    .desc = консоль, что используется для передачи важных оповещений.
+
 ent-ScpComputerSolarControl = { ent-ComputerSolarControl }
     .desc = { ent-ComputerSolarControl.desc }
 ent-ScpComputerRadar = { ent-ComputerRadar }

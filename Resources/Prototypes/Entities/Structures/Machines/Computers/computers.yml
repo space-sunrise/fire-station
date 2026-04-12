@@ -42,13 +42,17 @@
   - type: AtmosAlertsComputer
     beepSound:
       path: /Audio/_Sunrise/Effects/beeps.ogg
+      # Sunrise - Start
+      params:
+        volume: -5
+      # Sunrise - End
   - type: ActivatableUI
     singleUser: true
     key: enum.AtmosAlertsComputerUiKey.Key
   - type: UserInterface
     interfaces:
         enum.AtmosAlertsComputerUiKey.Key:
-            type: AtmosAlertsComputerBoundUserInterface
+            type: SunriseAtmosAlertsComputerBoundUserInterface # Sunrise - edit
         enum.WiresUiKey.Key:
           type: WiresBoundUserInterface
   - type: GuideHelp
@@ -852,7 +856,7 @@
   - type: AccessReader
     access: [[ "NuclearOperative" ]]
   - type: CommunicationsConsole
-    title: comms-console-announcement-title-nukie
+    title: comms-console-announcement-title-chaos # Fire edit
     color: "#ff0000"
     canShuttle: false
     announceVoice: CBMTF1 # Fire edit
@@ -1402,6 +1406,7 @@
 
 - type: entity
   id: ComputerSalvageExpedition
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: BaseComputerAiAccess
   name: salvage expeditions computer
   description: Used to accept salvage missions, if you're tough enough.

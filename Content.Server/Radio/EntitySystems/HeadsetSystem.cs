@@ -9,7 +9,7 @@ using Robust.Shared.Player;
 
 namespace Content.Server.Radio.EntitySystems;
 
-public sealed class HeadsetSystem : SharedHeadsetSystem
+public sealed partial class HeadsetSystem : SharedHeadsetSystem
 {
     [Dependency] private readonly INetManager _netMan = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
@@ -21,6 +21,10 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         SubscribeLocalEvent<HeadsetComponent, EncryptionChannelsChangedEvent>(OnKeysChanged);
 
         SubscribeLocalEvent<WearingHeadsetComponent, EntitySpokeEvent>(OnSpeak);
+
+        // Scp added start - hook custom headset sounds from partial extension
+        InitializeHeadsetSounds();
+        // Scp added end
     }
 
     private void OnKeysChanged(EntityUid uid, HeadsetComponent component, EncryptionChannelsChangedEvent args)
@@ -101,6 +105,10 @@ public sealed class HeadsetSystem : SharedHeadsetSystem
         // TODO: change this when a code refactor is done
         // this is currently done this way because receiving radio messages on an entity otherwise requires that entity
         // to have an ActiveRadioComponent
+
+        // Scp added start - custom headset receive sound
+        PlayHeadsetReceiveSound((uid, component), args);
+        // Scp added end
 
         var parent = Transform(uid).ParentUid;
 

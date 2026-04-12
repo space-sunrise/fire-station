@@ -1,0 +1,30 @@
+﻿- type: entity
+  id: Scp268
+  name: irish cap
+  description: A worn-out headwear. It is surprisingly difficult to focus on.
+  parent: [BaseItemScp, ClothingHeadBase]
+  suffix: SCP-268
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-268.rsi
+    state: icon
+  - type: Clothing
+    sprite: _Scp/Objects/Scp/scp-268.rsi
+    equipDelay: 4 # типо баланс
+  - type: Scp
+    class: Euclid
+  - type: Item
+    size: Normal
+  - type: ClothingSpeedModifier # баланс а то чёт слишком сильная кепка
+    walkModifier: 0.9
+    sprintModifier: 0.8
+    requireActivated: false
+  - type: ClothingAddComponents
+    components:
+    - type: Stealth
+      minVisibility: 0
+      lastVisibility: 0
+    - type: Muted # так гораздо лучше
+  - type: GuideHelp
+    guides:
+    - ScpResearch

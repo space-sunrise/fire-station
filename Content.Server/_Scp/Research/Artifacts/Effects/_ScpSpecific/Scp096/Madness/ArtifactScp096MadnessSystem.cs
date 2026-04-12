@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using Content.Server._Scp.Scp096;
 using Content.Server._Sunrise.Helpers;
+using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Scp096.Main.Components;
 using Content.Shared._Scp.ScpMask;
-using Content.Shared._Scp.Watching;
 using Content.Shared._Sunrise.Helpers;
 using Content.Shared.Xenoarchaeology.Artifact;
 using Content.Shared.Xenoarchaeology.Artifact.XAE;
@@ -15,7 +15,7 @@ public sealed class ArtifactScp096MadnessSystem : BaseXAESystem<ArtifactScp096Ma
 {
     [Dependency] private readonly ScpMaskSystem _scpMask = default!;
     [Dependency] private readonly Scp096System _scp096 = default!;
-    [Dependency] private readonly EyeWatchingSystem _watching = default!;
+    [Dependency] private readonly EntityLookupSystem _lookup = default!;
     [Dependency] private readonly SunriseHelpersSystem _helpers = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
@@ -24,7 +24,7 @@ public sealed class ArtifactScp096MadnessSystem : BaseXAESystem<ArtifactScp096Ma
         if (!_helpers.TryGetFirst<Scp096Component>(out var scp096))
             return;
 
-        var targets = _watching.GetWatchers(ent.Owner)
+        var targets = _lookup.GetEntitiesInRange<BlinkableComponent>(Transform(scp096.Value).Coordinates, ent.Comp.Radius, LookupFlags.Dynamic)
             .ToList()
             .ShuffleRobust(_random)
             .TakePercentage(ent.Comp.Percent);
@@ -37,5 +37,7 @@ public sealed class ArtifactScp096MadnessSystem : BaseXAESystem<ArtifactScp096Ma
             // TODO: Пофиксить разрыв маски много раз
             _scpMask.TryTear(scp096.Value);
         }
+
+        // TODO: Звук
     }
 }

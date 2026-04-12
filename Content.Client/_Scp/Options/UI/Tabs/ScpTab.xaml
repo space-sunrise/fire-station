@@ -18,8 +18,17 @@
                 <ui:OptionSlider Name="GrainStrengthSlider"
                                  Title="{Loc ui-options-grain-strength}"
                                  ToolTip="{Loc ui-options-grain-strength-tooltip}"/>
+                <CheckBox Name="SinCityToggleOverlayCheckBox"
+                          Text="{Loc ui-options-sin-city-toggle-overlay}"
+                          ToolTip="{Loc ui-options-sin-city-toggle-overlay-tooltip}"/>
+                <ui:OptionSlider Name="SinCityStrengthSlider"
+                                 Title="{Loc ui-options-sin-city-strength}"
+                                 ToolTip="{Loc ui-options-sin-city-strength-tooltip}"/>
 
                 <!-- Поле зрения -->
+                <CheckBox Name="FieldOfViewBlurEnabled"
+                          Text="{Loc ui-options-field-of-view-blur-enabled}"
+                          ToolTip="{Loc ui-options-field-of-view-blur-enabled-tooltip}"/>
                 <ui:OptionSlider Name="FieldOfViewBlurScale"
                                  Title="{Loc ui-options-field-of-view-blur-scale}"
                                  ToolTip="{Loc ui-options-field-of-view-blur-scale-tooltip}"/>
@@ -57,6 +66,14 @@
                 <!-- АУДИО -->
                 <Label Text="{Loc ui-options-scp-audio}" StyleClasses="LabelKeyText"/>
 
+                <!-- UI typing sound -->
+                <CheckBox Name="TypingSoundEnabled"
+                          Text="{Loc ui-options-scp-typing-sound-enabled}"
+                          ToolTip="{Loc ui-options-scp-typing-sound-enabled-tooltip}" />
+                <CheckBox Name="TypingChatSubmitSoundEnabled"
+                          Text="{Loc ui-options-scp-typing-chat-submit-sound-enabled}"
+                          ToolTip="{Loc ui-options-scp-typing-chat-submit-sound-enabled-tooltip}" />
+
                 <!-- Эхо -->
                 <CheckBox Name="EchoEnabled"
                           Text="{Loc ui-options-scp-echo-enabled}"
@@ -69,9 +86,6 @@
                 <CheckBox Name="AudioMufflingEnabled"
                           Text="{Loc ui-options-scp-audio-muffling-enabled}"
                           ToolTip="{Loc ui-options-scp-audio-muffling-enabled-tooltip}" />
-                <CheckBox Name="AudioMufflingHighFrequencyUpdate"
-                          Text="{Loc ui-options-scp-audio-muffling-use-high-frequency-update}"
-                          ToolTip="{Loc ui-options-scp-audio-muffling-use-high-frequency-update-tooltip}" />
 
                 <!-- ИГРА -->
                 <Label Text="{Loc ui-options-scp-game}" StyleClasses="LabelKeyText"/>

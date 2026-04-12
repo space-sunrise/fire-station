@@ -3,17 +3,15 @@ using Robust.Shared.Serialization;
 namespace Content.Shared._Scp.Scp106;
 
 [Serializable, NetSerializable]
-public enum Scp106Visuals : byte
+public enum Scp106Visuals
 {
-    Visuals = 0
+    Visuals,
 }
 
 [Serializable, NetSerializable]
-public enum Scp106VisualsState : byte
+public enum Scp106VisualsState
 {
-    Default = 0,
-
-    Entering = 1,
-
-    Exiting = 2
+    Default,
+    Entering,
+    Exiting,
 }

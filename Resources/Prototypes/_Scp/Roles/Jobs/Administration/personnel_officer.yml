@@ -4,18 +4,20 @@
   description: job-description-personnel-officer
   playTimeTracker: JobPersonnelOfficer
   requirements:
-    - !type:DepartmentTimeRequirement
-      department: ExternalAdministrativeZoneSecurityService
-      time: 18000
-    - !type:DepartmentTimeRequirement
-      department: MedicalService
-      time: 18000
-    - !type:DepartmentTimeRequirement
-      department: EngineeringTechnicalService
-      time: 18000
-    - !type:DepartmentTimeRequirement
-      department: Administration
-      time: 18000
+  - !type:DepartmentTimeRequirement
+    department: ExternalAdministrativeZoneSecurityService
+    time: 18000
+  - !type:DepartmentTimeRequirement
+    department: MedicalService
+    time: 18000
+  - !type:DepartmentTimeRequirement
+    department: EngineeringTechnicalService
+    time: 18000
+  - !type:DepartmentTimeRequirement
+    department: Administration
+    time: 18000
+  - !type:AgeRequirement
+    requiredAge: 31
   weight: 950
   icon: JobPersonnelOfficer
   supervisors: job-supervisors-director

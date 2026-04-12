@@ -191,7 +191,7 @@
   id: RandomCommonSupplementaryMaterialsTable
   table: !type:GroupSelector
     children:
-    - id: MaterialWoodPlank10
+    - id: ScpMaterialWoodPlank10 # Fire edit
     - id: MaterialCardboard10
     - id: PartRodMetal10
 
@@ -213,7 +213,7 @@
     children:
     - id: SheetPlasteel10
     - id: SheetPlasma1
-    - id: MaterialWoodPlank10
+    - id: ScpMaterialWoodPlank10
     - id: PartRodMetal10
     - id: SheetSteel10
     - id: SheetGlass10

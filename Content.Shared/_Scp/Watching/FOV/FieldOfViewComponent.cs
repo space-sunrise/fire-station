@@ -9,7 +9,7 @@ namespace Content.Shared._Scp.Watching.FOV;
 public sealed partial class FieldOfViewComponent : Component
 {
     public const float MaxOpacity = 0.95f;
-    public const float MinOpacity = 0.55f;
+    public const float MinOpacity = 0.15f;
 
     public const float MaxBlurScale = 1f;
     public const float MinBlurScale = 0.25f;
@@ -18,7 +18,7 @@ public sealed partial class FieldOfViewComponent : Component
     /// Угол обзора персонажа
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float Angle = 180f;
+    public float Angle = 210f;
 
     /// <summary>
     /// "Дополнительный" угол обзора, при котором предметы начинают исчезать из поля зрения, но все еще видны.

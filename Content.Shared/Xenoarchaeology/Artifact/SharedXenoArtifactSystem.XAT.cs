@@ -1,3 +1,4 @@
+using Content.Shared._Sunrise.Research.Artifact;
 using System.Linq;
 using Content.Shared._Scp.Other.Events;
 using Content.Shared._Scp.Scp330;
@@ -21,6 +22,9 @@ public abstract partial class SharedXenoArtifactSystem
     private void InitializeXAT()
     {
         XATRelayLocalEvent<DamageChangedEvent>();
+        // Sunrise added start - relay health-analyzer scans to artifact trigger nodes
+        XATRelayLocalEvent<EntityAnalyzedEvent>();
+        // Sunrise added end
         XATRelayLocalEvent<InteractUsingEvent>();
         XATRelayLocalEvent<PullStartedMessage>();
         XATRelayLocalEvent<AttackedEvent>();

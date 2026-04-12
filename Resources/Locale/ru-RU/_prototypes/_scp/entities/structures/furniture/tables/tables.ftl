@@ -12,3 +12,7 @@ ent-ScpTablePlasmaGlass = { ent-TablePlasmaGlass }
     .desc = { ent-TablePlasmaGlass.desc }
 ent-ScpTableWood = { ent-TableWood }
     .desc = { ent-TableWood.desc }
+ent-ScpCounterWoodFrame = { ent-CounterWoodFrame }
+    .desc = { ent-CounterWoodFrame.desc }
+ent-ScpTableCounterWood = { ent-TableCounterWood }
+    .desc = { ent-TableCounterWood.desc }

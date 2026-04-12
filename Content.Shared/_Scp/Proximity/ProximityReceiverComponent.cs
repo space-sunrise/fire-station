@@ -12,12 +12,15 @@ public sealed partial class ProximityReceiverComponent : Component
     /// <summary>
     /// На каком расстоянии будут вызываться ивент?
     /// </summary>
-    [DataField, AutoNetworkedField, ViewVariables]
+    [DataField, AutoNetworkedField]
     public float CloseRange = 3f;
 
     /// <inheritdoc cref="LineOfSightBlockerLevel"/>
-    [DataField, ViewVariables, AutoNetworkedField]
+    [DataField, AutoNetworkedField]
     public LineOfSightBlockerLevel RequiredLineOfSight = LineOfSightBlockerLevel.Transparent;
+
+    [DataField]
+    public LookupFlags Flags = LookupFlags.Uncontained | LookupFlags.Approximate;
 }
 
 /// <summary>
@@ -51,33 +54,29 @@ public enum LineOfSightBlockerLevel
 /// Ивент, вызываемый при приближении <see cref="ProximityTargetComponent"/> к <see cref="ProximityReceiverComponent"/>.
 /// Вызывается на сущности, к которой приблизились.
 /// </summary>
-/// <param name="target">Цель, которая приблизилась</param>
-/// <param name="range">Текущее расстояние сущности до цели</param>
-/// <param name="closeRange">Расстояние, на котором начинается триггер ивента</param>
-/// <param name="type">Фактический уровень видимости</param>
-public sealed class ProximityInRangeReceiverEvent(EntityUid target, float range, float closeRange, LineOfSightBlockerLevel type) : EntityEventArgs
-{
-    public readonly EntityUid Target = target;
-    public readonly float Range = range;
-    public readonly float CloseRange = closeRange;
-    public readonly LineOfSightBlockerLevel Type = type;
-}
+/// <param name="Target">Цель, которая приблизилась</param>
+/// <param name="Range">Текущее расстояние сущности до цели</param>
+/// <param name="CloseRange">Расстояние, на котором начинается триггер ивента</param>
+/// <param name="Type">Фактический уровень видимости</param>
+[ByRefEvent]
+public readonly record struct ProximityInRangeReceiverEvent(EntityUid Target,
+    float Range,
+    float CloseRange,
+    LineOfSightBlockerLevel Type);
 
 /// <summary>
 /// Ивент, вызываемый при приближении <see cref="ProximityTargetComponent"/> к <see cref="ProximityReceiverComponent"/>.
 /// Вызывается на цели, которая приблизилась.
 /// </summary>
-/// <param name="receiver">Сущность, к которой приблизились</param>
-/// <param name="range">Текущее расстояние цели до сущности</param>
-/// <param name="closeRange">Расстояние, на котором начинается триггер ивента</param>
-/// <param name="type">Фактический уровень видимости</param>
-public sealed class ProximityInRangeTargetEvent(EntityUid receiver, float range, float closeRange, LineOfSightBlockerLevel type) : EntityEventArgs
-{
-    public readonly EntityUid Receiver = receiver;
-    public readonly float Range = range;
-    public readonly float CloseRange = closeRange;
-    public readonly LineOfSightBlockerLevel Type = type;
-}
+/// <param name="Receiver">Сущность, к которой приблизились</param>
+/// <param name="Range">Текущее расстояние цели до сущности</param>
+/// <param name="CloseRange">Расстояние, на котором начинается триггер ивента</param>
+/// <param name="Type">Фактический уровень видимости</param>
+[ByRefEvent]
+public readonly record struct ProximityInRangeTargetEvent(EntityUid Receiver,
+    float Range,
+    float CloseRange,
+    LineOfSightBlockerLevel Type);
 
 /// <summary>
 /// Ивент, вызываемый, когда сущность <see cref="ProximityTargetComponent"/> отсутствует рядом с любым <see cref="ProximityReceiverComponent"/>.
@@ -85,4 +84,31 @@ public sealed class ProximityInRangeTargetEvent(EntityUid receiver, float range,
 /// Служит, чтобы убирать какие-то эффекты, вызванные ивента приближения.
 /// </summary>
 [ByRefEvent]
-public record struct ProximityNotInRangeTargetEvent;
+public readonly record struct ProximityNotInRangeTargetEvent;
+
+/// <summary>
+/// Ивент, вызываемый на цели, когда рядом впервые появляется dominant proximity receiver.
+/// </summary>
+[ByRefEvent]
+public readonly record struct ProximityTargetEnteredEvent(
+    EntityUid Receiver,
+    float Range,
+    float CloseRange,
+    LineOfSightBlockerLevel Type);
+
+/// <summary>
+/// Ивент, вызываемый на цели, когда она перестает находиться рядом с dominant proximity receiver.
+/// </summary>
+[ByRefEvent]
+public readonly record struct ProximityTargetExitedEvent(EntityUid Receiver);
+
+/// <summary>
+/// Ивент, вызываемый на цели, когда ее dominant proximity receiver сменился.
+/// </summary>
+[ByRefEvent]
+public readonly record struct ProximityTargetReceiverChangedEvent(
+    EntityUid OldReceiver,
+    EntityUid NewReceiver,
+    float Range,
+    float CloseRange,
+    LineOfSightBlockerLevel Type);

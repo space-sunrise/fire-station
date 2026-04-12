@@ -1,0 +1,6 @@
+- type: entity
+  parent: Log
+  id: ScpLog
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Specific/Hydroponics/towercap.rsi

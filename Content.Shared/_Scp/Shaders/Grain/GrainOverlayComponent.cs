@@ -7,7 +7,7 @@ namespace Content.Shared._Scp.Shaders.Grain;
 /// Компонент, отвечающий за параметры шейдера зернистости.
 /// Наличие компонента необходимо для работы шейдера.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true, true)]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(true)]
 public sealed partial class GrainOverlayComponent : Component, IShaderStrength
 {
     /// <summary>
@@ -20,8 +20,8 @@ public sealed partial class GrainOverlayComponent : Component, IShaderStrength
     [ViewVariables]
     public float BaseStrength
     {
-        get => _baseStrength;
-        set => _baseStrength = Math.Clamp(value, BaseStrengthLimit.Min, BaseStrengthLimit.Max);
+        get;
+        set => field = Math.Clamp(value, BaseStrengthLimit.Min, BaseStrengthLimit.Max);
     }
 
     /// <inheritdoc/>
@@ -31,6 +31,4 @@ public sealed partial class GrainOverlayComponent : Component, IShaderStrength
     /// <inheritdoc/>
     [ViewVariables]
     public float CurrentStrength => BaseStrength + AdditionalStrength;
-
-    private float _baseStrength;
 }

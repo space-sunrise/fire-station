@@ -3,11 +3,15 @@
   name: job-name-gastronomic-specialist
   description: job-description-gastronomic-specialist
   playTimeTracker: JobGastronomicSpecialist
+  requirements:
+  - !type:AgeRequirement
+    requiredAge: 22
   icon: JobGastronomicSpecialist
   supervisors: job-supervisors-personnel-officer
   weight: 735
   access:
   - Service
+  - Bunker
   special:
   - !type:AddComponentSpecial
     components:

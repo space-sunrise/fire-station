@@ -109,4 +109,5 @@ public sealed class RemoveEncryptionKeys : InteractionTest
         await InteractUsing(Pry);
         AssertPrototype("MachineFrame");
     }
+
 }

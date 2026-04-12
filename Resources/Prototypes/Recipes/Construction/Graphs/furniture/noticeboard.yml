@@ -19,7 +19,7 @@
         - to: start
           completed:
             - !type:GivePrototype
-              prototype: MaterialWoodPlank
+              prototype: ScpMaterialWoodPlank # Fire edit
               amount: 3
           steps:
             - tool: Prying

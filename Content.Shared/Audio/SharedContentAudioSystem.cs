@@ -17,7 +17,11 @@ public abstract class SharedContentAudioSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
-        Audio.OcclusionCollisionMask = (int) CollisionGroup.Impassable;
+
+        // Fire edit start
+        Audio.OcclusionCollisionMask =
+            (int)(CollisionGroup.Impassable | CollisionGroup.InteractImpassable);
+        // Fire edit end
     }
 
     protected void SilenceAudio()

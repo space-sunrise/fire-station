@@ -15,6 +15,7 @@ public abstract partial class SharedFearSystem
     public const float MaximumAdditionalVolume = 16f;
 
     protected virtual void StartBreathing(Entity<FearActiveSoundEffectsComponent> ent) {}
+    protected virtual void StopBreathing(Entity<FearActiveSoundEffectsComponent> ent) {}
 
     protected virtual void StartHeartBeat(Entity<FearActiveSoundEffectsComponent> ent) {}
 
@@ -32,17 +33,32 @@ public abstract partial class SharedFearSystem
     /// <param name="playBreathingSound">Проигрывать звук дыхания?</param>
     private void StartEffects(EntityUid uid, bool playHeartbeatSound, bool playBreathingSound)
     {
-        if (HasComp<FearActiveSoundEffectsComponent>(uid))
-            return;
+        var existed = TryComp<FearActiveSoundEffectsComponent>(uid, out var effects);
+        effects ??= EnsureComp<FearActiveSoundEffectsComponent>(uid);
 
-        var effects = EnsureComp<FearActiveSoundEffectsComponent>(uid);
+        var heartbeatChanged = effects.PlayHeartbeatSound != playHeartbeatSound;
+        var breathingChanged = effects.PlayBreathingSound != playBreathingSound;
+
         effects.PlayHeartbeatSound = playHeartbeatSound;
         effects.PlayBreathingSound = playBreathingSound;
 
-        Dirty(uid, effects);
+        if (!existed || heartbeatChanged || breathingChanged)
+        {
+            DirtyFields(uid,
+                effects,
+                null,
+                nameof(FearActiveSoundEffectsComponent.PlayHeartbeatSound),
+                nameof(FearActiveSoundEffectsComponent.PlayBreathingSound));
+        }
 
-        StartBreathing((uid, effects));
-        StartHeartBeat((uid, effects));
+        if (!existed || (heartbeatChanged && playHeartbeatSound))
+            StartHeartBeat((uid, effects));
+
+        if (!existed || (breathingChanged && playBreathingSound))
+            StartBreathing((uid, effects));
+
+        if (existed && breathingChanged && !playBreathingSound)
+            StopBreathing((uid, effects));
     }
 
     /// <summary>
@@ -57,18 +73,31 @@ public abstract partial class SharedFearSystem
 
         var cooldown = CalculateStrength(currentRange, maxRange, HeartBeatMinimumCooldown, HeartBeatMaximumCooldown);
         var currentPitch = CalculateStrength(currentRange, maxRange, HeartBeatMinimumPitch, HeartBeatMaximumPitch);
+        var currentCooldown = TimeSpan.FromSeconds(cooldown);
+
+        if (MathF.Abs(ent.Comp.AdditionalVolume - volume) < 0.05f
+            && MathF.Abs(ent.Comp.Pitch - currentPitch) < 0.01f
+            && Math.Abs((ent.Comp.NextHeartbeatCooldown - currentCooldown).TotalMilliseconds) < 25)
+        {
+            return;
+        }
 
         ent.Comp.AdditionalVolume = volume;
         ent.Comp.Pitch = currentPitch;
-        ent.Comp.NextHeartbeatCooldown = TimeSpan.FromSeconds(cooldown);
+        ent.Comp.NextHeartbeatCooldown = currentCooldown;
 
-        Dirty(ent);
+        DirtyFields(ent,
+            ent.Comp,
+            null,
+            nameof(FearActiveSoundEffectsComponent.AdditionalVolume),
+            nameof(FearActiveSoundEffectsComponent.Pitch),
+            nameof(FearActiveSoundEffectsComponent.NextHeartbeatCooldown));
     }
 
     /// <summary>
     /// Убирает все звуковые эффекты.
     /// </summary>
-    private void RemoveEffects(EntityUid uid)
+    private void RemoveSoundEffects(EntityUid uid)
     {
         RemComp<FearActiveSoundEffectsComponent>(uid);
     }

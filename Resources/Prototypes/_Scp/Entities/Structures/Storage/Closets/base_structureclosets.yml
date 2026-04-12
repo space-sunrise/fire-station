@@ -38,7 +38,7 @@
   parent: ScpClosetBase
   components:
   - type: Construction
-    graph: ClosetSteel
+    graph: ScpClosetSteel
     node: done
     containers:
     - entity_storage

@@ -1,0 +1,18 @@
+﻿- type: entity
+  id: ScpBunkerWallMarker
+  name: bunker wall marker
+  suffix: Invisible Wall
+  parent: MarkerBase
+  components:
+  - type: BunkerMarker
+  - type: Physics
+    bodyType: Static
+    canCollide: true
+  - type: Fixtures
+    fixtures: {}
+  - type: Sprite
+    sprite: _Scp/Markers/roof.rsi
+    layers:
+    - state: roof_on
+      color: "#FFFFFF4D"
+      shader: unshaded

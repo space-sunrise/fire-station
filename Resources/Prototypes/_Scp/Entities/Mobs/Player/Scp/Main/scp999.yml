@@ -98,22 +98,12 @@
   - type: SleepEmitSound
     snore: /Audio/Voice/Misc/silly_snore.ogg
     interval: 10
-  - type: RangedDamageSound
-    soundGroups:
-      Brute:
-        collection:
-          HurtScp999
-      Burn:
-        collection:
-          HurtScp999
-  - type: MeleeSound
-    soundGroups:
-      Brute:
-        collection:
-          HurtScp999
-      Burn:
-        collection:
-          HurtScp999
+  - type: AnyDamageSound
+    sound:
+      collection: HurtScp999
+      params:
+        volume: 4
+        maxDistance: 8
   - type: EmitSoundRandomly
     sound:
       collection: IdleScp999

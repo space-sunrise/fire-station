@@ -1,0 +1,27 @@
+{
+    "version": 1,
+    "license": "CLA",
+    "copyright": "Made by peperino0290_92944 for SCP: Project Fire",
+    "size": {
+      "x": 48,
+      "y": 48
+    },
+  "states": [
+    {
+      "name": "side",
+      "directions": 4
+    },
+    {
+      "name": "corner",
+      "directions": 4
+    },
+    {
+        "name": "corner_small",
+        "directions": 4
+    },
+    {
+        "name": "round",
+        "directions": 4
+    }
+  ]
+}

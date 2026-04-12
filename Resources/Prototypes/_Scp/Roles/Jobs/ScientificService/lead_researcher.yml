@@ -7,6 +7,8 @@
   - !type:DepartmentTimeRequirement
     department: ScientificService
     time: 36000
+  - !type:AgeRequirement
+    requiredAge: 30
   icon: JobLeadResearcher
   supervisors: job-supervisors-scientific-service-director
   displayWeight: 35

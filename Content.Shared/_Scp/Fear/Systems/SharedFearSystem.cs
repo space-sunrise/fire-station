@@ -8,7 +8,6 @@ using Content.Shared._Scp.Shaders.Vignette;
 using Content.Shared._Scp.Watching;
 using Content.Shared._Sunrise.Mood;
 using Content.Shared.Examine;
-using Content.Shared.GameTicking;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Rejuvenate;
 using Robust.Shared.Timing;
@@ -30,20 +29,20 @@ public abstract partial class SharedFearSystem : EntitySystem
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly SharedShaderStrengthSystem _shaderStrength = default!;
+    [Dependency] private readonly ProximitySystem _proximity = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
 
     private const string MoodSourceClose = "FearSourceClose";
     private const string MoodFearSourceSeen = "FearSourceSeen";
 
-    private EntityQuery<FearSourceComponent> _fears;
+    private EntityQuery<FearSourceComponent> _fearSourceQuery;
+    private EntityQuery<FearComponent> _fearQuery;
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<FearComponent, EntityLookedAtEvent>(OnEntityLookedAt);
-        SubscribeLocalEvent<FearComponent, ProximityInRangeTargetEvent>(OnProximityInRange);
-        SubscribeLocalEvent<FearComponent, ProximityNotInRangeTargetEvent>(OnProximityNotInRange);
 
         SubscribeLocalEvent<FearComponent, FearStateChangedEvent>(OnFearStateChanged);
 
@@ -52,13 +51,13 @@ public abstract partial class SharedFearSystem : EntitySystem
 
         SubscribeLocalEvent<FearComponent, ExaminedEvent>(OnExamine);
 
-        SubscribeLocalEvent<RoundRestartCleanupEvent>(_ => Clear());
-
         InitializeFears();
         InitializeGameplay();
         InitializeTraits();
+        InitializeCloseFear();
 
-        _fears = GetEntityQuery<FearSourceComponent>();
+        _fearSourceQuery = GetEntityQuery<FearSourceComponent>();
+        _fearQuery = GetEntityQuery<FearComponent>();
     }
 
     /// <summary>
@@ -67,16 +66,13 @@ public abstract partial class SharedFearSystem : EntitySystem
     /// </summary>
     private void OnEntityLookedAt(Entity<FearComponent> ent, ref EntityLookedAtEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
         if (!_mobState.IsAlive(ent))
             return;
 
         // Проверка на видимость.
         // Это нужно, чтобы можно было не пугаться через стекло, например.
         // Это будет использовано, например, у ученых, которые 100 лет видели сцп через стекла и не должны пугаться.
-        if (args.BlockerLevel > ent.Comp.SeenBlockerLevel)
+        if (!_proximity.IsRightType(args.Target, ent, ent.Comp.SeenBlockerLevel))
             return;
 
         if (!args.Target.Comp.AlreadyLookedAt.TryGetValue(GetNetEntity(ent), out var lastSeenTime))
@@ -88,7 +84,7 @@ public abstract partial class SharedFearSystem : EntitySystem
             && _timing.CurTime < lastSeenTime + ent.Comp.TimeToGetScaredAgainOnLookAt)
             return;
 
-        if (!_fears.TryComp(args.Target, out var source))
+        if (!_fearSourceQuery.TryComp(args.Target, out var source))
             return;
 
         if (source.UponSeenState == FearState.None)
@@ -111,100 +107,16 @@ public abstract partial class SharedFearSystem : EntitySystem
     }
 
     /// <summary>
-    /// Обрабатывает событие, когда игрок находится вблизи с источником страха.
-    /// Нужен, чтобы включить разные страшные эффекты.
-    /// </summary>
-    private void OnProximityInRange(Entity<FearComponent> ent, ref ProximityInRangeTargetEvent args)
-    {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        if (!_mobState.IsAlive(ent))
-            return;
-
-        // Проверка на видимость.
-        // Это нужно, чтобы можно было не пугаться через стекло, например.
-        // Это будет использовано, например, у ученых, которые 100 лет видели сцп через стекла и не должны пугаться.
-        if (args.Type > ent.Comp.ProximityBlockerLevel)
-            return;
-
-        if (!_fears.TryComp(args.Receiver, out var source))
-            return;
-
-        if (source.UponComeCloser == FearState.None)
-            return;
-
-        // Если в списке фобий персонажа нет фобии, которой является источник, то мы ее не боимся
-        if (source.PhobiaType.HasValue && !ent.Comp.Phobias.Contains(source.PhobiaType.Value))
-            return;
-
-        // Проверка на зрение, чтобы можно было закрыть глазки и было не страшно
-        if (!_watching.SimpleIsWatchedBy(args.Receiver, [ent]))
-            return;
-
-        // Если текущий уровень страха выше, чем тот, что мы хотим поставить,
-        // то мы не должны его ставить.
-        if (ent.Comp.State < source.UponComeCloser)
-            TrySetFearLevel(ent.AsNullable(), source.UponComeCloser);
-
-        StartEffects(ent, source.PlayHeartbeatSound, source.PlayBreathingSound);
-        RecalculateEffectsStrength(ent.Owner, args.Range, args.CloseRange);
-
-        SetRangeBasedShaderStrength<GrainOverlayComponent>(ent.Owner,
-            args.Range,
-            args.CloseRange,
-            source.GrainShaderStrength,
-            args.Type,
-            ent.Comp);
-
-        SetRangeBasedShaderStrength<VignetteOverlayComponent>(ent.Owner,
-            args.Range,
-            args.CloseRange,
-            source.VignetteShaderStrength,
-            args.Type,
-            ent.Comp);
-
-        AddNegativeMoodEffect(ent, MoodSourceClose);
-    }
-
-    /// <summary>
-    /// Обрабатывает событие, когда сущность НЕ находится рядом с источником страха.
-    /// Нужен, чтобы выключить эффекты от источника страха.
-    /// </summary>
-    private void OnProximityNotInRange(Entity<FearComponent> ent, ref ProximityNotInRangeTargetEvent args)
-    {
-        // Оказывается этот метод фиксит серверные проблемы,
-        // из-за которых изменение уровня страха на сервере не меняет параметры оверлеев на клиенте.
-        // Благодаря тому, что оно вызывается постоянно, это создает костыль, который закрывает проблему. Вот оно как.
-        // TODO: Избавиться от этого костыля когда-нибудь и реализовать Net версию изменения уровня страха
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
-        if (!_mobState.IsAlive(ent))
-            return;
-
-        // Как только игрок отходит от источника страха он должен перестать бояться
-        // Но значения шейдера от уровня страха должны продолжать действовать, что и учитывает метод
-        SetShaderStrength<GrainOverlayComponent>(ent.Owner, ent.Comp, 0f);
-        SetShaderStrength<VignetteOverlayComponent>(ent.Owner, ent.Comp, 0f);
-
-        RemoveEffects(ent);
-        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodSourceClose));
-    }
-
-    /// <summary>
     /// Обрабатывает событие изменения уровня страха у персонажа.
     /// </summary>
     private void OnFearStateChanged(Entity<FearComponent> ent, ref FearStateChangedEvent args)
     {
-        if (!_timing.IsFirstTimePredicted)
-            return;
-
         PlayFearStateSound(ent, args.OldState);
 
         // Добавляем геймплейные проблемы, завязанный на уровне страха
         ManageShootingProblems(ent);
         ManageStateBasedMood(ent);
+        ManageFallOff(ent);
 
         // Проверка на то, что уровень понизился -> мы успокоились.
         // Геймплейные штуки ниже не нужно триггерить.
@@ -218,20 +130,12 @@ public abstract partial class SharedFearSystem : EntitySystem
 
     protected virtual void OnShutdown(Entity<FearComponent> ent, ref ComponentShutdown args)
     {
-        _shaderStrength.TrySetAdditionalStrength<GrainOverlayComponent>(ent.Owner, 0f);
-        _shaderStrength.TrySetAdditionalStrength<VignetteOverlayComponent>(ent.Owner, 0f);
-
-        RemoveEffects(ent.Owner);
-
-        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodFearSourceSeen));
-        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodSourceClose));
+        CleanupFear(ent);
     }
 
     protected virtual void OnRejuvenate(Entity<FearComponent> ent, ref RejuvenateEvent args)
     {
-        TrySetFearLevel(ent.AsNullable(), FearState.None);
-
-        RaiseLocalEvent(ent, new MoodRemoveEffectEvent(MoodFearSourceSeen));
+        ResetFear(ent);
     }
 
     /// <summary>
@@ -275,7 +179,7 @@ public abstract partial class SharedFearSystem : EntitySystem
         SetFearBasedShaderStrength(entity);
         SetNextCalmDownTime(entity);
 
-        Dirty(ent);
+        DirtyField(ent, ent.Comp, nameof(FearComponent.State));
 
         return true;
     }
@@ -294,7 +198,31 @@ public abstract partial class SharedFearSystem : EntitySystem
         ent.Comp.CurrentFearBasedShaderStrength[nameof(GrainOverlayComponent)] = grainStrength;
         ent.Comp.CurrentFearBasedShaderStrength[nameof(VignetteOverlayComponent)] = vignetteStrength;
 
-        Dirty(ent);
+        DirtyField(ent, ent.Comp, nameof(FearComponent.CurrentFearBasedShaderStrength));
+    }
+
+    private void ResetFear(Entity<FearComponent> ent)
+    {
+        TrySetFearLevel(ent.AsNullable(), FearState.None);
+        CleanupFear(ent);
+    }
+
+    private void CleanupFear(Entity<FearComponent> ent)
+    {
+        ClearCloseFear(ent);
+
+        RemoveSeenFearMood(ent);
+        WipeMood(ent);
+    }
+
+    private void RemoveSeenFearMood(EntityUid uid)
+    {
+        RaiseLocalEvent(uid, new MoodRemoveEffectEvent(MoodFearSourceSeen));
+    }
+
+    private void RemoveCloseFearMood(EntityUid uid)
+    {
+        RaiseLocalEvent(uid, new MoodRemoveEffectEvent(MoodSourceClose));
     }
 
     /// <summary>

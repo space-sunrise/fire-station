@@ -1,0 +1,10 @@
+ent-Scp3008MusicBox = радио IKEA
+    .desc = Из него доносится успокаивающая музыка.
+ent-BaseScp3008 = Сотрудник IKEA
+    .desc = Непропорциональная и безликая персона в костюме сотрудника IKEA.
+ent-BasicScp3008 = Сотрудник IKEA
+ent-BasicScp3008Angry = { ent-BasicScp3008 }
+ent-StrongScp3008 = Крепкий сотрудник IKEA
+ent-StrongScp3008Angry = { ent-StrongScp3008 }
+ent-TallScp3008 = Высокий сотрудник IKEA
+ent-TallScp3008Angry = { ent-TallScp3008 }

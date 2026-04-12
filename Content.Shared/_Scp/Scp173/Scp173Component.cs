@@ -53,7 +53,7 @@ public sealed partial class Scp173Component : Component
     /// <summary>
     /// Количество жидкости вокруг сущности, рассчитывается для виджета заполненности камеры
     /// </summary>
-    [AutoNetworkedField]
+    [ViewVariables, AutoNetworkedField]
     public FixedPoint2 ReagentVolumeAround;
 
     /// <summary>

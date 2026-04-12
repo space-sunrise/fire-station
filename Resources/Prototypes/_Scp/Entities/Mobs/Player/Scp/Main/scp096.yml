@@ -25,9 +25,11 @@
     - state: dead_to_idle
       map: [ "enum.Scp096VisualsState.DeadToIdle" ]
       visible: false
+      loop: false
     - state: agro_to_dead
       map: [ "enum.Scp096VisualsState.AgroToDead" ]
       visible: false
+      loop: false
   - type: SpriteMovement
     movementLayers:
       idle:
@@ -64,13 +66,14 @@
     cryOutDamage:
       types:
         Structural: 850
-  - type: Scp096ShaderStatic
   - type: ScpRestriction
     canBeDisarmed: true
     canTakeStaminaDamage: true
     canStandingState: true
   - type: FearSource
     uponSeenState: Fear
+  - type: WatchingTarget
+    simpleMode: true
   - type: ShowBlinkable
   - type: ScpAnnounceOnSpawn
     text: scp096-announce-on-spawn

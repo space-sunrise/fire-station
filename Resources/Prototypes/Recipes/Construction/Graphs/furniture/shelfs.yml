@@ -229,7 +229,7 @@
                 prototype: SheetSteel1
                 amount: 5
             - !type:GivePrototype
-                prototype: MaterialWoodPlank1
+                prototype: ScpMaterialWoodPlank1 # Fire edit
                 amount: 3
           steps:
             - tool: Screwing

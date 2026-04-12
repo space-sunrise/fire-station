@@ -125,6 +125,11 @@ public sealed partial class EncryptionKeySystem : EntitySystem
             return;
         }
 
+        // Sunrise added start - headset/key compatibility restrictions
+        if (IsKeyInsertBlocked(uid, args.Used, component, args.User))
+            return;
+        // Sunrise added end
+
         if (_container.Insert(args.Used, component.KeyContainer))
         {
             _popup.PopupClient(Loc.GetString("encryption-key-successfully-installed"), uid, args.User);

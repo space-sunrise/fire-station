@@ -50,4 +50,11 @@ public sealed partial class SpeakOnEyeStateChangeComponent : Component
     /// </summary>
     [DataField]
     public bool SpeakOnlyWhileScp173Nearby = true;
+
+    /// <summary>
+    /// Следует ли автоматически проговаривать фразы во время обычного моргания?
+    /// Если false, фразы будут проигрываться только при ручном переключении глаз через акшен.
+    /// </summary>
+    [DataField]
+    public bool SpeakOnAutomaticBlinking;
 }

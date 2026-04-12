@@ -1,5 +1,4 @@
 ﻿using Robust.Client.Graphics;
-using Robust.Client.Player;
 using Robust.Shared.Enums;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
@@ -12,9 +11,8 @@ namespace Content.Client._Scp.Blinking;
 public sealed class BlinkingOverlay : Overlay
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly IPlayerManager _player = default!;
 
-    public override bool RequestScreenTexture => true;
+    public override bool RequestScreenTexture => true; // _blinkingProgress > 0f || IsAnimating
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
     private readonly ShaderInstance _shader;
@@ -82,12 +80,6 @@ public sealed class BlinkingOverlay : Overlay
         if (ScreenTexture == null)
             return;
 
-        if (!_player.LocalEntity.HasValue)
-            return;
-
-        if (MathHelper.CloseTo(_blinkingProgress, 0f))
-            return;
-
         var worldHandle = args.WorldHandle;
         var viewport = args.WorldBounds;
 
@@ -127,5 +119,12 @@ public sealed class BlinkingOverlay : Overlay
     public bool AreEyesClosed()
     {
         return _blinkingProgress >= 0.01f;
+    }
+
+    protected override void DisposeBehavior()
+    {
+        base.DisposeBehavior();
+
+        _shader.Dispose();
     }
 }

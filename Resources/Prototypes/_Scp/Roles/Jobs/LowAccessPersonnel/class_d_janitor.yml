@@ -1,4 +1,4 @@
-﻿- type: job
+- type: job
   id: ClassDJanitor
   name: job-name-class-d-janitor
   description: job-description-class-d-janitor
@@ -14,6 +14,12 @@
     - type: ClassDAppearance
     - type: EmployeeClass
       class: D
+    - type: ScpAnnounceOnSpawn
+      text: class-d-announce-on-spawn
+      channels:
+      - ExternalAdministrativeZoneSecurityService
+      includeJobName: true
+      requiredGameRunLevel: InRound
 
 - type: startingGear
   id: ClassDJanitorGear

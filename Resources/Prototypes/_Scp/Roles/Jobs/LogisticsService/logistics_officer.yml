@@ -4,8 +4,13 @@
   description: job-description-logistics-officer
   playTimeTracker: JobLogisticsOfficer
   requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 3600
+  - !type:OverallPlaytimeRequirement
+    time: 3600
+  - !type:AgeRequirement
+    requiredAge: 24
+  - !type:AgeRequirement
+    requiredAge: 75
+    inverted: true
   icon: JobLogisticsOfficer
   supervisors: job-supervisors-senior-logistics-officer
   displayWeight: 0

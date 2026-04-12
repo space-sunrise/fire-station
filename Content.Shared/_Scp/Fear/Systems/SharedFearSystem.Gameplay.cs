@@ -1,10 +1,12 @@
 ﻿using Content.Shared._Scp.Fear.Components;
-using Content.Shared._Scp.Fear.Components.Traits;
 using Content.Shared._Scp.Weapons.Ranged;
 using Content.Shared._Sunrise.Mood;
+using Content.Shared._Sunrise.Random;
 using Content.Shared.Drunk;
 using Content.Shared.Jittering;
+using Content.Shared.Standing;
 using Content.Shared.StatusEffectNew;
+using Content.Shared.Stunnable;
 using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Fear.Systems;
@@ -13,6 +15,9 @@ public abstract partial class SharedFearSystem
 {
     [Dependency] private readonly StatusEffectsSystem _effects = default!;
     [Dependency] private readonly SharedJitteringSystem _jittering = default!;
+    [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly SharedStunSystem _stun = default!;
+    [Dependency] private readonly RandomPredictedSystem _random = default!;
 
     private const float BaseJitteringAmplitude = 1f;
     private const float BaseJitteringFrequency = 4f;
@@ -35,6 +40,30 @@ public abstract partial class SharedFearSystem
     private void InitializeGameplay()
     {
         _drunkQuery = GetEntityQuery<DrunkStatusEffectComponent>();
+
+        SubscribeLocalEvent<ActiveFearFallOffComponent, MapInitEvent>(OnFallOffMapInit);
+        SubscribeLocalEvent<ActiveFearFallOffComponent, MoveEvent>(OnFallOffMove);
+    }
+
+    private void OnFallOffMapInit(Entity<ActiveFearFallOffComponent> ent, ref MapInitEvent args)
+    {
+        SetNextFallOffTime(ent);
+    }
+
+    private void OnFallOffMove(Entity<ActiveFearFallOffComponent> ent, ref MoveEvent args)
+    {
+        if (_timing.CurTime < ent.Comp.FallOffNextCheckTime)
+            return;
+
+        SetNextFallOffTime(ent); // Даже если не прокнет, то время все равно должно устанавливаться
+
+        if (!_random.ProbForEntity(ent, ent.Comp.FallOffChance))
+            return;
+
+        if (_standing.IsDown(ent.Owner))
+            return;
+
+        _stun.TryAddParalyzeDuration(ent.Owner, ent.Comp.FallOffTime);
     }
 
     /// <summary>
@@ -68,10 +97,7 @@ public abstract partial class SharedFearSystem
     private void ManageJitter(Entity<FearComponent> ent)
     {
         // При ступоре и обмороке персонаж не должен трястись
-        if (_effects.HasStatusEffect(ent, FearStuporComponent.StatusEffect))
-            return;
-
-        if (_effects.HasStatusEffect(ent, FearFaintingComponent.StatusEffect))
+        if (_fearFaintingQuery.HasComp(ent) || _fearStuporQuery.HasComp(ent))
             return;
 
         if (MathHelper.CloseTo(ent.Comp.BaseJitterTime, 0f))
@@ -155,4 +181,30 @@ public abstract partial class SharedFearSystem
     }
 
     protected virtual void TryScream(Entity<FearComponent> ent) {}
+
+    private void ManageFallOff(Entity<FearComponent> ent)
+    {
+        if (ent.Comp.State >= ent.Comp.FallOffRequiredState)
+        {
+            if (HasComp<ActiveFearFallOffComponent>(ent))
+                return;
+
+            var comp = EnsureComp<ActiveFearFallOffComponent>(ent);
+            comp.FallOffChance = ent.Comp.FallOffChance;
+            Dirty(ent, comp);
+        }
+        else
+        {
+            RemComp<ActiveFearFallOffComponent>(ent);
+        }
+    }
+
+    /// <summary>
+    /// Устанавливает следующее время возможности запнуться.
+    /// </summary>
+    private void SetNextFallOffTime(Entity<ActiveFearFallOffComponent> ent)
+    {
+        ent.Comp.FallOffNextCheckTime = _timing.CurTime + ent.Comp.FallOffCheckInterval;
+        Dirty(ent);
+    }
 }

@@ -219,8 +219,8 @@ namespace Content.Client.Lobby.UI
 
             PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-male-text"), (int) Gender.Male);
             PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-female-text"), (int) Gender.Female);
-            PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-epicene-text"), (int) Gender.Epicene);
-            PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-neuter-text"), (int) Gender.Neuter);
+            // PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-epicene-text"), (int) Gender.Epicene); // Fire Edit
+            // PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-neuter-text"), (int) Gender.Neuter); // Fire Edit
 
             PronounsButton.OnItemSelected += args =>
             {
@@ -1135,8 +1135,13 @@ namespace Content.Client.Lobby.UI
                     var collection = IoCManager.Instance!;
                     var protoManager = collection.Resolve<IPrototypeManager>();
 
+                    // Sunrise-start
+                    var jobLoadoutId = LoadoutSystem.GetJobPrototype(job.ID);
+                    var effectiveJobLoadoutId = LoadoutSystem.GetEffectiveRolePrototype(jobLoadoutId, protoManager);
+                    // Sunrise-end
+
                     // If no loadout found then disabled button
-                    if (!protoManager.TryIndex<RoleLoadoutPrototype>(LoadoutSystem.GetJobPrototype(job.ID), out var roleLoadoutProto))
+                    if (!protoManager.TryIndex<RoleLoadoutPrototype>(effectiveJobLoadoutId, out var roleLoadoutProto))  // Sunrise-edit
                     {
                         loadoutWindowBtn.Disabled = true;
                     }
@@ -1148,12 +1153,12 @@ namespace Content.Client.Lobby.UI
                             RoleLoadout? loadout = null;
 
                             // Clone so we don't modify the underlying loadout.
-                            Profile?.Loadouts.TryGetValue(LoadoutSystem.GetJobPrototype(job.ID), out loadout);
+                            Profile?.Loadouts.TryGetValue(jobLoadoutId, out loadout); // Sunrise-edit
                             loadout = loadout?.Clone();
 
                             if (loadout == null)
                             {
-                                loadout = new RoleLoadout(roleLoadoutProto.ID);
+                                loadout = new RoleLoadout(jobLoadoutId);  // Sunrise-edit
                                 loadout.SetDefault(Profile, _playerManager.LocalSession, _prototypeManager, sponsorPrototypes);
                             }
 

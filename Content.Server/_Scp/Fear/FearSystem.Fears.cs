@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using Content.Server._Scp.Shaders.Highlighting;
-using Content.Server._Sunrise.Mood;
+using Content.Shared._Scp.Blinking;
 using Content.Shared._Scp.Fear;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Fear.Components.Fears;
@@ -52,13 +52,21 @@ public sealed partial class FearSystem
         var toggleUsed = new ItemToggledEvent(false, activated, null);
         RaiseLocalEvent(ev.Target, ref toggleUsed);
 
+        // Если activated = true, значит человек умер.
+        // Поэтому код ниже требует true, так как реализует логику для смерти.
         if (!activated)
             return;
 
-        var whoSaw = _watching.GetAllEntitiesVisibleTo<MoodComponent>(ev.Target);
+        using var realWatchers = ListPoolEntity<BlinkableComponent>.Rent();
+        if (!_watching.TryGetWatchers(ev.Target, realWatchers.Value, flags: LookupFlags.Dynamic))
+            return;
 
-        foreach (var uid in whoSaw)
+        foreach (var uid in realWatchers.Value)
         {
+            // Убийца не будет печалиться смерти убитого
+            if (uid.Owner == ev.Origin)
+                continue;
+
             AddNegativeMoodEffect(uid, MoodSomeoneDiedOnMyEyes);
         }
     }
@@ -80,7 +88,7 @@ public sealed partial class FearSystem
                 continue;
 
             _hemophobiaBloodList.Clear();
-            var bloodAmount = _helpers.GetAroundSolutionVolume(uid, hemophobia.Reagent, in _hemophobiaBloodList);
+            var bloodAmount = _helpers.GetAroundSolutionVolume(uid, hemophobia.Reagent, _hemophobiaBloodList);
             var requiredBloodAmount = hemophobia.BloodRequiredPerState[fear.State];
 
             if (bloodAmount <= requiredBloodAmount)

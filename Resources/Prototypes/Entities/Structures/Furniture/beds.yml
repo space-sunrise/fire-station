@@ -13,7 +13,7 @@
         Blunt: -0.1
         Piercing: -0.05 #SUNRISE-EDIT
         Slash: -0.05 #SUNRISE-EDIT
-        Mangleness: -0.05 #SUNRISE-EDIT
+        Mangleness: -0.2 #SUNRISE-EDIT
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -91,7 +91,7 @@
         Blunt: -0.2
         Piercing: -0.1 #SUNRISE-EDIT
         Slash: -0.1 #SUNRISE-EDIT
-        Mangleness: -0.15 #SUNRISE-EDIT
+        Mangleness: -0.2 #SUNRISE-EDIT
   - type: Construction
     graph: bed
     node: medicalbed
@@ -138,7 +138,7 @@
           collection: WoodDestroy
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank:
+          ScpMaterialWoodPlank: # Fire edit
             min: 1
             max: 5
 
@@ -221,7 +221,7 @@
         acts: ["Destruction"]
       - !type:SpawnEntitiesBehavior
         spawn:
-          MaterialWoodPlank:
+          ScpMaterialWoodPlank:
             min: 2
             max: 2
   - type: CanSleepOnBuckle # Sunrise-Edit

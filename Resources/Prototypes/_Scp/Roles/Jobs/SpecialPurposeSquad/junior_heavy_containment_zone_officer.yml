@@ -4,8 +4,13 @@
   description: job-description-junior-heavy-containment-zone-officer
   playTimeTracker: JobJuniorHeavyContainmentZoneOfficer
   requirements:
-    - !type:OverallPlaytimeRequirement
-      time: 7200
+  - !type:OverallPlaytimeRequirement
+    time: 10800
+  - !type:AgeRequirement
+    requiredAge: 23
+  - !type:AgeRequirement
+    requiredAge: 45
+    inverted: true
   icon: JobJuniorHeavyContainmentZoneOfficer
   supervisors: job-supervisors-heavy-containment-zone-commandant
   canBeAntag: false
@@ -31,6 +36,7 @@
       phraseOnOpen:
       - open-eye-phrase-1
       - open-eye-phrase-3
+      speakOnAutomaticBlinking: true
       speakOnlyInScp173Chamber: false
     - type: Fear  # переопределение компонента страха для СБ
       phobias:
@@ -43,7 +49,7 @@
         Fear: 2.2
         Terror: 5
       baseJitterTime: 3
-      fallOffChance: 2
+      fallOffChance: 0.02
 
 - type: startingGear
   id: JuniorHeavyContainmentZoneOfficerGear

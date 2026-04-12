@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Scp106.Components;
+﻿using Content.Shared._Scp.Other.BunkerMarker;
+using Content.Shared._Scp.Scp106.Components;
 using Content.Shared._Scp.Watching;
 using Content.Shared.DoAfter;
 using Content.Shared.Examine;
@@ -14,6 +15,7 @@ public abstract partial class SharedScp106System
 {
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly EyeWatchingSystem _watching = default!;
+    [Dependency] private readonly BunkerMarkerSystem  _bunkerMarker  = default!;
 
     private void InitializePhantom()
     {
@@ -89,8 +91,8 @@ public abstract partial class SharedScp106System
 
         foreach (var (id, fixture) in fixturesComponent.Fixtures)
         {
-            _physics.SetCollisionMask(ent, id, fixture, (int) CollisionGroup.SmallMobMask);
-            _physics.SetCollisionLayer(ent, id, fixture, (int) CollisionGroup.MobLayer);
+            _physics.SetCollisionMask(ent, id, fixture, (int)(CollisionGroup.SmallMobMask | CollisionGroup.GhostImpassable));
+            _physics.SetCollisionLayer(ent, id, fixture, (int)CollisionGroup.MobLayer);
         }
 
         args.Handled = true;
@@ -101,7 +103,7 @@ public abstract partial class SharedScp106System
         if (!_mob.IsAlive(args.Examiner))
             return;
 
-        if (!_watching.SimpleIsWatchedBy(ent.Owner, [args.Examiner]))
+        if (!_watching.IsWatchedBy(ent.Owner, args.Examiner))
             return;
 
         // Ликвидируйся

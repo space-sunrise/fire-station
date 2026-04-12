@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "MIDUZKA",
+  "size": {
+    "x": 32,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "Tall3008",
+      "directions": 4
+    }
+  ]
+}

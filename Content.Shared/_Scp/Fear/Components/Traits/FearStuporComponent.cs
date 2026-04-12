@@ -9,14 +9,15 @@ namespace Content.Shared._Scp.Fear.Components.Traits;
 [RegisterComponent, NetworkedComponent]
 public sealed partial class FearStuporComponent : Component
 {
-    [DataField, ViewVariables]
+    [DataField]
     public FearState RequiredState = FearState.Fear;
 
-    [DataField, ViewVariables]
-    public float Chance = 10f;
+    [DataField]
+    public float Chance = 0.1f;
 
-    [DataField, ViewVariables]
+    [DataField]
     public TimeSpan StuporTime = TimeSpan.FromSeconds(10f);
 
-    public static readonly EntProtoId StatusEffect = "StatusEffectFearStupor";
+    [DataField]
+    public EntProtoId StatusEffect = "StatusEffectFearStupor";
 }

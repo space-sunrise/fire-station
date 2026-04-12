@@ -1,0 +1,47 @@
+- type: entity
+  id: ScpBaseBookshelfComponents
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Furniture/bookshelf.rsi
+    snapCardinals: false
+    layers:
+    - map: [ "base" ]
+      state: wide
+    - state: book-0
+    - map: ["enum.StorageFillLayers.Fill"]
+  - type: EdgeConnection
+    connectionKey: computers
+    allowedDirections: East, West
+  - type: GenericVisualizer
+    visuals:
+      enum.EdgeConnectionVisuals.ConnectionMask:
+        base:
+          None: { state: wide }
+          West: { state: wide_right }
+          East: { state: wide_left }
+          East, West: { state: wide }
+  - type: Storage
+    grid:
+    - 0,0,9,1
+  - type: StorageFillVisualizer
+    maxFillLevels: 20
+  - type: Transform
+    anchored: true
+    noRot: false
+  - type: ScpDirectionalOccluder
+    boundingBoxes:
+      East: "-0.5, -0.3, 0.5, 0.3"
+      West: "-0.5, -0.3, 0.5, 0.3"
+  - type: ScpDirectionalFixture
+    boundingBoxes:
+      East: "-0.5, -0.3, 0.5, 0.3"
+      West: "-0.5, -0.3, 0.5, 0.3"
+  - type: Rotatable
+    rotateWhileAnchored: true
+
+- type: entity
+  id: ScpBookshelf
+  parent:
+  - ScpBaseBookshelfComponents
+  - Bookshelf

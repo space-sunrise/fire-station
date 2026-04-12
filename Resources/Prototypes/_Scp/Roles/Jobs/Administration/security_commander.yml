@@ -6,10 +6,15 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: HeavyContainmentSecurityService
-    time: 36000
+    time: 46800
   - !type:DepartmentTimeRequirement
     department: ExternalAdministrativeZoneSecurityService
-    time: 36000
+    time: 46800
+  - !type:AgeRequirement
+    requiredAge: 31
+  - !type:AgeRequirement
+    requiredAge: 75
+    inverted: true
   weight: 955
   icon: JobSecurityCommander
   supervisors: job-supervisors-director
@@ -43,6 +48,7 @@
       phraseOnOpen:
       - open-eye-phrase-1
       - open-eye-phrase-3
+      speakOnAutomaticBlinking: true
       speakOnlyInScp173Chamber: false
     - type: Fear # переопределение компонента страха для СБ
       phobias:
@@ -65,7 +71,7 @@
         Fear: 60
         Terror: 350
       baseJitterTime: 2
-      fallOffChance: 1
+      fallOffChance: 0.01
 
 - type: startingGear
   id: SecurityCommanderGear

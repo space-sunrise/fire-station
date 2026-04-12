@@ -1,6 +1,7 @@
 - type: entity
   parent: PosterBase
   id: PosterMapMetaRight
+  categories: [ HideSpawnMenu ] # Fire edit
   name: "Meta Station map"
   description: "A map of Meta Station. This looks really old."
   components:

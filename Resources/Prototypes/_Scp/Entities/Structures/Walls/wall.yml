@@ -77,6 +77,23 @@
       ChiefTechnicalSpecialist: ScpWallBrickEngineeringMessages
 
 - type: entity
+  parent: ScpBaseWallDamageableVisuals
+  id: ScpBaseWallDamageableVisualsWood
+  abstract: true
+  components:
+  - type: DamageVisuals
+    damageDivisor: 7
+    damageOverlay:
+      sprite: _Scp/Effects/DamageOverlay/wood.rsi
+  - type: ScpExaminableDamage
+    mode: Structure
+    generalMessages: ScpWallWoodMessages
+    departmentMessages:
+      EngineeringTechnicalService: ScpWallWoodEngineeringMessages
+    jobMessages:
+      ChiefTechnicalSpecialist: ScpWallWoodEngineeringMessages
+
+- type: entity
   id: ScpBaseWallRepairable
   abstract: true
   components:
@@ -160,6 +177,27 @@
   - type: Damageable
     damageContainer: StructuralInorganic
     damageModifierSet: StructuralMetallicScp
+
+# Деревянная стена
+- type: entity
+  parent:
+  - WallWood
+  - ScpBaseStructureDamageOnSpawn
+  - ScpBaseWallDamageableVisualsWood
+  - ScpBaseWallRepairable
+  id: ScpWallWood
+  name: wood wall
+  description: The traditional assistant defense.
+  components:
+  - type: Sprite
+    sprite: _Scp/Structures/Walls/wood.rsi
+  - type: Icon
+    sprite: _Scp/Structures/Walls/wood.rsi
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Wood
+  - type: ScpRepairable
+    graph: ScpWallWoodRepair
 
 # Укрепленная стена
 - type: entity

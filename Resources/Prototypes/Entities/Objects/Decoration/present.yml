@@ -240,7 +240,7 @@
         orGroup: GiftPool
       - id: Machete
         orGroup: GiftPool
-      - id: BaseBallBat
+      - id: ScpBaseBallBat # Fire edit
         orGroup: GiftPool
       - id: CombatKnife
         orGroup: GiftPool

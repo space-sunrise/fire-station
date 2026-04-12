@@ -261,6 +261,7 @@
     - CanPilot
     - SiliconEmotes
     - Unimplantable
+    - NoPaint # Sunrise-Add
   - type: Emoting
   - type: GuideHelp
     guides:
@@ -360,14 +361,15 @@
     enabled: false
   # Fire edit start - новые доступы
     groups:
-    - Administration
-    - Security
-    - ScientificService
-    - Engineering
-    - Logistics
-    - Service
-    - ClassD
-    - ScpCommon
+    - MedicalHeadless
+    - EngineeringHeadless
+    - LogisticsHeadless
+    - ServiceHeadless
+    tags:
+    - Research
+    - Checkpoint
+    - AI
+
   - type: AccessReader
     access: [["Administration"], ["Research"]]
   # Fire edit end
@@ -433,6 +435,7 @@
     - DoorBumpOpener
     - CanPilot
     - FootstepSound
+    - NoPaint # Sunrise-Add
   - type: BlockLawChange
   - type: Loadout
     prototypes: [ BorgArmorSiliconLoadoutMk2 ]

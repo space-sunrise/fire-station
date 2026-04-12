@@ -40,11 +40,11 @@ public sealed class SpeakOnEyeStateChangeSystem : EntitySystem
         if (ent.Comp.PhraseOnClose == null || ent.Comp.PhraseOnClose.Count == 0)
             return;
 
-        if (!ShouldSpeak(ent))
+        if (!ShouldSpeak(ent, args.Mode))
             return;
 
         var message = _random.Prob(ent.Comp.FavoriteChance) ? ent.Comp.FavoriteClosePhrase : _random.Pick(ent.Comp.PhraseOnClose);
-        _chat.TrySendInGameICMessage(ent, Loc.GetString(message), InGameICChatType.Speak, ChatTransmitRange.Normal);
+        _chat.TrySendInGameICMessage(ent, Loc.GetString(message, ("entity", ent.Owner)), InGameICChatType.Speak, ChatTransmitRange.Normal);
     }
 
     private void OnOpenedEyes(Entity<SpeakOnEyeStateChangeComponent> ent, ref EntityOpenedEyesEvent args)
@@ -52,18 +52,22 @@ public sealed class SpeakOnEyeStateChangeSystem : EntitySystem
         if (ent.Comp.PhraseOnOpen == null || ent.Comp.PhraseOnOpen.Count == 0)
             return;
 
-        if (!ShouldSpeak(ent))
+        if (!ShouldSpeak(ent, args.Mode))
             return;
 
         var message = _random.Prob(ent.Comp.FavoriteChance) ? ent.Comp.FavoriteOpenPhrase : _random.Pick(ent.Comp.PhraseOnOpen);
-        _chat.TrySendInGameICMessage(ent, Loc.GetString(message), InGameICChatType.Speak, ChatTransmitRange.Normal);
+        _chat.TrySendInGameICMessage(ent, Loc.GetString(message, ("entity", ent.Owner)), InGameICChatType.Speak, ChatTransmitRange.Normal);
     }
 
     /// <summary>
     /// Должен ли персонаж выдать фразу в соответствии с параметрами в компоненте?
     /// </summary>
-    private bool ShouldSpeak(Entity<SpeakOnEyeStateChangeComponent> ent)
+    private bool ShouldSpeak(Entity<SpeakOnEyeStateChangeComponent> ent, EyeCloseReason mode)
     {
+        if (mode != EyeCloseReason.Action &&
+            (mode != EyeCloseReason.Blink || !ent.Comp.SpeakOnAutomaticBlinking))
+            return false;
+
         if (ent.Comp.SpeakOnlyInScp173Chamber && !_proximity.IsNearby<Scp173BlockStructureDamageComponent>(ent, SharedScp173System.ContainmentRoomSearchRadius))
             return false;
 

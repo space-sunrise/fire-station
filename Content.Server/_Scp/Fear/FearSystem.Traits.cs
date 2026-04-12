@@ -31,11 +31,10 @@ public sealed partial class FearSystem
         if (args.NewState < ent.Comp.RequiredState)
             return;
 
-        var normalizedChance = PercentToNormalized(ent.Comp.Chance);
-        if (!_random.Prob(normalizedChance))
+        if (!_random.Prob(ent.Comp.Chance))
             return;
 
-        _statusEffects.TryAddStatusEffectDuration(ent, FearStuporComponent.StatusEffect, ent.Comp.StuporTime);
+        _statusEffects.TryAddStatusEffectDuration(ent, ent.Comp.StatusEffect, ent.Comp.StuporTime);
     }
 
     private void OnStutteringFearStateChanged(Entity<FearStutteringComponent> ent, ref FearStateChangedEvent args)
@@ -63,10 +62,9 @@ public sealed partial class FearSystem
         if (args.NewState < ent.Comp.RequiredState)
             return;
 
-        var percentNormalized = PercentToNormalized(ent.Comp.Chance);
-        if (!_random.Prob(percentNormalized))
+        if (!_random.Prob(ent.Comp.Chance))
             return;
 
-        _statusEffects.TryAddStatusEffectDuration(ent, FearFaintingComponent.StatusEffect, ent.Comp.Time);
+        _statusEffects.TryAddStatusEffectDuration(ent, ent.Comp.StatusEffect, ent.Comp.Time);
     }
 }

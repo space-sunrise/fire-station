@@ -33,6 +33,10 @@ TYPES_TO_EMOJI = {
 
 ChangelogEntry = dict[str, Any]
 
+
+def read_yaml_text(path: str | Path) -> str:
+    return Path(path).read_text(encoding="utf-8-sig")
+
 def main():
     if not DISCORD_WEBHOOK_URL:
         return
@@ -40,15 +44,14 @@ def main():
     if DEBUG:
         # to debug this script locally, you can use
         # a separate local file as the old changelog
-        last_changelog_stream = DEBUG_CHANGELOG_FILE_OLD.read_text()
+        last_changelog_stream = read_yaml_text(DEBUG_CHANGELOG_FILE_OLD)
     else:
         # when running this normally in a GitHub actions workflow,
         # it will get the old changelog from the GitHub API
         last_changelog_stream = get_last_changelog()
 
     last_changelog = yaml.safe_load(last_changelog_stream)
-    with open(CHANGELOG_FILE, "r") as f:
-        cur_changelog = yaml.safe_load(f)
+    cur_changelog = yaml.safe_load(read_yaml_text(CHANGELOG_FILE))
 
     diff = diff_changelog(last_changelog, cur_changelog)
     send_to_discord(diff)
@@ -123,7 +126,7 @@ def get_last_changelog_by_sha(
         params=params,
     )
     resp.raise_for_status()
-    return resp.text
+    return resp.content.decode("utf-8-sig")
 
 
 def diff_changelog(

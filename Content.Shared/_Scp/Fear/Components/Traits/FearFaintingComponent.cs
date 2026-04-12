@@ -12,20 +12,21 @@ public sealed partial class FearFaintingComponent : Component
     /// <summary>
     /// Требуемый уровень страха для падения в обморок
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField]
     public FearState RequiredState = FearState.Fear;
 
     /// <summary>
     /// Время, которое персонаж проведет в обмороке
     /// </summary>
-    [DataField, ViewVariables]
+    [DataField]
     public TimeSpan Time = TimeSpan.FromSeconds(20f);
 
     /// <summary>
     /// Шанс упасть в обморок при достижении <see cref="RequiredState"/>
     /// </summary>
-    [DataField, ViewVariables]
-    public float Chance = 30f;
+    [DataField]
+    public float Chance = 0.3f;
 
-    public static readonly EntProtoId StatusEffect = "StatusEffectForcedSleeping";
+    [DataField]
+    public EntProtoId StatusEffect = "StatusEffectForcedSleeping";
 }

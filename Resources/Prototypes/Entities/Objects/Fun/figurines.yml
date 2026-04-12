@@ -477,6 +477,7 @@
 - type: entity
   parent: BaseFigurine
   id: ToyFigurineGriffin
+  categories: [ HideSpawnMenu ] # Fire edit
   name: griffin figure
   description: A figurine depicting 'The Griffin', criminal mastermind.
   components:
@@ -488,6 +489,7 @@
 - type: entity
   parent: BaseFigurine
   id: ToyFigurineOwlman
+  categories: [ HideSpawnMenu ] # Fire edit
   name: owlman figure
   description: A figurine depicting 'Owlman', the defender of justice.
   components:
@@ -499,6 +501,7 @@
 - type: entity
   parent: BaseFigurine
   id: ToyFigurineSkeleton
+  categories: [ HideSpawnMenu ] # Fire edit
   name: skeleton figure
   description: A figurine depicting a spooky scary skeleton.
   components:

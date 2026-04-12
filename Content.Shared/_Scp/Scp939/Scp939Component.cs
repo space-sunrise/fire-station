@@ -5,16 +5,16 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp939;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class Scp939Component : Component
 {
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public Solution SmokeSolution = new("АМН-С227", 40);
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public float SmokeDuration = 30.0f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public int SmokeSpreadRadius = 10;
 
     [DataField]
@@ -28,10 +28,10 @@ public sealed partial class Scp939Component : Component
         "Scp939Sleep",
     };
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float HibernationDuration = 60.0f;
+    [DataField]
+    public float HibernationDuration = 60f;
 
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
     public DamageSpecifier HibernationHealingRate = new()
     {
         DamageDict = new()
@@ -62,6 +62,9 @@ public sealed partial class Scp939Component : Component
 
     [AutoNetworkedField]
     public TimeSpan? PoorEyesightTimeStart; // Когда начали плохо видеть
+
+    [DataField, ViewVariables(VVAccess.ReadWrite)]
+    public float VisibilityActivationRange = 20f;
 
     #endregion
 

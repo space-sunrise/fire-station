@@ -109,6 +109,7 @@
   components:
   - type: NavMapBeacon
     color: "#065290" # Administration
+    defaultText: scp-facility-beacon-administration-department
 
 - type: entity
   parent: ScpFacilityBeacon
@@ -117,6 +118,7 @@
   components:
   - type: NavMapBeacon
     color: "#770101" # Heavy Containment Security Service
+    defaultText: scp-facility-beacon-security-department
 
 - type: entity
   parent: ScpFacilityBeacon
@@ -125,6 +127,7 @@
   components:
   - type: NavMapBeacon
     color: "#43356d" # Scientific Service
+    defaultText: scp-facility-beacon-scientific-service-department
 
 - type: entity
   parent: ScpFacilityBeacon
@@ -133,6 +136,7 @@
   components:
   - type: NavMapBeacon
     color: "#3b627a" # Medical Service
+    defaultText: scp-facility-beacon-medical-service-department
 
 - type: entity
   parent: ScpFacilityBeacon
@@ -141,6 +145,7 @@
   components:
   - type: NavMapBeacon
     color: "#c07d1e" # Engineering-Technical Service
+    defaultText: scp-facility-beacon-engineering-technical-service-department
 
 - type: entity
   parent: ScpFacilityBeacon
@@ -149,6 +154,7 @@
   components:
   - type: NavMapBeacon
     color: "#9E6A34" # Logistics Service
+    defaultText: scp-facility-beacon-logistics-service-department
 
 - type: entity
   parent: ScpFacilityBeacon
@@ -157,6 +163,7 @@
   components:
   - type: NavMapBeacon
     color: "#4e7c22" # Food and Sanitation Service
+    defaultText: scp-facility-beacon-food-and-sanitation-service-department
 
 - type: entity
   parent: ScpFacilityBeacon
@@ -165,6 +172,7 @@
   components:
   - type: NavMapBeacon
     color: "#91381e" # Class D
+    defaultText: scp-facility-beacon-low-access-personnel-department
 
 - type: entity
   parent: ScpFacilityBeacon
@@ -173,6 +181,7 @@
   components:
   - type: NavMapBeacon
     color: "#7a7070" # SCP
+    defaultText: scp-facility-beacon-scp-containment-common
 
 # --- Кабинеты / Offices ---
 
@@ -395,7 +404,7 @@
   suffix: Commandant Squad
   components:
   - type: NavMapBeacon
-    defaultText: scp-facility-beacon-commandant-squad
+    defaultText: scp-facility-beacon-commandant-squad-department
 
 - type: entity
   parent: ScpFacilityBeaconSecurity
@@ -403,7 +412,7 @@
   suffix: Special Purpose Squad
   components:
   - type: NavMapBeacon
-    defaultText: scp-facility-beacon-special-purpose-squad
+    defaultText: scp-facility-beacon-special-purpose-squad-department
 
 - type: entity
   parent: ScpFacilityBeaconFoodAndSanitationService

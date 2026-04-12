@@ -1,15 +1,11 @@
-﻿using System.Threading;
-using Content.Shared._Scp.Fear.Components;
+﻿using Content.Shared._Scp.Fear.Components;
 using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Shaders;
-using Timer = Robust.Shared.Timing.Timer;
 
 namespace Content.Shared._Scp.Fear.Systems;
 
 public abstract partial class SharedFearSystem
 {
-    private static CancellationTokenSource _restartToken = new ();
-
     private const int MinPossibleValue = (int) FearState.None;
     private const int MaxPossibleValue = (int) FearState.Terror;
 
@@ -21,10 +17,11 @@ public abstract partial class SharedFearSystem
     /// </summary>
     private void HighLightAllVisibleFears(Entity<FearComponent> ent)
     {
-        var visibleFearSources =
-            _watching.GetAllEntitiesVisibleTo<FearSourceComponent>(ent.Owner, ent.Comp.SeenBlockerLevel);
+        using var fearSources = ListPoolEntity<FearSourceComponent>.Rent();
+        if (!_watching.TryGetWatchingTargets(ent.Owner, fearSources.Value, ent.Comp.SeenBlockerLevel))
+            return;
 
-        foreach (var source in visibleFearSources)
+        foreach (var source in fearSources.Value)
         {
             if (source.Comp.UponSeenState != ent.Comp.State)
                 continue;
@@ -124,17 +121,6 @@ public abstract partial class SharedFearSystem
     protected void SetNextCalmDownTime(Entity<FearComponent> ent)
     {
         ent.Comp.NextTimeDecreaseFearLevel = _timing.CurTime + ent.Comp.TimeToDecreaseFearLevel;
-        Dirty(ent);
-    }
-
-    protected void RemoveComponentAfter<T>(EntityUid ent, float removeAfter) where T : IComponent
-    {
-        Timer.Spawn(TimeSpan.FromSeconds(removeAfter), () => RemComp<T>(ent), _restartToken.Token);
-    }
-
-    protected void RemoveComponentAfter<T>(EntityUid ent, TimeSpan removeAfter) where T : IComponent
-    {
-        Timer.Spawn(removeAfter, () => RemComp<T>(ent), _restartToken.Token);
     }
 
     /// <summary>
@@ -165,18 +151,4 @@ public abstract partial class SharedFearSystem
 
         _ => null,
     };
-
-    /// <summary>
-    /// Преобразует процент из человеческого формата в probный.
-    /// </summary>
-    protected static float PercentToNormalized(float percent)
-    {
-        return Math.Clamp(percent / 100f, 0f, 1f);
-    }
-
-    protected virtual void Clear()
-    {
-        _restartToken.Cancel();
-        _restartToken = new();
-    }
 }

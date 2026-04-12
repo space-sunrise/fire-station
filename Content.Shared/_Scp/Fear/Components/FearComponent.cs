@@ -8,7 +8,7 @@ namespace Content.Shared._Scp.Fear.Components;
 /// Компонент, отвечающий за возможность пугаться.
 /// Обрабатывает уровни страха и хранит текущий.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
 public sealed partial class FearComponent : Component
 {
     /// <inheritdoc cref="FearState"/>
@@ -143,19 +143,7 @@ public sealed partial class FearComponent : Component
     /// Шанс упасть при хождении во время страха постигшего <see cref="FallOffRequiredState"/>
     /// </summary>
     [DataField, AutoNetworkedField]
-    public float FallOffChance = 3f; // 3%
-
-    /// <summary>
-    /// Время следующей проверки на возможность запнуться при высоком уровне страха.
-    /// </summary>
-    [ViewVariables]
-    public TimeSpan FallOffNextCheckTime = TimeSpan.Zero;
-
-    /// <summary>
-    /// Время между проверками на возможность запнуться.
-    /// </summary>
-    [DataField]
-    public TimeSpan FallOffCheckInterval = TimeSpan.FromSeconds(0.3f);
+    public float FallOffChance = 0.03f;
 
     /// <summary>
     /// Какой уровень страха нужен, чтобы у человека появился адреналин.

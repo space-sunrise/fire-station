@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Content.Server.Audio;
 using Content.Server.Chat.Systems;
 using Content.Server.Popups;
 using Content.Server.Power.EntitySystems;
@@ -10,6 +9,7 @@ using Content.Shared.Chat;
 using Content.Shared.Emp;
 using Content.Shared.Mobs.Components;
 using Content.Shared.PowerCell;
+using Content.Shared.Radio;
 using Content.Shared.Radio.Components;
 using Content.Shared.Speech;
 using Content.Shared.Speech.Components;
@@ -17,23 +17,20 @@ using Robust.Server.Audio;
 using Robust.Server.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 
 namespace Content.Server._Scp.Other.Radio;
 
 public sealed class ScpRadioSystem : SharedScpRadioSystem
 {
     [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly ILogManager _log = default!;
     [Dependency] private readonly RadioSystem _radio = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly AmbientSoundSystem _ambientSound = default!;
     [Dependency] private readonly PopupSystem _popup = default!;
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly BatterySystem _battery = default!;
     [Dependency] private readonly ContainerSystem _container = default!;
-
-    private ISawmill _sawmill = default!;
 
     public override void Initialize()
     {
@@ -46,13 +43,14 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
         SubscribeLocalEvent<ScpRadioComponent, PowerCellChangedEvent>(OnPowerCellChanged);
         SubscribeLocalEvent<ScpRadioComponent, EmpPulseEvent>(OnEmpPulse);
-
-        _sawmill = _log.GetSawmill("scp_radio");
     }
 
     private void OnListen(Entity<ScpRadioComponent> ent, ref ListenEvent args)
     {
-        var channel = PrototypeManager.Index(ent.Comp.ActiveChannel);
+        if (ent.Comp.ActiveChannel is not { } activeChannel)
+            return;
+
+        var channel = PrototypeManager.Index(activeChannel);
         _radio.SendRadioMessage(args.Source, args.Message, channel, ent);
         _audio.PlayEntity(ent.Comp.SendSound, args.Source, ent);
 
@@ -67,6 +65,9 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
             args.Cancel();
 
         if (!ent.Comp.MicrophoneEnabled)
+            args.Cancel();
+
+        if (ent.Comp.ActiveChannel == null)
             args.Cancel();
 
         if (HasComp<EmpDisabledComponent>(ent))
@@ -105,6 +106,20 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
         if (HasComp<EmpDisabledComponent>(ent))
             args.Cancelled = true;
+
+        if (args.Cancelled)
+            return;
+
+        if (HasHeadsetForChannel(ent, args.Channel.ID))
+            args.Cancelled = true;
+    }
+
+    protected override void OnEncryptionChannelsChanged(Entity<ScpRadioComponent> ent, ref EncryptionChannelsChangedEvent args)
+    {
+        base.OnEncryptionChannelsChanged(ent, ref args);
+
+        UpdateMicrophone(ent);
+        UpdateSpeaker(ent);
     }
 
     protected override void ToggleMicrophone(Entity<ScpRadioComponent> ent, EntityUid user)
@@ -182,7 +197,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         var message = Loc.GetString("scp-radio-toggle-message", ("name", Name(ent)), ("value", ent.Comp.Enabled));
 
         _popup.PopupEntity(message, ent, user.Value);
-        _ambientSound.SetAmbience(ent, value);
+        UpdateAmbience(ent);
         _audio.PlayEntity(ent.Comp.ToggleSound, user.Value, ent);
 
         UpdateMicrophone(ent);
@@ -191,7 +206,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
     private void UpdateMicrophone(Entity<ScpRadioComponent> ent)
     {
-        if (ent.Comp.MicrophoneEnabled)
+        if (ent.Comp.MicrophoneEnabled && ent.Comp.ActiveChannel != null)
             EnsureComp<ActiveListenerComponent>(ent).Range = ent.Comp.ListenRange;
         else
             RemCompDeferred<ActiveListenerComponent>(ent);
@@ -199,7 +214,7 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
     private void UpdateSpeaker(Entity<ScpRadioComponent> ent)
     {
-        if (ent.Comp.Enabled)
+        if (ent.Comp.Enabled && ent.Comp.Channels.Count > 0)
             EnsureComp<ActiveRadioComponent>(ent).Channels = ent.Comp.Channels.ToHashSet();
         else
             RemCompDeferred<ActiveRadioComponent>(ent);
@@ -220,6 +235,18 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
         args.Disabled = true;
     }
 
+    private bool HasHeadsetForChannel(Entity<ScpRadioComponent> ent, ProtoId<RadioChannelPrototype> channel)
+    {
+        if (!TryGetUser(ent, out var user))
+            return false;
+
+        if (!TryComp<WearingHeadsetComponent>(user, out var wearingHeadset))
+            return false;
+
+        return TryComp<EncryptionKeyHolderComponent>(wearingHeadset.Headset, out var keyHolder)
+               && keyHolder.Channels.Contains(channel);
+    }
+
     private EntityUid GetUser(EntityUid radio)
     {
         var user = Transform(radio).ParentUid;
@@ -231,8 +258,14 @@ public sealed class ScpRadioSystem : SharedScpRadioSystem
 
         // Вдруг, по какой-то случайности, ParentUid будет не существовать вообще.
         if (!Exists(user))
-            _sawmill.Error("Found non-existing user while toggling radio");
+            Log.Error("Found non-existing user while toggling radio");
 
         return user;
+    }
+
+    private bool TryGetUser(Entity<ScpRadioComponent> ent, out EntityUid user)
+    {
+        user = GetUser(ent);
+        return Exists(user);
     }
 }

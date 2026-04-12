@@ -1,0 +1,41 @@
+﻿- type: entity
+  id: Scp124
+  parent: HandheldSoil
+  name: soil bag
+  description: A heavy bag of soil marked with an "SCP-124" stamp.
+  suffix: SCP-124
+  components:
+  - type: Sprite
+    sprite: _Scp/Objects/Scp/scp-124.rsi
+    state: item
+  - type: Scp
+    class: Safe
+  - type: Item
+    size: Normal
+  - type: Soil
+    spawnPrototype: Scp124Soil
+
+- type: entity
+  id: Scp124Soil
+  parent: 
+  - hydroponicsSoil
+  - BaseItemScp
+  suffix: SCP-124
+  components:
+  - type: SolutionRegeneration
+    solution: soil
+    generated:
+      reagents:
+      - ReagentId: Water
+        Quantity: 5
+      - ReagentId: Nutriment
+        Quantity: 5
+      - ReagentId: Vitamin
+        Quantity: 5
+      - ReagentId: Omnizine
+        Quantity: 1
+  - type: Scp
+    class: Safe
+  - type: GuideHelp
+    guides:
+    - ScpResearch
