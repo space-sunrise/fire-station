@@ -449,7 +449,7 @@
   id: BountyLaserGun
   reward: 9600
   description: scp-bounty-description-lasergun
-  idPrefix: IV
+  idPrefix: MTF
   entries:
   - name: scp-bounty-item-lasergun
     amount: 6
