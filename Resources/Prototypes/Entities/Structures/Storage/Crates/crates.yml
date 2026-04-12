@@ -4,9 +4,9 @@
   name: crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/generic.rsi
+    sprite: _Scp/Structures/Storage/Crates/generic.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/generic.rsi
+    sprite: _Scp/Structures/Storage/Crates/generic.rsi # Fire edit
   - type: Reflect
     reflects:
     - Energy
@@ -23,9 +23,9 @@
   name: plastic crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/plastic.rsi
+    sprite: _Scp/Structures/Storage/Crates/plastic.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/plastic.rsi
+    sprite: _Scp/Structures/Storage/Crates/plastic.rsi # Fire edit
   - type: Construction
     graph: CratePlastic
     node: crateplastic
@@ -42,9 +42,9 @@
   name: freezer
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/freezer.rsi
+    sprite: _Scp/Structures/Storage/Crates/freezer.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/freezer.rsi
+    sprite: _Scp/Structures/Storage/Crates/freezer.rsi # Fire edit
   - type: AntiRottingContainer
   - type: ExplosionResistance
     damageCoefficient: 0.50
@@ -62,9 +62,9 @@
   name: hydroponics crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/hydroponics.rsi
+    sprite: _Scp/Structures/Storage/Crates/hydroponics.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/hydroponics.rsi
+    sprite: _Scp/Structures/Storage/Crates/hydroponics.rsi # Fire edit
 
 - type: entity
   parent: CratePlastic
@@ -72,9 +72,9 @@
   name: medical crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/medical.rsi
+    sprite: _Scp/Structures/Storage/Crates/medical.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/medical.rsi
+    sprite: _Scp/Structures/Storage/Crates/medical.rsi # Fire edit
 
 - type: entity
   parent: CrateGenericSteel
@@ -83,9 +83,9 @@
   description: Is not actually lead lined. Do not store your plutonium in this.
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/radiation.rsi
+    sprite: _Scp/Structures/Storage/Crates/radiation.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/radiation.rsi
+    sprite: _Scp/Structures/Storage/Crates/radiation.rsi # Fire edit
 
 - type: entity
   parent: CratePlastic
@@ -93,9 +93,9 @@
   name: oxygen crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/o2.rsi
+    sprite: _Scp/Structures/Storage/Crates/o2.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/o2.rsi
+    sprite: _Scp/Structures/Storage/Crates/o2.rsi # Fire edit
 
 - type: entity
   parent: CrateGenericSteel
@@ -103,9 +103,9 @@
   name: electrical crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/electrical.rsi
+    sprite: _Scp/Structures/Storage/Crates/electrical.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/electrical.rsi
+    sprite: _Scp/Structures/Storage/Crates/electrical.rsi # Fire edit
 
 - type: entity
   parent: CrateGenericSteel
@@ -113,9 +113,9 @@
   name: engineering crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/engineering.rsi
+    sprite: _Scp/Structures/Storage/Crates/engineering.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/engineering.rsi
+    sprite: _Scp/Structures/Storage/Crates/engineering.rsi # Fire edit
 
 - type: entity
   parent: CrateGenericSteel
@@ -123,9 +123,9 @@
   name: science crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/science.rsi
+    sprite: _Scp/Structures/Storage/Crates/science.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/science.rsi
+    sprite: _Scp/Structures/Storage/Crates/science.rsi # Fire edit
 
 - type: entity
   parent: CrateGenericSteel
@@ -133,9 +133,9 @@
   name: surgery crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/surgery.rsi
+    sprite: _Scp/Structures/Storage/Crates/surgery.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/surgery.rsi
+    sprite: _Scp/Structures/Storage/Crates/surgery.rsi # Fire edit
 
 - type: entity
   parent: CrateGeneric
@@ -198,9 +198,9 @@
   name: secgear crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/sec_gear.rsi
+    sprite: _Scp/Structures/Storage/Crates/sec_gear.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/sec_gear.rsi
+    sprite: _Scp/Structures/Storage/Crates/sec_gear.rsi # Fire edit
   - type: AccessReader
     access: [["Security"]]
 
@@ -210,9 +210,9 @@
   name: secure engineering crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/engicrate_secure.rsi
+    sprite: _Scp/Structures/Storage/Crates/engicrate_secure.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/engicrate_secure.rsi
+    sprite: _Scp/Structures/Storage/Crates/engicrate_secure.rsi # Fire edit
   - type: AccessReader
     access: [["Engineering"]]
     # Sunrise-start
@@ -228,9 +228,9 @@
   name: secure medical crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/medicalcrate_secure.rsi
+    sprite: _Scp/Structures/Storage/Crates/medicalcrate_secure.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/medicalcrate_secure.rsi
+    sprite: _Scp/Structures/Storage/Crates/medicalcrate_secure.rsi # Fire edit
   - type: AccessReader
     access: [["Medical"]]
     # Sunrise-start
@@ -246,9 +246,9 @@
   name: secure chemistry crate
   components:
     - type: Icon
-      sprite: Structures/Storage/Crates/chemcrate_secure.rsi
+      sprite: _Scp/Structures/Storage/Crates/chemcrate_secure.rsi # Fire edit
     - type: Sprite
-      sprite: Structures/Storage/Crates/chemcrate_secure.rsi
+      sprite: _Scp/Structures/Storage/Crates/chemcrate_secure.rsi # Fire edit
     - type: AccessReader
       access: [["Laboratory"]] # Fire edit
       # Sunrise-start
@@ -264,9 +264,9 @@
   name: private crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/privatecrate_secure.rsi
+    sprite: _Scp/Structures/Storage/Crates/privatecrate_secure.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/privatecrate_secure.rsi
+    sprite: _Scp/Structures/Storage/Crates/privatecrate_secure.rsi # Fire edit
 
 - type: entity
   parent: CrateBaseSecure
@@ -274,9 +274,9 @@
   name: secure science crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/scicrate_secure.rsi
+    sprite: _Scp/Structures/Storage/Crates/scicrate_secure.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/scicrate_secure.rsi
+    sprite: _Scp/Structures/Storage/Crates/scicrate_secure.rsi # Fire edit
   - type: AccessReader
     access: [["Research"]]
     # Sunrise-start
@@ -292,9 +292,9 @@
   name: plasma crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/plasma.rsi
+    sprite: _Scp/Structures/Storage/Crates/plasma.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/plasma.rsi
+    sprite: _Scp/Structures/Storage/Crates/plasma.rsi # Fire edit
   - type: AccessReader
     access: [["Engineering"], ["Research"], ["Laboratory"]] # Fire edit
     # Sunrise-start
@@ -310,9 +310,9 @@
   name: secure crate
   components:
     - type: Icon
-      sprite: Structures/Storage/Crates/secure.rsi
+      sprite: _Scp/Structures/Storage/Crates/secure.rsi # Fire edit
     - type: Sprite
-      sprite: Structures/Storage/Crates/secure.rsi
+      sprite: _Scp/Structures/Storage/Crates/secure.rsi # Fire edit
 
 - type: entity
   parent: CrateBaseSecure
@@ -320,9 +320,9 @@
   name: secure hydroponics crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/hydro_secure.rsi
+    sprite: _Scp/Structures/Storage/Crates/hydro_secure.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/hydro_secure.rsi
+    sprite: _Scp/Structures/Storage/Crates/hydro_secure.rsi # Fire edit
   - type: AccessReader
     access: [["Service"]] # Fire edit
     # Sunrise-start
@@ -338,9 +338,9 @@
   name: secure weapon crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/weapon.rsi
+    sprite: _Scp/Structures/Storage/Crates/weapon.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/weapon.rsi
+    sprite: _Scp/Structures/Storage/Crates/weapon.rsi # Fire edit
   - type: AccessReader
     access: [["Armory"]]
   - type: Pierceable # Sunrise-edit - прострел ящиков
@@ -355,7 +355,7 @@
   description: An armory access locked crate for storing contraband confiscated from suspects or prisoners.
   components:
   - type: Sprite
-    sprite: Structures/Storage/Crates/sec_gear.rsi
+    sprite: _Scp/Structures/Storage/Crates/sec_gear.rsi # Fire edit
   - type: AccessReader
     access: [["Armory"]]
 
@@ -365,9 +365,9 @@
   name: command crate
   components:
   - type: Icon
-    sprite: Structures/Storage/Crates/command.rsi
+    sprite: _Scp/Structures/Storage/Crates/command.rsi # Fire edit
   - type: Sprite
-    sprite: Structures/Storage/Crates/command.rsi
+    sprite: _Scp/Structures/Storage/Crates/command.rsi # Fire edit
   - type: AccessReader
     access: [["Administration"]] # Fire edit
     # Sunrise-start
@@ -736,7 +736,7 @@
   description: A box overflowing with fun.
   components:
   - type: Sprite
-    sprite: Structures/Storage/Crates/toybox.rsi
+    sprite: _Scp/Structures/Storage/Crates/toybox.rsi # Fire edit
     layers:
     - state: crate
       map: ["enum.StorageVisualLayers.Base"]
@@ -748,7 +748,7 @@
     - state: paper
       map: ["enum.PaperLabelVisuals.Layer"]
   - type: Icon
-    sprite: Structures/Storage/Crates/toybox.rsi
+    sprite: _Scp/Structures/Storage/Crates/toybox.rsi # Fire edit
     state: crate_icon
 
 - type: entity

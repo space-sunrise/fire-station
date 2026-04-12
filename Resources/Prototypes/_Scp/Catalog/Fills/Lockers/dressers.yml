@@ -3,42 +3,116 @@
   parent:
   - ScpBaseDresserComponents
   - DresserCaptainFilled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingHeadHatDirector
+        - id: ClothingOuterCoatDirectorTrench
+        - id: ClothingUniformJumpsuitDirector
+        - id: ClothingHandsGlovesColorWhite
+        - id: ClothingShoesBootsLaceup
 
 - type: entity
   id: ScpDresserChiefTechnicalSpecialistFilled
   parent:
   - ScpBaseDresserComponents
   - DresserChiefEngineerFilled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingUniformJumpsuitChiefEngineerTurtle
+        - id: ClothingUniformJumpskirtChiefEngineerTurtle
+        - id: ClothingHeadHatBeretEngineering
+        - id: ClothingOuterWinterCE
 
 - type: entity
   id: ScpDresserHeadOfMedicalSectorFilled
   parent:
   - ScpBaseDresserComponents
   - DresserChiefMedicalOfficerFilled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingOuterCoatLabCmo
+        - id: ClothingUniformJumpsuitCMOTurtle
+        - id: ClothingUniformJumpskirtCMOTurtle
+        - id: ClothingHeadHatBeretCmo
+        - id: ClothingHeadMirror
+        - id: ClothingEyesGlasses
+        - id: ClothingOuterWinterCMO
 
 - type: entity
   id: ScpDresserPersonnelOfficerFilled
   parent:
   - ScpBaseDresserComponents
   - DresserHeadOfPersonnelFilled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingHeadHatHopcap
+        - id: ClothingOuterWinterHoP
+        - id: ClothingEyesGlasses
 
 - type: entity
   id: ScpDresserSecurityCommanderFilled
   parent:
   - ScpBaseDresserComponents
   - DresserHeadOfSecurityFilled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingHeadHatBeretHoS
+        - id: ClothingHeadHatHoshat
+        - id: ClothingMaskNeckGaiter
+        - id: ClothingUniformJumpskirtHoSAlt
+        - id: ClothingUniformJumpsuitHoSAlt
+        - id: ClothingUniformJumpskirtHosFormal
+        - id: ClothingUniformJumpsuitHosFormal
+        - id: ClothingOuterWinterHoS
+        - id: ClothingHoSMantleCoat
 
 - type: entity
   id: ScpDresserQuarterMasterFilled
   parent:
   - ScpBaseDresserComponents
   - DresserQuarterMasterFilled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingHeadHatBeretQM
+        - id: ClothingUniformJumpsuitQMFormal
+        - id: ClothingUniformJumpsuitQMTurtleneck
+        - id: ClothingUniformJumpskirtQMTurtleneck
+        - id: ClothingHandsGlovesColorBrown
+        - id: ClothingOuterWinterQM
 
 - type: entity
   id: ScpDresserScientificServiceDirectorFilled
   parent:
   - ScpBaseDresserComponents
   - DresserResearchDirectorFilled
+  components:
+  - type: EntityTableContainerFill
+    containers:
+      storagebase: !type:AllSelector
+        children:
+        - id: ClothingHeadHatBeretRND
+        - id: ClothingHandsGlovesColorPurple
+        - id: ClothingEyesGlasses
+        - id: ClothingOuterWinterRD
+        - id: ClothingOuterCoatRD
 
 - type: entity
   id: ScpDresserSquadLeaderFilled

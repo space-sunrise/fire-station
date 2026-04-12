@@ -1,0 +1,13 @@
+﻿- type: soundCollection
+  id: ScpLobbyMusic
+  files:
+  - /Audio/_Scp/Themes/Melancholy.ogg
+  - /Audio/_Scp/Lobby/EtRatioPrincipalis.ogg
+  - /Audio/_Scp/Lobby/Furnace.ogg
+  - /Audio/_Scp/Lobby/Lichen.ogg
+  - /Audio/_Scp/Lobby/NihilEsSimplex.ogg
+  - /Audio/_Scp/Lobby/Observer.ogg
+  - /Audio/_Scp/Lobby/PortamAdInferno.ogg
+  - /Audio/_Scp/Lobby/Vantage.ogg
+  - /Audio/_Scp/Lobby/Vapour.ogg
+  - /Audio/_Scp/Lobby/VocesIgnotas.ogg

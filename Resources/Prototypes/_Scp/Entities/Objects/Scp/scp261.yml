@@ -81,7 +81,7 @@
   - type: GuideHelp
     guides:
     - ScpResearch
-          
+
 - type: entity
   id: Scp261Spawner
   categories: [ HideSpawnMenu ]
@@ -90,6 +90,7 @@
     rarePrototypes:
     - Scp330CandyRed
     - Scp207Bottle
+    - DrinkChangelingStingCan
     rareChance: 0.03
     prototypes:
     - FoodSnackSwirlLollipop
