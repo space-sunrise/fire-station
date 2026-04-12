@@ -5,9 +5,9 @@
   description: A raw material.
   components:
   - type: Sprite
-    sprite: Objects/Materials/materials.rsi
+    sprite: _Scp/Objects/Materials/materials.rsi # Fire edit
   - type: Item
-    sprite: Objects/Materials/materials.rsi
+    sprite: _Scp/Objects/Materials/materials.rsi # Fire edit
     size: Normal
   - type: Tag
     tags:
