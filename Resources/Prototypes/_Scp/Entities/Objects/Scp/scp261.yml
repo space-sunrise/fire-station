@@ -123,6 +123,5 @@
     - FoodBreadMeatSpider
     - FoodBurgerHuman
     - DrinkSpaceGlue
-    - DrinkHolyWaterFull
     - DrinkUnholyWaterFull
     chance: 1
