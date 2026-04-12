@@ -3,8 +3,8 @@
   "license": "CLA",
   "copyright": "FireStation",
   "size": {
-    "x": 16,
-    "y": 16
+    "x": 32,
+    "y": 32
   },
   "states": [
     {
