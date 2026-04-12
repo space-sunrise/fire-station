@@ -13,6 +13,9 @@ public sealed partial class AnomalyDollarComponent : Component
     [DataField, AutoNetworkedField]
     public TimeSpan CloneDelay = TimeSpan.FromMinutes(15);
 
+    /// <summary>
+    /// Шанс клонирования купюры.
+    /// </summary>
     [DataField, AutoNetworkedField]
     public float CloneChance = 0.4f;
 
@@ -23,9 +26,9 @@ public sealed partial class AnomalyDollarComponent : Component
     public float ImpulseStrength = 100.0f;
 
     /// <summary>
-    /// Лимит копий на всей карте для этой купюры.
+    /// Лимит копий по всему миру для этой купюры.
     /// </summary>
-    [ViewVariables]
+    [DataField, AutoNetworkedField]
     public int CopiesLimit = 10;
 
     /// <summary>

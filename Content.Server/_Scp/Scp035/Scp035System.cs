@@ -81,20 +81,21 @@ public sealed class Scp035System : SharedScp035System
 
         if (_mind.TryGetMind(args.Wearer, out var mindId, out var mind))
         {
-            _ghost.OnGhostAttempt(mindId, false, false, false, mind);
-
-            var settings = new GhostRoleRaffleSettings()
+            if (_ghost.OnGhostAttempt(mindId, false, false, false, mind)) ;
             {
-                InitialDuration = 10,
-                JoinExtendsDurationBy = 10,
-                MaxDuration = 30
-            };
+                var settings = new GhostRoleRaffleSettings()
+                {
+                    InitialDuration = 10,
+                    JoinExtendsDurationBy = 10,
+                    MaxDuration = 30
+                };
 
-            EnsureComp<GhostTakeoverAvailableComponent>(ent.Owner);
-            var ghostRoleComp = EnsureComp<GhostRoleComponent>(ent.Owner);
-            ghostRoleComp.RoleName = Loc.GetString("scp-035-ghost-role-name");
-            ghostRoleComp.RoleDescription = Loc.GetString("scp-035-ghost-role-desc");
-            ghostRoleComp.RaffleConfig = new GhostRoleRaffleConfig(settings);
+                EnsureComp<GhostTakeoverAvailableComponent>(ent.Owner);
+                var ghostRoleComp = EnsureComp<GhostRoleComponent>(ent.Owner);
+                ghostRoleComp.RoleName = Loc.GetString("scp-035-ghost-role-name");
+                ghostRoleComp.RoleDescription = Loc.GetString("scp-035-ghost-role-desc");
+                ghostRoleComp.RaffleConfig = new GhostRoleRaffleConfig(settings);
+            }
         }
     }
 
@@ -167,7 +168,7 @@ public sealed class Scp035System : SharedScp035System
 
         if (entity.Comp.Messages.Count > 0)
         {
-            var message = _random.Pick(entity.Comp.Messages);
+            var message = Loc.GetString(_random.Pick(entity.Comp.Messages));
             _chatSystem.TrySendInGameICMessage(entity, message, InGameICChatType.Speak, ChatTransmitRange.Normal, ignoreActionBlocker: true);
         }
 

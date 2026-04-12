@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
+using Content.Shared.NPC.Prototypes;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -80,7 +81,7 @@ public sealed partial class Scp035MaskComponent : Component
 
     [AutoNetworkedField]
     [DataField]
-    public EntProtoId NewUserFaction = "SimpleHostile";
+    public ProtoId<NpcFactionPrototype> NewUserFaction = "SimpleHostile";
 
     [AutoNetworkedField]
     [DataField]

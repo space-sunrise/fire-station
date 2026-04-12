@@ -17,6 +17,7 @@ public sealed partial class AnomalyDollarSystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ExplosionSystem _explosion = default!;
     [Dependency] private readonly TransformSystem _transform = default!;
+    private readonly List<(string Proto, EntityCoordinates Coords, float Strength, AnomalyDollarComponent Comp, EntityUid Uid)> _readyToCloneBuffer = new();
 
     public override void Initialize()
     {
@@ -69,15 +70,15 @@ public sealed partial class AnomalyDollarSystem : EntitySystem
         base.Update(frameTime);
 
         var totalCount = 0;
-        var allQuery = EntityQueryEnumerator<AnomalyDollarComponent>();
-        while (allQuery.MoveNext(out _, out _))
+        var countQuery = EntityQueryEnumerator<AnomalyDollarComponent>();
+        while (countQuery.MoveNext(out _, out _))
         {
             totalCount++;
         }
 
-        var query = EntityQueryEnumerator<AnomalyDollarComponent>();
-        var readyToClone = new List<(string Proto, EntityCoordinates Coords, float Strength, AnomalyDollarComponent Comp, EntityUid Uid)>();
+        _readyToCloneBuffer.Clear();
 
+        var query = EntityQueryEnumerator<AnomalyDollarComponent>();
         while (query.MoveNext(out var uid, out var component))
         {
             if (_timing.CurTime >= component.NextCloneTime)
@@ -85,22 +86,21 @@ public sealed partial class AnomalyDollarSystem : EntitySystem
                 var proto = Prototype(uid)?.ID;
                 if (proto != null)
                 {
-                    readyToClone.Add((proto, Transform(uid).Coordinates, component.ImpulseStrength, component, uid));
+                    _readyToCloneBuffer.Add((proto, Transform(uid).Coordinates, component.ImpulseStrength, component, uid));
                 }
             }
         }
 
-        for (var i = 0; i < readyToClone.Count; i++)
+        foreach (var item in _readyToCloneBuffer)
         {
-            var (proto, coords, strength, comp, uid) = readyToClone[i];
+            var (proto, coords, strength, comp, uid) = item;
 
             if (totalCount < comp.CopiesLimit)
             {
-                if (_random.Prob(comp.CloneChance)) // проверка шанса спавна
+                if (_random.Prob(comp.CloneChance))
                 {
                     var newEnt = Spawn(proto, coords);
                     ThrowRand(newEnt, strength);
-
                     totalCount++;
                 }
             }
