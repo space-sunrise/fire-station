@@ -399,7 +399,7 @@
   id: BountyOrgans
   reward: 2000
   description: scp-bounty-description-organs
-  idPrefix: UNTH
+  idPrefix: DZ
   entries:
   - name: scp-bounty-item-organs
     amount: 8
@@ -422,7 +422,6 @@
   id: BountyWarmCloth
   reward: 2000
   description: scp-bounty-description-warm-cloth
-  idPrefix: UNTH
   entries:
   - name: scp-bounty-item-warm-cloth
     amount: 8
@@ -439,7 +438,6 @@
   id: BountyBattery
   reward: 15000
   description: scp-bounty-description-battery
-  idPrefix: UNTH
   entries:
   - name: scp-bounty-item-battery
     amount: 15
@@ -466,7 +464,6 @@
   id: BountyFood
   reward: 4000
   description: scp-bounty-description-food
-  idPrefix: UNTH
   entries:
   - name: scp-bounty-item-food
     amount: 30
@@ -667,3 +664,145 @@
     whitelist:
       components:
       - Flash
+
+# SCP Items
+- type: cargoBounty
+  id: BountyScp330Candy
+  reward: 9000
+  description: scp-bounty-description-scp-330-candy
+  idPrefix: SCI
+  entries:
+  - name: scp-bounty-item-scp-330-candy
+    amount: 5
+    whitelist:
+      tags:
+      - Scp330Candy
+
+- type: cargoBounty
+  id: BountyPlushieScp999
+  reward: 2500
+  description: scp-bounty-description-plushie-scp-999
+  entries:
+  - name: scp-bounty-item-plushie-scp-999
+    amount: 1
+    whitelist:
+      tags:
+      - PlushieScp999
+
+- type: cargoBounty
+  id: BountyScp999Jelly
+  reward: 3500
+  description: scp-bounty-description-jelly-scp-999
+  idPrefix: SCI
+  entries:
+  - name: scp-bounty-item-jelly-scp-999
+    amount: 1
+    whitelist:
+      tags:
+      - Scp999jelly
+
+- type: cargoBounty
+  id: BountyScp173PaintBall
+  reward: 7000
+  description: scp-bounty-description-scp-173-paint-ball
+  idPrefix: SCI
+  entries:
+  - name: scp-bounty-item-scp-173-paint-ball
+    amount: 1
+    whitelist:
+      tags:
+      - Scp173PaintBall
+
+- type: cargoBounty
+  id: BountyScp173Shard
+  reward: 6500
+  description: scp-bounty-description-scp-173-shard
+  idPrefix: SCI
+  entries:
+  - name: scp-bounty-item-scp-173-shard
+    amount: 1
+    whitelist:
+      tags:
+      - Scp173Shard
+
+- type: cargoBounty
+  id: BountyScp096PhotoDeveloped
+  reward: 4000
+  description: scp-bounty-description-scp-096-photo
+  idPrefix: SCI
+  entries:
+  - name: scp-bounty-item-scp-096-photo
+    amount: 1
+    whitelist:
+      components:
+      - Scp096Photo
+
+- type: cargoBounty
+  id: BountyEyeDroplets
+  reward: 3500
+  description: scp-bounty-description-scp-173-eye-droplets
+  idPrefix: MTF
+  entries:
+  - name: scp-bounty-item-scp-173-eye-droplets
+    amount: 10
+    whitelist:
+      components:
+      - ReducedBlinking
+
+- type: cargoBounty
+  id: BountyReinforcedMaskScp096
+  reward: 4000
+  description: scp-bounty-description-scp-096-reinforced-mask
+  entries:
+  - name: scp-bounty-item-scp-096-reinforced-mask
+    amount: 15
+    whitelist:
+      tags:
+      - ReinforcedMaskScp096
+
+- type: cargoBounty
+  id: BountyClothingOuterAntiTeleportation
+  reward: 6000
+  description: scp-bounty-description-scp-106-anti-teleportation
+  idPrefix: MTF
+  entries:
+  - name: scp-bounty-item-scp-106-anti-teleportation
+    amount: 4
+    whitelist:
+      tags:
+      - ClothingOuterAntiTeleportation
+
+- type: cargoBounty
+  id: BountyClothingHeadHelmetAiPowered
+  reward: 5000
+  description: scp-bounty-description-scp-096-helmet-ai
+  entries:
+  - name: scp-bounty-item-scp-096-helmet-ai
+    amount: 4
+    whitelist:
+      tags:
+      - ClothingHeadHelmetAiPowered
+
+- type: cargoBounty
+  id: BountyClothingShoesSilent
+  reward: 4500
+  description: scp-bounty-description-scp-939-shoes-silent
+  idPrefix: MTF
+  entries:
+  - name: scp-bounty-item-scp-939-shoes-silent
+    amount: 4
+    whitelist:
+      tags:
+      - ClothingShoesSilent
+
+- type: cargoBounty
+  id: BountyHeadAwareness
+  reward: 1500
+  description: scp-bounty-description-scp-head-awareness
+  idPrefix: MTF
+  entries:
+  - name: scp-bounty-item-scp-head-awareness
+    amount: 4
+    whitelist:
+      tags:
+      - ClothingHeadAwareness
