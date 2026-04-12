@@ -1,6 +1,4 @@
 using Content.Shared.Humanoid;
-using Content.Shared.Interaction;
-using Content.Shared.Interaction.Events;
 
 namespace Content.Shared._Scp.Scp933;
 
@@ -17,20 +15,6 @@ public sealed class TapedFaceSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<TapedFaceComponent, ComponentStartup>(OnTapedStartup);
         SubscribeLocalEvent<TapedFaceComponent, ComponentShutdown>(OnTapedShutdown);
-        SubscribeLocalEvent<DuctTapeComponent, InteractUsingEvent>(OnTapeUsed);
-    }
-
-    /// <summary>
-    /// Использование ленты на цель.
-    /// </summary>
-    private void OnTapeUsed(Entity<DuctTapeComponent> tape, ref InteractUsingEvent args)
-    {
-        if (args.Handled)
-            return;
-
-        // Применить ленту на цель
-        ApplyTape(args.Target);
-        args.Handled = true;
     }
 
     /// <summary>
