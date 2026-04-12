@@ -14,7 +14,6 @@ using Content.Shared._Scp.Scp035;
 using Content.Shared.Chat;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Clothing;
-using Content.Shared.Damage;
 using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Fluids;
@@ -36,10 +35,10 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using Content.Shared.Whitelist;
 
 namespace Content.Server._Scp.Scp035;
 
-// TODO: АНХАРДКОД
 public sealed class Scp035System : SharedScp035System
 {
     [Dependency] private readonly HTNSystem _htn = default!;
@@ -59,6 +58,7 @@ public sealed class Scp035System : SharedScp035System
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly MindSystem _mind = default!;
+    [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
 
     public override void Initialize()
     {
@@ -108,7 +108,7 @@ public sealed class Scp035System : SharedScp035System
             return;
         }
 
-        var servant = Spawn("MobServant035", Transform(ent).Coordinates);
+        var servant = Spawn(ent.Comp.ServantsProto, Transform(ent).Coordinates);
         var comp = EnsureComp<Scp035ServantComponent>(servant);
         comp.User = ent;
         Dirty(servant, comp);
@@ -164,17 +164,10 @@ public sealed class Scp035System : SharedScp035System
         if (curTime < entity.Comp.NextMessaging)
             return;
 
-        List<string> messages = new()
-        {
-            Loc.GetString("scp-035-message-one"),
-            Loc.GetString("scp-035-message-two"),
-            Loc.GetString("scp-035-message-three")
-        };
-
-        var message = _random.Pick(messages);
+        var message = _random.Pick(entity.Comp.Messages);
         _chatSystem.TrySendInGameICMessage(entity, message, InGameICChatType.Speak, ChatTransmitRange.Normal, ignoreActionBlocker: true);
 
-        entity.Comp.NextMessaging = curTime + TimeSpan.FromSeconds(60);
+        entity.Comp.NextMessaging = curTime + entity.Comp.NextMessageDelay;
     }
 
     private void HandleLiquidSpawning(Entity<Scp035MaskComponent> entity)
@@ -186,32 +179,32 @@ public sealed class Scp035System : SharedScp035System
         var coords = Transform(entity).Coordinates;
 
         var tempSol = new Solution();
-        tempSol.AddReagent("PoisonWine", 25);
+        tempSol.AddReagent(entity.Comp.ReagentName, 25);
         _puddle.TrySpillAt(coords, tempSol, out _);
 
         FixedPoint2 total = 0;
-        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, 5).ToList();
+        var puddles = _lookup.GetEntitiesInRange<PuddleComponent>(coords, entity.Comp.ReagentRangeAvailable).ToList();
         foreach (var puddle in puddles)
         {
             if (!puddle.Comp.Solution.HasValue)
                 continue;
 
             var allReagents = puddle.Comp.Solution.Value.Comp.Solution.GetReagentPrototypes(_prototypeManager);
-            total = allReagents.Where(reagent => reagent.Key.ID == "PoisonWine").Aggregate(total, (current, reagent) => current + reagent.Value);
+            total = allReagents.Where(reagent => reagent.Key.ID == entity.Comp.ReagentName).Aggregate(total, (current, reagent) => current + reagent.Value);
         }
 
-        if (total >= 200)
+        if (total >= entity.Comp.ReagentDestructLevel)
         {
             var xform = Transform(entity);
             if (!TryComp<MapGridComponent>(xform.GridUid, out var map))
                 return;
             var tiles = map.GetTilesIntersecting(Box2.CenteredAround(_transformSystem.GetWorldPosition(xform),
-                new Vector2(3 * 2, 3)))
+                entity.Comp.CorrosionBox))
                 .ToArray();
 
             _random.Shuffle(tiles);
 
-            for (var i = 0; i < 10; i++)
+            for (var i = 0; i < entity.Comp.MaxTilesCorrosionPry; i++)
             {
                 if (!tiles.TryGetValue(i, out var value))
                     continue;
@@ -219,7 +212,7 @@ public sealed class Scp035System : SharedScp035System
                 _tile.PryTile(value);
             }
 
-            var lookup = _lookup.GetEntitiesInRange(entity, 3, LookupFlags.Approximate | LookupFlags.Static);
+            var lookup = _lookup.GetEntitiesInRange(entity, entity.Comp.EntityCorrosionRange, LookupFlags.Approximate | LookupFlags.Static);
             var tags = GetEntityQuery<TagComponent>();
             var entityStorage = GetEntityQuery<EntityStorageComponent>();
             var items = GetEntityQuery<ItemComponent>();
@@ -228,15 +221,8 @@ public sealed class Scp035System : SharedScp035System
             foreach (var ent in lookup)
             {
                 // break windows/walls
-                if (tags.HasComponent(ent))
-                {
-                    if (_tag.HasTag(ent, "Window") || _tag.HasTag(ent, "Wall"))
-                    {
-                        var dspec = new DamageSpecifier();
-                        dspec.DamageDict.Add("Structural", 60);
-                        _damageable.TryChangeDamage(ent, dspec, true);
-                    }
-                }
+                if (_whitelist.IsWhitelistPass(entity.Comp.TargetStructures, ent))
+                    _damageable.TryChangeDamage(ent, entity.Comp.DamageSpecif, true);
 
                 // randomly opens some lockers and such.
                 if (entityStorage.TryGetComponent(ent, out var entstorecomp))
@@ -253,6 +239,6 @@ public sealed class Scp035System : SharedScp035System
             }
         }
 
-        entity.Comp.NextLiquidSpawning = curTime + TimeSpan.FromSeconds(60);
+        entity.Comp.NextLiquidSpawning = curTime + entity.Comp.NextLiquidSpawnDelay;
     }
 }

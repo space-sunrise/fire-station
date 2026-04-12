@@ -1,4 +1,5 @@
 ﻿using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp035;
 
@@ -15,7 +16,23 @@ public sealed partial class Scp035MaskUserComponent : Component
 
     [AutoNetworkedField]
     [ViewVariables(VVAccess.ReadWrite)]
+    public EntProtoId ServantsProto = "MobServant035";
+
+    [AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadWrite)]
     public int MaxServants = 3;
+
+    [AutoNetworkedField]
+    [ViewVariables(VVAccess.ReadOnly)]
+    public EntProtoId DeadSpawnProto = "Ash";
+
+    [AutoNetworkedField]
+    [DataField]
+    public float MeleeDamageModificator = 4;
+
+    [AutoNetworkedField]
+    [DataField]
+    public TimeSpan ActionStunDuration = TimeSpan.FromSeconds(10);
 
     [AutoNetworkedField]
     [ViewVariables(VVAccess.ReadWrite)]

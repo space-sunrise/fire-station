@@ -11,3 +11,4 @@ scp-035-max-servants = Достигнуто максимальное число!
 scp-035-reject-you = Маска отвергает вас!
 scp-035-reject-target = Работает только на людей.
 scp-035-stun-effect = Ваше тело онемело!
+scp-035-paralyze-effect = Вы ошеломлены!
