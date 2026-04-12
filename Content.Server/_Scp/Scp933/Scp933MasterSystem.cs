@@ -211,9 +211,9 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
             return false;
         }
 
-        if (HasComp<Scp933ControlledComponent>(victim))
+        if (HasComp<Scp933FaceTornComponent>(victim))
         {
-            _popup.PopupEntity(Loc.GetString("scp933-tape-already-slave"), master, master);
+            _popup.PopupEntity(Loc.GetString("scp933-tape-already-faceless"), master, master);
             return false;
         }
 
@@ -265,10 +265,10 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
 
     private bool TryRipTapePhase(EntityUid master, EntityUid victim)
     {
-        if (!TryGetScp933TapeMask(victim, out var maskUid))
+        if (!TryGetScp933TapeMask(victim, out _))
             return false;
 
-        if (!TryComp<Scp933MasterComponent>(master, out var masterComp))
+        if (!HasComp<Scp933MasterComponent>(master))
             return false;
 
         if (!_interaction.InRangeUnobstructed(master, victim, popup: true))
@@ -277,19 +277,13 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         if (HasComp<Scp933MasterComponent>(victim))
             return false;
 
-        if (masterComp.Controlled.Count >= masterComp.MaxControlled)
-        {
-            _popup.PopupEntity(Loc.GetString("scp933-dominate-cap"), master, master);
-            return false;
-        }
-
         if (!_inventory.TryUnequip(master, victim, "mask", out var removed, silent: true, force: true))
             return false;
 
         if (removed != null)
             QueueDel(removed.Value);
 
-        DominateVictim(master, victim);
+        ApplyFaceTornAfterRip(master, victim);
 
         TryStabilizeTapedVictim(victim);
 

@@ -1,3 +1,4 @@
+using System.Linq;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 using Content.Shared.Popups;
@@ -8,8 +9,7 @@ using Robust.Shared.Network;
 namespace Content.Shared._Scp.Scp933;
 
 /// <summary>
-/// Система для управления SCP-933-02 - портабщиком ленты.
-/// Управляет контролем жертв, применением ленты и поведением.
+/// SCP-933: носитель ленты и жертвы после ритуала. Жертвы — живые игроки с дебаффами, без ИИ и без «рабства».
 /// </summary>
 public abstract class SharedScp933MasterSystem : EntitySystem
 {
@@ -24,10 +24,8 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         SubscribeLocalEvent<Scp933MasterComponent, ComponentStartup>(OnMasterStartup);
         SubscribeLocalEvent<Scp933MasterComponent, ComponentShutdown>(OnMasterShutdown);
 
-        SubscribeLocalEvent<Scp933ControlledComponent, ComponentStartup>(OnControlledStartup);
-        SubscribeLocalEvent<Scp933ControlledComponent, ComponentShutdown>(OnControlledShutdown);
-
-        SubscribeLocalEvent<Scp933ControlledComponent, MobStateChangedEvent>(OnControlledMobStateChanged);
+        SubscribeLocalEvent<Scp933FaceTornComponent, ComponentShutdown>(OnFaceTornShutdown);
+        SubscribeLocalEvent<Scp933FaceTornComponent, MobStateChangedEvent>(OnFaceTornMobStateChanged);
     }
 
     private void OnMasterStartup(Entity<Scp933MasterComponent> ent, ref ComponentStartup args)
@@ -45,49 +43,33 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         if (!_net.IsServer)
             return;
 
-        // Освободить всех контролируемых
-        foreach (var controlled in ent.Comp.Controlled)
-        {
-            if (TryComp<Scp933ControlledComponent>(controlled, out var controlledComp))
-                controlledComp.Master = null;
-
-            RemComp<Scp933ControlledComponent>(controlled);
-        }
+        var victims = ent.Comp.FaceTornVictims.ToArray();
+        ent.Comp.FaceTornVictims.Clear();
+        foreach (var victim in victims)
+            RemComp<Scp933FaceTornComponent>(victim);
     }
 
-    private void OnControlledStartup(Entity<Scp933ControlledComponent> ent, ref ComponentStartup args)
+    private void OnFaceTornShutdown(Entity<Scp933FaceTornComponent> ent, ref ComponentShutdown args)
     {
         if (!_net.IsServer)
             return;
 
-        // Миньоны уже получают компоненты при контроле, ничего не делаем
-    }
-
-    private void OnControlledShutdown(Entity<Scp933ControlledComponent> ent, ref ComponentShutdown args)
-    {
-        if (!_net.IsServer)
-            return;
-
-        // Удалить muzzle компонент
         RemComp<MutedComponent>(ent);
 
-        // Удалить из списка контролируемых у мастера
-        if (ent.Comp.Master.HasValue && TryComp<Scp933MasterComponent>(ent.Comp.Master, out var master))
-        {
-            master.Controlled.Remove(ent);
-        }
+        if (ent.Comp.TornBy is { } bearer && TryComp<Scp933MasterComponent>(bearer, out var master))
+            master.FaceTornVictims.Remove(ent);
     }
 
-    private void OnControlledMobStateChanged(Entity<Scp933ControlledComponent> ent, ref MobStateChangedEvent args)
+    private void OnFaceTornMobStateChanged(Entity<Scp933FaceTornComponent> ent, ref MobStateChangedEvent args)
     {
         if (args.NewMobState != MobState.Dead)
             return;
 
-        RemComp<Scp933ControlledComponent>(ent);
+        RemComp<Scp933FaceTornComponent>(ent);
     }
 
     /// <summary>
-    /// Спрятать лицо гуманоида (SCP-933): хост и порабощённые жертвы.
+    /// Спрятать лицо гуманоида (SCP-933): носитель и жертвы после ритуала.
     /// </summary>
     public void EraseFaceFor933(EntityUid uid)
     {
@@ -106,7 +88,7 @@ public abstract class SharedScp933MasterSystem : EntitySystem
     }
 
     /// <summary>
-    /// Превратить сущность в нового носителя SCP-933-02 (отдельно от ритуала ленты).
+    /// Выдать носителю ленты после инкубации.
     /// </summary>
     public void ConvertToMaster(EntityUid victim)
     {
@@ -116,42 +98,37 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         if (HasComp<Scp933MasterComponent>(victim))
             return;
 
-        // Добавить компонент босса (лицо и попап — в OnMasterStartup).
-        var masterComp = new Scp933MasterComponent();
-        AddComp(victim, masterComp);
+        AddComp(victim, new Scp933MasterComponent());
     }
 
     /// <summary>
-    /// Поработить жертву после ритуала: без лица, немая, связь с мастером.
+    /// Финал ритуала: срыв ленты с лица — визуал без лица и немота. Управление остаётся у игрока-жертвы.
     /// </summary>
-    public void DominateVictim(EntityUid master, EntityUid victim)
+    public void ApplyFaceTornAfterRip(EntityUid tapeBearer, EntityUid victim)
     {
         if (!_net.IsServer)
             return;
 
-        if (!TryComp<Scp933MasterComponent>(master, out var masterComp))
+        if (!TryComp<Scp933MasterComponent>(tapeBearer, out var masterComp))
             return;
 
         if (!TryComp<HumanoidAppearanceComponent>(victim, out _))
             return;
 
-        if (HasComp<Scp933ControlledComponent>(victim) || HasComp<Scp933MasterComponent>(victim))
+        if (HasComp<Scp933FaceTornComponent>(victim) || HasComp<Scp933MasterComponent>(victim))
             return;
 
-        if (masterComp.Controlled.Count >= masterComp.MaxControlled)
-            return;
-
-        var controlComp = new Scp933ControlledComponent { Master = master };
-        AddComp(victim, controlComp);
+        var torn = new Scp933FaceTornComponent { TornBy = tapeBearer };
+        AddComp(victim, torn);
 
         if (!HasComp<MutedComponent>(victim))
             AddComp(victim, new MutedComponent());
 
         EraseFaceFor933(victim);
 
-        masterComp.Controlled.Add(victim);
-        Dirty(master, masterComp);
+        masterComp.FaceTornVictims.Add(victim);
+        Dirty(tapeBearer, masterComp);
 
-        _popup.PopupEntity(Loc.GetString("scp933-victim-dominated"), victim, victim, PopupType.LargeCaution);
+        _popup.PopupEntity(Loc.GetString("scp933-victim-face-torn"), victim, victim, PopupType.LargeCaution);
     }
 }
