@@ -90,6 +90,7 @@ public sealed class Scp035System : SharedScp035System
                 MaxDuration = 30
             };
 
+            EnsureComp<GhostTakeoverAvailableComponent>(ent.Owner);
             var ghostRoleComp = EnsureComp<GhostRoleComponent>(ent.Owner);
             ghostRoleComp.RoleName = Loc.GetString("scp-035-ghost-role-name");
             ghostRoleComp.RoleDescription = Loc.GetString("scp-035-ghost-role-desc");
