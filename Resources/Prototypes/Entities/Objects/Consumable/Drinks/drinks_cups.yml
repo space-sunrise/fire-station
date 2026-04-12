@@ -89,7 +89,7 @@
   - type: Item
     size: Tiny
   - type: Sprite
-    sprite: Objects/Consumable/Drinks/water_cup.rsi
+    sprite: _Scp/Objects/Consumable/Drinks/water_cup.rsi # Fire edit
   - type: SolutionContainerVisuals
     maxFillLevels: 1
     inHandsFillBaseName: null

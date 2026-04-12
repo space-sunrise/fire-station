@@ -121,7 +121,7 @@
   description: Seems like a good place to stand and waste time. It has a stock of paper cups on the side.
   components:
   - type: Sprite
-    sprite: Structures/Storage/tanks.rsi
+    sprite: _Scp/Structures/Storage/tanks.rsi # Fire edit
     layers:
       - state: watercooler-2
       - state: watercooler-2-1

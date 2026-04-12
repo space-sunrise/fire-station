@@ -45,7 +45,7 @@
       damageContainer: Box
     - type: Sprite
       noRot: true
-      sprite: Structures/Storage/closet.rsi
+      sprite: _Scp/Structures/Storage/closet.rsi # Fire edit
       layers:
       - state: cardboard
         map: ["enum.StorageVisualLayers.Base"]
