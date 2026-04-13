@@ -1,5 +1,5 @@
-﻿- type: entity
-  parent: [ ClothingMaskGas, BaseChaosContraband]
+- type: entity
+  parent: [ ClothingMaskGas, BaseChaosContraband ]
   id: ClothingMaskGasChaosIns
   components:
   - type: Sprite
@@ -37,7 +37,6 @@
     - Snout
     hideOnToggle: true
 
-# Fire added — SCP-933: предмет «полоска» в мире — tape (1 dir); на лице — equipped (4 dir), не рулон.
 - type: entity
   parent: ClothingMaskPullableBase
   id: ClothingMaskScp933Tape
@@ -47,16 +46,35 @@
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-933.rsi
     layers:
-    - state: tape
+    - state: peel
       map: [ "mask" ]
   - type: Clothing
     sprite: _Scp/Objects/Scp/scp-933.rsi
     equippedState: equipped
+  - type: Mask
+    enabled: false
   - type: Scp933TapeMask
-    incubationSeconds: 8
+    applyDelaySeconds: 2.5
+    ripDelaySeconds: 2.5
+    applyToFaceSound:
+      path: /Audio/_Scp/Scp933/ducttape.ogg
+    ripFromFaceSound:
+      path: /Audio/_Scp/Scp933/peeloff.ogg
   - type: HideLayerClothing
     slots:
     - Snout
     hideOnToggle: false
+  - type: Blindfold
+  - type: Construction
+    graph: Blindfold
+    node: blindfold
+  - type: FlashImmunity
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.80
+        Slash: 0.80
+        Piercing: 0.80
+        Heat: 0.80
   - type: Item
     size: Small

@@ -1,7 +1,8 @@
+using Content.Server.DoAfter;
+using Content.Server.Hands.Systems;
 using Content.Shared._Scp.Scp933;
+using Content.Shared.DoAfter;
 using Content.Shared.Damage;
-using Content.Shared.Damage.Components;
-using Content.Shared.Damage.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction;
@@ -12,81 +13,46 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
-using Content.Shared.Standing;
+using Content.Shared.Speech.Muting;
 using Content.Shared.Weapons.Melee;
+using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Localization;
-using Robust.Shared.Network;
 
 namespace Content.Server._Scp.Scp933;
 
 /// <summary>
-/// Сервер: отрыв полоски с рулона (спавн ClothingMaskScp933Tape — только визуал полоски, рулон остаётся с UseCount),
-/// самонаклеивание, инкубация, хост наклеивает жертве (InteractUsing), срыв (InteractHand), стабилизация уложенной жертвы.
+/// Сервер: полный цикл ленты SCP-933 с do-after:
+/// отрыв полоски от рулона -> наклеивание полоски -> срыв полоски.
 /// </summary>
 public sealed class Scp933MasterSystem : SharedScp933MasterSystem
 {
     /// <summary>Прототип оторванной полоски (не рулон).</summary>
     public const string TapeMaskPrototype = "ClothingMaskScp933Tape";
+    private static readonly SoundSpecifier ApplyToFaceSound = new SoundPathSpecifier("/Audio/_Scp/Scp933/ducttape.ogg");
+    private static readonly SoundSpecifier RipFromFaceSound = new SoundPathSpecifier("/Audio/_Scp/Scp933/peeloff.ogg");
 
-    [Dependency] private readonly INetManager _net = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
-    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly DoAfterSystem _doAfter = default!;
+    [Dependency] private readonly HandsSystem _hands = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly MobThresholdSystem _mobThresholds = default!;
-    [Dependency] private readonly DamageableSystem _damageable = default!;
-    [Dependency] private readonly StandingStateSystem _standing = default!;
+    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly SharedAudioSystem _audio = default!;
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<DuctTapeComponent, UseInHandEvent>(OnDuctTapeUseInHand);
+        SubscribeLocalEvent<DuctTapeComponent, Scp933PeelTapeDoAfterEvent>(OnPeelTapeDoAfter);
         SubscribeLocalEvent<HumanoidAppearanceComponent, InteractUsingEvent>(OnHumanoidInteractUsing);
         SubscribeLocalEvent<HumanoidAppearanceComponent, InteractHandEvent>(OnHumanoidInteractHand);
+        SubscribeLocalEvent<Scp933TapeMaskComponent, Scp933ApplyTapeDoAfterEvent>(OnApplyTapeDoAfter);
         SubscribeLocalEvent<Scp933TapeMaskComponent, GotEquippedEvent>(OnTapeMaskGotEquipped);
-    }
-
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-
-        if (!_net.IsServer)
-            return;
-
-        var query = EntityQueryEnumerator<Scp933PendingHostComponent>();
-        while (query.MoveNext(out var uid, out var pending))
-        {
-            pending.RemainingSeconds -= frameTime;
-            if (pending.RemainingSeconds > 0f)
-                continue;
-
-            RemComp<Scp933PendingHostComponent>(uid);
-
-            if (_inventory.TryGetSlotEntity(uid, "mask", out var maskEntity) &&
-                HasComp<Scp933TapeMaskComponent>(maskEntity))
-            {
-                _inventory.TryUnequip(uid, "mask", out _, silent: true, force: true);
-                QueueDel(maskEntity);
-            }
-
-            ConvertToMaster(uid);
-            ApplyHostBuffs(uid);
-        }
-    }
-
-    private void OnTapeMaskGotEquipped(Entity<Scp933TapeMaskComponent> mask, ref GotEquippedEvent args)
-    {
-        if (!_net.IsServer)
-            return;
-
-        if (!mask.Comp.AwaitingHostTransformation)
-            return;
-
-        mask.Comp.AwaitingHostTransformation = false;
-        Dirty(mask);
-
-        var pending = EnsureComp<Scp933PendingHostComponent>(args.Equipee);
-        pending.RemainingSeconds = MathF.Max(1f, mask.Comp.IncubationSeconds);
+        SubscribeLocalEvent<Scp933TapeMaskComponent, GotUnequippedEvent>(OnTapeMaskGotUnequipped);
+        SubscribeLocalEvent<Scp933TapeMaskComponent, BeingUnequippedAttemptEvent>(OnTapeBeingUnequippedAttempt);
+        SubscribeLocalEvent<HumanoidAppearanceComponent, Scp933RipTapeDoAfterEvent>(OnRipTapeDoAfter);
     }
 
     private void OnDuctTapeUseInHand(Entity<DuctTapeComponent> tape, ref UseInHandEvent args)
@@ -96,55 +62,63 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
 
         var user = args.User;
 
-        if (!TryComp<HumanoidAppearanceComponent>(user, out _))
+        if (!TryComp<DuctTapeComponent>(tape, out var ductTape))
             return;
 
-        if (HasComp<Scp933MasterComponent>(user) || HasComp<Scp933PendingHostComponent>(user))
+        if (ductTape.UseCount <= 0)
             return;
 
-        if (TryGetScp933TapeMask(user, out _))
+        var doAfter = new DoAfterArgs(EntityManager,
+            user,
+            MathF.Max(0.1f, ductTape.PeelDelaySeconds),
+            new Scp933PeelTapeDoAfterEvent(),
+            tape,
+            target: user,
+            used: tape)
         {
-            _popup.PopupEntity(Loc.GetString("scp933-self-already-mask"), user, user);
-            return;
-        }
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            BreakOnDropItem = true,
+            BreakOnHandChange = true,
+            NeedHand = true,
+        };
 
-        if (TrySelfApplyDuctTape(user, tape))
-            args.Handled = true;
+        if (!_doAfter.TryStartDoAfter(doAfter))
+            return;
+
+        _popup.PopupEntity(Loc.GetString("scp933-peel-start"), user, user);
+        args.Handled = true;
     }
 
-    private bool TrySelfApplyDuctTape(EntityUid user, Entity<DuctTapeComponent> tape)
+    private void OnPeelTapeDoAfter(Entity<DuctTapeComponent> tape, ref Scp933PeelTapeDoAfterEvent args)
     {
-        if (!TryComp<DuctTapeComponent>(tape, out var duct))
-            return false;
+        if (args.Handled || args.Cancelled)
+            return;
 
-        var mask = Spawn(TapeMaskPrototype);
-        if (!TryComp<Scp933TapeMaskComponent>(mask, out var tapeMask))
+        var user = args.User;
+        if (!TryComp<DuctTapeComponent>(tape, out var ductTape))
+            return;
+
+        if (ductTape.UseCount <= 0)
+            return;
+
+        var peel = Spawn(TapeMaskPrototype);
+
+        if (!_hands.TryPickupAnyHand(user, peel))
         {
-            QueueDel(mask);
-            return false;
+            QueueDel(peel);
+            _popup.PopupEntity(Loc.GetString("scp933-peel-hand-fail"), user, user, PopupType.MediumCaution);
+            return;
         }
 
-        tapeMask.AwaitingHostTransformation = true;
-        Dirty(mask, tapeMask);
-
-        if (_inventory.TryGetSlotEntity(user, "mask", out _))
-            _inventory.TryUnequip(user, "mask", silent: true, force: true);
-
-        if (!_inventory.TryEquip(user, mask, "mask", silent: true, force: true))
-        {
-            _popup.PopupEntity(Loc.GetString("scp933-self-equip-fail"), user, user);
-            QueueDel(mask);
-            return false;
-        }
-
-        duct.UseCount--;
-        if (duct.UseCount <= 0)
+        ductTape.UseCount--;
+        if (ductTape.UseCount <= 0)
             QueueDel(tape);
         else
-            Dirty(tape, duct);
+            Dirty(tape, ductTape);
 
-        _popup.PopupEntity(Loc.GetString("scp933-self-taped"), user, user, PopupType.MediumCaution);
-        return true;
+        _audio.PlayPvs(ductTape.PullFromRollSound, user);
+        _popup.PopupEntity(Loc.GetString("scp933-peel-success"), user, user);
     }
 
     private void OnHumanoidInteractUsing(Entity<HumanoidAppearanceComponent> target, ref InteractUsingEvent args)
@@ -152,17 +126,76 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         if (args.Handled)
             return;
 
-        if (!HasComp<DuctTapeComponent>(args.Used))
+        if (!TryComp<Scp933TapeMaskComponent>(args.Used, out var tapeMask))
             return;
 
-        if (!HasComp<Scp933MasterComponent>(args.User))
+        if (TryGetScp933TapeMask(target.Owner, out _))
+        {
+            _popup.PopupEntity(Loc.GetString("scp933-tape-already"), args.User, args.User);
+            return;
+        }
+
+        if (!_interaction.InRangeUnobstructed(args.User, target.Owner, popup: true))
             return;
 
-        if (args.User == target.Owner)
+        var doAfter = new DoAfterArgs(EntityManager,
+            args.User,
+            MathF.Max(0.1f, tapeMask.ApplyDelaySeconds),
+            new Scp933ApplyTapeDoAfterEvent(),
+            args.Used,
+            target: target.Owner,
+            used: args.Used)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            BreakOnDropItem = true,
+            BreakOnHandChange = true,
+            NeedHand = true,
+        };
+
+        if (!_doAfter.TryStartDoAfter(doAfter))
             return;
 
-        if (TryApplyTapePhase(args.User, target.Owner, args.Used))
-            args.Handled = true;
+        _popup.PopupEntity(Loc.GetString("scp933-apply-start"), args.User, args.User);
+        args.Handled = true;
+    }
+
+    private void OnApplyTapeDoAfter(Entity<Scp933TapeMaskComponent> tapeMask, ref Scp933ApplyTapeDoAfterEvent args)
+    {
+        if (args.Handled || args.Cancelled)
+            return;
+
+        var user = args.User;
+        if (args.Target is not { } victim)
+            return;
+
+        if (!TryComp<Scp933TapeMaskComponent>(tapeMask, out _))
+            return;
+
+        if (!TryComp<HumanoidAppearanceComponent>(victim, out _))
+            return;
+
+        if (!_interaction.InRangeUnobstructed(user, victim, popup: true))
+            return;
+
+        if (TryGetScp933TapeMask(victim, out _))
+        {
+            _popup.PopupEntity(Loc.GetString("scp933-tape-already"), user, user);
+            return;
+        }
+
+        if (_inventory.TryGetSlotEntity(victim, "mask", out _))
+            _inventory.TryUnequip(user, victim, "mask", silent: true, force: true);
+
+        if (!_inventory.TryEquip(user, victim, tapeMask, "mask", silent: true, force: true))
+        {
+            _popup.PopupEntity(Loc.GetString("scp933-tape-equip-fail"), user, user, PopupType.MediumCaution);
+            return;
+        }
+
+        _audio.PlayPvs(ApplyToFaceSound, victim);
+        _popup.PopupEntity(Loc.GetString("scp933-apply-success-user"), user, user);
+        _popup.PopupEntity(Loc.GetString("scp933-apply-success-target"), victim, victim, PopupType.MediumCaution);
     }
 
     private void OnHumanoidInteractHand(Entity<HumanoidAppearanceComponent> target, ref InteractHandEvent args)
@@ -170,146 +203,144 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         if (args.Handled)
             return;
 
-        if (!HasComp<Scp933MasterComponent>(args.User))
+        var isHost = HasComp<Scp933MasterComponent>(args.User);
+        var emergencyMode = false;
+
+        if (!isHost)
+        {
+            // Без хоста разрешаем только один аварийный ритуал срыва на конкретной ленте.
+            if (HasAnyScp933Host())
+            {
+                _popup.PopupEntity(Loc.GetString("scp933-rip-master-only"), args.User, args.User, PopupType.MediumCaution);
+                return;
+            }
+
+            if (!TryGetScp933TapeMask(target.Owner, out var emergencyMaskUid) ||
+                !TryComp<Scp933TapeMaskComponent>(emergencyMaskUid, out var emergencyMask) ||
+                !emergencyMask.EmergencyRipAvailable)
+            {
+                _popup.PopupEntity(Loc.GetString("scp933-rip-master-only"), args.User, args.User, PopupType.MediumCaution);
+                return;
+            }
+
+            emergencyMode = true;
+        }
+
+        if (!TryGetScp933TapeMask(target.Owner, out var maskUid))
             return;
 
-        if (args.User == target.Owner)
+        if (!TryComp<Scp933TapeMaskComponent>(maskUid, out var tapeMask))
             return;
 
-        if (!TryGetScp933TapeMask(target.Owner, out _))
+        if (!_interaction.InRangeUnobstructed(args.User, target.Owner, popup: true))
             return;
 
-        if (TryRipTapePhase(args.User, target.Owner))
-            args.Handled = true;
+        var doAfter = new DoAfterArgs(EntityManager,
+            args.User,
+            MathF.Max(0.1f, tapeMask.RipDelaySeconds),
+            new Scp933RipTapeDoAfterEvent
+            {
+                ExpectedMask = GetNetEntity(maskUid),
+                EmergencyMode = emergencyMode
+            },
+            target.Owner,
+            target: target.Owner)
+        {
+            BreakOnMove = true,
+            BreakOnDamage = true,
+            NeedHand = true,
+        };
+
+        if (!_doAfter.TryStartDoAfter(doAfter))
+            return;
+
+        _popup.PopupEntity(Loc.GetString("scp933-rip-start"), args.User, args.User);
+        args.Handled = true;
     }
 
-    private bool TryGetScp933TapeMask(EntityUid uid, out EntityUid maskUid)
+    private void OnTapeBeingUnequippedAttempt(Entity<Scp933TapeMaskComponent> tape, ref BeingUnequippedAttemptEvent args)
     {
-        maskUid = default;
-        if (!_inventory.TryGetSlotEntity(uid, "mask", out var entity))
-            return false;
-        if (!HasComp<Scp933TapeMaskComponent>(entity))
-            return false;
-        maskUid = entity.Value;
-        return true;
+        if (tape.Comp.RitualUnequipAllowed
+            && tape.Comp.RitualUnequipUser == args.Unequipee
+            && (HasComp<Scp933MasterComponent>(args.Unequipee) || tape.Comp.RitualAllowNonHost))
+            return;
+
+        // Лента снимается только через наш ритуал do-after и только хостом.
+        args.Cancel();
     }
 
-    private bool TryApplyTapePhase(EntityUid master, EntityUid victim, EntityUid tape)
+    private void OnTapeMaskGotEquipped(Entity<Scp933TapeMaskComponent> tapeMask, ref GotEquippedEvent args)
     {
-        if (!TryComp<HumanoidAppearanceComponent>(victim, out _))
-            return false;
+        if (args.Slot != "mask")
+            return;
 
-        if (!HasComp<Scp933MasterComponent>(master))
-        {
-            _popup.PopupEntity(Loc.GetString("scp933-tape-master-only"), master, master);
-            return false;
-        }
-
-        if (TryGetScp933TapeMask(victim, out _))
-        {
-            _popup.PopupEntity(Loc.GetString("scp933-tape-already"), master, master);
-            return false;
-        }
-
-        if (HasComp<Scp933FaceTornComponent>(victim))
-        {
-            _popup.PopupEntity(Loc.GetString("scp933-tape-already-faceless"), master, master);
-            return false;
-        }
-
-        if (HasComp<Scp933MasterComponent>(victim))
-        {
-            _popup.PopupEntity(Loc.GetString("scp933-tape-no-other-master"), master, master);
-            return false;
-        }
-
-        if (!_interaction.InRangeUnobstructed(master, victim, popup: true))
-            return false;
-
-        if (!TryComp<DuctTapeComponent>(tape, out var duct))
-            return false;
-
-        var mask = Spawn(TapeMaskPrototype);
-        if (!TryComp<Scp933TapeMaskComponent>(mask, out var tapeMask))
-        {
-            QueueDel(mask);
-            return false;
-        }
-
-        tapeMask.AwaitingHostTransformation = false;
-        Dirty(mask, tapeMask);
-
-        if (_inventory.TryGetSlotEntity(victim, "mask", out _))
-            _inventory.TryUnequip(master, victim, "mask", silent: true, force: true);
-
-        if (!_inventory.TryEquip(master, victim, mask, "mask", silent: true, force: true))
-        {
-            _popup.PopupEntity(Loc.GetString("scp933-tape-equip-fail"), master, master);
-            QueueDel(mask);
-            return false;
-        }
-
-        duct.UseCount--;
-        if (duct.UseCount <= 0)
-            QueueDel(tape);
-        else
-            Dirty(tape, duct);
-
-        _popup.PopupEntity(Loc.GetString("scp933-tape-applied-master"), master, master);
-        _popup.PopupEntity(Loc.GetString("scp933-tape-applied-victim"), victim, victim, PopupType.MediumCaution);
-
-        TryStabilizeTapedVictim(victim);
-
-        return true;
+        EnsureComp<MutedComponent>(args.Equipee);
     }
 
-    private bool TryRipTapePhase(EntityUid master, EntityUid victim)
+    private void OnTapeMaskGotUnequipped(Entity<Scp933TapeMaskComponent> tapeMask, ref GotUnequippedEvent args)
     {
-        if (!TryGetScp933TapeMask(victim, out _))
-            return false;
+        if (args.Slot != "mask")
+            return;
 
-        if (!HasComp<Scp933MasterComponent>(master))
-            return false;
+        if (HasComp<Scp933FaceTornComponent>(args.Equipee))
+            return;
 
-        if (!_interaction.InRangeUnobstructed(master, victim, popup: true))
-            return false;
+        RemComp<MutedComponent>(args.Equipee);
+    }
 
-        if (HasComp<Scp933MasterComponent>(victim))
-            return false;
+    private void OnRipTapeDoAfter(Entity<HumanoidAppearanceComponent> target, ref Scp933RipTapeDoAfterEvent args)
+    {
+        if (args.Handled || args.Cancelled)
+            return;
 
-        if (!_inventory.TryUnequip(master, victim, "mask", out var removed, silent: true, force: true))
-            return false;
+        var user = args.User;
+
+        var expectedMask = GetEntity(args.ExpectedMask);
+        if (expectedMask == null)
+            return;
+
+        if (!TryGetScp933TapeMask(target.Owner, out var currentMask) || currentMask != expectedMask)
+            return;
+
+        if (!TryComp<Scp933TapeMaskComponent>(currentMask, out var tapeMask))
+            return;
+
+        tapeMask.RitualUnequipAllowed = true;
+        tapeMask.RitualUnequipUser = user;
+        tapeMask.RitualAllowNonHost = args.EmergencyMode;
+        var unequipped = _inventory.TryUnequip(user, target, "mask", out var removed, silent: true, force: true);
+        tapeMask.RitualUnequipAllowed = false;
+        tapeMask.RitualUnequipUser = null;
+        tapeMask.RitualAllowNonHost = false;
+
+        if (!unequipped)
+            return;
 
         if (removed != null)
             QueueDel(removed.Value);
 
-        ApplyFaceTornAfterRip(master, victim);
+        if (args.EmergencyMode)
+            tapeMask.EmergencyRipAvailable = false;
 
-        TryStabilizeTapedVictim(victim);
-
-        _popup.PopupEntity(Loc.GetString("scp933-tape-ripped-master"), master, master);
-
-        return true;
-    }
-
-    /// <summary>
-    /// После укладки жертва часто в крите/лежит — сбрасываем урон и поднимаем, чтобы сцена не умерла до срыва.
-    /// </summary>
-    private void TryStabilizeTapedVictim(EntityUid victim)
-    {
-        if (TryComp<MobStateComponent>(victim, out var mob) && mob.CurrentState == MobState.Dead)
-            return;
-
-        if (!TryComp<DamageableComponent>(victim, out var dmg))
-            return;
-
-        if (dmg.TotalDamage > FixedPoint2.Zero)
+        if (args.EmergencyMode || !HasAnyScp933Host())
         {
-            _damageable.ClearAllDamage((victim, dmg));
-            _popup.PopupEntity(Loc.GetString("scp933-victim-stabilized"), victim, victim, PopupType.Small);
+            ConvertToMaster(target);
+            ApplyHostBuffs(target);
+        }
+        else
+        {
+            ApplyFaceTornAfterRip(user, target);
         }
 
-        _standing.Stand(victim, force: true);
+        _audio.PlayPvs(RipFromFaceSound, target);
+        _popup.PopupEntity(Loc.GetString("scp933-rip-success-user"), user, user);
+        _popup.PopupEntity(Loc.GetString("scp933-rip-success-target"), target, target, PopupType.MediumCaution);
+    }
+
+    private bool HasAnyScp933Host()
+    {
+        var query = EntityQueryEnumerator<Scp933MasterComponent>();
+        return query.MoveNext(out _, out _);
     }
 
     private void ApplyHostBuffs(EntityUid uid)
@@ -327,5 +358,18 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
             melee.Damage = new DamageSpecifier { DamageDict = { ["Blunt"] = FixedPoint2.New(25) } };
             Dirty(uid, melee);
         }
+    }
+
+    private bool TryGetScp933TapeMask(EntityUid uid, out EntityUid maskUid)
+    {
+        maskUid = default;
+        if (!_inventory.TryGetSlotEntity(uid, "mask", out var entity))
+            return false;
+
+        if (!HasComp<Scp933TapeMaskComponent>(entity))
+            return false;
+
+        maskUid = entity.Value;
+        return true;
     }
 }
