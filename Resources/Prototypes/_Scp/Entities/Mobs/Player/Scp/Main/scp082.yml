@@ -49,6 +49,8 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.5
     baseSprintSpeed: 2.5
+  - type: ScpRestriction
+    canPull: true
   - type: Pullable
   - type: Puller
     needsHands: true
@@ -77,3 +79,4 @@
     guides:
     - ScpResearch
     - ScpFear
+  - type: HoldToFace
