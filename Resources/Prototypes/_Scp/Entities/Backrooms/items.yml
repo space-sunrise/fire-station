@@ -192,6 +192,13 @@
   suffix: SCP Item
   components:
   - type: AnomalyDollar
+  - type: TimedSpawner
+    prototypes:
+    - ScpAnomalyDollar
+    chance: 0.4
+    intervalSeconds: 900
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 10
   - type: Sprite
     sprite: _Scp/Objects/Items/dollar.rsi
     state: icon

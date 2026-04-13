@@ -8,7 +8,6 @@ using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Server.Storage.EntitySystems;
 using Content.Server.Ghost.Roles.Raffles;
-using Content.Shared.Ghost.Roles.Raffles;
 using Content.Server.Ghost.Roles.Components;
 using Content.Shared._Scp.Scp035;
 using Content.Shared.Chat;
@@ -79,24 +78,17 @@ public sealed class Scp035System : SharedScp035System
     {
         base.OnMaskEquipped(ent, ref args);
 
-        if (_mind.TryGetMind(args.Wearer, out var mindId, out var mind))
-        {
-            if (_ghost.OnGhostAttempt(mindId, false, false, false, mind)) ;
-            {
-                var settings = new GhostRoleRaffleSettings()
-                {
-                    InitialDuration = 10,
-                    JoinExtendsDurationBy = 10,
-                    MaxDuration = 30
-                };
+        if (!_mind.TryGetMind(args.Wearer, out var mindId, out var mind))
+            return;
 
-                EnsureComp<GhostTakeoverAvailableComponent>(ent.Owner);
-                var ghostRoleComp = EnsureComp<GhostRoleComponent>(ent.Owner);
-                ghostRoleComp.RoleName = Loc.GetString("scp-035-ghost-role-name");
-                ghostRoleComp.RoleDescription = Loc.GetString("scp-035-ghost-role-desc");
-                ghostRoleComp.RaffleConfig = new GhostRoleRaffleConfig(settings);
-            }
-        }
+        if (!_ghost.OnGhostAttempt(mindId, false, false, false, mind))
+            return;
+
+        EnsureComp<GhostTakeoverAvailableComponent>(ent.Owner);
+        var ghostRoleComp = EnsureComp<GhostRoleComponent>(ent.Owner);
+        ghostRoleComp.RoleName = Loc.GetString("scp-035-ghost-role-name");
+        ghostRoleComp.RoleDescription = Loc.GetString("scp-035-ghost-role-desc");
+        ghostRoleComp.RaffleConfig = new GhostRoleRaffleConfig(ent.Comp.GhostSettings);
     }
 
     private void OnRaiseArmy(Entity<Scp035MaskUserComponent> ent, ref MaskRaiseArmyActionEvent args)
@@ -166,11 +158,11 @@ public sealed class Scp035System : SharedScp035System
         if (curTime < entity.Comp.NextMessaging)
             return;
 
-        if (entity.Comp.Messages.Count > 0)
-        {
-            var message = Loc.GetString(_random.Pick(entity.Comp.Messages));
-            _chatSystem.TrySendInGameICMessage(entity, message, InGameICChatType.Speak, ChatTransmitRange.Normal, ignoreActionBlocker: true);
-        }
+        if (entity.Comp.Messages.Count == 0)
+            return;
+
+        var message = Loc.GetString(_random.Pick(entity.Comp.Messages));
+        _chatSystem.TrySendInGameICMessage(entity, message, InGameICChatType.Speak, ChatTransmitRange.Normal, ignoreActionBlocker: true);
 
         entity.Comp.NextMessaging = curTime + entity.Comp.NextMessageDelay;
     }
@@ -225,8 +217,9 @@ public sealed class Scp035System : SharedScp035System
 
             foreach (var ent in lookup)
             {
-                // break windows/walls
-                if (_whitelist.IsWhitelistPass(entity.Comp.TargetStructures, ent))
+
+                // break whitelist entities
+                if (_whitelist.CheckBoth(ent, entity.Comp.BlacklistStructures, entity.Comp.WhitelistStructures))
                     _damageable.TryChangeDamage(ent, entity.Comp.DamageSpecif, true);
 
                 // randomly opens some lockers and such.

@@ -14,23 +14,18 @@ public sealed partial class Scp035MaskUserComponent : Component
     [ViewVariables(VVAccess.ReadOnly)]
     public HashSet<EntityUid> Servants = new();
 
-    [AutoNetworkedField]
     [DataField]
     public EntProtoId ServantsProto = "MobServant035";
 
-    [AutoNetworkedField]
     [DataField]
     public int MaxServants = 3;
 
-    [AutoNetworkedField]
     [DataField]
     public EntProtoId DeadSpawnProto = "Ash";
 
-    [AutoNetworkedField]
     [DataField]
     public float MeleeDamageModificator = 4;
 
-    [AutoNetworkedField]
     [DataField]
     public TimeSpan ActionStunDuration = TimeSpan.FromSeconds(10);
 

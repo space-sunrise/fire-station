@@ -2,7 +2,6 @@
 using Content.Shared.Actions;
 using Content.Shared.Clothing;
 using Content.Shared.Damage.Components;
-using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Humanoid;
 using Content.Shared.Interaction.Components;
@@ -15,7 +14,6 @@ using Content.Shared.Popups;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Stunnable;
 using Content.Shared.Weapons.Melee.Events;
-using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
@@ -116,7 +114,7 @@ public abstract class SharedScp035System : EntitySystem
         {
             args.Cancel();
 
-            _stun.TryAddParalyzeDuration(args.Equipee, ent.Comp.EquippeAttemptParalyzeDuration);
+            _stun.TryAddParalyzeDuration(args.Equipee, ent.Comp.EquipAttemptParalyzeDuration);
 
             if (_net.IsServer)
             {

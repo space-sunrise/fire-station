@@ -20,7 +20,7 @@
     - scp-035-message-one
     - scp-035-message-two
     - scp-035-message-three
-    targetStructures:
+    whitelistStructures:
       tags:
       - Window
       - Wall

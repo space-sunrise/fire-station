@@ -1,6 +1,7 @@
 ﻿using System.Numerics;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
+using Content.Shared.Ghost.Roles.Raffles;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.Whitelist;
 using Robust.Shared.Audio;
@@ -16,92 +17,98 @@ public sealed partial class Scp035MaskComponent : Component
     [ViewVariables(VVAccess.ReadOnly)]
     public EntityUid? User;
 
-    [AutoNetworkedField]
     [DataField]
     public TimeSpan NextMessageDelay = TimeSpan.FromSeconds(60);
 
-    [AutoNetworkedField]
     [DataField]
     public List<LocId> Messages = new();
 
-    [AutoNetworkedField]
     [DataField]
     public string ReagentName = "PoisonWine";
 
-    [AutoNetworkedField]
     [DataField]
     public float ReagentRangeAvailable = 5;
 
-    [AutoNetworkedField]
     [DataField]
     public int ReagentDestructLevel = 200;
 
-    [AutoNetworkedField]
     [DataField]
     public TimeSpan NextLiquidSpawnDelay = TimeSpan.FromSeconds(60);
 
-    [AutoNetworkedField]
     [DataField]
     public Vector2 CorrosionBox = new (6f, 3f);
 
-    [AutoNetworkedField]
     [DataField]
     public int MaxTilesCorrosionPry = 10;
 
-    [AutoNetworkedField]
     [DataField]
     public float EntityCorrosionRange = 3f;
 
-    [AutoNetworkedField]
     [DataField]
     public DamageSpecifier DamageSpecif = new()
     {
         DamageDict = new() { { "Structural", 60f } }
     };
 
-    [AutoNetworkedField]
     [DataField]
-    public EntityWhitelist TargetStructures;
+    public EntityWhitelist WhitelistStructures;
 
-    [AutoNetworkedField]
+    [DataField]
+    public EntityWhitelist BlacklistStructures;
+
     [DataField]
     public SoundSpecifier EquipSound = new SoundCollectionSpecifier("EquipScp035");
 
-    [AutoNetworkedField]
     [DataField]
     public TimeSpan EquippedParalyzeDuration = TimeSpan.FromSeconds(5);
 
-    [AutoNetworkedField]
     [DataField]
-    public TimeSpan EquippeAttemptParalyzeDuration = TimeSpan.FromSeconds(10);
+    public TimeSpan EquipAttemptParalyzeDuration = TimeSpan.FromSeconds(10);
 
-    [AutoNetworkedField]
     [DataField]
     public EntProtoId SpawnWeaponProto = "Chainsaw";
 
-    [AutoNetworkedField]
     [DataField]
     public ProtoId<NpcFactionPrototype> NewUserFaction = "SimpleHostile";
 
-    [AutoNetworkedField]
     [DataField]
     public FixedPoint2 NewCriticalThreshold = FixedPoint2.New(790);
 
-    [AutoNetworkedField]
     [DataField]
     public FixedPoint2 NewDeadThreshold = FixedPoint2.New(800);
 
-    [AutoNetworkedField]
     [DataField]
     public float ImpulseModificator = 10000;
 
-    public TimeSpan NextMessaging = TimeSpan.Zero;
-    public TimeSpan NextLiquidSpawning = TimeSpan.Zero;
+    [DataField]
+    public GhostRoleRaffleSettings GhostSettings = new GhostRoleRaffleSettings()
+    {
+        InitialDuration = 10,
+        JoinExtendsDurationBy = 10,
+        MaxDuration = 30
+    };
 
+    [DataField]
     public EntProtoId ActionRaiseArmy = "ActionScp035RaiseArmy";
+
+    [DataField]
     public EntProtoId ActionOrderStay = "ActionScp035OrderStay";
+
+    [DataField]
     public EntProtoId ActionOrderFollow = "ActionScp035OrderFollow";
+
+    [DataField]
     public EntProtoId ActionOrderKill = "ActionScp035OrderKill";
+
+    [DataField]
     public EntProtoId ActionOrderLoose = "ActionScp035OrderLoose";
+
+    [DataField]
     public EntProtoId ActionStun = "ActionScp035Stun";
+
+    [ViewVariables]
+    public TimeSpan NextMessaging = TimeSpan.Zero;
+
+    [ViewVariables]
+    public TimeSpan NextLiquidSpawning = TimeSpan.Zero;
 }
