@@ -80,3 +80,12 @@
     - ScpResearch
     - ScpFear
   - type: HoldToFace
+  - type: Prying
+    enabled: false
+    pryPowered: true
+    force: true
+    speedModifier: 0.9
+    useSound:
+      path: /Audio/_Scp/Scp096/prydoor.ogg
+      params:
+        volume: -4
