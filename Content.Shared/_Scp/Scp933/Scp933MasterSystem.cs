@@ -1,10 +1,12 @@
 using System.Linq;
+using Content.Shared.DoAfter;
 using Content.Shared.Humanoid;
 using Content.Shared.Mobs;
 using Content.Shared.Popups;
 using Content.Shared.Speech.Muting;
 using Robust.Shared.Localization;
 using Robust.Shared.Network;
+using Robust.Shared.Serialization;
 
 namespace Content.Shared._Scp.Scp933;
 
@@ -130,5 +132,35 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         Dirty(tapeBearer, masterComp);
 
         _popup.PopupEntity(Loc.GetString("scp933-victim-face-torn"), victim, victim, PopupType.LargeCaution);
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed partial class Scp933PeelTapeDoAfterEvent : DoAfterEvent
+{
+    public override DoAfterEvent Clone()
+    {
+        return this;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed partial class Scp933ApplyTapeDoAfterEvent : DoAfterEvent
+{
+    public override DoAfterEvent Clone()
+    {
+        return this;
+    }
+}
+
+[Serializable, NetSerializable]
+public sealed partial class Scp933RipTapeDoAfterEvent : DoAfterEvent
+{
+    public NetEntity ExpectedMask;
+    public bool EmergencyMode;
+
+    public override DoAfterEvent Clone()
+    {
+        return this;
     }
 }

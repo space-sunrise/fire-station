@@ -18,6 +18,9 @@
     heldPrefix: tape
   - type: DuctTape
     useCount: 32
+    peelDelaySeconds: 3.5
+    pullFromRollSound:
+      path: /Audio/_Scp/Scp933/ducttape.ogg
   - type: MeleeWeapon
     range: 1.5
     damage:
