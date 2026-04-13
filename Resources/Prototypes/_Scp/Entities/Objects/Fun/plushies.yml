@@ -48,6 +48,7 @@
     tags:
     - Payload
     - ClothMade
+    - PlushieScp999
     
 - type: entity
   parent: PlushieHuman

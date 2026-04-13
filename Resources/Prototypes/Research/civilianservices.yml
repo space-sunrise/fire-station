@@ -9,6 +9,7 @@
   discipline: CivilianServices
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - SeedExtractorMachineCircuitboard
   - HydroponicsTrayMachineCircuitboard
@@ -43,6 +44,7 @@
   discipline: CivilianServices
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - SurveillanceCameraRouterCircuitboard
   - SurveillanceCameraWirelessRouterCircuitboard
@@ -62,6 +64,7 @@
   discipline: CivilianServices
   tier: 1
   cost: 7500
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
     - ComputerTelevisionCircuitboard
     - SynthesizerInstrument
@@ -78,6 +81,7 @@
   discipline: CivilianServices
   tier: 1
   cost: 7500
+  defaultToScpScale: 0.1 # Fire Edit
   recipeUnlocks:
   - FatExtractorMachineCircuitboard
   # - BiofabricatorMachineCircuitboard #Sunrise-edit
@@ -94,6 +98,7 @@
   discipline: CivilianServices
   tier: 2
   cost: 5000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - FauxTileAstroGrass
   - FauxTileMowedAstroGrass
@@ -114,43 +119,44 @@
   discipline: CivilianServices
   tier: 2
   cost: 10000
+  defaultToScpScale: 0.1 # Fire Edit
   recipeUnlocks:
   - AdvMopItem
   - MegaSprayBottle
   - BorgModuleAdvancedCleaning
 
-- type: technology
-  id: HONKMech
-  name: research-technology-honk-mech
-  icon:
-    sprite: Objects/Specific/Mech/mecha.rsi
-    state: honker
-  discipline: CivilianServices
-  tier: 2
-  cost: 7500
-  recipeUnlocks:
-  - HonkerHarness
-  - HonkerLArm
-  - HonkerRArm
-  - HonkerLLeg
-  - HonkerRLeg
-  - HonkerCentralElectronics
-  - HonkerPeripheralsElectronics
-  - HonkerTargetingElectronics
-  - MechEquipmentHorn
+# - type: technology # Fire Edit
+#   id: HONKMech
+#   name: research-technology-honk-mech
+#   icon:
+#     sprite: Objects/Specific/Mech/mecha.rsi
+#     state: honker
+#   discipline: CivilianServices
+#   tier: 2
+#   cost: 7500
+#   recipeUnlocks:
+#   - HonkerHarness
+#   - HonkerLArm
+#   - HonkerRArm
+#   - HonkerLLeg
+#   - HonkerRLeg
+#   - HonkerCentralElectronics
+#   - HonkerPeripheralsElectronics
+#   - HonkerTargetingElectronics
+#   - MechEquipmentHorn
 
-- type: technology
-  id: HONKWeapons
-  name: research-technology-honk-weapons
-  icon:
-    sprite: Objects/Specific/Mech/mecha_equipment.rsi
-    state: mecha_bananamrtr
-  discipline: CivilianServices
-  tier: 2
-  cost: 6000
-  recipeUnlocks:
-  - MechEquipmentHonkerBananaMortar
-  - MechEquipmentHonkerMousetrapMortar
+# - type: technology # Fire Edit
+#   id: HONKWeapons
+#   name: research-technology-honk-weapons
+#   icon:
+#     sprite: Objects/Specific/Mech/mecha_equipment.rsi
+#     state: mecha_bananamrtr
+#   discipline: CivilianServices
+#   tier: 2
+#   cost: 6000
+#   recipeUnlocks:
+#   - MechEquipmentHonkerBananaMortar
+#   - MechEquipmentHonkerMousetrapMortar
 
 - type: technology
   id: AdvancedSpray
@@ -161,6 +167,7 @@
   discipline: CivilianServices
   tier: 2
   cost: 10000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - WeaponSprayNozzle
   - ClothingBackpackWaterTank
@@ -174,21 +181,22 @@
   discipline: CivilianServices
   tier: 2
   cost: 15000
+  defaultToScpScale: 0.3 # Fire Edit
   recipeUnlocks:
   - CargoTelepadMachineCircuitboard
 
-- type: technology
-  id: PushHorn
-  name: research-technology-clowning-utilities
-  icon:
-    sprite: Objects/Fun/push_horn.rsi
-    state: icon
-  discipline: CivilianServices
-  tier: 2
-  cost: 4000
-  recipeUnlocks:
-  - PushHorn
-  - BorgModuleAdvancedClowning
+# - type: technology # Fire Edit
+#   id: PushHorn
+#   name: research-technology-clowning-utilities
+#   icon:
+#     sprite: Objects/Fun/push_horn.rsi
+#     state: icon
+#   discipline: CivilianServices
+#   tier: 2
+#   cost: 4000
+#   recipeUnlocks:
+#   - PushHorn
+#   - BorgModuleAdvancedClowning
 
 # Tier 3
 

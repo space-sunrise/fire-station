@@ -20,6 +20,9 @@
         reagents:
         - ReagentId: Scp330Nothing
           Quantity: 10
+  - type: Tag
+    tags:
+    - Scp330Candy
 
 - type: entity
   parent: BaseScp330Candy
