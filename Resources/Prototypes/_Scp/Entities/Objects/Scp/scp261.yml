@@ -91,6 +91,11 @@
     - Scp330CandyRed
     - Scp207Bottle
     - DrinkChangelingStingCan
+    - FoodMeatAnomaly
+    - FoodExtradimensionalOrange
+    - FoodHolymelon
+    - FoodMeatDragon
+    - DrinkNukieCan
     rareChance: 0.03
     prototypes:
     - FoodSnackSwirlLollipop
@@ -108,4 +113,15 @@
     - FoodGlasstle
     - FoodLaughinPeaPod
     - FoodMeatSlimeJelly
+    - FoodDemonHellChiliBowl
+    - FoodPizzaWorldpeas
+    - FoodBakedWaffleRoffle
+    - FoodMeatDionaRoots
+    - FoodNoodlesCopy
+    - FoodCakeBrain
+    - FoodBreadMeatXeno
+    - FoodBreadMeatSpider
+    - FoodBurgerHuman
+    - DrinkSpaceGlue
+    - DrinkUnholyWaterFull
     chance: 1
