@@ -82,6 +82,9 @@
     layers:
     - state: icon
       map: [ "mask" ]
+  - type: Tag
+    tags:
+    - ReinforcedMaskScp096
 
 - type: entity
   parent: ClothingHeadBase
@@ -96,6 +99,9 @@
     components:
     - type: Scp096Protection
       problemChance: 0.002 # 0,2% каждый тик проебаться
+  - type: Tag
+    tags:
+    - ClothingHeadHelmetAiPowered
 
 # Scp-049
 
@@ -137,6 +143,10 @@
   - type: ClothingAddComponents
     components:
     - type: Scp106Protection
+  - type: Tag
+    tags:
+    - ClothingOuterAntiTeleportation
+    - WhitelistChameleon
 
 # Scp-939
 
@@ -155,6 +165,10 @@
     - type: Scp939Protection
   - type: FootstepModifier
     footstepSoundCollection: null
+  - type: Tag
+    tags:
+    - ClothingShoesSilent
+    - WhitelistChameleon
 
 # Scp-035
 
@@ -174,6 +188,9 @@
     components:
     - type: Scp035MindProtection
     - type: Scp012Protection
+  - type: Tag
+    tags:
+    - ClothingHeadAwareness
 
 # Пушки
 

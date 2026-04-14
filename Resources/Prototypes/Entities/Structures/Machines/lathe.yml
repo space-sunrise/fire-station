@@ -575,6 +575,7 @@
     - Carpets
     - Bedsheets
     - UniformStaticSunrise # Sunrise-Add
+    - ShoulderPatch # Fire Edit
   - type: EmagLatheRecipes
     emagStaticPacks:
     - ClothingCentComm

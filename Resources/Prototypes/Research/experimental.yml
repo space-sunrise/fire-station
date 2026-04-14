@@ -9,6 +9,7 @@
   discipline: Experimental
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - ProximitySensor
   - Nanopaste # Sunrise-Add
@@ -23,6 +24,7 @@
   discipline: Experimental
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - AnomalyScanner
   - AnomalyLocator
@@ -39,6 +41,7 @@
   discipline: Experimental
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - NodeScanner
   - AnalysisComputerCircuitboard
@@ -53,6 +56,7 @@
   discipline: Experimental
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.1 # Fire Edit
   recipeUnlocks:
   - TechDiskComputerCircuitboard
 
@@ -149,6 +153,7 @@
   discipline: Experimental
   tier: 3
   cost: 10000
+  defaultToScpScale: 0.3 # Fire Edit
   recipeUnlocks:
   - DeviceQuantumSpinInverter
 
@@ -161,5 +166,6 @@
   discipline: Experimental
   tier: 3
   cost: 10000
+  defaultToScpScale: 0.3 # Fire Edit
   recipeUnlocks:
   - DeviceDesynchronizer
