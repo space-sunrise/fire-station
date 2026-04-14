@@ -11,8 +11,13 @@
   startingGear: SalvageSpecialistGear
   supervisors: job-supervisors-qm
   displayWeight: 10  # Sunrise
-  overrideConsoleVisibility: false
+  overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-prospector
+  - job-alt-title-forwarder
+  # Sunrise-End
   access:
   - Cargo
   - Salvage

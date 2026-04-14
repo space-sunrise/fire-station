@@ -20,6 +20,9 @@
   displayWeight: 30
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  alternativeTitles:
+  - job-alt-title-foreman
+  - job-alt-title-brigadier
   access:
   - Maintenance
   - Engineering

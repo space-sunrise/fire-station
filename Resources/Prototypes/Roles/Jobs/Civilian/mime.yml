@@ -11,6 +11,11 @@
   supervisors: job-supervisors-hop
   setPreference: false # Fire added
   overrideConsoleVisibility: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-pantomimist
+  - job-alt-title-silence-agent
+  # Sunrise-End
   access:
   - Theatre
   - Maintenance

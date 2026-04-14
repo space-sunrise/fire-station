@@ -8,6 +8,12 @@
   supervisors: job-supervisors-everyone
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-tourist
+  - job-alt-title-assistant
+  - job-alt-title-off-duty-crew
+  # Sunrise-End
   access:
   - Maintenance
 

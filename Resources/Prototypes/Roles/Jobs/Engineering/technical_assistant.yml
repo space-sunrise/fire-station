@@ -17,6 +17,11 @@
   displayWeight: 0 # Sunrise-Edit
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-engineering-intern
+  - job-alt-title-technician-intern
+  # Sunrise-End
   access:
   - Maintenance
   - Engineering

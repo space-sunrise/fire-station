@@ -10,6 +10,8 @@
   supervisors: job-supervisors-hop
   setPreference: false # Fire added
   overrideConsoleVisibility: false # Fire added
+  alternativeTitles:
+  - job-alt-title-stylist
   access:
   - Barber
   - Service

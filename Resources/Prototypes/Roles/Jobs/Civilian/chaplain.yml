@@ -8,6 +8,12 @@
   supervisors: job-supervisors-hop
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-preacher
+  - job-alt-title-clergy
+  - job-alt-title-religious-scholar
+  # Sunrise-End
   access:
   - Chapel
   - Maintenance
