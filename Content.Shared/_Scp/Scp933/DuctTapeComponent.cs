@@ -1,5 +1,6 @@
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp933;
 
@@ -10,6 +11,12 @@ namespace Content.Shared._Scp.Scp933;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class DuctTapeComponent : Component
 {
+    /// <summary>
+    /// Прототип полоски ленты, которая отрывается от рулона.
+    /// </summary>
+    [DataField]
+    public EntProtoId TapeMaskPrototype = "ClothingMaskScp933Tape";
+
     /// <summary>
     /// Сколько раз еще можно использовать ленту.
     /// </summary>

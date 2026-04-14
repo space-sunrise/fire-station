@@ -54,15 +54,6 @@ public sealed class TapedFaceSystem : EntitySystem
         if (HasComp<TapedFaceComponent>(target))
             return;
 
-        // Добавить компонент
-        AddComp(target, new TapedFaceComponent());
-    }
-
-    /// <summary>
-    /// Снять скотч с цели.
-    /// </summary>
-    public void RemoveTape(EntityUid target)
-    {
-        RemComp<TapedFaceComponent>(target);
+        EnsureComp<TapedFaceComponent>(target);
     }
 }
