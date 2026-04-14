@@ -8,6 +8,10 @@
   - MobBloodstream
   - InventoryBase
   components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
   - type: Sprite
     noRot: true
     drawdepth: Mobs
