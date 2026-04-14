@@ -1,6 +1,5 @@
 - type: job
   id: BlueShieldOfficer
-  overrideConsoleVisibility: false # Fire added
   name: job-name-blueshield-officer
   description: job-description-blueshield-officer
   playTimeTracker: JobBlueShield
@@ -14,7 +13,10 @@
   icon: JobIconBlueShield
   supervisors: job-supervisors-centcom
   canBeAntag: false
+  overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  alternativeTitles:
+  - job-alt-title-bodyguard
   access:
     - Command
     - Bar
@@ -67,4 +69,4 @@
     eyes: ClothingEyesGlassesBlueShield
     outerClothing: ClothingOuterArmorBlueShield
     gloves: ClothingHandsGlovesCombat
-    
+

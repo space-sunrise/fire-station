@@ -75,6 +75,7 @@
     tags:
     - Wall
     - Diagonal
+    - ForceNoTileWalls # Fire added
   - type: IconSmooth
     mode: Diagonal
     key: walls
