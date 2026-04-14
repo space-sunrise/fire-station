@@ -22,8 +22,12 @@
   canBeAntag: true # Sunrise-Edit
   radioBold: true # Sunrise-Edit
   displayWeight: 60 # Sunrise-Edit
-  overrideConsoleVisibility: false
+  overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-head-physician
+  # Sunrise-End
   access:
   - Medical
   - Command

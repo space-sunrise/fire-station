@@ -21,6 +21,7 @@
   discipline: Industrial
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.3 # Fire Edit
   recipeUnlocks:
   - CargoSuit
   - BluespaceBox

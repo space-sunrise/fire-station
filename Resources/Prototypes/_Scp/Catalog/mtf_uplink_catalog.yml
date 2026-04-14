@@ -1913,7 +1913,7 @@
   productEntity: PinpointerUniversal
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: universal_pinpointer }
   cost:
-    SupplyPoint: 2
+    SupplyPoint: 1
   categories:
   - ScpAdditional
   conditions:
@@ -1924,8 +1924,6 @@
   id: ScpUplinkBoxCardboardShoulderPatches
   productEntity: BoxCardboardShoulderPatches
   icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: shoulder_patches }
-  cost:
-    SupplyPoint: 1
   categories:
   - ScpAdditional
   conditions:
@@ -1936,8 +1934,6 @@
   id: ScpUplinkBoxHandcuff
   productEntity: BoxHandcuff
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_handcuffs }
-  cost:
-    SupplyPoint: 1
   categories:
   - ScpAdditional
   conditions:
@@ -1948,20 +1944,16 @@
   id: ScpUplinkDeployableBarrier
   productEntity: DeployableBarrier
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: deploy_barrier }
-  cost:
-    SupplyPoint: 1
   categories:
   - ScpAdditional
   conditions:
   - !type:ListingLimitedStockCondition
-    stock: 8
+    stock: 3
 
 - type: listing
   id: ScpUplinkBoxBodyBag
   productEntity: BoxBodyBag
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_bodybags }
-  cost:
-    SupplyPoint: 1
   categories:
   - ScpAdditional
   conditions:
@@ -1973,7 +1965,7 @@
   productEntity: BoxCleanerGrenades
   icon: { sprite: _Sunrise/Interface/Misc/nt_icons.rsi, state: box_flashbangs }
   cost:
-    SupplyPoint: 2
+    SupplyPoint: 1
   categories:
   - ScpAdditional
   conditions:

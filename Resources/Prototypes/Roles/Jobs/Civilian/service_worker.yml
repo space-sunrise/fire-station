@@ -12,6 +12,11 @@
   supervisors: job-supervisors-service
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-attendant
+  - job-alt-title-waiter
+  # Sunrise-End
   access:
   - Service
   - Maintenance

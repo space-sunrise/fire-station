@@ -11,6 +11,7 @@
   discipline: Experimental
   tier: 3
   cost: 15000
+  defaultToScpScale: 0.5 # Fire Edit
   recipeUnlocks:
   - ExosuitFabricatorHyperConvectionMachineCircuitboard
   technologyPrerequisites:

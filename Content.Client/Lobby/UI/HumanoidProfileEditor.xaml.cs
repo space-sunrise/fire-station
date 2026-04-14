@@ -219,8 +219,8 @@ namespace Content.Client.Lobby.UI
 
             PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-male-text"), (int) Gender.Male);
             PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-female-text"), (int) Gender.Female);
-            PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-epicene-text"), (int) Gender.Epicene);
-            PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-neuter-text"), (int) Gender.Neuter);
+            // PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-epicene-text"), (int) Gender.Epicene); // Fire Edit
+            // PronounsButton.AddItem(Loc.GetString("humanoid-profile-editor-pronouns-neuter-text"), (int) Gender.Neuter); // Fire Edit
 
             PronounsButton.OnItemSelected += args =>
             {
@@ -531,6 +531,20 @@ namespace Content.Client.Lobby.UI
 
             RefreshAntags();
             RefreshJobs();
+
+            // Sunrise-Start
+            if (JobList.Parent is ScrollContainer jobScrollContainer)
+            {
+                jobScrollContainer.OnScrolled += () =>
+                {
+                    foreach (var child in UserInterfaceManager.ModalRoot.Children.ToArray())
+                    {
+                        if (child is Popup popup)
+                            popup.Close();
+                    }
+                };
+            }
+            // Sunrise-End
 
             #endregion Jobs
 
@@ -1168,6 +1182,53 @@ namespace Content.Client.Lobby.UI
 
                     _jobPriorities.Add((job.ID, selector));
                     jobContainer.AddChild(selector);
+
+                    // Sunrise-Start: Альтернативные названия должностей
+                    if (job.AlternativeTitles.Count > 0)
+                    {
+                        var altTitleBtn = new OptionButton()
+                        {
+                            Margin = new Thickness(5f, 0f),
+                        };
+
+                        // Стандартное название
+                        altTitleBtn.AddItem(job.LocalizedName, 0);
+
+                        for (var i = 0; i < job.AlternativeTitles.Count; i++)
+                        {
+                            altTitleBtn.AddItem(Loc.GetString(job.AlternativeTitles[i]), i + 1);
+                        }
+
+                        // Выбор самого названия
+                        if (Profile != null &&
+                            Profile.JobAlternativeTitles.TryGetValue(job.ID, out var savedAltTitle))
+                        {
+                            var idx = job.AlternativeTitles.IndexOf(savedAltTitle);
+                            if (idx >= 0)
+                                altTitleBtn.SelectId(idx + 1);
+                        }
+
+                        altTitleBtn.OnItemSelected += args =>
+                        {
+                            altTitleBtn.SelectId(args.Id);
+                            if (args.Id == 0)
+                            {
+                                Profile = Profile?.WithJobAlternativeTitle(job.ID, null);
+                            }
+                            else
+                            {
+                                var altTitle = job.AlternativeTitles[args.Id - 1];
+                                Profile = Profile?.WithJobAlternativeTitle(job.ID, altTitle);
+                            }
+
+                            SetDirty();
+                        };
+
+                        // Замена названия должности на выпадающий список
+                        selector.ReplaceTitleWith(altTitleBtn);
+                    }
+                    // Sunrise-End
+
                     jobContainer.AddChild(loadoutWindowBtn);
                     category.AddChild(jobContainer);
                 }

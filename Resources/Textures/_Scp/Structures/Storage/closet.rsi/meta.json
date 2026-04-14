@@ -12,6 +12,15 @@
             "directions": 4
         },
         {
+            "name": "cardboard"
+        },
+        {
+            "name": "cardboard_open"
+        },
+        {
+            "name": "cardboard_special"
+        },
+        {
             "name": "cargo_door",
             "directions": 4
         },

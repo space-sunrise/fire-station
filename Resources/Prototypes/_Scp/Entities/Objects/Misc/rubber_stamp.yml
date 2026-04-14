@@ -86,3 +86,27 @@
     stampState: "paper_stamp-rd"
   - type: Sprite
     state: stamp-rd
+
+- type: entity
+  parent: [RubberStampBase, BaseCommandContraband]
+  id: RubberStampCommandantSquadLeader
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-commandant-squad-leader
+    stampedColor: "#999999"
+    stampState: "paper_stamp-greytide"
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/stamps.rsi
+    state: stamp-csc
+
+- type: entity
+  parent: [RubberStampBase, BaseCommandContraband]
+  id: RubberStampSpecialPurposeSquadLeader
+  components:
+  - type: Stamp
+    stampedName: stamp-component-stamped-name-special-purpose-squad-leader
+    stampedColor: "#bd4b31"
+    stampState: "paper_stamp-warden"
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/stamps.rsi
+    state: stamp-spsc

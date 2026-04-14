@@ -1,4 +1,4 @@
- #Back
+#Back
 
 - type: loadout
   id: TrinketsCargoGPS
@@ -6,7 +6,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: LogisticsService # Fire Edit
+      department: Cargo
       time: 7200 # 2hr
   storage:
     back:
@@ -18,7 +18,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: LogisticsService # Fire Edit
+      department: Cargo
       time: 7200 # 2hr
   storage:
     back:
@@ -30,7 +30,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: LogisticsService # Fire Edit
+      department: Cargo
       time: 7200 # 2hr
   storage:
     back:
@@ -42,7 +42,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: LogisticsService # Fire Edit
+      department: Cargo
       time: 7200 # 2hr
   storage:
     back:
@@ -54,11 +54,11 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: LogisticsService # Fire Edit
+      department: Cargo
       time: 36000 # 10hr
   storage:
     back:
-    - ScpRadioHandheldCommon # Fire edit
+    - RadioHandheld
 
 - type: loadout
   id: TrinketsCargoT
@@ -66,7 +66,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobLogisticsOfficer # Fire Edit
+      role: JobCargoTechnician
       time: 72000 # 20hr
   storage:
     back:
@@ -78,7 +78,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobLogisticsOfficer # Fire Edit
+      role: JobSalvageSpecialist
       time: 72000 # 20hr
   storage:
     back:
@@ -90,7 +90,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobSeniorLogisticsOfficer # Fire Edit
+      role: JobQuartermaster
       time: 72000 # 20hr
   storage:
     back:
@@ -102,7 +102,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobLogisticsOfficer # Fire Edit
+      role: JobSalvageSpecialist
       time: 108000 # 30hr
   storage:
     back:
@@ -114,7 +114,7 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:RoleTimeRequirement
-      role: JobLogisticsOfficer # Fire Edit
+      role: JobSalvageSpecialist
       time: 180000 # 50hr
   storage:
     back:
@@ -126,8 +126,21 @@
   - !type:JobRequirementLoadoutEffect
     requirement:
       !type:DepartmentTimeRequirement
-      department: LogisticsService # Fire Edit
+      department: Cargo
       time: 1080000 # 300hr
   storage:
     back:
     - LegendaryGoldenWeh
+
+# Neck
+
+- type: loadout
+  id: SalvageSpecialistAliveMantle
+  effects:
+  - !type:JobRequirementLoadoutEffect
+    requirement:
+      !type:RoleTimeRequirement
+      role: JobSalvageSpecialist
+      time: 2397600 # 666hr
+  equipment:
+    neck: ClothingNeckMantleGoliathAlive

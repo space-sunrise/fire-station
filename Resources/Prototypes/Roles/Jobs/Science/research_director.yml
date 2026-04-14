@@ -19,6 +19,10 @@
   displayWeight: 50 # Sunrise-Edit
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-science-lead
+  # Sunrise-End
   access:
   - Research
   - Command

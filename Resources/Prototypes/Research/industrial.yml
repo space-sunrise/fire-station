@@ -9,6 +9,7 @@
   discipline: Industrial
   tier: 1
   cost: 7500
+  defaultToScpScale: 0.1 # Fire Edit
   recipeUnlocks:
   - MiningDrill
   - MechEquipmentDrill
@@ -28,6 +29,7 @@
   discipline: Industrial
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.1 # Fire Edit
   recipeUnlocks:
   - RadarConsoleCircuitboard
   - HandHeldMassScanner
@@ -56,6 +58,7 @@
   discipline: Industrial
   tier: 1
   cost: 10000
+  defaultToScpScale: 0.1 # Fire Edit
   recipeUnlocks:
   - FlatpackerMachineCircuitboard
 
@@ -100,6 +103,7 @@
   discipline: Industrial
   tier: 1
   cost: 7500
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - ThermomachineFreezerMachineCircuitBoard
   - GasRecyclerMachineCircuitboard
@@ -113,6 +117,7 @@
   discipline: Industrial
   tier: 1
   cost: 7500
+  defaultToScpScale: 0.1 # Fire Edit
   recipeUnlocks:
   - RipleyHarness
   - RipleyLArm

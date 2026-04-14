@@ -404,7 +404,7 @@
   suffix: Commandant Squad
   components:
   - type: NavMapBeacon
-    defaultText: scp-facility-beacon-commandant-squad
+    defaultText: scp-facility-beacon-commandant-squad-department
 
 - type: entity
   parent: ScpFacilityBeaconSecurity
@@ -412,7 +412,7 @@
   suffix: Special Purpose Squad
   components:
   - type: NavMapBeacon
-    defaultText: scp-facility-beacon-special-purpose-squad
+    defaultText: scp-facility-beacon-special-purpose-squad-department
 
 - type: entity
   parent: ScpFacilityBeaconFoodAndSanitationService
