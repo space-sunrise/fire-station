@@ -1,5 +1,3 @@
-# Fire added — SCP-933: в RSI state tape = рулон в руке/на полу; equipped = полоска на лице (маска ClothingMaskScp933Tape).
-
 # SCP-933-01: один рулон, с него отрываются полоски (UseCount)
 - type: entity
   parent: BaseItemScp

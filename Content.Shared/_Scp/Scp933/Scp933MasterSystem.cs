@@ -79,14 +79,17 @@ public abstract class SharedScp933MasterSystem : EntitySystem
             return;
 
         var humanoidEnt = new Entity<HumanoidAppearanceComponent?>(uid, humanoidComp);
-        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Eyes, false);
-        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Snout, false);
-        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Head, false);
-        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.Hair, false);
-        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.FacialHair, false);
-        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.HeadTop, false);
-        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.HeadSide, false);
-        _humanoid.SetLayerVisibility(humanoidEnt, HumanoidVisualLayers.SnoutCover, false);
+        _humanoid.SetLayersVisibility(humanoidEnt,
+        [
+            HumanoidVisualLayers.Eyes,
+            HumanoidVisualLayers.Snout,
+            HumanoidVisualLayers.Head,
+            HumanoidVisualLayers.Hair,
+            HumanoidVisualLayers.FacialHair,
+            HumanoidVisualLayers.HeadTop,
+            HumanoidVisualLayers.HeadSide,
+            HumanoidVisualLayers.SnoutCover,
+        ], false);
     }
 
     /// <summary>
@@ -100,7 +103,7 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         if (HasComp<Scp933MasterComponent>(victim))
             return;
 
-        AddComp(victim, new Scp933MasterComponent());
+        EnsureComp<Scp933MasterComponent>(victim);
     }
 
     /// <summary>
@@ -120,11 +123,9 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         if (HasComp<Scp933FaceTornComponent>(victim) || HasComp<Scp933MasterComponent>(victim))
             return;
 
-        var torn = new Scp933FaceTornComponent { TornBy = tapeBearer };
-        AddComp(victim, torn);
-
-        if (!HasComp<MutedComponent>(victim))
-            AddComp(victim, new MutedComponent());
+        var torn = EnsureComp<Scp933FaceTornComponent>(victim);
+        torn.TornBy = tapeBearer;
+        EnsureComp<MutedComponent>(victim);
 
         EraseFaceFor933(victim);
 
@@ -140,7 +141,7 @@ public sealed partial class Scp933PeelTapeDoAfterEvent : DoAfterEvent
 {
     public override DoAfterEvent Clone()
     {
-        return this;
+        return new Scp933PeelTapeDoAfterEvent();
     }
 }
 
@@ -149,7 +150,7 @@ public sealed partial class Scp933ApplyTapeDoAfterEvent : DoAfterEvent
 {
     public override DoAfterEvent Clone()
     {
-        return this;
+        return new Scp933ApplyTapeDoAfterEvent();
     }
 }
 
@@ -161,6 +162,10 @@ public sealed partial class Scp933RipTapeDoAfterEvent : DoAfterEvent
 
     public override DoAfterEvent Clone()
     {
-        return this;
+        return new Scp933RipTapeDoAfterEvent
+        {
+            ExpectedMask = ExpectedMask,
+            EmergencyMode = EmergencyMode,
+        };
     }
 }
