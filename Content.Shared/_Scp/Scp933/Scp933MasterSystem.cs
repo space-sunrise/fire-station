@@ -137,7 +137,7 @@ public abstract class SharedScp933MasterSystem : EntitySystem
 }
 
 [Serializable, NetSerializable]
-public sealed partial class Scp933PeelTapeDoAfterEvent : DoAfterEvent
+public sealed partial class Scp933PeelTapeDoAfterEvent : SimpleDoAfterEvent
 {
     public override DoAfterEvent Clone()
     {

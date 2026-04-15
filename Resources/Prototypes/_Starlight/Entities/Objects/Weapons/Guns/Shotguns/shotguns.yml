@@ -94,11 +94,13 @@
   - type: Item
     sprite: _Starlight/Objects/Weapons/Guns/Shotguns/cycler.rsi
     size: Large
+  - type: GunSpreadModifier # Sunrise-Add
+    spread: 1.2
   - type: Gun
     spread: 24
     fireRate: 2
     burstFireRate: 4
-    burstCooldown: 0.45
+    burstCooldown: 0.5
     selectedMode: Burst
     shotsPerBurst: 2
     availableModes:
@@ -112,7 +114,7 @@
     sprite: _Starlight/Objects/Weapons/Guns/Shotguns/cycler.rsi
   - type: GunRequiresWield
   - type: BallisticAmmoProvider
-    capacity: 14
+    capacity: 12
   - type: Tag # Fire Edit
     tags:
     - LockerGun5x1

@@ -16,6 +16,9 @@
   displayWeight: 30
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  alternativeTitles:
+  - job-alt-title-cyberneticist
+  - job-alt-title-ripperdoc
   access:
     - Research
     - Maintenance
