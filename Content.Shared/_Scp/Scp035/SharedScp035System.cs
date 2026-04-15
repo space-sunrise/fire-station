@@ -212,15 +212,6 @@ public abstract class SharedScp035System : EntitySystem
             _mobState.ChangeMobState(servant, MobState.Dead);
         }
 
-        foreach (var (_, actionUid) in ent.Comp.OrderActions)
-        {
-            _action.RemoveAction(ent.Owner, actionUid);
-        }
-        foreach (var actionUid in ent.Comp.Actions)
-        {
-            _action.RemoveAction(ent.Owner, actionUid);
-        }
-
         var actionsEnum = ent.Comp.Actions.GetEnumerator();
         var orderActionsEnum = ent.Comp.OrderActions.GetEnumerator();
         bool actionsHas = true;

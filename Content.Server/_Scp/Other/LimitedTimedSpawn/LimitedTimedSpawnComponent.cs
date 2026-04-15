@@ -12,9 +12,6 @@ public sealed partial class LimitedTimedSpawnComponent : Component
     public float Chance = 1.0f;
 
     [DataField]
-    public int SpawnPerInterval = 1;
-
-    [DataField]
     public int EntitiesLimit = 2;
 
     [DataField]
@@ -23,6 +20,6 @@ public sealed partial class LimitedTimedSpawnComponent : Component
     [DataField]
     public TimeSpan IntervalSeconds = TimeSpan.FromSeconds(60);
 
-    [DataField]
+    [ViewVariables]
     public TimeSpan NextSpawn;
 }

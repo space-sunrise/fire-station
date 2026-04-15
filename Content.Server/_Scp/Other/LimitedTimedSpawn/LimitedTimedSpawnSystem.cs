@@ -4,7 +4,8 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Server.GameObjects;
-using Content.Server._Scp.Other.LimitedTimedSpawn;
+
+namespace Content.Server._Scp.Other.LimitedTimedSpawn;
 
 public sealed partial class LimitedTimedSpawnSystem : EntitySystem
 {
@@ -55,11 +56,12 @@ public sealed partial class LimitedTimedSpawnSystem : EntitySystem
             }
         }
 
+        var totalSpawnedCount = 0;
         for (var i = 0; i < _readyToCloneBuffer.Count; i++)
         {
             var (proto, coords, strength, comp) = _readyToCloneBuffer[i];
 
-            if (totalCount < comp.EntitiesLimit)
+            if (totalSpawnedCount < comp.EntitiesLimit)
             {
                 if (_random.Prob(comp.Chance)) // проверка шанса спавна
                 {
@@ -68,7 +70,7 @@ public sealed partial class LimitedTimedSpawnSystem : EntitySystem
                     if (strength != 0)
                         ThrowRand(newEnt, strength);
 
-                    totalCount++;
+                    totalSpawnedCount++;
                 }
             }
 
