@@ -59,8 +59,9 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         if (ent.Comp.MutedByScp933)
             RemComp<MutedComponent>(ent);
 
-        if (ent.Comp.TornBy is { } bearer && TryComp<Scp933MasterComponent>(bearer, out var master))
-            master.FaceTornVictims.Remove(ent);
+        if (ent.Comp.TornBy is { } bearer && TryComp<Scp933MasterComponent>(bearer, out var master) &&
+            master.FaceTornVictims.Remove(ent))
+            Dirty(bearer, master);
     }
 
     private void OnFaceTornMobStateChanged(Entity<Scp933FaceTornComponent> ent, ref MobStateChangedEvent args)

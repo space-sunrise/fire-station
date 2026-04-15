@@ -13,6 +13,7 @@ using Content.Shared.Popups;
 using Content.Shared.Speech.Muting;
 using Robust.Server.Audio;
 using Robust.Shared.Localization;
+using Robust.Shared.Physics.Events;
 namespace Content.Server._Scp.Scp933;
 
 /// <summary>
@@ -29,6 +30,8 @@ public sealed class Scp933TapeSystem : EntitySystem
     [Dependency] private readonly AudioSystem _audio = default!;
     [Dependency] private readonly Scp933MasterSystem _master = default!;
 
+    private readonly Dictionary<EntityUid, HashSet<DoAfterId>> _targetToActiveDoAfters = new();
+
     public override void Initialize()
     {
         base.Initialize();
@@ -42,6 +45,7 @@ public sealed class Scp933TapeSystem : EntitySystem
         SubscribeLocalEvent<Scp933TapeMaskComponent, GotUnequippedEvent>(OnTapeMaskGotUnequipped);
         SubscribeLocalEvent<Scp933TapeMaskComponent, BeingUnequippedAttemptEvent>(OnTapeBeingUnequippedAttempt);
         SubscribeLocalEvent<HumanoidAppearanceComponent, Scp933RipTapeDoAfterEvent>(OnRipTapeDoAfter);
+        SubscribeLocalEvent<HumanoidAppearanceComponent, MoveEvent>(OnTargetMove);
     }
 
     private void OnDuctTapeUseInHand(Entity<DuctTapeComponent> tape, ref UseInHandEvent args)
@@ -78,8 +82,10 @@ public sealed class Scp933TapeSystem : EntitySystem
         if (!TryApplyTape((args.Used, tapeMask), args.User, target.Owner, out var doAfter))
             return;
 
-        if (!_doAfter.TryStartDoAfter(doAfter))
+        if (!_doAfter.TryStartDoAfter(doAfter, out var doAfterId))
             return;
+
+        RegisterDoAfterTracking(target.Owner, doAfterId.Value);
 
         _popup.PopupEntity(Loc.GetString("scp933-apply-start"), args.User, args.User);
         args.Handled = true;
@@ -87,10 +93,15 @@ public sealed class Scp933TapeSystem : EntitySystem
 
     private void OnApplyTapeDoAfter(Entity<Scp933TapeMaskComponent> tapeMask, ref Scp933ApplyTapeDoAfterEvent args)
     {
+        CleanupDoAfterTracking(args.Target);
+
         if (args.Handled || args.Cancelled)
             return;
 
         if (args.Target is not { } victim)
+            return;
+
+        if (!_interaction.InRangeUnobstructed(args.User, victim, popup: false))
             return;
 
         TryCompleteApplyTape(tapeMask, args.User, victim);
@@ -104,8 +115,10 @@ public sealed class Scp933TapeSystem : EntitySystem
         if (!TryRipTape(args.User, target.Owner, out var doAfter))
             return;
 
-        if (!_doAfter.TryStartDoAfter(doAfter))
+        if (!_doAfter.TryStartDoAfter(doAfter, out var doAfterId))
             return;
+
+        RegisterDoAfterTracking(target.Owner, doAfterId.Value);
 
         _popup.PopupEntity(Loc.GetString("scp933-rip-start"), args.User, args.User);
         args.Handled = true;
@@ -162,10 +175,44 @@ public sealed class Scp933TapeSystem : EntitySystem
 
     private void OnRipTapeDoAfter(Entity<HumanoidAppearanceComponent> target, ref Scp933RipTapeDoAfterEvent args)
     {
+        CleanupDoAfterTracking(target.Owner);
+
         if (args.Handled || args.Cancelled)
             return;
 
+        if (!_interaction.InRangeUnobstructed(args.User, target.Owner, popup: false))
+            return;
+
         TryCompleteRipTape(args.User, target, args.ExpectedMask, args.EmergencyMode);
+    }
+
+    private void OnTargetMove(Entity<HumanoidAppearanceComponent> target, ref MoveEvent args)
+    {
+        if (!_targetToActiveDoAfters.TryGetValue(target.Owner, out var activeDoAfters))
+            return;
+
+        foreach (var doAfterId in activeDoAfters)
+        {
+            _doAfter.Cancel(doAfterId);
+        }
+
+        _targetToActiveDoAfters.Remove(target.Owner);
+    }
+
+    private void RegisterDoAfterTracking(EntityUid target, DoAfterId doAfterId)
+    {
+        if (!_targetToActiveDoAfters.ContainsKey(target))
+            _targetToActiveDoAfters[target] = new HashSet<DoAfterId>();
+
+        _targetToActiveDoAfters[target].Add(doAfterId);
+    }
+
+    private void CleanupDoAfterTracking(EntityUid? target)
+    {
+        if (target == null || !_targetToActiveDoAfters.ContainsKey(target.Value))
+            return;
+
+        _targetToActiveDoAfters.Remove(target.Value);
     }
 
     public bool TryPeelTape(Entity<DuctTapeComponent> tape, EntityUid user, out DoAfterArgs doAfter)
@@ -254,7 +301,6 @@ public sealed class Scp933TapeSystem : EntitySystem
             BreakOnDamage = true,
             BreakOnDropItem = true,
             BreakOnHandChange = true,
-            BreakOnTargetMove = true,
             NeedHand = true,
         };
 
@@ -316,14 +362,13 @@ public sealed class Scp933TapeSystem : EntitySystem
             new Scp933RipTapeDoAfterEvent
             {
                 ExpectedMask = GetNetEntity(maskUid),
-                EmergencyMode = emergencyMode
+                EmergencyMode = emergencyMode,
             },
             target,
             target: target)
         {
             BreakOnMove = true,
             BreakOnDamage = true,
-            BreakOnTargetMove = true,
             NeedHand = true,
         };
 
@@ -352,11 +397,12 @@ public sealed class Scp933TapeSystem : EntitySystem
                 return false;
             }
 
-            if (!TryComp<Scp933TapeMaskComponent>(maskUid, out tapeMask))
+            if (!TryComp<Scp933TapeMaskComponent>(maskUid, out var tapeMaskTemp))
             {
                 _popup.PopupEntity(Loc.GetString("scp933-rip-master-only"), user, user, PopupType.MediumCaution);
                 return false;
             }
+            tapeMask = tapeMaskTemp!;
 
             if (!tapeMask.EmergencyRipAvailable)
             {
@@ -371,8 +417,9 @@ public sealed class Scp933TapeSystem : EntitySystem
             if (!TryGetScp933TapeMask(target, out maskUid))
                 return false;
 
-            if (!TryComp<Scp933TapeMaskComponent>(maskUid, out tapeMask))
+            if (!TryComp<Scp933TapeMaskComponent>(maskUid, out var tapeMaskTemp))
                 return false;
+            tapeMask = tapeMaskTemp!;
         }
 
         if (!_interaction.InRangeUnobstructed(user, target, popup: true))
