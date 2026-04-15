@@ -1,3 +1,4 @@
+using System;
 using Robust.Shared.GameStates;
 using Robust.Shared.Audio;
 
@@ -9,6 +10,9 @@ namespace Content.Shared._Scp.Scp933;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp933TapeMaskComponent : Component
 {
+    public const float MinimumApplyDelaySeconds = 0.1f;
+    public const float MinimumRipDelaySeconds = 0.1f;
+
     /// <summary>
     /// Время наклейки полоски (do-after) на себя или другого.
     /// </summary>
@@ -16,10 +20,20 @@ public sealed partial class Scp933TapeMaskComponent : Component
     public float ApplyDelaySeconds = 2.5f;
 
     /// <summary>
+    /// Безопасная задержка наклейки с минимальной границей.
+    /// </summary>
+    public float ValidatedApplyDelaySeconds => MathF.Max(MinimumApplyDelaySeconds, ApplyDelaySeconds);
+
+    /// <summary>
     /// Время срыва полоски с лица (do-after).
     /// </summary>
     [DataField, AutoNetworkedField]
     public float RipDelaySeconds = 2.5f;
+
+    /// <summary>
+    /// Безопасная задержка срыва с минимальной границей.
+    /// </summary>
+    public float ValidatedRipDelaySeconds => MathF.Max(MinimumRipDelaySeconds, RipDelaySeconds);
 
     /// <summary>
     /// Временный серверный флаг: разрешить снять ленту только в рамках ритуального do-after.

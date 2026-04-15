@@ -5,12 +5,12 @@
   parent: BaseItem
   id: Scp933DuctTape
   suffix: SCP-933-01
-  name: scp933-duct-tape
-  description: scp933-duct-tape-desc
+  name: duct tape
+  description: A roll of silver duct tape. Sticky and versatile.
   components:
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-933.rsi
-    state: equipped
+    state: tape
   - type: Item
     size: Small
     heldPrefix: equipped
@@ -24,44 +24,3 @@
     guides:
     - ScpResearch
 
-# SCP-933-02: The Tape Master (Faceless Entity)
-- type: entity
-  parent: BaseMobHuman
-  id: Scp933Master
-  suffix: SCP-933-02
-  name: SCP-933-02 "The Tape Master"
-  description: scp933-master-desc
-  components:
-- type: Sprite
-  sprite: _Scp/Mobs/Scp933Master.rsi
-  layers:
-  - map: ["enum.HumanoidVisualLayers.Chest"]
-    state: torso
-    sprite: _Scp/Mobs/Scp933Master.rsi
-  - map: ["enum.HumanoidVisualLayers.Ensnare"]
-    sprite: _Scp/Objects/Scp/scp-933.rsi
-    state: equipped
-    visible: true
-
-  - type: HumanoidAppearance
-    sex: Male
-    # hairColor: "#FFFF00"  # лучше убрать или сделать менее ярким
-
-  - type: Scp933Master
-  - type: TapedFace
-
-  - type: MobThresholds
-    thresholds:
-      0: Alive
-      500: Critical
-      800: Dead
-
-  - type: NpcFactionMember
-    factions:
-    - SimpleHostile
-
-  - type: MeleeWeapon
-    range: 1.5
-    damage:
-      types:
-        Blunt: 25
