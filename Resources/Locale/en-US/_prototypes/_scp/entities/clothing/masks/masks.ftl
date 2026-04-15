@@ -3,4 +3,4 @@ ent-ClothingMaskGasChaosIns = { ent-ClothingMaskGas }
 ent-ClothingMaskGasMobileTaskForceMH = { ent-ClothingMaskGas }
     .desc = { ent-ClothingMaskGas.desc }
 ent-ClothingMaskScp933Tape = SCP-933 face tape
-    .desc = Silver strips pressed over the eyes. It does not breathe with you.
+    .desc = Silver strips pressed over the eyes. They do not breathe with you.
