@@ -81,5 +81,3 @@ ent-ClothingMaskNinja = ninja mask
     .desc = A close-fitting nano-enhanced mask that acts both as an air filter and a post-modern fashion statement.
 ent-ClothingMaskWeldingGas = welding gas mask
     .desc = A gas mask with built in welding goggles and face shield. Looks like a skull, clearly designed by a nerd.
-ent-ClothingMaskScp933Tape = SCP-933 face tape
-    .desc = Silver strips pressed over the eyes. It does not breathe with you.
