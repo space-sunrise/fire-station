@@ -433,7 +433,10 @@ public sealed class Scp933TapeSystem : EntitySystem
         if (!CanRipTape(target, expectedMask, out var tapeMask))
             return false;
 
-        DoRipTape(user, target, tapeMask, emergencyMode);
+        var isHost = HasComp<Scp933MasterComponent>(user);
+        var actualEmergencyMode = !isHost && tapeMask.EmergencyRipAvailable;
+
+        DoRipTape(user, target, tapeMask, actualEmergencyMode);
         return true;
     }
 

@@ -131,6 +131,7 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         var torn = EnsureComp<Scp933FaceTornComponent>(victim);
         torn.TornBy = tapeBearer;
         torn.MutedByScp933 = true;
+        Dirty(victim, torn);
         EnsureComp<MutedComponent>(victim);
 
         EraseFaceFor933(victim);
