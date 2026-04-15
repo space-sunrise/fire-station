@@ -1,4 +1,5 @@
 using Robust.Shared.GameStates;
+using Content.Shared.FixedPoint;
 
 namespace Content.Shared._Scp.Scp933;
 
@@ -8,6 +9,30 @@ namespace Content.Shared._Scp.Scp933;
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
 public sealed partial class Scp933MasterComponent : Component
 {
+    /// <summary>
+    /// Разрешать оживление при переходе в состояние хоста.
+    /// </summary>
+    [DataField]
+    public bool AllowRevivesOnHost = true;
+
+    /// <summary>
+    /// Порог критического состояния после ритуала.
+    /// </summary>
+    [DataField]
+    public FixedPoint2 CriticalThreshold = 700;
+
+    /// <summary>
+    /// Порог смерти после ритуала.
+    /// </summary>
+    [DataField]
+    public FixedPoint2 DeadThreshold = 800;
+
+    /// <summary>
+    /// Урон в ближнем бою после ритуала.
+    /// </summary>
+    [DataField]
+    public FixedPoint2 HostBluntDamage = 25;
+
     /// <summary>
     /// Кому уже сорвали лицо после финального срыва ленты (игроки сами ими играют).
     /// </summary>

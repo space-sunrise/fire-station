@@ -40,8 +40,8 @@
 - type: entity
   parent: ClothingMaskPullableBase
   id: ClothingMaskScp933Tape
-  name: scp933-tape-mask
-  description: scp933-tape-mask-desc
+  name: duct tape strip
+  description: Sticky strips cinched the face tight. You are barely visible and barely heard.
   components:
   - type: Sprite
     sprite: _Scp/Objects/Scp/scp-933.rsi
