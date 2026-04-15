@@ -9,6 +9,7 @@
   discipline: Arsenal
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - WeaponProtoKineticAccelerator
   - ShuttleGunKineticCircuitboard
@@ -25,6 +26,7 @@
   discipline: Arsenal
   tier: 1
   cost: 10000
+  defaultToScpScale: 0.1 # Fire Edit
   recipeUnlocks:
   - BoxShotgunIncendiary
   - MagazineRifleIncendiary
@@ -56,6 +58,7 @@
   discipline: Arsenal
   tier: 1
   cost: 7500
+  defaultToScpScale: 0.5 # Fire Edit
   recipeUnlocks:
   - WeaponLaserCarbine
   # Sunrise-Start
@@ -73,6 +76,7 @@
   discipline: Arsenal
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - MagazineShotgunBeanbag
   - BoxShellTranquilizer
@@ -95,6 +99,7 @@
   discipline: Arsenal
   tier: 1
   cost: 7500
+  defaultToScpScale: 0.3 # Fire Edit
   recipeUnlocks:
   - MagazineRifleUranium
   - MagazinePistolUranium
@@ -126,6 +131,7 @@
   discipline: Arsenal
   tier: 1
   cost: 8000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - Truncheon
   - TelescopicShield
@@ -147,6 +153,7 @@
   discipline: Arsenal
   tier: 1
   cost: 10000
+  defaultToScpScale: 0.1 # Fire Edit
   recipeUnlocks:
   - SignallerAdvanced
   - SignalTrigger
@@ -167,6 +174,7 @@
   discipline: Arsenal
   tier: 1
   cost: 5000
+  defaultToScpScale: 0.1 # Fire Edit
   recipeUnlocks:
   - ClothingBackpackElectropack
 
@@ -181,6 +189,7 @@
   discipline: Arsenal
   tier: 2
   cost: 10000
+  defaultToScpScale: 0.5 # Fire Edit
   recipeUnlocks:
   - WeaponLaserCannon
   - WeaponMechCombatSolarisLaser #Sunrise-Add
@@ -194,6 +203,7 @@
   discipline: Arsenal
   tier: 2
   cost: 10000
+  defaultToScpScale: 0.5 # Fire Edit
   recipeUnlocks:
   - WeaponXrayCannon
   - WeaponMechCombatXray  #Sunrise-Add
@@ -267,6 +277,7 @@
   discipline: Arsenal
   tier: 3
   cost: 15000
+  defaultToScpScale: 0.5 # Fire Edit
   recipeUnlocks:
   - WeaponAdvancedLaser
   - PortableRecharger
@@ -284,6 +295,7 @@
   discipline: Arsenal
   tier: 2
   cost: 8000
+  defaultToScpScale: 0.5 # Fire Edit
   recipeUnlocks:
   - WeaponTemperatureGun
 
@@ -296,6 +308,7 @@
   discipline: Arsenal
   tier: 3
   cost: 15000
+  defaultToScpScale: 0.3 # Fire Edit
   recipeUnlocks:
   - ShellEMPArtillery # Sunrise-Edit
   - PowerCageHigh

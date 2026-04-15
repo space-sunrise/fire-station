@@ -9,6 +9,7 @@
   discipline: Biochemical
   tier: 1
   cost: 4000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
     - BoneSetter
     - BoneGel
@@ -43,6 +44,7 @@
   discipline: Biochemical
   tier: 2
   cost: 8000
+  defaultToScpScale: 0.0 # Fire Edit
   recipeUnlocks:
   - ImplanterExtractor
 

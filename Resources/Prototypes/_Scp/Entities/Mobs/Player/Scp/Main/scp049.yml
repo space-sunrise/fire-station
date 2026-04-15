@@ -91,3 +91,4 @@
     defaultRotation: 90
     horizontalRotation: 90
   - type: Perishable
+  - type: HoldToFace

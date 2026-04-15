@@ -8,6 +8,11 @@
   supervisors: job-supervisors-hop
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-custodian
+  - job-alt-title-mop-master
+  # Sunrise-End
   access:
   - Service
   - Janitor

@@ -17,6 +17,8 @@
   displayWeight: 40
   setPreference: false # Fire added
   overrideConsoleVisibility: false # Fire added
+  alternativeTitles:
+  - job-alt-title-inspector
   access:
   - Command
   - Service

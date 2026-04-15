@@ -12,3 +12,9 @@
   - type: StationRecordKeyStorage
   - type: PresetIdCard
     job: ClassD
+  - type: Tag
+    tags:
+    - ClothMade
+    - Recyclable
+    - WhitelistChameleon
+    - PrisonUniform

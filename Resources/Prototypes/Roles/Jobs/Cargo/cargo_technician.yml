@@ -7,8 +7,12 @@
   icon: "JobIconCargoTechnician"
   supervisors: job-supervisors-qm
   displayWeight: 0  # Sunrise
-  overrideConsoleVisibility: false
+  overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-handyman
+  # Sunrise-End
   access:
   - Cargo
   - Maintenance

@@ -1,0 +1,41 @@
+# Base prototypes
+- type: latheRecipe
+  abstract: true
+  id: BaseNeckShoulderPatchRecipe
+  categories:
+  - Neck
+  completetime: 1
+  materials:
+    Cloth: 100
+
+# Jumpsuit
+- type: latheRecipe
+  parent: BaseJumpsuitRecipe
+  id: ClothingUniformClassD
+  result: ClothingUniformClassD
+
+# Neck
+- type: latheRecipe
+  parent: BaseNeckShoulderPatchRecipe
+  id: ClothingNeckShoulderPatchWhite
+  result: ClothingNeckShoulderPatchWhite
+
+- type: latheRecipe
+  parent: BaseNeckShoulderPatchRecipe
+  id: ClothingNeckShoulderPatchGreen
+  result: ClothingNeckShoulderPatchGreen
+  
+- type: latheRecipe
+  parent: BaseNeckShoulderPatchRecipe
+  id: ClothingNeckShoulderPatchBlue
+  result: ClothingNeckShoulderPatchBlue
+  
+- type: latheRecipe
+  parent: BaseNeckShoulderPatchRecipe
+  id: ClothingNeckShoulderPatchRed
+  result: ClothingNeckShoulderPatchRed
+  
+- type: latheRecipe
+  parent: BaseNeckShoulderPatchRecipe
+  id: ClothingNeckShoulderPatchYellow
+  result: ClothingNeckShoulderPatchYellow

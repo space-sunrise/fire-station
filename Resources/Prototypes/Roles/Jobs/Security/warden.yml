@@ -18,6 +18,10 @@
   displayWeight: 70  # Sunrise
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-jailer
+  # Sunrise-End
   access:
   - Security
   - Brig

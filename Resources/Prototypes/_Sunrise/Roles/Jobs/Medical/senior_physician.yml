@@ -19,6 +19,8 @@
   displayWeight: 35
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  alternativeTitles:
+  - job-alt-title-attending-physician
   access:
   - Medical
   - Maintenance

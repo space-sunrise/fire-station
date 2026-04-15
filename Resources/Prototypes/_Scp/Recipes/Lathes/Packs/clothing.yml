@@ -1,0 +1,8 @@
+- type: latheRecipePack
+  id: ShoulderPatch
+  recipes:
+  - ClothingNeckShoulderPatchWhite
+  - ClothingNeckShoulderPatchGreen
+  - ClothingNeckShoulderPatchBlue
+  - ClothingNeckShoulderPatchRed
+  - ClothingNeckShoulderPatchYellow
