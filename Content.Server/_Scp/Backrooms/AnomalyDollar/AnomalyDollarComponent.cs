@@ -1,5 +1,4 @@
 
-
 namespace Content.Server._Scp.Backrooms.AnomalyDollar;
 
 [RegisterComponent]

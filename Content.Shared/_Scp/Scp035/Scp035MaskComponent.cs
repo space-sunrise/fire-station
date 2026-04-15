@@ -89,22 +89,20 @@ public sealed partial class Scp035MaskComponent : Component
     };
 
     [DataField]
-    public EntProtoId ActionRaiseArmy = "ActionScp035RaiseArmy";
+    public List<EntProtoId> Actions = new()
+    {
+        "ActionScp035RaiseArmy",
+        "ActionScp035Stun"
+    };
 
     [DataField]
-    public EntProtoId ActionOrderStay = "ActionScp035OrderStay";
-
-    [DataField]
-    public EntProtoId ActionOrderFollow = "ActionScp035OrderFollow";
-
-    [DataField]
-    public EntProtoId ActionOrderKill = "ActionScp035OrderKill";
-
-    [DataField]
-    public EntProtoId ActionOrderLoose = "ActionScp035OrderLoose";
-
-    [DataField]
-    public EntProtoId ActionStun = "ActionScp035Stun";
+    public Dictionary<MaskOrderType, EntProtoId> OrderActions = new()
+    {
+        { MaskOrderType.Stay, "ActionScp035OrderStay" },
+        { MaskOrderType.Follow, "ActionScp035OrderFollow" },
+        { MaskOrderType.Kill, "ActionScp035OrderKill" },
+        { MaskOrderType.Loose, "ActionScp035OrderLoose" }
+    };
 
     [ViewVariables]
     public TimeSpan NextMessaging = TimeSpan.Zero;

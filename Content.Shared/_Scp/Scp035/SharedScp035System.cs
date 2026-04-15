@@ -18,6 +18,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Network;
 using Robust.Shared.Physics.Systems;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 
 namespace Content.Shared._Scp.Scp035;
@@ -67,12 +68,32 @@ public abstract class SharedScp035System : EntitySystem
         var maskUserComponent = EnsureComp<Scp035MaskUserComponent>(args.Wearer);
         maskUserComponent.Mask = ent;
 
-        _action.AddAction(args.Wearer, ent.Comp.ActionRaiseArmy, maskUserComponent.ActionRaiseArmy);
-        _action.AddAction(args.Wearer, ent.Comp.ActionOrderStay, maskUserComponent.ActionOrderStayEntity);
-        _action.AddAction(args.Wearer, ent.Comp.ActionOrderFollow, maskUserComponent.ActionOrderFollowEntity);
-        _action.AddAction(args.Wearer, ent.Comp.ActionOrderKill, maskUserComponent.ActionOrderKillEmEntity);
-        _action.AddAction(args.Wearer, ent.Comp.ActionOrderLoose, maskUserComponent.ActionOrderLooseEntity);
-        _action.AddAction(args.Wearer, ent.Comp.ActionStun, maskUserComponent.ActionStunEntity);
+        var actionsEnum = ent.Comp.Actions.GetEnumerator();
+        var orderActionsEnum = ent.Comp.OrderActions.GetEnumerator();
+        bool actionsHas = true;
+        bool orderActionsHas = true;
+
+        while (actionsHas || orderActionsHas)
+        {
+            actionsHas = actionsHas && actionsEnum.MoveNext();
+            orderActionsHas = orderActionsHas && orderActionsEnum.MoveNext();
+
+            if (actionsHas)
+            {
+                var actionUid = _action.AddAction(args.Wearer, actionsEnum.Current);
+                if (actionUid != null)
+                    maskUserComponent.Actions.Add(actionUid.Value);
+            }
+
+            if (orderActionsHas)
+            {
+                var data = orderActionsEnum.Current;
+                var actionUid = _action.AddAction(args.Wearer, data.Value);
+
+                if (actionUid != null)
+                    maskUserComponent.OrderActions[data.Key] = actionUid.Value;
+            }
+        }
         Dirty(args.Wearer, maskUserComponent);
 
         _faction.ClearFactions(args.Wearer);
@@ -191,12 +212,35 @@ public abstract class SharedScp035System : EntitySystem
             _mobState.ChangeMobState(servant, MobState.Dead);
         }
 
-        _action.RemoveAction(ent.Owner, ent.Comp.ActionRaiseArmy);
-        _action.RemoveAction(ent.Owner, ent.Comp.ActionOrderStayEntity);
-        _action.RemoveAction(ent.Owner, ent.Comp.ActionOrderFollowEntity);
-        _action.RemoveAction(ent.Owner, ent.Comp.ActionOrderKillEmEntity);
-        _action.RemoveAction(ent.Owner, ent.Comp.ActionOrderLooseEntity);
-        _action.RemoveAction(ent.Owner, ent.Comp.ActionStunEntity);
+        foreach (var (_, actionUid) in ent.Comp.OrderActions)
+        {
+            _action.RemoveAction(ent.Owner, actionUid);
+        }
+        foreach (var actionUid in ent.Comp.Actions)
+        {
+            _action.RemoveAction(ent.Owner, actionUid);
+        }
+
+        var actionsEnum = ent.Comp.Actions.GetEnumerator();
+        var orderActionsEnum = ent.Comp.OrderActions.GetEnumerator();
+        bool actionsHas = true;
+        bool orderActionsHas = true;
+
+        while (actionsHas || orderActionsHas)
+        {
+            actionsHas = actionsHas && actionsEnum.MoveNext();
+            orderActionsHas = orderActionsHas && orderActionsEnum.MoveNext();
+
+            if (actionsHas)
+            {
+                _action.RemoveAction(ent.Owner, actionsEnum.Current);
+            }
+
+            if (orderActionsHas)
+            {
+                _action.RemoveAction(ent.Owner, orderActionsEnum.Current.Value);
+            }
+        }
     }
 
     private void OnServantShutdown(Entity<Scp035ServantComponent> ent, ref ComponentShutdown args)
@@ -227,15 +271,11 @@ public abstract class SharedScp035System : EntitySystem
         if (!Resolve(uid, ref component))
             return;
 
-        _action.SetToggled(component.ActionOrderStayEntity, component.CurrentOrder == MaskOrderType.Stay);
-        _action.SetToggled(component.ActionOrderFollowEntity, component.CurrentOrder == MaskOrderType.Follow);
-        _action.SetToggled(component.ActionOrderKillEmEntity, component.CurrentOrder == MaskOrderType.Kill);
-        _action.SetToggled(component.ActionOrderLooseEntity, component.CurrentOrder == MaskOrderType.Loose);
-
-        _action.StartUseDelay(component.ActionOrderStayEntity);
-        _action.StartUseDelay(component.ActionOrderFollowEntity);
-        _action.StartUseDelay(component.ActionOrderKillEmEntity);
-        _action.StartUseDelay(component.ActionOrderLooseEntity);
+        foreach (var (order, actionUid) in component.OrderActions)
+        {
+            _action.SetToggled(actionUid, component.CurrentOrder == order);
+            _action.StartUseDelay(actionUid);
+        }
     }
 
     public void UpdateAllServants(EntityUid uid, Scp035MaskUserComponent component)

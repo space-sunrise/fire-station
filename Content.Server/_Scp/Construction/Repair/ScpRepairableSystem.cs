@@ -4,6 +4,7 @@ using Content.Server.DoAfter;
 using Content.Server.Popups;
 using Content.Server.Stack;
 using Content.Server.Tools;
+using Content.Server.Interaction;
 using Content.Shared._Scp.Damage.ExaminableDamage;
 using Content.Shared.Construction;
 using Content.Shared.Construction.Prototypes;
@@ -33,8 +34,8 @@ public sealed class ScpRepairableSystem : EntitySystem
     [Dependency] private readonly ContainerSystem _container = default!;
     [Dependency] private readonly StackSystem _stack = default!;
     [Dependency] private readonly ToolSystem _tool = default!;
+    [Dependency] private readonly InteractionSystem _interaction = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
-    [Dependency] private readonly SharedInteractionSystem _interaction = default!;
 
     private const int ExaminePriority = SharedScpExaminableDamageSystem.Priority - 3;
 
@@ -51,7 +52,7 @@ public sealed class ScpRepairableSystem : EntitySystem
 
     private void OnInteractUsing(Entity<ScpRepairableComponent> ent, ref InteractUsingEvent args)
     {
-        if (args.Handled || !_interaction.InRangeUnobstructed(args.User, ent.Owner))
+        if (args.Handled)
             return;
 
         if (TryRepair(ent, args.User, args.Used))
@@ -226,8 +227,9 @@ public sealed class ScpRepairableSystem : EntitySystem
     /// </summary>
     public bool CanRepair(Entity<ScpRepairableComponent> ent, EntityUid user)
     {
-        return CheckRepairConditions(ent, user, ent.Comp) &&
-               CanRepairGraph(ent);
+        return _interaction.InRangeUnobstructed(user, ent.Owner) &&
+            CheckRepairConditions(ent, user, ent.Comp) &&
+            CanRepairGraph(ent);
     }
 
     /// <summary>

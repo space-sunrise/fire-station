@@ -34,6 +34,12 @@ public sealed partial class Scp035MaskUserComponent : Component
     public MaskOrderType CurrentOrder = MaskOrderType.Follow;
 
     [AutoNetworkedField]
+    public List<EntityUid> Actions;
+
+    [AutoNetworkedField]
+    public Dictionary<MaskOrderType, EntityUid> OrderActions;
+
+    /*[AutoNetworkedField]
     public EntityUid ActionRaiseArmy;
 
     [AutoNetworkedField]
@@ -49,5 +55,5 @@ public sealed partial class Scp035MaskUserComponent : Component
     public EntityUid ActionOrderLooseEntity;
 
     [AutoNetworkedField]
-    public EntityUid ActionStunEntity;
+    public EntityUid ActionStunEntity;*/
 }
