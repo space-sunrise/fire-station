@@ -61,6 +61,13 @@ public sealed partial class Scp933TapeMaskComponent : Component
     public bool EmergencyRipAvailable = true;
 
     /// <summary>
+    /// SCP-933 добавил MutedComponent на этого владельца маски.
+    /// Используется для корректного снятия мута при снятии маски.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public bool MutedByScp933;
+
+    /// <summary>
     /// Звук, когда полоску наклеивают на лицо.
     /// </summary>
     [DataField]

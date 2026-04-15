@@ -56,7 +56,8 @@ public abstract class SharedScp933MasterSystem : EntitySystem
         if (!_net.IsServer)
             return;
 
-        RemComp<MutedComponent>(ent);
+        if (ent.Comp.MutedByScp933)
+            RemComp<MutedComponent>(ent);
 
         if (ent.Comp.TornBy is { } bearer && TryComp<Scp933MasterComponent>(bearer, out var master))
             master.FaceTornVictims.Remove(ent);
@@ -64,6 +65,9 @@ public abstract class SharedScp933MasterSystem : EntitySystem
 
     private void OnFaceTornMobStateChanged(Entity<Scp933FaceTornComponent> ent, ref MobStateChangedEvent args)
     {
+        if (!_net.IsServer)
+            return;
+
         if (args.NewMobState != MobState.Dead)
             return;
 
@@ -125,6 +129,7 @@ public abstract class SharedScp933MasterSystem : EntitySystem
 
         var torn = EnsureComp<Scp933FaceTornComponent>(victim);
         torn.TornBy = tapeBearer;
+        torn.MutedByScp933 = true;
         EnsureComp<MutedComponent>(victim);
 
         EraseFaceFor933(victim);

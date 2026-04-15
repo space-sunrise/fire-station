@@ -16,6 +16,18 @@ public sealed partial class Scp933MasterComponent : Component
     public bool AllowRevivesOnHost = true;
 
     /// <summary>
+    /// Исцелять хоста и его жертв при переходе в состояние хоста.
+    /// </summary>
+    [DataField]
+    public bool HealOnHostBecoming = true;
+
+    /// <summary>
+    /// Порог живого состояния после ритуала.
+    /// </summary>
+    [DataField]
+    public FixedPoint2 AliveThreshold = FixedPoint2.Zero;
+
+    /// <summary>
     /// Порог критического состояния после ритуала.
     /// </summary>
     [DataField]
