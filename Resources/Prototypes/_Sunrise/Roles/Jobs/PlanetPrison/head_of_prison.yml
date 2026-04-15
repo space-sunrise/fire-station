@@ -20,6 +20,8 @@
   alwaysUseSpawner: true
   setPreference: false # Fire edit
   radioBold: true
+  alternativeTitles:
+  - job-alt-title-colony-warden
   displayWeight: 100
   accessGroups:
     - AllAccess

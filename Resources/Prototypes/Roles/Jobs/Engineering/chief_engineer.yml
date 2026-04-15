@@ -22,6 +22,10 @@
   canBeAntag: true # RaMbUt878-edit
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-chief-mechanic
+  # Sunrise-End
   access:
   - Maintenance
   - Engineering

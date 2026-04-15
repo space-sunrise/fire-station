@@ -15,6 +15,11 @@
   displayWeight: 10
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-law-enforcer
+  - job-alt-title-security-specialist
+  # Sunrise-End
   access:
   - Security
   - Brig

@@ -115,6 +115,7 @@
   - ClothingHeadHatWarden
   - ClothingUniformJumpsuitWarden
   - ClothingUniformJumpskirtWarden
+  - ClothingUniformClassD # Fire Edit
 
 - type: latheRecipePack
   id: ClothingService

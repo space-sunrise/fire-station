@@ -3,7 +3,6 @@
   name: job-name-mail-carrier
   description: job-description-mail-carrier
   playTimeTracker: JobMailCarrier
-  overrideConsoleVisibility: false # Fire added
   requirements:
     - !type:DepartmentTimeRequirement
       department: Cargo
@@ -13,6 +12,10 @@
   supervisors: job-supervisors-qm #job-supervisors-hop
   displayWeight: 30
   setPreference: false # Fire added
+  overrideConsoleVisibility: false # Fire added
+  alternativeTitles:
+  - job-alt-title-postman
+  - job-alt-title-courier
   # salary: 1000
   access:
   - Maintenance

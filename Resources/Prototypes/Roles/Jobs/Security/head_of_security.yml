@@ -25,6 +25,12 @@
   displayWeight: 80 # Sunrise-Edit
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  alternativeTitles:
+  - job-alt-title-security-chief
+  - job-alt-title-law-enforcement-chief
+  - job-alt-title-station-sheriff
+  # Sunrise-End
   access:
   - HeadOfSecurity
   - Command

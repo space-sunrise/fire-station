@@ -11,8 +11,11 @@
   icon: "JobIconParamedic"
   supervisors: job-supervisors-cmo
   displayWeight: 25  # Sunrise
-  overrideConsoleVisibility: false
+  overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  # Sunrise-Start
+  # alternativeTitles:
+  # Sunrise-End
   access:
   - Medical
   - Maintenance
