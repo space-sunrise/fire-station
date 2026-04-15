@@ -44,7 +44,6 @@ public sealed partial class LimitedTimedSpawnSystem : EntitySystem
 
         var totalCount = 0;
         var query = EntityQueryEnumerator<LimitedTimedSpawnComponent>();
-        var readyToClone = new List<(string Proto, EntityCoordinates Coords, float Strength, LimitedTimedSpawnComponent Comp)>();
 
         while (query.MoveNext(out var uid, out var component))
         {
@@ -52,13 +51,13 @@ public sealed partial class LimitedTimedSpawnSystem : EntitySystem
             {
                 var proto = component.Prototype;
                 totalCount++;
-                readyToClone.Add((proto, Transform(uid).Coordinates, component.ImpulseStrength, component));
+                _readyToCloneBuffer.Add((proto, Transform(uid).Coordinates, component.ImpulseStrength, component));
             }
         }
 
-        for (var i = 0; i < readyToClone.Count; i++)
+        for (var i = 0; i < _readyToCloneBuffer.Count; i++)
         {
-            var (proto, coords, strength, comp) = readyToClone[i];
+            var (proto, coords, strength, comp) = _readyToCloneBuffer[i];
 
             if (totalCount < comp.EntitiesLimit)
             {
