@@ -25,15 +25,24 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         if (!TryComp<Scp933MasterComponent>(uid, out var master))
             return;
 
-        if (HasComp<DamageableComponent>(uid))
-            _damageable.SetAllDamage(uid, FixedPoint2.Zero);
+        if (master.HealOnHostBecoming)
+        {
+            if (HasComp<DamageableComponent>(uid))
+                _damageable.SetAllDamage(uid, FixedPoint2.Zero);
+
+            foreach (var victim in master.FaceTornVictims)
+            {
+                if (HasComp<DamageableComponent>(victim))
+                    _damageable.SetAllDamage(victim, FixedPoint2.Zero);
+            }
+        }
 
         if (!TryComp<MobThresholdsComponent>(uid, out var thresholds))
             return;
 
         // Target can be dead before ritual completes; explicitly allow revive transition.
         _mobThresholds.SetAllowRevives(uid, master.AllowRevivesOnHost, thresholds);
-        _mobThresholds.SetMobStateThreshold(uid, FixedPoint2.Zero, MobState.Alive, thresholds);
+        _mobThresholds.SetMobStateThreshold(uid, master.AliveThreshold, MobState.Alive, thresholds);
         _mobThresholds.SetMobStateThreshold(uid, master.CriticalThreshold, MobState.Critical, thresholds);
         _mobThresholds.SetMobStateThreshold(uid, master.DeadThreshold, MobState.Dead, thresholds);
         _mobThresholds.VerifyThresholds(uid, thresholds);
