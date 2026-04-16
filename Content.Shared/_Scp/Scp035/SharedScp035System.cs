@@ -1,4 +1,5 @@
-﻿using Content.Shared._Scp.Fear.Components;
+﻿using System.Linq;
+using Content.Shared._Scp.Fear.Components;
 using Content.Shared.Actions;
 using Content.Shared.Clothing;
 using Content.Shared.Damage.Components;
@@ -68,32 +69,7 @@ public abstract class SharedScp035System : EntitySystem
         var maskUserComponent = EnsureComp<Scp035MaskUserComponent>(args.Wearer);
         maskUserComponent.Mask = ent;
 
-        var actionsEnum = ent.Comp.Actions.GetEnumerator();
-        var orderActionsEnum = ent.Comp.OrderActions.GetEnumerator();
-        bool actionsHas = true;
-        bool orderActionsHas = true;
-
-        while (actionsHas || orderActionsHas)
-        {
-            actionsHas = actionsHas && actionsEnum.MoveNext();
-            orderActionsHas = orderActionsHas && orderActionsEnum.MoveNext();
-
-            if (actionsHas)
-            {
-                var actionUid = _action.AddAction(args.Wearer, actionsEnum.Current);
-                if (actionUid != null)
-                    maskUserComponent.Actions.Add(actionUid.Value);
-            }
-
-            if (orderActionsHas)
-            {
-                var data = orderActionsEnum.Current;
-                var actionUid = _action.AddAction(args.Wearer, data.Value);
-
-                if (actionUid != null)
-                    maskUserComponent.OrderActions[data.Key] = actionUid.Value;
-            }
-        }
+        ToggleActions(maskUserComponent, ent.Comp, ent, true);
         Dirty(args.Wearer, maskUserComponent);
 
         _faction.ClearFactions(args.Wearer);
@@ -179,7 +155,7 @@ public abstract class SharedScp035System : EntitySystem
 
         if (!HasComp<HumanoidAppearanceComponent>(args.Target))
         {
-            if(_net.IsServer)
+            if (_net.IsServer)
                 _popup.PopupEntity(Loc.GetString("scp-035-reject-target"), args.Performer, args.Performer, PopupType.LargeCaution);
 
             return;
@@ -212,26 +188,7 @@ public abstract class SharedScp035System : EntitySystem
             _mobState.ChangeMobState(servant, MobState.Dead);
         }
 
-        var actionsEnum = ent.Comp.Actions.GetEnumerator();
-        var orderActionsEnum = ent.Comp.OrderActions.GetEnumerator();
-        bool actionsHas = true;
-        bool orderActionsHas = true;
-
-        while (actionsHas || orderActionsHas)
-        {
-            actionsHas = actionsHas && actionsEnum.MoveNext();
-            orderActionsHas = orderActionsHas && orderActionsEnum.MoveNext();
-
-            if (actionsHas)
-            {
-                _action.RemoveAction(ent.Owner, actionsEnum.Current);
-            }
-
-            if (orderActionsHas)
-            {
-                _action.RemoveAction(ent.Owner, orderActionsEnum.Current.Value);
-            }
-        }
+        ToggleActions(ent.Comp, null, ent, false);
     }
 
     private void OnServantShutdown(Entity<Scp035ServantComponent> ent, ref ComponentShutdown args)
@@ -266,6 +223,62 @@ public abstract class SharedScp035System : EntitySystem
         {
             _action.SetToggled(actionUid, component.CurrentOrder == order);
             _action.StartUseDelay(actionUid);
+        }
+    }
+
+    private void ToggleActions(
+        Scp035MaskUserComponent maskUserComponent,
+        Scp035MaskComponent? maskComponent,
+        EntityUid user,
+        bool active)
+    {
+        var existingActions = maskUserComponent.Actions;
+        var existingOrderActions = maskUserComponent.OrderActions;
+
+        var newActions = active ? maskComponent?.Actions : null;
+        var newOrderActions = active ? maskComponent?.OrderActions : null;
+
+        var orderKeys = newOrderActions != null
+            ? newOrderActions.Keys.ToList()
+            : existingOrderActions.Keys.ToList();
+
+        var count = Math.Max(
+            Math.Max(existingActions.Count, newActions?.Count ?? 0),
+            orderKeys.Count
+        );
+
+        for (int i = 0; i < count; i++)
+        {
+            if (i < existingActions.Count)
+                _action.RemoveAction(existingActions[i]);
+
+            if (newActions != null && i < newActions.Count)
+            {
+                var uid = _action.AddAction(user, newActions[i]);
+                if (uid != null)
+                    existingActions.Add(uid.Value);
+            }
+
+            if (i < orderKeys.Count)
+            {
+                var key = orderKeys[i];
+
+                if (existingOrderActions.TryGetValue(key, out var existingUid))
+                    _action.RemoveAction(existingUid);
+
+                if (newOrderActions != null && newOrderActions.TryGetValue(key, out var proto))
+                {
+                    var uid = _action.AddAction(user, proto);
+                    if (uid != null)
+                        existingOrderActions[key] = uid.Value;
+                }
+            }
+        }
+
+        if (!active)
+        {
+            existingActions.Clear();
+            existingOrderActions.Clear();
         }
     }
 

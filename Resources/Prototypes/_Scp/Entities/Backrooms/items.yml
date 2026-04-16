@@ -191,14 +191,13 @@
   name: strange dollar
   suffix: SCP Item
   components:
-  - type: AnomalyDollar
-  - type: TimedSpawner
-    prototypes:
-    - ScpAnomalyDollar
+  - type: LimitedTimedSpawn
+    prototype: ScpAnomalyDollar
+    copyCopies: false
     chance: 0.4
+    entitiesLimit: 10
+    impulseStrength: 200
     intervalSeconds: 900
-    minimumEntitiesSpawned: 1
-    maximumEntitiesSpawned: 10
   - type: Sprite
     sprite: _Scp/Objects/Items/dollar.rsi
     state: icon
@@ -243,11 +242,14 @@
     - Scream
     cooldownVariations: 10
     mode: Random
+  - type: TriggerOnIgnite
+  - type: ExplodeOnTrigger
   - type: Explosive
     explosionType: DefaultStandardEffect
     maxIntensity: 15
     intensitySlope: 5
     totalIntensity: 50
+    canCreateVacuum: false
 
 - type: entity # TODO: Сделать парента этой штуки бьющимся
   parent: DrinkHotCoffee

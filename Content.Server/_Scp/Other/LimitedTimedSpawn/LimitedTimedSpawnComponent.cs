@@ -9,6 +9,9 @@ public sealed partial class LimitedTimedSpawnComponent : Component
     public EntProtoId Prototype;
 
     [DataField]
+    public bool CopyCopies = true;
+
+    [DataField]
     public float Chance = 1.0f;
 
     [DataField]

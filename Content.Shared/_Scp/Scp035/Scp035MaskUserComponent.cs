@@ -38,22 +38,4 @@ public sealed partial class Scp035MaskUserComponent : Component
 
     [AutoNetworkedField]
     public Dictionary<MaskOrderType, EntityUid> OrderActions;
-
-    /*[AutoNetworkedField]
-    public EntityUid ActionRaiseArmy;
-
-    [AutoNetworkedField]
-    public EntityUid ActionOrderStayEntity;
-
-    [AutoNetworkedField]
-    public EntityUid ActionOrderFollowEntity;
-
-    [AutoNetworkedField]
-    public EntityUid ActionOrderKillEmEntity;
-
-    [AutoNetworkedField]
-    public EntityUid ActionOrderLooseEntity;
-
-    [AutoNetworkedField]
-    public EntityUid ActionStunEntity;*/
 }

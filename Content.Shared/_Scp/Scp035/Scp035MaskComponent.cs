@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Damage;
 using Content.Shared.FixedPoint;
 using Content.Shared.Ghost.Roles.Raffles;
@@ -21,10 +22,10 @@ public sealed partial class Scp035MaskComponent : Component
     public TimeSpan NextMessageDelay = TimeSpan.FromSeconds(60);
 
     [DataField]
-    public List<LocId> Messages = new();
+    public List<LocId> Messages = [];
 
     [DataField]
-    public string ReagentName = "PoisonWine";
+    public ProtoId<ReagentPrototype> ReagentName = "PoisonWine";
 
     [DataField]
     public float ReagentRangeAvailable = 5;
@@ -51,13 +52,13 @@ public sealed partial class Scp035MaskComponent : Component
     };
 
     [DataField]
-    public EntityWhitelist WhitelistStructures;
+    public EntityWhitelist? WhitelistStructures;
 
     [DataField]
-    public EntityWhitelist BlacklistStructures;
+    public EntityWhitelist? BlacklistStructures;
 
     [DataField]
-    public SoundSpecifier EquipSound = new SoundCollectionSpecifier("EquipScp035");
+    public SoundSpecifier? EquipSound = new SoundCollectionSpecifier("EquipScp035");
 
     [DataField]
     public TimeSpan EquippedParalyzeDuration = TimeSpan.FromSeconds(5);
