@@ -1,4 +1,4 @@
-using Content.Shared.IdentityManagement;
+﻿using Content.Shared.IdentityManagement;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
@@ -35,13 +35,13 @@ public abstract class SharedScp049System : EntitySystem
             return;
         }
 
-        if (_inventory.TryGetSlotEntity(ent, "outerClothing", out var outerClothing) &&
-            _inventory.TryGetSlotEntity(ent, "head", out var headClothing))
+        if (_inventory.TryGetSlotEntity(args.Target, "outerClothing", out var outerClothing) &&
+            _inventory.TryGetSlotEntity(args.Target, "head", out var headClothing))
         {
             if (HasComp<ZombificationResistanceComponent>(outerClothing) ||
                 HasComp<ZombificationResistanceComponent>(headClothing))
             {
-                _popup.PopupClient(Loc.GetString("scp049-kill-action-cant-kill"), args.Target, ent, PopupType.MediumCaution);
+                _popup.PopupClient(Loc.GetString("scp049-target-protected"), args.Target, ent, PopupType.MediumCaution);
                 return;
             }
         }
