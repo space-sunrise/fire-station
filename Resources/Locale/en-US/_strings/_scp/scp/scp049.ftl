@@ -8,4 +8,3 @@ scp049-ghost-role-description = You are a reanimated victim of SCP-049, known as
 scp049-ghost-role-rules = Follow SCP-049's instructions. Do not attack other thralls or SCP-049. Your primary objective is to aid "The Plague Doctor" in his mission. You have no memories of your previous life.
 scp049-missing-surgery-tool = I require { $instrument } to perform surgery.
 scp049-cannot-zombify-entity = { $name } resists and cannot be cured.
-scp049-target-protected = The body has protection.
