@@ -1,13 +1,16 @@
-﻿using Content.Shared.IdentityManagement;
+using Content.Shared.IdentityManagement;
+using Content.Shared.Inventory;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
+using Content.Shared.Zombies;
 
 namespace Content.Shared._Scp.Scp049;
 
 public abstract class SharedScp049System : EntitySystem
 {
     [Dependency] private readonly MobStateSystem _mob = default!;
+    [Dependency] private readonly InventorySystem _inventory = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     public override void Initialize()
@@ -30,6 +33,17 @@ public abstract class SharedScp049System : EntitySystem
         {
             _popup.PopupClient(Loc.GetString("scp049-kill-action-cant-kill"), args.Target, ent, PopupType.MediumCaution);
             return;
+        }
+
+        if (_inventory.TryGetSlotEntity(ent, "outerClothing", out var outerClothing) &&
+            _inventory.TryGetSlotEntity(ent, "head", out var headClothing))
+        {
+            if (HasComp<ZombificationResistanceComponent>(outerClothing) ||
+                HasComp<ZombificationResistanceComponent>(headClothing))
+            {
+                _popup.PopupClient(Loc.GetString("scp049-kill-action-cant-kill"), args.Target, ent, PopupType.MediumCaution);
+                return;
+            }
         }
 
         _mob.ChangeMobState(args.Target, MobState.Dead);
