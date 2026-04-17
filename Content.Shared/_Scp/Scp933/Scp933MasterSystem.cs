@@ -51,11 +51,6 @@ public abstract class SharedScp933MasterSystem : EntitySystem
             {
                 HumanoidVisualLayers.Eyes,
                 HumanoidVisualLayers.Snout,
-                HumanoidVisualLayers.Head,
-                HumanoidVisualLayers.Hair,
-                HumanoidVisualLayers.FacialHair,
-                HumanoidVisualLayers.HeadTop,
-                HumanoidVisualLayers.HeadSide,
                 HumanoidVisualLayers.SnoutCover,
             });
         }
