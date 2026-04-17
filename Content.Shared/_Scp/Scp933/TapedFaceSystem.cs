@@ -22,11 +22,21 @@ public sealed class TapedFaceSystem : EntitySystem
     /// </summary>
     private void OnTapedStartup(EntityUid uid, TapedFaceComponent component, ComponentStartup args)
     {
-        if (!TryComp<HumanoidAppearanceComponent>(uid, out _))
+        if (!TryComp<Scp933TargetComponent>(uid, out var targetComp) || !targetComp.CanWearTape)
             return;
 
-        _humanoid.SetLayerVisibility(uid, HumanoidVisualLayers.Eyes, false);
-        _humanoid.SetLayerVisibility(uid, HumanoidVisualLayers.Snout, false);
+        // Получаем настройки визуальных эффектов или используем дефолт
+        if (!TryComp<Scp933VisualEffectsComponent>(uid, out var visualComp))
+        {
+            _humanoid.SetLayerVisibility(uid, HumanoidVisualLayers.Eyes, false);
+            _humanoid.SetLayerVisibility(uid, HumanoidVisualLayers.Snout, false);
+            return;
+        }
+
+        if (visualComp.HideEyes)
+            _humanoid.SetLayerVisibility(uid, HumanoidVisualLayers.Eyes, false);
+        if (visualComp.HideSnout)
+            _humanoid.SetLayerVisibility(uid, HumanoidVisualLayers.Snout, false);
     }
 
     /// <summary>
@@ -34,11 +44,21 @@ public sealed class TapedFaceSystem : EntitySystem
     /// </summary>
     private void OnTapedShutdown(EntityUid uid, TapedFaceComponent component, ComponentShutdown args)
     {
-        if (!TryComp<HumanoidAppearanceComponent>(uid, out _))
+        if (!TryComp<Scp933TargetComponent>(uid, out var targetComp) || !targetComp.CanWearTape)
             return;
 
-        _humanoid.SetLayerVisibility(uid, HumanoidVisualLayers.Eyes, true);
-        _humanoid.SetLayerVisibility(uid, HumanoidVisualLayers.Snout, true);
+        // Получаем настройки визуальных эффектов или используем дефолт
+        if (!TryComp<Scp933VisualEffectsComponent>(uid, out var visualComp))
+        {
+            _humanoid.SetLayerVisibility(uid, HumanoidVisualLayers.Eyes, true);
+            _humanoid.SetLayerVisibility(uid, HumanoidVisualLayers.Snout, true);
+            return;
+        }
+
+        if (visualComp.HideEyes)
+            _humanoid.SetLayerVisibility(uid, HumanoidVisualLayers.Eyes, true);
+        if (visualComp.HideSnout)
+            _humanoid.SetLayerVisibility(uid, HumanoidVisualLayers.Snout, true);
     }
 
     /// <summary>
@@ -46,8 +66,8 @@ public sealed class TapedFaceSystem : EntitySystem
     /// </summary>
     public void ApplyTape(EntityUid target)
     {
-        // Проверить что цель имеет humanoid appearance
-        if (!TryComp<HumanoidAppearanceComponent>(target, out _))
+        // Проверить что цель является валидной целью SCP-933
+        if (!TryComp<Scp933TargetComponent>(target, out var targetComp) || !targetComp.CanWearTape)
             return;
 
         // Проверить что цель еще не обмотана
