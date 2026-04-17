@@ -14,6 +14,10 @@
   - MobFlammable
   - InventoryBase
   components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
   - type: Scp
     class: Euclid
   - type: Hands

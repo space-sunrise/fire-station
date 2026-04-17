@@ -5,6 +5,10 @@
   - BaseScp
   - SimpleSpaceMobBase
   components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
   - type: Sprite
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-457.rsi

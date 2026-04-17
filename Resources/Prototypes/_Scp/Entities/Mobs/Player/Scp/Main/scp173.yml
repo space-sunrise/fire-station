@@ -6,6 +6,10 @@
   name: SCP-173
   suffix: SCP-173
   components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
   - type: Sprite
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-173.rsi
