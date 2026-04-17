@@ -10375,3 +10375,17 @@
   id: 426
   time: '2026-04-16T08:32:21.0000000+00:00'
   url: https://github.com/space-sunrise/project-fire/pull/958
+- author: rokudara
+  changes:
+  - message: SCP bodies are now automatically offered as a ghost role after a player
+      disconnects for 10 minutes
+    type: Add
+  - message: A popup window asks ghosts and living players if they want to take over
+      an unmanned SCP
+    type: Add
+  - message: Living player candidates get a 3-minute window to transfer before being
+      skipped
+    type: Add
+  id: 427
+  time: '2026-04-17T05:43:51.0000000+00:00'
+  url: https://github.com/space-sunrise/project-fire/pull/955
