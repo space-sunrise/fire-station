@@ -157,6 +157,7 @@ public sealed class Scp933TapeSystem : EntitySystem
             return;
 
         EnsureComp<MutedComponent>(args.Equipee);
+        EnsureComp<TapedFaceComponent>(args.Equipee);
         tapeMask.Comp.MutedByScp933 = true;
         Dirty(tapeMask);
     }
@@ -165,6 +166,8 @@ public sealed class Scp933TapeSystem : EntitySystem
     {
         if (!tapeMask.Comp.EquipSlots.Contains(args.Slot))
             return;
+
+        RemComp<TapedFaceComponent>(args.Equipee);
 
         if (HasComp<Scp933FaceTornComponent>(args.Equipee))
             return;
@@ -266,7 +269,7 @@ public sealed class Scp933TapeSystem : EntitySystem
     {
         doAfter = default!;
 
-        if (!CanApplyTape(user, victim))
+        if (!CanApplyTape(tapeMask, user, victim))
             return false;
 
         doAfter = new DoAfterArgs(EntityManager,
@@ -289,14 +292,14 @@ public sealed class Scp933TapeSystem : EntitySystem
 
     private bool TryCompleteApplyTape(Entity<Scp933TapeMaskComponent> tapeMask, EntityUid user, EntityUid victim)
     {
-        if (!CanApplyTape(user, victim))
+        if (!CanApplyTape(tapeMask, user, victim))
             return false;
 
         DoApplyTape(tapeMask, user, victim);
         return true;
     }
 
-    private bool CanApplyTape(EntityUid user, EntityUid victim)
+    private bool CanApplyTape(Entity<Scp933TapeMaskComponent> tapeMask, EntityUid user, EntityUid victim)
     {
         if (!TryComp<Scp933TargetComponent>(victim, out var targetComp) || !targetComp.CanWearTape)
             return false;
@@ -311,6 +314,14 @@ public sealed class Scp933TapeSystem : EntitySystem
             return false;
         }
 
+        var slot = tapeMask.Comp.EquipSlots.FirstOrDefault();
+        if (!string.IsNullOrEmpty(slot) && _inventory.TryGetSlotEntity(victim, slot, out _))
+        {
+            var equipFailMsg = GetPopupMessage(user, c => c.ApplyFailMessage, "scp933-tape-equip-fail");
+            _popup.PopupEntity(Loc.GetString(equipFailMsg), user, user, PopupType.MediumCaution);
+            return false;
+        }
+
         return true;
     }
 
@@ -320,10 +331,7 @@ public sealed class Scp933TapeSystem : EntitySystem
         if (string.IsNullOrEmpty(slot))
             return;
 
-        if (_inventory.TryGetSlotEntity(victim, slot, out _))
-            _inventory.TryUnequip(user, victim, slot, silent: true, force: true);
-
-        if (!_inventory.TryEquip(user, victim, tapeMask, slot, silent: true, force: true))
+        if (!_inventory.TryEquip(user, victim, tapeMask, slot, silent: true))
         {
             var equipFailMsg = GetPopupMessage(user, c => c.ApplyFailMessage, "scp933-tape-equip-fail");
             _popup.PopupEntity(Loc.GetString(equipFailMsg), user, user, PopupType.MediumCaution);

@@ -47,6 +47,9 @@ public sealed class TapedFaceSystem : EntitySystem
         if (!TryComp<Scp933TargetComponent>(uid, out var targetComp) || !targetComp.CanWearTape)
             return;
 
+        if (HasComp<Scp933FaceTornComponent>(uid) || HasComp<Scp933MasterComponent>(uid))
+            return;
+
         // Получаем настройки визуальных эффектов или используем дефолт
         if (!TryComp<Scp933VisualEffectsComponent>(uid, out var visualComp))
         {
