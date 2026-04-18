@@ -1,0 +1,11 @@
+- type: polymorph
+  id: Scp066Polymorph
+  configuration:
+    entity: Scp066-H
+    forced: true
+    transferDamage: false
+    inventory: Drop
+    revertOnDeath: false
+    revertOnCrit: false
+    revertOnDelete: false
+    polymorphSound: /Audio/_Sunrise/BloodCult/finisheddraw.ogg

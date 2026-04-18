@@ -87,6 +87,9 @@
 
 - type: Tag
   id: Scp173Shard
+  
+- type: Tag
+  id: Scp066ribbon
 
 - type: Tag
   id: ReinforcedMaskScp096

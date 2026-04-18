@@ -139,3 +139,26 @@
     deployStates:
       false: CrateScpCageFolded
       true: CrateScpCageScp173
+
+- type: entity
+  parent: CrateScpCage
+  id: CrateScpCageScp066
+  name: Scp066 cage
+  components:
+  - type: Sprite
+    color: "#ff6666"
+  - type: EntityStorage
+    doAfterDelay: 3
+    air:
+      volume: 800
+    whitelist:
+      components:
+      - Scp066Friendly
+      - Scp066Hostile
+  - type: Deployable
+    requiredTools:
+    - Screwing
+    deployed: false
+    deployStates:
+      false: CrateScpCageFolded
+      true: CrateScpCageScp066

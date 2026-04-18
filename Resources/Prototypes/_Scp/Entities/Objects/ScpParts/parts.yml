@@ -35,6 +35,19 @@
   - type: Tag
     tags:
     - Scp999jelly
+    
+# SCP-066
+
+- type: entity
+  id: Scp066Ribbon
+  parent: BaseScpResearchMaterial
+  name: colourful ribbon
+  components:
+  - type: Sprite
+    state: scp066-ribbon
+  - type: Tag
+    tags:
+    - Scp066ribbon
 
 # SCP-173
 

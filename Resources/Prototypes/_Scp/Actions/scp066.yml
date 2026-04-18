@@ -1,0 +1,105 @@
+﻿# Friendly 066
+
+- type: entity
+  parent: BaseAction
+  id: Scp066SpawnCake
+  name: Offer a Cake
+  description: You create a slice of birthday cake for the party!
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 90
+    sound: /Audio/_Scp/Scp066/party1.ogg
+    icon:
+      sprite: Objects/Consumable/Food/Baked/cake.rsi
+      state: birthday
+  - type: InstantAction
+    event: !type:InstantSpawnSpellEvent
+      prototype: FoodCakeBirthdaySlice 
+      posData: !type:TargetCasterPos
+      
+- type: entity
+  parent: BaseAction
+  id: Scp066SpawnPlushieCat
+  name: Give a Toy
+  description: You create a beautiful white cat plushie.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 90
+    icon:
+      sprite: _Sunrise/Objects/Fun/toy_cats.rsi
+      state: plushie_whitecat
+  - type: InstantAction
+    event: !type:InstantSpawnSpellEvent
+      prototype: PlushieWhiteCat 
+      posData: !type:TargetCasterPos
+      
+- type: entity
+  parent: BaseAction
+  id: Scp066SpawnDelightGlass
+  name: Healthy Drink
+  description: You create a glass with a healing beverage inside.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 120
+    icon:
+      sprite: Objects/Consumable/Drinks/doctorsdelightglass.rsi
+      state: icon_empty
+  - type: InstantAction
+    event: !type:InstantSpawnSpellEvent
+      prototype: DrinkDoctorsDelightGlass 
+      posData: !type:TargetCasterPos
+    
+# Hostile 066
+
+- type: entity
+  id: Scp066OpenDoors
+  name: Lockpicking Lessons
+  description: You force all nearby airlocks to open.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 90
+    icon:
+      sprite: _Scp/Actions/scp-066.rsi
+      state: airlock
+    itemIconStyle: BigAction
+    raiseOnUser: true
+  - type: InstantAction
+    event: !type:KnockSpellEvent
+    
+- type: entity
+  parent: BaseAction
+  id: Scp066SpawnAngryBee
+  name: Unexpected Strike
+  description: An aggressive bee flies out of your body.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 90
+    icon:
+      sprite: Objects/Fun/Plushies/bee.rsi
+      state: icon
+  - type: InstantAction
+    event: !type:InstantSpawnSpellEvent
+      prototype: MobAngryBee 
+      posData: !type:TargetCasterPos
+      
+- type: entity
+  parent: BaseAction
+  id: Scp066DisableLights
+  name: Anomalous Malfunction
+  description: You disable all nearby electronics and lights.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Action
+    useDelay: 90
+    icon:
+      sprite: _Scp/Actions/scp-066.rsi
+      state: light
+  - type: InstantAction
+    event: !type:InstantSpawnSpellEvent
+      prototype: AdminInstantEffectEMP 
+      posData: !type:TargetCasterPos

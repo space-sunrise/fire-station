@@ -33,7 +33,7 @@ public sealed partial class ScpSpawnInteractDoAfterEvent : BaseScpInteractDoAfte
     /// Исследовательский материал, который будет получен в результате взаимодействия с СЦП.
     /// </summary>
     [DataField]
-    public EntProtoId ToSpawn;
+    public EntProtoId? ToSpawn;
 
     /// <summary>
     /// Максимальное количество материала, который будет заспавнен
@@ -46,14 +46,21 @@ public sealed partial class ScpSpawnInteractDoAfterEvent : BaseScpInteractDoAfte
     /// </summary>
     [DataField]
     public int MaxSpawn = 1;
+	
+	/// <summary>
+    /// Будет ли вызван триггер полиморфа на сцп
+    /// </summary>
+    [DataField]
+	public bool ShouldTriggerPolymorph = false;
 
     public ScpSpawnInteractDoAfterEvent() {}
 
-    public ScpSpawnInteractDoAfterEvent(EntProtoId toSpawn, int minSpawn, int maxSpawn)
+    public ScpSpawnInteractDoAfterEvent(EntProtoId? toSpawn, int minSpawn, int maxSpawn, bool shouldTrigger = false)
     {
         ToSpawn = toSpawn;
         MinSpawn = minSpawn;
         MaxSpawn = maxSpawn;
+		ShouldTriggerPolymorph = shouldTrigger;
     }
 }
 

@@ -7,6 +7,7 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
+using Content.Shared.Trigger.Systems;
 
 namespace Content.Shared._Scp.Research.Interact;
 
@@ -31,6 +32,7 @@ public sealed partial class ScpInteractSystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
+	[Dependency] private readonly TriggerSystem _trigger = default!;
 
     public override void Initialize()
     {
@@ -94,28 +96,33 @@ public sealed partial class ScpInteractSystem : EntitySystem
             return;
 
         var tool = args.Tool;
-
         if (!TryComp<ScpInteractToolComponent>(tool, out var researchTool))
             return;
 
         if (_net.IsServer)
         {
-            // Случайное количество спавна. Берем +1, так как максимальная граница не включена
-            var count = _random.Next(args.MinSpawn, args.MaxSpawn + 1);
-
-            for (var i = 0; i < count; i++)
+            if (args.ToSpawn != null)
             {
-                if (researchTool.Sound != null)
-                    _audio.PlayPvs(researchTool.Sound, scp);
+                var count = _random.Next(args.MinSpawn, args.MaxSpawn + 1);
+                for (var i = 0; i < count; i++)
+                {
+                    if (researchTool.Sound != null)
+                        _audio.PlayPvs(researchTool.Sound, scp);
 
-                Spawn(args.ToSpawn, Transform(scp).Coordinates);
+                    Spawn(args.ToSpawn, Transform(scp).Coordinates);
+                }
             }
+            if (args.ShouldTriggerPolymorph) 
+        {
+            _trigger.Trigger(scp); 
+            
+            args.Handled = true;
+            return;
+        }
         }
 
-        // Задаем последнее время использования для кулдауна
         scp.Comp.TimeLastInteracted = _timing.CurTime;
         Dirty(scp);
-
         args.Handled = true;
     }
 

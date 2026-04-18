@@ -671,6 +671,15 @@
   components:
   - type: Sprite
     state: scp049
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP066
+  name: SCP-066 poster
+  description: Information poster for SCP-066.
+  components:
+  - type: Sprite
+    state: scp066
 
 - type: entity
   parent: PosterScpContainmentRoomBase
