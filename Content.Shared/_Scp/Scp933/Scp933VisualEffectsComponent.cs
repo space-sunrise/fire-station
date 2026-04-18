@@ -23,6 +23,12 @@ public sealed partial class Scp933VisualEffectsComponent : Component
     public bool HideSnout = true;
 
     /// <summary>
+    /// Дополнительные слои для скрытия (настройка через YAML).
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public List<HumanoidVisualLayers>? AdditionalHiddenLayers = null;
+
+    /// <summary>
     /// Цвет оверлея при инкубации.
     /// </summary>
     [DataField, AutoNetworkedField]

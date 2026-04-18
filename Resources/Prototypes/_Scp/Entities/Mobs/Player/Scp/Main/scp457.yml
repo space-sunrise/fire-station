@@ -66,7 +66,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      400: Dead
+      600: Dead
   - type: Reactive
     groups:
       Flammable: [ Touch ]
@@ -78,7 +78,7 @@
         - !type:HealthChange
           damage:
             types:
-              Cold: 2
+              Cold: 1
         - !type:AdjustReagent
           reagent: Fresium
           amount: 0.02
@@ -97,7 +97,7 @@
     animation: WeaponArcPunch
     damage:
       types:
-        Heat: 14
+        Heat: 30
   - type: Puller
     needsHands: false
   - type: Speech

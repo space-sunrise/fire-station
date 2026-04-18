@@ -10,7 +10,7 @@ namespace Content.Shared._Scp.Scp933;
 /// </summary>
 public abstract class SharedScp933MasterSystem : EntitySystem
 {
-    [Dependency] protected readonly SharedHumanoidAppearanceSystem _humanoid = default!;
+    [Dependency] protected readonly SharedHumanoidAppearanceSystem HumanoidAppearance = default!;
 
     /// <summary>
     /// Спрятать лицо гуманоида (SCP-933): носитель и жертвы после ритуала.
@@ -29,7 +29,7 @@ public abstract class SharedScp933MasterSystem : EntitySystem
 
         var humanoidEnt = new Entity<HumanoidAppearanceComponent?>(uid, humanoidComp);
         var layers = GetFaceErasureLayers(visualComp);
-        _humanoid.SetLayersVisibility(humanoidEnt, layers, false);
+        HumanoidAppearance.SetLayersVisibility(humanoidEnt, layers, false);
     }
 
     private static List<HumanoidVisualLayers> GetFaceErasureLayers(Scp933VisualEffectsComponent? visualComp)
@@ -51,11 +51,6 @@ public abstract class SharedScp933MasterSystem : EntitySystem
             {
                 HumanoidVisualLayers.Eyes,
                 HumanoidVisualLayers.Snout,
-                HumanoidVisualLayers.Head,
-                HumanoidVisualLayers.Hair,
-                HumanoidVisualLayers.FacialHair,
-                HumanoidVisualLayers.HeadTop,
-                HumanoidVisualLayers.HeadSide,
                 HumanoidVisualLayers.SnoutCover,
             });
         }
