@@ -1,5 +1,5 @@
 ﻿- type: entity
-  id: Scp066-F
+  id: Scp066Friendly
   suffix: SCP-066-friendly
   parent: BaseScpFriendly
   name: ???
@@ -84,7 +84,7 @@
       maxRange: 3
 
 - type: entity
-  id: Scp066-H
+  id: Scp066Hostile
   suffix: SCP-066-hostile
   parent: BaseScp
   name: ???

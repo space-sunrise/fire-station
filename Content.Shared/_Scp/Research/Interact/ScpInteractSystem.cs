@@ -99,9 +99,13 @@ public sealed partial class ScpInteractSystem : EntitySystem
         if (!TryComp<ScpInteractToolComponent>(tool, out var researchTool))
             return;
 
+        scp.Comp.TimeLastInteracted = _timing.CurTime;
+        Dirty(scp);
+        args.Handled = true;
+
         if (_net.IsServer)
         {
-            if (args.ToSpawn != null)
+            if (args.ToSpawn is { } toSpawn)
             {
                 var count = _random.Next(args.MinSpawn, args.MaxSpawn + 1);
                 for (var i = 0; i < count; i++)
@@ -109,21 +113,13 @@ public sealed partial class ScpInteractSystem : EntitySystem
                     if (researchTool.Sound != null)
                         _audio.PlayPvs(researchTool.Sound, scp);
 
-                    Spawn(args.ToSpawn, Transform(scp).Coordinates);
+                    Spawn(toSpawn, Transform(scp).Coordinates);
                 }
             }
-            if (args.ShouldTriggerPolymorph) 
-        {
-            _trigger.Trigger(scp); 
-            
-            args.Handled = true;
-            return;
-        }
-        }
 
-        scp.Comp.TimeLastInteracted = _timing.CurTime;
-        Dirty(scp);
-        args.Handled = true;
+            if (args.ShouldTriggerPolymorph)
+                _trigger.Trigger(scp);
+        }
     }
 
 }

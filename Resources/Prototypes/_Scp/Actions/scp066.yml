@@ -3,7 +3,7 @@
 - type: entity
   parent: BaseAction
   id: Scp066SpawnCake
-  name: Offer a Cake
+  name: offer a cake
   description: You create a slice of birthday cake for the party!
   categories: [ HideSpawnMenu ]
   components:
@@ -21,7 +21,7 @@
 - type: entity
   parent: BaseAction
   id: Scp066SpawnPlushieCat
-  name: Give a Toy
+  name: give a toy
   description: You create a beautiful white cat plushie.
   categories: [ HideSpawnMenu ]
   components:
@@ -38,7 +38,7 @@
 - type: entity
   parent: BaseAction
   id: Scp066SpawnDelightGlass
-  name: Healthy Drink
+  name: healthy drink
   description: You create a glass with a healing beverage inside.
   categories: [ HideSpawnMenu ]
   components:
@@ -55,8 +55,9 @@
 # Hostile 066
 
 - type: entity
+  parent: BaseAction
   id: Scp066OpenDoors
-  name: Lockpicking Lessons
+  name: lockpicking lessons
   description: You force all nearby airlocks to open.
   categories: [ HideSpawnMenu ]
   components:
@@ -73,7 +74,7 @@
 - type: entity
   parent: BaseAction
   id: Scp066SpawnAngryBee
-  name: Unexpected Strike
+  name: unexpected strike
   description: An aggressive bee flies out of your body.
   categories: [ HideSpawnMenu ]
   components:
@@ -90,7 +91,7 @@
 - type: entity
   parent: BaseAction
   id: Scp066DisableLights
-  name: Anomalous Malfunction
+  name: anomalous malfunction
   description: You disable all nearby electronics and lights.
   categories: [ HideSpawnMenu ]
   components:

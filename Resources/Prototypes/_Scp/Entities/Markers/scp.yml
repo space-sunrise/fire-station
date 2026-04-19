@@ -152,7 +152,7 @@
       state: scp-066friendly
   - type: ConditionalSpawner
     prototypes:
-    - Scp066-F
+    - Scp066Friendly
 
 - type: entity
   name: SCP-131-B spawner

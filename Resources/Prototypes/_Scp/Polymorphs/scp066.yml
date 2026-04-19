@@ -1,7 +1,7 @@
 - type: polymorph
   id: Scp066Polymorph
   configuration:
-    entity: Scp066-H
+    entity: Scp066Hostile
     forced: true
     transferDamage: false
     inventory: Drop
