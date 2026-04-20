@@ -5,3 +5,22 @@
   sounds:
     Laugh:
       path: /Audio/_Scp/Scp106/laugh.ogg
+
+- type: emote
+  id: Pain
+  name: chat-emote-name-pain
+  category: Vocal
+  icon: Interface/Emotes/scream.png
+  whitelist:
+    components:
+    - Vocal
+  blacklist:
+    components:
+    - BorgChassis
+  chatMessages: ["chat-emote-msg-pain"]
+  chatTriggers:
+    # Я откровенно хер знает чё сюда можно написать...
+    - вскрикивает
+    - подкрикивает
+    - кричит от боли
+    - визжит от боли

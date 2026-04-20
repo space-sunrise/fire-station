@@ -12,6 +12,8 @@
   supervisors: job-supervisors-cmo
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  alternativeTitles:
+  - job-alt-title-forensic-examiner
   access:
   - Medical
   - Maintenance

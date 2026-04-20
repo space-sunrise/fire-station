@@ -17,6 +17,8 @@
   displayWeight: 15
   overrideConsoleVisibility: false # Fire added
   setPreference: false # Fire added
+  alternativeTitles:
+  - job-alt-title-orderly
   access:
   - Medical
   - Security

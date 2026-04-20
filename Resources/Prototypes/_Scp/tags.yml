@@ -68,7 +68,37 @@
   id: EncryptionScpSecurityCommon
 
 - type: Tag
+  id: PreventInsertingIntoHeadset
+
+- type: Tag
   id: ScpMuffleCountsThisAsTransparent
 
 - type: Tag
   id: ScpMuffleCountsThisAsNone
+
+- type: Tag
+  id: Scp330Candy
+
+- type: Tag
+  id: PlushieScp999
+
+- type: Tag
+  id: Scp173PaintBall
+
+- type: Tag
+  id: Scp173Shard
+
+- type: Tag
+  id: ReinforcedMaskScp096
+
+- type: Tag
+  id: ClothingOuterAntiTeleportation
+
+- type: Tag
+  id: ClothingHeadHelmetAiPowered
+
+- type: Tag
+  id: ClothingShoesSilent
+
+- type: Tag
+  id: ClothingHeadAwareness

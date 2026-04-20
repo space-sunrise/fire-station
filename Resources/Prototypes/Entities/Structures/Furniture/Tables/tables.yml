@@ -571,6 +571,7 @@
 
 - type: entity
   id: TableCarpet
+  categories: [ HideSpawnMenu ] # Fire edit
   parent: TableBase
   name: gambling table
   description: Play em' cowboy.

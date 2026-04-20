@@ -42,6 +42,9 @@
     - cardboard_2
     - cardboard_3
   - type: Sprite
+    # Fire edit start
+    sprite: _Scp/Objects/Materials/materials.rsi
+    # Fire edit end
     state: cardboard_3
     layers:
     - state: cardboard_3
@@ -56,6 +59,9 @@
         - ReagentId: Cellulose
           Quantity: 6
   - type: Item
+    # Fire edit start
+    sprite: _Scp/Objects/Materials/materials.rsi
+    # Fire edit end
     heldPrefix: cardboard
   - type: FloorTile
     outputs:

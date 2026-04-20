@@ -319,6 +319,7 @@
   graph: Table
   startNode: start
   targetNode: TableCarpet
+  hide: true # Fire edit
   category: construction-category-furniture
   objectType: Structure
   placementMode: SnapgridCenter

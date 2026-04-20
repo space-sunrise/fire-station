@@ -1,4 +1,4 @@
-﻿- type: accessGroup
+- type: accessGroup
   id: Director
   groups:
   - AdministrationJobCommon
@@ -27,12 +27,10 @@
   id: SecurityCommander
   groups:
   - AdministrationJobCommon
-  - Security
-  - ScientificServiceHeadless
-  - MedicalHeadless
-  - EngineeringHeadless
-  - ServiceHeadless
-  - ClassD
+  - SecurityJobCommon
+  tags:
+  - SecurityCommander
+  - Armory
 
 - type: accessGroup
   id: ChiefTechnicalSpecialist
@@ -144,6 +142,7 @@
   - ServiceHeadless
   - LogisticsHeadless
   tags:
+  - Maintenance
   - Checkpoint
   - Security
   - Bunker

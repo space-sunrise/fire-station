@@ -32,6 +32,9 @@
   components:
   - type: Sprite
     state: scp999-jelly
+  - type: Tag
+    tags:
+    - Scp999jelly
 
 # SCP-173
 
@@ -43,6 +46,9 @@
   - type: Sprite
     state: scp173-shard
     color: "#a9783c"
+  - type: Tag
+    tags:
+    - Scp173Shard
 
 - type: entity
   id: Scp173PaintChips
@@ -70,6 +76,9 @@
     replace:
     - Ash
     chance: 0.4
+  - type: Tag
+    tags:
+    - Scp173PaintBall
 
 # Scp096
 

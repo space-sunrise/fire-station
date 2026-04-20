@@ -28,6 +28,7 @@
   - type: Tag
     tags:
     - EncryptionCommon
+    - PreventInsertingIntoHeadset # Fire edit
 
 - type: entity
   parent: [ EncryptionKey, BaseCargoContraband ]
@@ -214,6 +215,7 @@
   - type: Tag
     tags:
     - EncryptionSecurity
+    - PreventInsertingIntoHeadset # Fire edit
 
 - type: entity
   parent: [ EncryptionKey, BaseCivilianContraband ]

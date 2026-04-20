@@ -14,6 +14,10 @@
   - MobFlammable
   - InventoryBase
   components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
   - type: Scp
     class: Euclid
   - type: Hands
@@ -28,6 +32,8 @@
     requiredLegs: 2
   - type: Inventory
     templateId: scp082
+  - type: FieldOfView
+    angle: 240
   - type: Sprite
     noRot: true
     drawdepth: Mobs
@@ -47,6 +53,8 @@
   - type: MovementSpeedModifier
     baseWalkSpeed: 1.5
     baseSprintSpeed: 2.5
+  - type: ScpRestriction
+    canPull: true
   - type: Pullable
   - type: Puller
     needsHands: true
@@ -75,3 +83,13 @@
     guides:
     - ScpResearch
     - ScpFear
+  - type: HoldToFace
+  - type: Prying
+    enabled: false
+    pryPowered: true
+    force: true
+    speedModifier: 0.9
+    useSound:
+      path: /Audio/_Scp/Scp096/prydoor.ogg
+      params:
+        volume: -4

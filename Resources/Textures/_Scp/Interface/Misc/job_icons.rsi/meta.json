@@ -138,6 +138,36 @@
         },
         {
             "name": "Amnesthesiologist"
+        },
+        {
+            "name": "FondSecurityOfficer"
+        },
+        {
+            "name": "FondSeniorSecurityOfficer"
+        },
+        {
+            "name": "MindShield",
+            "delays": [
+                [
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    0.1,
+                    3.0
+                ]
+            ]
         }
     ]
 }

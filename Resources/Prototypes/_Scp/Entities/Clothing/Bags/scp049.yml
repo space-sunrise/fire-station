@@ -36,4 +36,6 @@
     - id: Cautery
     - id: Retractor
     - id: Scalpel
+    - id: BoneSetter
+    - id: BoneGel
     - id: Scp049Contract

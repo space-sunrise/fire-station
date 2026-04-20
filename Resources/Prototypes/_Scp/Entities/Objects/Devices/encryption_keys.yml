@@ -150,6 +150,7 @@
     tags:
     - EncryptionSecurity
     - EncryptionScpSecurityCommon
+    - PreventInsertingIntoHeadset
 
 - type: entity
   parent: [ EncryptionKey, BaseSecurityContraband ]

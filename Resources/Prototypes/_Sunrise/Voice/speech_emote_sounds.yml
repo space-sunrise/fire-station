@@ -7,7 +7,7 @@
     Scream:
       collection: FelinidScreams
     Laugh:
-      collection: MaleLaugh
+      collection: MaleLaughNew # Fire Edit
     Sneeze:
       collection: MaleSneezes
     Cough:
@@ -40,7 +40,7 @@
     Scream:
       collection: FelinidScreams
     Laugh:
-      collection: FemaleLaugh
+      collection: FemaleLaughNew # Fire Edit
     Sneeze:
       collection: FemaleSneezes
     Cough:
@@ -73,7 +73,7 @@
     Scream:
       collection: FelinidScreams
     Laugh:
-      collection: MaleLaugh
+      collection: MaleLaughNew # Fire Edit
     Sneeze:
       collection: MaleSneezes
     Cough:
@@ -106,7 +106,7 @@
     Scream:
       collection: FelinidScreams
     Laugh:
-      collection: FemaleLaugh
+      collection: FemaleLaughNew # Fire Edit
     Sneeze:
       collection: FemaleSneezes
     Cough:
@@ -138,7 +138,7 @@
     Scream:
       collection: SwineScreams
     Laugh:
-      collection: MaleLaugh
+      collection: MaleLaughNew # Fire Edit
     Sneeze:
       collection: MaleSneezes
     Cough:
