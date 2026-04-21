@@ -3,7 +3,7 @@ using Content.Shared.Trigger.Systems;
 
 namespace Content.Shared._Scp.Other.Triggers.TriggerOnIgnite;
 
-public sealed partial class TriggetOnIgniteSystem : EntitySystem
+public sealed partial class TriggerOnIgniteSystem : EntitySystem
 {
     [Dependency] private readonly TriggerSystem _trigger = default!;
     public override void Initialize()

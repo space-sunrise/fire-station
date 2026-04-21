@@ -9,9 +9,6 @@ public sealed partial class LimitedTimedSpawnComponent : Component
     public EntProtoId Prototype;
 
     [DataField]
-    public bool CopyCopies = true;
-
-    [DataField]
     public float Chance = 1.0f;
 
     [DataField]
@@ -22,6 +19,9 @@ public sealed partial class LimitedTimedSpawnComponent : Component
 
     [DataField]
     public TimeSpan IntervalSeconds = TimeSpan.FromSeconds(60);
+
+    [ViewVariables]
+    public int? EntityIdentificator;
 
     [ViewVariables]
     public TimeSpan NextSpawn;

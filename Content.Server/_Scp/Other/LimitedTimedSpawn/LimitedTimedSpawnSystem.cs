@@ -2,7 +2,8 @@ using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Server.GameObjects;
 using Robust.Shared.Physics.Components;
-using Content.Server.Spawners.Components;
+using Content.Shared.GameTicking;
+using Robust.Shared.Map;
 
 namespace Content.Server._Scp.Other.LimitedTimedSpawn;
 
@@ -12,13 +13,16 @@ public sealed partial class LimitedTimedSpawnSystem : EntitySystem
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
-    private readonly Dictionary<string, List<EntityUid>> _spawnedEntities = new();
+    private readonly Dictionary<int, HashSet<EntityUid>> _savedHashes = new();
+    private readonly List<(EntityCoordinates Coords, LimitedTimedSpawnComponent Comp)> _readyToSpawn = new();
 
     public override void Initialize()
     {
         base.Initialize();
 
         SubscribeLocalEvent<LimitedTimedSpawnComponent, MapInitEvent>(OnStartup);
+        SubscribeLocalEvent<LimitedTimedSpawnComponent, ComponentShutdown>(OnShutdown);
+        SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
     }
 
     private void OnStartup(Entity<LimitedTimedSpawnComponent> ent, ref MapInitEvent args)
@@ -26,41 +30,82 @@ public sealed partial class LimitedTimedSpawnSystem : EntitySystem
         ent.Comp.NextSpawn = _timing.CurTime + ent.Comp.IntervalSeconds;
     }
 
+    private void OnShutdown(Entity<LimitedTimedSpawnComponent> ent, ref ComponentShutdown args)
+    {
+        if (ent.Comp.EntityIdentificator == null)
+            return;
+
+        if (!_savedHashes.TryGetValue((int)ent.Comp.EntityIdentificator, out var list))
+            return;
+
+        list.Remove(ent);
+
+        if (list.Count == 0)
+            _savedHashes.Remove((int)ent.Comp.EntityIdentificator);
+    }
+
+    private void OnRoundRestart(RoundRestartCleanupEvent args)
+    {
+        _savedHashes.Clear();
+        _readyToSpawn.Clear();
+    }
+
     public override void Update(float frameTime)
     {
         base.Update(frameTime);
+        var entities = EntityQueryEnumerator<LimitedTimedSpawnComponent>();
+        _readyToSpawn.Clear();
 
-        foreach (var list in _spawnedEntities.Values)
-            list.RemoveAll(uid => !EntityManager.EntityExists(uid));
-
-        var query = EntityQueryEnumerator<LimitedTimedSpawnComponent>();
-        while (query.MoveNext(out var uid, out var component))
+        while (entities.MoveNext(out var ent, out var comp))
         {
-            if (_timing.CurTime < component.NextSpawn)
+            if (_timing.CurTime < comp.NextSpawn)
                 continue;
 
-            component.NextSpawn = _timing.CurTime + component.IntervalSeconds;
+            comp.NextSpawn = _timing.CurTime + comp.IntervalSeconds;
+            int hash;
 
-            if (!_spawnedEntities.TryGetValue(component.Prototype, out var spawnedList))
+            if (comp.EntityIdentificator == null)
             {
-                spawnedList = new List<EntityUid>();
-                _spawnedEntities[component.Prototype] = spawnedList;
+                hash = _random.Next(int.MinValue, int.MaxValue);
+                comp.EntityIdentificator = hash;
+            }
+            else
+                hash = (int)comp.EntityIdentificator;
+
+            if (!_savedHashes.TryGetValue(hash, out _))
+            {
+                _savedHashes.TryAdd(hash, new());
+                _savedHashes[hash].Add(ent);
             }
 
-            if (spawnedList.Count >= component.EntitiesLimit)
+            if (_savedHashes[hash].Count > comp.EntitiesLimit)
                 continue;
 
-            if (!_random.Prob(component.Chance))
+            _readyToSpawn.Add((Transform(ent).Coordinates, comp));
+        }
+
+        foreach (var data in _readyToSpawn)
+        {
+            if (data.Comp.EntityIdentificator == null)
                 continue;
 
-            var newEnt = Spawn(component.Prototype, Transform(uid).Coordinates);
-            spawnedList.Add(newEnt);
+            var hash = (int)data.Comp.EntityIdentificator;
 
-            if (!component.CopyCopies)
-                RemCompDeferred<TimedSpawnerComponent>(newEnt);
+            if (_savedHashes[hash].Count > data.Comp.EntitiesLimit)
+                continue;
 
-            if (component.ImpulseStrength != 0)
-                ThrowRand(newEnt, component.ImpulseStrength);
+            if (!_random.Prob(data.Comp.Chance))
+                continue;
+
+            var newEnt = Spawn(data.Comp.Prototype, data.Coords);
+            _savedHashes.TryAdd(hash, new());
+            _savedHashes[hash].Add(newEnt);
+
+            if (TryComp<LimitedTimedSpawnComponent>(newEnt, out var sComp))
+                sComp.EntityIdentificator = hash;
+
+            if (data.Comp.ImpulseStrength != 0)
+                ThrowRand(newEnt, data.Comp.ImpulseStrength);
         }
     }
 

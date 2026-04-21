@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: BaseItem
   id: ScpAnomalyPainting
   name: strange painting
@@ -194,10 +194,10 @@
   - type: LimitedTimedSpawn
     prototype: ScpAnomalyDollar
     copyCopies: false
-    chance: 0.4
+    chance: 1 #0.4
     entitiesLimit: 10
     impulseStrength: 200
-    intervalSeconds: 900
+    intervalSeconds: 5 #900
   - type: Sprite
     sprite: _Scp/Objects/Items/dollar.rsi
     state: icon
