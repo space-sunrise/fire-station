@@ -3,6 +3,10 @@
   suffix: SCP-131A
   parent: BaseScpFriendly
   components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
   - type: Sprite
     drawdepth: SmallMobs
     sprite: _Scp/Mobs/Scp/scp-131/scp-131-a.rsi
