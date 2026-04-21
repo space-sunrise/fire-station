@@ -7,6 +7,10 @@
   - MobBloodstream
   - StripableInventoryBase
   components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
   - type: Sprite
     sprite: _Scp/Mobs/Scp/scp-096.rsi
     offset: 0, 0.35
