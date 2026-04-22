@@ -50,9 +50,6 @@
       collection: Scp066IdleFriendly
       params:
         maxDistance: 6
-  - type: Tag
-    tags:
-    - CannotSuicide
   - type: GuideHelp
     guides:
     - ScpResearch
@@ -114,9 +111,6 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-  - type: Tag
-    tags:
-    - CannotSuicide
   - type: HTN
     constantlyReplan: true
     rootTask:

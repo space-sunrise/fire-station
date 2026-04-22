@@ -1,15 +1,15 @@
 ﻿- type: soundCollection
   id: Scp066IdleHostile
   files:
-  - /Audio/_Scp/Scp066/Idle/Hostile/Eric1.ogg
-  - /Audio/_Scp/Scp066/Idle/Hostile/Notes1.ogg
-  - /Audio/_Scp/Scp066/Idle/Hostile/Notes2.ogg
-  - /Audio/_Scp/Scp066/Idle/Hostile/Notes3.ogg
-  - /Audio/_Scp/Scp066/Idle/Hostile/Notes4.ogg
+  - /Audio/_Scp/Scp066/Idle/Hostile/eric1.ogg
+  - /Audio/_Scp/Scp066/Idle/Hostile/notes1.ogg
+  - /Audio/_Scp/Scp066/Idle/Hostile/notes2.ogg
+  - /Audio/_Scp/Scp066/Idle/Hostile/notes3.ogg
+  - /Audio/_Scp/Scp066/Idle/Hostile/notes4.ogg
   
 - type: soundCollection
   id: Scp066IdleFriendly
   files:
-  - /Audio/_Scp/Scp066/Idle/Friendly/Notes1.ogg
-  - /Audio/_Scp/Scp066/Idle/Friendly/Notes2.ogg
-  - /Audio/_Scp/Scp066/Idle/Friendly/Notes3.ogg
+  - /Audio/_Scp/Scp066/Idle/Friendly/notes1.ogg
+  - /Audio/_Scp/Scp066/Idle/Friendly/notes2.ogg
+  - /Audio/_Scp/Scp066/Idle/Friendly/notes3.ogg
