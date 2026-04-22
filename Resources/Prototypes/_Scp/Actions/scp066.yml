@@ -9,7 +9,7 @@
   components:
   - type: Action
     useDelay: 90
-    sound: /Audio/_Scp/Scp066/Party1.ogg
+    sound: /Audio/_Scp/Scp066/party1.ogg
     icon:
       sprite: Objects/Consumable/Food/Baked/cake.rsi
       state: birthday
