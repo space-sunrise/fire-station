@@ -2215,6 +2215,16 @@
   conditions:
   - !type:ListingLimitedStockCondition
     stock: 1
+    
+- type: listing
+  id: ScpUplinkCrateAdministrationCrateScpCageScp066
+  icon: { sprite: _Scp/Interface/Misc/mtf_store_icon.rsi, state: closed_scp_cage }
+  productEntity: CrateAdministrationCrateScpCageScp066
+  categories:
+  - ScpRecontainment
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
 
 - type: listing
   id: ScpUplinkScp049ProtectionImplanter

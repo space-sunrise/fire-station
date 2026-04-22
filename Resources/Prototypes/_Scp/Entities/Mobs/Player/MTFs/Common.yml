@@ -112,6 +112,17 @@
     contents:
     - id: CrateScpCageScp173
     - id: Screwdriver
+    
+- type: entity
+  parent: CrateAdministrationSecure
+  id: CrateAdministrationCrateScpCageScp066
+  name: crate with «Diatonic» cage
+  description: It contains a «Diatonic» cage. The perfect cage to return SCP 066 to his cell!
+  suffix: Filled
+  components:
+  - type: StorageFill
+    contents:
+    - id: CrateScpCageScp066
 
 # РАНДОМ ХУМАНОИДЫ ОБЩИЕ
 
