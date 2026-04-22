@@ -6,6 +6,10 @@
   - SimpleMobBase
   - MobCombat
   components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
   - type: Sprite
     sprite: _Scp/Mobs/Scp/scp-247.rsi
     drawdepth: Mobs

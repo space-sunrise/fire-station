@@ -44,4 +44,10 @@ public sealed partial class ScpCCVars
     /// </summary>
     public static readonly CVarDef<bool> MetaGarbageEnableSpawningWithoutRule =
         CVarDef.Create("scp.meta_garbage_enable_spawning_without_rule", false, CVar.SERVERONLY | CVar.ARCHIVE);
+
+    /// <summary>
+    /// Whether the automatic ghost role system is enabled for disconnected SCP players.
+    /// </summary>
+    public static readonly CVarDef<bool> AutoGhostRoleEnabled =
+        CVarDef.Create("scp.auto_ghost_role_enabled", true, CVar.SERVERONLY | CVar.ARCHIVE);
 }
