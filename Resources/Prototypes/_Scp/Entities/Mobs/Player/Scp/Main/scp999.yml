@@ -39,6 +39,7 @@
   - type: ScpRestriction
     canBePulled: true
     canMobCollide: true
+    canBeDisarmed: true
   - type: Scp999
     states:
       Default: default
@@ -87,7 +88,7 @@
   - type: Damageable
     damageModifierSet: SCP-999
   - type: Body
-    prototype: Human # TODO: Кастомное тело
+    prototype: Animal # TODO: Кастомное тело
   - type: InteractionPopup
     interactDelay: 0.5
     interactSuccessSpawn: EffectHearts
@@ -179,6 +180,21 @@
     guides:
     - ScpResearch
     - ScpResearchAdvanced
+  - type: ComplexInteraction
+  - type: Hands
+    hands:
+      main:
+        location: Middle
+        whitelist:
+          components:
+          - Edible
+          tags:
+          - Medkit
+          - Payload
+    sortedHands:
+    - main
+    activeHandId: main
+  - type: Pacified
 
 - type: speechSounds
   id: Scp999Speech
