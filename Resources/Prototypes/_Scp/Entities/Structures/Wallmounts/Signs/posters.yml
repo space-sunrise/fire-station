@@ -869,6 +869,15 @@
   components:
   - type: Sprite
     state: scp2022
+    
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP2295
+  name: SCP-2295 poster
+  description: Information poster for SCP-2295.
+  components:
+  - type: Sprite
+    state: scp2295
 
 # Длинные плакаты
 
