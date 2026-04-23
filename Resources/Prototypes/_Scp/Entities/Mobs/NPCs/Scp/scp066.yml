@@ -1,6 +1,6 @@
 ﻿- type: entity
   id: Scp066Friendly
-  suffix: SCP-066-friendly
+  suffix: SCP-066 Friendly
   parent: BaseScpFriendly
   name: ???
   components:
