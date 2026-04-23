@@ -99,10 +99,6 @@
   - type: ComplexInteraction
   - type: ScpRestriction
     canBeDisarmed: true
-  - type: Tag # перезаписываем родительский список тегов, без DoorBumpOpener
-    tags:
-    - FootstepSound
-    - CannotSuicide
   - type: ActionGrant
     actions:
     - Scp2295Brutepack
