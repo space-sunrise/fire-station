@@ -19,7 +19,7 @@
 - type: entity
   id: Scp2295RegenerativeMesh
   name: regenerative mesh
-  description: Produce multiple pieces of anomalous fabric capable.
+  description: Produce multiple pieces of anomalous fabric.
   categories: [ HideSpawnMenu ]
   components:
   - type: Action

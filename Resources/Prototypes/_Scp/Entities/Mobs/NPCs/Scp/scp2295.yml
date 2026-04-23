@@ -23,7 +23,7 @@
   - type: Muted
   - type: NpcFactionMember
     factions:
-    - SimpleNeutral # нужно что бы турели не били их т.к. он мирный
+    - SimpleNeutral
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 3
