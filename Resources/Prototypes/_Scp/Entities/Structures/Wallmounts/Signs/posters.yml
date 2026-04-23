@@ -674,7 +674,7 @@
     
 - type: entity
   parent: PosterScpContainmentRoomBase
-  id: PosterSCP066
+  id: PosterScp066
   name: SCP-066 poster
   description: Information poster for SCP-066.
   components:
