@@ -1,4 +1,5 @@
 ﻿using Robust.Shared.GameStates;
+using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp035;
 
@@ -13,29 +14,28 @@ public sealed partial class Scp035MaskUserComponent : Component
     [ViewVariables(VVAccess.ReadOnly)]
     public HashSet<EntityUid> Servants = new();
 
-    [AutoNetworkedField]
-    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
+    public EntProtoId ServantsProto = "MobServant035";
+
+    [DataField]
     public int MaxServants = 3;
+
+    [DataField]
+    public EntProtoId DeadSpawnProto = "Ash";
+
+    [DataField]
+    public float MeleeDamageModificator = 4;
+
+    [DataField]
+    public TimeSpan ActionStunDuration = TimeSpan.FromSeconds(10);
 
     [AutoNetworkedField]
     [ViewVariables(VVAccess.ReadWrite)]
     public MaskOrderType CurrentOrder = MaskOrderType.Follow;
 
     [AutoNetworkedField]
-    public EntityUid ActionRaiseArmy;
+    public List<EntityUid> Actions;
 
     [AutoNetworkedField]
-    public EntityUid ActionOrderStayEntity;
-
-    [AutoNetworkedField]
-    public EntityUid ActionOrderFollowEntity;
-
-    [AutoNetworkedField]
-    public EntityUid ActionOrderKillEmEntity;
-
-    [AutoNetworkedField]
-    public EntityUid ActionOrderLooseEntity;
-
-    [AutoNetworkedField]
-    public EntityUid ActionStunEntity;
+    public Dictionary<MaskOrderType, EntityUid> OrderActions;
 }
