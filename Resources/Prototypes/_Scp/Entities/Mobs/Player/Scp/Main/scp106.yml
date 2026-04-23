@@ -121,3 +121,4 @@
     allowed:
     - Stun
   - type: ComplexInteraction
+  - type: Hands
