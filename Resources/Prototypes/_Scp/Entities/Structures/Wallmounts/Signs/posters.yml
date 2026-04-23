@@ -644,7 +644,7 @@
   components:
   - type: Sprite
     state: scp012
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterScp018
@@ -707,7 +707,7 @@
   components:
   - type: Sprite
     state: scp106
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP109
@@ -716,7 +716,7 @@
   components:
   - type: Sprite
     state: scp109
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP124
@@ -725,7 +725,7 @@
   components:
   - type: Sprite
     state: scp124
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP127
@@ -770,7 +770,7 @@
   components:
   - type: Sprite
     state: scp247
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP268
@@ -824,7 +824,7 @@
   components:
   - type: Sprite
     state: scp969
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP714
@@ -860,7 +860,7 @@
   components:
   - type: Sprite
     state: scp612
-    
+
 - type: entity
   parent: PosterScpContainmentRoomBase
   id: PosterSCP2022
@@ -869,6 +869,15 @@
   components:
   - type: Sprite
     state: scp2022
+
+- type: entity
+  parent: PosterScpContainmentRoomBase
+  id: PosterSCP2295
+  name: SCP-2295 poster
+  description: Information poster for SCP-2295.
+  components:
+  - type: Sprite
+    state: scp2295
 
 # Длинные плакаты
 
