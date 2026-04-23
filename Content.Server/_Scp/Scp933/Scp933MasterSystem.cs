@@ -75,9 +75,9 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         RemComp<Scp933FaceTornComponent>(ent);
     }
 
-    public void ApplyHostBuffs(EntityUid uid)
+    public void ApplyHostBuffs(EntityUid uid, Scp933MasterComponent? master = null)
     {
-        if (!TryComp<Scp933MasterComponent>(uid, out var master))
+        if (!Resolve(uid, ref master))
             return;
 
         var ritualSettings = EnsureComp<Scp933RitualSettingsComponent>(uid);
@@ -124,9 +124,9 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
     /// <summary>
     /// Финал ритуала: срыв ленты с лица — визуал без лица и немота.
     /// </summary>
-    public void ApplyFaceTornAfterRip(EntityUid tapeBearer, EntityUid victim)
+    public void ApplyFaceTornAfterRip(EntityUid tapeBearer, EntityUid victim, Scp933MasterComponent? masterComp = null)
     {
-        if (!TryComp<Scp933MasterComponent>(tapeBearer, out var masterComp))
+        if (!Resolve(tapeBearer, ref masterComp))
             return;
 
         if (!TryComp<Scp933PossibleTargetComponent>(victim, out var targetComp) || !targetComp.CanBeFaceTorn)
