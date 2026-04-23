@@ -193,7 +193,6 @@
   components:
   - type: LimitedTimedSpawn
     prototype: ScpAnomalyDollar
-    copyCopies: false
     chance: 0.4
     entitiesLimit: 10
     impulseStrength: 200
