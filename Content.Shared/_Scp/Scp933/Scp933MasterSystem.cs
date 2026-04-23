@@ -17,7 +17,7 @@ public abstract class SharedScp933MasterSystem : EntitySystem
     /// </summary>
     public void EraseFaceFor933(EntityUid uid, Scp933VisualEffectsComponent? visualComp = null)
     {
-        if (!TryComp<Scp933TargetComponent>(uid, out var targetComp) || !targetComp.CanBeFaceTorn)
+        if (!TryComp<Scp933PossibleTargetComponent>(uid, out var targetComp) || !targetComp.CanBeFaceTorn)
             return;
 
         if (!TryComp<HumanoidAppearanceComponent>(uid, out var humanoidComp))
@@ -74,19 +74,11 @@ public abstract class SharedScp933MasterSystem : EntitySystem
 [Serializable, NetSerializable]
 public sealed partial class Scp933PeelTapeDoAfterEvent : SimpleDoAfterEvent
 {
-    public override DoAfterEvent Clone()
-    {
-        return new Scp933PeelTapeDoAfterEvent();
-    }
 }
 
 [Serializable, NetSerializable]
-public sealed partial class Scp933ApplyTapeDoAfterEvent : DoAfterEvent
+public sealed partial class Scp933ApplyTapeDoAfterEvent : SimpleDoAfterEvent
 {
-    public override DoAfterEvent Clone()
-    {
-        return new Scp933ApplyTapeDoAfterEvent();
-    }
 }
 
 [Serializable, NetSerializable]

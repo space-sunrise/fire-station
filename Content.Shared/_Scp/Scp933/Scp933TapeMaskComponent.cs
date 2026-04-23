@@ -74,7 +74,7 @@ public sealed partial class Scp933TapeMaskComponent : Component
     /// Слоты, в которые можно экипировать маску.
     /// </summary>
     [DataField, AutoNetworkedField]
-    public List<string> EquipSlots = new() { "mask" };
+    public HashSet<string> EquipSlots = new() { "mask" };
 
     /// <summary>
     /// Прерывать ли do-after при движении пользователя.

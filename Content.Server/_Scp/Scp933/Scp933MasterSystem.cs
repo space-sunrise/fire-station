@@ -1,4 +1,3 @@
-using System.Linq;
 using Content.Shared._Scp.Scp933;
 using Content.Shared._Scp.Fear.Components;
 using Content.Shared.Damage.Components;
@@ -30,7 +29,6 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         SubscribeLocalEvent<Scp933MasterComponent, ComponentShutdown>(OnMasterShutdown);
         SubscribeLocalEvent<Scp933FaceTornComponent, ComponentShutdown>(OnFaceTornShutdown);
         SubscribeLocalEvent<Scp933FaceTornComponent, MobStateChangedEvent>(OnFaceTornMobStateChanged);
-        SubscribeLocalEvent<HumanoidAppearanceComponent, ComponentStartup>(OnHumanoidStartup);
     }
 
     public bool HasAnyScp933Host()
@@ -43,17 +41,12 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
     {
         EraseFaceFor933(ent);
 
-        var popupMsg = TryComp<Scp933PopupMessagesComponent>(ent, out var popupComp)
-            ? popupComp.HostEmergedMessage
-            : "scp933-host-emerged";
-        _popup.PopupEntity(Loc.GetString(popupMsg), ent, ent, PopupType.LargeCaution);
+        _popup.PopupEntity(Loc.GetString("scp933-host-emerged"), ent, ent, PopupType.LargeCaution);
     }
 
     private void OnMasterShutdown(Entity<Scp933MasterComponent> ent, ref ComponentShutdown args)
     {
-        var victims = ent.Comp.FaceTornVictims.ToArray();
-        ent.Comp.FaceTornVictims.Clear();
-        foreach (var victim in victims)
+        foreach (var victim in ent.Comp.FaceTornVictims)
             RemComp<Scp933FaceTornComponent>(victim);
     }
 
@@ -62,9 +55,16 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         if (ent.Comp.MutedByScp933)
             RemComp<MutedComponent>(ent);
 
-        if (ent.Comp.TornBy is { } bearer && TryComp<Scp933MasterComponent>(bearer, out var master) &&
-            master.FaceTornVictims.Remove(ent))
-            Dirty(bearer, master);
+        if (ent.Comp.TornBy is not { } bearer)
+            return;
+
+        if (!TryComp<Scp933MasterComponent>(bearer, out var master))
+            return;
+
+        if (!master.FaceTornVictims.Remove(ent))
+            return;
+
+        Dirty(bearer, master);
     }
 
     private void OnFaceTornMobStateChanged(Entity<Scp933FaceTornComponent> ent, ref MobStateChangedEvent args)
@@ -75,18 +75,12 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         RemComp<Scp933FaceTornComponent>(ent);
     }
 
-    private void OnHumanoidStartup(Entity<HumanoidAppearanceComponent> ent, ref ComponentStartup args)
-    {
-        EnsureComp<Scp933TargetComponent>(ent.Owner);
-    }
-
     public void ApplyHostBuffs(EntityUid uid)
     {
         if (!TryComp<Scp933MasterComponent>(uid, out var master))
             return;
 
-        if (!TryComp<Scp933RitualSettingsComponent>(uid, out var ritualSettings))
-            ritualSettings = new Scp933RitualSettingsComponent();
+        var ritualSettings = EnsureComp<Scp933RitualSettingsComponent>(uid);
 
         // Хост не чувствует страха - у него нет разума, только инстинкты ленты
         RemCompDeferred<FearComponent>(uid);
@@ -135,7 +129,7 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         if (!TryComp<Scp933MasterComponent>(tapeBearer, out var masterComp))
             return;
 
-        if (!TryComp<Scp933TargetComponent>(victim, out var targetComp) || !targetComp.CanBeFaceTorn)
+        if (!TryComp<Scp933PossibleTargetComponent>(victim, out var targetComp) || !targetComp.CanBeFaceTorn)
             return;
 
         if (HasComp<Scp933FaceTornComponent>(victim) || HasComp<Scp933MasterComponent>(victim))
@@ -155,10 +149,7 @@ public sealed class Scp933MasterSystem : SharedScp933MasterSystem
         // Лечим жертву если нужно
         TryHealVictim(tapeBearer, victim);
 
-        var faceTornMsg = TryComp<Scp933PopupMessagesComponent>(tapeBearer, out var popupComp2)
-            ? popupComp2.FaceTornMessage
-            : "scp933-victim-face-torn";
-        _popup.PopupEntity(Loc.GetString(faceTornMsg), victim, victim, PopupType.LargeCaution);
+        _popup.PopupEntity(Loc.GetString("scp933-victim-face-torn"), victim, victim, PopupType.LargeCaution);
     }
 
     /// <summary>

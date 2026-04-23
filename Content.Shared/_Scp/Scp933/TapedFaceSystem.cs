@@ -22,7 +22,7 @@ public sealed class TapedFaceSystem : EntitySystem
     /// </summary>
     private void OnTapedStartup(EntityUid uid, TapedFaceComponent component, ComponentStartup args)
     {
-        if (!TryComp<Scp933TargetComponent>(uid, out var targetComp) || !targetComp.CanWearTape)
+        if (!TryComp<Scp933PossibleTargetComponent>(uid, out var targetComp) || !targetComp.CanWearTape)
             return;
 
         // Получаем настройки визуальных эффектов или используем дефолт
@@ -44,7 +44,7 @@ public sealed class TapedFaceSystem : EntitySystem
     /// </summary>
     private void OnTapedShutdown(EntityUid uid, TapedFaceComponent component, ComponentShutdown args)
     {
-        if (!TryComp<Scp933TargetComponent>(uid, out var targetComp) || !targetComp.CanWearTape)
+        if (!TryComp<Scp933PossibleTargetComponent>(uid, out var targetComp) || !targetComp.CanWearTape)
             return;
 
         if (HasComp<Scp933FaceTornComponent>(uid) || HasComp<Scp933MasterComponent>(uid))
@@ -70,11 +70,7 @@ public sealed class TapedFaceSystem : EntitySystem
     public void ApplyTape(EntityUid target)
     {
         // Проверить что цель является валидной целью SCP-933
-        if (!TryComp<Scp933TargetComponent>(target, out var targetComp) || !targetComp.CanWearTape)
-            return;
-
-        // Проверить что цель еще не обмотана
-        if (HasComp<TapedFaceComponent>(target))
+        if (!TryComp<Scp933PossibleTargetComponent>(target, out var targetComp) || !targetComp.CanWearTape)
             return;
 
         EnsureComp<TapedFaceComponent>(target);

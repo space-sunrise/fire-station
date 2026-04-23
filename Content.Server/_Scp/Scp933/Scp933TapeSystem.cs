@@ -47,14 +47,6 @@ public sealed class Scp933TapeSystem : EntitySystem
         SubscribeLocalEvent<HumanoidAppearanceComponent, Scp933RipTapeDoAfterEvent>(OnRipTapeDoAfter);
     }
 
-    /// <summary>
-    /// Получает сообщение popup из компонента или возвращает дефолтное.
-    /// </summary>
-    private string GetPopupMessage(EntityUid uid, Func<Scp933PopupMessagesComponent, string> selector, string defaultValue)
-    {
-        return TryComp<Scp933PopupMessagesComponent>(uid, out var comp) ? selector(comp) : defaultValue;
-    }
-
     private void OnDuctTapeUseInHand(Entity<DuctTapeComponent> tape, ref UseInHandEvent args)
     {
         if (args.Handled)
@@ -66,8 +58,7 @@ public sealed class Scp933TapeSystem : EntitySystem
         if (!_doAfter.TryStartDoAfter(doAfter))
             return;
 
-        var peelStartMsg = GetPopupMessage(args.User, c => c.PeelStartMessage, "scp933-peel-start");
-        _popup.PopupEntity(Loc.GetString(peelStartMsg), args.User, args.User);
+        _popup.PopupEntity(Loc.GetString("scp933-peel-start"), args.User, args.User);
         args.Handled = true;
     }
 
@@ -93,8 +84,7 @@ public sealed class Scp933TapeSystem : EntitySystem
         if (!_doAfter.TryStartDoAfter(doAfter))
             return;
 
-        var applyStartMsg = GetPopupMessage(args.User, c => c.ApplyStartMessage, "scp933-apply-start");
-        _popup.PopupEntity(Loc.GetString(applyStartMsg), args.User, args.User);
+        _popup.PopupEntity(Loc.GetString("scp933-apply-start"), args.User, args.User);
         args.Handled = true;
     }
 
@@ -123,8 +113,7 @@ public sealed class Scp933TapeSystem : EntitySystem
         if (!_doAfter.TryStartDoAfter(doAfter))
             return;
 
-        var ripStartMsg = GetPopupMessage(args.User, c => c.RipStartMessage, "scp933-rip-start");
-        _popup.PopupEntity(Loc.GetString(ripStartMsg), args.User, args.User);
+        _popup.PopupEntity(Loc.GetString("scp933-rip-start"), args.User, args.User);
         args.Handled = true;
     }
 
@@ -240,8 +229,7 @@ public sealed class Scp933TapeSystem : EntitySystem
         if (!_hands.TryPickupAnyHand(user, peel))
         {
             QueueDel(peel);
-            var peelHandFailMsg = GetPopupMessage(user, c => c.PeelHandFailMessage, "scp933-peel-hand-fail");
-            _popup.PopupEntity(Loc.GetString(peelHandFailMsg), user, user, PopupType.MediumCaution);
+            _popup.PopupEntity(Loc.GetString("scp933-peel-hand-fail"), user, user, PopupType.MediumCaution);
             return;
         }
 
@@ -261,8 +249,7 @@ public sealed class Scp933TapeSystem : EntitySystem
 
         // Use non-positional playback until the asset is converted to mono.
         _audio.PlayGlobal(tape.Comp.PullFromRollSound, user);
-        var peelSuccessMsg = GetPopupMessage(user, c => c.PeelSuccessMessage, "scp933-peel-success");
-        _popup.PopupEntity(Loc.GetString(peelSuccessMsg), user, user);
+        _popup.PopupEntity(Loc.GetString("scp933-peel-success"), user, user);
     }
 
     public bool TryApplyTape(Entity<Scp933TapeMaskComponent> tapeMask, EntityUid user, EntityUid victim, out DoAfterArgs doAfter)
@@ -301,7 +288,7 @@ public sealed class Scp933TapeSystem : EntitySystem
 
     private bool CanApplyTape(Entity<Scp933TapeMaskComponent> tapeMask, EntityUid user, EntityUid victim)
     {
-        if (!TryComp<Scp933TargetComponent>(victim, out var targetComp) || !targetComp.CanWearTape)
+        if (!TryComp<Scp933PossibleTargetComponent>(victim, out var targetComp) || !targetComp.CanWearTape)
             return false;
 
         if (!_interaction.InRangeUnobstructed(user, victim, popup: true))
@@ -309,16 +296,14 @@ public sealed class Scp933TapeSystem : EntitySystem
 
         if (TryGetScp933TapeMask(victim, out _, out _))
         {
-            var alreadyMsg = GetPopupMessage(user, c => c.AlreadyHasTapeMessage, "scp933-tape-already");
-            _popup.PopupEntity(Loc.GetString(alreadyMsg), user, user);
+            _popup.PopupEntity(Loc.GetString("scp933-tape-already"), user, user);
             return false;
         }
 
         var slot = tapeMask.Comp.EquipSlots.FirstOrDefault();
         if (!string.IsNullOrEmpty(slot) && _inventory.TryGetSlotEntity(victim, slot, out _))
         {
-            var equipFailMsg = GetPopupMessage(user, c => c.ApplyFailMessage, "scp933-tape-equip-fail");
-            _popup.PopupEntity(Loc.GetString(equipFailMsg), user, user, PopupType.MediumCaution);
+            _popup.PopupEntity(Loc.GetString("scp933-tape-equip-fail"), user, user, PopupType.MediumCaution);
             return false;
         }
 
@@ -333,16 +318,13 @@ public sealed class Scp933TapeSystem : EntitySystem
 
         if (!_inventory.TryEquip(user, victim, tapeMask, slot, silent: true))
         {
-            var equipFailMsg = GetPopupMessage(user, c => c.ApplyFailMessage, "scp933-tape-equip-fail");
-            _popup.PopupEntity(Loc.GetString(equipFailMsg), user, user, PopupType.MediumCaution);
+            _popup.PopupEntity(Loc.GetString("scp933-tape-equip-fail"), user, user, PopupType.MediumCaution);
             return;
         }
 
         _audio.PlayGlobal(tapeMask.Comp.ApplyToFaceSound, victim);
-        var applySuccessUserMsg = GetPopupMessage(user, c => c.ApplySuccessUserMessage, "scp933-apply-success-user");
-        var applySuccessTargetMsg = GetPopupMessage(victim, c => c.ApplySuccessTargetMessage, "scp933-apply-success-target");
-        _popup.PopupEntity(Loc.GetString(applySuccessUserMsg), user, user);
-        _popup.PopupEntity(Loc.GetString(applySuccessTargetMsg), victim, victim, PopupType.MediumCaution);
+        _popup.PopupEntity(Loc.GetString("scp933-apply-success-user"), user, user);
+        _popup.PopupEntity(Loc.GetString("scp933-apply-success-target"), victim, victim, PopupType.MediumCaution);
     }
 
     public bool TryRipTape(EntityUid user, EntityUid target, out DoAfterArgs doAfter)
@@ -377,7 +359,7 @@ public sealed class Scp933TapeSystem : EntitySystem
         maskUid = default!;
         tapeMask = default!;
 
-        if (!TryComp<Scp933TargetComponent>(target, out var targetComp) || !targetComp.CanBeFaceTorn)
+        if (!TryComp<Scp933PossibleTargetComponent>(target, out var targetComp) || !targetComp.CanBeFaceTorn)
             return false;
 
         // Сначала проверяем есть ли лента на цели - если нет, просто молча выходим (не мешаем обычным взаимодействиям)
@@ -389,7 +371,7 @@ public sealed class Scp933TapeSystem : EntitySystem
 
         if (!isHost)
         {
-            var ripMasterOnlyMsg = GetPopupMessage(user, c => c.RipMasterOnlyMessage, "scp933-rip-master-only");
+            var ripMasterOnlyMsg = "scp933-rip-master-only";
 
             if (_master.HasAnyScp933Host())
             {
@@ -485,10 +467,8 @@ public sealed class Scp933TapeSystem : EntitySystem
         }
 
         _audio.PlayGlobal(tapeMask.RipFromFaceSound, target);
-        var ripSuccessUserMsg = GetPopupMessage(user, c => c.RipSuccessUserMessage, "scp933-rip-success-user");
-        var ripSuccessTargetMsg = GetPopupMessage(target, c => c.RipSuccessTargetMessage, "scp933-rip-success-target");
-        _popup.PopupEntity(Loc.GetString(ripSuccessUserMsg), user, user);
-        _popup.PopupEntity(Loc.GetString(ripSuccessTargetMsg), target, target, PopupType.MediumCaution);
+        _popup.PopupEntity(Loc.GetString("scp933-rip-success-user"), user, user);
+        _popup.PopupEntity(Loc.GetString("scp933-rip-success-target"), target, target, PopupType.MediumCaution);
     }
 
     private bool TryGetScp933TapeMask(EntityUid uid, out EntityUid maskUid, out Scp933TapeMaskComponent? tapeMaskComp)
