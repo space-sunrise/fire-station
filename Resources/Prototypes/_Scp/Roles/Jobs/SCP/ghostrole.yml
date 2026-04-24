@@ -35,3 +35,21 @@
   alwaysShowInBanPanel: true
   setPreference: false
   applyTraits: false
+
+- type: job
+  id: Scp2295
+  name: job-name-scp2295
+  description: job-description-scp2295
+  playTimeTracker: JobScp2295
+  requirements:
+  - !type:OverallPlaytimeRequirement
+    time: 18000 # 5h
+  weight: 967
+  #icon: TODO
+  joinNotifyCrew: false
+  overrideConsoleVisibility: false
+  canBeAntag: false
+  jobEntity: Scp2295
+  alwaysShowInBanPanel: true
+  setPreference: false
+  applyTraits: false

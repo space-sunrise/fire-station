@@ -155,6 +155,20 @@
     - Scp131B
 
 - type: entity
+  name: SCP-2295 spawner
+  id: SpawnScp2295
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/Scp/scp-2295.rsi
+      state: SCP-2295
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp2295
+
+- type: entity
   name: SCP-457 spawner
   id: SpawnScp457
   parent: MarkerBase

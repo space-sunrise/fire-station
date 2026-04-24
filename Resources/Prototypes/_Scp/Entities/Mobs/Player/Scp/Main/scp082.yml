@@ -29,11 +29,12 @@
       10000: Dead
   - type: Body
     prototype: Human
-    requiredLegs: 2
   - type: Inventory
     templateId: scp082
   - type: FieldOfView
     angle: 240
+  - type: Hunger
+  - type: Thirst
   - type: Sprite
     noRot: true
     drawdepth: Mobs
@@ -70,6 +71,9 @@
     - DoorBumpOpener
   - type: MeleeWeapon
     hidden: true
+    altDisarm: false
+    animation: WeaponArcSmash
+    wideAnimation: WeaponArcSmash
     soundHit:
       collection: Punch
     damage:
@@ -77,6 +81,9 @@
         Blunt: 40
     attackRate: 1.25
     range: 2
+  - type: MeleeThrowOnHit
+    speed: 2
+    distance: 0.25
   - type: TTS
     voice: Dota2Pudge
   - type: GuideHelp
@@ -93,3 +100,20 @@
       path: /Audio/_Scp/Scp096/prydoor.ogg
       params:
         volume: -4
+  - type: Bloodstream
+    bloodRefreshAmount: 5
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: Blood
+        Quantity: 1500
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.25,-0.4,0.25,0.4"
+        density: 500
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
