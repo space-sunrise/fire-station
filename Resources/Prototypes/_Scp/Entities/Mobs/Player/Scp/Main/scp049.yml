@@ -47,7 +47,6 @@
   - type: Hands
   - type: Body
     prototype: Human
-    requiredLegs: 2
   - type: ComplexInteraction
   - type: Buckle
   - type: Stripping
