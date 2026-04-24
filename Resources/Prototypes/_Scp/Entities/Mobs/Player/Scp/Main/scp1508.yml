@@ -99,3 +99,4 @@
   - type: ComplexInteraction
   - type: ScpRestriction
     canBeDisarmed: true
+    canBePulled: true
