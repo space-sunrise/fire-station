@@ -1,7 +1,5 @@
 
-using Content.Shared.Weapons.Melee.Events;
 using Content.Shared.Mech;
-using System.Linq;
 using Content.Shared.Mech.Components;
 using Content.Shared.Interaction.Events;
 
