@@ -166,7 +166,7 @@
   - type: FearSource
     phobiaType: Exoremophobia
   - type: ScpPossibilities
-    canEjectFromMech: true
+    canEjectPilotFromMech: true
   - type: WatchingTarget
   - type: ProximityReceiver
 
