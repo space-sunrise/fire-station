@@ -86,10 +86,8 @@
           - Healing # это не его задача лечить, такие сцп уже есть
         whitelist:
           components:
-          - Healing
           - Edible
           tags:
-          - Medkit
           - Mop
           - MopBasic
           - WetFloorSign
