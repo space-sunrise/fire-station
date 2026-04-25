@@ -80,6 +80,10 @@
     hands:
       main:
         location: Middle
+        blacklist:
+          components:
+          - Scp
+          - Healing # это не его задача лечить, такие сцп уже есть
         whitelist:
           components:
           - Healing
@@ -92,6 +96,7 @@
           - Trash
           - TrashBag
           - Bucket
+          - Flashlight
     sortedHands:
     - main
     activeHandId: main
