@@ -4,14 +4,16 @@
   graph:
   - node: start
     edges:
-    - to: shotgun
+    - to: revolver
       steps:
       - tag: ModularBarrel
         icon:
           sprite: _Starlight/Objects/Misc/modular_barrel.rsi
           state: icon
         name: crafting-menu-name-MB
-      - tag: ModularReceiver
+      - anyTags:
+        - ModularReceiver
+        - ImprovisedModularReceiver
         icon:
           sprite: Objects/Misc/modular_receiver.rsi
           state: icon
@@ -27,5 +29,12 @@
       - material: Plasteel
         amount: 5
         doAfter: 15
-  - node: shotgun
+  - node: revolver
     entity: UnfinishedRevolverForged
+    edges:
+    - to: finished
+      steps:
+      - tool: Welding
+        doAfter: 5
+  - node: finished
+    entity: WeaponRevolverForged

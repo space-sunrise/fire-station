@@ -1,4 +1,23 @@
 - type: entity
+  parent: BaseItem
+  id: ImprovisedModularReceiver
+  name: improvised modular receiver
+  description: A crude but functional receiver cobbled together from scrap.
+  components:
+  - type: Item
+    storedRotation: -90
+  - type: Sprite
+    sprite: _Scp/Objects/Misc/improvised_modular_receiver.rsi
+    state: icon
+  - type: Construction
+    graph: ImprovisedModularReceiverGraph
+    node: receiver
+  - type: Tag
+    tags:
+    - ImprovisedModularReceiver
+    - Metal
+
+- type: entity
   parent: HiltWood
   id: ScpHiltWood
   components:

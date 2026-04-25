@@ -960,6 +960,9 @@
   id: ModularReceiver # ConstructionGraph: ImprovisedShotgunGraph
 
 - type: Tag
+  id: ImprovisedModularReceiver # ConstructionGraph: ImprovisedModularReceiverGraph
+
+- type: Tag
   id: MonkeyCube # Storage whitelist: ClothingBeltChef. CargoBounty: BountyMonkeyCube
 
 - type: Tag

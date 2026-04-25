@@ -3,7 +3,7 @@
   id: WeaponShotgunForged
   graph: ForgedShotgunGraph
   startNode: start
-  targetNode: shotgun
+  targetNode: finished
   category: construction-category-weapons
   objectType: Item
   description: crafting-menu-text-FDB
@@ -33,7 +33,7 @@
   id: WeaponPistolForged
   graph: ForgedPistolGraph
   startNode: start
-  targetNode: shotgun
+  targetNode: finished
   category: construction-category-weapons
   objectType: Item
   description: crafting-menu-text-FP
@@ -83,7 +83,7 @@
   id: WeaponRevolverForged
   graph: ForgedRevolverGraph
   startNode: start
-  targetNode: shotgun
+  targetNode: finished
   category: construction-category-weapons
   objectType: Item
   description: crafting-menu-text-FR
@@ -153,7 +153,7 @@
   id: WeaponSubMachineGunForged
   graph: ForgedSMGGraph
   startNode: start
-  targetNode: shotgun
+  targetNode: finished
   category: construction-category-weapons
   objectType: Item
   description: crafting-menu-text-FS
@@ -193,7 +193,7 @@
   id: WeaponSniperForged
   graph: ForgedSniperGraph
   startNode: start
-  targetNode: shotgun
+  targetNode: finished
   category: construction-category-weapons
   objectType: Item
   description: crafting-menu-text-FRR

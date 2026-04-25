@@ -116,6 +116,7 @@ construction-graph-tag-station-ai-core-electronics = электроника яд
 construction-graph-tag-empty-can = любая банка
 construction-graph-tag-igniter = воспламенитель
 construction-graph-tag-modular-receiver = модульный ресивер
+construction-graph-tag-improvised-modular-receiver = импровизированный модульный ресивер
 construction-graph-tag-rifle-stock = приклад винтовки
 construction-graph-tag-match-stick = спичка
 construction-graph-tag-ambrosia = амброзия
