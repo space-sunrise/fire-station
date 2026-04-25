@@ -11,9 +11,7 @@
           sprite: _Starlight/Objects/Misc/modular_barrel.rsi
           state: icon
         name: crafting-menu-name-MB
-      - anyTags:
-        - ModularReceiver
-        - ImprovisedModularReceiver
+      - tag: ModularReceiver
         icon:
           sprite: Objects/Misc/modular_receiver.rsi
           state: icon

@@ -12,9 +12,7 @@
           state: icon
         name: crafting-menu-name-MB
         doAfter: 3
-      - anyTags:
-        - ModularReceiver
-        - ImprovisedModularReceiver
+      - tag: ModularReceiver
         icon:
           sprite: Objects/Misc/modular_receiver.rsi
           state: icon
