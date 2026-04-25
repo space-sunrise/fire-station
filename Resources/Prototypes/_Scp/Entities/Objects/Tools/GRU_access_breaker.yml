@@ -1,0 +1,32 @@
+- type: entity
+  parent: [BaseItem, BaseFoundationEnemyContraband]
+  id: GRUAccessBreakerUnlimited
+  name: GRU tablet
+  description: A specialized GRU tablet for unlocking and erasing access from digital locks.
+  suffix: Unlimited
+  components:
+  - type: Emag
+    emagType: Access
+  - type: Sprite
+    sprite: _Scp/Objects/Tools/GRU_access_breaker.rsi
+    state: icon
+  - type: Item
+    sprite: _Scp/Objects/Tools/GRU_access_breaker.rsi
+  - type: Clothing
+    slots:
+    - idcard
+  - type: Access
+    tags:
+    - ChaosInsurgency
+  - type: IdCard
+  - type: Tag
+    tags:
+    - DoorBumpOpener
+
+- type: entity
+  parent: GRUAccessBreakerUnlimited
+  id: GRUAccessBreakerLimited
+  suffix: Limited
+  components:
+  - type: LimitedCharges
+  - type: AutoRecharge
