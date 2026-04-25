@@ -1,0 +1,105 @@
+﻿- type: entity
+  id: Scp2295
+  name: ???
+  suffix: SCP-2295
+  parent:
+  - BaseScpFriendly
+  - ShowMedicalIcons
+  components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
+  - type: Sprite
+    drawdepth: SmallMobs
+    sprite: _Scp/Mobs/Scp/scp-2295.rsi
+    state: SCP-2295
+  - type: Item
+    size: Huge
+    sprite: _Scp/Mobs/Scp/scp-2295.rsi
+  - type: MultiHandedItem
+  - type: Scp
+    class: Safe
+  - type: Muted
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 3
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Scale
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-minor-name
+    description: ghost-panel-antagonist-scp-minor-description
+    priority: 0
+  - type: ItemRepickupCooldown
+    cooldown: 5
+  - type: CanEscapeInventory
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 80
+        mask:
+        - SmallMobMask
+        layer:
+        - SmallMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-scp2295-name
+    description: ghost-role-information-scp2295-description
+    raffle:
+      settings: short
+    job: Scp2295
+  - type: GhostTakeoverAvailable
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: HTN
+    rootTask:
+      task: MedibotCompound
+    blackboard:
+      VisionRadius: !type:Single
+        3
+      FollowRange: !type:Single
+        3
+      MedibotInjectRange: !type:Single
+        2
+  - type: Medibot
+    injectSound: /Audio/Items/Medical/brutepack_end.ogg
+    treatments:
+      Alive:
+        reagent: Omnizine
+        quantity: 5
+        minDamage: 0
+        maxDamage: 80
+      Critical:
+        reagent: Inaprovaline
+        quantity: 15
+  - type: Hands
+    hands:
+      main:
+        location: Middle
+        whitelist:
+          components:
+          - Healing
+          tags:
+          - Medkit
+    sortedHands:
+    - main
+    activeHandId: main
+  - type: Pacified
+  - type: ComplexInteraction
+  - type: ScpRestriction
+    canBeDisarmed: true
+  - type: ActionGrant
+    actions:
+    - Scp2295Brutepack
+    - Scp2295RegenerativeMesh
