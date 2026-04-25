@@ -1,35 +1,38 @@
 
 using Content.Shared.Mech;
 using Content.Shared.Mech.Components;
-using Content.Shared.Interaction.Events;
 using Content.Shared.Weapons.Melee.Events;
-using System.Linq;
+using Robust.Shared.Timing;
 
 namespace Content.Shared._Scp.Other.ScpPossibilities;
 
-public sealed partial class ScpPossibilitiesSystem : EntitySystem
+public sealed class ScpPossibilitiesSystem : EntitySystem
 {
+    [Dependency] private readonly GameTiming _timing = default!;
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ScpPossibilitiesComponent, MeleeHitEvent>(OnAttackAttempt);
+        SubscribeLocalEvent<ScpPossibilitiesComponent, MeleeHitEvent>(OnMeleeHit);
     }
 
-    public void OnAttackAttempt(Entity<ScpPossibilitiesComponent> ent, ref MeleeHitEvent args)
+    public void OnMeleeHit(Entity<ScpPossibilitiesComponent> ent, ref MeleeHitEvent args)
     {
-        if (!args.HitEntities.Any())
+        if (!ent.Comp.CanEjectPilotFromMech)
             return;
 
-        if (!ent.Comp.CanEjectPilotFromMech)
+        if (args.HitEntities.Count == 0)
             return;
 
         foreach (var target in args.HitEntities)
         {
+            if (!_timing.IsFirstTimePredicted)
+                return;
+
             if (!TryComp<MechComponent>(target, out var mechComp))
                 continue;
 
-            if (mechComp.PilotSlot.ContainedEntities == null)
+            if (mechComp.PilotSlot.ContainedEntity == null)
                 continue;
 
             var ev = new MechEjectPilotEvent();
