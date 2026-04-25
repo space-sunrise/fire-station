@@ -800,7 +800,10 @@
 
 - type: Tag
   id: Igniter # ConstructionGraph: makeshiftstunprod, FireBomb. Common ingredient in machines (HyperConvection)
-
+  
+- type: Tag
+  id: ImprovisedModularReceiver # ConstructionGraph: ImprovisedModularReceiverGraph
+  
 - type: Tag
   id: Inflatable # Storage whitelist: BorgModuleInflatable
 
@@ -958,9 +961,6 @@
 
 - type: Tag
   id: ModularReceiver # ConstructionGraph: ImprovisedShotgunGraph
-
-- type: Tag
-  id: ImprovisedModularReceiver # ConstructionGraph: ImprovisedModularReceiverGraph
 
 - type: Tag
   id: MonkeyCube # Storage whitelist: ClothingBeltChef. CargoBounty: BountyMonkeyCube
