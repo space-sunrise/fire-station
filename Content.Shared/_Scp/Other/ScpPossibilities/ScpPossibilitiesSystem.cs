@@ -8,7 +8,7 @@ namespace Content.Shared._Scp.Other.ScpPossibilities;
 
 public sealed class ScpPossibilitiesSystem : EntitySystem
 {
-    [Dependency] private readonly GameTiming _timing = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     public override void Initialize()
     {
         base.Initialize();
