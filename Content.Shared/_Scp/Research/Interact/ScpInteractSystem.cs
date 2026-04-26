@@ -87,7 +87,7 @@ public sealed partial class ScpInteractSystem : EntitySystem
         _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
     }
 
-    private void OnInteractSuccessful(Entity<ScpComponent> scp, ref ScpSpawnInteractDoAfterEvent args)
+private void OnInteractSuccessful(Entity<ScpComponent> scp, ref ScpSpawnInteractDoAfterEvent args)
     {
         if (!_timing.IsFirstTimePredicted)
             return;
@@ -99,26 +99,28 @@ public sealed partial class ScpInteractSystem : EntitySystem
         if (!TryComp<ScpInteractToolComponent>(tool, out var researchTool))
             return;
 
-        scp.Comp.TimeLastInteracted = _timing.CurTime;
+        scp.Comp.TimeLastInteracted = _timing.IsFirstTimePredicted ? _timing.CurTime : scp.Comp.TimeLastInteracted;
         Dirty(scp);
         args.Handled = true;
 
-        if (_net.IsServer)
+        if (_net.IsClient)
+            return;
+        if (args.ToSpawn == null)
+            goto CheckTrigger;
+        var count = _random.Next(args.MinSpawn, args.MaxSpawn + 1);
+        for (var i = 0; i < count; i++)
         {
-            if (args.ToSpawn is { } toSpawn)
-            {
-                var count = _random.Next(args.MinSpawn, args.MaxSpawn + 1);
-                for (var i = 0; i < count; i++)
-                {
-                    if (researchTool.Sound != null)
-                        _audio.PlayPvs(researchTool.Sound, scp);
+            if (researchTool.Sound != null)
+                _audio.PlayPvs(researchTool.Sound, scp);
 
-                    Spawn(toSpawn, Transform(scp).Coordinates);
-                }
-            }
+            Spawn(args.ToSpawn, Transform(scp).Coordinates);
+        }
 
-            if (args.ShouldTriggerPolymorph)
-                _trigger.Trigger(scp);
+    CheckTrigger:
+        if (args.ShouldTriggerPolymorph)
+        {
+            var ev = new ScpResearchInteractSuccessfulEvent(args.User);
+            RaiseLocalEvent(scp, ref ev); 
         }
     }
 

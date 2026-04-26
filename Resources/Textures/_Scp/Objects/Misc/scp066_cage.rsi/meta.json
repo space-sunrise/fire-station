@@ -1,5 +1,6 @@
 {
     "version": 1,
+	"license" : "CLA",
     "copyright": "Author: Любознательный modified by timur",
     "size": {
         "x": 32,

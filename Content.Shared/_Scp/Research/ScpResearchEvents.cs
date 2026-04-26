@@ -24,6 +24,12 @@ public abstract partial class BaseScpInteractDoAfterEvent : SimpleDoAfterEvent
 }
 
 /// <summary>
+/// Вызывается на СЦП после успешного завершения исследовательского взаимодействия.
+/// </summary>
+[ByRefEvent]
+public record struct ScpResearchInteractSuccessfulEvent(EntityUid User);
+
+/// <summary>
 /// Ивент, вызываемый дуафтером, когда игрок взаимодействует с СЦП каким-то предметом для сбора исследовательского материала
 /// </summary>
 [Serializable, NetSerializable, DataDefinition]
