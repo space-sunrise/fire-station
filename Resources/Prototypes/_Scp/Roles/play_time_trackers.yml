@@ -176,9 +176,12 @@
 
 - type: playTimeTracker
   id: JobScp131B
-  
+
 - type: playTimeTracker
   id: JobScp2295
+
+- type: playTimeTracker
+  id: JobScp1508
 
 # Отряды МОГ
 
