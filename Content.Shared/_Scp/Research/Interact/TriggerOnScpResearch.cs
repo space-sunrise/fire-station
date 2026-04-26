@@ -1,4 +1,4 @@
-﻿using Content.Shared.Trigger.Systems; // Путь, который ты нашел
+﻿using Content.Shared.Trigger.Systems;
 using Robust.Shared.GameObjects;
 
 namespace Content.Shared._Scp.Research.Interact;
