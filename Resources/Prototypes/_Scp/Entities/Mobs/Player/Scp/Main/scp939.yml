@@ -23,6 +23,7 @@
     class: Keter
   - type: ScpOnSoundVisibilityViewer
     poorEyesOnFlash: true
+    onFlashMessage: scp939-flashed
     protections:
       components:
       - Scp939Protection

@@ -43,6 +43,9 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
 
     private void OnFlash(Entity<ScpOnSoundVisibilityViewerComponent> ent, ref AfterFlashedEvent args)
     {
+        if (!ent.Comp.PoorEyesOnFlash)
+            return;
+
         ent.Comp.PoorEyesight = true;
         ent.Comp.PoorEyesightTimeStart = _timing.CurTime;
 
