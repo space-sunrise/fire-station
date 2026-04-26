@@ -8,7 +8,6 @@ namespace Content.Shared._Scp.Other.ScpPossibilities;
 
 public sealed class ScpPossibilitiesSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _timing = default!;
     public override void Initialize()
     {
         base.Initialize();
@@ -26,9 +25,6 @@ public sealed class ScpPossibilitiesSystem : EntitySystem
 
         foreach (var target in args.HitEntities)
         {
-            if (!_timing.IsFirstTimePredicted)
-                return;
-
             if (!TryComp<MechComponent>(target, out var mechComp))
                 continue;
 
