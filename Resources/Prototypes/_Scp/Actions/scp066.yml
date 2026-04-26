@@ -8,7 +8,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 90
+    useDelay: 180
     sound: /Audio/_Scp/Scp066/party1.ogg
     icon:
       sprite: Objects/Consumable/Food/Baked/cake.rsi
@@ -26,7 +26,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 90
+    useDelay: 180
     icon:
       sprite: _Sunrise/Objects/Fun/toy_cats.rsi
       state: plushie_whitecat
@@ -43,7 +43,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 120
+    useDelay: 240
     icon:
       sprite: Objects/Consumable/Drinks/doctorsdelightglass.rsi
       state: icon_empty
@@ -62,7 +62,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 90
+    useDelay: 180
     icon:
       sprite: _Scp/Actions/scp-066.rsi
       state: airlock
@@ -79,7 +79,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 90
+    useDelay: 180
     icon:
       sprite: Objects/Fun/Plushies/bee.rsi
       state: icon
@@ -96,7 +96,7 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: Action
-    useDelay: 90
+    useDelay: 180
     icon:
       sprite: _Scp/Actions/scp-066.rsi
       state: light
