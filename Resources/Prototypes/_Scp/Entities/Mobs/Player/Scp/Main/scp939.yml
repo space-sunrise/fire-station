@@ -21,6 +21,7 @@
       state: alive
   - type: Scp
     class: Keter
+  - type: ScpOnSoundVisibilityViewer
   - type: Scp939
   - type: MeleeWeapon
     altDisarm: false

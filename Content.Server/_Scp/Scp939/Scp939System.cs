@@ -33,9 +33,6 @@ public sealed partial class Scp939System : EntitySystem
 
         SubscribeLocalEvent<Scp939Component, SleepStateChangedEvent>(OnSleepChanged);
         SubscribeLocalEvent<Scp939Component, MobStateChangedEvent>(OnMobStateChanged);
-
-
-        InitializeVisibility();
     }
 
     private void OnMobStateChanged(Entity<Scp939Component> ent, ref MobStateChangedEvent args)
@@ -66,36 +63,10 @@ public sealed partial class Scp939System : EntitySystem
     {
         base.Update(frameTime);
 
-        UpdateVisibilityTargets();
-
         var querySleeping = EntityQueryEnumerator<Scp939Component, SleepingComponent>();
         while (querySleeping.MoveNext(out var uid, out var scp939Component, out _))
         {
             _damageableSystem.TryChangeDamage(uid, scp939Component.HibernationHealingRate * frameTime);
-        }
-
-        var querySimple = EntityQueryEnumerator<Scp939Component>();
-        while (querySimple.MoveNext(out var uid, out var scp939Component))
-        {
-            if (!scp939Component.PoorEyesight)
-                continue;
-
-            if (scp939Component.PoorEyesightTimeStart == null)
-                continue;
-
-            var timeDifference = _timing.CurTime - scp939Component.PoorEyesightTimeStart.Value;
-
-            if (timeDifference > TimeSpan.FromSeconds(scp939Component.PoorEyesightTime))
-            {
-                scp939Component.PoorEyesight = false;
-                scp939Component.PoorEyesightTimeStart = null;
-
-                DirtyFields(uid,
-                    scp939Component,
-                    null,
-                    nameof(Scp939Component.PoorEyesight),
-                    nameof(Scp939Component.PoorEyesightTimeStart));
-            }
         }
     }
 

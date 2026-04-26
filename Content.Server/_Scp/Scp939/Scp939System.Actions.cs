@@ -91,7 +91,7 @@ public sealed partial class Scp939System
     /// <summary>
     /// Запоминание последних сказанных возле 939 слов
     /// </summary>
-    private void TryRememberPhrase(Entity<ActiveScp939VisibilityComponent> ent, string message)
+    /*private void TryRememberPhrase(Entity<ActiveScp939VisibilityComponent> ent, string message)
     {
         using var scp939Set = HashSetPoolEntity<Scp939Component>.Rent();
         _entityLookup.GetEntitiesInRange(Transform(ent).Coordinates, 16f, scp939Set.Value, LookupFlags.Dynamic | LookupFlags.Approximate);
@@ -117,5 +117,5 @@ public sealed partial class Scp939System
             var username = Identity.Name(ent, EntityManager);
             scp.Comp.RememberedMessages.TryAdd(message, new(username, voicePrototype));
         }
-    }
+    }*/
 }

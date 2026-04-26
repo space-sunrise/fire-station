@@ -1,28 +1,28 @@
-﻿using Content.Shared._Scp.Scp939;
+using Content.Shared._Scp.Other.ScpOnSoundVisibility;
 using Robust.Client.Graphics;
 using Robust.Shared.Player;
 
-namespace Content.Client._Scp.Scp939;
+namespace Content.Client._Scp.Other.ScpOnSoundVisibility;
 
-public sealed partial class Scp939HudSystem
+public sealed partial class ScpOnSoundVisibilityHudSystem
 {
     [Dependency] private readonly IOverlayManager _overlayManager = default!;
 
     private void InitializeOverlay()
     {
-        SubscribeLocalEvent<Scp939Component, LocalPlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<Scp939Component, LocalPlayerDetachedEvent>(OnPlayerDetached);
+        SubscribeLocalEvent<ScpOnSoundVisibilityViewerComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
+        SubscribeLocalEvent<ScpOnSoundVisibilityViewerComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
     }
 
-    private void OnPlayerAttached(Entity<Scp939Component> ent, ref LocalPlayerAttachedEvent args)
+    private void OnPlayerAttached(Entity<ScpOnSoundVisibilityViewerComponent> ent, ref LocalPlayerAttachedEvent args)
     {
-        _scp939Component = ent.Comp;
+        _viewerComponent = ent.Comp;
         AddOverlays();
     }
 
-    private void OnPlayerDetached(Entity<Scp939Component> ent, ref LocalPlayerDetachedEvent args)
+    private void OnPlayerDetached(Entity<ScpOnSoundVisibilityViewerComponent> ent, ref LocalPlayerDetachedEvent args)
     {
-        _scp939Component = null;
+        _viewerComponent = null;
     }
 
     private void AddOverlays()

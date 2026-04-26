@@ -1,21 +1,21 @@
 using Robust.Client.Graphics;
 using Robust.Shared.Enums;
 
-namespace Content.Client._Scp.Scp939;
+namespace Content.Client._Scp.Other.ScpOnSoundVisibility;
 
-public sealed class Scp939ResetAlphaOverlay : Overlay
+public sealed class ScpOnSoundVisibilityResetAlphaOverlay : Overlay
 {
     [Dependency] private readonly IEntityManager _ent = default!;
 
-    private readonly Scp939HudSystem _hud;
+    private readonly ScpOnSoundVisibilityHudSystem _hud;
 
     public override OverlaySpace Space => OverlaySpace.WorldSpace;
 
-    public Scp939ResetAlphaOverlay()
+    public ScpOnSoundVisibilityResetAlphaOverlay()
     {
         IoCManager.InjectDependencies(this);
 
-        _hud = _ent.System<Scp939HudSystem>();
+        _hud = _ent.System<ScpOnSoundVisibilityHudSystem>();
     }
 
     protected override bool BeforeDraw(in OverlayDrawArgs args)

@@ -1,7 +1,7 @@
-namespace Content.Shared._Scp.Scp939;
+namespace Content.Shared._Scp.Other.ScpOnSoundVisibility;
 
 [RegisterComponent]
-public sealed partial class Scp939VisibilityComponent : Component
+public sealed partial class ScpOnSoundVisibilityComponent : Component
 {
     public const float InitialVisibilityAcc = 0.001f;
     public const float DefaultHideTime = 2.5f;

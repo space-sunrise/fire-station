@@ -5,7 +5,7 @@ using Robust.Shared.Prototypes;
 
 namespace Content.Shared._Scp.Scp939;
 
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(fieldDeltas: true)]
+[RegisterComponent, NetworkedComponent]
 public sealed partial class Scp939Component : Component
 {
     [DataField]
@@ -51,22 +51,6 @@ public sealed partial class Scp939Component : Component
             { "Cellular", -20f}
         }
     };
-
-    #region Vision
-
-    [DataField, AutoNetworkedField]
-    public bool PoorEyesight;
-
-    [DataField, AutoNetworkedField]
-    public float PoorEyesightTime = 10f; // Секунды
-
-    [AutoNetworkedField]
-    public TimeSpan? PoorEyesightTimeStart; // Когда начали плохо видеть
-
-    [DataField, ViewVariables(VVAccess.ReadWrite)]
-    public float VisibilityActivationRange = 20f;
-
-    #endregion
 
     [DataField]
     public int MaxRememberedMessages = 20;
