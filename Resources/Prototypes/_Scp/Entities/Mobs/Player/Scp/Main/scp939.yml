@@ -22,6 +22,10 @@
   - type: Scp
     class: Keter
   - type: ScpOnSoundVisibilityViewer
+    poorEyesOnFlash: true
+    protections:
+      components:
+      - Scp939Protection
   - type: Scp939
   - type: MeleeWeapon
     altDisarm: false

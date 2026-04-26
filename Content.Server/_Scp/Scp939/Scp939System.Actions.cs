@@ -88,6 +88,7 @@ public sealed partial class Scp939System
         args.Handled = true;
     }
 
+    // TODO: Перекочевать в отдельную систему
     /// <summary>
     /// Запоминание последних сказанных возле 939 слов
     /// </summary>

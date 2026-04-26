@@ -198,7 +198,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         if (!IsActive)
             return;
 
-        // В зависимости от наличие защит или проблем со зрением у 939 изменяется то, насколько хорошо мы видим жертву
+        // В зависимости от наличие защит или проблем со зрением изменяется то, насколько хорошо мы видим жертву
         if (ModifyAcc(ent.Comp, out var modifier)) // Если зрение затруднено
         {
             ent.Comp.VisibilityAcc *= modifier;
