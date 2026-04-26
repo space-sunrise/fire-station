@@ -169,6 +169,20 @@
     - Scp2295
 
 - type: entity
+  name: SCP-1508 spawner
+  id: SpawnScp1508
+  parent: MarkerBase
+  components:
+  - type: Sprite
+    layers:
+    - state: green
+    - sprite: _Scp/Mobs/Scp/scp-1508.rsi
+      state: scp-1508
+  - type: ConditionalSpawner
+    prototypes:
+    - Scp1508
+
+- type: entity
   name: SCP-457 spawner
   id: SpawnScp457
   parent: MarkerBase
