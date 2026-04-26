@@ -1,0 +1,105 @@
+﻿- type: entity
+  id: Scp1508
+  name: ???
+  suffix: SCP-1508
+  parent: BaseScpFriendly
+  components:
+  - type: AutoGhostRole
+    disconnectDelay: 600
+    pollDuration: 900
+    transferDelay: 180
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: _Scp/Mobs/Scp/scp-1508.rsi
+    layers:
+    - state: scp-1508
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: scp-1508
+      Critical:
+        Base: scp1508-dead
+  - type: Access
+    tags:
+    - Service
+  - type: Scp
+    class: Safe
+  - type: Muted
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 1
+    baseSprintSpeed: 2
+  - type: Damageable
+    damageContainer: Inorganic
+    damageModifierSet: Scale
+  - type: Repairable
+    doAfterDelay: 2
+    damage:
+      types:
+        Blunt: -30
+        Slash: -30
+        Piercing: -30
+  - type: MobState
+    allowedStates:
+      - Alive
+      - Critical
+  - type: GhostPanelAntagonistMarker
+    name: ghost-panel-antagonist-scp-minor-name
+    description: ghost-panel-antagonist-scp-minor-description
+    priority: 0
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 80
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      120: Critical
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-scp1508-name
+    description: ghost-role-information-scp1508-description
+    raffle:
+      settings: short
+    job: Scp1508
+  - type: GhostTakeoverAvailable
+  - type: GuideHelp
+    guides:
+    - ScpResearch
+  - type: Hands
+    hands:
+      main:
+        location: Middle
+        blacklist:
+          components:
+          - Scp
+          - Healing # это не его задача лечить, такие сцп уже есть
+        whitelist:
+          components:
+          - Edible
+          tags:
+          - Mop
+          - MopBasic
+          - WetFloorSign
+          - Trash
+          - TrashBag
+          - Bucket
+          - Flashlight
+    sortedHands:
+    - main
+    activeHandId: main
+  - type: Pacified
+  - type: ComplexInteraction
+  - type: ScpRestriction
+    canBeDisarmed: true
+    canBePulled: true
