@@ -14,7 +14,7 @@
     node: receiver
   - type: Tag
     tags:
-    - ImprovisedModularReceiver
+    - ModularReceiver
     - Metal
 
 - type: entity
