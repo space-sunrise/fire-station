@@ -214,7 +214,6 @@
     cooldownMessage: scp-interact-time-left
     event: !type:ScpSpawnInteractDoAfterEvent
       toSpawn: Scp066Ribbon
-      shouldTriggerPolymorph: true
     sound: /Audio/Items/multitool_drop.ogg
     whitelist:
       components:

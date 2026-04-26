@@ -1,4 +1,4 @@
-﻿using Content.Shared.DoAfter;
+﻿﻿using Content.Shared.DoAfter;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
 
@@ -24,12 +24,6 @@ public abstract partial class BaseScpInteractDoAfterEvent : SimpleDoAfterEvent
 }
 
 /// <summary>
-/// Вызывается на СЦП после успешного завершения исследовательского взаимодействия.
-/// </summary>
-[ByRefEvent]
-public record struct ScpResearchInteractSuccessfulEvent(EntityUid User);
-
-/// <summary>
 /// Ивент, вызываемый дуафтером, когда игрок взаимодействует с СЦП каким-то предметом для сбора исследовательского материала
 /// </summary>
 [Serializable, NetSerializable, DataDefinition]
@@ -39,7 +33,7 @@ public sealed partial class ScpSpawnInteractDoAfterEvent : BaseScpInteractDoAfte
     /// Исследовательский материал, который будет получен в результате взаимодействия с СЦП.
     /// </summary>
     [DataField]
-    public EntProtoId? ToSpawn;
+    public EntProtoId ToSpawn;
 
     /// <summary>
     /// Максимальное количество материала, который будет заспавнен
@@ -52,23 +46,15 @@ public sealed partial class ScpSpawnInteractDoAfterEvent : BaseScpInteractDoAfte
     /// </summary>
     [DataField]
     public int MaxSpawn = 1;
-	
-	/// <summary>
-    /// Будет ли вызван триггер полиморфа на сцп
-    /// </summary>
-    [DataField]
-	public bool ShouldTriggerPolymorph = false;
 
     public ScpSpawnInteractDoAfterEvent() {}
 
-    public ScpSpawnInteractDoAfterEvent(EntProtoId? toSpawn, int minSpawn, int maxSpawn, bool shouldTrigger = false)
+    public ScpSpawnInteractDoAfterEvent(EntProtoId toSpawn, int minSpawn, int maxSpawn)
     {
         ToSpawn = toSpawn;
         MinSpawn = minSpawn;
         MaxSpawn = maxSpawn;
-		ShouldTriggerPolymorph = shouldTrigger;
     }
 }
 
 #endregion
-

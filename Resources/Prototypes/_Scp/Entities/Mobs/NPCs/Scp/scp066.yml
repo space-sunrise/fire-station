@@ -53,7 +53,6 @@
   - type: GuideHelp
     guides:
     - ScpResearch
-  - type: TriggerOnScpResearch
   - type: PolymorphOnTrigger
     polymorph: Scp066Polymorph
   - type: HTN

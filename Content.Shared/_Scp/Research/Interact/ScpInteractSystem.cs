@@ -1,4 +1,4 @@
-﻿using Content.Shared._Scp.Mobs.Components;
+﻿﻿using Content.Shared._Scp.Mobs.Components;
 using Content.Shared.DoAfter;
 using Content.Shared.Interaction;
 using Content.Shared.Popups;
@@ -7,7 +7,6 @@ using Robust.Shared.Audio.Systems;
 using Robust.Shared.Network;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
-using Content.Shared.Trigger.Systems;
 
 namespace Content.Shared._Scp.Research.Interact;
 
@@ -32,7 +31,6 @@ public sealed partial class ScpInteractSystem : EntitySystem
     [Dependency] private readonly INetManager _net = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-	[Dependency] private readonly TriggerSystem _trigger = default!;
 
     public override void Initialize()
     {
@@ -87,7 +85,7 @@ public sealed partial class ScpInteractSystem : EntitySystem
         _doAfterSystem.TryStartDoAfter(doAfterEventArgs);
     }
 
-private void OnInteractSuccessful(Entity<ScpComponent> scp, ref ScpSpawnInteractDoAfterEvent args)
+    private void OnInteractSuccessful(Entity<ScpComponent> scp, ref ScpSpawnInteractDoAfterEvent args)
     {
         if (!_timing.IsFirstTimePredicted)
             return;
@@ -96,32 +94,29 @@ private void OnInteractSuccessful(Entity<ScpComponent> scp, ref ScpSpawnInteract
             return;
 
         var tool = args.Tool;
+
         if (!TryComp<ScpInteractToolComponent>(tool, out var researchTool))
             return;
 
-        scp.Comp.TimeLastInteracted = _timing.IsFirstTimePredicted ? _timing.CurTime : scp.Comp.TimeLastInteracted;
+        if (_net.IsServer)
+        {
+            // Случайное количество спавна. Берем +1, так как максимальная граница не включена
+            var count = _random.Next(args.MinSpawn, args.MaxSpawn + 1);
+
+            for (var i = 0; i < count; i++)
+            {
+                if (researchTool.Sound != null)
+                    _audio.PlayPvs(researchTool.Sound, scp);
+
+                Spawn(args.ToSpawn, Transform(scp).Coordinates);
+            }
+        }
+
+        // Задаем последнее время использования для кулдауна
+        scp.Comp.TimeLastInteracted = _timing.CurTime;
         Dirty(scp);
+
         args.Handled = true;
-
-        if (_net.IsClient)
-            return;
-        if (args.ToSpawn == null)
-            goto CheckTrigger;
-        var count = _random.Next(args.MinSpawn, args.MaxSpawn + 1);
-        for (var i = 0; i < count; i++)
-        {
-            if (researchTool.Sound != null)
-                _audio.PlayPvs(researchTool.Sound, scp);
-
-            Spawn(args.ToSpawn, Transform(scp).Coordinates);
-        }
-
-    CheckTrigger:
-        if (args.ShouldTriggerPolymorph)
-        {
-            var ev = new ScpResearchInteractSuccessfulEvent(args.User);
-            RaiseLocalEvent(scp, ref ev); 
-        }
     }
 
 }
