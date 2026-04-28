@@ -9,6 +9,7 @@ public sealed partial class ScpRestrictMovementOnVisibilityComponent : Component
     [DataField]
     public EntityWhitelist? ContainersMoveWhitelist;
 
+    [DataField]
     public EntityWhitelist? ContainersMoveBlacklist;
 
     [DataField]

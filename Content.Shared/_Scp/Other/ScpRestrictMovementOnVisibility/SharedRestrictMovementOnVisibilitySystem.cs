@@ -28,6 +28,8 @@ public sealed class SharedScpRestrictMovementOnVisibilitySystem : EntitySystem
         SubscribeLocalEvent<ScpRestrictMovementOnVisibilityComponent, UpdateCanMoveEvent>(OnMoveAttempt);
         SubscribeLocalEvent<ScpRestrictMovementOnVisibilityComponent, MoveInputEvent>(OnMoveInput);
         SubscribeLocalEvent<ScpRestrictMovementOnVisibilityComponent, MoveEvent>(OnMove);
+
+        _insideQuery = GetEntityQuery<InsideEntityStorageComponent>();
     }
 
     public void OnAttackAttempt(Entity<ScpRestrictMovementOnVisibilityComponent> ent, ref AttackAttemptEvent args)
