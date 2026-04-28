@@ -1,4 +1,3 @@
-
 using Robust.Shared.GameStates;
 
 namespace Content.Shared._Scp.Other.ScpPossibilities;
