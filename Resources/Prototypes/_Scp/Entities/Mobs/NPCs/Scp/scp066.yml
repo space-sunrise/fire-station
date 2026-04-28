@@ -1,8 +1,7 @@
 ﻿- type: entity
   id: Scp066Friendly
   suffix: SCP-066 Friendly
-  parent: BaseScpFriendly
-  name: ???
+  parent: BaseScp066
   components:
   - type: Sprite
     drawdepth: SmallMobs
@@ -10,34 +9,9 @@
     state: scp-066friendly
   - type: Scp
     class: Safe
-  - type: Scp066Friendly
-  - type: Muted
-  - type: ScpRestriction
-    canBePulled: true
-    canMobCollide: true
-  - type: NpcFactionMember
-    factions:
-    - SimpleNeutral
   - type: MovementSpeedModifier
     baseWalkSpeed: 2
     baseSprintSpeed: 3
-  - type: Damageable
-    damageContainer: Biological
-    damageModifierSet: Scale
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.3
-        density: 80
-        mask:
-        - MobMask
-        layer:
-        - SmallMobLayer
-  - type: MobThresholds
-    thresholds:
-      0: Alive
   - type: Destructible
     thresholds:
     - trigger:
@@ -50,9 +24,6 @@
       collection: Scp066IdleFriendly
       params:
         maxDistance: 6
-  - type: GuideHelp
-    guides:
-    - ScpResearch
   - type: PolymorphOnTrigger
     polymorph: Scp066Polymorph
   - type: HTN
@@ -82,9 +53,10 @@
 
 - type: entity
   id: Scp066Hostile
-  suffix: SCP-066-hostile
-  parent: BaseScp
-  name: ???
+  suffix: SCP-066 Hostile
+  parent:
+  - BaseScp066
+  - BaseScp
   components:
   - type: Sprite
     drawdepth: SmallMobs
@@ -92,25 +64,14 @@
     state: scp-066hostile
   - type: Scp
     class: Euclid
-  - type: Scp066Hostile
-  - type: Muted
-  - type: NpcFactionMember
-    factions:
-    - SimpleNeutral # все еще пассивен
   - type: MovementSpeedModifier
     baseWalkSpeed: 3
     baseSprintSpeed: 4
-  - type: ScpRestriction
-    canBePulled: true
-    canMobCollide: true
   - type: EmitSoundRandomly
     sound:
       collection: Scp066IdleHostile
       params:
         maxDistance: 6
-  - type: MobThresholds
-    thresholds:
-      0: Alive
   - type: HTN
     constantlyReplan: true
     rootTask:
@@ -135,6 +96,17 @@
     - actionId: Scp066DisableLights
       minRange: 0
       maxRange: 10
+    
+- type: entity
+  id: BaseScp066
+  categories: [ HideSpawnMenu ]
+  parent: BaseScpFriendly
+  name: ???
+  components:
+  - type: Muted
+  - type: ScpRestriction
+    canBePulled: true
+    canMobCollide: true
   - type: Damageable
     damageContainer: Biological
     damageModifierSet: Scale
@@ -149,6 +121,15 @@
         - MobMask
         layer:
         - SmallMobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
   - type: GuideHelp
     guides:
     - ScpResearch
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: Tag
+    tags:
+    - Scp066

@@ -173,9 +173,8 @@
     air:
       volume: 800
     whitelist:
-      components:
-      - Scp066Friendly
-      - Scp066Hostile
+      tags:
+      - Scp066
   - type: Physics
     bodyType: Dynamic
   - type: Fixtures
