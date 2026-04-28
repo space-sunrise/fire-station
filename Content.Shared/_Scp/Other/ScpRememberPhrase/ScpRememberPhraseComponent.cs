@@ -18,5 +18,16 @@ public sealed partial class ScpRememberPhraseComponent : Component
     /// Запомненые объектом слова. Ключ - сказанная фраза, значение - пара, в которой ключ имя сказавшего и значение прототип его ттса
     /// </summary>
     [ViewVariables]
-    public Dictionary<string, KeyValuePair<string, string?>> RememberedMessages = new();
+    public List<RememberedMessage> RememberedMessages = new();
+
+    [ViewVariables]
+    public EntityUid? ActionEnt;
+}
+
+[DataDefinition]
+public partial struct RememberedMessage
+{
+    public string Message;
+    public string SpeakerName;
+    public string? TtsVoice;
 }

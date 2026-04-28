@@ -5,7 +5,7 @@ using Robust.Client.GameObjects;
 
 namespace Content.Client._Scp.Other.ScpSleep;
 
-public sealed class Scp939Visualizer : VisualizerSystem<ScpSleepComponent>
+public sealed class ScpSleepVisualizer : VisualizerSystem<ScpSleepComponent>
 {
     [Dependency] private readonly SpriteSystem _spriteSystem = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearanceSystem = default!;
@@ -14,13 +14,13 @@ public sealed class Scp939Visualizer : VisualizerSystem<ScpSleepComponent>
     {
         base.OnAppearanceChange(uid, component, ref args);
 
-        UpdateSprite(uid, args.Component, args.Sprite);
+        UpdateSprite(uid);
     }
 
-    private void UpdateSprite(EntityUid uid, AppearanceComponent appearanceComponent, SpriteComponent? spriteComponent = null, MobStateComponent? mobStateComponent = null)
+    private void UpdateSprite(EntityUid uid)
     {
-        if (!TryComp(uid, out spriteComponent) ||
-            !TryComp(uid, out mobStateComponent) ||
+        if (!TryComp<SpriteComponent>(uid, out var spriteComponent) ||
+            !TryComp<MobStateComponent>(uid, out var mobStateComponent) ||
             !_spriteSystem.LayerMapTryGet((uid, spriteComponent), ScpSleepLayers.Base, out var layerId, false))
             return;
 

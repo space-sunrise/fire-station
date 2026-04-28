@@ -52,4 +52,13 @@ public sealed partial class ScpSleepComponent : Component
             { "Cellular", -20f}
         }
     };
+
+    [DataField]
+    public int BaseBloodRefreshAmount = 1;
+
+    [DataField]
+    public int FellAsleepBloodRefreshAmount = 20;
+
+    [ViewVariables]
+    public EntityUid? ActionEnt;
 }

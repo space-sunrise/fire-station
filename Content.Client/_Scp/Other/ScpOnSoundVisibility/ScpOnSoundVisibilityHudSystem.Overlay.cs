@@ -23,6 +23,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem
     private void OnPlayerDetached(Entity<ScpOnSoundVisibilityViewerComponent> ent, ref LocalPlayerDetachedEvent args)
     {
         _viewerComponent = null;
+        RemoveOverlays();
     }
 
     private void AddOverlays()

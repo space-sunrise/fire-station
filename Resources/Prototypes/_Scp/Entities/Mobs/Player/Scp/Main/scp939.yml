@@ -35,7 +35,6 @@
     actionProto: Scp939Mimic
   - type: ScpReleaseGas
     actionProto: Scp939Smoke
-  - type: Scp939
   - type: MeleeWeapon
     altDisarm: false
     soundHit:

@@ -8,6 +8,8 @@ using Content.Shared.Chat;
 using Content.Shared.IdentityManagement;
 using Robust.Shared.Random;
 using Content.Shared._Scp.Other.ScpOnSoundVisibility;
+using System.Linq;
+using NetCord.Gateway;
 
 namespace Content.Server._Scp.Other.ScpRememberPhrase;
 
@@ -24,21 +26,30 @@ public sealed class ScpRememberPhraseSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ScpRememberPhraseComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<ScpRememberPhraseComponent, ComponentShutdown>(OnShutdown);
+
         SubscribeLocalEvent<ScpOnSoundVisibilityComponent, EntitySpokeEvent>(OnSpoke); // TODO: Переделать под другой какой-то общий компонент / ивент
         SubscribeLocalEvent<ScpRememberPhraseComponent, ScpRememberPhraseActionEvent>(OnMimic);
     }
 
     private void OnInit(Entity<ScpRememberPhraseComponent> ent, ref ComponentInit args)
     {
-        _actionsSystem.AddAction(ent, ent.Comp.ActionProto);
+        var actionEnt = _actionsSystem.AddAction(ent, ent.Comp.ActionProto);
+        ent.Comp.ActionEnt = actionEnt;
     }
 
-    private void OnSpoke(Entity<ScpOnSoundVisibilityComponent> ent, ref EntitySpokeEvent args)
+    private void OnShutdown(Entity<ScpRememberPhraseComponent> ent, ref ComponentShutdown args)
+    {
+        _actionsSystem.RemoveAction(ent.Owner, ent.Comp.ActionEnt);
+        ent.Comp.ActionEnt = null;
+    }
+
+    public void OnSpoke(Entity<ScpOnSoundVisibilityComponent> ent, ref EntitySpokeEvent args)
     {
         TryRememberPhrase(ent, args.Message);
     }
 
-    private void OnMimic(Entity<ScpRememberPhraseComponent> ent, ref ScpRememberPhraseActionEvent args)
+    public void OnMimic(Entity<ScpRememberPhraseComponent> ent, ref ScpRememberPhraseActionEvent args)
     {
         if (ent.Comp.RememberedMessages.Count == 0)
             return;
@@ -47,15 +58,15 @@ public sealed class ScpRememberPhraseSystem : EntitySystem
 
         if (TryComp<TTSComponent>(ent, out var ttsComponent))
         {
-            ttsComponent.VoicePrototypeId = messagePair.Value.Value;
+            ttsComponent.VoicePrototypeId = messagePair.TtsVoice;
             Dirty(ent, ttsComponent);
         }
 
         _chat.TrySendInGameICMessage(ent,
-            messagePair.Key,
+            messagePair.Message,
             InGameICChatType.Speak,
             ChatTransmitRange.Normal,
-            nameOverride: messagePair.Value.Key,
+            nameOverride: messagePair.SpeakerName,
             ignoreActionBlocker: true);
 
         args.Handled = true;
@@ -64,10 +75,10 @@ public sealed class ScpRememberPhraseSystem : EntitySystem
     /// <summary>
     /// Запоминание последних сказанных в округе
     /// </summary>
-    private void TryRememberPhrase(Entity<ScpOnSoundVisibilityComponent> ent, string message)
+    public void TryRememberPhrase(Entity<ScpOnSoundVisibilityComponent> ent, string message)
     {
         using var rememberSet = HashSetPoolEntity<ScpRememberPhraseComponent>.Rent();
-        _entityLookup.GetEntitiesInRange(Transform(ent).Coordinates, 16f, rememberSet.Value, LookupFlags.Dynamic | LookupFlags.Approximate);
+        _entityLookup.GetEntitiesInRange(Transform(ent).Coordinates, ent.Comp.SharePhraseRadius, rememberSet.Value, LookupFlags.Dynamic | LookupFlags.Approximate);
         if (rememberSet.Value.Count == 0)
             return;
 
@@ -82,13 +93,15 @@ public sealed class ScpRememberPhraseSystem : EntitySystem
                 continue;
 
             if (rememberEnt.Comp.RememberedMessages.Count >= rememberEnt.Comp.MaxRememberedMessages)
-            {
-                var randomKey = _random.Pick(rememberEnt.Comp.RememberedMessages.Keys);
-                rememberEnt.Comp.RememberedMessages.Remove(randomKey);
-            }
+                rememberEnt.Comp.RememberedMessages.RemoveAt(0);
 
             var username = Identity.Name(ent, EntityManager);
-            rememberEnt.Comp.RememberedMessages.TryAdd(message, new(username, voicePrototype));
+            rememberEnt.Comp.RememberedMessages.Add(new RememberedMessage
+            {
+                Message = message,
+                SpeakerName = username,
+                TtsVoice = voicePrototype
+            });
         }
     }
 }

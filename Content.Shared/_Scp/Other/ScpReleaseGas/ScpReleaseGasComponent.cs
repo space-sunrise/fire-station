@@ -23,4 +23,7 @@ public sealed partial class ScpReleaseGasComponent : Component
 
     [DataField]
     public EntProtoId SmokeProtoId = "АМН-С227Smoke";
+
+    [ViewVariables]
+    public EntityUid? ActionEnt;
 }

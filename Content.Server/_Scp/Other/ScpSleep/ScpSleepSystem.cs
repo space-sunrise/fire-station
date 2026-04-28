@@ -23,13 +23,22 @@ public sealed class ScpSleepSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ScpSleepComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<ScpSleepComponent, ComponentShutdown>(OnShutdown);
+
         SubscribeLocalEvent<ScpSleepComponent, ScpSleepActionEvent>(OnSleepAction);
         SubscribeLocalEvent<ScpSleepComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<ScpSleepComponent, SleepStateChangedEvent>(OnSleepChanged);
     }
-    public void OnInit(Entity<ScpSleepComponent> ent, ref ComponentInit args)
+    private void OnInit(Entity<ScpSleepComponent> ent, ref ComponentInit args)
     {
-        _actionsSystem.AddAction(ent, ent.Comp.ActionProto);
+        var actionEnt = _actionsSystem.AddAction(ent, ent.Comp.ActionProto);
+        ent.Comp.ActionEnt = actionEnt;
+    }
+
+    private void OnShutdown(Entity<ScpSleepComponent> ent, ref ComponentShutdown args)
+    {
+        _actionsSystem.RemoveAction(ent.Owner, ent.Comp.ActionEnt);
+        ent.Comp.ActionEnt = null;
     }
 
     private void OnSleepAction(Entity<ScpSleepComponent> ent, ref ScpSleepActionEvent args)
@@ -58,9 +67,9 @@ public sealed class ScpSleepSystem : EntitySystem
         if (TryComp<BloodstreamComponent>(ent, out var bloodstreamComponent))
         {
             if (args.FellAsleep)
-                bloodstreamComponent.BloodRefreshAmount = 20;
+                bloodstreamComponent.BloodRefreshAmount = ent.Comp.FellAsleepBloodRefreshAmount;
             else
-                bloodstreamComponent.BloodRefreshAmount = 1;
+                bloodstreamComponent.BloodRefreshAmount = ent.Comp.BaseBloodRefreshAmount;
 
             Dirty(ent, bloodstreamComponent);
         }

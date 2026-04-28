@@ -16,4 +16,7 @@ public sealed partial class ScpOnSoundVisibilityComponent : Component
 
     [DataField]
     public int MaxValue = DefaultMaxValue;
+
+    [DataField]
+    public float SharePhraseRadius = 16f;
 }

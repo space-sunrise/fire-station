@@ -4,7 +4,7 @@ using Content.Shared._Scp.Other.ScpReleaseGas;
 using Content.Shared._Scp.ScpMask;
 using Content.Shared.Coordinates.Helpers;
 
-namespace Content.Server._Scp.Scp939;
+namespace Content.Server._Scp.Other.ScpReleaseGas;
 
 public sealed class ScpReleaseGasSystem : EntitySystem
 {
@@ -17,12 +17,21 @@ public sealed class ScpReleaseGasSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ScpReleaseGasComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<ScpReleaseGasComponent, ComponentShutdown>(OnShutdown);
+
         SubscribeLocalEvent<ScpReleaseGasComponent, ScpReleaseGasActionEvent>(OnGasAction);
     }
 
-    public void OnInit(Entity<ScpReleaseGasComponent> ent, ref ComponentInit args)
+    private void OnInit(Entity<ScpReleaseGasComponent> ent, ref ComponentInit args)
     {
-        _actionsSystem.AddAction(ent, ent.Comp.ActionProto);
+        var actionEnt = _actionsSystem.AddAction(ent, ent.Comp.ActionProto);
+        ent.Comp.ActionEnt = actionEnt;
+    }
+
+    private void OnShutdown(Entity<ScpReleaseGasComponent> ent, ref ComponentShutdown args)
+    {
+        _actionsSystem.RemoveAction(ent.Owner, ent.Comp.ActionEnt);
+        ent.Comp.ActionEnt = null;
     }
 
     private void OnGasAction(Entity<ScpReleaseGasComponent> ent, ref ScpReleaseGasActionEvent args)
@@ -30,6 +39,7 @@ public sealed class ScpReleaseGasSystem : EntitySystem
         if (_scpMask.TryGetScpMask(ent, out var scpMask))
         {
             _scpMask.TryCreatePopup(ent, scpMask);
+            args.Handled = true;
             return;
         }
 
