@@ -1,13 +1,15 @@
 using Robust.Shared.Serialization;
 
+namespace Content.Shared._Scp.Other.ScpSleep;
+
 [Serializable, NetSerializable]
-public enum Scp939Layers : byte
+public enum ScpSleepLayers : byte
 {
     Base = 0
 }
 
 [Serializable, NetSerializable]
-public enum Scp939Visuals : byte
+public enum ScpSleepVisuals : byte
 {
     Sleeping = 0,
 }

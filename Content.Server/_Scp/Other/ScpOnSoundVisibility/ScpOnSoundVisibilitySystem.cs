@@ -82,7 +82,6 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
     private void OnTargetSpoke(Entity<ActiveScpOnSoundVisibilityComponent> ent, ref EntitySpokeEvent args)
     {
         MobDidSomething(ent);
-        //TryRememberPhrase(ent, args.Message);
     }
 
     private void MobDidSomething(Entity<ActiveScpOnSoundVisibilityComponent> ent)

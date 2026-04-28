@@ -17,7 +17,7 @@
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-939.rsi
     layers:
-    - map: [ "enum.Scp939Layers.Base" ]
+    - map: [ "enum.ScpSleepLayers.Base" ]
       state: alive
   - type: Scp
     class: Keter
@@ -27,6 +27,14 @@
     protections:
       components:
       - Scp939Protection
+  - type: ScpSleep
+    actionProto: Scp939Sleep
+    hibernationHealing: true
+    hibernationOnCriticalState: true
+  - type: ScpRememberPhrase
+    actionProto: Scp939Mimic
+  - type: ScpReleaseGas
+    actionProto: Scp939Smoke
   - type: Scp939
   - type: MeleeWeapon
     altDisarm: false

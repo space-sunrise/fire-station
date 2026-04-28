@@ -1,0 +1,37 @@
+- type: entity
+  id: RememberPhraseAction
+  name: Voice Mimicry
+  description: Allows to mimic voices to lure prey.
+  components:
+  - type: Action
+    useDelay: 5
+    icon:
+      sprite: _Scp/Actions/scp-actions.rsi
+      state: mimic
+  - type: InstantAction
+    event: !type:ScpRememberPhraseActionEvent
+
+- type: entity
+  id: ScpSmokeAction
+  name: Release Gas
+  description: Releases a cloud of gas to disorient victims.
+  components:
+  - type: Action
+    useDelay: 300
+    icon:
+      sprite: _Scp/Actions/scp-actions.rsi
+      state: smaug
+  - type: InstantAction
+    event: !type:ScpReleaseGasActionEvent
+
+- type: entity
+  id: ScpSleepAction
+  name: Slumber
+  description: Allows to enter a deep sleep.
+  components:
+  - type: Action
+    icon:
+      sprite: _Scp/Actions/scp-actions.rsi
+      state: sleep
+  - type: InstantAction
+    event: !type:ScpSleepActionEvent
