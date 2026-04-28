@@ -105,7 +105,7 @@
       collection: DistanceKillScp939
     originWhitelist:
       components:
-      - Scp939
+      - ScpOnSoundVisibilityViewer
   - type: ScpExaminableDamage
     mode: MobToCritical
     generalMessages: ScpScp939Messages
