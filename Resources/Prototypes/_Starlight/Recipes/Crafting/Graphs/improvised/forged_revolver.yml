@@ -4,7 +4,7 @@
   graph:
   - node: start
     edges:
-    - to: revolver
+    - to: shotgun
       steps:
       - tag: ModularBarrel
         icon:
@@ -27,12 +27,5 @@
       - material: Plasteel
         amount: 5
         doAfter: 15
-  - node: revolver
+  - node: shotgun
     entity: UnfinishedRevolverForged
-    edges:
-    - to: finished
-      steps:
-      - tool: Welding
-        doAfter: 5
-  - node: finished
-    entity: WeaponRevolverForged

@@ -37,10 +37,3 @@
         doAfter: 15
   - node: shotgun
     entity: UnfinishedForgedShotgun
-    edges:
-    - to: finished
-      steps:
-      - tool: Welding
-        doAfter: 5
-  - node: finished
-    entity: WeaponShotgunForged

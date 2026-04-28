@@ -4,7 +4,7 @@
   graph:
   - node: start
     edges:
-    - to: smg
+    - to: shotgun
       steps:
       - tag: ModularBarrel
         icon:
@@ -27,12 +27,5 @@
       - material: Plasteel
         amount: 10
         doAfter: 20
-  - node: smg
+  - node: shotgun
     entity: UnfinishedSubMachineGunForged
-    edges:
-    - to: finished
-      steps:
-      - tool: Welding
-        doAfter: 5
-  - node: finished
-    entity: WeaponSubMachineGunForged
