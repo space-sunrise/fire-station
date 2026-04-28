@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent:
   - BaseScp
   - MobCombat
@@ -19,6 +19,10 @@
   - type: Scp
     class: Euclid
   - type: Scp173
+  - type: ScpRestrictMovementOnVisibility
+    containersMoveWhitelist:
+      components:
+      - ScpCage
   - type: ShowBlinkable
   - type: XenoArtifact
     effectsTable: !type:GroupSelector
