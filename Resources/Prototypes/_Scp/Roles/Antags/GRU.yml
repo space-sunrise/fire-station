@@ -29,7 +29,7 @@
     outerClothing: ClothingOuterArmorGRU
     belt: ClothingBeltMtfMedicalFilledOperative
     ears: ClothingHeadsetGRU
-    pocket1: ChaosAccessBreaker
+    pocket1: GRUAccessBreakerLimited
   storage:
     back:
     - Crowbar
@@ -83,7 +83,7 @@
     outerClothing: ClothingOuterArmorGRU
     belt: ClothingBeltMtfMedicalFilledOperative
     ears: ClothingHeadsetGRU
-    pocket1: ChaosAccessBreaker
+    pocket1: GRUAccessBreakerLimited
   storage:
     back:
     - Crowbar

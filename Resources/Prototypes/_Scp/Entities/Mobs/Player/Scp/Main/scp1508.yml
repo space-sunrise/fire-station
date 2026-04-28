@@ -2,7 +2,10 @@
   id: Scp1508
   name: ???
   suffix: SCP-1508
-  parent: BaseScpFriendly
+  parent: 
+  - BaseScpFriendly
+  - InventoryBase
+  - StripableInventoryBase
   components:
   - type: AutoGhostRole
     disconnectDelay: 600
@@ -103,3 +106,5 @@
   - type: ScpRestriction
     canBeDisarmed: true
     canBePulled: true
+  - type: Inventory
+    templateId: scp1508
