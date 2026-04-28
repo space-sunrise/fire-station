@@ -5,7 +5,16 @@
   components:
   - type: Sprite
     sprite: _Scp/Mobs/Scp/Alternatives/Scp049/scp_049_canon.rsi
-    state: icon
+    layers:
+    - state: icon
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: icon
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
 
 - type: entity
   id: Scp049AlternativeRobotic
@@ -14,7 +23,16 @@
   components:
   - type: Sprite
     sprite: _Scp/Mobs/Scp/Alternatives/Scp049/scp_049_robotic.rsi
-    state: icon
+    layers:
+    - state: icon
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: icon
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
 
 - type: entity
   id: Scp049AlternativeOldFashioned
@@ -23,4 +41,13 @@
   components:
   - type: Sprite
     sprite: _Scp/Mobs/Scp/Alternatives/Scp049/scp_049_oldfashioned.rsi
-    state: icon
+    layers:
+    - state: icon
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: icon
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
