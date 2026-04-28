@@ -4,7 +4,6 @@
   parent: Scp049
   components:
   - type: Sprite
-    drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/Alternatives/Scp049/scp_049_canon.rsi
     layers:
     - state: icon
@@ -23,7 +22,6 @@
   parent: Scp049
   components:
   - type: Sprite
-    drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/Alternatives/Scp049/scp_049_robotic.rsi
     layers:
     - state: icon
@@ -42,7 +40,6 @@
   parent: Scp049
   components:
   - type: Sprite
-    drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/Alternatives/Scp049/scp_049_oldfashioned.rsi
     layers:
     - state: icon
