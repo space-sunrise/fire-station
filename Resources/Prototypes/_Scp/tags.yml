@@ -107,4 +107,7 @@
   id: ClothingHeadAwareness
 
 - type: Tag
-  id: Scp066
+  id: Scp066Friendly
+
+- type: Tag
+  id: Scp066Hostile

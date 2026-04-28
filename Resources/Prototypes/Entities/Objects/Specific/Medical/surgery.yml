@@ -216,7 +216,7 @@
       toSpawn: Scp066Ribbon
     sound: /Audio/Items/multitool_drop.ogg
     whitelist:
-      components:
+      tags:
       - Scp066Friendly
   - type: GuideHelp
     guides:

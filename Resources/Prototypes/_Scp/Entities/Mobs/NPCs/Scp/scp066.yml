@@ -50,6 +50,9 @@
     - actionId: Scp066SpawnDelightGlass
       minRange: 0
       maxRange: 3
+  - type: Tag
+    tags:
+    - Scp066Friendly
 
 - type: entity
   id: Scp066Hostile
@@ -96,6 +99,9 @@
     - actionId: Scp066DisableLights
       minRange: 0
       maxRange: 10
+  - type: Tag
+    tags:
+    - Scp066Hostile
     
 - type: entity
   id: BaseScp066
@@ -130,6 +136,3 @@
   - type: NpcFactionMember
     factions:
     - SimpleNeutral
-  - type: Tag
-    tags:
-    - Scp066
