@@ -9,5 +9,8 @@
       - material: Steel
         amount: 2
         doAfter: 5
+      - material: Cloth
+        amount: 3
+        doAfter: 5
   - node: receiver
     entity: ImprovisedModularReceiver
