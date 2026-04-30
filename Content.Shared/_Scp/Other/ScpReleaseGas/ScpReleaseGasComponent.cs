@@ -1,6 +1,5 @@
 
 using Content.Shared.Actions.Components;
-using Content.Shared.Chemistry.Components;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 
@@ -13,16 +12,10 @@ public sealed partial class ScpReleaseGasComponent : Component
     public EntProtoId<ActionComponent> ActionProto = "ScpSmokeAction";
 
     [DataField]
-    public Solution SmokeSolution = new("АМН-С227", 40);
+    public EntProtoId SmokeProtoId = "Smoke";
 
     [DataField]
-    public float SmokeDuration = 30.0f;
-
-    [DataField]
-    public int SmokeSpreadRadius = 10;
-
-    [DataField]
-    public EntProtoId SmokeProtoId = "АМН-С227Smoke";
+    public List<string> KeysOut = new() { "scpSmokeTrigger" };
 
     [ViewVariables]
     public EntityUid? ActionEnt;

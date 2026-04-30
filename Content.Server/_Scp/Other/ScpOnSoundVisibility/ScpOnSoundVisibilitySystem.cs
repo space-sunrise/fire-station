@@ -1,11 +1,7 @@
 using Content.Server.Popups;
 using Content.Shared._Scp.Other.ScpOnSoundVisibility;
-using Content.Shared.Chat;
 using Content.Shared.Flash;
-using Content.Shared.Item;
-using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
-using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Map;
 using Robust.Shared.Timing;
 
@@ -30,12 +26,6 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<MobStateComponent, ComponentStartup>(OnMobStartup);
-
-        SubscribeLocalEvent<ActiveScpOnSoundVisibilityComponent, EntitySpokeEvent>(OnTargetSpoke);
-        SubscribeLocalEvent<ActiveScpOnSoundVisibilityComponent, EmoteEvent>(OnTargetEmote);
-        SubscribeLocalEvent<ItemComponent, GunShotEvent>(OnShot);
-
         SubscribeLocalEvent<ScpOnSoundVisibilityViewerComponent, AfterFlashedEvent>(OnFlash);
 
         _activeQuery = GetEntityQuery<ActiveScpOnSoundVisibilityComponent>();
@@ -55,39 +45,11 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
             _popup.PopupEntity(message, ent, ent, PopupType.MediumCaution);
         }
 
-        Dirty(ent);
-    }
-
-    private void OnTargetEmote(Entity<ActiveScpOnSoundVisibilityComponent> ent, ref EmoteEvent args)
-    {
-        MobDidSomething(ent);
-    }
-
-    private void OnShot(Entity<ItemComponent> ent, ref GunShotEvent args)
-    {
-        if (!_activeQuery.TryComp(args.User, out var visibilityComponent))
-            return;
-
-        MobDidSomething((args.User, visibilityComponent));
-    }
-
-    private void OnMobStartup(Entity<MobStateComponent> ent, ref ComponentStartup args)
-    {
-        if (HasComp<ScpOnSoundVisibilityViewerComponent>(ent))
-            return;
-
-        EnsureComp<ScpOnSoundVisibilityComponent>(ent);
-    }
-
-    private void OnTargetSpoke(Entity<ActiveScpOnSoundVisibilityComponent> ent, ref EntitySpokeEvent args)
-    {
-        MobDidSomething(ent);
-    }
-
-    private void MobDidSomething(Entity<ActiveScpOnSoundVisibilityComponent> ent)
-    {
-        ent.Comp.VisibilityResetCounter++;
-        DirtyField(ent, ent.Comp, nameof(ActiveScpOnSoundVisibilityComponent.VisibilityResetCounter));
+        EnsureComp<ActiveScpPoorEyesightComponent>(ent);
+        DirtyFields(ent, ent.Comp, null, [
+            nameof(ScpOnSoundVisibilityViewerComponent.PoorEyesight),
+            nameof(ScpOnSoundVisibilityViewerComponent.PoorEyesightTimeStart)
+        ]);
     }
 
     public override void Update(float frameTime)
@@ -96,8 +58,8 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
 
         UpdateVisibilityTargets();
 
-        var querySimple = EntityQueryEnumerator<ScpOnSoundVisibilityViewerComponent>();
-        while (querySimple.MoveNext(out var uid, out var viewerComp))
+        var querySimple = EntityQueryEnumerator<ActiveScpPoorEyesightComponent, ScpOnSoundVisibilityViewerComponent>();
+        while (querySimple.MoveNext(out var uid, out _, out var viewerComp))
         {
             if (!viewerComp.PoorEyesight)
                 continue;
@@ -112,7 +74,11 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
                 viewerComp.PoorEyesight = false;
                 viewerComp.PoorEyesightTimeStart = null;
 
-                Dirty(uid, viewerComp);
+                RemCompDeferred<ActiveScpPoorEyesightComponent>(uid);
+                DirtyFields(uid, viewerComp, null, [
+                    nameof(ScpOnSoundVisibilityViewerComponent.PoorEyesight),
+                    nameof(ScpOnSoundVisibilityViewerComponent.PoorEyesightTimeStart)
+                ]);
             }
         }
     }
@@ -160,7 +126,7 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
 
         foreach (var uid in _visibilityRemovalQueue)
         {
-            RemComp<ActiveScpOnSoundVisibilityComponent>(uid);
+            RemCompDeferred<ActiveScpOnSoundVisibilityComponent>(uid);
         }
 
         _visibilityCandidates.Clear();

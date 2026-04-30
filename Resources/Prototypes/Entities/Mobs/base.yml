@@ -108,6 +108,7 @@
   - type: MobMover
   - type: MovementSpeedModifier
   - type: LagCompensation
+  - type: ScpOnSoundVisibility # Fire Station edit
 
 - type: entity
   save: false

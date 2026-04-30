@@ -4,8 +4,8 @@
 public sealed partial class ArtifactScp939SleepComponent : Component
 {
     [DataField]
-    public float MinSleepTime = 20f;
+    public TimeSpan MinSleepTime = TimeSpan.FromSeconds(20);
 
     [DataField]
-    public float MaxSleepTime = 80f;
+    public TimeSpan MaxSleepTime = TimeSpan.FromSeconds(80);
 }

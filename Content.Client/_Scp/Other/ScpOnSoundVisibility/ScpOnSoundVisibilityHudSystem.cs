@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Content.Client.Overlays;
 using Content.Client.SSDIndicator;
 using Content.Shared._Scp.Other.ScpOnSoundVisibility;
@@ -15,14 +16,15 @@ using Robust.Client.Player;
 using Robust.Shared.Physics.Components;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Random;
+using Robust.Shared.Timing;
 
 namespace Content.Client._Scp.Other.ScpOnSoundVisibility;
 
 public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<ScpOnSoundVisibilityViewerComponent>
 {
     [Dependency] private readonly EntityWhitelistSystem _whitelist = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly SpriteSystem _sprite = default!;
 
@@ -31,15 +33,14 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
     private EntityQuery<EyeComponent> _eyeQuery;
     private EntityQuery<MovementSpeedModifierComponent> _movementSpeedQuery;
     private EntityQuery<PhysicsComponent> _physicsQuery;
+    private EntityQuery<ScpOnSoundVisibilityViewerComponent> _viewerQuery;
 
     private ScpOnSoundVisibilitySetAlphaOverlay _setAlphaOverlay = default!;
     private ScpOnSoundVisibilityResetAlphaOverlay _resetAlphaOverlay = default!;
 
-    private ScpOnSoundVisibilityViewerComponent? _viewerComponent;
-
     private bool _overlaysPresented;
-    private float _lastUpdateTime;
-    private const float UpdateInterval = 0.05f;
+    private TimeSpan _nextUpdateTime;
+    private readonly TimeSpan UpdateInterval = TimeSpan.FromSeconds(0.05);
 
     public override void Initialize()
     {
@@ -50,11 +51,8 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         SubscribeLocalEvent<ActiveScpOnSoundVisibilityComponent, GetStatusIconsEvent>(OnGetStatusIcons, after: [typeof(SSDIndicatorSystem)]);
         SubscribeLocalEvent<ActiveScpOnSoundVisibilityComponent, ExamineAttemptEvent>(OnExamine);
 
-        SubscribeLocalEvent((Entity<ActiveScpOnSoundVisibilityComponent> ent, ref StartCollideEvent args)
-            => OnCollide(ent, args.OtherEntity));
-        SubscribeLocalEvent((Entity<ActiveScpOnSoundVisibilityComponent> ent, ref EndCollideEvent args)
-            => OnCollide(ent, args.OtherEntity));
-        SubscribeLocalEvent<ActiveScpOnSoundVisibilityComponent, AfterAutoHandleStateEvent>(OnVisibilityStateUpdated);
+        SubscribeLocalEvent<ActiveScpOnSoundVisibilityComponent, StartCollideEvent>(OnStartCollide);
+        SubscribeLocalEvent<ActiveScpOnSoundVisibilityComponent, EndCollideEvent>(OnEndCollide);
 
         SubscribeLocalEvent<ActiveScpOnSoundVisibilityComponent, MoveEvent>(OnMove);
 
@@ -66,6 +64,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         _eyeQuery = GetEntityQuery<EyeComponent>();
         _movementSpeedQuery = GetEntityQuery<MovementSpeedModifierComponent>();
         _physicsQuery = GetEntityQuery<PhysicsComponent>();
+        _viewerQuery = GetEntityQuery<ScpOnSoundVisibilityViewerComponent>();
 
         _setAlphaOverlay = new();
         _resetAlphaOverlay = new();
@@ -82,23 +81,17 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         base.Shutdown();
     }
 
-    private void OnVisibilityStateUpdated(Entity<ActiveScpOnSoundVisibilityComponent> ent, ref AfterAutoHandleStateEvent args)
-    {
-        if (ent.Comp.LastHandledVisibilityResetCounter == ent.Comp.VisibilityResetCounter)
-            return;
-
-        ent.Comp.LastHandledVisibilityResetCounter = ent.Comp.VisibilityResetCounter;
-        ent.Comp.VisibilityAcc = ScpOnSoundVisibilityComponent.InitialVisibilityAcc;
-    }
-
     private void OnExamine(Entity<ActiveScpOnSoundVisibilityComponent> ent, ref ExamineAttemptEvent args)
     {
         if (!IsActive)
             return;
 
+        if (!TryGetLocalViewer(out var viewerComp))
+            return;
+
         var visibility = GetVisibility(ent);
 
-        if (visibility < 0.2f)
+        if (visibility < viewerComp.ExamineHideThreshold)
             args.Cancel();
     }
 
@@ -107,9 +100,12 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         if (!IsActive)
             return;
 
+        if (!TryGetLocalViewer(out var viewerComp))
+            return;
+
         var visibility = GetVisibility(ent);
 
-        if (visibility <= 0.5f)
+        if (visibility <= viewerComp.StatusIconClearThreshold)
             args.StatusIcons.Clear();
     }
 
@@ -117,7 +113,6 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
     {
         base.UpdateInternal(args);
 
-        _viewerComponent = args.Components.Count > 0 ? args.Components[0] : null;
         AddOverlays();
     }
 
@@ -125,8 +120,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
     {
         base.DeactivateInternal();
 
-        _viewerComponent = null;
-        _lastUpdateTime = 0f;
+        _nextUpdateTime = TimeSpan.Zero;
 
         RestoreCachedBaseAlphas();
         RemoveOverlays();
@@ -139,16 +133,25 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         if (!IsActive)
             return;
 
-        _lastUpdateTime += frameTime;
+        /*_lastUpdateTime += _timing.RealTime;
         if (_lastUpdateTime < UpdateInterval)
             return;
 
         var delta = _lastUpdateTime;
-        _lastUpdateTime = 0f;
+        _lastUpdateTime = 0f;*/
+
+        if (_timing.RealTime < _nextUpdateTime)
+            return;
+
+        var delta = (float)(_timing.RealTime - (_nextUpdateTime - UpdateInterval)).TotalSeconds;
+        _nextUpdateTime = _timing.RealTime + UpdateInterval;
 
         var query = EntityQueryEnumerator<ActiveScpOnSoundVisibilityComponent>();
         while (query.MoveNext(out _, out var visibilityComponent))
         {
+            if (visibilityComponent.OnCollide)
+                return;
+
             if (visibilityComponent.VisibilityAcc >= visibilityComponent.HideTime)
                 continue;
 
@@ -156,7 +159,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         }
     }
 
-    internal bool CanDraw(in OverlayDrawArgs args)
+    public bool CanDraw(in OverlayDrawArgs args)
     {
         if (!IsActive)
             return false;
@@ -170,7 +173,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         return args.Viewport.Eye == eye.Eye;
     }
 
-    internal void RestoreCachedBaseAlphas()
+    public void RestoreCachedBaseAlphas()
     {
         foreach (var (ent, baseAlpha) in CachedBaseAlphas)
         {
@@ -183,7 +186,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         CachedBaseAlphas.Clear();
     }
 
-    internal static float GetVisibility(Entity<ActiveScpOnSoundVisibilityComponent> ent)
+    public static float GetVisibility(Entity<ActiveScpOnSoundVisibilityComponent> ent)
     {
         var acc = ent.Comp.VisibilityAcc;
 
@@ -198,13 +201,15 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         if (!IsActive)
             return;
 
+        if (!TryGetLocalViewer(out var viewerComp))
+            return;
+
         // В зависимости от наличие защит или проблем со зрением изменяется то, насколько хорошо мы видим жертву
-        if (ModifyAcc(ent.Comp, out var modifier)) // Если зрение затруднено
+        if (ModifyAcc(ent, out var modifier)) // Если зрение затруднено
         {
             ent.Comp.VisibilityAcc *= modifier;
         }
-        else if (!TryComp<ScpOnSoundVisibilityViewerComponent>(ent, out var viewerComp) ||
-            !_whitelist.IsWhitelistPass(viewerComp.Protections, ent)) // Если имеется защита(тихое хождение)
+        else if (!_whitelist.IsWhitelistPass(viewerComp.Protections, ent)) // Если имеется защита(тихое хождение)
         {
             return;
         }
@@ -225,15 +230,21 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
             ent.Comp.VisibilityAcc = ent.Comp.HideTime / 2f;
     }
 
-
-    private void OnCollide(Entity<ActiveScpOnSoundVisibilityComponent> ent, EntityUid otherEntity)
+    private void OnStartCollide(Entity<ActiveScpOnSoundVisibilityComponent> ent, ref StartCollideEvent args)
     {
         if (!IsActive)
             return;
 
-        if (!HasComp<ScpOnSoundVisibilityViewerComponent>(otherEntity))
+        ent.Comp.OnCollide = true;
+        MobDidSomething(ent);
+    }
+
+    private void OnEndCollide(Entity<ActiveScpOnSoundVisibilityComponent> ent, ref EndCollideEvent args)
+    {
+        if (!IsActive)
             return;
 
+        ent.Comp.OnCollide = false;
         MobDidSomething(ent);
     }
 
@@ -275,19 +286,34 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
     }
 
     // TODO: Переделать под статус эффект и добавить его в панель статус эффектов, а то непонятно игруну
-    private bool ModifyAcc(ActiveScpOnSoundVisibilityComponent visibilityComponent, out int modifier)
+    private bool ModifyAcc(Entity<ActiveScpOnSoundVisibilityComponent> ent, out float modifier)
     {
         // 1 = отсутствие модификатора
-        modifier = 1;
+        modifier = 1f;
 
-        if (_viewerComponent == null)
+        if (!TryGetLocalViewer(out var viewerComp))
             return false;
 
-        if (!_viewerComponent.PoorEyesight)
+        if (!viewerComp.PoorEyesight)
             return false;
 
-        modifier = _random.Next(visibilityComponent.MinValue, visibilityComponent.MaxValue);
+        modifier = _random.NextFloat(ent.Comp.MinValue, ent.Comp.MaxValue);
 
+        return true;
+    }
+
+    private bool TryGetLocalViewer([NotNullWhen(true)] out ScpOnSoundVisibilityViewerComponent? viewerComp)
+    {
+        viewerComp = null;
+        var localPlayer = _playerManager.LocalEntity;
+
+        if (localPlayer == null)
+            return false;
+
+        if (!_viewerQuery.TryComp(localPlayer, out var comp))
+            return false;
+
+        viewerComp = comp;
         return true;
     }
 }

@@ -16,13 +16,11 @@ public sealed partial class ScpOnSoundVisibilityHudSystem
 
     private void OnPlayerAttached(Entity<ScpOnSoundVisibilityViewerComponent> ent, ref LocalPlayerAttachedEvent args)
     {
-        _viewerComponent = ent.Comp;
         AddOverlays();
     }
 
     private void OnPlayerDetached(Entity<ScpOnSoundVisibilityViewerComponent> ent, ref LocalPlayerDetachedEvent args)
     {
-        _viewerComponent = null;
         RemoveOverlays();
     }
 

@@ -24,8 +24,7 @@ public sealed partial class ScpRememberPhraseComponent : Component
     public EntityUid? ActionEnt;
 }
 
-[DataDefinition]
-public partial struct RememberedMessage
+public partial record struct RememberedMessage
 {
     public string Message;
     public string SpeakerName;

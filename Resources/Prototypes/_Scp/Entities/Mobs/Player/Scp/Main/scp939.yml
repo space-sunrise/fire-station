@@ -17,8 +17,20 @@
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-939.rsi
     layers:
-    - map: [ "enum.ScpSleepLayers.Base" ]
+    - map: [ "base" ]
       state: alive
+  - type: GenericVisualizer
+    visuals:
+      enum.MobStateVisuals.State:
+        base:
+          Dead: { state: dead }
+          Critical: { state: dead }
+          Alive: { state: alive }
+      enum.ScpSleepVisuals.Sleeping:
+        base:
+          True: { state: asleep }
+          False: { state: alive }
+  - type: ActiveListener
   - type: Scp
     class: Keter
   - type: ScpOnSoundVisibilityViewer
@@ -35,6 +47,15 @@
     actionProto: Scp939Mimic
   - type: ScpReleaseGas
     actionProto: Scp939Smoke
+  - type: SmokeOnTrigger
+    keysIn:
+    - scpSmokeTrigger
+    solution:
+      reagents:
+        - ReagentId: АМН-С227
+          Quantity: 40
+    spreadAmount: 10
+    smokePrototype: АМН-С227Smoke
   - type: MeleeWeapon
     altDisarm: false
     soundHit:

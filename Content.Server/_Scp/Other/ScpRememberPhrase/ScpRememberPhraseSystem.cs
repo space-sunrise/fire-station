@@ -1,15 +1,13 @@
 using Content.Server.Actions;
 using Content.Server.Chat.Systems;
 using Content.Server.Examine;
-using Content.Shared._Scp.Helpers;
 using Content.Shared._Scp.Other.ScpRememberPhrase;
+using Content.Shared._Scp.Other.Events;
 using Content.Shared._Sunrise.TTS;
 using Content.Shared.Chat;
 using Content.Shared.IdentityManagement;
 using Robust.Shared.Random;
-using Content.Shared._Scp.Other.ScpOnSoundVisibility;
-using System.Linq;
-using NetCord.Gateway;
+using Content.Shared.Speech;
 
 namespace Content.Server._Scp.Other.ScpRememberPhrase;
 
@@ -25,14 +23,14 @@ public sealed class ScpRememberPhraseSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ScpRememberPhraseComponent, ComponentInit>(OnInit);
+        SubscribeLocalEvent<ScpRememberPhraseComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ScpRememberPhraseComponent, ComponentShutdown>(OnShutdown);
 
-        SubscribeLocalEvent<ScpOnSoundVisibilityComponent, EntitySpokeEvent>(OnSpoke); // TODO: Переделать под другой какой-то общий компонент / ивент
+        SubscribeLocalEvent<ScpRememberPhraseComponent, ListenEvent>(OnListen);
         SubscribeLocalEvent<ScpRememberPhraseComponent, ScpRememberPhraseActionEvent>(OnMimic);
     }
 
-    private void OnInit(Entity<ScpRememberPhraseComponent> ent, ref ComponentInit args)
+    private void OnMapInit(Entity<ScpRememberPhraseComponent> ent, ref MapInitEvent args)
     {
         var actionEnt = _actionsSystem.AddAction(ent, ent.Comp.ActionProto);
         ent.Comp.ActionEnt = actionEnt;
@@ -44,9 +42,9 @@ public sealed class ScpRememberPhraseSystem : EntitySystem
         ent.Comp.ActionEnt = null;
     }
 
-    public void OnSpoke(Entity<ScpOnSoundVisibilityComponent> ent, ref EntitySpokeEvent args)
+    public void OnListen(Entity<ScpRememberPhraseComponent> ent, ref ListenEvent args)
     {
-        TryRememberPhrase(ent, args.Message);
+        TryRememberPhrase(ent, args.Source, args.Message);
     }
 
     public void OnMimic(Entity<ScpRememberPhraseComponent> ent, ref ScpRememberPhraseActionEvent args)
@@ -75,33 +73,25 @@ public sealed class ScpRememberPhraseSystem : EntitySystem
     /// <summary>
     /// Запоминание последних сказанных в округе
     /// </summary>
-    public void TryRememberPhrase(Entity<ScpOnSoundVisibilityComponent> ent, string message)
+    public void TryRememberPhrase(Entity<ScpRememberPhraseComponent> ent, EntityUid speaker, string message)
     {
-        using var rememberSet = HashSetPoolEntity<ScpRememberPhraseComponent>.Rent();
-        _entityLookup.GetEntitiesInRange(Transform(ent).Coordinates, ent.Comp.SharePhraseRadius, rememberSet.Value, LookupFlags.Dynamic | LookupFlags.Approximate);
-        if (rememberSet.Value.Count == 0)
-            return;
-
         string? voicePrototype = null;
 
-        if (TryComp<TTSComponent>(ent, out var ttsComponent))
+        if (ent.Owner == speaker)
+            return;
+
+        if (TryComp<TTSComponent>(speaker, out var ttsComponent))
             voicePrototype = ttsComponent.VoicePrototypeId;
 
-        foreach (var rememberEnt in rememberSet.Value)
+        if (ent.Comp.RememberedMessages.Count >= ent.Comp.MaxRememberedMessages)
+            ent.Comp.RememberedMessages.RemoveAt(0);
+
+        var username = Identity.Name(speaker, EntityManager);
+        ent.Comp.RememberedMessages.Add(new RememberedMessage
         {
-            if (!_examine.InRangeUnOccluded(ent, rememberEnt))
-                continue;
-
-            if (rememberEnt.Comp.RememberedMessages.Count >= rememberEnt.Comp.MaxRememberedMessages)
-                rememberEnt.Comp.RememberedMessages.RemoveAt(0);
-
-            var username = Identity.Name(ent, EntityManager);
-            rememberEnt.Comp.RememberedMessages.Add(new RememberedMessage
-            {
-                Message = message,
-                SpeakerName = username,
-                TtsVoice = voicePrototype
-            });
-        }
+            Message = message,
+            SpeakerName = username,
+            TtsVoice = voicePrototype
+        });
     }
 }

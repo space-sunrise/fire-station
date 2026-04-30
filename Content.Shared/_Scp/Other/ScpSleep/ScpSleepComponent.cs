@@ -1,6 +1,7 @@
 
 using Content.Shared.Actions.Components;
 using Content.Shared.Damage;
+using Content.Shared.Mobs;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
@@ -14,23 +15,28 @@ public sealed partial class ScpSleepComponent : Component
     public EntProtoId<ActionComponent> ActionProto = "ScpSleepAction";
 
     [DataField]
+    public bool AddAction = true;
+
+    [DataField]
     public EntProtoId StatusEffect = "StatusEffectForcedSleeping";
 
     [DataField]
     public SoundSpecifier? CritSound;
 
     [DataField]
-    public float HibernationDurationOnCriticalState = 360f;
+    public TimeSpan HibernationDurationOnCriticalState = TimeSpan.FromSeconds(360);
 
     [DataField]
-    public float HibernationDuration = 60f;
+    public TimeSpan HibernationDuration = TimeSpan.FromSeconds(60);
 
     [DataField]
-    public bool HibernationOnCriticalState = false;
-
+    public bool HibernationOnHibernationState;
 
     [DataField]
-    public bool HibernationHealing = false;
+    public List<MobState> HibernationStates = new() { MobState.Critical };
+
+    [DataField]
+    public bool HibernationHealing;
 
     [DataField]
     public DamageSpecifier HibernationHealingRate = new()
