@@ -31,7 +31,7 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
         _activeQuery = GetEntityQuery<ActiveScpOnSoundVisibilityComponent>();
     }
 
-    private void OnFlash(Entity<ScpOnSoundVisibilityViewerComponent> ent, ref AfterFlashedEvent args)
+    public void OnFlash(Entity<ScpOnSoundVisibilityViewerComponent> ent, ref AfterFlashedEvent args)
     {
         if (!ent.Comp.PoorEyesOnFlash)
             return;
@@ -83,7 +83,7 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
         }
     }
 
-    private void UpdateVisibilityTargets()
+    public void UpdateVisibilityTargets()
     {
         if (_timing.CurTime < _nextVisibilityRefresh)
             return;
@@ -133,7 +133,7 @@ public sealed partial class ScpOnSoundVisibilitySystem : EntitySystem
         _visibilityRemovalQueue.Clear();
     }
 
-    private void EnsureActiveVisibility(Entity<ScpOnSoundVisibilityComponent> ent)
+    public void EnsureActiveVisibility(Entity<ScpOnSoundVisibilityComponent> ent)
     {
         if (!_activeQuery.TryComp(ent, out var active))
         {

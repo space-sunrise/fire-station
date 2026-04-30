@@ -19,6 +19,7 @@ public sealed class ScpReleaseGasSystem : EntitySystem
         SubscribeLocalEvent<ScpReleaseGasComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ScpReleaseGasComponent, ComponentShutdown>(OnShutdown);
 
+        SubscribeLocalEvent<ScpReleaseGasComponent, ScpReleaseGasActionAttemptEvent>(OnGasActionAttempt);
         SubscribeLocalEvent<ScpReleaseGasComponent, ScpReleaseGasActionEvent>(OnGasAction);
     }
 
@@ -44,7 +45,7 @@ public sealed class ScpReleaseGasSystem : EntitySystem
         }
     }
 
-    private void OnGasAction(Entity<ScpReleaseGasComponent> ent, ref ScpReleaseGasActionEvent args)
+    public void OnGasAction(Entity<ScpReleaseGasComponent> ent, ref ScpReleaseGasActionEvent args)
     {
         var ev = new ScpReleaseGasActionAttemptEvent();
         RaiseLocalEvent(ent, ref ev);

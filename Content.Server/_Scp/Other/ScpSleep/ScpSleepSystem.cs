@@ -46,12 +46,12 @@ public sealed class ScpSleepSystem : EntitySystem
         ent.Comp.ActionEnt = null;
     }
 
-    private void OnSleepAction(Entity<ScpSleepComponent> ent, ref ScpSleepActionEvent args)
+    public void OnSleepAction(Entity<ScpSleepComponent> ent, ref ScpSleepActionEvent args)
     {
         args.Handled = TrySleep(ent, ent.Comp.HibernationDuration);
     }
 
-    private void OnMobStateChanged(Entity<ScpSleepComponent> ent, ref MobStateChangedEvent args)
+    public void OnMobStateChanged(Entity<ScpSleepComponent> ent, ref MobStateChangedEvent args)
     {
         if (!ent.Comp.HibernationOnHibernationState)
             return;
@@ -68,7 +68,7 @@ public sealed class ScpSleepSystem : EntitySystem
         _audio.PlayPvs(ent.Comp.CritSound, ent);
     }
 
-    private void OnSleepChanged(Entity<ScpSleepComponent> ent, ref SleepStateChangedEvent args)
+    public void OnSleepChanged(Entity<ScpSleepComponent> ent, ref SleepStateChangedEvent args)
     {
         if (TryComp<BloodstreamComponent>(ent, out var bloodstreamComponent))
         {
