@@ -24,7 +24,7 @@ public sealed partial class ScpSleepComponent : Component
     public SoundSpecifier? CritSound;
 
     [DataField]
-    public TimeSpan HibernationDurationOnCriticalState = TimeSpan.FromSeconds(360);
+    public TimeSpan HibernationDurationOnHibernationState = TimeSpan.FromSeconds(360);
 
     [DataField]
     public TimeSpan HibernationDuration = TimeSpan.FromSeconds(60);

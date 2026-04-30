@@ -33,6 +33,7 @@
   - type: ActiveListener
   - type: Scp
     class: Keter
+  - type: Scp939
   - type: ScpOnSoundVisibilityViewer
     poorEyesOnFlash: true
     onFlashMessage: scp939-flashed
@@ -42,7 +43,7 @@
   - type: ScpSleep
     actionProto: Scp939Sleep
     hibernationHealing: true
-    hibernationOnCriticalState: true
+    hibernationOnHibernationState: true
   - type: ScpRememberPhrase
     actionProto: Scp939Mimic
   - type: ScpReleaseGas

@@ -59,7 +59,7 @@ public sealed class ScpSleepSystem : EntitySystem
         if (!ent.Comp.HibernationStates.Contains(args.NewMobState))
             return;
 
-        if (!TrySleep(ent, ent.Comp.HibernationDurationOnCriticalState))
+        if (!TrySleep(ent, ent.Comp.HibernationDurationOnHibernationState))
             return;
 
         if (ent.Comp.CritSound == null)
