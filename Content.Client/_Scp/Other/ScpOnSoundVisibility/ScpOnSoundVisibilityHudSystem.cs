@@ -133,13 +133,6 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         if (!IsActive)
             return;
 
-        /*_lastUpdateTime += _timing.RealTime;
-        if (_lastUpdateTime < UpdateInterval)
-            return;
-
-        var delta = _lastUpdateTime;
-        _lastUpdateTime = 0f;*/
-
         if (_timing.RealTime < _nextUpdateTime)
             return;
 
