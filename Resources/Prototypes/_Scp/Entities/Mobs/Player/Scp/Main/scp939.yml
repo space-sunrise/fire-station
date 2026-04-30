@@ -69,6 +69,8 @@
   - type: Muted
   - type: Strippable
   - type: Stripping
+  - type: ScpPossibilities
+    canEjectPilotFromMech: false
   - type: UserInterface
     interfaces:
       enum.StrippingUiKey.Key:
