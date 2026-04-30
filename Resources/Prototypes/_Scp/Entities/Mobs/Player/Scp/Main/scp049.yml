@@ -16,7 +16,17 @@
   - type: Sprite
     drawdepth: Mobs
     sprite: _Scp/Mobs/Scp/scp-049.rsi
-    state: SCP-049
+    layers:
+    - state: SCP-049
+      map: [ "enum.DamageStateVisualLayers.Base" ]
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: SCP-049
+      Critical:
+        Base: 049-dead
+      Dead:
+        Base: 049-dead
   - type: Scp
     class: Euclid
   - type: Scp049
@@ -90,8 +100,5 @@
     - ScpResearch
     - ScpFear
   - type: Appearance
-  - type: RotationVisuals
-    defaultRotation: 90
-    horizontalRotation: 90
   - type: Perishable
   - type: HoldToFace
