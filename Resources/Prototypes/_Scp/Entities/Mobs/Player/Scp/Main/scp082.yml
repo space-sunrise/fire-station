@@ -35,6 +35,8 @@
     angle: 240
   - type: Hunger
   - type: Thirst
+  - type: ScpPossibilities
+    canEjectPilotFromMech: false
   - type: Sprite
     noRot: true
     drawdepth: Mobs
