@@ -86,7 +86,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         if (!IsActive)
             return;
 
-        if (!TryGetLocalViewer(out var viewerComp))
+        if (!TryGetLocalViewer(out _, out var viewerComp))
             return;
 
         var visibility = GetVisibility(ent);
@@ -100,7 +100,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         if (!IsActive)
             return;
 
-        if (!TryGetLocalViewer(out var viewerComp))
+        if (!TryGetLocalViewer(out _, out var viewerComp))
             return;
 
         var visibility = GetVisibility(ent);
@@ -136,14 +136,20 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         if (_timing.RealTime < _nextUpdateTime)
             return;
 
+        if (!TryGetLocalViewer(out var viewer, out var _))
+            return;
+
         var delta = (float)(_timing.RealTime - (_nextUpdateTime - UpdateInterval)).TotalSeconds;
         _nextUpdateTime = _timing.RealTime + UpdateInterval;
 
         var query = EntityQueryEnumerator<ActiveScpOnSoundVisibilityComponent>();
-        while (query.MoveNext(out _, out var visibilityComponent))
+        while (query.MoveNext(out var visibilityEnt, out var visibilityComponent))
         {
             if (visibilityComponent.OnCollide)
-                return;
+                continue;
+
+            if (viewer == visibilityEnt)
+                continue;
 
             if (visibilityComponent.VisibilityAcc >= visibilityComponent.HideTime)
                 continue;
@@ -194,7 +200,13 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         if (!IsActive)
             return;
 
-        if (!TryGetLocalViewer(out var viewerComp))
+        if (!TryGetLocalViewer(out var viewer, out var viewerComp))
+            return;
+
+        if (ent.Comp.OnCollide)
+            return;
+
+        if (ent == viewer)
             return;
 
         // В зависимости от наличие защит или проблем со зрением изменяется то, насколько хорошо мы видим жертву
@@ -202,7 +214,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         {
             ent.Comp.VisibilityAcc *= modifier;
         }
-        else if (!_whitelist.IsWhitelistPass(viewerComp.Protections, ent)) // Если имеется защита(тихое хождение)
+        else if (_whitelist.IsWhitelistPass(viewerComp.Protections, ent)) // Если имеется защита(тихое хождение)
         {
             return;
         }
@@ -284,7 +296,7 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         // 1 = отсутствие модификатора
         modifier = 1f;
 
-        if (!TryGetLocalViewer(out var viewerComp))
+        if (!TryGetLocalViewer(out _, out var viewerComp))
             return false;
 
         if (!viewerComp.PoorEyesight)
@@ -295,8 +307,9 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         return true;
     }
 
-    private bool TryGetLocalViewer([NotNullWhen(true)] out ScpOnSoundVisibilityViewerComponent? viewerComp)
+    private bool TryGetLocalViewer([NotNullWhen(true)] out EntityUid? viewer, [NotNullWhen(true)] out ScpOnSoundVisibilityViewerComponent? viewerComp)
     {
+        viewer = null;
         viewerComp = null;
         var localPlayer = _playerManager.LocalEntity;
 
@@ -306,7 +319,9 @@ public sealed partial class ScpOnSoundVisibilityHudSystem : EquipmentHudSystem<S
         if (!_viewerQuery.TryComp(localPlayer, out var comp))
             return false;
 
+        viewer = localPlayer;
         viewerComp = comp;
+
         return true;
     }
 }

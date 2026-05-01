@@ -29,8 +29,8 @@
       enum.ScpSleepVisuals.Sleeping:
         base:
           True: { state: asleep }
-          False: { state: alive }
   - type: ActiveListener
+    range: 20
   - type: Scp
     class: Keter
   - type: Scp939
@@ -42,8 +42,23 @@
       - Scp939Protection
   - type: ScpSleep
     actionProto: Scp939Sleep
-    hibernationHealing: true
-    hibernationOnHibernationState: true
+    hibernationHealingRate:
+      types:
+        Blunt: -20
+        Slash: -20
+        Piercing: -20
+        Heat: -20
+        Shock: -20
+        Bloodloss: -20
+        Genetic: -20
+        Toxin: -20
+        Airloss: -20
+        Asphyxiation: -20
+        Poison: -20
+        Radiation: -20
+        Cellular: -20
+    hibernationStates:
+    - Critical
   - type: ScpRememberPhrase
     actionProto: Scp939Mimic
   - type: ScpReleaseGas
@@ -85,7 +100,7 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      1000: Critical
+      10: Critical # ДЕБАГ ЗНАЧЕНИЕ!!! Старое: "1000: Critical"
   - type: Inventory
     templateId: scp939
   - type: ToggleableNightVision

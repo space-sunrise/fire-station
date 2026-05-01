@@ -30,34 +30,10 @@ public sealed partial class ScpSleepComponent : Component
     public TimeSpan HibernationDuration = TimeSpan.FromSeconds(60);
 
     [DataField]
-    public bool HibernationOnHibernationState;
+    public List<MobState>? HibernationStates;
 
     [DataField]
-    public List<MobState> HibernationStates = new() { MobState.Critical };
-
-    [DataField]
-    public bool HibernationHealing;
-
-    [DataField]
-    public DamageSpecifier HibernationHealingRate = new()
-    {
-        DamageDict = new()
-        {
-            { "Blunt", -20f },
-            { "Slash", -20f },
-            { "Piercing", -20f },
-            { "Heat", -20f },
-            { "Shock", -20f },
-            { "Bloodloss", -20f},
-            { "Genetic", -20f },
-            { "Toxin", -20f },
-            { "Airloss", -20f },
-            { "Asphyxiation", -20f },
-            { "Poison", -20f },
-            { "Radiation", -20f },
-            { "Cellular", -20f}
-        }
-    };
+    public DamageSpecifier? HibernationHealingRate;
 
     [DataField]
     public int BaseBloodRefreshAmount = 1;

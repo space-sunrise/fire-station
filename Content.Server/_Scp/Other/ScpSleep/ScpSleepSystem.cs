@@ -46,14 +46,14 @@ public sealed class ScpSleepSystem : EntitySystem
         ent.Comp.ActionEnt = null;
     }
 
-    public void OnSleepAction(Entity<ScpSleepComponent> ent, ref ScpSleepActionEvent args)
+    private void OnSleepAction(Entity<ScpSleepComponent> ent, ref ScpSleepActionEvent args)
     {
         args.Handled = TrySleep(ent, ent.Comp.HibernationDuration);
     }
 
-    public void OnMobStateChanged(Entity<ScpSleepComponent> ent, ref MobStateChangedEvent args)
+    private void OnMobStateChanged(Entity<ScpSleepComponent> ent, ref MobStateChangedEvent args)
     {
-        if (!ent.Comp.HibernationOnHibernationState)
+        if (ent.Comp.HibernationStates == null)
             return;
 
         if (!ent.Comp.HibernationStates.Contains(args.NewMobState))
@@ -68,7 +68,7 @@ public sealed class ScpSleepSystem : EntitySystem
         _audio.PlayPvs(ent.Comp.CritSound, ent);
     }
 
-    public void OnSleepChanged(Entity<ScpSleepComponent> ent, ref SleepStateChangedEvent args)
+    private void OnSleepChanged(Entity<ScpSleepComponent> ent, ref SleepStateChangedEvent args)
     {
         if (TryComp<BloodstreamComponent>(ent, out var bloodstreamComponent))
         {
@@ -91,7 +91,8 @@ public sealed class ScpSleepSystem : EntitySystem
         if (!_sleepingSystem.TrySleeping(ent.Owner))
             return false;
 
-        _statusEffects.TryAddStatusEffectDuration(ent, ent.Comp.StatusEffect, hibernationDuration);
+        if (!_statusEffects.TryAddStatusEffectDuration(ent, ent.Comp.StatusEffect, hibernationDuration))
+            return false;
 
         return true;
     }
@@ -103,7 +104,7 @@ public sealed class ScpSleepSystem : EntitySystem
         var querySleeping = EntityQueryEnumerator<ScpSleepComponent, SleepingComponent>();
         while (querySleeping.MoveNext(out var uid, out var scpSleepComponent, out _))
         {
-            if (!scpSleepComponent.HibernationHealing)
+            if (scpSleepComponent.HibernationHealingRate == null)
                 continue;
 
             _damageableSystem.TryChangeDamage(uid, scpSleepComponent.HibernationHealingRate * frameTime);

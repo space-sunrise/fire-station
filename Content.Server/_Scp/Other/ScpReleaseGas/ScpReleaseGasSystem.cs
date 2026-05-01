@@ -35,7 +35,7 @@ public sealed class ScpReleaseGasSystem : EntitySystem
         ent.Comp.ActionEnt = null;
     }
 
-    public void OnGasActionAttempt(Entity<ScpReleaseGasComponent> ent, ref ScpReleaseGasActionAttemptEvent args)
+    private void OnGasActionAttempt(Entity<ScpReleaseGasComponent> ent, ref ScpReleaseGasActionAttemptEvent args)
     {
         if (_scpMask.TryGetScpMask(ent, out var scpMask))
         {
@@ -45,7 +45,7 @@ public sealed class ScpReleaseGasSystem : EntitySystem
         }
     }
 
-    public void OnGasAction(Entity<ScpReleaseGasComponent> ent, ref ScpReleaseGasActionEvent args)
+    private void OnGasAction(Entity<ScpReleaseGasComponent> ent, ref ScpReleaseGasActionEvent args)
     {
         var ev = new ScpReleaseGasActionAttemptEvent();
         RaiseLocalEvent(ent, ref ev);

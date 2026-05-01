@@ -1,6 +1,5 @@
 using Content.Server.Actions;
 using Content.Server.Chat.Systems;
-using Content.Server.Examine;
 using Content.Shared._Scp.Other.ScpRememberPhrase;
 using Content.Shared._Scp.Other.Events;
 using Content.Shared._Sunrise.TTS;
@@ -8,15 +7,14 @@ using Content.Shared.Chat;
 using Content.Shared.IdentityManagement;
 using Robust.Shared.Random;
 using Content.Shared.Speech;
+using Content.Shared.Speech.Components;
 
 namespace Content.Server._Scp.Other.ScpRememberPhrase;
 
 public sealed class ScpRememberPhraseSystem : EntitySystem
 {
     [Dependency] private readonly ActionsSystem _actionsSystem = default!;
-    [Dependency] private readonly ExamineSystem _examine = default!;
     [Dependency] private readonly ChatSystem _chat = default!;
-    [Dependency] private readonly EntityLookupSystem _entityLookup = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
 
     public override void Initialize()
@@ -34,6 +32,8 @@ public sealed class ScpRememberPhraseSystem : EntitySystem
     {
         var actionEnt = _actionsSystem.AddAction(ent, ent.Comp.ActionProto);
         ent.Comp.ActionEnt = actionEnt;
+
+        EnsureComp<ActiveListenerComponent>(ent);
     }
 
     private void OnShutdown(Entity<ScpRememberPhraseComponent> ent, ref ComponentShutdown args)
@@ -42,12 +42,12 @@ public sealed class ScpRememberPhraseSystem : EntitySystem
         ent.Comp.ActionEnt = null;
     }
 
-    public void OnListen(Entity<ScpRememberPhraseComponent> ent, ref ListenEvent args)
+    private void OnListen(Entity<ScpRememberPhraseComponent> ent, ref ListenEvent args)
     {
         TryRememberPhrase(ent, args.Source, args.Message);
     }
 
-    public void OnMimic(Entity<ScpRememberPhraseComponent> ent, ref ScpRememberPhraseActionEvent args)
+    private void OnMimic(Entity<ScpRememberPhraseComponent> ent, ref ScpRememberPhraseActionEvent args)
     {
         if (ent.Comp.RememberedMessages.Count == 0)
             return;
