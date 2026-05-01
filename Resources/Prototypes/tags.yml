@@ -800,7 +800,7 @@
 
 - type: Tag
   id: Igniter # ConstructionGraph: makeshiftstunprod, FireBomb. Common ingredient in machines (HyperConvection)
-  
+
 - type: Tag
   id: Inflatable # Storage whitelist: BorgModuleInflatable
 
