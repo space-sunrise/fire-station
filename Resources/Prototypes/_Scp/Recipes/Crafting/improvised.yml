@@ -17,7 +17,7 @@
   description: crafting-menu-text-WH
 
 - type: construction
-  name: crafting-menu-name-FT
+  name: crafting-menu-name-improvised-modular-receiver
   id: ImprovisedModularReceiver
   graph: ImprovisedModularReceiverGraph
   startNode: start
