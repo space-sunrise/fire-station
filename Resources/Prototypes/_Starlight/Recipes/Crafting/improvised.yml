@@ -528,7 +528,7 @@
   category: construction-category-weapons
   objectType: Item
   description: crafting-menu-text-PVT
-  
+
 - type: construction
   name: crafting-menu-name-MVTH
   id: ClothingHeadHelmetMakeshift
